@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Shinkansen Meets Fuji alerts you before Mt. Fuji appears from your train window.">
+    <meta name="theme-color" content="#1167a8">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="shinkansenmeetsfuji.png">
+    <title>新幹線 meets 富士山 | Shinkansen Meets Fuji</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="hero" aria-labelledby="app-title">
+        <div class="hero-copy">
+          <p class="kicker" data-i18n="kicker">東海道新幹線の車窓アラート</p>
+          <h1 id="app-title">
+            <span class="title-line"><span data-i18n="titleLineOne">新幹線</span> <span data-i18n="titleMeet">meets</span> <span class="no-break" data-i18n="titleFuji">富士山</span></span>
+            <small>Shinkansen Meets Fuji</small>
+          </h1>
+          <p class="lead" data-i18n="lead">
+            上り・下りと列車を選ぶだけで、始発時刻と富士山の見どころ時間帯をすぐ確認できます。
+          </p>
+        </div>
+        <div class="language-switch" aria-label="Language">
+          <button class="lang-button active" type="button" data-lang="ja">日本語</button>
+          <button class="lang-button" type="button" data-lang="en">English</button>
+        </div>
+      </section>
+
+      <section class="planner" aria-labelledby="planner-title">
+        <div class="section-heading">
+          <p class="eyebrow" data-i18n="stepOne">Step 1</p>
+          <h2 id="planner-title" data-i18n="plannerTitle">列車を選ぶ</h2>
+        </div>
+
+        <div class="direction-tabs" aria-label="Direction">
+          <button class="direction-tab active" type="button" data-direction="west" data-i18n="westbound">下り 新大阪・博多方面</button>
+          <button class="direction-tab" type="button" data-direction="east" data-i18n="eastbound">上り 東京方面</button>
+        </div>
+
+        <div class="time-jumps" id="time-jumps" aria-label="Time jumps"></div>
+        <div class="cover-flow" id="cover-flow" aria-live="polite" tabindex="0"></div>
+
+      </section>
+
+      <section class="result-layout" aria-live="polite">
+        <article class="timeline-card">
+          <div class="section-heading compact">
+            <div>
+              <p class="eyebrow" data-i18n="stationTimeline">Station timeline</p>
+              <h2 id="selected-train">--</h2>
+            </div>
+          </div>
+          <div class="timeline-table" id="timeline-table"></div>
+          <div class="notice" id="fuji-side-note"></div>
+          <div class="view-tools">
+            <div>
+              <p class="tool-label" data-i18n="alertTiming">通知</p>
+              <p id="schedule-status">--</p>
+            </div>
+            <button class="ghost-button" id="test-alert-button" type="button" data-i18n="testAlert">通知をテスト</button>
+          </div>
+        </article>
+      </section>
+
+      <section class="tips-band">
+        <div>
+          <p class="eyebrow" data-i18n="cautionLabel">Caution</p>
+          <h2 data-i18n="cautionTitle">注意事項</h2>
+        </div>
+        <ul>
+          <li data-i18n="tipOne">下りは進行方向の右側、上りは左側が富士山側です。</li>
+          <li data-i18n="tipTwo">三島〜新富士、新富士駅通過前後が特に見やすい区間です。</li>
+          <li data-i18n="tipThree">天候、遅延、窓枠や防音壁により見え方は変わります。</li>
+        </ul>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <script src="data/timetable.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
