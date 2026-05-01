@@ -17,6 +17,7 @@
 - 対応ブラウザでの通知テスト
 - PWA対応: ホーム画面追加、アプリシェルと時刻表データのキャッシュ
 - Google Analytics (GA4) によるアクセス計測
+- OGP / Twitter Card 対応（SNSシェア時のカード表示）
 
 ## Run locally
 
