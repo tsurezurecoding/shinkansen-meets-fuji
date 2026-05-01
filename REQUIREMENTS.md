@@ -246,5 +246,6 @@ scripts/
 - 遅延情報連携
 - Push通知サーバー対応
 - PWAアイコン専用画像の作成
-- GitHub Pages公開設定
-- Google Drive外へのリポジトリ移動とGit初回コミット
+- ~~GitHub Pages公開設定~~ 完了 (https://tsurezurecoding.github.io/shinkansen-meets-fuji/)
+- ~~Google Drive外へのリポジトリ移動とGit初回コミット~~ 完了 (D:\codex\shinkansen-meets-fuji)
+- ~~Google Analytics導入~~ 完了 (GA4 / G-C2ESB694FV)

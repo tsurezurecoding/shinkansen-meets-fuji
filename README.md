@@ -16,6 +16,7 @@
 - ページを開いている間の5分前 / 1分前アラート
 - 対応ブラウザでの通知テスト
 - PWA対応: ホーム画面追加、アプリシェルと時刻表データのキャッシュ
+- Google Analytics (GA4) によるアクセス計測
 
 ## Run locally
 
@@ -35,10 +36,10 @@
 4. Source を `Deploy from a branch` に設定
 5. Branch を `main`、folder を `/root` に設定
 
-公開URLは通常、次の形式になります。
+公開URL:
 
 ```text
-https://YOUR_USER_NAME.github.io/shinkansen-meets-fuji/
+https://tsurezurecoding.github.io/shinkansen-meets-fuji/
 ```
 
 ## Notes
