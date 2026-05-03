@@ -1,4 +1,4 @@
-const CACHE_NAME = "shinkansen-meets-fuji-v1";
+const CACHE_NAME = "shinkansen-meets-fuji-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
