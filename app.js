@@ -41,6 +41,9 @@ const translations = {
     browserAlertTitle: "まもなく富士山",
     browserAlertBody: "富士山が見える区間に近づいています。富士山側の窓をご覧ください。",
     selectedToast: "列車を選択しました。",
+    hamanakoLabel: "浜名湖",
+    hamanakoNote: "右側（下り）・左側（上り）の見える目安",
+    tipHamanako: "浜名湖は浜松〜豊橋間、進行方向の右側（下り）・左側（上り）に見えます。",
   },
   en: {
     kicker: "Mt. Fuji window quest",
@@ -84,6 +87,9 @@ const translations = {
     browserAlertTitle: "Mt. Fuji is coming up",
     browserAlertBody: "You are approaching a Mt. Fuji viewing section. Look toward the Mt. Fuji side.",
     selectedToast: "Train selected.",
+    hamanakoLabel: "Lake Hamana",
+    hamanakoNote: "Right side westbound / Left side eastbound",
+    tipHamanako: "Lake Hamana is visible between Hamamatsu and Toyohashi — right side westbound, left side eastbound.",
   },
 };
 
@@ -431,7 +437,17 @@ function getTimelineItems(train, viewTime, viewWindow) {
     sortTime: timeToMinutes(viewTime),
   };
 
-  return [...stopItems, viewItem].sort((a, b) => a.sortTime - b.sortTime);
+  const hamanakoOffset = train.direction === "west" ? 37 : -37;
+  const hamanakoTime = addMinutes(viewTime, hamanakoOffset);
+  const hamanakoItem = {
+    kind: "view",
+    label: t("hamanakoLabel"),
+    time: createViewWindow(hamanakoTime, train.direction),
+    note: t("hamanakoNote"),
+    sortTime: timeToMinutes(hamanakoTime),
+  };
+
+  return [...stopItems, viewItem, hamanakoItem].sort((a, b) => a.sortTime - b.sortTime);
 }
 
 function estimateStationSortTime(train, station) {
