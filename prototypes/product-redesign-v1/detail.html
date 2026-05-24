@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>見どころ確認 | Shinkansen Meets Fuji Prototype v1</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body data-screen="detail">
+    <main class="phone-shell">
+      <header class="app-header compact">
+        <a class="back-link" id="back-to-candidates" href="candidates.html">候補へ戻る</a>
+        <h1>見どころ確認</h1>
+        <p id="train-name"></p>
+      </header>
+
+      <nav class="flow-steps" aria-label="画面の流れ">
+        <a id="step-to-conditions" href="index.html">1 条件</a>
+        <a id="step-to-candidates" href="candidates.html">2 候補</a>
+        <span class="active" aria-current="step">3 見どころ</span>
+      </nav>
+
+      <section class="screen-card">
+        <div class="hero-result">
+          <p>富士山の目安</p>
+          <strong id="fuji-window"></strong>
+          <span id="countdown"></span>
+        </div>
+
+        <div class="info-grid">
+          <div>
+            <span class="label">見る側</span>
+            <strong id="seat-side"></strong>
+          </div>
+          <div>
+            <span class="label">乗車駅</span>
+            <strong id="boarding-info"></strong>
+          </div>
+        </div>
+
+        <section class="route-context" aria-labelledby="route-title">
+          <div class="inline-title">
+            <h2 id="route-title">駅順で見る</h2>
+          </div>
+          <div class="route-plan" id="route-plan"></div>
+          <div class="spot-detail" id="spot-detail" hidden>
+            <img id="spot-image" alt="">
+            <div>
+              <h3 id="spot-title"></h3>
+              <p id="spot-description"></p>
+              <a id="spot-credit" href="#" target="_blank" rel="noreferrer">写真出典</a>
+            </div>
+          </div>
+        </section>
+
+        <section class="weather-note" aria-labelledby="weather-title">
+          <span class="label">天気・視界</span>
+          <p id="weather-comment"></p>
+        </section>
+
+        <div class="notification-box">
+          <div>
+            <span class="label">通知</span>
+            <p>本番では、アプリを閉じていてもスマホに通知する設計にします。</p>
+          </div>
+          <button class="primary" type="button" id="demo-notify">通知導線を見る</button>
+        </div>
+
+        <div class="notice" id="visibility-note"></div>
+
+        <div class="screen-actions bottom">
+          <a class="secondary button-link" id="detail-back-bottom" href="candidates.html">候補へ戻る</a>
+          <a class="ghost button-link" id="detail-edit-condition" href="index.html">条件を変更</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" hidden></div>
+    <script src="../../data/timetable.js"></script>
+    <script src="prototype.js"></script>
+  </body>
+</html>
