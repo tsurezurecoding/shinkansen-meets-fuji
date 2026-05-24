@@ -177,7 +177,7 @@ const scenicSpots = [
     noteEn: "The signature view for this app.",
     detail: "三島から新富士の前後で、車窓に富士山が大きく現れる区間があります。見える時間は長くないので、目安時刻の少し前から窓側を意識しておくと安心です。",
     detailEn: "Around the Mishima to Shin-Fuji section, Mt. Fuji can appear prominently from the train window. The view window is short, so it helps to be ready a little before the suggested time.",
-    image: "../../images/20240211_Mt.Fuji.jpg",
+    image: "images/20240211_Mt.Fuji.jpg",
     ownedPhoto: true,
   },
   {
@@ -256,7 +256,7 @@ const scenicSpots = [
     noteEn: "A mountain view around the Sekigahara area.",
     detail: "伊吹山は米原の名古屋寄りで見える山として知られています。冬は雪をかぶった姿が印象的で、天気がよければE席側を意識したい区間です。",
     detailEn: "Mt. Ibuki is known as a view near Maibara on the Nagoya side. In winter, its snow-covered shape can be especially memorable.",
-    image: "../../images/20240114_ibukiyama.png",
+    image: "images/20240114_ibukiyama.png",
     ownedPhoto: true,
   },
   {
@@ -275,7 +275,7 @@ const scenicSpots = [
     noteEn: "A brief view that immediately feels like Kyoto.",
     detail: "東寺の五重塔は京都駅の南側にあります。京都発着の前後で見える可能性があるため、京都に近づいたら海側の窓を意識すると見つけやすくなります。",
     detailEn: "The five-story pagoda of To-ji sits south of Kyoto Station. Around arrival or departure at Kyoto, watch the sea-side window.",
-    image: "../../images/20260510_toji.png",
+    image: "images/20260510_toji.png",
     ownedPhoto: true,
   },
 ];
@@ -283,6 +283,7 @@ const scenicSpots = [
 function init() {
   applyLanguage();
   bindLanguageSwitch();
+  registerServiceWorker();
   if (screen === "conditions") {
     initConditions();
   }
@@ -292,6 +293,15 @@ function init() {
   if (screen === "detail") {
     initDetail();
   }
+}
+
+function registerServiceWorker() {
+  if (!("serviceWorker" in navigator) || location.protocol === "file:") {
+    return;
+  }
+  navigator.serviceWorker.register("sw.js").catch(() => {
+    // The app works without offline cache; registration failure should not block the UI.
+  });
 }
 
 function normalizeLang(value) {

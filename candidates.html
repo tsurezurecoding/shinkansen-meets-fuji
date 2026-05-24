@@ -3,8 +3,16 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>候補列車 | Shinkansen Meets Fuji Prototype v1</title>
+    <meta name="theme-color" content="#1167a8">
+    <title>列車選択 | 新幹線 meets 富士山</title>
     <link rel="stylesheet" href="styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C2ESB694FV');
+    </script>
   </head>
   <body data-screen="candidates">
     <main class="phone-shell">
@@ -51,7 +59,7 @@
     </main>
 
     <div class="toast" id="toast" hidden></div>
-    <script src="../../data/timetable.js"></script>
+    <script src="data/timetable.js"></script>
     <script src="prototype.js"></script>
   </body>
 </html>

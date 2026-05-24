@@ -9,50 +9,67 @@
   <body data-screen="conditions">
     <main class="phone-shell">
       <header class="app-header">
-        <p class="brand-kicker">Shinkansen Meets Fuji</p>
-        <h1>新幹線 meets 富士山</h1>
-        <p>乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。</p>
-        <div class="value-chips" aria-label="このアプリでできること">
-          <span>見える時間</span>
-          <span>座席側</span>
-          <span>沿線スポット</span>
+        <div class="top-utility">
+          <p class="brand-kicker">Shinkansen Meets Fuji</p>
+          <div class="language-switch" aria-label="Language">
+            <button type="button" data-lang-option="ja">JP</button>
+            <button type="button" data-lang-option="en">EN</button>
+          </div>
         </div>
+        <h1 data-i18n="appTitle">新幹線 meets 富士山</h1>
+        <p data-i18n="appLead">乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。</p>
       </header>
 
       <nav class="flow-steps" aria-label="画面の流れ">
-        <span class="active" aria-current="step">1 条件</span>
-        <span>2 候補</span>
-        <span>3 見どころ</span>
+        <span class="active" aria-current="step" data-i18n="stepCondition">1 条件設定</span>
+        <span data-i18n="stepCandidates">2 列車選択</span>
+        <span data-i18n="stepHighlights">3 見どころ情報</span>
       </nav>
 
       <section class="screen-card" aria-labelledby="conditions-title">
         <div class="section-title">
-          <h2 id="conditions-title">条件設定</h2>
+          <h2 id="conditions-title" data-i18n="conditionTitle">条件設定</h2>
         </div>
 
-        <div class="direction-control" aria-label="Direction">
-          <button class="segmented active" type="button" data-direction="west">下り 新大阪方面</button>
-          <button class="segmented" type="button" data-direction="east">上り 東京方面</button>
+        <div class="direction-control" role="group" aria-label="Direction">
+          <button class="segmented active" type="button" data-direction="west" data-i18n="directionWest">下り 新大阪方面</button>
+          <button class="segmented" type="button" data-direction="east" data-i18n="directionEast">上り 東京方面</button>
         </div>
 
-        <div class="form-stack">
-          <label>
-            <span>乗車駅</span>
-            <select id="station-select"></select>
-          </label>
-          <label>
-            <span>出発時刻</span>
-            <input id="time-input" type="time">
-          </label>
-          <label>
-            <span>列車番号で探す場合</span>
-            <input id="number-input" type="text" inputmode="numeric" placeholder="例: 23">
-          </label>
-        </div>
+        <div class="search-panels">
+          <section class="search-panel primary-search" aria-labelledby="time-search-title">
+            <div class="search-panel-title">
+              <h3 id="time-search-title" data-i18n="timeSearchTitle">時間で探す</h3>
+              <p data-i18n="timeSearchLead">乗車駅とだいたいの出発時刻から近い列車を選びます。</p>
+            </div>
+            <div class="form-stack">
+              <label>
+                <span data-i18n="boardingStation">乗車駅</span>
+                <select id="station-select"></select>
+              </label>
+              <label>
+                <span data-i18n="departureTime">出発時刻</span>
+                <input id="time-input" type="time">
+              </label>
+              <label>
+                <span data-i18n="travelDate">乗車日</span>
+                <input id="date-input" type="date">
+              </label>
+            </div>
+            <button class="primary full-width" id="search-time" type="button" data-i18n="searchByCondition">この条件で候補を見る</button>
+          </section>
 
-        <div class="sticky-actions">
-          <button class="primary" id="search-time" type="button">この条件で候補を見る</button>
-          <button class="secondary" id="search-number" type="button">列車番号で候補を見る</button>
+          <section class="search-panel number-search" aria-labelledby="number-search-title">
+            <div class="search-panel-title">
+              <h3 id="number-search-title" data-i18n="numberSearchTitle">列車番号で探す</h3>
+              <p data-i18n="numberSearchLead">乗る列車が分かっている場合はこちら。</p>
+            </div>
+            <label>
+              <span data-i18n="trainNumberOptional">列車番号</span>
+              <input id="number-input" type="text" inputmode="numeric" placeholder="例: 23" data-i18n-placeholder="trainNumberPlaceholder">
+            </label>
+            <button class="secondary full-width" id="search-number" type="button" data-i18n="searchByNumber">列車番号で候補を見る</button>
+          </section>
         </div>
       </section>
     </main>

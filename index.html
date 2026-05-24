@@ -3,20 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="東海道新幹線で富士山が見える時間帯を列車ごとに確認。右側・左側とアラート付きで案内。546列車対応、無料・インストール不要。Free tool: exact Mt. Fuji viewing time for Tokaido Shinkansen, which side to look, browser alert included.">
+    <meta name="description" content="東海道新幹線で富士山や沿線の見どころが見える時間帯を、乗車駅・時刻・列車番号から確認できます。">
     <meta name="theme-color" content="#1167a8">
     <link rel="manifest" href="manifest.json">
     <link rel="apple-touch-icon" href="shinkansenmeetsfuji.png">
-    <title>新幹線 meets 富士山 | 東海道新幹線 富士山アラート — Shinkansen Meets Fuji</title>
+    <title>新幹線 meets 富士山 | Shinkansen Meets Fuji</title>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/">
-    <meta property="og:title" content="Shinkansen Meets Fuji — Know exactly when Mt. Fuji appears">
-    <meta property="og:description" content="Pick your Tokaido Shinkansen train and get the exact Mt. Fuji viewing window, which side to look, and a 5-minute browser alert. Free, no install. 546 trains covered.">
-    <meta property="og:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/20240211_Mt.Fuji.jpg">
+    <meta property="og:title" content="新幹線 meets 富士山">
+    <meta property="og:description" content="乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。">
+    <meta property="og:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/images/20240211_Mt.Fuji.jpg">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shinkansen Meets Fuji — Know exactly when Mt. Fuji appears">
-    <meta name="twitter:description" content="Pick your Tokaido Shinkansen train and get the exact Mt. Fuji viewing window, which side to look, and a 5-minute browser alert. Free, no install. 546 trains covered.">
-    <meta name="twitter:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/20240211_Mt.Fuji.jpg">
+    <meta name="twitter:title" content="新幹線 meets 富士山">
+    <meta name="twitter:description" content="乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。">
+    <meta name="twitter:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/images/20240211_Mt.Fuji.jpg">
     <link rel="stylesheet" href="styles.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
     <script>
@@ -26,77 +26,76 @@
       gtag('config', 'G-C2ESB694FV');
     </script>
   </head>
-  <body>
-    <main class="app-shell">
-      <section class="hero" aria-labelledby="app-title">
-        <div class="hero-copy">
-          <p class="kicker" data-i18n="kicker">東海道新幹線の車窓アラート</p>
-          <h1 id="app-title">
-            <span class="title-line"><span data-i18n="titleLineOne">新幹線</span> <span data-i18n="titleMeet">meets</span> <span class="no-break" data-i18n="titleFuji">富士山</span></span>
-            <small>Shinkansen Meets Fuji</small>
-          </h1>
-          <p class="lead" data-i18n="lead">
-            上り・下りと列車を選ぶだけで、始発時刻と富士山の見どころ時間帯をすぐ確認できます。
-          </p>
-        </div>
-        <div class="language-switch" aria-label="Language">
-          <button class="lang-button active" type="button" data-lang="ja">日本語</button>
-          <button class="lang-button" type="button" data-lang="en">English</button>
-        </div>
-      </section>
-
-      <section class="planner" aria-labelledby="planner-title">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="stepOne">Step 1</p>
-          <h2 id="planner-title" data-i18n="plannerTitle">列車を選ぶ</h2>
-        </div>
-
-        <div class="direction-tabs" aria-label="Direction">
-          <button class="direction-tab active" type="button" data-direction="west" data-i18n="westbound">下り 新大阪・博多方面</button>
-          <button class="direction-tab" type="button" data-direction="east" data-i18n="eastbound">上り 東京方面</button>
-        </div>
-
-        <div class="time-jumps" id="time-jumps" aria-label="Time jumps"></div>
-        <div class="cover-flow" id="cover-flow" aria-live="polite" tabindex="0"></div>
-
-      </section>
-
-      <section class="result-layout" aria-live="polite">
-        <article class="timeline-card">
-          <div class="section-heading compact">
-            <div>
-              <p class="eyebrow" data-i18n="stationTimeline">Station timeline</p>
-              <h2 id="selected-train">--</h2>
-            </div>
+  <body data-screen="conditions">
+    <main class="phone-shell">
+      <header class="app-header">
+        <div class="top-utility">
+          <p class="brand-kicker">Shinkansen Meets Fuji</p>
+          <div class="language-switch" aria-label="Language">
+            <button type="button" data-lang-option="ja">JP</button>
+            <button type="button" data-lang-option="en">EN</button>
           </div>
-          <div class="timeline-table" id="timeline-table"></div>
-          <div class="notice" id="fuji-side-note"></div>
-          <div class="view-tools">
-            <div>
-              <p class="tool-label" data-i18n="alertTiming">通知</p>
-              <p id="schedule-status">--</p>
-            </div>
-            <button class="ghost-button" id="test-alert-button" type="button" data-i18n="testAlert">通知をテスト</button>
-          </div>
-        </article>
-      </section>
-
-      <section class="tips-band">
-        <div>
-          <p class="eyebrow" data-i18n="cautionLabel">Caution</p>
-          <h2 data-i18n="cautionTitle">注意事項</h2>
         </div>
-        <ul>
-          <li data-i18n="tipOne">下りは進行方向の右側、上りは左側が富士山側です。</li>
-          <li data-i18n="tipTwo">三島〜新富士、新富士駅通過前後が特に見やすい区間です。</li>
-          <li data-i18n="tipHamanako">浜名湖は浜松〜豊橋間、進行方向の右側（下り）・左側（上り）に見えます。</li>
-          <li data-i18n="tipThree">天候、遅延、窓枠や防音壁により見え方は変わります。</li>
-        </ul>
+        <h1 data-i18n="appTitle">新幹線 meets 富士山</h1>
+        <p data-i18n="appLead">乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。</p>
+      </header>
+
+      <nav class="flow-steps" aria-label="画面の流れ">
+        <span class="active" aria-current="step" data-i18n="stepCondition">1 条件設定</span>
+        <span data-i18n="stepCandidates">2 列車選択</span>
+        <span data-i18n="stepHighlights">3 見どころ情報</span>
+      </nav>
+
+      <section class="screen-card" aria-labelledby="conditions-title">
+        <div class="section-title">
+          <h2 id="conditions-title" data-i18n="conditionTitle">条件設定</h2>
+        </div>
+
+        <div class="direction-control" role="group" aria-label="Direction">
+          <button class="segmented active" type="button" data-direction="west" data-i18n="directionWest">下り 新大阪方面</button>
+          <button class="segmented" type="button" data-direction="east" data-i18n="directionEast">上り 東京方面</button>
+        </div>
+
+        <div class="search-panels">
+          <section class="search-panel primary-search" aria-labelledby="time-search-title">
+            <div class="search-panel-title">
+              <h3 id="time-search-title" data-i18n="timeSearchTitle">時間で探す</h3>
+              <p data-i18n="timeSearchLead">乗車駅とだいたいの出発時刻から近い列車を選びます。</p>
+            </div>
+            <div class="form-stack">
+              <label>
+                <span data-i18n="boardingStation">乗車駅</span>
+                <select id="station-select"></select>
+              </label>
+              <label>
+                <span data-i18n="departureTime">出発時刻</span>
+                <input id="time-input" type="time">
+              </label>
+              <label>
+                <span data-i18n="travelDate">乗車日</span>
+                <input id="date-input" type="date">
+              </label>
+            </div>
+            <button class="primary full-width" id="search-time" type="button" data-i18n="searchByCondition">この条件で候補を見る</button>
+          </section>
+
+          <section class="search-panel number-search" aria-labelledby="number-search-title">
+            <div class="search-panel-title">
+              <h3 id="number-search-title" data-i18n="numberSearchTitle">列車番号で探す</h3>
+              <p data-i18n="numberSearchLead">乗る列車が分かっている場合はこちら。</p>
+            </div>
+            <label>
+              <span data-i18n="trainNumberOptional">列車番号</span>
+              <input id="number-input" type="text" inputmode="numeric" placeholder="例: 23" data-i18n-placeholder="trainNumberPlaceholder">
+            </label>
+            <button class="secondary full-width" id="search-number" type="button" data-i18n="searchByNumber">列車番号で候補を見る</button>
+          </section>
+        </div>
       </section>
     </main>
 
-    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+    <div class="toast" id="toast" hidden></div>
     <script src="data/timetable.js"></script>
-    <script src="app.js"></script>
+    <script src="prototype.js"></script>
   </body>
 </html>
