@@ -62,7 +62,8 @@ const messages = {
     editConditions: "条件を変更",
     details: "詳しく",
     closeDetails: "閉じる",
-    luckyTip: "車窓チップス",
+    classicView: "定番ビュー",
+    hiddenView: "道草ビュー",
     select: "選択",
     arrive: "着",
     depart: "発",
@@ -139,7 +140,8 @@ const messages = {
     editConditions: "Edit search",
     details: "Details",
     closeDetails: "Close",
-    luckyTip: "Window tip",
+    classicView: "Classic view",
+    hiddenView: "Hidden gem",
     select: "Select",
     arrive: "arr.",
     depart: "dep.",
@@ -292,9 +294,9 @@ const scenicSpots = [
     westAfter: "Nagoya",
     eastAfter: "Gifu-Hashima",
     side: "mountain",
-    category: "tip",
+    category: "hidden",
     timing: { type: "stationDirectional", station: "Nagoya", west: 6, east: -6, before: 1, after: 1 },
-    note: "名古屋を出てすぐの歴史チップス。",
+    note: "名古屋を出てすぐの道草ビュー。",
     noteEn: "A small history tip just outside Nagoya.",
     detail: "名古屋から岐阜羽島へ向かう途中、線路に近い位置に清須城が見える区間があります。織田信長や清須会議にゆかりのある場所として、短い時間でも旅の文脈が増える車窓です。",
     detailEn: "Soon after Nagoya, Kiyosu Castle can appear close to the line. It is tied to Oda Nobunaga and the Kiyosu Conference, giving a quick historical layer to the ride.",
@@ -310,9 +312,9 @@ const scenicSpots = [
     westAfter: "Gifu-Hashima",
     eastAfter: "Maibara",
     side: "sea",
-    category: "tip",
+    category: "hidden",
     timing: { type: "stationDirectional", station: "Maibara", west: -4, east: 4, before: 1, after: 1 },
-    note: "見つけたらラッキーな車窓チップス。",
+    note: "見つけたらラッキーな道草ビュー。",
     noteEn: "A blink-and-you-miss-it window tip.",
     detail: "米原の手前あたりで、山の中にある岩絵のようなトトロが車窓ネタとして語られています。見える時間は短く、場所の裏取りを続けながら、まずは“見つけたらラッキー”なチップスとして扱います。",
     detailEn: "Around the Maibara approach, a Totoro-like painted rock is known among train-window watchers. It is very easy to miss, so we treat it as a lucky hidden tip while continuing to verify the exact spot.",
@@ -751,10 +753,10 @@ function createScenicRowsBetween(train, station, nextStation, selectedSpotId, da
       const center = getScenicCenterTime(train, spot);
       const isDark = isDarkViewTime(center, date);
       return `
-        <button class="route-row scenic ${spot.category === "tip" ? "tip" : ""} ${spot.id === selectedSpotId ? "active" : ""} ${spot.id === "fuji" ? "fuji" : ""} ${isDark ? "low-light" : ""}" type="button" data-spot-id="${spot.id}">
+        <button class="route-row scenic ${spot.category === "hidden" ? "hidden-view" : "classic-view"} ${spot.id === selectedSpotId ? "active" : ""} ${spot.id === "fuji" ? "fuji" : ""} ${isDark ? "low-light" : ""}" type="button" data-spot-id="${spot.id}">
           <div class="route-time">${time}</div>
           <div class="spot-line">
-            ${spot.category === "tip" ? `<em>${t("luckyTip")}</em>` : ""}
+            <em>${spot.category === "hidden" ? t("hiddenView") : t("classicView")}</em>
             <strong>${spotLabel(spot, "name")}</strong>
             <span>${getSpotSeatSide(spot)}</span>
             ${isDark ? `<span class="light-badge">☾ ${t("darkBadge")}</span>` : ""}

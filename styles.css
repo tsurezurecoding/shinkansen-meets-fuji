@@ -717,7 +717,7 @@ button.route-row {
   background: var(--gold-soft);
 }
 
-.route-row.scenic.tip {
+.route-row.scenic.hidden-view {
   border-color: rgba(96, 111, 125, 0.45);
   background: #f4f7fa;
 }
@@ -764,11 +764,16 @@ button.route-row {
   flex: 0 0 auto;
   border-radius: 999px;
   padding: 2px 7px;
-  background: #17202a;
-  color: #fff;
+  background: #dfe6ec;
+  color: #3f4d5b;
   font-size: 0.68rem;
   font-style: normal;
   font-weight: 900;
+}
+
+.route-row.scenic.hidden-view .spot-line em {
+  background: #17202a;
+  color: #fff;
 }
 
 .spot-line > span {
