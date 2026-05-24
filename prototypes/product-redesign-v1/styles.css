@@ -94,6 +94,31 @@ h3 {
   font-size: 0.94rem;
 }
 
+.brand-kicker {
+  margin-bottom: 5px;
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.value-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.value-chips span {
+  border: 1px solid rgba(17, 104, 168, 0.28);
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: rgba(255, 255, 255, 0.78);
+  color: var(--blue);
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
 .back-link {
   display: inline-block;
   margin-bottom: 8px;
