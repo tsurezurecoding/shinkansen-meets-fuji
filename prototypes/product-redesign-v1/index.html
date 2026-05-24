@@ -3,28 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="東海道新幹線で富士山や沿線の見どころが見える時間帯を、乗車駅・時刻・列車番号から確認できます。">
-    <meta name="theme-color" content="#1167a8">
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="shinkansenmeetsfuji.png">
-    <title>新幹線 meets 富士山 | Shinkansen Meets Fuji</title>
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/">
-    <meta property="og:title" content="新幹線 meets 富士山">
-    <meta property="og:description" content="乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。">
-    <meta property="og:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/images/20240211_Mt.Fuji.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="新幹線 meets 富士山">
-    <meta name="twitter:description" content="乗る列車を選ぶだけで、富士山や車窓の見どころをいつ見るか確認できます。">
-    <meta name="twitter:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/images/20240211_Mt.Fuji.jpg">
+    <title>Shinkansen Meets Fuji Prototype v1</title>
     <link rel="stylesheet" href="styles.css">
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-C2ESB694FV');
-    </script>
   </head>
   <body data-screen="conditions">
     <main class="phone-shell">
@@ -95,7 +75,7 @@
     </main>
 
     <div class="toast" id="toast" hidden></div>
-    <script src="data/timetable.js"></script>
+    <script src="../../data/timetable.js"></script>
     <script src="prototype.js"></script>
   </body>
 </html>

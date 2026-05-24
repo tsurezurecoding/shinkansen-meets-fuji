@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#1167a8">
+    <title>見どころ情報 | 新幹線 meets 富士山</title>
+    <link rel="stylesheet" href="styles.css">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-C2ESB694FV');
+    </script>
+  </head>
+  <body data-screen="detail">
+    <main class="phone-shell">
+      <header class="app-header compact">
+        <div class="top-utility">
+          <p class="brand-kicker">Shinkansen Meets Fuji</p>
+          <div class="language-switch" aria-label="Language">
+            <button type="button" data-lang-option="ja">JP</button>
+            <button type="button" data-lang-option="en">EN</button>
+          </div>
+        </div>
+        <h1 data-i18n="appTitle">新幹線 meets 富士山</h1>
+        <p class="header-context" id="train-name"></p>
+      </header>
+
+      <nav class="flow-steps" aria-label="画面の流れ">
+        <a id="step-to-conditions" href="index.html" data-i18n="stepCondition">1 条件設定</a>
+        <a id="step-to-candidates" href="candidates.html" data-i18n="stepCandidates">2 列車選択</a>
+        <span class="active" aria-current="step" data-i18n="stepHighlights">3 見どころ情報</span>
+      </nav>
+
+      <section class="screen-card">
+        <div class="hero-result">
+          <p data-i18n="fujiWindowLabel">富士山の目安</p>
+          <strong id="fuji-window"></strong>
+          <div class="hero-status">
+            <span id="countdown"></span>
+            <span class="hero-light-badge" id="fuji-light-badge" hidden></span>
+          </div>
+          <div class="hero-meta">
+            <div>
+              <span data-i18n="trainLabel">列車</span>
+              <strong id="hero-train-type"></strong>
+            </div>
+            <div>
+              <span data-i18n="seatSideLabel">見る側</span>
+              <strong id="seat-side"></strong>
+            </div>
+            <div>
+              <span data-i18n="boardingStation">乗車駅</span>
+              <strong id="boarding-info"></strong>
+            </div>
+          </div>
+        </div>
+
+        <section class="route-context" aria-labelledby="route-title">
+          <div class="inline-title">
+            <h2 id="route-title" data-i18n="routeTitle">駅順で見る</h2>
+          </div>
+          <div class="route-plan" id="route-plan"></div>
+        </section>
+
+        <section class="weather-note" aria-labelledby="weather-title">
+          <span class="label" data-i18n="weatherLabel">天気・視界</span>
+          <p id="weather-comment"></p>
+        </section>
+
+        <div class="notice" id="visibility-note"></div>
+
+        <div class="screen-actions bottom">
+          <a class="secondary button-link" id="detail-back-bottom" href="candidates.html" data-i18n="backToCandidates">候補へ戻る</a>
+          <a class="ghost button-link" id="detail-edit-condition" href="index.html" data-i18n="editConditions">条件を変更</a>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" hidden></div>
+    <script src="data/timetable.js"></script>
+    <script src="prototype.js"></script>
+  </body>
+</html>

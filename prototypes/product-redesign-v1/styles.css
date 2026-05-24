@@ -25,7 +25,7 @@ body {
   color: var(--ink);
   background:
     linear-gradient(rgba(238, 243, 246, 0.9), rgba(238, 243, 246, 0.98)),
-    url("images/20240211_Mt.Fuji.jpg") center / cover fixed;
+    url("../../images/20240211_Mt.Fuji.jpg") center / cover fixed;
 }
 
 button,
@@ -52,7 +52,7 @@ a {
   color: #fff;
   background:
     linear-gradient(rgba(12, 27, 39, 0.34), rgba(12, 27, 39, 0.7)),
-    url("images/20240211_Mt.Fuji.jpg") center 38% / cover;
+    url("../../images/20240211_Mt.Fuji.jpg") center 38% / cover;
   box-shadow: var(--shadow);
 }
 
@@ -61,7 +61,7 @@ a {
   color: #fff;
   background:
     linear-gradient(rgba(12, 27, 39, 0.28), rgba(12, 27, 39, 0.66)),
-    url("images/20240211_Mt.Fuji.jpg") center 42% / cover;
+    url("../../images/20240211_Mt.Fuji.jpg") center 42% / cover;
 }
 
 .kicker,

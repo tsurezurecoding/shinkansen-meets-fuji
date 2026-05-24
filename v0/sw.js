@@ -1,17 +1,12 @@
-const CACHE_NAME = "shinkansen-meets-fuji-v3";
+const CACHE_NAME = "shinkansen-meets-fuji-v2";
 const APP_SHELL = [
   "./",
   "./index.html",
-  "./candidates.html",
-  "./detail.html",
   "./styles.css",
-  "./prototype.js",
+  "./app.js",
   "./manifest.json",
   "./data/timetable.js",
   "./data/timetable.json",
-  "./images/20240211_Mt.Fuji.jpg",
-  "./images/20240114_ibukiyama.png",
-  "./images/20260510_toji.png",
   "./shinkansenmeetsfuji.png"
 ];
 
