@@ -591,6 +591,39 @@ input {
   line-height: 1.25;
 }
 
+.notification-card {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+  border: 1px solid rgba(17, 104, 168, 0.28);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f7fbfe;
+}
+
+.notification-card h2 {
+  margin-bottom: 4px;
+  font-size: 1.02rem;
+}
+
+.notification-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.notification-card button:disabled {
+  border-color: var(--line);
+  background: #d7e0e8;
+  color: #5f6c78;
+  cursor: not-allowed;
+}
+
+.notification-status {
+  font-weight: 800;
+}
+
 .route-context,
 .weather-note {
   border: 1px solid var(--line);
@@ -684,6 +717,11 @@ button.route-row {
   background: var(--gold-soft);
 }
 
+.route-row.scenic.tip {
+  border-color: rgba(96, 111, 125, 0.45);
+  background: #f4f7fa;
+}
+
 .route-row.scenic.low-light {
   border-color: #17202a;
   background: #202a35;
@@ -720,6 +758,17 @@ button.route-row {
   color: var(--muted);
   font-size: 0.82rem;
   font-weight: 700;
+}
+
+.spot-line em {
+  flex: 0 0 auto;
+  border-radius: 999px;
+  padding: 2px 7px;
+  background: #17202a;
+  color: #fff;
+  font-size: 0.68rem;
+  font-style: normal;
+  font-weight: 900;
 }
 
 .spot-line > span {
