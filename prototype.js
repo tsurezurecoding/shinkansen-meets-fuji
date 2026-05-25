@@ -300,6 +300,9 @@ const scenicSpots = [
     noteEn: "A small history tip just outside Nagoya.",
     detail: "名古屋から岐阜羽島へ向かう途中、線路に近い位置に清須城が見える区間があります。織田信長や清須会議にゆかりのある場所として、短い時間でも旅の文脈が増える車窓です。",
     detailEn: "Soon after Nagoya, Kiyosu Castle can appear close to the line. It is tied to Oda Nobunaga and the Kiyosu Conference, giving a quick historical layer to the ride.",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kiyosu%20Castle%20view%20from%20T%C5%8Dkaid%C5%8D%20Shinkansen.jpg?width=900",
+    credit: "Wikimedia Commons / Kiyosu Castle view from Tokaido Shinkansen",
+    source: "https://commons.wikimedia.org/wiki/Category:Views_from_T%C5%8Dkaid%C5%8D_Shinkansen",
   },
   {
     id: "totoro",
