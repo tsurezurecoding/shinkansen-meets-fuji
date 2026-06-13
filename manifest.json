@@ -1,22 +1,22 @@
 {
-  "name": "新幹線 meets 富士山",
-  "short_name": "富士山車窓",
-  "description": "列車を選ぶと、富士山の見どころ時間帯を確認できます。",
+  "name": "新幹線の窓 - 見逃さない車窓手帖",
+  "short_name": "新幹線の窓",
+  "description": "東海道新幹線で富士山が見える時間と、沿線の車窓スポットを案内します。",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#eef6fb",
-  "theme_color": "#1167a8",
+  "background_color": "#faf6ef",
+  "theme_color": "#101c2c",
   "lang": "ja",
   "icons": [
     {
-      "src": "shinkansenmeetsfuji.png",
+      "src": "images/shinkansen-window-icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "shinkansenmeetsfuji.png",
+      "src": "images/shinkansen-window-icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"

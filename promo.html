@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>新幹線の窓 — 30秒プロモーション</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-C2ESB694FV");
+  </script>
+  <!--
+    使い方:
+    このページは約30秒で1周する16:9のモーションプロモです。
+    フルスクリーン(F11)にして画面録画すれば、そのままSNS用のMP4になります。
+    ?lang=en で英語版になります。
+  -->
+  <style>
+    :root {
+      --night: #101c2c; --accent: #e8704a; --accent-soft: #f5c9a8; --paper: #faf6ef;
+      --serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif;
+      --sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; font-family: var(--sans); overflow: hidden; }
+    .stage {
+      position: fixed; inset: 0; display: grid; place-items: center;
+      background: var(--night); color: #fff;
+    }
+    .scene {
+      position: absolute; inset: 0; display: grid; place-items: center;
+      opacity: 0; pointer-events: none; transition: opacity 0.8s ease;
+      text-align: center; padding: 6vmin;
+    }
+    .scene.on { opacity: 1; }
+    .big { font-family: var(--serif); font-size: 7vmin; line-height: 1.6; font-weight: 700; }
+    .mid { font-family: var(--serif); font-size: 5vmin; line-height: 1.7; font-weight: 700; }
+    .sub { font-size: 2.6vmin; opacity: 0.7; margin-top: 3vmin; letter-spacing: 0.1em; }
+    .accent { color: var(--accent-soft); }
+    .rise { animation: rise 1.2s ease both; }
+    .rise2 { animation: rise 1.2s 0.6s ease both; }
+    .rise3 { animation: rise 1.2s 1.4s ease both; }
+    @keyframes rise { from { transform: translateY(4vmin); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+    /* S3: 車窓フレーム */
+    .window-frame {
+      width: 76vmin; max-width: 88vw; aspect-ratio: 16/10;
+      border-radius: 6vmin; border: 2.2vmin solid #2b3a4d;
+      overflow: hidden; position: relative; background: #9db4cd;
+      box-shadow: 0 4vmin 12vmin rgba(0,0,0,0.6);
+    }
+    .window-view { position: absolute; inset: 0; width: 300%; height: 100%; animation: pan 7s linear both; }
+    .scene.on .window-view { animation-play-state: running; }
+    @keyframes pan { from { transform: translateX(0); } to { transform: translateX(-66.6%); } }
+    .window-caption { margin-top: 4vmin; }
+
+    /* S4: クイックカット */
+    .cuts { display: flex; gap: 2.5vmin; align-items: center; justify-content: center; flex-wrap: wrap; }
+    .cut {
+      width: 26vmin; border-radius: 2.5vmin; overflow: hidden;
+      border: 0.5vmin solid rgba(255,255,255,0.18); opacity: 0;
+      transform: scale(0.85) rotate(-2deg);
+    }
+    .scene.on .cut { animation: pop 0.5s ease both; }
+    .scene.on .cut:nth-child(2) { animation-delay: 0.7s; transform: rotate(2deg); }
+    .scene.on .cut:nth-child(3) { animation-delay: 1.4s; }
+    .scene.on .cut:nth-child(4) { animation-delay: 2.1s; transform: rotate(-1.5deg); }
+    @keyframes pop { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+    .cut svg { display: block; width: 100%; height: auto; }
+    .cut-label { font-size: 2vmin; padding: 1vmin; background: rgba(0,0,0,0.45); }
+
+    /* S5: スタンプ */
+    .stamps { display: flex; gap: 3vmin; justify-content: center; margin-top: 4vmin; }
+    .pstamp {
+      width: 13vmin; height: 13vmin; border-radius: 50%;
+      background: #fff7f2; border: 0.7vmin solid var(--accent);
+      display: grid; place-items: center; font-size: 6.5vmin; opacity: 0;
+    }
+    .scene.on .pstamp { animation: stamp 0.45s cubic-bezier(0.2, 1.8, 0.4, 1) both; }
+    .scene.on .pstamp:nth-child(2) { animation-delay: 0.5s; }
+    .scene.on .pstamp:nth-child(3) { animation-delay: 1.0s; }
+    .scene.on .pstamp:nth-child(4) { animation-delay: 1.5s; }
+    .scene.on .pstamp:nth-child(5) { animation-delay: 2.0s; }
+    @keyframes stamp { from { opacity: 0; transform: scale(2.2) rotate(14deg); } to { opacity: 1; transform: scale(1) rotate(-4deg); } }
+
+    /* S6: ロゴ */
+    .logo-mark {
+      width: 14vmin; height: 14vmin; border-radius: 3vmin; background: var(--accent);
+      display: grid; place-items: center; margin: 0 auto 3vmin;
+      font-family: var(--serif); font-size: 8vmin; font-weight: 700;
+      animation: rise 1s ease both;
+    }
+    .url { margin-top: 4vmin; font-size: 2.6vmin; letter-spacing: 0.15em; color: var(--accent-soft); }
+
+    .progress {
+      position: fixed; left: 0; bottom: 0; height: 0.6vmin; background: var(--accent);
+      width: 0%; transition: width 0.3s linear; z-index: 10;
+    }
+    .skynote { position: fixed; top: 2.5vmin; right: 3vmin; font-size: 1.8vmin; opacity: 0.4; z-index: 10; }
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage"></div>
+  <div class="progress" id="bar"></div>
+  <p class="skynote">新幹線の窓 — 見逃さない車窓手帖 · promo loop</p>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script><!-- sceneSVG()を利用 -->
+  <script>
+    // app.js側の lang と衝突しないよう plang を使う
+    const plang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "ja";
+    const T = {
+      ja: {
+        s1a: "東京 → 新大阪", s1b: "147分。", s1sub: "TOKAIDO SHINKANSEN",
+        s2: "ただの移動だと、<br>思っていませんか。",
+        s3: "窓のむこうに、<br><span class='accent'>もうひとつの旅がある。</span>",
+        s4: "富士山だけじゃない。", s4sub: "城、湖、海、そして巨大なソーラーアーク。",
+        s5: "「見えた!」を集めて、<br>旅の思い出に。", s5sub: "車窓スタンプ帖と、思い出カード。",
+        s6: "見逃さない車窓手帖", s6sub: "無料・インストール不要", url: "tsurezurecoding.github.io/shinkansen-meets-fuji",
+        cap: "三島 → 新富士 · E席側",
+      },
+      en: {
+        s1a: "Tokyo → Shin-Osaka", s1b: "147 minutes.", s1sub: "TOKAIDO SHINKANSEN",
+        s2: "Think it's<br>just a ride?",
+        s3: "There's another journey<br><span class='accent'>outside your window.</span>",
+        s4: "It's not just Fuji.", s4sub: "Castles, lake, sea — and the giant Solar Ark.",
+        s5: "Stamp what you spot.<br>Keep the journey.", s5sub: "A stamp book and a shareable memory card.",
+        s6: "Never miss the view.", s6sub: "Free · No install", url: "tsurezurecoding.github.io/shinkansen-meets-fuji",
+        cap: "Mishima → Shin-Fuji · Seat E",
+      },
+    }[plang];
+
+    /* 横長の車窓パノラマ(流れる富士山) */
+    function panoramaSVG() {
+      return `<svg viewBox="0 0 1800 375" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg">
+        <defs><linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#bcd4ec"/><stop offset="1" stop-color="#f4e3cd"/></linearGradient></defs>
+        <rect width="1800" height="375" fill="url(#psky)"/>
+        <path d="M0 330 Q200 300 400 320 T900 315 T1400 320 T1800 310 L1800 375 L0 375 Z" fill="#94ab84"/>
+        <path d="M700 330 L1000 80 L1050 135 L1100 85 L1380 330 Z" fill="#5a7ca3"/>
+        <path d="M952 122 L1000 80 L1050 135 L1078 105 L1060 165 Q1022 140 990 168 Q965 145 945 158 Z" fill="#fff"/>
+        <circle cx="1500" cy="80" r="38" fill="#f0b04e"/>
+        <path d="M150 250 Q190 200 260 220 L260 330 L150 330 Z" fill="#6e9a5f"/>
+        <g fill="#4d7a42">${[0,1,2,3].map(i=>`<path d="M${60+i*30} 330 Q${75+i*30} 280 ${90+i*30} 330 Z"/>`).join("")}</g>
+        <path d="M1500 285 Q1580 230 1660 285" stroke="#2e4050" stroke-width="24" fill="none" stroke-linecap="round"/>
+      </svg>`;
+    }
+
+    const cutScenes = [
+      { type: "castle", ja: "掛川城 / 清須城", en: "Castles by the tracks" },
+      { type: "lake", ja: "浜名湖", en: "Lake Hamana" },
+      { type: "bay", ja: "熱海と相模湾", en: "Atami & Sagami Bay" },
+      { type: "solar", ja: "ソーラーアーク", en: "Solar Ark" },
+    ];
+
+    const scenes = [
+      { dur: 4200, html: `<div><p class="big rise">${T.s1a}</p><p class="big rise2 accent" style="font-size:10vmin">${T.s1b}</p><p class="sub rise3">${T.s1sub}</p></div>` },
+      { dur: 3800, html: `<div><p class="big rise">${T.s2}</p></div>` },
+      { dur: 7200, html: `<div><div class="window-frame rise">${panoramaSVG().replace('<svg ', '<svg class="window-view" ')}</div><div class="window-caption rise2"><p class="mid">${T.s3}</p><p class="sub">🗻 ${T.cap}</p></div></div>` },
+      { dur: 5600, html: `<div><p class="mid rise" style="margin-bottom:3.5vmin">${T.s4}</p><div class="cuts">${cutScenes.map(c=>`<div class="cut">${sceneSVG(c.type)}<p class="cut-label">${c[plang]}</p></div>`).join("")}</div><p class="sub rise3">${T.s4sub}</p></div>` },
+      { dur: 5200, html: `<div><p class="mid rise">${T.s5}</p><div class="stamps">${["🗻","🌊","🏯","🚤","☀️"].map(i=>`<div class="pstamp">${i}</div>`).join("")}</div><p class="sub">${T.s5sub}</p></div>` },
+      { dur: 6000, html: `<div><div class="logo-mark">窓</div><p class="big rise2">新幹線の窓</p><p class="mid rise2" style="font-size:3.4vmin;opacity:0.9">${T.s6}</p><p class="sub rise3">${T.s6sub}</p><p class="url rise3">${T.url}</p></div>` },
+    ];
+
+    const stage = document.getElementById("stage");
+    stage.innerHTML = scenes.map((s, i) => `<div class="scene" id="sc${i}">${s.html}</div>`).join("");
+    const total = scenes.reduce((a, s) => a + s.dur, 0);
+
+    let idx = -1, elapsed = 0;
+    function next() {
+      idx = (idx + 1) % scenes.length;
+      if (idx === 0) elapsed = 0;
+      document.querySelectorAll(".scene").forEach((el, i) => el.classList.toggle("on", i === idx));
+      // アニメ再起動のためにシーン中身を再描画
+      const sc = document.getElementById("sc" + idx);
+      sc.innerHTML = sc.innerHTML;
+      document.getElementById("bar").style.width = ((elapsed / total) * 100) + "%";
+      elapsed += scenes[idx].dur;
+      setTimeout(next, scenes[idx].dur);
+    }
+    next();
+  </script>
+</body>
+</html>

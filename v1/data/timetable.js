@@ -1,0 +1,10753 @@
+window.SHINKANSEN_TIMETABLE = {
+  "schemaVersion": 1,
+  "datasetId": "tokaido-sanyo-shinkansen-basic-2026-03-14-mvp",
+  "updatedAt": "2026-05-01",
+  "validFrom": "2026-03-14",
+  "scope": "MVP subset of Tokaido/Sanyo Shinkansen trains used by Shinkansen Meets Fuji",
+  "notes": [
+    "This dataset is a reusable static snapshot for the MVP.",
+    "Times are based on public timetable references and should be treated as scheduled/basic timetable data.",
+    "Seasonal trains, operation-date notes, temporary trains, platform changes, and delays are not reflected.",
+    "Train details were refreshed from JR East Tokyo outbound, Shinagawa outbound/inbound, and Shin-Yokohama outbound/inbound timetable links for May 2026."
+  ],
+  "sources": [
+    {
+      "name": "JR Central Shinkansen Timetable",
+      "url": "https://global.jr-central.co.jp/en/info/timetable/index.html"
+    },
+    {
+      "name": "JR Central Tokaido/Sanyo Shinkansen timetable guidance",
+      "url": "https://railway.jr-central.co.jp/jikoku/index.html"
+    },
+    {
+      "name": "JR Central Tours seat guide",
+      "url": "https://travel.jr-central.co.jp/plan/tokushu/shinkansen/seat/"
+    }
+  ],
+  "stations": [
+    {
+      "id": "Tokyo",
+      "ja": "東京",
+      "en": "Tokyo"
+    },
+    {
+      "id": "Shinagawa",
+      "ja": "品川",
+      "en": "Shinagawa"
+    },
+    {
+      "id": "Shin-Yokohama",
+      "ja": "新横浜",
+      "en": "Shin-Yokohama"
+    },
+    {
+      "id": "Odawara",
+      "ja": "小田原",
+      "en": "Odawara"
+    },
+    {
+      "id": "Atami",
+      "ja": "熱海",
+      "en": "Atami"
+    },
+    {
+      "id": "Mishima",
+      "ja": "三島",
+      "en": "Mishima"
+    },
+    {
+      "id": "Shin-Fuji",
+      "ja": "新富士",
+      "en": "Shin-Fuji"
+    },
+    {
+      "id": "Shizuoka",
+      "ja": "静岡",
+      "en": "Shizuoka"
+    },
+    {
+      "id": "Kakegawa",
+      "ja": "掛川",
+      "en": "Kakegawa"
+    },
+    {
+      "id": "Hamamatsu",
+      "ja": "浜松",
+      "en": "Hamamatsu"
+    },
+    {
+      "id": "Toyohashi",
+      "ja": "豊橋",
+      "en": "Toyohashi"
+    },
+    {
+      "id": "Mikawa-Anjo",
+      "ja": "三河安城",
+      "en": "Mikawa-Anjo"
+    },
+    {
+      "id": "Nagoya",
+      "ja": "名古屋",
+      "en": "Nagoya"
+    },
+    {
+      "id": "Gifu-Hashima",
+      "ja": "岐阜羽島",
+      "en": "Gifu-Hashima"
+    },
+    {
+      "id": "Maibara",
+      "ja": "米原",
+      "en": "Maibara"
+    },
+    {
+      "id": "Kyoto",
+      "ja": "京都",
+      "en": "Kyoto"
+    },
+    {
+      "id": "Shin-Osaka",
+      "ja": "新大阪",
+      "en": "Shin-Osaka"
+    },
+    {
+      "id": "Shin-Kobe",
+      "ja": "新神戸",
+      "en": "Shin-Kobe"
+    },
+    {
+      "id": "Nishi-Akashi",
+      "ja": "西明石",
+      "en": "Nishi-Akashi"
+    },
+    {
+      "id": "Himeji",
+      "ja": "姫路",
+      "en": "Himeji"
+    },
+    {
+      "id": "Aioi",
+      "ja": "相生",
+      "en": "Aioi"
+    },
+    {
+      "id": "Okayama",
+      "ja": "岡山",
+      "en": "Okayama"
+    },
+    {
+      "id": "Fukuyama",
+      "ja": "福山",
+      "en": "Fukuyama"
+    },
+    {
+      "id": "Hiroshima",
+      "ja": "広島",
+      "en": "Hiroshima"
+    },
+    {
+      "id": "Tokuyama",
+      "ja": "徳山",
+      "en": "Tokuyama"
+    },
+    {
+      "id": "Shin-Yamaguchi",
+      "ja": "新山口",
+      "en": "Shin-Yamaguchi"
+    },
+    {
+      "id": "Kokura",
+      "ja": "小倉",
+      "en": "Kokura"
+    },
+    {
+      "id": "Hakata",
+      "ja": "博多",
+      "en": "Hakata"
+    },
+    {
+      "id": "Higashi-Hiroshima",
+      "ja": "Higashi-Hiroshima",
+      "en": "Higashi-Hiroshima"
+    },
+    {
+      "id": "Mihara",
+      "ja": "Mihara",
+      "en": "Mihara"
+    },
+    {
+      "id": "Shin-Kurashiki",
+      "ja": "Shin-Kurashiki",
+      "en": "Shin-Kurashiki"
+    },
+    {
+      "id": "Shin-Onomichi",
+      "ja": "Shin-Onomichi",
+      "en": "Shin-Onomichi"
+    }
+  ],
+  "fujiOffsetsMinutes": {
+    "west": {
+      "Tokyo": 45,
+      "Shinagawa": 38,
+      "Shin-Yokohama": 26,
+      "Mishima": 7,
+      "Shin-Fuji": 0,
+      "Shizuoka": -13,
+      "Nagoya": -50,
+      "Kyoto": -90,
+      "Shin-Osaka": -105,
+      "Hakata": -255,
+      "Odawara": 18,
+      "Atami": 12,
+      "Kakegawa": -25,
+      "Hamamatsu": -33,
+      "Toyohashi": -42,
+      "Mikawa-Anjo": -47,
+      "Gifu-Hashima": -58,
+      "Maibara": -72,
+      "Shin-Kobe": -118,
+      "Himeji": -135,
+      "Aioi": -150,
+      "Okayama": -170,
+      "Fukuyama": -190,
+      "Hiroshima": -220,
+      "Shin-Yamaguchi": -238,
+      "Tokuyama": -244,
+      "Kokura": -250
+    },
+    "east": {
+      "Hakata": 255,
+      "Shin-Osaka": 105,
+      "Kyoto": 90,
+      "Nagoya": 50,
+      "Shizuoka": 13,
+      "Shin-Fuji": 0,
+      "Mishima": -7,
+      "Shin-Yokohama": -26,
+      "Shinagawa": -38,
+      "Tokyo": -45,
+      "Odawara": -18,
+      "Atami": -12,
+      "Kakegawa": 25,
+      "Hamamatsu": 33,
+      "Toyohashi": 42,
+      "Mikawa-Anjo": 47,
+      "Gifu-Hashima": 58,
+      "Maibara": 72,
+      "Shin-Kobe": 118,
+      "Himeji": 135,
+      "Aioi": 150,
+      "Okayama": 170,
+      "Fukuyama": 190,
+      "Hiroshima": 220,
+      "Shin-Yamaguchi": 238,
+      "Tokuyama": 244,
+      "Kokura": 250
+    }
+  },
+  "trains": [
+    {
+      "type": "Nozomi",
+      "number": 2,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "06:00",
+        "Kokura": "06:18",
+        "Shin-Yamaguchi": "06:36",
+        "Hiroshima": "07:08",
+        "Okayama": "07:44",
+        "Shin-Kobe": "08:16",
+        "Shin-Osaka": "08:30",
+        "Kyoto": "08:45",
+        "Nagoya": "09:20",
+        "Shin-Yokohama": "10:38",
+        "Shinagawa": "10:50",
+        "Tokyo": "10:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019911.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 68,
+      "direction": "east",
+      "originStation": "Himeji",
+      "destination": "Tokyo",
+      "times": {
+        "Himeji": "06:00",
+        "Shin-Kobe": "06:19",
+        "Shin-Osaka": "06:33",
+        "Kyoto": "06:47",
+        "Nagoya": "07:22",
+        "Shin-Yokohama": "08:40",
+        "Shinagawa": "08:51",
+        "Tokyo": "08:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089441.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 74,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "06:00",
+        "Fukuyama": "06:25",
+        "Okayama": "06:42",
+        "Shin-Kobe": "07:16",
+        "Shin-Osaka": "07:30",
+        "Kyoto": "07:45",
+        "Nagoya": "08:20",
+        "Shin-Yokohama": "09:38",
+        "Shinagawa": "09:50",
+        "Tokyo": "09:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089351.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 230,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:00",
+        "Kyoto": "06:14",
+        "Nagoya": "06:49",
+        "Shin-Yokohama": "08:06",
+        "Shinagawa": "08:17",
+        "Tokyo": "08:23"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026461.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 66,
+      "direction": "east",
+      "originStation": "Nishi-Akashi",
+      "destination": "Tokyo",
+      "times": {
+        "Nishi-Akashi": "06:01",
+        "Shin-Kobe": "06:10",
+        "Shin-Osaka": "06:24",
+        "Kyoto": "06:38",
+        "Nagoya": "07:13",
+        "Shin-Yokohama": "08:33",
+        "Shinagawa": "08:45",
+        "Tokyo": "08:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089451.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 70,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "06:01",
+        "Himeji": "06:21",
+        "Shin-Kobe": "06:37",
+        "Shin-Osaka": "06:51",
+        "Kyoto": "07:06",
+        "Nagoya": "07:41",
+        "Shin-Yokohama": "08:57",
+        "Shinagawa": "09:09",
+        "Tokyo": "09:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089431.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 300,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:02",
+        "Kyoto": "06:16",
+        "Nagoya": "06:51",
+        "Shin-Yokohama": "08:09",
+        "Shinagawa": "08:20",
+        "Tokyo": "08:26"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 548,
+      "direction": "east",
+      "originStation": "Kyoto",
+      "destination": "Tokyo",
+      "times": {
+        "Kyoto": "06:03",
+        "Nagoya": "06:37",
+        "Shin-Yokohama": "07:55",
+        "Shinagawa": "08:06",
+        "Tokyo": "08:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178161.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 302,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:08",
+        "Kyoto": "06:22",
+        "Nagoya": "06:56",
+        "Shin-Yokohama": "08:16",
+        "Shinagawa": "08:27",
+        "Tokyo": "08:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021641.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 634,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:11",
+        "Kyoto": "06:25",
+        "Maibara": "06:47",
+        "Gifu-Hashima": "07:05",
+        "Nagoya": "07:16",
+        "Hamamatsu": "07:50",
+        "Shizuoka": "08:12",
+        "Shin-Yokohama": "08:51",
+        "Shinagawa": "09:02",
+        "Tokyo": "09:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062341.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 232,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:15",
+        "Kyoto": "06:29",
+        "Nagoya": "07:03",
+        "Shin-Yokohama": "08:21",
+        "Shinagawa": "08:33",
+        "Tokyo": "08:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026451.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 900,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "06:17",
+        "Atami": "06:25",
+        "Odawara": "06:33",
+        "Shin-Yokohama": "06:49",
+        "Shinagawa": "07:00",
+        "Tokyo": "07:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129841.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 72,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "06:18",
+        "Himeji": "06:38",
+        "Shin-Kobe": "06:55",
+        "Shin-Osaka": "07:09",
+        "Kyoto": "07:24",
+        "Nagoya": "07:59",
+        "Shin-Yokohama": "09:18",
+        "Shinagawa": "09:29",
+        "Tokyo": "09:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089411.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 630,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "06:20",
+        "Toyohashi": "06:46",
+        "Hamamatsu": "06:58",
+        "Shizuoka": "07:20",
+        "Shin-Yokohama": "07:57",
+        "Shinagawa": "08:09",
+        "Tokyo": "08:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027191.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 700,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "06:20",
+        "Higashi-Hiroshima": "06:35",
+        "Mihara": "06:46",
+        "Shin-Onomichi": "06:52",
+        "Fukuyama": "07:00",
+        "Shin-Kurashiki": "07:11",
+        "Okayama": "07:40",
+        "Aioi": "08:00",
+        "Himeji": "08:11",
+        "Nishi-Akashi": "08:24",
+        "Shin-Kobe": "08:34",
+        "Shin-Osaka": "08:48",
+        "Kyoto": "09:07",
+        "Nagoya": "09:43",
+        "Hamamatsu": "10:17",
+        "Shizuoka": "10:41",
+        "Atami": "11:05",
+        "Shin-Yokohama": "11:25",
+        "Shinagawa": "11:36",
+        "Tokyo": "11:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128911.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 908,
+      "direction": "east",
+      "originStation": "Hamamatsu",
+      "destination": "Tokyo",
+      "times": {
+        "Hamamatsu": "06:20",
+        "Kakegawa": "06:31",
+        "Shizuoka": "06:45",
+        "Shin-Fuji": "06:56",
+        "Mishima": "07:06",
+        "Atami": "07:15",
+        "Odawara": "07:24",
+        "Shin-Yokohama": "07:41",
+        "Shinagawa": "07:53",
+        "Tokyo": "08:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129791.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 304,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:21",
+        "Kyoto": "06:35",
+        "Nagoya": "07:10",
+        "Shin-Yokohama": "08:31",
+        "Shinagawa": "08:42",
+        "Tokyo": "08:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021651.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 904,
+      "direction": "east",
+      "originStation": "Shizuoka",
+      "destination": "Tokyo",
+      "times": {
+        "Shizuoka": "06:22",
+        "Shin-Fuji": "06:35",
+        "Mishima": "06:45",
+        "Atami": "06:53",
+        "Odawara": "07:02",
+        "Shin-Yokohama": "07:19",
+        "Shinagawa": "07:30",
+        "Tokyo": "07:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129821.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 76,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "06:26",
+        "Fukuyama": "06:50",
+        "Okayama": "07:06",
+        "Himeji": "07:26",
+        "Shin-Kobe": "07:43",
+        "Shin-Osaka": "07:57",
+        "Kyoto": "08:13",
+        "Nagoya": "08:49",
+        "Shin-Yokohama": "10:07",
+        "Shinagawa": "10:18",
+        "Tokyo": "10:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089361.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 288,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "06:28",
+        "Shin-Yokohama": "07:46",
+        "Shinagawa": "07:57",
+        "Tokyo": "08:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129141.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 800,
+      "direction": "east",
+      "originStation": "Gifu-Hashima",
+      "destination": "Tokyo",
+      "times": {
+        "Gifu-Hashima": "06:30",
+        "Nagoya": "06:42",
+        "Mikawa-Anjo": "07:00",
+        "Toyohashi": "07:15",
+        "Hamamatsu": "07:30",
+        "Kakegawa": "07:45",
+        "Shizuoka": "08:06",
+        "Shin-Fuji": "08:22",
+        "Mishima": "08:36",
+        "Atami": "08:44",
+        "Odawara": "08:56",
+        "Shin-Yokohama": "09:12",
+        "Shinagawa": "09:23",
+        "Tokyo": "09:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178171.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 902,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "06:34",
+        "Atami": "06:42",
+        "Odawara": "06:50",
+        "Shin-Yokohama": "07:06",
+        "Shinagawa": "07:18",
+        "Tokyo": "07:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129851.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 4,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "06:36",
+        "Kokura": "06:52",
+        "Shin-Yamaguchi": "07:11",
+        "Hiroshima": "07:43",
+        "Okayama": "08:20",
+        "Shin-Kobe": "08:52",
+        "Shin-Osaka": "09:06",
+        "Kyoto": "09:21",
+        "Nagoya": "09:57",
+        "Shin-Yokohama": "11:15",
+        "Shinagawa": "11:26",
+        "Tokyo": "11:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023571.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 308,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:39",
+        "Kyoto": "06:54",
+        "Nagoya": "07:29",
+        "Shin-Yokohama": "08:48",
+        "Shinagawa": "09:00",
+        "Tokyo": "09:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021671.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 636,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:42",
+        "Kyoto": "06:57",
+        "Maibara": "07:18",
+        "Gifu-Hashima": "07:33",
+        "Nagoya": "07:44",
+        "Hamamatsu": "08:17",
+        "Shizuoka": "08:41",
+        "Shin-Yokohama": "09:25",
+        "Shinagawa": "09:36",
+        "Tokyo": "09:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062351.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 800,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "06:42",
+        "Mikawa-Anjo": "07:00",
+        "Toyohashi": "07:15",
+        "Hamamatsu": "07:30",
+        "Kakegawa": "07:45",
+        "Shizuoka": "08:06",
+        "Shin-Fuji": "08:22",
+        "Mishima": "08:36",
+        "Atami": "08:44",
+        "Odawara": "08:56",
+        "Shin-Yokohama": "09:12",
+        "Shinagawa": "09:23",
+        "Tokyo": "09:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129921.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 914,
+      "direction": "east",
+      "originStation": "Hamamatsu",
+      "destination": "Tokyo",
+      "times": {
+        "Hamamatsu": "06:43",
+        "Kakegawa": "06:55",
+        "Shizuoka": "07:10",
+        "Shin-Fuji": "07:22",
+        "Mishima": "07:35",
+        "Atami": "07:43",
+        "Odawara": "07:56",
+        "Shin-Yokohama": "08:12",
+        "Shinagawa": "08:23",
+        "Tokyo": "08:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129801.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 632,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "06:45",
+        "Toyohashi": "07:09",
+        "Hamamatsu": "07:23",
+        "Shizuoka": "07:45",
+        "Shin-Yokohama": "08:24",
+        "Shinagawa": "08:35",
+        "Tokyo": "08:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027181.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 78,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "06:45",
+        "Fukuyama": "07:08",
+        "Okayama": "07:25",
+        "Himeji": "07:45",
+        "Shin-Kobe": "08:01",
+        "Shin-Osaka": "08:15",
+        "Kyoto": "08:30",
+        "Nagoya": "09:06",
+        "Shin-Yokohama": "10:27",
+        "Shinagawa": "10:39",
+        "Tokyo": "10:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089371.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 116,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "06:45",
+        "Kokura": "07:01",
+        "Tokuyama": "07:28",
+        "Hiroshima": "07:51",
+        "Okayama": "08:29",
+        "Shin-Kobe": "09:01",
+        "Shin-Osaka": "09:15",
+        "Kyoto": "09:30",
+        "Nagoya": "10:06",
+        "Shin-Yokohama": "11:27",
+        "Shinagawa": "11:39",
+        "Tokyo": "11:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089661.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 310,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:45",
+        "Kyoto": "07:00",
+        "Nagoya": "07:35",
+        "Shin-Yokohama": "08:55",
+        "Shinagawa": "09:06",
+        "Tokyo": "09:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021681.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 918,
+      "direction": "east",
+      "originStation": "Hamamatsu",
+      "destination": "Tokyo",
+      "times": {
+        "Hamamatsu": "06:55",
+        "Kakegawa": "07:15",
+        "Shizuoka": "07:33",
+        "Shin-Fuji": "07:47",
+        "Mishima": "08:00",
+        "Atami": "08:08",
+        "Odawara": "08:20",
+        "Shin-Yokohama": "08:36",
+        "Shinagawa": "08:47",
+        "Tokyo": "08:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129811.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 906,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "06:56",
+        "Atami": "07:05",
+        "Odawara": "07:13",
+        "Shin-Yokohama": "07:30",
+        "Shinagawa": "07:41",
+        "Tokyo": "07:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129861.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 234,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "06:57",
+        "Kyoto": "07:12",
+        "Nagoya": "07:48",
+        "Shin-Yokohama": "09:07",
+        "Shinagawa": "09:18",
+        "Tokyo": "09:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/033631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 312,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:00",
+        "Kyoto": "07:16",
+        "Nagoya": "07:51",
+        "Shin-Yokohama": "09:09",
+        "Shinagawa": "09:21",
+        "Tokyo": "09:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021691.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 912,
+      "direction": "east",
+      "originStation": "Shizuoka",
+      "destination": "Tokyo",
+      "times": {
+        "Shizuoka": "07:02",
+        "Shin-Fuji": "07:13",
+        "Mishima": "07:24",
+        "Atami": "07:32",
+        "Odawara": "07:44",
+        "Shin-Yokohama": "08:00",
+        "Shinagawa": "08:11",
+        "Tokyo": "08:17"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129831.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 314,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:06",
+        "Kyoto": "07:21",
+        "Nagoya": "07:57",
+        "Shin-Yokohama": "09:15",
+        "Shinagawa": "09:26",
+        "Tokyo": "09:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021701.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 910,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "07:15",
+        "Atami": "07:23",
+        "Odawara": "07:34",
+        "Shin-Yokohama": "07:50",
+        "Shinagawa": "08:02",
+        "Tokyo": "08:08"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129871.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 6,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "07:15",
+        "Kokura": "07:31",
+        "Tokuyama": "07:59",
+        "Hiroshima": "08:22",
+        "Okayama": "08:58",
+        "Shin-Kobe": "09:30",
+        "Shin-Osaka": "09:45",
+        "Kyoto": "10:01",
+        "Nagoya": "10:36",
+        "Shin-Yokohama": "11:57",
+        "Shinagawa": "12:09",
+        "Tokyo": "12:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 236,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:15",
+        "Kyoto": "07:30",
+        "Nagoya": "08:06",
+        "Shin-Yokohama": "09:27",
+        "Shinagawa": "09:39",
+        "Tokyo": "09:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062521.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 638,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:18",
+        "Kyoto": "07:33",
+        "Maibara": "07:57",
+        "Gifu-Hashima": "08:15",
+        "Nagoya": "08:31",
+        "Toyohashi": "08:51",
+        "Shin-Yokohama": "09:55",
+        "Shinagawa": "10:06",
+        "Tokyo": "10:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027171.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 80,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "07:18",
+        "Fukuyama": "07:41",
+        "Okayama": "07:58",
+        "Shin-Kobe": "08:30",
+        "Shin-Osaka": "08:45",
+        "Kyoto": "09:01",
+        "Nagoya": "09:36",
+        "Shin-Yokohama": "10:58",
+        "Shinagawa": "11:09",
+        "Tokyo": "11:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089381.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 316,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:21",
+        "Kyoto": "07:36",
+        "Nagoya": "08:12",
+        "Shin-Yokohama": "09:33",
+        "Shinagawa": "09:44",
+        "Tokyo": "09:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021711.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 82,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "07:30",
+        "Okayama": "08:07",
+        "Himeji": "08:26",
+        "Shin-Kobe": "08:43",
+        "Shin-Osaka": "08:57",
+        "Kyoto": "09:13",
+        "Nagoya": "09:49",
+        "Shin-Yokohama": "11:07",
+        "Shinagawa": "11:18",
+        "Tokyo": "11:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089391.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 640,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:36",
+        "Kyoto": "07:51",
+        "Maibara": "08:12",
+        "Gifu-Hashima": "08:32",
+        "Nagoya": "08:43",
+        "Hamamatsu": "09:17",
+        "Shizuoka": "09:41",
+        "Mishima": "09:58",
+        "Shin-Yokohama": "10:25",
+        "Shinagawa": "10:36",
+        "Tokyo": "10:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062371.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 8,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "07:36",
+        "Kokura": "07:52",
+        "Shin-Yamaguchi": "08:11",
+        "Hiroshima": "08:43",
+        "Okayama": "09:20",
+        "Shin-Kobe": "09:52",
+        "Shin-Osaka": "10:06",
+        "Kyoto": "10:21",
+        "Nagoya": "10:57",
+        "Shin-Yokohama": "12:15",
+        "Shinagawa": "12:26",
+        "Tokyo": "12:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019041.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 802,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "07:38",
+        "Mikawa-Anjo": "07:53",
+        "Toyohashi": "08:10",
+        "Hamamatsu": "08:26",
+        "Kakegawa": "08:38",
+        "Shizuoka": "08:57",
+        "Shin-Fuji": "09:10",
+        "Mishima": "09:24",
+        "Atami": "09:32",
+        "Odawara": "09:44",
+        "Shin-Yokohama": "10:00",
+        "Shinagawa": "10:12",
+        "Tokyo": "10:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129641.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 238,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:39",
+        "Kyoto": "07:54",
+        "Nagoya": "08:29",
+        "Shin-Yokohama": "09:48",
+        "Shinagawa": "09:59",
+        "Tokyo": "10:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/095/098141.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 916,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "07:45",
+        "Atami": "07:53",
+        "Odawara": "08:03",
+        "Shin-Yokohama": "08:18",
+        "Shinagawa": "08:30",
+        "Tokyo": "08:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129881.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 118,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "07:45",
+        "Kokura": "08:01",
+        "Shin-Yamaguchi": "08:21",
+        "Hiroshima": "08:53",
+        "Okayama": "09:29",
+        "Shin-Kobe": "10:01",
+        "Shin-Osaka": "10:15",
+        "Kyoto": "10:30",
+        "Nagoya": "11:06",
+        "Shin-Yokohama": "12:27",
+        "Shinagawa": "12:39",
+        "Tokyo": "12:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178081.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 240,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:45",
+        "Kyoto": "08:01",
+        "Nagoya": "08:36",
+        "Shin-Yokohama": "09:57",
+        "Shinagawa": "10:09",
+        "Tokyo": "10:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026441.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 322,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:51",
+        "Kyoto": "08:06",
+        "Nagoya": "08:41",
+        "Shin-Yokohama": "10:03",
+        "Shinagawa": "10:14",
+        "Tokyo": "10:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021741.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 808,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "07:54",
+        "Kyoto": "08:10",
+        "Maibara": "08:33",
+        "Gifu-Hashima": "08:51",
+        "Nagoya": "09:08",
+        "Mikawa-Anjo": "09:24",
+        "Toyohashi": "09:41",
+        "Hamamatsu": "09:58",
+        "Kakegawa": "10:10",
+        "Shizuoka": "10:25",
+        "Shin-Fuji": "10:41",
+        "Mishima": "10:54",
+        "Atami": "11:02",
+        "Odawara": "11:14",
+        "Shin-Yokohama": "11:30",
+        "Shinagawa": "11:41",
+        "Tokyo": "11:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129521.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 84,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "07:57",
+        "Okayama": "08:33",
+        "Himeji": "08:53",
+        "Shin-Kobe": "09:10",
+        "Shin-Osaka": "09:24",
+        "Kyoto": "09:39",
+        "Nagoya": "10:14",
+        "Shin-Yokohama": "11:35",
+        "Shinagawa": "11:47",
+        "Tokyo": "11:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111181.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 10,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "08:00",
+        "Kokura": "08:16",
+        "Tokuyama": "08:44",
+        "Hiroshima": "09:07",
+        "Okayama": "09:43",
+        "Shin-Kobe": "10:16",
+        "Shin-Osaka": "10:30",
+        "Kyoto": "10:45",
+        "Nagoya": "11:20",
+        "Shin-Yokohama": "12:38",
+        "Shinagawa": "12:50",
+        "Tokyo": "12:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/000601.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 86,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "08:06",
+        "Fukuyama": "08:29",
+        "Okayama": "08:46",
+        "Shin-Kobe": "09:19",
+        "Shin-Osaka": "09:33",
+        "Kyoto": "09:48",
+        "Nagoya": "10:23",
+        "Shin-Yokohama": "11:46",
+        "Shinagawa": "11:57",
+        "Tokyo": "12:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089341.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 122,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "08:06",
+        "Kokura": "08:23",
+        "Hiroshima": "09:12",
+        "Fukuyama": "09:35",
+        "Okayama": "09:52",
+        "Shin-Kobe": "10:24",
+        "Shin-Osaka": "10:39",
+        "Kyoto": "10:54",
+        "Nagoya": "11:29",
+        "Shin-Yokohama": "12:48",
+        "Shinagawa": "12:59",
+        "Tokyo": "13:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178091.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 242,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:06",
+        "Kyoto": "08:21",
+        "Nagoya": "08:57",
+        "Shin-Yokohama": "10:15",
+        "Shinagawa": "10:26",
+        "Tokyo": "10:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026431.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 804,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "08:08",
+        "Mikawa-Anjo": "08:24",
+        "Toyohashi": "08:41",
+        "Hamamatsu": "08:55",
+        "Kakegawa": "09:10",
+        "Shizuoka": "09:25",
+        "Shin-Fuji": "09:41",
+        "Mishima": "09:54",
+        "Atami": "10:02",
+        "Odawara": "10:14",
+        "Shin-Yokohama": "10:30",
+        "Shinagawa": "10:41",
+        "Tokyo": "10:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129651.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 920,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "08:09",
+        "Atami": "08:17",
+        "Odawara": "08:29",
+        "Shin-Yokohama": "08:45",
+        "Shinagawa": "08:56",
+        "Tokyo": "09:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129891.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 326,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:09",
+        "Kyoto": "08:24",
+        "Nagoya": "08:59",
+        "Shin-Yokohama": "10:17",
+        "Shinagawa": "10:29",
+        "Tokyo": "10:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027692.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 12,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "08:15",
+        "Kokura": "08:31",
+        "Hiroshima": "09:18",
+        "Fukuyama": "09:41",
+        "Okayama": "09:58",
+        "Shin-Kobe": "10:30",
+        "Shin-Osaka": "10:45",
+        "Kyoto": "11:01",
+        "Nagoya": "11:36",
+        "Shin-Yokohama": "12:58",
+        "Shinagawa": "13:09",
+        "Tokyo": "13:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/002201.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 642,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:19",
+        "Kyoto": "08:33",
+        "Maibara": "08:57",
+        "Gifu-Hashima": "09:15",
+        "Nagoya": "09:31",
+        "Odawara": "10:39",
+        "Shin-Yokohama": "10:54",
+        "Shinagawa": "11:06",
+        "Tokyo": "11:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027161.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 328,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:22",
+        "Kyoto": "08:36",
+        "Nagoya": "09:12",
+        "Shin-Yokohama": "10:33",
+        "Shinagawa": "10:44",
+        "Tokyo": "10:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027681.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 330,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:24",
+        "Kyoto": "08:39",
+        "Nagoya": "09:14",
+        "Shin-Yokohama": "10:35",
+        "Shinagawa": "10:47",
+        "Tokyo": "10:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027671.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 332,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:33",
+        "Kyoto": "08:48",
+        "Nagoya": "09:23",
+        "Shin-Yokohama": "10:46",
+        "Shinagawa": "10:57",
+        "Tokyo": "11:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027661.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 14,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "08:36",
+        "Kokura": "08:52",
+        "Shin-Yamaguchi": "09:11",
+        "Hiroshima": "09:43",
+        "Okayama": "10:20",
+        "Shin-Kobe": "10:52",
+        "Shin-Osaka": "11:06",
+        "Kyoto": "11:21",
+        "Nagoya": "11:57",
+        "Shin-Yokohama": "13:15",
+        "Shinagawa": "13:26",
+        "Tokyo": "13:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/004011.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 806,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "08:38",
+        "Mikawa-Anjo": "08:52",
+        "Toyohashi": "09:09",
+        "Hamamatsu": "09:25",
+        "Kakegawa": "09:38",
+        "Shizuoka": "09:57",
+        "Shin-Fuji": "10:13",
+        "Mishima": "10:27",
+        "Atami": "10:35",
+        "Odawara": "10:45",
+        "Shin-Yokohama": "11:00",
+        "Shinagawa": "11:12",
+        "Tokyo": "11:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129661.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 244,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:39",
+        "Kyoto": "08:54",
+        "Nagoya": "09:29",
+        "Shin-Yokohama": "10:48",
+        "Shinagawa": "10:59",
+        "Tokyo": "11:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129101.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 702,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "08:42",
+        "Aioi": "09:00",
+        "Himeji": "09:11",
+        "Nishi-Akashi": "09:24",
+        "Shin-Kobe": "09:34",
+        "Shin-Osaka": "09:48",
+        "Kyoto": "10:07",
+        "Nagoya": "10:43",
+        "Hamamatsu": "11:17",
+        "Shizuoka": "11:41",
+        "Mishima": "11:58",
+        "Shin-Yokohama": "12:25",
+        "Shinagawa": "12:36",
+        "Tokyo": "12:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128921.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 334,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:51",
+        "Kyoto": "09:06",
+        "Nagoya": "09:41",
+        "Shin-Yokohama": "11:03",
+        "Shinagawa": "11:14",
+        "Tokyo": "11:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027641.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 812,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "08:54",
+        "Kyoto": "09:10",
+        "Maibara": "09:33",
+        "Gifu-Hashima": "09:51",
+        "Nagoya": "10:08",
+        "Mikawa-Anjo": "10:24",
+        "Toyohashi": "10:41",
+        "Hamamatsu": "10:55",
+        "Kakegawa": "11:10",
+        "Shizuoka": "11:25",
+        "Shin-Fuji": "11:41",
+        "Mishima": "11:54",
+        "Atami": "12:02",
+        "Odawara": "12:14",
+        "Shin-Yokohama": "12:30",
+        "Shinagawa": "12:41",
+        "Tokyo": "12:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129621.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 922,
+      "direction": "east",
+      "originStation": "Mishima",
+      "destination": "Tokyo",
+      "times": {
+        "Mishima": "08:54",
+        "Atami": "09:02",
+        "Odawara": "09:14",
+        "Shin-Yokohama": "09:30",
+        "Shinagawa": "09:41",
+        "Tokyo": "09:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129901.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 128,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "09:00",
+        "Kokura": "09:16",
+        "Tokuyama": "09:44",
+        "Hiroshima": "10:08",
+        "Okayama": "10:46",
+        "Shin-Kobe": "11:19",
+        "Shin-Osaka": "11:33",
+        "Kyoto": "11:48",
+        "Nagoya": "12:23",
+        "Shin-Yokohama": "13:46",
+        "Shinagawa": "13:57",
+        "Tokyo": "14:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089671.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 336,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:00",
+        "Kyoto": "09:16",
+        "Nagoya": "09:51",
+        "Shin-Yokohama": "11:09",
+        "Shinagawa": "11:21",
+        "Tokyo": "11:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 88,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "09:06",
+        "Himeji": "09:26",
+        "Shin-Kobe": "09:43",
+        "Shin-Osaka": "09:57",
+        "Kyoto": "10:13",
+        "Nagoya": "10:49",
+        "Shin-Yokohama": "12:07",
+        "Shinagawa": "12:18",
+        "Tokyo": "12:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089421.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 130,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "09:06",
+        "Kokura": "09:23",
+        "Hiroshima": "10:12",
+        "Fukuyama": "10:35",
+        "Okayama": "10:52",
+        "Shin-Kobe": "11:24",
+        "Shin-Osaka": "11:39",
+        "Kyoto": "11:54",
+        "Nagoya": "12:29",
+        "Shin-Yokohama": "13:48",
+        "Shinagawa": "13:59",
+        "Tokyo": "14:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089681.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 338,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:09",
+        "Kyoto": "09:24",
+        "Nagoya": "09:59",
+        "Shin-Yokohama": "11:17",
+        "Shinagawa": "11:29",
+        "Tokyo": "11:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 122,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "09:12",
+        "Fukuyama": "09:35",
+        "Okayama": "09:52",
+        "Shin-Kobe": "10:24",
+        "Shin-Osaka": "10:39",
+        "Kyoto": "10:54",
+        "Nagoya": "11:29",
+        "Shin-Yokohama": "12:48",
+        "Shinagawa": "12:59",
+        "Tokyo": "13:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089751.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 16,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "09:15",
+        "Kokura": "09:31",
+        "Hiroshima": "10:18",
+        "Fukuyama": "10:41",
+        "Okayama": "10:58",
+        "Shin-Kobe": "11:30",
+        "Shin-Osaka": "11:45",
+        "Kyoto": "12:01",
+        "Nagoya": "12:36",
+        "Shin-Yokohama": "13:57",
+        "Shinagawa": "14:09",
+        "Tokyo": "14:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021341.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 246,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:15",
+        "Kyoto": "09:30",
+        "Nagoya": "10:06",
+        "Shin-Yokohama": "11:27",
+        "Shinagawa": "11:39",
+        "Tokyo": "11:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026421.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 644,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:18",
+        "Kyoto": "09:33",
+        "Maibara": "09:57",
+        "Gifu-Hashima": "10:15",
+        "Nagoya": "10:31",
+        "Toyohashi": "10:51",
+        "Shin-Yokohama": "11:55",
+        "Shinagawa": "12:06",
+        "Tokyo": "12:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062431.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 340,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:21",
+        "Kyoto": "09:36",
+        "Nagoya": "10:12",
+        "Shin-Yokohama": "11:33",
+        "Shinagawa": "11:44",
+        "Tokyo": "11:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027612.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 132,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "09:27",
+        "Kokura": "09:43",
+        "Hiroshima": "10:29",
+        "Okayama": "11:05",
+        "Himeji": "11:26",
+        "Shin-Kobe": "11:42",
+        "Shin-Osaka": "11:57",
+        "Kyoto": "12:13",
+        "Nagoya": "12:49",
+        "Shin-Yokohama": "14:07",
+        "Shinagawa": "14:18",
+        "Tokyo": "14:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/075/075871.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 124,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "09:29",
+        "Okayama": "10:05",
+        "Himeji": "10:26",
+        "Shin-Kobe": "10:42",
+        "Shin-Osaka": "10:57",
+        "Kyoto": "11:13",
+        "Nagoya": "11:49",
+        "Shin-Yokohama": "13:07",
+        "Shinagawa": "13:18",
+        "Tokyo": "13:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178021.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 704,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "09:36",
+        "Aioi": "10:00",
+        "Himeji": "10:11",
+        "Nishi-Akashi": "10:24",
+        "Shin-Kobe": "10:34",
+        "Shin-Osaka": "10:48",
+        "Kyoto": "11:07",
+        "Nagoya": "11:43",
+        "Hamamatsu": "12:17",
+        "Shizuoka": "12:41",
+        "Atami": "13:05",
+        "Shin-Yokohama": "13:25",
+        "Shinagawa": "13:36",
+        "Tokyo": "13:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128931.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 18,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "09:36",
+        "Kokura": "09:52",
+        "Shin-Yamaguchi": "10:11",
+        "Hiroshima": "10:43",
+        "Okayama": "11:20",
+        "Shin-Kobe": "11:52",
+        "Shin-Osaka": "12:06",
+        "Kyoto": "12:21",
+        "Nagoya": "12:57",
+        "Shin-Yokohama": "14:15",
+        "Shinagawa": "14:26",
+        "Tokyo": "14:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/007681.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 810,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "09:38",
+        "Mikawa-Anjo": "09:52",
+        "Toyohashi": "10:09",
+        "Hamamatsu": "10:25",
+        "Kakegawa": "10:38",
+        "Shizuoka": "10:57",
+        "Shin-Fuji": "11:10",
+        "Mishima": "11:24",
+        "Atami": "11:32",
+        "Odawara": "11:44",
+        "Shin-Yokohama": "12:00",
+        "Shinagawa": "12:12",
+        "Tokyo": "12:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129671.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 344,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:39",
+        "Kyoto": "09:54",
+        "Nagoya": "10:29",
+        "Shin-Yokohama": "11:48",
+        "Shinagawa": "11:59",
+        "Tokyo": "12:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 346,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:51",
+        "Kyoto": "10:06",
+        "Nagoya": "10:41",
+        "Shin-Yokohama": "12:03",
+        "Shinagawa": "12:14",
+        "Tokyo": "12:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027571.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 816,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "09:54",
+        "Kyoto": "10:10",
+        "Maibara": "10:33",
+        "Gifu-Hashima": "10:51",
+        "Nagoya": "11:08",
+        "Mikawa-Anjo": "11:24",
+        "Toyohashi": "11:41",
+        "Hamamatsu": "11:58",
+        "Kakegawa": "12:10",
+        "Shizuoka": "12:25",
+        "Shin-Fuji": "12:41",
+        "Mishima": "12:54",
+        "Atami": "13:02",
+        "Odawara": "13:14",
+        "Shin-Yokohama": "13:30",
+        "Shinagawa": "13:41",
+        "Tokyo": "13:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129531.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 348,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:00",
+        "Kyoto": "10:16",
+        "Nagoya": "10:51",
+        "Shin-Yokohama": "12:09",
+        "Shinagawa": "12:21",
+        "Tokyo": "12:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027561.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 90,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "10:03",
+        "Okayama": "10:40",
+        "Himeji": "10:59",
+        "Shin-Kobe": "11:16",
+        "Shin-Osaka": "11:30",
+        "Kyoto": "11:45",
+        "Nagoya": "12:20",
+        "Shin-Yokohama": "13:38",
+        "Shinagawa": "13:50",
+        "Tokyo": "13:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062361.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 138,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "10:06",
+        "Kokura": "10:23",
+        "Hiroshima": "11:12",
+        "Fukuyama": "11:35",
+        "Okayama": "11:52",
+        "Shin-Kobe": "12:24",
+        "Shin-Osaka": "12:39",
+        "Kyoto": "12:54",
+        "Nagoya": "13:29",
+        "Shin-Yokohama": "14:48",
+        "Shinagawa": "14:59",
+        "Tokyo": "15:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089701.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 130,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "10:12",
+        "Fukuyama": "10:35",
+        "Okayama": "10:52",
+        "Shin-Kobe": "11:24",
+        "Shin-Osaka": "11:39",
+        "Kyoto": "11:54",
+        "Nagoya": "12:29",
+        "Shin-Yokohama": "13:48",
+        "Shinagawa": "13:59",
+        "Tokyo": "14:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062941.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 20,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "10:15",
+        "Kokura": "10:31",
+        "Hiroshima": "11:18",
+        "Fukuyama": "11:41",
+        "Okayama": "11:58",
+        "Shin-Kobe": "12:30",
+        "Shin-Osaka": "12:45",
+        "Kyoto": "13:01",
+        "Nagoya": "13:36",
+        "Shin-Yokohama": "14:58",
+        "Shinagawa": "15:09",
+        "Tokyo": "15:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 248,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:15",
+        "Kyoto": "10:30",
+        "Nagoya": "11:06",
+        "Shin-Yokohama": "12:27",
+        "Shinagawa": "12:39",
+        "Tokyo": "12:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089461.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 646,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:18",
+        "Kyoto": "10:33",
+        "Maibara": "10:57",
+        "Gifu-Hashima": "11:15",
+        "Nagoya": "11:31",
+        "Odawara": "12:39",
+        "Shin-Yokohama": "12:54",
+        "Shinagawa": "13:06",
+        "Tokyo": "13:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027151.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 352,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:21",
+        "Kyoto": "10:36",
+        "Nagoya": "11:12",
+        "Shin-Yokohama": "12:33",
+        "Shinagawa": "12:44",
+        "Tokyo": "12:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027541.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 706,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "10:36",
+        "Aioi": "11:00",
+        "Himeji": "11:11",
+        "Nishi-Akashi": "11:24",
+        "Shin-Kobe": "11:34",
+        "Shin-Osaka": "11:48",
+        "Kyoto": "12:07",
+        "Nagoya": "12:43",
+        "Hamamatsu": "13:17",
+        "Shizuoka": "13:41",
+        "Mishima": "13:58",
+        "Shin-Yokohama": "14:25",
+        "Shinagawa": "14:36",
+        "Tokyo": "14:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128941.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 22,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "10:36",
+        "Kokura": "10:52",
+        "Shin-Yamaguchi": "11:11",
+        "Hiroshima": "11:43",
+        "Okayama": "12:20",
+        "Shin-Kobe": "12:52",
+        "Shin-Osaka": "13:06",
+        "Kyoto": "13:21",
+        "Nagoya": "13:57",
+        "Shin-Yokohama": "15:15",
+        "Shinagawa": "15:26",
+        "Tokyo": "15:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008921.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 814,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "10:38",
+        "Mikawa-Anjo": "10:52",
+        "Toyohashi": "11:09",
+        "Hamamatsu": "11:25",
+        "Kakegawa": "11:38",
+        "Shizuoka": "11:57",
+        "Shin-Fuji": "12:13",
+        "Mishima": "12:27",
+        "Atami": "12:35",
+        "Odawara": "12:45",
+        "Shin-Yokohama": "13:00",
+        "Shinagawa": "13:12",
+        "Tokyo": "13:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129681.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 358,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:39",
+        "Kyoto": "10:54",
+        "Nagoya": "11:29",
+        "Shin-Yokohama": "12:48",
+        "Shinagawa": "12:59",
+        "Tokyo": "13:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 360,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:51",
+        "Kyoto": "11:06",
+        "Nagoya": "11:41",
+        "Shin-Yokohama": "13:03",
+        "Shinagawa": "13:14",
+        "Tokyo": "13:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027491.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 820,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:54",
+        "Kyoto": "11:10",
+        "Maibara": "11:33",
+        "Gifu-Hashima": "11:51",
+        "Nagoya": "12:08",
+        "Mikawa-Anjo": "12:24",
+        "Toyohashi": "12:41",
+        "Hamamatsu": "12:55",
+        "Kakegawa": "13:10",
+        "Shizuoka": "13:25",
+        "Shin-Fuji": "13:41",
+        "Mishima": "13:54",
+        "Atami": "14:02",
+        "Odawara": "14:14",
+        "Shin-Yokohama": "14:30",
+        "Shinagawa": "14:41",
+        "Tokyo": "14:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129541.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 362,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "10:57",
+        "Kyoto": "11:13",
+        "Nagoya": "11:49",
+        "Shin-Yokohama": "13:07",
+        "Shinagawa": "13:18",
+        "Tokyo": "13:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027481.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 92,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "11:03",
+        "Okayama": "11:40",
+        "Himeji": "11:59",
+        "Shin-Kobe": "12:16",
+        "Shin-Osaka": "12:30",
+        "Kyoto": "12:45",
+        "Nagoya": "13:20",
+        "Shin-Yokohama": "14:38",
+        "Shinagawa": "14:50",
+        "Tokyo": "14:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062381.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 146,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "11:06",
+        "Kokura": "11:23",
+        "Hiroshima": "12:12",
+        "Fukuyama": "12:35",
+        "Okayama": "12:52",
+        "Shin-Kobe": "13:24",
+        "Shin-Osaka": "13:39",
+        "Kyoto": "13:54",
+        "Nagoya": "14:29",
+        "Shin-Yokohama": "15:48",
+        "Shinagawa": "15:59",
+        "Tokyo": "16:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062991.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 24,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "11:15",
+        "Kokura": "11:31",
+        "Hiroshima": "12:18",
+        "Fukuyama": "12:41",
+        "Okayama": "12:58",
+        "Shin-Kobe": "13:30",
+        "Shin-Osaka": "13:45",
+        "Kyoto": "14:01",
+        "Nagoya": "14:36",
+        "Shin-Yokohama": "15:57",
+        "Shinagawa": "16:09",
+        "Tokyo": "16:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023611.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 250,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:15",
+        "Kyoto": "11:30",
+        "Nagoya": "12:06",
+        "Shin-Yokohama": "13:27",
+        "Shinagawa": "13:39",
+        "Tokyo": "13:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/075/075851.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 648,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:18",
+        "Kyoto": "11:33",
+        "Maibara": "11:57",
+        "Gifu-Hashima": "12:15",
+        "Nagoya": "12:31",
+        "Toyohashi": "12:51",
+        "Shin-Yokohama": "13:55",
+        "Shinagawa": "14:06",
+        "Tokyo": "14:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062451.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 370,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:24",
+        "Kyoto": "11:39",
+        "Nagoya": "12:14",
+        "Shin-Yokohama": "13:35",
+        "Shinagawa": "13:47",
+        "Tokyo": "13:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027411.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 708,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "11:36",
+        "Aioi": "12:00",
+        "Himeji": "12:11",
+        "Nishi-Akashi": "12:24",
+        "Shin-Kobe": "12:34",
+        "Shin-Osaka": "12:48",
+        "Kyoto": "13:07",
+        "Nagoya": "13:43",
+        "Hamamatsu": "14:17",
+        "Shizuoka": "14:41",
+        "Shin-Yokohama": "15:25",
+        "Shinagawa": "15:36",
+        "Tokyo": "15:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128951.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 26,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "11:36",
+        "Kokura": "11:52",
+        "Shin-Yamaguchi": "12:11",
+        "Hiroshima": "12:43",
+        "Okayama": "13:20",
+        "Shin-Kobe": "13:52",
+        "Shin-Osaka": "14:06",
+        "Kyoto": "14:21",
+        "Nagoya": "14:57",
+        "Shin-Yokohama": "16:15",
+        "Shinagawa": "16:26",
+        "Tokyo": "16:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021351.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 818,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "11:38",
+        "Mikawa-Anjo": "11:52",
+        "Toyohashi": "12:09",
+        "Hamamatsu": "12:25",
+        "Kakegawa": "12:38",
+        "Shizuoka": "12:57",
+        "Shin-Fuji": "13:10",
+        "Mishima": "13:24",
+        "Atami": "13:32",
+        "Odawara": "13:44",
+        "Shin-Yokohama": "14:00",
+        "Shinagawa": "14:12",
+        "Tokyo": "14:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129691.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 374,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:39",
+        "Kyoto": "11:54",
+        "Nagoya": "12:29",
+        "Shin-Yokohama": "13:48",
+        "Shinagawa": "13:59",
+        "Tokyo": "14:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027401.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 150,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "11:42",
+        "Kokura": "11:58",
+        "Tokuyama": "12:27",
+        "Hiroshima": "12:49",
+        "Okayama": "13:28",
+        "Shin-Kobe": "14:01",
+        "Shin-Osaka": "14:15",
+        "Kyoto": "14:30",
+        "Nagoya": "15:06",
+        "Shin-Yokohama": "16:27",
+        "Shinagawa": "16:39",
+        "Tokyo": "16:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063011.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 376,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:51",
+        "Kyoto": "12:06",
+        "Nagoya": "12:41",
+        "Shin-Yokohama": "14:03",
+        "Shinagawa": "14:14",
+        "Tokyo": "14:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027381.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 824,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:54",
+        "Kyoto": "12:10",
+        "Maibara": "12:33",
+        "Gifu-Hashima": "12:51",
+        "Nagoya": "13:08",
+        "Mikawa-Anjo": "13:24",
+        "Toyohashi": "13:41",
+        "Hamamatsu": "13:58",
+        "Kakegawa": "14:10",
+        "Shizuoka": "14:25",
+        "Shin-Fuji": "14:41",
+        "Mishima": "14:54",
+        "Atami": "15:02",
+        "Odawara": "15:14",
+        "Shin-Yokohama": "15:30",
+        "Shinagawa": "15:41",
+        "Tokyo": "15:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129551.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 378,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "11:57",
+        "Kyoto": "12:13",
+        "Nagoya": "12:49",
+        "Shin-Yokohama": "14:07",
+        "Shinagawa": "14:18",
+        "Tokyo": "14:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027372.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 94,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "12:03",
+        "Okayama": "12:40",
+        "Himeji": "12:59",
+        "Shin-Kobe": "13:16",
+        "Shin-Osaka": "13:30",
+        "Kyoto": "13:45",
+        "Nagoya": "14:20",
+        "Shin-Yokohama": "15:38",
+        "Shinagawa": "15:50",
+        "Tokyo": "15:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062391.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 154,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "12:06",
+        "Kokura": "12:23",
+        "Hiroshima": "13:12",
+        "Fukuyama": "13:35",
+        "Okayama": "13:52",
+        "Shin-Kobe": "14:24",
+        "Shin-Osaka": "14:39",
+        "Kyoto": "14:54",
+        "Nagoya": "15:29",
+        "Shin-Yokohama": "16:49",
+        "Shinagawa": "17:00",
+        "Tokyo": "17:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063021.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 146,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "12:12",
+        "Fukuyama": "12:35",
+        "Okayama": "12:52",
+        "Shin-Kobe": "13:24",
+        "Shin-Osaka": "13:39",
+        "Kyoto": "13:54",
+        "Nagoya": "14:29",
+        "Shin-Yokohama": "15:48",
+        "Shinagawa": "15:59",
+        "Tokyo": "16:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062971.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 28,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "12:15",
+        "Kokura": "12:31",
+        "Hiroshima": "13:18",
+        "Fukuyama": "13:41",
+        "Okayama": "13:58",
+        "Shin-Kobe": "14:30",
+        "Shin-Osaka": "14:45",
+        "Kyoto": "15:01",
+        "Nagoya": "15:36",
+        "Shin-Yokohama": "16:57",
+        "Shinagawa": "17:09",
+        "Tokyo": "17:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 252,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:15",
+        "Kyoto": "12:30",
+        "Nagoya": "13:06",
+        "Shin-Yokohama": "14:27",
+        "Shinagawa": "14:39",
+        "Tokyo": "14:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/033641.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 650,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:18",
+        "Kyoto": "12:33",
+        "Maibara": "12:57",
+        "Gifu-Hashima": "13:15",
+        "Nagoya": "13:31",
+        "Odawara": "14:39",
+        "Shin-Yokohama": "14:54",
+        "Shinagawa": "15:06",
+        "Tokyo": "15:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027141.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 386,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:24",
+        "Kyoto": "12:39",
+        "Nagoya": "13:14",
+        "Shin-Yokohama": "14:35",
+        "Shinagawa": "14:47",
+        "Tokyo": "14:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027331.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 710,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "12:36",
+        "Aioi": "13:00",
+        "Himeji": "13:11",
+        "Nishi-Akashi": "13:24",
+        "Shin-Kobe": "13:34",
+        "Shin-Osaka": "13:48",
+        "Kyoto": "14:07",
+        "Nagoya": "14:43",
+        "Hamamatsu": "15:17",
+        "Shizuoka": "15:41",
+        "Mishima": "15:58",
+        "Shin-Yokohama": "16:25",
+        "Shinagawa": "16:36",
+        "Tokyo": "16:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128961.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 30,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "12:36",
+        "Kokura": "12:52",
+        "Shin-Yamaguchi": "13:11",
+        "Hiroshima": "13:43",
+        "Okayama": "14:20",
+        "Shin-Kobe": "14:52",
+        "Shin-Osaka": "15:06",
+        "Kyoto": "15:22",
+        "Nagoya": "15:57",
+        "Shin-Yokohama": "17:15",
+        "Shinagawa": "17:26",
+        "Tokyo": "17:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/010/010131.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 822,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "12:38",
+        "Mikawa-Anjo": "12:52",
+        "Toyohashi": "13:09",
+        "Hamamatsu": "13:25",
+        "Kakegawa": "13:38",
+        "Shizuoka": "13:57",
+        "Shin-Fuji": "14:13",
+        "Mishima": "14:27",
+        "Atami": "14:35",
+        "Odawara": "14:45",
+        "Shin-Yokohama": "15:00",
+        "Shinagawa": "15:12",
+        "Tokyo": "15:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129701.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 390,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:39",
+        "Kyoto": "12:54",
+        "Nagoya": "13:29",
+        "Shin-Yokohama": "14:48",
+        "Shinagawa": "14:59",
+        "Tokyo": "15:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027321.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 158,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "12:42",
+        "Kokura": "12:58",
+        "Tokuyama": "13:27",
+        "Hiroshima": "13:49",
+        "Okayama": "14:28",
+        "Shin-Kobe": "15:01",
+        "Shin-Osaka": "15:15",
+        "Kyoto": "15:30",
+        "Nagoya": "16:06",
+        "Shin-Yokohama": "17:27",
+        "Shinagawa": "17:39",
+        "Tokyo": "17:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063031.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 392,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:51",
+        "Kyoto": "13:06",
+        "Nagoya": "13:41",
+        "Shin-Yokohama": "15:03",
+        "Shinagawa": "15:14",
+        "Tokyo": "15:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027311.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 828,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:54",
+        "Kyoto": "13:10",
+        "Maibara": "13:33",
+        "Gifu-Hashima": "13:51",
+        "Nagoya": "14:08",
+        "Mikawa-Anjo": "14:24",
+        "Toyohashi": "14:41",
+        "Hamamatsu": "14:55",
+        "Kakegawa": "15:10",
+        "Shizuoka": "15:25",
+        "Shin-Fuji": "15:41",
+        "Mishima": "15:54",
+        "Atami": "16:02",
+        "Odawara": "16:14",
+        "Shin-Yokohama": "16:30",
+        "Shinagawa": "16:41",
+        "Tokyo": "16:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129561.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 394,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "12:57",
+        "Kyoto": "13:13",
+        "Nagoya": "13:49",
+        "Shin-Yokohama": "15:07",
+        "Shinagawa": "15:18",
+        "Tokyo": "15:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027301.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 96,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "13:03",
+        "Okayama": "13:40",
+        "Himeji": "13:59",
+        "Shin-Kobe": "14:16",
+        "Shin-Osaka": "14:30",
+        "Kyoto": "14:45",
+        "Nagoya": "15:20",
+        "Shin-Yokohama": "16:38",
+        "Shinagawa": "16:50",
+        "Tokyo": "16:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062401.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 162,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "13:06",
+        "Kokura": "13:23",
+        "Tokuyama": "13:52",
+        "Hiroshima": "14:14",
+        "Okayama": "14:52",
+        "Shin-Kobe": "15:24",
+        "Shin-Osaka": "15:39",
+        "Kyoto": "15:54",
+        "Nagoya": "16:29",
+        "Shin-Yokohama": "17:49",
+        "Shinagawa": "18:00",
+        "Tokyo": "18:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063041.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 398,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:09",
+        "Kyoto": "13:24",
+        "Nagoya": "13:59",
+        "Shin-Yokohama": "15:17",
+        "Shinagawa": "15:29",
+        "Tokyo": "15:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027281.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 32,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "13:15",
+        "Kokura": "13:31",
+        "Hiroshima": "14:18",
+        "Fukuyama": "14:41",
+        "Okayama": "14:58",
+        "Shin-Kobe": "15:30",
+        "Shin-Osaka": "15:45",
+        "Kyoto": "16:01",
+        "Nagoya": "16:36",
+        "Shin-Yokohama": "17:57",
+        "Shinagawa": "18:09",
+        "Tokyo": "18:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019921.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 254,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:15",
+        "Kyoto": "13:30",
+        "Nagoya": "14:06",
+        "Shin-Yokohama": "15:27",
+        "Shinagawa": "15:39",
+        "Tokyo": "15:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111241.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 652,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:18",
+        "Kyoto": "13:33",
+        "Maibara": "13:57",
+        "Gifu-Hashima": "14:15",
+        "Nagoya": "14:31",
+        "Toyohashi": "14:51",
+        "Shin-Yokohama": "15:55",
+        "Shinagawa": "16:06",
+        "Tokyo": "16:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062461.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 400,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:21",
+        "Kyoto": "13:36",
+        "Nagoya": "14:12",
+        "Shin-Yokohama": "15:33",
+        "Shinagawa": "15:44",
+        "Tokyo": "15:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027271.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 402,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:24",
+        "Kyoto": "13:39",
+        "Nagoya": "14:14",
+        "Shin-Yokohama": "15:35",
+        "Shinagawa": "15:47",
+        "Tokyo": "15:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027261.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 156,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "13:29",
+        "Okayama": "14:05",
+        "Himeji": "14:26",
+        "Shin-Kobe": "14:42",
+        "Shin-Osaka": "14:57",
+        "Kyoto": "15:14",
+        "Nagoya": "15:49",
+        "Shin-Yokohama": "17:07",
+        "Shinagawa": "17:18",
+        "Tokyo": "17:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/030951.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 712,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "13:36",
+        "Aioi": "14:00",
+        "Himeji": "14:11",
+        "Nishi-Akashi": "14:24",
+        "Shin-Kobe": "14:34",
+        "Shin-Osaka": "14:48",
+        "Kyoto": "15:07",
+        "Nagoya": "15:43",
+        "Hamamatsu": "16:17",
+        "Shizuoka": "16:41",
+        "Shin-Yokohama": "17:25",
+        "Shinagawa": "17:36",
+        "Tokyo": "17:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128971.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 34,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "13:36",
+        "Kokura": "13:52",
+        "Shin-Yamaguchi": "14:11",
+        "Hiroshima": "14:43",
+        "Okayama": "15:20",
+        "Shin-Kobe": "15:52",
+        "Shin-Osaka": "16:06",
+        "Kyoto": "16:22",
+        "Nagoya": "16:57",
+        "Shin-Yokohama": "18:15",
+        "Shinagawa": "18:26",
+        "Tokyo": "18:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023601.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 826,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "13:38",
+        "Mikawa-Anjo": "13:52",
+        "Toyohashi": "14:09",
+        "Hamamatsu": "14:25",
+        "Kakegawa": "14:38",
+        "Shizuoka": "14:57",
+        "Shin-Fuji": "15:10",
+        "Mishima": "15:24",
+        "Atami": "15:32",
+        "Odawara": "15:44",
+        "Shin-Yokohama": "16:00",
+        "Shinagawa": "16:12",
+        "Tokyo": "16:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129711.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 406,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:39",
+        "Kyoto": "13:54",
+        "Nagoya": "14:29",
+        "Shin-Yokohama": "15:48",
+        "Shinagawa": "15:59",
+        "Tokyo": "16:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027241.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 168,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "13:42",
+        "Kokura": "13:58",
+        "Tokuyama": "14:27",
+        "Hiroshima": "14:49",
+        "Okayama": "15:28",
+        "Shin-Kobe": "16:01",
+        "Shin-Osaka": "16:15",
+        "Kyoto": "16:30",
+        "Nagoya": "17:06",
+        "Shin-Yokohama": "18:27",
+        "Shinagawa": "18:39",
+        "Tokyo": "18:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027471.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 408,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:51",
+        "Kyoto": "14:06",
+        "Nagoya": "14:41",
+        "Shin-Yokohama": "16:03",
+        "Shinagawa": "16:14",
+        "Tokyo": "16:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027231.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 832,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:54",
+        "Kyoto": "14:10",
+        "Maibara": "14:33",
+        "Gifu-Hashima": "14:51",
+        "Nagoya": "15:08",
+        "Mikawa-Anjo": "15:23",
+        "Toyohashi": "15:40",
+        "Hamamatsu": "15:56",
+        "Kakegawa": "16:10",
+        "Shizuoka": "16:26",
+        "Shin-Fuji": "16:41",
+        "Mishima": "16:54",
+        "Atami": "17:02",
+        "Odawara": "17:14",
+        "Shin-Yokohama": "17:30",
+        "Shinagawa": "17:41",
+        "Tokyo": "17:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129571.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 410,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "13:57",
+        "Kyoto": "14:13",
+        "Nagoya": "14:49",
+        "Shin-Yokohama": "16:07",
+        "Shinagawa": "16:18",
+        "Tokyo": "16:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027221.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 170,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "14:00",
+        "Kokura": "14:16",
+        "Shin-Yamaguchi": "14:36",
+        "Hiroshima": "15:08",
+        "Okayama": "15:46",
+        "Shin-Kobe": "16:19",
+        "Shin-Osaka": "16:33",
+        "Kyoto": "16:48",
+        "Nagoya": "17:22",
+        "Shin-Yokohama": "18:41",
+        "Shinagawa": "18:53",
+        "Tokyo": "19:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027451.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 412,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:00",
+        "Kyoto": "14:16",
+        "Nagoya": "14:51",
+        "Shin-Yokohama": "16:09",
+        "Shinagawa": "16:21",
+        "Tokyo": "16:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027211.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 98,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "14:03",
+        "Okayama": "14:40",
+        "Himeji": "14:59",
+        "Shin-Kobe": "15:16",
+        "Shin-Osaka": "15:30",
+        "Kyoto": "15:45",
+        "Nagoya": "16:20",
+        "Shin-Yokohama": "17:38",
+        "Shinagawa": "17:50",
+        "Tokyo": "17:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062411.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 172,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "14:06",
+        "Kokura": "14:23",
+        "Hiroshima": "15:12",
+        "Fukuyama": "15:35",
+        "Okayama": "15:52",
+        "Shin-Kobe": "16:24",
+        "Shin-Osaka": "16:39",
+        "Kyoto": "16:54",
+        "Nagoya": "17:29",
+        "Shin-Yokohama": "18:49",
+        "Shinagawa": "19:00",
+        "Tokyo": "19:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027421.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 414,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:09",
+        "Kyoto": "14:24",
+        "Nagoya": "14:59",
+        "Shin-Yokohama": "16:17",
+        "Shinagawa": "16:29",
+        "Tokyo": "16:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034381.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 162,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "14:14",
+        "Okayama": "14:52",
+        "Shin-Kobe": "15:24",
+        "Shin-Osaka": "15:39",
+        "Kyoto": "15:54",
+        "Nagoya": "16:29",
+        "Shin-Yokohama": "17:49",
+        "Shinagawa": "18:00",
+        "Tokyo": "18:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178051.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 36,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "14:15",
+        "Kokura": "14:31",
+        "Hiroshima": "15:18",
+        "Fukuyama": "15:41",
+        "Okayama": "15:58",
+        "Shin-Kobe": "16:30",
+        "Shin-Osaka": "16:45",
+        "Kyoto": "17:01",
+        "Nagoya": "17:36",
+        "Shin-Yokohama": "18:57",
+        "Shinagawa": "19:09",
+        "Tokyo": "19:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023561.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 256,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:15",
+        "Kyoto": "14:30",
+        "Nagoya": "15:06",
+        "Shin-Yokohama": "16:27",
+        "Shinagawa": "16:39",
+        "Tokyo": "16:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111251.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 654,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:18",
+        "Kyoto": "14:33",
+        "Maibara": "14:56",
+        "Gifu-Hashima": "15:14",
+        "Nagoya": "15:25",
+        "Odawara": "16:36",
+        "Shin-Yokohama": "16:51",
+        "Shinagawa": "17:03",
+        "Tokyo": "17:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027131.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 418,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:24",
+        "Kyoto": "14:39",
+        "Nagoya": "15:14",
+        "Shin-Yokohama": "16:35",
+        "Shinagawa": "16:47",
+        "Tokyo": "16:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034361.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 420,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:33",
+        "Kyoto": "14:48",
+        "Nagoya": "15:22",
+        "Shin-Yokohama": "16:41",
+        "Shinagawa": "16:53",
+        "Tokyo": "17:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034351.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 714,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "14:36",
+        "Aioi": "15:00",
+        "Himeji": "15:11",
+        "Nishi-Akashi": "15:24",
+        "Shin-Kobe": "15:34",
+        "Shin-Osaka": "15:48",
+        "Kyoto": "16:07",
+        "Nagoya": "16:43",
+        "Hamamatsu": "17:17",
+        "Shizuoka": "17:41",
+        "Mishima": "17:58",
+        "Shin-Yokohama": "18:25",
+        "Shinagawa": "18:36",
+        "Tokyo": "18:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128981.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 38,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "14:36",
+        "Kokura": "14:52",
+        "Shin-Yamaguchi": "15:11",
+        "Hiroshima": "15:43",
+        "Okayama": "16:20",
+        "Shin-Kobe": "16:52",
+        "Shin-Osaka": "17:06",
+        "Kyoto": "17:22",
+        "Nagoya": "17:57",
+        "Shin-Yokohama": "19:15",
+        "Shinagawa": "19:26",
+        "Tokyo": "19:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023581.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 830,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "14:38",
+        "Mikawa-Anjo": "14:52",
+        "Toyohashi": "15:09",
+        "Hamamatsu": "15:25",
+        "Kakegawa": "15:38",
+        "Shizuoka": "15:56",
+        "Shin-Fuji": "16:11",
+        "Mishima": "16:24",
+        "Atami": "16:32",
+        "Odawara": "16:44",
+        "Shin-Yokohama": "17:00",
+        "Shinagawa": "17:11",
+        "Tokyo": "17:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129721.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 422,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:39",
+        "Kyoto": "14:54",
+        "Nagoya": "15:29",
+        "Shin-Yokohama": "16:49",
+        "Shinagawa": "17:00",
+        "Tokyo": "17:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034341.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 178,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "14:42",
+        "Kokura": "14:58",
+        "Shin-Yamaguchi": "15:17",
+        "Hiroshima": "15:49",
+        "Okayama": "16:28",
+        "Shin-Kobe": "17:01",
+        "Shin-Osaka": "17:15",
+        "Kyoto": "17:30",
+        "Nagoya": "18:06",
+        "Shin-Yokohama": "19:27",
+        "Shinagawa": "19:39",
+        "Tokyo": "19:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178101.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 426,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:51",
+        "Kyoto": "15:06",
+        "Nagoya": "15:41",
+        "Shin-Yokohama": "17:03",
+        "Shinagawa": "17:14",
+        "Tokyo": "17:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034321.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 836,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:54",
+        "Kyoto": "15:10",
+        "Maibara": "15:34",
+        "Gifu-Hashima": "15:51",
+        "Nagoya": "16:08",
+        "Mikawa-Anjo": "16:23",
+        "Toyohashi": "16:40",
+        "Hamamatsu": "16:56",
+        "Kakegawa": "17:10",
+        "Shizuoka": "17:26",
+        "Shin-Fuji": "17:41",
+        "Mishima": "17:54",
+        "Atami": "18:02",
+        "Odawara": "18:14",
+        "Shin-Yokohama": "18:30",
+        "Shinagawa": "18:41",
+        "Tokyo": "18:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 428,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "14:57",
+        "Kyoto": "15:14",
+        "Nagoya": "15:49",
+        "Shin-Yokohama": "17:07",
+        "Shinagawa": "17:18",
+        "Tokyo": "17:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 40,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "15:00",
+        "Kokura": "15:16",
+        "Hiroshima": "16:03",
+        "Okayama": "16:40",
+        "Himeji": "16:59",
+        "Shin-Kobe": "17:16",
+        "Shin-Osaka": "17:30",
+        "Kyoto": "17:45",
+        "Nagoya": "18:20",
+        "Shin-Yokohama": "19:38",
+        "Shinagawa": "19:50",
+        "Tokyo": "19:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 258,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:00",
+        "Kyoto": "15:16",
+        "Nagoya": "15:51",
+        "Shin-Yokohama": "17:09",
+        "Shinagawa": "17:21",
+        "Tokyo": "17:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111261.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 100,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "15:03",
+        "Okayama": "15:40",
+        "Himeji": "15:59",
+        "Shin-Kobe": "16:16",
+        "Shin-Osaka": "16:30",
+        "Kyoto": "16:45",
+        "Nagoya": "17:20",
+        "Shin-Yokohama": "18:38",
+        "Shinagawa": "18:50",
+        "Tokyo": "18:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062421.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 102,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "15:06",
+        "Kokura": "15:23",
+        "Hiroshima": "16:12",
+        "Fukuyama": "16:35",
+        "Okayama": "16:52",
+        "Shin-Kobe": "17:24",
+        "Shin-Osaka": "17:39",
+        "Kyoto": "17:54",
+        "Nagoya": "18:29",
+        "Shin-Yokohama": "19:49",
+        "Shinagawa": "20:00",
+        "Tokyo": "20:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089721.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 172,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "15:12",
+        "Fukuyama": "15:35",
+        "Okayama": "15:52",
+        "Shin-Kobe": "16:24",
+        "Shin-Osaka": "16:39",
+        "Kyoto": "16:54",
+        "Nagoya": "17:29",
+        "Shin-Yokohama": "18:49",
+        "Shinagawa": "19:00",
+        "Tokyo": "19:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178061.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 42,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "15:15",
+        "Kokura": "15:31",
+        "Tokuyama": "15:59",
+        "Hiroshima": "16:22",
+        "Okayama": "16:58",
+        "Shin-Kobe": "17:30",
+        "Shin-Osaka": "17:45",
+        "Kyoto": "18:01",
+        "Nagoya": "18:36",
+        "Shin-Yokohama": "19:57",
+        "Shinagawa": "20:09",
+        "Tokyo": "20:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023591.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 260,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:15",
+        "Kyoto": "15:30",
+        "Nagoya": "16:06",
+        "Shin-Yokohama": "17:27",
+        "Shinagawa": "17:39",
+        "Tokyo": "17:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111271.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 656,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:18",
+        "Kyoto": "15:33",
+        "Maibara": "15:56",
+        "Gifu-Hashima": "16:14",
+        "Nagoya": "16:25",
+        "Toyohashi": "16:48",
+        "Shin-Yokohama": "17:55",
+        "Shinagawa": "18:06",
+        "Tokyo": "18:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062511.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 434,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:24",
+        "Kyoto": "15:39",
+        "Nagoya": "16:14",
+        "Shin-Yokohama": "17:35",
+        "Shinagawa": "17:47",
+        "Tokyo": "17:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/050/054531.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 182,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "15:27",
+        "Kokura": "15:43",
+        "Hiroshima": "16:29",
+        "Okayama": "17:05",
+        "Himeji": "17:26",
+        "Shin-Kobe": "17:42",
+        "Shin-Osaka": "17:57",
+        "Kyoto": "18:14",
+        "Nagoya": "18:49",
+        "Shin-Yokohama": "20:07",
+        "Shinagawa": "20:18",
+        "Tokyo": "20:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115191.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 176,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "15:29",
+        "Okayama": "16:07",
+        "Himeji": "16:27",
+        "Shin-Kobe": "16:43",
+        "Shin-Osaka": "16:57",
+        "Kyoto": "17:14",
+        "Nagoya": "17:49",
+        "Shin-Yokohama": "19:07",
+        "Shinagawa": "19:18",
+        "Tokyo": "19:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/031641.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 716,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "15:36",
+        "Aioi": "16:00",
+        "Himeji": "16:11",
+        "Nishi-Akashi": "16:24",
+        "Shin-Kobe": "16:34",
+        "Shin-Osaka": "16:48",
+        "Kyoto": "17:07",
+        "Nagoya": "17:43",
+        "Hamamatsu": "18:17",
+        "Shizuoka": "18:41",
+        "Atami": "19:05",
+        "Shin-Yokohama": "19:25",
+        "Shinagawa": "19:36",
+        "Tokyo": "19:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128991.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 44,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "15:36",
+        "Kokura": "15:52",
+        "Shin-Yamaguchi": "16:11",
+        "Hiroshima": "16:43",
+        "Okayama": "17:20",
+        "Shin-Kobe": "17:52",
+        "Shin-Osaka": "18:06",
+        "Kyoto": "18:22",
+        "Nagoya": "18:57",
+        "Shin-Yokohama": "20:15",
+        "Shinagawa": "20:26",
+        "Tokyo": "20:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023531.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 834,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "15:38",
+        "Mikawa-Anjo": "15:53",
+        "Toyohashi": "16:09",
+        "Hamamatsu": "16:26",
+        "Kakegawa": "16:38",
+        "Shizuoka": "16:56",
+        "Shin-Fuji": "17:11",
+        "Mishima": "17:24",
+        "Atami": "17:32",
+        "Odawara": "17:44",
+        "Shin-Yokohama": "18:00",
+        "Shinagawa": "18:11",
+        "Tokyo": "18:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129731.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 262,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:39",
+        "Kyoto": "15:54",
+        "Nagoya": "16:29",
+        "Shin-Yokohama": "17:49",
+        "Shinagawa": "18:00",
+        "Tokyo": "18:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111281.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 184,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "15:42",
+        "Kokura": "15:58",
+        "Shin-Yamaguchi": "16:17",
+        "Hiroshima": "16:49",
+        "Okayama": "17:28",
+        "Shin-Kobe": "18:01",
+        "Shin-Osaka": "18:15",
+        "Kyoto": "18:30",
+        "Nagoya": "19:06",
+        "Shin-Yokohama": "20:27",
+        "Shinagawa": "20:39",
+        "Tokyo": "20:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178111.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 440,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:51",
+        "Kyoto": "16:06",
+        "Nagoya": "16:41",
+        "Shin-Yokohama": "18:03",
+        "Shinagawa": "18:14",
+        "Tokyo": "18:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063071.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 840,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:54",
+        "Kyoto": "16:10",
+        "Maibara": "16:34",
+        "Gifu-Hashima": "16:51",
+        "Nagoya": "17:08",
+        "Mikawa-Anjo": "17:23",
+        "Toyohashi": "17:40",
+        "Hamamatsu": "17:56",
+        "Kakegawa": "18:10",
+        "Shizuoka": "18:26",
+        "Shin-Fuji": "18:41",
+        "Mishima": "18:54",
+        "Atami": "19:02",
+        "Odawara": "19:14",
+        "Shin-Yokohama": "19:30",
+        "Shinagawa": "19:41",
+        "Tokyo": "19:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129591.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 442,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "15:57",
+        "Kyoto": "16:14",
+        "Nagoya": "16:49",
+        "Shin-Yokohama": "18:07",
+        "Shinagawa": "18:18",
+        "Tokyo": "18:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063081.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 46,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "16:00",
+        "Kokura": "16:16",
+        "Hiroshima": "17:03",
+        "Okayama": "17:40",
+        "Himeji": "17:59",
+        "Shin-Kobe": "18:16",
+        "Shin-Osaka": "18:30",
+        "Kyoto": "18:45",
+        "Nagoya": "19:20",
+        "Shin-Yokohama": "20:38",
+        "Shinagawa": "20:50",
+        "Tokyo": "20:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023521.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 264,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:00",
+        "Kyoto": "16:16",
+        "Nagoya": "16:51",
+        "Shin-Yokohama": "18:09",
+        "Shinagawa": "18:21",
+        "Tokyo": "18:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129031.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 104,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "16:06",
+        "Kokura": "16:23",
+        "Hiroshima": "17:12",
+        "Fukuyama": "17:35",
+        "Okayama": "17:52",
+        "Shin-Kobe": "18:24",
+        "Shin-Osaka": "18:39",
+        "Kyoto": "18:54",
+        "Nagoya": "19:29",
+        "Shin-Yokohama": "20:48",
+        "Shinagawa": "21:00",
+        "Tokyo": "21:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/075/075891.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 180,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "16:08",
+        "Okayama": "16:46",
+        "Shin-Kobe": "17:19",
+        "Shin-Osaka": "17:33",
+        "Kyoto": "17:48",
+        "Nagoya": "18:22",
+        "Shin-Yokohama": "19:41",
+        "Shinagawa": "19:53",
+        "Tokyo": "20:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029541.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 444,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:09",
+        "Kyoto": "16:24",
+        "Nagoya": "17:00",
+        "Shin-Yokohama": "18:17",
+        "Shinagawa": "18:29",
+        "Tokyo": "18:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063091.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 102,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "16:12",
+        "Fukuyama": "16:35",
+        "Okayama": "16:52",
+        "Shin-Kobe": "17:24",
+        "Shin-Osaka": "17:39",
+        "Kyoto": "17:54",
+        "Nagoya": "18:29",
+        "Shin-Yokohama": "19:49",
+        "Shinagawa": "20:00",
+        "Tokyo": "20:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089401.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 48,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "16:15",
+        "Kokura": "16:31",
+        "Tokuyama": "16:59",
+        "Hiroshima": "17:22",
+        "Okayama": "17:58",
+        "Shin-Kobe": "18:30",
+        "Shin-Osaka": "18:45",
+        "Kyoto": "19:01",
+        "Nagoya": "19:36",
+        "Shin-Yokohama": "20:58",
+        "Shinagawa": "21:09",
+        "Tokyo": "21:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023471.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 266,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:15",
+        "Kyoto": "16:30",
+        "Nagoya": "17:06",
+        "Shin-Yokohama": "18:27",
+        "Shinagawa": "18:39",
+        "Tokyo": "18:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129111.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 658,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:18",
+        "Kyoto": "16:33",
+        "Maibara": "16:56",
+        "Gifu-Hashima": "17:14",
+        "Nagoya": "17:25",
+        "Odawara": "18:36",
+        "Shin-Yokohama": "18:51",
+        "Shinagawa": "19:03",
+        "Tokyo": "19:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027121.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 446,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:21",
+        "Kyoto": "16:36",
+        "Nagoya": "17:12",
+        "Shin-Yokohama": "18:33",
+        "Shinagawa": "18:44",
+        "Tokyo": "18:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063101.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 450,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:33",
+        "Kyoto": "16:48",
+        "Nagoya": "17:22",
+        "Shin-Yokohama": "18:41",
+        "Shinagawa": "18:53",
+        "Tokyo": "19:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063121.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 718,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "16:36",
+        "Aioi": "17:00",
+        "Himeji": "17:11",
+        "Nishi-Akashi": "17:24",
+        "Shin-Kobe": "17:34",
+        "Shin-Osaka": "17:48",
+        "Kyoto": "18:07",
+        "Nagoya": "18:43",
+        "Hamamatsu": "19:17",
+        "Shizuoka": "19:41",
+        "Mishima": "19:58",
+        "Shin-Yokohama": "20:25",
+        "Shinagawa": "20:36",
+        "Tokyo": "20:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129001.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 50,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "16:36",
+        "Kokura": "16:52",
+        "Shin-Yamaguchi": "17:11",
+        "Hiroshima": "17:43",
+        "Okayama": "18:20",
+        "Shin-Kobe": "18:52",
+        "Shin-Osaka": "19:06",
+        "Kyoto": "19:21",
+        "Nagoya": "19:57",
+        "Shin-Yokohama": "21:15",
+        "Shinagawa": "21:26",
+        "Tokyo": "21:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023461.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 838,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "16:38",
+        "Mikawa-Anjo": "16:53",
+        "Toyohashi": "17:09",
+        "Hamamatsu": "17:26",
+        "Kakegawa": "17:38",
+        "Shizuoka": "17:56",
+        "Shin-Fuji": "18:11",
+        "Mishima": "18:24",
+        "Atami": "18:32",
+        "Odawara": "18:44",
+        "Shin-Yokohama": "19:00",
+        "Shinagawa": "19:11",
+        "Tokyo": "19:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129741.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 452,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:39",
+        "Kyoto": "16:54",
+        "Nagoya": "17:29",
+        "Shin-Yokohama": "18:49",
+        "Shinagawa": "19:00",
+        "Tokyo": "19:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063131.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 190,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "16:42",
+        "Kokura": "16:58",
+        "Tokuyama": "17:27",
+        "Hiroshima": "17:49",
+        "Okayama": "18:28",
+        "Shin-Kobe": "19:01",
+        "Shin-Osaka": "19:15",
+        "Kyoto": "19:30",
+        "Nagoya": "20:05",
+        "Shin-Yokohama": "21:25",
+        "Shinagawa": "21:36",
+        "Tokyo": "21:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178121.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 456,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:51",
+        "Kyoto": "17:06",
+        "Nagoya": "17:41",
+        "Shin-Yokohama": "19:03",
+        "Shinagawa": "19:14",
+        "Tokyo": "19:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063151.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 844,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:54",
+        "Kyoto": "17:10",
+        "Maibara": "17:34",
+        "Gifu-Hashima": "17:51",
+        "Nagoya": "18:08",
+        "Mikawa-Anjo": "18:23",
+        "Toyohashi": "18:40",
+        "Hamamatsu": "18:56",
+        "Kakegawa": "19:10",
+        "Shizuoka": "19:26",
+        "Shin-Fuji": "19:41",
+        "Mishima": "19:54",
+        "Atami": "20:02",
+        "Odawara": "20:14",
+        "Shin-Yokohama": "20:30",
+        "Shinagawa": "20:41",
+        "Tokyo": "20:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129601.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 458,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "16:57",
+        "Kyoto": "17:14",
+        "Nagoya": "17:49",
+        "Shin-Yokohama": "19:07",
+        "Shinagawa": "19:18",
+        "Tokyo": "19:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063161.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 52,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "17:00",
+        "Kokura": "17:16",
+        "Hiroshima": "18:03",
+        "Okayama": "18:40",
+        "Himeji": "18:59",
+        "Shin-Kobe": "19:16",
+        "Shin-Osaka": "19:30",
+        "Kyoto": "19:45",
+        "Nagoya": "20:20",
+        "Shin-Yokohama": "21:39",
+        "Shinagawa": "21:50",
+        "Tokyo": "21:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023441.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 268,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:00",
+        "Kyoto": "17:16",
+        "Nagoya": "17:51",
+        "Shin-Yokohama": "19:09",
+        "Shinagawa": "19:21",
+        "Tokyo": "19:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129041.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 194,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "17:06",
+        "Kokura": "17:23",
+        "Hiroshima": "18:12",
+        "Fukuyama": "18:35",
+        "Okayama": "18:52",
+        "Shin-Kobe": "19:24",
+        "Shin-Osaka": "19:39",
+        "Kyoto": "19:54",
+        "Nagoya": "20:29",
+        "Shin-Yokohama": "21:49",
+        "Shinagawa": "22:00",
+        "Tokyo": "22:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178131.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 186,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "17:08",
+        "Okayama": "17:46",
+        "Shin-Kobe": "18:19",
+        "Shin-Osaka": "18:33",
+        "Kyoto": "18:48",
+        "Nagoya": "19:23",
+        "Shin-Yokohama": "20:42",
+        "Shinagawa": "20:53",
+        "Tokyo": "21:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089761.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 460,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:09",
+        "Kyoto": "17:24",
+        "Nagoya": "18:00",
+        "Shin-Yokohama": "19:18",
+        "Shinagawa": "19:29",
+        "Tokyo": "19:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063171.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 104,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "17:12",
+        "Fukuyama": "17:35",
+        "Okayama": "17:52",
+        "Shin-Kobe": "18:24",
+        "Shin-Osaka": "18:39",
+        "Kyoto": "18:54",
+        "Nagoya": "19:29",
+        "Shin-Yokohama": "20:48",
+        "Shinagawa": "21:00",
+        "Tokyo": "21:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062441.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 54,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "17:15",
+        "Kokura": "17:31",
+        "Hiroshima": "18:18",
+        "Fukuyama": "18:41",
+        "Okayama": "18:58",
+        "Shin-Kobe": "19:30",
+        "Shin-Osaka": "19:45",
+        "Kyoto": "20:00",
+        "Nagoya": "20:35",
+        "Shin-Yokohama": "21:57",
+        "Shinagawa": "22:08",
+        "Tokyo": "22:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/025701.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 270,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:15",
+        "Kyoto": "17:30",
+        "Nagoya": "18:06",
+        "Shin-Yokohama": "19:27",
+        "Shinagawa": "19:39",
+        "Tokyo": "19:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129121.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 660,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:18",
+        "Kyoto": "17:33",
+        "Maibara": "17:56",
+        "Gifu-Hashima": "18:14",
+        "Nagoya": "18:25",
+        "Toyohashi": "18:48",
+        "Shin-Yokohama": "19:55",
+        "Shinagawa": "20:06",
+        "Tokyo": "20:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062541.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 462,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:21",
+        "Kyoto": "17:36",
+        "Nagoya": "18:12",
+        "Shin-Yokohama": "19:33",
+        "Shinagawa": "19:44",
+        "Tokyo": "19:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063181.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 188,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "17:29",
+        "Okayama": "18:05",
+        "Himeji": "18:26",
+        "Shin-Kobe": "18:42",
+        "Shin-Osaka": "18:57",
+        "Kyoto": "19:13",
+        "Nagoya": "19:49",
+        "Shin-Yokohama": "21:07",
+        "Shinagawa": "21:18",
+        "Tokyo": "21:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115131.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 720,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "17:36",
+        "Aioi": "18:00",
+        "Himeji": "18:11",
+        "Nishi-Akashi": "18:24",
+        "Shin-Kobe": "18:34",
+        "Shin-Osaka": "18:48",
+        "Kyoto": "19:07",
+        "Nagoya": "19:43",
+        "Hamamatsu": "20:17",
+        "Shizuoka": "20:39",
+        "Shin-Yokohama": "21:17",
+        "Shinagawa": "21:29",
+        "Tokyo": "21:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129011.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 56,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "17:36",
+        "Kokura": "17:52",
+        "Shin-Yamaguchi": "18:11",
+        "Hiroshima": "18:43",
+        "Okayama": "19:20",
+        "Shin-Kobe": "19:52",
+        "Shin-Osaka": "20:06",
+        "Kyoto": "20:21",
+        "Nagoya": "20:56",
+        "Shin-Yokohama": "22:15",
+        "Shinagawa": "22:26",
+        "Tokyo": "22:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026411.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 842,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "17:38",
+        "Mikawa-Anjo": "17:53",
+        "Toyohashi": "18:09",
+        "Hamamatsu": "18:26",
+        "Kakegawa": "18:38",
+        "Shizuoka": "18:56",
+        "Shin-Fuji": "19:11",
+        "Mishima": "19:24",
+        "Atami": "19:32",
+        "Odawara": "19:44",
+        "Shin-Yokohama": "20:00",
+        "Shinagawa": "20:11",
+        "Tokyo": "20:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129751.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 198,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "17:42",
+        "Kokura": "17:58",
+        "Tokuyama": "18:27",
+        "Hiroshima": "18:49",
+        "Okayama": "19:28",
+        "Shin-Kobe": "20:01",
+        "Shin-Osaka": "20:15",
+        "Kyoto": "20:30",
+        "Nagoya": "21:06",
+        "Shin-Yokohama": "22:25",
+        "Shinagawa": "22:36",
+        "Tokyo": "22:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089731.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 470,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:51",
+        "Kyoto": "18:06",
+        "Nagoya": "18:41",
+        "Shin-Yokohama": "20:03",
+        "Shinagawa": "20:14",
+        "Tokyo": "20:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063201.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 848,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:54",
+        "Kyoto": "18:10",
+        "Maibara": "18:34",
+        "Gifu-Hashima": "18:51",
+        "Nagoya": "19:08",
+        "Mikawa-Anjo": "19:23",
+        "Toyohashi": "19:41",
+        "Hamamatsu": "19:58",
+        "Kakegawa": "20:10",
+        "Shizuoka": "20:26",
+        "Shin-Fuji": "20:41",
+        "Mishima": "20:54",
+        "Atami": "21:02",
+        "Odawara": "21:14",
+        "Shin-Yokohama": "21:30",
+        "Shinagawa": "21:41",
+        "Tokyo": "21:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 472,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "17:57",
+        "Kyoto": "18:14",
+        "Nagoya": "18:49",
+        "Shin-Yokohama": "20:07",
+        "Shinagawa": "20:18",
+        "Tokyo": "20:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089801.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 272,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:00",
+        "Kyoto": "18:16",
+        "Nagoya": "18:51",
+        "Shin-Yokohama": "20:09",
+        "Shinagawa": "20:21",
+        "Tokyo": "20:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129051.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 58,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "18:03",
+        "Kokura": "18:19",
+        "Hiroshima": "19:06",
+        "Okayama": "19:42",
+        "Himeji": "20:02",
+        "Shin-Kobe": "20:19",
+        "Shin-Osaka": "20:33",
+        "Kyoto": "20:47",
+        "Nagoya": "21:22",
+        "Shin-Yokohama": "22:39",
+        "Shinagawa": "22:51",
+        "Tokyo": "22:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026401.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 200,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "18:06",
+        "Kokura": "18:23",
+        "Shin-Yamaguchi": "18:42",
+        "Hiroshima": "19:14",
+        "Okayama": "19:52",
+        "Shin-Kobe": "20:24",
+        "Shin-Osaka": "20:39",
+        "Kyoto": "20:54",
+        "Nagoya": "21:29",
+        "Shin-Yokohama": "22:46",
+        "Shinagawa": "22:57",
+        "Tokyo": "23:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115201.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 192,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "18:08",
+        "Okayama": "18:46",
+        "Shin-Kobe": "19:19",
+        "Shin-Osaka": "19:33",
+        "Kyoto": "19:48",
+        "Nagoya": "20:23",
+        "Shin-Yokohama": "21:42",
+        "Shinagawa": "21:53",
+        "Tokyo": "21:59"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178071.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 474,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:09",
+        "Kyoto": "18:24",
+        "Nagoya": "19:00",
+        "Shin-Yokohama": "20:17",
+        "Shinagawa": "20:29",
+        "Tokyo": "20:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089781.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 274,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:15",
+        "Kyoto": "18:30",
+        "Nagoya": "19:06",
+        "Shin-Yokohama": "20:27",
+        "Shinagawa": "20:39",
+        "Tokyo": "20:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129061.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 662,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:18",
+        "Kyoto": "18:33",
+        "Maibara": "18:56",
+        "Gifu-Hashima": "19:15",
+        "Nagoya": "19:31",
+        "Odawara": "20:39",
+        "Shin-Yokohama": "20:54",
+        "Shinagawa": "21:06",
+        "Tokyo": "21:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027111.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 60,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "18:18",
+        "Kokura": "18:34",
+        "Hiroshima": "19:21",
+        "Fukuyama": "19:44",
+        "Okayama": "20:01",
+        "Shin-Kobe": "20:34",
+        "Shin-Osaka": "20:48",
+        "Kyoto": "21:02",
+        "Nagoya": "21:37",
+        "Shin-Yokohama": "22:54",
+        "Shinagawa": "23:06",
+        "Tokyo": "23:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029521.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 476,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:21",
+        "Kyoto": "18:36",
+        "Nagoya": "19:12",
+        "Shin-Yokohama": "20:33",
+        "Shinagawa": "20:44",
+        "Tokyo": "20:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089811.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 478,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:24",
+        "Kyoto": "18:39",
+        "Nagoya": "19:14",
+        "Shin-Yokohama": "20:35",
+        "Shinagawa": "20:47",
+        "Tokyo": "20:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089791.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 196,
+      "direction": "east",
+      "originStation": "Hiroshima",
+      "destination": "Tokyo",
+      "times": {
+        "Hiroshima": "18:29",
+        "Okayama": "19:06",
+        "Himeji": "19:26",
+        "Shin-Kobe": "19:42",
+        "Shin-Osaka": "20:00",
+        "Kyoto": "20:15",
+        "Nagoya": "20:50",
+        "Shin-Yokohama": "22:07",
+        "Shinagawa": "22:18",
+        "Tokyo": "22:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089771.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 202,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "18:30",
+        "Kokura": "18:46",
+        "Tokuyama": "19:14",
+        "Hiroshima": "19:36",
+        "Okayama": "20:13",
+        "Shin-Kobe": "20:45",
+        "Shin-Osaka": "21:00",
+        "Kyoto": "21:15",
+        "Nagoya": "21:50",
+        "Shin-Yokohama": "23:09",
+        "Shinagawa": "23:21",
+        "Tokyo": "23:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115211.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 480,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:33",
+        "Kyoto": "18:48",
+        "Nagoya": "19:23",
+        "Shin-Yokohama": "20:42",
+        "Shinagawa": "20:53",
+        "Tokyo": "21:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089821.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 722,
+      "direction": "east",
+      "originStation": "Okayama",
+      "destination": "Tokyo",
+      "times": {
+        "Okayama": "18:36",
+        "Aioi": "19:00",
+        "Himeji": "19:11",
+        "Nishi-Akashi": "19:24",
+        "Shin-Kobe": "19:34",
+        "Shin-Osaka": "19:48",
+        "Kyoto": "20:03",
+        "Nagoya": "20:40",
+        "Toyohashi": "21:02",
+        "Shizuoka": "21:31",
+        "Shin-Yokohama": "22:09",
+        "Shinagawa": "22:21",
+        "Tokyo": "22:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129021.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 62,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "18:36",
+        "Kokura": "18:52",
+        "Shin-Yamaguchi": "19:11",
+        "Hiroshima": "19:43",
+        "Okayama": "20:20",
+        "Shin-Kobe": "20:52",
+        "Shin-Osaka": "21:06",
+        "Kyoto": "21:21",
+        "Nagoya": "21:56",
+        "Shin-Yokohama": "23:15",
+        "Shinagawa": "23:26",
+        "Tokyo": "23:32"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029511.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 846,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "18:38",
+        "Mikawa-Anjo": "18:53",
+        "Toyohashi": "19:09",
+        "Hamamatsu": "19:26",
+        "Kakegawa": "19:38",
+        "Shizuoka": "19:56",
+        "Shin-Fuji": "20:13",
+        "Mishima": "20:27",
+        "Atami": "20:35",
+        "Odawara": "20:45",
+        "Shin-Yokohama": "21:00",
+        "Shinagawa": "21:12",
+        "Tokyo": "21:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129761.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 204,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "18:42",
+        "Kokura": "18:58",
+        "Hiroshima": "19:46",
+        "Fukuyama": "20:10",
+        "Okayama": "20:28",
+        "Shin-Kobe": "21:01",
+        "Shin-Osaka": "21:15",
+        "Kyoto": "21:30",
+        "Nagoya": "22:06",
+        "Shin-Yokohama": "23:22",
+        "Shinagawa": "23:33",
+        "Tokyo": "23:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178151.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 482,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:51",
+        "Kyoto": "19:06",
+        "Nagoya": "19:41",
+        "Shin-Yokohama": "21:03",
+        "Shinagawa": "21:14",
+        "Tokyo": "21:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089831.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 852,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:54",
+        "Kyoto": "19:10",
+        "Maibara": "19:33",
+        "Gifu-Hashima": "19:51",
+        "Nagoya": "20:07",
+        "Mikawa-Anjo": "20:24",
+        "Toyohashi": "20:40",
+        "Hamamatsu": "20:54",
+        "Kakegawa": "21:08",
+        "Shizuoka": "21:26",
+        "Shin-Fuji": "21:41",
+        "Mishima": "21:54",
+        "Atami": "22:02",
+        "Odawara": "22:14",
+        "Shin-Yokohama": "22:30",
+        "Shinagawa": "22:41",
+        "Tokyo": "22:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129611.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 484,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "18:57",
+        "Kyoto": "19:13",
+        "Nagoya": "19:49",
+        "Shin-Yokohama": "21:07",
+        "Shinagawa": "21:18",
+        "Tokyo": "21:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103151.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 64,
+      "direction": "east",
+      "originStation": "Hakata",
+      "destination": "Tokyo",
+      "times": {
+        "Hakata": "19:00",
+        "Kokura": "19:16",
+        "Hiroshima": "20:02",
+        "Okayama": "20:37",
+        "Shin-Kobe": "21:09",
+        "Shin-Osaka": "21:24",
+        "Kyoto": "21:38",
+        "Nagoya": "22:12",
+        "Shin-Yokohama": "23:28",
+        "Shinagawa": "23:39",
+        "Tokyo": "23:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 276,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:00",
+        "Kyoto": "19:16",
+        "Nagoya": "19:51",
+        "Shin-Yokohama": "21:09",
+        "Shinagawa": "21:21",
+        "Tokyo": "21:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129071.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 278,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:15",
+        "Kyoto": "19:30",
+        "Nagoya": "20:05",
+        "Shin-Yokohama": "21:25",
+        "Shinagawa": "21:36",
+        "Tokyo": "21:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129131.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 486,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:18",
+        "Kyoto": "19:33",
+        "Nagoya": "20:09",
+        "Shin-Yokohama": "21:27",
+        "Shinagawa": "21:39",
+        "Tokyo": "21:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103161.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 664,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:21",
+        "Kyoto": "19:36",
+        "Maibara": "19:57",
+        "Gifu-Hashima": "20:15",
+        "Nagoya": "20:31",
+        "Hamamatsu": "21:04",
+        "Shin-Yokohama": "22:00",
+        "Shinagawa": "22:12",
+        "Tokyo": "22:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062551.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 488,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:24",
+        "Kyoto": "19:39",
+        "Nagoya": "20:14",
+        "Shin-Yokohama": "21:33",
+        "Shinagawa": "21:44",
+        "Tokyo": "21:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103181.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 490,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:33",
+        "Kyoto": "19:48",
+        "Nagoya": "20:23",
+        "Shin-Yokohama": "21:42",
+        "Shinagawa": "21:53",
+        "Tokyo": "21:59"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178461.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 850,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "19:38",
+        "Mikawa-Anjo": "19:52",
+        "Toyohashi": "20:09",
+        "Hamamatsu": "20:23",
+        "Kakegawa": "20:34",
+        "Shizuoka": "20:52",
+        "Shin-Fuji": "21:05",
+        "Mishima": "21:18",
+        "Atami": "21:26",
+        "Odawara": "21:38",
+        "Shin-Yokohama": "21:54",
+        "Shinagawa": "22:06",
+        "Tokyo": "22:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129771.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 492,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:39",
+        "Kyoto": "19:54",
+        "Nagoya": "20:29",
+        "Shin-Yokohama": "21:49",
+        "Shinagawa": "22:00",
+        "Tokyo": "22:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178471.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 496,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "19:54",
+        "Kyoto": "20:09",
+        "Nagoya": "20:44",
+        "Shin-Yokohama": "22:03",
+        "Shinagawa": "22:15",
+        "Tokyo": "22:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178401.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 280,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:00",
+        "Kyoto": "20:15",
+        "Nagoya": "20:50",
+        "Shin-Yokohama": "22:07",
+        "Shinagawa": "22:18",
+        "Tokyo": "22:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129081.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 498,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:09",
+        "Kyoto": "20:24",
+        "Nagoya": "20:59",
+        "Shin-Yokohama": "22:17",
+        "Shinagawa": "22:29",
+        "Tokyo": "22:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178201.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 282,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:15",
+        "Kyoto": "20:30",
+        "Nagoya": "21:06",
+        "Shin-Yokohama": "22:25",
+        "Shinagawa": "22:36",
+        "Tokyo": "22:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129091.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 500,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:18",
+        "Kyoto": "20:33",
+        "Nagoya": "21:08",
+        "Shin-Yokohama": "22:27",
+        "Shinagawa": "22:39",
+        "Tokyo": "22:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178411.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 666,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:21",
+        "Kyoto": "20:36",
+        "Maibara": "21:00",
+        "Nagoya": "21:24",
+        "Shizuoka": "22:11",
+        "Shin-Yokohama": "22:48",
+        "Shinagawa": "23:00",
+        "Tokyo": "23:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027101.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 504,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:27",
+        "Kyoto": "20:42",
+        "Nagoya": "21:17",
+        "Shin-Yokohama": "22:36",
+        "Shinagawa": "22:48",
+        "Tokyo": "22:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178421.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 506,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:39",
+        "Kyoto": "20:54",
+        "Nagoya": "21:29",
+        "Shin-Yokohama": "22:46",
+        "Shinagawa": "22:57",
+        "Tokyo": "23:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178491.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 668,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:45",
+        "Kyoto": "20:59",
+        "Nagoya": "21:39",
+        "Hamamatsu": "22:07",
+        "Shizuoka": "22:29",
+        "Odawara": "22:56",
+        "Shin-Yokohama": "23:12",
+        "Shinagawa": "23:23",
+        "Tokyo": "23:29"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062561.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 854,
+      "direction": "east",
+      "originStation": "Nagoya",
+      "destination": "Tokyo",
+      "times": {
+        "Nagoya": "20:46",
+        "Mikawa-Anjo": "20:59",
+        "Toyohashi": "21:18",
+        "Hamamatsu": "21:35",
+        "Kakegawa": "21:48",
+        "Shizuoka": "22:04",
+        "Shin-Fuji": "22:21",
+        "Mishima": "22:33",
+        "Atami": "22:41",
+        "Odawara": "22:50",
+        "Shin-Yokohama": "23:06",
+        "Shinagawa": "23:18",
+        "Tokyo": "23:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129781.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 508,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "20:57",
+        "Kyoto": "21:12",
+        "Nagoya": "21:47",
+        "Shin-Yokohama": "23:04",
+        "Shinagawa": "23:15",
+        "Tokyo": "23:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178431.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 510,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "21:00",
+        "Kyoto": "21:15",
+        "Nagoya": "21:50",
+        "Shin-Yokohama": "23:09",
+        "Shinagawa": "23:21",
+        "Tokyo": "23:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 512,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "21:09",
+        "Kyoto": "21:24",
+        "Nagoya": "21:59",
+        "Shin-Yokohama": "23:18",
+        "Shinagawa": "23:29",
+        "Tokyo": "23:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178441.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 514,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "21:15",
+        "Kyoto": "21:30",
+        "Nagoya": "22:06",
+        "Shin-Yokohama": "23:22",
+        "Shinagawa": "23:33",
+        "Tokyo": "23:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178511.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 516,
+      "direction": "east",
+      "originStation": "Shin-Osaka",
+      "destination": "Tokyo",
+      "times": {
+        "Shin-Osaka": "21:30",
+        "Kyoto": "21:44",
+        "Nagoya": "22:18",
+        "Shin-Yokohama": "23:34",
+        "Shinagawa": "23:45",
+        "Tokyo": "23:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178451.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 733,
+      "direction": "west",
+      "originStation": "Shin-Yokohama",
+      "destination": "Hiroshima",
+      "times": {
+        "Shin-Yokohama": "06:00",
+        "Odawara": "06:17",
+        "Shizuoka": "06:42",
+        "Nagoya": "07:26",
+        "Kyoto": "08:01",
+        "Shin-Osaka": "08:15",
+        "Shin-Kobe": "08:28",
+        "Nishi-Akashi": "08:39",
+        "Himeji": "08:52",
+        "Okayama": "09:14",
+        "Fukuyama": "09:31",
+        "Hiroshima": "09:56"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128901.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 1,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:00",
+        "Shinagawa": "06:07",
+        "Shin-Yokohama": "06:18",
+        "Nagoya": "07:35",
+        "Kyoto": "08:09",
+        "Shin-Osaka": "08:24",
+        "Shin-Kobe": "08:37",
+        "Okayama": "09:10",
+        "Fukuyama": "09:26",
+        "Hiroshima": "09:50",
+        "Kokura": "10:36",
+        "Hakata": "10:52"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008031.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 99,
+      "direction": "west",
+      "originStation": "Shinagawa",
+      "destination": "Hakata",
+      "times": {
+        "Shinagawa": "06:00",
+        "Shin-Yokohama": "06:11",
+        "Nagoya": "07:28",
+        "Kyoto": "08:03",
+        "Shin-Osaka": "08:18",
+        "Shin-Kobe": "08:32",
+        "Okayama": "09:04",
+        "Hiroshima": "09:40",
+        "Tokuyama": "10:02",
+        "Kokura": "10:31",
+        "Hakata": "10:46"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089331.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 547,
+      "direction": "west",
+      "originStation": "Shin-Yokohama",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Shin-Yokohama": "06:03",
+        "Nagoya": "07:19",
+        "Kyoto": "07:53",
+        "Shin-Osaka": "08:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177921.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 111,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:06",
+        "Shinagawa": "06:13",
+        "Shin-Yokohama": "06:24",
+        "Nagoya": "07:41",
+        "Kyoto": "08:17",
+        "Shin-Osaka": "08:32",
+        "Shin-Kobe": "08:45",
+        "Himeji": "09:01",
+        "Okayama": "09:22",
+        "Hiroshima": "09:59",
+        "Kokura": "10:47",
+        "Hakata": "11:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089471.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 301,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "06:06",
+        "Shinagawa": "06:13",
+        "Shin-Yokohama": "06:24",
+        "Nagoya": "07:41",
+        "Kyoto": "08:17",
+        "Shin-Osaka": "08:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021511.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 3,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:15",
+        "Shinagawa": "06:22",
+        "Shin-Yokohama": "06:33",
+        "Nagoya": "07:51",
+        "Kyoto": "08:26",
+        "Shin-Osaka": "08:41",
+        "Shin-Kobe": "08:54",
+        "Okayama": "09:26",
+        "Hiroshima": "10:03",
+        "Shin-Yamaguchi": "10:34",
+        "Kokura": "10:54",
+        "Hakata": "11:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/010/011051.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 631,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "06:21",
+        "Shinagawa": "06:28",
+        "Shin-Yokohama": "06:39",
+        "Odawara": "06:56",
+        "Toyohashi": "07:49",
+        "Nagoya": "08:13",
+        "Gifu-Hashima": "08:30",
+        "Maibara": "08:48",
+        "Kyoto": "09:08",
+        "Shin-Osaka": "09:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062181.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 113,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:24",
+        "Shinagawa": "06:31",
+        "Shin-Yokohama": "06:42",
+        "Nagoya": "08:00",
+        "Kyoto": "08:34",
+        "Shin-Osaka": "08:50",
+        "Shin-Kobe": "09:03",
+        "Okayama": "09:35",
+        "Hiroshima": "10:14",
+        "Shin-Yamaguchi": "10:46",
+        "Kokura": "11:05",
+        "Hakata": "11:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177601.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 307,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "06:24",
+        "Shinagawa": "06:31",
+        "Shin-Yokohama": "06:42",
+        "Nagoya": "08:00",
+        "Kyoto": "08:34",
+        "Shin-Osaka": "08:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021541.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 801,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "06:30",
+        "Shinagawa": "06:37",
+        "Shin-Yokohama": "06:48",
+        "Odawara": "07:05",
+        "Atami": "07:14",
+        "Mishima": "07:26",
+        "Shin-Fuji": "07:39",
+        "Shizuoka": "07:52",
+        "Kakegawa": "08:08",
+        "Hamamatsu": "08:23",
+        "Toyohashi": "08:39",
+        "Mikawa-Anjo": "08:56",
+        "Nagoya": "09:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129151.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 5,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:33",
+        "Shinagawa": "06:40",
+        "Shin-Yokohama": "06:51",
+        "Nagoya": "08:12",
+        "Kyoto": "08:47",
+        "Shin-Osaka": "09:02",
+        "Shin-Kobe": "09:15",
+        "Okayama": "09:47",
+        "Fukuyama": "10:04",
+        "Hiroshima": "10:28",
+        "Kokura": "11:14",
+        "Hakata": "11:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023551.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 115,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:42",
+        "Shinagawa": "06:49",
+        "Shin-Yokohama": "07:00",
+        "Nagoya": "08:17",
+        "Kyoto": "08:53",
+        "Shin-Osaka": "09:08",
+        "Shin-Kobe": "09:21",
+        "Himeji": "09:37",
+        "Okayama": "09:58",
+        "Hiroshima": "10:37",
+        "Kokura": "11:23",
+        "Hakata": "11:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089491.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 231,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "06:42",
+        "Shinagawa": "06:49",
+        "Shin-Yokohama": "07:00",
+        "Nagoya": "08:17",
+        "Kyoto": "08:53",
+        "Shin-Osaka": "09:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026391.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 7,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "06:48",
+        "Shinagawa": "06:55",
+        "Shin-Yokohama": "07:06",
+        "Nagoya": "08:27",
+        "Kyoto": "09:02",
+        "Shin-Osaka": "09:17",
+        "Shin-Kobe": "09:30",
+        "Himeji": "09:46",
+        "Okayama": "10:06",
+        "Hiroshima": "10:43",
+        "Kokura": "11:30",
+        "Hakata": "11:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021321.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 803,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "06:57",
+        "Shinagawa": "07:04",
+        "Shin-Yokohama": "07:15",
+        "Odawara": "07:35",
+        "Atami": "07:43",
+        "Mishima": "07:54",
+        "Shin-Fuji": "08:07",
+        "Shizuoka": "08:21",
+        "Kakegawa": "08:38",
+        "Hamamatsu": "08:52",
+        "Toyohashi": "09:09",
+        "Mikawa-Anjo": "09:27",
+        "Nagoya": "09:43",
+        "Gifu-Hashima": "09:58",
+        "Maibara": "10:16",
+        "Kyoto": "10:36",
+        "Shin-Osaka": "10:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129161.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 117,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "07:00",
+        "Shinagawa": "07:07",
+        "Shin-Yokohama": "07:18",
+        "Nagoya": "08:39",
+        "Kyoto": "09:14",
+        "Shin-Osaka": "09:29",
+        "Shin-Kobe": "09:42",
+        "Himeji": "09:58",
+        "Okayama": "10:19",
+        "Hiroshima": "10:55"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 233,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:00",
+        "Shinagawa": "07:07",
+        "Shin-Yokohama": "07:18",
+        "Nagoya": "08:39",
+        "Kyoto": "09:14",
+        "Shin-Osaka": "09:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026381.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 701,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "07:03",
+        "Shinagawa": "07:10",
+        "Shin-Yokohama": "07:21",
+        "Shizuoka": "08:07",
+        "Hamamatsu": "08:31",
+        "Nagoya": "09:03",
+        "Kyoto": "09:43",
+        "Shin-Osaka": "09:59",
+        "Shin-Kobe": "10:12",
+        "Nishi-Akashi": "10:23",
+        "Himeji": "10:36",
+        "Aioi": "10:50",
+        "Okayama": "11:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128691.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 315,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:09",
+        "Shinagawa": "07:17",
+        "Shin-Yokohama": "07:29",
+        "Nagoya": "08:47",
+        "Kyoto": "09:22",
+        "Shin-Osaka": "09:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 9,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "07:12",
+        "Shinagawa": "07:19",
+        "Shin-Yokohama": "07:31",
+        "Nagoya": "08:49",
+        "Kyoto": "09:25",
+        "Shin-Osaka": "09:41",
+        "Shin-Kobe": "09:54",
+        "Okayama": "10:26",
+        "Hiroshima": "11:03",
+        "Shin-Yamaguchi": "11:34",
+        "Kokura": "11:54",
+        "Hakata": "12:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023541.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 317,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:18",
+        "Shinagawa": "07:25",
+        "Shin-Yokohama": "07:37",
+        "Nagoya": "08:55",
+        "Kyoto": "09:31",
+        "Shin-Osaka": "09:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021591.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 119,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "07:21",
+        "Shinagawa": "07:28",
+        "Shin-Yokohama": "07:39",
+        "Nagoya": "08:58",
+        "Kyoto": "09:33",
+        "Shin-Osaka": "09:50",
+        "Shin-Kobe": "10:03",
+        "Okayama": "10:37",
+        "Hiroshima": "11:12",
+        "Tokuyama": "11:34",
+        "Kokura": "12:03",
+        "Hakata": "12:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089511.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 235,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:21",
+        "Shinagawa": "07:28",
+        "Shin-Yokohama": "07:39",
+        "Nagoya": "08:58",
+        "Kyoto": "09:33",
+        "Shin-Osaka": "09:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026371.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 805,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "07:27",
+        "Shinagawa": "07:34",
+        "Shin-Yokohama": "07:45",
+        "Odawara": "08:05",
+        "Atami": "08:13",
+        "Mishima": "08:24",
+        "Shin-Fuji": "08:37",
+        "Shizuoka": "08:53",
+        "Kakegawa": "09:08",
+        "Hamamatsu": "09:23",
+        "Toyohashi": "09:39",
+        "Mikawa-Anjo": "09:55",
+        "Nagoya": "10:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129171.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 11,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "07:30",
+        "Shinagawa": "07:37",
+        "Shin-Yokohama": "07:48",
+        "Nagoya": "09:10",
+        "Kyoto": "09:46",
+        "Shin-Osaka": "10:02",
+        "Shin-Kobe": "10:15",
+        "Okayama": "10:47",
+        "Fukuyama": "11:04",
+        "Hiroshima": "11:28",
+        "Kokura": "12:14",
+        "Hakata": "12:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/001231.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 633,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:36",
+        "Shinagawa": "07:43",
+        "Shin-Yokohama": "07:54",
+        "Odawara": "08:11",
+        "Nagoya": "09:21",
+        "Gifu-Hashima": "09:35",
+        "Maibara": "09:53",
+        "Kyoto": "10:14",
+        "Shin-Osaka": "10:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026651.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 121,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "07:39",
+        "Shinagawa": "07:46",
+        "Shin-Yokohama": "07:58",
+        "Nagoya": "09:17",
+        "Kyoto": "09:52",
+        "Shin-Osaka": "10:08",
+        "Shin-Kobe": "10:21",
+        "Okayama": "10:54",
+        "Fukuyama": "11:10",
+        "Hiroshima": "11:34",
+        "Kokura": "12:23",
+        "Hakata": "12:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067871.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 237,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:39",
+        "Shinagawa": "07:46",
+        "Shin-Yokohama": "07:58",
+        "Nagoya": "09:17",
+        "Kyoto": "09:52",
+        "Shin-Osaka": "10:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026361.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 323,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:45",
+        "Shinagawa": "07:53",
+        "Shin-Yokohama": "08:05",
+        "Nagoya": "09:24",
+        "Kyoto": "09:59",
+        "Shin-Osaka": "10:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 13,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "07:48",
+        "Shinagawa": "07:55",
+        "Shin-Yokohama": "08:07",
+        "Nagoya": "09:27",
+        "Kyoto": "10:02",
+        "Shin-Osaka": "10:17",
+        "Shin-Kobe": "10:30",
+        "Okayama": "11:03",
+        "Hiroshima": "11:39",
+        "Tokuyama": "12:02",
+        "Kokura": "12:30",
+        "Hakata": "12:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/003201.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 325,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:51",
+        "Shinagawa": "07:59",
+        "Shin-Yokohama": "08:10",
+        "Nagoya": "09:33",
+        "Kyoto": "10:08",
+        "Shin-Osaka": "10:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027051.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 327,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:54",
+        "Shinagawa": "08:01",
+        "Shin-Yokohama": "08:13",
+        "Nagoya": "09:35",
+        "Kyoto": "10:11",
+        "Shin-Osaka": "10:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027041.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 807,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "07:57",
+        "Shinagawa": "08:04",
+        "Shin-Yokohama": "08:15",
+        "Odawara": "08:35",
+        "Atami": "08:43",
+        "Mishima": "08:54",
+        "Shin-Fuji": "09:07",
+        "Shizuoka": "09:21",
+        "Kakegawa": "09:38",
+        "Hamamatsu": "09:52",
+        "Toyohashi": "10:09",
+        "Mikawa-Anjo": "10:26",
+        "Nagoya": "10:43",
+        "Gifu-Hashima": "10:58",
+        "Maibara": "11:16",
+        "Kyoto": "11:36",
+        "Shin-Osaka": "11:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129181.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 61,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "08:00",
+        "Shinagawa": "08:07",
+        "Shin-Yokohama": "08:18",
+        "Nagoya": "09:41",
+        "Kyoto": "10:16",
+        "Shin-Osaka": "10:32",
+        "Shin-Kobe": "10:45",
+        "Himeji": "11:01",
+        "Okayama": "11:21",
+        "Hiroshima": "11:59"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089191.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 703,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "08:03",
+        "Shinagawa": "08:10",
+        "Shin-Yokohama": "08:21",
+        "Shizuoka": "09:07",
+        "Hamamatsu": "09:31",
+        "Nagoya": "10:03",
+        "Kyoto": "10:43",
+        "Shin-Osaka": "10:59",
+        "Shin-Kobe": "11:12",
+        "Nishi-Akashi": "11:23",
+        "Himeji": "11:36",
+        "Aioi": "11:47",
+        "Okayama": "12:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128701.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 329,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:09",
+        "Shinagawa": "08:17",
+        "Shin-Yokohama": "08:29",
+        "Nagoya": "09:47",
+        "Kyoto": "10:22",
+        "Shin-Osaka": "10:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027031.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 15,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "08:12",
+        "Shinagawa": "08:19",
+        "Shin-Yokohama": "08:31",
+        "Nagoya": "09:49",
+        "Kyoto": "10:25",
+        "Shin-Osaka": "10:41",
+        "Shin-Kobe": "10:54",
+        "Okayama": "11:26",
+        "Hiroshima": "12:03",
+        "Shin-Yamaguchi": "12:34",
+        "Kokura": "12:54",
+        "Hakata": "13:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/005251.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 331,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:18",
+        "Shinagawa": "08:25",
+        "Shin-Yokohama": "08:37",
+        "Nagoya": "09:55",
+        "Kyoto": "10:31",
+        "Shin-Osaka": "10:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 127,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "08:21",
+        "Shinagawa": "08:28",
+        "Shin-Yokohama": "08:39",
+        "Nagoya": "09:58",
+        "Kyoto": "10:33",
+        "Shin-Osaka": "10:50",
+        "Shin-Kobe": "11:03",
+        "Himeji": "11:19",
+        "Okayama": "11:40",
+        "Hiroshima": "12:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067881.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 127,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "08:21",
+        "Shinagawa": "08:28",
+        "Shin-Yokohama": "08:39",
+        "Nagoya": "09:58",
+        "Kyoto": "10:33",
+        "Shin-Osaka": "10:50",
+        "Shin-Kobe": "11:03",
+        "Himeji": "11:19",
+        "Okayama": "11:40",
+        "Hiroshima": "12:16",
+        "Kokura": "13:03",
+        "Hakata": "13:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067891.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 239,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:21",
+        "Shinagawa": "08:28",
+        "Shin-Yokohama": "08:39",
+        "Nagoya": "09:58",
+        "Kyoto": "10:33",
+        "Shin-Osaka": "10:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026351.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 333,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:24",
+        "Shinagawa": "08:31",
+        "Shin-Yokohama": "08:43",
+        "Nagoya": "10:05",
+        "Kyoto": "10:41",
+        "Shin-Osaka": "10:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027021.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 809,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "08:27",
+        "Shinagawa": "08:34",
+        "Shin-Yokohama": "08:45",
+        "Odawara": "09:05",
+        "Atami": "09:13",
+        "Mishima": "09:24",
+        "Shin-Fuji": "09:37",
+        "Shizuoka": "09:53",
+        "Kakegawa": "10:08",
+        "Hamamatsu": "10:23",
+        "Toyohashi": "10:39",
+        "Mikawa-Anjo": "10:55",
+        "Nagoya": "11:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129191.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 17,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "08:30",
+        "Shinagawa": "08:37",
+        "Shin-Yokohama": "08:48",
+        "Nagoya": "10:10",
+        "Kyoto": "10:46",
+        "Shin-Osaka": "11:02",
+        "Shin-Kobe": "11:15",
+        "Okayama": "11:48",
+        "Fukuyama": "12:04",
+        "Hiroshima": "12:28",
+        "Kokura": "13:14",
+        "Hakata": "13:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021331.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 635,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:33",
+        "Shinagawa": "08:40",
+        "Shin-Yokohama": "08:51",
+        "Toyohashi": "10:00",
+        "Nagoya": "10:21",
+        "Gifu-Hashima": "10:35",
+        "Maibara": "10:53",
+        "Kyoto": "11:14",
+        "Shin-Osaka": "11:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062231.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 129,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "08:39",
+        "Shinagawa": "08:46",
+        "Shin-Yokohama": "08:58",
+        "Nagoya": "10:16",
+        "Kyoto": "10:52",
+        "Shin-Osaka": "11:08",
+        "Shin-Kobe": "11:21",
+        "Okayama": "11:54",
+        "Fukuyama": "12:10",
+        "Hiroshima": "12:34",
+        "Kokura": "13:23",
+        "Hakata": "13:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089531.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 241,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:39",
+        "Shinagawa": "08:46",
+        "Shin-Yokohama": "08:58",
+        "Nagoya": "10:16",
+        "Kyoto": "10:52",
+        "Shin-Osaka": "11:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026341.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 131,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "08:45",
+        "Shinagawa": "08:53",
+        "Shin-Yokohama": "09:05",
+        "Nagoya": "10:24",
+        "Kyoto": "10:59",
+        "Shin-Osaka": "11:14",
+        "Shin-Kobe": "11:27",
+        "Okayama": "11:59",
+        "Hiroshima": "12:38",
+        "Shin-Yamaguchi": "13:09",
+        "Kokura": "13:29",
+        "Hakata": "13:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062771.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 337,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:45",
+        "Shinagawa": "08:53",
+        "Shin-Yokohama": "09:05",
+        "Nagoya": "10:24",
+        "Kyoto": "10:59",
+        "Shin-Osaka": "11:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026991.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 63,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "08:48",
+        "Shinagawa": "08:55",
+        "Shin-Yokohama": "09:07",
+        "Nagoya": "10:27",
+        "Kyoto": "11:02",
+        "Shin-Osaka": "11:17",
+        "Shin-Kobe": "11:30",
+        "Himeji": "11:46",
+        "Okayama": "12:06",
+        "Hiroshima": "12:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089201.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 339,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:51",
+        "Shinagawa": "08:59",
+        "Shin-Yokohama": "09:10",
+        "Nagoya": "10:33",
+        "Kyoto": "11:08",
+        "Shin-Osaka": "11:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026981.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 341,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:54",
+        "Shinagawa": "09:01",
+        "Shin-Yokohama": "09:13",
+        "Nagoya": "10:35",
+        "Kyoto": "11:11",
+        "Shin-Osaka": "11:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026971.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 811,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "08:57",
+        "Shinagawa": "09:04",
+        "Shin-Yokohama": "09:15",
+        "Odawara": "09:35",
+        "Atami": "09:43",
+        "Mishima": "09:54",
+        "Shin-Fuji": "10:07",
+        "Shizuoka": "10:21",
+        "Kakegawa": "10:38",
+        "Hamamatsu": "10:52",
+        "Toyohashi": "11:09",
+        "Mikawa-Anjo": "11:26",
+        "Nagoya": "11:43",
+        "Gifu-Hashima": "11:58",
+        "Maibara": "12:16",
+        "Kyoto": "12:36",
+        "Shin-Osaka": "12:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129201.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 135,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "09:00",
+        "Shinagawa": "09:07",
+        "Shin-Yokohama": "09:18",
+        "Nagoya": "10:41",
+        "Kyoto": "11:16",
+        "Shin-Osaka": "11:32",
+        "Shin-Kobe": "11:45",
+        "Okayama": "12:18",
+        "Hiroshima": "12:56"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062781.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 135,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "09:00",
+        "Shinagawa": "09:07",
+        "Shin-Yokohama": "09:18",
+        "Nagoya": "10:41",
+        "Kyoto": "11:16",
+        "Shin-Osaka": "11:32",
+        "Shin-Kobe": "11:45",
+        "Okayama": "12:18",
+        "Hiroshima": "12:57",
+        "Tokuyama": "13:19",
+        "Kokura": "13:47",
+        "Hakata": "14:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067911.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 243,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:00",
+        "Shinagawa": "09:07",
+        "Shin-Yokohama": "09:18",
+        "Nagoya": "10:41",
+        "Kyoto": "11:16",
+        "Shin-Osaka": "11:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026331.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 705,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "09:03",
+        "Shinagawa": "09:10",
+        "Shin-Yokohama": "09:21",
+        "Mishima": "09:46",
+        "Shizuoka": "10:07",
+        "Hamamatsu": "10:31",
+        "Nagoya": "11:03",
+        "Kyoto": "11:43",
+        "Shin-Osaka": "11:59",
+        "Shin-Kobe": "12:12",
+        "Nishi-Akashi": "12:23",
+        "Himeji": "12:36",
+        "Aioi": "12:47",
+        "Okayama": "13:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128711.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 245,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:09",
+        "Shinagawa": "09:17",
+        "Shin-Yokohama": "09:29",
+        "Nagoya": "10:47",
+        "Kyoto": "11:22",
+        "Shin-Osaka": "11:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026321.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 19,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "09:12",
+        "Shinagawa": "09:19",
+        "Shin-Yokohama": "09:31",
+        "Nagoya": "10:49",
+        "Kyoto": "11:25",
+        "Shin-Osaka": "11:41",
+        "Shin-Kobe": "11:54",
+        "Okayama": "12:26",
+        "Hiroshima": "13:03",
+        "Shin-Yamaguchi": "13:34",
+        "Kokura": "13:54",
+        "Hakata": "14:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008021.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 343,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:18",
+        "Shinagawa": "09:25",
+        "Shin-Yokohama": "09:37",
+        "Nagoya": "10:55",
+        "Kyoto": "11:31",
+        "Shin-Osaka": "11:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026961.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 247,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:21",
+        "Shinagawa": "09:28",
+        "Shin-Yokohama": "09:39",
+        "Nagoya": "10:58",
+        "Kyoto": "11:33",
+        "Shin-Osaka": "11:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 345,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:24",
+        "Shinagawa": "09:31",
+        "Shin-Yokohama": "09:43",
+        "Nagoya": "11:05",
+        "Kyoto": "11:41",
+        "Shin-Osaka": "11:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026951.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 813,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "09:27",
+        "Shinagawa": "09:34",
+        "Shin-Yokohama": "09:45",
+        "Odawara": "10:05",
+        "Atami": "10:13",
+        "Mishima": "10:24",
+        "Shin-Fuji": "10:37",
+        "Shizuoka": "10:53",
+        "Kakegawa": "11:08",
+        "Hamamatsu": "11:23",
+        "Toyohashi": "11:39",
+        "Mikawa-Anjo": "11:55",
+        "Nagoya": "12:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129211.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 21,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "09:30",
+        "Shinagawa": "09:37",
+        "Shin-Yokohama": "09:48",
+        "Nagoya": "11:10",
+        "Kyoto": "11:46",
+        "Shin-Osaka": "12:02",
+        "Shin-Kobe": "12:15",
+        "Okayama": "12:48",
+        "Fukuyama": "13:04",
+        "Hiroshima": "13:28",
+        "Kokura": "14:14",
+        "Hakata": "14:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008391.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 347,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:33",
+        "Shinagawa": "09:40",
+        "Shin-Yokohama": "09:51",
+        "Nagoya": "11:14",
+        "Kyoto": "11:49",
+        "Shin-Osaka": "12:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026931.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 637,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:36",
+        "Shinagawa": "09:43",
+        "Shin-Yokohama": "09:54",
+        "Odawara": "10:11",
+        "Nagoya": "11:21",
+        "Gifu-Hashima": "11:35",
+        "Maibara": "11:53",
+        "Kyoto": "12:14",
+        "Shin-Osaka": "12:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026641.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 139,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "09:39",
+        "Shinagawa": "09:46",
+        "Shin-Yokohama": "09:58",
+        "Nagoya": "11:17",
+        "Kyoto": "11:52",
+        "Shin-Osaka": "12:08",
+        "Shin-Kobe": "12:21",
+        "Okayama": "12:54",
+        "Fukuyama": "13:10",
+        "Hiroshima": "13:34",
+        "Kokura": "14:23",
+        "Hakata": "14:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067921.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 249,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:39",
+        "Shinagawa": "09:46",
+        "Shin-Yokohama": "09:58",
+        "Nagoya": "11:17",
+        "Kyoto": "11:52",
+        "Shin-Osaka": "12:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026301.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 349,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:45",
+        "Shinagawa": "09:53",
+        "Shin-Yokohama": "10:05",
+        "Nagoya": "11:24",
+        "Kyoto": "11:59",
+        "Shin-Osaka": "12:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026921.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 65,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "09:48",
+        "Shinagawa": "09:55",
+        "Shin-Yokohama": "10:07",
+        "Nagoya": "11:27",
+        "Kyoto": "12:02",
+        "Shin-Osaka": "12:17",
+        "Shin-Kobe": "12:30",
+        "Himeji": "12:46",
+        "Okayama": "13:06",
+        "Hiroshima": "13:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089211.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 353,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:54",
+        "Shinagawa": "10:01",
+        "Shin-Yokohama": "10:13",
+        "Nagoya": "11:35",
+        "Kyoto": "12:11",
+        "Shin-Osaka": "12:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026901.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 815,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "09:57",
+        "Shinagawa": "10:04",
+        "Shin-Yokohama": "10:15",
+        "Odawara": "10:35",
+        "Atami": "10:43",
+        "Mishima": "10:54",
+        "Shin-Fuji": "11:07",
+        "Shizuoka": "11:21",
+        "Kakegawa": "11:38",
+        "Hamamatsu": "11:52",
+        "Toyohashi": "12:09",
+        "Mikawa-Anjo": "12:26",
+        "Nagoya": "12:43",
+        "Gifu-Hashima": "12:58",
+        "Maibara": "13:16",
+        "Kyoto": "13:36",
+        "Shin-Osaka": "13:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129221.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 143,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "10:00",
+        "Shinagawa": "10:07",
+        "Shin-Yokohama": "10:18",
+        "Nagoya": "11:41",
+        "Kyoto": "12:16",
+        "Shin-Osaka": "12:32",
+        "Shin-Kobe": "12:45",
+        "Okayama": "13:18",
+        "Hiroshima": "13:56",
+        "Tokuyama": "14:19",
+        "Kokura": "14:47",
+        "Hakata": "15:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062821.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 251,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:00",
+        "Shinagawa": "10:07",
+        "Shin-Yokohama": "10:18",
+        "Nagoya": "11:41",
+        "Kyoto": "12:16",
+        "Shin-Osaka": "12:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/033621.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 707,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "10:03",
+        "Shinagawa": "10:10",
+        "Shin-Yokohama": "10:21",
+        "Atami": "10:40",
+        "Shizuoka": "11:07",
+        "Hamamatsu": "11:31",
+        "Nagoya": "12:03",
+        "Kyoto": "12:43",
+        "Shin-Osaka": "12:59",
+        "Shin-Kobe": "13:12",
+        "Nishi-Akashi": "13:23",
+        "Himeji": "13:36",
+        "Aioi": "13:47",
+        "Okayama": "14:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128721.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 355,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:09",
+        "Shinagawa": "10:17",
+        "Shin-Yokohama": "10:29",
+        "Nagoya": "11:47",
+        "Kyoto": "12:22",
+        "Shin-Osaka": "12:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026891.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 23,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "10:12",
+        "Shinagawa": "10:19",
+        "Shin-Yokohama": "10:31",
+        "Nagoya": "11:49",
+        "Kyoto": "12:25",
+        "Shin-Osaka": "12:41",
+        "Shin-Kobe": "12:54",
+        "Okayama": "13:26",
+        "Hiroshima": "14:03",
+        "Shin-Yamaguchi": "14:34",
+        "Kokura": "14:54",
+        "Hakata": "15:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/009151.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 357,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:18",
+        "Shinagawa": "10:25",
+        "Shin-Yokohama": "10:37",
+        "Nagoya": "11:55",
+        "Kyoto": "12:31",
+        "Shin-Osaka": "12:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026881.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 253,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:21",
+        "Shinagawa": "10:28",
+        "Shin-Yokohama": "10:39",
+        "Nagoya": "11:58",
+        "Kyoto": "12:33",
+        "Shin-Osaka": "12:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032491.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 817,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "10:27",
+        "Shinagawa": "10:34",
+        "Shin-Yokohama": "10:45",
+        "Odawara": "11:05",
+        "Atami": "11:13",
+        "Mishima": "11:24",
+        "Shin-Fuji": "11:37",
+        "Shizuoka": "11:53",
+        "Kakegawa": "12:08",
+        "Hamamatsu": "12:23",
+        "Toyohashi": "12:39",
+        "Mikawa-Anjo": "12:56",
+        "Nagoya": "13:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129231.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 25,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "10:30",
+        "Shinagawa": "10:37",
+        "Shin-Yokohama": "10:48",
+        "Nagoya": "12:10",
+        "Kyoto": "12:46",
+        "Shin-Osaka": "13:02",
+        "Shin-Kobe": "13:15",
+        "Okayama": "13:48",
+        "Fukuyama": "14:04",
+        "Hiroshima": "14:28",
+        "Kokura": "15:14",
+        "Hakata": "15:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/009821.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 639,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:33",
+        "Shinagawa": "10:40",
+        "Shin-Yokohama": "10:51",
+        "Toyohashi": "12:00",
+        "Nagoya": "12:21",
+        "Gifu-Hashima": "12:35",
+        "Maibara": "12:53",
+        "Kyoto": "13:14",
+        "Shin-Osaka": "13:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062251.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 147,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "10:39",
+        "Shinagawa": "10:46",
+        "Shin-Yokohama": "10:58",
+        "Nagoya": "12:16",
+        "Kyoto": "12:52",
+        "Shin-Osaka": "13:08",
+        "Shin-Kobe": "13:21",
+        "Okayama": "13:54",
+        "Fukuyama": "14:10",
+        "Hiroshima": "14:34",
+        "Kokura": "15:23",
+        "Hakata": "15:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062851.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 361,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:39",
+        "Shinagawa": "10:46",
+        "Shin-Yokohama": "10:58",
+        "Nagoya": "12:16",
+        "Kyoto": "12:52",
+        "Shin-Osaka": "13:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026861.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 365,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:45",
+        "Shinagawa": "10:53",
+        "Shin-Yokohama": "11:05",
+        "Nagoya": "12:24",
+        "Kyoto": "12:59",
+        "Shin-Osaka": "13:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026841.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 67,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "10:48",
+        "Shinagawa": "10:55",
+        "Shin-Yokohama": "11:07",
+        "Nagoya": "12:27",
+        "Kyoto": "13:02",
+        "Shin-Osaka": "13:17",
+        "Shin-Kobe": "13:30",
+        "Himeji": "13:46",
+        "Okayama": "14:06",
+        "Hiroshima": "14:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089221.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 369,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:54",
+        "Shinagawa": "11:01",
+        "Shin-Yokohama": "11:13",
+        "Nagoya": "12:35",
+        "Kyoto": "13:11",
+        "Shin-Osaka": "13:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026821.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 819,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "10:57",
+        "Shinagawa": "11:04",
+        "Shin-Yokohama": "11:15",
+        "Odawara": "11:35",
+        "Atami": "11:43",
+        "Mishima": "11:55",
+        "Shin-Fuji": "12:08",
+        "Shizuoka": "12:21",
+        "Kakegawa": "12:36",
+        "Hamamatsu": "12:51",
+        "Toyohashi": "13:08",
+        "Mikawa-Anjo": "13:25",
+        "Nagoya": "13:43",
+        "Gifu-Hashima": "13:58",
+        "Maibara": "14:16",
+        "Kyoto": "14:36",
+        "Shin-Osaka": "14:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129241.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 255,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:00",
+        "Shinagawa": "11:07",
+        "Shin-Yokohama": "11:18",
+        "Nagoya": "12:41",
+        "Kyoto": "13:16",
+        "Shin-Osaka": "13:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026291.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 709,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "11:03",
+        "Shinagawa": "11:10",
+        "Shin-Yokohama": "11:21",
+        "Mishima": "11:46",
+        "Shizuoka": "12:07",
+        "Hamamatsu": "12:31",
+        "Nagoya": "13:03",
+        "Kyoto": "13:43",
+        "Shin-Osaka": "13:59",
+        "Shin-Kobe": "14:12",
+        "Nishi-Akashi": "14:23",
+        "Himeji": "14:36",
+        "Aioi": "14:47",
+        "Okayama": "15:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128731.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 371,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:09",
+        "Shinagawa": "11:17",
+        "Shin-Yokohama": "11:29",
+        "Nagoya": "12:47",
+        "Kyoto": "13:22",
+        "Shin-Osaka": "13:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026811.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 27,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "11:12",
+        "Shinagawa": "11:19",
+        "Shin-Yokohama": "11:31",
+        "Nagoya": "12:49",
+        "Kyoto": "13:25",
+        "Shin-Osaka": "13:41",
+        "Shin-Kobe": "13:54",
+        "Okayama": "14:26",
+        "Hiroshima": "15:03",
+        "Shin-Yamaguchi": "15:34",
+        "Kokura": "15:54",
+        "Hakata": "16:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023511.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 373,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:18",
+        "Shinagawa": "11:25",
+        "Shin-Yokohama": "11:37",
+        "Nagoya": "12:55",
+        "Kyoto": "13:31",
+        "Shin-Osaka": "13:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026801.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 375,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:21",
+        "Shinagawa": "11:28",
+        "Shin-Yokohama": "11:39",
+        "Nagoya": "12:58",
+        "Kyoto": "13:33",
+        "Shin-Osaka": "13:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026791.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 821,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "11:27",
+        "Shinagawa": "11:34",
+        "Shin-Yokohama": "11:45",
+        "Odawara": "12:02",
+        "Atami": "12:10",
+        "Mishima": "12:22",
+        "Shin-Fuji": "12:37",
+        "Shizuoka": "12:52",
+        "Kakegawa": "13:08",
+        "Hamamatsu": "13:23",
+        "Toyohashi": "13:39",
+        "Mikawa-Anjo": "13:56",
+        "Nagoya": "14:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129251.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 29,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "11:30",
+        "Shinagawa": "11:37",
+        "Shin-Yokohama": "11:48",
+        "Nagoya": "13:10",
+        "Kyoto": "13:46",
+        "Shin-Osaka": "14:02",
+        "Shin-Kobe": "14:15",
+        "Okayama": "14:47",
+        "Fukuyama": "15:04",
+        "Hiroshima": "15:28",
+        "Kokura": "16:14",
+        "Hakata": "16:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019881.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 641,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:33",
+        "Shinagawa": "11:40",
+        "Shin-Yokohama": "11:51",
+        "Odawara": "12:07",
+        "Nagoya": "13:19",
+        "Gifu-Hashima": "13:35",
+        "Maibara": "13:53",
+        "Kyoto": "14:13",
+        "Shin-Osaka": "14:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 155,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "11:39",
+        "Shinagawa": "11:46",
+        "Shin-Yokohama": "11:58",
+        "Nagoya": "13:17",
+        "Kyoto": "13:52",
+        "Shin-Osaka": "14:08",
+        "Shin-Kobe": "14:21",
+        "Okayama": "14:54",
+        "Fukuyama": "15:10",
+        "Hiroshima": "15:34",
+        "Kokura": "16:23",
+        "Hakata": "16:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115141.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 379,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:39",
+        "Shinagawa": "11:46",
+        "Shin-Yokohama": "11:58",
+        "Nagoya": "13:17",
+        "Kyoto": "13:52",
+        "Shin-Osaka": "14:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026771.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 69,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "11:48",
+        "Shinagawa": "11:55",
+        "Shin-Yokohama": "12:07",
+        "Nagoya": "13:26",
+        "Kyoto": "14:02",
+        "Shin-Osaka": "14:17",
+        "Shin-Kobe": "14:30",
+        "Himeji": "14:46",
+        "Okayama": "15:06",
+        "Hiroshima": "15:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089231.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 383,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:51",
+        "Shinagawa": "11:59",
+        "Shin-Yokohama": "12:10",
+        "Nagoya": "13:32",
+        "Kyoto": "14:07",
+        "Shin-Osaka": "14:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026751.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 385,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:54",
+        "Shinagawa": "12:01",
+        "Shin-Yokohama": "12:13",
+        "Nagoya": "13:35",
+        "Kyoto": "14:11",
+        "Shin-Osaka": "14:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026731.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 823,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "11:57",
+        "Shinagawa": "12:04",
+        "Shin-Yokohama": "12:15",
+        "Odawara": "12:35",
+        "Atami": "12:43",
+        "Mishima": "12:55",
+        "Shin-Fuji": "13:08",
+        "Shizuoka": "13:21",
+        "Kakegawa": "13:38",
+        "Hamamatsu": "13:51",
+        "Toyohashi": "14:08",
+        "Mikawa-Anjo": "14:25",
+        "Nagoya": "14:43",
+        "Gifu-Hashima": "14:58",
+        "Maibara": "15:16",
+        "Kyoto": "15:36",
+        "Shin-Osaka": "15:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129261.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 257,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:00",
+        "Shinagawa": "12:07",
+        "Shin-Yokohama": "12:18",
+        "Nagoya": "13:41",
+        "Kyoto": "14:16",
+        "Shin-Osaka": "14:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/035/038131.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 711,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "12:03",
+        "Shinagawa": "12:10",
+        "Shin-Yokohama": "12:21",
+        "Shizuoka": "13:07",
+        "Hamamatsu": "13:31",
+        "Nagoya": "14:03",
+        "Kyoto": "14:43",
+        "Shin-Osaka": "14:59",
+        "Shin-Kobe": "15:12",
+        "Nishi-Akashi": "15:23",
+        "Himeji": "15:36",
+        "Aioi": "15:47",
+        "Okayama": "16:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128741.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 31,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "12:12",
+        "Shinagawa": "12:19",
+        "Shin-Yokohama": "12:31",
+        "Nagoya": "13:49",
+        "Kyoto": "14:25",
+        "Shin-Osaka": "14:41",
+        "Shin-Kobe": "14:54",
+        "Okayama": "15:26",
+        "Hiroshima": "16:03",
+        "Shin-Yamaguchi": "16:34",
+        "Kokura": "16:54",
+        "Hakata": "17:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019891.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 389,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:18",
+        "Shinagawa": "12:25",
+        "Shin-Yokohama": "12:37",
+        "Nagoya": "13:55",
+        "Kyoto": "14:31",
+        "Shin-Osaka": "14:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026691.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 393,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:24",
+        "Shinagawa": "12:31",
+        "Shin-Yokohama": "12:43",
+        "Nagoya": "14:05",
+        "Kyoto": "14:41",
+        "Shin-Osaka": "14:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026671.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 825,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "12:27",
+        "Shinagawa": "12:34",
+        "Shin-Yokohama": "12:45",
+        "Odawara": "13:05",
+        "Atami": "13:13",
+        "Mishima": "13:25",
+        "Shin-Fuji": "13:37",
+        "Shizuoka": "13:52",
+        "Kakegawa": "14:08",
+        "Hamamatsu": "14:23",
+        "Toyohashi": "14:39",
+        "Mikawa-Anjo": "14:56",
+        "Nagoya": "15:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129271.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 33,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "12:30",
+        "Shinagawa": "12:37",
+        "Shin-Yokohama": "12:48",
+        "Nagoya": "14:10",
+        "Kyoto": "14:46",
+        "Shin-Osaka": "15:02",
+        "Shin-Kobe": "15:15",
+        "Okayama": "15:47",
+        "Fukuyama": "16:04",
+        "Hiroshima": "16:28",
+        "Kokura": "17:14",
+        "Hakata": "17:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019901.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 643,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:33",
+        "Shinagawa": "12:40",
+        "Shin-Yokohama": "12:51",
+        "Toyohashi": "13:54",
+        "Nagoya": "14:19",
+        "Gifu-Hashima": "14:35",
+        "Maibara": "14:53",
+        "Kyoto": "15:13",
+        "Shin-Osaka": "15:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062281.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 163,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "12:39",
+        "Shinagawa": "12:46",
+        "Shin-Yokohama": "12:58",
+        "Nagoya": "14:17",
+        "Kyoto": "14:52",
+        "Shin-Osaka": "15:08",
+        "Shin-Kobe": "15:21",
+        "Okayama": "15:54",
+        "Fukuyama": "16:10",
+        "Hiroshima": "16:34",
+        "Kokura": "17:23",
+        "Hakata": "17:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034231.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 397,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:42",
+        "Shinagawa": "12:49",
+        "Shin-Yokohama": "13:00",
+        "Nagoya": "14:23",
+        "Kyoto": "14:59",
+        "Shin-Osaka": "15:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026661.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 71,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "12:48",
+        "Shinagawa": "12:55",
+        "Shin-Yokohama": "13:07",
+        "Nagoya": "14:26",
+        "Kyoto": "15:02",
+        "Shin-Osaka": "15:17",
+        "Shin-Kobe": "15:30",
+        "Himeji": "15:46",
+        "Okayama": "16:06",
+        "Hiroshima": "16:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089241.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 399,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:51",
+        "Shinagawa": "12:59",
+        "Shin-Yokohama": "13:10",
+        "Nagoya": "14:32",
+        "Kyoto": "15:07",
+        "Shin-Osaka": "15:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026571.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 827,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "12:57",
+        "Shinagawa": "13:04",
+        "Shin-Yokohama": "13:15",
+        "Odawara": "13:35",
+        "Atami": "13:43",
+        "Mishima": "13:55",
+        "Shin-Fuji": "14:08",
+        "Shizuoka": "14:21",
+        "Kakegawa": "14:36",
+        "Hamamatsu": "14:51",
+        "Toyohashi": "15:08",
+        "Mikawa-Anjo": "15:25",
+        "Nagoya": "15:43",
+        "Gifu-Hashima": "15:58",
+        "Maibara": "16:16",
+        "Kyoto": "16:36",
+        "Shin-Osaka": "16:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129281.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 259,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:00",
+        "Shinagawa": "13:07",
+        "Shin-Yokohama": "13:18",
+        "Nagoya": "14:41",
+        "Kyoto": "15:16",
+        "Shin-Osaka": "15:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026271.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 713,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "13:03",
+        "Shinagawa": "13:10",
+        "Shin-Yokohama": "13:21",
+        "Mishima": "13:46",
+        "Shizuoka": "14:07",
+        "Hamamatsu": "14:31",
+        "Nagoya": "15:03",
+        "Kyoto": "15:43",
+        "Shin-Osaka": "15:59",
+        "Shin-Kobe": "16:12",
+        "Nishi-Akashi": "16:23",
+        "Himeji": "16:36",
+        "Aioi": "16:47",
+        "Okayama": "17:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128751.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 403,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:09",
+        "Shinagawa": "13:17",
+        "Shin-Yokohama": "13:29",
+        "Nagoya": "14:47",
+        "Kyoto": "15:22",
+        "Shin-Osaka": "15:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026551.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 35,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "13:12",
+        "Shinagawa": "13:19",
+        "Shin-Yokohama": "13:31",
+        "Nagoya": "14:49",
+        "Kyoto": "15:25",
+        "Shin-Osaka": "15:41",
+        "Shin-Kobe": "15:54",
+        "Okayama": "16:26",
+        "Hiroshima": "17:03",
+        "Shin-Yamaguchi": "17:34",
+        "Kokura": "17:54",
+        "Hakata": "18:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 169,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "13:21",
+        "Shinagawa": "13:28",
+        "Shin-Yokohama": "13:39",
+        "Nagoya": "14:58",
+        "Kyoto": "15:33",
+        "Shin-Osaka": "15:50",
+        "Shin-Kobe": "16:03",
+        "Okayama": "16:36",
+        "Hiroshima": "17:11"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/031601.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 407,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:21",
+        "Shinagawa": "13:28",
+        "Shin-Yokohama": "13:39",
+        "Nagoya": "14:58",
+        "Kyoto": "15:33",
+        "Shin-Osaka": "15:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026531.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 829,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "13:27",
+        "Shinagawa": "13:34",
+        "Shin-Yokohama": "13:45",
+        "Odawara": "14:02",
+        "Atami": "14:10",
+        "Mishima": "14:22",
+        "Shin-Fuji": "14:37",
+        "Shizuoka": "14:52",
+        "Kakegawa": "15:08",
+        "Hamamatsu": "15:23",
+        "Toyohashi": "15:39",
+        "Mikawa-Anjo": "15:56",
+        "Nagoya": "16:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129291.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 37,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "13:30",
+        "Shinagawa": "13:37",
+        "Shin-Yokohama": "13:48",
+        "Nagoya": "15:10",
+        "Kyoto": "15:46",
+        "Shin-Osaka": "16:02",
+        "Shin-Kobe": "16:15",
+        "Okayama": "16:47",
+        "Fukuyama": "17:04",
+        "Hiroshima": "17:28",
+        "Kokura": "18:14",
+        "Hakata": "18:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023491.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 645,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:33",
+        "Shinagawa": "13:40",
+        "Shin-Yokohama": "13:51",
+        "Odawara": "14:07",
+        "Nagoya": "15:19",
+        "Gifu-Hashima": "15:35",
+        "Maibara": "15:53",
+        "Kyoto": "16:13",
+        "Shin-Osaka": "16:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 173,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "13:42",
+        "Shinagawa": "13:49",
+        "Shin-Yokohama": "14:00",
+        "Nagoya": "15:23",
+        "Kyoto": "15:59",
+        "Shin-Osaka": "16:14",
+        "Shin-Kobe": "16:27",
+        "Okayama": "16:59",
+        "Hiroshima": "17:37"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/045/047741.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 413,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:42",
+        "Shinagawa": "13:49",
+        "Shin-Yokohama": "14:00",
+        "Nagoya": "15:23",
+        "Kyoto": "15:59",
+        "Shin-Osaka": "16:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/031621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 73,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "13:48",
+        "Shinagawa": "13:55",
+        "Shin-Yokohama": "14:07",
+        "Nagoya": "15:26",
+        "Kyoto": "16:02",
+        "Shin-Osaka": "16:17",
+        "Shin-Kobe": "16:30",
+        "Himeji": "16:46",
+        "Okayama": "17:06",
+        "Hiroshima": "17:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089251.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 417,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:54",
+        "Shinagawa": "14:01",
+        "Shin-Yokohama": "14:13",
+        "Nagoya": "15:35",
+        "Kyoto": "16:11",
+        "Shin-Osaka": "16:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032521.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 831,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "13:57",
+        "Shinagawa": "14:04",
+        "Shin-Yokohama": "14:15",
+        "Odawara": "14:35",
+        "Atami": "14:43",
+        "Mishima": "14:55",
+        "Shin-Fuji": "15:08",
+        "Shizuoka": "15:21",
+        "Kakegawa": "15:38",
+        "Hamamatsu": "15:51",
+        "Toyohashi": "16:08",
+        "Mikawa-Anjo": "16:25",
+        "Nagoya": "16:43",
+        "Gifu-Hashima": "16:58",
+        "Maibara": "17:16",
+        "Kyoto": "17:36",
+        "Shin-Osaka": "17:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129301.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 261,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:00",
+        "Shinagawa": "14:07",
+        "Shin-Yokohama": "14:18",
+        "Nagoya": "15:41",
+        "Kyoto": "16:16",
+        "Shin-Osaka": "16:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026261.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 715,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "14:03",
+        "Shinagawa": "14:10",
+        "Shin-Yokohama": "14:21",
+        "Shizuoka": "15:07",
+        "Hamamatsu": "15:31",
+        "Nagoya": "16:03",
+        "Kyoto": "16:43",
+        "Shin-Osaka": "16:59",
+        "Shin-Kobe": "17:12",
+        "Nishi-Akashi": "17:23",
+        "Himeji": "17:36",
+        "Aioi": "17:47",
+        "Okayama": "18:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128761.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 419,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:09",
+        "Shinagawa": "14:17",
+        "Shin-Yokohama": "14:29",
+        "Nagoya": "15:47",
+        "Kyoto": "16:22",
+        "Shin-Osaka": "16:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032511.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 39,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "14:12",
+        "Shinagawa": "14:19",
+        "Shin-Yokohama": "14:31",
+        "Nagoya": "15:49",
+        "Kyoto": "16:25",
+        "Shin-Osaka": "16:41",
+        "Shin-Kobe": "16:54",
+        "Okayama": "17:26",
+        "Hiroshima": "18:03",
+        "Shin-Yamaguchi": "18:34",
+        "Kokura": "18:54",
+        "Hakata": "19:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023481.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 421,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:18",
+        "Shinagawa": "14:25",
+        "Shin-Yokohama": "14:37",
+        "Nagoya": "15:55",
+        "Kyoto": "16:31",
+        "Shin-Osaka": "16:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032501.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 177,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "14:21",
+        "Shinagawa": "14:28",
+        "Shin-Yokohama": "14:39",
+        "Nagoya": "15:58",
+        "Kyoto": "16:33",
+        "Shin-Osaka": "16:50",
+        "Shin-Kobe": "17:03",
+        "Okayama": "17:36",
+        "Hiroshima": "18:12",
+        "Shin-Yamaguchi": "18:43",
+        "Kokura": "19:03",
+        "Hakata": "19:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062911.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 177,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "14:21",
+        "Shinagawa": "14:28",
+        "Shin-Yokohama": "14:39",
+        "Nagoya": "15:58",
+        "Kyoto": "16:33",
+        "Shin-Osaka": "16:50",
+        "Shin-Kobe": "17:03",
+        "Okayama": "17:36",
+        "Hiroshima": "18:11"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115261.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 423,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:21",
+        "Shinagawa": "14:28",
+        "Shin-Yokohama": "14:39",
+        "Nagoya": "15:58",
+        "Kyoto": "16:33",
+        "Shin-Osaka": "16:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034191.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 425,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:24",
+        "Shinagawa": "14:31",
+        "Shin-Yokohama": "14:43",
+        "Nagoya": "16:05",
+        "Kyoto": "16:41",
+        "Shin-Osaka": "16:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034181.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 833,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "14:27",
+        "Shinagawa": "14:34",
+        "Shin-Yokohama": "14:45",
+        "Odawara": "15:05",
+        "Atami": "15:13",
+        "Mishima": "15:25",
+        "Shin-Fuji": "15:37",
+        "Shizuoka": "15:52",
+        "Kakegawa": "16:08",
+        "Hamamatsu": "16:23",
+        "Toyohashi": "16:39",
+        "Mikawa-Anjo": "16:56",
+        "Nagoya": "17:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 41,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "14:30",
+        "Shinagawa": "14:37",
+        "Shin-Yokohama": "14:48",
+        "Nagoya": "16:10",
+        "Kyoto": "16:46",
+        "Shin-Osaka": "17:02",
+        "Shin-Kobe": "17:15",
+        "Okayama": "17:47",
+        "Hiroshima": "18:24",
+        "Tokuyama": "18:46",
+        "Kokura": "19:14",
+        "Hakata": "19:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023451.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 647,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:33",
+        "Shinagawa": "14:40",
+        "Shin-Yokohama": "14:51",
+        "Toyohashi": "15:54",
+        "Nagoya": "16:19",
+        "Gifu-Hashima": "16:35",
+        "Maibara": "16:53",
+        "Kyoto": "17:13",
+        "Shin-Osaka": "17:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062291.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 179,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "14:39",
+        "Shinagawa": "14:46",
+        "Shin-Yokohama": "14:58",
+        "Nagoya": "16:17",
+        "Kyoto": "16:52",
+        "Shin-Osaka": "17:08",
+        "Shin-Kobe": "17:21",
+        "Okayama": "17:54",
+        "Fukuyama": "18:10",
+        "Hiroshima": "18:34",
+        "Kokura": "19:23",
+        "Hakata": "19:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/045/047721.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 427,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:39",
+        "Shinagawa": "14:46",
+        "Shin-Yokohama": "14:58",
+        "Nagoya": "16:17",
+        "Kyoto": "16:52",
+        "Shin-Osaka": "17:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034171.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 181,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "14:42",
+        "Shinagawa": "14:49",
+        "Shin-Yokohama": "15:00",
+        "Nagoya": "16:23",
+        "Kyoto": "16:59",
+        "Shin-Osaka": "17:14",
+        "Shin-Kobe": "17:27",
+        "Okayama": "17:59",
+        "Hiroshima": "18:38",
+        "Shin-Yamaguchi": "19:09",
+        "Kokura": "19:29",
+        "Hakata": "19:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062921.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 429,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:42",
+        "Shinagawa": "14:49",
+        "Shin-Yokohama": "15:00",
+        "Nagoya": "16:23",
+        "Kyoto": "16:59",
+        "Shin-Osaka": "17:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034161.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 75,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "14:48",
+        "Shinagawa": "14:55",
+        "Shin-Yokohama": "15:07",
+        "Nagoya": "16:26",
+        "Kyoto": "17:02",
+        "Shin-Osaka": "17:17",
+        "Shin-Kobe": "17:30",
+        "Himeji": "17:46",
+        "Okayama": "18:06",
+        "Fukuyama": "18:23",
+        "Hiroshima": "18:46"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089261.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 431,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:51",
+        "Shinagawa": "14:59",
+        "Shin-Yokohama": "15:10",
+        "Nagoya": "16:32",
+        "Kyoto": "17:07",
+        "Shin-Osaka": "17:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/035/038121.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 835,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "14:57",
+        "Shinagawa": "15:04",
+        "Shin-Yokohama": "15:15",
+        "Odawara": "15:35",
+        "Atami": "15:43",
+        "Mishima": "15:55",
+        "Shin-Fuji": "16:08",
+        "Shizuoka": "16:21",
+        "Kakegawa": "16:36",
+        "Hamamatsu": "16:51",
+        "Toyohashi": "17:08",
+        "Mikawa-Anjo": "17:25",
+        "Nagoya": "17:43",
+        "Gifu-Hashima": "17:58",
+        "Maibara": "18:16",
+        "Kyoto": "18:36",
+        "Shin-Osaka": "18:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129321.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 263,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:00",
+        "Shinagawa": "15:07",
+        "Shin-Yokohama": "15:18",
+        "Nagoya": "16:41",
+        "Kyoto": "17:16",
+        "Shin-Osaka": "17:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026251.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 717,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "15:03",
+        "Shinagawa": "15:10",
+        "Shin-Yokohama": "15:21",
+        "Mishima": "15:46",
+        "Shizuoka": "16:07",
+        "Hamamatsu": "16:31",
+        "Nagoya": "17:03",
+        "Kyoto": "17:43",
+        "Shin-Osaka": "17:59",
+        "Shin-Kobe": "18:12",
+        "Nishi-Akashi": "18:23",
+        "Himeji": "18:36",
+        "Aioi": "18:47",
+        "Okayama": "19:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128771.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 435,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:09",
+        "Shinagawa": "15:17",
+        "Shin-Yokohama": "15:29",
+        "Nagoya": "16:47",
+        "Kyoto": "17:22",
+        "Shin-Osaka": "17:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062751.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 43,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "15:12",
+        "Shinagawa": "15:19",
+        "Shin-Yokohama": "15:31",
+        "Nagoya": "16:49",
+        "Kyoto": "17:25",
+        "Shin-Osaka": "17:41",
+        "Shin-Kobe": "17:54",
+        "Okayama": "18:26",
+        "Hiroshima": "19:03",
+        "Shin-Yamaguchi": "19:34",
+        "Kokura": "19:54",
+        "Hakata": "20:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023431.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 437,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:18",
+        "Shinagawa": "15:25",
+        "Shin-Yokohama": "15:37",
+        "Nagoya": "16:55",
+        "Kyoto": "17:31",
+        "Shin-Osaka": "17:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062741.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 185,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "15:21",
+        "Shinagawa": "15:28",
+        "Shin-Yokohama": "15:39",
+        "Nagoya": "16:58",
+        "Kyoto": "17:33",
+        "Shin-Osaka": "17:50",
+        "Shin-Kobe": "18:03",
+        "Himeji": "18:19",
+        "Okayama": "18:40",
+        "Hiroshima": "19:16",
+        "Kokura": "20:03",
+        "Hakata": "20:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062931.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 185,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "15:21",
+        "Shinagawa": "15:28",
+        "Shin-Yokohama": "15:39",
+        "Nagoya": "16:58",
+        "Kyoto": "17:33",
+        "Shin-Osaka": "17:50",
+        "Shin-Kobe": "18:03",
+        "Himeji": "18:19",
+        "Okayama": "18:40",
+        "Hiroshima": "19:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115271.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 439,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:21",
+        "Shinagawa": "15:28",
+        "Shin-Yokohama": "15:39",
+        "Nagoya": "16:58",
+        "Kyoto": "17:33",
+        "Shin-Osaka": "17:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062731.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 441,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:24",
+        "Shinagawa": "15:31",
+        "Shin-Yokohama": "15:43",
+        "Nagoya": "17:05",
+        "Kyoto": "17:41",
+        "Shin-Osaka": "17:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062721.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 837,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "15:27",
+        "Shinagawa": "15:34",
+        "Shin-Yokohama": "15:45",
+        "Odawara": "16:02",
+        "Atami": "16:10",
+        "Mishima": "16:22",
+        "Shin-Fuji": "16:37",
+        "Shizuoka": "16:52",
+        "Kakegawa": "17:08",
+        "Hamamatsu": "17:23",
+        "Toyohashi": "17:39",
+        "Mikawa-Anjo": "17:56",
+        "Nagoya": "18:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129331.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 45,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "15:30",
+        "Shinagawa": "15:37",
+        "Shin-Yokohama": "15:48",
+        "Nagoya": "17:10",
+        "Kyoto": "17:46",
+        "Shin-Osaka": "18:02",
+        "Shin-Kobe": "18:15",
+        "Okayama": "18:47",
+        "Hiroshima": "19:24",
+        "Tokuyama": "19:46",
+        "Kokura": "20:14",
+        "Hakata": "20:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023421.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 649,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:33",
+        "Shinagawa": "15:40",
+        "Shin-Yokohama": "15:51",
+        "Odawara": "16:07",
+        "Nagoya": "17:19",
+        "Gifu-Hashima": "17:35",
+        "Maibara": "17:53",
+        "Kyoto": "18:13",
+        "Shin-Osaka": "18:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026611.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 187,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "15:39",
+        "Shinagawa": "15:46",
+        "Shin-Yokohama": "15:58",
+        "Nagoya": "17:17",
+        "Kyoto": "17:52",
+        "Shin-Osaka": "18:08",
+        "Shin-Kobe": "18:21",
+        "Okayama": "18:54",
+        "Fukuyama": "19:10",
+        "Hiroshima": "19:34",
+        "Kokura": "20:23",
+        "Hakata": "20:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177631.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 265,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:39",
+        "Shinagawa": "15:46",
+        "Shin-Yokohama": "15:58",
+        "Nagoya": "17:17",
+        "Kyoto": "17:52",
+        "Shin-Osaka": "18:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111191.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 189,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "15:42",
+        "Shinagawa": "15:49",
+        "Shin-Yokohama": "16:00",
+        "Nagoya": "17:23",
+        "Kyoto": "17:59",
+        "Shin-Osaka": "18:14",
+        "Shin-Kobe": "18:27",
+        "Okayama": "18:59",
+        "Hiroshima": "19:38",
+        "Shin-Yamaguchi": "20:09",
+        "Kokura": "20:29",
+        "Hakata": "20:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026711.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 77,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "15:48",
+        "Shinagawa": "15:55",
+        "Shin-Yokohama": "16:07",
+        "Nagoya": "17:26",
+        "Kyoto": "18:02",
+        "Shin-Osaka": "18:17",
+        "Shin-Kobe": "18:30",
+        "Himeji": "18:46",
+        "Okayama": "19:06",
+        "Fukuyama": "19:23",
+        "Hiroshima": "19:46"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089271.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 447,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:54",
+        "Shinagawa": "16:01",
+        "Shin-Yokohama": "16:13",
+        "Nagoya": "17:35",
+        "Kyoto": "18:11",
+        "Shin-Osaka": "18:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062701.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 839,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "15:57",
+        "Shinagawa": "16:04",
+        "Shin-Yokohama": "16:15",
+        "Odawara": "16:35",
+        "Atami": "16:43",
+        "Mishima": "16:55",
+        "Shin-Fuji": "17:08",
+        "Shizuoka": "17:21",
+        "Kakegawa": "17:38",
+        "Hamamatsu": "17:51",
+        "Toyohashi": "18:08",
+        "Mikawa-Anjo": "18:25",
+        "Nagoya": "18:43",
+        "Gifu-Hashima": "18:58",
+        "Maibara": "19:16",
+        "Kyoto": "19:36",
+        "Shin-Osaka": "19:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129341.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 191,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "16:00",
+        "Shinagawa": "16:07",
+        "Shin-Yokohama": "16:18",
+        "Nagoya": "17:41",
+        "Kyoto": "18:16",
+        "Shin-Osaka": "18:32",
+        "Shin-Kobe": "18:45",
+        "Okayama": "19:17",
+        "Hiroshima": "19:56",
+        "Tokuyama": "20:19",
+        "Kokura": "20:47",
+        "Hakata": "21:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 267,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:00",
+        "Shinagawa": "16:07",
+        "Shin-Yokohama": "16:18",
+        "Nagoya": "17:41",
+        "Kyoto": "18:16",
+        "Shin-Osaka": "18:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111201.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 719,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "16:03",
+        "Shinagawa": "16:10",
+        "Shin-Yokohama": "16:21",
+        "Atami": "16:40",
+        "Shizuoka": "17:07",
+        "Hamamatsu": "17:31",
+        "Nagoya": "18:03",
+        "Kyoto": "18:43",
+        "Shin-Osaka": "18:59",
+        "Shin-Kobe": "19:12",
+        "Nishi-Akashi": "19:23",
+        "Himeji": "19:36",
+        "Aioi": "19:47",
+        "Okayama": "20:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128781.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 449,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:09",
+        "Shinagawa": "16:17",
+        "Shin-Yokohama": "16:29",
+        "Nagoya": "17:47",
+        "Kyoto": "18:22",
+        "Shin-Osaka": "18:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062691.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 47,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "16:12",
+        "Shinagawa": "16:19",
+        "Shin-Yokohama": "16:31",
+        "Nagoya": "17:49",
+        "Kyoto": "18:25",
+        "Shin-Osaka": "18:41",
+        "Shin-Kobe": "18:54",
+        "Okayama": "19:27",
+        "Hiroshima": "20:03",
+        "Shin-Yamaguchi": "20:34",
+        "Kokura": "20:54",
+        "Hakata": "21:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023411.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 451,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:18",
+        "Shinagawa": "16:25",
+        "Shin-Yokohama": "16:37",
+        "Nagoya": "17:55",
+        "Kyoto": "18:31",
+        "Shin-Osaka": "18:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062681.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 193,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "16:21",
+        "Shinagawa": "16:28",
+        "Shin-Yokohama": "16:39",
+        "Nagoya": "17:58",
+        "Kyoto": "18:33",
+        "Shin-Osaka": "18:50",
+        "Shin-Kobe": "19:03",
+        "Okayama": "19:37",
+        "Hiroshima": "20:11"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115281.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 193,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "16:21",
+        "Shinagawa": "16:28",
+        "Shin-Yokohama": "16:39",
+        "Nagoya": "17:58",
+        "Kyoto": "18:33",
+        "Shin-Osaka": "18:50",
+        "Shin-Kobe": "19:03",
+        "Okayama": "19:37",
+        "Hiroshima": "20:12",
+        "Shin-Yamaguchi": "20:43",
+        "Kokura": "21:03",
+        "Hakata": "21:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089591.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 453,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:21",
+        "Shinagawa": "16:28",
+        "Shin-Yokohama": "16:39",
+        "Nagoya": "17:58",
+        "Kyoto": "18:33",
+        "Shin-Osaka": "18:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062671.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 455,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:24",
+        "Shinagawa": "16:31",
+        "Shin-Yokohama": "16:43",
+        "Nagoya": "18:05",
+        "Kyoto": "18:41",
+        "Shin-Osaka": "18:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062661.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 841,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "16:27",
+        "Shinagawa": "16:34",
+        "Shin-Yokohama": "16:45",
+        "Odawara": "17:05",
+        "Atami": "17:13",
+        "Mishima": "17:25",
+        "Shin-Fuji": "17:37",
+        "Shizuoka": "17:52",
+        "Kakegawa": "18:08",
+        "Hamamatsu": "18:23",
+        "Toyohashi": "18:39",
+        "Mikawa-Anjo": "18:56",
+        "Nagoya": "19:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129351.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 49,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "16:30",
+        "Shinagawa": "16:37",
+        "Shin-Yokohama": "16:48",
+        "Nagoya": "18:10",
+        "Kyoto": "18:46",
+        "Shin-Osaka": "19:02",
+        "Shin-Kobe": "19:15",
+        "Okayama": "19:47",
+        "Fukuyama": "20:04",
+        "Hiroshima": "20:28",
+        "Kokura": "21:14",
+        "Hakata": "21:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023401.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 651,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:33",
+        "Shinagawa": "16:40",
+        "Shin-Yokohama": "16:51",
+        "Toyohashi": "17:54",
+        "Nagoya": "18:19",
+        "Gifu-Hashima": "18:35",
+        "Maibara": "18:53",
+        "Kyoto": "19:13",
+        "Shin-Osaka": "19:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062301.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 195,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "16:39",
+        "Shinagawa": "16:46",
+        "Shin-Yokohama": "16:58",
+        "Nagoya": "18:17",
+        "Kyoto": "18:52",
+        "Shin-Osaka": "19:08",
+        "Shin-Kobe": "19:21",
+        "Okayama": "19:54",
+        "Fukuyama": "20:10",
+        "Hiroshima": "20:34",
+        "Kokura": "21:23",
+        "Hakata": "21:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089601.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 269,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:39",
+        "Shinagawa": "16:46",
+        "Shin-Yokohama": "16:58",
+        "Nagoya": "18:17",
+        "Kyoto": "18:52",
+        "Shin-Osaka": "19:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111211.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 457,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:42",
+        "Shinagawa": "16:49",
+        "Shin-Yokohama": "17:00",
+        "Nagoya": "18:23",
+        "Kyoto": "18:59",
+        "Shin-Osaka": "19:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062651.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 51,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "16:48",
+        "Shinagawa": "16:55",
+        "Shin-Yokohama": "17:07",
+        "Nagoya": "18:26",
+        "Kyoto": "19:02",
+        "Shin-Osaka": "19:17",
+        "Shin-Kobe": "19:30",
+        "Himeji": "19:46",
+        "Okayama": "20:06",
+        "Hiroshima": "20:43",
+        "Kokura": "21:29",
+        "Hakata": "21:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023391.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 459,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "16:51",
+        "Shinagawa": "16:59",
+        "Shin-Yokohama": "17:10",
+        "Nagoya": "18:32",
+        "Kyoto": "19:07",
+        "Shin-Osaka": "19:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062641.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 843,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "16:57",
+        "Shinagawa": "17:04",
+        "Shin-Yokohama": "17:15",
+        "Odawara": "17:35",
+        "Atami": "17:43",
+        "Mishima": "17:55",
+        "Shin-Fuji": "18:08",
+        "Shizuoka": "18:21",
+        "Kakegawa": "18:36",
+        "Hamamatsu": "18:51",
+        "Toyohashi": "19:08",
+        "Mikawa-Anjo": "19:25",
+        "Nagoya": "19:37"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129361.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 199,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "17:00",
+        "Shinagawa": "17:07",
+        "Shin-Yokohama": "17:18",
+        "Nagoya": "18:41",
+        "Kyoto": "19:16",
+        "Shin-Osaka": "19:32",
+        "Shin-Kobe": "19:45",
+        "Okayama": "20:17",
+        "Hiroshima": "20:55",
+        "Tokuyama": "21:19",
+        "Kokura": "21:47",
+        "Hakata": "22:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115161.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 271,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:00",
+        "Shinagawa": "17:07",
+        "Shin-Yokohama": "17:18",
+        "Nagoya": "18:41",
+        "Kyoto": "19:16",
+        "Shin-Osaka": "19:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111221.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 721,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "17:03",
+        "Shinagawa": "17:10",
+        "Shin-Yokohama": "17:21",
+        "Mishima": "17:46",
+        "Shizuoka": "18:07",
+        "Hamamatsu": "18:31",
+        "Nagoya": "19:03",
+        "Kyoto": "19:43",
+        "Shin-Osaka": "19:59",
+        "Shin-Kobe": "20:12",
+        "Nishi-Akashi": "20:23",
+        "Himeji": "20:36",
+        "Aioi": "20:47",
+        "Okayama": "21:02"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128791.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 463,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:09",
+        "Shinagawa": "17:17",
+        "Shin-Yokohama": "17:29",
+        "Nagoya": "18:47",
+        "Kyoto": "19:22",
+        "Shin-Osaka": "19:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 53,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "17:12",
+        "Shinagawa": "17:19",
+        "Shin-Yokohama": "17:31",
+        "Nagoya": "18:49",
+        "Kyoto": "19:25",
+        "Shin-Osaka": "19:41",
+        "Shin-Kobe": "19:54",
+        "Okayama": "20:26",
+        "Hiroshima": "21:03",
+        "Shin-Yamaguchi": "21:34",
+        "Kokura": "21:54",
+        "Hakata": "22:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/025691.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 465,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:18",
+        "Shinagawa": "17:25",
+        "Shin-Yokohama": "17:37",
+        "Nagoya": "18:55",
+        "Kyoto": "19:31",
+        "Shin-Osaka": "19:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062611.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 201,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "17:21",
+        "Shinagawa": "17:28",
+        "Shin-Yokohama": "17:39",
+        "Nagoya": "18:58",
+        "Kyoto": "19:33",
+        "Shin-Osaka": "19:50",
+        "Shin-Kobe": "20:03",
+        "Okayama": "20:37",
+        "Hiroshima": "21:11"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177561.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 273,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:21",
+        "Shinagawa": "17:28",
+        "Shin-Yokohama": "17:39",
+        "Nagoya": "18:58",
+        "Kyoto": "19:33",
+        "Shin-Osaka": "19:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111231.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 467,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:24",
+        "Shinagawa": "17:31",
+        "Shin-Yokohama": "17:43",
+        "Nagoya": "19:05",
+        "Kyoto": "19:41",
+        "Shin-Osaka": "19:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062601.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 845,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "17:27",
+        "Shinagawa": "17:34",
+        "Shin-Yokohama": "17:45",
+        "Odawara": "18:02",
+        "Atami": "18:10",
+        "Mishima": "18:22",
+        "Shin-Fuji": "18:37",
+        "Shizuoka": "18:52",
+        "Kakegawa": "19:08",
+        "Hamamatsu": "19:23",
+        "Toyohashi": "19:39",
+        "Mikawa-Anjo": "19:56",
+        "Nagoya": "20:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129371.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 55,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "17:30",
+        "Shinagawa": "17:37",
+        "Shin-Yokohama": "17:48",
+        "Nagoya": "19:10",
+        "Kyoto": "19:46",
+        "Shin-Osaka": "20:02",
+        "Shin-Kobe": "20:15",
+        "Okayama": "20:47",
+        "Fukuyama": "21:04",
+        "Hiroshima": "21:28",
+        "Kokura": "22:14",
+        "Hakata": "22:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026281.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 653,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:33",
+        "Shinagawa": "17:40",
+        "Shin-Yokohama": "17:51",
+        "Odawara": "18:07",
+        "Nagoya": "19:19",
+        "Gifu-Hashima": "19:35",
+        "Maibara": "19:53",
+        "Kyoto": "20:13",
+        "Shin-Osaka": "20:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026601.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 203,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "17:39",
+        "Shinagawa": "17:46",
+        "Shin-Yokohama": "17:58",
+        "Nagoya": "19:17",
+        "Kyoto": "19:52",
+        "Shin-Osaka": "20:08",
+        "Shin-Kobe": "20:21",
+        "Okayama": "20:54",
+        "Fukuyama": "21:10",
+        "Hiroshima": "21:34",
+        "Kokura": "22:23",
+        "Hakata": "22:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115171.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 275,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:39",
+        "Shinagawa": "17:46",
+        "Shin-Yokohama": "17:58",
+        "Nagoya": "19:17",
+        "Kyoto": "19:52",
+        "Shin-Osaka": "20:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128801.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 205,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "17:42",
+        "Shinagawa": "17:49",
+        "Shin-Yokohama": "18:00",
+        "Nagoya": "19:23",
+        "Kyoto": "19:59",
+        "Shin-Osaka": "20:14",
+        "Shin-Kobe": "20:27",
+        "Okayama": "20:59",
+        "Hiroshima": "21:38",
+        "Shin-Yamaguchi": "22:09",
+        "Kokura": "22:29",
+        "Hakata": "22:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177661.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 469,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:42",
+        "Shinagawa": "17:49",
+        "Shin-Yokohama": "18:00",
+        "Nagoya": "19:23",
+        "Kyoto": "19:59",
+        "Shin-Osaka": "20:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062591.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 79,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "17:48",
+        "Shinagawa": "17:55",
+        "Shin-Yokohama": "18:07",
+        "Nagoya": "19:26",
+        "Kyoto": "20:02",
+        "Shin-Osaka": "20:17",
+        "Shin-Kobe": "20:30",
+        "Himeji": "20:46",
+        "Okayama": "21:06",
+        "Fukuyama": "21:23",
+        "Hiroshima": "21:46"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089281.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 471,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:51",
+        "Shinagawa": "17:59",
+        "Shin-Yokohama": "18:10",
+        "Nagoya": "19:32",
+        "Kyoto": "20:07",
+        "Shin-Osaka": "20:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 473,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "17:54",
+        "Shinagawa": "18:01",
+        "Shin-Yokohama": "18:13",
+        "Nagoya": "19:35",
+        "Kyoto": "20:11",
+        "Shin-Osaka": "20:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062571.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 847,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "17:57",
+        "Shinagawa": "18:04",
+        "Shin-Yokohama": "18:15",
+        "Odawara": "18:35",
+        "Atami": "18:43",
+        "Mishima": "18:55",
+        "Shin-Fuji": "19:08",
+        "Shizuoka": "19:21",
+        "Kakegawa": "19:36",
+        "Hamamatsu": "19:51",
+        "Toyohashi": "20:08",
+        "Mikawa-Anjo": "20:25",
+        "Nagoya": "20:37"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129391.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 207,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "18:00",
+        "Shinagawa": "18:07",
+        "Shin-Yokohama": "18:18",
+        "Nagoya": "19:41",
+        "Kyoto": "20:16",
+        "Shin-Osaka": "20:32",
+        "Shin-Kobe": "20:45",
+        "Okayama": "21:17",
+        "Hiroshima": "21:56",
+        "Tokuyama": "22:19",
+        "Kokura": "22:47",
+        "Hakata": "23:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177671.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 277,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:00",
+        "Shinagawa": "18:07",
+        "Shin-Yokohama": "18:18",
+        "Nagoya": "19:41",
+        "Kyoto": "20:16",
+        "Shin-Osaka": "20:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128811.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 655,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:03",
+        "Shinagawa": "18:10",
+        "Shin-Yokohama": "18:21",
+        "Atami": "18:40",
+        "Shizuoka": "19:07",
+        "Hamamatsu": "19:31",
+        "Nagoya": "20:02",
+        "Gifu-Hashima": "20:19",
+        "Maibara": "20:35",
+        "Kyoto": "20:56",
+        "Shin-Osaka": "21:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 475,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:09",
+        "Shinagawa": "18:17",
+        "Shin-Yokohama": "18:29",
+        "Nagoya": "19:47",
+        "Kyoto": "20:22",
+        "Shin-Osaka": "20:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089611.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 57,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "18:12",
+        "Shinagawa": "18:19",
+        "Shin-Yokohama": "18:31",
+        "Nagoya": "19:49",
+        "Kyoto": "20:25",
+        "Shin-Osaka": "20:41",
+        "Shin-Kobe": "20:54",
+        "Okayama": "21:26",
+        "Hiroshima": "22:03",
+        "Shin-Yamaguchi": "22:34",
+        "Kokura": "22:54",
+        "Hakata": "23:09"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029491.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 477,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:18",
+        "Shinagawa": "18:25",
+        "Shin-Yokohama": "18:37",
+        "Nagoya": "19:55",
+        "Kyoto": "20:31",
+        "Shin-Osaka": "20:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089621.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 209,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "18:21",
+        "Shinagawa": "18:28",
+        "Shin-Yokohama": "18:39",
+        "Nagoya": "19:58",
+        "Kyoto": "20:33",
+        "Shin-Osaka": "20:50",
+        "Shin-Kobe": "21:03",
+        "Okayama": "21:35",
+        "Fukuyama": "21:52",
+        "Hiroshima": "22:16",
+        "Kokura": "23:02",
+        "Hakata": "23:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177681.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 279,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:21",
+        "Shinagawa": "18:28",
+        "Shin-Yokohama": "18:39",
+        "Nagoya": "19:58",
+        "Kyoto": "20:33",
+        "Shin-Osaka": "20:48"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128821.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 479,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:24",
+        "Shinagawa": "18:31",
+        "Shin-Yokohama": "18:43",
+        "Nagoya": "20:05",
+        "Kyoto": "20:41",
+        "Shin-Osaka": "20:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089631.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 849,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "18:27",
+        "Shinagawa": "18:34",
+        "Shin-Yokohama": "18:45",
+        "Odawara": "19:05",
+        "Atami": "19:13",
+        "Mishima": "19:25",
+        "Shin-Fuji": "19:37",
+        "Shizuoka": "19:52",
+        "Kakegawa": "20:08",
+        "Hamamatsu": "20:23",
+        "Toyohashi": "20:39",
+        "Mikawa-Anjo": "20:55",
+        "Nagoya": "21:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129401.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 81,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "18:30",
+        "Shinagawa": "18:37",
+        "Shin-Yokohama": "18:48",
+        "Nagoya": "20:10",
+        "Kyoto": "20:46",
+        "Shin-Osaka": "21:02",
+        "Shin-Kobe": "21:15",
+        "Himeji": "21:31",
+        "Okayama": "21:51",
+        "Fukuyama": "22:07",
+        "Hiroshima": "22:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062221.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 657,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:33",
+        "Shinagawa": "18:40",
+        "Shin-Yokohama": "18:51",
+        "Shizuoka": "19:30",
+        "Toyohashi": "19:59",
+        "Nagoya": "20:20",
+        "Gifu-Hashima": "20:35",
+        "Maibara": "20:53",
+        "Kyoto": "21:13",
+        "Shin-Osaka": "21:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026591.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 903,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Mishima",
+      "times": {
+        "Tokyo": "18:36",
+        "Shinagawa": "18:43",
+        "Shin-Yokohama": "18:55",
+        "Odawara": "19:14",
+        "Atami": "19:22",
+        "Mishima": "19:29"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129411.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 281,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:39",
+        "Shinagawa": "18:46",
+        "Shin-Yokohama": "18:58",
+        "Nagoya": "20:17",
+        "Kyoto": "20:52",
+        "Shin-Osaka": "21:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128831.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 211,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "18:42",
+        "Shinagawa": "18:49",
+        "Shin-Yokohama": "19:00",
+        "Nagoya": "20:23",
+        "Kyoto": "20:59",
+        "Shin-Osaka": "21:14",
+        "Shin-Kobe": "21:27",
+        "Okayama": "21:59",
+        "Hiroshima": "22:34",
+        "Shin-Yamaguchi": "23:06",
+        "Kokura": "23:26",
+        "Hakata": "23:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177691.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 481,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:42",
+        "Shinagawa": "18:49",
+        "Shin-Yokohama": "19:00",
+        "Nagoya": "20:23",
+        "Kyoto": "20:59",
+        "Shin-Osaka": "21:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089641.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 483,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:48",
+        "Shinagawa": "18:55",
+        "Shin-Yokohama": "19:07",
+        "Nagoya": "20:26",
+        "Kyoto": "21:02",
+        "Shin-Osaka": "21:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089651.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 59,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "18:51",
+        "Shinagawa": "18:59",
+        "Shin-Yokohama": "19:10",
+        "Nagoya": "20:33",
+        "Kyoto": "21:07",
+        "Shin-Osaka": "21:23",
+        "Shin-Kobe": "21:36",
+        "Okayama": "22:09",
+        "Hiroshima": "22:45",
+        "Tokuyama": "23:08",
+        "Kokura": "23:36",
+        "Hakata": "23:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029481.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 485,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "18:54",
+        "Shinagawa": "19:01",
+        "Shin-Yokohama": "19:13",
+        "Nagoya": "20:35",
+        "Kyoto": "21:11",
+        "Shin-Osaka": "21:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103131.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 851,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "18:57",
+        "Shinagawa": "19:04",
+        "Shin-Yokohama": "19:15",
+        "Odawara": "19:35",
+        "Atami": "19:43",
+        "Mishima": "19:55",
+        "Shin-Fuji": "20:08",
+        "Shizuoka": "20:21",
+        "Kakegawa": "20:39",
+        "Hamamatsu": "20:54",
+        "Toyohashi": "21:08",
+        "Mikawa-Anjo": "21:25",
+        "Nagoya": "21:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129421.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 213,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hakata",
+      "times": {
+        "Tokyo": "19:00",
+        "Shinagawa": "19:07",
+        "Shin-Yokohama": "19:18",
+        "Nagoya": "20:41",
+        "Kyoto": "21:16",
+        "Shin-Osaka": "21:31",
+        "Shin-Kobe": "21:45",
+        "Okayama": "22:17",
+        "Fukuyama": "22:33",
+        "Hiroshima": "22:57",
+        "Kokura": "23:44",
+        "Hakata": "23:59"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177701.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 283,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:00",
+        "Shinagawa": "19:07",
+        "Shin-Yokohama": "19:18",
+        "Nagoya": "20:41",
+        "Kyoto": "21:16",
+        "Shin-Osaka": "21:29"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128841.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 659,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:03",
+        "Shinagawa": "19:10",
+        "Shin-Yokohama": "19:21",
+        "Mishima": "19:46",
+        "Shizuoka": "20:07",
+        "Hamamatsu": "20:31",
+        "Nagoya": "21:02",
+        "Gifu-Hashima": "21:14",
+        "Maibara": "21:30",
+        "Kyoto": "21:50",
+        "Shin-Osaka": "22:03"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062321.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 83,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "19:09",
+        "Shinagawa": "19:17",
+        "Shin-Yokohama": "19:29",
+        "Nagoya": "20:47",
+        "Kyoto": "21:22",
+        "Shin-Osaka": "21:38",
+        "Shin-Kobe": "21:51",
+        "Himeji": "22:07",
+        "Okayama": "22:27",
+        "Fukuyama": "22:44",
+        "Hiroshima": "23:07"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062241.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 487,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:12",
+        "Shinagawa": "19:19",
+        "Shin-Yokohama": "19:31",
+        "Nagoya": "20:49",
+        "Kyoto": "21:25",
+        "Shin-Osaka": "21:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103141.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 489,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:18",
+        "Shinagawa": "19:25",
+        "Shin-Yokohama": "19:37",
+        "Nagoya": "20:55",
+        "Kyoto": "21:31",
+        "Shin-Osaka": "21:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115221.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 85,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "19:21",
+        "Shinagawa": "19:28",
+        "Shin-Yokohama": "19:39",
+        "Nagoya": "20:58",
+        "Kyoto": "21:33",
+        "Shin-Osaka": "21:50",
+        "Shin-Kobe": "22:03",
+        "Himeji": "22:19",
+        "Okayama": "22:38"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089291.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 491,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:24",
+        "Shinagawa": "19:31",
+        "Shin-Yokohama": "19:43",
+        "Nagoya": "21:05",
+        "Kyoto": "21:41",
+        "Shin-Osaka": "21:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115231.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 853,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "19:27",
+        "Shinagawa": "19:34",
+        "Shin-Yokohama": "19:45",
+        "Odawara": "20:05",
+        "Atami": "20:13",
+        "Mishima": "20:25",
+        "Shin-Fuji": "20:37",
+        "Shizuoka": "20:52",
+        "Kakegawa": "21:10",
+        "Hamamatsu": "21:23",
+        "Toyohashi": "21:39",
+        "Mikawa-Anjo": "21:53",
+        "Nagoya": "22:04"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129431.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 661,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:30",
+        "Shinagawa": "19:37",
+        "Shin-Yokohama": "19:48",
+        "Shizuoka": "20:27",
+        "Hamamatsu": "20:47",
+        "Nagoya": "21:15",
+        "Gifu-Hashima": "21:27",
+        "Maibara": "21:45",
+        "Kyoto": "22:05",
+        "Shin-Osaka": "22:18"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 493,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:33",
+        "Shinagawa": "19:40",
+        "Shin-Yokohama": "19:51",
+        "Nagoya": "21:10",
+        "Kyoto": "21:47",
+        "Shin-Osaka": "22:00"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177711.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 905,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Mishima",
+      "times": {
+        "Tokyo": "19:36",
+        "Shinagawa": "19:43",
+        "Shin-Yokohama": "19:55",
+        "Odawara": "20:14",
+        "Atami": "20:22",
+        "Mishima": "20:29"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129441.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 87,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "19:39",
+        "Shinagawa": "19:46",
+        "Shin-Yokohama": "19:58",
+        "Nagoya": "21:18",
+        "Kyoto": "21:53",
+        "Shin-Osaka": "22:08",
+        "Shin-Kobe": "22:21",
+        "Himeji": "22:37",
+        "Okayama": "22:57",
+        "Hiroshima": "23:32"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062261.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 495,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:42",
+        "Shinagawa": "19:49",
+        "Shin-Yokohama": "20:00",
+        "Nagoya": "21:23",
+        "Kyoto": "21:59",
+        "Shin-Osaka": "22:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177721.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 285,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:48",
+        "Shinagawa": "19:55",
+        "Shin-Yokohama": "20:07",
+        "Nagoya": "21:26",
+        "Kyoto": "22:02",
+        "Shin-Osaka": "22:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128851.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 497,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:51",
+        "Shinagawa": "19:59",
+        "Shin-Yokohama": "20:10",
+        "Nagoya": "21:32",
+        "Kyoto": "22:07",
+        "Shin-Osaka": "22:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178211.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 499,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:54",
+        "Shinagawa": "20:01",
+        "Shin-Yokohama": "20:13",
+        "Nagoya": "21:35",
+        "Kyoto": "22:11",
+        "Shin-Osaka": "22:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178191.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 855,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "19:57",
+        "Shinagawa": "20:04",
+        "Shin-Yokohama": "20:15",
+        "Odawara": "20:35",
+        "Atami": "20:43",
+        "Mishima": "20:54",
+        "Shin-Fuji": "21:07",
+        "Shizuoka": "21:23",
+        "Kakegawa": "21:37",
+        "Hamamatsu": "21:53",
+        "Toyohashi": "22:06",
+        "Mikawa-Anjo": "22:23",
+        "Nagoya": "22:37",
+        "Gifu-Hashima": "22:49",
+        "Maibara": "23:07",
+        "Kyoto": "23:27",
+        "Shin-Osaka": "23:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129451.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 89,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "20:00",
+        "Shinagawa": "20:07",
+        "Shin-Yokohama": "20:18",
+        "Nagoya": "21:39",
+        "Kyoto": "22:14",
+        "Shin-Osaka": "22:29",
+        "Shin-Kobe": "22:42",
+        "Okayama": "23:14",
+        "Fukuyama": "23:31",
+        "Hiroshima": "23:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062271.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 501,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:03",
+        "Shinagawa": "20:10",
+        "Shin-Yokohama": "20:21",
+        "Nagoya": "21:43",
+        "Kyoto": "22:17",
+        "Shin-Osaka": "22:30"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177741.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 215,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hiroshima",
+      "times": {
+        "Tokyo": "20:09",
+        "Shinagawa": "20:17",
+        "Shin-Yokohama": "20:29",
+        "Nagoya": "21:48",
+        "Kyoto": "22:23",
+        "Shin-Osaka": "22:38",
+        "Shin-Kobe": "22:51",
+        "Okayama": "23:24",
+        "Hiroshima": "23:59"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177581.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 287,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:09",
+        "Shinagawa": "20:17",
+        "Shin-Yokohama": "20:29",
+        "Nagoya": "21:48",
+        "Kyoto": "22:23",
+        "Shin-Osaka": "22:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128861.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 663,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:12",
+        "Shinagawa": "20:19",
+        "Shin-Yokohama": "20:31",
+        "Shizuoka": "21:15",
+        "Hamamatsu": "21:39",
+        "Toyohashi": "21:51",
+        "Nagoya": "22:12",
+        "Gifu-Hashima": "22:27",
+        "Maibara": "22:42",
+        "Kyoto": "23:02",
+        "Shin-Osaka": "23:15"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062331.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 503,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:18",
+        "Shinagawa": "20:25",
+        "Shin-Yokohama": "20:37",
+        "Nagoya": "21:54",
+        "Kyoto": "22:29",
+        "Shin-Osaka": "22:42"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177751.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 91,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "20:21",
+        "Shinagawa": "20:28",
+        "Shin-Yokohama": "20:39",
+        "Nagoya": "21:57",
+        "Kyoto": "22:32",
+        "Shin-Osaka": "22:47",
+        "Shin-Kobe": "23:00",
+        "Himeji": "23:16",
+        "Okayama": "23:35"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089301.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 505,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:24",
+        "Shinagawa": "20:31",
+        "Shin-Yokohama": "20:43",
+        "Nagoya": "22:03",
+        "Kyoto": "22:38",
+        "Shin-Osaka": "22:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177761.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 857,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "20:27",
+        "Shinagawa": "20:34",
+        "Shin-Yokohama": "20:45",
+        "Odawara": "21:04",
+        "Atami": "21:13",
+        "Mishima": "21:24",
+        "Shin-Fuji": "21:35",
+        "Shizuoka": "21:51",
+        "Kakegawa": "22:08",
+        "Hamamatsu": "22:23",
+        "Toyohashi": "22:41",
+        "Mikawa-Anjo": "22:58",
+        "Nagoya": "23:13"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129461.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 507,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:30",
+        "Shinagawa": "20:37",
+        "Shin-Yokohama": "20:48",
+        "Nagoya": "22:08",
+        "Kyoto": "22:43",
+        "Shin-Osaka": "22:57"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177791.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 93,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Okayama",
+      "times": {
+        "Tokyo": "20:39",
+        "Shinagawa": "20:46",
+        "Shin-Yokohama": "20:58",
+        "Nagoya": "22:16",
+        "Kyoto": "22:50",
+        "Shin-Osaka": "23:05",
+        "Shin-Kobe": "23:18",
+        "Okayama": "23:49"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089311.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 509,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:42",
+        "Shinagawa": "20:49",
+        "Shin-Yokohama": "21:00",
+        "Nagoya": "22:18",
+        "Kyoto": "22:53",
+        "Shin-Osaka": "23:06"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177811.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 511,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:48",
+        "Shinagawa": "20:55",
+        "Shin-Yokohama": "21:07",
+        "Nagoya": "22:24",
+        "Kyoto": "22:59",
+        "Shin-Osaka": "23:12"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177831.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 907,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Mishima",
+      "times": {
+        "Tokyo": "20:51",
+        "Shinagawa": "20:58",
+        "Shin-Yokohama": "21:09",
+        "Odawara": "21:29",
+        "Atami": "21:37",
+        "Mishima": "21:44"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129471.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 95,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Himeji",
+      "times": {
+        "Tokyo": "20:54",
+        "Shinagawa": "21:01",
+        "Shin-Yokohama": "21:12",
+        "Nagoya": "22:30",
+        "Kyoto": "23:05",
+        "Shin-Osaka": "23:20",
+        "Shin-Kobe": "23:33",
+        "Nishi-Akashi": "23:41",
+        "Himeji": "23:51"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089321.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 513,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "20:57",
+        "Shinagawa": "21:04",
+        "Shin-Yokohama": "21:15",
+        "Nagoya": "22:32",
+        "Kyoto": "23:07",
+        "Shin-Osaka": "23:21"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177851.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 289,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "21:03",
+        "Shinagawa": "21:10",
+        "Shin-Yokohama": "21:22",
+        "Nagoya": "22:40",
+        "Kyoto": "23:15",
+        "Shin-Osaka": "23:27"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128871.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 665,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "21:06",
+        "Shinagawa": "21:13",
+        "Shin-Yokohama": "21:24",
+        "Shizuoka": "22:07",
+        "Hamamatsu": "22:33",
+        "Toyohashi": "22:45",
+        "Nagoya": "23:04"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/095/098131.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 515,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "21:09",
+        "Shinagawa": "21:17",
+        "Shin-Yokohama": "21:28",
+        "Nagoya": "22:46",
+        "Kyoto": "23:21",
+        "Shin-Osaka": "23:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177871.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 291,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "21:12",
+        "Shinagawa": "21:19",
+        "Shin-Yokohama": "21:31",
+        "Nagoya": "22:49",
+        "Kyoto": "23:23",
+        "Shin-Osaka": "23:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128881.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 909,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shizuoka",
+      "times": {
+        "Tokyo": "21:15",
+        "Shinagawa": "21:22",
+        "Shin-Yokohama": "21:34",
+        "Odawara": "21:56",
+        "Atami": "22:04",
+        "Mishima": "22:15",
+        "Shin-Fuji": "22:25",
+        "Shizuoka": "22:36"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129481.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 517,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "21:21",
+        "Shinagawa": "21:28",
+        "Shin-Yokohama": "21:39",
+        "Nagoya": "22:55",
+        "Kyoto": "23:30",
+        "Shin-Osaka": "23:43"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177881.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 293,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "21:24",
+        "Shinagawa": "21:31",
+        "Shin-Yokohama": "21:42",
+        "Nagoya": "22:58",
+        "Kyoto": "23:32",
+        "Shin-Osaka": "23:45"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128891.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 519,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shin-Osaka",
+      "times": {
+        "Tokyo": "21:30",
+        "Shinagawa": "21:37",
+        "Shin-Yokohama": "21:49",
+        "Nagoya": "23:07",
+        "Kyoto": "23:42",
+        "Shin-Osaka": "23:54"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177901.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 667,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "21:33",
+        "Shinagawa": "21:40",
+        "Shin-Yokohama": "21:52",
+        "Shizuoka": "22:30",
+        "Hamamatsu": "22:51",
+        "Toyohashi": "23:03",
+        "Nagoya": "23:24"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103171.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 911,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Hamamatsu",
+      "times": {
+        "Tokyo": "21:45",
+        "Shinagawa": "21:52",
+        "Shin-Yokohama": "22:03",
+        "Odawara": "22:19",
+        "Atami": "22:27",
+        "Mishima": "22:35",
+        "Shin-Fuji": "22:48",
+        "Shizuoka": "23:01",
+        "Kakegawa": "23:15",
+        "Hamamatsu": "23:25"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129491.html"
+    },
+    {
+      "type": "Nozomi",
+      "number": 549,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "22:00",
+        "Shinagawa": "22:07",
+        "Shin-Yokohama": "22:18",
+        "Nagoya": "23:33"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177941.html"
+    },
+    {
+      "type": "Hikari",
+      "number": 669,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Nagoya",
+      "times": {
+        "Tokyo": "22:03",
+        "Shinagawa": "22:10",
+        "Shin-Yokohama": "22:21",
+        "Shizuoka": "22:57",
+        "Hamamatsu": "23:18",
+        "Toyohashi": "23:30",
+        "Nagoya": "23:49"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062191.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 913,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Shizuoka",
+      "times": {
+        "Tokyo": "22:12",
+        "Shinagawa": "22:19",
+        "Shin-Yokohama": "22:30",
+        "Odawara": "22:45",
+        "Atami": "22:54",
+        "Mishima": "23:02",
+        "Shin-Fuji": "23:11",
+        "Shizuoka": "23:22"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129501.html"
+    },
+    {
+      "type": "Kodama",
+      "number": 915,
+      "direction": "west",
+      "originStation": "Tokyo",
+      "destination": "Mishima",
+      "times": {
+        "Tokyo": "22:48",
+        "Shinagawa": "22:55",
+        "Shin-Yokohama": "23:07",
+        "Odawara": "23:22",
+        "Atami": "23:32",
+        "Mishima": "23:39"
+      },
+      "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129511.html"
+    }
+  ]
+};
