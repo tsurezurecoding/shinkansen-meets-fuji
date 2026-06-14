@@ -69,7 +69,16 @@ const SPOTS = [
     ja: { name: "左富士", area: "新富士 → 静岡", hook: "海側のA席に、28秒だけ富士山が来る。", story: "ふつう富士山はE席のもの。でも線路がカーブするこの区間だけ、反対のA席側に富士山があらわれると言われています。見えるのはほんの数十秒。A席のあなたにも、ちゃんと出番があります。" },
     en: { name: "Left-Side Fuji", area: "Shin-Fuji → Shizuoka", hook: "For 28 seconds, Fuji switches sides.", story: "Mt. Fuji normally belongs to Seat E. But where the track curves in this section, Fuji is said to appear briefly on the opposite A side — for mere seconds. Seat A gets its moment too." },
     minutesFromTokyo: 54, side: "A", category: "hidden", confidence: "verified", durationSec: 28, scene: "leftfuji",
-    image: "images/20260513_left_fuji.jpg",
+    image: "images/20240410_left_fuji_earlyretiremile.jpg",
+    photoCredit: { ja: "@earlyretiremile", en: "@earlyretiremile", url: "https://x.com/earlyretiremile/status/1777853629682405657" },
+    photos: [
+      {
+        src: "images/20260513_left_fuji.jpg",
+        alt: { ja: "新幹線のA席側から見える左富士", en: "Left-side Fuji from Seat A" },
+        caption: { ja: "A席側に一瞬だけあらわれる左富士。見える時間の短さが伝わる一枚。", en: "Left-Side Fuji appears only briefly from Seat A." },
+        credit: { ja: "道草 / Michikusa", en: "Michikusa" },
+      },
+    ],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
   },
   {
@@ -115,7 +124,25 @@ const SPOTS = [
     en: { name: "Mt. Ibuki", area: "Gifu-Hashima → Maibara", hook: "The mountain that guards Sekigahara.", story: "Before Maibara, Mt. Ibuki rises on the Fuji side — a storied peak that appears in Japan's oldest chronicles, magnificent under winter snow. You're crossing Sekigahara, where the decisive battle of 1600 changed Japanese history. At 285 km/h." },
     minutesFromTokyo: 110, side: "E", category: "classic", confidence: "verified", durationSec: 180, scene: "mountain",
     image: "images/20240114_ibukiyama.png",
+    photos: [
+      {
+        src: "images/20260530_ibukiyama.jpg",
+        alt: { ja: "新幹線のE席側から見える伊吹山", en: "Mt. Ibuki from Seat E" },
+        caption: { ja: "初夏の伊吹山。雪景色とは違う、のびやかな山の姿が見えます。", en: "Mt. Ibuki in early summer, a broader and greener view than the snowy season." },
+        credit: { ja: "道草 / Michikusa", en: "Michikusa" },
+      },
+    ],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
+  },
+  {
+    id: "omi-fuji",
+    icon: "⛰️",
+    ja: { name: "近江富士", area: "米原 → 京都", hook: "琵琶湖の手前、もうひとつの富士。", story: "米原を出てしばらくすると、A席側に三角の美しい山が見えてきます。三上山、別名・近江富士。水田に映れば、車窓だけの逆さ富士です。時刻と席側は位置からの推定なので、少し余裕を持って探してみてください。" },
+    en: { name: "Omi Fuji", area: "Maibara → Kyoto", hook: "Another Fuji, before Kyoto.", story: "After Maibara, look from Seat A for Mt. Mikami, nicknamed Omi Fuji for its clean triangular shape. When the fields are wet, it becomes a window-seat reflection: a tiny upside-down Fuji. Timing and seat side are estimated from location, so start looking a little early." },
+    minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "hidden", confidence: "needs-check", durationSec: 90, scene: "mountain",
+    image: "images/20250523_omi_fuji_kawasan3.jpg",
+    photoCredit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3", url: "https://x.com/kawasan3/status/1925668108024320321" },
+    map: { lat: 35.0479, lng: 136.0450, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
   },
   {
     id: "toji",

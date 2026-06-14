@@ -24,7 +24,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "いまは実写つき10の見どころ。あなたの列車では何時に見えるか、下でつくれます。",
+    showNote: "いまは実写つき11の見どころ。あなたの列車では何時に見えるか、下でつくれます。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "ヒント: 富士山はどちら向きでも E席。海はA席、浜名湖はE席写真を採用しています。",
@@ -37,6 +37,7 @@ const MSG = {
     btnCard: "思い出カードをつくる", btnReset: "スタンプをリセット", btnDownload: "カードを保存する",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
     galSub: "定番と穴場。気になるカードを開いてみてください。",
+    morePhotos: "ほかの写真も見る",
     fAll: "すべて", fClassic: "定番", fHidden: "穴場",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
@@ -75,7 +76,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "10 real-photo views for now. Build your timeline below to see when your train passes each one.",
+    showNote: "11 real-photo views for now. Build your timeline below to see when your train passes each one.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Tip: Seat E faces Mt. Fuji in both directions. Seat A gets the sea; Lake Hamana uses an E-seat photo.",
@@ -88,6 +89,7 @@ const MSG = {
     btnCard: "Create my memory card", btnReset: "Reset stamps", btnDownload: "Save the card",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
     galSub: "Classics and hidden gems. Open any card that catches your eye.",
+    morePhotos: "More photos",
     fAll: "All", fClassic: "Classic", fHidden: "Hidden gems",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
@@ -208,7 +210,8 @@ function computeJourney(train, depMin) {
 function seatBadge(spot) {
   if (!spot.side) return "";
   const cls = spot.side === "E" ? "badge-seat-E" : "badge-seat-A";
-  return `<span class="badge ${cls}">${spot.side === "E" ? t("seatE") : t("seatA")}</span>`;
+  const label = spot.sideLabel?.[lang] || (spot.side === "E" ? t("seatE") : t("seatA"));
+  return `<span class="badge ${cls}">${label}</span>`;
 }
 function catBadge(spot) {
   return `<span class="badge badge-${spot.category}">${t(spot.category === "classic" ? "catClassic" : "catHidden")}</span>`;
@@ -225,6 +228,35 @@ function mapHref(spot) {
 function mapLinkHTML(spot) {
   const href = mapHref(spot);
   return href ? `<a class="map-link" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}">${t("mapLink")}</a>` : "";
+}
+function photoCreditHTML(spot) {
+  if (!spot.photoCredit) return "";
+  const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
+  const text = `photo: ${label}`;
+  return spot.photoCredit.url
+    ? `<figcaption class="photo-credit"><a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer">${text}</a></figcaption>`
+    : `<figcaption class="photo-credit">${text}</figcaption>`;
+}
+function photoMetaHTML(photo) {
+  if (!photo) return "";
+  const caption = photo.caption?.[lang] || photo.caption?.ja || photo.caption?.en || "";
+  const credit = photo.credit?.[lang] || photo.credit?.ja || photo.credit?.en || "";
+  const creditText = credit ? `photo: ${credit}` : "";
+  const source = photo.sourceUrl
+    ? `<a href="${photo.sourceUrl}" target="_blank" rel="noopener noreferrer">${creditText}</a>`
+    : creditText;
+  return `${caption ? `<figcaption class="photo-caption">${caption}</figcaption>` : ""}${creditText ? `<figcaption class="photo-credit">${source}</figcaption>` : ""}`;
+}
+function spotImageHTML(spot, label, className = "spot-photo") {
+  if (!spot.image) return "";
+  return `<figure class="photo-figure"><img class="${className}" loading="lazy" src="${spot.image}" alt="${label}">${photoCreditHTML(spot)}</figure>`;
+}
+function photoGalleryHTML(spot) {
+  if (!spot.photos?.length) return "";
+  return `<div class="photo-gallery"><p class="photo-gallery-title">${t("morePhotos")}</p>${spot.photos.map((photo) => {
+    const alt = photo.alt?.[lang] || photo.alt?.ja || photo.alt?.en || spot[lang].name;
+    return `<figure class="photo-figure"><img class="spot-photo" loading="lazy" src="${photo.src}" alt="${alt}">${photoMetaHTML(photo)}</figure>`;
+  }).join("")}</div>`;
 }
 
 /* ---------- i18n apply ---------- */
@@ -249,7 +281,7 @@ function applyLang() {
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  const picks = ["fuji", "toji", "hamanako", "odawara", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark", "ibuki"];
+  const picks = ["fuji", "toji", "hamanako", "ibuki", "omi-fuji", "odawara", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
   rail.innerHTML = picks.map((id) => {
     const sp = SPOTS.find((s) => s.id === id);
     const L = sp[lang];
@@ -418,7 +450,7 @@ function spotItemHTML(sp, clock) {
   const opp = seat !== "both" && sp.side && sp.side !== seat ? `<span class="badge badge-check">${t("oppositeSide")}</span>` : "";
   const stamped = stamps[sp.id];
   const media = sp.image
-    ? `<div class="scene">${sceneSVG(sp.scene)}</div><img class="spot-photo" loading="lazy" src="${sp.image}" alt="${L.name}">`
+    ? `<div class="scene">${sceneSVG(sp.scene)}</div>${spotImageHTML(sp, L.name)}`
     : `<div class="scene">${sceneSVG(sp.scene)}</div>`;
   return `
   <li class="tl-item${dim}" data-spot="${sp.id}">
@@ -430,7 +462,7 @@ function spotItemHTML(sp, clock) {
         <button type="button" class="spot-btn${stamped ? " stamped" : ""}" data-stamp="${sp.id}">${stamped ? t("spotBtnDone") : t("spotBtn")}</button>
         <button type="button" class="more-btn" data-more>${t("more")}</button>
       </div>
-      <div class="tl-detail">${media}<p>${L.story}</p>${mapLinkHTML(sp)}</div>
+      <div class="tl-detail">${media}<p>${L.story}</p>${photoGalleryHTML(sp)}${mapLinkHTML(sp)}</div>
     </div>
   </li>`;
 }
@@ -576,7 +608,7 @@ function renderGallery() {
     .map((sp) => {
       const L = sp[lang];
       const media = sp.image
-        ? `<img loading="lazy" src="${sp.image}" alt="${L.name}" style="aspect-ratio:2/1;object-fit:cover;width:100%">`
+        ? spotImageHTML(sp, L.name, "gal-photo")
         : sceneSVG(sp.scene);
       return `
       <div class="gal-card" data-spot="${sp.id}">
@@ -590,7 +622,7 @@ function renderGallery() {
             <button type="button" class="spot-btn${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
             <button type="button" class="more-btn" data-more>${t("more")}</button>
           </div>
-          <div class="tl-detail"><p>${L.story}</p>${mapLinkHTML(sp)}</div>
+          <div class="tl-detail"><p>${L.story}</p>${photoGalleryHTML(sp)}${mapLinkHTML(sp)}</div>
         </div>
       </div>`;
     }).join("");
