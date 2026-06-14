@@ -36,12 +36,12 @@ const MSG = {
     memSub: "「見えた!」を押すと、ここにスタンプがたまります。旅のおわりに、思い出カードをどうぞ。",
     btnCard: "思い出カードをつくる", btnReset: "スタンプをリセット", btnDownload: "カードを保存する",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "定番、穴場、珍景。気になるカードを開いてみてください。",
-    fAll: "すべて", fClassic: "定番", fHidden: "穴場", fLucky: "珍景",
+    galSub: "定番と穴場。気になるカードを開いてみてください。",
+    fAll: "すべて", fClassic: "定番", fHidden: "穴場",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
     seatE: "E席・富士山側", seatA: "A席・海側",
-    catClassic: "定番", catHidden: "穴場", catLucky: "珍景",
+    catClassic: "定番", catHidden: "穴場",
     confCheck: "裏取り中",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
     more: "くわしく", less: "とじる", mapLink: "地図で見る",
@@ -87,12 +87,12 @@ const MSG = {
     memSub: "Tap “Spotted!” on a view and it lands here. Make a memory card at the end of your ride.",
     btnCard: "Create my memory card", btnReset: "Reset stamps", btnDownload: "Save the card",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Classics, hidden gems, and curious finds. Open any card that catches your eye.",
-    fAll: "All", fClassic: "Classic", fHidden: "Hidden gems", fLucky: "Curious finds",
+    galSub: "Classics and hidden gems. Open any card that catches your eye.",
+    fAll: "All", fClassic: "Classic", fHidden: "Hidden gems",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
     seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
-    catClassic: "Classic", catHidden: "Hidden gem", catLucky: "Curious find",
+    catClassic: "Classic", catHidden: "Hidden gem",
     confCheck: "verifying",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
     more: "More", less: "Close", mapLink: "Open map",
@@ -211,7 +211,7 @@ function seatBadge(spot) {
   return `<span class="badge ${cls}">${spot.side === "E" ? t("seatE") : t("seatA")}</span>`;
 }
 function catBadge(spot) {
-  return `<span class="badge badge-${spot.category}">${t(spot.category === "classic" ? "catClassic" : spot.category === "hidden" ? "catHidden" : "catLucky")}</span>`;
+  return `<span class="badge badge-${spot.category}">${t(spot.category === "classic" ? "catClassic" : "catHidden")}</span>`;
 }
 function confBadge(spot) {
   return spot.confidence === "needs-check" ? `<span class="badge badge-check">${t("confCheck")}</span>` : "";

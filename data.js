@@ -5,7 +5,7 @@
  * minutesFromTokyo: のぞみ基準の東京発からの目安分数（東京→新大阪 約147分）
  * side: "E" = 富士山側（北側・E席） / "A" = 海側（南側・A席）
  *       東海道新幹線はどちら向きでもE席が富士山側になる
- * category: "classic"（定番） / "hidden"（穴場） / "lucky"（珍景）
+ * category: "classic"（定番） / "hidden"（穴場）
  * confidence: "verified"（実見・写真あり） / "source-backed"（出典あり） / "needs-check"（裏取り中）
  * ========================================================= */
 
@@ -104,7 +104,7 @@ const SPOTS = [
     icon: "☀️",
     ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "突然、巨大な太陽の船。", story: "名古屋を出て清洲城を過ぎたあと、車窓に巨大な弧を描くソーラーアークがあらわれます。名所案内には出てきにくいけれど、見つけると忘れにくい沿線の異物感。晴れた日は、黒いパネルが空にくっきり浮かびます。" },
     en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A giant solar ship, out of nowhere.", story: "After Nagoya and Kiyosu Castle, the Solar Ark suddenly sweeps into view: a huge dark arc beside the line. It is not the usual guidebook landmark, but it is exactly the kind of strange window-seat find that sticks in memory." },
-    minutesFromTokyo: 103, side: "E", category: "lucky", confidence: "verified", durationSec: 20, scene: "solar",
+    minutesFromTokyo: 103, side: "E", category: "hidden", confidence: "verified", durationSec: 20, scene: "solar",
     image: "images/20260530_solar_ark.jpg",
     map: { lat: 35.3176417, lng: 136.6832861, ja: "ソーラーアーク", en: "Solar Ark" },
   },
