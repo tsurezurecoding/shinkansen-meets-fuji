@@ -1,620 +1,642 @@
-const translations = {
+/* =========================================================
+ * 新幹線の窓 — 見逃さない車窓手帖 / Shinkansen Window
+ * app.js — UIロジック（依存ライブラリなし・バックエンドなし）
+ * ========================================================= */
+
+/* ---------- i18n ---------- */
+const MSG = {
   ja: {
-    kicker: "車窓からの富士山探検",
-    titleLineOne: "新幹線",
-    titleMeet: "meets",
-    titleFuji: "富士山",
-    lead: "列車を選ぶと、富士山の見どころ時間帯を確認できます。",
-    stepOne: "Step 1",
-    plannerTitle: "列車を選ぶ",
-    westbound: "下り 新大阪・博多方面",
-    eastbound: "上り 東京方面",
-    rightSide: "進行方向の右側",
-    leftSide: "進行方向の左側",
-    highlightWindow: "見どころ時間帯",
-    originDeparture: "始発",
-    destination: "行き先",
-    bestSection: "見どころ",
-    fujiSide: "富士山側",
-    alertTiming: "通知",
-    westSection: "三島〜新富士",
-    eastSection: "新富士〜三島",
-    fujiSideNoteWest: "この列車では、富士山は進行方向の右側に見える目安です。",
-    fujiSideNoteEast: "この列車では、富士山は進行方向の左側に見える目安です。",
-    stationTimeline: "Station timeline",
-    timelineTitle: "停車駅と見どころ",
-    station: "駅",
-    departure: "時刻",
-    view: "メモ",
-    viewPoint: "富士山見どころ",
-    viewPointNoteWest: "進行方向の右側に見える目安",
-    viewPointNoteEast: "進行方向の左側に見える目安",
-    notStop: "通過",
-    cautionLabel: "Caution",
-    cautionTitle: "注意事項",
-    tipOne: "下りは進行方向の右側、上りは左側が富士山側です。",
-    tipTwo: "三島〜新富士、新富士駅通過前後が特に見やすい区間です。",
-    tipThree: "天候、遅延、窓枠や防音壁により見え方は変わります。",
-    testAlert: "通知をテスト",
-    scheduleFuture: "このページを開いている間、見どころの5分前と1分前に画面内アラートを表示します。",
-    schedulePast: "今日の見どころ時間帯は過ぎています。時刻確認用として利用できます。",
-    browserAlertTitle: "まもなく富士山",
-    browserAlertBody: "富士山が見える区間に近づいています。富士山側の窓をご覧ください。",
-    selectedToast: "列車を選択しました。",
-    hamanakoLabel: "浜名湖",
-    hamanakoNote: "右側（下り）・左側（上り）の見える目安",
-    tipHamanako: "浜名湖は浜松〜豊橋間、進行方向の右側（下り）・左側（上り）に見えます。",
+    brandName: "新幹線の窓",
+    brandSub: "見逃さない車窓手帖",
+    heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
+    heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
+    heroLead: "富士山の3分間も、線路ぎわの城も、湖も海も。新幹線で「いつ・どちら側を見ればいいか」がわかり、見つけた景色が旅の思い出になる手帖です。",
+    ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる",
+    setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
+    setupSub: "旅の計画に、窓の一ページを。方向と出発時刻だけで、あなたの列車の車窓タイムラインをつくります。",
+    labelDirection: "方向", labelDeparture: "出発時刻", labelSeat: "座席",
+    dirWest: "西へ（大阪方面）", dirEast: "東へ（東京方面）",
+    btnNow: "これから乗る", seatFuji: "富士山側", seatSea: "海側", seatBoth: "両方みる",
+    btnBuild: "列車を選ばず、目安タイムラインだけつくる",
+    labelBoard: "乗車駅",
+    btnFind: "この時間の列車をさがす",
+    trainNone: "この条件の列車が見つかりませんでした。時刻を変えるか、目安タイムラインをどうぞ。",
+    trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
+    heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
+    showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
+    showNote: "いまは実写つき10の見どころ。あなたの列車では何時に見えるか、下でつくれます。",
+    estimateTag: "目安モード", trainTag: "実ダイヤ",
+    dep: "発", arr: "着",
+    seatTipNote: "ヒント: 富士山はどちら向きでも E席。海はA席、浜名湖はE席写真を採用しています。",
+    nextupLabel: "つぎの車窓",
+    tlEyebrow: "WINDOW TIMELINE",
+    tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
+    tlTitleWest: "東京 → 新大阪の車窓タイムライン", tlTitleEast: "新大阪 → 東京の車窓タイムライン",
+    memEyebrow: "YOUR JOURNAL", memTitle: "車窓スタンプ帖",
+    memSub: "「見えた!」を押すと、ここにスタンプがたまります。旅のおわりに、思い出カードをどうぞ。",
+    btnCard: "思い出カードをつくる", btnReset: "スタンプをリセット", btnDownload: "カードを保存する",
+    galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
+    galSub: "定番、みちくさ、見つけたらラッキー。気になるカードを開いてみてください。",
+    fAll: "すべて", fClassic: "定番", fHidden: "みちくさ", fLucky: "ラッキー",
+    footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
+    footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
+    seatE: "E席・富士山側", seatA: "A席・海側",
+    catClassic: "定番", catHidden: "みちくさ", catLucky: "ラッキー",
+    confCheck: "裏取り中",
+    spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
+    more: "くわしく", less: "とじる", mapLink: "地図で見る",
+    oppositeSide: "反対側の席",
+    inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
+    anytime: "全区間",
+    departed: (t) => `${t} 出発`,
+    cardTitle: "車窓のたび",
+    cardFooter: "道草 / Michikusa — 新幹線の窓",
+    cardCount: (n, total) => `みつけた車窓  ${n} / ${total}`,
+    cardRouteWest: "東京 → 新大阪", cardRouteEast: "新大阪 → 東京",
+    confirmReset: "スタンプをぜんぶ消しますか?",
+    emptyCard: "まだスタンプがありません。タイムラインで「見えた!」を押してみてください。",
   },
   en: {
-    kicker: "Mt. Fuji window quest",
-    titleLineOne: "Shinkansen",
-    titleMeet: "Meets",
-    titleFuji: "Fuji",
-    lead: "Choose a train to see the Mt. Fuji viewing window.",
-    stepOne: "Step 1",
-    plannerTitle: "Choose a train",
-    westbound: "Westbound",
-    eastbound: "Eastbound",
-    rightSide: "Right side facing forward",
-    leftSide: "Left side facing forward",
-    highlightWindow: "View window",
-    originDeparture: "Origin",
-    destination: "Destination",
-    bestSection: "Best section",
-    fujiSide: "Mt. Fuji side",
-    alertTiming: "Alerts",
-    westSection: "Mishima to Shin-Fuji",
-    eastSection: "Shin-Fuji to Mishima",
-    fujiSideNoteWest: "On this train, Mt. Fuji is usually on the right side facing forward.",
-    fujiSideNoteEast: "On this train, Mt. Fuji is usually on the left side facing forward.",
-    stationTimeline: "Station timeline",
-    timelineTitle: "Stops and view point",
-    station: "Station",
-    departure: "Time",
-    view: "Note",
-    viewPoint: "Mt. Fuji view",
-    viewPointNoteWest: "Look to the right side facing forward",
-    viewPointNoteEast: "Look to the left side facing forward",
-    notStop: "Passes",
-    cautionLabel: "Caution",
-    cautionTitle: "Notes",
-    tipOne: "Westbound trains show Mt. Fuji on the right; eastbound trains show it on the left.",
-    tipTwo: "The Mishima to Shin-Fuji section, especially around Shin-Fuji, is the highlight.",
-    tipThree: "Weather, delays, window frames, and sound barriers can affect visibility.",
-    testAlert: "Test alert",
-    scheduleFuture: "Keep this page open to receive in-page alerts 5 min and 1 min before the view.",
-    schedulePast: "Today's view window has passed. You can still use this for timing guidance.",
-    browserAlertTitle: "Mt. Fuji is coming up",
-    browserAlertBody: "You are approaching a Mt. Fuji viewing section. Look toward the Mt. Fuji side.",
-    selectedToast: "Train selected.",
-    hamanakoLabel: "Lake Hamana",
-    hamanakoNote: "Right side westbound / Left side eastbound",
-    tipHamanako: "Lake Hamana is visible between Hamamatsu and Toyohashi — right side westbound, left side eastbound.",
+    brandName: "Shinkansen Window",
+    brandSub: "Never miss the view.",
+    heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
+    heroTitle: "There's another journey<br>outside your window.",
+    heroLead: "Fuji's famous three minutes, castles beside the tracks, lake and sea. Shinkansen Window shows when and where to look, turning a Shinkansen ride into a journey to remember.",
+    ctaStart: "Start your journey", ctaBrowse: "Browse the views",
+    setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
+    setupSub: "Add a page of window views to your travel plan. Just direction and departure time — we'll build your train's window timeline.",
+    labelDirection: "Direction", labelDeparture: "Departure", labelSeat: "Your seat",
+    dirWest: "Westbound (for Osaka)", dirEast: "Eastbound (for Tokyo)",
+    btnNow: "Boarding soon", seatFuji: "Fuji side", seatSea: "Sea side", seatBoth: "Show both",
+    btnBuild: "Skip train pick — estimate-only timeline",
+    labelBoard: "Boarding at",
+    btnFind: "Find my train",
+    trainNone: "No trains found for this time. Try another time, or use the estimate timeline.",
+    trainPickNote: "Pick your train (real timetable)",
+    heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
+    showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
+    showNote: "10 real-photo views for now. Build your timeline below to see when your train passes each one.",
+    estimateTag: "Estimate", trainTag: "Real timetable",
+    dep: "dep", arr: "arr",
+    seatTipNote: "Tip: Seat E faces Mt. Fuji in both directions. Seat A gets the sea; Lake Hamana uses an E-seat photo.",
+    nextupLabel: "NEXT VIEW",
+    tlEyebrow: "WINDOW TIMELINE",
+    tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
+    tlTitleWest: "Tokyo → Shin-Osaka window timeline", tlTitleEast: "Shin-Osaka → Tokyo window timeline",
+    memEyebrow: "YOUR JOURNAL", memTitle: "Window Stamp Book",
+    memSub: "Tap “Spotted!” on a view and it lands here. Make a memory card at the end of your ride.",
+    btnCard: "Create my memory card", btnReset: "Reset stamps", btnDownload: "Save the card",
+    galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
+    galSub: "Classics, side-trips, and lucky finds. Open any card that catches your eye.",
+    fAll: "All", fClassic: "Classic", fHidden: "Hidden", fLucky: "Lucky",
+    footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
+    footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
+    seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
+    catClassic: "Classic", catHidden: "Hidden gem", catLucky: "Lucky find",
+    confCheck: "verifying",
+    spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
+    more: "More", less: "Close", mapLink: "Open map",
+    oppositeSide: "Opposite side",
+    inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
+    anytime: "Anywhere en route",
+    departed: (t) => `Departed ${t}`,
+    cardTitle: "My Window Journey",
+    cardFooter: "Michikusa — Shinkansen Window",
+    cardCount: (n, total) => `Views spotted  ${n} / ${total}`,
+    cardRouteWest: "Tokyo → Shin-Osaka", cardRouteEast: "Shin-Osaka → Tokyo",
+    confirmReset: "Clear all stamps?",
+    emptyCard: "No stamps yet — tap “Spotted!” on the timeline first.",
   },
 };
 
-let timetableData = null;
-let majorStations = [];
-let stationOffsetsToFuji = {};
-let trainTimetable = [];
+/* ---------- state ---------- */
+let lang = (localStorage.getItem("mado-lang") || (navigator.language || "ja")).toLowerCase().startsWith("ja") ? "ja" : "en";
+let direction = "west";
+let seat = "E";
+let boardId = "Tokyo";        // 乗車駅
+let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
+let stamps = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
+let liveTimer = null;
 
-let currentLang = "ja";
-let selectedDirection = "west";
-let selectedTrain = null;
-let alertTimers = [];
-let pointerStartX = null;
-let pointerStartY = null;
-let pointerMoved = false;
-let previousSelectedTrain = null;
+const $ = (sel) => document.querySelector(sel);
+const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+const t = (key, ...args) => {
+  const v = MSG[lang][key];
+  return typeof v === "function" ? v(...args) : (v ?? key);
+};
+function track(eventName, params = {}) {
+  if (typeof gtag === "function") gtag("event", eventName, params);
+}
 
-const coverFlowEl = document.querySelector("#cover-flow");
-const timeJumpsEl = document.querySelector("#time-jumps");
-const selectedTrainEl = document.querySelector("#selected-train");
-const fujiSideNoteEl = document.querySelector("#fuji-side-note");
-const scheduleStatusEl = document.querySelector("#schedule-status");
-const timelineTableEl = document.querySelector("#timeline-table");
-const toastEl = document.querySelector("#toast");
-const testAlertButton = document.querySelector("#test-alert-button");
+/* ---------- helpers ---------- */
+const REF = Object.fromEntries(ROUTE.refStations.map((s) => [s.id, s.min]));
+const STATION = Object.fromEntries(ROUTE.refStations.map((s) => [s.id, s]));
 
-document.querySelectorAll("[data-lang]").forEach((button) => {
-  button.addEventListener("click", () => {
-    currentLang = button.dataset.lang;
-    document.documentElement.lang = currentLang;
-    document.querySelectorAll("[data-lang]").forEach((item) => item.classList.toggle("active", item === button));
-    translatePage();
-    renderAll();
+function toMin(hhmm) { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; }
+function minToClock(m) {
+  m = ((m % 1440) + 1440) % 1440;
+  return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+}
+function fmtClock(date) { return date.toTimeString().slice(0, 5); }
+function nowMin() { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
+
+/* 列車の東海道区間の停車駅（時刻順） */
+function tokaidoStops(train) {
+  return ROUTE.refStations
+    .filter((s) => train.times[s.id])
+    .map((s) => ({ id: s.id, ja: s.ja, en: s.en, ref: s.min, clock: toMin(train.times[s.id]) }))
+    .sort((a, b) => a.clock - b.clock);
+}
+
+/* 実ダイヤ補間: スポットの基準分数を、前後の停車駅時刻で線形補間する */
+function interpolateSpot(spotRef, stops) {
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i], b = stops[i + 1];
+    const lo = Math.min(a.ref, b.ref), hi = Math.max(a.ref, b.ref);
+    if (spotRef >= lo && spotRef <= hi && a.ref !== b.ref) {
+      const f = Math.abs(spotRef - a.ref) / Math.abs(b.ref - a.ref);
+      return Math.round(a.clock + f * (b.clock - a.clock));
+    }
+  }
+  return null;
+}
+
+/* 列車検索: 方向・乗車駅・時刻に合う列車（出発時刻順に最大5本） */
+function findTrains(depMin) {
+  const TT = window.SHINKANSEN_TIMETABLE;
+  if (!TT) return [];
+  return TT.trains
+    .filter((tr) => {
+      if (tr.direction !== direction || !tr.times[boardId]) return false;
+      // 乗車駅より先に東海道区間の停車駅があること
+      const stops = tokaidoStops(tr);
+      const idx = stops.findIndex((s) => s.id === boardId);
+      return idx >= 0 && idx < stops.length - 1;
+    })
+    .map((tr) => ({ tr, dep: toMin(tr.times[boardId]) }))
+    .filter((x) => x.dep >= depMin && x.dep <= depMin + 120)
+    .sort((a, b) => a.dep - b.dep)
+    // データセット内の重複列車（同番号・同時刻）を除去
+    .filter((x, i, arr) => i === arr.findIndex((y) => y.tr.type === x.tr.type && y.tr.number === x.tr.number && y.dep === x.dep))
+    .slice(0, 5);
+}
+
+/* タイムライン計算（train=nullなら目安モード） */
+function computeJourney(train, depMin) {
+  const boardRef = REF[boardId];
+  const dirSign = direction === "west" ? 1 : -1;
+  let stops, spotClock;
+  if (train) {
+    const all = tokaidoStops(train);
+    const bi = all.findIndex((s) => s.id === boardId);
+    stops = all.slice(bi);
+    spotClock = (ref) => interpolateSpot(ref, stops);
+  } else {
+    stops = ROUTE.refStations
+      .filter((s) => s.major && (s.min - boardRef) * dirSign >= 0)
+      .map((s) => ({ id: s.id, ja: s.ja, en: s.en, ref: s.min, clock: depMin + Math.abs(s.min - boardRef) }))
+      .sort((a, b) => a.clock - b.clock);
+    spotClock = (ref) => ((ref - boardRef) * dirSign < 0 ? null : depMin + Math.abs(ref - boardRef));
+  }
+  const spots = SPOTS
+    .filter((sp) => sp.minutesFromTokyo != null)
+    .map((sp) => ({ sp, clock: spotClock(sp.minutesFromTokyo) }))
+    .filter((x) => x.clock != null)
+    .sort((a, b) => a.clock - b.clock);
+  return { mode: train ? "train" : "estimate", train, depMin, stops, spots };
+}
+function seatBadge(spot) {
+  if (!spot.side) return "";
+  const cls = spot.side === "E" ? "badge-seat-E" : "badge-seat-A";
+  return `<span class="badge ${cls}">${spot.side === "E" ? t("seatE") : t("seatA")}</span>`;
+}
+function catBadge(spot) {
+  return `<span class="badge badge-${spot.category}">${t(spot.category === "classic" ? "catClassic" : spot.category === "hidden" ? "catHidden" : "catLucky")}</span>`;
+}
+function confBadge(spot) {
+  return spot.confidence === "needs-check" ? `<span class="badge badge-check">${t("confCheck")}</span>` : "";
+}
+function mapHref(spot) {
+  if (!spot.map) return "";
+  if (spot.map.lat != null && spot.map.lng != null) return `https://www.google.com/maps/search/?api=1&query=${spot.map.lat},${spot.map.lng}`;
+  const query = spot.map[lang] || spot.map.ja || spot.map.en;
+  return query ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}` : "";
+}
+function mapLinkHTML(spot) {
+  const href = mapHref(spot);
+  return href ? `<a class="map-link" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}">${t("mapLink")}</a>` : "";
+}
+
+/* ---------- i18n apply ---------- */
+function applyLang() {
+  document.documentElement.lang = lang;
+  $$("[data-i18n]").forEach((el) => {
+    const v = MSG[lang][el.dataset.i18n];
+    if (typeof v === "string") el.innerHTML = v;
   });
-});
+  $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+  renderStampboard();
+  renderGallery();
+  renderShowcase();
+  renderBoardSelect();
+  const tl = $("#timelineSection");
+  if (tl && !tl.hidden) renderTimeline();
+  const tr = $("#trainResults");
+  if (tr && !tr.hidden) showTrainResults();
+}
 
-document.querySelectorAll("[data-direction]").forEach((button) => {
-  button.addEventListener("click", () => {
-    selectedDirection = button.dataset.direction;
-    document.querySelectorAll("[data-direction]").forEach((item) => item.classList.toggle("active", item === button));
-    pickDefaultTrain();
-    renderAll();
+/* ---------- showcase（まず何が見えるかを見せる） ---------- */
+function renderShowcase() {
+  const rail = $("#showcaseRail");
+  if (!rail) return;
+  const picks = ["fuji", "toji", "hamanako", "odawara", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark", "ibuki"];
+  rail.innerHTML = picks.map((id) => {
+    const sp = SPOTS.find((s) => s.id === id);
+    const L = sp[lang];
+    const media = sp.image
+      ? `<img loading="lazy" src="${sp.image}" alt="${L.name}">`
+      : sceneSVG(sp.scene);
+    return `<figure class="show-card">
+      <div class="show-media">${media}</div>
+      <figcaption><strong>${sp.icon} ${L.name}</strong><span>${L.hook}</span></figcaption>
+    </figure>`;
+  }).join("");
+}
+
+/* ---------- 乗車駅セレクト ---------- */
+function renderBoardSelect() {
+  const sel = $("#boardStation");
+  if (!sel) return;
+  const list = direction === "west" ? ROUTE.refStations.slice(0, -1) : ROUTE.refStations.slice(1).reverse();
+  sel.innerHTML = list.map((s) => `<option value="${s.id}"${s.id === boardId ? " selected" : ""}>${s[lang]}</option>`).join("");
+}
+
+/* ---------- hero sky ---------- */
+function renderHero() {
+  $("#heroSky").innerHTML = `
+  <svg viewBox="0 0 1200 560" preserveAspectRatio="xMidYMax slice" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#101c2c"/><stop offset="0.55" stop-color="#27405e"/>
+        <stop offset="0.8" stop-color="#b96a4e"/><stop offset="1" stop-color="#e8a06a"/>
+      </linearGradient>
+      <linearGradient id="fujig" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#8aa6c8"/><stop offset="1" stop-color="#3d5878"/>
+      </linearGradient>
+    </defs>
+    <rect width="1200" height="560" fill="url(#sky)"/>
+    <circle cx="880" cy="330" r="46" fill="#f7d9a0" opacity="0.9"/>
+    <g class="cloud" style="animation-duration:80s" opacity="0.5">
+      <ellipse cx="300" cy="120" rx="120" ry="22" fill="#fff" opacity="0.18"/>
+      <ellipse cx="900" cy="180" rx="160" ry="26" fill="#fff" opacity="0.14"/>
+      <ellipse cx="1500" cy="110" rx="120" ry="22" fill="#fff" opacity="0.18"/>
+      <ellipse cx="2100" cy="180" rx="160" ry="26" fill="#fff" opacity="0.14"/>
+    </g>
+    <path d="M380 470 L600 240 L660 300 L700 260 L920 470 Z" fill="url(#fujig)"/>
+    <path d="M563 280 L600 240 L660 300 L686 274 L668 318 Q640 300 612 320 Q590 300 575 312 Z" fill="#f3f6fa"/>
+    <path d="M0 470 Q200 430 420 462 Q700 500 1200 455 L1200 560 L0 560 Z" fill="#16263a"/>
+    <rect x="0" y="492" width="1200" height="6" fill="#0c1622"/>
+    <g class="train-move">
+      <g>
+        <path d="M0 460 q10 -28 56 -28 h300 a12 12 0 0 1 12 12 v22 a8 8 0 0 1 -8 8 h-352 q-10 0 -8 -14 z" fill="#eef3f7"/>
+        <path d="M0 460 q10 -28 56 -28 h300 a12 12 0 0 1 12 12 v6 h-372 z" fill="#eef3f7"/>
+        <rect x="30" y="441" width="330" height="7" rx="3" fill="#1b6bb0"/>
+        <g fill="#27405e"><rect x="80" y="452" width="26" height="11" rx="3"/><rect x="120" y="452" width="26" height="11" rx="3"/><rect x="160" y="452" width="26" height="11" rx="3"/><rect x="200" y="452" width="26" height="11" rx="3"/><rect x="240" y="452" width="26" height="11" rx="3"/><rect x="280" y="452" width="26" height="11" rx="3"/></g>
+      </g>
+    </g>
+  </svg>`;
+}
+
+/* ---------- scene illustrations (license-free inline SVG) ---------- */
+function sceneSVG(type) {
+  const W = `viewBox="0 0 600 300" xmlns="http://www.w3.org/2000/svg" role="img"`;
+  const sky = (a, b) => `<defs><linearGradient id="g${type}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${a}"/><stop offset="1" stop-color="${b}"/></linearGradient></defs><rect width="600" height="300" fill="url(#g${type})"/>`;
+  // 手前の防音壁 + 流れる景色のスピード線で「車窓から見ている」感を出す
+  const frame = `
+    <g stroke="#ffffff" stroke-linecap="round" opacity="0.5">
+      <line x1="8" y1="84" x2="86" y2="82" stroke-width="3" opacity="0.5"/>
+      <line x1="-4" y1="150" x2="60" y2="149" stroke-width="2.4" opacity="0.35"/>
+      <line x1="540" y1="110" x2="608" y2="108" stroke-width="3" opacity="0.45"/>
+      <line x1="500" y1="200" x2="604" y2="198" stroke-width="2" opacity="0.3"/>
+    </g>
+    <rect x="0" y="250" width="600" height="14" fill="#223346" opacity="0.65"/>
+    <rect x="0" y="262" width="600" height="38" fill="#16263a"/>`;
+  switch (type) {
+    case "fuji": return `<svg ${W}>${sky("#bcd4ec", "#f4e3cd")}<path d="M110 262 L300 70 L335 110 L370 75 L490 262 Z" fill="#5a7ca3"/><path d="M268 103 L300 70 L335 110 L355 89 L342 132 Q318 116 296 134 Q278 118 262 128 Z" fill="#fff"/><circle cx="480" cy="70" r="26" fill="#f0b04e"/>${frame}</svg>`;
+    case "leftfuji": return `<svg ${W}>${sky("#cfdeee", "#f2e2cf")}<path d="M60 262 L210 110 L245 145 L272 118 L390 262 Z" fill="#7d96b5"/><path d="M186 134 L210 110 L245 145 L259 131 L249 162 Q229 148 211 162 Q198 150 186 158 Z" fill="#fff"/><g stroke="#e8704a" stroke-width="5" fill="none"><path d="M430 120 a60 60 0 0 1 0 120" /><path d="M450 140 a40 40 0 0 1 0 80" /></g><text x="436" y="190" font-size="30">↺</text>${frame}</svg>`;
+    case "hills": return `<svg ${W}>${sky("#cfe3ef", "#efe6d4")}<path d="M0 262 Q150 150 360 200 Q500 230 600 200 L600 262 Z" fill="#94ab84"/><g fill="#f4efe4" stroke="#c9694a" stroke-width="3">${[0,1,2,3,4,5,6,7].map(i=>`<g transform="translate(${100+i*55} ${188-i*7})"><rect x="0" y="10" width="34" height="22"/><path d="M-4 12 L17 -6 L38 12 Z" fill="#c9694a"/></g>`).join("")}</g>${frame}</svg>`;
+    case "bay": return `<svg ${W}>${sky("#bfd9ea", "#f6e8d2")}<rect y="170" width="600" height="92" fill="#5f8fae"/><path d="M0 170 Q120 160 220 170 T600 170 L600 178 Q420 188 220 178 Q100 174 0 178 Z" fill="#fff" opacity="0.5"/><g transform="translate(80 92)"><rect x="18" y="36" width="44" height="42" fill="#f4efe4" stroke="#5a6c7e" stroke-width="3"/><path d="M8 40 L40 12 L72 40 Z" fill="#5a6c7e"/><rect x="30" y="20" width="20" height="16" fill="#f4efe4" stroke="#5a6c7e" stroke-width="3"/></g>${frame}</svg>`;
+    case "castle": return `<svg ${W}>${sky("#cddcec", "#f4e9d6")}<g transform="translate(210 60)" stroke="#3e4c5c" stroke-width="4" fill="#f7f3e8"><rect x="40" y="120" width="100" height="60"/><path d="M28 122 L90 96 L152 122 Z" fill="#3e4c5c"/><rect x="55" y="64" width="70" height="40"/><path d="M44 66 L90 42 L136 66 Z" fill="#3e4c5c"/><rect x="68" y="16" width="44" height="32"/><path d="M58 18 L90 -4 L122 18 Z" fill="#3e4c5c"/><path d="M86 -10 q4 -8 8 0" stroke="#d9a440" fill="none"/></g><path d="M0 262 Q300 236 600 262 Z" fill="#8fa783"/>${frame}</svg>`;
+    case "lake": return `<svg ${W}>${sky("#c3dcec", "#f7e9d0")}<rect y="160" width="600" height="102" fill="#6f9cba"/><ellipse cx="300" cy="160" rx="320" ry="14" fill="#9cc0d6"/><g stroke="#7c6a4f" stroke-width="4">${[0,1,2].map(i=>`<g transform="translate(${150+i*130} 190)"><line x1="0" y1="0" x2="60" y2="0"/><line x1="10" y1="0" x2="10" y2="-12"/><line x1="50" y1="0" x2="50" y2="-12"/></g>`).join("")}</g><circle cx="500" cy="66" r="24" fill="#f0b04e"/>${frame}</svg>`;
+    case "mountain": return `<svg ${W}>${sky("#c8d8e8", "#f1e7d6")}<path d="M40 262 L240 80 L330 180 L420 120 L580 262 Z" fill="#62788f"/><path d="M205 112 L240 80 L286 132 L266 138 L252 124 L236 136 Z" fill="#fff"/><path d="M0 262 Q300 244 600 262 Z" fill="#a8b193"/>${frame}</svg>`;
+    case "pagoda": return `<svg ${W}>${sky("#d8d2e2", "#f6e3cd")}<g transform="translate(225 26)" stroke="#3e4c5c" stroke-width="4" fill="#f7f3e8">${[0,1,2,3,4].map(i=>`<g transform="translate(0 ${i*42})"><rect x="${28+i*4}" y="22" width="${94-i*8}" height="22"/><path d="M${10+i*5} 24 L75 ${2-i*0} L${140-i*5} 24 Z" fill="#5c4a3a"/></g>`).join("")}<line x1="75" y1="-18" x2="75" y2="2" stroke="#d9a440" stroke-width="5"/></g><path d="M0 262 Q300 248 600 262 Z" fill="#9aa78b"/>${frame}</svg>`;
+    case "solar": return `<svg ${W}>${sky("#c4dced", "#f4ecd6")}<path d="M0 262 Q300 236 600 262 Z" fill="#91a56c"/><g transform="translate(92 96)"><path d="M0 86 Q205 0 416 86" stroke="#2e4050" stroke-width="34" fill="none" stroke-linecap="round"/><path d="M8 88 Q205 18 408 88" stroke="#6f8294" stroke-width="3" fill="none" opacity="0.8"/><g stroke="#9fb3c0" stroke-width="2" opacity="0.55">${[0,1,2,3,4,5,6,7].map(i=>`<line x1="${30+i*50}" y1="${80-Math.sin(i/7*Math.PI)*40}" x2="${54+i*50}" y2="${88-Math.sin(i/7*Math.PI)*44}"/>`).join("")}</g></g><circle cx="500" cy="58" r="22" fill="#f0b04e"/>${frame}</svg>`;
+    default: return `<svg ${W}>${sky("#cdd9e6", "#f2e8d6")}${frame}</svg>`;
+  }
+}
+
+/* ---------- train picker ---------- */
+const TRAIN_NAMES = { Nozomi: { ja: "のぞみ", en: "Nozomi" }, Hikari: { ja: "ひかり", en: "Hikari" }, Kodama: { ja: "こだま", en: "Kodama" } };
+
+function trainLabel(tr) {
+  const name = (TRAIN_NAMES[tr.type] || { ja: tr.type, en: tr.type })[lang];
+  const destSt = STATION[tr.destination];
+  const dest = destSt ? destSt[lang] : tr.destination;
+  return `${name}${tr.number}`;
+}
+
+function showTrainResults() {
+  const depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
+  const found = findTrains(depMin);
+  const box = $("#trainResults");
+  box.hidden = false;
+  if (!found.length) {
+    box.innerHTML = `<p class="train-none">${t("trainNone")}</p>`;
+    return;
+  }
+  box.innerHTML = `<p class="train-pick-note">${t("trainPickNote")}</p>` + found.map(({ tr, dep }, i) => {
+    const destSt = STATION[tr.destination];
+    const dest = destSt ? destSt[lang] : tr.destination;
+    return `<button type="button" class="train-chip" data-train="${i}">
+      <strong>${trainLabel(tr)}</strong>
+      <span>${minToClock(dep)} ${t("dep")} → ${dest}</span>
+    </button>`;
+  }).join("");
+  box.querySelectorAll("[data-train]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const { tr, dep } = found[Number(btn.dataset.train)];
+      box.querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === btn));
+      track("train_selected", { direction, board_station: boardId, train_type: tr.type, train_number: tr.number });
+      buildTimeline(tr, dep);
+    });
   });
-});
+}
 
-coverFlowEl.addEventListener("keydown", (event) => {
-  if (event.key === "ArrowLeft") {
-    event.preventDefault();
-    moveSelection(-1);
-  }
+/* ---------- timeline ---------- */
+function buildTimeline(train = null, depMin = null) {
+  if (depMin == null) depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
+  journey = computeJourney(train, depMin);
+  track("timeline_built", {
+    mode: train ? "train" : "estimate",
+    direction,
+    board_station: boardId,
+    spot_count: journey.spots.length,
+  });
+  $("#timelineSection").hidden = false;
+  renderTimeline();
+  startLive();
+  $("#timelineSection").scrollIntoView({ behavior: "smooth" });
+}
 
-  if (event.key === "ArrowRight") {
-    event.preventDefault();
-    moveSelection(1);
-  }
-});
-
-document.addEventListener("keydown", (event) => {
-  const target = event.target;
-  const isTyping = ["INPUT", "TEXTAREA", "SELECT"].includes(target?.tagName);
-
-  if (isTyping || event.altKey || event.ctrlKey || event.metaKey) {
-    return;
-  }
-
-  if (event.key === "ArrowLeft") {
-    event.preventDefault();
-    moveSelection(-1);
-  }
-
-  if (event.key === "ArrowRight") {
-    event.preventDefault();
-    moveSelection(1);
-  }
-});
-
-coverFlowEl.addEventListener("pointerdown", (event) => {
-  pointerStartX = event.clientX;
-  pointerStartY = event.clientY;
-  pointerMoved = false;
-  const card = event.target.closest(".train-card");
-  if (card) {
-    selectTrainByKey(card.dataset.trainKey);
-  }
-  coverFlowEl.setPointerCapture?.(event.pointerId);
-});
-
-coverFlowEl.addEventListener("pointermove", (event) => {
-  if (pointerStartX === null || pointerStartY === null) {
-    return;
-  }
-
-  const deltaX = event.clientX - pointerStartX;
-  const deltaY = event.clientY - pointerStartY;
-  pointerMoved = Math.abs(deltaX) > 12 && Math.abs(deltaX) > Math.abs(deltaY);
-});
-
-coverFlowEl.addEventListener("pointerup", (event) => {
-  if (pointerStartX === null) {
-    return;
-  }
-
-  const deltaX = event.clientX - pointerStartX;
-  const didSwipe = pointerMoved && Math.abs(deltaX) >= 36;
-  pointerStartX = null;
-  pointerStartY = null;
-  pointerMoved = false;
-
-  if (!didSwipe) {
-    return;
-  }
-
-  moveSelection(deltaX > 0 ? -1 : 1);
-});
-
-testAlertButton.addEventListener("click", () => {
-  fireAlert();
-});
-
-function translatePage() {
-  document.querySelectorAll("[data-i18n]").forEach((element) => {
-    const key = element.dataset.i18n;
-    if (translations[currentLang][key]) {
-      element.textContent = translations[currentLang][key];
+function renderTimeline() {
+  if (!journey) return;
+  const base = t(direction === "west" ? "tlTitleWest" : "tlTitleEast");
+  const tag = journey.mode === "train"
+    ? `${trainLabel(journey.train)} · ${t("trainTag")}`
+    : t("estimateTag");
+  $("#tlTitle").textContent = `${base} — ${tag}`;
+  const items = [];
+  journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, st: s }));
+  journey.spots.forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
+  items.sort((a, b) => a.clock - b.clock || (a.kind === "station" ? -1 : 1));
+  const html = [];
+  items.forEach((it, i) => {
+    if (it.kind === "station") {
+      html.push(`<li class="tl-station"><span class="tl-time">${minToClock(it.clock)}</span>${it.st[lang]}</li>`);
+    } else {
+      html.push(spotItemHTML(it.sp, it.clock));
     }
   });
+  $("#timeline").innerHTML = html.join("");
+  bindSpotEvents($("#timeline"));
 }
 
-async function loadTimetableData() {
-  if (window.SHINKANSEN_TIMETABLE) {
-    timetableData = window.SHINKANSEN_TIMETABLE;
-    majorStations = timetableData.stations.map((station) => station.id);
-    stationOffsetsToFuji = timetableData.fujiOffsetsMinutes;
-    trainTimetable = timetableData.trains;
-    return;
-  }
-
-  const response = await fetch("data/timetable.json", { cache: "no-cache" });
-  if (!response.ok) {
-    throw new Error(`Timetable load failed: ${response.status}`);
-  }
-
-  timetableData = await response.json();
-  majorStations = timetableData.stations.map((station) => station.id);
-  stationOffsetsToFuji = timetableData.fujiOffsetsMinutes;
-  trainTimetable = timetableData.trains;
+function spotItemHTML(sp, clock) {
+  const L = sp[lang];
+  const time = clock == null ? `<span class="tl-time-big">✦</span>` : `<span class="tl-time-big">${minToClock(clock)}</span>`;
+  const dim = seat !== "both" && sp.side && sp.side !== seat ? " dim" : "";
+  const opp = seat !== "both" && sp.side && sp.side !== seat ? `<span class="badge badge-check">${t("oppositeSide")}</span>` : "";
+  const stamped = stamps[sp.id];
+  const media = sp.image
+    ? `<div class="scene">${sceneSVG(sp.scene)}</div><img class="spot-photo" loading="lazy" src="${sp.image}" alt="${L.name}">`
+    : `<div class="scene">${sceneSVG(sp.scene)}</div>`;
+  return `
+  <li class="tl-item${dim}" data-spot="${sp.id}">
+    <div class="tl-card">
+      <div class="tl-top">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
+      <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${confBadge(sp)}${opp}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
+      <p class="tl-hook">${L.hook}</p>
+      <div class="tl-actions">
+        <button type="button" class="spot-btn${stamped ? " stamped" : ""}" data-stamp="${sp.id}">${stamped ? t("spotBtnDone") : t("spotBtn")}</button>
+        <button type="button" class="more-btn" data-more>${t("more")}</button>
+      </div>
+      <div class="tl-detail">${media}<p>${L.story}</p>${mapLinkHTML(sp)}</div>
+    </div>
+  </li>`;
 }
 
-function pickDefaultTrain() {
-  selectedTrain = getVisibleTrains()[0] || null;
-}
-
-function getVisibleTrains() {
-  return trainTimetable
-    .filter((train) => train.direction === selectedDirection)
-    .sort((a, b) => getSortTimeAtStation(a, "Shin-Yokohama") - getSortTimeAtStation(b, "Shin-Yokohama"));
-}
-
-function renderAll() {
-  renderTimeJumps();
-  renderTrainCards();
-  renderResult();
-}
-
-function renderTimeJumps() {
-  timeJumpsEl.innerHTML = "";
-  const trains = getVisibleTrains();
-  const buckets = new Map();
-
-  trains.forEach((train) => {
-    const sortMinutes = getSortTimeAtStation(train, "Shin-Yokohama");
-    const bucketHour = Math.floor(sortMinutes / 240) * 4;
-    if (!buckets.has(bucketHour)) {
-      buckets.set(bucketHour, train);
-    }
+function bindSpotEvents(root) {
+  root.querySelectorAll("[data-stamp]").forEach((btn) => {
+    btn.addEventListener("click", () => toggleStamp(btn.dataset.stamp));
   });
-
-  [...buckets.entries()].forEach(([hour, train]) => {
-    const button = document.createElement("button");
-    button.className = "time-jump";
-    button.type = "button";
-    button.textContent = `${String(hour).padStart(2, "0")}:00`;
-    button.addEventListener("click", () => {
-      previousSelectedTrain = selectedTrain;
-      selectedTrain = train;
-      renderAll();
-      coverFlowEl.focus();
+  root.querySelectorAll("[data-more]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const item = btn.closest(".tl-item, .gal-card");
+      item.classList.toggle("open");
+      btn.textContent = item.classList.contains("open") ? t("less") : t("more");
     });
-    timeJumpsEl.append(button);
+  });
+  root.querySelectorAll("[data-map]").forEach((link) => {
+    link.addEventListener("click", () => track("map_opened", { spot_id: link.dataset.map }));
   });
 }
 
-function renderTrainCards() {
-  coverFlowEl.innerHTML = "";
-  const trains = getVisibleTrains();
-  const selectedIndex = Math.max(0, trains.indexOf(selectedTrain));
-  const previousIndex = previousSelectedTrain ? trains.indexOf(previousSelectedTrain) : selectedIndex;
-  const visibleTrains = [-2, -1, 0, 1, 2]
-    .map((offset) => ({
-      offset,
-      train: trains[selectedIndex + offset],
-    }))
-    .filter((item) => item.train);
+/* ---------- live next-up ---------- */
+function startLive() {
+  clearInterval(liveTimer);
+  updateLive();
+  liveTimer = setInterval(updateLive, 20000);
+}
+function updateLive() {
+  const banner = $("#nextup");
+  if (!journey || !journey.spots.length) { banner.hidden = true; return; }
+  const now = nowMin();
+  const end = journey.stops.length ? journey.stops[journey.stops.length - 1].clock : journey.depMin;
+  if (now < journey.depMin - 30 || now > end + 15) { banner.hidden = true; return; }
+  const upcoming = journey.spots.find((x) => x.clock >= now - 1);
+  if (!upcoming) { banner.hidden = true; return; }
+  const remain = upcoming.clock - now;
+  banner.hidden = false;
+  $("#nextupName").textContent = `${upcoming.sp.icon} ${upcoming.sp[lang].name}`;
+  $("#nextupCount").textContent = remain <= 1 ? t("soon") : t("inMinutes", remain);
+}
 
-  visibleTrains.forEach(({ train, offset }) => {
-    const button = document.createElement("button");
-    button.className = "train-card";
-    button.type = "button";
-    button.dataset.trainKey = trainKey(train);
-    const previousOffset = previousIndex >= 0 ? trains.indexOf(train) - previousIndex : offset;
-    applyCoverFlowPosition(button, previousOffset);
-    button.classList.toggle("active", selectedTrain === train);
-    button.innerHTML = `
-      <span class="train-name">${trainLabel(train)}</span>
-      <span class="train-number">${train.number}${currentLang === "ja" ? "号" : ""}</span>
-      <span class="train-route">${stationName(train.originStation)} ${originTime(train)} → ${stationName(train.destination)}</span>
-      <span class="train-window">${createViewWindow(getFujiCenterTime(train), train.direction)}</span>
-    `;
-    button.addEventListener("click", () => {
-      const clickedIndex = trains.indexOf(train);
-      const selectedIndex = trains.indexOf(selectedTrain);
-      previousSelectedTrain = selectedTrain;
-      selectedTrain = train;
-      renderAll();
-      coverFlowEl.focus();
-      showToast(t("selectedToast"));
-    });
-    coverFlowEl.append(button);
-    button.getBoundingClientRect();
-    applyCoverFlowPosition(button, offset);
+/* ---------- stamps ---------- */
+function toggleStamp(id) {
+  const removed = !!stamps[id];
+  if (removed) delete stamps[id];
+  else stamps[id] = Date.now();
+  track(removed ? "stamp_removed" : "stamp_added", { spot_id: id });
+  localStorage.setItem("mado-stamps", JSON.stringify(stamps));
+  renderStampboard();
+  $$(`[data-stamp="${id}"]`).forEach((btn) => {
+    const got = !!stamps[id];
+    btn.classList.toggle("stamped", got);
+    btn.textContent = got ? t("spotBtnDone") : t("spotBtn");
   });
 }
-
-function renderResult() {
-  if (!selectedTrain) {
-    return;
-  }
-
-  const viewTime = getFujiCenterTime(selectedTrain);
-  const viewWindow = createViewWindow(viewTime, selectedTrain.direction);
-
-  selectedTrainEl.textContent = `${trainLabel(selectedTrain)} ${stationName(selectedTrain.destination)}${currentLang === "ja" ? "行き" : ""}`;
-  fujiSideNoteEl.textContent = selectedTrain.direction === "west" ? t("fujiSideNoteWest") : t("fujiSideNoteEast");
-
-  renderTimeline(selectedTrain, viewTime, viewWindow);
-  scheduleAlerts(viewTime);
+function renderStampboard() {
+  if (!$("#stampboard")) return;
+  $("#stampboard").innerHTML = SPOTS.map((sp) => `
+    <div class="stamp${stamps[sp.id] ? " got" : ""}">
+      <span class="s-icon">${sp.icon}</span>
+      <span class="s-name">${sp[lang].name}</span>
+    </div>`).join("");
 }
 
-function moveSelection(delta) {
-  const trains = getVisibleTrains();
-  const currentIndex = trains.indexOf(selectedTrain);
-  const nextIndex = Math.min(Math.max(currentIndex + delta, 0), trains.length - 1);
-
-  if (nextIndex === currentIndex) {
-    return;
-  }
-
-  previousSelectedTrain = selectedTrain;
-  selectedTrain = trains[nextIndex];
-  renderAll();
-}
-
-function selectTrainByKey(key) {
-  const trains = getVisibleTrains();
-  const train = trains.find((item) => trainKey(item) === key);
-
-  if (!train || train === selectedTrain) {
-    return;
-  }
-
-  previousSelectedTrain = selectedTrain;
-  selectedTrain = train;
-  renderAll();
-}
-
-function trainKey(train) {
-  return `${train.direction}:${train.type}:${train.number}:${train.originStation}:${train.destination}`;
-}
-
-function applyCoverFlowPosition(element, offset) {
-  const positions = {
-    "-2": { x: "clamp(-290px, -44vw, -156px)", rotate: 68, scale: 0.64, opacity: 0.22, z: 0 },
-    "-1": { x: "clamp(-190px, -26vw, -102px)", rotate: 54, scale: 0.82, opacity: 0.58, z: 1 },
-    "0": { x: "0px", rotate: 0, scale: 1.08, opacity: 1, z: 3 },
-    "1": { x: "clamp(102px, 26vw, 190px)", rotate: -54, scale: 0.82, opacity: 0.58, z: 1 },
-    "2": { x: "clamp(156px, 44vw, 290px)", rotate: -68, scale: 0.64, opacity: 0.22, z: 0 },
-  };
-  const hidden = offset < -2
-    ? { x: "clamp(-340px, -52vw, -210px)", rotate: 74, scale: 0.56, opacity: 0, z: 0 }
-    : { x: "clamp(210px, 52vw, 340px)", rotate: -74, scale: 0.56, opacity: 0, z: 0 };
-  const position = positions[String(offset)] || hidden;
-
-  element.style.transform = `translateX(${position.x}) rotateY(${position.rotate}deg) scale(${position.scale})`;
-  element.style.opacity = String(position.opacity);
-  element.style.zIndex = String(position.z);
-}
-
-function renderTimeline(train, viewTime, viewWindow) {
-  timelineTableEl.innerHTML = "";
-
-  const header = document.createElement("div");
-  header.className = "timeline-row timeline-header";
-  header.innerHTML = `<span>${t("departure")}</span><span>${t("station")}</span><span>${t("view")}</span>`;
-  timelineTableEl.append(header);
-
-  getTimelineItems(train, viewTime, viewWindow).forEach((item) => {
-    const row = document.createElement("div");
-    row.className = item.kind === "view" ? "timeline-row view-row" : "timeline-row";
-    row.innerHTML = `
-      <span>${item.time}</span>
-      <span>${item.label}</span>
-      <span>${item.note}</span>
-    `;
-    timelineTableEl.append(row);
+/* ---------- memory card ---------- */
+function drawMemoryCard() {
+  const got = SPOTS.filter((sp) => stamps[sp.id]);
+  if (!got.length) { alert(t("emptyCard")); return; }
+  track("memory_card_created", { stamp_count: got.length, spot_total: SPOTS.length });
+  const cv = $("#memCanvas"), ctx = cv.getContext("2d");
+  const Wc = cv.width, Hc = cv.height;
+  // 背景: 夕暮れグラデーション
+  const g = ctx.createLinearGradient(0, 0, 0, Hc);
+  g.addColorStop(0, "#101c2c"); g.addColorStop(0.5, "#27405e");
+  g.addColorStop(0.78, "#b96a4e"); g.addColorStop(1, "#e8a06a");
+  ctx.fillStyle = g; ctx.fillRect(0, 0, Wc, Hc);
+  // 富士山シルエット
+  ctx.fillStyle = "rgba(125,155,192,0.55)";
+  ctx.beginPath();
+  ctx.moveTo(120, Hc - 240); ctx.lineTo(Wc / 2 - 40, Hc - 560); ctx.lineTo(Wc / 2 + 5, Hc - 510);
+  ctx.lineTo(Wc / 2 + 50, Hc - 555); ctx.lineTo(Wc - 110, Hc - 240); ctx.closePath(); ctx.fill();
+  ctx.fillStyle = "rgba(243,246,250,0.9)";
+  ctx.beginPath();
+  ctx.moveTo(Wc / 2 - 78, Hc - 522); ctx.lineTo(Wc / 2 - 40, Hc - 560); ctx.lineTo(Wc / 2 + 5, Hc - 510);
+  ctx.lineTo(Wc / 2 + 50, Hc - 555); ctx.lineTo(Wc / 2 + 80, Hc - 524); ctx.lineTo(Wc / 2 + 62, Hc - 482);
+  ctx.quadraticCurveTo(Wc / 2 + 20, Hc - 505, Wc / 2 - 10, Hc - 480);
+  ctx.quadraticCurveTo(Wc / 2 - 40, Hc - 502, Wc / 2 - 64, Hc - 486); ctx.closePath(); ctx.fill();
+  // 地面
+  ctx.fillStyle = "#16263a"; ctx.fillRect(0, Hc - 220, Wc, 220);
+  // タイトル
+  ctx.fillStyle = "#fff"; ctx.textAlign = "center";
+  ctx.font = "700 30px Georgia, 'Hiragino Mincho ProN', serif";
+  ctx.fillText(t("brandName"), Wc / 2, 96);
+  ctx.font = "700 56px Georgia, 'Hiragino Mincho ProN', serif";
+  ctx.fillText(t("cardTitle"), Wc / 2, 172);
+  const d = new Date();
+  const dateStr = lang === "ja"
+    ? `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
+    : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  ctx.font = "26px Georgia, serif"; ctx.fillStyle = "rgba(255,255,255,0.85)";
+  ctx.fillText(`${dateStr} · ${t(direction === "west" ? "cardRouteWest" : "cardRouteEast")}`, Wc / 2, 218);
+  // スタンプ
+  const cols = 3, cell = 250, startY = 320;
+  got.slice(0, 9).forEach((sp, i) => {
+    const cx = Wc / 2 + (i % cols - 1) * cell;
+    const cy = startY + Math.floor(i / cols) * 215;
+    ctx.save();
+    ctx.translate(cx, cy); ctx.rotate((i % 2 ? 1 : -1) * 0.05);
+    ctx.beginPath(); ctx.arc(0, 0, 86, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(255,247,242,0.96)"; ctx.fill();
+    ctx.lineWidth = 6; ctx.strokeStyle = "#e8704a"; ctx.stroke();
+    ctx.font = "64px serif"; ctx.fillText(sp.icon, 0, 18);
+    ctx.restore();
+    ctx.font = "700 22px 'Hiragino Kaku Gothic ProN', sans-serif";
+    ctx.fillStyle = "#fff";
+    ctx.fillText(sp[lang].name, cx, cy + 124);
   });
+  // カウント + フッター
+  ctx.font = "700 34px Georgia, 'Hiragino Mincho ProN', serif";
+  ctx.fillStyle = "#f5c9a8";
+  ctx.fillText(t("cardCount", got.length, SPOTS.length), Wc / 2, Hc - 130);
+  ctx.font = "22px Georgia, serif"; ctx.fillStyle = "rgba(255,255,255,0.7)";
+  ctx.fillText(t("cardFooter"), Wc / 2, Hc - 72);
+  // 出力
+  $("#memcardWrap").hidden = false;
+  $("#dlBtn").href = cv.toDataURL("image/png");
+  $("#memcardWrap").scrollIntoView({ behavior: "smooth" });
 }
-
-function getTimelineItems(train, viewTime, viewWindow) {
-  const nozomiStops = train.direction === "west"
-    ? ["Tokyo", "Shinagawa", "Shin-Yokohama", "Nagoya", "Kyoto", "Shin-Osaka", "Shin-Kobe", "Okayama", "Hiroshima", "Kokura", "Hakata"]
-    : ["Hakata", "Kokura", "Hiroshima", "Okayama", "Shin-Kobe", "Shin-Osaka", "Kyoto", "Nagoya", "Shin-Yokohama", "Shinagawa", "Tokyo"];
-  const originIndex = majorStations.indexOf(train.originStation);
-  const destinationIndex = majorStations.indexOf(train.destination);
-  const routeStops = nozomiStops.filter((station) => {
-    const stationIndex = majorStations.indexOf(station);
-    if (stationIndex === -1 || originIndex === -1 || destinationIndex === -1) {
-      return Boolean(train.times[station]);
-    }
-    return train.direction === "west"
-      ? stationIndex >= originIndex && stationIndex <= destinationIndex
-      : stationIndex <= originIndex && stationIndex >= destinationIndex;
-  });
-  const stopItems = routeStops.map((station) => ({
-    kind: "station",
-    label: stationName(station),
-    time: train.times[station] || t("notStop"),
-    note: "",
-    sortTime: train.times[station] ? timeToMinutes(train.times[station]) : estimateStationSortTime(train, station),
-  }));
-  const viewItem = {
-    kind: "view",
-    label: t("viewPoint"),
-    time: viewWindow,
-    note: train.direction === "west" ? t("viewPointNoteWest") : t("viewPointNoteEast"),
-    sortTime: timeToMinutes(viewTime),
-  };
-
-  const hamanakoOffset = train.direction === "west" ? 37 : -37;
-  const hamanakoTime = addMinutes(viewTime, hamanakoOffset);
-  const hamanakoItem = {
-    kind: "view",
-    label: t("hamanakoLabel"),
-    time: createViewWindow(hamanakoTime, train.direction),
-    note: t("hamanakoNote"),
-    sortTime: timeToMinutes(hamanakoTime),
-  };
-
-  return [...stopItems, viewItem, hamanakoItem].sort((a, b) => a.sortTime - b.sortTime);
-}
-
-function estimateStationSortTime(train, station) {
-  const offset = stationOffsetsToFuji[train.direction][station];
-  if (offset !== undefined) {
-    return timeToMinutes(addMinutes(getFujiCenterTime(train), -offset));
-  }
-
-  return train.direction === "west" ? 1440 : -1;
-}
-
-function getSortTimeAtStation(train, station) {
-  if (train.times[station]) {
-    return timeToMinutes(train.times[station]);
-  }
-
-  const offset = stationOffsetsToFuji[train.direction]?.[station];
-  if (offset !== undefined) {
-    return timeToMinutes(addMinutes(getFujiCenterTime(train), -offset));
-  }
-
-  return timeToMinutes(originTime(train));
-}
-
-function getFujiCenterTime(train) {
-  if (train.times["Shin-Fuji"]) {
-    return train.times["Shin-Fuji"];
-  }
-
-  const preferredStations = train.direction === "west"
-    ? ["Shin-Fuji", "Mishima", "Shizuoka", "Shin-Yokohama", "Shinagawa", "Tokyo", "Nagoya", "Kyoto", "Shin-Osaka"]
-    : ["Shin-Fuji", "Mishima", "Shizuoka", "Nagoya", "Kyoto", "Shin-Osaka", "Shin-Yokohama", "Shinagawa", "Tokyo"];
-
-  const station = preferredStations.find((item) => train.times[item] && stationOffsetsToFuji[train.direction][item] !== undefined);
-  return addMinutes(train.times[station], stationOffsetsToFuji[train.direction][station]);
-}
-
-function createViewWindow(viewTime, direction) {
-  const startOffset = direction === "west" ? -2 : -3;
-  const endOffset = direction === "west" ? 3 : 2;
-  return `${addMinutes(viewTime, startOffset)}-${addMinutes(viewTime, endOffset)}`;
-}
-
-function addMinutes(time, minutes) {
-  const total = timeToMinutes(time) + minutes;
-  const normalized = ((total % 1440) + 1440) % 1440;
-  const hours = Math.floor(normalized / 60);
-  const mins = normalized % 60;
-  return `${String(hours).padStart(2, "0")}:${String(mins).padStart(2, "0")}`;
-}
-
-function timeToMinutes(time) {
-  const [hours, minutes] = time.split(":").map(Number);
-  return hours * 60 + minutes;
-}
-
-function originTime(train) {
-  return train.times[train.originStation];
-}
-
-function trainLabel(train) {
-  const names = {
-    Nozomi: currentLang === "ja" ? "のぞみ" : "Nozomi",
-    Hikari: currentLang === "ja" ? "ひかり" : "Hikari",
-    Kodama: currentLang === "ja" ? "こだま" : "Kodama",
-  };
-  return `${names[train.type]}${train.number}${currentLang === "ja" ? "号" : ""}`;
-}
-
-function stationName(station) {
-  const stationData = timetableData?.stations.find((item) => item.id === station);
-  return stationData ? stationData[currentLang] : station;
-}
-
-function scheduleAlerts(viewTime) {
-  alertTimers.forEach((timer) => window.clearTimeout(timer));
-  alertTimers = [];
-
-  const target = timeToToday(viewTime);
-  const now = new Date();
-  const alerts = [5, 1]
-    .map((minutesBefore) => ({
-      minutesBefore,
-      at: new Date(target.getTime() - minutesBefore * 60 * 1000),
-    }))
-    .filter((alert) => alert.at > now);
-
-  if (!alerts.length) {
-    scheduleStatusEl.textContent = t("schedulePast");
-    return;
-  }
-
-  alerts.forEach((alert) => {
-    const delay = alert.at.getTime() - now.getTime();
-    const timer = window.setTimeout(() => fireAlert(alert.minutesBefore), delay);
-    alertTimers.push(timer);
-  });
-
-  scheduleStatusEl.textContent = t("scheduleFuture");
-}
-
-function timeToToday(time) {
-  const [hours, minutes] = time.split(":").map(Number);
-  const date = new Date();
-  date.setHours(hours, minutes, 0, 0);
-  return date;
-}
-
-async function fireAlert(minutesBefore) {
-  const prefix = minutesBefore ? `${minutesBefore} min: ` : "";
-  showToast(`${prefix}${t("browserAlertBody")}`);
-
-  if (!("Notification" in window)) {
-    return;
-  }
-
-  const permission = Notification.permission === "default"
-    ? await Notification.requestPermission()
-    : Notification.permission;
-
-  if (permission === "granted") {
-    new Notification(t("browserAlertTitle"), {
-      body: t("browserAlertBody"),
-    });
-  }
-}
-
-function showToast(message) {
-  toastEl.textContent = message;
-  toastEl.hidden = false;
-  window.clearTimeout(showToast.timeout);
-  showToast.timeout = window.setTimeout(() => {
-    toastEl.hidden = true;
-  }, 3200);
-}
-
-function t(key) {
-  return translations[currentLang][key] || key;
-}
-
-async function init() {
-  translatePage();
-  registerServiceWorker();
-  coverFlowEl.textContent = currentLang === "ja" ? "時刻表データを読み込んでいます。" : "Loading timetable data.";
-
-  try {
-    await loadTimetableData();
-    pickDefaultTrain();
-    renderAll();
-  } catch (error) {
-    coverFlowEl.textContent = currentLang === "ja"
-      ? "時刻表データを読み込めませんでした。GitHub PagesなどHTTP配信で開いてください。"
-      : "Could not load timetable data. Please open this via GitHub Pages or another HTTP server.";
-    console.error(error);
-  }
-}
-
-init();
 
 function registerServiceWorker() {
-  if (!("serviceWorker" in navigator)) {
-    return;
-  }
-
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("sw.js").catch((error) => {
-      console.warn("Service worker registration failed", error);
-    });
+  if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
+  navigator.serviceWorker.register("sw.js").catch(() => {
+    // The app works without offline support; stale-cache cleanup should not block the UI.
   });
 }
+
+/* ---------- gallery ---------- */
+let galFilter = "all";
+function renderGallery() {
+  const grid = $("#galleryGrid");
+  if (!grid) return;
+  grid.innerHTML = SPOTS
+    .filter((sp) => galFilter === "all" || sp.category === galFilter)
+    .map((sp) => {
+      const L = sp[lang];
+      const media = sp.image
+        ? `<img loading="lazy" src="${sp.image}" alt="${L.name}" style="aspect-ratio:2/1;object-fit:cover;width:100%">`
+        : sceneSVG(sp.scene);
+      return `
+      <div class="gal-card" data-spot="${sp.id}">
+        ${media}
+        <div class="gal-body">
+          <div class="gal-top"><span class="tl-icon">${sp.icon}</span><span class="gal-name">${L.name}</span></div>
+          <p class="gal-area">${L.area}</p>
+          <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${confBadge(sp)}</div>
+          <p class="gal-hook">${L.hook}</p>
+          <div class="tl-actions">
+            <button type="button" class="spot-btn${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+            <button type="button" class="more-btn" data-more>${t("more")}</button>
+          </div>
+          <div class="tl-detail"><p>${L.story}</p>${mapLinkHTML(sp)}</div>
+        </div>
+      </div>`;
+    }).join("");
+  bindSpotEvents(grid);
+}
+
+/* ---------- init ---------- */
+function init() {
+  if ($("#heroSky")) renderHero();
+  $$(".lang-switch button").forEach((b) => b.addEventListener("click", () => {
+    lang = b.dataset.lang; localStorage.setItem("mado-lang", lang); track("language_changed", { language: lang }); applyLang();
+  }));
+  // ここから先はアプリ画面（index.html）専用の初期化
+  if (!$("#departTime")) { applyLang(); return; }
+  // 出発時刻の初期値 = 現在
+  $("#departTime").value = fmtClock(new Date());
+  $("#nowBtn").addEventListener("click", () => { $("#departTime").value = fmtClock(new Date()); });
+  $$("[data-dir]").forEach((b) => b.addEventListener("click", () => {
+    direction = b.dataset.dir;
+    boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
+    renderBoardSelect();
+    $("#trainResults").hidden = true;
+    $$("[data-dir]").forEach((x) => x.classList.toggle("active", x === b));
+  }));
+  $("#boardStation").addEventListener("change", (e) => { boardId = e.target.value; $("#trainResults").hidden = true; });
+  $$("[data-seat]").forEach((b) => b.addEventListener("click", () => {
+    seat = b.dataset.seat;
+    $$("[data-seat]").forEach((x) => x.classList.toggle("active", x === b));
+    if (journey) renderTimeline();
+  }));
+  $("#findTrainsBtn").addEventListener("click", () => {
+    track("train_search", { direction, board_station: boardId });
+    showTrainResults();
+  });
+  $("#buildBtn").addEventListener("click", () => buildTimeline(null));
+  $("#cardBtn").addEventListener("click", drawMemoryCard);
+  $("#resetBtn").addEventListener("click", () => {
+    if (confirm(t("confirmReset"))) {
+      stamps = {}; localStorage.setItem("mado-stamps", "{}");
+      renderStampboard(); renderGallery();
+      const tl = $("#timelineSection");
+      if (tl && !tl.hidden) renderTimeline();
+      $("#memcardWrap").hidden = true;
+    }
+  });
+  applyLang();
+  registerServiceWorker();
+}
+document.addEventListener("DOMContentLoaded", init);

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tsurezurecoding.github.io/shinkansen-meets-fuji/sitemap.xml

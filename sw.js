@@ -1,52 +1,19 @@
-const CACHE_NAME = "shinkansen-meets-fuji-v3";
-const APP_SHELL = [
-  "./",
-  "./index.html",
-  "./candidates.html",
-  "./detail.html",
-  "./styles.css",
-  "./prototype.js",
-  "./manifest.json",
-  "./data/timetable.js",
-  "./data/timetable.json",
-  "./images/20240211_Mt.Fuji.jpg",
-  "./images/20240114_ibukiyama.png",
-  "./images/20260510_toji.png",
-  "./shinkansenmeetsfuji.png"
-];
+const CACHE_PREFIX = "shinkansen-meets-fuji-";
+const CACHE_NAME = `${CACHE_PREFIX}shinkansen-window-v3`;
 
 self.addEventListener("install", (event) => {
-  event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
-      .then(() => self.skipWaiting())
-  );
+  event.waitUntil(self.skipWaiting());
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))))
+      .then((keys) => Promise.all(keys.filter((key) => key.startsWith(CACHE_PREFIX) && key !== CACHE_NAME).map((key) => caches.delete(key))))
       .then(() => self.clients.claim())
   );
 });
 
 self.addEventListener("fetch", (event) => {
-  if (event.request.method !== "GET") {
-    return;
-  }
-
-  event.respondWith(
-    caches.match(event.request).then((cached) => {
-      if (cached) {
-        return cached;
-      }
-
-      return fetch(event.request).then((response) => {
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
-        return response;
-      });
-    })
-  );
+  if (event.request.method !== "GET") return;
+  event.respondWith(fetch(event.request).catch(() => caches.match(event.request)));
 });

@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
     <meta name="theme-color" content="#1167a8">
     <title>見どころ情報 | 新幹線 meets 富士山</title>
     <link rel="stylesheet" href="styles.css">
@@ -57,6 +58,15 @@
             </div>
           </div>
         </div>
+
+        <section class="notification-card" aria-labelledby="notification-title">
+          <div>
+            <h2 id="notification-title" data-i18n="notificationTitle">富士山の5分前通知</h2>
+            <p id="notification-lead" data-i18n="notificationLead">見どころ時刻の少し前に、この端末で通知を受け取ります。</p>
+          </div>
+          <button class="primary" id="reserve-notification" type="button" data-i18n="notificationButton">通知を予約</button>
+          <p class="notification-status" id="notification-status" aria-live="polite"></p>
+        </section>
 
         <section class="route-context" aria-labelledby="route-title">
           <div class="inline-title">

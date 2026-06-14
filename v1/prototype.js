@@ -46,12 +46,24 @@ const messages = {
     weatherCloudy: "新富士付近は雲が多めです。富士山は見えにくいかもしれません。",
     weatherRain: "新富士付近で降水があります。車窓の見通しは期待しすぎない方がよさそうです。",
     weatherNight: "見どころ時刻は日の出前または日没後です。景色は見えにくい可能性があります。",
+    notificationTitle: "富士山の5分前通知",
+    notificationLead: "見どころ時刻の少し前に、この端末で通知を受け取ります。",
+    notificationButton: "通知を予約",
+    notificationUnsupported: "この環境では通知を利用できません。スマートフォンのブラウザまたはホーム画面アプリで確認してください。",
+    notificationDenied: "通知が許可されていません。端末の設定から通知を許可してください。",
+    notificationTooLate: "この列車の通知時刻は過ぎています。",
+    notificationNightSuppressed: "夜のため通知予約は止めています。",
+    notificationScheduled: "{time}に通知します。",
+    notificationTestNote: "最小版では、このページを開いている間に通知します。",
+    notificationBody: "{train}の富士山目安は{time}ごろです。E席側を確認してください。",
     darkBadge: "夜",
     candidateDark: "夜のため富士山は見えません",
     daylightBadge: "日中",
     editConditions: "条件を変更",
     details: "詳しく",
     closeDetails: "閉じる",
+    classicView: "定番ビュー",
+    hiddenView: "道草ビュー",
     select: "選択",
     arrive: "着",
     depart: "発",
@@ -112,12 +124,24 @@ const messages = {
     weatherCloudy: "Cloud cover near Shin-Fuji looks high. Mt. Fuji may be hard to see.",
     weatherRain: "Rain is reported near Shin-Fuji. Visibility may be limited.",
     weatherNight: "This view is before sunrise or after sunset. Scenery may be difficult to see.",
+    notificationTitle: "Mt. Fuji 5-minute alert",
+    notificationLead: "Get a reminder on this device shortly before the view window.",
+    notificationButton: "Set alert",
+    notificationUnsupported: "Notifications are not available in this environment. Try a mobile browser or installed web app.",
+    notificationDenied: "Notifications are blocked. Please allow notifications in your device settings.",
+    notificationTooLate: "The alert time for this train has already passed.",
+    notificationNightSuppressed: "Alert is paused because this view is at night.",
+    notificationScheduled: "Alert set for {time}.",
+    notificationTestNote: "In this first version, the alert works while this page remains open.",
+    notificationBody: "Mt. Fuji window for {train} is around {time}. Check the Seat E side.",
     darkBadge: "Night",
     candidateDark: "Mt. Fuji is not visible at night",
     daylightBadge: "Daylight",
     editConditions: "Edit search",
     details: "Details",
     closeDetails: "Close",
+    classicView: "Classic view",
+    hiddenView: "Hidden gem",
     select: "Select",
     arrive: "arr.",
     depart: "dep.",
@@ -181,6 +205,24 @@ const scenicSpots = [
     ownedPhoto: true,
   },
   {
+    id: "hinataoka",
+    name: "日向岡住宅",
+    nameEn: "Hinataoka hillside homes",
+    area: "新横浜〜小田原",
+    areaEn: "Shin-Yokohama to Odawara",
+    after: "Shin-Yokohama",
+    before: "Odawara",
+    westAfter: "Shin-Yokohama",
+    eastAfter: "Odawara",
+    side: "mountain",
+    category: "hidden",
+    timing: { type: "between", start: "Shin-Yokohama", end: "Odawara", before: 2, after: 2 },
+    note: "丘の上に並ぶ住宅地の道草ビュー。",
+    noteEn: "A hillside neighborhood that turns the suburban window into a small discovery.",
+    detail: "相模川を過ぎるあたりで、丘の斜面にそろって並ぶ日向岡住宅が見えることがあります。名所というより、車窓を知っている人だけが楽しむ都市景観として扱います。正確な見え方は会長の写真と実見情報で詰めます。",
+    detailEn: "Around the Shin-Yokohama to Odawara section, the planned Hinataoka hillside homes can appear from the window. It is less a famous landmark than a small urban discovery, and we will refine the timing with the owner's photos and field notes.",
+  },
+  {
     id: "odawara",
     name: "小田原城と相模湾",
     nameEn: "Odawara Castle and Sagami Bay",
@@ -201,6 +243,24 @@ const scenicSpots = [
     source: "https://commons.wikimedia.org/wiki/File:Odawara_Castle_01.jpg",
   },
   {
+    id: "left-fuji",
+    name: "左富士",
+    nameEn: "Left-side Fuji",
+    area: "新富士〜静岡",
+    areaEn: "Shin-Fuji to Shizuoka",
+    after: "Shin-Fuji",
+    before: "Shizuoka",
+    westAfter: "Shin-Fuji",
+    eastAfter: "Shizuoka",
+    side: "sea",
+    category: "hidden",
+    timing: { type: "stationDirectional", station: "Shin-Fuji", west: 3, east: -3, before: 1, after: 1 },
+    note: "A席側にも一瞬だけ価値を作る道草ビュー。",
+    noteEn: "A short hidden view that gives Seat A a reason to look out.",
+    detail: "通常、富士山はE席側の主役ですが、線路の向きによってA席側から一瞬だけ見える区間が語られています。見える時間は短く、天候や座席位置にも左右されるため、まずは“見えたら嬉しい”道草ビューとして案内します。",
+    detailEn: "Mt. Fuji is usually the Seat E highlight, but a short section can briefly bring Fuji into view from Seat A. Because the timing is brief and visibility depends on weather and seat position, we treat it as a lucky hidden gem.",
+  },
+  {
     id: "tea",
     name: "静岡の茶畑",
     nameEn: "Shizuoka Tea Fields",
@@ -219,6 +279,27 @@ const scenicSpots = [
     image: "https://commons.wikimedia.org/wiki/Special:FilePath/Tea_plantation_in_Shizuoka.jpg?width=900",
     credit: "Wikimedia Commons / Tea plantation in Shizuoka",
     source: "https://commons.wikimedia.org/wiki/File:Tea_plantation_in_Shizuoka.jpg",
+  },
+  {
+    id: "kakegawa-castle",
+    name: "掛川城",
+    nameEn: "Kakegawa Castle",
+    area: "掛川駅前後",
+    areaEn: "Around Kakegawa Station",
+    after: "Shizuoka",
+    before: "Hamamatsu",
+    westAfter: "Shizuoka",
+    eastAfter: "Hamamatsu",
+    side: "mountain",
+    category: "hidden",
+    timing: { type: "stationDirectional", station: "Kakegawa", west: 1, east: -1, before: 1, after: 1 },
+    note: "掛川駅の前後で探したい城の道草ビュー。",
+    noteEn: "A castle view to watch for around Kakegawa Station.",
+    detail: "掛川城は掛川駅の北側にあり、列車や座席位置によって一瞬見える可能性があります。富士山ほど大きな主役ではありませんが、静岡区間に歴史の文脈を足せる見どころです。会長の写真提供があれば、時刻と見え方をさらに正確にできます。",
+    detailEn: "Kakegawa Castle sits north of Kakegawa Station and may appear briefly depending on the train and seat position. It adds a historical layer to the Shizuoka section, and owner-provided photos can help refine the timing.",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kakegawa_Castle_from_Tokaido_Shinkansen_window_view.jpg?width=900",
+    credit: "Wikimedia Commons / Kakegawa Castle from Tokaido Shinkansen window view",
+    source: "https://commons.wikimedia.org/wiki/File:Kakegawa_Castle_from_Tokaido_Shinkansen_window_view.jpg",
   },
   {
     id: "hamanako",
@@ -258,6 +339,45 @@ const scenicSpots = [
     detailEn: "Mt. Ibuki is known as a view near Maibara on the Nagoya side. In winter, its snow-covered shape can be especially memorable.",
     image: "images/20240114_ibukiyama.png",
     ownedPhoto: true,
+  },
+  {
+    id: "kiyosu",
+    name: "清須城",
+    nameEn: "Kiyosu Castle",
+    area: "名古屋〜岐阜羽島",
+    areaEn: "Nagoya to Gifu-Hashima",
+    after: "Nagoya",
+    before: "Gifu-Hashima",
+    westAfter: "Nagoya",
+    eastAfter: "Gifu-Hashima",
+    side: "mountain",
+    category: "hidden",
+    timing: { type: "stationDirectional", station: "Nagoya", west: 6, east: -6, before: 1, after: 1 },
+    note: "名古屋を出てすぐの道草ビュー。",
+    noteEn: "A small history tip just outside Nagoya.",
+    detail: "名古屋から岐阜羽島へ向かう途中、線路に近い位置に清須城が見える区間があります。織田信長や清須会議にゆかりのある場所として、短い時間でも旅の文脈が増える車窓です。",
+    detailEn: "Soon after Nagoya, Kiyosu Castle can appear close to the line. It is tied to Oda Nobunaga and the Kiyosu Conference, giving a quick historical layer to the ride.",
+    image: "https://commons.wikimedia.org/wiki/Special:FilePath/Kiyosu%20Castle%20view%20from%20T%C5%8Dkaid%C5%8D%20Shinkansen.jpg?width=900",
+    credit: "Wikimedia Commons / Kiyosu Castle view from Tokaido Shinkansen",
+    source: "https://commons.wikimedia.org/wiki/Category:Views_from_T%C5%8Dkaid%C5%8D_Shinkansen",
+  },
+  {
+    id: "totoro",
+    name: "米原のトトロ",
+    nameEn: "Maibara Totoro",
+    area: "岐阜羽島〜米原",
+    areaEn: "Gifu-Hashima to Maibara",
+    after: "Gifu-Hashima",
+    before: "Maibara",
+    westAfter: "Gifu-Hashima",
+    eastAfter: "Maibara",
+    side: "sea",
+    category: "hidden",
+    timing: { type: "stationDirectional", station: "Maibara", west: -4, east: 4, before: 1, after: 1 },
+    note: "見つけたらラッキーな道草ビュー。",
+    noteEn: "A blink-and-you-miss-it window tip.",
+    detail: "米原の手前あたりで、山の中にある岩絵のようなトトロが車窓ネタとして語られています。見える時間は短く、場所の裏取りを続けながら、まずは“見つけたらラッキー”なチップスとして扱います。",
+    detailEn: "Around the Maibara approach, a Totoro-like painted rock is known among train-window watchers. It is very easy to miss, so we treat it as a lucky hidden tip while continuing to verify the exact spot.",
   },
   {
     id: "toji",
@@ -527,7 +647,7 @@ function renderDetail(train, station, date) {
   const viewTime = getFujiCenterTime(train);
   document.querySelector("#train-name").textContent = `${formatTrainName(train)} / ${stationLabel(train.originStation)} → ${stationLabel(train.destination)}`;
   document.querySelector("#fuji-window").textContent = createViewWindow(viewTime);
-  document.querySelector("#countdown").textContent = createCountdownLabel(viewTime);
+  document.querySelector("#countdown").textContent = createCountdownLabel(viewTime, date);
   document.querySelector(".hero-result").classList.toggle("low-light", isDarkViewTime(viewTime, date));
   const fujiLightBadge = document.querySelector("#fuji-light-badge");
   const fujiIsDark = isDarkViewTime(viewTime, date);
@@ -536,6 +656,7 @@ function renderDetail(train, station, date) {
   document.querySelector("#hero-train-type").textContent = formatTrainName(train);
   document.querySelector("#seat-side").textContent = getSeatSide(train.direction);
   document.querySelector("#boarding-info").textContent = train.times[station] ? `${stationLabel(station)} ${train.times[station]}${t("depart")}` : `${stationLabel(station)} ${t("notStop")}`;
+  renderNotificationPanel(train, station, date, viewTime);
   document.querySelector("#route-plan").innerHTML = createRoutePlan(train, station, null, date);
   document.querySelector("#weather-comment").textContent = t("weatherLoading");
   updateWeatherComment(viewTime, date);
@@ -546,6 +667,98 @@ function renderDetail(train, station, date) {
       toggleSpot(spotButton.dataset.spotId, train);
     }
   });
+}
+
+function renderNotificationPanel(train, station, date, viewTime) {
+  const button = document.querySelector("#reserve-notification");
+  const status = document.querySelector("#notification-status");
+  if (!button || !status) {
+    return;
+  }
+  const target = createNotificationTargetDate(date, viewTime);
+  const isNight = isDarkViewTime(viewTime, date);
+  if (!("Notification" in window) || !("serviceWorker" in navigator) || location.protocol === "file:") {
+    button.disabled = true;
+    status.textContent = t("notificationUnsupported");
+    return;
+  }
+  if (isNight) {
+    button.disabled = true;
+    status.textContent = t("notificationNightSuppressed");
+    return;
+  }
+  if (!target || target.getTime() <= Date.now()) {
+    button.disabled = true;
+    status.textContent = t("notificationTooLate");
+    return;
+  }
+  status.textContent = t("notificationTestNote");
+  button.addEventListener("click", () => {
+    reserveFujiNotification({ train, station, date, viewTime, target, status, button });
+  });
+}
+
+async function reserveFujiNotification({ train, station, date, viewTime, target, status, button }) {
+  let permission = Notification.permission;
+  if (permission === "default") {
+    permission = await Notification.requestPermission();
+  }
+  if (permission !== "granted") {
+    status.textContent = t("notificationDenied");
+    sendAnalytics("notification_denied", { train: trainKey(train) });
+    return;
+  }
+
+  const reservation = {
+    train: trainKey(train),
+    station,
+    date,
+    viewTime,
+    notifyAt: target.toISOString(),
+    createdAt: new Date().toISOString(),
+  };
+  safeStorageSet("smf-fuji-notification", JSON.stringify(reservation));
+  const delay = target.getTime() - Date.now();
+  if (delay <= 2147483647) {
+    window.setTimeout(() => {
+      showFujiNotification(train, viewTime);
+    }, delay);
+  }
+  button.disabled = true;
+  status.textContent = `${t("notificationScheduled", { time: toClockLabel(target) })} ${t("notificationTestNote")}`;
+  sendAnalytics("notification_reserved", { train: trainKey(train), notify_at: reservation.notifyAt });
+}
+
+function createNotificationTargetDate(date, viewTime) {
+  if (!viewTime) {
+    return null;
+  }
+  const target = createLocalDate(date);
+  const [hours, minutes] = viewTime.split(":").map(Number);
+  if (!Number.isFinite(hours) || !Number.isFinite(minutes)) {
+    return null;
+  }
+  target.setHours(hours, minutes - 5, 0, 0);
+  return target;
+}
+
+async function showFujiNotification(train, viewTime) {
+  const title = currentLang === "ja" ? "富士山が近づいています" : "Mt. Fuji is coming up";
+  const body = t("notificationBody", { train: formatTrainName(train), time: createViewWindow(viewTime) });
+  const options = {
+    body,
+    icon: "shinkansenmeetsfuji.png",
+    badge: "shinkansenmeetsfuji.png",
+    tag: `fuji-${trainKey(train)}`,
+    data: { url: window.location.href },
+  };
+  try {
+    const registration = await navigator.serviceWorker.ready;
+    await registration.showNotification(title, options);
+  } catch {
+    new Notification(title, options);
+  }
+  sendAnalytics("notification_shown", { train: trainKey(train) });
 }
 
 function createRoutePlan(train, boardingStation, selectedSpotId, date) {
@@ -600,9 +813,10 @@ function createScenicRowsBetween(train, station, nextStation, selectedSpotId, da
       const center = getScenicCenterTime(train, spot);
       const isDark = isDarkViewTime(center, date);
       return `
-        <button class="route-row scenic ${spot.id === selectedSpotId ? "active" : ""} ${spot.id === "fuji" ? "fuji" : ""} ${isDark ? "low-light" : ""}" type="button" data-spot-id="${spot.id}">
+        <button class="route-row scenic ${spot.category === "hidden" ? "hidden-view" : "classic-view"} ${spot.id === selectedSpotId ? "active" : ""} ${spot.id === "fuji" ? "fuji" : ""} ${isDark ? "low-light" : ""}" type="button" data-spot-id="${spot.id}">
           <div class="route-time">${time}</div>
           <div class="spot-line">
+            <em>${spot.category === "hidden" ? t("hiddenView") : t("classicView")}</em>
             <strong>${spotLabel(spot, "name")}</strong>
             <span>${getSpotSeatSide(spot)}</span>
             ${isDark ? `<span class="light-badge">☾ ${t("darkBadge")}</span>` : ""}
@@ -610,8 +824,7 @@ function createScenicRowsBetween(train, station, nextStation, selectedSpotId, da
           </div>
           <span class="spot-toggle">${t("details")}</span>
           <div class="spot-detail-inline" id="spot-detail-${spot.id}" hidden>
-            <img src="${spot.image}" alt="${currentLang === "ja" ? `${spotLabel(spot, "name")}のサンプル写真` : `Sample photo: ${spotLabel(spot, "name")}`}" onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
-            <div class="photo-placeholder" hidden>${currentLang === "ja" ? "写真準備中" : "Photo coming soon"}</div>
+            ${createSpotMedia(spot)}
             <p>${spotLabel(spot, "detail")}</p>
             ${createPhotoCredit(spot)}
           </div>
@@ -654,6 +867,9 @@ function toggleSpot(spotId) {
   const toggle = button.querySelector(".spot-toggle");
   if (toggle) {
     toggle.textContent = wasOpen ? t("details") : t("closeDetails");
+  }
+  if (!wasOpen) {
+    sendAnalytics("spot_detail_open", { spot_id: spotId });
   }
 }
 
@@ -704,6 +920,17 @@ function createPhotoCredit(spot) {
     return "";
   }
   return `<a href="${spot.source}" target="_blank" rel="noreferrer">${t("photoCredit")}: ${spot.credit}</a>`;
+}
+
+function createSpotMedia(spot) {
+  const placeholder = `<div class="photo-placeholder">${currentLang === "ja" ? "写真準備中" : "Photo coming soon"}</div>`;
+  if (!spot.image) {
+    return placeholder;
+  }
+  return `
+    <img src="${spot.image}" alt="${currentLang === "ja" ? `${spotLabel(spot, "name")}のサンプル写真` : `Sample photo: ${spotLabel(spot, "name")}`}" onerror="this.hidden=true; this.nextElementSibling.hidden=false;">
+    <div class="photo-placeholder" hidden>${currentLang === "ja" ? "写真準備中" : "Photo coming soon"}</div>
+  `;
 }
 
 function findTrain(key) {
@@ -828,15 +1055,24 @@ function createTimeWindow(centerTime, before, after) {
   return `${addMinutes(centerTime, -before)}〜${addMinutes(centerTime, after)}${suffix}`;
 }
 
-function createCountdownLabel(viewTime) {
+function toClockLabel(date) {
+  return `${String(date.getHours()).padStart(2, "0")}:${String(date.getMinutes()).padStart(2, "0")}`;
+}
+
+function sendAnalytics(name, params = {}) {
+  if (typeof window.gtag === "function") {
+    window.gtag("event", name, params);
+  }
+}
+
+function createCountdownLabel(viewTime, dateValue = defaultTravelDate()) {
   if (!viewTime) {
     return t("countdownUnknown");
   }
-  const now = new Date();
-  const target = new Date(now);
+  const target = createLocalDate(dateValue);
   const [hours, minutes] = viewTime.split(":").map(Number);
   target.setHours(hours, minutes, 0, 0);
-  const diff = Math.round((target.getTime() - now.getTime()) / 60000);
+  const diff = Math.round((target.getTime() - Date.now()) / 60000);
   if (diff > 0) {
     return t("countdownIn", { minutes: diff });
   }
