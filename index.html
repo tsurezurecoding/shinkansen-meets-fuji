@@ -72,7 +72,7 @@
       <h2 id="showcaseTitle" data-i18n="showTitle">たとえば、こんな景色</h2>
     </div>
     <div class="showcase-rail" id="showcaseRail"></div>
-    <p class="showcase-note" data-i18n="showNote">いまは実写つき10の見どころ。あなたの列車では何時に見えるか、下でつくれます。</p>
+    <p class="showcase-note" data-i18n="showNote">実写つき12スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。</p>
   </section>
 
   <!-- ===== Journey setup ===== -->
@@ -80,7 +80,7 @@
     <div class="section-head">
       <p class="eyebrow" data-i18n="setupEyebrow">YOUR JOURNEY</p>
       <h2 data-i18n="setupTitle">きょうの旅を教えてください</h2>
-      <p class="section-sub" data-i18n="setupSub">旅の計画に、窓の一ページを。方向と出発時刻だけで、あなたの列車の車窓タイムラインをつくります。</p>
+      <p class="section-sub" data-i18n="setupSub">時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。</p>
     </div>
 
     <div class="setup-card">
@@ -137,6 +137,21 @@
     <ol class="timeline" id="timeline"></ol>
   </section>
 
+  <!-- ===== Gallery (browse all views) ===== -->
+  <section class="section" id="gallery">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="galEyebrow">FIELD GUIDE</p>
+      <h2 data-i18n="galTitle">車窓図鑑 — ぜんぶの見どころ</h2>
+      <p class="section-sub" data-i18n="galSub">定番と穴場。気になるカードを開いてみてください。</p>
+    </div>
+    <div class="filterbar" id="filterbar">
+      <button type="button" data-filter="all" class="active" data-i18n="fAll">すべて</button>
+      <button type="button" data-filter="classic" data-i18n="fClassic">定番</button>
+      <button type="button" data-filter="hidden" data-i18n="fHidden">穴場</button>
+    </div>
+    <div class="gallery" id="galleryGrid"></div>
+  </section>
+
   <!-- ===== Stamp board / memories ===== -->
   <section class="section" id="memories">
     <div class="section-head">
@@ -153,21 +168,6 @@
       <canvas id="memCanvas" width="1000" height="1250"></canvas>
       <a class="btn btn-primary" id="dlBtn" download="shinkansen-window-journey.png" data-i18n="btnDownload">カードを保存する</a>
     </div>
-  </section>
-
-  <!-- ===== Gallery (browse all views) ===== -->
-  <section class="section" id="gallery">
-    <div class="section-head">
-      <p class="eyebrow" data-i18n="galEyebrow">FIELD GUIDE</p>
-      <h2 data-i18n="galTitle">車窓図鑑 — ぜんぶの見どころ</h2>
-      <p class="section-sub" data-i18n="galSub">定番と穴場。気になるカードを開いてみてください。</p>
-    </div>
-    <div class="filterbar" id="filterbar">
-      <button type="button" data-filter="all" class="active" data-i18n="fAll">すべて</button>
-      <button type="button" data-filter="classic" data-i18n="fClassic">定番</button>
-      <button type="button" data-filter="hidden" data-i18n="fHidden">穴場</button>
-    </div>
-    <div class="gallery" id="galleryGrid"></div>
   </section>
 
   <!-- ===== Footer ===== -->

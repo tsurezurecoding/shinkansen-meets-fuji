@@ -43,6 +43,7 @@ const SPOTS = [
     en: { name: "Hinataoka Hillside Homes", area: "Shin-Yokohama → Odawara", hook: "A hillside of matching rooftops, gone in seconds.", story: "Shortly after crossing the Sagami River, a planned neighborhood of identical homes climbs the hillside for just a moment. Not a landmark — but the kind of view that makes those in the know glance up from their phone." },
     minutesFromTokyo: 27, side: "E", category: "hidden", confidence: "verified", durationSec: 20, scene: "hills",
     image: "images/20260530_hinataoka.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
     map: { lat: 35.333, lng: 139.304, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
   },
   {
@@ -52,7 +53,18 @@ const SPOTS = [
     en: { name: "Atami & Sagami Bay", area: "Odawara → Atami", hook: "Where the city ends and the sea begins.", story: "After Odawara, as Atami approaches, the window opens wide toward Sagami Bay. Hillside town, sea and headlands fold into one view: the moment the ride stops being a commute and starts being a journey. Look from Seat A." },
     minutesFromTokyo: 36, side: "A", category: "classic", confidence: "verified", durationSec: 120, scene: "bay",
     image: "images/20260515_atami_sagami_bay.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-15" },
     map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
+  },
+  {
+    id: "odawara-castle",
+    icon: "🏯",
+    ja: { name: "小田原城", area: "小田原駅付近", hook: "のぞみでは、まばたきする間の城。", story: "小田原駅の前後、A席側に小田原城が一瞬だけ見えることがあります。停車しない列車では本当に短い出会い。見えたら、それだけで旅の序章に小さな印がつきます。" },
+    en: { name: "Odawara Castle", area: "Around Odawara Sta.", hook: "A castle you can miss in a blink.", story: "Around Odawara Station, Odawara Castle can appear briefly on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey." },
+    minutesFromTokyo: 31, side: "A", category: "hidden", confidence: "verified", durationSec: 8, scene: "castle",
+    image: "images/20251112_odawara_castle_castle_traveler.jpg",
+    photoCredit: { ja: "@Castle_Traveler", en: "@Castle_Traveler", url: "https://x.com/Castle_Traveler/status/1992009734854218106" },
+    map: { lat: 35.2509722, lng: 139.1535778, ja: "小田原城", en: "Odawara Castle" },
   },
   {
     id: "fuji",
@@ -60,7 +72,22 @@ const SPOTS = [
     ja: { name: "富士山", area: "三島 → 新富士", hook: "日本でいちばん有名な3分間。", story: "三島から新富士のあいだ、富士山が車窓いっぱいに迫ります。見えている時間はおよそ3〜4分。トンネルを抜けるたびに大きくなる富士山は、何度乗っても声が出ます。E席側、少し前から窓の外を。" },
     en: { name: "Mt. Fuji", area: "Mishima → Shin-Fuji", hook: "The most famous three minutes in Japan.", story: "Between Mishima and Shin-Fuji, Mt. Fuji fills the window — for roughly three to four minutes. It grows bigger after each tunnel, and it gets a gasp out of people every single time. Seat E side; be ready a little early." },
     minutesFromTokyo: 43, side: "E", category: "classic", confidence: "verified", durationSec: 210, scene: "fuji",
-    image: "images/20240211_Mt.Fuji.jpg",
+    image: "images/20240211_fuji_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2024-02-11" },
+    photos: [
+      {
+        src: "images/20230913_fuji_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2023-09-13",
+      },
+      {
+        src: "images/20260516_fuji_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-16",
+      },
+    ],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
   },
   {
@@ -75,8 +102,14 @@ const SPOTS = [
       {
         src: "images/20260513_left_fuji.jpg",
         alt: { ja: "新幹線のA席側から見える左富士", en: "Left-side Fuji from Seat A" },
-        caption: { ja: "A席側に一瞬だけあらわれる左富士。見える時間の短さが伝わる一枚。", en: "Left-Side Fuji appears only briefly from Seat A." },
-        credit: { ja: "道草 / Michikusa", en: "Michikusa" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-13",
+      },
+      {
+        src: "images/20241212_left_fuji_kawasan3.jpg",
+        alt: { ja: "新幹線のA席側から見える冬の左富士", en: "Winter Left-Side Fuji from Seat A" },
+        credit: { ja: "@kawasan3", en: "@kawasan3" },
+        sourceUrl: "https://x.com/kawasan3/status/1866984276581028088",
       },
     ],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
@@ -88,6 +121,7 @@ const SPOTS = [
     en: { name: "Kakegawa Castle", area: "Around Kakegawa Sta.", hook: "A castle keep, right by the tracks.", story: "Just north of Kakegawa Station stands Kakegawa Castle — Japan's first wooden-reconstructed keep. It appears only briefly, but it adds a line of history to the Shizuoka stretch." },
     minutesFromTokyo: 62, side: "E", category: "hidden", confidence: "verified", durationSec: 15, scene: "castle",
     image: "images/20260530_kakegawa_castle.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
   },
   {
@@ -96,7 +130,16 @@ const SPOTS = [
     ja: { name: "浜名湖", area: "浜松 → 豊橋", hook: "列車が、湖の上をはしる。", story: "浜松を出てしばらくすると、車窓の両側に浜名湖の水面がひろがります。晴れた日の光の反射は、この路線でいちばん「旅をしている」と感じる瞬間のひとつ。うなぎの養殖いかだも探してみてください。" },
     en: { name: "Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "The train runs over the water.", story: "After Hamamatsu, Lake Hamana spreads out on both sides of the train. On a sunny day, the light off the water is one of the most journey-like moments on the line. Look for the eel-farming rafts." },
     minutesFromTokyo: 73, side: "E", category: "classic", confidence: "verified", durationSec: 150, scene: "lake",
-    image: "images/20260530_hamanako.jpg",
+    image: "images/20260505_hamanako_design_photosy.jpg",
+    photoCredit: { ja: "@Design_photoSY", en: "@Design_photoSY", url: "https://x.com/Design_photoSY/status/2051484905377521740" },
+    photos: [
+      {
+        src: "images/20260530_hamanako.jpg",
+        alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+    ],
     map: { lat: 34.741111, lng: 137.569722, ja: "浜名湖", en: "Lake Hamana" },
   },
   {
@@ -106,6 +149,7 @@ const SPOTS = [
     en: { name: "Kiyosu Castle", area: "Nagoya → Gifu-Hashima", hook: "Nobunaga's castle, right beside the tracks.", story: "A few minutes out of Nagoya, Kiyosu Castle appears startlingly close to the line. This is where warlord Oda Nobunaga began his rise to power. It may be the closest the Shinkansen ever gets to a castle." },
     minutesFromTokyo: 99, side: "E", category: "hidden", confidence: "verified", durationSec: 12, scene: "castle",
     image: "images/20260530_kiyosu_castle.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
     map: { lat: 35.2165750, lng: 136.8435972, ja: "清洲城", en: "Kiyosu Castle" },
   },
   {
@@ -115,6 +159,7 @@ const SPOTS = [
     en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A giant solar ship, out of nowhere.", story: "After Nagoya and Kiyosu Castle, the Solar Ark suddenly sweeps into view: a huge dark arc beside the line. It is not the usual guidebook landmark, but it is exactly the kind of strange window-seat find that sticks in memory." },
     minutesFromTokyo: 103, side: "E", category: "hidden", confidence: "verified", durationSec: 20, scene: "solar",
     image: "images/20260530_solar_ark.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
     map: { lat: 35.3176417, lng: 136.6832861, ja: "ソーラーアーク", en: "Solar Ark" },
   },
   {
@@ -124,12 +169,13 @@ const SPOTS = [
     en: { name: "Mt. Ibuki", area: "Gifu-Hashima → Maibara", hook: "The mountain that guards Sekigahara.", story: "Before Maibara, Mt. Ibuki rises on the Fuji side — a storied peak that appears in Japan's oldest chronicles, magnificent under winter snow. You're crossing Sekigahara, where the decisive battle of 1600 changed Japanese history. At 285 km/h." },
     minutesFromTokyo: 110, side: "E", category: "classic", confidence: "verified", durationSec: 180, scene: "mountain",
     image: "images/20240114_ibukiyama.png",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2024-01-14" },
     photos: [
       {
         src: "images/20260530_ibukiyama.jpg",
         alt: { ja: "新幹線のE席側から見える伊吹山", en: "Mt. Ibuki from Seat E" },
-        caption: { ja: "初夏の伊吹山。雪景色とは違う、のびやかな山の姿が見えます。", en: "Mt. Ibuki in early summer, a broader and greener view than the snowy season." },
-        credit: { ja: "道草 / Michikusa", en: "Michikusa" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
       },
     ],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
@@ -151,6 +197,7 @@ const SPOTS = [
     en: { name: "To-ji Pagoda", area: "Around Kyoto Sta.", hook: "One glance, and you know it's Kyoto.", story: "South of Kyoto Station rises the five-story pagoda of To-ji — the tallest wooden tower in Japan, watching over the city for 1,200 years. Catching it from the train window is the perfect announcement: you have arrived in Kyoto." },
     minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 40, scene: "pagoda",
     image: "images/20260510_toji.png",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-10" },
     map: { lat: 34.980361, lng: 135.747694, ja: "東寺 五重塔", en: "To-ji Pagoda Kyoto" },
   },
 ];

@@ -13,7 +13,7 @@ const MSG = {
     heroLead: "富士山の3分間も、線路ぎわの城も、湖も海も。新幹線で「いつ・どちら側を見ればいいか」がわかり、見つけた景色が旅の思い出になる手帖です。",
     ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
-    setupSub: "旅の計画に、窓の一ページを。方向と出発時刻だけで、あなたの列車の車窓タイムラインをつくります。",
+    setupSub: "時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。",
     labelDirection: "方向", labelDeparture: "出発時刻", labelSeat: "座席",
     dirWest: "西へ（大阪方面）", dirEast: "東へ（東京方面）",
     btnNow: "これから乗る", seatFuji: "富士山側", seatSea: "海側", seatBoth: "両方みる",
@@ -24,7 +24,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "いまは実写つき11の見どころ。あなたの列車では何時に見えるか、下でつくれます。",
+    showNote: "実写つき12スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "ヒント: 富士山はどちら向きでも E席。海はA席、浜名湖はE席写真を採用しています。",
@@ -65,7 +65,7 @@ const MSG = {
     heroLead: "Fuji's famous three minutes, castles beside the tracks, lake and sea. Shinkansen Window shows when and where to look, turning a Shinkansen ride into a journey to remember.",
     ctaStart: "Start your journey", ctaBrowse: "Browse the views",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
-    setupSub: "Add a page of window views to your travel plan. Just direction and departure time — we'll build your train's window timeline.",
+    setupSub: "Use the timetable to catch Fuji, lakes, castles, and more. Add direction, boarding station, and departure time to build your train's window timeline.",
     labelDirection: "Direction", labelDeparture: "Departure", labelSeat: "Your seat",
     dirWest: "Westbound (for Osaka)", dirEast: "Eastbound (for Tokyo)",
     btnNow: "Boarding soon", seatFuji: "Fuji side", seatSea: "Sea side", seatBoth: "Show both",
@@ -76,7 +76,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "11 real-photo views for now. Build your timeline below to see when your train passes each one.",
+    showNote: "12 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Tip: Seat E faces Mt. Fuji in both directions. Seat A gets the sea; Lake Hamana uses an E-seat photo.",
@@ -119,6 +119,7 @@ let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
 let stamps = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
 let liveTimer = null;
+let activeSpotModal = null;
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -225,27 +226,29 @@ function mapHref(spot) {
   const query = spot.map[lang] || spot.map.ja || spot.map.en;
   return query ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}` : "";
 }
-function mapLinkHTML(spot) {
+function mapLinkHTML(spot, className = "") {
   const href = mapHref(spot);
-  return href ? `<a class="map-link" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}">${t("mapLink")}</a>` : "";
+  const classes = ["map-link", className].filter(Boolean).join(" ");
+  return href ? `<a class="${classes}" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${t("mapLink")}</span></a>` : "";
 }
 function photoCreditHTML(spot) {
   if (!spot.photoCredit) return "";
   const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
-  const text = `photo: ${label}`;
+  const date = spot.photoCredit.date ? ` / ${spot.photoCredit.date}` : "";
+  const text = `photo: ${label}${date}`;
   return spot.photoCredit.url
     ? `<figcaption class="photo-credit"><a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer">${text}</a></figcaption>`
     : `<figcaption class="photo-credit">${text}</figcaption>`;
 }
 function photoMetaHTML(photo) {
   if (!photo) return "";
-  const caption = photo.caption?.[lang] || photo.caption?.ja || photo.caption?.en || "";
   const credit = photo.credit?.[lang] || photo.credit?.ja || photo.credit?.en || "";
-  const creditText = credit ? `photo: ${credit}` : "";
+  const date = photo.date ? ` / ${photo.date}` : "";
+  const creditText = credit ? `photo: ${credit}${date}` : "";
   const source = photo.sourceUrl
     ? `<a href="${photo.sourceUrl}" target="_blank" rel="noopener noreferrer">${creditText}</a>`
     : creditText;
-  return `${caption ? `<figcaption class="photo-caption">${caption}</figcaption>` : ""}${creditText ? `<figcaption class="photo-credit">${source}</figcaption>` : ""}`;
+  return creditText ? `<figcaption class="photo-credit">${source}</figcaption>` : "";
 }
 function spotImageHTML(spot, label, className = "spot-photo") {
   if (!spot.image) return "";
@@ -257,6 +260,30 @@ function photoGalleryHTML(spot) {
     const alt = photo.alt?.[lang] || photo.alt?.ja || photo.alt?.en || spot[lang].name;
     return `<figure class="photo-figure"><img class="spot-photo" loading="lazy" src="${photo.src}" alt="${alt}">${photoMetaHTML(photo)}</figure>`;
   }).join("")}</div>`;
+}
+function spotDetailModalHTML(spot) {
+  const L = spot[lang];
+  const heroMedia = spot.image
+    ? `<div class="spot-modal-main-media">${spotImageHTML(spot, L.name)}</div>`
+    : `<div class="spot-modal-main-media"><div class="scene">${sceneSVG(spot.scene)}</div></div>`;
+  return `
+    <div class="spot-modal-backdrop" data-modal-close></div>
+    <section class="spot-modal-panel" role="dialog" aria-modal="true" aria-labelledby="spot-modal-title" tabindex="-1">
+      <button type="button" class="spot-modal-close" data-modal-close aria-label="Close">×</button>
+      <div class="spot-modal-head">
+        <span class="spot-modal-icon">${spot.icon}</span>
+        <div class="spot-modal-titleblock">
+          <p class="spot-modal-area">${L.area}</p>
+          <h2 id="spot-modal-title">${L.name}</h2>
+          <div class="tl-meta">${seatBadge(spot)}${catBadge(spot)}${confBadge(spot)}</div>
+        </div>
+        ${mapLinkHTML(spot, "spot-modal-map")}
+      </div>
+      <p class="spot-modal-hook">${L.hook}</p>
+      ${heroMedia}
+      <p class="spot-modal-story">${L.story}</p>
+      ${photoGalleryHTML(spot)}
+    </section>`;
 }
 
 /* ---------- i18n apply ---------- */
@@ -281,18 +308,22 @@ function applyLang() {
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  const picks = ["fuji", "toji", "hamanako", "ibuki", "omi-fuji", "odawara", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
+  const picks = ["fuji", "toji", "hamanako", "ibuki", "omi-fuji", "odawara", "odawara-castle", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
   rail.innerHTML = picks.map((id) => {
     const sp = SPOTS.find((s) => s.id === id);
+    if (!sp) return "";
     const L = sp[lang];
     const media = sp.image
       ? `<img loading="lazy" src="${sp.image}" alt="${L.name}">`
       : sceneSVG(sp.scene);
-    return `<figure class="show-card">
+    return `<button type="button" class="show-card" data-show-spot="${sp.id}" aria-label="${t("more")}: ${L.name}">
       <div class="show-media">${media}</div>
-      <figcaption><strong>${sp.icon} ${L.name}</strong><span>${L.hook}</span></figcaption>
-    </figure>`;
+      <span class="show-caption"><strong>${sp.icon} ${L.name}</strong><span>${L.hook}</span><em>${t("more")}</em></span>
+    </button>`;
   }).join("");
+  rail.querySelectorAll("[data-show-spot]").forEach((card) => {
+    card.addEventListener("click", () => openSpotModal(card.dataset.showSpot, "showcase"));
+  });
 }
 
 /* ---------- 乗車駅セレクト ---------- */
@@ -449,9 +480,6 @@ function spotItemHTML(sp, clock) {
   const dim = seat !== "both" && sp.side && sp.side !== seat ? " dim" : "";
   const opp = seat !== "both" && sp.side && sp.side !== seat ? `<span class="badge badge-check">${t("oppositeSide")}</span>` : "";
   const stamped = stamps[sp.id];
-  const media = sp.image
-    ? `<div class="scene">${sceneSVG(sp.scene)}</div>${spotImageHTML(sp, L.name)}`
-    : `<div class="scene">${sceneSVG(sp.scene)}</div>`;
   return `
   <li class="tl-item${dim}" data-spot="${sp.id}">
     <div class="tl-card">
@@ -462,9 +490,39 @@ function spotItemHTML(sp, clock) {
         <button type="button" class="spot-btn${stamped ? " stamped" : ""}" data-stamp="${sp.id}">${stamped ? t("spotBtnDone") : t("spotBtn")}</button>
         <button type="button" class="more-btn" data-more>${t("more")}</button>
       </div>
-      <div class="tl-detail">${media}<p>${L.story}</p>${photoGalleryHTML(sp)}${mapLinkHTML(sp)}</div>
     </div>
   </li>`;
+}
+
+function findSpotById(id) {
+  return SPOTS.find((sp) => sp.id === id);
+}
+function openSpotModal(spotId, source = "unknown") {
+  const spot = findSpotById(spotId);
+  if (!spot) return;
+  closeSpotModal("replace");
+  const modal = document.createElement("div");
+  modal.className = "spot-modal";
+  modal.innerHTML = spotDetailModalHTML(spot);
+  document.body.appendChild(modal);
+  document.body.classList.add("modal-open");
+  activeSpotModal = { element: modal, spotId, source };
+  track("spot_detail_open", { spot_id: spotId, source });
+  modal.querySelector(".spot-modal-panel")?.focus();
+  modal.querySelectorAll("[data-modal-close]").forEach((el) => {
+    el.addEventListener("click", () => closeSpotModal("button"));
+  });
+  modal.querySelectorAll("[data-map]").forEach((link) => {
+    link.addEventListener("click", () => track("map_opened", { spot_id: link.dataset.map, source: "spot_modal" }));
+  });
+}
+function closeSpotModal(reason = "close") {
+  if (!activeSpotModal) return;
+  const { element, spotId, source } = activeSpotModal;
+  element.remove();
+  document.body.classList.remove("modal-open");
+  activeSpotModal = null;
+  if (reason !== "replace") track("spot_detail_close", { spot_id: spotId, source, reason });
 }
 
 function bindSpotEvents(root) {
@@ -474,8 +532,8 @@ function bindSpotEvents(root) {
   root.querySelectorAll("[data-more]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const item = btn.closest(".tl-item, .gal-card");
-      item.classList.toggle("open");
-      btn.textContent = item.classList.contains("open") ? t("less") : t("more");
+      const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
+      openSpotModal(item?.dataset.spot, source);
     });
   });
   root.querySelectorAll("[data-map]").forEach((link) => {
@@ -622,7 +680,6 @@ function renderGallery() {
             <button type="button" class="spot-btn${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
             <button type="button" class="more-btn" data-more>${t("more")}</button>
           </div>
-          <div class="tl-detail"><p>${L.story}</p>${photoGalleryHTML(sp)}${mapLinkHTML(sp)}</div>
         </div>
       </div>`;
     }).join("");
@@ -676,6 +733,9 @@ function init() {
       if (tl && !tl.hidden) renderTimeline();
       $("#memcardWrap").hidden = true;
     }
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeSpotModal("escape");
   });
   applyLang();
   registerServiceWorker();
