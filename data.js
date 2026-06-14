@@ -114,7 +114,7 @@ const SPOTS = [
     ja: { name: "伊吹山", area: "岐阜羽島 → 米原", hook: "冬は雪をかぶる、関ヶ原の主。", story: "米原の手前、車窓の右手にどっしりと構えるのが伊吹山。古事記にも登場する近江の名山で、冬の雪化粧はみごとです。このあたりは関ヶ原——日本の歴史が動いた土地を、いま時速285kmで駆け抜けています。" },
     en: { name: "Mt. Ibuki", area: "Gifu-Hashima → Maibara", hook: "The mountain that guards Sekigahara.", story: "Before Maibara, Mt. Ibuki rises on the Fuji side — a storied peak that appears in Japan's oldest chronicles, magnificent under winter snow. You're crossing Sekigahara, where the decisive battle of 1600 changed Japanese history. At 285 km/h." },
     minutesFromTokyo: 110, side: "E", category: "classic", confidence: "verified", durationSec: 180, scene: "mountain",
-    image: "images/20260530_ibukiyama.jpg",
+    image: "images/20240114_ibukiyama.png",
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
   },
   {
