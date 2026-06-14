@@ -627,7 +627,8 @@ function init() {
   });
   $("#buildBtn").addEventListener("click", () => buildTimeline(null));
   $("#filterbar")?.addEventListener("click", (event) => {
-    const button = event.target.closest("button[data-filter]");
+    const target = event.target instanceof Element ? event.target : null;
+    const button = target?.closest("button[data-filter]");
     if (!button) return;
     galFilter = button.dataset.filter;
     $$("#filterbar button").forEach((b) => b.classList.toggle("active", b === button));
