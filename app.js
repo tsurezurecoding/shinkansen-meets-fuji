@@ -7,7 +7,7 @@
 const MSG = {
   ja: {
     brandName: "新幹線の窓",
-    brandSub: "見逃さない車窓手帖",
+    brandSub: "旅の瞬間を見逃さない",
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
     heroLead: "富士山の3分間も、線路ぎわの城も、湖も海も。新幹線で「いつ・どちら側を見ればいいか」がわかり、見つけた景色が旅の思い出になる手帖です。",
@@ -37,11 +37,11 @@ const MSG = {
     btnCard: "思い出カードをつくる", btnReset: "スタンプをリセット", btnDownload: "カードを保存する",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
     galSub: "定番、みちくさ、見つけたらラッキー。気になるカードを開いてみてください。",
-    fAll: "すべて", fClassic: "定番", fHidden: "みちくさ", fLucky: "ラッキー",
+    fAll: "すべて", fClassic: "定番", fHidden: "穴場", fLucky: "珍景",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
     seatE: "E席・富士山側", seatA: "A席・海側",
-    catClassic: "定番", catHidden: "みちくさ", catLucky: "ラッキー",
+    catClassic: "定番", catHidden: "穴場", catLucky: "珍景",
     confCheck: "裏取り中",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
     more: "くわしく", less: "とじる", mapLink: "地図で見る",
@@ -58,7 +58,7 @@ const MSG = {
   },
   en: {
     brandName: "Shinkansen Window",
-    brandSub: "Never miss the view.",
+    brandSub: "Never miss a moment of the journey.",
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "There's another journey<br>outside your window.",
     heroLead: "Fuji's famous three minutes, castles beside the tracks, lake and sea. Shinkansen Window shows when and where to look, turning a Shinkansen ride into a journey to remember.",
@@ -88,11 +88,11 @@ const MSG = {
     btnCard: "Create my memory card", btnReset: "Reset stamps", btnDownload: "Save the card",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
     galSub: "Classics, side-trips, and lucky finds. Open any card that catches your eye.",
-    fAll: "All", fClassic: "Classic", fHidden: "Hidden", fLucky: "Lucky",
+    fAll: "All", fClassic: "Classic", fHidden: "Hidden gems", fLucky: "Curious finds",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
     seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
-    catClassic: "Classic", catHidden: "Hidden gem", catLucky: "Lucky find",
+    catClassic: "Classic", catHidden: "Hidden gem", catLucky: "Curious find",
     confCheck: "verifying",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
     more: "More", less: "Close", mapLink: "Open map",
@@ -626,6 +626,14 @@ function init() {
     showTrainResults();
   });
   $("#buildBtn").addEventListener("click", () => buildTimeline(null));
+  $("#filterbar")?.addEventListener("click", (event) => {
+    const button = event.target.closest("button[data-filter]");
+    if (!button) return;
+    galFilter = button.dataset.filter;
+    $$("#filterbar button").forEach((b) => b.classList.toggle("active", b === button));
+    track("gallery_filtered", { filter: galFilter });
+    renderGallery();
+  });
   $("#cardBtn").addEventListener("click", drawMemoryCard);
   $("#resetBtn").addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
