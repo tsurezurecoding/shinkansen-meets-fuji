@@ -118,7 +118,18 @@ const MSG = {
 };
 
 /* ---------- state ---------- */
-let lang = (localStorage.getItem("mado-lang") || (navigator.language || "ja")).toLowerCase().startsWith("ja") ? "ja" : "en";
+function normalizeLang(value) {
+  return String(value || "").toLowerCase().startsWith("ja") ? "ja" : "en";
+}
+function getInitialLang() {
+  const urlLang = new URLSearchParams(location.search).get("lang");
+  if (urlLang === "ja" || urlLang === "en") {
+    localStorage.setItem("mado-lang", urlLang);
+    return urlLang;
+  }
+  return normalizeLang(localStorage.getItem("mado-lang") || navigator.language || "ja");
+}
+let lang = getInitialLang();
 let direction = "west";
 let seat = "E";
 let boardId = "Tokyo";        // 乗車駅
