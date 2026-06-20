@@ -137,6 +137,12 @@ const t = (key, ...args) => {
 function track(eventName, params = {}) {
   if (typeof gtag === "function") gtag("event", eventName, params);
 }
+function eventSafeId(id) {
+  return String(id || "unknown").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
+}
+function spotEventName(prefix, spotId) {
+  return `${prefix}_${eventSafeId(spotId)}`.slice(0, 40);
+}
 
 /* ---------- helpers ---------- */
 const REF = Object.fromEntries(ROUTE.refStations.map((s) => [s.id, s.min]));
@@ -538,6 +544,7 @@ function openSpotModal(spotId, source = "unknown") {
   document.body.classList.add("modal-open");
   activeSpotModal = { element: modal, spotId, source };
   track("spot_detail_open", { spot_id: spotId, source });
+  track(spotEventName("spot_open", spotId), { spot_id: spotId, source });
   modal.querySelector(".spot-modal-panel")?.focus();
   modal.querySelectorAll("[data-modal-close]").forEach((el) => {
     el.addEventListener("click", () => closeSpotModal("button"));
@@ -573,7 +580,11 @@ function openQuickModal(source = "hero") {
     </section>`;
   document.body.appendChild(modal);
   document.body.classList.add("modal-open");
-  activeQuickModal = { element: modal, source };
+  const timers = [
+    setTimeout(() => track("quick_intro_10s", { source, language: lang, duration_sec: 10 }), 10000),
+    setTimeout(() => track("quick_intro_complete", { source, language: lang, duration_sec: 30 }), 30000),
+  ];
+  activeQuickModal = { element: modal, source, timers };
   track("quick_intro_open", { source, language: lang });
   modal.querySelector(".quick-modal-panel")?.focus();
   modal.querySelectorAll("[data-quick-close]").forEach((el) => {
@@ -582,7 +593,8 @@ function openQuickModal(source = "hero") {
 }
 function closeQuickModal(reason = "close") {
   if (!activeQuickModal) return;
-  const { element, source } = activeQuickModal;
+  const { element, source, timers = [] } = activeQuickModal;
+  timers.forEach((timer) => clearTimeout(timer));
   element.remove();
   document.body.classList.remove("modal-open");
   activeQuickModal = null;

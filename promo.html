@@ -230,7 +230,7 @@
     const photoCuts = [
       "images/20240211_Mt.Fuji.jpg",
       "images/20260505_hamanako_design_photosy.jpg",
-      "images/20240719_kiyosu_castle_asami_k920.jpg",
+      "images/20260530_kiyosu_castle.jpg",
       "images/20240114_ibukiyama.png",
     ];
 
@@ -276,6 +276,14 @@
     ];
 
     const stage = document.getElementById("stage");
+    const viewContext = window.self === window.top ? "standalone" : "iframe";
+    function ptrack(eventName, params = {}) {
+      if (typeof gtag === "function") gtag("event", eventName, { language: plang, context: viewContext, ...params });
+    }
+    ptrack("promo_view_start");
+    setTimeout(() => ptrack("promo_view_10s", { duration_sec: 10 }), 10000);
+    setTimeout(() => ptrack("promo_view_complete", { duration_sec: 30 }), 30000);
+
     stage.innerHTML = scenes.map((s, i) => `<div class="scene" id="sc${i}">${s.html}</div>`).join("");
     const total = scenes.reduce((a, s) => a + s.dur, 0);
     let idx = -1, elapsed = 0, timer = null;
