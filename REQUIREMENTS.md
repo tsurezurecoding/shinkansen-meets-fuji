@@ -140,12 +140,10 @@ Cover Flow操作:
 
 保存先:
 
-- `data/timetable.json`
 - `data/timetable.js`
 
 用途:
 
-- `timetable.json`: 再利用・更新用の元データ
 - `timetable.js`: `file://` 直開きでも動くためのブラウザ読込用データ
 
 現在の保存データ:
@@ -169,7 +167,7 @@ Cover Flow操作:
 
 - 基本時刻表ベース
 - 臨時列車、運転日注意、季節変更、遅延は完全反映ではない
-- 今後もJSON更新で拡張可能
+- 今後、再利用・更新用の元データを分ける場合は `timetable.json` を復帰させ、`scripts/validate-timetable.mjs` で `timetable.js` と一致確認する
 
 ## PWA仕様
 
@@ -219,7 +217,6 @@ sw.js
 README.md
 shinkansenmeetsfuji.png
 data/
-  timetable.json
   timetable.js
   shinkansen_west_bound2603.pdf
   shinkansen_east_bound2603.pdf

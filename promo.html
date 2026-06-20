@@ -18,12 +18,17 @@
   <!--
     使い方:
     このページは約30秒で1周する16:9のモーションプロモです。
-    フルスクリーン(F11)にして画面録画すれば、そのままSNS用のMP4になります。
+    index.html の「新幹線の窓とは？」モーダル内でも再生されます。
     ?lang=en で英語版になります。
   -->
   <style>
     :root {
-      --night: #101c2c; --accent: #e8704a; --accent-soft: #f5c9a8; --paper: #faf6ef;
+      --night: #101c2c;
+      --night-2: #1c2f47;
+      --accent: #e8704a;
+      --accent-soft: #f5c9a8;
+      --paper: #faf6ef;
+      --ink: #16202e;
       --serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", Georgia, serif;
       --sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, sans-serif;
     }
@@ -35,154 +40,256 @@
     }
     .scene {
       position: absolute; inset: 0; display: grid; place-items: center;
-      opacity: 0; pointer-events: none; transition: opacity 0.8s ease;
-      text-align: center; padding: 6vmin;
+      opacity: 0; pointer-events: none; transition: opacity 0.75s ease;
+      text-align: center; padding: 5.6vmin;
     }
     .scene.on { opacity: 1; }
-    .big { font-family: var(--serif); font-size: 7vmin; line-height: 1.6; font-weight: 700; }
-    .mid { font-family: var(--serif); font-size: 5vmin; line-height: 1.7; font-weight: 700; }
-    .sub { font-size: 2.6vmin; opacity: 0.7; margin-top: 3vmin; letter-spacing: 0.1em; }
+    .photo-bg {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.7; transform: scale(1.04);
+    }
+    .scene.on .photo-bg { animation: slowzoom 6.4s ease both; }
+    .shade {
+      position: absolute; inset: 0;
+      background: linear-gradient(90deg, rgba(16,28,44,0.88), rgba(16,28,44,0.44) 55%, rgba(16,28,44,0.72));
+    }
+    .content { position: relative; z-index: 2; width: min(116vmin, 94vw); margin: 0 auto; }
+    .big { font-family: var(--serif); font-size: 6.8vmin; line-height: 1.42; font-weight: 700; }
+    .mid { font-family: var(--serif); font-size: 4.6vmin; line-height: 1.55; font-weight: 700; }
+    .sub { font-size: 2.35vmin; opacity: 0.82; margin-top: 2.4vmin; letter-spacing: 0.06em; }
+    .kicker { color: var(--accent-soft); font-size: 1.75vmin; font-weight: 700; letter-spacing: 0.22em; margin-bottom: 2vmin; }
     .accent { color: var(--accent-soft); }
-    .rise { animation: rise 1.2s ease both; }
-    .rise2 { animation: rise 1.2s 0.6s ease both; }
-    .rise3 { animation: rise 1.2s 1.4s ease both; }
-    @keyframes rise { from { transform: translateY(4vmin); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .rise { animation: rise 0.95s ease both; }
+    .rise2 { animation: rise 0.95s 0.45s ease both; }
+    .rise3 { animation: rise 0.95s 1.0s ease both; }
+    @keyframes rise { from { transform: translateY(3.6vmin); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    @keyframes slowzoom { from { transform: scale(1.02); } to { transform: scale(1.11); } }
 
-    /* S3: 車窓フレーム */
-    .window-frame {
-      width: 76vmin; max-width: 88vw; aspect-ratio: 16/10;
-      border-radius: 6vmin; border: 2.2vmin solid #2b3a4d;
-      overflow: hidden; position: relative; background: #9db4cd;
-      box-shadow: 0 4vmin 12vmin rgba(0,0,0,0.6);
+    .split {
+      display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 4vmin;
+      align-items: center; text-align: left;
     }
-    .window-view { position: absolute; inset: 0; width: 300%; height: 100%; animation: pan 7s linear both; }
-    .scene.on .window-view { animation-play-state: running; }
-    @keyframes pan { from { transform: translateX(0); } to { transform: translateX(-66.6%); } }
-    .window-caption { margin-top: 4vmin; }
-
-    /* S4: クイックカット */
-    .cuts { display: flex; gap: 2.5vmin; align-items: center; justify-content: center; flex-wrap: wrap; }
-    .cut {
-      width: 26vmin; border-radius: 2.5vmin; overflow: hidden;
-      border: 0.5vmin solid rgba(255,255,255,0.18); opacity: 0;
-      transform: scale(0.85) rotate(-2deg);
+    .phone {
+      width: 34vmin; margin: 0 auto; border-radius: 4.2vmin;
+      background: var(--paper); color: var(--ink);
+      border: 0.9vmin solid #29384a;
+      box-shadow: 0 4vmin 12vmin rgba(0,0,0,0.38);
+      overflow: hidden; opacity: 0;
     }
-    .scene.on .cut { animation: pop 0.5s ease both; }
-    .scene.on .cut:nth-child(2) { animation-delay: 0.7s; transform: rotate(2deg); }
-    .scene.on .cut:nth-child(3) { animation-delay: 1.4s; }
-    .scene.on .cut:nth-child(4) { animation-delay: 2.1s; transform: rotate(-1.5deg); }
-    @keyframes pop { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
-    .cut svg { display: block; width: 100%; height: auto; }
-    .cut-label { font-size: 2vmin; padding: 1vmin; background: rgba(0,0,0,0.45); }
+    .scene.on .phone { animation: phonein 0.8s 0.25s ease both; }
+    @keyframes phonein { from { transform: translateY(4vmin) rotate(-2deg); opacity: 0; } to { transform: translateY(0) rotate(-1deg); opacity: 1; } }
+    .phone-hero {
+      height: 13vmin; background: linear-gradient(rgba(16,28,44,0.1), rgba(16,28,44,0.68)), url("images/20240211_Mt.Fuji.jpg") center/cover;
+      display: grid; align-items: end; padding: 1.4vmin; color: #fff; font-weight: 700;
+    }
+    .phone-body { padding: 1.6vmin; }
+    .segline { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8vmin; margin-bottom: 1.1vmin; }
+    .pill {
+      border-radius: 99px; background: #fff; border: 1px solid #e5ded1;
+      padding: 0.7vmin 1vmin; font-size: 1.45vmin; font-weight: 700;
+    }
+    .pill.active { background: var(--night); color: #fff; }
+    .timeline-demo { margin-top: 1.3vmin; display: grid; gap: 0.85vmin; }
+    .time-row {
+      display: grid; grid-template-columns: auto 1fr auto; gap: 0.8vmin; align-items: center;
+      background: #fff; border: 1px solid #e5ded1; border-radius: 1.1vmin;
+      padding: 0.9vmin; font-size: 1.35vmin;
+    }
+    .time-row strong { font-family: var(--serif); font-size: 1.65vmin; }
+    .seat { color: var(--accent); font-weight: 800; }
 
-    /* S5: スタンプ */
-    .stamps { display: flex; gap: 3vmin; justify-content: center; margin-top: 4vmin; }
+    .photo-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6vmin;
+      align-items: stretch;
+    }
+    .photo-card {
+      position: relative; aspect-ratio: 4 / 5; border-radius: 2.2vmin; overflow: hidden;
+      background: #000; border: 0.25vmin solid rgba(255,255,255,0.18);
+      box-shadow: 0 1.8vmin 4.8vmin rgba(0,0,0,0.28);
+      opacity: 0; transform: translateY(3vmin) scale(0.94);
+    }
+    .scene.on .photo-card { animation: cardpop 0.55s ease both; }
+    .scene.on .photo-card:nth-child(2) { animation-delay: 0.25s; }
+    .scene.on .photo-card:nth-child(3) { animation-delay: 0.5s; }
+    .scene.on .photo-card:nth-child(4) { animation-delay: 0.75s; }
+    @keyframes cardpop { to { opacity: 1; transform: translateY(0) scale(1); } }
+    .photo-card img { width: 100%; height: 100%; object-fit: cover; }
+    .photo-card p {
+      position: absolute; left: 0; right: 0; bottom: 0;
+      padding: 1.1vmin; background: linear-gradient(transparent, rgba(0,0,0,0.78) 22%, rgba(0,0,0,0.82));
+      font-size: 1.85vmin; font-weight: 700; text-align: left;
+    }
+
+    .seat-board {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2.4vmin;
+      margin-top: 3vmin;
+    }
+    .seat-card {
+      background: rgba(255,255,255,0.92); color: var(--ink); border-radius: 2.4vmin;
+      padding: 2.4vmin; text-align: left; box-shadow: 0 2vmin 7vmin rgba(0,0,0,0.22);
+      opacity: 0;
+    }
+    .scene.on .seat-card { animation: rise 0.8s ease both; }
+    .scene.on .seat-card:nth-child(2) { animation-delay: 0.35s; }
+    .seat-card h3 { font-family: var(--serif); font-size: 3.2vmin; margin-bottom: 0.8vmin; }
+    .seat-card p { font-size: 2vmin; color: #4c5a6b; line-height: 1.6; }
+
+    .stamps { display: flex; gap: 2.6vmin; justify-content: center; margin-top: 3.4vmin; }
     .pstamp {
-      width: 13vmin; height: 13vmin; border-radius: 50%;
-      background: #fff7f2; border: 0.7vmin solid var(--accent);
-      display: grid; place-items: center; font-size: 6.5vmin; opacity: 0;
+      width: 12vmin; height: 12vmin; border-radius: 50%;
+      background: #fff7f2; border: 0.65vmin solid var(--accent);
+      display: grid; place-items: center; font-size: 5.8vmin; opacity: 0;
     }
     .scene.on .pstamp { animation: stamp 0.45s cubic-bezier(0.2, 1.8, 0.4, 1) both; }
-    .scene.on .pstamp:nth-child(2) { animation-delay: 0.5s; }
-    .scene.on .pstamp:nth-child(3) { animation-delay: 1.0s; }
-    .scene.on .pstamp:nth-child(4) { animation-delay: 1.5s; }
-    .scene.on .pstamp:nth-child(5) { animation-delay: 2.0s; }
-    @keyframes stamp { from { opacity: 0; transform: scale(2.2) rotate(14deg); } to { opacity: 1; transform: scale(1) rotate(-4deg); } }
+    .scene.on .pstamp:nth-child(2) { animation-delay: 0.35s; }
+    .scene.on .pstamp:nth-child(3) { animation-delay: 0.7s; }
+    .scene.on .pstamp:nth-child(4) { animation-delay: 1.05s; }
+    .scene.on .pstamp:nth-child(5) { animation-delay: 1.4s; }
+    @keyframes stamp { from { opacity: 0; transform: scale(2.1) rotate(12deg); } to { opacity: 1; transform: scale(1) rotate(-4deg); } }
 
-    /* S6: ロゴ */
     .logo-mark {
-      width: 14vmin; height: 14vmin; border-radius: 3vmin; background: var(--accent);
-      display: grid; place-items: center; margin: 0 auto 3vmin;
-      font-family: var(--serif); font-size: 8vmin; font-weight: 700;
-      animation: rise 1s ease both;
+      width: 13vmin; height: 13vmin; border-radius: 3vmin; background: var(--accent);
+      display: grid; place-items: center; margin: 0 auto 2.8vmin;
+      font-family: var(--serif); font-size: 7.5vmin; font-weight: 700;
+      animation: rise 0.9s ease both;
     }
-    .url { margin-top: 4vmin; font-size: 2.6vmin; letter-spacing: 0.15em; color: var(--accent-soft); }
-
+    .url { margin-top: 3.2vmin; font-size: 2.2vmin; letter-spacing: 0.12em; color: var(--accent-soft); }
     .progress {
       position: fixed; left: 0; bottom: 0; height: 0.6vmin; background: var(--accent);
       width: 0%; transition: width 0.3s linear; z-index: 10;
     }
-    .skynote { position: fixed; top: 2.5vmin; right: 3vmin; font-size: 1.8vmin; opacity: 0.4; z-index: 10; }
+    .skynote { position: fixed; top: 2.2vmin; right: 2.8vmin; font-size: 1.65vmin; opacity: 0.45; z-index: 10; }
+
+    @media (max-aspect-ratio: 4 / 3) {
+      .scene { padding: 5vmin 4vmin; }
+      .split { grid-template-columns: 1fr; text-align: center; gap: 2.8vmin; }
+      .phone { width: min(48vmin, 86vw); }
+      .photo-grid { grid-template-columns: repeat(2, 1fr); }
+      .photo-card { aspect-ratio: 16 / 10; }
+      .seat-board { grid-template-columns: 1fr; }
+      .big { font-size: 6vmin; }
+      .mid { font-size: 4.4vmin; }
+      .sub { font-size: 2.2vmin; }
+    }
   </style>
 </head>
 <body>
   <div class="stage" id="stage"></div>
   <div class="progress" id="bar"></div>
-  <p class="skynote">新幹線の窓 — 旅の瞬間を見逃さない · promo loop</p>
+  <p class="skynote">新幹線の窓 — 旅の瞬間を見逃さない · 30 sec</p>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script><!-- sceneSVG()を利用 -->
   <script>
-    // app.js側の lang と衝突しないよう plang を使う
     const plang = new URLSearchParams(location.search).get("lang") === "en" ? "en" : "ja";
     const T = {
       ja: {
-        s1a: "東京 → 新大阪", s1b: "147分。", s1sub: "TOKAIDO SHINKANSEN",
-        s2: "ただの移動だと、<br>思っていませんか。",
-        s3: "窓のむこうに、<br><span class='accent'>もうひとつの旅がある。</span>",
-        s4: "富士山だけじゃない。", s4sub: "城、湖、海、そして巨大なソーラーアーク。",
-        s5: "「見えた!」を集めて、<br>旅の思い出に。", s5sub: "車窓スタンプ帖と、思い出カード。",
-        s6: "旅の瞬間を見逃さない", s6sub: "無料・インストール不要", url: "tsurezurecoding.github.io/shinkansen-meets-fuji",
-        cap: "三島 → 新富士 · E席側",
+        s1k: "TOKAIDO SHINKANSEN",
+        s1: "列車を選ぶと、<br><span class='accent'>見える時刻が</span><br>わかる。",
+        s1sub: "富士山も、湖も、城も。見える時刻と座席側を、あなたの列車に合わせて。",
+        s2: "たとえば、東京 09:12 発。",
+        s2sub: "通過時刻がわかれば、スマホを見る時間を、窓を見る時間に変えられる。",
+        s3: "収録スポットは、<br><span class='accent'>実写つき17件。</span>",
+        s3sub: "ガイドブックに載らない線路ぎわの発見まで。",
+        s4: "E席か、A席か。<br>見るべき窓もわかる。",
+        s4sub: "予約前にも、乗車中にも。迷う時間を減らします。",
+        s5: "見えた景色は、<br><span class='accent'>旅の記録</span>になる。",
+        s5sub: "スタンプを集めて、思い出カードへ。",
+        s6: "新幹線の窓",
+        s6sub: "旅の瞬間を見逃さない",
+        url: "tsurezurecoding.github.io/shinkansen-meets-fuji",
+        phoneTitle: "東京 → 新大阪",
+        pick1: "09:12 東京発", pick2: "E席",
+        rows: [["09:55", "富士山", "E席"], ["10:25", "浜名湖", "E席"], ["11:08", "彦根城", "E席"]],
+        photos: ["富士山", "浜名湖", "清洲城", "伊吹山"],
+        seatE: ["E席", "富士山・伊吹山・城郭車窓"],
+        seatA: ["A席", "海・相模湾・左富士・近江富士"],
       },
       en: {
-        s1a: "Tokyo → Shin-Osaka", s1b: "147 minutes.", s1sub: "TOKAIDO SHINKANSEN",
-        s2: "Think it's<br>just a ride?",
-        s3: "There's another journey<br><span class='accent'>outside your window.</span>",
-        s4: "It's not just Fuji.", s4sub: "Castles, lake, sea — and the giant Solar Ark.",
-        s5: "Stamp what you spot.<br>Keep the journey.", s5sub: "A stamp book and a shareable memory card.",
-        s6: "Never miss a moment of the journey.", s6sub: "Free · No install", url: "tsurezurecoding.github.io/shinkansen-meets-fuji",
-        cap: "Mishima → Shin-Fuji · Seat E",
+        s1k: "TOKAIDO SHINKANSEN",
+        s1: "Pick your train.<br>Know <span class='accent'>when to look.</span>",
+        s1sub: "Fuji, lake, castles and more — timed for your ride, with the right seat side.",
+        s2: "For example: Tokyo 09:12.",
+        s2sub: "When the view has a time, your phone time becomes window time.",
+        s3: "17 real-photo<br><span class='accent'>window spots.</span>",
+        s3sub: "From famous Fuji to small discoveries beside the tracks.",
+        s4: "Seat E or Seat A.<br>Know which window to watch.",
+        s4sub: "Before booking, or while onboard.",
+        s5: "What you spot<br><span class='accent'>becomes a memory.</span>",
+        s5sub: "Collect stamps and make a memory card.",
+        s6: "Shinkansen Window",
+        s6sub: "Never miss a moment of the journey.",
+        url: "tsurezurecoding.github.io/shinkansen-meets-fuji",
+        phoneTitle: "Tokyo → Shin-Osaka",
+        pick1: "09:12 from Tokyo", pick2: "Seat E",
+        rows: [["09:55", "Mt. Fuji", "E"], ["10:25", "Lake Hamana", "E"], ["11:08", "Hikone Castle", "E"]],
+        photos: ["Mt. Fuji", "Lake Hamana", "Kiyosu Castle", "Mt. Ibuki"],
+        seatE: ["Seat E", "Fuji, Ibuki, castles"],
+        seatA: ["Seat A", "Sea, Sagami Bay, Left-Side Fuji"],
       },
     }[plang];
 
-    /* 横長の車窓パノラマ(流れる富士山) */
-    function panoramaSVG() {
-      return `<svg viewBox="0 0 1800 375" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%" xmlns="http://www.w3.org/2000/svg">
-        <defs><linearGradient id="psky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#bcd4ec"/><stop offset="1" stop-color="#f4e3cd"/></linearGradient></defs>
-        <rect width="1800" height="375" fill="url(#psky)"/>
-        <path d="M0 330 Q200 300 400 320 T900 315 T1400 320 T1800 310 L1800 375 L0 375 Z" fill="#94ab84"/>
-        <path d="M700 330 L1000 80 L1050 135 L1100 85 L1380 330 Z" fill="#5a7ca3"/>
-        <path d="M952 122 L1000 80 L1050 135 L1078 105 L1060 165 Q1022 140 990 168 Q965 145 945 158 Z" fill="#fff"/>
-        <circle cx="1500" cy="80" r="38" fill="#f0b04e"/>
-        <path d="M150 250 Q190 200 260 220 L260 330 L150 330 Z" fill="#6e9a5f"/>
-        <g fill="#4d7a42">${[0,1,2,3].map(i=>`<path d="M${60+i*30} 330 Q${75+i*30} 280 ${90+i*30} 330 Z"/>`).join("")}</g>
-        <path d="M1500 285 Q1580 230 1660 285" stroke="#2e4050" stroke-width="24" fill="none" stroke-linecap="round"/>
-      </svg>`;
-    }
-
-    const cutScenes = [
-      { type: "castle", ja: "掛川城 / 清須城", en: "Castles by the tracks" },
-      { type: "lake", ja: "浜名湖", en: "Lake Hamana" },
-      { type: "bay", ja: "熱海と相模湾", en: "Atami & Sagami Bay" },
-      { type: "solar", ja: "ソーラーアーク", en: "Solar Ark" },
+    const photoCuts = [
+      "images/20240211_Mt.Fuji.jpg",
+      "images/20260505_hamanako_design_photosy.jpg",
+      "images/20240719_kiyosu_castle_asami_k920.jpg",
+      "images/20240114_ibukiyama.png",
     ];
 
+    function phoneDemo() {
+      return `<div class="phone">
+        <div class="phone-hero">${T.phoneTitle}</div>
+        <div class="phone-body">
+          <div class="segline"><div class="pill active">${T.pick1}</div><div class="pill">${T.pick2}</div></div>
+          <div class="timeline-demo">${T.rows.map(row => `<div class="time-row"><strong>${row[0]}</strong><span>${row[1]}</span><span class="seat">${row[2]}</span></div>`).join("")}</div>
+        </div>
+      </div>`;
+    }
+
+    function photoGrid() {
+      return `<div class="photo-grid">${photoCuts.map((src, i) => `<div class="photo-card"><img src="${src}" alt=""><p>${T.photos[i]}</p></div>`).join("")}</div>`;
+    }
+
     const scenes = [
-      { dur: 4200, html: `<div><p class="big rise">${T.s1a}</p><p class="big rise2 accent" style="font-size:10vmin">${T.s1b}</p><p class="sub rise3">${T.s1sub}</p></div>` },
-      { dur: 3800, html: `<div><p class="big rise">${T.s2}</p></div>` },
-      { dur: 7200, html: `<div><div class="window-frame rise">${panoramaSVG().replace('<svg ', '<svg class="window-view" ')}</div><div class="window-caption rise2"><p class="mid">${T.s3}</p><p class="sub">🗻 ${T.cap}</p></div></div>` },
-      { dur: 5600, html: `<div><p class="mid rise" style="margin-bottom:3.5vmin">${T.s4}</p><div class="cuts">${cutScenes.map(c=>`<div class="cut">${sceneSVG(c.type)}<p class="cut-label">${c[plang]}</p></div>`).join("")}</div><p class="sub rise3">${T.s4sub}</p></div>` },
-      { dur: 5200, html: `<div><p class="mid rise">${T.s5}</p><div class="stamps">${["🗻","🌊","🏯","🚤","☀️"].map(i=>`<div class="pstamp">${i}</div>`).join("")}</div><p class="sub">${T.s5sub}</p></div>` },
-      { dur: 6000, html: `<div><div class="logo-mark">窓</div><p class="big rise2">新幹線の窓</p><p class="mid rise2" style="font-size:3.4vmin;opacity:0.9">${T.s6}</p><p class="sub rise3">${T.s6sub}</p><p class="url rise3">${T.url}</p></div>` },
+      {
+        dur: 5600,
+        html: `<img class="photo-bg" src="images/20240211_Mt.Fuji.jpg" alt=""><div class="shade"></div><div class="content split"><div><p class="kicker rise">${T.s1k}</p><p class="big rise2">${T.s1}</p><p class="sub rise3">${T.s1sub}</p></div>${phoneDemo()}</div>`,
+      },
+      {
+        dur: 5200,
+        html: `<div class="content split">${phoneDemo()}<div><p class="mid rise">${T.s2}</p><p class="sub rise2">${T.s2sub}</p></div></div>`,
+      },
+      {
+        dur: 5600,
+        html: `<div class="content"><p class="mid rise">${T.s3}</p><p class="sub rise2">${T.s3sub}</p><div style="margin-top:3.2vmin">${photoGrid()}</div></div>`,
+      },
+      {
+        dur: 5000,
+        html: `<img class="photo-bg" src="images/20260515_atami_sagami_bay.jpg" alt=""><div class="shade"></div><div class="content"><p class="mid rise">${T.s4}</p><p class="sub rise2">${T.s4sub}</p><div class="seat-board"><div class="seat-card"><h3>${T.seatE[0]}</h3><p>${T.seatE[1]}</p></div><div class="seat-card"><h3>${T.seatA[0]}</h3><p>${T.seatA[1]}</p></div></div></div>`,
+      },
+      {
+        dur: 4600,
+        html: `<div class="content"><p class="mid rise">${T.s5}</p><div class="stamps">${["🗻","🌊","🏯","🚤","⛰️"].map(i => `<div class="pstamp">${i}</div>`).join("")}</div><p class="sub rise3">${T.s5sub}</p></div>`,
+      },
+      {
+        dur: 5200,
+        html: `<img class="photo-bg" src="images/og-shinkansen-window.png" alt=""><div class="shade"></div><div class="content"><div class="logo-mark">窓</div><p class="big rise2">${T.s6}</p><p class="mid rise2" style="font-size:3.4vmin;opacity:0.92">${T.s6sub}</p><p class="url rise3">${T.url}</p></div>`,
+      },
     ];
 
     const stage = document.getElementById("stage");
     stage.innerHTML = scenes.map((s, i) => `<div class="scene" id="sc${i}">${s.html}</div>`).join("");
     const total = scenes.reduce((a, s) => a + s.dur, 0);
+    let idx = -1, elapsed = 0, timer = null;
 
-    let idx = -1, elapsed = 0;
     function next() {
       idx = (idx + 1) % scenes.length;
       if (idx === 0) elapsed = 0;
       document.querySelectorAll(".scene").forEach((el, i) => el.classList.toggle("on", i === idx));
-      // アニメ再起動のためにシーン中身を再描画
       const sc = document.getElementById("sc" + idx);
       sc.innerHTML = sc.innerHTML;
       document.getElementById("bar").style.width = ((elapsed / total) * 100) + "%";
       elapsed += scenes[idx].dur;
-      setTimeout(next, scenes[idx].dur);
+      clearTimeout(timer);
+      timer = setTimeout(next, scenes[idx].dur);
     }
     next();
   </script>

@@ -4,12 +4,17 @@ import vm from "node:vm";
 const requiredTrainFields = ["type", "number", "direction", "originStation", "destination", "times"];
 const timetablePath = new URL("../data/timetable.json", import.meta.url);
 const timetableScriptPath = new URL("../data/timetable.js", import.meta.url);
-const timetable = JSON.parse(await readFile(timetablePath, "utf8"));
 const scriptContext = { window: {} };
 vm.runInNewContext(await readFile(timetableScriptPath, "utf8"), scriptContext);
+const timetable = scriptContext.window.SHINKANSEN_TIMETABLE;
 
-if (JSON.stringify(timetable) !== JSON.stringify(scriptContext.window.SHINKANSEN_TIMETABLE)) {
-  throw new Error("data/timetable.js does not match data/timetable.json");
+try {
+  const jsonTimetable = JSON.parse(await readFile(timetablePath, "utf8"));
+  if (JSON.stringify(jsonTimetable) !== JSON.stringify(timetable)) {
+    throw new Error("data/timetable.js does not match data/timetable.json");
+  }
+} catch (error) {
+  if (error.code !== "ENOENT") throw error;
 }
 
 if (!Array.isArray(timetable.stations) || !timetable.stations.length) {

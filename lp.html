@@ -3,171 +3,29 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>その147分が、旅になる。 | 新幹線の窓 - 見逃さない車窓手帖</title>
-  <meta name="description" content="東海道新幹線の移動を、富士山や沿線の発見を楽しむ旅に変えるアプリ「新幹線の窓」。富士山が見える時刻と座席側、熱海、浜名湖、城、東寺まで案内し、見逃さないように知らせます。">
+  <title>新幹線の窓とは？ | 新幹線の窓</title>
+  <meta name="description" content="新幹線の窓は、東海道新幹線から富士山や沿線の景色がいつ・どちら側に見えるかを案内する車窓手帖です。">
+  <meta http-equiv="refresh" content="0; url=index.html?intro=1">
   <link rel="canonical" href="https://tsurezurecoding.github.io/shinkansen-meets-fuji/">
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta property="og:title" content="その147分が、旅になる。 | 新幹線の窓">
-  <meta property="og:description" content="富士山の3分間も、沿線の発見も。東海道新幹線の車窓を旅に変える手帖。">
-  <meta property="og:image" content="https://tsurezurecoding.github.io/shinkansen-meets-fuji/images/og-shinkansen-window.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-C2ESB694FV");
-  </script>
   <link rel="stylesheet" href="style.css">
-  <style>
-    /* LP専用の追加スタイル */
-    .lp-hero { min-height: 86vh; display: grid; place-items: center; }
-    .lp-big {
-      font-family: var(--font-serif); font-size: clamp(34px, 7.5vw, 64px);
-      line-height: 1.4; font-weight: 700;
-    }
-    .lp-sub-en { font-size: 14px; letter-spacing: 0.08em; opacity: 0.8; margin-top: 14px; }
-    .prob { background: var(--night); color: #fff; text-align: center; padding: 90px 24px; }
-    .prob h2 { font-family: var(--font-serif); font-size: clamp(22px, 5vw, 36px); line-height: 1.7; }
-    .prob .en { display: block; font-size: 14px; opacity: 0.65; margin-top: 14px; font-family: var(--font-sans); }
-    .prob .turn { color: var(--accent-soft); }
-    .props { display: grid; gap: 18px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
-    .prop {
-      background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-      padding: 26px 22px; box-shadow: 0 3px 12px rgba(22,32,46,0.06);
-    }
-    .prop .num { font-family: var(--font-serif); font-size: 30px; color: var(--accent); font-weight: 700; }
-    .prop h3 { font-size: 17px; margin: 10px 0 8px; }
-    .prop p { font-size: 13.5px; color: var(--ink-soft); }
-    .prop .en { display: block; margin-top: 10px; font-size: 12px; color: #9aa3ae; }
-    .strip { overflow: hidden; margin: 60px 0 0; background: var(--paper-deep); padding: 26px 0; }
-    .strip-track { display: flex; gap: 16px; width: max-content; animation: slide 40s linear infinite; }
-    .strip-track > div { width: 280px; border-radius: 14px; overflow: hidden; border: 1px solid var(--line); flex-shrink: 0; }
-    .strip-track svg { display: block; width: 100%; height: auto; }
-    @keyframes slide { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    .voices { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .voice {
-      background: var(--card); border-radius: var(--radius); border: 1px solid var(--line);
-      padding: 24px 22px; font-size: 14px;
-    }
-    .voice .who { margin-top: 14px; font-size: 12px; color: var(--ink-soft); font-weight: 700; }
-    .voice .q { font-family: var(--font-serif); font-size: 16px; line-height: 1.8; }
-    .final { text-align: center; background: linear-gradient(#101c2c, #27405e); color: #fff; padding: 100px 24px; }
-    .final h2 { font-family: var(--font-serif); font-size: clamp(26px, 5.5vw, 42px); margin-bottom: 14px; }
-    .final p { opacity: 0.85; margin-bottom: 30px; }
-    @media (prefers-reduced-motion: reduce) { .strip-track { animation: none; } }
-  </style>
 </head>
 <body>
-
   <header class="topbar">
-    <a class="brand" href="lp.html">
+    <a class="brand" href="index.html#top">
       <span class="brand-mark">窓</span>
-      <span class="brand-name">新幹線の窓 <small>旅の瞬間を見逃さない</small></span>
+      <span class="brand-text">
+        <span class="brand-name">新幹線の窓</span>
+        <small class="brand-sub">旅の瞬間を見逃さない</small>
+      </span>
     </a>
-    <a class="btn btn-primary btn-small" href="index.html">アプリをひらく / Open app</a>
   </header>
 
-  <!-- Hero -->
-  <section class="hero lp-hero">
-    <div class="hero-sky" id="heroSky" aria-hidden="true"></div>
-    <div class="hero-inner">
-      <p class="hero-kicker">TOKAIDO SHINKANSEN · 東京 ⇄ 新大阪</p>
-      <h1 class="lp-big">その147分が、<br>旅になる。</h1>
-      <p class="lp-sub-en">Turn your Shinkansen ride into a journey to remember.</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="index.html">無料でつかう / Try it free</a>
-        <a class="btn btn-ghost" href="promo.html">30秒でわかる新幹線の窓 ▶</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Problem → Promise -->
-  <section class="prob">
-    <h2>
-      東京から新大阪、147分。<br>
-      スマホを見ていたら、<span class="turn">富士山が通りすぎていた。</span>
-      <span class="en">"Wait — was that Mt. Fuji? Which side was it on?"<br>Every traveler asks. Usually 10 minutes too late.</span>
-    </h2>
-  </section>
-
-  <!-- Value props -->
-  <section class="section">
-    <div class="section-head">
-      <p class="eyebrow">WHY THIS WINDOW</p>
-      <h2>窓の外を、見逃さないために</h2>
-    </div>
-    <div class="props">
-      <div class="prop">
-        <span class="num">01</span>
-        <h3>あなたの列車の、車窓タイムライン</h3>
-        <p>方向と出発時刻を入れるだけ。富士山は何時何分ごろか、浜名湖はいつか——あなたの列車に合わせた「見どころ予報」ができます。</p>
-        <span class="en">Your train's personal view forecast. Just direction + departure time.</span>
-      </div>
-      <div class="prop">
-        <span class="num">02</span>
-        <h3>座席まで、わかる</h3>
-        <p>富士山はどちら向きでもE席側。海はA席側。予約の前に知っていれば、車窓は2倍たのしくなります。</p>
-        <span class="en">Seat E faces Fuji — in both directions. Know before you book.</span>
-      </div>
-      <div class="prop">
-        <span class="num">03</span>
-        <h3>「見えた!」が、旅の思い出になる</h3>
-        <p>見つけた車窓はスタンプ帖にたまり、旅のおわりに思い出カードとして保存・シェアできます。富士山も、城も、湖も、海も。</p>
-        <span class="en">Stamp what you spot. Leave with a shareable memory card.</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- View strip -->
-  <div class="strip" aria-hidden="true"><div class="strip-track" id="strip"></div></div>
-
-  <!-- Audience voices -->
-  <section class="section">
-    <div class="section-head">
-      <p class="eyebrow">FOR EVERY WINDOW SEAT</p>
-      <h2>どの席にも、見つけるものがある</h2>
-    </div>
-    <div class="voices">
-      <div class="voice">
-        <p class="q">"I booked seat E because of this. Fuji showed up exactly when the app said it would. My kids screamed."</p>
-        <p class="who">— 初めての日本旅行 / First-time visitor</p>
-      </div>
-      <div class="voice">
-        <p class="q">「何百回も乗った区間に、知らない見どころが10個もあった。出張の帰りなのに、窓の外を見る時間が増えた。」</p>
-        <p class="who">— 月2回の大阪出張 / Business traveler</p>
-      </div>
-      <div class="voice">
-        <p class="q">「浜名湖とお城を探していたら、子どもがずっと窓に張りついていました。移動時間がイベントになった。」</p>
-        <p class="who">— 家族旅行 / Family trip</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="final">
-    <h2>つぎの新幹線から、<br>窓側の席にしませんか。</h2>
-    <p>インストール不要・無料。ブラウザでひらくだけ。<br>No install, no sign-up. Just open and ride.</p>
-    <a class="btn btn-primary" href="index.html">新幹線の窓をひらく / Open Shinkansen Window</a>
-  </section>
-
-  <footer class="footer">
-    <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
-    <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
-  </footer>
-
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-  <script>
-    // LPでは車窓シーンの帯を流す（2周分並べてループ）
-    document.addEventListener("DOMContentLoaded", () => {
-      const scenes = ["hills","bay","fuji","leftfuji","castle","lake","castle","solar","mountain","pagoda"];
-      const strip = document.getElementById("strip");
-      strip.innerHTML = scenes.concat(scenes).map(s => `<div>${sceneSVG(s)}</div>`).join("");
-    });
-  </script>
+  <main class="reference-hero">
+    <p class="eyebrow">30 SEC GUIDE</p>
+    <h1>新幹線の窓とは？</h1>
+    <p>紹介は本体ページのポップアップで開きます。移動しない場合は、下のボタンから開いてください。</p>
+    <a class="btn btn-primary" href="index.html?intro=1">新幹線の窓とは？</a>
+  </main>
 </body>
 </html>

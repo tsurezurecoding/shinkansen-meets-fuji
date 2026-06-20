@@ -11,7 +11,9 @@ const MSG = {
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
     heroLead: "富士山の3分間も、線路ぎわの城も、湖も海も。新幹線で「いつ・どちら側を見ればいいか」がわかり、見つけた景色が旅の思い出になる手帖です。",
-    ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる",
+    ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaQuick: "新幹線の窓とは？",
+    quickModalTitle: "新幹線の窓とは？",
+    quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
     setupSub: "時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。",
     labelDirection: "方向", labelDeparture: "出発時刻", labelSeat: "座席",
@@ -24,7 +26,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき14スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
+    showNote: "実写つき17スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "ヒント: 富士山はどちら向きでも E席。海はA席、浜名湖はE席写真を採用しています。",
@@ -40,6 +42,7 @@ const MSG = {
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fClassic: "定番", fHidden: "穴場",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
+    footerReferences: "車窓リンク集",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
     seatE: "E席・富士山側", seatA: "A席・海側",
     catClassic: "定番", catHidden: "穴場",
@@ -63,7 +66,9 @@ const MSG = {
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "There's another journey<br>outside your window.",
     heroLead: "Fuji's famous three minutes, castles beside the tracks, lake and sea. Shinkansen Window shows when and where to look, turning a Shinkansen ride into a journey to remember.",
-    ctaStart: "Start your journey", ctaBrowse: "Browse the views",
+    ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaQuick: "What is it?",
+    quickModalTitle: "What is Shinkansen Window?",
+    quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
     setupSub: "Use the timetable to catch Fuji, lakes, castles, and more. Add direction, boarding station, and departure time to build your train's window timeline.",
     labelDirection: "Direction", labelDeparture: "Departure", labelSeat: "Your seat",
@@ -76,7 +81,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "14 real-photo spots included. Next, see when and which side they appear from your train.",
+    showNote: "17 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Tip: Seat E faces Mt. Fuji in both directions. Seat A gets the sea; Lake Hamana uses an E-seat photo.",
@@ -92,6 +97,7 @@ const MSG = {
     morePhotos: "More photos",
     fAll: "All", fClassic: "Classic", fHidden: "Hidden gems",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
+    footerReferences: "Window links",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
     seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
     catClassic: "Classic", catHidden: "Hidden gem",
@@ -120,6 +126,7 @@ let journey = null;           // 生成済みタイムライン {mode, train, st
 let stamps = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
 let liveTimer = null;
 let activeSpotModal = null;
+let activeQuickModal = null;
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -324,7 +331,7 @@ function applyLang() {
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  const picks = ["fuji", "toji", "hamanako", "ibuki", "omi-fuji", "putiputi-sign", "mikawa-oshima", "odawara", "odawara-castle", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
+  const picks = ["fuji", "toji", "hamanako", "ibuki", "sawayama-castle", "hikone-castle", "kannonji-castle", "omi-fuji", "putiputi-sign", "mikawa-oshima", "odawara", "odawara-castle", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
   rail.innerHTML = picks.map((id) => {
     const sp = SPOTS.find((s) => s.id === id);
     if (!sp) return "";
@@ -548,6 +555,40 @@ function closeSpotModal(reason = "close") {
   if (reason !== "replace") track("spot_detail_close", { spot_id: spotId, source, reason });
 }
 
+function openQuickModal(source = "hero") {
+  closeQuickModal("replace");
+  const modal = document.createElement("div");
+  modal.className = "quick-modal";
+  const promoSrc = `promo.html?lang=${encodeURIComponent(lang)}`;
+  modal.innerHTML = `
+    <div class="quick-modal-backdrop" data-quick-close></div>
+    <section class="quick-modal-panel" role="dialog" aria-modal="true" aria-labelledby="quick-modal-title" tabindex="-1">
+      <div class="quick-modal-head">
+        <h2 id="quick-modal-title">${t("quickModalTitle")}</h2>
+        <button type="button" class="quick-modal-close" data-quick-close aria-label="${t("quickModalClose")}">×</button>
+      </div>
+      <div class="quick-modal-frame">
+        <iframe src="${promoSrc}" title="${t("quickModalTitle")}" loading="eager" allow="autoplay"></iframe>
+      </div>
+    </section>`;
+  document.body.appendChild(modal);
+  document.body.classList.add("modal-open");
+  activeQuickModal = { element: modal, source };
+  track("quick_intro_open", { source, language: lang });
+  modal.querySelector(".quick-modal-panel")?.focus();
+  modal.querySelectorAll("[data-quick-close]").forEach((el) => {
+    el.addEventListener("click", () => closeQuickModal("button"));
+  });
+}
+function closeQuickModal(reason = "close") {
+  if (!activeQuickModal) return;
+  const { element, source } = activeQuickModal;
+  element.remove();
+  document.body.classList.remove("modal-open");
+  activeQuickModal = null;
+  if (reason !== "replace") track("quick_intro_close", { source, reason });
+}
+
 function bindSpotEvents(root) {
   root.querySelectorAll("[data-stamp]").forEach((btn) => {
     btn.addEventListener("click", () => toggleStamp(btn.dataset.stamp));
@@ -737,6 +778,7 @@ function init() {
     track("train_search", { direction, board_station: boardId });
     showTrainResults();
   });
+  $("#quickPreviewBtn")?.addEventListener("click", () => openQuickModal("hero"));
   $("#buildBtn").addEventListener("click", () => buildTimeline(null));
   $("#filterbar")?.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
@@ -758,9 +800,16 @@ function init() {
     }
   });
   document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") closeSpotModal("escape");
+    if (event.key === "Escape") {
+      closeSpotModal("escape");
+      closeQuickModal("escape");
+    }
   });
   applyLang();
+  const params = new URLSearchParams(location.search);
+  if (params.get("intro") === "1" || location.hash === "#quick-intro") {
+    openQuickModal("url");
+  }
   registerServiceWorker();
 }
 document.addEventListener("DOMContentLoaded", init);
