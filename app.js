@@ -24,7 +24,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき12スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
+    showNote: "実写つき14スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "ヒント: 富士山はどちら向きでも E席。海はA席、浜名湖はE席写真を採用しています。",
@@ -46,7 +46,7 @@ const MSG = {
     confCheck: "裏取り中",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
     more: "くわしく", less: "とじる", mapLink: "地図で見る",
-    oppositeSide: "反対側の席",
+    oppositeSide: "反対側の車窓",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -76,7 +76,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "12 real-photo spots included. Next, see when and which side they appear from your train.",
+    showNote: "14 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Tip: Seat E faces Mt. Fuji in both directions. Seat A gets the sea; Lake Hamana uses an E-seat photo.",
@@ -98,7 +98,7 @@ const MSG = {
     confCheck: "verifying",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
     more: "More", less: "Close", mapLink: "Open map",
-    oppositeSide: "Opposite side",
+    oppositeSide: "Other-side view",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -231,11 +231,16 @@ function mapLinkHTML(spot, className = "") {
   const classes = ["map-link", className].filter(Boolean).join(" ");
   return href ? `<a class="${classes}" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${t("mapLink")}</span></a>` : "";
 }
+function compactCreditLabel(label) {
+  const handle = String(label || "").match(/@[\w_]+/);
+  return handle ? handle[0] : label;
+}
 function photoCreditHTML(spot) {
   if (!spot.photoCredit) return "";
   const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
-  const date = spot.photoCredit.date ? ` / ${spot.photoCredit.date}` : "";
-  const text = `photo: ${label}${date}`;
+  const isMichikusa = String(label).toLowerCase() === "michikusa";
+  const text = isMichikusa ? spot.photoCredit.date : compactCreditLabel(label);
+  if (!text) return "";
   return spot.photoCredit.url
     ? `<figcaption class="photo-credit"><a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer">${text}</a></figcaption>`
     : `<figcaption class="photo-credit">${text}</figcaption>`;
@@ -243,12 +248,23 @@ function photoCreditHTML(spot) {
 function photoMetaHTML(photo) {
   if (!photo) return "";
   const credit = photo.credit?.[lang] || photo.credit?.ja || photo.credit?.en || "";
-  const date = photo.date ? ` / ${photo.date}` : "";
-  const creditText = credit ? `photo: ${credit}${date}` : "";
+  const isMichikusa = String(credit).toLowerCase() === "michikusa";
+  const creditText = isMichikusa ? photo.date : (credit ? compactCreditLabel(credit) : "");
   const source = photo.sourceUrl
     ? `<a href="${photo.sourceUrl}" target="_blank" rel="noopener noreferrer">${creditText}</a>`
     : creditText;
   return creditText ? `<figcaption class="photo-credit">${source}</figcaption>` : "";
+}
+function showCreditHTML(spot) {
+  if (!spot.photoCredit) return "";
+  const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
+  const isMichikusa = String(label).toLowerCase() === "michikusa";
+  const text = isMichikusa ? spot.photoCredit.date : compactCreditLabel(label);
+  if (!text) return "";
+  const body = spot.photoCredit.url
+    ? `<a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation()">${text}</a>`
+    : text;
+  return `<small class="show-credit">${body}</small>`;
 }
 function spotImageHTML(spot, label, className = "spot-photo") {
   if (!spot.image) return "";
@@ -308,7 +324,7 @@ function applyLang() {
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  const picks = ["fuji", "toji", "hamanako", "ibuki", "omi-fuji", "odawara", "odawara-castle", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
+  const picks = ["fuji", "toji", "hamanako", "ibuki", "omi-fuji", "putiputi-sign", "mikawa-oshima", "odawara", "odawara-castle", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
   rail.innerHTML = picks.map((id) => {
     const sp = SPOTS.find((s) => s.id === id);
     if (!sp) return "";
@@ -318,7 +334,7 @@ function renderShowcase() {
       : sceneSVG(sp.scene);
     return `<button type="button" class="show-card" data-show-spot="${sp.id}" aria-label="${t("more")}: ${L.name}">
       <div class="show-media">${media}</div>
-      <span class="show-caption"><strong>${sp.icon} ${L.name}</strong><span>${L.hook}</span><em>${t("more")}</em></span>
+      <span class="show-caption"><strong>${sp.icon} ${L.name}</strong>${showCreditHTML(sp)}<span>${L.hook}</span><em>${t("more")}</em></span>
     </button>`;
   }).join("");
   rail.querySelectorAll("[data-show-spot]").forEach((card) => {
@@ -477,18 +493,25 @@ function renderTimeline() {
 function spotItemHTML(sp, clock) {
   const L = sp[lang];
   const time = clock == null ? `<span class="tl-time-big">✦</span>` : `<span class="tl-time-big">${minToClock(clock)}</span>`;
-  const dim = seat !== "both" && sp.side && sp.side !== seat ? " dim" : "";
   const opp = seat !== "both" && sp.side && sp.side !== seat ? `<span class="badge badge-check">${t("oppositeSide")}</span>` : "";
   const stamped = stamps[sp.id];
+  const thumb = sp.image
+    ? `<button type="button" class="tl-thumb" data-more aria-label="${t("more")}: ${L.name}"><img loading="lazy" src="${sp.image}" alt=""></button>`
+    : "";
   return `
-  <li class="tl-item${dim}" data-spot="${sp.id}">
+  <li class="tl-item" data-spot="${sp.id}">
     <div class="tl-card">
-      <div class="tl-top">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
-      <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${confBadge(sp)}${opp}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
-      <p class="tl-hook">${L.hook}</p>
-      <div class="tl-actions">
-        <button type="button" class="spot-btn${stamped ? " stamped" : ""}" data-stamp="${sp.id}">${stamped ? t("spotBtnDone") : t("spotBtn")}</button>
-        <button type="button" class="more-btn" data-more>${t("more")}</button>
+      <div class="tl-card-main">
+        <div class="tl-copy">
+          <div class="tl-top">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
+          <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${confBadge(sp)}${opp}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
+          <p class="tl-hook">${L.hook}</p>
+          <div class="tl-actions">
+            <button type="button" class="spot-btn${stamped ? " stamped" : ""}" data-stamp="${sp.id}">${stamped ? t("spotBtnDone") : t("spotBtn")}</button>
+            <button type="button" class="more-btn" data-more>${t("more")}</button>
+          </div>
+        </div>
+        ${thumb}
       </div>
     </div>
   </li>`;

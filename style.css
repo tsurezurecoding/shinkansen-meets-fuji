@@ -177,13 +177,46 @@ button { font-family: inherit; cursor: pointer; }
   content: ""; position: absolute; left: -24px; top: 22px;
   width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
 }
-.tl-item.dim { opacity: 0.45; }
 .tl-card {
   background: var(--card); border: 1px solid var(--line); border-radius: 14px;
   padding: 14px 16px; box-shadow: 0 3px 12px rgba(22,32,46,0.06);
   transition: box-shadow 0.2s ease;
 }
 .tl-card:hover { box-shadow: var(--shadow); }
+.tl-card-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+}
+.tl-copy { min-width: 0; }
+.tl-thumb {
+  width: 96px;
+  aspect-ratio: 4 / 3;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(22,32,46,0.08);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+.tl-thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tl-thumb:hover {
+  border-color: var(--accent);
+  box-shadow: 0 6px 16px rgba(22,32,46,0.14);
+  transform: translateY(-1px);
+}
+.tl-thumb:focus-visible {
+  outline: 3px solid rgba(38, 125, 194, 0.28);
+  outline-offset: 2px;
+}
 .tl-top { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
 .tl-time-big { font-family: var(--font-serif); font-size: 19px; font-weight: 700; }
 .tl-name { font-weight: 700; font-size: 16px; }
@@ -240,7 +273,10 @@ button { font-family: inherit; cursor: pointer; }
 .spot-photo,
 .gal-photo { border-radius: 12px; border: 1px solid var(--line); display: block; width: 100%; }
 .gal-photo { aspect-ratio: 2 / 1; object-fit: cover; border-radius: 0; border: 0; }
-.photo-credit { margin-top: 6px; font-size: 11px; color: var(--ink-soft); opacity: 0.82; }
+.photo-credit {
+  margin-top: 6px; font-size: 11px; color: var(--ink-soft); opacity: 0.82;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
 .photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .gal-card > .photo-figure { margin: 0; }
 .gal-card > .photo-figure .photo-credit { padding: 0 14px; }
@@ -303,6 +339,25 @@ body.modal-open { overflow: hidden; }
 }
 .spot-modal-main-media { margin-top: 18px; }
 .spot-modal-main-media .scene { margin-bottom: 10px; }
+.spot-modal-main-media .photo-credit,
+.photo-gallery .photo-credit {
+  display: inline-flex;
+  max-width: 100%;
+  margin-top: 8px;
+  padding: 4px 9px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 1;
+}
+.spot-modal-main-media .photo-credit a,
+.photo-gallery .photo-credit a {
+  color: var(--night);
+  text-decoration-thickness: 1.5px;
+}
 .spot-modal-story {
   margin: 16px 0 0;
   color: var(--ink-soft);
@@ -437,6 +492,22 @@ body.modal-open { overflow: hidden; }
 .show-media img, .show-media svg { width: 100%; height: 100%; object-fit: cover; display: block; }
 .show-caption { display: block; padding: 11px 14px 14px; }
 .show-card strong { display: block; font-size: 14px; }
+.show-credit {
+  display: block;
+  margin-top: 5px;
+  color: var(--ink-soft);
+  font-size: 10.5px;
+  line-height: 1.4;
+  opacity: 0.82;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.show-credit a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 .show-caption > span { display: block; font-size: 12px; color: var(--ink-soft); margin-top: 4px; line-height: 1.5; }
 .show-card em {
   display: inline-flex; margin-top: 10px; font-style: normal;
@@ -461,7 +532,7 @@ body.modal-open { overflow: hidden; }
   box-shadow: 0 4px 16px rgba(22,32,46,0.05);
 }
 .showcase-note::before {
-  content: "12";
+  content: "14";
   display: inline-grid;
   place-items: center;
   width: 22px;
@@ -507,6 +578,11 @@ body.modal-open { overflow: hidden; }
   .hero-cta .btn { width: min(100%, 280px); }
   .section { padding-top: 56px; }
   .nextup-count { font-size: 16px; }
+  .tl-card { padding: 13px 14px; }
+  .tl-card-main { gap: 10px; }
+  .tl-thumb { width: 76px; border-radius: 9px; }
+  .tl-actions { gap: 7px; }
+  .spot-btn, .more-btn { padding-left: 12px; padding-right: 12px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cloud, .train-move, .nextup-pulse { animation: none; }

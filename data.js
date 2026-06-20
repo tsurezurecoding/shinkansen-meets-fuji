@@ -47,6 +47,16 @@ const SPOTS = [
     map: { lat: 35.333, lng: 139.304, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
   },
   {
+    id: "putiputi-sign",
+    icon: "🫧",
+    ja: { name: "プチプチ看板", area: "新横浜 → 小田原", hook: "あのプチプチを、海側の窓に。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®の看板が見えると言われています。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。道草らしい、線路ぎわの発見です。時刻と見える位置は推定なので、少し幅を持って探してください。" },
+    en: { name: "PUTIPUTI Sign", area: "Shin-Yokohama → Odawara", hook: "A tiny trackside discovery from Seat A.", story: "Somewhere between Shin-Yokohama and Odawara, the PUTIPUTI® sign is said to appear on the Seat A side. Not a landmark, exactly — but the kind of little find that makes the ride feel personal. Timing and position are estimated, so start looking with a little margin." },
+    minutesFromTokyo: 26, side: "A", category: "hidden", confidence: "needs-check", durationSec: 10, scene: "hills",
+    image: "images/20190127_putiputi_sign_putiputi0808.jpg",
+    photoCredit: { ja: "プチプチ®の川上産業 @PUTIPUTI_0808", en: "Kawakami Sangyo PUTIPUTI® @PUTIPUTI_0808", url: "https://x.com/PUTIPUTI_0808/status/1089401678594433025" },
+    map: { ja: "新横浜 小田原 プチプチ 看板", en: "PUTIPUTI sign between Shin-Yokohama and Odawara" },
+  },
+  {
     id: "odawara",
     icon: "🌊",
     ja: { name: "熱海と相模湾", area: "小田原 → 熱海", hook: "街の景色が、海の旅に切りかわる合図。", story: "小田原を過ぎ、熱海が近づくころ、車窓は相模湾へ大きくひらきます。山肌の街、海、岬が一枚の絵になって、東京の街なみが「旅の景色」に変わる瞬間です。海側のA席をどうぞ。" },
@@ -131,16 +141,32 @@ const SPOTS = [
     en: { name: "Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "The train runs over the water.", story: "After Hamamatsu, Lake Hamana spreads out on both sides of the train. On a sunny day, the light off the water is one of the most journey-like moments on the line. Look for the eel-farming rafts." },
     minutesFromTokyo: 73, side: "E", category: "classic", confidence: "verified", durationSec: 150, scene: "lake",
     image: "images/20260505_hamanako_design_photosy.jpg",
-    photoCredit: { ja: "@Design_photoSY", en: "@Design_photoSY", url: "https://x.com/Design_photoSY/status/2051484905377521740" },
-    photos: [
-      {
-        src: "images/20260530_hamanako.jpg",
-        alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
+      photoCredit: { ja: "@Design_photoSY", en: "@Design_photoSY", url: "https://x.com/Design_photoSY/status/2051484905377521740" },
+      photos: [
+        {
+          src: "images/20260505_hamanako_design_photosy_2.jpg",
+          alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
+          credit: { ja: "@Design_photoSY", en: "@Design_photoSY" },
+          sourceUrl: "https://x.com/Design_photoSY/status/2051484905377521740",
+        },
+        {
+          src: "images/20260530_hamanako.jpg",
+          alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
       },
     ],
     map: { lat: 34.741111, lng: 137.569722, ja: "浜名湖", en: "Lake Hamana" },
+  },
+  {
+    id: "mikawa-oshima",
+    icon: "🏝️",
+    ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "海の向こうに、ぽつんと浮かぶ島。", story: "豊橋を過ぎたあと、A席側に三河湾と三河大島が見えることがあります。大きな観光名所というより、窓の外に一瞬だけ現れる小さな島影。浜名湖のあとにも、海側にはまだ見つける楽しみがあります。時刻と席側は推定です。" },
+    en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "A small island beyond the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima may appear on the Seat A side. It is less a famous landmark than a small island silhouette that quietly rewards a window-seat glance. Timing and seat side are estimated." },
+    minutesFromTokyo: 84, side: "A", category: "hidden", confidence: "needs-check", durationSec: 45, scene: "bay",
+    image: "images/20181213_mikawa_oshima_kawasan3.jpg",
+    photoCredit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3", url: "https://x.com/kawasan3/status/1072976990150348800" },
+    map: { lat: 34.7786, lng: 137.2636, ja: "三河大島", en: "Mikawa Oshima" },
   },
   {
     id: "kiyosu",
