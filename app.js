@@ -44,6 +44,20 @@ const MSG = {
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerReferences: "車窓リンク集",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
+    faqEyebrow: "TRAVEL FAQ",
+    faqTitle: "新幹線から富士山を見るには？",
+    faqSub: "はじめて東海道新幹線に乗る人が、窓の外を見逃さないための短い案内です。",
+    faqQSide: "新幹線から富士山はどちら側に見えますか？",
+    faqASide: "東海道新幹線では、東京から新大阪へ向かう場合も、新大阪から東京へ向かう場合も、富士山は主にE席側に見えます。ただし新富士から静岡付近では、短い時間だけA席側に見える「左富士」もあります。",
+    faqLinkLeftFuji: "左富士を見る",
+    faqQWhen: "新幹線から富士山はいつ見えますか？",
+    faqAWhen: "いちばん大きく見えるのは三島から新富士付近です。天気がよければ品川から新横浜のあたりや、浜名湖付近など、離れた場所から見えることもあります。",
+    faqLinkFuji: "富士山の見どころを見る",
+    faqQViews: "東海道新幹線の車窓では富士山以外に何が見えますか？",
+    faqAViews: "新幹線の窓では、相模湾、熱海、浜名湖、城、東寺、山、工場、看板などが次々に現れます。このアプリは富士山だけでなく、東海道新幹線の移動そのものを楽しむための車窓ガイドです。",
+    faqLinkGallery: "車窓図鑑を見る",
+    faqQEnglish: "英語でも使えますか？",
+    faqAEnglish: "ページ上部のENボタンで英語表示に切り替えられます。海外から来た人にも、富士山の見える席側やタイミングが伝わるようにしています。",
     seatE: "E席・富士山側", seatA: "A席・海側",
     catClassic: "定番", catHidden: "穴場",
     confCheck: "裏取り中",
@@ -99,6 +113,20 @@ const MSG = {
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerReferences: "Window links",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
+    faqEyebrow: "TRAVEL FAQ",
+    faqTitle: "How do you see Mt. Fuji from the Shinkansen?",
+    faqSub: "A short guide for travelers who want to notice what is outside the window.",
+    faqQSide: "Which side of the Shinkansen is Mt. Fuji on?",
+    faqASide: "On the Tokaido Shinkansen, Mt. Fuji is mainly on the E-seat side in both directions. There is also a brief Left-Side Fuji moment near Shin-Fuji to Shizuoka, when Fuji can appear on the A-seat side.",
+    faqLinkLeftFuji: "See Left-Side Fuji",
+    faqQWhen: "When can you see Mt. Fuji from the Shinkansen?",
+    faqAWhen: "The biggest view is around Mishima to Shin-Fuji. On clear days, you may also glimpse Fuji closer to Tokyo, around Shinagawa to Shin-Yokohama, or even from farther west near Lake Hamana.",
+    faqLinkFuji: "See the Mt. Fuji view",
+    faqQViews: "What else can you see from the Tokaido Shinkansen window?",
+    faqAViews: "This is the heart of the app: Sagami Bay, Atami, Lake Hamana, castles, Toji Temple, mountains, factories, signs, and other short-lived views that make the ride itself part of the journey.",
+    faqLinkGallery: "Browse the field guide",
+    faqQEnglish: "Can I use it in English?",
+    faqAEnglish: "Yes. Use the EN button at the top of the page to switch the app to English.",
     seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
     catClassic: "Classic", catHidden: "Hidden gem",
     confCheck: "verifying",
@@ -756,7 +784,7 @@ function renderGallery() {
         ? spotImageHTML(sp, L.name, "gal-photo")
         : sceneSVG(sp.scene);
       return `
-      <div class="gal-card" data-spot="${sp.id}">
+      <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}">
         ${media}
         <div class="gal-body">
           <div class="gal-top"><span class="tl-icon">${sp.icon}</span><span class="gal-name">${L.name}</span></div>

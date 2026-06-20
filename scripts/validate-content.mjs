@@ -14,6 +14,7 @@ if (!Number.isInteger(spotCount) || spotCount <= 0) {
 }
 
 const maxJapaneseHookLength = 18;
+const maxEnglishHookLength = 38;
 
 const checks = [
   {
@@ -66,9 +67,13 @@ for (const check of checks) {
 }
 
 for (const spot of context.__SPOTS) {
-  const hook = spot.ja?.hook ?? "";
-  if (hook.length > maxJapaneseHookLength) {
-    failures.push(`data.js: ${spot.id} ja.hook is ${hook.length} chars; keep gallery card hooks <= ${maxJapaneseHookLength} chars`);
+  const jaHook = spot.ja?.hook ?? "";
+  if (jaHook.length > maxJapaneseHookLength) {
+    failures.push(`data.js: ${spot.id} ja.hook is ${jaHook.length} chars; keep gallery card hooks <= ${maxJapaneseHookLength} chars`);
+  }
+  const enHook = spot.en?.hook ?? "";
+  if (enHook.length > maxEnglishHookLength) {
+    failures.push(`data.js: ${spot.id} en.hook is ${enHook.length} chars; keep English gallery card hooks <= ${maxEnglishHookLength} chars`);
   }
 }
 
