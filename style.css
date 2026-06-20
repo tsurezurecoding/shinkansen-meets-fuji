@@ -278,10 +278,9 @@ button { font-family: inherit; cursor: pointer; }
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
 .photo-credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-.gal-card > .photo-figure { margin: 0; }
+.gal-card > .photo-figure { margin: 0; cursor: pointer; }
+.gal-card > .photo-figure:hover .gal-photo { filter: saturate(1.06) contrast(1.02); }
 .gal-card > .photo-figure .photo-credit { padding: 0 14px; }
-.photo-gallery { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--line); }
-.photo-gallery-title { margin: 0 0 8px; font-size: 12px; font-weight: 700; color: var(--ink); }
 .photo-caption { margin-top: 6px; font-size: 12px; color: var(--ink-soft); }
 
 /* ===== Spot detail modal ===== */
@@ -298,7 +297,7 @@ body.modal-open { overflow: hidden; }
 }
 .spot-modal-panel {
   position: relative; z-index: 1;
-  width: min(760px, 100%);
+  width: min(1040px, 100%);
   max-height: min(88vh, 860px);
   overflow: auto;
   background: var(--card);
@@ -331,16 +330,35 @@ body.modal-open { overflow: hidden; }
   font-size: clamp(24px, 4vw, 36px);
   line-height: 1.18;
 }
+.spot-modal-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.18fr) minmax(300px, 0.82fr);
+  gap: 20px;
+  align-items: start;
+  margin-top: 18px;
+}
+.spot-modal-copy {
+  position: sticky;
+  top: 0;
+  align-self: start;
+}
 .spot-modal-hook {
-  margin: 16px 0 0;
+  margin: 0;
   font-family: var(--font-serif);
   font-size: 18px;
   line-height: 1.65;
 }
-.spot-modal-main-media { margin-top: 18px; }
+.spot-modal-main-media { margin-top: 0; }
+.spot-modal-active-figure { margin-top: 0; }
+.spot-modal-active-photo {
+  max-height: min(58vh, 560px);
+  object-fit: cover;
+  object-position: center;
+  background: var(--paper);
+}
 .spot-modal-main-media .scene { margin-bottom: 10px; }
 .spot-modal-main-media .photo-credit,
-.photo-gallery .photo-credit {
+.spot-modal-active-credit .photo-credit {
   display: inline-flex;
   max-width: 100%;
   margin-top: 8px;
@@ -354,9 +372,41 @@ body.modal-open { overflow: hidden; }
   opacity: 1;
 }
 .spot-modal-main-media .photo-credit a,
-.photo-gallery .photo-credit a {
+.spot-modal-active-credit .photo-credit a {
   color: var(--night);
   text-decoration-thickness: 1.5px;
+}
+.spot-photo-thumbs {
+  display: flex;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding-bottom: 2px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+}
+.spot-photo-thumb {
+  display: block;
+  flex: 0 0 88px;
+  padding: 0;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  overflow: hidden;
+  cursor: pointer;
+}
+.spot-photo-thumb img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+.spot-photo-thumb.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(232,112,74,0.18);
+}
+.spot-photo-thumb:focus-visible {
+  outline: 3px solid rgba(232,112,74,0.36);
+  outline-offset: 2px;
 }
 .spot-modal-story {
   margin: 16px 0 0;
@@ -368,6 +418,7 @@ body.modal-open { overflow: hidden; }
   white-space: nowrap;
   border-color: var(--night);
   color: var(--night);
+  justify-self: end;
 }
 
 @media (max-width: 640px) {
@@ -379,13 +430,36 @@ body.modal-open { overflow: hidden; }
     padding: 18px;
   }
   .spot-modal-head {
-    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: start;
     padding-right: 38px;
   }
+  .spot-modal-icon { font-size: 28px; }
+  .spot-modal-head h2 { font-size: clamp(22px, 7vw, 30px); }
   .spot-modal-map {
-    grid-column: 2;
-    justify-self: start;
-    margin-top: 2px;
+    grid-column: 3;
+    justify-self: end;
+    align-self: start;
+    padding: 6px 10px;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .spot-modal-map span:last-child {
+    display: inline;
+  }
+  .spot-modal-content {
+    display: block;
+    margin-top: 16px;
+  }
+  .spot-modal-copy {
+    position: static;
+  }
+  .spot-modal-hook {
+    margin-top: 14px;
+  }
+  .spot-modal-active-photo {
+    max-height: 54vh;
+    object-fit: cover;
   }
   .spot-modal-close { top: 10px; right: 10px; }
 }
