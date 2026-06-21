@@ -26,7 +26,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき17スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
+    showNote: "実写つき19スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "席側は各カードに表示します。富士山側も海側も、気になる景色はまとめて見られます。",
@@ -94,7 +94,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "17 real-photo spots included. Next, see when and which side they appear from your train.",
+    showNote: "19 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Seat side appears on each card. You can browse Fuji-side and sea-side views together.",
@@ -400,7 +400,7 @@ function applyLang() {
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  const picks = ["fuji", "toji", "hamanako", "ibuki", "sawayama-castle", "hikone-castle", "kannonji-castle", "omi-fuji", "putiputi-sign", "mikawa-oshima", "odawara", "odawara-castle", "kiyosu", "hinataoka", "left-fuji", "kakegawa", "solar-ark"];
+  const picks = ["hinataoka", "putiputi-sign", "odawara", "odawara-castle", "fuji", "left-fuji", "shimizu-port-chikyu", "kakegawa", "hamanako", "mikawa-oshima", "kiyosu", "solar-ark", "ibuki", "sawayama-castle", "hikone-castle", "kannonji-castle", "omi-fuji", "toji", "torikai-train-depot"];
   rail.innerHTML = picks.map((id) => {
     const sp = SPOTS.find((s) => s.id === id);
     if (!sp) return "";
