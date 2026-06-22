@@ -309,6 +309,16 @@ const SPOTS = [
     map: { lat: 35.0479, lng: 136.0450, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
   },
   {
+    id: "seta-karahashi",
+    icon: "🌉",
+    ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "川に架かる、京の手前の橋。", story: "京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えることがあります。古くから交通の要所として知られる橋で、東寺より前に「京都が近い」と感じられる水辺の合図。晴れた日は川面と空がひらけ、車窓の空気が一度ゆるみます。" },
+    en: { name: "Seta no Karahashi Bridge", area: "Maibara → Kyoto", hook: "A bridge before Kyoto.", story: "A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. Long known as a key crossing, it is a waterside sign that Kyoto is getting close, even before To-ji appears. On a bright day, the river and sky give this stretch a softer pause." },
+    minutesFromTokyo: 127, side: "E", sideLabel: { ja: "E席側（推定）", en: "Seat E side (estimated)" }, category: "hidden", confidence: "source-backed", durationSec: 45, scene: "lake",
+    image: "images/20250909_seta_karahashi_c91256633.jpg",
+    photoCredit: { ja: "@C91256633", en: "@C91256633", url: "https://x.com/C91256633/status/1965377316537925644" },
+    map: { ja: "瀬田の唐橋", en: "Seta no Karahashi Bridge" },
+  },
+  {
     id: "toji",
     icon: "⛩️",
     ja: { name: "東寺 五重塔", area: "京都駅 前後", hook: "「京都に来た」が、一瞬でわかる。", story: "京都駅の南側、東寺の五重塔は日本でいちばん高い木造の塔です。1200年前からこの街を見おろしてきた塔が、新幹線の窓から見える——京都の到着を告げる、最高の合図です。" },
