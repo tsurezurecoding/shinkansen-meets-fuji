@@ -8,12 +8,40 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C2ESB694FV"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-C2ESB694FV");
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
   </script>
   <!--
     使い方:
@@ -278,7 +306,8 @@
     const stage = document.getElementById("stage");
     const viewContext = window.self === window.top ? "standalone" : "iframe";
     function ptrack(eventName, params = {}) {
-      if (typeof gtag === "function") gtag("event", eventName, { language: plang, context: viewContext, ...params });
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      if (typeof window.gtag === "function") window.gtag("event", eventName, { language: plang, context: viewContext, ...params });
     }
     ptrack("promo_view_start");
     setTimeout(() => ptrack("promo_view_10s", { duration_sec: 10 }), 10000);

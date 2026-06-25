@@ -171,7 +171,8 @@ const t = (key, ...args) => {
   return typeof v === "function" ? v(...args) : (v ?? key);
 };
 function track(eventName, params = {}) {
-  if (typeof gtag === "function") gtag("event", eventName, params);
+  if (window.MADO_ANALYTICS_DISABLED) return;
+  if (typeof window.gtag === "function") window.gtag("event", eventName, params);
 }
 function eventSafeId(id) {
   return String(id || "unknown").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
