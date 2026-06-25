@@ -401,10 +401,7 @@ function applyLang() {
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  const picks = ["hinataoka", "putiputi-sign", "odawara", "odawara-castle", "fuji", "left-fuji", "shimizu-port-chikyu", "kakegawa", "hamanako", "mikawa-oshima", "kiyosu", "solar-ark", "ibuki", "sawayama-castle", "hikone-castle", "kannonji-castle", "omi-fuji", "seta-karahashi", "toji", "torikai-train-depot"];
-  rail.innerHTML = picks.map((id) => {
-    const sp = SPOTS.find((s) => s.id === id);
-    if (!sp) return "";
+  rail.innerHTML = SPOTS.slice().sort(discoverySpotOrder).map((sp) => {
     const L = sp[lang];
     const media = sp.image
       ? `<img loading="lazy" src="${sp.image}" alt="${L.name}">`
@@ -823,11 +820,20 @@ function registerServiceWorker() {
 
 /* ---------- gallery ---------- */
 let galFilter = "all";
+const discoveryCategoryRank = { classic: 0, hidden: 1 };
+function discoverySpotOrder(a, b) {
+  const rankA = discoveryCategoryRank[a.category] ?? 9;
+  const rankB = discoveryCategoryRank[b.category] ?? 9;
+  return rankA - rankB || a.minutesFromTokyo - b.minutesFromTokyo;
+}
+
 function renderGallery() {
   const grid = $("#galleryGrid");
   if (!grid) return;
   grid.innerHTML = SPOTS
     .filter((sp) => galFilter === "all" || sp.category === galFilter)
+    .slice()
+    .sort(discoverySpotOrder)
     .map((sp) => {
       const L = sp[lang];
       const media = sp.image
