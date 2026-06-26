@@ -821,10 +821,18 @@ function registerServiceWorker() {
 /* ---------- gallery ---------- */
 let galFilter = "all";
 const discoveryCategoryRank = { classic: 0, hidden: 1 };
+const discoverySpotPriority = {
+  fuji: 0,
+  hamanako: 1,
+  ibukiyama: 2,
+  toji: 3,
+};
 function discoverySpotOrder(a, b) {
   const rankA = discoveryCategoryRank[a.category] ?? 9;
   const rankB = discoveryCategoryRank[b.category] ?? 9;
-  return rankA - rankB || a.minutesFromTokyo - b.minutesFromTokyo;
+  const priorityA = discoverySpotPriority[a.id] ?? 99;
+  const priorityB = discoverySpotPriority[b.id] ?? 99;
+  return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
 }
 
 function renderGallery() {
