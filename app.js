@@ -26,7 +26,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき20スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
+    showNote: "実写つき25スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "席側は各カードに表示します。富士山側も海側も、気になる景色はまとめて見られます。",
@@ -38,9 +38,9 @@ const MSG = {
     memSub: "「見えた!」を押すと、ここにスタンプがたまります。旅のおわりに、思い出カードをどうぞ。",
     btnCard: "思い出カードをつくる", btnReset: "スタンプをリセット", btnDownload: "カードを保存する",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "定番と穴場。気になるカードを開いてみてください。",
+    galSub: "定番、準定番、珍景。気になるカードを開いてみてください。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fClassic: "定番", fHidden: "穴場",
+    fAll: "すべて", fClassic: "定番", fNotable: "準定番", fCurious: "珍景",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerReferences: "車窓リンク集",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
@@ -59,7 +59,7 @@ const MSG = {
     faqQEnglish: "英語でも使えますか？",
     faqAEnglish: "ページ上部のENボタンで英語表示に切り替えられます。海外から来た人にも、富士山の見える席側やタイミングが伝わるようにしています。",
     seatE: "E席・富士山側", seatA: "A席・海側",
-    catClassic: "定番", catHidden: "穴場",
+    catClassic: "定番", catNotable: "準定番", catCurious: "珍景",
     confCheck: "裏取り中",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
     more: "くわしく", less: "とじる", mapLink: "地図で見る",
@@ -94,7 +94,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "20 real-photo spots included. Next, see when and which side they appear from your train.",
+    showNote: "25 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Seat side appears on each card. You can browse Fuji-side and sea-side views together.",
@@ -106,9 +106,9 @@ const MSG = {
     memSub: "Tap “Spotted!” on a view and it lands here. Make a memory card at the end of your ride.",
     btnCard: "Create my memory card", btnReset: "Reset stamps", btnDownload: "Save the card",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Classics and hidden gems. Open any card that catches your eye.",
+    galSub: "Classics, notable views, and curious finds. Open any card that catches your eye.",
     morePhotos: "More photos",
-    fAll: "All", fClassic: "Classic", fHidden: "Hidden gems",
+    fAll: "All", fClassic: "Classic", fNotable: "Notable", fCurious: "Curious",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerReferences: "Window links",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
@@ -127,7 +127,7 @@ const MSG = {
     faqQEnglish: "Can I use it in English?",
     faqAEnglish: "Yes. Use the EN button at the top of the page to switch the app to English.",
     seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
-    catClassic: "Classic", catHidden: "Hidden gem",
+    catClassic: "Classic", catNotable: "Notable", catCurious: "Curious",
     confCheck: "verifying",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
     more: "More", less: "Close", mapLink: "Open map",
@@ -265,7 +265,13 @@ function seatBadge(spot) {
   return `<span class="badge ${cls}">${label}</span>`;
 }
 function catBadge(spot) {
-  return `<span class="badge badge-${spot.category}">${t(spot.category === "classic" ? "catClassic" : "catHidden")}</span>`;
+  const labelKey = {
+    classic: "catClassic",
+    notable: "catNotable",
+    curious: "catCurious",
+    hidden: "catNotable",
+  }[spot.category] || "catNotable";
+  return `<span class="badge badge-${spot.category}">${t(labelKey)}</span>`;
 }
 function confBadge(spot) {
   return spot.confidence === "needs-check" ? `<span class="badge badge-check">${t("confCheck")}</span>` : "";
@@ -303,10 +309,24 @@ function photoMetaHTML(photo) {
   const credit = photo.credit?.[lang] || photo.credit?.ja || photo.credit?.en || "";
   const isMichikusa = String(credit).toLowerCase() === "michikusa";
   const creditText = isMichikusa ? photo.date : (credit ? compactCreditLabel(credit) : "");
+  const note = photo.note?.[lang] || photo.note?.ja || photo.note?.en || "";
   const source = photo.sourceUrl
     ? `<a href="${photo.sourceUrl}" target="_blank" rel="noopener noreferrer">${creditText}</a>`
     : creditText;
-  return creditText ? `<figcaption class="photo-credit">${source}</figcaption>` : "";
+  const creditHTML = source ? `<span class="photo-credit-source">${source}</span>` : "";
+  const noteHTML = note ? `<span class="photo-note">${escapeAttr(note)}</span>` : "";
+  return creditHTML || noteHTML ? `<figcaption class="photo-credit">${creditHTML}${noteHTML}</figcaption>` : "";
+}
+function spotReferencesHTML(spot) {
+  const refs = spot.references || [];
+  if (!refs.length) return "";
+  const title = lang === "ja" ? "もっと知る" : "Learn more";
+  const links = refs.map((ref) => {
+    const url = typeof ref.url === "object" ? (ref.url?.[lang] || ref.url?.ja || ref.url?.en) : ref.url;
+    const label = ref.label?.[lang] || ref.label?.ja || ref.label?.en || url;
+    return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeAttr(label)}</a>`;
+  }).join("");
+  return `<div class="spot-modal-refs"><span>${title}</span>${links}</div>`;
 }
 function showCreditHTML(spot) {
   if (!spot.photoCredit) return "";
@@ -374,6 +394,7 @@ function spotDetailModalHTML(spot) {
         <div class="spot-modal-copy">
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
+          ${spotReferencesHTML(spot)}
         </div>
       </div>
     </section>`;
@@ -398,10 +419,24 @@ function applyLang() {
 }
 
 /* ---------- showcase（まず何が見えるかを見せる） ---------- */
+const showcaseSpotIds = [
+  "fuji",
+  "odawara",
+  "hamanako",
+  "nagoya-station-skyline",
+  "kirin-beer-factory",
+  "kiyosu",
+  "solar-ark",
+  "toji",
+];
+
 function renderShowcase() {
   const rail = $("#showcaseRail");
   if (!rail) return;
-  rail.innerHTML = SPOTS.slice().sort(discoverySpotOrder).map((sp) => {
+  const spots = showcaseSpotIds
+    .map((id) => SPOTS.find((sp) => sp.id === id))
+    .filter(Boolean);
+  rail.innerHTML = spots.map((sp) => {
     const L = sp[lang];
     const media = sp.image
       ? `<img loading="lazy" src="${sp.image}" alt="${L.name}">`
@@ -820,11 +855,11 @@ function registerServiceWorker() {
 
 /* ---------- gallery ---------- */
 let galFilter = "all";
-const discoveryCategoryRank = { classic: 0, hidden: 1 };
+const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
 const discoverySpotPriority = {
   fuji: 0,
   hamanako: 1,
-  ibukiyama: 2,
+  ibuki: 2,
   toji: 3,
 };
 function discoverySpotOrder(a, b) {

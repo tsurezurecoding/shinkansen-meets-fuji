@@ -12,7 +12,7 @@
 | `lp.html` | 旧LPリンクの受け口。`index.html?intro=1` で30秒紹介モーダルを開く |
 | `promo.html` | 30秒モーションプロモ（16:9ループ）。F11全画面で録画すればSNS用MP4になる。`?lang=en` で英語版 |
 | `references.html` | 車窓をもっと楽しむための本・記事・ブログのリンク集 |
-| `data.js` | 実写つき車窓スポット20件（バイリンガル）+ ルート定義 |
+| `data.js` | 実写つき車窓スポット25件（バイリンガル）+ ルート定義 |
 | `app.js` | 全ロジック + シーンイラスト生成。`sceneSVG()` はプロモでも共用 |
 | `style.css` | 共通スタイル（夜明けの車窓パレット） |
 | `images/` | 実写写真（富士山・左富士・熱海/相模湾・日向岡・小田原城・清水港・掛川城・浜名湖・三河大島・清洲城・ソーラーアーク・伊吹山・近江富士・瀬田の唐橋・東寺・車両基地など） |
@@ -27,8 +27,8 @@
 
 - `minutesFromTokyo`: のぞみ基準・東京発からの**目安分数**（東京→新大阪147分）。東行きは `147 - m` で反転
 - 席側は方向によらず E=富士山側 / A=海側
-- `category`: classic / hidden / lucky、`confidence`: verified / source-backed / needs-check
-- 公開候補は実写または許可済み写真がある20件に限定。写真のない候補はTODOへ退避
+- `category`: classic / notable / curious、`confidence`: verified / source-backed / needs-check
+- 公開候補は実写または許可済み写真がある25件に限定。写真のない候補はTODOへ退避
 
 ## コンテンツ追加時の確認
 
@@ -36,7 +36,7 @@
 
 - `data.js` のスポット数と、`index.html` / `app.js` / `README.md` / `ROADMAP.md` の件数表記を揃える
 - 写真クレジット、元投稿リンク、許諾ステータスを確認する
-- 推定情報は `confidence: "needs-check"` にし、画面上でも推定と分かるようにする
+- 裏取り中の情報は `confidence: "needs-check"` にする。席側が確認済みなら、ユーザー向けの席ラベルに「推定」は出さない
 - 車窓図鑑カードの日本語 `hook` は18文字以内にし、横並びカードで1件だけ改行されないようにする
 - `node scripts/validate-content.mjs` を実行し、古い件数表記が残っていないか確認する
 - 各スポットの `map` は可能な範囲で緯度経度を保持し、「地図で見る」リンクに使う

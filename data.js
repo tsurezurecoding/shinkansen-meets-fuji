@@ -5,7 +5,7 @@
  * minutesFromTokyo: のぞみ基準の東京発からの目安分数（東京→新大阪 約147分）
  * side: "E" = 富士山側（北側・E席） / "A" = 海側（南側・A席）
  *       東海道新幹線はどちら向きでもE席が富士山側になる
- * category: "classic"（定番） / "hidden"（穴場）
+ * category: "classic"（定番） / "notable"（準定番） / "curious"（珍景）
  * confidence: "verified"（実見・写真あり） / "source-backed"（出典あり） / "needs-check"（裏取り中）
  * ========================================================= */
 
@@ -35,25 +35,184 @@ const ROUTE = {
   get stations() { return this.refStations.filter((s) => s.major); },
 };
 
+const REFERENCES = {
+  toyokeizaiWindow: {
+    label: { ja: "東洋経済オンライン: 新幹線の車窓はこんなに面白い", en: "Toyo Keizai Online: Tokaido Shinkansen window views" },
+    url: "https://toyokeizai.net/list/column/694384d86b208d3b9c000052",
+  },
+  toyokeizaiMikawa: {
+    label: { ja: "東洋経済オンライン: 三河湾の車窓", en: "Toyo Keizai Online: Mikawa Bay window view" },
+    url: "https://toyokeizai.net/articles/-/128329",
+  },
+  hinataokaRakumachi: {
+    label: { ja: "楽待: 日向岡の住宅地", en: "Rakumachi: Hinataoka hillside homes (Japanese only)" },
+    url: "https://www.rakumachi.jp/news/column/339459",
+  },
+  atami: {
+    label: { ja: "Wikipedia: 熱海", en: "Wikipedia: Atami" },
+    url: {
+      ja: "https://ja.wikipedia.org/wiki/%E7%86%B1%E6%B5%B7",
+      en: "https://en.wikipedia.org/wiki/Atami",
+    },
+  },
+  hatsushimaBlog: {
+    label: { ja: "@letus10: 初島車窓記事", en: "@letus10: Hatsushima window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/516720935.html",
+  },
+  atamiCastleBlog: {
+    label: { ja: "@letus10: 熱海城車窓記事", en: "@letus10: Atami Castle window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/516721203.html",
+  },
+  weatherFuji: {
+    label: { ja: "ウェザーニュース: 新幹線の富士山スポット", en: "Weathernews: Mt. Fuji from the Shinkansen" },
+    url: {
+      ja: "https://weathernews.jp/news/202604/240201/",
+      en: "https://global.jr-central.co.jp/en/onlinebooking/featured-theme/mtfuji/",
+    },
+  },
+  leftFujiTrafficNews: {
+    label: { ja: "乗りものニュース: 左富士", en: "Traffic News: Left-side Fuji (Japanese only)" },
+    url: "https://trafficnews.jp/post/62565",
+  },
+  odawaraCastle: {
+    label: { ja: "小田原城公式", en: "Odawara Castle official site" },
+    url: "https://odawaracastle.com/",
+  },
+  odawaraCastleBlog: {
+    label: { ja: "@letus10: 小田原城車窓記事", en: "@letus10: Odawara Castle window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/516754194.html",
+  },
+  gyoranKannon: {
+    label: { ja: "日本珍スポット100景: 魚籃観音", en: "Bqspot: Gyoran Kannon (Japanese only)" },
+    url: "https://bqspot.com/kanto/kanagawa/440",
+  },
+  shimizuPort: {
+    label: { ja: "清水港: 地球深部探査船「ちきゅう」", en: "Port of Shimizu: Deep-sea drilling vessel CHIKYU" },
+    url: "https://www.portofshimizu.com/overview/%E5%9C%B0%E7%90%83%E6%B7%B1%E9%83%A8%E6%8E%A2%E6%9F%BB%E8%88%B9-%E3%81%A1%E3%81%8D%E3%82%85%E3%81%86/",
+  },
+  shizuokaTeaTourism: {
+    label: { ja: "お茶のまち静岡市: 観光", en: "Ochanomachi Shizuoka City: Tourism" },
+    url: "https://www.ochanomachi-shizuokashi.jp/tourism/",
+  },
+  kakegawaCastle: {
+    label: { ja: "掛川城公式", en: "Kakegawa Castle official site" },
+    url: "https://kakegawajo.com/",
+  },
+  hamanakoTourism: {
+    label: { ja: "浜名湖観光圏", en: "Lake Hamana tourism" },
+    url: {
+      ja: "https://www.hamanako-tourism.com/",
+      en: "https://hamanako-tourism.com/en/",
+    },
+  },
+  hamanakoToriiBlog: {
+    label: { ja: "@letus10: 浜名湖と弁天島鳥居の車窓記事", en: "@letus10: Lake Hamana and Bentenjima torii article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/517074141.html",
+  },
+  kirinBlog: {
+    label: { ja: "@letus10: キリンビール工場車窓記事", en: "@letus10: Kirin Beer Factory window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/518214924.html",
+  },
+  kiyosuCastle: {
+    label: { ja: "清洲城", en: "Kiyosu Castle" },
+    url: "http://kiyosujyo.com/",
+  },
+  gifuCastleBlog: {
+    label: { ja: "@letus10: 岐阜城車窓記事", en: "@letus10: Gifu Castle window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/518296647.html",
+  },
+  solarArkBlog: {
+    label: { ja: "@letus10: ソーラーアーク車窓記事", en: "@letus10: Solar Ark from the Shinkansen" },
+    url: "https://cotetu.seesaa.net/article/519526266.html",
+  },
+  ibuki: {
+    label: { ja: "Wikipedia: 伊吹山", en: "Japan Travel: Mt. Ibuki" },
+    url: {
+      ja: "https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1",
+      en: "https://www.japan.travel/en/sports/hiking/courses/mt-ibuki/",
+    },
+  },
+  kojodanWindowCastles: {
+    label: { ja: "攻城団: 新幹線から見える城", en: "Kojodan: Castles visible from the Shinkansen" },
+    url: "https://blog.kojodan.jp/entry/2019/03/10/130620",
+  },
+  hikoneCastle: {
+    label: { ja: "国宝 彦根城公式", en: "Hikone Castle official site" },
+    url: "https://hikonecastle.com/",
+  },
+  sawayama: {
+    label: { ja: "彦根観光ガイド: 佐和山城跡", en: "Hikone tourism: Sawayama Castle Ruins" },
+    url: "https://www.hikoneshi.com/sightseeing/article/sawayama",
+  },
+  sawayamaBlog: {
+    label: { ja: "@letus10: 佐和山城跡と彦根城の車窓記事", en: "@letus10: Sawayama and Hikone window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/517840979.html",
+  },
+  kannonjiCastle: {
+    label: { ja: "Wikipedia: 観音寺城", en: "Wikipedia: Kannonji Castle" },
+    url: {
+      ja: "https://ja.wikipedia.org/wiki/%E8%A6%B3%E9%9F%B3%E5%AF%BA%E5%9F%8E",
+      en: "https://en.wikipedia.org/wiki/Kannonji_Castle",
+    },
+  },
+  omiFujiPark: {
+    label: { ja: "Wikipedia: 三上山", en: "Wikipedia: Mount Mikami" },
+    url: {
+      ja: "https://ja.wikipedia.org/wiki/%E4%B8%89%E4%B8%8A%E5%B1%B1",
+      en: "https://en.wikipedia.org/wiki/Mount_Mikami",
+    },
+  },
+  setaKarahashi: {
+    label: { ja: "@letus10: 瀬田の唐橋車窓記事", en: "@letus10: Seta no Karahashi window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/517709224.html",
+  },
+  toji: {
+    label: { ja: "THE THOUSAND KYOTO: 東寺", en: "THE THOUSAND KYOTO: To-ji Temple" },
+    url: "https://www.keihanhotels-resorts.co.jp/the-thousand-kyoto/sight/kyoto-kawaramachi/touji.html",
+  },
+  tokaidoShinkansen: {
+    label: { ja: "鉄道チャンネル: 鳥飼車両基地", en: "Tetsudo Channel: Torikai Train Depot (Japanese only)" },
+    url: "https://tetsudo-ch.com/12903111.html",
+  },
+};
+
 const SPOTS = [
   {
     id: "hinataoka",
     icon: "🏘️",
     ja: { name: "日向岡の丘の家なみ", area: "新横浜 → 小田原", hook: "斜面いっぱいに、おなじ屋根がならぶ。", story: "相模川を渡ってしばらくすると、丘の斜面にそろって並ぶ住宅地が一瞬あらわれます。名所ではありません。でも、知っている人だけが「あ、来た」と窓の外を見る——そういう車窓です。" },
     en: { name: "Hinataoka Hillside Homes", area: "Shin-Yokohama → Odawara", hook: "Matching rooftops on a hillside.", story: "Shortly after crossing the Sagami River, a planned neighborhood of identical homes climbs the hillside for just a moment. Not a landmark — but the kind of view that makes those in the know glance up from their phone." },
-    minutesFromTokyo: 27, side: "E", category: "hidden", confidence: "verified", durationSec: 20, scene: "hills",
+    minutesFromTokyo: 27, side: "E", category: "notable", confidence: "verified", durationSec: 20, scene: "hills",
     image: "images/20260530_hinataoka.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
+    photos: [
+      {
+        src: "images/20260530_hinataoka_2_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える日向岡の住宅地", en: "Hinataoka hillside homes from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+    ],
+    references: [REFERENCES.hinataokaRakumachi],
     map: { lat: 35.333, lng: 139.304, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
   },
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "プチプチ看板", area: "新横浜 → 小田原", hook: "あのプチプチを、海側の窓に。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®の看板が見えると言われています。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。道草らしい、線路ぎわの発見です。時刻と見える位置は推定なので、少し幅を持って探してください。" },
-    en: { name: "PUTIPUTI Sign", area: "Shin-Yokohama → Odawara", hook: "A tiny Seat A discovery.", story: "Somewhere between Shin-Yokohama and Odawara, the PUTIPUTI® sign is said to appear on the Seat A side. Not a landmark, exactly — but the kind of little find that makes the ride feel personal. Timing and position are estimated, so start looking with a little margin." },
-    minutesFromTokyo: 26, side: "A", category: "hidden", confidence: "needs-check", durationSec: 10, scene: "hills",
+    ja: { name: "プチプチ看板", area: "新横浜 → 小田原", hook: "あのプチプチを、海側の窓に。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®の看板が見えると言われています。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。道草らしい、線路ぎわの発見です。短い出会いなので、少し幅を持って探してください。" },
+    en: { name: "PUTIPUTI Sign", area: "Shin-Yokohama → Odawara", hook: "A tiny Seat A discovery.", story: "Somewhere between Shin-Yokohama and Odawara, the PUTIPUTI® sign is said to appear on the Seat A side. Not a landmark, exactly — but the kind of little find that makes the ride feel personal. It is a very quick glimpse, so start looking with a little margin." },
+    minutesFromTokyo: 26, side: "A", category: "curious", confidence: "needs-check", durationSec: 10, scene: "hills",
     image: "images/20190127_putiputi_sign_putiputi0808.jpg",
     photoCredit: { ja: "プチプチ®の川上産業 @PUTIPUTI_0808", en: "Kawakami Sangyo PUTIPUTI® @PUTIPUTI_0808", url: "https://x.com/PUTIPUTI_0808/status/1089401678594433025" },
+    references: [
+      {
+        label: { ja: "OCEANS: プチプチの話", en: "Kawakami Sangyo: PUTIPUTI products" },
+        url: {
+          ja: "https://oceans.tokyo.jp/article/detail/30210",
+          en: "https://www.putiputi.co.jp/en/products-en/3005",
+        },
+      },
+    ],
     map: { ja: "新横浜 小田原 プチプチ 看板", en: "PUTIPUTI sign between Shin-Yokohama and Odawara" },
   },
   {
@@ -64,6 +223,23 @@ const SPOTS = [
     minutesFromTokyo: 36, side: "A", category: "classic", confidence: "verified", durationSec: 120, scene: "bay",
     image: "images/20260515_atami_sagami_bay.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-15" },
+    photos: [
+      {
+        src: "images/20250523_hatsushima_letus10.jpg",
+        alt: { ja: "新幹線のA席側から見える初島", en: "Hatsushima Island from Seat A" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/516720935.html",
+        note: { ja: "初島: 静岡県唯一の有人島", en: "Hatsushima: Shizuoka's only inhabited island" },
+      },
+      {
+        src: "images/20250524_atami_castle_letus10.jpg",
+        alt: { ja: "新幹線のA席側から見える熱海城", en: "Atami Castle from Seat A" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/516721203.html",
+        note: { ja: "熱海城: 1959年竣工の観光施設", en: "Atami Castle: a sightseeing facility completed in 1959" },
+      },
+    ],
+    references: [REFERENCES.atami, REFERENCES.hatsushimaBlog, REFERENCES.atamiCastleBlog],
     map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
   },
   {
@@ -71,10 +247,30 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "小田原城", area: "小田原駅付近", hook: "のぞみでは、まばたきする間の城。", story: "小田原駅の前後、A席側に小田原城が一瞬だけ見えることがあります。停車しない列車では本当に短い出会い。見えたら、それだけで旅の序章に小さな印がつきます。" },
     en: { name: "Odawara Castle", area: "Around Odawara Sta.", hook: "A castle in a blink.", story: "Around Odawara Station, Odawara Castle can appear briefly on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey." },
-    minutesFromTokyo: 31, side: "A", category: "hidden", confidence: "verified", durationSec: 8, scene: "castle",
+    minutesFromTokyo: 31, side: "A", category: "notable", confidence: "verified", durationSec: 8, scene: "castle",
     image: "images/20251112_odawara_castle_castle_traveler.jpg",
     photoCredit: { ja: "@Castle_Traveler", en: "@Castle_Traveler", url: "https://x.com/Castle_Traveler/status/1992009734854218106" },
+    photos: [
+      {
+        src: "images/20250526_odawara_castle_letus10.jpg",
+        alt: { ja: "新幹線のA席側から見える小田原城", en: "Odawara Castle from Seat A" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/516754194.html",
+      },
+    ],
+    references: [REFERENCES.odawaraCastle, REFERENCES.odawaraCastleBlog],
     map: { lat: 35.2509722, lng: 139.1535778, ja: "小田原城", en: "Odawara Castle" },
+  },
+  {
+    id: "gyoran-kannon",
+    icon: "🙏",
+    ja: { name: "魚籃観音像", area: "小田原 → 熱海（早川付近）", hook: "一瞬だけ、白い観音様。", story: "小田原を過ぎ、早川駅の近くでA席側を見ていると、白い観音像がほんの一瞬あらわれます。車窓に突然立つ姿は、見逃すと「あれは何だったんだろう」となる発見型スポット。魚籃観音は魚や海にゆかりのある観音様で、小田原らしい海辺の道草です。" },
+    en: { name: "Gyoran Kannon Statue", area: "Odawara → Atami, near Hayakawa", hook: "A white Kannon, for a heartbeat.", story: "Just after Odawara, near Hayakawa Station, a white Kannon statue appears for only a moment on the Seat A side. It is the kind of sudden window-seat sight that leaves you wondering what you just saw. Gyoran Kannon is associated with fish and the sea, making this a quietly Odawara-like discovery." },
+    minutesFromTokyo: 33, side: "A", category: "curious", confidence: "verified", durationSec: 2, scene: "pagoda",
+    image: "images/20260516_gyoran_kannon_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
+    references: [REFERENCES.gyoranKannon],
+    map: { lat: 35.2426, lng: 139.1384, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
   },
   {
     id: "fuji",
@@ -116,6 +312,7 @@ const SPOTS = [
         date: "2026-05-16",
       },
     ],
+    references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
   },
   {
@@ -123,7 +320,7 @@ const SPOTS = [
     icon: "🔭",
     ja: { name: "左富士", area: "新富士 → 静岡", hook: "海側A席に、28秒だけ富士山。", story: "ふつう富士山はE席のもの。でも線路がカーブするこの区間だけ、反対のA席側に富士山があらわれると言われています。見えるのはほんの数十秒。A席のあなたにも、ちゃんと出番があります。" },
     en: { name: "Left-Side Fuji", area: "Shin-Fuji → Shizuoka", hook: "For 28 seconds, Fuji switches sides.", story: "Mt. Fuji normally belongs to Seat E. But where the track curves in this section, Fuji is said to appear briefly on the opposite A side — for mere seconds. Seat A gets its moment too." },
-    minutesFromTokyo: 54, side: "A", category: "hidden", confidence: "verified", durationSec: 28, scene: "leftfuji",
+    minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 28, scene: "leftfuji",
     image: "images/20240410_left_fuji_earlyretiremile.jpg",
     photoCredit: { ja: "@earlyretiremile", en: "@earlyretiremile", url: "https://x.com/earlyretiremile/status/1777853629682405657" },
     photos: [
@@ -140,6 +337,7 @@ const SPOTS = [
         sourceUrl: "https://x.com/kawasan3/status/1866984276581028088",
       },
     ],
+    references: [REFERENCES.leftFujiTrafficNews],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
   },
   {
@@ -147,17 +345,37 @@ const SPOTS = [
     icon: "🏗️",
     ja: { name: "清水港とちきゅう", area: "新富士 → 静岡", hook: "港のクレーンと、ちきゅう。", story: "新富士から静岡へ向かう途中、A席側に清水港のクレーン群や地球深部探査船「ちきゅう」が見えることがあります。富士山のあとに、今度は港の巨大構造物が窓の向こうに現れる。山と海と工業の距離が近い、静岡らしい車窓です。" },
     en: { name: "Shimizu Port and CHIKYU", area: "Shin-Fuji → Shizuoka", hook: "Cranes and CHIKYU.", story: "Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt. Fuji, another kind of scale appears outside the window: mountains, sea, and industry all close together." },
-    minutesFromTokyo: 50, side: "A", sideLabel: { ja: "A席側（推定）", en: "Seat A side (estimated)" }, category: "hidden", confidence: "source-backed", durationSec: 70, scene: "bay",
+    minutesFromTokyo: 50, side: "A", category: "notable", confidence: "source-backed", durationSec: 70, scene: "bay",
     image: "images/20240119_shimizu_port_chikyu_senba16530315.jpg",
     photoCredit: { ja: "@senba16530315", en: "@senba16530315", url: "https://x.com/senba16530315/status/1748226462862508427" },
+    references: [REFERENCES.shimizuPort],
     map: { ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
+  },
+  {
+    id: "shizuoka-tea-fields",
+    icon: "🍵",
+    ja: { name: "静岡の茶畑", area: "静岡 → 掛川", hook: "緑の畝が、車窓を走る。", story: "掛川城の少し手前、車窓に茶畑の緑が流れる区間があります。富士山や城ほど大きな目印ではありません。でも、東海道新幹線で静岡を走っていることが一瞬でわかる、日本らしい車窓です。掛川が近づいたら、窓の外の畑の模様に注目してみてください。" },
+    en: { name: "Shizuoka Tea Fields", area: "Shizuoka → Kakegawa", hook: "Rows of green tea from the window.", story: "A little before Kakegawa Castle, rows of tea fields can slide past the window. It is not as obvious as Mt. Fuji or a castle, but it tells you immediately that you are crossing Shizuoka. As Kakegawa approaches, watch for the patterned green fields outside." },
+    minutesFromTokyo: 61, side: "E", category: "notable", confidence: "verified", durationSec: 50, scene: "hills",
+    image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
+    photos: [
+      {
+        src: "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
+        alt: { ja: "新幹線から見える静岡の茶畑", en: "Shizuoka tea fields from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+    ],
+    references: [REFERENCES.shizuokaTeaTourism],
+    map: { ja: "掛川 茶畑 東海道新幹線", en: "Kakegawa tea fields Tokaido Shinkansen" },
   },
   {
     id: "kakegawa",
     icon: "🏯",
     ja: { name: "掛川城", area: "掛川駅 前後", hook: "駅のすぐそばに、木造復元の天守。", story: "掛川駅の北側、車窓から探せる距離に掛川城の天守があります。日本初の木造復元天守。見えるのは一瞬ですが、静岡の車窓に歴史の一行が足されます。" },
     en: { name: "Kakegawa Castle", area: "Around Kakegawa Sta.", hook: "A castle keep, right by the tracks.", story: "Just north of Kakegawa Station stands Kakegawa Castle — Japan's first wooden-reconstructed keep. It appears only briefly, but it adds a line of history to the Shizuoka stretch." },
-    minutesFromTokyo: 62, side: "E", category: "hidden", confidence: "verified", durationSec: 15, scene: "castle",
+    minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 15, scene: "castle",
     image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
     photos: [
@@ -168,48 +386,123 @@ const SPOTS = [
         date: "2026-05-30",
       },
     ],
+    references: [REFERENCES.kakegawaCastle],
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
   },
   {
     id: "hamanako",
     icon: "🚤",
-    ja: { name: "浜名湖", area: "浜松 → 豊橋", hook: "列車が、湖の上をはしる。", story: "浜松を出てしばらくすると、車窓の両側に浜名湖の水面がひろがります。晴れた日の光の反射は、この路線でいちばん「旅をしている」と感じる瞬間のひとつ。うなぎの養殖いかだも探してみてください。" },
-    en: { name: "Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "The train runs over the water.", story: "After Hamamatsu, Lake Hamana spreads out on both sides of the train. On a sunny day, the light off the water is one of the most journey-like moments on the line. Look for the eel-farming rafts." },
-    minutesFromTokyo: 73, side: "E", category: "classic", confidence: "verified", durationSec: 150, scene: "lake",
+    ja: { name: "浜名湖", area: "浜松 → 豊橋", hook: "列車が、湖の上をはしる。", story: "浜松を出てしばらくすると、車窓の両側に浜名湖の水面がひろがります。E席側だけでなく、A席側にも水辺や橋が見える区間です。晴れた日の光の反射は、この路線でいちばん「旅をしている」と感じる瞬間のひとつ。うなぎの養殖いかだも探してみてください。" },
+    en: { name: "Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "The train runs over the water.", story: "After Hamamatsu, Lake Hamana spreads out on both sides of the train. It is not only a Seat E view; Seat A also gets water, bridges, and open sky. On a sunny day, the light off the water is one of the most journey-like moments on the line. Look for the eel-farming rafts." },
+    minutesFromTokyo: 73, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "classic", confidence: "verified", durationSec: 150, scene: "lake",
     image: "images/20260505_hamanako_design_photosy.jpg",
       photoCredit: { ja: "@Design_photoSY", en: "@Design_photoSY", url: "https://x.com/Design_photoSY/status/2051484905377521740" },
       photos: [
         {
-          src: "images/20260505_hamanako_design_photosy_2.jpg",
-          alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
-          credit: { ja: "@Design_photoSY", en: "@Design_photoSY" },
-          sourceUrl: "https://x.com/Design_photoSY/status/2051484905377521740",
-        },
-        {
-          src: "images/20260530_hamanako.jpg",
-          alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
+        src: "images/20260505_hamanako_design_photosy_2.jpg",
+        alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
+        credit: { ja: "@Design_photoSY", en: "@Design_photoSY" },
+        sourceUrl: "https://x.com/Design_photoSY/status/2051484905377521740",
+        note: { ja: "E席（山側）から見える湖面", en: "Lake view from Seat E, mountain side" },
+      },
+      {
+        src: "images/20260530_hamanako.jpg",
+        alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
+        note: { ja: "E席（山側）から見える浜名湖", en: "Lake Hamana from Seat E, mountain side" },
+      },
+      {
+        src: "images/20260516_hamanako_seaside_1_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える浜名湖", en: "Lake Hamana from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-16",
+        note: { ja: "A席（海側）から見える浜名湖", en: "Lake Hamana from Seat A, sea side" },
+      },
+      {
+        src: "images/20260516_hamanako_seaside_2_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える浜名湖", en: "Lake Hamana from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-16",
+        note: { ja: "A席（海側）から見える水辺", en: "Waterside view from Seat A, sea side" },
+      },
+      {
+        src: "images/20250612_hamanako_torii_letus10.jpg",
+        alt: { ja: "新幹線から一瞬見える弁天島の赤鳥居", en: "Bentenjima red torii briefly visible from the Shinkansen" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/517074141.html",
+        note: { ja: "E席（山側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat E, mountain side: a red torii appears briefly between buildings" },
       },
     ],
+    references: [REFERENCES.hamanakoTourism, REFERENCES.hamanakoToriiBlog],
     map: { lat: 34.741111, lng: 137.569722, ja: "浜名湖", en: "Lake Hamana" },
   },
   {
     id: "mikawa-oshima",
     icon: "🏝️",
-    ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "海の向こうに、ぽつんと浮かぶ島。", story: "豊橋を過ぎたあと、A席側に三河湾と三河大島が見えることがあります。大きな観光名所というより、窓の外に一瞬だけ現れる小さな島影。浜名湖のあとにも、海側にはまだ見つける楽しみがあります。時刻と席側は推定です。" },
-    en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "A small island beyond the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima may appear on the Seat A side. It is less a famous landmark than a small island silhouette that quietly rewards a window-seat glance. Timing and seat side are estimated." },
-    minutesFromTokyo: 84, side: "A", category: "hidden", confidence: "needs-check", durationSec: 45, scene: "bay",
+    ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "海の向こうに、ぽつんと浮かぶ島。", story: "豊橋を過ぎたあと、A席側に三河湾と三河大島が見えることがあります。大きな観光名所というより、窓の外に一瞬だけ現れる小さな島影。浜名湖のあとにも、海側にはまだ見つける楽しみがあります。見通しがよい日に、海の向こうを探してみてください。" },
+    en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "A small island beyond the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima may appear on the Seat A side. It is less a famous landmark than a small island silhouette that quietly rewards a window-seat glance. On a clear day, keep looking across the bay." },
+    minutesFromTokyo: 84, side: "A", category: "notable", confidence: "needs-check", durationSec: 45, scene: "bay",
     image: "images/20181213_mikawa_oshima_kawasan3.jpg",
     photoCredit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3", url: "https://x.com/kawasan3/status/1072976990150348800" },
+    references: [REFERENCES.toyokeizaiMikawa],
     map: { lat: 34.7786, lng: 137.2636, ja: "三河大島", en: "Mikawa Oshima" },
+  },
+  {
+    id: "nagoya-station-skyline",
+    icon: "🏙️",
+    ja: { name: "名古屋駅前", area: "名古屋駅付近", hook: "高層ビルの谷を、新幹線で抜ける。", story: "名古屋駅に近づくと、車窓は一気に都市の景色へ切り替わります。高層ビル、駅前の密度、線路の重なり。自然や城とは違うけれど、これも東海道新幹線の大事な車窓です。" },
+    en: { name: "Nagoya Station Skyline", area: "Around Nagoya Station", hook: "The train cuts through the city.", story: "Around Nagoya Station, the window suddenly becomes urban: high-rise buildings, dense station-front blocks, and layers of tracks. It is not a mountain or a castle, but it is an essential Tokaido Shinkansen view." },
+    minutesFromTokyo: 95, side: "E", sideLabel: { ja: "両側・駅付近", en: "Both sides near the station" }, category: "notable", confidence: "verified", durationSec: 90, scene: "hills",
+    image: "images/20260530_nagoya_station_1_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
+    photos: [
+      {
+        src: "images/20260530_nagoya_station_2_michikusa.jpg",
+        alt: { ja: "新幹線から見える名古屋駅前の高層ビル", en: "Nagoya Station skyline from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+      {
+        src: "images/20260530_nagoya_station_3_michikusa.jpg",
+        alt: { ja: "新幹線から見える名古屋駅前の都市景観", en: "Urban view around Nagoya Station from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+    ],
+    map: { ja: "名古屋駅", en: "Nagoya Station" },
+  },
+  {
+    id: "kirin-beer-factory",
+    icon: "🏭",
+    ja: { name: "キリンビール工場", area: "名古屋 → 岐阜羽島", hook: "巨大な生ビールが、ずらり。", story: "名古屋を出て庄内川を渡り、枇杷島駅の横を過ぎるころ、E席側にキリンビール名古屋工場の貯蔵タンクが見えてきます。遠目には、巨大な生ビールがずらりと並んでいるよう。線路沿いの産業風景なのに、見つけると少し楽しくなる珍景です。" },
+    en: { name: "Kirin Beer Factory", area: "Nagoya → Gifu-Hashima", hook: "Rows of giant beers.", story: "After leaving Nagoya, crossing the Shonai River and passing Biwajima, the Kirin Beer Nagoya Factory appears on the Seat E side. Its storage tanks look like rows of giant draft beers from the train window: an industrial scene that somehow turns into a playful discovery." },
+    minutesFromTokyo: 98, side: "E", category: "curious", confidence: "verified", durationSec: 25, scene: "solar",
+    image: "images/20250920_kirin_beer_factory_letus10.jpg",
+    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
+    photos: [
+      {
+        src: "images/20250920_kirin_beer_factory_2_letus10.jpg",
+        alt: { ja: "新幹線のE席側から見えるキリンビール工場の貯蔵タンク", en: "Kirin Beer Factory storage tanks from Seat E" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/518214924.html",
+      },
+      {
+        src: "images/20260530_kirin_beer_factory_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見えるキリンビール工場", en: "Kirin Beer Factory from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+    ],
+    references: [REFERENCES.kirinBlog],
+    map: { ja: "キリンビール 名古屋工場", en: "Kirin Beer Nagoya Factory" },
   },
   {
     id: "kiyosu",
     icon: "🏯",
     ja: { name: "清洲城", area: "名古屋 → 岐阜羽島", hook: "信長の城が、線路のすぐ横に。", story: "名古屋を出て数分、線路のすぐ近くに清洲城があらわれます。織田信長が天下取りを始めた城、そして「清洲会議」の舞台。新幹線がいちばん城に近づく瞬間かもしれません。" },
     en: { name: "Kiyosu Castle", area: "Nagoya → Gifu-Hashima", hook: "Nobunaga's trackside castle.", story: "A few minutes out of Nagoya, Kiyosu Castle appears startlingly close to the line. This is where warlord Oda Nobunaga began his rise to power. It may be the closest the Shinkansen ever gets to a castle." },
-    minutesFromTokyo: 99, side: "E", category: "hidden", confidence: "verified", durationSec: 12, scene: "castle",
+    minutesFromTokyo: 99, side: "E", category: "notable", confidence: "verified", durationSec: 12, scene: "castle",
     image: "images/20240719_kiyosu_castle_asami_k920.jpg",
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
@@ -226,6 +519,7 @@ const SPOTS = [
         date: "2026-05-30",
       },
     ],
+    references: [REFERENCES.kiyosuCastle, REFERENCES.kojodanWindowCastles],
     map: { lat: 35.2165750, lng: 136.8435972, ja: "清洲城", en: "Kiyosu Castle" },
   },
   {
@@ -233,7 +527,7 @@ const SPOTS = [
     icon: "☀️",
     ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "突然、巨大な太陽の船。", story: "名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描くソーラーアークがあらわれます。名所案内には出てきにくいけれど、見つけると忘れにくい沿線の異物感。ロゴの有無など、時期による表情の違いも面白い見どころです。" },
     en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A giant solar ship, out of nowhere.", story: "After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. It is not a usual guidebook landmark, but it is exactly the kind of strange window-seat find that sticks in memory." },
-    minutesFromTokyo: 103, side: "E", category: "hidden", confidence: "verified", durationSec: 35, scene: "solar",
+    minutesFromTokyo: 103, side: "E", category: "curious", confidence: "verified", durationSec: 35, scene: "solar",
     image: "images/20251212_solar_ark_2_letus10.jpg",
     photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/519526266.html" },
     photos: [
@@ -256,7 +550,27 @@ const SPOTS = [
         date: "2026-05-30",
       },
     ],
+    references: [REFERENCES.solarArkBlog],
     map: { lat: 35.3176417, lng: 136.6832861, ja: "ソーラーアーク", en: "Solar Ark" },
+  },
+  {
+    id: "gifu-castle",
+    icon: "🏯",
+    ja: { name: "岐阜城", area: "岐阜羽島 → 米原", hook: "山の上に、小さな城。", story: "岐阜羽島を過ぎ、木曽三川を渡る前後で、E席側の遠くに金華山が見えることがあります。その山頂にあるのが岐阜城。線路からは10km以上離れているため、城そのものを見つけるには晴れた日と少しの集中力が必要です。掲載写真は、同じ岐阜城を東海道本線側から捉えた記録です。" },
+    en: { name: "Gifu Castle", area: "Gifu-Hashima → Maibara", hook: "A tiny castle on a mountain.", story: "After Gifu-Hashima, around the Kiso Three Rivers, Mt. Kinka may be visible far away on the Seat E side. Gifu Castle sits on its summit. The castle is more than 10 km from the Shinkansen line, so spotting the keep itself takes a clear day and a focused eye. The photo shown here was taken from the Tokaido Main Line as a reference view of the same castle." },
+    minutesFromTokyo: 106, side: "E", category: "notable", confidence: "source-backed", durationSec: 120, scene: "castle",
+    image: "images/20250927_gifu_castle_letus10.jpg",
+    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518296647.html" },
+    photos: [
+      {
+        src: "images/20250927_gifu_castle_2_letus10.jpg",
+        alt: { ja: "東海道本線側から見た岐阜城", en: "Gifu Castle seen from the Tokaido Main Line side" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/518296647.html",
+      },
+    ],
+    references: [REFERENCES.gifuCastleBlog],
+    map: { lat: 35.4339, lng: 136.7824, ja: "岐阜城 金華山", en: "Gifu Castle Mt. Kinka" },
   },
   {
     id: "ibuki",
@@ -273,17 +587,33 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
       },
+      {
+        src: "images/20260530_ibukiyama_2_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える伊吹山", en: "Mt. Ibuki from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
     ],
+    references: [REFERENCES.ibuki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
   },
   {
     id: "sawayama-castle",
     icon: "🏯",
-    ja: { name: "佐和山城跡", area: "米原 → 京都", hook: "石田三成の城跡を、田んぼ越しに。", story: "米原を過ぎて少し、E席側に佐和山城跡の山が見えることがあります。天守は残っていません。でも、山すそに名前を見つけた瞬間、関ヶ原の前後の時間が車窓に重なります。位置と時刻は推定なので、米原を出たら早めに探してください。" },
-    en: { name: "Sawayama Castle Ruins", area: "Maibara → Kyoto", hook: "Mitsunari's hill beyond the fields.", story: "Soon after Maibara, the hill of Sawayama Castle may appear on the Seat E side. No keep remains, but catching the name on the hillside makes the Sekigahara era feel suddenly close. Timing and side are estimated, so start looking soon after Maibara." },
-    minutesFromTokyo: 116, side: "E", sideLabel: { ja: "E席側（推定）", en: "Seat E side (estimated)" }, category: "hidden", confidence: "needs-check", durationSec: 30, scene: "castle",
+    ja: { name: "佐和山城跡", area: "米原 → 京都", hook: "石田三成の城跡を、田んぼ越しに。", story: "米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城。天守は残っていませんが、看板を見つけると、関ヶ原から彦根城へ続く歴史の流れが数分の車窓に重なります。" },
+    en: { name: "Sawayama Castle Ruins", area: "Maibara → Kyoto", hook: "Mitsunari's hill beyond the fields.", story: "Soon after Maibara, the hill and sign for Sawayama Castle may appear on the Seat E side. This was the castle of Ishida Mitsunari, defeated at Sekigahara. No keep remains, but spotting the sign connects Sekigahara, Sawayama, and Hikone in just a few minutes of window time." },
+    minutesFromTokyo: 116, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, scene: "castle",
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    photos: [
+      {
+        src: "images/20250831_sawayama_castle_letus10.jpg",
+        alt: { ja: "新幹線のE席側から見える佐和山城跡の看板と山", en: "Sawayama Castle Ruins sign and hill from Seat E" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/517840979.html",
+      },
+    ],
+    references: [REFERENCES.sawayamaBlog, REFERENCES.sawayama],
     map: { lat: 35.2840, lng: 136.2770, ja: "佐和山城跡", en: "Sawayama Castle Ruins" },
   },
   {
@@ -291,9 +621,10 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "彦根城", area: "米原 → 京都", hook: "国宝の天守を、街の向こうに。", story: "米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。大きくはありません。だからこそ、見つけた瞬間にうれしい。琵琶湖東岸の歴史が、数秒だけ窓の中に入ってきます。" },
     en: { name: "Hikone Castle", area: "Maibara → Kyoto", hook: "A tiny National Treasure keep.", story: "After Maibara, Hikone Castle's keep may appear small beyond the town on the Seat E side. It is not a big, obvious view; that is what makes spotting it satisfying. For a few seconds, the history of eastern Lake Biwa enters the window." },
-    minutesFromTokyo: 116, side: "E", sideLabel: { ja: "E席側（推定）", en: "Seat E side (estimated)" }, category: "hidden", confidence: "needs-check", durationSec: 20, scene: "castle",
+    minutesFromTokyo: 116, side: "E", category: "notable", confidence: "needs-check", durationSec: 20, scene: "castle",
     image: "images/20240719_hikone_castle_asami_k920.jpg",
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    references: [REFERENCES.hikoneCastle],
     map: { lat: 35.2765, lng: 136.2518, ja: "彦根城", en: "Hikone Castle" },
   },
   {
@@ -301,29 +632,40 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "観音寺城跡", area: "米原 → 京都", hook: "山の稜線に、六角氏の城跡を探す。", story: "安土の近く、E席側の山並みに観音寺城跡が見えることがあります。天守を見るスポットではなく、山城のあった稜線を探す車窓です。近江の平野と山が近づくこの区間で、戦国の地形をそのまま眺める感覚があります。" },
     en: { name: "Kannonji Castle Ruins", area: "Maibara → Kyoto", hook: "A castle ridge in the mountains.", story: "Near Azuchi, the ridge of Kannonji Castle may be visible on the Seat E side. This is not a keep-spotting view; it is about reading the mountain where a Sengoku-period castle once stood. In this stretch, the landscape itself becomes the history." },
-    minutesFromTokyo: 120, side: "E", sideLabel: { ja: "E席側（推定）", en: "Seat E side (estimated)" }, category: "hidden", confidence: "needs-check", durationSec: 45, scene: "mountain",
+    minutesFromTokyo: 120, side: "E", category: "notable", confidence: "needs-check", durationSec: 45, scene: "mountain",
     image: "images/20240719_kannonji_castle_asami_k920.jpg",
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    references: [REFERENCES.kannonjiCastle],
     map: { lat: 35.1420, lng: 136.1510, ja: "観音寺城跡", en: "Kannonji Castle Ruins" },
   },
   {
     id: "omi-fuji",
     icon: "⛰️",
-    ja: { name: "近江富士", area: "米原 → 京都", hook: "琵琶湖の手前、もうひとつの富士。", story: "米原を出てしばらくすると、A席側に三角の美しい山が見えてきます。三上山、別名・近江富士。水田に映れば、車窓だけの逆さ富士です。時刻と席側は位置からの推定なので、少し余裕を持って探してみてください。" },
-    en: { name: "Omi Fuji", area: "Maibara → Kyoto", hook: "Another Fuji, before Kyoto.", story: "After Maibara, look from Seat A for Mt. Mikami, nicknamed Omi Fuji for its clean triangular shape. When the fields are wet, it becomes a window-seat reflection: a tiny upside-down Fuji. Timing and seat side are estimated from location, so start looking a little early." },
-    minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "hidden", confidence: "needs-check", durationSec: 90, scene: "mountain",
+    ja: { name: "近江富士", area: "米原 → 京都", hook: "琵琶湖の手前、もうひとつの富士。", story: "米原を出てしばらくすると、A席側に三角の美しい山が見えてきます。三上山、別名・近江富士。水田に映れば、車窓だけの逆さ富士です。少し余裕を持って探してみてください。" },
+    en: { name: "Omi Fuji", area: "Maibara → Kyoto", hook: "Another Fuji, before Kyoto.", story: "After Maibara, look from Seat A for Mt. Mikami, nicknamed Omi Fuji for its clean triangular shape. When the fields are wet, it becomes a window-seat reflection: a tiny upside-down Fuji. Start looking a little early." },
+    minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "notable", confidence: "needs-check", durationSec: 90, scene: "mountain",
     image: "images/20250523_omi_fuji_kawasan3.jpg",
     photoCredit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3", url: "https://x.com/kawasan3/status/1925668108024320321" },
+    references: [REFERENCES.omiFujiPark],
     map: { lat: 35.0479, lng: 136.0450, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
   },
   {
     id: "seta-karahashi",
     icon: "🌉",
-    ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "川に架かる、京の手前の橋。", story: "京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えることがあります。古くから交通の要所として知られる橋で、東寺より前に「京都が近い」と感じられる水辺の合図。晴れた日は川面と空がひらけ、車窓の空気が一度ゆるみます。" },
-    en: { name: "Seta no Karahashi Bridge", area: "Maibara → Kyoto", hook: "A bridge before Kyoto.", story: "A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. Long known as a key crossing, it is a waterside sign that Kyoto is getting close, even before To-ji appears. On a bright day, the river and sky give this stretch a softer pause." },
-    minutesFromTokyo: 127, side: "E", sideLabel: { ja: "E席側（推定）", en: "Seat E side (estimated)" }, category: "hidden", confidence: "source-backed", durationSec: 45, scene: "lake",
-    image: "images/20250909_seta_karahashi_c91256633.jpg",
-    photoCredit: { ja: "@C91256633", en: "@C91256633", url: "https://x.com/C91256633/status/1965377316537925644" },
+    ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "川に架かる、京の手前の橋。", story: "京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えることがあります。日本書紀にも登場する交通の要衝で、古くから「唐橋を制するものは天下を制する」と言われた橋。急がば回れの由来にも重なる、京都目前の一瞬です。" },
+    en: { name: "Seta no Karahashi Bridge", area: "Maibara → Kyoto", hook: "A bridge before Kyoto.", story: "A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. It is an old strategic crossing, even appearing in early Japanese chronicles, and is linked to the idea behind the proverb 'more haste, less speed.' It passes quickly, just before Kyoto." },
+    minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 45, scene: "lake",
+    image: "images/20250820_seta_karahashi_letus10.jpg",
+    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/517709224.html" },
+    photos: [
+      {
+        src: "images/20250909_seta_karahashi_c91256633.jpg",
+        alt: { ja: "晴れた日の瀬田の唐橋", en: "Seta no Karahashi Bridge on a clear day" },
+        credit: { ja: "@C91256633", en: "@C91256633" },
+        sourceUrl: "https://x.com/C91256633/status/1965377316537925644",
+      },
+    ],
+    references: [REFERENCES.setaKarahashi],
     map: { ja: "瀬田の唐橋", en: "Seta no Karahashi Bridge" },
   },
   {
@@ -334,6 +676,7 @@ const SPOTS = [
     minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 40, scene: "pagoda",
     image: "images/20260510_toji.png",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-10" },
+    references: [REFERENCES.toji],
     map: { lat: 34.980361, lng: 135.747694, ja: "東寺 五重塔", en: "To-ji Pagoda Kyoto" },
   },
   {
@@ -341,9 +684,10 @@ const SPOTS = [
     icon: "🚄",
     ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い列車が、ずらり。", story: "新大阪に近づくころ、E席側に新幹線が並ぶ大きな車両基地が見えることがあります。走ってきた列車の裏側、整備と待機の場所。名所というより、旅を支える現場が突然ひらける車窓です。見える範囲が広いので、少し長めに探してください。" },
     en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As you approach Shin-Osaka, Seat E may open onto a vast Shinkansen depot: rows of white trains resting beside the line. It is not a classic landmark; it is the backstage of the journey, where the trains wait and are cared for. The view stretches for a while, so keep looking." },
-    minutesFromTokyo: 141, side: "E", sideLabel: { ja: "E席側（推定）", en: "Seat E side (estimated)" }, category: "hidden", confidence: "source-backed", durationSec: 240, scene: "hills",
+    minutesFromTokyo: 141, side: "E", category: "curious", confidence: "source-backed", durationSec: 240, scene: "hills",
     image: "images/20260614_torikai_train_depot_yamato160.jpg",
     photoCredit: { ja: "@yamato160", en: "@yamato160", url: "https://x.com/yamato160/status/2066003172884365364" },
+    references: [REFERENCES.tokaidoShinkansen],
     map: { ja: "鳥飼車両基地", en: "Torikai Train Depot" },
   },
 ];
