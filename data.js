@@ -158,8 +158,16 @@ const SPOTS = [
     ja: { name: "掛川城", area: "掛川駅 前後", hook: "駅のすぐそばに、木造復元の天守。", story: "掛川駅の北側、車窓から探せる距離に掛川城の天守があります。日本初の木造復元天守。見えるのは一瞬ですが、静岡の車窓に歴史の一行が足されます。" },
     en: { name: "Kakegawa Castle", area: "Around Kakegawa Sta.", hook: "A castle keep, right by the tracks.", story: "Just north of Kakegawa Station stands Kakegawa Castle — Japan's first wooden-reconstructed keep. It appears only briefly, but it adds a line of history to the Shizuoka stretch." },
     minutesFromTokyo: 62, side: "E", category: "hidden", confidence: "verified", durationSec: 15, scene: "castle",
-    image: "images/20260530_kakegawa_castle.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
+    image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
+    photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
+    photos: [
+      {
+        src: "images/20260530_kakegawa_castle.jpg",
+        alt: { ja: "新幹線のE席側から見える掛川城", en: "Kakegawa Castle from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+      },
+    ],
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
   },
   {
