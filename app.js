@@ -704,18 +704,28 @@ function spotItemHTML(sp, clock) {
 function findSpotById(id) {
   return SPOTS.find((sp) => sp.id === id);
 }
-function spotHash(spotId) {
-  return `#spot-${spotId}`;
+function spotHash(spotId, photoIndex = 0) {
+  const index = Number(photoIndex);
+  const photoSuffix = Number.isInteger(index) && index > 0 ? `/photo-${index + 1}` : "";
+  return `#spot-${spotId}${photoSuffix}`;
+}
+function spotHashState(hash = location.hash) {
+  const match = String(hash || "").match(/^#spot-([^/]+)(?:\/photo-(\d+))?$/);
+  if (!match) return { spotId: "", photoIndex: 0 };
+  const photoNumber = Number(match[2] || 1);
+  const photoIndex = Number.isInteger(photoNumber) && photoNumber > 0 ? photoNumber - 1 : 0;
+  return { spotId: match[1], photoIndex };
 }
 function spotIdFromHash(hash = location.hash) {
-  const match = String(hash || "").match(/^#spot-(.+)$/);
-  return match ? match[1] : "";
+  return spotHashState(hash).spotId;
 }
-function setSpotHash(spotId, { replace = false } = {}) {
-  if (!spotId || location.hash === spotHash(spotId)) return;
+function setSpotHash(spotId, { photoIndex = 0, replace = false } = {}) {
+  if (!spotId) return;
+  const nextHash = spotHash(spotId, photoIndex);
+  if (location.hash === nextHash) return;
   const url = new URL(location.href);
-  url.hash = spotHash(spotId);
-  history[replace ? "replaceState" : "pushState"]({ spotId }, "", url);
+  url.hash = nextHash;
+  history[replace ? "replaceState" : "pushState"]({ spotId, photoIndex }, "", url);
 }
 function clearSpotHash({ replace = true } = {}) {
   if (!spotIdFromHash()) return;
@@ -727,7 +737,8 @@ function openSpotModal(spotId, source = "unknown", options = {}) {
   const spot = findSpotById(spotId);
   if (!spot) return;
   const updateUrl = options.updateUrl !== false;
-  if (updateUrl) setSpotHash(spotId, { replace: !!options.replaceUrl });
+  const photoIndex = Math.max(0, Number(options.photoIndex) || 0);
+  if (updateUrl) setSpotHash(spotId, { photoIndex, replace: !!options.replaceUrl });
   closeQuickModal("replace");
   closeSpotModal("replace", { updateUrl: false });
   const modal = document.createElement("div");
@@ -743,23 +754,33 @@ function openSpotModal(spotId, source = "unknown", options = {}) {
   modal.querySelectorAll("[data-modal-close]").forEach((el) => {
     el.addEventListener("click", () => closeSpotModal("button"));
   });
-  bindSpotModalGallery(modal, spot);
+  bindSpotModalGallery(modal, spot, { initialPhotoIndex: photoIndex, updateUrl });
 }
-function bindSpotModalGallery(modal, spot) {
+function bindSpotModalGallery(modal, spot, options = {}) {
   const items = spotMediaItems(spot);
-  if (items.length <= 1) return;
+  if (!items.length) return;
   const image = modal.querySelector(".spot-modal-active-photo");
   const credit = modal.querySelector(".spot-modal-active-credit");
+  const selectPhoto = (index, { trackSelection = true, updateUrl = true, replaceUrl = false } = {}) => {
+    const item = items[index];
+    if (!item || !image || !credit) return false;
+    image.src = item.src;
+    image.alt = item.alt;
+    credit.innerHTML = item.creditHTML;
+    modal.querySelectorAll("[data-photo-index]").forEach((thumb) => {
+      thumb.classList.toggle("active", Number(thumb.dataset.photoIndex) === index);
+    });
+    if (updateUrl) setSpotHash(spot.id, { photoIndex: index, replace: replaceUrl });
+    if (trackSelection) track("spot_photo_selected", spotAnalyticsParams(spot, "spot_modal", { photo_index: index }));
+    return true;
+  };
+  const initialPhotoIndex = Math.max(0, Number(options.initialPhotoIndex) || 0);
+  if (initialPhotoIndex > 0) selectPhoto(initialPhotoIndex, { trackSelection: false, updateUrl: false });
+  if (items.length <= 1) return;
   modal.querySelectorAll("[data-photo-index]").forEach((button) => {
     button.addEventListener("click", () => {
       const index = Number(button.dataset.photoIndex);
-      const item = items[index];
-      if (!item || !image || !credit) return;
-      image.src = item.src;
-      image.alt = item.alt;
-      credit.innerHTML = item.creditHTML;
-      modal.querySelectorAll("[data-photo-index]").forEach((thumb) => thumb.classList.toggle("active", thumb === button));
-      track("spot_photo_selected", spotAnalyticsParams(spot, "spot_modal", { photo_index: index }));
+      selectPhoto(index);
     });
   });
 }
@@ -770,7 +791,7 @@ function closeSpotModal(reason = "close", options = {}) {
   element.remove();
   document.body.classList.remove("modal-open");
   activeSpotModal = null;
-  if (options.updateUrl !== false && location.hash === spotHash(spotId)) clearSpotHash({ replace: true });
+  if (options.updateUrl !== false && spotIdFromHash() === spotId) clearSpotHash({ replace: true });
   if (reason !== "replace") track("spot_detail_close", spotAnalyticsParams(spot, source, { reason }));
 }
 
@@ -1060,9 +1081,9 @@ function renderGallery() {
   bindSpotEvents(grid);
 }
 function openSpotFromHash(source = "hash") {
-  const spotId = spotIdFromHash();
+  const { spotId, photoIndex } = spotHashState();
   if (!findSpotById(spotId)) return false;
-  openSpotModal(spotId, source, { updateUrl: false });
+  openSpotModal(spotId, source, { updateUrl: false, photoIndex });
   return true;
 }
 function syncModalWithLocation(source = "url") {
@@ -1071,10 +1092,9 @@ function syncModalWithLocation(source = "url") {
     openQuickModal(source);
     return;
   }
-  const spotId = spotIdFromHash();
+  const { spotId, photoIndex } = spotHashState();
   if (spotId) {
-    if (activeSpotModal?.spotId === spotId) return;
-    if (findSpotById(spotId)) openSpotModal(spotId, source, { updateUrl: false });
+    if (findSpotById(spotId)) openSpotModal(spotId, source, { updateUrl: false, photoIndex });
     return;
   }
   if (activeSpotModal) closeSpotModal(source, { updateUrl: false });
