@@ -10,8 +10,8 @@ const MSG = {
     brandSub: "旅の瞬間を見逃さない",
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
-    heroLead: "富士山の3分間も、線路ぎわの城も、湖も海も。新幹線で「いつ・どちら側を見ればいいか」がわかり、見つけた景色が旅の思い出になる手帖です。",
-    ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaQuick: "新幹線の窓とは？",
+    heroLead: "富士山も、城も、湖も海も。<br>新幹線で「いつ・どちら側を見るか」がわかる車窓手帖です。",
+    ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
@@ -24,9 +24,8 @@ const MSG = {
     btnFind: "この時間の列車をさがす",
     trainNone: "この条件の列車が見つかりませんでした。時刻を変えるか、目安タイムラインをどうぞ。",
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
-    heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき26スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
+    showNote: "実写つき26スポットを収録。見つけた景色はスタンプになり、メダルの進捗に変わります。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "席側は各カードに表示します。山側も海側も、気になる景色はまとめて見られます。",
@@ -34,11 +33,28 @@ const MSG = {
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
     tlTitleWest: "東京 → 新大阪の車窓タイムライン", tlTitleEast: "新大阪 → 東京の車窓タイムライン",
-    memEyebrow: "YOUR JOURNAL", memTitle: "車窓スタンプ帖",
-    memSub: "「見えた!」を押すと、ここにスタンプがたまります。旅のおわりに、思い出カードをどうぞ。",
-    btnCard: "思い出カードをつくる", btnReset: "スタンプをリセット", btnDownload: "カードを保存する",
+    memEyebrow: "YOUR JOURNAL", memTitle: "車窓メダル帖",
+    memSub: "「見えた!」を押すと、旅のメダルが育ちます。",
+    stampHeading: "スタンプ",
+    medalEyebrow: "MEDALS",
+    medalSummary: "集めた景色の進み具合",
+    medalOverall: "車窓の達人",
+    medalOverallDesc: "見つけた車窓ぜんぶの進捗。",
+    medalCastle: "城ハンター",
+    medalCastleDesc: "新幹線から見える城を集める。",
+    medalClassic: "定番めぐり",
+    medalClassicDesc: "まず見てほしい定番車窓を集める。",
+    medalBronze: "銅",
+    medalSilver: "銀",
+    medalGold: "金",
+    medalNoMedal: "未獲得",
+    medalProgress: (n, total) => `${n} / ${total}`,
+    medalNext: (label, remain) => `次は${label}まであと${remain}`,
+    medalComplete: "金メダル達成",
+    medalTargets: "対象スポット",
+    btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "定番、準定番、珍景。気になるカードを開いてみてください。",
+    galSub: "26の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
@@ -66,10 +82,6 @@ const MSG = {
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
-    cardTitle: "車窓のたび",
-    cardFooter: "道草 / Michikusa — 新幹線の窓",
-    cardCount: (n, total) => `みつけた車窓  ${n} / ${total}`,
-    cardRouteWest: "東京 → 新大阪", cardRouteEast: "新大阪 → 東京",
     confirmReset: "スタンプをぜんぶ消しますか?",
     emptyCard: "まだスタンプがありません。タイムラインで「見えた!」を押してみてください。",
   },
@@ -78,8 +90,8 @@ const MSG = {
     brandSub: "Never miss a moment of the journey.",
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "There's another journey<br>outside your window.",
-    heroLead: "Fuji's famous three minutes, castles beside the tracks, lake and sea. Shinkansen Window shows when and where to look, turning a Shinkansen ride into a journey to remember.",
-    ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaQuick: "What is it?",
+    heroLead: "Fuji, castles, lakes and sea. Know when to look, and which side to watch from your Shinkansen seat.",
+    ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
@@ -92,9 +104,8 @@ const MSG = {
     btnFind: "Find my train",
     trainNone: "No trains found for this time. Try another time, or use the estimate timeline.",
     trainPickNote: "Pick your train (real timetable)",
-    heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "26 real-photo spots included. Next, see when and which side they appear from your train.",
+    showNote: "26 real-photo spots included. Views you spot become stamps, then medal progress.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Seat side appears on each card. You can browse mountain-side and sea-side views together.",
@@ -102,11 +113,28 @@ const MSG = {
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
     tlTitleWest: "Tokyo → Shin-Osaka window timeline", tlTitleEast: "Shin-Osaka → Tokyo window timeline",
-    memEyebrow: "YOUR JOURNAL", memTitle: "Window Stamp Book",
-    memSub: "Tap “Spotted!” on a view and it lands here. Make a memory card at the end of your ride.",
-    btnCard: "Create my memory card", btnReset: "Reset stamps", btnDownload: "Save the card",
+    memEyebrow: "YOUR JOURNAL", memTitle: "Window Medal Book",
+    memSub: "Tap “Spotted!” and your travel medals grow.",
+    stampHeading: "Stamps",
+    medalEyebrow: "MEDALS",
+    medalSummary: "Your collected view progress",
+    medalOverall: "Window Master",
+    medalOverallDesc: "Progress across every window view.",
+    medalCastle: "Castle Hunter",
+    medalCastleDesc: "Collect castles seen from the Shinkansen.",
+    medalClassic: "Classic Tour",
+    medalClassicDesc: "Collect the essential window views first.",
+    medalBronze: "Bronze",
+    medalSilver: "Silver",
+    medalGold: "Gold",
+    medalNoMedal: "Not yet",
+    medalProgress: (n, total) => `${n} / ${total}`,
+    medalNext: (label, remain) => `${remain} more to ${label}`,
+    medalComplete: "Gold medal complete",
+    medalTargets: "Included views",
+    btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Classics, notable views, and curious finds. Open any card that catches your eye.",
+    galSub: "Browse all 26 window views. Tap “Spotted!” to record what you saw.",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
@@ -134,10 +162,6 @@ const MSG = {
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
-    cardTitle: "My Window Journey",
-    cardFooter: "Michikusa — Shinkansen Window",
-    cardCount: (n, total) => `Views spotted  ${n} / ${total}`,
-    cardRouteWest: "Tokyo → Shin-Osaka", cardRouteEast: "Shin-Osaka → Tokyo",
     confirmReset: "Clear all stamps?",
     emptyCard: "No stamps yet — tap “Spotted!” on the timeline first.",
   },
@@ -443,6 +467,7 @@ function applyLang() {
     if (typeof v === "string") el.innerHTML = v;
   });
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+  renderMedalBoard();
   renderStampboard();
   renderGallery();
   updateGalleryFilterButtons();
@@ -886,6 +911,81 @@ function updateLive() {
   $("#nextupCount").textContent = remain <= 1 ? t("soon") : t("inMinutes", remain);
 }
 
+/* ---------- medals ---------- */
+const CASTLE_MEDAL_IDS = [
+  "odawara-castle",
+  "kakegawa",
+  "kiyosu",
+  "gifu-castle",
+  "sawayama-castle",
+  "hikone-castle",
+  "kannonji-castle",
+];
+const MEDAL_SETS = [
+  {
+    id: "overall",
+    icon: "◎",
+    titleKey: "medalOverall",
+    spots: () => SPOTS,
+  },
+  {
+    id: "castle",
+    icon: "🏯",
+    titleKey: "medalCastle",
+    spots: () => CASTLE_MEDAL_IDS.map(findSpotById).filter(Boolean),
+  },
+  {
+    id: "classic",
+    icon: "★",
+    titleKey: "medalClassic",
+    spots: () => SPOTS.filter((sp) => sp.category === "classic"),
+  },
+];
+const MEDAL_LEVELS = [
+  { key: "gold", labelKey: "medalGold", rank: 3 },
+  { key: "silver", labelKey: "medalSilver", rank: 2 },
+  { key: "bronze", labelKey: "medalBronze", rank: 1 },
+];
+
+function medalThresholds(total) {
+  return {
+    bronze: total > 0 ? 1 : 0,
+    silver: Math.max(1, Math.ceil(total / 2)),
+    gold: total,
+  };
+}
+function medalProgress(set) {
+  const targets = set.spots();
+  const total = targets.length;
+  const got = targets.filter((sp) => stamps[sp.id]).length;
+  const thresholds = medalThresholds(total);
+  const level = MEDAL_LEVELS.find((candidate) => got >= thresholds[candidate.key]) || null;
+  const next = [...MEDAL_LEVELS].reverse().find((candidate) => got < thresholds[candidate.key]);
+  return { targets, total, got, thresholds, level, next };
+}
+function medalLevelLabel(level) {
+  return level ? t(level.labelKey) : t("medalNoMedal");
+}
+function renderMedalBoard() {
+  const board = $("#medalBoard");
+  if (!board) return;
+  board.innerHTML = `
+    <div class="medal-grid">
+      ${MEDAL_SETS.map((set) => {
+        const progress = medalProgress(set);
+        const levelClass = progress.level ? `medal-${progress.level.key}` : "medal-none";
+        const percent = progress.total ? Math.round((progress.got / progress.total) * 100) : 0;
+        const label = `${t(set.titleKey)} ${t("medalProgress", progress.got, progress.total)} ${medalLevelLabel(progress.level)}`;
+        return `
+          <div class="medal-card ${levelClass}" style="--medal-progress: ${percent}%;" role="img" aria-label="${escapeAttr(label)}">
+            <span class="medal-title">${escapeHTML(t(set.titleKey))}</span>
+            <span class="medal-icon" aria-hidden="true">${set.icon}</span>
+            <span class="medal-count">${escapeHTML(t("medalProgress", progress.got, progress.total))}</span>
+          </div>`;
+      }).join("")}
+    </div>`;
+}
+
 /* ---------- stamps ---------- */
 function toggleStamp(id) {
   const removed = !!stamps[id];
@@ -893,6 +993,7 @@ function toggleStamp(id) {
   else stamps[id] = Date.now();
   track(removed ? "stamp_removed" : "stamp_added", { spot_id: id });
   localStorage.setItem("mado-stamps", JSON.stringify(stamps));
+  renderMedalBoard();
   renderStampboard();
   $$(`[data-stamp="${id}"]`).forEach((btn) => {
     const got = !!stamps[id];
@@ -907,71 +1008,6 @@ function renderStampboard() {
       <span class="s-icon">${sp.icon}</span>
       <span class="s-name">${sp[lang].name}</span>
     </div>`).join("");
-}
-
-/* ---------- memory card ---------- */
-function drawMemoryCard() {
-  const got = SPOTS.filter((sp) => stamps[sp.id]);
-  if (!got.length) { alert(t("emptyCard")); return; }
-  track("memory_card_created", { stamp_count: got.length, spot_total: SPOTS.length });
-  const cv = $("#memCanvas"), ctx = cv.getContext("2d");
-  const Wc = cv.width, Hc = cv.height;
-  // 背景: 夕暮れグラデーション
-  const g = ctx.createLinearGradient(0, 0, 0, Hc);
-  g.addColorStop(0, "#101c2c"); g.addColorStop(0.5, "#27405e");
-  g.addColorStop(0.78, "#b96a4e"); g.addColorStop(1, "#e8a06a");
-  ctx.fillStyle = g; ctx.fillRect(0, 0, Wc, Hc);
-  // 富士山シルエット
-  ctx.fillStyle = "rgba(125,155,192,0.55)";
-  ctx.beginPath();
-  ctx.moveTo(120, Hc - 240); ctx.lineTo(Wc / 2 - 40, Hc - 560); ctx.lineTo(Wc / 2 + 5, Hc - 510);
-  ctx.lineTo(Wc / 2 + 50, Hc - 555); ctx.lineTo(Wc - 110, Hc - 240); ctx.closePath(); ctx.fill();
-  ctx.fillStyle = "rgba(243,246,250,0.9)";
-  ctx.beginPath();
-  ctx.moveTo(Wc / 2 - 78, Hc - 522); ctx.lineTo(Wc / 2 - 40, Hc - 560); ctx.lineTo(Wc / 2 + 5, Hc - 510);
-  ctx.lineTo(Wc / 2 + 50, Hc - 555); ctx.lineTo(Wc / 2 + 80, Hc - 524); ctx.lineTo(Wc / 2 + 62, Hc - 482);
-  ctx.quadraticCurveTo(Wc / 2 + 20, Hc - 505, Wc / 2 - 10, Hc - 480);
-  ctx.quadraticCurveTo(Wc / 2 - 40, Hc - 502, Wc / 2 - 64, Hc - 486); ctx.closePath(); ctx.fill();
-  // 地面
-  ctx.fillStyle = "#16263a"; ctx.fillRect(0, Hc - 220, Wc, 220);
-  // タイトル
-  ctx.fillStyle = "#fff"; ctx.textAlign = "center";
-  ctx.font = "700 30px Georgia, 'Hiragino Mincho ProN', serif";
-  ctx.fillText(t("brandName"), Wc / 2, 96);
-  ctx.font = "700 56px Georgia, 'Hiragino Mincho ProN', serif";
-  ctx.fillText(t("cardTitle"), Wc / 2, 172);
-  const d = new Date();
-  const dateStr = lang === "ja"
-    ? `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`
-    : d.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
-  ctx.font = "26px Georgia, serif"; ctx.fillStyle = "rgba(255,255,255,0.85)";
-  ctx.fillText(`${dateStr} · ${t(direction === "west" ? "cardRouteWest" : "cardRouteEast")}`, Wc / 2, 218);
-  // スタンプ
-  const cols = 3, cell = 250, startY = 320;
-  got.slice(0, 9).forEach((sp, i) => {
-    const cx = Wc / 2 + (i % cols - 1) * cell;
-    const cy = startY + Math.floor(i / cols) * 215;
-    ctx.save();
-    ctx.translate(cx, cy); ctx.rotate((i % 2 ? 1 : -1) * 0.05);
-    ctx.beginPath(); ctx.arc(0, 0, 86, 0, Math.PI * 2);
-    ctx.fillStyle = "rgba(255,247,242,0.96)"; ctx.fill();
-    ctx.lineWidth = 6; ctx.strokeStyle = "#e8704a"; ctx.stroke();
-    ctx.font = "64px serif"; ctx.fillText(sp.icon, 0, 18);
-    ctx.restore();
-    ctx.font = "700 22px 'Hiragino Kaku Gothic ProN', sans-serif";
-    ctx.fillStyle = "#fff";
-    ctx.fillText(sp[lang].name, cx, cy + 124);
-  });
-  // カウント + フッター
-  ctx.font = "700 34px Georgia, 'Hiragino Mincho ProN', serif";
-  ctx.fillStyle = "#f5c9a8";
-  ctx.fillText(t("cardCount", got.length, SPOTS.length), Wc / 2, Hc - 130);
-  ctx.font = "22px Georgia, serif"; ctx.fillStyle = "rgba(255,255,255,0.7)";
-  ctx.fillText(t("cardFooter"), Wc / 2, Hc - 72);
-  // 出力
-  $("#memcardWrap").hidden = false;
-  $("#dlBtn").href = cv.toDataURL("image/png");
-  $("#memcardWrap").scrollIntoView({ behavior: "smooth" });
 }
 
 function registerServiceWorker() {
@@ -1123,7 +1159,6 @@ function init() {
     track("train_search", { direction, board_station: boardId });
     showTrainResults();
   });
-  $("#quickPreviewBtn")?.addEventListener("click", () => openQuickModal("hero"));
   $("#buildBtn").addEventListener("click", () => buildTimeline(null));
   $("#filterbar")?.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
@@ -1141,14 +1176,12 @@ function init() {
     track("gallery_filtered", { filters: [...activeGalleryFilters].join(",") || "all" });
     renderGallery();
   });
-  $("#cardBtn").addEventListener("click", drawMemoryCard);
   $("#resetBtn").addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
       stamps = {}; localStorage.setItem("mado-stamps", "{}");
-      renderStampboard(); renderGallery();
+      renderMedalBoard(); renderStampboard(); renderGallery();
       const tl = $("#timelineSection");
       if (tl && !tl.hidden) renderTimeline();
-      $("#memcardWrap").hidden = true;
     }
   });
   document.addEventListener("keydown", (event) => {

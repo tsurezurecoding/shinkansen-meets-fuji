@@ -42,26 +42,49 @@ button { font-family: inherit; cursor: pointer; }
 .topbar {
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
-  gap: 12px; padding: 10px 18px;
+  gap: 9px; padding: 5px 12px;
   background: rgba(16, 28, 44, 0.92);
   backdrop-filter: blur(8px);
   color: #fff;
 }
-.brand { display: flex; align-items: center; gap: 10px; min-width: 0; text-decoration: none; color: #fff; }
+.brand { display: flex; align-items: center; gap: 8px; min-width: 0; text-decoration: none; color: #fff; }
 .brand-mark {
   display: grid; place-items: center;
-  width: 36px; height: 36px; border-radius: 9px;
+  width: 29px; height: 29px; border-radius: 8px;
   background: var(--accent); color: #fff;
-  font-family: var(--font-serif); font-size: 20px; font-weight: 700;
+  font-family: var(--font-serif); font-size: 16px; font-weight: 700;
 }
 .brand-text { min-width: 0; display: grid; gap: 1px; }
-.brand-name { min-width: 0; font-weight: 700; letter-spacing: 0.08em; font-size: 15px; }
+.brand-name { min-width: 0; font-weight: 700; letter-spacing: 0.08em; font-size: 14px; }
 .brand-name small,
-.brand-sub { display: block; font-size: 10px; font-weight: 400; opacity: 0.75; letter-spacing: 0.14em; }
+.brand-sub { display: block; font-size: 9px; font-weight: 400; opacity: 0.72; letter-spacing: 0.12em; }
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.top-nav a {
+  color: rgba(255,255,255,0.78);
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 5px 9px;
+  font-size: 11.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.top-nav a:hover,
+.top-nav a:focus-visible {
+  background: rgba(255,255,255,0.12);
+  color: #fff;
+  outline: 0;
+}
 .lang-switch { display: flex; flex-shrink: 0; gap: 4px; background: rgba(255,255,255,0.12); border-radius: 99px; padding: 3px; }
 .lang-switch button {
   border: 0; background: transparent; color: rgba(255,255,255,0.7);
-  font-size: 12px; padding: 5px 12px; border-radius: 99px;
+  font-size: 11.5px; padding: 4px 10px; border-radius: 99px;
 }
 .lang-switch button.active { background: #fff; color: var(--night); font-weight: 700; }
 
@@ -78,13 +101,11 @@ button { font-family: inherit; cursor: pointer; }
 .hero-kicker { max-width: 100%; font-size: 11px; letter-spacing: 0.32em; opacity: 0.75; margin-bottom: 18px; overflow-wrap: anywhere; }
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(30px, 6.4vw, 52px);
-  line-height: 1.35; font-weight: 700;
+  font-size: clamp(30px, 4.4vw, 44px);
+  line-height: 1.28; font-weight: 700;
   text-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
-.hero-lead { margin: 22px auto 0; max-width: 520px; font-size: 15px; opacity: 0.92; }
-.hero-cta { margin-top: 34px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-
+.hero-lead { margin: 16px auto 0; max-width: 500px; font-size: 14px; opacity: 0.92; }
 /* ===== Buttons ===== */
 .btn {
   display: inline-block; border: 0; border-radius: 99px;
@@ -668,18 +689,109 @@ body.modal-open { overflow: hidden; }
 }
 
 /* ===== Stamp board ===== */
+.medal-board {
+  max-width: 620px;
+  margin: 0 auto 24px;
+}
+.medal-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+.medal-card {
+  --medal-metal: #d8d3c8;
+  --medal-ink: #9a9386;
+  --medal-glow: rgba(22,32,46,0.08);
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  width: min(100%, 92px);
+  color: var(--medal-ink);
+}
+.medal-icon {
+  display: grid;
+  place-items: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 30%, rgba(255,255,255,0.92) 0 20%, transparent 21%),
+    radial-gradient(circle, #fffaf0 0 45%, transparent 46%),
+    conic-gradient(var(--medal-metal) 0 var(--medal-progress), rgba(220,214,203,0.34) 0 100%);
+  border: 2px solid rgba(255,255,255,0.74);
+  box-shadow:
+    inset 0 0 0 7px rgba(255,255,255,0.72),
+    inset 0 0 0 9px rgba(22,32,46,0.07),
+    0 5px 15px var(--medal-glow);
+  font-size: 27px;
+  font-weight: 800;
+  color: var(--medal-ink);
+}
+.medal-title {
+  font-weight: 800;
+  font-size: 10.5px;
+  line-height: 1.2;
+  color: var(--ink-soft);
+  text-align: center;
+  white-space: nowrap;
+}
+.medal-count {
+  color: var(--ink-soft);
+  font-family: var(--font-serif);
+  font-size: 12.5px;
+  font-weight: 800;
+  line-height: 1;
+}
+.medal-card.medal-bronze {
+  --medal-metal: #c07a45;
+  --medal-ink: #8a4c28;
+  --medal-glow: rgba(192,122,69,0.24);
+}
+.medal-card.medal-silver {
+  --medal-metal: #aeb8c5;
+  --medal-ink: #526071;
+  --medal-glow: rgba(122,136,154,0.22);
+}
+.medal-card.medal-gold {
+  --medal-metal: #d9a440;
+  --medal-ink: #8a6716;
+  --medal-glow: rgba(217,164,64,0.28);
+}
+.stamp-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 8px auto 14px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+}
+.stamp-heading::before,
+.stamp-heading::after {
+  content: "";
+  width: 38px;
+  height: 1px;
+  background: var(--line);
+}
 .stampboard {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(86px, 1fr));
-  gap: 12px; max-width: 620px; margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 76px);
+  justify-content: center;
+  gap: 10px;
+  max-width: 620px;
+  margin: 0 auto;
 }
 .stamp {
-  aspect-ratio: 1; border-radius: 50%;
+  width: 76px; height: 76px; border-radius: 50%;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   border: 2px dashed var(--line); color: #c9c2b2;
   font-size: 11px; gap: 4px; text-align: center; padding: 6px;
   background: var(--card);
 }
-.stamp .s-icon { font-size: 24px; filter: grayscale(1); opacity: 0.4; }
+.stamp .s-icon { font-size: 21px; filter: grayscale(1); opacity: 0.4; }
 .stamp.got {
   border: 2.5px solid var(--accent); color: var(--ink);
   background: #fff7f2; transform: rotate(-3deg);
@@ -688,13 +800,8 @@ body.modal-open { overflow: hidden; }
 }
 .stamp.got .s-icon { filter: none; opacity: 1; }
 @keyframes stampin { from { transform: scale(1.6) rotate(-10deg); opacity: 0; } to { transform: scale(1) rotate(-3deg); opacity: 1; } }
-.stamp .s-name { font-size: 9.5px; line-height: 1.25; font-weight: 600; }
+.stamp .s-name { font-size: 8.7px; line-height: 1.25; font-weight: 600; }
 .mem-actions { display: flex; gap: 10px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
-.memcard-wrap { margin-top: 26px; text-align: center; }
-.memcard-wrap canvas {
-  width: min(420px, 100%); height: auto;
-  border-radius: 16px; box-shadow: var(--shadow); margin-bottom: 16px;
-}
 
 /* ===== Gallery ===== */
 .filterbar { display: flex; gap: 8px; justify-content: center; margin-bottom: 26px; flex-wrap: wrap; }
@@ -935,12 +1042,11 @@ body.modal-open { overflow: hidden; }
   content: ""; position: absolute; inset: 0;
   background: linear-gradient(rgba(16,28,44,0.72) 0%, rgba(16,28,44,0.35) 45%, rgba(16,28,44,0.78) 100%);
 }
-.hero-photo .hero-inner { padding: 96px 24px 96px; }
-.hero-photo-credit { margin-top: 30px; font-size: 11px; opacity: 0.6; letter-spacing: 0.06em; }
+.hero-photo .hero-inner { padding: 44px 24px 34px; }
 
 /* ===== Showcase（まず見える景色を見せる） ===== */
-.showcase { padding: 64px 0 10px; }
-.showcase .section-head { margin-bottom: 22px; padding: 0 20px; }
+.showcase { padding: 46px 0 10px; }
+.showcase .section-head { margin-bottom: 18px; padding: 0 20px; }
 .showcase-rail {
   display: flex; gap: 14px; overflow-x: auto; padding: 4px 20px 18px;
   scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
@@ -1089,15 +1195,26 @@ body.modal-open { overflow: hidden; }
 .btn-wide-link { display: block; width: 100%; margin-top: 12px; text-align: center; }
 
 @media (max-width: 540px) {
-  .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding: 10px 14px; }
+  .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding: 5px 10px; }
   .brand { overflow: hidden; }
   .brand-mark { flex-shrink: 0; }
   .brand-name, .brand-name small, .brand-sub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .brand-name small, .brand-sub { letter-spacing: 0.08em; }
-  .lang-switch button { padding: 5px 10px; }
-  .hero-inner { padding: 64px 20px 110px; }
+  .top-nav {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding-top: 2px;
+    scrollbar-width: none;
+  }
+  .top-nav::-webkit-scrollbar { display: none; }
+  .top-nav a { padding: 4px 9px; font-size: 11px; }
+  .lang-switch button { padding: 4px 9px; }
+  .hero-inner { padding: 34px 18px 32px; }
   .hero-kicker { max-width: 300px; margin-left: auto; margin-right: auto; font-size: 9px; line-height: 1.9; letter-spacing: 0.16em; }
-  .hero-cta .btn { width: min(100%, 280px); }
+  .hero-title { font-size: clamp(28px, 8vw, 38px); }
+  .hero-lead { margin-top: 12px; font-size: 13px; }
   .section { padding-top: 56px; }
   .nextup-count { font-size: 16px; }
   .tl-card { padding: 13px 14px; }
@@ -1107,6 +1224,16 @@ body.modal-open { overflow: hidden; }
   .spot-card-stamp { min-width: 86px; }
   .spot-modal-actions { gap: 8px; }
   .faq-grid { grid-template-columns: 1fr; }
+  .medal-grid { gap: 8px; }
+  .medal-card { width: min(100%, 82px); }
+  .medal-icon { width: 64px; height: 64px; font-size: 25px; }
+  .medal-title { font-size: 9.5px; }
+  .medal-count { font-size: 11.5px; }
+  .stamp-heading { margin-top: 10px; }
+  .stampboard { grid-template-columns: repeat(auto-fill, 72px); gap: 9px; }
+  .stamp { width: 72px; height: 72px; }
+  .stamp .s-icon { font-size: 20px; }
+  .stamp .s-name { font-size: 8.4px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .cloud, .train-move, .nextup-pulse { animation: none; }

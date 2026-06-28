@@ -117,7 +117,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260628-photo-link">
+  <link rel="stylesheet" href="style.css?v=20260628-hero-shorter">
 </head>
 <body>
 
@@ -130,6 +130,12 @@
         <small class="brand-sub" data-i18n="brandSub">旅の瞬間を見逃さない</small>
       </span>
     </a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="#quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
+      <a href="#journey" data-i18n="ctaStart">旅をはじめる</a>
+      <a href="#gallery" data-i18n="ctaBrowse">車窓をながめる</a>
+      <a href="#memories" data-i18n="ctaMedals">メダルを見る</a>
+    </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="ja">日本語</button>
       <button type="button" data-lang="en">EN</button>
@@ -144,13 +150,7 @@
     <div class="hero-inner">
       <p class="hero-kicker" data-i18n="heroKicker">TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA</p>
       <h1 class="hero-title" data-i18n="heroTitle">窓のむこうに、<br>もうひとつの旅がある。</h1>
-      <p class="hero-lead" data-i18n="heroLead">富士山の3分間も、線路ぎわの城も、湖も海も。新幹線で「いつ・どちら側を見ればいいか」がわかり、見つけた景色が旅の思い出になる手帖です。</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#journey" data-i18n="ctaStart">旅をはじめる</a>
-        <a class="btn btn-ghost" href="#gallery" data-i18n="ctaBrowse">車窓をながめる</a>
-        <button type="button" class="btn btn-ghost" id="quickPreviewBtn" data-i18n="ctaQuick">新幹線の窓とは？</button>
-      </div>
-      <p class="hero-photo-credit" data-i18n="heroPhotoCredit">photo: 車窓から撮影（E席・三島→新富士）</p>
+      <p class="hero-lead" data-i18n="heroLead">富士山も、城も、湖も海も。<br>新幹線で「いつ・どちら側を見るか」がわかる車窓手帖です。</p>
     </div>
   </section>
 
@@ -161,7 +161,7 @@
       <h2 id="showcaseTitle" data-i18n="showTitle">たとえば、こんな景色</h2>
     </div>
     <div class="showcase-rail" id="showcaseRail"></div>
-    <p class="showcase-note" data-i18n="showNote">実写つき26スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。</p>
+    <p class="showcase-note" data-i18n="showNote">実写つき26スポットを収録。見つけた景色はスタンプになり、メダルの進捗に変わります。</p>
   </section>
 
   <!-- ===== Journey setup ===== -->
@@ -223,7 +223,7 @@
     <div class="section-head">
       <p class="eyebrow" data-i18n="galEyebrow">FIELD GUIDE</p>
       <h2 data-i18n="galTitle">車窓図鑑 — ぜんぶの見どころ</h2>
-      <p class="section-sub" data-i18n="galSub">定番、準定番、珍景。気になるカードを開いてみてください。</p>
+      <p class="section-sub" data-i18n="galSub">26の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。</p>
     </div>
     <div class="filterbar" id="filterbar">
       <button type="button" data-filter="all" class="active" data-i18n="fAll">すべて</button>
@@ -238,21 +238,18 @@
     <div class="gallery" id="galleryGrid"></div>
   </section>
 
-  <!-- ===== Stamp board / memories ===== -->
+  <!-- ===== Medals / stamps ===== -->
   <section class="section" id="memories">
     <div class="section-head">
       <p class="eyebrow" data-i18n="memEyebrow">YOUR JOURNAL</p>
-      <h2 data-i18n="memTitle">車窓スタンプ帖</h2>
-      <p class="section-sub" data-i18n="memSub">「見えた!」を押すと、ここにスタンプがたまります。旅のおわりに、思い出カードをどうぞ。</p>
+      <h2 data-i18n="memTitle">車窓メダル帖</h2>
+      <p class="section-sub" data-i18n="memSub">「見えた!」を押すと、旅のメダルが育ちます。</p>
     </div>
+    <div class="medal-board" id="medalBoard" aria-live="polite"></div>
+    <h3 class="stamp-heading" data-i18n="stampHeading">スタンプ</h3>
     <div class="stampboard" id="stampboard"></div>
     <div class="mem-actions">
-      <button type="button" class="btn btn-primary" id="cardBtn" data-i18n="btnCard">思い出カードをつくる</button>
       <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">スタンプをリセット</button>
-    </div>
-    <div class="memcard-wrap" id="memcardWrap" hidden>
-      <canvas id="memCanvas" width="1000" height="1250"></canvas>
-      <a class="btn btn-primary" id="dlBtn" download="shinkansen-window-journey.png" data-i18n="btnDownload">カードを保存する</a>
     </div>
   </section>
 
@@ -291,8 +288,8 @@
     <p class="footer-credit" data-i18n="footerCredit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 
-  <script src="data/timetable.js?v=20260628-photo-link"></script>
-  <script src="data.js?v=20260628-photo-link"></script>
-  <script src="app.js?v=20260628-photo-link"></script>
+  <script src="data/timetable.js?v=20260628-hero-shorter"></script>
+  <script src="data.js?v=20260628-hero-shorter"></script>
+  <script src="app.js?v=20260628-hero-shorter"></script>
 </body>
 </html>

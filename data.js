@@ -184,7 +184,7 @@ const SPOTS = [
   {
     id: "hinataoka",
     icon: "🏘️",
-    ja: { name: "日向岡の丘の家なみ", area: "新横浜 → 小田原", hook: "斜面いっぱいに、おなじ屋根がならぶ。", story: "相模川を渡ってしばらくすると、丘の斜面にそろって並ぶ住宅地が一瞬あらわれます。名所ではありません。でも、知っている人だけが「あ、来た」と窓の外を見る——そういう車窓です。" },
+    ja: { name: "日向岡の街並み", area: "新横浜 → 小田原", hook: "斜面いっぱいに、おなじ屋根がならぶ。", story: "相模川を渡ってしばらくすると、丘の斜面にそろって並ぶ住宅地が一瞬あらわれます。名所ではありません。でも、知っている人だけが「あ、来た」と窓の外を見る——そういう車窓です。" },
     en: { name: "Hinataoka Hillside Homes", area: "Shin-Yokohama → Odawara", hook: "Matching rooftops on a hillside.", story: "Shortly after crossing the Sagami River, a planned neighborhood of identical homes climbs the hillside for just a moment. Not a landmark — but the kind of view that makes those in the know glance up from their phone." },
     minutesFromTokyo: 27, side: "E", category: "notable", confidence: "verified", durationSec: 20, scene: "hills",
     image: "images/20260530_hinataoka.jpg",
@@ -348,8 +348,8 @@ const SPOTS = [
   {
     id: "left-fuji",
     icon: "🔭",
-    ja: { name: "左富士", area: "新富士 → 静岡", hook: "海側A席に、28秒だけ富士山。", story: "ふつう富士山はE席のもの。でも線路がカーブするこの区間だけ、反対のA席側に富士山があらわれると言われています。見えるのはほんの数十秒。A席のあなたにも、ちゃんと出番があります。" },
-    en: { name: "Left-Side Fuji", area: "Shin-Fuji → Shizuoka", hook: "For 28 seconds, Fuji switches sides.", story: "Mt. Fuji normally belongs to Seat E. But where the track curves in this section, Fuji is said to appear briefly on the opposite A side — for mere seconds. Seat A gets its moment too." },
+    ja: { name: "左富士", area: "新富士 → 静岡", hook: "海側A席に、28秒だけ富士山。", story: "ふつう富士山はE席のもの。でも線路がカーブするこの区間だけ、反対のA席側に富士山があらわれます。昔から「幸運の左富士」とも呼ばれる、短いごほうびのような車窓。見えるのはほんの数十秒。A席のあなたにも、ちゃんと出番があります。" },
+    en: { name: "Left-Side Fuji", area: "Shin-Fuji → Shizuoka", hook: "For 28 seconds, Fuji switches sides.", story: "Mt. Fuji normally belongs to Seat E. But where the track curves in this section, Fuji appears briefly on the opposite A side. Known as a lucky left-side Fuji, it is a tiny window-seat reward that lasts only a few seconds. Seat A gets its moment too." },
     minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 28, scene: "leftfuji",
     image: "images/20240410_left_fuji_earlyretiremile.jpg",
     photoCredit: { ja: "@earlyretiremile", en: "@earlyretiremile", url: "https://x.com/earlyretiremile/status/1777853629682405657" },
@@ -359,6 +359,7 @@ const SPOTS = [
         alt: { ja: "新幹線のA席側から見える左富士", en: "Left-side Fuji from Seat A" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-13",
+        note: { ja: "雪がないと見つけるのがさらに大変。", en: "Without snow, it is even harder to spot." },
       },
       {
         src: "images/20241212_left_fuji_kawasan3.jpg",
