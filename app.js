@@ -26,7 +26,7 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     heroPhotoCredit: "photo: 新幹線の車窓から撮影（E席・三島→新富士）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき25スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
+    showNote: "実写つき26スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "席側は各カードに表示します。山側も海側も、気になる景色はまとめて見られます。",
@@ -94,7 +94,7 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     heroPhotoCredit: "photo: shot from the train window (Seat E, Mishima → Shin-Fuji)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "25 real-photo spots included. Next, see when and which side they appear from your train.",
+    showNote: "26 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Seat side appears on each card. You can browse mountain-side and sea-side views together.",
@@ -704,10 +704,32 @@ function spotItemHTML(sp, clock) {
 function findSpotById(id) {
   return SPOTS.find((sp) => sp.id === id);
 }
-function openSpotModal(spotId, source = "unknown") {
+function spotHash(spotId) {
+  return `#spot-${spotId}`;
+}
+function spotIdFromHash(hash = location.hash) {
+  const match = String(hash || "").match(/^#spot-(.+)$/);
+  return match ? match[1] : "";
+}
+function setSpotHash(spotId, { replace = false } = {}) {
+  if (!spotId || location.hash === spotHash(spotId)) return;
+  const url = new URL(location.href);
+  url.hash = spotHash(spotId);
+  history[replace ? "replaceState" : "pushState"]({ spotId }, "", url);
+}
+function clearSpotHash({ replace = true } = {}) {
+  if (!spotIdFromHash()) return;
+  const url = new URL(location.href);
+  url.hash = "";
+  history[replace ? "replaceState" : "pushState"](null, "", url);
+}
+function openSpotModal(spotId, source = "unknown", options = {}) {
   const spot = findSpotById(spotId);
   if (!spot) return;
-  closeSpotModal("replace");
+  const updateUrl = options.updateUrl !== false;
+  if (updateUrl) setSpotHash(spotId, { replace: !!options.replaceUrl });
+  closeQuickModal("replace");
+  closeSpotModal("replace", { updateUrl: false });
   const modal = document.createElement("div");
   modal.className = "spot-modal";
   modal.innerHTML = spotDetailModalHTML(spot);
@@ -741,13 +763,14 @@ function bindSpotModalGallery(modal, spot) {
     });
   });
 }
-function closeSpotModal(reason = "close") {
+function closeSpotModal(reason = "close", options = {}) {
   if (!activeSpotModal) return;
   const { element, spotId, source } = activeSpotModal;
   const spot = findSpotById(spotId);
   element.remove();
   document.body.classList.remove("modal-open");
   activeSpotModal = null;
+  if (options.updateUrl !== false && location.hash === spotHash(spotId)) clearSpotHash({ replace: true });
   if (reason !== "replace") track("spot_detail_close", spotAnalyticsParams(spot, source, { reason }));
 }
 
@@ -817,7 +840,7 @@ function bindSpotEvents(root) {
   root.querySelectorAll("[data-map]").forEach((link) => {
     link.addEventListener("click", () => track("map_opened", spotAnalyticsParams(findSpotById(link.dataset.map), "inline_map")));
   });
-  root.querySelectorAll(".tl-card-button").forEach((card) => {
+  root.querySelectorAll(".tl-card-button:not([data-more])").forEach((card) => {
     card.addEventListener("click", () => openSpotModal(card.closest(".tl-item")?.dataset.spot, "timeline"));
   });
 }
@@ -954,7 +977,7 @@ function discoverySpotOrder(a, b) {
   return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
 }
 const galleryTagGroups = {
-  nature: new Set(["fuji", "left-fuji", "odawara", "hamanako", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
+  nature: new Set(["fuji", "left-fuji", "odawara", "hamanako", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
   industry: new Set(["putiputi-sign", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
   city: new Set(["hinataoka", "nagoya-station-skyline"]),
@@ -1036,6 +1059,26 @@ function renderGallery() {
       }).join("");
   bindSpotEvents(grid);
 }
+function openSpotFromHash(source = "hash") {
+  const spotId = spotIdFromHash();
+  if (!findSpotById(spotId)) return false;
+  openSpotModal(spotId, source, { updateUrl: false });
+  return true;
+}
+function syncModalWithLocation(source = "url") {
+  if (location.hash === "#quick-intro") {
+    closeSpotModal("replace", { updateUrl: false });
+    openQuickModal(source);
+    return;
+  }
+  const spotId = spotIdFromHash();
+  if (spotId) {
+    if (activeSpotModal?.spotId === spotId) return;
+    if (findSpotById(spotId)) openSpotModal(spotId, source, { updateUrl: false });
+    return;
+  }
+  if (activeSpotModal) closeSpotModal(source, { updateUrl: false });
+}
 
 /* ---------- init ---------- */
 function init() {
@@ -1095,9 +1138,13 @@ function init() {
     }
   });
   applyLang();
+  window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
+  window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);
-  if (params.get("intro") === "1" || location.hash === "#quick-intro") {
+  if (params.get("intro") === "1" && location.hash !== "#quick-intro") {
     openQuickModal("url");
+  } else {
+    syncModalWithLocation("url");
   }
   registerServiceWorker();
 }
