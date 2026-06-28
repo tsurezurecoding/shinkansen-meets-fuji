@@ -22,10 +22,11 @@ const MSG = {
     btnBuild: "列車を選ばず、目安タイムラインだけつくる",
     labelBoard: "乗車駅",
     btnFind: "この時間の列車をさがす",
+    trainPrev: "前のページ",
+    trainNext: "次のページ",
     trainNone: "この条件の列車が見つかりませんでした。時刻を変えるか、目安タイムラインをどうぞ。",
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
-    showNote: "実写つき26スポットを収録。見つけた景色はスタンプになり、メダルの進捗に変わります。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "席側は各カードに表示します。山側も海側も、気になる景色はまとめて見られます。",
@@ -102,10 +103,11 @@ const MSG = {
     btnBuild: "Skip train pick — estimate-only timeline",
     labelBoard: "Boarding at",
     btnFind: "Find my train",
+    trainPrev: "Previous",
+    trainNext: "Next",
     trainNone: "No trains found for this time. Try another time, or use the estimate timeline.",
     trainPickNote: "Pick your train (real timetable)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
-    showNote: "26 real-photo spots included. Views you spot become stamps, then medal progress.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Seat side appears on each card. You can browse mountain-side and sea-side views together.",
@@ -258,8 +260,8 @@ function interpolateSpot(spotRef, stops) {
   return null;
 }
 
-/* 列車検索: 方向・乗車駅・時刻に合う列車（出発時刻順に最大5本） */
-function findTrains(depMin) {
+/* 列車検索: 方向・乗車駅に合う列車を出発時刻順に並べる */
+function trainCandidates() {
   const TT = window.SHINKANSEN_TIMETABLE;
   if (!TT) return [];
   return TT.trains
@@ -271,10 +273,15 @@ function findTrains(depMin) {
       return idx >= 0 && idx < stops.length - 1;
     })
     .map((tr) => ({ tr, dep: toMin(tr.times[boardId]) }))
-    .filter((x) => x.dep >= depMin && x.dep <= depMin + 120)
     .sort((a, b) => a.dep - b.dep)
     // データセット内の重複列車（同番号・同時刻）を除去
-    .filter((x, i, arr) => i === arr.findIndex((y) => y.tr.type === x.tr.type && y.tr.number === x.tr.number && y.dep === x.dep))
+    .filter((x, i, arr) => i === arr.findIndex((y) => y.tr.type === x.tr.type && y.tr.number === x.tr.number && y.dep === x.dep));
+}
+
+/* 列車検索: 指定時刻以降の列車（出発時刻順に最大5本） */
+function findTrains(depMin) {
+  return trainCandidates()
+    .filter((x) => x.dep >= depMin)
     .slice(0, 5);
 }
 
@@ -617,21 +624,53 @@ function trainLabel(tr) {
   return `${name}${tr.number}`;
 }
 
+function previousTrainPageStart(firstDep) {
+  const previous = trainCandidates().filter((x) => x.dep < firstDep).slice(-5);
+  return previous.length ? previous[0].dep : null;
+}
+
+function nextTrainPageStart(lastDep) {
+  const next = trainCandidates().find((x) => x.dep > lastDep);
+  return next ? next.dep : null;
+}
+
+function showTrainPage(pageStartMin) {
+  $("#departTime").value = minToClock(pageStartMin);
+  track("train_results_page", { direction, board_station: boardId, page_start: minToClock(pageStartMin) });
+  showTrainResults();
+}
+
 function showTrainResults() {
   const depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
   const found = findTrains(depMin);
   const box = $("#trainResults");
   box.hidden = false;
+  const firstDep = found[0]?.dep ?? depMin;
+  const lastDep = found[found.length - 1]?.dep ?? depMin;
+  const prevStart = previousTrainPageStart(firstDep);
+  const nextStart = nextTrainPageStart(lastDep);
+  const controls = `
+    <div class="train-shift" role="group" aria-label="${escapeAttr(t("labelDeparture"))}">
+      <button type="button" data-page-start="${prevStart ?? ""}"${prevStart == null ? " disabled" : ""}>‹ ${escapeHTML(t("trainPrev"))}</button>
+      <span>${found.length ? `${escapeHTML(minToClock(firstDep))} - ${escapeHTML(minToClock(lastDep))}` : escapeHTML(minToClock(depMin))}</span>
+      <button type="button" data-page-start="${nextStart ?? ""}"${nextStart == null ? " disabled" : ""}>${escapeHTML(t("trainNext"))} ›</button>
+    </div>`;
     if (!found.length) {
-      box.innerHTML = `<p class="train-none">${t("trainNone")}</p>`;
+      box.innerHTML = `${controls}<p class="train-none">${t("trainNone")}</p>`;
+      box.querySelectorAll("[data-page-start]").forEach((btn) => {
+        btn.addEventListener("click", () => showTrainPage(Number(btn.dataset.pageStart)));
+      });
       return;
     }
-    box.innerHTML = `<p class="train-pick-note">${t("trainPickNote")}</p>` + found.map(({ tr, dep }, i) => {
+    box.innerHTML = `${controls}<p class="train-pick-note">${t("trainPickNote")}</p>` + found.map(({ tr, dep }, i) => {
       return `<button type="button" class="train-chip" data-train="${i}">
         <strong>${trainLabel(tr)}</strong>
         <span>${minToClock(dep)} ${t("dep")} → ${stationLabel(tr.destination)}</span>
       </button>`;
     }).join("");
+  box.querySelectorAll("[data-page-start]").forEach((btn) => {
+    btn.addEventListener("click", () => showTrainPage(Number(btn.dataset.pageStart)));
+  });
   box.querySelectorAll("[data-train]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const { tr, dep } = found[Number(btn.dataset.train)];

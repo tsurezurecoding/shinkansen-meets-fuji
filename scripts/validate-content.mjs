@@ -19,11 +19,11 @@ const maxEnglishHookLength = 38;
 const checks = [
   {
     file: "index.html",
-    required: [`${spotCount}の車窓スポット`, `実写つき${spotCount}スポット`],
+    required: [`${spotCount}の車窓スポット`],
   },
   {
     file: "app.js",
-    required: [`実写つき${spotCount}スポット`, `${spotCount} real-photo spots`],
+    required: [`${spotCount}の車窓スポット`, `Browse all ${spotCount} window views`],
   },
   {
     file: "README.md",

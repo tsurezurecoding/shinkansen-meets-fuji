@@ -1141,45 +1141,43 @@ body.modal-open { overflow: hidden; }
   justify-content: center;
   gap: 6px;
 }
-.showcase-note {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  max-width: calc(100% - 40px);
-  margin: 4px auto 0;
-  padding: 10px 16px;
-  border: 1px solid rgba(232,112,74,0.32);
-  border-radius: 999px;
-  background: #fffaf6;
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 700;
-  line-height: 1.55;
-  text-align: center;
-  box-shadow: 0 4px 16px rgba(22,32,46,0.05);
-}
-.showcase-note::before {
-  content: "17";
-  display: inline-grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  margin-right: 8px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #fff;
-  font-size: 11px;
-  font-weight: 800;
-  flex: 0 0 auto;
-}
-
 /* ===== 乗車駅・列車選択 ===== */
 .board-select {
   border: 1.5px solid var(--line); border-radius: 12px; background: var(--paper);
   padding: 11px 14px; font-size: 15px; font-family: inherit; width: 100%;
 }
 .train-results { margin: 14px 0 4px; display: flex; flex-direction: column; gap: 8px; }
+.train-shift {
+  display: grid;
+  grid-template-columns: minmax(92px, 1fr) auto minmax(92px, 1fr);
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+.train-shift button {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--ink-soft);
+  border-radius: 999px;
+  padding: 7px 10px;
+  font-size: 12px;
+  font-weight: 800;
+}
+.train-shift button:not(:disabled):hover {
+  border-color: var(--accent);
+  color: var(--ink);
+}
+.train-shift button:disabled {
+  opacity: 0.34;
+  cursor: default;
+}
+.train-shift span {
+  color: var(--ink-soft);
+  font-family: var(--font-serif);
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
 .train-pick-note { font-size: 12px; font-weight: 700; color: var(--ink-soft); letter-spacing: 0.08em; }
 .train-none { font-size: 13px; color: var(--ink-soft); }
 .train-chip {
