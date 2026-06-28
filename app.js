@@ -29,7 +29,7 @@ const MSG = {
     showNote: "実写つき25スポットを収録。次は、あなたの列車で「何時に・どちら側に見えるか」を出します。",
     estimateTag: "目安モード", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
-    seatTipNote: "席側は各カードに表示します。富士山側も海側も、気になる景色はまとめて見られます。",
+    seatTipNote: "席側は各カードに表示します。山側も海側も、気になる景色はまとめて見られます。",
     nextupLabel: "つぎの車窓",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
@@ -40,7 +40,7 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
     galSub: "定番、準定番、珍景。気になるカードを開いてみてください。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fClassic: "定番", fNotable: "準定番", fCurious: "珍景",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerReferences: "車窓リンク集",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
@@ -58,7 +58,7 @@ const MSG = {
     faqLinkGallery: "車窓図鑑を見る",
     faqQEnglish: "英語でも使えますか？",
     faqAEnglish: "ページ上部のENボタンで英語表示に切り替えられます。海外から来た人にも、富士山の見える席側やタイミングが伝わるようにしています。",
-    seatE: "E席・富士山側", seatA: "A席・海側",
+    seatE: "E席・山側", seatA: "A席・海側",
     catClassic: "定番", catNotable: "準定番", catCurious: "珍景",
     confCheck: "裏取り中",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
@@ -97,7 +97,7 @@ const MSG = {
     showNote: "25 real-photo spots included. Next, see when and which side they appear from your train.",
     estimateTag: "Estimate", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
-    seatTipNote: "Seat side appears on each card. You can browse Fuji-side and sea-side views together.",
+    seatTipNote: "Seat side appears on each card. You can browse mountain-side and sea-side views together.",
     nextupLabel: "NEXT VIEW",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
@@ -108,7 +108,7 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
     galSub: "Classics, notable views, and curious finds. Open any card that catches your eye.",
     morePhotos: "More photos",
-    fAll: "All", fClassic: "Classic", fNotable: "Notable", fCurious: "Curious",
+    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerReferences: "Window links",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
@@ -126,7 +126,7 @@ const MSG = {
     faqLinkGallery: "Browse the field guide",
     faqQEnglish: "Can I use it in English?",
     faqAEnglish: "Yes. Use the EN button at the top of the page to switch the app to English.",
-    seatE: "Seat E · Fuji side", seatA: "Seat A · Sea side",
+    seatE: "Seat E · Mountain side", seatA: "Seat A · Sea side",
     catClassic: "Classic", catNotable: "Notable", catCurious: "Curious",
     confCheck: "verifying",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
@@ -172,7 +172,12 @@ const t = (key, ...args) => {
 };
 function track(eventName, params = {}) {
   if (window.MADO_ANALYTICS_DISABLED) return;
-  if (typeof window.gtag === "function") window.gtag("event", eventName, params);
+  const payload = {
+    language: lang,
+    page_context: document.body?.dataset?.page || "home",
+    ...params,
+  };
+  if (typeof window.gtag === "function") window.gtag("event", eventName, payload);
 }
 function eventSafeId(id) {
   return String(id || "unknown").toLowerCase().replace(/[^a-z0-9]+/g, "_").replace(/^_+|_+$/g, "");
@@ -180,10 +185,25 @@ function eventSafeId(id) {
 function spotEventName(prefix, spotId) {
   return `${prefix}_${eventSafeId(spotId)}`.slice(0, 40);
 }
+function spotAnalyticsParams(spot, source, extra = {}) {
+  if (!spot) return { source, ...extra };
+  return {
+    spot_id: spot.id,
+    spot_name_ja: spot.ja?.name || spot.id,
+    spot_name_en: spot.en?.name || spot.id,
+    spot_category: spot.category || "unknown",
+    spot_side: spot.side || "unknown",
+    spot_area_ja: spot.ja?.area || "",
+    spot_area_en: spot.en?.area || "",
+    source,
+    ...extra,
+  };
+}
 
 /* ---------- helpers ---------- */
 const REF = Object.fromEntries(ROUTE.refStations.map((s) => [s.id, s.min]));
 const STATION = Object.fromEntries(ROUTE.refStations.map((s) => [s.id, s]));
+const TIMETABLE_STATION = Object.fromEntries((window.SHINKANSEN_TIMETABLE?.stations || []).map((s) => [s.id, s]));
 
 function toMin(hhmm) { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; }
 function minToClock(m) {
@@ -276,6 +296,11 @@ function catBadge(spot) {
 function confBadge(spot) {
   return spot.confidence === "needs-check" ? `<span class="badge badge-check">${t("confCheck")}</span>` : "";
 }
+function stationLabel(id) {
+  const station = STATION[id] || TIMETABLE_STATION[id];
+  if (!station) return id;
+  return lang === "ja" ? station.ja || station.en || id : station.en || station.ja || id;
+}
 function mapHref(spot) {
   if (!spot.map) return "";
   if (spot.map.lat != null && spot.map.lng != null) return `https://www.google.com/maps/search/?api=1&query=${spot.map.lat},${spot.map.lng}`;
@@ -294,15 +319,19 @@ function compactCreditLabel(label) {
 function escapeAttr(value) {
   return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
 }
-function photoCreditHTML(spot) {
+function photoCreditHTML(spot, options = {}) {
   if (!spot.photoCredit) return "";
+  const showNote = options.showNote !== false;
   const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
   const isMichikusa = String(label).toLowerCase() === "michikusa";
   const text = isMichikusa ? spot.photoCredit.date : compactCreditLabel(label);
+  const note = showNote ? spot.photoCredit.note?.[lang] || spot.photoCredit.note?.ja || spot.photoCredit.note?.en || "" : "";
   if (!text) return "";
-  return spot.photoCredit.url
-    ? `<figcaption class="photo-credit"><a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer">${text}</a></figcaption>`
-    : `<figcaption class="photo-credit">${text}</figcaption>`;
+  const source = spot.photoCredit.url
+    ? `<a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer">${text}</a>`
+    : text;
+  const noteHTML = note ? `<span class="photo-note">${escapeAttr(note)}</span>` : "";
+  return `<figcaption class="photo-credit"><span class="photo-credit-source">${source}</span>${noteHTML}</figcaption>`;
 }
 function photoMetaHTML(photo) {
   if (!photo) return "";
@@ -316,6 +345,9 @@ function photoMetaHTML(photo) {
   const creditHTML = source ? `<span class="photo-credit-source">${source}</span>` : "";
   const noteHTML = note ? `<span class="photo-note">${escapeAttr(note)}</span>` : "";
   return creditHTML || noteHTML ? `<figcaption class="photo-credit">${creditHTML}${noteHTML}</figcaption>` : "";
+}
+function escapeHTML(value) {
+  return String(value ?? "").replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char]));
 }
 function spotReferencesHTML(spot) {
   const refs = spot.references || [];
@@ -339,9 +371,9 @@ function showCreditHTML(spot) {
     : text;
   return `<small class="show-credit">${body}</small>`;
 }
-function spotImageHTML(spot, label, className = "spot-photo", figureAttrs = "") {
+function spotImageHTML(spot, label, className = "spot-photo", figureAttrs = "", options = {}) {
   if (!spot.image) return "";
-  return `<figure class="photo-figure" ${figureAttrs}><img class="${className}" loading="lazy" src="${spot.image}" alt="${escapeAttr(label)}">${photoCreditHTML(spot)}</figure>`;
+  return `<figure class="photo-figure" ${figureAttrs}><img class="${className}" loading="lazy" src="${spot.image}" alt="${escapeAttr(label)}">${photoCreditHTML(spot, options)}</figure>`;
 }
 function spotMediaItems(spot) {
   const L = spot[lang];
@@ -387,13 +419,16 @@ function spotDetailModalHTML(spot) {
           <h2 id="spot-modal-title">${L.name}</h2>
           <div class="tl-meta">${seatBadge(spot)}${catBadge(spot)}${confBadge(spot)}</div>
         </div>
-        ${mapLinkHTML(spot, "spot-modal-map")}
       </div>
       <div class="spot-modal-content">
         ${heroMedia}
         <div class="spot-modal-copy">
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
+          <div class="spot-modal-actions">
+            <button type="button" class="spot-btn spot-modal-stamp" data-stamp="${spot.id}">${stamps[spot.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+            ${mapLinkHTML(spot, "spot-modal-map")}
+          </div>
           ${spotReferencesHTML(spot)}
         </div>
       </div>
@@ -410,6 +445,7 @@ function applyLang() {
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
   renderStampboard();
   renderGallery();
+  updateGalleryFilterButtons();
   renderShowcase();
   renderBoardSelect();
   const tl = $("#timelineSection");
@@ -421,13 +457,13 @@ function applyLang() {
 /* ---------- showcase（まず何が見えるかを見せる） ---------- */
 const showcaseSpotIds = [
   "fuji",
-  "odawara",
   "hamanako",
+  "odawara",
+  "toji",
   "nagoya-station-skyline",
   "kirin-beer-factory",
   "kiyosu",
   "solar-ark",
-  "toji",
 ];
 
 function renderShowcase() {
@@ -441,13 +477,38 @@ function renderShowcase() {
     const media = sp.image
       ? `<img loading="lazy" src="${sp.image}" alt="${L.name}">`
       : sceneSVG(sp.scene);
-    return `<button type="button" class="show-card" data-show-spot="${sp.id}" aria-label="${t("more")}: ${L.name}">
-      <div class="show-media">${media}</div>
-      <span class="show-caption"><strong>${sp.icon} ${L.name}</strong>${showCreditHTML(sp)}<span>${L.hook}</span><em>${t("more")}</em></span>
-    </button>`;
+    return `<div class="show-card" data-show-spot="${sp.id}" role="button" tabindex="0" aria-label="${t("more")}: ${L.name}">
+        <div class="show-media">${media}</div>
+        <span class="show-caption"><strong>${sp.icon} ${L.name}</strong>${showCreditHTML(sp)}<span>${L.hook}</span></span>
+      </div>`;
   }).join("");
+  const ctaLabel = lang === "ja" ? "もっと見る" : "More";
+  const ctaSub = lang === "ja" ? "この区間の景色を一覧で見る" : "Browse every view in this stretch";
+  const remaining = Math.max(0, SPOTS.length - showcaseSpotIds.length);
+  rail.insertAdjacentHTML("beforeend", `
+    <a class="show-card show-card-cta" href="#gallery" aria-label="${ctaLabel}: ${t("galTitle")}">
+      <div class="show-media show-media-cta" aria-hidden="true">
+        <div class="show-cta-badge">
+          <span class="show-cta-arrow">→</span>
+        </div>
+        <span class="show-cta-count">+${remaining} spots</span>
+      </div>
+      <span class="show-caption">
+        <strong>${ctaLabel}</strong>
+        <span>${ctaSub}</span>
+      </span>
+    </a>`);
   rail.querySelectorAll("[data-show-spot]").forEach((card) => {
-    card.addEventListener("click", () => openSpotModal(card.dataset.showSpot, "showcase"));
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      if (event.target.closest("[data-stamp]")) return;
+      openSpotModal(card.dataset.showSpot, "showcase");
+    });
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      event.preventDefault();
+      openSpotModal(card.dataset.showSpot, "showcase");
+    });
   });
 }
 
@@ -528,8 +589,6 @@ const TRAIN_NAMES = { Nozomi: { ja: "のぞみ", en: "Nozomi" }, Hikari: { ja: "
 
 function trainLabel(tr) {
   const name = (TRAIN_NAMES[tr.type] || { ja: tr.type, en: tr.type })[lang];
-  const destSt = STATION[tr.destination];
-  const dest = destSt ? destSt[lang] : tr.destination;
   return `${name}${tr.number}`;
 }
 
@@ -538,18 +597,16 @@ function showTrainResults() {
   const found = findTrains(depMin);
   const box = $("#trainResults");
   box.hidden = false;
-  if (!found.length) {
-    box.innerHTML = `<p class="train-none">${t("trainNone")}</p>`;
-    return;
-  }
-  box.innerHTML = `<p class="train-pick-note">${t("trainPickNote")}</p>` + found.map(({ tr, dep }, i) => {
-    const destSt = STATION[tr.destination];
-    const dest = destSt ? destSt[lang] : tr.destination;
-    return `<button type="button" class="train-chip" data-train="${i}">
-      <strong>${trainLabel(tr)}</strong>
-      <span>${minToClock(dep)} ${t("dep")} → ${dest}</span>
-    </button>`;
-  }).join("");
+    if (!found.length) {
+      box.innerHTML = `<p class="train-none">${t("trainNone")}</p>`;
+      return;
+    }
+    box.innerHTML = `<p class="train-pick-note">${t("trainPickNote")}</p>` + found.map(({ tr, dep }, i) => {
+      return `<button type="button" class="train-chip" data-train="${i}">
+        <strong>${trainLabel(tr)}</strong>
+        <span>${minToClock(dep)} ${t("dep")} → ${stationLabel(tr.destination)}</span>
+      </button>`;
+    }).join("");
   box.querySelectorAll("[data-train]").forEach((btn) => {
     btn.addEventListener("click", () => {
       const { tr, dep } = found[Number(btn.dataset.train)];
@@ -580,9 +637,14 @@ function renderTimeline() {
   if (!journey) return;
   const base = t(direction === "west" ? "tlTitleWest" : "tlTitleEast");
   const tag = journey.mode === "train"
-    ? `${trainLabel(journey.train)} · ${t("trainTag")}`
-    : t("estimateTag");
-  $("#tlTitle").textContent = `${base} — ${tag}`;
+    ? timelineTrainTagHTML(journey.train)
+    : `<span class="tl-title-estimate">${escapeHTML(t("estimateTag"))}</span>`;
+  $("#tlTitle").innerHTML = `
+    <span class="tl-title-line">
+      <span class="tl-title-base">${escapeHTML(base)}</span>
+      <span class="tl-title-divider" aria-hidden="true">—</span>
+    </span>
+    ${tag}`;
   const items = [];
   journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, st: s }));
   journey.spots.forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
@@ -599,30 +661,44 @@ function renderTimeline() {
   bindSpotEvents($("#timeline"));
 }
 
+function timelineTrainTagHTML(train) {
+  const type = (TRAIN_NAMES[train?.type] || { ja: train?.type || "", en: train?.type || "" })[lang];
+  const number = escapeHTML(train?.number || "");
+  return `
+    <span class="tl-title-train">
+      <span class="tl-title-train-main">
+        <span class="tl-title-train-kind">${escapeHTML(type)}</span>
+        <span class="tl-title-train-number">${number}</span>
+      </span>
+      <span class="tl-title-train-mode">${escapeHTML(t("trainTag"))}</span>
+    </span>`;
+}
+
 function spotItemHTML(sp, clock) {
   const L = sp[lang];
-  const time = clock == null ? `<span class="tl-time-big">✦</span>` : `<span class="tl-time-big">${minToClock(clock)}</span>`;
-  const stamped = stamps[sp.id];
+  const time = clock == null
+    ? `<span class="tl-time-big">✦</span>`
+    : `<span class="tl-time-big">${minToClock(clock)}<span class="tl-time-suffix">頃</span></span>`;
   const thumb = sp.image
-    ? `<button type="button" class="tl-thumb" data-more aria-label="${t("more")}: ${L.name}"><img loading="lazy" src="${sp.image}" alt=""></button>`
+    ? `<div class="tl-thumb" aria-hidden="true"><img loading="lazy" src="${sp.image}" alt=""></div>`
     : "";
   return `
-  <li class="tl-item" data-spot="${sp.id}">
-    <div class="tl-card">
-      <div class="tl-card-main">
-        <div class="tl-copy">
-          <div class="tl-top">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
-          <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${confBadge(sp)}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
-          <p class="tl-hook">${L.hook}</p>
-          <div class="tl-actions">
-            <button type="button" class="spot-btn${stamped ? " stamped" : ""}" data-stamp="${sp.id}">${stamped ? t("spotBtnDone") : t("spotBtn")}</button>
-            <button type="button" class="more-btn" data-more>${t("more")}</button>
+      <li class="tl-item" data-spot="${sp.id}">
+        <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
+          <div class="tl-card-main">
+            <div class="tl-copy">
+              <div class="tl-top">
+                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
+              </div>
+              <div class="spot-card-footer">
+                <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
+                <button type="button" class="spot-btn spot-card-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+              </div>
+            </div>
+            ${thumb}
           </div>
         </div>
-        ${thumb}
-      </div>
-    </div>
-  </li>`;
+      </li>`;
 }
 
 function findSpotById(id) {
@@ -638,14 +714,12 @@ function openSpotModal(spotId, source = "unknown") {
   document.body.appendChild(modal);
   document.body.classList.add("modal-open");
   activeSpotModal = { element: modal, spotId, source };
-  track("spot_detail_open", { spot_id: spotId, source });
-  track(spotEventName("spot_open", spotId), { spot_id: spotId, source });
+  track("spot_detail_open", spotAnalyticsParams(spot, source));
+  track(spotEventName("spot_open", spotId), spotAnalyticsParams(spot, source));
   modal.querySelector(".spot-modal-panel")?.focus();
+  bindSpotEvents(modal);
   modal.querySelectorAll("[data-modal-close]").forEach((el) => {
     el.addEventListener("click", () => closeSpotModal("button"));
-  });
-  modal.querySelectorAll("[data-map]").forEach((link) => {
-    link.addEventListener("click", () => track("map_opened", { spot_id: link.dataset.map, source: "spot_modal" }));
   });
   bindSpotModalGallery(modal, spot);
 }
@@ -663,17 +737,18 @@ function bindSpotModalGallery(modal, spot) {
       image.alt = item.alt;
       credit.innerHTML = item.creditHTML;
       modal.querySelectorAll("[data-photo-index]").forEach((thumb) => thumb.classList.toggle("active", thumb === button));
-      track("spot_photo_selected", { spot_id: spot.id, photo_index: index });
+      track("spot_photo_selected", spotAnalyticsParams(spot, "spot_modal", { photo_index: index }));
     });
   });
 }
 function closeSpotModal(reason = "close") {
   if (!activeSpotModal) return;
   const { element, spotId, source } = activeSpotModal;
+  const spot = findSpotById(spotId);
   element.remove();
   document.body.classList.remove("modal-open");
   activeSpotModal = null;
-  if (reason !== "replace") track("spot_detail_close", { spot_id: spotId, source, reason });
+  if (reason !== "replace") track("spot_detail_close", spotAnalyticsParams(spot, source, { reason }));
 }
 
 function openQuickModal(source = "hero") {
@@ -717,24 +792,33 @@ function closeQuickModal(reason = "close") {
 
 function bindSpotEvents(root) {
   root.querySelectorAll("[data-stamp]").forEach((btn) => {
-    btn.addEventListener("click", () => toggleStamp(btn.dataset.stamp));
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleStamp(btn.dataset.stamp);
+    });
   });
   root.querySelectorAll("[data-more]").forEach((btn) => {
-    btn.addEventListener("click", () => {
+    btn.addEventListener("click", (event) => {
+      if (event.target.closest("a")) return;
+      if (event.target.closest("[data-stamp]")) return;
+      const item = btn.closest(".tl-item, .gal-card");
+      const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
+      openSpotModal(item?.dataset.spot, source);
+    });
+    btn.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.target.closest("[data-stamp]")) return;
+      event.preventDefault();
       const item = btn.closest(".tl-item, .gal-card");
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
       openSpotModal(item?.dataset.spot, source);
     });
   });
-  root.querySelectorAll("[data-card-photo]").forEach((figure) => {
-    figure.addEventListener("click", (event) => {
-      if (event.target.closest("a")) return;
-      const item = figure.closest(".gal-card");
-      openSpotModal(item?.dataset.spot, "gallery_photo");
-    });
-  });
   root.querySelectorAll("[data-map]").forEach((link) => {
-    link.addEventListener("click", () => track("map_opened", { spot_id: link.dataset.map }));
+    link.addEventListener("click", () => track("map_opened", spotAnalyticsParams(findSpotById(link.dataset.map), "inline_map")));
+  });
+  root.querySelectorAll(".tl-card-button").forEach((card) => {
+    card.addEventListener("click", () => openSpotModal(card.closest(".tl-item")?.dataset.spot, "timeline"));
   });
 }
 
@@ -854,7 +938,7 @@ function registerServiceWorker() {
 }
 
 /* ---------- gallery ---------- */
-let galFilter = "all";
+const activeGalleryFilters = new Set();
 const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
 const discoverySpotPriority = {
   fuji: 0,
@@ -869,34 +953,87 @@ function discoverySpotOrder(a, b) {
   const priorityB = discoverySpotPriority[b.id] ?? 99;
   return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
 }
+const galleryTagGroups = {
+  nature: new Set(["fuji", "left-fuji", "odawara", "hamanako", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
+  history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
+  industry: new Set(["putiputi-sign", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
+  city: new Set(["hinataoka", "nagoya-station-skyline"]),
+};
+const galleryTagOrder = ["seat-a", "seat-e", "classic", "nature", "history", "industry", "city"];
+const galleryTagLabelKeys = {
+  "seat-a": "fSeatA",
+  "seat-e": "fSeatE",
+  classic: "fClassic",
+  nature: "fNature",
+  history: "fHistory",
+  industry: "fIndustry",
+  city: "fCity",
+};
+function galleryTags(spot) {
+  const tags = new Set();
+  if (spot.side === "A" || spot.sideLabel?.ja?.includes("A席")) tags.add("seat-a");
+  if (spot.side === "E" || spot.sideLabel?.ja?.includes("E席")) tags.add("seat-e");
+  if (spot.category === "classic") tags.add("classic");
+  Object.entries(galleryTagGroups).forEach(([tag, ids]) => {
+    if (ids.has(spot.id)) tags.add(tag);
+  });
+  return tags;
+}
+function galleryTagBadgesHTML(spot) {
+  const tags = galleryTags(spot);
+  return galleryTagOrder
+    .filter((tag) => tags.has(tag))
+    .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
+    .join("");
+}
+function matchesGalleryFilters(spot) {
+  if (!activeGalleryFilters.size) return true;
+  const tags = galleryTags(spot);
+  const selectedSeats = [...activeGalleryFilters].filter((filter) => filter === "seat-a" || filter === "seat-e");
+  const selectedThemes = [...activeGalleryFilters].filter((filter) => filter !== "seat-a" && filter !== "seat-e");
+  const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
+  const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
+  return seatMatch && themeMatch;
+}
+function updateGalleryFilterButtons() {
+  const hasFilters = activeGalleryFilters.size > 0;
+  $$("#filterbar button[data-filter]").forEach((button) => {
+    const filter = button.dataset.filter;
+    const active = filter === "all" ? !hasFilters : activeGalleryFilters.has(filter);
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+}
 
 function renderGallery() {
   const grid = $("#galleryGrid");
   if (!grid) return;
   grid.innerHTML = SPOTS
-    .filter((sp) => galFilter === "all" || sp.category === galFilter)
-    .slice()
-    .sort(discoverySpotOrder)
-    .map((sp) => {
-      const L = sp[lang];
-      const media = sp.image
-        ? spotImageHTML(sp, L.name, "gal-photo", "data-card-photo")
-        : sceneSVG(sp.scene);
-      return `
-      <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}">
-        ${media}
-        <div class="gal-body">
-          <div class="gal-top"><span class="tl-icon">${sp.icon}</span><span class="gal-name">${L.name}</span></div>
-          <p class="gal-area">${L.area}</p>
-          <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${confBadge(sp)}</div>
-          <p class="gal-hook">${L.hook}</p>
-          <div class="tl-actions">
-            <button type="button" class="spot-btn${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
-            <button type="button" class="more-btn" data-more>${t("more")}</button>
-          </div>
-        </div>
-      </div>`;
-    }).join("");
+      .filter(matchesGalleryFilters)
+      .slice()
+      .sort(discoverySpotOrder)
+      .map((sp) => {
+        const L = sp[lang];
+        const media = sp.image
+          ? spotImageHTML(sp, L.name, "gal-photo", "", { showNote: false })
+          : sceneSVG(sp.scene);
+        return `
+          <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}" data-more role="button" tabindex="0" aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
+            <div class="gal-media-wrap">
+              ${media}
+            </div>
+            <div class="gal-body">
+              <div class="gal-top">
+                <div class="gal-top-left"><span class="tl-icon">${sp.icon}</span><span class="gal-name">${L.name}</span></div>
+                <button type="button" class="spot-btn spot-card-stamp gal-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+              </div>
+              <p class="gal-area">${L.area}</p>
+              <div class="spot-card-footer">
+                <div class="tl-meta gal-tags">${galleryTagBadgesHTML(sp)}</div>
+              </div>
+            </div>
+          </div>`;
+      }).join("");
   bindSpotEvents(grid);
 }
 
@@ -929,9 +1066,16 @@ function init() {
     const target = event.target instanceof Element ? event.target : null;
     const button = target?.closest("button[data-filter]");
     if (!button) return;
-    galFilter = button.dataset.filter;
-    $$("#filterbar button").forEach((b) => b.classList.toggle("active", b === button));
-    track("gallery_filtered", { filter: galFilter });
+    const filter = button.dataset.filter;
+    if (filter === "all") {
+      activeGalleryFilters.clear();
+    } else if (activeGalleryFilters.has(filter)) {
+      activeGalleryFilters.delete(filter);
+    } else {
+      activeGalleryFilters.add(filter);
+    }
+    updateGalleryFilterButtons();
+    track("gallery_filtered", { filters: [...activeGalleryFilters].join(",") || "all" });
     renderGallery();
   });
   $("#cardBtn").addEventListener("click", drawMemoryCard);

@@ -3,8 +3,8 @@
  * data.js — 車窓スポットデータ（バイリンガル）
  *
  * minutesFromTokyo: のぞみ基準の東京発からの目安分数（東京→新大阪 約147分）
- * side: "E" = 富士山側（北側・E席） / "A" = 海側（南側・A席）
- *       東海道新幹線はどちら向きでもE席が富士山側になる
+ * side: "E" = 山側（北側・E席） / "A" = 海側（南側・A席）
+ *       東海道新幹線はどちら向きでもE席が山側になる
  * category: "classic"（定番） / "notable"（準定番） / "curious"（珍景）
  * confidence: "verified"（実見・写真あり） / "source-backed"（出典あり） / "needs-check"（裏取り中）
  * ========================================================= */
@@ -396,9 +396,9 @@ const SPOTS = [
     en: { name: "Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "The train runs over the water.", story: "After Hamamatsu, Lake Hamana spreads out on both sides of the train. It is not only a Seat E view; Seat A also gets water, bridges, and open sky. On a sunny day, the light off the water is one of the most journey-like moments on the line. Look for the eel-farming rafts." },
     minutesFromTokyo: 73, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "classic", confidence: "verified", durationSec: 150, scene: "lake",
     image: "images/20260505_hamanako_design_photosy.jpg",
-      photoCredit: { ja: "@Design_photoSY", en: "@Design_photoSY", url: "https://x.com/Design_photoSY/status/2051484905377521740" },
-      photos: [
-        {
+    photoCredit: { ja: "@Design_photoSY", en: "@Design_photoSY", url: "https://x.com/Design_photoSY/status/2051484905377521740" },
+    photos: [
+      {
         src: "images/20260505_hamanako_design_photosy_2.jpg",
         alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
         credit: { ja: "@Design_photoSY", en: "@Design_photoSY" },
@@ -431,7 +431,14 @@ const SPOTS = [
         alt: { ja: "新幹線から一瞬見える弁天島の赤鳥居", en: "Bentenjima red torii briefly visible from the Shinkansen" },
         credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517074141.html",
-        note: { ja: "E席（山側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat E, mountain side: a red torii appears briefly between buildings" },
+        note: { ja: "A席（海側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat A, sea side: a red torii appears briefly between buildings" },
+      },
+      {
+        src: "images/20260516_hamanako_torii_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える弁天島の赤鳥居", en: "Bentenjima red torii from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-16",
+        note: { ja: "A席（海側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat A, sea side: a red torii appears briefly between buildings" },
       },
     ],
     references: [REFERENCES.hamanakoTourism, REFERENCES.hamanakoToriiBlog],
@@ -645,7 +652,20 @@ const SPOTS = [
     en: { name: "Omi Fuji", area: "Maibara → Kyoto", hook: "Another Fuji, before Kyoto.", story: "After Maibara, look from Seat A for Mt. Mikami, nicknamed Omi Fuji for its clean triangular shape. When the fields are wet, it becomes a window-seat reflection: a tiny upside-down Fuji. Start looking a little early." },
     minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "notable", confidence: "needs-check", durationSec: 90, scene: "mountain",
     image: "images/20250523_omi_fuji_kawasan3.jpg",
-    photoCredit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3", url: "https://x.com/kawasan3/status/1925668108024320321" },
+    photoCredit: {
+      ja: "かわさん @kawasan3",
+      en: "Kawasan @kawasan3",
+      url: "https://x.com/kawasan3/status/1925668108024320321",
+      note: { ja: "水田に映る逆さ富士", en: "Upside-down Fuji reflected in a rice field" },
+    },
+    photos: [
+      {
+        src: "images/20250523_omi_fuji_wheat_kawasan3.jpg",
+        alt: { ja: "近江富士の前が小麦色になった景色", en: "Omi Fuji with golden wheat in front" },
+        credit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3" },
+        note: { ja: "近江富士の前が小麦色", en: "The land in front of Omi Fuji turns wheat-colored" },
+      },
+    ],
     references: [REFERENCES.omiFujiPark],
     map: { lat: 35.0479, lng: 136.0450, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
   },
@@ -655,14 +675,14 @@ const SPOTS = [
     ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "川に架かる、京の手前の橋。", story: "京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えることがあります。日本書紀にも登場する交通の要衝で、古くから「唐橋を制するものは天下を制する」と言われた橋。急がば回れの由来にも重なる、京都目前の一瞬です。" },
     en: { name: "Seta no Karahashi Bridge", area: "Maibara → Kyoto", hook: "A bridge before Kyoto.", story: "A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. It is an old strategic crossing, even appearing in early Japanese chronicles, and is linked to the idea behind the proverb 'more haste, less speed.' It passes quickly, just before Kyoto." },
     minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 45, scene: "lake",
-    image: "images/20250820_seta_karahashi_letus10.jpg",
-    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/517709224.html" },
+    image: "images/20250909_seta_karahashi_c91256633.jpg",
+    photoCredit: { ja: "@C91256633", en: "@C91256633", url: "https://x.com/C91256633/status/1965377316537925644" },
     photos: [
       {
-        src: "images/20250909_seta_karahashi_c91256633.jpg",
+        src: "images/20250820_seta_karahashi_letus10.jpg",
         alt: { ja: "晴れた日の瀬田の唐橋", en: "Seta no Karahashi Bridge on a clear day" },
-        credit: { ja: "@C91256633", en: "@C91256633" },
-        sourceUrl: "https://x.com/C91256633/status/1965377316537925644",
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/517709224.html",
       },
     ],
     references: [REFERENCES.setaKarahashi],
