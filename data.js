@@ -454,6 +454,20 @@ const SPOTS = [
         note: { ja: "E席（山側）から見える浜名湖", en: "Lake Hamana from Seat E, mountain side" },
       },
       {
+        src: "images/190103_hamanako_fuji_sentokia.jpg",
+        alt: { ja: "浜名湖から見える富士山", en: "Mt. Fuji seen from Lake Hamana" },
+        credit: { ja: "@sentokia", en: "@sentokia" },
+        sourceUrl: "https://x.com/sentokia/status/1080626377701748737",
+        note: { ja: "サンマリンブリッジの右奥に小さいですが富士山が見えます", en: "Mt. Fuji is small, but visible beyond the right side of Sun Marine Bridge" },
+      },
+      {
+        src: "images/250111_hamanako_fuji_proboffin.jpg",
+        alt: { ja: "浜名湖から見える富士山", en: "Mt. Fuji seen from Lake Hamana" },
+        credit: { ja: "@ProBoffin", en: "@ProBoffin" },
+        sourceUrl: "https://x.com/ProBoffin/status/1877874599360389543",
+        note: { ja: "浜名湖からの富士山！", en: "Mt. Fuji from Lake Hamana!" },
+      },
+      {
         src: "images/20260516_hamanako_seaside_1_michikusa.jpg",
         alt: { ja: "新幹線のA席側から見える浜名湖", en: "Lake Hamana from Seat A" },
         credit: { ja: "michikusa", en: "michikusa" },
