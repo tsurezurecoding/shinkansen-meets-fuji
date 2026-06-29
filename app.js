@@ -366,9 +366,10 @@ function photoCreditHTML(spot, options = {}) {
 }
 function photoMetaHTML(photo) {
   if (!photo) return "";
+  // Date-only gallery photos are Michikusa-owned; third-party photos must keep credit/sourceUrl.
   const credit = photo.credit?.[lang] || photo.credit?.ja || photo.credit?.en || "";
   const isMichikusa = String(credit).toLowerCase() === "michikusa";
-  const creditText = isMichikusa ? photo.date : (credit ? compactCreditLabel(credit) : "");
+  const creditText = isMichikusa || (!credit && photo.date) ? photo.date : (credit ? compactCreditLabel(credit) : "");
   const note = photo.note?.[lang] || photo.note?.ja || photo.note?.en || "";
   const source = photo.sourceUrl
     ? `<a href="${photo.sourceUrl}" target="_blank" rel="noopener noreferrer">${creditText}</a>`
