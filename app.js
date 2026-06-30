@@ -55,7 +55,7 @@ const MSG = {
     medalTargets: "対象スポット",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "26の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
+    galSub: "28の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
@@ -136,7 +136,7 @@ const MSG = {
     medalTargets: "Included views",
     btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Browse all 26 window views. Tap “Spotted!” to record what you saw.",
+    galSub: "Browse all 28 window views. Tap “Spotted!” to record what you saw.",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
@@ -1076,8 +1076,8 @@ function discoverySpotOrder(a, b) {
 const galleryTagGroups = {
   nature: new Set(["fuji", "left-fuji", "odawara", "hamanako", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
-  industry: new Set(["putiputi-sign", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
-  city: new Set(["hinataoka", "nagoya-station-skyline"]),
+  industry: new Set(["putiputi-sign", "727-board", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
+  city: new Set(["tokyo-tower", "hinataoka", "nagoya-station-skyline"]),
 };
 const galleryTagOrder = ["seat-a", "seat-e", "classic", "nature", "history", "industry", "city"];
 const galleryTagLabelKeys = {

@@ -48,6 +48,10 @@ const REFERENCES = {
     label: { ja: "楽待: 日向岡の住宅地", en: "Rakumachi: Hinataoka hillside homes (Japanese only)" },
     url: "https://www.rakumachi.jp/news/column/339459",
   },
+  tokyoTowerBlog: {
+    label: { ja: "@letus10: 東京タワー車窓記事", en: "@letus10: Tokyo Tower window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/507672955.html",
+  },
   atami: {
     label: { ja: "Wikipedia: 熱海", en: "Wikipedia: Atami" },
     url: {
@@ -182,6 +186,36 @@ const REFERENCES = {
 
 const SPOTS = [
   {
+    id: "tokyo-tower",
+    icon: "🗼",
+    ja: { name: "東京タワー", area: "東京 → 品川", hook: "東京の空に、赤い塔。", story: "東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に東京タワーが見えることがあります。旅の序盤、都市の景色の中に赤い塔がちらりと立つ。見えたら、東海道新幹線の車窓が始まった合図です。" },
+    en: { name: "Tokyo Tower", area: "Tokyo → Shinagawa", hook: "A red tower in the Tokyo skyline.", story: "In the first few minutes after leaving Tokyo Station for Shinagawa, Tokyo Tower can appear between the buildings on the Seat E side. It is a quick urban opening shot: the red tower slips into view, and the Tokaido Shinkansen window story begins." },
+    minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 35, scene: "hills",
+    image: "images/20250111_tokyo_tower_letus10.jpg",
+    photoCredit: {
+      ja: "@letus10 / 新幹線の車窓から",
+      en: "@letus10 / Shinkansen window blog",
+      url: "https://cotetu.seesaa.net/article/507672955.html",
+      note: { ja: "ビルの合間に見える東京タワー", en: "Tokyo Tower between the buildings" },
+    },
+    photos: [
+      {
+        src: "images/20260629_tokyo_tower_night_michikusa.jpg",
+        alt: { ja: "夜の新幹線から見える東京タワー", en: "Tokyo Tower at night from the Shinkansen" },
+        date: "2026-06-29",
+        note: { ja: "夜の街に、東京タワー", en: "Tokyo Tower in the night city" },
+      },
+      {
+        src: "images/20260629_tokyo_tower_night_2_michikusa.jpg",
+        alt: { ja: "夜のビルの合間に見える東京タワー", en: "Tokyo Tower between buildings at night" },
+        date: "2026-06-29",
+        note: { ja: "ビルの合間に光る塔", en: "A lit tower between buildings" },
+      },
+    ],
+    references: [REFERENCES.tokyoTowerBlog],
+    map: { lat: 35.65858, lng: 139.74543, ja: "東京タワー", en: "Tokyo Tower" },
+  },
+  {
     id: "hinataoka",
     icon: "🏘️",
     ja: { name: "日向岡の街並み", area: "新横浜 → 小田原", hook: "斜面いっぱいに、おなじ屋根がならぶ。", story: "相模川を渡ってしばらくすると、丘の斜面にそろって並ぶ住宅地が一瞬あらわれます。名所ではありません。でも、知っている人だけが「あ、来た」と窓の外を見る——そういう車窓です。" },
@@ -229,6 +263,30 @@ const SPOTS = [
       },
     ],
     map: { ja: "新横浜 小田原 プチプチ 看板", en: "PUTIPUTI sign between Shin-Yokohama and Odawara" },
+  },
+  {
+    id: "727-board",
+    icon: "7️⃣",
+    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市用田付近）", hook: "田んぼの中に、727。", story: "新横浜を出て少しすると、藤沢市用田付近のA席側に、727 COSMETICSの白い看板が近接して見える区間があります。片方は、きぬた歯科の黄色い看板の隣。大きな名所ではありません。でも、東海道新幹線に何度も乗る人ほど気になってしまう、沿線ならではの小さな発見です。あなたはいくつ見つけられるでしょう。" },
+    en: { name: "727 Cosmetics Signs", area: "Shin-Yokohama → Odawara, near Yoda in Fujisawa", hook: "727 in the fields.", story: "A little after Shin-Yokohama, near Yoda in Fujisawa, white 727 COSMETICS signs appear close together on the Seat A side. One stands beside a bright yellow Kinuta Dental sign. They are not famous landmarks, but they are exactly the kind of trackside discovery that repeat Shinkansen riders start to notice. How many can you spot?" },
+    minutesFromTokyo: 25, side: "A", category: "curious", confidence: "verified", durationSec: 30, scene: "hills",
+    image: "images/20260629_727_board_1_4x_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-06-29",
+      note: { ja: "のぞみ99号・A席側、6:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, photographed at 6:18 near Yoda, Fujisawa." },
+    },
+    photos: [
+      {
+        src: "images/20260629_727_board_2_2x_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "近接して現れる別の727看板。きぬた歯科看板の隣", en: "Another nearby 727 sign beside a Kinuta Dental sign." },
+      },
+    ],
+    map: { ja: "神奈川県藤沢市用田 727 COSMETICS 看板", en: "Yoda Fujisawa 727 COSMETICS sign" },
   },
   {
     id: "odawara",
@@ -385,6 +443,12 @@ const SPOTS = [
       note: { ja: "ガントリークレーンの合間に見える、停泊中の「ちきゅう」の巨大なデリック", en: "CHIKYU's huge derrick, docked between the gantry cranes" },
     },
     photos: [
+      {
+        src: "images/20260629_shimizu_port_chikyu_morning_michikusa.jpg",
+        alt: { ja: "朝の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU in the morning from the Shinkansen" },
+        date: "2026-06-29",
+        note: { ja: "朝の港に、ちきゅう", en: "CHIKYU in the morning port" },
+      },
       {
         src: "images/20260629_shimizu_port_chikyu_night_michikusa.jpg",
         alt: { ja: "夜の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU at night from the Shinkansen" },
