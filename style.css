@@ -347,6 +347,15 @@ button { font-family: inherit; cursor: pointer; }
 .badge-curious { background: #fbe9df; color: #a6512f; }
 .badge-lucky { background: #fdf3d7; color: #8a6716; }
 .badge-check { background: #f1f1f1; color: #888; }
+.badge-night { background: #20283b; color: #f4f7ff; }
+.badge-lowlight { background: #eef0f5; color: #687386; }
+.tl-item.low-light-limited .tl-card {
+  background: rgba(255,255,255,0.72);
+}
+.tl-thumb-muted {
+  opacity: 0.45;
+  filter: grayscale(0.35);
+}
 .spot-btn {
   border: 1.5px solid var(--accent); background: #fff; color: var(--accent);
   border-radius: 99px; padding: 6px 12px; font-size: 12.5px; font-weight: 700;
@@ -804,6 +813,41 @@ body.modal-open { overflow: hidden; }
 .mem-actions { display: flex; gap: 10px; justify-content: center; margin-top: 26px; flex-wrap: wrap; }
 
 /* ===== Gallery ===== */
+.gallery-modebar {
+  width: min(100%, 420px);
+  margin: 0 auto 20px;
+}
+.gallery-mode-segment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  padding: 0;
+}
+.gallery-modebar button {
+  border: 1.5px solid var(--line);
+  background: #fff;
+  color: var(--ink-soft);
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-size: 14.5px;
+  font-weight: 800;
+  box-shadow: 0 3px 12px rgba(22,32,46,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease, background 0.15s ease;
+}
+.gallery-modebar button:hover { transform: translateY(-1px); box-shadow: 0 5px 16px rgba(22,32,46,0.1); }
+.gallery-modebar button.active {
+  border-color: transparent;
+}
+.gallery-modebar button[data-mode="day"].active {
+  background: linear-gradient(180deg, #fff7da 0%, #ffe9a8 100%);
+  color: #735216;
+  box-shadow: 0 6px 18px rgba(217,164,64,0.22);
+}
+.gallery-modebar button[data-mode="night"].active {
+  background: linear-gradient(180deg, #28324a 0%, #121a2b 100%);
+  color: #f4f7ff;
+  box-shadow: 0 6px 18px rgba(16,28,44,0.24);
+}
 .filterbar { display: flex; gap: 8px; justify-content: center; margin-bottom: 26px; flex-wrap: wrap; }
 .filterbar button {
   border: 1.5px solid var(--line); background: var(--card); color: var(--ink-soft);
@@ -860,6 +904,8 @@ body.modal-open { overflow: hidden; }
 .gal-tag-history { background: #eef0f5; color: #4b5870; }
 .gal-tag-industry { background: #fbe9df; color: #a6512f; }
 .gal-tag-city { background: #eef0f5; color: #4b5870; }
+.gal-tag-day { background: #fff2c7; color: #7b5716; }
+.gal-tag-night { background: #20283b; color: #f4f7ff; }
 .spot-card-stamp {
   flex: 0 0 auto;
   min-width: 96px;

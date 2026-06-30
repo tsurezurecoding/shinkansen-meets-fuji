@@ -57,7 +57,7 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
     galSub: "28の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の写真", fNight: "夜景", fNightPhoto: "夜景写真", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerReferences: "車窓リンク集",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
@@ -78,6 +78,8 @@ const MSG = {
     seatE: "E席・山側", seatA: "A席・海側",
     catClassic: "定番", catNotable: "準定番", catCurious: "珍景",
     confCheck: "裏取り中",
+    nightPhotoAvailable: "夜景あり",
+    lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
     more: "くわしく", less: "とじる", mapLink: "地図で見る",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
@@ -138,7 +140,7 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
     galSub: "Browse all 28 window views. Tap “Spotted!” to record what you saw.",
     morePhotos: "More photos",
-    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
+    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day photos", fNight: "Night", fNightPhoto: "Night photos", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerReferences: "Window links",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
@@ -159,6 +161,8 @@ const MSG = {
     seatE: "Seat E · Mountain side", seatA: "Seat A · Sea side",
     catClassic: "Classic", catNotable: "Notable", catCurious: "Curious",
     confCheck: "verifying",
+    nightPhotoAvailable: "Night view",
+    lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
     more: "More", less: "Close", mapLink: "Open map",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
@@ -185,7 +189,15 @@ let lang = getInitialLang();
 let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
-let stamps = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
+function loadStamps() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+let stamps = loadStamps();
 let liveTimer = null;
 let activeSpotModal = null;
 let activeQuickModal = null;
@@ -407,17 +419,53 @@ function spotImageHTML(spot, label, className = "spot-photo", figureAttrs = "", 
   if (!spot.image) return "";
   return `<figure class="photo-figure" ${figureAttrs}><img class="${className}" loading="lazy" src="${spot.image}" alt="${escapeAttr(label)}">${photoCreditHTML(spot, options)}</figure>`;
 }
+function spotMediaFigureHTML(item, className = "spot-photo") {
+  if (!item?.src) return "";
+  return `<figure class="photo-figure"><img class="${className}" loading="lazy" src="${item.src}" alt="${escapeAttr(item.alt)}">${item.creditHTML}</figure>`;
+}
 function spotMediaItems(spot) {
   const L = spot[lang];
   const items = [];
   if (spot.image) {
-    items.push({ src: spot.image, alt: L.name, creditHTML: photoCreditHTML(spot) });
+    items.push({ src: spot.image, alt: L.name, creditHTML: photoCreditHTML(spot), timeOfDay: spot.timeOfDay || "day" });
   }
   (spot.photos || []).forEach((photo) => {
     const alt = photo.alt?.[lang] || photo.alt?.ja || photo.alt?.en || spot[lang].name;
-    items.push({ src: photo.src, alt, creditHTML: photoMetaHTML(photo) });
+    items.push({ src: photo.src, alt, creditHTML: photoMetaHTML(photo), timeOfDay: photo.timeOfDay || "day" });
   });
   return items;
+}
+function activeTimeOfDayFilter() {
+  if (activeGalleryFilters.has("night")) return "night";
+  if (activeGalleryFilters.has("day")) return "day";
+  return "";
+}
+function spotHasTimeOfDay(spot, timeOfDay) {
+  if (!timeOfDay) return true;
+  return spotMediaItems(spot).some((item) => item.timeOfDay === timeOfDay);
+}
+function preferredSpotMedia(spot, timeOfDay = "") {
+  const items = spotMediaItems(spot);
+  if (!items.length) return null;
+  const index = timeOfDay ? items.findIndex((item) => item.timeOfDay === timeOfDay) : -1;
+  const resolvedIndex = index >= 0 ? index : 0;
+  return { ...items[resolvedIndex], index: resolvedIndex };
+}
+function dayOfYear(date) {
+  const start = new Date(date.getFullYear(), 0, 0);
+  return Math.floor((date - start) / 86400000);
+}
+function seasonalDaylightWindow(date = new Date()) {
+  const season = Math.cos(((dayOfYear(date) - 172) * 2 * Math.PI) / 365);
+  return {
+    sunrise: 342 - 72 * season,
+    sunset: 1075 + 95 * season,
+  };
+}
+function isClearlyDark(clock, date = new Date()) {
+  if (!Number.isFinite(clock)) return false;
+  const daylight = seasonalDaylightWindow(date);
+  return clock < daylight.sunrise - 25 || clock > daylight.sunset + 25;
 }
 function spotModalMediaHTML(spot) {
   const items = spotMediaItems(spot);
@@ -741,14 +789,22 @@ function timelineTrainTagHTML(train) {
 
 function spotItemHTML(sp, clock) {
   const L = sp[lang];
+  const lowLight = isClearlyDark(clock);
+  const timeMode = lowLight ? "night" : "day";
+  const featuredMedia = preferredSpotMedia(sp, timeMode);
+  const hasNightMedia = spotHasTimeOfDay(sp, "night");
+  const lowLightLimited = lowLight && !hasNightMedia;
+  const lowLightBadge = lowLight
+    ? `<span class="badge ${hasNightMedia ? "badge-night" : "badge-lowlight"}">${escapeHTML(t(hasNightMedia ? "nightPhotoAvailable" : "lowLightLimited"))}</span>`
+    : "";
   const time = clock == null
     ? `<span class="tl-time-big">✦</span>`
     : `<span class="tl-time-big">${minToClock(clock)}<span class="tl-time-suffix">頃</span></span>`;
-  const thumb = sp.image
-    ? `<div class="tl-thumb" aria-hidden="true"><img loading="lazy" src="${sp.image}" alt=""></div>`
+  const thumb = featuredMedia
+    ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" src="${featuredMedia.src}" alt=""></div>`
     : "";
   return `
-      <li class="tl-item" data-spot="${sp.id}">
+      <li class="tl-item${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
         <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
           <div class="tl-card-main">
             <div class="tl-copy">
@@ -756,7 +812,7 @@ function spotItemHTML(sp, clock) {
                 <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
               </div>
               <div class="spot-card-footer">
-                <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
+                <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${lowLightBadge}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
                 <button type="button" class="spot-btn spot-card-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
               </div>
             </div>
@@ -912,7 +968,8 @@ function bindSpotEvents(root) {
       if (event.target.closest("[data-stamp]")) return;
       const item = btn.closest(".tl-item, .gal-card");
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
-      openSpotModal(item?.dataset.spot, source);
+      const photoIndex = item?.dataset.galleryPhotoIndex;
+      openSpotModal(item?.dataset.spot, source, { photoIndex });
     });
     btn.addEventListener("keydown", (event) => {
       if (event.key !== "Enter" && event.key !== " ") return;
@@ -920,7 +977,8 @@ function bindSpotEvents(root) {
       event.preventDefault();
       const item = btn.closest(".tl-item, .gal-card");
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
-      openSpotModal(item?.dataset.spot, source);
+      const photoIndex = item?.dataset.galleryPhotoIndex;
+      openSpotModal(item?.dataset.spot, source, { photoIndex });
     });
   });
   root.querySelectorAll("[data-map]").forEach((link) => {
@@ -1058,7 +1116,7 @@ function registerServiceWorker() {
 }
 
 /* ---------- gallery ---------- */
-const activeGalleryFilters = new Set();
+const activeGalleryFilters = new Set(["day"]);
 const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
 const discoverySpotPriority = {
   fuji: 0,
@@ -1079,10 +1137,12 @@ const galleryTagGroups = {
   industry: new Set(["putiputi-sign", "727-board", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
   city: new Set(["tokyo-tower", "hinataoka", "nagoya-station-skyline"]),
 };
-const galleryTagOrder = ["seat-a", "seat-e", "classic", "nature", "history", "industry", "city"];
+const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "classic", "nature", "history", "industry", "city"];
 const galleryTagLabelKeys = {
   "seat-a": "fSeatA",
   "seat-e": "fSeatE",
+  day: "fDay",
+  night: "fNight",
   classic: "fClassic",
   nature: "fNature",
   history: "fHistory",
@@ -1093,6 +1153,8 @@ function galleryTags(spot) {
   const tags = new Set();
   if (spot.side === "A" || spot.sideLabel?.ja?.includes("A席")) tags.add("seat-a");
   if (spot.side === "E" || spot.sideLabel?.ja?.includes("E席")) tags.add("seat-e");
+  if (spotHasTimeOfDay(spot, "day")) tags.add("day");
+  if (spotHasTimeOfDay(spot, "night")) tags.add("night");
   if (spot.category === "classic") tags.add("classic");
   Object.entries(galleryTagGroups).forEach(([tag, ids]) => {
     if (ids.has(spot.id)) tags.add(tag);
@@ -1102,7 +1164,7 @@ function galleryTags(spot) {
 function galleryTagBadgesHTML(spot) {
   const tags = galleryTags(spot);
   return galleryTagOrder
-    .filter((tag) => tags.has(tag))
+    .filter((tag) => tags.has(tag) && tag !== "day" && tag !== "night")
     .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
     .join("");
 }
@@ -1110,16 +1172,18 @@ function matchesGalleryFilters(spot) {
   if (!activeGalleryFilters.size) return true;
   const tags = galleryTags(spot);
   const selectedSeats = [...activeGalleryFilters].filter((filter) => filter === "seat-a" || filter === "seat-e");
-  const selectedThemes = [...activeGalleryFilters].filter((filter) => filter !== "seat-a" && filter !== "seat-e");
+  const selectedTimes = [...activeGalleryFilters].filter((filter) => filter === "day" || filter === "night");
+  const selectedThemes = [...activeGalleryFilters].filter((filter) => !["seat-a", "seat-e", "day", "night"].includes(filter));
   const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
+  const timeMatch = !selectedTimes.length || selectedTimes.some((filter) => tags.has(filter));
   const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
-  return seatMatch && themeMatch;
+  return seatMatch && timeMatch && themeMatch;
 }
 function updateGalleryFilterButtons() {
-  const hasFilters = activeGalleryFilters.size > 0;
-  $$("#filterbar button[data-filter]").forEach((button) => {
+  const hasTagFilters = [...activeGalleryFilters].some((filter) => filter !== "day" && filter !== "night");
+  $$("#filterbar button[data-filter], #galleryModebar button[data-filter]").forEach((button) => {
     const filter = button.dataset.filter;
-    const active = filter === "all" ? !hasFilters : activeGalleryFilters.has(filter);
+    const active = filter === "all" ? !hasTagFilters : activeGalleryFilters.has(filter);
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
@@ -1134,11 +1198,12 @@ function renderGallery() {
       .sort(discoverySpotOrder)
       .map((sp) => {
         const L = sp[lang];
-        const media = sp.image
-          ? spotImageHTML(sp, L.name, "gal-photo", "", { showNote: false })
+        const featuredMedia = preferredSpotMedia(sp, activeTimeOfDayFilter());
+        const media = featuredMedia
+          ? spotMediaFigureHTML({ ...featuredMedia, creditHTML: featuredMedia.creditHTML.replace(/<span class="photo-note">.*?<\/span>/g, "") }, "gal-photo")
           : sceneSVG(sp.scene);
         return `
-          <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}" data-more role="button" tabindex="0" aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
+          <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}" data-more role="button" tabindex="0" aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
             <div class="gal-media-wrap">
               ${media}
             </div>
@@ -1206,7 +1271,9 @@ function init() {
     if (!button) return;
     const filter = button.dataset.filter;
     if (filter === "all") {
+      const timeMode = activeTimeOfDayFilter();
       activeGalleryFilters.clear();
+      if (timeMode) activeGalleryFilters.add(timeMode);
     } else if (activeGalleryFilters.has(filter)) {
       activeGalleryFilters.delete(filter);
     } else {
@@ -1214,6 +1281,22 @@ function init() {
     }
     updateGalleryFilterButtons();
     track("gallery_filtered", { filters: [...activeGalleryFilters].join(",") || "all" });
+    renderGallery();
+  });
+  $("#galleryModebar")?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const button = target?.closest("button[data-filter]");
+    if (!button) return;
+    const filter = button.dataset.filter;
+    if (activeGalleryFilters.has(filter)) {
+      activeGalleryFilters.delete(filter);
+    } else {
+      activeGalleryFilters.delete("day");
+      activeGalleryFilters.delete("night");
+      activeGalleryFilters.add(filter);
+    }
+    updateGalleryFilterButtons();
+    track("gallery_time_mode_changed", { mode: activeTimeOfDayFilter() || "all" });
     renderGallery();
   });
   $("#resetBtn").addEventListener("click", () => {

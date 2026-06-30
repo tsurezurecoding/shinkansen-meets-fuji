@@ -201,12 +201,14 @@ const SPOTS = [
     photos: [
       {
         src: "images/20260629_tokyo_tower_night_michikusa.jpg",
+        timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える東京タワー", en: "Tokyo Tower at night from the Shinkansen" },
         date: "2026-06-29",
         note: { ja: "夜の街に、東京タワー", en: "Tokyo Tower in the night city" },
       },
       {
         src: "images/20260629_tokyo_tower_night_2_michikusa.jpg",
+        timeOfDay: "night",
         alt: { ja: "夜のビルの合間に見える東京タワー", en: "Tokyo Tower between buildings at night" },
         date: "2026-06-29",
         note: { ja: "ビルの合間に光る塔", en: "A lit tower between buildings" },
@@ -451,6 +453,7 @@ const SPOTS = [
       },
       {
         src: "images/20260629_shimizu_port_chikyu_night_michikusa.jpg",
+        timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU at night from the Shinkansen" },
         date: "2026-06-29",
         note: { ja: "夜の港に、ちきゅう", en: "CHIKYU in the night port" },
@@ -686,6 +689,7 @@ const SPOTS = [
     photos: [
       {
         src: "images/20250309_kiyosu_castle_lightup_asami_k920.jpg",
+        timeOfDay: "night",
         alt: { ja: "ライトアップされた清洲城", en: "Illuminated Kiyosu Castle" },
         credit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920" },
         sourceUrl: "https://x.com/asami_k920/status/1898673771084492889",
@@ -863,6 +867,7 @@ const SPOTS = [
       },
       {
         src: "images/20260629_seta_karahashi_night_michikusa.jpg",
+        timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える瀬田の唐橋付近", en: "Around Seta no Karahashi at night from the Shinkansen" },
         date: "2026-06-29",
         note: { ja: "夜の瀬田川を渡る光", en: "Lights crossing the Seta River at night" },
@@ -899,6 +904,7 @@ const SPOTS = [
       },
       {
         src: "images/20260629_torikai_train_depot_night_michikusa.jpg",
+        timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える鳥飼車両基地", en: "Torikai Train Depot at night from the Shinkansen" },
         date: "2026-06-29",
         note: { ja: "夜に眠る新幹線たち", en: "Shinkansen sleeping at night" },
