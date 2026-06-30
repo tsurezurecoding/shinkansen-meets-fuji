@@ -1,5 +1,5 @@
 const CACHE_PREFIX = "shinkansen-meets-fuji-";
-const CACHE_NAME = `${CACHE_PREFIX}shinkansen-window-v14`;
+const CACHE_NAME = `${CACHE_PREFIX}shinkansen-window-v15`;
 
 self.addEventListener("install", (event) => {
   event.waitUntil(self.skipWaiting());
