@@ -216,6 +216,44 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
   </header>`;
 }
 
+function analyticsSnippet() {
+  return `<script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>`;
+}
+
 function referenceUrl(ref, lang) {
   return localized(ref?.url, lang) || localized(ref?.url, "ja") || ref?.url || "";
 }
@@ -391,6 +429,7 @@ function spotPageHTML(spot, lang) {
   <meta property="og:url" content="${url}">
   <meta name="twitter:card" content="summary_large_image">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
+  ${analyticsSnippet()}
 </head>
 <body class="spot-page">
   ${siteHeaderHTML(
@@ -462,6 +501,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="en" href="${pageUrl("en")}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja")}">
   <link rel="stylesheet" href="../style.css?v=20260701-spot-pages">
+  ${analyticsSnippet()}
 </head>
 <body class="spot-page">
   ${siteHeaderHTML("en", "../", "../", "index.html")}
@@ -522,6 +562,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
   <link rel="stylesheet" href="${prefix}style.css?v=20260701-spot-pages">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
+  ${analyticsSnippet()}
 </head>
 <body class="spot-page">
   ${siteHeaderHTML(lang, prefix, lang === "ja" ? "guide.html" : "../guide.html", lang === "ja" ? "en/guide.html" : "guide.html")}
