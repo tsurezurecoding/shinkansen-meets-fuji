@@ -7,6 +7,24 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/guide.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/guide.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/references.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
@@ -19,7 +37,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/tokyo-tower.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/hinataoka.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/hinataoka.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -31,7 +61,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/putiputi-sign.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/727-board.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/727-board.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -43,7 +85,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/odawara.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/odawara-castle.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/odawara-castle.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -55,7 +109,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/gyoran-kannon.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/fuji.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/fuji.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -67,7 +133,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/left-fuji.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/shimizu-port-chikyu.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/shimizu-port-chikyu.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -79,7 +157,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/shizuoka-tea-fields.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/kakegawa.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/kakegawa.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -91,7 +181,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/hamanako.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/toyohashi-tateiwa.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/toyohashi-tateiwa.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -103,7 +205,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/mikawa-oshima.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/nagoya-station-skyline.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/nagoya-station-skyline.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -115,7 +229,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/kirin-beer-factory.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/kiyosu.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/kiyosu.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -127,7 +253,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/solar-ark.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/gifu-castle.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/gifu-castle.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -139,7 +277,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/ibuki.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/sawayama-castle.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/sawayama-castle.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -151,7 +301,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/hikone-castle.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/kannonji-castle.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/kannonji-castle.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -163,7 +325,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/omi-fuji.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/seta-karahashi.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/seta-karahashi.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -175,7 +349,19 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/toji.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/spots/torikai-train-depot.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tsurezurecoding.github.io/shinkansen-meets-fuji/en/spots/torikai-train-depot.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

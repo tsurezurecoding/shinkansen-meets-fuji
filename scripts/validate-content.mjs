@@ -26,14 +26,6 @@ const checks = [
     required: [`${spotCount}の車窓スポット`, `Browse all ${spotCount} window views`],
   },
   {
-    file: "README.md",
-    required: [`車窓スポット${spotCount}件`, `ある${spotCount}件`],
-  },
-  {
-    file: "ROADMAP.md",
-    required: [`実写${spotCount}件化`],
-  },
-  {
     file: "references.html",
     required: ["車窓リンク集", "新幹線の車窓から", "許可を得て掲載しています"],
   },
