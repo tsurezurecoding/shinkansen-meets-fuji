@@ -106,7 +106,7 @@ const UI = {
     sectionRelated: "Nearby window views",
     facts: ["Section", "Seat side", "Timing", "Photos"],
     photoUnit: "photos",
-    routeNote: (area, side) => `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${side} window as you approach ${area || "this section"}. If you are traveling toward Tokyo, the order is reversed.`,
+    routeNote: (area, side) => `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${side} window as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed.`,
     pointText: (name) => `${name} is one of the window views that make the Tokaido Shinkansen more than a transfer. The train moves fast, so visibility depends on weather, seat position, and timing.`,
     sideA: "Seat A · sea side",
     sideE: "Seat E · mountain side",
@@ -123,19 +123,30 @@ const UI = {
     homeLead: "A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.",
     homeCta: "Find your train in the app",
     guideTitle: "How to see Mt. Fuji from the Shinkansen | Shinkansen Window",
-    guideLead: "Seat side, timing, Left-Side Fuji, and other Tokaido Shinkansen window views.",
+    guideLead: "For the classic Mt. Fuji view from the Tokaido Shinkansen, sit on Seat E and start watching about 40-45 minutes after leaving Tokyo.",
     guideHeading: "How to see Mt. Fuji from the Shinkansen",
     guideBack: "Find your train in the app",
+    guideQuickFacts: [
+      { label: "Best seat", value: "Seat E", detail: "The mountain-side window on the Tokaido Shinkansen." },
+      { label: "From Tokyo", value: "40-45 min", detail: "Start looking before Mishima and Shin-Fuji." },
+      { label: "View time", value: "About 3 min", detail: "Weather, speed, and seat position change the exact window." },
+    ],
+    guidePracticalTitle: "The short answer",
+    guidePracticalBody: "Reserve Seat E, keep your camera ready before Shin-Fuji, and do not wait until Fuji is already beside you. The famous view is short. That is what makes it feel like a small event inside the journey.",
+    guideFeaturedTitle: "Make the ride worth watching",
+    guideFeaturedLead: "Fuji is the headline, but the Tokaido Shinkansen window keeps changing: sea, lakes, castles, factories, tiny signs, and Kyoto's pagoda. These are the kinds of views that make you look up again.",
+    guideBeyondTitle: "Turn the window into a route",
+    guideBeyondBody: "Choose your train in Shinkansen Window and the app lines up the views in time order. It is less a list of landmarks than a companion for the minutes between stations.",
     guideQuestions: [
       {
         q: "Which side of the Shinkansen is Mt. Fuji on?",
-        a: "On the Tokaido Shinkansen, Mt. Fuji is mainly on the Seat E, mountain-side window in both directions. There is also a brief Left-Side Fuji moment near Shin-Fuji to Shizuoka, when Fuji can appear on Seat A.",
+        a: "For the standard Tokaido Shinkansen Mt. Fuji view, choose Seat E. Seat E is the mountain-side window and works in both directions between Tokyo and Kyoto or Shin-Osaka. There is also a short Left-Side Fuji moment near Shin-Fuji to Shizuoka, when Fuji can appear on Seat A.",
         link: "spots/left-fuji.html",
         linkText: "See Left-Side Fuji",
       },
       {
         q: "When can you see Mt. Fuji from the Shinkansen?",
-        a: "The biggest view is around Mishima to Shin-Fuji. On clear days, you may also glimpse Fuji closer to Tokyo, around Shinagawa to Shin-Yokohama, or farther west near Lake Hamana.",
+        a: "From Tokyo, start watching about 40-45 minutes after departure on a Nozomi train. The biggest view is around Mishima to Shin-Fuji and usually lasts only a few minutes. On clear days, you may also glimpse Fuji closer to Tokyo or farther west near Lake Hamana.",
         link: "spots/fuji.html",
         linkText: "See the Mt. Fuji view",
       },
@@ -169,6 +180,23 @@ function localized(value, lang) {
   if (!value) return "";
   if (typeof value === "string") return value;
   return value[lang] || value.ja || value.en || "";
+}
+
+function jaAreaPhrase(area) {
+  if (!area) return "この区間";
+  return /付近|前後|あたり|区間/.test(area) ? area : `${area}付近`;
+}
+
+function enAreaPhrase(area) {
+  if (!area) return "this section";
+  if (/^Around\b/i.test(area)) return `around ${area.replace(/^Around\s+/i, "")}`;
+  if (area.includes("→")) return `in the ${area} section`;
+  return `around ${area}`;
+}
+
+function enApproachArea(area) {
+  if (!area) return "this section";
+  return area.replace(/^Around\s+/i, "");
 }
 
 function pagePath(lang, spotId = "") {
@@ -263,6 +291,10 @@ function absoluteImageUrl(spot) {
   return `${siteRoot}/${image}`;
 }
 
+function defaultOgImageUrl() {
+  return `${siteRoot}/images/og-shinkansen-window.png`;
+}
+
 function sideLabel(spot, lang) {
   const ui = UI[lang];
   if (spot.id === "hamanako") return ui.hamanakoSide;
@@ -277,9 +309,9 @@ function description(spot, lang) {
   const firstSentence = rawText(data.story).split(lang === "ja" ? "。" : ".").filter(Boolean)[0] || data.hook || "";
   const suffix = lang === "ja" ? "。" : ".";
   if (lang === "ja") {
-    return text(`${data.name}は東海道新幹線の車窓から見えるスポットです。${sideLabel(spot, lang)}、${data.area}付近。${firstSentence}${suffix}`);
+    return text(`${data.name}は東海道新幹線の車窓から見えるスポットです。${sideLabel(spot, lang)}、${jaAreaPhrase(data.area)}。${firstSentence}${suffix}`);
   }
-  return text(`${data.name} is a Tokaido Shinkansen window view around ${data.area}. Watch from ${sideLabel(spot, lang)}. ${firstSentence}${suffix}`);
+  return text(`${data.name} is a Tokaido Shinkansen window view ${enAreaPhrase(data.area)}. Watch from ${sideLabel(spot, lang)}. ${firstSentence}${suffix}`);
 }
 
 function creditText(value, lang) {
@@ -384,6 +416,7 @@ function spotPageHTML(spot, lang) {
   const appUrl = appHref(lang, spot.id, prefix);
   const photos = photoItems(spot, lang);
   const photoCount = photos.length;
+  const routeNote = localized(spot.routeNote, lang) || ui.routeNote(data.area, sideLabel(spot, lang));
   const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
   const refs = referencesHTML(spot, lang);
@@ -428,6 +461,7 @@ function spotPageHTML(spot, lang) {
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
   <meta property="og:url" content="${url}">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${absoluteImageUrl(spot)}">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
 </head>
@@ -460,7 +494,7 @@ function spotPageHTML(spot, lang) {
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(data.story || "")}</p>
-        <p>${escapeHTML(ui.routeNote(data.area, sideLabel(spot, lang)))}</p>
+        <p>${escapeHTML(routeNote)}</p>
       </section>
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionPoint)}</h2>
@@ -481,43 +515,30 @@ function spotPageHTML(spot, lang) {
 }
 
 function englishIndexHTML() {
-  const ui = UI.en;
-  const cards = SPOTS.filter((spot) => featuredIds.includes(spot.id)).map((spot) => {
-    const data = spot.en || spot.ja;
-    return `<a href="spots/${spot.id}.html">
-        <strong>${escapeHTML(data.name)}</strong>
-        <span>${escapeHTML(data.area)}</span>
-      </a>`;
-  }).join("");
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHTML(ui.homeTitle)}</title>
-  <meta name="description" content="${escapeHTML(ui.homeLead)}">
-  <link rel="canonical" href="${pageUrl("en")}">
-  <link rel="alternate" hreflang="ja" href="${pageUrl("ja")}">
-  <link rel="alternate" hreflang="en" href="${pageUrl("en")}">
-  <link rel="alternate" hreflang="x-default" href="${pageUrl("ja")}">
-  <link rel="stylesheet" href="../style.css?v=20260701-spot-pages">
+  <title>How to see Mt. Fuji from the Shinkansen | Shinkansen Window</title>
+  <meta name="robots" content="noindex,follow">
+  <meta http-equiv="refresh" content="0; url=guide.html">
+  <link rel="canonical" href="${siteRoot}/en/guide.html">
+  <meta property="og:title" content="How to see Mt. Fuji from the Shinkansen | Shinkansen Window">
+  <meta property="og:description" content="Seat E, timing, and Tokaido Shinkansen window views beyond Mt. Fuji.">
+  <meta property="og:image" content="${defaultOgImageUrl()}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="${siteRoot}/en/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${defaultOgImageUrl()}">
   ${analyticsSnippet()}
 </head>
 <body class="spot-page">
-  ${siteHeaderHTML("en", "../", "../", "index.html")}
   <main>
     <article class="spot-page-article">
-      <p class="eyebrow">TOKAIDO SHINKANSEN WINDOW GUIDE</p>
-      <h1>${escapeHTML(ui.homeTitle)}</h1>
-      <p class="spot-page-lead">${escapeHTML(ui.homeLead)}</p>
-      <div class="spot-page-actions spot-page-actions-top">
-        <a class="btn btn-primary" href="../index.html?lang=en#journey">${escapeHTML(ui.homeCta)}</a>
-        <a class="btn btn-ghost" href="../index.html?lang=en#gallery">${escapeHTML(ui.navGallery)}</a>
-      </div>
-      <section class="spot-page-section">
-        <h2>Major window views</h2>
-        <div class="spot-page-related">${cards}</div>
-      </section>
+      <h1>Shinkansen Window guide moved</h1>
+      <p class="spot-page-lead"><a href="guide.html">Open the English Mt. Fuji guide</a>.</p>
     </article>
   </main>
 </body>
@@ -532,7 +553,9 @@ function guideHTML(lang) {
   const appUrl = lang === "ja" ? "index.html#journey" : "../index.html?lang=en#journey";
   const otherUrl = lang === "ja" ? "en/guide.html" : "../guide.html";
   const questions = ui.guideQuestions.map((item) => {
-    const href = lang === "ja" ? item.link : (item.link.startsWith("index") ? `../index.html?lang=en#gallery` : item.link);
+    const href = lang === "ja"
+      ? item.link
+      : (item.link.startsWith("index") ? `../index.html?lang=en#gallery` : `../${item.link}`);
     return `<article class="faq-card">
         <h2>${escapeHTML(item.q)}</h2>
         <p>${escapeHTML(item.a)} <a href="${escapeHTML(href)}">${escapeHTML(item.linkText)}</a></p>
@@ -549,6 +572,47 @@ function guideHTML(lang) {
       "acceptedAnswer": { "@type": "Answer", "text": item.a },
     })),
   };
+  const quickFacts = lang === "en" ? `
+      <section class="spot-page-section guide-answer-panel" aria-label="Mt. Fuji quick answer">
+        <div class="guide-answer-copy">
+          <h2>${escapeHTML(ui.guidePracticalTitle)}</h2>
+          <p>${escapeHTML(ui.guidePracticalBody)}</p>
+        </div>
+        <dl class="guide-fact-grid">
+          ${ui.guideQuickFacts.map((fact) => `<div>
+            <dt>${escapeHTML(fact.label)}</dt>
+            <dd>${escapeHTML(fact.value)}</dd>
+            <p>${escapeHTML(fact.detail)}</p>
+          </div>`).join("")}
+        </dl>
+      </section>
+      <section class="spot-page-section guide-featured-panel">
+        <div class="guide-section-head">
+          <h2>${escapeHTML(ui.guideFeaturedTitle)}</h2>
+          <p>${escapeHTML(ui.guideFeaturedLead)}</p>
+        </div>
+        <div class="guide-visual-grid">
+          ${["fuji", "hamanako", "toji"].map((id) => {
+            const spot = SPOTS.find((item) => item.id === id);
+            const data = spot.en || spot.ja;
+            return `<a class="guide-visual-card" href="../spots/${spot.id}.html">
+              <img src="../${escapeHTML(spot.image)}" alt="${escapeHTML(data.name)}">
+              <span>${escapeHTML(data.area)}</span>
+              <strong>${escapeHTML(data.name)}</strong>
+              <em>${escapeHTML(data.hook)}</em>
+            </a>`;
+          }).join("")}
+        </div>
+      </section>
+      <section class="spot-page-section guide-beyond-panel">
+        <h2>${escapeHTML(ui.guideBeyondTitle)}</h2>
+        <p>${escapeHTML(ui.guideBeyondBody)}</p>
+        <div class="spot-page-actions">
+          <a class="btn btn-primary" href="../index.html?lang=en#gallery">Browse timed window views</a>
+          <a class="btn btn-ghost" href="../index.html?lang=en#journey">Find your train</a>
+        </div>
+      </section>
+` : "";
   return `<!doctype html>
 <html lang="${lang}">
 <head>
@@ -561,6 +625,16 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
   <link rel="stylesheet" href="${prefix}style.css?v=20260701-spot-pages">
+  <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
+  <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
+  <meta property="og:image" content="${defaultOgImageUrl()}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="${guideUrl}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHTML(ui.guideTitle)}">
+  <meta name="twitter:description" content="${escapeHTML(ui.guideLead)}">
+  <meta name="twitter:image" content="${defaultOgImageUrl()}">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
 </head>
@@ -573,8 +647,8 @@ function guideHTML(lang) {
       <p class="spot-page-lead">${escapeHTML(ui.guideLead)}</p>
       <div class="spot-page-actions spot-page-actions-top">
         <a class="btn btn-primary" href="${appUrl}">${escapeHTML(ui.guideBack)}</a>
-        <a class="btn btn-ghost" href="${lang === "ja" ? "spots/fuji.html" : "spots/fuji.html"}">${escapeHTML(ui.guideQuestions[1].linkText)}</a>
-      </div>
+        <a class="btn btn-ghost" href="${lang === "ja" ? "spots/fuji.html" : "../spots/fuji.html"}">${escapeHTML(ui.guideQuestions[1].linkText)}</a>
+      </div>${quickFacts}
       <section class="spot-page-section">
         <div class="faq-grid">${questions}</div>
       </section>
@@ -588,9 +662,8 @@ function guideHTML(lang) {
 function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
-    { loc: pageUrl("en"), priority: "0.8", changefreq: "weekly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.7", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
   ];
   const spotUrls = SPOTS.flatMap((spot) => ["ja", "en"].map((lang) => ({

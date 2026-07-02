@@ -196,8 +196,8 @@ const SPOTS = [
   {
     id: "tokyo-tower",
     icon: "🗼",
-    ja: { name: "東京タワー", area: "東京 → 品川", hook: "東京の空に、赤い塔。", story: "東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に東京タワーが見えることがあります。旅の序盤、都市の景色の中に赤い塔がちらりと立つ。見えたら、東海道新幹線の車窓が始まった合図です。" },
-    en: { name: "Tokyo Tower", area: "Tokyo → Shinagawa", hook: "A red tower in the Tokyo skyline.", story: "In the first few minutes after leaving Tokyo Station for Shinagawa, Tokyo Tower can appear between the buildings on the Seat E side. It is a quick urban opening shot: the red tower slips into view, and the Tokaido Shinkansen window story begins." },
+    ja: { name: "東京タワー", area: "東京 → 品川", hook: "東京の空に、赤い塔。", story: "東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に東京タワーが見えます。旅の序盤、都市の景色の中に赤い塔がちらりと立つ。見えたら、東海道新幹線の車窓が始まった合図です。" },
+    en: { name: "Tokyo Tower", area: "Tokyo → Shinagawa", hook: "A red tower in the Tokyo skyline.", story: "In the first few minutes after leaving Tokyo Station for Shinagawa, Tokyo Tower slips between the buildings on the Seat E side. It is a quick urban opening shot: the red tower appears, and the Tokaido Shinkansen window story begins." },
     minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 35, scene: "hills",
     image: "images/20250111_tokyo_tower_letus10.jpg",
     photoCredit: {
@@ -328,8 +328,8 @@ const SPOTS = [
   {
     id: "odawara-castle",
     icon: "🏯",
-    ja: { name: "小田原城", area: "小田原駅付近", hook: "のぞみでは、まばたきする間の城。", story: "小田原駅の前後、A席側に小田原城が一瞬だけ見えることがあります。停車しない列車では本当に短い出会い。見えたら、それだけで旅の序章に小さな印がつきます。" },
-    en: { name: "Odawara Castle", area: "Around Odawara Sta.", hook: "A castle in a blink.", story: "Around Odawara Station, Odawara Castle can appear briefly on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey." },
+    ja: { name: "小田原城", area: "小田原駅付近", hook: "のぞみでは、まばたきする間の城。", story: "小田原駅の前後、A席側に小田原城が一瞬だけ見えます。停車しない列車では本当に短い出会い。見えたら、それだけで旅の序章に小さな印がつきます。" },
+    en: { name: "Odawara Castle", area: "Around Odawara Sta.", hook: "A castle in a blink.", story: "Around Odawara Station, Odawara Castle flashes by on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey." },
     minutesFromTokyo: 31, side: "A", category: "notable", confidence: "verified", durationSec: 8, scene: "castle",
     image: "images/20251112_odawara_castle_castle_traveler.jpg",
     photoCredit: {
@@ -442,7 +442,7 @@ const SPOTS = [
   {
     id: "shimizu-port-chikyu",
     icon: "🏗️",
-    ja: { name: "清水港とちきゅう", area: "新富士 → 静岡", hook: "港のクレーンと、ちきゅう。", story: "新富士から静岡へ向かう途中、A席側に清水港のクレーン群や地球深部探査船「ちきゅう」が見えることがあります。富士山のあとに、今度は港の巨大構造物が窓の向こうに現れる。山と海と工業の距離が近い、静岡らしい車窓です。" },
+    ja: { name: "清水港とちきゅう", area: "新富士 → 静岡", hook: "港のクレーンと、ちきゅう。", story: "新富士から静岡へ向かう途中、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船「ちきゅう」も窓に入ります。富士山のあとに、今度は港の巨大構造物が現れる。山と海と工業の距離が近い、静岡らしい車窓です。" },
     en: { name: "Shimizu Port and CHIKYU", area: "Shin-Fuji → Shizuoka", hook: "Cranes and CHIKYU.", story: "Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt. Fuji, another kind of scale appears outside the window: mountains, sea, and industry all close together." },
     minutesFromTokyo: 50, side: "A", category: "notable", confidence: "source-backed", durationSec: 70, scene: "bay",
     image: "images/20240119_shimizu_port_chikyu_senba16530315.jpg",
@@ -633,8 +633,8 @@ const SPOTS = [
   {
     id: "nichiban-anjo",
     icon: "🟦",
-    ja: { name: "ニチバン安城工場", area: "三河安城 → 名古屋", hook: "巨大なセロテープ広告。", story: "三河安城を過ぎるころ、E席側にニチバン安城工場の大きな壁面広告が見えることがあります。赤、白、青のセロテープの広告が、工場の壁いっぱいに現れる。名所ではないのに、一度知ると次から探したくなる、東海道新幹線らしい沿線の発見です。" },
-    en: { name: "Nichiban Anjo Factory", area: "Mikawa-Anjo → Nagoya", hook: "A giant tape ad.", story: "Around Mikawa-Anjo, the Nichiban Anjo Factory can appear on the Seat E side with a huge CELLOTAPE wall advertisement. It is not a classic landmark, but once you know it is there, it becomes the kind of trackside detail you start looking for on every ride." },
+    ja: { name: "ニチバン安城工場", area: "三河安城付近", hook: "巨大なセロテープ広告。", story: "東京から名古屋へ向かう列車では、三河安城の少し手前でE席側にニチバン安城工場の大きな壁面広告が見えます。名古屋方面から東京へ向かう場合は、三河安城を出てすぐ。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。" },
+    en: { name: "Nichiban Anjo Factory", area: "Around Mikawa-Anjo", hook: "A giant tape ad.", story: "On trains from Tokyo toward Nagoya, the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo. The huge red, white, and blue CELLOTAPE wall ad is not a classic landmark, but once you know it is there, you start looking for it on every ride." },
     minutesFromTokyo: 85, side: "E", category: "curious", confidence: "source-backed", durationSec: 25, scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
     photoCredit: {
@@ -815,20 +815,24 @@ const SPOTS = [
   {
     id: "nangu-taisha",
     icon: "⛩️",
-    ja: { name: "南宮大社", area: "岐阜羽島 → 米原", hook: "田園の向こうに、大鳥居。", story: "岐阜羽島を過ぎて関ヶ原へ向かう途中、E席側の田園の向こうに南宮大社の大鳥居が見えることがあります。遠くの社殿を探すというより、赤い鳥居を一瞬で拾う車窓です。関ヶ原の手前で、沿線の歴史と信仰がふっと窓に入ってきます。" },
-    en: { name: "Nangu Taisha Shrine", area: "Gifu-Hashima → Maibara", hook: "A torii beyond the fields.", story: "After Gifu-Hashima, on the way toward Sekigahara, the large torii gate of Nangu Taisha Shrine can appear beyond the fields on the Seat E side. It is less about seeing the whole shrine and more about catching a flash of red in the landscape before history-rich Sekigahara." },
-    minutesFromTokyo: 107, side: "E", category: "notable", confidence: "verified", durationSec: 20, scene: "pagoda",
+    ja: { name: "南宮大社", area: "岐阜羽島 → 米原", hook: "田園の向こうに、大鳥居。", story: "東京から新大阪方面へ向かう列車では、岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに南宮大社の大鳥居が見えます。新大阪から東京方面へ向かう場合は、米原を出て関ヶ原を越えたあと、岐阜羽島へ向かう途中のA席側です。遠くの社殿を探すというより、赤い鳥居を一瞬で拾う車窓です。" },
+    en: { name: "Nangu Taisha Shrine", area: "Gifu-Hashima → Maibara", hook: "A torii beyond the fields.", story: "From Tokyo toward Shin-Osaka, look from Seat A after Gifu-Hashima as the train heads toward Sekigahara. From Shin-Osaka toward Tokyo, look from Seat A after Maibara and Sekigahara, before Gifu-Hashima. The large torii gate of Nangu Taisha Shrine stands beyond the fields: less about seeing the whole shrine than catching a flash of red in the landscape." },
+    minutesFromTokyo: 107, side: "A", category: "notable", confidence: "verified", durationSec: 20, scene: "pagoda",
+    routeNote: {
+      ja: "東京から新大阪方面なら岐阜羽島を出たあと、新大阪から東京方面なら米原を出て関ヶ原を越えたあと、A席側を見てください。",
+      en: "Tokyo to Shin-Osaka: watch Seat A after Gifu-Hashima. Shin-Osaka to Tokyo: watch Seat A after Maibara and Sekigahara.",
+    },
     image: "images/20260629_nangu_taisha_1_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
       date: "2026-06-29",
-      note: { ja: "のぞみ99号・E席側推定、7:40撮影", en: "Nozomi 99, likely Seat E side, photographed at 7:40." },
+      note: { ja: "のぞみ99号・A席側、7:40撮影", en: "Nozomi 99, Seat A side, photographed at 7:40." },
     },
     photos: [
       {
         src: "images/20260629_nangu_taisha_2_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える南宮大社の大鳥居", en: "Nangu Taisha torii gate from Seat E" },
+        alt: { ja: "新幹線のA席側から見える南宮大社の大鳥居", en: "Nangu Taisha torii gate from Seat A" },
         date: "2026-06-29",
         note: { ja: "田園の向こうに見える大鳥居", en: "The large torii beyond the fields" },
       },
@@ -910,7 +914,7 @@ const SPOTS = [
   {
     id: "seta-karahashi",
     icon: "🌉",
-    ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "川に架かる、京の手前の橋。", story: "京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えることがあります。日本書紀にも登場する交通の要衝で、古くから「唐橋を制するものは天下を制する」と言われた橋。急がば回れの由来にも重なる、京都目前の一瞬です。" },
+    ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "川に架かる、京の手前の橋。", story: "京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えてきます。日本書紀にも登場する交通の要衝で、古くから「唐橋を制するものは天下を制する」と言われた橋。急がば回れの由来にも重なる、京都目前の一瞬です。" },
     en: { name: "Seta no Karahashi Bridge", area: "Maibara → Kyoto", hook: "A bridge before Kyoto.", story: "A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. It is an old strategic crossing, even appearing in early Japanese chronicles, and is linked to the idea behind the proverb 'more haste, less speed.' It passes quickly, just before Kyoto." },
     minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 45, scene: "lake",
     image: "images/20250909_seta_karahashi_c91256633.jpg",
@@ -947,7 +951,7 @@ const SPOTS = [
   {
     id: "torikai-train-depot",
     icon: "🚄",
-    ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い列車が、ずらり。", story: "新大阪に近づくころ、E席側に新幹線が並ぶ大きな車両基地が見えることがあります。走ってきた列車の裏側、整備と待機の場所。名所というより、旅を支える現場が突然ひらける車窓です。見える範囲が広いので、少し長めに探してください。" },
+    ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い列車が、ずらり。", story: "新大阪に近づくころ、E席側に新幹線が並ぶ大きな車両基地が広がります。走ってきた列車の裏側、整備と待機の場所。名所というより、旅を支える現場が突然ひらける車窓です。見える範囲が広いので、少し長めに探してください。" },
     en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As you approach Shin-Osaka, Seat E may open onto a vast Shinkansen depot: rows of white trains resting beside the line. It is not a classic landmark; it is the backstage of the journey, where the trains wait and are cared for. The view stretches for a while, so keep looking." },
     minutesFromTokyo: 141, side: "E", category: "curious", confidence: "source-backed", durationSec: 240, scene: "hills",
     image: "images/20260614_torikai_train_depot_yamato160.jpg",
