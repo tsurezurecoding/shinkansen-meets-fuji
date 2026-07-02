@@ -417,6 +417,11 @@ function spotPageHTML(spot, lang) {
   const photos = photoItems(spot, lang);
   const photoCount = photos.length;
   const routeNote = localized(spot.routeNote, lang) || ui.routeNote(data.area, sideLabel(spot, lang));
+  const fujiGuideLink = spot.id === "fuji"
+    ? (lang === "ja"
+      ? `<p>座席の取り方、東京発・上り列車の時刻、左富士まで含めて確認するなら、<a href="../guide.html">新幹線から富士山を見る完全ガイド</a>へ。</p>`
+      : `<p>For seat booking, timing from Tokyo, timing from Kyoto or Osaka, and the hidden Left Fuji moment, see the <a href="../guide.html">complete Mt. Fuji from the Shinkansen guide</a>.</p>`)
+    : "";
   const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
   const refs = referencesHTML(spot, lang);
@@ -495,6 +500,7 @@ function spotPageHTML(spot, lang) {
         <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(data.story || "")}</p>
         <p>${escapeHTML(routeNote)}</p>
+        ${fujiGuideLink}
       </section>
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionPoint)}</h2>
@@ -694,8 +700,8 @@ for (const lang of ["ja", "en"]) {
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 fs.writeFileSync(path.join(appDir, "en", "index.html"), englishIndexHTML(), "utf8");
-fs.writeFileSync(path.join(appDir, "guide.html"), guideHTML("ja"), "utf8");
-fs.writeFileSync(path.join(appDir, "en", "guide.html"), guideHTML("en"), "utf8");
+// guide.html and en/guide.html are hand-edited SEO answer pages.
+// Do not regenerate them from the older lightweight template here.
 fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");
 
 console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, and sitemap.xml`);
