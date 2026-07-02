@@ -1,4 +1,4 @@
-import fs from "node:fs";
+﻿import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
@@ -6,7 +6,7 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
-const siteRoot = "https://tsurezurecoding.github.io/shinkansen-meets-fuji";
+const siteRoot = "https://www.michikusa-travel.com";
 const today = "2026-07-01";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");

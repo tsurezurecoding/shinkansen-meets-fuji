@@ -1,4 +1,4 @@
-User-agent: *
+﻿User-agent: *
 Allow: /
 
-Sitemap: https://tsurezurecoding.github.io/shinkansen-meets-fuji/sitemap.xml
+Sitemap: https://www.michikusa-travel.com/sitemap.xml

@@ -121,6 +121,10 @@ const REFERENCES = {
     label: { ja: "@letus10: キリンビール工場車窓記事", en: "@letus10: Kirin Beer Factory window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/518214924.html",
   },
+  nichibanBlog: {
+    label: { ja: "@letus10: ニチバン安城工場車窓記事", en: "@letus10: Nichiban Anjo Factory window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/510591087.html",
+  },
   kiyosuCastle: {
     label: { ja: "清洲城", en: "Kiyosu Castle" },
     url: "http://kiyosujyo.com/",
@@ -143,6 +147,10 @@ const REFERENCES = {
   kojodanWindowCastles: {
     label: { ja: "攻城団: 新幹線から見える城", en: "Kojodan: Castles visible from the Shinkansen" },
     url: "https://blog.kojodan.jp/entry/2019/03/10/130620",
+  },
+  nanguTaisha: {
+    label: { ja: "南宮大社 公式", en: "Nangu Taisha official site" },
+    url: "https://www.nangu-san.com/",
   },
   hikoneCastle: {
     label: { ja: "国宝 彦根城公式", en: "Hikone Castle official site" },
@@ -623,6 +631,31 @@ const SPOTS = [
     map: { lat: 34.7786, lng: 137.2636, ja: "三河大島", en: "Mikawa Oshima" },
   },
   {
+    id: "nichiban-anjo",
+    icon: "🟦",
+    ja: { name: "ニチバン安城工場", area: "三河安城 → 名古屋", hook: "巨大なセロテープ広告。", story: "三河安城を過ぎるころ、E席側にニチバン安城工場の大きな壁面広告が見えることがあります。赤、白、青のセロテープの広告が、工場の壁いっぱいに現れる。名所ではないのに、一度知ると次から探したくなる、東海道新幹線らしい沿線の発見です。" },
+    en: { name: "Nichiban Anjo Factory", area: "Mikawa-Anjo → Nagoya", hook: "A giant tape ad.", story: "Around Mikawa-Anjo, the Nichiban Anjo Factory can appear on the Seat E side with a huge CELLOTAPE wall advertisement. It is not a classic landmark, but once you know it is there, it becomes the kind of trackside detail you start looking for on every ride." },
+    minutesFromTokyo: 85, side: "E", category: "curious", confidence: "source-backed", durationSec: 25, scene: "solar",
+    image: "images/20250221_nichiban_anjo_letus10.jpg",
+    photoCredit: {
+      ja: "@letus10 / 新幹線の車窓から",
+      en: "@letus10 / Shinkansen window blog",
+      url: "https://cotetu.seesaa.net/article/510591087.html",
+      note: { ja: "ニチバン安城工場のセロテープ壁面広告", en: "CELLOTAPE wall ad at Nichiban Anjo Factory" },
+    },
+    photos: [
+      {
+        src: "images/20260629_nichiban_anjo_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の新幹線から見えるニチバン安城工場", en: "Nichiban Anjo Factory at night from the Shinkansen" },
+        date: "2026-06-29",
+        note: { ja: "夜に浮かぶセロテープ広告", en: "The CELLOTAPE ad glowing at night" },
+      },
+    ],
+    references: [REFERENCES.nichibanBlog],
+    map: { ja: "ニチバン 安城工場", en: "Nichiban Anjo Factory" },
+  },
+  {
     id: "nagoya-station-skyline",
     icon: "🏙️",
     ja: { name: "名古屋駅前", area: "名古屋駅付近", hook: "高層ビルの谷を、新幹線で抜ける。", story: "名古屋駅に近づくと、車窓は一気に都市の景色へ切り替わります。高層ビル、駅前の密度、線路の重なり。自然や城とは違うけれど、これも東海道新幹線の大事な車窓です。" },
@@ -778,6 +811,30 @@ const SPOTS = [
     ],
     references: [REFERENCES.ibuki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
+  },
+  {
+    id: "nangu-taisha",
+    icon: "⛩️",
+    ja: { name: "南宮大社", area: "岐阜羽島 → 米原", hook: "田園の向こうに、大鳥居。", story: "岐阜羽島を過ぎて関ヶ原へ向かう途中、E席側の田園の向こうに南宮大社の大鳥居が見えることがあります。遠くの社殿を探すというより、赤い鳥居を一瞬で拾う車窓です。関ヶ原の手前で、沿線の歴史と信仰がふっと窓に入ってきます。" },
+    en: { name: "Nangu Taisha Shrine", area: "Gifu-Hashima → Maibara", hook: "A torii beyond the fields.", story: "After Gifu-Hashima, on the way toward Sekigahara, the large torii gate of Nangu Taisha Shrine can appear beyond the fields on the Seat E side. It is less about seeing the whole shrine and more about catching a flash of red in the landscape before history-rich Sekigahara." },
+    minutesFromTokyo: 107, side: "E", category: "notable", confidence: "verified", durationSec: 20, scene: "pagoda",
+    image: "images/20260629_nangu_taisha_1_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-06-29",
+      note: { ja: "のぞみ99号・E席側推定、7:40撮影", en: "Nozomi 99, likely Seat E side, photographed at 7:40." },
+    },
+    photos: [
+      {
+        src: "images/20260629_nangu_taisha_2_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える南宮大社の大鳥居", en: "Nangu Taisha torii gate from Seat E" },
+        date: "2026-06-29",
+        note: { ja: "田園の向こうに見える大鳥居", en: "The large torii beyond the fields" },
+      },
+    ],
+    references: [REFERENCES.nanguTaisha],
+    map: { ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
   },
   {
     id: "sawayama-castle",
