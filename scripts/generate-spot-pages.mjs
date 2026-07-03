@@ -422,6 +422,7 @@ function spotPageHTML(spot, lang) {
       ? `<p>座席の取り方、東京発・上り列車の時刻、左富士まで含めて確認するなら、<a href="../guide.html">新幹線から富士山を見る完全ガイド</a>へ。</p>`
       : `<p>For seat booking, timing from Tokyo, timing from Kyoto or Osaka, and the hidden Left Fuji moment, see the <a href="../guide.html">complete Mt. Fuji from the Shinkansen guide</a>.</p>`)
     : "";
+  const fujiGuideBlock = fujiGuideLink ? `        ${fujiGuideLink}\n` : "";
   const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
   const refs = referencesHTML(spot, lang);
@@ -500,7 +501,7 @@ function spotPageHTML(spot, lang) {
         <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(data.story || "")}</p>
         <p>${escapeHTML(routeNote)}</p>
-        ${fujiGuideLink}
+${fujiGuideBlock.trimEnd()}
       </section>
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionPoint)}</h2>

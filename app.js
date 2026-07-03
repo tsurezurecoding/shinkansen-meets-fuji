@@ -44,6 +44,8 @@ const MSG = {
     medalOverallDesc: "見つけた車窓ぜんぶの進捗。",
     medalCastle: "城ハンター",
     medalCastleDesc: "新幹線から見える城を集める。",
+    medalFuji: "富士五景",
+    medalFujiDesc: "場所ごとに違う富士山を集める。",
     medalClassic: "定番めぐり",
     medalClassicDesc: "まず見てほしい定番車窓を集める。",
     medalBronze: "銅",
@@ -56,7 +58,7 @@ const MSG = {
     medalTargets: "対象スポット",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "30の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
+    galSub: "33の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
@@ -129,6 +131,8 @@ const MSG = {
     medalOverallDesc: "Progress across every window view.",
     medalCastle: "Castle Hunter",
     medalCastleDesc: "Collect castles seen from the Shinkansen.",
+    medalFuji: "Fuji Five",
+    medalFujiDesc: "Collect Mt. Fuji from five places.",
     medalClassic: "Classic Tour",
     medalClassicDesc: "Collect the essential window views first.",
     medalBronze: "Bronze",
@@ -141,7 +145,7 @@ const MSG = {
     medalTargets: "Included views",
     btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Browse all 30 window views. Tap “Spotted!” to record what you saw.",
+    galSub: "Browse all 33 window views. Tap “Spotted!” to record what you saw.",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
@@ -408,6 +412,16 @@ function spotReferencesHTML(spot) {
   }).join("");
   return `<div class="spot-modal-refs"><span>${title}</span>${links}</div>`;
 }
+function spotRelatedHTML(spot) {
+  const related = (spot.relatedSpotIds || []).map(findSpotById).filter(Boolean);
+  if (!related.length) return "";
+  const title = lang === "ja" ? "関連" : "Related";
+  const links = related.map((item) => {
+    const label = item[lang]?.name || item.ja?.name || item.en?.name || item.id;
+    return `<a href="${spotHash(item.id)}">${escapeAttr(label)}</a>`;
+  }).join("");
+  return `<div class="spot-modal-refs spot-modal-related"><span>${title}</span>${links}</div>`;
+}
 function showCreditHTML(spot) {
   if (!spot.photoCredit) return "";
   const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
@@ -513,6 +527,7 @@ function spotDetailModalHTML(spot) {
             <button type="button" class="spot-btn spot-modal-stamp" data-stamp="${spot.id}">${stamps[spot.id] ? t("spotBtnDone") : t("spotBtn")}</button>
             ${mapLinkHTML(spot, "spot-modal-map")}
           </div>
+          ${spotRelatedHTML(spot)}
           ${spotReferencesHTML(spot)}
         </div>
       </div>
@@ -1023,6 +1038,13 @@ const CASTLE_MEDAL_IDS = [
   "hikone-castle",
   "kannonji-castle",
 ];
+const FUJI_MEDAL_IDS = [
+  "ota-fuji",
+  "sagami-fuji",
+  "fuji",
+  "left-fuji",
+  "hamanako-fuji",
+];
 const MEDAL_SETS = [
   {
     id: "overall",
@@ -1035,6 +1057,12 @@ const MEDAL_SETS = [
     icon: "🏯",
     titleKey: "medalCastle",
     spots: () => CASTLE_MEDAL_IDS.map(findSpotById).filter(Boolean),
+  },
+  {
+    id: "fuji",
+    icon: "🗻",
+    titleKey: "medalFuji",
+    spots: () => FUJI_MEDAL_IDS.map(findSpotById).filter(Boolean),
   },
   {
     id: "classic",
@@ -1124,9 +1152,10 @@ const activeGalleryFilters = new Set(["day"]);
 const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
 const discoverySpotPriority = {
   fuji: 0,
-  hamanako: 1,
-  ibuki: 2,
-  toji: 3,
+  "sagami-fuji": 1,
+  hamanako: 2,
+  ibuki: 3,
+  toji: 4,
 };
 function discoverySpotOrder(a, b) {
   const rankA = discoveryCategoryRank[a.category] ?? 9;
@@ -1136,7 +1165,7 @@ function discoverySpotOrder(a, b) {
   return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
 }
 const galleryTagGroups = {
-  nature: new Set(["fuji", "left-fuji", "odawara", "hamanako", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
+  nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
   industry: new Set(["putiputi-sign", "727-board", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
   city: new Set(["tokyo-tower", "hinataoka", "nagoya-station-skyline"]),
