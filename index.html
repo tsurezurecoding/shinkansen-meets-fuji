@@ -78,13 +78,13 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260701-seo-ux-fix">
+  <link rel="stylesheet" href="style.css?v=20260704-desktop-trip-layout">
 </head>
 <body>
 
   <!-- ===== Header ===== -->
   <header class="topbar">
-    <a class="brand" href="#top">
+    <a class="brand" href="index.html">
       <span class="brand-mark">窓</span>
       <span class="brand-text">
         <span class="brand-name" data-i18n="brandName">新幹線の窓</span>
@@ -92,10 +92,10 @@
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="#quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
-      <a href="#journey" data-i18n="ctaStart">旅をはじめる</a>
-      <a href="#gallery" data-i18n="ctaBrowse">車窓をながめる</a>
-      <a href="#memories" data-i18n="ctaMedals">メダルを見る</a>
+      <a href="index.html#quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
+      <a href="index.html#journey" data-i18n="ctaStart">旅をはじめる</a>
+      <a href="zukan.html" data-i18n="ctaBrowse">車窓をながめる</a>
+      <a href="index.html#memories" data-i18n="ctaMedals">メダルを見る</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="ja">日本語</button>
@@ -112,6 +112,11 @@
       <p class="hero-kicker" data-i18n="heroKicker">TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA</p>
       <h1 class="hero-title" data-i18n="heroTitle">窓のむこうに、<br>もうひとつの旅がある。</h1>
       <p class="hero-lead" data-i18n="heroLead">富士山も、城も、湖も海も。<br>新幹線で「いつ・どちら側を見るか」がわかる車窓手帖です。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="index.html#journey" data-i18n="heroCtaStart">旅をはじめる</a>
+        <a class="btn btn-ghost hero-secondary" href="index.html#quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
+        <a class="btn btn-ghost hero-secondary" href="zukan.html" data-i18n="heroCtaBrowse">車窓図鑑を見る</a>
+      </div>
     </div>
   </section>
 
@@ -132,29 +137,62 @@
       <p class="section-sub" data-i18n="setupSub">時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。</p>
     </div>
 
-    <div class="setup-card">
-      <div class="setup-row">
-        <span class="setup-label" data-i18n="labelDirection">方向</span>
-        <div class="seg" role="group">
-          <button type="button" data-dir="west" class="active"><span data-i18n="dirWest">東京 → 新大阪</span></button>
-          <button type="button" data-dir="east"><span data-i18n="dirEast">新大阪 → 東京</span></button>
+    <div class="journey-desktop-grid">
+      <div class="journey-form-pane">
+        <div class="setup-card">
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelDirection">方向</span>
+            <div class="seg" role="group">
+              <button type="button" data-dir="west" class="active"><span data-i18n="dirWest">東京 → 新大阪</span></button>
+              <button type="button" data-dir="east"><span data-i18n="dirEast">新大阪 → 東京</span></button>
+            </div>
+          </div>
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelBoard">乗車駅</span>
+            <select id="boardStation" class="board-select"></select>
+          </div>
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelDeparture">出発時刻</span>
+            <div class="depart-wrap">
+              <input type="time" id="departTime">
+              <button type="button" class="chip-btn" id="nowBtn" data-i18n="btnNow">これから乗る</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">この時間の列車をさがす</button>
+          <div class="train-results" id="trainResults" hidden></div>
+          <button type="button" class="more-btn btn-wide-link" id="buildBtn" data-i18n="btnBuild">列車を選ばず、目安タイムラインだけつくる</button>
+          <p class="seat-tip" data-i18n="seatTipNote">席側は各カードに表示します。富士山側も海側も、気になる景色はまとめて見られます。</p>
         </div>
       </div>
-      <div class="setup-row">
-        <span class="setup-label" data-i18n="labelBoard">乗車駅</span>
-        <select id="boardStation" class="board-select"></select>
+
+      <div class="journey-timeline-pane">
+        <section class="section" id="timelineSection" hidden>
+          <div class="timeline-preview-banner" id="timelinePreviewBanner">
+            <strong data-i18n="previewBannerTitle">これはサンプルです</strong>
+            <span data-i18n="previewBannerBody">左のフォームで列車を選ぶと、あなたの列車に合わせたタイムラインに切り替わります。</span>
+          </div>
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="tlEyebrow">WINDOW TIMELINE</p>
+            <h2 id="tlTitle">—</h2>
+            <p class="section-sub" data-i18n="tlSub">時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。</p>
+          </div>
+          <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
+            <div class="timeline-filter-group" role="group" aria-label="座席側">
+              <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">すべて</button>
+              <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
+              <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">E席</button>
+            </div>
+            <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
+              <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
+              <button type="button" data-timeline-filter="nature" data-i18n="fNature">自然</button>
+              <button type="button" data-timeline-filter="history" data-i18n="fHistory">歴史</button>
+              <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">工業</button>
+              <button type="button" data-timeline-filter="city" data-i18n="fCity">街並</button>
+            </div>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </section>
       </div>
-      <div class="setup-row">
-        <span class="setup-label" data-i18n="labelDeparture">出発時刻</span>
-        <div class="depart-wrap">
-          <input type="time" id="departTime">
-          <button type="button" class="chip-btn" id="nowBtn" data-i18n="btnNow">これから乗る</button>
-        </div>
-      </div>
-      <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">この時間の列車をさがす</button>
-      <div class="train-results" id="trainResults" hidden></div>
-      <button type="button" class="more-btn btn-wide-link" id="buildBtn" data-i18n="btnBuild">列車を選ばず、目安タイムラインだけつくる</button>
-      <p class="seat-tip" data-i18n="seatTipNote">席側は各カードに表示します。富士山側も海側も、気になる景色はまとめて見られます。</p>
     </div>
   </section>
 
@@ -168,48 +206,16 @@
     <div class="nextup-count" id="nextupCount">—</div>
   </div>
 
-  <!-- ===== Timeline ===== -->
-  <section class="section" id="timelineSection" hidden>
-    <div class="section-head">
-      <p class="eyebrow" data-i18n="tlEyebrow">WINDOW TIMELINE</p>
-      <h2 id="tlTitle">—</h2>
-      <p class="section-sub" data-i18n="tlSub">時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。</p>
-    </div>
-    <ol class="timeline" id="timeline"></ol>
-  </section>
-
-  <!-- ===== Gallery (browse all views) ===== -->
-  <section class="section" id="gallery">
-    <div class="section-head">
-      <p class="eyebrow" data-i18n="galEyebrow">FIELD GUIDE</p>
-      <h2 data-i18n="galTitle">車窓図鑑 — ぜんぶの見どころ</h2>
-      <p class="section-sub" data-i18n="galSub">33の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。</p>
-    </div>
-    <div class="gallery-modebar" id="galleryModebar">
-      <div class="gallery-mode-segment" role="group" aria-label="見どころモード">
-        <button type="button" data-filter="day" data-mode="day" data-i18n="fDayPhoto">昼の見どころ</button>
-        <button type="button" data-filter="night" data-mode="night" data-i18n="fNightPhoto">夜の見どころ</button>
-      </div>
-    </div>
-    <div class="filterbar" id="filterbar">
-      <button type="button" data-filter="all" class="active" data-i18n="fAll">すべて</button>
-      <button type="button" data-filter="seat-a" data-i18n="fSeatA">A席</button>
-      <button type="button" data-filter="seat-e" data-i18n="fSeatE">E席</button>
-      <button type="button" data-filter="classic" data-i18n="fClassic">定番</button>
-      <button type="button" data-filter="nature" data-i18n="fNature">自然</button>
-      <button type="button" data-filter="history" data-i18n="fHistory">歴史</button>
-      <button type="button" data-filter="industry" data-i18n="fIndustry">工業</button>
-      <button type="button" data-filter="city" data-i18n="fCity">街並</button>
-    </div>
-    <div class="gallery" id="galleryGrid"></div>
-  </section>
-
   <!-- ===== Medals / stamps ===== -->
   <section class="section" id="memories">
     <div class="section-head">
       <p class="eyebrow" data-i18n="memEyebrow">YOUR JOURNAL</p>
       <h2 data-i18n="memTitle">車窓メダル帖</h2>
       <p class="section-sub" data-i18n="memSub">「見えた!」を押すと、旅のメダルが育ちます。</p>
+    </div>
+    <div class="journal-guide">
+      <strong data-i18n="journalGuideTitle">メダルは進捗、スタンプは記録</strong>
+      <span data-i18n="journalGuideBody">見つけた景色が下のスタンプに残り、その集まりでメダルが育ちます。</span>
     </div>
     <div class="medal-board" id="medalBoard" aria-live="polite"></div>
     <h3 class="stamp-heading" data-i18n="stampHeading">スタンプ</h3>
@@ -229,6 +235,6 @@
 
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
   <script src="data.js?v=20260701-seo-ux-fix"></script>
-  <script src="app.js?v=20260701-seo-ux-fix"></script>
+  <script src="app.js?v=20260704-desktop-trip-layout"></script>
 </body>
 </html>

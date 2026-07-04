@@ -1,4 +1,4 @@
-/* =========================================================
+﻿/* =========================================================
  * 新幹線の窓 — 見逃さない車窓手帖 / Shinkansen Window
  * app.js — UIロジック（依存ライブラリなし・バックエンドなし）
  * ========================================================= */
@@ -11,6 +11,8 @@ const MSG = {
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
     heroLead: "富士山も、城も、湖も海も。<br>新幹線で「いつ・どちら側を見るか」がわかる車窓手帖です。",
+    heroCtaStart: "旅をはじめる",
+    heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
@@ -19,7 +21,7 @@ const MSG = {
     labelDirection: "方向", labelDeparture: "出発時刻",
     dirWest: "西へ（大阪方面）", dirEast: "東へ（東京方面）",
     btnNow: "これから乗る",
-    btnBuild: "列車を選ばず、目安タイムラインだけつくる",
+    btnBuild: "目安タイムラインを見る",
     labelBoard: "乗車駅",
     btnFind: "この時間の列車をさがす",
     trainPrev: "前のページ",
@@ -28,15 +30,19 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
     readGuide: "ガイドを読む",
-    estimateTag: "目安モード", trainTag: "実ダイヤ",
+    estimateTag: "目安時間", estimateNote: "列車を選ぶと実ダイヤに切替", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     seatTipNote: "席側は各カードに表示します。山側も海側も、気になる景色はまとめて見られます。",
     nextupLabel: "つぎの車窓",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
     tlTitleWest: "東京 → 新大阪の車窓タイムライン", tlTitleEast: "新大阪 → 東京の車窓タイムライン",
+    previewBannerTitle: "サンプル",
+    previewBannerBody: "列車を選ぶと、あなた用に切り替わります。",
     memEyebrow: "YOUR JOURNAL", memTitle: "車窓メダル帖",
     memSub: "「見えた!」を押すと、旅のメダルが育ちます。",
+    journalGuideTitle: "メダルは進捗、スタンプは記録",
+    journalGuideBody: "見つけた景色が下のスタンプに残り、その集まりでメダルが育ちます。",
     stampHeading: "スタンプ",
     medalEyebrow: "MEDALS",
     medalSummary: "集めた景色の進み具合",
@@ -98,6 +104,8 @@ const MSG = {
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "There's another journey<br>outside your window.",
     heroLead: "Fuji, castles, lakes and sea. Know when to look, and which side to watch from your Shinkansen seat.",
+    heroCtaStart: "Start your journey",
+    heroCtaBrowse: "Open field guide",
     ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
@@ -106,7 +114,7 @@ const MSG = {
     labelDirection: "Direction", labelDeparture: "Departure",
     dirWest: "Westbound (for Osaka)", dirEast: "Eastbound (for Tokyo)",
     btnNow: "Boarding soon",
-    btnBuild: "Skip train pick — estimate-only timeline",
+    btnBuild: "Show sample timeline",
     labelBoard: "Boarding at",
     btnFind: "Find my train",
     trainPrev: "Previous",
@@ -115,15 +123,19 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
     readGuide: "Read guide",
-    estimateTag: "Estimate", trainTag: "Real timetable",
+    estimateTag: "Estimate times", estimateNote: "Pick a train for real timetable", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     seatTipNote: "Seat side appears on each card. You can browse mountain-side and sea-side views together.",
     nextupLabel: "NEXT VIEW",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
     tlTitleWest: "Tokyo → Shin-Osaka window timeline", tlTitleEast: "Shin-Osaka → Tokyo window timeline",
+    previewBannerTitle: "Sample",
+    previewBannerBody: "Pick your train to make it yours.",
     memEyebrow: "YOUR JOURNAL", memTitle: "Window Medal Book",
     memSub: "Tap “Spotted!” and your travel medals grow.",
+    journalGuideTitle: "Medals show progress. Stamps keep the record.",
+    journalGuideBody: "Each spotted view becomes a stamp, and those stamps grow your medals.",
     stampHeading: "Stamps",
     medalEyebrow: "MEDALS",
     medalSummary: "Your collected view progress",
@@ -166,7 +178,7 @@ const MSG = {
     faqLinkGallery: "Browse the field guide",
     faqQEnglish: "Can I use it in English?",
     faqAEnglish: "Yes. Use the EN button at the top of the page to switch the app to English.",
-    seatE: "Seat E · Mountain side", seatA: "Seat A · Sea side",
+    seatE: "Seat E", seatA: "Seat A",
     catClassic: "Classic", catNotable: "Notable", catCurious: "Curious",
     confCheck: "verifying",
     nightPhotoAvailable: "Night view",
@@ -197,6 +209,7 @@ let lang = getInitialLang();
 let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
+const PREVIEW_DEP_MIN = 0;
 function loadStamps() {
   try {
     const parsed = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
@@ -212,6 +225,9 @@ let activeQuickModal = null;
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
+const APP_SELF = location.pathname.endsWith("/zukan.html")
+  ? "zukan.html"
+  : "index.html";
 const t = (key, ...args) => {
   const v = MSG[lang][key];
   return typeof v === "function" ? v(...args) : (v ?? key);
@@ -418,7 +434,7 @@ function spotRelatedHTML(spot) {
   const title = lang === "ja" ? "関連" : "Related";
   const links = related.map((item) => {
     const label = item[lang]?.name || item.ja?.name || item.en?.name || item.id;
-    return `<a href="${spotHash(item.id)}">${escapeAttr(label)}</a>`;
+    return `<a href="${APP_SELF}${spotHash(item.id)}">${escapeAttr(label)}</a>`;
   }).join("");
   return `<div class="spot-modal-refs spot-modal-related"><span>${title}</span>${links}</div>`;
 }
@@ -546,6 +562,7 @@ function applyLang() {
   renderStampboard();
   renderGallery();
   updateGalleryFilterButtons();
+  updateTimelineFilterButtons();
   renderShowcase();
   renderBoardSelect();
   const tl = $("#timelineSection");
@@ -586,7 +603,7 @@ function renderShowcase() {
   const ctaSub = lang === "ja" ? "この区間の景色を一覧で見る" : "Browse every view in this stretch";
   const remaining = Math.max(0, SPOTS.length - showcaseSpotIds.length);
   rail.insertAdjacentHTML("beforeend", `
-    <a class="show-card show-card-cta" href="#gallery" aria-label="${ctaLabel}: ${t("galTitle")}">
+    <a class="show-card show-card-cta" href="zukan.html" aria-label="${ctaLabel}: ${t("galTitle")}">
       <div class="show-media show-media-cta" aria-hidden="true">
         <div class="show-cta-badge">
           <span class="show-cta-arrow">→</span>
@@ -750,19 +767,36 @@ function showTrainResults() {
 }
 
 /* ---------- timeline ---------- */
-function buildTimeline(train = null, depMin = null) {
+function buildTimeline(train = null, depMin = null, options = {}) {
   if (depMin == null) depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
   journey = computeJourney(train, depMin);
-  track("timeline_built", {
-    mode: train ? "train" : "estimate",
-    direction,
-    board_station: boardId,
-    spot_count: journey.spots.length,
-  });
-  $("#timelineSection").hidden = false;
+  if (!options.preview) {
+    track("timeline_built", {
+      mode: train ? "train" : "estimate",
+      direction,
+      board_station: boardId,
+      spot_count: journey.spots.length,
+    });
+  }
+  const timelineSection = $("#timelineSection");
+  timelineSection.hidden = false;
+  timelineSection.classList.toggle("timeline-preview", !!options.preview);
+  timelineSection.classList.toggle("timeline-estimate", journey.mode === "estimate");
+  timelineSection.classList.toggle("timeline-train", journey.mode === "train");
   renderTimeline();
-  startLive();
-  $("#timelineSection").scrollIntoView({ behavior: "smooth" });
+  if (options.preview) {
+    stopLive();
+  } else {
+    startLive();
+    timelineSection.scrollIntoView({ behavior: "smooth" });
+  }
+}
+
+function renderInitialTimelinePreview() {
+  const currentBoardId = boardId;
+  boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
+  buildTimeline(null, PREVIEW_DEP_MIN, { preview: true });
+  boardId = currentBoardId;
 }
 
 function renderTimeline() {
@@ -770,7 +804,7 @@ function renderTimeline() {
   const base = t(direction === "west" ? "tlTitleWest" : "tlTitleEast");
   const tag = journey.mode === "train"
     ? timelineTrainTagHTML(journey.train)
-    : `<span class="tl-title-estimate">${escapeHTML(t("estimateTag"))}</span>`;
+    : `<span class="tl-title-estimate"><span>${escapeHTML(t("estimateTag"))}</span><small>${escapeHTML(t("estimateNote"))}</small></span>`;
   $("#tlTitle").innerHTML = `
     <span class="tl-title-line">
       <span class="tl-title-base">${escapeHTML(base)}</span>
@@ -779,7 +813,9 @@ function renderTimeline() {
     ${tag}`;
   const items = [];
   journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, st: s }));
-  journey.spots.forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
+  journey.spots
+    .filter((x) => matchesTimelineFilters(x.sp))
+    .forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
   items.sort((a, b) => a.clock - b.clock || (a.kind === "station" ? -1 : 1));
   const html = [];
   items.forEach((it, i) => {
@@ -802,13 +838,13 @@ function timelineTrainTagHTML(train) {
         <span class="tl-title-train-kind">${escapeHTML(type)}</span>
         <span class="tl-title-train-number">${number}</span>
       </span>
-      <span class="tl-title-train-mode">${escapeHTML(t("trainTag"))}</span>
+      <small class="tl-title-train-mode">${escapeHTML(t("trainTag"))}</small>
     </span>`;
 }
 
 function spotItemHTML(sp, clock) {
   const L = sp[lang];
-  const lowLight = isClearlyDark(clock);
+  const lowLight = journey?.mode !== "estimate" && isClearlyDark(clock);
   const timeMode = lowLight ? "night" : "day";
   const featuredMedia = preferredSpotMedia(sp, timeMode);
   const hasNightMedia = spotHasTimeOfDay(sp, "night");
@@ -1014,6 +1050,12 @@ function startLive() {
   updateLive();
   liveTimer = setInterval(updateLive, 20000);
 }
+function stopLive() {
+  clearInterval(liveTimer);
+  liveTimer = null;
+  const banner = $("#nextup");
+  if (banner) banner.hidden = true;
+}
 function updateLive() {
   const banner = $("#nextup");
   if (!journey || !journey.spots.length) { banner.hidden = true; return; }
@@ -1149,6 +1191,7 @@ function registerServiceWorker() {
 
 /* ---------- gallery ---------- */
 const activeGalleryFilters = new Set(["day"]);
+const activeTimelineFilters = new Set();
 const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
 const discoverySpotPriority = {
   fuji: 0,
@@ -1212,11 +1255,29 @@ function matchesGalleryFilters(spot) {
   const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
   return seatMatch && timeMatch && themeMatch;
 }
+function matchesTimelineFilters(spot) {
+  if (!activeTimelineFilters.size) return true;
+  const tags = galleryTags(spot);
+  const selectedSeats = [...activeTimelineFilters].filter((filter) => filter === "seat-a" || filter === "seat-e");
+  const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e"].includes(filter));
+  const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
+  const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
+  return seatMatch && themeMatch;
+}
 function updateGalleryFilterButtons() {
   const hasTagFilters = [...activeGalleryFilters].some((filter) => filter !== "day" && filter !== "night");
   $$("#filterbar button[data-filter], #galleryModebar button[data-filter]").forEach((button) => {
     const filter = button.dataset.filter;
     const active = filter === "all" ? !hasTagFilters : activeGalleryFilters.has(filter);
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-pressed", String(active));
+  });
+}
+function updateTimelineFilterButtons() {
+  const hasFilters = activeTimelineFilters.size > 0;
+  $$("#timelineFilterbar button[data-timeline-filter]").forEach((button) => {
+    const filter = button.dataset.timelineFilter;
+    const active = filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
@@ -1274,30 +1335,7 @@ function syncModalWithLocation(source = "url") {
   if (activeSpotModal) closeSpotModal(source, { updateUrl: false });
 }
 
-/* ---------- init ---------- */
-function init() {
-  if ($("#heroSky")) renderHero();
-  $$(".lang-switch button").forEach((b) => b.addEventListener("click", () => {
-    lang = b.dataset.lang; localStorage.setItem("mado-lang", lang); track("language_changed", { language: lang }); applyLang();
-  }));
-  // ここから先はアプリ画面（index.html）専用の初期化
-  if (!$("#departTime")) { applyLang(); return; }
-  // 出発時刻の初期値 = 現在
-  $("#departTime").value = fmtClock(new Date());
-  $("#nowBtn").addEventListener("click", () => { $("#departTime").value = fmtClock(new Date()); });
-  $$("[data-dir]").forEach((b) => b.addEventListener("click", () => {
-    direction = b.dataset.dir;
-    boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
-    renderBoardSelect();
-    $("#trainResults").hidden = true;
-    $$("[data-dir]").forEach((x) => x.classList.toggle("active", x === b));
-  }));
-  $("#boardStation").addEventListener("change", (e) => { boardId = e.target.value; $("#trainResults").hidden = true; });
-  $("#findTrainsBtn").addEventListener("click", () => {
-    track("train_search", { direction, board_station: boardId });
-    showTrainResults();
-  });
-  $("#buildBtn").addEventListener("click", () => buildTimeline(null));
+function bindGalleryControls() {
   $("#filterbar")?.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
     const button = target?.closest("button[data-filter]");
@@ -1332,6 +1370,67 @@ function init() {
     track("gallery_time_mode_changed", { mode: activeTimeOfDayFilter() || "all" });
     renderGallery();
   });
+}
+
+function bindTimelineControls() {
+  $("#timelineFilterbar")?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const button = target?.closest("button[data-timeline-filter]");
+    if (!button) return;
+    const filter = button.dataset.timelineFilter;
+    if (filter === "all") {
+      activeTimelineFilters.clear();
+    } else if (activeTimelineFilters.has(filter)) {
+      activeTimelineFilters.delete(filter);
+    } else {
+      activeTimelineFilters.add(filter);
+    }
+    updateTimelineFilterButtons();
+    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all" });
+    renderTimeline();
+  });
+}
+
+/* ---------- init ---------- */
+function init() {
+  if ($("#heroSky")) renderHero();
+  $$(".lang-switch button").forEach((b) => b.addEventListener("click", () => {
+    lang = b.dataset.lang; localStorage.setItem("mado-lang", lang); track("language_changed", { language: lang }); applyLang();
+  }));
+  bindGalleryControls();
+  bindTimelineControls();
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSpotModal("escape");
+      closeQuickModal("escape");
+    }
+  });
+  // ここから先はアプリ画面（index.html）専用の初期化
+  if (!$("#departTime")) {
+    applyLang();
+    window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
+    window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
+    syncModalWithLocation("url");
+    registerServiceWorker();
+    return;
+  }
+  // 出発時刻の初期値 = 現在
+  $("#departTime").value = fmtClock(new Date());
+  $("#nowBtn").addEventListener("click", () => { $("#departTime").value = fmtClock(new Date()); });
+  $$("[data-dir]").forEach((b) => b.addEventListener("click", () => {
+    direction = b.dataset.dir;
+    boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
+    renderBoardSelect();
+    $("#trainResults").hidden = true;
+    $$("[data-dir]").forEach((x) => x.classList.toggle("active", x === b));
+    if ($("#timelineSection")?.classList.contains("timeline-preview")) renderInitialTimelinePreview();
+  }));
+  $("#boardStation").addEventListener("change", (e) => { boardId = e.target.value; $("#trainResults").hidden = true; });
+  $("#findTrainsBtn").addEventListener("click", () => {
+    track("train_search", { direction, board_station: boardId });
+    showTrainResults();
+  });
+  $("#buildBtn").addEventListener("click", () => buildTimeline(null));
   $("#resetBtn").addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
       stamps = {}; localStorage.setItem("mado-stamps", "{}");
@@ -1340,13 +1439,8 @@ function init() {
       if (tl && !tl.hidden) renderTimeline();
     }
   });
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeSpotModal("escape");
-      closeQuickModal("escape");
-    }
-  });
   applyLang();
+  renderInitialTimelinePreview();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);
