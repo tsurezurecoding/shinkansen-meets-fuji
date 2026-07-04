@@ -5,7 +5,7 @@
  * minutesFromTokyo: のぞみ基準の東京発からの目安分数（東京→新大阪 約147分）
  * side: "E" = 山側（北側・E席） / "A" = 海側（南側・A席）
  *       東海道新幹線はどちら向きでもE席が山側になる
- * category: "classic"（定番） / "notable"（準定番） / "curious"（珍景）
+ * category: 内部の並び順ランク。画面表示タグは図鑑フィルタ（自然/歴史/工業/看板/街並）に揃える
  * confidence: "verified"（実見・写真あり） / "source-backed"（出典あり） / "needs-check"（裏取り中）
  * ========================================================= */
 
@@ -132,6 +132,14 @@ const REFERENCES = {
   sevenTwoSevenNote: {
     label: { ja: "note: 727看板と新幹線の車窓", en: "note: 727 signs from the Shinkansen (Japanese only)" },
     url: "https://note.com/wotuntun/n/n3d2eceae1689",
+  },
+  sevenTwoSevenOfficial: {
+    label: { ja: "727 セブンツーセブン化粧品", en: "727 Cosmetics official site" },
+    url: "https://www.727.co.jp/",
+  },
+  kinshozanWiki: {
+    label: { ja: "Wikipedia: 金生山", en: "Wikipedia: Mt. Kinsho (Japanese only)" },
+    url: "https://ja.wikipedia.org/wiki/%E9%87%91%E7%94%9F%E5%B1%B1",
   },
   kiyosuCastle: {
     label: { ja: "清洲城", en: "Kiyosu Castle" },
@@ -310,23 +318,23 @@ const SPOTS = [
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "プチプチ看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "あのプチプチを、海側の窓に。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®系の看板が見えます。2026年7月の実車では、ユーハート湘南日曜学院の看板と727 COSMETICS看板の隣に、プチプチを思わせる絵柄の看板が並んでいました。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。短い出会いなので、少し幅を持って探してください。" },
-    en: { name: "PUTIPUTI Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "A tiny Seat A discovery.", story: "Between Shin-Yokohama and Odawara, a PUTIPUTI-like sign appears on the Seat A side. On a July 2026 ride, it stood beside a U-Heart Shonan Nichiyo Gakuin sign and a 727 COSMETICS sign. It is not a major landmark, but it is exactly the kind of small trackside discovery that makes the ride feel personal. It is quick, so start watching with a little margin." },
+    ja: { name: "プチプチ看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "謎のプチプチ看板。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®系の看板が見えます。沿線の看板は時々変わりますが、2026年7月時点では「私は誰でしょう」と問いかける謎の看板になっていました。隣にはおなじみの727 COSMETICS看板。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。短い出会いなので、少し幅を持って探してください。" },
+    en: { name: "PUTIPUTI Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "A mystery PUTIPUTI sign.", story: "Between Shin-Yokohama and Odawara, a PUTIPUTI-like sign appears on the Seat A side. The trackside sign changes from time to time; as of July 2026, it had become a small mystery asking, 'Who am I?' Beside it is the familiar 727 COSMETICS sign. It is not a major landmark, but it is exactly the kind of small discovery that makes the ride feel personal. It is quick, so start watching with a little margin." },
     minutesFromTokyo: 29, side: "A", category: "curious", confidence: "verified", durationSec: 12, scene: "hills",
-    image: "images/20260704_putiputi_sign_1_michikusa.jpg",
+    image: "images/20260704_putiputi_sign_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
       date: "2026-07-04",
-      note: { ja: "のぞみ27号・A席側、東京11:12発、11:41撮影。隣に727看板", en: "Nozomi 27, Seat A side, Tokyo 11:12 departure, photographed at 11:41. The 727 sign is next to it." },
+      note: { ja: "のぞみ27号・A席側、東京11:12発、11:41撮影。2026年7月時点の謎看板", en: "Nozomi 27, Seat A side, Tokyo 11:12 departure, photographed at 11:41. The July 2026 mystery sign." },
     },
     photos: [
       {
-        src: "images/20260704_putiputi_sign_2_michikusa.jpg",
+        src: "images/20260704_putiputi_sign_1_michikusa.jpg",
         alt: { ja: "プチプチ系看板と727看板", en: "PUTIPUTI-like sign and a 727 sign" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-04",
-        note: { ja: "ユーハート湘南日曜学院と727看板の隣に並ぶ看板", en: "The sign beside U-Heart Shonan Nichiyo Gakuin and 727." },
+        note: { ja: "となりにはおなじみの727 COSMETICS看板", en: "The familiar 727 COSMETICS sign sits next to it." },
       },
       {
         src: "images/20190127_putiputi_sign_putiputi0808.jpg",
@@ -350,10 +358,10 @@ const SPOTS = [
   {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "田んぼの中に、727。", story: "新横浜を出て少しすると、藤沢市葛原付近のA席側に、727 COSMETICSの白い看板が見えます。東京から新大阪へ向かうときに最初に見つけやすい727看板のひとつで、隣には西八王子方面でよく見かける、きぬた歯科の「248」看板も並びます。さらに進むと、藤沢市用田付近にも別の727看板が現れます。大きな名所ではありません。でも、東海道新幹線に何度も乗る人ほど気になってしまう、沿線ならではの小さな発見です。" },
-    en: { name: "727 Cosmetics Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 in the fields.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat A side around Kuzuhara in Fujisawa. It may be one of the first easy-to-spot 727 signs when heading from Tokyo toward Shin-Osaka, and it stands beside a bright yellow Kinuta Dental '248' sign. Farther along, another 727 sign appears near Yoda in Fujisawa. These are not famous landmarks, but they are exactly the kind of trackside discoveries that repeat Shinkansen riders start to notice." },
+    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "田んぼの中に、727。", story: "新横浜を出て少しすると、藤沢市葛原付近のA席側に、727 COSMETICSの白い看板が見えます。新幹線からは一瞬で通り過ぎるため「何の広告だろう」と気になりやすい、沿線広告の代表格です。全国の新幹線沿線に点在し、東海道新幹線だけでも複数あるので、一枚見つけると次も探したくなります。隣の黄色い「248」は、最近は高速道路だけでなく新幹線の車窓でもよく見かける、きぬた歯科系の看板。さらに進むと藤沢市用田付近にも別の727看板が現れます。" },
+    en: { name: "727 Cosmetics Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 in the fields.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat A side around Kuzuhara in Fujisawa. Because it flashes by in only a few seconds, many riders wonder what the mysterious '727' sign is. The signs are scattered along Shinkansen lines, and there are many on the Tokaido Shinkansen, so once you spot one, you may start hunting for the next. The yellow '248' sign beside it is a Kinuta Dental-style sign, familiar from roads and increasingly visible from train windows too. Farther along, another 727 sign appears near Yoda in Fujisawa." },
     minutesFromTokyo: 26, side: "A", category: "curious", confidence: "verified", durationSec: 30, scene: "hills",
-    image: "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+    image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
@@ -362,11 +370,11 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
+        src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
         alt: { ja: "248看板と並ぶ727 COSMETICS看板", en: "727 COSMETICS sign beside the 248 sign" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-04",
-        note: { ja: "きぬた歯科の248看板と、みんなの介護看板の間に見える727", en: "727 between the Kinuta Dental 248 sign and a care-service sign." },
+        note: { ja: "248看板と、みんなの介護看板の間に見える727", en: "727 between the 248 sign and a care-service sign." },
       },
       {
         src: "images/20260629_727_board_1_4x_michikusa.jpg",
@@ -380,10 +388,10 @@ const SPOTS = [
         alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
-        note: { ja: "近接して現れる別の727看板。きぬた歯科看板の隣", en: "Another nearby 727 sign beside a Kinuta Dental sign." },
+        note: { ja: "近接して現れる別の727看板。黄色い歯科看板の隣", en: "Another nearby 727 sign beside a yellow dental sign." },
       },
     ],
-    references: [REFERENCES.sevenTwoSevenNote],
+    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial],
     map: { ja: "神奈川県藤沢市葛原 727 COSMETICS 看板", en: "Kuzuhara Fujisawa 727 COSMETICS sign" },
   },
   {
@@ -829,7 +837,7 @@ const SPOTS = [
   {
     id: "kirin-beer-factory",
     icon: "🏭",
-    ja: { name: "キリンビール工場", area: "名古屋 → 岐阜羽島", hook: "巨大な生ビールが、ずらり。", story: "名古屋を出て庄内川を渡り、枇杷島駅の横を過ぎるころ、E席側にキリンビール名古屋工場の貯蔵タンクが見えてきます。遠目には、巨大な生ビールがずらりと並んでいるよう。線路沿いの産業風景なのに、見つけると少し楽しくなる珍景です。" },
+    ja: { name: "キリンビール工場", area: "名古屋 → 岐阜羽島", hook: "巨大な生ビールが、ずらり。", story: "名古屋を出て庄内川を渡り、枇杷島駅の横を過ぎるころ、E席側にキリンビール名古屋工場の貯蔵タンクが見えてきます。遠目には、巨大な生ビールがずらりと並んでいるよう。線路沿いの産業風景なのに、見つけると少し楽しくなる車窓です。" },
     en: { name: "Kirin Beer Factory", area: "Nagoya → Gifu-Hashima", hook: "Rows of giant beers.", story: "After leaving Nagoya, crossing the Shonai River and passing Biwajima, the Kirin Beer Nagoya Factory appears on the Seat E side. Its storage tanks look like rows of giant draft beers from the train window: an industrial scene that somehow turns into a playful discovery." },
     minutesFromTokyo: 98, side: "E", category: "curious", confidence: "verified", durationSec: 25, scene: "solar",
     image: "images/20250920_kirin_beer_factory_letus10.jpg",
@@ -930,9 +938,9 @@ const SPOTS = [
   {
     id: "kinshozan",
     icon: "⛏️",
-    ja: { name: "金生山", area: "岐阜羽島 → 米原（大垣付近）", hook: "削られた白い山。", story: "岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつては「岐阜のピラミッド」と呼ばれた独特の形が車窓から見えました。いま、そのピラミッドの姿はもう見られません。それでも採掘が景色を変えていくことまで含めて、記憶に残る車窓です。" },
-    en: { name: "Mt. Kinsho", area: "Gifu-Hashima → Maibara, near Ogaki", hook: "A white quarried mountain.", story: "After Gifu-Hashima, near Ogaki, a pale quarried mountainside appears on the Seat E side. Mt. Kinsho is a limestone mountain once known from the train window for a distinctive pyramid-like shape. That pyramid form is no longer visible, but the changed landscape itself is part of the story: a mountain reshaped by quarrying, caught in a few seconds from the Shinkansen." },
-    minutesFromTokyo: 108, side: "E", category: "notable", confidence: "verified", durationSec: 45, scene: "mountain",
+    ja: { name: "金生山", area: "岐阜羽島 → 米原（大垣付近）", hook: "消えた岐阜のピラミッド。", story: "岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつては「岐阜のピラミッド」と呼ばれた四角錐の山頂部分が車窓から見えました。いま、その山頂部分はもうありません。長年にわたる石灰岩の採掘によって大きく削り取られ、白い岩肌が階段状にむき出しになった独特の景観を形成しています。採掘が景色を変えていくことまで含めて、記憶に残る車窓です。" },
+    en: { name: "Mt. Kinsho", area: "Gifu-Hashima → Maibara, near Ogaki", hook: "The vanished Gifu pyramid.", story: "After Gifu-Hashima, near Ogaki, a pale quarried mountainside appears on the Seat E side. Mt. Kinsho is a limestone mountain once known from the train window for a pyramid-like peak nicknamed the 'Gifu Pyramid.' That peak is no longer there. Long years of limestone quarrying have cut deeply into the mountain, leaving white rock faces exposed in stepped layers. The changed landscape itself is part of the story: a mountain reshaped by industry, caught in a few seconds from the Shinkansen." },
+    minutesFromTokyo: 106, side: "E", category: "notable", confidence: "verified", durationSec: 45, scene: "mountain",
     image: "images/20260704_kinshozan_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -940,6 +948,7 @@ const SPOTS = [
       date: "2026-07-04",
       note: { ja: "のぞみ27号、東京11:12発、13:00撮影", en: "Nozomi 27, departed Tokyo at 11:12, photographed at 13:00." },
     },
+    references: [REFERENCES.kinshozanWiki],
     map: { ja: "金生山 大垣", en: "Mt. Kinsho Ogaki" },
   },
   {

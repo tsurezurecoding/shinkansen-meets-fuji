@@ -86,7 +86,6 @@ const MSG = {
     faqQEnglish: "英語でも使えますか？",
     faqAEnglish: "ページ上部のENボタンで英語表示に切り替えられます。海外から来た人にも、富士山の見える席側やタイミングが伝わるようにしています。",
     seatE: "E席・山側", seatA: "A席・海側",
-    catClassic: "定番", catNotable: "準定番", catCurious: "珍景",
     confCheck: "裏取り中",
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
@@ -179,7 +178,6 @@ const MSG = {
     faqQEnglish: "Can I use it in English?",
     faqAEnglish: "Yes. Use the EN button at the top of the page to switch the app to English.",
     seatE: "Seat E", seatA: "Seat A",
-    catClassic: "Classic", catNotable: "Notable", catCurious: "Curious",
     confCheck: "verifying",
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
@@ -352,13 +350,7 @@ function seatBadge(spot) {
   return `<span class="badge ${cls}">${label}</span>`;
 }
 function catBadge(spot) {
-  const labelKey = {
-    classic: "catClassic",
-    notable: "catNotable",
-    curious: "catCurious",
-    hidden: "catNotable",
-  }[spot.category] || "catNotable";
-  return `<span class="badge badge-${spot.category}">${t(labelKey)}</span>`;
+  return timelineThemeTagBadgesHTML(spot);
 }
 function confBadge(spot) {
   return spot.confidence === "needs-check" ? `<span class="badge badge-check">${t("confCheck")}</span>` : "";
@@ -1243,6 +1235,13 @@ function galleryTagBadgesHTML(spot) {
   const tags = galleryTags(spot);
   return galleryTagOrder
     .filter((tag) => tags.has(tag) && tag !== "day" && tag !== "night")
+    .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
+    .join("");
+}
+function timelineThemeTagBadgesHTML(spot) {
+  const tags = galleryTags(spot);
+  return galleryTagOrder
+    .filter((tag) => tags.has(tag) && !["seat-a", "seat-e", "day", "night"].includes(tag))
     .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
     .join("");
 }

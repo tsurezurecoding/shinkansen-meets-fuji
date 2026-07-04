@@ -836,8 +836,6 @@ button { font-family: inherit; cursor: pointer; }
 .badge-seat-E { background: #e6eef8; color: #33567e; }
 .badge-seat-A { background: #e7f2ec; color: #2f6649; }
 .badge-classic { background: var(--paper-deep); color: var(--ink-soft); }
-.badge-notable, .badge-hidden { background: #eaf1ec; color: #2f6649; }
-.badge-curious { background: #fbe9df; color: #a6512f; }
 .badge-lucky { background: #fdf3d7; color: #8a6716; }
 .badge-check { background: #f1f1f1; color: #888; }
 .badge-night { background: #20283b; color: #f4f7ff; }
