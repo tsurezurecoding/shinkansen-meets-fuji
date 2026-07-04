@@ -64,9 +64,9 @@ const MSG = {
     medalTargets: "対象スポット",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "33の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
+    galSub: "35の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fCity: "街並",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
@@ -157,9 +157,9 @@ const MSG = {
     medalTargets: "Included views",
     btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Browse all 33 window views. Tap “Spotted!” to record what you saw.",
+    galSub: "Browse all 35 window views. Tap “Spotted!” to record what you saw.",
     morePhotos: "More photos",
-    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fCity: "City",
+    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerGuide: "How to see Mt. Fuji",
     footerReferences: "Window links",
@@ -1210,10 +1210,11 @@ function discoverySpotOrder(a, b) {
 const galleryTagGroups = {
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
-  industry: new Set(["putiputi-sign", "727-board", "shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot"]),
-  city: new Set(["tokyo-tower", "hinataoka", "nagoya-station-skyline"]),
+  industry: new Set(["shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan"]),
+  sign: new Set(["putiputi-sign", "727-board", "nichiban-anjo"]),
+  city: new Set(["tokyo-tower", "maruko-bridge", "hinataoka", "nagoya-station-skyline"]),
 };
-const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "classic", "nature", "history", "industry", "city"];
+const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "classic", "nature", "history", "industry", "sign", "city"];
 const galleryTagLabelKeys = {
   "seat-a": "fSeatA",
   "seat-e": "fSeatE",
@@ -1223,6 +1224,7 @@ const galleryTagLabelKeys = {
   nature: "fNature",
   history: "fHistory",
   industry: "fIndustry",
+  sign: "fSign",
   city: "fCity",
 };
 function galleryTags(spot) {
