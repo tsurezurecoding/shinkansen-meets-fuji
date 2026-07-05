@@ -102,6 +102,14 @@ const REFERENCES = {
     label: { ja: "掛川城公式", en: "Kakegawa Castle official site" },
     url: "https://kakegawajo.com/",
   },
+  genkiSignBlog: {
+    label: { ja: "@letus10: 元気が出る看板車窓記事", en: "@letus10: Cheer-up signs window article (Japanese only)" },
+    url: "https://cotetu.seesaa.net/article/516019488.html",
+  },
+  genkiSignStreetView: {
+    label: { ja: "Google マップ: 元気が出る看板付近", en: "Google Maps: Cheer-up signs area" },
+    url: "https://www.google.com/maps/@34.7298265,137.8986674,3a,46.4y,18.58h,82.48t/data=!3m7!1e1!3m5!1sWkV2_8Z6dI0WHi46Bem_YA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.519999999999996%26panoid%3DWkV2_8Z6dI0WHi46Bem_YA%26yaw%3D18.58!7i16384!8i8192?entry=ttu",
+  },
   hamanakoTourism: {
     label: { ja: "浜名湖観光圏", en: "Lake Hamana tourism" },
     url: {
@@ -334,7 +342,7 @@ const SPOTS = [
         alt: { ja: "プチプチ系看板と727看板", en: "PUTIPUTI-like sign and a 727 sign" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-04",
-        note: { ja: "となりにはおなじみの727 COSMETICS看板", en: "The familiar 727 COSMETICS sign sits next to it." },
+        note: { ja: "A席側。となりにはおなじみの727 COSMETICS看板", en: "Seat A side. The familiar 727 COSMETICS sign sits next to it." },
       },
       {
         src: "images/20190127_putiputi_sign_putiputi0808.jpg",
@@ -358,15 +366,15 @@ const SPOTS = [
   {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "田んぼの中に、727。", story: "新横浜を出て少しすると、藤沢市葛原付近のA席側に、727 COSMETICSの白い看板が見えます。新幹線からは一瞬で通り過ぎるため「何の広告だろう」と気になりやすい、沿線広告の代表格です。全国の新幹線沿線に点在し、東海道新幹線だけでも複数あるので、一枚見つけると次も探したくなります。隣の黄色い「248」は、最近は高速道路だけでなく新幹線の車窓でもよく見かける、きぬた歯科系の看板。さらに進むと藤沢市用田付近にも別の727看板が現れます。" },
-    en: { name: "727 Cosmetics Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 in the fields.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat A side around Kuzuhara in Fujisawa. Because it flashes by in only a few seconds, many riders wonder what the mysterious '727' sign is. The signs are scattered along Shinkansen lines, and there are many on the Tokaido Shinkansen, so once you spot one, you may start hunting for the next. The yellow '248' sign beside it is a Kinuta Dental-style sign, familiar from roads and increasingly visible from train windows too. Farther along, another 727 sign appears near Yoda in Fujisawa." },
-    minutesFromTokyo: 26, side: "A", category: "curious", confidence: "verified", durationSec: 30, scene: "hills",
+    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "田んぼの中に、727。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。新幹線からは一瞬で通り過ぎるため「何の広告だろう」と気になりやすい、沿線広告の代表格です。この葛原付近の看板はE席側ですが、さらに進んだ用田付近やプチプチ看板の隣に見えるものはA席側。727は沿線に複数あり、席側も地点で変わります。隣の黄色い「248」は、最近は高速道路だけでなく新幹線の車窓でもよく見かける、きぬた歯科系の看板です。" },
+    en: { name: "727 Cosmetics Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 in the fields.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. The Kuzuhara sign is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the PUTIPUTI sign, are on Seat A. The signs are scattered along Shinkansen lines, so the side changes by location. Because each one flashes by in seconds, many riders start wondering what the mysterious '727' signs are." },
+    minutesFromTokyo: 26, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 30, scene: "hills",
     image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
       date: "2026-07-04",
-      note: { ja: "のぞみ27号・A席側、東京11:12発、11:38撮影。藤沢市葛原付近", en: "Nozomi 27, Seat A side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa." },
+      note: { ja: "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa." },
     },
     photos: [
       {
@@ -374,7 +382,14 @@ const SPOTS = [
         alt: { ja: "248看板と並ぶ727 COSMETICS看板", en: "727 COSMETICS sign beside the 248 sign" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-04",
-        note: { ja: "248看板と、みんなの介護看板の間に見える727", en: "727 between the 248 sign and a care-service sign." },
+        note: { ja: "E席側。248看板と、みんなの介護看板の間に見える727", en: "Seat E side. 727 between the 248 sign and a care-service sign." },
+      },
+      {
+        src: "images/20260629_727_board_2_2x_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "のぞみ99号・A席側、6:18撮影。用田付近のうち東京寄りの727看板。黄色い歯科看板の隣", en: "Nozomi 99, Seat A side, photographed at 6:18. The Tokyo-side 727 sign near Yoda, beside a yellow dental sign." },
       },
       {
         src: "images/20260629_727_board_1_4x_michikusa.jpg",
@@ -382,13 +397,6 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "のぞみ99号・A席側、6:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, photographed at 6:18 near Yoda, Fujisawa." },
-      },
-      {
-        src: "images/20260629_727_board_2_2x_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "近接して現れる別の727看板。黄色い歯科看板の隣", en: "Another nearby 727 sign beside a yellow dental sign." },
       },
     ],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial],
@@ -635,6 +643,31 @@ const SPOTS = [
     ],
     references: [REFERENCES.kakegawaCastle],
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
+  },
+  {
+    id: "genki-sign",
+    icon: "💬",
+    ja: { name: "元気が出る看板", area: "掛川 → 浜松（磐田付近）", hook: "しっぺいの応援看板。", story: "掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、短い応援メッセージの野立て看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。車窓からは遠く小さく見えるので、文字を読み切るより、磐田市のキャラクター・しっぺいがいる三連続看板として探すのがコツです。" },
+    en: { name: "Cheer-up Signs", area: "Kakegawa → Hamamatsu, near Iwata", hook: "Shippei's cheer-up signs.", story: "After Kakegawa, heading toward Hamamatsu, a row of small roadside signs appears on the Seat E side shortly after the House Foods Shizuoka Factory area. The messages are simple and encouraging: 'I'm always rooting for you,' 'Thank you, everyone,' and 'There will always be tomorrow.' From the Shinkansen they are distant and quick, so look for the three signs with Shippei, Iwata City's white dog character, rather than trying to read every word." },
+    minutesFromTokyo: 64, side: "E", category: "curious", confidence: "verified", durationSec: 18, scene: "hills",
+    image: "images/20250608_genki_sign_letus10.jpg",
+    photoCredit: {
+      ja: "@letus10 / 新幹線の車窓から",
+      en: "@letus10 / Shinkansen window blog",
+      url: "https://cotetu.seesaa.net/article/516019488.html",
+      note: { ja: "掛川・浜松間、山側・E席から見える三連続の応援看板", en: "Three cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
+    },
+    photos: [
+      {
+        src: "images/20260704_genki_sign_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から遠くに見える元気が出る看板", en: "Cheer-up signs seen in the distance from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-04",
+        note: { ja: "のぞみ27号・E席側、東京11:12発、12:18撮影", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 12:18." },
+      },
+    ],
+    references: [REFERENCES.genkiSignBlog, REFERENCES.genkiSignStreetView],
+    map: { lat: 34.7298265, lng: 137.8986674, ja: "磐田 元気が出る看板", en: "Iwata cheer-up signs" },
   },
   {
     id: "hamanako",

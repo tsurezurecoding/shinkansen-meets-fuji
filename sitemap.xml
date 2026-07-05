@@ -205,6 +205,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/spots/genki-sign.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/genki-sign.html</loc>
+    <lastmod>2026-07-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/spots/hamanako.html</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>monthly</changefreq>

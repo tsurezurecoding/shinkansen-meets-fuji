@@ -38,7 +38,7 @@ const UI = {
     langSwitch: "English",
     eyebrow: "TOKAIDO SHINKANSEN WINDOW VIEW",
     titleSuffix: "の車窓ガイド | 新幹線の窓",
-    titleQuestion: (name) => `${name}は新幹線から見える？`,
+    titleQuestion: (name) => `${name}はいつ見える？座席側は？`,
     searchCta: "トップで列車検索する",
     appCta: "この見どころをアプリで開く",
     sectionHow: (name) => `${name}の見つけ方`,
@@ -64,9 +64,9 @@ const UI = {
     homeTitle: "Tokaido Shinkansen 車窓ガイド | 新幹線の窓",
     homeLead: "東海道新幹線から見える富士山、浜名湖、城、東寺、車両基地などを、写真と席側で確認できます。",
     homeCta: "アプリで列車検索する",
-    guideTitle: "新幹線から富士山を見るには？ | 新幹線の窓",
-    guideLead: "東海道新幹線から富士山を見るための席側、見えるタイミング、左富士、富士山以外の車窓をまとめました。",
-    guideHeading: "新幹線から富士山を見るには？",
+    guideTitle: "新幹線から富士山はいつ見える？どっち側？E席と時刻のFAQ | 新幹線の窓",
+    guideLead: "東海道新幹線から富士山はいつ見える？のぞみなら東京から約40〜45分後、三島→新富士で約3〜4分。座席はE席側です。",
+    guideHeading: "新幹線から富士山はいつ見える？どっち側？",
     guideBack: "アプリで列車検索する",
     guideQuestions: [
       {
@@ -96,7 +96,7 @@ const UI = {
     langSwitch: "日本語",
     eyebrow: "TOKAIDO SHINKANSEN WINDOW VIEW",
     titleSuffix: "from the Tokaido Shinkansen | Shinkansen Window",
-    titleQuestion: (name) => `Can you see ${name} from the Shinkansen?`,
+    titleQuestion: (name) => `When can you see ${name} from the Shinkansen?`,
     searchCta: "Find your train",
     appCta: "Open this view in the app",
     sectionHow: (name) => `How to find ${name}`,
@@ -122,9 +122,9 @@ const UI = {
     homeTitle: "Tokaido Shinkansen Window Views | Shinkansen Window",
     homeLead: "A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.",
     homeCta: "Find your train in the app",
-    guideTitle: "How to see Mt. Fuji from the Shinkansen | Shinkansen Window",
-    guideLead: "For the classic Mt. Fuji view from the Tokaido Shinkansen, sit on Seat E and start watching about 40-45 minutes after leaving Tokyo.",
-    guideHeading: "How to see Mt. Fuji from the Shinkansen",
+    guideTitle: "When can you see Mt. Fuji from the Shinkansen? Seat side and timing FAQ | Shinkansen Window",
+    guideLead: "On a Nozomi, start watching about 40-45 minutes after Tokyo, between Mishima and Shin-Fuji. Sit in Seat E.",
+    guideHeading: "When can you see Mt. Fuji from the Shinkansen?",
     guideBack: "Find your train in the app",
     guideQuickFacts: [
       { label: "Best seat", value: "Seat E", detail: "The mountain-side window on the Tokaido Shinkansen." },
@@ -232,10 +232,11 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#quick-intro">${lang === "ja" ? "新幹線の窓とは？" : "About"}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${escapeHTML(ui.navSearch)}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#gallery">${escapeHTML(ui.navGallery)}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "メダルを見る" : "Medals"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#quick-intro">${lang === "ja" ? "とは？" : "About"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車" : "Train"}</a>
+      <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "図鑑" : "Views"}</a>
+      <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "メダル" : "Medals"}</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="${jaActive.trim()}" href="${escapeHTML(jaHref)}">日本語</a>
@@ -306,11 +307,13 @@ function sideLabel(spot, lang) {
 
 function description(spot, lang) {
   const data = spot[lang] || spot.ja || {};
-  const firstSentence = rawText(data.story).split(lang === "ja" ? "。" : ".").filter(Boolean)[0] || data.hook || "";
-  const suffix = lang === "ja" ? "。" : ".";
   if (lang === "ja") {
+    const firstSentence = rawText(data.story).split("。").filter(Boolean)[0] || data.hook || "";
+    const suffix = "。";
     return text(`${data.name}は東海道新幹線の車窓から見えるスポットです。${sideLabel(spot, lang)}、${jaAreaPhrase(data.area)}。${firstSentence}${suffix}`);
   }
+  const firstSentence = rawText(data.hook || data.story || "");
+  const suffix = /[.!?]$/.test(firstSentence) ? "" : ".";
   return text(`${data.name} is a Tokaido Shinkansen window view ${enAreaPhrase(data.area)}. Watch from ${sideLabel(spot, lang)}. ${firstSentence}${suffix}`);
 }
 
@@ -408,8 +411,8 @@ function spotPageHTML(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const otherLang = lang === "ja" ? "en" : "ja";
   const title = lang === "ja"
-    ? `${data.name}は新幹線から見える？ ${data.area}${ui.titleSuffix}`
-    : `${data.name} ${ui.titleSuffix}`;
+    ? `${data.name}はいつ見える？座席側は？ ${data.area}${ui.titleSuffix}`
+    : `When can you see ${data.name} from the Shinkansen? ${data.area} | Shinkansen Window`;
   const desc = description(spot, lang);
   const url = pageUrl(lang, spot.id);
   const prefix = lang === "ja" ? "../" : "../../";

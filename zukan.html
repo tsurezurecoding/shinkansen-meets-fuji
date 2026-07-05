@@ -12,14 +12,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <meta property="og:title" content="車窓図鑑 | 新幹線の窓">
-  <meta property="og:description" content="富士山、浜名湖、城、海、街並み、工業景観。東海道新幹線から見える35の車窓スポットを一覧できます。">
+  <meta property="og:description" content="富士山、浜名湖、城、海、街並み、工業景観。東海道新幹線から見える36の車窓スポットを一覧できます。">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.michikusa-travel.com/zukan.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="車窓図鑑 | 新幹線の窓">
-  <meta name="twitter:description" content="東海道新幹線から見える35の車窓スポットを、座席側やジャンルで探せます。">
+  <meta name="twitter:description" content="東海道新幹線から見える36の車窓スポットを、座席側やジャンルで探せます。">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta name="twitter:image:alt" content="新幹線の窓 - 車窓図鑑">
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/zukan.html">
@@ -87,10 +87,11 @@
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="index.html#quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
-      <a href="index.html#journey" data-i18n="ctaStart">旅をはじめる</a>
-      <a href="zukan.html" data-i18n="ctaBrowse">車窓をながめる</a>
-      <a href="index.html#memories" data-i18n="ctaMedals">メダルを見る</a>
+      <a href="index.html#quick-intro" data-i18n="navQuick">とは？</a>
+      <a href="index.html#journey" data-i18n="navStart">列車</a>
+      <a href="zukan.html" data-i18n="navBrowse">図鑑</a>
+      <a href="guide.html" data-i18n="navFaq">FAQ</a>
+      <a href="index.html#memories" data-i18n="navMedals">メダル</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="ja">日本語</button>
@@ -102,7 +103,7 @@
     <section class="field-guide-hero">
       <p class="eyebrow" data-i18n="galEyebrow">FIELD GUIDE</p>
       <h1 data-i18n="galTitle">車窓図鑑 — ぜんぶの見どころ</h1>
-      <p data-i18n="galSub">35の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。</p>
+      <p data-i18n="galSub">36の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。</p>
     </section>
 
     <section class="section" id="gallery">
@@ -142,6 +143,15 @@
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
   <script src="data.js?v=20260701-seo-ux-fix"></script>
   <script src="app.js?v=20260704-desktop-trip-layout"></script>
+  <script>
+    window.addEventListener("load", function () {
+      try {
+        var f = new URLSearchParams(window.location.search).get("filter");
+        if (!f) return;
+        var btn = document.querySelector('[data-filter="' + f + '"]');
+        if (btn) btn.click();
+      } catch (e) { /* no-op */ }
+    });
+  </script>
 </body>
 </html>
-
