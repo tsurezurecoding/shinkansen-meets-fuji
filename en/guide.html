@@ -48,8 +48,8 @@
     },
     {
       "@type": "Question",
-      "name": "Can JR Pass holders get the Mt. Fuji view?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. The view is identical from Hikari and Kodama trains, which the Japan Rail Pass covers; Nozomi has separate conditions. Check japanrailpass.net for current pass rules, and reserve Seat E when you book." }
+      "name": "Do reserved seats cost extra?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes, on every train type, not just Nozomi. Exact fares and Japan Rail Pass conditions change, so check smart-ex.jp/en or japanrailpass.net when you book." }
     },
     {
       "@type": "Question",
@@ -98,54 +98,10 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <style>
-    /* guide v2 additions (from v9 prototype) — candidates for style.css */
-    .g9-min{display:inline-block;font-variant-numeric:tabular-nums;background:#f3ecdd;color:#6b6353;border-radius:20px;padding:1px 10px;font-size:.78rem;margin-right:8px;white-space:nowrap}
-    .g9-steps{counter-reset:s;list-style:none;padding:0;margin:0}
-    .g9-steps li{counter-increment:s;position:relative;padding:0 0 14px 44px}
-    .g9-steps li::before{content:counter(s);position:absolute;left:0;top:0;width:28px;height:28px;border-radius:50%;background:#1e2a44;color:#f2ecdf;display:flex;align-items:center;justify-content:center;font-size:.85rem}
-    .g9-timeline{list-style:none;margin:18px 0 6px;padding:0;border-left:2px solid #d8cfba}
-    .g9-timeline li{position:relative;padding:0 0 16px 22px}
-    .g9-timeline li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:#b83a2a}
-    .g9-timeline li.dim::before{background:#cfc6b2}
-    .g9-timeline .t{font-variant-numeric:tabular-nums;color:#b83a2a;font-weight:600;margin-right:10px}
-    .g9-night{background:#1e2a44;color:#e9e2d2;border-radius:20px;padding:26px 26px 20px;margin:8px 0}
-    .g9-night h2{color:#f2ecdf;margin-top:0}
-    .g9-night a{color:#cdd8ee}
-    .g9-night .guide-visual-card{background:#27355357;color:#e9e2d2}
-    .g9-night .guide-visual-card em,.g9-night .guide-visual-card span{color:#b8c0d4}
-    .g9-answer{background:#fff;border:1px solid #e5dcc9;border-radius:16px;padding:16px 18px;margin:14px 0 10px}
-    .g9-answer .a-line{font-size:1.05rem;line-height:1.5}
-    .g9-answer .a-line strong{font-size:1.15em}
-    .g9-answer .a-sub{color:#6b6353;font-size:.88rem;margin-top:2px}
-    .g9-answer .a-cta{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-    .g9-more{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
-    .g9-more a{display:inline-block;border:1px solid #d8cfba;border-radius:20px;padding:5px 14px;font-size:.82rem;color:#3a3630;text-decoration:none;background:#fff}
-    .g9-more a:hover{border-color:#b83a2a;color:#b83a2a}
-    .g9-more a b{font-weight:600}
-    .g9-hero{position:relative;margin:14px 0 0}
-    .g9-hero img{width:100%;aspect-ratio:16/8;object-fit:cover;border-radius:18px;display:block}
-    @media(max-width:600px){.g9-hero img{aspect-ratio:4/3}}
-    .g9-hero figcaption{position:absolute;top:10px;right:14px;color:#fff;font-size:.68rem;text-shadow:0 1px 4px rgba(0,0,0,.65);opacity:.9}
-    .g9-answer-float{position:relative;margin:-46px 14px 12px;box-shadow:0 8px 26px rgba(30,42,68,.14)}
-    @media(max-width:600px){.g9-answer-float{margin:-34px 10px 10px}}
-    .g9-cond{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 0 10px}
-    @media(max-width:600px){.g9-cond{grid-template-columns:1fr}}
-    .g9-cond a{position:relative;display:block;border-radius:14px;overflow:hidden;text-decoration:none}
-    .g9-cond .pics{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px}
-    .g9-cond a img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;transition:transform .25s}
-    .g9-cond a:hover img{transform:scale(1.03)}
-    .g9-cond .txt{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 10px;background:linear-gradient(to top,rgba(13,18,33,.9),rgba(13,18,33,0));color:#fff}
-    .g9-cond .q{font-weight:600;font-size:.95rem;display:block}
-    .g9-cond .a{font-size:.8rem;color:#d7dcea;display:block;margin-top:1px}
-    .g9-cond .a b{color:#f0c463;font-weight:600}
-    @media(max-width:680px){.g9-answer .a-line{font-size:.98rem}}
-    .g9-lede{font-size:.92rem;color:#6b6353;margin:2px 2px 10px}
-  </style>
 </head>
 <body class="spot-page">
   <header class="topbar">
-    <a class="brand" href="../index.html?lang=en">
+    <a class="brand" href="../index.html?lang=en#top">
       <span class="brand-mark">窓</span>
       <span class="brand-text">
         <span class="brand-name">Shinkansen Window</span>
@@ -153,7 +109,7 @@
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="../index.html?lang=en">Home</a>
+      <a href="../index.html?lang=en#top">Home</a>
       <a href="../index.html?lang=en#journey">Train Search</a>
       <a href="../zukan.html?lang=en">Field Guide</a>
       <a href="guide.html" aria-current="page">FAQ</a>

@@ -515,13 +515,11 @@ function spotModalMediaHTML(spot) {
 }
 function stampBadgeHTML(sp, size, fallbackCls) {
   const inked = !!stamps[sp.id];
-  return `<span class="stamp-badge" style="display:inline-flex;flex:none">` +
-    `<img src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" ` +
-    `style="width:${size}px;height:${size}px;${inked ? "" : "filter:grayscale(1) opacity(.4);"}" ` +
-    `onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">` +
-    `<span class="${fallbackCls}" style="display:none">${sp.icon}</span></span>`;
+  return `<span class="stamp-badge">` +
+    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" ` +
+    `onerror="this.hidden=true;this.nextElementSibling.hidden=false">` +
+    `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
-
 function spotDetailModalHTML(spot) {
   const L = spot[lang];
   const heroMedia = spotModalMediaHTML(spot);
