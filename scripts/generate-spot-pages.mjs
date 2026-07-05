@@ -228,15 +228,15 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       <span class="brand-mark">窓</span>
       <span class="brand-text">
         <span class="brand-name">${escapeHTML(ui.brand)}</span>
-        <small>${lang === "ja" ? "旅の瞬間を見逃さない" : "Do not miss the moment"}</small>
+        <small class="brand-sub">${lang === "ja" ? "旅の瞬間を見逃さない" : "Never miss a moment of the journey."}</small>
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#quick-intro">${lang === "ja" ? "とは？" : "About"}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車" : "Train"}</a>
-      <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "図鑑" : "Views"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#top">${lang === "ja" ? "TOP" : "Home"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a>
+      <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "メダル" : "Medals"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "獲得メダル" : "Medals"}</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="${jaActive.trim()}" href="${escapeHTML(jaHref)}">日本語</a>

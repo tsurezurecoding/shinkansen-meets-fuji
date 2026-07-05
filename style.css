@@ -2048,12 +2048,6 @@ body.modal-open { overflow: hidden; }
   }
 }
 
-@media (max-width: 899px) {
-  #timelineSection.timeline-preview {
-    display: none;
-  }
-}
-
 @media (max-width: 540px) {
   .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding: 5px 10px; }
   .brand { overflow: hidden; }

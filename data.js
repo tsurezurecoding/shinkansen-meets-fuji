@@ -293,8 +293,8 @@ const SPOTS = [
   {
     id: "maruko-bridge",
     icon: "🌉",
-    ja: { name: "丸子橋", area: "品川 → 新横浜（多摩川付近）", hook: "多摩川に、青い橋。", story: "品川を過ぎて新横浜へ向かう途中、多摩川を渡る前後でE席側に丸子橋が見えます。東京のビル街から川の景色へ抜ける、旅の序盤の小さな切り替わり。映画「シン・ゴジラ」にも登場した橋で、背後には亀甲山古墳のある緑も重なります。会長撮影の実車写真に加え、「新幹線の車窓から」の写真で橋の形も確認できます。" },
-    en: { name: "Maruko Bridge", area: "Shinagawa → Shin-Yokohama, near the Tama River", hook: "A blue bridge over the Tama.", story: "After Shinagawa, as the train heads toward Shin-Yokohama, Maruko Bridge appears on the Seat E side around the Tama River. It is a small early shift from Tokyo's city blocks to river scenery. The bridge is also known from Shin Godzilla, and the green area behind it includes Kamenokoyama Kofun. Michikusa's ride photo keeps the real-train timing, while the Shinkansen window blog photo makes the bridge shape easier to read." },
+    ja: { name: "丸子橋", area: "品川 → 新横浜（多摩川付近）", hook: "多摩川に、青い橋。", story: "品川を過ぎて新横浜へ向かう途中、多摩川を渡る前後でE席側に丸子橋が見えます。東京のビル街から川の景色へ抜ける、旅の序盤の小さな切り替わり。映画「シン・ゴジラ」にも登場した橋で、背後には亀甲山古墳のある緑も重なります。車窓では一瞬ですが、青いアーチの形を覚えておくと見つけやすい橋です。" },
+    en: { name: "Maruko Bridge", area: "Shinagawa → Shin-Yokohama, near the Tama River", hook: "A blue bridge over the Tama.", story: "After Shinagawa, as the train heads toward Shin-Yokohama, Maruko Bridge appears on the Seat E side around the Tama River. It is a small early shift from Tokyo's city blocks to river scenery. The bridge is also known from Shin Godzilla, and the green area behind it includes Kamenokoyama Kofun. The view is brief, but the blue arch shape makes it easier to spot." },
     minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 18, scene: "bay",
     image: "images/20260704_maruko_bridge_1_michikusa.jpg",
     photoCredit: {
@@ -647,8 +647,8 @@ const SPOTS = [
   {
     id: "genki-sign",
     icon: "💬",
-    ja: { name: "元気が出る看板", area: "掛川 → 浜松（磐田付近）", hook: "しっぺいの応援看板。", story: "掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、短い応援メッセージの野立て看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。車窓からは遠く小さく見えるので、文字を読み切るより、磐田市のキャラクター・しっぺいがいる三連続看板として探すのがコツです。" },
-    en: { name: "Cheer-up Signs", area: "Kakegawa → Hamamatsu, near Iwata", hook: "Shippei's cheer-up signs.", story: "After Kakegawa, heading toward Hamamatsu, a row of small roadside signs appears on the Seat E side shortly after the House Foods Shizuoka Factory area. The messages are simple and encouraging: 'I'm always rooting for you,' 'Thank you, everyone,' and 'There will always be tomorrow.' From the Shinkansen they are distant and quick, so look for the three signs with Shippei, Iwata City's white dog character, rather than trying to read every word." },
+    ja: { name: "元気が出る看板", area: "掛川 → 浜松（磐田付近）", hook: "しっぺいの応援看板。", story: "掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、短い応援メッセージの野立て看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。ポジティブなメッセージを車窓で見つけると、少し元気が出ます。遠く小さく見えるので、文字を読み切るより、磐田市のキャラクター・しっぺいがいる三連続看板として探すのがコツです。" },
+    en: { name: "Cheer-up Signs", area: "Kakegawa → Hamamatsu, near Iwata", hook: "Shippei's cheer-up signs.", story: "After Kakegawa, heading toward Hamamatsu, a row of small roadside signs appears on the Seat E side shortly after the House Foods Shizuoka Factory area. The messages are simple and encouraging: 'I'm always rooting for you,' 'Thank you, everyone,' and 'There will always be tomorrow.' Catching a positive message from the train can give the ride a small lift. From the Shinkansen they are distant and quick, so look for the three signs with Shippei, Iwata City's white dog character, rather than trying to read every word." },
     minutesFromTokyo: 64, side: "E", category: "curious", confidence: "verified", durationSec: 18, scene: "hills",
     image: "images/20250608_genki_sign_letus10.jpg",
     photoCredit: {

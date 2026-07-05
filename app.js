@@ -14,7 +14,7 @@ const MSG = {
     heroCtaStart: "旅をはじめる",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "とは？", navStart: "列車", navBrowse: "図鑑", navFaq: "FAQ", navMedals: "メダル",
+    navQuick: "TOP", navStart: "列車選択", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
@@ -107,7 +107,7 @@ const MSG = {
     heroCtaStart: "Start your journey",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
-    navQuick: "About", navStart: "Train", navBrowse: "Views", navFaq: "FAQ", navMedals: "Medals",
+    navQuick: "Home", navStart: "Train Search", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
@@ -1433,7 +1433,7 @@ function init() {
     track("train_search", { direction, board_station: boardId });
     showTrainResults();
   });
-  $("#buildBtn").addEventListener("click", () => buildTimeline(null));
+  $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   $("#resetBtn").addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
       stamps = {}; localStorage.setItem("mado-stamps", "{}");
