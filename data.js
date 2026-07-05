@@ -324,6 +324,38 @@ const SPOTS = [
     map: { ja: "丸子橋 多摩川", en: "Maruko Bridge Tama River" },
   },
   {
+    id: "musashi-kosugi-towers",
+    icon: "🏙️",
+    ja: { name: "武蔵小杉のタワーマンション群", area: "品川 → 新横浜（武蔵小杉付近）", hook: "川を越えた、塔の街。", story: "東京から新大阪へ向かうと、丸子橋を過ぎてすぐ、E席側に武蔵小杉のタワーマンション群が迫ります。多摩川の開けた景色から、縦に伸びる街へ一気に切り替わる瞬間。名所というより、首都圏の密度をそのまま見せる車窓です。昼は建物の高さが、夜は窓明かりの層が印象に残ります。" },
+    en: { name: "Musashi-Kosugi Towers", area: "Shinagawa → Shin-Yokohama, around Musashi-Kosugi", hook: "A wall of towers after the river.", story: "Heading from Tokyo toward Shin-Osaka, just after Maruko Bridge, the Musashi-Kosugi high-rise towers appear on the Seat E side. The view shifts suddenly from the open Tama River to a dense vertical city. It is not a classic landmark, but it captures the scale of Greater Tokyo from the train window. By day the height stands out; at night, the stacked window lights do." },
+    minutesFromTokyo: 14, side: "E", category: "notable", confidence: "verified", durationSec: 35, scene: "hills",
+    image: "images/20260704_musashi_kosugi_towers_1_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-07-04",
+      note: { ja: "のぞみ27号・E席側、東京11:12発、11:26撮影", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:26." },
+    },
+    photos: [
+      {
+        src: "images/20260704_musashi_kosugi_towers_2_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える武蔵小杉のタワーマンション群", en: "Musashi-Kosugi towers from Seat E" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-04",
+        note: { ja: "丸子橋を過ぎてすぐに見える高層住宅群", en: "High-rise residential towers just after Maruko Bridge" },
+      },
+      {
+        src: "images/20260629_musashi_kosugi_towers_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の新幹線から見える武蔵小杉のタワーマンション群", en: "Musashi-Kosugi towers at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "夜は窓明かりが積み重なる街並みに変わる", en: "At night, stacked apartment lights change the view" },
+      },
+    ],
+    map: { ja: "武蔵小杉 タワーマンション 東海道新幹線", en: "Musashi-Kosugi towers Tokaido Shinkansen" },
+  },
+  {
     id: "putiputi-sign",
     icon: "🫧",
     ja: { name: "プチプチ看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "謎のプチプチ看板。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®系の看板が見えます。沿線の看板は時々変わりますが、2026年7月時点では「私は誰でしょう」と問いかける謎の看板になっていました。隣にはおなじみの727 COSMETICS看板。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。短い出会いなので、少し幅を持って探してください。" },
