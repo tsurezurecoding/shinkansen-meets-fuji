@@ -214,6 +214,10 @@ function appHref(lang, spotId = "", prefix = "../") {
   return `${prefix}index.html${query}${hash}`;
 }
 
+function liveHref(lang, prefix = "../") {
+  return `${prefix}live/index.html${lang === "en" ? "?lang=en" : ""}`;
+}
+
 function languageSwitchHref(lang, spotId) {
   return lang === "ja" ? `../en/spots/${spotId}.html` : `../../spots/${spotId}.html`;
 }
@@ -234,6 +238,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
     <nav class="top-nav" aria-label="Primary">
       <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#top">${lang === "ja" ? "TOP" : "Home"}</a>
       <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a>
+      <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブ地図" : "Live Map"}</a>
       <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
       <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "獲得メダル" : "Medals"}</a>
@@ -406,6 +411,17 @@ function referencesHTML(spot, lang) {
   return refs;
 }
 
+function miniMapDetailsHTML(spot, lang) {
+  if (!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number")) return "";
+  const summary = lang === "ja" ? "地図でみる" : "View on map";
+  const note = lang === "ja" ? "地図を開くと OpenStreetMap に接続します。" : "Opening the map connects to OpenStreetMap.";
+  return `<details class="spot-mini-map-details" data-mini-map-details data-mini-map-spot="${spot.id}" data-mini-map-lang="${lang}" data-mini-map-radius="20">
+        <summary>${escapeHTML(summary)}</summary>
+        <div class="spot-mini-map-target" data-mini-map-target></div>
+        <p class="spot-mini-map-note">${escapeHTML(note)}</p>
+      </details>`;
+}
+
 function spotPageHTML(spot, lang) {
   const ui = UI[lang];
   const data = spot[lang] || spot.ja || {};
@@ -429,6 +445,8 @@ function spotPageHTML(spot, lang) {
   const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
   const refs = referencesHTML(spot, lang);
+  const miniMap = miniMapDetailsHTML(spot, lang);
+  const liveMapCta = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -473,6 +491,7 @@ function spotPageHTML(spot, lang) {
   <meta name="twitter:image" content="${absoluteImageUrl(spot)}">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
+  ${miniMap ? `<script src="${prefix}track.js?v=20260706-live-map" defer></script><script src="${prefix}mini-map.js?v=20260706-live-map" defer></script>` : ""}
 </head>
 <body class="spot-page">
   ${siteHeaderHTML(
@@ -500,11 +519,13 @@ function spotPageHTML(spot, lang) {
         <div><dt>${escapeHTML(ui.facts[2])}</dt><dd>${escapeHTML(ui.minutes(spot.minutesFromTokyo))}</dd></div>
         <div><dt>${escapeHTML(ui.facts[3])}</dt><dd>${photoCount} ${escapeHTML(ui.photoUnit)}</dd></div>
       </dl>
+      ${miniMap}
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(data.story || "")}</p>
         <p>${escapeHTML(routeNote)}</p>
 ${fujiGuideBlock.trimEnd()}
+        <p><a href="${liveHref(lang, prefix)}">${escapeHTML(liveMapCta)}</a></p>
       </section>
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionPoint)}</h2>

@@ -14,7 +14,7 @@ const MSG = {
     heroCtaStart: "旅をはじめる",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
+    navQuick: "TOP", navStart: "列車選択", navLive: "ライブ地図", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図で見る",
+    more: "くわしく", less: "とじる", mapLink: "地図で見る", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "地図でみる", miniMapNote: "地図を開くと OpenStreetMap に接続します。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -107,7 +107,7 @@ const MSG = {
     heroCtaStart: "Start your journey",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
-    navQuick: "Home", navStart: "Train Search", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
+    navQuick: "Home", navStart: "Train Search", navLive: "Live Map", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
@@ -184,7 +184,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "View on map", miniMapNote: "Opening the map connects to OpenStreetMap.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -228,6 +228,9 @@ const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 const APP_SELF = location.pathname.endsWith("/zukan.html")
   ? "zukan.html"
   : "index.html";
+function liveMapHref(targetLang = lang) {
+  return `live/index.html${targetLang === "en" ? "?lang=en" : ""}`;
+}
 const t = (key, ...args) => {
   const v = MSG[lang][key];
   return typeof v === "function" ? v(...args) : (v ?? key);
@@ -372,6 +375,18 @@ function mapLinkHTML(spot, className = "") {
   const href = mapHref(spot);
   const classes = ["map-link", className].filter(Boolean).join(" ");
   return href ? `<a class="${classes}" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${t("mapLink")}</span></a>` : "";
+}
+function hasMiniMapCoordinates(spot) {
+  return !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
+}
+function miniMapDetailsHTML(spot, options = {}) {
+  if (!hasMiniMapCoordinates(spot)) return "";
+  const summary = options.summary || t("miniMapSummary");
+  return `<details class="spot-mini-map-details" data-mini-map-details data-mini-map-spot="${spot.id}" data-mini-map-lang="${lang}" data-mini-map-radius="20">
+    <summary>${summary}</summary>
+    <div class="spot-mini-map-target" data-mini-map-target></div>
+    <p class="spot-mini-map-note">${t("miniMapNote")}</p>
+  </details>`;
 }
 function compactCreditLabel(label) {
   const handle = String(label || "").match(/@[\w_]+/);
@@ -544,6 +559,8 @@ function spotDetailModalHTML(spot) {
             <button type="button" class="spot-btn spot-modal-stamp" data-stamp="${spot.id}">${stamps[spot.id] ? t("spotBtnDone") : t("spotBtn")}</button>
             ${mapLinkHTML(spot, "spot-modal-map")}
           </div>
+          ${miniMapDetailsHTML(spot)}
+          <p class="spot-modal-live-link"><a href="${liveMapHref()}" data-live-nav-link>${t("liveMapLink")}</a></p>
           ${spotRelatedHTML(spot)}
           ${spotReferencesHTML(spot)}
         </div>
@@ -559,6 +576,8 @@ function applyLang() {
     if (typeof v === "string") el.innerHTML = v;
   });
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+  $$("[data-live-nav]").forEach((link) => link.setAttribute("href", liveMapHref()));
+  $$("[data-live-nav-link]").forEach((link) => link.setAttribute("href", liveMapHref()));
   renderMedalBoard();
   renderStampboard();
   renderGallery();
@@ -928,6 +947,7 @@ function openSpotModal(spotId, source = "unknown", options = {}) {
   track(spotEventName("spot_open", spotId), spotAnalyticsParams(spot, source));
   modal.querySelector(".spot-modal-panel")?.focus();
   bindSpotEvents(modal);
+  if (window.MADO_MINI_MAP?.bindMiniMapDetails) window.MADO_MINI_MAP.bindMiniMapDetails(modal, { lang });
   modal.querySelectorAll("[data-modal-close]").forEach((el) => {
     el.addEventListener("click", () => closeSpotModal("button"));
   });

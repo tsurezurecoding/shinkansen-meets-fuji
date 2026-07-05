@@ -767,7 +767,7 @@ const SPOTS = [
     icon: "🗻",
     ja: { name: "浜名湖越しの富士山", area: "浜松 → 豊橋", hook: "湖の向こうに、富士山。", story: "浜名湖を渡るころ、条件がそろうと遠くに富士山が見えることがあります。新富士付近の迫力とはまったく違う、湖と空の奥に小さく探す富士山。晴れた冬の日など、空気が澄んだときだけのレアな車窓です。" },
     en: { name: "Mt. Fuji beyond Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "Fuji beyond the lake.", story: "Around Lake Hamana, Mt. Fuji can sometimes be seen far in the distance when the air is clear. It is nothing like the dramatic close view near Shin-Fuji: this is a tiny Fuji to search for beyond the lake and sky, a rare window-seat bonus on crisp clear days." },
-    minutesFromTokyo: 73, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "notable", confidence: "source-backed", durationSec: 150, scene: "fuji",
+    minutesFromTokyo: 73, side: "E", category: "notable", confidence: "source-backed", durationSec: 150, scene: "fuji",
     image: "images/250111_hamanako_fuji_proboffin.jpg",
     photoCredit: {
       ja: "@ProBoffin",

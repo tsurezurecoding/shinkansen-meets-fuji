@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>新幹線の窓 | ライブ地図</title>
+  <meta name="description" content="東海道新幹線の現在地から、次に見える車窓をカウントダウンで案内するGPSライブ地図の試作版です。">
+  <meta name="theme-color" content="#0e1726">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
+  <link rel="stylesheet" href="../style.css?v=20260706-live-map">
+  <link rel="stylesheet" href="styles.css?v=20260706-live-map">
+  <script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+</head>
+<body class="live-page">
+  <header class="topbar live-sitebar">
+    <a class="brand" href="../index.html#top" data-live-link="home">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name" data-live-copy="brandName">新幹線の窓</span>
+        <small class="brand-sub" data-live-copy="brandSub">旅の瞬間を見逃さない</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="../index.html#top" data-live-link="home" data-live-copy="navQuick">TOP</a>
+      <a href="../index.html#journey" data-live-link="journey" data-live-copy="navStart">列車選択</a>
+      <a href="index.html" data-live-link="live" data-live-copy="navLive" aria-current="page">ライブ地図</a>
+      <a href="../zukan.html" data-live-link="zukan" data-live-copy="navBrowse">車窓図鑑</a>
+      <a href="../guide.html" data-live-link="faq" data-live-copy="navFaq">FAQ</a>
+      <a href="../index.html#memories" data-live-link="memories" data-live-copy="navMedals">獲得メダル</a>
+    </nav>
+    <button type="button" class="live-lang-toggle" id="btn-lang" aria-label="Language">EN</button>
+  </header>
+
+  <div id="app">
+    <header id="livebar">
+      <div class="tb-left">
+        <div class="tb-title">
+          <strong id="live-title">ライブ地図</strong>
+          <span id="tb-status" class="tb-status">GPS待機中</span>
+        </div>
+      </div>
+      <div class="tb-right">
+        <div class="tb-metric"><span id="tb-speed">--</span><small>km/h</small></div>
+        <button id="btn-dir" class="tb-btn" title="進行方向">🧭 自動</button>
+        <button id="btn-settings" class="tb-btn" title="設定">⚙</button>
+      </div>
+    </header>
+
+    <div id="map"></div>
+
+    <div id="segband" class="hidden"></div>
+
+    <div id="alertbar" class="hidden">
+      <div class="al-icon" id="al-icon">🗻</div>
+      <div class="al-body">
+        <div class="al-count" id="al-count">60</div>
+        <div class="al-text"><span id="al-name"></span><span id="al-side" class="side-badge"></span></div>
+      </div>
+      <button id="al-close">×</button>
+    </div>
+
+    <section id="sheet">
+      <div id="sheet-handle"><span></span></div>
+
+      <div id="next-card" class="hidden">
+        <div class="nc-head">
+          <span class="nc-label" id="nc-label">つぎの車窓</span>
+          <span class="nc-eta" id="nc-eta">--:--</span>
+        </div>
+        <div class="nc-main">
+          <div class="nc-icon" id="nc-icon">🗻</div>
+          <div class="nc-info">
+            <div class="nc-name" id="nc-name"></div>
+            <div class="nc-hook" id="nc-hook"></div>
+            <div class="nc-meta">
+              <span class="side-badge" id="nc-side"></span>
+              <span class="nc-dist" id="nc-dist"></span>
+              <span class="nc-dur" id="nc-dur"></span>
+            </div>
+          </div>
+          <img id="nc-photo" class="nc-photo hidden" alt="">
+        </div>
+      </div>
+
+      <div id="upcoming"></div>
+
+      <details id="passed-wrap" class="hidden">
+        <summary id="passed-summary">通過した車窓 (0)</summary>
+        <div id="passed"></div>
+      </details>
+
+      <div id="idle-panel">
+        <h2 id="idle-title">乗車したら、GPSをオンに。</h2>
+        <p id="idle-desc">現在地から「つぎに見える車窓」を予測して、地図とカウントダウンで案内します。GPSはこの端末内でのみ使われ、送信されません。</p>
+        <button id="btn-start" class="big-btn">📍 GPSで開始</button>
+        <button id="btn-demo" class="big-btn ghost">▶ デモ走行（乗らずに試す）</button>
+      </div>
+    </section>
+
+    <div id="settings" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="set-title">設定</h3>
+        <label class="set-row"><input type="checkbox" id="set-sound"> <span id="set-sound-l">通知音（60秒前）</span></label>
+        <label class="set-row"><input type="checkbox" id="set-vib" checked> <span id="set-vib-l">バイブレーション</span></label>
+        <label class="set-row"><input type="checkbox" id="set-wake" checked> <span id="set-wake-l">画面をスリープさせない</span></label>
+        <label class="set-row"><input type="checkbox" id="set-follow" checked> <span id="set-follow-l">地図を現在地に追従</span></label>
+        <div class="set-row">
+          <span id="set-dir-l">進行方向</span>
+          <select id="set-dir">
+            <option value="auto">自動判定</option>
+            <option value="down">東京 → 新大阪</option>
+            <option value="up">新大阪 → 東京</option>
+          </select>
+        </div>
+        <div class="set-actions">
+          <button id="btn-stop" class="ghost-btn">■ 計測を停止</button>
+          <button id="btn-close-settings" class="primary-btn">閉じる</button>
+        </div>
+        <p class="set-note" id="set-note">試作版（noindex）。位置情報は端末内で処理され、外部送信されません。</p>
+      </div>
+    </div>
+
+    <div id="demo-panel" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="demo-title">デモ走行</h3>
+        <p id="demo-desc">実際に乗らなくても、仮想の のぞみ に乗って動きを確認できます。</p>
+        <div class="set-row">
+          <span id="demo-from-l">出発</span>
+          <select id="demo-from">
+            <option value="down">東京 → 新大阪</option>
+            <option value="up">新大阪 → 東京</option>
+          </select>
+        </div>
+        <div class="set-row">
+          <span id="demo-speed-l">倍速</span>
+          <select id="demo-mult">
+            <option value="1">1x（実時間）</option>
+            <option value="10">10x</option>
+            <option value="20" selected>20x</option>
+            <option value="60">60x</option>
+          </select>
+        </div>
+        <div class="set-actions">
+          <button id="btn-demo-cancel" class="ghost-btn">キャンセル</button>
+          <button id="btn-demo-start" class="primary-btn">▶ 出発</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../data.js?v=20260706-live-map"></script>
+  <script src="../track.js?v=20260706-live-map"></script>
+  <script src="live.js?v=20260706-live-map"></script>
+</body>
+</html>

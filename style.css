@@ -504,6 +504,26 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   border-radius: 99px; padding: 9px 14px; font-size: 13px; font-weight: 700; white-space: nowrap;
 }
 .seat-tip { margin-top: 14px; font-size: 12px; color: var(--ink-soft); text-align: center; }
+.journey-live-banner {
+  width: min(720px, 100%);
+  margin: -2px auto 18px;
+  padding: 12px 14px;
+  border: 1px solid rgba(125,155,192,0.28);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.7);
+  text-align: center;
+  font-size: 13px;
+  line-height: 1.6;
+}
+.journey-live-banner a {
+  color: var(--night);
+  text-decoration: none;
+  font-weight: 700;
+}
+.journey-live-banner a:hover,
+.journey-live-banner a:focus-visible {
+  text-decoration: underline;
+}
 
 /* ===== Next-up banner ===== */
 .nextup {
@@ -658,6 +678,69 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+.spot-mini-map-details {
+  margin-top: 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  overflow: hidden;
+}
+.spot-mini-map-details summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 13px 16px;
+  font-weight: 700;
+  color: var(--ink);
+}
+.spot-mini-map-details summary::-webkit-details-marker {
+  display: none;
+}
+.spot-mini-map-details summary::after {
+  content: "＋";
+  float: right;
+  color: var(--ink-soft);
+}
+.spot-mini-map-details[open] summary::after {
+  content: "−";
+}
+.spot-mini-map-target,
+.mini-map-canvas {
+  height: 250px;
+}
+.spot-mini-map-note {
+  margin: 0;
+  padding: 10px 16px 14px;
+  font-size: 12px;
+  color: var(--ink-soft);
+}
+.mini-map-shell {
+  position: relative;
+}
+.mini-map-enable {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 500;
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: rgba(16, 28, 44, 0.88);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.mini-map-shell .mini-map-note {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  margin: 0;
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.9);
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.4;
 }
 .spot-page-refs {
   margin: 12px 0 0 1.2em;
@@ -1217,6 +1300,13 @@ body.modal-open { overflow: hidden; }
   align-items: center;
   flex-wrap: wrap;
   margin-top: 14px;
+}
+.spot-modal-live-link {
+  margin: 12px 0 0;
+}
+.spot-modal-live-link a {
+  color: var(--night);
+  font-weight: 700;
 }
 .spot-modal-stamp {
   min-width: 104px;

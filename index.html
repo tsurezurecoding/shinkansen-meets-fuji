@@ -94,6 +94,7 @@
     <nav class="top-nav" aria-label="Primary">
       <a href="index.html#top" data-i18n="navQuick">TOP</a>
       <a href="index.html#journey" data-i18n="navStart">列車選択</a>
+      <a href="live/index.html" data-live-nav data-i18n="navLive">ライブ地図</a>
       <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
       <a href="guide.html" data-i18n="navFaq">FAQ</a>
       <a href="index.html#memories" data-i18n="navMedals">獲得メダル</a>
@@ -137,6 +138,7 @@
       <h2 data-i18n="setupTitle">きょうの旅を教えてください</h2>
       <p class="section-sub" data-i18n="setupSub">時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。</p>
     </div>
+    <p class="journey-live-banner"><a href="live/index.html" data-live-nav data-i18n="journeyLiveBanner">乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。</a></p>
 
     <div class="journey-desktop-grid">
       <div class="journey-form-pane">
@@ -236,6 +238,8 @@
 
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
   <script src="data.js?v=20260701-seo-ux-fix"></script>
+  <script src="track.js?v=20260706-live-map"></script>
+  <script src="mini-map.js?v=20260706-live-map"></script>
   <script src="app.js?v=20260704-desktop-trip-layout"></script>
 </body>
 </html>
