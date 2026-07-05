@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="相模平野の富士山 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">相模平野の富士山</text>
+
+<path d="M40 118 Q60 100 76 112" fill="none" stroke-width="2.5"/>
+<path d="M124 112 Q142 98 160 116" fill="none" stroke-width="2.5"/>
+
+<path d="M74 110 L93.76 76 L97.4 82.12 L100 76 L102.6 82.12 L106.24 76 L126 110" fill="none" stroke-width="2.5"/>
+<path d="M89.6 86.88 l3.6400000000000006 3.4000000000000004 l3.12 -4.08 l3.6400000000000006 4.08 l3.12 -4.08 l3.6400000000000006 4.08 l3.6400000000000006 -3.4000000000000004" fill="none" stroke-width="1.75"/>
+<path d="M52 128 H82 M92 128 H128 M64 138 H136" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約27分・E席</text>
+</g>
+</svg>

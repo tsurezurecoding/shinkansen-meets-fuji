@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="丸子橋 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">丸子橋</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M52 118 Q76 76 100 76 Q124 76 148 118"/>
+<path d="M64 118 Q82 88 100 88 Q118 88 136 118"/>
+<path d="M46 118 H154"/>
+<path d="M76 96 V118 M100 82 V118 M124 96 V118" stroke-width="1.8"/>
+</g>
+<path d="M52 134 q6 -7 12 0 M76 134 q6 -7 12 0 M100 134 q6 -7 12 0 M124 134 q6 -7 12 0 " fill="none" stroke-width="2"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約13分・E席</text>
+</g>
+</svg>

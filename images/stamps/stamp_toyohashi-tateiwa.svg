@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="豊橋の立岩 車窓スタンプ">
+<g stroke="#3d6b4f" fill="#3d6b4f">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">豊橋の立岩</text>
+
+<path d="M48 140 Q100 100 152 140" fill="none" stroke-width="2.5"/>
+<path d="M93 112 L96 76 L104 80 L107 112" fill="none" stroke-width="2.5"/>
+<path d="M96 90 L104 92" fill="none" stroke-width="1.8"/>
+<path d="M74 128 l5 -6 M124 126 l-5 -6 M100 138 v-7" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約75分・E席</text>
+</g>
+</svg>

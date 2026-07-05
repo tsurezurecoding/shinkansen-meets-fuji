@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ニチバン安城工場 車窓スタンプ">
+<g stroke="#3d6b4f" fill="#3d6b4f">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">ニチバン安城工場</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M56 100 L70 86 V100 L84 86 V100 L98 86 V100 H144 V138 H56 Z"/>
+<circle cx="122" cy="118" r="15"/><circle cx="122" cy="118" r="6"/>
+<path d="M137 118 H150"/>
+</g>
+<path d="M64 110 h8 M64 122 h8" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約85分・E席</text>
+</g>
+</svg>

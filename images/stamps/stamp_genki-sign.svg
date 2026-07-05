@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="元気が出る看板 車窓スタンプ">
+<g stroke="#3d6b4f" fill="#3d6b4f">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">元気が出る看板</text>
+
+<g fill="none" stroke-width="2.5">
+<rect x="56" y="76" width="88" height="46"/>
+<path d="M74 122 V140 M126 122 V140"/>
+<path d="M100 64 L100 56 M82 68 L77 62 M118 68 L123 62" stroke-width="2"/>
+</g>
+<text x="100" y="107" text-anchor="middle" font-size="22" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">元気</text>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約64分・E席</text>
+</g>
+</svg>

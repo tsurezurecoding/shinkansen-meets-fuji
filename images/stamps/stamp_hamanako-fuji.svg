@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="浜名湖越しの富士山 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">浜名湖越しの富士山</text>
+
+<path d="M48 112 H152" fill="none" stroke-width="2"/>
+
+<path d="M77 112 L94.48 84 L97.7 89.04 L100 84 L102.3 89.04 L105.52 84 L123 112" fill="none" stroke-width="2.5"/>
+<path d="M90.8 92.96 l3.22 2.8000000000000003 l2.76 -3.36 l3.22 3.36 l2.76 -3.36 l3.22 3.36 l3.22 -2.8000000000000003" fill="none" stroke-width="1.75"/>
+<path d="M54 126 q5.75 -7 11.5 0 M77 126 q5.75 -7 11.5 0 M100 126 q5.75 -7 11.5 0 M123 126 q5.75 -7 11.5 0 " fill="none" stroke-width="2"/>
+<path d="M62 140 q6.333333333333333 -7 12.666666666666666 0 M87.33333333333333 140 q6.333333333333333 -7 12.666666666666666 0 M112.66666666666666 140 q6.333333333333333 -7 12.666666666666666 0 " fill="none" stroke-width="2"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約73分・A席・E席</text>
+</g>
+</svg>

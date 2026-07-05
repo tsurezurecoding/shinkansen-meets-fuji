@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="清水港とちきゅう 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">清水港とちきゅう</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M52 118 Q54 130 64 132 H138 Q148 130 150 118 Z"/>
+<path d="M94 118 L90 94 H110 L106 118 M90 94 L100 62 L110 94 M100 62 V118" stroke-width="2"/>
+<rect x="60" y="106" width="20" height="12"/>
+<path d="M128 118 V92 H144 M128 100 H140"/>
+</g>
+<path d="M56 142 q5.5 -7 11 0 M78 142 q5.5 -7 11 0 M100 142 q5.5 -7 11 0 M122 142 q5.5 -7 11 0 " fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約50分・A席</text>
+</g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="三河大島 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">三河大島</text>
+
+<path d="M70 112 Q86 88 100 86 Q116 88 130 112 Z" stroke-width="2.5" fill="none"/>
+<path d="M88 86 q4 -10 8 -12 M108 76 q3 5 4 10" fill="none" stroke-width="2"/>
+<path d="M48 124 q6.5 -7 13 0 M74 124 q6.5 -7 13 0 M100 124 q6.5 -7 13 0 M126 124 q6.5 -7 13 0 " fill="none" stroke-width="2"/>
+<path d="M58 138 q7 -7 14 0 M86 138 q7 -7 14 0 M114 138 q7 -7 14 0 " fill="none" stroke-width="2"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約84分・A席</text>
+</g>
+</svg>

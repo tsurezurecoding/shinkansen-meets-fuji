@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="大田区からの富士山 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">大田区からの富士山</text>
+
+<g fill="none" stroke-width="2">
+<rect x="88" y="102" width="14" height="38"/><rect x="106" y="92" width="16" height="48"/><rect x="126" y="108" width="13" height="32"/><rect x="72" y="112" width="12" height="28"/>
+<path d="M110 100 H118 M110 108 H118 M92 110 H98"/>
+</g>
+
+<path d="M40 96 L56.72 70 L59.8 74.68 L62 70 L64.2 74.68 L67.28 70 L84 96" fill="none" stroke-width="2.5"/>
+<path d="M53.2 78.32 l3.08 2.6 l2.6399999999999997 -3.12 l3.08 3.12 l2.6399999999999997 -3.12 l3.08 3.12 l3.08 -2.6" fill="none" stroke-width="1.75"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約10分・E席</text>
+</g>
+</svg>

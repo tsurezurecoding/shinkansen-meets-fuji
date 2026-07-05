@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="小田原城 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">小田原城</text>
+
+
+<g stroke-width="2.5" fill="none">
+<path d="M66.19999999999999 138 L74 117.2 H126 L133.8 138"/>
+<path d="M68.8 117.2 Q100 104.19999999999999 131.2 117.2"/>
+<rect x="81.8" y="93.8" width="36.4" height="23.400000000000002"/>
+<path d="M74 93.8 Q100 80.8 126 93.8"/>
+<rect x="88.3" y="75.6" width="23.400000000000002" height="18.2"/>
+<path d="M80.5 75.6 Q100 62.599999999999994 119.5 75.6"/>
+<path d="M94.8 62.599999999999994 L100 56.099999999999994 L105.2 62.599999999999994"/>
+</g>
+<path d="M58 138 H142" fill="none" stroke-width="2"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約31分・A席</text>
+</g>
+</svg>

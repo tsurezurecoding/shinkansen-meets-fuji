@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="南宮大社の大鳥居 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">南宮大社の大鳥居</text>
+
+
+<g stroke-width="5.699999999999999" fill="none">
+<path d="M69.6 136 L75.3 79 M130.4 136 L124.7 79"/>
+<path d="M58.2 79 Q100 67.60000000000001 141.8 79"/>
+<path d="M63.9 90.4 H136.1"/>
+<path d="M100 79 V90.4"/>
+</g>
+<path d="M56 136 H144" fill="none" stroke-width="2"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約107分・A席</text>
+</g>
+</svg>

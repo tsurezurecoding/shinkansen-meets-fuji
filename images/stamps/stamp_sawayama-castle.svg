@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="佐和山城跡 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">佐和山城跡</text>
+
+<path d="M52 118 Q84 86 128 112" fill="none" stroke-width="2.5"/>
+<g fill="none" stroke-width="2.5">
+<rect x="104" y="96" width="44" height="26"/>
+<path d="M114 122 V140 M138 122 V140"/>
+</g>
+<path d="M112 104 v10 M122 102 v14 M132 104 v10 M142 102 v12" fill="none" stroke-width="1.8"/>
+<path d="M46 132 H92 M52 142 H98" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約116分・E席</text>
+</g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="清洲城 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">清洲城</text>
+
+
+<g stroke-width="2.5" fill="none">
+<path d="M71.4 122 L78 104.4 H122 L128.6 122"/>
+<path d="M73.6 104.4 Q100 93.4 126.4 104.4"/>
+<rect x="84.6" y="84.6" width="30.800000000000004" height="19.8"/>
+<path d="M78 84.6 Q100 73.6 122 84.6"/>
+<rect x="90.1" y="69.19999999999999" width="19.8" height="15.400000000000002"/>
+<path d="M83.5 69.19999999999999 Q100 58.199999999999996 116.5 69.19999999999999"/>
+<path d="M95.6 58.199999999999996 L100 52.69999999999999 L104.4 58.199999999999996"/>
+</g>
+<g fill="none" stroke-width="2.5">
+<path d="M48 134 H152 M48 142 H152"/>
+</g>
+<path d="M58 134 V142 M74 134 V142 M90 134 V142 M106 134 V142 M122 134 V142 M138 134 V142" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約99分・E席</text>
+</g>
+</svg>

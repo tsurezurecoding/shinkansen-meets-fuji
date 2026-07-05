@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="彦根城 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">彦根城</text>
+
+
+<g stroke-width="2.5" fill="none">
+<path d="M76.6 108 L82 93.6 H118 L123.4 108"/>
+<path d="M78.4 93.6 Q100 84.6 121.6 93.6"/>
+<rect x="87.4" y="77.4" width="25.2" height="16.2"/>
+<path d="M82 77.4 Q100 68.4 118 77.4"/>
+<rect x="91.9" y="64.8" width="16.2" height="12.6"/>
+<path d="M86.5 64.8 Q100 55.8 113.5 64.8"/>
+<path d="M96.4 55.8 L100 51.3 L103.6 55.8"/>
+</g>
+<g fill="none" stroke-width="2">
+<path d="M52 126 l9 -8 l9 8 M70 126 l9 -8 l9 8 M88 126 l9 -8 l9 8 M106 126 l9 -8 l9 8 M124 126 l9 -8 l9 8"/>
+<path d="M52 126 H142 M52 140 H142"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約116分・E席</text>
+</g>
+</svg>

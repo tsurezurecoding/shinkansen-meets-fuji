@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="鳥飼車両基地 車窓スタンプ">
+<g stroke="#3d6b4f" fill="#3d6b4f">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">鳥飼車両基地</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M58 96 Q62 83 84 83 H142 V96 Z"/><path d="M68 89 Q70 86 82 86 H134" stroke-width="1.6"/><path d="M66 116 Q70 103 92 103 H150 V116 Z"/><path d="M76 109 Q78 106 90 106 H142" stroke-width="1.6"/><path d="M74 136 Q78 123 100 123 H158 V136 Z"/><path d="M84 129 Q86 126 98 126 H150" stroke-width="1.6"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約141分・E席</text>
+</g>
+</svg>

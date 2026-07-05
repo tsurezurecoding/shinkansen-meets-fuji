@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="キリンビール工場 車窓スタンプ">
+<g stroke="#3d6b4f" fill="#3d6b4f">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">キリンビール工場</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M64 138 V100 Q64 90 73 90 Q82 90 82 100 V138 Z"/><path d="M64 104 H82" stroke-width="1.8"/><path d="M92 138 V100 Q92 90 101 90 Q110 90 110 100 V138 Z"/><path d="M92 104 H110" stroke-width="1.8"/><path d="M120 138 V100 Q120 90 129 90 Q138 90 138 100 V138 Z"/><path d="M120 104 H138" stroke-width="1.8"/>
+<path d="M56 138 H152"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約98分・E席</text>
+</g>
+</svg>

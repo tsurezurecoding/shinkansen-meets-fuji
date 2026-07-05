@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="左富士 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">左富士</text>
+
+
+<path d="M48 106 L67.76 74 L71.4 79.76 L74 74 L76.6 79.76 L80.24 74 L100 106" fill="none" stroke-width="2.5"/>
+<path d="M63.6 84.24 l3.6400000000000006 3.2 l3.12 -3.84 l3.6400000000000006 3.84 l3.12 -3.84 l3.6400000000000006 3.84 l3.6400000000000006 -3.2" fill="none" stroke-width="1.75"/>
+<g fill="none" stroke-width="2.5">
+<path d="M150 118 Q112 118 62 138"/>
+<path d="M154 128 Q114 128 68 148"/>
+</g>
+<g stroke-width="1.8">
+<path d="M138 119 L140 127 M120 121 L123 130 M102 125 L106 134 M85 131 L90 141"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約54分・A席</text>
+</g>
+</svg>

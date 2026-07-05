@@ -277,7 +277,7 @@ const SPOTS = [
   {
     id: "ota-fuji",
     icon: "🗻",
-    ja: { name: "大田区からの富士山", area: "品川 → 新横浜（大田区付近）", hook: "東京を出て、最初の富士。", story: "品川を過ぎて新横浜へ向かう途中、空気が澄んだ日には大田区付近から富士山が見えることがあります。新富士の大きな富士山とは違う、都市の向こうに小さく浮かぶ早い合図。見えたら、その日の旅は少し幸先がいい。" },
+    ja: { name: "都内からの富士山", area: "品川 → 新横浜（大田区付近）", hook: "東京を出て、最初の富士。", story: "品川を過ぎて新横浜へ向かう途中、空気が澄んだ日には大田区付近から富士山が見えることがあります。新富士の大きな富士山とは違う、都市の向こうに小さく浮かぶ早い合図。見えたら、その日の旅は少し幸先がいい。" },
     en: { name: "Mt. Fuji from Ota", area: "Shinagawa → Shin-Yokohama", hook: "The first Fuji after Tokyo.", story: "After Shinagawa, on the way toward Shin-Yokohama, Mt. Fuji can appear from around Ota on especially clear days. This is not the big Fuji near Shin-Fuji; it is a small early sign beyond the city. If you catch it, the journey starts with a quiet reward." },
     minutesFromTokyo: 10, side: "E", category: "notable", confidence: "needs-check", durationSec: 45, scene: "fuji",
     image: "images/20260509_ota_fuji_t_yangyang.jpg",
@@ -326,7 +326,7 @@ const SPOTS = [
   {
     id: "musashi-kosugi-towers",
     icon: "🏙️",
-    ja: { name: "武蔵小杉のタワーマンション群", area: "品川 → 新横浜（武蔵小杉付近）", hook: "川を越えた、塔の街。", story: "東京から新大阪へ向かうと、丸子橋を過ぎてすぐ、E席側に武蔵小杉のタワーマンション群が迫ります。多摩川の開けた景色から、縦に伸びる街へ一気に切り替わる瞬間。名所というより、首都圏の密度をそのまま見せる車窓です。昼は建物の高さが、夜は窓明かりの層が印象に残ります。" },
+    ja: { name: "武蔵小杉のタワマン群", area: "品川 → 新横浜（武蔵小杉付近）", hook: "川を越えた、塔の街。", story: "東京から新大阪へ向かうと、丸子橋を過ぎてすぐ、E席側に武蔵小杉のタワーマンション群が迫ります。多摩川の開けた景色から、縦に伸びる街へ一気に切り替わる瞬間。名所というより、首都圏の密度をそのまま見せる車窓です。昼は建物の高さが、夜は窓明かりの層が印象に残ります。" },
     en: { name: "Musashi-Kosugi Towers", area: "Shinagawa → Shin-Yokohama, around Musashi-Kosugi", hook: "A wall of towers after the river.", story: "Heading from Tokyo toward Shin-Osaka, just after Maruko Bridge, the Musashi-Kosugi high-rise towers appear on the Seat E side. The view shifts suddenly from the open Tama River to a dense vertical city. It is not a classic landmark, but it captures the scale of Greater Tokyo from the train window. By day the height stands out; at night, the stacked window lights do." },
     minutesFromTokyo: 14, side: "E", category: "notable", confidence: "verified", durationSec: 35, scene: "hills",
     image: "images/20260704_musashi_kosugi_towers_1_michikusa.jpg",

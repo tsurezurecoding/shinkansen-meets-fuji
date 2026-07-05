@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="浜名湖 車窓スタンプ">
+<g stroke="#b83a2a" fill="#b83a2a">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">浜名湖</text>
+
+
+<g stroke-width="3.4499999999999997" fill="none">
+<path d="M101.6 128 L105.05 93.5 M138.4 128 L134.95 93.5"/>
+<path d="M94.7 93.5 Q120 86.6 145.3 93.5"/>
+<path d="M98.15 100.4 H141.85"/>
+<path d="M120 93.5 V100.4"/>
+</g>
+<path d="M50 138 q6.25 -7 12.5 0 M75 138 q6.25 -7 12.5 0 M100 138 q6.25 -7 12.5 0 M125 138 q6.25 -7 12.5 0 " fill="none" stroke-width="2"/>
+<path d="M44 106 H88 M52 106 V98 M66 106 V98 M80 106 V98" fill="none" stroke-width="2"/>
+<path d="M56 78 q5 -5 10 0 M64 82 q5 -5 10 0" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約73分・A席・E席</text>
+</g>
+</svg>

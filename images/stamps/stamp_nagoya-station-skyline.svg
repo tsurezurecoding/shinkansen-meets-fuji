@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="名古屋駅前 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">名古屋駅前</text>
+
+<g fill="none" stroke-width="2.5">
+<rect x="60" y="84" width="22" height="56" rx="3"/>
+<rect x="90" y="66" width="24" height="74" rx="3"/>
+<rect x="122" y="92" width="20" height="48" rx="3"/>
+<path d="M50 140 H152"/>
+</g>
+<path d="M66 96 h10 M66 108 h10 M96 78 h12 M96 90 h12 M96 102 h12 M127 102 h10 M127 114 h10" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約94分・両側</text>
+</g>
+</svg>

@@ -220,7 +220,7 @@ function languageSwitchHref(lang, spotId) {
 
 function siteHeaderHTML(lang, prefix, jaHref, enHref) {
   const ui = UI[lang];
-  const homeHref = `${prefix}index.html${lang === "en" ? "?lang=en" : ""}#top`;
+  const homeHref = `${prefix}index.html${lang === "en" ? "?lang=en" : ""}`;
   const jaActive = lang === "ja" ? " active" : "";
   const enActive = lang === "en" ? " active" : "";
   return `<header class="topbar">
@@ -232,7 +232,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#top">${lang === "ja" ? "TOP" : "Home"}</a>
+      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "TOP" : "Home"}</a>
       <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>

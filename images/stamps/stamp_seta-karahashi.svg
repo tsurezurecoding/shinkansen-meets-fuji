@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="瀬田の唐橋 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">瀬田の唐橋</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M46 106 Q100 96 154 106"/>
+<path d="M46 114 Q100 104 154 114"/>
+<path d="M62 112 V132 M86 108 V134 M114 108 V134 M138 112 V132"/>
+</g>
+<circle cx="58" cy="100" r="3"/><circle cx="100" cy="95" r="3"/><circle cx="142" cy="100" r="3"/>
+<path d="M54 142 q5.75 -7 11.5 0 M77 142 q5.75 -7 11.5 0 M100 142 q5.75 -7 11.5 0 M123 142 q5.75 -7 11.5 0 " fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約127分・E席</text>
+</g>
+</svg>

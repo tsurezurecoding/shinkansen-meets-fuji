@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="観音寺城跡 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">観音寺城跡</text>
+
+<path d="M44 128 Q76 98 100 110 Q128 88 156 122" fill="none" stroke-width="2.5"/>
+<g fill="none" stroke-width="1.8">
+<rect x="86" y="104" width="9" height="6"/><rect x="97" y="102" width="9" height="6"/><rect x="120" y="96" width="9" height="6"/>
+</g>
+<path d="M126 92 V72 M126 72 l14 4 l-14 5" fill="none" stroke-width="2"/>
+<path d="M56 138 H144" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約120分・E席</text>
+</g>
+</svg>

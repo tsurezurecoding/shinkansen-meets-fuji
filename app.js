@@ -513,6 +513,15 @@ function spotModalMediaHTML(spot) {
     </figure>
   </div>`;
 }
+function stampBadgeHTML(sp, size, fallbackCls) {
+  const inked = !!stamps[sp.id];
+  return `<span class="stamp-badge" style="display:inline-flex;flex:none">` +
+    `<img src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" ` +
+    `style="width:${size}px;height:${size}px;${inked ? "" : "filter:grayscale(1) opacity(.4);"}" ` +
+    `onerror="this.style.display='none';this.nextElementSibling.style.display='inline'">` +
+    `<span class="${fallbackCls}" style="display:none">${sp.icon}</span></span>`;
+}
+
 function spotDetailModalHTML(spot) {
   const L = spot[lang];
   const heroMedia = spotModalMediaHTML(spot);
@@ -521,7 +530,7 @@ function spotDetailModalHTML(spot) {
     <section class="spot-modal-panel" role="dialog" aria-modal="true" aria-labelledby="spot-modal-title" tabindex="-1">
       <button type="button" class="spot-modal-close" data-modal-close aria-label="Close">×</button>
       <div class="spot-modal-head">
-        <span class="spot-modal-icon">${spot.icon}</span>
+        ${stampBadgeHTML(spot, 64, "spot-modal-icon")}
         <div class="spot-modal-titleblock">
           <p class="spot-modal-area">${L.area}</p>
           <h2 id="spot-modal-title">${L.name}</h2>
@@ -1306,7 +1315,7 @@ function renderGallery() {
             </div>
             <div class="gal-body">
               <div class="gal-top">
-                <div class="gal-top-left"><span class="tl-icon">${sp.icon}</span><span class="gal-name">${L.name}</span></div>
+                <div class="gal-top-left">${stampBadgeHTML(sp, 38, "tl-icon")}<span class="gal-name">${L.name}</span></div>
                 <button type="button" class="spot-btn spot-card-stamp gal-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
               </div>
               <p class="gal-area">${L.area}</p>

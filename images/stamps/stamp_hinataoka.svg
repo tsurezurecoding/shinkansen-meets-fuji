@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="日向岡の街並み 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">日向岡の街並み</text>
+
+<path d="M46 138 L154 96" fill="none" stroke-width="2.5"/>
+<path d="M58 130 l8 -7 l8 7 Z"/> <path d="M60 130 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M80 122 l8 -7 l8 7 Z"/> <path d="M82 122 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M102 114 l8 -7 l8 7 Z"/> <path d="M104 114 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M70 106 l8 -7 l8 7 Z"/> <path d="M72 106 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M92 98 l8 -7 l8 7 Z"/> <path d="M94 98 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M114 90 l8 -7 l8 7 Z"/> <path d="M116 90 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M96 134 l8 -7 l8 7 Z"/> <path d="M98 134 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M118 126 l8 -7 l8 7 Z"/> <path d="M120 126 v8 h12 v-8" fill="none" stroke-width="1.8"/><path d="M136 106 l8 -7 l8 7 Z"/> <path d="M138 106 v8 h12 v-8" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約27分・E席</text>
+</g>
+</svg>

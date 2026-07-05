@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="掛川城 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">掛川城</text>
+
+
+<g stroke-width="2.5" fill="none">
+<path d="M67.5 134 L75 114 H125 L132.5 134"/>
+<path d="M70 114 Q100 101.5 130 114"/>
+<rect x="82.5" y="91.5" width="35" height="22.5"/>
+<path d="M75 91.5 Q100 79 125 91.5"/>
+<rect x="88.75" y="74" width="22.5" height="17.5"/>
+<path d="M81.25 74 Q100 61.5 118.75 74"/>
+<path d="M95 61.5 L100 55.25 L105 61.5"/>
+</g>
+<path d="M64 134 H136 M72 142 H128" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約62分・E席</text>
+</g>
+</svg>

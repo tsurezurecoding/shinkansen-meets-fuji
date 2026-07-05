@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="熱海と相模湾 車窓スタンプ">
+<g stroke="#b83a2a" fill="#b83a2a">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">熱海と相模湾</text>
+
+<circle cx="136" cy="72" r="10" fill="none" stroke-width="2.5"/>
+<path d="M44 84 Q70 92 82 108 Q94 124 92 140" fill="none" stroke-width="2.5"/>
+<path d="M92 112 q5 -7 10 0 M112 112 q5 -7 10 0 M132 112 q5 -7 10 0 " fill="none" stroke-width="2"/>
+<path d="M80 128 q6 -7 12 0 M104 128 q6 -7 12 0 M128 128 q6 -7 12 0 " fill="none" stroke-width="2"/>
+<path d="M56 100 h7 M64 112 h7 M52 118 h7" stroke-width="2" fill="none"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約36分・A席</text>
+</g>
+</svg>

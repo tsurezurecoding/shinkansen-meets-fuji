@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="近江富士 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">近江富士</text>
+
+<path d="M58 122 L100 78 L142 122" fill="none" stroke-width="3"/>
+<path d="M48 126 H152" fill="none" stroke-width="2"/>
+<path d="M74 130 L100 148 L126 130" fill="none" stroke-width="2" stroke-dasharray="4 4"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約123分・A席</text>
+</g>
+</svg>
