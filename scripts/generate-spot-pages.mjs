@@ -411,14 +411,38 @@ function referencesHTML(spot, lang) {
   return refs;
 }
 
+function mapHref(spot, lang) {
+  if (!spot?.map) return "";
+  if (spot.map.lat != null && spot.map.lng != null) return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${spot.map.lat},${spot.map.lng}`)}`;
+  const query = spot.map[lang] || spot.map.ja || spot.map.en;
+  return query ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}` : "";
+}
+
+function mapLinkHTML(spot, lang) {
+  const href = mapHref(spot, lang);
+  if (!href) return "";
+  const label = lang === "ja" ? "地図で見る" : "Open map";
+  return `<a class="map-link spot-mini-map-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer" data-map="${escapeHTML(spot.id)}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${escapeHTML(label)}</span></a>`;
+}
+
 function miniMapDetailsHTML(spot, lang) {
-  if (!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number")) return "";
+  const hasCoordinates = !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
+  const fallbackLink = mapLinkHTML(spot, lang);
+  if (!hasCoordinates && !fallbackLink) return "";
   const summary = lang === "ja" ? "地図でみる" : "View on map";
   const note = lang === "ja" ? "地図を開くと OpenStreetMap に接続します。" : "Opening the map connects to OpenStreetMap.";
+  const fallbackNote = lang === "ja"
+    ? "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。"
+    : "Inline coordinates are still being tuned for this spot. You can check the location in an external map.";
   return `<details class="spot-mini-map-details" data-mini-map-details data-mini-map-spot="${spot.id}" data-mini-map-lang="${lang}" data-mini-map-radius="20">
         <summary>${escapeHTML(summary)}</summary>
-        <div class="spot-mini-map-target" data-mini-map-target></div>
-        <p class="spot-mini-map-note">${escapeHTML(note)}</p>
+        ${hasCoordinates
+          ? `<div class="spot-mini-map-target" data-mini-map-target></div>
+        <p class="spot-mini-map-note">${escapeHTML(note)}</p>`
+          : `<div class="spot-mini-map-fallback">
+          <p>${escapeHTML(fallbackNote)}</p>
+          ${fallbackLink}
+        </div>`}
       </details>`;
 }
 

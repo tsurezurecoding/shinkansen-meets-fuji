@@ -873,7 +873,7 @@ const SPOTS = [
     icon: "🏙️",
     ja: { name: "名古屋駅前", area: "名古屋到着直前", hook: "高層ビルの谷を、新幹線で抜ける。", story: "東京から新大阪へ向かう列車では、名古屋に着く少し前から車窓が一気に都市の景色へ切り替わります。高層ビル、駅前の密度、線路の重なり。自然や城とは違うけれど、名古屋到着を知らせる大事な車窓です。" },
     en: { name: "Nagoya Station Skyline", area: "Just before Nagoya", hook: "The train cuts through the city.", story: "On trains from Tokyo toward Shin-Osaka, the window suddenly turns urban just before arriving at Nagoya: high-rise buildings, dense station-front blocks, and layers of tracks. It is not a mountain or a castle, but it is an essential view that signals Nagoya is coming." },
-    minutesFromTokyo: 94, side: "E", sideLabel: { ja: "両側・名古屋直前", en: "Both sides just before Nagoya" }, category: "notable", confidence: "verified", durationSec: 90, scene: "hills",
+    minutesFromTokyo: 94, side: "E", category: "notable", confidence: "verified", durationSec: 90, scene: "hills",
     image: "images/20260530_nagoya_station_1_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",

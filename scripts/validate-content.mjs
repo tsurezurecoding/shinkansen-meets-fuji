@@ -15,6 +15,10 @@ if (!Number.isInteger(spotCount) || spotCount <= 0) {
 
 const maxJapaneseHookLength = 18;
 const maxEnglishHookLength = 38;
+const allowedSideLabels = {
+  ja: new Set(["A席・E席", "A席側", "E席側", "A席・海側", "E席・山側", "左右両側", "両側"]),
+  en: new Set(["Seats A and E", "Seat A side", "Seat E side", "Seat A · sea side", "Seat E · mountain side", "Both sides"]),
+};
 
 const checks = [
   {
@@ -66,6 +70,12 @@ for (const spot of context.__SPOTS) {
   const enHook = spot.en?.hook ?? "";
   if (enHook.length > maxEnglishHookLength) {
     failures.push(`data.js: ${spot.id} en.hook is ${enHook.length} chars; keep English gallery card hooks <= ${maxEnglishHookLength} chars`);
+  }
+  for (const locale of ["ja", "en"]) {
+    const label = spot.sideLabel?.[locale];
+    if (label && !allowedSideLabels[locale].has(label)) {
+      failures.push(`data.js: ${spot.id} sideLabel.${locale}="${label}" mixes seat labels with non-seat context; keep timing/area text in area/story, not sideLabel`);
+    }
   }
 }
 

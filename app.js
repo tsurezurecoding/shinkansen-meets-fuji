@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図で見る", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "地図でみる", miniMapNote: "地図を開くと OpenStreetMap に接続します。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
+    more: "くわしく", less: "とじる", mapLink: "地図で見る", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "地図でみる", miniMapNote: "地図を開くと OpenStreetMap に接続します。", miniMapFallbackNote: "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -184,7 +184,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "View on map", miniMapNote: "Opening the map connects to OpenStreetMap.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "View on map", miniMapNote: "Opening the map connects to OpenStreetMap.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -348,9 +348,21 @@ function computeJourney(train, depMin) {
     .sort((a, b) => a.clock - b.clock);
   return { mode: train ? "train" : "estimate", train, depMin, stops, spots };
 }
+function seatTags(spot) {
+  const tags = new Set();
+  const labelJa = spot.sideLabel?.ja || "";
+  const labelEn = spot.sideLabel?.en || "";
+  const isBoth = /A席・E席|左右|両側/.test(labelJa) || /Seats A and E|Both sides/i.test(labelEn);
+  if (spot.side === "A" || /A席/.test(labelJa) || /Seat A/i.test(labelEn) || isBoth) tags.add("seat-a");
+  if (spot.side === "E" || /E席/.test(labelJa) || /Seat E/i.test(labelEn) || isBoth) tags.add("seat-e");
+  return tags;
+}
 function seatBadge(spot) {
   if (!spot.side) return "";
-  const cls = spot.side === "E" ? "badge-seat-E" : "badge-seat-A";
+  const tags = seatTags(spot);
+  const cls = tags.has("seat-a") && tags.has("seat-e")
+    ? "badge-seat-both"
+    : (spot.side === "E" ? "badge-seat-E" : "badge-seat-A");
   const label = spot.sideLabel?.[lang] || (spot.side === "E" ? t("seatE") : t("seatA"));
   return `<span class="badge ${cls}">${label}</span>`;
 }
@@ -380,12 +392,19 @@ function hasMiniMapCoordinates(spot) {
   return !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
 }
 function miniMapDetailsHTML(spot, options = {}) {
-  if (!hasMiniMapCoordinates(spot)) return "";
+  const hasCoordinates = hasMiniMapCoordinates(spot);
+  const fallbackLink = mapLinkHTML(spot, "spot-mini-map-link");
+  if (!hasCoordinates && !fallbackLink) return "";
   const summary = options.summary || t("miniMapSummary");
   return `<details class="spot-mini-map-details" data-mini-map-details data-mini-map-spot="${spot.id}" data-mini-map-lang="${lang}" data-mini-map-radius="20">
     <summary>${summary}</summary>
-    <div class="spot-mini-map-target" data-mini-map-target></div>
-    <p class="spot-mini-map-note">${t("miniMapNote")}</p>
+    ${hasCoordinates
+      ? `<div class="spot-mini-map-target" data-mini-map-target></div>
+    <p class="spot-mini-map-note">${t("miniMapNote")}</p>`
+      : `<div class="spot-mini-map-fallback">
+      <p>${t("miniMapFallbackNote")}</p>
+      ${fallbackLink}
+    </div>`}
   </details>`;
 }
 function compactCreditLabel(label) {
@@ -1250,8 +1269,7 @@ const galleryTagLabelKeys = {
 };
 function galleryTags(spot) {
   const tags = new Set();
-  if (spot.side === "A" || spot.sideLabel?.ja?.includes("A席")) tags.add("seat-a");
-  if (spot.side === "E" || spot.sideLabel?.ja?.includes("E席")) tags.add("seat-e");
+  seatTags(spot).forEach((tag) => tags.add(tag));
   if (spotHasTimeOfDay(spot, "day")) tags.add("day");
   if (spotHasTimeOfDay(spot, "night")) tags.add("night");
   if (spot.category === "classic") tags.add("classic");

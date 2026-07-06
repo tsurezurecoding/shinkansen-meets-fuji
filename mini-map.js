@@ -65,15 +65,37 @@
       ? {
           enable: "Enable map interaction",
           note: "Opening the map connects to OpenStreetMap.",
+          fallbackNote: "The inline map could not be loaded. Open this spot in an external map instead.",
+          fallbackLink: "Open map",
           landmark: "Landmark",
           viewpoint: "Track viewpoint",
         }
       : {
           enable: "地図を操作する",
           note: "地図を開くと OpenStreetMap に接続します。",
+          fallbackNote: "簡易地図を読み込めませんでした。外部地図で位置を確認できます。",
+          fallbackLink: "地図で見る",
           landmark: "対象物",
           viewpoint: "線路上の視点位置",
         };
+  }
+
+  function mapHref(spot, lang) {
+    if (!spot || !spot.map) return "";
+    if (spot.map.lat != null && spot.map.lng != null) {
+      return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(spot.map.lat + "," + spot.map.lng);
+    }
+    var query = spot.map[lang] || spot.map.ja || spot.map.en;
+    return query ? "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query) : "";
+  }
+
+  function fallbackHTML(spot, lang) {
+    var texts = mapTexts(lang);
+    var href = mapHref(spot, lang);
+    var link = href
+      ? '<a class="map-link spot-mini-map-link" href="' + escapeHTML(href) + '" target="_blank" rel="noopener noreferrer" data-map="' + escapeHTML(spot.id) + '"><span class="map-link-icon" aria-hidden="true">↗</span><span>' + escapeHTML(texts.fallbackLink) + "</span></a>"
+      : "";
+    return '<div class="mini-map-fallback"><p>' + escapeHTML(texts.fallbackNote) + "</p>" + link + "</div>";
   }
 
   function setupInteractiveToggle(map, button) {
@@ -183,7 +205,7 @@
     return ensureLeaflet().then(function () {
       return buildMiniMap(el, spot, opts);
     }).catch(function () {
-      el.innerHTML = "";
+      el.innerHTML = fallbackHTML(spot, opts.lang === "en" ? "en" : "ja");
       el.dataset.miniMapReady = "error";
       return false;
     });
