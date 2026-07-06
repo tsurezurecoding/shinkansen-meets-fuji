@@ -506,7 +506,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260706-mini-map-fallback">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-mini-map-render">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -515,7 +515,7 @@ function spotPageHTML(spot, lang) {
   <meta name="twitter:image" content="${absoluteImageUrl(spot)}">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
-  ${miniMap ? `<script src="${prefix}track.js?v=20260706-live-map" defer></script><script src="${prefix}mini-map.js?v=20260706-mini-map-fallback" defer></script>` : ""}
+  ${miniMap ? `<script src="${prefix}track.js?v=20260707-mini-map-render" defer></script><script src="${prefix}mini-map.js?v=20260707-mini-map-render" defer></script>` : ""}
 </head>
 <body class="spot-page">
   ${siteHeaderHTML(
@@ -679,7 +679,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260706-mini-map-fallback">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-mini-map-render">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

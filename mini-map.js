@@ -5,7 +5,7 @@
 (function () {
   "use strict";
 
-  var LEAFLET_CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css";
+  var LEAFLET_CSS_URL = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.css";
   var LEAFLET_JS_URL = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js";
   var TILE_URL = "https://tile.openstreetmap.org/{z}/{x}/{y}.png";
   var leafletPromise = null;
@@ -219,14 +219,23 @@
 
   function renderMiniMap(el, spotId, opts) {
     opts = opts || {};
-    if (!el || !window.MADO_TRACK) return Promise.resolve(false);
+    if (!el) return Promise.resolve(false);
+    if (!window.MADO_TRACK) {
+      el.innerHTML = fallbackHTML({ id: spotId, map: null }, opts.lang === "en" ? "en" : "ja");
+      el.dataset.miniMapReady = "error";
+      return Promise.resolve(false);
+    }
     if (el.dataset.miniMapReady === "1") {
       if (el._madoMiniMap) setTimeout(function () { el._madoMiniMap.invalidateSize(); }, 0);
       return Promise.resolve(el._madoMiniMap || true);
     }
     return ensureData().then(function () {
       var spot = getSpot(spotId);
-      if (!hasMapCoordinates(spot)) return false;
+      if (!hasMapCoordinates(spot)) {
+        el.innerHTML = fallbackHTML(spot || { id: spotId, map: null }, opts.lang === "en" ? "en" : "ja");
+        el.dataset.miniMapReady = "error";
+        return false;
+      }
       return ensureLeaflet().then(function () {
         return buildMiniMap(el, spot, opts);
       }).catch(function () {
