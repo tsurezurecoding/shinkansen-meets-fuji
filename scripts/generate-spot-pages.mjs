@@ -8,6 +8,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const siteRoot = "https://www.michikusa-travel.com";
 const today = "2026-07-01";
+const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
 const { SPOTS } = vm.runInNewContext(`${dataCode}\n;({ SPOTS });`, {}, { filename: dataPath });
@@ -425,15 +426,32 @@ function mapLinkHTML(spot, lang) {
   return `<a class="map-link spot-mini-map-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer" data-map="${escapeHTML(spot.id)}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${escapeHTML(label)}</span></a>`;
 }
 
+function hasMiniMapCoordinates(spot) {
+  return !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
+}
+
+function googleMapsEmbedHref(spot, lang) {
+  if (!hasMiniMapCoordinates(spot)) return "";
+  const params = new URLSearchParams({
+    key: GOOGLE_MAPS_EMBED_API_KEY,
+    q: `${spot.map.lat},${spot.map.lng}`,
+    center: `${spot.map.lat},${spot.map.lng}`,
+    zoom: "17",
+    maptype: "satellite",
+    language: lang === "ja" ? "ja" : "en",
+  });
+  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
+}
+
 function miniMapDetailsHTML(spot, lang) {
-  const hasCoordinates = !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
+  const hasCoordinates = hasMiniMapCoordinates(spot);
   const fallbackLink = mapLinkHTML(spot, lang);
   if (!hasCoordinates && !fallbackLink) return "";
   const summary = lang === "ja" ? "位置の目安" : "Location at a glance";
   const liveLabel = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
-  const staticNote = lang === "ja"
-    ? "タイル地図ではなく、線路と対象物の位置関係だけを描いた軽量な静的地図です。"
-    : "A lightweight static map showing only the track viewpoint and landmark, without loading map tiles.";
+  const mapNote = lang === "ja"
+    ? "航空写真で周辺の目印を確認できます。"
+    : "Satellite imagery helps you recognize nearby landmarks.";
   const fallbackNote = lang === "ja"
     ? "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。"
     : "Inline coordinates are still being tuned for this spot. You can check the location in an external map.";
@@ -443,9 +461,7 @@ function miniMapDetailsHTML(spot, lang) {
   const openMapLabel = lang === "ja"
     ? `${data.name || spot.id}をGoogle Mapsで開く`
     : `Open ${data.name || spot.id} in Google Maps`;
-  const imageAlt = lang === "ja"
-    ? `${data.name || spot.id}の線路上の視点と対象物の位置関係を示す簡易地図`
-    : `Simple map showing the track viewpoint and landmark for ${data.name || spot.id}`;
+  const embedHref = googleMapsEmbedHref(spot, lang);
   if (!hasCoordinates) {
     return `<section class="spot-static-map">
         <div class="spot-static-map-head">
@@ -462,10 +478,8 @@ function miniMapDetailsHTML(spot, lang) {
           <h2>${escapeHTML(summary)}</h2>
           ${fallbackLink}
         </div>
-        <a class="spot-static-map-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer" data-map="${escapeHTML(spot.id)}" aria-label="${escapeHTML(openMapLabel)}">
-          <img src="${prefix}images/maps/${escapeHTML(spot.id)}.svg" alt="${escapeHTML(imageAlt)}" loading="lazy">
-        </a>
-        <p class="spot-mini-map-note">${escapeHTML(staticNote)} <a href="${prefix}live/index.html">${escapeHTML(liveLabel)}</a></p>
+        <iframe class="spot-google-map-frame" src="${escapeHTML(embedHref)}" title="${escapeHTML(openMapLabel)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <p class="spot-mini-map-note">${escapeHTML(mapNote)} <a href="${prefix}live/index.html">${escapeHTML(liveLabel)}</a></p>
       </section>`;
 }
 
@@ -529,7 +543,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-static-mini-maps">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-google-map-embed">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -701,7 +715,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-static-mini-maps">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-google-map-embed">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

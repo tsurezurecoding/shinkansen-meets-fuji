@@ -706,23 +706,14 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .spot-static-map-head .map-link {
   flex: 0 0 auto;
 }
-.spot-static-map-link {
+.spot-google-map-frame {
   display: block;
-  overflow: hidden;
+  width: 100%;
+  min-height: 260px;
+  aspect-ratio: 2 / 1;
   border: 1px solid rgba(17, 37, 56, 0.1);
   border-radius: 14px;
   background: #f7fbff;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
-}
-.spot-static-map-link img {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 2 / 1;
-  object-fit: cover;
-}
-.spot-static-map-link:hover {
-  border-color: rgba(255, 107, 74, 0.55);
 }
 .spot-mini-map-details summary {
   cursor: pointer;
