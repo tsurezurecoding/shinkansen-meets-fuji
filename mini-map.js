@@ -20,8 +20,31 @@
     return JSON.parse(JSON.stringify(obj));
   }
 
+  function spotList() {
+    // data.js の const SPOTS は window に載らないため、グローバル字句束縛を直接参照する
+    if (typeof SPOTS !== "undefined" && SPOTS) return SPOTS;
+    return window.SPOTS || [];
+  }
+
   function getSpot(spotId) {
-    return (window.SPOTS || []).find(function (spot) { return spot.id === spotId; }) || null;
+    return spotList().find(function (spot) { return spot.id === spotId; }) || null;
+  }
+
+  var dataPromise = null;
+  function ensureData() {
+    if (spotList().length) return Promise.resolve();
+    if (!dataPromise) {
+      dataPromise = new Promise(function (resolve) {
+        var tag = document.querySelector('script[src*="mini-map.js"]');
+        var src = tag ? tag.getAttribute("src").replace(/mini-map\.js[^"']*$/, "data.js") : "data.js";
+        var script = document.createElement("script");
+        script.src = src;
+        script.onload = function () { resolve(); };
+        script.onerror = function () { resolve(); };
+        document.head.appendChild(script);
+      });
+    }
+    return dataPromise;
   }
 
   function getSpotLang(spot, lang) {
@@ -196,18 +219,21 @@
 
   function renderMiniMap(el, spotId, opts) {
     opts = opts || {};
-    var spot = getSpot(spotId);
-    if (!el || !hasMapCoordinates(spot) || !window.MADO_TRACK) return Promise.resolve(false);
+    if (!el || !window.MADO_TRACK) return Promise.resolve(false);
     if (el.dataset.miniMapReady === "1") {
       if (el._madoMiniMap) setTimeout(function () { el._madoMiniMap.invalidateSize(); }, 0);
       return Promise.resolve(el._madoMiniMap || true);
     }
-    return ensureLeaflet().then(function () {
-      return buildMiniMap(el, spot, opts);
-    }).catch(function () {
-      el.innerHTML = fallbackHTML(spot, opts.lang === "en" ? "en" : "ja");
-      el.dataset.miniMapReady = "error";
-      return false;
+    return ensureData().then(function () {
+      var spot = getSpot(spotId);
+      if (!hasMapCoordinates(spot)) return false;
+      return ensureLeaflet().then(function () {
+        return buildMiniMap(el, spot, opts);
+      }).catch(function () {
+        el.innerHTML = fallbackHTML(spot, opts.lang === "en" ? "en" : "ja");
+        el.dataset.miniMapReady = "error";
+        return false;
+      });
     });
   }
 

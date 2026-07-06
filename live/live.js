@@ -225,7 +225,7 @@
       }).addTo(map);
       L.polyline(T.latLngs(), { color: "#4da3ff", weight: 3, opacity: 0.8 }).addTo(map);
       T.anchors().forEach(function (a) {
-        var st = (window.ROUTE?.refStations || []).find(function (s) { return s.id === a.id; });
+        var st = ((typeof ROUTE !== "undefined" && ROUTE.refStations) || (window.ROUTE && window.ROUTE.refStations) || []).find(function (s) { return s.id === a.id; });
         var major = st && st.major;
         L.circleMarker([a.lat, a.lng], {
           radius: major ? 5 : 3,
@@ -319,6 +319,7 @@
     state.offRoute = proj.crossKm > 4;
     updateUserMarker(lat, lng, acc);
     if (state.offRoute) {
+      if (!state.offRouteTracked) { state.offRouteTracked = true; track("live_offroute", { mode: state.mode }); }
       setStatus("err", t("offroute") + " (" + proj.crossKm.toFixed(1) + t("km") + ")");
       render();
       return;
@@ -338,8 +339,10 @@
         if (calc < 400) speed = speed == null ? calc : (speed * 0.5 + calc * 0.5);
         state.dirAccum = state.dirAccum * 0.85 + dKm;
         if (state.dirMode === "auto") {
+          var prevDir = state.dir;
           if (state.dirAccum > 0.25) state.dir = 1;
           else if (state.dirAccum < -0.25) state.dir = -1;
+          if (!prevDir && state.dir) track("live_direction_detected", { direction: state.dir > 0 ? "down" : "up", mode: state.mode });
         }
       }
     }
@@ -412,6 +415,7 @@
     el["al-side"].textContent = sideLabel(sp) + " · " + windowLabel(sp);
     el["al-side"].className = "side-badge " + sp.raw.side;
     el["alertbar"].classList.remove("hidden");
+    track("live_alert_shown", { spot_id: sp.id, mode: state.mode });
     if (state.settings.vib && navigator.vibrate) navigator.vibrate([200, 100, 200]);
   }
 
@@ -431,7 +435,7 @@
     var seg = T.segmentAtKm(state.km);
     if (seg) {
       var nameOf = function (id) {
-        var st = (window.ROUTE?.refStations || []).find(function (s) { return s.id === id; });
+        var st = ((typeof ROUTE !== "undefined" && ROUTE.refStations) || (window.ROUTE && window.ROUTE.refStations) || []).find(function (s) { return s.id === id; });
         return st ? (state.lang === "ja" ? st.ja : st.en) : id;
       };
       var txt = seg.at
@@ -449,6 +453,7 @@
         if (!state.passedIds[sp.id]) {
           state.passedIds[sp.id] = true;
           state.passed.push({ sp: sp, time: new Date() });
+          track("live_spot_passed", { spot_id: sp.id, mode: state.mode });
         }
         setMarkerClass(sp, "passed");
       } else if (info.dist >= -0.3) {
@@ -521,6 +526,7 @@
     state.mode = "gps";
     document.getElementById("idle-panel").classList.add("hidden");
     setStatus("warn", t("locating"));
+    track("live_gps_start", { lang: state.lang });
     state.watchId = navigator.geolocation.watchPosition(
       function (pos) {
         handleFix(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy, pos.coords.speed, pos.timestamp);
@@ -537,6 +543,7 @@
     stopAll();
     state.mode = "demo";
     document.getElementById("idle-panel").classList.add("hidden");
+    track("live_demo_start", { direction: dirStr, mult: mult });
     state.demo = {
       km: dirStr === "down" ? 0 : T.totalKm,
       dir: dirStr === "down" ? 1 : -1,
@@ -742,7 +749,15 @@
     hideAlert();
   });
 
+  /* ---- GA4 計測（位置情報・緯度経度・km値は送らない） ---- */
+  function track(eventName, params) {
+    try {
+      if (typeof window.gtag === "function") window.gtag("event", eventName, params || {});
+    } catch (e) { /* noop */ }
+  }
+
   createMap();
   applyLang();
   showIdle();
+  track("live_view", { lang: state.lang });
 })();

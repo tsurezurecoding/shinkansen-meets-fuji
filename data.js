@@ -288,7 +288,7 @@ const SPOTS = [
       note: { ja: "大田区付近から見える富士山", en: "Mt. Fuji seen from around Ota." },
     },
     references: [REFERENCES.weatherFuji],
-    map: { ja: "大田区 富士山 東海道新幹線", en: "Ota Tokyo Mt. Fuji Tokaido Shinkansen" },
+    map: { lat: 35.360625, lng: 138.727363, ja: "富士山（大田区付近からの遠望対象）", en: "Mt. Fuji, viewed from around Ota" },
   },
   {
     id: "maruko-bridge",
@@ -319,9 +319,17 @@ const SPOTS = [
         date: "2025-05-31",
         note: { ja: "橋の形がわかりやすい車窓写真", en: "A window photo that clearly shows the bridge shape" },
       },
+      {
+        src: "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の新幹線から見える丸子橋付近", en: "Around Maruko Bridge at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "夜の多摩川に続く橋の灯り", en: "Bridge lights stretching across the night Tama River" },
+      },
     ],
     references: [REFERENCES.marukoBridgeBlog],
-    map: { ja: "丸子橋 多摩川", en: "Maruko Bridge Tama River" },
+    map: { lat: 35.58537, lng: 139.66883, ja: "丸子橋 多摩川", en: "Maruko Bridge Tama River" },
   },
   {
     id: "musashi-kosugi-towers",
@@ -353,7 +361,7 @@ const SPOTS = [
         note: { ja: "夜は窓明かりが積み重なる街並みに変わる", en: "At night, stacked apartment lights change the view" },
       },
     ],
-    map: { ja: "武蔵小杉 タワーマンション 東海道新幹線", en: "Musashi-Kosugi towers Tokaido Shinkansen" },
+    map: { lat: 35.57563, lng: 139.661659, ja: "武蔵小杉駅周辺のタワーマンション群", en: "Musashi-Kosugi high-rise cluster" },
   },
   {
     id: "putiputi-sign",
@@ -393,7 +401,7 @@ const SPOTS = [
         },
       },
     ],
-    map: { ja: "新横浜 小田原 プチプチ 看板", en: "PUTIPUTI sign between Shin-Yokohama and Odawara" },
+    map: { lat: 35.321496, lng: 139.285829, ja: "プチプチ看板付近（727 No.22近接候補）", en: "PUTIPUTI sign area near 727 No.22" },
   },
   {
     id: "727-board",
@@ -432,7 +440,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial],
-    map: { ja: "神奈川県藤沢市葛原 727 COSMETICS 看板", en: "Kuzuhara Fujisawa 727 COSMETICS sign" },
+    map: { lat: 35.4167, lng: 139.428027, ja: "727看板 藤沢市葛原", en: "727 sign, Kuzuhara Fujisawa" },
   },
   {
     id: "sagami-fuji",
@@ -464,7 +472,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.weatherFuji],
-    map: { ja: "平塚市 相模平野 富士山", en: "Hiratsuka Sagami Plain Mt. Fuji" },
+    map: { lat: 35.360625, lng: 138.727363, ja: "富士山（相模平野からの遠望対象）", en: "Mt. Fuji, viewed across Sagami Plain" },
   },
   {
     id: "odawara",
@@ -628,15 +636,16 @@ const SPOTS = [
         note: { ja: "朝の港に、ちきゅう", en: "CHIKYU in the morning port" },
       },
       {
-        src: "images/20260629_shimizu_port_chikyu_night_michikusa.jpg",
+        src: "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "夜の港に、ちきゅう", en: "CHIKYU in the night port" },
       },
     ],
     references: [REFERENCES.shimizuPort],
-    map: { ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
+    map: { lat: 35.0092, lng: 138.4961, ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
   },
   {
     id: "shizuoka-tea-fields",
@@ -655,7 +664,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.shizuokaTeaTourism],
-    map: { ja: "掛川 茶畑 東海道新幹線", en: "Kakegawa tea fields Tokaido Shinkansen" },
+    map: { lat: 34.814591, lng: 138.127321, ja: "静岡の茶畑（代表通過地点）", en: "Shizuoka tea fields representative viewpoint" },
   },
   {
     id: "kakegawa",
@@ -825,7 +834,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.toyohashiTateiwa],
-    map: { ja: "豊橋 立岩", en: "Toyohashi Tateiwa Rock" },
+    map: { lat: 34.7258063, lng: 137.4706861, ja: "豊橋 立岩", en: "Toyohashi Tateiwa rock" },
   },
   {
     id: "mikawa-oshima",
@@ -866,7 +875,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.nichibanBlog],
-    map: { ja: "ニチバン 安城工場 セロテープ 壁看板", en: "Nichiban Anjo Factory CELLOTAPE wall sign" },
+    map: { lat: 34.972656, lng: 137.058777, ja: "ニチバン 安城工場 セロテープ 壁看板", en: "Nichiban Anjo Factory CELLOTAPE wall sign" },
   },
   {
     id: "nagoya-station-skyline",
@@ -896,8 +905,16 @@ const SPOTS = [
         date: "2026-05-30",
         note: { ja: "モールが建つ前は名古屋城が合間に見えていた", en: "Before the mall was built, Nagoya Castle could be glimpsed between the buildings" },
       },
+      {
+        src: "images/20260629_2158_nagoya_station_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の新幹線から見える名古屋駅前", en: "Nagoya Station skyline at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "夜の名古屋到着前、駅前の光が近づく", en: "City lights approach just before arriving at Nagoya at night" },
+      },
     ],
-    map: { ja: "名古屋駅", en: "Nagoya Station" },
+    map: { lat: 35.170693, lng: 136.881638, ja: "名古屋駅", en: "Nagoya Station" },
   },
   {
     id: "kirin-beer-factory",
@@ -922,7 +939,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.kirinBlog],
-    map: { ja: "キリンビール 名古屋工場", en: "Kirin Beer Nagoya Factory" },
+    map: { lat: 35.2098489, lng: 136.8501779, ja: "キリンビール 名古屋工場", en: "Kirin Beer Nagoya Factory" },
   },
   {
     id: "kiyosu",
@@ -1014,7 +1031,7 @@ const SPOTS = [
       note: { ja: "のぞみ27号、東京11:12発、13:00撮影", en: "Nozomi 27, departed Tokyo at 11:12, photographed at 13:00." },
     },
     references: [REFERENCES.kinshozanWiki],
-    map: { ja: "金生山 大垣", en: "Mt. Kinsho Ogaki" },
+    map: { lat: 35.405612, lng: 136.57348, ja: "金生山 大垣", en: "Mt. Kinsho Ogaki" },
   },
   {
     id: "ibuki",
@@ -1067,7 +1084,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.nanguTaisha],
-    map: { ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
+    map: { lat: 35.3611234, lng: 136.5265913, ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
   },
   {
     id: "sawayama-castle",
@@ -1166,7 +1183,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.setaKarahashi],
-    map: { ja: "瀬田の唐橋", en: "Seta no Karahashi Bridge" },
+    map: { lat: 34.97306, lng: 135.90611, ja: "瀬田の唐橋", en: "Seta no Karahashi Bridge" },
   },
   {
     id: "toji",
@@ -1203,6 +1220,6 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.tokaidoShinkansen],
-    map: { ja: "鳥飼車両基地", en: "Torikai Train Depot" },
+    map: { lat: 34.77598, lng: 135.5704782, ja: "鳥飼車両基地", en: "Torikai Train Depot" },
   },
 ];
