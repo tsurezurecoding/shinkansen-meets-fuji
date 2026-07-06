@@ -679,12 +679,50 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+.spot-static-map,
 .spot-mini-map-details {
   margin-top: 16px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: #fff;
   overflow: hidden;
+}
+.spot-static-map {
+  padding: 14px;
+}
+.spot-static-map-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+.spot-static-map-head h2,
+.spot-static-map-head h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: 18px;
+}
+.spot-static-map-head .map-link {
+  flex: 0 0 auto;
+}
+.spot-static-map-link {
+  display: block;
+  overflow: hidden;
+  border: 1px solid rgba(17, 37, 56, 0.1);
+  border-radius: 14px;
+  background: #f7fbff;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.6);
+}
+.spot-static-map-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2 / 1;
+  object-fit: cover;
+}
+.spot-static-map-link:hover {
+  border-color: rgba(255, 107, 74, 0.55);
 }
 .spot-mini-map-details summary {
   cursor: pointer;
@@ -710,9 +748,15 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 }
 .spot-mini-map-note {
   margin: 0;
-  padding: 10px 16px 14px;
+  padding: 10px 2px 0;
   font-size: 12px;
   color: var(--ink-soft);
+}
+.spot-mini-map-note a {
+  color: var(--night);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 .spot-mini-map-fallback,
 .mini-map-fallback {

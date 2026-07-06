@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図で見る", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "地図でみる", miniMapNote: "地図を開くと OpenStreetMap に接続します。", miniMapFallbackNote: "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
+    more: "くわしく", less: "とじる", mapLink: "地図で見る", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapNote: "タイル地図ではなく、線路と対象物の位置関係だけを描いた軽量な静的地図です。", miniMapFallbackNote: "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -184,7 +184,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "View on map", miniMapNote: "Opening the map connects to OpenStreetMap.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "Location at a glance", miniMapNote: "A lightweight static map showing only the track viewpoint and landmark, without loading map tiles.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -395,17 +395,40 @@ function miniMapDetailsHTML(spot, options = {}) {
   const hasCoordinates = hasMiniMapCoordinates(spot);
   const fallbackLink = mapLinkHTML(spot, "spot-mini-map-link");
   if (!hasCoordinates && !fallbackLink) return "";
-  const summary = options.summary || t("miniMapSummary");
-  return `<details class="spot-mini-map-details" data-mini-map-details data-mini-map-spot="${spot.id}" data-mini-map-lang="${lang}" data-mini-map-radius="20">
-    <summary>${summary}</summary>
-    ${hasCoordinates
-      ? `<div class="spot-mini-map-target" data-mini-map-target></div>
-    <p class="spot-mini-map-note">${t("miniMapNote")}</p>`
-      : `<div class="spot-mini-map-fallback">
+  const title = options.summary || t("miniMapSummary");
+  const liveHref = lang === "ja" ? "live/index.html" : "live/index.html";
+  const liveLabel = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
+  const staticNote = lang === "ja"
+    ? "タイル地図ではなく、線路と対象物の位置関係だけを描いた軽量な静的地図です。"
+    : "A lightweight static map showing only the track viewpoint and landmark, without loading map tiles.";
+  if (!hasCoordinates) {
+    return `<section class="spot-static-map">
+    <div class="spot-static-map-head">
+      <h3>${title}</h3>
+    </div>
+    <div class="spot-mini-map-fallback">
       <p>${t("miniMapFallbackNote")}</p>
       ${fallbackLink}
-    </div>`}
-  </details>`;
+    </div>
+  </section>`;
+  }
+  const href = mapHref(spot);
+  const name = spot[lang]?.name || spot.ja?.name || spot.en?.name || spot.id;
+  const image = `images/maps/${spot.id}.svg`;
+  const openMapLabel = lang === "ja" ? `${name}をGoogle Mapsで開く` : `Open ${name} in Google Maps`;
+  const imageAlt = lang === "ja"
+    ? `${name}の線路上の視点と対象物の位置関係を示す簡易地図`
+    : `Simple map showing the track viewpoint and landmark for ${name}`;
+  return `<section class="spot-static-map">
+    <div class="spot-static-map-head">
+      <h3>${title}</h3>
+      ${fallbackLink}
+    </div>
+    <a class="spot-static-map-link" href="${href}" target="_blank" rel="noopener noreferrer" data-map="${spot.id}" aria-label="${escapeAttr(openMapLabel)}">
+      <img src="${image}" alt="${escapeAttr(imageAlt)}" loading="lazy">
+    </a>
+    <p class="spot-mini-map-note">${staticNote} <a href="${liveHref}">${liveLabel}</a></p>
+  </section>`;
 }
 function compactCreditLabel(label) {
   const handle = String(label || "").match(/@[\w_]+/);

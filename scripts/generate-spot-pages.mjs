@@ -429,21 +429,44 @@ function miniMapDetailsHTML(spot, lang) {
   const hasCoordinates = !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
   const fallbackLink = mapLinkHTML(spot, lang);
   if (!hasCoordinates && !fallbackLink) return "";
-  const summary = lang === "ja" ? "地図でみる" : "View on map";
-  const note = lang === "ja" ? "地図を開くと OpenStreetMap に接続します。" : "Opening the map connects to OpenStreetMap.";
+  const summary = lang === "ja" ? "位置の目安" : "Location at a glance";
+  const liveLabel = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
+  const staticNote = lang === "ja"
+    ? "タイル地図ではなく、線路と対象物の位置関係だけを描いた軽量な静的地図です。"
+    : "A lightweight static map showing only the track viewpoint and landmark, without loading map tiles.";
   const fallbackNote = lang === "ja"
     ? "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。"
     : "Inline coordinates are still being tuned for this spot. You can check the location in an external map.";
-  return `<details class="spot-mini-map-details" data-mini-map-details data-mini-map-spot="${spot.id}" data-mini-map-lang="${lang}" data-mini-map-radius="20">
-        <summary>${escapeHTML(summary)}</summary>
-        ${hasCoordinates
-          ? `<div class="spot-mini-map-target" data-mini-map-target></div>
-        <p class="spot-mini-map-note">${escapeHTML(note)}</p>`
-          : `<div class="spot-mini-map-fallback">
+  const prefix = lang === "ja" ? "../" : "../../";
+  const data = spot[lang] || spot.ja || spot.en || {};
+  const href = mapHref(spot, lang);
+  const openMapLabel = lang === "ja"
+    ? `${data.name || spot.id}をGoogle Mapsで開く`
+    : `Open ${data.name || spot.id} in Google Maps`;
+  const imageAlt = lang === "ja"
+    ? `${data.name || spot.id}の線路上の視点と対象物の位置関係を示す簡易地図`
+    : `Simple map showing the track viewpoint and landmark for ${data.name || spot.id}`;
+  if (!hasCoordinates) {
+    return `<section class="spot-static-map">
+        <div class="spot-static-map-head">
+          <h2>${escapeHTML(summary)}</h2>
+        </div>
+        <div class="spot-mini-map-fallback">
           <p>${escapeHTML(fallbackNote)}</p>
           ${fallbackLink}
-        </div>`}
-      </details>`;
+        </div>
+      </section>`;
+  }
+  return `<section class="spot-static-map">
+        <div class="spot-static-map-head">
+          <h2>${escapeHTML(summary)}</h2>
+          ${fallbackLink}
+        </div>
+        <a class="spot-static-map-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer" data-map="${escapeHTML(spot.id)}" aria-label="${escapeHTML(openMapLabel)}">
+          <img src="${prefix}images/maps/${escapeHTML(spot.id)}.svg" alt="${escapeHTML(imageAlt)}" loading="lazy">
+        </a>
+        <p class="spot-mini-map-note">${escapeHTML(staticNote)} <a href="${prefix}live/index.html">${escapeHTML(liveLabel)}</a></p>
+      </section>`;
 }
 
 function spotPageHTML(spot, lang) {
@@ -506,7 +529,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-mini-map-render">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-static-mini-maps">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -515,7 +538,6 @@ function spotPageHTML(spot, lang) {
   <meta name="twitter:image" content="${absoluteImageUrl(spot)}">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
-  ${miniMap ? `<script src="${prefix}track.js?v=20260707-mini-map-render" defer></script><script src="${prefix}mini-map.js?v=20260707-mini-map-render" defer></script>` : ""}
 </head>
 <body class="spot-page">
   ${siteHeaderHTML(
@@ -679,7 +701,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-mini-map-render">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-static-mini-maps">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
