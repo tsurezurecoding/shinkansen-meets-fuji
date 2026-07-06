@@ -1157,9 +1157,10 @@ const SPOTS = [
         sourceUrl: "https://cotetu.seesaa.net/article/517709224.html",
       },
       {
-        src: "images/20260629_seta_karahashi_night_michikusa.jpg",
+        src: "images/20260629_2125_seta_karahashi_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える瀬田の唐橋付近", en: "Around Seta no Karahashi at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "夜の瀬田川を渡る光", en: "Lights crossing the Seta River at night" },
       },
