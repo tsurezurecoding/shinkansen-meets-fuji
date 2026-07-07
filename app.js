@@ -401,14 +401,14 @@ function miniMapViewpoint(spot) {
   return trackLayer.latLngAtKm(km);
 }
 function miniMapZoomForDistance(distanceKm) {
-  if (!Number.isFinite(distanceKm)) return 15;
+  if (!Number.isFinite(distanceKm)) return 14;
   if (distanceKm <= 1) return 15;
   if (distanceKm <= 3) return 14;
-  if (distanceKm <= 7) return 13;
-  if (distanceKm <= 15) return 12;
-  if (distanceKm <= 35) return 11;
-  if (distanceKm <= 80) return 10;
-  return 9;
+  if (distanceKm <= 8) return 13;
+  if (distanceKm <= 18) return 12;
+  if (distanceKm <= 35) return 10;
+  if (distanceKm <= 80) return 9;
+  return 8;
 }
 function googleMapsEmbedHref(spot) {
   if (!hasMiniMapCoordinates(spot)) return "";
@@ -425,12 +425,13 @@ function googleMapsEmbedHref(spot) {
     : NaN;
   const params = new URLSearchParams({
     key: GOOGLE_MAPS_EMBED_API_KEY,
+    q: `${spot.map.lat},${spot.map.lng}`,
     center: `${center.lat},${center.lng}`,
     zoom: String(miniMapZoomForDistance(distanceKm)),
     maptype: "satellite",
     language: lang === "ja" ? "ja" : "en",
   });
-  return `https://www.google.com/maps/embed/v1/view?${params.toString()}`;
+  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
 }
 function miniMapDetailsHTML(spot, options = {}) {
   const hasCoordinates = hasMiniMapCoordinates(spot);
