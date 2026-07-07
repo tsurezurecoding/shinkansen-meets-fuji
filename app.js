@@ -392,17 +392,45 @@ function mapLinkHTML(spot, className = "") {
 function hasMiniMapCoordinates(spot) {
   return !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
 }
+function miniMapViewpoint(spot) {
+  if (!hasMiniMapCoordinates(spot)) return null;
+  const trackLayer = window.MADO_TRACK;
+  if (!trackLayer || typeof trackLayer.minToKm !== "function" || typeof trackLayer.latLngAtKm !== "function") return null;
+  const km = trackLayer.minToKm(spot.minutesFromTokyo);
+  if (!Number.isFinite(km)) return null;
+  return trackLayer.latLngAtKm(km);
+}
+function miniMapZoomForDistance(distanceKm) {
+  if (!Number.isFinite(distanceKm)) return 15;
+  if (distanceKm <= 1) return 15;
+  if (distanceKm <= 3) return 14;
+  if (distanceKm <= 7) return 13;
+  if (distanceKm <= 15) return 12;
+  if (distanceKm <= 35) return 11;
+  if (distanceKm <= 80) return 10;
+  return 9;
+}
 function googleMapsEmbedHref(spot) {
   if (!hasMiniMapCoordinates(spot)) return "";
+  const viewPos = miniMapViewpoint(spot);
+  const trackLayer = window.MADO_TRACK;
+  const center = viewPos
+    ? {
+        lat: (viewPos.lat + spot.map.lat) / 2,
+        lng: (viewPos.lng + spot.map.lng) / 2,
+      }
+    : { lat: spot.map.lat, lng: spot.map.lng };
+  const distanceKm = viewPos && trackLayer && typeof trackLayer.haversineKm === "function"
+    ? trackLayer.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
+    : NaN;
   const params = new URLSearchParams({
     key: GOOGLE_MAPS_EMBED_API_KEY,
-    q: `${spot.map.lat},${spot.map.lng}`,
-    center: `${spot.map.lat},${spot.map.lng}`,
-    zoom: "17",
+    center: `${center.lat},${center.lng}`,
+    zoom: String(miniMapZoomForDistance(distanceKm)),
     maptype: "satellite",
     language: lang === "ja" ? "ja" : "en",
   });
-  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
+  return `https://www.google.com/maps/embed/v1/view?${params.toString()}`;
 }
 function miniMapDetailsHTML(spot, options = {}) {
   const hasCoordinates = hasMiniMapCoordinates(spot);

@@ -6,12 +6,16 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
+const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
 const today = "2026-07-01";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
-const { SPOTS } = vm.runInNewContext(`${dataCode}\n;({ SPOTS });`, {}, { filename: dataPath });
+const { SPOTS, ROUTE } = vm.runInNewContext(`${dataCode}\n;({ SPOTS, ROUTE });`, {}, { filename: dataPath });
+const trackContext = { window: { ROUTE }, ROUTE };
+vm.runInNewContext(fs.readFileSync(trackPath, "utf8"), trackContext, { filename: trackPath });
+const TRACK = trackContext.window.MADO_TRACK;
 
 const featuredIds = [
   "fuji",
@@ -430,17 +434,43 @@ function hasMiniMapCoordinates(spot) {
   return !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
 }
 
+function miniMapViewpoint(spot) {
+  if (!hasMiniMapCoordinates(spot) || !TRACK) return null;
+  const km = TRACK.minToKm(spot.minutesFromTokyo);
+  return Number.isFinite(km) ? TRACK.latLngAtKm(km) : null;
+}
+
+function miniMapZoomForDistance(distanceKm) {
+  if (!Number.isFinite(distanceKm)) return 15;
+  if (distanceKm <= 1) return 15;
+  if (distanceKm <= 3) return 14;
+  if (distanceKm <= 7) return 13;
+  if (distanceKm <= 15) return 12;
+  if (distanceKm <= 35) return 11;
+  if (distanceKm <= 80) return 10;
+  return 9;
+}
+
 function googleMapsEmbedHref(spot, lang) {
   if (!hasMiniMapCoordinates(spot)) return "";
+  const viewPos = miniMapViewpoint(spot);
+  const center = viewPos
+    ? {
+        lat: (viewPos.lat + spot.map.lat) / 2,
+        lng: (viewPos.lng + spot.map.lng) / 2,
+      }
+    : { lat: spot.map.lat, lng: spot.map.lng };
+  const distanceKm = viewPos && TRACK
+    ? TRACK.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
+    : NaN;
   const params = new URLSearchParams({
     key: GOOGLE_MAPS_EMBED_API_KEY,
-    q: `${spot.map.lat},${spot.map.lng}`,
-    center: `${spot.map.lat},${spot.map.lng}`,
-    zoom: "17",
+    center: `${center.lat},${center.lng}`,
+    zoom: String(miniMapZoomForDistance(distanceKm)),
     maptype: "satellite",
     language: lang === "ja" ? "ja" : "en",
   });
-  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
+  return `https://www.google.com/maps/embed/v1/view?${params.toString()}`;
 }
 
 function miniMapDetailsHTML(spot, lang) {
@@ -542,7 +572,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-google-map-embed">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-route-viewport">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -714,7 +744,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-google-map-embed">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-route-viewport">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
