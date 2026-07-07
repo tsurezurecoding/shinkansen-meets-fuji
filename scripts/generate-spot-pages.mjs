@@ -436,38 +436,67 @@ function hasMiniMapCoordinates(spot) {
 
 function miniMapViewpoint(spot) {
   if (!hasMiniMapCoordinates(spot) || !TRACK) return null;
+  if (typeof spot.viewpoint?.lat === "number" && typeof spot.viewpoint?.lng === "number") {
+    return { lat: spot.viewpoint.lat, lng: spot.viewpoint.lng };
+  }
   const km = TRACK.minToKm(spot.minutesFromTokyo);
   return Number.isFinite(km) ? TRACK.latLngAtKm(km) : null;
 }
 
-function miniMapZoomForDistance(distanceKm) {
-  if (!Number.isFinite(distanceKm)) return 14;
-  if (distanceKm <= 1) return 15;
-  if (distanceKm <= 3) return 14;
-  if (distanceKm <= 8) return 13;
-  if (distanceKm <= 18) return 12;
-  if (distanceKm <= 35) return 10;
-  if (distanceKm <= 80) return 9;
-  return 8;
+function mercatorPoint(lat, lng) {
+  const safeLat = Math.max(-85.05112878, Math.min(85.05112878, lat));
+  const sinLat = Math.sin((safeLat * Math.PI) / 180);
+  return {
+    x: (lng + 180) / 360,
+    y: 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI),
+  };
+}
+
+function miniMapZoomForViewpoint(spot, viewPos, distanceKm) {
+  if (!viewPos) return 14;
+  const spotPoint = mercatorPoint(spot.map.lat, spot.map.lng);
+  const routePoint = mercatorPoint(viewPos.lat, viewPos.lng);
+  const dx = Math.abs(spotPoint.x - routePoint.x);
+  const dy = Math.abs(spotPoint.y - routePoint.y);
+  const fitRatio = 0.3;
+  const tileSize = 256;
+  const zoomX = dx > 0 ? Math.floor(Math.log2((640 * fitRatio) / (dx * tileSize))) : 21;
+  const zoomY = dy > 0 ? Math.floor(Math.log2((320 * fitRatio) / (dy * tileSize))) : 21;
+  const fitZoom = Math.max(8, Math.min(15, zoomX, zoomY));
+  if (Number.isFinite(distanceKm) && distanceKm <= 0.35) return Math.max(fitZoom, 15);
+  if (Number.isFinite(distanceKm) && distanceKm <= 3) return Math.max(fitZoom, 14);
+  return fitZoom;
 }
 
 function googleMapsEmbedHref(spot, lang) {
   if (!hasMiniMapCoordinates(spot)) return "";
   const viewPos = miniMapViewpoint(spot);
-  const center = viewPos
-    ? {
-        lat: (viewPos.lat + spot.map.lat) / 2,
-        lng: (viewPos.lng + spot.map.lng) / 2,
-      }
-    : { lat: spot.map.lat, lng: spot.map.lng };
   const distanceKm = viewPos && TRACK
     ? TRACK.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
     : NaN;
   const params = new URLSearchParams({
     key: GOOGLE_MAPS_EMBED_API_KEY,
     q: `${spot.map.lat},${spot.map.lng}`,
-    center: `${center.lat},${center.lng}`,
-    zoom: String(miniMapZoomForDistance(distanceKm)),
+    center: `${spot.map.lat},${spot.map.lng}`,
+    zoom: String(miniMapZoomForViewpoint(spot, viewPos, distanceKm)),
+    maptype: "satellite",
+    language: lang === "ja" ? "ja" : "en",
+  });
+  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
+}
+
+function googleMapsViewpointHref(spot, lang) {
+  if (!hasMiniMapCoordinates(spot)) return "";
+  const viewPos = miniMapViewpoint(spot);
+  if (!viewPos) return "";
+  const distanceKm = TRACK
+    ? TRACK.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
+    : NaN;
+  const params = new URLSearchParams({
+    key: GOOGLE_MAPS_EMBED_API_KEY,
+    q: `${viewPos.lat},${viewPos.lng}`,
+    center: `${spot.map.lat},${spot.map.lng}`,
+    zoom: String(miniMapZoomForViewpoint(spot, viewPos, distanceKm)),
     maptype: "satellite",
     language: lang === "ja" ? "ja" : "en",
   });
@@ -480,8 +509,8 @@ function miniMapDetailsHTML(spot, lang) {
   if (!hasCoordinates && !fallbackLink) return "";
   const summary = lang === "ja" ? "位置の目安" : "Location at a glance";
   const mapNote = lang === "ja"
-    ? "航空写真で周辺の目印を確認できます。"
-    : "Satellite imagery helps you recognize nearby landmarks.";
+    ? "スポット位置と、新幹線から見る位置を切り替えられます。"
+    : "Switch between the spot and the Shinkansen viewpoint.";
   const fallbackNote = lang === "ja"
     ? "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。"
     : "Inline coordinates are still being tuned for this spot. You can check the location in an external map.";
@@ -492,6 +521,11 @@ function miniMapDetailsHTML(spot, lang) {
     ? `${data.name || spot.id}をGoogle Mapsで開く`
     : `Open ${data.name || spot.id} in Google Maps`;
   const embedHref = googleMapsEmbedHref(spot, lang);
+  const viewpointHref = googleMapsViewpointHref(spot, lang);
+  const modebar = viewpointHref ? `<div class="spot-map-modebar" role="group" aria-label="${escapeHTML(summary)}">
+          <button type="button" class="spot-map-mode is-active" data-mini-map-mode="spot" data-map-src="${escapeHTML(embedHref)}" aria-pressed="true">${escapeHTML(lang === "ja" ? "スポット" : "Spot")}</button>
+          <button type="button" class="spot-map-mode" data-mini-map-mode="viewpoint" data-map-src="${escapeHTML(viewpointHref)}" aria-pressed="false">${escapeHTML(lang === "ja" ? "新幹線視点" : "Train viewpoint")}</button>
+        </div>` : "";
   if (!hasCoordinates) {
     return `<section class="spot-static-map">
         <div class="spot-static-map-head">
@@ -508,6 +542,7 @@ function miniMapDetailsHTML(spot, lang) {
           <h2>${escapeHTML(summary)}</h2>
           ${fallbackLink}
         </div>
+        ${modebar}
         <iframe class="spot-google-map-frame" src="${escapeHTML(embedHref)}" title="${escapeHTML(openMapLabel)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
         <p class="spot-mini-map-note">${escapeHTML(mapNote)}</p>
       </section>`;
@@ -573,7 +608,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-route-viewport">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-mode-switch">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -630,6 +665,7 @@ ${fujiGuideBlock.trimEnd()}
       </div>
     </article>
   </main>
+  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
 </body>
 </html>
 `;
@@ -745,7 +781,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-route-viewport">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-mode-switch">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

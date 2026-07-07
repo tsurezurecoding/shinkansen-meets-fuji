@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapNote: "航空写真で周辺の目印を確認できます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
+    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -184,7 +184,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "Location at a glance", miniMapNote: "Satellite imagery helps you recognize nearby landmarks.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -394,40 +394,68 @@ function hasMiniMapCoordinates(spot) {
 }
 function miniMapViewpoint(spot) {
   if (!hasMiniMapCoordinates(spot)) return null;
+  if (typeof spot.viewpoint?.lat === "number" && typeof spot.viewpoint?.lng === "number") {
+    return { lat: spot.viewpoint.lat, lng: spot.viewpoint.lng };
+  }
   const trackLayer = window.MADO_TRACK;
   if (!trackLayer || typeof trackLayer.minToKm !== "function" || typeof trackLayer.latLngAtKm !== "function") return null;
   const km = trackLayer.minToKm(spot.minutesFromTokyo);
   if (!Number.isFinite(km)) return null;
   return trackLayer.latLngAtKm(km);
 }
-function miniMapZoomForDistance(distanceKm) {
-  if (!Number.isFinite(distanceKm)) return 14;
-  if (distanceKm <= 1) return 15;
-  if (distanceKm <= 3) return 14;
-  if (distanceKm <= 8) return 13;
-  if (distanceKm <= 18) return 12;
-  if (distanceKm <= 35) return 10;
-  if (distanceKm <= 80) return 9;
-  return 8;
+function mercatorPoint(lat, lng) {
+  const safeLat = Math.max(-85.05112878, Math.min(85.05112878, lat));
+  const sinLat = Math.sin((safeLat * Math.PI) / 180);
+  return {
+    x: (lng + 180) / 360,
+    y: 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI),
+  };
+}
+function miniMapZoomForViewpoint(spot, viewPos, distanceKm) {
+  if (!viewPos) return 14;
+  const spotPoint = mercatorPoint(spot.map.lat, spot.map.lng);
+  const routePoint = mercatorPoint(viewPos.lat, viewPos.lng);
+  const dx = Math.abs(spotPoint.x - routePoint.x);
+  const dy = Math.abs(spotPoint.y - routePoint.y);
+  const fitRatio = 0.3;
+  const tileSize = 256;
+  const zoomX = dx > 0 ? Math.floor(Math.log2((640 * fitRatio) / (dx * tileSize))) : 21;
+  const zoomY = dy > 0 ? Math.floor(Math.log2((320 * fitRatio) / (dy * tileSize))) : 21;
+  const fitZoom = Math.max(8, Math.min(15, zoomX, zoomY));
+  if (Number.isFinite(distanceKm) && distanceKm <= 0.35) return Math.max(fitZoom, 15);
+  if (Number.isFinite(distanceKm) && distanceKm <= 3) return Math.max(fitZoom, 14);
+  return fitZoom;
 }
 function googleMapsEmbedHref(spot) {
   if (!hasMiniMapCoordinates(spot)) return "";
   const viewPos = miniMapViewpoint(spot);
   const trackLayer = window.MADO_TRACK;
-  const center = viewPos
-    ? {
-        lat: (viewPos.lat + spot.map.lat) / 2,
-        lng: (viewPos.lng + spot.map.lng) / 2,
-      }
-    : { lat: spot.map.lat, lng: spot.map.lng };
   const distanceKm = viewPos && trackLayer && typeof trackLayer.haversineKm === "function"
     ? trackLayer.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
     : NaN;
   const params = new URLSearchParams({
     key: GOOGLE_MAPS_EMBED_API_KEY,
     q: `${spot.map.lat},${spot.map.lng}`,
-    center: `${center.lat},${center.lng}`,
-    zoom: String(miniMapZoomForDistance(distanceKm)),
+    center: `${spot.map.lat},${spot.map.lng}`,
+    zoom: String(miniMapZoomForViewpoint(spot, viewPos, distanceKm)),
+    maptype: "satellite",
+    language: lang === "ja" ? "ja" : "en",
+  });
+  return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
+}
+function googleMapsViewpointHref(spot) {
+  if (!hasMiniMapCoordinates(spot)) return "";
+  const viewPos = miniMapViewpoint(spot);
+  if (!viewPos) return "";
+  const trackLayer = window.MADO_TRACK;
+  const distanceKm = trackLayer && typeof trackLayer.haversineKm === "function"
+    ? trackLayer.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
+    : NaN;
+  const params = new URLSearchParams({
+    key: GOOGLE_MAPS_EMBED_API_KEY,
+    q: `${viewPos.lat},${viewPos.lng}`,
+    center: `${spot.map.lat},${spot.map.lng}`,
+    zoom: String(miniMapZoomForViewpoint(spot, viewPos, distanceKm)),
     maptype: "satellite",
     language: lang === "ja" ? "ja" : "en",
   });
@@ -453,12 +481,18 @@ function miniMapDetailsHTML(spot, options = {}) {
   }
   const name = spot[lang]?.name || spot.ja?.name || spot.en?.name || spot.id;
   const embedHref = googleMapsEmbedHref(spot);
+  const viewpointHref = googleMapsViewpointHref(spot);
   const openMapLabel = lang === "ja" ? `${name}をGoogle Mapsで開く` : `Open ${name} in Google Maps`;
+  const modebar = viewpointHref ? `<div class="spot-map-modebar" role="group" aria-label="${escapeAttr(t("miniMapSummary"))}">
+      <button type="button" class="spot-map-mode is-active" data-mini-map-mode="spot" data-map-src="${escapeAttr(embedHref)}" aria-pressed="true">${t("miniMapSpotMode")}</button>
+      <button type="button" class="spot-map-mode" data-mini-map-mode="viewpoint" data-map-src="${escapeAttr(viewpointHref)}" aria-pressed="false">${t("miniMapViewpointMode")}</button>
+    </div>` : "";
   return `<section class="spot-static-map">
     <div class="spot-static-map-head">
       <h3>${title}</h3>
       ${fallbackLink}
     </div>
+    ${modebar}
     <iframe class="spot-google-map-frame" src="${escapeAttr(embedHref)}" title="${escapeAttr(openMapLabel)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
     <p class="spot-mini-map-note">${t("miniMapNote")} <a href="${liveHref}">${liveLabel}</a></p>
   </section>`;
@@ -1132,6 +1166,20 @@ function bindSpotEvents(root) {
   });
   root.querySelectorAll("[data-map]").forEach((link) => {
     link.addEventListener("click", () => track("map_opened", spotAnalyticsParams(findSpotById(link.dataset.map), "inline_map")));
+  });
+  root.querySelectorAll("[data-mini-map-mode]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const wrapper = button.closest(".spot-static-map");
+      const frame = wrapper?.querySelector(".spot-google-map-frame");
+      const src = button.dataset.mapSrc;
+      if (!frame || !src) return;
+      if (frame.getAttribute("src") !== src) frame.setAttribute("src", src);
+      wrapper.querySelectorAll("[data-mini-map-mode]").forEach((item) => {
+        const isActive = item === button;
+        item.classList.toggle("is-active", isActive);
+        item.setAttribute("aria-pressed", isActive ? "true" : "false");
+      });
+    });
   });
   root.querySelectorAll(".tl-card-button:not([data-more])").forEach((card) => {
     card.addEventListener("click", () => openSpotModal(card.closest(".tl-item")?.dataset.spot, "timeline"));

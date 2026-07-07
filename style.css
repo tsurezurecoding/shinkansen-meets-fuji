@@ -706,6 +706,30 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .spot-static-map-head .map-link {
   flex: 0 0 auto;
 }
+.spot-map-modebar {
+  display: inline-flex;
+  gap: 6px;
+  padding: 4px;
+  margin: 0 0 12px;
+  border: 1px solid rgba(17, 37, 56, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.78);
+}
+.spot-map-mode {
+  border: 0;
+  border-radius: 999px;
+  padding: 7px 12px;
+  background: transparent;
+  color: var(--ink-soft);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.spot-map-mode.is-active {
+  background: var(--ink);
+  color: #fff;
+}
 .spot-google-map-frame {
   display: block;
   width: 100%;

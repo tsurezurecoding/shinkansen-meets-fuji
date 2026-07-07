@@ -248,6 +248,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.tokyoTowerBlog],
     map: { lat: 35.65858, lng: 139.74543, ja: "東京タワー", en: "Tokyo Tower" },
+    viewpoint: { lat: 35.656460, lng: 139.757770 },
   },
   {
     id: "hinataoka",
@@ -272,7 +273,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.hinataokaRakumachi],
-    map: { lat: 35.333, lng: 139.304, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
+    map: { lat: 35.341792, lng: 139.302296, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
+    viewpoint: { lat: 35.340384, lng: 139.305712 },
   },
   {
     id: "ota-fuji",
@@ -289,6 +291,7 @@ const SPOTS = [
     },
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（大田区付近からの遠望対象）", en: "Mt. Fuji, viewed from around Ota" },
+    viewpoint: { lat: 35.589197959437456, lng: 139.6960194221596 },
   },
   {
     id: "maruko-bridge",
@@ -330,6 +333,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.marukoBridgeBlog],
     map: { lat: 35.58537, lng: 139.66883, ja: "丸子橋 多摩川", en: "Maruko Bridge Tama River" },
+    viewpoint: { lat: 35.581074, lng: 139.670656 },
   },
   {
     id: "musashi-kosugi-towers",
@@ -362,6 +366,7 @@ const SPOTS = [
       },
     ],
     map: { lat: 35.57563, lng: 139.661659, ja: "武蔵小杉駅周辺のタワーマンション群", en: "Musashi-Kosugi high-rise cluster" },
+    viewpoint: { lat: 35.575200, lng: 139.663058 },
   },
   {
     id: "putiputi-sign",
@@ -402,6 +407,7 @@ const SPOTS = [
       },
     ],
     map: { lat: 35.321496, lng: 139.285829, ja: "プチプチ看板付近（727 No.22近接候補）", en: "PUTIPUTI sign area near 727 No.22" },
+    viewpoint: { lat: 35.322233, lng: 139.285276 },
   },
   {
     id: "727-board",
@@ -441,6 +447,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial],
     map: { lat: 35.4167, lng: 139.428027, ja: "727看板 藤沢市葛原", en: "727 sign, Kuzuhara Fujisawa" },
+    viewpoint: { lat: 35.415637, lng: 139.428588 },
   },
   {
     id: "sagami-fuji",
@@ -473,6 +480,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（相模平野からの遠望対象）", en: "Mt. Fuji, viewed across Sagami Plain" },
+    viewpoint: { lat: 35.333069, lng: 139.298446 },
   },
   {
     id: "odawara",
@@ -535,7 +543,8 @@ const SPOTS = [
     image: "images/20260516_gyoran_kannon_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
     references: [REFERENCES.gyoranKannon],
-    map: { lat: 35.2426, lng: 139.1384, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
+    map: { lat: 35.24071866286659, lng: 139.14416783170063, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
+    viewpoint: { lat: 35.24078875337311, lng: 139.14392110506097 },
   },
   {
     id: "fuji",
@@ -588,13 +597,18 @@ const SPOTS = [
     ],
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
+    viewpoint: { lat: 35.145328, lng: 138.680677 },
   },
   {
     id: "left-fuji",
     icon: "🔭",
-    ja: { name: "左富士", area: "新富士 → 静岡", hook: "海側A席に、28秒だけ富士山。", story: "ふつう富士山はE席のもの。でも線路がカーブするこの区間だけ、反対のA席側に富士山があらわれます。昔から「幸運の左富士」とも呼ばれる、短いごほうびのような車窓。見えるのはほんの数十秒。A席のあなたにも、ちゃんと出番があります。" },
-    en: { name: "Left-Side Fuji", area: "Shin-Fuji → Shizuoka", hook: "For 28 seconds, Fuji switches sides.", story: "Mt. Fuji normally belongs to Seat E. But where the track curves in this section, Fuji appears briefly on the opposite A side. Known as a lucky left-side Fuji, it is a tiny window-seat reward that lasts only a few seconds. Seat A gets its moment too." },
+    ja: { name: "左富士", area: "静岡駅を過ぎ、安倍川を渡ってまもなく", hook: "海側A席に、28秒だけ富士山。", story: "東京から新大阪方面へ向かうなら、静岡駅を過ぎ、安倍川を渡ってまもなく。ふつう富士山はE席のものですが、この短い区間だけ反対のA席側にあらわれます。昔から「幸運の左富士」とも呼ばれる、数十秒だけのごほうび。A席のあなたにも、ちゃんと出番があります。" },
+    en: { name: "Left-Side Fuji", area: "Just after Shizuoka Sta. and the Abe River", hook: "For 28 seconds, Fuji switches sides.", story: "Heading from Tokyo toward Shin-Osaka, start looking just after Shizuoka Station, soon after crossing the Abe River. Mt. Fuji normally belongs to Seat E, but in this short stretch it appears on the opposite Seat A side. Known as a lucky left-side Fuji, it is a tiny reward that lasts only a few seconds. Seat A gets its moment too." },
     minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 28, scene: "leftfuji",
+    routeNote: {
+      ja: "東京から新大阪方面へ向かう場合は、静岡駅を過ぎて安倍川を渡った直後、A席・海側の窓を見てください。新大阪から東京方面へ向かう場合は、通過順が逆になります。",
+      en: "From Tokyo toward Shin-Osaka, watch the Seat A · sea side window just after Shizuoka Station and the Abe River crossing. Toward Tokyo, the order is reversed.",
+    },
     image: "images/20240410_left_fuji_earlyretiremile.jpg",
     photoCredit: { ja: "@earlyretiremile", en: "@earlyretiremile", url: "https://x.com/earlyretiremile/status/1777853629682405657" },
     photos: [
@@ -614,6 +628,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.leftFujiTrafficNews],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
+    viewpoint: { lat: 34.95366971111815, lng: 138.36849158839897 },
   },
   {
     id: "shimizu-port-chikyu",
@@ -645,7 +660,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.shimizuPort],
-    map: { lat: 35.0092, lng: 138.4961, ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
+    map: { lat: 35.034137, lng: 138.505989, ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
+    viewpoint: { lat: 35.037074, lng: 138.487157 },
   },
   {
     id: "shizuoka-tea-fields",
@@ -684,6 +700,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.kakegawaCastle],
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
+    viewpoint: { lat: 34.769664, lng: 138.017389 },
   },
   {
     id: "genki-sign",
@@ -709,6 +726,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.genkiSignBlog, REFERENCES.genkiSignStreetView],
     map: { lat: 34.7298265, lng: 137.8986674, ja: "磐田 元気が出る看板", en: "Iwata cheer-up signs" },
+    viewpoint: { lat: 34.727510, lng: 137.900516 },
   },
   {
     id: "hamanako",
@@ -770,6 +788,7 @@ const SPOTS = [
     relatedSpotIds: ["hamanako-fuji"],
     references: [REFERENCES.hamanakoTourism, REFERENCES.hamanakoToriiBlog],
     map: { lat: 34.741111, lng: 137.569722, ja: "浜名湖", en: "Lake Hamana" },
+    viewpoint: { lat: 34.690763, lng: 137.599663 },
   },
   {
     id: "hamanako-fuji",
@@ -802,7 +821,8 @@ const SPOTS = [
     ],
     relatedSpotIds: ["hamanako"],
     references: [REFERENCES.hamanakoTourism, REFERENCES.weatherFuji],
-    map: { lat: 34.741111, lng: 137.569722, ja: "浜名湖 富士山", en: "Lake Hamana Mt. Fuji" },
+    map: { lat: 35.360625, lng: 138.727363, ja: "浜名湖 富士山", en: "Lake Hamana Mt. Fuji" },
+    viewpoint: { lat: 34.694152, lng: 137.580813 },
   },
   {
     id: "toyohashi-tateiwa",
@@ -835,6 +855,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.toyohashiTateiwa],
     map: { lat: 34.7258063, lng: 137.4706861, ja: "豊橋 立岩", en: "Toyohashi Tateiwa rock" },
+    viewpoint: { lat: 34.723264, lng: 137.470638 },
   },
   {
     id: "mikawa-oshima",
@@ -876,6 +897,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.nichibanBlog],
     map: { lat: 34.972656, lng: 137.058777, ja: "ニチバン 安城工場 セロテープ 壁看板", en: "Nichiban Anjo Factory CELLOTAPE wall sign" },
+    viewpoint: { lat: 34.971971, lng: 137.057485 },
   },
   {
     id: "nagoya-station-skyline",
@@ -915,6 +937,7 @@ const SPOTS = [
       },
     ],
     map: { lat: 35.170693, lng: 136.881638, ja: "名古屋駅", en: "Nagoya Station" },
+    viewpoint: { lat: 35.168703, lng: 136.882497 },
   },
   {
     id: "kirin-beer-factory",
@@ -940,6 +963,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.kirinBlog],
     map: { lat: 35.2098489, lng: 136.8501779, ja: "キリンビール 名古屋工場", en: "Kirin Beer Nagoya Factory" },
+    viewpoint: { lat: 35.208877, lng: 136.848211 },
   },
   {
     id: "kiyosu",
@@ -966,12 +990,13 @@ const SPOTS = [
     ],
     references: [REFERENCES.kiyosuCastle, REFERENCES.kojodanWindowCastles],
     map: { lat: 35.2165750, lng: 136.8435972, ja: "清洲城", en: "Kiyosu Castle" },
+    viewpoint: { lat: 35.215840, lng: 136.842626 },
   },
   {
     id: "solar-ark",
     icon: "☀️",
-    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "突然、巨大な太陽の船。", story: "名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描くソーラーアークがあらわれます。名所案内には出てきにくいけれど、見つけると忘れにくい沿線の異物感。ロゴの有無など、時期による表情の違いも面白い見どころです。" },
-    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A giant solar ship, out of nowhere.", story: "After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. It is not a usual guidebook landmark, but it is exactly the kind of strange window-seat find that sticks in memory." },
+    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "突然、巨大な太陽の船。", story: "名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描くソーラーアークがあらわれます。かつて三洋電機、現在のパナソニックによって岐阜県安八町に建てられた、全長315m・高さ37mの太陽光発電モニュメント。発電機能や企業ロゴは外され、現在は稼働を終えていますが、解体を前提に終わった場所ではなく、存続や新たな活用方法が検討されています。名所案内には出てきにくいけれど、見つけると忘れにくい沿線の異物感です。" },
+    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A giant solar ship, out of nowhere.", story: "After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument. Its generating role and corporate logos have been removed, and it is no longer operating, but its future use is still being considered. It is not a usual guidebook landmark, but it is exactly the kind of strange window-seat find that sticks in memory." },
     minutesFromTokyo: 103, side: "E", category: "curious", confidence: "verified", durationSec: 35, scene: "solar",
     image: "images/20251212_solar_ark_2_letus10.jpg",
     photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/519526266.html" },
@@ -996,7 +1021,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.solarArkBlog],
-    map: { lat: 35.3176417, lng: 136.6832861, ja: "ソーラーアーク", en: "Solar Ark" },
+    map: { lat: 35.331049924069006, lng: 136.6713226517134, ja: "ソーラーアーク", en: "Solar Ark" },
+    viewpoint: { lat: 35.330830, lng: 136.668781 },
   },
   {
     id: "gifu-castle",
@@ -1016,6 +1042,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.gifuCastleBlog],
     map: { lat: 35.4339, lng: 136.7824, ja: "岐阜城 金華山", en: "Gifu Castle Mt. Kinka" },
+    viewpoint: { lat: 35.350641, lng: 136.556366 },
   },
   {
     id: "kinshozan",
@@ -1032,6 +1059,7 @@ const SPOTS = [
     },
     references: [REFERENCES.kinshozanWiki],
     map: { lat: 35.405612, lng: 136.57348, ja: "金生山 大垣", en: "Mt. Kinsho Ogaki" },
+    viewpoint: { lat: 35.371651, lng: 136.574154 },
   },
   {
     id: "ibuki",
@@ -1057,6 +1085,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.ibuki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
+    viewpoint: { lat: 35.361280, lng: 136.411719 },
   },
   {
     id: "nangu-taisha",
@@ -1084,7 +1113,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.nanguTaisha],
-    map: { lat: 35.3611234, lng: 136.5265913, ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
+    map: { lat: 35.365706, lng: 136.526844, ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
+    viewpoint: { lat: 35.366045, lng: 136.526966 },
   },
   {
     id: "sawayama-castle",
@@ -1104,6 +1134,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.sawayamaBlog, REFERENCES.sawayama],
     map: { lat: 35.2840, lng: 136.2770, ja: "佐和山城跡", en: "Sawayama Castle Ruins" },
+    viewpoint: { lat: 35.283291, lng: 136.281051 },
   },
   {
     id: "hikone-castle",
@@ -1115,6 +1146,7 @@ const SPOTS = [
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     references: [REFERENCES.hikoneCastle],
     map: { lat: 35.2765, lng: 136.2518, ja: "彦根城", en: "Hikone Castle" },
+    viewpoint: { lat: 35.271532, lng: 136.263314 },
   },
   {
     id: "kannonji-castle",
@@ -1126,6 +1158,7 @@ const SPOTS = [
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     references: [REFERENCES.kannonjiCastle],
     map: { lat: 35.1420, lng: 136.1510, ja: "観音寺城跡", en: "Kannonji Castle Ruins" },
+    viewpoint: { lat: 35.147590, lng: 136.140183 },
   },
   {
     id: "omi-fuji",
@@ -1184,6 +1217,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.setaKarahashi],
     map: { lat: 34.97306, lng: 135.90611, ja: "瀬田の唐橋", en: "Seta no Karahashi Bridge" },
+    viewpoint: { lat: 34.969755, lng: 135.905686 },
   },
   {
     id: "toji",
@@ -1195,6 +1229,7 @@ const SPOTS = [
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-10" },
     references: [REFERENCES.toji],
     map: { lat: 34.980361, lng: 135.747694, ja: "東寺 五重塔", en: "To-ji Pagoda Kyoto" },
+    viewpoint: { lat: 34.985303, lng: 135.746690 },
   },
   {
     id: "torikai-train-depot",
@@ -1221,5 +1256,6 @@ const SPOTS = [
     ],
     references: [REFERENCES.tokaidoShinkansen],
     map: { lat: 34.77598, lng: 135.5704782, ja: "鳥飼車両基地", en: "Torikai Train Depot" },
+    viewpoint: { lat: 34.775259, lng: 135.571088 },
   },
 ];
