@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図で見る", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapNote: "航空写真で周辺の目印を確認できます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
+    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapNote: "航空写真で周辺の目印を確認できます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -603,10 +603,8 @@ function spotDetailModalHTML(spot) {
           <p class="spot-modal-story">${L.story}</p>
           <div class="spot-modal-actions">
             <button type="button" class="spot-btn spot-modal-stamp" data-stamp="${spot.id}">${stamps[spot.id] ? t("spotBtnDone") : t("spotBtn")}</button>
-            ${mapLinkHTML(spot, "spot-modal-map")}
           </div>
           ${miniMapDetailsHTML(spot)}
-          <p class="spot-modal-live-link"><a href="${liveMapHref()}" data-live-nav-link>${t("liveMapLink")}</a></p>
           ${spotRelatedHTML(spot)}
           ${spotReferencesHTML(spot)}
         </div>

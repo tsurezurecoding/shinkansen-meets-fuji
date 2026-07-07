@@ -422,7 +422,7 @@ function mapHref(spot, lang) {
 function mapLinkHTML(spot, lang) {
   const href = mapHref(spot, lang);
   if (!href) return "";
-  const label = lang === "ja" ? "地図で見る" : "Open map";
+  const label = lang === "ja" ? "地図をひらく" : "Open map";
   return `<a class="map-link spot-mini-map-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer" data-map="${escapeHTML(spot.id)}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${escapeHTML(label)}</span></a>`;
 }
 
@@ -448,7 +448,6 @@ function miniMapDetailsHTML(spot, lang) {
   const fallbackLink = mapLinkHTML(spot, lang);
   if (!hasCoordinates && !fallbackLink) return "";
   const summary = lang === "ja" ? "位置の目安" : "Location at a glance";
-  const liveLabel = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
   const mapNote = lang === "ja"
     ? "航空写真で周辺の目印を確認できます。"
     : "Satellite imagery helps you recognize nearby landmarks.";
@@ -479,7 +478,7 @@ function miniMapDetailsHTML(spot, lang) {
           ${fallbackLink}
         </div>
         <iframe class="spot-google-map-frame" src="${escapeHTML(embedHref)}" title="${escapeHTML(openMapLabel)}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p class="spot-mini-map-note">${escapeHTML(mapNote)} <a href="${prefix}live/index.html">${escapeHTML(liveLabel)}</a></p>
+        <p class="spot-mini-map-note">${escapeHTML(mapNote)}</p>
       </section>`;
 }
 
