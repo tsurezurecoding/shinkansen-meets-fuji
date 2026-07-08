@@ -273,8 +273,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.hinataokaRakumachi],
-    map: { lat: 35.341792, lng: 139.302296, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
-    viewpoint: { lat: 35.340384, lng: 139.305712 },
+    map: { lat: 35.34154388360787, lng: 139.30266552622092, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
+    viewpoint: { lat: 35.34051032924051, lng: 139.3058437145373 },
   },
   {
     id: "ota-fuji",
@@ -291,7 +291,7 @@ const SPOTS = [
     },
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（大田区付近からの遠望対象）", en: "Mt. Fuji, viewed from around Ota" },
-    viewpoint: { lat: 35.589197959437456, lng: 139.6960194221596 },
+    viewpoint: { lat: 35.600575, lng: 139.734265 },
   },
   {
     id: "maruko-bridge",
@@ -508,6 +508,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.atami, REFERENCES.hatsushimaBlog, REFERENCES.atamiCastleBlog],
     map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
+    viewpoint: { lat: 35.100080, lng: 139.072350 },
   },
   {
     id: "odawara-castle",
@@ -543,8 +544,8 @@ const SPOTS = [
     image: "images/20260516_gyoran_kannon_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
     references: [REFERENCES.gyoranKannon],
-    map: { lat: 35.24071866286659, lng: 139.14416783170063, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
-    viewpoint: { lat: 35.24078875337311, lng: 139.14392110506097 },
+    map: { lat: 35.240947333816365, lng: 139.14421331844272, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
+    viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
   },
   {
     id: "fuji",
@@ -680,7 +681,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.shizuokaTeaTourism],
-    map: { lat: 34.814591, lng: 138.127321, ja: "静岡の茶畑（代表通過地点）", en: "Shizuoka tea fields representative viewpoint" },
+    map: { lat: 34.774548442725724, lng: 138.099176682925, ja: "静岡の茶畑（代表通過地点）", en: "Shizuoka tea fields representative viewpoint" },
+    viewpoint: { lat: 34.773971209238894, lng: 138.0997023958755 },
   },
   {
     id: "kakegawa",
@@ -871,7 +873,8 @@ const SPOTS = [
       note: { ja: "夕暮れにうかぶ三河大島", en: "Mikawa Oshima floating in the evening light." },
     },
     references: [REFERENCES.toyokeizaiMikawa],
-    map: { lat: 34.7786, lng: 137.2636, ja: "三河大島", en: "Mikawa Oshima" },
+    map: { lat: 34.78876767723613, lng: 137.23307674842255, ja: "三河大島", en: "Mikawa Oshima" },
+    viewpoint: { lat: 34.824957815965384, lng: 137.24433532297894 },
   },
   {
     id: "nichiban-anjo",
@@ -1010,6 +1013,7 @@ const SPOTS = [
       {
         src: "images/201707_solar_ark_letus10.jpg",
         alt: { ja: "Panasonicロゴが残っていた頃のソーラーアーク", en: "Solar Ark when the Panasonic logo was still visible" },
+        note: { ja: "2017年7月に撮影。Panasonicロゴがあったころの写真", en: "Photographed in July 2017, when the Panasonic logo was still visible" },
         credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
       },
@@ -1042,7 +1046,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.gifuCastleBlog],
     map: { lat: 35.4339, lng: 136.7824, ja: "岐阜城 金華山", en: "Gifu Castle Mt. Kinka" },
-    viewpoint: { lat: 35.350641, lng: 136.556366 },
+    viewpoint: { lat: 35.29951585953575, lng: 136.71466236318534 },
   },
   {
     id: "kinshozan",
@@ -1059,7 +1063,7 @@ const SPOTS = [
     },
     references: [REFERENCES.kinshozanWiki],
     map: { lat: 35.405612, lng: 136.57348, ja: "金生山 大垣", en: "Mt. Kinsho Ogaki" },
-    viewpoint: { lat: 35.371651, lng: 136.574154 },
+    viewpoint: { lat: 35.349235976987565, lng: 136.57673468445847 },
   },
   {
     id: "ibuki",
@@ -1113,8 +1117,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.nanguTaisha],
-    map: { lat: 35.365706, lng: 136.526844, ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
-    viewpoint: { lat: 35.366045, lng: 136.526966 },
+    map: { lat: 35.36582150225837, lng: 136.52692401984618, ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
+    viewpoint: { lat: 35.365985862164244, lng: 136.52702479196853 },
   },
   {
     id: "sawayama-castle",
@@ -1189,7 +1193,8 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.omiFujiPark],
-    map: { lat: 35.0479, lng: 136.0450, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
+    map: { lat: 35.05181420454288, lng: 136.0377290179685, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
+    viewpoint: { lat: 35.0575405061877, lng: 136.01790212955294 },
   },
   {
     id: "seta-karahashi",
