@@ -8,7 +8,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
-const today = "2026-07-01";
+const today = "2026-07-09";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
@@ -362,7 +362,7 @@ function photoGalleryHTML(spot, lang, prefix) {
       : escapeHTML(credit);
     const date = item.date ? `<span>${escapeHTML(item.date)}</span>` : "";
     return `<figure class="spot-page-photo">
-        <img loading="${index === 0 ? "eager" : "lazy"}" src="${prefix}${escapeHTML(item.src)}" alt="${escapeHTML(localized(item.alt, lang) || ui.photoAlt(data.name))}">
+        <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(item.src)}" alt="${escapeHTML(localized(item.alt, lang) || ui.photoAlt(data.name))}">
         <figcaption>
           <strong>${note ? escapeHTML(note) : escapeHTML(ui.photoFallback(data.name, index))}</strong>
           <span>${creditHTML}</span>
@@ -635,7 +635,7 @@ function spotPageHTML(spot, lang) {
         <a class="btn btn-ghost" href="${appUrl}">${escapeHTML(ui.appCta)}</a>
       </div>
       <figure class="spot-page-figure">
-        <img src="${prefix}${escapeHTML(heroSrc)}" alt="${escapeHTML(ui.photoAlt(data.name))}">
+        <img src="${prefix}${escapeHTML(heroSrc)}" alt="${escapeHTML(ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
         <figcaption>${escapeHTML(heroCredit)}</figcaption>
       </figure>
       <dl class="spot-page-facts">
@@ -753,7 +753,7 @@ function guideHTML(lang) {
             const spot = SPOTS.find((item) => item.id === id);
             const data = spot.en || spot.ja;
             return `<a class="guide-visual-card" href="../spots/${spot.id}.html">
-              <img src="../${escapeHTML(spot.image)}" alt="${escapeHTML(data.name)}">
+              <img src="../${escapeHTML(spot.image)}" alt="${escapeHTML(data.name)}" loading="lazy" decoding="async">
               <span>${escapeHTML(data.area)}</span>
               <strong>${escapeHTML(data.name)}</strong>
               <em>${escapeHTML(data.hook)}</em>

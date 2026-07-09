@@ -569,11 +569,11 @@ function showCreditHTML(spot) {
 }
 function spotImageHTML(spot, label, className = "spot-photo", figureAttrs = "", options = {}) {
   if (!spot.image) return "";
-  return `<figure class="photo-figure" ${figureAttrs}><img class="${className}" loading="lazy" src="${spot.image}" alt="${escapeAttr(label)}">${photoCreditHTML(spot, options)}</figure>`;
+  return `<figure class="photo-figure" ${figureAttrs}><img class="${className}" loading="lazy" decoding="async" src="${spot.image}" alt="${escapeAttr(label)}">${photoCreditHTML(spot, options)}</figure>`;
 }
 function spotMediaFigureHTML(item, className = "spot-photo") {
   if (!item?.src) return "";
-  return `<figure class="photo-figure"><img class="${className}" loading="lazy" src="${item.src}" alt="${escapeAttr(item.alt)}">${item.creditHTML}</figure>`;
+  return `<figure class="photo-figure"><img class="${className}" loading="lazy" decoding="async" src="${item.src}" alt="${escapeAttr(item.alt)}">${item.creditHTML}</figure>`;
 }
 function spotMediaItems(spot) {
   const L = spot[lang];
@@ -626,13 +626,13 @@ function spotModalMediaHTML(spot) {
   const thumbs = items.length > 1
     ? `<div class="spot-photo-thumbs" aria-label="${t("morePhotos")}">${items.map((item, index) => `
         <button type="button" class="spot-photo-thumb${index === 0 ? " active" : ""}" data-photo-index="${index}" aria-label="${escapeAttr(item.alt)}">
-          <img src="${item.src}" alt="" loading="lazy">
+          <img src="${item.src}" alt="" loading="lazy" decoding="async">
         </button>`).join("")}</div>`
     : "";
   return `<div class="spot-modal-main-media">
     ${thumbs}
     <figure class="photo-figure spot-modal-active-figure">
-      <img class="spot-photo spot-modal-active-photo" src="${first.src}" alt="${escapeAttr(first.alt)}">
+      <img class="spot-photo spot-modal-active-photo" src="${first.src}" alt="${escapeAttr(first.alt)}" decoding="async">
       <div class="spot-modal-active-credit">${first.creditHTML}</div>
     </figure>
   </div>`;
@@ -640,7 +640,7 @@ function spotModalMediaHTML(spot) {
 function stampBadgeHTML(sp, size, fallbackCls) {
   const inked = !!stamps[sp.id];
   return `<span class="stamp-badge">` +
-    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" ` +
+    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" ` +
     `onerror="this.hidden=true;this.nextElementSibling.hidden=false">` +
     `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
@@ -719,7 +719,7 @@ function renderShowcase() {
   rail.innerHTML = spots.map((sp) => {
     const L = sp[lang];
     const media = sp.image
-      ? `<img loading="lazy" src="${sp.image}" alt="${L.name}">`
+      ? `<img loading="lazy" decoding="async" src="${sp.image}" alt="${L.name}">`
       : sceneSVG(sp.scene);
     return `<div class="show-card" data-show-spot="${sp.id}" role="button" tabindex="0" aria-label="${t("more")}: ${L.name}">
         <div class="show-media">${media}</div>
@@ -983,7 +983,7 @@ function spotItemHTML(sp, clock) {
     ? `<span class="tl-time-big">✦</span>`
     : `<span class="tl-time-big">${minToClock(clock)}<span class="tl-time-suffix">頃</span></span>`;
   const thumb = featuredMedia
-    ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" src="${featuredMedia.src}" alt=""></div>`
+    ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" decoding="async" src="${featuredMedia.src}" alt=""></div>`
     : "";
   return `
       <li class="tl-item${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
