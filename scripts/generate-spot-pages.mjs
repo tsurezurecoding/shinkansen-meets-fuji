@@ -187,6 +187,10 @@ function localized(value, lang) {
   return value[lang] || value.ja || value.en || "";
 }
 
+function thumbnailSrc(src) {
+  return String(src || "").replace(/^images\/(.+)\.(jpe?g|png)$/i, "images/thumbs/$1.webp");
+}
+
 function jaAreaPhrase(area) {
   if (!area) return "この区間";
   return /付近|前後|あたり|区間/.test(area) ? area : `${area}付近`;
@@ -362,7 +366,7 @@ function photoGalleryHTML(spot, lang, prefix) {
       : escapeHTML(credit);
     const date = item.date ? `<span>${escapeHTML(item.date)}</span>` : "";
     return `<figure class="spot-page-photo">
-        <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(item.src)}" alt="${escapeHTML(localized(item.alt, lang) || ui.photoAlt(data.name))}">
+        <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(thumbnailSrc(item.src))}" alt="${escapeHTML(localized(item.alt, lang) || ui.photoAlt(data.name))}">
         <figcaption>
           <strong>${note ? escapeHTML(note) : escapeHTML(ui.photoFallback(data.name, index))}</strong>
           <span>${creditHTML}</span>
@@ -635,7 +639,7 @@ function spotPageHTML(spot, lang) {
         <a class="btn btn-ghost" href="${appUrl}">${escapeHTML(ui.appCta)}</a>
       </div>
       <figure class="spot-page-figure">
-        <img src="${prefix}${escapeHTML(heroSrc)}" alt="${escapeHTML(ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
+        <img src="${prefix}${escapeHTML(thumbnailSrc(heroSrc))}" alt="${escapeHTML(ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
         <figcaption>${escapeHTML(heroCredit)}</figcaption>
       </figure>
       <dl class="spot-page-facts">
@@ -753,7 +757,7 @@ function guideHTML(lang) {
             const spot = SPOTS.find((item) => item.id === id);
             const data = spot.en || spot.ja;
             return `<a class="guide-visual-card" href="../spots/${spot.id}.html">
-              <img src="../${escapeHTML(spot.image)}" alt="${escapeHTML(data.name)}" loading="lazy" decoding="async">
+              <img src="../${escapeHTML(thumbnailSrc(spot.image))}" alt="${escapeHTML(data.name)}" loading="lazy" decoding="async">
               <span>${escapeHTML(data.area)}</span>
               <strong>${escapeHTML(data.name)}</strong>
               <em>${escapeHTML(data.hook)}</em>
