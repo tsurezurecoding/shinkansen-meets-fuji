@@ -300,6 +300,21 @@ function analyticsSnippet() {
 function referenceUrl(ref, lang) {
   return localized(ref?.url, lang) || localized(ref?.url, "ja") || ref?.url || "";
 }
+function bodyLinksHTML(spot, lang) {
+  const sourceLinks = [...(spot.bodyLinks || []), ...(spot.references || [])];
+  const seen = new Set();
+  const links = sourceLinks.map((item) => {
+    const ref = item.ref || item;
+    const href = item.url ? (localized(item.url, lang) || localized(item.url, "ja")) : referenceUrl(ref, lang);
+    const label = localized(item.label, lang) || localized(ref.label, lang);
+    if (!href || !label) return "";
+    if (seen.has(href)) return "";
+    seen.add(href);
+    return `<a href="${escapeHTML(href)}" rel="noopener" target="_blank">${text(label)}</a>`;
+  }).filter(Boolean);
+  const prefix = lang === "ja" ? "もっと見る:" : "More:";
+  return links.length ? `<p class="spot-page-body-links"><span>${prefix}</span> ${links.join("<span aria-hidden=\"true\"> / </span>")}</p>` : "";
+}
 
 function absoluteImageUrl(spot) {
   const image = spot.image || spot.photos?.[0]?.src || "images/og-shinkansen-window.png";
@@ -382,27 +397,41 @@ function photoGalleryHTML(spot, lang, prefix) {
 
 function routeRelatedHTML(spot, lang) {
   const ui = UI[lang];
+  const prefix = lang === "ja" ? "../" : "../../";
   const routeSpots = [...SPOTS].sort((a, b) => Number(a.minutesFromTokyo || 0) - Number(b.minutesFromTokyo || 0));
-  const index = routeSpots.findIndex((item) => item.id === spot.id);
-  const candidates = [
-    index > 0 ? { label: ui.relatedPrev, spot: routeSpots[index - 1] } : null,
-    index >= 0 && index < routeSpots.length - 1 ? { label: ui.relatedNext, spot: routeSpots[index + 1] } : null,
-    ...routeSpots
-      .filter((item) => item.id !== spot.id && item.category === spot.category)
-      .slice(0, 3)
-      .map((item) => ({ label: ui.relatedCategory, spot: item })),
-  ].filter(Boolean);
+  const explicitIds = new Set(spot.relatedSpotIds || []);
   const unique = [];
-  for (const item of candidates) {
+  for (const id of explicitIds) {
+    const item = routeSpots.find((entry) => entry.id === id);
+    if (item) unique.push({ label: ui.relatedCategory, spot: item });
+  }
+  const scored = routeSpots
+    .filter((item) => item.id !== spot.id && !explicitIds.has(item.id))
+    .map((item) => {
+      const minutesDiff = Math.abs(Number(item.minutesFromTokyo || 0) - Number(spot.minutesFromTokyo || 0));
+      const score =
+        (item.category === spot.category ? 12 : 0) +
+        (item.side === spot.side ? 3 : 0) +
+        Math.max(0, 8 - minutesDiff / 6);
+      const label = item.category === spot.category
+        ? ui.relatedCategory
+        : (lang === "ja" ? "近い時間" : "Nearby");
+      return { label, spot: item, score };
+    })
+    .sort((a, b) => b.score - a.score);
+  for (const item of scored) {
+    if (unique.length >= 3) break;
     if (!unique.some((entry) => entry.spot.id === item.spot.id)) unique.push(item);
   }
   if (!unique.length) return "";
-  const links = unique.slice(0, 5).map(({ label, spot: item }) => {
+  const links = unique.slice(0, 3).map(({ label, spot: item }) => {
     const data = item[lang] || item.ja;
+    const image = thumbnailSrc(item.image || item.photos?.[0]?.src || "images/og-shinkansen-window.png");
     return `<a href="${item.id}.html">
+        <img src="${prefix}${escapeHTML(image)}" alt="${escapeHTML(data.name)}" loading="lazy" decoding="async">
         <small>${escapeHTML(label)}</small>
         <strong>${escapeHTML(data.name)}</strong>
-        <span>${escapeHTML(data.area)}</span>
+        <span>${escapeHTML(data.hook || data.area)}</span>
       </a>`;
   }).join("");
   return `<section class="spot-page-section">
@@ -575,6 +604,7 @@ function spotPageHTML(spot, lang) {
   const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
   const refs = referencesHTML(spot, lang);
+  const bodyLinks = bodyLinksHTML(spot, lang);
   const miniMap = miniMapDetailsHTML(spot, lang);
   const liveMapCta = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
   const jsonLd = {
@@ -612,7 +642,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-mode-switch">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260711-content-cta">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -648,20 +678,20 @@ function spotPageHTML(spot, lang) {
         <div><dt>${escapeHTML(ui.facts[2])}</dt><dd>${escapeHTML(ui.minutes(spot.minutesFromTokyo))}</dd></div>
         <div><dt>${escapeHTML(ui.facts[3])}</dt><dd>${photoCount} ${escapeHTML(ui.photoUnit)}</dd></div>
       </dl>
-      ${miniMap}
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(data.story || "")}</p>
-        <p>${escapeHTML(routeNote)}</p>
+${bodyLinks ? `        ${bodyLinks}
+` : ""}        <p>${escapeHTML(routeNote)}</p>
 ${fujiGuideBlock.trimEnd()}
         <p><a href="${liveHref(lang, prefix)}">${escapeHTML(liveMapCta)}</a></p>
       </section>
+      ${miniMap}
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionPoint)}</h2>
         <p>${escapeHTML(ui.pointText(data.name))}</p>
       </section>
       ${photoGalleryHTML(spot, lang, prefix)}
-      ${refs ? `<section class="spot-page-section"><h2>${escapeHTML(ui.sectionRefs)}</h2><ul class="spot-page-refs">${refs}</ul></section>` : ""}
       ${routeRelatedHTML(spot, lang)}
       <div class="spot-page-actions">
         <a class="btn btn-primary" href="${appUrl}">${escapeHTML(ui.appCta)}</a>
@@ -785,7 +815,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260707-map-mode-switch">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260711-content-cta">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

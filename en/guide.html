@@ -9,7 +9,7 @@
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
-  <link rel="stylesheet" href="../style.css?v=20260703-fuji-guide">
+  <link rel="stylesheet" href="../style.css?v=20260711-content-cta">
   <meta property="og:title" content="When can you see Mt. Fuji from the Shinkansen? Seat side and timing FAQ">
   <meta property="og:description" content="About 40-45 minutes after Tokyo on Nozomi. Sit in Seat E. Timing, seat side, cloudy days, and night rides.">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
@@ -133,7 +133,7 @@
         <p class="a-line">On Nozomi, watch <strong>~43 min</strong> after Tokyo. Sit in <strong>Seat E</strong>, both directions.</p>
         <p class="a-sub">Mishima → Shin-Fuji · visible about 3–4 minutes · best odds: clear winter mornings</p>
         <div class="a-cta">
-          <a class="btn btn-primary" href="../index.html?lang=en#journey">Exact time for your train →</a>
+          <a class="btn btn-primary" href="../index.html?lang=en#journey" data-guide-cta="hero_exact_time">Exact time for your train →</a>
         </div>
       </div>
       <p class="g9-lede">And Fuji is only 3 minutes of a 2½-hour ride. This line carries <a href="../zukan.html?lang=en"><strong>37 curated window views</strong></a> — castles, tea fields, sea crossings, wonderfully odd billboards. Whatever the sky is doing:</p>
@@ -251,7 +251,7 @@
           <li class="dim"><span class="t">2:11</span>Toji pagoda — hello, Kyoto</li>
         </ul>
         <div class="spot-page-actions">
-          <a class="btn btn-primary" href="../index.html?lang=en#journey">Open the timeline for your train</a>
+          <a class="btn btn-primary" href="../index.html?lang=en#journey" data-guide-cta="timeline_primary">Open the timeline for your train</a>
           <a class="btn btn-ghost" href="../zukan.html?lang=en">Browse all 37 views</a>
         </div>
       </section>
@@ -259,16 +259,38 @@
       <section class="spot-page-section" id="faq">
         <h2>FAQ</h2>
         <div class="faq-grid">
-          <article class="faq-card"><h3>Which side is Mt. Fuji on?</h3><p>Seat E — the two-seat side. Right side from Tokyo, left side toward Tokyo, but always Seat E.</p></article>
-          <article class="faq-card"><h3>How long after Tokyo?</h3><p>40–45 min on a Nozomi, between Mishima and Shin-Fuji. Longer on Hikari/Kodama — the timeline shows your exact train.</p></article>
+          <article class="faq-card"><h3>Which side is Mt. Fuji on?</h3><p>Seat E — the two-seat side. Right side from Tokyo, left side toward Tokyo, but always Seat E.</p><a class="inline-cta" href="../index.html?lang=en#journey" data-guide-cta="faq_fuji_side">Check Fuji timing for your train →</a></article>
+          <article class="faq-card"><h3>How long after Tokyo?</h3><p>40–45 min on a Nozomi, between Mishima and Shin-Fuji. Longer on Hikari/Kodama — the timeline shows your exact train.</p><a class="inline-cta" href="../index.html?lang=en#journey" data-guide-cta="faq_fuji_time">Build my train timeline →</a></article>
           <article class="faq-card"><h3>From Kyoto or Osaka?</h3><p>About 1h40m after Shin-Osaka (1h25m after Kyoto). Same seat: E.</p></article>
           <article class="faq-card"><h3>Do reserved seats cost extra?</h3><p>Yes, on every train type — not just Nozomi. Exact fares and Japan Rail Pass conditions change, so check <a href="https://smart-ex.jp/en/" rel="noopener" target="_blank">smartEX</a> or <a href="https://japanrailpass.net/en/" rel="noopener" target="_blank">japanrailpass.net</a> when you book.</p></article>
-          <article class="faq-card"><h3>What if it's cloudy?</h3><p>You lose one view out of thirty-six. The lake, the big mountain, the trackside castle and the Kyoto pagoda don't need a clear sky.</p></article>
-          <article class="faq-card"><h3>Anything at night?</h3><p>Tokyo Tower, the port lights of Shimizu, Kiyosu Castle's light-up — the gallery has a night filter.</p></article>
+          <article class="faq-card"><h3>What if it's cloudy?</h3><p>You lose one view out of thirty-six. The lake, the big mountain, the trackside castle and the Kyoto pagoda don't need a clear sky.</p><a class="inline-cta" href="../zukan.html?lang=en" data-guide-cta="faq_cloudy_gallery">Browse all 37 window views →</a></article>
+          <article class="faq-card"><h3>Anything at night?</h3><p>Tokyo Tower, the port lights of Shimizu, Kiyosu Castle's light-up — the gallery has a night filter.</p><a class="inline-cta" href="../zukan.html?lang=en&amp;filter=night" data-guide-cta="faq_night_gallery">See night window views →</a></article>
         </div>
       </section>
     </article>
   </main>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-guide-cta]");
+      if (!link || typeof window.gtag !== "function") return;
+      window.gtag("event", "guide_cta_click", {
+        cta_id: link.getAttribute("data-guide-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "en",
+        page_context: "guide"
+      });
+      if ((link.getAttribute("href") || "").indexOf("#journey") !== -1) {
+        window.gtag("event", "cta_train_search_click", {
+          cta_id: link.getAttribute("data-guide-cta"),
+          cta_label: link.textContent.trim(),
+          destination: link.getAttribute("href"),
+          language: "en",
+          page_context: "guide"
+        });
+      }
+    });
+  </script>
   <footer class="footer">
     <p class="footer-brand">Shinkansen Window <span>Do not miss the moment</span></p>
     <p>Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.</p>

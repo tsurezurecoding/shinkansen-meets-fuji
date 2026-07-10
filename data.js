@@ -103,11 +103,15 @@ const REFERENCES = {
     url: "https://kakegawajo.com/",
   },
   genkiSignBlog: {
-    label: { ja: "@letus10: 元気が出る看板車窓記事", en: "@letus10: Cheer-up signs window article (Japanese only)" },
+    label: { ja: "@letus10: しっぺいの応援看板車窓記事", en: "@letus10: Shippei cheer-up signs window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516019488.html",
   },
+  shippeiOfficial: {
+    label: { ja: "しっぺい公式サイト", en: "Shippei official site (Japanese only)" },
+    url: "https://shippei.jp/",
+  },
   genkiSignStreetView: {
-    label: { ja: "Google マップ: 元気が出る看板付近", en: "Google Maps: Cheer-up signs area" },
+    label: { ja: "Google ストリートビュー: しっぺいの応援看板付近", en: "Google Street View: Shippei cheer-up signs area" },
     url: "https://www.google.com/maps/@34.7298265,137.8986674,3a,46.4y,18.58h,82.48t/data=!3m7!1e1!3m5!1sWkV2_8Z6dI0WHi46Bem_YA!2e0!6shttps:%2F%2Fstreetviewpixels-pa.googleapis.com%2Fv1%2Fthumbnail%3Fcb_client%3Dmaps_sv.tactile%26w%3D900%26h%3D600%26pitch%3D7.519999999999996%26panoid%3DWkV2_8Z6dI0WHi46Bem_YA%26yaw%3D18.58!7i16384!8i8192?entry=ttu",
   },
   hamanakoTourism: {
@@ -133,6 +137,10 @@ const REFERENCES = {
     label: { ja: "@letus10: セロテープの壁看板車窓記事", en: "@letus10: CELLOTAPE Wall Sign window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/510591087.html",
   },
+  nichibanPrtimes: {
+    label: { ja: "ニチバン公式発表: セロテープ壁面広告リニューアル", en: "Nichiban release: CELLOTAPE wall sign renewal (Japanese only)" },
+    url: "https://prtimes.jp/main/html/rd/p/000000069.000011142.html",
+  },
   marukoBridgeBlog: {
     label: { ja: "@letus10: 丸子橋車窓記事", en: "@letus10: Maruko Bridge window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/515810649.html",
@@ -144,6 +152,10 @@ const REFERENCES = {
   sevenTwoSevenOfficial: {
     label: { ja: "727 セブンツーセブン化粧品", en: "727 Cosmetics official site" },
     url: "https://www.727.co.jp/",
+  },
+  kinutaDentist248Post: {
+    label: { ja: "きぬた歯科: 248看板についての投稿", en: "Kinuta Dental: post about the 248 sign (Japanese only)" },
+    url: "https://x.com/kinutashika/status/2032351774292717729",
   },
   kinshozanWiki: {
     label: { ja: "Wikipedia: 金生山", en: "Wikipedia: Mt. Kinsho (Japanese only)" },
@@ -371,8 +383,8 @@ const SPOTS = [
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "プチプチ看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "謎のプチプチ看板。", story: "新横浜から小田原へ向かう途中、A席側にプチプチ®系の看板が見えます。沿線の看板は時々変わりますが、2026年7月時点では「私は誰でしょう」と問いかける謎の看板になっていました。隣にはおなじみの727 COSMETICS看板。名所ではない。でも見つけた瞬間、移動中の景色が少しだけ自分のものになる。短い出会いなので、少し幅を持って探してください。" },
-    en: { name: "PUTIPUTI Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "A mystery PUTIPUTI sign.", story: "Between Shin-Yokohama and Odawara, a PUTIPUTI-like sign appears on the Seat A side. The trackside sign changes from time to time; as of July 2026, it had become a small mystery asking, 'Who am I?' Beside it is the familiar 727 COSMETICS sign. It is not a major landmark, but it is exactly the kind of small discovery that makes the ride feel personal. It is quick, so start watching with a little margin." },
+    ja: { name: "私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
+    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery sign on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     minutesFromTokyo: 29, side: "A", category: "curious", confidence: "verified", durationSec: 12, scene: "hills",
     image: "images/20260704_putiputi_sign_2_michikusa.jpg",
     photoCredit: {
@@ -406,14 +418,14 @@ const SPOTS = [
         },
       },
     ],
-    map: { lat: 35.321496, lng: 139.285829, ja: "プチプチ看板付近（727 No.22近接候補）", en: "PUTIPUTI sign area near 727 No.22" },
+    map: { lat: 35.321496, lng: 139.285829, ja: "私は誰でしょう看板付近（旧プチプチ看板付近）", en: "Who am I? sign area, former PUTIPUTI sign area" },
     viewpoint: { lat: 35.322233, lng: 139.285276 },
   },
   {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "田んぼの中に、727。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。新幹線からは一瞬で通り過ぎるため「何の広告だろう」と気になりやすい、沿線広告の代表格です。この葛原付近の看板はE席側ですが、さらに進んだ用田付近やプチプチ看板の隣に見えるものはA席側。727は沿線に複数あり、席側も地点で変わります。隣の黄色い「248」は、最近は高速道路だけでなく新幹線の車窓でもよく見かける、きぬた歯科系の看板です。" },
-    en: { name: "727 Cosmetics Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 in the fields.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. The Kuzuhara sign is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the PUTIPUTI sign, are on Seat A. The signs are scattered along Shinkansen lines, so the side changes by location. Because each one flashes by in seconds, many riders start wondering what the mysterious '727' signs are." },
+    ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "727の隣に248。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。隣には黄色い「248」看板もあり、数字だけが田んぼの中に並ぶため、新幹線からは「何の広告だろう」と気になりやすい場所です。この葛原付近の727はE席側ですが、さらに進んだ用田付近や私は誰でしょう看板の隣に見えるものはA席側。727は沿線に複数あり、席側も地点で変わります。248は西八王子のきぬた歯科の看板で、最近は高速道路だけでなく新幹線の車窓でもよく見かけます。" },
+    en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 beside 248.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. A yellow '248' sign sits nearby, so the two numbers can look wonderfully cryptic from the train. The Kuzuhara 727 is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the 'Who am I?' sign, are on Seat A. The 248 sign is from Kinuta Dental in Nishi-Hachioji, a dental-clinic billboard now seen not only from expressways but also from Shinkansen windows." },
     minutesFromTokyo: 26, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 30, scene: "hills",
     image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
@@ -445,8 +457,8 @@ const SPOTS = [
         note: { ja: "のぞみ99号・A席側、6:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, photographed at 6:18 near Yoda, Fujisawa." },
       },
     ],
-    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial],
-    map: { lat: 35.4167, lng: 139.428027, ja: "727看板 藤沢市葛原", en: "727 sign, Kuzuhara Fujisawa" },
+    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.kinutaDentist248Post],
+    map: { lat: 35.4167, lng: 139.428027, ja: "727看板と248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
     viewpoint: { lat: 35.415637, lng: 139.428588 },
   },
   {
@@ -707,27 +719,31 @@ const SPOTS = [
   {
     id: "genki-sign",
     icon: "💬",
-    ja: { name: "元気が出る看板", area: "掛川 → 浜松（磐田付近）", hook: "しっぺいの応援看板。", story: "掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、短い応援メッセージの野立て看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。ポジティブなメッセージを車窓で見つけると、少し元気が出ます。遠く小さく見えるので、文字を読み切るより、磐田市のキャラクター・しっぺいがいる三連続看板として探すのがコツです。" },
-    en: { name: "Cheer-up Signs", area: "Kakegawa → Hamamatsu, near Iwata", hook: "Shippei's cheer-up signs.", story: "After Kakegawa, heading toward Hamamatsu, a row of small roadside signs appears on the Seat E side shortly after the House Foods Shizuoka Factory area. The messages are simple and encouraging: 'I'm always rooting for you,' 'Thank you, everyone,' and 'There will always be tomorrow.' Catching a positive message from the train can give the ride a small lift. From the Shinkansen they are distant and quick, so look for the three signs with Shippei, Iwata City's white dog character, rather than trying to read every word." },
+    ja: { name: "しっぺいの応援看板", area: "掛川 → 浜松（磐田付近）", hook: "元気が出る三連看板。", story: "掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、磐田市のキャラクター・しっぺいが描かれた三連続の応援看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。車窓で見かけて気になった人も多いかもしれません。周囲に大きな目印が少なく、Google Mapsでも探しにくい場所なので、下の地図も参考にしてください。" },
+    en: { name: "Shippei Cheer-up Signs", area: "Kakegawa → Hamamatsu, near Iwata", hook: "Three signs that lift the ride.", story: "After Kakegawa, heading toward Hamamatsu, three small roadside signs appear on the Seat E side shortly after the House Foods Shizuoka Factory area. They feature Shippei, Iwata City's white dog character. The messages are simple: 'I'm always rooting for you,' 'Thank you, everyone,' and 'There will always be tomorrow.' If you noticed them from the train and wondered where they were, use the map below as a guide; there are few obvious landmarks nearby." },
     minutesFromTokyo: 64, side: "E", category: "curious", confidence: "verified", durationSec: 18, scene: "hills",
     image: "images/20250608_genki_sign_letus10.jpg",
     photoCredit: {
       ja: "@letus10 / 新幹線の車窓から",
       en: "@letus10 / Shinkansen window blog",
       url: "https://cotetu.seesaa.net/article/516019488.html",
-      note: { ja: "掛川・浜松間、山側・E席から見える三連続の応援看板", en: "Three cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
+      note: { ja: "掛川・浜松間、山側・E席から見えるしっぺいの三連続応援看板", en: "Three Shippei cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
     },
     photos: [
       {
         src: "images/20260704_genki_sign_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から遠くに見える元気が出る看板", en: "Cheer-up signs seen in the distance from Seat E" },
+        alt: { ja: "新幹線のE席側から遠くに見えるしっぺいの応援看板", en: "Shippei cheer-up signs seen in the distance from Seat E" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-04",
         note: { ja: "のぞみ27号・E席側、東京11:12発、12:18撮影", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 12:18." },
       },
     ],
-    references: [REFERENCES.genkiSignBlog, REFERENCES.genkiSignStreetView],
-    map: { lat: 34.7298265, lng: 137.8986674, ja: "磐田 元気が出る看板", en: "Iwata cheer-up signs" },
+    references: [REFERENCES.genkiSignBlog, REFERENCES.shippeiOfficial, REFERENCES.genkiSignStreetView],
+    bodyLinks: [
+      { ref: REFERENCES.shippeiOfficial, label: { ja: "しっぺいの公式サイトを見る", en: "Open Shippei official site" } },
+      { ref: REFERENCES.genkiSignStreetView, label: { ja: "看板付近をストリートビューで見る", en: "Open the signs in Street View" } },
+    ],
+    map: { lat: 34.7298265, lng: 137.8986674, ja: "磐田 しっぺい 応援看板", en: "Iwata Shippei cheer-up signs" },
     viewpoint: { lat: 34.727510, lng: 137.900516 },
   },
   {
@@ -879,8 +895,8 @@ const SPOTS = [
   {
     id: "nichiban-anjo",
     icon: "🟦",
-    ja: { name: "セロテープの壁看板", area: "三河安城付近", hook: "巨大なセロテープ看板。", story: "東京から名古屋へ向かう列車では、三河安城の少し手前でE席側にニチバン安城工場の大きな壁看板が見えます。名古屋方面から東京へ向かう場合は、三河安城を出てすぐ。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。" },
-    en: { name: "CELLOTAPE Wall Sign", area: "Around Mikawa-Anjo", hook: "A giant tape sign.", story: "On trains from Tokyo toward Nagoya, the large CELLOTAPE wall sign at the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo. The huge red, white, and blue sign is not a classic landmark, but once you know it is there, you start looking for it on every ride." },
+    ja: { name: "セロテープの壁看板", area: "三河安城付近", hook: "巨大なセロテープ看板。", story: "東京から名古屋へ向かう列車では、三河安城の少し手前でE席側にニチバン安城工場の大きな壁看板が見えます。名古屋方面から東京へ向かう場合は、三河安城を出てすぐ。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。「無くしてわかる有難さ。親と健康とセロテープ」という言葉も印象的で、ただの広告以上に記憶に残ります。" },
+    en: { name: "CELLOTAPE Wall Sign", area: "Around Mikawa-Anjo", hook: "A giant tape sign.", story: "On trains from Tokyo toward Nagoya, the large CELLOTAPE wall sign at the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo. The huge red, white, and blue sign is not a classic landmark, but once you know it is there, you start looking for it on every ride. One memorable Japanese line associated with the brand says: 'You realize their value only when they are gone: parents, health, and CELLOTAPE.'" },
     minutesFromTokyo: 85, side: "E", category: "curious", confidence: "source-backed", durationSec: 25, scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
     photoCredit: {
@@ -898,7 +914,7 @@ const SPOTS = [
         note: { ja: "夜に浮かぶセロテープ広告", en: "The CELLOTAPE ad glowing at night" },
       },
     ],
-    references: [REFERENCES.nichibanBlog],
+    references: [REFERENCES.nichibanBlog, REFERENCES.nichibanPrtimes],
     map: { lat: 34.972656, lng: 137.058777, ja: "ニチバン 安城工場 セロテープ 壁看板", en: "Nichiban Anjo Factory CELLOTAPE wall sign" },
     viewpoint: { lat: 34.971971, lng: 137.057485 },
   },

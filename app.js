@@ -11,9 +11,9 @@ const MSG = {
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
     heroLead: "富士山も、城も、湖も海も。<br>新幹線で「いつ・どちら側を見るか」がわかる車窓手帖です。",
-    heroCtaStart: "旅をはじめる",
+    heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
-    ctaStart: "旅をはじめる", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
+    ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
     navQuick: "TOP", navStart: "列車選択", navLive: "ライブ地図", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
@@ -104,9 +104,9 @@ const MSG = {
     heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
     heroTitle: "There's another journey<br>outside your window.",
     heroLead: "Fuji, castles, lakes and sea. Know when to look, and which side to watch from your Shinkansen seat.",
-    heroCtaStart: "Start your journey",
+    heroCtaStart: "Build my guide",
     heroCtaBrowse: "Open field guide",
-    ctaStart: "Start your journey", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
+    ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
     navQuick: "Home", navStart: "Train Search", navLive: "Live Map", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
@@ -229,6 +229,9 @@ const APP_SELF = location.pathname.endsWith("/zukan.html")
   ? "zukan.html"
   : "index.html";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
+function spotPageHref(spot) {
+  return lang === "en" ? `en/spots/${spot.id}.html` : `spots/${spot.id}.html`;
+}
 function liveMapHref(targetLang = lang) {
   return `live/index.html${targetLang === "en" ? "?lang=en" : ""}`;
 }
@@ -264,6 +267,28 @@ function spotAnalyticsParams(spot, source, extra = {}) {
     source,
     ...extra,
   };
+}
+function referenceHref(ref) {
+  if (!ref) return "";
+  const url = ref.url;
+  return typeof url === "object" ? (url[lang] || url.ja || url.en || "") : (url || "");
+}
+function bodyLinksHTML(spot, className = "spot-body-links") {
+  const sourceLinks = [...(spot.bodyLinks || []), ...(spot.references || [])];
+  const seen = new Set();
+  const links = sourceLinks.map((item) => {
+    const ref = item.ref || item;
+    const href = item.url
+      ? (typeof item.url === "object" ? (item.url[lang] || item.url.ja || item.url.en || "") : item.url)
+      : referenceHref(ref);
+    const label = (item.label && (item.label[lang] || item.label.ja || item.label.en)) || (ref.label && (ref.label[lang] || ref.label.ja || ref.label.en));
+    if (!href || !label) return "";
+    if (seen.has(href)) return "";
+    seen.add(href);
+    return `<a href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}</a>`;
+  }).filter(Boolean);
+  const prefix = lang === "ja" ? "もっと見る:" : "More:";
+  return links.length ? `<p class="${className}"><span>${prefix}</span> ${links.join("<span aria-hidden=\"true\"> / </span>")}</p>` : "";
 }
 
 /* ---------- helpers ---------- */
@@ -668,12 +693,13 @@ function spotDetailModalHTML(spot) {
         <div class="spot-modal-copy">
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
+          ${bodyLinksHTML(spot, "spot-modal-body-links")}
           <div class="spot-modal-actions">
             <button type="button" class="spot-btn spot-modal-stamp" data-stamp="${spot.id}">${stamps[spot.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+            <a class="spot-btn spot-modal-guide" href="${spotPageHref(spot)}">${t("readGuide")}</a>
           </div>
           ${miniMapDetailsHTML(spot)}
           ${spotRelatedHTML(spot)}
-          ${spotReferencesHTML(spot)}
         </div>
       </div>
     </section>`;
@@ -1548,6 +1574,15 @@ function bindTimelineControls() {
 /* ---------- init ---------- */
 function init() {
   if ($("#heroSky")) renderHero();
+  document.addEventListener("click", (event) => {
+    const link = event.target instanceof Element ? event.target.closest("[data-cta-track]") : null;
+    if (!link) return;
+    track(link.dataset.ctaTrack || "cta_click", {
+      cta_id: link.dataset.ctaId || "",
+      cta_label: link.textContent?.trim() || "",
+      destination: link.getAttribute("href") || "",
+    });
+  });
   $$(".lang-switch button").forEach((b) => b.addEventListener("click", () => {
     lang = b.dataset.lang; localStorage.setItem("mado-lang", lang); track("language_changed", { language: lang }); applyLang();
   }));

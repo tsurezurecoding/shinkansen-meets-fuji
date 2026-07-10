@@ -9,7 +9,7 @@
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
-  <link rel="stylesheet" href="style.css?v=20260703-fuji-guide">
+  <link rel="stylesheet" href="style.css?v=20260711-content-cta">
   <meta property="og:title" content="新幹線から富士山はいつ見える？どっち側？E席と時刻のFAQ">
   <meta property="og:description" content="富士山は東京から約40〜45分後、座席はE席側。上り列車、左富士、曇りの日や夜の楽しみ方まで。">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
@@ -133,7 +133,7 @@
         <p class="a-line">のぞみなら東京から<strong>約43分</strong>。座席は<strong>E席</strong>。上りも下りも同じE席です。</p>
         <p class="a-sub">三島→新富士 · 見えるのは約3〜4分 · 狙い目は冬の晴れた午前</p>
         <div class="a-cta">
-          <a class="btn btn-primary" href="index.html#journey">乗る列車の正確な時刻を調べる →</a>
+          <a class="btn btn-primary" href="index.html#journey" data-guide-cta="hero_exact_time">乗る列車の正確な時刻を調べる →</a>
         </div>
       </div>
       <p class="g9-lede">そして富士山は、147分の旅のうちの3分にすぎません。この路線には<a href="zukan.html"><strong>厳選37の車窓</strong></a>があります——城、茶畑、海、そして謎の看板。空模様がどうであれ:</p>
@@ -251,7 +251,7 @@
           <li class="dim"><span class="t">2:11</span>東寺の五重塔——京都です</li>
         </ul>
         <div class="spot-page-actions">
-          <a class="btn btn-primary" href="index.html#journey">自分の列車のタイムラインを開く</a>
+          <a class="btn btn-primary" href="index.html#journey" data-guide-cta="timeline_primary">自分の列車のタイムラインを開く</a>
           <a class="btn btn-ghost" href="zukan.html">車窓図鑑で全37景をみる</a>
         </div>
       </section>
@@ -259,16 +259,38 @@
       <section class="spot-page-section" id="faq">
         <h2>よくある質問</h2>
         <div class="faq-grid">
-          <article class="faq-card"><h3>富士山はどっち側？</h3><p>E席（2人がけの窓側）。下りは進行方向右、上りは左ですが、座席が転換するのでどちらもE席です。</p></article>
-          <article class="faq-card"><h3>東京から何分？</h3><p>のぞみで約40〜45分、三島—新富士間。ひかり・こだまは停車分だけ遅くなります。正確な時刻は列車を選んで確認を。</p></article>
+          <article class="faq-card"><h3>富士山はどっち側？</h3><p>E席（2人がけの窓側）。下りは進行方向右、上りは左ですが、座席が転換するのでどちらもE席です。</p><a class="inline-cta" href="index.html#journey" data-guide-cta="faq_fuji_side">富士山が見える時間を列車で調べる →</a></article>
+          <article class="faq-card"><h3>東京から何分？</h3><p>のぞみで約40〜45分、三島—新富士間。ひかり・こだまは停車分だけ遅くなります。正確な時刻は列車を選んで確認を。</p><a class="inline-cta" href="index.html#journey" data-guide-cta="faq_fuji_time">自分の列車でタイムラインを作る →</a></article>
           <article class="faq-card"><h3>新大阪・京都からは？</h3><p>のぞみで新大阪から約1時間40分（京都から約1時間25分）。同じくE席です。</p></article>
           <article class="faq-card"><h3>見えている時間は？</h3><p>本番区間で約3〜4分。トンネルで途切れ、抜けるたびに大きくなります。</p></article>
-          <article class="faq-card"><h3>曇りだったら？</h3><p>失うのは37景中1景だけ。湖・城・港・五重塔は天気を選びません。</p></article>
-          <article class="faq-card"><h3>夜は何か見える？</h3><p>東京タワー、熱海の夜景、清洲城のライトアップ、新大阪手前の車両基地の灯り。</p></article>
+          <article class="faq-card"><h3>曇りだったら？</h3><p>失うのは37景中1景だけ。湖・城・港・五重塔は天気を選びません。</p><a class="inline-cta" href="zukan.html" data-guide-cta="faq_cloudy_gallery">東海道新幹線の見どころ37件を見る →</a></article>
+          <article class="faq-card"><h3>夜は何か見える？</h3><p>東京タワー、熱海の夜景、清洲城のライトアップ、新大阪手前の車両基地の灯り。</p><a class="inline-cta" href="zukan.html?filter=night" data-guide-cta="faq_night_gallery">夜景の車窓を見る →</a></article>
         </div>
       </section>
     </article>
   </main>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-guide-cta]");
+      if (!link || typeof window.gtag !== "function") return;
+      window.gtag("event", "guide_cta_click", {
+        cta_id: link.getAttribute("data-guide-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "ja",
+        page_context: "guide"
+      });
+      if ((link.getAttribute("href") || "").indexOf("#journey") !== -1) {
+        window.gtag("event", "cta_train_search_click", {
+          cta_id: link.getAttribute("data-guide-cta"),
+          cta_label: link.textContent.trim(),
+          destination: link.getAttribute("href"),
+          language: "ja",
+          page_context: "guide"
+        });
+      }
+    });
+  </script>
   <footer class="footer">
     <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
     <p>時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>

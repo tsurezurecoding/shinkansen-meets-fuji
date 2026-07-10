@@ -139,6 +139,17 @@ button { font-family: inherit; cursor: pointer; }
 .btn-primary { background: var(--accent); color: #fff; box-shadow: 0 6px 20px rgba(232,112,74,0.35); }
 .btn-primary:hover { box-shadow: 0 8px 26px rgba(232,112,74,0.5); }
 .btn-ghost { background: transparent; color: inherit; border: 1.5px solid currentColor; opacity: 0.9; }
+.inline-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 12px;
+  color: var(--accent);
+  font-weight: 800;
+  text-decoration: none;
+}
+.inline-cta:hover,
+.inline-cta:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
 .hero-secondary {
   background: rgba(255,255,255,0.08);
   color: #fff;
@@ -1076,29 +1087,41 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 }
 .spot-page-related a {
   display: grid;
-  gap: 4px;
-  padding: 13px;
+  grid-template-rows: auto auto auto 1fr;
+  gap: 6px;
+  overflow: hidden;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 16px;
   background: rgba(255,255,255,0.72);
   color: var(--ink);
   text-decoration: none;
+  box-shadow: 0 4px 16px rgba(22,32,46,0.06);
 }
 .spot-page-related a:hover,
 .spot-page-related a:focus-visible {
   border-color: var(--accent-soft);
+  transform: translateY(-1px);
   outline: 0;
 }
+.spot-page-related img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  background: var(--paper);
+}
 .spot-page-related small {
+  padding: 8px 12px 0;
   color: var(--accent);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.12em;
 }
 .spot-page-related strong {
+  padding: 0 12px;
   line-height: 1.35;
 }
 .spot-page-related span {
+  padding: 0 12px 13px;
   color: var(--ink-soft);
   font-size: 12px;
   line-height: 1.45;
@@ -2022,6 +2045,24 @@ body.modal-open { overflow: hidden; }
   color: var(--night);
   font-size: 0.92em;
 }
+.faq-card .inline-cta { font-size: 13px; }
+.spot-page-body-links,
+.spot-modal-body-links {
+  display: block;
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.spot-page-body-links a,
+.spot-modal-body-links a {
+  color: var(--night);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.spot-page-body-links a:hover,
+.spot-modal-body-links a:hover { color: var(--accent); }
 
 /* ===== Hero animation ===== */
 .cloud { animation: drift linear infinite; }
