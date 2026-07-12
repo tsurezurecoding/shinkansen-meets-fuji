@@ -5,7 +5,7 @@
  * minutesFromTokyo: のぞみ基準の東京発からの目安分数（東京→新大阪 約147分）
  * side: "E" = 山側（北側・E席） / "A" = 海側（南側・A席）
  *       東海道新幹線はどちら向きでもE席が山側になる
- * category: 内部の並び順ランク。画面表示タグは図鑑フィルタ（自然/歴史/工業/看板/街並）に揃える
+ * category: 車窓ガイド分類。classic/notable は主要ガイド、curious は高難度・一瞬・ニッチ枠（すべてガイドのみ）
  * confidence: "verified"（実見・写真あり） / "source-backed"（出典あり） / "needs-check"（裏取り中）
  * ========================================================= */
 
@@ -265,7 +265,7 @@ const SPOTS = [
   {
     id: "hinataoka",
     icon: "🏘️",
-    ja: { name: "日向岡の街並み", area: "新横浜 → 小田原", hook: "斜面いっぱいに、おなじ屋根がならぶ。", story: "相模川を渡ってしばらくすると、丘の斜面にそろって並ぶ住宅地が一瞬あらわれます。名所ではありません。でも、知っている人だけが「あ、来た」と窓の外を見る——そういう車窓です。" },
+    ja: { name: "日向岡の街並み", area: "新横浜 → 小田原", hook: "斜面いっぱいに、おなじ屋根がならぶ。", story: "日向岡（ひなたおか）は、相模平野越しの富士山が見える流れの中で、丘の斜面にそろって並ぶ住宅地が一瞬あらわれる車窓です。名所ではありません。でも、知っている人だけが「あ、来た」と窓の外を見る——そういう景色です。" },
     en: { name: "Hinataoka Hillside Homes", area: "Shin-Yokohama → Odawara", hook: "Matching rooftops on a hillside.", story: "Shortly after crossing the Sagami River, a planned neighborhood of identical homes climbs the hillside for just a moment. Not a landmark — but the kind of view that makes those in the know glance up from their phone." },
     minutesFromTokyo: 27, side: "E", category: "notable", confidence: "verified", durationSec: 20, scene: "hills",
     image: "images/20260530_hinataoka.jpg",
@@ -424,8 +424,21 @@ const SPOTS = [
   {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "727の隣に248。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。隣には黄色い「248」看板もあり、数字だけが田んぼの中に並ぶため、新幹線からは「何の広告だろう」と気になりやすい場所です。この葛原付近の727はE席側ですが、さらに進んだ用田付近や私は誰でしょう看板の隣に見えるものはA席側。727は沿線に複数あり、席側も地点で変わります。248は西八王子のきぬた歯科の看板で、最近は高速道路だけでなく新幹線の車窓でもよく見かけます。" },
-    en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 beside 248.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. A yellow '248' sign sits nearby, so the two numbers can look wonderfully cryptic from the train. The Kuzuhara 727 is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the 'Who am I?' sign, are on Seat A. The 248 sign is from Kinuta Dental in Nishi-Hachioji, a dental-clinic billboard now seen not only from expressways but also from Shinkansen windows." },
+    ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "727の隣に248。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。隣には黄色い「248」看板もあり、数字だけが田んぼの中に並ぶため、新幹線からは「何の広告だろう」と気になりやすい場所です。この葛原付近の727はE席側ですが、さらに進んだ用田付近や私は誰でしょう看板の隣に見えるものはA席側。727はここ以外にも沿線のA席側・E席側で複数見かけることができ、乗り慣れている人ほど「あの看板は何だろう」と気になっているかもしれません。248は西八王子のきぬた歯科の看板で、数字は「西八王子」を「に(2)・し(4)・はち(8)・おうじ」と読む語呂合わせに由来するとされています。最近は高速道路だけでなく新幹線の車窓でもよく見かけます。" },
+    en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 beside 248.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. A yellow '248' sign sits nearby, so the two numbers can look wonderfully cryptic from the train. The Kuzuhara 727 is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the 'Who am I?' sign, are on Seat A. You can spot 727 signs at several places along the line, on either side depending on the location, so regular Shinkansen riders may have wondered about them for years. The 248 sign is from Kinuta Dental in Nishi-Hachioji. In Japanese number wordplay, 2 can be read as ni, 4 as shi, and 8 as hachi, so 248 reads ni-shi-hachi, echoing the opening sound of Nishi-Hachioji. Recently, it is seen not only from expressways but also from Shinkansen windows." },
+    explainer: {
+      heading: { ja: "727とは？ 新幹線でおなじみの謎の看板", en: "What is the 727 sign?" },
+      ja: [
+        "727は、大阪の化粧品メーカー「セブンツーセブン」の看板です。社名は創業者の誕生日である7月27日にちなみます。いちばんの特徴は「サロン専売」であること。店頭やドラッグストアでは買えず、契約した美容室でのカウンセリングを通してのみ販売されます。だから、商品そのものを街で見かけることはほとんどないのに、看板だけは新幹線や高速道路の沿線で何度も目に入る——この不思議さが、727が語り草になる理由です。",
+        "看板のデザインも意図的です。大きく「727」、その下に小さく「COSMETICS」。高速で流れる車窓でも一瞬で「あの看板だ」と分かるようにするための見せ方です。東海道新幹線の沿線だけでも数多く点在し、乗るたびに同じ看板に出会います。富士山のような主役ではないけれど、日本の新幹線ユーザーには“おなじみの光景”。初めて乗る人にとっては、「727って何？」と気になる最初の謎かもしれません。",
+        "ちなみに隣の黄色い「248」看板は、西八王子の「きぬた歯科」の広告。数字の248は、きぬた歯科がある「西八王子」を「に(2)・し(4)・はち(8)・おうじ」と読む語呂合わせに由来するとされています。高速道路沿いを埋め尽くすことで知られ、最近は新幹線からも見かけます。727が全国区の“定番”なら、248は知る人ぞ知るTIPです。",
+      ],
+      en: [
+        "727 is the sign of \"Seven Two Seven\" (727 COSMETICS), a cosmetics maker based in Osaka. The name comes from the founder's birthday, July 27 (7/27). The key thing to know: 727 is salon-only. You cannot buy it in shops or drugstores — it is sold only through contracted hair salons, with in-person advice. So you almost never see the product itself around town, yet the sign is everywhere along the railways and expressways. That contrast is exactly why the 727 sign is such a talking point.",
+        "The design is deliberate, too: a huge \"727\" with a small \"COSMETICS\" underneath, made to be recognized in a split second from a fast-moving train. There are many of these signs along the Tokaido Shinkansen, so you meet the same sign again and again. It is not a headline view like Mt. Fuji, but for Japanese riders it is a familiar part of the journey — and for first-time visitors, \"What is 727?\" is often the first little mystery of the ride.",
+        "The yellow \"248\" sign next to it, by the way, is an ad for Kinuta Dental, a clinic in Nishi-Hachioji. In Japanese number wordplay, 2 can be read as ni, 4 as shi, and 8 as hachi; together, 248 reads ni-shi-hachi, echoing the opening sound of Nishi-Hachioji. It does not spell out the whole place name, but it points to it in a way Japanese readers can recognize. Kinuta Dental is known for blanketing expressways with billboards, and the 248 sign is now seen from the Shinkansen too. If 727 is the nationwide classic, 248 is more of an insider's spot.",
+      ],
+    },
     minutesFromTokyo: 26, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 30, scene: "hills",
     image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
@@ -466,7 +479,7 @@ const SPOTS = [
     icon: "🗻",
     ja: { name: "相模平野の富士山", area: "新横浜 → 小田原", hook: "平野の向こうに富士。", story: "新横浜から小田原へ向かう途中、相模川が作った平野の向こうに、富士山が見える区間があります。丹沢山地と箱根山系のあいだから顔を出す、東京を出て最初に探したい富士山。新富士付近の主役とは違う、遠望の楽しさがあります。" },
     en: { name: "Mt. Fuji over Sagami Plain", area: "Shin-Yokohama → Odawara", hook: "Fuji beyond the plain.", story: "Between Shin-Yokohama and Odawara, Mt. Fuji can appear beyond the alluvial plain made by the Sagami River, framed by the Tanzawa and Hakone mountains. It is the first Fuji worth looking for after leaving Tokyo: not the big main event near Shin-Fuji, but a distant view with its own thrill." },
-    minutesFromTokyo: 27, side: "E", category: "notable", confidence: "verified", durationSec: 120, scene: "fuji",
+    minutesFromTokyo: 25, side: "E", category: "notable", confidence: "verified", durationSec: 120, scene: "fuji",
     image: "images/20260530_sagami_fuji_hiratsuka_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -492,7 +505,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（相模平野からの遠望対象）", en: "Mt. Fuji, viewed across Sagami Plain" },
-    viewpoint: { lat: 35.333069, lng: 139.298446 },
+    viewpoint: { lat: 35.392780295389095, lng: 139.37658144602017 },
   },
   {
     id: "odawara",
@@ -527,7 +540,7 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "小田原城", area: "小田原駅付近", hook: "のぞみでは、まばたきする間の城。", story: "小田原駅の前後、A席側に小田原城が一瞬だけ見えます。停車しない列車では本当に短い出会い。見えたら、それだけで旅の序章に小さな印がつきます。" },
     en: { name: "Odawara Castle", area: "Around Odawara Sta.", hook: "A castle in a blink.", story: "Around Odawara Station, Odawara Castle flashes by on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey." },
-    minutesFromTokyo: 31, side: "A", category: "notable", confidence: "verified", durationSec: 8, scene: "castle",
+    minutesFromTokyo: 31, side: "A", category: "curious", confidence: "verified", durationSec: 8, scene: "castle",
     image: "images/20251112_odawara_castle_castle_traveler.jpg",
     photoCredit: {
       ja: "@Castle_Traveler",
@@ -963,7 +976,7 @@ const SPOTS = [
     icon: "🏭",
     ja: { name: "キリンビール工場", area: "名古屋 → 岐阜羽島", hook: "巨大な生ビールが、ずらり。", story: "名古屋を出て庄内川を渡り、枇杷島駅の横を過ぎるころ、E席側にキリンビール名古屋工場の貯蔵タンクが見えてきます。遠目には、巨大な生ビールがずらりと並んでいるよう。線路沿いの産業風景なのに、見つけると少し楽しくなる車窓です。" },
     en: { name: "Kirin Beer Factory", area: "Nagoya → Gifu-Hashima", hook: "Rows of giant beers.", story: "After leaving Nagoya, crossing the Shonai River and passing Biwajima, the Kirin Beer Nagoya Factory appears on the Seat E side. Its storage tanks look like rows of giant draft beers from the train window: an industrial scene that somehow turns into a playful discovery." },
-    minutesFromTokyo: 98, side: "E", category: "curious", confidence: "verified", durationSec: 25, scene: "solar",
+    minutesFromTokyo: 98, side: "E", category: "notable", confidence: "verified", durationSec: 25, scene: "solar",
     image: "images/20250920_kirin_beer_factory_letus10.jpg",
     photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
     photos: [
@@ -1016,7 +1029,7 @@ const SPOTS = [
     icon: "☀️",
     ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "突然、巨大な太陽の船。", story: "名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描くソーラーアークがあらわれます。かつて三洋電機、現在のパナソニックによって岐阜県安八町に建てられた、全長315m・高さ37mの太陽光発電モニュメント。発電機能や企業ロゴは外され、現在は稼働を終えていますが、解体を前提に終わった場所ではなく、存続や新たな活用方法が検討されています。名所案内には出てきにくいけれど、見つけると忘れにくい沿線の異物感です。" },
     en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A giant solar ship, out of nowhere.", story: "After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument. Its generating role and corporate logos have been removed, and it is no longer operating, but its future use is still being considered. It is not a usual guidebook landmark, but it is exactly the kind of strange window-seat find that sticks in memory." },
-    minutesFromTokyo: 103, side: "E", category: "curious", confidence: "verified", durationSec: 35, scene: "solar",
+    minutesFromTokyo: 103, side: "E", category: "notable", confidence: "verified", durationSec: 35, scene: "solar",
     image: "images/20251212_solar_ark_2_letus10.jpg",
     photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/519526266.html" },
     photos: [
@@ -1049,7 +1062,7 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "岐阜城", area: "岐阜羽島 → 米原", hook: "山の上に、小さな城。", story: "岐阜羽島を過ぎ、木曽三川を渡る前後で、E席側の遠くに金華山が見えることがあります。その山頂にあるのが岐阜城。線路からは10km以上離れているため、城そのものを見つけるには晴れた日と少しの集中力が必要です。掲載写真は、同じ岐阜城を東海道本線側から捉えた記録です。" },
     en: { name: "Gifu Castle", area: "Gifu-Hashima → Maibara", hook: "A tiny castle on a mountain.", story: "After Gifu-Hashima, around the Kiso Three Rivers, Mt. Kinka may be visible far away on the Seat E side. Gifu Castle sits on its summit. The castle is more than 10 km from the Shinkansen line, so spotting the keep itself takes a clear day and a focused eye. The photo shown here was taken from the Tokaido Main Line as a reference view of the same castle." },
-    minutesFromTokyo: 106, side: "E", category: "notable", confidence: "source-backed", durationSec: 120, scene: "castle",
+    minutesFromTokyo: 106, side: "E", category: "curious", confidence: "source-backed", durationSec: 120, scene: "castle",
     image: "images/20250927_gifu_castle_letus10.jpg",
     photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518296647.html" },
     photos: [
@@ -1112,7 +1125,7 @@ const SPOTS = [
     icon: "⛩️",
     ja: { name: "南宮大社", area: "岐阜羽島 → 米原", hook: "田園の向こうに、大鳥居。", story: "東京から新大阪方面へ向かう列車では、岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに南宮大社の大鳥居が見えます。新大阪から東京方面へ向かう場合は、米原を出て関ヶ原を越えたあと、岐阜羽島へ向かう途中のA席側です。遠くの社殿を探すというより、赤い鳥居を一瞬で拾う車窓です。" },
     en: { name: "Nangu Taisha Shrine", area: "Gifu-Hashima → Maibara", hook: "A torii beyond the fields.", story: "From Tokyo toward Shin-Osaka, look from Seat A after Gifu-Hashima as the train heads toward Sekigahara. From Shin-Osaka toward Tokyo, look from Seat A after Maibara and Sekigahara, before Gifu-Hashima. The large torii gate of Nangu Taisha Shrine stands beyond the fields: less about seeing the whole shrine than catching a flash of red in the landscape." },
-    minutesFromTokyo: 107, side: "A", category: "notable", confidence: "verified", durationSec: 20, scene: "pagoda",
+    minutesFromTokyo: 107, side: "A", category: "curious", confidence: "verified", durationSec: 20, scene: "pagoda",
     routeNote: {
       ja: "東京から新大阪方面なら岐阜羽島を出たあと、新大阪から東京方面なら米原を出て関ヶ原を越えたあと、A席側を見てください。",
       en: "Tokyo to Shin-Osaka: watch Seat A after Gifu-Hashima. Shin-Osaka to Tokyo: watch Seat A after Maibara and Sekigahara.",
@@ -1161,7 +1174,7 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "彦根城", area: "米原 → 京都", hook: "国宝の天守を、街の向こうに。", story: "米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。大きくはありません。だからこそ、見つけた瞬間にうれしい。琵琶湖東岸の歴史が、数秒だけ窓の中に入ってきます。" },
     en: { name: "Hikone Castle", area: "Maibara → Kyoto", hook: "A tiny National Treasure keep.", story: "After Maibara, Hikone Castle's keep may appear small beyond the town on the Seat E side. It is not a big, obvious view; that is what makes spotting it satisfying. For a few seconds, the history of eastern Lake Biwa enters the window." },
-    minutesFromTokyo: 116, side: "E", category: "notable", confidence: "needs-check", durationSec: 20, scene: "castle",
+    minutesFromTokyo: 116, side: "E", category: "curious", confidence: "needs-check", durationSec: 20, scene: "castle",
     image: "images/20240719_hikone_castle_asami_k920.jpg",
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     references: [REFERENCES.hikoneCastle],
@@ -1257,7 +1270,7 @@ const SPOTS = [
     icon: "🚄",
     ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い列車が、ずらり。", story: "新大阪に近づくころ、E席側に新幹線が並ぶ大きな車両基地が広がります。走ってきた列車の裏側、整備と待機の場所。名所というより、旅を支える現場が突然ひらける車窓です。見える範囲が広いので、少し長めに探してください。" },
     en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As you approach Shin-Osaka, Seat E may open onto a vast Shinkansen depot: rows of white trains resting beside the line. It is not a classic landmark; it is the backstage of the journey, where the trains wait and are cared for. The view stretches for a while, so keep looking." },
-    minutesFromTokyo: 141, side: "E", category: "curious", confidence: "source-backed", durationSec: 240, scene: "hills",
+    minutesFromTokyo: 141, side: "E", category: "notable", confidence: "source-backed", durationSec: 240, scene: "hills",
     image: "images/20260614_torikai_train_depot_yamato160.jpg",
     photoCredit: { ja: "@yamato160", en: "@yamato160", url: "https://x.com/yamato160/status/2066003172884365364" },
     photos: [

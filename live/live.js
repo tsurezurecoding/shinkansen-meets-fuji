@@ -35,9 +35,16 @@
       gpsError: "GPSを取得できません",
       gpsDenied: "位置情報が許可されていません",
       demo: "デモ走行中",
+      paused: "一時停止中",
       dirAuto: "🧭 自動",
       dirDown: "🧭 →新大阪",
       dirUp: "🧭 →東京",
+      pause: "⏸ 一時停止",
+      resume: "▶ 再開",
+      narrFeatured: "🔈 主要ガイド",
+      narrAll: "🔈 すべてガイド",
+      narrOff: "🔇 ガイドOFF",
+      stopRun: "■ 中止",
       next: "つぎの車窓",
       side_E: "E席・山側",
       side_A: "A席・海側",
@@ -48,23 +55,27 @@
       between: " → ",
       km: "km",
       sec: "秒",
-      viewFor: "見える時間 約",
       startGps: "📍 GPSで開始",
       startDemo: "▶ デモ走行（乗らずに試す）",
       idleTitle: "乗車したら、GPSをオンに。",
-      idleDesc: "現在地から「つぎに見える車窓」を予測して、地図とカウントダウンで案内します。GPSはこの端末内でのみ使われ、送信されません。",
+      idleDesc: "現在地から「つぎに見える車窓」を予測して、地図とカウントダウンで案内します。現在地は案内計算に使い、道草のサーバーには保存しません。",
       settings: "設定",
-      soundL: "通知音（60秒前）",
       vibL: "バイブレーション",
       wakeL: "画面をスリープさせない",
       followL: "地図を現在地に追従",
       dirL: "進行方向",
+      narrModeL: "車窓ガイド",
+      narrModeFeatured: "主要スポットのみ",
+      narrModeAll: "すべて",
+      narrModeOff: "オフ",
+      narrModeHelp: "主要は定番・注目スポット（{featured}件）。すべては看板などの小ネタを含む{all}件です。",
       dirOptAuto: "自動判定",
       dirOptDown: "東京 → 新大阪",
       dirOptUp: "新大阪 → 東京",
       stop: "■ 計測を停止",
       close: "閉じる",
-      note: "試作版（noindex）。位置情報は端末内で処理され、外部送信されません。",
+      note: "現在地は車窓案内の計算に使います。道草のサーバーには保存しません。地図表示では外部の地図データを取得します。",
+      narrTag: "AI実況",
       demoTitle: "デモ走行",
       demoDesc: "実際に乗らなくても、仮想の のぞみ に乗って動きを確認できます。",
       demoFrom: "出発",
@@ -92,9 +103,16 @@
       gpsError: "Cannot get GPS",
       gpsDenied: "Location permission denied",
       demo: "Demo run",
+      paused: "Paused",
       dirAuto: "🧭 Auto",
       dirDown: "🧭 →Osaka",
       dirUp: "🧭 →Tokyo",
+      pause: "⏸ Pause",
+      resume: "▶ Resume",
+      narrFeatured: "🔈 Key guide",
+      narrAll: "🔈 All guide",
+      narrOff: "🔇 Guide OFF",
+      stopRun: "■ Stop",
       next: "NEXT VIEW",
       side_E: "Seat E · Mountain",
       side_A: "Seat A · Sea",
@@ -105,23 +123,27 @@
       between: " → ",
       km: "km",
       sec: "s",
-      viewFor: "Visible for ~",
       startGps: "📍 Start with GPS",
       startDemo: "▶ Demo run (try without riding)",
       idleTitle: "On board? Turn on GPS.",
-      idleDesc: "Predicts the next window view from your live position, with a map and countdown. Location data never leaves your device.",
+      idleDesc: "Predicts the next window view from your live position, with a map and countdown. Your location is used for guidance and is not stored on Michikusa servers.",
       settings: "Settings",
-      soundL: "Alert sound (60s before)",
       vibL: "Vibration",
       wakeL: "Keep screen awake",
       followL: "Follow my position",
       dirL: "Direction",
+      narrModeL: "Window guide",
+      narrModeFeatured: "Key spots only",
+      narrModeAll: "All spots",
+      narrModeOff: "Off",
+      narrModeHelp: "Key guide covers classic and notable spots ({featured}). All guide includes small curiosities such as signs ({all}).",
       dirOptAuto: "Auto-detect",
       dirOptDown: "Tokyo → Shin-Osaka",
       dirOptUp: "Shin-Osaka → Tokyo",
       stop: "■ Stop tracking",
       close: "Close",
-      note: "Prototype (noindex). Location is processed on-device only.",
+      note: "Your location is used for window-view guidance and is not stored on Michikusa servers. Map display loads external map data.",
+      narrTag: "AI GUIDE",
       demoTitle: "Demo run",
       demoDesc: "Ride a virtual Nozomi to see how it works — no ticket needed.",
       demoFrom: "Departure",
@@ -148,10 +170,16 @@
     watchId: null,
     demoTimer: null,
     demo: null,
+    paused: false,
     passed: [],
     passedIds: {},
     alertedIds: {},
     alertSpotId: null,
+    narratedIds: {},
+    narrSpotId: null,
+    runStartedAt: 0,
+    lastMapFollowAt: 0,
+    suppressedDemoFirstSpotId: null,
     wakeLock: null,
     settings: loadSettings(),
   };
@@ -159,14 +187,17 @@
   function loadSettings() {
     try {
       var s = JSON.parse(localStorage.getItem("madoLive.settings") || "{}");
+      var narrMode = ["featured", "all", "off"].indexOf(s.narrMode) >= 0
+        ? s.narrMode
+        : s.narr === false ? "off" : "featured";
       return {
-        sound: !!s.sound,
         vib: s.vib !== false,
         wake: s.wake !== false,
         follow: s.follow !== false,
+        narrMode: narrMode,
       };
     } catch (e) {
-      return { sound: false, vib: true, wake: true, follow: true };
+      return { vib: true, wake: true, follow: true, narrMode: "featured" };
     }
   }
 
@@ -190,12 +221,23 @@
     return img ? "../" + img : null;
   }
   function t(key) { return STR[state.lang][key] || key; }
+  function tFmt(key, vars) {
+    return t(key).replace(/\{(\w+)\}/g, function (_, name) {
+      return vars && vars[name] != null ? vars[name] : "";
+    });
+  }
   function sideLabel(sp) { return sp.raw.side === "E" ? t("side_E") : t("side_A"); }
   function windowLabel(sp) {
     if (!state.dir) return "";
     var isRight = (sp.raw.side === "E") === (state.dir > 0);
     return isRight ? t("windowRight") : t("windowLeft");
   }
+
+  function isFeaturedNarrationSpot(sp) {
+    return sp && sp.raw && sp.raw.category !== "curious";
+  }
+
+  var featuredNarrationCount = spots.filter(isFeaturedNarrationSpot).length;
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -266,6 +308,15 @@
     sp.marker.bindPopup(html).openPopup();
   }
 
+  function mapFollowIntervalMs() {
+    if (state.mode === "gps") return 3000;
+    if (state.mode === "demo" && state.demo) {
+      if (state.demo.mult <= 1) return 3000;
+      if (state.demo.mult <= 10) return 1500;
+    }
+    return 700;
+  }
+
   function updateUserMarker(lat, lng, acc) {
     if (!map) return;
     if (!userMarker) {
@@ -284,6 +335,10 @@
       }
     }
     if (state.settings.follow) {
+      var now = Date.now();
+      var interval = mapFollowIntervalMs();
+      if (state.lastMapFollowAt && now - state.lastMapFollowAt < interval) return;
+      state.lastMapFollowAt = now;
       map.panTo([lat, lng], { animate: true, duration: 0.5 });
       if (map.getZoom() < 11) map.setZoom(12);
     }
@@ -377,15 +432,45 @@
 
   var el = {};
   [
-    "tb-status", "tb-speed", "btn-dir", "segband", "next-card", "nc-label", "nc-eta",
+    "tb-status", "tb-speed", "btn-dir", "btn-pause", "btn-narr-toggle", "segband", "next-card", "nc-label", "nc-eta",
     "nc-icon", "nc-name", "nc-hook", "nc-side", "nc-dist", "nc-dur", "nc-photo",
     "upcoming", "passed-wrap", "passed-summary", "passed", "idle-panel",
-    "alertbar", "al-icon", "al-count", "al-name", "al-side", "live-title"
+    "alertbar", "al-icon", "al-count", "al-name", "al-side", "live-title",
+    "narrbar", "nr-tag", "nr-name", "nr-text",
+    "live-map-controls", "map-narr-toggle", "map-pause", "map-stop"
   ].forEach(function (id) { el[id] = document.getElementById(id); });
 
   function setStatus(cls, text) {
     el["tb-status"].className = "tb-status " + (cls || "");
     el["tb-status"].textContent = text;
+  }
+
+  function narrationEnabled() {
+    return state.settings.narrMode !== "off";
+  }
+
+  function narrationButtonText() {
+    if (state.settings.narrMode === "all") return t("narrAll");
+    if (state.settings.narrMode === "off") return t("narrOff");
+    return t("narrFeatured");
+  }
+
+  function syncRunControls() {
+    var running = state.mode !== "idle";
+    var narrOn = narrationEnabled();
+    el["btn-pause"].classList.toggle("hidden", !running);
+    el["btn-pause"].textContent = state.paused ? t("resume") : t("pause");
+    el["btn-pause"].setAttribute("aria-pressed", state.paused ? "true" : "false");
+    el["btn-narr-toggle"].textContent = narrationButtonText();
+    el["btn-narr-toggle"].setAttribute("aria-pressed", narrOn ? "true" : "false");
+    el["btn-narr-toggle"].classList.toggle("is-off", !narrOn);
+    el["live-map-controls"].classList.toggle("hidden", !running);
+    el["map-pause"].textContent = state.paused ? t("resume") : t("pause");
+    el["map-pause"].setAttribute("aria-pressed", state.paused ? "true" : "false");
+    el["map-narr-toggle"].textContent = narrationButtonText();
+    el["map-narr-toggle"].setAttribute("aria-pressed", narrOn ? "true" : "false");
+    el["map-narr-toggle"].classList.toggle("is-off", !narrOn);
+    el["map-stop"].textContent = t("stopRun");
   }
 
   function setMarkerClass(sp, cls) {
@@ -394,6 +479,17 @@
   }
 
   function updateAlert(next) {
+    if (next && state.mode === "demo" && state.suppressedDemoFirstSpotId === next.sp.id) {
+      hideAlert();
+      return;
+    }
+    if (next && state.suppressedDemoFirstSpotId && state.suppressedDemoFirstSpotId !== next.sp.id) {
+      state.suppressedDemoFirstSpotId = null;
+    }
+    if (state.runStartedAt && Date.now() - state.runStartedAt < 1600) {
+      hideAlert();
+      return;
+    }
     if (!next || !state.dir || next.info.etaSec == null || next.info.etaSec > 60 || next.info.dist < 0) {
       if (!next || state.alertSpotId !== (next && next.sp.id)) hideAlert();
       if (next && next.info.etaSec != null && next.info.etaSec <= 60 && state.alertSpotId === next.sp.id) {
@@ -424,7 +520,218 @@
     state.alertSpotId = null;
   }
 
+  /* ---- AI車窓実況: 事前生成した台本＋音声をETA連動で再生 ---- */
+  var NARR = (typeof NARRATIONS !== "undefined" && NARRATIONS) || window.NARRATIONS || {};
+  var NARR_SRC = "narration.js?v=20260711-all-narration";
+  var NARR_LEAD_SEC = 90;
+  var NARR_WARMUP_SEC = 180;
+  var NARR_MAX_QUEUE = 3;
+  var narrAudio = null;
+  var narrWarmAudio = null;
+  var narrWarmPath = "";
+  var narrHideTimer = null;
+  var narrLoadPromise = null;
+  var narrQueue = [];
+  var narrPlaying = false;
+
+  function hasNarrationData() {
+    return !!(NARR && Object.keys(NARR).length);
+  }
+
+  function syncNarrationData() {
+    NARR = (typeof NARRATIONS !== "undefined" && NARRATIONS) || window.NARRATIONS || NARR || {};
+  }
+
+  function ensureNarrationsLoaded() {
+    syncNarrationData();
+    if (hasNarrationData()) return Promise.resolve(NARR);
+    if (narrLoadPromise) return narrLoadPromise;
+    narrLoadPromise = new Promise(function (resolve, reject) {
+      var script = document.createElement("script");
+      script.src = NARR_SRC;
+      script.async = true;
+      script.onload = function () {
+        syncNarrationData();
+        render();
+        resolve(NARR);
+      };
+      script.onerror = function () { reject(new Error("narration load failed")); };
+      document.head.appendChild(script);
+    });
+    narrLoadPromise.catch(function () { /* fallback text remains available */ });
+    return narrLoadPromise;
+  }
+
+  function explicitNarrationFor(sp) {
+    syncNarrationData();
+    var n = NARR[sp.id];
+    if (!n) return null;
+    var dirKey = state.dir < 0 ? "up" : "down";
+    if (n[dirKey]) return n[dirKey][state.lang] || n[dirKey].ja || n[dirKey].en || null;
+    if (n.down) return n.down[state.lang] || n.down.ja || n.down.en || null;
+    return n[state.lang] || n.ja || null;
+  }
+
+  function fallbackNarrationFor(sp) {
+    if (state.lang === "en") {
+      return { audio: false, text: spotName(sp) + ". " + spotHook(sp) + " Look around " + spotArea(sp) + "." };
+    }
+    return { audio: false, text: spotName(sp) + "です。" + spotHook(sp) + " " + spotArea(sp) + "付近で見えてきます。" };
+  }
+
+  function narrationFor(sp) {
+    if (state.settings.narrMode === "featured" && !isFeaturedNarrationSpot(sp)) return null;
+    var explicit = explicitNarrationFor(sp);
+    if (explicit) return explicit;
+    if (state.settings.narrMode === "all") return fallbackNarrationFor(sp);
+    return null;
+  }
+
+  function narrationAudioPath(sp, n) {
+    if (!n || n.audio === false) return "";
+    if (n.audio) return n.audio;
+    var dirKey = state.dir < 0 ? "up" : "down";
+    return "audio/" + sp.id + "_" + dirKey + "_" + state.lang + ".mp3";
+  }
+
+  function narrationGroupKey(sp) {
+    var entry = NARR[sp.id];
+    return (entry && entry.group) || sp.id;
+  }
+
+  function unlockAudio() {
+    if (narrAudio || typeof Audio === "undefined") return;
+    try {
+      narrAudio = new Audio();
+      narrAudio.preload = "none";
+      narrAudio.muted = true;
+      var p = narrAudio.play();
+      if (p && p.catch) p.catch(function () {});
+      narrAudio.pause();
+      narrAudio.muted = false;
+    } catch (e) { narrAudio = null; }
+  }
+
+  function scheduleNarrHide(ms) {
+    if (narrHideTimer) clearTimeout(narrHideTimer);
+    narrHideTimer = setTimeout(function () { hideNarration(); }, ms);
+  }
+
+  function hideNarration() {
+    if (narrHideTimer) { clearTimeout(narrHideTimer); narrHideTimer = null; }
+    if (narrAudio) { try { narrAudio.pause(); } catch (e) { /* noop */ } }
+    narrQueue = [];
+    narrPlaying = false;
+    state.narrSpotId = null;
+    el["narrbar"].classList.add("hidden");
+  }
+
+  function renderNarrationText(sp, n) {
+    el["nr-tag"].textContent = t("narrTag");
+    el["nr-name"].textContent = spotName(sp);
+    el["nr-text"].textContent = n.text;
+  }
+
+  function finishNarration(delayMs) {
+    narrPlaying = false;
+    state.narrSpotId = null;
+    if (narrQueue.length && narrationEnabled() && !state.paused) {
+      window.setTimeout(playNextNarration, delayMs || 700);
+      return;
+    }
+    scheduleNarrHide(delayMs || 4000);
+  }
+
+  function startNarration(sp, n) {
+    if (!n || state.paused) return;
+    if (narrHideTimer) { clearTimeout(narrHideTimer); narrHideTimer = null; }
+    narrPlaying = true;
+    state.narrSpotId = sp.id;
+    renderNarrationText(sp, n);
+    el["narrbar"].classList.remove("hidden");
+    track("live_narration_shown", { spot_id: sp.id, mode: state.mode, lang: state.lang });
+    scheduleNarrHide(60000);
+    var audioPath = narrationAudioPath(sp, n);
+    if (!audioPath || typeof Audio === "undefined") {
+      finishNarration(8000);
+      return;
+    }
+    try {
+      if (!narrAudio) narrAudio = new Audio();
+      narrAudio.preload = "none";
+      narrAudio.muted = false;
+      narrAudio.src = audioPath;
+      narrAudio.onended = function () { finishNarration(700); };
+      narrAudio.onerror = function () { finishNarration(8000); };
+      var p = narrAudio.play();
+      if (p && p.catch) p.catch(function () { finishNarration(8000); });
+    } catch (e) { /* noop */ }
+  }
+
+  function queueNarration(sp) {
+    var key = narrationGroupKey(sp);
+    if (state.narratedIds[key]) return;
+    if (narrQueue.some(function (item) { return narrationGroupKey(item.sp) === key; })) return;
+    if (narrQueue.length >= NARR_MAX_QUEUE) return;
+    var n = narrationFor(sp);
+    if (!n) return;
+    state.narratedIds[key] = true;
+    narrQueue.push({ sp: sp });
+  }
+
+  function playNextNarration() {
+    if (narrPlaying || state.paused || !narrationEnabled()) return;
+    while (narrQueue.length) {
+      var item = narrQueue.shift();
+      var info = aheadInfo(item.sp);
+      if (state.dir && info.dist < -2) continue;
+      var n = narrationFor(item.sp);
+      if (n) {
+        startNarration(item.sp, n);
+        return;
+      }
+    }
+  }
+
+  function warmNarrationAudio(candidates) {
+    if (typeof Audio === "undefined" || !hasNarrationData()) return;
+    var target = candidates.find(function (item) {
+      return item.info.dist >= 0 && item.info.etaSec != null && item.info.etaSec <= NARR_WARMUP_SEC && narrationFor(item.sp);
+    });
+    if (!target) return;
+    var path = narrationAudioPath(target.sp, narrationFor(target.sp));
+    if (!path || path === narrWarmPath) return;
+    try {
+      if (!narrWarmAudio) narrWarmAudio = new Audio();
+      narrWarmAudio.preload = "metadata";
+      narrWarmAudio.src = path;
+      narrWarmAudio.load();
+      narrWarmPath = path;
+    } catch (e) { /* noop */ }
+  }
+
+  function updateNarration(candidates) {
+    if (!Array.isArray(candidates)) candidates = candidates ? [candidates] : [];
+    if (!narrationEnabled()) {
+      if (state.narrSpotId) hideNarration();
+      return;
+    }
+    if (state.paused || !state.dir || !candidates.length) return;
+    if (!hasNarrationData()) {
+      ensureNarrationsLoaded();
+      return;
+    }
+    warmNarrationAudio(candidates);
+    candidates.forEach(function (item) {
+      if (!item || !item.info || item.info.etaSec == null) return;
+      if (item.info.dist < -0.3 || item.info.etaSec > NARR_LEAD_SEC) return;
+      queueNarration(item.sp);
+    });
+    playNextNarration();
+  }
+
   function render() {
+    syncRunControls();
     var dispSpeed = state.demo ? state.speedKmh / state.demo.mult : state.speedKmh;
     el["tb-speed"].textContent = state.mode === "idle" ? "--" : Math.round(dispSpeed);
     el["btn-dir"].textContent =
@@ -478,7 +785,7 @@
       el["nc-side"].textContent = sideLabel(sp) + (state.dir ? " · " + windowLabel(sp) : "");
       el["nc-side"].className = "side-badge " + sp.raw.side;
       el["nc-dist"].textContent = info.dist.toFixed(1) + " " + t("km");
-      el["nc-dur"].textContent = sp.raw.durationSec ? t("viewFor") + sp.raw.durationSec + t("sec") : "";
+      el["nc-dur"].textContent = "";
       var photo = spotPhoto(sp);
       if (photo) {
         el["nc-photo"].src = photo;
@@ -510,7 +817,23 @@
           '<span style="margin-left:auto">' + hh + ":" + (mi < 10 ? "0" + mi : mi) + "</span></div>";
       }).join("");
     }
-    updateAlert(next);
+    if (!state.paused) {
+      updateAlert(next);
+      updateNarration(ahead.slice(0, 5));
+    }
+  }
+
+  function startGeoWatch() {
+    state.watchId = navigator.geolocation.watchPosition(
+      function (pos) {
+        if (state.paused) return;
+        handleFix(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy, pos.coords.speed, pos.timestamp);
+      },
+      function (err) {
+        setStatus("err", err.code === 1 ? t("gpsDenied") : t("gpsError"));
+      },
+      { enableHighAccuracy: true, maximumAge: 3000, timeout: 20000 }
+    );
   }
 
   function startGps() {
@@ -524,25 +847,28 @@
     }
     stopAll();
     state.mode = "gps";
+    state.paused = false;
+    state.runStartedAt = Date.now();
+    state.lastMapFollowAt = 0;
     document.getElementById("idle-panel").classList.add("hidden");
     setStatus("warn", t("locating"));
+    unlockAudio();
+    if (narrationEnabled()) ensureNarrationsLoaded();
     track("live_gps_start", { lang: state.lang });
-    state.watchId = navigator.geolocation.watchPosition(
-      function (pos) {
-        handleFix(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy, pos.coords.speed, pos.timestamp);
-      },
-      function (err) {
-        setStatus("err", err.code === 1 ? t("gpsDenied") : t("gpsError"));
-      },
-      { enableHighAccuracy: true, maximumAge: 1000, timeout: 20000 }
-    );
+    startGeoWatch();
     acquireWake();
+    syncRunControls();
   }
 
   function startDemo(dirStr, mult) {
     stopAll();
     state.mode = "demo";
+    state.paused = false;
+    state.runStartedAt = Date.now();
+    state.lastMapFollowAt = 0;
     document.getElementById("idle-panel").classList.add("hidden");
+    unlockAudio();
+    if (narrationEnabled()) ensureNarrationsLoaded();
     track("live_demo_start", { direction: dirStr, mult: mult });
     state.demo = {
       km: dirStr === "down" ? 0 : T.totalKm,
@@ -550,13 +876,24 @@
       mult: mult,
       lastT: Date.now(),
     };
+    state.dir = state.demo.dir;
+    state.dirAccum = state.demo.dir;
+    state.suppressedDemoFirstSpotId = state.demo.dir > 0 ? spots[0].id : spots[spots.length - 1].id;
     setStatus("warn", t("demo") + " " + mult + "x");
-    state.demoTimer = setInterval(demoTick, 700);
+    state.demoTimer = setInterval(demoTick, demoIntervalMs(mult));
     acquireWake();
     demoTick();
+    syncRunControls();
+  }
+
+  function demoIntervalMs(mult) {
+    if (mult <= 1) return 3000;
+    if (mult <= 10) return 1500;
+    return 700;
   }
 
   function demoTick() {
+    if (state.paused) return;
     var d = state.demo;
     if (!d) return;
     var now = Date.now();
@@ -583,6 +920,7 @@
       state.demoTimer = null;
     }
     state.demo = null;
+    state.paused = false;
     state.mode = "idle";
     state.km = null;
     state.speedKmh = 0;
@@ -592,8 +930,72 @@
     state.passed = [];
     state.passedIds = {};
     state.alertedIds = {};
+    state.narratedIds = {};
+    state.runStartedAt = 0;
+    state.lastMapFollowAt = 0;
+    state.suppressedDemoFirstSpotId = null;
     hideAlert();
+    hideNarration();
     releaseWake();
+    syncRunControls();
+  }
+
+  function pauseRun() {
+    if (state.mode === "idle" || state.paused) return;
+    if (state.watchId != null) {
+      navigator.geolocation.clearWatch(state.watchId);
+      state.watchId = null;
+    }
+    if (state.demoTimer) {
+      clearInterval(state.demoTimer);
+      state.demoTimer = null;
+    }
+    state.paused = true;
+    hideAlert();
+    hideNarration();
+    releaseWake();
+    setStatus("warn", t("paused"));
+    track("live_paused", { mode: state.mode });
+    syncRunControls();
+  }
+
+  function resumeRun() {
+    if (state.mode === "idle" || !state.paused) return;
+    state.paused = false;
+    if (state.mode === "gps") {
+      setStatus("warn", t("locating"));
+      startGeoWatch();
+    } else if (state.mode === "demo" && state.demo) {
+      state.demo.lastT = Date.now();
+      state.demoTimer = setInterval(demoTick, demoIntervalMs(state.demo.mult));
+      setStatus("warn", t("demo") + " " + state.demo.mult + "x");
+      demoTick();
+    }
+    acquireWake();
+    track("live_resumed", { mode: state.mode });
+    syncRunControls();
+  }
+
+  function togglePause() {
+    if (state.paused) resumeRun();
+    else pauseRun();
+  }
+
+  function toggleNarration() {
+    state.settings.narrMode =
+      state.settings.narrMode === "featured" ? "all" :
+      state.settings.narrMode === "all" ? "off" :
+      "featured";
+    if (!narrationEnabled()) hideNarration();
+    else ensureNarrationsLoaded();
+    saveSettings();
+    track("live_narration_toggled", { enabled: narrationEnabled() ? "1" : "0", mode: state.mode, guide_mode: state.settings.narrMode });
+    syncRunControls();
+  }
+
+  function stopAndShowIdle() {
+    stopAll();
+    showIdle();
   }
 
   function showIdle() {
@@ -606,6 +1008,7 @@
     spots.forEach(function (sp) { setMarkerClass(sp, ""); });
     setStatus("", t("waiting"));
     el["tb-speed"].textContent = "--";
+    syncRunControls();
   }
 
   function acquireWake() {
@@ -623,11 +1026,11 @@
   }
 
   document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "visible" && state.mode !== "idle") acquireWake();
+    if (document.visibilityState === "visible" && state.mode !== "idle" && !state.paused) acquireWake();
   });
 
   setInterval(function () {
-    if (state.mode !== "idle" && state.km != null && !state.offRoute) {
+    if (state.mode !== "idle" && !state.paused && state.km != null && !state.offRoute) {
       if (state.dir && state.speedKmh > 30 && state.lastFix) {
         var age = (Date.now() - state.lastFix.t) / 3600000;
         if (age > 0.0008 && age < 0.02 && state.mode === "gps") state.km += state.dir * state.speedKmh * 0.000278;
@@ -639,7 +1042,7 @@
   function updateChromeLinks() {
     var suffix = state.lang === "en" ? "?lang=en" : "";
     var links = {
-      home: "../index.html" + suffix + "#top",
+      home: "../index.html" + suffix,
       journey: "../index.html" + suffix + "#journey",
       live: "index.html" + suffix,
       zukan: "../zukan.html" + suffix,
@@ -666,16 +1069,30 @@
     document.getElementById("btn-start").textContent = t("startGps");
     document.getElementById("btn-demo").textContent = t("startDemo");
     document.getElementById("btn-lang").textContent = state.lang === "ja" ? "EN" : "日本語";
+    syncRunControls();
     document.getElementById("set-title").textContent = t("settings");
-    document.getElementById("set-sound-l").textContent = t("soundL");
     document.getElementById("set-vib-l").textContent = t("vibL");
     document.getElementById("set-wake-l").textContent = t("wakeL");
     document.getElementById("set-follow-l").textContent = t("followL");
+    document.getElementById("set-narr-mode-l").textContent = t("narrModeL");
+    document.getElementById("set-narr-help").textContent = tFmt("narrModeHelp", {
+      featured: featuredNarrationCount,
+      all: spots.length,
+    });
     document.getElementById("set-dir-l").textContent = t("dirL");
+    if (state.narrSpotId) {
+      var narrSp = spots.find(function (s) { return s.id === state.narrSpotId; });
+      var narrN = narrSp && narrationFor(narrSp);
+      if (narrSp && narrN) renderNarrationText(narrSp, narrN);
+    }
     var sd = document.getElementById("set-dir");
     sd.options[0].text = t("dirOptAuto");
     sd.options[1].text = t("dirOptDown");
     sd.options[2].text = t("dirOptUp");
+    var nm = document.getElementById("set-narr-mode");
+    nm.options[0].text = t("narrModeFeatured");
+    nm.options[1].text = t("narrModeAll");
+    nm.options[2].text = t("narrModeOff");
     document.getElementById("btn-stop").textContent = t("stop");
     document.getElementById("btn-close-settings").textContent = t("close");
     document.getElementById("set-note").textContent = t("note");
@@ -698,6 +1115,11 @@
     state.lang = state.lang === "ja" ? "en" : "ja";
     applyLang();
   });
+  document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);
+  document.getElementById("btn-pause").addEventListener("click", togglePause);
+  document.getElementById("map-narr-toggle").addEventListener("click", toggleNarration);
+  document.getElementById("map-pause").addEventListener("click", togglePause);
+  document.getElementById("map-stop").addEventListener("click", stopAndShowIdle);
   document.getElementById("btn-start").addEventListener("click", startGps);
   document.getElementById("btn-demo").addEventListener("click", function () {
     document.getElementById("demo-panel").classList.remove("hidden");
@@ -718,19 +1140,21 @@
     render();
   });
   document.getElementById("btn-settings").addEventListener("click", function () {
-    document.getElementById("set-sound").checked = state.settings.sound;
     document.getElementById("set-vib").checked = state.settings.vib;
     document.getElementById("set-wake").checked = state.settings.wake;
     document.getElementById("set-follow").checked = state.settings.follow;
+    document.getElementById("set-narr-mode").value = state.settings.narrMode;
     document.getElementById("set-dir").value = state.dirMode;
     document.getElementById("settings").classList.remove("hidden");
   });
   document.getElementById("btn-close-settings").addEventListener("click", function () {
-    state.settings.sound = document.getElementById("set-sound").checked;
     state.settings.vib = document.getElementById("set-vib").checked;
     state.settings.wake = document.getElementById("set-wake").checked;
     state.settings.follow = document.getElementById("set-follow").checked;
+    state.settings.narrMode = document.getElementById("set-narr-mode").value;
+    if (!narrationEnabled()) hideNarration();
     saveSettings();
+    syncRunControls();
     state.dirMode = document.getElementById("set-dir").value;
     if (state.dirMode === "down") state.dir = 1;
     else if (state.dirMode === "up") state.dir = -1;
@@ -740,14 +1164,14 @@
   });
   document.getElementById("btn-stop").addEventListener("click", function () {
     document.getElementById("settings").classList.add("hidden");
-    stopAll();
-    showIdle();
+    stopAndShowIdle();
   });
   document.getElementById("al-close").addEventListener("click", function () {
     var id = state.alertSpotId;
     if (id) state.alertedIds[id] = true;
     hideAlert();
   });
+  document.getElementById("nr-close").addEventListener("click", hideNarration);
 
   /* ---- GA4 計測（位置情報・緯度経度・km値は送らない） ---- */
   function track(eventName, params) {

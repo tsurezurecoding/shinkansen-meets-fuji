@@ -606,6 +606,14 @@ function spotPageHTML(spot, lang) {
   const refs = referencesHTML(spot, lang);
   const bodyLinks = bodyLinksHTML(spot, lang);
   const miniMap = miniMapDetailsHTML(spot, lang);
+  const explainerData = spot.explainer;
+  const explainerParas = explainerData ? (explainerData[lang] || explainerData.ja || []) : [];
+  const explainer = explainerData && explainerParas.length
+    ? `<section class="spot-page-section">
+        <h2>${escapeHTML(localized(explainerData.heading, lang))}</h2>
+        ${explainerParas.map((p) => `<p>${escapeHTML(p)}</p>`).join("\n        ")}
+      </section>`
+    : "";
   const liveMapCta = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
   const jsonLd = {
     "@context": "https://schema.org",
@@ -686,6 +694,7 @@ ${bodyLinks ? `        ${bodyLinks}
 ${fujiGuideBlock.trimEnd()}
         <p><a href="${liveHref(lang, prefix)}">${escapeHTML(liveMapCta)}</a></p>
       </section>
+      ${explainer}
       ${miniMap}
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionPoint)}</h2>
