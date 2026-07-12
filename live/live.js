@@ -215,8 +215,18 @@
   var spots = SPOTS
     .filter(function (s) { return typeof s.minutesFromTokyo === "number"; })
     .map(function (s) {
-      var km = T.minToKm(s.minutesFromTokyo);
-      return { raw: s, id: s.id, km: km, viewPos: T.latLngAtKm(km), marker: null };
+      // 位置は手動補正した新幹線視点(viewpoint)を優先。GPS現在地と同じポリラインへ投影して
+      // kmを測るため、ポリラインが多少ゆがんでも相対距離の誤差が相殺される。
+      // viewpointが無いスポットのみ従来の分ベース(minToKm)へフォールバックする。
+      var km, viewPos;
+      if (s.viewpoint && typeof s.viewpoint.lat === "number" && typeof s.viewpoint.lng === "number") {
+        km = T.projectToTrack(s.viewpoint.lat, s.viewpoint.lng).km;
+        viewPos = { lat: s.viewpoint.lat, lng: s.viewpoint.lng };
+      } else {
+        km = T.minToKm(s.minutesFromTokyo);
+        viewPos = T.latLngAtKm(km);
+      }
+      return { raw: s, id: s.id, km: km, viewPos: viewPos, marker: null };
     })
     .sort(function (a, b) { return a.km - b.km; });
 
@@ -416,6 +426,10 @@
     render();
   }
 
+  // 遅れ側に倒さないための早め点火マージン(秒)。カウントダウン/アラート/ナレーションを
+  // この秒数だけ手前に寄せ、「まもなく」が過ぎてから0になるのを防ぐ。実車検証で調整可。
+  var ETA_EARLY_BIAS_SEC = 5;
+
   function aheadInfo(sp) {
     var d = state.dir ? (sp.km - state.km) * state.dir : Math.abs(sp.km - state.km);
     var etaSec = null;
@@ -427,6 +441,7 @@
         etaSec = Math.abs(sp.raw.minutesFromTokyo - curMin) * 60;
         approx = true;
       }
+      if (etaSec != null) etaSec = Math.max(0, etaSec - ETA_EARLY_BIAS_SEC);
     }
     return { dist: d, etaSec: etaSec, approx: approx };
   }
@@ -781,6 +796,9 @@
     });
     ahead.sort(function (a, b) { return a.info.dist - b.info.dist; });
     var next = ahead.length ? ahead[0] : null;
+    // 次カードは方向確定(state.dir)後のみ表示する。方向未確定(発車直後・停車中)では
+    // 次カードが出ないので、upcomingリストから先頭を省いてはいけない(最寄りが消えるバグ回避)。
+    var hasNextCard = !!(next && state.dir);
     if (lightweight) {
       if (!state.paused) updateNarration(ahead.slice(0, 5));
       return;
@@ -814,7 +832,7 @@
       el["next-card"].classList.add("hidden");
       updateSightLine(null);
     }
-    el["upcoming"].innerHTML = ahead.slice(next ? 1 : 0, next ? 6 : 5).map(function (a) {
+    el["upcoming"].innerHTML = ahead.slice(hasNextCard ? 1 : 0, hasNextCard ? 6 : 5).map(function (a) {
       var w = windowLabel(a.sp);
       return '<div class="up-row">' +
         '<div class="up-icon">' + (a.sp.raw.icon || "👀") + "</div>" +

@@ -1158,7 +1158,7 @@ const SPOTS = [
     icon: "🏯",
     ja: { name: "佐和山城跡", area: "米原 → 京都", hook: "石田三成の城跡を、田んぼ越しに。", story: "米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城。天守は残っていませんが、看板を見つけると、関ヶ原から彦根城へ続く歴史の流れが数分の車窓に重なります。" },
     en: { name: "Sawayama Castle Ruins", area: "Maibara → Kyoto", hook: "Mitsunari's hill beyond the fields.", story: "Soon after Maibara, the hill and sign for Sawayama Castle may appear on the Seat E side. This was the castle of Ishida Mitsunari, defeated at Sekigahara. No keep remains, but spotting the sign connects Sekigahara, Sawayama, and Hikone in just a few minutes of window time." },
-    minutesFromTokyo: 116, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, scene: "castle",
+    minutesFromTokyo: 115, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, scene: "castle",
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
     photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
