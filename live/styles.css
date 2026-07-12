@@ -812,3 +812,29 @@ body.live-page.is-idle #sheet {
     font-size: 0.72rem;
   }
 }
+
+/* α版・開発中の表示（実車検証が継続中のため） */
+.live-alpha-badge {
+  display: inline-block;
+  margin-left: 0.4em;
+  padding: 0.08em 0.5em;
+  border-radius: 999px;
+  background: #f59e0b;
+  color: #1a1a1a;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+.idle-alpha-note {
+  margin: 0.6em 0 0;
+  padding: 0.5em 0.75em;
+  border: 1px solid rgba(245, 158, 11, 0.7);
+  border-radius: 8px;
+  background: rgba(245, 158, 11, 0.14);
+  color: #fbbf24;
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+#idle-panel #idle-alpha-note { color: #fbbf24; }

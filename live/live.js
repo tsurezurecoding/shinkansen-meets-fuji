@@ -59,6 +59,8 @@
       startDemo: "▶ デモ走行（乗らずに試す）",
       idleTitle: "乗車したら、GPSをオンに。",
       idleDesc: "音声ガイドを聞きながら乗っておくと、まもなく見える景色を先に知らせます。現在地は案内計算に使い、外部サーバー等に保存しません。",
+      alphaBadge: "α開発中",
+      alphaNote: "この機能はα版（開発中）です。位置と通過時刻は実車ログをもとに調整中で、ずれることがあります。お気づきの点は歓迎します。",
       idleFeature1: "次に見える車窓を現在地から予測",
       idleFeature2: "主要スポットだけ、または小ネタまで音声案内",
       idleFeature3: "地図とカウントダウンで見逃しを防止",
@@ -130,6 +132,8 @@
       startDemo: "▶ Demo run (try without riding)",
       idleTitle: "On board? Turn on GPS.",
       idleDesc: "Turn on the audio guide and ride along. It tells you what is coming up before the view passes. Your location is used for guidance and is not stored on external servers.",
+      alphaBadge: "Alpha",
+      alphaNote: "This feature is an alpha (in development). Positions and timing are still being tuned from real ride logs and may be off.",
       idleFeature1: "Predicts the next view from your live position",
       idleFeature2: "Choose key spots only, or include small curiosities",
       idleFeature3: "Map and countdown help you avoid missing it",
@@ -1113,6 +1117,8 @@
     el["live-title"].textContent = t("appTitle");
     document.getElementById("idle-title").textContent = t("idleTitle");
     document.getElementById("idle-desc").textContent = t("idleDesc");
+    var _ab = document.getElementById("live-alpha-badge"); if (_ab) _ab.textContent = t("alphaBadge");
+    var _an = document.getElementById("idle-alpha-note"); if (_an) _an.textContent = t("alphaNote");
     var idleFeatures = document.getElementById("idle-features");
     if (idleFeatures) {
       idleFeatures.innerHTML = [t("idleFeature1"), t("idleFeature2"), t("idleFeature3")]
