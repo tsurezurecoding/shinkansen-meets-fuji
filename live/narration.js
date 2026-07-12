@@ -20,12 +20,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に東京タワーが見えてきます。東京の空に、赤い塔。 東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に東京タワーが見えます。旅の序盤、都市の景色の中に赤い塔がちらりと立つ。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に東京タワーが見えてきます。東京の空に、赤い塔。 東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に東京タワーが見えます。旅の序盤、都市の景色の中に赤い塔がちらりと立つ。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側のビルの間に東京タワーが見えることがあります。旅の終わりに東京の街へ戻ってきたことを知らせる合図です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側のビルの間に東京タワーが見えることがあります。旅の終わりに東京の街へ戻ってきたことを知らせる合図です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Tokyo Tower appears on the Seat A side. A red tower in the Tokyo skyline. In the first few minutes after leaving Tokyo Station for Shinagawa, Tokyo Tower slips between the buildings on the Seat E side. It is a quick urban opening shot: the red tower appears, and the Tokaido Shinkansen window story begins.",
+        "text": "Heading toward Tokyo, Tokyo Tower appears on the Seat E side. A red tower in the Tokyo skyline. In the first few minutes after leaving Tokyo Station for Shinagawa, Tokyo Tower slips between the buildings on the Seat E side. It is a quick urban opening shot: the red tower appears, and the Tokaido Shinkansen window story begins.",
         "durationSec": 27
       }
     }
@@ -44,12 +44,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。日向岡の街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
-        "speechText": "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
+        "text": "小田原から新横浜へ向かう途中、E席側の丘にそろった三角屋根がならびます。日向岡の街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
+        "speechText": "小田原から新横浜へ向かう途中、E席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
         "durationSec": 14
       },
       "en": {
-        "text": "Between Odawara and Shin-Yokohama, look to Seat A for a hillside of matching triangular roofs. This is Hinataoka: a small, satisfying discovery rather than a headline landmark. If you are already watching Mt. Fuji beyond the Sagami Plain, notice the nearer hillside too.",
+        "text": "Between Odawara and Shin-Yokohama, look to Seat E for a hillside of matching triangular roofs. This is Hinataoka: a small, satisfying discovery rather than a headline landmark. If you are already watching Mt. Fuji beyond the Sagami Plain, notice the nearer hillside too.",
         "durationSec": 20
       }
     }
@@ -68,12 +68,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に都内からの富士山が見えてきます。東京を出て、最初の富士。 品川を過ぎて新横浜へ向かう途中、空気が澄んだ日には大田区付近から富士山が見えることがあります。新富士の大きな富士山とは違う、都市の向こうに小さく浮かぶ早い合図。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に都内からの富士山が見えてきます。東京を出て、最初の富士。 品川を過ぎて新横浜へ向かう途中、空気が澄んだ日には大田区付近から富士山が見えることがあります。新富士の大きな富士山とは違う、都市の向こうに小さく浮かぶ早い合図。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に都内からの富士山が見えることがあります。新富士付近の主役とは違う、都市の向こうに小さく浮かぶ控えめな富士山です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に都内からの富士山が見えることがあります。新富士付近の主役とは違う、都市の向こうに小さく浮かぶ控えめな富士山です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Mt. Fuji from Ota appears on the Seat A side. The first Fuji after Tokyo. After Shinagawa, on the way toward Shin-Yokohama, Mt. Fuji can appear from around Ota on especially clear days.",
+        "text": "Heading toward Tokyo, Mt. Fuji from Ota appears on the Seat E side. The first Fuji after Tokyo. After Shinagawa, on the way toward Shin-Yokohama, Mt. Fuji can appear from around Ota on especially clear days.",
         "durationSec": 17
       }
     }
@@ -92,12 +92,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "まもなく多摩川を渡ります。A席側の窓に見える青いアーチが丸子橋。初代は昭和9年、「丸子の渡し」と呼ばれた渡し舟に代わって架けられた橋です。映画「シン・ゴジラ」では、この多摩川一帯が防衛線の舞台になりました。新横浜を出て、東京の街へ近づく手前の小さな見せ場です。",
+        "text": "まもなく多摩川を渡ります。E席側の窓に見える青いアーチが丸子橋。初代は昭和9年、「丸子の渡し」と呼ばれた渡し舟に代わって架けられた橋です。映画「シン・ゴジラ」では、この多摩川一帯が防衛線の舞台になりました。新横浜を出て、東京の街へ近づく手前の小さな見せ場です。",
         "durationSec": 13,
-        "speechText": "まもなく多摩川を渡ります。A席側の窓に見える青いアーチが丸子橋です。初代は昭和9年、「丸子の渡し」と呼ばれた渡し舟に代わって架けられた橋です。新横浜を出て、東京の街へ近づく手前の小さな見せ場です。"
+        "speechText": "まもなく多摩川を渡ります。E席側の窓に見える青いアーチが丸子橋です。初代は昭和9年、「丸子の渡し」と呼ばれた渡し舟に代わって架けられた橋です。新横浜を出て、東京の街へ近づく手前の小さな見せ場です。"
       },
       "en": {
-        "text": "We're about to cross the Tama River. On the Seat A side, look for the blue arch of Maruko Bridge. The first bridge opened in 1934, replacing the old Maruko Ferry. This stretch of the river also appears as the defense line in Shin Godzilla. After Shin-Yokohama, it is a small scene change before the train slips back toward Tokyo.",
+        "text": "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge opened in 1934, replacing the old Maruko Ferry. This stretch of the river also appears as the defense line in Shin Godzilla. After Shin-Yokohama, it is a small scene change before the train slips back toward Tokyo.",
         "durationSec": 28
       }
     }
@@ -116,12 +116,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に武蔵小杉のタワマン群が見えてきます。川を越えた、塔の街。 東京から新大阪へ向かうと、丸子橋を過ぎてすぐ、E席側に武蔵小杉のタワマン群が迫ります。多摩川の開けた景色から、縦に伸びる街へ一気に切り替わる瞬間。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に武蔵小杉のタワマン群が見えてきます。川を越えた、塔の街。 東京から新大阪へ向かうと、丸子橋を過ぎてすぐ、E席側に武蔵小杉のタワマン群が迫ります。多摩川の開けた景色から、縦に伸びる街へ一気に切り替わる瞬間。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に武蔵小杉のタワマン群が見えてきます。多摩川へ近づく手前で、縦に伸びる街の密度が窓いっぱいに広がる瞬間です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に武蔵小杉のタワマン群が見えてきます。多摩川へ近づく手前で、縦に伸びる街の密度が窓いっぱいに広がる瞬間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Musashi-Kosugi Towers appears on the Seat A side. A wall of towers after the river. Heading from Tokyo toward Shin-Osaka, just after Maruko Bridge, the Musashi-Kosugi high-rise towers appear on the Seat E side. The view shifts suddenly from the open Tama River to a dense vertical city.",
+        "text": "Heading toward Tokyo, Musashi-Kosugi Towers appears on the Seat E side. A wall of towers after the river. Heading from Tokyo toward Shin-Osaka, just after Maruko Bridge, the Musashi-Kosugi high-rise towers appear on the Seat E side. The view shifts suddenly from the open Tama River to a dense vertical city.",
         "durationSec": 24
       }
     }
@@ -140,12 +140,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に私は誰でしょう看板が見えてきます。私は誰でしょう？ 新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に私は誰でしょう看板が見えてきます。私は誰でしょう？ 新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に私は誰でしょう看板が見えてきます。「私は誰でしょう」と問いかける謎の看板で、右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に私は誰でしょう看板が見えてきます。「私は誰でしょう」と問いかける謎の看板で、右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Who am I? Sign appears on the Seat E side. Who am I? Between Shin-Yokohama and Odawara, a small mystery sign on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult.",
+        "text": "Heading toward Tokyo, Who am I? Sign appears on the Seat A side. Who am I? Between Shin-Yokohama and Odawara, a small mystery sign on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult.",
         "durationSec": 25
       }
     }
@@ -185,11 +185,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京へ近づく前に、相模平野越しの富士山をもう一度探してみてください。A席側、丹沢と箱根の山なみの向こうに小さく見えることがあります。旅の終わりに見つける、控えめな富士山です。",
+        "text": "東京へ近づく前に、相模平野越しの富士山をもう一度探してみてください。E席側、丹沢と箱根の山なみの向こうに小さく見えることがあります。旅の終わりに見つける、控えめな富士山です。",
         "durationSec": 12
       },
       "en": {
-        "text": "Before the train gets closer to Tokyo, try one more look for Mt. Fuji over the Sagami Plain. On the Seat A side, it can appear small beyond the Tanzawa and Hakone mountains. It is a modest, distant Fuji: a quiet closing view rather than the big main event.",
+        "text": "Before the train gets closer to Tokyo, try one more look for Mt. Fuji over the Sagami Plain. On the Seat E side, it can appear small beyond the Tanzawa and Hakone mountains. It is a modest, distant Fuji: a quiet closing view rather than the big main event.",
         "durationSec": 23
       }
     }
@@ -208,12 +208,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に熱海と相模湾が見えてきます。街の景色が、海の旅に切りかわる合図。 小田原を過ぎ、熱海が近づくころ、車窓は相模湾へ大きくひらきます。山肌の街、海、岬が一枚の絵になって、東京の街なみが「旅の景色」に変わる瞬間です。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に熱海と相模湾が見えてきます。街の景色が、海の旅に切りかわる合図。 小田原を過ぎ、熱海が近づくころ、車窓は相模湾へ大きくひらきます。山肌の街、海、岬が一枚の絵になって、東京の街なみが「旅の景色」に変わる瞬間です。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に熱海と相模湾が見えてきます。山肌の街、海、岬が一枚の絵のように重なる、海の旅の名残を感じる区間です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に熱海と相模湾が見えてきます。山肌の街、海、岬が一枚の絵のように重なる、海の旅の名残を感じる区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Atami & Sagami Bay appears on the Seat E side. Where the sea begins. After Odawara, as Atami approaches, the window opens wide toward Sagami Bay. Hillside town, sea and headlands fold into one view: the moment the ride stops being a commute and starts being a journey.",
+        "text": "Heading toward Tokyo, Atami & Sagami Bay appears on the Seat A side. Where the sea begins. After Odawara, as Atami approaches, the window opens wide toward Sagami Bay. Hillside town, sea and headlands fold into one view: the moment the ride stops being a commute and starts being a journey.",
         "durationSec": 24
       }
     }
@@ -232,12 +232,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に小田原城が見えてきます。のぞみでは、まばたきする間の城。 小田原駅の前後、A席側に小田原城が一瞬だけ見えます。停車しない列車では本当に短い出会い。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に小田原城が見えてきます。のぞみでは、まばたきする間の城。 小田原駅の前後、A席側に小田原城が一瞬だけ見えます。停車しない列車では本当に短い出会い。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に小田原城が一瞬だけ見えます。停車しない列車では、まばたきする間の短い出会いです。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に小田原城が一瞬だけ見えます。停車しない列車では、まばたきする間の短い出会いです。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Odawara Castle appears on the Seat E side. A castle in a blink. Around Odawara Station, Odawara Castle flashes by on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey.",
+        "text": "Heading toward Tokyo, Odawara Castle appears on the Seat A side. A castle in a blink. Around Odawara Station, Odawara Castle flashes by on the Seat A side. On Nozomi services that pass through without stopping, the moment is astonishingly short: a small mark at the beginning of the journey.",
         "durationSec": 23
       }
     }
@@ -256,12 +256,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に魚籃観音像が見えてきます。一瞬だけ、白い観音様。 小田原を過ぎ、早川駅の近くでA席側を見ていると、白い観音像がほんの一瞬あらわれます。車窓に突然立つ姿は、見逃すと「あれは何だったんだろう」となる発見型スポット。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に魚籃観音像が見えてきます。一瞬だけ、白い観音様。 小田原を過ぎ、早川駅の近くでA席側を見ていると、白い観音像がほんの一瞬あらわれます。車窓に突然立つ姿は、見逃すと「あれは何だったんだろう」となる発見型スポット。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に魚籃観音像がほんの一瞬あらわれます。白い姿が突然窓に入る、見つけるとうれしい発見型スポットです。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に魚籃観音像がほんの一瞬あらわれます。白い姿が突然窓に入る、見つけるとうれしい発見型スポットです。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Gyoran Kannon Statue appears on the Seat E side. A white Kannon, for a heartbeat. Just after Odawara, near Hayakawa Station, a white Kannon statue appears for only a moment on the Seat A side. It is the kind of sudden window-seat sight that leaves you wondering what you just saw.",
+        "text": "Heading toward Tokyo, Gyoran Kannon Statue appears on the Seat A side. A white Kannon, for a heartbeat. Just after Odawara, near Hayakawa Station, a white Kannon statue appears for only a moment on the Seat A side. It is the kind of sudden window-seat sight that leaves you wondering what you just saw.",
         "durationSec": 25
       }
     }
@@ -279,11 +279,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "新富士から三島へ向かうこの区間は、富士山を大きく見られる主役区間です。東京方面へ向かう場合も、A席側に注意してください。近くで見る富士山は一瞬ごとに形が変わります。雲があっても、切れ間を待つ価値があります。",
+        "text": "新富士から三島へ向かうこの区間は、富士山を大きく見られる主役区間です。東京方面へ向かう場合も、E席側に注意してください。近くで見る富士山は一瞬ごとに形が変わります。雲があっても、切れ間を待つ価値があります。",
         "durationSec": 13
       },
       "en": {
-        "text": "Between Shin-Fuji and Mishima, this is the main close-up Mt. Fuji stretch. Toward Tokyo, keep an eye on the Seat A side. From this distance, the mountain changes with every moment and every cloud break, so even an imperfect sky is worth watching.",
+        "text": "Between Shin-Fuji and Mishima, this is the main close-up Mt. Fuji stretch. Toward Tokyo, keep an eye on the Seat E side. From this distance, the mountain changes with every moment and every cloud break, so even an imperfect sky is worth watching.",
         "durationSec": 20
       }
     }
@@ -302,12 +302,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に左富士が見えてきます。海側A席に、28秒だけ富士山。 東京から新大阪方面へ向かうなら、静岡駅を過ぎ、安倍川を渡ってまもなく。ふつう富士山はE席のものですが、この短い区間だけ反対のA席側にあらわれます。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に左富士が見えてきます。海側A席に、28秒だけ富士山。 東京から新大阪方面へ向かうなら、静岡駅を過ぎ、安倍川を渡ってまもなく。ふつう富士山はE席のものですが、この短い区間だけ反対のA席側にあらわれます。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に左富士の区間が来ます。静岡駅の近くで、いつもとは反対側に富士山が見える短い特別区間です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に左富士の区間が来ます。静岡駅の近くで、いつもとは反対側に富士山が見える短い特別区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Left-Side Fuji appears on the Seat E side. For 28 seconds, Fuji switches sides. Heading from Tokyo toward Shin-Osaka, start looking just after Shizuoka Station, soon after crossing the Abe River. Mt.",
+        "text": "Heading toward Tokyo, Left-Side Fuji appears on the Seat A side. For 28 seconds, Fuji switches sides. Heading from Tokyo toward Shin-Osaka, start looking just after Shizuoka Station, soon after crossing the Abe River. Mt.",
         "durationSec": 16
       }
     }
@@ -326,12 +326,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に清水港とちきゅうが見えてきます。港のクレーンと、ちきゅう。 新富士から静岡へ向かう途中、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船「ちきゅう」も窓に入ります。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に清水港とちきゅうが見えてきます。港のクレーンと、ちきゅう。 新富士から静岡へ向かう途中、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船「ちきゅう」も窓に入ります。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船ちきゅうも窓に入る区間です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船ちきゅうも窓に入る区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Shimizu Port and CHIKYU appears on the Seat E side. Cranes and CHIKYU. Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt.",
+        "text": "Heading toward Tokyo, Shimizu Port and CHIKYU appears on the Seat A side. Cranes and CHIKYU. Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt.",
         "durationSec": 18
       }
     }
@@ -350,12 +350,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に静岡の茶畑が見えてきます。緑の畝が、車窓を走る。 掛川城の少し手前、車窓に茶畑の緑が流れる区間があります。富士山や城ほど大きな目印ではありません。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に静岡の茶畑が見えてきます。緑の畝が、車窓を走る。 掛川城の少し手前、車窓に茶畑の緑が流れる区間があります。富士山や城ほど大きな目印ではありません。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に静岡の茶畑が見えてきます。緑の畝が車窓を流れる、静岡らしい短い区間です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に静岡の茶畑が見えてきます。緑の畝が車窓を流れる、静岡らしい短い区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Shizuoka Tea Fields appears on the Seat A side. Rows of green tea from the window. A little before Kakegawa Castle, rows of tea fields can slide past the window. It is not as obvious as Mt.",
+        "text": "Heading toward Tokyo, Shizuoka Tea Fields appears on the Seat E side. Rows of green tea from the window. A little before Kakegawa Castle, rows of tea fields can slide past the window. It is not as obvious as Mt.",
         "durationSec": 19
       }
     }
@@ -374,12 +374,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に掛川城が見えてきます。駅のすぐそばに、木造復元の天守。 掛川駅の北側、車窓から探せる距離に掛川城の天守があります。日本初の木造復元天守。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に掛川城が見えてきます。駅のすぐそばに、木造復元の天守。 掛川駅の北側、車窓から探せる距離に掛川城の天守があります。日本初の木造復元天守。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に掛川城が見えてきます。駅のすぐそばにある、日本初の木造復元天守です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に掛川城が見えてきます。駅のすぐそばにある、日本初の木造復元天守です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Kakegawa Castle appears on the Seat A side. A castle keep, right by the tracks. Just north of Kakegawa Station stands Kakegawa Castle — Japan's first wooden-reconstructed keep. It appears only briefly, but it adds a line of history to the Shizuoka stretch.",
+        "text": "Heading toward Tokyo, Kakegawa Castle appears on the Seat E side. A castle keep, right by the tracks. Just north of Kakegawa Station stands Kakegawa Castle — Japan's first wooden-reconstructed keep. It appears only briefly, but it adds a line of history to the Shizuoka stretch.",
         "durationSec": 21
       }
     }
@@ -398,12 +398,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側にしっぺいの応援看板が見えてきます。元気が出る三連看板。 掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、磐田市のキャラクター・しっぺいが描かれた三連続の応援看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。",
+        "text": "東京方面へ向かうこのあたりでは、E席側にしっぺいの応援看板が見えてきます。元気が出る三連看板。 掛川を過ぎて浜松へ向かう途中、ハウス食品静岡工場を過ぎて少ししたあたりのE席側に、磐田市のキャラクター・しっぺいが描かれた三連続の応援看板が並びます。「いつも 応援してるよ」「みんな ありがとう」「必ず 明日があるからね」。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側にしっぺいの応援看板が見えてきます。三連続の看板に、いつも応援してるよ、みんなありがとう、必ず明日があるからね、という短いメッセージが続きます。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側にしっぺいの応援看板が見えてきます。三連続の看板に、いつも応援してるよ、みんなありがとう、必ず明日があるからね、という短いメッセージが続きます。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Shippei Cheer-up Signs appears on the Seat A side. Three signs that lift the ride. After Kakegawa, heading toward Hamamatsu, three small roadside signs appear on the Seat E side shortly after the House Foods Shizuoka Factory area. They feature Shippei, Iwata City's white dog character.",
+        "text": "Heading toward Tokyo, Shippei Cheer-up Signs appears on the Seat E side. Three signs that lift the ride. After Kakegawa, heading toward Hamamatsu, three small roadside signs appear on the Seat E side shortly after the House Foods Shizuoka Factory area. They feature Shippei, Iwata City's white dog character.",
         "durationSec": 23
       }
     }
@@ -472,12 +472,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に豊橋の立岩が見えてきます。浜名湖のあと、岩が立つ。 東京から大阪方面へ向かう新幹線で、浜名湖を過ぎて少しすると、丘の上に岩が突き出した景色が見えてきます。豊橋の立岩。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に豊橋の立岩が見えてきます。浜名湖のあと、岩が立つ。 東京から大阪方面へ向かう新幹線で、浜名湖を過ぎて少しすると、丘の上に岩が突き出した景色が見えてきます。豊橋の立岩。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に豊橋の立岩が見えてきます。丘の上に岩が突き出した、短い時間だけ探せる地形の車窓です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に豊橋の立岩が見えてきます。丘の上に岩が突き出した、短い時間だけ探せる地形の車窓です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Toyohashi Tateiwa Rock appears on the Seat A side. A standing rock after Lake Hamana. On a Shinkansen heading from Tokyo toward Osaka, shortly after Lake Hamana, a rock jutting up from a hill comes into view on the mountain side. This is Toyohashi Tateiwa.",
+        "text": "Heading toward Tokyo, Toyohashi Tateiwa Rock appears on the Seat E side. A standing rock after Lake Hamana. On a Shinkansen heading from Tokyo toward Osaka, shortly after Lake Hamana, a rock jutting up from a hill comes into view on the mountain side. This is Toyohashi Tateiwa.",
         "durationSec": 22
       }
     }
@@ -495,11 +495,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に三河湾と三河大島が見えることがあります。窓の外に一瞬だけ現れる小さな島影です。浜名湖のあとにも、海側にはまだ見つける楽しみがあります。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に三河湾と三河大島が見えることがあります。窓の外に一瞬だけ現れる小さな島影です。浜名湖のあとにも、海側にはまだ見つける楽しみがあります。",
         "durationSec": 12
       },
       "en": {
-        "text": "Heading toward Tokyo, Mikawa Oshima appears on the Seat E side. A small island beyond the bay. After Toyohashi, Mikawa Bay and Mikawa Oshima may appear on the Seat A side. It is less a famous landmark than a small island silhouette that quietly rewards a window-seat glance.",
+        "text": "Heading toward Tokyo, Mikawa Oshima appears on the Seat A side. A small island beyond the bay. After Toyohashi, Mikawa Bay and Mikawa Oshima may appear on the Seat A side. It is less a famous landmark than a small island silhouette that quietly rewards a window-seat glance.",
         "durationSec": 22
       }
     }
@@ -517,11 +517,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かう場合は、三河安城を出てすぐ、A席側にセロテープの壁看板が見えてきます。ニチバン安城工場の壁いっぱいに、赤、白、青の広告が大きく現れます。ただの広告なのに、妙に記憶に残る車窓です。",
+        "text": "東京方面へ向かう場合は、三河安城を出てすぐ、E席側にセロテープの壁看板が見えてきます。ニチバン安城工場の壁いっぱいに、赤、白、青の広告が大きく現れます。ただの広告なのに、妙に記憶に残る車窓です。",
         "durationSec": 13
       },
       "en": {
-        "text": "Heading toward Tokyo, CELLOTAPE Wall Sign appears on the Seat A side. A giant tape sign. On trains from Tokyo toward Nagoya, the large CELLOTAPE wall sign at the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo.",
+        "text": "Heading toward Tokyo, CELLOTAPE Wall Sign appears on the Seat E side. A giant tape sign. On trains from Tokyo toward Nagoya, the large CELLOTAPE wall sign at the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo.",
         "durationSec": 23
       }
     }
@@ -539,11 +539,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に名古屋駅前の高層ビル群が見えてきます。駅前の密度と線路の重なりが、名古屋の大きさを短い時間で見せてくれます。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に名古屋駅前の高層ビル群が見えてきます。駅前の密度と線路の重なりが、名古屋の大きさを短い時間で見せてくれます。",
         "durationSec": 12
       },
       "en": {
-        "text": "Heading toward Tokyo, Nagoya Station Skyline appears on the Seat A side. The train cuts through the city. On trains from Tokyo toward Shin-Osaka, the window suddenly turns urban just before arriving at Nagoya: high-rise buildings, dense station-front blocks, and layers of tracks. It is not a mountain or a castle, but it is an essential view that signals Nagoya is coming.",
+        "text": "Heading toward Tokyo, Nagoya Station Skyline appears on the Seat E side. The train cuts through the city. On trains from Tokyo toward Shin-Osaka, the window suddenly turns urban just before arriving at Nagoya: high-rise buildings, dense station-front blocks, and layers of tracks. It is not a mountain or a castle, but it is an essential view that signals Nagoya is coming.",
         "durationSec": 29
       }
     }
@@ -561,11 +561,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、清洲城のあとにキリンビール名古屋工場のタンクが見えてきます。A席側、線路沿いに巨大な生ビールのようなタンクが並ぶ、少し楽しい産業風景です。",
+        "text": "東京方面へ向かうこのあたりでは、清洲城のあとにキリンビール名古屋工場のタンクが見えてきます。E席側、線路沿いに巨大な生ビールのようなタンクが並ぶ、少し楽しい産業風景です。",
         "durationSec": 12
       },
       "en": {
-        "text": "Toward Tokyo, the Kirin Beer Nagoya Factory appears after Kiyosu Castle. On the Seat A side, its storage tanks line up beside the tracks like oversized draft beers: a playful little industrial scene from the window.",
+        "text": "Toward Tokyo, the Kirin Beer Nagoya Factory appears after Kiyosu Castle. On the Seat E side, its storage tanks line up beside the tracks like oversized draft beers: a playful little industrial scene from the window.",
         "durationSec": 17
       }
     }
@@ -583,11 +583,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "名古屋へ入る少し前、A席側に清洲城が近づきます。織田信長が天下取りを始めた城で、清洲会議の舞台でもあります。このあとキリンビール工場のタンクも続くので、この区間は短い見どころが連続します。",
+        "text": "名古屋へ入る少し前、E席側に清洲城が近づきます。織田信長が天下取りを始めた城で、清洲会議の舞台でもあります。このあとキリンビール工場のタンクも続くので、この区間は短い見どころが連続します。",
         "durationSec": 12
       },
       "en": {
-        "text": "Shortly before Nagoya, Kiyosu Castle appears close on the Seat A side. It is tied to Oda Nobunaga's rise and the famous Kiyosu Conference. The Kirin Beer Factory follows soon after, so this stretch packs several quick window discoveries together.",
+        "text": "Shortly before Nagoya, Kiyosu Castle appears close on the Seat E side. It is tied to Oda Nobunaga's rise and the famous Kiyosu Conference. The Kirin Beer Factory follows soon after, so this stretch packs several quick window discoveries together.",
         "durationSec": 19
       }
     }
@@ -605,11 +605,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側にソーラーアークが見えてきます。巨大な弧を描く建物で、かつて太陽光発電の象徴として建てられたモニュメントです。名所案内には出にくいですが、一度見つけると忘れにくい車窓です。",
+        "text": "東京方面へ向かうこのあたりでは、E席側にソーラーアークが見えてきます。巨大な弧を描く建物で、かつて太陽光発電の象徴として建てられたモニュメントです。名所案内には出にくいですが、一度見つけると忘れにくい車窓です。",
         "durationSec": 14
       },
       "en": {
-        "text": "Heading toward Tokyo, Solar Ark appears on the Seat A side. A giant solar ship, out of nowhere. After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.",
+        "text": "Heading toward Tokyo, Solar Ark appears on the Seat E side. A giant solar ship, out of nowhere. After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.",
         "durationSec": 30
       }
     }
@@ -628,12 +628,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に岐阜城が見えてきます。山の上に、小さな城。 岐阜羽島を過ぎ、木曽三川を渡る前後で、E席側の遠くに金華山が見えることがあります。その山頂にあるのが岐阜城。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に岐阜城が見えてきます。山の上に、小さな城。 岐阜羽島を過ぎ、木曽三川を渡る前後で、E席側の遠くに金華山が見えることがあります。その山頂にあるのが岐阜城。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側の遠くに金華山が見えることがあります。その山頂にあるのが岐阜城です。線路からは離れているので、晴れた日に少し集中して探してみてください。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側の遠くに金華山が見えることがあります。その山頂にあるのが岐阜城です。線路からは離れているので、晴れた日に少し集中して探してみてください。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Gifu Castle appears on the Seat A side. A tiny castle on a mountain. After Gifu-Hashima, around the Kiso Three Rivers, Mt. Kinka may be visible far away on the Seat E side.",
+        "text": "Heading toward Tokyo, Gifu Castle appears on the Seat E side. A tiny castle on a mountain. After Gifu-Hashima, around the Kiso Three Rivers, Mt. Kinka may be visible far away on the Seat E side.",
         "durationSec": 17
       }
     }
@@ -652,12 +652,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に金生山が見えてきます。消えた岐阜のピラミッド。 岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつては「岐阜のピラミッド」と呼ばれた四角錐の山頂部分が車窓から見えました。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に金生山が見えてきます。消えた岐阜のピラミッド。 岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつては「岐阜のピラミッド」と呼ばれた四角錐の山頂部分が車窓から見えました。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に金生山が見えてきます。白く削られた山肌が特徴の石灰岩の山で、かつて消えた岐阜のピラミッドとも呼ばれました。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に金生山が見えてきます。白く削られた山肌が特徴の石灰岩の山で、かつて消えた岐阜のピラミッドとも呼ばれました。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Mt. Kinsho appears on the Seat A side. The vanished Gifu pyramid. After Gifu-Hashima, near Ogaki, a pale quarried mountainside appears on the Seat E side. Mt.",
+        "text": "Heading toward Tokyo, Mt. Kinsho appears on the Seat E side. The vanished Gifu pyramid. After Gifu-Hashima, near Ogaki, a pale quarried mountainside appears on the Seat E side. Mt.",
         "durationSec": 14
       }
     }
@@ -675,11 +675,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "米原から岐阜羽島へ向かうこの区間では、A席側に伊吹山が大きく見えます。冬は雪をかぶり、関ヶ原の地形を見守るように立つ山です。東京方面へ戻る旅でも、ここは少し窓を見る価値があります。",
+        "text": "米原から岐阜羽島へ向かうこの区間では、E席側に伊吹山が大きく見えます。冬は雪をかぶり、関ヶ原の地形を見守るように立つ山です。東京方面へ戻る旅でも、ここは少し窓を見る価値があります。",
         "durationSec": 12
       },
       "en": {
-        "text": "Between Maibara and Gifu-Hashima, Mt. Ibuki stands large on the Seat A side. In winter it often wears snow, watching over the Sekigahara landscape. Even on the way back toward Tokyo, this is a stretch worth looking up for.",
+        "text": "Between Maibara and Gifu-Hashima, Mt. Ibuki stands large on the Seat E side. In winter it often wears snow, watching over the Sekigahara landscape. Even on the way back toward Tokyo, this is a stretch worth looking up for.",
         "durationSec": 18
       }
     }
@@ -698,12 +698,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に南宮大社が見えてきます。田園の向こうに、大鳥居。 東京から新大阪方面へ向かう列車では、岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに南宮大社の大鳥居が見えます。新大阪から東京方面へ向かう場合は、米原を出て関ヶ原を越えたあと、岐阜羽島へ向かう途中のA席側です。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に南宮大社が見えてきます。田園の向こうに、大鳥居。 東京から新大阪方面へ向かう列車では、岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに南宮大社の大鳥居が見えます。新大阪から東京方面へ向かう場合は、米原を出て関ヶ原を越えたあと、岐阜羽島へ向かう途中のA席側です。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に南宮大社の大鳥居が見えてきます。田園の向こうに赤い鳥居を探す、関ヶ原近くの短い車窓です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に南宮大社の大鳥居が見えてきます。田園の向こうに赤い鳥居を探す、関ヶ原近くの短い車窓です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Nangu Taisha Shrine appears on the Seat E side. A torii beyond the fields. From Tokyo toward Shin-Osaka, look from Seat A after Gifu-Hashima as the train heads toward Sekigahara. From Shin-Osaka toward Tokyo, look from Seat A after Maibara and Sekigahara, before Gifu-Hashima.",
+        "text": "Heading toward Tokyo, Nangu Taisha Shrine appears on the Seat A side. A torii beyond the fields. From Tokyo toward Shin-Osaka, look from Seat A after Gifu-Hashima as the train heads toward Sekigahara. From Shin-Osaka toward Tokyo, look from Seat A after Maibara and Sekigahara, before Gifu-Hashima.",
         "durationSec": 22
       }
     }
@@ -722,12 +722,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に佐和山城跡が見えてきます。石田三成の城跡を、田んぼ越しに。 米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に佐和山城跡が見えてきます。石田三成の城跡を、田んぼ越しに。 米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に佐和山城跡が見えてきます。石田三成の居城だった山城跡を、田んぼ越しに探す車窓です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に佐和山城跡が見えてきます。石田三成の居城だった山城跡を、田んぼ越しに探す車窓です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Sawayama Castle Ruins appears on the Seat A side. Mitsunari's hill beyond the fields. Soon after Maibara, the hill and sign for Sawayama Castle may appear on the Seat E side. This was the castle of Ishida Mitsunari, defeated at Sekigahara.",
+        "text": "Heading toward Tokyo, Sawayama Castle Ruins appears on the Seat E side. Mitsunari's hill beyond the fields. Soon after Maibara, the hill and sign for Sawayama Castle may appear on the Seat E side. This was the castle of Ishida Mitsunari, defeated at Sekigahara.",
         "durationSec": 20
       }
     }
@@ -746,12 +746,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に彦根城が見えてきます。国宝の天守を、街の向こうに。 米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。大きくはありません。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に彦根城が見えてきます。国宝の天守を、街の向こうに。 米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。大きくはありません。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に彦根城が見えてきます。国宝の天守が街の向こうに小さく見えることがあります。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に彦根城が見えてきます。国宝の天守が街の向こうに小さく見えることがあります。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Hikone Castle appears on the Seat A side. A tiny National Treasure keep. After Maibara, Hikone Castle's keep may appear small beyond the town on the Seat E side. It is not a big, obvious view; that is what makes spotting it satisfying.",
+        "text": "Heading toward Tokyo, Hikone Castle appears on the Seat E side. A tiny National Treasure keep. After Maibara, Hikone Castle's keep may appear small beyond the town on the Seat E side. It is not a big, obvious view; that is what makes spotting it satisfying.",
         "durationSec": 21
       }
     }
@@ -770,12 +770,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に観音寺城跡が見えてきます。山の稜線に、六角氏の城跡を探す。 安土の近く、E席側の山並みに観音寺城跡が見えることがあります。天守を見るスポットではなく、山城のあった稜線を探す車窓です。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に観音寺城跡が見えてきます。山の稜線に、六角氏の城跡を探す。 安土の近く、E席側の山並みに観音寺城跡が見えることがあります。天守を見るスポットではなく、山城のあった稜線を探す車窓です。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に観音寺城跡が見えてきます。六角氏の城跡があった山の稜線を探す車窓です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に観音寺城跡が見えてきます。六角氏の城跡があった山の稜線を探す車窓です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Kannonji Castle Ruins appears on the Seat A side. A castle ridge in the mountains. Near Azuchi, the ridge of Kannonji Castle may be visible on the Seat E side. This is not a keep-spotting view; it is about reading the mountain where a Sengoku-period castle once stood.",
+        "text": "Heading toward Tokyo, Kannonji Castle Ruins appears on the Seat E side. A castle ridge in the mountains. Near Azuchi, the ridge of Kannonji Castle may be visible on the Seat E side. This is not a keep-spotting view; it is about reading the mountain where a Sengoku-period castle once stood.",
         "durationSec": 24
       }
     }
@@ -794,12 +794,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に近江富士が見えてきます。琵琶湖の手前、もうひとつの富士。 米原を出てしばらくすると、A席側に三角の美しい山が見えてきます。三上山、別名・近江富士。",
+        "text": "東京方面へ向かうこのあたりでは、A席側に近江富士が見えてきます。琵琶湖の手前、もうひとつの富士。 米原を出てしばらくすると、A席側に三角の美しい山が見えてきます。三上山、別名・近江富士。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に近江富士が見えてきます。琵琶湖の手前で見える三角の美しい山、三上山です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席側に近江富士が見えてきます。琵琶湖の手前で見える三角の美しい山、三上山です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Omi Fuji appears on the Seat E side. Another Fuji, before Kyoto. After Maibara, look from Seat A for Mt. Mikami, nicknamed Omi Fuji for its clean triangular shape.",
+        "text": "Heading toward Tokyo, Omi Fuji appears on the Seat A side. Another Fuji, before Kyoto. After Maibara, look from Seat A for Mt. Mikami, nicknamed Omi Fuji for its clean triangular shape.",
         "durationSec": 15
       }
     }
@@ -818,12 +818,12 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、A席側に瀬田の唐橋が見えてきます。川に架かる、京の手前の橋。 京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えてきます。日本書紀にも登場する交通の要衝で、古くから「唐橋を制するものは天下を制する」と言われた橋。",
+        "text": "東京方面へ向かうこのあたりでは、E席側に瀬田の唐橋が見えてきます。川に架かる、京の手前の橋。 京都へ近づく少し前、E席側に瀬田川と瀬田の唐橋が見えてきます。日本書紀にも登場する交通の要衝で、古くから「唐橋を制するものは天下を制する」と言われた橋。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、A席側に瀬田の唐橋が見えてきます。瀬田川に架かる、京都の手前で探したい歴史ある橋です。"
+        "speechText": "東京方面へ向かうこのあたりでは、E席側に瀬田の唐橋が見えてきます。瀬田川に架かる、京都の手前で探したい歴史ある橋です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Seta no Karahashi Bridge appears on the Seat A side. A bridge before Kyoto. A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. It is an old strategic crossing, even appearing in early Japanese chronicles, and is linked to the idea behind the proverb 'more haste, less speed.",
+        "text": "Heading toward Tokyo, Seta no Karahashi Bridge appears on the Seat E side. A bridge before Kyoto. A little before Kyoto, Seat E may open onto the Seta River and Seta no Karahashi Bridge. It is an old strategic crossing, even appearing in early Japanese chronicles, and is linked to the idea behind the proverb 'more haste, less speed.",
         "durationSec": 27
       }
     }
@@ -841,11 +841,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "京都駅に近づくころ、E席側に東寺の五重塔が見えてきます。日本でいちばん高い木造の塔です。東京方面へ向かう人にとっては、京都の余韻を最後にもう一度見せてくれる景色です。",
+        "text": "京都駅に近づくころ、A席側に東寺の五重塔が見えてきます。日本でいちばん高い木造の塔です。東京方面へ向かう人にとっては、京都の余韻を最後にもう一度見せてくれる景色です。",
         "durationSec": 12
       },
       "en": {
-        "text": "As you approach Kyoto Station toward Tokyo, look to Seat E for To-ji's five-story pagoda, the tallest wooden tower in Japan. It is a final glimpse of Kyoto's depth before the train moves on.",
+        "text": "As you approach Kyoto Station toward Tokyo, look to Seat A for To-ji's five-story pagoda, the tallest wooden tower in Japan. It is a final glimpse of Kyoto's depth before the train moves on.",
         "durationSec": 16
       }
     }
@@ -863,11 +863,11 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "新大阪を出てしばらくすると、A席側に鳥飼車両基地が見えてきます。これから走る列車、走り終えた列車が待つ場所です。旅の表舞台ではありませんが、新幹線を支える大きな現場が一瞬ひらけます。",
+        "text": "新大阪を出てしばらくすると、E席側に鳥飼車両基地が見えてきます。これから走る列車、走り終えた列車が待つ場所です。旅の表舞台ではありませんが、新幹線を支える大きな現場が一瞬ひらけます。",
         "durationSec": 12
       },
       "en": {
-        "text": "After leaving Shin-Osaka, the Torikai Train Depot appears on the Seat A side. This is where Shinkansen trains wait before or after their runs. It is not the front stage of travel, but for a moment the system behind the journey opens up beside the tracks.",
+        "text": "After leaving Shin-Osaka, the Torikai Train Depot appears on the Seat E side. This is where Shinkansen trains wait before or after their runs. It is not the front stage of travel, but for a moment the system behind the journey opens up beside the tracks.",
         "durationSec": 21
       }
     }
