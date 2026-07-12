@@ -550,7 +550,7 @@
 
   /* ---- AI車窓実況: 事前生成した台本＋音声をETA連動で再生 ---- */
   var NARR = (typeof NARRATIONS !== "undefined" && NARRATIONS) || window.NARRATIONS || {};
-  var NARR_SRC = "narration.js?v=20260711-all-narration";
+  var NARR_SRC = "narration.js?v=20260712-live-field-fixes";
   var NARR_LEAD_SEC = 90;
   var NARR_WARMUP_SEC = 180;
   var NARR_MAX_QUEUE = 3;

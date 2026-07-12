@@ -801,8 +801,12 @@ body.live-page.is-idle #sheet {
     gap: 6px;
   }
 
+  body.live-page.is-idle #map {
+    min-height: 22dvh;
+  }
+
   body.live-page.is-idle #sheet {
-    max-height: min(64dvh, 500px);
+    max-height: min(72dvh, 560px);
   }
 
   .map-control-btn {
