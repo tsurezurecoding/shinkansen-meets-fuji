@@ -606,6 +606,7 @@ function spotPageHTML(spot, lang) {
   const refs = referencesHTML(spot, lang);
   const bodyLinks = bodyLinksHTML(spot, lang);
   const miniMap = miniMapDetailsHTML(spot, lang);
+  const pageStory = localized(spot.pageStory, lang) || data.story || "";
   const explainerData = spot.explainer;
   const explainerParas = explainerData ? (explainerData[lang] || explainerData.ja || []) : [];
   const explainer = explainerData && explainerParas.length
@@ -650,7 +651,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260711-content-cta">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260712-live-guide-ui">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -688,7 +689,7 @@ function spotPageHTML(spot, lang) {
       </dl>
       <section class="spot-page-section">
         <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
-        <p>${escapeHTML(data.story || "")}</p>
+        <p>${escapeHTML(pageStory)}</p>
 ${bodyLinks ? `        ${bodyLinks}
 ` : ""}        <p>${escapeHTML(routeNote)}</p>
 ${fujiGuideBlock.trimEnd()}
@@ -824,7 +825,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260711-content-cta">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260712-live-guide-ui">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

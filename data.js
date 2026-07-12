@@ -426,6 +426,10 @@ const SPOTS = [
     icon: "7️⃣",
     ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "727の隣に248。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。隣には黄色い「248」看板もあり、数字だけが田んぼの中に並ぶため、新幹線からは「何の広告だろう」と気になりやすい場所です。この葛原付近の727はE席側ですが、さらに進んだ用田付近や私は誰でしょう看板の隣に見えるものはA席側。727はここ以外にも沿線のA席側・E席側で複数見かけることができ、乗り慣れている人ほど「あの看板は何だろう」と気になっているかもしれません。248は西八王子のきぬた歯科の看板で、数字は「西八王子」を「に(2)・し(4)・はち(8)・おうじ」と読む語呂合わせに由来するとされています。最近は高速道路だけでなく新幹線の車窓でもよく見かけます。" },
     en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 beside 248.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. A yellow '248' sign sits nearby, so the two numbers can look wonderfully cryptic from the train. The Kuzuhara 727 is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the 'Who am I?' sign, are on Seat A. You can spot 727 signs at several places along the line, on either side depending on the location, so regular Shinkansen riders may have wondered about them for years. The 248 sign is from Kinuta Dental in Nishi-Hachioji. In Japanese number wordplay, 2 can be read as ni, 4 as shi, and 8 as hachi, so 248 reads ni-shi-hachi, echoing the opening sound of Nishi-Hachioji. Recently, it is seen not only from expressways but also from Shinkansen windows." },
+    pageStory: {
+      ja: "新横浜を出て藤沢市付近に近づいたら、まずE席側を意識してください。葛原付近では白い727看板と黄色い248看板が並び、数字だけの広告が一瞬で流れていきます。さらに用田付近などではA席側にも727看板が現れるため、このページでは代表点を葛原付近として案内しています。",
+      en: "After leaving Shin-Yokohama and approaching Fujisawa, start by watching the Seat E side. Around Kuzuhara, the white 727 sign and the yellow 248 sign sit close together and pass by quickly. Other 727 signs also appear on the Seat A side around Yoda and nearby areas, so this page uses Kuzuhara as the representative point.",
+    },
     explainer: {
       heading: { ja: "727とは？ 新幹線でおなじみの謎の看板", en: "What is the 727 sign?" },
       ja: [

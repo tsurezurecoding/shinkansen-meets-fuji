@@ -58,7 +58,10 @@
       startGps: "📍 GPSで開始",
       startDemo: "▶ デモ走行（乗らずに試す）",
       idleTitle: "乗車したら、GPSをオンに。",
-      idleDesc: "現在地から「つぎに見える車窓」を予測して、地図とカウントダウンで案内します。現在地は案内計算に使い、道草のサーバーには保存しません。",
+      idleDesc: "音声ガイドを聞きながら乗っておくと、まもなく見える景色を先に知らせます。現在地は案内計算に使い、外部サーバー等に保存しません。",
+      idleFeature1: "次に見える車窓を現在地から予測",
+      idleFeature2: "主要スポットだけ、または小ネタまで音声案内",
+      idleFeature3: "地図とカウントダウンで見逃しを防止",
       settings: "設定",
       vibL: "バイブレーション",
       wakeL: "画面をスリープさせない",
@@ -72,9 +75,9 @@
       dirOptAuto: "自動判定",
       dirOptDown: "東京 → 新大阪",
       dirOptUp: "新大阪 → 東京",
-      stop: "■ 計測を停止",
+      stop: "■ GPS案内を終了",
       close: "閉じる",
-      note: "現在地は車窓案内の計算に使います。道草のサーバーには保存しません。地図表示では外部の地図データを取得します。",
+      note: "現在地は車窓案内の計算に使います。外部サーバー等に保存しません。地図表示では外部の地図データを取得します。",
       narrTag: "AI実況",
       demoTitle: "デモ走行",
       demoDesc: "実際に乗らなくても、仮想の のぞみ に乗って動きを確認できます。",
@@ -126,7 +129,10 @@
       startGps: "📍 Start with GPS",
       startDemo: "▶ Demo run (try without riding)",
       idleTitle: "On board? Turn on GPS.",
-      idleDesc: "Predicts the next window view from your live position, with a map and countdown. Your location is used for guidance and is not stored on Michikusa servers.",
+      idleDesc: "Turn on the audio guide and ride along. It tells you what is coming up before the view passes. Your location is used for guidance and is not stored on external servers.",
+      idleFeature1: "Predicts the next view from your live position",
+      idleFeature2: "Choose key spots only, or include small curiosities",
+      idleFeature3: "Map and countdown help you avoid missing it",
       settings: "Settings",
       vibL: "Vibration",
       wakeL: "Keep screen awake",
@@ -140,9 +146,9 @@
       dirOptAuto: "Auto-detect",
       dirOptDown: "Tokyo → Shin-Osaka",
       dirOptUp: "Shin-Osaka → Tokyo",
-      stop: "■ Stop tracking",
+      stop: "■ End GPS guide",
       close: "Close",
-      note: "Your location is used for window-view guidance and is not stored on Michikusa servers. Map display loads external map data.",
+      note: "Your location is used for window-view guidance and is not stored on external servers. Map display loads external map data.",
       narrTag: "AI GUIDE",
       demoTitle: "Demo run",
       demoDesc: "Ride a virtual Nozomi to see how it works — no ticket needed.",
@@ -179,6 +185,7 @@
     narrSpotId: null,
     runStartedAt: 0,
     lastMapFollowAt: 0,
+    lastHiddenRenderAt: 0,
     suppressedDemoFirstSpotId: null,
     wakeLock: null,
     settings: loadSettings(),
@@ -309,6 +316,7 @@
   }
 
   function mapFollowIntervalMs() {
+    if (document.visibilityState === "hidden") return 15000;
     if (state.mode === "gps") return 3000;
     if (state.mode === "demo" && state.demo) {
       if (state.demo.mult <= 1) return 3000;
@@ -319,6 +327,7 @@
 
   function updateUserMarker(lat, lng, acc) {
     if (!map) return;
+    if (document.visibilityState === "hidden") return;
     if (!userMarker) {
       userMarker = L.marker([lat, lng], {
         icon: L.divIcon({ className: "", html: '<div class="user-marker pulse"></div>', iconSize: [18, 18], iconAnchor: [9, 9] }),
@@ -731,13 +740,16 @@
   }
 
   function render() {
-    syncRunControls();
+    var lightweight = document.visibilityState === "hidden";
+    if (!lightweight) syncRunControls();
     var dispSpeed = state.demo ? state.speedKmh / state.demo.mult : state.speedKmh;
-    el["tb-speed"].textContent = state.mode === "idle" ? "--" : Math.round(dispSpeed);
-    el["btn-dir"].textContent =
-      state.dirMode === "down" ? t("dirDown") :
-      state.dirMode === "up" ? t("dirUp") :
-      state.dir > 0 ? t("dirDown") : state.dir < 0 ? t("dirUp") : t("dirAuto");
+    if (!lightweight) {
+      el["tb-speed"].textContent = state.mode === "idle" ? "--" : Math.round(dispSpeed);
+      el["btn-dir"].textContent =
+        state.dirMode === "down" ? t("dirDown") :
+        state.dirMode === "up" ? t("dirUp") :
+        state.dir > 0 ? t("dirDown") : state.dir < 0 ? t("dirUp") : t("dirAuto");
+    }
     if (state.km == null) return;
     var seg = T.segmentAtKm(state.km);
     if (seg) {
@@ -769,6 +781,10 @@
     });
     ahead.sort(function (a, b) { return a.info.dist - b.info.dist; });
     var next = ahead.length ? ahead[0] : null;
+    if (lightweight) {
+      if (!state.paused) updateNarration(ahead.slice(0, 5));
+      return;
+    }
     spots.forEach(function (sp) {
       if (state.passedIds[sp.id]) return;
       setMarkerClass(sp, next && next.sp.id === sp.id ? "next" : "");
@@ -850,6 +866,7 @@
     state.paused = false;
     state.runStartedAt = Date.now();
     state.lastMapFollowAt = 0;
+    document.body.classList.remove("is-idle");
     document.getElementById("idle-panel").classList.add("hidden");
     setStatus("warn", t("locating"));
     unlockAudio();
@@ -866,6 +883,7 @@
     state.paused = false;
     state.runStartedAt = Date.now();
     state.lastMapFollowAt = 0;
+    document.body.classList.remove("is-idle");
     document.getElementById("idle-panel").classList.add("hidden");
     unlockAudio();
     if (narrationEnabled()) ensureNarrationsLoaded();
@@ -933,6 +951,7 @@
     state.narratedIds = {};
     state.runStartedAt = 0;
     state.lastMapFollowAt = 0;
+    state.lastHiddenRenderAt = 0;
     state.suppressedDemoFirstSpotId = null;
     hideAlert();
     hideNarration();
@@ -999,6 +1018,7 @@
   }
 
   function showIdle() {
+    document.body.classList.add("is-idle");
     document.getElementById("idle-panel").classList.remove("hidden");
     document.getElementById("next-card").classList.add("hidden");
     document.getElementById("upcoming").innerHTML = "";
@@ -1026,11 +1046,20 @@
   }
 
   document.addEventListener("visibilitychange", function () {
-    if (document.visibilityState === "visible" && state.mode !== "idle" && !state.paused) acquireWake();
+    if (document.visibilityState === "hidden") releaseWake();
+    if (document.visibilityState === "visible" && state.mode !== "idle" && !state.paused) {
+      acquireWake();
+      render();
+    }
   });
 
   setInterval(function () {
     if (state.mode !== "idle" && !state.paused && state.km != null && !state.offRoute) {
+      if (document.visibilityState === "hidden") {
+        var nowHidden = Date.now();
+        if (state.lastHiddenRenderAt && nowHidden - state.lastHiddenRenderAt < 15000) return;
+        state.lastHiddenRenderAt = nowHidden;
+      }
       if (state.dir && state.speedKmh > 30 && state.lastFix) {
         var age = (Date.now() - state.lastFix.t) / 3600000;
         if (age > 0.0008 && age < 0.02 && state.mode === "gps") state.km += state.dir * state.speedKmh * 0.000278;
@@ -1066,6 +1095,12 @@
     el["live-title"].textContent = t("appTitle");
     document.getElementById("idle-title").textContent = t("idleTitle");
     document.getElementById("idle-desc").textContent = t("idleDesc");
+    var idleFeatures = document.getElementById("idle-features");
+    if (idleFeatures) {
+      idleFeatures.innerHTML = [t("idleFeature1"), t("idleFeature2"), t("idleFeature3")]
+        .map(function (text) { return "<li>" + esc(text) + "</li>"; })
+        .join("");
+    }
     document.getElementById("btn-start").textContent = t("startGps");
     document.getElementById("btn-demo").textContent = t("startDemo");
     document.getElementById("btn-lang").textContent = state.lang === "ja" ? "EN" : "日本語";

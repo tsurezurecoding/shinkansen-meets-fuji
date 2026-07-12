@@ -33,7 +33,7 @@ const MSG = {
     readGuide: "ガイドを読む",
     estimateTag: "目安時間", estimateNote: "列車を選ぶと実ダイヤに切替", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
-    seatTipNote: "席側は各カードに表示します。山側も海側も、気になる景色はまとめて見られます。",
+    seatTipNote: "乗車中はライブ地図の音声ガイドがおすすめです。次に見える景色を聞きながら追えます。",
     nextupLabel: "つぎの車窓",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中は GPSライブ地図へ。現在地から次の車窓をカウントダウンで案内します。",
+    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中はGPSライブ地図へ。音声ガイドが次の車窓を先に知らせます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -126,7 +126,7 @@ const MSG = {
     readGuide: "Read guide",
     estimateTag: "Estimate times", estimateNote: "Pick a train for real timetable", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
-    seatTipNote: "Seat side appears on each card. You can browse mountain-side and sea-side views together.",
+    seatTipNote: "On board, the Live Map audio guide is the easiest way to follow the next view.",
     nextupLabel: "NEXT VIEW",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
@@ -184,7 +184,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "While riding, switch to the GPS Live Map for a countdown to the next view.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "On board, use the GPS Live Map. The audio guide tells you what is coming up.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -1310,6 +1310,17 @@ function medalProgress(set) {
 function medalLevelLabel(level) {
   return level ? t(level.labelKey) : t("medalNoMedal");
 }
+function medalIconSVG(set, progress) {
+  const percent = progress.total ? Math.round((progress.got / progress.total) * 100) : 0;
+  return `
+    <svg class="medal-svg" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
+      <circle class="medal-svg-shadow" cx="36" cy="37" r="27"></circle>
+      <circle class="medal-svg-base" cx="36" cy="35" r="27"></circle>
+      <circle class="medal-svg-progress" cx="36" cy="35" r="27" pathLength="100" stroke-dasharray="${percent} 100"></circle>
+      <circle class="medal-svg-inner" cx="36" cy="35" r="18"></circle>
+      <text class="medal-svg-mark" x="36" y="43" text-anchor="middle">${escapeHTML(set.icon)}</text>
+    </svg>`;
+}
 function renderMedalBoard() {
   const board = $("#medalBoard");
   if (!board) return;
@@ -1323,7 +1334,7 @@ function renderMedalBoard() {
         return `
           <div class="medal-card ${levelClass}" style="--medal-progress: ${percent}%;" role="img" aria-label="${escapeAttr(label)}">
             <span class="medal-title">${escapeHTML(t(set.titleKey))}</span>
-            <span class="medal-icon" aria-hidden="true">${set.icon}</span>
+            <span class="medal-icon" aria-hidden="true">${medalIconSVG(set, progress)}</span>
             <span class="medal-count">${escapeHTML(t("medalProgress", progress.got, progress.total))}</span>
           </div>`;
       }).join("")}
@@ -1349,7 +1360,10 @@ function renderStampboard() {
   if (!$("#stampboard")) return;
   $("#stampboard").innerHTML = SPOTS.map((sp) => `
     <div class="stamp${stamps[sp.id] ? " got" : ""}">
-      <span class="s-icon">${sp.icon}</span>
+      <span class="s-icon stampboard-icon">
+        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+        <span class="stampboard-fallback" hidden>${sp.icon}</span>
+      </span>
       <span class="s-name">${sp[lang].name}</span>
     </div>`).join("");
 }
