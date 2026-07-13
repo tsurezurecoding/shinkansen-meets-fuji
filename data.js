@@ -244,6 +244,13 @@ const SPOTS = [
     },
     photos: [
       {
+        src: "images/20260712_tokyo_tower_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える東京タワー", en: "Tokyo Tower from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "東京を出てすぐ、ビルの間に赤い塔", en: "A red tower between buildings just after leaving Tokyo" },
+      },
+      {
         src: "images/20260629_tokyo_tower_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える東京タワー", en: "Tokyo Tower at night from the Shinkansen" },
@@ -320,6 +327,13 @@ const SPOTS = [
     },
     photos: [
       {
+        src: "images/20260712_maruko_bridge_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える丸子橋", en: "Maruko Bridge from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "多摩川にかかる青いアーチ橋", en: "The blue arch bridge over the Tama River" },
+      },
+      {
         src: "images/20260704_maruko_bridge_2_michikusa.jpg",
         alt: { ja: "多摩川越しに見える丸子橋", en: "Maruko Bridge seen across the Tama River" },
         credit: { ja: "michikusa", en: "michikusa" },
@@ -361,6 +375,13 @@ const SPOTS = [
       note: { ja: "のぞみ27号・E席側、東京11:12発、11:26撮影", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:26." },
     },
     photos: [
+      {
+        src: "images/20260712_musashi_kosugi_towers_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える武蔵小杉のタワマン群", en: "Musashi-Kosugi towers from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "多摩川を越えたあとに立ち上がる塔の街", en: "A vertical city rising after the Tama River" },
+      },
       {
         src: "images/20260704_musashi_kosugi_towers_2_michikusa.jpg",
         alt: { ja: "新幹線のE席側から見える武蔵小杉のタワマン群", en: "Musashi-Kosugi towers from Seat E" },
@@ -675,6 +696,20 @@ const SPOTS = [
     },
     photos: [
       {
+        src: "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "港のクレーン越しに見える、ちきゅうのデリック", en: "CHIKYU's derrick beyond the port cranes" },
+      },
+      {
+        src: "images/20260712_shimizu_port_chikyu_2_michikusa.jpg",
+        alt: { ja: "新幹線から見える清水港のクレーンとちきゅう", en: "Port cranes and CHIKYU from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "清水港の工業景と、停泊中のちきゅう", en: "Shimizu Port industry with CHIKYU docked" },
+      },
+      {
         src: "images/20260629_shimizu_port_chikyu_morning_michikusa.jpg",
         alt: { ja: "朝の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU in the morning from the Shinkansen" },
         date: "2026-06-29",
@@ -723,6 +758,13 @@ const SPOTS = [
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
     photos: [
       {
+        src: "images/20260712_kakegawa_castle_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える掛川城", en: "Kakegawa Castle from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "掛川駅の近くに一瞬見える天守", en: "The castle keep appearing briefly near Kakegawa Station" },
+      },
+      {
         src: "images/20260530_kakegawa_castle.jpg",
         alt: { ja: "新幹線のE席側から見える掛川城", en: "Kakegawa Castle from Seat E" },
         credit: { ja: "michikusa", en: "michikusa" },
@@ -747,6 +789,13 @@ const SPOTS = [
       note: { ja: "掛川・浜松間、山側・E席から見えるしっぺいの三連続応援看板", en: "Three Shippei cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
     },
     photos: [
+      {
+        src: "images/20260712_genki_sign_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見えるしっぺいの応援看板", en: "Shippei cheer-up signs from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "磐田付近で見える、しっぺいの三連続応援看板", en: "Three Shippei cheer-up signs around Iwata" },
+      },
       {
         src: "images/20260704_genki_sign_michikusa.jpg",
         alt: { ja: "新幹線のE席側から遠くに見えるしっぺいの応援看板", en: "Shippei cheer-up signs seen in the distance from Seat E" },
@@ -1265,6 +1314,15 @@ const SPOTS = [
     minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 40, scene: "pagoda",
     image: "images/20260510_toji.png",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-10" },
+    photos: [
+      {
+        src: "images/20260712_toji_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える東寺 五重塔", en: "To-ji Pagoda from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-12",
+        note: { ja: "京都駅の前後で見える五重塔", en: "The five-story pagoda seen around Kyoto Station" },
+      },
+    ],
     references: [REFERENCES.toji],
     map: { lat: 34.980361, lng: 135.747694, ja: "東寺 五重塔", en: "To-ji Pagoda Kyoto" },
     viewpoint: { lat: 34.985303, lng: 135.746690 },

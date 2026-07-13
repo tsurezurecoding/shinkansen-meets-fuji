@@ -94,7 +94,7 @@
     <nav class="top-nav" aria-label="Primary">
       <a href="index.html" data-i18n="navQuick">TOP</a>
       <a href="index.html#journey" data-i18n="navStart">列車選択</a>
-      <a href="live/index.html" data-live-nav data-i18n="navLive">ライブ地図</a>
+      <a href="live/index.html" data-live-nav data-i18n="navLive">ライブガイド</a>
       <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
       <a href="guide.html" data-i18n="navFaq">FAQ</a>
       <a href="index.html#memories" data-i18n="navMedals">獲得メダル</a>
@@ -138,7 +138,7 @@
       <h2 data-i18n="setupTitle">きょうの旅を教えてください</h2>
       <p class="section-sub" data-i18n="setupSub">時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。</p>
     </div>
-    <p class="journey-live-banner"><a href="live/index.html" data-live-nav data-i18n="journeyLiveBanner">乗車中はGPSライブ地図へ。音声ガイドが次の車窓を先に知らせます。</a></p>
+    <p class="journey-live-banner"><a href="live/index.html" data-live-nav data-i18n="journeyLiveBanner">乗車中はGPSライブガイドへ。音声が次の車窓を先に知らせます。</a></p>
 
     <div class="journey-desktop-grid">
       <div class="journey-form-pane">
@@ -163,7 +163,7 @@
           </div>
           <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">この時間の列車をさがす</button>
           <div class="train-results" id="trainResults" hidden></div>
-          <p class="seat-tip" data-i18n="seatTipNote">乗車中はライブ地図の音声ガイドがおすすめです。次に見える景色を聞きながら追えます。</p>
+          <p class="seat-tip" data-i18n="seatTipNote">乗車中はライブガイドがおすすめです。次に見える景色を聞きながら追えます。</p>
         </div>
       </div>
 
@@ -183,6 +183,10 @@
               <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">すべて</button>
               <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
               <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">E席</button>
+            </div>
+            <div class="timeline-filter-group" role="group" aria-label="時間帯">
+              <button type="button" data-timeline-filter="day" data-i18n="fDay">昼景</button>
+              <button type="button" data-timeline-filter="night" data-i18n="fNight">夜景</button>
             </div>
             <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
               <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
@@ -237,8 +241,8 @@
   </footer>
 
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
-  <script src="data.js?v=20260712-live-field-fixes"></script>
+  <script src="data.js?v=20260713-photo-timeline"></script>
   <script src="track.js?v=20260707-map-mode-switch"></script>
-  <script src="app.js?v=20260712-live-guide-ui"></script>
+  <script src="app.js?v=20260713-photo-timeline"></script>
 </body>
 </html>

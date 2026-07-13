@@ -14,7 +14,7 @@ const MSG = {
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navLive: "ライブ地図", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
+    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
@@ -33,7 +33,7 @@ const MSG = {
     readGuide: "ガイドを読む",
     estimateTag: "目安時間", estimateNote: "列車を選ぶと実ダイヤに切替", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
-    seatTipNote: "乗車中はライブ地図の音声ガイドがおすすめです。次に見える景色を聞きながら追えます。",
+    seatTipNote: "乗車中はライブガイドがおすすめです。次に見える景色を聞きながら追えます。",
     nextupLabel: "つぎの車窓",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
@@ -91,7 +91,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブ地図で見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中はGPSライブ地図へ。音声ガイドが次の車窓を先に知らせます。",
+    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中はGPSライブガイドへ。音声が次の車窓を先に知らせます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -107,7 +107,7 @@ const MSG = {
     heroCtaStart: "Build my guide",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
-    navQuick: "Home", navStart: "Train Search", navLive: "Live Map", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
+    navQuick: "Home", navStart: "Train Search", navLive: "Live Guide", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
@@ -126,7 +126,7 @@ const MSG = {
     readGuide: "Read guide",
     estimateTag: "Estimate times", estimateNote: "Pick a train for real timetable", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
-    seatTipNote: "On board, the Live Map audio guide is the easiest way to follow the next view.",
+    seatTipNote: "On board, the Live Guide audio is the easiest way to follow the next view.",
     nextupLabel: "NEXT VIEW",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
@@ -184,7 +184,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Map while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "On board, use the GPS Live Map. The audio guide tells you what is coming up.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "On board, use GPS Live Guide. The audio guide tells you what is coming up.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -492,7 +492,7 @@ function miniMapDetailsHTML(spot, options = {}) {
   if (!hasCoordinates && !fallbackLink) return "";
   const title = options.summary || t("miniMapSummary");
   const liveHref = lang === "ja" ? "live/index.html" : "live/index.html";
-  const liveLabel = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
+  const liveLabel = lang === "ja" ? "乗車中はライブガイドで見る" : "Use Live Guide while riding";
   if (!hasCoordinates) {
     return `<section class="spot-static-map">
     <div class="spot-static-map-head">
@@ -619,6 +619,11 @@ function spotMediaItems(spot) {
 function activeTimeOfDayFilter() {
   if (activeGalleryFilters.has("night")) return "night";
   if (activeGalleryFilters.has("day")) return "day";
+  return "";
+}
+function activeTimelineTimeOfDayFilter() {
+  if (activeTimelineFilters.has("night")) return "night";
+  if (activeTimelineFilters.has("day")) return "day";
   return "";
 }
 function spotHasTimeOfDay(spot, timeOfDay) {
@@ -1002,7 +1007,7 @@ function timelineTrainTagHTML(train) {
 function spotItemHTML(sp, clock) {
   const L = sp[lang];
   const lowLight = journey?.mode !== "estimate" && isClearlyDark(clock);
-  const timeMode = lowLight ? "night" : "day";
+  const timeMode = activeTimelineTimeOfDayFilter() || (lowLight ? "night" : "day");
   const featuredMedia = preferredSpotMedia(sp, timeMode);
   const hasNightMedia = spotHasTimeOfDay(sp, "night");
   const lowLightLimited = lowLight && !hasNightMedia;
@@ -1133,7 +1138,7 @@ function openQuickModal(source = "hero") {
   closeQuickModal("replace");
   const modal = document.createElement("div");
   modal.className = "quick-modal";
-  const promoSrc = `promo.html?lang=${encodeURIComponent(lang)}`;
+  const promoSrc = `promo.html?v=20260712-live-guide-label&lang=${encodeURIComponent(lang)}`;
   modal.innerHTML = `
     <div class="quick-modal-backdrop" data-quick-close></div>
     <section class="quick-modal-panel" role="dialog" aria-modal="true" aria-labelledby="quick-modal-title" tabindex="-1">
@@ -1453,10 +1458,12 @@ function matchesTimelineFilters(spot) {
   if (!activeTimelineFilters.size) return true;
   const tags = galleryTags(spot);
   const selectedSeats = [...activeTimelineFilters].filter((filter) => filter === "seat-a" || filter === "seat-e");
-  const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e"].includes(filter));
+  const selectedTimes = [...activeTimelineFilters].filter((filter) => filter === "day" || filter === "night");
+  const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e", "day", "night"].includes(filter));
   const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
+  const timeMatch = !selectedTimes.length || selectedTimes.some((filter) => tags.has(filter));
   const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
-  return seatMatch && themeMatch;
+  return seatMatch && timeMatch && themeMatch;
 }
 function updateGalleryFilterButtons() {
   const hasTagFilters = [...activeGalleryFilters].some((filter) => filter !== "day" && filter !== "night");

@@ -233,7 +233,7 @@ function languageSwitchHref(lang, spotId) {
 
 function siteHeaderHTML(lang, prefix, jaHref, enHref) {
   const ui = UI[lang];
-  const homeHref = `${prefix}index.html${lang === "en" ? "?lang=en" : ""}#top`;
+  const homeHref = `${prefix}index.html${lang === "en" ? "?lang=en" : ""}`;
   const jaActive = lang === "ja" ? " active" : "";
   const enActive = lang === "en" ? " active" : "";
   return `<header class="topbar">
@@ -245,9 +245,9 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#top">${lang === "ja" ? "TOP" : "Home"}</a>
+      <a href="${homeHref}">${lang === "ja" ? "TOP" : "Home"}</a>
       <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a>
-      <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブ地図" : "Live Map"}</a>
+      <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブガイド" : "Live Guide"}</a>
       <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
       <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "獲得メダル" : "Medals"}</a>
@@ -581,6 +581,83 @@ function miniMapDetailsHTML(spot, lang) {
       </section>`;
 }
 
+function durationGuideText(spot, lang) {
+  const seconds = Number(spot.durationSec);
+  if (!Number.isFinite(seconds)) {
+    return lang === "ja"
+      ? "見える時間は列車や天候で変わります。近づいてから探すより、少し前から窓の外を追う方が見つけやすくなります。"
+      : "Visibility changes by train and weather. Start watching a little early instead of waiting until the view is already beside you.";
+  }
+  if (lang === "ja") {
+    if (seconds <= 10) return `見える時間はおよそ${seconds}秒。かなり一瞬なので、ライブガイドの案内が出たら先に窓へ目を移しておくのが現実的です。`;
+    if (seconds <= 30) return `見える時間はおよそ${seconds}秒。短い車窓なので、案内が出てからカメラを探すより、先に座席側と窓の方向を決めておくと拾いやすくなります。`;
+    if (seconds >= 120) return `見える時間はおよそ${Math.round(seconds / 60)}分前後あります。近づき始めから見え方が変わるので、写真だけでなく窓の景色の移り変わりも楽しめます。`;
+    return `見える時間はおよそ${seconds}秒。長くはありませんが、近づく前から意識していれば肉眼でも見つけやすい車窓です。`;
+  }
+  if (seconds <= 10) return `The view lasts about ${seconds} seconds. It is a blink-and-you-miss-it moment, so let Live Guide warn you before you look up.`;
+  if (seconds <= 30) return `The view lasts about ${seconds} seconds. Decide the seat side and window direction before it arrives rather than reaching for your camera late.`;
+  if (seconds >= 120) return `The view lasts roughly ${Math.round(seconds / 60)} minutes. Watch how it changes as the train approaches, not just the single photo moment.`;
+  return `The view lasts about ${seconds} seconds. It is short, but easy enough to catch if you start watching before the train reaches it.`;
+}
+
+function sceneGuideText(spot, lang, name) {
+  const scene = spot.scene || "";
+  if (lang === "ja") {
+    if (spot.category === "curious") {
+      return `${name}は、富士山や大きな城のような主役級ではなく、知っている人だけが拾えるタイプの車窓です。見つけること自体が楽しいので、旅慣れた人ほど小さな発見として効いてきます。`;
+    }
+    if (scene === "fuji" || scene === "leftfuji") return "富士山は区間によって大きさ、角度、手前の街並みが変わります。同じ富士山でも、どこで見るかで印象が変わるのが東海道新幹線らしい面白さです。";
+    if (scene === "bay" || scene === "lake") return "水辺の車窓は、建物が詰まった区間から急に視界が開けるのが魅力です。晴天だけでなく、夕方や曇天でも水面の明るさで景色の変化に気づけます。";
+    if (scene === "castle" || scene === "pagoda") return "歴史ある建物は、街の中に一瞬だけ差し込む目印として現れます。大きく眺めるというより、線路と街との距離感を味わうスポットです。";
+    if (scene === "solar") return "工場や看板の車窓は、観光名所とは違う東海道らしさがあります。移動中にしか気づきにくい沿線のランドマークとして見ると面白いタイプです。";
+    if (scene === "mountain" || scene === "hills") return "山や丘の車窓は、遠景の輪郭と手前の街並みが重なって見えます。季節や天候で印象が変わりやすく、同じ列車でも毎回少し違って見えるスポットです。";
+    return "この車窓は、駅間の短い時間をただの移動ではなく観察の時間に変えてくれます。座席側とタイミングを知っているだけで、景色の拾い方が大きく変わります。";
+  }
+  if (spot.category === "curious") {
+    return `This is not a headline landmark like Mt. Fuji or a major castle. It is the kind of small window view that feels rewarding precisely because you know where to look.`;
+  }
+  if (scene === "fuji" || scene === "leftfuji") return "Mt. Fuji changes by section: size, angle, foreground, and distance all shift along the Tokaido Shinkansen. That variety is part of the fun.";
+  if (scene === "bay" || scene === "lake") return "Water views are satisfying because the scenery suddenly opens up after dense urban sections. The surface can make the change noticeable even on cloudy days.";
+  if (scene === "castle" || scene === "pagoda") return "Historic buildings appear as brief markers inside the cityscape. The pleasure is less about a long panorama and more about catching the train's relationship with the town.";
+  if (scene === "solar") return "Factories and signs are a different kind of Tokaido landmark: not classic sightseeing, but very much part of the view from the line.";
+  if (scene === "mountain" || scene === "hills") return "Hills and mountains layer the distant outline with the towns in front of them. Weather and season change the impression from ride to ride.";
+  return "This view turns a short stretch between stations into something to watch. Knowing the seat side and timing changes how much of the journey you notice.";
+}
+
+function confidenceGuideText(spot, lang) {
+  const refs = Array.isArray(spot.references) ? spot.references.length : 0;
+  const photos = photoItems(spot, lang).length;
+  if (lang === "ja") {
+    const sourceNote = refs ? "参考リンクもあわせて確認できます。" : "写真と実車での見え方をもとに案内しています。";
+    if (spot.confidence === "verified") return `掲載写真または実車ログで確認済みのスポットです。${sourceNote}`;
+    if (spot.confidence === "source-backed") return `参考情報と写真から案内しているスポットです。実車で見るときは、前後の位置に少し幅を持って探してください。`;
+    return `位置と通過時刻は調整中です。見つけにくい場合があるので、${photos ? "写真の形を手がかりにしながら" : "周辺の地形や建物を手がかりにしながら"}少し早めに探してください。`;
+  }
+  const sourceNote = refs ? "Reference links are included where available." : "The guide is based on photos and ride checks.";
+  if (spot.confidence === "verified") return `This spot has been checked through listed photos or ride logs. ${sourceNote}`;
+  if (spot.confidence === "source-backed") return "This spot is guided from references and photos. When riding, give yourself a little margin before and after the listed timing.";
+  return `The exact position and timing are still being tuned. Use ${photos ? "the listed photos" : "nearby landforms and buildings"} as clues and start watching early.`;
+}
+
+function spotGuideDepthHTML(spot, lang) {
+  const data = spot[lang] || spot.ja || {};
+  const title = lang === "ja" ? `${data.name}を見逃さないコツ` : `How to catch ${data.name}`;
+  const seat = sideLabel(spot, lang);
+  const intro = lang === "ja"
+    ? `${data.area || "この区間"}が近づいたら、${seat}の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。`
+    : `As you approach ${data.area || "this section"}, start watching from ${seat}. Use Live Guide while riding, or the map on this page before you board.`;
+  return `<section class="spot-page-section">
+        <h2>${escapeHTML(title)}</h2>
+        <h3>${escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first")}</h3>
+        <p>${escapeHTML(intro)}</p>
+        <p>${escapeHTML(durationGuideText(spot, lang))}</p>
+        <h3>${escapeHTML(lang === "ja" ? "2. 何を面白がるか" : "2. What makes it worth watching")}</h3>
+        <p>${escapeHTML(sceneGuideText(spot, lang, data.name))}</p>
+        <h3>${escapeHTML(lang === "ja" ? "3. 確度と参考" : "3. Confidence and references")}</h3>
+        <p>${escapeHTML(confidenceGuideText(spot, lang))}</p>
+      </section>`;
+}
+
 function spotPageHTML(spot, lang) {
   const ui = UI[lang];
   const data = spot[lang] || spot.ja || {};
@@ -615,7 +692,7 @@ function spotPageHTML(spot, lang) {
         ${explainerParas.map((p) => `<p>${escapeHTML(p)}</p>`).join("\n        ")}
       </section>`
     : "";
-  const liveMapCta = lang === "ja" ? "乗車中はライブ地図で見る" : "Use Live Map while riding";
+  const liveMapCta = lang === "ja" ? "乗車中はライブガイドで見る" : "Use Live Guide while riding";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -697,10 +774,7 @@ ${fujiGuideBlock.trimEnd()}
       </section>
       ${explainer}
       ${miniMap}
-      <section class="spot-page-section">
-        <h2>${escapeHTML(ui.sectionPoint)}</h2>
-        <p>${escapeHTML(ui.pointText(data.name))}</p>
-      </section>
+      ${spotGuideDepthHTML(spot, lang)}
       ${photoGalleryHTML(spot, lang, prefix)}
       ${routeRelatedHTML(spot, lang)}
       <div class="spot-page-actions">
