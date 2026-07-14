@@ -121,6 +121,10 @@ button { font-family: inherit; cursor: pointer; }
   line-height: 1.28; font-weight: 700;
   text-shadow: 0 2px 24px rgba(0,0,0,0.35);
 }
+.hero-title-line {
+  display: block;
+  white-space: nowrap;
+}
 .hero-lead { margin: 16px auto 0; max-width: 500px; font-size: 14px; opacity: 0.92; }
 .hero-lead-line { display: inline; }
 .hero-actions {
@@ -1263,6 +1267,7 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .badge {
   font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em;
   border-radius: 99px; padding: 3px 10px;
+  white-space: nowrap;
 }
 .badge-seat-E { background: #e6eef8; color: #33567e; }
 .badge-seat-A { background: #e7f2ec; color: #2f6649; }
@@ -2567,11 +2572,9 @@ body.modal-open { overflow: hidden; }
   .hero-kicker-line { display: block; }
   .hero-kicker-sep { display: none; }
   .hero-title {
-    font-size: clamp(28px, 7.9vw, 34px);
+    font-size: clamp(30px, 8vw, 34px);
     line-height: 1.32;
-    white-space: normal;
   }
-  .hero-title-break { display: block; }
   .hero-lead { margin-top: 12px; font-size: 13px; line-height: 1.72; }
   .hero-lead-line { display: block; }
   .hero-lead-break { display: none; }

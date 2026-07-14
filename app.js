@@ -9,7 +9,7 @@ const MSG = {
     brandName: "新幹線の窓",
     brandSub: "旅の瞬間を見逃さない",
     heroKicker: "<span class=\"hero-kicker-line\">TOKAIDO SHINKANSEN</span><span class=\"hero-kicker-sep\"> · </span><span class=\"hero-kicker-line\">TOKYO ⇄ SHIN-OSAKA</span>",
-    heroTitle: "窓のむこうに、<br class=\"hero-title-break\">もうひとつの旅がある。",
+    heroTitle: "<span class=\"hero-title-line\">窓のむこうに、</span><span class=\"hero-title-line\">もうひとつの旅がある。</span>",
     heroLead: "<span class=\"hero-lead-line\">富士山も、城も、湖も海も。</span><br class=\"hero-lead-break\"><span class=\"hero-lead-line\">新幹線で「いつ・どちら側を見るか」が</span><span class=\"hero-lead-line\">わかる車窓手帖です。</span>",
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
@@ -398,7 +398,7 @@ function seatShortBadge(spot) {
   const bothSides = tags.has("seat-a") && tags.has("seat-e");
   const cls = bothSides ? "badge-seat-both" : (tags.has("seat-e") ? "badge-seat-E" : "badge-seat-A");
   const label = bothSides
-    ? (lang === "ja" ? "A席・E席" : "Seats A/E")
+    ? (lang === "ja" ? "A/E席" : "Seats A/E")
     : (tags.has("seat-e") ? t("fSeatE") : t("fSeatA"));
   return `<span class="badge ${cls}">${label}</span>`;
 }
