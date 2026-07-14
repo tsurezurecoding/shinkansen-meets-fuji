@@ -8,9 +8,9 @@ const MSG = {
   ja: {
     brandName: "新幹線の窓",
     brandSub: "旅の瞬間を見逃さない",
-    heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
+    heroKicker: "<span class=\"hero-kicker-line\">TOKAIDO SHINKANSEN</span><span class=\"hero-kicker-sep\"> · </span><span class=\"hero-kicker-line\">TOKYO ⇄ SHIN-OSAKA</span>",
     heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
-    heroLead: "富士山も、城も、湖も海も。<br>新幹線で「いつ・どちら側を見るか」がわかる車窓手帖です。",
+    heroLead: "<span class=\"hero-lead-line\">富士山も、城も、湖も海も。</span><br class=\"hero-lead-break\"><span class=\"hero-lead-line\">新幹線で「いつ・どちら側を見るか」が</span><span class=\"hero-lead-line\">わかる車窓手帖です。</span>",
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
@@ -101,7 +101,7 @@ const MSG = {
   en: {
     brandName: "Shinkansen Window",
     brandSub: "Never miss a moment of the journey.",
-    heroKicker: "TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA",
+    heroKicker: "<span class=\"hero-kicker-line\">TOKAIDO SHINKANSEN</span><span class=\"hero-kicker-sep\"> · </span><span class=\"hero-kicker-line\">TOKYO ⇄ SHIN-OSAKA</span>",
     heroTitle: "There's another journey<br>outside your window.",
     heroLead: "Fuji, castles, lakes and sea. Know when to look, and which side to watch from your Shinkansen seat.",
     heroCtaStart: "Build my guide",
