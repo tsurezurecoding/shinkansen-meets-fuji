@@ -9,7 +9,7 @@ const MSG = {
     brandName: "新幹線の窓",
     brandSub: "旅の瞬間を見逃さない",
     heroKicker: "<span class=\"hero-kicker-line\">TOKAIDO SHINKANSEN</span><span class=\"hero-kicker-sep\"> · </span><span class=\"hero-kicker-line\">TOKYO ⇄ SHIN-OSAKA</span>",
-    heroTitle: "窓のむこうに、<br>もうひとつの旅がある。",
+    heroTitle: "窓のむこうに、<br class=\"hero-title-break\">もうひとつの旅がある。",
     heroLead: "<span class=\"hero-lead-line\">富士山も、城も、湖も海も。</span><br class=\"hero-lead-break\"><span class=\"hero-lead-line\">新幹線で「いつ・どちら側を見るか」が</span><span class=\"hero-lead-line\">わかる車窓手帖です。</span>",
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
