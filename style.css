@@ -2563,10 +2563,11 @@ body.modal-open { overflow: hidden; }
   .hero-kicker-line { display: block; }
   .hero-kicker-sep { display: none; }
   .hero-title {
-    font-size: clamp(20px, 5.2vw, 24px);
-    white-space: nowrap;
+    font-size: clamp(28px, 7.9vw, 34px);
+    line-height: 1.32;
+    white-space: normal;
   }
-  .hero-title-break { display: none; }
+  .hero-title-break { display: block; }
   .hero-lead { margin-top: 12px; font-size: 13px; line-height: 1.72; }
   .hero-lead-line { display: block; }
   .hero-lead-break { display: none; }
