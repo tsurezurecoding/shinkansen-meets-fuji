@@ -245,6 +245,10 @@ button { font-family: inherit; cursor: pointer; }
   font-size: clamp(28px, 5vw, 46px);
   line-height: 1.22;
   letter-spacing: 0;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  line-break: strict;
 }
 .field-guide-hero p:last-child {
   max-width: 620px;

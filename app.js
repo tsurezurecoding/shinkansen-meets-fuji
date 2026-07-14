@@ -43,7 +43,7 @@ const MSG = {
     memEyebrow: "YOUR JOURNAL", memTitle: "車窓メダル帖",
     memSub: "「見えた!」を押すと、旅のメダルが育ちます。",
     journalGuideTitle: "メダルは進捗、スタンプは記録",
-    journalGuideBody: "見つけた景色が下のスタンプに残り、その集まりでメダルが育ちます。",
+    journalGuideBody: "見つけた景色が下のスタンプに残り、<br>その集まりでメダルが育ちます。",
     stampHeading: "スタンプ",
     medalEyebrow: "MEDALS",
     medalSummary: "集めた景色の進み具合",
@@ -65,7 +65,7 @@ const MSG = {
     medalTargets: "対象スポット",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "37の車窓スポットを一覧できます。見つけた景色は「見えた!」で記録できます。",
+    galSub: "37の車窓スポットを一覧できます。<br>見つけた景色は「見えた!」で記録できます。",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
@@ -390,6 +390,16 @@ function seatBadge(spot) {
     ? "badge-seat-both"
     : (spot.side === "E" ? "badge-seat-E" : "badge-seat-A");
   const label = spot.sideLabel?.[lang] || (spot.side === "E" ? t("seatE") : t("seatA"));
+  return `<span class="badge ${cls}">${label}</span>`;
+}
+function seatShortBadge(spot) {
+  if (!spot.side) return "";
+  const tags = seatTags(spot);
+  const bothSides = tags.has("seat-a") && tags.has("seat-e");
+  const cls = bothSides ? "badge-seat-both" : (tags.has("seat-e") ? "badge-seat-E" : "badge-seat-A");
+  const label = bothSides
+    ? (lang === "ja" ? "A席・E席" : "Seats A/E")
+    : (tags.has("seat-e") ? t("fSeatE") : t("fSeatA"));
   return `<span class="badge ${cls}">${label}</span>`;
 }
 function catBadge(spot) {
@@ -1011,9 +1021,6 @@ function spotItemHTML(sp, clock) {
   const featuredMedia = preferredSpotMedia(sp, timeMode);
   const hasNightMedia = spotHasTimeOfDay(sp, "night");
   const lowLightLimited = lowLight && !hasNightMedia;
-  const lowLightBadge = lowLight
-    ? `<span class="badge ${hasNightMedia ? "badge-night" : "badge-lowlight"}">${escapeHTML(t(hasNightMedia ? "nightPhotoAvailable" : "lowLightLimited"))}</span>`
-    : "";
   const time = clock == null
     ? `<span class="tl-time-big">✦</span>`
     : `<span class="tl-time-big">${minToClock(clock)}<span class="tl-time-suffix">頃</span></span>`;
@@ -1029,7 +1036,7 @@ function spotItemHTML(sp, clock) {
                 <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
               </div>
               <div class="spot-card-footer">
-                <div class="tl-meta">${seatBadge(sp)}${catBadge(sp)}${lowLightBadge}${clock == null ? `<span class="badge badge-lucky">${t("anytime")}</span>` : ""}</div>
+                <div class="tl-meta">${seatShortBadge(sp)}</div>
                 <button type="button" class="spot-btn spot-card-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
               </div>
             </div>
