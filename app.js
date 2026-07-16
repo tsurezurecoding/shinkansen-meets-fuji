@@ -728,6 +728,7 @@ function applyLang() {
     if (typeof v === "string") el.innerHTML = v;
   });
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+  $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/guide.html" : "guide.html"));
   $$("[data-live-nav]").forEach((link) => link.setAttribute("href", liveMapHref()));
   $$("[data-live-nav-link]").forEach((link) => link.setAttribute("href", liveMapHref()));
   renderMedalBoard();

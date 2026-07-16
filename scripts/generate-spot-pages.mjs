@@ -937,6 +937,7 @@ function guideHTML(lang) {
 function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
+    { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
