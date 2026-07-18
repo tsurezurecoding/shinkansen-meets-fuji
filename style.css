@@ -760,6 +760,17 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   border-radius: 14px;
   background: #f7fbff;
 }
+.spot-leaflet-map {
+  position: relative;
+  z-index: 0;
+}
+.spot-leaflet-map-error {
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: var(--ink-soft);
+  text-align: center;
+}
 .spot-mini-map-details summary {
   cursor: pointer;
   list-style: none;

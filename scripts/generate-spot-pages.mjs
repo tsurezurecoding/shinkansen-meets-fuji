@@ -589,15 +589,17 @@ function durationGuideText(spot, lang) {
       : "Visibility changes by train and weather. Start watching a little early instead of waiting until the view is already beside you.";
   }
   if (lang === "ja") {
-    if (seconds <= 10) return `見える時間はおよそ${seconds}秒。かなり一瞬なので、ライブガイドの案内が出たら先に窓へ目を移しておくのが現実的です。`;
-    if (seconds <= 30) return `見える時間はおよそ${seconds}秒。短い車窓なので、案内が出てからカメラを探すより、先に座席側と窓の方向を決めておくと拾いやすくなります。`;
-    if (seconds >= 120) return `見える時間はおよそ${Math.round(seconds / 60)}分前後あります。近づき始めから見え方が変わるので、写真だけでなく窓の景色の移り変わりも楽しめます。`;
-    return `見える時間はおよそ${seconds}秒。長くはありませんが、近づく前から意識していれば肉眼でも見つけやすい車窓です。`;
+    if (seconds <= 2) return "はっきり見えるのは1〜2秒ほど。ライブガイドの案内が出たら、先に窓へ目を移しておくのが現実的です。";
+    if (seconds <= 8) return "はっきり見えるのは数秒ほど。案内が出てからカメラを探すより、先に座席側と窓の方向を決めておくと拾いやすくなります。";
+    if (seconds <= 12) return "見えるのは10秒前後。先に座席側と窓の方向を決めておくと、景色の始まりから追いやすくなります。";
+    if (seconds <= 20) return "見えるのは10数秒ほど。建物や地形で隠れることがあるため、少し前から窓を見ておくと拾いやすくなります。";
+    return "この景観は区間の中で断続的に見えます。建物や地形で隠れるため、表示時間は連続して見える秒数ではなく、探し始める区間の目安です。";
   }
-  if (seconds <= 10) return `The view lasts about ${seconds} seconds. It is a blink-and-you-miss-it moment, so let Live Guide warn you before you look up.`;
-  if (seconds <= 30) return `The view lasts about ${seconds} seconds. Decide the seat side and window direction before it arrives rather than reaching for your camera late.`;
-  if (seconds >= 120) return `The view lasts roughly ${Math.round(seconds / 60)} minutes. Watch how it changes as the train approaches, not just the single photo moment.`;
-  return `The view lasts about ${seconds} seconds. It is short, but easy enough to catch if you start watching before the train reaches it.`;
+  if (seconds <= 2) return "The clearest view lasts only one or two seconds. Let Live Guide warn you before you look up.";
+  if (seconds <= 8) return "The clearest view lasts only a few seconds. Decide the seat side and window direction before it arrives rather than reaching for your camera late.";
+  if (seconds <= 12) return "The view lasts around 10 seconds. Choose the seat side and window direction early so you can follow it from the start.";
+  if (seconds <= 20) return "The view lasts roughly 10 to 20 seconds, though buildings and terrain may interrupt it. Start watching a little early.";
+  return "This wider view appears intermittently through the section. Buildings and terrain may block it, so the timing is a guide for when to start looking, not a continuous visibility claim.";
 }
 
 function sceneGuideText(spot, lang, name) {
@@ -624,21 +626,6 @@ function sceneGuideText(spot, lang, name) {
   return "This view turns a short stretch between stations into something to watch. Knowing the seat side and timing changes how much of the journey you notice.";
 }
 
-function confidenceGuideText(spot, lang) {
-  const refs = Array.isArray(spot.references) ? spot.references.length : 0;
-  const photos = photoItems(spot, lang).length;
-  if (lang === "ja") {
-    const sourceNote = refs ? "参考リンクもあわせて確認できます。" : "写真と実車での見え方をもとに案内しています。";
-    if (spot.confidence === "verified") return `掲載写真または実車ログで確認済みのスポットです。${sourceNote}`;
-    if (spot.confidence === "source-backed") return `参考情報と写真から案内しているスポットです。実車で見るときは、前後の位置に少し幅を持って探してください。`;
-    return `位置と通過時刻は調整中です。見つけにくい場合があるので、${photos ? "写真の形を手がかりにしながら" : "周辺の地形や建物を手がかりにしながら"}少し早めに探してください。`;
-  }
-  const sourceNote = refs ? "Reference links are included where available." : "The guide is based on photos and ride checks.";
-  if (spot.confidence === "verified") return `This spot has been checked through listed photos or ride logs. ${sourceNote}`;
-  if (spot.confidence === "source-backed") return "This spot is guided from references and photos. When riding, give yourself a little margin before and after the listed timing.";
-  return `The exact position and timing are still being tuned. Use ${photos ? "the listed photos" : "nearby landforms and buildings"} as clues and start watching early.`;
-}
-
 function spotGuideDepthHTML(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const title = lang === "ja" ? `${data.name}を見逃さないコツ` : `How to catch ${data.name}`;
@@ -651,10 +638,8 @@ function spotGuideDepthHTML(spot, lang) {
         <h3>${escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first")}</h3>
         <p>${escapeHTML(intro)}</p>
         <p>${escapeHTML(durationGuideText(spot, lang))}</p>
-        <h3>${escapeHTML(lang === "ja" ? "2. 何を面白がるか" : "2. What makes it worth watching")}</h3>
-        <p>${escapeHTML(sceneGuideText(spot, lang, data.name))}</p>
-        <h3>${escapeHTML(lang === "ja" ? "3. 確度と参考" : "3. Confidence and references")}</h3>
-        <p>${escapeHTML(confidenceGuideText(spot, lang))}</p>
+        <h3>${escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights")}</h3>
+        <p>${escapeHTML(localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name))}</p>
       </section>`;
 }
 
@@ -662,10 +647,10 @@ function spotPageHTML(spot, lang) {
   const ui = UI[lang];
   const data = spot[lang] || spot.ja || {};
   const otherLang = lang === "ja" ? "en" : "ja";
-  const title = lang === "ja"
+  const title = localized(spot.pageTitle, lang) || (lang === "ja"
     ? `${data.name}はいつ見える？座席側は？ ${data.area}${ui.titleSuffix}`
-    : `When can you see ${data.name} from the Shinkansen? ${data.area} | Shinkansen Window`;
-  const desc = description(spot, lang);
+    : `When can you see ${data.name} from the Shinkansen? ${data.area} | Shinkansen Window`);
+  const desc = localized(spot.metaDescription, lang) || description(spot, lang);
   const url = pageUrl(lang, spot.id);
   const prefix = lang === "ja" ? "../" : "../../";
   const appUrl = appHref(lang, spot.id, prefix);
@@ -748,7 +733,7 @@ function spotPageHTML(spot, lang) {
   <main>
     <article class="spot-page-article">
       <p class="eyebrow">${escapeHTML(ui.eyebrow)}</p>
-      <h1>${escapeHTML(ui.titleQuestion(data.name))}</h1>
+      <h1>${escapeHTML(localized(spot.pageHeading, lang) || ui.titleQuestion(data.name))}</h1>
       <p class="spot-page-lead">${escapeHTML(data.hook || "")}</p>
       <div class="spot-page-actions spot-page-actions-top">
         <a class="btn btn-primary" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.searchCta)}</a>
@@ -765,7 +750,7 @@ function spotPageHTML(spot, lang) {
         <div><dt>${escapeHTML(ui.facts[3])}</dt><dd>${photoCount} ${escapeHTML(ui.photoUnit)}</dd></div>
       </dl>
       <section class="spot-page-section">
-        <h2>${escapeHTML(ui.sectionHow(data.name))}</h2>
+        <h2>${escapeHTML(localized(spot.sectionHeading, lang) || ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(pageStory)}</p>
 ${bodyLinks ? `        ${bodyLinks}
 ` : ""}        <p>${escapeHTML(routeNote)}</p>

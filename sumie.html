@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>墨絵車窓 — のぞみ、西へ | 新幹線の窓</title>
+<meta name="description" content="東海道新幹線 東京—新大阪 552.6kmの車窓を、すべてプロシージャル描画の墨絵で。スポット通過ごとに車窓スタンプが押される鑑賞ページ。">
+<meta name="robots" content="noindex,follow">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; overflow:hidden; background:#ece3d0;
+    font-family:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho","YuMincho",serif; }
+  canvas#cv { display:block; }
+
+  /* 掛け軸の銘 (右上・縦書き) */
+  #scroll {
+    position:fixed; top:38px; right:44px; z-index:5; pointer-events:none;
+    writing-mode:vertical-rl; text-orientation:upright;
+    color:#3a3630; letter-spacing:.32em; line-height:2.1;
+    display:flex; flex-direction:row-reverse; gap:10px;
+  }
+  #sTitle  { font-size:clamp(17px,2.3vw,27px); }
+  #sSect   { font-size:clamp(11px,1.3vw,15px); color:#6b6459; }
+  #sKm     { font-size:clamp(10px,1.1vw,13px); color:#8d8578; letter-spacing:.25em; }
+  #hanko {
+    position:fixed; top:calc(38px + 13.5em); right:50px; z-index:5;
+    width:30px; height:30px; background:#b3272d; color:#f3ead9;
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px; border-radius:4px; pointer-events:none;
+    box-shadow:0 0 0 1px rgba(179,39,45,.3);
+  }
+
+  /* 通過スポットの詞書 (左・縦書き) */
+  #caption {
+    position:fixed; left:36px; top:64px; z-index:5; pointer-events:none;
+    writing-mode:vertical-rl; text-orientation:upright;
+    font-size:clamp(15px,1.9vw,22px); letter-spacing:.4em; line-height:2;
+    color:#3a3630; opacity:0; transition:opacity 1.4s ease;
+    max-height:70vh;
+  }
+  #caption .sub { font-size:.6em; color:#8d8578; margin-right:8px; letter-spacing:.3em; }
+
+  /* スタンプ帖 (下段) */
+  #tray {
+    position:fixed; left:28px; bottom:52px; z-index:6;
+    display:flex; gap:8px; align-items:flex-end; flex-wrap:wrap; max-width:62vw;
+  }
+  .stamp { width:62px; height:62px; cursor:pointer;
+    animation:oshin .55s cubic-bezier(.2,1.6,.4,1) both;
+    filter:drop-shadow(0 1px 1px rgba(58,54,48,.15)); }
+  .stamp svg { width:100%; height:100%; }
+  @keyframes oshin {
+    0%   { transform:scale(2.1) rotate(-10deg); opacity:0; }
+    55%  { transform:scale(.92) rotate(var(--rot)); opacity:1; }
+    100% { transform:scale(1) rotate(var(--rot)); opacity:.92; }
+  }
+  #big { position:fixed; inset:0; z-index:30; display:none;
+    align-items:center; justify-content:center; background:rgba(236,227,208,.88);
+    cursor:pointer; }
+  #big svg { width:min(64vmin,420px); height:min(64vmin,420px);
+    filter:drop-shadow(0 2px 6px rgba(58,54,48,.2)); }
+
+  /* 行程 (下端の路線) */
+  #route { position:fixed; left:24px; right:24px; bottom:22px; height:14px; z-index:5; pointer-events:none; }
+  #route .line { position:absolute; left:0; right:0; top:6px; height:1px; background:rgba(58,54,48,.35); }
+  #route .tick { position:absolute; top:3px; width:1px; height:7px; background:rgba(58,54,48,.4); }
+  #route .tick.major { top:1px; height:11px; width:2px; }
+  #train { position:absolute; top:-1px; width:9px; height:15px; margin-left:-5px;
+    background:#b3272d; border-radius:5px 5px 2px 2px; opacity:.85; }
+
+  /* 速度 (右下・縦書き) */
+  #modes { position:fixed; right:40px; bottom:44px; z-index:6; display:flex; gap:14px; }
+  #modes button {
+    writing-mode:vertical-rl; text-orientation:upright;
+    background:none; border:none; cursor:pointer;
+    font-family:inherit; font-size:13px; letter-spacing:.35em;
+    color:#8d8578; padding:6px 2px; line-height:1.4;
+    border-right:1px solid transparent;
+  }
+  #modes button.on { color:#b3272d; border-right:1px solid #b3272d; }
+
+  #home { position:fixed; left:32px; top:24px; z-index:7;
+    font-size:11px; letter-spacing:.3em; color:#8d8578; text-decoration:none; }
+  #home:hover { color:#b3272d; }
+  #hint { position:fixed; left:32px; bottom:44px; z-index:4; pointer-events:none;
+    font-size:10px; letter-spacing:.4em; color:#8d8578; transition:opacity 3s ease; }
+
+  #intro { position:fixed; inset:0; z-index:20; background:#ece3d0;
+    display:flex; align-items:center; justify-content:center;
+    animation:fadeIntro 4.6s ease forwards; pointer-events:none; }
+  #intro div { writing-mode:vertical-rl; text-orientation:upright;
+    font-size:clamp(18px,2.8vw,32px); letter-spacing:.5em; color:#3a3630; }
+
+  /* 終点 */
+  #fin { position:fixed; inset:0; z-index:15; background:#ece3d0;
+    display:flex; align-items:center; justify-content:center; gap:46px;
+    opacity:0; pointer-events:none; transition:opacity 2.4s ease; }
+  #fin.show { opacity:1; }
+  #fin .t { writing-mode:vertical-rl; text-orientation:upright;
+    font-size:clamp(22px,3.4vw,40px); letter-spacing:.5em; color:#3a3630; line-height:2; }
+  #fin .t small { font-size:.45em; color:#8d8578; letter-spacing:.35em; }
+  #fin .kan { width:120px; height:120px; }
+  @keyframes fadeIntro { 0%{opacity:1} 55%{opacity:1} 100%{opacity:0; visibility:hidden} }
+</style>
+</head>
+<body>
+<div id="intro"><div>車窓は、山水である。</div></div>
+<div id="scroll">
+  <div id="sTitle">墨絵車窓</div>
+  <div id="sSect"></div>
+  <div id="sKm"></div>
+</div>
+<div id="hanko">窓</div>
+<div id="caption"></div>
+<div id="tray"></div>
+<div id="big"></div>
+<div id="route"><div class="line"></div><div id="train"></div></div>
+<div id="modes">
+  <button data-m="kodama">こだま</button>
+  <button data-m="hikari">ひかり</button>
+  <button data-m="nozomi" class="on">のぞみ</button>
+</div>
+<a id="home" href="index.html">← 新幹線の窓</a>
+<div id="hint">東京から新大阪へ ・ 五五二・六粁の墨絵 ・ スポット通過で押印</div>
+<div id="fin"></div>
+<canvas id="cv"></canvas>
+
+<script>
+(function(){
+"use strict";
+
+/* ============ 定数 ============ */
+var ROUTE = 552.6;
+var INKC  = "47,43,38";          // 墨
+var RED   = "#b3272d";
+var STATIONS = [["東京",0],["品川",6.8],["新横浜",28.8],["小田原",83.9],["熱海",104.6],
+  ["三島",120.7],["新富士",146.2],["静岡",180.2],["掛川",229.3],["浜松",257.1],
+  ["豊橋",293.6],["三河安城",336.3],["名古屋",366.0],["岐阜羽島",396.3],
+  ["米原",445.9],["京都",513.6],["新大阪",552.6]];
+var MAJOR = {"東京":1,"品川":1,"新横浜":1,"名古屋":1,"京都":1,"新大阪":1};
+var SEAS    = [[97,118],[247,265]];                       // 相模湾・浜名湖
+var TUNNELS = [[92.5,95],[98.5,101],[106,110],[113.5,116.5],[168,170.5],[505,507.5]];
+var RIVERS  = [[14.2,"多摩川"],[152.5,"富士川"],[210.5,"大井川"],[244.5,"天竜川"],[402,"木曽川"]];
+var SNOW    = [412,450];
+var MODES   = { kodama:1.35, hikari:2.2, nozomi:3.3 };    // km/s (圧縮時間)
+
+/* ============ スタンプ意匠 (二重円形枠・単色・線画・情報刻印) ============ */
+var INK  = { classic:"#b83a2a", notable:"#2b4a73", curious:"#3d6b4f" };
+var FONT = "'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif";
+
+function fujiOutline(cx, base, w, h, sw){
+  sw = sw || 3;
+  return '<path d="M'+(cx-w/2)+' '+base+' L'+(cx-w*0.12)+' '+(base-h)+' L'+(cx-w*0.05)+' '+(base-h*0.82)+
+    ' L'+cx+' '+(base-h)+' L'+(cx+w*0.05)+' '+(base-h*0.82)+' L'+(cx+w*0.12)+' '+(base-h)+
+    ' L'+(cx+w/2)+' '+base+'" fill="none" stroke-width="'+sw+'"/>'+
+    '<path d="M'+(cx-w*0.2)+' '+(base-h*0.68)+' l'+(w*0.07)+' '+(h*0.1)+' l'+(w*0.06)+' -'+(h*0.12)+
+    ' l'+(w*0.07)+' '+(h*0.12)+' l'+(w*0.06)+' -'+(h*0.12)+' l'+(w*0.07)+' '+(h*0.12)+
+    ' l'+(w*0.07)+' -'+(h*0.1)+'" fill="none" stroke-width="'+(sw*0.7)+'"/>';
+}
+function castleP(x, y, s){
+  s = s || 1;
+  return '<g stroke-width="2.5" fill="none">'+
+  '<path d="M'+(x-26*s)+' '+y+' L'+(x-20*s)+' '+(y-16*s)+' H'+(x+20*s)+' L'+(x+26*s)+' '+y+'"/>'+
+  '<path d="M'+(x-24*s)+' '+(y-16*s)+' Q'+x+' '+(y-26*s)+' '+(x+24*s)+' '+(y-16*s)+'"/>'+
+  '<rect x="'+(x-14*s)+'" y="'+(y-34*s)+'" width="'+(28*s)+'" height="'+(18*s)+'"/>'+
+  '<path d="M'+(x-20*s)+' '+(y-34*s)+' Q'+x+' '+(y-44*s)+' '+(x+20*s)+' '+(y-34*s)+'"/>'+
+  '<rect x="'+(x-9*s)+'" y="'+(y-48*s)+'" width="'+(18*s)+'" height="'+(14*s)+'"/>'+
+  '<path d="M'+(x-15*s)+' '+(y-48*s)+' Q'+x+' '+(y-58*s)+' '+(x+15*s)+' '+(y-48*s)+'"/>'+
+  '<path d="M'+(x-4*s)+' '+(y-58*s)+' L'+x+' '+(y-63*s)+' L'+(x+4*s)+' '+(y-58*s)+'"/></g>';
+}
+function wavesP(cx, y, w, n, sw){
+  n = n || 3; sw = sw || 2;
+  var d = "", seg = w/n;
+  for (var i=0;i<n;i++) d += 'M'+(cx-w/2+i*seg)+' '+y+' q'+(seg/4)+' -7 '+(seg/2)+' 0 ';
+  return '<path d="'+d+'" fill="none" stroke-width="'+sw+'"/>';
+}
+function toriiP(cx, base, s){
+  s = s || 1;
+  return '<g stroke-width="'+(3*s)+'" fill="none">'+
+  '<path d="M'+(cx-16*s)+' '+base+' L'+(cx-13*s)+' '+(base-30*s)+' M'+(cx+16*s)+' '+base+' L'+(cx+13*s)+' '+(base-30*s)+'"/>'+
+  '<path d="M'+(cx-22*s)+' '+(base-30*s)+' Q'+cx+' '+(base-36*s)+' '+(cx+22*s)+' '+(base-30*s)+'"/>'+
+  '<path d="M'+(cx-19*s)+' '+(base-24*s)+' H'+(cx+19*s)+'"/>'+
+  '<path d="M'+cx+' '+(base-30*s)+' V'+(base-24*s)+'"/></g>';
+}
+
+var STAMPS = {
+  "tokyo-tower": { name:"東京タワー", min:3, seat:"E席", cat:"classic", motif:
+    '<g fill="none" stroke-width="2.5">'+
+    '<path d="M74 140 C86 112 94 96 97 62 M126 140 C114 112 106 96 103 62"/>'+
+    '<path d="M97 62 L100 50 L103 62"/><path d="M100 50 V40"/>'+
+    '<path d="M88 92 H112 M82 114 H118 M76 134 H124"/>'+
+    '<path d="M88 92 L118 114 M112 92 L82 114"/></g>' },
+  "kosugi-towers": { name:"武蔵小杉のタワマン群", min:9, seat:"E席", cat:"notable", motif:
+    '<g fill="none" stroke-width="2.2">'+
+    '<rect x="64" y="84" width="20" height="56"/><rect x="90" y="68" width="22" height="72"/>'+
+    '<rect x="118" y="92" width="18" height="48"/>'+
+    '<path d="M96 80 H106 M96 92 H106 M96 104 H106 M96 116 H106 M70 96 H78 M70 110 H78 M123 104 H131 M123 118 H131"/>'+
+    '<path d="M56 140 H146"/></g>' },
+  "sagami-fuji": { name:"相模平野の富士山", min:27, seat:"E席", cat:"notable", motif:
+    '<path d="M40 118 Q60 100 76 112" fill="none" stroke-width="2.5"/>'+
+    '<path d="M124 112 Q142 98 160 116" fill="none" stroke-width="2.5"/>'+
+    fujiOutline(100,110,52,34,2.5)+
+    '<path d="M52 128 H82 M92 128 H128 M64 138 H136" fill="none" stroke-width="1.8"/>' },
+  "odawara-castle": { name:"小田原城", min:31, seat:"A席", cat:"notable", motif:
+    castleP(100,138,1.3)+'<path d="M58 138 H142" fill="none" stroke-width="2"/>' },
+  "atami-bay": { name:"熱海と相模湾", min:36, seat:"A席", cat:"classic", motif:
+    '<circle cx="136" cy="72" r="10" fill="none" stroke-width="2.5"/>'+
+    '<path d="M44 84 Q70 92 82 108 Q94 124 92 140" fill="none" stroke-width="2.5"/>'+
+    wavesP(122,112,60)+wavesP(116,128,72)+
+    '<path d="M56 100 h7 M64 112 h7 M52 118 h7" stroke-width="2" fill="none"/>' },
+  "fuji": { name:"富士山", min:43, seat:"E席", cat:"classic", motif:
+    fujiOutline(100,136,118,62,3)+
+    '<path d="M52 118 h26 M126 112 h24" fill="none" stroke-width="1.8"/>' },
+  "hamana-lake": { name:"浜名湖の鳥居", min:77, seat:"A席", cat:"notable", motif:
+    toriiP(100,112,1.5)+wavesP(100,126,84,4)+wavesP(100,138,64,3)+
+    '<path d="M44 96 q10 -8 20 0 M136 92 q10 -8 20 0" fill="none" stroke-width="1.8"/>' },
+  "nagoya": { name:"名古屋の高層ビル群", min:94, seat:"E席", cat:"notable", motif:
+    '<g fill="none" stroke-width="2.2">'+
+    '<path d="M70 140 V78 Q80 68 90 78 V140"/>'+
+    '<path d="M104 140 V72 Q114 62 124 72 V140"/>'+
+    '<path d="M76 90 H84 M76 102 H84 M76 114 H84 M110 84 H118 M110 96 H118 M110 108 H118 M110 120 H118"/>'+
+    '<rect x="132" y="104" width="14" height="36"/><rect x="54" y="110" width="12" height="30"/>'+
+    '<path d="M46 140 H154"/></g>' },
+  "sekigahara": { name:"関ヶ原の雪", min:106, seat:"E席", cat:"curious", motif:
+    '<path d="M40 128 L72 92 L92 112 L116 82 L142 110 L160 128" fill="none" stroke-width="2.5"/>'+
+    '<path d="M64 101 l8 8 M108 92 l8 8" fill="none" stroke-width="1.6"/>'+
+    '<g stroke-width="1.8" fill="none">'+
+    '<path d="M70 64 v12 M64 70 h12 M66 66 l8 8 M74 66 l-8 8"/>'+
+    '<path d="M126 56 v12 M120 62 h12 M122 58 l8 8 M130 58 l-8 8"/>'+
+    '<path d="M98 70 v9 M93.5 74.5 h9"/></g>'+
+    '<path d="M52 138 H148" fill="none" stroke-width="1.8"/>' },
+  "toji": { name:"東寺の五重塔", min:128, seat:"A席", cat:"classic", motif:
+    '<g fill="none" stroke-width="2.2">'+
+    '<path d="M100 42 V56 M96 46 h8 M97 52 h6"/>'+
+    '<path d="M78 70 Q100 62 122 70 L116 70 M84 70 L78 70"/>'+
+    '<path d="M86 70 V78 H114 V70 M80 88 Q100 80 120 88 M86 88 V96 H114 V88"/>'+
+    '<path d="M78 106 Q100 98 122 106 M84 106 V114 H116 V106"/>'+
+    '<path d="M76 124 Q100 116 124 124 M82 124 V132 H118 V124"/>'+
+    '<path d="M72 142 Q100 134 128 142 M64 142 H136"/></g>' },
+  "shin-osaka": { name:"終点 新大阪", min:147, seat:"E席", cat:"classic", motif:
+    '<text x="100" y="122" text-anchor="middle" font-size="58" font-weight="500" '+
+    'font-family="'+FONT+'" stroke="none">完</text>'+
+    '<path d="M62 134 H138" fill="none" stroke-width="2"/>' }
+};
+
+function stampSVG(id){
+  var s = STAMPS[id], ink = INK[s.cat];
+  var ns = s.name.length > 7 ? 12 : 14;
+  return '<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">'+
+    '<g stroke="'+ink+'" fill="none">'+
+    '<circle cx="100" cy="102" r="90" stroke-width="3.5"/>'+
+    '<circle cx="100" cy="102" r="82" stroke-width="1.2"/></g>'+
+    '<text x="100" y="56" text-anchor="middle" font-family="'+FONT+'" font-size="'+ns+'" fill="'+ink+'">'+s.name+'</text>'+
+    '<g stroke="'+ink+'" fill="'+ink+'">'+s.motif+'</g>'+
+    '<text x="100" y="160" text-anchor="middle" font-family="'+FONT+'" font-size="10.5" fill="'+ink+'">東京から 約'+s.min+'分・'+s.seat+'</text>'+
+    '</svg>';
+}
+
+/* ============ 行程イベント ============ */
+var EVENTS = [
+  { km:2.5,   name:"東京タワー",           stamp:"tokyo-tower" },
+  { km:13.9,  name:"多摩川を渡る",         stamp:null },
+  { km:16,    name:"武蔵小杉のタワマン群", stamp:"kosugi-towers" },
+  { km:55,    name:"相模平野の富士山",     stamp:"sagami-fuji" },
+  { km:83.9,  name:"小田原城",             stamp:"odawara-castle" },
+  { km:103,   name:"熱海と相模湾",         stamp:"atami-bay" },
+  { km:139,   name:"富士山",               stamp:"fuji" },
+  { km:152.5, name:"富士川を渡る",         stamp:null },
+  { km:186,   name:"静岡の茶畑",           stamp:null },
+  { km:256,   name:"浜名湖の鳥居",         stamp:"hamana-lake" },
+  { km:364,   name:"名古屋の高層ビル群",   stamp:"nagoya" },
+  { km:428,   name:"関ヶ原の雪",           stamp:"sekigahara" },
+  { km:512,   name:"東寺の五重塔",         stamp:"toji" }
+];
+
+/* ============ 状態 ============ */
+var cv = document.getElementById("cv"), ctx = cv.getContext("2d");
+var W, H, HORIZ, DPR, paperPat = null;
+var km = 0, evIdx = 0, mode = "nozomi", ended = false, endT = 0;
+var lastT = 0, elapsed = 0;
+
+function hash(n){ var x = Math.sin(n*127.1+311.7)*43758.5453; return x - Math.floor(x); }
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function smoothstep(a,b,v){ var t = clamp((v-a)/(b-a),0,1); return t*t*(3-2*t); }
+function ink(a){ return "rgba("+INKC+","+a+")"; }
+function paper(a){ return "rgba(236,227,208,"+a+")"; }
+
+/* 区間 0..1 因子 */
+function rangeFactor(ranges, k, fade){
+  fade = fade || 2.5;
+  for (var i=0;i<ranges.length;i++){
+    var a = ranges[i][0], b = ranges[i][1];
+    if (k > a-fade && k < b+fade)
+      return Math.min(smoothstep(a-fade,a,k), 1-smoothstep(b,b+fade,k));
+  }
+  return 0;
+}
+function tunnelFactor(k){ return rangeFactor(TUNNELS, k, 0.35); }
+function seaFactor(k){ return rangeFactor(SEAS, k, 3); }
+function snowFactor(k){ return rangeFactor([SNOW], k, 8); }
+
+/* ============ 紙 ============ */
+function makePaper(){
+  var c = document.createElement("canvas"); c.width = c.height = 256;
+  var x = c.getContext("2d"), im = x.createImageData(256,256);
+  for (var i=0;i<im.data.length;i+=4){
+    var v = 235 + Math.random()*20;
+    if (Math.random() < 0.004) v -= 26 + Math.random()*20;   // 繊維の斑
+    im.data[i]=im.data[i+1]=im.data[i+2]=v; im.data[i+3]=255;
+  }
+  x.putImageData(im,0,0);
+  paperPat = ctx.createPattern(c,"repeat");
+}
+
+function resize(){
+  DPR = Math.min(window.devicePixelRatio||1, 2);
+  W = window.innerWidth; H = window.innerHeight;
+  cv.width = W*DPR; cv.height = H*DPR;
+  cv.style.width = W+"px"; cv.style.height = H+"px";
+  ctx.setTransform(DPR,0,0,DPR,0,0);
+  HORIZ = H*0.58;
+  makePaper();
+}
+window.addEventListener("resize", resize);
+resize();
+
+/* ============ 山水の稜線 ============ */
+function ridgeY(worldPx, seed){
+  return Math.sin(worldPx*0.0016+seed)*32 + Math.sin(worldPx*0.0007+seed*2.7)*58
+       + Math.sin(worldPx*0.0035+seed*5.1)*14;
+}
+function drawRidge(scalePxKm, seed, alpha, hMul, sea){
+  var wp = km*scalePxKm;
+  ctx.beginPath(); ctx.moveTo(-4, HORIZ+4);
+  for (var x=-4; x<=W+8; x+=18){
+    var r = ridgeY(wp+x, seed);
+    var h = Math.max(6, (70+r)*hMul) * (1-sea*0.92);
+    ctx.lineTo(x, HORIZ - h);
+  }
+  ctx.lineTo(W+4, HORIZ+4); ctx.closePath();
+  ctx.fillStyle = ink(alpha*(1-sea*0.75)); ctx.fill();
+}
+
+/* ============ 富士 ============ */
+function fujiPath(x, base, wd, h){
+  ctx.beginPath();
+  ctx.moveTo(x-wd/2, base);
+  ctx.quadraticCurveTo(x-wd*0.28, base-h*0.30, x-wd*0.072, base-h*0.99);
+  ctx.lineTo(x-wd*0.028, base-h*0.965); ctx.lineTo(x+wd*0.008, base-h);
+  ctx.lineTo(x+wd*0.042, base-h*0.97); ctx.lineTo(x+wd*0.072, base-h*0.985);
+  ctx.quadraticCurveTo(x+wd*0.28, base-h*0.30, x+wd/2, base);
+}
+function snowPath(x, base, wd, h){
+  // 雪線: ぎざぎざの下端を持つ冠雪の面
+  var sy = base-h*0.70, sw2 = wd*0.185, n = 7;
+  ctx.beginPath();
+  ctx.moveTo(x-sw2, sy);
+  for (var i=0;i<n;i++)
+    ctx.lineTo(x-sw2+sw2*2*(i+0.5)/n, sy+(i%2?-1:1)*h*0.05);
+  ctx.lineTo(x+sw2, sy);
+  ctx.lineTo(x+wd*0.10, base-h*1.05);
+  ctx.lineTo(x-wd*0.10, base-h*1.05);
+  ctx.closePath();
+}
+function drawFuji(x, base, wd, h, alpha){
+  // 紙で抜いてから淡墨 (背後の稜線を隠す)
+  fujiPath(x, base, wd, h);
+  ctx.fillStyle = "#ece3d0"; ctx.fill();
+  fujiPath(x, base, wd, h);
+  ctx.fillStyle = ink(alpha*0.09); ctx.fill();
+  ctx.strokeStyle = ink(alpha); ctx.lineWidth = 2.4; ctx.stroke();
+  // 冠雪
+  fujiPath(x, base, wd, h);
+  ctx.save(); ctx.clip();
+  snowPath(x, base, wd, h);
+  ctx.fillStyle = paper(0.92); ctx.fill();
+  ctx.strokeStyle = ink(alpha*0.55); ctx.lineWidth = 1.5; ctx.stroke();
+  ctx.restore();
+}
+function drawFujiBig(){
+  var dx = km - 141;
+  if (dx < -40 || dx > 44) return;
+  var vis  = Math.min(smoothstep(-40,-28,dx), 1 - smoothstep(30, 44, dx));
+  var prox = 1/(1 + (dx/26)*(dx/26));
+  var x = W*0.55 + dx*(W/84);
+  var h = H*(0.16 + 0.30*prox);
+  drawFuji(x, HORIZ+6, h*2.5, h, (0.28+0.6*prox)*vis);
+}
+function drawFujiSmall(){
+  var dx = km - 57;
+  if (dx < -16 || dx > 16) return;
+  var vis = 1 - smoothstep(9, 16, Math.abs(dx));
+  drawFuji(W*0.6 + dx*(W/34), HORIZ+2, H*0.30, H*0.13, 0.34*vis);
+}
+
+/* ============ 名所 (canvas線画) ============ */
+function stMid(lmKm, scale){ return W*0.5 + (km-lmKm)*scale; }
+
+function lmTokyoTower(x, s){
+  var g = HORIZ+4, h = 190*s;
+  ctx.strokeStyle = ink(0.62); ctx.lineWidth = 2.2; ctx.beginPath();
+  ctx.moveTo(x-40*s, g); ctx.quadraticCurveTo(x-14*s, g-h*0.55, x-5*s, g-h*0.94);
+  ctx.moveTo(x+40*s, g); ctx.quadraticCurveTo(x+14*s, g-h*0.55, x+5*s, g-h*0.94);
+  ctx.moveTo(x-5*s, g-h*0.94); ctx.lineTo(x, g-h); ctx.lineTo(x+5*s, g-h*0.94);
+  ctx.moveTo(x, g-h); ctx.lineTo(x, g-h-16*s);
+  ctx.moveTo(x-21*s, g-h*0.52); ctx.lineTo(x+21*s, g-h*0.52);
+  ctx.moveTo(x-30*s, g-h*0.26); ctx.lineTo(x+30*s, g-h*0.26);
+  ctx.moveTo(x-21*s, g-h*0.52); ctx.lineTo(x+30*s, g-h*0.26);
+  ctx.moveTo(x+21*s, g-h*0.52); ctx.lineTo(x-30*s, g-h*0.26);
+  ctx.stroke();
+}
+function lmTowers(x, s){
+  var g = HORIZ+6;
+  ctx.strokeStyle = ink(0.55); ctx.lineWidth = 2;
+  var bs = [[-52,96],[-20,150],[16,120],[46,88]];
+  for (var i=0;i<bs.length;i++){
+    var bx = x+bs[i][0]*s, bh = bs[i][1]*s, bw = 26*s;
+    ctx.strokeRect(bx-bw/2, g-bh, bw, bh);
+    for (var w2=1; w2<5; w2++){
+      ctx.beginPath(); ctx.moveTo(bx-bw*0.3, g-bh*w2/5.2);
+      ctx.lineTo(bx+bw*0.3, g-bh*w2/5.2); ctx.stroke();
+    }
+  }
+}
+function lmCastle(x, s){
+  var g = HORIZ+8, u = 2.2*s;
+  ctx.strokeStyle = ink(0.65); ctx.lineWidth = 2.2; ctx.beginPath();
+  ctx.moveTo(x-26*u, g); ctx.lineTo(x-20*u, g-16*u); ctx.lineTo(x+20*u, g-16*u); ctx.lineTo(x+26*u, g);
+  ctx.moveTo(x-24*u, g-16*u); ctx.quadraticCurveTo(x, g-26*u, x+24*u, g-16*u);
+  ctx.rect(x-14*u, g-34*u, 28*u, 18*u);
+  ctx.moveTo(x-20*u, g-34*u); ctx.quadraticCurveTo(x, g-44*u, x+20*u, g-34*u);
+  ctx.rect(x-9*u, g-48*u, 18*u, 14*u);
+  ctx.moveTo(x-15*u, g-48*u); ctx.quadraticCurveTo(x, g-58*u, x+15*u, g-48*u);
+  ctx.moveTo(x-4*u, g-58*u); ctx.lineTo(x, g-63*u); ctx.lineTo(x+4*u, g-58*u);
+  ctx.stroke();
+  // 石垣
+  ctx.strokeStyle = ink(0.35); ctx.beginPath();
+  ctx.moveTo(x-34*u, g); ctx.lineTo(x-30*u, g+14); ctx.moveTo(x+34*u, g); ctx.lineTo(x+30*u, g+14);
+  ctx.moveTo(x-32*u, g+7); ctx.lineTo(x+32*u, g+7); ctx.stroke();
+}
+function lmTorii(x, s){
+  var g = HORIZ + H*0.05, u = 2.6*s;
+  ctx.strokeStyle = "rgba(179,39,45,0.72)"; ctx.lineWidth = 3.4; ctx.beginPath();
+  ctx.moveTo(x-16*u, g); ctx.lineTo(x-13*u, g-30*u);
+  ctx.moveTo(x+16*u, g); ctx.lineTo(x+13*u, g-30*u);
+  ctx.moveTo(x-22*u, g-30*u); ctx.quadraticCurveTo(x, g-36*u, x+22*u, g-30*u);
+  ctx.moveTo(x-19*u, g-24*u); ctx.lineTo(x+19*u, g-24*u);
+  ctx.moveTo(x, g-30*u); ctx.lineTo(x, g-24*u);
+  ctx.stroke();
+  // 水鏡
+  ctx.strokeStyle = "rgba(179,39,45,0.2)"; ctx.lineWidth = 2; ctx.beginPath();
+  ctx.moveTo(x-16*u, g+8); ctx.lineTo(x-14*u, g+18);
+  ctx.moveTo(x+16*u, g+8); ctx.lineTo(x+14*u, g+18); ctx.stroke();
+}
+function lmNagoya(x, s){
+  var g = HORIZ+6;
+  ctx.strokeStyle = ink(0.55); ctx.lineWidth = 2.2;
+  function twin(bx, bh, bw){
+    ctx.beginPath();
+    ctx.moveTo(bx-bw/2, g); ctx.lineTo(bx-bw/2, g-bh*0.86);
+    ctx.quadraticCurveTo(bx, g-bh-14*s, bx+bw/2, g-bh*0.86);
+    ctx.lineTo(bx+bw/2, g); ctx.stroke();
+    for (var w2=1; w2<6; w2++){
+      ctx.beginPath(); ctx.moveTo(bx-bw*0.28, g-bh*w2/6.5);
+      ctx.lineTo(bx+bw*0.28, g-bh*w2/6.5); ctx.stroke();
+    }
+  }
+  twin(x-34*s, 170*s, 40*s); twin(x+30*s, 190*s, 40*s);
+  ctx.strokeRect(x-90*s, g-70*s, 28*s, 70*s);
+  ctx.strokeRect(x+70*s, g-96*s, 26*s, 96*s);
+}
+function lmPagoda(x, s){
+  var g = HORIZ+10, u = 2.4*s, step = 18*u;
+  ctx.strokeStyle = ink(0.68); ctx.lineWidth = 2.2; ctx.beginPath();
+  var widths = [26,23,20,17,14];
+  for (var i=0;i<widths.length;i++){
+    var hw = widths[i]*u, roofY = g - i*step;
+    // 屋根 (反り) と、その上に載る階body — 上の屋根まで届く
+    ctx.moveTo(x-hw, roofY); ctx.quadraticCurveTo(x, roofY-7*u, x+hw, roofY);
+    var bw = hw*0.55;
+    ctx.moveTo(x-bw, roofY-2*u); ctx.lineTo(x-bw, roofY-step+3*u);
+    ctx.moveTo(x+bw, roofY-2*u); ctx.lineTo(x+bw, roofY-step+3*u);
+  }
+  // 相輪
+  var topY = g - 4*step - 7*u;
+  ctx.moveTo(x, topY); ctx.lineTo(x, topY-16*u);
+  ctx.moveTo(x-4*u, topY-4*u); ctx.lineTo(x+4*u, topY-4*u);
+  ctx.moveTo(x-3*u, topY-8*u); ctx.lineTo(x+3*u, topY-8*u);
+  ctx.moveTo(x-2*u, topY-12*u); ctx.lineTo(x+2*u, topY-12*u);
+  ctx.stroke();
+}
+function lmOsaka(x, s){
+  var g = HORIZ+6;
+  ctx.strokeStyle = ink(0.5); ctx.lineWidth = 2;
+  var bs = [[-110,80,30],[-72,130,34],[-30,100,28],[6,160,36],[48,120,30],[86,90,26]];
+  for (var i=0;i<bs.length;i++){
+    var bx=x+bs[i][0]*s, bh=bs[i][1]*s, bw=bs[i][2]*s;
+    ctx.strokeRect(bx-bw/2, g-bh, bw, bh);
+  }
+  // 観覧車
+  ctx.beginPath(); ctx.arc(x+140*s, g-70*s, 34*s, 0, Math.PI*2); ctx.stroke();
+  for (var a2=0; a2<8; a2++){
+    ctx.beginPath(); ctx.moveTo(x+140*s, g-70*s);
+    ctx.lineTo(x+140*s+Math.cos(a2*Math.PI/4)*34*s, g-70*s+Math.sin(a2*Math.PI/4)*34*s);
+    ctx.stroke();
+  }
+}
+var LANDMARKS = [
+  { km:2.5,  scale:120, span:5,  draw:lmTokyoTower, s:1.35 },
+  { km:16,   scale:150, span:4,  draw:lmTowers,     s:1 },
+  { km:83.9, scale:150, span:4,  draw:lmCastle,     s:1.4 },
+  { km:256,  scale:150, span:4,  draw:lmTorii,      s:1.3 },
+  { km:364,  scale:130, span:6,  draw:lmNagoya,     s:1 },
+  { km:512,  scale:140, span:4,  draw:lmPagoda,     s:0.85 },
+  { km:549.5,scale:120, span:7,  draw:lmOsaka,      s:1 }
+];
+
+/* ============ 中景 (町・松・畑) ============ */
+function nearLandmark(k){
+  for (var i=0;i<LANDMARKS.length;i++)
+    if (Math.abs(k - LANDMARKS[i].km) < 3.4) return true;
+  return false;
+}
+function drawMid(){
+  var scale = 88, cell = 1.4;
+  var k0 = Math.floor((km - W*0.6/scale)/cell), k1 = Math.ceil((km + W*0.6/scale)/cell);
+  var sea = seaFactor(km), snow = snowFactor(km);
+  for (var c=k0; c<=k1; c++){
+    var ck = c*cell + cell/2;
+    if (ck < 0 || ck > ROUTE || nearLandmark(ck)) continue;
+    var x = W*0.5 + (km-ck)*scale;
+    var r = hash(c*7.13), g = HORIZ+4;
+    var cellSea = seaFactor(ck);
+    if (cellSea > 0.5){
+      if (r < 0.3){ // 帆掛け舟
+        ctx.strokeStyle = ink(0.4*cellSea); ctx.lineWidth = 1.8; ctx.beginPath();
+        ctx.moveTo(x-14, g-2); ctx.quadraticCurveTo(x, g+4, x+14, g-2);
+        ctx.moveTo(x, g-2); ctx.lineTo(x, g-22);
+        ctx.moveTo(x, g-20); ctx.quadraticCurveTo(x+13, g-14, x+2, g-4);
+        ctx.stroke();
+      }
+      continue;
+    }
+    if (r < 0.24){          // 集落
+      var n = 2 + Math.floor(hash(c*3.7)*3);
+      ctx.strokeStyle = ink(0.4); ctx.lineWidth = 1.8;
+      for (var i=0;i<n;i++){
+        var hx = x + (hash(c*11+i)-0.5)*70, hy = g - hash(c*17+i)*8;
+        ctx.beginPath();
+        ctx.moveTo(hx-11, hy); ctx.lineTo(hx, hy-9); ctx.lineTo(hx+11, hy);
+        ctx.moveTo(hx-8, hy); ctx.lineTo(hx-8, hy+8); ctx.lineTo(hx+8, hy+8); ctx.lineTo(hx+8, hy);
+        ctx.stroke();
+      }
+    } else if (r < 0.40){   // 松
+      var n2 = 1 + Math.floor(hash(c*5.3)*3);
+      for (var j=0;j<n2;j++){
+        var px = x + (hash(c*13+j)-0.5)*80, ph = 18 + hash(c*19+j)*16;
+        ctx.strokeStyle = ink(0.45); ctx.lineWidth = 2; ctx.beginPath();
+        ctx.moveTo(px, g+6); ctx.quadraticCurveTo(px+4, g-ph*0.5, px-2, g-ph);
+        ctx.stroke();
+        ctx.fillStyle = ink(0.30 - snow*0.14);
+        ctx.beginPath(); ctx.ellipse(px-2, g-ph, 13, 5.5, -0.15, 0, Math.PI*2); ctx.fill();
+        ctx.beginPath(); ctx.ellipse(px+6, g-ph*0.62, 10, 4.5, 0.1, 0, Math.PI*2); ctx.fill();
+      }
+    } else if (r < 0.58){   // 畑の畝 / 茶畑
+      var tea = (ck > 165 && ck < 205) ? 1 : 0;
+      ctx.strokeStyle = ink(tea ? 0.34 : 0.22); ctx.lineWidth = tea ? 3 : 1.4;
+      for (var row=0; row<3+tea*2; row++){
+        var ry = g + 6 + row*7;
+        ctx.beginPath();
+        if (tea){ // 畝のカーブ
+          ctx.moveTo(x-58, ry); ctx.quadraticCurveTo(x, ry-5, x+58, ry);
+        } else { ctx.moveTo(x-46, ry); ctx.lineTo(x+46, ry); }
+        ctx.stroke();
+      }
+    }
+  }
+  // 名所
+  for (var L=0; L<LANDMARKS.length; L++){
+    var lm = LANDMARKS[L];
+    var lx = stMid(lm.km, lm.scale);
+    var half = lm.span*lm.scale/2 + 160;
+    if (lx > -half && lx < W+half) lm.draw(lx, lm.s);
+  }
+  // 駅 (ホーム上屋と駅名標) — 名所や海と重なる駅は省く
+  for (var st=0; st<STATIONS.length; st++){
+    var sk = STATIONS[st][1];
+    if (sk === 0 || sk === ROUTE || nearLandmark(sk) || seaFactor(sk) > 0.3) continue;
+    var sx = W*0.5 + (km-sk)*150;
+    if (sx < -300 || sx > W+300) continue;
+    var gy = HORIZ + H*0.16;
+    ctx.strokeStyle = ink(0.42); ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(sx-130, gy); ctx.lineTo(sx+130, gy);          // ホーム縁
+    ctx.moveTo(sx-130, gy+8); ctx.lineTo(sx+130, gy+8);
+    for (var lg=-120; lg<=120; lg+=48){                       // 脚
+      ctx.moveTo(sx+lg, gy+8); ctx.lineTo(sx+lg, gy+22);
+    }
+    ctx.moveTo(sx-100, gy); ctx.lineTo(sx-100, gy-40);        // 上屋柱
+    ctx.moveTo(sx+100, gy); ctx.lineTo(sx+100, gy-40);
+    ctx.moveTo(sx-114, gy-40); ctx.lineTo(sx+114, gy-40);     // 屋根
+    ctx.stroke();
+    ctx.strokeStyle = ink(0.5);
+    ctx.strokeRect(sx-36, gy-30, 72, 17);
+    ctx.fillStyle = ink(0.72);
+    ctx.font = "11px 'Shippori Mincho','Yu Mincho',serif";
+    ctx.textAlign = "center";
+    ctx.fillText(STATIONS[st][0], sx, gy-17);
+  }
+}
+
+/* ============ 海 ============ */
+function drawSea(sea){
+  if (sea <= 0.02) return;
+  ctx.strokeStyle = ink(0.3*sea); ctx.lineWidth = 1.6;
+  var wp = km*70;
+  for (var row=0; row<6; row++){
+    var y = HORIZ + 6 + row*10 + row*row*1.2;
+    var seg = 46 + row*14;
+    var off = -(wp*(0.5+row*0.12)) % (seg*2);
+    for (var x = off-seg*2; x < W+seg; x += seg*2){
+      ctx.beginPath();
+      ctx.moveTo(x, y); ctx.quadraticCurveTo(x+seg/2, y-5-row, x+seg, y);
+      ctx.stroke();
+    }
+  }
+  // 水平線
+  ctx.strokeStyle = ink(0.4*sea); ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, HORIZ); ctx.lineTo(W, HORIZ); ctx.stroke();
+}
+
+/* ============ 近景 ============ */
+function drawNear(){
+  var scale = 340, snow = snowFactor(km);
+  // 地面 (裾へ濃くなる淡墨のぼかし)
+  var gg = ctx.createLinearGradient(0, HORIZ+H*0.10, 0, H);
+  gg.addColorStop(0, ink(0.015*(1-snow*0.7)));
+  gg.addColorStop(0.55, ink(0.06*(1-snow*0.7)));
+  gg.addColorStop(1, ink(0.13*(1-snow*0.7)));
+  ctx.fillStyle = gg;
+  ctx.fillRect(0, HORIZ+H*0.10, W, H);
+  // バラストの流れ (速度感)
+  var wp = km*scale*1.35;
+  ctx.strokeStyle = ink(0.16); ctx.lineWidth = 2;
+  for (var i=0;i<14;i++){
+    var y = H - H*0.13 + hash(i*3.3)*H*0.12;
+    var len = 60 + hash(i*7.7)*130;
+    var x = W - ((wp*(0.9+hash(i)*0.4) + hash(i*13)*W*3) % (W+len)*1) ;
+    // 左から右へ流れる
+    x = ((wp*(0.9+hash(i)*0.4) + hash(i*13)*W*3) % (W+len)) - len;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x+len, y); ctx.stroke();
+  }
+  // 田の面 (中距離の帯)
+  var cell = 0.42, k0 = Math.floor((km - W*0.6/scale)/cell), k1 = Math.ceil((km + W*0.6/scale)/cell);
+  for (var c=k0; c<=k1; c++){
+    var ck = c*cell;
+    if (ck < 0 || seaFactor(ck) > 0.4) continue;
+    var x = W*0.5 + (km-ck)*scale;
+    var r = hash(c*9.1);
+    if (r < 0.5){
+      ctx.strokeStyle = ink(0.13); ctx.lineWidth = 1.2;
+      for (var row=0; row<3; row++){
+        var y2 = HORIZ + H*0.16 + row*H*0.045;
+        ctx.beginPath(); ctx.moveTo(x-scale*cell*0.48, y2);
+        ctx.lineTo(x+scale*cell*0.48, y2); ctx.stroke();
+      }
+    }
+  }
+  // 架線柱と架線 (速度でぶれる淡い影)
+  var poleGap = 1.05;
+  var p0 = Math.floor((km - W*0.7/scale)/poleGap), p1 = Math.ceil((km + W*0.7/scale)/poleGap);
+  var xs = [];
+  for (var p=p0; p<=p1; p++){
+    var x2 = W*0.5 + (km - p*poleGap)*scale;
+    xs.push(x2);
+    ctx.strokeStyle = ink(0.20); ctx.lineWidth = 7;
+    ctx.beginPath(); ctx.moveTo(x2, H*0.04); ctx.lineTo(x2, H); ctx.stroke();
+    ctx.strokeStyle = ink(0.30); ctx.lineWidth = 2.4;
+    ctx.beginPath(); ctx.moveTo(x2, H*0.04); ctx.lineTo(x2, H); ctx.stroke();
+    ctx.lineWidth = 1.8;
+    ctx.beginPath(); ctx.moveTo(x2, H*0.09); ctx.lineTo(x2+42, H*0.09);
+    ctx.moveTo(x2, H*0.15); ctx.lineTo(x2+36, H*0.10); ctx.stroke();
+  }
+  xs.sort(function(a,b){return a-b;});
+  ctx.strokeStyle = ink(0.26); ctx.lineWidth = 1.2;
+  for (var q=0; q<xs.length-1; q++){
+    ctx.beginPath(); ctx.moveTo(xs[q]+40, H*0.095);
+    ctx.quadraticCurveTo((xs[q]+xs[q+1])/2+40, H*0.095+18, xs[q+1]+40, H*0.095);
+    ctx.stroke();
+  }
+}
+
+/* ============ 鉄橋 ============ */
+function drawBridge(){
+  var scale = 340;
+  for (var i=0;i<RIVERS.length;i++){
+    var rk = RIVERS[i][0], hw = 0.85;
+    if (Math.abs(km-rk) > hw + W*0.6/scale) continue;
+    var xA = W*0.5 + (km-(rk+hw))*scale, xB = W*0.5 + (km-(rk-hw))*scale;
+    var xs2 = Math.max(-40, Math.min(xA,xB)), xe = Math.min(W+40, Math.max(xA,xB));
+    if (xe < 0 || xs2 > W) continue;
+    // 川面
+    ctx.strokeStyle = ink(0.2); ctx.lineWidth = 1.4;
+    for (var row=0; row<4; row++){
+      var y = HORIZ + H*0.06 + row*12;
+      ctx.beginPath(); ctx.moveTo(xs2, y);
+      ctx.quadraticCurveTo((xs2+xe)/2, y-4, xe, y); ctx.stroke();
+    }
+    // トラス (淡く、窓の上半分だけ掠める)
+    var top = H*0.30, bot = H*0.60;
+    ctx.strokeStyle = ink(0.34); ctx.lineWidth = 5;
+    ctx.beginPath(); ctx.moveTo(xs2, top); ctx.lineTo(xe, top);
+    ctx.moveTo(xs2, bot); ctx.lineTo(xe, bot); ctx.stroke();
+    ctx.lineWidth = 2.6;
+    var seg = 95;
+    for (var x = Math.floor(xs2/seg)*seg; x < xe+seg; x += seg){
+      ctx.beginPath();
+      ctx.moveTo(x, top); ctx.lineTo(x, bot);
+      ctx.moveTo(x, bot); ctx.lineTo(x+seg, top);
+      ctx.moveTo(x, top); ctx.lineTo(x+seg, bot);
+      ctx.stroke();
+    }
+  }
+}
+
+/* ============ 雪・トンネル・刻 ============ */
+function drawSnow(snow){
+  if (snow <= 0.02) return;
+  ctx.fillStyle = paper(0.5*snow);
+  ctx.fillRect(0, HORIZ, W, H-HORIZ);
+  var n = Math.floor(130*snow);
+  ctx.fillStyle = paper(0.95);
+  for (var i=0;i<n;i++){
+    var sp = 26 + hash(i*1.7)*60;
+    var y = (elapsed*sp + hash(i*3.1)*H*2) % (H+20) - 10;
+    var x = (hash(i*5.3)*W*1.3 - elapsed*14*(0.5+hash(i))) % (W+30);
+    if (x < -15) x += W+30;
+    var r = 1.6 + hash(i*7.9)*2.6;
+    ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI*2); ctx.fill();
+  }
+}
+function drawTunnel(tn){
+  if (tn <= 0.01) return;
+  ctx.fillStyle = "rgba(30,27,24," + (0.93*tn) + ")";
+  ctx.fillRect(0,0,W,H);
+  // 流れる照明
+  ctx.strokeStyle = paper(0.5*tn); ctx.lineWidth = 3;
+  var wp = km*1400;
+  for (var i=0;i<7;i++){
+    var y = H*0.12 + hash(i*3.7)*H*0.68;
+    var len = 120 + hash(i*5.1)*260;
+    var x = ((wp*(0.8+hash(i)*0.5) + hash(i*11)*W*4) % (W+len)) - len;
+    ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x+len, y); ctx.stroke();
+  }
+}
+function drawTint(){
+  var t = km/ROUTE;
+  // 暁 → 白昼 → 黄昏 → 宵
+  var dawn = Math.max(0, 1-km/60);
+  var dusk = smoothstep(430, 510, km);
+  var night = smoothstep(520, 552, km);
+  if (dawn > 0){ ctx.fillStyle = "rgba(190,120,90,"+(0.06*dawn)+")"; ctx.fillRect(0,0,W,H); }
+  if (dusk > 0){
+    ctx.fillStyle = "rgba(180,90,50,"+(0.10*dusk)+")"; ctx.fillRect(0,0,W,H);
+    // 朱の落日
+    var sy = HORIZ - H*0.16 + dusk*H*0.13;
+    ctx.fillStyle = "rgba(179,39,45,"+(0.5*dusk*(1-night))+")";
+    ctx.beginPath(); ctx.arc(W*0.68, sy, H*0.045, 0, Math.PI*2); ctx.fill();
+  }
+  if (night > 0){ ctx.fillStyle = "rgba(40,38,52,"+(0.16*night)+")"; ctx.fillRect(0,0,W,H); }
+}
+
+/* ============ UI ============ */
+var elSect = document.getElementById("sSect"), elKm = document.getElementById("sKm");
+var elCap = document.getElementById("caption"), elTray = document.getElementById("tray");
+var elTrain = document.getElementById("train"), elBig = document.getElementById("big");
+var elFin = document.getElementById("fin"), elHint = document.getElementById("hint");
+var KANJI = "〇一二三四五六七八九";
+function kanjiNum(n){
+  var s = String(Math.floor(n)), o = "";
+  for (var i=0;i<s.length;i++) o += KANJI[+s[i]];
+  return o;
+}
+var capTimer = null;
+function showCaption(name, sub){
+  elCap.innerHTML = name + (sub ? '<span class="sub">' + sub + '</span>' : "");
+  elCap.style.opacity = 1;
+  if (capTimer) clearTimeout(capTimer);
+  capTimer = setTimeout(function(){ elCap.style.opacity = 0; }, 4200);
+}
+function pushStamp(id){
+  var d = document.createElement("div");
+  d.className = "stamp";
+  d.style.setProperty("--rot", ((hash(elTray.children.length*3.3)-0.5)*14).toFixed(1)+"deg");
+  d.innerHTML = stampSVG(id);
+  d.title = STAMPS[id].name;
+  d.addEventListener("click", function(){
+    elBig.innerHTML = stampSVG(id);
+    elBig.style.display = "flex";
+  });
+  elTray.appendChild(d);
+}
+elBig.addEventListener("click", function(){ elBig.style.display = "none"; });
+
+function sectionLabel(){
+  for (var i=0;i<STATIONS.length-1;i++)
+    if (km >= STATIONS[i][1] && km < STATIONS[i+1][1])
+      return STATIONS[i][0] + " — " + STATIONS[i+1][0];
+  return "新大阪";
+}
+
+// 路線の目盛
+(function(){
+  var route = document.getElementById("route");
+  for (var i=0;i<STATIONS.length;i++){
+    var t = document.createElement("div");
+    t.className = "tick" + (MAJOR[STATIONS[i][0]] ? " major" : "");
+    t.style.left = (STATIONS[i][1]/ROUTE*100) + "%";
+    route.appendChild(t);
+  }
+})();
+
+// 速度
+var btns = document.querySelectorAll("#modes button");
+btns.forEach(function(b){
+  b.addEventListener("click", function(){
+    mode = b.dataset.m;
+    btns.forEach(function(x){ x.classList.toggle("on", x === b); });
+  });
+});
+
+function finish(){
+  ended = true; endT = elapsed;
+  pushStamp("shin-osaka");
+  showCaption("終点 新大阪", "五五二・六粁");
+  elFin.innerHTML = '<div class="t">終点 新大阪<br><small>東海道新幹線 五五二・六粁</small></div>'+
+    '<div class="kan">' + stampSVG("shin-osaka") + "</div>";
+  setTimeout(function(){ elFin.classList.add("show"); }, 1400);
+}
+function reset(){
+  km = 0; evIdx = 0; ended = false;
+  elTray.innerHTML = "";
+  elFin.classList.remove("show");
+  setTimeout(function(){ elFin.innerHTML = ""; }, 2500);
+}
+
+/* ============ 主循環 ============ */
+var useShim = false, scheduled = false;
+function sched(){
+  if (scheduled) return;
+  scheduled = true;
+  if (useShim) setTimeout(function(){ scheduled = false; frame(performance.now()); }, 16);
+  else requestAnimationFrame(function(t){ scheduled = false; frame(t); });
+}
+function frame(ts){
+  sched();
+  if (!lastT) lastT = ts;
+  var dt = Math.min((ts-lastT)/1000, 0.1);
+  lastT = ts; elapsed += dt;
+
+  if (!ended){
+    var arr = km > 546 ? Math.pow(clamp((552.55-km)/6.5, 0, 1), 0.65) : 1;
+    km += MODES[mode] * Math.max(arr, 0.02) * dt;
+    if (km >= 552.5) finish();
+  } else if (elapsed - endT > 7.5) reset();
+
+  // イベント
+  while (evIdx < EVENTS.length && km >= EVENTS[evIdx].km){
+    var ev = EVENTS[evIdx++];
+    showCaption(ev.name, ev.stamp ? "約"+STAMPS[ev.stamp].min+"分・"+STAMPS[ev.stamp].seat : "");
+    if (ev.stamp) pushStamp(ev.stamp);
+  }
+
+  /* --- 描画 --- */
+  ctx.fillStyle = "#ece3d0";
+  ctx.fillRect(0,0,W,H);
+
+  var sea = seaFactor(km), tn = tunnelFactor(km), snow = snowFactor(km);
+
+  // 雲の washes
+  ctx.fillStyle = ink(0.022);
+  for (var i=0;i<3;i++){
+    var cx2 = ((hash(i*3.3)*W*2 - km*6*(0.6+i*0.3)) % (W+500)) - 250;
+    if (cx2 < -250) cx2 += W+500;
+    ctx.beginPath();
+    ctx.ellipse(cx2, H*0.12+i*H*0.07, 210+i*70, 9+i*3, 0, 0, Math.PI*2);
+    ctx.fill();
+  }
+
+  // 遠山 (二重の稜線)
+  drawRidge(5,  1.7, 0.09, 1.5, sea);
+  drawRidge(11, 4.2, 0.15, 0.95, sea);
+  drawFujiSmall();
+  drawFujiBig();
+  drawSea(sea);
+  drawMid();
+  drawSnow(snow);
+  drawNear();
+  drawBridge();
+  drawTint();
+  drawTunnel(tn);
+
+  // 紙
+  ctx.globalAlpha = 0.5;
+  ctx.globalCompositeOperation = "multiply";
+  ctx.fillStyle = paperPat; ctx.fillRect(0,0,W,H);
+  ctx.globalCompositeOperation = "source-over";
+  ctx.globalAlpha = 1;
+  // 縁のぼかし (掛け軸)
+  var vg = ctx.createRadialGradient(W/2, H/2, Math.min(W,H)*0.42, W/2, H/2, Math.max(W,H)*0.78);
+  vg.addColorStop(0, "rgba(58,54,48,0)");
+  vg.addColorStop(1, "rgba(58,54,48,0.14)");
+  ctx.fillStyle = vg; ctx.fillRect(0,0,W,H);
+
+  // UI
+  elSect.textContent = sectionLabel();
+  elKm.textContent = kanjiNum(km) + "粁";
+  elTrain.style.left = clamp(km/ROUTE*100, 0, 100) + "%";
+  if (elapsed > 26 && elHint.style.opacity !== "0") elHint.style.opacity = 0;
+}
+sched();
+// rAFが抑止される環境 (省電力webview等) へのフォールバック
+setTimeout(function(){ if (!lastT){ useShim = true; scheduled = false; sched(); } }, 700);
+
+// 検証用フック
+window.__mado = {
+  jump: function(v){
+    km = v; evIdx = 0; ended = false;
+    while (evIdx < EVENTS.length && EVENTS[evIdx].km <= v) evIdx++;
+  },
+  km: function(){ return km; },
+  svg: stampSVG,
+  stampIds: Object.keys(STAMPS),
+  shot: function(w2){
+    w2 = w2 || 720;
+    var c = document.createElement("canvas");
+    c.width = w2; c.height = Math.round(w2*H/W);
+    c.getContext("2d").drawImage(cv, 0, 0, c.width, c.height);
+    return c.toDataURL("image/jpeg", 0.82);
+  }
+};
+})();
+</script>
+</body>
+</html>
