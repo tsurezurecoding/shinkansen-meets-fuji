@@ -961,4 +961,6 @@ fs.writeFileSync(path.join(appDir, "en", "index.html"), englishIndexHTML(), "utf
 // Do not regenerate them from the older lightweight template here.
 fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");
 
-console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, and sitemap.xml`);
+await import("./generate-content-manifest.mjs");
+
+console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, sitemap.xml, and content-manifest.json`);
