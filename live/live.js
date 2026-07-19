@@ -26,7 +26,7 @@
       navLive: "ライブガイド",
       navBrowse: "車窓図鑑",
       navFaq: "FAQ",
-      navMedals: "獲得メダル",
+      navMedals: "メダル帖",
       appTitle: "ライブガイド",
       waiting: "GPS待機中",
       locating: "測位中…",
@@ -34,6 +34,7 @@
       offroute: "路線から離れています",
       gpsError: "GPSを取得できません",
       gpsDenied: "位置情報が許可されていません",
+      nativeStartError: "ライブガイドを開始できません。位置情報の許可を確認してください。",
       demo: "デモ走行中",
       paused: "一時停止中",
       dirAuto: "🧭 自動",
@@ -80,6 +81,7 @@
       stop: "■ GPS案内を終了",
       close: "閉じる",
       note: "現在地は車窓案内の計算に使います。外部サーバー等に保存しません。地図表示では外部の地図データを取得します。",
+      privacy: "プライバシーポリシー",
       narrTag: "AI実況",
       demoTitle: "デモ走行",
       demoDesc: "実際に乗らなくても、仮想の のぞみ に乗って動きを確認できます。",
@@ -99,7 +101,7 @@
       navLive: "Live Guide",
       navBrowse: "Field Guide",
       navFaq: "FAQ",
-      navMedals: "Medals",
+      navMedals: "Journal",
       appTitle: "Live Guide",
       waiting: "Waiting for GPS",
       locating: "Locating…",
@@ -107,6 +109,7 @@
       offroute: "Away from the line",
       gpsError: "Cannot get GPS",
       gpsDenied: "Location permission denied",
+      nativeStartError: "Live Guide could not start. Check the location permission.",
       demo: "Demo run",
       paused: "Paused",
       dirAuto: "🧭 Auto",
@@ -153,6 +156,7 @@
       stop: "■ End GPS guide",
       close: "Close",
       note: "Your location is used for window-view guidance and is not stored on external servers. Map display loads external map data.",
+      privacy: "Privacy Policy",
       narrTag: "AI GUIDE",
       demoTitle: "Demo run",
       demoDesc: "Ride a virtual Nozomi to see how it works — no ticket needed.",
@@ -561,6 +565,10 @@
   var narrLoadPromise = null;
   var narrQueue = [];
   var narrPlaying = false;
+  var nativeGuide = window.MadoLiveGuideNative;
+  var nativeSessionStarted = false;
+  var nativeStartPending = false;
+  var nativeStartGeneration = 0;
 
   function hasNarrationData() {
     return !!(NARR && Object.keys(NARR).length);
@@ -625,6 +633,130 @@
   function narrationGroupKey(sp) {
     var entry = NARR[sp.id];
     return (entry && entry.group) || sp.id;
+  }
+
+  function nativeNarrationForDirection(sp, dirKey) {
+    var entry = NARR[sp.id];
+    var directional = entry && (entry[dirKey] || entry.down);
+    var narration = directional && (directional[state.lang] || directional.ja || directional.en);
+    if (!narration && state.settings.narrMode === "all") {
+      narration = fallbackNarrationFor(sp);
+    }
+    var audio = "";
+    if (narration && narration.audio !== false) {
+      audio = narration.audio || (sp.id + "_" + dirKey + "_" + state.lang + ".mp3");
+      if (audio.indexOf("live/") !== 0) {
+        audio = "live/" + (audio.indexOf("audio/") === 0 ? audio : "audio/" + audio);
+      }
+    }
+    return {
+      name: spotName(sp),
+      text: narration ? narration.text : "",
+      audio: audio,
+    };
+  }
+
+  function nativeGuideConfig() {
+    var nativeSettings = {
+      narrMode: state.settings.narrMode,
+      dirMode: state.dirMode,
+      lang: state.lang,
+    };
+    return {
+      route: T.points.map(function (point) {
+        return { lat: point.lat, lng: point.lng, km: point.km };
+      }),
+      spots: spots.map(function (sp) {
+        return {
+          id: sp.id,
+          km: sp.km,
+          side: sp.raw.side || "",
+          category: sp.raw.category || "",
+          group: narrationGroupKey(sp),
+          down: nativeNarrationForDirection(sp, "down"),
+          up: nativeNarrationForDirection(sp, "up"),
+        };
+      }),
+      narrMode: nativeSettings.narrMode,
+      dirMode: nativeSettings.dirMode,
+      lang: nativeSettings.lang,
+      settings: nativeSettings,
+    };
+  }
+
+  function beginGpsTracking() {
+    if (!nativeGuide || !nativeGuide.available) {
+      startGeoWatch();
+      acquireWake();
+      syncRunControls();
+      return;
+    }
+    if (nativeSessionStarted) {
+      startGeoWatch();
+      acquireWake();
+      syncRunControls();
+      return;
+    }
+    if (nativeStartPending || state.mode !== "gps" || state.paused) return;
+    var generation = ++nativeStartGeneration;
+    nativeStartPending = true;
+    ensureNarrationsLoaded().then(function () {
+      if (generation !== nativeStartGeneration || state.mode !== "gps" || state.paused) return;
+      return nativeGuide.start(nativeGuideConfig());
+    }).then(function (result) {
+      if (generation !== nativeStartGeneration || state.mode !== "gps" || state.paused) {
+        nativeGuide.stop();
+        return;
+      }
+      if (result && result.available === false) throw new Error("native guide unavailable");
+      nativeSessionStarted = true;
+      Object.keys(state.narratedIds).forEach(markNativeNarrated);
+      startGeoWatch();
+      acquireWake();
+      syncRunControls();
+    }).catch(function () {
+      if (generation !== nativeStartGeneration || state.mode !== "gps" || state.paused) return;
+      stopAll();
+      showIdle();
+      setStatus("err", t("nativeStartError"));
+    }).then(function () {
+      if (generation === nativeStartGeneration) nativeStartPending = false;
+    });
+  }
+
+  function updateNativeGuide() {
+    if (!nativeGuide || !nativeGuide.available || !nativeSessionStarted ||
+        state.mode !== "gps" || state.paused) return;
+    ensureNarrationsLoaded().then(function () {
+      if (nativeSessionStarted && state.mode === "gps" && !state.paused) {
+        nativeGuide.update(nativeGuideConfig());
+      }
+    }).catch(function () {});
+  }
+
+  function stopNativeGuide() {
+    nativeStartGeneration += 1;
+    nativeStartPending = false;
+    if (nativeGuide && nativeGuide.available) nativeGuide.stop();
+    nativeSessionStarted = false;
+  }
+
+  function markNativeNarrated(group) {
+    if (nativeGuide && nativeGuide.available && nativeSessionStarted) nativeGuide.markNarrated(group);
+  }
+
+  function syncNativeGuideState() {
+    if (!nativeGuide || !nativeGuide.available || !nativeSessionStarted) return;
+    nativeGuide.getState().then(function (nativeState) {
+      if (!nativeState || state.mode !== "gps" || state.paused) return;
+      (nativeState.playedGroups || []).forEach(function (group) {
+        state.narratedIds[group] = true;
+      });
+      if (nativeState.active === false || nativeState.running === false) {
+        stopAll();
+        showIdle();
+      }
+    }).catch(function () {});
   }
 
   function unlockAudio() {
@@ -704,6 +836,7 @@
     var n = narrationFor(sp);
     if (!n) return;
     state.narratedIds[key] = true;
+    markNativeNarrated(key);
     narrQueue.push({ sp: sp });
   }
 
@@ -740,6 +873,7 @@
 
   function updateNarration(candidates) {
     if (!Array.isArray(candidates)) candidates = candidates ? [candidates] : [];
+    if (nativeSessionStarted && document.visibilityState === "hidden") return;
     if (!narrationEnabled()) {
       if (state.narrSpotId) hideNarration();
       return;
@@ -894,9 +1028,7 @@
     unlockAudio();
     if (narrationEnabled()) ensureNarrationsLoaded();
     track("live_gps_start", { lang: state.lang });
-    startGeoWatch();
-    acquireWake();
-    syncRunControls();
+    beginGpsTracking();
   }
 
   function startDemo(dirStr, mult) {
@@ -951,6 +1083,7 @@
   }
 
   function stopAll() {
+    stopNativeGuide();
     if (state.watchId != null) {
       navigator.geolocation.clearWatch(state.watchId);
       state.watchId = null;
@@ -983,6 +1116,7 @@
 
   function pauseRun() {
     if (state.mode === "idle" || state.paused) return;
+    stopNativeGuide();
     if (state.watchId != null) {
       navigator.geolocation.clearWatch(state.watchId);
       state.watchId = null;
@@ -1005,14 +1139,14 @@
     state.paused = false;
     if (state.mode === "gps") {
       setStatus("warn", t("locating"));
-      startGeoWatch();
+      beginGpsTracking();
     } else if (state.mode === "demo" && state.demo) {
       state.demo.lastT = Date.now();
       state.demoTimer = setInterval(demoTick, demoIntervalMs(state.demo.mult));
       setStatus("warn", t("demo") + " " + state.demo.mult + "x");
       demoTick();
     }
-    acquireWake();
+    if (state.mode !== "gps") acquireWake();
     track("live_resumed", { mode: state.mode });
     syncRunControls();
   }
@@ -1030,6 +1164,7 @@
     if (!narrationEnabled()) hideNarration();
     else ensureNarrationsLoaded();
     saveSettings();
+    updateNativeGuide();
     track("live_narration_toggled", { enabled: narrationEnabled() ? "1" : "0", mode: state.mode, guide_mode: state.settings.narrMode });
     syncRunControls();
   }
@@ -1071,6 +1206,7 @@
     if (document.visibilityState === "hidden") releaseWake();
     if (document.visibilityState === "visible" && state.mode !== "idle" && !state.paused) {
       acquireWake();
+      syncNativeGuideState();
       render();
     }
   });
@@ -1098,7 +1234,8 @@
       live: "index.html" + suffix,
       zukan: "../zukan.html" + suffix,
       faq: state.lang === "en" ? "../en/guide.html" : "../guide.html",
-      memories: "../index.html" + suffix + "#memories",
+      memories: "../journal.html" + suffix,
+      privacy: "../privacy.html" + suffix,
     };
     document.querySelectorAll("[data-live-link]").forEach(function (link) {
       var key = link.getAttribute("data-live-link");
@@ -1127,7 +1264,11 @@
     }
     document.getElementById("btn-start").textContent = t("startGps");
     document.getElementById("btn-demo").textContent = t("startDemo");
-    document.getElementById("btn-lang").textContent = state.lang === "ja" ? "EN" : "日本語";
+    document.querySelectorAll("[data-live-lang]").forEach(function (button) {
+      var active = button.getAttribute("data-live-lang") === state.lang;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
     syncRunControls();
     document.getElementById("set-title").textContent = t("settings");
     document.getElementById("set-vib-l").textContent = t("vibL");
@@ -1155,6 +1296,8 @@
     document.getElementById("btn-stop").textContent = t("stop");
     document.getElementById("btn-close-settings").textContent = t("close");
     document.getElementById("set-note").textContent = t("note");
+    var privacyLink = document.getElementById("set-privacy-link");
+    if (privacyLink) privacyLink.textContent = t("privacy");
     document.getElementById("demo-title").textContent = t("demoTitle");
     document.getElementById("demo-desc").textContent = t("demoDesc");
     document.getElementById("demo-from-l").textContent = t("demoFrom");
@@ -1166,13 +1309,18 @@
     document.getElementById("btn-demo-cancel").textContent = t("cancel");
     document.getElementById("btn-demo-start").textContent = t("depart");
     updateChromeLinks();
+    updateNativeGuide();
     if (state.mode === "idle") setStatus("", t("waiting"));
     render();
   }
 
-  document.getElementById("btn-lang").addEventListener("click", function () {
-    state.lang = state.lang === "ja" ? "en" : "ja";
-    applyLang();
+  document.querySelectorAll("[data-live-lang]").forEach(function (button) {
+    button.addEventListener("click", function () {
+      var nextLang = button.getAttribute("data-live-lang");
+      if (nextLang === state.lang) return;
+      state.lang = nextLang;
+      applyLang();
+    });
   });
   document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);
   document.getElementById("btn-pause").addEventListener("click", togglePause);
@@ -1196,6 +1344,7 @@
     else if (state.dirMode === "up") state.dir = -1;
     else { state.dir = 0; state.dirAccum = 0; }
     document.getElementById("set-dir").value = state.dirMode;
+    updateNativeGuide();
     render();
   });
   document.getElementById("btn-settings").addEventListener("click", function () {
@@ -1219,6 +1368,7 @@
     else if (state.dirMode === "up") state.dir = -1;
     else { state.dir = 0; state.dirAccum = 0; }
     document.getElementById("settings").classList.add("hidden");
+    updateNativeGuide();
     render();
   });
   document.getElementById("btn-stop").addEventListener("click", function () {

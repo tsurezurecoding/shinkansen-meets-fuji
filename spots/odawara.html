@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../live/index.html">ライブガイド</a>
       <a href="../zukan.html">車窓図鑑</a>
       <a href="../guide.html">FAQ</a>
-      <a href="../index.html#memories">獲得メダル</a>
+      <a href="../journal.html">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="active" href="odawara.html">日本語</a>
@@ -163,14 +164,12 @@
         <figcaption>
           <strong>初島: 静岡県唯一の有人島</strong>
           <span><a href="https://cotetu.seesaa.net/article/516720935.html" rel="noopener" target="_blank">@letus10 / 新幹線の車窓から</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../images/thumbs/20250524_atami_castle_letus10.webp" alt="新幹線のA席側から見える熱海城">
         <figcaption>
           <strong>熱海城: 1959年竣工の観光施設</strong>
           <span><a href="https://cotetu.seesaa.net/article/516721203.html" rel="noopener" target="_blank">@letus10 / 新幹線の車窓から</a></span>
-          
         </figcaption>
       </figure></div>
       </section>

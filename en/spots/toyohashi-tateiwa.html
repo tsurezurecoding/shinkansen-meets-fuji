@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../../live/index.html?lang=en">Live Guide</a>
       <a href="../../zukan.html?lang=en">Field Guide</a>
       <a href="../../en/guide.html">FAQ</a>
-      <a href="../../index.html?lang=en#memories">Medals</a>
+      <a href="../../journal.html?lang=en">Journal</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="" href="../../spots/toyohashi-tateiwa.html">日本語</a>
@@ -105,7 +106,7 @@
     <article class="spot-page-article">
       <p class="eyebrow">TOKAIDO SHINKANSEN WINDOW VIEW</p>
       <h1>What is the upright rock seen from the Shinkansen near Toyohashi?</h1>
-      <p class="spot-page-lead">It is Toyohashi Tateiwa, a striking rock outcrop after Lake Hamana.</p>
+      <p class="spot-page-lead">A standing rock after Lake Hamana.</p>
       <div class="spot-page-actions spot-page-actions-top">
         <a class="btn btn-primary" href="../../index.html?lang=en#journey">Find your train</a>
         <a class="btn btn-ghost" href="../../index.html?lang=en#spot-toyohashi-tateiwa">Open this view in the app</a>
@@ -161,21 +162,18 @@
         <figcaption>
           <strong>Shot from the Shinkansen window on September 23, 2021</strong>
           <span><a href="https://x.com/Pato_727/status/1443264581577502720" rel="noopener" target="_blank">@Pato_727</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../../images/thumbs/20191027_toyohashi_tateiwa_aosemi1995.webp" alt="Toyohashi Tateiwa Rock from Seat E">
         <figcaption>
           <strong>A mysterious rocky hill that appears briefly from the Shinkansen window</strong>
           <span><a href="https://x.com/aosemi1995/status/1188265245686427654" rel="noopener" target="_blank">@aosemi1995</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../../images/thumbs/20220626_toyohashi_tateiwa_suyqs3wr42jnm5i.webp" alt="Toyohashi Tateiwa Rock from the train window">
         <figcaption>
           <strong>Its scale is moving when seen in person</strong>
           <span><a href="https://x.com/SUyqs3wR42jNm5I/status/1541009819804778497" rel="noopener" target="_blank">@SUyqs3wR42jNm5I</a></span>
-          
         </figcaption>
       </figure></div>
       </section>
@@ -187,7 +185,7 @@
         <strong>CELLOTAPE Wall Sign</strong>
         <span>A giant tape sign.</span>
       </a><a href="genki-sign.html">
-        <img src="../../images/thumbs/20250608_genki_sign_letus10.webp" alt="Shippei Cheer-up Signs" loading="lazy" decoding="async">
+        <img src="../../images/thumbs/20260712_genki_sign_michikusa.webp" alt="Shippei Cheer-up Signs" loading="lazy" decoding="async">
         <small>Related</small>
         <strong>Shippei Cheer-up Signs</strong>
         <span>Three signs that lift the ride.</span>

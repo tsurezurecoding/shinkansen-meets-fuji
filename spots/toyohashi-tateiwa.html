@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../live/index.html">ライブガイド</a>
       <a href="../zukan.html">車窓図鑑</a>
       <a href="../guide.html">FAQ</a>
-      <a href="../index.html#memories">獲得メダル</a>
+      <a href="../journal.html">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="active" href="toyohashi-tateiwa.html">日本語</a>
@@ -152,7 +153,7 @@
         <p>浜松 → 豊橋が近づいたら、E席・山側の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。</p>
         <p>はっきり見えるのは数秒ほど。案内が出てからカメラを探すより、先に座席側と窓の方向を決めておくと拾いやすくなります。</p>
         <h3>2. 見どころ</h3>
-        <p>林の輪郭から岩壁だけが縦に突き出す、不自然なほど強いシルエットが見どころです。「あれは何？」と思った瞬間に見失いやすいので、浜名湖を過ぎたら先にE席側へ目を向けてください。</p>
+        <p>林の輪郭から岩壁だけが縦に突き出す、不自然なほど強いシルエットが見どころです。『あれは何？』と思った瞬間に見失いやすいので、浜名湖を過ぎたら先にE席側へ目を向けてください。</p>
       </section>
       <section class="spot-page-section">
         <h2>写真で見る豊橋の立岩</h2>
@@ -161,21 +162,18 @@
         <figcaption>
           <strong>2021年9月23日新幹線の車窓から撮影</strong>
           <span><a href="https://x.com/Pato_727/status/1443264581577502720" rel="noopener" target="_blank">@Pato_727</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../images/thumbs/20191027_toyohashi_tateiwa_aosemi1995.webp" alt="新幹線のE席側から見える豊橋の立岩">
         <figcaption>
           <strong>新幹線の窓から一瞬見える不思議な岩山</strong>
           <span><a href="https://x.com/aosemi1995/status/1188265245686427654" rel="noopener" target="_blank">@aosemi1995</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../images/thumbs/20220626_toyohashi_tateiwa_suyqs3wr42jnm5i.webp" alt="車窓から見える豊橋の立岩">
         <figcaption>
           <strong>実際に見るとその雄大さに感動</strong>
           <span><a href="https://x.com/SUyqs3wR42jNm5I/status/1541009819804778497" rel="noopener" target="_blank">@SUyqs3wR42jNm5I</a></span>
-          
         </figcaption>
       </figure></div>
       </section>
@@ -187,7 +185,7 @@
         <strong>セロテープの壁看板</strong>
         <span>巨大なセロテープ看板。</span>
       </a><a href="genki-sign.html">
-        <img src="../images/thumbs/20250608_genki_sign_letus10.webp" alt="しっぺいの応援看板" loading="lazy" decoding="async">
+        <img src="../images/thumbs/20260712_genki_sign_michikusa.webp" alt="しっぺいの応援看板" loading="lazy" decoding="async">
         <small>関連</small>
         <strong>しっぺいの応援看板</strong>
         <span>元気が出る三連看板。</span>

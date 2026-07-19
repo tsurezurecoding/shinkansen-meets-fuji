@@ -8,7 +8,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
-const today = "2026-07-09";
+const today = "2026-07-19";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
@@ -250,7 +250,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブガイド" : "Live Guide"}</a>
       <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#memories">${lang === "ja" ? "獲得メダル" : "Medals"}</a>
+      <a href="${prefix}journal.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "メダル帖" : "Journal"}</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="${jaActive.trim()}" href="${escapeHTML(jaHref)}">日本語</a>
@@ -266,7 +266,8 @@ function analyticsSnippet() {
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -379,13 +380,12 @@ function photoGalleryHTML(spot, lang, prefix) {
     const creditHTML = href
       ? `<a href="${escapeHTML(href)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
       : escapeHTML(credit);
-    const date = item.date ? `<span>${escapeHTML(item.date)}</span>` : "";
+    const date = item.date ? `\n          <span>${escapeHTML(item.date)}</span>` : "";
     return `<figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(thumbnailSrc(item.src))}" alt="${escapeHTML(localized(item.alt, lang) || ui.photoAlt(data.name))}">
         <figcaption>
           <strong>${note ? escapeHTML(note) : escapeHTML(ui.photoFallback(data.name, index))}</strong>
-          <span>${creditHTML}</span>
-          ${date}
+          <span>${creditHTML}</span>${date}
         </figcaption>
       </figure>`;
   }).join("");
@@ -923,9 +923,11 @@ function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly" },
+    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
+    { loc: `${siteRoot}/privacy.html`, priority: "0.3", changefreq: "yearly" },
   ];
   const spotUrls = SPOTS.flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),

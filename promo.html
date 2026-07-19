@@ -14,7 +14,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -227,7 +228,7 @@
         phoneTitle: "東京 → 新大阪",
         pick1: "09:12 東京発", pick2: "E席",
         rows: [["09:55", "富士山", "E席"], ["10:25", "浜名湖", "E席"], ["11:08", "彦根城", "E席"]],
-        photos: ["富士山", "浜名湖", "清洲城", "伊吹山"],
+        photos: ["富士山", "浜名湖", "掛川城", "伊吹山"],
         seatE: ["地図で見る", "現在地と、次に見える車窓の位置関係"],
         seatA: ["音声で聞く", "窓を見たまま、まもなくの景色を案内"],
       },
@@ -249,7 +250,7 @@
         phoneTitle: "Tokyo → Shin-Osaka",
         pick1: "09:12 from Tokyo", pick2: "Seat E",
         rows: [["09:55", "Mt. Fuji", "E"], ["10:25", "Lake Hamana", "E"], ["11:08", "Hikone Castle", "E"]],
-        photos: ["Mt. Fuji", "Lake Hamana", "Kiyosu Castle", "Mt. Ibuki"],
+        photos: ["Mt. Fuji", "Lake Hamana", "Kakegawa Castle", "Mt. Ibuki"],
         seatE: ["Map view", "Your position and the next window view"],
         seatA: ["Audio guide", "Hear what is coming up while watching outside"],
       },
@@ -258,7 +259,7 @@
     const photoCuts = [
       "images/20240211_Mt.Fuji.jpg",
       "images/20260505_hamanako_design_photosy.jpg",
-      "images/20260530_kiyosu_castle.jpg",
+      "images/20260712_kakegawa_castle_michikusa.jpg",
       "images/20240114_ibukiyama.png",
     ];
 

@@ -659,12 +659,6 @@ const SPOTS = [
         date: "2023-09-13",
         note: { ja: "小麦色の田んぼと雪のない富士山の対比もまた美しい", en: "The contrast between wheat-colored fields and a snowless Fuji is beautiful too." },
       },
-      {
-        src: "images/20260516_fuji_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-16",
-      },
     ],
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },

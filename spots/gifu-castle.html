@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../live/index.html">ライブガイド</a>
       <a href="../zukan.html">車窓図鑑</a>
       <a href="../guide.html">FAQ</a>
-      <a href="../index.html#memories">獲得メダル</a>
+      <a href="../journal.html">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="active" href="gifu-castle.html">日本語</a>
@@ -156,14 +157,12 @@
         <figcaption>
           <strong>岐阜城の車窓写真 1</strong>
           <span><a href="https://cotetu.seesaa.net/article/518296647.html" rel="noopener" target="_blank">@letus10 / 新幹線の車窓から</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../images/thumbs/20250927_gifu_castle_2_letus10.webp" alt="東海道本線側から見た岐阜城">
         <figcaption>
           <strong>岐阜城の車窓写真 2</strong>
           <span><a href="https://cotetu.seesaa.net/article/518296647.html" rel="noopener" target="_blank">@letus10 / 新幹線の車窓から</a></span>
-          
         </figcaption>
       </figure></div>
       </section>

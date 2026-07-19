@@ -165,7 +165,7 @@ button { font-family: inherit; cursor: pointer; }
   background: rgba(255,255,255,0.16);
   opacity: 1;
 }
-.btn-wide { width: 100%; margin-top: 8px; }
+.btn-wide { width: 100%; margin-top: 8px; white-space: nowrap; }
 .btn-small { padding: 9px 18px; font-size: 13px; }
 
 /* ===== Sections ===== */
@@ -231,6 +231,8 @@ button { font-family: inherit; cursor: pointer; }
   margin-left: auto; margin-right: auto; line-height: 1.85;
   text-wrap: balance;
 }
+/* Meaningful copy chunks create preferred wrap points without forcing a line break. */
+.copy-chunk { display: inline-block; }
 
 /* ===== Field guide page ===== */
 .field-guide-page {
@@ -524,28 +526,6 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   border: 1.5px solid var(--accent); color: var(--accent); background: #fff;
   border-radius: 99px; padding: 9px 14px; font-size: 13px; font-weight: 700; white-space: nowrap;
 }
-.seat-tip { margin-top: 14px; font-size: 12px; color: var(--ink-soft); text-align: center; }
-.journey-live-banner {
-  width: min(720px, 100%);
-  margin: -2px auto 18px;
-  padding: 12px 14px;
-  border: 1px solid rgba(125,155,192,0.28);
-  border-radius: 14px;
-  background: rgba(255,255,255,0.7);
-  text-align: center;
-  font-size: 13px;
-  line-height: 1.6;
-}
-.journey-live-banner a {
-  color: var(--night);
-  text-decoration: none;
-  font-weight: 700;
-}
-.journey-live-banner a:hover,
-.journey-live-banner a:focus-visible {
-  text-decoration: underline;
-}
-
 /* ===== Next-up banner ===== */
 .nextup {
   position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%);
@@ -1765,6 +1745,22 @@ body.modal-open { overflow: hidden; }
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.18em;
+}
+
+.journal-teaser {
+  text-align: center;
+}
+
+.journal-teaser-link {
+  margin-top: 18px;
+}
+
+.journal-page main {
+  min-height: 70vh;
+}
+
+.journal-page #memories {
+  padding-top: 48px;
 }
 .stamp-heading::before,
 .stamp-heading::after {

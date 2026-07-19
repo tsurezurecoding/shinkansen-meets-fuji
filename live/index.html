@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -17,7 +17,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -62,9 +63,12 @@
       <a href="index.html" data-live-link="live" data-live-copy="navLive" aria-current="page">ライブガイド</a>
       <a href="../zukan.html" data-live-link="zukan" data-live-copy="navBrowse">車窓図鑑</a>
       <a href="../guide.html" data-live-link="faq" data-live-copy="navFaq">FAQ</a>
-      <a href="../index.html#memories" data-live-link="memories" data-live-copy="navMedals">獲得メダル</a>
+      <a href="../journal.html" data-live-link="memories" data-live-copy="navMedals">メダル帖</a>
     </nav>
-    <button type="button" class="live-lang-toggle" id="btn-lang" aria-label="Language">EN</button>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-live-lang="ja">日本語</button>
+      <button type="button" data-live-lang="en">EN</button>
+    </div>
   </header>
 
   <div id="app">
@@ -185,6 +189,7 @@
           <button id="btn-close-settings" class="primary-btn">閉じる</button>
         </div>
         <p class="set-note" id="set-note">現在地は車窓案内の計算に使います。外部サーバー等に保存しません。地図表示では外部の地図データを取得します。</p>
+        <p class="set-note set-policy"><a id="set-privacy-link" href="../privacy.html" data-live-link="privacy">プライバシーポリシー</a></p>
       </div>
     </div>
 

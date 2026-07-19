@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../live/index.html">ライブガイド</a>
       <a href="../zukan.html">車窓図鑑</a>
       <a href="../guide.html">FAQ</a>
-      <a href="../index.html#memories">獲得メダル</a>
+      <a href="../journal.html">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="active" href="nichiban-anjo.html">日本語</a>
@@ -156,7 +157,6 @@
         <figcaption>
           <strong>ニチバン安城工場のセロテープの壁看板</strong>
           <span><a href="https://cotetu.seesaa.net/article/510591087.html" rel="noopener" target="_blank">@letus10 / 新幹線の車窓から</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../images/thumbs/20260629_nichiban_anjo_night_michikusa.webp" alt="夜の新幹線から見えるセロテープの壁看板">
@@ -175,7 +175,7 @@
         <strong>豊橋の立岩</strong>
         <span>浜名湖のあと、岩が立つ。</span>
       </a><a href="genki-sign.html">
-        <img src="../images/thumbs/20250608_genki_sign_letus10.webp" alt="しっぺいの応援看板" loading="lazy" decoding="async">
+        <img src="../images/thumbs/20260712_genki_sign_michikusa.webp" alt="しっぺいの応援看板" loading="lazy" decoding="async">
         <small>関連</small>
         <strong>しっぺいの応援看板</strong>
         <span>元気が出る三連看板。</span>

@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -97,7 +98,7 @@
       <a href="live/index.html" data-live-nav data-i18n="navLive">ライブガイド</a>
       <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
       <a href="guide.html" data-guide-nav data-i18n="navFaq">FAQ</a>
-      <a href="index.html#memories" data-i18n="navMedals">獲得メダル</a>
+      <a href="journal.html" data-i18n="navMedals">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="ja">日本語</button>
@@ -136,10 +137,8 @@
     <div class="section-head">
       <p class="eyebrow" data-i18n="setupEyebrow">YOUR JOURNEY</p>
       <h2 data-i18n="setupTitle">きょうの旅を教えてください</h2>
-      <p class="section-sub" data-i18n="setupSub">時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。</p>
+      <p class="section-sub" data-i18n="setupSub"><span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">見どころの時刻と座席側を調べます。</span></p>
     </div>
-    <p class="journey-live-banner"><a href="live/index.html" data-live-nav data-i18n="journeyLiveBanner">乗車中はGPSライブガイドへ。音声が次の車窓を先に知らせます。</a></p>
-
     <div class="journey-desktop-grid">
       <div class="journey-form-pane">
         <div class="setup-card">
@@ -163,7 +162,6 @@
           </div>
           <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">この時間の列車をさがす</button>
           <div class="train-results" id="trainResults" hidden></div>
-          <p class="seat-tip" data-i18n="seatTipNote">乗車中はライブガイドがおすすめです。次に見える景色を聞きながら追えます。</p>
         </div>
       </div>
 
@@ -213,30 +211,21 @@
     <div class="nextup-count" id="nextupCount">—</div>
   </div>
 
-  <!-- ===== Medals / stamps ===== -->
-  <section class="section" id="memories">
+  <!-- ===== Journal teaser ===== -->
+  <section class="section journal-teaser" id="memories">
     <div class="section-head">
       <p class="eyebrow" data-i18n="memEyebrow">YOUR JOURNAL</p>
       <h2 data-i18n="memTitle">車窓メダル帖</h2>
-      <p class="section-sub" data-i18n="memSub">「見えた!」を押すと、旅のメダルが育ちます。</p>
+      <p class="section-sub" data-i18n="journalTeaser">見つけた景色はスタンプに。集めるほどメダルが育ちます。</p>
     </div>
-    <div class="journal-guide">
-      <strong data-i18n="journalGuideTitle">メダルは進捗、スタンプは記録</strong>
-      <span data-i18n="journalGuideBody">見つけた景色が下のスタンプに残り、<br>その集まりでメダルが育ちます。</span>
-    </div>
-    <div class="medal-board" id="medalBoard" aria-live="polite"></div>
-    <h3 class="stamp-heading" data-i18n="stampHeading">スタンプ</h3>
-    <div class="stampboard" id="stampboard"></div>
-    <div class="mem-actions">
-      <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">スタンプをリセット</button>
-    </div>
+    <a class="btn btn-ghost journal-teaser-link" href="journal.html" data-i18n="journalCta">メダルとスタンプを見る</a>
   </section>
 
   <!-- ===== Footer ===== -->
   <footer class="footer">
     <p class="footer-brand"><span data-i18n="brandName">新幹線の窓</span> <span data-i18n="brandSub">旅の瞬間を見逃さない</span></p>
     <p data-i18n="footerNote">時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>
-    <p class="footer-links"><a href="guide.html" data-guide-nav data-i18n="footerGuide">富士山の見方</a> · <a href="references.html" data-i18n="footerReferences">車窓リンク集</a> · <a href="sumie.html">おまけ: 墨絵車窓</a></p>
+    <p class="footer-links"><a href="guide.html" data-guide-nav data-i18n="footerGuide">富士山の見方</a> · <a href="references.html" data-i18n="footerReferences">車窓リンク集</a> · <a href="sumie.html">おまけ: 墨絵車窓</a> · <a href="somato.html">車窓走馬灯</a> · <a href="privacy.html" data-i18n="footerPrivacy">プライバシー</a></p>
     <p class="footer-credit" data-i18n="footerCredit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 

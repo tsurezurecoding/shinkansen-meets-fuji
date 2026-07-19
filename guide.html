@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="ja">
 <head>
   <meta charset="utf-8">
@@ -69,7 +69,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -114,7 +115,7 @@
       <a href="live/index.html">ライブガイド</a>
       <a href="zukan.html">車窓図鑑</a>
       <a href="guide.html" aria-current="page">FAQ</a>
-      <a href="index.html#memories">獲得メダル</a>
+      <a href="journal.html">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="active" href="guide.html">日本語</a><a href="en/guide.html">EN</a>
@@ -294,7 +295,7 @@
   <footer class="footer">
     <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
     <p>時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>
-    <p class="footer-links"><a href="guide.html">富士山FAQ</a> · <a href="references.html">車窓リンク集</a></p>
+    <p class="footer-links"><a href="guide.html">富士山FAQ</a> · <a href="references.html">車窓リンク集</a> · <a href="privacy.html">プライバシー</a></p>
     <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 </body>

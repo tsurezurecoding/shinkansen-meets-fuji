@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../../live/index.html?lang=en">Live Guide</a>
       <a href="../../zukan.html?lang=en">Field Guide</a>
       <a href="../../en/guide.html">FAQ</a>
-      <a href="../../index.html?lang=en#memories">Medals</a>
+      <a href="../../journal.html?lang=en">Journal</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="" href="../../spots/fuji.html">日本語</a>
@@ -118,7 +119,7 @@
         <div><dt>Section</dt><dd>Mishima → Shin-Fuji</dd></div>
         <div><dt>Seat side</dt><dd>Seat E · mountain side</dd></div>
         <div><dt>Timing</dt><dd>About 43 minutes after leaving Tokyo on a Nozomi train</dd></div>
-        <div><dt>Photos</dt><dd>6 photos</dd></div>
+        <div><dt>Photos</dt><dd>5 photos</dd></div>
       </dl>
       <section class="spot-page-section">
         <h2>How to find Mt. Fuji</h2>
@@ -156,7 +157,6 @@
         <figcaption>
           <strong>Dusk is one of Mt. Fuji's most beautiful moments.</strong>
           <span><a href="https://x.com/rumireports/status/1362350607273586688" rel="noopener" target="_blank">@rumireport</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../../images/thumbs/20240211_fuji_michikusa.webp" alt="Mt. Fuji from Seat E">
@@ -170,14 +170,12 @@
         <figcaption>
           <strong>The contrast with the green rice fields is beautiful.</strong>
           <span><a href="https://x.com/STTraveler/status/2066661705372033042" rel="noopener" target="_blank">@STTraveler</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../../images/thumbs/20260619_fuji_sttraveler.webp" alt="Mt. Fuji from Seat E">
         <figcaption>
           <strong>A dreamlike Mt. Fuji faintly floating beyond the town.</strong>
           <span><a href="https://x.com/STTraveler/status/2067980954287951976" rel="noopener" target="_blank">@STTraveler</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../../images/thumbs/20230913_fuji_michikusa.webp" alt="Mt. Fuji from Seat E">
@@ -185,13 +183,6 @@
           <strong>The contrast between wheat-colored fields and a snowless Fuji is beautiful too.</strong>
           <span>michikusa</span>
           <span>2023-09-13</span>
-        </figcaption>
-      </figure><figure class="spot-page-photo">
-        <img loading="lazy" decoding="async" src="../../images/thumbs/20260516_fuji_michikusa.webp" alt="Mt. Fuji from Seat E">
-        <figcaption>
-          <strong>Mt. Fuji window photo 6</strong>
-          <span>michikusa</span>
-          <span>2026-05-16</span>
         </figcaption>
       </figure></div>
       </section>

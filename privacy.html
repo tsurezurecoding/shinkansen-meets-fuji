@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>プライバシーポリシー | 新幹線の窓</title>
+  <meta name="description" content="新幹線の窓のプライバシーポリシーです。位置情報、アクセス解析、外部地図サービス、問い合わせ先について説明します。">
+  <meta name="theme-color" content="#101c2c">
+  <link rel="canonical" href="https://www.michikusa-travel.com/privacy.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="プライバシーポリシー | 新幹線の窓">
+  <meta property="og:description" content="新幹線の窓が扱う情報と、その取り扱いについて。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:url" content="https://www.michikusa-travel.com/privacy.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name">新幹線の窓</span>
+        <small class="brand-sub">旅の瞬間を見逃さない</small>
+      </span>
+    </a>
+    <a class="topbar-link" href="index.html">アプリへ戻る</a>
+  </header>
+
+  <main>
+    <section class="reference-hero">
+      <p class="eyebrow">PRIVACY POLICY</p>
+      <h1>プライバシーポリシー</h1>
+      <p>最終更新日: 2026年7月19日</p>
+      <p>「新幹線の窓」(Webサイト https://www.michikusa-travel.com/ およびAndroidアプリ、以下「本サービス」) は、道草 / Michikusa（個人運営）が運営しています。本ポリシーは、本サービスが扱う情報と、その取り扱いを説明するものです。</p>
+    </section>
+
+    <section class="reference-section" aria-labelledby="privacyTitle">
+      <div class="section-head">
+        <p class="eyebrow">DATA HANDLING</p>
+        <h2 id="privacyTitle">取り扱う情報</h2>
+      </div>
+      <div class="reference-grid reference-grid-single">
+        <article class="reference-card">
+          <h3>位置情報</h3>
+          <p>ライブ地図・車窓ガイド機能では、お使いの端末の位置情報を利用します。端末が取得した正確なGPS位置情報（緯度・経度）は、車窓スポットの接近判定と現在地表示のため端末内で処理し、運営者のサーバーへ送信・保存せず、広告やアクセス解析にも使用しません。</p>
+          <p>Androidアプリで利用者がライブガイドを開始すると、アプリが画面に表示されていないとき（他のアプリを表示しているときや画面消灯中を含む）も、乗車セッションが終了するまで位置情報を取得し、接近判定と音声案内に使用します。ライブガイドの動作中は継続通知を表示し、アプリまたは通知の「案内を終了」からいつでも停止できます。セッション終了後は位置情報の利用を停止します。</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>アクセス解析</h3>
+          <p>本サービスは Google アナリティクス（GA4）を使用しています。GA4は、閲覧ページ、操作イベント、おおよその地域（IPアドレス由来）、端末情報などを、Cookieまたは類似技術により収集します。</p>
+          <p>これらの情報は、利用状況の把握と改善のために使用します。収集される情報に、氏名、メールアドレス等の個人情報や、端末のGPS位置情報（緯度経度）は含まれません。Googleによるデータの取り扱いは、Googleのプライバシーポリシーをご参照ください。</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>地図の表示</h3>
+          <p>地図の表示にあたり、Google Maps、OpenStreetMap等の外部地図サービスからデータを取得する場合があります。このとき、お使いの端末から各提供元へ、IPアドレスや表示中の地図範囲などの技術情報が送信されることがあります。</p>
+          <p>各提供元における情報の取り扱いは、それぞれのプライバシーポリシーに従います。</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Androidアプリの通知</h3>
+          <p>Androidアプリでは、ライブガイドの動作状況、次の車窓、案内の終了操作を継続通知に表示します。通知は乗車中の案内にのみ使用し、広告には使用しません。</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>アカウント・個人情報</h3>
+          <p>本サービスにアカウント登録機能はありません。氏名、メールアドレス、電話番号などの個人情報の入力を求めることはありません。カメラ、マイク、連絡先も使用しません。</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>問い合わせ</h3>
+          <p>本ポリシーまたは本サービスに関するお問い合わせは、以下のメールアドレスへご連絡ください。</p>
+          <p><a href="mailto:support@michikusa-travel.com">support@michikusa-travel.com</a></p>
+        </article>
+
+        <article class="reference-card">
+          <h3>変更について</h3>
+          <p>本ポリシーは、機能の追加・変更にあわせて改定されることがあります。重要な変更は本ページでお知らせします。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reference-section" lang="en" aria-labelledby="privacyEnglishTitle">
+      <div class="section-head">
+        <p class="eyebrow">ENGLISH</p>
+        <h2 id="privacyEnglishTitle">Privacy Policy</h2>
+      </div>
+      <div class="reference-grid reference-grid-single">
+        <article class="reference-card">
+          <p>Last updated: July 19, 2026</p>
+          <p>"Shinkansen Window" (the website https://www.michikusa-travel.com/ and the Android app; the "Service") is operated by Michikusa. This policy explains what information the Service handles.</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Location</h3>
+          <p>The live map and window guide use your device's location. Precise GPS coordinates are processed on your device to show your position and detect approaching viewpoints. They are not sent to or stored on our servers and are not used for advertising or analytics.</p>
+          <p>When you start Live Guide in the Android app, the Service continues to access location until the ride session ends, including while another app is displayed or the screen is off, to detect approaching viewpoints and play audio guidance. An ongoing notification is shown while guidance is active. You can stop location access and audio guidance at any time from the app or the notification.</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Analytics</h3>
+          <p>We use Google Analytics (GA4), which collects page views, interaction events, approximate region derived from IP address, and device information via cookies or similar technologies. We use this information to understand and improve the Service. This does not include your name, email address, or the device GPS location described above.</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Maps</h3>
+          <p>Map display may fetch data from external providers such as Google Maps and OpenStreetMap. Your device may send technical information such as IP address and the viewed map area to those providers, subject to their respective privacy policies.</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Android notifications</h3>
+          <p>The Android app uses an ongoing notification to show Live Guide status, the next viewpoint, and a stop action. These notifications are used only for ride guidance and not for advertising.</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Accounts and personal data</h3>
+          <p>The Service has no account system and does not ask for personal information such as name, email address, or phone number. It does not use the camera, microphone, or contacts.</p>
+        </article>
+
+        <article class="reference-card">
+          <h3>Contact</h3>
+          <p><a href="mailto:support@michikusa-travel.com">support@michikusa-travel.com</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="reference-policy">
+      <a class="btn btn-primary" href="index.html">新幹線の窓へ戻る</a>
+    </section>
+  </main>
+</body>
+</html>

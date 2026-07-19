@@ -14,11 +14,11 @@ const MSG = {
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "獲得メダル",
+    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "メダル帖",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
-    setupSub: "時刻表に合わせて、富士山も湖も城も見逃さない。方向・乗車駅・出発時刻から、あなたの列車の車窓タイムラインをつくります。",
+    setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">見どころの時刻と座席側を調べます。</span>',
     labelDirection: "方向", labelDeparture: "出発時刻",
     dirWest: "西へ（大阪方面）", dirEast: "東へ（東京方面）",
     btnNow: "これから乗る",
@@ -33,7 +33,6 @@ const MSG = {
     readGuide: "ガイドを読む",
     estimateTag: "目安時間", estimateNote: "列車を選ぶと実ダイヤに切替", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
-    seatTipNote: "乗車中はライブガイドがおすすめです。次に見える景色を聞きながら追えます。",
     nextupLabel: "つぎの車窓",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
@@ -42,6 +41,8 @@ const MSG = {
     previewBannerBody: "列車を選ぶと、あなた用に切り替わります。",
     memEyebrow: "YOUR JOURNAL", memTitle: "車窓メダル帖",
     memSub: "「見えた!」を押すと、旅のメダルが育ちます。",
+    journalCta: "メダルとスタンプを見る",
+    journalTeaser: "見つけた景色はスタンプに。集めるほどメダルが育ちます。",
     journalGuideTitle: "メダルは進捗、スタンプは記録",
     journalGuideBody: "見つけた景色が下のスタンプに残り、<br>その集まりでメダルが育ちます。",
     stampHeading: "スタンプ",
@@ -71,6 +72,7 @@ const MSG = {
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
+    footerPrivacy: "プライバシー",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
     faqEyebrow: "TRAVEL FAQ",
     faqTitle: "新幹線から富士山を見るには？",
@@ -91,7 +93,7 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。", journeyLiveBanner: "乗車中はGPSライブガイドへ。音声が次の車窓を先に知らせます。",
+    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -107,11 +109,11 @@ const MSG = {
     heroCtaStart: "Build my guide",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
-    navQuick: "Home", navStart: "Train Search", navLive: "Live Guide", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Medals",
+    navQuick: "Home", navStart: "Train Search", navLive: "Live Guide", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Journal",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
-    setupSub: "Use the timetable to catch Fuji, lakes, castles, and more. Add direction, boarding station, and departure time to build your train's window timeline.",
+    setupSub: '<span class="copy-chunk">Choose a direction, station, and departure time.</span> <span class="copy-chunk">Check when and which side to watch.</span>',
     labelDirection: "Direction", labelDeparture: "Departure",
     dirWest: "Westbound (for Osaka)", dirEast: "Eastbound (for Tokyo)",
     btnNow: "Boarding soon",
@@ -126,7 +128,6 @@ const MSG = {
     readGuide: "Read guide",
     estimateTag: "Estimate times", estimateNote: "Pick a train for real timetable", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
-    seatTipNote: "On board, the Live Guide audio is the easiest way to follow the next view.",
     nextupLabel: "NEXT VIEW",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
@@ -135,6 +136,8 @@ const MSG = {
     previewBannerBody: "Pick your train to make it yours.",
     memEyebrow: "YOUR JOURNAL", memTitle: "Window Medal Book",
     memSub: "Tap “Spotted!” and your travel medals grow.",
+    journalCta: "Open stamps and medals",
+    journalTeaser: "Each view becomes a stamp, and every stamp grows your medals.",
     journalGuideTitle: "Medals show progress. Stamps keep the record.",
     journalGuideBody: "Each spotted view becomes a stamp, and those stamps grow your medals.",
     stampHeading: "Stamps",
@@ -164,6 +167,7 @@ const MSG = {
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerGuide: "How to see Mt. Fuji",
     footerReferences: "Window links",
+    footerPrivacy: "Privacy",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
     faqEyebrow: "TRAVEL FAQ",
     faqTitle: "How do you see Mt. Fuji from the Shinkansen?",
@@ -184,7 +188,7 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.", journeyLiveBanner: "On board, use GPS Live Guide. The audio guide tells you what is coming up.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -1600,6 +1604,20 @@ function bindTimelineControls() {
   });
 }
 
+function bindJournalControls() {
+  $("#resetBtn")?.addEventListener("click", () => {
+    if (confirm(t("confirmReset"))) {
+      stamps = {};
+      localStorage.setItem("mado-stamps", "{}");
+      renderMedalBoard();
+      renderStampboard();
+      renderGallery();
+      const tl = $("#timelineSection");
+      if (tl && !tl.hidden) renderTimeline();
+    }
+  });
+}
+
 /* ---------- init ---------- */
 function init() {
   if ($("#heroSky")) renderHero();
@@ -1617,6 +1635,7 @@ function init() {
   }));
   bindGalleryControls();
   bindTimelineControls();
+  bindJournalControls();
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeSpotModal("escape");
@@ -1649,14 +1668,6 @@ function init() {
     showTrainResults();
   });
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
-  $("#resetBtn").addEventListener("click", () => {
-    if (confirm(t("confirmReset"))) {
-      stamps = {}; localStorage.setItem("mado-stamps", "{}");
-      renderMedalBoard(); renderStampboard(); renderGallery();
-      const tl = $("#timelineSection");
-      if (tl && !tl.hidden) renderTimeline();
-    }
-  });
   applyLang();
   renderInitialTimelinePreview();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));

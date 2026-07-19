@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../../live/index.html?lang=en">Live Guide</a>
       <a href="../../zukan.html?lang=en">Field Guide</a>
       <a href="../../en/guide.html">FAQ</a>
-      <a href="../../index.html?lang=en#memories">Medals</a>
+      <a href="../../journal.html?lang=en">Journal</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="" href="../../spots/odawara-castle.html">日本語</a>
@@ -156,14 +157,12 @@
         <figcaption>
           <strong>On Nozomi, it really is over in a blink.</strong>
           <span><a href="https://x.com/Castle_Traveler/status/1992009734854218106" rel="noopener" target="_blank">@Castle_Traveler</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../../images/thumbs/20250526_odawara_castle_letus10.webp" alt="Odawara Castle from Seat A">
         <figcaption>
           <strong>On Nozomi, it really is over in a blink.</strong>
           <span><a href="https://cotetu.seesaa.net/article/516754194.html" rel="noopener" target="_blank">@letus10 / Shinkansen window blog</a></span>
-          
         </figcaption>
       </figure></div>
       </section>

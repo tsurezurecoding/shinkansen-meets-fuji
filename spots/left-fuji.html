@@ -49,7 +49,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -94,7 +95,7 @@
       <a href="../live/index.html">ライブガイド</a>
       <a href="../zukan.html">車窓図鑑</a>
       <a href="../guide.html">FAQ</a>
-      <a href="../index.html#memories">獲得メダル</a>
+      <a href="../journal.html">メダル帖</a>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <a class="active" href="left-fuji.html">日本語</a>
@@ -122,7 +123,7 @@
       </dl>
       <section class="spot-page-section">
         <h2>左富士の見つけ方</h2>
-        <p>東京から新大阪方面へ向かうなら、静岡駅を過ぎ、安倍川を渡ってまもなく。ふつう富士山はE席のものですが、この短い区間だけ反対のA席側にあらわれます。昔から「幸運の左富士」とも呼ばれる、数十秒だけのごほうび。A席のあなたにも、ちゃんと出番があります。</p>
+        <p>東京から新大阪方面へ向かうなら、静岡駅を過ぎ、安倍川を渡ってまもなく。ふつう富士山はE席のものですが、この短い区間だけ反対のA席側にあらわれます。昔から「幸運の左富士」とも呼ばれる、数秒だけのごほうび。A席のあなたにも、ちゃんと出番があります。</p>
         <p class="spot-page-body-links"><span>もっと見る:</span> <a href="https://trafficnews.jp/post/62565" rel="noopener" target="_blank">乗りものニュース: 左富士</a></p>
         <p>東京から新大阪方面へ向かう場合は、静岡駅を過ぎて安倍川を渡った直後、A席・海側の窓を見てください。新大阪から東京方面へ向かう場合は、通過順が逆になります。</p>
 
@@ -156,7 +157,6 @@
         <figcaption>
           <strong>左富士の車窓写真 1</strong>
           <span><a href="https://x.com/earlyretiremile/status/1777853629682405657" rel="noopener" target="_blank">@earlyretiremile</a></span>
-          
         </figcaption>
       </figure><figure class="spot-page-photo">
         <img loading="lazy" decoding="async" src="../images/thumbs/20260513_left_fuji.webp" alt="新幹線のA席側から見える左富士">
@@ -170,7 +170,6 @@
         <figcaption>
           <strong>左富士の車窓写真 3</strong>
           <span><a href="https://x.com/kawasan3/status/1866984276581028088" rel="noopener" target="_blank">@kawasan3</a></span>
-          
         </figcaption>
       </figure></div>
       </section>

@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -69,7 +69,8 @@
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
       var host = window.location.hostname;
-      var isLocalPreview = window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1";
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
       try {
@@ -294,7 +295,7 @@
   <footer class="footer">
     <p class="footer-brand">Shinkansen Window <span>Do not miss the moment</span></p>
     <p>Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.</p>
-    <p class="footer-links"><a href="guide.html">Mt. Fuji FAQ</a> · <a href="../references.html">Window links</a></p>
+    <p class="footer-links"><a href="guide.html">Mt. Fuji FAQ</a> · <a href="../references.html">Window links</a> · <a href="../privacy.html">Privacy</a></p>
     <p class="footer-credit">Michikusa — unhurried journeys and chance discoveries.</p>
   </footer>
 </body>
