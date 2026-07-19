@@ -34,7 +34,7 @@ var NARRATIONS = {
     "down": {
       "ja": {
         "text": "相模平野越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。日向岡の街並みです。観光名所というより、知っている人だけが窓を見る車窓。富士山を意識しながら、その手前の丘にも目を向けてください。",
-        "speechText": "相模平野越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。ひなたおかの街並みです。観光名所というより、知っている人だけが窓を見る車窓です。富士山を意識しながら、その手前の丘にも目を向けてください。",
+        "speechText": "さがみへいや越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。ひなたおかの街並みです。観光名所というより、知っている人だけが窓を見る車窓です。富士山を意識しながら、その手前の丘にも目を向けてください。",
         "durationSec": 14
       },
       "en": {
@@ -45,7 +45,7 @@ var NARRATIONS = {
     "up": {
       "ja": {
         "text": "小田原から新横浜へ向かう途中、E席側の丘にそろった三角屋根がならびます。日向岡の街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
-        "speechText": "小田原から新横浜へ向かう途中、E席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
+        "speechText": "小田原から新横浜へ向かう途中、E席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、さがみへいや越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
         "durationSec": 14
       },
       "en": {
@@ -175,8 +175,9 @@ var NARRATIONS = {
   "sagami-fuji": {
     "down": {
       "ja": {
-        "text": "東京を出て最初に探したい富士山が、相模平野越しの富士山です。E席側、丹沢と箱根の山なみのあいだに、小さく見えることがあります。新富士付近の主役とは違う、遠くに見つける富士山です。",
-        "durationSec": 12
+        "text": "東京を出て最初に探したい富士山が、相模平野越しの富士山です。E席側、丹沢山地の背後に雄大な富士山を望むことができます。空気が澄んだ日は、平野と山なみの奥に大きな姿が浮かびます。",
+        "durationSec": 12,
+        "speechText": "東京を出て最初に探したい富士山が、さがみへいや越しの富士山です。E席側、丹沢山地の背後に雄大な富士山を望むことができます。空気が澄んだ日は、平野と山なみの奥に大きな姿が浮かびます。"
       },
       "en": {
         "text": "This is the first Fuji view worth searching for after leaving Tokyo. On the Seat E side, Mt. Fuji can appear small and distant beyond the Sagami Plain, framed by the Tanzawa and Hakone mountains. It is quieter than the main Fuji view near Shin-Fuji, but the discovery is part of the pleasure.",
@@ -185,8 +186,9 @@ var NARRATIONS = {
     },
     "up": {
       "ja": {
-        "text": "東京へ近づく前に、相模平野越しの富士山をもう一度探してみてください。E席側、丹沢と箱根の山なみの向こうに小さく見えることがあります。旅の終わりに見つける、控えめな富士山です。",
-        "durationSec": 12
+        "text": "東京へ近づく前に、相模平野越しの富士山をもう一度探してみてください。E席側、丹沢山地の背後に雄大な富士山を望むことができます。旅の終わりに出会える、印象的な富士山です。",
+        "durationSec": 12,
+        "speechText": "東京へ近づく前に、さがみへいや越しの富士山をもう一度探してみてください。E席側、丹沢山地の背後に雄大な富士山を望むことができます。旅の終わりに出会える、印象的な富士山です。"
       },
       "en": {
         "text": "Before the train gets closer to Tokyo, try one more look for Mt. Fuji over the Sagami Plain. On the Seat E side, it can appear small beyond the Tanzawa and Hakone mountains. It is a modest, distant Fuji: a quiet closing view rather than the big main event.",

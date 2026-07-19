@@ -81,7 +81,7 @@ function hinataokaOverride() {
     down: {
       ja: {
         text: "相模平野越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。日向岡の街並みです。観光名所というより、知っている人だけが窓を見る車窓。富士山を意識しながら、その手前の丘にも目を向けてください。",
-        speechText: "相模平野越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。ひなたおかの街並みです。観光名所というより、知っている人だけが窓を見る車窓。富士山を意識しながら、その手前の丘にも目を向けてください。",
+        speechText: "さがみへいや越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。ひなたおかの街並みです。観光名所というより、知っている人だけが窓を見る車窓。富士山を意識しながら、その手前の丘にも目を向けてください。",
       },
       en: {
         text: "As Mt. Fuji starts to appear beyond the Sagami Plain, watch the Seat E side for rows of matching triangular roofs on the hillside. This is Hinataoka: not a famous landmark, but exactly the kind of small window discovery this guide is made for. Keep Fuji in mind, but let your eyes catch the hillside in front of it too.",
@@ -90,7 +90,7 @@ function hinataokaOverride() {
     up: {
       ja: {
         text: "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。日向岡の街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
-        speechText: "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
+        speechText: "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、さがみへいや越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。",
       },
       en: {
         text: "Between Odawara and Shin-Yokohama, look to Seat A for a hillside of matching triangular roofs. This is Hinataoka: a small, satisfying discovery rather than a headline landmark. If you are already watching Mt. Fuji beyond the Sagami Plain, notice the nearer hillside too.",
@@ -157,14 +157,20 @@ function applyAudioCopyOverrides(entries) {
 
   setNarrationText(entries, "solar-ark", "down", "ja", "まもなくソーラーアークです。名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描く建物が現れます。かつて三洋電機、現在のパナソニックによって建てられた太陽光発電モニュメントです。");
   setNarrationText(entries, "solar-ark", "up", "ja", "東京方面へ向かうこのあたりでは、A席側にソーラーアークが見えてきます。巨大な弧を描く建物で、かつて太陽光発電の象徴として建てられたモニュメントです。名所案内には出にくいですが、一度見つけると忘れにくい車窓です。");
+
+  setNarrationText(entries, "sagami-fuji", "down", "ja", "東京を出て最初に探したい富士山が、相模平野越しの富士山です。E席側、丹沢山地の背後に雄大な富士山を望むことができます。空気が澄んだ日は、平野と山なみの奥に大きな姿が浮かびます。");
+  setNarrationText(entries, "sagami-fuji", "up", "ja", "東京へ近づく前に、相模平野越しの富士山をもう一度探してみてください。E席側、丹沢山地の背後に雄大な富士山を望むことができます。旅の終わりに出会える、印象的な富士山です。");
 }
 
 function applyJapaneseSpeechTextPolish(entries) {
   setSpeechText(entries, "tokyo-tower", "down", "まもなく東京タワーです。東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に赤い塔が見えることがあります。旅の序盤に、東京らしい都市の景色を知らせる合図です。");
   setSpeechText(entries, "tokyo-tower", "up", "東京方面へ向かうこのあたりでは、A席側のビルの間に東京タワーが見えることがあります。旅の終わりに東京の街へ戻ってきたことを知らせる合図です。");
 
-  setSpeechText(entries, "hinataoka", "down", "相模平野越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。ひなたおかの街並みです。観光名所というより、知っている人だけが窓を見る車窓です。富士山を意識しながら、その手前の丘にも目を向けてください。");
-  setSpeechText(entries, "hinataoka", "up", "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、相模平野越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。");
+  setSpeechText(entries, "hinataoka", "down", "さがみへいや越しの富士山が見え始めるころ、E席側の丘にそろった三角屋根も見えてきます。ひなたおかの街並みです。観光名所というより、知っている人だけが窓を見る車窓です。富士山を意識しながら、その手前の丘にも目を向けてください。");
+  setSpeechText(entries, "hinataoka", "up", "小田原から新横浜へ向かう途中、A席側の丘にそろった三角屋根がならびます。ひなたおかの街並みです。大きな名所ではありませんが、さがみへいや越しの富士山を見ている流れで、手前の丘にも気づけると少し得をした気分になる景色です。");
+
+  setSpeechText(entries, "sagami-fuji", "down", "東京を出て最初に探したい富士山が、さがみへいや越しの富士山です。E席側、丹沢山地の背後に雄大な富士山を望むことができます。空気が澄んだ日は、平野と山なみの奥に大きな姿が浮かびます。");
+  setSpeechText(entries, "sagami-fuji", "up", "東京へ近づく前に、さがみへいや越しの富士山をもう一度探してみてください。E席側、丹沢山地の背後に雄大な富士山を望むことができます。旅の終わりに出会える、印象的な富士山です。");
 
   setSpeechText(entries, "ota-fuji", "down", "まもなく都内からの富士山です。品川を過ぎて新横浜へ向かう途中、空気が澄んだ日にはE席側に小さく富士山が見えることがあります。新富士の大きな富士山とは違う、都市の向こうに小さく浮かぶ早い合図です。");
   setSpeechText(entries, "ota-fuji", "up", "東京方面へ向かうこのあたりでは、A席側に都内からの富士山が見えることがあります。新富士付近の主役とは違う、都市の向こうに小さく浮かぶ控えめな富士山です。");
