@@ -8,7 +8,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
-const today = "2026-07-19";
+const today = "2026-07-20";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
@@ -924,6 +924,8 @@ function sitemapXML() {
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
+    { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
