@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>富士山 見える予報β | 今日、新幹線から富士山は見えるか | 新幹線の窓</title>
+  <meta name="description" content="今日、新幹線から富士山は見える？山頂の雲と空気の澄みかたから、車窓スポット別・時間別に「見える確率」を予報。出発時刻を入れると通過時刻ちょうどの確率がわかります。">
+  <meta name="robots" content="index,follow">
+  <link rel="canonical" href="https://www.michikusa-travel.com/mieru.html">
+  <link rel="stylesheet" href="style.css?v=20260712-live-guide-ui">
+  <style>
+    /* 見える予報 — 本体パレット(夜明けの車窓)に従う */
+    .mieru-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
+    .mieru-wrap .eyebrow { color: var(--accent); letter-spacing: .18em; font-size: 12px; }
+    .mieru-wrap h1 { font-family: var(--font-serif); font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.4; margin: 6px 0 10px; }
+    .mieru-lead { color: var(--ink-soft); font-size: 14px; max-width: 640px; }
+
+    .mieru-depart { background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 18px 20px; margin: 22px 0; }
+    .mieru-depart label { font-size: 13px; color: var(--ink-soft); margin-right: 14px; }
+    .mieru-depart input, .mieru-depart select { font-family: inherit; font-size: 15px;
+      padding: 5px 9px; margin-left: 6px; border: 1px solid var(--line);
+      border-radius: 8px; background: var(--paper); color: var(--ink); }
+    #mieruRide { margin-top: 12px; font-size: 14px; line-height: 2; }
+    #mieruRide b { color: var(--accent); font-weight: 700; }
+
+    .mieru-spot { background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 18px 20px; margin-bottom: 16px; }
+    .mieru-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .mieru-head h2 { font-family: var(--font-serif); font-size: 17px; font-weight: 600; }
+    .mieru-head .meta { font-size: 11.5px; color: var(--ink-soft); }
+    .mieru-verdict { margin-left: auto; font-size: 13px; color: var(--ink-soft); }
+    .mieru-verdict b { font-size: 1.45em; color: var(--ink); font-weight: 700; }
+
+    .mieru-bars { display: flex; gap: 3px; margin-top: 12px; }
+    .mieru-bar { flex: 1; height: 38px; position: relative;
+      background: var(--paper-deep); border-radius: 4px; overflow: hidden; }
+    .mieru-bar i { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 3px 3px 0 0; }
+    .mieru-bar span { position: absolute; left: 0; right: 0; top: 3px; text-align: center;
+      font-size: 8.5px; color: var(--ink-soft); }
+    .mieru-hours { display: flex; gap: 3px; margin-top: 3px; }
+    .mieru-hours div { flex: 1; text-align: center; font-size: 9px; color: var(--ink-soft); opacity: .7; }
+    .mieru-reason { margin-top: 10px; font-size: 12px; color: var(--ink-soft); }
+
+    .mieru-note { font-size: 11.5px; color: var(--ink-soft); line-height: 1.9;
+      border-top: 1px solid var(--line); margin-top: 26px; padding-top: 14px; }
+    #mieruStatus { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
+  </style>
+</head>
+<body class="spot-page">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name">新幹線の窓</span>
+        <small class="brand-sub">旅の瞬間を見逃さない</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="index.html">TOP</a>
+      <a href="index.html#journey">列車選択</a>
+      <a href="live/index.html">ライブガイド</a>
+      <a href="zukan.html">車窓図鑑</a>
+      <a href="guide.html">FAQ</a>
+      <a href="journal.html">メダル帖</a>
+    </nav>
+  </header>
+  <main>
+    <div class="mieru-wrap">
+      <p class="eyebrow">車窓の天気</p>
+      <h1>富士山 見える予報<small style="font-size:.55em;color:var(--accent);margin-left:8px">β</small></h1>
+      <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見えるか。</span><span class="copy-chunk">山頂にかかる雲と、</span><span class="copy-chunk">視線が抜ける空気の澄みかたから、</span><span class="copy-chunk">車窓スポット別・時間別に</span><span class="copy-chunk">「見える確率」を予報します。</span><span class="copy-chunk">出発時刻を入れると、</span><span class="copy-chunk">それぞれの通過時刻ちょうどの確率がわかります。</span></p>
+
+      <div class="mieru-depart">
+        <label>東京発 <input type="time" id="mieruDep" value="09:00" min="06:00" max="21:00" step="600"></label>
+        <label>日付 <select id="mieruDay"><option value="0">今日</option><option value="1">明日</option></select></label>
+        <div id="mieruRide">計算中…</div>
+      </div>
+
+      <div id="mieruStatus">気象データ取得中…</div>
+      <div id="mieruSpots"></div>
+
+      <p class="mieru-note">
+        予報モデルβ: 見える確率 = (山頂が雲に隠れていない確率) × (視程が実効距離に足りる確率)。
+        視線は靄の層を斜めに抜けて山頂へ向かうため、実効距離は水平距離より短くなります(湿度が高いほど靄層が厚い)。
+        気象データは <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
+        (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>)を利用し、独自の確率へ加工しています。
+        車窓写真の記録による過去検証では、撮影に成功した日の9/10を「見える」と判定できました。
+        通過時刻はのぞみ基準の目安です。天候の急変で外れることがあります。
+        曇りの日の楽しみ方は<a href="guide.html#cloudy">富士山FAQ</a>へ。
+      </p>
+    </div>
+  </main>
+  <footer class="footer">
+    <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
+    <p class="footer-links"><a href="guide.html">富士山FAQ</a> · <a href="references.html">車窓リンク集</a> · <a href="privacy.html">プライバシー</a></p>
+    <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+  </footer>
+
+  <script src="data.js?v=20260713"></script>
+  <script>
+  (function(){
+  "use strict";
+  var SP = (typeof SPOTS !== "undefined" && SPOTS) || window.SPOTS || [];
+  var SUMMIT = [35.3606, 138.7274];
+  var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
+  var H0 = 6, H1 = 19;
+
+  function hav(a, b){
+    var R = 6371, dLa = (b[0]-a[0])*Math.PI/180, dLo = (b[1]-a[1])*Math.PI/180;
+    var x = Math.sin(dLa/2)*Math.sin(dLa/2) +
+            Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dLo/2)*Math.sin(dLo/2);
+    return Math.round(R*2*Math.atan2(Math.sqrt(x), Math.sqrt(1-x)));
+  }
+  // 台帳(data.js)から富士山系スポットを組み立てる — 台帳更新に自動追従
+  var SPOTS_M = [];
+  FUJI_IDS.forEach(function(id){
+    var s = SP.find(function(x){ return x.id === id; });
+    if (!s) return;
+    var vp = s.viewpoint || s.map;
+    if (!vp || s.minutesFromTokyo == null) return;
+    SPOTS_M.push({ id: id, name: (s.ja && s.ja.name) || id, area: (s.ja && s.ja.area) || "",
+      min: s.minutesFromTokyo, d: hav([vp.lat, vp.lng], SUMMIT),
+      vp: [vp.lat, vp.lng], side: s.side || "E" });
+  });
+
+  function estVis(rh){ return Math.max(4, 140 * Math.pow(1 - rh/100, 1.5)); }
+  function effDist(d, rh){ return d * (0.32 + 0.5 * Math.pow(rh/100, 2)); }
+  function prob(su, vp, h, d){
+    var lo = su.cloud_cover_low[h]||0, mi = su.cloud_cover_mid[h]||0, hi = su.cloud_cover_high[h]||0;
+    var pSummit = Math.max(0, 1 - Math.max(lo*0.6, mi*0.9, hi*0.3)/100);
+    var rh = vp.relative_humidity_2m[h]||70;
+    var V = vp.visibility ? vp.visibility[h] : null;
+    V = V ? V/1000 : null;
+    if (V == null || V >= 23) V = Math.max(V||0, estVis(rh));
+    var pAir = 1/(1 + Math.exp(-6*(V/effDist(d, rh) - 0.72)));
+    if ((su.precipitation[h]||0) > 0.2 || (vp.precipitation[h]||0) > 0.2) pSummit = 0;
+    return { p: pSummit*pAir, pSummit: pSummit, pAir: pAir, V: V, rh: rh, lo: lo, mi: mi, hi: hi };
+  }
+  function omAll(){
+    var points = [SUMMIT].concat(SPOTS_M.map(function(s){ return s.vp; }));
+    var lat = points.map(function(p){ return p[0]; }).join(",");
+    var lng = points.map(function(p){ return p[1]; }).join(",");
+    var vars = "cloud_cover_low,cloud_cover_mid,cloud_cover_high,visibility,relative_humidity_2m,precipitation";
+    return fetch("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lng+
+      "&hourly="+vars+"&forecast_days=2&timezone=Asia%2FTokyo").then(function(r){
+        if (!r.ok) throw new Error("Open-Meteo HTTP " + r.status);
+        return r.json();
+      }).then(function(data){
+        if (!Array.isArray(data) || data.length !== points.length) throw new Error("Unexpected Open-Meteo response");
+        return data;
+      });
+  }
+  function col(p){
+    if (p < 0.15) return "rgba(76,90,107,.18)";
+    if (p < 0.4)  return "rgba(125,155,192,.55)";   /* --fuji */
+    if (p < 0.6)  return "rgba(217,164,64,.75)";    /* --gold */
+    if (p < 0.8)  return "rgba(232,112,74,.8)";     /* --accent */
+    return "#e8704a";
+  }
+  function verdictText(p){
+    return p >= 0.8 ? "見える" : p >= 0.55 ? "たぶん見える" : p >= 0.3 ? "運しだい" : "厳しい";
+  }
+  function reason(r){
+    if (!r) return "";
+    if (r.pSummit < 0.4){
+      var c = r.mi >= r.lo && r.mi >= r.hi ? "中層の雲" : (r.lo >= r.hi ? "低い雲" : "高い雲");
+      return "山頂が" + c + "に隠れがちです (雲量 低" + Math.round(r.lo) + "% 中" + Math.round(r.mi) + "% 高" + Math.round(r.hi) + "%)";
+    }
+    if (r.pAir < 0.4) return "靄で視程が足りません (視程 約" + Math.round(r.V) + "km / 湿度" + Math.round(r.rh) + "%)";
+    if (r.p >= 0.55) return "山頂まわりは晴れ、空気も澄んでいます (視程 約" + Math.round(r.V) + "km)";
+    return "条件は五分五分です";
+  }
+
+  var DATA = { summit: null, vps: {} };
+  window.__mieru = { data: DATA, spots: SPOTS_M, results: {} };
+
+  omAll().then(function(res){
+    DATA.summit = res[0].hourly;
+    SPOTS_M.forEach(function(s, i){ DATA.vps[s.id] = res[i+1].hourly; });
+    document.getElementById("mieruStatus").textContent = "";
+    render();
+  }).catch(function(e){
+    document.getElementById("mieruStatus").textContent = "気象データの取得に失敗しました。時間をおいて再読み込みしてください。";
+  });
+
+  function render(){
+    if (!DATA.summit) return;
+    var day = +document.getElementById("mieruDay").value;
+    var dep = document.getElementById("mieruDep").value || "09:00";
+    var depMin = (+dep.slice(0,2))*60 + (+dep.slice(3,5));
+
+    var lines = [];
+    SPOTS_M.forEach(function(s){
+      var t = depMin + s.min;
+      var hh = Math.floor(t/60), mm = t%60;
+      var hIdx = day*24 + Math.min(23, Math.max(0, Math.round(t/60)));
+      var r = prob(DATA.summit, DATA.vps[s.id], hIdx, s.d);
+      window.__mieru.results[s.id] = r;
+      lines.push('<span class="copy-chunk">' + s.name + " " + ("0"+hh).slice(-2) + ":" + ("0"+mm).slice(-2) + "頃 <b>" +
+        Math.round(r.p*100) + "%</b> (" + verdictText(r.p) + ")</span>");
+    });
+    document.getElementById("mieruRide").innerHTML = "この列車での見えかた ─ " + lines.join(" ／ ");
+
+    var root = document.getElementById("mieruSpots");
+    root.innerHTML = "";
+    SPOTS_M.forEach(function(s){
+      var rows = [];
+      for (var h = H0; h <= H1; h++) rows.push(prob(DATA.summit, DATA.vps[s.id], day*24 + h, s.d));
+      var bestP = Math.max.apply(null, rows.map(function(r){ return r.p; }));
+      var bestI = rows.findIndex(function(r){ return r.p === bestP; });
+      var div = document.createElement("div");
+      div.className = "mieru-spot";
+      var bars = rows.map(function(r, i){
+        var pct = Math.round(r.p*100);
+        return '<div class="mieru-bar" title="' + (H0+i) + '時 ' + pct + '%">' +
+          '<span>' + pct + '</span>' +
+          '<i style="height:' + Math.max(4, r.p*100) + '%;background:' + col(r.p) + '"></i></div>';
+      }).join("");
+      var hl = rows.map(function(_, i){ return "<div>" + (H0+i) + "</div>"; }).join("");
+      div.innerHTML =
+        '<div class="mieru-head"><h2>' + s.name + '</h2>' +
+        '<span class="meta">' + s.area + ' ・ 東京から約' + s.min + '分 ・ 視距離 約' + s.d + 'km ・ ' + s.side + '席</span>' +
+        '<span class="mieru-verdict">' + (day ? "明日" : "今日") + 'のベスト ' + (H0+bestI) + '時 <b>' +
+          Math.round(bestP*100) + '%</b></span></div>' +
+        '<div class="mieru-bars">' + bars + '</div>' +
+        '<div class="mieru-hours">' + hl + '</div>' +
+        '<div class="mieru-reason">' + reason(rows[bestI]) + '</div>';
+      root.appendChild(div);
+    });
+  }
+  document.getElementById("mieruDep").addEventListener("input", render);
+  document.getElementById("mieruDay").addEventListener("change", render);
+  })();
+  </script>
+</body>
+</html>
