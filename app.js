@@ -207,6 +207,10 @@ function getInitialLang() {
     localStorage.setItem("mado-lang", urlLang);
     return urlLang;
   }
+  if (/\/en\/(?:index\.html)?$/i.test(location.pathname)) {
+    localStorage.setItem("mado-lang", "en");
+    return "en";
+  }
   return normalizeLang(localStorage.getItem("mado-lang") || navigator.language || "ja");
 }
 let lang = getInitialLang();
@@ -746,6 +750,46 @@ function applyLang() {
   if (tl && !tl.hidden) renderTimeline();
   const tr = $("#trainResults");
   if (tr && !tr.hidden) showTrainResults();
+}
+
+function shouldShowEnglishLandingPrompt() {
+  const path = location.pathname.replace(/\/+$/, "/");
+  const params = new URLSearchParams(location.search);
+  if (!(path === "/" || path.endsWith("/index.html"))) return false;
+  if (params.has("lang")) return false;
+  try {
+    if (localStorage.getItem("mado-lang")) return false;
+    if (sessionStorage.getItem("mado-en-landing-prompt-dismissed") === "1") return false;
+  } catch (error) {
+    return false;
+  }
+  const browserLangs = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+  return browserLangs.some((value) => /^en\b/i.test(String(value))) && !browserLangs.some((value) => /^ja\b/i.test(String(value)));
+}
+
+function showEnglishLandingPrompt() {
+  if (!shouldShowEnglishLandingPrompt()) return;
+  const prompt = document.createElement("aside");
+  prompt.className = "lang-landing-prompt";
+  prompt.setAttribute("aria-label", "English version");
+  prompt.innerHTML = `
+    <div>
+      <strong>English version available</strong>
+      <span>Open the Shinkansen Window landing page in English.</span>
+    </div>
+    <a href="en/" data-en-landing-link>Open English</a>
+    <button type="button" aria-label="Dismiss English version prompt">&times;</button>
+  `;
+  prompt.querySelector("button").addEventListener("click", () => {
+    try { sessionStorage.setItem("mado-en-landing-prompt-dismissed", "1"); } catch (error) {}
+    prompt.remove();
+  });
+  prompt.querySelector("[data-en-landing-link]").addEventListener("click", () => {
+    try { localStorage.setItem("mado-lang", "en"); } catch (error) {}
+    track("english_landing_prompt_click", { source: "root_prompt" });
+  });
+  document.body.prepend(prompt);
+  track("english_landing_prompt_shown", { source: "root_prompt" });
 }
 
 /* ---------- showcase（まず何が見えるかを見せる） ---------- */
@@ -1645,6 +1689,7 @@ function init() {
   // ここから先はアプリ画面（index.html）専用の初期化
   if (!$("#departTime")) {
     applyLang();
+    showEnglishLandingPrompt();
     window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
     window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
     syncModalWithLocation("url");
@@ -1679,5 +1724,6 @@ function init() {
     syncModalWithLocation("url");
   }
   registerServiceWorker();
+  showEnglishLandingPrompt();
 }
 document.addEventListener("DOMContentLoaded", init);

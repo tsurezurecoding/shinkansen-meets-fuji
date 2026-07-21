@@ -8,7 +8,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
-const today = "2026-07-20";
+const today = "2026-07-22";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
@@ -775,30 +775,93 @@ ${fujiGuideBlock.trimEnd()}
 }
 
 function englishIndexHTML() {
+  const featured = ["fuji", "hamanako", "solar-ark", "torikai-train-depot"].map((id) => {
+    const spot = SPOTS.find((item) => item.id === id);
+    const data = spot.en || spot.ja;
+    return `<a class="guide-visual-card" href="spots/${spot.id}.html">
+          <img src="../${escapeHTML(thumbnailSrc(spot.image))}" alt="${escapeHTML(data.name)} from the Shinkansen window" loading="lazy" decoding="async">
+          <span>${escapeHTML(data.area)}</span>
+          <strong>${escapeHTML(data.name)}</strong>
+          <em>${escapeHTML(data.hook)}</em>
+        </a>`;
+  }).join("");
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteRoot}/en/#website`,
+    "name": "Shinkansen Window",
+    "url": `${siteRoot}/en/`,
+    "inLanguage": "en",
+    "description": UI.en.homeLead,
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "新幹線の窓",
+      "url": siteRoot,
+    },
+  };
   return `<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How to see Mt. Fuji from the Shinkansen | Shinkansen Window</title>
-  <meta name="robots" content="noindex,follow">
-  <meta http-equiv="refresh" content="0; url=guide.html">
-  <link rel="canonical" href="${siteRoot}/en/guide.html">
-  <meta property="og:title" content="How to see Mt. Fuji from the Shinkansen | Shinkansen Window">
-  <meta property="og:description" content="Seat E, timing, and Tokaido Shinkansen window views beyond Mt. Fuji.">
+  <title>${escapeHTML(UI.en.homeTitle)}</title>
+  <meta name="description" content="${escapeHTML(UI.en.homeLead)}">
+  <link rel="canonical" href="${siteRoot}/en/">
+  <link rel="alternate" hreflang="ja" href="${siteRoot}/">
+  <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
+  <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
+  <link rel="stylesheet" href="../style.css?v=20260722-english-landing">
+  <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
+  <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="${siteRoot}/en/guide.html">
+  <meta property="og:url" content="${siteRoot}/en/">
   <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${escapeHTML(UI.en.homeTitle)}">
+  <meta name="twitter:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta name="twitter:image" content="${defaultOgImageUrl()}">
+  <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
 </head>
 <body class="spot-page">
+  ${siteHeaderHTML("en", "../", "../", "./")}
   <main>
     <article class="spot-page-article">
-      <h1>Shinkansen Window guide moved</h1>
-      <p class="spot-page-lead"><a href="guide.html">Open the English Mt. Fuji guide</a>.</p>
+      <p class="eyebrow">TOKAIDO SHINKANSEN WINDOW GUIDE</p>
+      <h1>Do not miss the view from your Shinkansen window.</h1>
+      <p class="spot-page-lead">${escapeHTML(UI.en.homeLead)}</p>
+      <div class="spot-page-actions spot-page-actions-top">
+        <a class="btn btn-primary" href="../index.html?lang=en#journey">Find your train</a>
+        <a class="btn btn-ghost" href="../zukan.html?lang=en">Browse the field guide</a>
+      </div>
+      <section class="spot-page-section guide-answer-panel" aria-label="Quick Shinkansen window guide">
+        <div class="guide-answer-copy">
+          <h2>Start with Seat E for Mt. Fuji.</h2>
+          <p>On the Tokaido Shinkansen, the classic Mt. Fuji view is on the E-seat side. Shinkansen Window also helps you notice short views of lakes, castles, signs, train depots, and Kyoto landmarks.</p>
+        </div>
+        <dl class="guide-fact-grid">
+          <div><dt>Best-known view</dt><dd>Mt. Fuji</dd><p>Watch around Mishima to Shin-Fuji.</p></div>
+          <div><dt>Also along the route</dt><dd>37 views</dd><p>From Tokyo to Shin-Osaka.</p></div>
+          <div><dt>Best use</dt><dd>Before boarding</dd><p>Pick a train and keep the timeline ready.</p></div>
+        </dl>
+      </section>
+      <section class="spot-page-section guide-featured-panel">
+        <div class="guide-section-head">
+          <h2>Views worth looking up for</h2>
+          <p>These views last only seconds or minutes. That is why the timing matters.</p>
+        </div>
+        <div class="guide-visual-grid">${featured}</div>
+      </section>
+      <section class="spot-page-section guide-beyond-panel">
+        <h2>Plan the window side before you ride</h2>
+        <p>Use the train search to build a timed window guide, or open the Live Guide while riding.</p>
+        <div class="spot-page-actions">
+          <a class="btn btn-primary" href="../index.html?lang=en#journey">Build my timed guide</a>
+          <a class="btn btn-ghost" href="../live/index.html?lang=en">Open Live Guide</a>
+          <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
+        </div>
+      </section>
     </article>
   </main>
 </body>
@@ -922,8 +985,10 @@ function guideHTML(lang) {
 function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
+    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
+    { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
