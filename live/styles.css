@@ -803,7 +803,7 @@ body.live-page.is-idle #sheet {
   }
 }
 
-/* α版・開発中の表示（実車検証が継続中のため） */
+/* α版表示 */
 .live-alpha-badge {
   display: inline-block;
   margin-left: 0.4em;

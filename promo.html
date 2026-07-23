@@ -62,6 +62,7 @@
       --sans: "Hiragino Kaku Gothic ProN", "Yu Gothic", -apple-system, sans-serif;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body { background: #000; font-family: var(--sans); overflow: hidden; }
     .stage {
       position: fixed; inset: 0; display: grid; place-items: center;
@@ -99,7 +100,7 @@
       align-items: center; text-align: left;
     }
     .phone {
-      width: 34vmin; margin: 0 auto; border-radius: 4.2vmin;
+      width: 39vmin; margin: 0 auto; border-radius: 4.2vmin;
       background: var(--paper); color: var(--ink);
       border: 0.9vmin solid #29384a;
       box-shadow: 0 4vmin 12vmin rgba(0,0,0,0.38);
@@ -125,6 +126,7 @@
       padding: 0.9vmin; font-size: 1.35vmin;
     }
     .time-row strong { font-family: var(--serif); font-size: 1.65vmin; }
+    .time-row span { min-width: 0; white-space: nowrap; }
     .seat { color: var(--accent); font-weight: 800; }
 
     .photo-grid {
@@ -199,6 +201,16 @@
       .big { font-size: 6vmin; }
       .mid { font-size: 4.4vmin; }
       .sub { font-size: 2.2vmin; }
+    }
+
+    @media (max-width: 820px) and (min-aspect-ratio: 4 / 3) {
+      .content { width: min(120vmin, 96vw); }
+      .split { grid-template-columns: 0.82fr 1.18fr; gap: 3vmin; }
+      .phone { width: 43vmin; }
+      .phone-body { padding: 1.35vmin; }
+      .time-row { gap: 0.55vmin; padding: 0.72vmin; font-size: 1.18vmin; }
+      .time-row strong { font-size: 1.42vmin; }
+      .pill { padding: 0.62vmin 0.8vmin; font-size: 1.18vmin; }
     }
   </style>
 </head>

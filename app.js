@@ -1194,7 +1194,7 @@ function openQuickModal(source = "hero") {
   closeQuickModal("replace");
   const modal = document.createElement("div");
   modal.className = "quick-modal";
-  const promoSrc = `promo.html?v=20260712-live-guide-label&lang=${encodeURIComponent(lang)}`;
+  const promoSrc = `promo.html?v=20260724-narrow-layout&lang=${encodeURIComponent(lang)}`;
   modal.innerHTML = `
     <div class="quick-modal-backdrop" data-quick-close></div>
     <section class="quick-modal-panel" role="dialog" aria-modal="true" aria-labelledby="quick-modal-title" tabindex="-1">
