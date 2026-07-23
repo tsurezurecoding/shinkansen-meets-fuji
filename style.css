@@ -1317,6 +1317,9 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .badge-check { background: #f1f1f1; color: #888; }
 .badge-night { background: #20283b; color: #f4f7ff; }
 .badge-lowlight { background: #eef0f5; color: #687386; }
+.seat-badge-label-compact {
+  display: none;
+}
 .tl-item.low-light-limited .tl-card {
   background: rgba(255,255,255,0.72);
 }
@@ -1333,6 +1336,26 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   transition: all 0.15s ease;
 }
 .spot-btn.stamped { background: var(--accent); color: #fff; }
+.spot-card-stamp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.spot-btn-icon {
+  display: none;
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.spot-btn-label-compact {
+  display: none;
+}
 .more-btn {
   border: 1.5px solid var(--night);
   background: var(--night);
@@ -2747,9 +2770,9 @@ body.modal-open { overflow: hidden; }
     font-size: 9.5px;
   }
   .spot-card-footer {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 6px;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
   }
   .tl-copy .spot-card-footer {
     margin-top: 4px;
@@ -2762,8 +2785,51 @@ body.modal-open { overflow: hidden; }
     line-height: 1.1;
   }
   .spot-card-stamp {
+    position: relative;
+    width: 56px;
+    flex: 0 0 56px;
+    min-height: 32px;
     min-width: 0;
-    align-self: flex-start;
+    padding-inline: 7px;
+    gap: 3px;
+  }
+  .tl-card .spot-card-stamp::before {
+    content: "";
+    position: absolute;
+    inset: -6px 0;
+  }
+  .tl-card .spot-btn-icon {
+    display: block;
+  }
+  .tl-card .spot-btn-label-full {
+    display: none;
+  }
+  .tl-card .spot-btn-label-compact {
+    display: inline;
+  }
+}
+@media (max-width: 340px) {
+  .tl-card .seat-badge-label-full {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+  .tl-card .seat-badge-label-compact {
+    display: inline;
+  }
+  .tl-card .spot-card-stamp {
+    width: 32px;
+    flex-basis: 32px;
+    padding-inline: 0;
+  }
+  .tl-card .spot-btn-label-compact {
+    display: none;
   }
 }
 @media (prefers-reduced-motion: reduce) {

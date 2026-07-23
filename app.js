@@ -93,6 +93,9 @@ const MSG = {
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
     spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
+    spotBtnCompact: "見た", spotBtnDoneCompact: "済",
+    spotBtnAriaAdd: (name) => `${name}を見えた景色として記録`,
+    spotBtnAriaRemove: (name) => `${name}のスタンプを解除`,
     more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
@@ -188,6 +191,9 @@ const MSG = {
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
     spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
+    spotBtnCompact: "Seen", spotBtnDoneCompact: "Saved",
+    spotBtnAriaAdd: (name) => `Save ${name} as spotted`,
+    spotBtnAriaRemove: (name) => `Remove the stamp for ${name}`,
     more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
@@ -408,7 +414,8 @@ function seatShortBadge(spot) {
   const label = bothSides
     ? (lang === "ja" ? "A/E席" : "Seats A/E")
     : (tags.has("seat-e") ? t("fSeatE") : t("fSeatA"));
-  return `<span class="badge ${cls}">${label}</span>`;
+  const compactLabel = bothSides ? "A/E" : (tags.has("seat-e") ? "E" : "A");
+  return `<span class="badge ${cls}"><span class="seat-badge-label-full">${escapeHTML(label)}</span><span class="seat-badge-label-compact" aria-hidden="true">${compactLabel}</span></span>`;
 }
 function catBadge(spot) {
   return timelineThemeTagBadgesHTML(spot);
@@ -1086,13 +1093,38 @@ function spotItemHTML(sp, clock) {
               </div>
               <div class="spot-card-footer">
                 <div class="tl-meta">${seatShortBadge(sp)}</div>
-                <button type="button" class="spot-btn spot-card-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+                ${spotCardStampButtonHTML(sp.id, Boolean(stamps[sp.id]))}
               </div>
             </div>
             ${thumb}
           </div>
         </div>
       </li>`;
+}
+
+function spotCardStampButtonHTML(spotId, got) {
+  const fullLabel = got ? t("spotBtnDone") : t("spotBtn");
+  const compactLabel = got ? t("spotBtnDoneCompact") : t("spotBtnCompact");
+  const spotName = findSpotById(spotId)?.[lang]?.name || fullLabel;
+  const ariaLabel = got ? t("spotBtnAriaRemove", spotName) : t("spotBtnAriaAdd", spotName);
+  const icon = got
+    ? '<svg class="spot-btn-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.2 3 3 6.6-6.6"/></svg>'
+    : '<svg class="spot-btn-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M1.7 8s2.3-4 6.3-4 6.3 4 6.3 4-2.3 4-6.3 4S1.7 8 1.7 8Z"/><circle cx="8" cy="8" r="1.8"/></svg>';
+  return `<button type="button" class="spot-btn spot-card-stamp${got ? " stamped" : ""}" data-stamp="${spotId}" aria-label="${escapeAttr(ariaLabel)}" aria-pressed="${got}">${icon}<span class="spot-btn-label-full">${escapeHTML(fullLabel)}</span><span class="spot-btn-label-compact" aria-hidden="true">${escapeHTML(compactLabel)}</span></button>`;
+}
+
+function updateStampButton(btn, got) {
+  btn.classList.toggle("stamped", got);
+  if (btn.classList.contains("spot-card-stamp")) {
+    const replacement = document.createElement("template");
+    replacement.innerHTML = spotCardStampButtonHTML(btn.dataset.stamp, got).trim();
+    const rendered = replacement.content.firstElementChild;
+    btn.innerHTML = rendered.innerHTML;
+    btn.setAttribute("aria-label", rendered.getAttribute("aria-label"));
+    btn.setAttribute("aria-pressed", String(got));
+    return;
+  }
+  btn.textContent = got ? t("spotBtnDone") : t("spotBtn");
 }
 
 function findSpotById(id) {
@@ -1413,8 +1445,7 @@ function toggleStamp(id) {
   renderStampboard();
   $$(`[data-stamp="${id}"]`).forEach((btn) => {
     const got = !!stamps[id];
-    btn.classList.toggle("stamped", got);
-    btn.textContent = got ? t("spotBtnDone") : t("spotBtn");
+    updateStampButton(btn, got);
   });
 }
 function renderStampboard() {
@@ -1561,7 +1592,7 @@ function renderGallery() {
             <div class="gal-body">
               <div class="gal-top">
                 <div class="gal-top-left">${stampBadgeHTML(sp, 38, "tl-icon")}<span class="gal-name">${L.name}</span></div>
-                <button type="button" class="spot-btn spot-card-stamp gal-stamp${stamps[sp.id] ? " stamped" : ""}" data-stamp="${sp.id}">${stamps[sp.id] ? t("spotBtnDone") : t("spotBtn")}</button>
+                ${spotCardStampButtonHTML(sp.id, Boolean(stamps[sp.id])).replace("spot-card-stamp", "spot-card-stamp gal-stamp")}
               </div>
               <p class="gal-area">${L.area}</p>
               <div class="spot-card-footer">

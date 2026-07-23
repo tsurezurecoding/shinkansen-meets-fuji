@@ -87,20 +87,28 @@ const REFERENCES = {
     url: "https://cotetu.seesaa.net/article/516754194.html",
   },
   gyoranKannon: {
-    label: { ja: "日本珍スポット100景: 魚籃観音", en: "Bqspot: Gyoran Kannon (Japanese only)" },
-    url: "https://bqspot.com/kanto/kanagawa/440",
+    label: { ja: "小田原市郷土文化館: 早川東善院の魚籃観音", en: "Odawara City: Gyoran Kannon at Tozen-in (Japanese only)" },
+    url: "https://www.city.odawara.kanagawa.jp/public-i/facilities/kyodo/stoneworks/searchforstoneworks20191203.html",
+  },
+  gyoranKannonTourism: {
+    label: { ja: "小田原市観光協会: 魚籃大観音（東善院）", en: "Odawara Tourism: Gyoran Dai-Kannon at Tozen-in (Japanese only)" },
+    url: "https://www.odawara-kankou.com/spot/spot_area/gyokou.html",
   },
   shimizuPort: {
     label: { ja: "清水港: 地球深部探査船「ちきゅう」", en: "Port of Shimizu: Deep-sea drilling vessel CHIKYU" },
     url: "https://www.portofshimizu.com/overview/%E5%9C%B0%E7%90%83%E6%B7%B1%E9%83%A8%E6%8E%A2%E6%9F%BB%E8%88%B9-%E3%81%A1%E3%81%8D%E3%82%85%E3%81%86/",
+  },
+  chikyuOfficial: {
+    label: { ja: "JAMSTEC: 地球深部探査船「ちきゅう」", en: "JAMSTEC: Deep-sea scientific drilling vessel CHIKYU" },
+    url: "https://www.jamstec.go.jp/chikyu/j/",
   },
   shizuokaTeaTourism: {
     label: { ja: "お茶のまち静岡市: 観光", en: "Ochanomachi Shizuoka City: Tourism" },
     url: "https://www.ochanomachi-shizuokashi.jp/tourism/",
   },
   kakegawaCastle: {
-    label: { ja: "掛川城公式", en: "Kakegawa Castle official site" },
-    url: "https://kakegawajo.com/",
+    label: { ja: "掛川市: 掛川城", en: "Kakegawa City: Kakegawa Castle (Japanese only)" },
+    url: "https://www.city.kakegawa.shizuoka.jp/kanko/spot-list/kakegawajyo.html",
   },
   genkiSignBlog: {
     label: { ja: "@letus10: しっぺいの応援看板車窓記事", en: "@letus10: Shippei cheer-up signs window article (Japanese only)" },
@@ -167,11 +175,31 @@ const REFERENCES = {
   },
   sevenTwoSevenOfficial: {
     label: { ja: "727 セブンツーセブン化粧品", en: "727 Cosmetics official site" },
-    url: "https://www.727.co.jp/",
+    url: "https://www.727.co.jp/concept/",
+  },
+  sevenTwoSevenHistory: {
+    label: { ja: "727 セブンツーセブン化粧品: 沿革", en: "727 Cosmetics: Company history (Japanese only)" },
+    url: "https://www.727.co.jp/company/history/",
   },
   kinutaDentist248Post: {
     label: { ja: "きぬた歯科: 248看板についての投稿", en: "Kinuta Dental: post about the 248 sign (Japanese only)" },
     url: "https://x.com/kinutashika/status/2032351774292717729",
+  },
+  kinutaDentist248Meaning: {
+    label: { ja: "きぬた歯科: 248は「ニシハチ」", en: "Kinuta Dental: 248 means Nishi-Hachi (Japanese only)" },
+    url: "https://x.com/kinutashika/status/2032372303636677124",
+  },
+  nagoyaCentralTowers: {
+    label: { ja: "JRセントラルタワーズ 公式", en: "JR Central Towers official site" },
+    url: "https://www.towers.jp/",
+  },
+  nagoyaSpiralTowers: {
+    label: { ja: "名古屋モード学園: スパイラルタワーズ", en: "Nagoya Mode Gakuen: Spiral Towers" },
+    url: "https://www.mode.ac.jp/nagoya/facilities",
+  },
+  nagoyaMidlandSquare: {
+    label: { ja: "ミッドランドスクエア 公式", en: "Midland Square official site" },
+    url: "https://www.midland-square.com/concept/",
   },
   kinshozanWiki: {
     label: { ja: "Wikipedia: 金生山", en: "Wikipedia: Mt. Kinsho (Japanese only)" },
@@ -243,8 +271,8 @@ const REFERENCES = {
     url: "https://www.keihanhotels-resorts.co.jp/the-thousand-kyoto/sight/kyoto-kawaramachi/touji.html",
   },
   tokaidoShinkansen: {
-    label: { ja: "鉄道チャンネル: 鳥飼車両基地", en: "Tetsudo Channel: Torikai Train Depot (Japanese only)" },
-    url: "https://tetsudo-ch.com/12903111.html",
+    label: { ja: "JR東海: 鳥飼車両基地でのメンテナンス", en: "JR Central: Maintenance at Torikai Train Depot (Japanese only)" },
+    url: "https://jr-central.co.jp/news/release/nws000645.html",
   },
 };
 
@@ -425,7 +453,19 @@ const SPOTS = [
     id: "putiputi-sign",
     icon: "🫧",
     ja: { name: "私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
-    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery sign on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
+    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
+    pageTitle: {
+      ja: "新幹線から見える「私は誰でしょう」看板はどこ？ | 新幹線の窓",
+      en: "Who am I? Sign: A Mystery Shinkansen Billboard | Shinkansen Window",
+    },
+    pageHeading: {
+      ja: "「私は誰でしょう」看板はどこ？",
+      en: "Where is the “Who am I?” billboard seen from the Shinkansen?",
+    },
+    metaDescription: {
+      ja: "新幹線から見える「私は誰でしょう」看板の場所と見える時刻、座席側を案内。新横浜から小田原へ向かう途中、藤沢市付近のA席側に現れる謎の看板です。",
+      en: "The “Who am I?” sign is a mystery trackside billboard seen from the Shinkansen near Fujisawa. Find its timing, seat side, and location.",
+    },
     minutesFromTokyo: 29, side: "A", category: "curious", confidence: "verified", durationSec: 2, scene: "hills",
     image: "images/20260704_putiputi_sign_2_michikusa.jpg",
     photoCredit: {
@@ -465,23 +505,35 @@ const SPOTS = [
   {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "727の隣に248。", story: "新横浜を出て少しすると、藤沢市葛原付近のE席側に、727 COSMETICSの白い看板が見えます。隣には黄色い「248」看板もあり、数字だけが田んぼの中に並ぶため、新幹線からは「何の広告だろう」と気になりやすい場所です。この葛原付近の727はE席側ですが、さらに進んだ用田付近や私は誰でしょう看板の隣に見えるものはA席側。727はここ以外にも沿線のA席側・E席側で複数見かけることができ、乗り慣れている人ほど「あの看板は何だろう」と気になっているかもしれません。248は西八王子のきぬた歯科の看板で、数字は「西八王子」を「に(2)・し(4)・はち(8)・おうじ」と読む語呂合わせに由来するとされています。最近は高速道路だけでなく新幹線の車窓でもよく見かけます。" },
-    en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "727 beside 248.", story: "A little after Shin-Yokohama, a white 727 COSMETICS sign appears on the Seat E side around Kuzuhara in Fujisawa. A yellow '248' sign sits nearby, so the two numbers can look wonderfully cryptic from the train. The Kuzuhara 727 is on Seat E, while other nearby 727 signs, including the ones around Yoda and beside the 'Who am I?' sign, are on Seat A. You can spot 727 signs at several places along the line, on either side depending on the location, so regular Shinkansen riders may have wondered about them for years. The 248 sign is from Kinuta Dental in Nishi-Hachioji. In Japanese number wordplay, 2 can be read as ni, 4 as shi, and 8 as hachi, so 248 reads ni-shi-hachi, echoing the opening sound of Nishi-Hachioji. Recently, it is seen not only from expressways but also from Shinkansen windows." },
+    ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "あの数字、何？どこにある？", story: "新横浜を出て藤沢市へ入ると、727 COSMETICSの白い看板が沿線に何度か現れます。代表地点は葛原付近。E席側に黄色い「248」看板と並ぶ場所です。さらに小田原方面へ進むと、用田付近などではA席側にも727が見えます。727は大阪の化粧品メーカー、248は西八王子のきぬた歯科の広告です。" },
+    en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "What are those numbers, and where?", story: "After Shin-Yokohama, white 727 COSMETICS billboards appear several times as the train enters Fujisawa. The representative point is around Kuzuhara, where a 727 sign stands on the Seat E side beside a yellow '248' sign. Farther toward Odawara, more 727 signs appear on the Seat A side around Yoda and nearby areas. 727 is an Osaka cosmetics maker; 248 advertises Kinuta Dental in Nishi-Hachioji." },
+    pageTitle: {
+      ja: "新幹線から見える727・248看板はどこ？何の広告？ | 新幹線の窓",
+      en: "727 and 248 Signs: Shinkansen Billboards Explained | Shinkansen Window",
+    },
+    pageHeading: {
+      ja: "727・248看板はどこ？何の広告？",
+      en: "What are the 727 and 248 billboards seen from the Shinkansen?",
+    },
+    metaDescription: {
+      ja: "新幹線から見える727・248看板の正体と場所を解説。藤沢市葛原付近ではE席側に2つが並び、用田付近などではA席側にも727看板が見えます。",
+      en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
+    },
     pageStory: {
-      ja: "新横浜を出て藤沢市付近に近づいたら、まずE席側を意識してください。葛原付近では白い727看板と黄色い248看板が並び、数字だけの広告が一瞬で流れていきます。さらに用田付近などではA席側にも727看板が現れるため、このページでは代表点を葛原付近として案内しています。",
-      en: "After leaving Shin-Yokohama and approaching Fujisawa, start by watching the Seat E side. Around Kuzuhara, the white 727 sign and the yellow 248 sign sit close together and pass by quickly. Other 727 signs also appear on the Seat A side around Yoda and nearby areas, so this page uses Kuzuhara as the representative point.",
+      ja: "東京から新大阪方面へ向かう場合は、新横浜を出て約8分後、藤沢市葛原付近でまずE席側を見てください。白い727看板と黄色い248看板が田園の中に並びます。これが地図で案内している代表地点です。その先、小田原方面へ進むと、用田付近や「私は誰でしょう看板」の隣など、A席側にも727が現れます。727は1か所だけではないため、「どこで見たか」によって席側が変わります。",
+      en: "Heading from Tokyo toward Shin-Osaka, start watching Seat E roughly eight minutes after Shin-Yokohama. Around Kuzuhara in Fujisawa, the white 727 billboard and yellow 248 billboard stand together in the fields; this is the representative point shown on the map. Farther toward Odawara, more 727 signs appear on Seat A around Yoda and beside the 'Who am I?' sign. Because 727 has multiple locations, the correct seat side depends on which sign you are looking for.",
     },
     explainer: {
-      heading: { ja: "727とは？ 新幹線でおなじみの謎の看板", en: "What is the 727 sign?" },
+      heading: { ja: "727と248は何？ 数字の意味は？", en: "What do the 727 and 248 billboards mean?" },
       ja: [
-        "727は、大阪の化粧品メーカー「セブンツーセブン」の看板です。社名は創業者の誕生日である7月27日にちなみます。いちばんの特徴は「サロン専売」であること。店頭やドラッグストアでは買えず、契約した美容室でのカウンセリングを通してのみ販売されます。だから、商品そのものを街で見かけることはほとんどないのに、看板だけは新幹線や高速道路の沿線で何度も目に入る——この不思議さが、727が語り草になる理由です。",
+        "727は、大阪の化粧品メーカー「セブンツーセブン」の看板です。公式沿革では1945年7月27日に創業。いちばんの特徴は「サロン専売」であることです。店頭やドラッグストアでは買えず、登録された美容室でのカウンセリングを通して販売されます。商品そのものを街で見かける機会は少ないのに、看板は新幹線沿線で何度も目に入る——この不思議さが、727が語り草になる理由です。",
         "看板のデザインも意図的です。大きく「727」、その下に小さく「COSMETICS」。高速で流れる車窓でも一瞬で「あの看板だ」と分かるようにするための見せ方です。東海道新幹線の沿線だけでも数多く点在し、乗るたびに同じ看板に出会います。富士山のような主役ではないけれど、日本の新幹線ユーザーには“おなじみの光景”。初めて乗る人にとっては、「727って何？」と気になる最初の謎かもしれません。",
-        "ちなみに隣の黄色い「248」看板は、西八王子の「きぬた歯科」の広告。数字の248は、きぬた歯科がある「西八王子」を「に(2)・し(4)・はち(8)・おうじ」と読む語呂合わせに由来するとされています。高速道路沿いを埋め尽くすことで知られ、最近は新幹線からも見かけます。727が全国区の“定番”なら、248は知る人ぞ知るTIPです。",
+        "隣の黄色い「248」看板は、西八王子の「きぬた歯科」の広告です。248を「ニシハチ」と読み、医院がある西八王子を表しています。きぬた歯科の公式アカウントもこの読み方を認めています。葛原付近では、白い727と黄色い248という数字だけの看板が並ぶため、意味を知らないといっそう謎めいて見えます。",
       ],
       en: [
-        "727 is the sign of \"Seven Two Seven\" (727 COSMETICS), a cosmetics maker based in Osaka. The name comes from the founder's birthday, July 27 (7/27). The key thing to know: 727 is salon-only. You cannot buy it in shops or drugstores — it is sold only through contracted hair salons, with in-person advice. So you almost never see the product itself around town, yet the sign is everywhere along the railways and expressways. That contrast is exactly why the 727 sign is such a talking point.",
+        "727 is the sign of \"Seven Two Seven\" (727 COSMETICS), a cosmetics maker based in Osaka. Its official history records that the company was founded on July 27, 1945. The key thing to know is that 727 is salon-only: it is sold through registered hair salons with in-person advice, not through ordinary shops or drugstores. So the product is rarely seen around town, yet the signs repeatedly appear beside the Shinkansen. That contrast is why 727 has become such a talking point.",
         "The design is deliberate, too: a huge \"727\" with a small \"COSMETICS\" underneath, made to be recognized in a split second from a fast-moving train. There are many of these signs along the Tokaido Shinkansen, so you meet the same sign again and again. It is not a headline view like Mt. Fuji, but for Japanese riders it is a familiar part of the journey — and for first-time visitors, \"What is 727?\" is often the first little mystery of the ride.",
-        "The yellow \"248\" sign next to it, by the way, is an ad for Kinuta Dental, a clinic in Nishi-Hachioji. In Japanese number wordplay, 2 can be read as ni, 4 as shi, and 8 as hachi; together, 248 reads ni-shi-hachi, echoing the opening sound of Nishi-Hachioji. It does not spell out the whole place name, but it points to it in a way Japanese readers can recognize. Kinuta Dental is known for blanketing expressways with billboards, and the 248 sign is now seen from the Shinkansen too. If 727 is the nationwide classic, 248 is more of an insider's spot.",
+        "The yellow \"248\" sign beside it advertises Kinuta Dental in Nishi-Hachioji. The digits are read as \"Nishi-Hachi,\" a shorthand for Nishi-Hachioji; the clinic's official account has confirmed that reading. Around Kuzuhara, the white 727 and yellow 248 signs sit together, making the pair look even more mysterious if you do not know what the numbers mean.",
       ],
     },
     minutesFromTokyo: 26, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 2, scene: "hills",
@@ -515,7 +567,7 @@ const SPOTS = [
         note: { ja: "のぞみ99号・A席側、6:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, photographed at 6:18 near Yoda, Fujisawa." },
       },
     ],
-    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.kinutaDentist248Post],
+    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory, REFERENCES.kinutaDentist248Post, REFERENCES.kinutaDentist248Meaning],
     map: { lat: 35.4167, lng: 139.428027, ja: "727看板と248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
     viewpoint: { lat: 35.415637, lng: 139.428588 },
   },
@@ -608,12 +660,24 @@ const SPOTS = [
   {
     id: "gyoran-kannon",
     icon: "🙏",
-    ja: { name: "魚籃観音像", area: "小田原 → 熱海（早川付近）", hook: "一瞬だけ、白い観音様。", story: "小田原を過ぎ、早川駅の近くでA席側を見ていると、白い観音像がほんの一瞬あらわれます。車窓に突然立つ姿は、見逃すと「あれは何だったんだろう」となる発見型スポット。魚籃観音は魚や海にゆかりのある観音様で、小田原らしい海辺の道草です。" },
-    en: { name: "Gyoran Kannon Statue", area: "Odawara → Atami, near Hayakawa", hook: "A white Kannon, for a heartbeat.", story: "Just after Odawara, near Hayakawa Station, a white Kannon statue appears for only a moment on the Seat A side. It is the kind of sudden window-seat sight that leaves you wondering what you just saw. Gyoran Kannon is associated with fish and the sea, making this a quietly Odawara-like discovery." },
+    ja: { name: "魚籃観音像", area: "小田原 → 熱海（早川付近）", hook: "魚籠を持つ、白い観音。", story: "小田原を過ぎ、早川付近でA席側に一瞬現れる白い像は、東善院の魚籃大観音です。高さ約10mで、魚の入った籠を手にし、海上安全や大漁、魚介類への感謝を願って1982年に建立されました。小田原市も新幹線から見える早川のシンボルとして紹介しています。" },
+    en: { name: "Gyoran Kannon Statue", area: "Odawara → Atami, near Hayakawa", hook: "A white Kannon holding a fish basket.", story: "The white statue that flashes past on the Seat A side near Hayakawa is Gyoran Dai-Kannon at Tozen-in Temple. About 10 meters tall, it holds a basket of fish and was erected in 1982 to pray for safety at sea, good catches, and gratitude for marine life. Odawara City describes it as a Hayakawa landmark visible from the Shinkansen." },
+    pageTitle: {
+      ja: "小田原・早川の白い観音は何？東善院の魚籃大観音 | 新幹線の窓",
+      en: "What is the white Kannon near Odawara? Gyoran Dai-Kannon | Shinkansen Window",
+    },
+    pageHeading: {
+      ja: "小田原・早川の白い観音は何？",
+      en: "What is the white Kannon near Odawara?",
+    },
+    metaDescription: {
+      ja: "小田原を過ぎて新幹線のA席側に一瞬見える白い観音は、早川・東善院の魚籃大観音。高さ約10m、1982年建立の像です。",
+      en: "The white Kannon briefly seen from Seat A after Odawara is Gyoran Dai-Kannon at Tozen-in in Hayakawa, a roughly 10-meter statue erected in 1982.",
+    },
     minutesFromTokyo: 33, side: "A", category: "curious", confidence: "verified", durationSec: 2, scene: "pagoda",
     image: "images/20260516_gyoran_kannon_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
-    references: [REFERENCES.gyoranKannon],
+    references: [REFERENCES.gyoranKannon, REFERENCES.gyoranKannonTourism],
     map: { lat: 35.240947333816365, lng: 139.14421331844272, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
     viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
   },
@@ -698,8 +762,8 @@ const SPOTS = [
   {
     id: "shimizu-port-chikyu",
     icon: "🏗️",
-    ja: { name: "清水港とちきゅう", area: "新富士 → 静岡", hook: "港のクレーンと、ちきゅう。", story: "新富士から静岡へ向かう途中、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船「ちきゅう」も窓に入ります。富士山のあとに、今度は港の巨大構造物が現れる。山と海と工業の距離が近い、静岡らしい車窓です。" },
-    en: { name: "Shimizu Port and CHIKYU", area: "Shin-Fuji → Shizuoka", hook: "Cranes and CHIKYU.", story: "Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt. Fuji, another kind of scale appears outside the window: mountains, sea, and industry all close together." },
+    ja: { name: "清水港とちきゅう", area: "新富士 → 静岡", hook: "港にそびえる、白い塔の船。", story: "新富士から静岡へ向かう途中、A席側に清水港のクレーン群が見えてきます。停泊中なら、中央に高さ70.1mの掘削やぐら「デリック」を載せた地球深部探査船「ちきゅう」も見つけられます。海底下を深く掘り、巨大地震のしくみや地球環境、海底下の生命を調べる科学掘削船です。船なので、いつも清水港にいるわけではありません。" },
+    en: { name: "Shimizu Port and CHIKYU", area: "Shin-Fuji → Shizuoka", hook: "A white drilling tower at port.", story: "Between Shin-Fuji and Shizuoka, look from Seat A for the cranes of Shimizu Port. When CHIKYU is docked, its 70.1-meter drilling derrick rises above the ship and makes it easy to identify. This scientific drilling vessel bores deep below the seafloor to study major earthquakes, global environmental change, and life beneath the seabed. It is a working ship, so it is not always in port." },
     minutesFromTokyo: 50, side: "A", category: "notable", confidence: "source-backed", durationSec: 5, scene: "bay",
     image: "images/20240119_shimizu_port_chikyu_senba16530315.jpg",
     photoCredit: {
@@ -738,7 +802,7 @@ const SPOTS = [
         note: { ja: "夜の港に、ちきゅう", en: "CHIKYU in the night port" },
       },
     ],
-    references: [REFERENCES.shimizuPort],
+    references: [REFERENCES.shimizuPort, REFERENCES.chikyuOfficial],
     map: { lat: 35.034137, lng: 138.505989, ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
     viewpoint: { lat: 35.037074, lng: 138.487157 },
   },
@@ -765,8 +829,8 @@ const SPOTS = [
   {
     id: "kakegawa",
     icon: "🏯",
-    ja: { name: "掛川城", area: "掛川駅 前後", hook: "駅のすぐそばに、木造復元の天守。", story: "掛川駅の北側、車窓から探せる距離に掛川城の天守があります。日本初の木造復元天守。見えるのは一瞬ですが、静岡の車窓に歴史の一行が足されます。" },
-    en: { name: "Kakegawa Castle", area: "Around Kakegawa Sta.", hook: "A castle keep, right by the tracks.", story: "Just north of Kakegawa Station stands Kakegawa Castle — Japan's first wooden-reconstructed keep. It appears only briefly, but it adds a line of history to the Shizuoka stretch." },
+    ja: { name: "掛川城", area: "掛川駅 前後", hook: "駅のすぐそばに、白い天守。", story: "掛川駅の北側、小高い丘に白い天守が見えます。戦国武将・山内一豊が城郭を大改修し、城下町を整えた掛川城です。江戸時代の天守は安政の大地震で倒壊しましたが、現在の天守は1994年、日本初の本格木造復元天守として約140年ぶりによみがえりました。のぞみでは数秒なので、掛川駅が近づいたらE席側を。" },
+    en: { name: "Kakegawa Castle", area: "Around Kakegawa Sta.", hook: "A white castle beside the station.", story: "Just north of Kakegawa Station, a white castle keep stands on a low hill. Warlord Yamauchi Kazutoyo extensively rebuilt Kakegawa Castle and developed its castle town. The Edo-period keep collapsed in the 1854 Ansei earthquake; the present keep was rebuilt in 1994 as Japan's first full-scale wooden reconstruction of a castle tower, returning after about 140 years. On a passing Nozomi, watch Seat E before the station." },
     minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "castle",
     image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
@@ -1031,8 +1095,8 @@ const SPOTS = [
   {
     id: "nagoya-station-skyline",
     icon: "🏙️",
-    ja: { name: "名古屋駅前", area: "名古屋到着直前", hook: "高層ビルの谷を、新幹線で抜ける。", story: "東京から新大阪へ向かう列車では、名古屋に着く少し前から車窓が一気に都市の景色へ切り替わります。高層ビル、駅前の密度、線路の重なり。自然や城とは違うけれど、名古屋到着を知らせる大事な車窓です。" },
-    en: { name: "Nagoya Station Skyline", area: "Just before Nagoya", hook: "The train cuts through the city.", story: "On trains from Tokyo toward Shin-Osaka, the window suddenly turns urban just before arriving at Nagoya: high-rise buildings, dense station-front blocks, and layers of tracks. It is not a mountain or a castle, but it is an essential view that signals Nagoya is coming." },
+    ja: { name: "名古屋駅前", area: "名古屋到着直前", hook: "あのビルは何？名古屋駅前。", story: "東京から新大阪方面へ向かう列車では、名古屋到着直前にE席側の景色が一気に高層ビル街へ変わります。ねじれた網目模様はモード学園スパイラルタワーズ。駅の真上に並ぶ2本の白い塔はJRセントラルタワーズ、その近くの濃い色をした四角い塔はミッドランドスクエアです。建物の名前が分かると、短い駅前風景が名古屋到着の小さな建築案内になります。" },
+    en: { name: "Nagoya Station Skyline", area: "Just before Nagoya", hook: "Which towers are those?", story: "Approaching Nagoya from Tokyo, Seat E suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, while the nearby dark rectangular tower is Midland Square. Knowing their names turns the brief skyline into a small architecture guide announcing your arrival." },
     minutesFromTokyo: 94, side: "E", category: "notable", confidence: "verified", durationSec: 30, scene: "hills",
     image: "images/20260530_nagoya_station_1_michikusa.jpg",
     photoCredit: {
@@ -1047,7 +1111,7 @@ const SPOTS = [
         alt: { ja: "新幹線から見える名古屋駅前の高層ビル", en: "Nagoya Station skyline from the Shinkansen" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
-        note: { ja: "左手がJRセントラルタワーズ、右手が大名古屋ビルヂング", en: "JR Central Towers on the left, Dai Nagoya Building on the right" },
+        note: { ja: "中央がJRセントラルタワーズ、右手がミッドランドスクエア", en: "JR Central Towers in the center, Midland Square on the right" },
       },
       {
         src: "images/20260530_nagoya_station_3_michikusa.jpg",
@@ -1065,6 +1129,7 @@ const SPOTS = [
         note: { ja: "夜の名古屋到着前、駅前の光が近づく", en: "City lights approach just before arriving at Nagoya at night" },
       },
     ],
+    references: [REFERENCES.nagoyaCentralTowers, REFERENCES.nagoyaSpiralTowers, REFERENCES.nagoyaMidlandSquare],
     map: { lat: 35.170693, lng: 136.881638, ja: "名古屋駅", en: "Nagoya Station" },
     viewpoint: { lat: 35.168703, lng: 136.882497 },
   },
@@ -1220,8 +1285,8 @@ const SPOTS = [
   {
     id: "nangu-taisha",
     icon: "⛩️",
-    ja: { name: "南宮大社", area: "岐阜羽島 → 米原", hook: "田園の向こうに、大鳥居。", story: "東京から新大阪方面へ向かう列車では、岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに南宮大社の大鳥居が見えます。新大阪から東京方面へ向かう場合は、米原を出て関ヶ原を越えたあと、岐阜羽島へ向かう途中のA席側です。遠くの社殿を探すというより、赤い鳥居を一瞬で拾う車窓です。" },
-    en: { name: "Nangu Taisha Shrine", area: "Gifu-Hashima → Maibara", hook: "A torii beyond the fields.", story: "From Tokyo toward Shin-Osaka, look from Seat A after Gifu-Hashima as the train heads toward Sekigahara. From Shin-Osaka toward Tokyo, look from Seat A after Maibara and Sekigahara, before Gifu-Hashima. The large torii gate of Nangu Taisha Shrine stands beyond the fields: less about seeing the whole shrine than catching a flash of red in the landscape." },
+    ja: { name: "南宮大社の大鳥居", area: "岐阜羽島 → 米原", hook: "田園の向こうに、赤い大鳥居。", story: "東京から新大阪方面へ向かう列車では、岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに南宮大社の大鳥居が見えます。南宮大社は美濃国一の宮で、鉱山・金属の神として信仰される金山彦大神を祀る神社です。新大阪から東京方面へ向かう場合は、米原を出て関ヶ原を越えたあとのA席側。車窓から探す対象は遠くの社殿ではなく、一瞬現れる赤い大鳥居です。" },
+    en: { name: "Nangu Taisha Grand Torii", area: "Gifu-Hashima → Maibara", hook: "A red grand torii beyond the fields.", story: "From Tokyo toward Shin-Osaka, look from Seat A after Gifu-Hashima as the train heads toward Sekigahara. Nangu Taisha is the principal shrine of historic Mino Province and enshrines Kanayamahiko, a deity associated with mining and metalwork. From Shin-Osaka toward Tokyo, look from Seat A after Maibara and Sekigahara. The target from the train is not the distant shrine buildings but the red grand torii flashing beyond the fields." },
     minutesFromTokyo: 107, side: "A", category: "curious", confidence: "verified", durationSec: 2, scene: "pagoda",
     routeNote: {
       ja: "東京から新大阪方面なら岐阜羽島を出たあと、新大阪から東京方面なら米原を出て関ヶ原を越えたあと、A席側を見てください。",
@@ -1374,8 +1439,8 @@ const SPOTS = [
   {
     id: "torikai-train-depot",
     icon: "🚄",
-    ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い列車が、ずらり。", story: "新大阪に近づくころ、E席側に新幹線が並ぶ大きな車両基地が広がります。走ってきた列車の裏側、整備と待機の場所。名所というより、旅を支える現場が突然ひらける車窓です。見える範囲が広いので、少し長めに探してください。" },
-    en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As you approach Shin-Osaka, Seat E may open onto a vast Shinkansen depot: rows of white trains resting beside the line. It is not a classic landmark; it is the backstage of the journey, where the trains wait and are cared for. The view stretches for a while, so keep looking." },
+    ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い列車が、ずらり。", story: "新大阪に近づくころ、E席側に白い新幹線が何本も並ぶ鳥飼車両基地が広がります。1964年の東海道新幹線開業時から大阪側の運行を支えてきた拠点で、列車が待機するだけでなく、車内外の清掃や検査、修繕を受けて次の運行に備える場所です。走ってきた新幹線の舞台裏が車窓いっぱいに現れるので、少し長めに眺めてみてください。" },
+    en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As you approach Shin-Osaka, Seat E opens onto Torikai Train Depot, where rows of white Shinkansen stand beside the line. Built when the Tokaido Shinkansen opened in 1964, it is more than a parking area: trains are cleaned, inspected, and repaired here before their next runs. The backstage of the journey fills the window, so keep watching a little longer." },
     minutesFromTokyo: 141, side: "E", category: "notable", confidence: "source-backed", durationSec: 10, scene: "hills",
     image: "images/20260614_torikai_train_depot_yamato160.jpg",
     photoCredit: { ja: "@yamato160", en: "@yamato160", url: "https://x.com/yamato160/status/2066003172884365364" },
