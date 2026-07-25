@@ -373,12 +373,15 @@ const REFERENCES = {
     url: "https://www.city.ogaki.lg.jp/0000001028.html",
   },
   ibukiMaibara: {
-    label: { ja: "米原市観光協会: 伊吹山", en: "Maibara Tourism: Mt. Ibuki" },
-    url: "https://kanko-maibara.net/spot/ibukiyama/",
+    label: { ja: "長浜・米原観光情報サイト: 伊吹山", en: "Kitabiwako.jp: Mt. Ibuki (Nagahama & Maibara tourism, Japanese only)" },
+    url: "https://kitabiwako.jp/spot/spot_5081",
   },
   ibukiKojiki: {
-    label: { ja: "Wikipedia: 伊吹山とヤマトタケル", en: "Wikipedia: Mt. Ibuki and Yamato Takeru (Japanese only)" },
-    url: "https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1#%E4%BC%9D%E6%89%BF",
+    label: { ja: "Wikipedia: 伊吹山（伝承の節）", en: "Wikipedia: Mount Ibuki" },
+    url: {
+      ja: "https://ja.wikipedia.org/wiki/%E4%BC%8A%E5%90%B9%E5%B1%B1#%E4%BC%9D%E6%89%BF",
+      en: "https://en.wikipedia.org/wiki/Mount_Ibuki",
+    },
   },
   nanguTaishaWiki: {
     label: { ja: "Wikipedia: 南宮大社", en: "Wikipedia: Nangu Taisha" },
@@ -725,6 +728,7 @@ const SPOTS = [
       ja: "品川を出たあとは、まずE席側の遠くをぼんやり見てください。近くのビルよりも「屋根の稜線の向こう」に富士山らしい輪郭を探すのがコツです。手前の景色（高層ビル・車両基地・住宅街）も一緒に眺めると、都心を横切っている実感が強くなります。",
       en: "After Shinagawa, let your eyes drift toward the far distance on Seat E. Look beyond the near buildings, along the ridge of rooftops, for a small triangular silhouette. Watching the foreground (skyscrapers, train depots, low neighborhoods) at the same time makes the sense of crossing central Tokyo much stronger.",
     },
+    minutesFromTokyo: 10, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, scene: "fuji",
     image: "images/20260509_ota_fuji_t_yangyang.jpg",
     photoCredit: {
       ja: "@T_Yangyang",
@@ -2019,6 +2023,7 @@ const SPOTS = [
       ja: "豊橋を出て蒲郡付近を進むあいだ、A席側の遠くに水平線が開ける瞬間があります。そのとき、水平線の上にごく低くひょうたん型の輪郭を探してみてください。派手なランドマークではないぶん、見つけた瞬間のちょっとした達成感がある車窓です。",
       en: "After Toyohashi, as the train passes Gamagori, watch for moments when the far horizon opens on the Seat A side. In those seconds, look for a low, gourd-shaped outline sitting just above the water. It is not a bold landmark, but exactly for that reason, spotting it feels like a small quiet win.",
     },
+    minutesFromTokyo: 84, side: "A", category: "notable", confidence: "needs-check", durationSec: 5, scene: "bay",
     image: "images/20181213_mikawa_oshima_kawasan3.jpg",
     photoCredit: {
       ja: "かわさん @kawasan3",
@@ -2519,7 +2524,7 @@ const SPOTS = [
     id: "ibuki",
     icon: "⛰️",
     ja: { name: "伊吹山", area: "岐阜羽島 → 米原", hook: "関ヶ原の空に、雪を戴く名峰。", story: "米原の手前、関ヶ原を抜けたあたりのE席側に、どっしりと横たわる伊吹山（標高1,377m）が現れます。滋賀県と岐阜県の県境にそびえる独立峰で、古事記・日本書紀ではヤマトタケルが荒ぶる神と戦い、命を落とすきっかけとなった山として登場する、日本屈指の由緒ある名山です。冬は日本海側から吹き込む雪雲を受け止め、日本一の積雪記録（11.82m）を持つ豪雪の山でもあります。真冬の白く輝く姿から、春の雪解けで山肌の縞模様が現れる季節、夏の緑、秋の枯れ色まで、季節ごとに大きく表情が変わります。" },
-    en: { name: "Mt. Ibuki", area: "Gifu-Hashima → Maibara", hook: "Snow-crowned peak of Sekigahara.", story: "Before Maibara, just past Sekigahara, Mt. Ibuki rises massive and low on the Seat E side. This 1,377-meter independent peak on the border of Shiga and Gifu Prefectures is one of Japan's oldest storied mountains: in the Kojiki and Nihon Shoki it appears as the mountain whose enraged deity ultimately caused the death of the legendary prince Yamato Takeru. In winter it catches snow clouds pouring in from the Sea of Japan and still holds Japan's official record for the deepest snowfall ever measured (11.82 m). Its face changes dramatically with the seasons — from the pure white of midwinter, to the striped bare slopes emerging with the spring thaw, to summer's deep green and autumn's russet." },
+    en: { name: "Mt. Ibuki", area: "Gifu-Hashima → Maibara", hook: "Snow-crowned peak of Sekigahara.", story: "Before Maibara, just past Sekigahara — the plain where the decisive 1600 battle that opened the Tokugawa shogunate was fought — Mt. Ibuki rises massive and low on the Seat E side. This 1,377-meter independent peak on the border of Shiga and Gifu Prefectures is one of Japan's oldest storied mountains: in the Kojiki and Nihon Shoki it appears as the mountain whose enraged deity ultimately caused the death of the legendary prince Yamato Takeru. In winter it catches snow clouds pouring in from the Sea of Japan and still holds Japan's official record for the deepest snowfall ever measured (11.82 m). Its face changes dramatically with the seasons — from the pure white of midwinter, to the striped bare slopes emerging with the spring thaw, to summer's deep green and autumn's russet." },
     pageTitle: {
       ja: "新幹線から見える伊吹山｜関ヶ原にそびえる雪の名峰 | 新幹線の窓",
       en: "Mt. Ibuki from the Shinkansen | The Snow Mountain above Sekigahara",
@@ -2538,7 +2543,7 @@ const SPOTS = [
     },
     pageStory: {
       ja: "伊吹山は滋賀県米原市と岐阜県関ケ原町・揖斐川町にまたがる標高1,377mの独立峰で、伊吹山地の最高峰です。周囲に大きな山がなく、ほぼ単独で盛り上がる形をしているため、新幹線の車窓では実際の高さ以上に「どっしりとした主役」に見えます。地質は主に石灰岩で、山の西側は現在も採掘が行われている一方、山頂部には特殊な高山植物群落が広がり、深田久弥の日本百名山にも選ばれています。日本武尊（ヤマトタケル）が伊吹山の荒ぶる神と戦ったという記紀神話の舞台としても知られ、山頂には日本武尊像が立っています。",
-      en: "Mt. Ibuki is a 1,377-meter independent peak straddling the border of Maibara (Shiga) and Sekigahara / Ibigawa (Gifu), the highest point of the Ibuki mountain range. With no other large peaks around it, the mountain rises almost alone from the plain, which is exactly why it looks so commanding from the Shinkansen window — larger in presence than in raw elevation. It is primarily limestone; the western flank is still being quarried, while the summit hosts a unique alpine plant community and is listed as one of Fukada Kyuya's '100 Famous Mountains of Japan.' The Kojiki and Nihon Shoki record it as the mountain where the legendary prince Yamato Takeru fought the local deity, and a statue of Yamato Takeru stands on the summit today.",
+      en: "Mt. Ibuki is a 1,377-meter independent peak straddling the border of Maibara (Shiga) and Sekigahara / Ibigawa (Gifu), the highest point of the Ibuki mountain range. With no other large peaks around it, the mountain rises almost alone from the plain, which is exactly why it looks so commanding from the Shinkansen window — larger in presence than in raw elevation. It is primarily limestone; the western flank is still being quarried, while the summit hosts a unique alpine plant community and is listed as one of Fukada Kyuya's '100 Famous Mountains of Japan.' The Kojiki and Nihon Shoki record it as the mountain where the legendary prince Yamato Takeru fought the local deity, and a statue of Yamato Takeru stands on the summit today. The narrow Sekigahara corridor at its foot is also the site of the Battle of Sekigahara, fought on 21 October 1600: Tokugawa Ieyasu's eastern coalition defeated Ishida Mitsunari's western forces here in a single day, effectively deciding the political order of Japan for the next 260 years of the Edo period.",
     },
     explainer: {
       heading: { ja: "季節でこんなに変わる、伊吹山の表情", en: "How Mt. Ibuki's face changes with the seasons" },

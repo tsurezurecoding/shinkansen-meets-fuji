@@ -854,7 +854,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260725-content-favorites">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260726-metadata-fix">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -951,7 +951,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260725-content-favorites">
+  <link rel="stylesheet" href="../style.css?v=20260726-metadata-fix">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1088,7 +1088,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260725-content-favorites">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260726-metadata-fix">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
