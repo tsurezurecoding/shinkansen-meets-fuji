@@ -31,6 +31,8 @@ const MSG = {
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
     readGuide: "ガイドを読む",
+    readGuideDetail: "詳しい車窓ガイドを見る",
+    readGuideDetailAria: (name) => `${name}の詳しい車窓ガイドを開く`,
     estimateTag: "目安時間", estimateNote: "列車を選ぶと実ダイヤに切替", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     nextupLabel: "つぎの車窓",
@@ -96,6 +98,11 @@ const MSG = {
     spotBtnCompact: "見た", spotBtnDoneCompact: "済",
     spotBtnAriaAdd: (name) => `${name}を見えた景色として記録`,
     spotBtnAriaRemove: (name) => `${name}のスタンプを解除`,
+    favBtn: "お気に入り", favBtnDone: "お気に入り済 ★",
+    favBtnAriaAdd: (name) => `${name}をお気に入りに追加`,
+    favBtnAriaRemove: (name) => `${name}をお気に入りから外す`,
+    fFavorites: "★ お気に入り",
+    tlFavoritesEmpty: "お気に入りに追加したスポットがまだありません。カードの★を押すと、ここに絞り込めます。",
     more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
@@ -129,6 +136,8 @@ const MSG = {
     trainPickNote: "Pick your train (real timetable)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
     readGuide: "Read guide",
+    readGuideDetail: "Read the full window guide",
+    readGuideDetailAria: (name) => `Open the full window guide for ${name}`,
     estimateTag: "Estimate times", estimateNote: "Pick a train for real timetable", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     nextupLabel: "NEXT VIEW",
@@ -194,6 +203,11 @@ const MSG = {
     spotBtnCompact: "Seen", spotBtnDoneCompact: "Saved",
     spotBtnAriaAdd: (name) => `Save ${name} as spotted`,
     spotBtnAriaRemove: (name) => `Remove the stamp for ${name}`,
+    favBtn: "Favorite", favBtnDone: "Favorited ★",
+    favBtnAriaAdd: (name) => `Add ${name} to favorites`,
+    favBtnAriaRemove: (name) => `Remove ${name} from favorites`,
+    fFavorites: "★ Favorites",
+    tlFavoritesEmpty: "No favorites yet. Tap the ★ on a card to add it, then filter here.",
     more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
@@ -233,6 +247,18 @@ function loadStamps() {
   }
 }
 let stamps = loadStamps();
+function loadFavorites() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem("mado-favorites") || "{}");
+    return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+let favorites = loadFavorites();
+function saveFavorites() {
+  try { localStorage.setItem("mado-favorites", JSON.stringify(favorites)); } catch {}
+}
 let liveTimer = null;
 let activeSpotModal = null;
 let activeQuickModal = null;
@@ -244,7 +270,9 @@ const APP_SELF = location.pathname.endsWith("/zukan.html")
   : "index.html";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
-  return lang === "en" ? `en/spots/${spot.id}.html` : `spots/${spot.id}.html`;
+  const pageId = spot.guidePageId || spot.id;
+  const anchor = spot.guideAnchor ? `#${spot.guideAnchor}` : "";
+  return lang === "en" ? `en/spots/${pageId}.html${anchor}` : `spots/${pageId}.html${anchor}`;
 }
 function liveMapHref(targetLang = lang) {
   return `live/index.html${targetLang === "en" ? "?lang=en" : ""}`;
@@ -706,6 +734,7 @@ function stampBadgeHTML(sp, size, fallbackCls) {
 function spotDetailModalHTML(spot) {
   const L = spot[lang];
   const heroMedia = spotModalMediaHTML(spot);
+  const guideAria = t("readGuideDetailAria", L.name);
   return `
     <div class="spot-modal-backdrop" data-modal-close></div>
     <section class="spot-modal-panel" role="dialog" aria-modal="true" aria-labelledby="spot-modal-title" tabindex="-1">
@@ -725,8 +754,11 @@ function spotDetailModalHTML(spot) {
           <p class="spot-modal-story">${L.story}</p>
           ${bodyLinksHTML(spot, "spot-modal-body-links")}
           <div class="spot-modal-actions">
-            <button type="button" class="spot-btn spot-modal-stamp" data-stamp="${spot.id}">${stamps[spot.id] ? t("spotBtnDone") : t("spotBtn")}</button>
-            <a class="spot-btn spot-modal-guide" href="${spotPageHref(spot)}">${t("readGuide")}</a>
+            <a class="spot-modal-guide-cta" href="${spotPageHref(spot)}" aria-label="${escapeAttr(guideAria)}"><span class="spot-modal-guide-label">${escapeHTML(t("readGuideDetail"))}</span><span class="spot-modal-guide-arrow" aria-hidden="true">→</span></a>
+            <div class="spot-modal-toggles" role="group" aria-label="${escapeAttr(L.name)}">
+              ${favoriteButtonHTML(spot.id, !!favorites[spot.id], "lg")}
+              ${stampIconButtonHTML(spot.id, !!stamps[spot.id], "lg")}
+            </div>
           </div>
           ${miniMapDetailsHTML(spot)}
           ${spotRelatedHTML(spot)}
@@ -809,6 +841,7 @@ const showcaseSpotIds = [
   "kirin-beer-factory",
   "kiyosu",
   "solar-ark",
+  "727-board",
 ];
 
 function renderShowcase() {
@@ -1045,6 +1078,11 @@ function renderTimeline() {
     .filter((x) => matchesTimelineFilters(x.sp))
     .forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
   items.sort((a, b) => a.clock - b.clock || (a.kind === "station" ? -1 : 1));
+  const hasSpotItems = items.some((it) => it.kind === "spot");
+  if (!hasSpotItems && activeTimelineFilters.has("favorites")) {
+    $("#timeline").innerHTML = `<li class="tl-empty">${escapeHTML(t("tlFavoritesEmpty"))}</li>`;
+    return;
+  }
   const html = [];
   items.forEach((it, i) => {
     if (it.kind === "station") {
@@ -1093,7 +1131,10 @@ function spotItemHTML(sp, clock) {
               </div>
               <div class="spot-card-footer">
                 <div class="tl-meta">${seatShortBadge(sp)}</div>
-                ${spotCardStampButtonHTML(sp.id, Boolean(stamps[sp.id]))}
+                <div class="spot-card-toggles">
+                  ${favoriteButtonHTML(sp.id, Boolean(favorites[sp.id]))}
+                  ${stampIconButtonHTML(sp.id, Boolean(stamps[sp.id]))}
+                </div>
               </div>
             </div>
             ${thumb}
@@ -1115,6 +1156,18 @@ function spotCardStampButtonHTML(spotId, got) {
 
 function updateStampButton(btn, got) {
   btn.classList.toggle("stamped", got);
+  if (btn.classList.contains("spot-icon-btn")) {
+    const size = btn.classList.contains("spot-stamp-btn-lg") ? "lg" : "sm";
+    const replacement = document.createElement("template");
+    replacement.innerHTML = stampIconButtonHTML(btn.dataset.stamp, got, size).trim();
+    const rendered = replacement.content.firstElementChild;
+    btn.className = rendered.className;
+    btn.innerHTML = rendered.innerHTML;
+    btn.setAttribute("aria-label", rendered.getAttribute("aria-label"));
+    btn.setAttribute("aria-pressed", String(got));
+    btn.setAttribute("title", rendered.getAttribute("title"));
+    return;
+  }
   if (btn.classList.contains("spot-card-stamp")) {
     const replacement = document.createElement("template");
     replacement.innerHTML = spotCardStampButtonHTML(btn.dataset.stamp, got).trim();
@@ -1268,10 +1321,16 @@ function bindSpotEvents(root) {
       toggleStamp(btn.dataset.stamp);
     });
   });
+  root.querySelectorAll("[data-fav]").forEach((btn) => {
+    btn.addEventListener("click", (event) => {
+      event.stopPropagation();
+      toggleFavorite(btn.dataset.fav);
+    });
+  });
   root.querySelectorAll("[data-more]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       if (event.target.closest("a")) return;
-      if (event.target.closest("[data-stamp]")) return;
+      if (event.target.closest("[data-stamp], [data-fav]")) return;
       const item = btn.closest(".tl-item, .gal-card");
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
       const photoIndex = item?.dataset.galleryPhotoIndex;
@@ -1279,7 +1338,7 @@ function bindSpotEvents(root) {
     });
     btn.addEventListener("keydown", (event) => {
       if (event.key !== "Enter" && event.key !== " ") return;
-      if (event.target.closest("[data-stamp]")) return;
+      if (event.target.closest("[data-stamp], [data-fav]")) return;
       event.preventDefault();
       const item = btn.closest(".tl-item, .gal-card");
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
@@ -1448,6 +1507,52 @@ function toggleStamp(id) {
     updateStampButton(btn, got);
   });
 }
+function toggleFavorite(id) {
+  const removed = !!favorites[id];
+  if (removed) delete favorites[id];
+  else favorites[id] = Date.now();
+  track(removed ? "favorite_removed" : "favorite_added", { spot_id: id });
+  saveFavorites();
+  $$(`[data-fav="${id}"]`).forEach((btn) => {
+    updateFavoriteButton(btn, !removed);
+  });
+  if (activeTimelineFilters.has("favorites")) {
+    renderTimeline();
+  }
+}
+function favoriteButtonHTML(spotId, faved, size = "sm") {
+  const spot = findSpotById(spotId);
+  const spotName = spot?.[lang]?.name || spotId;
+  const ariaLabel = faved ? t("favBtnAriaRemove", spotName) : t("favBtnAriaAdd", spotName);
+  const cls = size === "lg" ? "spot-icon-btn spot-fav-btn spot-fav-btn-lg" : "spot-icon-btn spot-fav-btn";
+  const iconPath = faved
+    ? '<path d="M8 1.6 9.9 5.7 14.4 6.3 11 9.5 11.9 14 8 11.9 4.1 14 5 9.5 1.6 6.3 6.1 5.7Z"/>'
+    : '<path d="M8 1.6 9.9 5.7 14.4 6.3 11 9.5 11.9 14 8 11.9 4.1 14 5 9.5 1.6 6.3 6.1 5.7Z" fill="none"/>';
+  return `<button type="button" class="${cls}${faved ? " is-on" : ""}" data-fav="${spotId}" aria-label="${escapeAttr(ariaLabel)}" aria-pressed="${faved}" title="${escapeAttr(faved ? t("favBtnDone") : t("favBtn"))}"><svg class="spot-icon-btn-svg" viewBox="0 0 16 16" aria-hidden="true">${iconPath}</svg></button>`;
+}
+function stampIconButtonHTML(spotId, got, size = "sm") {
+  const spot = findSpotById(spotId);
+  const spotName = spot?.[lang]?.name || spotId;
+  const ariaLabel = got ? t("spotBtnAriaRemove", spotName) : t("spotBtnAriaAdd", spotName);
+  const cls = size === "lg" ? "spot-icon-btn spot-stamp-btn spot-stamp-btn-lg" : "spot-icon-btn spot-stamp-btn";
+  const iconMarkup = got
+    ? '<path d="M3.6 8.4 6.6 11.2 12.6 5.2" stroke-linecap="round" stroke-linejoin="round"/>'
+    : '<path d="M3.8 8.6 6.7 11.4 12.4 5.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>';
+  return `<button type="button" class="${cls}${got ? " is-on" : ""}" data-stamp="${spotId}" aria-label="${escapeAttr(ariaLabel)}" aria-pressed="${got}" title="${escapeAttr(got ? t("spotBtnDone") : t("spotBtn"))}"><svg class="spot-icon-btn-svg" viewBox="0 0 16 16" aria-hidden="true">${iconMarkup}</svg></button>`;
+}
+function updateFavoriteButton(btn, faved) {
+  if (!btn) return;
+  const spotId = btn.dataset.fav;
+  const size = btn.classList.contains("spot-fav-btn-lg") ? "lg" : "sm";
+  const replacement = document.createElement("template");
+  replacement.innerHTML = favoriteButtonHTML(spotId, faved, size).trim();
+  const rendered = replacement.content.firstElementChild;
+  btn.className = rendered.className;
+  btn.innerHTML = rendered.innerHTML;
+  btn.setAttribute("aria-label", rendered.getAttribute("aria-label"));
+  btn.setAttribute("aria-pressed", String(faved));
+  btn.setAttribute("title", rendered.getAttribute("title"));
+}
 function renderStampboard() {
   if (!$("#stampboard")) return;
   $("#stampboard").innerHTML = SPOTS.map((sp) => `
@@ -1543,10 +1648,11 @@ function matchesGalleryFilters(spot) {
 }
 function matchesTimelineFilters(spot) {
   if (!activeTimelineFilters.size) return true;
+  if (activeTimelineFilters.has("favorites") && !favorites[spot.id]) return false;
   const tags = galleryTags(spot);
   const selectedSeats = [...activeTimelineFilters].filter((filter) => filter === "seat-a" || filter === "seat-e");
   const selectedTimes = [...activeTimelineFilters].filter((filter) => filter === "day" || filter === "night");
-  const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e", "day", "night"].includes(filter));
+  const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e", "day", "night", "favorites"].includes(filter));
   const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
   const timeMatch = !selectedTimes.length || selectedTimes.some((filter) => tags.has(filter));
   const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
@@ -1592,7 +1698,10 @@ function renderGallery() {
             <div class="gal-body">
               <div class="gal-top">
                 <div class="gal-top-left">${stampBadgeHTML(sp, 38, "tl-icon")}<span class="gal-name">${L.name}</span></div>
-                ${spotCardStampButtonHTML(sp.id, Boolean(stamps[sp.id])).replace("spot-card-stamp", "spot-card-stamp gal-stamp")}
+                <div class="spot-card-toggles gal-toggles">
+                  ${favoriteButtonHTML(sp.id, Boolean(favorites[sp.id]))}
+                  ${stampIconButtonHTML(sp.id, Boolean(stamps[sp.id]))}
+                </div>
               </div>
               <p class="gal-area">${L.area}</p>
               <div class="spot-card-footer">
@@ -1683,7 +1792,9 @@ function bindJournalControls() {
   $("#resetBtn")?.addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
       stamps = {};
+      favorites = {};
       localStorage.setItem("mado-stamps", "{}");
+      localStorage.setItem("mado-favorites", "{}");
       renderMedalBoard();
       renderStampboard();
       renderGallery();

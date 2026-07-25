@@ -8,7 +8,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
-const today = "2026-07-24";
+const today = "2026-07-25";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
@@ -205,7 +205,7 @@ function enAreaPhrase(area) {
 
 function enApproachArea(area) {
   if (!area) return "this section";
-  return area.replace(/^Around\s+/i, "");
+  return area.replace(/^(Around|Just before|Just after)\s+/i, "");
 }
 
 function pagePath(lang, spotId = "") {
@@ -353,7 +353,7 @@ function creditText(value, lang) {
   return value[lang] || value.ja || value.en || "";
 }
 
-function photoItems(spot, lang) {
+function ownPhotoItems(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const main = spot.image
     ? [{
@@ -365,7 +365,40 @@ function photoItems(spot, lang) {
         note: spot.photoCredit?.note,
       }]
     : [];
-  return [...main, ...(spot.photos || [])].filter((item) => item.src);
+  return [...main, ...(spot.photos || []).filter((item) => item.role !== "reference")].filter((item) => item.src);
+}
+
+function photoItems(spot, lang) {
+  const items = [...ownPhotoItems(spot, lang)];
+  for (const id of spot.pagePhotoSpotIds || []) {
+    const linkedSpot = SPOTS.find((item) => item.id === id);
+    if (linkedSpot) items.push(...ownPhotoItems(linkedSpot, lang));
+  }
+  const seen = new Set();
+  return items.filter((item) => {
+    if (!item.src || seen.has(item.src)) return false;
+    if (item.illustration) return false;
+    seen.add(item.src);
+    return true;
+  });
+}
+function explainerFigureHTML(spot, lang, prefix) {
+  const figure = spot.explainerFigure;
+  if (!figure?.src) return "";
+  const alt = localized(figure.alt, lang) || "";
+  const caption = localized(figure.caption, lang) || "";
+  const credit = creditText(figure.credit, lang) || "";
+  const href = figure.sourceUrl || "";
+  const creditHTML = credit
+    ? (href
+      ? `<a href="${escapeHTML(href)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
+      : escapeHTML(credit))
+    : "";
+  const captionBits = [caption ? `<strong>${escapeHTML(caption)}</strong>` : "", creditHTML ? `<span>${creditHTML}</span>` : "", figure.date ? `<span>${escapeHTML(figure.date)}</span>` : ""].filter(Boolean).join(" ");
+  return `<figure class="spot-page-explainer-figure">
+        <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(thumbnailSrc(figure.src))}" alt="${escapeHTML(alt)}">
+        ${captionBits ? `<figcaption>${captionBits}</figcaption>` : ""}
+      </figure>`;
 }
 
 function photoGalleryHTML(spot, lang, prefix) {
@@ -390,9 +423,14 @@ function photoGalleryHTML(spot, lang, prefix) {
       </figure>`;
   }).join("");
   return `<section class="spot-page-section">
-        <h2>${escapeHTML(ui.sectionPhotos(data.name))}</h2>
+        <h2>${escapeHTML(localized(spot.photoSectionHeading, lang) || ui.sectionPhotos(data.name))}</h2>
         <div class="spot-page-photo-grid">${cards}</div>
       </section>`;
+}
+
+function spotGuideHref(spot) {
+  const pageId = spot.guidePageId || spot.id;
+  return `${pageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`;
 }
 
 function routeRelatedHTML(spot, lang) {
@@ -427,7 +465,7 @@ function routeRelatedHTML(spot, lang) {
   const links = unique.slice(0, 3).map(({ label, spot: item }) => {
     const data = item[lang] || item.ja;
     const image = thumbnailSrc(item.image || item.photos?.[0]?.src || "images/og-shinkansen-window.png");
-    return `<a href="${item.id}.html">
+    return `<a href="${spotGuideHref(item)}">
         <img src="${prefix}${escapeHTML(image)}" alt="${escapeHTML(data.name)}" loading="lazy" decoding="async">
         <small>${escapeHTML(label)}</small>
         <strong>${escapeHTML(data.name)}</strong>
@@ -441,12 +479,18 @@ function routeRelatedHTML(spot, lang) {
 }
 
 function referencesHTML(spot, lang) {
-  const refs = (spot.references || []).map((ref) => {
+  const ui = UI[lang];
+  const items = (spot.references || []).map((ref) => {
     const href = referenceUrl(ref, lang);
-    if (!href) return "";
-    return `<li><a href="${escapeHTML(href)}" rel="noopener" target="_blank">${text(localized(ref.label, lang))}</a></li>`;
-  }).join("");
-  return refs;
+    const label = localized(ref?.label, lang);
+    if (!href || !label) return "";
+    return `<li><a href="${escapeHTML(href)}" rel="noopener" target="_blank">${text(label)}</a></li>`;
+  }).filter(Boolean).join("");
+  if (!items) return "";
+  return `<section class="spot-page-section spot-page-refs">
+        <h2>${escapeHTML(ui.sectionRefs)}</h2>
+        <ul>${items}</ul>
+      </section>`;
 }
 
 function mapHref(spot, lang) {
@@ -581,6 +625,79 @@ function miniMapDetailsHTML(spot, lang) {
       </section>`;
 }
 
+function sharedGuideHTML(spot, lang) {
+  const chapters = (spot.sharedGuideSpotIds || [])
+    .map((id) => SPOTS.find((item) => item.id === id))
+    .filter(Boolean);
+  return chapters.map((chapter) => {
+    const data = chapter[lang] || chapter.ja || {};
+    const paragraphs = localized(chapter.sharedGuideStory, lang) || [];
+    const body = Array.isArray(paragraphs) && paragraphs.length
+      ? paragraphs
+      : [data.story || ""];
+    return `<section class="spot-page-section" id="${escapeHTML(chapter.guideAnchor || chapter.id)}">
+        <h2>${escapeHTML(localized(chapter.sharedGuideHeading, lang) || data.name)}</h2>
+        <p><strong>${escapeHTML(data.hook || "")}</strong></p>
+        ${body.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join("\n        ")}
+      </section>`;
+  }).join("\n      ");
+}
+
+function sharedGuideNoticeHTML(spot, lang) {
+  if (!spot.guidePageId || spot.guidePageId === spot.id) return "";
+  const href = `${spot.guidePageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`;
+  return lang === "ja"
+    ? `<section class="spot-page-section guide-answer-panel">
+        <div class="guide-answer-copy">
+          <h2>浜名湖の景色と一緒に見る</h2>
+          <p>遠くの富士山は、湖面、養殖棚、サンマリンブリッジへと続く浜名湖の車窓の一部として現れます。</p>
+          <p><a class="inline-cta" href="${escapeHTML(href)}">浜名湖の見どころと写真を見る →</a></p>
+        </div>
+      </section>`
+    : `<section class="spot-page-section guide-answer-panel">
+        <div class="guide-answer-copy">
+          <h2>See it as part of the Lake Hamana crossing</h2>
+          <p>Distant Fuji appears within a sequence of water, aquaculture structures and Sun Marine Bridge.</p>
+          <p><a class="inline-cta" href="${escapeHTML(href)}">See Lake Hamana highlights and photographs →</a></p>
+        </div>
+      </section>`;
+}
+
+function articleImageHTML(spot, lang, prefix) {
+  const image = spot.articleImage || (spot.photos || []).find((item) => item.role === "reference");
+  if (!image?.src) return "";
+  const credit = creditText(image.credit, lang);
+  const source = image.sourceUrl || "";
+  const creditHTML = source
+    ? `<a href="${escapeHTML(source)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
+    : escapeHTML(credit);
+  const date = image.date ? `<span>${escapeHTML(image.date)}</span>` : "";
+  return `<section class="spot-page-section spot-page-reference-section">
+        <h2>${escapeHTML(localized(image.heading, lang))}</h2>
+        <p>${escapeHTML(localized(image.intro, lang))}</p>
+        <figure class="spot-page-reference-figure">
+          <a href="${escapeHTML(source || `${prefix}${image.src}`)}"${source ? ' rel="noopener" target="_blank"' : ""}>
+            <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(thumbnailSrc(image.src))}" alt="${escapeHTML(localized(image.alt, lang))}">
+          </a>
+          <figcaption>
+            <strong>${escapeHTML(localized(image.caption, lang))}</strong>
+            <span>${creditHTML}</span>
+            ${date}
+          </figcaption>
+        </figure>
+      </section>`;
+}
+
+function pageHeadingHTML(spot, lang, fallback) {
+  const chunks = localized(spot.pageHeadingChunks, lang);
+  if (Array.isArray(chunks) && chunks.length) {
+    return chunks
+      .map((chunk) => `<span class="copy-chunk">${escapeHTML(chunk)}</span>`)
+      .join(lang === "en" ? " " : "");
+  }
+  return escapeHTML(localized(spot.pageHeading, lang) || fallback);
+}
+
 function durationGuideText(spot, lang) {
   const seconds = Number(spot.durationSec);
   if (!Number.isFinite(seconds)) {
@@ -632,7 +749,7 @@ function spotGuideDepthHTML(spot, lang) {
   const seat = sideLabel(spot, lang);
   const intro = lang === "ja"
     ? `${data.area || "この区間"}が近づいたら、${seat}の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。`
-    : `As you approach ${data.area || "this section"}, start watching from ${seat}. Use Live Guide while riding, or the map on this page before you board.`;
+    : `As you approach ${enApproachArea(data.area)}, start watching from ${seat}. Use Live Guide while riding, or the map on this page before you board.`;
   return `<section class="spot-page-section">
         <h2>${escapeHTML(title)}</h2>
         <h3>${escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first")}</h3>
@@ -657,10 +774,15 @@ function spotPageHTML(spot, lang) {
   const photos = photoItems(spot, lang);
   const photoCount = photos.length;
   const routeNote = localized(spot.routeNote, lang) || ui.routeNote(data.area, sideLabel(spot, lang));
+  const FUJI_FAMILY = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
   const fujiGuideLink = spot.id === "fuji"
     ? (lang === "ja"
-      ? `<p>座席の取り方、東京発・上り列車の時刻、左富士まで含めて確認するなら、<a href="../guide.html">新幹線から富士山を見る完全ガイド</a>へ。</p>`
-      : `<p>For seat booking, timing from Tokyo, timing from Kyoto or Osaka, and the hidden Left Fuji moment, see the <a href="../guide.html">complete Mt. Fuji from the Shinkansen guide</a>.</p>`)
+      ? `<p>このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、<a href="../guide.html">富士山FAQ・乗車前ガイド</a>で確認できます。</p>`
+      : `<p>This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
+    : FUJI_FAMILY.has(spot.id)
+    ? (lang === "ja"
+      ? `<p>富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、<a href="../guide.html">富士山FAQ・乗車前ガイド</a>にまとめています。</p>`
+      : `<p>Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
     : "";
   const fujiGuideBlock = fujiGuideLink ? `        ${fujiGuideLink}\n` : "";
   const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
@@ -671,12 +793,31 @@ function spotPageHTML(spot, lang) {
   const pageStory = localized(spot.pageStory, lang) || data.story || "";
   const explainerData = spot.explainer;
   const explainerParas = explainerData ? (explainerData[lang] || explainerData.ja || []) : [];
+  const explainerFigure = explainerFigureHTML(spot, lang, prefix);
+  const explainerFigureAfterIndex = Number.isInteger(spot.explainerFigure?.afterParagraph)
+    ? Math.min(explainerParas.length - 1, Math.max(0, spot.explainerFigure.afterParagraph))
+    : 0;
   const explainer = explainerData && explainerParas.length
     ? `<section class="spot-page-section">
         <h2>${escapeHTML(localized(explainerData.heading, lang))}</h2>
-        ${explainerParas.map((p) => `<p>${escapeHTML(p)}</p>`).join("\n        ")}
+        ${explainerParas.map((p, index) => {
+          const paragraph = `<p>${escapeHTML(p)}</p>`;
+          if (explainerFigure && index === explainerFigureAfterIndex) {
+            return `${paragraph}\n        ${explainerFigure}`;
+          }
+          return paragraph;
+        }).join("\n        ")}
       </section>`
     : "";
+  const sharedGuide = sharedGuideHTML(spot, lang);
+  const sharedGuideNotice = sharedGuideNoticeHTML(spot, lang);
+  const articleImage = articleImageHTML(spot, lang, prefix);
+  const sharedGuideNoticeBlock = sharedGuideNotice ? `      ${sharedGuideNotice}\n` : "";
+  // Keep the legacy whitespace-only separator when no explainer exists so
+  // regenerating one spot does not create unrelated diffs in all static pages.
+  const explainerBlock = explainer ? `      ${explainer}\n` : "      \n";
+  const articleImageBlock = articleImage ? `      ${articleImage}\n` : "";
+  const sharedGuideBlock = sharedGuide ? `      ${sharedGuide}\n` : "";
   const liveMapCta = lang === "ja" ? "乗車中はライブガイドで見る" : "Use Live Guide while riding";
   const jsonLd = {
     "@context": "https://schema.org",
@@ -713,7 +854,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260724-content-ui">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260725-content-favorites">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -733,7 +874,7 @@ function spotPageHTML(spot, lang) {
   <main>
     <article class="spot-page-article">
       <p class="eyebrow">${escapeHTML(ui.eyebrow)}</p>
-      <h1>${escapeHTML(localized(spot.pageHeading, lang) || ui.titleQuestion(data.name))}</h1>
+      <h1>${pageHeadingHTML(spot, lang, ui.titleQuestion(data.name))}</h1>
       <p class="spot-page-lead">${escapeHTML(data.hook || "")}</p>
       <div class="spot-page-actions spot-page-actions-top">
         <a class="btn btn-primary" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.searchCta)}</a>
@@ -749,7 +890,7 @@ function spotPageHTML(spot, lang) {
         <div><dt>${escapeHTML(ui.facts[2])}</dt><dd>${escapeHTML(ui.minutes(spot.minutesFromTokyo))}</dd></div>
         <div><dt>${escapeHTML(ui.facts[3])}</dt><dd>${photoCount} ${escapeHTML(ui.photoUnit)}</dd></div>
       </dl>
-      <section class="spot-page-section">
+${sharedGuideNoticeBlock}      <section class="spot-page-section">
         <h2>${escapeHTML(localized(spot.sectionHeading, lang) || ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(pageStory)}</p>
 ${bodyLinks ? `        ${bodyLinks}
@@ -757,10 +898,10 @@ ${bodyLinks ? `        ${bodyLinks}
 ${fujiGuideBlock.trimEnd()}
         <p><a href="${liveHref(lang, prefix)}">${escapeHTML(liveMapCta)}</a></p>
       </section>
-      ${explainer}
-      ${miniMap}
+${explainerBlock}${articleImageBlock}${sharedGuideBlock}      ${miniMap}
       ${spotGuideDepthHTML(spot, lang)}
       ${photoGalleryHTML(spot, lang, prefix)}
+      ${refs}
       ${routeRelatedHTML(spot, lang)}
       <div class="spot-page-actions">
         <a class="btn btn-primary" href="${appUrl}">${escapeHTML(ui.appCta)}</a>
@@ -810,7 +951,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260724-content-ui">
+  <link rel="stylesheet" href="../style.css?v=20260725-content-favorites">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -947,7 +1088,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260724-content-ui">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260725-content-favorites">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

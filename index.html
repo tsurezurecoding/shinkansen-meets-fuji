@@ -80,7 +80,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260724-content-ui">
+  <link rel="stylesheet" href="style.css?v=20260725-content-favorites">
 </head>
 <body>
 
@@ -178,8 +178,9 @@
             <p class="section-sub" data-i18n="tlSub">時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。</p>
           </div>
           <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
-            <div class="timeline-filter-group" role="group" aria-label="座席側">
+            <div class="timeline-filter-group" role="group" aria-label="お気に入り・座席側">
               <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">すべて</button>
+              <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ お気に入り</button>
               <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
               <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">E席</button>
             </div>
@@ -231,9 +232,9 @@
   </footer>
 
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
-  <script src="data.js?v=20260724-content-ui"></script>
+  <script src="data.js?v=20260725-content-favorites"></script>
   <script src="track.js?v=20260707-map-mode-switch"></script>
   <script src="spot-map.js?v=20260718-android-leaflet"></script>
-  <script src="app.js?v=20260724-content-ui"></script>
+  <script src="app.js?v=20260725-content-favorites"></script>
 </body>
 </html>
