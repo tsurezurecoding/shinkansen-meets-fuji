@@ -738,6 +738,9 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   font-size: clamp(30px, 6vw, 48px);
   line-height: 1.25;
   letter-spacing: 0;
+  word-break: keep-all;
+  overflow-wrap: normal;
+  line-break: strict;
 }
 .spot-page-lead {
   margin-top: 14px;
@@ -1049,6 +1052,7 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
  * PC(>=1100px)でだけ表示。個別ページに着地したユーザーに37の見どころを
  * 意識させ、列車検索や他スポットへの回遊を促す。 */
 .spot-page-hero {
+  max-width: 1040px;
   padding-top: 54px;
   padding-bottom: 6px;
   text-align: center;

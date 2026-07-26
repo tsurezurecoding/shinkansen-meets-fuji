@@ -559,6 +559,10 @@ const SPOTS = [
       ja: "新幹線から見える東京タワーと都心の景色",
       en: "Tokyo Tower and the central Tokyo skyline from the Shinkansen",
     },
+    pageHeadingChunks: {
+      ja: ["新幹線から見える、", "東京タワーと都心の景色"],
+      en: ["Tokyo Tower and the central Tokyo skyline", "from the Shinkansen"],
+    },
     metaDescription: {
       ja: "東京駅を出てすぐ、新幹線のE席側に見える東京タワー。周辺の汐留・浜松町・品川の街並みや、夜のライトアップの見え方まで、車窓の楽しみ方を写真付きで案内します。",
       en: "Just after leaving Tokyo Station, Tokyo Tower appears from Seat E on the Shinkansen. See how it fits with the Shiodome, Hamamatsucho and Shinagawa skyline, and how it looks when illuminated at night.",
@@ -702,6 +706,10 @@ const SPOTS = [
     pageHeading: {
       ja: "東京の街並み越しに見える、都内からの富士山",
       en: "Mt. Fuji seen across the Tokyo skyline",
+    },
+    pageHeadingChunks: {
+      ja: ["東京の街並み越しに見える、", "都内からの富士山"],
+      en: ["Mt. Fuji seen across", "the Tokyo skyline"],
     },
     metaDescription: {
       ja: "品川を過ぎて多摩川へ向かう区間で、大田区の街並み越しにぽつんと見える富士山を紹介。周辺の景色（品川の高層ビル・大井車両基地・羽田・大田区の工場地帯）と合わせて楽しむ見つけ方を解説します。",
@@ -933,6 +941,10 @@ const SPOTS = [
       ja: "「私は誰でしょう」看板はどこ？",
       en: "Where is the “Who am I?” billboard seen from the Shinkansen?",
     },
+    pageHeadingChunks: {
+      ja: ["「私は誰でしょう」看板は、", "どこ？"],
+      en: ["Where is the “Who am I?” billboard", "seen from the Shinkansen?"],
+    },
     metaDescription: {
       ja: "新幹線から見える「私は誰でしょう」看板の場所と見える時刻、座席側を案内。新横浜から小田原へ向かう途中、藤沢市付近のA席側に現れる謎の看板です。もともとはプチプチ®で知られる川上産業の広告枠でした。",
       en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Fujisawa. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
@@ -1019,6 +1031,10 @@ const SPOTS = [
       ja: "727・248看板はどこ？何の広告？",
       en: "What are the 727 and 248 billboards seen from the Shinkansen?",
     },
+    pageHeadingChunks: {
+      ja: ["727・248看板はどこ？", "何の広告？"],
+      en: ["What are the 727 and 248 billboards", "seen from the Shinkansen?"],
+    },
     metaDescription: {
       ja: "新幹線から見える727・248看板の正体と場所を解説。藤沢市葛原付近ではE席側に2つが並び、用田付近などではA席側にも727看板が見えます。",
       en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
@@ -1087,6 +1103,10 @@ const SPOTS = [
     pageHeading: {
       ja: "丹沢山地の背後にそびえる、相模平野越しの富士山",
       en: "Mt. Fuji beyond the Sagami Plain, rising behind the Tanzawa range",
+    },
+    pageHeadingChunks: {
+      ja: ["丹沢山地の背後にそびえる、", "相模平野越しの富士山"],
+      en: ["Mt. Fuji beyond the Sagami Plain,", "rising behind the Tanzawa range"],
     },
     metaDescription: {
       ja: "新横浜から小田原へ向かう区間、新幹線のE席側に、相模平野・丹沢山地・箱根外輪山を挟んで富士山がそびえる遠望ポイントがあります。見つけ方と最適な季節・時間帯を解説します。",
@@ -1157,6 +1177,10 @@ const SPOTS = [
     pageHeading: {
       ja: "トンネルの合間にひらく、熱海と相模湾",
       en: "Atami and Sagami Bay between the tunnels",
+    },
+    pageHeadingChunks: {
+      ja: ["トンネルの合間にひらく、", "熱海と相模湾"],
+      en: ["Atami and Sagami Bay", "between the tunnels"],
     },
     metaDescription: {
       ja: "小田原から熱海へ向かう新幹線のA席側では、トンネルの合間に相模湾、斜面の街、初島、熱海城が見えます。見つけ方とそれぞれの正体を写真付きで紹介します。",
@@ -1230,6 +1254,10 @@ const SPOTS = [
       ja: "新幹線から一瞬だけ見える、小田原城の白い天守",
       en: "The white keep of Odawara Castle, glimpsed from the Shinkansen",
     },
+    pageHeadingChunks: {
+      ja: ["新幹線から一瞬だけ見える、", "小田原城の白い天守"],
+      en: ["The white keep of Odawara Castle,", "glimpsed from the Shinkansen"],
+    },
     metaDescription: {
       ja: "小田原駅前後、新幹線のA席側に一瞬見える白い天守は小田原城。北条五代の本拠、豊臣秀吉の小田原征伐、明治の廃城、1960年の復興天守まで、車窓と一緒に楽しむ城の背景を紹介します。",
       en: "The white keep glimpsed on Seat A around Odawara Station is Odawara Castle. Learn how it grew as the Hojo clan's stronghold, endured Toyotomi Hideyoshi's 1590 siege, was dismantled in Meiji, and was rebuilt in 1960 as today's museum keep.",
@@ -1292,6 +1320,10 @@ const SPOTS = [
       ja: "小田原・早川の白い観音は何？",
       en: "What is the white Kannon near Odawara?",
     },
+    pageHeadingChunks: {
+      ja: ["小田原・早川の", "白い観音は何？"],
+      en: ["What is the white Kannon", "near Odawara?"],
+    },
     metaDescription: {
       ja: "小田原を過ぎて新幹線のA席側に一瞬見える白い観音は、早川漁港近くの東善院・魚籃大観音。高さ約10m、1982年建立。海上安全と大漁、魚介への感謝を願って建てられた像の背景と、車窓での見つけ方を紹介します。",
       en: "The white Kannon briefly seen from Seat A after Odawara is Gyoran Dai-Kannon at Tozen-in in Hayakawa: about 10 meters tall, erected in 1982 to pray for safety at sea, good catches and gratitude for marine life. Learn what it is and how to spot it from the train.",
@@ -1340,6 +1372,10 @@ const SPOTS = [
     pageHeading: {
       ja: "三島〜新富士、窓いっぱいの富士山",
       en: "Mt. Fuji filling the window between Mishima and Shin-Fuji",
+    },
+    pageHeadingChunks: {
+      ja: ["三島〜新富士、", "窓いっぱいの富士山"],
+      en: ["Mt. Fuji filling the window", "between Mishima and Shin-Fuji"],
     },
     metaDescription: {
       ja: "東海道新幹線の三島〜新富士で窓いっぱいに見える富士山を、車窓写真・地図・景色の変化で紹介。座席や列車別時刻の疑問は富士山FAQへ分けて案内します。",
@@ -1425,6 +1461,10 @@ const SPOTS = [
     pageHeading: {
       ja: "A席側にあらわれる、幸運の左富士",
       en: "The lucky Left-side Fuji from Seat A",
+    },
+    pageHeadingChunks: {
+      ja: ["A席側にあらわれる、", "幸運の左富士"],
+      en: ["The lucky Left-side Fuji", "from Seat A"],
     },
     metaDescription: {
       ja: "東海道新幹線で、静岡駅を過ぎ安倍川を渡ってまもなくのA席側に、ほんの数秒だけ富士山が見える「左富士」区間があります。歴史的な左富士の背景、見え方の条件、通過タイミングを解説します。",
@@ -1642,6 +1682,10 @@ const SPOTS = [
     pageHeading: {
       ja: "駅のすぐ隣に立つ掛川城の白い天守",
       en: "Kakegawa Castle's white keep beside the station",
+    },
+    pageHeadingChunks: {
+      ja: ["駅のすぐ隣に立つ、", "掛川城の白い天守"],
+      en: ["Kakegawa Castle's white keep", "beside the station"],
     },
     metaDescription: {
       ja: "新幹線の掛川駅前で見える白い天守は掛川城。山内一豊による大改修、安政地震での倒壊、1994年の本格木造復元、そして現存御殿としての二の丸御殿まで、車窓と合わせて楽しむための背景を紹介します。",
@@ -1938,6 +1982,10 @@ const SPOTS = [
       ja: "新幹線から見える豊橋の立岩とは？",
       en: "What is the upright rock seen from the Shinkansen near Toyohashi?",
     },
+    pageHeadingChunks: {
+      ja: ["新幹線から見える、", "豊橋の立岩とは？"],
+      en: ["What is the upright rock", "seen near Toyohashi?"],
+    },
     metaDescription: {
       ja: "浜名湖のあと、新幹線のE席側に見える大きな岩は豊橋市雲谷町の立岩です。標高約88m、南面が最大約30m切り立つチャート質の露岩を紹介します。",
       en: "The upright rock after Lake Hamana is Tateiwa in Toyohashi, an 88-meter rocky hill with an exposed chert face. Learn what it is and where to see it from Seat E.",
@@ -2074,6 +2122,10 @@ const SPOTS = [
     pageHeading: {
       ja: "工場の壁いっぱいに広がる、セロテープの壁看板",
       en: "A factory wall painted with a giant CELLOTAPE ad",
+    },
+    pageHeadingChunks: {
+      ja: ["工場の壁いっぱいに広がる、", "セロテープの壁看板"],
+      en: ["A factory wall painted with", "a giant CELLOTAPE ad"],
     },
     metaDescription: {
       ja: "三河安城付近、新幹線のE席側で工場の壁全体に描かれた巨大なセロテープ広告は、ニチバン安城工場の壁看板。ニチバンとセロテープの歴史、印象的なコピーの背景、通過タイミングを紹介します。",
@@ -2316,6 +2368,10 @@ const SPOTS = [
     pageHeading: {
       ja: "線路のすぐ横に立つ、信長の清洲城",
       en: "Nobunaga's Kiyosu Castle, right beside the tracks",
+    },
+    pageHeadingChunks: {
+      ja: ["線路のすぐ横に立つ、", "信長の清洲城"],
+      en: ["Nobunaga's Kiyosu Castle,", "right beside the tracks"],
     },
     metaDescription: {
       ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守は清洲城。織田信長の本拠、桶狭間出陣の地、清洲会議の舞台としての歴史と、現在の模擬天守について解説します。",
@@ -2612,6 +2668,10 @@ const SPOTS = [
       ja: "関ヶ原の車窓を支配する、伊吹山",
       en: "Mt. Ibuki: the mountain that dominates the Sekigahara window",
     },
+    pageHeadingChunks: {
+      ja: ["関ヶ原の車窓を支配する、", "伊吹山"],
+      en: ["Mt. Ibuki: the mountain that dominates", "the Sekigahara window"],
+    },
     metaDescription: {
       ja: "岐阜羽島から米原へ向かうE席側、関ヶ原を抜けたあたりで大きく見える独立峰が伊吹山（1,377m）。日本武尊の伝説、日本一の積雪記録、季節ごとの表情の変化を、車窓での楽しみ方と合わせて紹介します。",
       en: "Between Gifu-Hashima and Maibara, the low massive mountain filling the Seat E window after Sekigahara is 1,377-meter Mt. Ibuki. Learn about its Yamato Takeru legend, Japan's record-deep snowfall here, and how its face changes through the seasons — with tips for spotting it from the Shinkansen.",
@@ -2678,6 +2738,10 @@ const SPOTS = [
     pageHeading: {
       ja: "田園の向こうにそびえる、南宮大社の大鳥居",
       en: "Nangu Taisha's Grand Torii rising beyond the fields",
+    },
+    pageHeadingChunks: {
+      ja: ["田園の向こうにそびえる、", "南宮大社の大鳥居"],
+      en: ["Nangu Taisha's Grand Torii", "rising beyond the fields"],
     },
     metaDescription: {
       ja: "岐阜羽島〜米原の車窓、A席側の田園の向こうに一瞬現れる巨大な朱の鳥居は南宮大社の大鳥居です。美濃国一の宮としての由緒、鳥居の大きさ、金山彦大神と鉄・金属信仰までまとめて紹介します。",
@@ -3155,6 +3219,10 @@ const SPOTS = [
     pageHeading: {
       ja: "新大阪の手前にひらける、鳥飼車両基地",
       en: "Just before Shin-Osaka: the Torikai Rail Yard opens up",
+    },
+    pageHeadingChunks: {
+      ja: ["新大阪の手前にひらける、", "鳥飼車両基地"],
+      en: ["Just before Shin-Osaka:", "the Torikai Rail Yard opens up"],
     },
     metaDescription: {
       ja: "新大阪の手前、新幹線のE席側に広がる鳥飼車両基地は、1964年の東海道新幹線開業と同時に運用開始した最大級の拠点。基地の機能、規模、車窓での見どころをまとめて紹介します。",

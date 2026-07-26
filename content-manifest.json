@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2dc81d41abc9f30f",
-  "generatedAt": "2026-07-26T09:41:59.182Z",
+  "contentVersion": "5c5cbd5ddc57fd4d",
+  "generatedAt": "2026-07-26T10:19:17.958Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 362227,
-      "sha256": "acec01128e636abe0270cdbd8c39682d561c28e374624dfdccadb7e0f962e043"
+      "bytes": 365223,
+      "sha256": "3d4390d3d87c98889d680bc6294e4869f1c7b5dd4640bd8aa38eee1b2408793b"
     },
     {
       "path": "data/timetable.js",
@@ -948,7 +948,7 @@
   ],
   "thumbnails": {
     "itemCount": 135,
-    "bytes": 5188596,
+    "bytes": 5126566,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -1439,8 +1439,8 @@
       {
         "path": "images/thumbs/20260629_kirin_beer_factory_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260629_kirin_beer_factory_michikusa.webp",
-        "bytes": 112496,
-        "sha256": "03ee00afff99ea47c9516f0582fbe41527b622b26e009fec7cc043d09148961b"
+        "bytes": 50466,
+        "sha256": "96849813db5b40a756ee4054d93cb09911b27729f41b4dd9eeeb7424ceff3121"
       },
       {
         "path": "images/thumbs/20260629_musashi_kosugi_towers_night_michikusa.webp",
