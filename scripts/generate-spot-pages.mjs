@@ -69,6 +69,15 @@ const UI = {
     homeTitle: "Tokaido Shinkansen 車窓ガイド | 新幹線の窓",
     homeLead: "東海道新幹線から見える富士山、浜名湖、城、東寺、車両基地などを、写真と席側で確認できます。",
     homeCta: "アプリで列車検索する",
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "東京 → 新大阪の車窓",
+    railCountSuffix: " の見どころ",
+    railNowLabel: (name, min, seat) => `<b>${name}</b>東京から約${min}分 ・ ${seat}`,
+    railCta: "乗る列車でガイドを作る",
+    railFoot: "車窓図鑑で写真から探す →",
+    railStationSuffix: "分",
+    zoomHint: "クリックで拡大",
+    lightboxClose: "閉じる",
     guideTitle: "新幹線から富士山はいつ見える？どっち側？E席と時刻のFAQ | 新幹線の窓",
     guideLead: "東海道新幹線から富士山はいつ見える？のぞみなら東京から約40〜45分後、三島→新富士で約3〜4分。座席はE席側です。",
     guideHeading: "新幹線から富士山はいつ見える？どっち側？",
@@ -127,6 +136,15 @@ const UI = {
     homeTitle: "Tokaido Shinkansen Window Views | Shinkansen Window",
     homeLead: "A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.",
     homeCta: "Find your train in the app",
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "Tokyo → Shin-Osaka window",
+    railCountSuffix: " views",
+    railNowLabel: (name, min, seat) => `<b>${name}</b>About ${min} min from Tokyo · ${seat}`,
+    railCta: "Build my guide by train",
+    railFoot: "Browse by photo →",
+    railStationSuffix: " min",
+    zoomHint: "click to enlarge",
+    lightboxClose: "Close",
     guideTitle: "When can you see Mt. Fuji from the Shinkansen? Seat side and timing FAQ | Shinkansen Window",
     guideLead: "On a Nozomi, start watching about 40-45 minutes after Tokyo, between Mishima and Shin-Fuji. Sit in Seat E.",
     guideHeading: "When can you see Mt. Fuji from the Shinkansen?",
@@ -432,6 +450,202 @@ function photoItems(spot, lang) {
     return true;
   });
 }
+
+/* ===== 左ペイン & 本文写真の差し込み =====
+ *
+ * PCでスポットページに着地したユーザーに、東海道新幹線の見どころ全体を
+ * 意識させて列車検索・他スポットへの回遊を促す。
+ * モバイルではレールを隠し、記事末尾の CTA に任せる。 */
+
+const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
+// 主画像と意味が違う写真だけを本文に差し込む。ここは spot.photos のインデックス
+const CURATED_ANGLE_PHOTOS = {
+  hamanako: [4], // 主画像は E 席。反対の A 席・赤鳥居を見せる
+};
+const RAIL_THUMB_CATEGORIES = new Set(["classic", "notable"]);
+
+/** 本文に差し込む写真を選ぶ。主画像と別の視点（反対席側／夜景）に限定する */
+function inlinePhotoIndices(spot) {
+  if (!INLINE_PHOTO_CATEGORIES.has(spot.category)) return [];
+  const photos = spot.photos || [];
+  const picks = new Set();
+  (CURATED_ANGLE_PHOTOS[spot.id] || []).forEach((i) => {
+    if (photos[i]) picks.add(i);
+  });
+  const nightIdx = photos.findIndex((p) => p.timeOfDay === "night");
+  if (nightIdx >= 0) picks.add(nightIdx);
+  return [...picks].slice(0, 2);
+}
+
+/** ギャラリー用の写真リストから、本文に回した分を除外する */
+function galleryItems(spot, lang) {
+  const inline = new Set(inlinePhotoIndices(spot).map((i) => (spot.photos || [])[i]?.src).filter(Boolean));
+  return photoItems(spot, lang).filter((item) => !inline.has(item.src));
+}
+
+/** 本文内図（クリックで拡大） */
+function inlineFigureHTML(spot, lang, prefix) {
+  const indices = inlinePhotoIndices(spot);
+  if (!indices.length) return { first: "", second: "" };
+  const ui = UI[lang];
+  const data = spot[lang] || spot.ja || {};
+  const render = (idx) => {
+    const item = (spot.photos || [])[idx];
+    if (!item?.src) return "";
+    const alt = localized(item.alt, lang) || ui.photoAlt(data.name);
+    const note = localized(item.note, lang);
+    const credit = creditText(item.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
+    const href = item.sourceUrl || item.url || "";
+    const creditHTML = href
+      ? `<a href="${escapeHTML(href)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
+      : escapeHTML(credit);
+    const date = item.date ? `<span>${escapeHTML(item.date)}</span>` : "";
+    const zoomSrc = `${prefix}${escapeHTML(item.src)}`; // 原寸への差し替え用
+    return `<figure class="spot-page-inline-figure">
+        <button type="button" class="spot-page-inline-zoom" data-zoom-src="${zoomSrc}" aria-label="${escapeHTML(note || alt)}">
+          <img loading="lazy" decoding="async" src="${prefix}${escapeHTML(thumbnailSrc(item.src))}" alt="${escapeHTML(alt)}">
+        </button>
+        <figcaption>${note ? `<strong>${escapeHTML(note)}</strong>` : ""}<span>${creditHTML}</span>${date}<span class="spot-page-zoom-hint">${escapeHTML(ui.zoomHint)}</span></figcaption>
+      </figure>`;
+  };
+  return { first: render(indices[0]), second: render(indices[1]) };
+}
+
+/** 主画像のキャプション（説明文＋出典リンク＋撮影日） */
+function heroFigcaptionHTML(spot, lang) {
+  const ui = UI[lang];
+  const pc = spot.photoCredit || {};
+  const note = localized(pc.note, lang);
+  const credit = creditText(pc, lang) || ui.fallbackCredit;
+  const creditHTML = pc.url
+    ? `<a href="${escapeHTML(pc.url)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
+    : escapeHTML(credit);
+  const bits = [];
+  if (note) bits.push(`<strong>${escapeHTML(note)}</strong>`);
+  bits.push(`<span>${creditHTML}</span>`);
+  if (pc.date) bits.push(`<span>${escapeHTML(pc.date)}</span>`);
+  return `<figcaption>${bits.join("")}</figcaption>`;
+}
+
+/** 左ペインのタイムライン。SPOTS と ROUTE をここで直接使う */
+function spotRailHTML(spot, lang, prefix) {
+  const ui = UI[lang];
+  const currentId = spot.id;
+
+  const rows = [];
+  for (const st of ROUTE.refStations) {
+    rows.push({ kind: "station", min: st.min, name: st[lang] || st.ja, major: !!st.major });
+  }
+  for (const sp of SPOTS) {
+    if (sp.minutesFromTokyo == null) continue;
+    const data = sp[lang] || sp.ja || {};
+    rows.push({
+      kind: "spot",
+      min: sp.minutesFromTokyo,
+      id: sp.id,
+      name: data.name || sp.id,
+      side: sp.side,
+      thumb: RAIL_THUMB_CATEGORIES.has(sp.category) && sp.image ? sp.image : "",
+    });
+  }
+  rows.sort((a, b) => a.min - b.min || (a.kind === "station" ? -1 : 1));
+
+  const me = SPOTS.find((sp) => sp.id === currentId);
+  const meData = me?.[lang] || me?.ja || {};
+  const nowLabel = me
+    ? ui.railNowLabel(escapeHTML(meData.name || currentId), me.minutesFromTokyo, escapeHTML(sideLabel(me, lang)))
+    : "";
+
+  const items = rows
+    .map((r) => {
+      if (r.kind === "station") {
+        return `<li class="spot-page-rail-row spot-page-rail-station${r.major ? " is-major" : ""}">` +
+          `<span class="spot-page-rail-station-name">${escapeHTML(r.name)}</span>` +
+          `<span class="spot-page-rail-station-min">${r.min}${escapeHTML(ui.railStationSuffix)}</span>` +
+          `</li>`;
+      }
+      const isCurrent = r.id === currentId;
+      const seatCls = r.side === "E" ? "is-e" : r.side === "A" ? "is-a" : "";
+      const seatLabel = r.side === "E" ? "E" : r.side === "A" ? "A" : "—";
+      const href = `${r.id}.html`;
+      const thumb = r.thumb
+        ? `<span class="spot-page-rail-thumb-wrap">` +
+            `<img class="spot-page-rail-thumb" src="${prefix}${escapeHTML(thumbnailSrc(r.thumb))}" alt="" loading="lazy" decoding="async" width="38" height="38">` +
+            `<img class="spot-page-rail-preview" src="${prefix}${escapeHTML(thumbnailSrc(r.thumb))}" alt="" loading="lazy" decoding="async">` +
+          `</span>`
+        : `<span class="spot-page-rail-nothumb" aria-hidden="true"></span>`;
+      return `<li class="spot-page-rail-row spot-page-rail-spot${isCurrent ? " is-current" : ""}">` +
+        `<a class="spot-page-rail-link" href="${escapeHTML(href)}"${isCurrent ? ' aria-current="page"' : ""}>` +
+        thumb +
+        `<span class="spot-page-rail-min">${r.min}</span>` +
+        `<span class="spot-page-rail-name">${escapeHTML(r.name)}</span>` +
+        `<span class="spot-page-rail-seat ${seatCls}">${seatLabel}</span>` +
+        `</a></li>`;
+    })
+    .join("");
+
+  const spotCount = SPOTS.filter((sp) => sp.minutesFromTokyo != null).length;
+
+  return `<aside class="spot-page-rail" aria-label="${escapeHTML(ui.railTitle)}">
+        <div class="spot-page-rail-head">
+          <p class="spot-page-rail-eyebrow">${escapeHTML(ui.railEyebrow)}</p>
+          <p class="spot-page-rail-title">${escapeHTML(ui.railTitle)}</p>
+          <p class="spot-page-rail-count"><strong>${spotCount}</strong>${escapeHTML(ui.railCountSuffix)}</p>
+          ${nowLabel ? `<p class="spot-page-rail-now">${nowLabel}</p>` : ""}
+          <a class="spot-page-rail-cta" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.railCta)}</a>
+        </div>
+        <div class="spot-page-rail-list-wrap">
+          <ol class="spot-page-rail-list">${items}</ol>
+        </div>
+        <div class="spot-page-rail-foot">
+          <a href="${prefix}zukan.html">${escapeHTML(ui.railFoot)}</a>
+        </div>
+      </aside>`;
+}
+
+/** ライトボックスのHTMLとJS（本文写真のクリック拡大） */
+function lightboxHTML(lang) {
+  const ui = UI[lang];
+  return `<div class="spot-page-lightbox" id="spotPageLightbox" hidden>
+    <button type="button" class="spot-page-lightbox-close" aria-label="${escapeHTML(ui.lightboxClose)}">&times;</button>
+    <figure><img alt=""><figcaption></figcaption></figure>
+  </div>`;
+}
+function lightboxScript() {
+  return `<script>
+(function () {
+  "use strict";
+  var box = document.getElementById("spotPageLightbox");
+  if (!box) return;
+  var img = box.querySelector("img");
+  var cap = box.querySelector("figcaption");
+  function open(src, caption) {
+    img.src = src;
+    cap.textContent = caption || "";
+    box.hidden = false;
+    document.documentElement.style.overflow = "hidden";
+  }
+  function close() {
+    box.hidden = true;
+    img.src = "";
+    document.documentElement.style.overflow = "";
+  }
+  box.addEventListener("click", function (e) { if (e.target === box || e.target.classList.contains("spot-page-lightbox-close")) close(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape" && !box.hidden) close(); });
+  document.querySelectorAll(".spot-page-inline-zoom").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var thumb = btn.querySelector("img");
+      var src = btn.getAttribute("data-zoom-src") || (thumb && thumb.getAttribute("src")) || "";
+      var fc = btn.parentElement.querySelector("figcaption");
+      var text = fc ? fc.textContent.replace(/\\s+/g, " ").trim() : "";
+      // 「クリックで拡大」を末尾から取り除く
+      text = text.replace(/(?:クリックで拡大|click to enlarge)\\s*$/, "").trim();
+      open(src, text);
+    });
+  });
+})();
+</script>`;
+}
 function explainerFigureHTML(spot, lang, prefix) {
   const figure = spot.explainerFigure;
   if (!figure?.src) return "";
@@ -451,10 +665,10 @@ function explainerFigureHTML(spot, lang, prefix) {
       </figure>`;
 }
 
-function photoGalleryHTML(spot, lang, prefix) {
+function photoGalleryHTML(spot, lang, prefix, itemsOverride) {
   const ui = UI[lang];
   const data = spot[lang] || spot.ja || {};
-  const items = photoItems(spot, lang);
+  const items = itemsOverride || photoItems(spot, lang);
   if (!items.length) return "";
   const cards = items.map((item, index) => {
     const note = localized(item.note, lang);
@@ -822,7 +1036,14 @@ function spotPageHTML(spot, lang) {
   const prefix = lang === "ja" ? "../" : "../../";
   const appUrl = appHref(lang, spot.id, prefix);
   const photos = photoItems(spot, lang);
+  // 本文へ差し込む写真はギャラリーから外す。件数はギャラリー基準で表示する
+  const galleryPhotos = galleryItems(spot, lang);
   const photoCount = photos.length;
+  const heroFigcaption = heroFigcaptionHTML(spot, lang);
+  const inlineFigures = inlineFigureHTML(spot, lang, prefix);
+  const railHTML = spotRailHTML(spot, lang, prefix);
+  const lightbox = lightboxHTML(lang);
+  const lightboxJs = lightboxScript();
   const routeNote = localized(spot.routeNote, lang) || ui.routeNote(data.area, sideLabel(spot, lang));
   const FUJI_FAMILY = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
   const fujiGuideLink = spot.id === "fuji"
@@ -905,7 +1126,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260726-language-choice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260726-medal-simple">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-spot-rail">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -923,17 +1144,17 @@ function spotPageHTML(spot, lang) {
     lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
   )}
   <main>
-    <article class="spot-page-article">
+    <header class="spot-page-article spot-page-hero">
       <p class="eyebrow">${escapeHTML(ui.eyebrow)}</p>
       <h1>${pageHeadingHTML(spot, lang, ui.titleQuestion(data.name))}</h1>
       <p class="spot-page-lead">${escapeHTML(data.hook || "")}</p>
-      <div class="spot-page-actions spot-page-actions-top">
-        <a class="btn btn-primary" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.searchCta)}</a>
-        <a class="btn btn-ghost" href="${appUrl}">${escapeHTML(ui.appCta)}</a>
-      </div>
+    </header>
+    <div class="spot-page-shell">
+      ${railHTML}
+      <article class="spot-page-article">
       <figure class="spot-page-figure">
         <img src="${prefix}${escapeHTML(thumbnailSrc(heroSrc))}" alt="${escapeHTML(ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
-        <figcaption>${escapeHTML(heroCredit)}</figcaption>
+        ${heroFigcaption}
       </figure>
       <dl class="spot-page-facts">
         <div><dt>${escapeHTML(ui.facts[0])}</dt><dd>${escapeHTML(data.area || "")}</dd></div>
@@ -949,19 +1170,18 @@ ${bodyLinks ? `        ${bodyLinks}
 ${fujiGuideBlock.trimEnd()}
         <p><a href="${liveHref(lang, prefix)}">${escapeHTML(liveMapCta)}</a></p>
       </section>
-${explainerBlock}${articleImageBlock}${sharedGuideBlock}      ${miniMap}
+${inlineFigures.first ? `      ${inlineFigures.first}\n` : ""}${explainerBlock}${inlineFigures.second ? `      ${inlineFigures.second}\n` : ""}${articleImageBlock}${sharedGuideBlock}      ${miniMap}
       ${spotGuideDepthHTML(spot, lang)}
-      ${photoGalleryHTML(spot, lang, prefix)}
+      ${photoGalleryHTML(spot, lang, prefix, galleryPhotos)}
       ${refs}
       ${routeRelatedHTML(spot, lang)}
-      <div class="spot-page-actions">
-        <a class="btn btn-primary" href="${appUrl}">${escapeHTML(ui.appCta)}</a>
-        <a class="btn btn-ghost" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.searchCta)}</a>
-      </div>
-    </article>
+      </article>
+    </div>
     ${contentRailHTML(lang, prefix)}
   </main>
+  ${lightbox}
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
+  ${lightboxJs}
 </body>
 </html>
 `;
@@ -1003,7 +1223,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260726-medal-simple">
+  <link rel="stylesheet" href="../style.css?v=20260727-spot-rail">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1190,7 +1410,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260726-medal-simple">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-spot-rail">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

@@ -977,7 +977,7 @@ const SPOTS = [
       {
         src: "images/20190127_putiputi_sign_putiputi0808.jpg",
         alt: { ja: "以前のプチプチ看板", en: "Earlier PUTIPUTI sign" },
-        credit: { ja: "プチプチ®の川上産業 @PUTIPUTI_0808", en: "Kawakami Sangyo PUTIPUTI® @PUTIPUTI_0808" },
+        credit: { ja: "@PUTIPUTI_0808", en: "@PUTIPUTI_0808" },
         sourceUrl: "https://x.com/PUTIPUTI_0808/status/1089401678594433025",
         note: { ja: "川上産業（株）の公式アカウントより。以前の看板", en: "From Kawakami Sangyo's official account. Earlier sign." },
       },
@@ -1890,7 +1890,7 @@ const SPOTS = [
       {
         src: "images/20191203_hamanako_fuji_kawasan3.jpg",
         alt: { ja: "浜名湖から見える遠くの富士山", en: "Distant Mt. Fuji seen from Lake Hamana" },
-        credit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3" },
+        credit: { ja: "@kawasan3", en: "@kawasan3" },
         sourceUrl: "https://x.com/kawasan3/status/2071620687626973333",
         note: { ja: "湖の向こうに小さく見える富士山", en: "A tiny Fuji beyond the lake" },
       },
@@ -2026,8 +2026,8 @@ const SPOTS = [
     minutesFromTokyo: 84, side: "A", category: "notable", confidence: "needs-check", durationSec: 5, scene: "bay",
     image: "images/20181213_mikawa_oshima_kawasan3.jpg",
     photoCredit: {
-      ja: "かわさん @kawasan3",
-      en: "Kawasan @kawasan3",
+      ja: "@kawasan3",
+      en: "@kawasan3",
       url: "https://x.com/kawasan3/status/1072976990150348800",
       note: { ja: "夕暮れにうかぶ三河大島", en: "Mikawa Oshima floating in the evening light." },
     },
@@ -2307,13 +2307,13 @@ const SPOTS = [
     },
     minutesFromTokyo: 99, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "castle",
     image: "images/20240719_kiyosu_castle_asami_k920.jpg",
-    photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
       {
         src: "images/20250309_kiyosu_castle_lightup_asami_k920.jpg",
         timeOfDay: "night",
         alt: { ja: "ライトアップされた清洲城", en: "Illuminated Kiyosu Castle" },
-        credit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920" },
+        credit: { ja: "@asami_k920", en: "@asami_k920" },
         sourceUrl: "https://x.com/asami_k920/status/1898673771084492889",
       },
       {
@@ -2701,7 +2701,7 @@ const SPOTS = [
     },
     minutesFromTokyo: 115, side: "E", category: "notable", confidence: "needs-check", durationSec: 5, scene: "castle",
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
-    photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
       {
         src: "images/20250831_sawayama_castle_letus10.jpg",
@@ -2762,7 +2762,7 @@ const SPOTS = [
     },
     minutesFromTokyo: 116, side: "E", category: "curious", confidence: "needs-check", durationSec: 3, scene: "castle",
     image: "images/20240719_hikone_castle_asami_k920.jpg",
-    photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     references: [REFERENCES.hikoneCastle, REFERENCES.hikoneCastleUnesco],
     map: { lat: 35.2765, lng: 136.2518, ja: "彦根城", en: "Hikone Castle" },
     viewpoint: { lat: 35.271532, lng: 136.263314 },
@@ -2815,7 +2815,7 @@ const SPOTS = [
     },
     minutesFromTokyo: 120, side: "E", category: "notable", confidence: "needs-check", durationSec: 5, scene: "mountain",
     image: "images/20240719_kannonji_castle_asami_k920.jpg",
-    photoCredit: { ja: "久保井麻美さん @asami_k920", en: "Asami Kuboi @asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
+    photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     references: [REFERENCES.kannonjiCastle, REFERENCES.kannonjiCastleShiga],
     map: { lat: 35.1420, lng: 136.1510, ja: "観音寺城跡", en: "Kannonji Castle Ruins" },
     viewpoint: { lat: 35.147590, lng: 136.140183 },
@@ -2869,8 +2869,8 @@ const SPOTS = [
     minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "notable", confidence: "needs-check", durationSec: 15, scene: "mountain",
     image: "images/20250523_omi_fuji_kawasan3.jpg",
     photoCredit: {
-      ja: "かわさん @kawasan3",
-      en: "Kawasan @kawasan3",
+      ja: "@kawasan3",
+      en: "@kawasan3",
       url: "https://x.com/kawasan3/status/1925668108024320321",
       note: { ja: "水田に映る逆さ富士", en: "Upside-down Fuji reflected in a rice field" },
     },
@@ -2878,7 +2878,7 @@ const SPOTS = [
       {
         src: "images/20250523_omi_fuji_wheat_kawasan3.jpg",
         alt: { ja: "近江富士の前が小麦色になった景色", en: "Omi Fuji with golden wheat in front" },
-        credit: { ja: "かわさん @kawasan3", en: "Kawasan @kawasan3" },
+        credit: { ja: "@kawasan3", en: "@kawasan3" },
         sourceUrl: "https://x.com/kawasan3/status/1925668834393960462",
         note: { ja: "近江富士の前が小麦色", en: "The land in front of Omi Fuji turns wheat-colored" },
       },
