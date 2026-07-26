@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "741e0b747881e257",
-  "generatedAt": "2026-07-26T08:47:38.382Z",
+  "contentVersion": "2dc81d41abc9f30f",
+  "generatedAt": "2026-07-26T09:41:59.182Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 353646,
-      "sha256": "2ceb6f8c5fec13fb21235bae14d43967a30b11954d5275a73de35e50ed20f6cd"
+      "bytes": 362227,
+      "sha256": "acec01128e636abe0270cdbd8c39682d561c28e374624dfdccadb7e0f962e043"
     },
     {
       "path": "data/timetable.js",
@@ -947,8 +947,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 120,
-    "bytes": 4704868,
+    "itemCount": 135,
+    "bytes": 5188596,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -961,6 +961,18 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20160111_nagoya_station_buildings_alpsdake_cc-by-sa-4.0.webp",
         "bytes": 56246,
         "sha256": "d0b8a3beb32888a4b64c84919a213cbf6205557f69448eafcb70569649b9d7cf"
+      },
+      {
+        "path": "images/thumbs/20170307_gifu_castle_zusshi.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20170307_gifu_castle_zusshi.webp",
+        "bytes": 17952,
+        "sha256": "d31ac3b2a3e7001066c526ab79be984dcbdccd777c117b4b219fbaba0c0c7c86"
+      },
+      {
+        "path": "images/thumbs/20170307_hikone_castle_zusshi.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20170307_hikone_castle_zusshi.webp",
+        "bytes": 23522,
+        "sha256": "fbaa42405f432a2a1f149aea5a79943879dbf98627e77fcee2a266b485517f4f"
       },
       {
         "path": "images/thumbs/201707_solar_ark_letus10.webp",
@@ -1425,6 +1437,12 @@
         "sha256": "f36bf20c1da26e2301091b14104b8ee369fb32308fdf31dcdf47e5be41240d57"
       },
       {
+        "path": "images/thumbs/20260629_kirin_beer_factory_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260629_kirin_beer_factory_michikusa.webp",
+        "bytes": 112496,
+        "sha256": "03ee00afff99ea47c9516f0582fbe41527b622b26e009fec7cc043d09148961b"
+      },
+      {
         "path": "images/thumbs/20260629_musashi_kosugi_towers_night_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260629_musashi_kosugi_towers_night_michikusa.webp",
         "bytes": 27332,
@@ -1521,6 +1539,12 @@
         "sha256": "c88e950e39e1b8261e2bfcb54a44065075e2ad4e7c3f4a3483fc4c70f94582e6"
       },
       {
+        "path": "images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
+        "bytes": 33432,
+        "sha256": "4769c16c0bf091fbe979a55d12164f281340db1b8c31142b17e090e0829839be"
+      },
+      {
         "path": "images/thumbs/20260704_maruko_bridge_1_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260704_maruko_bridge_1_michikusa.webp",
         "bytes": 37604,
@@ -1545,6 +1569,12 @@
         "sha256": "9fcdac03b968b309a5a9015ad01a1c89507078b6ac44714d7b292a70be6954c3"
       },
       {
+        "path": "images/thumbs/20260704_nichiban_anjo_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_nichiban_anjo_michikusa.webp",
+        "bytes": 28998,
+        "sha256": "e6f463e648e58e06801218fe6ab50dbd71886a0337093836a8a87a5931446acf"
+      },
+      {
         "path": "images/thumbs/20260704_putiputi_sign_1_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260704_putiputi_sign_1_michikusa.webp",
         "bytes": 56134,
@@ -1557,10 +1587,28 @@
         "sha256": "52d3841355b60970adc289d131a07b6e206a37f2036aaf1f65cd7adbd5436104"
       },
       {
+        "path": "images/thumbs/20260712_atami_castle_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_atami_castle_michikusa.webp",
+        "bytes": 21250,
+        "sha256": "f1377d56c959b941ade76f14212de10f631e81498cbb01c27fbabe73af1dda21"
+      },
+      {
         "path": "images/thumbs/20260712_genki_sign_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260712_genki_sign_michikusa.webp",
         "bytes": 32164,
         "sha256": "8854c96522bbc9bab4bcf6118dd94bac3eb9c360c11d336447e23e955df5c319"
+      },
+      {
+        "path": "images/thumbs/20260712_gifu_castle_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_gifu_castle_michikusa.webp",
+        "bytes": 20430,
+        "sha256": "0d0e803b5acb958677d097cdf90b618a55b6c49845a941d96432d3e04b988903"
+      },
+      {
+        "path": "images/thumbs/20260712_hikone_castle_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_hikone_castle_michikusa.webp",
+        "bytes": 29018,
+        "sha256": "d993ac59ddbab2d3f5c23da2ba2a4e13387bb8ae2b73e4eb84fdfd1530a630f9"
       },
       {
         "path": "images/thumbs/20260712_kakegawa_castle_michikusa.webp",
@@ -1569,16 +1617,46 @@
         "sha256": "eaf396dfdd52ca9f57230b7e07684469c0d157f809dd21bc0f673708539e4e47"
       },
       {
+        "path": "images/thumbs/20260712_kannonji_azuchi_castle_sign_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_kannonji_azuchi_castle_sign_michikusa.webp",
+        "bytes": 17706,
+        "sha256": "54c317a97ad16c80317480c46e4f68f1b8a22e70f024f3d8912ba13ebf4469c0"
+      },
+      {
+        "path": "images/thumbs/20260712_kannonji_castle_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_kannonji_castle_michikusa.webp",
+        "bytes": 29648,
+        "sha256": "ce7da57c810853a5ba7e5e9bb4096e99365694e3700e01497647a5fbc7110abf"
+      },
+      {
+        "path": "images/thumbs/20260712_kinshozan_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_kinshozan_michikusa.webp",
+        "bytes": 24730,
+        "sha256": "cf44830c54f2802c824a9297e21b0752dd857f11df63043374c9cac64eeeb211"
+      },
+      {
         "path": "images/thumbs/20260712_maruko_bridge_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260712_maruko_bridge_michikusa.webp",
         "bytes": 19050,
         "sha256": "35cbb1f7c282903723669ddd2c9415a8ded1780f71dc54b22911766902cd1795"
       },
       {
+        "path": "images/thumbs/20260712_mikawa_oshima_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_mikawa_oshima_michikusa.webp",
+        "bytes": 14684,
+        "sha256": "0218852cf5c9a5ceebef9492b69ce81e6374c62eab0543cc8070f5a7fe144763"
+      },
+      {
         "path": "images/thumbs/20260712_musashi_kosugi_towers_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260712_musashi_kosugi_towers_michikusa.webp",
         "bytes": 49242,
         "sha256": "a182df14a3784989fea12d3d9e5bea7ba4803549263a3a5421a94962629449b0"
+      },
+      {
+        "path": "images/thumbs/20260712_seta_karahashi_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_seta_karahashi_michikusa.webp",
+        "bytes": 22338,
+        "sha256": "f2fda197ab6b146833b806e1a6b4f06603d8302223be709ff091735500d88e4e"
       },
       {
         "path": "images/thumbs/20260712_shimizu_port_chikyu_1_michikusa.webp",
@@ -1603,6 +1681,18 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260712_tokyo_tower_michikusa.webp",
         "bytes": 20088,
         "sha256": "b102f5280a28858287e0540e405a5e7f936086b7bb2054c06e6d750c0088acef"
+      },
+      {
+        "path": "images/thumbs/20260712_torikai_depot_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_torikai_depot_michikusa.webp",
+        "bytes": 59598,
+        "sha256": "c98408f616dcf410440480a657b04ba85e4088c4c0c17a90874a94268008c0aa"
+      },
+      {
+        "path": "images/thumbs/20260712_who_am_i_sign_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_who_am_i_sign_michikusa.webp",
+        "bytes": 27926,
+        "sha256": "9740c05bf02783cef695730746e7ddd83dbba44a10b57fd6c2d9ad2bb632f136"
       },
       {
         "path": "images/thumbs/250111_hamanako_fuji_proboffin.webp",

@@ -935,7 +935,8 @@ function articleImageHTML(spot, lang, prefix) {
   const creditHTML = source
     ? `<a href="${escapeHTML(source)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
     : escapeHTML(credit);
-  const date = image.date ? `<span>${escapeHTML(image.date)}</span>` : "";
+  const date = image.date ? `
+            <span>${escapeHTML(image.date)}</span>` : "";
   return `<section class="spot-page-section spot-page-reference-section">
         <h2>${escapeHTML(localized(image.heading, lang))}</h2>
         <p>${escapeHTML(localized(image.intro, lang))}</p>
@@ -945,8 +946,7 @@ function articleImageHTML(spot, lang, prefix) {
           </a>
           <figcaption>
             <strong>${escapeHTML(localized(image.caption, lang))}</strong>
-            <span>${creditHTML}</span>
-            ${date}
+            <span>${creditHTML}</span>${date}
           </figcaption>
         </figure>
       </section>`;
