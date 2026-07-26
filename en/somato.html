@@ -1,0 +1,510 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Window Revue — Tokyo to Shin-Osaka in Photographs | Shinkansen Window</title>
+<meta name="description" content="Watch real Tokaido Shinkansen window photographs stream past like memories: Seat A views on the left, Seat E views on the right, from Tokyo to Shin-Osaka in minutes.">
+<link rel="canonical" href="https://www.michikusa-travel.com/en/somato.html">
+<link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/somato.html">
+<link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/somato.html">
+<link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/somato.html">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html,body { width:100%; height:100%; overflow:hidden; background:#141218;
+    font-family:Georgia,"Iowan Old Style","Palatino Linotype","Times New Roman",serif;
+    color:#ece3d0; }
+
+  /* ---- 舞台 ---- */
+  #sky { position:fixed; inset:0; z-index:0;
+    background:
+      radial-gradient(ellipse 120% 55% at 50% 46%, rgba(90,70,60,.20), rgba(20,18,24,0) 60%),
+      linear-gradient(180deg, #141218 0%, #1a1720 44%, #201b22 46%, #171419 100%); }
+  .star { position:fixed; border-radius:50%; background:#ece3d0; z-index:0;
+    animation:tw 4s ease-in-out infinite; }
+  @keyframes tw { 0%,100%{opacity:.12} 50%{opacity:.55} }
+  #moon { position:fixed; top:52px; right:46px; z-index:1; width:34px; height:34px;
+    border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle at 40% 38%, #c4433a, #8f2620 70%);
+    box-shadow:0 0 26px 6px rgba(179,39,45,.25); }
+  #fujiSil { position:fixed; z-index:1; pointer-events:none; opacity:0;
+    left:50%; top:0; }
+
+  #stage { position:fixed; inset:0; z-index:2; overflow:hidden;
+    perspective:900px; perspective-origin:50% 42%; }
+  #world { position:absolute; inset:0; transform-style:preserve-3d; }
+
+  #floor { position:absolute; left:-60%; width:220%; top:46%; height:180vh;
+    transform-origin:top center; transform:rotateX(75deg);
+    background-image:
+      linear-gradient(90deg, transparent calc(50% - 15px), rgba(236,227,208,.13) calc(50% - 15px), rgba(236,227,208,.13) calc(50% - 12px), transparent calc(50% - 12px),
+        transparent calc(50% + 12px), rgba(236,227,208,.13) calc(50% + 12px), rgba(236,227,208,.13) calc(50% + 15px), transparent calc(50% + 15px)),
+      repeating-linear-gradient(180deg, transparent 0 76px, rgba(236,227,208,.05) 76px 84px);
+    }
+
+  /* ---- 写真の行灯 ---- */
+  .panel { position:absolute; left:50%; top:42%; transform-style:preserve-3d;
+    will-change:transform, opacity; }
+  .panel figure { transform:translate(-50%,-50%); display:block;
+    background:#0d0c10; padding:7px 7px 0 7px;
+    border:1px solid rgba(236,227,208,.30);
+    box-shadow:0 0 34px rgba(236,227,208,.07), 0 0 90px rgba(179,39,45,.05); }
+  .panel img { display:block; height:38vh; width:auto; max-width:58vh;
+    min-width:24vh; object-fit:cover; filter:sepia(.12) brightness(.94); }
+  .panel figcaption { display:flex; justify-content:space-between; align-items:baseline;
+    gap:12px; padding:6px 2px; }
+  .pname { font-size:12px; letter-spacing:.05em; color:#ece3d0; white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis; }
+  .pmeta { font-size:10px; letter-spacing:.05em; color:#b3272d; white-space:nowrap; }
+  .pcredit { font-size:9px; letter-spacing:.03em; color:#8d8578; white-space:nowrap; }
+
+  /* ---- 駅の門 ---- */
+  .gate { position:absolute; left:50%; top:42%; will-change:transform, opacity; }
+  .gate .frame { transform:translate(-50%,-50%); width:72vw; max-width:980px; height:64vh;
+    border:1px solid rgba(236,227,208,.14); position:relative; }
+  .gate.major .frame { border-color:rgba(179,39,45,.4);
+    box-shadow:0 0 40px rgba(179,39,45,.08); }
+  /* 駅名の札 — 英語版は横書きの横長プレート */
+  .gate .plate { position:absolute; top:-1px; left:50%; transform:translateX(-50%);
+    padding:7px 16px; border:1px solid rgba(236,227,208,.25); border-top:none;
+    background:rgba(20,18,24,.72);
+    font-size:13px; letter-spacing:.1em; color:#ece3d0; white-space:nowrap; }
+  .gate.major .plate { border-color:rgba(179,39,45,.55); color:#ece3d0; }
+
+  /* ---- 銘・詞書 (墨絵車窓と対の骨格) ---- */
+  /* 銘 (右上) — 英語版は横書き */
+  #scroll { position:fixed; top:32px; right:100px; z-index:5; pointer-events:none;
+    letter-spacing:.06em; line-height:1.45; color:#ece3d0;
+    display:flex; flex-direction:column; align-items:flex-end; gap:5px;
+    text-align:right; max-width:40vw; }
+  #sTitle { font-size:clamp(17px,2.1vw,26px); letter-spacing:.09em; }
+  #sSect  { font-size:clamp(11px,1.3vw,15px); color:#9a9184; letter-spacing:.05em; }
+  #sMin   { font-size:clamp(10px,1.1vw,13px); color:#7d766c; letter-spacing:.1em;
+    font-variant-numeric:tabular-nums; }
+
+  #caption { position:fixed; left:32px; bottom:70px; z-index:5; pointer-events:none;
+    font-size:clamp(14px,1.7vw,19px); letter-spacing:.04em; line-height:1.5;
+    color:#ece3d0; opacity:0; transition:opacity 1.4s ease; max-width:min(56vw,520px); }
+  #caption .sub { font-size:.72em; color:#9a9184; margin-left:14px; letter-spacing:.06em; }
+
+  #topleft { position:fixed; left:32px; top:24px; z-index:7;
+    display:flex; align-items:baseline; gap:16px; }
+  #home, #langLink { font-size:11px; letter-spacing:.1em; color:#8d8578; text-decoration:none; }
+  #home:hover, #langLink:hover { color:#b3272d; }
+  #langLink { border-left:1px solid rgba(141,133,120,.4); padding-left:16px; }
+  #dayLink { position:fixed; right:36px; bottom:96px; z-index:6;
+    font-size:11px; letter-spacing:.06em; color:#8d8578; text-decoration:none; }
+  #dayLink:hover { color:#b3272d; }
+
+  #route { position:fixed; left:24px; right:24px; bottom:16px; height:26px; z-index:6;
+    cursor:pointer; }
+  #route .line { position:absolute; left:0; right:0; top:12px; height:1px; background:rgba(236,227,208,.30); }
+  #route .tick { position:absolute; top:9px; width:1px; height:7px; background:rgba(236,227,208,.35); pointer-events:none; }
+  #route .tick.major { top:7px; height:11px; width:2px; }
+  #train { position:absolute; top:5px; width:9px; height:15px; margin-left:-5px;
+    background:#b3272d; border-radius:5px 5px 2px 2px; opacity:.9; pointer-events:none; }
+
+  #speed { position:fixed; right:36px; bottom:52px; z-index:6; display:flex;
+    align-items:center; gap:10px; color:#8d8578; font-size:11px; letter-spacing:.06em; }
+  #speed input { width:120px; accent-color:#b3272d; cursor:pointer;
+    background:transparent; }
+
+  /* 英語は文字数が多く2行になるため、詞書と重ならない左上へ置く */
+  #hint { position:fixed; left:32px; top:50px; z-index:4; pointer-events:none;
+    font-size:11px; letter-spacing:.05em; color:#8d8578; transition:opacity 3s ease;
+    max-width:min(40vw,380px); line-height:1.6; }
+
+  #intro { position:fixed; inset:0; z-index:20; background:#141218;
+    display:flex; align-items:center; justify-content:center;
+    animation:fadeIntro 4.6s ease forwards; pointer-events:none; }
+  #intro div { font-size:clamp(18px,2.6vw,32px); letter-spacing:.1em; color:#ece3d0;
+    text-align:center; max-width:80vw; line-height:1.5; }
+  @keyframes fadeIntro { 0%{opacity:1} 55%{opacity:1} 100%{opacity:0; visibility:hidden} }
+
+  /* ---- 終点のクレジット (横書き) ---- */
+  #fin { position:fixed; inset:0; z-index:15; background:#141218;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:26px; text-align:center; padding:0 8vw;
+    opacity:0; pointer-events:none; transition:opacity 2.6s ease; }
+  #fin.show { opacity:1; pointer-events:auto; cursor:pointer; }
+  #fin .t  { font-size:clamp(22px,3.2vw,36px); letter-spacing:.1em; }
+  #fin .s  { font-size:clamp(11px,1.4vw,14px); color:#9a9184; letter-spacing:.07em; }
+  #fin .c  { font-size:clamp(11px,1.3vw,14px); color:#8d8578; letter-spacing:.03em;
+    line-height:1.85; max-width:720px; }
+  #fin .c b { font-weight:normal; color:#ece3d0; }
+  #fin .last { font-size:clamp(13px,1.7vw,18px); color:#b3272d; letter-spacing:.12em;
+    margin-top:8px; }
+  /* モバイルは上から 銘 → 説明、下は 詞書 → 別案内 → 速度 の順に重ならず積む */
+  @media (max-width:600px) {
+    #scroll { top:50px; right:20px; left:20px; max-width:none; }
+    #sTitle { font-size:16px; }
+    #sSect, #sMin { margin-top:2px; }
+    #hint { left:20px; right:20px; top:126px; max-width:none; font-size:10.5px; }
+    #caption { left:20px; right:20px; max-width:none; bottom:158px; font-size:15px; }
+    #caption .sub { display:block; margin:4px 0 0; }
+    #dayLink { right:20px; bottom:126px; }
+    #speed { right:20px; bottom:92px; }
+    .gate .plate { font-size:11px; padding:6px 12px; }
+    #moon { top:24px; right:20px; width:26px; height:26px; }
+  }
+  /* 画面が低いときは導入文を省き、詞書と重ならないようにする */
+  @media (max-height:620px) { #hint { display:none; } }
+</style>
+</head>
+<body>
+<div id="sky"></div>
+<div id="moon"></div>
+<svg id="fujiSil" width="560" height="150" viewBox="0 0 560 150">
+  <path d="M20 150 Q170 130 216 46 L242 30 L262 40 L276 26 L292 38 L306 30 L330 44 Q392 128 540 150 Z"
+        fill="#0e0c11" stroke="rgba(236,227,208,.20)" stroke-width="1.4"/>
+</svg>
+<div id="intro"><div>A window becomes a stream of memories.</div></div>
+<div id="stage"><div id="world"><div id="floor"></div></div></div>
+<div id="scroll">
+  <div id="sTitle">Window Revue</div>
+  <div id="sSect"></div>
+  <div id="sMin"></div>
+</div>
+<div id="topleft">
+  <a id="home" href="index.html">← Shinkansen Window</a>
+  <a id="langLink" href="../somato.html?lang=ja" hreflang="ja" lang="ja">日本語</a>
+</div>
+<a id="dayLink" href="sumie.html">Prefer ink wash? — Ink-Wash Window</a>
+<div id="caption"></div>
+<div id="route" title="Click to jump along the route"><div class="line"></div><div id="train"></div></div>
+<div id="speed"><span id="spdLabel">Speed ×1.0</span><input type="range" min="0.4" max="3" step="0.1" value="1"></div>
+<div id="hint">Real window photographs · Seat A on the left, Seat E on the right · Click the route below to jump</div>
+<div id="fin"></div>
+
+<script src="../data.js?v=20260726-contact-methods"></script>
+<script>
+(function(){
+"use strict";
+
+/* ---- データ ---- */
+var SP = (typeof SPOTS !== "undefined" && SPOTS) || window.SPOTS || [];
+var RT = (typeof ROUTE !== "undefined" && ROUTE) || window.ROUTE || { refStations: [], totalMinutes: 147 };
+var TOTAL = RT.totalMinutes || 147;
+var STNS = RT.refStations || [];
+
+/* 厳選: 同一セッションのほぼ同じ写真は片方のみ採用 (台帳はそのまま、表示のみ間引く) */
+var EXCLUDE = {};
+["images/20260530_hinataoka.jpg",
+ "images/20260704_maruko_bridge_2_michikusa.jpg",
+ "images/20260704_musashi_kosugi_towers_2_michikusa.jpg",
+ "images/20260704_putiputi_sign_1_michikusa.jpg",
+ "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+ "images/20260629_727_board_1_4x_michikusa.jpg",
+ "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
+ "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
+ "images/20260505_hamanako_design_photosy_2.jpg",
+ "images/20260516_hamanako_seaside_1_michikusa.jpg",
+ "images/20260530_nagoya_station_3_michikusa.jpg",
+ "images/20250920_kirin_beer_factory_letus10.jpg",
+ "images/20251212_solar_ark_2_letus10.jpg",
+ "images/20250927_gifu_castle_2_letus10.jpg",
+ "images/20260530_ibukiyama_2_michikusa.jpg",
+ "images/20260629_nangu_taisha_2_michikusa.jpg",
+ "images/20260530_sagami_fuji_samukawa_michikusa.jpg"
+].forEach(function(s){ EXCLUDE[s] = 1; });
+/* 両側で見えるスポット: 写真を左右の壁に交互に流す */
+var BOTH = { "727-board": 1, "hamanako": 1 };
+
+var panels = [];   // {min, side, name, baseMin, src, credit, el, img, dead}
+SP.forEach(function(spot){
+  if (spot.minutesFromTokyo == null) return;
+  // メイン画像 + ギャラリー写真を候補にする (クレジット規約は本体app.jsと同じ)
+  var cands = [];
+  if (spot.image){
+    var pcj = (spot.photoCredit && (spot.photoCredit.en || spot.photoCredit.ja)) || "";
+    var pOwn = !pcj || pcj.toLowerCase() === "michikusa";
+    cands.push({ src: spot.image, alt: (spot.en && spot.en.name) || (spot.ja && spot.ja.name) || "",
+      line: pOwn ? ((spot.photoCredit && spot.photoCredit.date) || "") : "photo: " + pcj.split(" / ")[0],
+      cname: pOwn ? "michikusa" : pcj });
+  }
+  (spot.photos || []).forEach(function(ph){
+    var cj = (ph.credit && (ph.credit.en || ph.credit.ja)) || "";
+    var own = !cj || cj.toLowerCase() === "michikusa";
+    cands.push({ src: ph.src, alt: (ph.alt && (ph.alt.en || ph.alt.ja)) || (spot.en && spot.en.name) || (spot.ja && spot.ja.name) || "",
+      line: own ? (ph.date || "") : "photo: " + cj.split(" / ")[0],
+      cname: own ? "michikusa" : cj });
+  });
+  cands = cands.filter(function(c){ return !EXCLUDE[c.src]; });
+  var n = cands.length;
+  if (!n) return;
+  var both = BOTH[spot.id];
+  cands.forEach(function(c, i){
+    var off = (i - (n-1)/2) * 1.1;   // 複数枚は前後にずらして行列にする
+    var baseSide = spot.side === "A" ? "A" : "E";
+    var side = both ? (i % 2 ? (baseSide === "A" ? "E" : "A") : baseSide) : baseSide;
+    panels.push({
+      min: spot.minutesFromTokyo + off,
+      baseMin: spot.minutesFromTokyo,
+      side: side,
+      seatLabel: both ? "Seats A/E" : "Seat " + side,
+      name: (spot.en && spot.en.name) || (spot.ja && spot.ja.name) || "",
+      src: c.src, alt: c.alt,
+      creditLine: c.line, creditName: c.cname,
+      el: null, img: null, dead: false
+    });
+  });
+});
+panels.sort(function(a,b){ return a.min - b.min; });
+
+var gates = STNS.map(function(s){
+  return { min: s.min, name: s.en || s.ja, major: !!s.major, el: null };
+});
+
+/* ---- 状態 ---- */
+var world = document.getElementById("world");
+var m = 0, speedMul = 1, ended = false, endT = 0, elapsed = 0, lastT = 0;
+var BASE_RATE = 0.86;  // 分/秒 (×1.0 のとき、全行程およそ三分)
+var ZPM = 720, ZNEAR = 320, ZFAR = -3600;
+var W = window.innerWidth, H = window.innerHeight;
+window.addEventListener("resize", function(){ W = window.innerWidth; H = window.innerHeight; });
+
+function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+function smoothstep(a,b,v){ var t = clamp((v-a)/(b-a),0,1); return t*t*(3-2*t); }
+function hash(n){ var x = Math.sin(n*127.1+311.7)*43758.5453; return x - Math.floor(x); }
+
+/* ---- 星 ---- */
+(function(){
+  for (var i=0;i<44;i++){
+    var st = document.createElement("div");
+    st.className = "star";
+    var r = 0.6 + hash(i*3.1)*1.4;
+    st.style.width = st.style.height = r.toFixed(1)+"px";
+    st.style.left = (hash(i*7.7)*100).toFixed(2)+"%";
+    st.style.top = (hash(i*13.3)*40).toFixed(2)+"%";
+    st.style.animationDelay = (hash(i*17.9)*4).toFixed(2)+"s";
+    document.body.insertBefore(st, document.getElementById("stage"));
+  }
+})();
+
+/* ---- 行灯パネル ---- */
+function makePanel(p){
+  var d = document.createElement("div");
+  d.className = "panel side-" + p.side;
+  var fig = document.createElement("figure");
+  var img = document.createElement("img");
+  img.alt = p.alt; img.decoding = "async";
+  img.onerror = function(){ p.dead = true; if (d.parentNode) d.parentNode.removeChild(d); };
+  img.src = "../" + p.src;
+  var cap = document.createElement("figcaption");
+  var nm = document.createElement("span"); nm.className = "pname"; nm.textContent = p.name;
+  var mt = document.createElement("span"); mt.className = "pmeta";
+  mt.textContent = "Approx. " + Math.round(p.baseMin) + " min · " + p.seatLabel;
+  var cr = document.createElement("span"); cr.className = "pcredit";
+  cr.textContent = p.creditLine;
+  cap.appendChild(nm); cap.appendChild(mt); cap.appendChild(cr);
+  fig.appendChild(img); fig.appendChild(cap);
+  d.appendChild(fig);
+  world.appendChild(d);
+  p.el = d; p.img = img;
+}
+function makeGate(g){
+  var d = document.createElement("div");
+  d.className = "gate" + (g.major ? " major" : "");
+  d.innerHTML = '<div class="frame"><div class="plate">' + g.name + "</div></div>";
+  world.appendChild(d);
+  g.el = d;
+}
+
+/* ---- 先読み ---- */
+var preloaded = {};
+function preload(){
+  var count = 0;
+  for (var i=0;i<panels.length && count<6;i++){
+    var p = panels[i];
+    if (p.min < m - 1 || p.min > m + 12) continue;
+    if (preloaded[p.src]) continue;
+    preloaded[p.src] = true;
+    var im = new Image(); im.src = "../" + p.src;
+    count++;
+  }
+}
+
+/* ---- UI ---- */
+var elSect = document.getElementById("sSect"), elMin = document.getElementById("sMin");
+var elCap = document.getElementById("caption"), elTrain = document.getElementById("train");
+var elFin = document.getElementById("fin"), elHint = document.getElementById("hint");
+var elFuji = document.getElementById("fujiSil");
+var KANJI = "〇一二三四五六七八九";
+function kanjiNum(n){
+  var s = String(Math.floor(n)), o = "";
+  for (var i=0;i<s.length;i++) o += KANJI[+s[i]];
+  return o;
+}
+var capTimer = null;
+function showCaption(name, sub){
+  elCap.innerHTML = name + (sub ? '<span class="sub">' + sub + "</span>" : "");
+  elCap.style.opacity = 1;
+  if (capTimer) clearTimeout(capTimer);
+  capTimer = setTimeout(function(){ elCap.style.opacity = 0; }, 4200);
+}
+function sectionLabel(){
+  for (var i=0;i<STNS.length-1;i++)
+    if (m >= STNS[i].min && m < STNS[i+1].min)
+      return (STNS[i].en || STNS[i].ja) + " — " + (STNS[i+1].en || STNS[i+1].ja);
+  return STNS.length ? (STNS[STNS.length-1].en || STNS[STNS.length-1].ja) : "";
+}
+(function(){
+  var route = document.getElementById("route");
+  STNS.forEach(function(s){
+    var t = document.createElement("div");
+    t.className = "tick" + (s.major ? " major" : "");
+    t.style.left = (s.min/TOTAL*100) + "%";
+    route.appendChild(t);
+  });
+})();
+var spdInput = document.querySelector("#speed input");
+var spdLabel = document.getElementById("spdLabel");
+spdInput.addEventListener("input", function(){
+  speedMul = parseFloat(spdInput.value) || 1;
+  spdLabel.textContent = "Speed ×" + speedMul.toFixed(1);
+});
+
+/* 路線バーをクリックでその位置へ */
+function seek(v){
+  v = clamp(v, 0, TOTAL - 0.5);
+  m = v; ended = false;
+  elFin.classList.remove("show");
+  panels.forEach(function(p){ p.dead = false; p.captioned = p.min < v - 2; });
+}
+document.getElementById("route").addEventListener("click", function(e){
+  var r = this.getBoundingClientRect();
+  seek((e.clientX - r.left) / r.width * TOTAL);
+});
+
+/* ---- 終点 ---- */
+function credits(){
+  var seen = {}, list = [];
+  panels.forEach(function(p){
+    if (p.creditName && !seen[p.creditName]){ seen[p.creditName] = true; list.push(p.creditName); }
+  });
+  return list;
+}
+function finish(){
+  ended = true; endT = elapsed;
+  var cr = credits();
+  elFin.innerHTML =
+    '<div class="t">Terminus: Shin-Osaka</div>' +
+    '<div class="s">Photographs shared by our window-view contributors</div>' +
+    '<div class="c">' + cr.map(function(c){ return "<b>"+c+"</b>"; }).join(" · ") + "</div>" +
+    '<div class="last">Until we meet by the window again.</div>';
+  setTimeout(function(){ elFin.classList.add("show"); }, 1600);
+}
+elFin.addEventListener("click", reset);
+function reset(){
+  m = 0; ended = false;
+  elFin.classList.remove("show");
+  panels.forEach(function(p){
+    if (p.el && p.el.parentNode) p.el.parentNode.removeChild(p.el);
+    p.el = null; p.captioned = false; p.dead = false;
+  });
+  gates.forEach(function(g){
+    if (g.el && g.el.parentNode) g.el.parentNode.removeChild(g.el);
+    g.el = null;
+  });
+}
+
+/* ---- 主循環 ---- */
+var floorEl = document.getElementById("floor"), floorY = 0;
+var scheduled = false, useShim = false;
+function sched(){
+  if (scheduled) return;
+  scheduled = true;
+  if (useShim) setTimeout(function(){ scheduled = false; frame(performance.now()); }, 16);
+  else requestAnimationFrame(function(t){ scheduled = false; frame(t); });
+}
+function frame(ts){
+  sched();
+  if (!lastT) lastT = ts;
+  var dt = Math.min((ts-lastT)/1000, 0.1);
+  lastT = ts; elapsed += dt;
+
+  if (!ended){
+    var arr = m > TOTAL-2 ? clamp((TOTAL-m)/2, 0.15, 1) : 1;
+    m += BASE_RATE * speedMul * arr * dt;
+    if (m >= TOTAL - 0.15) finish();
+  } else if (elapsed - endT > 16) reset();
+
+  var wallX = Math.min(W*0.40, 620);
+
+  /* 行灯 */
+  for (var i=0;i<panels.length;i++){
+    var p = panels[i];
+    if (p.dead) continue;
+    var z = (m - p.min) * ZPM;
+    var vis = z > ZFAR && z < ZNEAR;
+    if (vis && !p.el) makePanel(p);
+    if (!p.el) continue;
+    if (!vis){
+      if (z >= ZNEAR || z <= ZFAR){
+        p.el.parentNode.removeChild(p.el); p.el = null;
+        if (z >= ZNEAR) p.dead = true;   // 通過済み
+      }
+      continue;
+    }
+    var op = smoothstep(ZFAR, ZFAR+1800, z) * (1 - smoothstep(120, ZNEAR, z));
+    var sideX = p.side === "A" ? -wallX : wallX;
+    var rot = p.side === "A" ? 42 : -42;
+    p.el.style.transform = "translate3d(" + sideX + "px, -1vh, " + z.toFixed(1) + "px) rotateY(" + rot + "deg)";
+    p.el.style.opacity = op.toFixed(3);
+    if (!p.captioned && z > -1500){
+      p.captioned = true;
+      showCaption(p.name, "Approx. " + Math.round(p.baseMin) + " min · " + p.seatLabel);
+    }
+  }
+
+  /* 駅の門 */
+  for (var g=0; g<gates.length; g++){
+    var gt = gates[g];
+    var gz = (m - gt.min) * ZPM;
+    var gvis = gz > ZFAR && gz < 200;
+    if (gvis && !gt.el) makeGate(gt);
+    if (!gt.el) continue;
+    if (!gvis){ gt.el.parentNode.removeChild(gt.el); gt.el = null; continue; }
+    var gop = smoothstep(ZFAR, ZFAR+1200, gz) * (1 - smoothstep(-60, 180, gz)) * 0.9;
+    gt.el.style.transform = "translate3d(0, -1vh, " + gz.toFixed(1) + "px)";
+    gt.el.style.opacity = gop.toFixed(3);
+  }
+
+  /* 床の疾走 */
+  floorY += BASE_RATE*speedMul*ZPM*dt*0.55;
+  floorEl.style.backgroundPosition = "0 " + (floorY % 84).toFixed(1) + "px, 0 " + (floorY % 84).toFixed(1) + "px";
+
+  /* 富士の影 (38分〜50分) */
+  var fj = Math.min(smoothstep(37, 41, m), 1 - smoothstep(46, 51, m));
+  elFuji.style.opacity = (fj*0.9).toFixed(2);
+  if (fj > 0){
+    elFuji.style.transform = "translate(" + (-50 - (m-43.5)*6) + "%, 0)";
+    elFuji.style.top = "calc(46% - " + (elFuji.viewBox.baseVal.height*(0.6+fj*0.4)) + "px)";
+  }
+
+  /* 先読みと銘 */
+  if ((frame.n = (frame.n||0)+1) % 30 === 0) preload();
+  elSect.textContent = sectionLabel();
+  elMin.textContent = Math.floor(m) + " min";
+  elTrain.style.left = clamp(m/TOTAL*100, 0, 100) + "%";
+  if (elapsed > 26 && elHint.style.opacity !== "0") elHint.style.opacity = 0;
+}
+sched();
+setTimeout(function(){ if (!lastT){ useShim = true; scheduled = false; sched(); } }, 700);
+
+/* 検証用フック */
+window.__somato = {
+  jump: seek,
+  min: function(){ return m; },
+  counts: function(){
+    return {
+      panelsLive: panels.filter(function(p){ return p.el; }).length,
+      gatesLive: gates.filter(function(g){ return g.el; }).length,
+      panelsTotal: panels.length, gatesTotal: gates.length
+    };
+  }
+};
+})();
+</script>
+</body>
+</html>

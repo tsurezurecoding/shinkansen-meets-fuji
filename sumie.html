@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>墨絵車窓 — のぞみ、西へ | 新幹線の窓</title>
 <meta name="description" content="東海道新幹線 東京—新大阪 552.6kmの車窓を、すべてプロシージャル描画の墨絵で。スポット通過ごとに車窓スタンプが押される鑑賞ページ。">
-<link rel="canonical" href="https://www.michikusa-travel.com/sumie.html">
+  <link rel="canonical" href="https://www.michikusa-travel.com/sumie.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/sumie.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/sumie.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/sumie.html">
+  <script src="language-router.js?v=20260726-language-choice"></script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { width:100%; height:100%; overflow:hidden; background:#ece3d0;
@@ -23,7 +27,7 @@
   #sSect   { font-size:clamp(11px,1.3vw,15px); color:#6b6459; }
   #sKm     { font-size:clamp(10px,1.1vw,13px); color:#8d8578; letter-spacing:.25em; }
   #hanko {
-    position:fixed; top:calc(38px + 13.5em); right:50px; z-index:5;
+    position:fixed; top:auto; right:42px; bottom:128px; z-index:5;
     width:30px; height:30px; background:#b3272d; color:#f3ead9;
     display:flex; align-items:center; justify-content:center;
     font-size:17px; border-radius:4px; pointer-events:none;
@@ -79,11 +83,21 @@
   }
   #modes button.on { color:#b3272d; border-right:1px solid #b3272d; }
 
-  #home { position:fixed; left:32px; top:24px; z-index:7;
-    font-size:11px; letter-spacing:.3em; color:#8d8578; text-decoration:none; }
-  #home:hover { color:#b3272d; }
-  #hint { position:fixed; left:32px; bottom:44px; z-index:4; pointer-events:none;
+  #topleft { position:fixed; left:32px; top:24px; z-index:7;
+    display:flex; align-items:baseline; gap:14px; }
+  #home, #langLink { font-size:11px; letter-spacing:.3em; color:#8d8578; text-decoration:none; }
+  #home:hover, #langLink:hover { color:#b3272d; }
+  #langLink { border-left:1px solid rgba(141,133,120,.4); padding-left:14px; letter-spacing:.1em; }
+  /* 対になる作品への相互リンク */
+  #nightLink { position:fixed; right:40px; bottom:174px; z-index:6;
+    font-size:11px; letter-spacing:.16em; color:#8d8578; text-decoration:none; }
+  #nightLink:hover { color:#b3272d; }
+  /* 左はスタンプ帖と縦書きの詞書が占めるため、下部中央へ置く */
+  #hint { position:fixed; left:50%; transform:translateX(-50%); bottom:44px; z-index:4;
+    pointer-events:none; text-align:center; max-width:min(56vw,560px);
     font-size:10px; letter-spacing:.4em; color:#8d8578; transition:opacity 3s ease; }
+  /* 狭い画面では収まらないので導入文は省く */
+  @media (max-width:700px), (max-height:620px) { #hint { display:none; } }
 
   #intro { position:fixed; inset:0; z-index:20; background:#ece3d0;
     display:flex; align-items:center; justify-content:center;
@@ -120,7 +134,11 @@
   <button data-m="hikari">ひかり</button>
   <button data-m="nozomi" class="on">のぞみ</button>
 </div>
-<a id="home" href="index.html">← 新幹線の窓</a>
+<div id="topleft">
+  <a id="home" href="index.html">← 新幹線の窓</a>
+  <a id="langLink" href="en/sumie.html" hreflang="en" lang="en">EN</a>
+</div>
+<a id="nightLink" href="somato.html">写真で行くなら — 車窓走馬灯</a>
 <div id="hint">東京から新大阪へ ・ 五五二・六粁の墨絵 ・ スポット通過で押印</div>
 <div id="fin"></div>
 <canvas id="cv"></canvas>

@@ -31,7 +31,11 @@ const checks = [
   },
   {
     file: "references.html",
-    required: ["車窓リンク集", "新幹線の車窓から", "許可を得て掲載しています"],
+    required: ["車窓リンク集", "新幹線の車窓から"],
+  },
+  {
+    file: "zukan.html",
+    required: ["掲載写真は、撮影者または権利者の許可を得て紹介しています"],
   },
 ];
 

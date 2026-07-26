@@ -15,6 +15,7 @@ const MSG = {
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
     navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "メダル帖",
+    navMore: "もっと見る", navMieru: "見える予報β", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
@@ -42,22 +43,31 @@ const MSG = {
     previewBannerTitle: "サンプル",
     previewBannerBody: "列車を選ぶと、あなた用に切り替わります。",
     memEyebrow: "YOUR JOURNAL", memTitle: "車窓メダル帖",
-    memSub: "「見えた!」を押すと、旅のメダルが育ちます。",
+    memSub: "車窓をチェックすると、メダルが育ちます。",
+    journalIntro: "駅スタンプを集めるように、東海道新幹線の窓から見つけた景色を「車窓スタンプ」として残せます。",
+    journalModalClose: "閉じる",
     journalCta: "メダルとスタンプを見る",
     journalTeaser: "見つけた景色はスタンプに。集めるほどメダルが育ちます。",
-    journalGuideTitle: "メダルは進捗、スタンプは記録",
-    journalGuideBody: "見つけた景色が下のスタンプに残り、<br>その集まりでメダルが育ちます。",
-    stampHeading: "スタンプ",
+    stampHeading: "すべてのスタンプ",
+    stampListHint: "スタンプを選ぶと、説明と記録ボタンが開きます。",
+    stampDetailEyebrow: "SELECTED STAMP",
+    stampDetailEmpty: "気になるスタンプを選んでください。",
+    stampCheck: "チェックして記録",
+    stampChecked: "記録済み",
     medalEyebrow: "MEDALS",
     medalSummary: "集めた景色の進み具合",
-    medalOverall: "車窓の達人",
-    medalOverallDesc: "見つけた車窓ぜんぶの進捗。",
+    medalOverall: "看板マニア",
+    medalOverallDesc: "車窓に現れる名物看板を集める。",
+    medalOverallStory: "「私は誰でしょう」、727と248、しっぺいの応援、セロテープの壁。意味を知ると次の乗車でも探したくなる、東海道新幹線らしい看板シリーズです。",
     medalCastle: "城ハンター",
     medalCastleDesc: "新幹線から見える城を集める。",
+    medalCastleStory: "小田原、掛川、清洲、岐阜、彦根。数秒の車窓に、戦国から城下町までの記憶が重なります。まずは通過駅の少し前から、窓の端を意識してみてください。",
     medalFuji: "富士五景",
     medalFujiDesc: "場所ごとに違う富士山を集める。",
+    medalFujiStory: "都内の遠い富士、相模平野の背後に立つ富士、三島から新富士の主役の富士、数秒だけ反対側に現れる左富士。ひとつの山でも、車窓では別々の景色になります。",
     medalClassic: "定番めぐり",
     medalClassicDesc: "まず見てほしい定番車窓を集める。",
+    medalClassicStory: "初めて使うならこのシリーズから。富士山、浜名湖、東寺など、知っていると旅の印象が変わる定番の車窓をまとめています。",
     medalBronze: "銅",
     medalSilver: "銀",
     medalGold: "金",
@@ -66,15 +76,23 @@ const MSG = {
     medalNext: (label, remain) => `次は${label}まであと${remain}`,
     medalComplete: "金メダル達成",
     medalTargets: "対象スポット",
+    medalTargetHint: "スタンプを選ぶと、下の詳細でチェックできます。",
+    medalDetailOpen: (name) => `${name}の詳細を開く`,
+    medalSelectHint: "メダルを選ぶと、説明と対象スポットが開きます。",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "37の車窓スポットを一覧できます。<br>見つけた景色は「見えた!」で記録できます。",
+    galSub: "37の車窓スポットを一覧できます。<br>見つけた景色はチェックして記録できます。",
+    galPhotoNote: "掲載写真は、撮影者または権利者の許可を得て紹介しています。",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
-    footerPrivacy: "プライバシー",
+    footerMieru: "見える予報β",
+    footerSumie: "墨絵車窓",
+    footerSomato: "車窓走馬灯",
+    footerContact: "お問い合わせ",
+    footerPrivacy: "プライバシーポリシー",
     footerCredit: "道草 / Michikusa — 急がない旅と、偶然の発見を。",
     faqEyebrow: "TRAVEL FAQ",
     faqTitle: "新幹線から富士山を見るには？",
@@ -94,10 +112,10 @@ const MSG = {
     confCheck: "裏取り中",
     nightPhotoAvailable: "夜景あり",
     lowLightLimited: "夜は見えにくい",
-    spotted: "見えた!", spotBtn: "見えた!", spotBtnDone: "スタンプ済 ✓",
-    spotBtnCompact: "見た", spotBtnDoneCompact: "済",
-    spotBtnAriaAdd: (name) => `${name}を見えた景色として記録`,
-    spotBtnAriaRemove: (name) => `${name}のスタンプを解除`,
+    spotted: "記録済み", spotBtn: "チェックして記録", spotBtnDone: "記録済み ✓",
+    spotBtnCompact: "記録", spotBtnDoneCompact: "済",
+    spotBtnAriaAdd: (name) => `${name}をチェックして記録`,
+    spotBtnAriaRemove: (name) => `${name}の記録を解除`,
     favBtn: "お気に入り", favBtnDone: "お気に入り済 ★",
     favBtnAriaAdd: (name) => `${name}をお気に入りに追加`,
     favBtnAriaRemove: (name) => `${name}をお気に入りから外す`,
@@ -108,7 +126,7 @@ const MSG = {
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
     confirmReset: "スタンプをぜんぶ消しますか?",
-    emptyCard: "まだスタンプがありません。タイムラインで「見えた!」を押してみてください。",
+    emptyCard: "まだスタンプがありません。タイムラインでチェックして記録してみてください。",
   },
   en: {
     brandName: "Shinkansen Window",
@@ -120,6 +138,7 @@ const MSG = {
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
     navQuick: "Home", navStart: "Train Search", navLive: "Live Guide", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Journal",
+    navMore: "More", navMieru: "Visibility β", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
@@ -147,22 +166,31 @@ const MSG = {
     previewBannerTitle: "Sample",
     previewBannerBody: "Pick your train to make it yours.",
     memEyebrow: "YOUR JOURNAL", memTitle: "Window Medal Book",
-    memSub: "Tap “Spotted!” and your travel medals grow.",
+    memSub: "Check off each view you find to grow your journey medals.",
+    journalIntro: "Like collecting station stamps in Japan, keep each view you find from the Tokaido Shinkansen as a Window Stamp.",
+    journalModalClose: "Close",
     journalCta: "Open stamps and medals",
     journalTeaser: "Each view becomes a stamp, and every stamp grows your medals.",
-    journalGuideTitle: "Medals show progress. Stamps keep the record.",
-    journalGuideBody: "Each spotted view becomes a stamp, and those stamps grow your medals.",
-    stampHeading: "Stamps",
+    stampHeading: "All stamps",
+    stampListHint: "Select a stamp to open its story and record control.",
+    stampDetailEyebrow: "SELECTED STAMP",
+    stampDetailEmpty: "Select a stamp to see its details.",
+    stampCheck: "Check off this view",
+    stampChecked: "Recorded",
     medalEyebrow: "MEDALS",
     medalSummary: "Your collected view progress",
-    medalOverall: "Window Master",
-    medalOverallDesc: "Progress across every window view.",
+    medalOverall: "Sign Spotter",
+    medalOverallDesc: "Collect the route's memorable trackside signs.",
+    medalOverallStory: "The mystery “Who am I?” sign, 727 and 248, Shippei's cheering messages, and the giant CELLOTAPE wall: four trackside signs worth watching for again.",
     medalCastle: "Castle Hunter",
     medalCastleDesc: "Collect castles seen from the Shinkansen.",
+    medalCastleStory: "Odawara, Kakegawa, Kiyosu, Gifu and Hikone flash past in seconds. This series helps you watch for history before it disappears.",
     medalFuji: "Fuji Five",
     medalFujiDesc: "Collect Mt. Fuji from five places.",
+    medalFujiStory: "Distant Fuji near Tokyo, Fuji beyond the Sagami Plain, the main Mishima-Shin-Fuji view, and the brief Left Fuji: one mountain becomes several window moments.",
     medalClassic: "Classic Tour",
     medalClassicDesc: "Collect the essential window views first.",
+    medalClassicStory: "Start here. These are the views most likely to change how the ride feels: Mt. Fuji, Lake Hamana, To-ji and other essentials.",
     medalBronze: "Bronze",
     medalSilver: "Silver",
     medalGold: "Gold",
@@ -171,15 +199,23 @@ const MSG = {
     medalNext: (label, remain) => `${remain} more to ${label}`,
     medalComplete: "Gold medal complete",
     medalTargets: "Included views",
+    medalTargetHint: "Select a stamp, then check it off in the detail below.",
+    medalDetailOpen: (name) => `Open details for ${name}`,
+    medalSelectHint: "Select a medal to open its story and included views.",
     btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Browse all 37 window views. Tap “Spotted!” to record what you saw.",
+    galSub: "Browse all 37 window views. Check off each one you find.",
+    galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerGuide: "How to see Mt. Fuji",
     footerReferences: "Window links",
-    footerPrivacy: "Privacy",
+    footerMieru: "Visibility β",
+    footerSumie: "Sumie Window",
+    footerSomato: "Window Journey",
+    footerContact: "Contact",
+    footerPrivacy: "Privacy Policy",
     footerCredit: "Michikusa — unhurried journeys and chance discoveries.",
     faqEyebrow: "TRAVEL FAQ",
     faqTitle: "How do you see Mt. Fuji from the Shinkansen?",
@@ -199,10 +235,10 @@ const MSG = {
     confCheck: "verifying",
     nightPhotoAvailable: "Night view",
     lowLightLimited: "Hard to see at night",
-    spotted: "Spotted!", spotBtn: "Spotted!", spotBtnDone: "Stamped ✓",
-    spotBtnCompact: "Seen", spotBtnDoneCompact: "Saved",
-    spotBtnAriaAdd: (name) => `Save ${name} as spotted`,
-    spotBtnAriaRemove: (name) => `Remove the stamp for ${name}`,
+    spotted: "Recorded", spotBtn: "Check off", spotBtnDone: "Recorded ✓",
+    spotBtnCompact: "Record", spotBtnDoneCompact: "Saved",
+    spotBtnAriaAdd: (name) => `Check off ${name} as seen`,
+    spotBtnAriaRemove: (name) => `Remove the record for ${name}`,
     favBtn: "Favorite", favBtnDone: "Favorited ★",
     favBtnAriaAdd: (name) => `Add ${name} to favorites`,
     favBtnAriaRemove: (name) => `Remove ${name} from favorites`,
@@ -213,7 +249,7 @@ const MSG = {
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
     confirmReset: "Clear all stamps?",
-    emptyCard: "No stamps yet — tap “Spotted!” on the timeline first.",
+    emptyCard: "No stamps yet. Check off a view from the timeline to record it.",
   },
 };
 
@@ -227,13 +263,24 @@ function getInitialLang() {
     localStorage.setItem("mado-lang", urlLang);
     return urlLang;
   }
-  if (/\/en\/(?:index\.html)?$/i.test(location.pathname)) {
+  if (/\/en(?:\/|$)/i.test(location.pathname)) {
     localStorage.setItem("mado-lang", "en");
     return "en";
   }
-  return normalizeLang(localStorage.getItem("mado-lang") || navigator.language || "ja");
+  return "ja";
 }
 let lang = getInitialLang();
+
+function localizedPageHref(targetLang) {
+  const path = location.pathname.replace(/\\/g, "/");
+  const file = path.endsWith("/zukan.html") ? "zukan.html"
+    : path.endsWith("/journal.html") ? "journal.html"
+    : "index.html";
+  const target = targetLang === "en"
+    ? `en/${file === "index.html" ? "" : file}`
+    : file;
+  return new URL(target, document.baseURI).href;
+}
 let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
@@ -275,7 +322,7 @@ function spotPageHref(spot) {
   return lang === "en" ? `en/spots/${pageId}.html${anchor}` : `spots/${pageId}.html${anchor}`;
 }
 function liveMapHref(targetLang = lang) {
-  return `live/index.html${targetLang === "en" ? "?lang=en" : ""}`;
+  return targetLang === "en" ? "en/live/" : "live/";
 }
 const t = (key, ...args) => {
   const v = MSG[lang][key];
@@ -774,8 +821,29 @@ function applyLang() {
     const v = MSG[lang][el.dataset.i18n];
     if (typeof v === "string") el.innerHTML = v;
   });
+  $$("[data-journal-close]").forEach((el) => el.setAttribute("aria-label", t("journalModalClose")));
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
   $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/guide.html" : "guide.html"));
+  $$('[data-contact-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/contact.html" : "contact.html"));
+  if (lang === "en") {
+    const englishRoutes = {
+      "index.html": "en/",
+      "index.html#journey": "en/#journey",
+      "zukan.html": "en/zukan.html",
+      "journal.html": "en/journal.html",
+      "mieru.html": "en/mieru.html",
+      "sumie.html": "en/sumie.html",
+      "somato.html": "en/somato.html",
+      "references.html": "en/references.html",
+      "privacy.html": "en/privacy.html",
+      "lp.html": "en/lp.html",
+      "live/index.html": "en/live/",
+    };
+    $$("a[href]").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (englishRoutes[href]) link.setAttribute("href", englishRoutes[href]);
+    });
+  }
   $$("[data-live-nav]").forEach((link) => link.setAttribute("href", liveMapHref()));
   $$("[data-live-nav-link]").forEach((link) => link.setAttribute("href", liveMapHref()));
   renderMedalBoard();
@@ -1411,29 +1479,62 @@ const FUJI_MEDAL_IDS = [
   "left-fuji",
   "hamanako-fuji",
 ];
+const SIGN_MEDAL_IDS = [
+  "putiputi-sign",
+  "727-board",
+  "genki-sign",
+  "nichiban-anjo",
+];
 const MEDAL_SETS = [
   {
-    id: "overall",
-    icon: "◎",
+    id: "sign",
+    image: "images/medals/emblem-sign.webp",
+    photos: [
+      "images/thumbs/20260704_putiputi_sign_1_michikusa.webp",
+      "images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
+      "images/thumbs/20260712_genki_sign_michikusa.webp",
+    ],
     titleKey: "medalOverall",
-    spots: () => SPOTS,
+    descKey: "medalOverallDesc",
+    storyKey: "medalOverallStory",
+    spots: () => SIGN_MEDAL_IDS.map(findSpotById).filter(Boolean),
   },
   {
     id: "castle",
-    icon: "🏯",
+    image: "images/medals/emblem-castle.webp",
+    photos: [
+      "images/thumbs/20260712_kakegawa_castle_michikusa.webp",
+      "images/thumbs/20260530_kiyosu_castle.webp",
+    ],
     titleKey: "medalCastle",
+    descKey: "medalCastleDesc",
+    storyKey: "medalCastleStory",
     spots: () => CASTLE_MEDAL_IDS.map(findSpotById).filter(Boolean),
   },
   {
     id: "fuji",
-    icon: "🗻",
+    image: "images/medals/emblem-fuji.webp",
+    photos: [
+      "images/thumbs/20260530_sagami_fuji_hiratsuka_michikusa.webp",
+      "images/thumbs/20240211_fuji_michikusa.webp",
+      "images/thumbs/20260513_left_fuji.webp",
+    ],
     titleKey: "medalFuji",
+    descKey: "medalFujiDesc",
+    storyKey: "medalFujiStory",
     spots: () => FUJI_MEDAL_IDS.map(findSpotById).filter(Boolean),
   },
   {
     id: "classic",
-    icon: "★",
+    image: "images/medals/emblem-classic.webp",
+    photos: [
+      "images/thumbs/20260712_tokyo_tower_michikusa.webp",
+      "images/thumbs/20260530_hamanako.webp",
+      "images/thumbs/20240114_ibukiyama.webp",
+    ],
     titleKey: "medalClassic",
+    descKey: "medalClassicDesc",
+    storyKey: "medalClassicStory",
     spots: () => SPOTS.filter((sp) => sp.category === "classic"),
   },
 ];
@@ -1462,35 +1563,82 @@ function medalProgress(set) {
 function medalLevelLabel(level) {
   return level ? t(level.labelKey) : t("medalNoMedal");
 }
-function medalIconSVG(set, progress) {
-  const percent = progress.total ? Math.round((progress.got / progress.total) * 100) : 0;
+function medalArtworkHTML(set) {
   return `
-    <svg class="medal-svg" viewBox="0 0 72 72" aria-hidden="true" focusable="false">
-      <circle class="medal-svg-shadow" cx="36" cy="37" r="27"></circle>
-      <circle class="medal-svg-base" cx="36" cy="35" r="27"></circle>
-      <circle class="medal-svg-progress" cx="36" cy="35" r="27" pathLength="100" stroke-dasharray="${percent} 100"></circle>
-      <circle class="medal-svg-inner" cx="36" cy="35" r="18"></circle>
-      <text class="medal-svg-mark" x="36" y="43" text-anchor="middle">${escapeHTML(set.icon)}</text>
+    <svg class="medal-artwork" viewBox="0 0 100 112" aria-hidden="true" focusable="false">
+      <path class="medal-art-ribbon medal-art-ribbon-left" d="M27 4h20l5 29-16 13-9-42Z"></path>
+      <path class="medal-art-ribbon medal-art-ribbon-right" d="M53 4h20l-9 42-16-13 5-29Z"></path>
+      <rect class="medal-art-bridge" x="35" y="27" width="30" height="14" rx="3"></rect>
+      <circle class="medal-art-shell" cx="50" cy="72" r="34"></circle>
+      <circle class="medal-art-face" cx="50" cy="72" r="27"></circle>
+      <image class="medal-art-emblem" href="${set.image}" x="25" y="49" width="50" height="46" preserveAspectRatio="xMidYMid meet"></image>
     </svg>`;
 }
+let selectedMedalId = null;
+let selectedStampId = null;
+
 function renderMedalBoard() {
   const board = $("#medalBoard");
   if (!board) return;
+  const selectedSet = MEDAL_SETS.find((set) => set.id === selectedMedalId) || null;
   board.innerHTML = `
-    <div class="medal-grid">
+    <div class="medal-overview">
       ${MEDAL_SETS.map((set) => {
         const progress = medalProgress(set);
         const levelClass = progress.level ? `medal-${progress.level.key}` : "medal-none";
-        const percent = progress.total ? Math.round((progress.got / progress.total) * 100) : 0;
         const label = `${t(set.titleKey)} ${t("medalProgress", progress.got, progress.total)} ${medalLevelLabel(progress.level)}`;
         return `
-          <div class="medal-card ${levelClass}" style="--medal-progress: ${percent}%;" role="img" aria-label="${escapeAttr(label)}">
-            <span class="medal-title">${escapeHTML(t(set.titleKey))}</span>
-            <span class="medal-icon" aria-hidden="true">${medalIconSVG(set, progress)}</span>
-            <span class="medal-count">${escapeHTML(t("medalProgress", progress.got, progress.total))}</span>
-          </div>`;
+          <button type="button" class="medal-overview-item ${levelClass}${set.id === selectedSet?.id ? " is-selected" : ""}"
+            data-medal-select="${set.id}" aria-label="${escapeAttr(`${t("medalDetailOpen", t(set.titleKey))}${lang === "ja" ? "。" : ". "}${label}`)}"
+            aria-haspopup="dialog" aria-expanded="${set.id === selectedSet?.id}" aria-controls="journalModal">
+            ${medalArtworkHTML(set)}
+            <strong>${escapeHTML(t(set.titleKey))}</strong>
+            <span>${escapeHTML(t("medalProgress", progress.got, progress.total))}</span>
+          </button>`;
       }).join("")}
-    </div>`;
+    </div>
+    <p class="medal-select-hint">${escapeHTML(t("medalSelectHint"))}</p>`;
+}
+
+function medalDetailHTML(selectedSet) {
+  const selectedProgress = medalProgress(selectedSet);
+  const selectedLevelClass = selectedProgress.level ? `medal-${selectedProgress.level.key}` : "medal-none";
+  const selectedNextText = selectedProgress.next
+    ? t("medalNext", t(selectedProgress.next.labelKey), Math.max(0, selectedProgress.thresholds[selectedProgress.next.key] - selectedProgress.got))
+    : t("medalComplete");
+  return `<section class="medal-series-detail ${selectedLevelClass}">
+      <div class="medal-detail-lead">
+        <span class="medal-detail-art">${medalArtworkHTML(selectedSet)}</span>
+        <div class="medal-series-copy">
+          <p class="eyebrow">${escapeHTML(t("medalEyebrow"))}</p>
+          <h2 id="journalModalTitle">${escapeHTML(t(selectedSet.titleKey))}</h2>
+          <p>${escapeHTML(t(selectedSet.descKey))}</p>
+          <p class="medal-series-story">${escapeHTML(t(selectedSet.storyKey))}</p>
+        </div>
+        <div class="medal-series-status">
+          <strong>${escapeHTML(t("medalProgress", selectedProgress.got, selectedProgress.total))}</strong>
+          <span>${escapeHTML(medalLevelLabel(selectedProgress.level))}</span>
+          <small>${escapeHTML(selectedNextText)}</small>
+        </div>
+      </div>
+      <div class="medal-photo-strip" aria-hidden="true">
+        ${selectedSet.photos.map((src) => `<img src="${src}" alt="" loading="lazy" decoding="async">`).join("")}
+      </div>
+      <p class="medal-photo-credit">Photo: michikusa</p>
+      <div class="medal-target-head">
+        <strong>${escapeHTML(t("medalTargets"))}</strong>
+        <span>${escapeHTML(t("medalTargetHint"))}</span>
+      </div>
+      <div class="medal-target-list">
+        ${selectedProgress.targets.map((sp) => {
+          const L = sp[lang] || sp.ja;
+          return `<button type="button" class="medal-target-card${stamps[sp.id] ? " is-stamped" : ""}" data-medal-target="${sp.id}">
+            <img class="medal-target-stamp" src="images/stamps/stamp_${sp.id}.svg" alt="" width="42" height="42" loading="lazy" decoding="async">
+            <span class="medal-target-copy"><strong>${escapeHTML(L.name)}</strong><span>${escapeHTML(L.hook || sp.hook || "")}</span></span>
+          </button>`;
+        }).join("")}
+      </div>
+    </section>`;
 }
 
 /* ---------- stamps ---------- */
@@ -1502,6 +1650,20 @@ function toggleStamp(id) {
   localStorage.setItem("mado-stamps", JSON.stringify(stamps));
   renderMedalBoard();
   renderStampboard();
+  const journalModal = $("#journalModal");
+  const journalContent = $("#journalModalContent");
+  if (journalModal && !journalModal.hidden && journalContent) {
+    if (journalModal.dataset.kind === "stamp" && selectedStampId) {
+      const selected = findSpotById(selectedStampId);
+      if (selected) {
+        journalContent.innerHTML = stampDetailHTML(selected);
+        bindSpotEvents(journalContent);
+      }
+    } else if (journalModal.dataset.kind === "medal" && selectedMedalId) {
+      const selected = MEDAL_SETS.find((set) => set.id === selectedMedalId);
+      if (selected) journalContent.innerHTML = medalDetailHTML(selected);
+    }
+  }
   $$(`[data-stamp="${id}"]`).forEach((btn) => {
     const got = !!stamps[id];
     updateStampButton(btn, got);
@@ -1554,15 +1716,78 @@ function updateFavoriteButton(btn, faved) {
   btn.setAttribute("title", rendered.getAttribute("title"));
 }
 function renderStampboard() {
-  if (!$("#stampboard")) return;
-  $("#stampboard").innerHTML = SPOTS.map((sp) => `
-    <div class="stamp${stamps[sp.id] ? " got" : ""}">
+  const board = $("#stampboard");
+  if (!board) return;
+  board.innerHTML = `
+    <p class="stamp-list-hint">${escapeHTML(t("stampListHint"))}</p>
+    <div class="stamp-list">
+      ${SPOTS.map((sp) => `
+    <button type="button" class="stamp${stamps[sp.id] ? " got" : ""}${selectedStampId === sp.id ? " is-selected" : ""}"
+      data-stamp-select="${sp.id}" aria-haspopup="dialog" aria-expanded="${selectedStampId === sp.id}" aria-controls="journalModal">
       <span class="s-icon stampboard-icon">
         <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
         <span class="stampboard-fallback" hidden>${sp.icon}</span>
       </span>
       <span class="s-name">${sp[lang].name}</span>
-    </div>`).join("");
+    </button>`).join("")}
+    </div>`;
+  bindSpotEvents(board);
+}
+
+function stampDetailHTML(selected) {
+  const L = selected[lang] || selected.ja;
+  const got = Boolean(stamps[selected.id]);
+  const media = spotMediaItems(selected)[0] || null;
+  return `<div class="stamp-detail has-selection">
+          <img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.id}.svg" alt="" width="86" height="86">
+          <div class="stamp-detail-copy">
+            <p class="eyebrow">${escapeHTML(t("stampDetailEyebrow"))}</p>
+            <h2 id="journalModalTitle">${escapeHTML(L.name)}</h2>
+            <p>${escapeHTML(L.hook || selected.hook || "")}</p>
+          </div>
+          ${media ? `<figure class="stamp-detail-photo">
+            <img src="${thumbnailSrc(media.src)}" alt="${escapeAttr(media.alt)}" loading="lazy" decoding="async">
+            ${media.creditHTML}
+          </figure>` : ""}
+          <div class="stamp-detail-actions">
+            <button type="button" class="stamp-detail-check${got ? " is-on" : ""}" data-stamp="${selected.id}" aria-pressed="${got}">
+              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3.6 8.4 6.6 11.2 12.6 5.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>${escapeHTML(got ? t("stampChecked") : t("stampCheck"))}</span>
+            </button>
+            <a class="stamp-detail-guide" href="${spotPageHref(selected)}">${escapeHTML(t("readGuideDetail"))}<span aria-hidden="true">→</span></a>
+          </div>
+        </div>`;
+}
+
+function openJournalModal(kind, id) {
+  const modal = $("#journalModal");
+  const content = $("#journalModalContent");
+  if (!modal || !content) return;
+  if (kind === "medal") {
+    const set = MEDAL_SETS.find((candidate) => candidate.id === id);
+    if (!set) return;
+    selectedMedalId = id;
+    content.innerHTML = medalDetailHTML(set);
+    renderMedalBoard();
+  } else {
+    const spot = findSpotById(id);
+    if (!spot) return;
+    selectedStampId = id;
+    content.innerHTML = stampDetailHTML(spot);
+    renderStampboard();
+  }
+  modal.dataset.kind = kind;
+  bindSpotEvents(content);
+  modal.hidden = false;
+  document.body.classList.add("modal-open");
+  modal.querySelector(".journal-modal-close")?.focus();
+}
+
+function closeJournalModal() {
+  const modal = $("#journalModal");
+  if (!modal || modal.hidden) return;
+  modal.hidden = true;
+  document.body.classList.remove("modal-open");
 }
 
 function registerServiceWorker() {
@@ -1789,6 +2014,33 @@ function bindTimelineControls() {
 }
 
 function bindJournalControls() {
+  $("#medalBoard")?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const medalButton = target?.closest("[data-medal-select]");
+    if (medalButton) {
+      openJournalModal("medal", medalButton.dataset.medalSelect);
+      return;
+    }
+    const stampButton = target?.closest("[data-medal-target]");
+    if (!stampButton) return;
+    openJournalModal("stamp", stampButton.dataset.medalTarget);
+  });
+  $("#stampboard")?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    if (target?.closest("[data-stamp]")) return;
+    const stampButton = target?.closest("[data-stamp-select]");
+    if (!stampButton) return;
+    openJournalModal("stamp", stampButton.dataset.stampSelect);
+  });
+  $("#journalModal")?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    if (target?.closest("[data-journal-close]")) {
+      closeJournalModal();
+      return;
+    }
+    const stampButton = target?.closest("[data-medal-target]");
+    if (stampButton) openJournalModal("stamp", stampButton.dataset.medalTarget);
+  });
   $("#resetBtn")?.addEventListener("click", () => {
     if (confirm(t("confirmReset"))) {
       stamps = {};
@@ -1817,7 +2069,11 @@ function init() {
     });
   });
   $$(".lang-switch button").forEach((b) => b.addEventListener("click", () => {
-    lang = b.dataset.lang; localStorage.setItem("mado-lang", lang); track("language_changed", { language: lang }); applyLang();
+    const nextLang = b.dataset.lang;
+    if (nextLang === lang) return;
+    localStorage.setItem("mado-lang", nextLang);
+    track("language_changed", { language: nextLang });
+    location.href = localizedPageHref(nextLang);
   }));
   bindGalleryControls();
   bindTimelineControls();
@@ -1826,6 +2082,7 @@ function init() {
     if (event.key === "Escape") {
       closeSpotModal("escape");
       closeQuickModal("escape");
+      closeJournalModal();
     }
   });
   // ここから先はアプリ画面（index.html）専用の初期化

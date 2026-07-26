@@ -3,37 +3,49 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tokaido Shinkansen Window Views | Shinkansen Window</title>
-  <meta name="description" content="A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.">
+  <base href="../">
+  <title>Shinkansen Window | Tokaido Shinkansen View Times and Seat Side</title>
+  <meta name="description" content="Choose your train to see when and which side to watch for Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and 37 Tokaido Shinkansen window views.">
+  <meta name="theme-color" content="#101c2c">
   <link rel="canonical" href="https://www.michikusa-travel.com/en/">
-  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/">
-  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/">
-  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/">
-  <link rel="stylesheet" href="../style.css?v=20260726-metadata-fix">
-  <meta property="og:title" content="Tokaido Shinkansen Window Views | Shinkansen Window">
-  <meta property="og:description" content="A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Shinkansen Window | Never miss the view">
+  <meta property="og:description" content="Find the time and seat side for Mt. Fuji and 37 views from the Tokaido Shinkansen.">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.michikusa-travel.com/en/">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tokaido Shinkansen Window Views | Shinkansen Window">
-  <meta name="twitter:description" content="A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.">
+  <meta name="twitter:title" content="Shinkansen Window | Never miss the view">
+  <meta name="twitter:description" content="Find the time and seat side for Mt. Fuji and 37 Tokaido Shinkansen window views.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
-  <script type="application/ld+json">{
-  "@context": "https://schema.org",
-  "@type": "WebSite",
-  "@id": "https://www.michikusa-travel.com/en/#website",
-  "name": "Shinkansen Window",
-  "url": "https://www.michikusa-travel.com/en/",
-  "inLanguage": "en",
-  "description": "A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.",
-  "isPartOf": {
-    "@type": "WebSite",
-    "name": "新幹線の窓",
-    "url": "https://www.michikusa-travel.com"
+  <meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/">
+  <script src="language-router.js?v=20260726-language-choice"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://www.michikusa-travel.com/#app",
+        "name": "新幹線の窓",
+        "alternateName": "Shinkansen Window",
+        "url": "https://www.michikusa-travel.com/",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Any",
+        "inLanguage": ["ja", "en"],
+        "description": "東海道新幹線から富士山が見える時間と座席側、富士山以外の車窓スポットを案内する旅行者向けWebアプリ。",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      }
+    ]
   }
-}</script>
+  </script>
   <script>
     (function () {
       var measurementId = "G-C2ESB694FV";
@@ -70,86 +82,225 @@
       window.gtag("config", measurementId);
     })();
   </script>
+  <link rel="stylesheet" href="style.css?v=20260726-contact-methods">
 </head>
-<body class="spot-page">
+<body>
+  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>
+
+  <!-- ===== Header ===== -->
   <header class="topbar">
-    <a class="brand" href="../index.html?lang=en">
+    <a class="brand" href="index.html">
       <span class="brand-mark">窓</span>
       <span class="brand-text">
-        <span class="brand-name">Shinkansen Window</span>
-        <small class="brand-sub">Never miss a moment of the journey.</small>
+        <span class="brand-name" data-i18n="brandName">新幹線の窓</span>
+        <small class="brand-sub" data-i18n="brandSub">旅の瞬間を見逃さない</small>
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="../index.html?lang=en">Home</a>
-      <a href="../index.html?lang=en#journey">Train Search</a>
-      <a href="../live/index.html?lang=en">Live Guide</a>
-      <a href="../zukan.html?lang=en">Field Guide</a>
-      <a href="../en/guide.html">FAQ</a>
-      <a href="../journal.html?lang=en">Journal</a>
+      <a href="index.html#journey" data-i18n="navStart">列車選択</a>
+      <a href="live/index.html" data-i18n="navLive">ライブガイド</a>
+      <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
+      <a class="top-nav-overflow" href="en/guide.html" data-i18n="navFaq">FAQ</a>
+      <a href="en/journal.html" data-i18n="navMedals">Window Medal Book</a>
+      <details class="top-nav-more">
+        <summary data-i18n="navMore">もっと見る</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-compact" href="en/guide.html" data-i18n="navFaq">FAQ</a>
+          <a href="en/lp.html" data-i18n="navLp">About Shinkansen Window</a>
+          <a href="en/mieru.html" data-i18n="navMieru">Mt. Fuji Visibility Beta</a>
+          <a href="en/sumie.html" data-i18n="navSumie">Ink-Wash Window</a>
+          <a href="en/somato.html" data-i18n="navSomato">Window Revue</a>
+          <a href="en/references.html" data-i18n="navRefs">リンク集</a>
+          <a href="en/contact.html" data-contact-nav data-i18n="navContact">Contact</a>
+          <a href="en/privacy.html" data-i18n="navPrivacy">Privacy Policy</a>
+        </div>
+      </details>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
-      <a class="" href="../">日本語</a>
-      <a class="active" href="./">EN</a>
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="en">EN</button>
     </div>
   </header>
-  <main>
-    <article class="spot-page-article">
-      <p class="eyebrow">TOKAIDO SHINKANSEN WINDOW GUIDE</p>
-      <h1>Do not miss the view from your Shinkansen window.</h1>
-      <p class="spot-page-lead">A field guide to Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and other views from the Tokaido Shinkansen.</p>
-      <div class="spot-page-actions spot-page-actions-top">
-        <a class="btn btn-primary" href="../index.html?lang=en#journey">Find your train</a>
-        <a class="btn btn-ghost" href="../zukan.html?lang=en">Browse the field guide</a>
+
+  <!-- ===== Hero (実写富士山 + 一言で「何のサイトか」) ===== -->
+  <section class="hero hero-photo" id="top">
+    <div class="hero-photo-bg" aria-hidden="true">
+      <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="" decoding="async" fetchpriority="high">
+    </div>
+    <div class="hero-inner">
+      <p class="hero-kicker" data-i18n="heroKicker"><span class="hero-kicker-line">TOKAIDO SHINKANSEN</span><span class="hero-kicker-sep"> · </span><span class="hero-kicker-line">TOKYO ⇄ SHIN-OSAKA</span></p>
+      <h1 class="hero-title" data-i18n="heroTitle"><span class="hero-title-line">窓のむこうに、</span><span class="hero-title-line">もうひとつの旅がある。</span></h1>
+      <p class="hero-lead" data-i18n="heroLead"><span class="hero-lead-line">富士山も、城も、湖も海も。</span><br class="hero-lead-break"><span class="hero-lead-line">新幹線で「いつ・どちら側を見るか」が</span><span class="hero-lead-line">わかる車窓手帖です。</span></p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="index.html#journey" data-i18n="heroCtaStart" data-cta-track="cta_train_search_click" data-cta-id="hero_primary">乗る列車でガイドを作る</a>
+        <a class="btn btn-ghost hero-secondary" href="index.html#quick-intro" data-i18n="ctaQuick">About Shinkansen Window</a>
+        <a class="btn btn-ghost hero-secondary" href="zukan.html" data-i18n="heroCtaBrowse">車窓図鑑を見る</a>
       </div>
-      <section class="spot-page-section guide-answer-panel" aria-label="Quick Shinkansen window guide">
-        <div class="guide-answer-copy">
-          <h2>Start with Seat E for Mt. Fuji.</h2>
-          <p>On the Tokaido Shinkansen, the classic Mt. Fuji view is on the E-seat side. Shinkansen Window also helps you notice short views of lakes, castles, signs, train depots, and Kyoto landmarks.</p>
+    </div>
+  </section>
+
+  <!-- ===== What you'll see (まず「何が見えるか」を見せる) ===== -->
+  <section class="showcase" aria-labelledby="showcaseTitle">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="showEyebrow">WHAT YOU'LL SEE</p>
+      <h2 id="showcaseTitle" data-i18n="showTitle">たとえば、こんな景色</h2>
+    </div>
+    <div class="showcase-rail" id="showcaseRail"></div>
+  </section>
+
+  <!-- ===== Journey setup ===== -->
+  <section class="section" id="journey">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="setupEyebrow">YOUR JOURNEY</p>
+      <h2 data-i18n="setupTitle">きょうの旅を教えてください</h2>
+      <p class="section-sub" data-i18n="setupSub"><span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">見どころの時刻と座席側を調べます。</span></p>
+    </div>
+    <div class="journey-desktop-grid">
+      <div class="journey-form-pane">
+        <div class="setup-card">
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelDirection">方向</span>
+            <div class="seg" role="group">
+              <button type="button" data-dir="west" class="active"><span data-i18n="dirWest">東京 → 新大阪</span></button>
+              <button type="button" data-dir="east"><span data-i18n="dirEast">新大阪 → 東京</span></button>
+            </div>
+          </div>
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelBoard">乗車駅</span>
+            <select id="boardStation" class="board-select"></select>
+          </div>
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelDeparture">出発時刻</span>
+            <div class="depart-wrap">
+              <input type="time" id="departTime">
+              <button type="button" class="chip-btn" id="nowBtn" data-i18n="btnNow">これから乗る</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">この時間の列車をさがす</button>
+          <div class="train-results" id="trainResults" hidden></div>
         </div>
-        <dl class="guide-fact-grid">
-          <div><dt>Best-known view</dt><dd>Mt. Fuji</dd><p>Watch around Mishima to Shin-Fuji.</p></div>
-          <div><dt>Also along the route</dt><dd>37 views</dd><p>From Tokyo to Shin-Osaka.</p></div>
-          <div><dt>Best use</dt><dd>Before boarding</dd><p>Pick a train and keep the timeline ready.</p></div>
-        </dl>
-      </section>
-      <section class="spot-page-section guide-featured-panel">
-        <div class="guide-section-head">
-          <h2>Views worth looking up for</h2>
-          <p>These views last only seconds or minutes. That is why the timing matters.</p>
-        </div>
-        <div class="guide-visual-grid"><a class="guide-visual-card" href="spots/fuji.html">
-          <img src="../images/thumbs/20210218_fuji_rumireport.webp" alt="Mt. Fuji from the Shinkansen window" loading="lazy" decoding="async">
-          <span>Mishima → Shin-Fuji</span>
-          <strong>Mt. Fuji</strong>
-          <em>Japan's famous three minutes.</em>
-        </a><a class="guide-visual-card" href="spots/hamanako.html">
-          <img src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="Lake Hamana from the Shinkansen window" loading="lazy" decoding="async">
-          <span>Hamamatsu → Toyohashi</span>
-          <strong>Lake Hamana</strong>
-          <em>The train runs over the water.</em>
-        </a><a class="guide-visual-card" href="spots/solar-ark.html">
-          <img src="../images/thumbs/20251212_solar_ark_2_letus10.webp" alt="Solar Ark from the Shinkansen window" loading="lazy" decoding="async">
-          <span>Nagoya → Gifu-Hashima</span>
-          <strong>Solar Ark</strong>
-          <em>A solar ship, soon to disappear.</em>
-        </a><a class="guide-visual-card" href="spots/torikai-train-depot.html">
-          <img src="../images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="Torikai Train Depot from the Shinkansen window" loading="lazy" decoding="async">
-          <span>Kyoto → Shin-Osaka</span>
-          <strong>Torikai Train Depot</strong>
-          <em>Rows of Shinkansen at rest.</em>
-        </a></div>
-      </section>
-      <section class="spot-page-section guide-beyond-panel">
-        <h2>Plan the window side before you ride</h2>
-        <p>Use the train search to build a timed window guide, or open the Live Guide while riding.</p>
-        <div class="spot-page-actions">
-          <a class="btn btn-primary" href="../index.html?lang=en#journey">Build my timed guide</a>
-          <a class="btn btn-ghost" href="../live/index.html?lang=en">Open Live Guide</a>
-          <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
-        </div>
-      </section>
-    </article>
-  </main>
+      </div>
+
+      <div class="journey-timeline-pane">
+        <section class="section" id="timelineSection" hidden>
+          <div class="timeline-preview-banner" id="timelinePreviewBanner">
+            <strong data-i18n="previewBannerTitle">これはサンプルです</strong>
+            <span data-i18n="previewBannerBody">左のフォームで列車を選ぶと、あなたの列車に合わせたタイムラインに切り替わります。</span>
+          </div>
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="tlEyebrow">WINDOW TIMELINE</p>
+            <h2 id="tlTitle">—</h2>
+            <p class="section-sub" data-i18n="tlSub">時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。</p>
+          </div>
+          <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
+            <div class="timeline-filter-group" role="group" aria-label="お気に入り・座席側">
+              <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">すべて</button>
+              <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ お気に入り</button>
+              <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
+              <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">E席</button>
+            </div>
+            <div class="timeline-filter-group" role="group" aria-label="時間帯">
+              <button type="button" data-timeline-filter="day" data-i18n="fDay">昼景</button>
+              <button type="button" data-timeline-filter="night" data-i18n="fNight">夜景</button>
+            </div>
+            <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
+              <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
+              <button type="button" data-timeline-filter="nature" data-i18n="fNature">自然</button>
+              <button type="button" data-timeline-filter="history" data-i18n="fHistory">歴史</button>
+              <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">工業</button>
+              <button type="button" data-timeline-filter="sign" data-i18n="fSign">看板</button>
+              <button type="button" data-timeline-filter="city" data-i18n="fCity">街並</button>
+            </div>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Live next-up banner ===== -->
+  <div class="nextup" id="nextup" hidden>
+    <div class="nextup-pulse" aria-hidden="true"></div>
+    <div class="nextup-body">
+      <p class="nextup-label" data-i18n="nextupLabel">つぎの車窓</p>
+      <p class="nextup-name" id="nextupName">—</p>
+    </div>
+    <div class="nextup-count" id="nextupCount">—</div>
+  </div>
+
+  <!-- ===== Footer ===== -->
+  <section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head">
+      <p class="eyebrow">MORE TO TRY</p>
+      <h2 id="contentRailTitle">More ways to enjoy the window</h2>
+    </div>
+    <div class="content-rail">
+      <a class="content-rail-card" href="en/guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FAQ</small><strong>Mt. Fuji FAQ</strong><span>Check the timing, seat side, and what to expect on cloudy days.</span></span></a>
+      <a class="content-rail-card" href="en/mieru.html">
+        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>FORECAST</small>
+          <strong>Mt. Fuji Visibility Beta</strong>
+          <span>Check how likely Mt. Fuji is to appear in today's sky.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/sumie.html">
+        <img src="images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>Ink-Wash Window</strong>
+          <span>See the Tokaido Shinkansen window as a quiet ink-wash journey.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/somato.html">
+        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>Window Revue</strong>
+          <span>Take a short journey through real window photographs.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/journal.html">
+        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>JOURNAL</small>
+          <strong>Window Medal Book</strong>
+          <span>Record each view with Window Stamps and medals.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/lp.html">
+        <img src="images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>GUIDE</small>
+          <strong>About Shinkansen Window</strong>
+          <span>See how the guide works in 30 seconds.</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="en/references.html">
+        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>LINKS</small>
+          <strong>Window View Links</strong>
+          <span>Browse sources and useful articles about the route.</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="en/contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>Contact</strong><span>Send a photo, suggest a correction, or share feedback.</span></span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-brand"><span data-i18n="brandName">新幹線の窓</span> <span data-i18n="brandSub">旅の瞬間を見逃さない</span></p>
+    <p data-i18n="footerNote">Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early.</p>
+    <p class="footer-links"><a href="en/guide.html" data-guide-nav data-i18n="footerGuide">How to See Mt. Fuji</a> · <a href="en/references.html" data-i18n="footerReferences">Window View Links</a> · <a href="en/mieru.html" data-i18n="footerMieru">Mt. Fuji Visibility Beta</a> · <a href="en/sumie.html" data-i18n="footerSumie">Ink-Wash Window</a> · <a href="en/somato.html" data-i18n="footerSomato">Window Revue</a> · <a href="en/contact.html" data-contact-nav data-i18n="footerContact">Contact</a> · <a href="en/privacy.html" data-i18n="footerPrivacy">Privacy Policy</a></p>
+    <p class="footer-credit" data-i18n="footerCredit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+  </footer>
+
+  <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
+  <script src="data.js?v=20260726-contact-methods"></script>
+  <script src="track.js?v=20260707-map-mode-switch"></script>
+  <script src="spot-map.js?v=20260718-android-leaflet"></script>
+  <script src="app.js?v=20260726-contact-methods"></script>
 </body>
 </html>

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "72bdb71c90c27fb5",
-  "generatedAt": "2026-07-25T22:48:33.309Z",
+  "contentVersion": "1cb958a05efe569b",
+  "generatedAt": "2026-07-26T04:03:03.560Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -947,8 +947,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 115,
-    "bytes": 4536608,
+    "itemCount": 120,
+    "bytes": 4704868,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -1609,6 +1609,36 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/250111_hamanako_fuji_proboffin.webp",
         "bytes": 36808,
         "sha256": "9fe28c6d6b2ae0756dd3205956f33ae260e5430f261e7dd68c51037c0e2d1186"
+      },
+      {
+        "path": "images/thumbs/content-contact.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/content-contact.webp",
+        "bytes": 57600,
+        "sha256": "a5266334372e9d78d57302e2de2fc3c5b165da700ec66e7269365d0bb0f85b50"
+      },
+      {
+        "path": "images/thumbs/content-faq.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/content-faq.webp",
+        "bytes": 42954,
+        "sha256": "cc03fd441e359d5d9ee78ccd9f2937c7c9cf0ea8c15468626f51534d969ea28e"
+      },
+      {
+        "path": "images/thumbs/content-mieru.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/content-mieru.webp",
+        "bytes": 23036,
+        "sha256": "4ce9650b0e1e8c4199d1c68dfad15e2743f1ee0ec0a1ed693d1d7fee3328878f"
+      },
+      {
+        "path": "images/thumbs/content-somato.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/content-somato.webp",
+        "bytes": 27450,
+        "sha256": "51e01224cf26e38a49e27ea8e083f52b9374542a5001a8081744b442b1153685"
+      },
+      {
+        "path": "images/thumbs/content-sumie.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/content-sumie.webp",
+        "bytes": 17220,
+        "sha256": "4217f118ff12bd354f37b9d5b009b1a972af612509d49abbd6d1486642194d85"
       },
       {
         "path": "images/thumbs/mado-icon-192.webp",

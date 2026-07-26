@@ -3,10 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>車窓メダル帖 | 新幹線の窓</title>
-  <meta name="description" content="東海道新幹線の車窓で見つけた景色を、スタンプとメダルで記録できる車窓メダル帖です。">
-  <meta name="theme-color" content="#101c2c">
+  <script src="language-router.js?v=20260726-language-choice"></script>
   <link rel="canonical" href="https://www.michikusa-travel.com/journal.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/journal.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/journal.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/journal.html">
+  <title>車窓メダル帖 | 新幹線の窓</title>
+  <meta name="description" content="駅スタンプを集めるように、東海道新幹線の車窓で見つけた富士山、城、看板など37景をスタンプとメダルで記録できる車窓メダル帖です。">
+  <meta name="theme-color" content="#101c2c">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -50,7 +54,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260724-content-ui">
+  <link rel="stylesheet" href="style.css?v=20260726-contact-methods">
 </head>
 <body class="journal-page">
   <header class="topbar">
@@ -62,12 +66,24 @@
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="index.html" data-i18n="navQuick">TOP</a>
       <a href="index.html#journey" data-i18n="navStart">列車選択</a>
-      <a href="live/index.html" data-live-nav data-i18n="navLive">ライブガイド</a>
+      <a href="live/index.html" data-i18n="navLive">ライブガイド</a>
       <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
-      <a href="guide.html" data-guide-nav data-i18n="navFaq">FAQ</a>
+      <a class="top-nav-overflow" href="guide.html" data-i18n="navFaq">FAQ</a>
       <a href="journal.html" data-i18n="navMedals" aria-current="page">メダル帖</a>
+      <details class="top-nav-more">
+        <summary data-i18n="navMore">もっと見る</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-compact" href="guide.html" data-i18n="navFaq">FAQ</a>
+          <a href="lp.html" data-i18n="navLp">新幹線の窓とは</a>
+          <a href="mieru.html" data-i18n="navMieru">見える予報β</a>
+          <a href="sumie.html" data-i18n="navSumie">墨絵車窓</a>
+          <a href="somato.html" data-i18n="navSomato">車窓走馬灯</a>
+          <a href="references.html" data-i18n="navRefs">リンク集</a>
+          <a href="contact.html" data-contact-nav data-i18n="navContact">お問い合わせ</a>
+          <a href="privacy.html" data-i18n="navPrivacy">プライバシーポリシー</a>
+        </div>
+      </details>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
       <button type="button" data-lang="ja">日本語</button>
@@ -80,32 +96,96 @@
       <div class="section-head">
         <p class="eyebrow" data-i18n="memEyebrow">YOUR JOURNAL</p>
         <h1 data-i18n="memTitle">車窓メダル帖</h1>
-        <p class="section-sub" data-i18n="memSub">「見えた!」を押すと、旅のメダルが育ちます。</p>
-      </div>
-      <div class="journal-guide">
-        <strong data-i18n="journalGuideTitle">メダルは進捗、スタンプは記録</strong>
-        <span data-i18n="journalGuideBody">見つけた景色が下のスタンプに残り、<br>その集まりでメダルが育ちます。</span>
+        <p class="section-sub" data-i18n="memSub">車窓をチェックすると、メダルが育ちます。</p>
+        <p class="journal-intro" data-i18n="journalIntro">駅スタンプを集めるように、東海道新幹線の窓から見つけた景色を「車窓スタンプ」として残せます。</p>
       </div>
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
-      <h2 class="stamp-heading" data-i18n="stampHeading">スタンプ</h2>
+      <h2 class="stamp-heading" data-i18n="stampHeading">すべてのスタンプ</h2>
       <div class="stampboard" id="stampboard"></div>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">スタンプをリセット</button>
       </div>
     </section>
   </main>
+  <div class="journal-modal" id="journalModal" hidden>
+    <button type="button" class="journal-modal-backdrop" data-journal-close aria-label="閉じる"></button>
+    <section class="journal-modal-panel" role="dialog" aria-modal="true" aria-labelledby="journalModalTitle">
+      <button type="button" class="journal-modal-close" data-journal-close aria-label="閉じる">×</button>
+      <div class="journal-modal-content" id="journalModalContent"></div>
+    </section>
+  </div>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head">
+      <p class="eyebrow">MORE TO TRY</p>
+      <h2 id="contentRailTitle">車窓をもっと楽しむ</h2>
+    </div>
+    <div class="content-rail">
+      <a class="content-rail-card" href="guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FAQ</small><strong>富士山FAQ</strong><span>見える時刻、座席側、曇りの日の答えを確認。</span></span></a>
+      <a class="content-rail-card" href="mieru.html">
+        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>FORECAST</small>
+          <strong>見える予報β</strong>
+          <span>今日の空で富士山が見えそうかを確認。</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="sumie.html">
+        <img src="images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>墨絵車窓</strong>
+          <span>東海道新幹線の車窓を、静かな墨絵で。</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="somato.html">
+        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>車窓走馬灯</strong>
+          <span>実際の車窓写真で、旅を短くめぐる。</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="journal.html">
+        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>JOURNAL</small>
+          <strong>メダル帖</strong>
+          <span>見つけた景色をスタンプとメダルで記録。</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="lp.html">
+        <img src="images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>GUIDE</small>
+          <strong>新幹線の窓とは</strong>
+          <span>使い方と楽しみ方を30秒で紹介。</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="references.html">
+        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>LINKS</small>
+          <strong>車窓リンク集</strong>
+          <span>出典や参考記事をまとめて読む。</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>お問い合わせ</strong><span>写真提供、情報の訂正、ご感想はこちら。</span></span></a>
+    </div>
+  </section>
 
   <footer class="footer">
     <p class="footer-brand"><span data-i18n="brandName">新幹線の窓</span> <span data-i18n="brandSub">旅の瞬間を見逃さない</span></p>
     <p data-i18n="footerNote">時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>
-    <p class="footer-links"><a href="guide.html" data-guide-nav data-i18n="footerGuide">富士山の見方</a> · <a href="references.html" data-i18n="footerReferences">車窓リンク集</a> · <a href="privacy.html" data-i18n="footerPrivacy">プライバシー</a></p>
+    <p class="footer-links"><a href="guide.html" data-guide-nav data-i18n="footerGuide">富士山の見方</a> · <a href="references.html" data-i18n="footerReferences">車窓リンク集</a> · <a href="contact.html" data-contact-nav data-i18n="footerContact">お問い合わせ</a> · <a href="privacy.html" data-i18n="footerPrivacy">プライバシーポリシー</a></p>
     <p class="footer-credit" data-i18n="footerCredit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
-  <script src="data.js?v=20260724-content-ui"></script>
+  <script src="data.js?v=20260726-contact-methods"></script>
   <script src="track.js?v=20260707-map-mode-switch"></script>
   <script src="spot-map.js?v=20260718-android-leaflet"></script>
-  <script src="app.js?v=20260724-content-ui"></script>
+  <script src="app.js?v=20260726-contact-methods"></script>
 </body>
 </html>

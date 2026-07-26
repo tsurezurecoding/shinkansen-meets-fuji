@@ -219,12 +219,11 @@ function pageUrl(lang, spotId = "") {
 
 function appHref(lang, spotId = "", prefix = "../") {
   const hash = spotId ? `#spot-${spotId}` : "#journey";
-  const query = lang === "en" ? "?lang=en" : "";
-  return `${prefix}index.html${query}${hash}`;
+  return lang === "en" ? `${prefix}en/${hash}` : `${prefix}index.html${hash}`;
 }
 
 function liveHref(lang, prefix = "../") {
-  return `${prefix}live/index.html${lang === "en" ? "?lang=en" : ""}`;
+  return lang === "en" ? `${prefix}en/live/` : `${prefix}live/`;
 }
 
 function languageSwitchHref(lang, spotId) {
@@ -233,7 +232,7 @@ function languageSwitchHref(lang, spotId) {
 
 function siteHeaderHTML(lang, prefix, jaHref, enHref) {
   const ui = UI[lang];
-  const homeHref = `${prefix}index.html${lang === "en" ? "?lang=en" : ""}`;
+  const homeHref = lang === "en" ? `${prefix}en/` : `${prefix}index.html`;
   const jaActive = lang === "ja" ? " active" : "";
   const enActive = lang === "en" ? " active" : "";
   return `<header class="topbar">
@@ -245,18 +244,69 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${homeHref}">${lang === "ja" ? "TOP" : "Home"}</a>
-      <a href="${prefix}index.html${lang === "en" ? "?lang=en" : ""}#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a>
+      <a href="${lang === "en" ? `${prefix}en/#journey` : `${prefix}index.html#journey`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブガイド" : "Live Guide"}</a>
-      <a href="${prefix}zukan.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
-      <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
-      <a href="${prefix}journal.html${lang === "en" ? "?lang=en" : ""}">${lang === "ja" ? "メダル帖" : "Journal"}</a>
+      <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
+      <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+      <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "メダル帖" : "Journal"}</a>
+      <details class="top-nav-more">
+        <summary>${lang === "ja" ? "もっと見る" : "More"}</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+          <a href="${lang === "en" ? `${prefix}en/lp.html` : `${prefix}lp.html`}">${lang === "ja" ? "新幹線の窓とは" : "About this app"}</a>
+          <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "見える予報β" : "Visibility β"}</a>
+          <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
+          <a href="${lang === "en" ? `${prefix}en/somato.html` : `${prefix}somato.html`}">${lang === "ja" ? "車窓走馬灯" : "Window Journey"}</a>
+          <a href="${lang === "en" ? `${prefix}en/references.html` : `${prefix}references.html`}">${lang === "ja" ? "リンク集" : "Links"}</a>
+          <a href="${prefix}${lang === "en" ? "en/" : ""}contact.html">${lang === "ja" ? "お問い合わせ" : "Contact"}</a>
+          <a href="${lang === "en" ? `${prefix}en/privacy.html` : `${prefix}privacy.html`}">${lang === "ja" ? "プライバシーポリシー" : "Privacy Policy"}</a>
+        </div>
+      </details>
     </nav>
     <div class="lang-switch" role="group" aria-label="Language">
-      <a class="${jaActive.trim()}" href="${escapeHTML(jaHref)}">日本語</a>
+      <a class="${jaActive.trim()}" href="${escapeHTML(lang === "en" ? `${jaHref}${jaHref.includes("?") ? "&" : "?"}lang=ja` : jaHref)}">日本語</a>
       <a class="${enActive.trim()}" href="${escapeHTML(enHref)}">EN</a>
     </div>
   </header>`;
+}
+
+function contentRailHTML(lang, prefix) {
+  const guideHref = lang === "en" ? `${prefix}en/?intro=1` : `${prefix}lp.html`;
+  const items = lang === "en" ? [
+    { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "Mt. Fuji FAQ", desc: "Check the timing, seat side and cloudy-day answers." },
+    { href: `${prefix}en/mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today." },
+    { href: `${prefix}en/sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "Sumie Window", desc: "Ride the route as a quiet ink-painting window." },
+    { href: `${prefix}en/somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "Window Journey", desc: "Let real window photos flow past like a short trip." },
+    { href: `${prefix}en/journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride." },
+    { href: guideHref, img: "images/thumbs/og-shinkansen-window.webp", label: "GUIDE", title: "About this app", desc: "See how to use and enjoy it in 30 seconds." },
+    { href: `${prefix}en/references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips." },
+    { href: `${prefix}en/contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "Contact", desc: "Send photo suggestions, corrections or feedback." },
+  ] : [
+    { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "富士山FAQ", desc: "見える時刻、座席側、曇りの日の答えを確認。" },
+    { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "見える予報β", desc: "今日の空で富士山が見えそうかを確認。" },
+    { href: `${prefix}sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。" },
+    { href: `${prefix}somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。" },
+    { href: `${prefix}journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "メダル帖", desc: "見つけた景色をスタンプとメダルで記録。" },
+    { href: guideHref, img: "images/thumbs/og-shinkansen-window.webp", label: "GUIDE", title: "新幹線の窓とは", desc: "使い方と楽しみ方を30秒で紹介。" },
+    { href: `${prefix}references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。" },
+    { href: `${prefix}contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。" },
+  ];
+  return `<section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head">
+      <p class="eyebrow">${lang === "en" ? "MORE TO TRY" : "MORE TO TRY"}</p>
+      <h2 id="contentRailTitle">${lang === "en" ? "More ways to enjoy the window" : "車窓をもっと楽しむ"}</h2>
+    </div>
+    <div class="content-rail">
+${items.map((item) => `      <a class="content-rail-card" href="${item.href}">
+        <img src="${prefix}${item.img}" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>${item.label}</small>
+          <strong>${item.title}</strong>
+          <span>${item.desc}</span>
+        </span>
+      </a>`).join("\n")}
+    </div>
+  </section>`;
 }
 
 function analyticsSnippet() {
@@ -853,8 +903,9 @@ function spotPageHTML(spot, lang) {
   <link rel="canonical" href="${url}">
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
-  <link rel="alternate" hreflang="x-default" href="${pageUrl("ja", spot.id)}">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260726-metadata-fix">
+  <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
+  <script src="${prefix}language-router.js?v=20260726-language-choice"></script>
+  <link rel="stylesheet" href="${prefix}style.css?v=20260726-medal-simple">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${absoluteImageUrl(spot)}">
@@ -908,6 +959,7 @@ ${explainerBlock}${articleImageBlock}${sharedGuideBlock}      ${miniMap}
         <a class="btn btn-ghost" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.searchCta)}</a>
       </div>
     </article>
+    ${contentRailHTML(lang, prefix)}
   </main>
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
 </body>
@@ -951,7 +1003,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260726-metadata-fix">
+  <link rel="stylesheet" href="../style.css?v=20260726-medal-simple">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -973,8 +1025,8 @@ function englishIndexHTML() {
       <h1>Do not miss the view from your Shinkansen window.</h1>
       <p class="spot-page-lead">${escapeHTML(UI.en.homeLead)}</p>
       <div class="spot-page-actions spot-page-actions-top">
-        <a class="btn btn-primary" href="../index.html?lang=en#journey">Find your train</a>
-        <a class="btn btn-ghost" href="../zukan.html?lang=en">Browse the field guide</a>
+        <a class="btn btn-primary" href="./#journey">Find your train</a>
+        <a class="btn btn-ghost" href="zukan.html">Browse the field guide</a>
       </div>
       <section class="spot-page-section guide-answer-panel" aria-label="Quick Shinkansen window guide">
         <div class="guide-answer-copy">
@@ -998,8 +1050,8 @@ function englishIndexHTML() {
         <h2>Plan the window side before you ride</h2>
         <p>Use the train search to build a timed window guide, or open the Live Guide while riding.</p>
         <div class="spot-page-actions">
-          <a class="btn btn-primary" href="../index.html?lang=en#journey">Build my timed guide</a>
-          <a class="btn btn-ghost" href="../live/index.html?lang=en">Open Live Guide</a>
+          <a class="btn btn-primary" href="./#journey">Build my timed guide</a>
+          <a class="btn btn-ghost" href="live/">Open Live Guide</a>
           <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
         </div>
       </section>
@@ -1010,16 +1062,66 @@ function englishIndexHTML() {
 `;
 }
 
+function englishAppIndexHTML() {
+  const railCopy = [
+    ["車窓メダル帖", "Window Medal Book"],
+    ["新幹線の窓とは？", "About Shinkansen Window"],
+    ["車窓をもっと楽しむ", "More ways to enjoy the window"],
+    ["富士山FAQ", "Mt. Fuji FAQ"],
+    ["見える時刻、座席側、曇りの日の答えを確認。", "Check the timing, seat side, and what to expect on cloudy days."],
+    ["見える予報β", "Mt. Fuji Visibility Beta"],
+    ["今日の空で富士山が見えそうかを確認。", "Check how likely Mt. Fuji is to appear in today's sky."],
+    ["墨絵車窓", "Ink-Wash Window"],
+    ["東海道新幹線の車窓を、静かな墨絵で。", "See the Tokaido Shinkansen window as a quiet ink-wash journey."],
+    ["車窓走馬灯", "Window Revue"],
+    ["実際の車窓写真で、旅を短くめぐる。", "Take a short journey through real window photographs."],
+    ["メダル帖", "Window Medal Book"],
+    ["見つけた景色をスタンプとメダルで記録。", "Record each view with Window Stamps and medals."],
+    ["新幹線の窓とは", "About Shinkansen Window"],
+    ["使い方と楽しみ方を30秒で紹介。", "See how the guide works in 30 seconds."],
+    ["車窓リンク集", "Window View Links"],
+    ["出典や参考記事をまとめて読む。", "Browse sources and useful articles about the route."],
+    ["お問い合わせ", "Contact"],
+    ["写真提供、情報の訂正、ご感想はこちら。", "Send a photo, suggest a correction, or share feedback."],
+    ["富士山の見方", "How to See Mt. Fuji"],
+    ["プライバシーポリシー", "Privacy Policy"],
+    ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
+  ];
+  const railRoutes = ["guide", "mieru", "sumie", "somato", "journal", "lp", "references", "contact", "privacy"];
+  let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
+    .replace('<html lang="ja">', '<html lang="en">')
+    .replace(
+      '<meta name="viewport" content="width=device-width, initial-scale=1">',
+      '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">'
+    )
+    .replace(/<title>[^<]*<\/title>/, '<title>Shinkansen Window | Tokaido Shinkansen View Times and Seat Side</title>')
+    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Choose your train to see when and which side to watch for Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and 37 Tokaido Shinkansen window views.">')
+    .replace('<link rel="canonical" href="https://www.michikusa-travel.com/">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/">')
+    .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="Shinkansen Window | Never miss the view">')
+    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for Mt. Fuji and 37 views from the Tokaido Shinkansen.">')
+    .replace('<meta property="og:url" content="https://www.michikusa-travel.com/">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/">')
+    .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="Shinkansen Window | Never miss the view">')
+    .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="Find the time and seat side for Mt. Fuji and 37 Tokaido Shinkansen window views.">')
+    .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
+    .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
+    .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
+  railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
+  railRoutes.forEach((route) => {
+    html = html.replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
+  });
+  return html;
+}
+
 function guideHTML(lang) {
   const ui = UI[lang];
   const prefix = lang === "ja" ? "" : "../";
   const guideUrl = lang === "ja" ? `${siteRoot}/guide.html` : `${siteRoot}/en/guide.html`;
-  const appUrl = lang === "ja" ? "index.html#journey" : "../index.html?lang=en#journey";
+  const appUrl = lang === "ja" ? "index.html#journey" : "./#journey";
   const otherUrl = lang === "ja" ? "en/guide.html" : "../guide.html";
   const questions = ui.guideQuestions.map((item) => {
     const href = lang === "ja"
       ? item.link
-      : (item.link.startsWith("index") ? `../index.html?lang=en#gallery` : `../${item.link}`);
+      : (item.link.startsWith("index") ? `./#gallery` : `../${item.link}`);
     return `<article class="faq-card">
         <h2>${escapeHTML(item.q)}</h2>
         <p>${escapeHTML(item.a)} <a href="${escapeHTML(href)}">${escapeHTML(item.linkText)}</a></p>
@@ -1072,8 +1174,8 @@ function guideHTML(lang) {
         <h2>${escapeHTML(ui.guideBeyondTitle)}</h2>
         <p>${escapeHTML(ui.guideBeyondBody)}</p>
         <div class="spot-page-actions">
-          <a class="btn btn-primary" href="../index.html?lang=en#gallery">Browse timed window views</a>
-          <a class="btn btn-ghost" href="../index.html?lang=en#journey">Find your train</a>
+          <a class="btn btn-primary" href="./#gallery">Browse timed window views</a>
+          <a class="btn btn-ghost" href="./#journey">Find your train</a>
         </div>
       </section>
 ` : "";
@@ -1088,7 +1190,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260726-metadata-fix">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260726-medal-simple">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1128,14 +1230,23 @@ function sitemapXML() {
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
     { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly" },
+    { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
+    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily" },
+    { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
+    { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/contact.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/privacy.html`, priority: "0.3", changefreq: "yearly" },
+    { loc: `${siteRoot}/en/privacy.html`, priority: "0.3", changefreq: "yearly" },
   ];
   const spotUrls = SPOTS.flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
@@ -1164,7 +1275,8 @@ for (const lang of ["ja", "en"]) {
 }
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
-fs.writeFileSync(path.join(appDir, "en", "index.html"), englishIndexHTML(), "utf8");
+fs.writeFileSync(path.join(appDir, "en", "index.html"), englishAppIndexHTML(), "utf8");
+await import("./generate-language-mirrors.mjs");
 // guide.html and en/guide.html are hand-edited SEO answer pages.
 // Do not regenerate them from the older lightweight template here.
 fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");

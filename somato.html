@@ -5,7 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>車窓走馬灯 — 写真でめぐる東京—新大阪 | 新幹線の窓</title>
 <meta name="description" content="東海道新幹線の実際の車窓写真が、走馬灯のように流れていく鑑賞ページ。A席の写真は左に、E席の写真は右に。東京から新大阪まで147分の旅を数分で。">
-<link rel="canonical" href="https://www.michikusa-travel.com/somato.html">
+  <link rel="canonical" href="https://www.michikusa-travel.com/somato.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/somato.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/somato.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/somato.html">
+  <script src="language-router.js?v=20260726-language-choice"></script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html,body { width:100%; height:100%; overflow:hidden; background:#141218;
@@ -82,9 +86,11 @@
     color:#ece3d0; opacity:0; transition:opacity 1.4s ease; max-width:60vw; }
   #caption .sub { font-size:.72em; color:#9a9184; margin-left:14px; letter-spacing:.18em; }
 
-  #home { position:fixed; left:32px; top:24px; z-index:7;
-    font-size:11px; letter-spacing:.3em; color:#8d8578; text-decoration:none; }
-  #home:hover { color:#b3272d; }
+  #topleft { position:fixed; left:32px; top:24px; z-index:7;
+    display:flex; align-items:baseline; gap:14px; }
+  #home, #langLink { font-size:11px; letter-spacing:.3em; color:#8d8578; text-decoration:none; }
+  #home:hover, #langLink:hover { color:#b3272d; }
+  #langLink { border-left:1px solid rgba(141,133,120,.4); padding-left:14px; letter-spacing:.1em; }
   #dayLink { position:fixed; right:36px; bottom:96px; z-index:6;
     font-size:11px; letter-spacing:.25em; color:#8d8578; text-decoration:none; }
   #dayLink:hover { color:#b3272d; }
@@ -102,8 +108,12 @@
   #speed input { width:120px; accent-color:#b3272d; cursor:pointer;
     background:transparent; }
 
-  #hint { position:fixed; left:32px; bottom:44px; z-index:4; pointer-events:none;
+  /* 左下は詞書が占めるため、下部中央へ置く */
+  #hint { position:fixed; left:50%; transform:translateX(-50%); bottom:44px; z-index:4;
+    pointer-events:none; text-align:center; max-width:min(56vw,560px);
     font-size:10px; letter-spacing:.4em; color:#8d8578; transition:opacity 3s ease; }
+  /* 狭い画面では収まらないので導入文は省く */
+  @media (max-width:700px), (max-height:620px) { #hint { display:none; } }
 
   #intro { position:fixed; inset:0; z-index:20; background:#141218;
     display:flex; align-items:center; justify-content:center;
@@ -141,7 +151,10 @@
   <div id="sSect"></div>
   <div id="sMin"></div>
 </div>
-<a id="home" href="index.html">← 新幹線の窓</a>
+<div id="topleft">
+  <a id="home" href="index.html">← 新幹線の窓</a>
+  <a id="langLink" href="en/somato.html" hreflang="en" lang="en">EN</a>
+</div>
 <a id="dayLink" href="sumie.html">絵で行くなら — 墨絵車窓</a>
 <div id="caption"></div>
 <div id="route" title="クリックでその位置へ"><div class="line"></div><div id="train"></div></div>
@@ -149,7 +162,7 @@
 <div id="hint">実際の車窓写真が流れます ・ A席は左に E席は右に ・ 下の路線をクリックでその位置へ</div>
 <div id="fin"></div>
 
-<script src="data.js?v=20260724-content-ui"></script>
+<script src="data.js?v=20260726-contact-methods"></script>
 <script>
 (function(){
 "use strict";

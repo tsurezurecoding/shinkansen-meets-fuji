@@ -14,7 +14,12 @@
       localStorage.setItem("mado-lang", urlLang);
       return urlLang;
     }
-    return localStorage.getItem("madoLive.lang") || localStorage.getItem("mado-lang") || "ja";
+    if (/\/en\/live(?:\/|\/index\.html)$/.test(window.location.pathname)) {
+      localStorage.setItem("madoLive.lang", "en");
+      localStorage.setItem("mado-lang", "en");
+      return "en";
+    }
+    return "ja";
   }
 
   var STR = {
@@ -27,6 +32,13 @@
       navBrowse: "車窓図鑑",
       navFaq: "FAQ",
       navMedals: "メダル帖",
+      navMore: "もっと見る",
+      navMieru: "見える予報β",
+      navSumie: "墨絵車窓",
+      navSomato: "車窓走馬灯",
+      navRefs: "リンク集",
+      navLp: "30秒でわかる",
+      navPrivacy: "プライバシーポリシー",
       appTitle: "ライブガイド",
       waiting: "GPS待機中",
       locating: "測位中…",
@@ -102,6 +114,13 @@
       navBrowse: "Field Guide",
       navFaq: "FAQ",
       navMedals: "Journal",
+      navMore: "More",
+      navMieru: "Visibility β",
+      navSumie: "Sumie Window",
+      navSomato: "Window Journey",
+      navRefs: "Links",
+      navLp: "30 sec guide",
+      navPrivacy: "Privacy",
       appTitle: "Live Guide",
       waiting: "Waiting for GPS",
       locating: "Locating…",
@@ -1227,15 +1246,32 @@
   }, 1000);
 
   function updateChromeLinks() {
-    var suffix = state.lang === "en" ? "?lang=en" : "";
-    var links = {
-      home: "../index.html" + suffix,
-      journey: "../index.html" + suffix + "#journey",
-      live: "index.html" + suffix,
-      zukan: "../zukan.html" + suffix,
-      faq: state.lang === "en" ? "../en/guide.html" : "../guide.html",
-      memories: "../journal.html" + suffix,
-      privacy: "../privacy.html" + suffix,
+    var links = state.lang === "en" ? {
+      home: "../",
+      journey: "../#journey",
+      live: "./",
+      zukan: "../zukan.html",
+      faq: "../guide.html",
+      memories: "../journal.html",
+      lp: "../lp.html",
+      mieru: "../mieru.html",
+      sumie: "../sumie.html",
+      somato: "../somato.html",
+      references: "../references.html",
+      privacy: "../privacy.html",
+    } : {
+      home: "../index.html",
+      journey: "../index.html#journey",
+      live: "./",
+      zukan: "../zukan.html",
+      faq: "../guide.html",
+      memories: "../journal.html",
+      lp: "../lp.html",
+      mieru: "../mieru.html",
+      sumie: "../sumie.html",
+      somato: "../somato.html",
+      references: "../references.html",
+      privacy: "../privacy.html",
     };
     document.querySelectorAll("[data-live-link]").forEach(function (link) {
       var key = link.getAttribute("data-live-link");
@@ -1318,8 +1354,13 @@
     button.addEventListener("click", function () {
       var nextLang = button.getAttribute("data-live-lang");
       if (nextLang === state.lang) return;
-      state.lang = nextLang;
-      applyLang();
+      try {
+        localStorage.setItem("madoLive.lang", nextLang);
+        localStorage.setItem("mado-lang", nextLang);
+      } catch (error) {}
+      location.href = nextLang === "en"
+        ? new URL("../en/live/", document.baseURI).href
+        : new URL("../../live/", document.baseURI).href;
     });
   });
   document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);
