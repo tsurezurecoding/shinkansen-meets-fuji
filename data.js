@@ -2363,7 +2363,7 @@ const SPOTS = [
     en: { name: "Kiyosu Castle", area: "Nagoya → Gifu-Hashima", hook: "Nobunaga's trackside castle.", story: "A few minutes out of Nagoya, Kiyosu Castle appears startlingly close to the line, its red-railed white keep coming into view. This was Oda Nobunaga's base and the castle from which he set out for the pivotal Battle of Okehazama. It is also where, after his death, the famous 1582 Kiyosu Conference decided his succession. The original was decommissioned in the early Edo period when its functions moved to Nagoya Castle; today's white-and-vermilion keep was rebuilt in 1989 as a modern reconstruction. Even so, this is arguably the closest the Shinkansen ever runs to a castle in Japan." },
     pageTitle: {
       ja: "新幹線から見える清洲城｜3秒で撮る「清洲城チャレンジ」 | 新幹線の窓",
-      en: "Kiyosu Castle from the Shinkansen | The 3-Second \"Kiyosu Castle Challenge\"",
+      en: "Kiyosu Castle from the Shinkansen | Seat Side, Timing and Photo Tips",
     },
     pageHeading: {
       ja: "名古屋を出て数分、E席側に清洲城が見える",
@@ -2375,7 +2375,7 @@ const SPOTS = [
     },
     metaDescription: {
       ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守が清洲城です。見えるのは約3秒。走行中に撮る「清洲城チャレンジ」の狙い方を上り・下り別に、目印とタイミング、カメラ設定まで解説。織田信長の本拠・清洲会議の舞台としての歴史もまとめました。",
-      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — in view for only about three seconds. How to win the \"Kiyosu Castle challenge\" of photographing it from a moving train: cues and timing for both directions, plus camera settings, and its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
+      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — in view for only about three seconds. Which seat to take, what to watch for in each direction, and how to photograph it from a moving train, plus its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
     },
     sectionHeading: {
       ja: "清洲城はどんな城？",
@@ -2405,7 +2405,7 @@ const SPOTS = [
     photoTip: {
       heading: {
         ja: "「清洲城チャレンジ」——3秒で撮るには",
-        en: "The \"Kiyosu Castle challenge\": catching it in three seconds",
+        en: "How to get the shot in three seconds",
       },
       ja: [
         "走行中の車内から清洲城を撮ることは「清洲城チャレンジ」と呼ばれ、何度も挑む人がいます。難しい理由ははっきりしていて、見えているのが約3秒しかないうえ、線路との距離が近いぶん流れが速く、気づいてから構えたのでは間に合わないからです。城が見えてからカメラを出すのではなく、見える前から構えて待つ——これが唯一のコツと言っていいくらいです。",
@@ -2414,7 +2414,7 @@ const SPOTS = [
         "設定は、シャッター速度を上げる（目安1/1000秒）か連写にしておくと、流れる景色でも天守を止めて写せます。ガラスの反射はレンズを窓に近づけるとかなり消えます。なお車内から窓越しに撮るぶんには問題ありませんが、デッキや通路で立ち止まっての撮影は他のお客さんの通行を妨げるので避けてください。",
       ],
       en: [
-        "Photographing Kiyosu Castle from a moving train is a small self-imposed sport in Japan, known as the \"Kiyosu Castle challenge\", and people attempt it again and again. The reason it is hard is simple: the castle is in view for only about three seconds, and because it sits so close to the line it sweeps past fast. If you wait until you see it, you have already missed it. The one real trick is to be aimed and waiting before it appears.",
+        "Getting a clean photo of Kiyosu Castle from a moving train is genuinely hard, and for a specific reason: it is in view for only about three seconds, and because it sits so close to the line it sweeps past fast. If you wait until you see it, you have already missed it. The one real trick is to be aimed and waiting before it appears. Japanese train fans attempt this often enough that they have a name for it — the \"Kiyosu Castle challenge\".",
         "Southbound (Tokyo → Shin-Osaka), get ready at the north-side window as soon as you leave Nagoya. Your cue is the Kirin Beer Nagoya Factory: once its row of giant silver tanks fills the window, Kiyosu Castle is next. It comes roughly three minutes after leaving Nagoya, so once the tanks have passed, hold your aim and count.",
         "Northbound (Shin-Osaka → Tokyo) the order reverses — the castle comes first, then the Kirin factory. Your earlier marker is the Solar Ark, about four minutes ahead. The castle arrives slightly before the Nagoya arrival announcement, so do not use the announcement as your cue or you will be late. Be ready while the train is still at speed, before it starts slowing.",
         "For settings, raise the shutter speed (around 1/1000s) or shoot a burst, and you can freeze the keep even at full speed. Pressing the lens close to the glass removes most of the reflections. Shooting through the window from your seat is fine, but please avoid standing in the vestibules or aisles to shoot, as it blocks other passengers.",
