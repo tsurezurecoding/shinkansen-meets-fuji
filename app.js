@@ -876,6 +876,8 @@ function shouldShowEnglishLandingPrompt() {
 
 function showEnglishLandingPrompt() {
   if (!shouldShowEnglishLandingPrompt()) return;
+  // language-router.js が全日本語ページで同じ案内を出すようになったため、二重に出さない
+  if (document.querySelector(".lang-landing-prompt")) return;
   const prompt = document.createElement("aside");
   prompt.className = "lang-landing-prompt";
   prompt.setAttribute("aria-label", "English version");
