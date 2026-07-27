@@ -394,6 +394,18 @@ function defaultOgImageUrl() {
   return `${siteRoot}/images/og-shinkansen-window.png`;
 }
 
+function isOwnPhotoSrc(src) {
+  return typeof src === "string" && /michikusa/i.test(src);
+}
+
+function spotOgImageUrl(spot) {
+  if (spot.ogImage) return `${siteRoot}/${spot.ogImage}`;
+  if (isOwnPhotoSrc(spot.image)) return `${siteRoot}/${spot.image}`;
+  const ownPhoto = (spot.photos || []).find((p) => isOwnPhotoSrc(p?.src));
+  if (ownPhoto) return `${siteRoot}/${ownPhoto.src}`;
+  return defaultOgImageUrl();
+}
+
 function sideLabel(spot, lang) {
   const ui = UI[lang];
   if (spot.id === "hamanako") return ui.hamanakoSide;
@@ -1108,7 +1120,7 @@ function spotPageHTML(spot, lang) {
         "name": data.name,
         "alternateName": localized(spot[otherLang], "name") || spot[otherLang]?.name || spot.ja.name,
         "description": desc,
-        "image": absoluteImageUrl(spot),
+        "image": spotOgImageUrl(spot),
         "touristType": "Railway window view",
       },
     ],
@@ -1126,13 +1138,13 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260726-language-choice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-spot-rail">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-ogp">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
-  <meta property="og:image" content="${absoluteImageUrl(spot)}">
+  <meta property="og:image" content="${spotOgImageUrl(spot)}">
   <meta property="og:url" content="${url}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="${absoluteImageUrl(spot)}">
+  <meta name="twitter:image" content="${spotOgImageUrl(spot)}">
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
 </head>
@@ -1223,7 +1235,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260727-spot-rail">
+  <link rel="stylesheet" href="../style.css?v=20260727-kiyosu-ogp">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1410,7 +1422,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-spot-rail">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-ogp">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

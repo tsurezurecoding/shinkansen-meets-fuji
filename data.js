@@ -2366,16 +2366,16 @@ const SPOTS = [
       en: "Kiyosu Castle from the Shinkansen | Nobunaga's Castle and the Kiyosu Conference",
     },
     pageHeading: {
-      ja: "線路のすぐ横に立つ、信長の清洲城",
-      en: "Nobunaga's Kiyosu Castle, right beside the tracks",
+      ja: "名古屋を出て数分、E席側に清洲城が見える",
+      en: "Kiyosu Castle from Seat E, minutes out of Nagoya",
     },
     pageHeadingChunks: {
-      ja: ["線路のすぐ横に立つ、", "信長の清洲城"],
-      en: ["Nobunaga's Kiyosu Castle,", "right beside the tracks"],
+      ja: ["名古屋を出て数分、", "E席側に清洲城が見える"],
+      en: ["Kiyosu Castle from Seat E,", "minutes out of Nagoya"],
     },
     metaDescription: {
-      ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守は清洲城。織田信長の本拠、桶狭間出陣の地、清洲会議の舞台としての歴史と、現在の模擬天守について解説します。",
-      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — Oda Nobunaga's base, the departure point for the Battle of Okehazama, and site of the 1582 Kiyosu Conference. Learn the history and what today's keep really is.",
+      ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守が清洲城です。見えるのは約3秒。座席側と直前の目印、写真に収めるコツから、織田信長の本拠・清洲会議の舞台としての歴史までまとめました。",
+      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — and it stays in view for only about three seconds. Which seat to take, the cue to watch for, how to photograph it, plus its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
     },
     sectionHeading: {
       ja: "清洲城はどんな城？",
@@ -2386,21 +2386,23 @@ const SPOTS = [
       en: "Kiyosu Castle was first built in the 15th century under the Shiba family, deputy governors of Owari Province, and grew dramatically as the base of Oda Nobunaga during the Sengoku era. From here Nobunaga set out to defeat the invading Imagawa Yoshimoto at the Battle of Okehazama in 1560, sealing his control of Owari. Kiyosu sat at a strategic crossroads between the Tokaido and routes to Mino and Ise provinces, and thrived as a castle town. After Nobunaga's assassination in 1582, the famous Kiyosu Conference — where Hashiba (Toyotomi) Hideyoshi, Shibata Katsuie, Niwa Nagahide and Ikeda Tsuneoki decided his succession and the division of his lands — was held at this castle, a well-known turning point in Japanese history.",
     },
     explainer: {
-      heading: { ja: "今見える天守は、いつの建物？", en: "What is the keep you see today?" },
+      heading: { ja: "今の天守の正体と、3秒を撮る「清洲城チャレンジ」", en: "What today's keep really is — and the 'Kiyosu Castle challenge'" },
       ja: [
         "江戸時代初期の1610年、徳川家康の命で始まった「清洲越し」により、清洲の街と城の機能はまるごと新設の名古屋城下へ移されました。清洲城はこのとき廃城となり、以後、城郭建築は残っていません。現在、五条川のほとりに立つ白と朱の天守は、1989年（平成元年）に清須市が観光・地域振興のために建てた模擬天守です。史実の外観を復元したものではありませんが、鮮やかな色合いと立地の良さから、清須の新しいランドマークになっています。",
         "内部は歴史資料の展示や体験施設になっており、映像や模型で信長・秀吉・家康と清洲の関わりを学ぶことができます。天守と五条川、朱色の大手橋、周辺に整備された「清洲城信長公園」を含めた景観は、桜の季節を中心に地元でも人気です。",
         "新幹線からは、線路のすぐ北側に朱色の欄干と白い壁が突然あらわれるので、事前にE席側の窓を見ておくのがコツ。速度が出ているので数秒ですが、これだけ線路と接近して見える城は東海道新幹線でも珍しく、印象に残ります。",
+        "この短さゆえに、走行中の車内から清洲城を撮ることは「清洲城チャレンジ」と呼ばれ、繰り返し挑む人がいます。難しい理由ははっきりしていて、見えているのがおよそ3秒しかないうえ、線路との距離が近すぎて、気づいてから構えたのでは像が流れてしまうからです。手がかりになるのは、ひとつ手前のキリンビール名古屋工場。E席側に銀色の巨大タンクがずらりと並んだら、その直後が清洲城です。名古屋を出た時点でE席側の窓にカメラを構え、タンク列を合図にすると成功率が上がります。ガラスの反射を抑えるためレンズを窓に近づけ、シャッター速度を上げるか連写にしておくと、流れる景色のなかでも天守を止めて写せます。",
       ],
       en: [
         "In 1610, under Tokugawa Ieyasu's orders, the so-called Kiyosu-goshi ('Kiyosu Move') relocated the entire town and castle functions of Kiyosu to the new Nagoya Castle town. Kiyosu Castle was decommissioned then, and no castle-era buildings survive. The white-and-vermilion keep you see today beside the Gojo River is a modern reconstruction, built by Kiyosu City in 1989 for tourism and civic revitalization. It is not a faithful restoration of the historical keep, but its vivid coloring and prominent site have made it a fresh local landmark.",
         "Inside, exhibits and interactive displays show how Nobunaga, Hideyoshi and Ieyasu were connected to Kiyosu. The keep, the river, the red Ote Bridge and the surrounding Kiyosu Castle Nobunaga Park form a scenic ensemble, especially popular in cherry-blossom season.",
         "From the train, the red railings and white walls of the keep flash into view just north of the tracks, so look toward the Seat E window in advance. At Shinkansen speed the view lasts only a few seconds — but few castles along the Tokaido line come this close to the rails, which is exactly what makes the moment memorable.",
+        "That brevity is why photographing Kiyosu Castle from a moving train has become a small self-imposed sport, known in Japanese as the 'Kiyosu Castle challenge'. The difficulty is easy to explain: the castle is in view for roughly three seconds, and it sits so close to the line that if you wait until you see it, the shot is already a blur. The cue is the Kirin Beer Nagoya Factory just before it — once a row of giant silver tanks fills the Seat E window, Kiyosu Castle is next. Have the camera at the Seat E window from the moment you leave Nagoya and treat the tanks as your signal. Press the lens close to the glass to kill reflections, and either raise the shutter speed or fire a burst, and you can freeze the keep even at full speed.",
       ],
     },
     guideHighlight: {
-      ja: "名古屋を出て数分、線路のすぐ横（E席側の北側）で朱色と白の建物を探してください。桜の季節や夕方は、五条川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
-      en: "A few minutes out of Nagoya, look for a red-and-white structure right beside the tracks on the Seat E (north) side. In cherry-blossom season or the evening, the vivid colors stand out against the Gojo River. At night the keep is illuminated, and the vermilion against the dark stands out especially well.",
+      ja: "名古屋を出て数分、線路のすぐ横（E席側の北側）で朱色と白の建物を探してください。合図になるのはひとつ手前のキリンビール名古屋工場で、銀色のタンクが並んだ直後が清洲城です。見えるのは約3秒なので、写真を狙うならタンク列の時点で構えておくと間に合います。桜の季節や夕方は、五条川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
+      en: "A few minutes out of Nagoya, look for a red-and-white structure right beside the tracks on the Seat E (north) side. Your cue is the Kirin Beer Nagoya Factory just before it — Kiyosu Castle follows immediately after the row of silver tanks. The view lasts about three seconds, so if you want a photo, be ready by the time the tanks appear. In cherry-blossom season or the evening, the vivid colors stand out against the Gojo River. At night the keep is illuminated, and the vermilion against the dark stands out especially well.",
     },
     minutesFromTokyo: 99, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "castle",
     image: "images/20240719_kiyosu_castle_asami_k920.jpg",
