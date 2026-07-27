@@ -2366,15 +2366,15 @@ const SPOTS = [
       en: "Kiyosu Castle from the Shinkansen | Seat Side, Timing and Photo Tips",
     },
     pageHeading: {
-      ja: "名古屋を出て数分、E席側に清洲城が見える",
-      en: "Kiyosu Castle from Seat E, minutes out of Nagoya",
+      ja: "新幹線から見える清洲城——3秒の「清洲城チャレンジ」",
+      en: "Kiyosu Castle from Seat E — a three-second window",
     },
     pageHeadingChunks: {
-      ja: ["名古屋を出て数分、", "E席側に清洲城が見える"],
-      en: ["Kiyosu Castle from Seat E,", "minutes out of Nagoya"],
+      ja: ["新幹線から見える清洲城——", "3秒の「清洲城チャレンジ」"],
+      en: ["Kiyosu Castle from Seat E —", "a three-second window"],
     },
     metaDescription: {
-      ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守が清洲城です。見えるのは約3秒。走行中に撮る「清洲城チャレンジ」の狙い方を上り・下り別に、目印とタイミング、カメラ設定まで解説。織田信長の本拠・清洲会議の舞台としての歴史もまとめました。",
+      ja: "清洲城は新幹線から見えます。名古屋を出て数分、E席側のすぐ近くに白と朱の天守が現れ、見えるのは約3秒。走行中に撮る「清洲城チャレンジ」の狙い方を上り・下り別に、目印とタイミング、カメラ設定まで解説。織田信長の本拠・清洲会議の舞台としての歴史もまとめました。",
       en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — in view for only about three seconds. Which seat to take, what to watch for in each direction, and how to photograph it from a moving train, plus its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
     },
     sectionHeading: {

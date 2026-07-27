@@ -1033,11 +1033,12 @@ function spotGuideDepthHTML(spot, lang) {
         <p>${escapeHTML(durationGuideText(spot, lang))}</p>
         <h3>${escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights")}</h3>
         <p>${escapeHTML(localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name))}</p>
-${photoTipHTML(spot, lang)}      </section>`;
+      </section>`;
 }
 
 // 撮影のコツ。見えている時間が短く「撮れるかどうか」自体が目的になっているスポット向けの
-// 任意ブロックで、spot.photoTip があるときだけ「見逃さないコツ」セクションの3番目に出る。
+// 任意セクション。そういうスポットでは撮り方こそが読者の探しているものなので、歴史や解説より
+// 前、事実一覧の直後に置く。spot.photoTip があるときだけ出る。
 function photoTipHTML(spot, lang) {
   const photoTip = spot.photoTip;
   if (!photoTip) return "";
@@ -1045,9 +1046,10 @@ function photoTipHTML(spot, lang) {
   if (!paras.length) return "";
   const heading = localized(photoTip.heading, lang);
   if (!heading) return "";
-  const prefix = lang === "ja" ? "3. " : "3. ";
-  return `        <h3>${escapeHTML(prefix + heading)}</h3>
+  return `      <section class="spot-page-section spot-page-phototip">
+        <h2>${escapeHTML(heading)}</h2>
 ${paras.map((para) => `        <p>${escapeHTML(para)}</p>`).join("\n")}
+      </section>
 `;
 }
 
@@ -1153,7 +1155,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260726-language-choice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-photo-tips">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-h1">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1189,7 +1191,7 @@ function spotPageHTML(spot, lang) {
         <div><dt>${escapeHTML(ui.facts[2])}</dt><dd>${escapeHTML(ui.minutes(spot.minutesFromTokyo))}</dd></div>
         <div><dt>${escapeHTML(ui.facts[3])}</dt><dd>${photoCount} ${escapeHTML(ui.photoUnit)}</dd></div>
       </dl>
-${sharedGuideNoticeBlock}      <section class="spot-page-section">
+${photoTipHTML(spot, lang)}${sharedGuideNoticeBlock}      <section class="spot-page-section">
         <h2>${escapeHTML(localized(spot.sectionHeading, lang) || ui.sectionHow(data.name))}</h2>
         <p>${escapeHTML(pageStory)}</p>
 ${bodyLinks ? `        ${bodyLinks}
@@ -1250,7 +1252,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260727-kiyosu-photo-tips">
+  <link rel="stylesheet" href="../style.css?v=20260727-kiyosu-h1">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1437,7 +1439,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-photo-tips">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-h1">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

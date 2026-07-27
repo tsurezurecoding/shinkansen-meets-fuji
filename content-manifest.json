@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0987cbd8dc0b41d0",
-  "generatedAt": "2026-07-27T13:41:17.769Z",
+  "contentVersion": "80cb991ae1e5a3e9",
+  "generatedAt": "2026-07-27T13:52:11.101Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 369043,
-      "sha256": "6dea8c29b4465210e7d71a8a81f6c47fd473dda9df544f2a35cf497153bf83ef"
+      "bytes": 369100,
+      "sha256": "121325a05eb1289d4a072e627c35b69f72cd9a1806383a9b41ef762956e4dc37"
     },
     {
       "path": "data/timetable.js",
