@@ -2362,8 +2362,8 @@ const SPOTS = [
     ja: { name: "清洲城", area: "名古屋 → 岐阜羽島", hook: "信長の城が、線路のすぐ横に。", story: "名古屋を出て数分、線路のすぐ近くに朱塗りの欄干をまとった清洲城の天守があらわれます。ここは織田信長が本拠を置き、桶狭間の戦いへ出陣した城。信長の死後、後継と領地を決めた歴史的な「清洲会議」が開かれた城でもあります。江戸時代初期に名古屋城へ機能が移されて廃城となり、現在の白と朱の天守は1989年に再建された模擬天守。それでも、日本の城で新幹線が最も近くを通る城のひとつであることに変わりはありません。" },
     en: { name: "Kiyosu Castle", area: "Nagoya → Gifu-Hashima", hook: "Nobunaga's trackside castle.", story: "A few minutes out of Nagoya, Kiyosu Castle appears startlingly close to the line, its red-railed white keep coming into view. This was Oda Nobunaga's base and the castle from which he set out for the pivotal Battle of Okehazama. It is also where, after his death, the famous 1582 Kiyosu Conference decided his succession. The original was decommissioned in the early Edo period when its functions moved to Nagoya Castle; today's white-and-vermilion keep was rebuilt in 1989 as a modern reconstruction. Even so, this is arguably the closest the Shinkansen ever runs to a castle in Japan." },
     pageTitle: {
-      ja: "新幹線から見える清洲城｜織田信長と清洲会議の城 | 新幹線の窓",
-      en: "Kiyosu Castle from the Shinkansen | Nobunaga's Castle and the Kiyosu Conference",
+      ja: "新幹線から見える清洲城｜3秒で撮る「清洲城チャレンジ」 | 新幹線の窓",
+      en: "Kiyosu Castle from the Shinkansen | The 3-Second \"Kiyosu Castle Challenge\"",
     },
     pageHeading: {
       ja: "名古屋を出て数分、E席側に清洲城が見える",
@@ -2374,8 +2374,8 @@ const SPOTS = [
       en: ["Kiyosu Castle from Seat E,", "minutes out of Nagoya"],
     },
     metaDescription: {
-      ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守が清洲城です。見えるのは約3秒。座席側と直前の目印、写真に収めるコツから、織田信長の本拠・清洲会議の舞台としての歴史までまとめました。",
-      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — and it stays in view for only about three seconds. Which seat to take, the cue to watch for, how to photograph it, plus its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
+      ja: "名古屋を出て数分、新幹線のE席側すぐ近くに現れる白と朱の天守が清洲城です。見えるのは約3秒。走行中に撮る「清洲城チャレンジ」の狙い方を上り・下り別に、目印とタイミング、カメラ設定まで解説。織田信長の本拠・清洲会議の舞台としての歴史もまとめました。",
+      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — in view for only about three seconds. How to win the \"Kiyosu Castle challenge\" of photographing it from a moving train: cues and timing for both directions, plus camera settings, and its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
     },
     sectionHeading: {
       ja: "清洲城はどんな城？",
@@ -2386,23 +2386,39 @@ const SPOTS = [
       en: "Kiyosu Castle was first built in the 15th century under the Shiba family, deputy governors of Owari Province, and grew dramatically as the base of Oda Nobunaga during the Sengoku era. From here Nobunaga set out to defeat the invading Imagawa Yoshimoto at the Battle of Okehazama in 1560, sealing his control of Owari. Kiyosu sat at a strategic crossroads between the Tokaido and routes to Mino and Ise provinces, and thrived as a castle town. After Nobunaga's assassination in 1582, the famous Kiyosu Conference — where Hashiba (Toyotomi) Hideyoshi, Shibata Katsuie, Niwa Nagahide and Ikeda Tsuneoki decided his succession and the division of his lands — was held at this castle, a well-known turning point in Japanese history.",
     },
     explainer: {
-      heading: { ja: "今の天守の正体と、3秒を撮る「清洲城チャレンジ」", en: "What today's keep really is — and the 'Kiyosu Castle challenge'" },
+      heading: { ja: "今見える天守は、いつの建物？", en: "What is the keep you see today?" },
       ja: [
         "江戸時代初期の1610年、徳川家康の命で始まった「清洲越し」により、清洲の街と城の機能はまるごと新設の名古屋城下へ移されました。清洲城はこのとき廃城となり、以後、城郭建築は残っていません。現在、五条川のほとりに立つ白と朱の天守は、1989年（平成元年）に清須市が観光・地域振興のために建てた模擬天守です。史実の外観を復元したものではありませんが、鮮やかな色合いと立地の良さから、清須の新しいランドマークになっています。",
         "内部は歴史資料の展示や体験施設になっており、映像や模型で信長・秀吉・家康と清洲の関わりを学ぶことができます。天守と五条川、朱色の大手橋、周辺に整備された「清洲城信長公園」を含めた景観は、桜の季節を中心に地元でも人気です。",
         "新幹線からは、線路のすぐ北側に朱色の欄干と白い壁が突然あらわれるので、事前にE席側の窓を見ておくのがコツ。速度が出ているので数秒ですが、これだけ線路と接近して見える城は東海道新幹線でも珍しく、印象に残ります。",
-        "この短さゆえに、走行中の車内から清洲城を撮ることは「清洲城チャレンジ」と呼ばれ、繰り返し挑む人がいます。難しい理由ははっきりしていて、見えているのがおよそ3秒しかないうえ、線路との距離が近すぎて、気づいてから構えたのでは像が流れてしまうからです。手がかりになるのは、ひとつ手前のキリンビール名古屋工場。E席側に銀色の巨大タンクがずらりと並んだら、その直後が清洲城です。名古屋を出た時点でE席側の窓にカメラを構え、タンク列を合図にすると成功率が上がります。ガラスの反射を抑えるためレンズを窓に近づけ、シャッター速度を上げるか連写にしておくと、流れる景色のなかでも天守を止めて写せます。",
       ],
       en: [
         "In 1610, under Tokugawa Ieyasu's orders, the so-called Kiyosu-goshi ('Kiyosu Move') relocated the entire town and castle functions of Kiyosu to the new Nagoya Castle town. Kiyosu Castle was decommissioned then, and no castle-era buildings survive. The white-and-vermilion keep you see today beside the Gojo River is a modern reconstruction, built by Kiyosu City in 1989 for tourism and civic revitalization. It is not a faithful restoration of the historical keep, but its vivid coloring and prominent site have made it a fresh local landmark.",
         "Inside, exhibits and interactive displays show how Nobunaga, Hideyoshi and Ieyasu were connected to Kiyosu. The keep, the river, the red Ote Bridge and the surrounding Kiyosu Castle Nobunaga Park form a scenic ensemble, especially popular in cherry-blossom season.",
         "From the train, the red railings and white walls of the keep flash into view just north of the tracks, so look toward the Seat E window in advance. At Shinkansen speed the view lasts only a few seconds — but few castles along the Tokaido line come this close to the rails, which is exactly what makes the moment memorable.",
-        "That brevity is why photographing Kiyosu Castle from a moving train has become a small self-imposed sport, known in Japanese as the 'Kiyosu Castle challenge'. The difficulty is easy to explain: the castle is in view for roughly three seconds, and it sits so close to the line that if you wait until you see it, the shot is already a blur. The cue is the Kirin Beer Nagoya Factory just before it — once a row of giant silver tanks fills the Seat E window, Kiyosu Castle is next. Have the camera at the Seat E window from the moment you leave Nagoya and treat the tanks as your signal. Press the lens close to the glass to kill reflections, and either raise the shutter speed or fire a burst, and you can freeze the keep even at full speed.",
       ],
     },
     guideHighlight: {
-      ja: "名古屋を出て数分、線路のすぐ横（E席側の北側）で朱色と白の建物を探してください。合図になるのはひとつ手前のキリンビール名古屋工場で、銀色のタンクが並んだ直後が清洲城です。見えるのは約3秒なので、写真を狙うならタンク列の時点で構えておくと間に合います。桜の季節や夕方は、五条川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
-      en: "A few minutes out of Nagoya, look for a red-and-white structure right beside the tracks on the Seat E (north) side. Your cue is the Kirin Beer Nagoya Factory just before it — Kiyosu Castle follows immediately after the row of silver tanks. The view lasts about three seconds, so if you want a photo, be ready by the time the tanks appear. In cherry-blossom season or the evening, the vivid colors stand out against the Gojo River. At night the keep is illuminated, and the vermilion against the dark stands out especially well.",
+      ja: "名古屋と岐阜羽島のあいだ、線路のすぐ北側で朱色と白の建物を探してください。天守と五条川、朱塗りの大手橋がまとまって見えます。桜の季節や夕方は、川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
+      en: "Between Nagoya and Gifu-Hashima, look for a red-and-white structure just north of the tracks. The keep, the Gojo River and the vermilion Ote Bridge read as one composition. In cherry-blossom season or the evening, the vivid colors stand out against the river. At night the keep is illuminated, and the vermilion against the dark stands out especially well.",
+    },
+    photoTip: {
+      heading: {
+        ja: "「清洲城チャレンジ」——3秒で撮るには",
+        en: "The \"Kiyosu Castle challenge\": catching it in three seconds",
+      },
+      ja: [
+        "走行中の車内から清洲城を撮ることは「清洲城チャレンジ」と呼ばれ、何度も挑む人がいます。難しい理由ははっきりしていて、見えているのが約3秒しかないうえ、線路との距離が近いぶん流れが速く、気づいてから構えたのでは間に合わないからです。城が見えてからカメラを出すのではなく、見える前から構えて待つ——これが唯一のコツと言っていいくらいです。",
+        "下り（東京 → 新大阪）は、名古屋を出たらすぐ北側の窓に構えてください。合図になるのがキリンビール名古屋工場で、銀色の巨大タンクがずらりと並ぶのが見えたら、その直後が清洲城です。名古屋発車からおよそ3分、タンク列が過ぎたら数を数えるくらいのつもりで待つと取りこぼしません。",
+        "上り（新大阪 → 東京）は順番が逆で、清洲城のあとにキリン工場が来ます。手前の目印はソーラーアークで、そこから約4分。名古屋到着の車内アナウンスが流れる少し前が本番なので、アナウンスを合図にすると遅れます。減速が始まる前、まだ速度が乗っているうちに構えておいてください。",
+        "設定は、シャッター速度を上げる（目安1/1000秒）か連写にしておくと、流れる景色でも天守を止めて写せます。ガラスの反射はレンズを窓に近づけるとかなり消えます。なお車内から窓越しに撮るぶんには問題ありませんが、デッキや通路で立ち止まっての撮影は他のお客さんの通行を妨げるので避けてください。",
+      ],
+      en: [
+        "Photographing Kiyosu Castle from a moving train is a small self-imposed sport in Japan, known as the \"Kiyosu Castle challenge\", and people attempt it again and again. The reason it is hard is simple: the castle is in view for only about three seconds, and because it sits so close to the line it sweeps past fast. If you wait until you see it, you have already missed it. The one real trick is to be aimed and waiting before it appears.",
+        "Southbound (Tokyo → Shin-Osaka), get ready at the north-side window as soon as you leave Nagoya. Your cue is the Kirin Beer Nagoya Factory: once its row of giant silver tanks fills the window, Kiyosu Castle is next. It comes roughly three minutes after leaving Nagoya, so once the tanks have passed, hold your aim and count.",
+        "Northbound (Shin-Osaka → Tokyo) the order reverses — the castle comes first, then the Kirin factory. Your earlier marker is the Solar Ark, about four minutes ahead. The castle arrives slightly before the Nagoya arrival announcement, so do not use the announcement as your cue or you will be late. Be ready while the train is still at speed, before it starts slowing.",
+        "For settings, raise the shutter speed (around 1/1000s) or shoot a burst, and you can freeze the keep even at full speed. Pressing the lens close to the glass removes most of the reflections. Shooting through the window from your seat is fine, but please avoid standing in the vestibules or aisles to shoot, as it blocks other passengers.",
+      ],
     },
     minutesFromTokyo: 99, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "castle",
     image: "images/20240719_kiyosu_castle_asami_k920.jpg",

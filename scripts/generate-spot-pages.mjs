@@ -1033,7 +1033,22 @@ function spotGuideDepthHTML(spot, lang) {
         <p>${escapeHTML(durationGuideText(spot, lang))}</p>
         <h3>${escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights")}</h3>
         <p>${escapeHTML(localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name))}</p>
-      </section>`;
+${photoTipHTML(spot, lang)}      </section>`;
+}
+
+// 撮影のコツ。見えている時間が短く「撮れるかどうか」自体が目的になっているスポット向けの
+// 任意ブロックで、spot.photoTip があるときだけ「見逃さないコツ」セクションの3番目に出る。
+function photoTipHTML(spot, lang) {
+  const photoTip = spot.photoTip;
+  if (!photoTip) return "";
+  const paras = photoTip[lang] || photoTip.ja || [];
+  if (!paras.length) return "";
+  const heading = localized(photoTip.heading, lang);
+  if (!heading) return "";
+  const prefix = lang === "ja" ? "3. " : "3. ";
+  return `        <h3>${escapeHTML(prefix + heading)}</h3>
+${paras.map((para) => `        <p>${escapeHTML(para)}</p>`).join("\n")}
+`;
 }
 
 function spotPageHTML(spot, lang) {
@@ -1138,7 +1153,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260726-language-choice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-ogp">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-challenge">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1235,7 +1250,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260727-kiyosu-ogp">
+  <link rel="stylesheet" href="../style.css?v=20260727-kiyosu-challenge">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1422,7 +1437,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-ogp">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-challenge">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
