@@ -33,21 +33,19 @@
   var requested = new URLSearchParams(location.search).get("lang");
   var saved = null;
   try { saved = localStorage.getItem("mado-lang"); } catch (error) {}
-  var browserLanguages = navigator.languages && navigator.languages.length
-    ? navigator.languages
-    : [navigator.language || ""];
-  var prefersEnglish = browserLanguages.some(function (value) {
-    return /^en\b/i.test(String(value));
-  }) && !browserLanguages.some(function (value) {
-    return /^ja\b/i.test(String(value));
-  });
 
   if (requested === "ja") {
     try { localStorage.setItem("mado-lang", "ja"); } catch (error) {}
     return;
   }
-  if (requested !== "en" && saved === "ja") return;
-  if (requested !== "en" && saved !== "en" && !prefersEnglish) return;
+
+  // ブラウザの言語設定だけを根拠にした自動リダイレクトはしない。
+  // Googlebot は英語相当の言語設定でクロールしJSも実行するため、以前ここで
+  // navigator.language を見て英語版へ飛ばしていた結果、日本語URLが英語版の
+  // タイトル・説明文でインデックスされ、日本語クエリで出なくなっていた
+  // （2026-07-27に /spots/kiyosu.html で発覚）。言語の出し分けは hreflang と
+  // ヘッダの言語切替に任せ、ここは利用者が明示的に選んだ時だけ動かす。
+  if (requested !== "en" && saved !== "en") return;
 
   try { localStorage.setItem("mado-lang", "en"); } catch (error) {}
   location.replace(new URL(targetRoute, document.baseURI).href);
