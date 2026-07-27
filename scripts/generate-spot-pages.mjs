@@ -470,9 +470,10 @@ function photoItems(spot, lang) {
  * モバイルではレールを隠し、記事末尾の CTA に任せる。 */
 
 const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
-// 主画像と意味が違う写真だけを本文に差し込む。ここは spot.photos のインデックス
+// 主画像と意味が違う写真だけを本文に差し込む。ファイル名の一部で指定する（インデックスだと
+// spot.photos に1枚足しただけで別の写真を指してしまうため）。
 const CURATED_ANGLE_PHOTOS = {
-  hamanako: [4], // 主画像は E 席。反対の A 席・赤鳥居を見せる
+  hamanako: ["hamanako_torii_letus10"], // 主画像は E 席。反対の A 席・赤鳥居を見せる
 };
 const RAIL_THUMB_CATEGORIES = new Set(["classic", "notable"]);
 
@@ -481,8 +482,9 @@ function inlinePhotoIndices(spot) {
   if (!INLINE_PHOTO_CATEGORIES.has(spot.category)) return [];
   const photos = spot.photos || [];
   const picks = new Set();
-  (CURATED_ANGLE_PHOTOS[spot.id] || []).forEach((i) => {
-    if (photos[i]) picks.add(i);
+  (CURATED_ANGLE_PHOTOS[spot.id] || []).forEach((needle) => {
+    const index = photos.findIndex((photo) => String(photo?.src || "").includes(needle));
+    if (index >= 0) picks.add(index);
   });
   const nightIdx = photos.findIndex((p) => p.timeOfDay === "night");
   if (nightIdx >= 0) picks.add(nightIdx);
@@ -1155,7 +1157,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260726-language-choice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-h1">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-night-fuji">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1252,7 +1254,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260727-kiyosu-h1">
+  <link rel="stylesheet" href="../style.css?v=20260727-night-fuji">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1439,7 +1441,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260727-kiyosu-h1">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260727-night-fuji">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

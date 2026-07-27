@@ -795,8 +795,8 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "多摩川を渡る少し前、E席側の遠くに青いアーチの輪郭を探してください。渡り始める瞬間から、川面と橋、その先に武蔵小杉のタワマン群という都市景観がまとまって窓に入ります。多摩川を渡り終える前に、東京側の亀甲山古墳の緑もちらりと見えます。",
-      en: "Just before the train crosses the Tama, look far off on the Seat E side for the blue arch. The moment you start crossing, the river surface, the arch itself, and the Musashi-Kosugi towers beyond come into the window as a single urban composition. If you glance back toward Tokyo just before finishing the crossing, you can catch the wooded hill of Kamenokoyama Kofun too.",
+      ja: "多摩川を渡る少し前、E席側の遠くに青いアーチの輪郭を探してください。渡り始める瞬間から、川面と橋、その先に武蔵小杉のタワマン群という都市景観がまとまって窓に入ります。多摩川を渡り終える前に、東京側の亀甲山古墳の緑もちらりと見えます。夜は橋の照明が川面に長く伸び、タワマンの窓明かりと合わせて、昼とはまったく違う光の景色になります。",
+      en: "Just before the train crosses the Tama, look far off on the Seat E side for the blue arch. The moment you start crossing, the river surface, the arch itself, and the Musashi-Kosugi towers beyond come into the window as a single urban composition. If you glance back toward Tokyo just before finishing the crossing, you can catch the wooded hill of Kamenokoyama Kofun too. At night the bridge lights stretch out across the water and combine with the lit windows of the towers, making a completely different scene from the daytime one.",
     },
     routeNote: {
       ja: "東京から新大阪方面へ向かう場合は、品川を出て多摩川を渡る直前、E席・山側の窓を見てください。新大阪から東京方面へ向かう場合は、新横浜を出て多摩川を渡り始める直前がタイミングで、同じくE席側に青い丸子橋が見えます。",
@@ -1394,11 +1394,15 @@ const SPOTS = [
       ja: [
         "三島寄りでは、富士山は街並みや送電線の向こうに現れます。最初から山だけが大きく見えるのではなく、日常の風景の背後から少しずつ存在感を増していくのが、この区間の面白さです。",
         "新富士へ近づくにつれて手前が田園や低い建物へ変わり、山頂から裾野までの輪郭を追いやすくなります。トンネルで何度か途切れるため、一度見えなくなっても終わりではありません。",
+        "見えているあいだ、富士山の手前に横たわる低い山並みにも気づくはずです。これは愛鷹山（あしたかやま）で、富士山の南側に連なる独立した山群です。富士山の裾野の一部に見えますが別の山で、この区間では富士山の輪郭を手前から支えるように重なります。裾野がどこまで広がっているのかを目で追うとき、愛鷹山との境目が最初の手がかりになります。",
+        "光の向きも覚えておくと写真が変わります。富士山は線路の北側にあり、日本では太陽が南寄りを通るため、日中はほぼ一日を通して順光です。曇りさえしなければ、朝でも午後でも山肌はしっかり見えます。朝夕の低い光の時間帯は、稜線や谷筋の陰影が濃くなって立体感が増し、輪郭がくっきりします。雪については、例年9月末から10月ごろに初冠雪が観測され、真夏の7〜8月にはほとんど消えます。同じ区間でも季節でまったく別の山に見えるのはこのためです。",
         "このページでは場所・写真・景色の変化に絞ります。E席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士については、別ページの「富士山FAQ・乗車前ガイド」でまとめて確認できます。",
       ],
       en: [
         "Near Mishima, Mt. Fuji first appears behind urban scenery and power lines. The appeal is watching it gradually gain presence behind everyday landscapes rather than beginning as an isolated mountain view.",
         "Closer to Shin-Fuji, the foreground opens into fields and lower buildings, making the summit and broad foothills easier to follow. Several tunnels interrupt the view, so its first disappearance is not the end.",
+        "While Fuji is in view you will also notice a lower range lying in front of it. That is Mount Ashitaka, a separate volcanic group just south of Fuji. It looks like part of Fuji's skirt but is its own mountain, and along this stretch it overlaps the base of Fuji as though propping up the outline. When you try to trace how far the foothills spread, the seam where Ashitaka ends is the first clue.",
+        "The direction of the light is worth knowing too. Mt. Fuji lies north of the tracks, and in Japan the sun tracks across the southern sky, so the mountain is front-lit for essentially the whole day. As long as it is not cloudy, the slopes read clearly in the morning and in the afternoon alike. In the low light of early morning or late afternoon, the ridges and gullies gain shadow and the outline sharpens. As for snow, the first snowcap is usually recorded in late September or October, and by midsummer it has all but vanished — which is why the same stretch of line can show what looks like an entirely different mountain depending on the season.",
         "This page is about the place, photographs, and changing scenery. Seat booking, exact timing from major stations, cloudy-day advice, and Left Fuji are collected separately in the Mt. Fuji FAQ and pre-trip guide.",
       ],
     },
@@ -1564,8 +1568,8 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "新富士を過ぎたら、A席側の遠くに港のクレーン群を探してください。ずらりと並ぶ細長いクレーンの合間に、頭に白い格子状のやぐらを載せた船があれば、それが「ちきゅう」です。港にいない日もあるので、いなくても気を落とさず、清水の港湾工業景として楽しむのがおすすめです。",
-      en: "After Shin-Fuji, look far off on the Seat A side for the row of gantry cranes at Shimizu Port. If, among them, you see a ship with a tall white lattice tower rising from its middle, that is CHIKYU. It is not always in port; if it is gone, just enjoy the industrial harbor scenery of Shimizu instead.",
+      ja: "新富士を過ぎたら、A席側の遠くに港のクレーン群を探してください。ずらりと並ぶ細長いクレーンの合間に、頭に白い格子状のやぐらを載せた船があれば、それが「ちきゅう」です。港にいない日もあるので、いなくても気を落とさず、清水の港湾工業景として楽しむのがおすすめです。夜は港全体が作業灯とクレーンの明かりに縁取られ、暗い海面を背にした「ちきゅう」のやぐらが昼よりもかえって見分けやすくなります。",
+      en: "After Shin-Fuji, look far off on the Seat A side for the row of gantry cranes at Shimizu Port. If, among them, you see a ship with a tall white lattice tower rising from its middle, that is CHIKYU. It is not always in port; if it is gone, just enjoy the industrial harbor scenery of Shimizu instead. At night the whole port is outlined by work lights and crane lamps, and CHIKYU's derrick against the dark water can actually be easier to pick out than by day.",
     },
     minutesFromTokyo: 50, side: "A", category: "notable", confidence: "source-backed", durationSec: 5, scene: "bay",
     image: "images/20240119_shimizu_port_chikyu_senba16530315.jpg",
@@ -1914,6 +1918,13 @@ const SPOTS = [
         date: "2026-05-16",
         note: { ja: "A席（海側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat A, sea side: a red torii appears briefly between buildings" },
       },
+      {
+        src: "images/250111_hamanako_fuji_proboffin.jpg",
+        alt: { ja: "浜名湖の向こうに見える遠くの富士山", en: "A distant Mt. Fuji beyond Lake Hamana" },
+        credit: { ja: "@ProBoffin", en: "@ProBoffin" },
+        sourceUrl: "https://x.com/ProBoffin/status/1877874599360389543",
+        note: { ja: "空気が澄んだ日にだけ、E席側の湖の奥に富士山が現れます", en: "Only when the air is clear does Mt. Fuji appear beyond the lake on the Seat E side." },
+      },
     ],
     relatedSpotIds: ["toyohashi-tateiwa", "kakegawa"],
     references: [REFERENCES.hamanakoTourism, REFERENCES.hamanakoEnvironment, REFERENCES.hamanakoBentenjima, REFERENCES.hamanakoNori, REFERENCES.hamanakoBoatRace, REFERENCES.sunMarineBridge, REFERENCES.hamanakoToriiBlog],
@@ -2153,8 +2164,8 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "三河安城が近づいたら、E席側の遠くに工場地帯を意識してください。工場の壁面いっぱいに、太くはっきりした赤・青・白の帯が描かれた建物が見えたらそれがニチバン安城工場のセロテープ壁看板です。反対方向（上り）では、三河安城を通過した直後がタイミングです。",
-      en: "As Mikawa-Anjo approaches, watch the industrial area far off on the Seat E side. Look for a factory whose entire wall is dressed in bold red, blue and white stripes — that is Nichiban's Anjo Factory and its CELLOTAPE wall sign. In the opposite direction (upbound), the timing is just after passing Mikawa-Anjo.",
+      ja: "三河安城が近づいたら、E席側の遠くに工場地帯を意識してください。工場の壁面いっぱいに、太くはっきりした赤・青・白の帯が描かれた建物が見えたらそれがニチバン安城工場のセロテープ壁看板です。反対方向（上り）では、三河安城を通過した直後がタイミングです。夜は看板そのものが照明で照らされ、暗い工場地帯のなかに赤と青の帯だけが浮かび上がるので、昼より見つけやすいくらいです。",
+      en: "As Mikawa-Anjo approaches, watch the industrial area far off on the Seat E side. Look for a factory whose entire wall is dressed in bold red, blue and white stripes — that is Nichiban's Anjo Factory and its CELLOTAPE wall sign. In the opposite direction (upbound), the timing is just after passing Mikawa-Anjo. At night the sign itself is lit, so the red and blue bands float out of the dark industrial belt — arguably easier to spot than in daylight.",
     },
     minutesFromTokyo: 85, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
@@ -3130,8 +3141,8 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "京都駅が近づく前の数分、E席側の窓の外に川と橋を探してください。中の島を挟んで大橋・小橋が並ぶシルエットと、朱塗りの欄干が目印です。橋そのものは一瞬ですが、「あの下の川を、天下分け目の軍勢が何度も渡ろうとした」と思って眺めると、京都到着の直前の景色に別の重みが加わります。",
-      en: "In the last minutes before Kyoto Station, look toward Seat E for a river and a distinctive bridge. Watch for the two-span silhouette meeting at a central islet, framed by vermilion railings. The bridge itself passes in a moment, but if you view it thinking 'countless armies fought to cross this water,' the last stretch into Kyoto carries a different kind of weight.",
+      ja: "京都駅が近づく前の数分、E席側の窓の外に川と橋を探してください。中の島を挟んで大橋・小橋が並ぶシルエットと、朱塗りの欄干が目印です。橋そのものは一瞬ですが、「あの下の川を、天下分け目の軍勢が何度も渡ろうとした」と思って眺めると、京都到着の直前の景色に別の重みが加わります。夜は橋の明かりが瀬田川の水面に映り、朱塗りの欄干の輪郭だけが闇に残ります。京都に着く前の、最後の見どころです。",
+      en: "In the last minutes before Kyoto Station, look toward Seat E for a river and a distinctive bridge. Watch for the two-span silhouette meeting at a central islet, framed by vermilion railings. The bridge itself passes in a moment, but if you view it thinking 'countless armies fought to cross this water,' the last stretch into Kyoto carries a different kind of weight. At night the bridge lights sit on the surface of the Seta River and only the outline of the vermilion railings is left against the dark — the last thing worth watching for before Kyoto.",
     },
     minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 3, scene: "lake",
     image: "images/20250909_seta_karahashi_c91256633.jpg",
