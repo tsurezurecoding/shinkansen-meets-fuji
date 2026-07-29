@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="../">
-  <title>Tokaido Shinkansen Field Guide | Shinkansen Window</title>
-  <meta name="description" content="Browse 37 views from the Tokaido Shinkansen, including Mt. Fuji, lakes, castles, cityscapes, factories, and landmarks.">
+  <title>Tokaido Shinkansen Field Guide | 37 Day and Night Views</title>
+  <meta name="description" content="Browse 37 recommended Tokaido Shinkansen views for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.">
   <meta name="theme-color" content="#101c2c">
   <link rel="canonical" href="https://www.michikusa-travel.com/en/zukan.html">
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/zukan.html">
@@ -15,15 +15,15 @@
   <link rel="icon" href="favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
-  <meta property="og:title" content="Tokaido Shinkansen Field Guide | Shinkansen Window">
-  <meta property="og:description" content="Browse 37 views from the Tokaido Shinkansen, including Mt. Fuji, lakes, castles, cityscapes, factories, and landmarks.">
+  <meta property="og:title" content="Tokaido Shinkansen Field Guide | 37 Day and Night Views">
+  <meta property="og:description" content="Browse 37 recommended Tokaido Shinkansen views for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.michikusa-travel.com/en/zukan.html">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Tokaido Shinkansen Field Guide | Shinkansen Window">
-  <meta name="twitter:description" content="Browse 37 views from the Tokaido Shinkansen, including Mt. Fuji, lakes, castles, cityscapes, factories, and landmarks.">
+  <meta name="twitter:title" content="Tokaido Shinkansen Field Guide | 37 Day and Night Views">
+  <meta name="twitter:description" content="Browse 37 recommended Tokaido Shinkansen views for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta name="twitter:image:alt" content="新幹線の窓 - 車窓図鑑">
   <script src="language-router.js?v=20260728-en-notice"></script>
@@ -79,7 +79,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260726-contact-methods">
+  <link rel="stylesheet" href="style.css?v=20260729-gallery-filters">
 </head>
 <body data-language-route="en" class="field-guide-page">
   <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>
@@ -125,6 +125,39 @@
       <p class="field-guide-photo-note" data-i18n="galPhotoNote">掲載写真は、撮影者または権利者の許可を得て紹介しています。</p>
     </section>
 
+    <section class="journey-intents journey-intents-guide" aria-labelledby="zukanIntentsTitle">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="zukanIntentEyebrow">PICK A MOOD</p>
+        <h2 id="zukanIntentsTitle" data-i18n="zukanIntentTitle">状況から、見たい車窓を選ぶ</h2>
+      </div>
+      <div class="journey-intent-grid">
+        <a class="journey-intent-card journey-intent-cloudy" href="en/zukan.html?filter=cloudy#gallery" data-gallery-preset="cloudy">
+          <img src="images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="intentCloudyLabel">CLOUDY DAY</small>
+            <strong data-i18n="zukanCloudyTitle">曇りの日に見るなら</strong>
+            <span data-i18n="zukanCloudyBody">曇りでも楽しめる近景へ絞り込み。</span>
+          </span>
+        </a>
+        <a class="journey-intent-card journey-intent-night" href="en/zukan.html?filter=night#gallery" data-gallery-preset="night">
+          <img src="images/thumbs/20260629_tokyo_tower_night_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="intentNightLabel">AFTER DARK</small>
+            <strong data-i18n="zukanNightTitle">夜景だけを見てみる</strong>
+            <span data-i18n="zukanNightBody">夜に見つけやすい景色へ絞り込み。</span>
+          </span>
+        </a>
+        <a class="journey-intent-card journey-intent-family" href="en/zukan.html?filter=sign#gallery" data-gallery-preset="sign">
+          <img src="images/thumbs/20260704_727_board_kuzuhara_2_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="intentFamilyLabel">FAMILY TRIP</small>
+            <strong data-i18n="zukanFamilyTitle">子連れなら看板探し</strong>
+            <span data-i18n="zukanFamilyBody">数秒の発見を、車窓ゲームに。</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
     <section class="section" id="gallery">
       <div class="gallery-controls" aria-label="車窓図鑑フィルタ">
         <div class="gallery-modebar" id="galleryModebar">
@@ -136,10 +169,12 @@
         <div class="filterbar" id="filterbar">
           <div class="filter-group filter-group-seat" role="group" aria-label="座席側">
             <button type="button" data-filter="all" class="active" data-i18n="fAll">すべて</button>
+            <button type="button" class="gallery-filter-fav" data-filter="favorites" data-i18n="fFavorites">★ お気に入り</button>
             <button type="button" data-filter="seat-a" data-i18n="fSeatA">A席</button>
             <button type="button" data-filter="seat-e" data-i18n="fSeatE">E席</button>
           </div>
           <div class="filter-group filter-group-category" role="group" aria-label="カテゴリ">
+            <button type="button" data-filter="cloudy" data-i18n="fCloudy">曇りでも</button>
             <button type="button" data-filter="classic" data-i18n="fClassic">定番</button>
             <button type="button" data-filter="nature" data-i18n="fNature">自然</button>
             <button type="button" data-filter="history" data-i18n="fHistory">歴史</button>
@@ -221,10 +256,10 @@
   </footer>
 
   <script src="data/timetable.js?v=20260701-seo-ux-fix"></script>
-  <script src="data.js?v=20260726-contact-methods"></script>
+  <script src="data.js?v=20260729-solar-ark-search"></script>
   <script src="track.js?v=20260707-map-mode-switch"></script>
   <script src="spot-map.js?v=20260718-android-leaflet"></script>
-  <script src="app.js?v=20260728-en-notice"></script>
+  <script src="app.js?v=20260729-gallery-presets"></script>
   <script>
     window.addEventListener("load", function () {
       try {

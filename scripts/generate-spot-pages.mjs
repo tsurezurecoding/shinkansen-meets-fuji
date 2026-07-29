@@ -542,9 +542,10 @@ function heroFigcaptionHTML(spot, lang) {
 }
 
 /** 左ペインのタイムライン。SPOTS と ROUTE をここで直接使う */
-function spotRailHTML(spot, lang, prefix) {
+function spotRailHTML(spot, lang, prefix, options = {}) {
   const ui = UI[lang];
   const currentId = spot.id;
+  const spotHrefPrefix = options.spotHrefPrefix || "";
 
   const rows = [];
   for (const st of ROUTE.refStations) {
@@ -581,7 +582,7 @@ function spotRailHTML(spot, lang, prefix) {
       const isCurrent = r.id === currentId;
       const seatCls = r.side === "E" ? "is-e" : r.side === "A" ? "is-a" : "";
       const seatLabel = r.side === "E" ? "E" : r.side === "A" ? "A" : "—";
-      const href = `${r.id}.html`;
+      const href = `${spotHrefPrefix}${r.id}.html`;
       const thumb = r.thumb
         ? `<span class="spot-page-rail-thumb-wrap">` +
             `<img class="spot-page-rail-thumb" src="${prefix}${escapeHTML(thumbnailSrc(r.thumb))}" alt="" loading="lazy" decoding="async" width="38" height="38">` +
@@ -600,19 +601,24 @@ function spotRailHTML(spot, lang, prefix) {
 
   const spotCount = SPOTS.filter((sp) => sp.minutesFromTokyo != null).length;
 
-  return `<aside class="spot-page-rail" aria-label="${escapeHTML(ui.railTitle)}">
+  const asideClass = options.asideClass || "spot-page-rail";
+  const ctaHref = options.ctaHref || appHref(lang, "", prefix);
+  const ctaAttributes = options.ctaAttributes ? ` ${options.ctaAttributes}` : "";
+  const footHref = options.footHref || `${prefix}zukan.html`;
+
+  return `<aside class="${escapeHTML(asideClass)}" aria-label="${escapeHTML(ui.railTitle)}">
         <div class="spot-page-rail-head">
           <p class="spot-page-rail-eyebrow">${escapeHTML(ui.railEyebrow)}</p>
           <p class="spot-page-rail-title">${escapeHTML(ui.railTitle)}</p>
           <p class="spot-page-rail-count"><strong>${spotCount}</strong>${escapeHTML(ui.railCountSuffix)}</p>
           ${nowLabel ? `<p class="spot-page-rail-now">${nowLabel}</p>` : ""}
-          <a class="spot-page-rail-cta" href="${appHref(lang, "", prefix)}">${escapeHTML(ui.railCta)}</a>
+          <a class="spot-page-rail-cta" href="${escapeHTML(ctaHref)}"${ctaAttributes}>${escapeHTML(ui.railCta)}</a>
         </div>
         <div class="spot-page-rail-list-wrap">
           <ol class="spot-page-rail-list">${items}</ol>
         </div>
         <div class="spot-page-rail-foot">
-          <a href="${prefix}zukan.html">${escapeHTML(ui.railFoot)}</a>
+          <a href="${escapeHTML(footHref)}">${escapeHTML(ui.railFoot)}</a>
         </div>
       </aside>`;
 }
@@ -1025,14 +1031,25 @@ function spotGuideDepthHTML(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const title = lang === "ja" ? `${data.name}を見逃さないコツ` : `How to catch ${data.name}`;
   const seat = sideLabel(spot, lang);
+  const journeyUrl = lang === "ja" ? "../index.html#journey" : "../../en/#journey";
   const intro = lang === "ja"
     ? `${data.area || "この区間"}が近づいたら、${seat}の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。`
     : `As you approach ${enApproachArea(data.area)}, start watching from ${seat}. Use Live Guide while riding, or the map on this page before you board.`;
+  const timingLead = lang === "ja"
+    ? "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。"
+    : "Know your train? Select it to see this view's estimated time on the actual timetable.";
+  const timingCta = lang === "ja"
+    ? "列車を選んで、見える時刻を調べる"
+    : "Select my train and check the time";
   return `<section class="spot-page-section">
         <h2>${escapeHTML(title)}</h2>
         <h3>${escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first")}</h3>
         <p>${escapeHTML(intro)}</p>
         <p>${escapeHTML(durationGuideText(spot, lang))}</p>
+        <aside class="spot-page-timing-cta">
+          <p>${escapeHTML(timingLead)}</p>
+          <a class="btn btn-primary" href="${journeyUrl}" data-cta-track="cta_train_search_click" data-cta-id="spot_guide_timing">${escapeHTML(timingCta)}</a>
+        </aside>
         <h3>${escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights")}</h3>
         <p>${escapeHTML(localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name))}</p>
       </section>`;
@@ -1346,7 +1363,7 @@ function englishAppIndexHTML() {
       '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">'
     )
     .replace(/<title>[^<]*<\/title>/, '<title>Shinkansen Window | Tokaido Shinkansen View Times and Seat Side</title>')
-    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Choose your train to see when and which side to watch for Mt. Fuji, Lake Hamana, castles, To-ji Temple, train depots, and 37 Tokaido Shinkansen window views.">')
+    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Choose your train to find 37 recommended Tokaido Shinkansen views, including Mt. Fuji on cloudy days, night scenery, castles, lakes, and family spotting ideas.">')
     .replace('<link rel="canonical" href="https://www.michikusa-travel.com/">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/">')
     .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="Shinkansen Window | Never miss the view">')
     .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for Mt. Fuji and 37 views from the Tokaido Shinkansen.">')
@@ -1360,6 +1377,9 @@ function englishAppIndexHTML() {
   railRoutes.forEach((route) => {
     html = html.replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
   });
+  html = html
+    .replaceAll('href="guide.html#', 'href="en/guide.html#')
+    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
   return html;
 }
 
@@ -1478,10 +1498,10 @@ function guideHTML(lang) {
 
 function sitemapXML() {
   const baseUrls = [
-    { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly" },
-    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly" },
-    { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly" },
-    { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly" },
+    { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-07-29" },
+    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-07-29" },
+    { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
+    { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily" },
@@ -1490,8 +1510,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly" },
+    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-07-29" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
@@ -1503,10 +1523,11 @@ function sitemapXML() {
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
+    lastmod: spot.id === "solar-ark" ? "2026-07-29" : today,
   })));
   const urls = [...baseUrls, ...spotUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${item.lastmod || today}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
     <priority>${item.priority}</priority>
   </url>`).join("\n");
@@ -1529,7 +1550,30 @@ fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 fs.writeFileSync(path.join(appDir, "en", "index.html"), englishAppIndexHTML(), "utf8");
 await import("./generate-language-mirrors.mjs");
 // guide.html and en/guide.html are hand-edited SEO answer pages.
-// Do not regenerate them from the older lightweight template here.
+// Keep only their shared route rail generated from the same source as spot pages.
+const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
+for (const lang of ["ja", "en"]) {
+  const guidePath = path.join(appDir, lang === "ja" ? "guide.html" : path.join("en", "guide.html"));
+  const guideHTML = fs.readFileSync(guidePath, "utf8");
+  const prefix = lang === "ja" ? "" : "../";
+  const rail = spotRailHTML(guideRailSpot, lang, prefix, {
+    asideClass: "spot-page-rail guide-page-rail",
+    spotHrefPrefix: "spots/",
+    ctaHref: lang === "ja" ? "index.html#journey" : "./#journey",
+    ctaAttributes: 'data-guide-cta="rail_exact_time"',
+    footHref: "zukan.html",
+  });
+  const start = "<!-- GUIDE_RAIL_START -->";
+  const end = "<!-- GUIDE_RAIL_END -->";
+  if (!guideHTML.includes(start) || !guideHTML.includes(end)) {
+    throw new Error(`Guide rail markers missing: ${guidePath}`);
+  }
+  const syncedGuideHTML = guideHTML.replace(
+    new RegExp(`${start}[\\s\\S]*?${end}`),
+    `${start}\n      ${rail}\n      ${end}`,
+  );
+  fs.writeFileSync(guidePath, syncedGuideHTML, "utf8");
+}
 fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");
 
 await import("./generate-content-manifest.mjs");

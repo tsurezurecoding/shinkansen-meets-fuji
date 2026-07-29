@@ -1424,6 +1424,38 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   .spot-page-rail-foot a:hover {
     color: var(--accent);
   }
+  .guide-page-rail .spot-page-rail-spot.is-current {
+    padding-top: 5px;
+    padding-bottom: 7px;
+  }
+  .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-link {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 5px 7px;
+    padding: 7px;
+    background: #f5efe4;
+  }
+  .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-thumb-wrap {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+  .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-thumb {
+    width: 100%;
+    height: 112px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: none;
+  }
+  .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-preview {
+    display: none;
+  }
+  .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-min {
+    min-width: 0;
+  }
+  .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-name {
+    font-family: var(--font-serif);
+    font-size: 14px;
+  }
 }
 
 /* モバイル（<1100px）は本文の写真も全幅に戻す */
@@ -1441,6 +1473,79 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 }
 .spot-page-actions-top {
   margin-top: 22px;
+}
+.guide-entertainment {
+  padding: 30px;
+  border: 1px solid #e4d7bb;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 92% 10%, rgba(223, 174, 76, 0.18), transparent 30%),
+    linear-gradient(145deg, #fffdf7 0%, #f7f0df 100%);
+}
+.guide-entertainment > .eyebrow {
+  margin-bottom: 6px;
+  color: #9a6b00;
+}
+.guide-entertainment h2 {
+  margin-top: 0;
+}
+.guide-game-steps {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 22px;
+}
+.guide-game-steps article {
+  display: flex;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(176, 139, 65, 0.22);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.74);
+}
+.guide-game-no {
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  color: #fff;
+  background: #9a6b00;
+  font-size: 12px;
+  font-weight: 800;
+}
+.guide-game-steps h3 {
+  margin: 2px 0 5px;
+  font-family: var(--font-serif);
+  font-size: 15px;
+}
+.guide-game-steps p {
+  margin: 0;
+  color: #6c6255;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.guide-game-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+.guide-game-actions .inline-cta {
+  margin-left: 2px;
+}
+@media (max-width: 720px) {
+  .guide-entertainment {
+    padding: 24px 18px;
+  }
+  .guide-game-steps {
+    grid-template-columns: 1fr;
+  }
+  .guide-game-actions .btn {
+    width: 100%;
+  }
 }
 .guide-answer-panel {
   display: grid;
@@ -3148,7 +3253,27 @@ body.modal-open { overflow: hidden; }
   border-radius: 99px; padding: 8px 18px; font-size: 13px; font-weight: 700;
 }
 .filterbar button.active { background: var(--night); border-color: var(--night); color: #fff; }
+.filterbar button.gallery-filter-fav {
+  border-color: #d6b968;
+  color: #80611c;
+  background: #fffaf0;
+}
+.filterbar button.gallery-filter-fav.active {
+  border-color: #b88a25;
+  color: #fff;
+  background: #9a6b00;
+}
 .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 16px; }
+.gallery-empty {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 34px 18px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  color: var(--muted);
+  text-align: center;
+  background: rgba(255,255,255,0.58);
+}
 .gal-card {
   display: block;
   width: 100%;
@@ -3412,6 +3537,141 @@ body.modal-open { overflow: hidden; }
   scrollbar-width: none;
 }
 .showcase-rail::-webkit-scrollbar { display: none; }
+
+.journey-intents {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 42px 20px 18px;
+}
+
+.journey-intents .section-head {
+  margin-bottom: 18px;
+}
+
+.journey-intent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.journey-intent-card {
+  position: relative;
+  min-height: 184px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 18px;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 12px 34px rgba(16, 28, 44, .14);
+  isolation: isolate;
+}
+
+.journey-intent-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(10, 19, 31, .08) 16%, rgba(10, 19, 31, .9) 100%);
+}
+
+.journey-intent-card img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .45s ease;
+}
+
+.journey-intent-card:hover img {
+  transform: scale(1.035);
+}
+
+.journey-intent-copy {
+  position: absolute;
+  inset: auto 18px 17px;
+  display: grid;
+  gap: 4px;
+}
+
+.journey-intent-copy small {
+  color: rgba(255, 255, 255, .72);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.journey-intent-copy strong {
+  font-family: "Zen Old Mincho", "Yu Mincho", serif;
+  font-size: clamp(1.08rem, 1.8vw, 1.38rem);
+  line-height: 1.32;
+}
+
+.journey-intent-copy > span {
+  color: rgba(255, 255, 255, .82);
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.journey-intents-guide {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.journey-intents-guide .journey-intent-card {
+  min-height: 158px;
+}
+
+.spot-page-timing-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 22px 0 26px;
+  padding: 16px 18px;
+  border: 1px solid rgba(23, 88, 100, .2);
+  border-radius: 14px;
+  background: linear-gradient(135deg, rgba(231, 242, 238, .9), rgba(244, 238, 220, .72));
+}
+
+.spot-page-timing-cta p {
+  max-width: 42em;
+  margin: 0;
+  color: var(--ink);
+  font-size: .92rem;
+  line-height: 1.7;
+}
+
+.spot-page-timing-cta .btn {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 720px) {
+  .journey-intents {
+    padding: 34px 16px 8px;
+  }
+
+  .journey-intent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .journey-intent-card,
+  .journey-intents-guide .journey-intent-card {
+    min-height: 148px;
+  }
+
+  .spot-page-timing-cta {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .spot-page-timing-cta .btn {
+    width: 100%;
+    white-space: normal;
+  }
+}
 .show-card {
   display: block;
   flex: 0 0 250px; scroll-snap-align: start;

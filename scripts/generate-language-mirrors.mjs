@@ -9,8 +9,8 @@ const pages = [
   {
     source: "zukan.html",
     output: "en/zukan.html",
-    title: "Tokaido Shinkansen Field Guide | Shinkansen Window",
-    description: "Browse 37 views from the Tokaido Shinkansen, including Mt. Fuji, lakes, castles, cityscapes, factories, and landmarks.",
+    title: "Tokaido Shinkansen Field Guide | 37 Day and Night Views",
+    description: "Browse 37 recommended Tokaido Shinkansen views for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.",
   },
   {
     source: "journal.html",
@@ -59,6 +59,9 @@ function localizeEnglishRail(html) {
   let result = html;
   copy.forEach(([ja, en]) => { result = result.replaceAll(ja, en); });
   routes.forEach(([ja, en]) => { result = result.replaceAll(`href="${ja}"`, `href="${en}"`); });
+  result = result
+    .replaceAll('href="guide.html#', 'href="en/guide.html#')
+    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
   return result;
 }
 

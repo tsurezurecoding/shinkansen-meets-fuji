@@ -31,6 +31,9 @@ const MSG = {
     trainNone: "この条件の列車が見つかりませんでした。時刻を変えるか、目安タイムラインをどうぞ。",
     trainPickNote: "乗る列車をえらんでください（実ダイヤ基準）",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "たとえば、こんな景色",
+    intentFamilyLabel: "FAMILY TRIP",
+    intentCloudyLabel: "CLOUDY DAY",
+    intentNightLabel: "AFTER DARK",
     readGuide: "ガイドを読む",
     readGuideDetail: "詳しい車窓ガイドを見る",
     readGuideDetailAria: (name) => `${name}の詳しい車窓ガイドを開く`,
@@ -83,8 +86,16 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
     galSub: "37の車窓スポットを一覧できます。<br>見つけた景色はチェックして記録できます。",
     galPhotoNote: "掲載写真は、撮影者または権利者の許可を得て紹介しています。",
+    zukanIntentEyebrow: "PICK A MOOD",
+    zukanIntentTitle: "状況から、見たい車窓を選ぶ",
+    zukanCloudyTitle: "曇りの日に見るなら",
+    zukanCloudyBody: "曇りでも楽しめる近景へ絞り込み。",
+    zukanNightTitle: "夜景だけを見てみる",
+    zukanNightBody: "夜に見つけやすい景色へ絞り込み。",
+    zukanFamilyTitle: "子連れなら看板探し",
+    zukanFamilyBody: "数秒の発見を、車窓ゲームに。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", fCity: "街並",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
@@ -120,6 +131,7 @@ const MSG = {
     favBtnAriaAdd: (name) => `${name}をお気に入りに追加`,
     favBtnAriaRemove: (name) => `${name}をお気に入りから外す`,
     fFavorites: "★ お気に入り",
+    galFavoritesEmpty: "条件に合うお気に入りはありません。カードの★を押すと、ここに表示できます。",
     tlFavoritesEmpty: "お気に入りに追加したスポットがまだありません。カードの★を押すと、ここに絞り込めます。",
     more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
@@ -154,6 +166,9 @@ const MSG = {
     trainNone: "No trains found for this time. Try another time, or use the estimate timeline.",
     trainPickNote: "Pick your train (real timetable)",
     showEyebrow: "WHAT YOU'LL SEE", showTitle: "Views like these",
+    intentFamilyLabel: "FAMILY TRIP",
+    intentCloudyLabel: "CLOUDY DAY",
+    intentNightLabel: "AFTER DARK",
     readGuide: "Read guide",
     readGuideDetail: "Read the full window guide",
     readGuideDetailAria: (name) => `Open the full window guide for ${name}`,
@@ -206,8 +221,16 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
     galSub: "Browse all 37 window views. Check off each one you find.",
     galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
+    zukanIntentEyebrow: "PICK A MOOD",
+    zukanIntentTitle: "Choose views for this ride",
+    zukanCloudyTitle: "What to watch on a cloudy day",
+    zukanCloudyBody: "Filter for closer views you can still enjoy under clouds.",
+    zukanNightTitle: "Show only night views",
+    zukanNightBody: "Filter for scenery that works after dark.",
+    zukanFamilyTitle: "Try a sign-spotting game",
+    zukanFamilyBody: "Turn a few seconds outside into family play.",
     morePhotos: "More photos",
-    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", fCity: "City",
+    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", fCity: "City",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerGuide: "How to see Mt. Fuji",
     footerReferences: "Window links",
@@ -243,6 +266,7 @@ const MSG = {
     favBtnAriaAdd: (name) => `Add ${name} to favorites`,
     favBtnAriaRemove: (name) => `Remove ${name} from favorites`,
     fFavorites: "★ Favorites",
+    galFavoritesEmpty: "No favorites match these filters. Tap the ★ on a card to add one.",
     tlFavoritesEmpty: "No favorites yet. Tap the ★ on a card to add it, then filter here.",
     more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
@@ -830,6 +854,12 @@ function applyLang() {
       "index.html": "en/",
       "index.html#journey": "en/#journey",
       "zukan.html": "en/zukan.html",
+      "zukan.html?filter=night": "en/zukan.html?filter=night",
+      "zukan.html?filter=cloudy#gallery": "en/zukan.html?filter=cloudy#gallery",
+      "zukan.html?filter=night#gallery": "en/zukan.html?filter=night#gallery",
+      "zukan.html?filter=sign#gallery": "en/zukan.html?filter=sign#gallery",
+      "guide.html#cloudy": "en/guide.html#cloudy",
+      "guide.html#entertainment": "en/guide.html#entertainment",
       "journal.html": "en/journal.html",
       "mieru.html": "en/mieru.html",
       "sumie.html": "en/sumie.html",
@@ -1683,6 +1713,9 @@ function toggleFavorite(id) {
   if (activeTimelineFilters.has("favorites")) {
     renderTimeline();
   }
+  if (activeGalleryFilters.has("favorites")) {
+    renderGallery();
+  }
 }
 function favoriteButtonHTML(spotId, faved, size = "sm") {
   const spot = findSpotById(spotId);
@@ -1801,6 +1834,16 @@ function registerServiceWorker() {
 
 /* ---------- gallery ---------- */
 const activeGalleryFilters = new Set(["day"]);
+
+function applyInitialGalleryFilter() {
+  if (!$("#galleryGrid")) return;
+  const filter = new URLSearchParams(location.search).get("filter");
+  const supported = new Set(["day", "night", "favorites", "seat-a", "seat-e", "cloudy", "classic", "nature", "history", "industry", "sign", "city"]);
+  if (!supported.has(filter)) return;
+  activeGalleryFilters.clear();
+  if (filter !== "day" && filter !== "night") activeGalleryFilters.add("day");
+  activeGalleryFilters.add(filter);
+}
 const activeTimelineFilters = new Set();
 const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
 const discoverySpotPriority = {
@@ -1818,18 +1861,20 @@ function discoverySpotOrder(a, b) {
   return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
 }
 const galleryTagGroups = {
+  cloudy: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "727-board", "hinataoka", "putiputi-sign", "odawara-castle", "gyoran-kannon", "odawara", "shimizu-port-chikyu", "shizuoka-tea-fields", "kakegawa", "genki-sign", "hamanako", "toyohashi-tateiwa", "mikawa-oshima", "nichiban-anjo", "nagoya-station-skyline", "kirin-beer-factory", "kiyosu", "solar-ark", "kinshozan", "nangu-taisha", "seta-karahashi", "toji", "torikai-train-depot"]),
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
   industry: new Set(["shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan"]),
   sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo"]),
   city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "nagoya-station-skyline"]),
 };
-const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "classic", "nature", "history", "industry", "sign", "city"];
+const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "city"];
 const galleryTagLabelKeys = {
   "seat-a": "fSeatA",
   "seat-e": "fSeatE",
   day: "fDay",
   night: "fNight",
+  cloudy: "fCloudy",
   classic: "fClassic",
   nature: "fNature",
   history: "fHistory",
@@ -1851,23 +1896,24 @@ function galleryTags(spot) {
 function galleryTagBadgesHTML(spot) {
   const tags = galleryTags(spot);
   return galleryTagOrder
-    .filter((tag) => tags.has(tag) && tag !== "day" && tag !== "night")
+    .filter((tag) => tags.has(tag) && !["day", "night", "cloudy"].includes(tag))
     .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
     .join("");
 }
 function timelineThemeTagBadgesHTML(spot) {
   const tags = galleryTags(spot);
   return galleryTagOrder
-    .filter((tag) => tags.has(tag) && !["seat-a", "seat-e", "day", "night"].includes(tag))
+    .filter((tag) => tags.has(tag) && !["seat-a", "seat-e", "day", "night", "cloudy"].includes(tag))
     .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
     .join("");
 }
 function matchesGalleryFilters(spot) {
   if (!activeGalleryFilters.size) return true;
+  if (activeGalleryFilters.has("favorites") && !favorites[spot.id]) return false;
   const tags = galleryTags(spot);
   const selectedSeats = [...activeGalleryFilters].filter((filter) => filter === "seat-a" || filter === "seat-e");
   const selectedTimes = [...activeGalleryFilters].filter((filter) => filter === "day" || filter === "night");
-  const selectedThemes = [...activeGalleryFilters].filter((filter) => !["seat-a", "seat-e", "day", "night"].includes(filter));
+  const selectedThemes = [...activeGalleryFilters].filter((filter) => !["seat-a", "seat-e", "day", "night", "favorites"].includes(filter));
   const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
   const timeMatch = !selectedTimes.length || selectedTimes.some((filter) => tags.has(filter));
   const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
@@ -1907,10 +1953,15 @@ function updateTimelineFilterButtons() {
 function renderGallery() {
   const grid = $("#galleryGrid");
   if (!grid) return;
-  grid.innerHTML = SPOTS
+  const visibleSpots = SPOTS
       .filter(matchesGalleryFilters)
       .slice()
-      .sort(discoverySpotOrder)
+      .sort(discoverySpotOrder);
+  if (!visibleSpots.length && activeGalleryFilters.has("favorites")) {
+    grid.innerHTML = `<p class="gallery-empty">${escapeHTML(t("galFavoritesEmpty"))}</p>`;
+    return;
+  }
+  grid.innerHTML = visibleSpots
       .map((sp) => {
         const L = sp[lang];
         const featuredMedia = preferredSpotMedia(sp, activeTimeOfDayFilter());
@@ -1960,6 +2011,28 @@ function syncModalWithLocation(source = "url") {
 }
 
 function bindGalleryControls() {
+  $(".journey-intents-guide")?.addEventListener("click", (event) => {
+    const target = event.target instanceof Element ? event.target : null;
+    const presetLink = target?.closest("[data-gallery-preset]");
+    if (!presetLink) return;
+    const filter = presetLink.dataset.galleryPreset;
+    event.preventDefault();
+    activeGalleryFilters.clear();
+    if (filter !== "day" && filter !== "night") activeGalleryFilters.add("day");
+    activeGalleryFilters.add(filter);
+    updateGalleryFilterButtons();
+    renderGallery();
+    try {
+      const nextUrl = new URL(location.href);
+      nextUrl.searchParams.set("filter", filter);
+      nextUrl.hash = "gallery";
+      history.replaceState(null, "", nextUrl);
+    } catch (error) {
+      // Filtering still works when a local preview blocks history updates.
+    }
+    track("gallery_preset_selected", { preset: filter });
+    $("#gallery")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
   $("#filterbar")?.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
     const button = target?.closest("button[data-filter]");
@@ -2080,6 +2153,7 @@ function init() {
   bindGalleryControls();
   bindTimelineControls();
   bindJournalControls();
+  applyInitialGalleryFilter();
   document.addEventListener("keydown", (event) => {
     if (event.key === "Escape") {
       closeSpotModal("escape");

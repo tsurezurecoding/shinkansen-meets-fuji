@@ -1138,12 +1138,12 @@ const SPOTS = [
       en: "As the train approaches or crosses the Sagami River, look far off on the Seat E side for the green ridge of Tanzawa; then raise your gaze a little higher for the 'sharper, taller white (or blue-gray) peak' behind it. Fuji can be hidden by overlapping Tanzawa ridges, so lifting your eyes slightly helps. Winter mornings offer the best chance.",
     },
     minutesFromTokyo: 25, side: "E", category: "notable", confidence: "verified", durationSec: 60, scene: "fuji",
-    image: "images/20260530_sagami_fuji_hiratsuka_michikusa.jpg",
+    image: "images/20240114_sagami_fuji_odawara_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
-      date: "2026-05-30",
-      note: { ja: "平塚市内から、相模平野越しに見える富士山", en: "Mt. Fuji beyond Sagami Plain from Hiratsuka." },
+      date: "2024-01-14",
+      note: { ja: "小田原に近づくころの富士山", en: "Mt. Fuji as Odawara approaches" },
     },
     photos: [
       {
@@ -1154,11 +1154,11 @@ const SPOTS = [
         note: { ja: "丹沢・箱根の山なみの奥に富士山", en: "Mt. Fuji behind the Tanzawa and Hakone mountains" },
       },
       {
-        src: "images/20240114_sagami_fuji_odawara_michikusa.jpg",
-        alt: { ja: "小田原付近から見える富士山", en: "Mt. Fuji seen near Odawara" },
+        src: "images/20260530_sagami_fuji_hiratsuka_michikusa.jpg",
+        alt: { ja: "平塚市内から見える相模平野越しの富士山", en: "Mt. Fuji beyond Sagami Plain from Hiratsuka" },
         credit: { ja: "michikusa", en: "michikusa" },
-        date: "2024-01-14",
-        note: { ja: "小田原に近づくころの富士山", en: "Mt. Fuji as Odawara approaches" },
+        date: "2026-05-30",
+        note: { ja: "平塚市内から、相模平野越しに見える富士山", en: "Mt. Fuji beyond Sagami Plain from Hiratsuka." },
       },
     ],
     references: [REFERENCES.weatherFuji, REFERENCES.sagamiFujiTanzawa],
@@ -1505,6 +1505,7 @@ const SPOTS = [
       en: "From Tokyo toward Shin-Osaka, watch the Seat A · sea side window just after Shizuoka Station and the Abe River crossing. Toward Tokyo, the order is reversed.",
     },
     image: "images/20240410_left_fuji_earlyretiremile.jpg",
+    ogImage: "images/20260513_left_fuji.jpg",
     photoCredit: { ja: "@earlyretiremile", en: "@earlyretiremile", url: "https://x.com/earlyretiremile/status/1777853629682405657" },
     photos: [
       {
@@ -2466,37 +2467,39 @@ const SPOTS = [
     ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "もうすぐ見納め、太陽の船。", story: "名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側の田園の上に、青くきらめく巨大な弧を描く構造物があらわれます。これがソーラーアーク。旧三洋電機（現・パナソニックホールディングス）が2001年に建設した太陽光発電モニュメントで、全長315m・最高部の高さ37m、約5,046枚の太陽電池パネルを外壁に張り巡らせた「新幹線から見える巨大な船」です。長らくPanasonicロゴを掲げていましたが、事業再編で外され、所有会社は2026年9月にも解体を始めると安八町へ伝えています。完了日は未発表ですが、四半世紀にわたって親しまれてきたこの車窓は、もうすぐ見られなくなる可能性があります。" },
     en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship, soon to disappear.", story: "After Nagoya and Kiyosu Castle, Solar Ark appears on the Seat E side as a huge, blue-glinting arch rising above the fields. Built in 2001 by the former Sanyo Electric (now part of Panasonic Holdings), it is a solar-power monument 315 meters long and up to 37 meters tall, its outer surface faced with roughly 5,046 photovoltaic panels — a 'giant ship you can see from the Shinkansen.' The Panasonic logo it once carried was removed after corporate restructuring, and the owner has told Anpachi Town that demolition could begin as early as September 2026. No completion date has been announced, but this quarter-century-old landmark may soon vanish from the window." },
     pageTitle: {
-      ja: "新幹線から見えるソーラーアーク｜太陽電池パネルの巨大モニュメント | 新幹線の窓",
-      en: "Solar Ark from the Shinkansen | The Giant Solar Monument in Anpachi",
+      ja: "解体予定のソーラーアークはまだ見える？新幹線E席の見納めガイド | 新幹線の窓",
+      en: "Solar Ark Demolition: Can You Still See It from the Shinkansen?",
     },
     pageHeading: {
-      ja: "田園に浮かぶ、太陽電池の巨大船——ソーラーアーク",
-      en: "A solar ship above the fields: Solar Ark",
+      ja: "解体予定のソーラーアーク——まだ見られる、太陽の船",
+      en: "Solar Ark is scheduled for demolition — can you still see it?",
     },
     pageHeadingChunks: {
-      ja: ["田園に浮かぶ、太陽電池の巨大船——", "ソーラーアーク"],
-      en: ["A solar ship above the fields:", "Solar Ark"],
+      ja: ["解体予定のソーラーアーク——", "まだ見られる、太陽の船"],
+      en: ["Solar Ark is scheduled for demolition —", "can you still see it?"],
     },
     metaDescription: {
-      ja: "名古屋から岐阜羽島へ向かう新幹線のE席側に見える、全長315m・約5,000枚の太陽電池パネルを備えた巨大構造物「ソーラーアーク」。建設の背景、Panasonicロゴの経緯、解体予定までを解説します。",
-      en: "Between Nagoya and Gifu-Hashima, the huge 315-meter solar monument with roughly 5,000 photovoltaic panels visible from Seat E is Solar Ark. Learn how it was built, its former Panasonic branding, and the demolition planned to begin as early as September 2026.",
+      ja: "ソーラーアークは2026年9月にも解体開始予定と報じられていますが、2026年7月時点では新幹線のE席側からまだ見られます。いつまで見られるか、場所、見える時間、建設の背景を解説します。",
+      en: "Solar Ark may be demolished from September 2026, but as of July 2026 it is still visible from Seat E between Nagoya and Gifu-Hashima. Check where to look, how long it appears, and what is known about the schedule.",
     },
     sectionHeading: {
-      ja: "ソーラーアークとは？",
-      en: "What is Solar Ark?",
+      ja: "ソーラーアークとは？ なぜ解体される？",
+      en: "What is Solar Ark, and why is it being demolished?",
     },
     pageStory: {
-      ja: "ソーラーアークは、岐阜県安八郡安八町の三洋電機（旧・岐阜工場）敷地内に、2001年12月に完成した太陽光発電モニュメントです。建設のきっかけは、三洋電機が2000年に販売していた住宅用太陽電池モジュールの一部で不具合が判明したこと。原因究明と再発防止に加え、太陽光発電への信頼回復の象徴として、当時の三洋電機が創立50周年記念事業と組み合わせて構想した、というのが公表されている経緯です。設計は谷口吉生建築設計研究所、施工は大林組。船底のようになだらかに反り上がる形状に約5,046枚の太陽電池パネルを組み込み、最大出力は約630kW、年間発電量は約53万kWh（一般家庭150世帯分程度）とされていました。",
-      en: "Solar Ark stands on the grounds of Sanyo Electric's former Gifu plant in Anpachi Town, Gifu Prefecture, and was completed in December 2001. The project began after a defect was identified in some residential solar modules Sanyo had sold in 2000. As part of investigating the root cause and preventing recurrence — and rebuilding public trust in photovoltaics — Sanyo tied the effort to its 50th-anniversary commemoration, according to publicly announced background. The structure was designed by Yoshio Taniguchi and Associates and built by Obayashi Corporation. Its softly upswept ship-like form carries roughly 5,046 solar panels, with a rated peak output of about 630 kW and reported annual output of around 530,000 kWh (comparable to the electricity used by about 150 average households).",
+      ja: "ソーラーアークは、岐阜県安八郡安八町の三洋電機（旧・岐阜工場）敷地内に、2001年12月に完成した太陽光発電モニュメントです。2026年9月にも解体工事が始まる予定と報じられていますが、着工日・工期・見られなくなる日は発表されていません。2026年7月時点では現存し、東海道新幹線のE席側からまだ見られます。建設のきっかけは、三洋電機が2000年に販売していた住宅用太陽電池モジュールの一部で不具合が判明したこと。原因究明と再発防止に加え、太陽光発電への信頼回復の象徴として、当時の三洋電機が創立50周年記念事業と組み合わせて構想した、というのが公表されている経緯です。設計は谷口吉生建築設計研究所、施工は大林組。船底のようになだらかに反り上がる形状に約5,046枚の太陽電池パネルを組み込み、最大出力は約630kW、年間発電量は約53万kWh（一般家庭150世帯分程度）とされていました。",
+      en: "Solar Ark stands on the grounds of Sanyo Electric's former Gifu plant in Anpachi Town, Gifu Prefecture, and was completed in December 2001. Demolition has been reported as possibly starting in September 2026, but no exact start date, work period or final day of visibility has been announced. As of July 2026, it is still standing and still visible from Seat E on the Tokaido Shinkansen. The project began after a defect was identified in some residential solar modules Sanyo had sold in 2000. As part of investigating the root cause and preventing recurrence — and rebuilding public trust in photovoltaics — Sanyo tied the effort to its 50th-anniversary commemoration, according to publicly announced background. The structure was designed by Yoshio Taniguchi and Associates and built by Obayashi Corporation. Its softly upswept ship-like form carries roughly 5,046 solar panels, with a rated peak output of about 630 kW and reported annual output of around 530,000 kWh (comparable to the electricity used by about 150 average households).",
     },
     explainer: {
-      heading: { ja: "Panasonicロゴが消えた理由と、解体の話", en: "Why the Panasonic logo disappeared, and what happens next" },
+      heading: { ja: "まだ見られる？ いつまで見られる？", en: "Can you still see it, and for how long?" },
       ja: [
+        "はい、2026年7月時点ではまだ見られます。所有会社は安八町へ、2026年9月にも解体を始める意向を伝えたと報じられています。ただし「9月から見えなくなる」という意味ではなく、正式な着工日、解体の順序、完了時期は未発表です。確実に見たいなら、次の乗車を最後の機会と考えておくのが安全です。",
         "2011年、三洋電機はパナソニックの完全子会社となり、その後太陽電池・二次電池事業の再編が進みました。ソーラーアークにも長らく大きな「Panasonic」ロゴが掲げられていましたが、事業体制の変化にともなって外され、いまはロゴのない状態で立っています。ページ内の掲載写真には、2017年撮影の「Panasonicロゴがあった頃」の姿も参考として残しています。",
         "所有会社は、老朽化と維持コストを理由に、安八町へソーラーアークの解体を伝えており、報道では2026年9月にも解体工事に着手する可能性があるとされています。ただし、正式な着工日・工期・跡地利用については本記事執筆時点で公式発表はありません。四半世紀にわたって東海道新幹線から見える名物景観だっただけに、地元・全国から惜しむ声が上がっています。",
         "見えるタイミングは、名古屋を出て清洲城を過ぎ、木曽三川の手前、岐阜羽島駅の少し手前くらいのE席側です。速度が出ているので数秒〜十数秒。晴天下では太陽電池パネルの青く光る反射がとても目立ち、遠くからでも「巨大な弧」の輪郭で見つけられます。",
       ],
       en: [
+        "Yes. As of July 2026, Solar Ark is still visible. The owner has reportedly told Anpachi Town that demolition may begin in September 2026. That does not mean it will disappear on the first day of September: the exact start date, dismantling sequence and completion date have not been announced. If seeing it matters to you, treat your next ride as a possible last chance.",
         "In 2011, Sanyo became a wholly owned subsidiary of Panasonic, and its solar and battery businesses were reorganized in the following years. Solar Ark carried a large 'Panasonic' logo for a long time, but as business structures shifted it was removed, and the monument now stands without branding. The photos on this page include a 2017 reference image from when the Panasonic logo was still in place.",
         "The current owner has informed Anpachi Town of plans to dismantle Solar Ark, citing aging infrastructure and maintenance costs. News reports have said demolition could start as early as September 2026, but as of writing, no official schedule, work period or post-demolition use has been announced. Given its 25-year run as a trackside icon of the Tokaido Shinkansen, many locals and long-time riders are already voicing regret.",
         "Timing-wise, Solar Ark appears on the Seat E side after passing Kiyosu Castle, a little before the Kiso Three Rivers and before Gifu-Hashima Station. At speed, it lasts only a few seconds to about ten. On sunny days, the blue glint of its panels stands out sharply, and the huge arched silhouette can be found even from a distance.",
