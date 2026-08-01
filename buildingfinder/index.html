@@ -1,1780 +1,452 @@
-<!DOCTYPE html>
-<!--
-  ビル名ファインダー / Tokyo Building Finder
-  ソース: C:\work\codex\buildingview\index.html （独立プロジェクト）
-  app/buildingfinder/ 配下のものは配置物です。直接編集せず、必ずソース側を直してコピーしてください。
-  このディレクトリ以下は「新幹線の窓」本体とは別プロダクトとして扱います。
-  noindex,nofollow・sitemap未登録・本体から未リンクの間は、本体リリース観察とは別枠です。
-
-  非公開の実験ページです。noindex,nofollow を付け、sitemap.xml にも登録していません。
-  サイト内からリンクする／インデックスさせる／自分以外に見せる場合は、
-  その前に privacy.html のカメラに関する記述を更新してください。
--->
+<!doctype html>
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#000000">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="no-referrer">
-<title>ビル名ファインダー — Tokyo Building Finder</title>
+<title>ビル名ファインダー - PLATEAU 3D比較</title>
+<!--
+  開発の正本: C:\work\codex\buildingview\index.html
+  app/buildingfinder/ は配置物です。配置先を直接編集しないでください。
+  このディレクトリ以下は「新幹線の窓」本体とは別プロダクトとして扱います。
+  noindex,nofollow・sitemap未登録・本体から未リンクの間は、本体リリース観察とは別枠です。
+-->
 <style>
-  :root{
-    --fg:#e9eef2;
-    --dim:#9aa6ae;
-    --line:rgba(255,255,255,.28);
-    --panel:rgba(12,15,18,.86);
-    --accent:#6fd3ff;
-  }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-  html,body{height:100%;margin:0;background:#000;color:var(--fg);
-    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP","Yu Gothic",sans-serif;
-    overflow:hidden;overscroll-behavior:none}
-  #stage{position:fixed;inset:0;overflow:hidden}
-  #cam{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#000}
-  #fallbackBg{position:absolute;inset:0;
-    background:radial-gradient(120% 80% at 50% 110%, #14212b 0%, #0a0f14 55%, #05070a 100%)}
-  #ov{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
-
-  /* ---- top status bar ---- */
-  /* z-index:32 — #panel(30) より上。これを外すとパネルが⚙を覆って閉じられなくなる */
-  #status{position:absolute;top:0;left:0;right:0;z-index:32;
-    padding:calc(env(safe-area-inset-top,0px) + 8px) 10px 8px;
-    display:flex;gap:8px;align-items:flex-start;font-size:11px;line-height:1.45;
-    background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,0));pointer-events:none}
-  #statusText{flex:1;color:var(--dim);white-space:pre-line;text-shadow:0 1px 2px #000}
-  #statusText b{color:var(--fg);font-weight:600}
-  .iconbtn{pointer-events:auto;width:38px;height:38px;flex:0 0 auto;border-radius:19px;
-    border:1px solid var(--line);background:rgba(10,13,16,.7);color:var(--fg);
-    font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer}
-  .iconbtn:active{background:rgba(60,70,80,.8)}
-
-  /* ---- start overlay ---- */
-  #start{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    gap:14px;background:rgba(3,5,8,.92);z-index:40;padding:24px;text-align:center}
-  #start h1{font-size:19px;font-weight:600;margin:0;letter-spacing:.04em}
-  #start p{font-size:12px;color:var(--dim);margin:0;max-width:22em;line-height:1.7}
-  .bigbtn{padding:13px 30px;border-radius:26px;border:1px solid var(--accent);
-    background:rgba(111,211,255,.12);color:#fff;font-size:15px;cursor:pointer}
-  .bigbtn:active{background:rgba(111,211,255,.3)}
-  .ghostbtn{padding:9px 18px;border-radius:20px;border:1px solid var(--line);
-    background:transparent;color:var(--dim);font-size:12px;cursor:pointer}
-  #start p.privacy{font-size:10.5px;color:#6f7c85;max-width:24em;line-height:1.65;margin-top:2px}
-  /* 暗い背景でも読めるようにリンクだけ明るく。OSM のクレジットは表示必須 */
-  #start p.privacy a{color:#a8bcc7;text-decoration:underline}
-
-  /* ---- settings panel ---- */
-  /* パネル背後の暗幕。タップで閉じる */
-  #scrim{position:absolute;inset:0;z-index:29;background:rgba(0,0,0,.35);
-    opacity:0;pointer-events:none;transition:opacity .22s ease}
+  :root{color-scheme:dark;--bg:#101416;--panel:#182024f2;--line:#ffffff24;--fg:#f2f5f6;
+    --dim:#a8b4b9;--cyan:#68d4ef;--yellow:#f0ca6a;--danger:#ef8c80}
+  *{box-sizing:border-box}
+  html,body,#app{width:100%;height:100%;margin:0;overflow:hidden;background:var(--bg);
+    font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--fg)}
+  button,input,select{font:inherit}
+  button{color:inherit}
+  #stage{position:absolute;inset:0;background:#11181b}
+  #camera,#three,#threeBg,#alignSurface{position:absolute;inset:0;width:100%;height:100%}
+  #camera{object-fit:cover;background:#11181b}
+  #threeBg{background:#1b2529;opacity:0;pointer-events:none}
+  #three{opacity:.72;pointer-events:none}
+  #alignSurface{touch-action:none;cursor:grab;pointer-events:none}
+  #alignSurface.active{pointer-events:auto}
+  #alignSurface.dragging{cursor:grabbing}
+  #app.split #camera{clip-path:inset(0 50% 0 0)}
+  #app.split #threeBg,#app.split #three{clip-path:inset(0 0 0 50%)}
+  #app.split #threeBg{opacity:1}
+  #divider{display:none;position:absolute;top:0;bottom:0;left:50%;width:1px;background:#fff9;
+    box-shadow:0 0 0 1px #0008;pointer-events:none}
+  #app.split #divider{display:block}
+  #reticle{position:absolute;left:50%;top:50%;width:36px;height:36px;transform:translate(-50%,-50%);
+    border:1px solid #fff9;border-radius:50%;pointer-events:none;filter:drop-shadow(0 1px 2px #000)}
+  #reticle:before,#reticle:after{content:"";position:absolute;background:#fff9}
+  #reticle:before{left:50%;top:-9px;bottom:-9px;width:1px}
+  #reticle:after{top:50%;left:-9px;right:-9px;height:1px}
+  #topbar{position:absolute;z-index:40;left:0;right:0;top:0;display:flex;gap:8px;align-items:flex-start;
+    padding:calc(env(safe-area-inset-top,0px) + 8px) 10px 12px;background:linear-gradient(#000a,#0000);
+    pointer-events:none}
+  #status{flex:1;min-width:0;font-size:11px;line-height:1.45;color:#e7edef;text-shadow:0 1px 2px #000;
+    white-space:pre-line}
+  .iconbtn{pointer-events:auto;display:grid;place-items:center;width:38px;height:38px;padding:0;border-radius:50%;
+    border:1px solid #ffffff38;background:#111a1ecc;backdrop-filter:blur(8px);cursor:pointer;font-size:17px}
+  #toolbar{position:absolute;z-index:35;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 14px);
+    transform:translateX(-50%);display:flex;align-items:center;gap:6px;padding:6px;border:1px solid var(--line);
+    border-radius:8px;background:#11191ddd;backdrop-filter:blur(10px);box-shadow:0 8px 28px #0008}
+  .seg{display:flex;gap:2px}
+  .seg button{min-width:68px;height:34px;padding:0 10px;border:0;border-radius:5px;background:transparent;
+    color:var(--dim);font-size:12px;cursor:pointer}
+  .seg button.on{background:#ffffff18;color:var(--fg)}
+  #resetView{width:34px;height:34px;padding:0;border:0;border-left:1px solid var(--line);background:transparent;
+    color:var(--yellow);cursor:pointer;font-size:17px}
+  #start{position:absolute;z-index:60;inset:0;display:flex;flex-direction:column;align-items:center;
+    justify-content:center;gap:14px;padding:28px;background:#101719f5;text-align:center}
+  #start h1{margin:0;font-size:22px;font-weight:650;letter-spacing:0}
+  #start .lead{max-width:27em;margin:0;color:#c2ccd0;font-size:13px;line-height:1.75}
+  .primary{min-width:230px;padding:13px 22px;border:0;border-radius:6px;background:var(--cyan);color:#071216;
+    font-weight:700;cursor:pointer}
+  .secondary{padding:10px 18px;border:1px solid var(--line);border-radius:6px;background:transparent;
+    color:var(--dim);cursor:pointer}
+  #start .notice{max-width:32em;margin:2px 0 0;color:#849399;font-size:10.5px;line-height:1.65}
+  #start a,#panel a{color:#a9dcea}
+  #scrim{position:absolute;z-index:44;inset:0;background:#0007;opacity:0;pointer-events:none;transition:opacity .18s}
   #scrim.on{opacity:1;pointer-events:auto}
-  #panelHead{display:flex;align-items:center;justify-content:space-between;
-    margin:0 0 4px;padding-bottom:8px;border-bottom:1px solid rgba(255,255,255,.12)}
-  #panelHead span{font-size:12px;letter-spacing:.1em;color:var(--dim)}
-  #btnPanelClose{width:32px;height:32px;border-radius:16px;border:1px solid var(--line);
-    background:rgba(255,255,255,.06);color:var(--fg);font-size:15px;cursor:pointer;
-    display:flex;align-items:center;justify-content:center;font-family:inherit}
-  #btnPanelClose:active{background:rgba(255,255,255,.2)}
-  #panel{position:absolute;top:0;right:0;bottom:0;width:min(340px,86vw);z-index:30;
-    background:var(--panel);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-left:1px solid rgba(255,255,255,.12);
-    padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(env(safe-area-inset-bottom,0px) + 20px);
-    overflow-y:auto;transform:translateX(102%);transition:transform .22s ease;font-size:12px}
+  #panel{position:absolute;z-index:45;top:0;right:0;bottom:0;width:min(370px,90vw);padding:calc(env(safe-area-inset-top,0px) + 12px) 14px calc(env(safe-area-inset-bottom,0px) + 18px);
+    overflow:auto;background:var(--panel);border-left:1px solid var(--line);backdrop-filter:blur(14px);
+    transform:translateX(105%);transition:transform .2s ease}
   #panel.open{transform:none}
-  #panel h2{font-size:11px;letter-spacing:.14em;color:var(--dim);font-weight:600;
-    margin:18px 0 8px;text-transform:uppercase}
-  #panel h2:first-of-type{margin-top:4px}
-  .row{display:flex;align-items:center;gap:8px;margin:7px 0}
-  .row label{flex:0 0 96px;color:var(--dim);font-size:11px}
-  .row .val{flex:0 0 62px;text-align:right;font-variant-numeric:tabular-nums;font-size:11px}
-  input[type=range]{flex:1;min-width:0;accent-color:var(--accent);background:transparent}
-  input[type=text],input[type=number],select{background:rgba(255,255,255,.06);
-    border:1px solid rgba(255,255,255,.16);color:var(--fg);border-radius:6px;
-    padding:6px 8px;font-size:12px;width:100%;min-width:0;font-family:inherit}
-  select{appearance:none}
-  .hint{color:#7b868e;font-size:10.5px;line-height:1.6;margin:6px 0 0}
-  .hint a{color:#9db4c0;text-decoration:underline}
-  .btnrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
-  .btnrow button{flex:1 1 auto;padding:8px 6px;border-radius:6px;border:1px solid var(--line);
-    background:rgba(255,255,255,.05);color:var(--fg);font-size:11.5px;cursor:pointer;font-family:inherit}
-  .btnrow button:active{background:rgba(255,255,255,.18)}
-  .toggle{display:flex;align-items:center;gap:8px;margin:8px 0}
-  .toggle input{accent-color:var(--accent);width:16px;height:16px}
-
-  /* ---- bottom sheet ---- */
-  #sheet{position:absolute;left:0;right:0;bottom:0;z-index:25;background:var(--panel);
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-top:1px solid rgba(255,255,255,.14);border-radius:14px 14px 0 0;
-    transform:translateY(calc(100% - 42px));transition:transform .22s ease;
-    max-height:56vh;display:flex;flex-direction:column}
-  #sheet.open{transform:translateY(0)}
-  #sheetHead{height:42px;flex:0 0 42px;display:flex;align-items:center;justify-content:center;
-    gap:10px;cursor:pointer;font-size:11.5px;color:var(--dim);position:relative}
-  #sheetHead::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);
-    width:34px;height:3px;border-radius:2px;background:rgba(255,255,255,.25)}
-  #list{overflow-y:auto;padding:0 10px calc(env(safe-area-inset-bottom,0px) + 14px)}
-  .item{display:flex;align-items:center;gap:8px;padding:9px 4px;
-    border-top:1px solid rgba(255,255,255,.07);font-size:12px}
-  .item.sel{background:rgba(111,211,255,.12)}
-  /* 手前のビルに隠れている可能性があるものは薄く出す */
-  .item.occ{opacity:.48}
-  .item .oc{flex:0 0 auto;color:#7b868e;font-size:10px;white-space:nowrap}
-  .item .nm{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .item .ds{flex:0 0 auto;color:var(--dim);font-size:11px;font-variant-numeric:tabular-nums}
-  .item button{flex:0 0 auto;border:1px solid var(--line);background:transparent;color:var(--accent);
-    border-radius:5px;font-size:10.5px;padding:5px 7px;cursor:pointer;font-family:inherit}
-
-  /* ---- detail popup ---- */
-  #detail{position:absolute;left:50%;bottom:70px;transform:translateX(-50%);z-index:28;
-    width:min(320px,88vw);background:var(--panel);border:1px solid rgba(255,255,255,.18);
-    border-radius:10px;padding:12px 14px;display:none;
-    backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  #detail.show{display:block}
-  #detail .t{font-size:14px;margin-bottom:2px}
-  #detail .k{font-size:10.5px;color:var(--dim);margin-bottom:6px}
-  #detail .m{font-size:11.5px;color:var(--dim);line-height:1.7}
-  #detail .x{position:absolute;top:6px;right:8px;color:var(--dim);cursor:pointer;font-size:16px;padding:2px 6px}
-
-  /* ---- calibration banner ---- */
-  #calib{position:absolute;left:50%;transform:translateX(-50%);
-    top:calc(env(safe-area-inset-top,0px) + 54px);z-index:26;display:none;
-    background:rgba(111,211,255,.16);border:1px solid var(--accent);border-radius:8px;
-    padding:8px 12px;font-size:11.5px;text-align:center;max-width:92vw}
-  #calib.show{display:block}
-  #calib button{margin-left:10px;border:1px solid var(--line);background:transparent;
-    color:var(--dim);border-radius:5px;font-size:10.5px;padding:3px 7px;cursor:pointer;font-family:inherit}
-  #toast{position:absolute;left:50%;transform:translateX(-50%);bottom:60px;z-index:35;
-    background:rgba(10,13,16,.9);border:1px solid var(--line);border-radius:8px;
-    padding:8px 14px;font-size:12px;opacity:0;transition:opacity .25s;pointer-events:none}
-  #toast.show{opacity:1}
+  #panelHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+  #panelHead strong{font-size:13px}
+  #closePanel{width:34px;height:34px;padding:0;border:1px solid var(--line);border-radius:50%;background:#ffffff0c;cursor:pointer}
+  #panel h2{margin:18px 0 8px;font-size:11px;color:var(--yellow);font-weight:700;letter-spacing:0}
+  .row{display:grid;grid-template-columns:110px minmax(0,1fr) auto;align-items:center;gap:8px;margin:8px 0}
+  .row label{font-size:11.5px;color:#c4cdd1}
+  input,select{width:100%;min-width:0;padding:7px 8px;border:1px solid var(--line);border-radius:4px;
+    background:#0e1518;color:var(--fg);font-size:12px}
+  input[type=range]{padding:0;border:0;background:transparent}
+  .value{min-width:45px;text-align:right;color:var(--cyan);font-size:11px;font-variant-numeric:tabular-nums}
+  .buttonrow{display:flex;gap:7px;margin-top:8px}
+  .buttonrow button{flex:1;padding:9px 8px;border:1px solid var(--line);border-radius:5px;background:#ffffff0a;
+    font-size:11.5px;cursor:pointer}
+  .toggle{display:flex;align-items:center;gap:8px;margin:9px 0;font-size:11.5px;color:#c4cdd1}
+  .toggle input{width:auto}
+  .hint{margin:7px 0 0;color:#849399;font-size:10.5px;line-height:1.6}
+  #loading{position:absolute;z-index:38;left:50%;top:50%;transform:translate(-50%,-50%);display:none;
+    min-width:210px;padding:12px 15px;border:1px solid var(--line);border-radius:6px;background:#10181de8;
+    text-align:center;font-size:12px;color:#dce4e7;box-shadow:0 8px 30px #0009}
+  #loading.show{display:block}
+  #loading small{display:block;margin-top:5px;color:#829096}
+  #toast{position:absolute;z-index:70;left:50%;bottom:82px;transform:translateX(-50%) translateY(10px);
+    max-width:min(420px,88vw);padding:9px 12px;border-radius:5px;background:#070b0de8;color:#f3f5f6;
+    font-size:11.5px;opacity:0;pointer-events:none;transition:.18s}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+  .cesium-viewer-bottom,.cesium-viewer-toolbar{display:none!important}
+  @media (max-width:480px){#toolbar{bottom:calc(env(safe-area-inset-bottom,0px) + 10px)}.seg button{min-width:62px}}
 </style>
 </head>
 <body>
-<div id="stage">
-  <div id="fallbackBg"></div>
-  <video id="cam" playsinline muted autoplay></video>
-  <canvas id="ov"></canvas>
-
-  <div id="status">
-    <div id="statusText"></div>
-    <button class="iconbtn" id="btnSheet" title="ビル一覧">☰</button>
-    <button class="iconbtn" id="btnPanel" title="設定">⚙</button>
+<div id="app">
+  <div id="stage">
+    <video id="camera" autoplay muted playsinline></video>
+    <div id="threeBg"></div>
+    <div id="three"></div>
+    <div id="divider"></div>
+    <div id="alignSurface"></div>
+    <div id="reticle"></div>
   </div>
 
-  <div id="calib">
-    <span id="calibMsg"></span>
-    <button id="calibCancel">やめる</button>
+  <div id="topbar">
+    <div id="status">準備中</div>
+    <button class="iconbtn" id="openEarth" title="Google Earthで確認" aria-label="Google Earthで確認">◎</button>
+    <button class="iconbtn" id="openPanel" title="設定" aria-label="設定">⚙</button>
   </div>
 
-  <div id="detail">
-    <span class="x" id="detailClose">×</span>
-    <div class="t" id="dName"></div>
-    <div class="k" id="dKana"></div>
-    <div class="m" id="dMeta"></div>
+  <div id="toolbar">
+    <div class="seg" aria-label="比較方法">
+      <button id="modeOverlay" class="on">重ねる</button>
+      <button id="modeSplit">左右</button>
+    </div>
+    <button id="resetView" title="方位を初期値に戻す" aria-label="方位を初期値に戻す">↺</button>
   </div>
 
-  <div id="sheet">
-    <div id="sheetHead"><span id="sheetLabel">見えているビル</span></div>
-    <div id="list"></div>
-  </div>
+  <div id="loading">3D都市モデルを読み込んでいます<small id="loadingDetail">PLATEAUへ接続中</small></div>
 
   <div id="scrim"></div>
+  <aside id="panel" aria-label="設定">
+    <div id="panelHead"><strong>表示と視点</strong><button id="closePanel" aria-label="閉じる">×</button></div>
 
-  <div id="panel">
-    <div id="panelHead"><span>設定</span><button id="btnPanelClose" title="閉じる">✕</button></div>
     <h2>視点</h2>
-    <div class="row">
-      <label>プリセット視点</label>
-      <select id="preset">
-        <option value="">— 選択 —</option>
-      </select>
-    </div>
-    <div class="row"><label>緯度</label><input type="text" id="inLat" inputmode="decimal"></div>
-    <div class="row"><label>経度</label><input type="text" id="inLon" inputmode="decimal"></div>
-    <div class="btnrow">
-      <button id="btnGps">GPSに戻す</button>
-      <button id="btnApplyPos">この座標を使う</button>
-    </div>
-    <div class="btnrow">
-      <button id="btnEarth">この視点を Google Earth で開く</button>
-    </div>
-    <p class="hint">Google Earth 側には建物名がほとんど出ません。形を見比べて、こちらの方位や高さが合っているかの確認に使ってください。</p>
+    <div class="row"><label for="preset">プリセット</label><select id="preset"></select><span></span></div>
+    <div class="row"><label for="lat">緯度</label><input id="lat" inputmode="decimal"><span></span></div>
+    <div class="row"><label for="lon">経度</label><input id="lon" inputmode="decimal"><span></span></div>
+    <div class="buttonrow"><button id="usePosition">この座標を使う</button><button id="useGps">GPSを再取得</button></div>
 
     <h2>目線の高さ</h2>
-    <div class="row"><label>階数</label><input type="number" id="inFloor" step="1" min="0"></div>
-    <div class="row"><label>地面標高 m</label><input type="number" id="inSite" step="1"></div>
-    <div class="row"><label>目線 海抜m</label><input type="number" id="inEye" step="1"></div>
-    <p class="hint">階数を入れると 階×4.0m + 2m + 地面標高 で自動計算します。直接「目線 海抜m」を編集しても構いません。</p>
+    <div class="row"><label for="floor">階数</label><input type="number" id="floor" min="0" step="1"><span></span></div>
+    <div class="row"><label for="ground">地面標高</label><input type="number" id="ground" step="1"><span>m</span></div>
+    <div class="row"><label for="eye">目線 海抜</label><input type="number" id="eye" min="1" step="1"><span>m</span></div>
+    <p class="hint">階数から「階×4m + 2m + 地面標高」で計算します。PLATEAUの建物内に視点が入るため、近距離クリップで窓までの構造を消します。</p>
 
-    <h2>カメラ</h2>
-    <div class="row"><label>視野角 hfov</label><input type="range" id="inFov" min="30" max="100" step="0.5"><span class="val" id="vFov"></span></div>
-    <p class="hint">画面内の目印（遠くのビルなど）の見かけの間隔が合うように調整します。スマホの標準広角はおおむね 60〜70°。</p>
+    <h2>見比べ方</h2>
+    <div class="row"><label for="opacity">3Dの濃さ</label><input type="range" id="opacity" min="0.15" max="1" step="0.05"><span class="value" id="opacityValue"></span></div>
+    <div class="row"><label for="hfov">水平画角</label><input type="range" id="hfov" min="35" max="100" step="0.5"><span class="value" id="hfovValue"></span></div>
+    <div class="row"><label for="near">近距離を消す</label><input type="range" id="near" min="1" max="150" step="1"><span class="value" id="nearValue"></span></div>
+    <div class="row"><label for="heading">方位</label><input type="range" id="heading" min="0" max="359.5" step="0.5"><span class="value" id="headingValue"></span></div>
+    <div class="row"><label for="pitch">仰角</label><input type="range" id="pitch" min="-45" max="45" step="0.5"><span class="value" id="pitchValue"></span></div>
+    <p class="hint">画面をドラッグして、窓の輪郭と3Dの街並みを合わせます。端だけずれる場合は水平画角を調整します。</p>
 
-    <h2>方位・仰角の補正</h2>
-    <div class="row"><label>方位オフセット</label><input type="range" id="inHead" min="-180" max="180" step="0.5"><span class="val" id="vHead"></span></div>
-    <div class="row"><label>仰角オフセット</label><input type="range" id="inPitch" min="-30" max="30" step="0.2"><span class="val" id="vPitch"></span></div>
-    <div class="btnrow">
-      <button id="btnCalib">ビルをタップして方位合わせ</button>
-      <button id="btnResetOff">補正をリセット</button>
-    </div>
-    <div class="btnrow">
-      <button id="btnCalib2">2点で校正（方位・仰角・画角）</button>
-    </div>
-    <p class="hint">画面を横にドラッグ＝方位、縦にドラッグ＝仰角の微調整。鉄骨の建物の中では磁気コンパスが大きく狂うので、見えているビルでの合わせ込みが確実です。</p>
-    <p class="hint">1点の方位合わせでは画角が直せないため、中央で合っても画面の端にいくほどずれます。離れた2本のビルで「2点で校正」すると、方位・仰角に加えて画角も同時に決まります。<b>こちらを推奨</b>。</p>
+    <h2>PLATEAU</h2>
+    <div class="toggle"><input type="checkbox" id="lightweight"><label for="lightweight">軽量なLOD1を使う</label></div>
+    <div class="buttonrow"><button id="reloadTiles">3Dを読み直す</button><button id="earthPanel">Google Earthで開く</button></div>
+    <p class="hint" id="diagnostic">未読込</p>
+    <p class="hint">3D都市モデル: <a href="https://www.mlit.go.jp/plateau/" target="_blank" rel="noopener">Project PLATEAU</a>（国土交通省）<br>建物名候補データ: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> (ODbL)</p>
+  </aside>
 
-    <h2>絞り込み</h2>
-    <div class="toggle"><input type="checkbox" id="inFamous"><label for="inFamous">収録の名所のみ（60件）／すべて</label></div>
-    <p class="hint" id="dataCount"></p>
-    <div class="toggle"><input type="checkbox" id="inReticle"><label for="inReticle">照準モード（中央の輪の中だけ表示）</label></div>
-    <div class="row"><label>照準の広さ</label><input type="range" id="inRetR" min="0.06" max="0.30" step="0.01"><span class="val" id="vRetR"></span></div>
-    <div class="row"><label>最小の見かけ角</label><input type="range" id="inMinAng" min="0" max="2" step="0.05"><span class="val" id="vMinAng"></span></div>
-    <div class="toggle"><input type="checkbox" id="inOcclude"><label for="inOcclude">手前のビルに隠れるものを除く</label></div>
-    <p class="hint">「見かけ角」は、そのビルが空に占める縦方向の角度です。小さいものを切ると、遠すぎて実際には見分けられないビルが消えます。100mのビルは1km先なら目立ちますが、15km先では意味がありません。</p>
-    <p class="hint">遮蔽の判定は、この収録データにあるビル同士だけで行います。<b>データにない建物による遮蔽は判定できません</b>。地形・樹木・窓枠も同様です。</p>
-
-    <h2>表示</h2>
-    <div class="row"><label>最大距離 km</label><input type="range" id="inMaxD" min="5" max="60" step="1"><span class="val" id="vMaxD"></span></div>
-    <div class="toggle"><input type="checkbox" id="inDemo"><label for="inDemo">デモモード（ドラッグで見回す）</label></div>
-    <div class="toggle"><input type="checkbox" id="inHorizon" checked><label for="inHorizon">水平線・方位目盛を描く</label></div>
-    <div class="btnrow"><button id="btnCam">カメラを再取得</button></div>
-    <p class="hint" id="diag"></p>
-    <!-- OSM 由来データ(ODbL)の帰属表示。表示は必須なので消さないこと -->
-    <p class="hint">建物データ © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> (ODbL)</p>
-  </div>
-
-  <div id="start">
-    <h1>ビル名ファインダー</h1>
-    <p>GPS・方位センサー・カメラを使って、窓から見えている東京の高層ビルに名前を重ねます。画像認識ではなく座標計算です。</p>
-    <button class="bigbtn" id="btnStart">はじめる</button>
-    <button class="ghostbtn" id="btnStartDemo">センサーなしで試す（デモ）</button>
-    <p class="privacy">カメラ映像と位置情報は、この端末の中だけで処理します。撮影・保存・送信は一切行いません。設定は端末内(localStorage)にのみ保存されます。</p>
-    <p class="privacy">試作中の実験ページです。ビルの座標・高さは概算のため、ずれることがあります。</p>
-    <!-- OSM 由来データ(ODbL)の帰属表示。表示は必須なので消さないこと -->
-    <p class="privacy">建物データ © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> (ODbL)</p>
-  </div>
+  <section id="start">
+    <h1>窓の景色と、3Dの街を合わせる</h1>
+    <p class="lead">PLATEAUの3D都市モデルをカメラに重ねます。画面をドラッグして実景と3Dの輪郭を合わせることで、磁気コンパスに頼らず方向を決めます。</p>
+    <button class="primary" id="startLive">カメラで始める</button>
+    <button class="secondary" id="startDemo">3Dだけ試す</button>
+    <p class="notice">カメラ映像は端末内だけで処理し、撮影・保存・送信しません。3D表示ではPLATEAU配信サービスとCesium CDNへ通信し、閲覧中の地域に対応するタイルを取得します。この通信から表示地域とIPアドレス等が配信元に伝わります。</p>
+    <p class="notice">3D都市モデル: <a href="https://www.mlit.go.jp/plateau/" target="_blank" rel="noopener">Project PLATEAU</a>（国土交通省） / 建物名候補: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a> (ODbL)</p>
+  </section>
 
   <div id="toast"></div>
 </div>
 
 <script>
+(function(){
 "use strict";
-/* =========================================================================
-   ビル名ファインダー / Tokyo Building Finder
-   単一HTML・外部依存なし。幾何計算のみで、カメラ映像にビル名を重ねます。
-   ========================================================================= */
 
-/* -------------------------------------------------------------------------
-   建物データベース
-   ※ 緯度経度・高さ・地面標高はいずれも概算値です（小数4桁程度の精度）。
-     実測や地図で確認して、この配列の数値を直接書き換えれば簡単に直せます。
-     h      = 構造物の高さ(m, 地面から頂部まで)
-     ground = 建物が建つ地面の標高(m, 海抜。省略時 0)
-     year   = 竣工年 / note = 日本語の短い一言
-   ------------------------------------------------------------------------- */
-var BUILDINGS = [
-  {name:"東京スカイツリー", kana:"とうきょうスカイツリー", lat:35.7101, lon:139.8107, h:634, ground:2,  year:2012, note:"自立式電波塔として世界一の高さ。設計は日建設計。"},
-  {name:"東京タワー", kana:"とうきょうタワー", lat:35.6586, lon:139.7454, h:333, ground:20, year:1958, note:"内藤多仲による総合電波塔。通称・赤い塔。"},
-  {name:"東京都庁第一本庁舎", kana:null, lat:35.6896, lon:139.6917, h:243, ground:35, year:1991, note:"丹下健三設計。202mの展望室は無料開放。"},
-  {name:"東京都庁第二本庁舎", kana:null, lat:35.6890, lon:139.6925, h:163, ground:35, year:1991, note:"第一本庁舎の南側に並ぶ低い方の塔。"},
-  {name:"麻布台ヒルズ森JPタワー", kana:null, lat:35.6604, lon:139.7395, h:330, ground:25, year:2023, note:"日本一高いビル。ペリ クラーク＆パートナーズ設計。"},
-  {name:"虎ノ門ヒルズ森タワー", kana:null, lat:35.6668, lon:139.7495, h:256, ground:15, year:2014, note:"環状二号線をまたいで建つ。マスコットは虎ノ門ヒルズの「トラのもん」。"},
-  {name:"六本木ヒルズ森タワー", kana:null, lat:35.6605, lon:139.7292, h:238, ground:22, year:2003, note:"最上部に森美術館と東京シティビュー。"},
-  {name:"東京ミッドタウン・タワー", kana:null, lat:35.6657, lon:139.7307, h:248, ground:30, year:2007, note:"防衛庁跡地。上層はリッツ・カールトン東京。"},
-  {name:"サンシャイン60", kana:"サンシャインろくじゅう", lat:35.7290, lon:139.7190, h:240, ground:35, year:1978, note:"竣工時は東洋一の高さ。巣鴨プリズン跡地。"},
-  {name:"新宿パークタワー", kana:null, lat:35.6852, lon:139.6912, h:235, ground:35, year:1994, note:"丹下健三設計。パークハイアット東京が入る。"},
-  {name:"東京オペラシティ", kana:null, lat:35.6829, lon:139.6866, h:234, ground:35, year:1996, note:"初台。コンサートホールと美術館を併設。"},
-  {name:"新宿三井ビルディング", kana:null, lat:35.6910, lon:139.6945, h:225, ground:35, year:1974, note:"足元の広場「55HIROBA」で知られる。"},
-  {name:"新宿住友ビル", kana:null, lat:35.6907, lon:139.6928, h:210, ground:35, year:1974, note:"三角形平面から「三角ビル」の愛称。"},
-  {name:"新宿野村ビル", kana:null, lat:35.6920, lon:139.6945, h:210, ground:35, year:1978, note:"頂部の櫛状の突起が目印。"},
-  {name:"新宿センタービル", kana:null, lat:35.6913, lon:139.6960, h:216, ground:35, year:1979, note:"大成建設本社が入る。"},
-  {name:"損保ジャパン本社ビル", kana:null, lat:35.6923, lon:139.6968, h:200, ground:35, year:1976, note:"上部が広がる独特の形。SOMPO美術館を併設。"},
-  {name:"モード学園コクーンタワー", kana:null, lat:35.6905, lon:139.6979, h:204, ground:35, year:2008, note:"繭（コクーン）を模した外観。丹下都市建築設計。"},
-  {name:"NTTドコモ代々木ビル", kana:null, lat:35.6833, lon:139.7000, h:240, ground:35, year:2000, note:"時計塔つきの尖塔。大半は機械室。"},
-  {name:"渋谷スクランブルスクエア", kana:null, lat:35.6580, lon:139.7016, h:230, ground:18, year:2019, note:"屋上展望施設「渋谷スカイ」。"},
-  {name:"渋谷ヒカリエ", kana:null, lat:35.6591, lon:139.7036, h:183, ground:20, year:2012, note:"東急文化会館の跡地に建つ。"},
-  {name:"セルリアンタワー", kana:null, lat:35.6560, lon:139.6985, h:184, ground:22, year:2001, note:"渋谷の東急ホテルと能楽堂。"},
-  {name:"恵比寿ガーデンプレイスタワー", kana:null, lat:35.6427, lon:139.7135, h:167, ground:30, year:1994, note:"サッポロビール工場跡地の再開発。"},
-  {name:"汐留シティセンター", kana:null, lat:35.6647, lon:139.7595, h:216, ground:3, year:2003, note:"旧新橋停車場の復元駅舎に隣接。"},
-  {name:"電通本社ビル", kana:null, lat:35.6640, lon:139.7620, h:210, ground:3, year:2002, note:"ジャン・ヌーヴェル設計の湾曲したガラス面。"},
-  {name:"日本テレビタワー", kana:null, lat:35.6633, lon:139.7590, h:193, ground:3, year:2003, note:"壁面の大時計は宮崎駿デザイン。"},
-  {name:"東京ミッドタウン八重洲", kana:null, lat:35.6796, lon:139.7677, h:240, ground:3, year:2022, note:"低層階に東京駅直結のバスターミナル。"},
-  {name:"常盤橋タワー(TOKYO TORCH)", kana:null, lat:35.6862, lon:139.7676, h:212, ground:3, year:2021, note:"隣に日本一高くなる予定のTorch Towerを建設中。"},
-  {name:"大手町タワー", kana:null, lat:35.6867, lon:139.7648, h:200, ground:3, year:2014, note:"足元に本物の樹林「大手町の森」。"},
-  {name:"丸ビル", kana:"まるビル", lat:35.6813, lon:139.7645, h:180, ground:3, year:2002, note:"1923年の初代を建て替えた丸の内の顔。"},
-  {name:"新丸ビル", kana:"しんまるビル", lat:35.6822, lon:139.7643, h:198, ground:3, year:2007, note:"7階テラスから東京駅を見下ろせる。"},
-  {name:"JPタワー(KITTE)", kana:null, lat:35.6790, lon:139.7645, h:200, ground:3, year:2012, note:"旧東京中央郵便局の低層部を保存再生した。"},
-  {name:"グラントウキョウノースタワー", kana:null, lat:35.6825, lon:139.7676, h:205, ground:3, year:2007, note:"大丸東京店が入る八重洲北側の塔。"},
-  {name:"グラントウキョウサウスタワー", kana:null, lat:35.6795, lon:139.7676, h:205, ground:3, year:2007, note:"八重洲南口側。北棟と対で建つ。"},
-  {name:"東京ミッドタウン日比谷", kana:null, lat:35.6733, lon:139.7592, h:192, ground:4, year:2018, note:"日比谷公園に面したガラスの曲面。"},
-  {name:"霞が関ビルディング", kana:"かすみがせきビルディング", lat:35.6720, lon:139.7457, h:147, ground:12, year:1968, note:"日本初の超高層ビル。体積の単位「霞が関ビル◯杯分」の元。"},
-  {name:"泉ガーデンタワー", kana:null, lat:35.6660, lon:139.7395, h:216, ground:20, year:2002, note:"六本木一丁目駅直結の住友系再開発。"},
-  {name:"仙石山森タワー", kana:null, lat:35.6631, lon:139.7415, h:207, ground:25, year:2012, note:"アークヒルズ仙石山。旧仙石家屋敷の名を継ぐ。"},
-  {name:"日本橋三井タワー", kana:null, lat:35.6862, lon:139.7735, h:194, ground:3, year:2005, note:"重要文化財の三井本館の上に建つ。"},
-  {name:"聖路加ガーデン", kana:"せいろかガーデン", lat:35.6690, lon:139.7790, h:221, ground:2, year:1994, note:"築地の双子タワー。高い方はレジデンス。"},
-  {name:"豊島区役所(としまエコミューゼタウン)", kana:null, lat:35.7300, lon:139.7160, h:189, ground:33, year:2015, note:"庁舎とマンションの複合。隈研吾監修の緑の外装。"},
-  {name:"池袋ハレザタワー", kana:null, lat:35.7295, lon:139.7155, h:158, ground:33, year:2020, note:"旧豊島公会堂跡の劇場街「Hareza池袋」。"},
-  {name:"ThinkPark Tower", kana:"シンクパークタワー", lat:35.6215, lon:139.7300, h:153, ground:5, year:2007, note:"大崎駅前、ガラスの円筒形。"},
-  {name:"パークタワー勝どき", kana:null, lat:35.6595, lon:139.7770, h:195, ground:2, year:2023, note:"勝どきの超高層タワーマンション。"},
-  {name:"ザ・トウキョウタワーズ", kana:null, lat:35.6572, lon:139.7812, h:194, ground:2, year:2008, note:"勝どきの双子タワマン。約2800戸の巨大団地。"},
-  {name:"東京ポートシティ竹芝", kana:null, lat:35.6570, lon:139.7590, h:153, ground:3, year:2020, note:"竹芝ふ頭のスマートビル。ソフトバンク本社。"},
-  {name:"フジテレビ本社ビル", kana:null, lat:35.6270, lon:139.7745, h:123, ground:3, year:1996, note:"丹下健三設計。直径32mの球体展望室。"},
-  {name:"レインボーブリッジ", kana:null, lat:35.6360, lon:139.7635, h:126, ground:0, year:1993, note:"主塔の高さ126m。正式名称は東京港連絡橋。"},
-  {name:"東京ゲートブリッジ", kana:null, lat:35.6100, lon:139.8250, h:88, ground:0, year:2012, note:"形から「恐竜橋」と呼ばれる。"},
-  {name:"東京ドーム", kana:"とうきょうドーム", lat:35.7056, lon:139.7519, h:61, ground:15, year:1988, note:"通称ビッグエッグ。日本初の全天候型球場。"},
-  {name:"国会議事堂", kana:"こっかいぎじどう", lat:35.6759, lon:139.7450, h:65, ground:20, year:1936, note:"中央塔の高さ65m。着工から17年かけて完成。"},
-  {name:"東京国際フォーラム", kana:null, lat:35.6765, lon:139.7635, h:57, ground:3, year:1996, note:"ラファエル・ヴィニオリ設計の船底型ガラス棟。"},
-  {name:"神谷町トラストタワー", kana:null, lat:35.6640, lon:139.7440, h:180, ground:20, year:2020, note:"東京エディション虎ノ門が入る。"},
-  {name:"パークコート赤坂檜町ザ タワー", kana:null, lat:35.6672, lon:139.7325, h:155, ground:30, year:2018, note:"檜町公園に面した高級タワーレジデンス。"},
-  {name:"品川インターシティ", kana:null, lat:35.6270, lon:139.7405, h:145, ground:4, year:1998, note:"品川駅港南口に並ぶ連続した棟。"},
-  {name:"品川シーズンテラス", kana:null, lat:35.6255, lon:139.7440, h:152, ground:3, year:2015, note:"下水処理施設の上に建つ「人工地盤」ビル。"},
-  {name:"中野セントラルパークサウス", kana:null, lat:35.7070, lon:139.6640, h:100, ground:40, year:2012, note:"警察大学校跡地の「中野四季の都市」。"},
-  {name:"東京ソラマチ イーストタワー", kana:null, lat:35.7095, lon:139.8125, h:158, ground:2, year:2012, note:"スカイツリータウンの商業・オフィス棟。"},
-  {name:"パークシティ武蔵小杉ミッドスカイタワー", kana:null, lat:35.5780, lon:139.6580, h:203, ground:5, year:2009, note:"川崎市。武蔵小杉のタワマン群の最高峰。"},
-  {name:"横浜ランドマークタワー", kana:null, lat:35.4548, lon:139.6317, h:296, ground:3, year:1993, note:"みなとみらい。長く日本一の高さを保った。"},
-  {name:"富士山", kana:"ふじさん", lat:35.3606, lon:138.7274, h:3776, ground:0, year:null, note:"日本最高峰。空気が澄んだ冬の朝によく見える。"}
-];
-/* プリセット視点（緯度・経度・目線の海抜高さ） */
+var CESIUM_VERSION = "1.117";
+var CESIUM_ROOT = "https://cesium.com/downloads/cesiumjs/releases/" + CESIUM_VERSION + "/Build/Cesium";
+var TILE_ROOT = "https://api.plateauview.mlit.go.jp/datacatalog/3dtiles/";
 var PRESETS = [
-  {label:"東京都庁 展望室 (202m)",        lat:35.6896, lon:139.6917, eye:238},
-  {label:"渋谷スカイ (229m)",              lat:35.6580, lon:139.7016, eye:248},
-  {label:"東京タワー メインデッキ (150m)", lat:35.6586, lon:139.7454, eye:170},
-  {label:"東京スカイツリー 天望デッキ (350m)", lat:35.7101, lon:139.8107, eye:352},
-  {label:"サンシャイン60 展望台 (251m)",   lat:35.7290, lon:139.7190, eye:286},
-  {label:"六本木ヒルズ 東京シティビュー (218m)", lat:35.6605, lon:139.7292, eye:240}
+  {name:"東京駅 12階",lat:35.68120,lon:139.76710,eye:50,heading:285,pitch:0,floor:12,ground:0},
+  {name:"東京都庁 展望室",lat:35.68960,lon:139.69210,eye:202,heading:95,pitch:-1,floor:48,ground:8},
+  {name:"渋谷スカイ",lat:35.65845,lon:139.70215,eye:229,heading:55,pitch:-2,floor:46,ground:25},
+  {name:"東京タワー メインデッキ",lat:35.65858,lon:139.74543,eye:150,heading:35,pitch:-1,floor:35,ground:8},
+  {name:"東京スカイツリー 天望デッキ",lat:35.71005,lon:139.81072,eye:350,heading:235,pitch:-2,floor:80,ground:28},
+  {name:"サンシャイン60 展望台",lat:35.72910,lon:139.71805,eye:251,heading:185,pitch:-2,floor:60,ground:9},
+  {name:"六本木ヒルズ 東京シティビュー",lat:35.66043,lon:139.72910,eye:218,heading:55,pitch:-2,floor:52,ground:8}
 ];
-
-/* -------------------------------------------------------------------------
-   状態
-   ------------------------------------------------------------------------- */
 var S = {
-  lat: 35.6812, lon: 139.7671,   // 既定は東京駅
-  acc: null,                     // GPS精度(m)
-  useGps: true,
-  eye: 50,                       // 目線の高さ (m ASL)
-  site: 0,                       // 観測地の地面標高 (m ASL)
-  floors: 12,
-  hfov: 63,                      // 水平視野角(deg)
-  headOff: 0,                    // 方位オフセット(deg)
-  pitchOff: 0,                   // 仰角オフセット(deg)
-  maxDist: 60,                   // km
-  // 絞り込み
-  reticle: true,                 // 照準モード（中央の輪の中だけ表示）
-  reticleR: 0.14,                // 照準の半径（min(VW,VH) に対する比）
-  minAng: 0.30,                  // 見かけの縦方向の角度の下限(deg)
-  occlude: true,                 // 手前のビルに隠れるものを除く
-  famousOnly: false,             // 収録の名所60件だけに名前を出す（遮蔽判定には影響しない）
-  demo: false,
-  demoAuto: false,
-  showHorizon: true,
-  // センサー
-  alpha: 0, beta: 90, gamma: 0,  // rad
-  hasOrient: false,
-  absolute: false,
-  compassHeading: null,
-  // デモ用の合成カメラ
-  demoHeading: 0,                // rad (北=0, 東=+)
-  demoPitch: 0,                  // rad
-  // 選択・モード
-  selected: null,                // 建物名
-  calibTarget: null,             // 方位合わせ対象の建物名
-  calib2: null,                  // 2点校正の進行状態（保存しない）
-  camOk: false,
-  camMsg: "カメラ未取得"
+  lat:35.68120,lon:139.76710,eye:50,floor:12,ground:0,
+  heading:285,pitch:0,initialHeading:285,hfov:63,near:35,opacity:.72,
+  mode:"overlay",lightweight:false,manual:false,started:false,gpsAccuracy:null
 };
+var viewer = null;
+var tileset = null;
+var cesiumPromise = null;
+var cameraStream = null;
+var loadStartedAt = 0;
+var firstLoadRecorded = false;
+var tileStatus = "未読込";
+var toastTimer = 0;
 
-var LSKEY = "tokyoBuildingView.v1";
-function saveState() {
-  try {
-    localStorage.setItem(LSKEY, JSON.stringify({
-      headOff:S.headOff, pitchOff:S.pitchOff, hfov:S.hfov,
-      eye:S.eye, site:S.site, floors:S.floors, maxDist:S.maxDist,
-      showHorizon:S.showHorizon,
-      reticle:S.reticle, reticleR:S.reticleR, minAng:S.minAng, occlude:S.occlude,
-      famousOnly:S.famousOnly
-    }));
-  } catch (e) { /* プライベートモード等では無視 */ }
-}
-function loadState() {
-  try {
-    var raw = localStorage.getItem(LSKEY);
-    if (!raw) return;
-    var o = JSON.parse(raw);
-    if (typeof o.headOff === "number") S.headOff = o.headOff;
-    if (typeof o.pitchOff === "number") S.pitchOff = o.pitchOff;
-    if (typeof o.hfov === "number") S.hfov = o.hfov;
-    if (typeof o.eye === "number") S.eye = o.eye;
-    if (typeof o.site === "number") S.site = o.site;
-    if (typeof o.floors === "number") S.floors = o.floors;
-    if (typeof o.maxDist === "number") S.maxDist = o.maxDist;
-    if (typeof o.showHorizon === "boolean") S.showHorizon = o.showHorizon;
-    if (typeof o.reticle === "boolean") S.reticle = o.reticle;
-    if (typeof o.reticleR === "number") S.reticleR = o.reticleR;
-    if (typeof o.minAng === "number") S.minAng = o.minAng;
-    if (typeof o.occlude === "boolean") S.occlude = o.occlude;
-    if (typeof o.famousOnly === "boolean") S.famousOnly = o.famousOnly;
-  } catch (e) { /* 壊れていたら既定値のまま */ }
-}
+function $(id){return document.getElementById(id)}
+function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+function norm360(v){return ((v%360)+360)%360}
+function rad(v){return v*Math.PI/180}
+function fixed(v,n){return Number(v).toFixed(n)}
 
-/* -------------------------------------------------------------------------
-   ベクトル / 行列ユーティリティ
-   ------------------------------------------------------------------------- */
-var D2R = Math.PI / 180, R2D = 180 / Math.PI;
-function norm3(v) {
-  var m = Math.sqrt(v[0]*v[0] + v[1]*v[1] + v[2]*v[2]);
-  if (m < 1e-12) return [0,0,1];
-  return [v[0]/m, v[1]/m, v[2]/m];
-}
-function dot3(a,b){ return a[0]*b[0] + a[1]*b[1] + a[2]*b[2]; }
-function matMul(A,B) {
-  var C = [[0,0,0],[0,0,0],[0,0,0]];
-  for (var i=0;i<3;i++) for (var j=0;j<3;j++) {
-    C[i][j] = A[i][0]*B[0][j] + A[i][1]*B[1][j] + A[i][2]*B[2][j];
-  }
-  return C;
-}
-function matVec(A,v) {
-  return [
-    A[0][0]*v[0] + A[0][1]*v[1] + A[0][2]*v[2],
-    A[1][0]*v[0] + A[1][1]*v[1] + A[1][2]*v[2],
-    A[2][0]*v[0] + A[2][1]*v[1] + A[2][2]*v[2]
-  ];
-}
-function Rz(t){ var c=Math.cos(t), s=Math.sin(t); return [[c,-s,0],[s,c,0],[0,0,1]]; }
-function Rx(t){ var c=Math.cos(t), s=Math.sin(t); return [[1,0,0],[0,c,-s],[0,s,c]]; }
-function Ry(t){ var c=Math.cos(t), s=Math.sin(t); return [[c,0,s],[0,1,0],[-s,0,c]]; }
-
-/* -------------------------------------------------------------------------
-   投影の中核
-   観測者 (lat0, lon0, obsHeight[m ASL]) を原点とするローカルENU
-   （X=東, Y=北, Z=上）の平面近似で、建物頂部への単位ベクトルを求める。
-   ------------------------------------------------------------------------- */
-function enuVector(b, useTop) {
-  var lat0 = S.lat, lon0 = S.lon;
-  var dE = (b.lon - lon0) * 111320 * Math.cos(lat0 * Math.PI / 180);
-  var dN = (b.lat - lat0) * 110540;
-  var dist = Math.hypot(dE, dN);
-  var ground = (typeof b.ground === "number") ? b.ground : 0;
-  var top = ground + b.h;
-  // 地球の曲率 + 大気による屈折を合わせた「見かけの沈み込み」。
-  // 有効地球半径 7.2e6 m（実半径の約 7/6）を使う近似。
-  var drop = dist * dist / (2 * 7.2e6);
-  var target = useTop ? top : ground;      // 頂部 or 足元
-  var dU = target - S.eye - drop;
-  return { v: norm3([dE, dN, dU]), dist: dist, dE: dE, dN: dN, dU: dU };
-}
-
-/* 方位・仰角オフセットの適用。
-   仕様どおり「Up(Z)軸まわりに -offset ラジアン回転」させる。
-   これは方位角 az = atan2(E,N) を +offset するのと等価。
-   仰角オフセットはワールド系で仰角に直接加算する（画面全体を上下に傾けるのと同じ）。*/
-function applyOffsets(v) {
-  var az = Math.atan2(v[0], v[1]) + S.headOff * D2R;
-  var el = Math.asin(Math.max(-1, Math.min(1, v[2]))) + S.pitchOff * D2R;
-  if (el > 1.5533) el = 1.5533;            // ±89° でクランプ
-  if (el < -1.5533) el = -1.5533;
-  var ce = Math.cos(el);
-  return [Math.sin(az) * ce, Math.cos(az) * ce, Math.sin(el)];
-}
-/* 方位角・仰角から単位ENUベクトルへ */
-function azElToVec(azRad, elRad) {
-  var ce = Math.cos(elRad);
-  return [Math.sin(azRad) * ce, Math.cos(azRad) * ce, Math.sin(elRad)];
-}
-
-/* カメラ基底（右・上・前方）をワールド(ENU)で返す。
-   DeviceOrientation の R = Rz(alpha)・Rx(beta)・Ry(gamma)。
-   端末軸は x=画面右, y=画面上, z=画面手前（利用者側）。
-   したがって背面カメラの向きは R*(0,0,-1)。
-   この基底方式なら端末のロールも横持ちも自動的に扱えるので、
-   screen.orientation.angle による補正は一切入れない。 */
-function cameraBasis() {
-  if (S.demo || !S.hasOrient) {
-    // 合成カメラ：heading(北0, 東+) と pitch から直接基底を作る
-    var hd = S.demoHeading, pt = S.demoPitch;
-    var fwd = [Math.sin(hd)*Math.cos(pt), Math.cos(hd)*Math.cos(pt), Math.sin(pt)];
-    var right = [Math.cos(hd), -Math.sin(hd), 0];
-    var up = [                       // up = right × fwd
-      right[1]*fwd[2] - right[2]*fwd[1],
-      right[2]*fwd[0] - right[0]*fwd[2],
-      right[0]*fwd[1] - right[1]*fwd[0]
-    ];
-    return { right: norm3(right), up: norm3(up), fwd: norm3(fwd) };
-  }
-  var R = matMul(matMul(Rz(S.alpha), Rx(S.beta)), Ry(S.gamma));
-  return {
-    right: matVec(R, [1,0,0]),
-    up:    matVec(R, [0,1,0]),
-    fwd:   matVec(R, [0,0,-1])
-  };
-}
-
-var VW = 0, VH = 0;   // CSSピクセルでのキャンバスサイズ
-
-function focalPx() {
-  return (VW / 2) / Math.tan(S.hfov * D2R / 2);
-}
-/* 単位ENUベクトル（オフセット適用済み）→ 画面座標 */
-function project(v, basis) {
-  var x = dot3(v, basis.right);
-  var y = dot3(v, basis.up);
-  var z = dot3(v, basis.fwd);
-  if (z <= 0) return null;                 // カメラの後ろ
-  var f = focalPx();
-  return { sx: VW/2 + f * x / z, sy: VH/2 - f * y / z, z: z };
-}
-/* 画面座標 → ワールド方向ベクトル（オフセット適用前の実際のカメラ方向） */
-function unproject(sx, sy, basis) {
-  var f = focalPx();
-  var dx = (sx - VW/2) / f;
-  var dy = (VH/2 - sy) / f;
-  var w = [
-    dx*basis.right[0] + dy*basis.up[0] + basis.fwd[0],
-    dx*basis.right[1] + dy*basis.up[1] + basis.fwd[1],
-    dx*basis.right[2] + dy*basis.up[2] + basis.fwd[2]
-  ];
-  return norm3(w);
-}
-
-/* -------------------------------------------------------------------------
-   DOM 参照
-   ------------------------------------------------------------------------- */
-function $(id){ return document.getElementById(id); }
-var cv = $("ov"), ctx = cv.getContext("2d");
-var video = $("cam");
-var statusText = $("statusText");
-
-/* -------------------------------------------------------------------------
-   キャンバスのサイズ設定（devicePixelRatio対応）
-   ------------------------------------------------------------------------- */
-function setupCanvas() {
-  var dpr = window.devicePixelRatio || 1;
-  var r = cv.getBoundingClientRect();
-  VW = Math.max(1, Math.round(r.width));
-  VH = Math.max(1, Math.round(r.height));
-  cv.width = Math.round(VW * dpr);
-  cv.height = Math.round(VH * dpr);
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-}
-window.addEventListener("resize", function(){ setTimeout(setupCanvas, 60); });
-window.addEventListener("orientationchange", function(){ setTimeout(setupCanvas, 250); });
-
-/* -------------------------------------------------------------------------
-   描画
-   ------------------------------------------------------------------------- */
-var DIRNAMES = { 0:"北", 45:"北東", 90:"東", 135:"南東", 180:"南", 225:"南西", 270:"西", 315:"北西" };
-var lastPlaced = [];   // タップ判定に使うラベル矩形
-
-function rectHit(a, b) {
-  return !(a.x + a.w < b.x || b.x + b.w < a.x || a.y + a.h < b.y || b.y + b.h < a.y);
-}
-
-function drawHorizon(basis) {
-  if (!S.showHorizon) return;
-  // 観測者の高さによる伏角（地平線が水平より下に見える角度）
-  var Re = 6371000;
-  var hAbove = Math.max(0, S.eye - S.site);
-  var dip = Math.acos(Re / (Re + Math.max(0.5, hAbove)));   // rad
-
-  // (1) 水平線：dU=0 の方向の集合（仰角0）。方位目盛を載せる。
-  drawRing(basis, 0, "rgba(255,255,255,0.34)", true);
-  // (2) 高所にいるときは、実際に地面が見える伏角ぶん下の「地平線」も薄く描く
-  if (dip * R2D > 0.15) drawRing(basis, -dip, "rgba(255,255,255,0.14)", false);
-}
-
-function drawRing(basis, elRad, color, withTicks) {
-  ctx.save();
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  var started = false;
-  for (var a = 0; a <= 360; a += 2) {
-    var v = applyOffsets(azElToVec(a * D2R, elRad));
-    var p = project(v, basis);
-    if (!p) { started = false; continue; }
-    if (!started) { ctx.moveTo(p.sx, p.sy); started = true; }
-    else ctx.lineTo(p.sx, p.sy);
-  }
-  ctx.stroke();
-  ctx.restore();
-  if (!withTicks) return;
-
-  ctx.save();
-  ctx.font = "10px -apple-system, 'Hiragino Sans', sans-serif";
-  ctx.textAlign = "center";
-  for (var d = 0; d < 360; d += 15) {
-    var vv = applyOffsets(azElToVec(d * D2R, elRad));
-    var pp = project(vv, basis);
-    if (!pp) continue;
-    if (pp.sx < -30 || pp.sx > VW + 30) continue;
-    var major = (d % 45 === 0);
-    ctx.strokeStyle = major ? "rgba(255,255,255,0.6)" : "rgba(255,255,255,0.3)";
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(pp.sx, pp.sy - (major ? 9 : 5));
-    ctx.lineTo(pp.sx, pp.sy + (major ? 9 : 5));
-    ctx.stroke();
-    if (major) {
-      var nm = DIRNAMES[d] || (d + "°");
-      ctx.fillStyle = (d === 0) ? "#ff9a8a" : "rgba(255,255,255,0.85)";
-      ctx.fillText(nm, pp.sx, pp.sy + 22);
-    }
-  }
-  ctx.restore();
-}
-
-function fmtDist(m) {
-  if (m < 1000) return Math.round(m) + "m";
-  if (m < 10000) return (m / 1000).toFixed(1) + "km";
-  return Math.round(m / 1000) + "km";
-}
-
-var visibleList = [];   // 下部シート用
-/* 絞り込みの内訳（#diag に出す）。候補→距離外→角度足切り→遮蔽→表示 */
-var funnel = { total: 0, far: 0, small: 0, occ: 0, shown: 0 };
-
-/* この建物を絶対に消してはいけないか（選択中・方位合わせ対象・2点校正の対象） */
-function isPinned(name) {
-  if (name === S.selected || name === S.calibTarget) return true;
-  if (S.calib2 && (name === S.calib2.aName || name === S.calib2.bName)) return true;
-  return false;
-}
-
-/* 見かけの縦方向の角度(deg)。頂部と足元の仰角の差。 */
-function apparentAngle(top, base) {
-  var elTop = Math.atan2(top.dU, Math.max(1, top.dist));
-  var elBase = Math.atan2(base.dU, Math.max(1, base.dist));
-  return { elTop: elTop, angH: (elTop - elBase) * R2D };
-}
-
-/* 自己遮蔽の判定。
-   方位を0.5°刻みの720本のビンに分け、近いものから順に
-   「その方位で今までに見えた頂部の仰角」の水平線プロファイルを積み上げる。
-   自分の頂部がプロファイルより低ければ、手前のビルに隠れているとみなす。
-   ※ 収録データにあるビル同士でしか判定できない。 */
-var OCC_BINS = 720, OCC_BW = 360 / OCC_BINS, OCC_EPS = 0.05 * D2R;
-/* -------------------------------------------------------------------------
-   外部の遮蔽データ（OSM由来、約4800棟）
-   収録60件だけでは、実際に視界を塞いでいる無名のビルを表現できない。
-   稜線プロファイルは観測者の位置と目線の高さだけで決まりカメラの向きに依存しないので、
-   位置が変わったときに1回だけ作ってキャッシュする（毎フレームではない）。
-   ------------------------------------------------------------------------- */
-var OCCDATA = null;         // { occ:[[lat,lon,h],..], named:[[lat,lon,h,name],..] }
-var occProfile = null, occKey = "";
-
-function buildOccProfile() {
-  var key = S.lat.toFixed(5) + "," + S.lon.toFixed(5) + "," + Math.round(S.eye) + "," + S.maxDist;
-  if (occProfile && occKey === key) return occProfile;
-  var prof = new Array(OCC_BINS);
-  for (var q = 0; q < OCC_BINS; q++) prof[q] = -Infinity;
-  if (OCCDATA && OCCDATA.occ) {
-    var cosLat = Math.cos(S.lat * D2R), maxM = S.maxDist * 1000;
-    var arr = OCCDATA.occ;
-    for (var i = 0; i < arr.length; i++) {
-      var dE = (arr[i][1] - S.lon) * 111320 * cosLat;
-      var dN = (arr[i][0] - S.lat) * 110540;
-      var dist = Math.hypot(dE, dN);
-      if (dist > maxM || dist < 1) continue;
-      var drop = dist * dist / (2 * 7.2e6);
-      var elTop = Math.atan2(arr[i][2] - S.eye - drop, dist);
-      var wMet = Math.max(30, Math.min(90, 30 + arr[i][2] * 0.15));
-      var halfW = Math.atan2(wMet / 2, dist);
-      var azC = Math.atan2(dE, dN);
-      var a0 = Math.floor((azC - halfW) * R2D / OCC_BW);
-      var a1 = Math.floor((azC + halfW) * R2D / OCC_BW);
-      for (var bk = a0; bk <= a1; bk++) {
-        var kdx = ((bk % OCC_BINS) + OCC_BINS) % OCC_BINS;
-        if (elTop > prof[kdx]) prof[kdx] = elTop;
-      }
-    }
-  }
-  occProfile = prof; occKey = key;
-  return prof;
-}
-
-function markOcclusion(cands) {
-  var base = buildOccProfile();
-  var prof = base.slice();          // 外部データの稜線を土台に、収録60件を重ねていく
-  for (var k = 0; k < cands.length; k++) {      // 距離昇順で来ている前提
-    var c = cands[k];
-    var b = c.b;
-    var wMet = (typeof b.w === "number") ? b.w : Math.max(30, Math.min(90, 30 + b.h * 0.15));
-    var azC = Math.atan2(c.rawV[0], c.rawV[1]);
-    var halfW = Math.atan2(wMet / 2, Math.max(1, c.dist));
-    var i0 = Math.floor((azC - halfW) * R2D / OCC_BW);
-    var i1 = Math.floor((azC + halfW) * R2D / OCC_BW);
-    // まず判定（自分を書き込む前に）
-    var maxEl = -Infinity;
-    for (var bi = i0; bi <= i1; bi++) {
-      var idx = ((bi % OCC_BINS) + OCC_BINS) % OCC_BINS;   // 0/360°をまたいでも巡回
-      if (prof[idx] > maxEl) maxEl = prof[idx];
-    }
-    if (c.elTop <= maxEl - OCC_EPS) c.occluded = true;
-    // 次に書き込み（隠れていても、そのビル自身は空を遮る）
-    for (var bj = i0; bj <= i1; bj++) {
-      var jdx = ((bj % OCC_BINS) + OCC_BINS) % OCC_BINS;
-      if (c.elTop > prof[jdx]) prof[jdx] = c.elTop;
-    }
-    if (c.occluded && isPinned(b.name)) c.occluded = false;   // 選択中は消さない
-  }
-}
-
-/* 衝突を避けられる矩形を探す。見つからなければ null */
-function findSlot(ax, wantY, w, h, placed) {
-  var topLim = 44, bottomLim = VH - 46;   // 上部ステータス／下部シートの帯を避ける
-  var step = h + 4;
-  for (var tries = 0; tries < 12; tries++) {
-    var cand = [wantY - step * tries, wantY + step * tries];   // 上優先、次に下
-    for (var ci = 0; ci < 2; ci++) {
-      if (ci === 1 && tries === 0) continue;                   // 同じ位置を二度試さない
-      var r0 = { x: ax, y: cand[ci], w: w, h: h };
-      if (r0.y < topLim || r0.y + r0.h > bottomLim) continue;  // 画面外は不可
-      var hit = false;
-      for (var m = 0; m < placed.length; m++) {
-        if (rectHit(r0, placed[m])) { hit = true; break; }
-      }
-      if (!hit) return r0;
-    }
-  }
-  return null;
-}
-
-/* 従来のピル型ラベル1枚。置けたら true */
-function drawPill(c, placed, small) {
-  var b2 = c.b;
-  var t = Math.min(1, c.dist / 25000);
-  var fs = small ? 11 : (14 - 3.5 * t);          // 14px → 10.5px
-  var alpha = small ? 0.72 : (1 - 0.5 * t);
-  var isSel = (S.selected === b2.name) || (S.calibTarget === b2.name);
-  if (isSel) alpha = 1;
-
-  var label = small ? (b2.name + "  " + fmtDist(c.dist))
-                    : (b2.name + "  " + fmtDist(c.dist) + " " + Math.round(b2.h) + "m");
-  ctx.font = fs.toFixed(1) + "px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-  var padX = 7, padY = 4;
-  var w = ctx.measureText(label).width + padX * 2, h = fs + padY * 2;
-
-  // 先に左右を画面内へクランプしておく（後からずらすと衝突判定が崩れるため）
-  var ax = c.pTop.sx - w / 2;
-  if (ax < 4) ax = 4;
-  if (ax + w > VW - 4) ax = VW - 4 - w;
-  var rect = findSlot(ax, c.pTop.sy - 16 - h, w, h, placed);
-  if (!rect) return false;
-
-  ctx.save();
-  ctx.globalAlpha = alpha;
-  // 足元→頂部の縦の目盛線
-  if (c.pBase && !small) {
-    ctx.strokeStyle = isSel ? "rgba(111,211,255,0.95)" : "rgba(255,255,255,0.45)";
-    ctx.lineWidth = isSel ? 1.6 : 1;
-    ctx.beginPath();
-    ctx.moveTo(c.pBase.sx, c.pBase.sy);
-    ctx.lineTo(c.pTop.sx, c.pTop.sy);
-    ctx.stroke();
-  }
-  // 頂部のドット
-  ctx.fillStyle = isSel ? "#6fd3ff" : "#ffffff";
-  ctx.beginPath();
-  ctx.arc(c.pTop.sx, c.pTop.sy, isSel ? 3.6 : (small ? 2 : 2.6), 0, Math.PI * 2);
-  ctx.fill();
-  // ラベルへの引き出し線
-  ctx.strokeStyle = isSel ? "rgba(111,211,255,0.8)" : "rgba(255,255,255,0.35)";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(c.pTop.sx, c.pTop.sy);
-  ctx.lineTo(rect.x + rect.w / 2, rect.y + rect.h);
-  ctx.stroke();
-  // ピル状のラベル
-  roundRect(ctx, rect.x, rect.y, rect.w, rect.h, 5);
-  ctx.fillStyle = isSel ? "rgba(20,50,66,0.9)" : "rgba(8,11,14,0.72)";
-  ctx.fill();
-  ctx.strokeStyle = isSel ? "rgba(111,211,255,0.9)" : "rgba(255,255,255,0.3)";
-  ctx.lineWidth = 1;
-  ctx.stroke();
-  ctx.fillStyle = "#ffffff";
-  ctx.textAlign = "left";
-  ctx.textBaseline = "middle";
-  ctx.fillText(label, rect.x + padX, rect.y + rect.h / 2 + 0.5);
-  ctx.restore();
-
-  placed.push(rect);
-  lastPlaced.push({ rect: rect, b: b2, dist: c.dist });
-  return true;
-}
-
-/* 従来モード：最大25件をばらまく */
-function drawScatter(cands) {
-  // 描画順は距離順（近い＝先に描く＝手前）だが、
-  // 選択中／方位合わせ対象のビルだけは 25件の上限で消えないよう先頭に回す。
-  var order = cands;
-  if (S.selected || S.calibTarget || S.calib2) {
-    var pri = [], rest = [];
-    for (var s = 0; s < cands.length; s++) {
-      if (isPinned(cands[s].b.name)) pri.push(cands[s]); else rest.push(cands[s]);
-    }
-    order = pri.concat(rest);
-  }
-  var placed = [], drawn = 0, MAXLABELS = 25;
-  for (var k = 0; k < order.length && drawn < MAXLABELS; k++) {
-    if (drawPill(order[k], placed, false)) drawn++;
-  }
-
-  // 中央のレティクル（小さい十字）
-  ctx.save();
-  ctx.strokeStyle = "rgba(255,255,255,0.35)";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(VW/2 - 9, VH/2); ctx.lineTo(VW/2 - 3, VH/2);
-  ctx.moveTo(VW/2 + 3, VH/2); ctx.lineTo(VW/2 + 9, VH/2);
-  ctx.moveTo(VW/2, VH/2 - 9); ctx.lineTo(VW/2, VH/2 - 3);
-  ctx.moveTo(VW/2, VH/2 + 3); ctx.lineTo(VW/2, VH/2 + 9);
-  ctx.stroke();
-  ctx.restore();
-  return drawn;
-}
-
-/* 照準モード：中央の輪に入ったものだけ。主1件＋副2件まで。
-   cands は遮蔽済みを除いたもの、allCands は除く前のもの。
-   輪の中が空でも、遮蔽で消したものがあるなら名前を出す。
-   「見えているのに隠れている判定」に利用者が気づけるようにするため
-   （たいていの原因は目線の高さの入力ミス）。 */
-function drawReticleMode(cands, allCands) {
-  var R = Math.max(20, S.reticleR * Math.min(VW, VH));
-  var cx = VW / 2, cy = VH / 2;
-
-  // --- 照準そのもの ---
-  ctx.save();
-  ctx.strokeStyle = "rgba(111,211,255,0.30)";
-  ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.arc(cx, cy, R, 0, Math.PI * 2); ctx.stroke();
-  ctx.strokeStyle = "rgba(111,211,255,0.55)";
-  var tk = Math.min(10, R * 0.28);
-  ctx.beginPath();
-  ctx.moveTo(cx - R, cy); ctx.lineTo(cx - R + tk, cy);
-  ctx.moveTo(cx + R, cy); ctx.lineTo(cx + R - tk, cy);
-  ctx.moveTo(cx, cy - R); ctx.lineTo(cx, cy - R + tk);
-  ctx.moveTo(cx, cy + R); ctx.lineTo(cx, cy + R - tk);
-  ctx.stroke();
-  ctx.restore();
-
-  // --- 輪の中に頂部が入っているものだけ、中心に近い順に ---
-  var inR = [];
-  for (var i = 0; i < cands.length; i++) {
-    var c = cands[i];
-    var d = Math.hypot(c.pTop.sx - cx, c.pTop.sy - cy);
-    if (d <= R) { c.cdist = d; inR.push(c); }
-  }
-  inR.sort(function(p, q){ return p.cdist - q.cdist; });
-
-  if (!inR.length) {
-    // 遮蔽で消したものが輪の中にあるなら、それを（隠れている前提で）名前だけ出す
-    var hidden = [];
-    if (allCands) {
-      for (var q = 0; q < allCands.length; q++) {
-        var h = allCands[q];
-        if (!h.occluded) continue;
-        if (Math.hypot(h.pTop.sx - cx, h.pTop.sy - cy) <= R) hidden.push(h);
-      }
-      hidden.sort(function(p, q2){ return p.dist - q2.dist; });
-    }
-    ctx.save();
-    ctx.fillStyle = "#e9eef2";
-    ctx.textAlign = "center";
-    ctx.textBaseline = "top";
-    if (hidden.length) {
-      ctx.globalAlpha = 0.7;
-      ctx.font = "13px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-      ctx.fillText(hidden[0].b.name, cx, cy + R + 12);
-      ctx.globalAlpha = 0.5;
-      ctx.font = "10.5px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-      ctx.fillText("手前の建物に隠れている判定です", cx, cy + R + 30);
-      ctx.fillText("見えているなら目線の高さを見直してください", cx, cy + R + 45);
-    } else {
-      ctx.globalAlpha = 0.55;
-      ctx.font = "12px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-      ctx.fillText("照準を建物に合わせてください", cx, cy + R + 14);
-    }
-    ctx.restore();
-    return 0;
-  }
-
-  var placed = [];
-  var pri = inR[0], b = pri.b;
-
-  // --- 主：大きめのカード ---
-  var line1 = b.name;
-  var parts = [fmtDist(pri.dist), Math.round(b.h) + "m"];
-  if (b.year) parts.push(b.year + "年");
-  var line2 = parts.join(" / ");
-  ctx.font = "17px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-  var w1 = ctx.measureText(line1).width;
-  ctx.font = "11.5px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-  var w2 = ctx.measureText(line2).width;
-  var padX = 12, padY = 9;
-  var maxW = Math.min(VW - 24, 340);
-  var cw = Math.min(maxW, Math.max(w1, w2) + padX * 2);
-  var ch = padY * 2 + 21 + 16;
-  // note は入るときだけ3行目に
-  var note = b.note || "";
-  var noteFit = "";
-  if (note) {
-    var avail = cw - padX * 2;
-    if (ctx.measureText(note).width <= avail) { noteFit = note; ch += 15; }
-    else {
-      cw = Math.min(maxW, Math.max(cw, ctx.measureText(note).width + padX * 2));
-      if (ctx.measureText(note).width <= cw - padX * 2) { noteFit = note; ch += 15; }
-    }
-  }
-  var rx = Math.round(cx - cw / 2);
-  if (rx < 8) rx = 8;
-  if (rx + cw > VW - 8) rx = VW - 8 - cw;
-  var ry = Math.round(cy + R + 18);
-  if (ry + ch > VH - 50) ry = Math.max(48, VH - 50 - ch);
-
-  ctx.save();
-  // 引き出し線とドット
-  ctx.strokeStyle = "rgba(111,211,255,0.75)";
-  ctx.lineWidth = 1;
-  ctx.beginPath();
-  ctx.moveTo(pri.pTop.sx, pri.pTop.sy);
-  ctx.lineTo(rx + cw / 2, ry);
-  ctx.stroke();
-  ctx.fillStyle = "#6fd3ff";
-  ctx.beginPath(); ctx.arc(pri.pTop.sx, pri.pTop.sy, 4.2, 0, Math.PI * 2); ctx.fill();
-  ctx.strokeStyle = "rgba(255,255,255,0.85)";
-  ctx.lineWidth = 1;
-  ctx.beginPath(); ctx.arc(pri.pTop.sx, pri.pTop.sy, 7.5, 0, Math.PI * 2); ctx.stroke();
-
-  roundRect(ctx, rx, ry, cw, ch, 8);
-  ctx.fillStyle = "rgba(10,26,36,0.88)";
-  ctx.fill();
-  ctx.strokeStyle = "rgba(111,211,255,0.85)";
-  ctx.lineWidth = 1;
-  ctx.stroke();
-  ctx.textAlign = "left";
-  ctx.textBaseline = "top";
-  ctx.fillStyle = "#ffffff";
-  ctx.font = "17px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-  ctx.fillText(line1, rx + padX, ry + padY, cw - padX * 2);
-  ctx.fillStyle = "#c7d3db";
-  ctx.font = "11.5px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-  ctx.fillText(line2, rx + padX, ry + padY + 23, cw - padX * 2);
-  if (noteFit) {
-    ctx.fillStyle = "#8f9ba3";
-    ctx.font = "11px -apple-system, 'Hiragino Sans', 'Noto Sans JP', sans-serif";
-    ctx.fillText(noteFit, rx + padX, ry + padY + 39, cw - padX * 2);
-  }
-  ctx.restore();
-
-  var prect = { x: rx, y: ry, w: cw, h: ch };
-  placed.push(prect);
-  lastPlaced.push({ rect: prect, b: b, dist: pri.dist });
-
-  // --- 副：小さく薄いラベルを2件まで ---
-  var drawn = 1;
-  for (var s = 1; s < inR.length && drawn < 3; s++) {
-    if (drawPill(inR[s], placed, true)) drawn++;
-  }
-  return drawn;
-}
-
-function render() {
-  ctx.clearRect(0, 0, VW, VH);
-  var basis = cameraBasis();
-  drawHorizon(basis);
-
-  // --- 候補の抽出（距離昇順 = 近いものから先に描く＝手前に来る） ---
-  var maxM = S.maxDist * 1000;
-  var cands = [];
-  var nFar = 0, nSmall = 0, nOcc = 0;
-  for (var i = 0; i < BUILDINGS.length; i++) {
-    var b = BUILDINGS[i];
-    var top = enuVector(b, true);
-    if (top.dist > maxM) { nFar++; continue; }    // 60km（設定値）以遠は捨てる
-    var base = enuVector(b, false);
-    var ap = apparentAngle(top, base);
-    var pin = isPinned(b.name);
-    // 見かけの大きさによる足切り。100mのビルは1km先では目立ち、15km先では意味がない。
-    if (ap.angH < S.minAng && !pin) { nSmall++; continue; }
-    var pTop = project(applyOffsets(top.v), basis);
-    if (!pTop) continue;                           // カメラの後ろ
-    if (pTop.sx < -140 || pTop.sx > VW + 140 || pTop.sy < -200 || pTop.sy > VH + 200) continue;
-    var pBase = project(applyOffsets(base.v), basis);
-    cands.push({ b: b, dist: top.dist, pTop: pTop, pBase: pBase,
-                 rawV: top.v, elTop: ap.elTop, angH: ap.angH, occluded: false });
-  }
-  cands.sort(function(p, q){ return p.dist - q.dist; });
-
-  // --- 自己遮蔽 ---
-  if (S.occlude) {
-    markOcclusion(cands);
-    for (var o = 0; o < cands.length; o++) if (cands[o].occluded) nOcc++;
-  }
-  visibleList = cands;   // 一覧は純粋に距離順（隠れているものも印つきで残す）
-
-  // --- ラベルの絞り込み ---
-  // 「収録の名所のみ」は名前を出す対象だけを絞る。遮蔽の判定（markOcclusion /
-  // buildOccProfile）は常に全件で行う。名前が出ないビルでも視界は塞ぐため。
-  var nameable = [];
-  for (var f0 = 0; f0 < cands.length; f0++) {
-    if (S.famousOnly && cands[f0].b.src === "osm" && !isPinned(cands[f0].b.name)) continue;
-    nameable.push(cands[f0]);
-  }
-  var labelable = [];
-  for (var e = 0; e < nameable.length; e++) if (!nameable[e].occluded) labelable.push(nameable[e]);
-
-  lastPlaced = [];
-  var drawn = S.reticle ? drawReticleMode(labelable, nameable) : drawScatter(labelable);
-
-  funnel.total = BUILDINGS.length;
-  funnel.far = nFar; funnel.small = nSmall; funnel.occ = nOcc; funnel.shown = drawn;
-}
-
-function roundRect(c, x, y, w, h, r) {
-  c.beginPath();
-  c.moveTo(x + r, y);
-  c.arcTo(x + w, y, x + w, y + h, r);
-  c.arcTo(x + w, y + h, x, y + h, r);
-  c.arcTo(x, y + h, x, y, r);
-  c.arcTo(x, y, x + w, y, r);
-  c.closePath();
-}
-
-/* -------------------------------------------------------------------------
-   ステータス表示 / 一覧
-   ------------------------------------------------------------------------- */
-var listDirty = 0;
-function updateStatus() {
-  var pos = S.lat.toFixed(5) + ", " + S.lon.toFixed(5);
-  var accS = (S.acc == null) ? (S.useGps ? "取得中" : "手動") : ("±" + Math.round(S.acc) + "m");
-  var mode = S.demo ? "デモ" : (S.hasOrient ? (S.absolute || S.compassHeading != null ? "絶対方位" : "相対方位") : "方位なし");
-  statusText.innerHTML =
-    "<b>" + pos + "</b>  (" + accS + ")\n" +
-    "目線 <b>" + Math.round(S.eye) + "m</b>  視野角 " + S.hfov + "°  方位補正 <b>" +
-    (S.headOff >= 0 ? "+" : "") + S.headOff.toFixed(1) + "°</b>  仰角 " +
-    (S.pitchOff >= 0 ? "+" : "") + S.pitchOff.toFixed(1) + "°\n" +
-    mode + " / " + (S.camOk ? "カメラON" : S.camMsg);
-  updateDiag();
-}
-
-/* 絞り込みの内訳を出す。どのつまみを動かせばよいか分かるように。 */
-var lastEarthUrl = "";     // ポップアップを塞がれたときのコピー用
-function updateDiag() {
-  $("diag").innerHTML =
-    "候補 " + funnel.total +
-    " / 距離外 -" + funnel.far +
-    " / 角度足切り -" + funnel.small +
-    " / 遮蔽 -" + funnel.occ +
-    " / 表示 " + funnel.shown + "<br>" +
-    "座標・高さは概算です（ソース内の BUILDINGS 配列を直接編集できます）。" +
-    (lastEarthUrl ? "<br>Google Earth URL: " + escHtml(lastEarthUrl) : "");
-}
-
-/* 収録60件と OSM 由来の件数。mergeNamed のあとにも呼ぶ。 */
-function updateDataCount() {
-  var osm = 0;
-  for (var i = 0; i < BUILDINGS.length; i++) if (BUILDINGS[i].src === "osm") osm++;
-  var cur = BUILDINGS.length - osm;
-  $("dataCount").textContent =
-    "収録 " + cur + " 件 ＋ OSM " + osm + " 件 = " + BUILDINGS.length + " 件" +
-    "（名前を出す対象の切り替えだけで、遮蔽の判定は常に全件です）";
-}
-
-function renderList() {
-  var el = $("list");
-  var html = "";
-  var n = Math.min(visibleList.length, 40);
-  for (var i = 0; i < n; i++) {
-    var c = visibleList[i];
-    var sel = (S.selected === c.b.name) ? " sel" : "";
-    if (c.occluded) sel += " occ";
-    html += '<div class="item' + sel + '" data-name="' + escAttr(c.b.name) + '">' +
-      '<span class="nm">' + escHtml(c.b.name) + '</span>' +
-      (c.occluded ? '<span class="oc">隠れている可能性</span>' : '') +
-      '<span class="ds">' + fmtDist(c.dist) + ' / ' + Math.round(c.b.h) + 'm</span>' +
-      '<button data-calib="' + escAttr(c.b.name) + '">' +
-      (S.calib2 ? '選ぶ' : '方位合わせ') + '</button></div>';
-  }
-  if (n === 0) html = '<div class="item"><span class="nm">この向きに該当なし</span></div>';
-  el.innerHTML = html;
-  $("sheetLabel").textContent = "見えているビル " + visibleList.length + " 件";
-}
-function escHtml(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
-function escAttr(s){ return escHtml(s).replace(/"/g,"&quot;"); }
-
-/* -------------------------------------------------------------------------
-   メインループ
-   ------------------------------------------------------------------------- */
-var frame = 0;
-function loop() {
-  try {
-    render();
-    frame++;
-    if (frame % 15 === 0) { updateStatus(); renderList(); }
-  } catch (e) {
-    // 描画で例外が出てもループは止めない
-    if (frame % 120 === 0 && window.console) console.warn(e);
-  }
-  requestAnimationFrame(loop);
-}
-
-/* -------------------------------------------------------------------------
-   センサー: DeviceOrientation
-   ------------------------------------------------------------------------- */
-var orientSeen = false;
-function onOrient(ev) {
-  if (ev.alpha === null && ev.beta === null && ev.gamma === null) return;
-  orientSeen = true;
-  S.hasOrient = true;
-  if (ev.absolute) S.absolute = true;
-  var a = ev.alpha || 0;
-  // iOS: webkitCompassHeading は端末上端の真北方位。ある場合はそちらを優先。
-  if (typeof ev.webkitCompassHeading === "number" && !isNaN(ev.webkitCompassHeading)) {
-    S.compassHeading = ev.webkitCompassHeading;
-    a = 360 - ev.webkitCompassHeading;
-  }
-  S.alpha = a * D2R;
-  S.beta  = (ev.beta  || 0) * D2R;
-  S.gamma = (ev.gamma || 0) * D2R;
-}
-function startOrientation() {
-  var attach = function() {
-    if ("ondeviceorientationabsolute" in window) {
-      window.addEventListener("deviceorientationabsolute", onOrient, true);
-    }
-    window.addEventListener("deviceorientation", onOrient, true);
-  };
-  var DOE = window.DeviceOrientationEvent;
-  if (DOE && typeof DOE.requestPermission === "function") {
-    // iOS 13+ : ユーザー操作から呼ぶ必要がある
-    DOE.requestPermission().then(function(res) {
-      if (res === "granted") attach();
-      else toast("方位センサーが許可されませんでした。デモモードで操作できます。");
-    }).catch(function() {
-      toast("方位センサーを取得できませんでした。");
+function loadState(){
+  try{
+    var o=JSON.parse(localStorage.getItem("tokyoBuildingFinder.plateau.v1")||"null");
+    if(!o)return;
+    ["lat","lon","eye","floor","ground","heading","pitch","hfov","near","opacity"].forEach(function(k){
+      if(Number.isFinite(o[k]))S[k]=o[k];
     });
-  } else {
-    attach();
-  }
-  // 1.5秒たっても方位イベントが来なければ自動でデモモードへ
-  setTimeout(function() {
-    if (!orientSeen && !S.demo) {
-      S.demo = true; S.demoAuto = true;
-      $("inDemo").checked = true;
-      toast("センサーが無いのでデモモードにしました（ドラッグで見回せます）");
-    }
-  }, 1500);
+    if(o.mode==="split"||o.mode==="overlay")S.mode=o.mode;
+    if(typeof o.lightweight==="boolean")S.lightweight=o.lightweight;
+  }catch(e){}
+  S.initialHeading=S.heading;
+}
+function saveState(){
+  try{localStorage.setItem("tokyoBuildingFinder.plateau.v1",JSON.stringify(S));}catch(e){}
+}
+function toast(msg){
+  $("toast").textContent=msg;$("toast").classList.add("show");
+  clearTimeout(toastTimer);toastTimer=setTimeout(function(){$("toast").classList.remove("show")},2600);
+}
+function setLoading(show,detail){
+  $("loading").classList.toggle("show",show);
+  if(detail)$("loadingDetail").textContent=detail;
 }
 
-/* -------------------------------------------------------------------------
-   センサー: カメラ
-   ------------------------------------------------------------------------- */
-function startCamera() {
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-    S.camOk = false; S.camMsg = "カメラ非対応"; return;
-  }
-  navigator.mediaDevices.getUserMedia({
-    video: { facingMode: { ideal: "environment" } }, audio: false
-  }).then(function(stream) {
-    video.srcObject = stream;
-    var p = video.play();
-    if (p && p.catch) p.catch(function(){});
-    S.camOk = true; S.camMsg = "カメラON";
-    $("fallbackBg").style.display = "none";
-  }).catch(function(err) {
-    S.camOk = false;
-    S.camMsg = "カメラなし(" + (err && err.name ? err.name : "エラー") + ")";
-    $("fallbackBg").style.display = "";
+function populatePresets(){
+  var html='<option value="">現在の座標</option>';
+  PRESETS.forEach(function(p,i){html+='<option value="'+i+'">'+p.name+'</option>'});
+  $("preset").innerHTML=html;
+}
+function syncUI(){
+  $("lat").value=fixed(S.lat,6);$("lon").value=fixed(S.lon,6);
+  $("floor").value=S.floor;$("ground").value=S.ground;$("eye").value=fixed(S.eye,1);
+  $("opacity").value=S.opacity;$("opacityValue").textContent=Math.round(S.opacity*100)+"%";
+  $("hfov").value=S.hfov;$("hfovValue").textContent=fixed(S.hfov,1)+"°";
+  $("near").value=S.near;$("nearValue").textContent=Math.round(S.near)+"m";
+  $("heading").value=norm360(S.heading);$("headingValue").textContent=fixed(norm360(S.heading),1)+"°";
+  $("pitch").value=S.pitch;$("pitchValue").textContent=(S.pitch>=0?"+":"")+fixed(S.pitch,1)+"°";
+  $("lightweight").checked=S.lightweight;
+  $("three").style.opacity=S.opacity;
+  $("app").classList.toggle("split",S.mode==="split");
+  $("modeOverlay").classList.toggle("on",S.mode==="overlay");
+  $("modeSplit").classList.toggle("on",S.mode==="split");
+  $("diagnostic").textContent=tileStatus;
+  var gps=S.gpsAccuracy?" ±"+Math.round(S.gpsAccuracy)+"m":"";
+  $("status").textContent=fixed(S.lat,5)+", "+fixed(S.lon,5)+gps+"\n目線 "+Math.round(S.eye)+"m  方位 "+Math.round(norm360(S.heading))+"°  仰角 "+fixed(S.pitch,1)+"°";
+}
+
+function setPanel(open){$("panel").classList.toggle("open",open);$("scrim").classList.toggle("on",open)}
+
+function loadCesium(){
+  if(window.Cesium)return Promise.resolve(window.Cesium);
+  if(cesiumPromise)return cesiumPromise;
+  cesiumPromise=new Promise(function(resolve,reject){
+    window.CESIUM_BASE_URL=CESIUM_ROOT+"/";
+    var css=document.createElement("link");css.rel="stylesheet";css.href=CESIUM_ROOT+"/Widgets/widgets.css";document.head.appendChild(css);
+    var script=document.createElement("script");script.src=CESIUM_ROOT+"/Cesium.js";script.async=true;
+    script.onload=function(){resolve(window.Cesium)};script.onerror=function(){reject(new Error("CesiumJSを読み込めませんでした"))};
+    document.head.appendChild(script);
   });
+  return cesiumPromise;
 }
 
-/* -------------------------------------------------------------------------
-   センサー: GPS
-   ------------------------------------------------------------------------- */
-var watchId = null;
-function startGeo() {
-  if (!navigator.geolocation) { S.useGps = false; return; }
-  if (watchId != null) navigator.geolocation.clearWatch(watchId);
-  watchId = navigator.geolocation.watchPosition(function(p) {
-    if (!S.useGps) return;
-    S.lat = p.coords.latitude;
-    S.lon = p.coords.longitude;
-    S.acc = p.coords.accuracy;
-    $("inLat").value = S.lat.toFixed(5);
-    $("inLon").value = S.lon.toFixed(5);
-  }, function(err) {
-    S.useGps = false;
-    S.acc = null;
-    toast("位置情報が使えません（" + (err && err.message ? err.message : "拒否") + "）。設定から手動で座標を入れてください。");
-  }, { enableHighAccuracy: true, maximumAge: 3000, timeout: 20000 });
+function makeViewer(){
+  if(viewer)return viewer;
+  var C=window.Cesium;
+  C.Ion.defaultAccessToken="";
+  viewer=new C.Viewer("three",{
+    animation:false,timeline:false,baseLayerPicker:false,geocoder:false,homeButton:false,
+    sceneModePicker:false,navigationHelpButton:false,fullscreenButton:false,infoBox:false,
+    selectionIndicator:false,baseLayer:false,requestRenderMode:true,maximumRenderTimeChange:Infinity,
+    contextOptions:{webgl:{alpha:true,antialias:true,preserveDrawingBuffer:false}}
+  });
+  viewer.scene.backgroundColor=C.Color.TRANSPARENT;
+  viewer.scene.skyBox.show=false;viewer.scene.sun.show=false;viewer.scene.moon.show=false;
+  viewer.scene.skyAtmosphere.show=false;viewer.scene.globe.show=false;
+  viewer.scene.screenSpaceCameraController.enableInputs=false;
+  viewer.scene.fog.enabled=false;
+  viewer.resolutionScale=Math.min(window.devicePixelRatio||1,1.5);
+  syncView();
+  return viewer;
 }
 
-/* -------------------------------------------------------------------------
-   ドラッグ操作（方位・仰角の補正 / デモの見回し）とタップ
-   ------------------------------------------------------------------------- */
-var drag = null;
-cv.addEventListener("pointerdown", function(e) {
-  cv.setPointerCapture(e.pointerId);
-  drag = { x0:e.clientX, y0:e.clientY, x:e.clientX, y:e.clientY, t0:Date.now(), moved:0 };
-});
-cv.addEventListener("pointermove", function(e) {
-  if (!drag) return;
-  var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
-  drag.x = e.clientX; drag.y = e.clientY;
-  drag.moved += Math.abs(dx) + Math.abs(dy);
-  // 1px あたりの角度 = hfov / 画面幅
-  var degPerPx = S.hfov / Math.max(1, VW);
-  if (S.demo || !S.hasOrient) {
-    // デモ: 合成カメラを回す
-    S.demoHeading -= dx * degPerPx * D2R;
-    S.demoPitch   += dy * degPerPx * D2R;
-    if (S.demoPitch > 1.4) S.demoPitch = 1.4;
-    if (S.demoPitch < -1.4) S.demoPitch = -1.4;
-  } else {
-    // 実機: 方位/仰角オフセットを直接いじる
-    S.headOff += dx * degPerPx;
-    S.pitchOff -= dy * degPerPx * 0.5;     // 縦方向は効きを控えめに
-    if (S.headOff > 180) S.headOff -= 360;
-    if (S.headOff < -180) S.headOff += 360;
-    if (S.pitchOff > 30) S.pitchOff = 30;
-    if (S.pitchOff < -30) S.pitchOff = -30;
-    syncOffsetUI();
-  }
-});
-cv.addEventListener("pointerup", function(e) {
-  if (!drag) return;
-  var quick = (drag.moved < 10) && (Date.now() - drag.t0 < 500);
-  var px = e.clientX, py = e.clientY;
-  drag = null;
-  if (!S.demo && S.hasOrient) saveState();
-  if (quick) handleTap(px, py);
-});
-cv.addEventListener("pointercancel", function(){ drag = null; });
-
-function handleTap(clientX, clientY) {
-  var r = cv.getBoundingClientRect();
-  var sx = clientX - r.left, sy = clientY - r.top;
-
-  // (A0) 2点校正：タップ待ちの段階なら、その位置を記録する
-  if (S.calib2 && (S.calib2.stage === "tapA" || S.calib2.stage === "tapB")) {
-    calib2Tap(sx, sy);
-    return;
-  }
-  // (A) 方位合わせモード：タップ位置に対象ビルが来るようオフセットを解く
-  if (S.calibTarget) {
-    solveCalibration(S.calibTarget, sx, sy);
-    return;
-  }
-  // (B) ラベルのタップ → 詳細
-  for (var i = lastPlaced.length - 1; i >= 0; i--) {
-    var L = lastPlaced[i];
-    if (sx >= L.rect.x && sx <= L.rect.x + L.rect.w && sy >= L.rect.y && sy <= L.rect.y + L.rect.h) {
-      showDetail(L.b, L.dist);
-      S.selected = L.b.name;
-      return;
-    }
-  }
-  S.selected = null;
-  hideDetail();
+function syncFrustum(){
+  if(!viewer)return;
+  var canvas=viewer.scene.canvas;
+  var aspect=Math.max(.1,canvas.clientWidth/Math.max(1,canvas.clientHeight));
+  var horizontal=rad(S.hfov);
+  viewer.camera.frustum.fov=aspect>1?horizontal:2*Math.atan(Math.tan(horizontal/2)/aspect);
+  viewer.camera.frustum.near=S.near;
+}
+function syncView(){
+  if(!viewer)return;
+  var C=window.Cesium;
+  syncFrustum();
+  viewer.camera.setView({
+    destination:C.Cartesian3.fromDegrees(S.lon,S.lat,S.eye),
+    orientation:{heading:rad(norm360(S.heading)),pitch:rad(S.pitch),roll:0}
+  });
+  viewer.scene.requestRender();
+  syncUI();
 }
 
-/* タップ位置に建物が来るように方位・仰角オフセットを解く（キラー機能）。
-   1) タップ画素 → 現在のカメラ基底で「その画素が指すワールド方向 d」を逆投影
-   2) 建物への生のENUベクトル v の方位角・仰角と、d の方位角・仰角を比較
-   3) 差をそのままオフセットに入れる（applyOffsets は az に +headOff、el に +pitchOff） */
-function solveCalibration(name, sx, sy) {
-  var b = findBuilding(name);
-  if (!b) { exitCalib(); return; }
-  var basis = cameraBasis();
-  var d = unproject(sx, sy, basis);
-  var raw = enuVector(b, true).v;
-
-  var azD = Math.atan2(d[0], d[1]);
-  var elD = Math.asin(Math.max(-1, Math.min(1, d[2])));
-  var azV = Math.atan2(raw[0], raw[1]);
-  var elV = Math.asin(Math.max(-1, Math.min(1, raw[2])));
-
-  var head = (azD - azV) * R2D;
-  while (head > 180) head -= 360;
-  while (head < -180) head += 360;
-  var pitch = (elD - elV) * R2D;
-  if (pitch > 30) pitch = 30;
-  if (pitch < -30) pitch = -30;
-
-  if (S.demo || !S.hasOrient) {
-    // デモ中は合成カメラ側を動かしても意味が薄いので、同じくオフセットに入れる
-    S.headOff = head; S.pitchOff = pitch;
-  } else {
-    S.headOff = head; S.pitchOff = pitch;
-  }
-  syncOffsetUI();
-  saveState();
-  S.selected = name;
-  exitCalib();
-  toast("「" + name + "」で方位を合わせました（" + (head >= 0 ? "+" : "") + head.toFixed(1) + "°）");
+function tilesUrl(){
+  return TILE_ROOT+(S.lightweight?"13-bldg-lod1-latest":"13-bldg-maxlod2-latest")+"/tileset.json";
 }
-
-/* -------------------------------------------------------------------------
-   2点校正（方位・仰角・画角をまとめて決める）
-   1点の方位合わせでは画角(hfov)を直せないため、中央で合っても画面の端では
-   ずれる。離れた2本のビルを指してもらえば、2点の見かけの間隔から画角が決まる。
-   ------------------------------------------------------------------------- */
-function enterCalib2() {
-  S.calibTarget = null;
-  S.calib2 = { stage: "pickA", aName: null, aPt: null, bName: null };
-  $("calibMsg").textContent = "一覧から1本目のビルを選んでください";
-  $("calib").classList.add("show");
-  setPanel(false);
-  $("sheet").classList.add("open");
-  hideDetail();
-  renderList();
-}
-function exitCalib2() {
-  S.calib2 = null;
-  $("calib").classList.remove("show");
-}
-/* 一覧のボタンが押されたとき（1本目／2本目の指名） */
-function calib2Pick(name) {
-  var c = S.calib2;
-  if (!c) return;
-  if (c.stage === "pickA") {
-    c.aName = name; c.stage = "tapA";
-  } else if (c.stage === "pickB") {
-    if (name === c.aName) { toast("1本目とは別のビルを選んでください"); return; }
-    c.bName = name; c.stage = "tapB";
-  } else { return; }
-  $("calibMsg").textContent = "「" + name + "」が実際に見えている位置をタップ";
-  $("sheet").classList.remove("open");
-}
-/* 画面がタップされたとき */
-function calib2Tap(sx, sy) {
-  var c = S.calib2;
-  if (c.stage === "tapA") {
-    c.aPt = { sx: sx, sy: sy };
-    c.stage = "pickB";
-    $("calibMsg").textContent = "一覧から2本目のビルを選んでください";
-    $("sheet").classList.add("open");
-    renderList();
-  } else if (c.stage === "tapB") {
-    solve2Point(c.aName, c.aPt, c.bName, { sx: sx, sy: sy });
-  }
-}
-
-function solve2Point(aName, aPt, bName, bPt) {
-  var A = findBuilding(aName), B = findBuilding(bName);
-  if (!A || !B) { exitCalib2(); return; }
-  var vA = enuVector(A, true).v, vB = enuVector(B, true).v;   // 生（オフセット前）
-  var sepTrue = Math.acos(Math.max(-1, Math.min(1, dot3(vA, vB))));   // 本当の離角
-
-  // --- (a) 画角。カメラ座標でタップは [sx-VW/2, VH/2-sy, f] の方向を指す。
-  //     2本のタップ光線のなす角は基底に依らず、f が小さいほど（＝hfovが大きいほど）大きい。
-  //     これが sepTrue に一致する hfov を二分法で求める。
-  var reason = "";
-  var pxSep = Math.hypot(aPt.sx - bPt.sx, aPt.sy - bPt.sy);
-  var ax = aPt.sx - VW / 2, ay = VH / 2 - aPt.sy;
-  var bx = bPt.sx - VW / 2, by = VH / 2 - bPt.sy;
-  function tapAngle(hfovDeg) {
-    var f = (VW / 2) / Math.tan(hfovDeg * D2R / 2);
-    var r1 = norm3([ax, ay, f]), r2 = norm3([bx, by, f]);
-    return Math.acos(Math.max(-1, Math.min(1, dot3(r1, r2))));
-  }
-  if (pxSep < 60) {
-    reason = "2点が近すぎるので画角は変えていません";
-  } else {
-    var lo = 30, hi = 100;
-    var gLo = tapAngle(lo) - sepTrue, gHi = tapAngle(hi) - sepTrue;
-    if (gLo === 0) { S.hfov = lo; }
-    else if (gHi === 0) { S.hfov = hi; }
-    else if ((gLo > 0) === (gHi > 0)) {
-      reason = "この2点では画角を決められないので変えていません";
-    } else {
-      for (var it = 0; it < 60; it++) {
-        var mid = (lo + hi) / 2;
-        var gm = tapAngle(mid) - sepTrue;
-        if ((gm > 0) === (gLo > 0)) { lo = mid; gLo = gm; } else { hi = mid; }
+async function loadTiles(){
+  if(!viewer)return;
+  var C=window.Cesium;
+  if(tileset){viewer.scene.primitives.remove(tileset);tileset=null}
+  tileStatus="PLATEAUへ接続中";loadStartedAt=Date.now();firstLoadRecorded=false;setLoading(true,tileStatus);syncUI();
+  try{
+    tileset=await C.Cesium3DTileset.fromUrl(tilesUrl(),{
+      maximumScreenSpaceError:S.lightweight?22:13,
+      maximumMemoryUsage:160,
+      dynamicScreenSpaceError:true,
+      foveatedScreenSpaceError:true,
+      skipLevelOfDetail:true,
+      preferLeaves:true
+    });
+    viewer.scene.primitives.add(tileset);
+    tileset.loadProgress.addEventListener(function(pending,processing){
+      tileStatus=pending+processing>0?"3Dタイル読込中: "+(pending+processing)+"件":"表示準備完了";
+      setLoading(pending+processing>0,tileStatus);syncUI();
+    });
+    tileset.allTilesLoaded.addEventListener(function(){
+      if(!firstLoadRecorded){
+        tileStatus="初期表示 "+((Date.now()-loadStartedAt)/1000).toFixed(1)+"秒 / "+(S.lightweight?"LOD1":"最大LOD2");
+        firstLoadRecorded=true;
+      }else{
+        tileStatus="表示準備完了 / "+(S.lightweight?"LOD1":"最大LOD2");
       }
-      S.hfov = Math.round(((lo + hi) / 2) * 10) / 10;
+      setLoading(false);syncUI();
+    });
+    syncView();
+  }catch(e){
+    tileStatus="読込失敗: "+e.message;setLoading(false);syncUI();toast("PLATEAUの3Dを読み込めませんでした");
+  }
+}
+
+function requestOrientationPermission(){
+  try{
+    if(window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission==="function"){
+      return DeviceOrientationEvent.requestPermission();
     }
-  }
-
-  // --- (b) 方位・仰角オフセット。新しい画角で2点を逆投影し、生ベクトルとの差の平均をとる。
-  var basis = cameraBasis();
-  var pairs = [[unproject(aPt.sx, aPt.sy, basis), vA], [unproject(bPt.sx, bPt.sy, basis), vB]];
-  var sSum = 0, cSum = 0, pSum = 0;
-  for (var i = 0; i < 2; i++) {
-    var d = pairs[i][0], v = pairs[i][1];
-    var azD = Math.atan2(d[0], d[1]);
-    var elD = Math.asin(Math.max(-1, Math.min(1, d[2])));
-    var azV = Math.atan2(v[0], v[1]);
-    var elV = Math.asin(Math.max(-1, Math.min(1, v[2])));
-    var dz = azD - azV;
-    sSum += Math.sin(dz); cSum += Math.cos(dz);   // 方位は円周平均。±180°をまたぐため単純平均は誤り
-    pSum += (elD - elV);
-  }
-  var head = Math.atan2(sSum, cSum) * R2D;
-  while (head > 180) head -= 360;
-  while (head < -180) head += 360;
-  var pitch = (pSum / 2) * R2D;
-  if (pitch > 30) pitch = 30;
-  if (pitch < -30) pitch = -30;
-  S.headOff = head; S.pitchOff = pitch;
-
-  syncOffsetUI();
-  syncFovUI();
-  saveState();
-  S.selected = bName;
-  exitCalib2();
-  var msg = "2点校正：画角 " + S.hfov.toFixed(1) + "° / 方位補正 " +
-            (head >= 0 ? "+" : "") + head.toFixed(1) + "°";
-  toast(reason ? (msg + "（" + reason + "）") : msg);
+    return Promise.resolve("granted");
+  }catch(e){return Promise.resolve("denied")}
+}
+function attachOrientation(permissionPromise){
+  Promise.resolve(permissionPromise).then(function(result){
+    if(result!=="granted")return;
+    window.addEventListener("deviceorientation",function(e){
+      if(S.manual)return;
+      var h=null;
+      if(Number.isFinite(e.webkitCompassHeading))h=e.webkitCompassHeading;
+      else if(e.absolute&&Number.isFinite(e.alpha))h=360-e.alpha;
+      if(h===null)return;
+      var angle=(screen.orientation&&Number.isFinite(screen.orientation.angle))?screen.orientation.angle:0;
+      S.heading=norm360(h+angle);S.initialHeading=S.heading;syncView();
+    },true);
+  }).catch(function(){});
+}
+function startCamera(){
+  if(!navigator.mediaDevices||!navigator.mediaDevices.getUserMedia)return Promise.resolve(false);
+  return navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:"environment"},width:{ideal:1280},height:{ideal:720}},audio:false})
+    .then(function(stream){cameraStream=stream;$("camera").srcObject=stream;return true})
+    .catch(function(){toast("カメラなしで3D表示を続けます");return false});
+}
+function applyPosition(pos){
+  S.lat=pos.coords.latitude;S.lon=pos.coords.longitude;S.gpsAccuracy=pos.coords.accuracy;
+  $("preset").value="";syncView();saveState();
+}
+function startGeo(){
+  if(!navigator.geolocation){toast("GPSを利用できません");return}
+  navigator.geolocation.getCurrentPosition(applyPosition,function(){toast("GPSを取得できないため現在の座標を使います")},{enableHighAccuracy:true,timeout:12000,maximumAge:15000});
 }
 
-function findBuilding(name) {
-  for (var i = 0; i < BUILDINGS.length; i++) if (BUILDINGS[i].name === name) return BUILDINGS[i];
-  return null;
+async function start(live){
+  var orientationPromise=live?requestOrientationPermission():Promise.resolve("denied");
+  var cameraPromise=live?startCamera():Promise.resolve(false);
+  if(live)startGeo();
+  $("start").style.display="none";setLoading(true,"CesiumJSを読み込んでいます");
+  try{
+    await loadCesium();makeViewer();S.started=true;$("alignSurface").classList.add("active");
+    attachOrientation(orientationPromise);await cameraPromise;await loadTiles();syncUI();
+  }catch(e){setLoading(false);toast(e.message);$("start").style.display="flex"}
 }
 
-/* -------------------------------------------------------------------------
-   詳細パネル / トースト / 方位合わせモード
-   ------------------------------------------------------------------------- */
-function showDetail(b, dist) {
-  $("dName").textContent = b.name;
-  $("dKana").textContent = b.kana ? b.kana : "";
-  var parts = [];
-  parts.push("高さ " + Math.round(b.h) + "m");
-  if (typeof b.ground === "number" && b.ground) parts.push("地面標高 " + b.ground + "m");
-  if (b.year) parts.push(b.year + "年");
-  if (dist != null) parts.push("距離 " + fmtDist(dist));
-  $("dMeta").innerHTML = escHtml(parts.join(" / ")) + "<br>" + escHtml(b.note || "");
-  $("detail").classList.add("show");
+function earthUrl(){
+  var tilt=clamp(90+S.pitch,0,180);
+  return "https://earth.google.com/web/@"+fixed(S.lat,7)+","+fixed(S.lon,7)+","+fixed(S.eye,1)+"a,0d,"+fixed(S.hfov,1)+"y,"+fixed(norm360(S.heading),1)+"h,"+fixed(tilt,1)+"t,0r";
 }
-function hideDetail(){ $("detail").classList.remove("show"); }
-$("detailClose").addEventListener("click", hideDetail);
+function openEarth(){window.open(earthUrl(),"_blank","noopener")}
 
-var toastTimer = null;
-function toast(msg) {
-  var t = $("toast");
-  t.textContent = msg;
-  t.classList.add("show");
-  if (toastTimer) clearTimeout(toastTimer);
-  toastTimer = setTimeout(function(){ t.classList.remove("show"); }, 2600);
-}
-
-function enterCalib(name) {
-  S.calibTarget = name;
-  $("calibMsg").textContent = "「" + name + "」が実際に見えている位置を画面でタップ";
-  $("calib").classList.add("show");
-  setPanel(false);
-  $("sheet").classList.remove("open");
-  hideDetail();
-}
-function exitCalib() {
-  S.calibTarget = null;
-  $("calib").classList.remove("show");
-}
-/* 「やめる」は1点・2点どちらの校正も取り消す */
-$("calibCancel").addEventListener("click", function() {
-  exitCalib();
-  exitCalib2();
-  renderList();
+var drag=null;
+$("alignSurface").addEventListener("pointerdown",function(e){
+  if(!S.started)return;drag={id:e.pointerId,x:e.clientX,y:e.clientY,h:S.heading,p:S.pitch};
+  this.setPointerCapture(e.pointerId);this.classList.add("dragging");S.manual=true;
 });
+$("alignSurface").addEventListener("pointermove",function(e){
+  if(!drag||drag.id!==e.pointerId)return;
+  var w=Math.max(1,this.clientWidth),h=Math.max(1,this.clientHeight);
+  S.heading=norm360(drag.h-(e.clientX-drag.x)*S.hfov/w);
+  var vfov=2*Math.atan(Math.tan(rad(S.hfov)/2)/(w/h))*180/Math.PI;
+  S.pitch=clamp(drag.p+(e.clientY-drag.y)*vfov/h,-45,45);syncView();
+});
+function endDrag(e){if(!drag||drag.id!==e.pointerId)return;drag=null;$("alignSurface").classList.remove("dragging");saveState()}
+$("alignSurface").addEventListener("pointerup",endDrag);$("alignSurface").addEventListener("pointercancel",endDrag);
 
-/* -------------------------------------------------------------------------
-   UI の配線
-   ------------------------------------------------------------------------- */
-function syncOffsetUI() {
-  $("inHead").value = S.headOff.toFixed(1);
-  $("vHead").textContent = (S.headOff >= 0 ? "+" : "") + S.headOff.toFixed(1) + "°";
-  $("inPitch").value = S.pitchOff.toFixed(1);
-  $("vPitch").textContent = (S.pitchOff >= 0 ? "+" : "") + S.pitchOff.toFixed(1) + "°";
-}
-function syncFovUI() {
-  $("inFov").value = S.hfov;
-  $("vFov").textContent = S.hfov.toFixed(1) + "°";
-}
-function syncFilterUI() {
-  $("inReticle").checked = S.reticle;
-  $("inRetR").value = S.reticleR;
-  $("vRetR").textContent = Math.round(S.reticleR * 100) + "%";
-  $("inMinAng").value = S.minAng;
-  $("vMinAng").textContent = S.minAng.toFixed(2) + "°";
-  $("inOcclude").checked = S.occlude;
-  $("inFamous").checked = S.famousOnly;
-}
-function syncHeightUI() {
-  $("inFloor").value = S.floors;
-  $("inSite").value = S.site;
-  $("inEye").value = Math.round(S.eye);
-}
-function syncAllUI() {
-  $("inLat").value = S.lat.toFixed(5);
-  $("inLon").value = S.lon.toFixed(5);
-  $("inMaxD").value = S.maxDist; $("vMaxD").textContent = S.maxDist + "km";
-  $("inDemo").checked = S.demo;
-  $("inHorizon").checked = S.showHorizon;
-  syncFovUI();
-  syncFilterUI();
-  syncOffsetUI();
-  syncHeightUI();
+function setMode(mode){S.mode=mode;syncUI();saveState();if(viewer)setTimeout(function(){viewer.resize();syncView()},0)}
+function numberInput(id,key,min,max,callback){
+  $(id).addEventListener("input",function(){var v=Number(this.value);if(!Number.isFinite(v))return;S[key]=clamp(v,min,max);if(callback)callback();syncView();saveState()});
 }
 
-/* パネルの開閉は必ずここを通す。暗幕の状態と必ず同期させるため */
-function setPanel(open) {
-  $("panel").classList.toggle("open", open);
-  $("scrim").classList.toggle("on", open);
-  if (open) $("sheet").classList.remove("open");
-}
-$("btnPanel").addEventListener("click", function() {
-  setPanel(!$("panel").classList.contains("open"));
+$("startLive").addEventListener("click",function(){start(true)});$("startDemo").addEventListener("click",function(){start(false)});
+$("openPanel").addEventListener("click",function(){setPanel(!$("panel").classList.contains("open"))});
+$("closePanel").addEventListener("click",function(){setPanel(false)});$("scrim").addEventListener("click",function(){setPanel(false)});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")setPanel(false)});
+$("openEarth").addEventListener("click",openEarth);$("earthPanel").addEventListener("click",openEarth);
+$("modeOverlay").addEventListener("click",function(){setMode("overlay")});$("modeSplit").addEventListener("click",function(){setMode("split")});
+$("resetView").addEventListener("click",function(){S.heading=S.initialHeading;S.pitch=0;S.manual=false;syncView();saveState();toast("センサーの初期方向に戻しました")});
+$("preset").addEventListener("change",function(){
+  if(this.value==="")return;var p=PRESETS[Number(this.value)];
+  ["lat","lon","eye","floor","ground","heading","pitch"].forEach(function(k){S[k]=p[k]});
+  S.initialHeading=S.heading;S.manual=true;S.gpsAccuracy=null;syncView();saveState();
 });
-$("btnPanelClose").addEventListener("click", function() { setPanel(false); });
-$("scrim").addEventListener("click", function() { setPanel(false); });
-document.addEventListener("keydown", function(e) {
-  if (e.key === "Escape") { setPanel(false); $("sheet").classList.remove("open"); }
+$("usePosition").addEventListener("click",function(){
+  var lat=Number($("lat").value),lon=Number($("lon").value);
+  if(!Number.isFinite(lat)||!Number.isFinite(lon)){toast("緯度経度を確認してください");return}
+  S.lat=lat;S.lon=lon;S.gpsAccuracy=null;syncView();saveState();setPanel(false);
 });
-$("btnSheet").addEventListener("click", function() {
-  $("sheet").classList.toggle("open");
-  setPanel(false);
-});
-$("sheetHead").addEventListener("click", function() {
-  $("sheet").classList.toggle("open");
-});
-$("list").addEventListener("click", function(e) {
-  var cb = e.target.getAttribute && e.target.getAttribute("data-calib");
-  if (cb) {
-    if (S.calib2) { calib2Pick(cb); return; }    // 2点校正中は「選ぶ」ボタン
-    enterCalib(cb); return;
-  }
-  var node = e.target;
-  while (node && node !== this && !(node.getAttribute && node.getAttribute("data-name"))) node = node.parentNode;
-  if (node && node.getAttribute) {
-    var nm = node.getAttribute("data-name");
-    if (nm) {
-      S.selected = nm;
-      var b = findBuilding(nm);
-      if (b) showDetail(b, enuVector(b, true).dist);
-      renderList();
-    }
-  }
-});
+$("useGps").addEventListener("click",startGeo);
+$("floor").addEventListener("change",function(){S.floor=Number(this.value)||0;S.eye=S.floor*4+2+S.ground;syncView();saveState()});
+$("ground").addEventListener("change",function(){S.ground=Number(this.value)||0;S.eye=S.floor*4+2+S.ground;syncView();saveState()});
+numberInput("eye","eye",1,1000);numberInput("opacity","opacity",.15,1);numberInput("hfov","hfov",35,100);
+numberInput("near","near",1,150);numberInput("heading","heading",0,359.5,function(){S.manual=true});numberInput("pitch","pitch",-45,45,function(){S.manual=true});
+$("lightweight").addEventListener("change",function(){S.lightweight=this.checked;saveState();toast("「3Dを読み直す」で反映します")});
+$("reloadTiles").addEventListener("click",loadTiles);
+window.addEventListener("resize",function(){if(viewer){viewer.resize();syncView()}});
 
-$("inFov").addEventListener("input", function() {
-  S.hfov = parseFloat(this.value); $("vFov").textContent = S.hfov.toFixed(1) + "°"; saveState();
-});
-$("inReticle").addEventListener("change", function() {
-  S.reticle = this.checked; saveState();
-  toast(S.reticle ? "照準モード：中央の輪に合わせたビルだけ出します" : "照準モードを解除しました");
-});
-$("inRetR").addEventListener("input", function() {
-  S.reticleR = parseFloat(this.value);
-  $("vRetR").textContent = Math.round(S.reticleR * 100) + "%"; saveState();
-});
-$("inMinAng").addEventListener("input", function() {
-  S.minAng = parseFloat(this.value);
-  $("vMinAng").textContent = S.minAng.toFixed(2) + "°"; saveState();
-});
-$("inOcclude").addEventListener("change", function() {
-  S.occlude = this.checked; saveState();
-});
-$("inFamous").addEventListener("change", function() {
-  S.famousOnly = this.checked; saveState();
-  toast(S.famousOnly ? "収録の名所だけに名前を出します（遮蔽の判定は全件のまま）"
-                     : "すべての建物に名前を出します");
-});
-
-/* 現在の視点と「実際に見ている向き」で Google Earth Web を開く（答え合わせ用）。
-   applyOffsets() が補正するのは対象ベクトルの側であって、カメラの側ではない。
-   画面中央に来るのは applyOffsets(v) === basis.fwd となるビルなので、
-   利用者が実際に見ているワールド方向は fwd にオフセットの「逆」をかけたもの。 */
-function earthUrl() {
-  var f = cameraBasis().fwd;
-  var azTrue = Math.atan2(f[0], f[1]) * R2D - S.headOff;
-  var elTrue = Math.asin(Math.max(-1, Math.min(1, f[2]))) * R2D - S.pitchOff;
-  var head = ((azTrue % 360) + 360) % 360;
-  var tilt = 90 + elTrue;                    // 90 = 水平、90超 = 見上げる
-  if (tilt < 0) tilt = 0;
-  if (tilt > 180) tilt = 180;
-  return "https://earth.google.com/web/@" +
-    S.lat.toFixed(7) + "," + S.lon.toFixed(7) + "," +
-    S.eye.toFixed(1) + "a,0d," + S.hfov.toFixed(1) + "y," +
-    head.toFixed(1) + "h," + tilt.toFixed(1) + "t,0r";
-}
-$("btnEarth").addEventListener("click", function() {
-  var url = earthUrl();
-  var w = window.open(url, "_blank", "noopener");
-  if (!w) {
-    // ポップアップを塞がれた場合。URL は #diag に出しておきコピーできるようにする
-    lastEarthUrl = url;
-    updateDiag();
-    toast("ポップアップが塞がれました。設定の一番下に出した URL をコピーして開いてください。");
-  } else {
-    lastEarthUrl = "";
-    updateDiag();
-  }
-});
-$("inMaxD").addEventListener("input", function() {
-  S.maxDist = parseFloat(this.value); $("vMaxD").textContent = S.maxDist + "km"; saveState();
-});
-$("inHead").addEventListener("input", function() { S.headOff = parseFloat(this.value); syncOffsetUI(); saveState(); });
-$("inPitch").addEventListener("input", function() { S.pitchOff = parseFloat(this.value); syncOffsetUI(); saveState(); });
-$("btnResetOff").addEventListener("click", function() {
-  S.headOff = 0; S.pitchOff = 0; S.hfov = 63;
-  syncOffsetUI(); syncFovUI(); saveState();
-  toast("補正をリセットしました（画角も 63° に戻しました）");
-});
-$("btnCalib2").addEventListener("click", function() {
-  enterCalib2();
-  toast("離れた2本のビルを順に指してください。画角も一緒に決まります。");
-});
-$("btnCalib").addEventListener("click", function() {
-  setPanel(false);
-  if (visibleList.length) {
-    $("sheet").classList.add("open");
-    toast("一覧から目標のビルの「方位合わせ」を押してください");
-  } else {
-    toast("まず見えているビルを一覧から選んでください");
-    $("sheet").classList.add("open");
-  }
-});
-
-$("inDemo").addEventListener("change", function() {
-  S.demo = this.checked;
-  if (S.demo) toast("デモモード：ドラッグで見回せます");
-});
-$("inHorizon").addEventListener("change", function() {
-  S.showHorizon = this.checked; saveState();
-});
-
-$("inFloor").addEventListener("input", function() {
-  var f = parseFloat(this.value);
-  if (isNaN(f)) return;
-  S.floors = f;
-  S.eye = f * 4.0 + 2 + S.site;      // 1階 4.0m + 目の高さ 2m + 地面標高
-  $("inEye").value = Math.round(S.eye);
-  saveState();
-});
-$("inSite").addEventListener("input", function() {
-  var v = parseFloat(this.value);
-  if (isNaN(v)) return;
-  S.site = v;
-  S.eye = S.floors * 4.0 + 2 + S.site;
-  $("inEye").value = Math.round(S.eye);
-  saveState();
-});
-$("inEye").addEventListener("input", function() {
-  var v = parseFloat(this.value);
-  if (isNaN(v)) return;
-  S.eye = v;
-  // 逆算して階数表示を合わせる
-  var f = (v - 2 - S.site) / 4.0;
-  S.floors = Math.max(0, Math.round(f));
-  $("inFloor").value = S.floors;
-  saveState();
-});
-
-$("btnApplyPos").addEventListener("click", function() {
-  var la = parseFloat($("inLat").value), lo = parseFloat($("inLon").value);
-  if (isNaN(la) || isNaN(lo)) { toast("緯度・経度が読めません"); return; }
-  S.lat = la; S.lon = lo; S.useGps = false; S.acc = null;
-  toast("手動座標に切り替えました");
-});
-$("btnGps").addEventListener("click", function() {
-  S.useGps = true; startGeo(); toast("GPS追従に戻しました");
-});
-$("btnCam").addEventListener("click", startCamera);
-
-(function fillPresets() {
-  var sel = $("preset");
-  for (var i = 0; i < PRESETS.length; i++) {
-    var o = document.createElement("option");
-    o.value = String(i);
-    o.textContent = PRESETS[i].label;
-    sel.appendChild(o);
-  }
-  sel.addEventListener("change", function() {
-    if (this.value === "") return;
-    var p = PRESETS[parseInt(this.value, 10)];
-    if (!p) return;
-    S.lat = p.lat; S.lon = p.lon; S.eye = p.eye; S.useGps = false; S.acc = null;
-    S.floors = Math.max(0, Math.round((p.eye - 2 - S.site) / 4.0));
-    syncAllUI();
-    saveState();
-    toast(p.label + " に視点を移しました");
-  });
+loadState();populatePresets();syncUI();
 })();
-
-/* -------------------------------------------------------------------------
-   起動
-   ------------------------------------------------------------------------- */
-$("btnStart").addEventListener("click", function() {
-  $("start").style.display = "none";
-  startOrientation();     // iOS の権限要求はこのユーザー操作の中で行う
-  startCamera();
-  startGeo();
-});
-$("btnStartDemo").addEventListener("click", function() {
-  $("start").style.display = "none";
-  S.demo = true;
-  $("inDemo").checked = true;
-  startGeo();
-  toast("デモモード：ドラッグで見回せます。設定⚙からプリセット視点を選べます。");
-});
-
-loadState();
-setupCanvas();
-syncAllUI();
-updateStatus();
-updateDiag();
-updateDataCount();
-
-/* 外部データの名前つき建物を BUILDINGS に取り込む。
-   既存60件は竣工年・一言メモを持つ手作りデータなので優先し、
-   同名または近接(120m以内)で高さが近いものは重複とみなして捨てる。 */
-function mergeNamed(named) {
-  if (!named || !named.length) return;
-  var have = {}, i;
-  for (i = 0; i < BUILDINGS.length; i++) have[BUILDINGS[i].name] = 1;
-  var cosLat = Math.cos(S.lat * D2R), added = 0;
-  for (i = 0; i < named.length; i++) {
-    var r = named[i], lat = r[0], lon = r[1], h = r[2], nm = r[3];
-    if (have[nm]) continue;
-    var dup = false;
-    for (var k = 0; k < BUILDINGS.length; k++) {
-      var b = BUILDINGS[k];
-      var dE = (b.lon - lon) * 111320 * cosLat, dN = (b.lat - lat) * 110540;
-      if (dE * dE + dN * dN < 120 * 120 && Math.abs(b.h - h) < 40) { dup = true; break; }
-    }
-    if (dup) continue;
-    BUILDINGS.push({ name: nm, lat: lat, lon: lon, h: h, ground: 0, year: null,
-                     note: "OpenStreetMap 由来", src: "osm" });
-    have[nm] = 1; added++;
-  }
-  if (added) { listDirty = 1; toast(nm0(added)); }
-  updateDataCount();
-}
-function nm0(n){ return "名前つき " + n + "棟を追加しました"; }
-
-/* 遮蔽データの読み込み。無くても（file:// 直開き等）そのまま動く。 */
-(function loadOccData() {
-  if (typeof fetch !== "function") return;
-  fetch("buildings-osm.json").then(function(r) {
-    if (!r.ok) throw new Error("HTTP " + r.status);
-    return r.json();
-  }).then(function(j) {
-    OCCDATA = j;
-    occProfile = null; occKey = "";
-    mergeNamed(j.named);
-    toast("遮蔽データ " + (j.occ ? j.occ.length : 0) + "棟を読み込みました");
-    updateDiag();
-  }).catch(function(e) {
-    // file:// では CORS で必ず失敗する。収録60件だけの自己遮蔽で動作を続ける。
-    console.log("occ data not loaded: " + e.message);
-  });
-})();
-// リロード時、ブラウザがフォームの値を後から復元して S と食い違うことがあるので、
-// 復元が済んだあとにもう一度 S 側の値で塗り直す。
-window.addEventListener("pageshow", function(){ setTimeout(syncAllUI, 0); });
-requestAnimationFrame(loop);
 </script>
 </body>
 </html>
