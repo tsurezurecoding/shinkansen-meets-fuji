@@ -1286,6 +1286,7 @@ function spotPageHTML(spot, lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="${url}">
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
@@ -1385,6 +1386,7 @@ function englishIndexHTML() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHTML(UI.en.homeTitle)}</title>
   <meta name="description" content="${escapeHTML(UI.en.homeLead)}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
@@ -1518,14 +1520,12 @@ function guideHTML(lang) {
   }).join("");
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": `${guideUrl}#faq`,
+    "@type": "WebPage",
+    "@id": `${guideUrl}#webpage`,
+    "url": guideUrl,
+    "name": ui.guideTitle,
+    "description": ui.guideLead,
     "inLanguage": lang,
-    "mainEntity": ui.guideQuestions.map((item) => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": { "@type": "Answer", "text": item.a },
-    })),
   };
   const quickFacts = lang === "en" ? `
       <section class="spot-page-section guide-answer-panel" aria-label="Mt. Fuji quick answer">
@@ -1622,14 +1622,14 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly" },
-    { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily" },
-    { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily" },
+    { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-07-29" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-07-29" },
+    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
@@ -1641,7 +1641,7 @@ function sitemapXML() {
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
-    lastmod: spot.id === "solar-ark" ? "2026-07-29" : today,
+    lastmod: "2026-08-02",
   })));
   const urls = [...baseUrls, ...spotUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
