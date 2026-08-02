@@ -62,7 +62,9 @@ for (const [jaPath, enPath] of pairs) {
 
 const localizedGuidePages = [
   ["/zh-Hant/guide.html", "zh-Hant", "zh-Hant-TW"],
-  ["/ko/guide.html", "ko", "ko"]
+  ["/ko/guide.html", "ko", "ko"],
+  ["/zh-Hans/guide.html", "zh-Hans", "zh-Hans-CN"],
+  ["/fr/guide.html", "fr", "fr"]
 ];
 
 const guideMobileSpotPages = [
@@ -70,11 +72,33 @@ const guideMobileSpotPages = [
   ["/en/guide.html", /^spots\/[a-z0-9-]+\.html$/],
   ["/zh-Hant/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
   ["/ko/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+  ["/zh-Hans/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+  ["/fr/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+];
+const guideAlternates = [
+  ["ja", "/guide.html"],
+  ["en", "/en/guide.html"],
+  ["zh-Hant-TW", "/zh-Hant/guide.html"],
+  ["zh-Hans-CN", "/zh-Hans/guide.html"],
+  ["ko", "/ko/guide.html"],
+  ["fr", "/fr/guide.html"],
+  ["x-default", "/en/guide.html"],
 ];
 for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
   const html = fs.readFileSync(diskPath(urlPath), "utf8");
   if (!html.includes('class="guide-lang-menu"') || html.includes('class="lang-switch"')) {
     errors.push(`${urlPath}: FAQ language navigation must use the compact dropdown`);
+  }
+  const languageOptionCount = (html.match(/class="guide-lang-options"/g) || []).length === 1
+    ? ((html.match(/<a\b[^>]*>(?:日本語|English|繁體中文|简体中文|한국어|Français)<\/a>/g) || []).length)
+    : 0;
+  if (languageOptionCount !== 6) {
+    errors.push(`${urlPath}: guide language menu must contain all 6 languages, found ${languageOptionCount}`);
+  }
+  for (const [hreflang, alternatePath] of guideAlternates) {
+    if (!hasAlternate(html, hreflang, alternatePath)) {
+      errors.push(`${urlPath}: missing ${hreflang} guide hreflang`);
+    }
   }
   if (/(?:href|src|data-affiliate-src)=["']\/\//i.test(html)) {
     errors.push(`${urlPath}: protocol-relative URL breaks local file preview`);
@@ -140,9 +164,25 @@ for (const [urlPath, language, hreflang] of localizedGuidePages) {
   if (!html.includes('class="content-rail-section"')) {
     errors.push(`${urlPath}: bottom content rail is missing`);
   }
+  const articleSectionCount = (html.match(/<section class="spot-page-section/g) || []).length;
+  if (articleSectionCount !== 10) {
+    errors.push(`${urlPath}: localized guide must keep the 10-section article structure, found ${articleSectionCount}`);
+  }
   if (html.includes("data-affiliate-module")) {
     errors.push(`${urlPath}: localized guide must not include affiliate modules during the pilot`);
   }
+}
+
+const sitemapHtml = fs.readFileSync(path.join(appDir, "sitemap.xml"), "utf8");
+const sitemapUrls = [...sitemapHtml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+for (const required of [
+  `${origin}/zh-Hans/guide.html`,
+  `${origin}/fr/guide.html`,
+]) {
+  if (!sitemapUrls.includes(required)) errors.push(`sitemap: missing ${required}`);
+}
+if (new Set(sitemapUrls).size !== sitemapUrls.length) {
+  errors.push("sitemap: duplicate URLs found");
 }
 
 const englishHtmlFiles = [];

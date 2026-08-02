@@ -209,6 +209,24 @@ const UI = {
     sideBoth: "左右兩側",
     hamanakoSide: "A座 · 海側 / E座 · 山側",
   },
+  "zh-Hans": {
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "东京 → 新大阪的车窗",
+    railCountSuffix: " 个景色",
+    railNowLabel: (name, min, seat) => `<b>${name}</b>从东京出发约${min}分钟 · ${seat}`,
+    railCta: "按我的列车生成指南",
+    railLead: "选择列车后，可按实际班次查看37个景色的预计经过时间。",
+    railBottomCta: "按我的列车查看37个景色",
+    railFoot: "从照片浏览37个景色 →",
+    railStationSuffix: "分",
+    mobileSpotRailLabel: "东京至新大阪的代表性车窗景色",
+    mobileSpotMeta: (min, seat) => `从东京出发约${min}分钟 · ${seat}座`,
+    mobileSpotAction: "阅读指南",
+    sideA: "A座 · 海侧",
+    sideE: "E座 · 山侧",
+    sideBoth: "左右两侧",
+    hamanakoSide: "A座 · 海侧 / E座 · 山侧",
+  },
   ko: {
     railEyebrow: "Tokaido Shinkansen",
     railTitle: "도쿄 → 신오사카 차창",
@@ -226,6 +244,24 @@ const UI = {
     sideE: "E석 · 산 쪽",
     sideBoth: "양쪽",
     hamanakoSide: "A석 · 바다 쪽 / E석 · 산 쪽",
+  },
+  fr: {
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "Vues Tokyo → Shin-Osaka",
+    railCountSuffix: " vues",
+    railNowLabel: (name, min, seat) => `<b>${name}</b> À environ ${min} min de Tokyo · ${seat}`,
+    railCta: "Créer le guide de mon train",
+    railLead: "Choisissez votre train pour connaître l'heure de passage prévue devant chacune des 37 vues.",
+    railBottomCta: "Voir les 37 vues à l'heure de mon train",
+    railFoot: "Parcourir les 37 vues en photos →",
+    railStationSuffix: " min",
+    mobileSpotRailLabel: "Vues emblématiques entre Tokyo et Shin-Osaka",
+    mobileSpotMeta: (min, seat) => `À environ ${min} min · siège ${seat}`,
+    mobileSpotAction: "Lire le guide",
+    sideA: "Siège A · côté mer",
+    sideE: "Siège E · côté montagne",
+    sideBoth: "Des deux côtés",
+    hamanakoSide: "Siège A · côté mer / siège E · côté montagne",
   },
 };
 
@@ -254,6 +290,30 @@ const GUIDE_RAIL_LOCALIZATION = {
       "torikai-train-depot": "鳥飼新幹線車輛基地",
     },
   },
+  "zh-Hans": {
+    stations: {
+      Tokyo: "东京", Shinagawa: "品川", "Shin-Yokohama": "新横滨", Odawara: "小田原",
+      Atami: "热海", Mishima: "三岛", "Shin-Fuji": "新富士", Shizuoka: "静冈",
+      Kakegawa: "挂川", Hamamatsu: "滨松", Toyohashi: "丰桥", "Mikawa-Anjo": "三河安城",
+      Nagoya: "名古屋", "Gifu-Hashima": "岐阜羽岛", Maibara: "米原", Kyoto: "京都", "Shin-Osaka": "新大阪",
+    },
+    spots: {
+      "tokyo-tower": "东京塔", "ota-fuji": "大田区远眺富士山", "maruko-bridge": "丸子桥",
+      "musashi-kosugi-towers": "武藏小杉高楼群", "sagami-fuji": "相模平原远眺富士山",
+      "727-board": "727与248号广告牌", hinataoka: "日向冈山坡住宅区", "putiputi-sign": "“我是谁？”广告牌",
+      "odawara-castle": "小田原城", "gyoran-kannon": "鱼篮大观音像", odawara: "热海与相模湾",
+      fuji: "富士山", "shimizu-port-chikyu": "清水港与CHIKYU深海钻探船", "left-fuji": "左富士",
+      "shizuoka-tea-fields": "静冈茶园", kakegawa: "挂川城", "genki-sign": "悉平加油广告牌",
+      hamanako: "滨名湖", "hamanako-fuji": "滨名湖远眺富士山", "toyohashi-tateiwa": "丰桥立岩巨石",
+      "mikawa-oshima": "三河大岛", "nichiban-anjo": "CELLOTAPE墙面广告",
+      "nagoya-station-skyline": "名古屋站前天际线", "kirin-beer-factory": "麒麟啤酒工厂",
+      kiyosu: "清洲城", "solar-ark": "Solar Ark太阳能设施", "gifu-castle": "岐阜城",
+      kinshozan: "金生山", "nangu-taisha": "南宫大社大鸟居", ibuki: "伊吹山",
+      "sawayama-castle": "佐和山城遗址", "hikone-castle": "彦根城", "kannonji-castle": "观音寺城遗址",
+      "omi-fuji": "近江富士", "seta-karahashi": "濑田唐桥", toji: "东寺五重塔",
+      "torikai-train-depot": "鸟饲新干线车辆基地",
+    },
+  },
   ko: {
     stations: {
       Tokyo: "도쿄", Shinagawa: "시나가와", "Shin-Yokohama": "신요코하마", Odawara: "오다와라",
@@ -276,6 +336,30 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "사와야마성 유적", "hikone-castle": "히코네성", "kannonji-castle": "간논지성 유적",
       "omi-fuji": "오미후지", "seta-karahashi": "세타노 가라하시", toji: "도지 오층탑",
       "torikai-train-depot": "도리카이 신칸센 차량기지",
+    },
+  },
+  fr: {
+    stations: {
+      Tokyo: "Tokyo", Shinagawa: "Shinagawa", "Shin-Yokohama": "Shin-Yokohama", Odawara: "Odawara",
+      Atami: "Atami", Mishima: "Mishima", "Shin-Fuji": "Shin-Fuji", Shizuoka: "Shizuoka",
+      Kakegawa: "Kakegawa", Hamamatsu: "Hamamatsu", Toyohashi: "Toyohashi", "Mikawa-Anjo": "Mikawa-Anjo",
+      Nagoya: "Nagoya", "Gifu-Hashima": "Gifu-Hashima", Maibara: "Maibara", Kyoto: "Kyoto", "Shin-Osaka": "Shin-Osaka",
+    },
+    spots: {
+      "tokyo-tower": "Tour de Tokyo", "ota-fuji": "Mont Fuji depuis Ota", "maruko-bridge": "Pont Maruko",
+      "musashi-kosugi-towers": "Tours de Musashi-Kosugi", "sagami-fuji": "Mont Fuji au-delà de la plaine de Sagami",
+      "727-board": "Panneaux 727 et 248", hinataoka: "Maisons sur la colline de Hinataoka", "putiputi-sign": "Panneau « Qui suis-je ? »",
+      "odawara-castle": "Château d'Odawara", "gyoran-kannon": "Grande statue de Gyoran Kannon", odawara: "Atami et baie de Sagami",
+      fuji: "Mont Fuji", "shimizu-port-chikyu": "Port de Shimizu et navire CHIKYU", "left-fuji": "Fuji côté gauche",
+      "shizuoka-tea-fields": "Champs de thé de Shizuoka", kakegawa: "Château de Kakegawa", "genki-sign": "Panneau d'encouragement Shippei",
+      hamanako: "Lac Hamana", "hamanako-fuji": "Mont Fuji depuis le lac Hamana", "toyohashi-tateiwa": "Rocher Tateiwa de Toyohashi",
+      "mikawa-oshima": "Île de Mikawa-Oshima", "nichiban-anjo": "Façade CELLOTAPE",
+      "nagoya-station-skyline": "Panorama de la gare de Nagoya", "kirin-beer-factory": "Brasserie Kirin",
+      kiyosu: "Château de Kiyosu", "solar-ark": "Centrale solaire Solar Ark", "gifu-castle": "Château de Gifu",
+      kinshozan: "Mont Kinshozan", "nangu-taisha": "Grand torii de Nangu Taisha", ibuki: "Mont Ibuki",
+      "sawayama-castle": "Ruines du château de Sawayama", "hikone-castle": "Château de Hikone", "kannonji-castle": "Ruines du château de Kannonji",
+      "omi-fuji": "Omi Fuji", "seta-karahashi": "Pont Seta no Karahashi", toji: "Pagode à cinq étages de To-ji",
+      "torikai-train-depot": "Dépôt Shinkansen de Torikai",
     },
   },
 };
@@ -302,9 +386,17 @@ const GUIDE_MOBILE_SPOT_NAMES = {
     "tokyo-tower": "東京鐵塔", odawara: "熱海與相模灣", fuji: "富士山",
     hamanako: "濱名湖", "solar-ark": "Solar Ark", toji: "東寺五重塔",
   },
+  "zh-Hans": {
+    "tokyo-tower": "东京塔", odawara: "热海与相模湾", fuji: "富士山",
+    hamanako: "滨名湖", "solar-ark": "Solar Ark", toji: "东寺五重塔",
+  },
   ko: {
     "tokyo-tower": "도쿄 타워", odawara: "아타미와 사가미만", fuji: "후지산",
     hamanako: "하마나호", "solar-ark": "솔라 아크", toji: "도지 오층탑",
+  },
+  fr: {
+    "tokyo-tower": "Tour de Tokyo", odawara: "Atami et baie de Sagami", fuji: "Mont Fuji",
+    hamanako: "Lac Hamana", "solar-ark": "Solar Ark", toji: "Pagode de To-ji",
   },
 };
 
@@ -313,9 +405,17 @@ const GUIDE_MOBILE_SPOT_HOOKS = {
     "tokyo-tower": "東京天空中的紅色高塔。", odawara: "穿過隧道，海景豁然展開。", fuji: "日本最知名的三分鐘。",
     hamanako: "列車像在湖面上奔馳。", "solar-ark": "即將告別的太陽之船。", toji: "一眼就知道，京都到了。",
   },
+  "zh-Hans": {
+    "tokyo-tower": "东京天空中的红色高塔。", odawara: "穿过隧道，海景豁然展开。", fuji: "日本最著名的三分钟。",
+    hamanako: "列车仿佛行驶在湖面上。", "solar-ark": "即将告别的太阳之船。", toji: "一眼就知道，京都到了。",
+  },
   ko: {
     "tokyo-tower": "도쿄 하늘의 붉은 타워.", odawara: "터널 사이로 바다가 열립니다.", fuji: "일본에서 가장 유명한 3분.",
     hamanako: "열차가 호수 위를 달립니다.", "solar-ark": "곧 마지막이 될 태양의 배.", toji: "교토에 왔다는 것을 단번에 알 수 있습니다.",
+  },
+  fr: {
+    "tokyo-tower": "La tour rouge dans le ciel de Tokyo.", odawara: "Entre deux tunnels, la mer apparaît.", fuji: "Les trois minutes les plus célèbres du Japon.",
+    hamanako: "Le train semble glisser sur le lac.", "solar-ark": "Le vaisseau solaire bientôt disparu.", toji: "Un seul regard suffit : vous êtes à Kyoto.",
   },
 };
 
@@ -1761,7 +1861,9 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
   <link rel="alternate" hreflang="zh-Hant-TW" href="${siteRoot}/zh-Hant/guide.html">
+  <link rel="alternate" hreflang="zh-Hans-CN" href="${siteRoot}/zh-Hans/guide.html">
   <link rel="alternate" hreflang="ko" href="${siteRoot}/ko/guide.html">
+  <link rel="alternate" hreflang="fr" href="${siteRoot}/fr/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/en/guide.html">
   <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
@@ -1816,6 +1918,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
@@ -1871,6 +1975,14 @@ const guideRailConfigs = [
   },
   {
     lang: "ko", path: path.join("ko", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
+    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+  },
+  {
+    lang: "zh-Hans", path: path.join("zh-Hans", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
+    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+  },
+  {
+    lang: "fr", path: path.join("fr", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
     ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
 ];
