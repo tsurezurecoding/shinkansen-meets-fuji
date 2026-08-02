@@ -60,6 +60,91 @@ for (const [jaPath, enPath] of pairs) {
   }
 }
 
+const localizedGuidePages = [
+  ["/zh-Hant/guide.html", "zh-Hant", "zh-Hant-TW"],
+  ["/ko/guide.html", "ko", "ko"]
+];
+
+const guideMobileSpotPages = [
+  ["/guide.html", /^spots\/[a-z0-9-]+\.html$/],
+  ["/en/guide.html", /^spots\/[a-z0-9-]+\.html$/],
+  ["/zh-Hant/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+  ["/ko/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+];
+for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
+  const html = fs.readFileSync(diskPath(urlPath), "utf8");
+  if (!html.includes('class="guide-lang-menu"') || html.includes('class="lang-switch"')) {
+    errors.push(`${urlPath}: FAQ language navigation must use the compact dropdown`);
+  }
+  if (/(?:href|src|data-affiliate-src)=["']\/\//i.test(html)) {
+    errors.push(`${urlPath}: protocol-relative URL breaks local file preview`);
+  }
+  const links = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*data-guide-mobile-spot=["']([^"']+)["'][^>]*>/gi)];
+  if (links.length !== 6) {
+    errors.push(`${urlPath}: mobile guide strip must contain 6 tracked spot links, found ${links.length}`);
+  }
+  for (const match of links) {
+    if (!hrefPattern.test(match[1])) errors.push(`${urlPath}: invalid mobile guide spot link: ${match[1]}`);
+  }
+  if (!html.includes('class="spot-page-section guide-mobile-timeline"') || !html.includes('"guide_mobile_spot_click"')) {
+    errors.push(`${urlPath}: mobile guide timeline or analytics is missing`);
+  }
+  const guideLinkCount = (html.match(/class="show-guide-link"/g) || []).length;
+  const metaCount = (html.match(/class="guide-mobile-spot-meta"/g) || []).length;
+  if (guideLinkCount !== 6 || metaCount !== 0 || !html.includes('class="showcase-rail"')) {
+    errors.push(`${urlPath}: mobile cards must match TOP card structure without timing metadata`);
+  }
+  const kakegawaPhoto2Count = (html.match(/20260712_kakegawa_castle_michikusa\.webp/g) || []).length;
+  if (kakegawaPhoto2Count !== 2 || html.includes("20260530_kakegawa_castle.webp")) {
+    errors.push(`${urlPath}: Kakegawa Castle FAQ images must use photo-2`);
+  }
+}
+
+for (const [urlPath, language, hreflang] of localizedGuidePages) {
+  const file = diskPath(urlPath);
+  if (!fs.existsSync(file)) {
+    errors.push(`missing: ${urlPath}`);
+    continue;
+  }
+  const html = fs.readFileSync(file, "utf8");
+  if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
+    errors.push(`${urlPath}: html lang must be ${language}`);
+  }
+  if (!hasAlternate(html, hreflang, urlPath)) {
+    errors.push(`${urlPath}: missing ${hreflang} hreflang`);
+  }
+  if (!hasAlternate(html, "ja", "/guide.html") || !hasAlternate(html, "en", "/en/guide.html")) {
+    errors.push(`${urlPath}: missing Japanese or English hreflang`);
+  }
+  if (!hasAlternate(html, "x-default", "/en/guide.html")) {
+    errors.push(`${urlPath}: x-default must point to English URL`);
+  }
+  if (!/"@type"\s*:\s*"WebPage"/.test(html) || /"@type"\s*:\s*"FAQPage"/.test(html)) {
+    errors.push(`${urlPath}: structured data must use WebPage, not FAQPage`);
+  }
+  const railSpotLinks = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*data-guide-rail-spot=["']([^"']+)["'][^>]*>/gi)];
+  if (railSpotLinks.length !== 37) {
+    errors.push(`${urlPath}: guide rail must contain 37 tracked spot links, found ${railSpotLinks.length}`);
+  }
+  for (const match of railSpotLinks) {
+    if (!/^\.\.\/en\/spots\/[a-z0-9-]+\.html$/.test(match[1])) {
+      errors.push(`${urlPath}: localized rail link must point to an English spot page: ${match[1]}`);
+    }
+  }
+  if (!html.includes('"guide_rail_spot_click"') || !html.includes('"guide_rail_view"')) {
+    errors.push(`${urlPath}: guide rail analytics events are missing`);
+  }
+  if (!html.includes('"cta_train_search_click"')) {
+    errors.push(`${urlPath}: train-search CTA analytics event is missing`);
+  }
+  if (!html.includes('class="content-rail-section"')) {
+    errors.push(`${urlPath}: bottom content rail is missing`);
+  }
+  if (html.includes("data-affiliate-module")) {
+    errors.push(`${urlPath}: localized guide must not include affiliate modules during the pilot`);
+  }
+}
+
 const englishHtmlFiles = [];
 function collectEnglishHtml(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -95,4 +180,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Language pages valid: ${pairs.length} Japanese/English pairs`);
+console.log(`Language pages valid: ${pairs.length} Japanese/English pairs and ${localizedGuidePages.length} localized guides`);

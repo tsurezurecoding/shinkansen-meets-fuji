@@ -74,8 +74,13 @@ const UI = {
     railCountSuffix: " の見どころ",
     railNowLabel: (name, min, seat) => `<b>${name}</b>東京から約${min}分 ・ ${seat}`,
     railCta: "乗る列車でガイドを作る",
+    railLead: "列車を選ぶと、37景の見える時刻を実際のダイヤに合わせて表示します。",
+    railBottomCta: "この列車の時刻で37景を見る",
     railFoot: "車窓図鑑で写真から探す →",
     railStationSuffix: "分",
+    mobileSpotRailLabel: "東京から新大阪までの代表的な車窓",
+    mobileSpotMeta: (min, seat) => `東京から約${min}分 · ${seat}席`,
+    mobileSpotAction: "ガイドを読む",
     zoomHint: "クリックで拡大",
     lightboxClose: "閉じる",
     guideTitle: "新幹線から富士山はいつ見える？どっち側？E席と時刻のFAQ | 新幹線の窓",
@@ -141,8 +146,13 @@ const UI = {
     railCountSuffix: " views",
     railNowLabel: (name, min, seat) => `<b>${name}</b>About ${min} min from Tokyo · ${seat}`,
     railCta: "Build my guide by train",
+    railLead: "Choose your train to turn all 37 views into expected passing times for that service.",
+    railBottomCta: "Time all 37 views to my train",
     railFoot: "Browse by photo →",
     railStationSuffix: " min",
+    mobileSpotRailLabel: "Recommended views from Tokyo to Shin-Osaka",
+    mobileSpotMeta: (min, seat) => `~${min} min · Seat ${seat}`,
+    mobileSpotAction: "Read the guide",
     zoomHint: "click to enlarge",
     lightboxClose: "Close",
     guideTitle: "When can you see Mt. Fuji from the Shinkansen? Seat side and timing FAQ | Shinkansen Window",
@@ -180,6 +190,132 @@ const UI = {
         linkText: "Browse the field guide",
       },
     ],
+  },
+  "zh-Hant": {
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "東京 → 新大阪的車窗",
+    railCountSuffix: " 個景色",
+    railNowLabel: (name, min, seat) => `<b>${name}</b>東京出發約${min}分鐘 · ${seat}`,
+    railCta: "依你的列車建立指南",
+    railLead: "選擇列車後，可依實際班次查看37個景色的預計通過時間。",
+    railBottomCta: "依我的列車查看37個景色",
+    railFoot: "從照片瀏覽37個景色 →",
+    railStationSuffix: "分",
+    mobileSpotRailLabel: "東京至新大阪的代表車窗景色",
+    mobileSpotMeta: (min, seat) => `東京出發約${min}分鐘 · ${seat}座`,
+    mobileSpotAction: "閱讀指南",
+    sideA: "A座 · 海側",
+    sideE: "E座 · 山側",
+    sideBoth: "左右兩側",
+    hamanakoSide: "A座 · 海側 / E座 · 山側",
+  },
+  ko: {
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "도쿄 → 신오사카 차창",
+    railCountSuffix: "개 풍경",
+    railNowLabel: (name, min, seat) => `<b>${name}</b>도쿄에서 약 ${min}분 · ${seat}`,
+    railCta: "내 열차로 가이드 만들기",
+    railLead: "열차를 선택하면 37개 풍경의 예상 통과 시간을 실제 운행에 맞춰 볼 수 있습니다.",
+    railBottomCta: "내 열차 시간으로 37개 풍경 보기",
+    railFoot: "사진으로 37개 풍경 보기 →",
+    railStationSuffix: "분",
+    mobileSpotRailLabel: "도쿄에서 신오사카까지의 대표 차창 풍경",
+    mobileSpotMeta: (min, seat) => `도쿄에서 약 ${min}분 · ${seat}석`,
+    mobileSpotAction: "가이드 보기",
+    sideA: "A석 · 바다 쪽",
+    sideE: "E석 · 산 쪽",
+    sideBoth: "양쪽",
+    hamanakoSide: "A석 · 바다 쪽 / E석 · 산 쪽",
+  },
+};
+
+const GUIDE_RAIL_LOCALIZATION = {
+  "zh-Hant": {
+    stations: {
+      Tokyo: "東京", Shinagawa: "品川", "Shin-Yokohama": "新橫濱", Odawara: "小田原",
+      Atami: "熱海", Mishima: "三島", "Shin-Fuji": "新富士", Shizuoka: "靜岡",
+      Kakegawa: "掛川", Hamamatsu: "濱松", Toyohashi: "豐橋", "Mikawa-Anjo": "三河安城",
+      Nagoya: "名古屋", "Gifu-Hashima": "岐阜羽島", Maibara: "米原", Kyoto: "京都", "Shin-Osaka": "新大阪",
+    },
+    spots: {
+      "tokyo-tower": "東京鐵塔", "ota-fuji": "大田區的富士山", "maruko-bridge": "丸子橋",
+      "musashi-kosugi-towers": "武藏小杉高樓群", "sagami-fuji": "相模平原遠眺富士山",
+      "727-board": "727與248號看板", hinataoka: "日向岡山坡住宅區", "putiputi-sign": "「我是誰？」看板",
+      "odawara-castle": "小田原城", "gyoran-kannon": "魚籃大觀音像", odawara: "熱海與相模灣",
+      fuji: "富士山", "shimizu-port-chikyu": "清水港與CHIKYU深海探查船", "left-fuji": "左富士",
+      "shizuoka-tea-fields": "靜岡茶園", kakegawa: "掛川城", "genki-sign": "しっぺい加油看板",
+      hamanako: "濱名湖", "hamanako-fuji": "濱名湖遠眺富士山", "toyohashi-tateiwa": "豐橋立岩巨石",
+      "mikawa-oshima": "三河大島", "nichiban-anjo": "CELLOTAPE牆面看板",
+      "nagoya-station-skyline": "名古屋站前天際線", "kirin-beer-factory": "麒麟啤酒工廠",
+      kiyosu: "清洲城", "solar-ark": "Solar Ark太陽能設施", "gifu-castle": "岐阜城",
+      kinshozan: "金生山", "nangu-taisha": "南宮大社大鳥居", ibuki: "伊吹山",
+      "sawayama-castle": "佐和山城跡", "hikone-castle": "彦根城", "kannonji-castle": "觀音寺城跡",
+      "omi-fuji": "近江富士", "seta-karahashi": "瀨田唐橋", toji: "東寺五重塔",
+      "torikai-train-depot": "鳥飼新幹線車輛基地",
+    },
+  },
+  ko: {
+    stations: {
+      Tokyo: "도쿄", Shinagawa: "시나가와", "Shin-Yokohama": "신요코하마", Odawara: "오다와라",
+      Atami: "아타미", Mishima: "미시마", "Shin-Fuji": "신후지", Shizuoka: "시즈오카",
+      Kakegawa: "가케가와", Hamamatsu: "하마마쓰", Toyohashi: "도요하시", "Mikawa-Anjo": "미카와안조",
+      Nagoya: "나고야", "Gifu-Hashima": "기후하시마", Maibara: "마이바라", Kyoto: "교토", "Shin-Osaka": "신오사카",
+    },
+    spots: {
+      "tokyo-tower": "도쿄 타워", "ota-fuji": "오타에서 보이는 후지산", "maruko-bridge": "마루코교",
+      "musashi-kosugi-towers": "무사시코스기 타워맨션", "sagami-fuji": "사가미 평야 너머의 후지산",
+      "727-board": "727·248 간판", hinataoka: "히나타오카 언덕 주택가", "putiputi-sign": "「나는 누구일까요?」 간판",
+      "odawara-castle": "오다와라성", "gyoran-kannon": "교란 관음상", odawara: "아타미와 사가미만",
+      fuji: "후지산", "shimizu-port-chikyu": "시미즈항과 CHIKYU 심해 시추선", "left-fuji": "왼쪽 후지산",
+      "shizuoka-tea-fields": "시즈오카 차밭", kakegawa: "가케가와성", "genki-sign": "싯페이 응원 간판",
+      hamanako: "하마나호", "hamanako-fuji": "하마나호 너머의 후지산", "toyohashi-tateiwa": "도요하시 다테이와 바위",
+      "mikawa-oshima": "미카와오시마", "nichiban-anjo": "CELLOTAPE 벽 간판",
+      "nagoya-station-skyline": "나고야역 스카이라인", "kirin-beer-factory": "기린 맥주 공장",
+      kiyosu: "기요스성", "solar-ark": "솔라 아크 태양광 시설", "gifu-castle": "기후성",
+      kinshozan: "긴쇼산", "nangu-taisha": "난구 다이샤 대도리이", ibuki: "이부키산",
+      "sawayama-castle": "사와야마성 유적", "hikone-castle": "히코네성", "kannonji-castle": "간논지성 유적",
+      "omi-fuji": "오미후지", "seta-karahashi": "세타노 가라하시", toji: "도지 오층탑",
+      "torikai-train-depot": "도리카이 신칸센 차량기지",
+    },
+  },
+};
+
+const GUIDE_MOBILE_SPOTS = [
+  { id: "tokyo-tower", min: 3, seat: "E" },
+  { id: "odawara", min: 36, seat: "A" },
+  { id: "fuji", min: 43, seat: "E" },
+  { id: "hamanako", min: 73, seat: "E" },
+  { id: "solar-ark", min: 103, seat: "E" },
+  { id: "toji", min: 131, seat: "A" },
+];
+
+const GUIDE_MOBILE_SPOT_NAMES = {
+  ja: {
+    "tokyo-tower": "東京タワー", odawara: "熱海と相模湾", fuji: "富士山",
+    hamanako: "浜名湖", "solar-ark": "ソーラーアーク", toji: "東寺五重塔",
+  },
+  en: {
+    "tokyo-tower": "Tokyo Tower", odawara: "Atami & Sagami Bay", fuji: "Mt. Fuji",
+    hamanako: "Lake Hamana", "solar-ark": "Solar Ark", toji: "Toji Five-Story Pagoda",
+  },
+  "zh-Hant": {
+    "tokyo-tower": "東京鐵塔", odawara: "熱海與相模灣", fuji: "富士山",
+    hamanako: "濱名湖", "solar-ark": "Solar Ark", toji: "東寺五重塔",
+  },
+  ko: {
+    "tokyo-tower": "도쿄 타워", odawara: "아타미와 사가미만", fuji: "후지산",
+    hamanako: "하마나호", "solar-ark": "솔라 아크", toji: "도지 오층탑",
+  },
+};
+
+const GUIDE_MOBILE_SPOT_HOOKS = {
+  "zh-Hant": {
+    "tokyo-tower": "東京天空中的紅色高塔。", odawara: "穿過隧道，海景豁然展開。", fuji: "日本最知名的三分鐘。",
+    hamanako: "列車像在湖面上奔馳。", "solar-ark": "即將告別的太陽之船。", toji: "一眼就知道，京都到了。",
+  },
+  ko: {
+    "tokyo-tower": "도쿄 하늘의 붉은 타워.", odawara: "터널 사이로 바다가 열립니다.", fuji: "일본에서 가장 유명한 3분.",
+    hamanako: "열차가 호수 위를 달립니다.", "solar-ark": "곧 마지막이 될 태양의 배.", toji: "교토에 왔다는 것을 단번에 알 수 있습니다.",
   },
 };
 
@@ -542,14 +678,49 @@ function heroFigcaptionHTML(spot, lang) {
 }
 
 /** 左ペインのタイムライン。SPOTS と ROUTE をここで直接使う */
+function guideMobileSpotStripHTML(lang, prefix, spotHrefPrefix) {
+  const ui = UI[lang];
+  const names = GUIDE_MOBILE_SPOT_NAMES[lang];
+  const cards = GUIDE_MOBILE_SPOTS.map((item) => {
+    const spot = SPOTS.find((candidate) => candidate.id === item.id);
+    if (!spot) throw new Error(`Guide mobile spot missing: ${item.id}`);
+    const name = names[item.id];
+    const image = spot.image || spot.photos?.[0]?.src || "images/og-shinkansen-window.png";
+    const meta = ui.mobileSpotMeta(item.min, item.seat);
+    const localizedSpot = spot[lang] || spot.en || spot.ja || {};
+    const localizedName = names[item.id] || localizedSpot.name || item.id;
+    const localizedHook = GUIDE_MOBILE_SPOT_HOOKS[lang]?.[item.id] || localizedSpot.hook || "";
+    const rawCredit = creditText(spot.photoCredit, lang);
+    const compactCredit = String(rawCredit).toLowerCase() === "michikusa"
+      ? spot.photoCredit?.date || ""
+      : String(rawCredit).match(/@[\w_]+/)?.[0] || rawCredit;
+    const cardCredit = compactCredit ? `<small class="show-credit">${escapeHTML(compactCredit)}</small>` : "";
+    const caption = `<span class="show-caption"><strong>${escapeHTML(`${spot.icon || ""} ${localizedName}`.trim())}</strong>${cardCredit}<span>${escapeHTML(localizedHook)}</span><span class="show-guide-link">${escapeHTML(ui.mobileSpotAction)}</span></span>`;
+    const media = `<div class="show-media"><img src="${prefix}${escapeHTML(thumbnailSrc(image))}" alt="${escapeHTML(localizedName)}" loading="lazy" decoding="async"></div>`;
+    const ariaLabel = `${localizedName}: ${ui.mobileSpotAction}`;
+    return `<a class="show-card guide-mobile-spot-card" href="${escapeHTML(`${spotHrefPrefix}${item.id}.html`)}" data-guide-mobile-spot="${escapeHTML(item.id)}" aria-label="${escapeHTML(ariaLabel)}">
+            ${media}
+            ${caption}
+          </a>`;
+  }).join("\n          ");
+  return `<div class="guide-mobile-spots" aria-label="${escapeHTML(ui.mobileSpotRailLabel)}">
+          <div class="showcase-rail">
+          ${cards}
+          </div>
+        </div>`;
+}
+
 function spotRailHTML(spot, lang, prefix, options = {}) {
   const ui = UI[lang];
   const currentId = spot.id;
   const spotHrefPrefix = options.spotHrefPrefix || "";
+  const spotNames = options.spotNames || {};
+  const stationNames = options.stationNames || {};
+  const railPlacement = options.railPlacement || `${lang}_guide_rail`;
 
   const rows = [];
   for (const st of ROUTE.refStations) {
-    rows.push({ kind: "station", min: st.min, name: st[lang] || st.ja, major: !!st.major });
+    rows.push({ kind: "station", min: st.min, name: stationNames[st.en] || st[lang] || st.en || st.ja, major: !!st.major });
   }
   for (const sp of SPOTS) {
     if (sp.minutesFromTokyo == null) continue;
@@ -558,7 +729,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       kind: "spot",
       min: sp.minutesFromTokyo,
       id: sp.id,
-      name: data.name || sp.id,
+      name: spotNames[sp.id] || data.name || sp.en?.name || sp.id,
       side: sp.side,
       thumb: RAIL_THUMB_CATEGORIES.has(sp.category) && sp.image ? sp.image : "",
     });
@@ -568,7 +739,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
   const me = SPOTS.find((sp) => sp.id === currentId);
   const meData = me?.[lang] || me?.ja || {};
   const nowLabel = me
-    ? ui.railNowLabel(escapeHTML(meData.name || currentId), me.minutesFromTokyo, escapeHTML(sideLabel(me, lang)))
+    ? ui.railNowLabel(escapeHTML(spotNames[currentId] || meData.name || me?.en?.name || currentId), me.minutesFromTokyo, escapeHTML(sideLabel(me, lang)))
     : "";
 
   const items = rows
@@ -583,6 +754,9 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       const seatCls = r.side === "E" ? "is-e" : r.side === "A" ? "is-a" : "";
       const seatLabel = r.side === "E" ? "E" : r.side === "A" ? "A" : "—";
       const href = `${spotHrefPrefix}${r.id}.html`;
+      const trackingAttributes = options.trackSpotClicks
+        ? ` data-guide-rail-spot="${escapeHTML(r.id)}" data-guide-rail-placement="${escapeHTML(railPlacement)}"`
+        : "";
       const thumb = r.thumb
         ? `<span class="spot-page-rail-thumb-wrap">` +
             `<img class="spot-page-rail-thumb" src="${prefix}${escapeHTML(thumbnailSrc(r.thumb))}" alt="" loading="lazy" decoding="async" width="38" height="38">` +
@@ -590,7 +764,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
           `</span>`
         : `<span class="spot-page-rail-nothumb" aria-hidden="true"></span>`;
       return `<li class="spot-page-rail-row spot-page-rail-spot${isCurrent ? " is-current" : ""}">` +
-        `<a class="spot-page-rail-link" href="${escapeHTML(href)}"${isCurrent ? ' aria-current="page"' : ""}>` +
+        `<a class="spot-page-rail-link" href="${escapeHTML(href)}"${trackingAttributes}${isCurrent ? ' aria-current="page"' : ""}>` +
         thumb +
         `<span class="spot-page-rail-min">${r.min}</span>` +
         `<span class="spot-page-rail-name">${escapeHTML(r.name)}</span>` +
@@ -604,6 +778,11 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
   const asideClass = options.asideClass || "spot-page-rail";
   const ctaHref = options.ctaHref || appHref(lang, "", prefix);
   const ctaAttributes = options.ctaAttributes ? ` ${options.ctaAttributes}` : "";
+  const bottomCtaAttributes = options.bottomCtaAttributes ? ` ${options.bottomCtaAttributes}` : "";
+  const railLead = options.showGuideLead ? `\n          <p class="spot-page-rail-lead">${escapeHTML(ui.railLead)}</p>` : "";
+  const bottomCta = options.showBottomCta
+    ? `\n        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="${escapeHTML(ctaHref)}"${bottomCtaAttributes}>${escapeHTML(ui.railBottomCta)}</a>`
+    : "";
   const footHref = options.footHref || `${prefix}zukan.html`;
   const affiliatePlacement = options.affiliatePlacement || `${lang}_spot_rail_after_route`;
   const affiliateHTML = !options.includeAffiliate ? "" : lang === "ja"
@@ -655,13 +834,16 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
             </a>
           </div>
         </div>`;
-  const affiliateBlock = affiliateHTML ? `\n        ${affiliateHTML}` : "";
+  const normalizedAffiliateHTML = options.absoluteAffiliateUrls
+    ? affiliateHTML.replaceAll('="//', '="https://')
+    : affiliateHTML;
+  const affiliateBlock = normalizedAffiliateHTML ? `\n        ${normalizedAffiliateHTML}` : "";
 
   return `<aside class="${escapeHTML(asideClass)}" aria-label="${escapeHTML(ui.railTitle)}">
         <div class="spot-page-rail-head">
           <p class="spot-page-rail-eyebrow">${escapeHTML(ui.railEyebrow)}</p>
           <p class="spot-page-rail-title">${escapeHTML(ui.railTitle)}</p>
-          <p class="spot-page-rail-count"><strong>${spotCount}</strong>${escapeHTML(ui.railCountSuffix)}</p>
+          <p class="spot-page-rail-count"><strong>${spotCount}</strong>${escapeHTML(ui.railCountSuffix)}</p>${railLead}
           ${nowLabel ? `<p class="spot-page-rail-now">${nowLabel}</p>` : ""}
           <a class="spot-page-rail-cta" href="${escapeHTML(ctaHref)}"${ctaAttributes}>${escapeHTML(ui.railCta)}</a>
         </div>
@@ -670,7 +852,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
         </div>
         <div class="spot-page-rail-foot">
           <a href="${escapeHTML(footHref)}">${escapeHTML(ui.railFoot)}</a>
-        </div>${affiliateBlock}
+        </div>${bottomCta}${affiliateBlock}
       </aside>`;
 }
 
@@ -1284,9 +1466,9 @@ function spotPageHTML(spot, lang) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">
-  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="${url}">
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
@@ -1578,7 +1760,9 @@ function guideHTML(lang) {
   <link rel="canonical" href="${guideUrl}">
   <link rel="alternate" hreflang="ja" href="${siteRoot}/guide.html">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/guide.html">
-  <link rel="alternate" hreflang="x-default" href="${siteRoot}/guide.html">
+  <link rel="alternate" hreflang="zh-Hant-TW" href="${siteRoot}/zh-Hant/guide.html">
+  <link rel="alternate" hreflang="ko" href="${siteRoot}/ko/guide.html">
+  <link rel="alternate" hreflang="x-default" href="${siteRoot}/en/guide.html">
   <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
@@ -1630,6 +1814,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
@@ -1667,31 +1853,68 @@ for (const lang of ["ja", "en"]) {
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 fs.writeFileSync(path.join(appDir, "en", "index.html"), englishAppIndexHTML(), "utf8");
 await import("./generate-language-mirrors.mjs");
-// guide.html and en/guide.html are hand-edited SEO answer pages.
+// Guide pages are hand-edited SEO answer pages.
 // Keep only their shared route rail generated from the same source as spot pages.
 const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
-for (const lang of ["ja", "en"]) {
-  const guidePath = path.join(appDir, lang === "ja" ? "guide.html" : path.join("en", "guide.html"));
+const guideRailConfigs = [
+  {
+    lang: "ja", path: "guide.html", prefix: "", spotHrefPrefix: "spots/",
+    ctaHref: "index.html#journey", footHref: "zukan.html", includeAffiliate: true,
+  },
+  {
+    lang: "en", path: path.join("en", "guide.html"), prefix: "../", spotHrefPrefix: "spots/",
+    ctaHref: "./#journey", footHref: "zukan.html", includeAffiliate: true,
+  },
+  {
+    lang: "zh-Hant", path: path.join("zh-Hant", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
+    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+  },
+  {
+    lang: "ko", path: path.join("ko", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
+    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+  },
+];
+for (const config of guideRailConfigs) {
+  const lang = config.lang;
+  const guidePath = path.join(appDir, config.path);
   const guideHTML = fs.readFileSync(guidePath, "utf8");
-  const prefix = lang === "ja" ? "" : "../";
-  const rail = spotRailHTML(guideRailSpot, lang, prefix, {
+  const railLocalization = GUIDE_RAIL_LOCALIZATION[lang] || {};
+  const rail = spotRailHTML(guideRailSpot, lang, config.prefix, {
     asideClass: "spot-page-rail guide-page-rail",
-    spotHrefPrefix: "spots/",
-    ctaHref: lang === "ja" ? "index.html#journey" : "./#journey",
+    spotHrefPrefix: config.spotHrefPrefix,
+    ctaHref: config.ctaHref,
     ctaAttributes: 'data-guide-cta="rail_exact_time"',
-    footHref: "zukan.html",
-    includeAffiliate: true,
+    bottomCtaAttributes: 'data-guide-cta="rail_exact_time_bottom"',
+    showGuideLead: true,
+    showBottomCta: true,
+    footHref: config.footHref,
+    includeAffiliate: config.includeAffiliate,
     affiliatePlacement: `${lang}_guide_rail_after_route`,
     affiliateContext: "guide",
+    absoluteAffiliateUrls: true,
+    spotNames: railLocalization.spots,
+    stationNames: railLocalization.stations,
+    trackSpotClicks: config.trackSpotClicks,
+    railPlacement: `${lang}_guide_rail`,
   });
   const start = "<!-- GUIDE_RAIL_START -->";
   const end = "<!-- GUIDE_RAIL_END -->";
   if (!guideHTML.includes(start) || !guideHTML.includes(end)) {
     throw new Error(`Guide rail markers missing: ${guidePath}`);
   }
-  const syncedGuideHTML = guideHTML.replace(
+  let syncedGuideHTML = guideHTML.replace(
     new RegExp(`${start}[\\s\\S]*?${end}`),
     `${start}\n      ${rail}\n      ${end}`,
+  );
+  const mobileStart = "<!-- GUIDE_MOBILE_SPOTS_START -->";
+  const mobileEnd = "<!-- GUIDE_MOBILE_SPOTS_END -->";
+  if (!syncedGuideHTML.includes(mobileStart) || !syncedGuideHTML.includes(mobileEnd)) {
+    throw new Error(`Guide mobile spot markers missing: ${guidePath}`);
+  }
+  const mobileSpots = guideMobileSpotStripHTML(lang, config.prefix, config.spotHrefPrefix);
+  syncedGuideHTML = syncedGuideHTML.replace(
+    new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
+    `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
   fs.writeFileSync(guidePath, syncedGuideHTML, "utf8");
 }

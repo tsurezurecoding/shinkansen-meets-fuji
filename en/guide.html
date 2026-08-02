@@ -9,6 +9,8 @@
   <link rel="canonical" href="https://www.michikusa-travel.com/en/guide.html">
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
+  <link rel="alternate" hreflang="zh-Hant-TW" href="https://www.michikusa-travel.com/zh-Hant/guide.html">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/guide.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
   <link rel="stylesheet" href="../style.css?v=20260729-guide-cleanup">
   <meta property="og:title" content="Mt. Fuji from the Shinkansen: Seat E, 43 min from Tokyo">
@@ -100,9 +102,12 @@
         </div>
       </details>
     </nav>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <a href="../guide.html?lang=ja">日本語</a><a class="active" href="guide.html">EN</a>
-    </div>
+    <details class="guide-lang-menu">
+      <summary aria-label="Choose language">English</summary>
+      <div class="guide-lang-options">
+        <a href="../guide.html?lang=ja">日本語</a><a aria-current="page" href="guide.html">English</a><a href="../zh-Hant/guide.html">繁體中文</a><a href="../ko/guide.html">한국어</a>
+      </div>
+    </details>
   </header>
   <main>
     <header class="spot-page-article spot-page-hero">
@@ -116,6 +121,7 @@
           <p class="spot-page-rail-eyebrow">Tokaido Shinkansen</p>
           <p class="spot-page-rail-title">Tokyo → Shin-Osaka window</p>
           <p class="spot-page-rail-count"><strong>37</strong> views</p>
+          <p class="spot-page-rail-lead">Choose your train to turn all 37 views into expected passing times for that service.</p>
           <p class="spot-page-rail-now"><b>Mt. Fuji</b>About 43 min from Tokyo · Seat E · mountain side</p>
           <a class="spot-page-rail-cta" href="./#journey" data-guide-cta="rail_exact_time">Build my guide by train</a>
         </div>
@@ -125,6 +131,7 @@
         <div class="spot-page-rail-foot">
           <a href="zukan.html">Browse by photo →</a>
         </div>
+        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="./#journey" data-guide-cta="rail_exact_time_bottom">Time all 37 views to my train</a>
         <div class="spot-page-rail-klook" id="spotRailAffiliate" data-affiliate-module data-affiliate-partner="klook" data-affiliate-placement="en_guide_rail_after_route" data-affiliate-language="en" data-affiliate-context="guide">
           <div class="spot-page-rail-klook-heading" data-affiliate-view-target>
             <p class="spot-page-rail-affiliate-label">AFFILIATE LINKS</p>
@@ -166,7 +173,7 @@
       <p class="g9-lede"><strong>The best way to enjoy the Shinkansen journey is not to stop at Mt. Fuji.</strong> Fuji is only 3 minutes of a 2½-hour ride. This line carries <a href="zukan.html"><strong>37 curated window views</strong></a> — castles, tea fields, sea crossings and wonderfully odd billboards.</p>
       <div class="g9-cond" aria-label="Cloudy or night?">
         <a href="#cloudy">
-          <span class="pics"><img src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="A wide lake crossed by the train"><img src="../images/thumbs/20260530_ibukiyama.webp" alt="A massive mountain over the plain"><img src="../images/thumbs/20260530_kakegawa_castle.webp" alt="A castle keep near the track"></span>
+          <span class="pics"><img src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="A wide lake crossed by the train"><img src="../images/thumbs/20260530_ibukiyama.webp" alt="A massive mountain over the plain"><img src="../images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="A castle keep near the track"></span>
           <span class="txt"><span class="q">Cloudy forecast?</span><span class="a">These three <b>need no blue sky</b> — and there are more →</span></span>
         </a>
         <a href="#night">
@@ -232,7 +239,7 @@
             <em>Close and massive — it holds its shape under any sky. Snow-capped in winter.</em>
           </a>
           <a class="guide-visual-card" href="spots/kakegawa.html">
-            <img src="../images/thumbs/20260530_kakegawa_castle.webp" alt="Kakegawa Castle keep near the station">
+            <img src="../images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="Kakegawa Castle keep near the station">
             <span><span class="g9-min">~62 min</span>Seat E</span>
             <strong>Kakegawa Castle</strong>
             <em>A wooden castle keep right by the station — near enough to beat the haze.</em>
@@ -268,17 +275,39 @@
         <p style="margin-bottom:0">After dark the window becomes a mirror. Move away from cabin lights, press closer to the glass and cup your hands around your eyes.</p>
       </section>
 
-      <section class="spot-page-section" id="timeline">
+      <section class="spot-page-section guide-mobile-timeline" id="timeline">
         <h2><span class="copy-chunk">The best window views,</span> <span class="copy-chunk">timed to your train</span></h2>
         <p>The minutes shown here are Nozomi estimates. Stops and departure times change the actual schedule, so <strong>choosing your train converts all 37 views into expected passing times for that service</strong>.</p>
-        <ul class="g9-timeline">
-          <li><span class="t">0:03</span>Tokyo Tower slips between buildings</li>
-          <li><span class="t">0:36</span>the city ends — Sagami Bay opens</li>
-          <li><span class="t">0:43</span><strong>Mt. Fuji fills the window</strong></li>
-          <li><span class="t">1:13</span>water on both sides at Lake Hamana</li>
-          <li class="dim"><span class="t">1:50</span>castles, Sekigahara, Lake Biwa…</li>
-          <li class="dim"><span class="t">2:11</span>Toji pagoda — hello, Kyoto</li>
-        </ul>
+        <!-- GUIDE_MOBILE_SPOTS_START -->
+        <div class="guide-mobile-spots" aria-label="Recommended views from Tokyo to Shin-Osaka">
+          <div class="showcase-rail">
+          <a class="show-card guide-mobile-spot-card" href="spots/tokyo-tower.html" data-guide-mobile-spot="tokyo-tower" aria-label="Tokyo Tower: Read the guide">
+            <div class="show-media"><img src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="Tokyo Tower" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗼 Tokyo Tower</strong><small class="show-credit">@letus10</small><span>A red tower in the Tokyo skyline.</span><span class="show-guide-link">Read the guide</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/odawara.html" data-guide-mobile-spot="odawara" aria-label="Atami &amp; Sagami Bay: Read the guide">
+            <div class="show-media"><img src="../images/thumbs/20260515_atami_sagami_bay.webp" alt="Atami &amp; Sagami Bay" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🌊 Atami &amp; Sagami Bay</strong><small class="show-credit">2026-05-15</small><span>The sea opens between tunnels.</span><span class="show-guide-link">Read the guide</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/fuji.html" data-guide-mobile-spot="fuji" aria-label="Mt. Fuji: Read the guide">
+            <div class="show-media"><img src="../images/thumbs/20210218_fuji_rumireport.webp" alt="Mt. Fuji" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗻 Mt. Fuji</strong><small class="show-credit">@rumireport</small><span>Japan's famous three minutes.</span><span class="show-guide-link">Read the guide</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/hamanako.html" data-guide-mobile-spot="hamanako" aria-label="Lake Hamana: Read the guide">
+            <div class="show-media"><img src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="Lake Hamana" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🚤 Lake Hamana</strong><small class="show-credit">@Design_photoSY</small><span>The train runs over the water.</span><span class="show-guide-link">Read the guide</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/solar-ark.html" data-guide-mobile-spot="solar-ark" aria-label="Solar Ark: Read the guide">
+            <div class="show-media"><img src="../images/thumbs/20251212_solar_ark_2_letus10.webp" alt="Solar Ark" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>☀️ Solar Ark</strong><small class="show-credit">@letus10</small><span>A solar ship, soon to disappear.</span><span class="show-guide-link">Read the guide</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/toji.html" data-guide-mobile-spot="toji" aria-label="Toji Five-Story Pagoda: Read the guide">
+            <div class="show-media"><img src="../images/thumbs/20260510_toji.webp" alt="Toji Five-Story Pagoda" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>⛩️ Toji Five-Story Pagoda</strong><small class="show-credit">2026-05-10</small><span>One glance, and you know it's Kyoto.</span><span class="show-guide-link">Read the guide</span></span>
+          </a>
+          </div>
+        </div>
+        <!-- GUIDE_MOBILE_SPOTS_END -->
         <div class="spot-page-actions">
           <a class="btn btn-primary" href="./#journey" data-guide-cta="timeline_primary">Open the timeline for your train</a>
           <a class="btn btn-ghost" href="zukan.html">Browse all 37 views</a>
@@ -354,8 +383,18 @@
   </main>
   <script>
     document.addEventListener("click", function (event) {
-      var link = event.target.closest && event.target.closest("[data-guide-cta], [data-affiliate-offer]");
+      var link = event.target.closest && event.target.closest("[data-guide-cta], [data-guide-mobile-spot], [data-affiliate-offer]");
       if (!link || typeof window.gtag !== "function") return;
+      if (link.hasAttribute("data-guide-mobile-spot")) {
+        window.gtag("event", "guide_mobile_spot_click", {
+          spot_id: link.getAttribute("data-guide-mobile-spot"),
+          destination: link.getAttribute("href"),
+          language: "en",
+          placement: "timeline_mobile",
+          page_context: "guide"
+        });
+        return;
+      }
       if (link.hasAttribute("data-affiliate-offer")) {
         var affiliateModule = link.closest("[data-affiliate-module]");
         window.gtag("event", "affiliate_click", {
