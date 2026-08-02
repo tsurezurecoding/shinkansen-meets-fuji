@@ -116,7 +116,12 @@ const liveEnglish = liveSource
   .replace('<script src="../language-router.js?v=20260726-language-choice"></script>', '')
   .replaceAll('href="../', 'href="../../')
   .replaceAll('src="../', 'src="../../')
+  .replace('href="styles.css', 'href="../../live/styles.css')
   .replace('src="live.js', 'src="../../live/live.js')
+  .replace(
+    /<script src="\.\.\/\.\.\/live\/live\.js\?v=[^"]+"><\/script>/,
+    '<script src="../../live/live.js?v=20260802-en-live-assets"></script>'
+  )
   .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
 const liveTarget = path.join(appDir, "en", "live", "index.html");
 fs.mkdirSync(path.dirname(liveTarget), { recursive: true });

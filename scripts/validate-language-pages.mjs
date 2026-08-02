@@ -79,6 +79,16 @@ for (const file of englishHtmlFiles) {
   }
 }
 
+const englishLiveHtml = fs.readFileSync(path.join(appDir, "en", "live", "index.html"), "utf8");
+for (const required of [
+  'href="../../live/styles.css',
+  'src="../../live/live.js'
+]) {
+  if (!englishLiveHtml.includes(required)) {
+    errors.push(`/en/live/: missing shared live asset reference ${required}`);
+  }
+}
+
 if (errors.length) {
   console.error(`Language page validation failed (${errors.length})`);
   errors.forEach((error) => console.error(`- ${error}`));

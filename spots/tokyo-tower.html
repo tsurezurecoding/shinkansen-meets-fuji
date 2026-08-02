@@ -136,6 +136,30 @@
         <div class="spot-page-rail-foot">
           <a href="../zukan.html">車窓図鑑で写真から探す →</a>
         </div>
+        <div class="spot-page-rail-affiliate-group" id="spotRailAffiliate">
+          <p class="spot-page-rail-affiliate-label">広告</p>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_spot_rail_after_route_primary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <div class="spot-page-rail-affiliate-banner">
+              <script>
+                if (window.matchMedia("(min-width: 1100px)").matches) {
+                  document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671040"><\/script>');
+                }
+              </script>
+              <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671040" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671040" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="200" height="200"></a></noscript>
+            </div>
+          </div>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="vc_pid_892671046" data-affiliate-placement="ja_spot_rail_after_route_secondary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <div class="spot-page-rail-affiliate-banner">
+              <script>
+                if (window.matchMedia("(min-width: 1100px)").matches) {
+                  document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671046"><\/script>');
+                }
+              </script>
+              <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671046" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671046" alt="旅行予約サービス" width="200" height="200"></a></noscript>
+            </div>
+          </div>
+          <p class="spot-page-rail-affiliate-note">この欄にはアフィリエイトリンクが含まれます。</p>
+        </div>
       </aside>
       <article class="spot-page-article">
       <figure class="spot-page-figure">
@@ -239,6 +263,18 @@
         <span>関ヶ原の空に、雪を戴く名峰。</span>
       </a></div>
       </section>
+      <aside class="spot-page-mobile-affiliate" id="spotMobileAffiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_spot_article_end_mobile" data-affiliate-language="ja" data-affiliate-context="spot" aria-label="広告">
+        <p class="spot-page-mobile-affiliate-label" data-affiliate-view-target>広告</p>
+        <div class="spot-page-mobile-affiliate-banner">
+          <script>
+            if (window.matchMedia("(max-width: 1099px)").matches) {
+              document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671044"><\/script>');
+            }
+          </script>
+          <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671044" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671044" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="234" height="60"></a></noscript>
+        </div>
+        <p class="spot-page-mobile-affiliate-note">アフィリエイトリンクを含みます。</p>
+      </aside>
       </article>
     </div>
     <section class="content-rail-section" aria-labelledby="contentRailTitle">
@@ -349,6 +385,42 @@
       text = text.replace(/(?:クリックで拡大|click to enlarge)\s*$/, "").trim();
       open(src, text);
     });
+  });
+})();
+</script>
+  <script>
+(function () {
+  "use strict";
+  var modules = document.querySelectorAll("[data-affiliate-module]");
+  if (!modules.length) return;
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("[data-affiliate-module] a");
+    var module = link && link.closest("[data-affiliate-module]");
+    if (!module || typeof window.gtag !== "function") return;
+    window.gtag("event", "affiliate_click", {
+      affiliate_partner: link.getAttribute("data-affiliate-partner") || module.getAttribute("data-affiliate-partner"),
+      affiliate_offer: link.getAttribute("data-affiliate-offer") || module.getAttribute("data-affiliate-offer"),
+      affiliate_placement: module.getAttribute("data-affiliate-placement"),
+      language: module.getAttribute("data-affiliate-language"),
+      page_context: module.getAttribute("data-affiliate-context")
+    });
+  });
+  if (!("IntersectionObserver" in window)) return;
+  modules.forEach(function (module) {
+    var target = module.querySelector("[data-affiliate-view-target]") || module;
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (entry) { return entry.isIntersecting && entry.intersectionRatio >= 0.5; })) return;
+      observer.disconnect();
+      if (typeof window.gtag !== "function") return;
+      window.gtag("event", "affiliate_module_view", {
+        affiliate_partner: module.getAttribute("data-affiliate-partner"),
+        affiliate_offer: module.getAttribute("data-affiliate-offer") || "multiple",
+        affiliate_placement: module.getAttribute("data-affiliate-placement"),
+        language: module.getAttribute("data-affiliate-language"),
+        page_context: module.getAttribute("data-affiliate-context")
+      });
+    }, { threshold: [0.5] });
+    observer.observe(target);
   });
 })();
 </script>

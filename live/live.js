@@ -262,7 +262,11 @@
   function spotArea(sp) { return sp.raw[state.lang] ? sp.raw[state.lang].area : sp.raw.ja.area; }
   function spotPhoto(sp) {
     var img = sp.raw.image || (sp.raw.photos && sp.raw.photos.length ? sp.raw.photos[0].src : null);
-    return img ? "../" + img : null;
+    if (!img) return null;
+    if (window.MADO_NATIVE_APP) {
+      img = img.replace(/^images\/(?!thumbs\/)(.+?)\.(?:jpe?g|png)$/i, "images/thumbs/$1.webp");
+    }
+    try { return new URL(img, APP_ASSET_BASE).href; } catch (e) { return "../" + img; }
   }
   function t(key) { return STR[state.lang][key] || key; }
   function tFmt(key, vars) {
@@ -573,7 +577,10 @@
 
   /* ---- AI車窓実況: 事前生成した台本＋音声をETA連動で再生 ---- */
   var NARR = (typeof NARRATIONS !== "undefined" && NARRATIONS) || window.NARRATIONS || {};
-  var NARR_SRC = "narration.js?v=20260712-live-field-fixes";
+  var liveScript = document.currentScript;
+  var LIVE_ASSET_BASE = liveScript && liveScript.src ? new URL("./", liveScript.src).href : new URL("./", document.baseURI).href;
+  var APP_ASSET_BASE = new URL("../", LIVE_ASSET_BASE).href;
+  var NARR_SRC = new URL("narration.js?v=20260802-en-live-assets", LIVE_ASSET_BASE).href;
   var NARR_LEAD_SEC = 90;
   var NARR_WARMUP_SEC = 180;
   var NARR_MAX_QUEUE = 3;
@@ -644,9 +651,12 @@
 
   function narrationAudioPath(sp, n) {
     if (!n || n.audio === false) return "";
-    if (n.audio) return n.audio;
+    if (n.audio) {
+      if (/^(?:[a-z]+:|\/|data:|blob:)/i.test(n.audio)) return n.audio;
+      return new URL(n.audio.replace(/^live\//, ""), LIVE_ASSET_BASE).href;
+    }
     var dirKey = state.dir < 0 ? "up" : "down";
-    return "audio/" + sp.id + "_" + dirKey + "_" + state.lang + ".mp3";
+    return new URL("audio/" + sp.id + "_" + dirKey + "_" + state.lang + ".mp3", LIVE_ASSET_BASE).href;
   }
 
   function narrationGroupKey(sp) {

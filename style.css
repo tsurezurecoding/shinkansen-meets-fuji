@@ -1174,6 +1174,42 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .spot-page-rail {
   display: none;
 }
+.spot-page-mobile-affiliate {
+  display: none;
+}
+@media (max-width: 1099px) {
+  .spot-page-mobile-affiliate {
+    display: block;
+    width: 234px;
+    margin: 46px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .spot-page-mobile-affiliate-label {
+    margin: 0 0 7px;
+    color: #9d968c;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+  .spot-page-mobile-affiliate-banner {
+    width: 234px;
+    min-height: 60px;
+    overflow: hidden;
+  }
+  .spot-page-mobile-affiliate-banner img {
+    display: block;
+    width: 234px;
+    height: 60px;
+    border: 0;
+  }
+  .spot-page-mobile-affiliate-note {
+    margin: 7px 0 0;
+    color: #9d968c;
+    font-size: 9.5px;
+    line-height: 1.5;
+  }
+}
 @media (min-width: 1100px) {
   .spot-page-shell {
     display: grid;
@@ -1424,6 +1460,71 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   .spot-page-rail-foot a:hover {
     color: var(--accent);
   }
+  .spot-page-rail-affiliate-group,
+  .spot-page-rail-klook {
+    width: 200px;
+    margin: 28px auto 0;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+    text-align: center;
+  }
+  .spot-page-rail-affiliate + .spot-page-rail-affiliate {
+    margin-top: 14px;
+  }
+  .spot-page-rail-affiliate-label {
+    margin: 0 0 7px;
+    color: #9d968c;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+  .spot-page-rail-affiliate-banner {
+    width: 200px;
+    min-height: 200px;
+    overflow: hidden;
+  }
+  .spot-page-rail-affiliate-banner img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border: 0;
+  }
+  .spot-page-rail-affiliate-note {
+    margin: 8px 0 0;
+    color: #9d968c;
+    font-size: 9.5px;
+    line-height: 1.55;
+    text-align: left;
+  }
+  .spot-page-rail-klook {
+    width: 100%;
+    text-align: left;
+  }
+  .spot-page-rail-klook-title {
+    margin: 4px 0 0;
+    color: var(--ink);
+    font-family: var(--font-serif);
+    font-size: 16px;
+    line-height: 1.35;
+  }
+  .spot-page-rail-klook-note {
+    margin: 7px 0 14px;
+    color: #8c857b;
+    font-size: 9.5px;
+    line-height: 1.5;
+  }
+  .spot-page-rail-klook .affiliate-card-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .spot-page-rail-klook .affiliate-card-body {
+    padding: 13px;
+  }
+  .spot-page-rail-klook .affiliate-card-body strong {
+    font-size: 15px;
+  }
+  .spot-page-rail-klook .affiliate-card-body > span:not(.affiliate-card-action) {
+    font-size: 11px;
+  }
   .guide-page-rail .spot-page-rail-spot.is-current {
     padding-top: 5px;
     padding-bottom: 7px;
@@ -1536,6 +1637,102 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .guide-game-actions .inline-cta {
   margin-left: 2px;
 }
+.affiliate-guide-section {
+  padding: 30px;
+  border: 1px solid #d9d4ca;
+  border-radius: 18px;
+  background: #f8f7f3;
+}
+@media (min-width: 1100px) {
+  .affiliate-guide-section {
+    display: none;
+  }
+}
+.affiliate-guide-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.75fr);
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 22px;
+}
+.affiliate-guide-heading .eyebrow {
+  margin-bottom: 6px;
+}
+.affiliate-guide-heading h2 {
+  margin: 0;
+}
+.affiliate-disclosure {
+  margin: 0;
+  color: #716b62;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.affiliate-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.affiliate-card {
+  display: flex;
+  min-width: 0;
+  overflow: hidden;
+  flex-direction: column;
+  border: 1px solid #ded8cd;
+  border-radius: 14px;
+  color: var(--ink);
+  background: #fff;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(40, 35, 26, 0.06);
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+.affiliate-card:hover {
+  transform: translateY(-2px);
+  border-color: #c9b98f;
+  box-shadow: 0 12px 30px rgba(40, 35, 26, 0.1);
+}
+.affiliate-card:focus-visible {
+  outline: 3px solid rgba(176, 125, 26, 0.35);
+  outline-offset: 3px;
+}
+.affiliate-card > img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 6 / 5;
+  object-fit: cover;
+  background: #ece9e2;
+}
+.affiliate-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+}
+.affiliate-card-body small {
+  color: #8b6a20;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.09em;
+}
+.affiliate-card-body strong {
+  margin-top: 6px;
+  font-family: var(--font-serif);
+  font-size: 17px;
+  line-height: 1.35;
+}
+.affiliate-card-body > span:not(.affiliate-card-action) {
+  margin-top: 8px;
+  color: #6c655c;
+  font-size: 12px;
+  line-height: 1.6;
+}
+.affiliate-card-action {
+  margin-top: auto;
+  padding-top: 14px;
+  color: #7e5b10;
+  font-size: 12px;
+  font-weight: 800;
+}
 @media (max-width: 720px) {
   .guide-entertainment {
     padding: 24px 18px;
@@ -1545,6 +1742,16 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   }
   .guide-game-actions .btn {
     width: 100%;
+  }
+  .affiliate-guide-section {
+    padding: 24px 18px;
+  }
+  .affiliate-guide-heading,
+  .affiliate-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .affiliate-guide-heading {
+    gap: 12px;
   }
 }
 .guide-answer-panel {

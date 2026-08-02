@@ -605,6 +605,54 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
   const ctaHref = options.ctaHref || appHref(lang, "", prefix);
   const ctaAttributes = options.ctaAttributes ? ` ${options.ctaAttributes}` : "";
   const footHref = options.footHref || `${prefix}zukan.html`;
+  const affiliatePlacement = options.affiliatePlacement || `${lang}_spot_rail_after_route`;
+  const affiliateHTML = !options.includeAffiliate ? "" : lang === "ja"
+    ? `<div class="spot-page-rail-affiliate-group" id="spotRailAffiliate">
+          <p class="spot-page-rail-affiliate-label">広告</p>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="${escapeHTML(affiliatePlacement)}_primary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <div class="spot-page-rail-affiliate-banner">
+              <script>
+                if (window.matchMedia("(min-width: 1100px)").matches) {
+                  document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671040"><\\/script>');
+                }
+              </script>
+              <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671040" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671040" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="200" height="200"></a></noscript>
+            </div>
+          </div>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="vc_pid_892671046" data-affiliate-placement="${escapeHTML(affiliatePlacement)}_secondary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <div class="spot-page-rail-affiliate-banner">
+              <script>
+                if (window.matchMedia("(min-width: 1100px)").matches) {
+                  document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671046"><\\/script>');
+                }
+              </script>
+              <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671046" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671046" alt="旅行予約サービス" width="200" height="200"></a></noscript>
+            </div>
+          </div>
+          <p class="spot-page-rail-affiliate-note">この欄にはアフィリエイトリンクが含まれます。</p>
+        </div>`
+    : `<div class="spot-page-rail-klook" id="spotRailAffiliate" data-affiliate-module data-affiliate-partner="klook" data-affiliate-placement="${escapeHTML(affiliatePlacement)}" data-affiliate-language="en" data-affiliate-context="${escapeHTML(options.affiliateContext || "spot")}">
+          <div class="spot-page-rail-klook-heading" data-affiliate-view-target>
+            <p class="spot-page-rail-affiliate-label">AFFILIATE LINKS</p>
+            <p class="spot-page-rail-klook-title">Plan beyond the window</p>
+            <p class="spot-page-rail-klook-note">Michikusa may earn a commission at no extra cost to you.</p>
+          </div>
+          <div class="affiliate-card-grid">
+            <a class="affiliate-card" href="https://affiliate.klook.com/redirect?aid=129377&amp;aff_adid=1363987&amp;k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="klook" data-affiliate-offer="jr_pass">
+              <img src="${prefix}images/affiliate/klook-japan-rail-pass.png" alt="" loading="lazy" decoding="async" width="300" height="250">
+              <span class="affiliate-card-body"><small>RAIL TRAVEL</small><strong>Whole Japan Rail Pass</strong><span>For travel beyond the Tokaido route.</span><span class="affiliate-card-action">View on Klook <span aria-hidden="true">↗</span></span></span>
+            </a>
+            <a class="affiliate-card" href="https://affiliate.klook.com/redirect?aid=129377&amp;aff_adid=1363993&amp;k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F75806-fuji-hakone-day-tour" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="klook" data-affiliate-offer="fuji_hakone">
+              <img src="${prefix}images/affiliate/klook-fuji-hakone-tour.png" alt="" loading="lazy" decoding="async" width="300" height="250">
+              <span class="affiliate-card-body"><small>FROM TOKYO</small><strong>Mt. Fuji &amp; Hakone Day Tour</strong><span>For a closer Fuji experience.</span><span class="affiliate-card-action">View on Klook <span aria-hidden="true">↗</span></span></span>
+            </a>
+            <a class="affiliate-card" href="https://affiliate.klook.com/redirect?aid=129377&amp;aff_adid=1363992&amp;k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F110001-kyoto-nara-deer-arashiyama-train-cherry-blossom-one-day-tour" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="klook" data-affiliate-offer="kyoto_nara">
+              <img src="${prefix}images/affiliate/klook-kyoto-nara-tour.png" alt="" loading="lazy" decoding="async" width="300" height="250">
+              <span class="affiliate-card-body"><small>FROM KYOTO</small><strong>Kyoto &amp; Nara Day Tour</strong><span>Continue the trip beyond Kyoto.</span><span class="affiliate-card-action">View on Klook <span aria-hidden="true">↗</span></span></span>
+            </a>
+          </div>
+        </div>`;
+  const affiliateBlock = affiliateHTML ? `\n        ${affiliateHTML}` : "";
 
   return `<aside class="${escapeHTML(asideClass)}" aria-label="${escapeHTML(ui.railTitle)}">
         <div class="spot-page-rail-head">
@@ -619,8 +667,63 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
         </div>
         <div class="spot-page-rail-foot">
           <a href="${escapeHTML(footHref)}">${escapeHTML(ui.railFoot)}</a>
-        </div>
+        </div>${affiliateBlock}
       </aside>`;
+}
+
+function mobileAffiliateHTML(lang) {
+  if (lang !== "ja") return "";
+  return `<aside class="spot-page-mobile-affiliate" id="spotMobileAffiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_spot_article_end_mobile" data-affiliate-language="ja" data-affiliate-context="spot" aria-label="広告">
+        <p class="spot-page-mobile-affiliate-label" data-affiliate-view-target>広告</p>
+        <div class="spot-page-mobile-affiliate-banner">
+          <script>
+            if (window.matchMedia("(max-width: 1099px)").matches) {
+              document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671044"><\\/script>');
+            }
+          </script>
+          <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671044" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671044" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="234" height="60"></a></noscript>
+        </div>
+        <p class="spot-page-mobile-affiliate-note">アフィリエイトリンクを含みます。</p>
+      </aside>`;
+}
+
+function affiliateTrackingScript() {
+  return `<script>
+(function () {
+  "use strict";
+  var modules = document.querySelectorAll("[data-affiliate-module]");
+  if (!modules.length) return;
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("[data-affiliate-module] a");
+    var module = link && link.closest("[data-affiliate-module]");
+    if (!module || typeof window.gtag !== "function") return;
+    window.gtag("event", "affiliate_click", {
+      affiliate_partner: link.getAttribute("data-affiliate-partner") || module.getAttribute("data-affiliate-partner"),
+      affiliate_offer: link.getAttribute("data-affiliate-offer") || module.getAttribute("data-affiliate-offer"),
+      affiliate_placement: module.getAttribute("data-affiliate-placement"),
+      language: module.getAttribute("data-affiliate-language"),
+      page_context: module.getAttribute("data-affiliate-context")
+    });
+  });
+  if (!("IntersectionObserver" in window)) return;
+  modules.forEach(function (module) {
+    var target = module.querySelector("[data-affiliate-view-target]") || module;
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (entry) { return entry.isIntersecting && entry.intersectionRatio >= 0.5; })) return;
+      observer.disconnect();
+      if (typeof window.gtag !== "function") return;
+      window.gtag("event", "affiliate_module_view", {
+        affiliate_partner: module.getAttribute("data-affiliate-partner"),
+        affiliate_offer: module.getAttribute("data-affiliate-offer") || "multiple",
+        affiliate_placement: module.getAttribute("data-affiliate-placement"),
+        language: module.getAttribute("data-affiliate-language"),
+        page_context: module.getAttribute("data-affiliate-context")
+      });
+    }, { threshold: [0.5] });
+    observer.observe(target);
+  });
+})();
+</script>`;
 }
 
 /** ライトボックスのHTMLとJS（本文写真のクリック拡大） */
@@ -1089,7 +1192,13 @@ function spotPageHTML(spot, lang) {
   const photoCount = photos.length;
   const heroFigcaption = heroFigcaptionHTML(spot, lang);
   const inlineFigures = inlineFigureHTML(spot, lang, prefix);
-  const railHTML = spotRailHTML(spot, lang, prefix);
+  const railHTML = spotRailHTML(spot, lang, prefix, {
+    includeAffiliate: true,
+    affiliatePlacement: `${lang}_spot_rail_after_route`,
+    affiliateContext: "spot",
+  });
+  const mobileAffiliate = mobileAffiliateHTML(lang);
+  const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";
   const lightbox = lightboxHTML(lang);
   const lightboxJs = lightboxScript();
   const routeNote = localized(spot.routeNote, lang) || ui.routeNote(data.area, sideLabel(spot, lang));
@@ -1223,13 +1332,14 @@ ${inlineFigures.first ? `      ${inlineFigures.first}\n` : ""}${explainerBlock}$
       ${photoGalleryHTML(spot, lang, prefix, galleryPhotos)}
       ${refs}
       ${routeRelatedHTML(spot, lang)}
-      </article>
+${mobileAffiliateBlock}      </article>
     </div>
     ${contentRailHTML(lang, prefix)}
   </main>
   ${lightbox}
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
   ${lightboxJs}
+  ${affiliateTrackingScript()}
 </body>
 </html>
 `;
@@ -1562,6 +1672,9 @@ for (const lang of ["ja", "en"]) {
     ctaHref: lang === "ja" ? "index.html#journey" : "./#journey",
     ctaAttributes: 'data-guide-cta="rail_exact_time"',
     footHref: "zukan.html",
+    includeAffiliate: lang === "en",
+    affiliatePlacement: "en_guide_rail_after_route",
+    affiliateContext: "guide",
   });
   const start = "<!-- GUIDE_RAIL_START -->";
   const end = "<!-- GUIDE_RAIL_END -->";

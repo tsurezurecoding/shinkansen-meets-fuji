@@ -136,6 +136,27 @@
         <div class="spot-page-rail-foot">
           <a href="../../zukan.html">Browse by photo →</a>
         </div>
+        <div class="spot-page-rail-klook" id="spotRailAffiliate" data-affiliate-module data-affiliate-partner="klook" data-affiliate-placement="en_spot_rail_after_route" data-affiliate-language="en" data-affiliate-context="spot">
+          <div class="spot-page-rail-klook-heading" data-affiliate-view-target>
+            <p class="spot-page-rail-affiliate-label">AFFILIATE LINKS</p>
+            <p class="spot-page-rail-klook-title">Plan beyond the window</p>
+            <p class="spot-page-rail-klook-note">Michikusa may earn a commission at no extra cost to you.</p>
+          </div>
+          <div class="affiliate-card-grid">
+            <a class="affiliate-card" href="https://affiliate.klook.com/redirect?aid=129377&amp;aff_adid=1363987&amp;k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F1420-7-day-whole-japan-rail-pass-jr-pass" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="klook" data-affiliate-offer="jr_pass">
+              <img src="../../images/affiliate/klook-japan-rail-pass.png" alt="" loading="lazy" decoding="async" width="300" height="250">
+              <span class="affiliate-card-body"><small>RAIL TRAVEL</small><strong>Whole Japan Rail Pass</strong><span>For travel beyond the Tokaido route.</span><span class="affiliate-card-action">View on Klook <span aria-hidden="true">↗</span></span></span>
+            </a>
+            <a class="affiliate-card" href="https://affiliate.klook.com/redirect?aid=129377&amp;aff_adid=1363993&amp;k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F75806-fuji-hakone-day-tour" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="klook" data-affiliate-offer="fuji_hakone">
+              <img src="../../images/affiliate/klook-fuji-hakone-tour.png" alt="" loading="lazy" decoding="async" width="300" height="250">
+              <span class="affiliate-card-body"><small>FROM TOKYO</small><strong>Mt. Fuji &amp; Hakone Day Tour</strong><span>For a closer Fuji experience.</span><span class="affiliate-card-action">View on Klook <span aria-hidden="true">↗</span></span></span>
+            </a>
+            <a class="affiliate-card" href="https://affiliate.klook.com/redirect?aid=129377&amp;aff_adid=1363992&amp;k_site=https%3A%2F%2Fwww.klook.com%2Fen-US%2Factivity%2F110001-kyoto-nara-deer-arashiyama-train-cherry-blossom-one-day-tour" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="klook" data-affiliate-offer="kyoto_nara">
+              <img src="../../images/affiliate/klook-kyoto-nara-tour.png" alt="" loading="lazy" decoding="async" width="300" height="250">
+              <span class="affiliate-card-body"><small>FROM KYOTO</small><strong>Kyoto &amp; Nara Day Tour</strong><span>Continue the trip beyond Kyoto.</span><span class="affiliate-card-action">View on Klook <span aria-hidden="true">↗</span></span></span>
+            </a>
+          </div>
+        </div>
       </aside>
       <article class="spot-page-article">
       <figure class="spot-page-figure">
@@ -342,6 +363,42 @@
       text = text.replace(/(?:クリックで拡大|click to enlarge)\s*$/, "").trim();
       open(src, text);
     });
+  });
+})();
+</script>
+  <script>
+(function () {
+  "use strict";
+  var modules = document.querySelectorAll("[data-affiliate-module]");
+  if (!modules.length) return;
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest && event.target.closest("[data-affiliate-module] a");
+    var module = link && link.closest("[data-affiliate-module]");
+    if (!module || typeof window.gtag !== "function") return;
+    window.gtag("event", "affiliate_click", {
+      affiliate_partner: link.getAttribute("data-affiliate-partner") || module.getAttribute("data-affiliate-partner"),
+      affiliate_offer: link.getAttribute("data-affiliate-offer") || module.getAttribute("data-affiliate-offer"),
+      affiliate_placement: module.getAttribute("data-affiliate-placement"),
+      language: module.getAttribute("data-affiliate-language"),
+      page_context: module.getAttribute("data-affiliate-context")
+    });
+  });
+  if (!("IntersectionObserver" in window)) return;
+  modules.forEach(function (module) {
+    var target = module.querySelector("[data-affiliate-view-target]") || module;
+    var observer = new IntersectionObserver(function (entries) {
+      if (!entries.some(function (entry) { return entry.isIntersecting && entry.intersectionRatio >= 0.5; })) return;
+      observer.disconnect();
+      if (typeof window.gtag !== "function") return;
+      window.gtag("event", "affiliate_module_view", {
+        affiliate_partner: module.getAttribute("data-affiliate-partner"),
+        affiliate_offer: module.getAttribute("data-affiliate-offer") || "multiple",
+        affiliate_placement: module.getAttribute("data-affiliate-placement"),
+        language: module.getAttribute("data-affiliate-language"),
+        page_context: module.getAttribute("data-affiliate-context")
+      });
+    }, { threshold: [0.5] });
+    observer.observe(target);
   });
 })();
 </script>
