@@ -611,23 +611,26 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
           <p class="spot-page-rail-affiliate-label">広告</p>
           <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="${escapeHTML(affiliatePlacement)}_primary" data-affiliate-language="ja" data-affiliate-context="spot">
             <div class="spot-page-rail-affiliate-banner">
-              <script>
-                if (window.matchMedia("(min-width: 1100px)").matches) {
-                  document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671040"><\\/script>');
-                }
-              </script>
+              <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671040" target="_blank" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671040" alt="日本旅行 JR・新幹線とホテルのセットプラン" loading="lazy" decoding="async" fetchpriority="low" width="200" height="200"></a>
               <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671040" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671040" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="200" height="200"></a></noscript>
             </div>
           </div>
           <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="vc_pid_892671046" data-affiliate-placement="${escapeHTML(affiliatePlacement)}_secondary" data-affiliate-language="ja" data-affiliate-context="spot">
             <div class="spot-page-rail-affiliate-banner">
-              <script>
-                if (window.matchMedia("(min-width: 1100px)").matches) {
-                  document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671046"><\\/script>');
-                }
-              </script>
+              <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671046" target="_blank" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671046" alt="旅行予約サービス" loading="lazy" decoding="async" fetchpriority="low" width="200" height="200"></a>
               <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671046" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671046" alt="旅行予約サービス" width="200" height="200"></a></noscript>
             </div>
+          </div>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="amazon" data-affiliate-offer="philips_power_bank_b0fmhz3kvp" data-affiliate-placement="${escapeHTML(affiliatePlacement)}_tertiary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <a class="spot-page-rail-amazon" href="https://www.amazon.co.jp/dp/B0FMHZ3KVP?pd_rd_i=B0FMHZ3KVP&amp;pd_rd_w=lU1VV&amp;content-id=amzn1.sym.69e074f9-f3fe-40fa-8127-0a0a78871637&amp;pf_rd_p=69e074f9-f3fe-40fa-8127-0a0a78871637&amp;pf_rd_r=QVE14HXSSSPKSWKTJC8W&amp;pd_rd_wg=TPiT3&amp;pd_rd_r=ee7d1a5c-feca-4385-b43b-9b771d1e485f&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM&amp;th=1&amp;linkCode=ll2&amp;tag=programmasavo-22&amp;linkId=e7f7b946499962102ba2f0d6d30ffd9a&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored nofollow noopener">
+              <img src="${prefix}images/affiliate/amazon-philips-power-bank.jpg" alt="Philipsのケーブル一体型モバイルバッテリー" loading="lazy" decoding="async" width="200" height="116">
+              <span class="spot-page-rail-amazon-body">
+                <small>Amazon.co.jp</small>
+                <strong>旅先の充電を1台に</strong>
+                <span>ケーブル・コンセント一体型 15000mAh</span>
+                <b>Amazonで見る <span aria-hidden="true">↗</span></b>
+              </span>
+            </a>
           </div>
           <p class="spot-page-rail-affiliate-note">この欄にはアフィリエイトリンクが含まれます。</p>
         </div>`
@@ -676,22 +679,27 @@ function mobileAffiliateHTML(lang) {
   return `<aside class="spot-page-mobile-affiliate" id="spotMobileAffiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_spot_article_end_mobile" data-affiliate-language="ja" data-affiliate-context="spot" aria-label="広告">
         <p class="spot-page-mobile-affiliate-label" data-affiliate-view-target>広告</p>
         <div class="spot-page-mobile-affiliate-banner">
-          <script>
-            if (window.matchMedia("(max-width: 1099px)").matches) {
-              document.write('<script language="javascript" src="//ad.jp.ap.valuecommerce.com/servlet/jsbanner?sid=2833638&pid=892671044"><\\/script>');
-            }
-          </script>
+          <a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671044" target="_blank" rel="sponsored nofollow noopener"><span class="spot-page-mobile-affiliate-fallback"><strong>JR・新幹線＋ホテル</strong><small>日本旅行のセットプランを見る ↗</small></span><img data-affiliate-src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671044" data-affiliate-media="(max-width: 1099px)" alt="日本旅行 JR・新幹線とホテルのセットプラン" loading="lazy" decoding="async" fetchpriority="low" width="234" height="60"></a>
           <noscript><a href="//ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671044" rel="sponsored nofollow noopener"><img src="//ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671044" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="234" height="60"></a></noscript>
         </div>
         <p class="spot-page-mobile-affiliate-note">アフィリエイトリンクを含みます。</p>
       </aside>`;
 }
 
-function affiliateTrackingScript() {
+function affiliateTrackingScript(lang) {
+  const deferredImageLoader = lang === "ja"
+    ? `  document.querySelectorAll("img[data-affiliate-src]").forEach(function (img) {
+    var media = img.getAttribute("data-affiliate-media");
+    if (media && !window.matchMedia(media).matches) return;
+    img.src = img.getAttribute("data-affiliate-src");
+    img.removeAttribute("data-affiliate-src");
+  });
+`
+    : "";
   return `<script>
 (function () {
   "use strict";
-  var modules = document.querySelectorAll("[data-affiliate-module]");
+${deferredImageLoader}  var modules = document.querySelectorAll("[data-affiliate-module]");
   if (!modules.length) return;
   document.addEventListener("click", function (event) {
     var link = event.target.closest && event.target.closest("[data-affiliate-module] a");
@@ -1339,7 +1347,7 @@ ${mobileAffiliateBlock}      </article>
   ${lightbox}
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
   ${lightboxJs}
-  ${affiliateTrackingScript()}
+  ${affiliateTrackingScript(lang)}
 </body>
 </html>
 `;
@@ -1672,8 +1680,8 @@ for (const lang of ["ja", "en"]) {
     ctaHref: lang === "ja" ? "index.html#journey" : "./#journey",
     ctaAttributes: 'data-guide-cta="rail_exact_time"',
     footHref: "zukan.html",
-    includeAffiliate: lang === "en",
-    affiliatePlacement: "en_guide_rail_after_route",
+    includeAffiliate: true,
+    affiliatePlacement: `${lang}_guide_rail_after_route`,
     affiliateContext: "guide",
   });
   const start = "<!-- GUIDE_RAIL_START -->";

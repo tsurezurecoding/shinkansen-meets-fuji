@@ -1193,11 +1193,58 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     letter-spacing: 0.12em;
   }
   .spot-page-mobile-affiliate-banner {
+    position: relative;
     width: 234px;
     min-height: 60px;
     overflow: hidden;
+    border-radius: 7px;
+    background: #fff8dc;
+    box-shadow: 0 2px 9px rgba(22, 32, 46, 0.08);
+  }
+  .spot-page-mobile-affiliate-banner > a {
+    position: relative;
+    display: block;
+    width: 234px;
+    height: 60px;
+    color: var(--night);
+    text-decoration: none;
+  }
+  .spot-page-mobile-affiliate-fallback {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 3px;
+    padding: 7px 13px 7px 64px;
+    border: 1px solid #ead68b;
+    border-radius: 7px;
+    text-align: left;
+    background: linear-gradient(110deg, #ffd735 0 52px, #fff8dc 52px 100%);
+  }
+  .spot-page-mobile-affiliate-fallback::before {
+    content: "旅";
+    position: absolute;
+    left: 17px;
+    top: 12px;
+    color: #1457a6;
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+  }
+  .spot-page-mobile-affiliate-fallback strong {
+    font-size: 12px;
+    line-height: 1.25;
+  }
+  .spot-page-mobile-affiliate-fallback small {
+    color: #655f53;
+    font-size: 9.5px;
+    line-height: 1.25;
   }
   .spot-page-mobile-affiliate-banner img {
+    position: relative;
+    z-index: 1;
     display: block;
     width: 234px;
     height: 60px;
@@ -1487,6 +1534,57 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     width: 200px;
     height: 200px;
     border: 0;
+  }
+  .spot-page-rail-amazon {
+    display: block;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border: 1px solid #e1ddd5;
+    border-radius: 8px;
+    background: #fff;
+    color: var(--ink);
+    text-align: left;
+    text-decoration: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  }
+  .spot-page-rail-amazon:hover,
+  .spot-page-rail-amazon:focus-visible {
+    border-color: #c9a467;
+    box-shadow: 0 7px 18px rgba(34, 30, 24, 0.12);
+    transform: translateY(-1px);
+  }
+  .spot-page-rail-amazon > img {
+    display: block;
+    width: 200px;
+    height: 112px;
+    border: 0;
+    background: #fff;
+    object-fit: contain;
+  }
+  .spot-page-rail-amazon-body {
+    display: grid;
+    gap: 2px;
+    padding: 7px 10px 8px;
+    line-height: 1.25;
+  }
+  .spot-page-rail-amazon-body small {
+    color: #95651b;
+    font-size: 8.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .spot-page-rail-amazon-body strong {
+    font-size: 12px;
+  }
+  .spot-page-rail-amazon-body > span {
+    color: #756f67;
+    font-size: 9px;
+  }
+  .spot-page-rail-amazon-body b {
+    color: #8a5a13;
+    font-size: 9.5px;
   }
   .spot-page-rail-affiliate-note {
     margin: 8px 0 0;
@@ -3611,6 +3709,12 @@ body.modal-open { overflow: hidden; }
   margin: 0 auto;
   grid-template-columns: 1fr;
 }
+.reference-section + .reference-section {
+  padding-top: 42px;
+}
+.reference-books {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
 .reference-card {
   background: var(--card);
   border: 1px solid var(--line);
@@ -3643,6 +3747,59 @@ body.modal-open { overflow: hidden; }
   font-weight: 700;
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+.reference-book-card {
+  position: relative;
+  display: flex;
+  min-height: 300px;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 24px 20px 20px 34px;
+  border-color: #d8cba9;
+  background: linear-gradient(145deg, #fffdf8, #f4eee0);
+}
+.reference-book-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 12px;
+  background: var(--book-accent, var(--accent));
+  box-shadow: 3px 0 10px rgba(22, 32, 46, 0.14);
+}
+.reference-book-card:nth-child(2) { --book-accent: #385c78; }
+.reference-book-card:nth-child(3) { --book-accent: #d49625; }
+.reference-book-card h3 {
+  font-size: 20px;
+}
+.reference-book-author {
+  color: #776f63;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+}
+.reference-book-card p:not(.reference-type) {
+  flex: 1;
+}
+.reference-book-card a {
+  align-self: flex-start;
+  padding: 9px 13px;
+  border-radius: 99px;
+  background: var(--night);
+  color: #fff;
+  text-decoration: none;
+}
+.reference-affiliate-disclosure {
+  margin: 14px 0 0;
+  color: #776f63;
+  font-size: 11.5px;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .reference-books {
+    grid-template-columns: 1fr;
+  }
+  .reference-book-card {
+    min-height: 0;
+  }
 }
 .reference-policy {
   max-width: 720px;
