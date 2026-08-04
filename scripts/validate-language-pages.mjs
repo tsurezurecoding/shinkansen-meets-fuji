@@ -178,6 +178,7 @@ const sitemapUrls = [...sitemapHtml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match
 for (const required of [
   `${origin}/zh-Hans/guide.html`,
   `${origin}/fr/guide.html`,
+  `${origin}/ar/guide.html`,
 ]) {
   if (!sitemapUrls.includes(required)) errors.push(`sitemap: missing ${required}`);
 }

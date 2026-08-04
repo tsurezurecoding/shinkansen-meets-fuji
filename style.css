@@ -4830,3 +4830,11 @@ body.modal-open { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .cloud, .train-move, .nextup-pulse { animation: none; }
 }
+/* Arabic FAQ: retain document reading order while making mixed Latin values stable. */
+.guide-page-ar { text-align: start; }
+.guide-page-ar .spot-page-article,
+.guide-page-ar .footer { text-align: start; }
+.guide-page-ar .spot-page-actions { justify-content: flex-start; }
+.guide-page-ar .topbar { direction: ltr; }
+.guide-page-ar .guide-lang-menu { direction: rtl; }
+.guide-page-ar .g9-hero figcaption { text-align: start; }

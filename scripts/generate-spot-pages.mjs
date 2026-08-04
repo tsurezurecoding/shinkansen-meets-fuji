@@ -1920,6 +1920,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-04" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
