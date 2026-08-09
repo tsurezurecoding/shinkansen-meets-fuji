@@ -1528,6 +1528,50 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     opacity: 1;
     visibility: visible;
   }
+  body[data-spot-page-shared-id] .spot-page-shared-preview {
+    position: absolute;
+    left: 54px;
+    top: -16px;
+    z-index: 40;
+    display: block;
+    width: 210px;
+    max-width: none;
+    overflow: hidden;
+    border: 3px solid #fff;
+    border-radius: 9px;
+    background: #fff;
+    box-shadow: 0 10px 28px rgba(16, 28, 44, 0.26);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.14s ease;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-preview > img {
+    display: block;
+    width: 210px;
+    max-width: none;
+    height: 118px;
+    object-fit: cover;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-preview-copy {
+    display: grid;
+    gap: 2px;
+    padding: 8px 9px 9px;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-preview-copy strong {
+    font-size: 12px;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-preview-copy span {
+    color: #756f66;
+    font-size: 10px;
+  }
+  body[data-spot-page-shared-id] .spot-page-rail-link:hover .spot-page-shared-preview,
+  body[data-spot-page-shared-id] .spot-page-rail-link:focus-visible .spot-page-shared-preview {
+    opacity: 1;
+    visibility: visible;
+  }
   .spot-page-rail-min {
     flex: 0 0 auto;
     font-size: 10px;
@@ -1556,6 +1600,29 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   }
   .spot-page-rail-seat.is-a {
     color: #c2a074;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-seat-group {
+    display: inline-flex;
+    flex: 0 0 auto;
+    gap: 3px;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-seat {
+    min-width: 17px;
+    padding: 1px 3px;
+    border: 1px solid currentColor;
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-seat.is-e {
+    color: #7c9ab5;
+    background: #f2f7fb;
+  }
+  body[data-spot-page-shared-id] .spot-page-shared-seat.is-a {
+    color: #a77d51;
+    background: #fcf6ee;
   }
   .spot-page-rail-spot.is-current {
     border-left-color: var(--accent);

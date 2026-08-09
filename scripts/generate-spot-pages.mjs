@@ -15,6 +15,8 @@ const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 const dataCode = fs.readFileSync(dataPath, "utf8");
 const { SPOTS, ROUTE } = vm.runInNewContext(`${dataCode}\n;({ SPOTS, ROUTE });`, {}, { filename: dataPath });
 const SPOT_COUNT = SPOTS.length;
+const SHARED_JA_SPOT_IDS = new Set(["fuji", "hamanako"]);
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
 const trackContext = { window: { ROUTE }, ROUTE };
 vm.runInNewContext(fs.readFileSync(trackPath, "utf8"), trackContext, { filename: trackPath });
 const TRACK = trackContext.window.MADO_TRACK;
@@ -1469,6 +1471,7 @@ ${paras.map((para) => `        <p>${escapeHTML(para)}</p>`).join("\n")}
 
 function spotPageHTML(spot, lang) {
   const ui = UI[lang];
+  const sharedPilot = lang === "ja" && SHARED_JA_SPOT_IDS.has(spot.id);
   const data = spot[lang] || spot.ja || {};
   const otherLang = lang === "ja" ? "en" : "ja";
   const title = localized(spot.pageTitle, lang) || (lang === "ja"
@@ -1484,11 +1487,30 @@ function spotPageHTML(spot, lang) {
   const photoCount = photos.length;
   const heroFigcaption = heroFigcaptionHTML(spot, lang);
   const inlineFigures = inlineFigureHTML(spot, lang, prefix);
-  const railHTML = spotRailHTML(spot, lang, prefix, {
-    includeAffiliate: true,
-    affiliatePlacement: `${lang}_spot_rail_after_route`,
-    affiliateContext: "spot",
-  });
+  const railHTML = sharedPilot
+    ? `<div data-spot-page-shared-module="rail"></div>`
+    : `${spotRailHTML(spot, lang, prefix, {
+      includeAffiliate: true,
+      affiliatePlacement: `${lang}_spot_rail_after_route`,
+      affiliateContext: "spot",
+    })}`;
+  const headerHTML = sharedPilot
+    ? `  <div data-spot-page-shared-module="topbar"></div>`
+    : `  ${siteHeaderHTML(
+      lang,
+      prefix,
+      lang === "ja" ? `${spot.id}.html` : `../../spots/${spot.id}.html`,
+      lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
+    )}`;
+  const contentRailBlock = sharedPilot
+    ? `    <div data-spot-page-shared-module="content-rail"></div>`
+    : `    ${contentRailHTML(lang, prefix)}`;
+  const sharedContext = sharedPilot
+    ? ` data-spot-page-shared-lang="ja" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
+    : "";
+  const sharedScripts = sharedPilot
+    ? `  <script src="${prefix}spot-page-shared-data.js"></script>\n  <script src="${prefix}spot-page-shared.js"></script>\n`
+    : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
   const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";
   const lightbox = lightboxHTML(lang);
@@ -1586,13 +1608,8 @@ function spotPageHTML(spot, lang) {
   <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
   ${analyticsSnippet()}
 </head>
-<body class="spot-page">
-  ${siteHeaderHTML(
-    lang,
-    prefix,
-    lang === "ja" ? `${spot.id}.html` : `../../spots/${spot.id}.html`,
-    lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
-  )}
+<body class="spot-page"${sharedContext}>
+${headerHTML}
   <main>
     <header class="spot-page-article spot-page-hero">
       <p class="eyebrow">${escapeHTML(ui.eyebrow)}</p>
@@ -1627,10 +1644,10 @@ ${inlineFigures.first ? `      ${inlineFigures.first}\n` : ""}${explainerBlock}$
       ${routeRelatedHTML(spot, lang)}
 ${mobileAffiliateBlock}      </article>
     </div>
-    ${contentRailHTML(lang, prefix)}
+${contentRailBlock}
   </main>
   ${lightbox}
-  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
+${sharedScripts}  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
   ${lightboxJs}
   ${affiliateTrackingScript(lang)}
 </body>
@@ -1985,6 +2002,9 @@ ${urls}
 `;
 }
 
+export { SHARED_JA_SPOT_IDS, SPOTS, spotPageHTML };
+
+if (isMain) {
 for (const lang of ["ja", "en"]) {
   const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
   fs.mkdirSync(dir, { recursive: true });
@@ -2105,3 +2125,4 @@ manifest.contentVersion = createHash("sha256")
 fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf8");
 
 console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, sitemap.xml, and content-manifest.json`);
+}
