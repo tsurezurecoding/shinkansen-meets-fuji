@@ -15,7 +15,7 @@ const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 const dataCode = fs.readFileSync(dataPath, "utf8");
 const { SPOTS, ROUTE } = vm.runInNewContext(`${dataCode}\n;({ SPOTS, ROUTE });`, {}, { filename: dataPath });
 const SPOT_COUNT = SPOTS.length;
-const SHARED_JA_SPOT_IDS = new Set(["fuji", "hamanako"]);
+const SHARED_SPOT_LANGUAGES = new Set(["ja", "en"]);
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
 const trackContext = { window: { ROUTE }, ROUTE };
 vm.runInNewContext(fs.readFileSync(trackPath, "utf8"), trackContext, { filename: trackPath });
@@ -1471,7 +1471,7 @@ ${paras.map((para) => `        <p>${escapeHTML(para)}</p>`).join("\n")}
 
 function spotPageHTML(spot, lang) {
   const ui = UI[lang];
-  const sharedPilot = lang === "ja" && SHARED_JA_SPOT_IDS.has(spot.id);
+  const sharedSpotPage = SHARED_SPOT_LANGUAGES.has(lang);
   const data = spot[lang] || spot.ja || {};
   const otherLang = lang === "ja" ? "en" : "ja";
   const title = localized(spot.pageTitle, lang) || (lang === "ja"
@@ -1487,14 +1487,14 @@ function spotPageHTML(spot, lang) {
   const photoCount = photos.length;
   const heroFigcaption = heroFigcaptionHTML(spot, lang);
   const inlineFigures = inlineFigureHTML(spot, lang, prefix);
-  const railHTML = sharedPilot
+  const railHTML = sharedSpotPage
     ? `<div data-spot-page-shared-module="rail"></div>`
     : `${spotRailHTML(spot, lang, prefix, {
       includeAffiliate: true,
       affiliatePlacement: `${lang}_spot_rail_after_route`,
       affiliateContext: "spot",
     })}`;
-  const headerHTML = sharedPilot
+  const headerHTML = sharedSpotPage
     ? `  <div data-spot-page-shared-module="topbar"></div>`
     : `  ${siteHeaderHTML(
       lang,
@@ -1502,13 +1502,13 @@ function spotPageHTML(spot, lang) {
       lang === "ja" ? `${spot.id}.html` : `../../spots/${spot.id}.html`,
       lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
     )}`;
-  const contentRailBlock = sharedPilot
+  const contentRailBlock = sharedSpotPage
     ? `    <div data-spot-page-shared-module="content-rail"></div>`
     : `    ${contentRailHTML(lang, prefix)}`;
-  const sharedContext = sharedPilot
-    ? ` data-spot-page-shared-lang="ja" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
+  const sharedContext = sharedSpotPage
+    ? ` data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
     : "";
-  const sharedScripts = sharedPilot
+  const sharedScripts = sharedSpotPage
     ? `  <script src="${prefix}spot-page-shared-data.js"></script>\n  <script src="${prefix}spot-page-shared.js"></script>\n`
     : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
@@ -2002,16 +2002,22 @@ ${urls}
 `;
 }
 
-export { SHARED_JA_SPOT_IDS, SPOTS, spotPageHTML };
-
-if (isMain) {
-for (const lang of ["ja", "en"]) {
-  const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
-  fs.mkdirSync(dir, { recursive: true });
-  for (const spot of SPOTS) {
-    fs.writeFileSync(path.join(dir, `${spot.id}.html`), spotPageHTML(spot, lang), "utf8");
+function generateSpotPages({ requireExisting = false } = {}) {
+  for (const lang of ["ja", "en"]) {
+    const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
+    fs.mkdirSync(dir, { recursive: true });
+    for (const spot of SPOTS) {
+      const outputPath = path.join(dir, `${spot.id}.html`);
+      if (requireExisting && !fs.existsSync(outputPath)) throw new Error(`Spot page output is missing: ${outputPath}`);
+      fs.writeFileSync(outputPath, spotPageHTML(spot, lang), "utf8");
+    }
   }
 }
+
+export { SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPages, spotPageHTML };
+
+if (isMain) {
+generateSpotPages();
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 fs.writeFileSync(path.join(appDir, "en", "index.html"), englishAppIndexHTML(), "utf8");
