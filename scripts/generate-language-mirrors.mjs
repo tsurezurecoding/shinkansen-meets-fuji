@@ -12,12 +12,8 @@ const pages = [
     title: "Tokaido Shinkansen Field Guide | 37 Day and Night Views",
     description: "Browse 37 recommended Tokaido Shinkansen views for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.",
   },
-  {
-    source: "journal.html",
-    output: "en/journal.html",
-    title: "Window View Journal | Shinkansen Window",
-    description: "Like collecting station stamps in Japan, record 37 views from the Tokaido Shinkansen as Window Stamps and grow four journey medals.",
-  },
+  // journal.html is a hand-authored bilingual landing page; keep it out of the
+  // generic mirror pass so its localized hero, metadata, and interactive copy survive regeneration.
 ];
 
 function localizeEnglishRail(html) {

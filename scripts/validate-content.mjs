@@ -23,11 +23,11 @@ const allowedSideLabels = {
 const checks = [
   {
     file: "index.html",
-    required: [`${spotCount}の車窓スポット`],
+    required: ['class="seasonal-entry"'],
   },
   {
     file: "app.js",
-    required: [`${spotCount}の車窓スポット`, `Browse all ${spotCount} window views`],
+    required: ["${MADO_SPOT_COUNT}の車窓スポット", "Browse all ${MADO_SPOT_COUNT} window views"],
   },
   {
     file: "references.html",

@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2a70862f7d927a99",
-  "generatedAt": "2026-08-02T05:22:38.128Z",
+  "contentVersion": "d4a8106487eda8e3",
+  "generatedAt": "2026-08-08T22:09:56.563Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 374581,
-      "sha256": "6e3bb5854e50a59b9c3edca997b2b58e60562ba88f7d2aba077f1e10d425cfe9"
+      "bytes": 390343,
+      "sha256": "66543479b0f896c717c876fad8b7477dfb2f464afe632ac0a7eed81f2edc1e40"
     },
     {
       "path": "data/timetable.js",
@@ -18,10 +18,34 @@
       "sha256": "27a49e719541cc0500ca390377dcd0b9894a044756a1c6c2fde7a7b8c6e8e100"
     },
     {
+      "path": "images/og-sparkling-dreams.png",
+      "url": "https://www.michikusa-travel.com/images/og-sparkling-dreams.png",
+      "bytes": 74954,
+      "sha256": "26a4b53b680a7ec3cea2df8ec2d1b2464dcd40403d0ca1e696a3fd1b85989130"
+    },
+    {
+      "path": "images/sparkling-dreams-window.svg",
+      "url": "https://www.michikusa-travel.com/images/sparkling-dreams-window.svg",
+      "bytes": 6122,
+      "sha256": "dfac0a4ba1a75bf94e09b8f7048b59da1b43fec55088a0a42ba1c2edee9f2ad5"
+    },
+    {
       "path": "live/narration.js",
       "url": "https://www.michikusa-travel.com/live/narration.js",
       "bytes": 70449,
       "sha256": "10aacbc508ad69ab7cf54d41e34e1fae66e5df9588f8f95e4b0b9e15e60ad792"
+    },
+    {
+      "path": "sparkling-dreams.html",
+      "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
+      "bytes": 15225,
+      "sha256": "cc3ae5d033ed9ba15a453bc03dd4065e942fa4c7e458d0a865a39863728cdfd0"
+    },
+    {
+      "path": "sparkling-dreams.js",
+      "url": "https://www.michikusa-travel.com/sparkling-dreams.js",
+      "bytes": 15402,
+      "sha256": "128b0e7987c77e959f74e1691b609eea161e74111d5a7b5d96b4b4f9da7f8d9d"
     }
   ],
   "audioPacks": [
@@ -947,8 +971,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 135,
-    "bytes": 5126566,
+    "itemCount": 139,
+    "bytes": 5230014,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -1693,6 +1717,30 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260712_who_am_i_sign_michikusa.webp",
         "bytes": 27926,
         "sha256": "9740c05bf02783cef695730746e7ddd83dbba44a10b57fd6c2d9ad2bb632f136"
+      },
+      {
+        "path": "images/thumbs/20260804_atami_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260804_atami_michikusa.webp",
+        "bytes": 36794,
+        "sha256": "d73bd83707d2a55a674c0772d4d0629482efc458a10c6bba80e981338b17f4fd"
+      },
+      {
+        "path": "images/thumbs/20260804_fujipipe_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260804_fujipipe_michikusa.webp",
+        "bytes": 28254,
+        "sha256": "cbe0f1e9255b4fa0ac6413aa7de32e46198dd802e22942ace7255e1ea757f5e1"
+      },
+      {
+        "path": "images/thumbs/20260804_fujitec_big_wing_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260804_fujitec_big_wing_michikusa.webp",
+        "bytes": 19650,
+        "sha256": "fe0c7b836a9ace9eb06f15e31d83545bff608782d18f0c69d3dbd5c838c4f948"
+      },
+      {
+        "path": "images/thumbs/20260804_sagami_bay_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260804_sagami_bay_michikusa.webp",
+        "bytes": 18750,
+        "sha256": "820338fdf06cb023def310b4b939fbef36f01f73e8e1fadf1dfdb58f04c6c8c2"
       },
       {
         "path": "images/thumbs/250111_hamanako_fuji_proboffin.webp",

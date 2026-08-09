@@ -3,6 +3,8 @@
  * app.js — UIロジック（依存ライブラリなし・バックエンドなし）
  * ========================================================= */
 
+const MADO_SPOT_COUNT = Array.isArray(SPOTS) ? SPOTS.length : 0;
+
 /* ---------- i18n ---------- */
 const MSG = {
   ja: {
@@ -45,9 +47,37 @@ const MSG = {
     tlTitleWest: "東京 → 新大阪の車窓タイムライン", tlTitleEast: "新大阪 → 東京の車窓タイムライン",
     previewBannerTitle: "サンプル",
     previewBannerBody: "列車を選ぶと、あなた用に切り替わります。",
-    memEyebrow: "YOUR JOURNAL", memTitle: "車窓メダル帖",
-    memSub: "車窓をチェックすると、メダルが育ちます。",
-    journalIntro: "駅スタンプを集めるように、東海道新幹線の窓から見つけた景色を「車窓スタンプ」として残せます。",
+    memEyebrow: "YOUR WINDOW STAMP JOURNAL", memTitle: "車窓スタンプとメダル",
+    memSub: "見つけた景色を記録して、旅の進み具合を眺めます。",
+    journalIntro: "見つけた景色を、車窓スタンプとして残せます。メダルを選ぶと、対象の景色と記録状況を確認できます。",
+    journalHeroEyebrow: "TOKAIDO SHINKANSEN WINDOW STAMPS",
+    journalHeroTitle: `<span class="copy-chunk">見つけた車窓を、</span><span class="copy-chunk">デジタルスタンプに</span>`,
+    journalHeroLead: `<span class="copy-chunk">駅スタンプを集めるように、</span><span class="copy-chunk">富士山、城、湖、看板など、</span><span class="copy-chunk">東海道新幹線の車窓を</span><span class="copy-chunk">デジタルスタンプに。</span><span class="copy-chunk">親子の景色探しにも、</span><span class="copy-chunk">一人旅の記録にも。</span>`,
+    journalHeroPrimary: "乗る列車でガイドをつくる",
+    journalHeroSecondary: "スタンプを見る",
+    journalHowEyebrow: "HOW IT WORKS",
+    journalHowTitle: `<span class="copy-chunk">見つけて、記録して、</span><span class="copy-chunk">車窓の旅を育てる</span>`,
+    journalHowSub: "乗る前に次の景色を知り、乗車中に見つけたら記録します。",
+    journalStep1Title: "列車と次の景色を選ぶ",
+    journalStep1Body: "列車を選ぶと、進行方向に合わせた車窓タイムラインが開きます。",
+    journalStep2Title: "見つけたら「見えた！」を押す",
+    journalStep2Body: "窓の外でスポットを見つけたら、スタンプを押して記録します。",
+    journalStep3Title: "スタンプを集め、メダルを育てる",
+    journalStep3Body: "記録した景色がスタンプ盤に残り、シリーズごとのメダルが育ちます。",
+    journalHowCta: "スタンプ盤を見る",
+    journalUsesEyebrow: "FIND YOUR WAY TO COLLECT",
+    journalUsesTitle: `<span class="copy-chunk">このスタンプ帖を、</span><span class="copy-chunk">こんな旅に</span>`,
+    journalFamilyTitle: `<span class="copy-chunk">子連れなら、</span><span class="copy-chunk">車窓ゲームに</span>`,
+    journalFamilyBody: "「次は何が見える？」を親子で探して、見つけた景色を一緒に記録できます。",
+    journalSoloTitle: `<span class="copy-chunk">一人旅なら、</span><span class="copy-chunk">旅の記録に</span>`,
+    journalSoloBody: "移動中に出会った富士山や城、湖を、自分のペースで残せます。",
+    journalStationTitle: `<span class="copy-chunk">駅スタンプ好きなら、</span><span class="copy-chunk">車窓コレクションに</span>`,
+    journalStationBody: "駅で押すスタンプとは別の楽しみとして、乗車中に景色を集める感覚で使えます。",
+    journalZukanCta: "車窓図鑑で、見つける景色を見る",
+    journalOfficialEyebrow: "A COMPLEMENTARY GAME",
+    journalOfficialTitle: `<span class="copy-chunk">画面の中でも、</span><span class="copy-chunk">新幹線を楽しむなら</span>`,
+    journalOfficialBody: "画面の中でも新幹線を楽しみたいときは、JR東海公式「しんかんせんであそぼ！」へ。動物探しやパズルなど、子ども向けのゲームで遊べます。「新幹線の窓」は、実際に乗って窓の外を探すゲームとして一緒に楽しめます。",
+    journalOfficialCta: "公式サイトで遊ぶ",
     journalModalClose: "閉じる",
     journalCta: "メダルとスタンプを見る",
     journalTeaser: "見つけた景色はスタンプに。集めるほどメダルが育ちます。",
@@ -84,7 +114,10 @@ const MSG = {
     medalSelectHint: "メダルを選ぶと、説明と対象スポットが開きます。",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: "37の車窓スポットを一覧できます。<br>見つけた景色はチェックして記録できます。",
+    galSub: `${MADO_SPOT_COUNT}の車窓スポットを一覧できます。<br>見つけた景色はチェックして記録できます。`,
+    seasonalKicker: "期間限定の車窓メモ",
+    seasonalTitle: '<span class="copy-chunk">特別塗装列車と、</span><span class="copy-chunk">すれ違う時刻を調べる</span>',
+    seasonalBody: "2026年夏〜2027年春の「Sparkling Dreams Shinkansen」を、車窓から追いかけます。",
     galPhotoNote: "掲載写真は、撮影者または権利者の許可を得て紹介しています。",
     zukanIntentEyebrow: "PICK A MOOD",
     zukanIntentTitle: "状況から、見たい車窓を選ぶ",
@@ -180,9 +213,37 @@ const MSG = {
     tlTitleWest: "Tokyo → Shin-Osaka window timeline", tlTitleEast: "Shin-Osaka → Tokyo window timeline",
     previewBannerTitle: "Sample",
     previewBannerBody: "Pick your train to make it yours.",
-    memEyebrow: "YOUR JOURNAL", memTitle: "Window Medal Book",
-    memSub: "Check off each view you find to grow your journey medals.",
-    journalIntro: "Like collecting station stamps in Japan, keep each view you find from the Tokaido Shinkansen as a Window Stamp.",
+    memEyebrow: "YOUR WINDOW STAMP JOURNAL", memTitle: "Window Stamps & Medals",
+    memSub: "Record the views you find and watch your journey take shape.",
+    journalIntro: "Keep the Mt. Fuji, castles, lakes and signs you spot from the Tokaido Shinkansen as Window Stamps.",
+    journalHeroEyebrow: "TOKAIDO SHINKANSEN WINDOW STAMPS",
+    journalHeroTitle: `<span class="copy-chunk">Turn the views you find</span><span class="copy-chunk">into digital stamps</span>`,
+    journalHeroLead: `<span class="copy-chunk">Like collecting station stamps,</span> <span class="copy-chunk">save Mt. Fuji, castles, lakes and signs from the Tokaido Shinkansen window.</span> <span class="copy-chunk">Make it a family spotting game</span> <span class="copy-chunk">or a journal for a solo ride.</span>`,
+    journalHeroPrimary: "Build my guide",
+    journalHeroSecondary: "See the stamp board",
+    journalHowEyebrow: "HOW IT WORKS",
+    journalHowTitle: `<span class="copy-chunk">Find it, record it,</span><span class="copy-chunk">grow the journey</span>`,
+    journalHowSub: "Choose your train before you ride, then record the views you spot from the window.",
+    journalStep1Title: "Choose a train and next view",
+    journalStep1Body: "Pick a train to open a window timeline for your direction.",
+    journalStep2Title: "Spot it and mark it seen",
+    journalStep2Body: "When a view appears outside, tap its stamp to record the moment.",
+    journalStep3Title: "Collect stamps and grow medals",
+    journalStep3Body: "Your recorded views stay on the stamp board, building progress across each medal series.",
+    journalHowCta: "Open the stamp board",
+    journalUsesEyebrow: "FIND YOUR WAY TO COLLECT",
+    journalUsesTitle: `<span class="copy-chunk">One collection,</span><span class="copy-chunk">different kinds of journey</span>`,
+    journalFamilyTitle: `<span class="copy-chunk">A window game</span><span class="copy-chunk">for family trips</span>`,
+    journalFamilyBody: "Ask “What will we see next?” and look for scenery together, then record the moment as a stamp.",
+    journalSoloTitle: `<span class="copy-chunk">A travel journal</span><span class="copy-chunk">for solo rides</span>`,
+    journalSoloBody: "Keep the Fuji, castles and lakes you meet along the way, at your own pace.",
+    journalStationTitle: `<span class="copy-chunk">A moving collection</span><span class="copy-chunk">for station-stamp fans</span>`,
+    journalStationBody: "If you love collecting station stamps, try gathering scenery between stations as a different kind of travel collection.",
+    journalZukanCta: "Browse the window field guide",
+    journalOfficialEyebrow: "A COMPLEMENTARY GAME",
+    journalOfficialTitle: `<span class="copy-chunk">Want more Shinkansen</span><span class="copy-chunk">fun on screen?</span>`,
+    journalOfficialBody: "For an on-screen Shinkansen activity, try JR Central’s official “Shinkansen de asobo!” site. It includes child-friendly games such as finding animals and solving puzzles. Shinkansen Window works differently: it turns the real view outside into a game while you ride.",
+    journalOfficialCta: "Open the official game",
     journalModalClose: "Close",
     journalCta: "Open stamps and medals",
     journalTeaser: "Each view becomes a stamp, and every stamp grows your medals.",
@@ -219,7 +280,10 @@ const MSG = {
     medalSelectHint: "Select a medal to open its story and included views.",
     btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: "Browse all 37 window views. Check off each one you find.",
+    galSub: `Browse all ${MADO_SPOT_COUNT} window views. Check off each one you find.`,
+    seasonalKicker: "SEASONAL WINDOW NOTE",
+    seasonalTitle: '<span class="copy-chunk">Track the Sparkling Dreams</span><span class="copy-chunk">Shinkansen</span>',
+    seasonalBody: "Check when your train may meet the limited-time special service.",
     galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
     zukanIntentEyebrow: "PICK A MOOD",
     zukanIntentTitle: "Choose views for this ride",
@@ -1678,7 +1742,9 @@ function toggleStamp(id) {
   const removed = !!stamps[id];
   if (removed) delete stamps[id];
   else stamps[id] = Date.now();
-  track(removed ? "stamp_removed" : "stamp_added", { spot_id: id });
+  const stampEventParams = { spot_id: id };
+  if (document.body?.classList.contains("journal-page")) stampEventParams.page_context = "journal";
+  track(removed ? "stamp_removed" : "stamp_added", stampEventParams);
   localStorage.setItem("mado-stamps", JSON.stringify(stamps));
   renderMedalBoard();
   renderStampboard();
@@ -1864,8 +1930,8 @@ const galleryTagGroups = {
   cloudy: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "727-board", "hinataoka", "putiputi-sign", "odawara-castle", "gyoran-kannon", "odawara", "shimizu-port-chikyu", "shizuoka-tea-fields", "kakegawa", "genki-sign", "hamanako", "toyohashi-tateiwa", "mikawa-oshima", "nichiban-anjo", "nagoya-station-skyline", "kirin-beer-factory", "kiyosu", "solar-ark", "kinshozan", "nangu-taisha", "seta-karahashi", "toji", "torikai-train-depot"]),
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
-  industry: new Set(["shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan"]),
-  sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo"]),
+  industry: new Set(["shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
+  sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign"]),
   city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "nagoya-station-skyline"]),
 };
 const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "city"];

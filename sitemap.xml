@@ -26,13 +26,13 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/journal.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/journal.html</loc>
-    <lastmod>2026-07-25</lastmod>
+    <lastmod>2026-08-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -74,43 +74,49 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/sparkling-dreams.html</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/zh-Hant/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/ko/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/zh-Hans/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/fr/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/ar/guide.html</loc>
-    <lastmod>2026-08-07</lastmod>
+    <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -278,6 +284,18 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/spots/gyoran-kannon.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/spots/fuji-pipe-sign.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/fuji-pipe-sign.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -497,6 +515,18 @@
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/spots/fujitec-big-wing.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/fujitec-big-wing.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/spots/nangu-taisha.html</loc>

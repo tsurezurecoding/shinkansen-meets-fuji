@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">東京ディズニーシー25周年の特別塗装列車を車窓から見るイラスト</title>
+  <desc id="desc">深い青の車窓の中を、抽象的な光の粒に囲まれた白い新幹線が走るオリジナルイラストです。</desc>
+  <defs>
+    <linearGradient id="windowSky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#091b34"/>
+      <stop offset="0.58" stop-color="#174269"/>
+      <stop offset="1" stop-color="#316c8a"/>
+    </linearGradient>
+    <linearGradient id="horizon" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#6cc8e4" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#8fe1eb" stop-opacity=".8"/>
+      <stop offset="1" stop-color="#f5ca67" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f4c96a" stop-opacity="0"/>
+      <stop offset=".42" stop-color="#ef8b69" stop-opacity=".9"/>
+      <stop offset="1" stop-color="#77d2df" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="9" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="windowClip">
+      <rect x="58" y="58" width="1084" height="514" rx="44"/>
+    </clipPath>
+  </defs>
+
+  <rect width="1200" height="630" fill="#08172b"/>
+  <rect x="34" y="34" width="1132" height="562" rx="58" fill="#0e2945" stroke="#4b9ab8" stroke-opacity=".46" stroke-width="2"/>
+  <g clip-path="url(#windowClip)">
+    <rect x="58" y="58" width="1084" height="514" fill="url(#windowSky)"/>
+    <path d="M-20 488 C180 394 318 438 484 410 S820 354 1220 438 L1220 610 -20 610Z" fill="#0b2741" opacity=".56"/>
+    <path d="M-40 470 C188 420 302 468 530 433 S916 392 1240 452" fill="none" stroke="url(#horizon)" stroke-width="3"/>
+    <path d="M-20 510 C188 464 356 500 560 478 S938 444 1220 492" fill="none" stroke="#8fe1eb" stroke-opacity=".18" stroke-width="2"/>
+    <path d="M-40 535 C220 474 430 535 650 500 S1004 479 1240 520" fill="none" stroke="#f5ca67" stroke-opacity=".2" stroke-width="2"/>
+
+    <g fill="#f5ca67" filter="url(#glow)">
+      <circle cx="174" cy="190" r="4"/>
+      <circle cx="292" cy="118" r="3"/>
+      <circle cx="448" cy="244" r="4"/>
+      <circle cx="686" cy="146" r="3"/>
+      <circle cx="1004" cy="216" r="4"/>
+    </g>
+    <g fill="none" stroke-linecap="round">
+      <path d="M130 252 l0 24 M118 264 l24 0" stroke="#8fe1eb" stroke-width="3"/>
+      <path d="M874 122 l0 30 M859 137 l30 0" stroke="#ef8b69" stroke-width="3"/>
+      <path d="M1032 332 l0 22 M1021 343 l22 0" stroke="#8fe1eb" stroke-width="3"/>
+    </g>
+
+    <g opacity=".82" fill="none" stroke-linecap="round">
+      <path d="M92 394 C260 314 416 330 586 386" stroke="url(#trail)" stroke-width="8"/>
+      <path d="M170 432 C352 362 476 368 660 414" stroke="#73d3df" stroke-opacity=".55" stroke-width="3"/>
+      <path d="M748 388 C874 354 1010 362 1178 426" stroke="#f5ca67" stroke-opacity=".6" stroke-width="4"/>
+    </g>
+
+    <g transform="translate(102 304)">
+      <ellipse cx="470" cy="184" rx="486" ry="22" fill="#061426" opacity=".65"/>
+      <path d="M42 100 C62 72 94 53 137 48 L756 48 C796 48 829 60 862 82 L924 119 C940 129 950 142 950 157 L950 173 L42 173Z" fill="#fffdf5"/>
+      <path d="M42 100 C62 72 94 53 137 48 L756 48 C796 48 829 60 862 82 L924 119 C940 129 950 142 950 157 L950 173 L42 173Z" fill="none" stroke="#d7e9e8" stroke-width="3"/>
+      <path d="M44 142 H950 V173 H42Z" fill="#e7f0e9"/>
+      <path d="M100 167 H920" stroke="#0f3555" stroke-width="7"/>
+      <path d="M178 51 H735" stroke="#73cddb" stroke-width="8" stroke-linecap="round" opacity=".78"/>
+      <path d="M208 56 H740" stroke="#ef8b69" stroke-width="3" stroke-linecap="round" opacity=".88"/>
+      <g fill="#12334f">
+        <rect x="174" y="73" width="88" height="42" rx="9"/>
+        <rect x="278" y="73" width="88" height="42" rx="9"/>
+        <rect x="382" y="73" width="88" height="42" rx="9"/>
+        <rect x="486" y="73" width="88" height="42" rx="9"/>
+        <rect x="590" y="73" width="88" height="42" rx="9"/>
+        <path d="M704 73 H760 C784 73 806 80 826 93 L858 115 H704Z"/>
+      </g>
+      <g fill="#9ce3e7" opacity=".7">
+        <rect x="185" y="82" width="65" height="5" rx="2.5"/>
+        <rect x="289" y="82" width="65" height="5" rx="2.5"/>
+        <rect x="393" y="82" width="65" height="5" rx="2.5"/>
+        <rect x="497" y="82" width="65" height="5" rx="2.5"/>
+        <rect x="601" y="82" width="65" height="5" rx="2.5"/>
+      </g>
+      <path d="M42 100 C62 72 94 53 137 48 L174 48 V173 H42Z" fill="#f7fbf3"/>
+      <path d="M42 100 C62 72 94 53 137 48 L174 48 V173 H42Z" fill="none" stroke="#d7e9e8" stroke-width="3"/>
+      <path d="M72 92 C91 69 112 58 139 56 H161 V111 H64Z" fill="#173b58"/>
+      <path d="M57 150 H950" stroke="#f5ca67" stroke-width="4" opacity=".8"/>
+      <g fill="#0b2038">
+        <circle cx="210" cy="177" r="17"/><circle cx="762" cy="177" r="17"/><circle cx="860" cy="177" r="17"/>
+      </g>
+    </g>
+
+    <text x="96" y="126" fill="#a5e4ea" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="4">TOKYO DISNEYSEA 25TH ANNIVERSARY</text>
+    <text x="96" y="181" fill="#fffdf5" font-family="Georgia, serif" font-size="43" font-weight="700">Sparkling Dreams</text>
+    <text x="96" y="219" fill="#fffdf5" font-family="Georgia, serif" font-size="31">Shinkansen</text>
+    <text x="96" y="536" fill="#f5ca67" font-family="Arial, sans-serif" font-size="17" font-weight="700" letter-spacing="2">すれ違う時刻を調べる</text>
+    <text x="1100" y="536" text-anchor="end" fill="#dceff0" font-family="Arial, sans-serif" font-size="16" letter-spacing="2">新幹線の窓</text>
+  </g>
+  <rect x="58" y="58" width="1084" height="514" rx="44" fill="none" stroke="#d7f1ed" stroke-opacity=".24" stroke-width="2"/>
+</svg>

@@ -1,6 +1,7 @@
 ﻿import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -13,6 +14,7 @@ const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
 const { SPOTS, ROUTE } = vm.runInNewContext(`${dataCode}\n;({ SPOTS, ROUTE });`, {}, { filename: dataPath });
+const SPOT_COUNT = SPOTS.length;
 const trackContext = { window: { ROUTE }, ROUTE };
 vm.runInNewContext(fs.readFileSync(trackPath, "utf8"), trackContext, { filename: trackPath });
 const TRACK = trackContext.window.MADO_TRACK;
@@ -74,8 +76,8 @@ const UI = {
     railCountSuffix: " の見どころ",
     railNowLabel: (name, min, seat) => `<b>${name}</b>東京から約${min}分 ・ ${seat}`,
     railCta: "乗る列車でガイドを作る",
-    railLead: "列車を選ぶと、37景の見える時刻を実際のダイヤに合わせて表示します。",
-    railBottomCta: "この列車の時刻で37景を見る",
+    railLead: `列車を選ぶと、${SPOT_COUNT}景の見える時刻を実際のダイヤに合わせて表示します。`,
+    railBottomCta: `この列車の時刻で${SPOT_COUNT}景を見る`,
     railFoot: "車窓図鑑で写真から探す →",
     railStationSuffix: "分",
     mobileSpotRailLabel: "東京から新大阪までの代表的な車窓",
@@ -146,8 +148,8 @@ const UI = {
     railCountSuffix: " views",
     railNowLabel: (name, min, seat) => `<b>${name}</b>About ${min} min from Tokyo · ${seat}`,
     railCta: "Build my guide by train",
-    railLead: "Choose your train to turn all 37 views into expected passing times for that service.",
-    railBottomCta: "Time all 37 views to my train",
+    railLead: `Choose your train to turn all ${SPOT_COUNT} views into expected passing times for that service.`,
+    railBottomCta: `Time all ${SPOT_COUNT} views to my train`,
     railFoot: "Browse by photo →",
     railStationSuffix: " min",
     mobileSpotRailLabel: "Recommended views from Tokyo to Shin-Osaka",
@@ -197,9 +199,9 @@ const UI = {
     railCountSuffix: " 個景色",
     railNowLabel: (name, min, seat) => `<b>${name}</b>東京出發約${min}分鐘 · ${seat}`,
     railCta: "依你的列車建立指南",
-    railLead: "選擇列車後，可依實際班次查看37個景色的預計通過時間。",
-    railBottomCta: "依我的列車查看37個景色",
-    railFoot: "從照片瀏覽37個景色 →",
+    railLead: `選擇列車後，可依實際班次查看${SPOT_COUNT}個景色的預計通過時間。`,
+    railBottomCta: `依我的列車查看${SPOT_COUNT}個景色`,
+    railFoot: `從照片瀏覽${SPOT_COUNT}個景色 →`,
     railStationSuffix: "分",
     mobileSpotRailLabel: "東京至新大阪的代表車窗景色",
     mobileSpotMeta: (min, seat) => `東京出發約${min}分鐘 · ${seat}座`,
@@ -215,9 +217,9 @@ const UI = {
     railCountSuffix: " 个景色",
     railNowLabel: (name, min, seat) => `<b>${name}</b>从东京出发约${min}分钟 · ${seat}`,
     railCta: "按我的列车生成指南",
-    railLead: "选择列车后，可按实际班次查看37个景色的预计经过时间。",
-    railBottomCta: "按我的列车查看37个景色",
-    railFoot: "从照片浏览37个景色 →",
+    railLead: `选择列车后，可按实际班次查看${SPOT_COUNT}个景色的预计经过时间。`,
+    railBottomCta: `按我的列车查看${SPOT_COUNT}个景色`,
+    railFoot: `从照片浏览${SPOT_COUNT}个景色 →`,
     railStationSuffix: "分",
     mobileSpotRailLabel: "东京至新大阪的代表性车窗景色",
     mobileSpotMeta: (min, seat) => `从东京出发约${min}分钟 · ${seat}座`,
@@ -233,9 +235,9 @@ const UI = {
     railCountSuffix: "개 풍경",
     railNowLabel: (name, min, seat) => `<b>${name}</b>도쿄에서 약 ${min}분 · ${seat}`,
     railCta: "내 열차로 가이드 만들기",
-    railLead: "열차를 선택하면 37개 풍경의 예상 통과 시간을 실제 운행에 맞춰 볼 수 있습니다.",
-    railBottomCta: "내 열차 시간으로 37개 풍경 보기",
-    railFoot: "사진으로 37개 풍경 보기 →",
+    railLead: `열차를 선택하면 ${SPOT_COUNT}개 풍경의 예상 통과 시간을 실제 운행에 맞춰 볼 수 있습니다.`,
+    railBottomCta: `내 열차 시간으로 ${SPOT_COUNT}개 풍경 보기`,
+    railFoot: `사진으로 ${SPOT_COUNT}개 풍경 보기 →`,
     railStationSuffix: "분",
     mobileSpotRailLabel: "도쿄에서 신오사카까지의 대표 차창 풍경",
     mobileSpotMeta: (min, seat) => `도쿄에서 약 ${min}분 · ${seat}석`,
@@ -251,9 +253,9 @@ const UI = {
     railCountSuffix: " vues",
     railNowLabel: (name, min, seat) => `<b>${name}</b> À environ ${min} min de Tokyo · ${seat}`,
     railCta: "Créer le guide de mon train",
-    railLead: "Choisissez votre train pour connaître l'heure de passage prévue devant chacune des 37 vues.",
-    railBottomCta: "Voir les 37 vues à l'heure de mon train",
-    railFoot: "Parcourir les 37 vues en photos →",
+    railLead: `Choisissez votre train pour connaître l'heure de passage prévue devant chacune des ${SPOT_COUNT} vues.`,
+    railBottomCta: `Voir les ${SPOT_COUNT} vues à l'heure de mon train`,
+    railFoot: `Parcourir les ${SPOT_COUNT} vues en photos →`,
     railStationSuffix: " min",
     mobileSpotRailLabel: "Vues emblématiques entre Tokyo et Shin-Osaka",
     mobileSpotMeta: (min, seat) => `À environ ${min} min · siège ${seat}`,
@@ -1705,7 +1707,7 @@ function englishIndexHTML() {
         </div>
         <dl class="guide-fact-grid">
           <div><dt>Best-known view</dt><dd>Mt. Fuji</dd><p>Watch around Mishima to Shin-Fuji.</p></div>
-          <div><dt>Also along the route</dt><dd>37 views</dd><p>From Tokyo to Shin-Osaka.</p></div>
+          <div><dt>Also along the route</dt><dd>${SPOT_COUNT} views</dd><p>From Tokyo to Shin-Osaka.</p></div>
           <div><dt>Best use</dt><dd>Before boarding</dd><p>Pick a train and keep the timeline ready.</p></div>
         </dl>
       </section>
@@ -1730,6 +1732,38 @@ function englishIndexHTML() {
 </body>
 </html>
 `;
+}
+
+function replaceSpotCountClaims(html) {
+  const replacements = [
+    ["37景", `${SPOT_COUNT}景`],
+    ["37の車窓", `${SPOT_COUNT}の車窓`],
+    ["全37景", `全${SPOT_COUNT}景`],
+    ["37 views", `${SPOT_COUNT} views`],
+    ["37 curated window views", `${SPOT_COUNT} curated window views`],
+    ["37-view", `${SPOT_COUNT}-view`],
+    ["37 recommended", `${SPOT_COUNT} recommended`],
+    ["37 Tokaido", `${SPOT_COUNT} Tokaido`],
+    ["37個景色", `${SPOT_COUNT}個景色`],
+    ["37個車窗景色", `${SPOT_COUNT}個車窗景色`],
+    ["37個の景色", `${SPOT_COUNT}個の景色`],
+    ["37个景色", `${SPOT_COUNT}个景色`],
+    ["37个精选车窗景色", `${SPOT_COUNT}个精选车窗景色`],
+    ["37个车窗景色", `${SPOT_COUNT}个车窗景色`],
+    ["37개 풍경", `${SPOT_COUNT}개 풍경`],
+    ["37개의", `${SPOT_COUNT}개의`],
+    ["36個車窗景色", `${SPOT_COUNT - 1}個車窗景色`],
+    ["36个车窗景色", `${SPOT_COUNT - 1}个车窗景色`],
+    ["36개의 차창 풍경", `${SPOT_COUNT - 1}개의 차창 풍경`],
+    ["37 vues", `${SPOT_COUNT} vues`],
+    ["37 paysages", `${SPOT_COUNT} paysages`],
+    ["36 autres paysages", `${SPOT_COUNT - 1} autres paysages`],
+    ["37 Day and Night Views", `${SPOT_COUNT} Day and Night Views`],
+    ["plus 36 more views", `plus ${SPOT_COUNT - 1} more views`],
+    ["37 مشهدًا", `${SPOT_COUNT} مشهدًا`],
+    ["الـ37", `الـ${SPOT_COUNT}`],
+  ];
+  return replacements.reduce((result, [from, to]) => result.replaceAll(from, to), html);
 }
 
 function englishAppIndexHTML() {
@@ -1775,6 +1809,7 @@ function englishAppIndexHTML() {
     .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
+  html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, "\n\n  ");
   railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
   railRoutes.forEach((route) => {
     html = html.replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
@@ -1782,7 +1817,9 @@ function englishAppIndexHTML() {
   html = html
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
     .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
-  return html;
+  const headEnd = html.indexOf("</head>");
+  if (headEnd < 0) return replaceSpotCountClaims(html);
+  return `${html.slice(0, headEnd + "</head>".length)}${replaceSpotCountClaims(html.slice(headEnd + "</head>".length))}`;
 }
 
 function guideHTML(lang) {
@@ -1916,6 +1953,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-08" },
     { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
@@ -1958,6 +1996,12 @@ for (const lang of ["ja", "en"]) {
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 fs.writeFileSync(path.join(appDir, "en", "index.html"), englishAppIndexHTML(), "utf8");
 await import("./generate-language-mirrors.mjs");
+for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
+  const absolutePath = path.join(appDir, relativePath);
+  if (fs.existsSync(absolutePath)) {
+    fs.writeFileSync(absolutePath, replaceSpotCountClaims(fs.readFileSync(absolutePath, "utf8")), "utf8");
+  }
+}
 // Guide pages are hand-edited SEO answer pages.
 // Keep only their shared route rail generated from the same source as spot pages.
 const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
@@ -2029,10 +2073,35 @@ for (const config of guideRailConfigs) {
     new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
     `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
-  fs.writeFileSync(guidePath, syncedGuideHTML, "utf8");
+  fs.writeFileSync(guidePath, replaceSpotCountClaims(syncedGuideHTML), "utf8");
 }
 fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");
 
 await import("./generate-content-manifest.mjs");
+const manifestPath = path.join(appDir, "content-manifest.json");
+const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
+const seasonalEntries = await Promise.all([
+  "sparkling-dreams.html",
+  "sparkling-dreams.js",
+  "images/sparkling-dreams-window.svg",
+  "images/og-sparkling-dreams.png",
+].map(async (relativePath) => {
+  const buffer = fs.readFileSync(path.join(appDir, relativePath));
+  return {
+    path: relativePath,
+    url: `${siteRoot}/${relativePath}`,
+    bytes: buffer.byteLength,
+    sha256: createHash("sha256").update(buffer).digest("hex"),
+  };
+}));
+manifest.files = [...(manifest.files || []).filter((entry) => !seasonalEntries.some((seasonal) => seasonal.path === entry.path)), ...seasonalEntries]
+  .sort((a, b) => a.path.localeCompare(b.path));
+manifest.contentVersion = createHash("sha256")
+  .update(manifest.files.map((entry) => entry.sha256).join(":"))
+  .update((manifest.audioPacks || []).flatMap((pack) => pack.items || []).map((entry) => entry.sha256).join(":"))
+  .update((manifest.thumbnails?.items || []).map((entry) => entry.sha256).join(":"))
+  .digest("hex")
+  .slice(0, 16);
+fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf8");
 
 console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, sitemap.xml, and content-manifest.json`);

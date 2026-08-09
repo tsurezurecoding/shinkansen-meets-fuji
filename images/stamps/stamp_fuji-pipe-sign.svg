@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="フジパイプ 車窓スタンプ">
+<g stroke="#3d6b4f" fill="#3d6b4f">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">フジパイプ</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M54 126 V88 H146 V126"/>
+<path d="M62 88 V76 H138 V88"/>
+<path d="M62 126 V140 M138 126 V140 M48 140 H152"/>
+<path d="M74 76 V66 H90 V76 M110 76 V66 H126 V76" stroke-width="1.8"/>
+</g>
+<text x="100" y="108" text-anchor="middle" font-size="13" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">フジパイプ</text>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約43分・E席</text>
+</g>
+</svg>

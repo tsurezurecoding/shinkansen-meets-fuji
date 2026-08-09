@@ -120,6 +120,34 @@ const REFERENCES = {
     label: { ja: "小田原市観光協会: 魚籃大観音（東善院）", en: "Odawara Tourism: Gyoran Dai-Kannon at Tozen-in (Japanese only)" },
     url: "https://www.odawara-kankou.com/spot/spot_area/gyokou.html",
   },
+  fujiKako: {
+    label: { ja: "富士化工 公式", en: "Fujikako official site" },
+    url: "https://www.fujikako.co.jp/",
+  },
+  fujiKakoOutline: {
+    label: { ja: "富士化工: 会社概要", en: "Fujikako: Corporate profile" },
+    url: "https://www.fujikako.co.jp/company/outline/",
+  },
+  fujiKakoRecruit: {
+    label: { ja: "富士化工: 職場環境", en: "Fujikako: Work environment" },
+    url: "https://www.fujikako.co.jp/recruit/environment/",
+  },
+  fujiKakoAccess: {
+    label: { ja: "富士化工: アクセス", en: "Fujikako: Access" },
+    url: "https://www.fujikako.co.jp/company/access/",
+  },
+  fujitecBigWing: {
+    label: { ja: "フジテック: ビッグウィング", en: "FUJITEC: Big Wing" },
+    url: "https://www.fujitec.co.jp/corporate/domestic_bases/big_wing",
+  },
+  fujitecAnnouncement: {
+    label: { ja: "フジテック: ビッグウィング発表", en: "FUJITEC: Big Wing announcement" },
+    url: "https://www.fujitec.co.jp/announcement/192",
+  },
+  fujitecHistory: {
+    label: { ja: "フジテック: 沿革", en: "FUJITEC: History" },
+    url: "https://www.fujitec.co.jp/corporate/history",
+  },
   shimizuPort: {
     label: { ja: "清水港: 地球深部探査船「ちきゅう」", en: "Port of Shimizu: Deep-sea drilling vessel CHIKYU" },
     url: "https://www.portofshimizu.com/overview/%E5%9C%B0%E7%90%83%E6%B7%B1%E9%83%A8%E6%8E%A2%E6%9F%BB%E8%88%B9-%E3%81%A1%E3%81%8D%E3%82%85%E3%81%86/",
@@ -1236,6 +1264,20 @@ const SPOTS = [
         date: "2026-07-12",
         note: { ja: "夕暮れ、山の上で白く光る熱海城", en: "At dusk, Atami Castle glows white on the hill." },
       },
+      {
+        src: "images/20260804_atami_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える朝の熱海", en: "Atami seen from Seat A on a morning Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-04",
+        note: { ja: "のぞみ1号（東京06:00発）、車内時計で06:35ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35." },
+      },
+      {
+        src: "images/20260804_sagami_bay_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える朝の相模湾", en: "Sagami Bay from Seat A on a morning Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-04",
+        note: { ja: "のぞみ1号（東京06:00発）、車内時計で06:35ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35." },
+      },
     ],
     references: [REFERENCES.atami, REFERENCES.atamiHatsushima, REFERENCES.atamiCastle, REFERENCES.atamiCityEnvironment, REFERENCES.hatsushimaBlog, REFERENCES.atamiCastleBlog],
     map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
@@ -1359,6 +1401,83 @@ const SPOTS = [
     references: [REFERENCES.gyoranKannon, REFERENCES.gyoranKannonTourism, REFERENCES.gyoranKannonWiki],
     map: { lat: 35.240947333816365, lng: 139.14421331844272, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
     viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
+  },
+  {
+    id: "fuji-pipe-sign",
+    icon: "🧪",
+    ja: {
+      name: "フジパイプ",
+      area: "富士化工本社（富士市前田）",
+      hook: "カラフルなフジパイプの屋上広告",
+      story: "富士市前田の富士化工本社の屋上に、カラフルなクレヨンのような形の「フジパイプ」立体広告があります。1957年創業の富士化工は、工場・電力・食品施設や温泉設備などで使われる高機能プラスチックのパイプ、継手、タンクを手がける会社です。晴れた日に富士山がきれいに見える新富士駅周辺の区間で、街並みに映えるこのオブジェは、公式の採用ページが「昭和レトロなトレードマーク」と紹介する沿線のサインです。",
+    },
+    en: {
+      name: "Fujipipe Rooftop Sign",
+      area: "Fujikako HQ, Fuji City",
+      hook: "A colorful Fujipipe rooftop sign.",
+      story: "On the roof of Fujikako's headquarters in Maeda, Fuji City, a colorful, crayon-like three-dimensional Fujipipe sign stands above the townscape. Founded in 1957, Fujikako makes high-function plastic pipes, fittings and tanks used in plants, power and food facilities, hot-spring equipment and other industrial settings. On clear days, this bright object stands out in the Shin-Fuji stretch, where Mt. Fuji can look especially beautiful. Its official recruiting page calls the rooftop form a 'Showa-retro trademark.'",
+    },
+    pageTitle: {
+      ja: "富士化工の昭和レトロなトレードマーク「フジパイプ」｜新幹線から見える屋上広告 | 新幹線の窓",
+      en: "Fujikako's Showa-Retro Rooftop Trademark | Fujipipe from the Shinkansen",
+    },
+    pageHeading: {
+      ja: "富士化工の昭和レトロなトレードマーク",
+      en: "Fujikako's Showa-retro rooftop trademark",
+    },
+    pageHeadingChunks: {
+      ja: ["富士化工の", "昭和レトロなトレードマーク"],
+      en: ["Fujikako's Showa-retro", "rooftop trademark"],
+    },
+    metaDescription: {
+      ja: "三島〜新富士のE席側、富士市の富士化工本社に見えるカラフルな「フジパイプ」屋上広告。晴れた日に富士山がきれいに見える新富士駅周辺で、クレヨンのようなオブジェを探します。",
+      en: "On Seat E between Mishima and Shin-Fuji, look for the colorful, crayon-like Fujipipe rooftop sign at Fujikako's Fuji headquarters, near a beautiful Mt. Fuji stretch on clear days.",
+    },
+    sectionHeading: {
+      ja: "このカラフルな屋上広告は何？",
+      en: "What is the rooftop sign?",
+    },
+    pageStory: {
+      ja: "三島を過ぎて新富士へ向かうE席側、富士市前田の富士化工本社の屋上に、カラフルなクレヨンのような「フジパイプ」の立体広告が見えます。新富士駅周辺は晴れた日に富士山がきれいに見える区間ですが、車窓の街並みに映えるこのオブジェも見どころです。富士化工は1957年に創業し、工場や電力・食品施設、温泉設備などに使われる高機能プラスチック製品をつくってきました。",
+      en: "On the Seat E side after Mishima, the rooftop of Fujikako's headquarters in Maeda, Fuji City carries a colorful, crayon-like three-dimensional Fujipipe sign. The Shin-Fuji stretch can offer a beautiful Mt. Fuji view on clear days, but this object standing out against the townscape is worth watching for too. Founded in 1957, Fujikako makes high-function plastic products — including pipes, fittings and tanks — for plants, power and food facilities, hot-spring equipment and other uses.",
+    },
+    explainer: {
+      heading: { ja: "富士化工は何をつくる会社？", en: "What does Fujikako make?" },
+      ja: [
+        "富士化工は、耐食性や耐薬品性などを備えた高機能プラスチックのパイプ、継手、タンクを中心に扱います。公式サイトでは、工場設備、電力・食品関連施設、温泉設備など、腐食への対応が必要な場所で使われる製品として紹介されています。",
+        "本社は富士市前田にあり、新幹線の線路から近い位置にあります。文字は遠くから読み取りにくいので、まずはカラフルなクレヨンのようなオブジェを探すのがコツです。新富士駅周辺で富士山を見たあと、E席側の街並みに色が差し込むように現れます。",
+        "公式採用ページは、この屋上の形を「昭和レトロなトレードマーク」と表現しています。晴れた日はカラフルな形が街並みに映えるので、文字を読むより先に、クレヨンのようなシルエットを目印にして楽しんでください。",
+      ],
+      en: [
+        "Fujikako focuses on high-function plastic pipes, fittings and tanks with properties such as resistance to corrosion and chemicals. Its official site describes uses in plant equipment, power and food facilities, hot-spring systems and other settings where those properties matter.",
+        "The headquarters is in Maeda, Fuji City, close to the Shinkansen line. The lettering is hard to read from a moving train, so look first for the colorful, crayon-like object. After watching for Mt. Fuji around Shin-Fuji, it appears as a flash of color in the Seat E townscape.",
+        "Fujikako's official recruiting page describes the rooftop form as a 'Showa-retro trademark.' On clear days its colors stand out against the townscape, so use the crayon-like silhouette rather than the distant lettering as your clue.",
+      ],
+    },
+    guideHighlight: {
+      ja: "東京06:00発のぞみ1号では、車内時計06:43ごろ・東京から約43分。三島を過ぎ、新富士駅周辺で富士山がきれいに見える区間に入ったら、E席側の街並みに映えるカラフルなクレヨンのようなオブジェを探してください。晴れた日は色がよく映えるので、文字を読むより先に形を目印にします。",
+      en: "On Nozomi 1, departing Tokyo at 06:00, the photo clock put this view at about 06:43 — roughly 43 minutes from Tokyo. As you enter the Shin-Fuji stretch, where Mt. Fuji can look beautiful, look on Seat E for the colorful, crayon-like object standing out against the townscape. On clear days its colors pop, so use the shape rather than trying to read the distant lettering.",
+    },
+    minutesFromTokyo: 43,
+    side: "E",
+    category: "curious",
+    confidence: "verified",
+    durationSec: 4,
+    scene: "hills",
+    image: "images/20260804_fujipipe_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-08-04",
+      note: { ja: "街並みに映えるカラフルな屋上広告", en: "A colorful rooftop sign standing out against the townscape." },
+    },
+    references: [REFERENCES.fujiKako, REFERENCES.fujiKakoOutline, REFERENCES.fujiKakoRecruit, REFERENCES.fujiKakoAccess],
+    bodyLinks: [
+      { ref: REFERENCES.fujiKako, label: { ja: "富士化工の公式サイトを見る", en: "Open Fujikako's official site" } },
+      { ref: REFERENCES.fujiKakoRecruit, label: { ja: "採用ページの紹介を見る", en: "Read the recruiting page" } },
+    ],
+    map: { lat: 35.1445902, lng: 138.678275, ja: "富士化工本社", en: "Fujikako headquarters" },
+    viewpoint: { lat: 35.1429, lng: 138.6785 },
   },
   {
     id: "fuji",
@@ -2757,6 +2876,83 @@ const SPOTS = [
     references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara, REFERENCES.ibukiKojiki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
     viewpoint: { lat: 35.361280, lng: 136.411719 },
+  },
+  {
+    id: "fujitec-big-wing",
+    icon: "🏢",
+    ja: {
+      name: "フジテック Big Wing",
+      area: "岐阜羽島 → 米原（米原付近）",
+      hook: "米原近くの、170m研究塔。",
+      story: "米原付近のE席側に見える細長い塔は、フジテックのBig Wingにあるエレベータ研究塔です。Big Wingは本社・研究開発・製造を一体にした拠点で、2006年に開設。約15万㎡の敷地に、高層・中層の塔からなる高さ170mの研究塔があります。エレベータを実物大で試験するための施設として、低い建物の向こうに立つ塔が車窓の目印になります。",
+    },
+    en: {
+      name: "FUJITEC Big Wing",
+      area: "Near Maibara",
+      hook: "A 170 m elevator research tower.",
+      story: "The slender towers near Maibara on the Seat E side belong to Fujitec's Big Wing, where headquarters, R&D and manufacturing are integrated. Opened in 2006 across roughly 150,000 square metres, the site includes a 170-metre elevator research tower made up of high-rise and mid-rise towers. It contains 13 elevators and has been used to test high-speed models at around 1,000 m/min.",
+    },
+    pageTitle: {
+      ja: "新幹線から見えるフジテックBig Wingのエレベータ研究塔｜高さ170mの研究拠点",
+      en: "FUJITEC Big Wing's 170 m Elevator Research Tower from the Shinkansen",
+    },
+    pageHeading: {
+      ja: "米原近くに立つ、フジテックのエレベータ研究塔",
+      en: "FUJITEC's elevator research tower near Maibara",
+    },
+    pageHeadingChunks: {
+      ja: ["米原近くに立つ、", "フジテックのエレベータ研究塔"],
+      en: ["FUJITEC's elevator research tower", "near Maibara"],
+    },
+    metaDescription: {
+      ja: "米原付近のE席側に見える高さ170mの塔は、フジテックBig Wingのエレベータ研究塔。2006年開設、約15万㎡の拠点と、車窓からの見つけ方を紹介します。",
+      en: "Near Maibara, the 170 m tower on Seat E belongs to FUJITEC Big Wing's elevator research facility, opened in 2006.",
+    },
+    sectionHeading: {
+      ja: "この高い塔は何？",
+      en: "What is the tall tower?",
+    },
+    pageStory: {
+      ja: "米原付近のE席側に見える塔は、フジテックのBig Wingにあるエレベータ研究塔です。Big Wingは本社、研究開発、製造を一体にした拠点として2006年に開設され、約15万㎡の敷地に施設が広がります。高さ170mの研究塔は高層塔と中層塔からなり、エレベータの試験に使われています。",
+      en: "The tower on the Seat E side near Maibara belongs to the elevator research facility at Fujitec's Big Wing. Big Wing opened in 2006 as an integrated headquarters, R&D and manufacturing base spread over roughly 150,000 square metres. Its 170-metre research tower consists of high-rise and mid-rise towers used for elevator testing.",
+    },
+    explainer: {
+      heading: { ja: "研究塔では何を試す？", en: "What is tested there?" },
+      ja: [
+        "公式案内によると、研究塔には13基のエレベータがあり、毎分1,000m級の高速機などを試験しています。建物の高さそのものが目的ではなく、実際の昇降機を安全に評価するための試験設備です。",
+        "Big Wingは本社、研究開発、製造を同じ拠点に集めた施設です。研究の塔と工場の建物が並ぶため、車窓からは一本の高い塔だけでなく、その周囲の低い建物も合わせて見ると場所をつかみやすくなります。",
+        "研究塔は2006年の開設時、世界最大級のエレベータ研究施設として紹介されました。現在の順位を断定するのではなく、エレベータを実物大で試験するための沿線拠点として眺めるのが適切です。",
+      ],
+      en: [
+        "FUJITEC's official information says the research tower contains 13 elevators and tests high-speed models in the roughly 1,000 m/min class. The height serves a practical purpose: it provides a full-scale test environment for safely evaluating elevator movement.",
+        "Big Wing combines headquarters, research and development, and manufacturing on one site. From the train, use the tall tower together with the lower buildings around it as a visual group rather than searching for an isolated skyscraper.",
+        "When the tower opened in 2006, it was described as world-leading or world-largest-class for elevator research. This page does not make a present-day ranking claim; the useful clue is the full-scale test facility beside the route.",
+      ],
+    },
+    guideHighlight: {
+      ja: "東京06:00発のぞみ1号では、車内時計07:52ごろ・東京から約113分。岐阜羽島を出て米原へ向かうE席側で、周囲の低い建物から抜け出す細長い塔を探してください。",
+      en: "On Nozomi 1, departing Tokyo at 06:00, this photo was taken at about 07:52 — roughly 113 minutes from Tokyo. After Gifu-Hashima, watch Seat E for the slender tower rising above the lower Big Wing buildings.",
+    },
+    minutesFromTokyo: 113,
+    side: "E",
+    category: "notable",
+    confidence: "verified",
+    durationSec: 6,
+    scene: "hills",
+    image: "images/20260804_fujitec_big_wing_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-08-04",
+      note: { ja: "のぞみ1号（東京06:00発）、車内時計07:52ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 07:52." },
+    },
+    references: [REFERENCES.fujitecBigWing, REFERENCES.fujitecAnnouncement, REFERENCES.fujitecHistory],
+    bodyLinks: [
+      { ref: REFERENCES.fujitecBigWing, label: { ja: "Big Wingの公式案内を見る", en: "Open the Big Wing profile" } },
+      { ref: REFERENCES.fujitecAnnouncement, label: { ja: "研究塔の公式発表を見る", en: "Read the research tower announcement" } },
+    ],
+    map: { lat: 35.2961311, lng: 136.2774037, ja: "フジテック Big Wing", en: "FUJITEC Big Wing" },
+    viewpoint: { lat: 35.2962, lng: 136.2793 },
   },
   {
     id: "nangu-taisha",

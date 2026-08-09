@@ -1,9 +1,15 @@
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://www.michikusa-travel.com";
+const dataContext = {};
+vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SPOTS = SPOTS;\nglobalThis.__SPOT_COUNT = SPOTS.length;`, dataContext);
+const spots = dataContext.__SPOTS;
+const spotCount = dataContext.__SPOT_COUNT;
+const spotIds = spots.map((spot) => spot.id);
 const pairs = [
   ["/", "/en/"],
   ["/zukan.html", "/en/zukan.html"],
@@ -33,7 +39,69 @@ function hasAlternate(html, language, urlPath) {
   return pattern.test(html);
 }
 
+function hasCanonical(html, urlPath) {
+  const expected = `${origin}${urlPath}`;
+  const pattern = new RegExp(
+    `<link\\s+rel=["']canonical["']\\s+href=["']${expected.replace(/[.*+?^${}()|[\\]\\\\]/g, "\\\\$&")}["']`,
+    "i"
+  );
+  return pattern.test(html);
+}
+
 const errors = [];
+const expectedSpotIds = new Set(spotIds);
+if (expectedSpotIds.size !== spotCount) {
+  errors.push(`data.js: duplicate spot IDs found (${spotCount} spots, ${expectedSpotIds.size} unique IDs)`);
+}
+
+function collectSpotPageIds(directory) {
+  if (!fs.existsSync(directory)) return new Set();
+  return new Set(
+    fs.readdirSync(directory, { withFileTypes: true })
+      .filter((entry) => entry.isFile() && entry.name.endsWith(".html"))
+      .map((entry) => entry.name.slice(0, -".html".length))
+  );
+}
+
+const spotPageDirectories = [
+  ["spots", path.join(appDir, "spots")],
+  ["en/spots", path.join(appDir, "en", "spots")]
+];
+for (const [label, directory] of spotPageDirectories) {
+  const actualIds = collectSpotPageIds(directory);
+  for (const id of expectedSpotIds) {
+    if (!actualIds.has(id)) errors.push(`${label}/${id}.html: missing generated spot page`);
+  }
+  for (const id of actualIds) {
+    if (!expectedSpotIds.has(id)) errors.push(`${label}/${id}.html: unexpected generated spot page`);
+  }
+}
+
+for (const id of spotIds) {
+  const jaPath = `/spots/${id}.html`;
+  const enPath = `/en/spots/${id}.html`;
+  for (const [urlPath, language] of [[jaPath, "ja"], [enPath, "en"]]) {
+    const file = diskPath(urlPath);
+    if (!fs.existsSync(file)) continue;
+    const html = fs.readFileSync(file, "utf8");
+    if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
+      errors.push(`${urlPath}: html lang must be ${language}`);
+    }
+    if (!hasCanonical(html, urlPath)) {
+      errors.push(`${urlPath}: canonical must point to ${origin}${urlPath}`);
+    }
+    if (!hasAlternate(html, "ja", jaPath)) {
+      errors.push(`${urlPath}: missing Japanese hreflang`);
+    }
+    if (!hasAlternate(html, "en", enPath)) {
+      errors.push(`${urlPath}: missing English hreflang`);
+    }
+    if (!hasAlternate(html, "x-default", enPath)) {
+      errors.push(`${urlPath}: x-default must point to English URL`);
+    }
+  }
+}
+
 for (const [jaPath, enPath] of pairs) {
   for (const [urlPath, language] of [[jaPath, "ja"], [enPath, "en"]]) {
     const file = diskPath(urlPath);
@@ -147,8 +215,8 @@ for (const [urlPath, language, hreflang] of localizedGuidePages) {
     errors.push(`${urlPath}: structured data must use WebPage, not FAQPage`);
   }
   const railSpotLinks = [...html.matchAll(/<a\b[^>]*href=["']([^"']+)["'][^>]*data-guide-rail-spot=["']([^"']+)["'][^>]*>/gi)];
-  if (railSpotLinks.length !== 37) {
-    errors.push(`${urlPath}: guide rail must contain 37 tracked spot links, found ${railSpotLinks.length}`);
+  if (railSpotLinks.length !== spotCount) {
+    errors.push(`${urlPath}: guide rail must contain ${spotCount} tracked spot links, found ${railSpotLinks.length}`);
   }
   for (const match of railSpotLinks) {
     if (!/^\.\.\/en\/spots\/[a-z0-9-]+\.html$/.test(match[1])) {
@@ -221,4 +289,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Language pages valid: ${pairs.length} Japanese/English pairs and ${localizedGuidePages.length} localized guides`);
+console.log(`Language pages valid: ${spotCount} spot page pairs, ${pairs.length} Japanese/English pairs and ${localizedGuidePages.length} localized guides`);

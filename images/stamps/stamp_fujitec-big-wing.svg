@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="フジテック Big Wing 車窓スタンプ">
+<g stroke="#2b4a73" fill="#2b4a73">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">フジテック Big Wing</text>
+
+<g fill="none" stroke-width="2.5">
+<path d="M62 138 V76 L78 66 V138 M122 138 V66 L138 76 V138"/>
+<path d="M62 94 H78 M62 112 H78 M122 84 H138 M122 102 H138" stroke-width="1.8"/>
+<path d="M52 140 H148"/>
+</g>
+<path d="M82 128 H118" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約113分・E席</text>
+</g>
+</svg>
