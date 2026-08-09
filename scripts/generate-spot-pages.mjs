@@ -2109,6 +2109,7 @@ const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 const seasonalEntries = await Promise.all([
   "sparkling-dreams.html",
   "sparkling-dreams.js",
+  "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
   "images/sparkling-dreams-window.svg",
   "images/og-sparkling-dreams.png",
 ].map(async (relativePath) => {

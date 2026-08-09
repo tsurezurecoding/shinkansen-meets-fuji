@@ -4987,7 +4987,51 @@ body.modal-open { overflow: hidden; }
 .sd-hero-note { color: var(--accent-soft); font-size: 12px; }
 .sd-hero-media { min-width: 0; margin: 0; padding: 10px; border: 1px solid rgba(255,255,255,.46); border-radius: 18px; background: rgba(8, 27, 47, .42); box-shadow: 0 20px 45px rgba(4, 15, 29, .24); }
 .sd-hero-media img { display: block; width: 100%; height: auto; border-radius: 11px; }
-.sd-hero-media figcaption { margin: 10px 4px 0; color: rgba(255,255,255,.72); font-size: 11px; line-height: 1.6; text-align: center; }
+.sd-hero-media figcaption { display: grid; gap: 3px; margin: 10px 4px 0; color: rgba(255,255,255,.72); font-size: 11px; line-height: 1.6; text-align: center; }
+.sd-hero-media figcaption a { color: inherit; text-underline-offset: 3px; }
+.sd-hero-media figcaption a:hover,
+.sd-hero-media figcaption a:focus-visible { color: #fff; }
+.sd-hero-video-card {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 11px;
+  align-items: center;
+  min-width: 0;
+  margin-top: 13px;
+  padding: 12px 13px;
+  border: 1px solid rgba(255,255,255,.32);
+  border-radius: 12px;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  text-decoration: none;
+}
+.sd-hero-video-card:hover,
+.sd-hero-video-card:focus-visible {
+  border-color: var(--accent-soft);
+  background: rgba(255,255,255,.14);
+  outline: 3px solid rgba(238, 205, 145, .32);
+  outline-offset: 3px;
+}
+.sd-hero-video-play {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255,255,255,.72);
+  border-radius: 50%;
+}
+.sd-hero-video-play::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 11px;
+  border-block: 6px solid transparent;
+  border-left: 9px solid currentColor;
+}
+.sd-hero-video-copy { display: grid; gap: 3px; min-width: 0; }
+.sd-hero-video-copy strong { font-size: 13px; line-height: 1.45; }
+.sd-hero-video-copy > span { color: rgba(255,255,255,.72); font-size: 11px; line-height: 1.5; }
+.sd-hero-video-arrow { color: var(--accent-soft); font-size: 20px; line-height: 1; }
 .sd-section { max-width: 960px; margin: 0 auto; padding: 78px 20px 0; }
 .sd-section .section-head { margin-bottom: 28px; }
 .sd-section h2 { text-wrap: balance; }

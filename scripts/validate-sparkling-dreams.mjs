@@ -1,10 +1,17 @@
 import { readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
 import vm from "node:vm";
 
 const appRoot = new URL("../", import.meta.url);
 const readAppFile = (relativePath) => readFile(new URL(relativePath, appRoot), "utf8");
 const readAppBuffer = (relativePath) => readFile(new URL(relativePath, appRoot));
 const failures = [];
+const PHOTO_PATH = "images/20260802_sparkling-dreams-hamanako_toshi549.jpg";
+const PHOTO_POST_URL = "https://x.com/toshi549/status/2084578030442414307";
+const VIDEO_POST_URL = "https://x.com/toshi549/status/2084213902188101722";
+const PHOTO_BYTES = 54358;
+const PHOTO_SHA256 = "4bf920d23a7513fc8560b052d3040de3bb01ef7a82fe61a8d44d9168ad3c2db9";
+const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 const expect = (condition, message) => {
   if (!condition) failures.push(message);
 };
@@ -16,6 +23,12 @@ const calculatorCode = await readAppFile("sparkling-dreams.js");
 const sitemap = await readAppFile("sitemap.xml");
 const manifest = JSON.parse(await readAppFile("content-manifest.json"));
 const illustration = await readAppFile("images/sparkling-dreams-window.svg");
+let heroPhoto = null;
+try {
+  heroPhoto = await readAppBuffer(PHOTO_PATH);
+} catch {
+  failures.push(`${PHOTO_PATH}: local hero photograph is missing`);
+}
 let ogImage = null;
 try {
   ogImage = await readAppBuffer("images/og-sparkling-dreams.png");
@@ -43,6 +56,10 @@ const requiredPageText = [
   "PATTERN A",
   "PATTERN B",
   "PATTERN C",
+  "Toshi（@toshi549）",
+  "元の写真投稿",
+  "13秒動画",
+  "X投稿を見る（外部サイト）",
   "https://recommend.jr-central.co.jp/sdshinkansen/index.html",
   "https://www.tokyodisneyresort.jp/dream/event/2026_s25_jrc.html",
 ];
@@ -58,18 +75,46 @@ expect(/<meta name="robots" content="index,follow/.test(page), "sparkling-dreams
 expect(/<link rel="alternate" hreflang="x-default" href="https:\/\/www\.michikusa-travel\.com\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: x-default language route is missing");
 expect(/<link rel="stylesheet" href="style\.css/.test(page), "sparkling-dreams.html: shared site stylesheet is missing");
 expect(!/<link[^>]+rel="stylesheet"[^>]+href="https?:\/\//i.test(page), "sparkling-dreams.html: external stylesheet found");
-expect(/<figure class="sd-hero-media">\s*<img src="images\/sparkling-dreams-window\.svg" alt="[^"]+"/s.test(page), "sparkling-dreams.html: accessible owned hero illustration is missing");
+const heroFigure = page.match(/<figure class="sd-hero-media">[\s\S]*?<\/figure>/)?.[0] || "";
+const heroImageTag = heroFigure.match(/<img\b[^>]*>/)?.[0] || "";
+const videoCard = heroFigure.match(/<a class="sd-hero-video-card"[\s\S]*?<\/a>/)?.[0] || "";
+expect(/src="images\/20260802_sparkling-dreams-hamanako_toshi549\.jpg"/.test(heroImageTag), "sparkling-dreams.html: local photograph is not the hero image");
+expect(/width="650"/.test(heroImageTag) && /height="434"/.test(heroImageTag), "sparkling-dreams.html: hero photograph dimensions are missing or incorrect");
+expect(/alt="[^"]*浜名湖[^\"]+"/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text is missing or not meaningful");
+expect(!/\bloading\s*=/.test(heroImageTag), "sparkling-dreams.html: above-the-fold hero photograph must not be lazy-loaded");
+expect(!/sparkling-dreams-window\.svg/.test(heroFigure), "sparkling-dreams.html: abstract owned SVG is still used in the hero");
+expect(new RegExp(`<figcaption>[\\s\\S]*href="${escapeRegExp(PHOTO_POST_URL)}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*>[\\s\\S]*Toshi（@toshi549）[\\s\\S]*元の写真投稿[\\s\\S]*<\\/a>[\\s\\S]*<\\/figcaption>`).test(heroFigure), "sparkling-dreams.html: source-linked Toshi photo credit is missing");
+expect(new RegExp(`href="${escapeRegExp(VIDEO_POST_URL)}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"`).test(videoCard), "sparkling-dreams.html: 13-second video card must link to the approved external X post");
+expect(/13秒動画/.test(videoCard) && /X投稿を見る（外部サイト）/.test(videoCard), "sparkling-dreams.html: video card must identify 13 seconds, X, and the external site");
+expect(!/(?:twitter-tweet|platform\.twitter\.com|twitframe\.com|<iframe\b|<video\b|\bposter=)/i.test(page), "sparkling-dreams.html: X embed, video embed, poster, or third-party media markup found");
 expect(!/<img\b[^>]+(?:https?:)?\/\//i.test(page), "sparkling-dreams.html: hotlinked image found");
 expect(!/(?:src|srcset)=["'][^"']*(?:disney|jr-central|tokyodisney)/i.test(page), "sparkling-dreams.html: external promotional image reference found");
 expect(/og-sparkling-dreams\.png/.test(page), "sparkling-dreams.html: page-specific owned OGP image is missing");
 expect(!/og-shinkansen-window\.png/.test(page), "sparkling-dreams.html: generic OGP image must not be used");
 expect(/<meta property="og:image:alt" content="東京ディズニーシー25周年/.test(page), "sparkling-dreams.html: OGP image alt text is missing");
-expect(/class="sd-hero-media"/.test(page) && /このサイト独自の車窓イメージ。実際の塗装デザインは公式サイトでご覧ください。/.test(page), "sparkling-dreams.html: visitor-facing hero note is missing");
+const preservedMetadata = [
+  `<title>Sparkling Dreams Shinkansenを車窓から｜運転日とすれ違い時刻 | 新幹線の窓</title>`,
+  `<meta name="description" content="2026年6月19日から2027年3月ごろまで走るSparkling Dreams Shinkansenの運転パターンと、選んだ列車とのすれ違い時刻を車窓の目安として調べます。">`,
+  `<meta property="og:title" content="Sparkling Dreams Shinkansenを車窓から｜運転日とすれ違い時刻">`,
+  `<meta property="og:description" content="特別塗装列車の運転日と、あなたの列車がすれ違う時刻の目安を確認できます。">`,
+  `<meta name="twitter:card" content="summary_large_image">`,
+  `<meta name="twitter:title" content="Sparkling Dreams Shinkansenを車窓から｜運転日とすれ違い時刻">`,
+  `<meta name="twitter:description" content="特別塗装列車の運転日と、あなたの列車がすれ違う時刻の目安を確認できます。">`,
+  `<meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-sparkling-dreams.png">`,
+];
+for (const metadata of preservedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: preserved metadata changed or is missing (${metadata.slice(0, 32)}...)`);
 expect(illustration.trim().startsWith("<svg") && /viewBox="0 0 1200 630"/.test(illustration), "images/sparkling-dreams-window.svg: original illustration contract is missing");
 expect(!/<image\b|(?:href|xlink:href)=["']https?:\/\//i.test(illustration), "images/sparkling-dreams-window.svg: external image reference found");
+expect(createHash("sha256").update(illustration).digest("hex") === "dfac0a4ba1a75bf94e09b8f7048b59da1b43fec55088a0a42ba1c2edee9f2ad5", "images/sparkling-dreams-window.svg: existing owned SVG was changed");
 if (ogImage) {
   expect(ogImage.length > 32 && ogImage.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10])), "images/og-sparkling-dreams.png: PNG signature is invalid");
   expect(ogImage.readUInt32BE(16) === 1200 && ogImage.readUInt32BE(20) === 630, "images/og-sparkling-dreams.png: expected 1200x630 dimensions");
+  expect(createHash("sha256").update(ogImage).digest("hex") === "26a4b53b680a7ec3cea2df8ec2d1b2464dcd40403d0ca1e696a3fd1b85989130", "images/og-sparkling-dreams.png: existing owned OGP was changed");
+}
+if (heroPhoto) {
+  expect(heroPhoto.length === PHOTO_BYTES, `${PHOTO_PATH}: expected ${PHOTO_BYTES} bytes`);
+  expect(heroPhoto.subarray(0, 2).equals(Buffer.from([0xff, 0xd8])), `${PHOTO_PATH}: JPEG signature is invalid`);
+  expect(createHash("sha256").update(heroPhoto).digest("hex") === PHOTO_SHA256, `${PHOTO_PATH}: SHA-256 does not match the approved source photograph`);
 }
 
 const expectedPatterns = {
@@ -177,8 +222,14 @@ if (sitemapEntry) {
 const manifestPaths = new Set((manifest.files || []).map((entry) => entry.path));
 expect(manifestPaths.has("sparkling-dreams.html"), "content-manifest.json: sparkling-dreams.html is missing");
 expect(manifestPaths.has("sparkling-dreams.js"), "content-manifest.json: sparkling-dreams.js is missing");
+expect(manifestPaths.has(PHOTO_PATH), `content-manifest.json: ${PHOTO_PATH} is missing`);
 expect(manifestPaths.has("images/sparkling-dreams-window.svg"), "content-manifest.json: sparkling-dreams-window.svg is missing");
 expect(manifestPaths.has("images/og-sparkling-dreams.png"), "content-manifest.json: og-sparkling-dreams.png is missing");
+const heroPhotoManifestEntry = (manifest.files || []).find((entry) => entry.path === PHOTO_PATH);
+if (heroPhotoManifestEntry && heroPhoto) {
+  expect(heroPhotoManifestEntry.bytes === PHOTO_BYTES, `content-manifest.json: ${PHOTO_PATH} byte count is incorrect`);
+  expect(heroPhotoManifestEntry.sha256 === PHOTO_SHA256, `content-manifest.json: ${PHOTO_PATH} SHA-256 is incorrect`);
+}
 
 if (failures.length) {
   throw new Error(`Sparkling Dreams validation failed:\n- ${failures.join("\n- ")}`);
