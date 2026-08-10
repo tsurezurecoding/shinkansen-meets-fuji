@@ -9,6 +9,7 @@ const failures = [];
 const PHOTO_PATH = "images/20260802_sparkling-dreams-hamanako_toshi549.jpg";
 const PHOTO_POST_URL = "https://x.com/toshi549/status/2084578030442414307";
 const VIDEO_POST_URL = "https://x.com/toshi549/status/2084213902188101722";
+const SECOND_VIDEO_POST_URL = "https://x.com/uechun624/status/2086695382399295876";
 const PHOTO_BYTES = 54358;
 const PHOTO_SHA256 = "4bf920d23a7513fc8560b052d3040de3bb01ef7a82fe61a8d44d9168ad3c2db9";
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -17,6 +18,7 @@ const expect = (condition, message) => {
 };
 
 const page = await readAppFile("sparkling-dreams.html");
+const stylesheet = await readAppFile("style.css");
 const japaneseTop = await readAppFile("index.html");
 const englishTop = await readAppFile("en/index.html");
 const calculatorCode = await readAppFile("sparkling-dreams.js");
@@ -57,9 +59,13 @@ const requiredPageText = [
   "PATTERN B",
   "PATTERN C",
   "Toshi（@toshi549）",
-  "元の写真投稿",
-  "13秒動画",
-  "X投稿を見る（外部サイト）",
+  "元投稿を見る",
+  "TRAIN VIDEOS",
+  "動画で見る特別列車",
+  "浜名湖を走る姿",
+  "鳥飼でのお見送り",
+  "うえちゅん (@uechun624)",
+  "動画が表示されない場合は",
   "https://recommend.jr-central.co.jp/sdshinkansen/index.html",
   "https://www.tokyodisneyresort.jp/dream/event/2026_s25_jrc.html",
 ];
@@ -77,32 +83,63 @@ expect(/<link rel="stylesheet" href="style\.css/.test(page), "sparkling-dreams.h
 expect(!/<link[^>]+rel="stylesheet"[^>]+href="https?:\/\//i.test(page), "sparkling-dreams.html: external stylesheet found");
 const heroFigure = page.match(/<figure class="sd-hero-media">[\s\S]*?<\/figure>/)?.[0] || "";
 const heroImageTag = heroFigure.match(/<img\b[^>]*>/)?.[0] || "";
-const videoCard = heroFigure.match(/<a class="sd-hero-video-card"[\s\S]*?<\/a>/)?.[0] || "";
+const heroCaption = heroFigure.match(/<figcaption>[\s\S]*?<\/figcaption>/)?.[0] || "";
+const heroNote = page.match(/<p class="sd-hero-note">[\s\S]*?<\/p>/)?.[0] || "";
+const videoSectionMatch = page.match(/<section class="sd-section sd-videos" aria-labelledby="sdVideosTitle">[\s\S]*?<\/section>/);
+const videoSection = videoSectionMatch?.[0] || "";
+const videoSectionIndex = videoSectionMatch?.index ?? -1;
+const factsSectionIndex = page.indexOf('<section class="sd-section sd-facts"');
+const calculatorSectionIndex = page.indexOf('<section class="sd-section sd-calculator-section"');
+const videoBlocks = videoSection.match(/<blockquote class="twitter-tweet" data-media-max-width="560">[\s\S]*?<\/blockquote>/g) || [];
+const widgetScripts = page.match(/<script\b(?=[^>]*\basync\b)(?=[^>]*\bsrc="https:\/\/platform\.twitter\.com\/widgets\.js")(?=[^>]*\bcharset="utf-8")[^>]*><\/script>/gi) || [];
+const widgetScriptIndex = widgetScripts.length ? page.indexOf(widgetScripts[0]) : -1;
+const localScriptIndex = page.indexOf('<script src="data/timetable.js');
+const videoPostUrls = [...new Set(
+  [...videoSection.matchAll(/https:\/\/x\.com\/[^/"\s]+\/status\/\d+(?:\?[^"'\s<]*)?/g)]
+    .map((match) => match[0].replace(/\?.*$/, "")),
+)];
 expect(/src="images\/20260802_sparkling-dreams-hamanako_toshi549\.jpg"/.test(heroImageTag), "sparkling-dreams.html: local photograph is not the hero image");
 expect(/width="650"/.test(heroImageTag) && /height="434"/.test(heroImageTag), "sparkling-dreams.html: hero photograph dimensions are missing or incorrect");
-expect(/alt="[^"]*浜名湖[^\"]+"/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text is missing or not meaningful");
+expect(/alt="青空の下、海上の橋を走る青と白のSparkling Dreams Shinkansen"/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text is missing, not visual, or names a location");
+expect(!/alt="[^"]*浜名湖/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text must not name a location");
 expect(!/\bloading\s*=/.test(heroImageTag), "sparkling-dreams.html: above-the-fold hero photograph must not be lazy-loaded");
 expect(!/sparkling-dreams-window\.svg/.test(heroFigure), "sparkling-dreams.html: abstract owned SVG is still used in the hero");
-expect(new RegExp(`<figcaption>[\\s\\S]*href="${escapeRegExp(PHOTO_POST_URL)}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"[^>]*>[\\s\\S]*Toshi（@toshi549）[\\s\\S]*元の写真投稿[\\s\\S]*<\\/a>[\\s\\S]*<\\/figcaption>`).test(heroFigure), "sparkling-dreams.html: source-linked Toshi photo credit is missing");
-expect(new RegExp(`href="${escapeRegExp(VIDEO_POST_URL)}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"`).test(videoCard), "sparkling-dreams.html: 13-second video card must link to the approved external X post");
-expect(/13秒動画/.test(videoCard) && /X投稿を見る（外部サイト）/.test(videoCard), "sparkling-dreams.html: video card must identify 13 seconds, X, and the external site");
-expect(!/(?:twitter-tweet|platform\.twitter\.com|twitframe\.com|<iframe\b|<video\b|\bposter=)/i.test(page), "sparkling-dreams.html: X embed, video embed, poster, or third-party media markup found");
+expect(/<p class="sd-hero-note"><span class="copy-chunk">運転計画は変更されることがあります。<\/span><span class="copy-chunk">最新情報は必ず公式案内をご確認ください。<\/span><\/p>/.test(heroNote), "sparkling-dreams.html: hero service-change note must use the two approved semantic sentence chunks");
+expect((heroNote.match(/class="copy-chunk"/g) || []).length === 2 && !/<br\b/i.test(heroNote), "sparkling-dreams.html: hero service-change note has an unexpected chunk or forced line break");
+expect(new RegExp(`<figcaption>\\s*写真：<a href="${escapeRegExp(PHOTO_POST_URL)}" target="_blank" rel="noopener noreferrer">Toshi（@toshi549）／元投稿を見る<\\/a>\\s*<\\/figcaption>`).test(heroFigure), "sparkling-dreams.html: source-linked Toshi photo credit is missing or has extra visible caption text");
+expect(!/(?:2026年|浜名湖|撮影)/.test(heroCaption) && (heroCaption.match(/<a\b/g) || []).length === 1, "sparkling-dreams.html: hero caption still exposes date/location text or extra links");
+expect(!/sd-hero-video-card/.test(page), "sparkling-dreams.html: obsolete hero video card is still present");
+expect(videoSectionIndex > factsSectionIndex && videoSectionIndex < calculatorSectionIndex, "sparkling-dreams.html: standalone video section is missing or in the wrong order");
+expect(videoSection.includes("TRAIN VIDEOS") && videoSection.includes("動画で見る特別列車"), "sparkling-dreams.html: standalone video section heading is missing");
+expect(videoBlocks.length === 2 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 2, "sparkling-dreams.html: expected exactly two official X tweet blockquotes");
+expect(videoBlocks.every((block) => /data-media-max-width="560"/.test(block)), "sparkling-dreams.html: every X tweet blockquote must use data-media-max-width=560");
+expect(videoSection.includes("Toshi (@toshi549)") && videoSection.includes("うえちゅん (@uechun624)"), "sparkling-dreams.html: video post credits are missing");
+expect(videoPostUrls.length === 2 && videoPostUrls.includes(VIDEO_POST_URL) && videoPostUrls.includes(SECOND_VIDEO_POST_URL), "sparkling-dreams.html: video section must contain exactly the two approved X post URLs");
+expect((videoSection.match(/class="sd-video-fallback"/g) || []).length === 2, "sparkling-dreams.html: each video card must provide a fallback link");
+expect(videoSection.includes(`href="${VIDEO_POST_URL}" target="_blank" rel="noopener noreferrer"`) && videoSection.includes(`href="${SECOND_VIDEO_POST_URL}" target="_blank" rel="noopener noreferrer"`), "sparkling-dreams.html: video fallback links must be useful and securely external");
+expect(widgetScripts.length === 1, "sparkling-dreams.html: exactly one async X widgets.js loader is required");
+expect(widgetScriptIndex > videoSectionIndex && widgetScriptIndex < localScriptIndex, "sparkling-dreams.html: X widgets.js must load after embeds and before local timetable/data/calculator scripts");
+expect(!/(?:<iframe\b|<video\b|\bposter\s*=|(?:pbs|video)\.twimg\.com)/i.test(page), "sparkling-dreams.html: copied thumbnail, poster, iframe, or local video markup found");
 expect(!/<img\b[^>]+(?:https?:)?\/\//i.test(page), "sparkling-dreams.html: hotlinked image found");
 expect(!/(?:src|srcset)=["'][^"']*(?:disney|jr-central|tokyodisney)/i.test(page), "sparkling-dreams.html: external promotional image reference found");
 expect(/og-sparkling-dreams\.png/.test(page), "sparkling-dreams.html: page-specific owned OGP image is missing");
 expect(!/og-shinkansen-window\.png/.test(page), "sparkling-dreams.html: generic OGP image must not be used");
 expect(/<meta property="og:image:alt" content="東京ディズニーシー25周年/.test(page), "sparkling-dreams.html: OGP image alt text is missing");
-const preservedMetadata = [
-  `<title>Sparkling Dreams Shinkansenを車窓から｜運転日とすれ違い時刻 | 新幹線の窓</title>`,
-  `<meta name="description" content="2026年6月19日から2027年3月ごろまで走るSparkling Dreams Shinkansenの運転パターンと、選んだ列車とのすれ違い時刻を車窓の目安として調べます。">`,
-  `<meta property="og:title" content="Sparkling Dreams Shinkansenを車窓から｜運転日とすれ違い時刻">`,
-  `<meta property="og:description" content="特別塗装列車の運転日と、あなたの列車がすれ違う時刻の目安を確認できます。">`,
+const expectedMetadata = [
+  `<title>ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen | 新幹線の窓</title>`,
+  `<meta name="description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">`,
+  `<meta property="og:title" content="ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen">`,
+  `<meta property="og:description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">`,
   `<meta name="twitter:card" content="summary_large_image">`,
-  `<meta name="twitter:title" content="Sparkling Dreams Shinkansenを車窓から｜運転日とすれ違い時刻">`,
-  `<meta name="twitter:description" content="特別塗装列車の運転日と、あなたの列車がすれ違う時刻の目安を確認できます。">`,
+  `<meta name="twitter:title" content="ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen">`,
+  `<meta name="twitter:description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">`,
   `<meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-sparkling-dreams.png">`,
+  `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
 ];
-for (const metadata of preservedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: preserved metadata changed or is missing (${metadata.slice(0, 32)}...)`);
+for (const metadata of expectedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: expected metadata changed or is missing (${metadata.slice(0, 32)}...)`);
+expect(page.includes('<link rel="stylesheet" href="style.css?v=20260810-video-section">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
+expect(stylesheet.includes(".sd-video-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-video-grid { grid-template-columns: 1fr; }"), "style.css: video cards must be two columns on desktop and one column on mobile");
+expect(!stylesheet.includes(".sd-hero-video-card"), "style.css: obsolete hero video-card rules are still present");
 expect(illustration.trim().startsWith("<svg") && /viewBox="0 0 1200 630"/.test(illustration), "images/sparkling-dreams-window.svg: original illustration contract is missing");
 expect(!/<image\b|(?:href|xlink:href)=["']https?:\/\//i.test(illustration), "images/sparkling-dreams-window.svg: external image reference found");
 expect(createHash("sha256").update(illustration).digest("hex") === "dfac0a4ba1a75bf94e09b8f7048b59da1b43fec55088a0a42ba1c2edee9f2ad5", "images/sparkling-dreams-window.svg: existing owned SVG was changed");
@@ -230,6 +267,18 @@ if (heroPhotoManifestEntry && heroPhoto) {
   expect(heroPhotoManifestEntry.bytes === PHOTO_BYTES, `content-manifest.json: ${PHOTO_PATH} byte count is incorrect`);
   expect(heroPhotoManifestEntry.sha256 === PHOTO_SHA256, `content-manifest.json: ${PHOTO_PATH} SHA-256 is incorrect`);
 }
+const pageManifestEntry = (manifest.files || []).find((entry) => entry.path === "sparkling-dreams.html");
+if (pageManifestEntry) {
+  expect(pageManifestEntry.bytes === Buffer.byteLength(page, "utf8"), "content-manifest.json: sparkling-dreams.html byte count is stale");
+  expect(pageManifestEntry.sha256 === createHash("sha256").update(page).digest("hex"), "content-manifest.json: sparkling-dreams.html SHA-256 is stale");
+}
+const expectedContentVersion = createHash("sha256")
+  .update((manifest.files || []).map((entry) => entry.sha256).join(":"))
+  .update((manifest.audioPacks || []).flatMap((pack) => pack.items || []).map((entry) => entry.sha256).join(":"))
+  .update((manifest.thumbnails?.items || []).map((entry) => entry.sha256).join(":"))
+  .digest("hex")
+  .slice(0, 16);
+expect(manifest.contentVersion === expectedContentVersion, "content-manifest.json: contentVersion is stale");
 
 if (failures.length) {
   throw new Error(`Sparkling Dreams validation failed:\n- ${failures.join("\n- ")}`);

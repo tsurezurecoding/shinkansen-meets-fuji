@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f28598330c4611ed",
+  "contentVersion": "d17b898c936da163",
   "generatedAt": "2026-08-09T23:03:17.525Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
@@ -44,8 +44,8 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 16067,
-      "sha256": "efd0b0fc496047d465cd07c3daf66476a41aad018c65b95c54aa62a57cfa35c7"
+      "bytes": 18017,
+      "sha256": "6bddca8a8e954b7f7f02a2678f08077ed18ac1dd6eef96d660aff1e6dadd727f"
     },
     {
       "path": "sparkling-dreams.js",
