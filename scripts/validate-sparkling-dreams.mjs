@@ -39,10 +39,6 @@ try {
 }
 
 const requiredPageText = [
-  "2026-06-19",
-  "2027年3月ごろ",
-  "1編成",
-  "東京 ⇄ 新大阪",
   "東京ディズニーシー25周年",
   "東京ディズニーシー25周年を記念した特別塗装列車",
   "自分の列車と、いつ・どこですれ違いそうか",
@@ -109,6 +105,8 @@ expect((heroNote.match(/class="copy-chunk"/g) || []).length === 2 && !/<br\b/i.t
 expect(new RegExp(`<figcaption>\\s*写真：<a href="${escapeRegExp(PHOTO_POST_URL)}" target="_blank" rel="noopener noreferrer">Toshi（@toshi549）／元投稿を見る<\\/a>\\s*<\\/figcaption>`).test(heroFigure), "sparkling-dreams.html: source-linked Toshi photo credit is missing or has extra visible caption text");
 expect(!/(?:2026年|浜名湖|撮影)/.test(heroCaption) && (heroCaption.match(/<a\b/g) || []).length === 1, "sparkling-dreams.html: hero caption still exposes date/location text or extra links");
 expect(!/sd-hero-video-card/.test(page), "sparkling-dreams.html: obsolete hero video card is still present");
+expect(/class="sd-hero-actions"[\s\S]*href="#sdCalculator"[\s\S]*>乗る列車を選ぶ<[\s\S]*href="#sdVideosTitle"[\s\S]*>撮影動画を見る</.test(page), "sparkling-dreams.html: hero train/video CTAs are missing or target the wrong sections");
+expect(!/class="sd-fact-grid"/.test(page), "sparkling-dreams.html: obsolete four-item facts strip is still present");
 expect(videoSectionIndex > factsSectionIndex && videoSectionIndex < calculatorSectionIndex, "sparkling-dreams.html: standalone video section is missing or in the wrong order");
 expect(videoSection.includes("TRAIN VIDEOS") && videoSection.includes("動画で見る特別列車"), "sparkling-dreams.html: standalone video section heading is missing");
 expect(videoBlocks.length === 2 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 2, "sparkling-dreams.html: expected exactly two official X tweet blockquotes");
@@ -137,7 +135,7 @@ const expectedMetadata = [
   `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
 ];
 for (const metadata of expectedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: expected metadata changed or is missing (${metadata.slice(0, 32)}...)`);
-expect(page.includes('<link rel="stylesheet" href="style.css?v=20260810-video-section">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
+expect(page.includes('<link rel="stylesheet" href="style.css?v=20260810-hero-cta">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
 expect(stylesheet.includes(".sd-video-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-video-grid { grid-template-columns: 1fr; }"), "style.css: video cards must be two columns on desktop and one column on mobile");
 expect(!stylesheet.includes(".sd-hero-video-card"), "style.css: obsolete hero video-card rules are still present");
 expect(illustration.trim().startsWith("<svg") && /viewBox="0 0 1200 630"/.test(illustration), "images/sparkling-dreams-window.svg: original illustration contract is missing");
