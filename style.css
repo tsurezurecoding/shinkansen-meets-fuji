@@ -5001,17 +5001,15 @@ body.modal-open { overflow: hidden; }
 .sd-section h2 { text-wrap: balance; }
 .sd-basics-copy { display: grid; gap: 12px; max-width: 760px; margin: 0 auto 26px; color: var(--ink-soft); font-size: 14px; line-height: 1.9; }
 .sd-basics-copy p { margin: 0; }
-.sd-video-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.sd-video-card { min-width: 0; overflow: hidden; padding: 20px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; box-shadow: var(--shadow); }
-.sd-video-card-head { display: grid; gap: 5px; }
-.sd-video-card h3 { color: var(--ink); font-family: var(--font-serif); font-size: 21px; line-height: 1.4; }
-.sd-video-card-head p { color: var(--ink-soft); font-size: 12px; }
-.sd-video-embed { min-width: 0; max-width: 100%; margin-top: 14px; overflow: hidden; }
-.sd-video-embed .twitter-tweet { width: 100% !important; max-width: 560px !important; min-width: 0 !important; margin: 0 auto !important; }
-.sd-video-fallback { margin-top: 12px; color: var(--ink-soft); font-size: 12px; line-height: 1.6; }
-.sd-video-fallback a { color: var(--accent); text-underline-offset: 3px; }
-.sd-video-fallback a:hover,
-.sd-video-fallback a:focus-visible { color: var(--ink); }
+.sd-post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 20px; }
+.sd-post-embed { min-width: 0; max-width: 100%; overflow: hidden; }
+.sd-post-embed .twitter-tweet { width: 100% !important; max-width: 560px !important; min-width: 0 !important; margin: 0 auto !important; padding: 18px; border: 1px solid var(--line); border-radius: var(--radius); background: #fff; color: var(--ink); }
+.sd-post-embed iframe { display: block; max-width: 100% !important; margin: 0 auto !important; }
+.sd-post-credit { margin: 8px auto 0; max-width: 560px; color: var(--ink-soft); font-size: 12px; line-height: 1.7; text-align: center; }
+.sd-post-credit a { color: inherit; text-underline-offset: 3px; }
+.sd-post-credit a:hover,
+.sd-post-credit a:focus-visible { color: var(--ink); }
+.sd-post-note { max-width: 700px; margin: 22px auto 0; color: var(--ink-soft); font-size: 12px; line-height: 1.8; text-align: center; }
 .sd-facts-copy { max-width: 700px; margin: 22px auto 0; color: var(--ink-soft); text-align: center; font-size: 14px; }
 .sd-calculator-section { max-width: 860px; }
 .sd-calculator {
@@ -5088,8 +5086,7 @@ body.modal-open { overflow: hidden; }
   .sd-hero-media { width: 100%; max-width: 540px; margin-inline: auto; }
   .sd-section { padding: 58px 18px 0; }
   .sd-basics-copy { text-align: start; font-size: 13px; }
-  .sd-video-grid { grid-template-columns: 1fr; }
-  .sd-video-card { padding: 16px; }
+  .sd-post-grid { grid-template-columns: 1fr; }
   .sd-facts-copy { text-align: start; }
   .sd-calculator { grid-template-columns: 1fr; padding: 17px; }
   .sd-form-row-wide, .sd-submit { grid-column: auto; }

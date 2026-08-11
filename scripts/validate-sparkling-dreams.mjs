@@ -10,6 +10,8 @@ const PHOTO_PATH = "images/20260802_sparkling-dreams-hamanako_toshi549.jpg";
 const PHOTO_POST_URL = "https://x.com/toshi549/status/2084578030442414307";
 const VIDEO_POST_URL = "https://x.com/toshi549/status/2084213902188101722";
 const SECOND_VIDEO_POST_URL = "https://x.com/uechun624/status/2086695382399295876";
+const THIRD_VIDEO_POST_URL = "https://x.com/ron__tigger/status/2086689775923482652";
+const FOURTH_VIDEO_POST_URL = "https://x.com/tetsudoshimbun/status/2066393493703160241";
 const PHOTO_BYTES = 54358;
 const PHOTO_SHA256 = "4bf920d23a7513fc8560b052d3040de3bb01ef7a82fe61a8d44d9168ad3c2db9";
 const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -58,10 +60,9 @@ const requiredPageText = [
   "元投稿を見る",
   "TRAIN VIDEOS",
   "動画で見る特別列車",
-  "浜名湖を走る姿",
-  "鳥飼でのお見送り",
-  "うえちゅん (@uechun624)",
-  "動画が表示されない場合は",
+  "鳥飼でお見送り",
+  "ろん.てぃが (@ron__tigger)",
+  "鉄道新聞®︎ (@tetsudoshimbun)",
   "https://recommend.jr-central.co.jp/sdshinkansen/index.html",
   "https://www.tokyodisneyresort.jp/dream/event/2026_s25_jrc.html",
 ];
@@ -81,17 +82,17 @@ const heroFigure = page.match(/<figure class="sd-hero-media">[\s\S]*?<\/figure>/
 const heroImageTag = heroFigure.match(/<img\b[^>]*>/)?.[0] || "";
 const heroCaption = heroFigure.match(/<figcaption>[\s\S]*?<\/figcaption>/)?.[0] || "";
 const heroNote = page.match(/<p class="sd-hero-note">[\s\S]*?<\/p>/)?.[0] || "";
-const videoSectionMatch = page.match(/<section class="sd-section sd-videos" aria-labelledby="sdVideosTitle">[\s\S]*?<\/section>/);
-const videoSection = videoSectionMatch?.[0] || "";
-const videoSectionIndex = videoSectionMatch?.index ?? -1;
+const postSectionMatch = page.match(/<section class="sd-section sd-posts" aria-labelledby="sdVideosTitle">[\s\S]*?<\/section>/);
+const postSection = postSectionMatch?.[0] || "";
+const postSectionIndex = postSectionMatch?.index ?? -1;
 const factsSectionIndex = page.indexOf('<section class="sd-section sd-facts"');
 const calculatorSectionIndex = page.indexOf('<section class="sd-section sd-calculator-section"');
-const videoBlocks = videoSection.match(/<blockquote class="twitter-tweet" data-media-max-width="560">[\s\S]*?<\/blockquote>/g) || [];
+const postBlocks = postSection.match(/<blockquote class="twitter-tweet" data-dnt="true" data-media-max-width="560">[\s\S]*?<\/blockquote>/g) || [];
 const widgetScripts = page.match(/<script\b(?=[^>]*\basync\b)(?=[^>]*\bsrc="https:\/\/platform\.twitter\.com\/widgets\.js")(?=[^>]*\bcharset="utf-8")[^>]*><\/script>/gi) || [];
 const widgetScriptIndex = widgetScripts.length ? page.indexOf(widgetScripts[0]) : -1;
 const localScriptIndex = page.indexOf('<script src="data/timetable.js');
-const videoPostUrls = [...new Set(
-  [...videoSection.matchAll(/https:\/\/x\.com\/[^/"\s]+\/status\/\d+(?:\?[^"'\s<]*)?/g)]
+const embeddedPostUrls = [...new Set(
+  [...postSection.matchAll(/https:\/\/x\.com\/[^/"\s]+\/status\/\d+(?:\?[^"'\s<]*)?/g)]
     .map((match) => match[0].replace(/\?.*$/, "")),
 )];
 expect(/src="images\/20260802_sparkling-dreams-hamanako_toshi549\.jpg"/.test(heroImageTag), "sparkling-dreams.html: local photograph is not the hero image");
@@ -107,16 +108,28 @@ expect(!/(?:2026年|浜名湖|撮影)/.test(heroCaption) && (heroCaption.match(/
 expect(!/sd-hero-video-card/.test(page), "sparkling-dreams.html: obsolete hero video card is still present");
 expect(/class="sd-hero-actions"[\s\S]*href="#sdCalculator"[\s\S]*>乗る列車を選ぶ<[\s\S]*href="#sdVideosTitle"[\s\S]*>撮影動画を見る</.test(page), "sparkling-dreams.html: hero train/video CTAs are missing or target the wrong sections");
 expect(!/class="sd-fact-grid"/.test(page), "sparkling-dreams.html: obsolete four-item facts strip is still present");
-expect(videoSectionIndex > factsSectionIndex && videoSectionIndex < calculatorSectionIndex, "sparkling-dreams.html: standalone video section is missing or in the wrong order");
-expect(videoSection.includes("TRAIN VIDEOS") && videoSection.includes("動画で見る特別列車"), "sparkling-dreams.html: standalone video section heading is missing");
-expect(videoBlocks.length === 2 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 2, "sparkling-dreams.html: expected exactly two official X tweet blockquotes");
-expect(videoBlocks.every((block) => /data-media-max-width="560"/.test(block)), "sparkling-dreams.html: every X tweet blockquote must use data-media-max-width=560");
-expect(videoSection.includes("Toshi (@toshi549)") && videoSection.includes("うえちゅん (@uechun624)"), "sparkling-dreams.html: video post credits are missing");
-expect(videoPostUrls.length === 2 && videoPostUrls.includes(VIDEO_POST_URL) && videoPostUrls.includes(SECOND_VIDEO_POST_URL), "sparkling-dreams.html: video section must contain exactly the two approved X post URLs");
-expect((videoSection.match(/class="sd-video-fallback"/g) || []).length === 2, "sparkling-dreams.html: each video card must provide a fallback link");
-expect(videoSection.includes(`href="${VIDEO_POST_URL}" target="_blank" rel="noopener noreferrer"`) && videoSection.includes(`href="${SECOND_VIDEO_POST_URL}" target="_blank" rel="noopener noreferrer"`), "sparkling-dreams.html: video fallback links must be useful and securely external");
+expect(postSectionIndex > factsSectionIndex && postSectionIndex < calculatorSectionIndex, "sparkling-dreams.html: standalone X video section is missing or in the wrong order");
+expect(postSection.includes("TRAIN VIDEOS") && postSection.includes("動画で見る特別列車"), "sparkling-dreams.html: standalone X video section heading is missing");
+expect(!/class="section-sub"/.test(postSection), "sparkling-dreams.html: X video section must not add editorial summary copy");
+expect(postBlocks.length === 4 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 4, "sparkling-dreams.html: expected exactly four official X video blockquotes");
+expect(postBlocks.every((block) => /data-dnt="true"/.test(block) && /data-media-max-width="560"/.test(block)), "sparkling-dreams.html: every X video must use privacy-enhanced official embed attributes");
+expect(postSection.includes("Toshi (@toshi549)") && postSection.includes("うえちゅん (@uechun624)") && postSection.includes("ろん.てぃが (@ron__tigger)") && postSection.includes("鉄道新聞®︎ (@tetsudoshimbun)"), "sparkling-dreams.html: official X embed author lines are missing");
+expect(embeddedPostUrls.length === 4 && [VIDEO_POST_URL, SECOND_VIDEO_POST_URL, THIRD_VIDEO_POST_URL, FOURTH_VIDEO_POST_URL].every((url) => embeddedPostUrls.includes(url)), "sparkling-dreams.html: X video section must contain exactly the four approved video post URLs");
+expect(!/honobonosun_in/.test(page), "sparkling-dreams.html: photo-only X post must not be embedded in the video section");
+const postCredits = postSection.match(/<p class="sd-post-credit">[\s\S]*?<\/p>/g) || [];
+expect(postCredits.length === 4, "sparkling-dreams.html: every embedded video needs its own visible poster credit line");
+expect([
+  [VIDEO_POST_URL, "Toshi（@toshi549）"],
+  [SECOND_VIDEO_POST_URL, "うえちゅん（@uechun624）"],
+  [THIRD_VIDEO_POST_URL, "ろん.てぃが（@ron__tigger）"],
+].every(([url, name]) => postCredits.some((credit) => new RegExp(`^<p class="sd-post-credit">動画：<a href="${escapeRegExp(url)}" target="_blank" rel="noopener noreferrer">${escapeRegExp(name)}／元投稿を見る</a></p>$`).test(credit))), "sparkling-dreams.html: poster credit must link the original post with no extra caption text");
+expect(postCredits.some((credit) => new RegExp(`^<p class="sd-post-credit">動画（車内メロディ）：<a href="${escapeRegExp(FOURTH_VIDEO_POST_URL)}" target="_blank" rel="noopener noreferrer">鉄道新聞®︎（@tetsudoshimbun）／元投稿を見る</a></p>$`).test(credit)), "sparkling-dreams.html: in-car melody credit must link the original post with no extra caption text");
+expect(postCredits.every((credit) => !/(?:にて|撮影|浜名湖|鳥飼)/.test(credit)), "sparkling-dreams.html: poster credit must not add editorial location or caption text");
+const rightsNote = page.match(/<p class="sd-post-note">[\s\S]*?<\/p>/)?.[0] || "";
+expect(rightsNote === '<p class="sd-post-note">動画はX（旧Twitter）の公式埋め込み機能を使っており、複製・再配布はしていません。</p>', "sparkling-dreams.html: embed-rights note must use the approved concise wording");
+expect(!/(?:sd-video-card|sd-video-card-head|sd-video-fallback)/.test(page), "sparkling-dreams.html: redundant custom video card copy is still present");
 expect(widgetScripts.length === 1, "sparkling-dreams.html: exactly one async X widgets.js loader is required");
-expect(widgetScriptIndex > videoSectionIndex && widgetScriptIndex < localScriptIndex, "sparkling-dreams.html: X widgets.js must load after embeds and before local timetable/data/calculator scripts");
+expect(widgetScriptIndex > postSectionIndex && widgetScriptIndex < localScriptIndex, "sparkling-dreams.html: X widgets.js must load after embeds and before local timetable/data/calculator scripts");
 expect(!/(?:<iframe\b|<video\b|\bposter\s*=|(?:pbs|video)\.twimg\.com)/i.test(page), "sparkling-dreams.html: copied thumbnail, poster, iframe, or local video markup found");
 expect(!/<img\b[^>]+(?:https?:)?\/\//i.test(page), "sparkling-dreams.html: hotlinked image found");
 expect(!/(?:src|srcset)=["'][^"']*(?:disney|jr-central|tokyodisney)/i.test(page), "sparkling-dreams.html: external promotional image reference found");
@@ -135,8 +148,10 @@ const expectedMetadata = [
   `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
 ];
 for (const metadata of expectedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: expected metadata changed or is missing (${metadata.slice(0, 32)}...)`);
-expect(page.includes('<link rel="stylesheet" href="style.css?v=20260810-hero-cta">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
-expect(stylesheet.includes(".sd-video-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-video-grid { grid-template-columns: 1fr; }"), "style.css: video cards must be two columns on desktop and one column on mobile");
+expect(page.includes('<link rel="stylesheet" href="style.css?v=20260811-x-videos">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
+expect(stylesheet.includes(".sd-post-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-post-grid { grid-template-columns: 1fr; }"), "style.css: X videos must be two columns on desktop and one column on mobile");
+expect(stylesheet.includes(".sd-post-credit") && stylesheet.includes(".sd-post-note"), "style.css: poster credit and embed-rights note styles are missing");
+expect(!/(?:\.sd-video-card|\.sd-video-card-head|\.sd-video-fallback)/.test(stylesheet), "style.css: redundant custom post-card styles are still present");
 expect(!stylesheet.includes(".sd-hero-video-card"), "style.css: obsolete hero video-card rules are still present");
 expect(illustration.trim().startsWith("<svg") && /viewBox="0 0 1200 630"/.test(illustration), "images/sparkling-dreams-window.svg: original illustration contract is missing");
 expect(!/<image\b|(?:href|xlink:href)=["']https?:\/\//i.test(illustration), "images/sparkling-dreams-window.svg: external image reference found");
