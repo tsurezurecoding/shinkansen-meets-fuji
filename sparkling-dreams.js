@@ -10,14 +10,14 @@
   const timetableStationNames = new Map(
     (Array.isArray(timetable.stations) ? timetable.stations : [])
       .filter((station) => station && station.id)
-      .map((station) => [station.id, station.ja])
+      .map((station) => [station.id, { ja: station.ja, en: station.en || station.ja }])
   );
 
-  const stationName = (id) => timetableStationNames.get(id) || routeStations.find((station) => station.id === id)?.ja || id;
-  const trainStaticLine = (train) => {
+  const stationName = (id, language = "ja") => timetableStationNames.get(id)?.[language] || routeStations.find((station) => station.id === id)?.[language] || routeStations.find((station) => station.id === id)?.ja || id;
+  const trainStaticLine = (train, language = "ja") => {
     const from = train.originStation || (train.direction === "west" ? "Tokyo" : "Shin-Osaka");
     const to = train.destination || (train.direction === "west" ? "Shin-Osaka" : "Tokyo");
-    return `${train.type} ${train.number} · ${stationName(from)} ${train.times?.[from] || "—"} → ${stationName(to)} ${train.times?.[to] || "—"}`;
+    return `${train.type} ${train.number} · ${stationName(from, language)} ${train.times?.[from] || "—"} → ${stationName(to, language)} ${train.times?.[to] || "—"}`;
   };
 
   const PATTERN_SERVICES = {
@@ -124,13 +124,13 @@
     const upperIndex = routeStations.findIndex((station) => station.min >= position);
     if (upperIndex <= 0) {
       const station = routeStations[Math.max(0, upperIndex)];
-      return { from: station.ja, to: station.ja };
+      return { from: station.ja, to: station.ja, fromEn: station.en || station.ja, toEn: station.en || station.ja };
     }
     if (upperIndex === -1) {
       const station = routeStations[routeStations.length - 1];
-      return { from: station.ja, to: station.ja };
+      return { from: station.ja, to: station.ja, fromEn: station.en || station.ja, toEn: station.en || station.ja };
     }
-    return { from: routeStations[upperIndex - 1].ja, to: routeStations[upperIndex].ja };
+    return { from: routeStations[upperIndex - 1].ja, to: routeStations[upperIndex].ja, fromEn: routeStations[upperIndex - 1].en || routeStations[upperIndex - 1].ja, toEn: routeStations[upperIndex].en || routeStations[upperIndex].ja };
   }
 
   function intersections(selectedTrain, specialTrain) {
@@ -204,6 +204,7 @@
   if (typeof document === "undefined") return;
 
   const $ = (selector) => document.querySelector(selector);
+  const uiLanguage = document.documentElement.lang === "en" ? "en" : "ja";
   const escapeHTML = (value) => String(value ?? "").replace(/[&<>\"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
   const directionName = (direction) => direction === "west" ? "西向き（東京 → 新大阪）" : "東向き（新大阪 → 東京）";
   const dateToday = () => {
@@ -215,7 +216,7 @@
   function renderTrainOptions(select, direction) {
     const candidates = getWindowTrains(direction);
     const previous = select.value;
-    select.innerHTML = candidates.map((train) => `<option value="${escapeHTML(serviceKey(train))}">${escapeHTML(trainStaticLine(train))}</option>`).join("");
+    select.innerHTML = candidates.map((train) => `<option value="${escapeHTML(serviceKey(train))}">${escapeHTML(trainStaticLine(train, uiLanguage))}</option>`).join("");
     if (candidates.some((train) => serviceKey(train) === previous)) select.value = previous;
   }
 
@@ -224,7 +225,7 @@
       const pattern = list.dataset.patternList;
       const services = (PATTERN_SERVICES[pattern] || []).map(findTrain).filter(Boolean);
       if (!services.length) return;
-      list.innerHTML = services.map((train) => `<li><strong>${escapeHTML(trainName(train))}</strong><span>${escapeHTML(trainStaticLine(train))}</span></li>`).join("");
+      list.innerHTML = services.map((train) => `<li><strong>${escapeHTML(trainName(train))}</strong><span>${escapeHTML(trainStaticLine(train, uiLanguage))}</span></li>`).join("");
     });
   }
 
@@ -241,9 +242,52 @@
     });
   }
 
+  function renderEnglishResult(result, resultBox) {
+    resultBox.classList.remove("is-success", "is-note", "is-empty");
+    if (result.status === "outside-range") {
+      resultBox.classList.add("is-empty");
+      resultBox.innerHTML = `<h3>That date is outside the operating period</h3><p>${escapeHTML(result.date)} is outside the published operating period, June 19, 2026 to March 15, 2027. Please check official information for the latest dates.</p>`;
+      return;
+    }
+    if (result.status === "pending") {
+      resultBox.classList.add("is-note");
+      resultBox.innerHTML = `<h3>The pattern for this date is not confirmed</h3><p>The operating pattern for ${escapeHTML(result.date)} has not been published yet. Please check the official schedule when it is available.</p>`;
+      return;
+    }
+    if (result.status === "invalid" || result.status === "invalid-train") {
+      resultBox.classList.add("is-empty");
+      resultBox.innerHTML = "<h3>Please choose a date and train</h3><p>Check your date and direction, then try again.</p>";
+      return;
+    }
+    const selectedName = trainName(result.selectedTrain);
+    const scheduleName = `Pattern ${result.pattern}`;
+    if (result.status === "self-match") {
+      resultBox.classList.add("is-note");
+      resultBox.innerHTML = `<h3>Your selected train is the special train</h3><p>${escapeHTML(selectedName)} is part of ${escapeHTML(scheduleName)} on ${escapeHTML(result.date)}. It is the Sparkling Dreams Shinkansen itself, so there is no passing encounter to estimate.</p>`;
+      trackCalculation(result);
+      return;
+    }
+    if (result.status === "no-encounter") {
+      resultBox.classList.add("is-note");
+      resultBox.innerHTML = `<h3>No likely passing encounter was found</h3><p>${escapeHTML(selectedName)} and the opposite-direction special train in ${escapeHTML(scheduleName)} do not appear to cross within the calculated route. Please still check official information, as the plan can change.</p>`;
+      trackCalculation(result);
+      return;
+    }
+    const watchSide = result.direction === "west" ? "E-seat side" : "A-seat side";
+    const direction = result.direction === "west" ? "Westbound (Tokyo → Shin-Osaka)" : "Eastbound (Shin-Osaka → Tokyo)";
+    const rows = result.matches.map((match) => `<li><strong>Around ${escapeHTML(match.clock)}</strong><span>${escapeHTML(trainName(match.specialTrain))} between ${escapeHTML(match.segment.fromEn || match.segment.from)} and ${escapeHTML(match.segment.toEn || match.segment.to)}</span></li>`).join("");
+    resultBox.classList.add("is-success");
+    resultBox.innerHTML = `<h3>Likely passing estimate</h3><p class="sd-result-lead">Your ${escapeHTML(direction)} ${escapeHTML(selectedName)} may pass the special train at the following time and place on ${escapeHTML(result.date)} (${escapeHTML(scheduleName)}).</p><ul class="sd-result-list">${rows}</ul><p class="sd-seat-note"><strong>Watch from the ${escapeHTML(watchSide)}</strong> and start looking out about ±5 minutes early. Station stops, delays, speed, and operating changes can shift the actual moment.</p>`;
+    trackCalculation(result);
+  }
+
   function renderResult(result) {
     const resultBox = $("#sdResult");
     if (!resultBox) return;
+    if (uiLanguage === "en") {
+      renderEnglishResult(result, resultBox);
+      return;
+    }
     resultBox.classList.remove("is-success", "is-note", "is-empty");
     if (result.status === "outside-range") {
       resultBox.classList.add("is-empty");
@@ -281,6 +325,51 @@
     trackCalculation(result);
   }
 
+  function initEmbedLoading() {
+    if (typeof document === "undefined" || typeof document.querySelectorAll !== "function") return;
+    const stageSelector = ".sd-x-embed, .sd-youtube-frame";
+    const fallbackTimeoutMs = 5000;
+    const fallbackTimers = new WeakMap();
+    const markReady = (stage) => {
+      if (!stage) return;
+      const timer = fallbackTimers.get(stage);
+      if (timer != null && typeof root.clearTimeout === "function") root.clearTimeout(timer);
+      fallbackTimers.delete(stage);
+      stage.classList.remove("is-loading");
+      stage.classList.add("is-ready");
+      stage.setAttribute("aria-busy", "false");
+    };
+    const startLoading = (stage) => {
+      if (!stage || stage.classList.contains("is-loading") || stage.classList.contains("is-ready")) return;
+      stage.classList.add("is-loading");
+      stage.setAttribute("aria-busy", "true");
+      if (typeof root.setTimeout === "function") {
+        fallbackTimers.set(stage, root.setTimeout(() => markReady(stage), fallbackTimeoutMs));
+      }
+    };
+    const bindFrame = (frame) => {
+      const stage = frame.closest(stageSelector);
+      if (!stage || frame.dataset.sdEmbedLoadBound === "true") return;
+      frame.dataset.sdEmbedLoadBound = "true";
+      frame.addEventListener("load", () => markReady(stage), { once: true });
+    };
+    document.querySelectorAll(stageSelector).forEach((stage) => {
+      startLoading(stage);
+      stage.querySelectorAll("iframe").forEach(bindFrame);
+    });
+    const grid = document.querySelector(".sd-post-grid");
+    if (grid && typeof root.MutationObserver === "function") {
+      const observer = new root.MutationObserver((records) => {
+        records.forEach((record) => record.addedNodes.forEach((node) => {
+          if (node.nodeType !== 1) return;
+          if (node.matches?.("iframe")) bindFrame(node);
+          node.querySelectorAll?.("iframe").forEach(bindFrame);
+        }));
+      });
+      observer.observe(grid, { childList: true, subtree: true });
+    }
+  }
+
   function init() {
     const form = $("#sdCalculator");
     const dateInput = $("#sdDate");
@@ -298,6 +387,7 @@
       renderResult(result);
     });
   }
+  initEmbedLoading();
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 }(typeof window !== "undefined" ? window : globalThis));

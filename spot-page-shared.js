@@ -32,6 +32,11 @@
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
+      showcaseEyebrow: "MORE TO SEE",
+      showcaseTitle: "ほかにも、こんな車窓",
+      showcaseAction: "詳しく見る",
+      showcaseCta: "もっと見る",
+      showcaseCtaSub: "この区間の景色を一覧で見る",
       mobileAffiliate: "広告",
       mobileAffiliateNote: "アフィリエイトリンクを含みます。",
       sideA: "A席・海側",
@@ -68,6 +73,11 @@
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
+      showcaseEyebrow: "MORE TO SEE",
+      showcaseTitle: "More window views",
+      showcaseAction: "Read the guide",
+      showcaseCta: "More",
+      showcaseCtaSub: "Browse every view in this stretch",
       mobileAffiliate: "AFFILIATE LINKS",
       mobileAffiliateNote: "Michikusa may earn a commission at no extra cost to you.",
       sideA: "Seat A · sea side",
@@ -148,8 +158,11 @@
   }
 
   function validateData(data, currentId, lang) {
-    if (!data || data.version !== 1 || !Array.isArray(data.stations) || !data.stations.length || !Array.isArray(data.spots) || !data.spots.length) {
+    if (!data || data.version !== 2 || !Array.isArray(data.stations) || !data.stations.length || !Array.isArray(data.spots) || !data.spots.length || !data.pages || typeof data.pages !== "object") {
       throw new Error("shared data is missing its version, stations, or spots");
+    }
+    if (typeof data.affiliatesEnabled !== "boolean" || !Array.isArray(data.showcase) || !data.showcase.length) {
+      throw new Error("shared presentation data is missing its feature flags or showcase");
     }
     var stationIds = {};
     data.stations.forEach(function (station) {
@@ -170,7 +183,14 @@
       if (!seatLabels(spot).length) throw new Error("shared spot seats are malformed");
       spotIds[spot.id] = true;
     });
-    if (!spotIds[currentId]) throw new Error("current spot is not in shared data");
+    var showcaseIds = {};
+    data.showcase.forEach(function (item) {
+      if (!item || !safeSpotId(item.id) || showcaseIds[item.id] || !localized(item.name, lang) || !localized(item.hook, lang) || !safeAssetPath(item.thumb) || (item.creditUrl && !/^https?:\/\//i.test(item.creditUrl))) {
+        throw new Error("shared showcase data is malformed");
+      }
+      showcaseIds[item.id] = true;
+    });
+    if (!spotIds[currentId] || !data.pages[currentId] || !data.pages[currentId][lang]) throw new Error("current spot is not in shared data");
   }
 
   function href(rootPath, relativePath) {
@@ -225,7 +245,10 @@
     "</header>";
   }
 
-  function railAffiliateHTML(rootPath, lang) {
+  function railAffiliateHTML(data, rootPath, lang) {
+    // The reusable affiliate markup stays intact, but the generated shared-data
+    // flag keeps presentation off until it is deliberately re-enabled.
+    if (data.affiliatesEnabled !== true) return "";
     if (lang === "ja") {
       return "<div class=\"spot-page-rail-affiliate-group\" id=\"spotRailAffiliate\">" +
         "<p class=\"spot-page-rail-affiliate-label\">広告</p>" +
@@ -283,7 +306,7 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railAffiliateHTML(rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
   function contentRailHTML(rootPath, lang) {
@@ -295,10 +318,254 @@
     return "<section class=\"content-rail-section\" aria-labelledby=\"contentRailTitle\"><div class=\"section-head\"><p class=\"eyebrow\">" + escapeHTML(ui.contentEyebrow) + "</p><h2 id=\"contentRailTitle\">" + escapeHTML(ui.contentTitle) + "</h2></div><div class=\"content-rail\">" + cards + "</div></section>";
   }
 
+  function showcaseCreditHTML(item, lang) {
+    var label = localized(item.credit, lang);
+    var text = String(label).toLowerCase() === "michikusa" ? (item.creditDate || label) : label;
+    if (!text) return "";
+    // The whole showcase card is already a link; keep the photo credit visible
+    // as text so the card never creates an invalid nested anchor.
+    return "<small class=\"show-credit\">" + escapeHTML(text) + "</small>";
+  }
+
+  function showcaseHTML(data, rootPath, lang) {
+    var ui = UI[lang];
+    var base = basePath(rootPath, lang);
+    var cards = data.showcase.map(function (item) {
+      var name = localized(item.name, lang);
+      var hook = localized(item.hook, lang);
+      var guideHref = href(base, "spots/" + item.id + ".html");
+      return "<a class=\"show-card\" href=\"" + escapeHTML(guideHref) + "\" aria-label=\"" + escapeHTML(name + ": " + ui.showcaseAction) + "\">" +
+        "<div class=\"show-media\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"" + escapeHTML(name) + "\" loading=\"lazy\" decoding=\"async\"></div>" +
+        "<span class=\"show-caption\"><strong>" + escapeHTML((item.icon || "") + " " + name).trim() + "</strong>" + showcaseCreditHTML(item, lang) + "<span class=\"show-hook\">" + escapeHTML(hook) + "</span><span class=\"show-guide-link\">" + escapeHTML(ui.showcaseAction) + "</span></span>" +
+        "</a>";
+    }).join("");
+    var remaining = Math.max(0, data.spots.length - data.showcase.length);
+    var cta = "<a class=\"show-card show-card-cta\" href=\"" + escapeHTML(href(base, "zukan.html")) + "\" aria-label=\"" + escapeHTML(ui.showcaseCta + ": " + ui.fieldGuide) + "\">" +
+      "<div class=\"show-media show-media-cta\" aria-hidden=\"true\"><div class=\"show-cta-badge\"><span class=\"show-cta-arrow\">→</span></div><span class=\"show-cta-count\">+" + escapeHTML(remaining) + " spots</span></div>" +
+      "<span class=\"show-caption\"><strong>" + escapeHTML(ui.showcaseCta) + "</strong><span>" + escapeHTML(ui.showcaseCtaSub) + "</span><span class=\"show-guide-link\">" + escapeHTML(ui.showcaseAction) + "</span></span>" +
+      "</a>";
+    return "<section class=\"showcase spot-page-showcase\" aria-labelledby=\"spotPageShowcaseTitle\"><div class=\"section-head\"><p class=\"eyebrow\">" + escapeHTML(ui.showcaseEyebrow) + "</p><h2 id=\"spotPageShowcaseTitle\">" + escapeHTML(ui.showcaseTitle) + "</h2></div><div class=\"showcase-rail\">" + cards + cta + "</div></section>";
+  }
+
+  var PAGE_UI = {
+    ja: {
+      eyebrow: "TOKAIDO SHINKANSEN WINDOW VIEW",
+      live: "乗車中はライブガイドで見る",
+      more: "もっと見る:",
+      mapSummary: "位置の目安",
+      mapNote: "スポット位置と、新幹線から見る位置を切り替えられます。",
+      mapFallback: "この地点は簡易地図の座標調整中です。外部地図で位置を確認できます。",
+      mapOpen: function (name) { return name + "をGoogle Mapsで開く"; },
+      mapLink: "地図をひらく",
+      mapSpot: "スポット",
+      mapViewpoint: "新幹線視点",
+      guideLead: "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。",
+      guideCta: "列車を選んで、見える時刻を調べる",
+      stamp: "車窓スタンプ",
+      related: "近くの車窓も見る",
+      source: "出典：",
+      original: "元投稿を見る",
+      videoLabel: function (name) { return name + "の投稿動画"; },
+      photoChoose: function (name) { return name + "の写真を選ぶ"; },
+      lightboxClose: "閉じる",
+    },
+    en: {
+      eyebrow: "TOKAIDO SHINKANSEN WINDOW VIEW",
+      live: "Use Live Guide while riding",
+      more: "More:",
+      mapSummary: "Location at a glance",
+      mapNote: "Switch between the spot and the Shinkansen viewpoint.",
+      mapFallback: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
+      mapOpen: function (name) { return "Open " + name + " in Google Maps"; },
+      mapLink: "Open map",
+      mapSpot: "Spot",
+      mapViewpoint: "Train viewpoint",
+      guideLead: "Know your train? Select it to see this view's estimated time on the actual timetable.",
+      guideCta: "Select my train and check the time",
+      stamp: "Window stamp",
+      related: "Nearby window views",
+      source: "Source: ",
+      original: "View original post",
+      videoLabel: function (name) { return name + " videos"; },
+      photoChoose: function (name) { return "Choose a photo of " + name; },
+      lightboxClose: "Close",
+    }
+  };
+
+  function safeHttpUrl(value) {
+    return typeof value === "string" && /^https?:\/\/[^\s<>"']+$/i.test(value);
+  }
+
+  function safeRelativeHref(value) {
+    return typeof value === "string" && value && value.charAt(0) !== "/" && value.indexOf("\\") === -1 && !/^[a-z][a-z\d+.-]*:/i.test(value);
+  }
+
+  function validatePageData(page, currentId, lang) {
+    if (!page || page.id !== currentId || page.lang !== lang || !page.name || !page.hero || !Array.isArray(page.photos) || !page.photos.length || !Array.isArray(page.gallery) || !page.gallery.length) throw new Error("shared page data is malformed");
+    if (!safeAssetPath(page.stamp && page.stamp.src) || !safeAssetPath(page.hero.src) || !safeAssetPath(page.hero.thumb)) throw new Error("shared page asset path is malformed");
+    ["gallery", "inline"].forEach(function (key) {
+      (page[key] || []).forEach(function (photo) {
+        if (!photo || !safeAssetPath(photo.src) || !safeAssetPath(photo.thumb) || (photo.sourceUrl && !safeHttpUrl(photo.sourceUrl))) throw new Error("shared page photo data is malformed");
+      });
+    });
+    (page.bodyLinks || []).concat(page.references || []).forEach(function (item) {
+      if (!item || !item.label || !safeHttpUrl(item.href)) throw new Error("shared page reference data is malformed");
+    });
+    if (page.fujiGuide && (!safeRelativeHref(page.fujiGuide.href) || !page.fujiGuide.label)) throw new Error("shared Fuji guide link is malformed");
+    if (page.guide && !safeRelativeHref(page.guide.href)) throw new Error("shared timing guide link is malformed");
+    if (page.guideNotice && !safeRelativeHref(page.guideNotice.href)) throw new Error("shared guide notice link is malformed");
+    if (page.map) {
+      ["externalUrl", "embedUrl", "viewpointUrl"].forEach(function (key) {
+        if (page.map[key] && !safeHttpUrl(page.map[key])) throw new Error("shared map URL is malformed");
+      });
+    }
+    if (page.referenceImage && (!safeAssetPath(page.referenceImage.src) || !safeAssetPath(page.referenceImage.thumb) || (page.referenceImage.sourceUrl && !safeHttpUrl(page.referenceImage.sourceUrl)))) throw new Error("shared reference image is malformed");
+    if (page.media) {
+      if (!Array.isArray(page.media.videos) || !page.media.videos.length) throw new Error("shared media list is malformed");
+      page.media.videos.forEach(function (video) {
+        if (!video || !["x", "youtube"].includes(video.kind) || !video.url || !video.accessibleTitle && video.kind === "x") throw new Error("shared video record is malformed");
+        if (video.kind === "x" && (!/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url) || (video.mediaUrl && !/^https:\/\/t\.co\/[A-Za-z0-9]+$/.test(video.mediaUrl)) || !/^@[A-Za-z0-9_]+$/.test(video.handle) || !video.fallbackText)) throw new Error("shared X video record is malformed");
+        if (video.kind === "youtube" && (!/^[A-Za-z0-9_-]{11}$/.test(video.id) || !/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(video.url) || !video.title)) throw new Error("shared YouTube video record is malformed");
+      });
+    }
+  }
+
+  function pageCreditHTML(photo) {
+    var credit = escapeHTML(photo.credit || "");
+    return photo.sourceUrl ? "<a href=\"" + escapeHTML(photo.sourceUrl) + "\" rel=\"noopener\" target=\"_blank\">" + credit + "</a>" : credit;
+  }
+
+  function pageGalleryHTML(page, rootPath, lang) {
+    var ui = PAGE_UI[lang];
+    var items = page.gallery;
+    var first = items[0];
+    var heading = page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
+    var thumbs = items.map(function (item, index) {
+      var note = item.note || item.alt;
+      return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"\" loading=\"" + (index === 0 ? "eager" : "lazy") + "\" decoding=\"async\"></button>";
+    }).join("");
+    var caption = "<figcaption aria-live=\"polite\"><strong data-gallery-note-output>" + escapeHTML(first.note || first.alt) + "</strong><span data-gallery-credit-output>" + pageCreditHTML(first) + "</span><span data-gallery-date-output>" + escapeHTML(first.date || "") + "</span></figcaption>";
+    return "<div class=\"spot-page-media-gallery" + (items.length === 1 ? " is-single" : "") + "\" data-spot-media-gallery>" + heading + "<div class=\"spot-photo-thumbs\" role=\"group\" aria-label=\"" + escapeHTML(ui.photoChoose(page.name)) + "\">" + thumbs + "</div><figure class=\"spot-page-figure spot-page-media-gallery-active\"><img data-gallery-image src=\"" + escapeHTML(href(rootPath, first.src)) + "\" alt=\"" + escapeHTML(first.alt) + "\" decoding=\"async\" fetchpriority=\"high\">" + caption + "</figure></div>";
+  }
+
+  function pageFactsHTML(page, lang) {
+    return "<dl class=\"spot-page-facts\"><div><dt>" + escapeHTML(page.facts.labels[0]) + "</dt><dd>" + escapeHTML(page.area) + "</dd></div><div><dt>" + escapeHTML(page.facts.labels[1]) + "</dt><dd>" + escapeHTML(page.sideLabel) + "</dd></div><div><dt>" + escapeHTML(page.facts.labels[2]) + "</dt><dd>" + escapeHTML(page.facts.timing) + "</dd></div><div><dt>" + escapeHTML(page.facts.labels[3]) + "</dt><dd>" + escapeHTML(page.photos.length + " " + page.facts.photoUnit) + "</dd></div></dl>";
+  }
+
+  function pageInlineFigureHTML(photo, rootPath, lang) {
+    var ui = UI[lang];
+    var note = photo.note || photo.alt;
+    var credit = pageCreditHTML(photo);
+    var date = photo.date ? "<span>" + escapeHTML(photo.date) + "</span>" : "";
+    return "<figure class=\"spot-page-inline-figure\"><button type=\"button\" class=\"spot-page-inline-zoom\" data-zoom-src=\"" + escapeHTML(href(rootPath, photo.src)) + "\" aria-label=\"" + escapeHTML(note) + "を表示\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, photo.thumb)) + "\" alt=\"" + escapeHTML(photo.alt) + "\"></button><figcaption>" + (note ? "<strong>" + escapeHTML(note) + "</strong>" : "") + "<span>" + credit + "</span>" + date + "<span class=\"spot-page-zoom-hint\">" + escapeHTML(ui.zoomHint || (lang === "ja" ? "クリックで拡大" : "click to enlarge")) + "</span></figcaption></figure>";
+  }
+
+  function pageExplainerFigureHTML(figure, rootPath) {
+    if (!figure) return "";
+    var credit = figure.credit ? (figure.sourceUrl ? "<a href=\"" + escapeHTML(figure.sourceUrl) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(figure.credit) + "</a>" : escapeHTML(figure.credit)) : "";
+    var caption = [figure.caption ? "<strong>" + escapeHTML(figure.caption) + "</strong>" : "", credit ? "<span>" + credit + "</span>" : "", figure.date ? "<span>" + escapeHTML(figure.date) + "</span>" : ""].filter(Boolean).join(" ");
+    return "<figure class=\"spot-page-explainer-figure\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, figure.thumb)) + "\" alt=\"" + escapeHTML(figure.alt || "") + "\">" + (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
+  }
+
+  function pageReferenceImageHTML(image, rootPath) {
+    if (!image) return "";
+    var credit = image.sourceUrl ? "<a href=\"" + escapeHTML(image.sourceUrl) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(image.credit || "") + "</a>" : escapeHTML(image.credit || "");
+    var date = image.date ? "<span>" + escapeHTML(image.date) + "</span>" : "";
+    var imageHref = image.sourceUrl || href(rootPath, image.src);
+    return "<section class=\"spot-page-section spot-page-reference-section\"><h2>" + escapeHTML(image.heading || "") + "</h2><p>" + escapeHTML(image.intro || "") + "</p><figure class=\"spot-page-reference-figure\"><a href=\"" + escapeHTML(imageHref) + "\"" + (image.sourceUrl ? " rel=\"noopener\" target=\"_blank\"" : "") + "><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, image.thumb)) + "\" alt=\"" + escapeHTML(image.alt || "") + "\"></a><figcaption><strong>" + escapeHTML(image.caption || "") + "</strong><span>" + credit + "</span>" + date + "</figcaption></figure></section>";
+  }
+
+  function pageMapHTML(page, rootPath, lang) {
+    var ui = PAGE_UI[lang];
+    var map = page.map;
+    if (!map || (!map.hasCoordinates && !map.externalUrl)) return "";
+    var fallbackLink = map.externalUrl ? "<a class=\"map-link spot-mini-map-link\" href=\"" + escapeHTML(map.externalUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\" data-map=\"" + escapeHTML(page.id) + "\"><span class=\"map-link-icon\" aria-hidden=\"true\">↗</span><span>" + escapeHTML(ui.mapLink) + "</span></a>" : "";
+    if (!map.hasCoordinates) return "<section class=\"spot-static-map\"><div class=\"spot-static-map-head\"><h2>" + escapeHTML(ui.mapSummary) + "</h2></div><div class=\"spot-mini-map-fallback\"><p>" + escapeHTML(ui.mapFallback) + "</p>" + fallbackLink + "</div></section>";
+    var modebar = map.viewpointUrl ? "<div class=\"spot-map-modebar\" role=\"group\" aria-label=\"" + escapeHTML(ui.mapSummary) + "\"><button type=\"button\" class=\"spot-map-mode is-active\" data-mini-map-mode=\"spot\" data-map-src=\"" + escapeHTML(map.embedUrl) + "\" aria-pressed=\"true\">" + escapeHTML(ui.mapSpot) + "</button><button type=\"button\" class=\"spot-map-mode\" data-mini-map-mode=\"viewpoint\" data-map-src=\"" + escapeHTML(map.viewpointUrl) + "\" aria-pressed=\"false\">" + escapeHTML(ui.mapViewpoint) + "</button></div>" : "";
+    return "<section class=\"spot-static-map\"><div class=\"spot-static-map-head\"><h2>" + escapeHTML(ui.mapSummary) + "</h2>" + fallbackLink + "</div>" + modebar + "<iframe class=\"spot-google-map-frame\" src=\"" + escapeHTML(map.embedUrl) + "\" title=\"" + escapeHTML(ui.mapOpen(map.name)) + "\" loading=\"lazy\" allowfullscreen referrerpolicy=\"no-referrer-when-downgrade\"></iframe><p class=\"spot-mini-map-note\">" + escapeHTML(ui.mapNote) + "</p></section>";
+  }
+
+  function pageGuideHTML(page, rootPath, lang) {
+    var guide = page.guide;
+    return "<section class=\"spot-page-section\"><h2>" + escapeHTML(guide.title) + "</h2><h3>" + escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first") + "</h3><p>" + escapeHTML(guide.intro) + "</p><p>" + escapeHTML(guide.duration) + "</p><aside class=\"spot-page-timing-cta\"><p>" + escapeHTML(guide.timingLead) + "</p><a class=\"btn btn-primary\" href=\"" + escapeHTML(guide.href) + "\" data-cta-track=\"cta_train_search_click\" data-cta-id=\"spot_guide_timing\">" + escapeHTML(guide.cta) + "</a></aside><h3>" + escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights") + "</h3><p>" + escapeHTML(guide.highlight) + "</p></section>";
+  }
+
+  function pageMediaHTML(page, rootPath, lang) {
+    if (!page.media) return "";
+    var ui = PAGE_UI[lang];
+    var hasX = page.media.videos.some(function (video) { return video.kind === "x"; });
+    var cards = page.media.videos.map(function (video) {
+      if (video.kind === "x") {
+        var xText = escapeHTML(video.fallbackText).replace(/\n/g, "<br>");
+        var sourceLabel = video.accountName ? video.accountName + "（" + video.handle + "）／" + ui.original : video.handle + " / " + ui.original;
+        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
+      }
+      return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.title) + "\"><div class=\"spot-page-video-frame\"><iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeHTML(video.id) + "\" title=\"" + escapeHTML(video.title) + "\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(video.url) + "</a></p></article>";
+    }).join("");
+    return "<section class=\"spot-page-section spot-page-video-section\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\"><h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
+  }
+
+  function pageLightboxHTML(lang) {
+    return "<div class=\"spot-page-lightbox\" id=\"spotPageLightbox\" hidden><button type=\"button\" class=\"spot-page-lightbox-close\" aria-label=\"" + escapeHTML(PAGE_UI[lang].lightboxClose) + "\">&times;</button><figure><img alt=\"\"><figcaption></figcaption></figure></div>";
+  }
+
+  function pageHTML(data, rootPath, lang, currentId) {
+    var page = data.pages[currentId][lang];
+    var ui = PAGE_UI[lang];
+    var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
+    var fujiGuide = page.fujiGuide ? (function () { var text = escapeHTML(page.fujiGuide.text); return "<p>" + text.replace(escapeHTML(page.fujiGuide.label), "<a href=\"" + escapeHTML(page.fujiGuide.href) + "\">" + escapeHTML(page.fujiGuide.label) + "</a>") + "</p>"; }()) : "";
+    var intro = "<section class=\"spot-page-section\"><h2>" + escapeHTML(page.sectionHeading) + "</h2><p>" + escapeHTML(page.story) + "</p>" + bodyLinks + "<p>" + escapeHTML(page.routeNote) + "</p>" + fujiGuide + "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p></section>";
+    var inline = (page.inline || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join("");
+    var explainer = page.explainer ? "<section class=\"spot-page-section\"><h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
+    var guideNotice = page.guideNotice ? "<section class=\"spot-page-section guide-answer-panel\"><div class=\"guide-answer-copy\"><h2>" + escapeHTML(page.guideNotice.heading) + "</h2><p>" + escapeHTML(page.guideNotice.body) + "</p><p><a class=\"inline-cta\" href=\"" + escapeHTML(page.guideNotice.href) + "\">" + escapeHTML(page.guideNotice.label) + "</a></p></div></section>" : "";
+    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\"><h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>"; }).join("");
+    var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
+    var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
+    var showcase = showcaseHTML(data, rootPath, lang);
+    return siteHeaderHTML(rootPath, lang, currentId) + "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell\">" + railHTML(data, rootPath, lang, currentId) + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + showcase + contentRailHTML(rootPath, lang) + "</main>" + pageLightboxHTML(lang);
+  }
+
+  function bindPageLightbox() {
+    var box = document.getElementById("spotPageLightbox");
+    if (!box || box.__madoBound) return;
+    box.__madoBound = true;
+    var image = box.querySelector("img");
+    var caption = box.querySelector("figcaption");
+    function close() { box.hidden = true; image.src = ""; document.documentElement.style.overflow = ""; }
+    box.addEventListener("click", function (event) { if (event.target === box || event.target.classList.contains("spot-page-lightbox-close")) close(); });
+    document.addEventListener("keydown", function (event) { if (event.key === "Escape" && !box.hidden) close(); });
+    document.querySelectorAll(".spot-page-inline-zoom").forEach(function (button) {
+      button.addEventListener("click", function () {
+        var thumb = button.querySelector("img");
+        var figureCaption = button.parentElement.querySelector("figcaption");
+        image.src = button.getAttribute("data-zoom-src") || (thumb && thumb.getAttribute("src")) || "";
+        caption.textContent = figureCaption ? figureCaption.textContent.replace(/\s+/g, " ").replace(/(?:クリックで拡大|click to enlarge)\s*$/, "").trim() : "";
+        box.hidden = false;
+        document.documentElement.style.overflow = "hidden";
+      });
+    });
+  }
+
+  function ensureXWidgetsScript(page) {
+    if (!page.media || !page.media.videos.some(function (video) { return video.kind === "x"; }) || root.__MADO_X_WIDGETS_LOADED) return;
+    var script = document.createElement("script");
+    script.async = true;
+    script.src = "https://platform.twitter.com/widgets.js";
+    script.charset = "utf-8";
+    document.head.appendChild(script);
+    root.__MADO_X_WIDGETS_LOADED = true;
+  }
+
   function findHost(name) {
     var hosts = document.querySelectorAll("[" + HOST_ATTRIBUTE + '=\"' + name + "\"]");
     if (hosts.length !== 1) throw new Error(name + " host count is " + hosts.length);
     return hosts[0];
+  }
+
+  function findOptionalHost(name) {
+    var hosts = document.querySelectorAll("[" + HOST_ATTRIBUTE + "=\"" + name + "\"]");
+    if (hosts.length > 1) throw new Error(name + " host count is " + hosts.length);
+    return hosts.length ? hosts[0] : null;
   }
 
   function fail(hosts, error) {
@@ -316,7 +583,25 @@
     var hosts = [];
     try {
       if (!document.body || !document.body.classList.contains("spot-page")) throw new Error("spot-page body context is required");
+      var pageHost = findOptionalHost("page");
+      if (pageHost) {
+        hosts = [pageHost];
+        if (document.querySelectorAll("[" + HOST_ATTRIBUTE + "]").length !== 1) throw new Error("thin spot page must have exactly one shared host");
+        var pageLang = document.body.getAttribute("data-spot-page-shared-lang") || "";
+        var pageId = document.body.getAttribute("data-spot-page-shared-id") || "";
+        var pageRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
+        if (!SUPPORTED_LANGUAGES[pageLang] || !safeSpotId(pageId)) throw new Error("language or current spot context is malformed");
+        var pageData = root[DATA_KEY];
+        validateData(pageData, pageId, pageLang);
+        validatePageData(pageData.pages[pageId][pageLang], pageId, pageLang);
+        pageHost.outerHTML = pageHTML(pageData, pageRoot, pageLang, pageId);
+        bindPageLightbox();
+        ensureXWidgetsScript(pageData.pages[pageId][pageLang]);
+        return;
+      }
       hosts = [findHost("topbar"), findHost("rail"), findHost("content-rail")];
+      var showcaseHost = findOptionalHost("showcase");
+      if (showcaseHost) hosts.push(showcaseHost);
       var lang = document.body.getAttribute("data-spot-page-shared-lang") || "";
       var currentId = document.body.getAttribute("data-spot-page-shared-id") || "";
       var rootPath = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
@@ -326,6 +611,7 @@
       hosts[0].outerHTML = siteHeaderHTML(rootPath, lang, currentId);
       hosts[1].outerHTML = railHTML(data, rootPath, lang, currentId);
       hosts[2].outerHTML = contentRailHTML(rootPath, lang);
+      if (showcaseHost) showcaseHost.outerHTML = showcaseHTML(data, rootPath, lang);
     } catch (error) {
       fail(hosts, error);
     }

@@ -1567,6 +1567,27 @@ const SPOTS = [
         note: { ja: "小麦色の田んぼと雪のない富士山の対比もまた美しい", en: "The contrast between wheat-colored fields and a snowless Fuji is beautiful too." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る富士山", en: "Mt. Fuji in motion" },
+      description: { ja: "三島〜新富士の富士山が車窓いっぱいに現れる瞬間を、投稿動画でも見られます。", en: "See the moment Mt. Fuji fills the window between Mishima and Shin-Fuji." },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/cram_box/status/2013542376887984274",
+          handle: "@cram_box",
+          accessibleTitle: { ja: "富士山のX動画", en: "X video of Mt. Fuji" },
+          fallbackText: { ja: "三島〜新富士の富士山を写した車窓動画", en: "Window video of Mt. Fuji between Mishima and Shin-Fuji" },
+        },
+        {
+          kind: "x",
+          url: "https://x.com/fu_min_p/status/2004337753350340699/video/1",
+          handle: "@fu_min_p",
+          accessibleTitle: { ja: "富士山のX動画 2", en: "Second X video of Mt. Fuji" },
+          fallbackText: { ja: "新幹線から見える富士山の車窓動画", en: "Mt. Fuji from the Shinkansen window" },
+        },
+      ],
+      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+    },
     relatedSpotIds: ["sagami-fuji", "left-fuji", "ota-fuji", "hamanako-fuji"],
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
@@ -2046,6 +2067,20 @@ const SPOTS = [
         note: { ja: "空気が澄んだ日にだけ、E席側の湖の奥に富士山が現れます", en: "Only when the air is clear does Mt. Fuji appear beyond the lake on the Seat E side." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る浜名湖", en: "Lake Hamana in motion" },
+      description: { ja: "湖の上を走るような浜名湖の車窓を、投稿動画でも確かめられます。", en: "See the Lake Hamana crossing as the train seems to run across the water." },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/KS_1013/status/2075104617000743133",
+          handle: "@KS_1013",
+          accessibleTitle: { ja: "浜名湖のX動画", en: "X video of Lake Hamana" },
+          fallbackText: { ja: "浜名湖を渡る新幹線の車窓動画", en: "The Shinkansen crossing Lake Hamana" },
+        },
+      ],
+      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+    },
     relatedSpotIds: ["toyohashi-tateiwa", "kakegawa"],
     references: [REFERENCES.hamanakoTourism, REFERENCES.hamanakoEnvironment, REFERENCES.hamanakoBentenjima, REFERENCES.hamanakoNori, REFERENCES.hamanakoBoatRace, REFERENCES.sunMarineBridge, REFERENCES.hamanakoToriiBlog],
     map: { lat: 34.741111, lng: 137.569722, ja: "浜名湖", en: "Lake Hamana" },
@@ -2873,6 +2908,41 @@ const SPOTS = [
         note: { ja: "田園と街並みの向こうに、単独で盛り上がる姿", en: "The peak rises alone beyond the fields and the town." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る伊吹山", en: "Mt. Ibuki in motion" },
+      description: {
+        ja: "新幹線の車窓を流れる伊吹山の大きさと、見えている時間の感覚を動画で確かめられます。",
+        en: "See how Mt. Ibuki fills the Shinkansen window and how long the view lasts.",
+      },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/730AEVA/status/1838917502124056760",
+          mediaUrl: "https://t.co/ORoIxM0lPy",
+          handle: "@730AEVA",
+          accountName: { ja: "てらちゃん", en: "Terachan" },
+          accessibleTitle: { ja: "伊吹山のX動画", en: "X video of Mt. Ibuki" },
+          fallbackText: { ja: "車窓シリーズ（新幹線編） 伊吹山を", en: "Shinkansen window series: Mt. Ibuki" },
+          date: "September 25, 2024",
+        },
+        {
+          kind: "youtube",
+          id: "yQKej6npo8g",
+          title: { ja: "伊吹山の車窓動画 2", en: "Mt. Ibuki window video 2" },
+          url: "https://www.youtube.com/watch?v=yQKej6npo8g",
+        },
+        {
+          kind: "youtube",
+          id: "puK5Tr_2Sxo",
+          title: { ja: "伊吹山の車窓動画 3", en: "Mt. Ibuki window video 3" },
+          url: "https://www.youtube.com/watch?v=puK5Tr_2Sxo",
+        },
+      ],
+      platformNote: {
+        ja: "動画はX・YouTubeの公式埋め込みを利用しています。",
+        en: "These videos use official X and YouTube embeds.",
+      },
+    },
     references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara, REFERENCES.ibukiKojiki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
     viewpoint: { lat: 35.361280, lng: 136.411719 },
@@ -2945,6 +3015,20 @@ const SPOTS = [
       en: "michikusa",
       date: "2026-08-04",
       note: { ja: "のぞみ1号（東京06:00発）、車内時計07:52ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 07:52." },
+    },
+    media: {
+      heading: { ja: "動画で見るフジテック Big Wing", en: "FUJITEC Big Wing in motion" },
+      description: { ja: "米原近くの車窓から見える研究塔を、投稿動画でも確認できます。", en: "See the research tower near Maibara from a window-view video." },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/Train205turumai/status/2070756242637967619",
+          handle: "@Train205turumai",
+          accessibleTitle: { ja: "フジテック Big WingのX動画", en: "X video of FUJITEC Big Wing" },
+          fallbackText: { ja: "フジテック Big Wingの車窓動画", en: "FUJITEC Big Wing from the Shinkansen window" },
+        },
+      ],
+      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
     },
     references: [REFERENCES.fujitecBigWing, REFERENCES.fujitecAnnouncement, REFERENCES.fujitecHistory],
     bodyLinks: [

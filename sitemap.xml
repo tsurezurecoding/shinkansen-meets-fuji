@@ -86,7 +86,13 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/sparkling-dreams.html</loc>
-    <lastmod>2026-08-08</lastmod>
+    <lastmod>2026-08-11</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/sparkling-dreams.html</loc>
+    <lastmod>2026-08-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

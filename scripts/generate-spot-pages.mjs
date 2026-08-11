@@ -781,6 +781,73 @@ function heroFigcaptionHTML(spot, lang) {
   return `<figcaption>${bits.join("")}</figcaption>`;
 }
 
+function spotHeroGalleryHTML(spot, lang, prefix) {
+  const ui = UI[lang];
+  const data = spot[lang] || spot.ja || {};
+  const items = photoItems(spot, lang);
+  if (!items.length) return "";
+  const first = items[0];
+  const captionHTML = (item) => {
+    const note = localized(item.note, lang) || ui.photoAlt(data.name);
+    const credit = creditText(item.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
+    const href = item.sourceUrl || item.url || "";
+    const creditHTML = href
+      ? `<a href="${escapeHTML(href)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
+      : escapeHTML(credit);
+    return `<figcaption aria-live="polite">
+          <strong data-gallery-note-output>${escapeHTML(note)}</strong>
+          <span data-gallery-credit-output>${creditHTML}</span>
+          <span data-gallery-date-output>${escapeHTML(item.date || "")}</span>
+        </figcaption>`;
+  };
+  const thumbs = items.map((item, index) => {
+    const alt = localized(item.alt, lang) || ui.photoAlt(data.name);
+    const note = localized(item.note, lang) || alt;
+    const credit = creditText(item.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
+    const href = item.sourceUrl || item.url || "";
+    return `<button type="button" class="spot-photo-thumb${index === 0 ? " active" : ""}" data-gallery-thumb data-gallery-src="${prefix}${escapeHTML(item.src)}" data-gallery-alt="${escapeHTML(alt)}" data-gallery-note="${escapeHTML(note)}" data-gallery-credit="${escapeHTML(credit)}" data-gallery-credit-href="${escapeHTML(href)}" data-gallery-date="${escapeHTML(item.date || "")}" aria-label="${escapeHTML(`${note}を表示`)}" aria-pressed="${index === 0 ? "true" : "false"}">
+          <img src="${prefix}${escapeHTML(thumbnailSrc(item.src))}" alt="" loading="${index === 0 ? "eager" : "lazy"}" decoding="async">
+        </button>`;
+  }).join("\n        ");
+  return `<div class="spot-page-media-gallery" data-spot-media-gallery>
+        <div class="spot-photo-thumbs" role="group" aria-label="${escapeHTML(`${data.name}の写真を選ぶ`)}">
+        ${thumbs}
+        </div>
+        <figure class="spot-page-figure spot-page-media-gallery-active">
+          <img data-gallery-image src="${prefix}${escapeHTML(first.src)}" alt="${escapeHTML(localized(first.alt, lang) || ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
+          ${captionHTML(first)}
+        </figure>
+      </div>`;
+}
+
+function ibukiVideoHTML() {
+  const postUrl = "https://x.com/730AEVA/status/1838917502124056760";
+  const youtubeVideos = [
+    { id: "yQKej6npo8g", url: "https://www.youtube.com/watch?v=yQKej6npo8g" },
+    { id: "puK5Tr_2Sxo", url: "https://www.youtube.com/watch?v=puK5Tr_2Sxo" },
+  ];
+  const youtubeCards = youtubeVideos.map((video, index) => `<article class="spot-page-video-card">
+            <div class="spot-page-video-frame">
+            <iframe src="https://www.youtube-nocookie.com/embed/${video.id}" title="伊吹山の車窓動画 ${index + 2}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="spot-page-video-source">出典：<a href="${video.url}" target="_blank" rel="noopener noreferrer">${video.url}</a></p>
+          </article>`).join("\n          ");
+  return `<section class="spot-page-section spot-page-video-section" aria-labelledby="ibukiVideoTitle">
+        <h2 id="ibukiVideoTitle">動画で見る伊吹山</h2>
+        <p>新幹線の車窓を流れる伊吹山の大きさと、見えている時間の感覚を動画で確かめられます。</p>
+        <div class="spot-page-video-grid" aria-label="伊吹山の投稿動画">
+          <article class="spot-page-video-card">
+            <div class="spot-page-video-frame">
+            <blockquote class="twitter-tweet" data-dnt="true" data-media-max-width="560"><p lang="ja" dir="ltr">車窓シリーズ（新幹線編）<br>伊吹山を<br><br>2024/09/25 <a href="https://t.co/ORoIxM0lPy">pic.twitter.com/ORoIxM0lPy</a></p>&mdash; てらちゃん (@730AEVA) <a href="${postUrl}?ref_src=twsrc%5Etfw">September 25, 2024</a></blockquote>
+            </div>
+            <p class="spot-page-video-source">出典：<a href="${postUrl}" target="_blank" rel="noopener noreferrer">てらちゃん（@730AEVA）／元投稿を見る</a></p>
+          </article>
+          ${youtubeCards}
+        </div>
+        <p class="spot-page-video-platform-note">動画はX・YouTubeの公式埋め込みを利用しています。</p>
+      </section>`;
+}
+
 /** 左ペインのタイムライン。SPOTS と ROUTE をここで直接使う */
 function guideMobileSpotStripHTML(lang, prefix, spotHrefPrefix) {
   const ui = UI[lang];
@@ -1469,7 +1536,76 @@ ${paras.map((para) => `        <p>${escapeHTML(para)}</p>`).join("\n")}
 `;
 }
 
+function thinSpotPageHTML(spot, lang) {
+  const ui = UI[lang];
+  const data = spot[lang] || spot.ja || {};
+  const otherLang = lang === "ja" ? "en" : "ja";
+  const title = localized(spot.pageTitle, lang) || (lang === "ja"
+    ? `${data.name}はいつ見える？座席側は？ ${data.area}${ui.titleSuffix}`
+    : `When can you see ${data.name} from the Shinkansen? ${data.area} | Shinkansen Window`);
+  const desc = localized(spot.metaDescription, lang) || description(spot, lang);
+  const url = pageUrl(lang, spot.id);
+  const prefix = lang === "ja" ? "../" : "../../";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": `${url}#webpage`,
+        "url": url,
+        "name": title,
+        "description": desc,
+        "inLanguage": lang,
+        "isPartOf": { "@type": "WebSite", "name": ui.brand, "url": pageUrl(lang) },
+      },
+      {
+        "@type": "TouristAttraction",
+        "@id": `${url}#spot`,
+        "name": data.name,
+        "alternateName": localized(spot[otherLang], "name") || spot[otherLang]?.name || spot.ja.name,
+        "description": desc,
+        "image": spotOgImageUrl(spot),
+        "touristType": "Railway window view",
+      },
+    ],
+  };
+  return `<!doctype html>
+<html lang="${lang}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>${text(title)}</title>
+  <meta name="description" content="${text(desc)}">
+  <link rel="canonical" href="${url}">
+  <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
+  <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
+  <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
+  <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
+  <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
+  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260811-ibuki-pilot">
+  <meta property="og:title" content="${text(title)}">
+  <meta property="og:description" content="${text(desc)}">
+  <meta property="og:image" content="${spotOgImageUrl(spot)}">
+  <meta property="og:url" content="${url}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="${spotOgImageUrl(spot)}">
+  <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
+  ${analyticsSnippet()}
+</head>
+<body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
+  <div data-spot-page-shared-module="page"></div>
+  <script src="${prefix}spot-page-shared-data.js"></script>
+  <script src="${prefix}spot-page-shared.js"></script>
+  <script src="${prefix}spot-media-gallery.js?v=20260811-ibuki-pilot"></script>
+  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
+</body>
+</html>
+`;
+}
+
 function spotPageHTML(spot, lang) {
+  return thinSpotPageHTML(spot, lang);
   const ui = UI[lang];
   const sharedSpotPage = SHARED_SPOT_LANGUAGES.has(lang);
   const data = spot[lang] || spot.ja || {};
@@ -1485,7 +1621,25 @@ function spotPageHTML(spot, lang) {
   // 本文へ差し込む写真はギャラリーから外す。件数はギャラリー基準で表示する
   const galleryPhotos = galleryItems(spot, lang);
   const photoCount = photos.length;
+  const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroFigcaption = heroFigcaptionHTML(spot, lang);
+  const ibukiMediaPilot = lang === "ja" && spot.id === "ibuki";
+  const ibukiShowcasePilot = lang === "ja" && spot.id === "ibuki";
+  const heroMedia = ibukiMediaPilot
+    ? spotHeroGalleryHTML(spot, lang, prefix)
+    : `<figure class="spot-page-figure">
+        <img src="${prefix}${escapeHTML(thumbnailSrc(heroSrc))}" alt="${escapeHTML(ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
+        ${heroFigcaption}
+      </figure>`;
+  const gallerySection = ibukiMediaPilot
+    ? ibukiVideoHTML()
+    : photoGalleryHTML(spot, lang, prefix, galleryPhotos);
+  const mediaPilotStyles = ibukiMediaPilot
+    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260811-ibuki-pilot">`
+    : "";
+  const mediaPilotScripts = ibukiMediaPilot
+    ? `  <script src="${prefix}spot-media-gallery.js?v=20260811-ibuki-pilot"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
+    : "";
   const inlineFigures = inlineFigureHTML(spot, lang, prefix);
   const railHTML = sharedSpotPage
     ? `<div data-spot-page-shared-module="rail"></div>`
@@ -1527,7 +1681,6 @@ function spotPageHTML(spot, lang) {
       : `<p>Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
     : "";
   const fujiGuideBlock = fujiGuideLink ? `        ${fujiGuideLink}\n` : "";
-  const heroSrc = photos[0]?.src || spot.image || "images/og-shinkansen-window.png";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
   const refs = referencesHTML(spot, lang);
   const bodyLinks = bodyLinksHTML(spot, lang);
@@ -1557,9 +1710,13 @@ function spotPageHTML(spot, lang) {
   const sharedGuideNoticeBlock = sharedGuideNotice ? `      ${sharedGuideNotice}\n` : "";
   // Keep the legacy whitespace-only separator when no explainer exists so
   // regenerating one spot does not create unrelated diffs in all static pages.
-  const explainerBlock = explainer ? `      ${explainer}\n` : "      \n";
+  const explainerBlock = explainer ? `      ${explainer}\n` : ibukiMediaPilot ? "" : "      \n";
   const articleImageBlock = articleImage ? `      ${articleImage}\n` : "";
   const sharedGuideBlock = sharedGuide ? `      ${sharedGuide}\n` : "";
+  const relatedBlock = ibukiShowcasePilot ? "" : routeRelatedHTML(spot, lang);
+  const showcaseHostBlock = ibukiShowcasePilot
+    ? '    <div data-spot-page-shared-module="showcase"></div>\n'
+    : "";
   const liveMapCta = lang === "ja" ? "乗車中はライブガイドで見る" : "Use Live Guide while riding";
   const jsonLd = {
     "@context": "https://schema.org",
@@ -1598,7 +1755,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">${mediaPilotStyles}
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1619,10 +1776,7 @@ ${headerHTML}
     <div class="spot-page-shell">
       ${railHTML}
       <article class="spot-page-article">
-      <figure class="spot-page-figure">
-        <img src="${prefix}${escapeHTML(thumbnailSrc(heroSrc))}" alt="${escapeHTML(ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
-        ${heroFigcaption}
-      </figure>
+      ${heroMedia}
       <dl class="spot-page-facts">
         <div><dt>${escapeHTML(ui.facts[0])}</dt><dd>${escapeHTML(data.area || "")}</dd></div>
         <div><dt>${escapeHTML(ui.facts[1])}</dt><dd>${escapeHTML(sideLabel(spot, lang))}</dd></div>
@@ -1639,15 +1793,14 @@ ${fujiGuideBlock.trimEnd()}
       </section>
 ${inlineFigures.first ? `      ${inlineFigures.first}\n` : ""}${explainerBlock}${inlineFigures.second ? `      ${inlineFigures.second}\n` : ""}${articleImageBlock}${sharedGuideBlock}      ${miniMap}
       ${spotGuideDepthHTML(spot, lang)}
-      ${photoGalleryHTML(spot, lang, prefix, galleryPhotos)}
+      ${gallerySection}
       ${refs}
-      ${routeRelatedHTML(spot, lang)}
-${mobileAffiliateBlock}      </article>
+${relatedBlock ? `      ${relatedBlock}\n` : ""}${mobileAffiliateBlock}      </article>
     </div>
-${contentRailBlock}
+${showcaseHostBlock}${contentRailBlock}
   </main>
   ${lightbox}
-${sharedScripts}  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
+${sharedScripts}${mediaPilotScripts}  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
   ${lightboxJs}
   ${affiliateTrackingScript(lang)}
 </body>
@@ -1784,6 +1937,18 @@ function replaceSpotCountClaims(html) {
 }
 
 function englishAppIndexHTML() {
+  const englishSeasonalEntry = `<!-- ===== Seasonal entry point ===== -->
+  <aside class="seasonal-entry" aria-labelledby="seasonalEntryTitle">
+    <a class="seasonal-entry-link" href="en/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_seasonal_banner">
+      <span class="seasonal-entry-visual" aria-hidden="true"><img src="../images/sparkling-dreams-window.svg" alt=""></span>
+      <span class="seasonal-entry-copy">
+        <span class="seasonal-entry-kicker">TOKYO DISNEYSEA 25TH ANNIVERSARY</span>
+        <strong id="seasonalEntryTitle"><span class="copy-chunk">Find when the Disney Shinkansen</span><span class="copy-chunk">may pass your train</span></strong>
+        <span>Check operating days and a window-side estimate for the Sparkling Dreams Shinkansen.</span>
+      </span>
+      <span class="seasonal-entry-arrow" aria-hidden="true">↗</span>
+    </a>
+  </aside>`;
   const railCopy = [
     ["車窓メダル帖", "Window Medal Book"],
     ["新幹線の窓とは？", "About Shinkansen Window"],
@@ -1826,7 +1991,7 @@ function englishAppIndexHTML() {
     .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
-  html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, "\n\n  ");
+  html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, `\n\n  ${englishSeasonalEntry}\n\n  `);
   railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
   railRoutes.forEach((route) => {
     html = html.replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
@@ -1970,7 +2135,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-08" },
+    { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
+    { loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
     { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
@@ -2002,19 +2168,36 @@ ${urls}
 `;
 }
 
-function generateSpotPages({ requireExisting = false } = {}) {
+function comparableSpotHead(html) {
+  const head = html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "";
+  return head.replace(/\s*<link rel="stylesheet" href="[^"]*spot-media-gallery\.css[^"]*">/g, "").replace(/\s+/g, " ").trim();
+}
+
+function generateSpotPage(spotOrId, lang, { requireExisting = false, preserveHead = false } = {}) {
+  const spot = typeof spotOrId === "string" ? SPOTS.find((item) => item.id === spotOrId) : spotOrId;
+  if (!spot || !SHARED_SPOT_LANGUAGES.has(lang)) throw new Error("Unknown shared spot page: " + spotOrId + "/" + lang);
+  const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
+  fs.mkdirSync(dir, { recursive: true });
+  const outputPath = path.join(dir, spot.id + ".html");
+  if (requireExisting && !fs.existsSync(outputPath)) throw new Error("Spot page output is missing: " + outputPath);
+  const generatedHTML = spotPageHTML(spot, lang);
+  if (preserveHead && fs.existsSync(outputPath)) {
+    const currentHTML = fs.readFileSync(outputPath, "utf8");
+    if (comparableSpotHead(currentHTML) !== comparableSpotHead(generatedHTML)) throw new Error("Spot page head changed unexpectedly: " + outputPath);
+  }
+  fs.writeFileSync(outputPath, generatedHTML, "utf8");
+  return outputPath;
+}
+
+function generateSpotPages({ requireExisting = false, preserveHead = false } = {}) {
   for (const lang of ["ja", "en"]) {
-    const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
-    fs.mkdirSync(dir, { recursive: true });
     for (const spot of SPOTS) {
-      const outputPath = path.join(dir, `${spot.id}.html`);
-      if (requireExisting && !fs.existsSync(outputPath)) throw new Error(`Spot page output is missing: ${outputPath}`);
-      fs.writeFileSync(outputPath, spotPageHTML(spot, lang), "utf8");
+      generateSpotPage(spot, lang, { requireExisting, preserveHead });
     }
   }
 }
 
-export { SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPages, spotPageHTML };
+export { SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPage, generateSpotPages, spotPageHTML };
 
 if (isMain) {
 generateSpotPages();
@@ -2107,8 +2290,11 @@ await import("./generate-content-manifest.mjs");
 const manifestPath = path.join(appDir, "content-manifest.json");
 const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
 const seasonalEntries = await Promise.all([
+  "en/index.html",
+  "en/sparkling-dreams.html",
   "sparkling-dreams.html",
   "sparkling-dreams.js",
+  "style.css",
   "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
   "images/sparkling-dreams-window.svg",
   "images/og-sparkling-dreams.png",

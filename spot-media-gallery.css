@@ -1,0 +1,153 @@
+.spot-page-media-gallery {
+  margin-top: 8px;
+}
+
+.spot-page-media-gallery-heading {
+  margin: 0 0 12px;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 24px;
+  line-height: 1.45;
+}
+
+.spot-page-media-gallery .spot-photo-thumbs {
+  margin-bottom: 12px;
+  padding: 3px;
+}
+
+.spot-page-media-gallery .spot-photo-thumb {
+  flex-basis: 104px;
+  border-color: var(--line);
+  background: #fff;
+}
+
+.spot-page-media-gallery .spot-photo-thumb:hover {
+  border-color: var(--accent);
+}
+
+.spot-page-media-gallery-active {
+  margin-top: 0;
+}
+
+.spot-page-media-gallery-active img {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: center;
+}
+
+.spot-page-video-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  width: min(100%, 760px);
+  margin: 18px 0 0;
+  max-width: 760px;
+}
+
+.spot-page-video-card {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  min-width: 0;
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+}
+
+.spot-page-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #111;
+}
+
+.spot-page-video-frame iframe,
+.spot-page-video-frame twitter-widget,
+.spot-page-video-frame .twitter-tweet {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 100% !important;
+  min-width: 0 !important;
+  margin: 0 !important;
+}
+
+.spot-page-video-frame .twitter-tweet {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: #111;
+  color: transparent;
+}
+
+.spot-page-video-frame iframe {
+  border: 0;
+  background: #111;
+}
+
+.spot-page-video-platform-note {
+  max-width: 760px;
+  margin: 10px auto 0 !important;
+  color: var(--ink-soft);
+  font-size: 11px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Legacy container selector remains harmless while the Ibuki pilot uses cards. */
+.spot-page-video-embed {
+  max-width: 760px;
+  margin: 18px auto 0;
+  overflow: hidden;
+}
+
+.spot-page-video-embed .twitter-tweet {
+  width: 100% !important;
+  max-width: 560px !important;
+  min-width: 0 !important;
+  margin: 0 auto !important;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.spot-page-video-embed iframe {
+  display: block;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.spot-page-video-source {
+  margin: 0;
+  padding: 9px 12px 11px;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.spot-page-video-source a {
+  color: inherit;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 600px) {
+  .spot-page-media-gallery {
+    margin-top: 6px;
+  }
+
+  .spot-page-media-gallery .spot-photo-thumb {
+    flex-basis: 88px;
+  }
+
+  .spot-page-video-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .spot-page-video-platform-note {
+    text-align: left;
+  }
+}
