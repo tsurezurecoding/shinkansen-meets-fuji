@@ -29,6 +29,8 @@
       railPreviewTiming: function (minutes) { return "東京から約" + minutes + "分"; },
       railCta: "乗る列車でガイドを作る",
       railFoot: "車窓図鑑で写真から探す →",
+      railAppTitle: "Androidアプリ版（早期アクセス）",
+      railAppBody: "テスト参加者を募集中",
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -70,6 +72,8 @@
       railPreviewTiming: function (minutes) { return "About " + minutes + " min from Tokyo"; },
       railCta: "Build my guide by train",
       railFoot: "Browse by photo →",
+      railAppTitle: "Android app (early access)",
+      railAppBody: "Looking for testers",
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -306,7 +310,13 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railAppHTML(rootPath, lang) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+  }
+
+  function railAppHTML(rootPath, lang) {
+    var ui = UI[lang];
+    var base = basePath(rootPath, lang);
+    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {
@@ -602,6 +612,8 @@
       hosts = [findHost("topbar"), findHost("rail"), findHost("content-rail")];
       var showcaseHost = findOptionalHost("showcase");
       if (showcaseHost) hosts.push(showcaseHost);
+      var isNativeApp = !!(root.Capacitor && ((typeof root.Capacitor.isNativePlatform === "function" && root.Capacitor.isNativePlatform()) || (typeof root.Capacitor.getPlatform === "function" && root.Capacitor.getPlatform() !== "web")));
+      if (isNativeApp) document.documentElement.className += " is-native-app";
       var lang = document.body.getAttribute("data-spot-page-shared-lang") || "";
       var currentId = document.body.getAttribute("data-spot-page-shared-id") || "";
       var rootPath = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));

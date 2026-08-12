@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, follow">
+  <title>Android early access — help us test | Shinkansen Window</title>
+  <meta name="description" content="We are looking for testers for the pre-release Android app of Shinkansen Window. Three steps: join the Google Group, opt in, install.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/early-access.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/early-access.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/early-access.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/early-access.html">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="../style.css?v=20260812-early-access">
+</head>
+<body class="spot-page contact-page">
+  <header class="topbar">
+    <a class="brand" href="./"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">Never miss a moment of the journey.</small></span></a>
+    <nav class="top-nav" aria-label="Primary"><a href="./#journey">Train Search</a><a href="live/">Live Guide</a><a href="zukan.html">Field Guide</a><a class="top-nav-overflow" href="guide.html">FAQ</a><a href="journal.html">Journal</a><details class="top-nav-more"><summary>More</summary><div class="top-nav-menu"><a class="top-nav-menu-compact" href="guide.html">FAQ</a><a href="lp.html">About this app</a><a href="mieru.html">Visibility β</a><a href="sumie.html">Sumie Window</a><a href="somato.html">Window Journey</a><a href="references.html">Links</a><a href="contact.html">Contact</a><a href="privacy.html">Privacy Policy</a></div></details></nav>
+    <div class="lang-switch" role="group" aria-label="Language"><a href="../early-access.html?lang=ja">日本語</a><a class="active" href="early-access.html">EN</a></div>
+  </header>
+  <main>
+    <article class="spot-page-article contact-page-article">
+      <p class="eyebrow">EARLY ACCESS</p>
+      <h1><span class="copy-chunk">Help us test the</span> <span class="copy-chunk">Android app</span></h1>
+      <p class="spot-lead">We are preparing an Android version of Shinkansen Window. Before Google Play lets us release it publicly, at least 12 people need to stay opted in to the test for 14 days, and we are partway there. It helps most if you actually ride the Tokaido Shinkansen, or simply enjoy the view from the window.</p>
+
+      <div class="ea-app-id">
+        <img class="ea-app-icon" src="../images/android/app-icon-192.webp" alt="Shinkansen Window Android app icon" width="72" height="72" decoding="async">
+        <div>
+          <strong>Shinkansen Window</strong>
+          <small>Android app / Google Play · test build · free</small>
+        </div>
+      </div>
+
+      <p class="ea-cta"><a class="btn btn-primary" href="https://groups.google.com/g/shinkansen-window-testers" target="_blank" rel="noopener noreferrer" data-ea-step="group">Join the test (3 steps, about 5 minutes)</a></p>
+
+      <section class="ea-section" aria-labelledby="eaShotsTitle">
+        <p class="eyebrow">SCREENS</p>
+        <h2 id="eaShotsTitle">Inside the app</h2>
+        <div class="ea-shots">
+          <figure>
+            <img src="../images/android/shot-home.webp" alt="Train search screen with tabs along the bottom of the app" width="480" height="853" loading="lazy" decoding="async">
+            <figcaption>Tabs along the bottom move between search, live guide, medals and the field guide.</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/android/shot-live.webp" alt="Live guide screen showing window spots along the route on a map" width="480" height="853" loading="lazy" decoding="async">
+            <figcaption>While you ride, it predicts the next view from your position.</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/android/shot-medals.webp" alt="Journal screen showing collected window stamps" width="480" height="853" loading="lazy" decoding="async">
+            <figcaption>Views you catch are kept as stamps and medals.</figcaption>
+          </figure>
+        </div>
+        <p class="contact-note">Screens are from the test build and are shown in Japanese; the app also has an English mode. The final release may look different.</p>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaStepsTitle">
+        <p class="eyebrow">HOW TO JOIN</p>
+        <h2 id="eaStepsTitle">How to join</h2>
+        <div class="contact-topics ea-steps">
+          <section>
+            <h2>Join the Google Group</h2>
+            <p>The tester list is managed through this group. If you are not a member, the opt-in link in the next step will not open.</p>
+            <a class="ea-step-link" href="https://groups.google.com/g/shinkansen-window-testers" target="_blank" rel="noopener noreferrer" data-ea-step="group">groups.google.com/g/shinkansen-window-testers</a>
+          </section>
+          <section>
+            <h2>Opt in to the test</h2>
+            <p>Press "Become a tester". It can take a few minutes for your group membership to register. If you see an error, wait a moment and open the link again.</p>
+            <a class="ea-step-link" href="https://play.google.com/apps/testing/com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-ea-step="optin">play.google.com/apps/testing/…</a>
+          </section>
+          <section>
+            <h2>Install</h2>
+            <p>Install from Google Play. The listing may not appear immediately after you opt in, so give it a little time if it does not show up.</p>
+            <a class="ea-step-link" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-ea-step="install">play.google.com/store/apps/details…</a>
+          </section>
+        </div>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaWhyTitle">
+        <p class="eyebrow">WHY THE APP</p>
+        <h2 id="eaWhyTitle">How it differs from the web version</h2>
+        <ul class="ea-list">
+          <li><strong>One tap from your home screen.</strong> It does not get buried in browser tabs or history, so it is there right before you board.</li>
+          <li><strong>Everything stays in the app.</strong> Moving between train search, the field guide and the journal never throws you back into a browser.</li>
+          <li><strong>It keeps working where the signal drops.</strong> The content it needs is stored on the device, so tunnels and mountain sections are less likely to stall it.</li>
+          <li><strong>The GPS live guide works the same.</strong> It counts down to the next view based on where you are.</li>
+        </ul>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaAskTitle">
+        <p class="eyebrow">WHAT WE ASK</p>
+        <h2 id="eaAskTitle">What we ask of you</h2>
+        <ul class="ea-list">
+          <li>Open the app now and then over 14 days. Every day is not necessary.</li>
+          <li>A short note about anything confusing or broken would help a lot.</li>
+          <li>Please stay opted in for the whole period (leaving partway resets the count).</li>
+          <li>There is no reward. If it is not for you, you can leave at any time.</li>
+        </ul>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaNoteTitle">
+        <p class="eyebrow">NOTES</p>
+        <h2 id="eaNoteTitle">Before you start</h2>
+        <ul class="ea-list">
+          <li>You need an Android phone and a Google account. There is no iPhone version at the moment.</li>
+          <li>This is a pre-release build, so bugs and layout glitches may remain.</li>
+          <li>Location data is used only to calculate guidance and is not stored on external servers. See the <a href="privacy.html">privacy policy</a> for details.</li>
+          <li>The <a href="./">web version</a> stays free to use whether or not you test the app.</li>
+        </ul>
+      </section>
+
+      <section class="contact-methods" aria-labelledby="eaContactTitle">
+        <p class="eyebrow">CONTACT</p><h2 id="eaContactTitle">If something goes wrong</h2>
+        <div class="contact-method-list">
+          <a href="mailto:support@michikusa-travel.com"><span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span><span><strong>Email</strong><small>support@michikusa-travel.com</small></span></a>
+          <a href="https://x.com/michikusatravel" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon" aria-hidden="true"><img src="../images/brand/x-logo.png" alt=""></span><span><strong>X</strong><small>@michikusatravel</small></span></a>
+          <a href="contact.html"><span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 8v5"></path><path d="M12 16h.01"></path></svg></span><span><strong>Contact</strong><small>For anything else</small></span></a>
+        </div>
+        <p class="contact-note">This is an independently run project, so replies may take time. If you get stuck, please tell us which step it was.</p>
+      </section>
+    </article>
+  </main>
+  <footer><p class="footer-links"><a href="guide.html">Mt. Fuji FAQ</a> · <a href="references.html">Window links</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p><p class="footer-credit">Michikusa — unhurried journeys and chance discoveries.</p></footer>
+  <script>
+    (function () {
+      var src = new URLSearchParams(window.location.search).get("src") || "direct";
+      document.querySelectorAll("[data-ea-step]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          if (window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+          window.gtag("event", "early_access_step", { step: el.getAttribute("data-ea-step"), entry_source: src });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

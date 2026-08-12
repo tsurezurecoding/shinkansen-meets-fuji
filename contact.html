@@ -12,7 +12,13 @@
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/contact.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/contact.html">
   <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="stylesheet" href="style.css?v=20260726-contact-methods">
+  <link rel="stylesheet" href="style.css?v=20260812-early-access">
+  <script>
+    (function () {
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+    })();
+  </script>
 </head>
 <body class="spot-page contact-page">
   <header class="topbar">
@@ -34,6 +40,16 @@
         <section><h2>訂正のお知らせ</h2><p>時刻や見える方向など、気になる点がありましたらお知らせください。</p></section>
         <section><h2>感想・要望を送る</h2><p>使ってみた感想や、旅の途中で気づいたことも歓迎しています。</p></section>
       </div>
+      <section class="ea-band hide-in-app" aria-labelledby="eaBandTitleContact">
+        <div class="ea-band-inner">
+          <div>
+            <p class="ea-band-eyebrow">EARLY ACCESS</p>
+            <h2 id="eaBandTitleContact">Android版のテストにご協力いただけませんか</h2>
+            <p>公開前のAndroidアプリを試してくださる方を募集しています。ホーム画面から一発で開けて、電波の弱い区間でも動きます。</p>
+          </div>
+          <a class="btn btn-primary" href="early-access.html?src=contact">早期アクセスの案内を見る</a>
+        </div>
+      </section>
       <section class="contact-methods" aria-labelledby="contactMethodsTitle">
         <p class="eyebrow">CONTACT</p><h2 id="contactMethodsTitle">連絡先</h2>
         <div class="contact-method-list">

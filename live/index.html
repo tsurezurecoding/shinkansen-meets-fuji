@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#0e1726">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
-  <link rel="stylesheet" href="../style.css?v=20260726-contact-methods">
+  <link rel="stylesheet" href="../style.css?v=20260812-early-access">
   <link rel="stylesheet" href="styles.css?v=20260724-alpha-copy">
   <script>
     (function () {
@@ -25,6 +25,8 @@
       var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
       var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
+
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
 
       try {
         if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
@@ -174,6 +176,14 @@
         </ul>
         <button id="btn-start" class="big-btn">📍 GPSで開始</button>
         <button id="btn-demo" class="big-btn ghost">▶ デモ走行（乗らずに試す）</button>
+        <a class="ea-live-cta hide-in-app" href="../early-access.html?src=live">
+          <img src="../images/android/app-icon-192.webp" alt="" width="44" height="44" decoding="async">
+          <span class="ea-live-cta-body">
+            <strong data-live-copy="eaLiveTitle">Androidアプリ版（早期アクセス）</strong>
+            <small data-live-copy="eaLiveBody">乗車中はアプリの方が安定して使えます。テスト参加者を募集中です。</small>
+          </span>
+          <span class="ea-live-cta-arrow" aria-hidden="true">›</span>
+        </a>
       </div>
     </section>
 
@@ -239,6 +249,6 @@
 
   <script src="../data.js?v=20260726-contact-methods"></script>
   <script src="../track.js?v=20260707-mini-map-render"></script>
-  <script src="live.js?v=20260726-contact-methods"></script>
+  <script src="live.js?v=20260812-early-access"></script>
 </body>
 </html>

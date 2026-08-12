@@ -57,6 +57,8 @@
       var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
 
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+
       try {
         if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
           localStorage.setItem(optoutKey, "1");
@@ -83,7 +85,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=20260729-gallery-filters">
+  <link rel="stylesheet" href="style.css?v=20260812-early-access">
 </head>
 <body>
 
@@ -243,6 +245,18 @@
     <div class="nextup-count" id="nextupCount">—</div>
   </div>
 
+  <!-- ===== 早期アクセス（Androidクローズドテスト）===== -->
+  <section class="ea-band hide-in-app" aria-labelledby="eaBandTitle">
+    <div class="ea-band-inner">
+      <div>
+        <p class="ea-band-eyebrow" data-i18n="eaBandEyebrow">EARLY ACCESS</p>
+        <h2 id="eaBandTitle" data-i18n="eaBandTitle">Android版のテストにご協力いただけませんか</h2>
+        <p data-i18n="eaBandBody">公開前のAndroidアプリを試してくださる方を募集しています。ホーム画面から一発で開けて、電波の弱い区間でも動きます。</p>
+      </div>
+      <a class="btn btn-primary" href="early-access.html?src=top" data-i18n="eaBandCta">早期アクセスの案内を見る</a>
+    </div>
+  </section>
+
   <!-- ===== Footer ===== -->
   <section class="content-rail-section" aria-labelledby="contentRailTitle">
     <div class="section-head">
@@ -316,6 +330,6 @@
   <script src="data.js?v=20260726-contact-methods"></script>
   <script src="track.js?v=20260707-map-mode-switch"></script>
   <script src="spot-map.js?v=20260718-android-leaflet"></script>
-  <script src="app.js?v=20260811-gallery-guide"></script>
+  <script src="app.js?v=20260812-early-access"></script>
 </body>
 </html>
