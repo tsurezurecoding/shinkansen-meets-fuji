@@ -555,6 +555,10 @@ const REFERENCES = {
     label: { ja: "川上産業: 会社案内（プチプチ®の発祥）", en: "Kawakami Sangyo: Company profile (originator of PUTIPUTI bubble wrap) (Japanese only)" },
     url: "https://www.putiputi.co.jp/company/",
   },
+  kawakamiSangyoNameChange: {
+    label: { ja: "川上産業: 社名変更のお知らせ", en: "Kawakami Sangyo: Company-name change notice (Japanese only)" },
+    url: "https://www.putiputi.co.jp/11130",
+  },
   hamanakoFujiVisibility: {
     label: { ja: "浜松市: 浜名湖越しに富士山が見える条件", en: "Hamamatsu City: Viewing Mt. Fuji across Lake Hamana (Japanese only)" },
     url: "https://www.city.hamamatsu.shizuoka.jp/",
@@ -831,14 +835,22 @@ const SPOTS = [
       en: "From Tokyo toward Shin-Osaka, watch the Seat E (mountain) side just before crossing the Tama River after Shinagawa. From Shin-Osaka toward Tokyo, look for the blue arch on the same Seat E side just as the train starts crossing the Tama River after leaving Shin-Yokohama.",
     },
     minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "bay",
-    image: "images/20260704_maruko_bridge_1_michikusa.jpg",
+    image: "images/20250531_maruko_bridge_letus10.jpg",
     photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      date: "2026-07-04",
-      note: { ja: "のぞみ27号・E席側、東京11:12発、11:25撮影", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:25." },
+      ja: "@letus10 / 新幹線の車窓から",
+      en: "@letus10 / Shinkansen window blog",
+      date: "2025-05-31",
+      url: "https://cotetu.seesaa.net/article/515810649.html",
+      note: { ja: "多摩川に架かるライトブルーのアーチ", en: "A light-blue arch spanning the Tama River." },
     },
     photos: [
+      {
+        src: "images/20260704_maruko_bridge_1_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える丸子橋", en: "Maruko Bridge from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-04",
+        note: { ja: "新幹線から見える丸子橋の全景", en: "A wide view of Maruko Bridge from the Shinkansen" },
+      },
       {
         src: "images/20260712_maruko_bridge_michikusa.jpg",
         alt: { ja: "新幹線のE席側から見える丸子橋", en: "Maruko Bridge from Seat E on the Shinkansen" },
@@ -854,14 +866,6 @@ const SPOTS = [
         note: { ja: "多摩川と河川敷越しに見える丸子橋", en: "Maruko Bridge beyond the Tama River and riverside fields" },
       },
       {
-        src: "images/20250531_maruko_bridge_letus10.jpg",
-        alt: { ja: "新幹線のE席側から見える丸子橋", en: "Maruko Bridge from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/515810649.html",
-        date: "2025-05-31",
-        note: { ja: "橋の形がわかりやすい車窓写真", en: "A window photo that clearly shows the bridge shape" },
-      },
-      {
         src: "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える丸子橋付近", en: "Around Maruko Bridge at night from the Shinkansen" },
@@ -870,6 +874,34 @@ const SPOTS = [
         note: { ja: "夜の多摩川に続く橋の灯り", en: "Bridge lights stretching across the night Tama River" },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る丸子橋", en: "Maruko Bridge in motion" },
+      description: { ja: "多摩川を渡る前後の丸子橋と周辺の車窓を、投稿動画でも確かめられます。", en: "See Maruko Bridge and the surrounding Tama River window view in motion." },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/michikusatravel/status/2087327217852502514",
+          handle: "@michikusatravel",
+          accessibleTitle: { ja: "丸子橋のX動画", en: "X video of Maruko Bridge" },
+          fallbackText: { ja: "多摩川と丸子橋を通過する車窓動画", en: "Window video passing the Tama River and Maruko Bridge" },
+        },
+        {
+          kind: "x",
+          url: "https://x.com/michikusatravel/status/2087321985542226423",
+          handle: "@michikusatravel",
+          accessibleTitle: { ja: "丸子橋のX動画 2", en: "Second X video of Maruko Bridge" },
+          fallbackText: { ja: "新幹線から見る丸子橋の車窓動画", en: "Maruko Bridge from the Shinkansen window" },
+        },
+        {
+          kind: "x",
+          url: "https://x.com/michikusatravel/status/2087324649671807155",
+          handle: "@michikusatravel",
+          accessibleTitle: { ja: "丸子橋のX動画 3", en: "Third X video of Maruko Bridge" },
+          fallbackText: { ja: "丸子橋と多摩川の車窓動画", en: "Maruko Bridge and the Tama River from the train" },
+        },
+      ],
+      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+    },
     references: [REFERENCES.marukoBridgeWiki, REFERENCES.kamenokoyamaKofun, REFERENCES.marukoBridgeBlog],
     map: { lat: 35.58537, lng: 139.66883, ja: "丸子橋 多摩川", en: "Maruko Bridge Tama River" },
     viewpoint: { lat: 35.581074, lng: 139.670656 },
@@ -921,27 +953,27 @@ const SPOTS = [
       en: "The strongest moment is the second you finish crossing the Tama River. Look toward Seat E in advance and enjoy the sudden switch from open sky above the river to a vertical wall of towers. At night, the layered apartment lights show the sheer density even more clearly.",
     },
     minutesFromTokyo: 14, side: "E", category: "notable", confidence: "verified", durationSec: 8, scene: "hills",
-    image: "images/20260704_musashi_kosugi_towers_1_michikusa.jpg",
+    image: "images/20260804_musashi_kosugi_towers_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
-      date: "2026-07-04",
-      note: { ja: "のぞみ27号・E席側、東京11:12発、11:26撮影", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:26." },
+      date: "2026-08-04",
+      note: { ja: "青空に映える武蔵小杉のタワマン群", en: "Musashi-Kosugi towers against a clear blue sky." },
     },
     photos: [
+      {
+        src: "images/20260704_musashi_kosugi_towers_1_michikusa.jpg",
+        alt: { ja: "新幹線のE席側から見える武蔵小杉のタワマン群", en: "Musashi-Kosugi towers from Seat E on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-04",
+        note: { ja: "曇天に浮かぶ武蔵小杉のタワマン群", en: "Musashi-Kosugi towers rising through an overcast sky" },
+      },
       {
         src: "images/20260712_musashi_kosugi_towers_michikusa.jpg",
         alt: { ja: "新幹線のE席側から見える武蔵小杉のタワマン群", en: "Musashi-Kosugi towers from Seat E on the Shinkansen" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-12",
         note: { ja: "多摩川を越えたあとに立ち上がる塔の街", en: "A vertical city rising after the Tama River" },
-      },
-      {
-        src: "images/20260704_musashi_kosugi_towers_2_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える武蔵小杉のタワマン群", en: "Musashi-Kosugi towers from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-04",
-        note: { ja: "丸子橋を過ぎてすぐに見えるタワマン群", en: "High-rise residential towers just after Maruko Bridge" },
       },
       {
         src: "images/20260629_musashi_kosugi_towers_night_michikusa.jpg",
@@ -982,20 +1014,20 @@ const SPOTS = [
       en: "What is the 'Who am I?' sign?",
     },
     pageStory: {
-      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、藤沢市葛原の農地に立つ複数枚の広告看板のうちのひとつです。同じ場所には長年、プチプチ®（気泡緩衝材）で知られる川上産業株式会社の広告が掲げられており、緑地帯の中でぷちっとした水色のイラストと商品名が目立つ、車窓の定番でした。2025年頃から現在のように「私は誰でしょう」というコピーとQRコードだけを掲げた匿名調の看板へ差し替えられ、SNSでも「あの謎看板は何」と話題になっています。",
-      en: "This billboard is one of several roadside signs standing on farmland at Kuzuhara in Fujisawa, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this?",
+      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、藤沢市葛原の農地に立つ複数枚の広告看板のうちのひとつです。同じ場所には長年、プチプチ®（気泡緩衝材）で知られる川上産業株式会社の広告が掲げられており、緑地帯の中でぷちっとした水色のイラストと商品名が目立つ、車窓の定番でした。2025年頃から現在のように「私は誰でしょう」というコピーとQRコードだけを掲げた匿名調の看板へ差し替えられ、SNSでも「あの謎看板は何」と話題になっています。社名変更に関する公式案内も出ているため、これにあわせて看板も新しいデザインへ変わるかもしれません。",
+      en: "This billboard is one of several roadside signs standing on farmland at Kuzuhara in Fujisawa, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? The company has also published an official notice about a company-name change, so the billboard may receive a new design to match.",
     },
     explainer: {
       heading: { ja: "背景と楽しみ方", en: "The backstory and how to enjoy it" },
       ja: [
         "「プチプチ®」は、川上産業が1968年に日本で製造・発売を始めた気泡緩衝材の登録商標で、透明で気泡が並んだあの梱包材の代名詞として親しまれています。海外では bubble wrap が一般名詞ですが、日本語では商品名の『プチプチ』の方が生活語として定着しました。同社は長年ユーモアのある広告展開でも知られ、新幹線沿線のこの看板も、そのブランドコミュニケーションの一環として置かれていました。",
         "現在の「私は誰でしょう」看板は、あえて広告主を明示せず、QRコードでのアクセスに委ねる仕掛けです。新幹線の速度では車内からQRコードを読み取るのはほぼ不可能なので、実質的には「あの看板は何？」と気になった人が家に帰って調べる、という体験そのものが広告になっています。",
-        "沿線の広告は数年単位で入れ替わることがあり、以前の姿を覚えている人にはノスタルジックな要素も。ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。",
+        "沿線の広告は数年単位で入れ替わることがあり、以前の姿を覚えている人にはノスタルジックな要素も。ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。社名変更に関する公式案内にあわせて、看板も新しいデザインへ変わる可能性があります。",
       ],
       en: [
         "'PUTIPUTI®' is Kawakami Sangyo's registered trademark for the clear, air-bubble packaging material it began producing in Japan in 1968; it is the everyday Japanese word for what English speakers call bubble wrap. In Japan, the brand name has become the general term for the product. Kawakami Sangyo has long run playful advertising, and its trackside sign here was part of that brand communication.",
         "The current 'Who am I?' sign deliberately hides the advertiser's name, leaving only a QR code. At Shinkansen speeds, actually scanning the code from the train is essentially impossible — so the sign works because the very act of wondering, 'what was that?' and looking it up later is the advertisement.",
-        "Trackside billboards in Japan often change every few years, so recent riders and long-time regulars may remember the spot differently. The photo gallery below includes both the earlier PUTIPUTI sign and the current 'Who am I?' one.",
+        "Trackside billboards in Japan often change every few years, so recent riders and long-time regulars may remember the spot differently. The photo gallery below includes both the earlier PUTIPUTI sign and the current 'Who am I?' one. Following the company's official name-change notice, the billboard may also be redesigned to match.",
       ],
     },
     guideHighlight: {
@@ -1035,6 +1067,7 @@ const SPOTS = [
     ],
     references: [
       REFERENCES.kawakamiSangyo,
+      REFERENCES.kawakamiSangyoNameChange,
       {
         label: { ja: "OCEANS: プチプチの話", en: "OCEANS: Story of PUTIPUTI (Japanese only)" },
         url: {
@@ -1240,9 +1273,16 @@ const SPOTS = [
       en: "The main attraction is the changing sequence rather than one landmark. After Gyoran Kannon, watch Seat A and react when the window brightens after a tunnel. Hatsushima is a low outline on the water; Atami Castle is the white building high on the slope.",
     },
     minutesFromTokyo: 36, side: "A", category: "classic", confidence: "verified", durationSec: 60, scene: "bay",
-    image: "images/20260515_atami_sagami_bay.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-15" },
+    image: "images/20260804_atami_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-04", note: { ja: "朝の光にひらく熱海の海", en: "Atami's sea opening in the morning light." } },
     photos: [
+      {
+        src: "images/20260515_atami_sagami_bay.jpg",
+        alt: { ja: "新幹線のA席側から見える熱海と相模湾", en: "Atami and Sagami Bay from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-15",
+        note: { ja: "熱海と相模湾を一望する代表的な車窓", en: "A broad window view of Atami and Sagami Bay" },
+      },
       {
         src: "images/20250523_hatsushima_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える初島", en: "Hatsushima Island from Seat A" },
@@ -1263,13 +1303,6 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-12",
         note: { ja: "夕暮れ、山の上で白く光る熱海城", en: "At dusk, Atami Castle glows white on the hill." },
-      },
-      {
-        src: "images/20260804_atami_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える朝の熱海", en: "Atami seen from Seat A on a morning Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-04",
-        note: { ja: "のぞみ1号（東京06:00発）、車内時計で06:35ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35." },
       },
       {
         src: "images/20260804_sagami_bay_michikusa.jpg",
@@ -2664,9 +2697,17 @@ const SPOTS = [
       en: "Once you pass Kiyosu Castle, focus a little farther out on the Seat E side across the fields. A long blue-glinting arch appears more than 10 meters above the ground. Sunny days make the panel reflections especially sharp. Watching it while knowing 'the number of trips left to see this may be limited' turns the moment into something special.",
     },
     minutesFromTokyo: 103, side: "E", category: "notable", confidence: "verified", durationSec: 5, scene: "solar",
-    image: "images/20251212_solar_ark_2_letus10.jpg",
-    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/519526266.html" },
+    image: "images/20260530_solar_ark.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "青空に映えるソーラーアーク", en: "Solar Ark against a clear blue sky." } },
     photos: [
+      {
+        src: "images/20251212_solar_ark_2_letus10.jpg",
+        alt: { ja: "新幹線の車窓から見えるソーラーアーク", en: "Solar Ark from the Shinkansen window" },
+        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
+        date: "2025-12-12",
+        note: { ja: "ソーラーアークの船形がわかる車窓写真", en: "A window photo showing the Solar Ark's ship-like form" },
+      },
       {
         src: "images/20251212_solar_ark_1_letus10.jpg",
         alt: { ja: "新幹線のE席側から見えるソーラーアーク", en: "Solar Ark from Seat E" },
@@ -2679,12 +2720,6 @@ const SPOTS = [
         note: { ja: "2017年7月に撮影。Panasonicロゴがあったころの写真", en: "Photographed in July 2017, when the Panasonic logo was still visible" },
         credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
-      },
-      {
-        src: "images/20260530_solar_ark.jpg",
-        alt: { ja: "新幹線のE席側から見えるソーラーアーク", en: "Solar Ark from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
       },
     ],
     references: [REFERENCES.solarArkDemolitionNews, REFERENCES.solarArkWikipedia, REFERENCES.anpachiTownSolarArk, REFERENCES.solarArkBlog],
@@ -2907,6 +2942,14 @@ const SPOTS = [
         date: "2026-05-30",
         note: { ja: "田園と街並みの向こうに、単独で盛り上がる姿", en: "The peak rises alone beyond the fields and the town." },
       },
+      {
+        src: "images/20250906_ibukiyama_ye__ba.jpg",
+        alt: { ja: "黄金色の田園の向こうに見える秋めく伊吹山", en: "Mt. Ibuki taking on early autumn colors beyond golden rice fields" },
+        credit: { ja: "@ye__ba", en: "@ye__ba" },
+        sourceUrl: "https://x.com/ye__ba/status/1964140328543293477",
+        date: "2025-09-06",
+        note: { ja: "秋めく伊吹山。黄金色の田園を越えて。", en: "Mt. Ibuki in early autumn, beyond golden rice fields." },
+      },
     ],
     media: {
       heading: { ja: "動画で見る伊吹山", en: "Mt. Ibuki in motion" },
@@ -3009,13 +3052,22 @@ const SPOTS = [
     confidence: "verified",
     durationSec: 6,
     scene: "hills",
-    image: "images/20260804_fujitec_big_wing_michikusa.jpg",
+    image: "images/20260712_fujitec_big_wing_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
-      date: "2026-08-04",
-      note: { ja: "のぞみ1号（東京06:00発）、車内時計07:52ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 07:52." },
+      date: "2026-07-12",
+      note: { ja: "夕暮れ時のフジテック Big Wing。", en: "FUJITEC Big Wing at dusk." },
     },
+    photos: [
+      {
+        src: "images/20260804_fujitec_big_wing_michikusa.jpg",
+        alt: { ja: "高くそびえるフジテックのエレベータ研究塔", en: "FUJITEC's elevator research tower rising high above Big Wing" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-04",
+        note: { ja: "高くそびえるエレベータ研究塔", en: "The elevator research tower rising high above Big Wing." },
+      },
+    ],
     media: {
       heading: { ja: "動画で見るフジテック Big Wing", en: "FUJITEC Big Wing in motion" },
       description: { ja: "米原近くの車窓から見える研究塔を、投稿動画でも確認できます。", en: "See the research tower near Maibara from a window-view video." },
@@ -3026,6 +3078,13 @@ const SPOTS = [
           handle: "@Train205turumai",
           accessibleTitle: { ja: "フジテック Big WingのX動画", en: "X video of FUJITEC Big Wing" },
           fallbackText: { ja: "フジテック Big Wingの車窓動画", en: "FUJITEC Big Wing from the Shinkansen window" },
+        },
+        {
+          kind: "x",
+          url: "https://x.com/michikusatravel/status/2087321229745414638",
+          handle: "@michikusatravel",
+          accessibleTitle: { ja: "フジテック Big WingのX動画 2", en: "Second X video of FUJITEC Big Wing" },
+          fallbackText: { ja: "フジテック前を通過する車窓動画", en: "Passing FUJITEC Big Wing from the Shinkansen window" },
         },
       ],
       platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },

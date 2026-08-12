@@ -182,7 +182,9 @@ function ownPhotoItems(spot) {
         note: spot.photoCredit?.note,
       }]
     : [];
-  return [...main, ...(spot.photos || []).filter((item) => item.role !== "reference")].filter((item) => item?.src);
+  const seen = new Set();
+  return [...main, ...(spot.photos || []).filter((item) => item.role !== "reference")]
+    .filter((item) => item?.src && !seen.has(item.src) && seen.add(item.src));
 }
 
 function photoItems(spot) {

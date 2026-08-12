@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "274aff17735e0c4c",
-  "generatedAt": "2026-08-11T07:31:44.385Z",
+  "contentVersion": "3876a036f8ee6720",
+  "generatedAt": "2026-08-12T00:55:30.242Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 394816,
-      "sha256": "8a55a1912681ad6ab385f00c75e1b5f76e596f74893079bcf9e212748c303946"
+      "bytes": 398868,
+      "sha256": "5ea328691cbeec8435b1d1d338eede772b336cfca38cd72876e8a596f22b5510"
     },
     {
       "path": "data/timetable.js",
@@ -20,8 +20,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 18724,
-      "sha256": "e18b6b9f7a90a5205656eb110407af71d7d60b4b22a7aca2707ea57f2bf1e1bc"
+      "bytes": 18723,
+      "sha256": "7a4aa3ea1e4249670f52c633bdd624939229963b4f22f1b954fcffadbd473121"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -30,10 +30,28 @@
       "sha256": "8b988846221577529c5f260784cfdbc51929a31ece1445aaebc56143fb1d4337"
     },
     {
+      "path": "images/20250906_ibukiyama_ye__ba.jpg",
+      "url": "https://www.michikusa-travel.com/images/20250906_ibukiyama_ye__ba.jpg",
+      "bytes": 525911,
+      "sha256": "3c6f0bc2d4273e8c23db723e2abc073e8f706345c3ec73c64759be83ecfb7e90"
+    },
+    {
+      "path": "images/20260712_fujitec_big_wing_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20260712_fujitec_big_wing_michikusa.jpg",
+      "bytes": 2490598,
+      "sha256": "ab2c20e8acdc6d95121df7e632f0ca93aa27150f88e248ff69cb2e4e4c1d09a2"
+    },
+    {
       "path": "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
       "url": "https://www.michikusa-travel.com/images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
       "bytes": 54358,
       "sha256": "4bf920d23a7513fc8560b052d3040de3bb01ef7a82fe61a8d44d9168ad3c2db9"
+    },
+    {
+      "path": "images/20260804_musashi_kosugi_towers_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20260804_musashi_kosugi_towers_michikusa.jpg",
+      "bytes": 397809,
+      "sha256": "ce7e1557eafabf3b4a92044389f44f1385ad62b55d54aae04e10fe30be40f73f"
     },
     {
       "path": "images/og-sparkling-dreams.png",
@@ -995,8 +1013,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 139,
-    "bytes": 5230014,
+    "itemCount": 147,
+    "bytes": 5507806,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -1101,16 +1119,16 @@
         "sha256": "229056132251aa588e35afd6e1965347477726c9519b2fdf2bf2dfcd0ffc2948"
       },
       {
-        "path": "images/thumbs/20240211_fuji_michikusa.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/20240211_fuji_michikusa.webp",
-        "bytes": 33550,
-        "sha256": "ec5f6f46f6fa90e0fcf91b10beeb396e89a07e5e114ba44130ea119f917d16a4"
-      },
-      {
         "path": "images/thumbs/20240211_Mt.Fuji.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20240211_Mt.Fuji.webp",
         "bytes": 33446,
         "sha256": "4703e90efcaedc52a5c14f26e8ed7969d6fcfe52edce292db10d46a72ce3b46a"
+      },
+      {
+        "path": "images/thumbs/20240211_fuji_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20240211_fuji_michikusa.webp",
+        "bytes": 33550,
+        "sha256": "ec5f6f46f6fa90e0fcf91b10beeb396e89a07e5e114ba44130ea119f917d16a4"
       },
       {
         "path": "images/thumbs/20240410_left_fuji_earlyretiremile.webp",
@@ -1227,6 +1245,12 @@
         "sha256": "72bbebd6fa66535cc8174c63618e9abfd3b7b0c9524d89d94193f7a752364607"
       },
       {
+        "path": "images/thumbs/20250906_ibukiyama_ye__ba.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20250906_ibukiyama_ye__ba.webp",
+        "bytes": 75096,
+        "sha256": "54a0c4a10858b1cfd672b9aa9ed89e53b0a1d0d9ea729adacbb246fa6e097947"
+      },
+      {
         "path": "images/thumbs/20250909_seta_karahashi_c91256633.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20250909_seta_karahashi_c91256633.webp",
         "bytes": 32690,
@@ -1275,16 +1299,16 @@
         "sha256": "b45e52b978bf1fde560c0e2aea2cdde2fe1b58e6e4fe56241383e3ffd603d717"
       },
       {
-        "path": "images/thumbs/20260505_hamanako_design_photosy_2.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/20260505_hamanako_design_photosy_2.webp",
-        "bytes": 94110,
-        "sha256": "631793381e26e523f52c72cfecb42d56f867fc16ac3544d8daa2c4274236c7f8"
-      },
-      {
         "path": "images/thumbs/20260505_hamanako_design_photosy.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260505_hamanako_design_photosy.webp",
         "bytes": 73518,
         "sha256": "b7c9c41291ee6506f48537fdeb004221837cbf0a0d2f867acf988782e91c07f1"
+      },
+      {
+        "path": "images/thumbs/20260505_hamanako_design_photosy_2.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260505_hamanako_design_photosy_2.webp",
+        "bytes": 94110,
+        "sha256": "631793381e26e523f52c72cfecb42d56f867fc16ac3544d8daa2c4274236c7f8"
       },
       {
         "path": "images/thumbs/20260509_ota_fuji_t_yangyang.webp",
@@ -1341,28 +1365,28 @@
         "sha256": "408224ce6f1bd3319aa4617fb02155a815fe104d96fe7b01357d9acbd49bce71"
       },
       {
-        "path": "images/thumbs/20260530_hinataoka_2_michikusa.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/20260530_hinataoka_2_michikusa.webp",
-        "bytes": 104342,
-        "sha256": "a5104fb587acd6ccde329dde4d5bfb311033849023c17777308d16fb940f6594"
-      },
-      {
         "path": "images/thumbs/20260530_hinataoka.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260530_hinataoka.webp",
         "bytes": 81178,
         "sha256": "4503d0df0183f5fe7e30d0834034c4a2e49bbde55a7b6f4c7e6676a5dcb162fa"
       },
       {
-        "path": "images/thumbs/20260530_ibukiyama_2_michikusa.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/20260530_ibukiyama_2_michikusa.webp",
-        "bytes": 42880,
-        "sha256": "ea1c3fa9dd7e62c801680a1afe2641a015d58aad3d1b6af62c4afb521c7dc67d"
+        "path": "images/thumbs/20260530_hinataoka_2_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260530_hinataoka_2_michikusa.webp",
+        "bytes": 104342,
+        "sha256": "a5104fb587acd6ccde329dde4d5bfb311033849023c17777308d16fb940f6594"
       },
       {
         "path": "images/thumbs/20260530_ibukiyama.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260530_ibukiyama.webp",
         "bytes": 51650,
         "sha256": "0d6fbb6bef1b65180720ce923e30e0633679d373ba409aa0ff49bb413b4220d8"
+      },
+      {
+        "path": "images/thumbs/20260530_ibukiyama_2_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260530_ibukiyama_2_michikusa.webp",
+        "bytes": 42880,
+        "sha256": "ea1c3fa9dd7e62c801680a1afe2641a015d58aad3d1b6af62c4afb521c7dc67d"
       },
       {
         "path": "images/thumbs/20260530_kakegawa_castle.webp",
@@ -1641,6 +1665,12 @@
         "sha256": "f1377d56c959b941ade76f14212de10f631e81498cbb01c27fbabe73af1dda21"
       },
       {
+        "path": "images/thumbs/20260712_fujitec_big_wing_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260712_fujitec_big_wing_michikusa.webp",
+        "bytes": 17424,
+        "sha256": "290c5dac3b4e5f7ddc3e6a621082c71966c22c203f5e6b2aa67a6c7db0658bc8"
+      },
+      {
         "path": "images/thumbs/20260712_genki_sign_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260712_genki_sign_michikusa.webp",
         "bytes": 32164,
@@ -1743,6 +1773,12 @@
         "sha256": "9740c05bf02783cef695730746e7ddd83dbba44a10b57fd6c2d9ad2bb632f136"
       },
       {
+        "path": "images/thumbs/20260802_sparkling-dreams-hamanako_toshi549.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260802_sparkling-dreams-hamanako_toshi549.webp",
+        "bytes": 28808,
+        "sha256": "38538619c6ef8f6b4878c3d49151407509e5d697e5a9c3f75db93271b5019f1b"
+      },
+      {
         "path": "images/thumbs/20260804_atami_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260804_atami_michikusa.webp",
         "bytes": 36794,
@@ -1759,6 +1795,12 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260804_fujitec_big_wing_michikusa.webp",
         "bytes": 19650,
         "sha256": "fe0c7b836a9ace9eb06f15e31d83545bff608782d18f0c69d3dbd5c838c4f948"
+      },
+      {
+        "path": "images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp",
+        "bytes": 63068,
+        "sha256": "f098a06bdfdae25831f70d9ba6900611345287775ea6a78493361d29aab4a4c2"
       },
       {
         "path": "images/thumbs/20260804_sagami_bay_michikusa.webp",
@@ -1815,10 +1857,34 @@
         "sha256": "df9d4109bbc5b598cda6ab8018d802e020299efa35e98cc2cd9e0404f6c5173e"
       },
       {
+        "path": "images/thumbs/og-journal.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/og-journal.webp",
+        "bytes": 54806,
+        "sha256": "d3576e90fa284f78d0c4c1090d074d022e64745d85674b6fd44b05497c32e7d6"
+      },
+      {
         "path": "images/thumbs/og-shinkansen-window.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/og-shinkansen-window.webp",
         "bytes": 36138,
         "sha256": "115cefbfe766b8e3eb8b70aaa667fb57399a7c9f8f64363e3aca14db0f9d4bfb"
+      },
+      {
+        "path": "images/thumbs/og-somato-window.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/og-somato-window.webp",
+        "bytes": 15378,
+        "sha256": "8d60ef0b844da6371c26d9a8b6b207be137d664b05212b1aa6845df717b369eb"
+      },
+      {
+        "path": "images/thumbs/og-sparkling-dreams.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/og-sparkling-dreams.webp",
+        "bytes": 16426,
+        "sha256": "90220915fbbd3dce3ddaab7b83771c6ae6a9936f4197294bd90d04130a4efebf"
+      },
+      {
+        "path": "images/thumbs/og-sumie-window.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/og-sumie-window.webp",
+        "bytes": 6786,
+        "sha256": "85df2c0bb0d05563e8a39cc44b098f36f56b7da34a99c4a51ec4e13b52c601ce"
       },
       {
         "path": "images/thumbs/shinkansen-window-icon-192.webp",

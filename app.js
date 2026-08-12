@@ -75,7 +75,7 @@ const MSG = {
     journalStationBody: "駅で押すスタンプとは別の楽しみとして、乗車中に景色を集める感覚で使えます。",
     journalZukanCta: "車窓図鑑で、見つける景色を見る",
     journalOfficialEyebrow: "A COMPLEMENTARY GAME",
-    journalOfficialTitle: `<span class="copy-chunk">画面の中でも、</span><span class="copy-chunk">新幹線を楽しむなら</span>`,
+    journalOfficialTitle: `<span class="copy-chunk">子ども向けの、</span><span class="copy-chunk">しんかんせんであそぼ！</span>`,
     journalOfficialBody: "画面の中でも新幹線を楽しみたいときは、JR東海公式「しんかんせんであそぼ！」へ。動物探しやパズルなど、子ども向けのゲームで遊べます。「新幹線の窓」は、実際に乗って窓の外を探すゲームとして一緒に楽しめます。",
     journalOfficialCta: "公式サイトで遊ぶ",
     journalModalClose: "閉じる",
@@ -241,7 +241,7 @@ const MSG = {
     journalStationBody: "If you love collecting station stamps, try gathering scenery between stations as a different kind of travel collection.",
     journalZukanCta: "Browse the window field guide",
     journalOfficialEyebrow: "A COMPLEMENTARY GAME",
-    journalOfficialTitle: `<span class="copy-chunk">Want more Shinkansen</span><span class="copy-chunk">fun on screen?</span>`,
+    journalOfficialTitle: `<span class="copy-chunk">A child-friendly</span><span class="copy-chunk">Shinkansen game</span>`,
     journalOfficialBody: "For an on-screen Shinkansen activity, try JR Central’s official “Shinkansen de asobo!” site. It includes child-friendly games such as finding animals and solving puzzles. Shinkansen Window works differently: it turns the real view outside into a game while you ride.",
     journalOfficialCta: "Open the official game",
     journalModalClose: "Close",
@@ -795,12 +795,18 @@ function spotMediaFigureHTML(item, className = "spot-photo") {
 function spotMediaItems(spot) {
   const L = spot[lang];
   const items = [];
+  const seen = new Set();
+  const add = (item) => {
+    if (!item?.src || seen.has(item.src)) return;
+    seen.add(item.src);
+    items.push(item);
+  };
   if (spot.image) {
-    items.push({ src: spot.image, alt: L.name, creditHTML: photoCreditHTML(spot), timeOfDay: spot.timeOfDay || "day" });
+    add({ src: spot.image, alt: L.name, creditHTML: photoCreditHTML(spot), timeOfDay: spot.timeOfDay || "day" });
   }
   (spot.photos || []).forEach((photo) => {
     const alt = photo.alt?.[lang] || photo.alt?.ja || photo.alt?.en || spot[lang].name;
-    items.push({ src: photo.src, alt, creditHTML: photoMetaHTML(photo), timeOfDay: photo.timeOfDay || "day" });
+    add({ src: photo.src, alt, creditHTML: photoMetaHTML(photo), timeOfDay: photo.timeOfDay || "day" });
   });
   return items;
 }
@@ -1496,6 +1502,14 @@ function bindSpotEvents(root) {
       if (event.target.closest("a")) return;
       if (event.target.closest("[data-stamp], [data-fav]")) return;
       const item = btn.closest(".tl-item, .gal-card");
+      if (item?.classList.contains("gal-card")) {
+        const spot = findSpotById(item.dataset.spot);
+        if (spot) {
+          track("spot_detail_open", spotAnalyticsParams(spot, "gallery"));
+          window.location.assign(spotPageHref(spot));
+        }
+        return;
+      }
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
       const photoIndex = item?.dataset.galleryPhotoIndex;
       openSpotModal(item?.dataset.spot, source, { photoIndex });
@@ -1505,6 +1519,14 @@ function bindSpotEvents(root) {
       if (event.target.closest("[data-stamp], [data-fav]")) return;
       event.preventDefault();
       const item = btn.closest(".tl-item, .gal-card");
+      if (item?.classList.contains("gal-card")) {
+        const spot = findSpotById(item.dataset.spot);
+        if (spot) {
+          track("spot_detail_open", spotAnalyticsParams(spot, "gallery"));
+          window.location.assign(spotPageHref(spot));
+        }
+        return;
+      }
       const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
       const photoIndex = item?.dataset.galleryPhotoIndex;
       openSpotModal(item?.dataset.spot, source, { photoIndex });
