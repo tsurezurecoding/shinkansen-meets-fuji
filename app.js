@@ -1,4 +1,4 @@
-﻿/* =========================================================
+/* =========================================================
  * 新幹線の窓 — 見逃さない車窓手帖 / Shinkansen Window
  * app.js — UIロジック（依存ライブラリなし・バックエンドなし）
  * ========================================================= */
@@ -290,7 +290,7 @@ const MSG = {
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
     galSub: `Browse all ${MADO_SPOT_COUNT} window views. Check off each one you find.`,
     seasonalKicker: "SEASONAL WINDOW NOTE",
-    seasonalTitle: '<span class="copy-chunk">Track the Sparkling Dreams</span><span class="copy-chunk">Shinkansen</span>',
+    seasonalTitle: '<span class="copy-chunk">Track the Sparkling Dreams Shinkansen</span>',
     seasonalBody: "Check when your train may meet the limited-time special service.",
     galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
     zukanIntentEyebrow: "PICK A MOOD",

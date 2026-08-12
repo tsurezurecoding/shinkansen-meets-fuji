@@ -419,6 +419,7 @@ function projectMedia(spot, lang) {
     description: localized(spot.media.description, lang),
     videos: spot.media.videos.map((video) => ({
       kind: String(video.kind || ""),
+      orientation: video.orientation === "portrait" ? "portrait" : "",
       url: String(video.url || ""),
       mediaUrl: String(video.mediaUrl || ""),
       handle: String(video.handle || ""),
@@ -543,6 +544,7 @@ function validatePage(page, spot) {
     if (!Array.isArray(page.media.videos) || !page.media.videos.length) throw new Error(`Video projection is empty for ${spot.id}/${page.lang}`);
     for (const video of page.media.videos) {
       if (video.kind === "x") {
+        if (video.orientation && video.orientation !== "portrait") throw new Error(`Video orientation is unsupported for ${spot.id}`);
         if (!/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url) || (video.mediaUrl && !/^https:\/\/t\.co\/[A-Za-z0-9]+$/.test(video.mediaUrl)) || !/^@[A-Za-z0-9_]+$/.test(video.handle) || !video.accessibleTitle || !video.fallbackText) throw new Error(`X video projection is malformed for ${spot.id}`);
       } else if (video.kind === "youtube") {
         if (!/^[A-Za-z0-9_-]{11}$/.test(video.id) || !/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(video.url) || !video.title) throw new Error(`YouTube video projection is malformed for ${spot.id}`);

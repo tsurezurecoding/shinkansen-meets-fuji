@@ -97,6 +97,20 @@
   margin: 0 !important;
 }
 
+.spot-page-video-frame-x.is-portrait > iframe,
+.spot-page-video-frame-x.is-portrait > twitter-widget {
+  flex: 0 0 56.25%;
+  width: 56.25% !important;
+  max-width: 56.25% !important;
+  height: 100% !important;
+  margin-inline: auto !important;
+}
+
+.spot-page-video-frame-x.is-portrait twitter-widget iframe {
+  width: 100% !important;
+  max-width: none !important;
+}
+
 .spot-page-video-frame .twitter-tweet {
   padding: 0;
   border: 0;
@@ -155,6 +169,25 @@
 .spot-page-video-source a {
   color: inherit;
   text-underline-offset: 3px;
+}
+
+.spot-page-video-frame-x .twitter-tweet {
+  color: #fff;
+}
+
+.spot-page-video-section.is-video-pending .spot-page-video-frame-x::after {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  color: rgba(255, 255, 255, .86);
+  background: linear-gradient(135deg, rgba(17, 25, 37, .97), rgba(45, 61, 82, .94));
+  content: attr(data-video-loading-label);
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-align: center;
 }
 
 @media (max-width: 600px) {

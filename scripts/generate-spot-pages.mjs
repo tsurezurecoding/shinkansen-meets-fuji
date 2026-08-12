@@ -1593,7 +1593,7 @@ function thinSpotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
   <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
-  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-photo-source-links">
+  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-video-orientation">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1605,8 +1605,8 @@ function thinSpotPageHTML(spot, lang) {
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   <div data-spot-page-shared-module="page"></div>
-  <script src="${prefix}spot-page-shared-data.js"></script>
-  <script src="${prefix}spot-page-shared.js?v=20260812-photo-source-links"></script>
+  <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>
+  <script src="${prefix}spot-page-shared.js?v=20260812-video-lazy-load"></script>
   <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
 </body>
@@ -1645,7 +1645,7 @@ function spotPageHTML(spot, lang) {
     ? ibukiVideoHTML()
     : photoGalleryHTML(spot, lang, prefix, galleryPhotos);
   const mediaPilotStyles = ibukiMediaPilot
-    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-photo-source-links">`
+    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-video-orientation">`
     : "";
   const mediaPilotScripts = ibukiMediaPilot
     ? `  <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
@@ -1673,7 +1673,7 @@ function spotPageHTML(spot, lang) {
     ? ` data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
     : "";
   const sharedScripts = sharedSpotPage
-    ? `  <script src="${prefix}spot-page-shared-data.js"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260812-photo-source-links"></script>\n`
+    ? `  <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260812-video-lazy-load"></script>\n`
     : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
   const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";
@@ -1960,6 +1960,11 @@ function englishAppIndexHTML() {
     </a>
   </aside>`;
   const railCopy = [
+    ["次に見る案内", "Recommended next steps"],
+    ["ディズニー新幹線", "Disney special train"],
+    ["運転日と、車窓で出会う目安を確認。", "Check operating dates and window-side estimates."],
+    ["Android版の先行アクセス", "Help us test the Android app"],
+    ["公開前アプリのテスターを募集中。", "We are looking for testers for the pre-release app."],
     ["車窓メダル帖", "Window Medal Book"],
     ["新幹線の窓とは？", "About Shinkansen Window"],
     ["車窓をもっと楽しむ", "More ways to enjoy the window"],
@@ -2004,7 +2009,9 @@ function englishAppIndexHTML() {
   html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, `\n\n  ${englishSeasonalEntry}\n\n  `);
   railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
   railRoutes.forEach((route) => {
-    html = html.replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
+    html = html
+    .replaceAll('href="sparkling-dreams.html"', 'href="en/sparkling-dreams.html"')
+    .replaceAll('href="early-access.html?src=top-promo"', 'href="en/early-access.html?src=top-promo"').replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
   });
   html = html
     .replaceAll('href="guide.html#', 'href="en/guide.html#')

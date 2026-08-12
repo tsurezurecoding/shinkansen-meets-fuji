@@ -473,7 +473,7 @@ for (const lang of expectedLanguages) {
       fail(relativeFile + " lost its legacy related section");
     }
 
-    const sharedDataScript = `<script src="${prefix}spot-page-shared-data.js"></script>`;
+    const sharedDataScript = `<script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>`;
     const sharedRendererScript = `<script src="${prefix}spot-page-shared.js"></script>`;
     const mapScript = `<script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>`;
     const affiliateNeedle = lang === "ja" ? 'document.querySelectorAll("img[data-affiliate-src]")' : 'var modules = document.querySelectorAll("[data-affiliate-module]");';
@@ -530,6 +530,8 @@ function validateRenderedRail(rail, lang, rootPath) {
   if (countMatches(rail, /class="spot-page-shared-preview-copy"/g) !== expectedSpotCount) fail(`${lang} renderer did not render all ${expectedSpotCount} contextual preview copies`);
   if (countMatches(rail, /class="spot-page-shared-seat-group"/g) !== expectedSpotCount) fail(`${lang} renderer did not render all ${expectedSpotCount} seat projections`);
   if (countMatches(rail, /data-affiliate-module/g) !== 0 || countMatches(rail, /class="affiliate-card"/g) !== 0) fail(`${lang} shared rail rendered affiliate presentation while disabled`);
+  if (countMatches(rail, /class="spot-page-rail-app hide-in-app"/g) !== 1 || countMatches(rail, /class="spot-page-rail-disney"/g) !== 1) fail(lang + " shared rail must render exactly one Android and one Disney promo card");
+  if (!rail.includes('data-cta-id="spot_rail_android"') || !rail.includes('data-cta-id="spot_rail_disney"') || !rail.includes('Sparkling Dreams Shinkansen')) fail(lang + " shared rail promo cards lost their tracking or formal Disney name");
   for (const spot of expected.spots) {
     const rowStart = rail.indexOf(`<a class="spot-page-rail-link" href="${spot.id}.html"`);
     const rowEnd = rowStart >= 0 ? rail.indexOf("</a>", rowStart) : -1;
@@ -882,7 +884,7 @@ async function runThinValidator() {
       const body = onDisk.slice(onDisk.indexOf("<body"));
       if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(body)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
       const scripts = [
-        `<script src="${prefix}spot-page-shared-data.js"></script>`,
+        `<script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>`,
         `<script src="${prefix}spot-page-shared.js"></script>`,
         `<script src="${prefix}spot-media-gallery.js?v=20260811-ibuki-pilot"></script>`,
         `<script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>`,

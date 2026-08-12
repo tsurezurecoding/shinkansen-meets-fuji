@@ -327,70 +327,49 @@
 
   function initEmbedLoading() {
     if (typeof document === "undefined" || typeof document.querySelectorAll !== "function") return;
-    const stageSelector = ".sd-x-embed, .sd-youtube-frame";
-    const fallbackTimeoutMs = 5000;
-    const fallbackTimers = new WeakMap();
-    const markReady = (stage) => {
-      if (!stage) return;
-      const timer = fallbackTimers.get(stage);
-      if (timer != null && typeof root.clearTimeout === "function") root.clearTimeout(timer);
-      fallbackTimers.delete(stage);
-      stage.classList.remove("is-loading");
-      stage.classList.add("is-ready");
-      stage.setAttribute("aria-busy", "false");
-      stage.querySelector(".sd-embed-fallback")?.remove();
+    const groups = document.querySelector(".sd-video-groups");
+    const stages = groups ? Array.from(groups.querySelectorAll(".sd-x-embed")) : [];
+    if (!groups || !stages.length) return;
+    const reveal = () => {
+      stages.forEach((stage) => {
+        stage.classList.remove("is-loading");
+        stage.setAttribute("aria-busy", "false");
+      });
     };
-    const markFallback = (stage) => {
-      if (!stage) return;
-      const timer = fallbackTimers.get(stage);
-      if (timer != null && typeof root.clearTimeout === "function") root.clearTimeout(timer);
-      fallbackTimers.delete(stage);
-      stage.classList.remove("is-loading");
-      stage.classList.add("is-fallback");
-      stage.setAttribute("aria-busy", "false");
-      const statusLink = stage.querySelector('blockquote a[href*="/status/"]')?.href;
-      if (!statusLink || stage.querySelector(".sd-embed-fallback")) return;
-      const fallback = document.createElement("a");
-      fallback.className = "sd-embed-fallback";
-      fallback.href = statusLink;
-      fallback.target = "_blank";
-      fallback.rel = "noopener noreferrer";
-      fallback.innerHTML = uiLanguage === "en"
-        ? '<span>Open the original post on X</span><span aria-hidden="true">↗</span>'
-        : '<span>Xで元の投稿を見る</span><span aria-hidden="true">↗</span>';
-      stage.appendChild(fallback);
+    const loadWidgets = () => {
+      if (root.__MADO_X_WIDGETS_LOADED) {
+        reveal();
+        return;
+      }
+      root.__MADO_X_WIDGETS_LOADED = true;
+      const script = document.createElement("script");
+      script.async = true;
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.charset = "utf-8";
+      script.onload = () => {
+        const widgets = root.twttr && root.twttr.widgets;
+        if (widgets && typeof widgets.load === "function") widgets.load(groups);
+        reveal();
+      };
+      script.onerror = reveal;
+      document.head.appendChild(script);
     };
-    const startLoading = (stage) => {
-      if (!stage || stage.classList.contains("is-loading") || stage.classList.contains("is-ready")) return;
+    stages.forEach((stage) => {
       stage.classList.add("is-loading");
       stage.setAttribute("aria-busy", "true");
-      if (typeof root.setTimeout === "function") {
-        fallbackTimers.set(stage, root.setTimeout(() => markFallback(stage), fallbackTimeoutMs));
-      }
-    };
-    const bindFrame = (frame) => {
-      const stage = frame.closest(stageSelector);
-      if (!stage || frame.dataset.sdEmbedLoadBound === "true") return;
-      frame.dataset.sdEmbedLoadBound = "true";
-      frame.addEventListener("load", () => markReady(stage), { once: true });
-    };
-    document.querySelectorAll(stageSelector).forEach((stage) => {
-      startLoading(stage);
-      stage.querySelectorAll("iframe").forEach(bindFrame);
     });
-    const grid = document.querySelector(".sd-post-grid");
-    if (grid && typeof root.MutationObserver === "function") {
-      const observer = new root.MutationObserver((records) => {
-        records.forEach((record) => record.addedNodes.forEach((node) => {
-          if (node.nodeType !== 1) return;
-          if (node.matches?.("iframe")) bindFrame(node);
-          node.querySelectorAll?.("iframe").forEach(bindFrame);
-        }));
-      });
-      observer.observe(grid, { childList: true, subtree: true });
+    if (typeof root.IntersectionObserver !== "function") {
+      loadWidgets();
+      return;
     }
+    const observer = new root.IntersectionObserver((entries) => {
+      if (entries.some((entry) => entry.isIntersecting || entry.intersectionRatio > 0)) {
+        observer.disconnect();
+        loadWidgets();
+      }
+    }, { rootMargin: "640px 0px" });
+    observer.observe(groups);
   }
-
   function init() {
     const form = $("#sdCalculator");
     const dateInput = $("#sdDate");

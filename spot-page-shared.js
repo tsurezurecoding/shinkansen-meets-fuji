@@ -31,6 +31,8 @@
       railFoot: "車窓図鑑で写真から探す →",
       railAppTitle: "Androidアプリ版（早期アクセス）",
       railAppBody: "テスト参加者を募集中",
+      railDisneyTitle: "ディズニー新幹線",
+      railDisneyBody: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る",
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -74,6 +76,8 @@
       railFoot: "Browse by photo →",
       railAppTitle: "Android app (early access)",
       railAppBody: "Looking for testers",
+      railDisneyTitle: "Disney Shinkansen",
+      railDisneyBody: "Sparkling Dreams Shinkansen · operating dates and window-side estimates",
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -310,15 +314,24 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railAppHTML(rootPath, lang) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+  }
+
+  function railPromosHTML(rootPath, lang) {
+    return railAppHTML(rootPath, lang) + railDisneyHTML(rootPath, lang);
   }
 
   function railAppHTML(rootPath, lang) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
+    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"early_access_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
+  function railDisneyHTML(rootPath, lang) {
+    var ui = UI[lang];
+    var base = basePath(rootPath, lang);
+    return "<div class=\"spot-page-rail-disney\"><a href=\"" + escapeHTML(href(base, "sparkling-dreams.html")) + "\" data-cta-track=\"sparkling_dreams_entry_click\" data-cta-id=\"spot_rail_disney\"><img src=\"" + escapeHTML(href(rootPath, "images/sparkling-dreams-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railDisneyTitle) + "</strong><small>" + escapeHTML(ui.railDisneyBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  }
   function contentRailHTML(rootPath, lang) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
@@ -378,6 +391,7 @@
       videoLabel: function (name) { return name + "の投稿動画"; },
       photoChoose: function (name) { return name + "の写真を選ぶ"; },
       photoSource: "元の投稿を見る",
+      videoLoading: "投稿動画を読み込んでいます…",
       lightboxClose: "閉じる",
     },
     en: {
@@ -400,6 +414,7 @@
       videoLabel: function (name) { return name + " videos"; },
       photoChoose: function (name) { return "Choose a photo of " + name; },
       photoSource: "View original post",
+      videoLoading: "Loading posted videos…",
       lightboxClose: "Close",
     }
   };
@@ -436,6 +451,7 @@
       if (!Array.isArray(page.media.videos) || !page.media.videos.length) throw new Error("shared media list is malformed");
       page.media.videos.forEach(function (video) {
         if (!video || !["x", "youtube"].includes(video.kind) || !video.url || !video.accessibleTitle && video.kind === "x") throw new Error("shared video record is malformed");
+        if (video.orientation && video.orientation !== "portrait") throw new Error("shared video orientation is malformed");
         if (video.kind === "x" && (!/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url) || (video.mediaUrl && !/^https:\/\/t\.co\/[A-Za-z0-9]+$/.test(video.mediaUrl)) || !/^@[A-Za-z0-9_]+$/.test(video.handle) || !video.fallbackText)) throw new Error("shared X video record is malformed");
         if (video.kind === "youtube" && (!/^[A-Za-z0-9_-]{11}$/.test(video.id) || !/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(video.url) || !video.title)) throw new Error("shared YouTube video record is malformed");
       });
@@ -513,11 +529,12 @@
       if (video.kind === "x") {
         var xText = escapeHTML(video.fallbackText).replace(/\n/g, "<br>");
         var sourceLabel = video.accountName ? video.accountName + "（" + video.handle + "）／" + ui.original : video.handle + " / " + ui.original;
-        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
+        var frameClass = " spot-page-video-frame-x" + (video.orientation === "portrait" ? " is-portrait" : "");
+        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
       }
       return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.title) + "\"><div class=\"spot-page-video-frame\"><iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeHTML(video.id) + "\" title=\"" + escapeHTML(video.title) + "\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(video.url) + "</a></p></article>";
     }).join("");
-    return "<section class=\"spot-page-section spot-page-video-section\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\"><h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
+    return "<section class=\"spot-page-section spot-page-video-section\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\"><h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
   }
 
   function pageLightboxHTML(lang) {
@@ -563,12 +580,46 @@
 
   function ensureXWidgetsScript(page) {
     if (!page.media || !page.media.videos.some(function (video) { return video.kind === "x"; }) || root.__MADO_X_WIDGETS_LOADED) return;
-    var script = document.createElement("script");
-    script.async = true;
-    script.src = "https://platform.twitter.com/widgets.js";
-    script.charset = "utf-8";
-    document.head.appendChild(script);
-    root.__MADO_X_WIDGETS_LOADED = true;
+    var sections = typeof document.querySelectorAll === "function" ? document.querySelectorAll(".spot-page-video-section") : [];
+    var section = sections && sections[0];
+    var reveal = function () {
+      if (section && section.classList && typeof section.classList.remove === "function") section.classList.remove("is-video-pending");
+      if (section && typeof section.setAttribute === "function") section.setAttribute("aria-busy", "false");
+    };
+    var load = function () {
+      if (root.__MADO_X_WIDGETS_LOADED) {
+        reveal();
+        return;
+      }
+      root.__MADO_X_WIDGETS_LOADED = true;
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://platform.twitter.com/widgets.js";
+      script.charset = "utf-8";
+      script.onload = function () {
+        var widgets = root.twttr && root.twttr.widgets;
+        if (widgets && typeof widgets.load === "function") widgets.load(section || document.body);
+        reveal();
+      };
+      script.onerror = reveal;
+      document.head.appendChild(script);
+    };
+    if (!section || typeof root.IntersectionObserver !== "function") {
+      load();
+      return;
+    }
+    if (section.classList && typeof section.classList.add === "function") section.classList.add("is-video-pending");
+    if (typeof section.setAttribute === "function") section.setAttribute("aria-busy", "true");
+    var observer = new root.IntersectionObserver(function (entries) {
+      for (var index = 0; index < entries.length; index += 1) {
+        if (entries[index].isIntersecting || entries[index].intersectionRatio > 0) {
+          observer.disconnect();
+          load();
+          break;
+        }
+      }
+    }, { rootMargin: "640px 0px" });
+    observer.observe(section);
   }
 
   function findHost(name) {

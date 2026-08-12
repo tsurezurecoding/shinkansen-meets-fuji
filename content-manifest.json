@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "499881c8efd9f171",
+  "contentVersion": "5869bf2298b0a701",
   "generatedAt": "2026-08-12T07:50:28.537Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
@@ -20,14 +20,14 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 19716,
-      "sha256": "a0b30fd65dd0a01c42eb193e9fa56f0d22acb8264d1f95f57ffc8a20dfb55cf7"
+      "bytes": 21777,
+      "sha256": "7bea12bcdea9e01d6b423af5133fe40662bf4745a4e74c6db7696d837a0b0352"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 18198,
-      "sha256": "5be33c28e59dc8a8b85ca6e1ff2608ebedafe806b0f5b722c99ccde47b64b924"
+      "bytes": 21697,
+      "sha256": "a8c13667eaa35b521b47b8d929dcba3e71e3687db0ae4662ada0007d116be242"
     },
     {
       "path": "images/20250906_ibukiyama_ye__ba.jpg",
@@ -74,20 +74,20 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 23576,
-      "sha256": "307737afba95af54421f407785a83f8f72f19937c04eab0b51bcdcd3ccd7a528"
+      "bytes": 27084,
+      "sha256": "a40962216810db2a097f6e4f27e108ac2d3b76903291942080ab000a4e0c11e6"
     },
     {
       "path": "sparkling-dreams.js",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.js",
-      "bytes": 22293,
-      "sha256": "0013393298554144dbca531d6265b9cc07ddd79f7e763b88a3238418489369de"
+      "bytes": 20830,
+      "sha256": "01c1b9cd93489465a7eb15e6cbc6af938803403e0023ebb5b8990ca5ebb495f2"
     },
     {
       "path": "style.css",
       "url": "https://www.michikusa-travel.com/style.css",
-      "bytes": 150172,
-      "sha256": "83036294204624aca8b2810cf5adb34578e1e77243ba412df89afa5004022488"
+      "bytes": 155012,
+      "sha256": "3fd45ad4da30ca0a611258338653897572ff643718a9cc9bbeb0cac0686ba12b"
     }
   ],
   "audioPacks": [
