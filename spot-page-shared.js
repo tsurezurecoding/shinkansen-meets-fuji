@@ -377,6 +377,7 @@
       original: "元投稿を見る",
       videoLabel: function (name) { return name + "の投稿動画"; },
       photoChoose: function (name) { return name + "の写真を選ぶ"; },
+      photoSource: "元の投稿を見る",
       lightboxClose: "閉じる",
     },
     en: {
@@ -398,6 +399,7 @@
       original: "View original post",
       videoLabel: function (name) { return name + " videos"; },
       photoChoose: function (name) { return "Choose a photo of " + name; },
+      photoSource: "View original post",
       lightboxClose: "Close",
     }
   };
@@ -454,8 +456,11 @@
       var note = item.note || item.alt;
       return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"\" loading=\"" + (index === 0 ? "eager" : "lazy") + "\" decoding=\"async\"></button>";
     }).join("");
-    var caption = "<figcaption aria-live=\"polite\"><strong data-gallery-note-output>" + escapeHTML(first.note || first.alt) + "</strong><span data-gallery-credit-output>" + pageCreditHTML(first) + "</span><span data-gallery-date-output>" + escapeHTML(first.date || "") + "</span></figcaption>";
-    return "<div class=\"spot-page-media-gallery" + (items.length === 1 ? " is-single" : "") + "\" data-spot-media-gallery>" + heading + "<div class=\"spot-photo-thumbs\" role=\"group\" aria-label=\"" + escapeHTML(ui.photoChoose(page.name)) + "\">" + thumbs + "</div><figure class=\"spot-page-figure spot-page-media-gallery-active\"><img data-gallery-image src=\"" + escapeHTML(href(rootPath, first.src)) + "\" alt=\"" + escapeHTML(first.alt) + "\" decoding=\"async\" fetchpriority=\"high\">" + caption + "</figure></div>";
+    var sourceLink = first.sourceUrl ? "<a data-gallery-source-output class=\"spot-page-gallery-source\" href=\"" + escapeHTML(first.sourceUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(ui.photoSource) + "</a>" : "<a data-gallery-source-output class=\"spot-page-gallery-source\" hidden></a>";
+    var imageLink = first.sourceUrl ? "<a data-gallery-image-link class=\"spot-page-gallery-image-link\" href=\"" + escapeHTML(first.sourceUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"" + escapeHTML(ui.photoSource) + "\">" : "<a data-gallery-image-link class=\"spot-page-gallery-image-link\" aria-hidden=\"true\" tabindex=\"-1\">";
+    imageLink += "<img data-gallery-image src=\"" + escapeHTML(href(rootPath, first.src)) + "\" alt=\"" + escapeHTML(first.alt) + "\" decoding=\"async\" fetchpriority=\"high\"></a>";
+    var caption = "<figcaption aria-live=\"polite\"><strong data-gallery-note-output>" + escapeHTML(first.note || first.alt) + "</strong><span data-gallery-credit-output>" + pageCreditHTML(first) + "</span><span data-gallery-date-output>" + escapeHTML(first.date || "") + "</span>" + sourceLink + "</figcaption>";
+    return "<div class=\"spot-page-media-gallery" + (items.length === 1 ? " is-single" : "") + "\" data-spot-media-gallery>" + heading + "<div class=\"spot-photo-thumbs\" role=\"group\" aria-label=\"" + escapeHTML(ui.photoChoose(page.name)) + "\">" + thumbs + "</div><figure class=\"spot-page-figure spot-page-media-gallery-active\">" + imageLink + caption + "</figure></div>";
   }
 
   function pageFactsHTML(page, lang) {

@@ -1,4 +1,4 @@
-﻿import fs from "node:fs";
+import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { createHash } from "node:crypto";
@@ -86,6 +86,7 @@ const UI = {
     mobileSpotMeta: (min, seat) => `東京から約${min}分 · ${seat}席`,
     mobileSpotAction: "ガイドを読む",
     zoomHint: "クリックで拡大",
+    photoSource: "元の投稿を見る",
     lightboxClose: "閉じる",
     guideTitle: "新幹線から富士山はいつ見える？どっち側？E席と時刻のFAQ | 新幹線の窓",
     guideLead: "東海道新幹線から富士山はいつ見える？のぞみなら東京から約40〜45分後、三島→新富士で約3〜4分。座席はE席側です。",
@@ -158,6 +159,7 @@ const UI = {
     mobileSpotMeta: (min, seat) => `~${min} min · Seat ${seat}`,
     mobileSpotAction: "Read the guide",
     zoomHint: "click to enlarge",
+    photoSource: "View original post",
     lightboxClose: "Close",
     guideTitle: "When can you see Mt. Fuji from the Shinkansen? Seat side and timing FAQ | Shinkansen Window",
     guideLead: "On a Nozomi, start watching about 40-45 minutes after Tokyo, between Mishima and Shin-Fuji. Sit in Seat E.",
@@ -794,10 +796,14 @@ function spotHeroGalleryHTML(spot, lang, prefix) {
     const creditHTML = href
       ? `<a href="${escapeHTML(href)}" rel="noopener" target="_blank">${escapeHTML(credit)}</a>`
       : escapeHTML(credit);
+    const sourceLink = href
+      ? `<a data-gallery-source-output class="spot-page-gallery-source" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(ui.photoSource)}</a>`
+      : `<a data-gallery-source-output class="spot-page-gallery-source" hidden></a>`;
     return `<figcaption aria-live="polite">
           <strong data-gallery-note-output>${escapeHTML(note)}</strong>
           <span data-gallery-credit-output>${creditHTML}</span>
           <span data-gallery-date-output>${escapeHTML(item.date || "")}</span>
+          ${sourceLink}
         </figcaption>`;
   };
   const thumbs = items.map((item, index) => {
@@ -809,12 +815,16 @@ function spotHeroGalleryHTML(spot, lang, prefix) {
           <img src="${prefix}${escapeHTML(thumbnailSrc(item.src))}" alt="" loading="${index === 0 ? "eager" : "lazy"}" decoding="async">
         </button>`;
   }).join("\n        ");
+  const firstHref = first.sourceUrl || first.url || "";
+  const firstImageLink = firstHref
+    ? `<a data-gallery-image-link class="spot-page-gallery-image-link" href="${escapeHTML(firstHref)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHTML(ui.photoSource)}">`
+    : `<a data-gallery-image-link class="spot-page-gallery-image-link" aria-hidden="true" tabindex="-1">`;
   return `<div class="spot-page-media-gallery" data-spot-media-gallery>
         <div class="spot-photo-thumbs" role="group" aria-label="${escapeHTML(`${data.name}の写真を選ぶ`)}">
         ${thumbs}
         </div>
         <figure class="spot-page-figure spot-page-media-gallery-active">
-          <img data-gallery-image src="${prefix}${escapeHTML(first.src)}" alt="${escapeHTML(localized(first.alt, lang) || ui.photoAlt(data.name))}" decoding="async" fetchpriority="high">
+          ${firstImageLink}<img data-gallery-image src="${prefix}${escapeHTML(first.src)}" alt="${escapeHTML(localized(first.alt, lang) || ui.photoAlt(data.name))}" decoding="async" fetchpriority="high"></a>
           ${captionHTML(first)}
         </figure>
       </div>`;
@@ -1583,7 +1593,7 @@ function thinSpotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
   <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
-  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260811-ibuki-pilot">
+  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-photo-source-links">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1596,8 +1606,8 @@ function thinSpotPageHTML(spot, lang) {
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   <div data-spot-page-shared-module="page"></div>
   <script src="${prefix}spot-page-shared-data.js"></script>
-  <script src="${prefix}spot-page-shared.js"></script>
-  <script src="${prefix}spot-media-gallery.js?v=20260811-ibuki-pilot"></script>
+  <script src="${prefix}spot-page-shared.js?v=20260812-photo-source-links"></script>
+  <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
 </body>
 </html>
@@ -1635,10 +1645,10 @@ function spotPageHTML(spot, lang) {
     ? ibukiVideoHTML()
     : photoGalleryHTML(spot, lang, prefix, galleryPhotos);
   const mediaPilotStyles = ibukiMediaPilot
-    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260811-ibuki-pilot">`
+    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-photo-source-links">`
     : "";
   const mediaPilotScripts = ibukiMediaPilot
-    ? `  <script src="${prefix}spot-media-gallery.js?v=20260811-ibuki-pilot"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
+    ? `  <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
     : "";
   const inlineFigures = inlineFigureHTML(spot, lang, prefix);
   const railHTML = sharedSpotPage
@@ -1663,7 +1673,7 @@ function spotPageHTML(spot, lang) {
     ? ` data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
     : "";
   const sharedScripts = sharedSpotPage
-    ? `  <script src="${prefix}spot-page-shared-data.js"></script>\n  <script src="${prefix}spot-page-shared.js"></script>\n`
+    ? `  <script src="${prefix}spot-page-shared-data.js"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260812-photo-source-links"></script>\n`
     : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
   const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";

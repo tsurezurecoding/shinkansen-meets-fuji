@@ -29,6 +29,30 @@
   margin-top: 0;
 }
 
+.spot-page-gallery-image-link {
+  display: block;
+  color: inherit;
+}
+
+.spot-page-gallery-image-link[aria-hidden="true"] {
+  cursor: default;
+}
+
+.spot-page-gallery-source {
+  margin-left: auto;
+  color: var(--accent);
+  font-size: .78rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.spot-page-gallery-source:hover,
+.spot-page-gallery-source:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .spot-page-media-gallery-active img {
   aspect-ratio: 16 / 9;
   object-fit: cover;
