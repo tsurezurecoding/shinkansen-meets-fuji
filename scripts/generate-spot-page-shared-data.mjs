@@ -209,8 +209,6 @@ function inlinePhotoIndices(spot) {
     const index = photos.findIndex((photo) => String(photo?.src || "").includes(needle));
     if (index >= 0) picks.add(index);
   }
-  const nightIndex = photos.findIndex((photo) => photo.timeOfDay === "night");
-  if (nightIndex >= 0) picks.add(nightIndex);
   return [...picks].slice(0, 2);
 }
 
