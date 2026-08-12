@@ -103,7 +103,7 @@ const youtubeFrames = postSection.match(/<iframe\b[^>]*><\/iframe>/g) || [];
 const widgetScripts = page.match(/<script\b(?=[^>]*\basync\b)(?=[^>]*\bsrc="https:\/\/platform\.twitter\.com\/widgets\.js")(?=[^>]*\bcharset="utf-8")[^>]*><\/script>/gi) || [];
 const widgetScriptIndex = widgetScripts.length ? page.indexOf(widgetScripts[0]) : -1;
 const localScriptIndex = page.indexOf('<script src="data/timetable.js');
-const calculatorScriptIndex = page.indexOf('<script src="sparkling-dreams.js?v=20260811-embed-fallback">');
+const calculatorScriptIndex = page.indexOf('<script src="sparkling-dreams.js?v=20260812-embed-fallback-card">');
 const embeddedPostUrls = [...new Set(
   [...postSection.matchAll(/https:\/\/x\.com\/[^/"\s]+\/status\/\d+(?:\?[^"'\s<]*)?/g)]
     .map((match) => match[0].replace(/\?.*$/, "")),
@@ -175,7 +175,7 @@ const expectedMetadata = [
   `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
 ];
 for (const metadata of expectedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: expected metadata changed or is missing (${metadata.slice(0, 32)}...)`);
-expect(page.includes('<link rel="stylesheet" href="style.css?v=20260811-embed-fallback">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
+expect(page.includes('<link rel="stylesheet" href="style.css?v=20260812-embed-fallback-card">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
 expect(stylesheet.includes(".sd-post-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-post-grid { grid-template-columns: 1fr; }"), "style.css: X videos must be two columns on desktop and one column on mobile");
 expect(stylesheet.includes(".sd-post-credit") && stylesheet.includes(".sd-post-note"), "style.css: poster credit and embed-rights note styles are missing");
 expect(stylesheet.includes(".sd-youtube-frame") && stylesheet.includes("aspect-ratio: 16 / 9"), "style.css: responsive YouTube player styles are missing");
@@ -183,7 +183,7 @@ expect(stylesheet.includes(".sd-x-embed.is-loading::before") && stylesheet.inclu
 expect(!stylesheet.includes(".sd-x-embed .twitter-tweet > * { visibility: hidden; }") && !stylesheet.includes(".sd-youtube-frame iframe { opacity: 0"), "style.css: no-JS embed fallback must remain visible by default");
 expect(stylesheet.includes(".sd-hero-media figcaption") && stylesheet.includes("white-space: nowrap"), "style.css: hero photo credit must stay on one line");
 expect(calculatorCode.includes("function initEmbedLoading()") && calculatorCode.includes("MutationObserver") && calculatorCode.includes('stage.classList.add("is-loading")') && calculatorCode.includes('stage.classList.remove("is-loading")'), "sparkling-dreams.js: opt-in embed loading transition controller is missing");
-expect(calculatorCode.includes("fallbackTimeoutMs = 5000") && calculatorCode.includes("root.setTimeout(() => markReady(stage), fallbackTimeoutMs)"), "sparkling-dreams.js: finite embed fallback timeout is missing");
+expect(calculatorCode.includes("fallbackTimeoutMs = 5000") && calculatorCode.includes("root.setTimeout(() => markFallback(stage), fallbackTimeoutMs)"), "sparkling-dreams.js: finite embed fallback timeout is missing");
 expect(!/(?:\.sd-video-card|\.sd-video-card-head|\.sd-video-fallback)/.test(stylesheet), "style.css: redundant custom post-card styles are still present");
 expect(!stylesheet.includes(".sd-hero-video-card"), "style.css: obsolete hero video-card rules are still present");
 expect(illustration.trim().startsWith("<svg") && /viewBox="0 0 1200 630"/.test(illustration), "images/sparkling-dreams-window.svg: original illustration contract is missing");
@@ -310,7 +310,7 @@ expect(englishPage.includes('<link rel="canonical" href="https://www.michikusa-t
 expect(englishPage.includes('hreflang="ja" href="https://www.michikusa-travel.com/sparkling-dreams.html"') && englishPage.includes('hreflang="en" href="https://www.michikusa-travel.com/en/sparkling-dreams.html"') && englishPage.includes('hreflang="x-default" href="https://www.michikusa-travel.com/en/sparkling-dreams.html"'), "en/sparkling-dreams.html: hreflang set is incomplete");
 expect(englishPage.includes("Disney Shinkansen") && englishPage.includes("Sparkling Dreams Shinkansen") && englishPage.includes("estimated passing times"), "en/sparkling-dreams.html: English SEO target is missing");
 expect(englishPage.includes('data-mado-lang="en"') && englishPage.includes('localStorage.setItem("mado-lang", "en")'), "en/sparkling-dreams.html: English language state is missing");
-expect(englishPage.includes('href="../style.css?v=20260811-embed-fallback"') && englishPage.includes('src="../sparkling-dreams.js?v=20260811-embed-fallback"'), "en/sparkling-dreams.html: shared embed fallback assets are stale");
+expect(englishPage.includes('href="../style.css?v=20260812-embed-fallback-card"') && englishPage.includes('src="../sparkling-dreams.js?v=20260812-embed-fallback-card"'), "en/sparkling-dreams.html: shared embed fallback assets are stale");
 expect((englishPage.match(/class="twitter-tweet"/g) || []).length === 6 && (englishPage.match(/www\.youtube-nocookie\.com\/embed\//g) || []).length === 2, "en/sparkling-dreams.html: approved embed set changed");
 expect(englishPage.includes("Track the Disney Shinkansen") && englishPage.includes("Choose your train") && englishPage.includes("Watch posted videos") && !englishPage.includes("乗る列車を選ぶ"), "en/sparkling-dreams.html: English static UI copy is incomplete or Japanese UI leaked");
 expect(englishPage.includes('<p class="sd-hero-lead"><span class="copy-chunk">A special train celebrating Tokyo DisneySea\'s 25th anniversary.</span><span class="copy-chunk">Use published timetables to</span><span class="copy-chunk"><strong>estimate when and where it may pass your train.</strong></span><span class="copy-chunk">Watch for it as you travel.</span></p>'), "en/sparkling-dreams.html: hero copy chunks must be self-contained meaning units without leading-space joins");

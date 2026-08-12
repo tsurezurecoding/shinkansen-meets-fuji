@@ -338,13 +338,34 @@
       stage.classList.remove("is-loading");
       stage.classList.add("is-ready");
       stage.setAttribute("aria-busy", "false");
+      stage.querySelector(".sd-embed-fallback")?.remove();
+    };
+    const markFallback = (stage) => {
+      if (!stage) return;
+      const timer = fallbackTimers.get(stage);
+      if (timer != null && typeof root.clearTimeout === "function") root.clearTimeout(timer);
+      fallbackTimers.delete(stage);
+      stage.classList.remove("is-loading");
+      stage.classList.add("is-fallback");
+      stage.setAttribute("aria-busy", "false");
+      const statusLink = stage.querySelector('blockquote a[href*="/status/"]')?.href;
+      if (!statusLink || stage.querySelector(".sd-embed-fallback")) return;
+      const fallback = document.createElement("a");
+      fallback.className = "sd-embed-fallback";
+      fallback.href = statusLink;
+      fallback.target = "_blank";
+      fallback.rel = "noopener noreferrer";
+      fallback.innerHTML = uiLanguage === "en"
+        ? '<span>Open the original post on X</span><span aria-hidden="true">↗</span>'
+        : '<span>Xで元の投稿を見る</span><span aria-hidden="true">↗</span>';
+      stage.appendChild(fallback);
     };
     const startLoading = (stage) => {
       if (!stage || stage.classList.contains("is-loading") || stage.classList.contains("is-ready")) return;
       stage.classList.add("is-loading");
       stage.setAttribute("aria-busy", "true");
       if (typeof root.setTimeout === "function") {
-        fallbackTimers.set(stage, root.setTimeout(() => markReady(stage), fallbackTimeoutMs));
+        fallbackTimers.set(stage, root.setTimeout(() => markFallback(stage), fallbackTimeoutMs));
       }
     };
     const bindFrame = (frame) => {

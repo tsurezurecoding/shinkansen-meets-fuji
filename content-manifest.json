@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3876a036f8ee6720",
-  "generatedAt": "2026-08-12T00:55:30.242Z",
+  "contentVersion": "499881c8efd9f171",
+  "generatedAt": "2026-08-12T07:50:28.537Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 398868,
-      "sha256": "5ea328691cbeec8435b1d1d338eede772b336cfca38cd72876e8a596f22b5510"
+      "bytes": 401703,
+      "sha256": "ec253d32b99c8487b788ce4e5d490885cb2232ce467173d0cf52c52158985e53"
     },
     {
       "path": "data/timetable.js",
@@ -20,14 +20,14 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 18723,
-      "sha256": "7a4aa3ea1e4249670f52c633bdd624939229963b4f22f1b954fcffadbd473121"
+      "bytes": 19716,
+      "sha256": "a0b30fd65dd0a01c42eb193e9fa56f0d22acb8264d1f95f57ffc8a20dfb55cf7"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 18188,
-      "sha256": "8b988846221577529c5f260784cfdbc51929a31ece1445aaebc56143fb1d4337"
+      "bytes": 18198,
+      "sha256": "5be33c28e59dc8a8b85ca6e1ff2608ebedafe806b0f5b722c99ccde47b64b924"
     },
     {
       "path": "images/20250906_ibukiyama_ye__ba.jpg",
@@ -74,20 +74,20 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 23566,
-      "sha256": "77d2b1fe1b72ffa67370f4b1368cc37d1ac66d6b1548463ff61edcdebefc60fa"
+      "bytes": 23576,
+      "sha256": "307737afba95af54421f407785a83f8f72f19937c04eab0b51bcdcd3ccd7a528"
     },
     {
       "path": "sparkling-dreams.js",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.js",
-      "bytes": 21218,
-      "sha256": "c899d819e71aa4ae551a614cd451d28a68a4fd94453eb653848b8e984ee21fac"
+      "bytes": 22293,
+      "sha256": "0013393298554144dbca531d6265b9cc07ddd79f7e763b88a3238418489369de"
     },
     {
       "path": "style.css",
       "url": "https://www.michikusa-travel.com/style.css",
-      "bytes": 144236,
-      "sha256": "ae66e92c4b48105e0d5e0eb4dd308e96ca6743a4ebc89fced43408f683b34ad6"
+      "bytes": 150172,
+      "sha256": "83036294204624aca8b2810cf5adb34578e1e77243ba412df89afa5004022488"
     }
   ],
   "audioPacks": [

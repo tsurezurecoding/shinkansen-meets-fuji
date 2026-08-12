@@ -5179,6 +5179,31 @@ body.modal-open { overflow: hidden; }
 .sd-youtube-frame.is-ready::before { opacity: 0; animation: none; }
 .sd-x-embed.is-loading .twitter-tweet { width: 100% !important; max-width: 560px !important; min-width: 0 !important; aspect-ratio: 16 / 9; margin: 0 auto !important; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #e9edf1; color: transparent; }
 .sd-x-embed.is-loading .twitter-tweet > * { visibility: hidden; }
+.sd-x-embed.is-fallback .twitter-tweet { display: none; }
+.sd-embed-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+  min-height: 120px;
+  margin: 0 auto;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: linear-gradient(135deg, #f7f3ec, #edf1f3);
+  color: var(--ink);
+  font-weight: 750;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+}
+.sd-embed-fallback:hover,
+.sd-embed-fallback:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.sd-embed-fallback span:last-child { color: var(--accent); font-size: 20px; }
 .sd-post-embed iframe { display: block; max-width: 100% !important; margin: 0 auto !important; }
 .sd-x-embed > iframe,
 .sd-youtube-frame iframe { opacity: 1; transition: opacity .22s ease; }
