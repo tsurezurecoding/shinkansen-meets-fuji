@@ -35,6 +35,8 @@
       railDisneyBody: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る",
       railHanabiTitle: "新幹線から見える花火",
       railHanabiBody: "沿線の花火大会と、車窓から見えた記録を集める",
+      railYakeiTitle: "新幹線の夜景",
+      railYakeiBody: "どこから暗くなるかを調べて、夜だけの車窓を探す",
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -82,6 +84,8 @@
       railDisneyBody: "Sparkling Dreams Shinkansen · operating dates and window-side estimates",
       railHanabiTitle: "Fireworks from the window",
       railHanabiBody: "Festivals along the line, and posts from people who saw them",
+      railYakeiTitle: "Night views from the window",
+      railYakeiBody: "Find where your train goes dark, and what only shows after it",
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -217,7 +221,8 @@
   var UTILITY_ROUTES = {
     "mieru.html": { en: true },
     "sparkling-dreams.html": { en: true },
-    "hanabi.html": { en: true }
+    "hanabi.html": { en: true },
+    "yakei.html": { en: true }
   };
 
   function siteHeaderHTML(rootPath, lang, currentId, utilityRoute, utilityHasAlternate) {
@@ -340,6 +345,7 @@
     var out = railAppHTML(rootPath, lang);
     if (currentRoute !== "sparkling-dreams.html") out += railDisneyHTML(rootPath, lang);
     if (currentRoute !== "hanabi.html") out += railHanabiHTML(rootPath, lang);
+    if (currentRoute !== "yakei.html") out += railYakeiHTML(rootPath, lang);
     return out;
   }
 
@@ -364,6 +370,12 @@
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     return "<div class=\"spot-page-rail-disney spot-page-rail-hanabi\"><a href=\"" + escapeHTML(href(base, "hanabi.html")) + "\" data-cta-track=\"hanabi_entry_click\" data-cta-id=\"spot_rail_hanabi\"><img src=\"" + escapeHTML(href(rootPath, "images/hanabi-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railHanabiTitle) + "</strong><small>" + escapeHTML(ui.railHanabiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  }
+
+  function railYakeiHTML(rootPath, lang) {
+    var ui = UI[lang];
+    var base = basePath(rootPath, lang);
+    return "<div class=\"spot-page-rail-disney spot-page-rail-yakei\"><a href=\"" + escapeHTML(href(base, "yakei.html")) + "\" data-cta-track=\"yakei_entry_click\" data-cta-id=\"spot_rail_yakei\"><img src=\"" + escapeHTML(href(rootPath, "images/yakei-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railYakeiTitle) + "</strong><small>" + escapeHTML(ui.railYakeiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {

@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓</title>
+  <meta name="description" content="東海道新幹線の夜景を、車窓から見える11か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。">
+  <link rel="canonical" href="https://www.michikusa-travel.com/yakei.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/yakei.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/yakei.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/yakei.html">
+  <link rel="stylesheet" href="style.css?v=20260814-yakei">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="新幹線の窓">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻">
+  <meta property="og:description" content="夜の車窓は鏡になる。その対処と、ライトアップ・街の光・車両基地まで。出発時刻から暗くなる区間を計算します。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/20260629_2158_nagoya_station_night_michikusa.jpg">
+  <meta property="og:image:alt" content="夜の新幹線から見える名古屋駅前の光">
+  <meta property="og:url" content="https://www.michikusa-travel.com/yakei.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻">
+  <meta name="twitter:description" content="夜の車窓は鏡になる。その対処と、ライトアップ・街の光・車両基地まで。出発時刻から暗くなる区間を計算します。">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/20260629_2158_nagoya_station_night_michikusa.jpg">
+  <meta name="twitter:image:alt" content="夜の新幹線から見える名古屋駅前の光">
+  <script src="language-router.js?v=20260814-yakei"></script>
+  <style>
+    .yakei-page main { padding-bottom: 40px; }
+    .yk-hero { position: relative; isolation: isolate; background: var(--night); color: #fff; padding: 96px 20px 72px; overflow: hidden; }
+    .yk-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("images/20260629_2158_nagoya_station_night_michikusa.jpg"); background-size: cover; background-position: center 55%; }
+    .yk-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8,17,32,.72) 0%, rgba(8,17,32,.8) 55%, rgba(8,17,32,.94) 100%); }
+    .yk-hero-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .yk-hero .eyebrow { color: var(--accent-soft); }
+    .yk-hero h1 { font-family: var(--font-serif); font-size: clamp(28px, 6vw, 44px); line-height: 1.42; margin: 0 0 20px; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+    .yk-hero-lead { color: rgba(255,255,255,.9); font-size: 15px; line-height: 1.95; margin: 0 auto; max-width: 620px; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
+    .yk-hero-credit { margin: 24px 0 0; color: rgba(255,255,255,.45); font-size: 10.5px; }
+
+    .yk-tool { max-width: 760px; margin: 0 auto; padding: 40px 20px 0; }
+    .yk-tool-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 22px; box-shadow: var(--shadow); }
+    .yk-tool-card h2 { font-family: var(--font-serif); font-size: 20px; margin: 0 0 6px; }
+    .yk-tool-note { margin: 0 0 16px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
+    .yk-form { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; border-top: 1px solid var(--line); padding-top: 16px; }
+    .yk-field { display: grid; gap: 5px; }
+    .yk-field label { font-size: 11.5px; letter-spacing: .06em; color: var(--ink-soft); font-weight: 700; }
+    .yk-field select, .yk-field input { font-family: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+    .yk-result { margin-top: 18px; display: grid; gap: 6px; }
+    .yk-row { display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 10px; background: var(--paper-deep); }
+    .yk-row.is-dark { background: #16273a; color: #f3f6fa; }
+    .yk-row.is-dusk { background: #3a3550; color: #f3f6fa; }
+    .yk-row-time { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700; }
+    .yk-row-name { font-size: 13.5px; min-width: 0; }
+    .yk-row-name a { color: inherit; text-underline-offset: 3px; }
+    .yk-row-badge { font-size: 10.5px; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .yk-row.is-dark .yk-row-badge, .yk-row.is-dusk .yk-row-badge { background: rgba(255,255,255,.16); }
+    .yk-row.is-light .yk-row-badge { background: rgba(22,32,46,.09); color: var(--ink-soft); }
+    .yk-row-side { font-size: 10.5px; opacity: .8; margin-left: 6px; }
+    .yk-summary { margin: 14px 0 0; font-size: 13px; line-height: 1.9; padding: 12px 14px; border-radius: 10px; background: var(--paper-deep); }
+    .yk-tool-disclaimer { margin: 12px 0 0; font-size: 11.5px; line-height: 1.8; color: var(--ink-soft); }
+
+    .yk-section { max-width: 900px; margin: 0 auto; padding: 62px 20px 0; }
+    .yk-section-head { text-align: center; margin-bottom: 26px; }
+    .yk-section-head h2 { font-family: var(--font-serif); font-size: clamp(21px, 4.2vw, 29px); margin: 0 0 12px; }
+    .yk-section-lead { max-width: 580px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: var(--ink-soft); }
+    .yk-spot { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 20px; margin-bottom: 22px; }
+    .yk-figure { margin: 0; }
+    .yk-figure img { display: block; width: 100%; height: auto; border-radius: 12px; }
+    .yk-figure.is-day img { filter: saturate(.82) brightness(.94); }
+    .yk-figure figcaption { margin-top: 7px; font-size: 10.5px; color: var(--ink-soft); line-height: 1.6; }
+    .yk-figure figcaption a { color: inherit; text-underline-offset: 3px; }
+    .yk-day-note { display: block; margin-top: 4px; padding-left: 8px; border-left: 2px solid var(--accent-soft); color: var(--ink-soft); }
+    .yk-spot-body h3 { font-family: var(--font-serif); font-size: clamp(19px, 3.4vw, 24px); margin: 0 0 8px; }
+    .yk-spot-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+    .yk-min, .yk-side { font-size: 10.5px; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; background: var(--paper-deep); color: var(--ink-soft); }
+    .yk-side-e { background: #dceaf6; color: #1d4b70; }
+    .yk-side-a { background: #f7e2d6; color: #8a4326; }
+    .yk-spot-lead { margin: 0 0 12px; font-family: var(--font-serif); font-size: 15px; color: var(--accent); }
+    .yk-spot-body p { margin: 0 0 11px; font-size: 14.5px; line-height: 1.95; }
+    .yk-official { margin: 0 0 11px !important; display: grid; gap: 5px; }
+    .yk-official a { font-size: 13px; color: var(--ink); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .yk-official a:hover, .yk-official a:focus-visible { color: var(--accent); }
+    .yk-more { margin: 0 !important; font-size: 13px !important; }
+    .yk-more a { color: var(--accent); text-underline-offset: 3px; }
+
+    .yk-tips { max-width: 760px; margin: 0 auto; padding: 62px 20px 0; }
+    .yk-tips h2 { font-family: var(--font-serif); font-size: clamp(21px, 4.2vw, 29px); margin: 0 0 8px; text-align: center; }
+    .yk-tips-lead { max-width: 580px; margin: 0 auto 20px; font-size: 14px; line-height: 1.9; color: var(--ink-soft); text-align: center; }
+    .yk-tip-list { display: grid; gap: 14px; padding: 0; margin: 0; list-style: none; }
+    .yk-tip-list li { border-left: 3px solid var(--accent-soft); padding: 2px 0 2px 16px; font-size: 14.5px; line-height: 1.95; }
+    .yk-tip-list strong { display: block; font-family: var(--font-serif); font-size: 16px; margin-bottom: 4px; }
+    .yk-note { max-width: 760px; margin: 0 auto; padding: 56px 20px 0; }
+    .yk-note-card { border: 1px dashed var(--line); border-radius: var(--radius); padding: 20px 22px; }
+    .yk-note-card h2 { font-size: 14px; letter-spacing: .08em; margin: 0 0 10px; }
+    .yk-note-card p { margin: 0 0 9px; font-size: 12.5px; line-height: 1.9; color: var(--ink-soft); }
+    .yk-note-card p:last-child { margin-bottom: 0; }
+
+    .yk-article > .yk-tool,
+    .yk-article > .yk-section,
+    .yk-article > .yk-tips,
+    .yk-article > .yk-note { max-width: none; padding-left: 0; padding-right: 0; }
+    @media (max-width: 1099px) {
+      .yk-article > .yk-tool,
+      .yk-article > .yk-section,
+      .yk-article > .yk-tips,
+      .yk-article > .yk-note { padding-left: 20px; padding-right: 20px; }
+    }
+    @media (max-width: 720px) {
+      .yk-hero { padding: 72px 20px 52px; }
+      .yk-spot { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+      .yk-row { grid-template-columns: 56px 1fr; }
+      .yk-row-badge { grid-column: 2; justify-self: start; }
+    }
+  </style>
+  <script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+</head>
+<body class="yakei-page spot-page spot-page-utility" data-page="yakei" data-spot-page-shared-context="utility" data-spot-page-shared-lang="ja" data-spot-page-shared-root="./" data-spot-page-shared-route="yakei.html">
+  <div data-spot-page-shared-module="topbar"></div>
+
+  <main>
+    <section class="yk-hero" aria-labelledby="ykTitle">
+      <div class="yk-hero-inner">
+        <p class="eyebrow">NIGHT WINDOW</p>
+        <h1 id="ykTitle">新幹線の夜景</h1>
+        <p class="yk-hero-lead"><span class="copy-chunk">夜の窓に映るのは、たいてい自分の顔です。</span><span class="copy-chunk">外が暗いからではなく、</span><span class="copy-chunk">車内のほうが明るいから。</span><span class="copy-chunk">手で影をつくると、</span><span class="copy-chunk">そこにちゃんと景色があります。</span><span class="copy-chunk">東海道新幹線の夜景を、</span><span class="copy-chunk">帰りの車窓のために。</span></p>
+        <p class="yk-hero-credit">写真：新幹線の窓（名古屋駅前）</p>
+      </div>
+    </section>
+
+    <div class="spot-page-shell yakei-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article yk-article">
+
+    <section class="yk-tool" aria-labelledby="ykToolTitle">
+      <div class="yk-tool-card">
+        <h2 id="ykToolTitle">その列車、どこから暗くなるか</h2>
+        <p class="yk-tool-note"><span class="copy-chunk">日の入りは季節で1時間以上ずれます。</span><span class="copy-chunk">12月なら小田原の手前でもう暗く、</span><span class="copy-chunk">7月なら名古屋を過ぎてもまだ明るい。</span><span class="copy-chunk">東海道新幹線の東京〜新大阪について、</span><span class="copy-chunk">乗る日と出発時刻を入れてください。</span></p>
+        <form class="yk-form" id="ykForm">
+          <div class="yk-field">
+            <label for="ykDir">方向</label>
+            <select id="ykDir">
+              <option value="down">東京発（下り）</option>
+              <option value="up">新大阪発（上り）</option>
+            </select>
+          </div>
+          <div class="yk-field">
+            <label for="ykTime">出発時刻</label>
+            <input type="time" id="ykTime" value="19:00" step="300">
+          </div>
+          <div class="yk-field">
+            <label for="ykDate">乗車日</label>
+            <input type="date" id="ykDate">
+          </div>
+        </form>
+        <div class="yk-result" id="ykResult" aria-live="polite"></div>
+        <p class="yk-summary" id="ykSummary"></p>
+        <p class="yk-tool-disclaimer">通過時刻はのぞみ基準の目安です（東京〜新大阪を147分として計算）。停車駅の多い列車や遅れがあるとずれます。日の入りは東海道沿線の平均で近似した簡易計算で、実際の空の明るさは天候にも左右されます。</p>
+      </div>
+    </section>
+
+  <section class="yk-section" id="color" aria-labelledby="color-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">TONIGHT'S COLOUR</p>
+      <h2 id="color-title">今夜、何色か — 日替わりのライトアップ</h2>
+      <p class="yk-section-lead"><span class="copy-chunk">照明の色が日によって変わる車窓です。</span><span class="copy-chunk">同じ列車に乗っても、</span><span class="copy-chunk">乗る日が違えば違う色が見えます。</span></p>
+    </div>
+    <article class="yk-spot" id="yk-tokyo-tower">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_tokyo_tower_night_michikusa.webp" alt="夜の新幹線から見える東京タワー" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から3分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>東京タワー</h3>
+        <p class="yk-spot-lead">その日の色が決まっている</p>
+        <p>東京駅を出て3分。ビルの切れ間に、赤い塔が立っています。</p>
+        <p>東京タワーの照明は毎日同じではありません。通常の「ランドマークライト」は夏が白色、冬が暖色。記念日やイベントの日は「ダイヤモンドヴェール」でピンクや虹色に変わります。<strong>乗る日によって色が違う</strong>、という意味では、このページで最初に出会う「今日だけの車窓」です。</p>
+        <p>発車直後で、まだ荷物を片付けている時間帯です。座ってすぐ右を見る、と決めておかないと通り過ぎます。</p>
+        <p class="yk-more"><a href="spots/tokyo-tower.html">東京タワーの車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot has-day-photo" id="yk-odawara-castle">
+      <figure class="yk-figure is-day">
+        <img src="images/thumbs/20250526_odawara_castle_letus10.webp" alt="新幹線のA席側から見える小田原城" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：<a href="https://cotetu.seesaa.net/article/516754194.html" target="_blank" rel="noopener noreferrer">@letus10 / 新幹線の車窓から</a><span class="yk-day-note">これは昼の写真です。夜の車窓写真はまだ集まっていません。</span></figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から31分</span><span class="yk-side yk-side-a">A席側</span></p>
+        <h3>小田原城</h3>
+        <p class="yk-spot-lead">その日の色が決まっている</p>
+        <p>小田原城の天守閣は、公式案内によれば<strong>毎日、日没から21時までライトアップ</strong>されています。さらに、啓発事業などに合わせて色を変える「カラーライトアップ」があり、その月ごとの予定が公式サイトで公開されています。</p>
+        <p>つまり東京タワーと同じで、<strong>その日に何色かが決まっている</strong>車窓です。しかもこちらはA席側。東京を出て最初の30分のあいだに、右に東京タワー、左に小田原城と、色の決まった建物が続けて現れることになります。</p>
+      <p class="yk-official"><a href="https://odawaracastle.com/" target="_blank" rel="noopener noreferrer">小田原城 公式サイト（カラーライトアップ予定）</a></p>
+        <p class="yk-more"><a href="spots/odawara-castle.html">小田原城の車窓ページを見る</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="yk-section" id="lightup" aria-labelledby="lightup-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">SEASONAL LIGHT-UP</p>
+      <h2 id="lightup-title">時期が合えば、城が光る — 期間限定のライトアップ</h2>
+      <p class="yk-section-lead"><span class="copy-chunk">通年ではなく、</span><span class="copy-chunk">季節やイベントに合わせて点灯する城です。</span><span class="copy-chunk">日程は年によって変わるので、</span><span class="copy-chunk">公式案内へのリンクを置いています。</span></p>
+    </div>
+    <article class="yk-spot" id="yk-kiyosu">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20250309_kiyosu_castle_lightup_asami_k920.webp" alt="ライトアップされた清洲城" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：<a href="https://x.com/asami_k920/status/1898673771084492889" target="_blank" rel="noopener noreferrer">@asami_k920</a></figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から99分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>清洲城</h3>
+        <p class="yk-spot-lead">期間限定のライトアップ</p>
+        <p>名古屋を出てすぐ、五条川のそばに朱色の天守が立っています。線路との距離が近く、昼でもよく目立つスポットです。</p>
+        <p>夜のライトアップは通年ではなく、冬の「きよすイルミ」や春の清洲城桜まつりなど<strong>時期を区切って</strong>行われます。開催時期は年によって変わるので、公式案内で確認してください。</p>
+      <p class="yk-official"><a href="https://kiyosu-kanko.org/" target="_blank" rel="noopener noreferrer">清須市観光協会（きよすイルミ等）</a></p>
+        <p class="yk-more"><a href="spots/kiyosu.html">清洲城の車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot has-day-photo" id="yk-kakegawa">
+      <figure class="yk-figure is-day">
+        <img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="新幹線のE席側から見える掛川城" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓<span class="yk-day-note">これは昼の写真です。夜の車窓写真はまだ集まっていません。</span></figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から62分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>掛川城</h3>
+        <p class="yk-spot-lead">期間限定のライトアップ</p>
+        <p>掛川城は線路のすぐ近くに建っていて、昼はよく見えるスポットです。夜のライトアップは、掛川桜の時期（2月下旬〜3月中旬）や、8月の「水の週間」に合わせた青色の点灯など、<strong>期間を区切って行われるもの</strong>が確認できました。</p>
+        <p>通年で毎晩点灯しているかどうかは、今回の調べでは一次情報で確認できませんでした。時期が合えば、という前提で公式案内を見てください。</p>
+      <p class="yk-official"><a href="https://kakegawajo.com/" target="_blank" rel="noopener noreferrer">掛川城 公式サイト</a></p>
+        <p class="yk-more"><a href="spots/kakegawa.html">掛川城の車窓ページを見る</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="yk-section" id="citylight" aria-labelledby="citylight-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">SEA OF LIGHTS</p>
+      <h2 id="citylight-title">光の海 — 街あかりの夜景</h2>
+      <p class="yk-section-lead"><span class="copy-chunk">街そのものが車窓になる区間です。</span><span class="copy-chunk">昼は建物、夜は明かりの数。</span></p>
+    </div>
+    <article class="yk-spot" id="yk-musashi-kosugi-towers">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_musashi_kosugi_towers_night_michikusa.webp" alt="夜の新幹線から見える武蔵小杉のタワマン群" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から14分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>武蔵小杉のタワマン群</h3>
+        <p class="yk-spot-lead">窓明かりが積み上がる</p>
+        <p>多摩川を渡った直後、高層マンションの群れが近づきます。昼はグレーの塊ですが、夜はひとつひとつの窓の明かりが縦に積み上がって見えます。</p>
+        <p>誰かの生活の数だけ光がある、という見方をすると、同じ建物がまったく違って見えます。</p>
+        <p class="yk-more"><a href="spots/musashi-kosugi-towers.html">武蔵小杉のタワマン群の車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-nagoya-station-skyline">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_2158_nagoya_station_night_michikusa.webp" alt="夜の新幹線から見える名古屋駅前" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から94分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>名古屋駅前</h3>
+        <p class="yk-spot-lead">光の塊が近づく</p>
+        <p>名古屋に着く手前、駅前の高層ビル群がまとまった光の塊として近づいてきます。減速しながら近づくので、東京や新大阪の到着前より見ている時間が長く取れます。</p>
+        <p>降りる人は席を立ちたくなる時間ですが、あと1分だけ窓を見る価値があります。</p>
+        <p class="yk-more"><a href="spots/nagoya-station-skyline.html">名古屋駅前の車窓ページを見る</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="yk-section" id="onlyatnight" aria-labelledby="onlyatnight-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">BETTER AFTER DARK</p>
+      <h2 id="onlyatnight-title">夜のほうが面白いもの — 定番ではない夜景</h2>
+      <p class="yk-section-lead"><span class="copy-chunk">観光地の夜景ではありません。</span><span class="copy-chunk">昼は素通りしているのに、</span><span class="copy-chunk">暗くなると急に主役になるものたちです。</span></p>
+    </div>
+    <article class="yk-spot" id="yk-maruko-bridge">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_2320_maruko_bridge_night_michikusa.webp" alt="夜の新幹線から見える丸子橋付近" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から13分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>丸子橋</h3>
+        <p class="yk-spot-lead">多摩川に伸びる灯り</p>
+        <p>多摩川を渡る短い時間に、下流側へ橋の灯りが一列に伸びます。昼は川と橋というだけの景色ですが、夜は光の線だけが残ります。</p>
+        <p>川の上は建物がないので、車窓としては視界がいちばん開けるポイントのひとつです。</p>
+        <p class="yk-more"><a href="spots/maruko-bridge.html">丸子橋の車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-shimizu-port-chikyu">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_2242_shimizu_port_chikyu_night_michikusa.webp" alt="夜の新幹線から見える清水港とちきゅう" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から50分</span><span class="yk-side yk-side-a">A席側</span></p>
+        <h3>清水港とちきゅう</h3>
+        <p class="yk-spot-lead">港の作業灯</p>
+        <p>海側の遠くに、港の照明がまとまって見えます。停泊していれば地球深部探査船「ちきゅう」の櫓も、細い光の柱として見分けられることがあります。</p>
+        <p>観光地の夜景ではなく、夜も動いている場所の灯りです。</p>
+        <p class="yk-more"><a href="spots/shimizu-port-chikyu.html">清水港とちきゅうの車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-nichiban-anjo">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_nichiban_anjo_night_michikusa.webp" alt="夜の新幹線から見えるセロテープの壁看板" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から85分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>セロテープの壁看板</h3>
+        <p class="yk-spot-lead">夜のほうが目立つ</p>
+        <p>工場の壁に描かれた大きな看板です。昼は壁の一部として流れていきますが、夜は照明が当たって暗闇に文字だけが浮かびます。</p>
+        <p><strong>昼より夜のほうが見つけやすい、数少ない車窓</strong>です。</p>
+        <p class="yk-more"><a href="spots/nichiban-anjo.html">セロテープの壁看板の車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-seta-karahashi">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_2125_seta_karahashi_night_michikusa.webp" alt="夜の新幹線から見える瀬田の唐橋付近" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から127分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>瀬田の唐橋</h3>
+        <p class="yk-spot-lead">水面に落ちる光</p>
+        <p>瀬田川を渡る一瞬に、橋の灯りと、それが水面に落ちた光が見えます。</p>
+        <p>「唐橋を制する者は天下を制す」と言われた橋ですが、夜はそういう歴史よりも、静かな水面のほうが記憶に残ります。</p>
+        <p class="yk-more"><a href="spots/seta-karahashi.html">瀬田の唐橋の車窓ページを見る</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-torikai-train-depot">
+      <figure class="yk-figure">
+        <img src="images/thumbs/20260629_torikai_train_depot_night_michikusa.webp" alt="夜の新幹線から見える鳥飼車両基地" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>写真：新幹線の窓</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">東京から141分</span><span class="yk-side yk-side-e">E席側</span></p>
+        <h3>鳥飼車両基地</h3>
+        <p class="yk-spot-lead">眠る新幹線の列</p>
+        <p>新大阪の手前、車両基地に何本もの新幹線が並んで停まっています。夜は照明の下に白い車体が並び、昼とはまったく違う迫力になります。</p>
+        <p>自分が乗っている車両と同じものが、明かりの中で休んでいる。<strong>旅の終わりに見るものとして、これ以上ないと思います。</strong></p>
+        <p class="yk-more"><a href="spots/torikai-train-depot.html">鳥飼車両基地の車窓ページを見る</a></p>
+      </div>
+    </article>
+  </section>
+
+    <section class="yk-tips" aria-labelledby="ykTipsTitle">
+      <h2 id="ykTipsTitle">夜の車窓の見方</h2>
+      <p class="yk-tips-lead">ここがこのページでいちばん実用的な部分だと思っています。</p>
+      <ul class="yk-tip-list">
+        <li><strong>敵は距離ではなく、車内の照明</strong>夜の車窓が見えない原因のほとんどは、外の暗さではなく車内の光の映り込みです。窓は鏡になっています。顔と両手で窓のまわりを囲って影をつくると、数秒で目が慣れて外が見えてきます。座ったまま、周りに気づかれずにできます。</li>
+        <li><strong>暗い席を探すより、影をつくる</strong>客室の照明は基本的に落ちません。空いている暗い席を探して移動するより、いま座っている窓に影をつくるほうが確実で早いです。</li>
+        <li><strong>撮るなら、レンズを窓ガラスに密着させる</strong>スマホを窓から離すほど車内の光が写り込みます。レンズを直接ガラスに当てると映り込みがほぼ消えます。走行中の夜間撮影はぶれやすいので、まず肉眼で見ておくのが確実です。</li>
+        <li><strong>暗い側と明るい側がある</strong>市街地を抜けると、片側だけ真っ暗ということが起こります。E席側とA席側で見えるものが違うので、上の判定で席側も確認してください。</li>
+      </ul>
+    </section>
+
+    <section class="yk-note" aria-labelledby="ykNoteTitle">
+      <div class="yk-note-card">
+        <h2 id="ykNoteTitle">掲載について</h2>
+        <p>ライトアップの実施日・点灯時間・色は、年や事情によって変わります。このページでは日付を断定せず、各施設の公式案内へのリンクを置いています。乗車前に必ず公式でご確認ください。</p>
+        <p>小田原城と掛川城は、当サイトがまだ夜の車窓写真を持っていません。そのため昼の写真を掲載しています。ライトアップが行われていることと、走行中の新幹線から見えることは別の話なので、「見える」とは書いていません。夜の車窓から撮れた写真をお持ちの方は、お問い合わせからご連絡いただけると助かります。</p>
+        <p>写真のうち清洲城は @asami_k920 さん、小田原城は @letus10 さんの許諾済み写真です。それ以外は当サイトの撮影です。通過時刻と日の入りはいずれも目安の計算で、実際の見え方は列車・天候・座席位置によって変わります。</p>
+      </div>
+    </section>
+
+      </article>
+    </div>
+
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
+    <p>時刻は目安です。列車・天候・座席位置により見え方は変わります。</p>
+    <p class="footer-links"><a href="index.html">TOP</a> · <a href="guide.html">富士山の見方</a> · <a href="zukan.html">車窓図鑑</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p>
+    <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+  </footer>
+
+  <script>
+    window.YAKEI_SPOTS = [{"id":"tokyo-tower","min":3,"side":"E"},{"id":"maruko-bridge","min":13,"side":"E"},{"id":"musashi-kosugi-towers","min":14,"side":"E"},{"id":"odawara-castle","min":31,"side":"A"},{"id":"shimizu-port-chikyu","min":50,"side":"A"},{"id":"kakegawa","min":62,"side":"E"},{"id":"nichiban-anjo","min":85,"side":"E"},{"id":"nagoya-station-skyline","min":94,"side":"E"},{"id":"kiyosu","min":99,"side":"E"},{"id":"seta-karahashi","min":127,"side":"E"},{"id":"torikai-train-depot","min":141,"side":"E"}];
+    window.YAKEI_NAMES = {"tokyo-tower":"東京タワー","maruko-bridge":"丸子橋","musashi-kosugi-towers":"武蔵小杉のタワマン群","odawara-castle":"小田原城","shimizu-port-chikyu":"清水港とちきゅう","kakegawa":"掛川城","nichiban-anjo":"セロテープの壁看板","nagoya-station-skyline":"名古屋駅前","kiyosu":"清洲城","seta-karahashi":"瀬田の唐橋","torikai-train-depot":"鳥飼車両基地"};
+    window.YAKEI_TOTAL_MINUTES = 147;
+    window.YAKEI_LANG = "ja";
+  </script>
+  <script src="spot-page-shared-data.js?v=20260814-castle-lightup"></script>
+  <script src="spot-page-shared.js?v=20260814-yakei-card"></script>
+  <script src="yakei.js?v=20260814-yakei"></script>
+</body>
+</html>

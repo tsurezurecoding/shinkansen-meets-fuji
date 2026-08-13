@@ -1351,11 +1351,13 @@ const SPOTS = [
         "現在の天守は1960年（昭和35年）に鉄筋コンクリートで復興されたもので、江戸時代の絵図や旧模型を参考に、宝永期（18世紀初め）の姿を基本として外観復元されています。内部は歴史博物館で、北条氏の資料や小田原の街の変遷を伝える展示があり、最上階からは相模湾と箱根の山を一望できます。",
         "明治維新後、多くの城と同様に小田原城も一度は取り壊されましたが、戦後、市民の再建運動を経て天守が復興し、平成には常盤木門・銅門などの主要櫓門も伝統工法で再現されました。城址公園全体が国の史跡に指定されており、線路のすぐそばに歴史そのものが残るのは、東海道新幹線の車窓でも珍しい景色です。",
         "のぞみでは駅を通過するため見える時間は本当に一瞬です。停車するひかり・こだまでも、A席側の窓越しに樹木と街の合間から天守を探すことになります。見えたら、その日は少し運が良かったと思って良い車窓です。",
+        "夜は条件が変わります。小田原城の公式案内によれば、天守閣は毎日、日没から21時までライトアップされています。さらに啓発事業などに合わせて色を変える「カラーライトアップ」があり、その月の予定は公式サイトで公開されています。つまり夜に通る場合は、樹木の影の中に「その日の色」を探すことになります。",
       ],
       en: [
         "The keep you see today was rebuilt in 1960 in reinforced concrete, its exterior modeled on the early-1700s (Hoei-era) form using old diagrams and models. Inside is a history museum with materials on the Hojo clan and the city's evolution; the top floor looks out over Sagami Bay and the Hakone mountains.",
         "Odawara Castle, like many others, was dismantled after the Meiji Restoration. Postwar civic campaigns rebuilt the keep, and in the Heisei era the Tokiwagi Gate and Akagane Gate were reconstructed using traditional techniques. The whole castle grounds are designated a National Historic Site — an unusually intact piece of history right beside the Shinkansen line.",
         "On a Nozomi passing through, the view is over in a moment. Even on stopping Hikari and Kodama services, you have to catch the keep between trees and buildings on the Seat A side. If you spot it, count it as a small piece of luck.",
+        "At night the odds change. According to the castle's official guide, the keep is lit every evening from sunset until 21:00, and a separate colour light-up tied to awareness campaigns changes which colour it shows, with the schedule for each month published on the official site. Travelling after dark, you are looking for a specific colour among the trees.",
       ],
     },
     guideHighlight: {
@@ -1933,11 +1935,13 @@ const SPOTS = [
         "現在の天守は1994年、市民の寄付を核に約10億円を集めて再建されました。江戸期に描かれた「東海道分間延絵図」などを参考に、往時の外観を忠実に再現した本格木造復元天守で、全国の木造復元天守の先駆けとして知られます。三重四階、白漆喰の壁と黒い下見板張り、望楼型の意匠が特徴で、丘の上から掛川の街と茶畑を見下ろします。",
         "天守の南麓に残る二の丸御殿は、1861年（文久元年）に再建された江戸後期の書院造建築で、御殿としては全国に4棟しか残っていない貴重な現存例です。式台・広間・書院と続く格式ある間取りは、当時の政務空間そのままで、国指定重要文化財に指定されています。新幹線からは天守しか見えませんが、実は「本物の御殿」がその麓にある——という点は覚えておくと面白いポイントです。",
         "見つけ方は、掛川駅の少し東側からE席側の丘を意識するのがコツ。駅の北側にこんもりした緑の丘があり、その上に白い建物が立ちます。周辺は再開発でビルが増えていますが、天守は今も駅から歩いて数分の場所にあり、時間があれば掛川駅で下車して立ち寄る価値があります。",
+        "夜のライトアップは、掛川桜の時期（2月下旬〜3月中旬）や、8月の「水の週間」に合わせた青色の点灯など、期間を区切って行われるものが確認できています。通年で毎晩点灯しているかどうかは公式の一次情報で確認できていないため、夜に狙う場合は事前に掛川城の公式案内を見てください。",
       ],
       en: [
         "The keep you see today was reconstructed in 1994, funded largely by citizen donations totaling about a billion yen. Modeled on Edo-period pictorial records of the Tokaido, it is a full-scale wooden reconstruction — a pioneer among modern wooden castle reconstructions in Japan. It rises as a three-tier, four-story tower with white plaster walls and black wooden cladding in a watchtower (bogaku) style, looking out over Kakegawa and the surrounding tea fields.",
         "At the foot of the keep stands the Ninomaru Palace, rebuilt in 1861 in the late-Edo shoin style. Only four such castle palaces survive in Japan, making this an unusually rare example. Its arrangement — entrance hall, great hall, and inner audience rooms — preserves the layout of actual daimyo administrative space, and it is registered as a Nationally Designated Important Cultural Property. You cannot see it from the train, but it is worth knowing that the 'real' palace sits beneath the reconstructed keep.",
         "For spotting: start watching the Seat E side a little before Kakegawa Station. Look for a low green hill just north of the station with a white building on top. Newer buildings crowd the surroundings, but the castle is still only a few minutes' walk from the station — a good stop if you have time on another trip.",
+        "Evening light-ups are seasonal here. What can be confirmed are the Kakegawa cherry blossom period from late February to mid-March, and a blue illumination during Water Week in early August. Whether the keep is lit every night year-round is not confirmed by a primary source, so check the castle's official information before counting on it after dark.",
       ],
     },
     guideHighlight: {
@@ -2640,11 +2644,13 @@ const SPOTS = [
         "江戸時代初期の1610年、徳川家康の命で始まった「清洲越し」により、清洲の街と城の機能はまるごと新設の名古屋城下へ移されました。清洲城はこのとき廃城となり、以後、城郭建築は残っていません。現在、五条川のほとりに立つ白と朱の天守は、1989年（平成元年）に清須市が観光・地域振興のために建てた模擬天守です。史実の外観を復元したものではありませんが、鮮やかな色合いと立地の良さから、清須の新しいランドマークになっています。",
         "内部は歴史資料の展示や体験施設になっており、映像や模型で信長・秀吉・家康と清洲の関わりを学ぶことができます。天守と五条川、朱色の大手橋、周辺に整備された「清洲城信長公園」を含めた景観は、桜の季節を中心に地元でも人気です。",
         "新幹線からは、線路のすぐ北側に朱色の欄干と白い壁が突然あらわれるので、事前にE席側の窓を見ておくのがコツ。速度が出ているので数秒ですが、これだけ線路と接近して見える城は東海道新幹線でも珍しく、印象に残ります。",
+        "夜のライトアップは通年ではなく、冬の「きよすイルミ」や春の清洲城桜まつりなど時期を区切って行われます。点灯している夜に通りかかると、暗い車窓に朱色の天守だけが浮かび上がり、昼とはまったく違う見え方になります。開催時期は年によって変わるので、清須市の公式案内で確認してください。",
       ],
       en: [
         "In 1610, under Tokugawa Ieyasu's orders, the so-called Kiyosu-goshi ('Kiyosu Move') relocated the entire town and castle functions of Kiyosu to the new Nagoya Castle town. Kiyosu Castle was decommissioned then, and no castle-era buildings survive. The white-and-vermilion keep you see today beside the Gojo River is a modern reconstruction, built by Kiyosu City in 1989 for tourism and civic revitalization. It is not a faithful restoration of the historical keep, but its vivid coloring and prominent site have made it a fresh local landmark.",
         "Inside, exhibits and interactive displays show how Nobunaga, Hideyoshi and Ieyasu were connected to Kiyosu. The keep, the river, the red Ote Bridge and the surrounding Kiyosu Castle Nobunaga Park form a scenic ensemble, especially popular in cherry-blossom season.",
         "From the train, the red railings and white walls of the keep flash into view just north of the tracks, so look toward the Seat E window in advance. At Shinkansen speed the view lasts only a few seconds — but few castles along the Tokaido line come this close to the rails, which is exactly what makes the moment memorable.",
+        "The night illumination is seasonal rather than year-round: it runs during the winter Kiyosu Illumi and the spring cherry blossom festival. If you pass on a night when it is lit, the vermilion keep is the only thing floating in an otherwise black window. Dates change from year to year, so check the city's official information.",
       ],
     },
     guideHighlight: {

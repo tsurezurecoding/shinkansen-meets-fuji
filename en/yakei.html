@@ -1,0 +1,427 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>Night Views from the Shinkansen | Illuminations from the window, and when it gets dark | Shinkansen Window</title>
+  <meta name="description" content="Night views from the Tokaido Shinkansen window: the Tokyo Tower and Odawara Castle illuminations, seasonal castle light-ups, city lights, and a depot of sleeping trains. Enter your departure time to find where your train goes dark.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/yakei.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/yakei.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/yakei.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/yakei.html">
+  <link rel="stylesheet" href="../style.css?v=20260814-yakei">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shinkansen Window">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Night Views from the Shinkansen">
+  <meta property="og:description" content="At night the window becomes a mirror. How to see past it, and the eleven things worth looking for. Enter a departure time to find where darkness starts.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/20260629_2158_nagoya_station_night_michikusa.jpg">
+  <meta property="og:image:alt" content="The lights of Nagoya Station seen from a Shinkansen at night">
+  <meta property="og:url" content="https://www.michikusa-travel.com/en/yakei.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Night Views from the Shinkansen">
+  <meta name="twitter:description" content="At night the window becomes a mirror. How to see past it, and the eleven things worth looking for. Enter a departure time to find where darkness starts.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/20260629_2158_nagoya_station_night_michikusa.jpg">
+  <meta name="twitter:image:alt" content="The lights of Nagoya Station seen from a Shinkansen at night">
+  <script src="../language-router.js?v=20260814-yakei"></script>
+  <style>
+    .yakei-page main { padding-bottom: 40px; }
+    .yk-hero { position: relative; isolation: isolate; background: var(--night); color: #fff; padding: 96px 20px 72px; overflow: hidden; }
+    .yk-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("../images/20260629_2158_nagoya_station_night_michikusa.jpg"); background-size: cover; background-position: center 55%; }
+    .yk-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8,17,32,.72) 0%, rgba(8,17,32,.8) 55%, rgba(8,17,32,.94) 100%); }
+    .yk-hero-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+    .yk-hero .eyebrow { color: var(--accent-soft); }
+    .yk-hero h1 { font-family: var(--font-serif); font-size: clamp(28px, 6vw, 44px); line-height: 1.42; margin: 0 0 20px; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+    .yk-hero-lead { color: rgba(255,255,255,.9); font-size: 15px; line-height: 1.95; margin: 0 auto; max-width: 620px; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
+    .yk-hero-credit { margin: 24px 0 0; color: rgba(255,255,255,.45); font-size: 10.5px; }
+
+    .yk-tool { max-width: 760px; margin: 0 auto; padding: 40px 20px 0; }
+    .yk-tool-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 22px; box-shadow: var(--shadow); }
+    .yk-tool-card h2 { font-family: var(--font-serif); font-size: 20px; margin: 0 0 6px; }
+    .yk-tool-note { margin: 0 0 16px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
+    .yk-form { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; border-top: 1px solid var(--line); padding-top: 16px; }
+    .yk-field { display: grid; gap: 5px; }
+    .yk-field label { font-size: 11.5px; letter-spacing: .06em; color: var(--ink-soft); font-weight: 700; }
+    .yk-field select, .yk-field input { font-family: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+    .yk-result { margin-top: 18px; display: grid; gap: 6px; }
+    .yk-row { display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 10px; background: var(--paper-deep); }
+    .yk-row.is-dark { background: #16273a; color: #f3f6fa; }
+    .yk-row.is-dusk { background: #3a3550; color: #f3f6fa; }
+    .yk-row-time { font-variant-numeric: tabular-nums; font-size: 14px; font-weight: 700; }
+    .yk-row-name { font-size: 13.5px; min-width: 0; }
+    .yk-row-name a { color: inherit; text-underline-offset: 3px; }
+    .yk-row-badge { font-size: 10.5px; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+    .yk-row.is-dark .yk-row-badge, .yk-row.is-dusk .yk-row-badge { background: rgba(255,255,255,.16); }
+    .yk-row.is-light .yk-row-badge { background: rgba(22,32,46,.09); color: var(--ink-soft); }
+    .yk-row-side { font-size: 10.5px; opacity: .8; margin-left: 6px; }
+    .yk-summary { margin: 14px 0 0; font-size: 13px; line-height: 1.9; padding: 12px 14px; border-radius: 10px; background: var(--paper-deep); }
+    .yk-tool-disclaimer { margin: 12px 0 0; font-size: 11.5px; line-height: 1.8; color: var(--ink-soft); }
+
+    .yk-section { max-width: 900px; margin: 0 auto; padding: 62px 20px 0; }
+    .yk-section-head { text-align: center; margin-bottom: 26px; }
+    .yk-section-head h2 { font-family: var(--font-serif); font-size: clamp(21px, 4.2vw, 29px); margin: 0 0 12px; }
+    .yk-section-lead { max-width: 580px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: var(--ink-soft); }
+    .yk-spot { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 20px; margin-bottom: 22px; }
+    .yk-figure { margin: 0; }
+    .yk-figure img { display: block; width: 100%; height: auto; border-radius: 12px; }
+    .yk-figure.is-day img { filter: saturate(.82) brightness(.94); }
+    .yk-figure figcaption { margin-top: 7px; font-size: 10.5px; color: var(--ink-soft); line-height: 1.6; }
+    .yk-figure figcaption a { color: inherit; text-underline-offset: 3px; }
+    .yk-day-note { display: block; margin-top: 4px; padding-left: 8px; border-left: 2px solid var(--accent-soft); color: var(--ink-soft); }
+    .yk-spot-body h3 { font-family: var(--font-serif); font-size: clamp(19px, 3.4vw, 24px); margin: 0 0 8px; }
+    .yk-spot-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+    .yk-min, .yk-side { font-size: 10.5px; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; background: var(--paper-deep); color: var(--ink-soft); }
+    .yk-side-e { background: #dceaf6; color: #1d4b70; }
+    .yk-side-a { background: #f7e2d6; color: #8a4326; }
+    .yk-spot-lead { margin: 0 0 12px; font-family: var(--font-serif); font-size: 15px; color: var(--accent); }
+    .yk-spot-body p { margin: 0 0 11px; font-size: 14.5px; line-height: 1.95; }
+    .yk-official { margin: 0 0 11px !important; display: grid; gap: 5px; }
+    .yk-official a { font-size: 13px; color: var(--ink); text-underline-offset: 3px; overflow-wrap: anywhere; }
+    .yk-official a:hover, .yk-official a:focus-visible { color: var(--accent); }
+    .yk-more { margin: 0 !important; font-size: 13px !important; }
+    .yk-more a { color: var(--accent); text-underline-offset: 3px; }
+
+    .yk-tips { max-width: 760px; margin: 0 auto; padding: 62px 20px 0; }
+    .yk-tips h2 { font-family: var(--font-serif); font-size: clamp(21px, 4.2vw, 29px); margin: 0 0 8px; text-align: center; }
+    .yk-tips-lead { max-width: 580px; margin: 0 auto 20px; font-size: 14px; line-height: 1.9; color: var(--ink-soft); text-align: center; }
+    .yk-tip-list { display: grid; gap: 14px; padding: 0; margin: 0; list-style: none; }
+    .yk-tip-list li { border-left: 3px solid var(--accent-soft); padding: 2px 0 2px 16px; font-size: 14.5px; line-height: 1.95; }
+    .yk-tip-list strong { display: block; font-family: var(--font-serif); font-size: 16px; margin-bottom: 4px; }
+    .yk-note { max-width: 760px; margin: 0 auto; padding: 56px 20px 0; }
+    .yk-note-card { border: 1px dashed var(--line); border-radius: var(--radius); padding: 20px 22px; }
+    .yk-note-card h2 { font-size: 14px; letter-spacing: .08em; margin: 0 0 10px; }
+    .yk-note-card p { margin: 0 0 9px; font-size: 12.5px; line-height: 1.9; color: var(--ink-soft); }
+    .yk-note-card p:last-child { margin-bottom: 0; }
+
+    .yk-article > .yk-tool,
+    .yk-article > .yk-section,
+    .yk-article > .yk-tips,
+    .yk-article > .yk-note { max-width: none; padding-left: 0; padding-right: 0; }
+    @media (max-width: 1099px) {
+      .yk-article > .yk-tool,
+      .yk-article > .yk-section,
+      .yk-article > .yk-tips,
+      .yk-article > .yk-note { padding-left: 20px; padding-right: 20px; }
+    }
+    @media (max-width: 720px) {
+      .yk-hero { padding: 72px 20px 52px; }
+      .yk-spot { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+      .yk-row { grid-template-columns: 56px 1fr; }
+      .yk-row-badge { grid-column: 2; justify-self: start; }
+    }
+  </style>
+  <script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+</head>
+<body class="yakei-page spot-page spot-page-utility" data-page="yakei" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="yakei.html">
+  <div data-spot-page-shared-module="topbar"></div>
+
+  <main>
+    <section class="yk-hero" aria-labelledby="ykTitle">
+      <div class="yk-hero-inner">
+        <p class="eyebrow">NIGHT WINDOW</p>
+        <h1 id="ykTitle">Night Views from the Shinkansen</h1>
+        <p class="yk-hero-lead">What you usually see in a night window is your own face &mdash; not because it is dark outside, but because it is brighter inside. Cup your hands against the glass and the view is still there. Night views along the Tokaido Shinkansen, for the ride home.</p>
+        <p class="yk-hero-credit">Photo: Shinkansen Window (Nagoya Station)</p>
+      </div>
+    </section>
+
+    <div class="spot-page-shell yakei-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article yk-article">
+
+    <section class="yk-tool" aria-labelledby="ykToolTitle">
+      <div class="yk-tool-card">
+        <h2 id="ykToolTitle">Where does your train go dark?</h2>
+        <p class="yk-tool-note">Sunset moves by more than an hour across the year. In December it is already dark before Odawara; in July it is still light past Nagoya. For the Tokaido Shinkansen between Tokyo and Shin-Osaka, enter the date and time you travel.</p>
+        <form class="yk-form" id="ykForm">
+          <div class="yk-field">
+            <label for="ykDir">Direction</label>
+            <select id="ykDir">
+              <option value="down">From Tokyo (westbound)</option>
+              <option value="up">From Shin-Osaka (eastbound)</option>
+            </select>
+          </div>
+          <div class="yk-field">
+            <label for="ykTime">Departure</label>
+            <input type="time" id="ykTime" value="19:00" step="300">
+          </div>
+          <div class="yk-field">
+            <label for="ykDate">Date of travel</label>
+            <input type="date" id="ykDate">
+          </div>
+        </form>
+        <div class="yk-result" id="ykResult" aria-live="polite"></div>
+        <p class="yk-summary" id="ykSummary"></p>
+        <p class="yk-tool-disclaimer">Passing times are estimates based on a Nozomi run (Tokyo to Shin-Osaka treated as 147 minutes). Trains with more stops, or any delay, will shift them. Sunset is a simplified calculation averaged along the Tokaido corridor, and how bright the sky actually looks also depends on the weather.</p>
+      </div>
+    </section>
+
+  <section class="yk-section" id="color" aria-labelledby="color-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">TONIGHT'S COLOUR</p>
+      <h2 id="color-title">What colour is it tonight — nightly illuminations</h2>
+      <p class="yk-section-lead">Two views whose lighting changes from day to day. Take the same train a week later and the colour is different.</p>
+    </div>
+    <article class="yk-spot" id="yk-tokyo-tower">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_tokyo_tower_night_michikusa.webp" alt="Tokyo Tower seen from the Shinkansen at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">3 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Tokyo Tower</h3>
+        <p class="yk-spot-lead">Its colour is decided for the day</p>
+        <p>Three minutes out of Tokyo Station, a red tower stands in a gap between the buildings.</p>
+        <p>Tokyo Tower is not lit the same way every night. The standard &ldquo;Landmark Light&rdquo; is white in summer and a warm amber in winter, and on anniversaries and event days the &ldquo;Diamond Veil&rdquo; turns it pink, blue or rainbow. <strong>The colour depends on the day you travel</strong> &mdash; the first view on this page that belongs only to tonight.</p>
+        <p>It comes while you are still stowing your bag. Decide before you board that you will look right as soon as you sit down, or you will miss it.</p>
+        <p class="yk-more"><a href="spots/tokyo-tower.html">Open the window page for Tokyo Tower</a></p>
+      </div>
+    </article>
+    <article class="yk-spot has-day-photo" id="yk-odawara-castle">
+      <figure class="yk-figure is-day">
+        <img src="../images/thumbs/20250526_odawara_castle_letus10.webp" alt="Odawara Castle from the Seat A side of the Shinkansen" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: <a href="https://cotetu.seesaa.net/article/516754194.html" target="_blank" rel="noopener noreferrer">@letus10 / 新幹線の車窓から</a><span class="yk-day-note">A daytime photo. We do not have a night shot from the train yet.</span></figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">31 min from Tokyo</span><span class="yk-side yk-side-a">Seat A side</span></p>
+        <h3>Odawara Castle</h3>
+        <p class="yk-spot-lead">Its colour is decided for the day</p>
+        <p>According to the castle's own guide, the Odawara Castle keep is <strong>lit every evening from sunset until 21:00</strong>. On top of that there is a &ldquo;colour light-up&rdquo; tied to awareness campaigns, and the schedule for each month is published on the official site.</p>
+        <p>So, like Tokyo Tower, <strong>its colour is already decided for the night you travel</strong> &mdash; but this one is on the Seat A side. In the first thirty minutes out of Tokyo you pass a colour-of-the-day building on your right, then another on your left.</p>
+      <p class="yk-official"><a href="https://odawaracastle.com/" target="_blank" rel="noopener noreferrer">Odawara Castle official site (colour light-up schedule, Japanese)</a></p>
+        <p class="yk-more"><a href="spots/odawara-castle.html">Open the window page for Odawara Castle</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="yk-section" id="lightup" aria-labelledby="lightup-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">SEASONAL LIGHT-UP</p>
+      <h2 id="lightup-title">Castles, if your timing is right — seasonal illuminations</h2>
+      <p class="yk-section-lead">These keeps are not lit every night. They come on for a season or an event, and the dates move each year, so each one links to its official information.</p>
+    </div>
+    <article class="yk-spot" id="yk-kiyosu">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20250309_kiyosu_castle_lightup_asami_k920.webp" alt="Kiyosu Castle lit up at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: <a href="https://x.com/asami_k920/status/1898673771084492889" target="_blank" rel="noopener noreferrer">@asami_k920</a></figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">99 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Kiyosu Castle</h3>
+        <p class="yk-spot-lead">Lit only in season</p>
+        <p>Just after Nagoya, a vermilion keep stands beside the Gojo River. It is close to the track and easy to spot even in daylight.</p>
+        <p>The night light-up is <strong>not year-round</strong>: it runs during the winter &ldquo;Kiyosu Illumi&rdquo; and the spring cherry blossom festival. Dates move from year to year, so check the official information before you count on it.</p>
+      <p class="yk-official"><a href="https://kiyosu-kanko.org/" target="_blank" rel="noopener noreferrer">Kiyosu City Tourism Association (Japanese)</a></p>
+        <p class="yk-more"><a href="spots/kiyosu.html">Open the window page for Kiyosu Castle</a></p>
+      </div>
+    </article>
+    <article class="yk-spot has-day-photo" id="yk-kakegawa">
+      <figure class="yk-figure is-day">
+        <img src="../images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="Kakegawa Castle from the Seat E side of the Shinkansen" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window<span class="yk-day-note">A daytime photo. We do not have a night shot from the train yet.</span></figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">62 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Kakegawa Castle</h3>
+        <p class="yk-spot-lead">Lit only in season</p>
+        <p>Kakegawa Castle stands very close to the track and is one of the clearest daytime views on the route. For the evening, what we could confirm are <strong>limited-period light-ups</strong>: the Kakegawa cherry blossom season from late February to mid-March, and a blue illumination during Water Week in early August.</p>
+        <p>We could not confirm from a primary source whether the keep is lit every night year-round. Treat it as a seasonal possibility and check the official site.</p>
+      <p class="yk-official"><a href="https://kakegawajo.com/" target="_blank" rel="noopener noreferrer">Kakegawa Castle official site (Japanese)</a></p>
+        <p class="yk-more"><a href="spots/kakegawa.html">Open the window page for Kakegawa Castle</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="yk-section" id="citylight" aria-labelledby="citylight-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">SEA OF LIGHTS</p>
+      <h2 id="citylight-title">A sea of lights — city night views</h2>
+      <p class="yk-section-lead">Stretches where the city itself becomes the view. Buildings by day; by night, a count of lit windows.</p>
+    </div>
+    <article class="yk-spot" id="yk-musashi-kosugi-towers">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_musashi_kosugi_towers_night_michikusa.webp" alt="The Musashi-Kosugi high-rise cluster at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">14 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Musashi-Kosugi towers</h3>
+        <p class="yk-spot-lead">Window lights, stacked</p>
+        <p>Just after the river, a cluster of residential towers closes in. By day they are a grey mass; at night each lit window stacks into a vertical grid.</p>
+        <p>Count them as households rather than windows and the same buildings look completely different.</p>
+        <p class="yk-more"><a href="spots/musashi-kosugi-towers.html">Open the window page for Musashi-Kosugi towers</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-nagoya-station-skyline">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_2158_nagoya_station_night_michikusa.webp" alt="The towers in front of Nagoya Station at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">94 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>The Nagoya Station skyline</h3>
+        <p class="yk-spot-lead">A block of light, closing in</p>
+        <p>On the approach to Nagoya, the towers around the station arrive as one solid block of light. Because the train is already slowing, you get longer with it than with the skylines before Tokyo or Shin-Osaka.</p>
+        <p>It lands exactly when people start standing up. It is worth staying in your seat one more minute.</p>
+        <p class="yk-more"><a href="spots/nagoya-station-skyline.html">Open the window page for The Nagoya Station skyline</a></p>
+      </div>
+    </article>
+  </section>
+
+  <section class="yk-section" id="onlyatnight" aria-labelledby="onlyatnight-title">
+    <div class="yk-section-head">
+      <p class="eyebrow">BETTER AFTER DARK</p>
+      <h2 id="onlyatnight-title">Better after dark — the night views nobody lists</h2>
+      <p class="yk-section-lead">Not scenic night views. Things you slide past without noticing in daylight, which become the main event once it is dark.</p>
+    </div>
+    <article class="yk-spot" id="yk-maruko-bridge">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_2320_maruko_bridge_night_michikusa.webp" alt="Maruko Bridge area from the Shinkansen at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">13 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Maruko Bridge</h3>
+        <p class="yk-spot-lead">Lights strung across the Tama River</p>
+        <p>For the few seconds you are over the Tama River, the bridge lights run downstream in a single line. By day it is a river and a bridge; at night only the line of light is left.</p>
+        <p>Nothing is built on the water, so this is one of the most open views on the whole route.</p>
+        <p class="yk-more"><a href="spots/maruko-bridge.html">Open the window page for Maruko Bridge</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-shimizu-port-chikyu">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_2242_shimizu_port_chikyu_night_michikusa.webp" alt="Shimizu Port and the drilling vessel CHIKYU at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">50 min from Tokyo</span><span class="yk-side yk-side-a">Seat A side</span></p>
+        <h3>Shimizu Port and CHIKYU</h3>
+        <p class="yk-spot-lead">A working harbour, still lit</p>
+        <p>Far out on the sea side, the harbour lights gather into one patch. If the deep-sea drilling vessel CHIKYU is in port, its derrick sometimes reads as a thin column of light.</p>
+        <p>This is not a scenic night view. It is the glow of a place that is still working.</p>
+        <p class="yk-more"><a href="spots/shimizu-port-chikyu.html">Open the window page for Shimizu Port and CHIKYU</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-nichiban-anjo">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_nichiban_anjo_night_michikusa.webp" alt="The CELLOTAPE wall sign glowing at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">85 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>The CELLOTAPE wall sign</h3>
+        <p class="yk-spot-lead">Easier to find after dark</p>
+        <p>A large sign painted on a factory wall. In daylight it slides past as part of the building; at night it is lit, and only the letters float in the dark.</p>
+        <p><strong>One of the very few views on this route that is easier to catch at night than by day.</strong></p>
+        <p class="yk-more"><a href="spots/nichiban-anjo.html">Open the window page for The CELLOTAPE wall sign</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-seta-karahashi">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_2125_seta_karahashi_night_michikusa.webp" alt="The Seta no Karahashi area at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">127 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Seta no Karahashi</h3>
+        <p class="yk-spot-lead">Light falling on water</p>
+        <p>In the instant you cross the Seta River, you get the bridge lights and their reflection on the water at once.</p>
+        <p>This is the bridge of the old saying, &ldquo;hold the Karahashi and you hold the country&rdquo;. At night the history matters less than how still the water is.</p>
+        <p class="yk-more"><a href="spots/seta-karahashi.html">Open the window page for Seta no Karahashi</a></p>
+      </div>
+    </article>
+    <article class="yk-spot" id="yk-torikai-train-depot">
+      <figure class="yk-figure">
+        <img src="../images/thumbs/20260629_torikai_train_depot_night_michikusa.webp" alt="Shinkansen parked at the Torikai depot at night" width="480" height="320" loading="lazy" decoding="async">
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="yk-spot-body">
+        <p class="yk-spot-meta"><span class="yk-min">141 min from Tokyo</span><span class="yk-side yk-side-e">Seat E side</span></p>
+        <h3>Torikai rolling stock depot</h3>
+        <p class="yk-spot-lead">A row of sleeping trains</p>
+        <p>Before Shin-Osaka, rows of Shinkansen sit parked in the depot. Under the floodlights the white bodies line up with a weight they never have in daylight.</p>
+        <p>The same train you are riding, resting in the light. <strong>There is no better thing to see at the end of a journey.</strong></p>
+        <p class="yk-more"><a href="spots/torikai-train-depot.html">Open the window page for Torikai rolling stock depot</a></p>
+      </div>
+    </article>
+  </section>
+
+    <section class="yk-tips" aria-labelledby="ykTipsTitle">
+      <h2 id="ykTipsTitle">How to see night views through the window</h2>
+      <p class="yk-tips-lead">This is the most useful part of the page.</p>
+      <ul class="yk-tip-list">
+        <li><strong>Your enemy is the cabin light, not the distance</strong>Almost every time you cannot see out at night, the cause is the cabin lighting reflecting off the glass, not the darkness outside. The window is behaving like a mirror. Cup your face and both hands against it to make a patch of shadow, give your eyes a few seconds, and the outside appears. You can do it from your seat without anyone noticing.</li>
+        <li><strong>Make shade rather than hunt for a dark seat</strong>Cabin lights stay on. Making shade at the window you already have is faster and more reliable than moving to find a darker seat.</li>
+        <li><strong>To film it, press the lens flat against the glass</strong>The further your phone is from the window, the more cabin light lands in the shot. Holding the lens directly against the glass removes almost all of it. Night video from a moving train still blurs easily, so watch with your eyes first.</li>
+        <li><strong>One side is dark, the other is not</strong>Once you are past the built-up areas, it is common for one side of the train to be completely black. Seat E and Seat A see different things, so check the side column in the tool above.</li>
+      </ul>
+    </section>
+
+    <section class="yk-note" aria-labelledby="ykNoteTitle">
+      <div class="yk-note-card">
+        <h2 id="ykNoteTitle">About what is shown here</h2>
+        <p>Light-up dates, hours and colours change from year to year. This page does not state dates; it links to each site's official information instead. Please check there before you travel.</p>
+        <p>For Odawara Castle and Kakegawa Castle we do not yet have a night photo taken from the train, so a daytime photo is shown. A castle being lit and a castle being visible from a moving Shinkansen are two different claims, and we only make the first. If you have a night shot from the window, we would be glad to hear from you.</p>
+        <p>The Kiyosu Castle photo is used with permission from @asami_k920, and the Odawara Castle photo from @letus10. The rest are our own. Passing times and sunset are both estimates, and what you actually see depends on the train, the weather and where you are sitting.</p>
+      </div>
+    </section>
+
+      </article>
+    </div>
+
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-brand">Shinkansen Window <span>Catch the moment from your window</span></p>
+    <p>Times are estimates. Trains, weather and seat position all change what you see.</p>
+    <p class="footer-links"><a href="../">Home</a> · <a href="../guide.html">Seeing Mt. Fuji</a> · <a href="../zukan.html">Window field guide</a> · <a href="../contact.html">Contact</a> · <a href="../privacy.html">Privacy</a></p>
+    <p class="footer-credit">Michikusa — unhurried travel, and the things you find by chance.</p>
+  </footer>
+
+  <script>
+    window.YAKEI_SPOTS = [{"id":"tokyo-tower","min":3,"side":"E"},{"id":"maruko-bridge","min":13,"side":"E"},{"id":"musashi-kosugi-towers","min":14,"side":"E"},{"id":"odawara-castle","min":31,"side":"A"},{"id":"shimizu-port-chikyu","min":50,"side":"A"},{"id":"kakegawa","min":62,"side":"E"},{"id":"nichiban-anjo","min":85,"side":"E"},{"id":"nagoya-station-skyline","min":94,"side":"E"},{"id":"kiyosu","min":99,"side":"E"},{"id":"seta-karahashi","min":127,"side":"E"},{"id":"torikai-train-depot","min":141,"side":"E"}];
+    window.YAKEI_NAMES = {"tokyo-tower":"Tokyo Tower","maruko-bridge":"Maruko Bridge","musashi-kosugi-towers":"Musashi-Kosugi towers","odawara-castle":"Odawara Castle","shimizu-port-chikyu":"Shimizu Port and CHIKYU","kakegawa":"Kakegawa Castle","nichiban-anjo":"The CELLOTAPE wall sign","nagoya-station-skyline":"The Nagoya Station skyline","kiyosu":"Kiyosu Castle","seta-karahashi":"Seta no Karahashi","torikai-train-depot":"Torikai rolling stock depot"};
+    window.YAKEI_TOTAL_MINUTES = 147;
+    window.YAKEI_LANG = "en";
+  </script>
+  <script src="../spot-page-shared-data.js?v=20260814-castle-lightup"></script>
+  <script src="../spot-page-shared.js?v=20260814-yakei-card"></script>
+  <script src="../yakei.js?v=20260814-yakei"></script>
+</body>
+</html>

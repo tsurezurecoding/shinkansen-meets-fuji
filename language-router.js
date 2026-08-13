@@ -19,6 +19,7 @@
     "/lp.html": "en/lp.html",
     "/sparkling-dreams.html": "en/sparkling-dreams.html",
     "/hanabi.html": "en/hanabi.html",
+    "/yakei.html": "en/yakei.html",
     "/live/": "../en/live/",
     "/live/index.html": "../en/live/"
   };
