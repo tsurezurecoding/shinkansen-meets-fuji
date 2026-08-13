@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "cc86e5ceb946bca2",
-  "generatedAt": "2026-08-12T23:23:47.618Z",
+  "contentVersion": "77e0ca5dac59370c",
+  "generatedAt": "2026-08-13T09:34:36.905Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -18,6 +18,12 @@
       "sha256": "27a49e719541cc0500ca390377dcd0b9894a044756a1c6c2fde7a7b8c6e8e100"
     },
     {
+      "path": "en/hanabi.html",
+      "url": "https://www.michikusa-travel.com/en/hanabi.html",
+      "bytes": 43780,
+      "sha256": "607936f7283d2fe581f8d5db8414ba1704cc5203d6ffebcc148af9e16cfa3362"
+    },
+    {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 23387,
@@ -30,10 +36,40 @@
       "sha256": "a8a15ddcb3d2374ab64782a434a8834ec7b380af5423cf201db21626081e3217"
     },
     {
+      "path": "hanabi.html",
+      "url": "https://www.michikusa-travel.com/hanabi.html",
+      "bytes": 44075,
+      "sha256": "7a7f1b7af1483c9aabae0ad1957ba11c8a8efd3d0c5f09dd6afe5829ccfc847f"
+    },
+    {
+      "path": "hanabi.js",
+      "url": "https://www.michikusa-travel.com/hanabi.js",
+      "bytes": 5263,
+      "sha256": "fd054563332b05e7bc2af3e89446c13320f2fa66807511dc729d2151036c962b"
+    },
+    {
       "path": "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
       "url": "https://www.michikusa-travel.com/images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
       "bytes": 54358,
       "sha256": "4bf920d23a7513fc8560b052d3040de3bb01ef7a82fe61a8d44d9168ad3c2db9"
+    },
+    {
+      "path": "images/hanabi-hero-pd.jpg",
+      "url": "https://www.michikusa-travel.com/images/hanabi-hero-pd.jpg",
+      "bytes": 186536,
+      "sha256": "2e3a4150d2838fca11e672e61958073436aa9a24cb113c476c5b22a958947cbc"
+    },
+    {
+      "path": "images/hanabi-window.svg",
+      "url": "https://www.michikusa-travel.com/images/hanabi-window.svg",
+      "bytes": 2295,
+      "sha256": "724197f1c13c4029edf26e0c1e6676ccc0c78529c5425171da34f1949ea6cecf"
+    },
+    {
+      "path": "images/og-hanabi.jpg",
+      "url": "https://www.michikusa-travel.com/images/og-hanabi.jpg",
+      "bytes": 164065,
+      "sha256": "8bb46c5d817167b029706dd01f6b6554e0694256dfcad8b53133d93a63d3006a"
     },
     {
       "path": "images/og-sparkling-dreams.png",
