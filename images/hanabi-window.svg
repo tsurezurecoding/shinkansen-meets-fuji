@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="hanabiTitle hanabiDesc">
+  <title id="hanabiTitle">夜の車窓から花火を見るイラスト</title>
+  <desc id="hanabiDesc">深い藍色の夜空に大きな花火が開き、その下を白い新幹線が走るオリジナルイラストです。</desc>
+  <!-- 46x29px のプロモカードでも形が読めるよう、要素数を絞り、
+       線幅は縮小後2px相当（キャンバス上で約52px）を下限にしてある。 -->
+  <defs>
+    <linearGradient id="hbSky" x1="0" y1="0" x2="0.3" y2="1">
+      <stop offset="0" stop-color="#08152b"/>
+      <stop offset="0.6" stop-color="#122c4a"/>
+      <stop offset="1" stop-color="#1e4665"/>
+    </linearGradient>
+    <radialGradient id="hbGlow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ffd9a0" stop-opacity="0.95"/>
+      <stop offset="0.5" stop-color="#e8704a" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#e8704a" stop-opacity="0"/>
+    </radialGradient>
+    <g id="hbSpoke">
+      <path d="M0 -60 L0 -196" stroke="#ffe9c4" stroke-width="54" stroke-linecap="round"/>
+      <circle cx="0" cy="-208" r="42" fill="#fff6e2"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#hbSky)"/>
+
+  <circle cx="600" cy="248" r="320" fill="url(#hbGlow)"/>
+  <g transform="translate(600 248)">
+    <g><use href="#hbSpoke"/></g>
+    <g transform="rotate(45)"><use href="#hbSpoke"/></g>
+    <g transform="rotate(90)"><use href="#hbSpoke"/></g>
+    <g transform="rotate(135)"><use href="#hbSpoke"/></g>
+    <g transform="rotate(180)"><use href="#hbSpoke"/></g>
+    <g transform="rotate(225)"><use href="#hbSpoke"/></g>
+    <g transform="rotate(270)"><use href="#hbSpoke"/></g>
+    <g transform="rotate(315)"><use href="#hbSpoke"/></g>
+    <circle cx="0" cy="0" r="66" fill="#fff6e2"/>
+  </g>
+
+  <rect x="0" y="470" width="1200" height="160" fill="#08152b"/>
+  <g transform="translate(190 446)">
+    <rect x="0" y="0" width="600" height="96" rx="48" fill="#f6f9fc"/>
+    <path d="M600 0 h64 c92 0 172 38 210 96 h-274 z" fill="#f6f9fc"/>
+    <rect x="0" y="58" width="874" height="20" fill="#7d9bc0"/>
+  </g>
+  <rect x="0" y="542" width="1200" height="22" fill="#1e4665"/>
+</svg>

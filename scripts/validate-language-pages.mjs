@@ -22,7 +22,8 @@ const pairs = [
   ["/references.html", "/en/references.html"],
   ["/privacy.html", "/en/privacy.html"],
   ["/live/", "/en/live/"],
-  ["/sparkling-dreams.html", "/en/sparkling-dreams.html"]
+  ["/sparkling-dreams.html", "/en/sparkling-dreams.html"],
+  ["/hanabi.html", "/en/hanabi.html"]
 ];
 
 function diskPath(urlPath) {

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "aacf9643b0ae2767",
+  "contentVersion": "cc86e5ceb946bca2",
   "generatedAt": "2026-08-12T23:23:47.618Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
@@ -20,14 +20,14 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 21777,
-      "sha256": "7bea12bcdea9e01d6b423af5133fe40662bf4745a4e74c6db7696d837a0b0352"
+      "bytes": 23387,
+      "sha256": "16c3024341d3d499288d458b14c0b5638e081cfa3e6f7cf34a6c8e4d69485cf7"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 22537,
-      "sha256": "40cc6fa6ee584f371eb1dd0e0369ad0b946235ae0beaab3320e03cbedf2d4d39"
+      "bytes": 22706,
+      "sha256": "a8a15ddcb3d2374ab64782a434a8834ec7b380af5423cf201db21626081e3217"
     },
     {
       "path": "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
@@ -56,8 +56,8 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 28084,
-      "sha256": "2b561456deb8cfcdd215c1615bf66e0a1bddc8d9113fbb3c796184b612c485fd"
+      "bytes": 27467,
+      "sha256": "6d0c4e2250f868fb1caf5a6f15fb15df1123a0b939f94287526f0e840a6e1ebe"
     },
     {
       "path": "sparkling-dreams.js",

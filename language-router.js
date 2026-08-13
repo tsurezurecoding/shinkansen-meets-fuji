@@ -18,6 +18,7 @@
     "/privacy.html": "en/privacy.html",
     "/lp.html": "en/lp.html",
     "/sparkling-dreams.html": "en/sparkling-dreams.html",
+    "/hanabi.html": "en/hanabi.html",
     "/live/": "../en/live/",
     "/live/index.html": "../en/live/"
   };

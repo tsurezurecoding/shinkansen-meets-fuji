@@ -33,6 +33,8 @@
       railAppBody: "テスト参加者を募集中",
       railDisneyTitle: "ディズニー新幹線",
       railDisneyBody: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る",
+      railHanabiTitle: "新幹線から見える花火",
+      railHanabiBody: "沿線の花火大会と、車窓から見えた記録を集める",
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -78,6 +80,8 @@
       railAppBody: "Looking for testers",
       railDisneyTitle: "Disney Shinkansen",
       railDisneyBody: "Sparkling Dreams Shinkansen · operating dates and window-side estimates",
+      railHanabiTitle: "Fireworks from the window",
+      railHanabiBody: "Festivals along the line, and posts from people who saw them",
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -209,7 +213,14 @@
     return lang === "en" ? rootPath + "en/" : rootPath;
   }
 
-  function siteHeaderHTML(rootPath, lang, currentId, utilityRoute) {
+  // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
+  var UTILITY_ROUTES = {
+    "mieru.html": { en: true },
+    "sparkling-dreams.html": { en: true },
+    "hanabi.html": { en: true }
+  };
+
+  function siteHeaderHTML(rootPath, lang, currentId, utilityRoute, utilityHasAlternate) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var homeHref = lang === "en" ? href(base, "") : href(base, "index.html");
@@ -246,10 +257,11 @@
           "</div>" +
         "</details>" +
       "</nav>" +
-      "<div class=\"lang-switch\" role=\"group\" aria-label=\"" + escapeHTML(ui.language) + "\">" +
-        "<a class=\"" + jaClass + "\" href=\"" + escapeHTML(jaHref) + "\">" + escapeHTML(ui.languageJa) + "</a>" +
-        "<a class=\"" + enClass + "\" href=\"" + escapeHTML(enHref) + "\">" + escapeHTML(ui.languageEn) + "</a>" +
-      "</div>" +
+      (utilityRoute && utilityHasAlternate === false ? "" :
+        "<div class=\"lang-switch\" role=\"group\" aria-label=\"" + escapeHTML(ui.language) + "\">" +
+          "<a class=\"" + jaClass + "\" href=\"" + escapeHTML(jaHref) + "\">" + escapeHTML(ui.languageJa) + "</a>" +
+          "<a class=\"" + enClass + "\" href=\"" + escapeHTML(enHref) + "\">" + escapeHTML(ui.languageEn) + "</a>" +
+        "</div>") +
     "</header>";
   }
 
@@ -285,7 +297,7 @@
     "</div>";
   }
 
-  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix) {
+  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var trainHref = lang === "en" ? href(base, "#journey") : href(base, "index.html#journey");
@@ -314,15 +326,19 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
-  function railPromosHTML(rootPath, lang) {
-    return railAppHTML(rootPath, lang) + railDisneyHTML(rootPath, lang);
+  // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
+  function railPromosHTML(rootPath, lang, currentRoute) {
+    var out = railAppHTML(rootPath, lang);
+    if (currentRoute !== "sparkling-dreams.html") out += railDisneyHTML(rootPath, lang);
+    if (currentRoute !== "hanabi.html") out += railHanabiHTML(rootPath, lang);
+    return out;
   }
 
-  function mobilePromosHTML(rootPath, lang) {
-    return "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[lang].contentTitle) + "\">" + railPromosHTML(rootPath, lang) + "</section>";
+  function mobilePromosHTML(rootPath, lang, currentRoute) {
+    return "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[lang].contentTitle) + "\">" + railPromosHTML(rootPath, lang, currentRoute) + "</section>";
   }
 
   function railAppHTML(rootPath, lang) {
@@ -336,6 +352,14 @@
     var base = basePath(rootPath, lang);
     return "<div class=\"spot-page-rail-disney\"><a href=\"" + escapeHTML(href(base, "sparkling-dreams.html")) + "\" data-cta-track=\"sparkling_dreams_entry_click\" data-cta-id=\"spot_rail_disney\"><img src=\"" + escapeHTML(href(rootPath, "images/sparkling-dreams-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railDisneyTitle) + "</strong><small>" + escapeHTML(ui.railDisneyBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
+  // レイアウトは Disney カードと同一のため .spot-page-rail-disney を土台に使い、
+  // 見分け用の modifier だけ足している（style.css は未変更）。
+  function railHanabiHTML(rootPath, lang) {
+    var ui = UI[lang];
+    var base = basePath(rootPath, lang);
+    return "<div class=\"spot-page-rail-disney spot-page-rail-hanabi\"><a href=\"" + escapeHTML(href(base, "hanabi.html")) + "\" data-cta-track=\"hanabi_entry_click\" data-cta-id=\"spot_rail_hanabi\"><img src=\"" + escapeHTML(href(rootPath, "images/hanabi-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railHanabiTitle) + "</strong><small>" + escapeHTML(ui.railHanabiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  }
+
   function contentRailHTML(rootPath, lang) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
@@ -678,13 +702,13 @@
         var utilityLang = document.body.getAttribute("data-spot-page-shared-lang") || "";
         var utilityRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
         var utilityRoute = document.body.getAttribute("data-spot-page-shared-route") || "";
-        if (!SUPPORTED_LANGUAGES[utilityLang] || !/^mieru\.html$/.test(utilityRoute)) throw new Error("utility page context is malformed");
+        if (!SUPPORTED_LANGUAGES[utilityLang] || !UTILITY_ROUTES[utilityRoute]) throw new Error("utility page context is malformed");
         var utilityData = root[DATA_KEY];
         validateData(utilityData, utilityData && utilityData.spots && utilityData.spots[0] && utilityData.spots[0].id, utilityLang);
-        hosts[0].outerHTML = siteHeaderHTML(utilityRoot, utilityLang, "", utilityRoute);
-        hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/");
+        hosts[0].outerHTML = siteHeaderHTML(utilityRoot, utilityLang, "", utilityRoute, UTILITY_ROUTES[utilityRoute].en);
+        hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/", utilityRoute);
         hosts[2].outerHTML = contentRailHTML(utilityRoot, utilityLang);
-        if (mobilePromosHost) mobilePromosHost.outerHTML = mobilePromosHTML(utilityRoot, utilityLang);
+        if (mobilePromosHost) mobilePromosHost.outerHTML = mobilePromosHTML(utilityRoot, utilityLang, utilityRoute);
         if (utilityShowcaseHost) utilityShowcaseHost.outerHTML = showcaseHTML(utilityData, utilityRoot, utilityLang);
         return;
       }
