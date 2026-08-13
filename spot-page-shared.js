@@ -225,7 +225,13 @@
     var base = basePath(rootPath, lang);
     var homeHref = lang === "en" ? href(base, "") : href(base, "index.html");
     var trainHref = lang === "en" ? href(base, "#journey") : href(base, "index.html#journey");
-    var jaHref = utilityRoute ? (lang === "ja" ? utilityRoute : href(rootPath, utilityRoute)) : (lang === "ja" ? currentId + ".html" : href(rootPath, "spots/" + currentId + ".html") + "?lang=ja");
+    // 英語ページから日本語へ戻すリンクには必ず ?lang=ja を付ける。
+    // language-router.js は localStorage の mado-lang が "en" のとき日本語URLを英語版へ
+    // 差し替えるため、これが無いと「日本語」を押しても英語ページへ戻される（2026-08-13発覚）。
+    // ?lang=ja は router 側で保存値を "ja" へ上書きしてリダイレクトを止める入口になっている。
+    var jaHref = utilityRoute
+      ? (lang === "ja" ? utilityRoute : href(rootPath, utilityRoute) + "?lang=ja")
+      : (lang === "ja" ? currentId + ".html" : href(rootPath, "spots/" + currentId + ".html") + "?lang=ja");
     var enHref = utilityRoute ? (lang === "en" ? utilityRoute : href(rootPath, "en/" + utilityRoute)) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
     var jaClass = lang === "ja" ? "active" : "";
     var enClass = lang === "en" ? "active" : "";
