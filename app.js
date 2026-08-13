@@ -182,7 +182,7 @@ const MSG = {
     brandSub: "Never miss a moment of the journey.",
     heroKicker: "<span class=\"hero-kicker-line\">TOKAIDO SHINKANSEN</span><span class=\"hero-kicker-sep\"> · </span><span class=\"hero-kicker-line\">TOKYO ⇄ SHIN-OSAKA</span>",
     heroTitle: "There's another journey<br>outside your window.",
-    heroLead: "Fuji, castles, lakes and sea. Know when to look, and which side to watch from your Shinkansen seat.",
+    heroLead: "Fuji, castles, lakes and sea. Know when to look, and which side to watch from your Tokaido bullet train seat.",
     heroCtaStart: "Build my guide",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",

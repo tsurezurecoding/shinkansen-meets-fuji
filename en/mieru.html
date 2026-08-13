@@ -22,7 +22,7 @@
     "inLanguage": "en"
   }
   </script>
-  <link rel="stylesheet" href="../style.css?v=20260726-contact-methods">
+  <link rel="stylesheet" href="../style.css?v=20260813-utility-rail-fix">
   <style>
     /* Forecast page, using the main dawn-window palette. */
     .mieru-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
@@ -65,38 +65,12 @@
     #mieruStatus { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
   </style>
 </head>
-<body class="spot-page">
-  <header class="topbar">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">窓</span>
-      <span class="brand-text">
-        <span class="brand-name">Shinkansen Window</span>
-        <small class="brand-sub">Never miss the view</small>
-      </span>
-    </a>
-    <nav class="top-nav" aria-label="Primary">
-      <a href="index.html#journey">Choose Train</a>
-      <a href="live/">Live Guide</a>
-      <a href="zukan.html">Window Guide</a>
-      <a class="top-nav-overflow" href="guide.html">FAQ</a>
-      <a href="journal.html">Medal Book</a>
-      <details class="top-nav-more">
-        <summary>More</summary>
-        <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="guide.html">FAQ</a>
-          <a href="lp.html">About the App</a>
-          <a href="mieru.html">Fuji Forecast Beta</a>
-          <a href="sumie.html">Ink-Wash Window</a>
-          <a href="somato.html">Window Recollections</a>
-          <a href="references.html">Resources</a>
-          <a href="contact.html">Contact</a>
-          <a href="privacy.html">Privacy Policy</a>
-        </div>
-      </details>
-    </nav>
-  </header>
+<body class="spot-page spot-page-utility" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="mieru.html">
+  <div data-spot-page-shared-module="topbar"></div>
   <main>
-    <div class="mieru-wrap">
+    <div class="spot-page-shell mieru-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="mieru-wrap">
       <p class="eyebrow">WEATHER FROM THE WINDOW</p>
       <h1>Mt. Fuji Visibility Forecast<small style="font-size:.55em;color:var(--accent);margin-left:8px">Beta</small></h1>
       <p class="mieru-lead"><span class="copy-chunk">Will Mt. Fuji be visible from the Shinkansen today?</span> <span class="copy-chunk">We estimate the chance at each window viewpoint and hour</span> <span class="copy-chunk">from clouds around the summit and the clarity of the air.</span> <span class="copy-chunk">Enter your departure time to see the forecast</span> <span class="copy-chunk">for the moment your train passes each view.</span></p>
@@ -123,75 +97,20 @@
         Passing times are approximate and based on Nozomi services. Sudden weather changes may make
         the forecast inaccurate. For ideas on cloudy days, see the <a href="guide.html#cloudy">Mt. Fuji FAQ</a>.
       </p>
+      </article>
     </div>
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
   </main>
-  <section class="content-rail-section" aria-labelledby="contentRailTitle">
-    <div class="section-head">
-      <p class="eyebrow">MORE TO TRY</p>
-      <h2 id="contentRailTitle">More ways to enjoy the view</h2>
-    </div>
-    <div class="content-rail">
-      <a class="content-rail-card" href="guide.html"><img src="../images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FAQ</small><strong>Mt. Fuji FAQ</strong><span>Find the best timing, seat side, and tips for cloudy days.</span></span></a>
-      <a class="content-rail-card" href="mieru.html">
-        <img src="../images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>FORECAST</small>
-          <strong>Fuji Forecast Beta</strong>
-          <span>Check whether today's sky may reveal Mt. Fuji.</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="sumie.html">
-        <img src="../images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>EXTRA</small>
-          <strong>Ink-Wash Window</strong>
-          <span>Watch the Tokaido Shinkansen landscape unfold in quiet ink wash.</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="somato.html">
-        <img src="../images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>EXTRA</small>
-          <strong>Window Recollections</strong>
-          <span>Take a short journey through real photos from the train window.</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="journal.html">
-        <img src="../images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>JOURNAL</small>
-          <strong>Medal Book</strong>
-          <span>Record the views you find with stamps and medals.</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="lp.html">
-        <img src="../images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>GUIDE</small>
-          <strong>About Shinkansen Window</strong>
-          <span>See how the app works and how to enjoy it in 30 seconds.</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="references.html">
-        <img src="../images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>LINKS</small>
-          <strong>Window Resources</strong>
-          <span>Browse sources and useful articles about the views.</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="contact.html"><img src="../images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>Contact</strong><span>Share a photo, suggest a correction, or send us your thoughts.</span></span></a>
-    </div>
-  </section>
-
   <footer class="footer">
     <p class="footer-brand">Shinkansen Window <span>Never miss the view</span></p>
     <p class="footer-links"><a href="guide.html">Mt. Fuji FAQ</a> · <a href="references.html">Window Resources</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p>
     <p class="footer-credit">Michikusa — Unhurried journeys and unexpected discoveries.</p>
   </footer>
 
+  <script src="../spot-page-shared-data.js?v=20260812-shared-data-video"></script>
+  <script src="../spot-page-shared.js?v=20260813-promo-order"></script>
   <script src="../data.js?v=20260726-contact-methods"></script>
   <script>
   (function(){

@@ -23,7 +23,7 @@
   }
   </script>
   <script src="language-router.js?v=20260728-en-notice"></script>
-  <link rel="stylesheet" href="style.css?v=20260726-contact-methods">
+  <link rel="stylesheet" href="style.css?v=20260813-utility-rail-fix">
   <style>
     /* 見える予報 — 本体パレット(夜明けの車窓)に従う */
     .mieru-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
@@ -66,38 +66,12 @@
     #mieruStatus { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
   </style>
 </head>
-<body class="spot-page">
-  <header class="topbar">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">窓</span>
-      <span class="brand-text">
-        <span class="brand-name">新幹線の窓</span>
-        <small class="brand-sub">旅の瞬間を見逃さない</small>
-      </span>
-    </a>
-    <nav class="top-nav" aria-label="Primary">
-      <a href="index.html#journey">列車選択</a>
-      <a href="live/index.html">ライブガイド</a>
-      <a href="zukan.html">車窓図鑑</a>
-      <a class="top-nav-overflow" href="guide.html">FAQ</a>
-      <a href="journal.html">メダル帖</a>
-      <details class="top-nav-more">
-        <summary>もっと見る</summary>
-        <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="guide.html">FAQ</a>
-          <a href="lp.html">新幹線の窓とは</a>
-          <a href="mieru.html">見える予報β</a>
-          <a href="sumie.html">墨絵車窓</a>
-          <a href="somato.html">車窓走馬灯</a>
-          <a href="references.html">リンク集</a>
-          <a href="contact.html">お問い合わせ</a>
-          <a href="privacy.html">プライバシーポリシー</a>
-        </div>
-      </details>
-    </nav>
-  </header>
+<body class="spot-page spot-page-utility" data-spot-page-shared-context="utility" data-spot-page-shared-lang="ja" data-spot-page-shared-root="./" data-spot-page-shared-route="mieru.html">
+  <div data-spot-page-shared-module="topbar"></div>
   <main>
-    <div class="mieru-wrap">
+    <div class="spot-page-shell mieru-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="mieru-wrap">
       <p class="eyebrow">車窓の天気</p>
       <h1>富士山 見える予報<small style="font-size:.55em;color:var(--accent);margin-left:8px">β</small></h1>
       <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見えるか。</span><span class="copy-chunk">山頂にかかる雲と、</span><span class="copy-chunk">視線が抜ける空気の澄みかたから、</span><span class="copy-chunk">車窓スポット別・時間別に</span><span class="copy-chunk">「見える確率」を予報します。</span><span class="copy-chunk">出発時刻を入れると、</span><span class="copy-chunk">それぞれの通過時刻ちょうどの確率がわかります。</span></p>
@@ -120,75 +94,20 @@
         通過時刻はのぞみ基準の目安です。天候の急変で外れることがあります。
         曇りの日の楽しみ方は<a href="guide.html#cloudy">富士山FAQ</a>へ。
       </p>
+      </article>
     </div>
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
   </main>
-  <section class="content-rail-section" aria-labelledby="contentRailTitle">
-    <div class="section-head">
-      <p class="eyebrow">MORE TO TRY</p>
-      <h2 id="contentRailTitle">車窓をもっと楽しむ</h2>
-    </div>
-    <div class="content-rail">
-      <a class="content-rail-card" href="guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FAQ</small><strong>富士山FAQ</strong><span>見える時刻、座席側、曇りの日の答えを確認。</span></span></a>
-      <a class="content-rail-card" href="mieru.html">
-        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>FORECAST</small>
-          <strong>見える予報β</strong>
-          <span>今日の空で富士山が見えそうかを確認。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="sumie.html">
-        <img src="images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>EXTRA</small>
-          <strong>墨絵車窓</strong>
-          <span>東海道新幹線の車窓を、静かな墨絵で。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="somato.html">
-        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>EXTRA</small>
-          <strong>車窓走馬灯</strong>
-          <span>実際の車窓写真で、旅を短くめぐる。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="journal.html">
-        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>JOURNAL</small>
-          <strong>メダル帖</strong>
-          <span>見つけた景色をスタンプとメダルで記録。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="lp.html">
-        <img src="images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>GUIDE</small>
-          <strong>新幹線の窓とは</strong>
-          <span>使い方と楽しみ方を30秒で紹介。</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="references.html">
-        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>LINKS</small>
-          <strong>車窓リンク集</strong>
-          <span>出典や参考記事をまとめて読む。</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>お問い合わせ</strong><span>写真提供、情報の訂正、ご感想はこちら。</span></span></a>
-    </div>
-  </section>
-
   <footer class="footer">
     <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
     <p class="footer-links"><a href="guide.html">富士山FAQ</a> · <a href="references.html">車窓リンク集</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p>
     <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 
+  <script src="spot-page-shared-data.js?v=20260812-shared-data-video"></script>
+  <script src="spot-page-shared.js?v=20260813-promo-order"></script>
   <script src="data.js?v=20260726-contact-methods"></script>
   <script>
   (function(){

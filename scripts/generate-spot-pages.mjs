@@ -1592,8 +1592,8 @@ function thinSpotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
-  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-video-orientation">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260813-rail-preview-scope">
+  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260813-portrait-cards">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1606,7 +1606,7 @@ function thinSpotPageHTML(spot, lang) {
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   <div data-spot-page-shared-module="page"></div>
   <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>
-  <script src="${prefix}spot-page-shared.js?v=20260812-video-lazy-load"></script>
+  <script src="${prefix}spot-page-shared.js?v=20260813-promo-order"></script>
   <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
 </body>
@@ -1645,7 +1645,7 @@ function spotPageHTML(spot, lang) {
     ? ibukiVideoHTML()
     : photoGalleryHTML(spot, lang, prefix, galleryPhotos);
   const mediaPilotStyles = ibukiMediaPilot
-    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260812-video-orientation">`
+    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260813-portrait-cards">`
     : "";
   const mediaPilotScripts = ibukiMediaPilot
     ? `  <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
@@ -1673,7 +1673,7 @@ function spotPageHTML(spot, lang) {
     ? ` data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
     : "";
   const sharedScripts = sharedSpotPage
-    ? `  <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260812-video-lazy-load"></script>\n`
+    ? `  <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260813-promo-order"></script>\n`
     : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
   const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";
@@ -1765,7 +1765,7 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
   <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">${mediaPilotStyles}
+  <link rel="stylesheet" href="${prefix}style.css?v=20260813-rail-preview-scope">${mediaPilotStyles}
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1855,7 +1855,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260728-en-notice">
+  <link rel="stylesheet" href="../style.css?v=20260813-rail-preview-scope">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -2101,7 +2101,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ko" href="${siteRoot}/ko/guide.html">
   <link rel="alternate" hreflang="fr" href="${siteRoot}/fr/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/en/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260728-en-notice">
+  <link rel="stylesheet" href="${prefix}style.css?v=20260813-rail-preview-scope">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">

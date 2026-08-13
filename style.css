@@ -1614,7 +1614,7 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     opacity: 1;
     visibility: visible;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-preview {
+  .spot-page .spot-page-shared-preview {
     position: absolute;
     left: 54px;
     top: -16px;
@@ -1632,46 +1632,46 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     pointer-events: none;
     transition: opacity 0.14s ease;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-preview > img {
+  .spot-page .spot-page-shared-preview > img {
     display: block;
     width: 210px;
     max-width: none;
     height: 118px;
     object-fit: cover;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-preview-copy {
+  .spot-page .spot-page-shared-preview-copy {
     display: grid;
     gap: 2px;
     padding: 8px 9px 9px;
     color: var(--ink);
     line-height: 1.35;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-preview-copy strong {
+  .spot-page .spot-page-shared-preview-copy strong {
     font-size: 12px;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-preview-copy span {
+  .spot-page .spot-page-shared-preview-copy span {
     color: #756f66;
     font-size: 10px;
   }
-  body[data-spot-page-shared-id] .spot-page-rail-link:hover .spot-page-shared-preview,
-  body[data-spot-page-shared-id] .spot-page-rail-link:focus-visible .spot-page-shared-preview {
+  .spot-page .spot-page-rail-link:hover .spot-page-shared-preview,
+  .spot-page .spot-page-rail-link:focus-visible .spot-page-shared-preview {
     opacity: 1;
     visibility: visible;
   }
   /* 現在ページだけ、既存のhover用previewを常設カードとして流し込む */
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-rail-link {
+  .spot-page .spot-page-rail-spot.is-current .spot-page-rail-link {
     display: block;
     padding: 5px;
     background: #f5efe4;
   }
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-rail-thumb-wrap {
+  .spot-page .spot-page-rail-spot.is-current .spot-page-rail-thumb-wrap {
     display: block;
     width: 100%;
   }
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-rail-thumb {
+  .spot-page .spot-page-rail-spot.is-current .spot-page-rail-thumb {
     display: none;
   }
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-shared-preview {
+  .spot-page .spot-page-rail-spot.is-current .spot-page-shared-preview {
     position: static;
     width: 100%;
     max-width: none;
@@ -1679,15 +1679,15 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     visibility: visible;
     pointer-events: none;
   }
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-shared-preview > img {
+  .spot-page .spot-page-rail-spot.is-current .spot-page-shared-preview > img {
     width: 100%;
     height: auto;
     aspect-ratio: 16 / 9;
     object-fit: cover;
   }
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-rail-min,
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-rail-name,
-  body[data-spot-page-shared-id] .spot-page-rail-spot.is-current .spot-page-shared-seat-group {
+  .spot-page .spot-page-rail-spot.is-current .spot-page-rail-min,
+  .spot-page .spot-page-rail-spot.is-current .spot-page-rail-name,
+  .spot-page .spot-page-rail-spot.is-current .spot-page-shared-seat-group {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -1728,12 +1728,12 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   .spot-page-rail-seat.is-a {
     color: #c2a074;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-seat-group {
+  .spot-page .spot-page-shared-seat-group {
     display: inline-flex;
     flex: 0 0 auto;
     gap: 3px;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-seat {
+  .spot-page .spot-page-shared-seat {
     min-width: 17px;
     padding: 1px 3px;
     border: 1px solid currentColor;
@@ -1743,11 +1743,11 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     line-height: 1.2;
     text-align: center;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-seat.is-e {
+  .spot-page .spot-page-shared-seat.is-e {
     color: #7c9ab5;
     background: #f2f7fb;
   }
-  body[data-spot-page-shared-id] .spot-page-shared-seat.is-a {
+  .spot-page .spot-page-shared-seat.is-a {
     color: #a77d51;
     background: #fcf6ee;
   }
@@ -5219,29 +5219,24 @@ body.modal-open { overflow: hidden; }
 }
 .sd-basics-copy { display: grid; gap: 12px; max-width: 760px; margin: 0 auto 26px; color: var(--ink-soft); font-size: 14px; line-height: 1.9; }
 .sd-basics-copy p { margin: 0; }
-.sd-post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 20px; }
-.sd-post-embed { min-width: 0; max-width: 100%; overflow: hidden; }
-.sd-x-embed { position: relative; }
-.sd-x-embed.is-loading::before,
-.sd-youtube-frame.is-loading::before { content: ""; position: absolute; z-index: 2; top: 0; left: 50%; width: 100%; max-width: 560px; aspect-ratio: 16 / 9; transform: translateX(-50%); border: 1px solid var(--line); border-radius: var(--radius); background: linear-gradient(100deg, #e9edf1 20%, #f8f9fa 45%, #e9edf1 70%); background-size: 220% 100%; animation: sd-embed-shimmer 1.25s ease-in-out infinite; transition: opacity .22s ease; pointer-events: none; }
-.sd-x-embed.is-ready::before,
-.sd-youtube-frame.is-ready::before { opacity: 0; animation: none; }
-.sd-x-embed.is-loading .twitter-tweet { width: 100% !important; max-width: 560px !important; min-width: 0 !important; aspect-ratio: 16 / 9; margin: 0 auto !important; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: var(--radius); background: #e9edf1; color: transparent; }
-.sd-x-embed.is-loading .twitter-tweet > * { visibility: hidden; }
-.sd-post-embed iframe { display: block; max-width: 100% !important; margin: 0 auto !important; }
-.sd-x-embed > iframe,
-.sd-youtube-frame iframe { opacity: 1; transition: opacity .22s ease; }
-.sd-x-embed.is-loading > iframe,
-.sd-youtube-frame.is-loading iframe { opacity: 0; }
-.sd-youtube-frame { position: relative; width: 100%; max-width: 560px; aspect-ratio: 16 / 9; margin: 0 auto; overflow: hidden; border-radius: var(--radius); background: #e9edf1; box-shadow: var(--shadow); }
-.sd-youtube-frame::before { inset: 0; max-width: none; transform: none; }
-.sd-youtube-frame iframe { width: 100% !important; height: 100%; border: 1px solid var(--line); border-radius: inherit; }
+/* Disney video cards: X and YouTube share one contract - a 16:9 media frame plus a credit row. */
+.sd-post-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; width: min(100%, 760px); margin: 18px auto 0; }
+.sd-post-embed { display: grid; grid-template-rows: auto 1fr; min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 16px; background: #fff; }
+.sd-media-frame { position: relative; width: 100%; aspect-ratio: 16 / 9; overflow: hidden; background: #101d2c; }
+/* The source label sits behind the third-party player, so it needs no JS state to disappear. */
+.sd-media-frame::after { content: attr(data-placeholder); position: absolute; inset: 0; z-index: 0; display: grid; place-items: center; padding: 14px; color: rgba(255,255,255,.66); font-size: 11px; letter-spacing: .06em; text-align: center; }
+.sd-media-frame > * { position: relative; z-index: 1; }
+/* Keep the raw blockquote in the DOM for widgets.js, but never let its text lay out. */
+.sd-media-frame > blockquote.twitter-tweet { position: absolute; inset: 0; width: 100%; margin: 0 !important; padding: 0; visibility: hidden; }
+/* widgets.js swaps the blockquote for div.twitter-tweet-rendered, which carries its own inline sizing. */
+.sd-media-frame > .twitter-tweet-rendered { display: block !important; width: 100% !important; max-width: none !important; height: 100% !important; margin: 0 !important; }
+.sd-media-frame iframe { display: block; width: 100% !important; height: 100% !important; max-width: none !important; min-width: 0 !important; margin: 0 !important; border: 0; }
+.sd-x-embed.is-loading .sd-media-frame::after { background: linear-gradient(100deg, #16273a 20%, #24405c 45%, #16273a 70%); background-size: 220% 100%; animation: sd-embed-shimmer 1.25s ease-in-out infinite; }
 @keyframes sd-embed-shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .sd-x-embed.is-loading::before, .sd-youtube-frame.is-loading::before { animation: none; }
-  .sd-x-embed > iframe, .sd-youtube-frame iframe { transition: none; }
+  .sd-x-embed.is-loading .sd-media-frame::after { animation: none; }
 }
-.sd-post-credit { margin: 8px auto 0; max-width: 560px; color: var(--ink-soft); font-size: 12px; line-height: 1.7; text-align: center; }
+.sd-post-credit { margin: 0; min-height: 58px; padding: 10px 12px 12px; color: var(--ink-soft); font-size: 11px; line-height: 1.6; text-align: left; overflow-wrap: anywhere; }
 .sd-post-credit a { color: inherit; text-underline-offset: 3px; }
 .sd-post-credit a:hover,
 .sd-post-credit a:focus-visible { color: var(--ink); }
@@ -5738,4 +5733,16 @@ body.modal-open { overflow: hidden; }
   .top-promo-card-copy strong { font-size: 18px; }
   .top-promo-card-copy > span:last-child { font-size: 12px; }
   .top-promo-card-copy strong span { white-space: normal; }
+}
+
+/* Shared mobile placement for the rail's non-affiliate journey cards. */
+.spot-page-mobile-promos { display: none; }
+@media (max-width: 1099px) {
+  .spot-page-mobile-promos { display: grid; gap: 0; max-width: 620px; margin: 10px auto 0; padding: 0 20px; }
+  .spot-page-mobile-promos .spot-page-rail-app,
+  .spot-page-mobile-promos .spot-page-rail-disney { padding-inline: 0; }
+  .spot-page-utility .mieru-wrap { max-width: none; margin: 0; }
+}
+@media (min-width: 1100px) {
+  .spot-page-utility .mieru-wrap { max-width: none; margin: 0; padding: 26px 0 76px; }
 }

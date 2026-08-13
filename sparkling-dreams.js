@@ -333,6 +333,7 @@
     const reveal = () => {
       stages.forEach((stage) => {
         stage.classList.remove("is-loading");
+        stage.classList.toggle("has-widget", !!stage.querySelector("twitter-widget, iframe"));
         stage.setAttribute("aria-busy", "false");
       });
     };
@@ -349,7 +350,13 @@
       script.onload = () => {
         const widgets = root.twttr && root.twttr.widgets;
         if (widgets && typeof widgets.load === "function") widgets.load(groups);
-        reveal();
+        var observer = new MutationObserver(function () {
+          stages.forEach(function (stage) {
+            if (stage.querySelector("twitter-widget, iframe")) { stage.classList.add("has-widget"); stage.classList.remove("is-loading"); stage.setAttribute("aria-busy", "false"); }
+          });
+        });
+        stages.forEach(function (stage) { observer.observe(stage, { childList: true, subtree: true }); });
+        root.setTimeout(function () { observer.disconnect(); reveal(); }, 5000);
       };
       script.onerror = reveal;
       document.head.appendChild(script);
