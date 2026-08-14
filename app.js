@@ -132,7 +132,7 @@ const MSG = {
     zukanFamilyTitle: "子連れなら看板探し",
     zukanFamilyBody: "数秒の発見を、車窓ゲームに。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
@@ -302,7 +302,7 @@ const MSG = {
     zukanFamilyTitle: "Try a sign-spotting game",
     zukanFamilyBody: "Turn a few seconds outside into family play.",
     morePhotos: "More photos",
-    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", fCity: "City",
+    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerGuide: "How to see Mt. Fuji",
     footerReferences: "Window links",
@@ -999,6 +999,7 @@ function applyLang() {
     if (typeof v === "string") el.innerHTML = v;
   });
   $$("[data-journal-close]").forEach((el) => el.setAttribute("aria-label", t("journalModalClose")));
+  $$("[data-727-collection-toggle]").forEach((el) => el.setAttribute("aria-label", t("c727Toggle")));
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
   $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/guide.html" : "guide.html"));
   $$('[data-contact-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/contact.html" : "contact.html"));
@@ -1006,6 +1007,7 @@ function applyLang() {
     const englishRoutes = {
       "index.html": "en/",
       "index.html#journey": "en/#journey",
+      "index.html#quick-intro": "en/#quick-intro",
       "zukan.html": "en/zukan.html",
       "zukan.html?filter=night": "en/zukan.html?filter=night",
       "zukan.html?filter=cloudy#gallery": "en/zukan.html?filter=cloudy#gallery",
