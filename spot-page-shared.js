@@ -38,7 +38,7 @@
       railYakeiTitle: "新幹線の夜景",
       railYakeiBody: "どこから暗くなるかを調べて、夜だけの車窓を探す",
       rail727Title: "727看板コレクション",
-      rail727Body: "東京〜新大阪の沿線で、727看板を集める",
+      rail727Body: "東京〜新大阪の沿線で727看板を集める",
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",

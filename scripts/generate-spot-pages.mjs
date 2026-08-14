@@ -1994,6 +1994,7 @@ function englishAppIndexHTML() {
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
   html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, "\n\n  ");
+  html = html.replace(/\s*<a class="top-promo-card top-promo-card-727"[\s\S]*?data-cta-id="top_(?:journey|footer)_727"[\s\S]*?<\/a>/g, "");
   railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
   railRoutes.forEach((route) => {
     html = html

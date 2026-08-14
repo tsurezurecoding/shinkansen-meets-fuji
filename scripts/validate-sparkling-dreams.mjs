@@ -91,6 +91,8 @@ expect(!japaneseTop.includes('class="seasonal-entry"'), "index.html: standalone 
 expect(!englishTop.includes('class="seasonal-entry"'), "en/index.html: standalone upper seasonal entry must be absent");
 expect(japaneseTop.includes('data-cta-id="top_journey_disney"') && japaneseTop.includes('data-cta-id="top_footer_disney"') && japaneseTop.includes('href="sparkling-dreams.html"'), "index.html: journey and mobile Disney promo cards must remain");
 expect(englishTop.includes('data-cta-id="top_journey_disney"') && englishTop.includes('data-cta-id="top_footer_disney"') && englishTop.includes('href="en/sparkling-dreams.html"'), "en/index.html: journey and mobile Disney promo cards must remain");
+expect(japaneseTop.includes('data-cta-id="top_journey_727"') && japaneseTop.includes('data-cta-id="top_footer_727"') && japaneseTop.includes('href="727-collection.html"'), "index.html: journey and mobile 727 Collection promo cards must remain");
+expect(!englishTop.includes('data-cta-id="top_journey_727"') && !englishTop.includes('data-cta-id="top_footer_727"'), "en/index.html: 727 Collection promo cards must remain Japanese-only");
 expect(/<link rel="canonical" href="https:\/\/www\.michikusa-travel\.com\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: canonical is missing or incorrect");
 expect(/<meta name="robots" content="index,follow/.test(page), "sparkling-dreams.html: index/follow robots metadata is missing");
 expect(/<link rel="alternate" hreflang="en" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page) && /<link rel="alternate" hreflang="x-default" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: English or x-default language route is missing");

@@ -533,7 +533,7 @@ function validateRenderedRail(rail, lang, rootPath) {
   if (countMatches(rail, /class="spot-page-rail-app hide-in-app"/g) !== 1 || countMatches(rail, /class="spot-page-rail-disney"/g) !== 1) fail(lang + " shared rail must render exactly one Android and one Disney promo card");
   if (!rail.includes('data-cta-id="spot_rail_android"') || !rail.includes('data-cta-id="spot_rail_disney"') || !rail.includes('Sparkling Dreams Shinkansen')) fail(lang + " shared rail promo cards lost their tracking or formal Disney name");
   if (lang === "ja") {
-    if (countMatches(rail, /data-cta-id="spot_rail_727"/g) !== 1 || !rail.includes('class="spot-page-rail-disney spot-page-rail-727"') || !rail.includes('href="../727-collection.html"') || !rail.includes('data-cta-track="727_collection_entry_click"') || !rail.includes('src="../images/stamps/stamp_727-board.svg"') || !rail.includes('<strong>727看板コレクション</strong><small>東京〜新大阪の沿線で、727看板を集める</small>')) fail("ja shared rail must render exactly one correctly tracked 727 Collection card");
+    if (countMatches(rail, /data-cta-id="spot_rail_727"/g) !== 1 || !rail.includes('class="spot-page-rail-disney spot-page-rail-727"') || !rail.includes('href="../727-collection.html"') || !rail.includes('data-cta-track="727_collection_entry_click"') || !rail.includes('src="../images/stamps/stamp_727-board.svg"') || !rail.includes('<strong>727看板コレクション</strong><small>東京〜新大阪の沿線で727看板を集める</small>')) fail("ja shared rail must render exactly one correctly tracked 727 Collection card");
   } else if (countMatches(rail, /data-cta-id="spot_rail_727"/g) !== 0 || rail.includes("727看板コレクション")) {
     fail("en shared rail must not render a 727 Collection card");
   }
@@ -948,7 +948,7 @@ async function runThinValidator() {
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
       if (lang === "ja") {
-        const expected727Card = `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${prefix}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で、727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
+        const expected727Card = `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${prefix}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
         if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 1 || !desktopRail.includes(expected727Card)) fail(`${relativeFile} Japanese shared rail must contain exactly one complete 727 Collection card`);
       } else if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 0 || output.includes("727看板コレクション")) {
         fail(`${relativeFile} English shared rail must not contain a 727 Collection card`);
@@ -983,7 +983,7 @@ async function runThinValidator() {
   for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
-    const expectedUtility727Card = '<div class="spot-page-rail-disney spot-page-rail-727"><a href="./727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="./images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で、727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>';
+    const expectedUtility727Card = '<div class="spot-page-rail-disney spot-page-rail-727"><a href="./727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="./images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>';
     if (count(japaneseUtility.hosts.rail.outerHTML, /data-cta-id="spot_rail_727"/g) !== 1 || !japaneseUtility.hosts.rail.outerHTML.includes(expectedUtility727Card) || count(japaneseUtility.hosts["mobile-promos"].outerHTML, /data-cta-id="spot_rail_727"/g) !== 1 || !japaneseUtility.hosts["mobile-promos"].outerHTML.includes(expectedUtility727Card)) fail(`Japanese utility ${route} rail and mobile promos must each contain one complete 727 Collection card`);
 
     const englishUtility = renderUtility("en", "../", route);

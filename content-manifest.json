@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "56e15f3e86d37e44",
-  "generatedAt": "2026-08-14T01:14:23.217Z",
+  "contentVersion": "fd2a4a8fa866c466",
+  "generatedAt": "2026-08-14T01:45:01.039Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -176,8 +176,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 24170,
-      "sha256": "ab7d3b3cfb428fc5bafee0495c8e0a11e8c3c1fb7d7c4be1e7cc44d4a3b186fd"
+      "bytes": 25389,
+      "sha256": "6ac43edcedfb4badc424b68e2c1856aaddc3832a43bbf25b6115ee7dce438403"
     },
     {
       "path": "journal.html",
@@ -212,8 +212,8 @@
     {
       "path": "spot-page-shared.js",
       "url": "https://www.michikusa-travel.com/spot-page-shared.js",
-      "bytes": 64095,
-      "sha256": "625e5e9cc0fd991073d833c8b1435f70f3a8a95525f8580bae5169b212ccde96"
+      "bytes": 64092,
+      "sha256": "2a5a82a05e9d26ae54cef994d50132a5c966f49a3e116a21ec7dafd9c06da8b9"
     },
     {
       "path": "style.css",

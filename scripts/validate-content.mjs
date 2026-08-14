@@ -27,6 +27,9 @@ const checks = [
       'data-cta-id="top_journey_disney"',
       'data-cta-id="top_footer_disney"',
       'href="sparkling-dreams.html"',
+      'data-cta-id="top_journey_727"',
+      'data-cta-id="top_footer_727"',
+      'href="727-collection.html"',
     ],
     forbidden: ['class="seasonal-entry"'],
   },
@@ -37,7 +40,7 @@ const checks = [
       'data-cta-id="top_footer_disney"',
       'href="en/sparkling-dreams.html"',
     ],
-    forbidden: ['class="seasonal-entry"'],
+    forbidden: ['class="seasonal-entry"', 'data-cta-id="top_journey_727"', 'data-cta-id="top_footer_727"'],
   },
   {
     file: "app.js",
