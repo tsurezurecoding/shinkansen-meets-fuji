@@ -44,6 +44,7 @@ const contentFiles = [
   "style.css",
   "727-collection.html",
   "727-collection.js",
+  "images/og-727-collection.jpg",
   "images/20260629_727_board_1_4x_michikusa.jpg",
   "images/20260629_727_board_2_2x_michikusa.jpg",
   "images/20260704_727_board_kuzuhara_1_michikusa.jpg",

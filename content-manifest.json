@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "330c199598e350e9",
-  "generatedAt": "2026-08-14T09:23:36.977Z",
+  "contentVersion": "b1382985bc67ffbd",
+  "generatedAt": "2026-08-14T11:39:37.372Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 10213,
-      "sha256": "e06d99254ff34b7bcdc5a9245516c8fc72ac0dc27da7555c3285693e9bf4513a"
+      "bytes": 10820,
+      "sha256": "eba98b79cc274ee44e435adb4c397dcbe3d49476605bd387dc040363f9fa81cb"
     },
     {
       "path": "727-collection.js",
@@ -148,6 +148,12 @@
       "url": "https://www.michikusa-travel.com/images/hanabi-window.svg",
       "bytes": 2295,
       "sha256": "724197f1c13c4029edf26e0c1e6676ccc0c78529c5425171da34f1949ea6cecf"
+    },
+    {
+      "path": "images/og-727-collection.jpg",
+      "url": "https://www.michikusa-travel.com/images/og-727-collection.jpg",
+      "bytes": 111123,
+      "sha256": "d9959a1b95d50afe6ab31b2d249c1f6d2e4b738c77f3870ebb51b4d1d1e5c423"
     },
     {
       "path": "images/og-hanabi.jpg",
