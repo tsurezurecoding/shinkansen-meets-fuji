@@ -1946,18 +1946,6 @@ function replaceSpotCountClaims(html) {
 }
 
 function englishAppIndexHTML() {
-  const englishSeasonalEntry = `<!-- ===== Seasonal entry point ===== -->
-  <aside class="seasonal-entry" aria-labelledby="seasonalEntryTitle">
-    <a class="seasonal-entry-link" href="en/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_seasonal_banner">
-      <span class="seasonal-entry-visual" aria-hidden="true"><img src="../images/sparkling-dreams-window.svg" alt=""></span>
-      <span class="seasonal-entry-copy">
-        <span class="seasonal-entry-kicker">TOKYO DISNEYSEA 25TH ANNIVERSARY</span>
-        <strong id="seasonalEntryTitle"><span class="copy-chunk">Find when the Disney Shinkansen</span><span class="copy-chunk">may pass your train</span></strong>
-        <span>Check operating days and a window-side estimate for the Sparkling Dreams Shinkansen.</span>
-      </span>
-      <span class="seasonal-entry-arrow" aria-hidden="true">↗</span>
-    </a>
-  </aside>`;
   const railCopy = [
     ["次に見る案内", "Recommended next steps"],
     ["ディズニー新幹線", "Disney special train"],
@@ -2005,7 +1993,7 @@ function englishAppIndexHTML() {
     .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
-  html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, `\n\n  ${englishSeasonalEntry}\n\n  `);
+  html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, "\n\n  ");
   railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
   railRoutes.forEach((route) => {
     html = html

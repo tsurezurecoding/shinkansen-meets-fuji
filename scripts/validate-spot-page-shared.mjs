@@ -532,6 +532,11 @@ function validateRenderedRail(rail, lang, rootPath) {
   if (countMatches(rail, /data-affiliate-module/g) !== 0 || countMatches(rail, /class="affiliate-card"/g) !== 0) fail(`${lang} shared rail rendered affiliate presentation while disabled`);
   if (countMatches(rail, /class="spot-page-rail-app hide-in-app"/g) !== 1 || countMatches(rail, /class="spot-page-rail-disney"/g) !== 1) fail(lang + " shared rail must render exactly one Android and one Disney promo card");
   if (!rail.includes('data-cta-id="spot_rail_android"') || !rail.includes('data-cta-id="spot_rail_disney"') || !rail.includes('Sparkling Dreams Shinkansen')) fail(lang + " shared rail promo cards lost their tracking or formal Disney name");
+  if (lang === "ja") {
+    if (countMatches(rail, /data-cta-id="spot_rail_727"/g) !== 1 || !rail.includes('class="spot-page-rail-disney spot-page-rail-727"') || !rail.includes('href="../727-collection.html"') || !rail.includes('data-cta-track="727_collection_entry_click"') || !rail.includes('src="../images/stamps/stamp_727-board.svg"') || !rail.includes('<strong>727看板コレクション</strong><small>東京〜新大阪の沿線で、727看板を集める</small>')) fail("ja shared rail must render exactly one correctly tracked 727 Collection card");
+  } else if (countMatches(rail, /data-cta-id="spot_rail_727"/g) !== 0 || rail.includes("727看板コレクション")) {
+    fail("en shared rail must not render a 727 Collection card");
+  }
   for (const spot of expected.spots) {
     const rowStart = rail.indexOf(`<a class="spot-page-rail-link" href="${spot.id}.html"`);
     const rowEnd = rowStart >= 0 ? rail.indexOf("</a>", rowStart) : -1;
@@ -785,6 +790,40 @@ async function runThinValidator() {
     return { html: host.outerHTML, host, createdScripts, errors: errors.splice(0) };
   }
 
+  function renderUtility(lang, rootPath, route) {
+    const hosts = {
+      topbar: makeHost(),
+      rail: makeHost(),
+      "content-rail": makeHost(),
+      "mobile-promos": makeHost(),
+    };
+    const body = {
+      classList: { contains: (name) => name === "spot-page" },
+      getAttribute(name) {
+        return {
+          "data-spot-page-shared-context": "utility",
+          "data-spot-page-shared-lang": lang,
+          "data-spot-page-shared-root": rootPath,
+          "data-spot-page-shared-route": route,
+        }[name] || null;
+      },
+    };
+    const document = {
+      body,
+      querySelectorAll(selector) {
+        const match = selector.match(/data-spot-page-shared-module="([^"]+)"/);
+        return match && hosts[match[1]] ? [hosts[match[1]]] : [];
+      },
+    };
+    const utilityErrors = [];
+    const console = { error(message) { utilityErrors.push(String(message)); } };
+    const context = { document, console };
+    context.window = context;
+    vm.runInNewContext(sharedDataCode, context, { filename: dataPath });
+    vm.runInNewContext(rendererCode, context, { filename: rendererPath });
+    return { hosts, errors: utilityErrors };
+  }
+
   function assertPageSafety(page, spot, lang) {
     if (!page || page.id !== spot.id || page.lang !== lang || !page.hero || !Array.isArray(page.gallery) || !page.gallery.length || typeof page.photoHeadingCustom !== "boolean") fail(`payload page missing for ${spot.id}/${lang}`);
     if (!page.stamp || !safeAsset(page.stamp.src)) fail(`${spot.id}/${lang} stamp path is unsafe`);
@@ -904,6 +943,16 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      const desktopRailStart = output.indexOf('<aside class="spot-page-rail"');
+      const desktopRailEnd = desktopRailStart >= 0 ? output.indexOf("</aside>", desktopRailStart) : -1;
+      const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
+      if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
+      if (lang === "ja") {
+        const expected727Card = `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${prefix}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で、727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
+        if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 1 || !desktopRail.includes(expected727Card)) fail(`${relativeFile} Japanese shared rail must contain exactly one complete 727 Collection card`);
+      } else if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 0 || output.includes("727看板コレクション")) {
+        fail(`${relativeFile} English shared rail must not contain a 727 Collection card`);
+      }
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
       if (page.inline.length && count(output, /spot-page-inline-figure/g) !== page.inline.length) fail(`${relativeFile} inline photo module count is invalid`);
@@ -930,6 +979,17 @@ async function runThinValidator() {
   }
   if (expectedPages.length !== expectedPageCount || currentPages.length !== expectedPageCount) fail(`expected exactly ${expectedPageCount} spot pages, found ${currentPages.length}`);
   if (renderedVideoPageCount !== expectedVideoPageCount) fail(`expected ${expectedVideoPageCount} video pages from the structured source, found ${renderedVideoPageCount}`);
+
+  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html"]) {
+    const japaneseUtility = renderUtility("ja", "./", route);
+    if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
+    const expectedUtility727Card = '<div class="spot-page-rail-disney spot-page-rail-727"><a href="./727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="./images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で、727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>';
+    if (count(japaneseUtility.hosts.rail.outerHTML, /data-cta-id="spot_rail_727"/g) !== 1 || !japaneseUtility.hosts.rail.outerHTML.includes(expectedUtility727Card) || count(japaneseUtility.hosts["mobile-promos"].outerHTML, /data-cta-id="spot_rail_727"/g) !== 1 || !japaneseUtility.hosts["mobile-promos"].outerHTML.includes(expectedUtility727Card)) fail(`Japanese utility ${route} rail and mobile promos must each contain one complete 727 Collection card`);
+
+    const englishUtility = renderUtility("en", "../", route);
+    if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
+    if (englishUtility.hosts.rail.outerHTML.includes('data-cta-id="spot_rail_727"') || englishUtility.hosts.rail.outerHTML.includes("727看板コレクション") || englishUtility.hosts["mobile-promos"].outerHTML.includes('data-cta-id="spot_rail_727"') || englishUtility.hosts["mobile-promos"].outerHTML.includes("727看板コレクション")) fail(`English utility ${route} rail or mobile promos must not contain the 727 Collection card`);
+  }
 
   const reps = [
     ["ibuki", "ja"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],

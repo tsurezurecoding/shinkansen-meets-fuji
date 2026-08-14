@@ -87,12 +87,10 @@ const requiredPageText = [
   "https://www.tokyodisneyresort.jp/dream/event/2026_s25_jrc.html",
 ];
 for (const text of requiredPageText) expect(page.includes(text), `sparkling-dreams.html: missing "${text}"`);
-expect(japaneseTop.includes('class="seasonal-entry"') && japaneseTop.includes('href="sparkling-dreams.html"'), "index.html: Japanese seasonal entry point is missing");
-expect(/<span class="seasonal-entry-visual" aria-hidden="true">\s*<img src="images\/sparkling-dreams-window\.svg" alt="">/s.test(japaneseTop), "index.html: seasonal entry illustration is missing or not decorative");
-expect(japaneseTop.includes("東京ディズニーシー25周年") && japaneseTop.includes("ディズニー新幹線と、"), "index.html: seasonal entry must identify the Disney special-livery train");
-expect(!/data-i18n="seasonal(?:Kicker|Title|Body)"/.test(japaneseTop), "index.html: seasonal entry still has stale app.js translation hooks");
-expect(englishTop.includes('class="seasonal-entry"') && englishTop.includes('href="en/sparkling-dreams.html"'), "en/index.html: English seasonal entry must account for the page base URL");
-expect(englishTop.includes('sparkling_dreams_entry_click') && englishTop.includes('TOKYO DISNEYSEA 25TH ANNIVERSARY'), "en/index.html: English seasonal entry copy or tracking is missing");
+expect(!japaneseTop.includes('class="seasonal-entry"'), "index.html: standalone upper seasonal entry must be absent");
+expect(!englishTop.includes('class="seasonal-entry"'), "en/index.html: standalone upper seasonal entry must be absent");
+expect(japaneseTop.includes('data-cta-id="top_journey_disney"') && japaneseTop.includes('data-cta-id="top_footer_disney"') && japaneseTop.includes('href="sparkling-dreams.html"'), "index.html: journey and mobile Disney promo cards must remain");
+expect(englishTop.includes('data-cta-id="top_journey_disney"') && englishTop.includes('data-cta-id="top_footer_disney"') && englishTop.includes('href="en/sparkling-dreams.html"'), "en/index.html: journey and mobile Disney promo cards must remain");
 expect(/<link rel="canonical" href="https:\/\/www\.michikusa-travel\.com\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: canonical is missing or incorrect");
 expect(/<meta name="robots" content="index,follow/.test(page), "sparkling-dreams.html: index/follow robots metadata is missing");
 expect(/<link rel="alternate" hreflang="en" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page) && /<link rel="alternate" hreflang="x-default" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: English or x-default language route is missing");
@@ -337,7 +335,7 @@ expect((englishPage.match(/<div class="sd-media-frame sd-x-frame" data-placehold
 expect(englishPage.includes("Track the Disney Shinkansen") && englishPage.includes("Choose your train") && englishPage.includes("See everyone's videos") && englishPage.includes("sd-post-intro") && !englishPage.includes("乗る列車を選ぶ"), "en/sparkling-dreams.html: English static UI copy is incomplete or Japanese UI leaked");
 expect(englishPage.includes('<p class="sd-hero-lead"><span class="copy-chunk">A special train celebrating Tokyo DisneySea\'s 25th anniversary.</span><span class="copy-chunk">Use published timetables to find a possible encounter,</span><span class="copy-chunk">then compare the train through videos found along the line, inside trains, and at stations.</span></p>'), "en/sparkling-dreams.html: hero copy chunks must be self-contained meaning units without leading-space joins");
 expect(calculatorCode.includes('const uiLanguage = document.documentElement.lang === "en"') && calculatorCode.includes("function renderEnglishResult") && calculatorCode.includes("E-seat side") && calculatorCode.includes("Pattern ${result.pattern}"), "sparkling-dreams.js: localized dynamic English calculator contract is missing");
-expect(generatorCode.includes("const englishSeasonalEntry") && generatorCode.includes('href="en/sparkling-dreams.html"') && generatorCode.includes("sparkling_dreams_entry_click") && generatorCode.includes("images/sparkling-dreams-window.svg") && generatorCode.includes("${englishSeasonalEntry}"), "generate-spot-pages.mjs: English TOP seasonal entry must be generated, not deleted");
+expect(!generatorCode.includes("englishSeasonalEntry") && !generatorCode.includes("top_seasonal_banner"), "generate-spot-pages.mjs: English TOP generator must not restore the standalone seasonal entry");
 expect(generatorCode.includes('loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11"') && generatorCode.includes('loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11"'), "generate-spot-pages.mjs: Japanese and English seasonal sitemap entries must be regenerated");
 
 const manifestPaths = new Set((manifest.files || []).map((entry) => entry.path));

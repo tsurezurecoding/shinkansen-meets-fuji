@@ -23,7 +23,21 @@ const allowedSideLabels = {
 const checks = [
   {
     file: "index.html",
-    required: ['class="seasonal-entry"'],
+    required: [
+      'data-cta-id="top_journey_disney"',
+      'data-cta-id="top_footer_disney"',
+      'href="sparkling-dreams.html"',
+    ],
+    forbidden: ['class="seasonal-entry"'],
+  },
+  {
+    file: "en/index.html",
+    required: [
+      'data-cta-id="top_journey_disney"',
+      'data-cta-id="top_footer_disney"',
+      'href="en/sparkling-dreams.html"',
+    ],
+    forbidden: ['class="seasonal-entry"'],
   },
   {
     file: "app.js",
@@ -56,6 +70,11 @@ for (const check of checks) {
   for (const phrase of check.required) {
     if (!text.includes(phrase)) {
       failures.push(`${check.file}: missing "${phrase}"`);
+    }
+  }
+  for (const phrase of check.forbidden || []) {
+    if (text.includes(phrase)) {
+      failures.push(`${check.file}: forbidden "${phrase}" is present`);
     }
   }
   for (const pattern of stalePatterns) {

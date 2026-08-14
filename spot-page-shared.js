@@ -37,6 +37,8 @@
       railHanabiBody: "沿線の花火大会と、車窓から見えた記録を集める",
       railYakeiTitle: "新幹線の夜景",
       railYakeiBody: "どこから暗くなるかを調べて、夜だけの車窓を探す",
+      rail727Title: "727看板コレクション",
+      rail727Body: "東京〜新大阪の沿線で、727看板を集める",
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -346,6 +348,7 @@
     if (currentRoute !== "sparkling-dreams.html") out += railDisneyHTML(rootPath, lang);
     if (currentRoute !== "hanabi.html") out += railHanabiHTML(rootPath, lang);
     if (currentRoute !== "yakei.html") out += railYakeiHTML(rootPath, lang);
+    if (lang === "ja") out += rail727HTML(rootPath);
     return out;
   }
 
@@ -376,6 +379,11 @@
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     return "<div class=\"spot-page-rail-disney spot-page-rail-yakei\"><a href=\"" + escapeHTML(href(base, "yakei.html")) + "\" data-cta-track=\"yakei_entry_click\" data-cta-id=\"spot_rail_yakei\"><img src=\"" + escapeHTML(href(rootPath, "images/yakei-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railYakeiTitle) + "</strong><small>" + escapeHTML(ui.railYakeiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  }
+
+  function rail727HTML(rootPath) {
+    var ui = UI.ja;
+    return "<div class=\"spot-page-rail-disney spot-page-rail-727\"><a href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\" data-cta-track=\"727_collection_entry_click\" data-cta-id=\"spot_rail_727\"><img src=\"" + escapeHTML(href(rootPath, "images/stamps/stamp_727-board.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.rail727Title) + "</strong><small>" + escapeHTML(ui.rail727Body) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {
