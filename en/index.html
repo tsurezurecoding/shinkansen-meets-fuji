@@ -8,6 +8,7 @@
   <title>Shinkansen Window | Tokaido Shinkansen View Times and Seat Side</title>
   <meta name="description" content="Choose your train to find 37 recommended Tokaido Shinkansen views, including Mt. Fuji on cloudy days, night scenery, castles, lakes, and family spotting ideas.">
   <meta name="theme-color" content="#101c2c">
+  <meta name="naver-site-verification" content="cdb86f56126e5063178bc29b07c50ca0" />
   <link rel="canonical" href="https://www.michikusa-travel.com/en/">
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -56,6 +57,8 @@
       var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
       var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
+
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
 
       try {
         if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
@@ -185,7 +188,7 @@
       <section class="top-promo-stack top-promo-stack--journey" aria-label="Recommended next steps">
         <div class="top-promo-grid">
           <a class="top-promo-card top-promo-card-disney" href="en/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_journey_disney">
-            <span class="top-promo-card-visual" aria-hidden="true"><img src="../images/sparkling-dreams-window.svg" alt=""></span>
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/sparkling-dreams-window.svg" alt=""></span>
             <span class="top-promo-card-copy">
               <small>SEASONAL WINDOW</small>
               <strong>Disney special train<br><span>Sparkling Dreams Shinkansen</span></strong>
@@ -194,25 +197,25 @@
             <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
           </a>
           <a class="top-promo-card top-promo-card-disney top-promo-card-hanabi" href="en/hanabi.html" data-cta-track="hanabi_entry_click" data-cta-id="top_journey_hanabi">
-            <span class="top-promo-card-visual" aria-hidden="true"><img src="../images/hanabi-window.svg" alt=""></span>
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/hanabi-window.svg" alt=""></span>
             <span class="top-promo-card-copy">
               <small>SEASONAL WINDOW</small>
-              <strong>Fireworks from the window</strong>
-              <span>Seven festivals along the line, and who saw them.</span>
+              <strong>新幹線から見える花火</strong>
+              <span>長岡・淀川・熱海など沿線7大会の目撃記録。</span>
             </span>
             <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
           </a>
           <a class="top-promo-card top-promo-card-disney top-promo-card-yakei" href="en/yakei.html" data-cta-track="yakei_entry_click" data-cta-id="top_journey_yakei">
-            <span class="top-promo-card-visual" aria-hidden="true"><img src="../images/yakei-window.svg" alt=""></span>
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/yakei-window.svg" alt=""></span>
             <span class="top-promo-card-copy">
               <small>NIGHT WINDOW</small>
-              <strong>Night views from the window</strong>
-              <span>Where your train goes dark, and 11 things to look for.</span>
+              <strong>新幹線の夜景</strong>
+              <span>どこから暗くなるか、夜だけの車窓11景。</span>
             </span>
             <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
           </a>
           <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="early_access_click" data-cta-id="top_journey_android">
-            <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="../images/android/app-icon-192.webp" alt=""></span>
+            <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
             <span class="top-promo-card-copy">
               <small>EARLY ACCESS</small>
               <strong>Help us test the Android app</strong>
@@ -252,8 +255,14 @@
               <button type="button" data-timeline-filter="history" data-i18n="fHistory">歴史</button>
               <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">工業</button>
               <button type="button" data-timeline-filter="sign" data-i18n="fSign">看板</button>
+              <button type="button" data-timeline-filter="727" data-i18n="f727">727</button>
               <button type="button" data-timeline-filter="city" data-i18n="fCity">街並</button>
             </div>
+            <label class="timeline-collection-toggle">
+              <input type="checkbox" data-727-collection-toggle role="switch" aria-label="727看板を分けて表示" aria-checked="false">
+              <span class="timeline-toggle-track" aria-hidden="true"><span></span></span>
+              <span data-i18n="c727Toggle">727看板を分けて表示</span>
+            </label>
           </div>
           <ol class="timeline" id="timeline"></ol>
         </section>
@@ -276,7 +285,7 @@
   <section class="top-promo-stack top-promo-stack--mobile" aria-label="Recommended next steps">
     <div class="top-promo-grid">
       <a class="top-promo-card top-promo-card-disney" href="en/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_footer_disney">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="../images/sparkling-dreams-window.svg" alt=""></span>
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/sparkling-dreams-window.svg" alt=""></span>
         <span class="top-promo-card-copy">
           <small>SEASONAL WINDOW</small>
           <strong>Disney special train<br><span>Sparkling Dreams Shinkansen</span></strong>
@@ -285,25 +294,25 @@
         <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="top-promo-card top-promo-card-disney top-promo-card-hanabi" href="en/hanabi.html" data-cta-track="hanabi_entry_click" data-cta-id="top_footer_hanabi">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="../images/hanabi-window.svg" alt=""></span>
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/hanabi-window.svg" alt=""></span>
         <span class="top-promo-card-copy">
           <small>SEASONAL WINDOW</small>
-          <strong>Fireworks from the window</strong>
-          <span>Seven festivals along the line, and who saw them.</span>
+          <strong>新幹線から見える花火</strong>
+          <span>長岡・淀川・熱海など沿線7大会の目撃記録。</span>
         </span>
         <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="top-promo-card top-promo-card-disney top-promo-card-yakei" href="en/yakei.html" data-cta-track="yakei_entry_click" data-cta-id="top_footer_yakei">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="../images/yakei-window.svg" alt=""></span>
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/yakei-window.svg" alt=""></span>
         <span class="top-promo-card-copy">
           <small>NIGHT WINDOW</small>
-          <strong>Night views from the window</strong>
-          <span>Where your train goes dark, and 11 things to look for.</span>
+          <strong>新幹線の夜景</strong>
+          <span>どこから暗くなるか、夜だけの車窓11景。</span>
         </span>
         <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
       </a>
       <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="early_access_click" data-cta-id="top_footer_android">
-        <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="../images/android/app-icon-192.webp" alt=""></span>
+        <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
         <span class="top-promo-card-copy">
           <small>EARLY ACCESS</small>
           <strong>Help us test the Android app</strong>
@@ -386,6 +395,6 @@
   <script src="data.js?v=20260726-contact-methods"></script>
   <script src="track.js?v=20260707-map-mode-switch"></script>
   <script src="spot-map.js?v=20260718-android-leaflet"></script>
-  <script src="app.js?v=20260812-early-access"></script>
+  <script src="app.js?v=20260814-en-quick-intro"></script>
 </body>
 </html>
