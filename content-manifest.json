@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "5b389bfa7201705a",
-  "generatedAt": "2026-08-14T00:06:05.110Z",
+  "contentVersion": "02d3ab6f524f7e3d",
+  "generatedAt": "2026-08-14T00:36:05.028Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -20,8 +20,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 126838,
-      "sha256": "e22e00812f99bf42192d7fd5713ec9b924c1dab99e671e3ffbd2c1eb0c7935bf"
+      "bytes": 126865,
+      "sha256": "95c2bc8090789e38b2fa704406b0e33b9c1a5c15de0e1974feb2becb84b1bff2"
     },
     {
       "path": "data.js",
@@ -1193,8 +1193,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 147,
-    "bytes": 5507806,
+    "itemCount": 154,
+    "bytes": 5695844,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -1767,6 +1767,24 @@
         "sha256": "0c1d80f4ca79f9fe23d30c6f4fa8f32cdb0da4bf3c5d7c7d812c73566450a299"
       },
       {
+        "path": "images/thumbs/20260704_727_board_fuse_2_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_fuse_2_michikusa.webp",
+        "bytes": 13850,
+        "sha256": "30d9c7f64fbbf213103e271afd87b56f1a824396363227cf174c949ad9fc5f69"
+      },
+      {
+        "path": "images/thumbs/20260704_727_board_fuse_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_fuse_michikusa.webp",
+        "bytes": 22592,
+        "sha256": "417f3226c806990f825ca8b73d3ad36077a3f2db2896d206db813f35ceeee12e"
+      },
+      {
+        "path": "images/thumbs/20260704_727_board_haracho_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_haracho_michikusa.webp",
+        "bytes": 28204,
+        "sha256": "314431310704bb0fba723654dba5df6f549cdf782d2f1af9b2441d45aa8c0e52"
+      },
+      {
         "path": "images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp",
         "bytes": 47110,
@@ -1777,6 +1795,18 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_kuzuhara_2_michikusa.webp",
         "bytes": 26362,
         "sha256": "f5204abd7ad25851a2ac9b0810d745d53ea6fe6fc68ce4fd7d220dfb6f2ce09d"
+      },
+      {
+        "path": "images/thumbs/20260704_727_board_miyashiro_a_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_miyashiro_a_michikusa.webp",
+        "bytes": 47076,
+        "sha256": "e88d126c31b8a43eb2e68be2583b068e2428beb54e61b482774f4a36ede46f3a"
+      },
+      {
+        "path": "images/thumbs/20260704_727_board_osawa_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_727_board_osawa_michikusa.webp",
+        "bytes": 30088,
+        "sha256": "0ac8db64017e294390855bacaf2e178fb16ac3f4fd37e272a950882500420d35"
       },
       {
         "path": "images/thumbs/20260704_genki_sign_michikusa.webp",
@@ -1957,6 +1987,18 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260802_sparkling-dreams-hamanako_toshi549.webp",
         "bytes": 28808,
         "sha256": "38538619c6ef8f6b4878c3d49151407509e5d697e5a9c3f75db93271b5019f1b"
+      },
+      {
+        "path": "images/thumbs/20260803_727_board_karasakiminami_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260803_727_board_karasakiminami_michikusa.webp",
+        "bytes": 24720,
+        "sha256": "2cf9db0bb6eaa0042b4e4149969bb61b82c56e84b3c37f66e3399e4bdf41fee8"
+      },
+      {
+        "path": "images/thumbs/20260803_727_board_torikaihachicho_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260803_727_board_torikaihachicho_michikusa.webp",
+        "bytes": 21508,
+        "sha256": "4c7edf7a48a771c0af118a8e41536213e172efa355ef5fe59fd6dc73de963ca2"
       },
       {
         "path": "images/thumbs/20260804_atami_michikusa.webp",

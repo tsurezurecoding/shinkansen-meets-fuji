@@ -844,7 +844,7 @@ function spotRelatedHTML(spot) {
   return `<div class="spot-modal-refs spot-modal-related"><span>${title}</span>${links}</div>`;
 }
 function collectionGuideLinkHTML(spot) {
-  if (lang !== "ja" || !["727-board", "putiputi-sign"].includes(spot?.id)) return "";
+  if (lang !== "ja" || !(spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id))) return "";
   return `<a class="spot-modal-collection-cta" href="727-collection.html"><span>727看板コレクションを見る</span><span aria-hidden="true">→</span></a>`;
 }
 function showCreditHTML(spot) {

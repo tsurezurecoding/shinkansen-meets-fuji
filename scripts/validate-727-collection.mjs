@@ -18,6 +18,7 @@ const shared = read("spot-page-shared.js");
 const styles = read("style.css");
 const manifest = JSON.parse(read("content-manifest.json"));
 const assertIncludes = (value, needle, message) => assert.ok(value.includes(needle), message);
+const thumbnailPath = (src) => String(src || "").replace(/^images\/(.+)\.(jpe?g|png)$/i, "images/thumbs/$1.webp");
 
 assert.equal(collection.length, 27, "expected 27 dedicated collection items");
 assert.equal(new Set(collection.map((point) => point.id)).size, 27, "collection IDs must be unique");
@@ -56,6 +57,13 @@ for (const [sourceNo, minutes, image] of [
 assert.match(collection.find((point) => point.sourceNo === 35)?.photo?.note || "", /宮代A席の約30秒前/, "Osawa photo timing note missing");
 assert.equal(collection.find((point) => point.sourceNo === 39)?.collectionPhotos?.[0]?.src, "images/20260704_727_board_fuse_2_michikusa.jpg", "Fuse secondary photo missing");
 assert.ok(fs.existsSync(path.join(appDir, "images/20260704_727_board_fuse_2_michikusa.jpg")), "Fuse secondary image file missing");
+for (const point of collection) {
+  for (const photo of [point.photo, ...(point.collectionPhotos || [])].filter(Boolean)) {
+    assert.ok(fs.existsSync(path.join(appDir, photo.src)), `${point.id} image file missing: ${photo.src}`);
+    const thumb = thumbnailPath(photo.src);
+    assert.ok(fs.existsSync(path.join(appDir, thumb)), `${point.id} thumbnail missing: ${thumb}`);
+  }
+}
 assert.ok(collection.filter((point) => !point.photo).every((point) => point.image === "images/stamps/stamp_727-board.svg"), "no-photo items must use 727 SVG fallback");
 
 assertIncludes(app, 'spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22', "TOP split must omit synthetic source 19 and 22");
@@ -63,6 +71,7 @@ assertIncludes(app, 'id === "727-board"', "TOP must retain the 727-board represe
 assertIncludes(app, 'minutesFromTokyo: [20, 21].includes(spot.sourceNo) ? representative.minutesFromTokyo', "Yoda pair must share representative time");
 assertIncludes(app, "function timeline727Order", "TOP must keep deterministic representative/Yoda order");
 assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo visual must use SVG fallback");
+assertIncludes(app, 'spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id)', "all split 727 modals must link to the collection page");
 assertIncludes(read("data.js"), "大阪の化粧品メーカー、セブンツーセブン", "synthetic 727 copy must be 727-only");
 assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板と248看板", "representative name must remain unchanged");
 assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "727看板と私は誰でしょう看板", "putiputi representative must remain unchanged");
