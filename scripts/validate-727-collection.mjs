@@ -1,0 +1,100 @@
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import fs from "node:fs";
+import path from "node:path";
+import vm from "node:vm";
+import { fileURLToPath } from "node:url";
+
+const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const read = (relativePath) => fs.readFileSync(path.join(appDir, relativePath), "utf8");
+const context = {};
+vm.runInNewContext(`${read("data.js")}\n;globalThis.__collection = BOARD_COLLECTION; globalThis.__spots = SPOTS;`, context);
+const collection = context.__collection;
+const spots = context.__spots;
+const app = read("app.js");
+const page = read("727-collection.html");
+const script = read("727-collection.js");
+const shared = read("spot-page-shared.js");
+const styles = read("style.css");
+const manifest = JSON.parse(read("content-manifest.json"));
+const assertIncludes = (value, needle, message) => assert.ok(value.includes(needle), message);
+
+assert.equal(collection.length, 27, "expected 27 dedicated collection items");
+assert.equal(new Set(collection.map((point) => point.id)).size, 27, "collection IDs must be unique");
+const signs727 = collection.filter((point) => point.collectionKind === "727");
+assert.equal(signs727.length, 27, "must retain all 27 727 source points");
+assert.equal(signs727.map((point) => point.sourceNo).join(","), Array.from({ length: 27 }, (_, index) => index + 19).join(","), "727 source numbering must remain stable");
+assert.equal(collection.find((point) => point.sourceNo === 19)?.stampId, "727-board", "representative keeps old stamp state");
+assert.equal(collection.find((point) => point.sourceNo === 22)?.stampId, "putiputi-sign", "Oiso point must share the Who-am-I stamp state");
+assert.equal(collection.find((point) => point.sourceNo === 22)?.legacyStampIds?.[0], "727-companion-putiputi", "Oiso point must preserve the removed companion-row state");
+assert.ok(!collection.some((point) => point.collectionKind === "companion"), "companion signs must not appear as separate collection rows");
+assert.equal(
+  collection.slice(0, 4).map((point) => point.collectionNote).join("|"),
+  ["となりには248看板", "となりにはきぬた歯科", "727看板がひとつだけ", "となりには私は誰でしょう看板"].join("|"),
+  "first four collection notes must stay attached to the correct points",
+);
+for (const [sourceNo, note, image] of [
+  [44, "田んぼの奥にぽつんと", "images/20260803_727_board_karasakiminami_michikusa.jpg"],
+  [45, "大阪中央卸売市場をバックに", "images/20260803_727_board_torikaihachicho_michikusa.jpg"],
+]) {
+  const point = collection.find((item) => item.sourceNo === sourceNo);
+  assert.equal(point?.collectionNote, note, `source No.${sourceNo} list note missing`);
+  assert.equal(point?.photo?.src, image, `source No.${sourceNo} photo missing`);
+  assert.ok(fs.existsSync(path.join(appDir, image)), `source No.${sourceNo} image file missing`);
+}
+for (const [sourceNo, minutes, image] of [
+  [23, 76, "images/20260704_727_board_haracho_michikusa.jpg"],
+  [35, 107, "images/20260704_727_board_osawa_michikusa.jpg"],
+  [36, 108, "images/20260704_727_board_miyashiro_a_michikusa.jpg"],
+  [39, 113, "images/20260704_727_board_fuse_michikusa.jpg"],
+]) {
+  const point = collection.find((item) => item.sourceNo === sourceNo);
+  assert.equal(point?.minutesFromTokyo, minutes, `source No.${sourceNo} timing mismatch`);
+  assert.equal(point?.photo?.src, image, `source No.${sourceNo} primary photo missing`);
+  assert.ok(fs.existsSync(path.join(appDir, image)), `source No.${sourceNo} primary image file missing`);
+}
+assert.match(collection.find((point) => point.sourceNo === 35)?.photo?.note || "", /宮代A席の約30秒前/, "Osawa photo timing note missing");
+assert.equal(collection.find((point) => point.sourceNo === 39)?.collectionPhotos?.[0]?.src, "images/20260704_727_board_fuse_2_michikusa.jpg", "Fuse secondary photo missing");
+assert.ok(fs.existsSync(path.join(appDir, "images/20260704_727_board_fuse_2_michikusa.jpg")), "Fuse secondary image file missing");
+assert.ok(collection.filter((point) => !point.photo).every((point) => point.image === "images/stamps/stamp_727-board.svg"), "no-photo items must use 727 SVG fallback");
+
+assertIncludes(app, 'spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22', "TOP split must omit synthetic source 19 and 22");
+assertIncludes(app, 'id === "727-board"', "TOP must retain the 727-board representative");
+assertIncludes(app, 'minutesFromTokyo: [20, 21].includes(spot.sourceNo) ? representative.minutesFromTokyo', "Yoda pair must share representative time");
+assertIncludes(app, "function timeline727Order", "TOP must keep deterministic representative/Yoda order");
+assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo visual must use SVG fallback");
+assertIncludes(read("data.js"), "大阪の化粧品メーカー、セブンツーセブン", "synthetic 727 copy must be 727-only");
+assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板と248看板", "representative name must remain unchanged");
+assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "727看板と私は誰でしょう看板", "putiputi representative must remain unchanged");
+
+assertIncludes(shared, "727看板コレクション", "detail card title missing");
+assertIncludes(shared, "沿線の727看板を集める", "detail card action copy missing");
+assert.ok(!shared.includes("代表地点から始めて、沿線の27地点"), "old verbose detail card must be removed");
+assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board page must load shared CTA renderer");
+assertIncludes(read("spots/putiputi-sign.html"), "spot-page-shared.js", "putiputi page must load shared CTA renderer");
+
+assertIncludes(page, "全27地点", "page must show total 27");
+assert.ok(!page.includes("全体地図に戻る") && !page.includes("data-map-reset"), "reset button must be removed");
+assertIncludes(page, "をっつん「新幹線から見える『727看板』の設置場所はどこか」", "note attribution missing");
+assertIncludes(page, "2023年の個人調査", "attribution context missing");
+assert.ok(!page.includes("727の地点数に混ぜず"), "old companion exclusion copy must be removed");
+assert.ok(!page.includes('id="collectionStamps"') && !page.includes('id="collectionPhotos"'), "no standalone stamp grid or gallery");
+assertIncludes(script, "data-google-map", "expanded map must be Google Maps");
+assertIncludes(script, "Google マップで開く", "Google Maps external CTA missing");
+assertIncludes(script, "destroyExpandedMap", "expanded iframe must unload on switch");
+assertIncludes(script, "collection-point-summary-note", "optional list comments must render in collapsed rows");
+assertIncludes(script, "point.collectionPhotos || []", "additional collection photos must render");
+assertIncludes(script, "point.legacyStampIds || []", "shared stamps must preserve removed companion-row state");
+assertIncludes(script, "requestAnimationFrame", "full map must wait for layout");
+assertIncludes(script, "invalidateSize", "full map must invalidate size");
+assert.ok(!script.includes("initMiniMap") && !script.includes("data-mini-map"), "Leaflet mini map must be removed");
+assert.ok(/\.collection-point-list\s*\{\s*display:\s*grid;\s*grid-template-columns:\s*1fr;/.test(styles), "list must remain one column");
+assertIncludes(styles, ".collection-point-google-map", "Google expanded-map styling missing");
+
+const manifestEntries = new Map(manifest.files.map((entry) => [entry.path, entry]));
+for (const relativePath of ["app.js", "data.js", "style.css", "spot-page-shared.js", "727-collection.html", "727-collection.js"]) {
+  const entry = manifestEntries.get(relativePath);
+  assert.ok(entry, `manifest entry missing: ${relativePath}`);
+  assert.equal(entry.sha256, createHash("sha256").update(fs.readFileSync(path.join(appDir, relativePath))).digest("hex"), `stale manifest hash: ${relativePath}`);
+}
+console.log("727 collection validation passed: 27 items, shared representative stamps, list notes, TOP omissions, Google map, attribution, no reset/grid.");

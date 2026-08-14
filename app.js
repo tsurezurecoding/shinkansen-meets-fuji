@@ -132,7 +132,7 @@ const MSG = {
     zukanFamilyTitle: "子連れなら看板探し",
     zukanFamilyBody: "数秒の発見を、車窓ゲームに。",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", fCity: "街並",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
@@ -381,6 +381,35 @@ let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
 const PREVIEW_DEP_MIN = 0;
+let boardCollectionExpanded = false;
+
+function boardCollectionSpots() {
+  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22).map((spot) => {
+    const representative = SPOTS.find((candidate) => candidate.id === "727-board");
+    const media = spot.photo ? {
+      image: spot.photo.src,
+      photos: [{
+        src: spot.photo.src,
+        alt: { ja: spot.photo.alt, en: spot.photo.alt },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-07-04",
+        note: { ja: spot.photo.note, en: spot.photo.note },
+      }],
+    } : { image: "images/stamps/stamp_727-board.svg", photos: [] };
+    return {
+      ...spot,
+      ...media,
+      minutesFromTokyo: [20, 21].includes(spot.sourceNo) ? representative.minutesFromTokyo : spot.minutesFromTokyo,
+      timelineOrder: [20, 21].includes(spot.sourceNo) ? spot.sourceNo : 99,
+      collectionPointId: spot.id,
+      is727Collection: true,
+      map: { lat: spot.lat, lng: spot.lng, ja: spot.ja, en: spot.en },
+    };
+  });
+}
+function is727CollectionSpot(spot) {
+  return spot?.is727Collection === true || spot?.id === "727-board";
+}
 function loadStamps() {
   try {
     const parsed = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
@@ -557,7 +586,42 @@ function computeJourney(train, depMin) {
     .map((sp) => ({ sp, clock: spotClock(sp.minutesFromTokyo) }))
     .filter((x) => x.clock != null)
     .sort((a, b) => a.clock - b.clock);
-  return { mode: train ? "train" : "estimate", train, depMin, stops, spots };
+  return {
+    mode: train ? "train" : "estimate",
+    train,
+    depMin,
+    direction,
+    boardId,
+    stops,
+    spots,
+  };
+}
+function collectionTimelineSpots(expanded = boardCollectionExpanded) {
+  if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
+  const boardRef = REF[boardId];
+  const dirSign = direction === "west" ? 1 : -1;
+  const spotClock = journey.mode === "train"
+    ? (ref) => interpolateSpot(ref, journey.stops)
+    : (ref) => (ref - boardRef) * dirSign < 0 ? null : journey.depMin + Math.abs(ref - boardRef);
+  const boardPoints = boardCollectionSpots()
+    .map((sp) => ({ sp, clock: spotClock(sp.minutesFromTokyo) }))
+    .filter((item) => item.clock != null);
+  return journey.spots
+    .concat(boardPoints)
+    .sort((a, b) => a.clock - b.clock || timeline727Order(a.sp) - timeline727Order(b.sp));
+}
+function timeline727Order(spot) {
+  if (spot.id === "727-board") return 0;
+  if (spot.is727Collection && spot.sourceNo === 20) return 1;
+  if (spot.is727Collection && spot.sourceNo === 21) return 2;
+  return 99;
+}
+function currentTimelineSpotCandidates(expanded = boardCollectionExpanded) {
+  return collectionTimelineSpots(expanded).filter((item) => matchesTimelineFilters(item.sp));
+}
+function reachable727Candidates() {
+  if (!journey || journey.direction !== direction || journey.boardId !== boardId) return [];
+  return currentTimelineSpotCandidates(true).filter((item) => is727CollectionSpot(item.sp));
 }
 function seatTags(spot) {
   const tags = new Set();
@@ -592,7 +656,9 @@ function catBadge(spot) {
   return timelineThemeTagBadgesHTML(spot);
 }
 function confBadge(spot) {
-  return spot.confidence === "needs-check" ? `<span class="badge badge-check">${t("confCheck")}</span>` : "";
+  if (spot.confidence !== "needs-check") return "";
+  const label = spot.is727Collection && lang === "ja" ? "確認中" : t("confCheck");
+  return `<span class="badge badge-check">${label}</span>`;
 }
 function stationLabel(id) {
   const station = STATION[id] || TIMETABLE_STATION[id];
@@ -777,6 +843,10 @@ function spotRelatedHTML(spot) {
   }).join("");
   return `<div class="spot-modal-refs spot-modal-related"><span>${title}</span>${links}</div>`;
 }
+function collectionGuideLinkHTML(spot) {
+  if (lang !== "ja" || !["727-board", "putiputi-sign"].includes(spot?.id)) return "";
+  return `<a class="spot-modal-collection-cta" href="727-collection.html"><span>727看板コレクションを見る</span><span aria-hidden="true">→</span></a>`;
+}
 function showCreditHTML(spot) {
   if (!spot.photoCredit) return "";
   const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
@@ -830,6 +900,7 @@ function activeTimelineTimeOfDayFilter() {
 }
 function spotHasTimeOfDay(spot, timeOfDay) {
   if (!timeOfDay) return true;
+  if (spot.is727Collection && spot.timeOfDay === timeOfDay) return true;
   return spotMediaItems(spot).some((item) => item.timeOfDay === timeOfDay);
 }
 function preferredSpotMedia(spot, timeOfDay = "") {
@@ -874,6 +945,9 @@ function spotModalMediaHTML(spot) {
   </div>`;
 }
 function stampBadgeHTML(sp, size, fallbackCls) {
+  if (sp.is727Collection) {
+    return `<span class="stamp-badge"><span class="${fallbackCls} board-stamp-mark${stamps[sp.id] ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span></span>`;
+  }
   const inked = !!stamps[sp.id];
   return `<span class="stamp-badge">` +
     `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" ` +
@@ -902,6 +976,7 @@ function spotDetailModalHTML(spot) {
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
           ${bodyLinksHTML(spot, "spot-modal-body-links")}
+          ${collectionGuideLinkHTML(spot)}
           <div class="spot-modal-actions">
             <a class="spot-modal-guide-cta" href="${spotPageHref(spot)}" aria-label="${escapeAttr(guideAria)}"><span class="spot-modal-guide-label">${escapeHTML(t("readGuideDetail"))}</span><span class="spot-modal-guide-arrow" aria-hidden="true">→</span></a>
             <div class="spot-modal-toggles" role="group" aria-label="${escapeAttr(L.name)}">
@@ -957,6 +1032,7 @@ function applyLang() {
   renderMedalBoard();
   renderStampboard();
   renderGallery();
+  sync727CollectionUI();
   updateGalleryFilterButtons();
   updateTimelineFilterButtons();
   renderShowcase();
@@ -1160,11 +1236,13 @@ function nextTrainPageStart(lastDep) {
 
 function showTrainPage(pageStartMin) {
   $("#departTime").value = minToClock(pageStartMin);
+  invalidateJourneyForInputChange();
   track("train_results_page", { direction, board_station: boardId, page_start: minToClock(pageStartMin) });
   showTrainResults();
 }
 
 function showTrainResults() {
+  invalidateJourneyForInputChange();
   const depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
   const found = findTrains(depMin);
   const box = $("#trainResults");
@@ -1209,6 +1287,8 @@ function showTrainResults() {
 function buildTimeline(train = null, depMin = null, options = {}) {
   if (depMin == null) depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
   journey = computeJourney(train, depMin);
+  journey.preview = !!options.preview;
+  sync727CollectionUI();
   if (!options.preview) {
     track("timeline_built", {
       mode: train ? "train" : "estimate",
@@ -1236,6 +1316,7 @@ function renderInitialTimelinePreview() {
   boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
   buildTimeline(null, PREVIEW_DEP_MIN, { preview: true });
   boardId = currentBoardId;
+  sync727CollectionUI();
 }
 
 function renderTimeline() {
@@ -1252,8 +1333,7 @@ function renderTimeline() {
     ${tag}`;
   const items = [];
   journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, st: s }));
-  journey.spots
-    .filter((x) => matchesTimelineFilters(x.sp))
+  currentTimelineSpotCandidates()
     .forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
   items.sort((a, b) => a.clock - b.clock || (a.kind === "station" ? -1 : 1));
   const hasSpotItems = items.some((it) => it.kind === "spot");
@@ -1308,7 +1388,7 @@ function spotItemHTML(sp, clock) {
                 <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
               </div>
               <div class="spot-card-footer">
-                <div class="tl-meta">${seatShortBadge(sp)}</div>
+                <div class="tl-meta">${seatShortBadge(sp)}${sp.is727Collection ? catBadge(sp) : ""}${sp.is727Collection ? confBadge(sp) : ""}</div>
                 <div class="spot-card-toggles">
                   ${favoriteButtonHTML(sp.id, Boolean(favorites[sp.id]))}
                   ${stampIconButtonHTML(sp.id, Boolean(stamps[sp.id]))}
@@ -1359,7 +1439,7 @@ function updateStampButton(btn, got) {
 }
 
 function findSpotById(id) {
-  return SPOTS.find((sp) => sp.id === id);
+  return SPOTS.find((sp) => sp.id === id) || boardCollectionSpots().find((sp) => sp.id === id || sp.collectionPointId === id);
 }
 function spotHash(spotId, photoIndex = 0) {
   const index = Number(photoIndex);
@@ -1759,7 +1839,7 @@ function medalDetailHTML(selectedSet) {
         ${selectedProgress.targets.map((sp) => {
           const L = sp[lang] || sp.ja;
           return `<button type="button" class="medal-target-card${stamps[sp.id] ? " is-stamped" : ""}" data-medal-target="${sp.id}">
-            <img class="medal-target-stamp" src="images/stamps/stamp_${sp.id}.svg" alt="" width="42" height="42" loading="lazy" decoding="async">
+            ${sp.is727Collection ? `<span class="medal-target-stamp board-stamp-mark${stamps[sp.id] ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span>` : `<img class="medal-target-stamp" src="images/stamps/stamp_${sp.id}.svg" alt="" width="42" height="42" loading="lazy" decoding="async">`}
             <span class="medal-target-copy"><strong>${escapeHTML(L.name)}</strong><span>${escapeHTML(L.hook || sp.hook || "")}</span></span>
           </button>`;
         }).join("")}
@@ -1849,15 +1929,15 @@ function updateFavoriteButton(btn, faved) {
 function renderStampboard() {
   const board = $("#stampboard");
   if (!board) return;
+  const stampSpots = SPOTS.filter((sp) => sp.id !== "727-board");
   board.innerHTML = `
     <p class="stamp-list-hint">${escapeHTML(t("stampListHint"))}</p>
     <div class="stamp-list">
-      ${SPOTS.map((sp) => `
+      ${stampSpots.map((sp) => `
     <button type="button" class="stamp${stamps[sp.id] ? " got" : ""}${selectedStampId === sp.id ? " is-selected" : ""}"
       data-stamp-select="${sp.id}" aria-haspopup="dialog" aria-expanded="${selectedStampId === sp.id}" aria-controls="journalModal">
       <span class="s-icon stampboard-icon">
-        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-        <span class="stampboard-fallback" hidden>${sp.icon}</span>
+        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="stampboard-fallback" hidden>${sp.icon}</span>
       </span>
       <span class="s-name">${sp[lang].name}</span>
     </button>`).join("")}
@@ -1869,8 +1949,11 @@ function stampDetailHTML(selected) {
   const L = selected[lang] || selected.ja;
   const got = Boolean(stamps[selected.id]);
   const media = spotMediaItems(selected)[0] || null;
+  const stampVisual = selected.is727Collection
+    ? `<span class="stamp-detail-image board-stamp-mark${got ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span>`
+    : `<img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.id}.svg" alt="" width="86" height="86">`;
   return `<div class="stamp-detail has-selection">
-          <img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.id}.svg" alt="" width="86" height="86">
+          ${stampVisual}
           <div class="stamp-detail-copy">
             <p class="eyebrow">${escapeHTML(t("stampDetailEyebrow"))}</p>
             <h2 id="journalModalTitle">${escapeHTML(L.name)}</h2>
@@ -1964,7 +2047,7 @@ const galleryTagGroups = {
   sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign"]),
   city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "nagoya-station-skyline"]),
 };
-const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "city"];
+const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "727", "city"];
 const galleryTagLabelKeys = {
   "seat-a": "fSeatA",
   "seat-e": "fSeatE",
@@ -1976,10 +2059,15 @@ const galleryTagLabelKeys = {
   history: "fHistory",
   industry: "fIndustry",
   sign: "fSign",
+  727: "f727",
   city: "fCity",
 };
 function galleryTags(spot) {
   const tags = new Set();
+  if (is727CollectionSpot(spot)) {
+    tags.add("727");
+    tags.add("sign");
+  }
   seatTags(spot).forEach((tag) => tags.add(tag));
   if (spotHasTimeOfDay(spot, "day")) tags.add("day");
   if (spotHasTimeOfDay(spot, "night")) tags.add("night");
@@ -1992,14 +2080,15 @@ function galleryTags(spot) {
 function galleryTagBadgesHTML(spot) {
   const tags = galleryTags(spot);
   return galleryTagOrder
-    .filter((tag) => tags.has(tag) && !["day", "night", "cloudy"].includes(tag))
+    .filter((tag) => tags.has(tag) && !["day", "night", "cloudy"].includes(tag) && !(lang !== "ja" && tag === "727"))
     .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
     .join("");
 }
 function timelineThemeTagBadgesHTML(spot) {
+  if (spot.is727Collection && spot.confidence === "needs-check") return "";
   const tags = galleryTags(spot);
   return galleryTagOrder
-    .filter((tag) => tags.has(tag) && !["seat-a", "seat-e", "day", "night", "cloudy"].includes(tag))
+    .filter((tag) => tags.has(tag) && !["seat-a", "seat-e", "day", "night", "cloudy"].includes(tag) && !(lang !== "ja" && tag === "727"))
     .map((tag) => `<span class="badge gal-tag gal-tag-${tag}">${escapeHTML(t(galleryTagLabelKeys[tag]))}</span>`)
     .join("");
 }
@@ -2043,6 +2132,24 @@ function updateTimelineFilterButtons() {
     const active = filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
+  });
+  sync727CollectionUI();
+}
+
+function invalidateJourneyForInputChange() {
+  journey = null;
+  sync727CollectionUI();
+}
+
+function sync727CollectionUI() {
+  const hasCandidate = reachable727Candidates().length > 0;
+  $$('[data-727-collection-toggle]').forEach((toggle) => {
+    toggle.disabled = !hasCandidate;
+    toggle.setAttribute("aria-disabled", String(!hasCandidate));
+    toggle.checked = boardCollectionExpanded;
+    toggle.setAttribute("aria-checked", String(boardCollectionExpanded));
+    toggle.closest(".timeline-collection-toggle")?.classList.toggle("is-disabled", !hasCandidate);
+    toggle.closest(".timeline-collection-toggle")?.classList.toggle("is-on", boardCollectionExpanded);
   });
 }
 
@@ -2166,6 +2273,18 @@ function bindGalleryControls() {
 }
 
 function bindTimelineControls() {
+  $("#timelineFilterbar")?.addEventListener("change", (event) => {
+    const toggle = event.target instanceof HTMLInputElement ? event.target.closest("[data-727-collection-toggle]") : null;
+    if (!toggle) return;
+    if (toggle.disabled) {
+      toggle.checked = boardCollectionExpanded;
+      return;
+    }
+    boardCollectionExpanded = toggle.checked;
+    sync727CollectionUI();
+    track("timeline_727_collection_toggled", { expanded: boardCollectionExpanded });
+    renderTimeline();
+  });
   $("#timelineFilterbar")?.addEventListener("click", (event) => {
     const target = event.target instanceof Element ? event.target : null;
     const button = target?.closest("button[data-timeline-filter]");
@@ -2173,6 +2292,10 @@ function bindTimelineControls() {
     const filter = button.dataset.timelineFilter;
     if (filter === "all") {
       activeTimelineFilters.clear();
+    } else if (["classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
+      if (filter !== "727") activeTimelineFilters.delete("727");
+      if (activeTimelineFilters.has(filter)) activeTimelineFilters.delete(filter);
+      else activeTimelineFilters.add(filter);
     } else if (activeTimelineFilters.has(filter)) {
       activeTimelineFilters.delete(filter);
     } else {
@@ -2269,16 +2392,26 @@ function init() {
   }
   // 出発時刻の初期値 = 現在
   $("#departTime").value = fmtClock(new Date());
-  $("#nowBtn").addEventListener("click", () => { $("#departTime").value = fmtClock(new Date()); });
+  $("#nowBtn").addEventListener("click", () => {
+    $("#departTime").value = fmtClock(new Date());
+    invalidateJourneyForInputChange();
+  });
+  $("#departTime").addEventListener("input", invalidateJourneyForInputChange);
+  $("#departTime").addEventListener("change", invalidateJourneyForInputChange);
   $$("[data-dir]").forEach((b) => b.addEventListener("click", () => {
     direction = b.dataset.dir;
     boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
+    invalidateJourneyForInputChange();
     renderBoardSelect();
     $("#trainResults").hidden = true;
     $$("[data-dir]").forEach((x) => x.classList.toggle("active", x === b));
     if ($("#timelineSection")?.classList.contains("timeline-preview")) renderInitialTimelinePreview();
   }));
-  $("#boardStation").addEventListener("change", (e) => { boardId = e.target.value; $("#trainResults").hidden = true; });
+  $("#boardStation").addEventListener("change", (e) => {
+    boardId = e.target.value;
+    invalidateJourneyForInputChange();
+    $("#trainResults").hidden = true;
+  });
   $("#findTrainsBtn").addEventListener("click", () => {
     track("train_search", { direction, board_station: boardId });
     showTrainResults();

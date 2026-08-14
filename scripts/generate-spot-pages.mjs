@@ -1,7 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
-import { createHash } from "node:crypto";
 import { fileURLToPath } from "node:url";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -1605,8 +1604,8 @@ function thinSpotPageHTML(spot, lang) {
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   <div data-spot-page-shared-module="page"></div>
-  <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>
-  <script src="${prefix}spot-page-shared.js?v=20260813-promo-order"></script>
+  <script src="${prefix}spot-page-shared-data.js?v=20260814-727-yakei-data"></script>
+  <script src="${prefix}spot-page-shared.js?v=20260814-727-yakei-card"></script>
   <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>
   <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
 </body>
@@ -1673,7 +1672,7 @@ function spotPageHTML(spot, lang) {
     ? ` data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
     : "";
   const sharedScripts = sharedSpotPage
-    ? `  <script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260813-promo-order"></script>\n`
+    ? `  <script src="${prefix}spot-page-shared-data.js?v=20260814-727-yakei-data"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260814-727-yakei-card"></script>\n`
     : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
   const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";
@@ -2143,6 +2142,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
+    { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
@@ -2217,6 +2217,12 @@ function generateSpotPages({ requireExisting = false, preserveHead = false } = {
 export { SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPage, generateSpotPages, spotPageHTML };
 
 if (isMain) {
+const requestedSpotIds = process.argv.slice(2);
+if (requestedSpotIds.length) {
+  requestedSpotIds.forEach((id) => generateSpotPage(id, "ja", { requireExisting: true, preserveHead: true }));
+  console.log(`Generated ${requestedSpotIds.length} requested Japanese spot pages`);
+  process.exit(0);
+}
 generateSpotPages();
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
@@ -2304,35 +2310,6 @@ for (const config of guideRailConfigs) {
 fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");
 
 await import("./generate-content-manifest.mjs");
-const manifestPath = path.join(appDir, "content-manifest.json");
-const manifest = JSON.parse(fs.readFileSync(manifestPath, "utf8"));
-const seasonalEntries = await Promise.all([
-  "en/index.html",
-  "en/sparkling-dreams.html",
-  "sparkling-dreams.html",
-  "sparkling-dreams.js",
-  "style.css",
-  "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
-  "images/sparkling-dreams-window.svg",
-  "images/og-sparkling-dreams.png",
-].map(async (relativePath) => {
-  const buffer = fs.readFileSync(path.join(appDir, relativePath));
-  return {
-    path: relativePath,
-    url: `${siteRoot}/${relativePath}`,
-    bytes: buffer.byteLength,
-    sha256: createHash("sha256").update(buffer).digest("hex"),
-  };
-}));
-manifest.files = [...(manifest.files || []).filter((entry) => !seasonalEntries.some((seasonal) => seasonal.path === entry.path)), ...seasonalEntries]
-  .sort((a, b) => a.path.localeCompare(b.path));
-manifest.contentVersion = createHash("sha256")
-  .update(manifest.files.map((entry) => entry.sha256).join(":"))
-  .update((manifest.audioPacks || []).flatMap((pack) => pack.items || []).map((entry) => entry.sha256).join(":"))
-  .update((manifest.thumbnails?.items || []).map((entry) => entry.sha256).join(":"))
-  .digest("hex")
-  .slice(0, 16);
-fs.writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n", "utf8");
 
 console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, sitemap.xml, and content-manifest.json`);
 }

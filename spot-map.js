@@ -42,6 +42,8 @@
     return leafletPromise;
   }
 
+  window.MADO_LEAFLET = window.MADO_LEAFLET || { load: loadLeaflet };
+
   function setLeafletSource(wrapper, src) {
     var config = parseMapSource(src);
     var state = wrapper && wrapper._madoLeaflet;

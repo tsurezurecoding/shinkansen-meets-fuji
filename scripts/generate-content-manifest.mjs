@@ -9,8 +9,6 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 // content-manifest.json の files は、この配列が単一ソース。
 //
 // content-manifest.json を直接編集して項目を足しても、このスクリプトを次に実行した瞬間に消える。
-// 実際に2026-08-13、Sparkling Dreams の8項目が手で追加されたままここへ反映されておらず、
-// 生成し直すと files が11件から3件へ減って validate-sparkling-dreams.mjs が落ちる状態になっていた。
 // 資産を追加するときは、かならずこの配列へ足すこと。
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
@@ -21,10 +19,10 @@ const contentFiles = [
   "live/narration.js",
 
   // 期間限定ページ: Sparkling Dreams Shinkansen（日英）
-  "sparkling-dreams.html",
-  "en/sparkling-dreams.html",
-  "sparkling-dreams.js",
   "en/index.html",
+  "en/sparkling-dreams.html",
+  "sparkling-dreams.html",
+  "sparkling-dreams.js",
   "images/20260802_sparkling-dreams-hamanako_toshi549.jpg",
   "images/og-sparkling-dreams.png",
   "images/sparkling-dreams-window.svg",
@@ -37,8 +35,35 @@ const contentFiles = [
   "images/og-hanabi.jpg",
   "images/hanabi-hero-pd.jpg",
 
-  // 上記ページが共通で依存するスタイル
+  // アプリ本体・共通スポット表示・727看板コレクション
+  "app.js",
+  "index.html",
+  "journal.html",
+  "spot-map.js",
+  "spot-page-shared.js",
   "style.css",
+  "727-collection.html",
+  "727-collection.js",
+  "images/20260629_727_board_1_4x_michikusa.jpg",
+  "images/20260629_727_board_2_2x_michikusa.jpg",
+  "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+  "images/20260704_putiputi_sign_1_michikusa.jpg",
+  "images/20260704_727_board_osawa_michikusa.jpg",
+  "images/20260704_727_board_haracho_michikusa.jpg",
+  "images/20260704_727_board_miyashiro_a_michikusa.jpg",
+  "images/20260704_727_board_fuse_michikusa.jpg",
+  "images/20260704_727_board_fuse_2_michikusa.jpg",
+  "images/20260803_727_board_karasakiminami_michikusa.jpg",
+  "images/20260803_727_board_torikaihachicho_michikusa.jpg",
+  "images/stamps/stamp_727-board.svg",
+  "vendor/leaflet/LICENSE",
+  "vendor/leaflet/images/layers-2x.png",
+  "vendor/leaflet/images/layers.png",
+  "vendor/leaflet/images/marker-icon-2x.png",
+  "vendor/leaflet/images/marker-icon.png",
+  "vendor/leaflet/images/marker-shadow.png",
+  "vendor/leaflet/leaflet.css",
+  "vendor/leaflet/leaflet.js",
 ];
 
 // contentVersion は files の並び順に依存するため、宣言順ではなくパスの昇順で正規化する。
@@ -104,7 +129,6 @@ const audioPacks = [
   audioPack("up", "ja"),
   audioPack("up", "en"),
 ];
-
 // contentVersion は「出力したマニフェスト自身を、書かれている順に読んだハッシュ」とする。
 //
 // 以前はここで audio（パス昇順の平坦リスト）を使っていたが、マニフェストに実際に載るのは
@@ -121,7 +145,7 @@ const contentVersion = createHash("sha256")
 const manifest = {
   schemaVersion: 1,
   contentVersion,
-  generatedAt: new Date().toISOString(),
+  generatedAt: process.env.MADO_CONTENT_MANIFEST_GENERATED_AT || new Date().toISOString(),
   minShellVersion: "0.1.0",
   siteBaseUrl,
   files,
@@ -134,7 +158,9 @@ const manifest = {
 };
 
 await writeFile(
-  path.join(appRoot, "content-manifest.json"),
+  process.env.MADO_CONTENT_MANIFEST_OUTPUT
+    ? path.resolve(process.env.MADO_CONTENT_MANIFEST_OUTPUT)
+    : path.join(appRoot, "content-manifest.json"),
   JSON.stringify(manifest, null, 2) + "\n",
   "utf8"
 );

@@ -991,18 +991,18 @@ const SPOTS = [
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
+    ja: { name: "727看板と私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
     en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     pageTitle: {
       ja: "新幹線から見える「私は誰でしょう」看板はどこ？ | 新幹線の窓",
       en: "Who am I? Sign: A Mystery Shinkansen Billboard | Shinkansen Window",
     },
     pageHeading: {
-      ja: "「私は誰でしょう」看板はどこ？",
+      ja: "727看板と私は誰でしょう看板はどこ？",
       en: "Where is the “Who am I?” billboard seen from the Shinkansen?",
     },
     pageHeadingChunks: {
-      ja: ["「私は誰でしょう」看板は、", "どこ？"],
+      ja: ["727看板と私は誰でしょう看板は、", "どこ？"],
       en: ["Where is the “Who am I?” billboard", "seen from the Shinkansen?"],
     },
     metaDescription: {
@@ -1010,7 +1010,7 @@ const SPOTS = [
       en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Fujisawa. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
     },
     sectionHeading: {
-      ja: "『私は誰でしょう』看板とは？",
+      ja: "727看板と私は誰でしょう看板とは？",
       en: "What is the 'Who am I?' sign?",
     },
     pageStory: {
@@ -3710,3 +3710,101 @@ const SPOTS = [
     viewpoint: { lat: 34.775259, lng: 135.571088 },
   },
 ];
+
+// 727看板コレクションの内部台帳。sourceNo / id は外部調査元・管理画面との照合用で、公開UIには出さない。
+// 公開表示名は外部リストの参照番号や括弧順に依存させず、調査データと1対1で管理する。
+// No.19 は既存の代表スポット 727-board のスタンプ状態へ接続する。
+// 末尾の2件は、代表写真に写る同伴看板を専用IDで記録するコレクション項目。
+const BOARD_COLLECTION_NAMES = Object.freeze({
+  19: { collection: "藤沢市葛原", public: "727看板（藤沢市葛原）" },
+  20: { collection: "藤沢市用田", public: "727看板（藤沢市用田）" },
+  21: { collection: "藤沢市用田", public: "727看板（藤沢市用田）" },
+  22: { collection: "大磯町寺坂", public: "727看板（大磯町寺坂）" },
+  23: { collection: "豊橋市原町", public: "727看板（豊橋市原町）" },
+  24: { collection: "豊川市御津町下佐脇", public: "727看板（豊川市御津町下佐脇）" },
+  25: { collection: "豊川市御津町下佐脇", public: "727看板（豊川市御津町下佐脇）" },
+  26: { collection: "岡崎市下三ツ木町", public: "727看板（岡崎市下三ツ木町）" },
+  27: { collection: "安城市安城町天草", public: "727看板（安城市安城町天草）" },
+  28: { collection: "安城市安城町庚申", public: "727看板（安城市安城町庚申）" },
+  29: { collection: "知立市上重原町", public: "727看板（知立市上重原町）" },
+  30: { collection: "刈谷市新田町", public: "727看板（刈谷市新田町）" },
+  31: { collection: "刈谷市一番町", public: "727看板（刈谷市一番町）" },
+  32: { collection: "稲沢市平野町", public: "727看板（稲沢市平野町）" },
+  33: { collection: "稲沢市平蜂ノ坪町", public: "727看板（稲沢市平蜂ノ坪町）" },
+  34: { collection: "一宮市萩原町築込", public: "727看板（一宮市萩原町築込）" },
+  35: { collection: "垂井町表佐", public: "727看板（垂井町表佐）" },
+  36: { collection: "垂井町宮代", public: "727看板（垂井町宮代）" },
+  37: { collection: "垂井町宮代", public: "727看板（垂井町宮代）" },
+  38: { collection: "米原市大野木", public: "727看板（米原市大野木）" },
+  39: { collection: "長浜市布勢町", public: "727看板（長浜市布勢町）" },
+  40: { collection: "彦根市葛籠町", public: "727看板（彦根市葛籠町）" },
+  41: { collection: "近江八幡市安養寺町", public: "727看板（近江八幡市安養寺町）" },
+  42: { collection: "栗東市出庭", public: "727看板（栗東市出庭）" },
+  43: { collection: "高槻市東天川", public: "727看板（高槻市東天川）" },
+  44: { collection: "高槻市唐崎南", public: "727看板（高槻市唐崎南）" },
+  45: { collection: "摂津市鳥飼八町", public: "727看板（摂津市鳥飼八町）" },
+});
+const BOARD_COLLECTION = [
+  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 26, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
+  { sourceNo: 20, id: "727-no-20", collectionNote: "となりにはきぬた歯科", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.406712, lng: 139.410831, confidence: "needs-check", photo: { src: "images/20260629_727_board_2_2x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }, ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
+  { sourceNo: 21, id: "727-no-21", collectionNote: "727看板がひとつだけ", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.403564, lng: 139.405643, confidence: "needs-check", photo: { src: "images/20260629_727_board_1_4x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }, ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
+  { sourceNo: 22, id: "727-no-22", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "needs-check", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
+  { sourceNo: 23, id: "727-no-23", minutesFromTokyo: 76, segment: "浜松 → 豊橋", side: "A", lat: 34.712314, lng: 137.488205, confidence: "needs-check", photo: { src: "images/20260704_727_board_haracho_michikusa.jpg", alt: "A席側から見える豊橋市原町の727看板", note: "michikusa / 2026-07-04" }, ja: "原町（豊橋市）", en: "Haracho, Toyohashi" },
+  { sourceNo: 24, id: "727-no-24", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "E", lat: 34.799607, lng: 137.327733, confidence: "needs-check", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
+  { sourceNo: 25, id: "727-no-25", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "A", lat: 34.796903, lng: 137.324582, confidence: "needs-check", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
+  { sourceNo: 26, id: "727-no-26", minutesFromTokyo: 86, segment: "豊橋 → 三河安城", side: "A", lat: 34.901211, lng: 137.120352, confidence: "needs-check", ja: "下三ツ木町（岡崎市）", en: "Shimomitsugi, Okazaki" },
+  { sourceNo: 27, id: "727-no-27", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "E", lat: 34.940822, lng: 137.08917, confidence: "needs-check", ja: "安城町天草（安城市）", en: "Amakusa, Anjo" },
+  { sourceNo: 28, id: "727-no-28", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "A", lat: 34.939159, lng: 137.086311, confidence: "needs-check", ja: "安城町庚申（安城市）", en: "Koshin, Anjo" },
+  { sourceNo: 29, id: "727-no-29", minutesFromTokyo: 89, segment: "三河安城 → 名古屋", side: "E", lat: 34.993895, lng: 137.034414, confidence: "needs-check", ja: "上重原町（知立市）", en: "Kamishigehara, Chiryu" },
+  { sourceNo: 30, id: "727-no-30", minutesFromTokyo: 90, segment: "三河安城 → 名古屋", side: "E", lat: 35.014537, lng: 137.004105, confidence: "needs-check", ja: "新田町（刈谷市）", en: "Shinden, Kariya" },
+  { sourceNo: 31, id: "727-no-31", minutesFromTokyo: 90, segment: "三河安城 → 名古屋", side: "A", lat: 35.015184, lng: 136.996694, confidence: "needs-check", ja: "一番町（刈谷市）", en: "Ichibancho, Kariya" },
+  { sourceNo: 32, id: "727-no-32", minutesFromTokyo: 98, segment: "名古屋 → 岐阜羽島", side: "A", lat: 35.236042, lng: 136.783562, confidence: "needs-check", ja: "平野町（稲沢市）", en: "Hirano, Inazawa" },
+  { sourceNo: 33, id: "727-no-33", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.250719, lng: 136.769991, confidence: "needs-check", ja: "平蜂ノ坪町（稲沢市）", en: "Hirabachinotsubo, Inazawa" },
+  { sourceNo: 34, id: "727-no-34", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.266181, lng: 136.760241, confidence: "needs-check", ja: "萩原町築込（一宮市）", en: "Hagiwara, Ichinomiya" },
+  { sourceNo: 35, id: "727-no-35", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.354772, lng: 136.549999, confidence: "needs-check", photo: { src: "images/20260704_727_board_osawa_michikusa.jpg", alt: "E席側から見える垂井町表佐の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で12:59ごろ撮影（宮代A席の約30秒前）" }, ja: "表佐（垂井町）", en: "Osawa, Tarui" },
+  { sourceNo: 36, id: "727-no-36", minutesFromTokyo: 108, segment: "岐阜羽島 → 米原", side: "A", lat: 35.361132, lng: 136.534258, confidence: "needs-check", photo: { src: "images/20260704_727_board_miyashiro_a_michikusa.jpg", alt: "A席側から見える垂井町宮代の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で13:00撮影" }, ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
+  { sourceNo: 37, id: "727-no-37", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.362859, lng: 136.535071, confidence: "needs-check", ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
+  { sourceNo: 38, id: "727-no-38", minutesFromTokyo: 111, segment: "岐阜羽島 → 米原", side: "A", lat: 35.357509, lng: 136.399357, confidence: "needs-check", ja: "大野木（米原市）", en: "Onogi, Maibara" },
+  { sourceNo: 39, id: "727-no-39", minutesFromTokyo: 113, segment: "岐阜羽島 → 米原", side: "E", lat: 35.356525, lng: 136.309691, confidence: "needs-check", photo: { src: "images/20260704_727_board_fuse_michikusa.jpg", alt: "E席側から見える長浜市布勢町の727看板", note: "michikusa / 2026-07-04" }, collectionPhotos: [{ src: "images/20260704_727_board_fuse_2_michikusa.jpg", alt: "長浜市布勢町で続けて見える727看板", note: "michikusa / 2026-07-04" }], ja: "布勢町（長浜市）", en: "Fuse, Nagahama" },
+  { sourceNo: 40, id: "727-no-40", minutesFromTokyo: 116, segment: "米原 → 京都", side: "E", lat: 35.21974, lng: 136.244099, confidence: "needs-check", ja: "葛籠町（彦根市）", en: "Tsuzura, Hikone" },
+  { sourceNo: 41, id: "727-no-41", minutesFromTokyo: 122, segment: "米原 → 京都", side: "A", lat: 35.092525, lng: 136.081593, confidence: "needs-check", ja: "安養寺町（近江八幡市）", en: "Anyoji, Omihachiman" },
+  { sourceNo: 42, id: "727-no-42", minutesFromTokyo: 124, segment: "米原 → 京都", side: "A", lat: 35.039993, lng: 136.008729, confidence: "needs-check", ja: "出庭（栗東市）", en: "Deiwa, Ritto" },
+  { sourceNo: 43, id: "727-no-43", minutesFromTokyo: 138, segment: "京都 → 新大阪", side: "A", lat: 34.847034, lng: 135.642008, confidence: "needs-check", ja: "東天川（高槻市）", en: "Higashiamakawa, Takatsuki" },
+  { sourceNo: 44, id: "727-no-44", collectionNote: "田んぼの奥にぽつんと", minutesFromTokyo: 141, segment: "京都 → 新大阪", side: "E", lat: 34.81158, lng: 135.608706, confidence: "needs-check", photo: { src: "images/20260803_727_board_karasakiminami_michikusa.jpg", alt: "田んぼの奥に見える高槻市唐崎南の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約1〜2分前" }, ja: "唐崎南（高槻市）", en: "Karasakiminami, Takatsuki" },
+  { sourceNo: 45, id: "727-no-45", collectionNote: "大阪中央卸売市場をバックに", minutesFromTokyo: 142, segment: "京都 → 新大阪", side: "E", lat: 34.790635, lng: 135.587403, confidence: "needs-check", photo: { src: "images/20260803_727_board_torikaihachicho_michikusa.jpg", alt: "大阪中央卸売市場を背にした鳥飼八町の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約30秒前" }, ja: "鳥飼八町（摂津市）", en: "Torikaihachicho, Settsu" },
+].map((item) => {
+  const names = BOARD_COLLECTION_NAMES[item.sourceNo] || { collection: item.collectionJaName, public: item.publicJaName };
+  return ({
+  ...item,
+  publicJaName: names.public,
+  collectionJaName: names.collection,
+  icon: "7️⃣",
+  is727Collection: item.collectionKind !== "companion",
+  collectionKind: item.collectionKind || "727",
+  category: "sign",
+  durationSec: 2,
+  timeOfDay: "day",
+  scene: "hills",
+  guidePageId: item.guidePageId || "727-board",
+  sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
+  map: { lat: item.lat, lng: item.lng, ja: names.public, en: item.en },
+  image: item.photo?.src || "images/stamps/stamp_727-board.svg",
+  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: item.photo.alt }, credit: { ja: "michikusa", en: "michikusa" }, date: "2026-07-04", note: { ja: item.photo.note, en: item.photo.note } }] : [],
+  ja: {
+    name: names.public,
+    area: "東海道沿線",
+    hook: item.collectionKind === "companion" ? (item.guidePageId === "putiputi-sign" ? "車窓に現れる、私は誰でしょう看板" : "727看板のそばに立つ248看板") : "一瞬だけ現れる、727の看板",
+    story: item.collectionKind === "companion"
+      ? "代表地点で見つけられる、車窓の看板です。"
+      : "727は大阪の化粧品メーカー、セブンツーセブンの沿線看板です。車窓では一瞬だけ現れるため、少し早めに窓の外を見てください。",
+  },
+  en: {
+    name: item.en,
+    area: "Tokaido corridor",
+    hook: item.sourceNo === 19 ? "Representative point beside 248" : "A corridor reference point",
+    story: item.sourceNo === 19
+      ? "The representative point around Kuzuhara. The yellow 248 sign appears in the same view, with the nearby 'Who am I?' sign in the same stretch."
+      : "A collection point based on the source map location. Signs may be relocated, removed or obscured by buildings or weather.",
+  },
+  });
+});
