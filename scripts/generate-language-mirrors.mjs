@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { assetVersion } from "./shared/asset-version.mjs";
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com";
@@ -109,15 +110,20 @@ const liveEnglish = liveSource
     '<link rel="canonical" href="https://www.michikusa-travel.com/live/">',
     '<link rel="canonical" href="https://www.michikusa-travel.com/en/live/">'
   )
-  .replace('<script src="../language-router.js?v=20260726-language-choice"></script>', '')
   .replaceAll('href="../', 'href="../../')
+  // The blanket depth-bump above assumes every ../ link targets a Japanese page at the
+  // app root. These have a real English version under en/, so point there instead.
+  // Add an entry here whenever an English counterpart is published.
+  .replaceAll('href="../../early-access.html', 'href="../early-access.html')
   .replaceAll('src="../', 'src="../../')
   .replace('href="styles.css', 'href="../../live/styles.css')
   .replace('src="live.js', 'src="../../live/live.js')
   .replace(
     /<script src="\.\.\/\.\.\/live\/live\.js\?v=[^"]+"><\/script>/,
-    '<script src="../../live/live.js?v=20260802-en-live-assets"></script>'
+    `<script src="../../live/live.js?v=${assetVersion("live/live.js")}"></script>`
   )
+  .replace('<strong data-live-copy="eaLiveTitle">Androidアプリ版（早期アクセス）</strong>', '<strong data-live-copy="eaLiveTitle">Android app (early access)</strong>')
+  .replace('<small data-live-copy="eaLiveBody">乗車中はアプリの方が安定して使えます。テスト参加者を募集中です。</small>', '<small data-live-copy="eaLiveBody">The app is steadier to use while you ride. We are looking for testers.</small>')
   .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
 const liveTarget = path.join(appDir, "en", "live", "index.html");
 fs.mkdirSync(path.dirname(liveTarget), { recursive: true });

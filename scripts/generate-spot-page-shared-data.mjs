@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { thumbnailSrc, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(scriptDir, "..");
@@ -67,10 +68,6 @@ function localized(value, lang) {
   if (typeof value === "string") return value;
   if (!value || typeof value !== "object") return "";
   return value[lang] || value.ja || value.en || "";
-}
-
-function thumbnailSrc(src) {
-  return String(src || "").replace(/^images\/(.+)\.(jpe?g|png)$/i, "images/thumbs/$1.webp");
 }
 
 function sideLabel(spot, lang) {
@@ -276,35 +273,6 @@ function routeNote(spot, lang, data) {
   return localized(spot.routeNote, lang) || UI[lang].routeNote(data.area, sideLabel(spot, lang));
 }
 
-function miniMapViewpoint(spot) {
-  if (typeof spot.viewpoint?.lat === "number" && typeof spot.viewpoint?.lng === "number") return { lat: spot.viewpoint.lat, lng: spot.viewpoint.lng };
-  if (!TRACK || typeof spot.minutesFromTokyo !== "number") return null;
-  const km = TRACK.minToKm(spot.minutesFromTokyo);
-  return Number.isFinite(km) ? TRACK.latLngAtKm(km) : null;
-}
-
-function mercatorPoint(lat, lng) {
-  const safeLat = Math.max(-85.05112878, Math.min(85.05112878, lat));
-  const sinLat = Math.sin((safeLat * Math.PI) / 180);
-  return { x: (lng + 180) / 360, y: 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI) };
-}
-
-function miniMapZoomForViewpoint(spot, viewPos, distanceKm) {
-  if (!viewPos) return 14;
-  const spotPoint = mercatorPoint(spot.map.lat, spot.map.lng);
-  const routePoint = mercatorPoint(viewPos.lat, viewPos.lng);
-  const dx = Math.abs(spotPoint.x - routePoint.x);
-  const dy = Math.abs(spotPoint.y - routePoint.y);
-  const fitRatio = 0.3;
-  const tileSize = 256;
-  const zoomX = dx > 0 ? Math.floor(Math.log2((640 * fitRatio) / (dx * tileSize))) : 21;
-  const zoomY = dy > 0 ? Math.floor(Math.log2((320 * fitRatio) / (dy * tileSize))) : 21;
-  const fitZoom = Math.max(8, Math.min(15, zoomX, zoomY));
-  if (Number.isFinite(distanceKm) && distanceKm <= 0.35) return Math.max(fitZoom, 15);
-  if (Number.isFinite(distanceKm) && distanceKm <= 3) return Math.max(fitZoom, 14);
-  return fitZoom;
-}
-
 function mapEmbedUrl(spot, lang, viewpoint) {
   if (!spot.map || typeof spot.map.lat !== "number" || typeof spot.map.lng !== "number") return "";
   const distanceKm = viewpoint && TRACK ? TRACK.haversineKm(viewpoint.lat, viewpoint.lng, spot.map.lat, spot.map.lng) : NaN;
@@ -335,7 +303,7 @@ function mapViewpointUrl(spot, lang, viewpoint) {
 
 function projectMap(spot, lang) {
   const hasCoordinates = !!(spot.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
-  const viewpoint = hasCoordinates ? miniMapViewpoint(spot) : null;
+  const viewpoint = hasCoordinates ? miniMapViewpoint(spot, TRACK) : null;
   const data = spot[lang] || spot.ja || {};
   const externalUrl = spot.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number"
     ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${spot.map.lat},${spot.map.lng}`)}`

@@ -1,0 +1,22 @@
+{
+  "name": "mado-app",
+  "private": true,
+  "version": "0.0.0",
+  "description": "新幹線の窓 (michikusa-travel.com) — static site build and validation entry points.",
+  "//type": "Intentionally NOT \"module\". app/*.js are browser scripts loaded by the generators via vm.runInNewContext (sloppy-mode script semantics); leaving the default keeps `node --check` faithful to that. The build/validate scripts are .mjs and are ESM regardless.",
+  "scripts": {
+    "build": "npm run build:data && npm run build:pages",
+    "build:data": "node scripts/generate-spot-page-shared-data.mjs",
+    "build:pages": "node scripts/generate-spot-pages.mjs",
+    "check": "npm run check:syntax && npm run check:content && npm run check:timetable && npm run check:spot-pages && npm run check:language && npm run check:ui-strings && npm run check:727 && npm run check:sparkling",
+    "check:syntax": "node --check data.js && node --check app.js && node --check track.js && node --check spot-page-shared.js && node --check data/timetable.js && node --check live/live.js",
+    "check:content": "node scripts/validate-content.mjs",
+    "check:timetable": "node scripts/validate-timetable.mjs",
+    "check:spot-pages": "node scripts/validate-spot-page-shared.mjs",
+    "check:language": "node scripts/validate-language-pages.mjs",
+    "check:ui-strings": "node scripts/validate-ui-strings.mjs",
+    "check:727": "node scripts/validate-727-collection.mjs",
+    "check:sparkling": "node scripts/validate-sparkling-dreams.mjs",
+    "serve": "py -m http.server 8137"
+  }
+}

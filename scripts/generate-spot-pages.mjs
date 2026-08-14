@@ -2,13 +2,18 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { thumbnailSrc, hasMiniMapCoordinates, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
+import { assetVersion } from "./shared/asset-version.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
-const today = "2026-07-25";
+// Fixed on purpose: the sitemap is a build artifact and must stay deterministic,
+// so re-running the generator never rewrites every <lastmod>. Bump deliberately,
+// or give the entry its own explicit lastmod below.
+const DEFAULT_LASTMOD = "2026-07-25";
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 
 const dataCode = fs.readFileSync(dataPath, "utf8");
@@ -444,10 +449,6 @@ function localized(value, lang) {
   if (!value) return "";
   if (typeof value === "string") return value;
   return value[lang] || value.ja || value.en || "";
-}
-
-function thumbnailSrc(src) {
-  return String(src || "").replace(/^images\/(.+)\.(jpe?g|png)$/i, "images/thumbs/$1.webp");
 }
 
 function jaAreaPhrase(area) {
@@ -1264,47 +1265,9 @@ function mapLinkHTML(spot, lang) {
   return `<a class="map-link spot-mini-map-link" href="${escapeHTML(href)}" target="_blank" rel="noopener noreferrer" data-map="${escapeHTML(spot.id)}"><span class="map-link-icon" aria-hidden="true">↗</span><span>${escapeHTML(label)}</span></a>`;
 }
 
-function hasMiniMapCoordinates(spot) {
-  return !!(spot?.map && typeof spot.map.lat === "number" && typeof spot.map.lng === "number" && typeof spot.minutesFromTokyo === "number");
-}
-
-function miniMapViewpoint(spot) {
-  if (!hasMiniMapCoordinates(spot) || !TRACK) return null;
-  if (typeof spot.viewpoint?.lat === "number" && typeof spot.viewpoint?.lng === "number") {
-    return { lat: spot.viewpoint.lat, lng: spot.viewpoint.lng };
-  }
-  const km = TRACK.minToKm(spot.minutesFromTokyo);
-  return Number.isFinite(km) ? TRACK.latLngAtKm(km) : null;
-}
-
-function mercatorPoint(lat, lng) {
-  const safeLat = Math.max(-85.05112878, Math.min(85.05112878, lat));
-  const sinLat = Math.sin((safeLat * Math.PI) / 180);
-  return {
-    x: (lng + 180) / 360,
-    y: 0.5 - Math.log((1 + sinLat) / (1 - sinLat)) / (4 * Math.PI),
-  };
-}
-
-function miniMapZoomForViewpoint(spot, viewPos, distanceKm) {
-  if (!viewPos) return 14;
-  const spotPoint = mercatorPoint(spot.map.lat, spot.map.lng);
-  const routePoint = mercatorPoint(viewPos.lat, viewPos.lng);
-  const dx = Math.abs(spotPoint.x - routePoint.x);
-  const dy = Math.abs(spotPoint.y - routePoint.y);
-  const fitRatio = 0.3;
-  const tileSize = 256;
-  const zoomX = dx > 0 ? Math.floor(Math.log2((640 * fitRatio) / (dx * tileSize))) : 21;
-  const zoomY = dy > 0 ? Math.floor(Math.log2((320 * fitRatio) / (dy * tileSize))) : 21;
-  const fitZoom = Math.max(8, Math.min(15, zoomX, zoomY));
-  if (Number.isFinite(distanceKm) && distanceKm <= 0.35) return Math.max(fitZoom, 15);
-  if (Number.isFinite(distanceKm) && distanceKm <= 3) return Math.max(fitZoom, 14);
-  return fitZoom;
-}
-
 function googleMapsEmbedHref(spot, lang) {
   if (!hasMiniMapCoordinates(spot)) return "";
-  const viewPos = miniMapViewpoint(spot);
+  const viewPos = miniMapViewpoint(spot, TRACK);
   const distanceKm = viewPos && TRACK
     ? TRACK.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
     : NaN;
@@ -1321,7 +1284,7 @@ function googleMapsEmbedHref(spot, lang) {
 
 function googleMapsViewpointHref(spot, lang) {
   if (!hasMiniMapCoordinates(spot)) return "";
-  const viewPos = miniMapViewpoint(spot);
+  const viewPos = miniMapViewpoint(spot, TRACK);
   if (!viewPos) return "";
   const distanceKm = TRACK
     ? TRACK.haversineKm(viewPos.lat, viewPos.lng, spot.map.lat, spot.map.lng)
@@ -1590,9 +1553,9 @@ function thinSpotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
-  <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260813-rail-preview-scope">
-  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260813-portrait-cards">
+  <script src="${prefix}language-router.js?v=${assetVersion("language-router.js")}"></script>
+  <link rel="stylesheet" href="${prefix}style.css?v=${assetVersion("style.css")}">
+  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=${assetVersion("spot-media-gallery.css")}">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1604,10 +1567,10 @@ function thinSpotPageHTML(spot, lang) {
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   <div data-spot-page-shared-module="page"></div>
-  <script src="${prefix}spot-page-shared-data.js?v=20260814-727-yakei-data"></script>
-  <script src="${prefix}spot-page-shared.js?v=20260814-727-yakei-card"></script>
-  <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>
-  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
+  <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
+  <script src="${prefix}spot-page-shared.js?v=${assetVersion("spot-page-shared.js")}"></script>
+  <script src="${prefix}spot-media-gallery.js?v=${assetVersion("spot-media-gallery.js")}"></script>
+  <script src="${prefix}spot-map.js?v=${assetVersion("spot-map.js")}"></script>
 </body>
 </html>
 `;
@@ -1644,10 +1607,10 @@ function spotPageHTML(spot, lang) {
     ? ibukiVideoHTML()
     : photoGalleryHTML(spot, lang, prefix, galleryPhotos);
   const mediaPilotStyles = ibukiMediaPilot
-    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=20260813-portrait-cards">`
+    ? `\n  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=${assetVersion("spot-media-gallery.css")}">`
     : "";
   const mediaPilotScripts = ibukiMediaPilot
-    ? `  <script src="${prefix}spot-media-gallery.js?v=20260812-gallery-hash-links"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
+    ? `  <script src="${prefix}spot-media-gallery.js?v=${assetVersion("spot-media-gallery.js")}"></script>\n  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>\n`
     : "";
   const inlineFigures = inlineFigureHTML(spot, lang, prefix);
   const railHTML = sharedSpotPage
@@ -1672,7 +1635,7 @@ function spotPageHTML(spot, lang) {
     ? ` data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}"`
     : "";
   const sharedScripts = sharedSpotPage
-    ? `  <script src="${prefix}spot-page-shared-data.js?v=20260814-727-yakei-data"></script>\n  <script src="${prefix}spot-page-shared.js?v=20260814-727-yakei-card"></script>\n`
+    ? `  <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>\n  <script src="${prefix}spot-page-shared.js?v=${assetVersion("spot-page-shared.js")}"></script>\n`
     : "";
   const mobileAffiliate = mobileAffiliateHTML(lang);
   const mobileAffiliateBlock = mobileAffiliate ? `      ${mobileAffiliate}\n` : "";
@@ -1763,8 +1726,8 @@ function spotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
   <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
-  <script src="${prefix}language-router.js?v=20260728-en-notice"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=20260813-rail-preview-scope">${mediaPilotStyles}
+  <script src="${prefix}language-router.js?v=${assetVersion("language-router.js")}"></script>
+  <link rel="stylesheet" href="${prefix}style.css?v=${assetVersion("style.css")}">${mediaPilotStyles}
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1809,7 +1772,7 @@ ${relatedBlock ? `      ${relatedBlock}\n` : ""}${mobileAffiliateBlock}      </a
 ${showcaseHostBlock}${contentRailBlock}
   </main>
   ${lightbox}
-${sharedScripts}${mediaPilotScripts}  <script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>
+${sharedScripts}${mediaPilotScripts}  <script src="${prefix}spot-map.js?v=${assetVersion("spot-map.js")}"></script>
   ${lightboxJs}
   ${affiliateTrackingScript(lang)}
 </body>
@@ -1854,7 +1817,7 @@ function englishIndexHTML() {
   <link rel="alternate" hreflang="ja" href="${siteRoot}/">
   <link rel="alternate" hreflang="en" href="${siteRoot}/en/">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/">
-  <link rel="stylesheet" href="../style.css?v=20260813-rail-preview-scope">
+  <link rel="stylesheet" href="../style.css?v=${assetVersion("style.css")}">
   <meta property="og:title" content="${escapeHTML(UI.en.homeTitle)}">
   <meta property="og:description" content="${escapeHTML(UI.en.homeLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -1975,7 +1938,7 @@ function englishAppIndexHTML() {
     ["プライバシーポリシー", "Privacy Policy"],
     ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
   ];
-  const railRoutes = ["guide", "mieru", "sumie", "somato", "journal", "lp", "references", "contact", "privacy"];
+  const railRoutes = ["guide", "mieru", "sumie", "somato", "journal", "lp", "references", "contact", "privacy", "hanabi", "yakei"];
   let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
@@ -2089,7 +2052,7 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="ko" href="${siteRoot}/ko/guide.html">
   <link rel="alternate" hreflang="fr" href="${siteRoot}/fr/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/en/guide.html">
-  <link rel="stylesheet" href="${prefix}style.css?v=20260813-rail-preview-scope">
+  <link rel="stylesheet" href="${prefix}style.css?v=${assetVersion("style.css")}">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
   <meta property="og:description" content="${escapeHTML(ui.guideLead)}">
   <meta property="og:image" content="${defaultOgImageUrl()}">
@@ -2130,9 +2093,9 @@ function sitemapXML() {
     { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
-    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly" },
+    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
-    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly" },
+    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
@@ -2141,7 +2104,11 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
+    { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
+    { loc: `${siteRoot}/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
+    { loc: `${siteRoot}/en/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
     { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
@@ -2163,7 +2130,7 @@ function sitemapXML() {
   })));
   const urls = [...baseUrls, ...spotUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
-    <lastmod>${item.lastmod || today}</lastmod>
+    <lastmod>${item.lastmod || DEFAULT_LASTMOD}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
     <priority>${item.priority}</priority>
   </url>`).join("\n");
