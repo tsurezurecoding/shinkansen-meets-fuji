@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "155038ef2134a446",
+  "contentVersion": "5b389bfa7201705a",
   "generatedAt": "2026-08-14T00:06:05.110Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
@@ -32,8 +32,8 @@
     {
       "path": "data/timetable.js",
       "url": "https://www.michikusa-travel.com/data/timetable.js",
-      "bytes": 292588,
-      "sha256": "18fb2a089782d731f6966154a10454598807de16c87f842241ded1d815adf994"
+      "bytes": 303341,
+      "sha256": "27a49e719541cc0500ca390377dcd0b9894a044756a1c6c2fde7a7b8c6e8e100"
     },
     {
       "path": "en/hanabi.html",
@@ -44,14 +44,14 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 24221,
-      "sha256": "8c14cac9ea50a6a89157dbd842061bbaee304b2938e0c0a94322ce430136d1f4"
+      "bytes": 24624,
+      "sha256": "29700daf8b2a0c1fb3a760e80a3a70d4917df184eb7f33d45f9bc01f6d6d8493"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 22591,
-      "sha256": "635fe586475cc924b42c1ae45ea87bb4ace3e0ee4c3f25186e9b16fd64dba583"
+      "bytes": 22698,
+      "sha256": "6795566cc7ddd7bc1a981d3813ce4cfdc09e7a7721b0b7984c4f22d47e3844a3"
     },
     {
       "path": "hanabi.html",
@@ -194,14 +194,14 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 27170,
-      "sha256": "fcb92762be7fc2edce082e8f0507f52910694726bc379544c7977bd4e702cb6a"
+      "bytes": 27459,
+      "sha256": "315e7ad5be3af81a12952a4cf0f8c0e36d25004cb2ac4e22fe2d631173bdd7e8"
     },
     {
       "path": "sparkling-dreams.js",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.js",
-      "bytes": 21405,
-      "sha256": "d6b599e16dbf2fc5950a9a9d7b9d65f6059b618ad74e8c9e7bd54c079d394542"
+      "bytes": 21805,
+      "sha256": "a0e34ab74da7d1cc38b4f274653cdbeb822767eab0e8cb12092a69036fb9b296"
     },
     {
       "path": "spot-map.js",
