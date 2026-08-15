@@ -390,7 +390,7 @@
 
   function rail727HTML(rootPath, count) {
     var ui = UI.ja;
-    return "<div class=\"spot-page-rail-disney spot-page-rail-727\"><a href=\"" + escapeHTML(href(rootPath, "727-collection.html") + "#collectionListTitle") + "\" data-cta-track=\"727_collection_entry_click\" data-cta-id=\"spot_rail_727\"><img src=\"" + escapeHTML(href(rootPath, "images/stamps/stamp_727-board.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.rail727Title) + "</strong><small>" + escapeHTML(ui.rail727Body(count)) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+    return "<div class=\"spot-page-rail-disney spot-page-rail-727\"><a href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\" data-cta-track=\"727_collection_entry_click\" data-cta-id=\"spot_rail_727\"><img src=\"" + escapeHTML(href(rootPath, "images/stamps/stamp_727-board.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.rail727Title) + "</strong><small>" + escapeHTML(ui.rail727Body(count)) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {
@@ -604,7 +604,7 @@
 
   function collectionLinkHTML(rootPath, lang, count) {
     if (lang !== "ja") return "";
-    return "<a class=\"spot-page-727-collection-link\" href=\"" + escapeHTML(href(rootPath, "727-collection.html") + "#collectionListTitle") + "\"><span><strong>727看板コレクション</strong><small>設置場所の全" + escapeHTML(count) + "地点を見る</small></span><b aria-hidden=\"true\">→</b></a>";
+    return "<a class=\"spot-page-727-collection-link\" href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\"><span><strong>727看板コレクション</strong><small>設置場所の全" + escapeHTML(count) + "地点を見る</small></span><b aria-hidden=\"true\">→</b></a>";
   }
 
   function pageHTML(data, rootPath, lang, currentId) {

@@ -845,7 +845,7 @@ function spotRelatedHTML(spot) {
 }
 function collectionGuideLinkHTML(spot) {
   if (lang !== "ja" || !(spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id))) return "";
-  return `<a class="spot-modal-collection-cta" href="727-collection.html#collectionListTitle"><span>727看板の設置場所 全${BOARD_COLLECTION.length}地点を見る</span><span aria-hidden="true">→</span></a>`;
+  return `<a class="spot-modal-collection-cta" href="727-collection.html"><span>727看板の設置場所 全${BOARD_COLLECTION.length}地点を見る</span><span aria-hidden="true">→</span></a>`;
 }
 function showCreditHTML(spot) {
   if (!spot.photoCredit) return "";

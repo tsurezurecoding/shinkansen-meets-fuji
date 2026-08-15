@@ -82,7 +82,6 @@ assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "727�
 assertIncludes(shared, "727看板コレクション", "detail card title missing");
 assertIncludes(shared, '"東京〜新大阪の沿線、全" + count + "地点を集める"', "rail card copy must build its count from the shared data");
 assertIncludes(shared, '設置場所の全" + escapeHTML(count) + "地点を見る', "detail card copy must build its count from the shared data");
-assertIncludes(shared, "727-collection.html\") + \"#collectionListTitle", "727 entry points must land on the location list");
 assert.equal(sharedData.collection727Count, collection.length, "generated shared data must carry the live collection count");
 assert.ok(!shared.includes("代表地点から始めて、沿線の27地点"), "old verbose detail card must be removed");
 assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board page must load shared CTA renderer");
