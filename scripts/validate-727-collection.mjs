@@ -15,6 +15,9 @@ const app = read("app.js");
 const page = read("727-collection.html");
 const script = read("727-collection.js");
 const shared = read("spot-page-shared.js");
+const sharedDataContext = {};
+vm.runInNewContext(read("spot-page-shared-data.js"), sharedDataContext);
+const sharedData = sharedDataContext.MADO_SPOT_PAGE_SHARED_DATA;
 const styles = read("style.css");
 const manifest = JSON.parse(read("content-manifest.json"));
 const assertIncludes = (value, needle, message) => assert.ok(value.includes(needle), message);
@@ -77,7 +80,10 @@ assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板
 assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "727看板と私は誰でしょう看板", "putiputi representative must remain unchanged");
 
 assertIncludes(shared, "727看板コレクション", "detail card title missing");
-assertIncludes(shared, "沿線の727看板を集める", "detail card action copy missing");
+assertIncludes(shared, '"東京〜新大阪の沿線、全" + count + "地点を集める"', "rail card copy must build its count from the shared data");
+assertIncludes(shared, '設置場所の全" + escapeHTML(count) + "地点を見る', "detail card copy must build its count from the shared data");
+assertIncludes(shared, "727-collection.html\") + \"#collectionListTitle", "727 entry points must land on the location list");
+assert.equal(sharedData.collection727Count, collection.length, "generated shared data must carry the live collection count");
 assert.ok(!shared.includes("代表地点から始めて、沿線の27地点"), "old verbose detail card must be removed");
 assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board page must load shared CTA renderer");
 assertIncludes(read("spots/putiputi-sign.html"), "spot-page-shared.js", "putiputi page must load shared CTA renderer");
@@ -101,6 +107,17 @@ assertIncludes(script, "invalidateSize", "full map must invalidate size");
 assert.ok(!script.includes("initMiniMap") && !script.includes("data-mini-map"), "Leaflet mini map must be removed");
 assert.ok(/\.collection-point-list\s*\{\s*display:\s*grid;\s*grid-template-columns:\s*1fr;/.test(styles), "list must remain one column");
 assertIncludes(styles, ".collection-point-google-map", "Google expanded-map styling missing");
+
+// 静的HTMLに直接書いた地点数が、実データからずれないよう固定する。
+// 「1地点だけ」のような単数の言い回しは対象外にするため2桁以上だけを見る。
+for (const [, digits] of page.matchAll(/(\d{2,})地点/g)) {
+  assert.equal(Number(digits), collection.length, `727-collection.html has a stale point count: ${digits}`);
+}
+for (const label of ["title", "description", "og:title", "og:description", "twitter:title", "twitter:description"]) {
+  const pattern = label === "title" ? /<title>([^<]*)<\/title>/ : new RegExp(`(?:name|property)="${label}" content="([^"]*)"`);
+  const value = page.match(pattern)?.[1] || "";
+  assert.ok(value.includes(`${collection.length}地点`), `727-collection.html ${label} must state ${collection.length}地点`);
+}
 
 const manifestEntries = new Map(manifest.files.map((entry) => [entry.path, entry]));
 for (const relativePath of ["app.js", "data.js", "style.css", "spot-page-shared.js", "727-collection.html", "727-collection.js"]) {

@@ -25,7 +25,7 @@ const SHOWCASE_SPOT_IDS = [
 const dataContext = {};
 const dataCode = fs.readFileSync(dataPath, "utf8");
 
-vm.runInNewContext(`${dataCode}\nglobalThis.__SPOT_PAGE_SHARED_SOURCE = { SPOTS, ROUTE };`, dataContext, { filename: dataPath });
+vm.runInNewContext(`${dataCode}\nglobalThis.__SPOT_PAGE_SHARED_SOURCE = { SPOTS, ROUTE, BOARD_COLLECTION };`, dataContext, { filename: dataPath });
 
 const source = dataContext.__SPOT_PAGE_SHARED_SOURCE;
 if (!source || !Array.isArray(source.SPOTS) || !source.ROUTE || !Array.isArray(source.ROUTE.refStations)) {
@@ -529,7 +529,8 @@ for (const spot of source.SPOTS) {
 }
 if (spots.some((spot) => !spot.id || !Number.isFinite(spot.minutes))) throw new Error("Every spot in data.js must have an id and minutesFromTokyo for the shared rail");
 
-const payload = { version: 2, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, stations, spots, showcase, pages };
+const collection727Count = source.BOARD_COLLECTION.length;
+const payload = { version: 2, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase, pages };
 const output = `/* Generated from data.js. Do not edit this artifact by hand. */\n(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(payload)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
 fs.writeFileSync(outputPath, output, "utf8");
 console.log(`Generated shared spot page data for ${spots.length} spots × 2 languages and ${stations.length} stations (${Buffer.byteLength(output, "utf8")} bytes).`);

@@ -64,15 +64,16 @@
     if (progress) progress.innerHTML = "<div class=\"collection-progress-copy\"><strong>" + found + " / " + points.length + "地点を記録</strong><span>訪問済みの地点は、この端末の車窓スタンプに保存されます。</span></div><div class=\"collection-progress-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"" + points.length + "\" aria-valuenow=\"" + found + "\"><span style=\"width:" + Math.round((found / points.length) * 100) + "%\"></span></div>";
     var stageData = [
       { threshold: 1, className: "bronze", title: "はじめの一枚", body: "最初の地点を記録" },
-      { threshold: 8, className: "bronze", title: "ブロンズ", body: "8地点を記録" },
-      { threshold: 16, className: "silver", title: "シルバー", body: "16地点を記録" },
+      { threshold: 8, className: "bronze", title: "ブロンズ" },
+      { threshold: 16, className: "silver", title: "シルバー" },
       { threshold: points.length, className: "gold", title: "ゴールド", body: "全地点を記録" },
     ];
     var medals = document.getElementById("collectionMedals");
     if (!medals) return;
     medals.innerHTML = stageData.map(function (stage) {
       var achieved = found >= stage.threshold;
-      return "<article class=\"collection-stage-card" + (achieved ? " is-achieved" : "") + "\"><div class=\"collection-stage-medal medal-" + stage.className + "\" aria-hidden=\"true\"><span class=\"collection-medal-ribbon\"></span><span>727</span><i>★</i></div><div><h3>" + escapeHTML(stage.title) + "</h3><p>" + escapeHTML(stage.body) + "</p><span class=\"collection-stage-state\">" + (achieved ? "達成" : "未達成") + "</span></div></article>";
+      var body = stage.body || (stage.threshold + "地点を記録");
+      return "<article class=\"collection-stage-card" + (achieved ? " is-achieved" : "") + "\"><div class=\"collection-stage-medal medal-" + stage.className + "\" aria-hidden=\"true\"><span class=\"collection-medal-ribbon\"></span><span>727</span><i>★</i></div><div><h3>" + escapeHTML(stage.title) + "</h3><p>" + escapeHTML(body) + "</p><span class=\"collection-stage-state\">" + (achieved ? "達成" : "未達成") + "</span></div></article>";
     }).join("");
   }
 
