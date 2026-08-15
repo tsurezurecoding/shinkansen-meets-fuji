@@ -224,7 +224,9 @@
     "mieru.html": { en: true },
     "sparkling-dreams.html": { en: true },
     "hanabi.html": { en: true },
-    "yakei.html": { en: true }
+    "yakei.html": { en: true },
+    // 英語版が同名ミラーではなく既存の解説ページにあるため、パスを文字列で指定する。
+    "727-collection.html": { en: "en/spots/727-board.html" }
   };
 
   function siteHeaderHTML(rootPath, lang, currentId, utilityRoute, utilityHasAlternate) {
@@ -239,7 +241,7 @@
     var jaHref = utilityRoute
       ? (lang === "ja" ? utilityRoute : href(rootPath, utilityRoute) + "?lang=ja")
       : (lang === "ja" ? currentId + ".html" : href(rootPath, "spots/" + currentId + ".html") + "?lang=ja");
-    var enHref = utilityRoute ? (lang === "en" ? utilityRoute : href(rootPath, "en/" + utilityRoute)) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
+    var enHref = utilityRoute ? (lang === "en" ? utilityRoute : href(rootPath, typeof utilityHasAlternate === "string" ? utilityHasAlternate : "en/" + utilityRoute)) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
     var jaClass = lang === "ja" ? "active" : "";
     var enClass = lang === "en" ? "active" : "";
     return "<header class=\"topbar\">" +
@@ -348,7 +350,7 @@
     if (currentRoute !== "sparkling-dreams.html") out += railDisneyHTML(rootPath, lang);
     if (currentRoute !== "hanabi.html") out += railHanabiHTML(rootPath, lang);
     if (currentRoute !== "yakei.html") out += railYakeiHTML(rootPath, lang);
-    if (lang === "ja") out += rail727HTML(rootPath);
+    if (lang === "ja" && currentRoute !== "727-collection.html") out += rail727HTML(rootPath);
     return out;
   }
 

@@ -83,7 +83,8 @@ assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board p
 assertIncludes(read("spots/putiputi-sign.html"), "spot-page-shared.js", "putiputi page must load shared CTA renderer");
 
 assertIncludes(page, "全27地点", "page must show total 27");
-assertIncludes(page, 'href="en/spots/727-board.html">EN</a>', "English switch must lead to the existing 727 and 248 signs guide");
+assertIncludes(shared, '"727-collection.html": { en: "en/spots/727-board.html" }', "English switch must lead to the existing 727 and 248 signs guide");
+assertIncludes(page, 'data-spot-page-shared-module="topbar"', "collection page must use the shared topbar so the rail context is valid");
 assert.ok(!page.includes("全体地図に戻る") && !page.includes("data-map-reset"), "reset button must be removed");
 assertIncludes(page, "をっつん「新幹線から見える『727看板』の設置場所はどこか」", "note attribution missing");
 assertIncludes(page, "2023年の個人調査", "attribution context missing");
