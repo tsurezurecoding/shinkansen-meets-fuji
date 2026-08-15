@@ -109,7 +109,7 @@ assertIncludes(styles, ".collection-point-google-map", "Google expanded-map styl
 
 // 静的HTMLに直接書いた地点数が、実データからずれないよう固定する。
 // 「1地点だけ」のような単数の言い回しは対象外にするため2桁以上だけを見る。
-for (const [, digits] of page.matchAll(/(\d{2,})地点/g)) {
+for (const [, digits] of page.matchAll(/(\d{2,})(?:地点|か所|箇所)/g)) {
   assert.equal(Number(digits), collection.length, `727-collection.html has a stale point count: ${digits}`);
 }
 for (const label of ["title", "description", "og:title", "og:description", "twitter:title", "twitter:description"]) {
