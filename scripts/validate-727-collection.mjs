@@ -109,8 +109,15 @@ assertIncludes(styles, ".collection-point-google-map", "Google expanded-map styl
 
 // 静的HTMLに直接書いた地点数が、実データからずれないよう固定する。
 // 「1地点だけ」のような単数の言い回しは対象外にするため2桁以上だけを見る。
+// 本文に書ける地点数は、総数・写真で確認済みの数・残りの候補数の3つだけ。
+const confirmedCount = collection.filter((point) => point.photo || (point.collectionPhotos || []).length).length;
+const allowedCounts = new Set([collection.length, confirmedCount, collection.length - confirmedCount]);
 for (const [, digits] of page.matchAll(/(\d{2,})(?:地点|か所|箇所)/g)) {
-  assert.equal(Number(digits), collection.length, `727-collection.html has a stale point count: ${digits}`);
+  assert.ok(allowedCounts.has(Number(digits)), `727-collection.html has a stale point count: ${digits} (expected one of ${[...allowedCounts].join(", ")})`);
+}
+for (const point of collection) {
+  const hasPhoto = Boolean(point.photo) || (point.collectionPhotos || []).length > 0;
+  if (hasPhoto) assert.equal(point.confidence, "verified", `${point.id} has a photo, so it must be marked verified`);
 }
 for (const label of ["title", "description", "og:title", "og:description", "twitter:title", "twitter:description"]) {
   const pattern = label === "title" ? /<title>([^<]*)<\/title>/ : new RegExp(`(?:name|property)="${label}" content="([^"]*)"`);
