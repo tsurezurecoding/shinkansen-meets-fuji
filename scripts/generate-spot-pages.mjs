@@ -2094,7 +2094,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
-    { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
+    { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-15" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
@@ -2122,11 +2122,13 @@ function sitemapXML() {
     { loc: `${siteRoot}/privacy.html`, priority: "0.3", changefreq: "yearly" },
     { loc: `${siteRoot}/en/privacy.html`, priority: "0.3", changefreq: "yearly" },
   ];
+  // 個別に更新したスポットだけ日付を上書きする。全件を一斉に書き換えないための例外表。
+  const spotLastmodOverrides = { "727-board": "2026-08-15" };
   const spotUrls = SPOTS.flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
-    lastmod: "2026-08-02",
+    lastmod: spotLastmodOverrides[spot.id] || "2026-08-02",
   })));
   const urls = [...baseUrls, ...spotUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>

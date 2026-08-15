@@ -1085,19 +1085,19 @@ const SPOTS = [
     ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "あの数字、何？どこにある？", story: "新横浜を出て藤沢市へ入ると、727 COSMETICSの白い看板が沿線に何度か現れます。代表地点は葛原付近。E席側に黄色い「248」看板と並ぶ場所です。さらに小田原方面へ進むと、用田付近などではA席側にも727が見えます。727は大阪の化粧品メーカー、248は西八王子のきぬた歯科の広告です。" },
     en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "What are those numbers, and where?", story: "After Shin-Yokohama, white 727 COSMETICS billboards appear several times as the train enters Fujisawa. The representative point is around Kuzuhara, where a 727 sign stands on the Seat E side beside a yellow '248' sign. Farther toward Odawara, more 727 signs appear on the Seat A side around Yoda and nearby areas. 727 is an Osaka cosmetics maker; 248 advertises Kinuta Dental in Nishi-Hachioji." },
     pageTitle: {
-      ja: "新幹線から見える727・248看板はどこ？何の広告？ | 新幹線の窓",
+      ja: "727看板とは何の広告？248看板との違いと見える席側 | 新幹線の窓",
       en: "727 and 248 Signs: Shinkansen Billboards Explained | Shinkansen Window",
     },
     pageHeading: {
-      ja: "727・248看板はどこ？何の広告？",
+      ja: "727看板とは何の広告？248看板との違い",
       en: "What are the 727 and 248 billboards seen from the Shinkansen?",
     },
     pageHeadingChunks: {
-      ja: ["727・248看板はどこ？", "何の広告？"],
+      ja: ["727看板とは何の広告？", "248看板との違い"],
       en: ["What are the 727 and 248 billboards", "seen from the Shinkansen?"],
     },
     metaDescription: {
-      ja: "新幹線から見える727・248看板の正体と場所を解説。藤沢市葛原付近ではE席側に2つが並び、用田付近などではA席側にも727看板が見えます。",
+      ja: "新幹線から見える白い727看板は、大阪のサロン専売化粧品メーカーの広告。隣の黄色い248看板は西八王子のきぬた歯科です。藤沢市葛原付近ではE席側に2つが並びます。設置場所の一覧は727看板コレクションへ。",
       en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
     },
     pageStory: {
