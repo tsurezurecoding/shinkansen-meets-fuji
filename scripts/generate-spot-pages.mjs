@@ -2103,6 +2103,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-15" },
+    { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-16" },
+    { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: "2026-08-16" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },

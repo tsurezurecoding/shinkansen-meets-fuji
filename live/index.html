@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../language-router.js?v=20260814-yakei"></script>
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://www.michikusa-travel.com/live/">
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/live/">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/live/">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/live/">
-  <title>新幹線の窓 | ライブガイド</title>
-  <meta name="description" content="東海道新幹線の現在地から、次に見える車窓を音声とカウントダウンで案内するGPSライブガイドです。">
+  <title>新幹線の現在地から次の車窓を案内｜ライブガイド（α版） | 新幹線の窓</title>
+  <meta name="description" content="乗車中の現在地から、次に見える車窓までの時間と座席側を音声とカウントダウンで案内します。東海道新幹線の東京〜新大阪に対応。乗らずに試せるデモ走行つき。α版のため通過時刻はずれることがあります。">
   <meta name="theme-color" content="#0e1726">
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin>
@@ -174,6 +174,21 @@
           <li>主要スポットだけ、または小ネタまで音声案内</li>
           <li>地図とカウントダウンで見逃しを防止</li>
         </ul>
+        <div class="idle-about">
+          <h3 data-live-copy="idleHowTitle">使い方</h3>
+          <ol class="idle-steps">
+            <li data-live-copy="idleStep1">東海道新幹線に乗ったら、このページで「GPSで開始」を押す</li>
+            <li data-live-copy="idleStep2">現在地から次の車窓スポットを割り出し、近づくと音声とカウントダウンで知らせる</li>
+            <li data-live-copy="idleStep3">A席側・E席側のどちらに見えるかも一緒に出るので、窓の向きを迷わない</li>
+          </ol>
+          <p data-live-copy="idleNoGps">乗車前でも「デモ走行」で東京〜新大阪の案内をひととおり試せます。位置情報の許可は不要です。</p>
+          <p data-live-copy="idleElse">乗る前に見どころを調べるなら、こちらから。</p>
+          <ul class="idle-links">
+            <li><a href="../guide.html" data-live-link data-live-copy="idleLinkGuide">富士山の見方</a></li>
+            <li><a href="../zukan.html" data-live-link data-live-copy="idleLinkZukan">車窓図鑑</a></li>
+            <li><a href="../index.html" data-live-link data-live-copy="idleLinkTop">列車ごとの通過時刻を調べる</a></li>
+          </ul>
+        </div>
         <button id="btn-start" class="big-btn">📍 GPSで開始</button>
         <button id="btn-demo" class="big-btn ghost">▶ デモ走行（乗らずに試す）</button>
         <a class="ea-live-cta hide-in-app" href="../early-access.html?src=live">

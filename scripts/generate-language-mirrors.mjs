@@ -108,10 +108,10 @@ for (const page of pages) {
 const liveSource = fs.readFileSync(path.join(appDir, "live", "index.html"), "utf8");
 const liveEnglish = liveSource
   .replace('<html lang="ja">', '<html lang="en">')
-  .replace(/<title>[^<]*<\/title>/, '<title>Live Guide | Shinkansen Window</title>')
+  .replace(/<title>[^<]*<\/title>/, '<title>Your position, and the next window view | Live Guide (alpha) | Shinkansen Window</title>')
   .replace(
     /<meta name="description" content="[^"]*">/,
-    '<meta name="description" content="A GPS-powered live guide that announces upcoming views along the Tokaido Shinkansen with audio and a countdown.">'
+    '<meta name="description" content="From your position on board, hear how long until the next view and which side to watch, with audio and a countdown. Covers Tokyo to Shin-Osaka. A demo run works without GPS. Alpha: timings can drift.">'
   )
   .replace(
     '<link rel="canonical" href="https://www.michikusa-travel.com/live/">',
