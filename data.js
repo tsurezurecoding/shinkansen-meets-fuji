@@ -28,7 +28,7 @@ const ROUTE = {
     { id: "Mikawa-Anjo", ja: "三河安城", en: "Mikawa-Anjo", min: 88 },
     { id: "Nagoya", ja: "名古屋", en: "Nagoya", min: 95, major: true },
     { id: "Gifu-Hashima", ja: "岐阜羽島", en: "Gifu-Hashima", min: 102 },
-    { id: "Maibara", ja: "米原", en: "Maibara", min: 114 },
+    { id: "Maibara", ja: "米原", en: "Maibara", min: 112 },
     { id: "Kyoto", ja: "京都", en: "Kyoto", min: 130, major: true },
     { id: "Shin-Osaka", ja: "新大阪", en: "Shin-Osaka", min: 147, major: true },
   ],
@@ -2405,7 +2405,7 @@ const SPOTS = [
   {
     id: "nichiban-anjo",
     icon: "🟦",
-    ja: { name: "セロテープの壁看板", area: "三河安城付近", hook: "工場の壁が、まるごとセロテープ。", story: "東京から名古屋方面へ向かう列車では、三河安城の少し手前のE席側で、工場の壁いっぱいに描かれた巨大な「セロテープ®」の広告看板が視界を覆います。名古屋から東京方面ならば三河安城を出てすぐ。赤・青・黒に彩られたテープ本体とロゴが原寸大どころではないスケールで貼りついているので、思わず「え、いま何？」と反応してしまう車窓です。ここはニチバン株式会社の安城工場で、日本の家庭でおなじみの粘着テープ「セロテープ」を1948年から製造してきた拠点。時々「無くしてわかる有難さ。親と健康とセロテープ」など、印象的なコピーが差し替えられます。ただの企業広告以上に、東海道新幹線らしい沿線の“発見”として愛されている看板です。" },
+    ja: { name: "セロテープの壁看板", area: "三河安城付近", hook: "工場の壁が、まるごとセロテープ。", story: "東京から名古屋方面へ向かう列車では、三河安城を出てすぐのE席側で、工場の壁いっぱいに描かれた巨大な「セロテープ®」の広告看板が視界を覆います。名古屋から東京方面ならば三河安城に着く少し手前。赤・青・黒に彩られたテープ本体とロゴが原寸大どころではないスケールで貼りついているので、思わず「え、いま何？」と反応してしまう車窓です。ここはニチバン株式会社の安城工場で、日本の家庭でおなじみの粘着テープ「セロテープ」を1948年から製造してきた拠点。時々「無くしてわかる有難さ。親と健康とセロテープ」など、印象的なコピーが差し替えられます。ただの企業広告以上に、東海道新幹線らしい沿線の“発見”として愛されている看板です。" },
     en: { name: "CELLOTAPE Wall Sign", area: "Around Mikawa-Anjo", hook: "A whole factory wall as a tape ad.", story: "On trains from Tokyo toward Nagoya, a factory wall painted end-to-end with the huge red-and-blue 'CELLOTAPE®' brand mark appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after leaving Mikawa-Anjo. The scale is so exaggerated — a roll of sticky tape rendered many meters wide — that first-time riders often do a double take. This is Nichiban Corporation's Anjo Factory, which has been producing CELLOTAPE, the household clear tape known throughout Japan, since 1948. The wall copy is updated from time to time; one memorable Japanese line paired with the brand reads, 'You only appreciate their value once they're gone: parents, health, and CELLOTAPE.' It has grown into one of those loved trackside 'discoveries' that regulars watch for every trip." },
     pageTitle: {
       ja: "新幹線から見えるセロテープの壁看板｜ニチバン安城工場 | 新幹線の窓",
@@ -2448,7 +2448,7 @@ const SPOTS = [
       ja: "三河安城が近づいたら、E席側の遠くに工場地帯を意識してください。工場の壁面いっぱいに、太くはっきりした赤・青・白の帯が描かれた建物が見えたらそれがニチバン安城工場のセロテープ壁看板です。反対方向（上り）では、三河安城を通過した直後がタイミングです。夜は看板そのものが照明で照らされ、暗い工場地帯のなかに赤と青の帯だけが浮かび上がるので、昼より見つけやすいくらいです。",
       en: "As Mikawa-Anjo approaches, watch the industrial area far off on the Seat E side. Look for a factory whose entire wall is dressed in bold red, blue and white stripes — that is Nichiban's Anjo Factory and its CELLOTAPE wall sign. In the opposite direction (upbound), the timing is just after passing Mikawa-Anjo. At night the sign itself is lit, so the red and blue bands float out of the dark industrial belt — arguably easier to spot than in daylight.",
     },
-    minutesFromTokyo: 85, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, scene: "solar",
+    minutesFromTokyo: 88, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
     photoCredit: {
       ja: "@letus10 / 新幹線の車窓から",
@@ -2831,8 +2831,8 @@ const SPOTS = [
   {
     id: "gifu-castle",
     icon: "🏯",
-    ja: { name: "岐阜城", area: "岐阜羽島 → 米原", hook: "山の上に、小さな城。", story: "岐阜羽島を過ぎ、木曽三川を渡る前後で、E席側の遠くに金華山（標高329m）が見えることがあります。その山頂に立つのが岐阜城。かつて斎藤道三が居城とし、のちに織田信長がこの城を落として「岐阜」と改名、「天下布武」の朱印を用い始めた地です。線路からは10km以上離れているため、山頂の小さな天守を車窓で見つけるには晴れた日と少しの集中力が必要。写真では橋の向こう、金華山の頂に小さく見える白い点を探してください。" },
-    en: { name: "Gifu Castle", area: "Gifu-Hashima → Maibara", hook: "A tiny castle on a mountain.", story: "After Gifu-Hashima, around the Kiso Three Rivers, Mt. Kinka (329 m) may be visible far away on the Seat E side. Gifu Castle sits on its summit. This was once the mountaintop stronghold of Saito Dosan, later captured by Oda Nobunaga — who renamed the town Gifu and began using his famous 'Tenka Fubu' seal from here. The castle lies more than 10 km from the Shinkansen line, so spotting the tiny keep takes a clear day and a focused eye. In the Shinkansen photo, look beyond the bridge for the tiny white dot on top of Mt. Kinka." },
+    ja: { name: "岐阜城", area: "岐阜羽島 → 米原", hook: "山の上に、小さな城。", story: "岐阜羽島の駅にさしかかるあたりで、E席側の遠くに金華山（標高329m）が見えることがあります。大阪方面から来る場合は、岐阜羽島に着く1〜2分前がいちばんよく見え、このとき金華山はほぼ真横に来ます。その山頂に立つのが岐阜城。かつて斎藤道三が居城とし、のちに織田信長がこの城を落として「岐阜」と改名、「天下布武」の朱印を用い始めた地です。線路からは15kmほど離れているため、山頂の小さな天守を車窓で見つけるには晴れた日と少しの集中力が必要。写真では橋の向こう、金華山の頂に小さく見える白い点を探してください。" },
+    en: { name: "Gifu Castle", area: "Gifu-Hashima → Maibara", hook: "A tiny castle on a mountain.", story: "As the train approaches Gifu-Hashima, Mt. Kinka (329 m) may be visible far away on the Seat E side. Coming from Osaka, the best moment is one to two minutes before reaching Gifu-Hashima, when the mountain sits almost directly abeam. Gifu Castle sits on its summit. This was once the mountaintop stronghold of Saito Dosan, later captured by Oda Nobunaga — who renamed the town Gifu and began using his famous 'Tenka Fubu' seal from here. The castle lies about 15 km from the Shinkansen line, so spotting the tiny keep takes a clear day and a focused eye. In the Shinkansen photo, look beyond the bridge for the tiny white dot on top of Mt. Kinka." },
     pageTitle: {
       ja: "新幹線から見える岐阜城｜金華山の山頂に立つ信長ゆかりの城 | 新幹線の窓",
       en: "Gifu Castle from the Shinkansen | Nobunaga's Mountaintop Fortress on Mt. Kinka",
@@ -2861,20 +2861,20 @@ const SPOTS = [
       heading: { ja: "今見える天守と、車窓での探し方", en: "The keep you see today, and how to find it" },
       ja: [
         "現在の天守は1956年（昭和31年）に鉄筋コンクリートで再建された模擬天守で、内部は資料館・展望台になっています。史実の外観そのままではありませんが、金華山山頂の位置に立つ姿は「岐阜城といえばこれ」というイメージを長く担ってきました。麓の岐阜公園から山頂まではロープウェイで結ばれ、天守からは濃尾平野・木曽三川・伊吹山まで一望できます。",
-        "新幹線車窓では、岐阜羽島を出て木曽三川（木曽川・長良川・揖斐川）を渡る前後、E席側の北の方角に金華山を探すことになります。山頂に立つ天守は非常に小さく見え、周囲の建物や霞、季節の空気に埋もれやすいので、まずは「三角形に近い低い山」を見つけ、その頂に小さな白い点を探すつもりで眺めるのがコツです。曇りや黄砂・霞がある日は、山そのものはうっすら見えても天守までは判別できないことが多いです。",
+        "新幹線車窓では、岐阜羽島の駅に近いあたりで、E席側の北の方角に金華山を探すことになります。大阪方面からなら岐阜羽島に着く1〜2分前が最良です。山頂に立つ天守は非常に小さく見え、周囲の建物や霞、季節の空気に埋もれやすいので、まずは「三角形に近い低い山」を見つけ、その頂に小さな白い点を探すつもりで眺めるのがコツです。曇りや黄砂・霞がある日は、山そのものはうっすら見えても天守までは判別できないことが多いです。",
         "本来は東海道本線側や、名鉄各務原線側から近く見えます。ページ内には、参考としてJR在来線側から大きく捉えた写真も添えています。新幹線からはそれよりずっと小さく、橋や市街地の向こうに見える点のような天守を探す感覚です。実際に「大きく見える岐阜城」を楽しみたい場合は、乗り継ぎで訪れる価値がある城です。",
       ],
       en: [
         "The keep you see today was rebuilt in 1956 in reinforced concrete as a modern reconstruction, housing a small museum and observation deck. It is not a faithful restoration, but its position on Mt. Kinka has long defined the popular image of Gifu Castle. A ropeway from Gifu Park at the foot of the mountain runs to the summit, from which the Nobi Plain, the Kiso Three Rivers and even Mt. Ibuki come into view.",
-        "From the Shinkansen, after Gifu-Hashima and around the crossing of the Kiso Three Rivers (Kiso, Nagara and Ibi), look northward from the Seat E side for Mt. Kinka. The hilltop keep appears very small and blends easily into buildings, haze, or seasonal air. Look first for a low, near-triangular mountain, then a small white dot at its top. On cloudy, hazy or yellow-dust days, even a visible mountain may not reveal the keep itself.",
+        "From the Shinkansen, look northward from the Seat E side for Mt. Kinka as the train nears Gifu-Hashima. Coming from Osaka, the best moment is one to two minutes before the station. The hilltop keep appears very small and blends easily into buildings, haze, or seasonal air. Look first for a low, near-triangular mountain, then a small white dot at its top. On cloudy, hazy or yellow-dust days, even a visible mountain may not reveal the keep itself.",
         "The castle is much more prominent from the Tokaido Main Line, other JR conventional lines, and the Meitetsu Kakamigahara Line. This page also includes a reference photo from those closer directions. From the Shinkansen it is much smaller: look for a dot-like keep beyond the bridge and the city. If you want to see Gifu Castle up close, it is well worth a connecting trip.",
       ],
     },
     guideHighlight: {
-      ja: "木曽三川を渡るあたりで、E席側の北にある一番目立つ低い山を探してください。三角に近いシルエットの頂に、白い点のような天守が見えたらそれが岐阜城です。晴天・冬から早春・朝の時間帯が特に見つけやすくなります。",
-      en: "Around the Kiso Three Rivers crossing, look northward on the Seat E side for the most prominent low mountain. If you can pick out a white dot at the top of its near-triangular silhouette, that is Gifu Castle. Clear days, winter to early spring, and morning light give the best chance.",
+      ja: "岐阜羽島に近いあたりで、E席側の北にある一番目立つ低い山を探してください。三角に近いシルエットの頂に、白い点のような天守が見えたらそれが岐阜城です。晴天・冬から早春・朝の時間帯が特に見つけやすくなります。",
+      en: "As the train nears Gifu-Hashima, look northward on the Seat E side for the most prominent low mountain. If you can pick out a white dot at the top of its near-triangular silhouette, that is Gifu Castle. Clear days, winter to early spring, and morning light give the best chance.",
     },
-    minutesFromTokyo: 106, side: "E", category: "curious", confidence: "source-backed", durationSec: 8, scene: "castle",
+    minutesFromTokyo: 103, side: "E", category: "curious", confidence: "source-backed", durationSec: 8, scene: "castle",
     image: "images/20260712_gifu_castle_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-07-12", note: { ja: "橋の向こう、金華山の上に小さく写る岐阜城", en: "Gifu Castle appears as a tiny speck on Mt. Kinka beyond the bridge." } },
     photos: [
@@ -2909,7 +2909,7 @@ const SPOTS = [
     ],
     references: [REFERENCES.gifuCastleOfficial, REFERENCES.zusshiCastleBlog, REFERENCES.gifuCastleBlog],
     map: { lat: 35.4339, lng: 136.7824, ja: "岐阜城 金華山", en: "Gifu Castle Mt. Kinka" },
-    viewpoint: { lat: 35.29951585953575, lng: 136.71466236318534 },
+    viewpoint: { lat: 35.32789, lng: 136.671764 },
   },
   {
     id: "kinshozan",
@@ -3315,7 +3315,7 @@ const SPOTS = [
       ja: "米原を通過して数分、E席側の平野に「独立して盛り上がる、まとまった緑の山」を探してください。麓の田園にある大きな看板がタイミングの合図です。天守を探すのではなく、この山の上でかつて何が決まったか、を思いながら眺めるとぐっと印象が変わります。",
       en: "A few minutes past Maibara, look toward Seat E for a single, well-defined green hill rising alone from the plain. The large signpost in the fields below is the timing cue. Do not look for a keep — look at the hill knowing what was decided on it, and the view lands very differently.",
     },
-    minutesFromTokyo: 115, side: "E", category: "notable", confidence: "needs-check", durationSec: 5, scene: "castle",
+    minutesFromTokyo: 115, side: "E", category: "notable", confidence: "verified", durationSec: 5, scene: "castle",
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
     photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
@@ -3513,7 +3513,7 @@ const SPOTS = [
       ja: "米原を出てしばらくしたら、A席側の遠くに「整った三角の低い山」を探してください。周囲に高い山がないので、意識すれば意外とすぐに見つかります。田植え直後（4〜5月）の水を張った田んぼが手前にあると、三上山が水面に映って「逆さ富士」のように見えるボーナスタイムです。",
       en: "A little after Maibara, look far off on the Seat A side for a 'neat, low triangular mountain.' With no taller peaks nearby, it stands out surprisingly quickly once you know what you are looking for. If the foreground fields are freshly flooded around rice-planting season in April–May, Mt. Mikami can reflect on the water into a small 'upside-down Fuji' — a nice bonus if you catch it.",
     },
-    minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "notable", confidence: "needs-check", durationSec: 15, scene: "mountain",
+    minutesFromTokyo: 123, side: "A", sideLabel: { ja: "A席側", en: "Seat A side" }, category: "notable", confidence: "verified", durationSec: 15, scene: "mountain",
     image: "images/20250523_omi_fuji_kawasan3.jpg",
     photoCredit: {
       ja: "@kawasan3",
@@ -3809,13 +3809,13 @@ const BOARD_COLLECTION = [
   { sourceNo: 34, id: "727-no-34", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.266181, lng: 136.760241, confidence: "needs-check", ja: "萩原町築込（一宮市）", en: "Hagiwara, Ichinomiya" },
   { sourceNo: 35, id: "727-no-35", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.354772, lng: 136.549999, confidence: "verified", photo: { src: "images/20260704_727_board_osawa_michikusa.jpg", alt: "E席側から見える垂井町表佐の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で12:59ごろ撮影（宮代A席の約30秒前）" }, collectionPhotos: [{ src: "images/20260712_727_board_osa_kinshozan_michikusa.jpg", alt: "金生山の手前を通り過ぎる垂井町表佐の727看板", note: "michikusa / 2026-07-12 · 金生山をながめていると通り過ぎる" }], ja: "表佐（垂井町）", en: "Osawa, Tarui" },
   { sourceNo: 36, id: "727-no-36", minutesFromTokyo: 108, segment: "岐阜羽島 → 米原", side: "A", lat: 35.361132, lng: 136.534258, confidence: "verified", photo: { src: "images/20260704_727_board_miyashiro_a_michikusa.jpg", alt: "A席側から見える垂井町宮代の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で13:00撮影" }, ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
-  { sourceNo: 37, id: "727-no-37", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.362859, lng: 136.535071, collectionNote: "ストリートビューで看板を確認済み", confidence: "needs-check", ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
+  { sourceNo: 37, id: "727-no-37", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.362859, lng: 136.535071, collectionNote: "金生山をバックに", confidence: "verified", photo: { src: "images/20260816_727_board_miyashiro_e_michikusa.jpg", alt: "金生山を背にした垂井町宮代の727看板", note: "michikusa / 2026-08-16" }, ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
   { sourceNo: 38, id: "727-no-38", minutesFromTokyo: 111, segment: "岐阜羽島 → 米原", side: "A", lat: 35.357509, lng: 136.399357, confidence: "needs-check", ja: "大野木（米原市）", en: "Onogi, Maibara" },
   { sourceNo: 39, id: "727-no-39", minutesFromTokyo: 113, segment: "岐阜羽島 → 米原", side: "E", lat: 35.356525, lng: 136.309691, confidence: "verified", photo: { src: "images/20260704_727_board_fuse_michikusa.jpg", alt: "E席側から見える長浜市布勢町の727看板", note: "michikusa / 2026-07-04" }, collectionPhotos: [{ src: "images/20260704_727_board_fuse_2_michikusa.jpg", alt: "長浜市布勢町で続けて見える727看板", note: "michikusa / 2026-07-04" }], ja: "布勢町（長浜市）", en: "Fuse, Nagahama" },
-  { sourceNo: 40, id: "727-no-40", minutesFromTokyo: 116, segment: "米原 → 京都", side: "E", lat: 35.21974, lng: 136.244099, confidence: "needs-check", ja: "葛籠町（彦根市）", en: "Tsuzura, Hikone" },
-  { sourceNo: 41, id: "727-no-41", minutesFromTokyo: 122, segment: "米原 → 京都", side: "A", lat: 35.092525, lng: 136.081593, confidence: "needs-check", ja: "安養寺町（近江八幡市）", en: "Anyoji, Omihachiman" },
-  { sourceNo: 42, id: "727-no-42", minutesFromTokyo: 124, segment: "米原 → 京都", side: "A", lat: 35.039993, lng: 136.008729, confidence: "needs-check", ja: "出庭（栗東市）", en: "Deiwa, Ritto" },
-  { sourceNo: 43, id: "727-no-43", minutesFromTokyo: 138, segment: "京都 → 新大阪", side: "A", lat: 34.847034, lng: 135.642008, confidence: "needs-check", ja: "東天川（高槻市）", en: "Higashiamakawa, Takatsuki" },
+  { sourceNo: 40, id: "727-no-40", collectionNote: "古河のカーエレクトロニクスを過ぎてすぐ。遠いので見つけにくい", minutesFromTokyo: 116, segment: "米原 → 京都", side: "E", lat: 35.21974, lng: 136.244099, confidence: "verified", photo: { src: "images/20260816_727_board_tsuzura_michikusa.jpg", alt: "E席側の遠くに見える彦根市葛籠町の727看板", note: "michikusa / 2026-08-16" }, ja: "葛籠町（彦根市）", en: "Tsuzura, Hikone" },
+  { sourceNo: 41, id: "727-no-41", minutesFromTokyo: 122, segment: "米原 → 京都", side: "A", lat: 35.092525, lng: 136.081593, confidence: "verified", photo: { src: "images/20260816_727_board_anyoji_michikusa.jpg", alt: "A席側から見える近江八幡市安養寺町の727看板", note: "michikusa / 2026-08-16" }, ja: "安養寺町（近江八幡市）", en: "Anyoji, Omihachiman" },
+  { sourceNo: 42, id: "727-no-42", siteStatus: "not-found", collectionNote: "2026-08-16時点では確認できず（周辺が道路工事中）", minutesFromTokyo: 124, segment: "米原 → 京都", side: "A", lat: 35.039993, lng: 136.008729, confidence: "needs-check", ja: "出庭（栗東市）", en: "Deiwa, Ritto" },
+  { sourceNo: 43, id: "727-no-43", minutesFromTokyo: 138, segment: "京都 → 新大阪", side: "A", lat: 34.847034, lng: 135.642008, confidence: "verified", photo: { src: "images/20260816_727_board_higashiamakawa_michikusa.jpg", alt: "A席側から見える高槻市東天川の727看板", note: "michikusa / 2026-08-16" }, ja: "東天川（高槻市）", en: "Higashiamakawa, Takatsuki" },
   { sourceNo: 44, id: "727-no-44", collectionNote: "田んぼの奥にぽつんと", minutesFromTokyo: 141, segment: "京都 → 新大阪", side: "E", lat: 34.81158, lng: 135.608706, confidence: "verified", photo: { src: "images/20260803_727_board_karasakiminami_michikusa.jpg", alt: "田んぼの奥に見える高槻市唐崎南の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約1〜2分前" }, ja: "唐崎南（高槻市）", en: "Karasakiminami, Takatsuki" },
   { sourceNo: 45, id: "727-no-45", collectionNote: "大阪中央卸売市場をバックに", minutesFromTokyo: 142, segment: "京都 → 新大阪", side: "E", lat: 34.790635, lng: 135.587403, confidence: "verified", photo: { src: "images/20260803_727_board_torikaihachicho_michikusa.jpg", alt: "大阪中央卸売市場を背にした鳥飼八町の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約30秒前" }, ja: "鳥飼八町（摂津市）", en: "Torikaihachicho, Settsu" },
 ].map((item) => {
@@ -3835,7 +3835,7 @@ const BOARD_COLLECTION = [
   sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
   map: { lat: item.lat, lng: item.lng, ja: names.public, en: item.en },
   image: item.photo?.src || "images/stamps/stamp_727-board.svg",
-  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: item.photo.alt }, credit: { ja: "michikusa", en: "michikusa" }, date: "2026-07-04", note: { ja: item.photo.note, en: item.photo.note } }] : [],
+  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: item.photo.alt }, credit: { ja: "michikusa", en: "michikusa" }, date: (item.photo.note.match(/\d{4}-\d{2}-\d{2}/) || ["2026-07-04"])[0], note: { ja: item.photo.note, en: item.photo.note } }] : [],
   ja: {
     name: names.public,
     area: "東海道沿線",

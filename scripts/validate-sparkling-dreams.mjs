@@ -1,6 +1,7 @@
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import vm from "node:vm";
+import { assetVersion } from "./shared/asset-version.mjs";
 
 const appRoot = new URL("../", import.meta.url);
 const readAppFile = (relativePath) => readFile(new URL(relativePath, appRoot), "utf8");
@@ -113,7 +114,7 @@ const youtubeFrames = postSection.match(/<iframe\b[^>]*><\/iframe>/g) || [];
 const widgetScripts = page.match(/<script\b(?=[^>]*\basync\b)(?=[^>]*\bsrc="https:\/\/platform\.twitter\.com\/widgets\.js")(?=[^>]*\bcharset="utf-8")[^>]*><\/script>/gi) || [];
 const widgetScriptIndex = widgetScripts.length ? page.indexOf(widgetScripts[0]) : -1;
 const localScriptIndex = page.indexOf('<script src="data/timetable.js');
-const calculatorScriptIndex = page.indexOf('<script src="sparkling-dreams.js?v=20260813-video-card-frame">');
+const calculatorScriptIndex = page.indexOf(`<script src="sparkling-dreams.js?v=${assetVersion("sparkling-dreams.js")}">`);
 const embeddedPostUrls = [...new Set(
   [...postSection.matchAll(/https:\/\/x\.com\/[^/"\s]+\/status\/\d+(?:\?[^"'\s<]*)?/g)]
     .map((match) => match[0].replace(/\?.*$/, "")),
@@ -192,7 +193,7 @@ const expectedMetadata = [
   `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
 ];
 for (const metadata of expectedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: expected metadata changed or is missing (${metadata.slice(0, 32)}...)`);
-expect(page.includes('<link rel="stylesheet" href="style.css?v=20260813-video-card-frame">'), "sparkling-dreams.html: stylesheet cache token is missing or stale");
+expect(page.includes(`<link rel="stylesheet" href="style.css?v=${assetVersion("style.css")}">`), "sparkling-dreams.html: stylesheet cache token is missing or stale");
 expect(stylesheet.includes(".sd-post-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-post-grid { grid-template-columns: 1fr; }"), "style.css: X videos must be two columns on desktop and one column on mobile");
 expect(stylesheet.includes(".sd-post-credit") && stylesheet.includes(".sd-post-note") && stylesheet.includes(".sd-video-nav") && stylesheet.includes(".sd-video-group"), "style.css: poster credit and embed-rights note styles are missing");
 expect(stylesheet.includes(".sd-media-frame { position: relative; width: 100%; aspect-ratio: 16 / 9;"), "style.css: X and YouTube cards must share one 16:9 media frame");
@@ -331,7 +332,7 @@ expect(englishPage.includes('<link rel="canonical" href="https://www.michikusa-t
 expect(englishPage.includes('hreflang="ja" href="https://www.michikusa-travel.com/sparkling-dreams.html"') && englishPage.includes('hreflang="en" href="https://www.michikusa-travel.com/en/sparkling-dreams.html"') && englishPage.includes('hreflang="x-default" href="https://www.michikusa-travel.com/en/sparkling-dreams.html"'), "en/sparkling-dreams.html: hreflang set is incomplete");
 expect(englishPage.includes("Disney Shinkansen") && englishPage.includes("Sparkling Dreams Shinkansen") && englishPage.includes("estimated passing times"), "en/sparkling-dreams.html: English SEO target is missing");
 expect(englishPage.includes('data-mado-lang="en"') && englishPage.includes('localStorage.setItem("mado-lang", "en")'), "en/sparkling-dreams.html: English language state is missing");
-expect(englishPage.includes('href="../style.css?v=20260813-video-card-frame"') && englishPage.includes('src="../sparkling-dreams.js?v=20260813-video-card-frame"'), "en/sparkling-dreams.html: shared embed fallback assets are stale");
+expect(englishPage.includes(`href="../style.css?v=${assetVersion("style.css")}"`) && englishPage.includes(`src="../sparkling-dreams.js?v=${assetVersion("sparkling-dreams.js")}"`), "en/sparkling-dreams.html: shared embed fallback assets are stale");
 expect((englishPage.match(/class="twitter-tweet"/g) || []).length === 10 && (englishPage.match(/www\.youtube-nocookie\.com\/embed\//g) || []).length === 2, "en/sparkling-dreams.html: approved embed set changed");
 expect((englishPage.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="Video on X"><blockquote class="twitter-tweet"/g) || []).length === 10 && (englishPage.match(/<div class="sd-media-frame sd-youtube-frame" data-placeholder="Video on YouTube">/g) || []).length === 2 && !/data-sd-media-fallback/.test(englishPage), "en/sparkling-dreams.html: shared media frames are missing on the English mirror");
 expect(englishPage.includes("Track the Disney Shinkansen") && englishPage.includes("Choose your train") && englishPage.includes("See everyone's videos") && englishPage.includes("sd-post-intro") && !englishPage.includes("乗る列車を選ぶ"), "en/sparkling-dreams.html: English static UI copy is incomplete or Japanese UI leaked");

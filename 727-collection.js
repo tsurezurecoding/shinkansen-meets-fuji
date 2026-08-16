@@ -21,6 +21,9 @@
   function saveStamps() {
     try { localStorage.setItem("mado-stamps", JSON.stringify(stamps)); } catch (error) { /* storage is optional */ }
   }
+  // 現地で確認できなかった地点（撤去・工事など）は収集カウントから外す。
+  function isMissing(point) { return point.siteStatus === "not-found"; }
+  function countablePoints() { return points.filter(function (point) { return !isMissing(point); }); }
   function stampId(point) { return point.stampId || point.id; }
   function stampIds(point) { return [stampId(point), point.id].concat(point.legacyStampIds || []); }
   function isFound(point) { return stampIds(point).some(function (id) { return Boolean(stamps[id]); }); }
@@ -61,14 +64,15 @@
   }
 
   function renderProgress() {
-    var found = points.filter(isFound).length;
+    var countable = countablePoints();
+    var found = countable.filter(isFound).length;
     var progress = document.getElementById("collectionProgress");
-    if (progress) progress.innerHTML = "<div class=\"collection-progress-copy\"><strong>" + found + " / " + points.length + "地点を記録</strong><span>訪問済みの地点は、この端末の車窓スタンプに保存されます。</span></div><div class=\"collection-progress-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"" + points.length + "\" aria-valuenow=\"" + found + "\"><span style=\"width:" + Math.round((found / points.length) * 100) + "%\"></span></div>";
+    if (progress) progress.innerHTML = "<div class=\"collection-progress-copy\"><strong>" + found + " / " + countable.length + "地点を記録</strong><span>訪問済みの地点は、この端末の車窓スタンプに保存されます。</span></div><div class=\"collection-progress-bar\" role=\"progressbar\" aria-valuemin=\"0\" aria-valuemax=\"" + countable.length + "\" aria-valuenow=\"" + found + "\"><span style=\"width:" + Math.round((found / countable.length) * 100) + "%\"></span></div>";
     var stageData = [
       { threshold: 1, className: "bronze", title: "はじめの一枚", body: "最初の地点を記録" },
       { threshold: 8, className: "bronze", title: "ブロンズ" },
       { threshold: 16, className: "silver", title: "シルバー" },
-      { threshold: points.length, className: "gold", title: "ゴールド", body: "全地点を記録" },
+      { threshold: countable.length, className: "gold", title: "ゴールド", body: "全地点を記録" },
     ];
     var medals = document.getElementById("collectionMedals");
     if (!medals) return;
@@ -110,7 +114,7 @@
       var seatTag = "<span class=\"collection-seat-tag collection-seat-" + escapeHTML(String(point.side || "").toLowerCase()) + "\">" + escapeHTML(sideLabel(point)) + "</span>";
       var summaryTitle = "<span class=\"collection-point-summary-title\"><strong class=\"collection-point-summary-name\">" + escapeHTML(pointName(point)) + "</strong>" + seatTag + "</span>";
       var thumbnail = point.photo && point.photo.src ? "<img class=\"collection-point-summary-thumb\" src=\"" + escapeHTML(point.photo.src) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\">" : "";
-      return "<article class=\"collection-point-card" + (found ? " is-found" : "") + "\" data-point-id=\"" + escapeHTML(point.id) + "\" data-point-card><button type=\"button\" class=\"collection-point-summary\" data-point-accordion aria-expanded=\"false\" aria-controls=\"" + escapeHTML(detailId) + "\"><span class=\"collection-point-summary-copy\">" + summaryTitle + note + "</span>" + thumbnail + "<span class=\"collection-point-found-icon\" aria-label=\"" + (found ? "記録済み" : "未記録") + "\">" + (found ? "✓" : "○") + "</span></button>" + detailMarkup(point, detailId) + "</article>";
+      return "<article class=\"collection-point-card" + (found ? " is-found" : "") + (isMissing(point) ? " is-missing" : "") + "\" data-point-id=\"" + escapeHTML(point.id) + "\" data-point-card><button type=\"button\" class=\"collection-point-summary\" data-point-accordion aria-expanded=\"false\" aria-controls=\"" + escapeHTML(detailId) + "\"><span class=\"collection-point-summary-copy\">" + summaryTitle + note + "</span>" + thumbnail + "<span class=\"collection-point-found-icon\" aria-label=\"" + (found ? "記録済み" : "未記録") + "\">" + (found ? "✓" : "○") + "</span></button>" + detailMarkup(point, detailId) + "</article>";
     }).join("");
     if (openPointId) setAccordion(openPointId, true, false);
   }

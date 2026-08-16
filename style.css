@@ -5965,6 +5965,11 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
 .collection-point-card { min-width: 0; overflow: hidden; border: 1px solid var(--line); border-radius: 13px; background: var(--card); box-shadow: 0 4px 14px rgba(22,32,46,.05); transition: border-color .15s ease, box-shadow .15s ease, background .15s ease; }
 .collection-point-card.is-found { border-color: rgba(179,39,45,.26); }
 .collection-point-card.is-open { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(179,39,45,.1); }
+/* 現地で確認できなかった地点。収集カウントから外し、視覚的にも落とす */
+.collection-point-card.is-missing { opacity: .55; filter: grayscale(1); }
+.collection-point-card.is-missing:hover, .collection-point-card.is-missing:focus-within { opacity: .8; }
+.collection-point-card.is-missing .collection-point-summary-name { text-decoration: line-through; text-decoration-thickness: 1px; }
+.collection-point-card.is-missing .collection-point-summary-note { text-decoration: none; }
 .collection-point-summary { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; gap: 12px; width: 100%; min-width: 0; min-height: 54px; padding: 12px 16px; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; cursor: pointer; }
 .collection-point-summary:hover,
 .collection-point-summary:focus-visible { outline: 0; background: rgba(179,39,45,.04); }
