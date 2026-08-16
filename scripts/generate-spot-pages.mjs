@@ -10,6 +10,7 @@ const appDir = path.resolve(__dirname, "..");
 const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
+const CHECK_ONLY = process.argv.includes("--check");
 // Fixed on purpose: the sitemap is a build artifact and must stay deterministic,
 // so re-running the generator never rewrites every <lastmod>. Bump deliberately,
 // or give the entry its own explicit lastmod below.
@@ -572,6 +573,7 @@ ${items.map((item) => `      <a class="content-rail-card" href="${item.href}">
 function analyticsSnippet() {
   return `<script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
@@ -606,6 +608,11 @@ function analyticsSnippet() {
       window.gtag("config", measurementId);
     })();
   </script>`;
+}
+
+function embeddedHeadHTML(prefix) {
+  return `<script src="${prefix}app-embedded.js?v=${assetVersion("app-embedded.js")}"></script>
+  <link rel="stylesheet" href="${prefix}app-embedded.css?v=${assetVersion("app-embedded.css")}">`;
 }
 
 function referenceUrl(ref, lang) {
@@ -1546,6 +1553,7 @@ function thinSpotPageHTML(spot, lang) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  ${embeddedHeadHTML(prefix)}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">
@@ -2148,11 +2156,10 @@ function comparableSpotHead(html) {
   return head.replace(/\s*<link rel="stylesheet" href="[^"]*spot-media-gallery\.css[^"]*">/g, "").replace(/\s+/g, " ").trim();
 }
 
-function generateSpotPage(spotOrId, lang, { requireExisting = false, preserveHead = false } = {}) {
+function planSpotPage(spotOrId, lang, { requireExisting = false, preserveHead = false } = {}) {
   const spot = typeof spotOrId === "string" ? SPOTS.find((item) => item.id === spotOrId) : spotOrId;
   if (!spot || !SHARED_SPOT_LANGUAGES.has(lang)) throw new Error("Unknown shared spot page: " + spotOrId + "/" + lang);
   const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
-  fs.mkdirSync(dir, { recursive: true });
   const outputPath = path.join(dir, spot.id + ".html");
   if (requireExisting && !fs.existsSync(outputPath)) throw new Error("Spot page output is missing: " + outputPath);
   const generatedHTML = spotPageHTML(spot, lang);
@@ -2160,36 +2167,79 @@ function generateSpotPage(spotOrId, lang, { requireExisting = false, preserveHea
     const currentHTML = fs.readFileSync(outputPath, "utf8");
     if (comparableSpotHead(currentHTML) !== comparableSpotHead(generatedHTML)) throw new Error("Spot page head changed unexpectedly: " + outputPath);
   }
-  fs.writeFileSync(outputPath, generatedHTML, "utf8");
+  return { outputPath, generatedHTML };
+}
+
+function writeFileIfChanged(outputPath, content) {
+  if (fs.existsSync(outputPath) && fs.readFileSync(outputPath, "utf8") === content) return false;
+  fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  fs.writeFileSync(outputPath, content, "utf8");
+  return true;
+}
+
+function writeSpotPagePlan({ outputPath, generatedHTML }) {
+  writeFileIfChanged(outputPath, generatedHTML);
   return outputPath;
 }
 
-function generateSpotPages({ requireExisting = false, preserveHead = false } = {}) {
-  for (const lang of ["ja", "en"]) {
-    for (const spot of SPOTS) {
-      generateSpotPage(spot, lang, { requireExisting, preserveHead });
-    }
-  }
+function isSpotPagePlanChanged({ outputPath, generatedHTML }) {
+  return !fs.existsSync(outputPath) || fs.readFileSync(outputPath, "utf8") !== generatedHTML;
 }
 
-export { SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPage, generateSpotPages, spotPageHTML };
+function writeChangedSpotPagePlans(plans, writer = writeSpotPagePlan) {
+  const changed = plans.filter(isSpotPagePlanChanged);
+  changed.forEach(writer);
+  return changed;
+}
+
+function reportSpotPagePlan(plans) {
+  const changed = plans.filter(isSpotPagePlanChanged);
+  const unchangedCount = plans.length - changed.length;
+  console.log(`${CHECK_ONLY ? "Spot page preflight" : "Spot page write plan"}: ${changed.length} changed, ${unchangedCount} unchanged.`);
+  if (changed.length) {
+    const preview = changed.slice(0, 20).map(({ outputPath }) => path.relative(appDir, outputPath));
+    console.log(`  ${preview.join(", ")}${changed.length > preview.length ? `, ... +${changed.length - preview.length} more` : ""}`);
+  }
+  return changed;
+}
+
+function generateSpotPage(spotOrId, lang, options = {}) {
+  const plan = planSpotPage(spotOrId, lang, options);
+  reportSpotPagePlan([plan]);
+  if (!CHECK_ONLY) writeChangedSpotPagePlans([plan]);
+  return plan.outputPath;
+}
+
+function generateSpotPages({ requireExisting = false, preserveHead = false } = {}) {
+  const plans = [];
+  for (const lang of ["ja", "en"]) for (const spot of SPOTS) plans.push(planSpotPage(spot, lang, { requireExisting, preserveHead }));
+  reportSpotPagePlan(plans);
+  if (!CHECK_ONLY) writeChangedSpotPagePlans(plans);
+  return plans.map(({ outputPath }) => outputPath);
+}
+
+export { SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPage, generateSpotPages, isSpotPagePlanChanged, planSpotPage, spotPageHTML, writeChangedSpotPagePlans };
 
 if (isMain) {
-const requestedSpotIds = process.argv.slice(2);
+const requestedSpotIds = process.argv.slice(2).filter((arg) => arg !== "--check");
 if (requestedSpotIds.length) {
   requestedSpotIds.forEach((id) => generateSpotPage(id, "ja", { requireExisting: true, preserveHead: true }));
-  console.log(`Generated ${requestedSpotIds.length} requested Japanese spot pages`);
+  console.log(`${CHECK_ONLY ? "Preflighted" : "Generated"} ${requestedSpotIds.length} requested Japanese spot pages`);
   process.exit(0);
 }
 generateSpotPages();
+if (CHECK_ONLY) {
+  console.log("Spot page preflight completed without writing files.");
+  process.exit(0);
+}
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
-fs.writeFileSync(path.join(appDir, "en", "index.html"), englishAppIndexHTML(), "utf8");
+writeFileIfChanged(path.join(appDir, "en", "index.html"), englishAppIndexHTML());
 await import("./generate-language-mirrors.mjs");
 for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
   const absolutePath = path.join(appDir, relativePath);
   if (fs.existsSync(absolutePath)) {
-    fs.writeFileSync(absolutePath, replaceSpotCountClaims(fs.readFileSync(absolutePath, "utf8")), "utf8");
+    writeFileIfChanged(absolutePath, replaceSpotCountClaims(fs.readFileSync(absolutePath, "utf8")));
   }
 }
 // Guide pages are hand-edited SEO answer pages.
@@ -2263,9 +2313,9 @@ for (const config of guideRailConfigs) {
     new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
     `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
-  fs.writeFileSync(guidePath, replaceSpotCountClaims(syncedGuideHTML), "utf8");
+  writeFileIfChanged(guidePath, replaceSpotCountClaims(syncedGuideHTML));
 }
-fs.writeFileSync(path.join(appDir, "sitemap.xml"), sitemapXML(), "utf8");
+writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
 await import("./generate-content-manifest.mjs");
 

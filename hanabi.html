@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="app-embedded.js?v=20260816-android-embedded"></script>
+  <link rel="stylesheet" href="app-embedded.css?v=20260816-android-embedded">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>新幹線から見える花火｜長岡・戸田橋・いたばし・淀川・熱海・安倍川など7大会 | 新幹線の窓</title>
   <meta name="description" content="走る新幹線の車窓から花火が見えた、という投稿を大会ごとに集めました。長岡まつり、いたばし・戸田橋、北國花火、なにわ淀川、熱海海上、安倍川、弁天島の7大会。夜の窓で花火を探すコツと、各大会の公式案内へのリンクつき。">
@@ -112,6 +114,7 @@
   </style>
   <script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);

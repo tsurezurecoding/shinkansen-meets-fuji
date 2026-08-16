@@ -79,9 +79,10 @@ async function runThinValidator() {
     return host;
   }
 
-  function renderPage(lang, rootPath, currentId, mutateData) {
+  function renderPage(lang, rootPath, currentId, mutateData, embedded = false) {
     const host = makeHost();
     const createdScripts = [];
+    const bodyClasses = new Set(["spot-page"]);
     const lightboxImage = { src: "" };
     const lightbox = {
       hidden: true,
@@ -90,7 +91,10 @@ async function runThinValidator() {
       addEventListener() {},
     };
     const body = {
-      classList: { contains: (name) => name === "spot-page" },
+      classList: {
+        contains: (name) => bodyClasses.has(name),
+        add: (name) => bodyClasses.add(name),
+      },
       getAttribute(name) {
         return { "data-spot-page-shared-lang": lang, "data-spot-page-shared-id": currentId, "data-spot-page-shared-root": rootPath, "data-spot-page-shared-mode": "page" }[name] || null;
       },
@@ -108,12 +112,19 @@ async function runThinValidator() {
       },
     };
     const console = { error(message) { errors.push(String(message)); } };
-    const context = { document, console };
+    const context = { document, console, MADO_EMBEDDED_WEB: embedded };
     context.window = context;
     vm.runInNewContext(sharedDataCode, context, { filename: dataPath });
     if (mutateData) mutateData(context.MADO_SPOT_PAGE_SHARED_DATA);
     vm.runInNewContext(rendererCode, context, { filename: rendererPath });
     return { html: host.outerHTML, host, createdScripts, errors: errors.splice(0) };
+  }
+
+  function assertSpotPageShellMarkup(html, expectedClass, label) {
+    const expected = `<div class="${expectedClass}">`;
+    const pattern = expected.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    if (count(html, new RegExp(pattern, "g")) !== 1) fail(`${label} must contain exactly one ${expected}`);
+    if (html.includes('<div class="spot-page-shell>')) fail(`${label} contains the malformed unclosed spot-page-shell class`);
   }
 
   function renderUtility(lang, rootPath, route) {
@@ -172,25 +183,11 @@ async function runThinValidator() {
   if (GENERATED_SPOTS.length !== expectedSpotCount || JSON.stringify(GENERATED_SPOTS.map((spot) => spot.id)) !== JSON.stringify(sourceIds)) fail("generator/source spot ids are out of alignment");
   if (payloadIds.length !== expectedSpotCount || JSON.stringify(payloadIds) !== JSON.stringify(sourceIds)) fail(`payload/source spot count or order mismatch: source=${expectedSpotCount}, pages=${payloadIds.length}`);
   if (!Array.isArray(payload.stations) || payload.stations.length !== expectedStationCount) fail(`payload station count does not match data.js: source=${expectedStationCount}, payload=${payload.stations?.length || 0}`);
-  const allowedVideoSpots = new Set(["ibuki", "fujitec-big-wing", "fuji", "hamanako"]);
-  const expectedVideoRecords = {
-    ibuki: [
-      { kind: "x", url: "https://x.com/730AEVA/status/1838917502124056760", handle: "@730AEVA" },
-      { kind: "youtube", url: "https://www.youtube.com/watch?v=yQKej6npo8g", id: "yQKej6npo8g" },
-      { kind: "youtube", url: "https://www.youtube.com/watch?v=puK5Tr_2Sxo", id: "puK5Tr_2Sxo" },
-    ],
-    "fujitec-big-wing": [
-      { kind: "x", url: "https://x.com/Train205turumai/status/2070756242637967619", handle: "@Train205turumai" },
-    ],
-    fuji: [
-      { kind: "x", url: "https://x.com/cram_box/status/2013542376887984274", handle: "@cram_box" },
-      { kind: "x", url: "https://x.com/fu_min_p/status/2004337753350340699/video/1", handle: "@fu_min_p" },
-    ],
-    hamanako: [
-      { kind: "x", url: "https://x.com/KS_1013/status/2075104617000743133", handle: "@KS_1013" },
-    ],
-  };
-  const expectedVideoPageCount = source.SPOTS.filter((spot) => allowedVideoSpots.has(spot.id)).length * 2;
+  // Video presence is editorial data in data.js. Keep this validator focused on
+  // source-to-projection-to-HTML alignment instead of duplicating every URL here.
+  const videoSpots = source.SPOTS.filter((spot) => Array.isArray(spot.media?.videos) && spot.media.videos.length);
+  const videoSpotIds = new Set(videoSpots.map((spot) => spot.id));
+  const expectedVideoPageCount = videoSpots.length * 2;
   let renderedVideoPageCount = 0;
   for (const spot of source.SPOTS) {
     if (!payload.pages[spot.id] || !payload.pages[spot.id].ja || !payload.pages[spot.id].en) fail(`${spot.id} does not have both page languages`);
@@ -203,18 +200,16 @@ async function runThinValidator() {
       const referenceSources = new Set((spot.photos || []).filter((photo) => photo.role === "reference").map((photo) => photo.src));
       if (spot.id !== "ibuki" && page.gallery.some((photo) => inlineSources.has(photo.src))) fail(`${spot.id}/${lang} inline article photo was duplicated in the hero gallery`);
       if (page.gallery.some((photo) => referenceSources.has(photo.src))) fail(`${spot.id}/${lang} reference photo was duplicated in the hero gallery`);
-      if (page.media && !allowedVideoSpots.has(spot.id)) fail(`${spot.id}/${lang} unexpectedly has a video section`);
+      if (page.media && !videoSpotIds.has(spot.id)) fail(`${spot.id}/${lang} unexpectedly has a video section`);
       if (page.media) renderedVideoPageCount += 1;
-      if (!page.media && allowedVideoSpots.has(spot.id)) fail(`${spot.id}/${lang} is missing its structured video section`);
-      const expectedVideos = expectedVideoRecords[spot.id] || [];
+      if (!page.media && videoSpotIds.has(spot.id)) fail(`${spot.id}/${lang} is missing its structured video section`);
       const sourceVideos = Array.isArray(spot.media?.videos) ? spot.media.videos : [];
       const projectedVideos = page.media?.videos || [];
-      if (sourceVideos.length !== expectedVideos.length || projectedVideos.length !== expectedVideos.length) fail(`${spot.id}/${lang} video count does not match the structured source contract`);
-      expectedVideos.forEach((expectedVideo, index) => {
-        const sourceVideo = sourceVideos[index];
+      if (projectedVideos.length !== sourceVideos.length) fail(`${spot.id}/${lang} video count does not match the structured source contract`);
+      sourceVideos.forEach((sourceVideo, index) => {
         const projectedVideo = projectedVideos[index];
-        if (!sourceVideo || sourceVideo.kind !== expectedVideo.kind || sourceVideo.url !== expectedVideo.url || (expectedVideo.handle && sourceVideo.handle !== expectedVideo.handle) || (expectedVideo.id && sourceVideo.id !== expectedVideo.id) || !projectedVideo || projectedVideo.kind !== expectedVideo.kind || projectedVideo.url !== expectedVideo.url || (expectedVideo.handle && projectedVideo.handle !== expectedVideo.handle) || (expectedVideo.id && projectedVideo.id !== expectedVideo.id)) {
-          fail(`${spot.id}/${lang} video source record ${index + 1} does not match the exact URL/handle/id contract`);
+        if (!projectedVideo || projectedVideo.kind !== sourceVideo.kind || projectedVideo.url !== sourceVideo.url || (sourceVideo.handle && projectedVideo.handle !== sourceVideo.handle) || (sourceVideo.id && projectedVideo.id !== sourceVideo.id)) {
+          fail(`${spot.id}/${lang} video source record ${index + 1} is not projected without drift`);
         }
       });
       const stampPath = path.join(appDir, page.stamp.src);
@@ -269,6 +264,10 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      assertSpotPageShellMarkup(output, "spot-page-shell", `${relativeFile} normal renderer`);
+      const embeddedRendered = renderPage(lang, prefix, spot.id, undefined, true);
+      if (embeddedRendered.errors.length) fail(`${relativeFile} embedded renderer failed: ${embeddedRendered.errors.join(" | ")}`);
+      assertSpotPageShellMarkup(embeddedRendered.html, "spot-page-shell mado-embedded-shell", `${relativeFile} embedded renderer`);
       const desktopRailStart = output.indexOf('<aside class="spot-page-rail"');
       const desktopRailEnd = desktopRailStart >= 0 ? output.indexOf("</aside>", desktopRailStart) : -1;
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";

@@ -5627,7 +5627,10 @@ body.modal-open { overflow: hidden; }
 /* =========================================================
  * 早期アクセス（Android クローズドテスト）導線
  * ========================================================= */
-.is-native-app .hide-in-app { display: none !important; }
+.is-native-app .hide-in-app,
+html.mado-embedded-web .hide-in-app,
+html.mado-embedded-web .spot-page-mobile-affiliate,
+html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !important; }
 
 .ea-band { max-width: 1100px; margin: 3rem auto 0; padding: 0 20px; }
 .ea-band-inner {

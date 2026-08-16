@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="app-embedded.js?v=20260816-android-embedded"></script>
+  <link rel="stylesheet" href="app-embedded.css?v=20260816-android-embedded">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓</title>
   <meta name="description" content="東海道新幹線の夜景を、車窓から見える11か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。">
@@ -114,6 +116,7 @@
   </style>
   <script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);

@@ -2033,6 +2033,26 @@ const SPOTS = [
         note: { ja: "掛川・浜松間、山側・E席から見えるしっぺいの三連続応援看板", en: "Three Shippei cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見るしっぺいの応援看板", en: "Shippei Cheer-up Signs in motion" },
+      description: { ja: "磐田付近の田園に並ぶ、しっぺいの応援看板を投稿動画でも見られます。", en: "See Shippei's cheer-up signs near Iwata in window-view videos." },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/takehiko_kita/status/1986227338523431017",
+          handle: "@takehiko_kita",
+          accessibleTitle: { ja: "しっぺいの応援看板のX動画", en: "X video of the Shippei Cheer-up Signs" },
+          fallbackText: { ja: "しっぺいの応援看板を写した車窓動画", en: "Window video of the Shippei Cheer-up Signs" },
+        },
+        {
+          kind: "youtube",
+          id: "-fI7VY5d94k",
+          title: { ja: "しっぺいの応援看板の車窓動画", en: "Shippei Cheer-up Signs window video" },
+          url: "https://www.youtube.com/watch?v=-fI7VY5d94k",
+        },
+      ],
+      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+    },
     references: [REFERENCES.shippeiOfficial, REFERENCES.iwataShippei, REFERENCES.genkiSignBlog, REFERENCES.genkiSignStreetView],
     bodyLinks: [
       { ref: REFERENCES.shippeiOfficial, label: { ja: "しっぺいの公式サイトを見る", en: "Open Shippei official site" } },
@@ -2228,15 +2248,15 @@ const SPOTS = [
     ja: { name: "豊橋の立岩", area: "浜松 → 豊橋", hook: "浜名湖のあと、岩が立つ。", story: "浜名湖を過ぎて豊橋へ向かう途中、E席側の林の丘から、むき出しの岩壁が突き出します。これは豊橋市雲谷町にある通称「立岩」。標高約88mの岩山で、南面が最大約30m切り立つチャート質の露岩です。" },
     en: { name: "Toyohashi Tateiwa Rock", area: "Hamamatsu → Toyohashi", hook: "A standing rock after Lake Hamana.", story: "Shortly after Lake Hamana, a bare rock face rises above a wooded hill on the Seat E side. This is Tateiwa in Unoyacho, Toyohashi: an approximately 88-meter-high rocky hill with a south face of exposed chert that rises as much as 30 meters." },
     pageTitle: {
-      ja: "新幹線から見える豊橋の立岩とは？座席側と場所 | 新幹線の窓",
+      ja: "新幹線から見える奇岩、豊橋の立岩とは？ | 新幹線の窓",
       en: "What Is the Upright Rock near Toyohashi? Tateiwa | Shinkansen",
     },
     pageHeading: {
-      ja: "新幹線から見える豊橋の立岩とは？",
+      ja: "新幹線から見える奇岩、豊橋の立岩とは？",
       en: "What is the upright rock seen from the Shinkansen near Toyohashi?",
     },
     pageHeadingChunks: {
-      ja: ["新幹線から見える、", "豊橋の立岩とは？"],
+      ja: ["新幹線から見える奇岩、", "豊橋の立岩とは？"],
       en: ["What is the upright rock", "seen near Toyohashi?"],
     },
     metaDescription: {
@@ -2298,6 +2318,19 @@ const SPOTS = [
         date: "2026-06-28",
       },
     ],
+    media: {
+      heading: { ja: "動画で見る豊橋の立岩", en: "Toyohashi Tateiwa Rock in motion" },
+      description: { ja: "新幹線の車窓から見える豊橋の立岩を、投稿動画でも確かめられます。", en: "See Toyohashi Tateiwa Rock from the Shinkansen window in a video." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "6WOeWDI94kI",
+          title: { ja: "豊橋の立岩の車窓動画", en: "Toyohashi Tateiwa window video" },
+          url: "https://www.youtube.com/watch?v=6WOeWDI94kI",
+        },
+      ],
+      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+    },
     references: [REFERENCES.toyohashiTateiwaMegalith, REFERENCES.toyohashiTateiwaCity, REFERENCES.toyohashiTateiwaWizz, REFERENCES.toyohashiTateiwaSazanami, REFERENCES.toyohashiTateiwa],
     map: { lat: 34.7258063, lng: 137.4706861, ja: "豊橋 立岩", en: "Toyohashi Tateiwa rock" },
     viewpoint: { lat: 34.723264, lng: 137.470638 },

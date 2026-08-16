@@ -35,7 +35,15 @@ const contentFiles = [
   "images/og-hanabi.jpg",
   "images/hanabi-hero-pd.jpg",
 
+  // 夜景ページ（日英）
+  "yakei.html",
+  "en/yakei.html",
+  "yakei.js",
+  "images/20260629_2158_nagoya_station_night_michikusa.jpg",
+
   // アプリ本体・共通スポット表示・727看板コレクション
+  "app-embedded.css",
+  "app-embedded.js",
   "app.js",
   "index.html",
   "journal.html",

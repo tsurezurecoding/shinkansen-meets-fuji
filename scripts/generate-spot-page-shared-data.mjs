@@ -8,6 +8,7 @@ const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(scriptDir, "..");
 const dataPath = path.join(appDir, "data.js");
 const outputPath = path.join(appDir, "spot-page-shared-data.js");
+const CHECK_ONLY = process.argv.includes("--check");
 // Presentation is intentionally off for now. Re-enable this flag together with
 // the explicit global CSS kill switch in style.css when affiliate modules return.
 const AFFILIATE_PRESENTATION_ENABLED = false;
@@ -532,5 +533,7 @@ if (spots.some((spot) => !spot.id || !Number.isFinite(spot.minutes))) throw new 
 const collection727Count = source.BOARD_COLLECTION.length;
 const payload = { version: 2, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase, pages };
 const output = `/* Generated from data.js. Do not edit this artifact by hand. */\n(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(payload)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
-fs.writeFileSync(outputPath, output, "utf8");
-console.log(`Generated shared spot page data for ${spots.length} spots × 2 languages and ${stations.length} stations (${Buffer.byteLength(output, "utf8")} bytes).`);
+const currentOutput = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : null;
+const changed = currentOutput !== output;
+if (!CHECK_ONLY) fs.writeFileSync(outputPath, output, "utf8");
+console.log(`${CHECK_ONLY ? "Preflight" : "Generated"} shared spot page data: ${changed ? (CHECK_ONLY ? "would change" : "written") : "unchanged"} (${spots.length} spots × 2 languages, ${stations.length} stations, ${Buffer.byteLength(output, "utf8")} bytes).`);

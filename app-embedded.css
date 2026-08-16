@@ -1,0 +1,76 @@
+/* The remote article is framed by the Android host. Keep only its
+   hero/article/tool body visible and leave all app chrome to the parent. */
+:root.mado-embedded-web .topbar,
+:root.mado-embedded-web .spot-page-rail,
+:root.mado-embedded-web [data-spot-page-shared-module="topbar"],
+:root.mado-embedded-web [data-spot-page-shared-module="rail"],
+:root.mado-embedded-web [data-spot-page-shared-module="mobile-promos"],
+:root.mado-embedded-web [data-spot-page-shared-module="showcase"],
+:root.mado-embedded-web [data-spot-page-shared-module="content-rail"],
+:root.mado-embedded-web .spot-page-mobile-promos,
+:root.mado-embedded-web .content-rail-section,
+:root.mado-embedded-web .spot-page-showcase,
+:root.mado-embedded-web .showcase,
+:root.mado-embedded-web .spot-page-rail-app,
+:root.mado-embedded-web .spot-page-rail-disney,
+:root.mado-embedded-web .spot-page-rail-hanabi,
+:root.mado-embedded-web .spot-page-rail-yakei,
+:root.mado-embedded-web .hide-in-app,
+:root.mado-embedded-web .ea-band,
+:root.mado-embedded-web .footer,
+:root.mado-embedded-web .lang-landing-prompt {
+  display: none !important;
+}
+
+:root.mado-embedded-web body {
+  min-width: 0;
+  background: var(--paper);
+}
+
+:root.mado-embedded-web main {
+  width: 100%;
+  padding-bottom: 24px;
+}
+
+:root.mado-embedded-web .spot-page-shell {
+  display: block;
+  width: min(900px, 100%);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 18px;
+}
+
+:root.mado-embedded-web .spot-page-shell > .spot-page-article,
+:root.mado-embedded-web .spot-page-article {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 28px 0 54px;
+}
+
+:root.mado-embedded-web .spot-page-hero {
+  width: min(900px, 100%);
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 34px 18px 10px;
+}
+
+:root.mado-embedded-web .sd-hero,
+:root.mado-embedded-web .hb-hero,
+:root.mado-embedded-web .yk-hero,
+:root.mado-embedded-web .collection-hero {
+  padding-top: 64px;
+}
+
+:root.mado-embedded-web .spot-page-lightbox {
+  z-index: 20;
+}
+
+:root.mado-embedded-web .spot-page-figure img,
+:root.mado-embedded-web .spot-page-media-gallery-active img {
+  max-height: none;
+}
+
+:root.mado-embedded-web :where(a[target="_blank"]) {
+  -webkit-tap-highlight-color: transparent;
+}

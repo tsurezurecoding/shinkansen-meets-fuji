@@ -92,10 +92,17 @@ function mirrorPage(page) {
     .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>'));
 }
 
+function writeFileIfChanged(target, content) {
+  if (fs.existsSync(target) && fs.readFileSync(target, "utf8") === content) return false;
+  fs.mkdirSync(path.dirname(target), { recursive: true });
+  fs.writeFileSync(target, content, "utf8");
+  return true;
+}
+
+let changedCount = 0;
 for (const page of pages) {
   const target = path.join(appDir, page.output);
-  fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, mirrorPage(page), "utf8");
+  if (writeFileIfChanged(target, mirrorPage(page))) changedCount += 1;
 }
 
 const liveSource = fs.readFileSync(path.join(appDir, "live", "index.html"), "utf8");
@@ -112,9 +119,13 @@ const liveEnglish = liveSource
   )
   .replaceAll('href="../', 'href="../../')
   // The blanket depth-bump above assumes every ../ link targets a Japanese page at the
-  // app root. These have a real English version under en/, so point there instead.
-  // Add an entry here whenever an English counterpart is published.
-  .replaceAll('href="../../early-access.html', 'href="../early-access.html')
+  // app root. Whenever an English counterpart exists under en/, walk one level back so the
+  // shipped HTML is already English -- live.js only fixes [data-live-link] anchors, and only
+  // once it runs, which leaves crawlers and no-JS readers on the Japanese pages.
+  .replace(/href="\.\.\/\.\.\/([^"#?]*)([^"]*)"/g, (whole, target, suffix) => {
+    const page = target === "" || target.endsWith("/") ? `${target}index.html` : target;
+    return fs.existsSync(path.join(appDir, "en", page)) ? `href="../${target}${suffix}"` : whole;
+  })
   .replaceAll('src="../', 'src="../../')
   .replace('href="styles.css', 'href="../../live/styles.css')
   .replace('src="live.js', 'src="../../live/live.js')
@@ -126,7 +137,6 @@ const liveEnglish = liveSource
   .replace('<small data-live-copy="eaLiveBody">乗車中はアプリの方が安定して使えます。テスト参加者を募集中です。</small>', '<small data-live-copy="eaLiveBody">The app is steadier to use while you ride. We are looking for testers.</small>')
   .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
 const liveTarget = path.join(appDir, "en", "live", "index.html");
-fs.mkdirSync(path.dirname(liveTarget), { recursive: true });
-fs.writeFileSync(liveTarget, liveEnglish, "utf8");
+if (writeFileIfChanged(liveTarget, liveEnglish)) changedCount += 1;
 
-console.log(`Generated ${pages.length + 1} English app mirrors.`);
+console.log(`Generated ${pages.length + 1} English app mirrors: ${changedCount} changed, ${pages.length + 1 - changedCount} unchanged.`);

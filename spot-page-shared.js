@@ -610,6 +610,7 @@
   function pageHTML(data, rootPath, lang, currentId) {
     var page = data.pages[currentId][lang];
     var ui = PAGE_UI[lang];
+    var embedded = !!root.MADO_EMBEDDED_WEB;
     var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
     var fujiGuide = page.fujiGuide ? (function () { var text = escapeHTML(page.fujiGuide.text); return "<p>" + text.replace(escapeHTML(page.fujiGuide.label), "<a href=\"" + escapeHTML(page.fujiGuide.href) + "\">" + escapeHTML(page.fujiGuide.label) + "</a>") + "</p>"; }()) : "";
     var intro = "<section class=\"spot-page-section\"><h2>" + escapeHTML(page.sectionHeading) + "</h2><p>" + escapeHTML(page.story) + "</p>" + bodyLinks + "<p>" + escapeHTML(page.routeNote) + "</p>" + fujiGuide + "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p></section>";
@@ -619,8 +620,12 @@
     var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\"><h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>"; }).join("");
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
-    var showcase = showcaseHTML(data, rootPath, lang);
-    return siteHeaderHTML(rootPath, lang, currentId) + "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell\">" + railHTML(data, rootPath, lang, currentId) + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + mobilePromosHTML(rootPath, lang, "", collection727Count(data)) + showcase + contentRailHTML(rootPath, lang) + "</main>" + pageLightboxHTML(lang);
+    var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
+    var header = embedded ? "" : siteHeaderHTML(rootPath, lang, currentId);
+    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId);
+    var mobilePromos = embedded ? "" : mobilePromosHTML(rootPath, lang, "", collection727Count(data));
+    var contentRail = embedded ? "" : contentRailHTML(rootPath, lang);
+    return header + "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + mobilePromos + showcase + contentRail + "</main>" + pageLightboxHTML(lang);
   }
 
   function bindPageLightbox() {
@@ -715,6 +720,7 @@
     var hosts = [];
     try {
       if (!document.body || !document.body.classList.contains("spot-page")) throw new Error("spot-page body context is required");
+      if (root.MADO_EMBEDDED_WEB) document.body.classList.add("mado-embedded-body");
       var pageHost = findOptionalHost("page");
       if (pageHost) {
         hosts = [pageHost];
@@ -743,6 +749,11 @@
         if (!SUPPORTED_LANGUAGES[utilityLang] || !UTILITY_ROUTES[utilityRoute]) throw new Error("utility page context is malformed");
         var utilityData = root[DATA_KEY];
         validateData(utilityData, utilityData && utilityData.spots && utilityData.spots[0] && utilityData.spots[0].id, utilityLang);
+        if (root.MADO_EMBEDDED_WEB) {
+          hosts.forEach(function (host) { if (host && host.parentNode) host.parentNode.removeChild(host); });
+          document.body.classList.add("mado-embedded-body");
+          return;
+        }
         hosts[0].outerHTML = siteHeaderHTML(utilityRoot, utilityLang, "", utilityRoute, UTILITY_ROUTES[utilityRoute].en);
         hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/", utilityRoute);
         hosts[2].outerHTML = contentRailHTML(utilityRoot, utilityLang);

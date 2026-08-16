@@ -8,6 +8,7 @@
     "build": "npm run build:data && npm run build:pages",
     "build:data": "node scripts/generate-spot-page-shared-data.mjs",
     "build:pages": "node scripts/generate-spot-pages.mjs",
+    "preflight:spots": "node scripts/generate-spot-page-shared-data.mjs --check && node scripts/generate-spot-pages.mjs --check",
     "check": "npm run check:syntax && npm run check:content && npm run check:timetable && npm run check:spot-pages && npm run check:language && npm run check:ui-strings && npm run check:727 && npm run check:sparkling",
     "check:syntax": "node --check data.js && node --check app.js && node --check track.js && node --check spot-page-shared.js && node --check data/timetable.js && node --check live/live.js",
     "check:content": "node scripts/validate-content.mjs",
@@ -17,6 +18,7 @@
     "check:ui-strings": "node scripts/validate-ui-strings.mjs",
     "check:727": "node scripts/validate-727-collection.mjs",
     "check:sparkling": "node scripts/validate-sparkling-dreams.mjs",
+    "audit:site": "node scripts/audit-site.mjs",
     "serve": "py -m http.server 8137"
   }
 }

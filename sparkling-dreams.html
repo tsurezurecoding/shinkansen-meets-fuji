@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="app-embedded.js?v=20260816-android-embedded"></script>
+  <link rel="stylesheet" href="app-embedded.css?v=20260816-android-embedded">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen | 新幹線の窓</title>
   <meta name="description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">
@@ -29,6 +31,7 @@
   <script src="language-router.js?v=20260814-yakei"></script>
   <script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
