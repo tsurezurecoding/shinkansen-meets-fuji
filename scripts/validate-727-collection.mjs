@@ -10,6 +10,8 @@ const read = (relativePath) => fs.readFileSync(path.join(appDir, relativePath), 
 const context = {};
 vm.runInNewContext(`${read("data.js")}\n;globalThis.__collection = BOARD_COLLECTION; globalThis.__spots = SPOTS;`, context);
 const collection = context.__collection;
+// データ件数(27)と、実際に集められる地点数(26)は別。撤去・確認できずの地点は後者から外す。
+const collectableCount = collection.filter((point) => point.siteStatus !== "not-found").length;
 const spots = context.__spots;
 const app = read("app.js");
 const page = read("727-collection.html");
@@ -87,7 +89,7 @@ assert.ok(!shared.includes("代表地点から始めて、沿線の27地点"), "
 assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board page must load shared CTA renderer");
 assertIncludes(read("spots/putiputi-sign.html"), "spot-page-shared.js", "putiputi page must load shared CTA renderer");
 
-assertIncludes(page, "全27地点", "page must show total 27");
+assertIncludes(page, `全${collectableCount}地点`, `page must show the collectable total ${collectableCount}`);
 assertIncludes(shared, '"727-collection.html": { en: "en/spots/727-board.html" }', "English switch must lead to the existing 727 and 248 signs guide");
 assertIncludes(page, 'data-spot-page-shared-module="topbar"', "collection page must use the shared topbar so the rail context is valid");
 assert.ok(!page.includes("全体地図に戻る") && !page.includes("data-map-reset"), "reset button must be removed");
@@ -111,7 +113,7 @@ assertIncludes(styles, ".collection-point-google-map", "Google expanded-map styl
 // 「1地点だけ」のような単数の言い回しは対象外にするため2桁以上だけを見る。
 // 本文に書ける地点数は、総数・写真で確認済みの数・残りの候補数の3つだけ。
 const confirmedCount = collection.filter((point) => point.photo || (point.collectionPhotos || []).length).length;
-const allowedCounts = new Set([collection.length, confirmedCount, collection.length - confirmedCount]);
+const allowedCounts = new Set([collection.length, collectableCount, confirmedCount, collectableCount - confirmedCount]);
 for (const [, digits] of page.matchAll(/(\d{2,})(?:地点|か所|箇所)/g)) {
   assert.ok(allowedCounts.has(Number(digits)), `727-collection.html has a stale point count: ${digits} (expected one of ${[...allowedCounts].join(", ")})`);
 }
@@ -122,7 +124,7 @@ for (const point of collection) {
 for (const label of ["title", "description", "og:title", "og:description", "twitter:title", "twitter:description"]) {
   const pattern = label === "title" ? /<title>([^<]*)<\/title>/ : new RegExp(`(?:name|property)="${label}" content="([^"]*)"`);
   const value = page.match(pattern)?.[1] || "";
-  assert.ok(value.includes(`${collection.length}地点`), `727-collection.html ${label} must state ${collection.length}地点`);
+  assert.ok(value.includes(`${collectableCount}地点`), `727-collection.html ${label} must state ${collectableCount}地点`);
 }
 
 const manifestEntries = new Map(manifest.files.map((entry) => [entry.path, entry]));
