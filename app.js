@@ -591,12 +591,19 @@ function saveLastJourney(tr) {
     }));
   } catch {}
 }
-/* 期限切れ・データ不整合の場合は静かに破棄し、通常の未選択状態に戻す */
+/* 期限切れ・データ不整合の場合は静かに破棄し、通常の未選択状態に戻す。
+   ただし「まだ読めていない」と「壊れている」を必ず区別すること。Androidの
+   android-storage.js は removeItem をフックして Capacitor Preferences 側の
+   正本も消すため、空読みで removeItem すると保存値を自分で破壊する。 */
 function restoreLastJourney() {
   let saved = null;
+  let hadRawValue = false;
   try {
     const raw = localStorage.getItem(TRAIN_STORAGE_KEY);
-    if (raw) saved = JSON.parse(raw);
+    if (raw) {
+      hadRawValue = true;
+      saved = JSON.parse(raw);
+    }
   } catch {
     saved = null;
   }
@@ -621,7 +628,11 @@ function restoreLastJourney() {
     }
   }
   if (!match) {
-    try { localStorage.removeItem(TRAIN_STORAGE_KEY); } catch {}
+    // 値が実在して不正だった場合だけ捨てる。空読み時に消すと、Androidでは
+    // シム経由で Preferences の正本まで消えて二度と復元できなくなる。
+    if (hadRawValue) {
+      try { localStorage.removeItem(TRAIN_STORAGE_KEY); } catch {}
+    }
     return false;
   }
   $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
@@ -634,6 +645,17 @@ function restoreLastJourney() {
   buildTimeline(match.tr, match.dep);
   track("journey_restored", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
   return true;
+}
+/* Androidでは localStorage は同期的な互換キャッシュにすぎず、正本は
+   Capacitor Preferences 側にある。hydrate() が非同期なので、初回の同期読みでは
+   まだ空のことがある。シムが完了時に投げる mado:storage-ready を1回だけ拾って
+   再試行する。すでに利用者が列車を選んでいれば何もしない。 */
+function restoreLastJourneyAfterHydration() {
+  if (!window.MadoStorage) return;
+  window.addEventListener("mado:storage-ready", () => {
+    if (journey) return;
+    restoreLastJourney();
+  }, { once: true });
 }
 function collectionTimelineSpots(expanded = boardCollectionExpanded) {
   if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
@@ -2461,7 +2483,7 @@ function init() {
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();
-  restoreLastJourney();
+  if (!restoreLastJourney()) restoreLastJourneyAfterHydration();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);
