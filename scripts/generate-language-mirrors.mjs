@@ -10,8 +10,8 @@ const pages = [
   {
     source: "zukan.html",
     output: "en/zukan.html",
-    title: "Tokaido Shinkansen Field Guide | 37 Day and Night Views",
-    description: "Browse 37 recommended Tokaido Shinkansen views for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.",
+    title: "Tokaido Shinkansen Bullet Train Field Guide | 37 Day and Night Views",
+    description: "Browse 37 window views from the Tokaido Shinkansen bullet train for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.",
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
   // generic mirror pass so its localized hero, metadata, and interactive copy survive regeneration.

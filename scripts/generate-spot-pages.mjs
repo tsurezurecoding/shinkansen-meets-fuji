@@ -1980,14 +1980,14 @@ function englishAppIndexHTML() {
       '<meta name="viewport" content="width=device-width, initial-scale=1">',
       '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">'
     )
-    .replace(/<title>[^<]*<\/title>/, '<title>Shinkansen Window | Tokaido Shinkansen View Times and Seat Side</title>')
-    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Choose your train to find 37 recommended Tokaido Shinkansen views, including Mt. Fuji on cloudy days, night scenery, castles, lakes, and family spotting ideas.">')
+    .replace(/<title>[^<]*<\/title>/, '<title>Tokaido Shinkansen (Bullet Train) Window Views | Times and Seat Side</title>')
+    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Riding the Tokaido Shinkansen bullet train between Tokyo and Shin-Osaka? Pick your train to see when you pass Mt. Fuji and 37 other window views, and which side to sit on.">')
     .replace('<link rel="canonical" href="https://www.michikusa-travel.com/">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/">')
     .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="Shinkansen Window | Never miss the view">')
-    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for Mt. Fuji and 37 views from the Tokaido Shinkansen.">')
+    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for Mt. Fuji and 37 views from the Tokaido Shinkansen bullet train.">')
     .replace('<meta property="og:url" content="https://www.michikusa-travel.com/">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/">')
     .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="Shinkansen Window | Never miss the view">')
-    .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="Find the time and seat side for Mt. Fuji and 37 Tokaido Shinkansen window views.">')
+    .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="Find the time and seat side for Mt. Fuji and 37 Tokaido Shinkansen bullet train window views.">')
     .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
