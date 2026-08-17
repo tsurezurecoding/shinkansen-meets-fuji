@@ -31,11 +31,12 @@
     "applicationCategory": "TravelApplication",
     "operatingSystem": "Web browser",
     "description": "出発時刻に合わせて、東海道新幹線から富士山が見える確率を確認できる予報ツール。",
-    "inLanguage": "ja"
+    "inLanguage": "ja",
+    "dateModified": "2026-08-17"
   }
   </script>
   <script src="language-router.js?v=849d4b2e"></script>
-  <link rel="stylesheet" href="style.css?v=149d891c">
+  <link rel="stylesheet" href="style.css?v=d8b76f8c">
   <style>
     /* 見える予報 — 本体パレット(夜明けの車窓)に従う */
     .mieru-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
@@ -76,6 +77,33 @@
     .mieru-note { font-size: 11.5px; color: var(--ink-soft); line-height: 1.9;
       border-top: 1px solid var(--line); margin-top: 26px; padding-top: 14px; }
     #mieruStatus { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
+
+    .mieru-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin-bottom: 10px; }
+    .mieru-mode-row { gap: 8px; }
+    .mieru-mode-btn { font-family: inherit; font-size: 13px; padding: 6px 14px; border: 1px solid var(--line);
+      border-radius: 999px; background: var(--paper); color: var(--ink-soft); cursor: pointer; }
+    .mieru-mode-btn.is-active { background: var(--night); border-color: var(--night); color: #fff; }
+    .mieru-train-searchbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 8px; }
+    .mieru-train-searchbar button, .mieru-train-more { font-family: inherit; font-size: 13px; padding: 6px 14px;
+      border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); cursor: pointer; }
+    .mieru-train-searchbar button:hover, .mieru-train-more:hover { border-color: var(--accent); }
+    .mieru-train-empty { font-size: 13px; color: var(--ink-soft); }
+
+    .mieru-answer { margin: 22px 0; }
+    .mieru-answer h2 { font-family: var(--font-serif); font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+    .mieru-answer p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.9; margin: 0 0 10px; }
+    .mieru-answer a { color: var(--accent); }
+
+    .mieru-factset { margin: 8px 0 26px; }
+    .mieru-factset h2 { font-family: var(--font-serif); font-size: 18px; font-weight: 600; margin: 0 0 6px; }
+    .mieru-factset > p { font-size: 13px; color: var(--ink-soft); line-height: 1.8; margin: 0 0 14px; }
+    .mieru-factlist { display: flex; flex-direction: column; gap: 10px; }
+    .mieru-fact { background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow); padding: 14px 18px; }
+    .mieru-fact h3 { font-family: var(--font-serif); font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+    .mieru-fact h3 span { font-weight: 400; font-size: 12px; color: var(--ink-soft); margin-left: 8px; }
+    .mieru-fact .mieru-fact-meta { font-size: 11.5px; color: var(--ink-soft); margin: 0 0 6px; }
+    .mieru-fact p.mieru-fact-body { font-size: 13px; color: var(--ink-soft); line-height: 1.85; margin: 0; }
   </style>
 </head>
 <body class="spot-page spot-page-utility" data-spot-page-shared-context="utility" data-spot-page-shared-lang="ja" data-spot-page-shared-root="./" data-spot-page-shared-route="mieru.html">
@@ -89,13 +117,75 @@
       <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見えるか。</span><span class="copy-chunk">山頂にかかる雲と、</span><span class="copy-chunk">視線が抜ける空気の澄みかたから、</span><span class="copy-chunk">車窓スポット別・時間別に</span><span class="copy-chunk">「見える確率」を予報します。</span><span class="copy-chunk">出発時刻を入れると、</span><span class="copy-chunk">それぞれの通過時刻ちょうどの確率がわかります。</span></p>
 
       <div class="mieru-depart">
-        <label>東京発 <input type="time" id="mieruDep" value="09:00" min="06:00" max="21:00" step="600"></label>
-        <label>日付 <select id="mieruDay"><option value="0">今日</option><option value="1">明日</option></select></label>
+        <div class="mieru-row">
+          <label>乗車駅 <select id="mieruBoard"></select></label>
+          <label>方向
+            <select id="mieruDir">
+              <option value="west">下り (新大阪・博多方面ゆき)</option>
+              <option value="east">上り (東京ゆき)</option>
+            </select>
+          </label>
+          <label>日付 <select id="mieruDay"><option value="0">今日</option><option value="1">明日</option></select></label>
+        </div>
+        <div class="mieru-row mieru-mode-row" role="group" aria-label="出発の指定方法">
+          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">列車で選ぶ</button>
+          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">時刻を入力</button>
+        </div>
+        <div id="mieruTrainBlock">
+          <div class="mieru-train-searchbar">
+            <label>この時刻以降 <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
+            <button type="button" id="mieruTrainSearchBtn">列車をさがす</button>
+          </div>
+          <div id="mieruTrainResults" class="train-results"></div>
+        </div>
+        <div id="mieruTimeBlock" hidden>
+          <label>出発時刻(目安) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
+        </div>
         <div id="mieruRide">計算中…</div>
       </div>
 
+      <section class="mieru-answer">
+        <h2>今日、新幹線から富士山は見えるか</h2>
+        <p>結論から言うと、条件は二つだけです。富士山の山頂に雲がかかっていないこと、そして視線が抜けるくらい空気が澄んでいること。上の予報ツールは、この二つを東海道新幹線の主要5区間ごとに数値化したものです。</p>
+        <p>季節でいうと、空気が乾く冬から早春（12月〜3月）がもっとも見えやすい時期です。冬型の気圧配置で北風が吹いた朝は視程が伸び、富士山がくっきり見えます。逆に夏（6月〜9月）は湿度が高く靄がかかりやすいため、晴れていても霞んで見えないことが少なくありません。梅雨明け直後や台風通過の翌日は、大気が一気に洗われて夏でも意外とよく見えることがあります。</p>
+        <p>時間帯では、朝のほうが午後より視程が伸びる傾向があります。午後は地表の熱で水蒸気が増え、遠くの景色がぼやけやすくなります。夕方は逆光で山肌がシルエット化しますが、輪郭そのものは意外とはっきり見えることもあります。</p>
+        <p>座席は、5区間のうち4区間がE席（山側）、静岡駅を過ぎ安倍川を渡った直後の「左富士」だけがA席（海側）です。曇りで富士山が隠れている日は、無理に窓の外を探すより<a href="guide.html#cloudy">曇りの日の楽しみ方</a>に切り替えるのも一つの手です。</p>
+      </section>
+
       <div id="mieruStatus">気象データ取得中…</div>
       <div id="mieruSpots"></div>
+
+      <section class="mieru-factset">
+        <h2>富士山が見える5つの区間</h2>
+        <p>東京から新大阪方面へ向かう場合、次の5区間で富士山に出会うチャンスがあります。区間名・東京からの目安時間・座席・富士山までの視距離は、いずれも季節や天候にかかわらず変わらない固定の目安です（通過時刻はのぞみ・ひかり基準）。</p>
+        <div class="mieru-factlist">
+          <article class="mieru-fact">
+            <h3>都内からの富士山 <span>品川 → 新横浜（大田区付近）</span></h3>
+            <p class="mieru-fact-meta">東京から約10分 ・ E席（山側） ・ 視距離 約95km</p>
+            <p class="mieru-fact-body">5区間のなかでもっとも遠く、都心のビル群や大田区の住宅地越しに小さく見えます。空気の乾いた冬の朝、視程が伸びている日に限られる、いわば「今日の透明度チェック」区間です。</p>
+          </article>
+          <article class="mieru-fact">
+            <h3>相模平野の富士山 <span>新横浜 → 小田原</span></h3>
+            <p class="mieru-fact-meta">東京から約25分 ・ E席（山側） ・ 視距離 約59km</p>
+            <p class="mieru-fact-body">相模平野の向こうに丹沢山地の稜線を従えて、独立峰らしい鋭い三角形がのぞきます。冬から早春の乾いた朝がもっとも見えやすく、梅雨明け直後や台風後の空気が洗われた日にも姿を見せます。</p>
+          </article>
+          <article class="mieru-fact">
+            <h3>富士山 <span>三島 → 新富士</span></h3>
+            <p class="mieru-fact-meta">東京から約43分 ・ E席（山側） ・ 視距離 約24km</p>
+            <p class="mieru-fact-body">5区間でもっとも近く、車窓いっぱいに富士山が広がる約3〜4分間です。富士山は線路の北側にあるため日中はほぼ順光で、曇りさえしなければ朝でも午後でも山肌がよく見えます。初冠雪は例年9月末〜10月ごろ、真夏の7〜8月は雪がほとんど消えます。</p>
+          </article>
+          <article class="mieru-fact">
+            <h3>左富士 <span>静岡駅を過ぎ、安倍川を渡ってまもなく</span></h3>
+            <p class="mieru-fact-meta">東京から約54分 ・ A席（海側） ・ 視距離 約56km</p>
+            <p class="mieru-fact-body">5区間で唯一のA席ビュー。線路が南へ大きく膨らむこの短い区間だけ、進行方向左手に富士山が回り込みます。見えている時間はわずか数秒〜十数秒。冬から早春は雪化粧の輪郭が街並みの合間からでも見つけやすく、夏場は空の色に溶け込んで見つけにくくなります。</p>
+          </article>
+          <article class="mieru-fact">
+            <h3>浜名湖越しの富士山 <span>浜松 → 豊橋</span></h3>
+            <p class="mieru-fact-meta">東京から約73分 ・ E席（山側） ・ 視距離 約128km</p>
+            <p class="mieru-fact-body">5区間でもっとも遠く、湖と空の境目に小さく浮かぶ一景です。空気が澄んだ冬の朝や、雨上がりで大気が洗われた日など、条件がそろった時だけ会える、見えたこと自体がうれしい富士山です。</p>
+          </article>
+        </div>
+      </section>
 
       <p class="mieru-note">
         予報モデルβ: 見える確率 = (山頂が雲に隠れていない確率) × (視程が実効距離に足りる確率)。
@@ -118,16 +208,24 @@
     <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 
-  <script src="spot-page-shared-data.js?v=0c02e70a"></script>
-  <script src="spot-page-shared.js?v=7c793e7c"></script>
-  <script src="data.js?v=f1a501b4"></script>
+  <script src="spot-page-shared-data.js?v=59f845aa"></script>
+  <script src="spot-page-shared.js?v=c9ae6cbd"></script>
+  <script src="data.js?v=57b45b05"></script>
+  <script src="train-select.js?v=ddf609c7"></script>
+  <!-- data/timetable.js（約300KB）は列車モードを実際に使う時点まで遅延読み込みする（ensureTimetableLoaded() 参照） -->
   <script>
   (function(){
   "use strict";
   var SP = (typeof SPOTS !== "undefined" && SPOTS) || window.SPOTS || [];
+  var RT = (typeof ROUTE !== "undefined" && ROUTE) || window.ROUTE || null;
+  var MTS = window.MADO_TRAIN_SELECT || null;
+  // data/timetable.js（約300KB）は遅延読み込み。読み込まれるまで TT は null。
+  // 読み込み状態は ensureTimetableLoaded() が管理する。
+  var TT = null;
   var SUMMIT = [35.3606, 138.7274];
   var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
   var H0 = 6, H1 = 19;
+  var TRAIN_NAMES = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
 
   function hav(a, b){
     var R = 6371, dLa = (b[0]-a[0])*Math.PI/180, dLo = (b[1]-a[1])*Math.PI/180;
@@ -146,6 +244,55 @@
       min: s.minutesFromTokyo, d: hav([vp.lat, vp.lng], SUMMIT),
       vp: [vp.lat, vp.lng], side: s.side || "E" });
   });
+
+  /* ---- 実ダイヤ対応 ----
+     data/timetable.js（実時刻表）と data.js の ROUTE.refStations（駅ごとの東京からの目安分数）を
+     使って「どの列車に乗るか」から各スポットの実通過時刻を出す。
+     tokaidoStops/interpolateSpot/trainCandidates の本体は train-select.js
+     (window.MADO_TRAIN_SELECT) に一本化し、app.js と共有している（2026-08-17）。 */
+  var REFMIN = {}, REFJA = {}, TTJA = {};
+  if (RT) RT.refStations.forEach(function(s){ REFMIN[s.id] = s.min; REFJA[s.id] = s.ja; });
+
+  function toMin(hhmm){ var p = String(hhmm).split(":"); return (+p[0])*60 + (+p[1]); }
+  function clockStr(t){
+    var tt = ((Math.round(t) % 1440) + 1440) % 1440;
+    return ("0"+Math.floor(tt/60)).slice(-2) + ":" + ("0"+(tt%60)).slice(-2);
+  }
+  function tokaidoStops(train){
+    if (!RT || !MTS) return [];
+    return MTS.tokaidoStops(RT, train);
+  }
+  function interpolateSpot(spotRef, stops){
+    return MTS.interpolateSpot(spotRef, stops);
+  }
+  function trainCandidates(dir, board){
+    if (!TT || !MTS) return [];
+    return MTS.trainCandidates(TT, RT, dir, board);
+  }
+  function trainLabel(tr){ return (TRAIN_NAMES[tr.type] || tr.type) + tr.number; }
+  function stationLabel(id){ return REFJA[id] || TTJA[id] || id; }
+
+  function aheadSpots(dir, board){
+    var b = REFMIN[board] != null ? REFMIN[board] : 0;
+    return SPOTS_M.filter(function(s){ return dir === "west" ? s.min >= b : s.min <= b; })
+      .slice()
+      .sort(function(x, y){ return dir === "west" ? x.min - y.min : y.min - x.min; });
+  }
+  function trainSpotClockFn(train, board){
+    var all = tokaidoStops(train);
+    var bi = all.findIndex(function(s){ return s.id === board; });
+    if (bi < 0) return null;
+    var stops = all.slice(bi);
+    return function(ref){ return interpolateSpot(ref, stops); };
+  }
+  function manualSpotClockFn(dir, board, depMin){
+    var b = REFMIN[board] != null ? REFMIN[board] : 0;
+    var sign = dir === "west" ? 1 : -1;
+    return function(ref){
+      if ((ref - b) * sign < 0) return null;
+      return depMin + Math.abs(ref - b);
+    };
+  }
 
   function estVis(rh){ return Math.max(4, 140 * Math.pow(1 - rh/100, 1.5)); }
   function effDist(d, rh){ return d * (0.32 + 0.5 * Math.pow(rh/100, 2)); }
@@ -196,7 +343,145 @@
   }
 
   var DATA = { summit: null, vps: {} };
-  window.__mieru = { data: DATA, spots: SPOTS_M, results: {} };
+  var STATE = { mode: "train", dir: "west", board: "Tokyo", selectedTrain: null };
+  window.__mieru = { data: DATA, spots: SPOTS_M, results: {}, state: STATE };
+
+  /* ---- 時刻表の遅延読み込み ----
+     data/timetable.js は約300KB（mieru.html本体の約9倍）あり、検索からの初回訪問は
+     index.html を経由しないためキャッシュが効かない。静的本文とOpen-Meteoの確率表示は
+     時刻表なしで成立するため、列車モードを利用者が実際に使う時点（「列車をさがす」操作、
+     または ?train= 付きURLでの着地）まで読み込みを遅らせる。 */
+  var timetableLoading = false;
+  var timetableLoadFailed = false;
+  var timetableLoadPromise = null;
+  function ensureTimetableLoaded(){
+    if (TT) return Promise.resolve(TT);
+    if (timetableLoadPromise) return timetableLoadPromise;
+    timetableLoading = true;
+    timetableLoadFailed = false;
+    renderTrainResults(); // 「読み込み中」表示
+    timetableLoadPromise = new Promise(function(resolve){
+      var s = document.createElement("script");
+      s.src = "data/timetable.js?v=27a49e71";
+      s.onload = function(){
+        timetableLoading = false;
+        TT = window.SHINKANSEN_TIMETABLE || null;
+        if (TT && Array.isArray(TT.stations)) TT.stations.forEach(function(st){ TTJA[st.id] = st.ja; });
+        if (!TT){
+          // スクリプトは読み込めたが期待した形のデータが無い → 失敗扱いで静かにフォールバック
+          timetableLoadFailed = true;
+          setMode("time");
+        }
+        resolve(TT);
+      };
+      s.onerror = function(){
+        timetableLoading = false;
+        timetableLoadFailed = true;
+        TT = null;
+        setMode("time"); // 読み込み失敗時は時刻手入力モードへ静かにフォールバック
+        resolve(null);
+      };
+      document.head.appendChild(s);
+    });
+    return timetableLoadPromise;
+  }
+
+  /* ---- URL引き継ぎ ----
+     ?board=<駅ID>&dir=west|east&train=<Type>-<number>&dep=HH:MM&day=0|1 を受け取り初期化する。
+     別ページの列車選択を引き継ぐ本線の仕組み（app.js側でlocalStorageに永続化予定、実装中のため
+     ここでは未参照）とは接続していないが、駅IDはROUTE.refStations基準・列車表記は
+     "Type-number"（例: Nozomi-5）でapp.jsのtrack("train_selected", ...)が既に送っている
+     train_type/train_numberと同じ語彙なので、app.js側の永続化が固まった後にそのキーを
+     読み替えてこの関数に渡す形で無理なく接続できるはず。
+     ?train= が付いている場合だけ、時刻表を即座に読み込んで列車を復元する。 */
+  function applyUrlParams(){
+    var q;
+    try { q = new URLSearchParams(location.search); } catch (e) { return; }
+    var board = q.get("board");
+    if (board && REFMIN[board] != null) STATE.board = board;
+    var dir = q.get("dir");
+    if (dir === "west" || dir === "east") STATE.dir = dir;
+    var day = q.get("day");
+    if ((day === "0" || day === "1") && document.getElementById("mieruDay")) document.getElementById("mieruDay").value = day;
+    var dep = q.get("dep");
+    if (dep && /^\d{1,2}:\d{2}$/.test(dep)){
+      document.getElementById("mieruDep").value = dep;
+      document.getElementById("mieruTrainFrom").value = dep;
+    }
+    var trainParam = q.get("train");
+    if (trainParam){
+      var m = /^([A-Za-z]+)-(\d+)$/.exec(trainParam);
+      if (m){
+        ensureTimetableLoaded().then(function(tt){
+          if (!tt) return; // 失敗時はensureTimetableLoaded内で既に時刻手入力モードへフォールバック済み
+          var found = trainCandidates(STATE.dir, STATE.board).find(function(x){
+            return x.tr.type === m[1] && String(x.tr.number) === m[2];
+          });
+          if (found){
+            STATE.selectedTrain = found;
+            STATE.mode = "train";
+            setMode("train");
+            renderTrainResults();
+            render();
+          }
+        });
+      }
+    }
+  }
+
+  function setMode(mode){
+    STATE.mode = mode;
+    var bt = document.getElementById("mieruModeTrain"), tt = document.getElementById("mieruModeTime");
+    bt.classList.toggle("is-active", mode === "train");
+    bt.setAttribute("aria-pressed", mode === "train" ? "true" : "false");
+    tt.classList.toggle("is-active", mode === "time");
+    tt.setAttribute("aria-pressed", mode === "time" ? "true" : "false");
+    document.getElementById("mieruTrainBlock").hidden = mode !== "train";
+    document.getElementById("mieruTimeBlock").hidden = mode !== "time";
+  }
+
+  function renderBoardOptions(){
+    if (!RT) return;
+    var sel = document.getElementById("mieruBoard");
+    sel.innerHTML = RT.refStations.map(function(s){
+      return '<option value="' + s.id + '"' + (s.id === STATE.board ? " selected" : "") + '>' + s.ja + '</option>';
+    }).join("");
+  }
+
+  function renderTrainResults(){
+    var box = document.getElementById("mieruTrainResults");
+    if (!TT){
+      if (timetableLoading){
+        box.innerHTML = '<p class="mieru-train-empty">時刻表を読み込み中…</p>';
+      } else if (timetableLoadFailed){
+        box.innerHTML = '<p class="mieru-train-empty">列車データを読み込めませんでした。上の「時刻を入力」から目安時刻でお試しください。</p>';
+      } else {
+        box.innerHTML = '<p class="mieru-train-empty">「列車をさがす」を押すと、この時刻以降の列車候補を表示します。</p>';
+      }
+      return;
+    }
+    var fromVal = document.getElementById("mieruTrainFrom").value || "06:00";
+    var fromMin = toMin(fromVal);
+    var found = trainCandidates(STATE.dir, STATE.board).filter(function(x){ return x.dep >= fromMin; }).slice(0, 8);
+    if (!found.length){
+      box.innerHTML = '<p class="mieru-train-empty">この乗車駅・方向・時刻で列車が見つかりませんでした。時刻や乗車駅を変えてみてください。</p>';
+      return;
+    }
+    box.innerHTML = found.map(function(x, i){
+      var active = STATE.selectedTrain && STATE.selectedTrain.tr.type === x.tr.type &&
+        STATE.selectedTrain.tr.number === x.tr.number && STATE.selectedTrain.dep === x.dep;
+      return '<button type="button" class="train-chip' + (active ? " active" : "") + '" data-i="' + i + '">' +
+        '<strong>' + trainLabel(x.tr) + '</strong>' +
+        '<span>' + clockStr(x.dep) + ' 発 → ' + stationLabel(x.tr.destination) + '</span></button>';
+    }).join("");
+    Array.prototype.forEach.call(box.querySelectorAll("[data-i]"), function(btn){
+      btn.addEventListener("click", function(){
+        STATE.selectedTrain = found[+btn.dataset.i];
+        renderTrainResults();
+        render();
+      });
+    });
+  }
 
   omAll().then(function(res){
     DATA.summit = res[0].hourly;
@@ -210,24 +495,40 @@
   function render(){
     if (!DATA.summit) return;
     var day = +document.getElementById("mieruDay").value;
-    var dep = document.getElementById("mieruDep").value || "09:00";
-    var depMin = (+dep.slice(0,2))*60 + (+dep.slice(3,5));
+    var spots = aheadSpots(STATE.dir, STATE.board);
 
-    var lines = [];
-    SPOTS_M.forEach(function(s){
-      var t = depMin + s.min;
-      var hh = Math.floor(t/60), mm = t%60;
-      var hIdx = day*24 + Math.min(23, Math.max(0, Math.round(t/60)));
-      var r = prob(DATA.summit, DATA.vps[s.id], hIdx, s.d);
-      window.__mieru.results[s.id] = r;
-      lines.push('<span class="copy-chunk">' + s.name + " " + ("0"+hh).slice(-2) + ":" + ("0"+mm).slice(-2) + "頃 <b>" +
-        Math.round(r.p*100) + "%</b> (" + verdictText(r.p) + ")</span>");
-    });
-    document.getElementById("mieruRide").innerHTML = "この列車での見えかた ─ " + lines.join(" ／ ");
+    var clockFn = null;
+    if (STATE.mode === "train"){
+      if (STATE.selectedTrain) clockFn = trainSpotClockFn(STATE.selectedTrain.tr, STATE.board);
+    } else {
+      var dep = document.getElementById("mieruDep").value || "09:00";
+      clockFn = manualSpotClockFn(STATE.dir, STATE.board, toMin(dep));
+    }
+
+    var rideEl = document.getElementById("mieruRide");
+    if (!spots.length){
+      rideEl.textContent = "この乗車駅・方向では対象スポットがありません。乗車駅や方向を変えてみてください。";
+    } else if (!clockFn){
+      rideEl.textContent = "列車を選ぶと、この列車での見えかたが分かります。";
+    } else {
+      var lines = [];
+      spots.forEach(function(s){
+        var t = clockFn(s.min);
+        if (t == null) return;
+        var hIdx = day*24 + Math.min(23, Math.max(0, Math.round(t/60)));
+        var r = prob(DATA.summit, DATA.vps[s.id], hIdx, s.d);
+        window.__mieru.results[s.id] = r;
+        lines.push('<span class="copy-chunk">' + s.name + " " + clockStr(t) + "頃 <b>" +
+          Math.round(r.p*100) + "%</b> (" + verdictText(r.p) + ")</span>");
+      });
+      rideEl.innerHTML = lines.length
+        ? "この列車での見えかた ─ " + lines.join(" ／ ")
+        : "選んだ乗車駅からは、この列車で通過時刻を計算できませんでした。";
+    }
 
     var root = document.getElementById("mieruSpots");
     root.innerHTML = "";
-    SPOTS_M.forEach(function(s){
+    spots.forEach(function(s){
       var rows = [];
       for (var h = H0; h <= H1; h++) rows.push(prob(DATA.summit, DATA.vps[s.id], day*24 + h, s.d));
       var bestP = Math.max.apply(null, rows.map(function(r){ return r.p; }));
@@ -252,8 +553,37 @@
       root.appendChild(div);
     });
   }
-  document.getElementById("mieruDep").addEventListener("input", render);
+
+  /* ---- イベント配線 ---- */
+  renderBoardOptions();
+  applyUrlParams();
+  renderBoardOptions();
+  document.getElementById("mieruDir").value = STATE.dir;
+  setMode(STATE.mode);
+  renderTrainResults();
+
+  document.getElementById("mieruBoard").addEventListener("change", function(){
+    STATE.board = this.value;
+    STATE.selectedTrain = null;
+    renderTrainResults();
+    render();
+  });
+  document.getElementById("mieruDir").addEventListener("change", function(){
+    STATE.dir = this.value;
+    STATE.selectedTrain = null;
+    renderTrainResults();
+    render();
+  });
   document.getElementById("mieruDay").addEventListener("change", render);
+  document.getElementById("mieruDep").addEventListener("input", render);
+  document.getElementById("mieruModeTrain").addEventListener("click", function(){ setMode("train"); render(); });
+  document.getElementById("mieruModeTime").addEventListener("click", function(){ setMode("time"); render(); });
+  document.getElementById("mieruTrainSearchBtn").addEventListener("click", function(){
+    ensureTimetableLoaded().then(function(){
+      renderTrainResults();
+      render();
+    });
+  });
   })();
   </script>
 </body>

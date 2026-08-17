@@ -17,7 +17,7 @@ const MSG = {
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
     navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "メダル帖",
-    navMore: "もっと見る", navMieru: "見える予報β", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
+    navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
@@ -136,7 +136,7 @@ const MSG = {
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
-    footerMieru: "見える予報β",
+    footerMieru: "富士山 見える予報",
     footerSumie: "墨絵車窓",
     footerSomato: "車窓走馬灯",
     footerContact: "お問い合わせ",
@@ -518,43 +518,24 @@ function minToClock(m) {
 function fmtClock(date) { return date.toTimeString().slice(0, 5); }
 function nowMin() { const d = new Date(); return d.getHours() * 60 + d.getMinutes(); }
 
+/* 列車選択アルゴリズム(tokaidoStops/interpolateSpot/trainCandidates)は
+   train-select.js (window.MADO_TRAIN_SELECT) に一本化。mieru.html と共有し、
+   時刻表形式や補間仕様が変わったときの片方だけ直し漏れ（予報の通過時刻ズレ）を防ぐ。 */
+const MTS = window.MADO_TRAIN_SELECT;
+
 /* 列車の東海道区間の停車駅（時刻順） */
 function tokaidoStops(train) {
-  return ROUTE.refStations
-    .filter((s) => train.times[s.id])
-    .map((s) => ({ id: s.id, ja: s.ja, en: s.en, ref: s.min, clock: toMin(train.times[s.id]) }))
-    .sort((a, b) => a.clock - b.clock);
+  return MTS.tokaidoStops(ROUTE, train);
 }
 
 /* 実ダイヤ補間: スポットの基準分数を、前後の停車駅時刻で線形補間する */
 function interpolateSpot(spotRef, stops) {
-  for (let i = 0; i < stops.length - 1; i++) {
-    const a = stops[i], b = stops[i + 1];
-    const lo = Math.min(a.ref, b.ref), hi = Math.max(a.ref, b.ref);
-    if (spotRef >= lo && spotRef <= hi && a.ref !== b.ref) {
-      const f = Math.abs(spotRef - a.ref) / Math.abs(b.ref - a.ref);
-      return Math.round(a.clock + f * (b.clock - a.clock));
-    }
-  }
-  return null;
+  return MTS.interpolateSpot(spotRef, stops);
 }
 
 /* 列車検索: 方向・乗車駅に合う列車を出発時刻順に並べる */
 function trainCandidates() {
-  const TT = window.SHINKANSEN_TIMETABLE;
-  if (!TT) return [];
-  return TT.trains
-    .filter((tr) => {
-      if (tr.direction !== direction || !tr.times[boardId]) return false;
-      // 乗車駅より先に東海道区間の停車駅があること
-      const stops = tokaidoStops(tr);
-      const idx = stops.findIndex((s) => s.id === boardId);
-      return idx >= 0 && idx < stops.length - 1;
-    })
-    .map((tr) => ({ tr, dep: toMin(tr.times[boardId]) }))
-    .sort((a, b) => a.dep - b.dep)
-    // データセット内の重複列車（同番号・同時刻）を除去
-    .filter((x, i, arr) => i === arr.findIndex((y) => y.tr.type === x.tr.type && y.tr.number === x.tr.number && y.dep === x.dep));
+  return MTS.trainCandidates(window.SHINKANSEN_TIMETABLE, ROUTE, direction, boardId);
 }
 
 /* 列車検索: 指定時刻以降の列車（出発時刻順に最大5本） */
@@ -595,6 +576,64 @@ function computeJourney(train, depMin) {
     stops,
     spots,
   };
+}
+/* ---------- 列車選択の永続化（実車での再訪時に復元。有効期限1日） ---------- */
+const TRAIN_STORAGE_KEY = "mado-last-journey";
+const TRAIN_STORAGE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
+function saveLastJourney(tr) {
+  try {
+    localStorage.setItem(TRAIN_STORAGE_KEY, JSON.stringify({
+      direction,
+      boardId,
+      trainType: tr.type,
+      trainNumber: tr.number,
+      savedAt: Date.now(),
+    }));
+  } catch {}
+}
+/* 期限切れ・データ不整合の場合は静かに破棄し、通常の未選択状態に戻す */
+function restoreLastJourney() {
+  let saved = null;
+  try {
+    const raw = localStorage.getItem(TRAIN_STORAGE_KEY);
+    if (raw) saved = JSON.parse(raw);
+  } catch {
+    saved = null;
+  }
+  const looksValid = saved && typeof saved === "object"
+    && (saved.direction === "west" || saved.direction === "east")
+    && typeof saved.boardId === "string"
+    && typeof saved.trainType === "string"
+    && Number.isFinite(saved.trainNumber)
+    && Number.isFinite(saved.savedAt)
+    && (Date.now() - saved.savedAt) >= 0
+    && (Date.now() - saved.savedAt) <= TRAIN_STORAGE_MAX_AGE_MS;
+  let match = null;
+  if (looksValid && Object.prototype.hasOwnProperty.call(REF, saved.boardId)) {
+    const prevDirection = direction;
+    const prevBoardId = boardId;
+    direction = saved.direction;
+    boardId = saved.boardId;
+    match = trainCandidates().find((x) => x.tr.type === saved.trainType && x.tr.number === saved.trainNumber);
+    if (!match) {
+      direction = prevDirection;
+      boardId = prevBoardId;
+    }
+  }
+  if (!match) {
+    try { localStorage.removeItem(TRAIN_STORAGE_KEY); } catch {}
+    return false;
+  }
+  $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
+  renderBoardSelect();
+  showTrainPage(match.dep);
+  const firstChip = $("#trainResults .train-chip");
+  if (firstChip) {
+    $("#trainResults").querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === firstChip));
+  }
+  buildTimeline(match.tr, match.dep);
+  track("journey_restored", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
+  return true;
 }
 function collectionTimelineSpots(expanded = boardCollectionExpanded) {
   if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
@@ -1280,6 +1319,7 @@ function showTrainResults() {
       const { tr, dep } = found[Number(btn.dataset.train)];
       box.querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === btn));
       track("train_selected", { direction, board_station: boardId, train_type: tr.type, train_number: tr.number });
+      saveLastJourney(tr);
       buildTimeline(tr, dep);
     });
   });
@@ -1504,7 +1544,7 @@ function bindSpotModalGallery(modal, spot, options = {}) {
   const selectPhoto = (index, { trackSelection = true, updateUrl = true, replaceUrl = false } = {}) => {
     const item = items[index];
     if (!item || !image || !credit) return false;
-    image.src = item.src;
+    image.src = thumbnailSrc(item.src);
     image.alt = item.alt;
     credit.innerHTML = item.creditHTML;
     modal.querySelectorAll("[data-photo-index]").forEach((thumb) => {
@@ -2421,6 +2461,7 @@ function init() {
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();
+  restoreLastJourney();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);

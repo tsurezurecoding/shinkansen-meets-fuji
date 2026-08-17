@@ -404,6 +404,10 @@ const REFERENCES = {
     label: { ja: "金生山化石館", en: "Kinshozan Fossil Museum (Japanese only)" },
     url: "https://www.city.ogaki.lg.jp/0000001028.html",
   },
+  kinshozanChunichi: {
+    label: { ja: "中日新聞: 校歌にもなった「金生山」いずれ消滅か…", en: "Chunichi Shimbun: Mt. Kinsho, sung in the school anthem, may one day vanish (Japanese only)" },
+    url: "https://www.chunichi.co.jp/article/938755",
+  },
   ibukiMaibara: {
     label: { ja: "長浜・米原観光情報サイト: 伊吹山", en: "Kitabiwako.jp: Mt. Ibuki (Nagahama & Maibara tourism, Japanese only)" },
     url: "https://kitabiwako.jp/spot/spot_5081",
@@ -2914,8 +2918,8 @@ const SPOTS = [
   {
     id: "kinshozan",
     icon: "⛏️",
-    ja: { name: "金生山", area: "岐阜羽島 → 米原（大垣付近）", hook: "あの切り取られた山は何？", story: "岐阜羽島を過ぎて大垣へ向かうころ、E席側の遠くに、まるでナイフで斜めに切り落としたような山肌がむき出しになった山が見えます。これが金生山（きんしょうざん）。全体が石灰岩でできていて、明治以降140年以上にわたって採掘され続けてきた山です。かつては「岐阜のピラミッド」と呼ばれた四角錐の山頂が新幹線からも見えましたが、その頂は今はもうありません。白い階段状の岩肌がむき出しになり、初めて見る人ほど「あの山は何？」と気になる、独特の景観になっています。" },
-    en: { name: "Mt. Kinsho", area: "Gifu-Hashima → Maibara, near Ogaki", hook: "What is that carved-away mountain?", story: "After Gifu-Hashima, on the way to Ogaki, a mountain that looks as if it has been sliced diagonally with a knife appears far off on the Seat E side. This is Mt. Kinsho, a mountain made almost entirely of limestone that has been quarried for over 140 years. Its former square-pyramid peak — once famously nicknamed the 'Gifu Pyramid' from the train window — is no longer there. What remains is a stepped, chalk-white rock face, an unusual sight that often leaves first-time viewers wondering: what am I looking at?" },
+    ja: { name: "金生山", area: "岐阜羽島 → 米原（大垣付近）", hook: "あの切り取られた山は何？", story: "岐阜羽島を過ぎて大垣へ向かうころ、E席側の遠くに、まるでナイフで斜めに切り落としたような山肌がむき出しになった山が見えます。これが金生山（きんしょうざん）。全体が石灰岩でできていて、江戸時代から採掘が続き、大正から昭和の鉄道開通で本格的な鉱山になりました。もともとは複数の峰が連なる丘陵で、最高地点は217mほど。「岐阜のピラミッド」と呼ばれた四角錐は、この山のもとの形ではなく、石灰岩を切り出した採掘の結果として現れた姿です。その頂も今は失われ、白い階段状の岩肌がむき出しの、独特の景観になっています。" },
+    en: { name: "Mt. Kinsho", area: "Gifu-Hashima → Maibara, near Ogaki", hook: "What is that carved-away mountain?", story: "After Gifu-Hashima, on the way to Ogaki, a mountain that looks as if it has been sliced diagonally with a knife appears far off on the Seat E side. This is Mt. Kinsho, a hill made almost entirely of limestone, quarried since the Edo period and worked as a full industrial mine once the railways arrived in 1919 and 1928. It was originally a ridge of several summits, the highest about 217 metres. The square pyramid once nicknamed the 'Gifu Pyramid' was never the mountain's natural shape — it was cut out by quarrying. That peak has since gone too, leaving the stepped, chalk-white rock faces that make first-time viewers ask: what am I looking at?" },
     pageTitle: {
       ja: "新幹線から見える「削られた山」は何？大垣・金生山の正体 | 新幹線の窓",
       en: "What Is That Quarried White Mountain near Ogaki? Mt. Kinsho | Shinkansen Window",
@@ -2929,26 +2933,26 @@ const SPOTS = [
       en: ["What is that pale, carved-away mountain?", "Mt. Kinsho at Ogaki"],
     },
     metaDescription: {
-      ja: "岐阜羽島から米原へ向かう区間、大垣付近で新幹線のE席側に見える白く削り取られた山は金生山。石灰岩の採掘で「岐阜のピラミッド」の頂が失われた背景と、その独特の景観を解説します。",
-      en: "The bright, quarried mountain seen from Seat E after Gifu-Hashima near Ogaki is Mt. Kinsho, a limestone mountain whose 'Gifu Pyramid' peak has been mined away over more than 140 years. Learn what it is and why it looks the way it does today.",
+      ja: "岐阜羽島から米原へ向かう区間、大垣付近で新幹線のE席側に見える白く削り取られた山は金生山。「岐阜のピラミッド」と呼ばれた四角錐が採掘で生まれ、やがて失われた経緯と、その独特の景観を解説します。",
+      en: "The bright, quarried mountain seen from Seat E after Gifu-Hashima near Ogaki is Mt. Kinsho. Its 'Gifu Pyramid' shape was created by limestone quarrying, not by nature, and has since been mined away. Learn what it is and why it looks the way it does today.",
     },
     sectionHeading: {
       ja: "あの切り取られた白い山は何？",
       en: "What is that pale, carved-away mountain?",
     },
     pageStory: {
-      ja: "初めて新幹線の車窓から金生山を見ると、多くの人が「あの山、山頂が階段状にえぐれてる。何？」と感じます。それはあなただけの感想ではなく、この山を写した写真がSNSでも「なんだこの山」「削られすぎ」と繰り返し話題になっています。名前の「金生山」を知って調べる人よりも、白く削られた奇妙な山肌を見て後から正体を探す人のほうが多いかもしれません。答えは、大垣市赤坂町にある標高217mほどの石灰岩の山で、日本でも屈指の高純度石灰岩と大理石を産出する鉱山として、明治期から現代まで採掘が続いてきた場所です。",
-      en: "First-time riders often react to Mt. Kinsho with a simple question: 'That mountain — its summit is scooped out in steps. What is it?' You are not alone in that reaction; photos of this hill regularly circulate online with reactions like 'what is that mountain' or 'quarried too much.' More people probably arrive at the name by searching for 'strange white mountain visible from the Shinkansen' than by knowing the name Mt. Kinsho in advance. The answer: a limestone hill about 217 meters high in Akasaka, Ogaki City — one of Japan's foremost sources of high-purity limestone and marble, quarried continuously from the Meiji era to today.",
+      ja: "初めて新幹線の車窓から金生山を見ると、多くの人が「あの山、山頂が階段状にえぐれてる。何？」と感じます。それはあなただけの感想ではなく、この山を写した写真がSNSでも「なんだこの山」「削られすぎ」と繰り返し話題になっています。名前の「金生山」を知って調べる人よりも、白く削られた奇妙な山肌を見て後から正体を探す人のほうが多いかもしれません。答えは、大垣市赤坂町にある石灰岩の丘陵で、採掘前の最高地点は217mほどでした。日本でも屈指の高純度石灰岩と大理石を産出する鉱山として、江戸時代から現代まで採掘が続いてきた場所です。",
+      en: "First-time riders often react to Mt. Kinsho with a simple question: 'That mountain — its summit is scooped out in steps. What is it?' You are not alone in that reaction; photos of this hill regularly circulate online with reactions like 'what is that mountain' or 'quarried too much.' More people probably arrive at the name by searching for 'strange white mountain visible from the Shinkansen' than by knowing the name Mt. Kinsho in advance. The answer: a limestone hill in Akasaka, Ogaki City, whose highest point stood about 217 metres before quarrying — one of Japan's foremost sources of high-purity limestone and marble, worked continuously from the Edo period to today.",
     },
     explainer: {
       heading: { ja: "「岐阜のピラミッド」はどこへ？", en: "Where did the 'Gifu Pyramid' go?" },
       ja: [
-        "金生山はもともと美しいピラミッド型の山頂を持ち、地元では「岐阜のピラミッド」の愛称で知られていました。四角錐に近い整った稜線が新幹線の車窓からもよく目立っていた、と昔の写真は伝えます。しかし主成分の石灰岩と大理石は、セメント・製鉄用のフラックス・化学工業向けの原料として国内でも極めて重要で、明治から一貫して山頂側から切り崩して採掘が続けられてきました。その結果、頂そのものはすでに大きく失われ、今は残された部分に階段状の採掘跡（ベンチカット）と、白い岩肌がむき出しになった側面が目立つ姿になっています。",
+        "「岐阜のピラミッド」と呼ばれた四角錐は、金生山のもとの形ではありません。採掘前の金生山は東西約1km・南北約2kmの丘陵で、更紗山（217m）・愛宕山（217.1m）・月見山（130m）・花岡山（115m）といった複数の峰を持っていました。整った四角錐は、石灰岩を棚田状に切り出していく採掘の結果として現れた人工的な形です。主成分の石灰岩と大理石はセメント・製鉄用フラックス・化学工業の原料として重要で、採掘は江戸時代に始まり、1919年の美濃赤坂線と1928年の西濃鉄道の開通で本格化しました。2022年には山頂部の採掘も始まり、かつての峰はほぼ失われて、今は明星輪寺のある南東部が残るのみです。",
         "地質的にはさらに古い物語も抱えています。金生山の石灰岩層は約2億6千万年前のペルム紀の海で堆積したもので、ウミユリ・フズリナ・大型の巻貝など海の生き物の化石が豊富に含まれます。大垣市赤坂町には、これらの化石を集めた「金生山化石館」があり、削られていく山が同時に「化石の宝庫」でもあることを伝えています。",
         "つまり金生山は、単に「削られている山」ではなく、日本の産業を支え続けている石灰岩鉱山であり、太古の海を今に伝える化石の山でもあります。車窓の白い岩肌の向こうには、これから先も景観が少しずつ変わっていくという、進行中の物語が広がっています。",
       ],
       en: [
-        "Mt. Kinsho once had a beautifully symmetrical, pyramid-like peak, affectionately known locally as the 'Gifu Pyramid.' Older photographs show a clean square-pyramid outline that stood out clearly even from the Shinkansen. But its limestone and marble are essential raw materials for cement, ironmaking flux and chemicals, and the mountain has been quarried from the top down ever since the Meiji era. As a result, the original peak has largely been removed. What remains are stepped quarry benches and broad white rock faces exposed along the sides.",
+        "The square pyramid known as the 'Gifu Pyramid' was not Mt. Kinsho's original shape. Before quarrying, Mt. Kinsho was a hill roughly 1 km east to west and 2 km north to south, with several summits: Sarasa-yama (217 m), Atago-yama (217.1 m), Tsukimi-yama (130 m) and Hanaoka-yama (115 m). The neat pyramid form was an artificial result of cutting the limestone away in terraced benches. Its limestone and marble are important raw materials for cement, ironmaking flux and chemicals; quarrying began in the Edo period and industrialised once the Mino-Akasaka Line opened in 1919 and the Seino Railway in 1928. Summit-level quarrying began in 2022, and the former peaks are now almost entirely gone — only the south-eastern part, where Myoshorin-ji temple stands, remains.",
         "Geologically, there is a much older story too. The limestone layers of Mt. Kinsho were laid down in a shallow sea about 260 million years ago in the Permian period, and are rich in fossils of crinoids, fusulinids and large sea snails. In Akasaka, Ogaki, the Kinshozan Fossil Museum displays these fossils, reminding visitors that a mountain being quarried away is also a treasure house of ancient life.",
         "So Mt. Kinsho is not just a 'quarried mountain.' It is an active limestone mine that continues to underpin Japanese industry, and simultaneously a witness to a Permian-era sea. Behind the white rock face beyond the window is an ongoing story: the landscape here will keep changing over time.",
       ],
@@ -2974,7 +2978,7 @@ const SPOTS = [
         note: { ja: "遠景でも白く削られた山肌が目印", en: "Even from a distance, the pale quarried slope is the marker." },
       },
     ],
-    references: [REFERENCES.kinshozanWiki, REFERENCES.ogakiKinshozan, REFERENCES.ogakiKinshozanFossil],
+    references: [REFERENCES.kinshozanWiki, REFERENCES.ogakiKinshozan, REFERENCES.ogakiKinshozanFossil, REFERENCES.kinshozanChunichi],
     map: { lat: 35.405612, lng: 136.57348, ja: "金生山 大垣", en: "Mt. Kinsho Ogaki" },
     viewpoint: { lat: 35.349235976987565, lng: 136.57673468445847 },
   },

@@ -15,7 +15,7 @@
       journal: "メダル帖",
       more: "もっと見る",
       about: "新幹線の窓とは",
-      forecast: "見える予報β",
+      forecast: "富士山 見える予報",
       sumie: "墨絵車窓",
       somato: "車窓走馬灯",
       links: "リンク集",
@@ -110,7 +110,7 @@
   var CONTENT_ITEMS = {
     ja: [
       { label: "FAQ", title: "富士山FAQ", desc: "見える時刻、座席側、曇りの日の答えを確認。", href: "guide.html", img: "images/thumbs/content-faq.webp" },
-      { label: "FORECAST", title: "見える予報β", desc: "今日の空で富士山が見えそうかを確認。", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
+      { label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
       { label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
       { label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。", href: "somato.html", img: "images/thumbs/content-somato.webp" },
       { label: "JOURNAL", title: "メダル帖", desc: "見つけた景色をスタンプとメダルで記録。", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
@@ -621,11 +621,13 @@
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
-    var header = embedded ? "" : siteHeaderHTML(rootPath, lang, currentId);
     var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId);
     var mobilePromos = embedded ? "" : mobilePromosHTML(rootPath, lang, "", collection727Count(data));
-    var contentRail = embedded ? "" : contentRailHTML(rootPath, lang);
-    return header + "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + mobilePromos + showcase + contentRail + "</main>" + pageLightboxHTML(lang);
+    // topbar nav and the bottom content rail are baked as static HTML by the
+    // generator (see generate-spot-pages.mjs thinSpotPageHTML). Rendering them
+    // again here would duplicate the nav/content-rail on screen, so this
+    // renderer no longer produces them for spot pages.
+    return "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
   }
 
   function bindPageLightbox() {
@@ -733,6 +735,13 @@
         validateData(pageData, pageId, pageLang);
         validatePageData(pageData.pages[pageId][pageLang], pageId, pageLang);
         pageHost.outerHTML = pageHTML(pageData, pageRoot, pageLang, pageId);
+        if (root.MADO_EMBEDDED_WEB) {
+          var staticHosts = document.querySelectorAll("[data-spot-page-shared-static]");
+          for (var staticIndex = 0; staticIndex < staticHosts.length; staticIndex += 1) {
+            var staticEl = staticHosts[staticIndex];
+            if (staticEl && staticEl.parentNode) staticEl.parentNode.removeChild(staticEl);
+          }
+        }
         bindPageLightbox();
         ensureXWidgetsScript(pageData.pages[pageId][pageLang]);
         return;

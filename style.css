@@ -4707,14 +4707,13 @@ body.modal-open { overflow: hidden; }
     grid-column: 1 / -1;
     grid-row: 2;
     justify-content: flex-start;
+    flex-wrap: wrap;
+    row-gap: 4px;
     min-width: 0;
     max-width: 100%;
-    overflow-x: auto;
-    overflow-y: visible;
+    overflow: visible;
     padding-top: 2px;
-    scrollbar-width: none;
   }
-  .top-nav::-webkit-scrollbar { display: none; }
   .top-nav a,
   .top-nav-more summary {
     white-space: nowrap;

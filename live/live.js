@@ -33,7 +33,7 @@
       navFaq: "FAQ",
       navMedals: "メダル帖",
       navMore: "もっと見る",
-      navMieru: "見える予報β",
+      navMieru: "富士山 見える予報",
       navSumie: "墨絵車窓",
       navSomato: "車窓走馬灯",
       navRefs: "リンク集",

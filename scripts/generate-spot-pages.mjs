@@ -491,12 +491,14 @@ function languageSwitchHref(lang, spotId) {
   return lang === "ja" ? `../en/spots/${spotId}.html` : `../../spots/${spotId}.html`;
 }
 
-function siteHeaderHTML(lang, prefix, jaHref, enHref) {
+function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
   const ui = UI[lang];
+  const tag = options.tag || "header";
+  const staticAttr = options.staticMarker ? ` data-spot-page-shared-static="${options.staticMarker}"` : "";
   const homeHref = lang === "en" ? `${prefix}en/` : `${prefix}index.html`;
   const jaActive = lang === "ja" ? " active" : "";
   const enActive = lang === "en" ? " active" : "";
-  return `<header class="topbar">
+  return `<${tag} class="topbar"${staticAttr}>
     <a class="brand" href="${homeHref}">
       <span class="brand-mark">窓</span>
       <span class="brand-text">
@@ -515,7 +517,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
         <div class="top-nav-menu">
           <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
           <a href="${lang === "en" ? `${prefix}en/lp.html` : `${prefix}lp.html`}">${lang === "ja" ? "新幹線の窓とは" : "About this app"}</a>
-          <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "見える予報β" : "Visibility β"}</a>
+          <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
           <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
           <a href="${lang === "en" ? `${prefix}en/somato.html` : `${prefix}somato.html`}">${lang === "ja" ? "車窓走馬灯" : "Window Journey"}</a>
           <a href="${lang === "en" ? `${prefix}en/references.html` : `${prefix}references.html`}">${lang === "ja" ? "リンク集" : "Links"}</a>
@@ -528,10 +530,11 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref) {
       <a class="${jaActive.trim()}" href="${escapeHTML(lang === "en" ? `${jaHref}${jaHref.includes("?") ? "&" : "?"}lang=ja` : jaHref)}">日本語</a>
       <a class="${enActive.trim()}" href="${escapeHTML(enHref)}">EN</a>
     </div>
-  </header>`;
+  </${tag}>`;
 }
 
-function contentRailHTML(lang, prefix) {
+function contentRailHTML(lang, prefix, options = {}) {
+  const staticAttr = options.staticMarker ? ` data-spot-page-shared-static="${options.staticMarker}"` : "";
   const guideHref = lang === "en" ? `${prefix}en/?intro=1` : `${prefix}lp.html`;
   const items = lang === "en" ? [
     { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "Mt. Fuji FAQ", desc: "Check the timing, seat side and cloudy-day answers." },
@@ -544,7 +547,7 @@ function contentRailHTML(lang, prefix) {
     { href: `${prefix}en/contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "Contact", desc: "Send photo suggestions, corrections or feedback." },
   ] : [
     { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "富士山FAQ", desc: "見える時刻、座席側、曇りの日の答えを確認。" },
-    { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "見える予報β", desc: "今日の空で富士山が見えそうかを確認。" },
+    { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。" },
     { href: `${prefix}sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。" },
     { href: `${prefix}somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。" },
     { href: `${prefix}journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "メダル帖", desc: "見つけた景色をスタンプとメダルで記録。" },
@@ -552,7 +555,7 @@ function contentRailHTML(lang, prefix) {
     { href: `${prefix}references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。" },
     { href: `${prefix}contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。" },
   ];
-  return `<section class="content-rail-section" aria-labelledby="contentRailTitle">
+  return `<section class="content-rail-section"${staticAttr} aria-labelledby="contentRailTitle">
     <div class="section-head">
       <p class="eyebrow">${lang === "en" ? "MORE TO TRY" : "MORE TO TRY"}</p>
       <h2 id="contentRailTitle">${lang === "en" ? "More ways to enjoy the window" : "車窓をもっと楽しむ"}</h2>
@@ -1525,6 +1528,27 @@ function thinSpotPageHTML(spot, lang) {
   const desc = localized(spot.metaDescription, lang) || description(spot, lang);
   const url = pageUrl(lang, spot.id);
   const prefix = lang === "ja" ? "../" : "../../";
+  // Static link graph (2026-08-17): nav / content-rail / related-spot links are
+  // baked directly into the HTML so search engines do not depend on
+  // spot-page-shared.js executing to find them. Each block carries
+  // data-spot-page-shared-static so the runtime renderer (spot-page-shared.js)
+  // knows to leave it alone instead of re-inserting an equivalent element -
+  // that is what stops these from appearing twice. Body/photos/map/timeline
+  // stay JS-rendered as before; only the link graph is affected.
+  const staticNavHTML = siteHeaderHTML(
+    lang,
+    prefix,
+    lang === "ja" ? `${spot.id}.html` : `../../spots/${spot.id}.html`,
+    lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
+    { tag: "div", staticMarker: "topbar" },
+  );
+  const staticContentRailHTML = contentRailHTML(lang, prefix, { staticMarker: "content-rail" });
+  const staticRelatedInner = routeRelatedHTML(spot, lang);
+  const staticRelatedHTML = staticRelatedInner
+    ? `<div class="spot-page-static-related" data-spot-page-shared-static="related" style="max-width:820px;margin:0 auto;padding:0 20px;">
+    ${staticRelatedInner}
+  </div>`
+    : "";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -1574,7 +1598,9 @@ function thinSpotPageHTML(spot, lang) {
   ${analyticsSnippet()}
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
+  ${staticNavHTML}
   <div data-spot-page-shared-module="page"></div>
+  ${staticRelatedHTML}${staticContentRailHTML}
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
   <script src="${prefix}spot-page-shared.js?v=${assetVersion("spot-page-shared.js")}"></script>
   <script src="${prefix}spot-media-gallery.js?v=${assetVersion("spot-media-gallery.js")}"></script>
@@ -1928,7 +1954,8 @@ function englishAppIndexHTML() {
     ["車窓をもっと楽しむ", "More ways to enjoy the window"],
     ["富士山FAQ", "Mt. Fuji FAQ"],
     ["見える時刻、座席側、曇りの日の答えを確認。", "Check the timing, seat side, and what to expect on cloudy days."],
-    ["見える予報β", "Mt. Fuji Visibility Beta"],
+    ["見える予報β", "Visibility β"],
+    ["今日の富士山 見える予報", "Today's Mt. Fuji Visibility Forecast"],
     ["今日の空で富士山が見えそうかを確認。", "Check how likely Mt. Fuji is to appear in today's sky."],
     ["墨絵車窓", "Ink-Wash Window"],
     ["東海道新幹線の車窓を、静かな墨絵で。", "See the Tokaido Shinkansen window as a quiet ink-wash journey."],
