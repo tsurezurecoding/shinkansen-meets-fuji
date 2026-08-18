@@ -1,15 +1,15 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "eb3a80f6f9d74586",
-  "generatedAt": "2026-08-17T23:39:21.396Z",
+  "contentVersion": "1f704b06fdebfb70",
+  "generatedAt": "2026-08-18T22:43:37.702Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 11863,
-      "sha256": "5dcbfe3af550c95ccfa16e7453442dec3260f3d67f392b4b074ed93f739ac3d6"
+      "bytes": 11862,
+      "sha256": "5de25b483f686b9e5d7a85f1ec59fa1e7a81e42af35a02773f662b4fff535391"
     },
     {
       "path": "727-collection.js",
@@ -38,8 +38,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 423194,
-      "sha256": "57b45b05b8ec6943874aa43c3ac4b0418eba4b4f7eee98063db7f38682a78364"
+      "bytes": 424013,
+      "sha256": "d0843f7daecbb0c19c2bd5f09164197ce0e7d7a5a3509f1b5c5d6a87c096ad29"
     },
     {
       "path": "data/timetable.js",
@@ -57,13 +57,13 @@
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 24014,
-      "sha256": "80a92670b588a1757a5e003bd73c23e85189ba89bd6de3e6e2660c0918212507"
+      "sha256": "4406eb42fc24de0645d6ac03b2f22067c9cb770ca268ca11bc4b1f09e3c7d63d"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 22722,
-      "sha256": "8aad02a1707a27cbbf8ed9aa5bd83786d2a935f0cfeb088e57ce67cbe28d13fd"
+      "sha256": "49b2bf95ea60519a1f7f0fa032e9b56eedf4911be3f7087086762ac822964be0"
     },
     {
       "path": "en/yakei.html",
@@ -207,13 +207,13 @@
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
       "bytes": 25391,
-      "sha256": "fcf35201f374e210875746be90dc46bb2f9a1d71000e55ad93b3844bcc62ac76"
+      "sha256": "fbcb8adcdb95840b4e328e576923bc00c99760a93540998edb77692413347be8"
     },
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18969,
-      "sha256": "1c57f0b75bd26a1b4b38391641bd3b609ab942f659f73094217340111a95bfcc"
+      "sha256": "6d957fe043f2fdc7a6cc39d16f944b4dd8d15d851b0e4ad5094226a2cb0a326a"
     },
     {
       "path": "live/narration.js",
@@ -225,7 +225,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 27518,
-      "sha256": "5c6c0b5d4ad535f43259164e897330eb9a8d41885610bf52f3752437fc3b383e"
+      "sha256": "1294e651301da1f79ebbb0fb6431f5c730c868c4a1c253b6a869d463d589ffc1"
     },
     {
       "path": "sparkling-dreams.js",
@@ -1241,8 +1241,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 165,
-    "bytes": 6228534,
+    "itemCount": 170,
+    "bytes": 6428930,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2115,10 +2115,40 @@
         "sha256": "ceff60c4355ebf1e4906e1ead38828411c383ece9d9d145f3dc16f6a9b68e475"
       },
       {
+        "path": "images/thumbs/20260816_727_board_kamishigehara_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_kamishigehara_michikusa.webp",
+        "bytes": 59350,
+        "sha256": "914911e00e82180ef7d09da6da9b2c05be947a4549f5f01b5f28de8d243218ce"
+      },
+      {
         "path": "images/thumbs/20260816_727_board_miyashiro_e_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_miyashiro_e_michikusa.webp",
         "bytes": 39582,
         "sha256": "52eed64dff73a80a2f762f603f8647c9d9e5d1c92e0bce92294387fe1a345895"
+      },
+      {
+        "path": "images/thumbs/20260816_727_board_onogi_2_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_onogi_2_michikusa.webp",
+        "bytes": 24892,
+        "sha256": "bb5a831f1c13adf2ac3fd70748cd3f1cab47b2efcbccb55ec945a52165672d7b"
+      },
+      {
+        "path": "images/thumbs/20260816_727_board_onogi_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_onogi_michikusa.webp",
+        "bytes": 36682,
+        "sha256": "32d842bb2726e4a1dce07bd18099f44e573e1ce6c06b86ee4f6802cb307cdcb6"
+      },
+      {
+        "path": "images/thumbs/20260816_727_board_shimosawaki_e_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_shimosawaki_e_michikusa.webp",
+        "bytes": 39626,
+        "sha256": "925c5804b352ec0e79eabd752e0d4ac0b61bead0abcc317c35c8e6680e8ad28a"
+      },
+      {
+        "path": "images/thumbs/20260816_727_board_shinden_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_shinden_michikusa.webp",
+        "bytes": 39846,
+        "sha256": "016a3b6d02b14307e0f106c673e1ffc388959474db573c77dcaaa53324eb7d2c"
       },
       {
         "path": "images/thumbs/20260816_727_board_tsuzura_michikusa.webp",
