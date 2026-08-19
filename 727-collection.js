@@ -22,7 +22,7 @@
     try { localStorage.setItem("mado-stamps", JSON.stringify(stamps)); } catch (error) { /* storage is optional */ }
   }
   // 現地で確認できなかった地点（撤去・工事など）は収集カウントから外す。
-  function isMissing(point) { return point.siteStatus === "not-found"; }
+  function isMissing(point) { return point.siteStatus === "not-found" || point.siteStatus === "removed"; }
   function countablePoints() { return points.filter(function (point) { return !isMissing(point); }); }
   function stampId(point) { return point.stampId || point.id; }
   function stampIds(point) { return [stampId(point), point.id].concat(point.legacyStampIds || []); }
@@ -40,7 +40,7 @@
   // 地点の座標から周辺のストリートビューを開く（Google Maps URLs の公式形式。画像は転載しない）。
   function streetViewURL(point) { return "https://www.google.com/maps/@?api=1&map_action=pano&viewpoint=" + encodeURIComponent(point.lat + "," + point.lng); }
   function googleEmbedURL(point) { return "https://www.google.com/maps?q=" + encodeURIComponent(point.lat + "," + point.lng) + "&z=15&output=embed"; }
-  function statusLabel(point) { return point.confidence === "needs-check" ? "確認中" : ""; }
+  function statusLabel(point) { return point.siteStatus === "removed" ? "撤去確認" : (point.confidence === "needs-check" ? "確認中" : ""); }
   function matchesFilter(point) {
     var seatFilters = ["seat-a", "seat-e"].filter(function (filter) { return activeFilters.has(filter); });
     var photoFilters = ["photo", "no-photo"].filter(function (filter) { return activeFilters.has(filter); });

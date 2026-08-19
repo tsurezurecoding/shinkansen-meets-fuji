@@ -503,6 +503,26 @@ const REFERENCES = {
     label: { ja: "静岡市: 清水港", en: "Shizuoka City: Port of Shimizu (Japanese only)" },
     url: "https://www.city.shizuoka.lg.jp/000_003042.html",
   },
+  granshipPrefecture: {
+    label: { ja: "静岡県: グランシップ", en: "Shizuoka Prefecture: Granship" },
+    url: "https://www.pref.shizuoka.jp/kankosports/bunkageijutsu/granship/",
+  },
+  granshipOfficial: {
+    label: { ja: "グランシップ 公式", en: "Granship official site" },
+    url: "https://www.granship.or.jp/",
+  },
+  granshipAbout: {
+    label: { ja: "グランシップとは（公式）", en: "About Granship (official)" },
+    url: "https://www.granship.or.jp/visitors/about/",
+  },
+  granshipAccess: {
+    label: { ja: "グランシップ: アクセス", en: "Granship: Access" },
+    url: "https://www.granship.or.jp/visitors/parking/index.html",
+  },
+  granshipMapFan: {
+    label: { ja: "MapFan: グランシップの代表座標", en: "MapFan: Granship representative coordinate" },
+    url: "https://mapfan.com/spots/S54IA%2CJ%2CR3T130",
+  },
   chikyuJamstecMissions: {
     label: { ja: "JAMSTEC: ちきゅう 主なミッション", en: "JAMSTEC: CHIKYU key missions" },
     url: {
@@ -1842,6 +1862,113 @@ const SPOTS = [
     references: [REFERENCES.chikyuOfficial, REFERENCES.chikyuJamstecMissions, REFERENCES.shimizuPort, REFERENCES.shimizuPortCity],
     map: { lat: 35.034137, lng: 138.505989, ja: "清水港 地球深部探査船ちきゅう", en: "Shimizu Port CHIKYU" },
     viewpoint: { lat: 35.037074, lng: 138.487157 },
+  },
+  {
+    id: "granship",
+    icon: "🏛️",
+    ja: {
+      name: "グランシップ",
+      area: "東静岡駅付近",
+      hook: "線路脇に銀色のグランシップ",
+      story: "東京から新大阪方面へ向かうなら東静岡駅の少し手前、新大阪から東京方面へ向かうなら東静岡駅を過ぎてすぐ、A席側の窓に大きな銀灰色の建物が現れます。これが東静岡駅の南側に立つグランシップ（静岡県コンベンションアーツセンター）。静岡県が設置する県立の複合文化施設で、大ホール・中ホール、会議ホール、展示ギャラリー、会議室などを備え、文化創造と交流の拠点として使われています。磯崎新アトリエの設計で、1999年に竣工しました。車窓では、線路のすぐ向こうに迫る大きな屋根と銀色の外壁、縦に伸びるガラス面の組み合わせが目印です。",
+    },
+    en: {
+      name: "Granship",
+      area: "Around Higashi-Shizuoka Station",
+      hook: "A silver cultural complex by the line.",
+      story: "From Tokyo toward Shin-Osaka, look just before Higashi-Shizuoka Station; from Shin-Osaka toward Tokyo, the same view appears just after passing Higashi-Shizuoka. On the Seat A side, a large silver-gray complex rises beside the line. This is Granship, formally the Shizuoka Convention & Arts Center. It is a prefectural multi-purpose cultural facility with large and medium halls, a conference hall, exhibition galleries and meeting rooms — a base for cultural creation and exchange in Shizuoka. Designed by Arata Isozaki and Isozaki Arata Atelier, it was completed in 1999. From the train, the practical clue is the combination of the broad roof, silver cladding and tall glazed section close to the tracks.",
+    },
+    pageTitle: {
+      ja: "新幹線から見えるグランシップ｜静岡県コンベンションアーツセンター | 新幹線の窓",
+      en: "Granship from the Shinkansen | Shizuoka Convention & Arts Center",
+    },
+    pageHeading: {
+      ja: "線路脇に現れる、銀色のグランシップ",
+      en: "Granship, the silver complex near Higashi-Shizuoka",
+    },
+    pageHeadingChunks: {
+      ja: ["線路脇に現れる、", "銀色のグランシップ"],
+      en: ["Granship, the silver complex", "near Higashi-Shizuoka"],
+    },
+    metaDescription: {
+      ja: "東静岡駅付近、東海道新幹線のA席側に見える大きな銀灰色の建物はグランシップ。静岡県コンベンションアーツセンターの施設機能、磯崎新アトリエによる設計、東静岡駅との位置関係、車窓からの見つけ方を紹介します。",
+      en: "The large silver-gray complex near Higashi-Shizuoka Station on the Seat A side is Granship, the Shizuoka Convention & Arts Center. Learn what its halls and meeting spaces are used for, who designed it, and how to spot it from the train.",
+    },
+    sectionHeading: {
+      ja: "この大きな建物は何？",
+      en: "What is the silver complex?",
+    },
+    pageStory: {
+      ja: "グランシップは、静岡県が設置する「静岡県コンベンションアーツセンター」の愛称です。公益財団法人静岡県文化財団が指定管理者として、企画事業、貸館、大規模コンベンションや学術会議などを運営しています。磯崎新アトリエが設計し、1999年に竣工しました。新幹線からは、施設の細かな用途を見分けるより、東静岡の線路脇に続く銀灰色の大きな外壁と、アーチ状のガラス面をひとまとまりの建物として捉えると見つけやすくなります。",
+      en: "Granship is the nickname of the Shizuoka Convention & Arts Center, a prefectural facility managed by the Shizuoka Prefecture Cultural Foundation. It hosts its own cultural programs, rented events, large conventions and academic meetings. Designed by Arata Isozaki and Isozaki Arata Atelier, it was completed in 1999. From the Shinkansen, the useful clue is not a single sign or attraction but the whole building mass: silver-gray walls running beside the tracks, capped by a broad roof and a tall arched glazed section.",
+    },
+    explainer: {
+      heading: { ja: "何に使われている施設？", en: "What happens inside?" },
+      ja: [
+        "静岡県の公式案内では、グランシップは「文化創造と交流の拠点」とされる県立の複合文化施設です。正式名称は静岡県コンベンションアーツセンター、愛称がグランシップです。",
+        "大ホール・海、中ホール・大地、会議ホール・風、交流ホール、展示ギャラリー、会議室などを備えています。舞台公演だけでなく、展示、会議、コンベンションにも使われるため、車窓からはひとつの巨大なホールというより複合施設として見えます。",
+        "東静岡駅南口からメインエントランスまでは、公式案内で徒歩約5分。磯崎新アトリエによる設計で、1999年に竣工しました。地図は施設の位置確認用、車窓ではA席側の大きな外観を探してください。",
+      ],
+      en: [
+        "Shizuoka Prefecture describes Granship as a prefectural multi-purpose cultural facility and a hub for cultural creation and exchange. Its formal name is the Shizuoka Convention & Arts Center; Granship is the familiar name.",
+        "The complex includes the large Sea Hall, medium Earth Hall, Wind Conference Hall, an exchange hall, exhibition galleries and meeting rooms. It hosts performances as well as exhibitions, conferences and conventions, so from the train it reads as a large multi-building complex rather than one isolated hall.",
+        "The official access guide says the main entrance is about a five-minute walk from the south exit of Higashi-Shizuoka Station. Designed by Arata Isozaki and Isozaki Arata Atelier, the building was completed in 1999. Use the map for orientation, then look for the large structure from Seat A.",
+      ],
+    },
+    guideHighlight: {
+      ja: "東京から新大阪方面へ向かう下り列車なら東静岡駅の少し手前、上り列車なら東静岡駅を過ぎてすぐ。A席側で、線路脇に迫る銀色の大きな屋根と縦長のガラス面を探してください。東京発のぞみ基準では約52分。静岡駅からも近いですが、車窓では東静岡駅を目印にすると見つけやすくなります。",
+      en: "On a Tokyo-to-Shin-Osaka train, look just before Higashi-Shizuoka Station; on a Shin-Osaka-to-Tokyo train, look immediately after passing it. Watch Seat A for the broad silver roof and tall glazed section close to the line. The guide uses about 52 minutes from Tokyo. Granship is also close to Shizuoka Station, but Higashi-Shizuoka is the more useful window-view landmark.",
+    },
+    minutesFromTokyo: 52,
+    side: "A",
+    category: "notable",
+    confidence: "verified",
+    durationSec: 8,
+    routeNote: {
+      ja: "東京から新大阪方面へ向かう場合は、東静岡駅の少し手前、A席・海側を見てください。新大阪から東京方面へ向かう場合は、東静岡駅を過ぎてすぐのタイミングです。約52分という値は、東京発のぞみ基準の車窓向け目安です。静岡駅からも近いですが、東静岡駅を目印にすると見つけやすくなります。",
+      en: "From Tokyo toward Shin-Osaka, watch Seat A just before Higashi-Shizuoka Station. From Shin-Osaka toward Tokyo, the complex appears immediately after passing it. The 52-minute value is a window-view estimate on a Tokyo-originating Nozomi reference run. Granship is also close to Shizuoka Station, but Higashi-Shizuoka is the better landmark for spotting it.",
+    },
+    image: "images/20260816_granship_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-08-16",
+      note: {
+        ja: "新大阪→東京の上り列車から、東静岡駅を過ぎてすぐ。ファイル名時刻は参考。",
+        en: "Seen from a Shin-Osaka → Tokyo train just after passing Higashi-Shizuoka Station. The filename time is only a reference.",
+      },
+    },
+    photos: [
+      {
+        src: "images/20260816_granship_2_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見たグランシップの銀色の外観", en: "Granship's silver exterior from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-16",
+        note: { ja: "東静岡駅を過ぎてすぐ、線路脇に迫るグランシップ。", en: "Granship close beside the line just after passing Higashi-Shizuoka Station." },
+      },
+    ],
+    media: {
+      heading: { ja: "動画で見るグランシップ", en: "Granship in motion" },
+      description: { ja: "グランシップが車窓を通り過ぎる瞬間を、投稿動画でも確認できます。", en: "See Granship pass the window in a user-posted train video." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "XZVFmnY5dPo",
+          title: { ja: "グランシップの車窓動画", en: "Granship from the train window" },
+          url: "https://www.youtube.com/watch?v=XZVFmnY5dPo",
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
+    references: [REFERENCES.granshipPrefecture, REFERENCES.granshipOfficial, REFERENCES.granshipAbout, REFERENCES.granshipAccess, REFERENCES.granshipMapFan],
+    bodyLinks: [
+      { ref: REFERENCES.granshipPrefecture, label: { ja: "静岡県の施設概要を見る", en: "Read the prefectural facility overview" } },
+      { ref: REFERENCES.granshipOfficial, label: { ja: "グランシップ公式サイトを見る", en: "Open the Granship official site" } },
+      { ref: REFERENCES.granshipAbout, label: { ja: "設計・竣工年など公式概要を見る", en: "Read the official history and design details" } },
+      { ref: REFERENCES.granshipAccess, label: { ja: "公式アクセス案内を見る", en: "Open the official access guide" } },
+    ],
+    map: { lat: 34.9857086, lng: 138.4172397, ja: "グランシップ（代表座標）", en: "Granship (representative coordinate)" },
+    viewpoint: { lat: 34.98681256, lng: 138.41648866 },
   },
   {
     id: "shizuoka-tea-fields",
@@ -3803,14 +3930,14 @@ const BOARD_COLLECTION = [
   { sourceNo: 24, id: "727-no-24", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "E", lat: 34.799607, lng: 137.327733, confidence: "verified", photo: { src: "images/20260816_727_board_shimosawaki_e_michikusa.jpg", alt: "E席側から見える豊川市御津町下佐脇の727看板", note: "michikusa / 2026-08-16" }, ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
   { sourceNo: 25, id: "727-no-25", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "A", lat: 34.796903, lng: 137.324582, confidence: "needs-check", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
   { sourceNo: 26, id: "727-no-26", minutesFromTokyo: 86, segment: "豊橋 → 三河安城", side: "A", lat: 34.901211, lng: 137.120352, confidence: "needs-check", ja: "下三ツ木町（岡崎市）", en: "Shimomitsugi, Okazaki" },
-  { sourceNo: 27, id: "727-no-27", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "E", lat: 34.940822, lng: 137.08917, confidence: "needs-check", ja: "安城町天草（安城市）", en: "Amakusa, Anjo" },
+  { sourceNo: 27, id: "727-no-27", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "E", lat: 34.940822, lng: 137.08917, confidence: "verified", photo: { src: "images/20260816_727_board_amakusa_michikusa.jpg", alt: "E席側から見える安城市安城町天草の727看板", note: "michikusa / 2026-08-16 · GPSログとE席側からNo.27に照合" }, ja: "安城町天草（安城市）", en: "Amakusa, Anjo" },
   { sourceNo: 28, id: "727-no-28", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "A", lat: 34.939159, lng: 137.086311, confidence: "needs-check", ja: "安城町庚申（安城市）", en: "Koshin, Anjo" },
   { sourceNo: 29, id: "727-no-29", minutesFromTokyo: 89, segment: "三河安城 → 名古屋", side: "E", lat: 34.993895, lng: 137.034414, confidence: "verified", photo: { src: "images/20260816_727_board_kamishigehara_michikusa.jpg", alt: "E席側から見える知立市上重原町の727看板", note: "michikusa / 2026-08-16" }, ja: "上重原町（知立市）", en: "Kamishigehara, Chiryu" },
   { sourceNo: 30, id: "727-no-30", minutesFromTokyo: 90, segment: "三河安城 → 名古屋", side: "E", lat: 35.014537, lng: 137.004105, confidence: "verified", photo: { src: "images/20260816_727_board_shinden_michikusa.jpg", alt: "E席側から見える刈谷市新田町の727看板", note: "michikusa / 2026-08-16" }, ja: "新田町（刈谷市）", en: "Shinden, Kariya" },
   { sourceNo: 31, id: "727-no-31", minutesFromTokyo: 90, segment: "三河安城 → 名古屋", side: "A", lat: 35.015184, lng: 136.996694, confidence: "needs-check", ja: "一番町（刈谷市）", en: "Ichibancho, Kariya" },
   { sourceNo: 32, id: "727-no-32", minutesFromTokyo: 98, segment: "名古屋 → 岐阜羽島", side: "A", lat: 35.236042, lng: 136.783562, confidence: "needs-check", ja: "平野町（稲沢市）", en: "Hirano, Inazawa" },
   { sourceNo: 33, id: "727-no-33", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.250719, lng: 136.769991, confidence: "verified", photo: { src: "images/20260712_727_board_hirahachinotsubo_michikusa.jpg", alt: "車窓から見える稲沢市平蜂ノ坪町の727看板", note: "michikusa / 2026-07-12 · 上り列車から、清洲城の約2分前に撮影" }, ja: "平蜂ノ坪町（稲沢市）", en: "Hirabachinotsubo, Inazawa" },
-  { sourceNo: 34, id: "727-no-34", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.266181, lng: 136.760241, confidence: "needs-check", ja: "萩原町築込（一宮市）", en: "Hagiwara, Ichinomiya" },
+  { sourceNo: 34, id: "727-no-34", siteStatus: "removed", collectionNote: "2026-08-16乗車時、跡地に建物が建っており看板を確認できず。撤去済みとして記録", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.266181, lng: 136.760241, confidence: "needs-check", ja: "萩原町築込（一宮市）", en: "Hagiwara, Ichinomiya" },
   { sourceNo: 35, id: "727-no-35", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.354772, lng: 136.549999, confidence: "verified", photo: { src: "images/20260704_727_board_osawa_michikusa.jpg", alt: "E席側から見える垂井町表佐の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で12:59ごろ撮影（宮代A席の約30秒前）" }, collectionPhotos: [{ src: "images/20260712_727_board_osa_kinshozan_michikusa.jpg", alt: "金生山の手前を通り過ぎる垂井町表佐の727看板", note: "michikusa / 2026-07-12 · 金生山をながめていると通り過ぎる" }], ja: "表佐（垂井町）", en: "Osawa, Tarui" },
   { sourceNo: 36, id: "727-no-36", minutesFromTokyo: 108, segment: "岐阜羽島 → 米原", side: "A", lat: 35.361132, lng: 136.534258, confidence: "verified", photo: { src: "images/20260704_727_board_miyashiro_a_michikusa.jpg", alt: "A席側から見える垂井町宮代の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で13:00撮影" }, ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
   { sourceNo: 37, id: "727-no-37", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.362859, lng: 136.535071, collectionNote: "金生山をバックに", confidence: "verified", photo: { src: "images/20260816_727_board_miyashiro_e_michikusa.jpg", alt: "金生山を背にした垂井町宮代の727看板", note: "michikusa / 2026-08-16" }, ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },

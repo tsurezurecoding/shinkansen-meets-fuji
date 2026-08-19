@@ -11,7 +11,7 @@ const context = {};
 vm.runInNewContext(`${read("data.js")}\n;globalThis.__collection = BOARD_COLLECTION; globalThis.__spots = SPOTS;`, context);
 const collection = context.__collection;
 // データ件数(27)と、実際に集められる地点数(26)は別。撤去・確認できずの地点は後者から外す。
-const collectableCount = collection.filter((point) => point.siteStatus !== "not-found").length;
+const collectableCount = collection.filter((point) => !["not-found", "removed"].includes(point.siteStatus)).length;
 const spots = context.__spots;
 const app = read("app.js");
 const page = read("727-collection.html");
@@ -33,6 +33,8 @@ assert.equal(signs727.map((point) => point.sourceNo).join(","), Array.from({ len
 assert.equal(collection.find((point) => point.sourceNo === 19)?.stampId, "727-board", "representative keeps old stamp state");
 assert.equal(collection.find((point) => point.sourceNo === 22)?.stampId, "putiputi-sign", "Oiso point must share the Who-am-I stamp state");
 assert.equal(collection.find((point) => point.sourceNo === 22)?.legacyStampIds?.[0], "727-companion-putiputi", "Oiso point must preserve the removed companion-row state");
+assert.equal(collection.find((point) => point.sourceNo === 34)?.siteStatus, "removed", "Hagiwara point must preserve the removed status");
+assert.match(collection.find((point) => point.sourceNo === 34)?.collectionNote || "", /撤去済み/, "Hagiwara removal note missing");
 assert.ok(!collection.some((point) => point.collectionKind === "companion"), "companion signs must not appear as separate collection rows");
 assert.equal(
   collection.slice(0, 4).map((point) => point.collectionNote).join("|"),
@@ -50,6 +52,7 @@ for (const [sourceNo, note, image] of [
 }
 for (const [sourceNo, minutes, image] of [
   [23, 76, "images/20260704_727_board_haracho_michikusa.jpg"],
+  [27, 87, "images/20260816_727_board_amakusa_michikusa.jpg"],
   [35, 107, "images/20260704_727_board_osawa_michikusa.jpg"],
   [36, 108, "images/20260704_727_board_miyashiro_a_michikusa.jpg"],
   [39, 113, "images/20260704_727_board_fuse_michikusa.jpg"],
@@ -82,6 +85,7 @@ assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板
 assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "727看板と私は誰でしょう看板", "putiputi representative must remain unchanged");
 
 assertIncludes(shared, "727看板コレクション", "detail card title missing");
+assertIncludes(script, 'point.siteStatus === "removed"', "removed collection points must be excluded from the count");
 assertIncludes(shared, '"東京〜新大阪の沿線、全" + count + "地点を集める"', "rail card copy must build its count from the shared data");
 assertIncludes(shared, '設置場所の全" + escapeHTML(count) + "地点を見る', "detail card copy must build its count from the shared data");
 assert.equal(sharedData.collection727Count, collection.length, "generated shared data must carry the live collection count");
