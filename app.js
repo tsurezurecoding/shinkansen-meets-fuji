@@ -383,8 +383,14 @@ let journey = null;           // 生成済みタイムライン {mode, train, st
 const PREVIEW_DEP_MIN = 0;
 let boardCollectionExpanded = false;
 
+// 現地で確認できなかった／撤去済みの地点は、列車選択後のタイムラインには出さない。
+// 727コレクションページ側のリストには記録として残す（727-collection.js の isMissing と同じ判定）。
+function isRetired727Point(spot) {
+  return spot?.siteStatus === "not-found" || spot?.siteStatus === "removed";
+}
+
 function boardCollectionSpots() {
-  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22).map((spot) => {
+  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22 && !isRetired727Point(spot)).map((spot) => {
     const representative = SPOTS.find((candidate) => candidate.id === "727-board");
     const media = spot.photo ? {
       image: spot.photo.src,

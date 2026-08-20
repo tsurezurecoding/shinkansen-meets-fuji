@@ -54,7 +54,7 @@ for (const [sourceNo, minutes, image] of [
   [23, 76, "images/20260704_727_board_haracho_michikusa.jpg"],
   [27, 87, "images/20260816_727_board_amakusa_michikusa.jpg"],
   [35, 107, "images/20260704_727_board_osawa_michikusa.jpg"],
-  [36, 108, "images/20260704_727_board_miyashiro_a_michikusa.jpg"],
+  [36, 108, "images/20260820_727_board_miyashiro_a_michikusa.jpg"],
   [39, 113, "images/20260704_727_board_fuse_michikusa.jpg"],
 ]) {
   const point = collection.find((item) => item.sourceNo === sourceNo);

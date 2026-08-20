@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "73481a7c89efd82f",
-  "generatedAt": "2026-08-19T15:12:03.597Z",
+  "contentVersion": "362fdc7118fdaabb",
+  "generatedAt": "2026-08-20T21:37:51.719Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -9,7 +9,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 11989,
-      "sha256": "2f52cb2f20a1a605b86cf7c0ffb64416a3b62e3d118c7a1e785703e6e5683267"
+      "sha256": "545bbe448a028859fac6364485c558791bff0d738cbcd4917c9e2a57b7b9aa95"
     },
     {
       "path": "727-collection.js",
@@ -32,14 +32,14 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 129887,
-      "sha256": "c61e1f925eff2da198aee12494d8c39e45c04b97459944927f1a5df0aa9be095"
+      "bytes": 130286,
+      "sha256": "f4d80b3a80440d03319d3e11f20e719cd40fa1a6d74df03d81531c28306e7d9f"
     },
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 435794,
-      "sha256": "85d01774c3e17144eadaa5bb1cb6ebcbd8ae6e3354dbc190e6f1926b419b34a9"
+      "bytes": 437030,
+      "sha256": "9dca1c08a1dc05a37d01e617ec18488683f805fda27e738f5674017a7171786f"
     },
     {
       "path": "data/timetable.js",
@@ -51,31 +51,31 @@
       "path": "en/hanabi.html",
       "url": "https://www.michikusa-travel.com/en/hanabi.html",
       "bytes": 43871,
-      "sha256": "053eb0728e14971f62990d3db10c995f2f640295a7b625a365a518da8358a498"
+      "sha256": "285fcde20be78f97ffdecbb0f351d454e5b4c53e352841eefa6bfd0337021e27"
     },
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 24014,
-      "sha256": "c37ba0e4f970fa1009fd6f480693cb174992e1da57491462deb0e1d432756d96"
+      "sha256": "4bcf039f39471a0ff6a840030f6d92d96e508b8721d0be2e851cc709b4a4933a"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 22721,
-      "sha256": "804aab46640c8c5b3bc55467c425efed27887b9b0293c82dbb1eacf7734130a8"
+      "sha256": "693dc107ce0e5da2d2ec0a2ac8e47f8bc281a0c728c24949eea7c6499093663b"
     },
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 33793,
-      "sha256": "8664f9a6ecb3925863130dc8326a7145939cdec09fb6e21156571f4e8df8133f"
+      "sha256": "c5f209cb553a58ae2f8add72a99aeaad3d8eb584c523513a8112a751fbaaaffc"
     },
     {
       "path": "hanabi.html",
       "url": "https://www.michikusa-travel.com/hanabi.html",
       "bytes": 44179,
-      "sha256": "6b0eab1241bd4a69658701f15e84c3bf25ef7715208ce1455ed1ec16c7893ca2"
+      "sha256": "99e99ad9611f5b165edb0e8ed94721cbb490333b1d02f3dda7a048e1aaaa2032"
     },
     {
       "path": "hanabi.js",
@@ -207,13 +207,13 @@
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
       "bytes": 25391,
-      "sha256": "519e27f9ee6450027f63105c3fba68e55376e0e3c67fcfdbe2b3d3abf6096adb"
+      "sha256": "2631d9e74047b14b01d2ad8976a116c7747239a4f4ebb1c8522e1b43c2a50a61"
     },
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18969,
-      "sha256": "3c980d0d2f2fd0fa93d26191bc6c727ebf3ca42466fc2b30371f14584bfb4ff7"
+      "sha256": "8bf69b2cbb923273582aa20b776ba554329ec0f84032bd7cf22a98da4483c682"
     },
     {
       "path": "live/narration.js",
@@ -225,7 +225,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 27517,
-      "sha256": "a7fb69262e1619e5b2aff5dda91d21faf958ae544fa93bb1d99a455200eeff2b"
+      "sha256": "b5f26c31ed95e9166e6dadc21132cec3b315d03f2385f589cf78982b62f0a8e4"
     },
     {
       "path": "sparkling-dreams.js",
@@ -309,7 +309,7 @@
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
       "bytes": 36626,
-      "sha256": "e90f0764027367112c0ff696e6c944ca700ea087ea13699d9e10bb590a6e9a4b"
+      "sha256": "feabb624a29bb482b1dabb3cc9e66da81bdf065380ad62cecfeb277c545bcc4d"
     },
     {
       "path": "yakei.js",
@@ -1241,8 +1241,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 173,
-    "bytes": 6558520,
+    "itemCount": 177,
+    "bytes": 6719566,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2173,6 +2173,30 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260816_granship_michikusa.webp",
         "bytes": 46274,
         "sha256": "20e2ace46a114c04e052eb18408d8bbf0b754235c4f627bc2b2863315e96ddf9"
+      },
+      {
+        "path": "images/thumbs/20260820_727_board_ichibancho_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260820_727_board_ichibancho_michikusa.webp",
+        "bytes": 38712,
+        "sha256": "dbc0493b6ab78fc52525eeb12dfc882d1d8602987985d1f86edc3cb90f916b37"
+      },
+      {
+        "path": "images/thumbs/20260820_727_board_koshin_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260820_727_board_koshin_michikusa.webp",
+        "bytes": 24954,
+        "sha256": "bdfaa88bbe970232f02d1a349109c4ca658f03e96d5a2acfc7c3831891fe6b55"
+      },
+      {
+        "path": "images/thumbs/20260820_727_board_miyashiro_a_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260820_727_board_miyashiro_a_michikusa.webp",
+        "bytes": 62096,
+        "sha256": "a78ce65cf32ffe9c14d69217ff2dfcd7be1b2f5bf49ed88aa26cc95b3bafd071"
+      },
+      {
+        "path": "images/thumbs/20260820_odawara_castle_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260820_odawara_castle_michikusa.webp",
+        "bytes": 35284,
+        "sha256": "94f415c8b7d32fc70af356816feb333af6c59fca8ce15f5c63d53242eb81ad9e"
       },
       {
         "path": "images/thumbs/250111_hamanako_fuji_proboffin.webp",
