@@ -4,6 +4,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { thumbnailSrc, hasMiniMapCoordinates, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 import { assetVersion } from "./shared/asset-version.mjs";
+import { SPOT_COUNT as SHARED_SPOT_COUNT, syncSpotCountClaims } from "./shared/spot-count.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
@@ -20,6 +21,9 @@ const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 const dataCode = fs.readFileSync(dataPath, "utf8");
 const { SPOTS, ROUTE } = vm.runInNewContext(`${dataCode}\n;({ SPOTS, ROUTE });`, {}, { filename: dataPath });
 const SPOT_COUNT = SPOTS.length;
+if (SPOT_COUNT !== SHARED_SPOT_COUNT) {
+  throw new Error(`spot count mismatch: generator ${SPOT_COUNT} vs shared/spot-count.mjs ${SHARED_SPOT_COUNT}`);
+}
 const SHARED_SPOT_LANGUAGES = new Set(["ja", "en"]);
 const isMain = process.argv[1] && path.resolve(process.argv[1]) === path.resolve(fileURLToPath(import.meta.url));
 const trackContext = { window: { ROUTE }, ROUTE };
@@ -1910,37 +1914,6 @@ function englishIndexHTML() {
 `;
 }
 
-function replaceSpotCountClaims(html) {
-  const replacements = [
-    ["37景", `${SPOT_COUNT}景`],
-    ["37の車窓", `${SPOT_COUNT}の車窓`],
-    ["全37景", `全${SPOT_COUNT}景`],
-    ["37 views", `${SPOT_COUNT} views`],
-    ["37 curated window views", `${SPOT_COUNT} curated window views`],
-    ["37-view", `${SPOT_COUNT}-view`],
-    ["37 recommended", `${SPOT_COUNT} recommended`],
-    ["37 Tokaido", `${SPOT_COUNT} Tokaido`],
-    ["37個景色", `${SPOT_COUNT}個景色`],
-    ["37個車窗景色", `${SPOT_COUNT}個車窗景色`],
-    ["37個の景色", `${SPOT_COUNT}個の景色`],
-    ["37个景色", `${SPOT_COUNT}个景色`],
-    ["37个精选车窗景色", `${SPOT_COUNT}个精选车窗景色`],
-    ["37个车窗景色", `${SPOT_COUNT}个车窗景色`],
-    ["37개 풍경", `${SPOT_COUNT}개 풍경`],
-    ["37개의", `${SPOT_COUNT}개의`],
-    ["36個車窗景色", `${SPOT_COUNT - 1}個車窗景色`],
-    ["36个车窗景色", `${SPOT_COUNT - 1}个车窗景色`],
-    ["36개의 차창 풍경", `${SPOT_COUNT - 1}개의 차창 풍경`],
-    ["37 vues", `${SPOT_COUNT} vues`],
-    ["37 paysages", `${SPOT_COUNT} paysages`],
-    ["36 autres paysages", `${SPOT_COUNT - 1} autres paysages`],
-    ["37 Day and Night Views", `${SPOT_COUNT} Day and Night Views`],
-    ["plus 36 more views", `plus ${SPOT_COUNT - 1} more views`],
-    ["37 مشهدًا", `${SPOT_COUNT} مشهدًا`],
-    ["الـ37", `الـ${SPOT_COUNT}`],
-  ];
-  return replacements.reduce((result, [from, to]) => result.replaceAll(from, to), html);
-}
 
 function englishAppIndexHTML() {
   const railCopy = [
@@ -1984,10 +1957,10 @@ function englishAppIndexHTML() {
     .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Riding the Tokaido Shinkansen bullet train between Tokyo and Shin-Osaka? Pick your train to see when you pass Mt. Fuji and 37 other window views, and which side to sit on.">')
     .replace('<link rel="canonical" href="https://www.michikusa-travel.com/">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/">')
     .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="Shinkansen Window | Never miss the view">')
-    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for Mt. Fuji and 37 views from the Tokaido Shinkansen bullet train.">')
+    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for Mt. Fuji and 39 more views from the Tokaido Shinkansen bullet train.">')
     .replace('<meta property="og:url" content="https://www.michikusa-travel.com/">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/">')
     .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="Shinkansen Window | Never miss the view">')
-    .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="Find the time and seat side for Mt. Fuji and 37 Tokaido Shinkansen bullet train window views.">')
+    .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="Find the time and seat side for Mt. Fuji and 39 more views on the Tokaido Shinkansen bullet train.">')
     .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
@@ -2002,9 +1975,10 @@ function englishAppIndexHTML() {
   html = html
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
     .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
-  const headEnd = html.indexOf("</head>");
-  if (headEnd < 0) return replaceSpotCountClaims(html);
-  return `${html.slice(0, headEnd + "</head>".length)}${replaceSpotCountClaims(html.slice(headEnd + "</head>".length))}`;
+  // The head is synced too. It used to be skipped, which is why <title> and the og/twitter
+  // cards kept claiming 37 views while the body said 39 — the exact strings search engines
+  // and social previews read were the only ones the mechanism never touched.
+  return syncSpotCountClaims(html);
 }
 
 function guideHTML(lang) {
@@ -2268,7 +2242,7 @@ await import("./generate-language-mirrors.mjs");
 for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
   const absolutePath = path.join(appDir, relativePath);
   if (fs.existsSync(absolutePath)) {
-    writeFileIfChanged(absolutePath, replaceSpotCountClaims(fs.readFileSync(absolutePath, "utf8")));
+    writeFileIfChanged(absolutePath, syncSpotCountClaims(fs.readFileSync(absolutePath, "utf8")));
   }
 }
 // Guide pages are hand-edited SEO answer pages.
@@ -2342,7 +2316,7 @@ for (const config of guideRailConfigs) {
     new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
     `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
-  writeFileIfChanged(guidePath, replaceSpotCountClaims(syncedGuideHTML));
+  writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 

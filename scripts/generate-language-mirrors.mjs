@@ -2,16 +2,22 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { assetVersion } from "./shared/asset-version.mjs";
+import { SPOT_COUNT } from "./shared/spot-count.mjs";
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com";
+
+// Spot counts in title/description must never be hand-typed here. They are the only
+// count strings on the English field guide that reach the SERP, and hand-typed ones
+// silently go stale every time a spot is added (this file claimed 37 while data.js
+// held 40). SPOT_COUNT comes from shared/spot-count.mjs, which reads data.js.
 
 const pages = [
   {
     source: "zukan.html",
     output: "en/zukan.html",
-    title: "Tokaido Shinkansen Bullet Train Field Guide | 37 Day and Night Views",
-    description: "Browse 37 window views from the Tokaido Shinkansen bullet train for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.",
+    title: `Tokaido Shinkansen Bullet Train Field Guide | ${SPOT_COUNT} Day and Night Views`,
+    description: `Browse ${SPOT_COUNT} window views from the Tokaido Shinkansen bullet train for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.`,
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
   // generic mirror pass so its localized hero, metadata, and interactive copy survive regeneration.
@@ -94,9 +100,14 @@ function mirrorPage(page) {
 }
 
 function writeFileIfChanged(target, content) {
-  if (fs.existsSync(target) && fs.readFileSync(target, "utf8") === content) return false;
+  // .gitattributes declares "*.html text eol=lf". Mirror output inherits whatever line
+  // endings the Japanese source happens to carry on disk, and a CRLF-contaminated source
+  // silently pushes CRLF into the generated English page. git diff hides it (it normalizes
+  // on read) but the content-manifest sha check fails later. Normalize on write instead.
+  const normalized = content.split("\r\n").join("\n");
+  if (fs.existsSync(target) && fs.readFileSync(target, "utf8") === normalized) return false;
   fs.mkdirSync(path.dirname(target), { recursive: true });
-  fs.writeFileSync(target, content, "utf8");
+  fs.writeFileSync(target, normalized, "utf8");
   return true;
 }
 
