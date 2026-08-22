@@ -2443,6 +2443,22 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   content: ""; position: absolute; left: -24px; top: 22px;
   width: 8px; height: 8px; border-radius: 50%; background: var(--accent);
 }
+/* 定番は40件のなかで先に目を向けてほしいので、行そのものを一段強くする。
+   初見の利用者ほど全件を等価に見せられると選べない。 */
+.tl-item-classic::before {
+  width: 12px; height: 12px; left: -26px; top: 20px;
+  box-shadow: 0 0 0 3px rgba(198,124,78,0.18);
+}
+.tl-item-classic .tl-card {
+  border-color: var(--accent);
+  box-shadow: 0 3px 14px rgba(198,124,78,0.16);
+}
+.tl-classic-badge {
+  display: inline-block; margin-left: 8px; padding: 1px 7px;
+  border: 1px solid var(--accent); border-radius: 999px;
+  color: var(--accent); font-size: 10.5px; letter-spacing: .04em;
+  vertical-align: middle; white-space: nowrap;
+}
 .tl-card {
   background: var(--card); border: 1px solid var(--line); border-radius: 14px;
   padding: 14px 16px; box-shadow: 0 3px 12px rgba(22,32,46,0.06);

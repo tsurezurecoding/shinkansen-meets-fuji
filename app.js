@@ -1449,13 +1449,19 @@ function spotItemHTML(sp, clock) {
   const thumb = featuredMedia
     ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" decoding="async" src="${thumbnailSrc(featuredMedia.src)}" alt=""></div>`
     : "";
+  // 定番は行ごと強調する。40件を等価に並べると初見の利用者が選べない。
+  // ラベルは既存の fClassic（定番 / Classic）を使い、UI文字列を増やさない。
+  const isClassic = sp.category === "classic";
+  const classicBadge = isClassic
+    ? `<span class="tl-classic-badge">${escapeHTML(t("fClassic"))}</span>`
+    : "";
   return `
-      <li class="tl-item${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
+      <li class="tl-item${isClassic ? " tl-item-classic" : ""}${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
         <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
           <div class="tl-card-main">
             <div class="tl-copy">
               <div class="tl-top">
-                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span></div>
+                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span>${classicBadge}</div>
               </div>
               <div class="spot-card-footer">
                 <div class="tl-meta">${seatShortBadge(sp)}${sp.is727Collection ? catBadge(sp) : ""}${sp.is727Collection ? confBadge(sp) : ""}</div>
@@ -1918,13 +1924,61 @@ function medalDetailHTML(selectedSet) {
 }
 
 /* ---------- stamps ---------- */
+// 到達済みメダルの記録。GAへ送るのは「初めてその段階へ到達した瞬間」だけにする。
+// スタンプを消して押し直すたびに再送すると、達成数が実態より膨らむ。
+const MEDAL_REACHED_KEY = "mado-medals-reached";
+function loadMedalsReached() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(MEDAL_REACHED_KEY) || "{}");
+    return raw && typeof raw === "object" ? raw : {};
+  } catch (error) {
+    return {};
+  }
+}
+function medalLevelSnapshot() {
+  const snapshot = {};
+  MEDAL_SETS.forEach((set) => {
+    const progress = medalProgress(set);
+    snapshot[set.id] = { rank: progress.level ? progress.level.rank : 0, progress };
+  });
+  return snapshot;
+}
+function reportMedalGains(before) {
+  const reached = loadMedalsReached();
+  let changed = false;
+  MEDAL_SETS.forEach((set) => {
+    const progress = medalProgress(set);
+    const rank = progress.level ? progress.level.rank : 0;
+    if (rank <= (before[set.id]?.rank ?? 0)) return;
+    if (rank <= (reached[set.id] ?? 0)) return;
+    reached[set.id] = rank;
+    changed = true;
+    track("medal_earned", {
+      medal_id: set.id,
+      medal_level: progress.level ? progress.level.key : "none",
+      collected: progress.got,
+      medal_total: progress.total,
+      completed: progress.got >= progress.total,
+    });
+  });
+  if (changed) {
+    try {
+      localStorage.setItem(MEDAL_REACHED_KEY, JSON.stringify(reached));
+    } catch (error) {
+      /* 保存できなくても計測以外に影響はない */
+    }
+  }
+}
+
 function toggleStamp(id) {
   const removed = !!stamps[id];
+  const medalsBefore = medalLevelSnapshot();
   if (removed) delete stamps[id];
   else stamps[id] = Date.now();
   const stampEventParams = { spot_id: id };
   if (document.body?.classList.contains("journal-page")) stampEventParams.page_context = "journal";
   track(removed ? "stamp_removed" : "stamp_added", stampEventParams);
+  if (!removed) reportMedalGains(medalsBefore);
   localStorage.setItem("mado-stamps", JSON.stringify(stamps));
   renderMedalBoard();
   renderStampboard();

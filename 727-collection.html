@@ -26,7 +26,36 @@
   <meta name="twitter:title" content="727看板の設置場所一覧｜東海道新幹線から見える24地点">
   <meta name="twitter:description" content="東海道新幹線から見える727看板の設置場所を、24地点の一覧と地図で。地名・区間・座席側つき。">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-727-collection.jpg">
-  <link rel="stylesheet" href="style.css?v=d8b76f8c">
+  <link rel="stylesheet" href="style.css?v=15556993">
+  <style>
+    .collection-route-intro { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin: 20px 0 8px; }
+    .collection-route-intro strong { font-family: var(--font-serif); font-size: 18px; }
+    .collection-route-intro span { color: var(--ink-soft); font-size: 11px; }
+    .collection-route-segment + .collection-route-segment { margin-top: 28px; }
+    .collection-route-segment-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 0 0 9px 32px; border-bottom: 1px solid rgba(125,155,192,.3); }
+    .collection-route-stations { display: flex; align-items: center; gap: 8px; font-family: var(--font-serif); font-size: 17px; font-weight: 700; }
+    .collection-route-arrow { color: var(--accent); font-family: var(--font-sans); font-size: 15px; }
+    .collection-route-segment-meta { display: flex; flex-wrap: wrap; gap: 5px 12px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
+    .collection-route-points { position: relative; display: grid; gap: 10px; margin-top: 12px; padding-left: 32px; }
+    .collection-route-points::before { content: ""; position: absolute; top: -13px; bottom: -29px; left: 9px; width: 2px; background: linear-gradient(180deg, var(--accent), rgba(125,155,192,.38)); }
+    .collection-route-segment:last-child .collection-route-points::before { bottom: 50%; }
+    .collection-route-point { position: relative; min-width: 0; }
+    .collection-route-point::before { content: ""; position: absolute; z-index: 2; top: 25px; left: -28px; width: 10px; height: 10px; border: 3px solid var(--paper); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px rgba(179,39,45,.28); }
+    .collection-route-point.is-missing-point::before { background: #8793a0; }
+    .collection-point-summary-meta { display: flex; flex-wrap: wrap; gap: 3px 10px; color: var(--ink-soft); font-size: 11px; font-weight: 700; line-height: 1.45; }
+    .collection-point-summary-time { color: var(--accent); }
+    @media (max-width: 600px) {
+      .collection-route-segment-header { align-items: flex-start; padding-left: 24px; }
+      .collection-route-stations { font-size: 15px; }
+      .collection-route-points { padding-left: 24px; }
+      .collection-route-points::before { left: 6px; }
+      .collection-route-point::before { left: -23px; }
+    }
+    @media (max-width: 360px) {
+      .collection-point-summary { grid-template-columns: minmax(0, 1fr) auto; }
+      .collection-point-summary-thumb { display: none; }
+    }
+  </style>
 </head>
 <body class="collection-727-page spot-page spot-page-utility" data-page="727-collection" data-spot-page-shared-context="utility" data-spot-page-shared-lang="ja" data-spot-page-shared-root="./" data-spot-page-shared-route="727-collection.html">
   <div data-spot-page-shared-module="topbar"></div>
@@ -77,12 +106,12 @@
       <div class="section-head">
         <p class="eyebrow">SPOT LIST</p>
         <h2 id="collectionListTitle">727看板の設置場所リスト（24地点）</h2>
-        <p class="section-sub"><span class="copy-chunk">東京〜新大阪の設置場所を地図で確かめ、</span><span class="copy-chunk">地名から座席側・通過の目安時刻・写真を開けます。</span><span class="copy-chunk">設置場所の地図とストリートビューのリンクもつけていますので、</span><span class="copy-chunk">見つけるときの参考にしてみてください。</span></p>
+        <p class="section-sub"><span class="copy-chunk">東京からの時間順に、駅と駅のあいだでまとめました。</span><span class="copy-chunk">地名・座席側・通過の目安を見ながら、</span><span class="copy-chunk">気になる地点を開くと写真や地図を確認できます。</span></p>
       </div>
       <div class="collection-map-layout">
         <div class="collection-map-shell">
           <div class="collection-map-toolbar">
-            <span>東京〜新大阪 · 全24地点</span>
+            <span>東京〜新大阪 · 収集対象 全24地点</span>
           </div>
           <div id="collectionMap" class="collection-map" data-collection-map role="application" aria-label="727看板の地点地図"></div>
           <p id="collectionMapStatus" class="collection-map-status" role="status" aria-live="polite">地図を読み込んでいます。</p>
@@ -93,14 +122,16 @@
           <div id="collectionMapFallbackLinks"></div>
         </aside>
       </div>
+      <div class="collection-route-intro">
+        <strong>東京 → 新大阪</strong>
+        <span>下り・のぞみ基準 約147分の目安</span>
+      </div>
       <div class="collection-list-tools">
         <div class="collection-filter-group" role="group" aria-label="地点リストの絞り込み">
           <span class="collection-filter-label">絞り込み</span>
           <button type="button" class="collection-filter-button is-active" data-collection-filter="all" aria-pressed="true">すべて</button>
           <button type="button" class="collection-filter-button" data-collection-filter="seat-a" aria-pressed="false">A席側</button>
           <button type="button" class="collection-filter-button" data-collection-filter="seat-e" aria-pressed="false">E席側</button>
-          <button type="button" class="collection-filter-button" data-collection-filter="photo" aria-pressed="false">写真あり</button>
-          <button type="button" class="collection-filter-button" data-collection-filter="no-photo" aria-pressed="false">写真なし</button>
           <button type="button" class="collection-filter-button" data-collection-filter="found" aria-pressed="false">記録済み</button>
           <button type="button" class="collection-filter-button" data-collection-filter="unfound" aria-pressed="false">未記録</button>
         </div>
@@ -135,10 +166,10 @@
     <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 
-  <script src="spot-page-shared-data.js?v=d6647ccd"></script>
+  <script src="spot-page-shared-data.js?v=1832df90"></script>
   <script src="spot-page-shared.js?v=e391a1d9"></script>
-  <script src="data.js?v=21b47ecb"></script>
+  <script src="data.js?v=d9aef2c1"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
-  <script src="727-collection.js?v=1669bd7c"></script>
+  <script src="727-collection.js?v=9425fdcc"></script>
 </body>
 </html>

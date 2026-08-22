@@ -1296,7 +1296,7 @@ const SPOTS = [
       ja: "この区間の主役は、ひとつの建物ではなく景色の切り替わりです。魚籃観音像を過ぎたらA席側を見て、トンネルを抜けた瞬間の明るさに反応してください。初島は海上の低い輪郭、熱海城は山上の白い建物として探すと見つけやすくなります。",
       en: "The main attraction is the changing sequence rather than one landmark. After Gyoran Kannon, watch Seat A and react when the window brightens after a tunnel. Hatsushima is a low outline on the water; Atami Castle is the white building high on the slope.",
     },
-    minutesFromTokyo: 36, side: "A", category: "classic", confidence: "verified", durationSec: 60, scene: "bay",
+    minutesFromTokyo: 36, side: "A", category: "notable", confidence: "verified", durationSec: 60, scene: "bay",
     image: "images/20260804_atami_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-04", note: { ja: "朝の光にひらく熱海の海", en: "Atami's sea opening in the morning light." } },
     photos: [

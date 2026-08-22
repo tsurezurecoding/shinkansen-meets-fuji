@@ -43,16 +43,13 @@
   function statusLabel(point) { return point.siteStatus === "removed" ? "撤去確認" : (point.confidence === "needs-check" ? "確認中" : ""); }
   function matchesFilter(point) {
     var seatFilters = ["seat-a", "seat-e"].filter(function (filter) { return activeFilters.has(filter); });
-    var photoFilters = ["photo", "no-photo"].filter(function (filter) { return activeFilters.has(filter); });
     var recordFilters = ["found", "unfound"].filter(function (filter) { return activeFilters.has(filter); });
-    var hasPhoto = Boolean(point.photo && point.photo.src);
     var found = isFound(point);
     if (seatFilters.length && !seatFilters.includes("seat-" + String(point.side || "").toLowerCase())) return false;
-    if (photoFilters.length && !((hasPhoto && activeFilters.has("photo")) || (!hasPhoto && activeFilters.has("no-photo")))) return false;
     if (recordFilters.length && !((found && activeFilters.has("found")) || (!found && activeFilters.has("unfound")))) return false;
     return true;
   }
-  function updateFilterControls(count) {
+  function updateFilterControls(visiblePoints) {
     document.querySelectorAll("[data-collection-filter]").forEach(function (button) {
       var filter = button.getAttribute("data-collection-filter");
       var selected = filter === "all" ? activeFilters.size === 0 : activeFilters.has(filter);
@@ -60,7 +57,11 @@
       button.setAttribute("aria-pressed", String(selected));
     });
     var countTarget = document.getElementById("collectionListCount");
-    if (countTarget) countTarget.textContent = count + "地点";
+    if (countTarget) {
+      var collectable = visiblePoints.filter(function (point) { return !isMissing(point); }).length;
+      var records = visiblePoints.length - collectable;
+      countTarget.textContent = collectable + "地点" + (records ? " ＋ 調査記録" + records + "件" : "");
+    }
   }
 
   function renderProgress() {
@@ -105,16 +106,38 @@
     var list = document.getElementById("collectionList");
     if (!list) return;
     destroyExpandedMap();
-    var visiblePoints = points.filter(matchesFilter);
-    updateFilterControls(visiblePoints.length);
-    list.innerHTML = visiblePoints.map(function (point) {
+    var visiblePoints = points.filter(matchesFilter).slice().sort(function (a, b) {
+      return Number(a.minutesFromTokyo || 0) - Number(b.minutesFromTokyo || 0) || Number(a.sourceNo || 0) - Number(b.sourceNo || 0);
+    });
+    updateFilterControls(visiblePoints);
+    var segmentGroups = [];
+    visiblePoints.forEach(function (point) {
+      var segment = pointSegment(point);
+      var group = segmentGroups.find(function (item) { return item.segment === segment; });
+      if (!group) { group = { segment: segment, points: [] }; segmentGroups.push(group); }
+      group.points.push(point);
+    });
+    function pointCard(point) {
       var found = isFound(point);
       var detailId = "collection-detail-" + point.id;
       var note = point.collectionNote ? "<small class=\"collection-point-summary-note\">" + escapeHTML(point.collectionNote) + "</small>" : "";
       var seatTag = "<span class=\"collection-seat-tag collection-seat-" + escapeHTML(String(point.side || "").toLowerCase()) + "\">" + escapeHTML(sideLabel(point)) + "</span>";
       var summaryTitle = "<span class=\"collection-point-summary-title\"><strong class=\"collection-point-summary-name\">" + escapeHTML(pointName(point)) + "</strong>" + seatTag + "</span>";
+      var summaryMeta = "<span class=\"collection-point-summary-meta\"><span class=\"collection-point-summary-time\">東京から約" + escapeHTML(point.minutesFromTokyo) + "分</span><span>" + escapeHTML(pointSegment(point).replace(" → ", "〜")) + "</span></span>";
       var thumbnail = point.photo && point.photo.src ? "<img class=\"collection-point-summary-thumb\" src=\"" + escapeHTML(point.photo.src) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\">" : "";
-      return "<article class=\"collection-point-card" + (found ? " is-found" : "") + (isMissing(point) ? " is-missing" : "") + "\" data-point-id=\"" + escapeHTML(point.id) + "\" data-point-card><button type=\"button\" class=\"collection-point-summary\" data-point-accordion aria-expanded=\"false\" aria-controls=\"" + escapeHTML(detailId) + "\"><span class=\"collection-point-summary-copy\">" + summaryTitle + note + "</span>" + thumbnail + "<span class=\"collection-point-found-icon\" aria-label=\"" + (found ? "記録済み" : "未記録") + "\">" + (found ? "✓" : "○") + "</span></button>" + detailMarkup(point, detailId) + "</article>";
+      return "<div class=\"collection-route-point" + (isMissing(point) ? " is-missing-point" : "") + "\"><article class=\"collection-point-card" + (found ? " is-found" : "") + (isMissing(point) ? " is-missing" : "") + "\" data-point-id=\"" + escapeHTML(point.id) + "\" data-point-card><button type=\"button\" class=\"collection-point-summary\" data-point-accordion aria-expanded=\"false\" aria-controls=\"" + escapeHTML(detailId) + "\"><span class=\"collection-point-summary-copy\">" + summaryMeta + summaryTitle + note + "</span>" + thumbnail + "<span class=\"collection-point-found-icon\" aria-label=\"" + (found ? "記録済み" : "未記録") + "\">" + (found ? "✓" : "○") + "</span></button>" + detailMarkup(point, detailId) + "</article></div>";
+    }
+    list.innerHTML = segmentGroups.map(function (group, index) {
+      var stations = group.segment.split(" → ");
+      var minutes = group.points.map(function (point) { return Number(point.minutesFromTokyo || 0); });
+      var firstMinute = Math.min.apply(Math, minutes);
+      var lastMinute = Math.max.apply(Math, minutes);
+      var timeRange = firstMinute === lastMinute ? firstMinute + "分" : firstMinute + "〜" + lastMinute + "分";
+      var collectable = group.points.filter(function (point) { return !isMissing(point); }).length;
+      var records = group.points.length - collectable;
+      var groupCount = collectable + "地点" + (records ? "・調査記録" + records + "件" : "");
+      var titleId = "collection-route-segment-" + index;
+      return "<section class=\"collection-route-segment\" aria-labelledby=\"" + titleId + "\"><header class=\"collection-route-segment-header\"><h3 id=\"" + titleId + "\" class=\"collection-route-stations\"><span>" + escapeHTML(stations[0] || group.segment) + "</span><span class=\"collection-route-arrow\" aria-hidden=\"true\">→</span><span>" + escapeHTML(stations[1] || "沿線") + "</span></h3><div class=\"collection-route-segment-meta\"><span>東京から約" + timeRange + "</span><span>" + groupCount + "</span></div></header><div class=\"collection-route-points\">" + group.points.map(pointCard).join("") + "</div></section>";
     }).join("");
     if (openPointId) setAccordion(openPointId, true, false);
   }
