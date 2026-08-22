@@ -648,7 +648,7 @@ const SPOTS = [
       ja: "東京駅を出たら、まずE席側の窓を先に見ておくのがおすすめです。汐留や浜松町のビル群のすきまに、赤い縦のシルエットが一瞬だけ差し込みます。見えなくても、その先に続く品川の高層ビル街や芝公園の緑まで含めて、東京の中心部を横切っている実感を楽しんでください。夜はライトアップされた塔が特に映えます。",
       en: "As soon as the train leaves Tokyo Station, look toward the Seat E window early. A red vertical silhouette flashes through the gaps between the Shiodome and Hamamatsucho towers. Even if you miss the tower itself, the Shinagawa high-rise cluster and the green of Shiba Park make it clear you are crossing central Tokyo. At night, the illuminated tower stands out especially well.",
     },
-    minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 5, scene: "hills",
+    minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 5, spotting: "moderate", scene: "hills",
     image: "images/20250111_tokyo_tower_letus10.jpg",
     photoCredit: {
       ja: "@letus10 / 新幹線の車窓から",
@@ -729,7 +729,7 @@ const SPOTS = [
       ja: "相模川を渡り終わって少ししたら、E席側の遠く、丹沢の裾野へ続く丘の斜面を探してください。三角屋根がカラフルに並ぶ一角があります。派手なランドマークではないので、事前に「三角屋根の丘」と頭に入れておくのが見つけるコツです。",
       en: "Shortly after crossing the Sagami River, look far off on the Seat E side, toward the foothills climbing into the Tanzawa range. Somewhere in that hillside, a patch of colorful triangular roofs stands out. It is not a bold landmark, so remembering 'the triangular-roof hill' in advance is the key to spotting it.",
     },
-    minutesFromTokyo: 27, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "hills",
+    minutesFromTokyo: 27, side: "E", category: "notable", confidence: "verified", durationSec: 3, spotting: "moderate", scene: "hills",
     image: "images/20260530_hinataoka.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -796,7 +796,7 @@ const SPOTS = [
       ja: "品川を出たあとは、まずE席側の遠くをぼんやり見てください。近くのビルよりも「屋根の稜線の向こう」に富士山らしい輪郭を探すのがコツです。手前の景色（高層ビル・車両基地・住宅街）も一緒に眺めると、都心を横切っている実感が強くなります。",
       en: "After Shinagawa, let your eyes drift toward the far distance on Seat E. Look beyond the near buildings, along the ridge of rooftops, for a small triangular silhouette. Watching the foreground (skyscrapers, train depots, low neighborhoods) at the same time makes the sense of crossing central Tokyo much stronger.",
     },
-    minutesFromTokyo: 10, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, scene: "fuji",
+    minutesFromTokyo: 10, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, spotting: "moderate", scene: "fuji",
     image: "images/20260509_ota_fuji_t_yangyang.jpg",
     photoCredit: {
       ja: "@T_Yangyang",
@@ -858,7 +858,7 @@ const SPOTS = [
       ja: "東京から新大阪方面へ向かう場合は、品川を出て多摩川を渡る直前、E席・山側の窓を見てください。新大阪から東京方面へ向かう場合は、新横浜を出て多摩川を渡り始める直前がタイミングで、同じくE席側に青い丸子橋が見えます。",
       en: "From Tokyo toward Shin-Osaka, watch the right-hand window (Seat E) just before crossing the Tama River after Shinagawa. From Shin-Osaka toward Tokyo, look for the blue arch on the same Seat E side just as the train starts crossing the Tama River after leaving Shin-Yokohama.",
     },
-    minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "bay",
+    minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, spotting: "moderate", scene: "bay",
     image: "images/20250531_maruko_bridge_letus10.jpg",
     photoCredit: {
       ja: "@letus10 / 新幹線の車窓から",
@@ -1222,7 +1222,7 @@ const SPOTS = [
       ja: "相模川を渡る前後で、E席側の遠くに丹沢の緑の稜線を探し、その奥に「一段高くとがった白い（または灰青の）山影」を探してください。手前の丹沢と重なると分かりにくいので、視線を少し高く上げて眺めるのがコツです。冬の朝は特に見える確率が高くなります。",
       en: "As the train approaches or crosses the Sagami River, look far off on the Seat E side for the green ridge of Tanzawa; then raise your gaze a little higher for the 'sharper, taller white (or blue-gray) peak' behind it. Fuji can be hidden by overlapping Tanzawa ridges, so lifting your eyes slightly helps. Winter mornings offer the best chance.",
     },
-    minutesFromTokyo: 25, side: "E", category: "notable", confidence: "verified", durationSec: 60, scene: "fuji",
+    minutesFromTokyo: 25, side: "E", category: "notable", confidence: "verified", durationSec: 60, spotting: "moderate", scene: "fuji",
     image: "images/20240114_sagami_fuji_odawara_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -1296,7 +1296,7 @@ const SPOTS = [
       ja: "この区間の主役は、ひとつの建物ではなく景色の切り替わりです。魚籃観音像を過ぎたらA席側を見て、トンネルを抜けた瞬間の明るさに反応してください。初島は海上の低い輪郭、熱海城は山上の白い建物として探すと見つけやすくなります。",
       en: "The main attraction is the changing sequence rather than one landmark. After Gyoran Kannon, watch Seat A and react when the window brightens after a tunnel. Hatsushima is a low outline on the water; Atami Castle is the white building high on the slope.",
     },
-    minutesFromTokyo: 36, side: "A", category: "notable", confidence: "verified", durationSec: 60, scene: "bay",
+    minutesFromTokyo: 36, side: "A", category: "notable", confidence: "verified", durationSec: 60, spotting: "moderate", scene: "bay",
     image: "images/20260804_atami_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-04", note: { ja: "朝の光にひらく熱海の海", en: "Atami's sea opening in the morning light." } },
     photos: [
@@ -1388,7 +1388,7 @@ const SPOTS = [
       ja: "駅ホームの少し手前、A席側の街並みの間に白い天守を探してください。目印は駅の北側にある小高い緑と、その上の白い建物。速度が落ちる停車列車ならより見つけやすく、通過列車では一瞬なので事前に窓の外を向いておくのがコツです。",
       en: "Look on the Seat A side a little before the station, between the buildings. Aim for the small green hill just north of the station and the white structure on top. Stopping services slow enough for a real look; on passing Nozomi, keep your eyes on the window before the station comes into sight.",
     },
-    minutesFromTokyo: 31, side: "A", category: "curious", confidence: "verified", durationSec: 2, scene: "castle",
+    minutesFromTokyo: 31, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "moderate", scene: "castle",
     image: "images/20251112_odawara_castle_castle_traveler.jpg",
     photoCredit: {
       ja: "@Castle_Traveler",
@@ -1528,7 +1528,7 @@ const SPOTS = [
     side: "E",
     category: "curious",
     confidence: "verified",
-    durationSec: 4,
+    durationSec: 4, spotting: "moderate",
     scene: "hills",
     image: "images/20260804_fujipipe_michikusa.jpg",
     photoCredit: {
@@ -1706,7 +1706,7 @@ const SPOTS = [
       ja: "安倍川を渡ったら、A席側の海寄りの上空を意識してください。ビルや工場の合間から、富士山の頂上部だけ、あるいは輪郭全体がすっと差し込んできます。数秒で消えるので、スマホから顔を上げて窓の外へ視線を先に向けておくのが最大のコツです。",
       en: "As soon as the train finishes crossing the Abe River, focus on the sky slightly above the horizon on the Seat A (sea) side. Fuji — sometimes only the summit, sometimes the whole outline — slips into view between buildings and factories. It lasts only a few seconds, so the single best trick is to look up from your phone in advance and keep your eyes on the window.",
     },
-    minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 5, scene: "leftfuji",
+    minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", scene: "leftfuji",
     routeNote: {
       ja: "東京から新大阪方面へ向かう場合は、静岡駅を過ぎて安倍川を渡った直後、A席・海側の窓を見てください。新大阪から東京方面へ向かう場合は、通過順が逆になります。",
       en: "From Tokyo toward Shin-Osaka, watch the left-hand window (Seat A) just after Shizuoka Station and the Abe River crossing. Toward Tokyo, the order is reversed.",
@@ -1779,7 +1779,7 @@ const SPOTS = [
       ja: "新富士を過ぎたら、A席側の遠くに港のクレーン群を探してください。ずらりと並ぶ細長いクレーンの合間に、頭に白い格子状のやぐらを載せた船があれば、それが「ちきゅう」です。港にいない日もあるので、いなくても気を落とさず、清水の港湾工業景として楽しむのがおすすめです。夜は港全体が作業灯とクレーンの明かりに縁取られ、暗い海面を背にした「ちきゅう」のやぐらが昼よりもかえって見分けやすくなります。",
       en: "After Shin-Fuji, look far off on the Seat A side for the row of gantry cranes at Shimizu Port. If, among them, you see a ship with a tall white lattice tower rising from its middle, that is CHIKYU. It is not always in port; if it is gone, just enjoy the industrial harbor scenery of Shimizu instead. At night the whole port is outlined by work lights and crane lamps, and CHIKYU's derrick against the dark water can actually be easier to pick out than by day.",
     },
-    minutesFromTokyo: 50, side: "A", category: "notable", confidence: "source-backed", durationSec: 5, scene: "bay",
+    minutesFromTokyo: 50, side: "A", category: "notable", confidence: "source-backed", durationSec: 5, spotting: "moderate", scene: "bay",
     image: "images/20240119_shimizu_port_chikyu_senba16530315.jpg",
     photoCredit: {
       ja: "@senba16530315",
@@ -1944,7 +1944,7 @@ const SPOTS = [
     side: "A",
     category: "notable",
     confidence: "verified",
-    durationSec: 8,
+    durationSec: 8, spotting: "moderate",
     routeNote: {
       ja: "東京から新大阪方面へ向かう場合は、東静岡駅の少し手前、A席・海側を見てください。新大阪から東京方面へ向かう場合は、東静岡駅を過ぎてすぐのタイミングです。約52分という値は、東京発のぞみ基準の車窓向け目安です。静岡駅からも近いですが、東静岡駅を目印にすると見つけやすくなります。",
       en: "From Tokyo toward Shin-Osaka, watch Seat A just before Higashi-Shizuoka Station. From Shin-Osaka toward Tokyo, the complex appears immediately after passing it. The 52-minute value is a window-view estimate on a Tokyo-originating Nozomi reference run. Granship is also close to Shizuoka Station, but Higashi-Shizuoka is the better landmark for spotting it.",
@@ -2037,7 +2037,7 @@ const SPOTS = [
       ja: "静岡を過ぎたら、まず線路脇の緑の縞模様に注目してください。次に、畝の上に立つ縦長の柱と羽根（防霜ファン）を数えてみると、静岡茶の畑らしさが一気に見えてきます。掛川駅前の掛川城とあわせて、「城の前は茶畑」というリズムを楽しむと、この区間の記憶に残りやすくなります。",
       en: "After Shizuoka, first notice the striped green pattern beside the tracks. Then start counting the tall fans standing above the ridges — those frost-protection fans are a signature of Shizuoka tea. Pair the fields with the glimpse of Kakegawa Castle just after, and this stretch becomes easy to remember: tea fields first, castle right after.",
     },
-    minutesFromTokyo: 61, side: "E", category: "notable", confidence: "verified", durationSec: 30, scene: "hills",
+    minutesFromTokyo: 61, side: "E", category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", scene: "hills",
     image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
     photos: [
@@ -2100,7 +2100,7 @@ const SPOTS = [
       ja: "掛川駅に近づいたら、E席側の丘の上を狙ってください。白い天守は樹木の緑を背にして立つので、影に埋もれず見つけやすい形をしています。のぞみは通過するので数秒。停車するひかり・こだまなら、駅ホームから角度を変えて眺めることもできます。",
       en: "As Kakegawa Station approaches, focus on the hill just north of the tracks from Seat E. The white keep is set against a green tree line, which makes it stand out cleanly. On a passing Nozomi you have only a few seconds; on stopping Hikari or Kodama services, you can also see it at a slightly different angle from the platform.",
     },
-    minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 10, scene: "castle",
+    minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 10, spotting: "moderate", scene: "castle",
     image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
     photos: [
@@ -2365,7 +2365,7 @@ const SPOTS = [
         "Fuji appears much farther away than Sun Marine Bridge, close to the boundary between water and sky. Use the bridge as a landmark, then move your gaze beyond its right side.",
       ],
     },
-    minutesFromTokyo: 73, side: "E", category: "notable", confidence: "source-backed", durationSec: 30, scene: "fuji",
+    minutesFromTokyo: 73, side: "E", category: "notable", confidence: "source-backed", durationSec: 30, spotting: "moderate", scene: "fuji",
     image: "images/250111_hamanako_fuji_proboffin.jpg",
     photoCredit: {
       ja: "@ProBoffin",
@@ -2533,7 +2533,7 @@ const SPOTS = [
       ja: "豊橋を出て蒲郡付近を進むあいだ、A席側の遠くに水平線が開ける瞬間があります。そのとき、水平線の上にごく低くひょうたん型の輪郭を探してみてください。派手なランドマークではないぶん、見つけた瞬間のちょっとした達成感がある車窓です。",
       en: "After Toyohashi, as the train passes Gamagori, watch for moments when the far horizon opens on the Seat A side. In those seconds, look for a low, gourd-shaped outline sitting just above the water. It is not a bold landmark, but exactly for that reason, spotting it feels like a small quiet win.",
     },
-    minutesFromTokyo: 84, side: "A", category: "notable", confidence: "verified", durationSec: 5, scene: "bay",
+    minutesFromTokyo: 84, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", scene: "bay",
     image: "images/20181213_mikawa_oshima_kawasan3.jpg",
     photoCredit: {
       ja: "@kawasan3",
@@ -2614,7 +2614,7 @@ const SPOTS = [
       ja: "三河安城が近づいたら、E席側の遠くに工場地帯を意識してください。工場の壁面いっぱいに、太くはっきりした赤・青・白の帯が描かれた建物が見えたらそれがニチバン安城工場のセロテープ壁看板です。反対方向（上り）では、三河安城を通過した直後がタイミングです。夜は看板そのものが照明で照らされ、暗い工場地帯のなかに赤と青の帯だけが浮かび上がるので、昼より見つけやすいくらいです。",
       en: "As Mikawa-Anjo approaches, watch the industrial area far off on the Seat E side. Look for a factory whose entire wall is dressed in bold red, blue and white stripes — that is Nichiban's Anjo Factory and its CELLOTAPE wall sign. In the opposite direction (upbound), the timing is just after passing Mikawa-Anjo. At night the sign itself is lit, so the red and blue bands float out of the dark industrial belt — arguably easier to spot than in daylight.",
     },
-    minutesFromTokyo: 88, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, scene: "solar",
+    minutesFromTokyo: 88, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, spotting: "moderate", scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
     photoCredit: {
       ja: "@letus10 / 新幹線の車窓から",
@@ -3318,7 +3318,7 @@ const SPOTS = [
     side: "E",
     category: "notable",
     confidence: "verified",
-    durationSec: 6,
+    durationSec: 6, spotting: "moderate",
     scene: "hills",
     image: "images/20260712_fujitec_big_wing_michikusa.jpg",
     photoCredit: {
@@ -3481,7 +3481,7 @@ const SPOTS = [
       ja: "米原を通過して数分、E席側の平野に「独立して盛り上がる、まとまった緑の山」を探してください。麓の田園にある大きな看板がタイミングの合図です。天守を探すのではなく、この山の上でかつて何が決まったか、を思いながら眺めるとぐっと印象が変わります。",
       en: "A few minutes past Maibara, look toward Seat E for a single, well-defined green hill rising alone from the plain. The large signpost in the fields below is the timing cue. Do not look for a keep — look at the hill knowing what was decided on it, and the view lands very differently.",
     },
-    minutesFromTokyo: 115, side: "E", category: "notable", confidence: "verified", durationSec: 5, scene: "castle",
+    minutesFromTokyo: 115, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", scene: "castle",
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
     photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
@@ -3610,7 +3610,7 @@ const SPOTS = [
       ja: "安土駅付近を通るあたりで、E席側の平野の中に「他より一段大きく、山の形が長く伸びた山」を探してください。天守も看板も見えませんが、その稜線こそが観音寺城の跡です。「あの山が城だった」と知って眺めるだけで、車窓の意味が変わります。",
       en: "Around Azuchi, look toward Seat E for a mountain that is 'clearly bigger and longer-shouldered' than its neighbors on the plain. There is no keep or sign, but the ridge itself is the castle site. Simply knowing that the mountain once *was* the fortress changes the meaning of the window.",
     },
-    minutesFromTokyo: 120, side: "E", category: "notable", confidence: "needs-check", durationSec: 5, scene: "mountain",
+    minutesFromTokyo: 120, side: "E", category: "notable", confidence: "needs-check", durationSec: 5, spotting: "moderate", scene: "mountain",
     image: "images/20240719_kannonji_castle_asami_k920.jpg",
     photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
@@ -3754,7 +3754,7 @@ const SPOTS = [
       ja: "京都駅が近づく前の数分、E席側の窓の外に川と橋を探してください。中の島を挟んで大橋・小橋が並ぶシルエットと、朱塗りの欄干が目印です。橋そのものは一瞬ですが、「あの下の川を、天下分け目の軍勢が何度も渡ろうとした」と思って眺めると、京都到着の直前の景色に別の重みが加わります。夜は橋の明かりが瀬田川の水面に映り、朱塗りの欄干の輪郭だけが闇に残ります。京都に着く前の、最後の見どころです。",
       en: "In the last minutes before Kyoto Station, look toward Seat E for a river and a distinctive bridge. Watch for the two-span silhouette meeting at a central islet, framed by vermilion railings. The bridge itself passes in a moment, but if you view it thinking 'countless armies fought to cross this water,' the last stretch into Kyoto carries a different kind of weight. At night the bridge lights sit on the surface of the Seta River and only the outline of the vermilion railings is left against the dark — the last thing worth watching for before Kyoto.",
     },
-    minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 3, scene: "lake",
+    minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 3, spotting: "moderate", scene: "lake",
     image: "images/20250909_seta_karahashi_c91256633.jpg",
     photoCredit: { ja: "@C91256633", en: "@C91256633", url: "https://x.com/C91256633/status/1965377316537925644" },
     photos: [
@@ -3830,7 +3830,7 @@ const SPOTS = [
       ja: "京都駅に近づいたら、A席側の窓を早めに見ておくのがおすすめ。街並みの上から、他の建物より一段抜きん出た黒い塔が姿を現します。逆に京都駅を出て新大阪方向へ進む列車では、駅を出てすぐ振り返るように後方を眺めると、去っていく京都のシンボルとしての五重塔が印象的です。",
       en: "As Kyoto Station approaches, look toward Seat A a little in advance. Above the roofs, a dark tower rises noticeably higher than the surrounding buildings. On trains leaving Kyoto for Shin-Osaka, glancing back just after departure also gives you the pagoda as a fading symbol of the city you are leaving.",
     },
-    minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 10, scene: "pagoda",
+    minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 10, spotting: "moderate", scene: "pagoda",
     image: "images/20260510_toji.png",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-10" },
     photos: [
@@ -3892,7 +3892,7 @@ const SPOTS = [
       ja: "京都を過ぎて新大阪の手前、列車の速度がゆっくりになり始めたら、E席側の窓の外を見てください。白い新幹線が扇のように広がった留置線と、大屋根の検修庫、洗車機や高いパンタ検査用足場が次々と現れます。夜は照明に照らされた基地の中に、静かに眠る新幹線が並ぶ幻想的な光景を楽しめます。",
       en: "After Kyoto, as the train starts to slow before Shin-Osaka, watch the Seat E window closely. Rows of white Shinkansen fan out across the yard, followed by long inspection sheds, train-wash bays and tall pantograph inspection platforms. At night, illuminated tracks and quietly resting Shinkansen turn the whole scene into a hushed, almost dreamlike view.",
     },
-    minutesFromTokyo: 141, side: "E", category: "notable", confidence: "source-backed", durationSec: 10, scene: "hills",
+    minutesFromTokyo: 141, side: "E", category: "notable", confidence: "source-backed", durationSec: 10, spotting: "moderate", scene: "hills",
     image: "images/20260614_torikai_train_depot_yamato160.jpg",
     photoCredit: { ja: "@yamato160", en: "@yamato160", url: "https://x.com/yamato160/status/2066003172884365364" },
     photos: [

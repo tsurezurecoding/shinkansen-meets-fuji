@@ -41,5 +41,6 @@ console.log(
 );
 if (unrated.length) {
   console.log(`  unrated: ${unrated.join(", ")}`);
-  console.log("  These need a real ride to judge; leave them unset rather than guessing.");
+  console.log("  A new spot starts unrated on purpose. This is judged from an actual ride,");
+  console.log("  so leave it unset until someone has watched for it rather than guessing.");
 }
