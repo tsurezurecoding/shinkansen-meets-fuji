@@ -53,8 +53,21 @@ const UI = {
   en: {
     sectionHow: (name) => `How to find ${name}`, sectionPhotos: (name) => `${name} in photos`, sectionRefs: "References", sectionRelated: "Nearby window views",
     facts: ["Section", "Seat side", "Timing", "Photos"], photoUnit: "photos",
-    routeNote: (area, side) => `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${side} window as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed.`,
-    sideA: "Seat A · sea side", sideE: "Seat E · mountain side", sideBoth: "Both sides", hamanakoSide: "Seat A · sea side / Seat E · mountain side",
+    routeNote: (area, side) => {
+      // 両側から見えるスポット(浜名湖など)のラベルは "Seat A · left / Seat E · right ..." と
+      // 連結されている。先頭一致だけで判定すると A席専用と誤読するので、連結を先に弾く。
+      const both = side.indexOf(" / ") >= 0 || side.indexOf("Both") === 0;
+      const seatE = !both && side.indexOf("Seat E") === 0;
+      const seatA = !both && side.indexOf("Seat A") === 0;
+      const window = seatE ? "right-hand window (Seat E)" : seatA ? "left-hand window (Seat A)" : "window on either side";
+      const flip = seatE
+        ? " and the same Seat E is on your left"
+        : seatA
+          ? " and the same Seat A is on your right"
+          : "";
+      return `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${window} as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed${flip}.`;
+    },
+    sideA: "Seat A · left side toward Kyoto", sideE: "Seat E · right side toward Kyoto", sideBoth: "Both sides", hamanakoSide: "Seat A · left / Seat E · right (toward Kyoto)",
     minutes: (m) => Number.isFinite(Number(m)) ? `About ${Math.round(m)} minutes after leaving Tokyo on a Nozomi train` : "Timing varies by train", relatedCategory: "Related", fallbackCredit: "Shinkansen Window",
     photoAlt: (name) => `${name} from the Shinkansen window`, photoFallback: (name, index) => `${name} window photo ${index + 1}`,
   },
@@ -62,7 +75,7 @@ const UI = {
 
 const SIDE_LABELS = {
   ja: { A: "A席・海側", E: "E席・山側", both: "左右両側", hamanako: "A席・海側 / E席・山側" },
-  en: { A: "Seat A · sea side", E: "Seat E · mountain side", both: "Both sides", hamanako: "Seat A · sea side / Seat E · mountain side" },
+  en: { A: "Seat A · left side toward Kyoto", E: "Seat E · right side toward Kyoto", both: "Both sides", hamanako: "Seat A · left / Seat E · right (toward Kyoto)" },
 };
 
 function localized(value, lang) {

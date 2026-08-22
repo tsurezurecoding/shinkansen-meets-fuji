@@ -856,7 +856,7 @@ const SPOTS = [
     },
     routeNote: {
       ja: "東京から新大阪方面へ向かう場合は、品川を出て多摩川を渡る直前、E席・山側の窓を見てください。新大阪から東京方面へ向かう場合は、新横浜を出て多摩川を渡り始める直前がタイミングで、同じくE席側に青い丸子橋が見えます。",
-      en: "From Tokyo toward Shin-Osaka, watch the Seat E (mountain) side just before crossing the Tama River after Shinagawa. From Shin-Osaka toward Tokyo, look for the blue arch on the same Seat E side just as the train starts crossing the Tama River after leaving Shin-Yokohama.",
+      en: "From Tokyo toward Shin-Osaka, watch the right-hand window (Seat E) just before crossing the Tama River after Shinagawa. From Shin-Osaka toward Tokyo, look for the blue arch on the same Seat E side just as the train starts crossing the Tama River after leaving Shin-Yokohama.",
     },
     minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, scene: "bay",
     image: "images/20250531_maruko_bridge_letus10.jpg",
@@ -1687,7 +1687,7 @@ const SPOTS = [
     },
     pageStory: {
       ja: "東海道新幹線は基本的に、東京と新大阪をほぼ東西に結んでいます。そのため、日本の中央に立つ富士山は、進行方向の北側＝E席（山側）から見えるのが原則です。ところが静岡駅を出て安倍川を渡ったあとの短い区間、路線が海側（南）へ大きく膨らむ形で曲がり、富士山が一時的に進行方向の左手＝A席側に回り込みます。これが車窓で言う「左富士」です。江戸期の東海道でも同じ現象が起き、平塚〜茅ヶ崎の「南湖の左富士」と、静岡吉原の「吉原の左富士」の2か所が、旅人にとって珍しい光景として名所化していました。歌川広重の浮世絵にも「東海道五拾三次之内 吉原 左富士」として描かれています。",
-      en: "The Tokaido Shinkansen mostly runs east-west between Tokyo and Shin-Osaka. Since Mt. Fuji stands roughly to the north, it is normally seen from Seat E — the mountain side of the train. But in a short stretch just after Shizuoka Station and the Abe River, the line curves noticeably southward toward the sea, and Fuji briefly appears on the left side of the train — Seat A. That is the classic 'Hidari-Fuji' or Left-side Fuji. The same geometry existed on the old Edo-period Tokaido highway, where two spots became famous for this effect: 'Nango Hidari-Fuji' near Chigasaki, and 'Yoshiwara Hidari-Fuji' near today's Fuji City. Utagawa Hiroshige painted the latter as 'Yoshiwara: Left-side Fuji' in his celebrated Fifty-three Stations of the Tokaido woodblock series.",
+      en: "The Tokaido Shinkansen mostly runs east-west between Tokyo and Shin-Osaka. Since Mt. Fuji stands roughly to the north, it is normally seen from Seat E — the mountain side of the train, which is the right-hand window when you are heading toward Kyoto. But in a short stretch just after Shizuoka Station and the Abe River, the line curves noticeably southward toward the sea, and Fuji briefly appears on the left side of the train — Seat A. That is the classic 'Hidari-Fuji' or Left-side Fuji. The same geometry existed on the old Edo-period Tokaido highway, where two spots became famous for this effect: 'Nango Hidari-Fuji' near Chigasaki, and 'Yoshiwara Hidari-Fuji' near today's Fuji City. Utagawa Hiroshige painted the latter as 'Yoshiwara: Left-side Fuji' in his celebrated Fifty-three Stations of the Tokaido woodblock series.",
     },
     explainer: {
       heading: { ja: "見え方のコツと、季節の話", en: "How to catch it, and how the season matters" },
@@ -1709,7 +1709,7 @@ const SPOTS = [
     minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 5, scene: "leftfuji",
     routeNote: {
       ja: "東京から新大阪方面へ向かう場合は、静岡駅を過ぎて安倍川を渡った直後、A席・海側の窓を見てください。新大阪から東京方面へ向かう場合は、通過順が逆になります。",
-      en: "From Tokyo toward Shin-Osaka, watch the Seat A · sea side window just after Shizuoka Station and the Abe River crossing. Toward Tokyo, the order is reversed.",
+      en: "From Tokyo toward Shin-Osaka, watch the left-hand window (Seat A) just after Shizuoka Station and the Abe River crossing. Toward Tokyo, the order is reversed.",
     },
     image: "images/20240410_left_fuji_earlyretiremile.jpg",
     ogImage: "images/20260513_left_fuji.jpg",

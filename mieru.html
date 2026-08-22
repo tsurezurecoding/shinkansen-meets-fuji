@@ -35,7 +35,7 @@
     "dateModified": "2026-08-17"
   }
   </script>
-  <script src="language-router.js?v=849d4b2e"></script>
+  <script src="language-router.js?v=7d346901"></script>
   <link rel="stylesheet" href="style.css?v=d8b76f8c">
   <style>
     /* 見える予報 — 本体パレット(夜明けの車窓)に従う */
@@ -208,9 +208,9 @@
     <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 
-  <script src="spot-page-shared-data.js?v=dd3af12b"></script>
-  <script src="spot-page-shared.js?v=c9ae6cbd"></script>
-  <script src="data.js?v=fcd5f671"></script>
+  <script src="spot-page-shared-data.js?v=d6647ccd"></script>
+  <script src="spot-page-shared.js?v=a9d7aed3"></script>
+  <script src="data.js?v=21b47ecb"></script>
   <script src="train-select.js?v=ddf609c7"></script>
   <!-- data/timetable.js（約300KB）は列車モードを実際に使う時点まで遅延読み込みする（ensureTimetableLoaded() 参照） -->
   <script>
@@ -362,7 +362,7 @@
     renderTrainResults(); // 「読み込み中」表示
     timetableLoadPromise = new Promise(function(resolve){
       var s = document.createElement("script");
-      s.src = "data/timetable.js?v=27a49e71";
+      s.src = "data/timetable.js?v=18fb2a08";
       s.onload = function(){
         timetableLoading = false;
         TT = window.SHINKANSEN_TIMETABLE || null;

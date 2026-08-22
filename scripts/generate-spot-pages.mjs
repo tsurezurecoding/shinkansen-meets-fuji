@@ -139,12 +139,25 @@ const UI = {
     sectionRelated: "Nearby window views",
     facts: ["Section", "Seat side", "Timing", "Photos"],
     photoUnit: "photos",
-    routeNote: (area, side) => `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${side} window as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed.`,
+    routeNote: (area, side) => {
+      // 両側から見えるスポット(浜名湖など)のラベルは "Seat A · left / Seat E · right ..." と
+      // 連結されている。先頭一致だけで判定すると A席専用と誤読するので、連結を先に弾く。
+      const both = side.indexOf(" / ") >= 0 || side.indexOf("Both") === 0;
+      const seatE = !both && side.indexOf("Seat E") === 0;
+      const seatA = !both && side.indexOf("Seat A") === 0;
+      const window = seatE ? "right-hand window (Seat E)" : seatA ? "left-hand window (Seat A)" : "window on either side";
+      const flip = seatE
+        ? " and the same Seat E is on your left"
+        : seatA
+          ? " and the same Seat A is on your right"
+          : "";
+      return `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${window} as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed${flip}.`;
+    },
     pointText: (name) => `${name} is one of the window views that make the Tokaido Shinkansen more than a transfer. The train moves fast, so visibility depends on weather, seat position, and timing.`,
-    sideA: "Seat A · sea side",
-    sideE: "Seat E · mountain side",
+    sideA: "Seat A · left side toward Kyoto",
+    sideE: "Seat E · right side toward Kyoto",
     sideBoth: "Both sides",
-    hamanakoSide: "Seat A · sea side / Seat E · mountain side",
+    hamanakoSide: "Seat A · left / Seat E · right (toward Kyoto)",
     minutes: (m) => Number.isFinite(Number(m)) ? `About ${Math.round(m)} minutes after leaving Tokyo on a Nozomi train` : "Timing varies by train",
     relatedPrev: "Previous",
     relatedNext: "Next",

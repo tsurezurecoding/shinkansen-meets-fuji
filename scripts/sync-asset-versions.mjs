@@ -37,7 +37,12 @@ let changedTokens = 0;
 const missing = new Set();
 
 for (const file of htmlFiles(appRoot)) {
-  const before = fs.readFileSync(file, "utf8");
+  // .gitattributes declares "*.html text eol=lf". A file that reached the working tree
+  // with CRLF stays CRLF through every read-modify-write, and git hides it because it
+  // normalizes on read — but content-manifest.json hashes the bytes on disk, so the
+  // mismatch only surfaces later as a stale-sha failure. Normalize as we pass through.
+  const raw = fs.readFileSync(file, "utf8");
+  const before = raw.split("\r\n").join("\n");
   // <base href="..."> があれば相対参照の基準はそちら。en/index.html は <base href="../">
   // を持つため、ファイルの所在ディレクトリ基準で解決すると参照先を取り違える。
   const baseHref = before.match(/<base\b[^>]*\bhref=["']([^"']+)["']/i)?.[1] || "./";
@@ -56,7 +61,7 @@ for (const file of htmlFiles(appRoot)) {
     if (next !== token) changedTokens += 1;
     return `${quote}${ref}?v=${next}`;
   });
-  if (after === before) continue;
+  if (after === raw) continue;
   changedFiles += 1;
   if (!checkOnly) fs.writeFileSync(file, after, "utf8");
   console.log(`  ${checkOnly ? "STALE" : "updated"}: ${path.relative(appRoot, file).replace(/\\/g, "/")}`);
