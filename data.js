@@ -3830,7 +3830,7 @@ const SPOTS = [
       ja: "京都駅に近づいたら、A席側の窓を早めに見ておくのがおすすめ。街並みの上から、他の建物より一段抜きん出た黒い塔が姿を現します。逆に京都駅を出て新大阪方向へ進む列車では、駅を出てすぐ振り返るように後方を眺めると、去っていく京都のシンボルとしての五重塔が印象的です。",
       en: "As Kyoto Station approaches, look toward Seat A a little in advance. Above the roofs, a dark tower rises noticeably higher than the surrounding buildings. On trains leaving Kyoto for Shin-Osaka, glancing back just after departure also gives you the pagoda as a fading symbol of the city you are leaving.",
     },
-    minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 5, scene: "pagoda",
+    minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 10, scene: "pagoda",
     image: "images/20260510_toji.png",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-10" },
     photos: [
