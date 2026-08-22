@@ -44,6 +44,8 @@ const { SPOTS } = vm.runInNewContext(
 // sky takes away, so the "what else is out there" table lists everything but these.
 const FUJI_VIEWPOINTS = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
 
+const SPOTTING_LABEL = { easy: "Easy", moderate: "Medium", hard: "Hard" };
+
 const escapeHTML = (value) =>
   String(value).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
@@ -129,9 +131,15 @@ function besidesTableHTML() {
       const name = (spot.en && spot.en.name) || spot.id;
       const hook = (spot.en && spot.en.hook) || "";
       const href = `spots/${spot.id}.html`;
+      // 見やすさは実車で見た人が付けた評価だけを出す。
+      // 未評価は空欄のままにして、評価済みのように見せない。
+      const spotting = spot.spotting
+        ? `<span class="bf-level bf-level-${spot.spotting}">${SPOTTING_LABEL[spot.spotting]}</span>`
+        : "";
       return (
         `<tr><td>${spot.minutesFromTokyo} min</td>` +
         `<td><span class="bf-seat">${escapeHTML(spot.side)}</span></td>` +
+        `<td>${spotting}</td>` +
         `<td><a href="${escapeHTML(href)}">${escapeHTML(name)}</a></td>` +
         `<td>${escapeHTML(hook)}</td></tr>`
       );
@@ -140,7 +148,7 @@ function besidesTableHTML() {
     `${BESIDES_START}\n` +
     `      <div class="bf-table-wrap">\n` +
     `        <table class="bf-table">\n` +
-    `          <thead><tr><th>From Tokyo</th><th>Side</th><th>What it is</th><th></th></tr></thead>\n` +
+    `          <thead><tr><th>From Tokyo</th><th>Side</th><th>Spotting</th><th>What it is</th><th></th></tr></thead>\n` +
     `          <tbody>\n            ${rows.join("\n            ")}\n          </tbody>\n` +
     `        </table>\n` +
     `      </div>\n      ${BESIDES_END}`

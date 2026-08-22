@@ -442,6 +442,8 @@ function projectPage(spot, lang) {
     minutes: Number(spot.minutesFromTokyo),
     side: String(spot.side || ""),
     sideLabel: sideLabel(spot, lang),
+    // 見やすさ。未評価は載せない（推測値と実車観察を混ぜないため）。
+    spotting: spot.spotting || null,
     facts: { labels: UI[lang].facts, timing: UI[lang].minutes(spot.minutesFromTokyo), photoUnit: UI[lang].photoUnit },
     photos: projectedPhotos,
     hero: projectedPhotos[0] || null,
