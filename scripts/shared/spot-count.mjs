@@ -27,11 +27,17 @@ const { SPOTS } = vm.runInNewContext(
   { filename: dataPath },
 );
 
-/** Total window views. Same value as app.js MADO_SPOT_COUNT. */
+/** Total window views. Same value as app.js MADO_SPOT_COUNT. The only count we state. */
 export const SPOT_COUNT = SPOTS.length;
 
-/** "Mt. Fuji, plus N more views" — the whole set minus Fuji itself. */
-export const SPOT_COUNT_BESIDES_FUJI = SPOT_COUNT - 1;
+// There used to be a second derived number here, "Mt. Fuji plus N more views".
+// It was wrong: five of the spots are Mt. Fuji seen from different points
+// (fuji, ota-fuji, sagami-fuji, left-fuji, hamanako-fuji), so subtracting one
+// counted the other four as though they were not Mt. Fuji. It was also the only
+// source of ambiguity in this module — the same suffix means the full set in one
+// language and the minus-one set in another, so every claim had to be classified
+// before it could be checked, and a misclassification silently wrote a wrong number.
+// The pages now state the total and nothing else.
 
 /** Pages whose static HTML states a spot count. */
 export const SPOT_COUNT_PAGES = [
@@ -60,6 +66,7 @@ const UNITS = [
   "個景色",
   "个景色",
   "개의 차창 풍경",
+  "개 차창 풍경",
   "개 풍경",
   "景",
   " Day and Night Views",
@@ -71,23 +78,6 @@ const UNITS = [
   " paysages",
   " vues",
   " مشهدًا",
-];
-
-// Claims that mean "besides Mt. Fuji", so they resolve to SPOT_COUNT - 1.
-// "#" stands for the number. Everything else that matches a unit is the full set.
-// These need listing because some languages reuse one unit for both meanings
-// (ko writes "#개의 차창 풍경" for the full set AND for the besides-Fuji count).
-const BESIDES_FUJI_CLAIMS = [
-  "富士山だけじゃない、東京〜新大阪のおすすめ車窓#景",
-  "Mt. Fuji and # more views",
-  "Mt. Fuji and # other window views",
-  "The other # window views",
-  "plus # more views",
-  "Le mont Fuji et # autres paysages",
-  "후지산 외에도 도쿄에서 신오사카까지 #개의 차창 풍경",
-  "除了富士山，东京到新大阪还有#个车窗景色",
-  "富士山之外，東京到新大阪還有#個車窗景色",
-  "جبل فوجي، إلى جانب # مشهدًا آخر",
 ];
 
 // Numbers that look like a claim but are not one.
@@ -118,38 +108,20 @@ function digitOffsets(html, templates) {
 }
 
 /**
- * Every spot-count claim in the page, with the number it should be showing.
- * Returns [{ index, raw, unit, actual, expected, kind }].
+ * Every spot-count claim in the page. Each one must equal SPOT_COUNT.
+ * Returns [{ index, raw, unit, actual, expected }].
  */
 export function scanSpotCountClaims(html) {
-  const besides = digitOffsets(html, BESIDES_FUJI_CLAIMS);
   const ignored = digitOffsets(html, NOT_A_CLAIM);
-
-  // Candidates come from two directions. The unit list catches "39景" / "39 views",
-  // but a claim can put words between the number and the unit ("37 other window views"),
-  // which the unit list alone walks straight past. Seed from the registered phrases too.
-  const candidates = new Map();
-  for (const match of html.matchAll(unitPattern)) {
-    candidates.set(match.index, { digits: match[1], raw: match[0], unit: match[2] });
-  }
-  for (const offset of besides) {
-    if (candidates.has(offset)) continue;
-    const digits = /^\d{1,3}/.exec(html.slice(offset))?.[0];
-    if (digits) candidates.set(offset, { digits, raw: digits, unit: "(phrase)" });
-  }
-
   const claims = [];
-  for (const index of [...candidates.keys()].sort((a, b) => a - b)) {
-    if (ignored.has(index)) continue;
-    const { digits, raw, unit } = candidates.get(index);
-    const kind = besides.has(index) ? "besidesFuji" : "total";
+  for (const match of html.matchAll(unitPattern)) {
+    if (ignored.has(match.index)) continue;
     claims.push({
-      index,
-      raw,
-      unit,
-      actual: Number(digits),
-      expected: kind === "besidesFuji" ? SPOT_COUNT_BESIDES_FUJI : SPOT_COUNT,
-      kind,
+      index: match.index,
+      raw: match[0],
+      unit: match[2],
+      actual: Number(match[1]),
+      expected: SPOT_COUNT,
     });
   }
   return claims;

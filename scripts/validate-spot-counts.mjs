@@ -3,7 +3,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
   SPOT_COUNT,
-  SPOT_COUNT_BESIDES_FUJI,
   SPOT_COUNT_PAGES,
   scanSpotCountClaims,
   findSpotCountDrift,
@@ -40,7 +39,7 @@ for (const relativePath of SPOT_COUNT_PAGES) {
     unregistered += 1;
     console.error(
       `${relativePath}: unregistered spot-count claim "${item.actual}" — …${item.context}…\n` +
-        `  Add the phrase to BESIDES_FUJI_CLAIMS or NOT_A_CLAIM in scripts/shared/spot-count.mjs.`,
+        `  If it is not a spot-count claim, add the phrase to NOT_A_CLAIM in scripts/shared/spot-count.mjs.`,
     );
   }
 
@@ -57,8 +56,7 @@ for (const relativePath of SPOT_COUNT_PAGES) {
   drifted += drift.length;
   for (const claim of drift) {
     console.error(
-      `${relativePath}: says ${claim.actual} but should say ${claim.expected} ` +
-        `(${claim.kind === "besidesFuji" ? "besides Mt. Fuji" : "full set"}) near "${claim.raw}"`,
+      `${relativePath}: says ${claim.actual} but should say ${claim.expected} near "${claim.raw}"`,
     );
   }
 }
@@ -71,7 +69,7 @@ if (unregistered > 0) {
 if (FIX) {
   console.log(
     `Spot counts synced: ${fixedFiles} file(s) rewritten, ${totalClaims} claims across ` +
-      `${SPOT_COUNT_PAGES.length} pages (full set ${SPOT_COUNT}, besides Fuji ${SPOT_COUNT_BESIDES_FUJI}).`,
+      `${SPOT_COUNT_PAGES.length} pages (SPOTS.length = ${SPOT_COUNT}).`,
   );
   process.exit(0);
 }
@@ -86,5 +84,5 @@ if (drifted > 0) {
 
 console.log(
   `Spot counts consistent: ${totalClaims} claims across ${SPOT_COUNT_PAGES.length} pages ` +
-    `all agree with data.js (full set ${SPOT_COUNT}, besides Fuji ${SPOT_COUNT_BESIDES_FUJI}).`,
+    `all agree with data.js (SPOTS.length = ${SPOT_COUNT}).`,
 );
