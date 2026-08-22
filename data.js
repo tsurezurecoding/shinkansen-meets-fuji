@@ -2100,7 +2100,26 @@ const SPOTS = [
       ja: "掛川駅に近づいたら、E席側の丘の上を狙ってください。白い天守は樹木の緑を背にして立つので、影に埋もれず見つけやすい形をしています。のぞみは通過するので数秒。停車するひかり・こだまなら、駅ホームから角度を変えて眺めることもできます。",
       en: "As Kakegawa Station approaches, focus on the hill just north of the tracks from Seat E. The white keep is set against a green tree line, which makes it stand out cleanly. On a passing Nozomi you have only a few seconds; on stopping Hikari or Kodama services, you can also see it at a slightly different angle from the platform.",
     },
-    minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 10, spotting: "moderate", scene: "castle",
+    minutesFromTokyo: 62, side: "E", category: "classic", confidence: "verified", durationSec: 10, spotting: "moderate", scene: "castle",
+    media: {
+      heading: { ja: "動画で見る掛川城", en: "Kakegawa Castle in motion" },
+      description: {
+        ja: "のぞみの車窓から、掛川駅をはさんで見える掛川城を動画でも確かめられます。",
+        en: "See Kakegawa Castle from a Nozomi window, on both sides of Kakegawa Station.",
+      },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/michikusatravel/status/2088816264529772734",
+          handle: "@michikusatravel",
+          accessibleTitle: { ja: "掛川城のX動画", en: "X video of Kakegawa Castle" },
+          fallbackText: {
+            ja: "のぞみの車窓から見える掛川城の動画",
+            en: "Kakegawa Castle seen from a Nozomi window",
+          },
+        },
+      ],
+    },
     image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
     photos: [
