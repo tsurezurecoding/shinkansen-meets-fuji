@@ -1944,7 +1944,7 @@ const SPOTS = [
     side: "A",
     category: "notable",
     confidence: "verified",
-    durationSec: 8, spotting: "moderate",
+    durationSec: 8, spotting: "moderate", scene: "hills",
     routeNote: {
       ja: "東京から新大阪方面へ向かう場合は、東静岡駅の少し手前、A席・海側を見てください。新大阪から東京方面へ向かう場合は、東静岡駅を過ぎてすぐのタイミングです。約52分という値は、東京発のぞみ基準の車窓向け目安です。静岡駅からも近いですが、東静岡駅を目印にすると見つけやすくなります。",
       en: "From Tokyo toward Shin-Osaka, watch Seat A just before Higashi-Shizuoka Station. From Shin-Osaka toward Tokyo, the complex appears immediately after passing it. The 52-minute value is a window-view estimate on a Tokyo-originating Nozomi reference run. Granship is also close to Shizuoka Station, but Higashi-Shizuoka is the better landmark for spotting it.",
@@ -2284,8 +2284,6 @@ const SPOTS = [
       ja: "写真で見る浜名湖と、湖の向こうの富士山",
       en: "Lake Hamana and distant Mt. Fuji in photographs",
     },
-    sharedGuideSpotIds: ["hamanako-fuji"],
-    pagePhotoSpotIds: ["hamanako-fuji"],
     minutesFromTokyo: 73, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "classic", confidence: "verified", durationSec: 90, spotting: "easy", scene: "lake",
     image: "images/20260505_hamanako_design_photosy.jpg",
     photoCredit: {
@@ -2370,6 +2368,20 @@ const SPOTS = [
     en: { name: "Mt. Fuji beyond Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "A far, tiny Fuji beyond the lake.", story: "Crossing Lake Hamana, look far off on the Seat E side toward the boundary between water and sky. Mt. Fuji is about 120 km away from here, so this is a small distant Fuji to search for—nothing like the huge main-event Fuji near Shin-Fuji. It shows itself only when conditions align, especially on crisp winter mornings or after rain has washed the air." },
     guidePageId: "hamanako",
     guideAnchor: "hamanako-fuji",
+    guideNotice: {
+      heading: {
+        ja: "浜名湖の景色と一緒に見る",
+        en: "See it as part of the Lake Hamana crossing",
+      },
+      body: {
+        ja: "遠くの富士山は、湖面、養殖棚、サンマリンブリッジへと続く浜名湖の車窓の一部として現れます。",
+        en: "Distant Fuji appears within a sequence of water, aquaculture structures and Sun Marine Bridge.",
+      },
+      label: {
+        ja: "浜名湖の見どころと写真を見る →",
+        en: "See Lake Hamana highlights and photographs →",
+      },
+    },
     sharedGuideHeading: {
       ja: "もうひとつの主役：浜名湖越しの富士山",
       en: "A second highlight: Mt. Fuji beyond Lake Hamana",

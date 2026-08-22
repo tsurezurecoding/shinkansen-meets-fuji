@@ -198,11 +198,18 @@ function ownPhotoItems(spot) {
     .filter((item) => item?.src && !seen.has(item.src) && seen.add(item.src));
 }
 
+// このページに間借りしている景色を、従属側の guidePageId から引く。
+// 以前はホスト側にも sharedGuideSpotIds / pagePhotoSpotIds を手書きしていたため、
+// 片側だけ更新すると静かに壊れた。関係は従属側の1箇所だけが持つ。
+// BOARD_COLLECTION の 727 地点も guidePageId を持つが、あちらは SPOTS の外なので混ざらない。
+function spotsSharingPageWith(spot) {
+  return source.SPOTS.filter((item) => item.guidePageId === spot.id && item.id !== spot.id);
+}
+
 function photoItems(spot) {
   const items = [...ownPhotoItems(spot)];
-  for (const id of spot.pagePhotoSpotIds || []) {
-    const linked = source.SPOTS.find((item) => item.id === id);
-    if (linked) items.push(...ownPhotoItems(linked));
+  for (const linked of spotsSharingPageWith(spot)) {
+    items.push(...ownPhotoItems(linked));
   }
   const seen = new Set();
   return items.filter((item) => {
@@ -335,7 +342,7 @@ function projectMap(spot, lang) {
 }
 
 function projectSharedGuide(spot, lang) {
-  return (spot.sharedGuideSpotIds || []).map((id) => source.SPOTS.find((item) => item.id === id)).filter(Boolean).map((chapter) => {
+  return spotsSharingPageWith(spot).map((chapter) => {
     const data = chapter[lang] || chapter.ja || {};
     const paragraphs = localized(chapter.sharedGuideStory, lang);
     return {
@@ -347,11 +354,18 @@ function projectSharedGuide(spot, lang) {
   });
 }
 
+// 案内文はスポットの guideNotice が持つ。以前はここに浜名湖の文言が直書きされていて、
+// 2件目のページ共有スポットを作ると誰にでも浜名湖の案内が出る状態だった。
 function projectGuideNotice(spot, lang) {
   if (!spot.guidePageId || spot.guidePageId === spot.id) return null;
-  return lang === "ja"
-    ? { heading: "浜名湖の景色と一緒に見る", body: "遠くの富士山は、湖面、養殖棚、サンマリンブリッジへと続く浜名湖の車窓の一部として現れます。", href: `${spot.guidePageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`, label: "浜名湖の見どころと写真を見る →" }
-    : { heading: "See it as part of the Lake Hamana crossing", body: "Distant Fuji appears within a sequence of water, aquaculture structures and Sun Marine Bridge.", href: `${spot.guidePageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`, label: "See Lake Hamana highlights and photographs →" };
+  const notice = spot.guideNotice;
+  if (!notice) throw new Error(`guideNotice missing for shared-page spot: ${spot.id}`);
+  return {
+    heading: localized(notice.heading, lang),
+    body: localized(notice.body, lang),
+    href: `${spot.guidePageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`,
+    label: localized(notice.label, lang),
+  };
 }
 
 function spotGuideHref(spot) {

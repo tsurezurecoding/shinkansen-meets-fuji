@@ -717,11 +717,18 @@ function ownPhotoItems(spot, lang) {
   return [...main, ...(spot.photos || []).filter((item) => item.role !== "reference")].filter((item) => item.src);
 }
 
+// このページに間借りしている景色を、従属側の guidePageId から引く。
+// 以前はホスト側にも sharedGuideSpotIds / pagePhotoSpotIds を手書きしていたため、
+// 片側だけ更新すると静かに壊れた。関係は従属側の1箇所だけが持つ。
+// BOARD_COLLECTION の 727 地点も guidePageId を持つが、あちらは SPOTS の外なので混ざらない。
+function spotsSharingPageWith(spot) {
+  return SPOTS.filter((item) => item.guidePageId === spot.id && item.id !== spot.id);
+}
+
 function photoItems(spot, lang) {
   const items = [...ownPhotoItems(spot, lang)];
-  for (const id of spot.pagePhotoSpotIds || []) {
-    const linkedSpot = SPOTS.find((item) => item.id === id);
-    if (linkedSpot) items.push(...ownPhotoItems(linkedSpot, lang));
+  for (const linkedSpot of spotsSharingPageWith(spot)) {
+    items.push(...ownPhotoItems(linkedSpot, lang));
   }
   const seen = new Set();
   return items.filter((item) => {
@@ -1373,9 +1380,7 @@ function miniMapDetailsHTML(spot, lang) {
 }
 
 function sharedGuideHTML(spot, lang) {
-  const chapters = (spot.sharedGuideSpotIds || [])
-    .map((id) => SPOTS.find((item) => item.id === id))
-    .filter(Boolean);
+  const chapters = spotsSharingPageWith(spot);
   return chapters.map((chapter) => {
     const data = chapter[lang] || chapter.ja || {};
     const paragraphs = localized(chapter.sharedGuideStory, lang) || [];
@@ -1390,22 +1395,18 @@ function sharedGuideHTML(spot, lang) {
   }).join("\n      ");
 }
 
+// 案内文はスポットの guideNotice が持つ。以前はここに浜名湖の文言が日英とも
+// 直書きされていて、2件目のページ共有スポットを作れば誰にでも浜名湖の案内が出た。
 function sharedGuideNoticeHTML(spot, lang) {
   if (!spot.guidePageId || spot.guidePageId === spot.id) return "";
+  const notice = spot.guideNotice;
+  if (!notice) throw new Error(`guideNotice missing for shared-page spot: ${spot.id}`);
   const href = `${spot.guidePageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`;
-  return lang === "ja"
-    ? `<section class="spot-page-section guide-answer-panel">
+  return `<section class="spot-page-section guide-answer-panel">
         <div class="guide-answer-copy">
-          <h2>浜名湖の景色と一緒に見る</h2>
-          <p>遠くの富士山は、湖面、養殖棚、サンマリンブリッジへと続く浜名湖の車窓の一部として現れます。</p>
-          <p><a class="inline-cta" href="${escapeHTML(href)}">浜名湖の見どころと写真を見る →</a></p>
-        </div>
-      </section>`
-    : `<section class="spot-page-section guide-answer-panel">
-        <div class="guide-answer-copy">
-          <h2>See it as part of the Lake Hamana crossing</h2>
-          <p>Distant Fuji appears within a sequence of water, aquaculture structures and Sun Marine Bridge.</p>
-          <p><a class="inline-cta" href="${escapeHTML(href)}">See Lake Hamana highlights and photographs →</a></p>
+          <h2>${escapeHTML(localized(notice.heading, lang))}</h2>
+          <p>${escapeHTML(localized(notice.body, lang))}</p>
+          <p><a class="inline-cta" href="${escapeHTML(href)}">${escapeHTML(localized(notice.label, lang))}</a></p>
         </div>
       </section>`;
 }
