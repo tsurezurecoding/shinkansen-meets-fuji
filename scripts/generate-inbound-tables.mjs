@@ -20,9 +20,12 @@ import { fileURLToPath } from "node:url";
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CHECK_ONLY = process.argv.includes("--check");
-const PAGE = path.join(appDir, "en", "jr-pass-fuji.html");
+const JRPASS_PAGE = path.join(appDir, "en", "jr-pass-fuji.html");
+const BESIDES_PAGE = path.join(appDir, "en", "besides-fuji.html");
 const START = "<!-- JRPASS_TABLE_START -->";
 const END = "<!-- JRPASS_TABLE_END -->";
+const BESIDES_START = "<!-- BESIDES_TABLE_START -->";
+const BESIDES_END = "<!-- BESIDES_TABLE_END -->";
 
 const timetableWindow = {};
 vm.runInNewContext(fs.readFileSync(path.join(appDir, "data", "timetable.js"), "utf8"), {
@@ -30,6 +33,19 @@ vm.runInNewContext(fs.readFileSync(path.join(appDir, "data", "timetable.js"), "u
 });
 const TIMETABLE = timetableWindow.SHINKANSEN_TIMETABLE;
 const STATION_EN = Object.fromEntries(TIMETABLE.stations.map((s) => [s.id, s.en || s.id]));
+
+const { SPOTS } = vm.runInNewContext(
+  `${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\n;({ SPOTS });`,
+  {},
+  { filename: "data.js" },
+);
+
+// The five points where the mountain itself is the view. They are the ones a grey
+// sky takes away, so the "what else is out there" table lists everything but these.
+const FUJI_VIEWPOINTS = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
+
+const escapeHTML = (value) =>
+  String(value).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
 const toMinutes = (hhmm) => {
   const [h, m] = hhmm.split(":").map(Number);
@@ -103,22 +119,59 @@ const generated =
   ) +
   `\n      ${END}`;
 
-const html = fs.readFileSync(PAGE, "utf8");
-if (!html.includes(START) || !html.includes(END)) {
-  throw new Error(`JR Pass table markers missing in ${PAGE}`);
-}
-const next = html.replace(new RegExp(`${START}[\\s\\S]*?${END}`), generated);
-const summary =
-  `${west.length} westbound + ${east.length} eastbound Kodama with a real Shin-Fuji stop; ` +
-  `${tokyoRange} min from Tokyo`;
+// --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
 
-if (CHECK_ONLY) {
-  if (next !== html) {
-    console.error("JR Pass table is stale. Run: node scripts/generate-jr-pass-table.mjs");
-    process.exit(1);
-  }
-  console.log(`JR Pass table current: ${summary}.`);
-} else {
-  if (next !== html) fs.writeFileSync(PAGE, next, "utf8");
-  console.log(`JR Pass table written: ${summary}.`);
+function besidesTableHTML() {
+  const rows = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id))
+    .slice()
+    .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
+    .map((spot) => {
+      const name = (spot.en && spot.en.name) || spot.id;
+      const hook = (spot.en && spot.en.hook) || "";
+      const href = `spots/${spot.id}.html`;
+      return (
+        `<tr><td>${spot.minutesFromTokyo} min</td>` +
+        `<td><span class="bf-seat">${escapeHTML(spot.side)}</span></td>` +
+        `<td><a href="${escapeHTML(href)}">${escapeHTML(name)}</a></td>` +
+        `<td>${escapeHTML(hook)}</td></tr>`
+      );
+    });
+  return (
+    `${BESIDES_START}\n` +
+    `      <div class="bf-table-wrap">\n` +
+    `        <table class="bf-table">\n` +
+    `          <thead><tr><th>From Tokyo</th><th>Side</th><th>What it is</th><th></th></tr></thead>\n` +
+    `          <tbody>\n            ${rows.join("\n            ")}\n          </tbody>\n` +
+    `        </table>\n` +
+    `      </div>\n      ${BESIDES_END}`
+  );
 }
+
+function applyTo(pageFile, startMarker, endMarker, replacement, label) {
+  const html = fs.readFileSync(pageFile, "utf8");
+  if (!html.includes(startMarker) || !html.includes(endMarker)) {
+    throw new Error(`${label} markers missing in ${pageFile}`);
+  }
+  const next = html.replace(new RegExp(`${startMarker}[\\s\\S]*?${endMarker}`), replacement);
+  if (CHECK_ONLY) {
+    if (next !== html) {
+      console.error(`${label} is stale. Run: node scripts/generate-inbound-tables.mjs`);
+      process.exit(1);
+    }
+    return false;
+  }
+  if (next !== html) {
+    fs.writeFileSync(pageFile, next, "utf8");
+    return true;
+  }
+  return false;
+}
+
+applyTo(JRPASS_PAGE, START, END, generated, "JR Pass table");
+applyTo(BESIDES_PAGE, BESIDES_START, BESIDES_END, besidesTableHTML(), "Besides-Fuji table");
+
+const besidesCount = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id)).length;
+const summary =
+  `JR Pass ${west.length} westbound + ${east.length} eastbound Kodama with a real Shin-Fuji stop ` +
+  `(${tokyoRange} min from Tokyo); Besides-Fuji ${besidesCount} of ${SPOTS.length} views`;
+console.log(`Inbound tables ${CHECK_ONLY ? "current" : "written"}: ${summary}.`);

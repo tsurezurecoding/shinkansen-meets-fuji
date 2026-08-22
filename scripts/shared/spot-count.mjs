@@ -48,6 +48,7 @@ export const SPOT_COUNT_PAGES = [
   "en/guide.html",
   "en/zukan.html",
   "en/jr-pass-fuji.html",
+  "en/besides-fuji.html",
   "fr/guide.html",
   "ko/guide.html",
   "zh-Hans/guide.html",

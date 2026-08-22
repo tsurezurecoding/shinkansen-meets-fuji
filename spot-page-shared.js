@@ -228,6 +228,7 @@
     // 英語専用。JR Passはインバウンド固有の文脈で日本語版を作る理由がないため、
     // en:false で言語スイッチャーごと隠す（対応する日本語URLが存在しない）。
     "jr-pass-fuji.html": { en: false },
+    "besides-fuji.html": { en: false },
     // 英語版が同名ミラーではなく既存の解説ページにあるため、パスを文字列で指定する。
     "727-collection.html": { en: "en/spots/727-board.html" }
   };
