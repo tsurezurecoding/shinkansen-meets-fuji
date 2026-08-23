@@ -85,6 +85,10 @@ const UNITS = [
 // Numbers that look like a claim but are not one.
 const NOT_A_CLAIM = [
   "夜だけの車窓#景", // the night-views page covers a subset, not the whole set
+  // 「富士山以外の N 景」は総数ではなく、富士山の視点5つを除いた数。
+  // 構造化データの説明文に出る。総数へ揃えると事実が壊れる。
+  "The # window views other than Mt. Fuji itself",
+  "富士山以外的#個車窗景色",
 ];
 
 const unitPattern = new RegExp(

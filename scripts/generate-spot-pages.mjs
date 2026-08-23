@@ -667,6 +667,59 @@ function isOwnPhotoSrc(src) {
   return typeof src === "string" && /michikusa/i.test(src);
 }
 
+// 構造化データに、このサイトにしか無い事実を載せる。
+// 名前と説明だけなら誰でも書けるが、席側・東京からの分・見えている秒数・見つけやすさ・
+// 座標をひとまとまりで持っているのはここだけで、回答エンジンが引く価値はそこにある。
+// 数値がのぞみ基準の目安であることは、property名の側で明示する（断定しない）。
+const SPOT_FACT_LABELS = {
+  ja: {
+    side: "座席側",
+    sideE: "E席（京都方面へ向かって右）",
+    sideA: "A席（京都方面へ向かって左）",
+    minutes: "東京発からの目安（のぞみ基準・分）",
+    duration: "見えている時間の目安（秒）",
+    spotting: "見つけやすさ",
+    levels: { easy: "やさしい", moderate: "ふつう", hard: "むずかしい" },
+  },
+  en: {
+    side: "Seat side",
+    sideE: "Seat E (right-hand side heading to Kyoto)",
+    sideA: "Seat A (left-hand side heading to Kyoto)",
+    minutes: "Minutes after leaving Tokyo (Nozomi estimate)",
+    duration: "Typical time in view (seconds)",
+    spotting: "How hard it is to spot",
+    levels: { easy: "Easy", moderate: "Medium", hard: "Hard" },
+  },
+};
+
+function spotAttractionJsonLd(spot, lang, url, data, desc, otherLang) {
+  const L = SPOT_FACT_LABELS[lang] || SPOT_FACT_LABELS.en;
+  const properties = [
+    { name: L.side, value: spot.side === "E" ? L.sideE : L.sideA },
+    { name: L.minutes, value: spot.minutesFromTokyo },
+    { name: L.duration, value: spot.durationSec },
+  ];
+  if (spot.spotting) properties.push({ name: L.spotting, value: L.levels[spot.spotting] });
+  const attraction = {
+    "@type": "TouristAttraction",
+    "@id": `${url}#spot`,
+    "name": data.name,
+    "alternateName": localized(spot[otherLang], "name") || spot[otherLang]?.name || spot.ja.name,
+    "description": desc,
+    "image": spotOgImageUrl(spot),
+    "touristType": "Railway window view",
+    "additionalProperty": properties.map((property) => ({
+      "@type": "PropertyValue",
+      "name": property.name,
+      "value": property.value,
+    })),
+  };
+  if (spot.map && Number.isFinite(spot.map.lat) && Number.isFinite(spot.map.lng)) {
+    attraction.geo = { "@type": "GeoCoordinates", latitude: spot.map.lat, longitude: spot.map.lng };
+  }
+  return attraction;
+}
+
 function spotOgImageUrl(spot) {
   if (spot.ogImage) return `${siteRoot}/${spot.ogImage}`;
   if (isOwnPhotoSrc(spot.image)) return `${siteRoot}/${spot.image}`;
@@ -1579,15 +1632,7 @@ function thinSpotPageHTML(spot, lang) {
         "inLanguage": lang,
         "isPartOf": { "@type": "WebSite", "name": ui.brand, "url": pageUrl(lang) },
       },
-      {
-        "@type": "TouristAttraction",
-        "@id": `${url}#spot`,
-        "name": data.name,
-        "alternateName": localized(spot[otherLang], "name") || spot[otherLang]?.name || spot.ja.name,
-        "description": desc,
-        "image": spotOgImageUrl(spot),
-        "touristType": "Railway window view",
-      },
+      spotAttractionJsonLd(spot, lang, url, data, desc, otherLang),
     ],
   };
   return `<!doctype html>
@@ -1754,15 +1799,7 @@ function spotPageHTML(spot, lang) {
         "inLanguage": lang,
         "isPartOf": { "@type": "WebSite", "name": ui.brand, "url": pageUrl(lang) },
       },
-      {
-        "@type": "TouristAttraction",
-        "@id": `${url}#spot`,
-        "name": data.name,
-        "alternateName": localized(spot[otherLang], "name") || spot[otherLang]?.name || spot.ja.name,
-        "description": desc,
-        "image": spotOgImageUrl(spot),
-        "touristType": "Railway window view",
-      },
+      spotAttractionJsonLd(spot, lang, url, data, desc, otherLang),
     ],
   };
 

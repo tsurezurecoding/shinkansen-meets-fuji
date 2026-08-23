@@ -190,6 +190,100 @@ function besidesTableHTML(langKey) {
   );
 }
 
+
+// --- 構造化データ ---
+//
+// 回答エンジンはドメインの強さより「他に代替のない事実」を選ぶ。このサイトが持っていて
+// 他が持っていないのは、40景それぞれの席側・東京からの分・見えている秒数・見つけやすさと、
+// 列車ごとの実時刻。名前と説明だけのJSON-LDでは、その優位が機械から見えない。
+//
+// スポットの詳細は各スポットページの #spot ノードが持つので、ここでは @id で参照して
+// 同じ事実を二重に書かない。ズレる余地を作らないためのリンクであって、飾りではない。
+const SITE_ROOT = "https://www.michikusa-travel.com";
+const LD_MARK_START = "<!-- JSONLD_START -->";
+const LD_MARK_END = "<!-- JSONLD_END -->";
+
+function ldScript(payload) {
+  return `${LD_MARK_START}
+  <script type="application/ld+json">${JSON.stringify(payload, null, 2)}</script>
+  ${LD_MARK_END}`;
+}
+
+function besidesItemListLd(langKey) {
+  const L = LANGS[langKey];
+  const pageUrl = `${SITE_ROOT}/${L.dir}/besides-fuji.html`;
+  const items = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id))
+    .slice()
+    .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
+    .map((spot, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "TouristAttraction",
+        // 事実の正本はスポットページ側。ここは参照だけ。
+        "@id": `${SITE_ROOT}/en/spots/${spot.id}.html#spot`,
+        name: L.spotName(spot),
+        url: `${SITE_ROOT}/en/spots/${spot.id}.html`,
+      },
+    }));
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ItemList",
+        "@id": `${pageUrl}#views`,
+        name:
+          langKey === "zh-Hant"
+            ? "陰天也看得到的東海道新幹線車窗景色"
+            : "Tokaido Shinkansen window views that do not need a clear horizon",
+        description:
+          langKey === "zh-Hant"
+            ? `富士山以外的${items.length}個車窗景色，依東京起算的通過順序排列。`
+            : `The ${items.length} window views other than Mt. Fuji itself, in the order they pass.`,
+        numberOfItems: items.length,
+        itemListOrder: "https://schema.org/ItemListOrderAscending",
+        itemListElement: items,
+      },
+    ],
+  };
+}
+
+function jrPassFaqLd(tokyoRange, kodamaCount) {
+  const pageUrl = `${SITE_ROOT}/en/jr-pass-fuji.html`;
+  const qa = [
+    [
+      "Does the Japan Rail Pass cover the Shinkansen to Mt. Fuji?",
+      "It covers Hikari and Kodama on the Tokaido Shinkansen. Nozomi requires a surcharge. All three run on the same track, so the view of Mt. Fuji is identical; only the timing differs.",
+    ],
+    [
+      "How long after leaving Tokyo does Mt. Fuji appear on a Japan Rail Pass train?",
+      `On a Kodama it is ${tokyoRange} minutes after Tokyo, not the 40 to 45 minutes usually quoted, which is a Nozomi figure. Kodama also stops at Shin-Fuji, so the mountain is beside the train while it is standing still.`,
+    ],
+    [
+      "Which side of the Shinkansen is Mt. Fuji on?",
+      "Heading from Tokyo toward Kyoto and Shin-Osaka it is on the right, in Seat E. Coming back toward Tokyo it is on the left, and the seat letter is still E, because Mt. Fuji sits north of the track and seat letters do not change with direction. In the Green Car the equivalent window seat is Seat D.",
+    ],
+    [
+      "Is the slower train worse for sightseeing?",
+      `No. Several window views sit beside stations that only Kodama serves. Kakegawa Castle is the clearest case: ${kodamaCount} Kodama call at Kakegawa and no Hikari or Nozomi stop there at all.`,
+    ],
+  ];
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "@id": `${pageUrl}#faq`,
+        mainEntity: qa.map(([question, answer]) => ({
+          "@type": "Question",
+          name: question,
+          acceptedAnswer: { "@type": "Answer", text: answer },
+        })),
+      },
+    ],
+  };
+}
+
 function applyTo(pageFile, startMarker, endMarker, replacement, label) {
   const html = fs.readFileSync(pageFile, "utf8");
   if (!html.includes(startMarker) || !html.includes(endMarker)) {
@@ -210,11 +304,17 @@ function applyTo(pageFile, startMarker, endMarker, replacement, label) {
   return false;
 }
 
+const KAKEGAWA_KODAMA = TIMETABLE.trains.filter(
+  (train) => train.type === "Kodama" && train.times.Kakegawa,
+).length;
+
 applyTo(JRPASS_PAGE, START, END, generated, "JR Pass table");
+applyTo(JRPASS_PAGE, LD_MARK_START, LD_MARK_END, ldScript(jrPassFaqLd(tokyoRange, KAKEGAWA_KODAMA)), "JR Pass structured data");
 for (const langKey of Object.keys(LANGS)) {
   const page = path.join(appDir, LANGS[langKey].dir, "besides-fuji.html");
   if (!fs.existsSync(page)) continue;
   applyTo(page, BESIDES_START, BESIDES_END, besidesTableHTML(langKey), `Besides-Fuji table (${langKey})`);
+  applyTo(page, LD_MARK_START, LD_MARK_END, ldScript(besidesItemListLd(langKey)), `Besides-Fuji structured data (${langKey})`);
 }
 
 const besidesCount = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id)).length;
