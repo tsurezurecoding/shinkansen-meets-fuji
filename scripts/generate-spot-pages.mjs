@@ -556,6 +556,8 @@ function contentRailHTML(lang, prefix, options = {}) {
   const items = lang === "en" ? [
     { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "Mt. Fuji FAQ", desc: "Check the timing, seat side and cloudy-day answers." },
     { href: `${prefix}en/mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today." },
+    { href: `${prefix}en/jr-pass-fuji.html`, img: "images/thumbs/content-faq.webp", label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones." },
+    { href: `${prefix}en/besides-fuji.html`, img: "images/thumbs/content-mieru.webp", label: "GREY SKY", title: "If Fuji is hidden", desc: "The other 35 views, in the order they pass your window." },
     { href: `${prefix}en/sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "Sumie Window", desc: "Ride the route as a quiet ink-painting window." },
     { href: `${prefix}en/somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "Window Journey", desc: "Let real window photos flow past like a short trip." },
     { href: `${prefix}en/journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride." },

@@ -18,13 +18,15 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Japan Rail Pass and Mt. Fuji: Hikari and Kodama Times">
   <meta property="og:description" content="A Japan Rail Pass puts you on Hikari or Kodama. Mt. Fuji then arrives 59–71 minutes after Tokyo, not 43. Exact time for every pass-covered train.">
-  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
-  <meta property="og:image:alt" content="Mt. Fuji seen from a Tokaido Shinkansen window">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-jr-pass-fuji.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kakegawa Castle from a Shinkansen window, with the Japan Rail Pass timing headline">
   <meta property="og:url" content="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Japan Rail Pass and Mt. Fuji: Hikari and Kodama Times">
   <meta name="twitter:description" content="A Japan Rail Pass puts you on Hikari or Kodama. Mt. Fuji then arrives 59–71 minutes after Tokyo, not 43. Exact time for every pass-covered train.">
-  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-jr-pass-fuji.jpg">
   <script src="../language-router.js?v=7d346901"></script>
   <style>
     .jrpass-page main { padding-bottom: 40px; }
@@ -32,7 +34,8 @@
     .jp-hero-inner { max-width: 720px; margin: 0 auto; }
     .jp-hero h1 { font-family: var(--font-serif); font-size: clamp(26px, 5.4vw, 40px); line-height: 1.45; margin: 0 0 18px; }
     .jp-lead { font-size: 15px; line-height: 1.95; margin: 0 0 10px; }
-    .jp-section { max-width: 720px; margin: 0 auto; padding: 0 20px 34px; }
+    .jp-section { padding: 0 20px 34px; }
+    .spot-page-shell > .jp-section { max-width: none; }
     .jp-section h2 { font-family: var(--font-serif); font-size: clamp(20px, 4vw, 27px); line-height: 1.5; margin: 34px 0 14px; }
     .jp-section h3 { font-size: 16px; margin: 30px 0 6px; }
     .jp-section p { font-size: 14.5px; line-height: 1.95; }
@@ -98,7 +101,6 @@
   <div data-spot-page-shared-module="topbar"></div>
 
   <main>
-    <div data-spot-page-shared-module="rail"></div>
     <section class="jp-hero" aria-labelledby="jpTitle">
       <div class="jp-hero-inner">
         <p class="eyebrow">JAPAN RAIL PASS</p>
@@ -108,7 +110,9 @@
       </div>
     </section>
 
-    <div class="jp-section">
+    <div class="spot-page-shell jp-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article jp-section">
       <div class="jp-callout">
         <p><b>Which side.</b> Heading to Kyoto or Shin-Osaka, Mt. Fuji is on the <b>right</b> — <b>Seat E</b>. Coming back to Tokyo it is on the <b>left</b>, and the seat letter is still E. Seat letters do not change with direction; the mountain simply sits north of the track.</p>
         <p><b>Green Car.</b> The equivalent window seat is <b>Seat D</b>.</p>
@@ -232,6 +236,7 @@
         <a class="btn btn-ghost" href="besides-fuji.html" data-jrpass-cta="besides">If the mountain is hidden</a>
         <a class="btn btn-ghost" href="zukan.html" data-jrpass-cta="zukan">All 40 window views</a>
       </div>
+      </article>
     </div>
 
     <section data-spot-page-shared-module="mobile-promos"></section>
@@ -247,6 +252,6 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=2d3bc2e1"></script>
-  <script src="../spot-page-shared.js?v=e391a1d9"></script>
+  <script src="../spot-page-shared.js?v=9c04a387"></script>
 </body>
 </html>

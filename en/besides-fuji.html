@@ -18,13 +18,15 @@
   <meta property="og:locale" content="en_US">
   <meta property="og:title" content="Mt. Fuji Is Hidden Today? What Else to See from the Shinkansen">
   <meta property="og:description" content="A grey sky costs you one view out of forty. Castles, a lake the train crosses, tea fields and a depot of sleeping Shinkansen are all still there — minute by minute.">
-  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
-  <meta property="og:image:alt" content="A window view from the Tokaido Shinkansen">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Four window views under grey skies: Shimizu Port, Lake Hamana, the tea fields and Torikai depot">
   <meta property="og:url" content="https://www.michikusa-travel.com/en/besides-fuji.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mt. Fuji Is Hidden Today? What Else to See from the Shinkansen">
   <meta name="twitter:description" content="A grey sky costs you one view out of forty. Here is everything else outside your window, minute by minute.">
-  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
   <script src="../language-router.js?v=7d346901"></script>
   <style>
     .besides-page main { padding-bottom: 40px; }
@@ -32,7 +34,8 @@
     .bf-hero-inner { max-width: 720px; margin: 0 auto; }
     .bf-hero h1 { font-family: var(--font-serif); font-size: clamp(26px, 5.4vw, 40px); line-height: 1.45; margin: 0 0 18px; }
     .bf-lead { font-size: 15px; line-height: 1.95; margin: 0 0 10px; }
-    .bf-section { max-width: 720px; margin: 0 auto; padding: 0 20px 34px; }
+    .bf-section { padding: 0 20px 34px; }
+    .spot-page-shell > .bf-section { max-width: none; }
     .bf-section h2 { font-family: var(--font-serif); font-size: clamp(20px, 4vw, 27px); line-height: 1.5; margin: 34px 0 14px; }
     .bf-section p { font-size: 14.5px; line-height: 1.95; }
     .bf-note { color: #6b6353; font-size: 13px; margin: 0 0 10px; }
@@ -424,7 +427,6 @@
   <div data-spot-page-shared-module="topbar"></div>
 
   <main>
-    <div data-spot-page-shared-module="rail"></div>
     <section class="bf-hero" aria-labelledby="bfTitle">
       <div class="bf-hero-inner">
         <p class="eyebrow">GREY SKY</p>
@@ -434,7 +436,9 @@
       </div>
     </section>
 
-    <div class="bf-section">
+    <div class="spot-page-shell bf-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article bf-section">
       <div class="bf-callout">
         <p><b>Why the near views survive.</b> Mt. Fuji is roughly 40 km from the track, so it needs the whole sky to cooperate. A castle two hundred metres away needs nothing. That is the entire difference.</p>
         <p><b>Before you give up on the mountain</b>, note that it can appear from five separate points along the line, spread over more than an hour. Losing the famous one near Shin-Fuji does not mean losing all five.</p>
@@ -499,8 +503,10 @@
       <div class="bf-cta">
         <a class="btn btn-primary" href="./#journey" data-besides-cta="pick_train">Time all 40 views to my train →</a>
         <a class="btn btn-ghost" href="mieru.html" data-besides-cta="forecast">Will Mt. Fuji show today?</a>
+        <a class="btn btn-ghost" href="jr-pass-fuji.html" data-besides-cta="jrpass">Riding on a Japan Rail Pass?</a>
         <a class="btn btn-ghost" href="zukan.html" data-besides-cta="zukan">Browse the views in photos</a>
       </div>
+      </article>
     </div>
 
     <section data-spot-page-shared-module="mobile-promos"></section>
@@ -516,6 +522,6 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=2d3bc2e1"></script>
-  <script src="../spot-page-shared.js?v=e391a1d9"></script>
+  <script src="../spot-page-shared.js?v=9c04a387"></script>
 </body>
 </html>
