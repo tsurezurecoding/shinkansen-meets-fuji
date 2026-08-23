@@ -66,6 +66,11 @@ for (const spot of SPOTS) {
   if (typeof spot.durationSec !== "number" || spot.durationSec <= 0) {
     problems.push(`${id}: durationSec must be a positive number (${spot.durationSec})`);
   }
+  // 曇天でも見えるスポットにだけ true を書く。false を明示的に置かない
+  // （「見えない」と「まだ判断していない」を取り違えるため）。
+  if (spot.visibleWhenCloudy !== undefined && spot.visibleWhenCloudy !== true) {
+    problems.push(`${id}: visibleWhenCloudy must be true or absent (${spot.visibleWhenCloudy})`);
+  }
 
   const sharesPage = Boolean(spot.guidePageId) && spot.guidePageId !== spot.id;
   if (sharesPage) {

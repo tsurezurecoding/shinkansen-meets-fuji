@@ -2163,8 +2163,11 @@ function discoverySpotOrder(a, b) {
   const priorityB = discoverySpotPriority[b.id] ?? 99;
   return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
 }
+// 「曇りでも見える」は data.js の visibleWhenCloudy が持つ。ここに ID を並べていた頃は、
+// 席側や見やすさと同じ「実際に何が見えるか」の事実だけがスポットのデータから離れていて、
+// 構造化データにも出せなかった。以下に残る5つはジャンル分けで、別種のもの。
+// 新しく「見え方」の属性を足すときは、ここではなく data.js へ書く。
 const galleryTagGroups = {
-  cloudy: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "727-board", "hinataoka", "putiputi-sign", "odawara-castle", "gyoran-kannon", "odawara", "shimizu-port-chikyu", "shizuoka-tea-fields", "kakegawa", "genki-sign", "hamanako", "toyohashi-tateiwa", "mikawa-oshima", "nichiban-anjo", "nagoya-station-skyline", "kirin-beer-factory", "kiyosu", "solar-ark", "kinshozan", "nangu-taisha", "seta-karahashi", "toji", "torikai-train-depot"]),
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
   industry: new Set(["shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
@@ -2196,6 +2199,7 @@ function galleryTags(spot) {
   if (spotHasTimeOfDay(spot, "day")) tags.add("day");
   if (spotHasTimeOfDay(spot, "night")) tags.add("night");
   if (spot.category === "classic") tags.add("classic");
+  if (spot.visibleWhenCloudy) tags.add("cloudy");
   Object.entries(galleryTagGroups).forEach(([tag, ids]) => {
     if (ids.has(spot.id)) tags.add(tag);
   });

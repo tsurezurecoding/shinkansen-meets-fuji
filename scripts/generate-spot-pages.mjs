@@ -680,6 +680,8 @@ const SPOT_FACT_LABELS = {
     duration: "見えている時間の目安（秒）",
     spotting: "見つけやすさ",
     levels: { easy: "やさしい", moderate: "ふつう", hard: "むずかしい" },
+    cloudy: "曇りでも見えるか",
+    cloudyYes: "見える",
   },
   en: {
     side: "Seat side",
@@ -689,6 +691,8 @@ const SPOT_FACT_LABELS = {
     duration: "Typical time in view (seconds)",
     spotting: "How hard it is to spot",
     levels: { easy: "Easy", moderate: "Medium", hard: "Hard" },
+    cloudy: "Visible on a cloudy day",
+    cloudyYes: "Yes",
   },
 };
 
@@ -700,6 +704,8 @@ function spotAttractionJsonLd(spot, lang, url, data, desc, otherLang) {
     { name: L.duration, value: spot.durationSec },
   ];
   if (spot.spotting) properties.push({ name: L.spotting, value: L.levels[spot.spotting] });
+  // 曇天可否は true のときだけ載せる。未記載を「見えない」と読ませない。
+  if (spot.visibleWhenCloudy) properties.push({ name: L.cloudy, value: L.cloudyYes });
   const attraction = {
     "@type": "TouristAttraction",
     "@id": `${url}#spot`,
