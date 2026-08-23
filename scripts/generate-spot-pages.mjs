@@ -701,7 +701,7 @@ const SPOT_FACT_LABELS = {
 function spotAttractionJsonLd(spot, lang, url, data, desc, otherLang) {
   const L = SPOT_FACT_LABELS[lang] || SPOT_FACT_LABELS.en;
   const properties = [
-    { name: L.side, value: spot.side === "E" ? L.sideE : L.sideA },
+    { name: L.side, value: sideLabel(spot, lang) },
     { name: L.minutes, value: spot.minutesFromTokyo },
     { name: L.duration, value: spot.durationSec },
   ];

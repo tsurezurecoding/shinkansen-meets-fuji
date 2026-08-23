@@ -10,6 +10,7 @@
   <meta name="description" content="Clouds hid Mt. Fuji from the bullet train? The window still has castles, a lake the train crosses, tea fields, giant mystery billboards and a depot of sleeping Shinkansen. What to watch for, minute by minute, on a grey day.">
   <link rel="canonical" href="https://www.michikusa-travel.com/en/besides-fuji.html">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/besides-fuji.html">
+  <link rel="alternate" hreflang="zh-Hant-TW" href="https://www.michikusa-travel.com/zh-Hant/besides-fuji.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/besides-fuji.html">
   <link rel="stylesheet" href="../style.css?v=15556993">
   <link rel="icon" href="../favicon.ico" sizes="any">
@@ -28,6 +29,36 @@
   <meta name="twitter:description" content="A grey sky costs you one view out of forty. Here is everything else outside your window, minute by minute.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
   <script src="../language-router.js?v=7d346901"></script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
   <style>
     .besides-page main { padding-bottom: 40px; }
     .bf-hero { background: var(--paper, #fbf8f2); padding: 72px 20px 44px; }
@@ -523,5 +554,21 @@
 
   <script src="../spot-page-shared-data.js?v=2d3bc2e1"></script>
   <script src="../spot-page-shared.js?v=9c04a387"></script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-besides-cta]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      var payload = {
+        cta_id: link.getAttribute("data-besides-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "en",
+        viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile",
+        page_context: "besides_fuji"
+      };
+      window.gtag("event", "besides_fuji_cta_click", payload);
+      if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+  </script>
 </body>
 </html>

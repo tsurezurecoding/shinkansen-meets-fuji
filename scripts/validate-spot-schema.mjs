@@ -45,6 +45,60 @@ const problems = [];
 const ids = new Set();
 let sharedPageCount = 0;
 
+const GENERATED_SIDE_LABELS = {
+  ja: {
+    A: "A席・海側",
+    E: "E席・山側",
+    hamanako: "A席・海側 / E席・山側",
+    property: "座席側",
+  },
+  en: {
+    A: "Seat A · left side toward Kyoto",
+    E: "Seat E · right side toward Kyoto",
+    hamanako: "Seat A · left / Seat E · right (toward Kyoto)",
+    property: "Seat side",
+  },
+};
+
+function localized(value, lang) {
+  if (value == null) return "";
+  if (typeof value === "string") return value;
+  return value[lang] || value.ja || value.en || "";
+}
+
+function expectedGeneratedSide(spot, lang) {
+  if (spot.id === "hamanako") return GENERATED_SIDE_LABELS[lang].hamanako;
+  return localized(spot.sideLabel, lang) || GENERATED_SIDE_LABELS[lang][spot.side];
+}
+
+function generatedJsonLdSide(spot, lang) {
+  const relative = lang === "ja" ? path.join("spots", `${spot.id}.html`) : path.join("en", "spots", `${spot.id}.html`);
+  const file = path.join(appDir, relative);
+  if (!fs.existsSync(file)) {
+    problems.push(`${spot.id}: missing generated ${lang} page (${relative})`);
+    return "";
+  }
+  const html = fs.readFileSync(file, "utf8");
+  const nodes = [];
+  for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)) {
+    try {
+      const data = JSON.parse(match[1]);
+      nodes.push(data);
+      if (Array.isArray(data["@graph"])) nodes.push(...data["@graph"]);
+    } catch (error) {
+      problems.push(`${spot.id}: invalid ${lang} JSON-LD (${error.message})`);
+      return "";
+    }
+  }
+  const attraction = nodes.find((node) => node && node["@type"] === "TouristAttraction");
+  const property = attraction?.additionalProperty?.find((item) => item?.name === GENERATED_SIDE_LABELS[lang].property);
+  if (!property) {
+    problems.push(`${spot.id}: generated ${lang} TouristAttraction has no seat-side property`);
+    return "";
+  }
+  return property.value;
+}
+
 for (const spot of SPOTS) {
   const id = spot.id || "(no id)";
   if (ids.has(id)) problems.push(`${id}: duplicate id`);
@@ -86,6 +140,13 @@ for (const spot of SPOTS) {
   } else {
     for (const field of OWN_PAGE_REQUIRED) {
       if (spot[field] === undefined) problems.push(`${id}: missing "${field}" for its own page`);
+    }
+  }
+  for (const lang of ["ja", "en"]) {
+    const expected = expectedGeneratedSide(spot, lang);
+    const actual = generatedJsonLdSide(spot, lang);
+    if (actual && actual !== expected) {
+      problems.push(`${id}: generated ${lang} JSON-LD seat side is "${actual}", expected "${expected}"`);
     }
   }
 }

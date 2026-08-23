@@ -7,7 +7,7 @@ import { fileURLToPath } from "node:url";
 //
 // Why this page needs its own table: the "Mt. Fuji is about 43 minutes after Tokyo"
 // figure quoted everywhere — including our own fujiOffsetsMinutes — is a Nozomi figure.
-// A Japan Rail Pass does not cover Nozomi without a surcharge, so pass holders ride
+// A Japan Rail Pass covers Nozomi only with a separate special ticket, so pass holders normally ride
 // Hikari and Kodama. A Kodama takes 59-71 minutes from Tokyo to reach the same view.
 //
 // ONLY trains with a real Shin-Fuji stop time are listed. An earlier version
@@ -89,7 +89,7 @@ const toMinutes = (hhmm) => {
 };
 
 function rowsFor(direction) {
-  return TIMETABLE.trains
+  const rows = TIMETABLE.trains
     .filter((train) => train.direction === direction)
     .filter((train) => train.type === "Hikari" || train.type === "Kodama")
     .filter((train) => train.times["Shin-Fuji"])
@@ -108,8 +108,18 @@ function rowsFor(direction) {
         after: after > 0 ? after : null,
       };
     })
-    .filter(Boolean)
-    .sort((a, b) => toMinutes(a.fujiAt) - toMinutes(b.fujiAt));
+    .filter(Boolean);
+
+  // JR East exposes some through-services from more than one boarding-station page.
+  // The train number and Shin-Fuji time identify the same physical service; keep the
+  // earliest listed origin so riders see the complete run only once.
+  const unique = new Map();
+  for (const row of rows) {
+    const key = `${row.type}|${row.number}|${row.fujiAt}`;
+    const current = unique.get(key);
+    if (!current || toMinutes(row.departure) < toMinutes(current.departure)) unique.set(key, row);
+  }
+  return [...unique.values()].sort((a, b) => toMinutes(a.fujiAt) - toMinutes(b.fujiAt));
 }
 
 function tableHTML(caption, seatNote, rows) {
@@ -253,7 +263,7 @@ function jrPassFaqLd(tokyoRange, kodamaCount) {
   const qa = [
     [
       "Does the Japan Rail Pass cover the Shinkansen to Mt. Fuji?",
-      "It covers Hikari and Kodama on the Tokaido Shinkansen. Nozomi requires a surcharge. All three run on the same track, so the view of Mt. Fuji is identical; only the timing differs.",
+      "It covers Hikari and Kodama on the Tokaido Shinkansen. Nozomi requires a separate special ticket for pass holders. All three run on the same track, so the view of Mt. Fuji is identical; only the timing differs.",
     ],
     [
       "How long after leaving Tokyo does Mt. Fuji appear on a Japan Rail Pass train?",
@@ -304,6 +314,52 @@ function applyTo(pageFile, startMarker, endMarker, replacement, label) {
   return false;
 }
 
+function requireFragment(html, fragment, label) {
+  if (!html.includes(fragment)) throw new Error(`${label} is missing`);
+}
+
+function validateInboundPageContracts() {
+  const jrPass = fs.readFileSync(JRPASS_PAGE, "utf8");
+  const besidesEn = fs.readFileSync(BESIDES_PAGE, "utf8");
+  const besidesZhPath = path.join(appDir, "zh-Hant", "besides-fuji.html");
+  const besidesZh = fs.readFileSync(besidesZhPath, "utf8");
+  const pages = [
+    [jrPass, "JR Pass page", "data-jrpass-cta", "jrpass_cta_click"],
+    [besidesEn, "English Besides-Fuji page", "data-besides-cta", "besides_fuji_cta_click"],
+    [besidesZh, "Traditional Chinese Besides-Fuji page", "data-besides-cta", "besides_fuji_cta_click"],
+  ];
+
+  for (const [html, label, ctaAttribute, eventName] of pages) {
+    requireFragment(html, "if (window.MADO_EMBEDDED_WEB) return;", `${label}: embedded analytics guard`);
+    requireFragment(html, "https://www.googletagmanager.com/gtag/js?id=", `${label}: normal-web analytics loader`);
+    requireFragment(html, ctaAttribute, `${label}: CTA marker`);
+    requireFragment(html, eventName, `${label}: CTA analytics event`);
+  }
+
+  const obsoleteFareClaims = ["reserved seats carry a fee", "reservations carry a fee"];
+  const guide = fs.readFileSync(path.join(appDir, "en", "guide.html"), "utf8");
+  for (const claim of obsoleteFareClaims) {
+    if (jrPass.toLowerCase().includes(claim) || guide.toLowerCase().includes(claim)) {
+      throw new Error(`Obsolete JR Pass fare claim remains: ${claim}`);
+    }
+  }
+  if (/Nozomi[^.]{0,120}surcharge|surcharge[^.]{0,120}Nozomi/i.test(jrPass) || /Nozomi[^.]{0,120}surcharge|surcharge[^.]{0,120}Nozomi/i.test(guide)) {
+    throw new Error("Obsolete Nozomi surcharge wording remains; use the official separate-special-ticket wording");
+  }
+  requireFragment(jrPass, "includes seat reservations on eligible Hikari and Kodama services at no additional charge", "JR Pass reservation terms");
+  const serviceKeys = [...jrPass.matchAll(/<tr><td>(Hikari|Kodama) (\d+)<\/td><td>[^<]+<\/td><td>[^<]+<\/td><td><b>(\d{2}:\d{2})<\/b>/g)]
+    .map((match) => `${match[1]}|${match[2]}|${match[3]}`);
+  if (new Set(serviceKeys).size !== serviceKeys.length) {
+    throw new Error("JR Pass table lists the same train number and Shin-Fuji time more than once");
+  }
+
+  const enUrl = "https://www.michikusa-travel.com/en/besides-fuji.html";
+  const zhUrl = "https://www.michikusa-travel.com/zh-Hant/besides-fuji.html";
+  requireFragment(besidesEn, `hreflang="zh-Hant-TW" href="${zhUrl}"`, "English Besides-Fuji zh-Hant alternate");
+  requireFragment(besidesZh, `hreflang="en" href="${enUrl}"`, "Traditional Chinese Besides-Fuji English alternate");
+  requireFragment(besidesZh, `hreflang="x-default" href="${enUrl}"`, "Traditional Chinese Besides-Fuji x-default alternate");
+}
+
 const KAKEGAWA_KODAMA = TIMETABLE.trains.filter(
   (train) => train.type === "Kodama" && train.times.Kakegawa,
 ).length;
@@ -316,6 +372,7 @@ for (const langKey of Object.keys(LANGS)) {
   applyTo(page, BESIDES_START, BESIDES_END, besidesTableHTML(langKey), `Besides-Fuji table (${langKey})`);
   applyTo(page, LD_MARK_START, LD_MARK_END, ldScript(besidesItemListLd(langKey)), `Besides-Fuji structured data (${langKey})`);
 }
+validateInboundPageContracts();
 
 const besidesCount = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id)).length;
 const summary =

@@ -28,6 +28,36 @@
   <meta name="twitter:description" content="A Japan Rail Pass puts you on Hikari or Kodama. Mt. Fuji then arrives 59–71 minutes after Tokyo, not 43. Exact time for every pass-covered train.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-jr-pass-fuji.jpg">
   <script src="../language-router.js?v=7d346901"></script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
   <style>
     .jrpass-page main { padding-bottom: 40px; }
     .jp-hero { background: var(--paper, #fbf8f2); padding: 72px 20px 44px; }
@@ -64,7 +94,7 @@
           "name": "Does the Japan Rail Pass cover the Shinkansen to Mt. Fuji?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It covers Hikari and Kodama on the Tokaido Shinkansen. Nozomi requires a surcharge. All three run on the same track, so the view of Mt. Fuji is identical; only the timing differs."
+            "text": "It covers Hikari and Kodama on the Tokaido Shinkansen. Nozomi requires a separate special ticket for pass holders. All three run on the same track, so the view of Mt. Fuji is identical; only the timing differs."
           }
         },
         {
@@ -105,7 +135,7 @@
       <div class="jp-hero-inner">
         <p class="eyebrow">JAPAN RAIL PASS</p>
         <h1 id="jpTitle">With a Japan Rail Pass, Mt. Fuji is not 43 minutes after Tokyo</h1>
-        <p class="jp-lead">Almost every guide says Mt. Fuji appears about 40 to 45 minutes after Tokyo. That is a <b>Nozomi</b> figure — and a Japan Rail Pass does not cover Nozomi without paying a surcharge.</p>
+        <p class="jp-lead">Almost every guide says Mt. Fuji appears about 40 to 45 minutes after Tokyo. That is a <b>Nozomi</b> figure — and pass holders need a separate special ticket to ride Nozomi.</p>
         <p class="jp-lead">Your pass covers <b>Hikari</b> and <b>Kodama</b>. On a Kodama from Tokyo the same view arrives <b>59 to 71 minutes</b> in — up to half an hour later than the number you were given. Worse, a Kodama <b>stops at Shin-Fuji</b>, which is the one place on the line where the mountain waits for you.</p>
       </div>
     </section>
@@ -122,7 +152,7 @@
       <h2>What the pass actually covers</h2>
       <p>The Tokaido Shinkansen runs three services on the same track, so the view from the window is identical on all three. What differs is how many times you stop, and therefore when you reach Mt. Fuji.</p>
       <ul>
-        <li><b>Nozomi</b> — fastest, fewest stops. <b>Not included</b> in the Japan Rail Pass without a surcharge.</li>
+        <li><b>Nozomi</b> — fastest, fewest stops. Pass holders need a <b>separate special ticket</b> to ride it.</li>
         <li><b>Hikari</b> — <b>included</b>. A few more stops.</li>
         <li><b>Kodama</b> — <b>included</b>. Stops everywhere, including Shin-Fuji itself.</li>
       </ul>
@@ -192,7 +222,6 @@
             <tr><td>Kodama 914</td><td>Hamamatsu</td><td>06:43</td><td><b>07:22</b></td><td>39 min</td></tr>
             <tr><td>Kodama 918</td><td>Hamamatsu</td><td>06:55</td><td><b>07:47</b></td><td>52 min</td></tr>
             <tr><td>Kodama 800</td><td>Gifu-Hashima</td><td>06:30</td><td><b>08:22</b></td><td>112 min</td></tr>
-            <tr><td>Kodama 800</td><td>Nagoya</td><td>06:42</td><td><b>08:22</b></td><td>100 min</td></tr>
             <tr><td>Kodama 802</td><td>Nagoya</td><td>07:38</td><td><b>09:10</b></td><td>92 min</td></tr>
             <tr><td>Kodama 804</td><td>Nagoya</td><td>08:08</td><td><b>09:41</b></td><td>93 min</td></tr>
             <tr><td>Kodama 806</td><td>Nagoya</td><td>08:38</td><td><b>10:13</b></td><td>95 min</td></tr>
@@ -226,7 +255,7 @@
       <!-- JRPASS_TABLE_END -->
 
       <h2>Before you board</h2>
-      <p>Seat E is a reserved seat, and reserved seats carry a fee on every train type. For current pass conditions and fares, check the official sources: <a href="https://japanrailpass.net/" rel="nofollow noopener" target="_blank">japanrailpass.net</a> and <a href="https://global.jr-central.co.jp/en/" rel="nofollow noopener" target="_blank">JR Central</a>. If Seat E is sold out, do not go and stand in someone else's row — aim instead for the brief Left-Side Fuji from Seat A, or for Lake Hamana, which works from either side.</p>
+      <p>Seat E is the Fuji-side window position in ordinary cars. On a reserved-seat ticket you can choose it in advance; a Japan Rail Pass includes seat reservations on eligible Hikari and Kodama services at no additional charge. Nozomi requires a separate special ticket for pass holders. For current pass conditions and fares, check the official sources: <a href="https://japanrailpass.net/" rel="nofollow noopener" target="_blank">japanrailpass.net</a> and <a href="https://global.jr-central.co.jp/en/" rel="nofollow noopener" target="_blank">JR Central</a>. If Seat E is sold out, do not go and stand in someone else's row — aim instead for the brief Left-Side Fuji from Seat A, or for Lake Hamana, which works from either side.</p>
 
       <h2>If the mountain is hidden</h2>
       <p>Mt. Fuji is often invisible, and clear winter mornings are by far the best odds. The ride does not end there: the same window carries castles, a lake the train crosses on a low bridge, tea fields, a pagoda in Kyoto, and a few large mysteries that people spend the trip arguing about.</p>
@@ -253,5 +282,21 @@
 
   <script src="../spot-page-shared-data.js?v=2d3bc2e1"></script>
   <script src="../spot-page-shared.js?v=9c04a387"></script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-jrpass-cta]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      var payload = {
+        cta_id: link.getAttribute("data-jrpass-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "en",
+        viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile",
+        page_context: "jr_pass_fuji"
+      };
+      window.gtag("event", "jrpass_cta_click", payload);
+      if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+  </script>
 </body>
 </html>
