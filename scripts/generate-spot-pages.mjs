@@ -2133,6 +2133,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/jr-pass-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
     { loc: `${siteRoot}/en/besides-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
+    { loc: `${siteRoot}/zh-Hant/besides-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-23" },
     { loc: `${siteRoot}/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
     { loc: `${siteRoot}/en/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },

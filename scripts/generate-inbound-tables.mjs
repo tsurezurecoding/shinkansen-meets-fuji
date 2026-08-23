@@ -44,7 +44,41 @@ const { SPOTS } = vm.runInNewContext(
 // sky takes away, so the "what else is out there" table lists everything but these.
 const FUJI_VIEWPOINTS = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
 
-const SPOTTING_LABEL = { easy: "Easy", moderate: "Medium", hard: "Hard" };
+// 繁体字のスポット名は既に generate-spot-pages.mjs の GUIDE_RAIL_LOCALIZATION が持っている。
+// 40件中38件あり、フジパイプとフジテックの2件は社名なので日本語表記のまま残す（レールと同じ挙動）。
+// ここで訳し直すと2箇所で別の表記になるので、必ずそちらから読む。
+const RAIL_LOCALIZATION = (() => {
+  const source = fs.readFileSync(path.join(appDir, "scripts", "generate-spot-pages.mjs"), "utf8");
+  const block = source.match(/const GUIDE_RAIL_LOCALIZATION = \{[\s\S]*?\n\};/);
+  if (!block) throw new Error("GUIDE_RAIL_LOCALIZATION not found in generate-spot-pages.mjs");
+  return vm.runInNewContext(`${block[0].replace("const GUIDE_RAIL_LOCALIZATION", "var T")}\n;T;`, {});
+})();
+
+const LANGS = {
+  en: {
+    dir: "en",
+    spotName: (spot) => (spot.en && spot.en.name) || spot.id,
+    hook: (spot) => (spot.en && spot.en.hook) || "",
+    minutes: (n) => `${n} min`,
+    head: ["From Tokyo", "Side", "Spotting", "What it is", ""],
+    level: { easy: "Easy", moderate: "Medium", hard: "Hard" },
+  },
+  "zh-Hant": {
+    dir: "zh-Hant",
+    // 繁体字のスポットページは無いので、詳細は英語版へ送る（ガイドの既存挙動と同じ）。
+    spotHrefPrefix: "../en/spots/",
+    spotName: (spot) =>
+      RAIL_LOCALIZATION["zh-Hant"].spots[spot.id] || (spot.ja && spot.ja.name) || spot.id,
+    // 一言説明の列は出さない。繁体字の hook は40件中6件しか無く、
+    // 残りを英語で埋めると中国語のページに英語の列が1本立つだけになる。
+    hook: null,
+    minutes: (n) => `東京起 ${n} 分`,
+    head: ["時間", "座位側", "難易度", "看到的是什麼"],
+    level: { easy: "容易", moderate: "普通", hard: "困難" },
+  },
+};
+
+const SPOTTING_LABEL = LANGS.en.level;
 
 const escapeHTML = (value) =>
   String(value).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -123,32 +157,33 @@ const generated =
 
 // --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
 
-function besidesTableHTML() {
+function besidesTableHTML(langKey) {
+  const L = LANGS[langKey];
   const rows = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id))
     .slice()
     .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
     .map((spot) => {
-      const name = (spot.en && spot.en.name) || spot.id;
-      const hook = (spot.en && spot.en.hook) || "";
-      const href = `spots/${spot.id}.html`;
+      const href = `${L.spotHrefPrefix || "spots/"}${spot.id}.html`;
       // 見やすさは実車で見た人が付けた評価だけを出す。
       // 未評価は空欄のままにして、評価済みのように見せない。
       const spotting = spot.spotting
-        ? `<span class="bf-level bf-level-${spot.spotting}">${SPOTTING_LABEL[spot.spotting]}</span>`
+        ? `<span class="bf-level bf-level-${spot.spotting}">${L.level[spot.spotting]}</span>`
         : "";
+      const hookCell = L.hook ? `<td>${escapeHTML(L.hook(spot))}</td>` : "";
       return (
-        `<tr><td>${spot.minutesFromTokyo} min</td>` +
+        `<tr><td>${escapeHTML(L.minutes(spot.minutesFromTokyo))}</td>` +
         `<td><span class="bf-seat">${escapeHTML(spot.side)}</span></td>` +
         `<td>${spotting}</td>` +
-        `<td><a href="${escapeHTML(href)}">${escapeHTML(name)}</a></td>` +
-        `<td>${escapeHTML(hook)}</td></tr>`
+        `<td><a href="${escapeHTML(href)}">${escapeHTML(L.spotName(spot))}</a></td>` +
+        `${hookCell}</tr>`
       );
     });
+  const head = L.head.map((cell) => `<th>${escapeHTML(cell)}</th>`).join("");
   return (
     `${BESIDES_START}\n` +
     `      <div class="bf-table-wrap">\n` +
     `        <table class="bf-table">\n` +
-    `          <thead><tr><th>From Tokyo</th><th>Side</th><th>Spotting</th><th>What it is</th><th></th></tr></thead>\n` +
+    `          <thead><tr>${head}</tr></thead>\n` +
     `          <tbody>\n            ${rows.join("\n            ")}\n          </tbody>\n` +
     `        </table>\n` +
     `      </div>\n      ${BESIDES_END}`
@@ -176,7 +211,11 @@ function applyTo(pageFile, startMarker, endMarker, replacement, label) {
 }
 
 applyTo(JRPASS_PAGE, START, END, generated, "JR Pass table");
-applyTo(BESIDES_PAGE, BESIDES_START, BESIDES_END, besidesTableHTML(), "Besides-Fuji table");
+for (const langKey of Object.keys(LANGS)) {
+  const page = path.join(appDir, LANGS[langKey].dir, "besides-fuji.html");
+  if (!fs.existsSync(page)) continue;
+  applyTo(page, BESIDES_START, BESIDES_END, besidesTableHTML(langKey), `Besides-Fuji table (${langKey})`);
+}
 
 const besidesCount = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id)).length;
 const summary =
