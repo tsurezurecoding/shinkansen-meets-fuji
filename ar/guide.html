@@ -27,6 +27,36 @@
   <meta name="twitter:description" content="اختر تاريخ الرحلة والقطار لمعرفة موعد مرور قطارك بجبل فوجي وبمعالم أخرى، مثل القلاع والبحيرات واللافتات. نوضح مناظر المقعدين E وA، وما يمكن رؤيته في الأيام الغائمة والرحلات الليلية.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://www.michikusa-travel.com/ar/guide.html","name":"متى ترى جبل فوجي من الشينكانسن؟ أوقات المرور حسب القطار ومناظر النافذة","description":"اختر تاريخ الرحلة والقطار لمعرفة موعد مرور قطارك بجبل فوجي وبمعالم أخرى، مثل القلاع والبحيرات واللافتات. نوضح مناظر المقعدين E وA، وما يمكن رؤيته في الأيام الغائمة والرحلات الليلية.","inLanguage":"ar"}</script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
 </head>
 <body class="spot-page guide-page-ar">
   <header class="topbar"><a class="brand" href="../en/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">لا تفوّت لحظة الرحلة</small></span></a>
