@@ -121,9 +121,9 @@ const embeddedPostUrls = [...new Set(
   [...postSection.matchAll(/https:\/\/x\.com\/[^/"\s]+\/status\/\d+(?:\?[^"'\s<]*)?/g)]
     .map((match) => match[0].replace(/\?.*$/, "")),
 )];
-expect(/src="images\/20260802_sparkling-dreams-hamanako_toshi549\.jpg"/.test(heroImageTag), "sparkling-dreams.html: local photograph is not the hero image");
-expect(/width="650"/.test(heroImageTag) && /height="434"/.test(heroImageTag), "sparkling-dreams.html: hero photograph dimensions are missing or incorrect");
-expect(/alt="青空の下、海上の橋を走る青と白のSparkling Dreams Shinkansen"/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text is missing, not visual, or names a location");
+expect(/src="images\/20260816_sparkling_dreams_shizuoka_michikusa\.jpg"/.test(heroImageTag), "sparkling-dreams.html: our own photograph is not the hero image");
+expect(/width="900"/.test(heroImageTag) && /height="600"/.test(heroImageTag), "sparkling-dreams.html: hero photograph dimensions are missing or incorrect");
+expect(/alt="白から青へグラデーションする車体のSparkling Dreams Shinkansenを真横から見たところ"/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text is missing, not visual, or names a location");
 expect(!/alt="[^"]*浜名湖/.test(heroImageTag), "sparkling-dreams.html: hero photograph alt text must not name a location");
 expect(!/\bloading\s*=/.test(heroImageTag), "sparkling-dreams.html: above-the-fold hero photograph must not be lazy-loaded");
 expect(!/sparkling-dreams-window\.svg/.test(heroFigure), "sparkling-dreams.html: abstract owned SVG is still used in the hero");
@@ -131,8 +131,8 @@ expect(/<p class="sd-hero-lead"><span class="copy-chunk">東京ディズニー�
 expect((heroLead.match(/class="copy-chunk"/g) || []).length === 3 && !/<br\b/i.test(heroLead), "sparkling-dreams.html: hero estimate lead has an unexpected chunk or forced line break");
 expect(/<p class="sd-hero-note"><span class="copy-chunk">運転計画は変更されることがあります。<\/span><span class="copy-chunk">最新情報は必ず公式案内をご確認ください。<\/span><\/p>/.test(heroNote), "sparkling-dreams.html: hero service-change note must use the two approved semantic sentence chunks");
 expect((heroNote.match(/class="copy-chunk"/g) || []).length === 2 && !/<br\b/i.test(heroNote), "sparkling-dreams.html: hero service-change note has an unexpected chunk or forced line break");
-expect(new RegExp(`<figcaption>\\s*写真：<a href="${escapeRegExp(PHOTO_POST_URL)}" target="_blank" rel="noopener noreferrer">Toshi（@toshi549）／元投稿を見る<\\/a>\\s*<\\/figcaption>`).test(heroFigure), "sparkling-dreams.html: source-linked Toshi photo credit is missing or has extra visible caption text");
-expect(!/(?:2026年|浜名湖|撮影)/.test(heroCaption) && (heroCaption.match(/<a\b/g) || []).length === 1, "sparkling-dreams.html: hero caption still exposes date/location text or extra links");
+expect(/<figcaption>写真：新幹線の窓　\(c\)Disney<\/figcaption>/.test(heroFigure), "sparkling-dreams.html: own-photo hero credit with the Disney notice is missing");
+expect(!/(?:2026年|浜名湖|撮影)/.test(heroCaption) && (heroCaption.match(/<a\b/g) || []).length === 0, "sparkling-dreams.html: hero caption must stay a plain own-photo credit with no date, location, or link");
 expect(!/sd-hero-video-card/.test(page), "sparkling-dreams.html: obsolete hero video card is still present");
 expect(/class="sd-hero-actions"[\s\S]*href="#sdCalculator"[\s\S]*>乗る列車を選ぶ<[\s\S]*href="#sdVideosTitle"[\s\S]*>みんなの動画を見る</.test(page), "sparkling-dreams.html: hero train/video CTAs are missing or target the wrong sections");
 expect(!/class="sd-fact-grid"/.test(page), "sparkling-dreams.html: obsolete four-item facts strip is still present");

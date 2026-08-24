@@ -5152,8 +5152,9 @@ body.modal-open { overflow: hidden; }
 .sd-hero {
   color: #fff;
   background:
-    radial-gradient(circle at 18% 18%, rgba(232, 112, 74, .3), transparent 34%),
-    linear-gradient(135deg, #101c2c, #263e58 68%, #49677c);
+    radial-gradient(circle at 18% 18%, rgba(232, 112, 74, .26), transparent 34%),
+    linear-gradient(135deg, rgba(16, 28, 44, .93), rgba(38, 62, 88, .88) 68%, rgba(73, 103, 124, .84)),
+    url("images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg") center / cover no-repeat;
 }
 .sd-hero-inner { max-width: 1040px; margin: 0 auto; padding: 64px 20px 58px; }
 .sd-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, 420px); align-items: center; gap: 36px; }
