@@ -3104,6 +3104,18 @@ const SPOTS = [
         sourceUrl: "https://cotetu.seesaa.net/article/518296647.html",
       },
     ],
+    media: {
+      heading: { ja: "動画で見る岐阜城", en: "Gifu Castle in motion" },
+      description: { ja: "金華山の頂に小さく見える天守を、動画でも確かめられます。動画中に流れる車内放送はディズニー新幹線仕様です。", en: "See the tiny keep on the summit of Mt. Kinka in motion. The onboard announcement heard in this video is the Disney Shinkansen version." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "Tv_x-cJiPYc",
+          title: { ja: "岐阜城とディズニー新幹線の車内放送", en: "Gifu Castle, with the Disney Shinkansen announcement" },
+          url: "https://www.youtube.com/watch?v=Tv_x-cJiPYc",
+        },
+      ],
+    },
     references: [REFERENCES.gifuCastleOfficial, REFERENCES.zusshiCastleBlog, REFERENCES.gifuCastleBlog],
     map: { lat: 35.4339, lng: 136.7824, ja: "岐阜城 金華山", en: "Gifu Castle Mt. Kinka" },
     viewpoint: { lat: 35.32789, lng: 136.671764 },
@@ -3872,7 +3884,27 @@ const SPOTS = [
         date: "2026-07-12",
         note: { ja: "京都駅の前後で見える五重塔", en: "The five-story pagoda seen around Kyoto Station" },
       },
+      {
+        src: "images/20260824_toji_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夕暮れの空を背に、金色に輝く東寺の五重塔", en: "To-ji's five-story pagoda glowing gold against the dusk sky" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-24",
+        note: { ja: "夕暮れの中金色に輝く五重塔", en: "The pagoda glowing gold in the dusk" },
+      },
     ],
+    media: {
+      heading: { ja: "動画で見る東寺 五重塔", en: "To-ji Pagoda in motion" },
+      description: { ja: "京都駅の手前、夕暮れにライトアップされた五重塔が流れていくところを動画でも確かめられます。", en: "See the floodlit pagoda slide past at dusk, just before Kyoto Station." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "PYDg935DkAs",
+          title: { ja: "夕闇に金色に輝く東寺五重塔", en: "To-ji Pagoda glowing gold in the dusk" },
+          url: "https://www.youtube.com/watch?v=PYDg935DkAs",
+        },
+      ],
+    },
     references: [REFERENCES.tojiOfficial, REFERENCES.tojiPagodaBunka, REFERENCES.toji],
     map: { lat: 34.980361, lng: 135.747694, ja: "東寺 五重塔", en: "To-ji Pagoda Kyoto" },
     viewpoint: { lat: 34.985303, lng: 135.746690 },
