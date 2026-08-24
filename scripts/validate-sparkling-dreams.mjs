@@ -182,13 +182,13 @@ expect(/og-sparkling-dreams\.png/.test(page), "sparkling-dreams.html: page-speci
 expect(!/og-shinkansen-window\.png/.test(page), "sparkling-dreams.html: generic OGP image must not be used");
 expect(/<meta property="og:image:alt" content="東京ディズニーシー25周年/.test(page), "sparkling-dreams.html: OGP image alt text is missing");
 const expectedMetadata = [
-  `<title>ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen | 新幹線の窓</title>`,
-  `<meta name="description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">`,
-  `<meta property="og:title" content="ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen">`,
-  `<meta property="og:description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">`,
+  `<title>ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる | 新幹線の窓</title>`,
+  `<meta name="description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・Cの運転パターンと運転日も掲載。">`,
+  `<meta property="og:title" content="ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる">`,
+  `<meta property="og:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・Cの運転パターンと運転日も掲載。">`,
   `<meta name="twitter:card" content="summary_large_image">`,
-  `<meta name="twitter:title" content="ディズニー新幹線の運転日・すれ違い時刻｜Sparkling Dreams Shinkansen">`,
-  `<meta name="twitter:description" content="ディズニー新幹線「Sparkling Dreams Shinkansen」の運転日とA・B・Cの運転パターンを案内。乗車日と列車を選ぶと、すれ違う時刻・場所・窓側の目安を確認できます。">`,
+  `<meta name="twitter:title" content="ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる">`,
+  `<meta name="twitter:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・Cの運転パターンと運転日も掲載。">`,
   `<meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-sparkling-dreams.png">`,
   `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
 ];
