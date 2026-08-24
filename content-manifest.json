@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "ecf907d1b2ac38bd",
-  "generatedAt": "2026-08-24T07:49:59.328Z",
+  "contentVersion": "f660e172a0c06838",
+  "generatedAt": "2026-08-24T13:42:19.569Z",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -62,8 +62,8 @@
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 24290,
-      "sha256": "7d6d6a0cc270059a620c718905d362bda6c0b65d1bcd21138e3a66a56cc3c4fe"
+      "bytes": 27397,
+      "sha256": "a4e0e19e56328bfc2dd7d512088e3ed5208aa7bfc5157d2e250f6f928c2c31ba"
     },
     {
       "path": "en/yakei.html",
