@@ -19,6 +19,8 @@ const SEVENTH_VIDEO_POST_URL = "https://x.com/Tomo52dra500pon/status/20757696888
 const EIGHTH_VIDEO_POST_URL = "https://x.com/7AD5IxRI1ArWckK/status/2071380845399802197";
 const NINTH_VIDEO_POST_URL = "https://x.com/ninnin_2017/status/2068943872311648598";
 const TENTH_VIDEO_POST_URL = "https://x.com/Takahashidaga/status/2086028890116702230";
+const OWN_REFLECTION_POST_URL = "https://x.com/michikusatravel/status/2089317353054158913";
+const OWN_CROSSING_POST_URL = "https://x.com/michikusatravel/status/2091662293058953395";
 const YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v=cfK8UcZ-lmg";
 const SECOND_YOUTUBE_VIDEO_URL = "https://www.youtube.com/watch?v=unBFVa-QnR4";
 const PHOTO_BYTES = 54358;
@@ -137,14 +139,14 @@ expect(!/class="sd-fact-grid"/.test(page), "sparkling-dreams.html: obsolete four
 expect(postSectionIndex > factsSectionIndex && postSectionIndex < calculatorSectionIndex, "sparkling-dreams.html: standalone X video section is missing or in the wrong order");
 expect(postSection.includes("WINDOW FINDS") && postSection.includes("みんなが見つけたディズニー新幹線") && postSection.includes("sdVideoAlong") && postSection.includes("sdVideoOnboard") && postSection.includes("sdVideoStation"), "sparkling-dreams.html: standalone X video section heading is missing");
 expect(!/class="section-sub"/.test(postSection), "sparkling-dreams.html: X video section must not add editorial summary copy");
-expect(postBlocks.length === 10 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 10, "sparkling-dreams.html: expected exactly ten official X video blockquotes");
-expect((postSection.match(/class="sd-post-embed sd-x-embed/g) || []).length === 10, "sparkling-dreams.html: every X post must use the stable loading container");
-expect((postSection.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="[^"]+"><blockquote class="twitter-tweet"/g) || []).length === 10, "sparkling-dreams.html: every X blockquote must sit inside the shared 16:9 media frame");
+expect(postBlocks.length === 12 && (page.match(/<blockquote\b[^>]*class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: expected exactly twelve official X blockquotes");
+expect((postSection.match(/class="sd-post-embed sd-x-embed/g) || []).length === 12, "sparkling-dreams.html: every X post must use the stable loading container");
+expect((postSection.match(/<div class="sd-media-frame sd-x-frame" data-placeholder="[^"]+"><blockquote class="twitter-tweet"/g) || []).length === 12, "sparkling-dreams.html: every X blockquote must sit inside the shared 16:9 media frame");
 expect((postSection.match(/<div class="sd-media-frame sd-youtube-frame" data-placeholder="[^"]+">/g) || []).length === 2, "sparkling-dreams.html: every YouTube player must use the same media frame as the X cards");
 expect(!/data-sd-media-fallback/.test(page), "sparkling-dreams.html: the obsolete JS fallback marker is still present");
 expect(postBlocks.every((block) => /data-dnt="true"/.test(block) && /data-media-max-width="560"/.test(block)), "sparkling-dreams.html: every X video must use privacy-enhanced official embed attributes");
 expect(postSection.includes("Toshi (@toshi549)") && postSection.includes("ろん.てぃが (@ron__tigger)") && postSection.includes("BOWING797_10 (@Bowing797_10)") && postSection.includes("neco (@n_s_z__7)") && postSection.includes("sayu@Cinnamorollproject∞ (@47923y_PROJECT)") && postSection.includes("はしやん＠愛知 (@hashiyan84aichi)") && postSection.includes("@Tomo52dra500pon") && postSection.includes("@7AD5IxRI1ArWckK") && postSection.includes("@ninnin_2017") && postSection.includes("@Takahashidaga"), "sparkling-dreams.html: official X embed author lines are missing");
-expect(embeddedPostUrls.length === 10 && [VIDEO_POST_URL, SECOND_VIDEO_POST_URL, THIRD_VIDEO_POST_URL, FOURTH_VIDEO_POST_URL, FIFTH_VIDEO_POST_URL, SIXTH_VIDEO_POST_URL, SEVENTH_VIDEO_POST_URL, EIGHTH_VIDEO_POST_URL, NINTH_VIDEO_POST_URL, TENTH_VIDEO_POST_URL].every((url) => embeddedPostUrls.includes(url)), "sparkling-dreams.html: X video section must contain exactly the six approved video post URLs");
+expect(embeddedPostUrls.length === 12 && [VIDEO_POST_URL, SECOND_VIDEO_POST_URL, THIRD_VIDEO_POST_URL, FOURTH_VIDEO_POST_URL, FIFTH_VIDEO_POST_URL, SIXTH_VIDEO_POST_URL, SEVENTH_VIDEO_POST_URL, EIGHTH_VIDEO_POST_URL, NINTH_VIDEO_POST_URL, TENTH_VIDEO_POST_URL, OWN_REFLECTION_POST_URL, OWN_CROSSING_POST_URL].every((url) => embeddedPostUrls.includes(url)), "sparkling-dreams.html: X video section must contain exactly the twelve approved post URLs");
 expect(youtubeFrames.length === 2, "sparkling-dreams.html: expected exactly two YouTube privacy-enhanced embeds");
 expect([
   ["cfK8UcZ-lmg", "JR東海×東京ディズニーリゾート 「Sparkling Dreams Shinkansen（スパークリングドリーム新幹線）」の車内＆車内メロディーを特別公開！"],
@@ -152,7 +154,7 @@ expect([
 ].every(([id, title]) => youtubeFrames.some((frame) => frame.includes(`src="https://www.youtube-nocookie.com/embed/${id}"`) && frame.includes(`title="${title}"`) && frame.includes('loading="lazy"') && frame.includes('referrerpolicy="strict-origin-when-cross-origin"') && frame.includes("allowfullscreen"))), "sparkling-dreams.html: YouTube embeds must use the approved videos, titles, and privacy-enhanced player contract");
 expect(!/honobonosun_in|uechun624|tetsudoshimbun/.test(page), "sparkling-dreams.html: removed X posts must not remain in the video section");
 const postCredits = postSection.match(/<p class="sd-post-credit">[\s\S]*?<\/p>/g) || [];
-expect(postCredits.length === 12, "sparkling-dreams.html: every embedded video needs its own visible poster credit line");
+expect(postCredits.length === 14, "sparkling-dreams.html: every embedded video needs its own visible poster credit line");
 expect([
   [VIDEO_POST_URL, "Toshi（@toshi549）"],
   [SECOND_VIDEO_POST_URL, "ろん.てぃが（@ron__tigger）"],
@@ -169,6 +171,10 @@ expect([
   [YOUTUBE_VIDEO_URL, "鉄道チャンネルYoutube - Tetsudo(Railway) Channel, Japan-"],
   [SECOND_YOUTUBE_VIDEO_URL, "旅波-tabinami-"],
 ].every(([url, name]) => postCredits.some((credit) => new RegExp(`^<p class="sd-post-credit">YouTube：<a href="${escapeRegExp(url)}" target="_blank" rel="noopener noreferrer">${escapeRegExp(name)}／元動画を見る</a></p>$`).test(credit))), "sparkling-dreams.html: YouTube credits must name the source channel and link the original video");
+expect([
+  [OWN_REFLECTION_POST_URL, "新幹線の窓（@michikusatravel）"],
+  [OWN_CROSSING_POST_URL, "新幹線の窓（@michikusatravel）"],
+].every(([url, name]) => postCredits.some((credit) => new RegExp(`^<p class="sd-post-credit">写真：<a href="${escapeRegExp(url)}" target="_blank" rel="noopener noreferrer">${escapeRegExp(name)}／元投稿を見る</a></p>$`).test(credit))), "sparkling-dreams.html: own-photo credits must link the original post with no extra caption text");
 expect(postCredits.every((credit) => !/(?:にて|撮影|浜名湖|鳥飼)/.test(credit)), "sparkling-dreams.html: poster credit must not add editorial location or caption text");
 const postIntro = page.match(/<p class="sd-post-intro">[\s\S]*?<\/p>/)?.[0] || "";
 expect(postIntro === `<p class="sd-post-intro"><span class="copy-chunk">XやYouTubeに投稿されているディズニー新幹線の動画を紹介します。</span><span class="copy-chunk">転載ではなく、XやYouTubeの埋め込み機能を使っています。</span></p>`, "sparkling-dreams.html: video intro must explain the source and official embed treatment");
