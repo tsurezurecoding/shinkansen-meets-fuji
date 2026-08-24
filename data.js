@@ -668,6 +668,7 @@ const SPOTS = [
         src: "images/20260629_tokyo_tower_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える東京タワー", en: "Tokyo Tower at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "夜の街に、東京タワー", en: "Tokyo Tower in the night city" },
       },
@@ -675,6 +676,7 @@ const SPOTS = [
         src: "images/20260629_tokyo_tower_night_2_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜のビルの合間に見える東京タワー", en: "Tokyo Tower between buildings at night" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "ビルの合間に光る塔", en: "A lit tower between buildings" },
       },
@@ -1805,6 +1807,7 @@ const SPOTS = [
       {
         src: "images/20260629_shimizu_port_chikyu_morning_michikusa.jpg",
         alt: { ja: "朝の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU in the morning from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "朝の港に、ちきゅう", en: "CHIKYU in the morning port" },
       },
@@ -2658,6 +2661,7 @@ const SPOTS = [
         src: "images/20260629_nichiban_anjo_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見えるセロテープの壁看板", en: "CELLOTAPE Wall Sign at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "夜に浮かぶセロテープ広告", en: "The CELLOTAPE ad glowing at night" },
       },
@@ -3470,6 +3474,7 @@ const SPOTS = [
       {
         src: "images/20260629_nangu_taisha_2_michikusa.jpg",
         alt: { ja: "新幹線のA席側から見える南宮大社の大鳥居", en: "Nangu Taisha torii gate from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "田園の向こうに見える大鳥居", en: "The large torii beyond the fields" },
       },
@@ -3741,6 +3746,7 @@ const SPOTS = [
       {
         src: "images/20260629_omi_fuji_michikusa.jpg",
         alt: { ja: "新幹線のA席側から見える近江富士", en: "Omi Fuji from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "田園の向こうの近江富士", en: "Omi Fuji beyond the fields" },
       },
@@ -3962,6 +3968,7 @@ const SPOTS = [
       {
         src: "images/20260629_torikai_train_depot_michikusa.jpg",
         alt: { ja: "新幹線から見える鳥飼車両基地", en: "Torikai Train Depot from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "白い列車がずらり", en: "Rows of white trains" },
       },
@@ -3969,6 +3976,7 @@ const SPOTS = [
         src: "images/20260629_torikai_train_depot_night_michikusa.jpg",
         timeOfDay: "night",
         alt: { ja: "夜の新幹線から見える鳥飼車両基地", en: "Torikai Train Depot at night from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "夜に眠る新幹線たち", en: "Shinkansen sleeping at night" },
       },
