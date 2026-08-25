@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "c1a1648fa1629b5b",
+  "contentVersion": "4db425e583604357",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -313,8 +313,8 @@
     {
       "path": "vendor/leaflet/LICENSE",
       "url": "https://www.michikusa-travel.com/vendor/leaflet/LICENSE",
-      "bytes": 1395,
-      "sha256": "53e8dc25862014e4324741ca18fbe3611e11d42ef69f59f86ea8c5389647d4cb"
+      "bytes": 1369,
+      "sha256": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b"
     },
     {
       "path": "yakei.html",

@@ -12,6 +12,7 @@
 *.xml  text eol=lf
 *.yml  text eol=lf
 *.yaml text eol=lf
+vendor/leaflet/LICENSE text eol=lf
 
 *.png  binary
 *.jpg  binary
