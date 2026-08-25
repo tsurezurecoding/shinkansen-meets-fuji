@@ -157,7 +157,6 @@ const contentVersion = createHash("sha256")
 const manifest = {
   schemaVersion: 1,
   contentVersion,
-  generatedAt: process.env.MADO_CONTENT_MANIFEST_GENERATED_AT || new Date().toISOString(),
   minShellVersion: "0.1.0",
   siteBaseUrl,
   files,

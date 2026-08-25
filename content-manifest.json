@@ -1,7 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "945cb09c416ebc35",
-  "generatedAt": "2026-08-24T21:44:14.516Z",
+  "contentVersion": "c1a1648fa1629b5b",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -32,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 132407,
-      "sha256": "4221721727b2d914c2204d2c1dc96338e7383c369ea331cb9bc2adb66c4ec8ae"
+      "bytes": 132078,
+      "sha256": "954c71e03d25a09870f5cf9b912e61d61afc704f26943f8388a925f3e3d22fb0"
     },
     {
       "path": "data.js",
@@ -57,7 +56,7 @@
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 23993,
-      "sha256": "9bdb6081046ba8d3e442423ca4b0f7c44c68704108a4505c664dd4f553fde30d"
+      "sha256": "09e609d55f22defc7d610677b10c4b137eee4e9b85514f22e2dccdc5790f7bd6"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -219,13 +218,13 @@
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
       "bytes": 25391,
-      "sha256": "f48a2ae15371b8cba631dc5a9c2c8ec741c603df92b49f36dd6dcf8243a03de0"
+      "sha256": "57463c939a6c9768392248c99afd5ad0b5313a691ee51c0a1363e6b6facdeed0"
     },
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18969,
-      "sha256": "719a8271ec77d69965ac1576bcc45ab846b3066602429ebcd4726752686e35ad"
+      "sha256": "483e3da9a79eba03720f41eb2fa61d5b5f4d3f6363162790dd4a3fd171a692bc"
     },
     {
       "path": "live/narration.js",

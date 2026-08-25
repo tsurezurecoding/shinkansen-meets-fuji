@@ -2,5 +2,6 @@
 .claude/
 .tmp_pydeps/
 .secrets/
+node_modules/
 AGENTS.md
 live/audio/*.wav

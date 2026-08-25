@@ -53,6 +53,7 @@ const html = `<!doctype html><html><head></head><body>
 <input type="checkbox" id="set-follow"><span id="set-follow-l"></span>
 <span id="set-narr-mode-l"></span>
 <select id="set-narr-mode"><option value="featured"></option><option value="all"></option><option value="off"></option></select>
+<p id="set-narr-help"></p>
 <span id="set-dir-l"></span>
 <select id="set-dir"><option value="auto"></option><option value="down"></option><option value="up"></option></select>
 <button id="btn-stop"></button><button id="btn-close-settings"></button><p id="set-note"></p></div>
@@ -70,32 +71,54 @@ function check(name, cond, detail) {
 
 /* ---------- セットアップ: 実ファイルをjsdomに読み込み ---------- */
 
-const dom = new JSDOM(html, { runScripts: "outside-only", url: "https://example.com/live/index.html", pretendToBeVisual: true });
-const w = dom.window;
+function createHarness(lang) {
+  const query = lang === "en" ? "?lang=en" : "";
+  const dom = new JSDOM(html, {
+    runScripts: "outside-only",
+    url: "https://example.com/live/index.html" + query,
+    pretendToBeVisual: true,
+  });
+  const w = dom.window;
+  let gpsCb = null;
 
-// jsdomは isSecureContext を実装しないため明示的に与える（無いとstartGpsが拒否する）
-try { Object.defineProperty(w, "isSecureContext", { value: true }); } catch (e) { w.isSecureContext = true; }
+  // jsdomは安全なコンテキストとメディア再生を実装しない。ここでブラウザ契約だけを模擬し、
+  // "Not implemented" の大量出力が検証結果を埋めないようにする。
+  try { Object.defineProperty(w, "isSecureContext", { value: true }); } catch (e) { w.isSecureContext = true; }
+  // feedApproachは同期的に時刻を進める。再生完了も同期で通知して、手前のスポットが
+  // 再生中のまま後続ケースの観測を塞ぐというテスト環境だけの滞留を避ける。
+  w.HTMLMediaElement.prototype.play = function () {
+    if (typeof this.onended === "function") this.onended();
+    return Promise.resolve();
+  };
+  w.HTMLMediaElement.prototype.pause = function () {};
+  w.HTMLMediaElement.prototype.load = function () {};
+  w.navigator.geolocation = {
+    watchPosition: function (ok) { gpsCb = ok; return 1; },
+    clearWatch: function () { gpsCb = null; },
+  };
 
-// GPS模擬: watchPositionのコールバックを捕まえて任意の位置を注入できるようにする
-let gpsCb = null;
-w.navigator.geolocation = {
-  watchPosition: function (ok) { gpsCb = ok; return 1; },
-  clearWatch: function () { gpsCb = null; },
-};
+  // 注意: w.eval は呼び出しごとに字句スコープが分かれるため、必ず連結して単一evalする。
+  w.eval(
+    src("data.js") + "\n" +
+    src("track.js") + "\n" +
+    src("live/narration.js") + "\n" +
+    "window.__TEST_SPOTS = SPOTS;\n" +
+    src("live/live.js")
+  );
+  return {
+    dom: dom,
+    w: w,
+    d: w.document,
+    T: w.MADO_TRACK,
+    NARR: w.NARRATIONS || {},
+    gps: function () { return gpsCb; },
+  };
+}
 
-// 注意: w.eval は呼び出しごとに字句スコープが分かれ、data.js の const SPOTS が
-// live.js から見えなくなる（ブラウザの<script>連結と挙動が違う）。必ず連結して単一evalする。
-w.eval(
-  src("data.js") + "\n" +
-  src("track.js") + "\n" +
-  src("live/narration.js") + "\n" +
-  "window.__TEST_SPOTS = SPOTS;\n" +
-  src("live/live.js")
-);
-
-const d = w.document;
-const T = w.MADO_TRACK;
-const NARR = w.NARRATIONS || {};
+const base = createHarness("ja");
+const w = base.w;
+const T = base.T;
+const NARR = base.NARR;
 const spotsById = {};
 w.__TEST_SPOTS.forEach(function (s) { spotsById[s.id] = s; });
 
@@ -103,7 +126,14 @@ const ids = Object.keys(NARR);
 if (!ids.length) { console.error("NARRATIONS が空です"); process.exit(1); }
 console.log("実況エントリ: " + ids.length + "件 [" + ids.join(", ") + "]");
 
-function kmOf(id) { return T.minToKm(spotsById[id].minutesFromTokyo); }
+function kmOf(id) {
+  const sp = spotsById[id];
+  // live.jsと同じく、手動補正済みviewpointを優先する。minutesFromTokyoだけを使うと
+  // 現行データでは数kmずれる箇所があり、別スポットを検証してしまう。
+  return sp.viewpoint && typeof sp.viewpoint.lat === "number" && typeof sp.viewpoint.lng === "number"
+    ? T.projectToTrack(sp.viewpoint.lat, sp.viewpoint.lng).km
+    : T.minToKm(sp.minutesFromTokyo);
+}
 
 // 同位置（±0.05km）に実況スポットが複数ある場合、next になるのは1つだけ。
 // あるIDの検証時は「同位置グループの誰かの台本が出ていればよい」とする。
@@ -147,7 +177,7 @@ ids.forEach(function (id) {
 
 console.log("\n== B. 動作検証 ==");
 
-function feedApproach(targetKm, dir) {
+function feedApproach(h, targetKm, dir) {
   // 目標の約8km手前から250km/h相当で、目標の2km手前まで接近する。
   // 2km手前=ETA約29秒で、直前の隣接スポット（例: キリン→清洲は3.4km差）を
   // 通過し終えて目標自身が next になった状態で実況が発火する。
@@ -158,34 +188,60 @@ function feedApproach(targetKm, dir) {
     to = Math.max(targetKm - 2.0, from + 0.01);
     if (to - from < 1.5) from = Math.max(to - 3.5, 0.1);
   } else {
-    from = Math.min(targetKm + 8, T.totalKm - 0.1);
+    from = Math.min(targetKm + 8, h.T.totalKm - 0.1);
     to = Math.min(targetKm + 2.0, from - 0.01);
-    if (from - to < 1.5) from = Math.min(to + 3.5, T.totalKm - 0.1);
+    if (from - to < 1.5) from = Math.min(to + 3.5, h.T.totalKm - 0.1);
   }
   const step = dir === "down" ? 0.35 : -0.35;
   let t = Date.now();
   for (let km = from; dir === "down" ? km <= to : km >= to; km += step) {
     t += 5000; // 5秒間隔 × 0.35km = 252km/h
-    const p = T.latLngAtKm(km);
-    gpsCb({ coords: { latitude: p.lat, longitude: p.lng, accuracy: 10, speed: 70 }, timestamp: t });
+    const p = h.T.latLngAtKm(km);
+    h.gps()({ coords: { latitude: p.lat, longitude: p.lng, accuracy: 10, speed: 70 }, timestamp: t });
   }
 }
 
-function runCase(id, dir) {
-  const targetKm = kmOf(id);
-  d.getElementById("btn-stop").click();
-  d.getElementById("btn-start").click();
-  feedApproach(targetKm, dir);
+function feedTriggerPoint(h, targetKm, dir) {
+  // 対象の直前から新しい走行セッションを開始する。これにより、密集区間でも手前の別スポットの
+  // 音声キューに検証対象が隠れず、「ETA 90秒以内なら対象がキュー候補になる」を直接検証できる。
+  const km = dir === "down"
+    ? Math.max(targetKm - 0.15, 0.01)
+    : Math.min(targetKm + 0.15, h.T.totalKm - 0.01);
+  const p = h.T.latLngAtKm(km);
+  h.gps()({
+    coords: { latitude: p.lat, longitude: p.lng, accuracy: 10, speed: 70 },
+    timestamp: Date.now(),
+  });
+}
 
-  const visible = d.getElementById("narrbar").className.indexOf("hidden") === -1;
+function runCase(id, dir) {
+  // 実運用ではstopで走行状態はリセットされるが、音声キューの非同期完了まで同一DOMで
+  // 次ケースへ進むと前ケースの台本を観測し得る。各ケースを新しいページとして独立させる。
+  const h = createHarness("ja");
+  const doc = h.d;
+  const targetKm = kmOf(id);
+  // 全NARRATIONSエントリを対象にするため「すべて」モードへ切り替える。
+  // 主要モードのままではcategory=curiousが出ないのが正しい製品仕様。
+  doc.getElementById("btn-narr-toggle").click();
+  if (dir === "down") {
+    doc.getElementById("btn-dir").click();
+  } else {
+    doc.getElementById("btn-dir").click();
+    doc.getElementById("btn-dir").click();
+  }
+  doc.getElementById("btn-start").click();
+  feedTriggerPoint(h, targetKm, dir);
+
+  const visible = doc.getElementById("narrbar").className.indexOf("hidden") === -1;
   check(id + "/" + dir + ": 実況バー表示", visible);
-  if (!visible) return;
-  const lang = d.documentElement.lang === "en" ? "en" : "ja";
+  if (!visible) { h.dom.window.close(); return; }
+  const lang = doc.documentElement.lang === "en" ? "en" : "ja";
   const candidates = coLocated(id)
     .map(function (o) { return NARR[o][dir] && NARR[o][dir][lang] && NARR[o][dir][lang].text; })
     .filter(Boolean);
-  const txt = d.getElementById("nr-text").textContent;
-  check(id + "/" + dir + ": 台本一致（同位置グループ内）", candidates.indexOf(txt) !== -1);
+  const txt = doc.getElementById("nr-text").textContent;
+  check(id + "/" + dir + ": 台本一致（同位置グループ内）", candidates.indexOf(txt) !== -1, txt);
+  h.dom.window.close();
 }
 
 ids.forEach(function (id) {
@@ -198,42 +254,48 @@ ids.forEach(function (id) {
 
 console.log("\n== C. UI操作 ==");
 const rep = ids[0];
-d.getElementById("btn-stop").click();
-d.getElementById("btn-start").click();
-feedApproach(kmOf(rep), "down");
+const ui = createHarness("ja");
+const ud = ui.d;
+ud.getElementById("btn-dir").click();
+ud.getElementById("btn-start").click();
+feedApproach(ui, kmOf(rep), "down");
 
-// 言語切替で台本が切り替わる
-d.getElementById("btn-lang").click();
-const lang2 = d.documentElement.lang === "en" ? "en" : "ja";
-const cand2 = coLocated(rep).map(function (o) { return NARR[o].down && NARR[o].down[lang2] && NARR[o].down[lang2].text; }).filter(Boolean);
-check("言語切替で台本切替", cand2.indexOf(d.getElementById("nr-text").textContent) !== -1);
-d.getElementById("btn-lang").click();
+// 現行UIの言語切替は別URLへの遷移なので、英語URLを独立起動して英語台本を検証する。
+const en = createHarness("en");
+en.d.getElementById("btn-dir").click();
+en.d.getElementById("btn-start").click();
+feedApproach(en, kmOf(rep), "down");
+const cand2 = coLocated(rep).map(function (o) { return NARR[o].down && NARR[o].down.en && NARR[o].down.en.text; }).filter(Boolean);
+check("英語URLで英語台本表示", en.d.documentElement.lang === "en" && cand2.indexOf(en.d.getElementById("nr-text").textContent) !== -1);
+en.dom.window.close();
 
 // 一時停止で実況が消える
-d.getElementById("btn-pause").click();
-check("一時停止で実況バー非表示", d.getElementById("narrbar").className.indexOf("hidden") !== -1);
-d.getElementById("btn-pause").click(); // 再開
+ud.getElementById("btn-pause").click();
+check("一時停止で実況バー非表示", ud.getElementById("narrbar").className.indexOf("hidden") !== -1);
+ud.getElementById("btn-pause").click(); // 再開
 
 // ×で閉じる（再表示させてから）
-d.getElementById("btn-stop").click();
-d.getElementById("btn-start").click();
-feedApproach(kmOf(rep), "down");
-d.getElementById("nr-close").click();
-check("×で閉じる", d.getElementById("narrbar").className.indexOf("hidden") !== -1);
+ud.getElementById("btn-stop").click();
+ud.getElementById("btn-start").click();
+feedApproach(ui, kmOf(rep), "down");
+ud.getElementById("nr-close").click();
+check("×で閉じる", ud.getElementById("narrbar").className.indexOf("hidden") !== -1);
 
 // 実況トグルOFFで出ない（主要 -> すべて -> OFF）
-d.getElementById("btn-narr-toggle").click();
-d.getElementById("btn-narr-toggle").click();
-d.getElementById("btn-stop").click();
-d.getElementById("btn-start").click();
-feedApproach(kmOf(rep), "down");
-check("実況OFFで表示されない", d.getElementById("narrbar").className.indexOf("hidden") !== -1);
-d.getElementById("btn-narr-toggle").click(); // 主要に戻す
+ud.getElementById("btn-narr-toggle").click();
+ud.getElementById("btn-narr-toggle").click();
+ud.getElementById("btn-stop").click();
+ud.getElementById("btn-start").click();
+feedApproach(ui, kmOf(rep), "down");
+check("実況OFFで表示されない", ud.getElementById("narrbar").className.indexOf("hidden") !== -1);
+ud.getElementById("btn-narr-toggle").click(); // 主要に戻す
 
 // 停止でリセット
-d.getElementById("btn-stop").click();
-check("停止でアイドルに戻る", d.getElementById("idle-panel").className.indexOf("hidden") === -1);
-check("停止後は実況バー非表示", d.getElementById("narrbar").className.indexOf("hidden") !== -1);
+ud.getElementById("btn-stop").click();
+check("停止でアイドルに戻る", ud.getElementById("idle-panel").className.indexOf("hidden") === -1);
+check("停止後は実況バー非表示", ud.getElementById("narrbar").className.indexOf("hidden") !== -1);
+ui.dom.window.close();
+base.dom.window.close();
 
 console.log("");
 if (fail === 0) {

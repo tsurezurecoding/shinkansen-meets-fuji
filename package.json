@@ -6,12 +6,20 @@
   "//type": "Intentionally NOT \"module\". app/*.js are browser scripts loaded by the generators via vm.runInNewContext (sloppy-mode script semantics); leaving the default keeps `node --check` faithful to that. The build/validate scripts are .mjs and are ESM regardless.",
   "scripts": {
     "build": "npm run build:data && npm run sync:versions && npm run fix:spot-counts && npm run build:inbound && npm run build:pages",
+    "test": "npm run test:generator && npm run test:narration && npm run test:service-worker",
+    "test:generator": "node --test scripts/generate-spot-pages.test.mjs scripts/shared/geo.test.mjs",
+    "test:narration": "node scripts/test-narration.cjs .",
+    "test:service-worker": "node --test scripts/service-worker.test.mjs",
+    "verify": "npm run check && npm run preflight:spots && npm run check:manifest && npm run check:all-syntax && npm test && npm run audit:site && npm run check:diff",
     "build:data": "node scripts/generate-spot-page-shared-data.mjs",
     "build:pages": "node scripts/generate-spot-pages.mjs",
     "sync:versions": "node scripts/sync-asset-versions.mjs",
     "preflight:spots": "node scripts/generate-spot-page-shared-data.mjs --check && node scripts/generate-spot-pages.mjs --check",
     "check": "npm run check:syntax && npm run check:content && npm run check:timetable && npm run check:train-select && npm run check:spot-pages && npm run check:language && npm run check:ui-strings && npm run check:727 && npm run check:sparkling && npm run check:spot-schema && npm run check:photos && npm run check:spotting && npm run check:inbound && npm run check:spot-counts && npm run check:versions",
     "check:syntax": "node --check data.js && node --check app.js && node --check track.js && node --check spot-page-shared.js && node --check data/timetable.js && node --check live/live.js && node --check train-select.js",
+    "check:all-syntax": "node scripts/check-first-party-syntax.mjs",
+    "check:manifest": "node scripts/check-content-manifest.mjs",
+    "check:diff": "node scripts/check-git-diff.mjs",
     "check:content": "node scripts/validate-content.mjs",
     "check:timetable": "node scripts/validate-timetable.mjs",
     "check:train-select": "node scripts/validate-train-select.mjs",
@@ -31,5 +39,8 @@
     "check:spot-schema": "node scripts/validate-spot-schema.mjs",
     "check:photos": "node scripts/audit-photo-credits.mjs --check",
     "audit:photos": "node scripts/audit-photo-credits.mjs"
+  },
+  "devDependencies": {
+    "jsdom": "30.0.1"
   }
 }

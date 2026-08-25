@@ -2128,13 +2128,6 @@ function closeJournalModal() {
   document.body.classList.remove("modal-open");
 }
 
-function registerServiceWorker() {
-  if (!("serviceWorker" in navigator) || location.protocol === "file:") return;
-  navigator.serviceWorker.register("sw.js").catch(() => {
-    // The app works without offline support; stale-cache cleanup should not block the UI.
-  });
-}
-
 /* ---------- gallery ---------- */
 const activeGalleryFilters = new Set(["day"]);
 
@@ -2515,7 +2508,6 @@ function init() {
     window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
     window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
     syncModalWithLocation("url");
-    registerServiceWorker();
     return;
   }
   // 出発時刻の初期値 = 現在
@@ -2556,7 +2548,6 @@ function init() {
   } else {
     syncModalWithLocation("url");
   }
-  registerServiceWorker();
   showEnglishLandingPrompt();
 }
 document.addEventListener("DOMContentLoaded", init);

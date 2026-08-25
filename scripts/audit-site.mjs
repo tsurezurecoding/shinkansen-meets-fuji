@@ -3,11 +3,8 @@
 // asset resolution, JSON-LD validity, alt text, data.js asset references, same-context CSS
 // override layers, and English pages that leak to their Japanese counterparts.
 //
-// Deliberately NOT part of `npm run check`. This is a periodic sweep, not a release gate:
-// it reasons about the site as a whole rather than about one changed file, and a few of its
-// categories are judgement calls (an intentional canonical, a verification-token page) that
-// would otherwise turn every release into a triage session. Run it when the structure of the
-// site changes -- new language tree, new page family, a sitemap or routing rework.
+// This is a release gate. Structural failures exit non-zero; known intentional exceptions have
+// a file-specific reason, while advisory metadata and CSS layering remain warnings.
 //
 // Read-only. Usage: npm run audit:site   (or: node scripts/audit-site.mjs [appRoot])
 // Env: LIMIT=n caps how many findings print per category (default 12).
@@ -18,7 +15,27 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(process.argv[2] || path.join(path.dirname(fileURLToPath(import.meta.url)), '..'));
 const ORIGIN = 'https://www.michikusa-travel.com';
 const findings = [];
-const add = (kind, file, detail) => findings.push({ kind, file, detail });
+const allowed = [];
+const warningKinds = new Set([
+  'css-override-layer',
+  'en-ja-link-js-only',
+  'meta-missing-description',
+  'meta-missing-og-image',
+]);
+const allowlist = new Map([
+  ['canonical-mismatch:lp.html', 'Campaign alias intentionally consolidates to the Japanese home page.'],
+  ['canonical-mismatch:en/lp.html', 'Campaign alias intentionally consolidates to the English home page.'],
+  ['no-head:google00ff4d27915d01c3.html', 'Google ownership verification token.'],
+  ['no-head:navercdb86f56126e5063178bc29b07c50ca0.html', 'Naver ownership verification token.'],
+]);
+const add = (kind, file, detail) => {
+  const reason = allowlist.get(`${kind}:${file}`);
+  if (reason) {
+    allowed.push({ kind, file, detail, reason });
+    return;
+  }
+  findings.push({ kind, file, detail, severity: warningKinds.has(kind) ? 'warning' : 'error' });
+};
 
 function walk(dir, out = []) {
   let entries;
@@ -339,16 +356,26 @@ for (const dataFile of ['data.js', 'spot-page-shared-data.js']) {
 // ---------- report ----------
 const byKind = new Map();
 for (const f of findings) {
-  if (!byKind.has(f.kind)) byKind.set(f.kind, []);
-  byKind.get(f.kind).push(f);
+  const key = `${f.severity}:${f.kind}`;
+  if (!byKind.has(key)) byKind.set(key, []);
+  byKind.get(key).push(f);
 }
 console.log(`Audited ${htmlFiles.length} HTML pages, ${fileSet.size} files, ${locs.length} sitemap URLs.\n`);
-const kinds = [...byKind.entries()].sort((a, b) => b[1].length - a[1].length);
-for (const [kind, list] of kinds) {
-  console.log(`## ${kind} (${list.length})`);
+const kinds = [...byKind.entries()].sort((a, b) => a[0].localeCompare(b[0]) || b[1].length - a[1].length);
+for (const [key, list] of kinds) {
+  const [severity, kind] = key.split(':');
+  console.log(`## ${severity.toUpperCase()} ${kind} (${list.length})`);
   const limit = Number(process.env.LIMIT || 12);
   for (const f of list.slice(0, limit)) console.log(`  ${f.file}${f.detail ? ' :: ' + f.detail : ''}`);
   if (list.length > limit) console.log(`  ... +${list.length - limit} more`);
   console.log('');
 }
-if (!findings.length) console.log('No findings.');
+if (allowed.length) {
+  console.log(`## ALLOWED (${allowed.length})`);
+  for (const item of allowed) console.log(`  ${item.kind} ${item.file} :: ${item.reason}`);
+  console.log('');
+}
+const errorCount = findings.filter((finding) => finding.severity === 'error').length;
+const warningCount = findings.filter((finding) => finding.severity === 'warning').length;
+console.log(`Audit result: ${errorCount} errors, ${warningCount} warnings, ${allowed.length} allowed.`);
+if (errorCount) process.exit(1);
