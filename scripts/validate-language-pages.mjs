@@ -135,7 +135,9 @@ const localizedGuidePages = [
   ["/zh-Hant/guide.html", "zh-Hant", "zh-Hant-TW"],
   ["/ko/guide.html", "ko", "ko"],
   ["/zh-Hans/guide.html", "zh-Hans", "zh-Hans-CN"],
-  ["/fr/guide.html", "fr", "fr"]
+  ["/fr/guide.html", "fr", "fr"],
+  ["/de/guide.html", "de", "de"],
+  ["/es/guide.html", "es", "es"]
 ];
 
 const guideMobileSpotPages = [
@@ -145,6 +147,8 @@ const guideMobileSpotPages = [
   ["/ko/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
   ["/zh-Hans/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
   ["/fr/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+  ["/de/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
+  ["/es/guide.html", /^\.\.\/en\/spots\/[a-z0-9-]+\.html$/],
 ];
 const guideAlternates = [
   ["ja", "/guide.html"],
@@ -153,6 +157,9 @@ const guideAlternates = [
   ["zh-Hans-CN", "/zh-Hans/guide.html"],
   ["ko", "/ko/guide.html"],
   ["fr", "/fr/guide.html"],
+  ["de", "/de/guide.html"],
+  ["es", "/es/guide.html"],
+  ["ar", "/ar/guide.html"],
   ["x-default", "/en/guide.html"],
 ];
 for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
@@ -161,10 +168,10 @@ for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
     errors.push(`${urlPath}: FAQ language navigation must use the compact dropdown`);
   }
   const languageOptionCount = (html.match(/class="guide-lang-options"/g) || []).length === 1
-    ? ((html.match(/<a\b[^>]*>(?:日本語|English|繁體中文|简体中文|한국어|Français)<\/a>/g) || []).length)
+    ? ((html.match(/<a\b[^>]*>(?:日本語|English|繁體中文|简体中文|한국어|Français|Deutsch|Español|العربية)<\/a>/g) || []).length)
     : 0;
-  if (languageOptionCount !== 6) {
-    errors.push(`${urlPath}: guide language menu must contain all 6 languages, found ${languageOptionCount}`);
+  if (languageOptionCount !== 9) {
+    errors.push(`${urlPath}: guide language menu must contain all 9 languages, found ${languageOptionCount}`);
   }
   for (const [hreflang, alternatePath] of guideAlternates) {
     if (!hasAlternate(html, hreflang, alternatePath)) {
@@ -249,6 +256,8 @@ const sitemapUrls = [...sitemapHtml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match
 for (const required of [
   `${origin}/zh-Hans/guide.html`,
   `${origin}/fr/guide.html`,
+  `${origin}/de/guide.html`,
+  `${origin}/es/guide.html`,
   `${origin}/ar/guide.html`,
 ]) {
   if (!sitemapUrls.includes(required)) errors.push(`sitemap: missing ${required}`);
