@@ -748,6 +748,22 @@ const SPOTS = [
         note: { ja: "カラフルな三角屋根が並ぶ「日向岡住宅」", en: "Colorful triangular roofs line up in Hinataoka." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る日向岡の街並み", en: "Hinataoka in motion" },
+      description: {
+        ja: "相模平野越しの富士山から日向岡の街並みへ、車窓の視線が移っていく様子を動画で見られます。",
+        en: "Follow the train-window view as it shifts from Mt. Fuji across the Sagami Plain to the hillside homes of Hinataoka.",
+      },
+      videos: [
+        {
+          kind: "youtube",
+          id: "cN-cDp0GBik",
+          title: { ja: "富士山から日向岡へ移る車窓動画", en: "Train-window view from Mt. Fuji to Hinataoka" },
+          url: "https://www.youtube.com/watch?v=cN-cDp0GBik",
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
     references: [REFERENCES.hinataokaRakumachi, REFERENCES.hiratsukaHousing],
     map: { lat: 35.34154388360787, lng: 139.30266552622092, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
     viewpoint: { lat: 35.34051032924051, lng: 139.3058437145373 },
