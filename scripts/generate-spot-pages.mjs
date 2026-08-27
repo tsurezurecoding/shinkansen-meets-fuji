@@ -291,6 +291,42 @@ const UI = {
     sideBoth: "Des deux côtés",
     hamanakoSide: "Siège A · côté mer / siège E · côté montagne",
   },
+  de: {
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "Ausblicke Tokio → Shin-Osaka",
+    railCountSuffix: " Ausblicke",
+    railNowLabel: (name, min, seat) => `<b>${name}</b> Etwa ${min} Min. ab Tokio · ${seat}`,
+    railCta: "Reiseplan für meinen Zug erstellen",
+    railLead: `Wählen Sie Ihren Zug, um die voraussichtliche Vorbeifahrtszeit für alle ${SPOT_COUNT} Ausblicke zu sehen.`,
+    railBottomCta: `Alle ${SPOT_COUNT} Ausblicke passend zu meinem Zug anzeigen`,
+    railFoot: `Alle ${SPOT_COUNT} Ausblicke in Fotos ansehen →`,
+    railStationSuffix: " Min.",
+    mobileSpotRailLabel: "Empfohlene Ausblicke zwischen Tokio und Shin-Osaka",
+    mobileSpotMeta: (min, seat) => `Etwa ${min} Min. · Sitz ${seat}`,
+    mobileSpotAction: "Guide lesen",
+    sideA: "Sitz A · Meerseite",
+    sideE: "Sitz E · Bergseite",
+    sideBoth: "Auf beiden Seiten",
+    hamanakoSide: "Sitz A · Meerseite / Sitz E · Bergseite",
+  },
+  es: {
+    railEyebrow: "Tokaido Shinkansen",
+    railTitle: "Vistas Tokio → Shin-Osaka",
+    railCountSuffix: " vistas",
+    railNowLabel: (name, min, seat) => `<b>${name}</b> A unos ${min} min de Tokio · ${seat}`,
+    railCta: "Crear la guía de mi tren",
+    railLead: `Elige tu tren para ver la hora estimada de paso por cada una de las ${SPOT_COUNT} vistas.`,
+    railBottomCta: `Ver las ${SPOT_COUNT} vistas a la hora de mi tren`,
+    railFoot: `Explorar las ${SPOT_COUNT} vistas en fotos →`,
+    railStationSuffix: " min",
+    mobileSpotRailLabel: "Vistas destacadas entre Tokio y Shin-Osaka",
+    mobileSpotMeta: (min, seat) => `A unos ${min} min · asiento ${seat}`,
+    mobileSpotAction: "Leer la guía",
+    sideA: "Asiento A · lado del mar",
+    sideE: "Asiento E · lado de la montaña",
+    sideBoth: "A ambos lados",
+    hamanakoSide: "Asiento A · lado del mar / asiento E · lado de la montaña",
+  },
 };
 
 const GUIDE_RAIL_LOCALIZATION = {
@@ -390,6 +426,54 @@ const GUIDE_RAIL_LOCALIZATION = {
       "torikai-train-depot": "Dépôt Shinkansen de Torikai",
     },
   },
+  de: {
+    stations: {
+      Tokyo: "Tokio", Shinagawa: "Shinagawa", "Shin-Yokohama": "Shin-Yokohama", Odawara: "Odawara",
+      Atami: "Atami", Mishima: "Mishima", "Shin-Fuji": "Shin-Fuji", Shizuoka: "Shizuoka",
+      Kakegawa: "Kakegawa", Hamamatsu: "Hamamatsu", Toyohashi: "Toyohashi", "Mikawa-Anjo": "Mikawa-Anjo",
+      Nagoya: "Nagoya", "Gifu-Hashima": "Gifu-Hashima", Maibara: "Maibara", Kyoto: "Kyoto", "Shin-Osaka": "Shin-Osaka",
+    },
+    spots: {
+      "tokyo-tower": "Tokyo Tower", "ota-fuji": "Fuji vom Stadtbezirk Ota", "maruko-bridge": "Maruko-Brücke",
+      "musashi-kosugi-towers": "Hochhäuser von Musashi-Kosugi", "sagami-fuji": "Fuji über der Sagami-Ebene",
+      "727-board": "Schilder 727 und 248", hinataoka: "Häuser am Hang von Hinataoka", "putiputi-sign": "„Wer bin ich?“-Schild",
+      "odawara-castle": "Burg Odawara", "gyoran-kannon": "Große Gyoran-Kannon-Statue", odawara: "Atami und Sagami-Bucht",
+      "fuji-pipe-sign": "Fuji-Pipe-Schild", fuji: "Fuji", "shimizu-port-chikyu": "Hafen Shimizu und Forschungsschiff CHIKYU", granship: "Granship", "left-fuji": "Fuji auf der linken Seite",
+      "shizuoka-tea-fields": "Teefelder von Shizuoka", kakegawa: "Burg Kakegawa", "genki-sign": "Shippei-Aufmunterungsschild",
+      hamanako: "Hamana-See", "hamanako-fuji": "Fuji vom Hamana-See", "toyohashi-tateiwa": "Tateiwa-Felsen in Toyohashi",
+      "mikawa-oshima": "Insel Mikawa-Oshima", "nichiban-anjo": "CELLOTAPE-Fassade",
+      "nagoya-station-skyline": "Skyline am Bahnhof Nagoya", "kirin-beer-factory": "Kirin-Brauerei",
+      kiyosu: "Burg Kiyosu", "solar-ark": "Solaranlage Solar Ark", "gifu-castle": "Burg Gifu",
+      kinshozan: "Berg Kinshozan", "nangu-taisha": "Großes Torii des Nangu Taisha", ibuki: "Berg Ibuki", "fujitec-big-wing": "Fujitec Big Wing",
+      "sawayama-castle": "Ruinen der Burg Sawayama", "hikone-castle": "Burg Hikone", "kannonji-castle": "Ruinen der Burg Kannonji",
+      "omi-fuji": "Omi-Fuji", "seta-karahashi": "Seta-no-Karahashi-Brücke", toji: "Fünfstöckige Pagode des To-ji",
+      "torikai-train-depot": "Shinkansen-Betriebswerk Torikai",
+    },
+  },
+  es: {
+    stations: {
+      Tokyo: "Tokio", Shinagawa: "Shinagawa", "Shin-Yokohama": "Shin-Yokohama", Odawara: "Odawara",
+      Atami: "Atami", Mishima: "Mishima", "Shin-Fuji": "Shin-Fuji", Shizuoka: "Shizuoka",
+      Kakegawa: "Kakegawa", Hamamatsu: "Hamamatsu", Toyohashi: "Toyohashi", "Mikawa-Anjo": "Mikawa-Anjo",
+      Nagoya: "Nagoya", "Gifu-Hashima": "Gifu-Hashima", Maibara: "Maibara", Kyoto: "Kioto", "Shin-Osaka": "Shin-Osaka",
+    },
+    spots: {
+      "tokyo-tower": "Torre de Tokio", "ota-fuji": "Monte Fuji desde Ota", "maruko-bridge": "Puente Maruko",
+      "musashi-kosugi-towers": "Torres de Musashi-Kosugi", "sagami-fuji": "Monte Fuji sobre la llanura de Sagami",
+      "727-board": "Carteles 727 y 248", hinataoka: "Casas en la colina de Hinataoka", "putiputi-sign": "Cartel «¿Quién soy?»",
+      "odawara-castle": "Castillo de Odawara", "gyoran-kannon": "Gran estatua de Gyoran Kannon", odawara: "Atami y bahía de Sagami",
+      "fuji-pipe-sign": "Cartel Fuji Pipe", fuji: "Monte Fuji", "shimizu-port-chikyu": "Puerto de Shimizu y buque CHIKYU", granship: "Granship", "left-fuji": "Fuji por el lado izquierdo",
+      "shizuoka-tea-fields": "Campos de té de Shizuoka", kakegawa: "Castillo de Kakegawa", "genki-sign": "Cartel de ánimo de Shippei",
+      hamanako: "Lago Hamana", "hamanako-fuji": "Monte Fuji desde el lago Hamana", "toyohashi-tateiwa": "Roca Tateiwa de Toyohashi",
+      "mikawa-oshima": "Isla Mikawa-Oshima", "nichiban-anjo": "Fachada de CELLOTAPE",
+      "nagoya-station-skyline": "Panorama de la estación de Nagoya", "kirin-beer-factory": "Fábrica de cerveza Kirin",
+      kiyosu: "Castillo de Kiyosu", "solar-ark": "Instalación solar Solar Ark", "gifu-castle": "Castillo de Gifu",
+      kinshozan: "Monte Kinshozan", "nangu-taisha": "Gran torii de Nangu Taisha", ibuki: "Monte Ibuki", "fujitec-big-wing": "Fujitec Big Wing",
+      "sawayama-castle": "Ruinas del castillo de Sawayama", "hikone-castle": "Castillo de Hikone", "kannonji-castle": "Ruinas del castillo de Kannonji",
+      "omi-fuji": "Omi Fuji", "seta-karahashi": "Puente Seta no Karahashi", toji: "Pagoda de cinco pisos de To-ji",
+      "torikai-train-depot": "Depósito de Shinkansen de Torikai",
+    },
+  },
 };
 
 const GUIDE_MOBILE_SPOTS = [
@@ -426,6 +510,14 @@ const GUIDE_MOBILE_SPOT_NAMES = {
     "tokyo-tower": "Tour de Tokyo", odawara: "Atami et baie de Sagami", fuji: "Mont Fuji",
     hamanako: "Lac Hamana", "solar-ark": "Solar Ark", toji: "Pagode de To-ji",
   },
+  de: {
+    "tokyo-tower": "Tokyo Tower", odawara: "Atami und Sagami-Bucht", fuji: "Fuji",
+    hamanako: "Hamana-See", "solar-ark": "Solar Ark", toji: "To-ji-Pagode",
+  },
+  es: {
+    "tokyo-tower": "Torre de Tokio", odawara: "Atami y bahía de Sagami", fuji: "Monte Fuji",
+    hamanako: "Lago Hamana", "solar-ark": "Solar Ark", toji: "Pagoda de To-ji",
+  },
 };
 
 const GUIDE_MOBILE_SPOT_HOOKS = {
@@ -444,6 +536,14 @@ const GUIDE_MOBILE_SPOT_HOOKS = {
   fr: {
     "tokyo-tower": "La tour rouge dans le ciel de Tokyo.", odawara: "Entre deux tunnels, la mer apparaît.", fuji: "Les trois minutes les plus célèbres du Japon.",
     hamanako: "Le train semble glisser sur le lac.", "solar-ark": "Le vaisseau solaire bientôt disparu.", toji: "Un seul regard suffit : vous êtes à Kyoto.",
+  },
+  de: {
+    "tokyo-tower": "Der rote Turm über Tokio.", odawara: "Zwischen den Tunneln öffnet sich der Blick aufs Meer.", fuji: "Die berühmtesten drei Minuten Japans.",
+    hamanako: "Der Zug scheint über den See zu gleiten.", "solar-ark": "Das Sonnenschiff, das bald verschwindet.", toji: "Ein Blick genügt: Sie sind in Kyoto.",
+  },
+  es: {
+    "tokyo-tower": "La torre roja en el cielo de Tokio.", odawara: "Entre túneles se abre la vista al mar.", fuji: "Los tres minutos más famosos de Japón.",
+    hamanako: "El tren parece deslizarse sobre el lago.", "solar-ark": "La nave solar que pronto desaparecerá.", toji: "Basta una mirada: has llegado a Kioto.",
   },
 };
 
@@ -2119,6 +2219,9 @@ function guideHTML(lang) {
   <link rel="alternate" hreflang="zh-Hans-CN" href="${siteRoot}/zh-Hans/guide.html">
   <link rel="alternate" hreflang="ko" href="${siteRoot}/ko/guide.html">
   <link rel="alternate" hreflang="fr" href="${siteRoot}/fr/guide.html">
+  <link rel="alternate" hreflang="de" href="${siteRoot}/de/guide.html">
+  <link rel="alternate" hreflang="es" href="${siteRoot}/es/guide.html">
+  <link rel="alternate" hreflang="ar" href="${siteRoot}/ar/guide.html">
   <link rel="alternate" hreflang="x-default" href="${siteRoot}/en/guide.html">
   <link rel="stylesheet" href="${prefix}style.css?v=${assetVersion("style.css")}">
   <meta property="og:title" content="${escapeHTML(ui.guideTitle)}">
@@ -2172,8 +2275,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
     { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/jr-pass-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
@@ -2183,11 +2286,13 @@ function sitemapXML() {
     { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
     { loc: `${siteRoot}/en/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
-    { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-04" },
+    { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
@@ -2333,6 +2438,14 @@ const guideRailConfigs = [
   },
   {
     lang: "fr", path: path.join("fr", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
+    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+  },
+  {
+    lang: "de", path: path.join("de", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
+    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+  },
+  {
+    lang: "es", path: path.join("es", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
     ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
 ];
