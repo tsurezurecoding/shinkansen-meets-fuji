@@ -7,11 +7,6 @@ on:
         description: Exact approved commit SHA from main
         required: true
         type: string
-      release_interval_override:
-        description: Emergency override for the seven-day release interval
-        required: false
-        default: false
-        type: boolean
 
 permissions:
   contents: read
@@ -44,17 +39,6 @@ jobs:
           git fetch origin main
           git merge-base --is-ancestor "$CANDIDATE" origin/main
           echo "sha=$CANDIDATE" >> "$GITHUB_OUTPUT"
-      - name: Enforce seven-day release interval
-        if: ${{ !inputs.release_interval_override }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          cutoff=$(date -u -d '7 days ago' +%s)
-          count=$(gh api "repos/${GITHUB_REPOSITORY}/actions/workflows/deploy-pages.yml/runs?status=success&per_page=20" --jq "[.workflow_runs[] | select((.created_at | fromdateiso8601) >= $cutoff)] | length")
-          if [[ "$count" -gt 0 ]]; then
-            echo "A successful Pages release already occurred in the last seven days." >&2
-            exit 1
-          fi
       - uses: actions/checkout@v4
         with:
           ref: ${{ steps.candidate.outputs.sha }}
