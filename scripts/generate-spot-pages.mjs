@@ -1974,6 +1974,11 @@ function englishIndexHTML() {
 }
 
 
+// NOTE: 現在この関数は呼ばれていない。日本語ルートをLPへ分離した際に
+// en/index.html の再生成を止めたため（下の書き出し箇所のコメント参照）。
+// 英語のLP／列車選択の分離を設計するまで凍結。en/index.html を手で編集する場合、
+// この関数とドリフトすることを前提に扱うこと（スポット数だけは
+// scripts/shared/spot-count.mjs の SPOT_COUNT_PAGES が守っている）。
 function englishAppIndexHTML() {
   const railCopy = [
     ["次に見る案内", "Recommended next steps"],
@@ -2299,7 +2304,8 @@ if (CHECK_ONLY) {
 }
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
-writeFileIfChanged(path.join(appDir, "en", "index.html"), englishAppIndexHTML());
+// The Japanese root is now an LP; en/index.html remains the English train selector.
+// Keep it intact until the English LP/selector split is designed.
 await import("./generate-language-mirrors.mjs");
 for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
   const absolutePath = path.join(appDir, relativePath);

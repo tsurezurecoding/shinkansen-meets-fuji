@@ -17,7 +17,7 @@ const pages = [
     source: "zukan.html",
     output: "en/zukan.html",
     title: `Tokaido Shinkansen Bullet Train Field Guide | ${SPOT_COUNT} Day and Night Views`,
-    description: `Browse ${SPOT_COUNT} window views from the Tokaido Shinkansen bullet train for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.`,
+    description: `Browse ${SPOT_COUNT} window views from the Tokaido Shinkansen bullet train, and jump into themed guides: fireworks, night views, the Disney train, the trackside signs, and when Mt. Fuji comes into view.`,
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
   // generic mirror pass so its localized hero, metadata, and interactive copy survive regeneration.
@@ -52,6 +52,10 @@ function localizeEnglishRail(html) {
   const routes = [
     ["guide.html", "en/guide.html"],
     ["mieru.html", "en/mieru.html"],
+    ["hanabi.html", "en/hanabi.html"],
+    ["yakei.html", "en/yakei.html"],
+    ["sparkling-dreams.html", "en/sparkling-dreams.html"],
+    ["spots/727-board.html", "en/spots/727-board.html"],
     ["sumie.html", "en/sumie.html"],
     ["somato.html", "en/somato.html"],
     ["journal.html", "en/journal.html"],
@@ -65,7 +69,9 @@ function localizeEnglishRail(html) {
   routes.forEach(([ja, en]) => { result = result.replaceAll(`href="${ja}"`, `href="${en}"`); });
   result = result
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
-    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
+    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=')
+    // 727-collection.html は日本語のみ。英語版はスポットページ（727と248の看板）へ逃がす。
+    .replaceAll('href="727-collection.html"', 'href="en/spots/727-board.html"');
   return result;
 }
 

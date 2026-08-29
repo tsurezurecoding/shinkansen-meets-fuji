@@ -51,6 +51,7 @@ const contentFiles = [
   "spot-map.js",
   "spot-page-shared.js",
   "style.css",
+  "chrome.css",
   "727-collection.html",
   "727-collection.js",
   "images/og-727-collection.jpg",

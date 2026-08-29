@@ -24,6 +24,21 @@ const checks = [
   {
     file: "index.html",
     required: [
+      '<link rel="canonical" href="https://www.michikusa-travel.com/">',
+      'id="quick-intro"',
+      'href="start.html" data-lp-cta="hero-primary"',
+      'h==="#journey"',
+      // 旧 /#spot-<id> の共有リンク・ブックマークが LP で行き止まりにならないこと
+      'h.indexOf("#spot-")===0',
+      'x.src="language-router.js?v=7d346901"',
+    ],
+    forbidden: ['class="seasonal-entry"'],
+  },
+  {
+    file: "start.html",
+    required: [
+      '<meta name="robots" content="noindex,follow">',
+      'id="journey"',
       'data-cta-id="top_journey_disney"',
       'data-cta-id="top_footer_disney"',
       'href="sparkling-dreams.html"',
@@ -67,6 +82,29 @@ const stalePatterns = [
 ];
 
 const failures = [];
+
+const appCode = await readFile(new URL("app.js", root), "utf8");
+const appSelfSource = appCode.match(/function appSelfForPath\(pathname\) \{[\s\S]*?\n\}/)?.[0];
+if (!appSelfSource) {
+  failures.push("app.js: appSelfForPath() is missing");
+} else {
+  const routeContext = {};
+  vm.runInNewContext(appSelfSource + "\nglobalThis.__appSelfForPath = appSelfForPath;", routeContext);
+  const routeFixtures = [
+    ["/start.html", "start.html"],
+    ["/preview/start.html", "start.html"],
+    ["/zukan.html", "zukan.html"],
+    ["/en/index.html", "index.html"],
+    ["/index.html", "index.html"],
+  ];
+  for (const [pathname, expected] of routeFixtures) {
+    const actual = routeContext.__appSelfForPath(pathname);
+    if (actual !== expected) failures.push("app.js: appSelfForPath(" + pathname + ") returned " + actual + "; expected " + expected);
+  }
+  if (!appCode.includes("$" + "{APP_SELF}$" + "{spotHash(item.id)}")) {
+    failures.push("app.js: related spot links must use APP_SELF and spotHash()");
+  }
+}
 
 for (const check of checks) {
   const text = await readFile(new URL(check.file, root), "utf8");

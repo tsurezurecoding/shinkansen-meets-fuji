@@ -1,3 +1,4 @@
+@import url("chrome.css");
 /* =========================================================
  * 新幹線の窓 — 旅の瞬間を見逃さない / Shinkansen Window
  * style.css — 夜明けの車窓パレット
@@ -108,125 +109,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 
 /* ===== Topbar ===== */
-.topbar {
-  position: sticky; top: 0; z-index: 50;
-  display: flex; align-items: center; justify-content: space-between;
-  gap: 9px; padding: 5px 12px;
-  background: rgba(16, 28, 44, 0.92);
-  backdrop-filter: blur(8px);
-  color: #fff;
-}
-.brand { display: flex; align-items: center; gap: 8px; min-width: 0; text-decoration: none; color: #fff; }
-.brand-mark {
-  display: grid; place-items: center;
-  width: 29px; height: 29px; border-radius: 8px;
-  background: var(--accent); color: #fff;
-  font-family: var(--font-serif); font-size: 16px; font-weight: 700;
-}
-.brand-text { min-width: 0; display: grid; gap: 1px; }
-.brand-name { min-width: 0; font-weight: 700; letter-spacing: 0.08em; font-size: 14px; }
-.brand-name small,
-.brand-sub { display: block; font-size: 9px; font-weight: 400; opacity: 0.72; letter-spacing: 0.12em; }
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-.top-nav a {
-  color: rgba(255,255,255,0.78);
-  text-decoration: none;
-  border-radius: 999px;
-  padding: 5px 9px;
-  font-size: 11.5px;
-  font-weight: 700;
-  white-space: nowrap;
-}
-.top-nav-more {
-  position: relative;
-  flex-shrink: 0;
-  z-index: 2;
-}
-.top-nav-more summary {
-  display: block;
-  color: rgba(255,255,255,0.78);
-  border-radius: 999px;
-  padding: 5px 9px;
-  font-size: 11.5px;
-  font-weight: 800;
-  white-space: nowrap;
-  cursor: pointer;
-  list-style: none;
-}
-.top-nav-more summary::-webkit-details-marker { display: none; }
-.top-nav-more summary::after {
-  content: "";
-  display: inline-block;
-  width: 0;
-  height: 0;
-  margin-left: 5px;
-  vertical-align: 2px;
-  border-left: 3.5px solid transparent;
-  border-right: 3.5px solid transparent;
-  border-top: 4px solid currentColor;
-}
-.top-nav-more[open] summary,
-.top-nav-more summary:hover,
-.top-nav-more summary:focus-visible {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  outline: 0;
-}
-.top-nav-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  display: grid;
-  min-width: 190px;
-  padding: 8px;
-  border: 1px solid rgba(255,255,255,0.18);
-  border-radius: 14px;
-  background: rgba(16, 28, 44, 0.96);
-  box-shadow: 0 18px 38px rgba(0,0,0,0.22);
-  backdrop-filter: blur(12px);
-}
-.top-nav-menu a {
-  display: block;
-  padding: 9px 10px;
-  border-radius: 10px;
-  color: rgba(255,255,255,0.84);
-  font-size: 12px;
-}
-.top-nav-menu .top-nav-menu-compact { display: none; }
-.top-nav a:hover,
-.top-nav a:focus-visible {
-  background: rgba(255,255,255,0.12);
-  color: #fff;
-  outline: 0;
-}
-.lang-switch { display: flex; flex-shrink: 0; gap: 4px; background: rgba(255,255,255,0.12); border-radius: 99px; padding: 3px; }
-.lang-switch button {
-  border: 0; background: transparent; color: rgba(255,255,255,0.7);
-  font-size: 11.5px; padding: 4px 10px; border-radius: 99px;
-}
-.lang-switch a {
-  color: rgba(255,255,255,0.86);
-  text-decoration: none;
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 99px;
-}
-.lang-switch a:hover,
-.lang-switch a:focus-visible {
-  background: #fff;
-  color: var(--night);
-  outline: 0;
-}
-.lang-switch button.active,
-.lang-switch a.active { background: #fff; color: var(--night); font-weight: 700; }
+
 .guide-lang-menu {
   position: relative;
   z-index: 4;
@@ -4564,31 +4447,7 @@ body.modal-open { overflow: hidden; }
 }
 
 @media (min-width: 900px) {
-  .topbar {
-    padding: 10px 24px;
-    gap: 16px;
-  }
-  .brand { gap: 10px; }
-  .brand-mark {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
-    font-size: 20px;
-  }
-  .brand-name { font-size: 16px; }
-  .brand-sub { font-size: 10px; }
-  .top-nav { gap: 8px; }
-  .top-nav a,
-  .top-nav-more summary {
-    padding: 7px 12px;
-    font-size: 13px;
-  }
-  .top-nav-menu a { font-size: 13px; }
-  .lang-switch button {
-    font-size: 12.5px;
-    padding: 6px 12px;
-  }
-  .hero-inner { max-width: 940px; }
+.hero-inner { max-width: 940px; }
   .hero-title { font-size: clamp(42px, 4.4vw, 58px); }
   .hero-lead {
     max-width: 620px;
@@ -4702,43 +4561,6 @@ body.modal-open { overflow: hidden; }
 
 /* Keep the established compact two-row header usable before desktop nav items
    can compete with the brand and language control. */
-@media (max-width: 1099px) {
-  .topbar {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    min-width: 0;
-  }
-  .brand {
-    min-width: 0;
-  }
-  .brand-name,
-  .brand-name small,
-  .brand-sub {
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .top-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    row-gap: 4px;
-    min-width: 0;
-    max-width: 100%;
-    overflow: visible;
-    padding-top: 2px;
-  }
-  .top-nav a,
-  .top-nav-more summary {
-    white-space: nowrap;
-  }
-  .lang-switch {
-    min-width: max-content;
-    white-space: nowrap;
-  }
-}
 
 @media (max-width: 899px) {
   #timelineSection {
@@ -4793,7 +4615,7 @@ body.modal-open { overflow: hidden; }
 }
 
 @media (max-width: 540px) {
-  .lang-landing-prompt {
+.lang-landing-prompt {
     align-items: flex-start;
     justify-content: flex-start;
     gap: 8px;
@@ -4809,30 +4631,7 @@ body.modal-open { overflow: hidden; }
     line-height: 1.35;
   }
   .lang-landing-prompt a { padding: 5px 10px; }
-  .topbar { display: grid; grid-template-columns: minmax(0, 1fr) auto; padding: 5px 10px; }
-  .brand { overflow: hidden; }
-  .brand-mark { flex-shrink: 0; }
-  .brand-name, .brand-name small, .brand-sub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .brand-name small, .brand-sub { letter-spacing: 0.08em; }
-  .top-nav {
-    grid-column: 1 / -1;
-    grid-row: 2;
-    justify-content: flex-start;
-    gap: 2px;
-    overflow: visible;
-    padding-top: 2px;
-    scrollbar-width: none;
-  }
-  .top-nav::-webkit-scrollbar { display: none; }
-  .top-nav a,
-  .top-nav-more summary { padding: 4px 7px; font-size: 11px; }
-  .top-nav-overflow { display: none; }
-  .top-nav-menu {
-    right: auto;
-    left: 0;
-    min-width: min(72vw, 230px);
-  }
-  .top-nav-menu .top-nav-menu-compact { display: block; }
+
   .medal-series-card { padding: 14px; }
   .journal-modal {
     align-items: end;
@@ -4908,7 +4707,7 @@ body.modal-open { overflow: hidden; }
     gap: 8px;
   }
   .stamp-detail-guide { justify-content: center; }
-  .lang-switch button { padding: 4px 9px; }
+
   .hero-inner { padding: 34px 18px 32px; }
   .hero-kicker { max-width: 300px; margin-left: auto; margin-right: auto; font-size: 9px; line-height: 1.9; letter-spacing: 0.16em; }
   .hero-kicker-line { display: block; }
