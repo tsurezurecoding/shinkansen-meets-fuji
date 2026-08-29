@@ -2187,8 +2187,8 @@ function englishLandingHTML() {
     ["24地点のうちいくつ確認できたか。", "see how many of the 24 points you can find."],
     ["同じ出張でも、次の車窓が楽しみになります。", "Even a familiar business trip can have a new view to find."],
     ["727看板コレクションへ", "Browse trackside signs"],
-    ["その日だけの、", "A view that only happens"],
-    ["車窓。", "that day."],
+    ["その日だけの、", "Some views only happen"],
+    ["車窓。", "at certain times."],
     ["花火の夜、街の灯り、期間限定の車両。", "Fireworks, city lights, and limited-run trains."],
     ["季節と時間で、", "The same route changes"],
     ["同じ路線が別の景色になります。", "with the season and the time of day."],
@@ -2217,7 +2217,7 @@ function englishLandingHTML() {
     ["列車をひとつ選ぶだけ。", "Choose one train."],
     ["見えるころと座席側を、", "We will show the timing and seat side"],
     ["あなたの旅に合わせて案内します。", "for your journey."],
-    ["まず40景を見てみる", `Start with ${SPOT_COUNT} views`],
+    ["まず40景を見てみる", `Browse all ${SPOT_COUNT} views`],
     ["よくある質問", "FAQ"],
     ["参考リンク", "References"],
     ["プライバシー", "Privacy"],
@@ -2234,14 +2234,14 @@ function englishLandingHTML() {
     ["車窓図鑑をひらく", "Open the field guide"],
     ["乗る列車を選ぶと、", "Choose your train,"],
     ["時刻が決まる。", "and the timing follows."],
-    ["乗る前から、", "Before you board,"],
-    ["降りたあとまで。", "and after you arrive."],
-    ["機能を覚える必要はありません。", "No features to learn."],
-    ["眺めるところから始めて、", "Start by browsing,"],
-    ["ひとつの旅の流れに沿って続きます。", "then follow the rhythm of one journey."],
+    ["乗る前から、", "Before, during,"],
+    ["降りたあとまで。", "and after your ride."],
+    ["機能を覚える必要はありません。", "Browse before you board,"],
+    ["眺めるところから始めて、", "follow along during the ride,"],
+    ["ひとつの旅の流れに沿って続きます。", "and save what you saw afterward."],
     ["まず、どんな車窓が", "Browse the views"],
     ["あるのかを眺める。", "on the route."],
-    ["季節や時間ごとの特集をたどる。", "Follow seasonal and time-of-day collections."],
+    ["季節や時間ごとの特集をたどる。", "Explore seasonal and time-of-day collections."],
     ["決めなくても、眺めるだけで楽しめます。", "You can simply look around—no plan required."],
     ["次の景色を、", "Know the next view"],
     ["地図と音声で知る。", "with a map and audio."],
@@ -2291,11 +2291,11 @@ function englishLandingHTML() {
   html = html
     .replace(/東海道新幹線の\d+の車窓を、/g, `Find ${SPOT_COUNT} views from the Tokaido Shinkansen,`)
     .replace(/\d+景を写真から探す/g, `Browse ${SPOT_COUNT} views by photo`)
-    .replace(/写真から\d+景を見て、/g, `Browse ${SPOT_COUNT} views by photo,`)
+    .replace(/写真から\d+景を見て、/g, `Browse ${SPOT_COUNT} views by photo.`)
     .replace(/\d+の見どころがあります。/g, `${SPOT_COUNT} views are waiting.`)
     .replace(/\d+景の時刻が並ぶ/g, `${SPOT_COUNT} views in a timed list`)
     .replace(/WINDOW CATALOG · \d+/g, `WINDOW CATALOG · ${SPOT_COUNT}`)
-    .replace(/まず\d+景を見てみる/g, `Start with ${SPOT_COUNT} views`);
+    .replace(/まず\d+景を見てみる/g, `Browse all ${SPOT_COUNT} views`);
   copy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
   html = html.replaceAll(">窓</span>", ">W</span>");
   html = localizeEnglishInternalLinks(html)
