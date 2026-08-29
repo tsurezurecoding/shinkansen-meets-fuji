@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <base href="../">
+  <meta name="robots" content="noindex,follow">
+  <title>Choose Your Tokaido Shinkansen Train | Shinkansen Window</title>
+  <meta name="description" content="Choose a Tokaido Shinkansen train between Tokyo and Shin-Osaka to see 40 window views in timetable order, with the time and seat side for each view.">
+  <meta name="theme-color" content="#101c2c">
+  <meta name="naver-site-verification" content="cdb86f56126e5063178bc29b07c50ca0" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Choose Your Tokaido Shinkansen Train | Shinkansen Window">
+  <meta property="og:description" content="Choose a Tokaido Shinkansen train between Tokyo and Shin-Osaka to see 40 window views in timetable order, with the time and seat side for each view.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Choose Your Tokaido Shinkansen Train | Shinkansen Window">
+  <meta name="twitter:description" content="Choose a Tokaido Shinkansen train between Tokyo and Shin-Osaka to see 40 window views in timetable order, with the time and seat side for each view.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image:alt" content="Tokaido Shinkansen window views, including Mt. Fuji">
+  <script src="language-router.js?v=af0af7f4"></script>
+  <script>window.MADO_ANALYTICS_DISABLED=true;window["ga-disable-G-C2ESB694FV"]=true;</script>
+  <link rel="stylesheet" href="style.css?v=d00308b8">
+</head>
+<body data-language-route="en">
+  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>
+
+  <!-- ===== Header ===== -->
+  <header class="topbar">
+    <a class="brand" href="en/">
+      <span class="brand-mark">W</span>
+      <span class="brand-text">
+        <span class="brand-name" data-i18n="brandName">Shinkansen Window</span>
+        <small class="brand-sub" data-i18n="brandSub">Never miss a moment of the journey.</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="en/start.html" data-i18n="navStart">Train search</a>
+      <a href="en/live/" data-i18n="navLive">Live Guide</a>
+      <a href="en/zukan.html" data-i18n="navBrowse">Field guide</a>
+      <a class="top-nav-overflow" href="en/guide.html" data-i18n="navFaq">FAQ</a>
+      <a href="en/journal.html" data-i18n="navMedals">Window Stamps</a>
+      <details class="top-nav-more">
+        <summary data-i18n="navMore">More</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-compact" href="en/guide.html" data-i18n="navFaq">FAQ</a>
+          <a href="en/lp.html" data-i18n="navLp">About Shinkansen Window</a>
+          <a href="en/mieru.html" data-i18n="navMieru">Visibility β</a>
+          <a href="en/sumie.html" data-i18n="navSumie">Ink-wash Window</a>
+          <a href="en/somato.html" data-i18n="navSomato">Window Revue</a>
+          <a href="en/references.html" data-i18n="navRefs">Links</a>
+          <a href="en/contact.html" data-contact-nav data-i18n="navContact">Contact</a>
+          <a href="en/privacy.html" data-i18n="navPrivacy">Privacy Policy</a>
+        </div>
+      </details>
+    </nav>
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button type="button" data-lang="ja">日本語</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </header>
+
+  <!-- ===== Hero (実写富士山 + 一言で「何のサイトか」) ===== -->
+  <!-- ===== Journey setup ===== -->
+  <section class="section" id="journey">
+    <div class="section-head">
+      <p class="eyebrow" data-i18n="setupEyebrow">YOUR JOURNEY</p>
+      <h1 data-i18n="setupTitle">Tell us about today's ride</h1>
+      <p class="section-sub" data-i18n="setupSub"><span class="copy-chunk">Choose a direction, station, and departure time.</span><span class="copy-chunk">Check when and which side to watch.</span></p>
+    </div>
+    <div class="journey-desktop-grid">
+      <div class="journey-form-pane">
+        <div class="setup-card">
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelDirection">Direction</span>
+            <div class="seg" role="group">
+              <button type="button" data-dir="west" class="active"><span data-i18n="dirWest">Tokyo → Shin-Osaka</span></button>
+              <button type="button" data-dir="east"><span data-i18n="dirEast">Shin-Osaka → Tokyo</span></button>
+            </div>
+          </div>
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelBoard">Boarding station</span>
+            <select id="boardStation" class="board-select"></select>
+          </div>
+          <div class="setup-row">
+            <span class="setup-label" data-i18n="labelDeparture">Departure time</span>
+            <div class="depart-wrap">
+              <input type="time" id="departTime">
+              <button type="button" class="chip-btn" id="nowBtn" data-i18n="btnNow">Boarding soon</button>
+            </div>
+          </div>
+          <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">Find trains for this time</button>
+          <div class="train-results" id="trainResults" hidden></div>
+        </div>
+
+      <!-- ===== Journey follow-up cards ===== -->
+      <section class="top-promo-stack top-promo-stack--journey" aria-label="Recommended next steps">
+        <div class="top-promo-grid">
+          <a class="top-promo-card top-promo-card-disney" href="en/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_journey_disney">
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/sparkling-dreams-window.svg" alt=""></span>
+            <span class="top-promo-card-copy">
+              <small>SEASONAL WINDOW</small>
+              <strong>Disney Shinkansen<br><span>Sparkling Dreams Shinkansen</span></strong>
+              <span>Check operating dates and window-side estimates.</span>
+            </span>
+            <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="top-promo-card top-promo-card-disney top-promo-card-hanabi" href="en/hanabi.html" data-cta-track="hanabi_entry_click" data-cta-id="top_journey_hanabi">
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/hanabi-window.svg" alt=""></span>
+            <span class="top-promo-card-copy">
+              <small>SEASONAL WINDOW</small>
+              <strong>Fireworks visible from the Shinkansen</strong>
+              <span>Sightings from 7 fireworks events along the route, including Nagaoka, Yodogawa, and Atami.</span>
+            </span>
+            <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="top-promo-card top-promo-card-disney top-promo-card-yakei" href="en/yakei.html" data-cta-track="yakei_entry_click" data-cta-id="top_journey_yakei">
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/yakei-window.svg" alt=""></span>
+            <span class="top-promo-card-copy">
+              <small>NIGHT WINDOW</small>
+              <strong>Tokaido Shinkansen at night</strong>
+              <span>11 nighttime scenes showing where darkness begins.</span>
+            </span>
+            <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="top-promo-card top-promo-card-727" href="en/zukan.html?filter=sign#gallery" data-cta-track="727_collection_entry_click" data-cta-id="top_journey_727">
+            <span class="top-promo-card-visual" aria-hidden="true"><img src="images/stamps/stamp_727-board.svg" alt=""></span>
+            <span class="top-promo-card-copy">
+              <small>WINDOW COLLECTION</small>
+              <strong>727 sign collection</strong>
+              <span>Collect 727 signs along the Tokyo–Shin-Osaka route.</span>
+            </span>
+            <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+          </a>
+          <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="early_access_click" data-cta-id="top_journey_android">
+            <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
+            <span class="top-promo-card-copy">
+              <small>EARLY ACCESS</small>
+              <strong>Android app early access</strong>
+              <span>We are looking for testers for the pre-release app.</span>
+            </span>
+            <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </section>
+      </div>
+
+      <div class="journey-timeline-pane">
+        <section class="section" id="timelineSection" hidden>
+          <div class="timeline-preview-banner" id="timelinePreviewBanner">
+            <strong data-i18n="previewBannerTitle">This is a sample</strong>
+            <span data-i18n="previewBannerBody">Choose a train on the left to see its timed window guide.</span>
+          </div>
+          <div class="section-head">
+            <p class="eyebrow" data-i18n="tlEyebrow">WINDOW TIMELINE</p>
+            <h2 id="tlTitle">—</h2>
+            <p class="section-sub" data-i18n="tlSub">Times are estimates based on Nozomi trains. Start watching a little early.</p>
+          </div>
+          <div class="timeline-filterbar" id="timelineFilterbar" aria-label="Timeline filters">
+            <div class="timeline-filter-group" role="group" aria-label="Favorites and seat side">
+              <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">All</button>
+              <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ Favorites</button>
+              <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">Seat A</button>
+              <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">Seat E</button>
+            </div>
+            <div class="timeline-filter-group" role="group" aria-label="Time of day">
+              <button type="button" data-timeline-filter="day" data-i18n="fDay">Day views</button>
+              <button type="button" data-timeline-filter="night" data-i18n="fNight">Night views</button>
+            </div>
+            <div class="timeline-filter-group" role="group" aria-label="Category">
+              <button type="button" data-timeline-filter="classic" data-i18n="fClassic">Classic</button>
+              <button type="button" data-timeline-filter="nature" data-i18n="fNature">Nature</button>
+              <button type="button" data-timeline-filter="history" data-i18n="fHistory">History</button>
+              <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">Industry</button>
+              <button type="button" data-timeline-filter="sign" data-i18n="fSign">Signs</button>
+              <button type="button" data-timeline-filter="727" data-i18n="f727">727</button>
+              <button type="button" data-timeline-filter="city" data-i18n="fCity">Cityscape</button>
+            </div>
+            <label class="timeline-collection-toggle">
+              <input type="checkbox" data-727-collection-toggle role="switch" aria-label="Show 727 signs separately" aria-checked="false">
+              <span class="timeline-toggle-track" aria-hidden="true"><span></span></span>
+              <span data-i18n="c727Toggle">Show 727 signs separately</span>
+            </label>
+          </div>
+          <ol class="timeline" id="timeline"></ol>
+        </section>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ===== Live next-up banner ===== -->
+  <div class="nextup" id="nextup" hidden>
+    <div class="nextup-pulse" aria-hidden="true"></div>
+    <div class="nextup-body">
+      <p class="nextup-label" data-i18n="nextupLabel">Next view</p>
+      <p class="nextup-name" id="nextupName">—</p>
+    </div>
+    <div class="nextup-count" id="nextupCount">—</div>
+  </div>
+  <!-- ===== Footer ===== -->
+<!-- ===== Mobile follow-up cards ===== -->
+  <section class="top-promo-stack top-promo-stack--mobile" aria-label="Recommended next steps">
+    <div class="top-promo-grid">
+      <a class="top-promo-card top-promo-card-disney" href="en/sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_footer_disney">
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/sparkling-dreams-window.svg" alt=""></span>
+        <span class="top-promo-card-copy">
+          <small>SEASONAL WINDOW</small>
+          <strong>Disney Shinkansen<br><span>Sparkling Dreams Shinkansen</span></strong>
+          <span>Check operating dates and window-side estimates.</span>
+        </span>
+        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="top-promo-card top-promo-card-disney top-promo-card-hanabi" href="en/hanabi.html" data-cta-track="hanabi_entry_click" data-cta-id="top_footer_hanabi">
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/hanabi-window.svg" alt=""></span>
+        <span class="top-promo-card-copy">
+          <small>SEASONAL WINDOW</small>
+          <strong>Fireworks visible from the Shinkansen</strong>
+          <span>Sightings from 7 fireworks events along the route, including Nagaoka, Yodogawa, and Atami.</span>
+        </span>
+        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="top-promo-card top-promo-card-disney top-promo-card-yakei" href="en/yakei.html" data-cta-track="yakei_entry_click" data-cta-id="top_footer_yakei">
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/yakei-window.svg" alt=""></span>
+        <span class="top-promo-card-copy">
+          <small>NIGHT WINDOW</small>
+          <strong>Tokaido Shinkansen at night</strong>
+          <span>11 nighttime scenes showing where darkness begins.</span>
+        </span>
+        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="top-promo-card top-promo-card-727" href="en/zukan.html?filter=sign#gallery" data-cta-track="727_collection_entry_click" data-cta-id="top_footer_727">
+        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/stamps/stamp_727-board.svg" alt=""></span>
+        <span class="top-promo-card-copy">
+          <small>WINDOW COLLECTION</small>
+          <strong>727 sign collection</strong>
+          <span>Collect 727 signs along the Tokyo–Shin-Osaka route.</span>
+        </span>
+        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="early_access_click" data-cta-id="top_footer_android">
+        <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
+        <span class="top-promo-card-copy">
+          <small>EARLY ACCESS</small>
+          <strong>Android app early access</strong>
+          <span>We are looking for testers for the pre-release app.</span>
+        </span>
+        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head">
+      <p class="eyebrow">MORE TO TRY</p>
+      <h2 id="contentRailTitle">More ways to enjoy the window</h2>
+    </div>
+    <div class="content-rail">
+      <a class="content-rail-card" href="en/guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FAQ</small><strong>Mt. Fuji FAQ</strong><span>Check the timing, seat side, and what to expect on cloudy days.</span></span></a>
+      <a class="content-rail-card" href="en/mieru.html">
+        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>FORECAST</small>
+          <strong>Today's Mt. Fuji Visibility Forecast</strong>
+          <span>Check how likely Mt. Fuji is to appear in today's sky.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/sumie.html">
+        <img src="images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>Ink-wash Window</strong>
+          <span>See the Tokaido Shinkansen window as a quiet ink-wash journey.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/somato.html">
+        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>Window Revue</strong>
+          <span>Take a short journey through real window photographs.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/journal.html">
+        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>JOURNAL</small>
+          <strong>Window Stamps</strong>
+          <span>Record each view with Window Stamps and medals.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="en/lp.html">
+        <img src="images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>GUIDE</small>
+          <strong>About Shinkansen Window</strong>
+          <span>See how the guide works in 30 seconds.</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="en/references.html">
+        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>LINKS</small>
+          <strong>Window View Links</strong>
+          <span>Browse sources and useful articles about the route.</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="en/contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>Contact</strong><span>Send a photo, suggest a correction, or share feedback.</span></span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-brand"><span data-i18n="brandName">Shinkansen Window</span> <span data-i18n="brandSub">Never miss a moment of the journey.</span></p>
+    <p data-i18n="footerNote">Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early.</p>
+    <p class="footer-links"><a href="en/guide.html" data-guide-nav data-i18n="footerGuide">How to See Mt. Fuji</a> · <a href="en/references.html" data-i18n="footerReferences">Window View Links</a> · <a href="en/mieru.html" data-i18n="footerMieru">Visibility β</a> · <a href="en/sumie.html" data-i18n="footerSumie">Ink-wash Window</a> · <a href="en/somato.html" data-i18n="footerSomato">Window Revue</a> · <a href="en/contact.html" data-contact-nav data-i18n="footerContact">Contact</a> · <a href="en/privacy.html" data-i18n="footerPrivacy">Privacy Policy</a></p>
+    <p class="footer-credit" data-i18n="footerCredit">Michikusa — Slow travel and unexpected discoveries.</p>
+  </footer>
+
+  <script src="data/timetable.js?v=18fb2a08"></script>
+  <script src="data.js?v=5778236f"></script>
+  <script src="track.js?v=f19510b1"></script>
+  <script src="spot-map.js?v=6b2eadb5"></script>
+  <script src="train-select.js?v=ddf609c7"></script>
+  <script src="app.js?v=cd5a814b"></script>
+</body>
+</html>

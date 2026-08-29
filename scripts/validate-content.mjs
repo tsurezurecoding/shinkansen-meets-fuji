@@ -26,11 +26,12 @@ const checks = [
     required: [
       '<link rel="canonical" href="https://www.michikusa-travel.com/">',
       'id="quick-intro"',
-      'href="start.html" data-lp-cta="hero-primary"',
+      'href="start.html#journey" data-lp-cta="hero-primary"',
+      'data-lp-cta="footer-train"',
       'h==="#journey"',
       // 旧 /#spot-<id> の共有リンク・ブックマークが LP で行き止まりにならないこと
       'h.indexOf("#spot-")===0',
-      'x.src="language-router.js?v=7d346901"',
+      'x.src="language-router.js?v=',
     ],
     forbidden: ['class="seasonal-entry"'],
   },
@@ -51,11 +52,30 @@ const checks = [
   {
     file: "en/index.html",
     required: [
+      '<html lang="en"',
+      '<link rel="canonical" href="https://www.michikusa-travel.com/en/">',
+      'Tokaido Shinkansen Window Views',
+      'Choose your train',
+      'href="en/start.html#journey"',
+      'data-lp-cta="special-disney"',
+      'href="en/sparkling-dreams.html"',
+    ],
+    forbidden: ['class="seasonal-entry"'],
+  },
+  {
+    file: "en/start.html",
+    required: [
+      '<html lang="en"',
+      '<meta name="robots" content="noindex,follow">',
+      'id="journey"',
       'data-cta-id="top_journey_disney"',
       'data-cta-id="top_footer_disney"',
       'href="en/sparkling-dreams.html"',
+      'data-cta-id="top_journey_727"',
+      'data-cta-id="top_footer_727"',
+      'href="en/zukan.html?filter=sign#gallery"',
     ],
-    forbidden: ['class="seasonal-entry"', 'data-cta-id="top_journey_727"', 'data-cta-id="top_footer_727"'],
+    forbidden: ['<link rel="canonical"', 'hreflang=', 'application/ld+json'],
   },
   {
     file: "app.js",
@@ -94,7 +114,12 @@ if (!appSelfSource) {
     ["/start.html", "start.html"],
     ["/preview/start.html", "start.html"],
     ["/zukan.html", "zukan.html"],
-    ["/en/index.html", "index.html"],
+    ["/journal.html", "journal.html"],
+    ["/en/", "en/"],
+    ["/en/index.html", "en/index.html"],
+    ["/en/start.html", "en/start.html"],
+    ["/en/journal.html", "en/journal.html"],
+    ["/preview/en/start.html", "en/start.html"],
     ["/index.html", "index.html"],
   ];
   for (const [pathname, expected] of routeFixtures) {
@@ -103,6 +128,16 @@ if (!appSelfSource) {
   }
   if (!appCode.includes("$" + "{APP_SELF}$" + "{spotHash(item.id)}")) {
     failures.push("app.js: related spot links must use APP_SELF and spotHash()");
+  }
+}
+
+for (const file of ["start.html", "en/start.html"]) {
+  const text = await readFile(new URL(file, root), "utf8");
+  if (!/<meta name="robots" content="noindex,follow">/.test(text)) {
+    failures.push(`${file}: train selector must be noindex,follow`);
+  }
+  if (/<link\s+rel="canonical"|hreflang=|application\/ld\+json/.test(text)) {
+    failures.push(`${file}: train selector must not publish canonical, hreflang, or JSON-LD metadata`);
   }
 }
 

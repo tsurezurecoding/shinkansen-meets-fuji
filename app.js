@@ -369,13 +369,17 @@ let lang = getInitialLang();
 
 function localizedPageHref(targetLang) {
   const path = location.pathname.replace(/\\/g, "/");
-  const file = path.endsWith("/zukan.html") ? "zukan.html"
+  const file = path.endsWith("/start.html") ? "start.html"
+    : path.endsWith("/zukan.html") ? "zukan.html"
     : path.endsWith("/journal.html") ? "journal.html"
     : "index.html";
   const target = targetLang === "en"
     ? `en/${file === "index.html" ? "" : file}`
     : file;
-  return new URL(target, document.baseURI).href;
+  const destination = new URL(target, document.baseURI);
+  destination.search = location.search;
+  destination.hash = location.hash;
+  return destination.href;
 }
 let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
@@ -444,9 +448,15 @@ let activeQuickModal = null;
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 function appSelfForPath(pathname) {
-  if (pathname.endsWith("/zukan.html")) return "zukan.html";
-  if (pathname.endsWith("/start.html")) return "start.html";
-  return "index.html";
+  const normalized = String(pathname).replace(/\\/g, "/");
+  const isEnglish = /(^|\/)en(?:\/|$)/i.test(normalized);
+  const file = normalized.endsWith("/zukan.html") ? "zukan.html"
+    : normalized.endsWith("/start.html") ? "start.html"
+    : normalized.endsWith("/journal.html") ? "journal.html"
+    : "index.html";
+  if (!isEnglish) return file;
+  if (normalized.endsWith("/en") || normalized.endsWith("/en/")) return "en/";
+  return `en/${file}`;
 }
 const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
@@ -1076,8 +1086,10 @@ function applyLang() {
   if (lang === "en") {
     const englishRoutes = {
       "index.html": "en/",
-      "index.html#journey": "en/#journey",
+      "index.html#journey": "en/start.html#journey",
       "index.html#quick-intro": "en/#quick-intro",
+      "start.html": "en/start.html",
+      "start.html#journey": "en/start.html#journey",
       "zukan.html": "en/zukan.html",
       "zukan.html?filter=night": "en/zukan.html?filter=night",
       "zukan.html?filter=cloudy#gallery": "en/zukan.html?filter=cloudy#gallery",

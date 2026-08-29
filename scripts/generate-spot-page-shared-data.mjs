@@ -483,7 +483,7 @@ function projectPage(spot, lang) {
       duration: durationGuideText(spot, lang),
       timingLead: lang === "ja" ? "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。" : "Know your train? Select it to see this view's estimated time on the actual timetable.",
       cta: lang === "ja" ? "列車を選んで、見える時刻を調べる" : "Select my train and check the time",
-      href: lang === "ja" ? "../index.html#journey" : "../../en/#journey",
+      href: lang === "ja" ? "../start.html#journey" : "../../en/start.html#journey",
       highlight: guideHighlight,
     },
     references: projectReferences(spot, lang),

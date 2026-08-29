@@ -597,7 +597,7 @@ function pageUrl(lang, spotId = "") {
 
 function appHref(lang, spotId = "", prefix = "../") {
   const hash = spotId ? `#spot-${spotId}` : "#journey";
-  return lang === "en" ? `${prefix}en/${hash}` : `${prefix}index.html${hash}`;
+  return lang === "en" ? `${prefix}en/start.html${hash}` : `${prefix}start.html${hash}`;
 }
 
 function liveHref(lang, prefix = "../") {
@@ -624,7 +624,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${lang === "en" ? `${prefix}en/#journey` : `${prefix}index.html#journey`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
+      <a href="${lang === "en" ? `${prefix}en/start.html#journey` : `${prefix}start.html#journey`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブガイド" : "Live Guide"}</a>
       <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
@@ -1656,7 +1656,7 @@ function spotGuideDepthHTML(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const title = lang === "ja" ? `${data.name}を見逃さないコツ` : `How to catch ${data.name}`;
   const seat = sideLabel(spot, lang);
-  const journeyUrl = lang === "ja" ? "../index.html#journey" : "../../en/#journey";
+  const journeyUrl = lang === "ja" ? "../start.html#journey" : "../../en/start.html#journey";
   const intro = lang === "ja"
     ? `${data.area || "この区間"}が近づいたら、${seat}の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。`
     : `As you approach ${enApproachArea(data.area)}, start watching from ${seat}. Use Live Guide while riding, or the map on this page before you board.`;
@@ -1977,7 +1977,7 @@ ${sharedScripts}${mediaPilotScripts}  <script src="${prefix}spot-map.js?v=${asse
 `;
 }
 
-function englishIndexHTML() {
+function englishGuideIndexHTML() {
   const featured = ["fuji", "hamanako", "solar-ark", "torikai-train-depot"].map((id) => {
     const spot = SPOTS.find((item) => item.id === id);
     const data = spot.en || spot.ja;
@@ -2036,7 +2036,7 @@ function englishIndexHTML() {
       <h1>Do not miss the view from your Shinkansen window.</h1>
       <p class="spot-page-lead">${escapeHTML(UI.en.homeLead)}</p>
       <div class="spot-page-actions spot-page-actions-top">
-        <a class="btn btn-primary" href="./#journey">Find your train</a>
+        <a class="btn btn-primary" href="./start.html#journey">Find your train</a>
         <a class="btn btn-ghost" href="zukan.html">Browse the field guide</a>
       </div>
       <section class="spot-page-section guide-answer-panel" aria-label="Quick Shinkansen window guide">
@@ -2061,7 +2061,7 @@ function englishIndexHTML() {
         <h2>Plan the window side before you ride</h2>
         <p>Use the train search to build a timed window guide, or open the Live Guide while riding.</p>
         <div class="spot-page-actions">
-          <a class="btn btn-primary" href="./#journey">Build my timed guide</a>
+          <a class="btn btn-primary" href="./start.html#journey">Build my timed guide</a>
           <a class="btn btn-ghost" href="live/">Open Live Guide</a>
           <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
         </div>
@@ -2073,75 +2073,347 @@ function englishIndexHTML() {
 `;
 }
 
+function localizeEnglishInternalLinks(html) {
+  const directRoutes = [
+    ["href=\"727-collection.html\"", "href=\"en/zukan.html?filter=sign#gallery\""],
+    ["href=\"index.html\"", "href=\"en/\""],
+    ["href=\"start.html#journey\"", "href=\"en/start.html#journey\""],
+    ["href=\"start.html\"", "href=\"en/start.html\""],
+    ["href=\"live/index.html\"", "href=\"en/live/\""],
+    ["href=\"live/\"", "href=\"en/live/\""],
+    ["href=\"spots/", "href=\"en/spots/"],
+  ];
+  for (const [from, to] of directRoutes) html = html.replaceAll(from, to);
+  for (const route of ["guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei"]) {
+    html = html
+      .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
+      .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
+  }
+  html = html.replaceAll('href="early-access.html?src=top-promo"', 'href="en/early-access.html?src=top-promo"');
+  return html;
+}
 
-// NOTE: 現在この関数は呼ばれていない。日本語ルートをLPへ分離した際に
-// en/index.html の再生成を止めたため（下の書き出し箇所のコメント参照）。
-// 英語のLP／列車選択の分離を設計するまで凍結。en/index.html を手で編集する場合、
-// この関数とドリフトすることを前提に扱うこと（スポット数だけは
-// scripts/shared/spot-count.mjs の SPOT_COUNT_PAGES が守っている）。
+function englishLandingHTML() {
+  const title = "Tokaido Shinkansen Window Views | Mt. Fuji, Times & Seat Side | Shinkansen Window";
+  const description = `Find Mt. Fuji and other Tokaido Shinkansen window views—castles, lakes, signs, and more—with the best time and seat side for your train.`;
+  const handoff = '<script>(function(){var p=location.pathname.replace(/\\/+$/,"/"),h=location.hash,j=(p==="/en/"||p==="/en/index.html")&&(h==="#journey"||h.indexOf("#spot-")===0);if(j){var q=new URLSearchParams(location.search),r=q.get("lang"),s;try{s=localStorage.getItem("mado-lang")}catch(e){}var t="../en/start.html";if(r==="ja"){try{localStorage.setItem("mado-lang","ja")}catch(e){}t="../start.html"}else if(r==="en"||s==="en"){try{localStorage.setItem("mado-lang","en")}catch(e){}}var u=new URL(t,location.href);u.search=location.search;u.hash=location.hash;location.replace(u.href);return}})();</script>';
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [{
+      "@type": "WebApplication",
+      "@id": `${siteRoot}/en/#app`,
+      "name": "Shinkansen Window",
+      "alternateName": "新幹線の窓",
+      "url": `${siteRoot}/en/`,
+      "applicationCategory": "TravelApplication",
+      "operatingSystem": "Any",
+      "inLanguage": "en",
+      "description": description,
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" },
+    }],
+  };
+  const copy = [
+    ["フッターナビゲーション", "Footer navigation"],
+    ["新幹線の窓 トップへ", "Shinkansen Window home"],
+    ["掲載写真 撮影：michikusa", "Photos: michikusa"],
+    ["248看板と並んで立つ727 COSMETICSの看板", "727 COSMETICS sign beside the 248 sign"],
+    ["新幹線のE席側から見える掛川城", "Kakegawa Castle from the Shinkansen's Seat E side"],
+    ["新幹線のE席側から見える伊吹山", "Mt. Ibuki from the Shinkansen's Seat E side"],
+    ["新幹線のA席側から見える東寺の五重塔", "To-ji Pagoda from the Shinkansen's Seat A side"],
+    ["新幹線のE席側に広がる浜名湖", "Lake Hamana from the Shinkansen's Seat E side"],
+    ["浜名湖の車窓ガイドを見る", "See the Lake Hamana window guide"],
+    ["掛川城の車窓ガイドを見る", "See the Kakegawa Castle window guide"],
+    ["伊吹山の車窓ガイドを見る", "See the Mt. Ibuki window guide"],
+    ["東寺 五重塔の車窓ガイドを見る", "See the To-ji Pagoda window guide"],
+    ["727看板と248看板の車窓ガイドを見る", "See the 727 and 248 sign window guide"],
+    ["見つけた景色が、旅の手帖になる", "The views you find become part of your travel journal"],
+    ["いつ・どちら側に見えるかで案内します。", "with the best time and seat side for your train."],
+    ["東海道新幹線の車窓を、", "Tokaido Shinkansen window views,"],
+    ["旅の予定に合わせて。", "timed to your journey."],
+    ["富士山も、城も、湖も、", "Mt. Fuji, castles, lakes,"],
+    ["ふしぎな看板も。", "and unexpected signs."],
+    ["約30秒で始められます。", "Takes about 30 seconds."],
+    ["地図と音声で次を知らせる", "Map and audio for the next view"],
+    ["いつ・どちら側かを調べる", "Check when and which side to watch"],
+    ["見つけた景色を記録する", "Record the views you spot"],
+    ["車窓図鑑を見る", "Open the field guide"],
+    ["デモ走行で試す（α版）", "Try the demo ride (alpha)"],
+    ["車窓スタンプを見る", "Open Window Stamps"],
+    ["まもなく、浜名湖", "Lake Hamana next"],
+    ["A席側の窓をご覧ください", "Watch the Seat A side"],
+    ["富士山だけで、", "Don't stop at"],
+    ["終わらせない。", "Mt. Fuji."],
+    ["相模湾、茶畑、浜名湖、城、", "Sagami Bay, tea fields, Lake Hamana, castles,"],
+    ["建築、線路ぎわの看板。", "architecture, and trackside signs."],
+    ["いつもの移動に、", "On one familiar ride,"],
+    ["方向・出発駅・列車の3つを選ぶだけ。", "Pick a direction, departure station, and train."],
+    ["あとは、その列車のダイヤに合わせて動きます。", "The guide follows that service's timetable."],
+    ["東京 → 新大阪", "Tokyo → Shin-Osaka"],
+    ["新大阪 → 東京", "Shin-Osaka → Tokyo"],
+    ["出発駅", "Boarding at"],
+    ["乗る便を選択", "Choose your service"],
+    ["実際のダイヤから、見えるころと座席側が並びます。", "Each view includes its estimated time and seat side."],
+    ["その時刻に知らせる", "Get a nudge at the right time"],
+    ["近づくと、地図とカウントダウンで知らせます。", "A map and countdown tell you when to look."],
+    ["方向・出発駅・列車の3つだけです。", "Just three choices: direction, station, and train."],
+    ["列車", "Train"],
+    ["東京", "Tokyo"],
+    ["スマホを見る時間を、", "Turn screen time"],
+    ["窓を見る時間へ。", "into window time."],
+    ["見えるころがわかれば、", "Once you know when to look,"],
+    ["ずっと画面を見張らなくていい。", "you do not have to watch the screen."],
+    ["このガイドの役目は、", "This guide exists"],
+    ["あなたの視線を窓へ戻すことです。", "to send your eyes back to the window."],
+    ["撮影：michikusa", "Photo: michikusa"],
+    ["同じ路線でも、", "The same route,"],
+    ["旅は毎回ちがう。", "a different journey every time."],
+    ["乗る目的が変われば、", "Change the reason you ride,"],
+    ["窓の外に探すものも変わります。", "and the view you look for changes too."],
+    ["はじめての一本は、", "For a first ride,"],
+    ["やっぱり富士山。", "start with Mt. Fuji."],
+    ["どちら側の席に座るか、", "Which side to sit on,"],
+    ["東京から何分ごろ見えるか。", "and when it should appear from Tokyo."],
+    ["乗る前に、ここだけ確認しておけば十分です。", "Those are the only details you need before boarding."],
+    ["富士山ガイドへ", "Open the Mt. Fuji guide"],
+    ["子どもと乗るなら、", "Riding with children?"],
+    ["探すものを決めて。", "Choose something to spot."],
+    ["同じ看板が沿線に24か所。", "The same sign appears at 24 points along the line."],
+    ["窓の外に目的があるだけで、", "A destination outside the window"],
+    ["移動時間の性格が変わります。", "changes the feel of the ride."],
+    ["727看板を探す", "Browse trackside signs"],
+    ["何度も乗るなら、", "Ride often?"],
+    ["727を探す。", "Collect the 727 signs."],
+    ["月に何度も通る区間なら、", "If you travel this route often,"],
+    ["24地点のうちいくつ確認できたか。", "see how many of the 24 points you can find."],
+    ["同じ出張でも、次の車窓が楽しみになります。", "Even a familiar business trip can have a new view to find."],
+    ["727看板コレクションへ", "Browse trackside signs"],
+    ["その日だけの、", "A view that only happens"],
+    ["車窓。", "that day."],
+    ["花火の夜、街の灯り、期間限定の車両。", "Fireworks, city lights, and limited-run trains."],
+    ["季節と時間で、", "The same route changes"],
+    ["同じ路線が別の景色になります。", "with the season and the time of day."],
+    ["車窓図鑑でテーマから探す", "Browse by theme"],
+    ["夜空にひらく花火", "Fireworks opening in the night sky"],
+    ["車窓の花火", "Window fireworks"],
+    ["沿線の花火が、窓から見える夜。", "Fireworks along the route, seen from the window."],
+    ["夜の車窓に見える丸子橋あたりの灯り", "Lights around Maruko Bridge after dark"],
+    ["新幹線の夜景", "Tokaido Shinkansen at night"],
+    ["暗くなる区間を、出発時刻から。", "See where night begins from your departure time."],
+    ["ラッピング車両が走る東海道新幹線の車窓", "A wrapped train on the Tokaido Shinkansen route"],
+    ["ディズニー新幹線", "Disney Shinkansen"],
+    ["すれ違えるかを、時刻から計算。", "Check whether you can catch it from the timetable."],
+    ["旅の情報だから、", "Travel information,"],
+    ["わかることだけを", "with clear limits,"],
+    ["丁寧に。", "carefully kept."],
+    ["実車で確認", "Checked from the train"],
+    ["見えるころと座席側を、乗って確かめています", "We ride the route to check the timing and seat side."],
+    ["通過時刻の目安", "Estimated passing times"],
+    ["列車と停車駅の実ダイヤから計算", "Calculated from train and station timetables."],
+    ["写真と出典", "Photos and sources"],
+    ["提供写真はクレジット、未確認はそう明記", "Contributed photos are credited; unconfirmed details are marked."],
+    ["時刻や見え方は、運行状況・天候・座席位置により前後します。少し早めに窓の外を見てください。", "Times and visibility vary with service conditions, weather, and your seat. Start watching a little early."],
+    ["次の新幹線は、", "Your next Shinkansen ride"],
+    ["窓から始めよう。", "starts with the window."],
+    ["列車をひとつ選ぶだけ。", "Choose one train."],
+    ["見えるころと座席側を、", "We will show the timing and seat side"],
+    ["あなたの旅に合わせて案内します。", "for your journey."],
+    ["まず40景を見てみる", `Start with ${SPOT_COUNT} views`],
+    ["よくある質問", "FAQ"],
+    ["参考リンク", "References"],
+    ["プライバシー", "Privacy"],
+    ["旅の途中の景色を、少し早めに。", "Start noticing the views a little early."],
+    ["このページは公開前のLP案です。", "A guide to the views along your journey."],
+    ["新幹線の窓とは", "About Shinkansen Window"],
+    ["見える予報β", "Visibility β"],
+    ["墨絵車窓", "Ink-wash Window"],
+    ["車窓走馬灯", "Window Revue"],
+    ["リンク集", "Links"],
+    ["お問い合わせ", "Contact"],
+    ["プライバシーポリシー", "Privacy Policy"],
+    ["車窓スタンプ", "Window Stamps"],
+    ["車窓図鑑をひらく", "Open the field guide"],
+    ["乗る列車を選ぶと、", "Choose your train,"],
+    ["時刻が決まる。", "and the timing follows."],
+    ["乗る前から、", "Before you board,"],
+    ["降りたあとまで。", "and after you arrive."],
+    ["機能を覚える必要はありません。", "No features to learn."],
+    ["眺めるところから始めて、", "Start by browsing,"],
+    ["ひとつの旅の流れに沿って続きます。", "then follow the rhythm of one journey."],
+    ["まず、どんな車窓が", "Browse the views"],
+    ["あるのかを眺める。", "on the route."],
+    ["季節や時間ごとの特集をたどる。", "Follow seasonal and time-of-day collections."],
+    ["決めなくても、眺めるだけで楽しめます。", "You can simply look around—no plan required."],
+    ["次の景色を、", "Know the next view"],
+    ["地図と音声で知る。", "with a map and audio."],
+    ["現在地から次の車窓を予測。", "Predict the next view from your position."],
+    ["地図・音声・カウントダウンで、", "Map, audio, and a countdown"],
+    ["窓を見る準備ができます。", "give you time to look up."],
+    ["見つけた景色を、", "Turn the views you spot"],
+    ["旅の記録に。", "into a travel record."],
+    ["「見えた」を押すと、", "Tap “I saw it,”"],
+    ["車窓スタンプが残ります。", "to keep a window stamp."],
+    ["次の旅で続きを集められます。", "Continue collecting on your next ride."],
+    ["富士山FAQ", "Mt. Fuji FAQ"],
+    ["富士山", "Mt. Fuji"],
+    ["掛川城", "Kakegawa Castle"],
+    ["浜名湖", "Lake Hamana"],
+    ["伊吹山", "Mt. Ibuki"],
+    ["東寺 五重塔", "To-ji Pagoda"],
+    ["727と248の看板", "727 and 248 signs"],
+    ["E席・43分", "Seat E · 43 min"],
+    ["E席・62分", "Seat E · 62 min"],
+    ["E席・73分", "Seat E · 73 min"],
+    ["A席側の窓をご覧ください", "Watch the Seat A side"],
+    ["A席", "Seat A"],
+    ["E席", "Seat E"],
+    ["7大会", "7 events"],
+    ["11か所", "11 night scenes"],
+    ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
+    ["同じ路線が別の景色になります。", "with the season and the time of day."],
+    ["窓の外に探すものも変わります。", "and the view you look for changes too."],
+    ["このページは公開前のLP案です。", "A guide to the views along your journey."],
+    ["車窓図鑑", "Field guide"],
+    ["メダル帖", "Window Stamps"],
+    ["ライブガイド", "Live Guide"],
+    ["もっと見る", "More"],
+    ["乗る列車を選ぶ", "Choose your train"],
+    ["新幹線の窓", "Shinkansen Window"],
+    ["旅の瞬間を見逃さない", "Never miss a moment of the journey."],
+    ["本文へ移動", "Skip to content"],
+  ];
+  let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
+    .replace(/<script>\(function\(\)\{var p=location\.pathname[\s\S]*?<\/script>/, handoff)
+    .replace('<html lang="ja">', '<html lang="en" class="english-lp">')
+    .replace(
+      '<meta name="viewport" content="width=device-width, initial-scale=1">',
+      '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">',
+    );
+  html = html
+    .replace(/東海道新幹線の\d+の車窓を、/g, `Find ${SPOT_COUNT} views from the Tokaido Shinkansen,`)
+    .replace(/\d+景を写真から探す/g, `Browse ${SPOT_COUNT} views by photo`)
+    .replace(/写真から\d+景を見て、/g, `Browse ${SPOT_COUNT} views by photo,`)
+    .replace(/\d+の見どころがあります。/g, `${SPOT_COUNT} views are waiting.`)
+    .replace(/\d+景の時刻が並ぶ/g, `${SPOT_COUNT} views in a timed list`)
+    .replace(/WINDOW CATALOG · \d+/g, `WINDOW CATALOG · ${SPOT_COUNT}`)
+    .replace(/まず\d+景を見てみる/g, `Start with ${SPOT_COUNT} views`);
+  copy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
+  html = html.replaceAll(">窓</span>", ">W</span>");
+  html = localizeEnglishInternalLinks(html)
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHTML(description)}">`)
+    .replace('<link rel="canonical" href="https://www.michikusa-travel.com/">', `<link rel="canonical" href="${siteRoot}/en/">`)
+    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${escapeHTML(title)}">`)
+    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeHTML(description)}">`)
+    .replace('<meta property="og:url" content="https://www.michikusa-travel.com/">', `<meta property="og:url" content="${siteRoot}/en/">`)
+    .replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${escapeHTML(title)}">`)
+    .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${escapeHTML(description)}">`)
+    .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Mt. Fuji and window views from the Tokaido Shinkansen">')
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/, `<script type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n  </script>`)
+    .replace('<body>', '<body data-language-route="en">')
+    .replace('<button type="button" class="active" data-lang="ja" aria-pressed="true">日本語</button>', '<button type="button" data-lang="ja" aria-pressed="false">日本語</button>')
+    .replace('<button type="button" data-lang="en" aria-pressed="false">EN</button>', '<button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>');
+  return syncSpotCountClaims(html);
+}
+
 function englishAppIndexHTML() {
-  const railCopy = [
+  const title = "Choose Your Tokaido Shinkansen Train | Shinkansen Window";
+  const description = `Choose a Tokaido Shinkansen train between Tokyo and Shin-Osaka to see ${SPOT_COUNT} window views in timetable order, with the time and seat side for each view.`;
+  const selectorCopy = [
+    ["フッターナビゲーション", "Footer navigation"],
+    ["新幹線の窓 トップへ", "Shinkansen Window home"],
+    ["方向・乗車駅・出発時刻から、", "Choose a direction, station, and departure time."],
+    ["見どころの時刻と座席側を調べます。", "Check when and which side to watch."],
     ["次に見る案内", "Recommended next steps"],
-    ["ディズニー新幹線", "Disney special train"],
     ["運転日と、車窓で出会う目安を確認。", "Check operating dates and window-side estimates."],
-    ["Android版の先行アクセス", "Help us test the Android app"],
+    ["長岡・淀川・熱海など沿線7大会の目撃記録。", "Sightings from 7 fireworks events along the route, including Nagaoka, Yodogawa, and Atami."],
+    ["どこから暗くなるか、夜だけの車窓11景。", "11 nighttime scenes showing where darkness begins."],
+    ["東京〜新大阪の沿線で727看板を集める", "Collect 727 signs along the Tokyo–Shin-Osaka route."],
     ["公開前アプリのテスターを募集中。", "We are looking for testers for the pre-release app."],
-    ["車窓メダル帖", "Window Medal Book"],
-    ["新幹線の窓とは？", "About Shinkansen Window"],
-    ["車窓をもっと楽しむ", "More ways to enjoy the window"],
+    ["ディズニー新幹線", "Disney Shinkansen"],
+    ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
+    ["新幹線の夜景", "Tokaido Shinkansen at night"],
+    ["727看板コレクション", "727 sign collection"],
+    ["Android版の先行アクセス", "Android app early access"],
+    ["東京〜新大阪", "Tokyo–Shin-Osaka"],
+    ["リンク集", "Links"],
+    ["きょうの旅を教えてください", "Tell us about today's ride"],
+    ["東京 → 新大阪", "Tokyo → Shin-Osaka"],
+    ["新大阪 → 東京", "Shin-Osaka → Tokyo"],
+    ["方向", "Direction"],
+    ["乗車駅", "Boarding station"],
+    ["出発時刻", "Departure time"],
+    ["これから乗る", "Boarding soon"],
+    ["この時間の列車をさがす", "Find trains for this time"],
+    ["これはサンプルです", "This is a sample"],
+    ["左のフォームで列車を選ぶと、あなたの列車に合わせたタイムラインに切り替わります。", "Choose a train on the left to see its timed window guide."],
+    ["時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。", "Times are estimates based on Nozomi trains. Start watching a little early."],
+    ["タイムラインフィルタ", "Timeline filters"],
+    ["お気に入り・座席側", "Favorites and seat side"],
+    ["時間帯", "Time of day"],
+    ["カテゴリ", "Category"],
+    ["お気に入り", "Favorites"],
+    ["すべて", "All"],
+    ["昼景", "Day views"],
+    ["夜景", "Night views"],
+    ["定番", "Classic"],
+    ["自然", "Nature"],
+    ["歴史", "History"],
+    ["工業", "Industry"],
+    ["看板", "Signs"],
+    ["街並", "Cityscape"],
+    ["A席", "Seat A"],
+    ["E席", "Seat E"],
+    ["727看板を分けて表示", "Show 727 signs separately"],
+    ["つぎの車窓", "Next view"],
     ["富士山FAQ", "Mt. Fuji FAQ"],
     ["見える時刻、座席側、曇りの日の答えを確認。", "Check the timing, seat side, and what to expect on cloudy days."],
-    ["見える予報β", "Visibility β"],
     ["今日の富士山 見える予報", "Today's Mt. Fuji Visibility Forecast"],
     ["今日の空で富士山が見えそうかを確認。", "Check how likely Mt. Fuji is to appear in today's sky."],
-    ["墨絵車窓", "Ink-Wash Window"],
     ["東海道新幹線の車窓を、静かな墨絵で。", "See the Tokaido Shinkansen window as a quiet ink-wash journey."],
-    ["車窓走馬灯", "Window Revue"],
     ["実際の車窓写真で、旅を短くめぐる。", "Take a short journey through real window photographs."],
-    ["メダル帖", "Window Medal Book"],
     ["見つけた景色をスタンプとメダルで記録。", "Record each view with Window Stamps and medals."],
-    ["新幹線の窓とは", "About Shinkansen Window"],
     ["使い方と楽しみ方を30秒で紹介。", "See how the guide works in 30 seconds."],
-    ["車窓リンク集", "Window View Links"],
     ["出典や参考記事をまとめて読む。", "Browse sources and useful articles about the route."],
-    ["お問い合わせ", "Contact"],
     ["写真提供、情報の訂正、ご感想はこちら。", "Send a photo, suggest a correction, or share feedback."],
-    ["富士山の見方", "How to See Mt. Fuji"],
-    ["プライバシーポリシー", "Privacy Policy"],
     ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
+    ["富士山の見方", "How to See Mt. Fuji"],
+    ["新幹線の窓とは？", "About Shinkansen Window"],
+    ["車窓をもっと楽しむ", "More ways to enjoy the window"],
+    ["見える予報β", "Visibility β"],
+    ["墨絵車窓", "Ink-wash Window"],
+    ["車窓走馬灯", "Window Revue"],
+    ["メダル帖", "Window Stamps"],
+    ["車窓リンク集", "Window View Links"],
+    ["お問い合わせ", "Contact"],
+    ["プライバシーポリシー", "Privacy Policy"],
+    ["新幹線の窓とは", "About Shinkansen Window"],
+    ["道草 / Michikusa — 急がない旅と、偶然の発見を。", "Michikusa — Slow travel and unexpected discoveries."],
+    ["旅の途中の景色を、少し早めに。", "Start noticing the views a little early."],
+    ["列車選択", "Train search"],
+    ["ライブガイド", "Live Guide"],
+    ["車窓図鑑", "Field guide"],
+    ["もっと見る", "More"],
+    ["新幹線の窓", "Shinkansen Window"],
+    ["旅の瞬間を見逃さない", "Never miss a moment of the journey."],
+    ["本文へ移動", "Skip to content"],
   ];
-  const railRoutes = ["guide", "mieru", "sumie", "somato", "journal", "lp", "references", "contact", "privacy", "hanabi", "yakei"];
-  let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
+  let html = fs.readFileSync(path.join(appDir, "start.html"), "utf8")
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1">',
-      '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">'
+      '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">',
     )
-    .replace(/<title>[^<]*<\/title>/, '<title>Tokaido Shinkansen (Bullet Train) Window Views | Times and Seat Side</title>')
-    .replace(/<meta name="description" content="[^"]*">/, '<meta name="description" content="Riding the Tokaido Shinkansen bullet train between Tokyo and Shin-Osaka? Pick your train to see when you pass each of 40 window views, and which side to sit on.">')
-    .replace('<link rel="canonical" href="https://www.michikusa-travel.com/">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/">')
-    .replace(/<meta property="og:title" content="[^"]*">/, '<meta property="og:title" content="Shinkansen Window | Never miss the view">')
-    .replace(/<meta property="og:description" content="[^"]*">/, '<meta property="og:description" content="Find the time and seat side for 40 window views on the Tokaido Shinkansen bullet train.">')
-    .replace('<meta property="og:url" content="https://www.michikusa-travel.com/">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/">')
-    .replace(/<meta name="twitter:title" content="[^"]*">/, '<meta name="twitter:title" content="Shinkansen Window | Never miss the view">')
-    .replace(/<meta name="twitter:description" content="[^"]*">/, '<meta name="twitter:description" content="Find the time and seat side for all 40 window views on the Tokaido Shinkansen bullet train.">')
-    .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">')
-    .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
-    .replace('<body>', '<body>\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
-  html = html.replace(/\s*<!-- ===== Seasonal entry point ===== -->\s*<aside class="seasonal-entry"[\s\S]*?<\/aside>\s*/, "\n\n  ");
-  html = html.replace(/\s*<a class="top-promo-card top-promo-card-727"[\s\S]*?data-cta-id="top_(?:journey|footer)_727"[\s\S]*?<\/a>/g, "");
-  railCopy.forEach(([ja, en]) => { html = html.replaceAll(ja, en); });
-  railRoutes.forEach((route) => {
-    html = html
-    .replaceAll('href="sparkling-dreams.html"', 'href="en/sparkling-dreams.html"')
-    .replaceAll('href="early-access.html?src=top-promo"', 'href="en/early-access.html?src=top-promo"').replaceAll(`href="${route}.html"`, `href="en/${route}.html"`);
-  });
-  html = html
-    .replaceAll('href="guide.html#', 'href="en/guide.html#')
-    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
-  // The head is synced too. It used to be skipped, which is why <title> and the og/twitter
-  // cards kept claiming 37 views while the body said 39 — the exact strings search engines
-  // and social previews read were the only ones the mechanism never touched.
+    .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
+    .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHTML(description)}">`)
+    .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${escapeHTML(title)}">`)
+    .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${escapeHTML(description)}">`)
+    .replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${escapeHTML(title)}">`)
+    .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${escapeHTML(description)}">`)
+    .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Tokaido Shinkansen window views, including Mt. Fuji">')
+    .replace('<body>', '<body data-language-route="en">\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
+  selectorCopy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
+  html = html.replaceAll(">窓</span>", ">W</span>");
+  html = localizeEnglishInternalLinks(html);
   return syncSpotCountClaims(html);
 }
 
@@ -2149,12 +2421,12 @@ function guideHTML(lang) {
   const ui = UI[lang];
   const prefix = lang === "ja" ? "" : "../";
   const guideUrl = lang === "ja" ? `${siteRoot}/guide.html` : `${siteRoot}/en/guide.html`;
-  const appUrl = lang === "ja" ? "index.html#journey" : "./#journey";
+  const appUrl = lang === "ja" ? "start.html#journey" : "./start.html#journey";
   const otherUrl = lang === "ja" ? "en/guide.html" : "../guide.html";
   const questions = ui.guideQuestions.map((item) => {
     const href = lang === "ja"
       ? item.link
-      : (item.link.startsWith("index") ? `./#gallery` : `../${item.link}`);
+      : (item.link.startsWith("index") ? `./#scenery` : `../${item.link}`);
     return `<article class="faq-card">
         <h2>${escapeHTML(item.q)}</h2>
         <p>${escapeHTML(item.a)} <a href="${escapeHTML(href)}">${escapeHTML(item.linkText)}</a></p>
@@ -2205,8 +2477,8 @@ function guideHTML(lang) {
         <h2>${escapeHTML(ui.guideBeyondTitle)}</h2>
         <p>${escapeHTML(ui.guideBeyondBody)}</p>
         <div class="spot-page-actions">
-          <a class="btn btn-primary" href="./#gallery">Browse timed window views</a>
-          <a class="btn btn-ghost" href="./#journey">Find your train</a>
+          <a class="btn btn-primary" href="./#scenery">Browse timed window views</a>
+          <a class="btn btn-ghost" href="./start.html#journey">Find your train</a>
         </div>
       </section>
 ` : "";
@@ -2404,14 +2676,25 @@ if (requestedSpotIds.length) {
 }
 generateSpotPages();
 if (CHECK_ONLY) {
+  const generatedEntryPages = [
+    [path.join(appDir, "en", "index.html"), englishLandingHTML()],
+    [path.join(appDir, "en", "start.html"), englishAppIndexHTML()],
+  ];
+  for (const [outputPath, generatedHTML] of generatedEntryPages) {
+    if (!fs.existsSync(outputPath) || fs.readFileSync(outputPath, "utf8") !== generatedHTML) {
+      throw new Error(`Generated English entry page is out of date: ${outputPath}`);
+    }
+  }
   console.log("Spot page preflight completed without writing files.");
   process.exit(0);
 }
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
-// The Japanese root is now an LP; en/index.html remains the English train selector.
-// Keep it intact until the English LP/selector split is designed.
+// The Japanese root is now an LP; en/index.html is the English explanatory LP; en/start.html is the train selector.
+// Keep the English selector in en/start.html and generate both English entry pages together.
 await import("./generate-language-mirrors.mjs");
+writeFileIfChanged(path.join(appDir, "en", "index.html"), englishLandingHTML());
+writeFileIfChanged(path.join(appDir, "en", "start.html"), englishAppIndexHTML());
 for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
   const absolutePath = path.join(appDir, relativePath);
   if (fs.existsSync(absolutePath)) {
@@ -2424,35 +2707,35 @@ const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
 const guideRailConfigs = [
   {
     lang: "ja", path: "guide.html", prefix: "", spotHrefPrefix: "spots/",
-    ctaHref: "index.html#journey", footHref: "zukan.html", includeAffiliate: true,
+    ctaHref: "start.html#journey", footHref: "zukan.html", includeAffiliate: true,
   },
   {
     lang: "en", path: path.join("en", "guide.html"), prefix: "../", spotHrefPrefix: "spots/",
-    ctaHref: "./#journey", footHref: "zukan.html", includeAffiliate: true,
+    ctaHref: "./start.html#journey", footHref: "zukan.html", includeAffiliate: true,
   },
   {
     lang: "zh-Hant", path: path.join("zh-Hant", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
   {
     lang: "ko", path: path.join("ko", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
   {
     lang: "zh-Hans", path: path.join("zh-Hans", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
   {
     lang: "fr", path: path.join("fr", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
   {
     lang: "de", path: path.join("de", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
   {
     lang: "es", path: path.join("es", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
+    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
   },
 ];
 for (const config of guideRailConfigs) {
