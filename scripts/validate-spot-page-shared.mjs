@@ -222,7 +222,7 @@ async function runThinValidator() {
       }
     }
   }
-  if (!stylesheetCode.includes(".spot-page-video-grid") || !stylesheetCode.includes("grid-template-columns: repeat(2") || !stylesheetCode.includes("grid-template-columns: 1fr") || !stylesheetCode.includes(".spot-page-heading-row") || !stylesheetCode.includes(".spot-page-stamp") || !stylesheetCode.includes("position: absolute") || !stylesheetCode.includes("mix-blend-mode: multiply") || !stylesheetCode.includes("[data-affiliate-module]") || !stylesheetCode.includes(".spot-page-rail-affiliate-group") || !stylesheetCode.includes(".spot-page-mobile-affiliate-note")) fail("shared gallery/video/stamp/affiliate CSS contract is incomplete");
+  if (!stylesheetCode.includes(".spot-page-video-grid") || !stylesheetCode.includes(".spot-page-video-comment") || !stylesheetCode.includes("grid-template-columns: repeat(2") || !stylesheetCode.includes("grid-template-columns: 1fr") || !stylesheetCode.includes(".spot-page-heading-row") || !stylesheetCode.includes(".spot-page-stamp") || !stylesheetCode.includes("position: absolute") || !stylesheetCode.includes("mix-blend-mode: multiply") || !stylesheetCode.includes("[data-affiliate-module]") || !stylesheetCode.includes(".spot-page-rail-affiliate-group") || !stylesheetCode.includes(".spot-page-mobile-affiliate-note")) fail("shared gallery/video/stamp/affiliate CSS contract is incomplete");
   if (!rendererCode.includes("function pageGalleryHTML") || !rendererCode.includes("function pageMediaHTML") || !rendererCode.includes("ensureXWidgetsScript")) fail("shared renderer is missing the common gallery/video/X contract");
 
   const expectedPages = [];
@@ -293,6 +293,7 @@ async function runThinValidator() {
         if (count(output, /spot-page-video-section/g) !== 1 || count(output, /spot-page-video-card/g) !== page.media.videos.length || count(output, /spot-page-video-platform-note/g) !== 1) fail(`${relativeFile} shared video-card/footnote contract is invalid`);
         for (const video of page.media.videos) {
           if (!output.includes(`href="${video.url}"`) || (video.kind === "x" && !output.includes(escape(video.handle))) || (video.kind === "youtube" && !output.includes(`youtube-nocookie.com/embed/${video.id}`))) fail(`${relativeFile} video source/embed is incomplete`);
+          if (video.comment && !output.includes(`class="spot-page-video-comment">${escape(video.comment)}</p>`)) fail(`${relativeFile} video comment is missing`);
         }
         if (rendered.createdScripts.filter((script) => script.src === "https://platform.twitter.com/widgets.js").length !== (page.media.videos.some((video) => video.kind === "x") ? 1 : 0)) fail(`${relativeFile} X widgets script count is invalid`);
       } else if (["spot-page-video-section", "spot-page-video-platform-note", "spot-page-video-grid", "spot-page-video-card", "spotVideoTitle-"].some((needle) => output.includes(needle))) {

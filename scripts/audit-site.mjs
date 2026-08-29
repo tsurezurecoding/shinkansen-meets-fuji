@@ -210,7 +210,8 @@ for (const f of htmlFiles) {
 
   // ---- <html lang> must agree with the language directory ----
   const dirLang = f.startsWith('en/') ? 'en'
-    : f.startsWith('ar/') ? 'ar' : f.startsWith('fr/') ? 'fr' : f.startsWith('ko/') ? 'ko'
+    : f.startsWith('ar/') ? 'ar' : f.startsWith('fr/') ? 'fr' : f.startsWith('de/') ? 'de'
+    : f.startsWith('es/') ? 'es' : f.startsWith('ko/') ? 'ko'
     : f.startsWith('zh-Hans/') ? 'zh' : f.startsWith('zh-Hant/') ? 'zh' : 'ja';
   if (info.lang && !info.lang.toLowerCase().startsWith(dirLang)) {
     add('lang-dir-mismatch', f, `<html lang="${info.lang}"> in ${dirLang}/ tree`);

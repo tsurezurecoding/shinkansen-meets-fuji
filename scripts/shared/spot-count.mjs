@@ -68,6 +68,8 @@ export const SPOT_COUNT_PAGES = [
   "en/besides-fuji.html",
   "zh-Hant/besides-fuji.html",
   "fr/guide.html",
+  "de/guide.html",
+  "es/guide.html",
   "ko/guide.html",
   "zh-Hans/guide.html",
   "zh-Hant/guide.html",
@@ -101,6 +103,10 @@ const UNITS = [
   " views",
   " paysages",
   " vues",
+  " ausgewählte Ausblicke",
+  " Ausblicke",
+  " paisajes",
+  " vistas",
   " مشهدًا",
 ];
 
@@ -176,7 +182,7 @@ export function scanSpotCountClaims(html) {
 // about how many views the site covers. If the scanner above did not already
 // classify it, it is an unregistered claim and the build should stop rather than
 // let a fifth number quietly join the other four.
-const COUNT_NOUNS = "views|景|風景|景色|車窓|车窗|車窗|풍경|vues|paysages|مشهدًا";
+const COUNT_NOUNS = "views|景|風景|景色|車窓|车窗|車窗|풍경|vues|paysages|Ausblicke|vistas|مشهدًا";
 // Exclusions, in order: part of an identifier such as the css class "g9-more";
 // a duration ("43 min", "3分間", "147分鐘"); a step number ("2 · 主要景色");
 // a date ("8月16日の車窓" — the 車窓 nearby made the day number look like a count);
