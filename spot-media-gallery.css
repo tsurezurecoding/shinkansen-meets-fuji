@@ -163,6 +163,14 @@
   text-underline-offset: 3px;
 }
 
+.spot-page-video-comment {
+  margin: 0;
+  padding: 9px 12px 0;
+  color: var(--ink-soft);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
 .spot-page-video-frame-x .twitter-tweet {
   color: #fff;
 }
