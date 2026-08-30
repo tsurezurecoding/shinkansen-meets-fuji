@@ -2239,13 +2239,13 @@ function englishLandingHTML() {
     ["車窓図鑑をひらく", "Open the field guide"],
     ["乗る列車を選ぶと、", "Choose your train,"],
     ["時刻が決まる。", "and the timing follows."],
-    ["乗る前から、", "Before, during,"],
+    ["乗る前から、", "Before, during, and"],
     ["降りたあとまで。", "and after your ride."],
     ["乗る前に見どころを探し、", "Find views before you board,"],
-    ["車内で出会い、", "meet them along the ride,"],
-    ["降りたあとに思い出を残す。", "and keep the memories afterward."],
-    ["車窓の楽しみは、", "The window journey lasts"],
-    ["移動の前からあとまで続きます。", "from before departure to after arrival."],
+    ["車内で出会い、", "enjoy them along the way,"],
+    ["降りたあとに思い出を残す。", "and keep the memories"],
+    ["車窓の楽しみは、", "after you"],
+    ["移動の前からあとまで続きます。", "arrive."],
     ["車窓の見どころを知る。", "Discover the window highlights."],
     ["40の車窓から、見たい景色を探す。", "Pick a view from 40 sights."],
     ["眺めるだけでも、旅が始まります。", "The journey starts as you browse."],
@@ -2301,6 +2301,7 @@ function englishLandingHTML() {
     .replace(/WINDOW CATALOG · \d+/g, `WINDOW CATALOG · ${SPOT_COUNT}`)
     .replace(/まず\d+景を見てみる/g, `Browse all ${SPOT_COUNT} views`);
   copy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
+  html = html.replace(/<\/span><span class="copy-chunk">/g, '</span> <span class="copy-chunk">');
   html = html.replaceAll(">窓</span>", ">W</span>");
   html = localizeEnglishInternalLinks(html)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
