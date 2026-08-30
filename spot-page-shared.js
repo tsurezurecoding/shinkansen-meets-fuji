@@ -12,7 +12,7 @@
       live: "ライブガイド",
       fieldGuide: "車窓図鑑",
       faq: "FAQ",
-      journal: "メダル帖",
+      journal: "スタンプ帖",
       more: "もっと見る",
       about: "新幹線の窓とは",
       forecast: "富士山 見える予報",
@@ -113,7 +113,7 @@
       { label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
       { label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
       { label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。", href: "somato.html", img: "images/thumbs/content-somato.webp" },
-      { label: "JOURNAL", title: "メダル帖", desc: "見つけた景色をスタンプとメダルで記録。", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
+      { label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
       { label: "GUIDE", title: "新幹線の窓とは", desc: "使い方と楽しみ方を30秒で紹介。", href: "lp.html", img: "images/thumbs/og-shinkansen-window.webp" },
       { label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。", href: "references.html", img: "images/thumbs/20260616_fuji_sttraveler.webp" },
       { label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。", href: "contact.html", img: "images/thumbs/content-contact.webp" }
@@ -239,7 +239,7 @@
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var homeHref = lang === "en" ? href(base, "") : href(base, "index.html");
-    var trainHref = lang === "en" ? href(base, "#journey") : href(base, "index.html#journey");
+    var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
     // 英語ページから日本語へ戻すリンクには必ず ?lang=ja を付ける。
     // language-router.js は localStorage の mado-lang が "en" のとき日本語URLを英語版へ
     // 差し替えるため、これが無いと「日本語」を押しても英語ページへ戻される（2026-08-13発覚）。
@@ -321,7 +321,7 @@
   function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
-    var trainHref = lang === "en" ? href(base, "#journey") : href(base, "index.html#journey");
+    var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
     var rows = [];
     data.stations.forEach(function (station) {
       rows.push({ kind: "station", id: station.id, minutes: Number(station.minutes), major: !!station.major, name: localized(station.name, lang) });

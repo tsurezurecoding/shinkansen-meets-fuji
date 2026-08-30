@@ -16,7 +16,7 @@ const MSG = {
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "メダル帖",
+    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "スタンプ帖",
     navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
@@ -472,6 +472,32 @@ function saveFavorites() {
 let liveTimer = null;
 let activeSpotModal = null;
 let activeQuickModal = null;
+const MODAL_HISTORY_KEY = "madoModal";
+
+function modalHistoryState(kind, details = {}) {
+  const next = { ...(history.state || {}) };
+  delete next.spotId;
+  delete next.photoIndex;
+  delete next.journalKind;
+  delete next.journalId;
+  next[MODAL_HISTORY_KEY] = kind;
+  return { ...next, ...details };
+}
+
+function pushModalHistory(kind, details = {}, url = location.href) {
+  const replace = history.state?.[MODAL_HISTORY_KEY] === kind;
+  history[replace ? "replaceState" : "pushState"](modalHistoryState(kind, details), "", url);
+}
+
+function withoutModalHistoryState() {
+  const next = { ...(history.state || {}) };
+  delete next[MODAL_HISTORY_KEY];
+  delete next.spotId;
+  delete next.photoIndex;
+  delete next.journalKind;
+  delete next.journalId;
+  return next;
+}
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -1587,16 +1613,16 @@ function spotIdFromHash(hash = location.hash) {
 function setSpotHash(spotId, { photoIndex = 0, replace = false } = {}) {
   if (!spotId) return;
   const nextHash = spotHash(spotId, photoIndex);
-  if (location.hash === nextHash) return;
   const url = new URL(location.href);
   url.hash = nextHash;
-  history[replace ? "replaceState" : "pushState"]({ spotId, photoIndex }, "", url);
+  if (location.hash === nextHash && history.state?.[MODAL_HISTORY_KEY] === "spot") return;
+  history[replace ? "replaceState" : "pushState"](modalHistoryState("spot", { spotId, photoIndex }), "", url);
 }
 function clearSpotHash({ replace = true } = {}) {
   if (!spotIdFromHash()) return;
   const url = new URL(location.href);
   url.hash = "";
-  history[replace ? "replaceState" : "pushState"](null, "", url);
+  history[replace ? "replaceState" : "pushState"](withoutModalHistoryState(), "", url);
 }
 function openSpotModal(spotId, source = "unknown", options = {}) {
   const spot = findSpotById(spotId);
@@ -1646,7 +1672,7 @@ function bindSpotModalGallery(modal, spot, options = {}) {
   modal.querySelectorAll("[data-photo-index]").forEach((button) => {
     button.addEventListener("click", () => {
       const index = Number(button.dataset.photoIndex);
-      selectPhoto(index);
+      selectPhoto(index, { replaceUrl: true });
     });
   });
 }
@@ -1657,7 +1683,11 @@ function closeSpotModal(reason = "close", options = {}) {
   element.remove();
   document.body.classList.remove("modal-open");
   activeSpotModal = null;
-  if (options.updateUrl !== false && spotIdFromHash() === spotId) clearSpotHash({ replace: true });
+  if (options.updateUrl !== false && history.state?.[MODAL_HISTORY_KEY] === "spot") {
+    history.back();
+  } else if (options.updateUrl !== false && spotIdFromHash() === spotId) {
+    clearSpotHash({ replace: true });
+  }
   if (reason !== "replace") track("spot_detail_close", spotAnalyticsParams(spot, source, { reason }));
 }
 
@@ -2149,7 +2179,7 @@ function stampDetailHTML(selected) {
         </div>`;
 }
 
-function openJournalModal(kind, id) {
+function openJournalModal(kind, id, options = {}) {
   const modal = $("#journalModal");
   const content = $("#journalModalContent");
   if (!modal || !content) return;
@@ -2167,9 +2197,13 @@ function openJournalModal(kind, id) {
     renderStampboard();
   }
   modal.dataset.kind = kind;
+  modal.dataset.itemId = id;
   bindSpotEvents(content);
   modal.hidden = false;
   document.body.classList.add("modal-open");
+  if (options.updateHistory !== false) {
+    pushModalHistory("journal", { journalKind: kind, journalId: id });
+  }
   track("journal_item_opened", {
     item_type: kind,
     saved_state: kind === "stamp"
@@ -2179,11 +2213,14 @@ function openJournalModal(kind, id) {
   modal.querySelector(".journal-modal-close")?.focus();
 }
 
-function closeJournalModal() {
+function closeJournalModal(options = {}) {
   const modal = $("#journalModal");
   if (!modal || modal.hidden) return;
   modal.hidden = true;
   document.body.classList.remove("modal-open");
+  if (options.updateHistory !== false && history.state?.[MODAL_HISTORY_KEY] === "journal") {
+    history.back();
+  }
 }
 
 /* ---------- gallery ---------- */
@@ -2379,6 +2416,14 @@ function openSpotFromHash(source = "hash") {
   return true;
 }
 function syncModalWithLocation(source = "url") {
+  const modalState = history.state || {};
+  if (modalState[MODAL_HISTORY_KEY] === "journal" && modalState.journalKind && modalState.journalId) {
+    closeSpotModal("replace", { updateUrl: false });
+    closeQuickModal("replace");
+    openJournalModal(modalState.journalKind, modalState.journalId, { updateHistory: false });
+    return;
+  }
+  closeJournalModal({ updateHistory: false });
   if (location.hash === "#quick-intro") {
     closeSpotModal("replace", { updateUrl: false });
     openQuickModal(source);
@@ -2391,6 +2436,23 @@ function syncModalWithLocation(source = "url") {
   }
   if (activeSpotModal) closeSpotModal(source, { updateUrl: false });
 }
+
+window.MADO_CLOSE_ACTIVE_MODAL = function () {
+  const journalModal = $("#journalModal");
+  if (journalModal && !journalModal.hidden) {
+    closeJournalModal();
+    return true;
+  }
+  if (activeSpotModal) {
+    closeSpotModal("system_back");
+    return true;
+  }
+  if (activeQuickModal) {
+    closeQuickModal("system_back");
+    return true;
+  }
+  return false;
+};
 
 function bindGalleryControls() {
   $(".journey-intents-guide")?.addEventListener("click", (event) => {

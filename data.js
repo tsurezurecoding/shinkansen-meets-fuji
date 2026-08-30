@@ -1143,8 +1143,8 @@ const SPOTS = [
       en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
     },
     pageStory: {
-      ja: "東京から新大阪方面へ向かう場合は、新横浜を出て約8分後、藤沢市葛原付近でまずE席側を見てください。白い727看板と黄色い248看板が田園の中に並びます。これが地図で案内している代表地点です。その先、小田原方面へ進むと、用田付近や「私は誰でしょう看板」の隣など、A席側にも727が現れます。727は1か所だけではないため、「どこで見たか」によって席側が変わります。",
-      en: "Heading from Tokyo toward Shin-Osaka, start watching Seat E roughly eight minutes after Shin-Yokohama. Around Kuzuhara in Fujisawa, the white 727 billboard and yellow 248 billboard stand together in the fields; this is the representative point shown on the map. Farther toward Odawara, more 727 signs appear on Seat A around Yoda and beside the 'Who am I?' sign. Because 727 has multiple locations, the correct seat side depends on which sign you are looking for.",
+      ja: "東京から新大阪方面へ向かう場合は、新横浜を出て約8分後、藤沢市葛原付近でまずE席側を見てください。白い727看板と黄色い248看板が田園の中に並びます。これが地図で案内している代表地点です。その先、小田原方面へ進むと、用田付近や「私は誰でしょう看板」の隣など、A席側にも727が現れます。727は1か所だけではないため、「どこで見たか」によって席側が変わります。このページの下にある「727看板コレクション」では、代表地点だけでなく、東京〜新大阪の沿線で確認した設置場所を写真・席側・位置とともに一覧にしています。",
+      en: "Heading from Tokyo toward Shin-Osaka, start watching Seat E roughly eight minutes after Shin-Yokohama. Around Kuzuhara in Fujisawa, the white 727 billboard and yellow 248 billboard stand together in the fields; this is the representative point shown on the map. Farther toward Odawara, more 727 signs appear on Seat A around Yoda and beside the 'Who am I?' sign. Because 727 has multiple locations, the correct seat side depends on which sign you are looking for; the mapped point is one representative example among many signs along the route.",
     },
     explainer: {
       heading: { ja: "727と248は何？ 数字の意味は？", en: "What do the 727 and 248 billboards mean?" },

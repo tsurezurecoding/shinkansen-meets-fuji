@@ -37,7 +37,7 @@ function localizeEnglishRail(html) {
     ["東海道新幹線の車窓を、静かな墨絵で。", "See the Tokaido Shinkansen window as a quiet ink-wash journey."],
     ["車窓走馬灯", "Window Revue"],
     ["実際の車窓写真で、旅を短くめぐる。", "Take a short journey through real window photographs."],
-    ["メダル帖", "Window Medal Book"],
+    ["スタンプ帖", "Window Stamps"],
     ["見つけた景色をスタンプとメダルで記録。", "Record each view with Window Stamps and medals."],
     ["新幹線の窓とは", "About Shinkansen Window"],
     ["使い方と楽しみ方を30秒で紹介。", "See how the guide works in 30 seconds."],
@@ -50,6 +50,7 @@ function localizeEnglishRail(html) {
     ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
   ];
   const routes = [
+    ["start.html", "en/start.html"],
     ["guide.html", "en/guide.html"],
     ["mieru.html", "en/mieru.html"],
     ["hanabi.html", "en/hanabi.html"],

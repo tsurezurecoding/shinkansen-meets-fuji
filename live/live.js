@@ -31,7 +31,7 @@
       navLive: "ライブガイド",
       navBrowse: "車窓図鑑",
       navFaq: "FAQ",
-      navMedals: "メダル帖",
+      navMedals: "スタンプ帖",
       navMore: "もっと見る",
       navMieru: "富士山 見える予報",
       navSumie: "墨絵車窓",
@@ -1293,7 +1293,7 @@
       privacy: "../privacy.html",
     } : {
       home: "../index.html",
-      journey: "../index.html#journey",
+      journey: "../start.html",
       live: "./",
       zukan: "../zukan.html",
       faq: "../guide.html",

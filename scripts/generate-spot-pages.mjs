@@ -624,11 +624,11 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="${lang === "en" ? `${prefix}en/start.html#journey` : `${prefix}start.html#journey`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
+      <a href="${lang === "en" ? `${prefix}en/start.html` : `${prefix}start.html`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブガイド" : "Live Guide"}</a>
       <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
-      <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "メダル帖" : "Journal"}</a>
+      <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
       <details class="top-nav-more">
         <summary>${lang === "ja" ? "もっと見る" : "More"}</summary>
         <div class="top-nav-menu">
@@ -669,7 +669,7 @@ function contentRailHTML(lang, prefix, options = {}) {
     { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。" },
     { href: `${prefix}sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。" },
     { href: `${prefix}somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。" },
-    { href: `${prefix}journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "メダル帖", desc: "見つけた景色をスタンプとメダルで記録。" },
+    { href: `${prefix}journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。" },
     { href: guideHref, img: "images/thumbs/og-shinkansen-window.webp", label: "GUIDE", title: "新幹線の窓とは", desc: "使い方と楽しみ方を30秒で紹介。" },
     { href: `${prefix}references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。" },
     { href: `${prefix}contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。" },
@@ -2279,7 +2279,7 @@ function englishLandingHTML() {
     ["窓の外に探すものも変わります。", "and the view you look for changes too."],
     ["このページは公開前のLP案です。", "A guide to the views along your journey."],
     ["車窓図鑑", "Field guide"],
-    ["メダル帖", "Window Stamps"],
+    ["スタンプ帖", "Window Stamps"],
     ["ライブガイド", "Live Guide"],
     ["もっと見る", "More"],
     ["乗る列車を選ぶ", "Choose your train"],
@@ -2388,7 +2388,7 @@ function englishAppIndexHTML() {
     ["見える予報β", "Visibility β"],
     ["墨絵車窓", "Ink-wash Window"],
     ["車窓走馬灯", "Window Revue"],
-    ["メダル帖", "Window Stamps"],
+    ["スタンプ帖", "Window Stamps"],
     ["車窓リンク集", "Window View Links"],
     ["お問い合わせ", "Contact"],
     ["プライバシーポリシー", "Privacy Policy"],
