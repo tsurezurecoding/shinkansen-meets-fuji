@@ -79,15 +79,16 @@
       idleLinkGuide: "富士山の見方",
       idleLinkZukan: "車窓図鑑",
       idleLinkTop: "列車ごとの通過時刻を調べる",
-      idleTitle: "乗車したら、GPSをオンに。",
+      idleTitle: "乗車中はGPSで現在地に合わせてガイド",
       idleDesc: "音声ガイドを聞きながら乗っておくと、まもなく見える景色を先に知らせます。現在地は案内計算に使い、外部サーバー等に保存しません。",
-      alphaBadge: "α版",
+      alphaBadge: "α",
       alphaNote: "この機能はα版です。位置と通過時刻は調整中のため、ずれることがあります。",
       idleFeature1: "次に見える車窓を現在地から予測",
       idleFeature2: "主要スポットだけ、または小ネタまで音声案内",
       idleFeature3: "地図とカウントダウンで見逃しを防止",
-      eaLiveTitle: "Androidアプリ版",
-      eaLiveBody: "無料・登録不要。乗車中もすぐ開けます。",
+      eaLiveWhy: "ブラウザは画面を消したり他のアプリに切り替えると案内が止まります。乗車中はアプリ版が確実です。",
+      eaLiveTitle: "Google Playでアプリ版を入手",
+      eaLiveBody: "画面を消しても案内と音声が続きます。無料・登録不要。",
       settings: "設定",
       vibL: "バイブレーション",
       wakeL: "画面をスリープさせない",
@@ -172,15 +173,16 @@
       idleLinkGuide: "How to see Mt. Fuji",
       idleLinkZukan: "Window field guide",
       idleLinkTop: "Check passing times by train",
-      idleTitle: "On board? Turn on GPS.",
+      idleTitle: "On board, GPS guides you from where you are",
       idleDesc: "Turn on the audio guide and ride along. It tells you what is coming up before the view passes. Your location is used for guidance and is not stored on external servers.",
-      alphaBadge: "Alpha",
+      alphaBadge: "α",
       alphaNote: "This feature is an alpha. Positions and timing are still being tuned and may be off.",
       idleFeature1: "Predicts the next view from your live position",
       idleFeature2: "Choose key spots only, or include small curiosities",
       idleFeature3: "Map and countdown help you avoid missing it",
-      eaLiveTitle: "Android app",
-      eaLiveBody: "Free, no registration. Quick to open while you ride.",
+      eaLiveWhy: "In a browser the guide stops when the screen turns off or you switch apps. On board, the app is the reliable one.",
+      eaLiveTitle: "Get the app on Google Play",
+      eaLiveBody: "Guidance and audio keep running with the screen off. Free, no sign-up.",
       settings: "Settings",
       vibL: "Vibration",
       wakeL: "Keep screen awake",
@@ -1322,7 +1324,8 @@
     el["live-title"].textContent = t("appTitle");
     document.getElementById("idle-title").textContent = t("idleTitle");
     document.getElementById("idle-desc").textContent = t("idleDesc");
-    var _ab = document.getElementById("live-alpha-badge"); if (_ab) _ab.textContent = t("alphaBadge");
+    var _ab = document.getElementById("live-alpha-badge");
+    if (_ab) { _ab.textContent = t("alphaBadge"); _ab.title = t("alphaNote"); }
     var _an = document.getElementById("idle-alpha-note"); if (_an) _an.textContent = t("alphaNote");
     var idleFeatures = document.getElementById("idle-features");
     if (idleFeatures) {
@@ -1332,6 +1335,15 @@
     }
     document.getElementById("btn-start").textContent = t("startGps");
     document.getElementById("btn-demo").textContent = t("startDemo");
+    // 待機中は render() が回らず btn-dir が初期の日本語のまま残るため、ここでも合わせる
+    var _bd = document.getElementById("btn-dir");
+    if (_bd) {
+      _bd.textContent =
+        state.dirMode === "down" ? t("dirDown") :
+        state.dirMode === "up" ? t("dirUp") :
+        state.dir > 0 ? t("dirDown") : state.dir < 0 ? t("dirUp") : t("dirAuto");
+      _bd.title = t("dirL");
+    }
     document.querySelectorAll("[data-live-lang]").forEach(function (button) {
       var active = button.getAttribute("data-live-lang") === state.lang;
       button.classList.toggle("active", active);
@@ -1462,11 +1474,15 @@
     } catch (e) { /* noop */ }
   }
 
+  // 2026-08-30: 導線を early-access.html 経由から Google Play 直リンクに変更したため、
+  // イベントも early-access.html 側と同じ android_install_click に揃える。
+  // それ以前のこのCTAは android_app_guide_click(cta_id=live_android) で記録されている。
   var androidGuide = document.querySelector("[data-android-app-guide]");
   if (androidGuide) {
     androidGuide.addEventListener("click", function () {
-      track("android_app_guide_click", {
+      track("android_install_click", {
         cta_id: "live_android",
+        entry_source: "live",
         language: state.lang,
         page_context: "live",
       });
