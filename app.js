@@ -16,7 +16,7 @@ const MSG = {
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "メダル帖",
+    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "スタンプ帖",
     navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
@@ -118,19 +118,33 @@ const MSG = {
     medalSelectHint: "メダルを選ぶと、説明と対象スポットが開きます。",
     btnReset: "スタンプをリセット",
     galEyebrow: "FIELD GUIDE", galTitle: "車窓図鑑 — ぜんぶの見どころ",
-    galSub: `${MADO_SPOT_COUNT}の車窓スポットを一覧できます。<br>見つけた景色はチェックして記録できます。`,
+    galSub: `${MADO_SPOT_COUNT}の車窓スポットを一覧できます。<br>テーマ別の特集からも探せます。`,
     seasonalKicker: "期間限定の車窓メモ",
     seasonalTitle: '<span class="copy-chunk">特別塗装列車と、</span><span class="copy-chunk">すれ違う時刻を調べる</span>',
     seasonalBody: "2026年夏〜2027年春の「Sparkling Dreams Shinkansen」を、車窓から追いかけます。",
     galPhotoNote: "掲載写真は、撮影者または権利者の許可を得て紹介しています。",
-    zukanIntentEyebrow: "PICK A MOOD",
-    zukanIntentTitle: "状況から、見たい車窓を選ぶ",
-    zukanCloudyTitle: "曇りの日に見るなら",
-    zukanCloudyBody: "曇りでも楽しめる近景へ絞り込み。",
-    zukanNightTitle: "夜景だけを見てみる",
-    zukanNightBody: "夜に見つけやすい景色へ絞り込み。",
-    zukanFamilyTitle: "子連れなら看板探し",
-    zukanFamilyBody: "数秒の発見を、車窓ゲームに。",
+    zukanThemeEyebrow: "BROWSE BY THEME",
+    zukanThemeTitle: "テーマから、車窓を探す",
+    themeHanabiLabel: "SUMMER",
+    themeHanabiTitle: "車窓の花火",
+    themeHanabiBody: "沿線7大会を、見える区間と時刻で。",
+    themeYakeiLabel: "AFTER DARK",
+    themeYakeiTitle: "新幹線の夜景",
+    themeYakeiBody: "暗くなる区間を、出発時刻から。",
+    themeDisneyLabel: "LIMITED",
+    themeDisneyTitle: "ディズニー新幹線",
+    themeDisneyBody: "すれ違えるかを、時刻から計算。",
+    themeSignLabel: "TRACKSIDE SIGNS",
+    themeSignTitle: "727と248の看板",
+    themeSignBody: "沿線に何度も現れる、あの看板の正体。",
+    themeFujiLabel: "MOUNT FUJI",
+    themeFujiTitle: "富士山はいつ見える",
+    themeFujiBody: "どちら側の席か、東京から何分ごろか。",
+    themeMieruLabel: "FORECAST β",
+    themeMieruTitle: "今日、富士山は見えるか",
+    themeMieruBody: "雲と空気の澄みかたから、見える確率を。",
+    zukanAllEyebrow: "ALL 40 VIEWS",
+    zukanAllTitle: "すべての車窓を見る",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示",
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
@@ -288,19 +302,33 @@ const MSG = {
     medalSelectHint: "Select a medal to open its story and included views.",
     btnReset: "Reset stamps",
     galEyebrow: "FIELD GUIDE", galTitle: "Field Guide — every view",
-    galSub: `Browse all ${MADO_SPOT_COUNT} window views. Check off each one you find.`,
+    galSub: `Browse all ${MADO_SPOT_COUNT} window views, or start with a themed feature.`,
     seasonalKicker: "SEASONAL WINDOW NOTE",
     seasonalTitle: '<span class="copy-chunk">Track the Sparkling Dreams Shinkansen</span>',
     seasonalBody: "Check when your train may meet the limited-time special service.",
     galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
-    zukanIntentEyebrow: "PICK A MOOD",
-    zukanIntentTitle: "Choose views for this ride",
-    zukanCloudyTitle: "What to watch on a cloudy day",
-    zukanCloudyBody: "Filter for closer views you can still enjoy under clouds.",
-    zukanNightTitle: "Show only night views",
-    zukanNightBody: "Filter for scenery that works after dark.",
-    zukanFamilyTitle: "Try a sign-spotting game",
-    zukanFamilyBody: "Turn a few seconds outside into family play.",
+    zukanThemeEyebrow: "BROWSE BY THEME",
+    zukanThemeTitle: "Find window views by theme",
+    themeHanabiLabel: "SUMMER",
+    themeHanabiTitle: "Fireworks from the window",
+    themeHanabiBody: "Seven festivals, with the stretch and time to watch.",
+    themeYakeiLabel: "AFTER DARK",
+    themeYakeiTitle: "Night views",
+    themeYakeiBody: "Which stretch is dark, from your departure time.",
+    themeDisneyLabel: "LIMITED",
+    themeDisneyTitle: "Disney Shinkansen",
+    themeDisneyBody: "Work out whether your train will pass it.",
+    themeSignLabel: "TRACKSIDE SIGNS",
+    themeSignTitle: "The 727 and 248 signs",
+    themeSignBody: "The signs that keep reappearing along the line.",
+    themeFujiLabel: "MOUNT FUJI",
+    themeFujiTitle: "When you can see Mt. Fuji",
+    themeFujiBody: "Which side to sit on, and how long after Tokyo.",
+    themeMieruLabel: "FORECAST β",
+    themeMieruTitle: "Is Fuji visible today?",
+    themeMieruBody: "A visibility estimate from cloud and air clarity.",
+    zukanAllEyebrow: "ALL 40 VIEWS",
+    zukanAllTitle: "Browse every window view",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately",
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
@@ -444,6 +472,32 @@ function saveFavorites() {
 let liveTimer = null;
 let activeSpotModal = null;
 let activeQuickModal = null;
+const MODAL_HISTORY_KEY = "madoModal";
+
+function modalHistoryState(kind, details = {}) {
+  const next = { ...(history.state || {}) };
+  delete next.spotId;
+  delete next.photoIndex;
+  delete next.journalKind;
+  delete next.journalId;
+  next[MODAL_HISTORY_KEY] = kind;
+  return { ...next, ...details };
+}
+
+function pushModalHistory(kind, details = {}, url = location.href) {
+  const replace = history.state?.[MODAL_HISTORY_KEY] === kind;
+  history[replace ? "replaceState" : "pushState"](modalHistoryState(kind, details), "", url);
+}
+
+function withoutModalHistoryState() {
+  const next = { ...(history.state || {}) };
+  delete next[MODAL_HISTORY_KEY];
+  delete next.spotId;
+  delete next.photoIndex;
+  delete next.journalKind;
+  delete next.journalId;
+  return next;
+}
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
@@ -1559,16 +1613,16 @@ function spotIdFromHash(hash = location.hash) {
 function setSpotHash(spotId, { photoIndex = 0, replace = false } = {}) {
   if (!spotId) return;
   const nextHash = spotHash(spotId, photoIndex);
-  if (location.hash === nextHash) return;
   const url = new URL(location.href);
   url.hash = nextHash;
-  history[replace ? "replaceState" : "pushState"]({ spotId, photoIndex }, "", url);
+  if (location.hash === nextHash && history.state?.[MODAL_HISTORY_KEY] === "spot") return;
+  history[replace ? "replaceState" : "pushState"](modalHistoryState("spot", { spotId, photoIndex }), "", url);
 }
 function clearSpotHash({ replace = true } = {}) {
   if (!spotIdFromHash()) return;
   const url = new URL(location.href);
   url.hash = "";
-  history[replace ? "replaceState" : "pushState"](null, "", url);
+  history[replace ? "replaceState" : "pushState"](withoutModalHistoryState(), "", url);
 }
 function openSpotModal(spotId, source = "unknown", options = {}) {
   const spot = findSpotById(spotId);
@@ -1618,7 +1672,7 @@ function bindSpotModalGallery(modal, spot, options = {}) {
   modal.querySelectorAll("[data-photo-index]").forEach((button) => {
     button.addEventListener("click", () => {
       const index = Number(button.dataset.photoIndex);
-      selectPhoto(index);
+      selectPhoto(index, { replaceUrl: true });
     });
   });
 }
@@ -1629,7 +1683,11 @@ function closeSpotModal(reason = "close", options = {}) {
   element.remove();
   document.body.classList.remove("modal-open");
   activeSpotModal = null;
-  if (options.updateUrl !== false && spotIdFromHash() === spotId) clearSpotHash({ replace: true });
+  if (options.updateUrl !== false && history.state?.[MODAL_HISTORY_KEY] === "spot") {
+    history.back();
+  } else if (options.updateUrl !== false && spotIdFromHash() === spotId) {
+    clearSpotHash({ replace: true });
+  }
   if (reason !== "replace") track("spot_detail_close", spotAnalyticsParams(spot, source, { reason }));
 }
 
@@ -2121,7 +2179,7 @@ function stampDetailHTML(selected) {
         </div>`;
 }
 
-function openJournalModal(kind, id) {
+function openJournalModal(kind, id, options = {}) {
   const modal = $("#journalModal");
   const content = $("#journalModalContent");
   if (!modal || !content) return;
@@ -2139,9 +2197,13 @@ function openJournalModal(kind, id) {
     renderStampboard();
   }
   modal.dataset.kind = kind;
+  modal.dataset.itemId = id;
   bindSpotEvents(content);
   modal.hidden = false;
   document.body.classList.add("modal-open");
+  if (options.updateHistory !== false) {
+    pushModalHistory("journal", { journalKind: kind, journalId: id });
+  }
   track("journal_item_opened", {
     item_type: kind,
     saved_state: kind === "stamp"
@@ -2151,11 +2213,14 @@ function openJournalModal(kind, id) {
   modal.querySelector(".journal-modal-close")?.focus();
 }
 
-function closeJournalModal() {
+function closeJournalModal(options = {}) {
   const modal = $("#journalModal");
   if (!modal || modal.hidden) return;
   modal.hidden = true;
   document.body.classList.remove("modal-open");
+  if (options.updateHistory !== false && history.state?.[MODAL_HISTORY_KEY] === "journal") {
+    history.back();
+  }
 }
 
 /* ---------- gallery ---------- */
@@ -2351,6 +2416,14 @@ function openSpotFromHash(source = "hash") {
   return true;
 }
 function syncModalWithLocation(source = "url") {
+  const modalState = history.state || {};
+  if (modalState[MODAL_HISTORY_KEY] === "journal" && modalState.journalKind && modalState.journalId) {
+    closeSpotModal("replace", { updateUrl: false });
+    closeQuickModal("replace");
+    openJournalModal(modalState.journalKind, modalState.journalId, { updateHistory: false });
+    return;
+  }
+  closeJournalModal({ updateHistory: false });
   if (location.hash === "#quick-intro") {
     closeSpotModal("replace", { updateUrl: false });
     openQuickModal(source);
@@ -2363,6 +2436,23 @@ function syncModalWithLocation(source = "url") {
   }
   if (activeSpotModal) closeSpotModal(source, { updateUrl: false });
 }
+
+window.MADO_CLOSE_ACTIVE_MODAL = function () {
+  const journalModal = $("#journalModal");
+  if (journalModal && !journalModal.hidden) {
+    closeJournalModal();
+    return true;
+  }
+  if (activeSpotModal) {
+    closeSpotModal("system_back");
+    return true;
+  }
+  if (activeQuickModal) {
+    closeQuickModal("system_back");
+    return true;
+  }
+  return false;
+};
 
 function bindGalleryControls() {
   $(".journey-intents-guide")?.addEventListener("click", (event) => {
