@@ -98,7 +98,7 @@ if (!/MTS\.interpolateSpot\(/.test(mieruSrc)) fail("mieru.html does not appear t
 
 // ---- 5. train-select.js が実際に読み込まれる配線になっていること ----
 const pagesLoadingAppJs = [
-  "index.html", "en/index.html",
+  "start.html", "en/start.html",
   "journal.html", "en/journal.html",
   "zukan.html", "en/zukan.html",
 ];

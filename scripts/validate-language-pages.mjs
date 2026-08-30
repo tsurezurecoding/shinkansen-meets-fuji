@@ -131,6 +131,29 @@ for (const [jaPath, enPath] of pairs) {
   }
 }
 
+for (const [jaPath, enPath] of [["/start.html", "/en/start.html"]]) {
+  for (const [urlPath, language] of [[jaPath, "ja"], [enPath, "en"]]) {
+    const file = diskPath(urlPath);
+    if (!fs.existsSync(file)) {
+      errors.push(`missing: ${urlPath}`);
+      continue;
+    }
+    const html = fs.readFileSync(file, "utf8");
+    if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
+      errors.push(`${urlPath}: html lang must be ${language}`);
+    }
+    if (!/<meta name="robots" content="noindex,follow">/i.test(html)) {
+      errors.push(`${urlPath}: train selector must be noindex,follow`);
+    }
+    if (/<link\s+rel=["']canonical["']|hreflang=|application\/ld\+json/i.test(html)) {
+      errors.push(`${urlPath}: train selector must not have canonical, hreflang, or JSON-LD metadata`);
+    }
+    if (!html.includes('id="journey"')) {
+      errors.push(`${urlPath}: train selector journey anchor is missing`);
+    }
+  }
+}
+
 const localizedGuidePages = [
   ["/zh-Hant/guide.html", "zh-Hant", "zh-Hant-TW"],
   ["/ko/guide.html", "ko", "ko"],

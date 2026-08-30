@@ -422,6 +422,7 @@ function projectMedia(spot, lang) {
       accountName: localized(video.accountName, lang),
       accessibleTitle: localized(video.accessibleTitle, lang),
       fallbackText: localized(video.fallbackText, lang),
+      comment: localized(video.comment, lang),
       date: String(video.date || ""),
       id: String(video.id || ""),
       title: localized(video.title, lang),
@@ -482,7 +483,7 @@ function projectPage(spot, lang) {
       duration: durationGuideText(spot, lang),
       timingLead: lang === "ja" ? "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。" : "Know your train? Select it to see this view's estimated time on the actual timetable.",
       cta: lang === "ja" ? "列車を選んで、見える時刻を調べる" : "Select my train and check the time",
-      href: lang === "ja" ? "../index.html#journey" : "../../en/#journey",
+      href: lang === "ja" ? "../start.html#journey" : "../../en/start.html#journey",
       highlight: guideHighlight,
     },
     references: projectReferences(spot, lang),
@@ -541,6 +542,7 @@ function validatePage(page, spot) {
   if (page.media) {
     if (!Array.isArray(page.media.videos) || !page.media.videos.length) throw new Error(`Video projection is empty for ${spot.id}/${page.lang}`);
     for (const video of page.media.videos) {
+      if (video.comment && (video.comment.length > 140 || /[\r\n]/.test(video.comment))) throw new Error(`Video comment must be a single line of 140 characters or fewer for ${spot.id}`);
       if (video.kind === "x") {
         if (video.orientation && video.orientation !== "portrait") throw new Error(`Video orientation is unsupported for ${spot.id}`);
         if (!/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url) || (video.mediaUrl && !/^https:\/\/t\.co\/[A-Za-z0-9]+$/.test(video.mediaUrl)) || !/^@[A-Za-z0-9_]+$/.test(video.handle) || !video.accessibleTitle || !video.fallbackText) throw new Error(`X video projection is malformed for ${spot.id}`);

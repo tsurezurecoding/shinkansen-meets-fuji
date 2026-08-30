@@ -145,8 +145,8 @@ const liveEnglish = liveSource
     /<script src="\.\.\/\.\.\/live\/live\.js\?v=[^"]+"><\/script>/,
     `<script src="../../live/live.js?v=${assetVersion("live/live.js")}"></script>`
   )
-  .replace('<strong data-live-copy="eaLiveTitle">Androidアプリ版（早期アクセス）</strong>', '<strong data-live-copy="eaLiveTitle">Android app (early access)</strong>')
-  .replace('<small data-live-copy="eaLiveBody">乗車中はアプリの方が安定して使えます。テスト参加者を募集中です。</small>', '<small data-live-copy="eaLiveBody">The app is steadier to use while you ride. We are looking for testers.</small>')
+  .replace('<strong data-live-copy="eaLiveTitle">Androidアプリ版</strong>', '<strong data-live-copy="eaLiveTitle">Android app</strong>')
+  .replace('<small data-live-copy="eaLiveBody">無料・登録不要。乗車中もすぐ開けます。</small>', '<small data-live-copy="eaLiveBody">Free, no registration. Quick to open while you ride.</small>')
   .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
 const liveTarget = path.join(appDir, "en", "live", "index.html");
 if (writeFileIfChanged(liveTarget, liveEnglish)) changedCount += 1;

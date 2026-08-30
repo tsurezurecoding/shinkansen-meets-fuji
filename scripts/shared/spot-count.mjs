@@ -58,9 +58,11 @@ export const COLLECTION_727_RETIRED = BOARD_COLLECTION.filter(is727Retired).leng
 /** Pages whose static HTML states a spot count. */
 export const SPOT_COUNT_PAGES = [
   "index.html",
+  "start.html",
   "guide.html",
   "zukan.html",
   "en/index.html",
+  "en/start.html",
   "en/guide.html",
   "en/zukan.html",
   "en/jr-pass-fuji.html",

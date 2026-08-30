@@ -42,10 +42,10 @@ const MSG = {
     estimateTag: "目安時間", estimateNote: "列車を選ぶと実ダイヤに切替", trainTag: "実ダイヤ",
     dep: "発", arr: "着",
     nextupLabel: "つぎの車窓",
-    eaBandEyebrow: "EARLY ACCESS",
-    eaBandTitle: "Android版のテストにご協力いただけませんか",
-    eaBandBody: "公開前のAndroidアプリを試してくださる方を募集しています。ホーム画面から一発で開けて、電波の弱い区間でも動きます。",
-    eaBandCta: "早期アクセスの案内を見る",
+    eaBandEyebrow: "ANDROID APP",
+    eaBandTitle: "Androidアプリを公開しました",
+    eaBandBody: "無料・登録不要。ホーム画面からすぐ開けて、乗車中のライブガイドも使えます。",
+    eaBandCta: "Androidアプリを見る",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
     tlTitleWest: "東京 → 新大阪の車窓タイムライン", tlTitleEast: "新大阪 → 東京の車窓タイムライン",
@@ -212,10 +212,10 @@ const MSG = {
     estimateTag: "Estimate times", estimateNote: "Pick a train for real timetable", trainTag: "Real timetable",
     dep: "dep", arr: "arr",
     nextupLabel: "NEXT VIEW",
-    eaBandEyebrow: "EARLY ACCESS",
-    eaBandTitle: "Help us test the Android app",
-    eaBandBody: "We are looking for testers for the pre-release Android app. It opens straight from your home screen and keeps working where the signal drops.",
-    eaBandCta: "See how to join",
+    eaBandEyebrow: "ANDROID APP",
+    eaBandTitle: "Shinkansen Window is on Android",
+    eaBandBody: "Free, no registration. Open it from your home screen and use the Live Guide while you ride.",
+    eaBandCta: "See the Android app",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
     tlTitleWest: "Tokyo → Shin-Osaka window timeline", tlTitleEast: "Shin-Osaka → Tokyo window timeline",
@@ -369,13 +369,17 @@ let lang = getInitialLang();
 
 function localizedPageHref(targetLang) {
   const path = location.pathname.replace(/\\/g, "/");
-  const file = path.endsWith("/zukan.html") ? "zukan.html"
+  const file = path.endsWith("/start.html") ? "start.html"
+    : path.endsWith("/zukan.html") ? "zukan.html"
     : path.endsWith("/journal.html") ? "journal.html"
     : "index.html";
   const target = targetLang === "en"
     ? `en/${file === "index.html" ? "" : file}`
     : file;
-  return new URL(target, document.baseURI).href;
+  const destination = new URL(target, document.baseURI);
+  destination.search = location.search;
+  destination.hash = location.hash;
+  return destination.href;
 }
 let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
@@ -443,9 +447,18 @@ let activeQuickModal = null;
 
 const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
-const APP_SELF = location.pathname.endsWith("/zukan.html")
-  ? "zukan.html"
-  : "index.html";
+function appSelfForPath(pathname) {
+  const normalized = String(pathname).replace(/\\/g, "/");
+  const isEnglish = /(^|\/)en(?:\/|$)/i.test(normalized);
+  const file = normalized.endsWith("/zukan.html") ? "zukan.html"
+    : normalized.endsWith("/start.html") ? "start.html"
+    : normalized.endsWith("/journal.html") ? "journal.html"
+    : "index.html";
+  if (!isEnglish) return file;
+  if (normalized.endsWith("/en") || normalized.endsWith("/en/")) return "en/";
+  return `en/${file}`;
+}
+const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
   const pageId = spot.guidePageId || spot.id;
@@ -461,9 +474,14 @@ const t = (key, ...args) => {
 };
 function track(eventName, params = {}) {
   if (window.MADO_ANALYTICS_DISABLED) return;
+  const pageContext = document.body?.dataset?.page
+    || (APP_SELF.endsWith("start.html") ? "train_selector"
+      : APP_SELF.endsWith("zukan.html") ? "field_guide"
+        : APP_SELF.endsWith("journal.html") ? "journal"
+          : "home");
   const payload = {
     language: lang,
-    page_context: document.body?.dataset?.page || "home",
+    page_context: pageContext,
     ...params,
   };
   if (typeof window.gtag === "function") window.gtag("event", eventName, payload);
@@ -1073,13 +1091,19 @@ function applyLang() {
   if (lang === "en") {
     const englishRoutes = {
       "index.html": "en/",
-      "index.html#journey": "en/#journey",
+      "index.html#journey": "en/start.html#journey",
       "index.html#quick-intro": "en/#quick-intro",
+      "start.html": "en/start.html",
+      "start.html#journey": "en/start.html#journey",
       "zukan.html": "en/zukan.html",
       "zukan.html?filter=night": "en/zukan.html?filter=night",
       "zukan.html?filter=cloudy#gallery": "en/zukan.html?filter=cloudy#gallery",
       "zukan.html?filter=night#gallery": "en/zukan.html?filter=night#gallery",
       "zukan.html?filter=sign#gallery": "en/zukan.html?filter=sign#gallery",
+      "hanabi.html": "en/hanabi.html",
+      "yakei.html": "en/yakei.html",
+      "sparkling-dreams.html": "en/sparkling-dreams.html",
+      "spots/727-board.html": "en/spots/727-board.html",
       "guide.html#cloudy": "en/guide.html#cloudy",
       "guide.html#entertainment": "en/guide.html#entertainment",
       "journal.html": "en/journal.html",
@@ -2118,6 +2142,12 @@ function openJournalModal(kind, id) {
   bindSpotEvents(content);
   modal.hidden = false;
   document.body.classList.add("modal-open");
+  track("journal_item_opened", {
+    item_type: kind,
+    saved_state: kind === "stamp"
+      ? (stamps[id] ? "saved" : "not_saved")
+      : (medalProgress(MEDAL_SETS.find((candidate) => candidate.id === id)).got > 0 ? "started" : "not_started"),
+  });
   modal.querySelector(".journal-modal-close")?.focus();
 }
 

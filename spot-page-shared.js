@@ -29,8 +29,8 @@
       railPreviewTiming: function (minutes) { return "東京から約" + minutes + "分"; },
       railCta: "乗る列車でガイドを作る",
       railFoot: "車窓図鑑で写真から探す →",
-      railAppTitle: "Androidアプリ版（早期アクセス）",
-      railAppBody: "テスト参加者を募集中",
+      railAppTitle: "Androidアプリ版",
+      railAppBody: "無料・登録不要。Google Playで公開中",
       railDisneyTitle: "ディズニー新幹線",
       railDisneyBody: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る",
       railHanabiTitle: "新幹線から見える花火",
@@ -80,8 +80,8 @@
       railPreviewTiming: function (minutes) { return "About " + minutes + " min from Tokyo"; },
       railCta: "Build my guide by train",
       railFoot: "Browse by photo →",
-      railAppTitle: "Android app (early access)",
-      railAppBody: "Looking for testers",
+      railAppTitle: "Android app",
+      railAppBody: "Free, no registration. Available on Google Play",
       railDisneyTitle: "Disney Shinkansen",
       railDisneyBody: "Sparkling Dreams Shinkansen · operating dates and window-side estimates",
       railHanabiTitle: "Fireworks from the window",
@@ -372,7 +372,7 @@
   function railAppHTML(rootPath, lang) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"early_access_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
+    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"android_app_guide_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function railDisneyHTML(rootPath, lang) {
@@ -519,6 +519,7 @@
       page.media.videos.forEach(function (video) {
         if (!video || !["x", "youtube"].includes(video.kind) || !video.url || !video.accessibleTitle && video.kind === "x") throw new Error("shared video record is malformed");
         if (video.orientation && video.orientation !== "portrait") throw new Error("shared video orientation is malformed");
+        if (video.comment && (typeof video.comment !== "string" || video.comment.length > 140 || /[\r\n]/.test(video.comment))) throw new Error("shared video comment is malformed");
         if (video.kind === "x" && (!/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url) || (video.mediaUrl && !/^https:\/\/t\.co\/[A-Za-z0-9]+$/.test(video.mediaUrl)) || !/^@[A-Za-z0-9_]+$/.test(video.handle) || !video.fallbackText)) throw new Error("shared X video record is malformed");
         if (video.kind === "youtube" && (!/^[A-Za-z0-9_-]{11}$/.test(video.id) || !/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(video.url) || !video.title)) throw new Error("shared YouTube video record is malformed");
       });
@@ -597,9 +598,11 @@
         var xText = escapeHTML(video.fallbackText).replace(/\n/g, "<br>");
         var sourceLabel = video.accountName ? video.accountName + "（" + video.handle + "）／" + ui.original : video.handle + " / " + ui.original;
         var frameClass = " spot-page-video-frame-x" + (video.orientation === "portrait" ? " is-portrait" : "");
-        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
+        var xComment = video.comment ? "<p class=\"spot-page-video-comment\">" + escapeHTML(video.comment) + "</p>" : "";
+        return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.accessibleTitle) + "\"><div class=\"spot-page-video-frame" + frameClass + "\" data-video-platform=\"x\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\"><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"" + escapeHTML(lang) + "\" dir=\"ltr\">" + xText + "</p>&mdash; " + escapeHTML(video.handle) + " <a href=\"" + escapeHTML(video.url) + "\">" + escapeHTML(ui.original) + "</a></blockquote></div>" + xComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(sourceLabel) + "</a></p></article>";
       }
-      return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.title) + "\"><div class=\"spot-page-video-frame\"><iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeHTML(video.id) + "\" title=\"" + escapeHTML(video.title) + "\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div><p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(video.url) + "</a></p></article>";
+      var youtubeComment = video.comment ? "<p class=\"spot-page-video-comment\">" + escapeHTML(video.comment) + "</p>" : "";
+      return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.title) + "\"><div class=\"spot-page-video-frame\"><iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeHTML(video.id) + "\" title=\"" + escapeHTML(video.title) + "\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div>" + youtubeComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(video.url) + "</a></p></article>";
     }).join("");
     return "<section class=\"spot-page-section spot-page-video-section\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\"><h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
   }
@@ -724,10 +727,26 @@
     });
   }
 
+  function bindCtaTracking() {
+    if (document.documentElement.getAttribute("data-spot-cta-tracking") === "bound") return;
+    document.documentElement.setAttribute("data-spot-cta-tracking", "bound");
+    document.addEventListener("click", function (event) {
+      var target = event.target && event.target.closest ? event.target.closest("[data-cta-track]") : null;
+      if (!target || root.MADO_ANALYTICS_DISABLED || typeof root.gtag !== "function") return;
+      root.gtag("event", target.getAttribute("data-cta-track") || "cta_click", {
+        cta_id: target.getAttribute("data-cta-id") || "",
+        destination: target.getAttribute("href") || "",
+        language: document.body.getAttribute("data-spot-page-shared-lang") || "ja",
+        page_context: document.body.getAttribute("data-spot-page-shared-context") === "utility" ? "utility" : "spot_guide",
+      });
+    });
+  }
+
   function render() {
     var hosts = [];
     try {
       if (!document.body || !document.body.classList.contains("spot-page")) throw new Error("spot-page body context is required");
+      bindCtaTracking();
       if (root.MADO_EMBEDDED_WEB) document.body.classList.add("mado-embedded-body");
       var pageHost = findOptionalHost("page");
       if (pageHost) {

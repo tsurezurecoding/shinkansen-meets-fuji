@@ -7,6 +7,7 @@
   var routes = {
     "/": "en/",
     "/index.html": "en/",
+    "/start.html": "en/start.html",
     "/zukan.html": "en/zukan.html",
     "/journal.html": "en/journal.html",
     "/mieru.html": "en/mieru.html",
@@ -45,7 +46,10 @@
   // 利用者が明示的に選んだ時だけ英語版へ移す。
   if (requested === "en" || saved === "en") {
     try { localStorage.setItem("mado-lang", "en"); } catch (error) {}
-    location.replace(new URL(targetRoute, document.baseURI).href);
+    var destination = new URL(targetRoute, document.baseURI);
+    destination.search = location.search;
+    destination.hash = location.hash;
+    location.replace(destination.href);
     return;
   }
 

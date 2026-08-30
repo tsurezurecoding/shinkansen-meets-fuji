@@ -3041,6 +3041,23 @@ const SPOTS = [
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
       },
     ],
+    media: {
+      heading: { ja: "動画で見るソーラーアーク", en: "Solar Ark in motion" },
+      description: {
+        ja: "解体を前にしたソーラーアークを、新幹線の車窓から動画で見られます。2026年8月20日撮影。",
+        en: "See Solar Ark from the Shinkansen window before its scheduled demolition. Filmed on August 20, 2026.",
+      },
+      videos: [
+        {
+          kind: "youtube",
+          id: "PNit3i2oeSw",
+          title: { ja: "ソーラーアークの車窓動画（2026年8月20日撮影）", en: "Solar Ark from the train window (filmed August 20, 2026)" },
+          url: "https://www.youtube.com/watch?v=PNit3i2oeSw",
+          date: "2026-08-20",
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
     references: [REFERENCES.solarArkDemolitionNews, REFERENCES.solarArkWikipedia, REFERENCES.anpachiTownSolarArk, REFERENCES.solarArkBlog],
     map: { lat: 35.331049924069006, lng: 136.6713226517134, ja: "ソーラーアーク", en: "Solar Ark" },
     viewpoint: { lat: 35.330830, lng: 136.668781 },
@@ -4004,6 +4021,24 @@ const SPOTS = [
         note: { ja: "検修庫と留置線の広がりが見える朝の車窓", en: "A morning view showing the inspection sheds and wide yard tracks." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る鳥飼車両基地", en: "Torikai Rail Yard in motion" },
+      description: {
+        ja: "白い新幹線が並ぶ鳥飼車両基地と、そのそばを走る大阪モノレールを投稿動画でも確かめられます。",
+        en: "See the rows of white Shinkansen at Torikai Rail Yard, followed by the Osaka Monorail running nearby.",
+      },
+      videos: [
+        {
+          kind: "x",
+          url: "https://x.com/DHyoshikawa/status/1833392041281392771",
+          handle: "@DHyoshikawa",
+          accessibleTitle: { ja: "鳥飼車両基地と大阪モノレールのX動画", en: "X video of Torikai Rail Yard and the Osaka Monorail" },
+          fallbackText: { ja: "鳥飼車両基地のあと、大阪モノレールも映る投稿動画", en: "A post showing the Osaka Monorail after Torikai Rail Yard" },
+          comment: { ja: "車両基地のあと、大阪モノレールも画面に入ります。", en: "After the depot, the Osaka Monorail enters the frame too." },
+        },
+      ],
+      platformNote: { ja: "動画はXの公式埋め込みを利用しています。", en: "This video uses the official X embed." },
+    },
     references: [REFERENCES.tokaidoShinkansen, REFERENCES.torikaiDepotWiki],
     map: { lat: 34.77598, lng: 135.5704782, ja: "鳥飼車両基地", en: "Torikai Train Depot" },
     viewpoint: { lat: 34.775259, lng: 135.571088 },
