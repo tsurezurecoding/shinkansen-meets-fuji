@@ -2239,7 +2239,7 @@ function englishLandingHTML() {
     ["車窓図鑑をひらく", "Open the field guide"],
     ["乗る列車を選ぶと、", "Choose your train,"],
     ["時刻が決まる。", "and the timing follows."],
-    ["乗る前から、", "Before, during, and"],
+    ["乗る前から、", "Before, during,"],
     ["降りたあとまで。", "and after your ride."],
     ["乗る前に見どころを探し、", "Find views before you board,"],
     ["車内で出会い、", "enjoy them along the way,"],
