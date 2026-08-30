@@ -29,8 +29,8 @@
       railPreviewTiming: function (minutes) { return "東京から約" + minutes + "分"; },
       railCta: "乗る列車でガイドを作る",
       railFoot: "車窓図鑑で写真から探す →",
-      railAppTitle: "Androidアプリ版（早期アクセス）",
-      railAppBody: "テスト参加者を募集中",
+      railAppTitle: "Androidアプリ版",
+      railAppBody: "無料・登録不要。Google Playで公開中",
       railDisneyTitle: "ディズニー新幹線",
       railDisneyBody: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る",
       railHanabiTitle: "新幹線から見える花火",
@@ -80,8 +80,8 @@
       railPreviewTiming: function (minutes) { return "About " + minutes + " min from Tokyo"; },
       railCta: "Build my guide by train",
       railFoot: "Browse by photo →",
-      railAppTitle: "Android app (early access)",
-      railAppBody: "Looking for testers",
+      railAppTitle: "Android app",
+      railAppBody: "Free, no registration. Available on Google Play",
       railDisneyTitle: "Disney Shinkansen",
       railDisneyBody: "Sparkling Dreams Shinkansen · operating dates and window-side estimates",
       railHanabiTitle: "Fireworks from the window",
@@ -372,7 +372,7 @@
   function railAppHTML(rootPath, lang) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"early_access_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
+    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"android_app_guide_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function railDisneyHTML(rootPath, lang) {
@@ -727,10 +727,26 @@
     });
   }
 
+  function bindCtaTracking() {
+    if (document.documentElement.getAttribute("data-spot-cta-tracking") === "bound") return;
+    document.documentElement.setAttribute("data-spot-cta-tracking", "bound");
+    document.addEventListener("click", function (event) {
+      var target = event.target && event.target.closest ? event.target.closest("[data-cta-track]") : null;
+      if (!target || root.MADO_ANALYTICS_DISABLED || typeof root.gtag !== "function") return;
+      root.gtag("event", target.getAttribute("data-cta-track") || "cta_click", {
+        cta_id: target.getAttribute("data-cta-id") || "",
+        destination: target.getAttribute("href") || "",
+        language: document.body.getAttribute("data-spot-page-shared-lang") || "ja",
+        page_context: document.body.getAttribute("data-spot-page-shared-context") === "utility" ? "utility" : "spot_guide",
+      });
+    });
+  }
+
   function render() {
     var hosts = [];
     try {
       if (!document.body || !document.body.classList.contains("spot-page")) throw new Error("spot-page body context is required");
+      bindCtaTracking();
       if (root.MADO_EMBEDDED_WEB) document.body.classList.add("mado-embedded-body");
       var pageHost = findOptionalHost("page");
       if (pageHost) {

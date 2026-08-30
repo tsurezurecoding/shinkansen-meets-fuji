@@ -1,5 +1,5 @@
 /* =========================================================
- * chrome.css — サイト共通ヘッダー（topbar / brand / top-nav / lang-switch）
+ * chrome.css — サイト共通chrome（header / footer）
  *
  * ここが唯一の正本。style.css は先頭で @import し、LP(index.html) は
  * style.css を読まないため <link> で直接読み込む。
@@ -191,4 +191,31 @@
   .top-nav-menu {right: auto; left: 0; min-width: min(72vw, 230px);}
   .top-nav-menu .top-nav-menu-compact {display: block;}
   .lang-switch button {padding: 4px 9px;}
+}
+
+/* ===== Shared footer ===== */
+.footer {
+  margin-top: 80px;
+  padding: 46px 24px 60px;
+  background: var(--night, #101c2c);
+  color: rgba(255,255,255,0.75);
+  text-align: center;
+  font-size: 13px;
+}
+.footer-brand {
+  margin-bottom: 12px;
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+.footer p { max-width: 520px; margin: 0 auto 8px; }
+.footer-links a {
+  color: rgba(255,255,255,0.86);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.footer-credit {
+  margin-top: 16px;
+  color: var(--accent-soft, #f5c9a8);
+  font-family: var(--font-serif, var(--serif, "Hiragino Mincho ProN", "Yu Mincho", YuMincho, "Noto Serif JP", Georgia, serif));
 }

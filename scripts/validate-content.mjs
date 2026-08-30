@@ -27,7 +27,11 @@ const checks = [
       '<link rel="canonical" href="https://www.michikusa-travel.com/">',
       'id="quick-intro"',
       'href="start.html#journey" data-lp-cta="hero-primary"',
-      'data-lp-cta="footer-train"',
+      'https://www.googletagmanager.com/gtag/js?id=',
+      'if (window.MADO_EMBEDDED_WEB) return;',
+      'window.gtag("event", `lp_${valuePath}_click`, payload);',
+      '<footer class="footer">',
+      'href="early-access.html?src=lp-footer">Androidアプリ</a>',
       'h==="#journey"',
       // 旧 /#spot-<id> の共有リンク・ブックマークが LP で行き止まりにならないこと
       'h.indexOf("#spot-")===0',
@@ -46,8 +50,12 @@ const checks = [
       'data-cta-id="top_journey_727"',
       'data-cta-id="top_footer_727"',
       'href="727-collection.html"',
+      'https://www.googletagmanager.com/gtag/js?id=',
+      'if (window.MADO_EMBEDDED_WEB) return;',
+      'data-cta-track="android_app_guide_click"',
+      'Google Playで公開中。',
     ],
-    forbidden: ['class="seasonal-entry"'],
+    forbidden: ['class="seasonal-entry"', 'window.MADO_ANALYTICS_DISABLED=true', 'early_access_click'],
   },
   {
     file: "en/index.html",
@@ -59,6 +67,11 @@ const checks = [
       'href="en/start.html#journey"',
       'data-lp-cta="special-disney"',
       'href="en/sparkling-dreams.html"',
+      'https://www.googletagmanager.com/gtag/js?id=',
+      'if (window.MADO_EMBEDDED_WEB) return;',
+      'window.gtag("event", `lp_${valuePath}_click`, payload);',
+      '<footer class="footer">',
+      'href="en/early-access.html?src=lp-footer">Android app</a>',
     ],
     forbidden: ['class="seasonal-entry"'],
   },
@@ -74,12 +87,45 @@ const checks = [
       'data-cta-id="top_journey_727"',
       'data-cta-id="top_footer_727"',
       'href="en/zukan.html?filter=sign#gallery"',
+      'https://www.googletagmanager.com/gtag/js?id=',
+      'if (window.MADO_EMBEDDED_WEB) return;',
+      'data-cta-track="android_app_guide_click"',
+      'Available on Google Play.',
     ],
-    forbidden: ['<link rel="canonical"', 'hreflang=', 'application/ld+json'],
+    forbidden: ['<link rel="canonical"', 'hreflang=', 'application/ld+json', 'window.MADO_ANALYTICS_DISABLED=true', 'early_access_click'],
   },
   {
     file: "app.js",
-    required: ["${MADO_SPOT_COUNT}の車窓スポット", "Browse all ${MADO_SPOT_COUNT} window views"],
+    required: [
+      "${MADO_SPOT_COUNT}の車窓スポット",
+      "Browse all ${MADO_SPOT_COUNT} window views",
+      'APP_SELF.endsWith("start.html") ? "train_selector"',
+      'APP_SELF.endsWith("zukan.html") ? "field_guide"',
+      'APP_SELF.endsWith("journal.html") ? "journal"',
+      'track("journal_item_opened"',
+    ],
+  },
+  {
+    file: "early-access.html",
+    required: [
+      'Google Playで公開中',
+      'data-android-install',
+      'android_app_guide_view',
+      'android_install_click',
+      'com.michikusatravel.shinkansenwindow',
+    ],
+    forbidden: ['groups.google.com', '/apps/testing/', 'early_access_step', '12人以上', '14日間'],
+  },
+  {
+    file: "en/early-access.html",
+    required: [
+      'Available on Google Play',
+      'data-android-install',
+      'android_app_guide_view',
+      'android_install_click',
+      'com.michikusatravel.shinkansenwindow',
+    ],
+    forbidden: ['groups.google.com', '/apps/testing/', 'early_access_step', '12 people', '14 days'],
   },
   {
     file: "references.html",
@@ -139,6 +185,12 @@ for (const file of ["start.html", "en/start.html"]) {
   if (/<link\s+rel="canonical"|hreflang=|application\/ld\+json/.test(text)) {
     failures.push(`${file}: train selector must not publish canonical, hreflang, or JSON-LD metadata`);
   }
+}
+
+for (const file of ["index.html", "start.html", "en/index.html", "en/start.html"]) {
+  const text = await readFile(new URL(file, root), "utf8");
+  const loaderCount = (text.match(/googletagmanager\.com\/gtag\/js\?id=/g) || []).length;
+  if (loaderCount !== 1) failures.push(`${file}: expected exactly one GA4 loader, found ${loaderCount}`);
 }
 
 for (const check of checks) {

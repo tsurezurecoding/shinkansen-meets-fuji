@@ -50,7 +50,40 @@
   ]
 }
   </script>
-  <link rel="stylesheet" href="chrome.css?v=cb0fe575">
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="chrome.css?v=d8ebc990">
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
@@ -435,15 +468,7 @@
     .final-inner .button-dark { background: var(--night); box-shadow: 0 16px 40px rgba(88, 29, 15, 0.2); }
     .final-inner .button-ghost { border-color: rgba(255, 255, 255, 0.5); background: transparent; }
 
-    .lp-footer { padding: 46px 0 34px; background: var(--night); color: #fff; }
-    .footer-top { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
-    .footer-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 16px 24px; }
-    .footer-links a { color: rgba(255, 255, 255, 0.66); font-size: 11px; }
-    .footer-links a:hover { color: #fff; }
-    .footer-cta { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-top: 30px; }
-    .footer-cta .button { min-height: 48px; padding: 0 20px; font-size: 12px; }
-    .footer-cta .cta-note { color: rgba(255, 255, 255, 0.58); }
-    .footer-note { margin: 30px 0 0; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.38); font-size: 9px; }
+    main + .footer { margin-top: 0; }
 
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 700ms ease, transform 700ms cubic-bezier(.2,.75,.2,1); }
     .js .reveal.is-visible { opacity: 1; transform: translateY(0); }
@@ -457,11 +482,14 @@
       .afterglow-head { grid-template-columns: 1fr; gap: 0; }
     }
 
-    /* 981〜1080px は全5リンクだと余白が20px未満まで詰まるため、先にFAQ・Window Stampsを畳む */
+    /* Keep desktop cards in reach even when the browser window is not maximized. */
     @media (min-width: 1024px) {
-      .hero-inner { max-width: 1120px; padding: 92px 24px 88px; }
+      .hero-inner { max-width: 1120px; padding: clamp(28px, 5vh, 52px) 24px 32px; }
+      .hero-kicker { margin-bottom: 12px; }
       .hero-title { font-size: clamp(42px, 4.4vw, 58px); }
       .hero-lead { max-width: 620px; font-size: 16px; }
+      .hero .hero-actions { margin-top: 20px; }
+      .hero-cards { margin-top: 20px; }
     }
 
     /* 761〜900px は特集カードが3列だと「Disney Shinkansen」が折れるため 2+1 に組む */
@@ -496,8 +524,6 @@
       .select-flow { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
       .afterglow-card { min-height: 350px; }
       .trust-list { grid-template-columns: 1fr; gap: 18px; }
-      .footer-top { align-items: flex-start; flex-direction: column; }
-      .footer-links { justify-content: flex-start; }
     }
 
     @media (max-width: 460px) {
@@ -854,26 +880,11 @@
     </section>
   </main>
 
-  <footer class="lp-footer">
-    <div class="section-shell">
-      <div class="footer-top">
-        <a class="brand" href="en/" aria-label="Shinkansen Window home">
-          <span class="brand-mark" aria-hidden="true">W</span>
-          <span><span class="brand-name">Shinkansen Window</span><small class="brand-sub">Never miss a moment of the journey.</small></span>
-        </a>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="en/guide.html">FAQ</a>
-          <a href="en/references.html">References</a>
-          <a href="en/contact.html">Contact</a>
-          <a href="en/privacy.html">Privacy</a>
-        </nav>
-      </div>
-      <div class="footer-cta cta-stack">
-        <a class="button button-primary" href="en/start.html#journey" data-lp-cta="footer-train">Choose your train</a>
-        <span class="cta-note">Takes about 30 seconds.</span>
-      </div>
-      <p class="footer-note">© Shinkansen Window / michikusa — Start noticing the views a little early.</p>
-    </div>
+  <footer class="footer">
+    <p class="footer-brand">Shinkansen Window Never miss a moment of the journey.</p>
+    <p>Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early.</p>
+    <p class="footer-links"><a href="en/guide.html">How to See Mt. Fuji</a> · <a href="en/references.html">Window View Links</a> · <a href="en/mieru.html">Visibility β</a> · <a href="en/sumie.html">Ink-wash Window</a> · <a href="en/somato.html">Window Revue</a> · <a class="hide-in-app" href="en/early-access.html?src=lp-footer">Android app</a> · <a href="en/contact.html">Contact</a> · <a href="en/privacy.html">Privacy Policy</a></p>
+    <p class="footer-credit">Michikusa — Slow travel and unexpected discoveries.</p>
   </footer>
 
   <script>
@@ -913,11 +924,22 @@
       document.querySelectorAll("[data-lp-cta]").forEach((link) => {
         link.addEventListener("click", () => {
           if (typeof window.gtag !== "function") return;
-          window.gtag("event", "lp_cta_click", {
-            variant: "latest_draft",
+          const destination = link.getAttribute("href") || "";
+          const valuePath = /(?:^|\/)journal\.html/.test(destination)
+            ? "reflection"
+            : /(?:^|\/)(?:start\.html|live\/)/.test(destination)
+              ? "ride"
+              : "discovery";
+          const payload = {
+            variant: "lp_top_v1",
             cta_id: link.dataset.lpCta,
-            destination: link.getAttribute("href")
-          });
+            destination,
+            language: document.documentElement.lang === "en" ? "en" : "ja",
+            page_context: "top_landing",
+            value_path: valuePath
+          };
+          window.gtag("event", "lp_cta_click", payload);
+          window.gtag("event", `lp_${valuePath}_click`, payload);
         });
       });
     })();

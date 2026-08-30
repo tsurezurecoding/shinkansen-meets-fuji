@@ -2090,6 +2090,7 @@ function localizeEnglishInternalLinks(html) {
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
   }
   html = html.replaceAll('href="early-access.html?src=top-promo"', 'href="en/early-access.html?src=top-promo"');
+  html = html.replaceAll('href="early-access.html?src=lp-footer"', 'href="en/early-access.html?src=lp-footer"');
   return html;
 }
 
@@ -2218,6 +2219,11 @@ function englishLandingHTML() {
     ["見えるころと座席側を、", "We will show the timing and seat side"],
     ["あなたの旅に合わせて案内します。", "for your journey."],
     ["まず40景を見てみる", `Browse all ${SPOT_COUNT} views`],
+    ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
+    ["道草 / Michikusa — 急がない旅と、偶然の発見を。", "Michikusa — Slow travel and unexpected discoveries."],
+    ["富士山の見方", "How to See Mt. Fuji"],
+    ["車窓リンク集", "Window View Links"],
+    ["Androidアプリ", "Android app"],
     ["よくある質問", "FAQ"],
     ["参考リンク", "References"],
     ["プライバシー", "Privacy"],
@@ -2328,12 +2334,12 @@ function englishAppIndexHTML() {
     ["長岡・淀川・熱海など沿線7大会の目撃記録。", "Sightings from 7 fireworks events along the route, including Nagaoka, Yodogawa, and Atami."],
     ["どこから暗くなるか、夜だけの車窓11景。", "11 nighttime scenes showing where darkness begins."],
     ["東京〜新大阪の沿線で727看板を集める", "Collect 727 signs along the Tokyo–Shin-Osaka route."],
-    ["公開前アプリのテスターを募集中。", "We are looking for testers for the pre-release app."],
+    ["無料・登録不要。Google Playで公開中。", "Free, no registration. Available on Google Play."],
     ["ディズニー新幹線", "Disney Shinkansen"],
     ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
     ["新幹線の夜景", "Tokaido Shinkansen at night"],
     ["727看板コレクション", "727 sign collection"],
-    ["Android版の先行アクセス", "Android app early access"],
+    ["Androidアプリ版", "Android app"],
     ["東京〜新大阪", "Tokyo–Shin-Osaka"],
     ["リンク集", "Links"],
     ["きょうの旅を教えてください", "Tell us about today's ride"],

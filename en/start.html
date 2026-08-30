@@ -24,8 +24,35 @@
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta name="twitter:image:alt" content="Tokaido Shinkansen window views, including Mt. Fuji">
   <script src="language-router.js?v=af0af7f4"></script>
-  <script>window.MADO_ANALYTICS_DISABLED=true;window["ga-disable-G-C2ESB694FV"]=true;</script>
-  <link rel="stylesheet" href="style.css?v=d00308b8">
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) { storageOptedOut = false; }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=49651072">
 </head>
 <body data-language-route="en">
   <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>
@@ -137,12 +164,12 @@
             </span>
             <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
           </a>
-          <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="early_access_click" data-cta-id="top_journey_android">
+          <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="android_app_guide_click" data-cta-id="top_journey_android">
             <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
             <span class="top-promo-card-copy">
-              <small>EARLY ACCESS</small>
-              <strong>Android app early access</strong>
-              <span>We are looking for testers for the pre-release app.</span>
+              <small>ANDROID APP</small>
+              <strong>Android app</strong>
+              <span>Free, no registration. Available on Google Play.</span>
             </span>
             <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
           </a>
@@ -243,12 +270,12 @@
         </span>
         <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
       </a>
-      <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="early_access_click" data-cta-id="top_footer_android">
+      <a class="top-promo-card top-promo-card-android hide-in-app" href="en/early-access.html?src=top-promo" data-cta-track="android_app_guide_click" data-cta-id="top_footer_android">
         <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
         <span class="top-promo-card-copy">
-          <small>EARLY ACCESS</small>
-          <strong>Android app early access</strong>
-          <span>We are looking for testers for the pre-release app.</span>
+          <small>ANDROID APP</small>
+          <strong>Android app</strong>
+          <span>Free, no registration. Available on Google Play.</span>
         </span>
         <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
       </a>
@@ -328,6 +355,6 @@
   <script src="track.js?v=f19510b1"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
   <script src="train-select.js?v=ddf609c7"></script>
-  <script src="app.js?v=cd5a814b"></script>
+  <script src="app.js?v=d387e1d2"></script>
 </body>
 </html>

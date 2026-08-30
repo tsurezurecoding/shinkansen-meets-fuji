@@ -3827,21 +3827,6 @@ body.modal-open { overflow: hidden; }
   background: var(--accent);
 }
 
-/* ===== Footer ===== */
-.footer {
-  margin-top: 80px; padding: 46px 24px 60px;
-  background: var(--night); color: rgba(255,255,255,0.75);
-  text-align: center; font-size: 13px;
-}
-.footer-brand { font-weight: 700; color: #fff; letter-spacing: 0.1em; margin-bottom: 12px; }
-.footer p { max-width: 520px; margin: 0 auto 8px; }
-.footer-links a {
-  color: rgba(255,255,255,0.86);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
-.footer-credit { margin-top: 16px; font-family: var(--font-serif); color: var(--accent-soft); }
-
 /* ===== References ===== */
 .topbar-link {
   color: rgba(255,255,255,0.86);
@@ -5440,7 +5425,7 @@ body.modal-open { overflow: hidden; }
   .journey-form-pane .top-promo-card-arrow { font-size: 20px; }
 }
 /* =========================================================
- * 早期アクセス（Android クローズドテスト）導線
+ * Androidアプリ導線
  * ========================================================= */
 .is-native-app .hide-in-app,
 html.mado-embedded-web .hide-in-app,

@@ -86,8 +86,8 @@
       idleFeature1: "次に見える車窓を現在地から予測",
       idleFeature2: "主要スポットだけ、または小ネタまで音声案内",
       idleFeature3: "地図とカウントダウンで見逃しを防止",
-      eaLiveTitle: "Androidアプリ版（早期アクセス）",
-      eaLiveBody: "乗車中はアプリの方が安定して使えます。テスト参加者を募集中です。",
+      eaLiveTitle: "Androidアプリ版",
+      eaLiveBody: "無料・登録不要。乗車中もすぐ開けます。",
       settings: "設定",
       vibL: "バイブレーション",
       wakeL: "画面をスリープさせない",
@@ -179,8 +179,8 @@
       idleFeature1: "Predicts the next view from your live position",
       idleFeature2: "Choose key spots only, or include small curiosities",
       idleFeature3: "Map and countdown help you avoid missing it",
-      eaLiveTitle: "Android app (early access)",
-      eaLiveBody: "The app is steadier to use while you ride. We are looking for testers.",
+      eaLiveTitle: "Android app",
+      eaLiveBody: "Free, no registration. Quick to open while you ride.",
       settings: "Settings",
       vibL: "Vibration",
       wakeL: "Keep screen awake",
@@ -1460,6 +1460,17 @@
     try {
       if (typeof window.gtag === "function") window.gtag("event", eventName, params || {});
     } catch (e) { /* noop */ }
+  }
+
+  var androidGuide = document.querySelector("[data-android-app-guide]");
+  if (androidGuide) {
+    androidGuide.addEventListener("click", function () {
+      track("android_app_guide_click", {
+        cta_id: "live_android",
+        language: state.lang,
+        page_context: "live",
+      });
+    });
   }
 
   createMap();
