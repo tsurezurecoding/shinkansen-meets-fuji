@@ -268,14 +268,11 @@
     .button::after { content: "→"; font-size: 17px; transition: transform 180ms ease; }
     .button:hover { transform: translateY(-2px); }
     .button:hover::after { transform: translateX(3px); }
-    /* ボタンの色ルール（このLP内共通・4種のみ。新しい配色を増やさない）
-       - button-primary: サイト最重要CTA（列車選択への導線）専用。coral塗り+白文字。
-         塗りつぶしなので背景の明暗を問わず使える。
-       - button-ghost: 写真ヒーロー・coral塗り・濃紺など「白文字が映る」背景専用。
-         半透明の白枠+白文字。paper/white系の明るい背景では使わない（同化して見えなくなる）。
-       - button-outline: paper/white系の明るい背景専用。白塗り+枠線+ink文字。
-         写真・濃色・coral塗りの背景では使わない（button-ghostを使う）。
-       - button-dark: coral塗りの背景の上でのみ使う反転ボタン（final-cta限定）。 */
+    /* このTOPのボタンルール
+       - button-primary: 単独で次の画面へ進むCTA。coral塗り+白文字。
+       - button-ghost / button-outline: 主ボタンと並ぶ補助操作だけ。単独では使わない。
+       - button-dark: coral背景上で主ボタンを埋もれさせないための反転色（final-cta限定）。
+       - 文章の流れで補足先を示すだけなら、ボタン形状にせずtext-linkを使う。 */
     .button-primary { background: var(--coral); color: #fff; box-shadow: 0 15px 42px rgba(237, 111, 77, 0.26); }
     .button-primary:hover { background: #f17b5b; }
     .button-ghost { border-color: rgba(255, 255, 255, 0.28); background: rgba(255, 255, 255, 0.07); color: #fff; }
@@ -367,19 +364,7 @@
     .stamp-grid img:nth-child(2) { transform: rotate(5deg); }
     .stamp-grid img:nth-child(3) { transform: rotate(-2deg); }
     .stamp-note { display: block; margin-top: 13px !important; color: var(--ink-soft); font-size: 9px; text-align: center; }
-    .journey-card .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 20px;
-      padding: 12px 18px;
-      border: 1px solid rgba(243, 181, 159, 0.4);
-      border-radius: 999px;
-      background: rgba(243, 181, 159, 0.1);
-      color: #f3b59f;
-      font-size: 13px;
-    }
-    .journey-card .text-link:hover { background: rgba(243, 181, 159, 0.18); }
+    .journey-card-action { width: 100%; min-height: 48px; margin-top: 20px; padding: 0 18px; box-shadow: none; }
 
     .select { padding: 72px 0; background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
     .select-flow { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); align-items: center; gap: 48px; width: min(900px, 100%); margin: 46px auto 0; text-align: left; }
@@ -410,23 +395,11 @@
     .for-you { padding: clamp(64px, 7vw, 96px) 0; background: var(--white); }
     .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 42px; }
     .audience-card { position: relative; overflow: hidden; padding: 29px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); display: flex; flex-direction: column; }
-    .audience-card .text-link { margin-top: auto; align-self: flex-start; }
+    .audience-card-action { position: relative; z-index: 1; align-self: flex-start; min-height: 44px; margin-top: auto; padding: 0 17px; font-size: 13px; box-shadow: none; }
     .audience-card::after { content: attr(data-number); position: absolute; right: 14px; bottom: -32px; color: rgba(18, 35, 52, 0.05); font-family: var(--serif); font-size: 145px; font-weight: 700; line-height: 1; }
     .audience-card small { color: var(--coral-dark); font-size: 10px; font-weight: 900; letter-spacing: 0.14em; }
     .audience-card h3 { position: relative; z-index: 1; margin: 24px 0 0; font-family: var(--serif); font-size: 25px; line-height: 1.4; }
     .audience-card p { position: relative; z-index: 1; margin: 13px 0 0; color: var(--ink-soft); font-size: 13px; }
-    .audience-card .text-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 22px;
-      padding: 11px 17px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--white);
-      color: var(--coral-dark);
-    }
-    .audience-card .text-link:hover { border-color: var(--coral); }
 
     .afterglow { padding: clamp(64px, 7vw, 96px) 0; background: #dfe8e8; }
     .afterglow-head { display: grid; grid-template-columns: 0.78fr 1fr; align-items: end; gap: 50px; }
@@ -470,7 +443,7 @@
       .photo-mosaic { grid-template-rows: 290px 240px; }
       .journey-steps { grid-template-columns: 1fr; }
       .journey-card { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
-      .journey-card .step-top, .journey-card h3, .journey-card > p, .journey-card .text-link { grid-column: 1; }
+      .journey-card .step-top, .journey-card h3, .journey-card > p, .journey-card-action { grid-column: 1; }
       .journey-card .mini-ui { grid-column: 2; grid-row: 1 / span 5; margin: 0; }
       .afterglow-head { grid-template-columns: 1fr; gap: 0; }
     }
@@ -490,14 +463,13 @@
       .journey-card { padding: 22px; }
       .journey-card h3 { margin-top: 14px; font-size: 22px; }
       .journey-card > p { min-height: 3.2em; margin-top: 8px; line-height: 1.6; }
-      .journey-card .mini-ui { min-height: 132px; margin-top: 16px; }
-      .journey-card .live-demo { min-height: 132px; }
+      .journey-card .mini-ui { height: 208px; min-height: 0; margin-top: 16px; }
       .journey-card .photo-strip-demo, .journey-card .stamp-demo { padding: 13px; }
       .journey-card .photo-strip { gap: 8px; margin-top: 8px; }
       .journey-card .stamp-grid { margin-top: 10px; }
       .journey-card .stamp-grid img { width: 50px; height: 50px; }
       .journey-card .stamp-note { margin-top: 8px !important; }
-      .journey-card .text-link { margin-top: 14px; padding: 9px 15px; }
+      .journey-card-action { margin-top: 14px; padding: 0 15px; }
     }
 
     /* 761〜900px は特集カードが3列だと「ディズニー新幹線」が折れるため 2+1 に組む */
@@ -696,7 +668,7 @@
                 </span>
               </div>
             </div>
-            <a class="text-link" href="zukan.html" data-lp-cta="step-browse">車窓図鑑を見る</a>
+            <a class="button button-primary journey-card-action" href="zukan.html" data-lp-cta="step-browse">車窓図鑑を見る</a>
           </article>
 
           <article class="journey-card reveal">
@@ -712,7 +684,7 @@
                 <div class="audio-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
             </div>
-            <a class="text-link" href="live/" data-lp-cta="step-live">デモ走行で試す（α版）</a>
+            <a class="button button-primary journey-card-action" href="live/" data-lp-cta="step-live">デモ走行で試す（α版）</a>
           </article>
 
           <article class="journey-card reveal">
@@ -728,7 +700,7 @@
               </div>
               <span class="stamp-note">見つけた景色が、旅の手帖になる</span>
             </div>
-            <a class="text-link" href="journal.html" data-lp-cta="step-journal">車窓スタンプを見る</a>
+            <a class="button button-primary journey-card-action" href="journal.html" data-lp-cta="step-journal">車窓スタンプを見る</a>
           </article>
         </div>
       </div>
@@ -765,7 +737,7 @@
           </a>
         </div>
         <p class="photo-credit">掲載写真 撮影：michikusa</p>
-        <a class="button button-outline scenery-cta" href="zukan.html" data-lp-cta="scenery-all">車窓図鑑をひらく</a>
+        <a class="button button-primary scenery-cta" href="zukan.html" data-lp-cta="scenery-all">車窓図鑑をひらく</a>
       </div>
     </section>
 
@@ -818,19 +790,19 @@
             <small>FIRST RIDE</small>
             <h3><span class="copy-chunk">はじめての一本は、</span><span class="copy-chunk">やっぱり富士山。</span></h3>
             <p><span class="copy-chunk">どちら側の席に座るか、</span><span class="copy-chunk">東京から何分ごろ見えるか。</span><span class="copy-chunk">乗る前に、ここだけ確認しておけば十分です。</span></p>
-            <a class="text-link" href="guide.html" data-lp-cta="audience-first">富士山ガイドへ</a>
+            <a class="button button-primary audience-card-action" href="guide.html" data-lp-cta="audience-first">富士山ガイドへ</a>
           </article>
           <article class="audience-card reveal" data-number="2">
             <small>WITH CHILDREN</small>
             <h3><span class="copy-chunk">子どもと乗るなら、</span><span class="copy-chunk">車窓を探すゲームに。</span></h3>
             <p><span class="copy-chunk">富士山、城、湖、ふしぎな看板。</span><span class="copy-chunk">次は何が見えるか一緒に探せば、</span><span class="copy-chunk">移動時間そのものが旅になります。</span></p>
-            <a class="text-link" href="zukan.html" data-lp-cta="audience-family">親子で探せる車窓を見る</a>
+            <a class="button button-primary audience-card-action" href="zukan.html" data-lp-cta="audience-family">親子で探せる車窓を見る</a>
           </article>
           <article class="audience-card reveal" data-number="3">
             <small>RIDE OFTEN</small>
             <h3><span class="copy-chunk">何度も乗るなら、</span><span class="copy-chunk">車窓スタンプを集める。</span></h3>
             <p><span class="copy-chunk">富士山も、城も、湖も、看板も。</span><span class="copy-chunk">いつもの出張で見つけた景色を残せば、</span><span class="copy-chunk">同じ区間にも次の楽しみができます。</span></p>
-            <a class="text-link" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>
+            <a class="button button-primary audience-card-action" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>
           </article>
         </div>
       </div>
