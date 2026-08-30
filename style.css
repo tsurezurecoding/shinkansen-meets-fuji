@@ -1804,6 +1804,7 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     width: 100%;
   }
   .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-thumb {
+    display: block;
     width: 100%;
     height: 112px;
     border-radius: 8px;
@@ -1814,9 +1815,29 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     display: none;
   }
   .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-min {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
     min-width: 0;
   }
   .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-name {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
     font-family: var(--font-serif);
     font-size: 14px;
   }
