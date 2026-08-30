@@ -2141,8 +2141,8 @@ function englishLandingHTML() {
     ["車窓スタンプを見る", "Open Window Stamps"],
     ["まもなく、浜名湖", "Lake Hamana next"],
     ["A席側の窓をご覧ください", "Watch the Seat A side"],
-    ["富士山だけで、", "Don't stop at"],
-    ["終わらせない。", "Mt. Fuji."],
+    ["富士山だけで、", "Mt. Fuji is only"],
+    ["終わらせない。", "the beginning."],
     ["相模湾、茶畑、浜名湖、城、", "Sagami Bay, tea fields, Lake Hamana, castles,"],
     ["建築、線路ぎわの看板。", "architecture, and trackside signs."],
     ["いつもの移動に、", "On one familiar ride,"],
@@ -2301,7 +2301,6 @@ function englishLandingHTML() {
     .replace(/WINDOW CATALOG · \d+/g, `WINDOW CATALOG · ${SPOT_COUNT}`)
     .replace(/まず\d+景を見てみる/g, `Browse all ${SPOT_COUNT} views`);
   copy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
-  html = html.replace(/<\/span><span class="copy-chunk">/g, '</span> <span class="copy-chunk">');
   html = html.replaceAll(">窓</span>", ">W</span>");
   html = localizeEnglishInternalLinks(html)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
