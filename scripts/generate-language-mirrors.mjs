@@ -52,6 +52,9 @@ function localizeEnglishRail(html) {
   const routes = [
     ["guide.html", "en/guide.html"],
     ["mieru.html", "en/mieru.html"],
+    ["hanabi.html", "en/hanabi.html"],
+    ["yakei.html", "en/yakei.html"],
+    ["sparkling-dreams.html", "en/sparkling-dreams.html"],
     ["sumie.html", "en/sumie.html"],
     ["somato.html", "en/somato.html"],
     ["journal.html", "en/journal.html"],
@@ -65,7 +68,9 @@ function localizeEnglishRail(html) {
   routes.forEach(([ja, en]) => { result = result.replaceAll(`href="${ja}"`, `href="${en}"`); });
   result = result
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
-    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=');
+    .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=')
+    // 727-collection.html は日本語のみ。英語版はスポットページへ案内する。
+    .replaceAll('href="727-collection.html"', 'href="en/spots/727-board.html"');
   return result;
 }
 
