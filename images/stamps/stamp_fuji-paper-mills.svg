@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="富士の製紙工場 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">富士の製紙工場</text>
+
+
+<path d="M64 116 L97.44 78 L103.6 84.84 L108 78 L112.4 84.84 L118.56 78 L152 116" fill="none" stroke-width="2.2"/>
+<path d="M90.4 90.16 l6.16 3.8000000000000003 l5.279999999999999 -4.56 l6.16 4.56 l5.279999999999999 -4.56 l6.16 4.56 l6.16 -3.8000000000000003" fill="none" stroke-width="1.54"/>
+<g fill="none" stroke-width="2.5">
+<path d="M58 142 V68 H70 V142"/>
+<path d="M84 142 V118 a9 6 0 0 1 18 0 V142"/>
+<path d="M110 142 V124 a8 5 0 0 1 16 0 V142"/>
+<path d="M132 142 V126 H152 V142"/>
+<path d="M46 142 H154"/>
+</g>
+<path d="M58 84 H70 M58 98 H70 M84 126 H102 M110 131 H126 M132 134 H152" fill="none" stroke-width="1.8"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約44分・E席</text>
+</g>
+</svg>
