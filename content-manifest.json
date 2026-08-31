@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "75641da5a590e9ce",
+  "contentVersion": "ef039aced862fb89",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -224,7 +224,7 @@
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
       "bytes": 58534,
-      "sha256": "cebc9c9019fd47e989b9082f1cb46ea644d76b0b0249ced2e9dc4197a60c0d96"
+      "sha256": "1e8ee0377732ad894778b3169772c933962c8eca84e7a867a5ffd7c2acca2635"
     },
     {
       "path": "journal.html",
