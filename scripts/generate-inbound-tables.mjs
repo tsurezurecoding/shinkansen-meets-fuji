@@ -102,6 +102,8 @@ function rowsFor(direction) {
       return {
         type: train.type,
         number: train.number,
+        boardId: train.originStation,
+        direction: train.direction,
         origin: STATION_EN[origin] || origin,
         departure,
         fujiAt,
@@ -126,7 +128,8 @@ function tableHTML(caption, seatNote, rows) {
   const body = rows
     .map(
       (row) =>
-        `<tr><td>${row.type} ${row.number}</td><td>${row.origin}</td><td>${row.departure}</td>` +
+        `<tr><td><a href="start.html?train=${row.type}-${row.number}&amp;board=${encodeURIComponent(row.boardId)}&amp;dir=${row.direction}">${row.type} ${row.number}</a></td>` +
+        `<td>${row.origin}</td><td>${row.departure}</td>` +
         `<td><b>${row.fujiAt}</b></td><td>${row.after === null ? "—" : `${row.after} min`}</td></tr>`,
     )
     .join("\n            ");
@@ -347,7 +350,7 @@ function validateInboundPageContracts() {
     throw new Error("Obsolete Nozomi surcharge wording remains; use the official separate-special-ticket wording");
   }
   requireFragment(jrPass, "includes seat reservations on eligible Hikari and Kodama services at no additional charge", "JR Pass reservation terms");
-  const serviceKeys = [...jrPass.matchAll(/<tr><td>(Hikari|Kodama) (\d+)<\/td><td>[^<]+<\/td><td>[^<]+<\/td><td><b>(\d{2}:\d{2})<\/b>/g)]
+  const serviceKeys = [...jrPass.matchAll(/<tr><td><a href="start\.html\?train=(?:Hikari|Kodama)-\d+[^"]*">(Hikari|Kodama) (\d+)<\/a><\/td><td>[^<]+<\/td><td>[^<]+<\/td><td><b>(\d{2}:\d{2})<\/b>/g)]
     .map((match) => `${match[1]}|${match[2]}|${match[3]}`);
   if (new Set(serviceKeys).size !== serviceKeys.length) {
     throw new Error("JR Pass table lists the same train number and Shin-Fuji time more than once");

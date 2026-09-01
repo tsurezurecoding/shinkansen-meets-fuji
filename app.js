@@ -735,6 +735,44 @@ function restoreLastJourneyAfterHydration() {
     restoreLastJourney();
   }, { once: true });
 }
+/* 列車を指定して外部から入ってくる導線（例: /en/jr-pass-fuji.html の便一覧）。
+   ?train=Kodama-817&board=Tokyo&dir=west の形で受ける。時刻の再計算はせず、
+   保存済みジャーニーの復元と同じ経路（trainCandidates → buildTimeline）へ委譲する。
+   保存値より優先する。リンクで来た人は、前回の選択ではなくリンク先を見たいため。 */
+function selectTrainFromLink() {
+  const params = new URLSearchParams(location.search);
+  const raw = params.get("train");
+  if (!raw) return false;
+  const parsed = /^([A-Za-z]+)[-\s]?(\d{1,4})$/.exec(raw.trim());
+  if (!parsed) return false;
+  const wantType = parsed[1].charAt(0).toUpperCase() + parsed[1].slice(1).toLowerCase();
+  const wantNumber = Number(parsed[2]);
+  const wantBoard = params.get("board");
+  const wantDir = params.get("dir");
+  if (wantDir !== "west" && wantDir !== "east") return false;
+  if (!wantBoard || !Object.prototype.hasOwnProperty.call(REF, wantBoard)) return false;
+
+  const prevDirection = direction;
+  const prevBoardId = boardId;
+  direction = wantDir;
+  boardId = wantBoard;
+  const match = trainCandidates().find((x) => x.tr.type === wantType && x.tr.number === wantNumber);
+  if (!match) {
+    direction = prevDirection;
+    boardId = prevBoardId;
+    return false;
+  }
+  $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
+  renderBoardSelect();
+  showTrainPage(match.dep);
+  const activeChip = $("#trainResults .train-chip");
+  if (activeChip) {
+    $("#trainResults").querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === activeChip));
+  }
+  buildTimeline(match.tr, match.dep);
+  track("journey_from_link", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
+  return true;
+}
 function collectionTimelineSpots(expanded = boardCollectionExpanded) {
   if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
   const boardRef = REF[boardId];
@@ -2659,7 +2697,7 @@ function init() {
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();
-  if (!restoreLastJourney()) restoreLastJourneyAfterHydration();
+  if (!selectTrainFromLink() && !restoreLastJourney()) restoreLastJourneyAfterHydration();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);
