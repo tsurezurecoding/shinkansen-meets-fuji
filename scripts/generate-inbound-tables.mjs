@@ -40,6 +40,20 @@ const { SPOTS, ROUTE } = vm.runInNewContext(
   { filename: "data.js" },
 );
 
+const TOKAIDO_STATION_IDS = new Set(ROUTE.refStations.map((station) => station.id));
+
+// Through-services may originate outside the Tokaido section (Hakata, Hiroshima,
+// Okayama, etc.). The train picker only accepts Tokaido stations, so links must open
+// at the first Tokaido stop in the train's direction rather than at originStation.
+function routeBoardId(train) {
+  const served = ROUTE.refStations.filter((station) => train.times[station.id]);
+  const station = train.direction === "east" ? served.at(-1) : served[0];
+  if (!station || !TOKAIDO_STATION_IDS.has(station.id)) {
+    throw new Error(`No Tokaido boarding station for ${train.type} ${train.number} (${train.direction})`);
+  }
+  return station.id;
+}
+
 // The five points where the mountain itself is the view. They are the ones a grey
 // sky takes away, so the "what else is out there" table lists everything but these.
 const FUJI_VIEWPOINTS = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
@@ -102,7 +116,7 @@ function rowsFor(direction) {
       return {
         type: train.type,
         number: train.number,
-        boardId: train.originStation,
+        boardId: routeBoardId(train),
         direction: train.direction,
         origin: STATION_EN[origin] || origin,
         departure,
@@ -169,7 +183,7 @@ function hikariLinksHTML() {
       .sort((a, b) => a.number - b.number)
       .map(
         (train) =>
-          `<li><a href="start.html?train=Hikari-${train.number}&amp;board=${encodeURIComponent(train.originStation)}&amp;dir=${train.direction}">Hikari ${train.number}</a> <span class="jp-hikari-from">from ${escapeHTML(train.originStation)}</span></li>`,
+          `<li><a href="start.html?train=Hikari-${train.number}&amp;board=${encodeURIComponent(routeBoardId(train))}&amp;dir=${train.direction}">Hikari ${train.number}</a> <span class="jp-hikari-from">from ${escapeHTML(train.originStation)}</span></li>`,
       )
       .join("\n              ");
   };
@@ -253,7 +267,7 @@ function jaTrainTablesHTML() {
         const label = JA_TYPE_LABEL[type] + row.train.number + "号";
         const dep = row.train.times[row.train.originStation] || "—";
         const href = "start.html?train=" + type + "-" + row.train.number
-          + "&amp;board=" + encodeURIComponent(row.train.originStation)
+          + "&amp;board=" + encodeURIComponent(routeBoardId(row.train))
           + "&amp;dir=" + direction;
         const station = escapeHTML(JA_STATION2[row.train.originStation] || row.train.originStation);
         return "<tr data-fuji-min=\"" + (row.at % 1440) + "\">"

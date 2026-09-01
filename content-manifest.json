@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f6b9a033b4278a84",
+  "contentVersion": "7964ff3caafa8f12",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -61,8 +61,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 57690,
-      "sha256": "54f97b96bc998d4bada6fc4efc0a9213b96f8a9893453b96781995b097057a99"
+      "bytes": 58102,
+      "sha256": "b09efdd74386c59ce7cf76bf12edee7f2ae80e144f64365c409f45d470b790d9"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -221,10 +221,28 @@
       "sha256": "b56580299f95ba8f688fe5b428a1599cc98fc9fce2143ce4cf16d7e8ffb68402"
     },
     {
+      "path": "images/wm-hero-snow.jpg",
+      "url": "https://www.michikusa-travel.com/images/wm-hero-snow.jpg",
+      "bytes": 263676,
+      "sha256": "47bef222d886939c6bfc208d403c6b57fae1bc559ab86d71e002c2ac4d6060bb"
+    },
+    {
+      "path": "images/wm-snow-field.jpg",
+      "url": "https://www.michikusa-travel.com/images/wm-snow-field.jpg",
+      "bytes": 198193,
+      "sha256": "8d9c0fadb642f5d345af58e274b575f510ee25cc8b11ef368501857efab236b5"
+    },
+    {
+      "path": "images/wm-snow-town.jpg",
+      "url": "https://www.michikusa-travel.com/images/wm-snow-town.jpg",
+      "bytes": 191041,
+      "sha256": "e4cf8add75de9d64c4cf19f9aec667e6c31702cc874c9d96c3f4c97b45e1761a"
+    },
+    {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 58535,
-      "sha256": "854fbf83d8224732d3bed01a42a9ed1c930a29a24618b2225a70365b2942447e"
+      "bytes": 58942,
+      "sha256": "cbf83cbf296a66439a4738ff4461e9fdcf731a237da6dfc5a221891e30abc627"
     },
     {
       "path": "journal.html",
@@ -321,6 +339,18 @@
       "url": "https://www.michikusa-travel.com/vendor/leaflet/LICENSE",
       "bytes": 1369,
       "sha256": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b"
+    },
+    {
+      "path": "window-moments.html",
+      "url": "https://www.michikusa-travel.com/window-moments.html",
+      "bytes": 39269,
+      "sha256": "fc6370acb1c7c5a9375e7ffb0e7424958594efef13748019dea47813e277c2de"
+    },
+    {
+      "path": "window-moments.js",
+      "url": "https://www.michikusa-travel.com/window-moments.js",
+      "bytes": 3043,
+      "sha256": "8f78e596059abd86047da64a7bbfa6f5cfeb8c9b4391546807751b216a638487"
     },
     {
       "path": "yakei.html",

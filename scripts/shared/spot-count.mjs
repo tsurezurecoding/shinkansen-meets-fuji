@@ -98,6 +98,7 @@ const UNITS = [
   "개 풍경",
   "景",
   " Day and Night Views",
+  " VIEWS",
   " curated window views",
   " window views",
   " more views",
