@@ -34,8 +34,8 @@ vm.runInNewContext(fs.readFileSync(path.join(appDir, "data", "timetable.js"), "u
 const TIMETABLE = timetableWindow.SHINKANSEN_TIMETABLE;
 const STATION_EN = Object.fromEntries(TIMETABLE.stations.map((s) => [s.id, s.en || s.id]));
 
-const { SPOTS } = vm.runInNewContext(
-  `${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\n;({ SPOTS });`,
+const { SPOTS, ROUTE } = vm.runInNewContext(
+  `${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\n;({ SPOTS, ROUTE });`,
   {},
   { filename: "data.js" },
 );
@@ -186,6 +186,104 @@ function hikariLinksHTML() {
   );
 }
 
+/* 日本語 guide.html 向けの列車別 富士山通過時刻。
+   のぞみ・ひかりは新富士に停まらないので駅の実時刻がない。距離按分（fujiOffsetsMinutes）は
+   「ひかりがのぞみより速い」という不可能値を出したため使わない。ここでは app.js のタイムラインと
+   同じ方法、すなわち "その列車自身の停車時刻" の間を線形補間する。のぞみ45分 < ひかり48分 <
+   こだま64分 と順序が保たれることを確認済み。
+
+   明暗は季節で変わるため、年間を通じて断定できる帯だけに印を付ける。
+   新富士の日の入りは約16:35〜19:00、日の出は約04:25〜06:50。その外側だけ「夜」と言い切り、
+   薄明帯は「朝夕」として読者の判断に委ねる。 */
+const JA_EARLIEST_SUNRISE = 4 * 60 + 25;
+const JA_LATEST_SUNRISE = 6 * 60 + 50;
+const JA_EARLIEST_SUNSET = 16 * 60 + 35;
+const JA_LATEST_SUNSET = 19 * 60;
+
+function jaToMin(hhmm) {
+  const p = String(hhmm).split(":");
+  return Number(p[0]) * 60 + Number(p[1]);
+}
+function jaStops(train) {
+  return ROUTE.refStations
+    .filter((s) => train.times[s.id])
+    .map((s) => ({ ref: s.min, clock: jaToMin(train.times[s.id]) }))
+    .sort((a, b) => a.clock - b.clock);
+}
+function jaInterpolate(spotRef, stops) {
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i];
+    const b = stops[i + 1];
+    const lo = Math.min(a.ref, b.ref);
+    const hi = Math.max(a.ref, b.ref);
+    if (spotRef >= lo && spotRef <= hi && a.ref !== b.ref) {
+      const f = Math.abs(spotRef - a.ref) / Math.abs(b.ref - a.ref);
+      return Math.round(a.clock + f * (b.clock - a.clock));
+    }
+  }
+  return null;
+}
+function jaClock(min) {
+  const m = ((min % 1440) + 1440) % 1440;
+  return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+}
+function jaLightMark(min) {
+  const m = ((min % 1440) + 1440) % 1440;
+  if (m >= JA_LATEST_SUNRISE && m <= JA_EARLIEST_SUNSET) return "";
+  if (m <= JA_EARLIEST_SUNRISE || m >= JA_LATEST_SUNSET) return "夜";
+  return "朝夕";
+}
+const JA_TYPE_LABEL = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
+const JA_STATION = Object.fromEntries((ROUTE?.refStations || []).map((st) => [st.id, st.ja || st.id]));
+
+function jaTrainTablesHTML() {
+  const fuji = SPOTS.find((spot) => spot.id === "fuji");
+  if (!fuji || !ROUTE || !ROUTE.refStations) return "";
+  const out = [];
+  for (const direction of ["west", "east"]) {
+    const heading = direction === "west" ? "東京 → 新大阪ゆき" : "新大阪 → 東京ゆき";
+    const seatNote = direction === "west"
+      ? "この向きは富士山が<b>進行方向right（E席）</b>に見えます。列車ごとに変わりません。"
+      : "この向きは富士山が<b>進行方向left（同じE席）</b>に見えます。列車ごとに変わりません。";
+    for (const type of ["Nozomi", "Hikari", "Kodama"]) {
+      const seen = new Set();
+      const rows = TIMETABLE.trains
+        .filter((train) => train.type === type && train.direction === direction)
+        .map((train) => ({ train, at: jaInterpolate(fuji.minutesFromTokyo, jaStops(train)) }))
+        .filter((row) => row.at !== null)
+        .filter((row) => {
+          if (seen.has(row.train.number)) return false;
+          seen.add(row.train.number);
+          return true;
+        })
+        .sort((a, b) => a.train.number - b.train.number)
+        .map((row) => {
+          const label = JA_TYPE_LABEL[type] + row.train.number + "号";
+          const dep = row.train.times[row.train.originStation] || "—";
+          const mark = jaLightMark(row.at);
+          const href = "start.html?train=" + type + "-" + row.train.number
+            + "&amp;board=" + encodeURIComponent(row.train.originStation)
+            + "&amp;dir=" + direction;
+          return "<tr><td><a href=\"" + href + "\">" + label + "</a></td>"
+            + "<td>" + escapeHTML(JA_STATION[row.train.originStation] || row.train.originStation) + " " + dep + "</td>"
+            + "<td><b>" + jaClock(row.at) + "</b>" + (mark ? " <span class=\"ja-light\">" + mark + "</span>" : "") + "</td></tr>";
+        });
+      if (!rows.length) continue;
+      out.push(
+        "        <details class=\"ja-train-list\">\n"
+        + "          <summary>" + heading + "・" + JA_TYPE_LABEL[type] + "（" + rows.length + "本）</summary>\n"
+        + "          <p class=\"ja-train-note\">" + seatNote + "</p>\n"
+        + "          <div class=\"jp-table-wrap\"><table class=\"jp-table\">\n"
+        + "            <thead><tr><th>列車</th><th>始発</th><th>富士山</th></tr></thead>\n"
+        + "            <tbody>\n            " + rows.join("\n            ") + "\n            </tbody>\n"
+        + "          </table></div>\n"
+        + "        </details>",
+      );
+    }
+  }
+  return out.join("\n");
+}
+
 const west = rowsFor("west");
 const east = rowsFor("east");
 
@@ -210,6 +308,27 @@ const generated =
   "\n\n" +
   hikariLinksHTML() +
   `\n      ${END}`;
+
+// --- 日本語 guide.html: 列車ごとの富士山通過時刻 ---
+
+const JA_START = "<!-- JA_TRAIN_TABLES_START -->";
+const JA_END = "<!-- JA_TRAIN_TABLES_END -->";
+const JA_GUIDE_PAGE = path.join(appDir, "guide.html");
+{
+  const generatedJa = `${JA_START}
+` + jaTrainTablesHTML() + `
+        ${JA_END}`;
+  const current = fs.readFileSync(JA_GUIDE_PAGE, "utf8");
+  const startIdx = current.indexOf(JA_START);
+  const endIdx = current.indexOf(JA_END);
+  if (startIdx === -1 || endIdx === -1) throw new Error("guide.html: JA_TRAIN_TABLES markers missing");
+  const next = current.slice(0, startIdx) + generatedJa + current.slice(endIdx + JA_END.length);
+  if (CHECK_ONLY) {
+    if (next !== current) throw new Error("guide.html: train tables are stale; run generate-inbound-tables.mjs");
+  } else if (next !== current) {
+    fs.writeFileSync(JA_GUIDE_PAGE, next);
+  }
+}
 
 // --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
 
