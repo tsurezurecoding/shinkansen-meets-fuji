@@ -145,6 +145,47 @@ function tableHTML(caption, seatNote, rows) {
   );
 }
 
+/* ひかりは新富士に停まらないため、駅の実時刻が存在しない。距離按分での補間は
+   過去に「ひかりが東京から42分（のぞみより速い）」という不可能な値を出して撤去済み。
+   そこで時刻は一切書かず、列車ピッカーへのリンクだけを出す。通過時刻はタイムライン側の
+   interpolateSpot が、その列車自身の停車時刻から算出する。 */
+function hikariLinksHTML() {
+  const byDirection = { west: [], east: [] };
+  for (const train of TIMETABLE.trains) {
+    if (train.type !== "Hikari") continue;
+    if (!train.originStation || !train.direction) continue;
+    if (!byDirection[train.direction]) continue;
+    byDirection[train.direction].push(train);
+  }
+  const listFor = (direction) => {
+    const seen = new Set();
+    return byDirection[direction]
+      .filter((train) => {
+        const key = train.number;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .sort((a, b) => a.number - b.number)
+      .map(
+        (train) =>
+          `<li><a href="start.html?train=Hikari-${train.number}&amp;board=${encodeURIComponent(train.originStation)}&amp;dir=${train.direction}">Hikari ${train.number}</a> <span class="jp-hikari-from">from ${escapeHTML(train.originStation)}</span></li>`,
+      )
+      .join("\n              ");
+  };
+  const west = listFor("west");
+  const east = listFor("east");
+  if (!west && !east) return "";
+  return (
+    `        <details class="jp-hikari">\n` +
+    `          <summary>Riding a Hikari? Open your train's timeline</summary>\n` +
+    `          <p class="jp-table-note">Hikari passes Mt. Fuji without stopping, so there is no station time to quote and we will not invent one. Open a train and the guide works the passing time out from that train's own schedule.</p>\n` +
+    `          <h4>Toward Kyoto and Shin-Osaka</h4>\n          <ul class="jp-hikari-list">\n              ${west}\n          </ul>\n` +
+    `          <h4>Toward Tokyo</h4>\n          <ul class="jp-hikari-list">\n              ${east}\n          </ul>\n` +
+    `        </details>`
+  );
+}
+
 const west = rowsFor("west");
 const east = rowsFor("east");
 
@@ -166,6 +207,8 @@ const generated =
     "Mt. Fuji is on your <b>left</b>, in the same <b>Seat E</b>.",
     east,
   ) +
+  "\n\n" +
+  hikariLinksHTML() +
   `\n      ${END}`;
 
 // --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
