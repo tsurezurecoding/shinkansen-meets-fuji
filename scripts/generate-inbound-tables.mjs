@@ -227,61 +227,60 @@ function jaClock(min) {
   const m = ((min % 1440) + 1440) % 1440;
   return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
 }
-function jaLightMark(min) {
-  const m = ((min % 1440) + 1440) % 1440;
-  if (m >= JA_LATEST_SUNRISE && m <= JA_EARLIEST_SUNSET) return "";
-  if (m <= JA_EARLIEST_SUNRISE || m >= JA_LATEST_SUNSET) return "夜";
-  return "朝夕";
-}
 const JA_TYPE_LABEL = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
-const JA_STATION = Object.fromEntries((ROUTE?.refStations || []).map((st) => [st.id, st.ja || st.id]));
+const JA_STATION2 = Object.fromEntries((ROUTE?.refStations || []).map((st) => [st.id, st.ja || st.id]));
 
+/* 明暗は文字で書かず、閲覧時の日付から sun-window.js が色で表す。
+   ここでは判定に必要な通過時刻（0時からの分）だけ data 属性で渡す。
+   季節で変わるものを静的HTMLに焼き込まないための分担。 */
 function jaTrainTablesHTML() {
   const fuji = SPOTS.find((spot) => spot.id === "fuji");
   if (!fuji || !ROUTE || !ROUTE.refStations) return "";
-  const out = [];
-  for (const direction of ["west", "east"]) {
-    const heading = direction === "west" ? "東京 → 新大阪ゆき" : "新大阪 → 東京ゆき";
-    const seatNote = direction === "west"
-      ? "この向きは富士山が<b>進行方向right（E席）</b>に見えます。列車ごとに変わりません。"
-      : "この向きは富士山が<b>進行方向left（同じE席）</b>に見えます。列車ごとに変わりません。";
-    for (const type of ["Nozomi", "Hikari", "Kodama"]) {
-      const seen = new Set();
-      const rows = TIMETABLE.trains
-        .filter((train) => train.type === type && train.direction === direction)
-        .map((train) => ({ train, at: jaInterpolate(fuji.minutesFromTokyo, jaStops(train)) }))
-        .filter((row) => row.at !== null)
-        .filter((row) => {
-          if (seen.has(row.train.number)) return false;
-          seen.add(row.train.number);
-          return true;
-        })
-        .sort((a, b) => a.train.number - b.train.number)
-        .map((row) => {
-          const label = JA_TYPE_LABEL[type] + row.train.number + "号";
-          const dep = row.train.times[row.train.originStation] || "—";
-          const mark = jaLightMark(row.at);
-          const href = "start.html?train=" + type + "-" + row.train.number
-            + "&amp;board=" + encodeURIComponent(row.train.originStation)
-            + "&amp;dir=" + direction;
-          return "<tr><td><a href=\"" + href + "\">" + label + "</a></td>"
-            + "<td>" + escapeHTML(JA_STATION[row.train.originStation] || row.train.originStation) + " " + dep + "</td>"
-            + "<td><b>" + jaClock(row.at) + "</b>" + (mark ? " <span class=\"ja-light\">" + mark + "</span>" : "") + "</td></tr>";
-        });
-      if (!rows.length) continue;
-      out.push(
-        "        <details class=\"ja-train-list\">\n"
-        + "          <summary>" + heading + "・" + JA_TYPE_LABEL[type] + "（" + rows.length + "本）</summary>\n"
-        + "          <p class=\"ja-train-note\">" + seatNote + "</p>\n"
-        + "          <div class=\"jp-table-wrap\"><table class=\"jp-table\">\n"
-        + "            <thead><tr><th>列車</th><th>始発</th><th>富士山</th></tr></thead>\n"
-        + "            <tbody>\n            " + rows.join("\n            ") + "\n            </tbody>\n"
-        + "          </table></div>\n"
-        + "        </details>",
-      );
+
+  const build = (type, direction) => {
+    const seen = new Set();
+    const rows = TIMETABLE.trains
+      .filter((train) => train.type === type && train.direction === direction)
+      .map((train) => ({ train, at: jaInterpolate(fuji.minutesFromTokyo, jaStops(train)) }))
+      .filter((row) => row.at !== null)
+      .filter((row) => {
+        if (seen.has(row.train.number)) return false;
+        seen.add(row.train.number);
+        return true;
+      })
+      .sort((a, b) => a.train.number - b.train.number)
+      .map((row) => {
+        const label = JA_TYPE_LABEL[type] + row.train.number + "号";
+        const dep = row.train.times[row.train.originStation] || "—";
+        const href = "start.html?train=" + type + "-" + row.train.number
+          + "&amp;board=" + encodeURIComponent(row.train.originStation)
+          + "&amp;dir=" + direction;
+        const station = escapeHTML(JA_STATION2[row.train.originStation] || row.train.originStation);
+        return "<tr data-fuji-min=\"" + (row.at % 1440) + "\">"
+          + "<td><a href=\"" + href + "\">" + label + "</a></td>"
+          + "<td>" + station + " " + dep + "</td>"
+          + "<td><b>" + jaClock(row.at) + "</b></td></tr>";
+      });
+    if (!rows.length) return "";
+    const dirLabel = direction === "west" ? "下り" : "上り";
+    return "          <details class=\"ja-train-list\">\n"
+      + "            <summary>" + JA_TYPE_LABEL[type] + "・" + dirLabel + "（" + rows.length + "本）</summary>\n"
+      + "            <div class=\"jp-table-wrap\"><table class=\"jp-table ja-train-table\">\n"
+      + "              <thead><tr><th>列車</th><th>始発</th><th>富士山</th></tr></thead>\n"
+      + "              <tbody>\n              " + rows.join("\n              ") + "\n              </tbody>\n"
+      + "            </table></div>\n"
+      + "          </details>";
+  };
+
+  const cells = [];
+  for (const type of ["Nozomi", "Hikari", "Kodama"]) {
+    for (const direction of ["west", "east"]) {
+      const html = build(type, direction);
+      if (html) cells.push(html);
     }
   }
-  return out.join("\n");
+  if (!cells.length) return "";
+  return "        <div class=\"ja-train-grid\">\n" + cells.join("\n") + "\n        </div>";
 }
 
 const west = rowsFor("west");
