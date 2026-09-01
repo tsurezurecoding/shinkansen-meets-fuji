@@ -9,7 +9,7 @@
       brand: "新幹線の窓",
       brandSub: "旅の瞬間を見逃さない",
       train: "列車選択",
-      live: "ライブガイド",
+      live: "音声ガイド",
       fieldGuide: "車窓図鑑",
       faq: "FAQ",
       journal: "スタンプ帖",
@@ -60,7 +60,7 @@
       brand: "Shinkansen Window",
       brandSub: "Never miss a moment of the journey.",
       train: "Train Search",
-      live: "Live Guide",
+      live: "Audio Guide",
       fieldGuide: "Field Guide",
       faq: "FAQ",
       journal: "Journal",
@@ -442,7 +442,7 @@
   var PAGE_UI = {
     ja: {
       eyebrow: "TOKAIDO SHINKANSEN WINDOW VIEW",
-      live: "乗車中はライブガイドで見る",
+      live: "乗車中は音声ガイドで見る",
       more: "もっと見る:",
       mapSummary: "位置の目安",
       mapNote: "スポット位置と、新幹線から見る位置を切り替えられます。",
@@ -464,7 +464,7 @@
     },
     en: {
       eyebrow: "TOKAIDO SHINKANSEN WINDOW VIEW",
-      live: "Use Live Guide while riding",
+      live: "Use Audio Guide while riding",
       more: "More:",
       mapSummary: "Location at a glance",
       mapNote: "Switch between the spot and the Shinkansen viewpoint.",

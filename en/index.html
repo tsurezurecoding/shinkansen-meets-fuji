@@ -195,7 +195,7 @@
     .hero-lead { margin: 16px auto 0; max-width: 520px; font-size: 14px; line-height: 1.95; opacity: 0.92; }
     .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
     /* ヒーローの機能カード。どれも「中で何が起きるか」を小さく実物で見せる。
-       画像があるのは図鑑・スタンプ・FAQのみで、Train選択とLive Guideは
+       画像があるのは図鑑・スタンプ・FAQのみで、Train選択とAudio Guideは
        専用の画像資産が無いためCSSで組んでいる（OGPは1200x630の共有カードで
        小さいサムネイルには不向きで、大半が同じ汎用画像のため使わない）。 */
     .hero-cards {
@@ -237,7 +237,7 @@
     }
     .hcv-pill.is-on { background: #fff; border-color: #fff; color: var(--night); }
 
-    /* Live Guide: 走行のライン・現在地・音声を白の線だけで */
+    /* Audio Guide: 走行のライン・現在地・音声を白の線だけで */
     .hcv-live-route { position: absolute; left: 2px; top: 50%; width: 66px; height: 1px; background: rgba(255, 255, 255, 0.38); }
     .hcv-live-dot { position: absolute; left: 32px; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.16); }
     .hcv-live-audio { position: absolute; left: 82px; top: 50%; display: flex; align-items: center; gap: 3px; transform: translateY(-50%); }
@@ -545,7 +545,7 @@
     </a>
     <nav class="top-nav" aria-label="Primary">
       <a href="en/start.html" data-i18n="navStart" data-lp-cta="header-train">Choose your train</a>
-      <a href="en/live/" data-i18n="navLive">Live Guide</a>
+      <a href="en/live/" data-i18n="navLive">Audio Guide</a>
       <a href="en/zukan.html" data-i18n="navBrowse">Field guide</a>
       <a class="top-nav-overflow" href="en/guide.html" data-i18n="navFaq">FAQ</a>
       <a href="en/journal.html" data-i18n="navMedals">Window Stamps</a>
@@ -553,7 +553,7 @@
         <summary data-i18n="navMore">More</summary>
         <div class="top-nav-menu">
           <a class="top-nav-menu-compact" href="en/start.html" data-i18n="navStart" data-lp-cta="header-train-compact">Choose your train</a>
-          <a class="top-nav-menu-compact" href="en/live/" data-i18n="navLive">Live Guide</a>
+          <a class="top-nav-menu-compact" href="en/live/" data-i18n="navLive">Audio Guide</a>
           <a class="top-nav-menu-compact" href="en/zukan.html" data-i18n="navBrowse">Field guide</a>
           <a class="top-nav-menu-compact" href="en/journal.html" data-i18n="navMedals">Window Stamps</a>
           <a href="en/guide.html" data-i18n="navFaq">FAQ</a>
@@ -600,8 +600,8 @@
               <span class="hcv-live-audio"><i></i><i></i><i></i><i></i><i></i></span>
             </span>
             <span class="hero-card-body">
-              <strong>Live Audio Guide</strong>
-              <span>GPS calls the next view, with map and audio</span>
+              <strong>ライブAudio Guide</strong>
+              <span>GPSで現在地から次の車窓を案内</span>
             </span>
           </a>
 
@@ -690,7 +690,7 @@
                 <div class="audio-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
             </div>
-            <a class="button button-primary journey-card-action" href="en/live/" data-lp-cta="step-live">Try a preview ride</a>
+            <a class="button button-primary journey-card-action" href="en/live/" data-lp-cta="step-live">乗車プレビューで試す</a>
           </article>
 
           <article class="journey-card reveal">

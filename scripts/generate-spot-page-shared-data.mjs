@@ -150,13 +150,13 @@ function durationGuideText(spot, lang) {
       : "Visibility changes by train and weather. Start watching a little early instead of waiting until the view is already beside you.";
   }
   if (lang === "ja") {
-    if (seconds <= 2) return "はっきり見えるのは1〜2秒ほど。ライブガイドの案内が出たら、先に窓へ目を移しておくのが現実的です。";
+    if (seconds <= 2) return "はっきり見えるのは1〜2秒ほど。音声ガイドの案内が出たら、先に窓へ目を移しておくのが現実的です。";
     if (seconds <= 8) return "はっきり見えるのは数秒ほど。案内が出てからカメラを探すより、先に座席側と窓の方向を決めておくと拾いやすくなります。";
     if (seconds <= 12) return "見えるのは10秒前後。先に座席側と窓の方向を決めておくと、景色の始まりから追いやすくなります。";
     if (seconds <= 20) return "見えるのは10数秒ほど。建物や地形で隠れることがあるため、少し前から窓を見ておくと拾いやすくなります。";
     return "この景観は区間の中で断続的に見えます。建物や地形で隠れるため、表示時間は連続して見える秒数ではなく、探し始める区間の目安です。";
   }
-  if (seconds <= 2) return "The clearest view lasts only one or two seconds. Let Live Guide warn you before you look up.";
+  if (seconds <= 2) return "The clearest view lasts only one or two seconds. Let Audio Guide warn you before you look up.";
   if (seconds <= 8) return "The clearest view lasts only a few seconds. Decide the seat side and window direction before it arrives rather than reaching for your camera late.";
   if (seconds <= 12) return "The view lasts around 10 seconds. Choose the seat side and window direction early so you can follow it from the start.";
   if (seconds <= 20) return "The view lasts roughly 10 to 20 seconds, though buildings and terrain may interrupt it. Start watching a little early.";
@@ -478,8 +478,8 @@ function projectPage(spot, lang) {
     guide: {
       title: lang === "ja" ? `${data.name}を見逃さないコツ` : `How to catch ${data.name}`,
       intro: lang === "ja"
-        ? `${data.area || "この区間"}が近づいたら、${sideLabel(spot, lang)}の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。`
-        : `As you approach ${enApproachArea(data.area)}, start watching from ${sideLabel(spot, lang)}. Use Live Guide while riding, or the map on this page before you board.`,
+        ? `${data.area || "この区間"}が近づいたら、${sideLabel(spot, lang)}の窓を先に意識してください。現在地から追う場合は音声ガイド、事前に確認する場合はこのページの地図が役立ちます。`
+        : `As you approach ${enApproachArea(data.area)}, start watching from ${sideLabel(spot, lang)}. Use Audio Guide while riding, or the map on this page before you board.`,
       duration: durationGuideText(spot, lang),
       timingLead: lang === "ja" ? "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。" : "Know your train? Select it to see this view's estimated time on the actual timetable.",
       cta: lang === "ja" ? "列車を選んで、見える時刻を調べる" : "Select my train and check the time",

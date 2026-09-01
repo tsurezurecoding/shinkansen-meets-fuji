@@ -190,7 +190,7 @@
     .hero-lead { margin: 16px auto 0; max-width: 520px; font-size: 14px; line-height: 1.95; opacity: 0.92; }
     .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
     /* ヒーローの機能カード。どれも「中で何が起きるか」を小さく実物で見せる。
-       画像があるのは図鑑・スタンプ・FAQのみで、列車選択とライブガイドは
+       画像があるのは図鑑・スタンプ・FAQのみで、列車選択と音声ガイドは
        専用の画像資産が無いためCSSで組んでいる（OGPは1200x630の共有カードで
        小さいサムネイルには不向きで、大半が同じ汎用画像のため使わない）。 */
     .hero-cards {
@@ -232,7 +232,7 @@
     }
     .hcv-pill.is-on { background: #fff; border-color: #fff; color: var(--night); }
 
-    /* ライブガイド: 走行のライン・現在地・音声を白の線だけで */
+    /* 音声ガイド: 走行のライン・現在地・音声を白の線だけで */
     .hcv-live-route { position: absolute; left: 2px; top: 50%; width: 66px; height: 1px; background: rgba(255, 255, 255, 0.38); }
     .hcv-live-dot { position: absolute; left: 32px; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.16); }
     .hcv-live-audio { position: absolute; left: 82px; top: 50%; display: flex; align-items: center; gap: 3px; transform: translateY(-50%); }
@@ -540,7 +540,7 @@
     </a>
     <nav class="top-nav" aria-label="Primary">
       <a href="start.html" data-i18n="navStart" data-lp-cta="header-train">乗る列車を選ぶ</a>
-      <a href="live/index.html" data-i18n="navLive">ライブガイド</a>
+      <a href="live/index.html" data-i18n="navLive">音声ガイド</a>
       <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
       <a class="top-nav-overflow" href="guide.html" data-i18n="navFaq">FAQ</a>
       <a href="journal.html" data-i18n="navMedals">スタンプ帖</a>
@@ -548,7 +548,7 @@
         <summary data-i18n="navMore">もっと見る</summary>
         <div class="top-nav-menu">
           <a class="top-nav-menu-compact" href="start.html" data-i18n="navStart" data-lp-cta="header-train-compact">乗る列車を選ぶ</a>
-          <a class="top-nav-menu-compact" href="live/index.html" data-i18n="navLive">ライブガイド</a>
+          <a class="top-nav-menu-compact" href="live/index.html" data-i18n="navLive">音声ガイド</a>
           <a class="top-nav-menu-compact" href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
           <a class="top-nav-menu-compact" href="journal.html" data-i18n="navMedals">スタンプ帖</a>
           <a href="guide.html" data-i18n="navFaq">FAQ</a>
