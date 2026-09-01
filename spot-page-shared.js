@@ -227,6 +227,8 @@
     "sparkling-dreams.html": { en: true },
     "hanabi.html": { en: true },
     "yakei.html": { en: true },
+    // 日本語のみの試作。英語版が無いので en:false で言語スイッチャーを隠す。
+    "window-moments.html": { en: false },
     // 英語専用。JR Passはインバウンド固有の文脈で日本語版を作る理由がないため、
     // en:false で言語スイッチャーごと隠す（対応する日本語URLが存在しない）。
     "jr-pass-fuji.html": { en: false },
