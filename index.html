@@ -190,7 +190,7 @@
     .hero-lead { margin: 16px auto 0; max-width: 520px; font-size: 14px; line-height: 1.95; opacity: 0.92; }
     .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
     /* ヒーローの機能カード。どれも「中で何が起きるか」を小さく実物で見せる。
-       画像があるのは図鑑・スタンプ・FAQのみで、列車選択とライブガイドは
+       画像があるのは図鑑・スタンプ・FAQのみで、列車選択と音声ガイドは
        専用の画像資産が無いためCSSで組んでいる（OGPは1200x630の共有カードで
        小さいサムネイルには不向きで、大半が同じ汎用画像のため使わない）。 */
     .hero-cards {
@@ -232,7 +232,7 @@
     }
     .hcv-pill.is-on { background: #fff; border-color: #fff; color: var(--night); }
 
-    /* ライブガイド: 走行のライン・現在地・音声を白の線だけで */
+    /* 音声ガイド: 走行のライン・現在地・音声を白の線だけで */
     .hcv-live-route { position: absolute; left: 2px; top: 50%; width: 66px; height: 1px; background: rgba(255, 255, 255, 0.38); }
     .hcv-live-dot { position: absolute; left: 32px; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.16); }
     .hcv-live-audio { position: absolute; left: 82px; top: 50%; display: flex; align-items: center; gap: 3px; transform: translateY(-50%); }
@@ -405,7 +405,7 @@
     .afterglow { padding: clamp(64px, 7vw, 96px) 0; background: #dfe8e8; }
     .afterglow-head { display: grid; grid-template-columns: 0.78fr 1fr; align-items: end; gap: 50px; }
     .afterglow-head .section-head p:last-child { margin-bottom: 4px; }
-    .afterglow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 42px; }
+    .afterglow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 42px; }
     .afterglow-card { position: relative; min-height: 390px; overflow: hidden; border-radius: 24px; background: var(--night-soft); color: #fff; }
     .afterglow-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.72; transition: transform 700ms cubic-bezier(.2,.75,.2,1), opacity 300ms ease; }
     .afterglow-card:hover img { transform: scale(1.045); opacity: 0.82; }
@@ -473,10 +473,9 @@
       .journey-card-action { margin-top: 14px; padding: 0 15px; }
     }
 
-    /* 761〜900px は特集カードが3列だと「ディズニー新幹線」が折れるため 2+1 に組む */
-    @media (max-width: 900px) {
+    /* 十分な幅では4列、タブレット幅では2列にしてカード内コピーを守る。 */
+    @media (max-width: 1023px) {
       .afterglow-grid { grid-template-columns: repeat(2, 1fr); }
-      .afterglow-card:last-child { grid-column: 1 / -1; }
     }
 
     /* 761〜900px はブランド名＋ナビ＋言語＋CTAが1段に収まらないため、
@@ -540,7 +539,7 @@
     </a>
     <nav class="top-nav" aria-label="Primary">
       <a href="start.html" data-i18n="navStart" data-lp-cta="header-train">乗る列車を選ぶ</a>
-      <a href="live/index.html" data-i18n="navLive">ライブガイド</a>
+      <a href="live/index.html" data-i18n="navLive">音声ガイド</a>
       <a href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
       <a class="top-nav-overflow" href="guide.html" data-i18n="navFaq">FAQ</a>
       <a href="journal.html" data-i18n="navMedals">スタンプ帖</a>
@@ -548,7 +547,7 @@
         <summary data-i18n="navMore">もっと見る</summary>
         <div class="top-nav-menu">
           <a class="top-nav-menu-compact" href="start.html" data-i18n="navStart" data-lp-cta="header-train-compact">乗る列車を選ぶ</a>
-          <a class="top-nav-menu-compact" href="live/index.html" data-i18n="navLive">ライブガイド</a>
+          <a class="top-nav-menu-compact" href="live/index.html" data-i18n="navLive">音声ガイド</a>
           <a class="top-nav-menu-compact" href="zukan.html" data-i18n="navBrowse">車窓図鑑</a>
           <a class="top-nav-menu-compact" href="journal.html" data-i18n="navMedals">スタンプ帖</a>
           <a href="guide.html" data-i18n="navFaq">FAQ</a>
@@ -595,8 +594,8 @@
               <span class="hcv-live-audio"><i></i><i></i><i></i><i></i><i></i></span>
             </span>
             <span class="hero-card-body">
-              <strong>ライブガイド</strong>
-              <span>地図と音声で次を知らせる</span>
+              <strong>ライブ音声ガイド</strong>
+              <span>GPSで現在地から次の車窓を案内</span>
             </span>
           </a>
 
@@ -653,7 +652,7 @@
             <h3><span class="copy-chunk">車窓の見どころを知る。</span></h3>
             <p><span class="copy-chunk">43の車窓から、見たい景色を探す。</span><span class="copy-chunk">眺めるだけでも、旅が始まります。</span></p>
             <div class="mini-ui photo-strip-demo" aria-hidden="true">
-              <small>WINDOW CATALOG · 40</small>
+              <small>WINDOW CATALOG · 43 VIEWS</small>
               <div class="photo-strip">
                 <span class="photo-strip-item">
                   <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="">
@@ -679,13 +678,13 @@
             <div class="mini-ui live-demo" aria-hidden="true">
               <div class="live-map"></div>
               <div class="live-copy">
-                <small>LIVE GUIDE α</small>
+                <small>LIVE AUDIO GUIDE</small>
                 <strong>まもなく、浜名湖</strong>
                 <span>A席側の窓をご覧ください</span>
                 <div class="audio-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
             </div>
-            <a class="button button-primary journey-card-action" href="live/" data-lp-cta="step-live">デモ走行で試す（α版）</a>
+            <a class="button button-primary journey-card-action" href="live/" data-lp-cta="step-live">乗車プレビューで試す</a>
           </article>
 
           <article class="journey-card reveal">
@@ -815,7 +814,7 @@
           <div class="section-head">
             <p class="eyebrow">Only on that day</p>
             <h2 id="afterglow-title"><span class="copy-chunk">その日だけの、</span><span class="copy-chunk">車窓。</span></h2>
-            <p><span class="copy-chunk">花火の夜、街の灯り、期間限定の車両。</span><span class="copy-chunk">季節と時間で、</span><span class="copy-chunk">同じ路線が別の景色になります。</span></p>
+            <p><span class="copy-chunk">花火の夜、街の灯り、期間限定の車両、</span><span class="copy-chunk">その日にしか出会えない空。</span><span class="copy-chunk">同じ路線が別の景色になります。</span></p>
           </div>
           <a class="text-link" href="zukan.html" data-lp-cta="special-zukan">車窓図鑑でテーマから探す</a>
         </div>
@@ -831,6 +830,10 @@
           <a class="afterglow-card reveal" href="sparkling-dreams.html" data-lp-cta="special-disney">
             <img src="images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp" alt="ラッピング車両が走る東海道新幹線の車窓" loading="lazy" decoding="async">
             <span class="afterglow-copy"><small>LIMITED</small><h3>ディズニー新幹線</h3><p>すれ違えるかを、時刻から計算。</p></span>
+          </a>
+          <a class="afterglow-card reveal" href="window-moments.html" data-lp-cta="special-window-moments">
+            <img src="images/wm-hero-snow.jpg" alt="雪に覆われた田畑と集落を東海道新幹線の車窓から見る" loading="lazy" decoding="async">
+            <span class="afterglow-copy"><small>WEATHER</small><h3>一度きりの車窓</h3><p>虹、雪、雲、雷。その日にだけ出会う空。</p></span>
           </a>
         </div>
       </div>

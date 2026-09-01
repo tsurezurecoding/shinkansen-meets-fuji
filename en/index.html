@@ -195,7 +195,7 @@
     .hero-lead { margin: 16px auto 0; max-width: 520px; font-size: 14px; line-height: 1.95; opacity: 0.92; }
     .hero-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
     /* ヒーローの機能カード。どれも「中で何が起きるか」を小さく実物で見せる。
-       画像があるのは図鑑・スタンプ・FAQのみで、Train選択とLive Guideは
+       画像があるのは図鑑・スタンプ・FAQのみで、Train選択とAudio Guideは
        専用の画像資産が無いためCSSで組んでいる（OGPは1200x630の共有カードで
        小さいサムネイルには不向きで、大半が同じ汎用画像のため使わない）。 */
     .hero-cards {
@@ -237,7 +237,7 @@
     }
     .hcv-pill.is-on { background: #fff; border-color: #fff; color: var(--night); }
 
-    /* Live Guide: 走行のライン・現在地・音声を白の線だけで */
+    /* Audio Guide: 走行のライン・現在地・音声を白の線だけで */
     .hcv-live-route { position: absolute; left: 2px; top: 50%; width: 66px; height: 1px; background: rgba(255, 255, 255, 0.38); }
     .hcv-live-dot { position: absolute; left: 32px; top: 50%; width: 9px; height: 9px; margin: -4.5px 0 0 -4.5px; border-radius: 50%; background: #fff; box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.16); }
     .hcv-live-audio { position: absolute; left: 82px; top: 50%; display: flex; align-items: center; gap: 3px; transform: translateY(-50%); }
@@ -410,7 +410,7 @@
     .afterglow { padding: clamp(64px, 7vw, 96px) 0; background: #dfe8e8; }
     .afterglow-head { display: grid; grid-template-columns: 0.78fr 1fr; align-items: end; gap: 50px; }
     .afterglow-head .section-head p:last-child { margin-bottom: 4px; }
-    .afterglow-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 42px; }
+    .afterglow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 42px; }
     .afterglow-card { position: relative; min-height: 390px; overflow: hidden; border-radius: 24px; background: var(--night-soft); color: #fff; }
     .afterglow-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.72; transition: transform 700ms cubic-bezier(.2,.75,.2,1), opacity 300ms ease; }
     .afterglow-card:hover img { transform: scale(1.045); opacity: 0.82; }
@@ -478,10 +478,9 @@
       .journey-card-action { margin-top: 14px; padding: 0 15px; }
     }
 
-    /* 761〜900px は特集カードが3列だと「Disney Shinkansen」が折れるため 2+1 に組む */
-    @media (max-width: 900px) {
+    /* 十分な幅では4列、タブレット幅では2列にしてカード内コピーを守る。 */
+    @media (max-width: 1023px) {
       .afterglow-grid { grid-template-columns: repeat(2, 1fr); }
-      .afterglow-card:last-child { grid-column: 1 / -1; }
     }
 
     /* 761〜900px はブランド名＋ナビ＋言語＋CTAが1段に収まらないため、
@@ -545,7 +544,7 @@
     </a>
     <nav class="top-nav" aria-label="Primary">
       <a href="en/start.html" data-i18n="navStart" data-lp-cta="header-train">Choose your train</a>
-      <a href="en/live/" data-i18n="navLive">Live Guide</a>
+      <a href="en/live/" data-i18n="navLive">Audio Guide</a>
       <a href="en/zukan.html" data-i18n="navBrowse">Field guide</a>
       <a class="top-nav-overflow" href="en/guide.html" data-i18n="navFaq">FAQ</a>
       <a href="en/journal.html" data-i18n="navMedals">Window Stamps</a>
@@ -553,7 +552,7 @@
         <summary data-i18n="navMore">More</summary>
         <div class="top-nav-menu">
           <a class="top-nav-menu-compact" href="en/start.html" data-i18n="navStart" data-lp-cta="header-train-compact">Choose your train</a>
-          <a class="top-nav-menu-compact" href="en/live/" data-i18n="navLive">Live Guide</a>
+          <a class="top-nav-menu-compact" href="en/live/" data-i18n="navLive">Audio Guide</a>
           <a class="top-nav-menu-compact" href="en/zukan.html" data-i18n="navBrowse">Field guide</a>
           <a class="top-nav-menu-compact" href="en/journal.html" data-i18n="navMedals">Window Stamps</a>
           <a href="en/guide.html" data-i18n="navFaq">FAQ</a>
@@ -600,8 +599,8 @@
               <span class="hcv-live-audio"><i></i><i></i><i></i><i></i><i></i></span>
             </span>
             <span class="hero-card-body">
-              <strong>Live Guide</strong>
-              <span>Map and audio for the next view</span>
+              <strong>Live Audio Guide</strong>
+              <span>GPS calls the next view, with map and audio</span>
             </span>
           </a>
 
@@ -658,7 +657,7 @@
             <h3><span class="copy-chunk">Discover the window highlights.</span></h3>
             <p><span class="copy-chunk">43の車窓から、見たい景色を探す。</span><span class="copy-chunk">The journey starts as you browse.</span></p>
             <div class="mini-ui photo-strip-demo" aria-hidden="true">
-              <small>WINDOW CATALOG · 43</small>
+              <small>WINDOW CATALOG · 43 VIEWS</small>
               <div class="photo-strip">
                 <span class="photo-strip-item">
                   <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="">
@@ -684,13 +683,13 @@
             <div class="mini-ui live-demo" aria-hidden="true">
               <div class="live-map"></div>
               <div class="live-copy">
-                <small>LIVE GUIDE α</small>
+                <small>LIVE AUDIO GUIDE</small>
                 <strong>Lake Hamana next</strong>
                 <span>Watch the Seat A side</span>
                 <div class="audio-bar"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
               </div>
             </div>
-            <a class="button button-primary journey-card-action" href="en/live/" data-lp-cta="step-live">Try the demo ride (alpha)</a>
+            <a class="button button-primary journey-card-action" href="en/live/" data-lp-cta="step-live">Try a preview ride</a>
           </article>
 
           <article class="journey-card reveal">
@@ -820,7 +819,7 @@
           <div class="section-head">
             <p class="eyebrow">Only on that day</p>
             <h2 id="afterglow-title"><span class="copy-chunk">Some views only happen</span><span class="copy-chunk">at certain times.</span></h2>
-            <p><span class="copy-chunk">Fireworks, city lights, and limited-run trains.</span><span class="copy-chunk">The same route changes</span><span class="copy-chunk">with the season and the time of day.</span></p>
+            <p><span class="copy-chunk">Fireworks, city lights, limited-run trains,</span><span class="copy-chunk">and skies that appear only once.</span><span class="copy-chunk">with the season and the time of day.</span></p>
           </div>
           <a class="text-link" href="en/zukan.html" data-lp-cta="special-zukan">Browse by theme</a>
         </div>
@@ -836,6 +835,10 @@
           <a class="afterglow-card reveal" href="en/sparkling-dreams.html" data-lp-cta="special-disney">
             <img src="images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp" alt="A wrapped train on the Tokaido Shinkansen route" loading="lazy" decoding="async">
             <span class="afterglow-copy"><small>LIMITED</small><h3>Disney Shinkansen</h3><p>Check whether you can catch it from the timetable.</p></span>
+          </a>
+          <a class="afterglow-card reveal" href="window-moments.html" data-lp-cta="special-window-moments">
+            <img src="images/wm-hero-snow.jpg" alt="Snow-covered fields and homes seen from the Tokaido Shinkansen" loading="lazy" decoding="async">
+            <span class="afterglow-copy"><small>WEATHER · JAPANESE FEATURE</small><h3>One-time window moments</h3><p>Rainbows, snow, clouds, and lightning—weather views unique to that day.</p></span>
           </a>
         </div>
       </div>

@@ -120,4 +120,25 @@ for (const page of pagesLoadingAppJs) {
   }
 }
 
-console.log(`Validated train-select.js: ${westFromTokyo.length} west/Tokyo candidates, ${stops.length} stops on sample train, wiring OK across ${pagesLoadingAppJs.length + 1} pages.`);
+// ---- 6. 公開中の列車番号リンクが、実際に選択できるboardを渡すこと ----
+// 山陽区間から直通する列車の originStation（Hakata等）をそのままboardへ入れると、
+// app.jsの東海道駅ガードで拒否される。生成済みリンクを利用者と同じ入力で全件検証する。
+const linkedTrainPages = ["guide.html", "en/jr-pass-fuji.html"];
+const stationIds = new Set(ROUTE.refStations.map((station) => station.id));
+const trainLinkPattern = /href="start\.html\?train=([A-Za-z]+)-(\d{1,4})&amp;board=([^&"]+)&amp;dir=(west|east)"/g;
+let linkedTrainCount = 0;
+for (const page of linkedTrainPages) {
+  const html = await readFile(rel(page), "utf8");
+  for (const match of html.matchAll(trainLinkPattern)) {
+    linkedTrainCount += 1;
+    const [, type, numberText, encodedBoard, direction] = match;
+    const board = decodeURIComponent(encodedBoard);
+    if (!stationIds.has(board)) fail(`${page} links ${type}-${numberText} with non-Tokaido board=${board}`);
+    const candidate = MTS.trainCandidates(TT, ROUTE, direction, board)
+      .find((item) => item.tr.type === type && item.tr.number === Number(numberText));
+    if (!candidate) fail(`${page} links ${type}-${numberText}, but it cannot be selected from ${board} (${direction})`);
+  }
+}
+if (!linkedTrainCount) fail("no generated train-number links were found");
+
+console.log(`Validated train-select.js: ${westFromTokyo.length} west/Tokyo candidates, ${stops.length} stops on sample train, ${linkedTrainCount} generated links, wiring OK across ${pagesLoadingAppJs.length + 1} pages.`);

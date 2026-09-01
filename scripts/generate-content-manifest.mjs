@@ -41,6 +41,13 @@ const contentFiles = [
   "yakei.js",
   "images/20260629_2158_nagoya_station_night_michikusa.jpg",
 
+  // 天気で出会う一度きりの車窓（日本語）
+  "window-moments.html",
+  "window-moments.js",
+  "images/wm-hero-snow.jpg",
+  "images/wm-snow-town.jpg",
+  "images/wm-snow-field.jpg",
+
   // アプリ本体・共通スポット表示・727看板コレクション
   "app-embedded.css",
   "app-embedded.js",

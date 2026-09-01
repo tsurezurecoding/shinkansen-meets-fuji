@@ -623,7 +623,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
     </a>
     <nav class="top-nav" aria-label="Primary">
       <a href="${lang === "en" ? `${prefix}en/start.html` : `${prefix}start.html`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
-      <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "ライブガイド" : "Live Guide"}</a>
+      <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a>
       <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
       <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
       <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
@@ -1568,13 +1568,13 @@ function durationGuideText(spot, lang) {
       : "Visibility changes by train and weather. Start watching a little early instead of waiting until the view is already beside you.";
   }
   if (lang === "ja") {
-    if (seconds <= 2) return "はっきり見えるのは1〜2秒ほど。ライブガイドの案内が出たら、先に窓へ目を移しておくのが現実的です。";
+    if (seconds <= 2) return "はっきり見えるのは1〜2秒ほど。音声ガイドの案内が出たら、先に窓へ目を移しておくのが現実的です。";
     if (seconds <= 8) return "はっきり見えるのは数秒ほど。案内が出てからカメラを探すより、先に座席側と窓の方向を決めておくと拾いやすくなります。";
     if (seconds <= 12) return "見えるのは10秒前後。先に座席側と窓の方向を決めておくと、景色の始まりから追いやすくなります。";
     if (seconds <= 20) return "見えるのは10数秒ほど。建物や地形で隠れることがあるため、少し前から窓を見ておくと拾いやすくなります。";
     return "この景観は区間の中で断続的に見えます。建物や地形で隠れるため、表示時間は連続して見える秒数ではなく、探し始める区間の目安です。";
   }
-  if (seconds <= 2) return "The clearest view lasts only one or two seconds. Let Live Guide warn you before you look up.";
+  if (seconds <= 2) return "The clearest view lasts only one or two seconds. Let Audio Guide warn you before you look up.";
   if (seconds <= 8) return "The clearest view lasts only a few seconds. Decide the seat side and window direction before it arrives rather than reaching for your camera late.";
   if (seconds <= 12) return "The view lasts around 10 seconds. Choose the seat side and window direction early so you can follow it from the start.";
   if (seconds <= 20) return "The view lasts roughly 10 to 20 seconds, though buildings and terrain may interrupt it. Start watching a little early.";
@@ -1611,8 +1611,8 @@ function spotGuideDepthHTML(spot, lang) {
   const seat = sideLabel(spot, lang);
   const journeyUrl = lang === "ja" ? "../start.html#journey" : "../../en/start.html#journey";
   const intro = lang === "ja"
-    ? `${data.area || "この区間"}が近づいたら、${seat}の窓を先に意識してください。現在地から追う場合はライブガイド、事前に確認する場合はこのページの地図が役立ちます。`
-    : `As you approach ${enApproachArea(data.area)}, start watching from ${seat}. Use Live Guide while riding, or the map on this page before you board.`;
+    ? `${data.area || "この区間"}が近づいたら、${seat}の窓を先に意識してください。現在地から追う場合は音声ガイド、事前に確認する場合はこのページの地図が役立ちます。`
+    : `As you approach ${enApproachArea(data.area)}, start watching from ${seat}. Use Audio Guide while riding, or the map on this page before you board.`;
   const timingLead = lang === "ja"
     ? "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。"
     : "Know your train? Select it to see this view's estimated time on the actual timetable.";
@@ -1840,7 +1840,7 @@ function spotPageHTML(spot, lang) {
   const showcaseHostBlock = ibukiShowcasePilot
     ? '    <div data-spot-page-shared-module="showcase"></div>\n'
     : "";
-  const liveMapCta = lang === "ja" ? "乗車中はライブガイドで見る" : "Use Live Guide while riding";
+  const liveMapCta = lang === "ja" ? "乗車中は音声ガイドで見る" : "Use Audio Guide while riding";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -2005,10 +2005,10 @@ function englishGuideIndexHTML() {
       </section>
       <section class="spot-page-section guide-beyond-panel">
         <h2>Plan the window side before you ride</h2>
-        <p>Use the train search to build a timed window guide, or open the Live Guide while riding.</p>
+        <p>Use the train search to build a timed window guide, or open the Audio Guide while riding.</p>
         <div class="spot-page-actions">
           <a class="btn btn-primary" href="./start.html#journey">Build my timed guide</a>
-          <a class="btn btn-ghost" href="live/">Open Live Guide</a>
+          <a class="btn btn-ghost" href="live/">Open Audio Guide</a>
           <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
         </div>
       </section>
@@ -2135,8 +2135,8 @@ function englishLandingHTML() {
     ["スタンプ帖へ", "Open Window Stamps"],
     ["その日だけの、", "Some views only happen"],
     ["車窓。", "at certain times."],
-    ["花火の夜、街の灯り、期間限定の車両。", "Fireworks, city lights, and limited-run trains."],
-    ["季節と時間で、", "The same route changes"],
+    ["花火の夜、街の灯り、期間限定の車両、", "Fireworks, city lights, limited-run trains,"],
+    ["その日にしか出会えない空。", "and skies that appear only once."],
     ["同じ路線が別の景色になります。", "with the season and the time of day."],
     ["車窓図鑑でテーマから探す", "Browse by theme"],
     ["夜空にひらく花火", "Fireworks opening in the night sky"],
@@ -2148,6 +2148,10 @@ function englishLandingHTML() {
     ["ラッピング車両が走る東海道新幹線の車窓", "A wrapped train on the Tokaido Shinkansen route"],
     ["ディズニー新幹線", "Disney Shinkansen"],
     ["すれ違えるかを、時刻から計算。", "Check whether you can catch it from the timetable."],
+    ["雪に覆われた田畑と集落を東海道新幹線の車窓から見る", "Snow-covered fields and homes seen from the Tokaido Shinkansen"],
+    ["一度きりの車窓", "One-time window moments"],
+    ["虹、雪、雲、雷。その日にだけ出会う空。", "Rainbows, snow, clouds, and lightning—weather views unique to that day."],
+    ["WEATHER", "WEATHER · JAPANESE FEATURE"],
     ["旅の情報だから、", "Travel information,"],
     ["わかることだけを", "with clear limits,"],
     ["丁寧に。", "carefully kept."],
@@ -2197,6 +2201,9 @@ function englishLandingHTML() {
     ["眺めるだけでも、旅が始まります。", "The journey starts as you browse."],
     ["次の景色を、", "Know the next view"],
     ["地図と音声で知る。", "with a map and audio."],
+    ["ライブ音声ガイド", "Live Audio Guide"],
+    ["GPSで現在地から次の車窓を案内", "GPS calls the next view, with map and audio"],
+    ["乗車プレビューで試す", "Try a preview ride"],
     ["地図と音声で、次の車窓をお知らせ。", "Maps and audio cue the next view."],
     ["見逃さず、窓の外を楽しめます。", "Look up and enjoy the ride."],
     ["見つけた景色を、", "Turn the views you spot"],
@@ -2224,7 +2231,7 @@ function englishLandingHTML() {
     ["このページは公開前のLP案です。", "A guide to the views along your journey."],
     ["車窓図鑑", "Field guide"],
     ["スタンプ帖", "Window Stamps"],
-    ["ライブガイド", "Live Guide"],
+    ["音声ガイド", "Audio Guide"],
     ["もっと見る", "More"],
     ["乗る列車を選ぶ", "Choose your train"],
     ["新幹線の窓", "Shinkansen Window"],
@@ -2340,7 +2347,7 @@ function englishAppIndexHTML() {
     ["道草 / Michikusa — 急がない旅と、偶然の発見を。", "Michikusa — Slow travel and unexpected discoveries."],
     ["旅の途中の景色を、少し早めに。", "Start noticing the views a little early."],
     ["列車選択", "Train search"],
-    ["ライブガイド", "Live Guide"],
+    ["音声ガイド", "Audio Guide"],
     ["車窓図鑑", "Field guide"],
     ["もっと見る", "More"],
     ["新幹線の窓", "Shinkansen Window"],
@@ -2493,6 +2500,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-15" },
+    { loc: `${siteRoot}/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-16" },
     { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: "2026-08-16" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },

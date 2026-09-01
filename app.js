@@ -16,7 +16,7 @@ const MSG = {
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navLive: "ライブガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "スタンプ帖",
+    navQuick: "TOP", navStart: "列車選択", navLive: "音声ガイド", navBrowse: "車窓図鑑", navFaq: "FAQ", navMedals: "スタンプ帖",
     navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
@@ -44,7 +44,7 @@ const MSG = {
     nextupLabel: "つぎの車窓",
     eaBandEyebrow: "ANDROID APP",
     eaBandTitle: "Androidアプリを公開しました",
-    eaBandBody: "無料・登録不要。ホーム画面からすぐ開けて、乗車中のライブガイドも使えます。",
+    eaBandBody: "無料・登録不要。ホーム画面からすぐ開けて、乗車中の音声ガイドも使えます。",
     eaBandCta: "Androidアプリを見る",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。",
@@ -184,7 +184,7 @@ const MSG = {
     fFavorites: "★ お気に入り",
     galFavoritesEmpty: "条件に合うお気に入りはありません。カードの★を押すと、ここに表示できます。",
     tlFavoritesEmpty: "お気に入りに追加したスポットがまだありません。カードの★を押すと、ここに絞り込めます。",
-    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中はライブガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
+    more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中は音声ガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
     inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
@@ -200,7 +200,7 @@ const MSG = {
     heroCtaStart: "Build my guide",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
-    navQuick: "Home", navStart: "Train Search", navLive: "Live Guide", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Journal",
+    navQuick: "Home", navStart: "Train Search", navLive: "Audio Guide", navBrowse: "Field Guide", navFaq: "FAQ", navMedals: "Journal",
     navMore: "More", navMieru: "Visibility β", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
@@ -228,7 +228,7 @@ const MSG = {
     nextupLabel: "NEXT VIEW",
     eaBandEyebrow: "ANDROID APP",
     eaBandTitle: "Shinkansen Window is on Android",
-    eaBandBody: "Free, no registration. Open it from your home screen and use the Live Guide while you ride.",
+    eaBandBody: "Free, no registration. Open it from your home screen and use the Audio Guide while you ride.",
     eaBandCta: "See the Android app",
     tlEyebrow: "WINDOW TIMELINE",
     tlSub: "Times are estimates based on Nozomi trains. Start watching a little early.",
@@ -368,7 +368,7 @@ const MSG = {
     fFavorites: "★ Favorites",
     galFavoritesEmpty: "No favorites match these filters. Tap the ★ on a card to add one.",
     tlFavoritesEmpty: "No favorites yet. Tap the ★ on a card to add it, then filter here.",
-    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Live Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
+    more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Audio Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
     inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
@@ -735,6 +735,44 @@ function restoreLastJourneyAfterHydration() {
     restoreLastJourney();
   }, { once: true });
 }
+/* 列車を指定して外部から入ってくる導線（例: /en/jr-pass-fuji.html の便一覧）。
+   ?train=Kodama-817&board=Tokyo&dir=west の形で受ける。時刻の再計算はせず、
+   保存済みジャーニーの復元と同じ経路（trainCandidates → buildTimeline）へ委譲する。
+   保存値より優先する。リンクで来た人は、前回の選択ではなくリンク先を見たいため。 */
+function selectTrainFromLink() {
+  const params = new URLSearchParams(location.search);
+  const raw = params.get("train");
+  if (!raw) return false;
+  const parsed = /^([A-Za-z]+)[-\s]?(\d{1,4})$/.exec(raw.trim());
+  if (!parsed) return false;
+  const wantType = parsed[1].charAt(0).toUpperCase() + parsed[1].slice(1).toLowerCase();
+  const wantNumber = Number(parsed[2]);
+  const wantBoard = params.get("board");
+  const wantDir = params.get("dir");
+  if (wantDir !== "west" && wantDir !== "east") return false;
+  if (!wantBoard || !Object.prototype.hasOwnProperty.call(REF, wantBoard)) return false;
+
+  const prevDirection = direction;
+  const prevBoardId = boardId;
+  direction = wantDir;
+  boardId = wantBoard;
+  const match = trainCandidates().find((x) => x.tr.type === wantType && x.tr.number === wantNumber);
+  if (!match) {
+    direction = prevDirection;
+    boardId = prevBoardId;
+    return false;
+  }
+  $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
+  renderBoardSelect();
+  showTrainPage(match.dep);
+  const activeChip = $("#trainResults .train-chip");
+  if (activeChip) {
+    $("#trainResults").querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === activeChip));
+  }
+  buildTimeline(match.tr, match.dep);
+  track("journey_from_link", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
+  return true;
+}
 function collectionTimelineSpots(expanded = boardCollectionExpanded) {
   if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
   const boardRef = REF[boardId];
@@ -893,7 +931,7 @@ function miniMapDetailsHTML(spot, options = {}) {
   if (!hasCoordinates && !fallbackLink) return "";
   const title = options.summary || t("miniMapSummary");
   const liveHref = lang === "ja" ? "live/index.html" : "live/index.html";
-  const liveLabel = lang === "ja" ? "乗車中はライブガイドで見る" : "Use Live Guide while riding";
+  const liveLabel = lang === "ja" ? "乗車中は音声ガイドで見る" : "Use Audio Guide while riding";
   if (!hasCoordinates) {
     return `<section class="spot-static-map">
     <div class="spot-static-map-head">
@@ -2659,7 +2697,7 @@ function init() {
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();
-  if (!restoreLastJourney()) restoreLastJourneyAfterHydration();
+  if (!selectTrainFromLink() && !restoreLastJourney()) restoreLastJourneyAfterHydration();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);

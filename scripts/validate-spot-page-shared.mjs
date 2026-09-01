@@ -306,7 +306,7 @@ async function runThinValidator() {
   if (expectedPages.length !== expectedPageCount || currentPages.length !== expectedPageCount) fail(`expected exactly ${expectedPageCount} spot pages, found ${currentPages.length}`);
   if (renderedVideoPageCount !== expectedVideoPageCount) fail(`expected ${expectedVideoPageCount} video pages from the structured source, found ${renderedVideoPageCount}`);
 
-  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "727-collection.html"]) {
+  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "727-collection.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
     const expectedUtility727Card = '<div class="spot-page-rail-disney spot-page-rail-727"><a href="./727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="./images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>';
