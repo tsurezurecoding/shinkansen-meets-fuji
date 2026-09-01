@@ -1804,6 +1804,7 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     width: 100%;
   }
   .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-thumb {
+    display: block;
     width: 100%;
     height: 112px;
     border-radius: 8px;
@@ -1814,9 +1815,29 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
     display: none;
   }
   .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-min {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
     min-width: 0;
   }
   .guide-page-rail .spot-page-rail-spot.is-current .spot-page-rail-name {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    overflow: visible;
+    border: 0;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
     font-family: var(--font-serif);
     font-size: 14px;
   }
@@ -5841,4 +5862,23 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
   .collection-point-actions { justify-content: flex-start; width: 100%; }
   .journal-collection-callout { grid-template-columns: 1fr; gap: 10px; }
   .journal-collection-callout .inline-cta { white-space: normal; }
+}
+
+/* 日本語guide: 列車ごとの富士山通過時刻。下り/上りを2列に並べ、文字は本文より小さく。
+   明暗は sun-window.js が閲覧時の日付で判定し、行へ ja-sun-* を付ける。 */
+.ja-train-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 16px; }
+.ja-train-list { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; background: var(--white); }
+.ja-train-list > summary { cursor: pointer; font-size: 13px; font-weight: 700; padding: 2px 0; }
+.ja-train-list .jp-table-wrap { max-height: 420px; overflow: auto; margin-top: 6px; }
+.ja-train-table { font-size: 11.5px; line-height: 1.5; }
+.ja-train-table th, .ja-train-table td { padding: 3px 6px; white-space: nowrap; }
+.ja-train-table tbody tr.ja-sun-dawn td:last-child { color: #b06a1f; }
+.ja-train-table tbody tr.ja-sun-dusk td:last-child { color: #a4452c; }
+.ja-train-table tbody tr.ja-sun-night td:last-child { color: #4a5a86; }
+.ja-train-caption .ja-sun-key { font-weight: 700; }
+.ja-train-caption .ja-sun-dawn { color: #b06a1f; }
+.ja-train-caption .ja-sun-dusk { color: #a4452c; }
+.ja-train-caption .ja-sun-night { color: #4a5a86; }
+@media (max-width: 720px) {
+  .ja-train-grid { grid-template-columns: 1fr; }
 }

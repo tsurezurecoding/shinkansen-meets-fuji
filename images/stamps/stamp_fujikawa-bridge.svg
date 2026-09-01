@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="富士川橋梁 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">富士川橋梁</text>
+
+
+<path d="M61 104 L90.64 70 L96.1 76.12 L100 70 L103.9 76.12 L109.36 70 L139 104" fill="none" stroke-width="2.2"/>
+<path d="M84.4 80.88 l5.460000000000001 3.4000000000000004 l4.68 -4.08 l5.460000000000001 4.08 l4.68 -4.08 l5.460000000000001 4.08 l5.460000000000001 -3.4000000000000004" fill="none" stroke-width="1.54"/>
+<g fill="none" stroke-width="2.5">
+<path d="M48 122 q10.6 -17 21.2 0"/><path d="M69.2 122 q10.6 -17 21.2 0"/><path d="M90.4 122 q10.6 -17 21.2 0"/><path d="M111.6 122 q10.6 -17 21.2 0"/><path d="M132.8 122 q10.6 -17 21.2 0"/>
+<path d="M46 122 H154"/>
+</g>
+<path d="M58 122 V132 M79 122 V132 M100 122 V132 M121 122 V132 M142 122 V132" fill="none" stroke-width="1.8"/>
+<path d="M48 140 q5.2 -7 10.4 0 M68.8 140 q5.2 -7 10.4 0 M89.6 140 q5.2 -7 10.4 0 M110.4 140 q5.2 -7 10.4 0 M131.2 140 q5.2 -7 10.4 0 " fill="none" stroke-width="2"/>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約47分・E席</text>
+</g>
+</svg>

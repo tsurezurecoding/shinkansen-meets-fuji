@@ -34,8 +34,8 @@ vm.runInNewContext(fs.readFileSync(path.join(appDir, "data", "timetable.js"), "u
 const TIMETABLE = timetableWindow.SHINKANSEN_TIMETABLE;
 const STATION_EN = Object.fromEntries(TIMETABLE.stations.map((s) => [s.id, s.en || s.id]));
 
-const { SPOTS } = vm.runInNewContext(
-  `${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\n;({ SPOTS });`,
+const { SPOTS, ROUTE } = vm.runInNewContext(
+  `${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\n;({ SPOTS, ROUTE });`,
   {},
   { filename: "data.js" },
 );
@@ -102,6 +102,8 @@ function rowsFor(direction) {
       return {
         type: train.type,
         number: train.number,
+        boardId: train.originStation,
+        direction: train.direction,
         origin: STATION_EN[origin] || origin,
         departure,
         fujiAt,
@@ -126,7 +128,8 @@ function tableHTML(caption, seatNote, rows) {
   const body = rows
     .map(
       (row) =>
-        `<tr><td>${row.type} ${row.number}</td><td>${row.origin}</td><td>${row.departure}</td>` +
+        `<tr><td><a href="start.html?train=${row.type}-${row.number}&amp;board=${encodeURIComponent(row.boardId)}&amp;dir=${row.direction}">${row.type} ${row.number}</a></td>` +
+        `<td>${row.origin}</td><td>${row.departure}</td>` +
         `<td><b>${row.fujiAt}</b></td><td>${row.after === null ? "—" : `${row.after} min`}</td></tr>`,
     )
     .join("\n            ");
@@ -140,6 +143,144 @@ function tableHTML(caption, seatNote, rows) {
     `          </table>\n` +
     `        </div>`
   );
+}
+
+/* ひかりは新富士に停まらないため、駅の実時刻が存在しない。距離按分での補間は
+   過去に「ひかりが東京から42分（のぞみより速い）」という不可能な値を出して撤去済み。
+   そこで時刻は一切書かず、列車ピッカーへのリンクだけを出す。通過時刻はタイムライン側の
+   interpolateSpot が、その列車自身の停車時刻から算出する。 */
+function hikariLinksHTML() {
+  const byDirection = { west: [], east: [] };
+  for (const train of TIMETABLE.trains) {
+    if (train.type !== "Hikari") continue;
+    if (!train.originStation || !train.direction) continue;
+    if (!byDirection[train.direction]) continue;
+    byDirection[train.direction].push(train);
+  }
+  const listFor = (direction) => {
+    const seen = new Set();
+    return byDirection[direction]
+      .filter((train) => {
+        const key = train.number;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      })
+      .sort((a, b) => a.number - b.number)
+      .map(
+        (train) =>
+          `<li><a href="start.html?train=Hikari-${train.number}&amp;board=${encodeURIComponent(train.originStation)}&amp;dir=${train.direction}">Hikari ${train.number}</a> <span class="jp-hikari-from">from ${escapeHTML(train.originStation)}</span></li>`,
+      )
+      .join("\n              ");
+  };
+  const west = listFor("west");
+  const east = listFor("east");
+  if (!west && !east) return "";
+  return (
+    `        <details class="jp-hikari">\n` +
+    `          <summary>Riding a Hikari? Open your train's timeline</summary>\n` +
+    `          <p class="jp-table-note">Hikari passes Mt. Fuji without stopping, so there is no station time to quote and we will not invent one. Open a train and the guide works the passing time out from that train's own schedule.</p>\n` +
+    `          <h4>Toward Kyoto and Shin-Osaka</h4>\n          <ul class="jp-hikari-list">\n              ${west}\n          </ul>\n` +
+    `          <h4>Toward Tokyo</h4>\n          <ul class="jp-hikari-list">\n              ${east}\n          </ul>\n` +
+    `        </details>`
+  );
+}
+
+/* 日本語 guide.html 向けの列車別 富士山通過時刻。
+   のぞみ・ひかりは新富士に停まらないので駅の実時刻がない。距離按分（fujiOffsetsMinutes）は
+   「ひかりがのぞみより速い」という不可能値を出したため使わない。ここでは app.js のタイムラインと
+   同じ方法、すなわち "その列車自身の停車時刻" の間を線形補間する。のぞみ45分 < ひかり48分 <
+   こだま64分 と順序が保たれることを確認済み。
+
+   明暗は季節で変わるため、年間を通じて断定できる帯だけに印を付ける。
+   新富士の日の入りは約16:35〜19:00、日の出は約04:25〜06:50。その外側だけ「夜」と言い切り、
+   薄明帯は「朝夕」として読者の判断に委ねる。 */
+const JA_EARLIEST_SUNRISE = 4 * 60 + 25;
+const JA_LATEST_SUNRISE = 6 * 60 + 50;
+const JA_EARLIEST_SUNSET = 16 * 60 + 35;
+const JA_LATEST_SUNSET = 19 * 60;
+
+function jaToMin(hhmm) {
+  const p = String(hhmm).split(":");
+  return Number(p[0]) * 60 + Number(p[1]);
+}
+function jaStops(train) {
+  return ROUTE.refStations
+    .filter((s) => train.times[s.id])
+    .map((s) => ({ ref: s.min, clock: jaToMin(train.times[s.id]) }))
+    .sort((a, b) => a.clock - b.clock);
+}
+function jaInterpolate(spotRef, stops) {
+  for (let i = 0; i < stops.length - 1; i++) {
+    const a = stops[i];
+    const b = stops[i + 1];
+    const lo = Math.min(a.ref, b.ref);
+    const hi = Math.max(a.ref, b.ref);
+    if (spotRef >= lo && spotRef <= hi && a.ref !== b.ref) {
+      const f = Math.abs(spotRef - a.ref) / Math.abs(b.ref - a.ref);
+      return Math.round(a.clock + f * (b.clock - a.clock));
+    }
+  }
+  return null;
+}
+function jaClock(min) {
+  const m = ((min % 1440) + 1440) % 1440;
+  return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
+}
+const JA_TYPE_LABEL = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
+const JA_STATION2 = Object.fromEntries((ROUTE?.refStations || []).map((st) => [st.id, st.ja || st.id]));
+
+/* 明暗は文字で書かず、閲覧時の日付から sun-window.js が色で表す。
+   ここでは判定に必要な通過時刻（0時からの分）だけ data 属性で渡す。
+   季節で変わるものを静的HTMLに焼き込まないための分担。 */
+function jaTrainTablesHTML() {
+  const fuji = SPOTS.find((spot) => spot.id === "fuji");
+  if (!fuji || !ROUTE || !ROUTE.refStations) return "";
+
+  const build = (type, direction) => {
+    const seen = new Set();
+    const rows = TIMETABLE.trains
+      .filter((train) => train.type === type && train.direction === direction)
+      .map((train) => ({ train, at: jaInterpolate(fuji.minutesFromTokyo, jaStops(train)) }))
+      .filter((row) => row.at !== null)
+      .filter((row) => {
+        if (seen.has(row.train.number)) return false;
+        seen.add(row.train.number);
+        return true;
+      })
+      .sort((a, b) => a.train.number - b.train.number)
+      .map((row) => {
+        const label = JA_TYPE_LABEL[type] + row.train.number + "号";
+        const dep = row.train.times[row.train.originStation] || "—";
+        const href = "start.html?train=" + type + "-" + row.train.number
+          + "&amp;board=" + encodeURIComponent(row.train.originStation)
+          + "&amp;dir=" + direction;
+        const station = escapeHTML(JA_STATION2[row.train.originStation] || row.train.originStation);
+        return "<tr data-fuji-min=\"" + (row.at % 1440) + "\">"
+          + "<td><a href=\"" + href + "\">" + label + "</a></td>"
+          + "<td>" + station + " " + dep + "</td>"
+          + "<td><b>" + jaClock(row.at) + "</b></td></tr>";
+      });
+    if (!rows.length) return "";
+    const dirLabel = direction === "west" ? "下り" : "上り";
+    return "          <details class=\"ja-train-list\">\n"
+      + "            <summary>" + JA_TYPE_LABEL[type] + "・" + dirLabel + "（" + rows.length + "本）</summary>\n"
+      + "            <div class=\"jp-table-wrap\"><table class=\"jp-table ja-train-table\">\n"
+      + "              <thead><tr><th>列車</th><th>始発</th><th>富士山</th></tr></thead>\n"
+      + "              <tbody>\n              " + rows.join("\n              ") + "\n              </tbody>\n"
+      + "            </table></div>\n"
+      + "          </details>";
+  };
+
+  const cells = [];
+  for (const type of ["Nozomi", "Hikari", "Kodama"]) {
+    for (const direction of ["west", "east"]) {
+      const html = build(type, direction);
+      if (html) cells.push(html);
+    }
+  }
+  if (!cells.length) return "";
+  return "        <div class=\"ja-train-grid\">\n" + cells.join("\n") + "\n        </div>";
 }
 
 const west = rowsFor("west");
@@ -163,7 +304,30 @@ const generated =
     "Mt. Fuji is on your <b>left</b>, in the same <b>Seat E</b>.",
     east,
   ) +
+  "\n\n" +
+  hikariLinksHTML() +
   `\n      ${END}`;
+
+// --- 日本語 guide.html: 列車ごとの富士山通過時刻 ---
+
+const JA_START = "<!-- JA_TRAIN_TABLES_START -->";
+const JA_END = "<!-- JA_TRAIN_TABLES_END -->";
+const JA_GUIDE_PAGE = path.join(appDir, "guide.html");
+{
+  const generatedJa = `${JA_START}
+` + jaTrainTablesHTML() + `
+        ${JA_END}`;
+  const current = fs.readFileSync(JA_GUIDE_PAGE, "utf8");
+  const startIdx = current.indexOf(JA_START);
+  const endIdx = current.indexOf(JA_END);
+  if (startIdx === -1 || endIdx === -1) throw new Error("guide.html: JA_TRAIN_TABLES markers missing");
+  const next = current.slice(0, startIdx) + generatedJa + current.slice(endIdx + JA_END.length);
+  if (CHECK_ONLY) {
+    if (next !== current) throw new Error("guide.html: train tables are stale; run generate-inbound-tables.mjs");
+  } else if (next !== current) {
+    fs.writeFileSync(JA_GUIDE_PAGE, next);
+  }
+}
 
 // --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
 
@@ -347,7 +511,7 @@ function validateInboundPageContracts() {
     throw new Error("Obsolete Nozomi surcharge wording remains; use the official separate-special-ticket wording");
   }
   requireFragment(jrPass, "includes seat reservations on eligible Hikari and Kodama services at no additional charge", "JR Pass reservation terms");
-  const serviceKeys = [...jrPass.matchAll(/<tr><td>(Hikari|Kodama) (\d+)<\/td><td>[^<]+<\/td><td>[^<]+<\/td><td><b>(\d{2}:\d{2})<\/b>/g)]
+  const serviceKeys = [...jrPass.matchAll(/<tr><td><a href="start\.html\?train=(?:Hikari|Kodama)-\d+[^"]*">(Hikari|Kodama) (\d+)<\/a><\/td><td>[^<]+<\/td><td>[^<]+<\/td><td><b>(\d{2}:\d{2})<\/b>/g)]
     .map((match) => `${match[1]}|${match[2]}|${match[3]}`);
   if (new Set(serviceKeys).size !== serviceKeys.length) {
     throw new Error("JR Pass table lists the same train number and Shin-Fuji time more than once");

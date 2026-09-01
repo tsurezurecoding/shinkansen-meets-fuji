@@ -125,6 +125,9 @@ const MSG = {
     galPhotoNote: "掲載写真は、撮影者または権利者の許可を得て紹介しています。",
     zukanThemeEyebrow: "BROWSE BY THEME",
     zukanThemeTitle: "テーマから、車窓を探す",
+    themeAllLabel: "ALL VIEWS",
+    themeAllTitle: "車窓一覧を見る",
+    themeAllBody: "写真から、すべての車窓を。席側やカテゴリでしぼれます。",
     themeHanabiLabel: "SUMMER",
     themeHanabiTitle: "車窓の花火",
     themeHanabiBody: "沿線7大会を、見える区間と時刻で。",
@@ -135,15 +138,12 @@ const MSG = {
     themeDisneyTitle: "ディズニー新幹線",
     themeDisneyBody: "すれ違えるかを、時刻から計算。",
     themeSignLabel: "TRACKSIDE SIGNS",
-    themeSignTitle: "727と248の看板",
+    themeSignTitle: "727看板コレクション",
     themeSignBody: "沿線に何度も現れる、あの看板の正体。",
     themeFujiLabel: "MOUNT FUJI",
     themeFujiTitle: "富士山はいつ見える",
     themeFujiBody: "どちら側の席か、東京から何分ごろか。",
-    themeMieruLabel: "FORECAST β",
-    themeMieruTitle: "今日、富士山は見えるか",
-    themeMieruBody: "雲と空気の澄みかたから、見える確率を。",
-    zukanAllEyebrow: "ALL 40 VIEWS",
+    zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
     zukanAllTitle: "すべての車窓を見る",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示",
@@ -309,6 +309,9 @@ const MSG = {
     galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
     zukanThemeEyebrow: "BROWSE BY THEME",
     zukanThemeTitle: "Find window views by theme",
+    themeAllLabel: "ALL VIEWS",
+    themeAllTitle: "Browse every view",
+    themeAllBody: "Every window view as a photo, filtered by seat side and category.",
     themeHanabiLabel: "SUMMER",
     themeHanabiTitle: "Fireworks from the window",
     themeHanabiBody: "Seven festivals, with the stretch and time to watch.",
@@ -319,15 +322,12 @@ const MSG = {
     themeDisneyTitle: "Disney Shinkansen",
     themeDisneyBody: "Work out whether your train will pass it.",
     themeSignLabel: "TRACKSIDE SIGNS",
-    themeSignTitle: "The 727 and 248 signs",
+    themeSignTitle: "The 727 sign collection",
     themeSignBody: "The signs that keep reappearing along the line.",
     themeFujiLabel: "MOUNT FUJI",
     themeFujiTitle: "When you can see Mt. Fuji",
     themeFujiBody: "Which side to sit on, and how long after Tokyo.",
-    themeMieruLabel: "FORECAST β",
-    themeMieruTitle: "Is Fuji visible today?",
-    themeMieruBody: "A visibility estimate from cloud and air clarity.",
-    zukanAllEyebrow: "ALL 40 VIEWS",
+    zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
     zukanAllTitle: "Browse every window view",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately",
@@ -734,6 +734,44 @@ function restoreLastJourneyAfterHydration() {
     if (journey) return;
     restoreLastJourney();
   }, { once: true });
+}
+/* 列車を指定して外部から入ってくる導線（例: /en/jr-pass-fuji.html の便一覧）。
+   ?train=Kodama-817&board=Tokyo&dir=west の形で受ける。時刻の再計算はせず、
+   保存済みジャーニーの復元と同じ経路（trainCandidates → buildTimeline）へ委譲する。
+   保存値より優先する。リンクで来た人は、前回の選択ではなくリンク先を見たいため。 */
+function selectTrainFromLink() {
+  const params = new URLSearchParams(location.search);
+  const raw = params.get("train");
+  if (!raw) return false;
+  const parsed = /^([A-Za-z]+)[-\s]?(\d{1,4})$/.exec(raw.trim());
+  if (!parsed) return false;
+  const wantType = parsed[1].charAt(0).toUpperCase() + parsed[1].slice(1).toLowerCase();
+  const wantNumber = Number(parsed[2]);
+  const wantBoard = params.get("board");
+  const wantDir = params.get("dir");
+  if (wantDir !== "west" && wantDir !== "east") return false;
+  if (!wantBoard || !Object.prototype.hasOwnProperty.call(REF, wantBoard)) return false;
+
+  const prevDirection = direction;
+  const prevBoardId = boardId;
+  direction = wantDir;
+  boardId = wantBoard;
+  const match = trainCandidates().find((x) => x.tr.type === wantType && x.tr.number === wantNumber);
+  if (!match) {
+    direction = prevDirection;
+    boardId = prevBoardId;
+    return false;
+  }
+  $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
+  renderBoardSelect();
+  showTrainPage(match.dep);
+  const activeChip = $("#trainResults .train-chip");
+  if (activeChip) {
+    $("#trainResults").querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === activeChip));
+  }
+  buildTimeline(match.tr, match.dep);
+  track("journey_from_link", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
+  return true;
 }
 function collectionTimelineSpots(expanded = boardCollectionExpanded) {
   if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
@@ -2659,7 +2697,7 @@ function init() {
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();
-  if (!restoreLastJourney()) restoreLastJourneyAfterHydration();
+  if (!selectTrainFromLink() && !restoreLastJourney()) restoreLastJourneyAfterHydration();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);

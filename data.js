@@ -36,6 +36,46 @@ const ROUTE = {
 };
 
 const REFERENCES = {
+  fujiCityPaperTown: {
+    label: { ja: "富士市: 「紙のまち」富士市", en: "Fuji City: 'the paper town' (Japanese only)" },
+    url: "https://www.city.fuji.shizuoka.jp/1035050000/miryoku/p007635.html",
+  },
+  fujiCityPaperHistory: {
+    label: { ja: "富士市: 製紙業の歴史", en: "Fuji City: the history of its paper industry (Japanese only)" },
+    url: "https://www.city.fuji.shizuoka.jp/sangyo/c0304/fmervo00000084q7.html",
+  },
+  fujikawaSuikankyoDoboku: {
+    label: { ja: "土木ウォッチング: 富士川水管橋", en: "Doboku Watching: the Fujikawa water pipe bridge (Japanese only)" },
+    url: "https://www.doboku-watching.com/index.php?kijiId=543",
+  },
+  fujikawaBridgeSuruga: {
+    label: { ja: "駿河湾★百景: 東海道新幹線 富士川橋梁", en: "Surugawan Hyakkei: the Tokaido Shinkansen Fujikawa Bridge (Japanese only)" },
+    url: "https://www.surugawan.net/guide/556.html",
+  },
+  nipponPaperFuji: {
+    label: { ja: "日本製紙グループ: 富士工場", en: "Nippon Paper Group: the Fuji Mill" },
+    url: "https://www.nipponpapergroup.com/about/sales/fuji/",
+  },
+  nipponPaperFujiMerger: {
+    label: { ja: "日本製紙: 吉永工場と富士工場の統合（2015年）", en: "Nippon Paper: the 2015 merger of the Yoshinaga and Fuji mills" },
+    url: "https://www.nipponpapergroup.com/news/year/2015/news150303003031.html",
+  },
+  hirakataParkKeihan: {
+    label: { ja: "京阪グループ: ひらかたパーク", en: "Keihan Group: Hirakata Park (Japanese only)" },
+    url: "https://www.keihan.co.jp/visiting/spot/detail/117.html",
+  },
+  hirakataRedFalcon: {
+    label: { ja: "ひらかたパーク: レッドファルコン", en: "Hirakata Park: the Red Falcon coaster (Japanese only)" },
+    url: "https://www.hirakatapark.co.jp/attractions/red-falcon/",
+  },
+  hirakataKikuNingyo: {
+    label: { ja: "ひらかた大菊人形（Wikipedia）", en: "Hirakata Chrysanthemum Doll Exhibition (Japanese Wikipedia)" },
+    url: "https://ja.wikipedia.org/wiki/%E3%81%B2%E3%82%89%E3%81%8B%E3%81%9F%E5%A4%A7%E8%8F%8A%E4%BA%BA%E5%BD%A2",
+  },
+  hirakataSkywalker: {
+    label: { ja: "ひらかたパーク: スカイウォーカー", en: "Hirakata Park: the Skywalker Ferris wheel (Japanese only)" },
+    url: "https://www.hirakatapark.co.jp/attractions/skywalker/",
+  },
   toyokeizaiWindow: {
     label: { ja: "東洋経済オンライン: 新幹線の車窓はこんなに面白い", en: "Toyo Keizai Online: Tokaido Shinkansen window views" },
     url: "https://toyokeizai.net/list/column/694384d86b208d3b9c000052",
@@ -681,6 +721,30 @@ const SPOTS = [
         note: { ja: "ビルの合間に光る塔", en: "A lit tower between buildings" },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る東京タワー", en: "Tokyo Tower in motion" },
+      description: {
+        ja: "見えるのはビルの合間の数秒です。どのくらいの速さで現れて消えるのか、そして夜のほうが見つけやすいことを動画で確かめられます。",
+        en: "The tower shows for only a few seconds between buildings. These videos show how fast it comes and goes — and why night is the easier time to catch it.",
+      },
+      videos: [
+        {
+          kind: "youtube",
+          id: "37PHRoFLIhc",
+          title: { ja: "ライトアップされた東京タワーの車窓動画", en: "Window video of Tokyo Tower illuminated at night" },
+          url: "https://www.youtube.com/watch?v=37PHRoFLIhc",
+          comment: { ja: "E席側、ビルの合間に赤い塔が差し込む数秒をそのまま。", en: "From Seat E: the few seconds in which the red tower slots into a gap between buildings." },
+        },
+        {
+          kind: "youtube",
+          id: "6Wl0WBldtyE",
+          title: { ja: "品川〜東京の夜景（ディズニー新幹線の車内から）", en: "Night skyline from Shinagawa to Tokyo, aboard the Sparkling Dreams Shinkansen" },
+          url: "https://www.youtube.com/watch?v=6Wl0WBldtyE",
+          comment: { ja: "ディズニー新幹線「Sparkling Dreams」の車内から、品川〜東京の夜景を通しで。", en: "Aboard the Sparkling Dreams Shinkansen: the night run from Shinagawa into Tokyo, uncut." },
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "These videos use the official YouTube embed." },
+    },
     references: [REFERENCES.tokyoTowerOfficial, REFERENCES.tokyoTowerLightup, REFERENCES.tokyoTowerBlog],
     map: { lat: 35.65858, lng: 139.74543, ja: "東京タワー", en: "Tokyo Tower" },
     viewpoint: { lat: 35.656460, lng: 139.757770 },
@@ -1427,7 +1491,7 @@ const SPOTS = [
         alt: { ja: "朝のA席側、街並みの奥に立つ小田原城の天守", en: "The keep of Odawara Castle beyond the townscape, from Seat A in the morning" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-20",
-        note: { ja: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:24撮影", en: "michikusa / 2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:24." },
+        note: { ja: "2026-08-20 · 品川06:00発のぞみ99号で06:24撮影", en: "2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:24." },
       },
     ],
     references: [REFERENCES.odawaraCastle, REFERENCES.odawaraCastleOfficialEn, REFERENCES.odawaraCastleBlog],
@@ -1673,10 +1737,132 @@ const SPOTS = [
       ],
       platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
     },
-    relatedSpotIds: ["sagami-fuji", "left-fuji", "ota-fuji", "hamanako-fuji"],
+    relatedSpotIds: ["sagami-fuji", "left-fuji", "ota-fuji", "hamanako-fuji", "fuji-paper-mills", "fujikawa-bridge"],
     references: [REFERENCES.weatherFuji],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山", en: "Mt. Fuji" },
     viewpoint: { lat: 35.145328, lng: 138.680677 },
+  },
+  {
+    id: "fuji-paper-mills",
+    icon: "🏭",
+    ja: { name: "富士の製紙工場", area: "新富士のすぐ手前", hook: "富士のふもとは、紙の街。", story: "富士山が窓いっぱいに見えた直後、新富士に着く少し前。E席側の手前に、煙突とタンクとプラントが並ぶ工場地帯が現れます。富士市は日本有数の製紙の街で、なかでも日本製紙富士工場は市内2地区にまたがる大きな拠点です。富士山の伏流水と、富士川から引かれた大量の工業用水。この水が紙を漉くための水で、街の性格そのものになっています。煙突が手前、富士山が奥。工場と霊峰が一枚に収まるのは、この数十秒だけです。" },
+    en: { name: "Fuji's Paper Mills", area: "Just before Shin-Fuji", hook: "Fuji's foothills make paper.", story: "Right after Mt. Fuji fills the window, and shortly before Shin-Fuji, a belt of chimneys, tanks and plant structures slides past on the Seat E side. Fuji City is one of Japan's great papermaking towns, and the Nippon Paper Fuji Mill spreads across two districts of it. Groundwater filtered through Mt. Fuji, plus a large industrial water supply drawn from the Fuji River, is what the mills use to make paper — the water defines the character of the town. Chimneys in front, Mt. Fuji behind: the two share a single frame for only a few dozen seconds." },
+    pageTitle: {
+      ja: "新幹線から見える富士の製紙工場｜煙突と富士山が重なるE席の数十秒 | 新幹線の窓",
+      en: "Fuji's Paper Mills from the Shinkansen | Chimneys and Mt. Fuji from Seat E | Shinkansen Window",
+    },
+    pageHeading: {
+      ja: "煙突の向こうに富士山が立つ、製紙の街",
+      en: "A papermaking town, with Mt. Fuji standing behind the chimneys",
+    },
+    pageHeadingChunks: {
+      ja: ["煙突の向こうに富士山が立つ、", "製紙の街"],
+      en: ["A papermaking town, with Mt. Fuji", "standing behind the chimneys"],
+    },
+    metaDescription: {
+      ja: "東海道新幹線の新富士手前、E席側に広がる富士市の製紙工場地帯を車窓写真と地図で紹介。日本製紙富士工場と、富士川から引かれた工業用水が街を作った背景を解説します。",
+      en: "Just before Shin-Fuji, the Seat E side opens onto Fuji City's paper mills. See them in a window photo and on a map, and learn how the Nippon Paper Fuji Mill and the Fuji River's industrial water built the town.",
+    },
+    sectionHeading: {
+      ja: "なぜ富士山のふもとに製紙工場が集まる？",
+      en: "Why do paper mills cluster at the foot of Mt. Fuji?",
+    },
+    pageStory: {
+      ja: "紙を作るには、とにかく大量の水がいります。富士市には富士山の伏流水と、富士川の表流水がありました。この二つが街の運命を決めます。明治23年（1890年）、東京の富士製紙会社が潤井川流域の入山瀬に工場を建て、富士市域で初めて洋紙を作りました。翌年には日本で初めて自社製の砕木パルプの生産に成功し、安価で質のよい更紙を大量に供給します。明治28年には地元資本の原田製紙が、機械すき和紙を日本で最初に生産しました。以後、大正から昭和初期にかけて工場が次々と建ち、富士市は「紙のまち」になります。いまも市内には製紙関連の事業所が70社近くあり、その数は全国一。製造品出荷額に占めるパルプ・紙・紙加工品の割合は約3割に達します。車窓から見える日本製紙富士工場は、2015年に旧・吉永工場（富士市比奈）と旧・富士工場（富士市蓼原）が統合してできた拠点で、約5km離れた2地区にまたがります。新幹線から見えるのは、そのうち新富士寄りの富士地区です。",
+      en: "Making paper takes an enormous amount of water. Fuji City had two sources — groundwater filtered through Mt. Fuji, and surface water from the Fuji River — and between them they decided the town's fate. In 1890 the Tokyo-based Fuji Paper Company built a mill at Iriyamase on the Urui River, the first Western-style paper made anywhere in what is now Fuji City. The following year it became the first company in Japan to produce its own groundwood pulp, supplying cheap, good-quality newsprint in quantity. In 1895 the locally financed Harada Paper became the first in Japan to make machine-milled washi. Mills went up one after another through the Taisho and early Showa eras, and Fuji became the paper town. Nearly seventy paper-related establishments still operate here — more than in any other municipality in Japan — and pulp, paper and paper products account for roughly thirty per cent of the city's manufacturing shipments. The Nippon Paper Fuji Mill you see from the train took its present shape in 2015, when the former Yoshinaga and Fuji mills merged; it spans two districts about five kilometres apart. What passes your window is the Fuji district, the one nearer Shin-Fuji.",
+    },
+    explainer: {
+      heading: { ja: "車窓での見つけ方と、この街が作っているもの", en: "How to find it, and what this town actually makes" },
+      ja: [
+        "三島〜新富士で富士山を見終わったあと、そのままE席側を見続けてください。新富士に着く1分ほど手前で、前景が田園から工場へ切り替わります。赤白に塗り分けられた高い煙突が目印で、その周りに円筒形のタンクや配管の塔が固まって立っています。",
+        "この区間の面白さは、工場と富士山が同じ方向にあることです。富士山は線路の北側、工場も北側。つまりE席の窓ひとつで、手前に煙突、奥に霊峰という構図が成立します。晴れた日ならもちろん、雲が多い日でも、雲の切れ目から山影が覗くことがあります。",
+        "この街が作っているものは、たいてい誰の家にもあります。全国で生産されるトイレットペーパーのおよそ4割が富士市製で、タオルペーパーや再生家庭紙も主力です。古紙配合率100%のトイレットペーパーが日常的に抄かれていて、衛生用紙では国内屈指のシェアを持ちます。窓の外を流れていく煙突とタンクは、今日あなたが使った紙の出どころかもしれません。",
+        "水の話には続きがあります。ここから3分ほど先で、列車は富士川を渡ります。そのときE席側の川上に見える白いアーチの列が「富士川水管橋」で、橋そのものが直径2.2mの巨大な水道管です。ここを1日およそ108万トンの工業用水が流れ、行き先がまさにこの製紙工場地帯。工場と橋は別々の車窓に見えますが、一本の水の線でつながっています。",
+        "A席側は駿河湾・田子の浦の方向で、こちらにも港湾や別の工場群が見えます。ただし富士山と重ねて見られるのはE席側だけです。工場は24時間動いているので、早朝や夕暮れには煙突からの白い蒸気が光を受けて目立ち、夜間は構内の照明が広く灯って、暗い車窓のなかで工場だけが浮かび上がります。",
+      ],
+      en: [
+        "After the Mishima–Shin-Fuji stretch of Mt. Fuji, simply keep watching the Seat E side. About a minute before Shin-Fuji, the foreground switches from fields to industry. The landmark is a tall chimney painted in red and white bands, with cylindrical tanks and pipe towers clustered around it.",
+        "What makes this stretch interesting is that the mills and the mountain lie in the same direction. Mt. Fuji is north of the line, and so are the mills — so a single Seat E window gives you chimneys in front and the sacred peak behind. On a clear day this is obvious, and even on cloudy days the silhouette often shows through a gap.",
+        "What this town makes is probably somewhere in your house. Around forty per cent of all the toilet paper produced in Japan comes from Fuji City, alongside paper towels and recycled household tissue. Toilet paper made from one hundred per cent recovered paper is milled here as a matter of routine, and the city holds one of the country's leading shares in sanitary paper. The chimneys and tanks sliding past your window may well be where today's paper came from.",
+        "The water story has a sequel. About three minutes further on, the train crosses the Fuji River. The row of white arches you see upstream on the Seat E side is the Fujikawa water pipe bridge, and the structure itself is a 2.2-metre-diameter water main. Roughly 1.08 million tonnes of industrial water flow through it every day, bound for exactly these mills. The works and the bridge look like two separate window views, but a single line of water connects them.",
+        "The Seat A side faces Suruga Bay and Tagonoura, where there are ports and other industrial plants. But only Seat E lets you see the works and Mt. Fuji together. The mills run around the clock, so at dawn and dusk the white plumes catch the light, and after dark the site lighting spreads out until the plant is often the only thing visible from the window.",
+      ],
+    },
+    guideHighlight: {
+      ja: "富士山を見終わってもE席側から目を離さないでください。新富士の1分ほど手前で、赤白の煙突を先頭に工場地帯が現れます。手前に煙突、奥に富士山という一枚は、この数十秒でしか撮れません。",
+      en: "Do not look away from Seat E once Mt. Fuji has passed. About a minute before Shin-Fuji the mills arrive, led by a red-and-white banded chimney. Chimneys in front and Mt. Fuji behind is a shot you only get in these few dozen seconds.",
+    },
+    minutesFromTokyo: 44, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
+    image: "images/20260816_fuji_paper_mills_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      note: { ja: "右奥、雲の切れ間に富士山のシルエットが写っています", en: "At the far right, Mt. Fuji's silhouette shows through a gap in the cloud." },
+    },
+    relatedSpotIds: ["fuji", "fuji-pipe-sign", "fujikawa-bridge"],
+    references: [REFERENCES.fujiCityPaperTown, REFERENCES.fujiCityPaperHistory, REFERENCES.nipponPaperFuji, REFERENCES.nipponPaperFujiMerger],
+    map: { lat: 35.1550, lng: 138.6720, ja: "日本製紙 富士工場（富士地区・蓼原）", en: "Nippon Paper Fuji Mill, Fuji district" },
+    viewpoint: { lat: 35.143357, lng: 138.670535 },
+  },
+  {
+    id: "fujikawa-bridge",
+    icon: "🌉",
+    ja: { name: "富士川橋梁と水管橋", area: "新富士 → 静岡", hook: "川と富士が、一度に来る。", story: "新富士を出てまもなく、列車は全長約1,373mの富士川橋梁で富士川を渡ります。このときE席側の川上に、白いアーチをいくつも連ねた橋が並走して見えます。これが富士川水管橋。橋そのものが直径2.2mの巨大な水道管で、富士市の工場地帯へ1日およそ108万トンの工業用水を送っています。晴れた日には、そのアーチの列の向こうに富士山が立ちます。川、白いアーチ、そして富士山が一度に窓へ入る十数秒。渡り終えるとすぐトンネルなので、心の準備は橋に乗る前に。" },
+    en: { name: "Fujikawa Bridge and the Water Pipe Bridge", area: "Shin-Fuji → Shizuoka", hook: "River and Fuji in one frame.", story: "Soon after Shin-Fuji, the train crosses the Fuji River on the roughly 1,373-metre Fujikawa Bridge. Look upstream on the Seat E side and you will see a line of white arches running parallel to you. That is the Fujikawa water pipe bridge — the structure itself is a 2.2-metre-diameter water main, carrying around 1.08 million tonnes of industrial water a day to Fuji City's mills. On a clear day, Mt. Fuji stands beyond that row of arches. River, white arches and the mountain arrive in the window together for a dozen seconds or so. A tunnel follows immediately after the crossing, so get ready before you reach the bridge." },
+    pageTitle: {
+      ja: "新幹線から見える富士川橋梁と富士川水管橋｜白いアーチ越しの富士山 | 新幹線の窓",
+      en: "The Fujikawa Bridge and Water Pipe Bridge | Mt. Fuji beyond White Arches | Shinkansen Window",
+    },
+    pageHeading: {
+      ja: "白いアーチの向こうに立つ、富士川の富士山",
+      en: "Mt. Fuji beyond the white arches of the Fuji River",
+    },
+    pageHeadingChunks: {
+      ja: ["白いアーチの向こうに立つ、", "富士川の富士山"],
+      en: ["Mt. Fuji beyond the white arches", "of the Fuji River"],
+    },
+    metaDescription: {
+      ja: "東海道新幹線の新富士〜静岡で富士川を渡る十数秒に、E席側で富士川水管橋の白いアーチ越しの富士山が見えます。橋の規模・水管橋の役割・見えるタイミングを車窓写真と地図で解説します。",
+      en: "In the dozen seconds it takes to cross the Fuji River between Shin-Fuji and Shizuoka, Seat E gives you Mt. Fuji beyond the white arches of the Fujikawa water pipe bridge. Learn the scale of both bridges, what the pipe carries, and exactly when to look.",
+    },
+    sectionHeading: {
+      ja: "水管橋とは何か、なぜアーチが並ぶのか",
+      en: "What the water pipe bridge is, and why it is a row of arches",
+    },
+    pageStory: {
+      ja: "新幹線が渡る富士川橋梁とは別に、そのすぐ川上に並走しているのが富士川水管橋です。全長は約1,040m、白いアーチが10連ならぶ独特の姿をしています。これは装飾ではなく構造で、直径2,200mmの鋼管そのものをアーチで補剛するランガー形式。つまり橋の上に水道管が載っているのではなく、水道管が橋になっています。1960年代後半の架設当時、この形式としては日本最大で、世界でも有数の長大水管橋でした。1970年の富士市広報は表紙で「富士川に世界一の水管橋」と紹介しています。運んでいるのは飲み水ではなく工業用水で、行き先は下流の製紙工場地帯です。",
+      en: "The Fujikawa Bridge that the Shinkansen crosses is not the white one. Running parallel just upstream is the Fujikawa water pipe bridge: about 1,040 metres long, formed of ten white arches. The arches are structure, not decoration — this is a Langer design in which a 2,200-millimetre steel pipe is itself stiffened by the arch above it. The water main is not carried by the bridge; the water main is the bridge. When it was built in the late 1960s it was the largest of its type in Japan and among the longest water pipe bridges in the world; Fuji City's public magazine put it on its cover in 1970 as the world's greatest water pipe bridge. What flows through it is industrial water, not drinking water, and it is bound for the paper mills downstream.",
+    },
+    explainer: {
+      heading: { ja: "十数秒をどう使うか", en: "How to spend the dozen seconds" },
+      ja: [
+        "新富士を出たら、E席側の窓に張りついてください。橋に乗ると視界がひらけ、広い河原と水面、その川上に白いアーチの列が現れます。富士山は正面やや右、アーチの向こうに立ちます。",
+        "渡り終えた直後にトンネルへ入ります。つまり「気づいてから探す」では間に合いません。新富士を出た時点で身構えておくのが唯一のコツです。",
+        "冬から早春は、雪をかぶった富士山と白いアーチが対になって、いちばん絵になります。夏は富士山が空に溶けやすいので、その場合はアーチと河原の広さを楽しむ区間だと割り切るのが現実的です。",
+        "A席側は下流、駿河湾の方向です。富士山は見えませんが、河口へ向かって広がる河原と、遠くに海が見えることがあります。",
+      ],
+      en: [
+        "Once you leave Shin-Fuji, stay at the Seat E window. As the train reaches the bridge the view opens onto a broad gravel riverbed and the water, with the row of white arches upstream. Mt. Fuji stands ahead and slightly right, beyond the arches.",
+        "A tunnel begins the moment the crossing ends. There is no time to notice it and then go looking — the only trick is to be ready as you pull out of Shin-Fuji.",
+        "Winter and early spring are the best pairing: a snow-capped Fuji above white arches. In summer the mountain tends to dissolve into the sky, and it is more realistic to enjoy the arches and the width of the riverbed instead.",
+        "The Seat A side looks downstream toward Suruga Bay. There is no Mt. Fuji, but the riverbed widens toward the mouth and the sea is sometimes visible in the distance.",
+      ],
+    },
+    guideHighlight: {
+      ja: "新富士を出たらE席側で構えてください。橋に乗った瞬間に河原がひらけ、川上に白いアーチが並びます。その向こうが富士山です。渡り終えるとすぐトンネルなので、探し始めるのでは遅すぎます。",
+      en: "Be at the Seat E window as you leave Shin-Fuji. The moment the train reaches the bridge the riverbed opens up and the white arches line up upstream, with Mt. Fuji beyond them. A tunnel follows straight after the crossing, so starting to look once you are on the bridge is already too late.",
+    },
+    minutesFromTokyo: 47, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "bay",
+    image: "images/20220205_fujikawa_bridge_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      note: { ja: "2022年2月5日。冠雪した富士山と、10連の白いアーチ", en: "5 February 2022: a snow-capped Mt. Fuji above the ten white arches." },
+    },
+    relatedSpotIds: ["fuji", "fuji-paper-mills", "shimizu-port-chikyu"],
+    references: [REFERENCES.fujikawaBridgeSuruga, REFERENCES.fujikawaSuikankyoDoboku],
+    map: { lat: 35.1310, lng: 138.5985, ja: "富士川水管橋", en: "Fujikawa water pipe bridge" },
+    viewpoint: { lat: 35.1265, lng: 138.5945 },
   },
   {
     id: "left-fuji",
@@ -1840,14 +2026,14 @@ const SPOTS = [
         alt: { ja: "曇り空の朝、クレーンの列の奥にちきゅうの櫓が立つ清水港", en: "Shimizu Port on a cloudy morning, CHIKYU's derrick standing beyond a line of cranes" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-20",
-        note: { ja: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:43撮影", en: "michikusa / 2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:43." },
+        note: { ja: "2026-08-20 · 品川06:00発のぞみ99号で06:43撮影", en: "2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:43." },
       },
       {
         src: "images/20260820_shimizu_port_chikyu_2_michikusa.jpg",
         alt: { ja: "電線越しに大きく捉えたちきゅうの掘削櫓", en: "CHIKYU's drilling derrick framed large through the overhead wires" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-20",
-        note: { ja: "michikusa / 2026-08-20 · 2秒後、櫓が真横に来たところ", en: "michikusa / 2026-08-20 · Two seconds later, with the derrick abeam." },
+        note: { ja: "2026-08-20 · 2秒後、櫓が真横に来たところ", en: "2026-08-20 · Two seconds later, with the derrick abeam." },
       },
     ],
     media: {
@@ -2604,14 +2790,14 @@ const SPOTS = [
         alt: { ja: "朝の三河湾に浮かぶ三河大島と、手前を走る貨物列車", en: "Mikawa Oshima in the morning bay, with a freight train passing in front" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-20",
-        note: { ja: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で07:13撮影", en: "michikusa / 2026-08-20 · Nozomi 99 from Shinagawa, taken at 07:13." },
+        note: { ja: "2026-08-20 · 品川06:00発のぞみ99号で07:13撮影", en: "2026-08-20 · Nozomi 99 from Shinagawa, taken at 07:13." },
       },
       {
         src: "images/20260820_mikawa_oshima_2_michikusa.jpg",
         alt: { ja: "町並みの向こう、三河湾に低く横たわる三河大島", en: "Mikawa Oshima lying low across the bay, beyond the rooftops" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-20",
-        note: { ja: "michikusa / 2026-08-20 · 2秒後、島が真横に来たところ", en: "michikusa / 2026-08-20 · Two seconds later, with the island abeam." },
+        note: { ja: "2026-08-20 · 2秒後、島が真横に来たところ", en: "2026-08-20 · Two seconds later, with the island abeam." },
       },
     ],
     references: [REFERENCES.toyokeizaiMikawa, REFERENCES.mikawaOshimaGamagori, REFERENCES.mikawaOshimaWiki],
@@ -2689,6 +2875,23 @@ const SPOTS = [
         note: { ja: "セロテープの色帯が工場壁面の目印", en: "The CELLOTAPE color bands mark the factory wall." },
       },
     ],
+    media: {
+      heading: { ja: "動画で見るセロテープの壁看板", en: "The CELLOTAPE wall sign in motion" },
+      description: {
+        ja: "看板が視界に入ってから流れ去るまでは数秒です。実際にどのくらいの速さで通り過ぎるのかを動画で確かめられます。",
+        en: "The sign is in view for only a few seconds. This video shows just how fast it slides past.",
+      },
+      videos: [
+        {
+          kind: "youtube",
+          id: "9p_XwjtzHBI",
+          title: { ja: "セロテープの壁看板の車窓動画", en: "Window video of the CELLOTAPE wall sign" },
+          url: "https://www.youtube.com/watch?v=9p_XwjtzHBI",
+          comment: { ja: "E席側、壁看板が現れて通り過ぎるまでをそのまま収めています。", en: "From Seat E: the sign appearing and sliding past, uncut." },
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
     references: [REFERENCES.nichibanCompany, REFERENCES.cellotapeStory, REFERENCES.nichibanPrtimes, REFERENCES.nichibanBlog],
     map: { lat: 34.972656, lng: 137.058777, ja: "ニチバン 安城工場 セロテープ 壁看板", en: "Nichiban Anjo Factory CELLOTAPE wall sign" },
     viewpoint: { lat: 34.971971, lng: 137.057485 },
@@ -3947,6 +4150,96 @@ const SPOTS = [
     references: [REFERENCES.tojiOfficial, REFERENCES.tojiPagodaBunka, REFERENCES.toji],
     map: { lat: 34.980361, lng: 135.747694, ja: "東寺 五重塔", en: "To-ji Pagoda Kyoto" },
     viewpoint: { lat: 34.985303, lng: 135.746690 },
+  },
+  {
+    id: "hirakata-park-wheel",
+    icon: "🎡",
+    ja: { name: "ひらパーの観覧車", area: "京都 → 新大阪", hook: "淀川の向こうに、観覧車。", story: "京都を出て新大阪へ向かう終盤、淀川の対岸にぽつんと観覧車が立っています。ひらかたパークの「スカイウォーカー」。最頂部は約80mあり、2km以上離れた線路からでもはっきり見つかります。よく見ると輪の右手に、白く波打つ骨組みが横に伸びています。ジェットコースター「レッドファルコン」の軌道です。ひらかたパークは1912年からこの地で続く、日本でいちばん古い遊園地。もとは京阪電車が沿線に人を呼ぶために作った遊園地で、いまも京阪の子会社が運営しています。地元では「ひらパー」。日が落ちるとイルミネーションが灯り、青と金の輪が薄暮の街に浮かびます。もうすぐ新大阪、という合図の一景です。" },
+    en: { name: "The Hirakata Park Ferris Wheel", area: "Kyoto → Shin-Osaka", hook: "A Ferris wheel across the river.", story: "In the last stretch from Kyoto toward Shin-Osaka, a lone Ferris wheel stands on the far bank of the Yodo River. It is the Skywalker at Hirakata Park, reaching about 80 metres at the top — tall enough to pick out clearly from a line more than two kilometres away. Look to its right and a pale undulating lattice runs sideways: the track of the Red Falcon rollercoaster. Hirakata Park has operated on this site since 1912 and is the oldest amusement park still running in Japan. A railway company built it to draw passengers out along its new line, and a subsidiary of that same railway still runs it today. After dark the wheel lights up, a ring of blue and gold above the town at dusk. Treat it as your signal that Shin-Osaka is close." },
+    pageTitle: {
+      ja: "新幹線から見えるひらパーの観覧車｜京都〜新大阪のA席で探す | 新幹線の窓",
+      en: "The Hirakata Park Ferris Wheel from the Shinkansen | Spotting It from Seat A | Shinkansen Window",
+    },
+    pageHeading: {
+      ja: "淀川の対岸に立つ、ひらパーのスカイウォーカー",
+      en: "The Hirakata Park Ferris wheel across the Yodo",
+    },
+    pageHeadingChunks: {
+      ja: ["淀川の対岸に立つ、", "ひらパーのスカイウォーカー"],
+      en: ["The Hirakata Park Ferris wheel", "across the Yodo"],
+    },
+    metaDescription: {
+      ja: "東海道新幹線の京都〜新大阪、A席側の淀川の向こうに見えるひらかたパークの観覧車スカイウォーカー。夜のライトアップの見え方、高さ約80m、線路からの距離、見えるタイミングを、車窓写真と動画・地図で解説します。",
+      en: "Between Kyoto and Shin-Osaka, the Seat A side shows the Skywalker Ferris wheel at Hirakata Park across the Yodo River. How it looks lit up at night, its height, its distance from the line and exactly when to watch, with window photos, video and a map.",
+    },
+    sectionHeading: {
+      ja: "あの観覧車は、何の遊園地？",
+      en: "What is that amusement park?",
+    },
+    pageStory: {
+      ja: "ひらかたパークは、いま日本でいちばん古くから続いている遊園地です。前身は1910年（明治43年）、京阪電車の開通に合わせて寝屋川市の香里駅近くに開かれた「香里遊園地」。1912年（大正元年）に現在の枚方へ移り、以後この場所で営業を続けています。運営は今も京阪電気鉄道の子会社です。つまりこれは、鉄道会社が沿線に人を呼ぶために作った遊園地が、100年以上そのまま生き残っている姿でもあります。開園の年の秋、東京・両国国技館で人気を集めていた菊人形展を香里遊園地で開いたところ大好評となり、以後「菊人形」がひらかたパークの代名詞になりました。ひらかた大菊人形は2005年12月4日の「義経」を最後に96年の歴史を閉じましたが、いまも園内には菊人形が飾られ、翌年には市民ボランティアの会も生まれています。地元では「ひらパー」と呼ばれ、俳優の岡田准一さんが2代目「ひらパー兄さん」、のちに園長を務めたキャンペーンでも知られます。年間来園者数100万人という達成条件付きの園長就任は、2014年度に約104万人で見事にクリアしました。",
+      en: "Hirakata Park is the oldest amusement park still operating in Japan. It began in 1910 as Kori Amusement Park, opened beside a station on a brand-new Keihan Railway line, and moved to its present site in Hirakata in 1912; it has run here ever since, and is still operated by a Keihan Railway subsidiary. That lineage matters more than it sounds. In early twentieth-century Japan, private railway companies routinely built amusement parks, department stores and baseball grounds at the ends of their lines in order to create passengers — a business model that shaped the suburbs of Osaka and Tokyo. Hirakata Park is that model still running, more than a century later, and you are looking at it from another railway. In its first autumn the park staged an exhibition of kiku-ningyo — life-size figures costumed in living chrysanthemum blooms, an exhibition art then popular in Tokyo — and the chrysanthemum dolls became the park's signature for the next 96 seasons, until the last one closed in December 2005 as the craftsmen aged out and no successors came. Dolls are still displayed in the park, and a citizens' volunteer group formed the following year to keep the craft alive locally.",
+    },
+    explainer: {
+      heading: { ja: "見つけ方と、窓に写るもの", en: "How to find it, and what else is in the frame" },
+      ja: [
+        "東海道新幹線は京都を出たあと、淀川の北側を高槻・茨木・摂津と抜けて新大阪へ向かいます。ひらかたパークがあるのは川の南側、枚方市枚方公園町。線路からの距離は約2.3kmあり、決して近くはありません。それでも見つかるのは、観覧車スカイウォーカーの最頂部が約80mと高く、周囲に同じ高さのものがないからです。マンション群の屋根の上に、輪だけがひとつ抜き出て見えます。",
+        "東京から新大阪へ向かう場合はA席側です。京都を出てしばらく走り、727看板でおなじみの高槻あたりを過ぎたころ、進行方向左手のやや遠くに輪が現れます。ビルではなく「輪」を探すのが確実です。距離があるので、手前の高圧鉄塔やマンションに紛れて見落としやすい一景でもあります。地平線のあたりではなく、屋根の少し上の高さに視線を置いてください。",
+        "見えているのは観覧車だけではありません。輪の右手に、白く波打つ骨組みが横に長く伸びています。ジェットコースター「レッドファルコン」の軌道で、全長1,300m・最高速度は時速70km。園内でいちばん大きな乗り物です。観覧車の輪とコースターの起伏、この二つが並んで見えたら、それがひらかたパークだと確信して構いません。",
+        "日中は白っぽい骨組みだけなので難易度が上がります。逆に日没後はスカイウォーカーにイルミネーションが灯り、青や金の輪がはっきり浮かぶので、夕方以降の列車のほうが成功率は高めです。ゴンドラは10色あり、ひとつに最大5人まで乗れます。",
+      ],
+      en: [
+        "After Kyoto, the Tokaido Shinkansen runs along the north side of the Yodo River through Takatsuki, Ibaraki and Settsu on its way to Shin-Osaka. Hirakata Park sits on the south side, in Hirakata City. It is about 2.3 kilometres from the line — not close at all. You can still find it because the Skywalker Ferris wheel reaches roughly 80 metres at the top and nothing around it is anywhere near that tall, so the wheel alone lifts clear of the apartment rooftops.",
+        "Heading from Tokyo toward Shin-Osaka, this is a Seat A view. A while after Kyoto, around the Takatsuki area familiar from the 727 signs, a ring appears in the middle distance to the left. Look for a ring, not a building — that is the reliable cue. Because of the distance it is easy to lose among the pylons and apartment blocks in front, so keep your eyes a little above the rooflines rather than on the horizon.",
+        "The wheel is not the only thing in the frame. To its right, a pale undulating lattice runs a long way sideways: that is the track of the Red Falcon, the park's biggest ride, 1,300 metres long and reaching 70 km/h. A ring and a rollercoaster's humps side by side is the combination that confirms you are looking at Hirakata Park and not some other tower.",
+        "In daylight the structures are only pale skeletons, which makes them harder to pick out. After sunset the Skywalker is illuminated and the blue and gold ring stands out clearly, so an evening train gives you a much better chance. The wheel's gondolas come in ten colours and seat up to five people each.",
+      ],
+    },
+    guideHighlight: {
+      ja: "高槻を過ぎたら、A席側の屋根の少し上を見てください。ビルではなく「輪」を探すのが確実です。日没後は青と金のイルミネーションが灯るので、夕方以降の列車ならぐっと見つけやすくなります。",
+      en: "Once past Takatsuki, look a little above the rooflines on the Seat A side, and search for a ring rather than a building. After sunset the wheel is lit in blue and gold, so an evening train makes it far easier to find.",
+    },
+    minutesFromTokyo: 139, side: "A", category: "notable", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    routeNote: {
+      ja: "上下どちらもA席側です。東海道新幹線は編成の向きが変わらないため、A席は常に線路の南側になります。変わるのは進行方向に対する左右だけで、東京から新大阪へ向かうときは左手、新大阪から東京へ向かうときは右手です。上り列車では新大阪を出ておよそ6分後に現れます。",
+      en: "Seat A in both directions. Tokaido Shinkansen sets keep the same orientation, so Seat A is always on the southern side of the line; only its relation to your direction of travel changes — on your left toward Shin-Osaka, on your right toward Tokyo. On an eastbound train it appears about six minutes after leaving Shin-Osaka.",
+    },
+    image: "images/20260824_hirakata_park_wheel_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      note: { ja: "2026-08-24・上りのぞみ104号、18:45頃。輪の右手に伸びる白い骨組みがレッドファルコンの軌道", en: "24 August 2026, eastbound Nozomi 104, around 18:45. The pale lattice to the right of the wheel is the Red Falcon's track." },
+    },
+    photos: [
+      {
+        src: "images/20260824_hirakata_park_wheel_wide_michikusa.jpg",
+        alt: { ja: "夕焼けの空の下、淀川の対岸に小さく光るひらパーの観覧車", en: "The Hirakata Park wheel glowing across the Yodo River under a sunset sky" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-24",
+        note: { ja: "引きで見ると、マンション群と高圧鉄塔のなかに輪がひとつ", en: "Pulled back, the wheel is a single ring among apartment blocks and pylons." },
+      },
+    ],
+    media: {
+      heading: { ja: "動画で見るひらパーの観覧車", en: "The Hirakata Park wheel in motion" },
+      description: {
+        ja: "写真だと止まって見えますが、実際は回りながら光の模様が変わっていきます。薄暮のイルミネーションが2.3km先からどう見えるのかを動画で確かめられます。",
+        en: "In a still photo the wheel looks fixed, but it turns and its pattern of light keeps changing. The video shows how the dusk illumination actually reads from 2.3 kilometres away.",
+      },
+      videos: [
+        {
+          kind: "youtube",
+          id: "jStt6nf_CNc",
+          title: { ja: "薄暮にライトアップされたスカイウォーカーの車窓動画", en: "Window video of the Skywalker lit up at dusk" },
+          url: "https://www.youtube.com/watch?v=jStt6nf_CNc",
+          comment: { ja: "2026-08-24、上りのぞみ104号から。薄暮に灯ったスカイウォーカーを通り過ぎるまで。", en: "2026-08-24, from an eastbound Nozomi: the Skywalker lit against the dusk, until it slips away." },
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
+    relatedSpotIds: ["toji", "torikai-train-depot"],
+    references: [REFERENCES.hirakataSkywalker, REFERENCES.hirakataRedFalcon, REFERENCES.hirakataParkKeihan, REFERENCES.hirakataKikuNingyo],
+    map: { lat: 34.8075, lng: 135.6385, ja: "ひらかたパーク", en: "Hirakata Park" },
+    viewpoint: { lat: 34.818985, lng: 135.617755 },
   },
   {
     id: "torikai-train-depot",

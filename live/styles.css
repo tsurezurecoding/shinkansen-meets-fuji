@@ -1,16 +1,18 @@
 :root {
-  --live-bg: #0e1726;
-  --live-panel: #16233a;
-  --live-panel-2: #1d2d49;
-  --live-line: #2b3d5e;
-  --live-text: #eef3fb;
-  --live-sub: #9fb0ca;
-  --live-accent: #4da3ff;
-  --live-accent-2: #ffd166;
-  --live-mountain: #7ec8a9;
-  --live-sea: #6db3f2;
+  /* 本体サイト（style.css）の夜明けパレットに合わせた夜トーン。
+     色を足すときは style.css の :root の値から引くこと。 */
+  --live-bg: #0d1826;        /* --night #101c2c を少し沈めた地色 */
+  --live-panel: #17273c;
+  --live-panel-2: #1c2f47;   /* = --night-2 */
+  --live-line: #33486a;
+  --live-text: #f3f6fa;      /* = --fuji-snow */
+  --live-sub: #b3c2d8;
+  --live-accent: #e8704a;    /* = --accent 夕焼けオレンジ */
+  --live-accent-2: #e5b45a;  /* = --gold を夜背景用に持ち上げた値 */
+  --live-mountain: #8fc0a0;
+  --live-sea: #9dbbdd;       /* = --fuji を夜背景用に持ち上げた値 */
   --live-danger: #ff6b6b;
-  --live-radius: 14px;
+  --live-radius: 18px;       /* = --radius */
 }
 
 html, body {
@@ -24,7 +26,7 @@ body.live-page {
 }
 
 .live-sitebar {
-  background: rgba(8, 16, 28, 0.88);
+  background: rgba(9, 18, 30, 0.9);
 }
 
 #app {
@@ -39,7 +41,7 @@ body.live-page {
   align-items: center;
   justify-content: space-between;
   padding: 8px 10px;
-  background: rgba(14, 23, 38, 0.94);
+  background: rgba(13, 24, 38, 0.94);
   border-bottom: 1px solid var(--live-line);
   gap: 8px;
   z-index: 20;
@@ -118,7 +120,7 @@ body.live-page {
 }
 
 .tb-btn-toggle[aria-pressed="true"] {
-  border-color: rgba(255, 209, 102, 0.62);
+  border-color: rgba(229, 180, 90, 0.62);
 }
 
 .tb-btn-toggle.is-off {
@@ -129,7 +131,7 @@ body.live-page {
 #map {
   flex: 1 1 auto;
   min-height: 30dvh;
-  background: #0a111e;
+  background: #09131f;
 }
 
 #live-map-controls {
@@ -143,9 +145,9 @@ body.live-page {
   gap: 8px;
   max-width: min(520px, calc(100vw - 24px));
   padding: 6px;
-  border: 1px solid rgba(238, 243, 251, 0.2);
+  border: 1px solid rgba(243, 246, 250, 0.22);
   border-radius: 12px;
-  background: rgba(8, 16, 28, 0.9);
+  background: rgba(9, 18, 30, 0.92);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.42);
   backdrop-filter: blur(10px);
 }
@@ -153,7 +155,7 @@ body.live-page {
 .map-control-btn {
   min-height: 38px;
   border-radius: 9px;
-  border: 1px solid rgba(238, 243, 251, 0.2);
+  border: 1px solid rgba(243, 246, 250, 0.22);
   padding: 8px 10px;
   color: var(--live-text);
   font-size: 0.78rem;
@@ -167,7 +169,7 @@ body.live-page {
 }
 
 .map-control-secondary[aria-pressed="true"] {
-  border-color: rgba(255, 209, 102, 0.68);
+  border-color: rgba(229, 180, 90, 0.68);
 }
 
 .map-control-secondary.is-off {
@@ -191,7 +193,7 @@ body.live-page {
   border-radius: 50%;
   background: var(--live-accent);
   border: 3px solid #fff;
-  box-shadow: 0 0 0 6px rgba(77, 163, 255, 0.35);
+  box-shadow: 0 0 0 6px rgba(232, 112, 74, 0.32);
 }
 
 .user-marker.pulse {
@@ -199,9 +201,9 @@ body.live-page {
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 4px rgba(77, 163, 255, 0.4); }
-  70% { box-shadow: 0 0 0 14px rgba(77, 163, 255, 0); }
-  100% { box-shadow: 0 0 0 4px rgba(77, 163, 255, 0); }
+  0% { box-shadow: 0 0 0 4px rgba(232, 112, 74, 0.4); }
+  70% { box-shadow: 0 0 0 14px rgba(232, 112, 74, 0); }
+  100% { box-shadow: 0 0 0 4px rgba(232, 112, 74, 0); }
 }
 
 .spot-marker {
@@ -225,11 +227,11 @@ body.live-page {
 
 .spot-marker.next {
   border-color: var(--live-accent-2);
-  box-shadow: 0 0 0 4px rgba(255, 209, 102, 0.45);
+  box-shadow: 0 0 0 4px rgba(229, 180, 90, 0.5);
 }
 
 .station-label {
-  background: rgba(14,23,38,0.8);
+  background: rgba(13,24,38,0.82);
   color: #dfe8f5;
   padding: 1px 6px;
   border-radius: 6px;
@@ -243,7 +245,7 @@ body.live-page {
   top: 92px;
   left: 50%;
   transform: translateX(-50%);
-  background: rgba(14,23,38,0.88);
+  background: rgba(13,24,38,0.9);
   border: 1px solid var(--live-line);
   border-radius: 999px;
   padding: 4px 14px;
@@ -261,7 +263,7 @@ body.live-page {
   display: flex;
   align-items: center;
   gap: 10px;
-  background: linear-gradient(135deg, #3a2d09, #4d3a05);
+  background: linear-gradient(135deg, #3a2b12, #4a3714);
   border: 1px solid var(--live-accent-2);
   border-radius: var(--live-radius);
   padding: 10px 12px;
@@ -328,7 +330,7 @@ body.live-page.is-idle #sheet {
 }
 
 #narrbar {
-  background: linear-gradient(160deg, #10263a, var(--live-panel));
+  background: linear-gradient(160deg, #1d2f47, var(--live-panel));
   border: 1px solid var(--live-accent);
   border-radius: var(--live-radius);
   padding: 10px 12px;
@@ -344,7 +346,7 @@ body.live-page.is-idle #sheet {
 
 .nr-tag {
   background: var(--live-accent);
-  color: #06121f;
+  color: #fff6f1;
   font-size: 0.65rem;
   font-weight: 800;
   letter-spacing: 0.08em;
@@ -539,39 +541,197 @@ body.live-page.is-idle #sheet {
 .pa-row .ok { color: var(--live-mountain); }
 
 #idle-panel {
-  text-align: center;
-  padding: 14px 6px 8px;
+  text-align: left;
+  padding: 16px 4px 12px;
 }
 
 #idle-panel h2 {
-  font-size: 1.15rem;
-  margin-bottom: 8px;
+  font-family: var(--font-serif);
+  font-size: 1.16rem;
+  line-height: 1.55;
+  letter-spacing: 0;
+  margin-bottom: 10px;
 }
 
 #idle-panel p {
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   color: var(--live-sub);
   margin-bottom: 14px;
-  line-height: 1.6;
+  line-height: 1.8;
+}
+
+/* 主導線。説明を読み切らなくても押せるよう、機能紹介より前に置く */
+.idle-actions {
+  display: grid;
+  gap: 8px;
+  margin: 0 0 20px;
+}
+
+.idle-actions .big-btn {
+  margin-bottom: 0;
+}
+
+#idle-panel .idle-demo-note {
+  margin: 2px 0 0;
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: var(--live-sub);
+}
+
+/* アプリ導線。ブラウザではバックグラウンド追跡ができないので、
+   主導線の直後・機能紹介より前に置き、理由を添えて出す。 */
+.idle-app-rec {
+  margin: 0 0 22px;
+  padding: 12px 12px 14px;
+  border: 1px solid rgba(232, 112, 74, 0.42);
+  border-radius: 12px;
+  background: rgba(232, 112, 74, 0.08);
+}
+
+#idle-panel .idle-app-why {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--live-text);
+}
+
+.idle-app-rec .ea-live-cta {
+  margin-top: 0;
+  border-color: rgba(232, 112, 74, 0.5);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.idle-app-rec .ea-live-cta:hover,
+.idle-app-rec .ea-live-cta:focus-visible {
+  border-color: var(--live-accent);
+  background: rgba(232, 112, 74, 0.16);
+}
+
+.idle-app-rec .ea-live-cta-arrow {
+  color: var(--live-accent);
+  opacity: 1;
 }
 
 .idle-feature-list {
   display: grid;
   gap: 6px;
-  margin: 0 0 14px;
+  margin: 0 0 22px;
   padding: 0;
   list-style: none;
   text-align: left;
 }
 
 .idle-feature-list li {
-  border: 1px solid rgba(238, 243, 251, 0.14);
-  border-radius: 9px;
-  background: rgba(255, 255, 255, 0.055);
+  position: relative;
+  border: 1px solid rgba(243, 246, 250, 0.14);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
   color: var(--live-text);
-  font-size: 0.78rem;
-  line-height: 1.45;
-  padding: 8px 10px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  padding: 9px 12px 9px 30px;
+}
+
+.idle-feature-list li::before {
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 1.05em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--live-accent);
+}
+
+/* 使い方。中央寄せをやめ、番号と本文の視線を揃える */
+.idle-about {
+  border-top: 1px solid var(--live-line);
+  padding-top: 18px;
+  margin-bottom: 18px;
+}
+
+.idle-about h3 {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--live-text);
+  margin-bottom: 12px;
+}
+
+.idle-steps {
+  list-style: none;
+  counter-reset: idle-step;
+  margin: 0 0 16px;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.idle-steps li {
+  counter-increment: idle-step;
+  position: relative;
+  padding-left: 34px;
+  font-size: 0.83rem;
+  line-height: 1.75;
+  color: var(--live-text);
+}
+
+.idle-steps li::before {
+  content: counter(idle-step);
+  position: absolute;
+  left: 0;
+  top: 0.15em;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(232, 112, 74, 0.18);
+  border: 1px solid rgba(232, 112, 74, 0.6);
+  color: var(--live-accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#idle-panel .idle-about > p {
+  margin-bottom: 10px;
+  font-size: 0.8rem;
+}
+
+.idle-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.idle-links a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 12px;
+  border: 1px solid var(--live-line);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--live-text);
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.idle-links a::after {
+  content: "\203A";
+  color: var(--live-sub);
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.idle-links a:hover,
+.idle-links a:focus-visible {
+  border-color: var(--live-accent);
+  background: rgba(232, 112, 74, 0.1);
 }
 
 .big-btn {
@@ -585,7 +745,8 @@ body.live-page.is-idle #sheet {
   border: none;
   cursor: pointer;
   background: var(--live-accent);
-  color: #06121f;
+  color: #fff6f1;
+  box-shadow: 0 8px 20px rgba(232, 112, 74, 0.28);
 }
 
 .big-btn.ghost {
@@ -687,7 +848,7 @@ body.live-page.is-idle #sheet {
 
 .primary-btn {
   background: var(--live-accent);
-  color: #06121f;
+  color: #fff6f1;
   border: none;
 }
 
@@ -717,7 +878,7 @@ body.live-page.is-idle #sheet {
 @media (min-width: 900px) {
   #app {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) 380px;
+    grid-template-columns: minmax(0, 1fr) 400px;
     grid-template-rows: auto minmax(0, 1fr);
     height: calc(100dvh - 47px);
   }
@@ -738,23 +899,25 @@ body.live-page.is-idle #sheet {
   #sheet {
     grid-column: 2;
     grid-row: 1 / span 2;
-    width: 380px;
+    width: 400px;
     max-height: none;
     height: calc(100dvh - 47px);
     border-top: none;
     border-left: 1px solid var(--live-line);
-    padding-top: 10px;
+    padding: 12px 18px calc(20px + env(safe-area-inset-bottom));
   }
+
+  #sheet-handle { display: none; }
 
   body.live-page.is-idle #sheet {
     max-height: none;
   }
 
-  #segband { left: calc(50% - 190px); }
-  #alertbar { right: 390px; }
+  #segband { left: calc(50% - 200px); }
+  #alertbar { right: 410px; }
 
   #live-map-controls {
-    right: 396px;
+    right: 416px;
     bottom: 32px;
   }
 }
@@ -803,28 +966,27 @@ body.live-page.is-idle #sheet {
   }
 }
 
-/* α版表示 */
+/* α版表示。見える予報βの「見出しの隣に小さく1文字」と同じ強度に揃える。
+   このページだけ警告色の枠で強調しない。 */
+.tb-title-line {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  min-width: 0;
+}
+
 .live-alpha-badge {
-  display: inline-block;
-  margin-left: 0.4em;
-  padding: 0.08em 0.5em;
-  border-radius: 999px;
-  background: #f59e0b;
-  color: #1a1a1a;
-  font-size: 0.6rem;
+  color: var(--live-accent);
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
-  vertical-align: middle;
+  letter-spacing: 0.04em;
   white-space: nowrap;
 }
-.idle-alpha-note {
-  margin: 0.6em 0 0;
-  padding: 0.5em 0.75em;
-  border: 1px solid rgba(245, 158, 11, 0.7);
-  border-radius: 8px;
-  background: rgba(245, 158, 11, 0.14);
-  color: #fbbf24;
-  font-size: 0.8rem;
-  line-height: 1.55;
+
+/* 注意書きは「使い方」の末尾に、本文と同じ調子の一文として置く */
+#idle-panel .idle-alpha-note {
+  margin: -6px 0 16px;
+  font-size: 0.76rem;
+  line-height: 1.7;
+  color: var(--live-sub);
 }
-#idle-panel #idle-alpha-note { color: #fbbf24; }

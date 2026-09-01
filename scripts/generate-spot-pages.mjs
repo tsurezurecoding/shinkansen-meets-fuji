@@ -63,7 +63,6 @@ const UI = {
     sectionPoint: "東海道新幹線の車窓としてのポイント",
     sectionPhotos: (name) => `写真で見る${name}`,
     sectionRefs: "参考リンク",
-    sectionRelated: "近くの車窓も見る",
     facts: ["見える区間", "座席側", "タイミング", "写真"],
     photoUnit: "枚",
     routeNote: (area, side) => `東京から新大阪方面へ向かう場合は、${area || "この区間"}が近づいたら${side}の窓を少し早めに見てください。新大阪から東京方面へ向かう場合は、通過順が逆になります。`,
@@ -136,7 +135,6 @@ const UI = {
     sectionPoint: "Why this view matters",
     sectionPhotos: (name) => `${name} in photos`,
     sectionRefs: "References",
-    sectionRelated: "Nearby window views",
     facts: ["Section", "Seat side", "Timing", "Photos"],
     photoUnit: "photos",
     routeNote: (area, side) => {
@@ -1386,51 +1384,6 @@ function spotGuideHref(spot) {
   return `${pageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`;
 }
 
-function routeRelatedHTML(spot, lang) {
-  const ui = UI[lang];
-  const prefix = lang === "ja" ? "../" : "../../";
-  const routeSpots = [...SPOTS].sort((a, b) => Number(a.minutesFromTokyo || 0) - Number(b.minutesFromTokyo || 0));
-  const explicitIds = new Set(spot.relatedSpotIds || []);
-  const unique = [];
-  for (const id of explicitIds) {
-    const item = routeSpots.find((entry) => entry.id === id);
-    if (item) unique.push({ label: ui.relatedCategory, spot: item });
-  }
-  const scored = routeSpots
-    .filter((item) => item.id !== spot.id && !explicitIds.has(item.id))
-    .map((item) => {
-      const minutesDiff = Math.abs(Number(item.minutesFromTokyo || 0) - Number(spot.minutesFromTokyo || 0));
-      const score =
-        (item.category === spot.category ? 12 : 0) +
-        (item.side === spot.side ? 3 : 0) +
-        Math.max(0, 8 - minutesDiff / 6);
-      const label = item.category === spot.category
-        ? ui.relatedCategory
-        : (lang === "ja" ? "近い時間" : "Nearby");
-      return { label, spot: item, score };
-    })
-    .sort((a, b) => b.score - a.score);
-  for (const item of scored) {
-    if (unique.length >= 3) break;
-    if (!unique.some((entry) => entry.spot.id === item.spot.id)) unique.push(item);
-  }
-  if (!unique.length) return "";
-  const links = unique.slice(0, 3).map(({ label, spot: item }) => {
-    const data = item[lang] || item.ja;
-    const image = thumbnailSrc(item.image || item.photos?.[0]?.src || "images/og-shinkansen-window.png");
-    return `<a href="${spotGuideHref(item)}">
-        <img src="${prefix}${escapeHTML(image)}" alt="${escapeHTML(data.name)}" loading="lazy" decoding="async">
-        <small>${escapeHTML(label)}</small>
-        <strong>${escapeHTML(data.name)}</strong>
-        <span>${escapeHTML(data.hook || data.area)}</span>
-      </a>`;
-  }).join("");
-  return `<section class="spot-page-section">
-        <h2>${escapeHTML(ui.sectionRelated)}</h2>
-        <div class="spot-page-related">${links}</div>
-      </section>`;
-}
-
 function referencesHTML(spot, lang) {
   const ui = UI[lang];
   const items = (spot.references || []).map((ref) => {
@@ -1722,12 +1675,6 @@ function thinSpotPageHTML(spot, lang) {
     { tag: "div", staticMarker: "topbar" },
   );
   const staticContentRailHTML = contentRailHTML(lang, prefix, { staticMarker: "content-rail" });
-  const staticRelatedInner = routeRelatedHTML(spot, lang);
-  const staticRelatedHTML = staticRelatedInner
-    ? `<div class="spot-page-static-related" data-spot-page-shared-static="related" style="max-width:820px;margin:0 auto;padding:0 20px;">
-    ${staticRelatedInner}
-  </div>`
-    : "";
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -1771,7 +1718,7 @@ function thinSpotPageHTML(spot, lang) {
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   ${staticNavHTML}
   <div data-spot-page-shared-module="page"></div>
-  ${staticRelatedHTML}${staticContentRailHTML}
+  ${staticContentRailHTML}
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
   <script src="${prefix}spot-page-shared.js?v=${assetVersion("spot-page-shared.js")}"></script>
   <script src="${prefix}spot-media-gallery.js?v=${assetVersion("spot-media-gallery.js")}"></script>
@@ -1890,7 +1837,6 @@ function spotPageHTML(spot, lang) {
   const explainerBlock = explainer ? `      ${explainer}\n` : ibukiMediaPilot ? "" : "      \n";
   const articleImageBlock = articleImage ? `      ${articleImage}\n` : "";
   const sharedGuideBlock = sharedGuide ? `      ${sharedGuide}\n` : "";
-  const relatedBlock = ibukiShowcasePilot ? "" : routeRelatedHTML(spot, lang);
   const showcaseHostBlock = ibukiShowcasePilot
     ? '    <div data-spot-page-shared-module="showcase"></div>\n'
     : "";
@@ -1964,7 +1910,7 @@ ${inlineFigures.first ? `      ${inlineFigures.first}\n` : ""}${explainerBlock}$
       ${spotGuideDepthHTML(spot, lang)}
       ${gallerySection}
       ${refs}
-${relatedBlock ? `      ${relatedBlock}\n` : ""}${mobileAffiliateBlock}      </article>
+${mobileAffiliateBlock}      </article>
     </div>
 ${showcaseHostBlock}${contentRailBlock}
   </main>
@@ -2141,8 +2087,8 @@ function englishLandingHTML() {
     ["車窓スタンプを見る", "Open Window Stamps"],
     ["まもなく、浜名湖", "Lake Hamana next"],
     ["A席側の窓をご覧ください", "Watch the Seat A side"],
-    ["富士山だけで、", "Don't stop at"],
-    ["終わらせない。", "Mt. Fuji."],
+    ["富士山だけで、", "Mt. Fuji is only"],
+    ["終わらせない。", "the beginning."],
     ["相模湾、茶畑、浜名湖、城、", "Sagami Bay, tea fields, Lake Hamana, castles,"],
     ["建築、線路ぎわの看板。", "architecture, and trackside signs."],
     ["いつもの移動に、", "On one familiar ride,"],
@@ -2242,12 +2188,11 @@ function englishLandingHTML() {
     ["乗る前から、", "Before, during,"],
     ["降りたあとまで。", "and after your ride."],
     ["乗る前に見どころを探し、", "Find views before you board,"],
-    ["車内で出会い、", "meet them along the ride,"],
-    ["降りたあとに思い出を残す。", "and keep the memories afterward."],
-    ["車窓の楽しみは、", "The window journey lasts"],
-    ["移動の前からあとまで続きます。", "from before departure to after arrival."],
-    ["まず、どんな車窓が", "Browse the views"],
-    ["あるのかを眺める。", "on the route."],
+    ["車内で出会い、", "enjoy them along the way,"],
+    ["降りたあとに思い出を残す。", "and keep the memories"],
+    ["車窓の楽しみは、", "after you"],
+    ["移動の前からあとまで続きます。", "arrive."],
+    ["車窓の見どころを知る。", "Discover the window highlights."],
     ["40の車窓から、見たい景色を探す。", "Pick a view from 40 sights."],
     ["眺めるだけでも、旅が始まります。", "The journey starts as you browse."],
     ["次の景色を、", "Know the next view"],
