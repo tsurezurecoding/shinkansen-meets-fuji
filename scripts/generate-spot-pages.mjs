@@ -2030,7 +2030,7 @@ function localizeEnglishInternalLinks(html) {
     ["href=\"spots/", "href=\"en/spots/"],
   ];
   for (const [from, to] of directRoutes) html = html.replaceAll(from, to);
-  for (const route of ["guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei"]) {
+  for (const route of ["guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments"]) {
     html = html
       .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
@@ -2149,9 +2149,9 @@ function englishLandingHTML() {
     ["ディズニー新幹線", "Disney Shinkansen"],
     ["すれ違えるかを、時刻から計算。", "Check whether you can catch it from the timetable."],
     ["雪に覆われた田畑と集落を東海道新幹線の車窓から見る", "Snow-covered fields and homes seen from the Tokaido Shinkansen"],
-    ["一度きりの車窓", "One-time window moments"],
-    ["虹、雪、雲、雷。その日にだけ出会う空。", "Rainbows, snow, clouds, and lightning—weather views unique to that day."],
-    ["WEATHER", "WEATHER · JAPANESE FEATURE"],
+    ["一度きりの車窓", "Weather from the window"],
+    ["虹、雪、雲、雷。その日にだけ出会う空。", "Rainbows, snow, Mt. Fuji's clouds, and lightning—views unique to that day."],
+    ["WEATHER", "WEATHER · FOUR VIEWS"],
     ["旅の情報だから、", "Travel information,"],
     ["わかることだけを", "with clear limits,"],
     ["丁寧に。", "carefully kept."],
@@ -2501,6 +2501,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
     { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-15" },
     { loc: `${siteRoot}/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
+    { loc: `${siteRoot}/en/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-16" },
     { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: "2026-08-16" },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
