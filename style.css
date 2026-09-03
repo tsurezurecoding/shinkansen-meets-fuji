@@ -816,7 +816,7 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   color: inherit;
   font-weight: 700;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
 }
 .spot-page-reference-section {
   padding: 18px;
@@ -1120,11 +1120,6 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   font-weight: 600;
   font-size: 13px;
 }
-.spot-page-figure figcaption a {
-  color: inherit;
-  text-underline-offset: 2px;
-}
-
 /* 本文中に差し込む写真（主画像より小さめ、押したら拡大） */
 .spot-page-inline-figure {
   margin: 26px 0 30px;
@@ -3357,7 +3352,6 @@ body.modal-open { overflow: hidden; }
   text-align: right;
 }
 .medal-target-card {
-  border: 1px solid rgba(125,155,192,0.22);
   color: inherit;
   font: inherit;
   text-align: left;
@@ -3657,7 +3651,7 @@ body.modal-open { overflow: hidden; }
 .stamp {
   width: 76px; height: 76px; border-radius: 50%;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
-  border: 2px dashed var(--line); color: #8d877c;
+  color: #8d877c;
   font-size: 11px; gap: 4px; text-align: center; padding: 6px;
   background: var(--card);
 }
@@ -4689,9 +4683,6 @@ body.modal-open { overflow: hidden; }
   .medal-detail-art .medal-artwork {
     width: 88px;
     height: 100px;
-  }
-  .medal-series-status {
-    grid-column: 1 / -1;
   }
   .medal-photo-strip img {
     height: 68px;
