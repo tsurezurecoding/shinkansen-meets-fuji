@@ -61,6 +61,8 @@
       next: "つぎの車窓",
       side_E: "E席・山側",
       side_A: "A席・海側",
+      side_both: "A席・E席・両側",
+      windowBoth: "左右どちらも",
       windowRight: "進行方向 右",
       windowLeft: "進行方向 左",
       passed: "通過した車窓",
@@ -155,6 +157,8 @@
       next: "NEXT VIEW",
       side_E: "Seat E · Mountain",
       side_A: "Seat A · Sea",
+      side_both: "Seats A and E · Both sides",
+      windowBoth: "Both windows",
       windowRight: "Right window",
       windowLeft: "Left window",
       passed: "Passed views",
@@ -298,9 +302,27 @@
       return vars && vars[name] != null ? vars[name] : "";
     });
   }
-  function sideLabel(sp) { return sp.raw.side === "E" ? t("side_E") : t("side_A"); }
+  // 席側の正本は sideLabel。side だけで分岐すると、浜名湖・727代表のような
+  // 両側スポットを片側と誤って案内する。判定は app.js の seatTags と同じ規則にそろえる。
+  function seatSides(sp) {
+    var raw = sp.raw || {};
+    var labelJa = (raw.sideLabel && raw.sideLabel.ja) || "";
+    var labelEn = (raw.sideLabel && raw.sideLabel.en) || "";
+    var isBoth = /A席・E席|左右|両側/.test(labelJa) || /Seats A and E|Both sides/i.test(labelEn);
+    return {
+      a: raw.side === "A" || /A席/.test(labelJa) || /Seat A/i.test(labelEn) || isBoth,
+      e: raw.side === "E" || /E席/.test(labelJa) || /Seat E/i.test(labelEn) || isBoth,
+    };
+  }
+  function isBothSides(sp) { var s = seatSides(sp); return s.a && s.e; }
+  function sideBadgeClass(sp) { return isBothSides(sp) ? "both" : (sp.raw.side === "E" ? "E" : "A"); }
+  function sideLabel(sp) {
+    if (isBothSides(sp)) return t("side_both");
+    return sp.raw.side === "E" ? t("side_E") : t("side_A");
+  }
   function windowLabel(sp) {
     if (!state.dir) return "";
+    if (isBothSides(sp)) return t("windowBoth");
     var isRight = (sp.raw.side === "E") === (state.dir > 0);
     return isRight ? t("windowRight") : t("windowLeft");
   }
@@ -588,7 +610,7 @@
     el["al-count"].textContent = Math.round(next.info.etaSec);
     el["al-name"].textContent = spotName(sp);
     el["al-side"].textContent = sideLabel(sp) + " · " + windowLabel(sp);
-    el["al-side"].className = "side-badge " + sp.raw.side;
+    el["al-side"].className = "side-badge " + sideBadgeClass(sp);
     el["alertbar"].classList.remove("hidden");
     track("live_alert_shown", { spot_id: sp.id, mode: state.mode });
     if (state.settings.vib && navigator.vibrate) navigator.vibrate([200, 100, 200]);
@@ -1008,7 +1030,7 @@
       el["nc-name"].textContent = spotName(sp);
       el["nc-hook"].textContent = spotHook(sp);
       el["nc-side"].textContent = sideLabel(sp) + (state.dir ? " · " + windowLabel(sp) : "");
-      el["nc-side"].className = "side-badge " + sp.raw.side;
+      el["nc-side"].className = "side-badge " + sideBadgeClass(sp);
       el["nc-dist"].textContent = info.dist.toFixed(1) + " " + t("km");
       el["nc-dur"].textContent = "";
       var photo = spotPhoto(sp);
