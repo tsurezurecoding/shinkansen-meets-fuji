@@ -123,18 +123,142 @@ for (const page of pages) {
   if (writeFileIfChanged(target, mirrorPage(page))) changedCount += 1;
 }
 
+// live.js owns the English copy for the live guide: every [data-live-copy] node, plus a few
+// id-addressed ones, gets its text from STR.en at runtime. Bake the same strings into the
+// generated HTML so crawlers and no-JS readers see English rather than the Japanese source.
+function liveStringTables() {
+  const src = fs.readFileSync(path.join(appDir, "live", "live.js"), "utf8");
+  const tables = {};
+  for (const lang of ["ja", "en"]) {
+    const block = src.match(new RegExp(`\\n {4}${lang}: \\{\\n([\\s\\S]*?)\\n {4}\\},`));
+    if (!block) throw new Error(`live/live.js: could not locate the STR.${lang} table`);
+    const strings = {};
+    for (const line of block[1].split("\n")) {
+      const m = line.match(/^\s*([A-Za-z0-9_]+):\s*"((?:[^"\\]|\\.)*)",?\s*$/);
+      if (m) strings[m[1]] = JSON.parse(`"${m[2]}"`);
+    }
+    // Fail loudly rather than silently shipping Japanese if the table is ever reshaped.
+    if (Object.keys(strings).length < 80) {
+      throw new Error(`live/live.js: STR.${lang} parsed as only ${Object.keys(strings).length} keys; the table shape changed`);
+    }
+    tables[lang] = strings;
+  }
+  return tables;
+}
+
+// Strings that are meant to stay Japanese on the English page: the brand mark glyph and the
+// Japanese half of the language switcher.
+const LIVE_KEEP_JAPANESE = new Set(["窓", "日本語"]);
+
+// Placeholder text that live.js always rewrites from run state before it can be read: a
+// narration toggle whose label depends on the guide mode, a counter, and a help line built
+// from a template with spot counts substituted in. There is no single STR key to bake in, and
+// none of it is reachable until the guide is running, so it stays as the Japanese source has it.
+const LIVE_RUNTIME_TEXT = new Set([
+  "🔈 実況ON",
+  "通過した車窓 (0)",
+  "主要は定番・注目スポット、すべては看板などの小ネタも含みます。",
+]);
+
+function localizeLiveStaticCopy(html, tables) {
+  const escapeText = (value) => value.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  const take = (key) => {
+    const value = tables.en[key];
+    if (typeof value !== "string") throw new Error(`live/live.js: STR.en has no "${key}"`);
+    return escapeText(value);
+  };
+  let result = html.replace(
+    /(<(\w+)\b[^>]*\bdata-live-copy="([^"]+)"[^>]*>)([^<]*)(<\/\2>)/g,
+    (whole, open, tag, key, text, close) => `${open}${take(key)}${close}`
+  );
+  for (const [id, key] of [
+    ["live-title", "appTitle"],
+    ["live-alpha-badge", "alphaBadge"],
+    ["idle-title", "idleTitle"],
+    ["idle-desc", "idleDesc"],
+    ["idle-alpha-note", "alphaNote"],
+    // Toolbar controls whose initial label is a fixed string live.js also renders from STR.
+    // The narration toggles are deliberately absent: their label is derived from run state
+    // (narrFeatured / narrAll / narrOff) and has no single key to bake in.
+    ["tb-status", "waiting"],
+    ["btn-dir", "dirAuto"],
+    ["btn-pause", "pause"],
+    ["map-pause", "pause"],
+    ["map-stop", "stopRun"],
+    ["set-privacy-link", "privacy"],
+  ]) {
+    const pattern = new RegExp(`(<(\\w+)\\b[^>]*\\bid="${id}"[^>]*>)([^<]*)(</\\2>)`);
+    if (!pattern.test(result)) throw new Error(`live/index.html: no simple-text element with id="${id}"`);
+    result = result.replace(pattern, (whole, open, tag, text, close) => `${open}${take(key)}${close}`);
+  }
+  const features = /(<ul[^>]*\bid="idle-features"[^>]*>)([\s\S]*?)(<\/ul>)/;
+  if (!features.test(result)) throw new Error("live/index.html: no ul#idle-features");
+  result = result.replace(features, (whole, open, body, close) =>
+    `${open}\n          <li>${take("idleFeature1")}</li>\n          <li>${take("idleFeature2")}</li>\n          <li>${take("idleFeature3")}</li>\n        ${close}`
+  );
+
+  // Sweep whatever Japanese is left by matching the text against STR.ja and swapping in the
+  // English for the same key -- the id-by-id maps above cannot keep up with a page this size.
+  // A Japanese string shared by several keys still resolves as long as they agree in English.
+  const englishByJapanese = new Map();
+  for (const [key, japanese] of Object.entries(tables.ja)) {
+    if (typeof tables.en[key] !== "string") continue;
+    if (!englishByJapanese.has(japanese)) englishByJapanese.set(japanese, new Set());
+    englishByJapanese.get(japanese).add(tables.en[key]);
+  }
+  const unresolved = new Set();
+  result = result
+    .split(/(<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>|<title>[\s\S]*?<\/title>)/)
+    .map((chunk, index) => {
+      if (index % 2 === 1) return chunk; // script/style body and <title>: handled elsewhere
+      return chunk.replace(/>([^<>]+)</g, (whole, text) => {
+        const trimmed = text.trim();
+        if (!trimmed || !/[぀-ヿ一-鿿]/.test(trimmed)) return whole;
+        const candidates = englishByJapanese.get(trimmed);
+        if (candidates && candidates.size === 1) {
+          return `>${text.replace(trimmed, escapeText([...candidates][0]))}<`;
+        }
+        if (!LIVE_KEEP_JAPANESE.has(trimmed) && !LIVE_RUNTIME_TEXT.has(trimmed)) unresolved.add(trimmed);
+        return whole;
+      });
+    })
+    .join("");
+  if (unresolved.size) {
+    const shown = [...unresolved].map((s) => JSON.stringify(s.length > 40 ? `${s.slice(0, 40)}...` : s));
+    console.warn(`  en/live/index.html: ${unresolved.size} Japanese string(s) have no STR mapping and ship as-is: ${shown.join(", ")}`);
+  }
+  return result;
+}
+
 const liveSource = fs.readFileSync(path.join(appDir, "live", "index.html"), "utf8");
-const liveEnglish = liveSource
+const liveEnTitle = "Tokaido Shinkansen audio guide | GPS calls the next view and which side to watch | Shinkansen Window";
+const liveEnDescription = "GPS follows your position on board and calls the next window view with a map and audio, in English or Japanese: how long until it appears, and whether to watch the Seat A or Seat E side. Tokyo to Shin-Osaka, Mt. Fuji included. A preview ride works without boarding.";
+// The Japanese page shows a screenshot of the guide running, which is the strongest possible
+// preview -- but that screenshot has a Japanese interface in it, and putting it on the English
+// page would tell English readers the app is Japanese-only. Fall back to the language-neutral
+// site image until an English screenshot exists; then point this at it and drop the note.
+const liveEnImage = `${siteRoot}/images/og-shinkansen-window.png`;
+const liveEnImageAlt = "Shinkansen Window — another journey beyond the glass.";
+
+const liveEnglish = localizeLiveStaticCopy(liveSource, liveStringTables())
   .replace('<html lang="ja">', '<html lang="en">')
-  .replace(/<title>[^<]*<\/title>/, '<title>Tokaido Shinkansen audio guide | GPS calls the next view and which side to watch | Shinkansen Window</title>')
+  .replace(/<title>[^<]*<\/title>/, `<title>${liveEnTitle}</title>`)
   .replace(
     /<meta name="description" content="[^"]*">/,
-    '<meta name="description" content="GPS follows your position on board and calls the next window view with a map and audio, in English or Japanese: how long until it appears, and whether to watch the Seat A or Seat E side. Tokyo to Shin-Osaka, Mt. Fuji included. A preview ride works without boarding.">'
+    `<meta name="description" content="${liveEnDescription}">`
   )
   .replace(
     '<link rel="canonical" href="https://www.michikusa-travel.com/live/">',
     '<link rel="canonical" href="https://www.michikusa-travel.com/en/live/">'
   )
+  .replace(/<meta property="og:title" content="[^"]*">/, `<meta property="og:title" content="${liveEnTitle}">`)
+  .replace(/<meta property="og:description" content="[^"]*">/, `<meta property="og:description" content="${liveEnDescription}">`)
+  .replace(/<meta property="og:image" content="[^"]*">/, `<meta property="og:image" content="${liveEnImage}">`)
+  .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${siteRoot}/en/live/">`)
+  .replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${liveEnTitle}">`)
+  .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${liveEnDescription}">`)
+  .replace(/<meta name="twitter:image" content="[^"]*">/, `<meta name="twitter:image" content="${liveEnImage}">`)
+  .replace(/<meta name="twitter:image:alt" content="[^"]*">/, `<meta name="twitter:image:alt" content="${liveEnImageAlt}">`)
   .replaceAll('href="../', 'href="../../')
   // The blanket depth-bump above assumes every ../ link targets a Japanese page at the
   // app root. Whenever an English counterpart exists under en/, walk one level back so the
@@ -151,8 +275,6 @@ const liveEnglish = liveSource
     /<script src="\.\.\/\.\.\/live\/live\.js\?v=[^"]+"><\/script>/,
     `<script src="../../live/live.js?v=${assetVersion("live/live.js")}"></script>`
   )
-  .replace('<strong data-live-copy="eaLiveTitle">Androidアプリ版</strong>', '<strong data-live-copy="eaLiveTitle">Android app</strong>')
-  .replace('<small data-live-copy="eaLiveBody">無料・登録不要。乗車中もすぐ開けます。</small>', '<small data-live-copy="eaLiveBody">Free, no registration. Quick to open while you ride.</small>')
   .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
 const liveTarget = path.join(appDir, "en", "live", "index.html");
 if (writeFileIfChanged(liveTarget, liveEnglish)) changedCount += 1;

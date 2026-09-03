@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "31c4c1adb3e7956b",
+  "contentVersion": "18ea09db346031b1",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1288,8 +1288,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 198,
-    "bytes": 7426954,
+    "itemCount": 199,
+    "bytes": 7482912,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2424,6 +2424,12 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/og-jr-pass-fuji.webp",
         "bytes": 22256,
         "sha256": "cf8d60a58f61eab896b1247e7cdf701d1c98154781513a6247b73502a3ea375e"
+      },
+      {
+        "path": "images/thumbs/og-live-guide.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/og-live-guide.webp",
+        "bytes": 55958,
+        "sha256": "5065ddda22a35c09ae3bcc6254337c70988e74f6b58497d5e088c3f516b65cfd"
       },
       {
         "path": "images/thumbs/og-shinkansen-window.webp",
