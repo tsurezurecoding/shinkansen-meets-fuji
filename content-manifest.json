@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "b881acc12a910f53",
+  "contentVersion": "4975561d23e482f6",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1288,8 +1288,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 194,
-    "bytes": 7266586,
+    "itemCount": 197,
+    "bytes": 7378022,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2454,6 +2454,24 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/shinkansen-window-icon-512.webp",
         "bytes": 9964,
         "sha256": "df9d4109bbc5b598cda6ab8018d802e020299efa35e98cc2cd9e0404f6c5173e"
+      },
+      {
+        "path": "images/thumbs/wm-hero-snow.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/wm-hero-snow.webp",
+        "bytes": 37842,
+        "sha256": "dd7b84ef28b2006017efb2a2f73cdfb6d5c84fe978f3b10307472f7a40aa2943"
+      },
+      {
+        "path": "images/thumbs/wm-snow-field.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/wm-snow-field.webp",
+        "bytes": 37780,
+        "sha256": "e69ce41e16db6d599703cef9054c04fb030204ea1689f790f34ea7816d41ddcf"
+      },
+      {
+        "path": "images/thumbs/wm-snow-town.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/wm-snow-town.webp",
+        "bytes": 35814,
+        "sha256": "d2c9de3b31f850a0b94dbec94125e6b8c600757c4f91dfde7d86ad467990c0c1"
       }
     ]
   }
