@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="ロッテ滋賀工場 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#3d6b4f" fill="#3d6b4f" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">ロッテ滋賀工場</text>
+
+<g fill="none" stroke-width="2.5">
+<rect x="48" y="105" width="104" height="36"/><rect x="60" y="72" width="80" height="27"/>
+<path d="M70 99 V105 M130 99 V105 M60 115 H76 V126 H60 Z M86 115 H102 V126 H86 Z M112 115 H138 V141"/>
+<path d="M76 91 Q76 77 88 77 Q100 77 100 91 Z M103 91 Q103 78 115 78 Q127 78 127 91 Z"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約119分・A席</text>
+</g>
+</svg>

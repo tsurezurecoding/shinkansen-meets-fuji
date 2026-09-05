@@ -1551,6 +1551,112 @@ const SPOTS = [
     viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
   },
   {
+    id: "mishima-catapult",
+    icon: "🚄",
+    ja: {
+      name: "三島車両所のカタパルト",
+      area: "三島 → 新富士",
+      hook: "空へ向かう？三島の発射台",
+      story: "三島を出て新富士へ向かうA席側に、空へ伸びるように見える高架線があります。通称「発射台」ですが、ロケットの設備ではありません。三島車両所の着発線で、車両基地へ出入りする新幹線がいったん先へ進み、折り返して入庫するスイッチバック用の線路です。黄瀬川へ向かって本線が下るため、高架線が上り勾配に見えます。早朝には停車中の車両が見えることもあります。",
+    },
+    en: {
+      name: "Mishima Shinkansen Catapult",
+      area: "Mishima → Shin-Fuji",
+      hook: "A track that seems to launch",
+      story: "After Mishima, an elevated track on the Seat A side seems to rise into the sky. The nickname “catapult” describes its appearance, not a launch system. These are the arrival and departure tracks of the Mishima rolling-stock depot: trains run to the end, reverse, and use the switchback to enter or leave the depot. Because the main line descends toward the Kise River, the tracks appear to climb. Parked cars may sometimes be visible in the early morning.",
+    },
+    pageTitle: {
+      ja: "三島車両所の新幹線カタパルト｜A席から見る着発線とスイッチバック | 新幹線の窓",
+      en: "Mishima's Shinkansen Catapult | Switchback Tracks from Seat A",
+    },
+    pageHeading: {
+      ja: "空へ伸びるような三島車両所の着発線",
+      en: "Mishima's arrival tracks that seem to launch",
+    },
+    pageHeadingChunks: {
+      ja: ["空へ伸びるような", "三島車両所の着発線"],
+      en: ["Tracks that seem to launch", "at Mishima"],
+    },
+    metaDescription: {
+      ja: "三島を出て新富士へ向かうA席側に、空へ伸びるような高架線が見えます。通称「発射台」の正体である三島車両所の着発線と、スイッチバックの仕組みを車窓から紹介します。",
+      en: "After Mishima, elevated tracks on the Seat A side seem to rise into the sky. Learn why the tracks are nicknamed a catapult and how the Mishima depot's switchback works.",
+    },
+    sectionHeading: {
+      ja: "なぜ発射台のように見える？",
+      en: "Why does it look like a launchpad?",
+    },
+    pageStory: {
+      ja: "三島を出て新富士へ向かうA席側に、三島車両所の着発線が空へ伸びるように見えます。通称「発射台」は見た目から生まれた呼び名で、実際には車両基地へ出入りする列車のためのスイッチバック用線路です。黄瀬川へ向かって本線が下る配置が、線路を上り勾配のように見せています。",
+      en: "After Mishima, the Seat A window shows the Mishima depot's arrival and departure tracks seeming to rise into the sky. “Catapult” is a nickname inspired by the view, not a launch mechanism. Trains use these tracks to reverse into or out of the depot, while the main line's descent toward the Kise River makes the tracks look even steeper.",
+    },
+    explainer: {
+      heading: { ja: "カタパルトの正体は？", en: "What is the “catapult” really?" },
+      ja: [
+        "「発射台」は正式な設備名ではなく、空へ向かうように見える着発線への愛称です。",
+        "三島車両所へ入る列車は、いったん着発線へ進み、進行方向を逆転して車両基地へ入ります。本線が黄瀬川へ向かって下るため、車窓では線路が上っていくように見えます。",
+      ],
+      en: [
+        "“Catapult” is a nickname for the arrival and departure tracks, named for their skyward appearance.",
+        "A train entering the Mishima depot first runs onto these tracks, then reverses into the yard. The main line descends toward the Kise River, creating the visual illusion that the elevated tracks are climbing.",
+      ],
+    },
+    guideHighlight: {
+      ja: "三島を出て新富士へ向かうA席側で、空へ伸びるような2本の高架線を探してください。ロケットの発射設備ではなく、車両基地へ出入りする列車のスイッチバック用線路です。早朝には停車中の車両が見えることもあります。",
+      en: "After Mishima, look on the Seat A side for two elevated tracks that seem to rise into the sky. They are not launch equipment, but switchback tracks used by trains entering and leaving the depot. Parked cars may sometimes be visible in the early morning.",
+    },
+    // 暫定値: 実車校正待ち（分数・秒数・見やすさ）。
+    minutesFromTokyo: 40.5, side: "A", category: "curious", confidence: "needs-check", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    image: "images/20260904_mishima_catapult_1_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "三島車両所の着発線を車窓から", en: "The Mishima depot's arrival tracks from the train window" } },
+    photos: [
+      {
+        src: "images/20260904_mishima_catapult_2_michikusa.jpg",
+        alt: { ja: "三島車両所の着発線と周辺の車窓", en: "The Mishima depot tracks and surrounding window view" },
+        credit: { ja: "michikusa", en: "michikusa" },
+      },
+      {
+        src: "images/20260904_mishima_catapult_3_michikusa.jpg",
+        alt: { ja: "三島車両所の高架線", en: "The elevated tracks at the Mishima depot" },
+        credit: { ja: "michikusa", en: "michikusa" },
+      },
+      {
+        src: "images/20260904_mishima_catapult_4_michikusa.jpg",
+        alt: { ja: "A席側から見た三島車両所", en: "The Mishima depot seen from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+      },
+      {
+        src: "images/20250706_mishima_catapult_1_letus10.jpg",
+        alt: { ja: "三島車両所の発射台のような高架線", en: "The Mishima tracks that look like a launchpad" },
+        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
+        sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
+      },
+      {
+        src: "images/20250706_mishima_catapult_2_letus10.jpg",
+        alt: { ja: "三島車両所の着発線", en: "The Mishima depot's arrival and departure tracks" },
+        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
+        sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
+      },
+    ],
+    media: {
+      heading: { ja: "動画で見る三島車両所", en: "Mishima depot in motion" },
+      description: { ja: "三島車両所の高架線と、車窓から見える発射台のような形を動画で見られます。", en: "See the Mishima depot's elevated tracks and their launchpad-like shape from the train window." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "ZYVs1yNmZck",
+          title: { ja: "朝の三島車両所", en: "朝の三島車両所" },
+          url: "https://www.youtube.com/watch?v=ZYVs1yNmZck",
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
+    references: [
+      { label: { ja: "新幹線の車窓から: 銀河鉄道の出発地みたいな高架線", en: "Shinkansen window blog: Elevated tracks like a departure point for Galaxy Express 999" }, url: "https://cotetu.seesaa.net/article/516761121.html" },
+      { label: { ja: "鉄道チャンネル: 新幹線カタパルト三島ハッチ", en: "Tetsudo Channel: Mishima Shinkansen catapult hatch" }, url: "https://tetsudo-ch.com/10325569.html" },
+    ],
+    map: { lat: 35.1262151, lng: 138.9001309, ja: "三島車両所", en: "Mishima rolling-stock depot" },
+  },
+  {
     id: "fuji-pipe-sign",
     icon: "🧪",
     ja: {
@@ -3578,6 +3684,70 @@ const SPOTS = [
     viewpoint: { lat: 35.361280, lng: 136.411719 },
   },
   {
+    id: "sennenq-sign",
+    icon: "♨️",
+    ja: {
+      name: "せんねん灸の看板",
+      area: "米原 → 岐阜羽島（名古屋方面）",
+      hook: "米原の先に、せんねん灸",
+      story: "米原を過ぎて名古屋方面へ進むA席側に、緑の斜面と、赤い文字を載せた白い四角が5つ並ぶせんねん灸の看板が現れます。大きく掲げられた商品名が、米原を離れたあとの車窓の記憶になります。看板を見つけたら、その先で田畑や建物が流れていく景色にも目を向けてください。",
+    },
+    en: {
+      name: "Sennen Kyū Sign",
+      area: "Maibara → Gifu-Hashima, toward Nagoya",
+      hook: "Sennen Kyu after Maibara",
+      story: "Soon after Maibara, heading toward Nagoya, the Sennen Kyū sign appears on the Seat A side: five white panels with red lettering stand out against a green hillside. Its simple product name becomes a memorable marker after the station. Once the sign slips away, keep watching the fields and buildings as the view continues toward the Tokai region.",
+    },
+    pageTitle: {
+      ja: "米原の先で見えるせんねん灸の看板｜A席の車窓目印 | 新幹線の窓",
+      en: "The Sennen Kyū Sign after Maibara | A Seat A Window Marker",
+    },
+    pageHeading: {
+      ja: "米原を過ぎて、せんねん灸の看板",
+      en: "The Sennen Kyū sign after Maibara",
+    },
+    pageHeadingChunks: {
+      ja: ["米原を過ぎて、", "せんねん灸の看板"],
+      en: ["After Maibara,", "the Sennen Kyū sign"],
+    },
+    metaDescription: {
+      ja: "米原を過ぎて名古屋方面へ向かう新幹線のA席側に見える、せんねん灸の看板を紹介。文字を車窓の目印に、滋賀から東へ続く景色を楽しみます。",
+      en: "Soon after Maibara toward Nagoya, the Sennen Kyū sign appears on the Seat A side. Use its lettering as a simple marker while the Shiga landscape continues east.",
+    },
+    sectionHeading: {
+      ja: "米原の先で目印になる看板",
+      en: "A signpost just beyond Maibara",
+    },
+    pageStory: {
+      ja: "京都方面から名古屋へ向かう列車が米原を過ぎると、A席側の車窓にせんねん灸の看板が現れます。移り変わる景色の中で商品名の文字が記憶に残り、米原を離れたことを感じさせる沿線サインです。米原を通過したら、A席側の窓を続けて眺めてみてください。",
+      en: "After a Kyoto-to-Nagoya train passes Maibara, the Sennen Kyū sign appears on the Seat A side. Its product name remains memorable amid the changing landscape, becoming a simple marker that the train has moved beyond Maibara. Keep watching the Seat A window after leaving the station.",
+    },
+    explainer: {
+      heading: { ja: "せんねん灸の看板を探すには？", en: "How do you spot the Sennen Kyū sign?" },
+      ja: [
+        "せんねん灸は、もぐさを使うお灸（温熱用品）のブランドです。この看板は商品名を掲げた沿線のサインで、米原を過ぎたらA席側の窓に続く文字の形を探します。",
+        "看板を見送ったあとも、滋賀から名古屋方面へ移っていく田畑や建物の変化を、ひと続きの車窓として楽しめます。",
+      ],
+      en: [
+        "Sennen Kyū is a brand of moxibustion products made with moxa. The sign carries the product name as a roadside marker; after Maibara, look on the Seat A side for its distinctive lettering.",
+        "After the sign passes, enjoy the continuing change in fields and buildings as the route carries on from Shiga toward Nagoya.",
+      ],
+    },
+    guideHighlight: {
+      ja: "米原を過ぎて名古屋方面へ進んだら、A席側の窓でせんねん灸の文字を探してください。看板のあとも、東へ流れる田畑や建物の景色が続きます。",
+      en: "After Maibara, heading toward Nagoya, look on the Seat A side for the Sennen Kyū lettering. After the sign, the fields and buildings continue to flow eastward.",
+    },
+    // 暫定値: 地理・写真照合による目安。実車校正待ち（分数・秒数・見やすさ）。
+    minutesFromTokyo: 111.5, side: "A", category: "curious", confidence: "needs-check", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    image: "images/20260816_sennenq_sign_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "米原の先に見えるせんねん灸の看板", en: "The Sennen Kyū sign beyond Maibara" } },
+    photos: [],
+    references: [
+      { label: { ja: "せんねん灸公式: 会社情報", en: "Sennen Kyū official: company information (Japanese)" }, url: "https://www.sennenq.co.jp/company/" },
+    ],
+    map: { lat: 35.31613772, lng: 136.28994808, ja: "せんねん灸 車窓の目安位置", en: "Approximate viewing location for Sennen Kyū" },
+  },
+  {
     id: "fujitec-big-wing",
     icon: "🏢",
     ja: {
@@ -3883,6 +4053,96 @@ const SPOTS = [
     references: [REFERENCES.hikoneCastle, REFERENCES.hikoneCastleUnesco, REFERENCES.zusshiCastleBlog],
     map: { lat: 35.2765, lng: 136.2518, ja: "彦根城", en: "Hikone Castle" },
     viewpoint: { lat: 35.271532, lng: 136.263314 },
+  },
+  {
+    id: "lotte-shiga",
+    icon: "🍬",
+    ja: {
+      name: "ロッテ滋賀工場の菓子看板",
+      area: "米原 → 京都",
+      hook: "お菓子の看板が続く",
+      story: "米原を過ぎて京都へ向かうA席側、ロッテ滋賀工場の近くで、お菓子の看板が続きます。雪見だいふくのサインも見える、商品ごとの色や形が連なる車窓です。1枚の広告で終わらず、看板が続くこと自体がこの区間の楽しさです。",
+    },
+    en: {
+      name: "Lotte Shiga's Candy Billboards",
+      area: "Maibara → Kyoto",
+      hook: "A run of candy billboards",
+      story: "After Maibara toward Kyoto, a series of candy billboards appears on the Seat A side near Lotte's Shiga plant. The Yukimi Daifuku sign is among the familiar products in view. Rather than a single advert, the sequence of products, colors, and shapes turns this stretch into a moving window motif.",
+    },
+    pageTitle: {
+      ja: "ロッテ滋賀工場のお菓子看板｜A席に続く雪見だいふくの車窓 | 新幹線の窓",
+      en: "Lotte Shiga's Candy Billboards | Yukimi Daifuku from Seat A",
+    },
+    pageHeading: {
+      ja: "雪見だいふくも見える、ロッテ滋賀工場の看板列",
+      en: "A run of Lotte signs with Yukimi Daifuku",
+    },
+    pageHeadingChunks: {
+      ja: ["雪見だいふくも見える、", "ロッテ滋賀工場の看板列"],
+      en: ["A run of Lotte signs", "with Yukimi Daifuku"],
+    },
+    metaDescription: {
+      ja: "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見えるお菓子の看板を紹介。雪見だいふくのサインも含む、安土の車窓を楽しみます。",
+      en: "Between Maibara and Kyoto, a series of candy billboards appears near Lotte's Shiga plant on the Seat A side, including a Yukimi Daifuku sign.",
+    },
+    sectionHeading: {
+      ja: "お菓子の看板はどこから？",
+      en: "Where do the candy billboards come from?",
+    },
+    pageStory: {
+      ja: "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。雪見だいふくのサインも含め、見覚えのある商品広告が景色をつなぎます。ロッテ滋賀工場は近江八幡市安土町にあり、アイスクリームと菓子を生産しています。",
+      en: "On the Seat A side between Maibara and Kyoto, candy billboards appear in sequence around Lotte's Shiga plant. The signs include Yukimi Daifuku and other familiar product adverts. The plant is in Azuchi, Omi-Hachiman, and makes ice cream and confectionery.",
+    },
+    explainer: {
+      heading: { ja: "看板の奥にあるロッテ滋賀工場", en: "The Lotte Shiga plant behind the signs" },
+      ja: [
+        "ロッテ滋賀工場は1985年にアイスクリーム工場として始まり、1993年には菓子工場も稼働しました。雪見だいふくなど、身近なお菓子がつくられています。",
+        "車窓では工場そのものを探すより、いくつかの菓子看板をそれぞれの色と形で探すと楽しめます。雪見だいふくのサインも手がかりのひとつです。",
+      ],
+      en: [
+        "Lotte's Shiga plant began as an ice-cream factory in 1985, with confectionery production added in 1993. It makes familiar products including Yukimi Daifuku.",
+        "From the train, look for the candy billboards by their colors and shapes; the Yukimi Daifuku sign is one of the clues among them.",
+      ],
+    },
+    guideHighlight: {
+      ja: "米原を過ぎて京都方面へ進んだら、A席側の窓でお菓子の看板の連なりを探してください。雪見だいふくのサインなど、色と形を目印にします。",
+      en: "After Maibara, heading toward Kyoto, look on the Seat A side for the run of candy billboards. Use the colors and shapes, including the Yukimi Daifuku sign, as your clues.",
+    },
+    // 暫定値: 地理・写真照合による目安。実車校正待ち（分数・秒数・見やすさ）。
+    minutesFromTokyo: 119, side: "A", category: "curious", confidence: "needs-check", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    image: "images/20260904_lotte_shiga_3_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "雪見だいふくの看板", en: "The Yukimi Daifuku billboard" } },
+    photos: [
+      {
+        src: "images/20260904_lotte_shiga_1_michikusa.jpg",
+        alt: { ja: "ロッテ滋賀工場付近のお菓子の看板", en: "Candy signage near Lotte's Shiga plant" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        note: { ja: "工場付近の菓子看板", en: "Candy signage around the plant" },
+      },
+      {
+        src: "images/20260904_lotte_shiga_2_michikusa.jpg",
+        alt: { ja: "続けて現れるお菓子の看板", en: "A row of candy billboards" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        note: { ja: "お菓子の看板が続く", en: "A row of candy billboards" },
+      },
+    ],
+    media: {
+      heading: { ja: "動画で見るロッテ滋賀工場", en: "Lotte Shiga plant in motion" },
+      description: { ja: "ロッテ滋賀工場付近で続けて現れるお菓子の看板を、車窓動画で見られます。", en: "See the series of candy billboards near Lotte's Shiga plant from the train window." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "F9ZZdSjRlGA",
+          title: { ja: "ロッテ滋賀工場", en: "ロッテ滋賀工場" },
+          url: "https://www.youtube.com/watch?v=F9ZZdSjRlGA",
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
+    references: [
+      { label: { ja: "ロッテ公式: おかしの学校・滋賀工場", en: "Lotte official: Okashi School / Shiga plant (Japanese)" }, url: "https://www.lotte.co.jp/kengaku/" },
+    ],
+    map: { lat: 35.12811, lng: 136.15554, ja: "ロッテ滋賀工場", en: "Lotte Shiga plant" },
   },
   {
     id: "kannonji-castle",

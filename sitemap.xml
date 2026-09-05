@@ -379,6 +379,18 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/spots/mishima-catapult.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/mishima-catapult.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/spots/fuji-pipe-sign.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -643,6 +655,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/spots/sennenq-sign.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/sennenq-sign.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/spots/fujitec-big-wing.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -689,6 +713,18 @@
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/spots/lotte-shiga.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/lotte-shiga.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/spots/kannonji-castle.html</loc>
