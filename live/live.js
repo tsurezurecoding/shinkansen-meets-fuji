@@ -1425,8 +1425,8 @@
         localStorage.setItem("mado-lang", nextLang);
       } catch (error) {}
       location.href = nextLang === "en"
-        ? new URL("../en/live/", document.baseURI).href
-        : new URL("../../live/", document.baseURI).href;
+        ? new URL("../en/live/index.html", document.baseURI).href
+        : new URL("../../live/index.html", document.baseURI).href;
     });
   });
   document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);

@@ -148,6 +148,8 @@
     var hash = url.hash || "";
     if (path === "/" || path === "/index.html") return "index.html" + (hash || "#journey");
     if (path === "/en" || path === "/en/index.html") return "en/index.html" + (hash || "#journey");
+    if (path === "/start.html") return "start.html";
+    if (path === "/en/start.html") return "en/start.html";
     if (path === "/zukan.html") return "zukan.html";
     if (path === "/en/zukan.html") return "en/zukan.html";
     if (path === "/journal.html") return "journal.html";

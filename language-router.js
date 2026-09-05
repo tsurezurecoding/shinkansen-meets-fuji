@@ -34,6 +34,9 @@
   var spotMatch = path.match(/\/spots\/([^/]+\.html)$/);
   var targetRoute = key ? routes[key] : (spotMatch ? `../en/spots/${spotMatch[1]}` : "");
   if (!targetRoute) return;
+  // Public Web hosting resolves directory URLs, but Capacitor's local server does not.
+  // Keep the public route contract and add the file name only inside the native bundle.
+  if (window.MADO_NATIVE_APP && targetRoute.endsWith("/")) targetRoute += "index.html";
 
   var requested = new URLSearchParams(location.search).get("lang");
   var saved = null;

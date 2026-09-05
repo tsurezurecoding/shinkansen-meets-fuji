@@ -2293,7 +2293,10 @@ function englishAppIndexHTML() {
     ["Androidアプリ版", "Android app"],
     ["東京〜新大阪", "Tokyo–Shin-Osaka"],
     ["リンク集", "Links"],
-    ["きょうの旅を教えてください", "Tell us about today's ride"],
+    [
+      '<span class="copy-chunk">きょうの旅を</span><span class="copy-chunk">教えてください</span>',
+      "Tell us about today's ride"
+    ],
     ["東京 → 新大阪", "Tokyo → Shin-Osaka"],
     ["新大阪 → 東京", "Shin-Osaka → Tokyo"],
     ["方向", "Direction"],
