@@ -467,6 +467,9 @@ body.live-page.is-idle #sheet {
 
 .side-badge.E { background: var(--live-mountain); }
 .side-badge.A { background: var(--live-sea); }
+.side-badge.both {
+  background: linear-gradient(90deg, var(--live-sea) 0 50%, var(--live-mountain) 50% 100%);
+}
 
 #upcoming {
   display: flex;

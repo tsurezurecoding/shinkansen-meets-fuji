@@ -20,7 +20,7 @@ const MSG = {
     navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
-    setupEyebrow: "YOUR JOURNEY", setupTitle: "きょうの旅を教えてください",
+    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">きょうの旅を</span><span class="copy-chunk">教えてください</span>',
     setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">見どころの時刻と座席側を調べます。</span>',
     labelDirection: "方向", labelDeparture: "出発時刻",
     dirWest: "西へ（大阪方面）", dirEast: "東へ（東京方面）",
