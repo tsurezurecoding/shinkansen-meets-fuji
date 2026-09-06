@@ -19,13 +19,25 @@ The current application is online-only. `app.js` does not register a Service Wor
 
 Do not edit generated output to change a fact. Change its source and regenerate it.
 
+## Spot page payload split
+
+A spot page loads two generated artifacts: the catalog every page shares, and its own body.
+
+- `spot-page-shared-data.js` carries stations, the spot rail, the showcase and feature flags. It is schema v3 and must not contain page bodies.
+- `data/spot-pages/<id>.<lang>.js` carries one page body, read by that page alone. The renderer refuses to draw a body whose id or language does not match the page.
+
+The point is the per-visit transfer, not the total. `generate-spot-page-shared-data.mjs` and `validate-spot-page-shared.mjs` both enforce three budgets: 48 KB for the catalog, 32 KB per page body, and 64 KB for the worst case of catalog plus the largest body. The validator also fails a page that loads another spot's body, and an orphan body left in the payload directory after a spot leaves `data.js`.
+
+Before the split, one artifact held all 47 spots in both languages at 903 KB, and every page downloaded all of it. Editing five words of one hook changed 120 files, because the cache buster is a content hash.
+
 ## Hand-written and generated files
 
 Hand-written application shell includes root and language HTML templates, CSS, browser JavaScript, validators, and generators.
 
 Generated output includes:
 
-- `spot-page-shared-data.js`
+- `spot-page-shared-data.js` (catalog only)
+- `data/spot-pages/<id>.<lang>.js` (one body per page, per language)
 - Japanese and English files below `spots/` and `en/spots/`
 - inbound tables embedded by `scripts/generate-inbound-tables.mjs`
 - asset version query strings maintained by `scripts/sync-asset-versions.mjs`
