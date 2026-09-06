@@ -1724,8 +1724,8 @@ function thinSpotPageHTML(spot, lang) {
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
   <meta property="og:url" content="${url}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="${spotOgImageUrl(spot)}">
-  <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>
+  <meta name="twitter:image" content="${spotOgImageUrl(spot)}">${isSubordinateSpot(spot) ? "" : `
+  <script type="application/ld+json">${JSON.stringify(jsonLd, null, 2)}</script>`}
   ${analyticsSnippet()}
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
