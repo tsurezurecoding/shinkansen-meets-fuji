@@ -1574,13 +1574,13 @@ const SPOTS = [
     ja: {
       name: "三島車両所のカタパルト",
       area: "三島 → 新富士",
-      hook: "空へ向かう、新幹線発射台",
+      hook: "空へ向かう、新幹線カタパルト",
       story: "三島を出て新富士へ向かうA席側に、空へ伸びるように見える高架線があります。通称「発射台」ですが、ロケットの設備ではありません。これは三島車両所の着発線です。車両基地へ入る列車は、いったん本線の西側まで進んでから進行方向を変え、基地へ入ります。黄瀬川の谷へ向かって本線が下る一方、着発線は高い位置を保つため、車窓では線路が空へ駆け上がるように見えます。早朝には停車中の車両が見えることもあります。",
     },
     en: {
       name: "Mishima Shinkansen Catapult",
       area: "Mishima → Shin-Fuji",
-      hook: "A Shinkansen track into the sky",
+      hook: "The depot ramp nicknamed a launchpad",
       story: "After Mishima, an elevated track on the Seat A side seems to rise into the sky. The nickname “catapult” describes its appearance, not a launch system. These are the arrival and departure tracks of the Mishima rolling-stock depot. A train entering the depot first runs west beyond the main line, then reverses into the yard. The main line drops toward the Kise River valley while these tracks stay high, so they appear to climb into the sky. Parked cars may sometimes be visible in the early morning.",
     },
     pageTitle: {
@@ -1676,7 +1676,6 @@ const SPOTS = [
       { label: { ja: "新幹線の車窓から: 銀河鉄道の出発地みたいな高架線", en: "Shinkansen window blog: Elevated tracks like a departure point for Galaxy Express 999" }, url: "https://cotetu.seesaa.net/article/516761121.html" },
       { label: { ja: "鉄道チャンネル: 新幹線カタパルト三島ハッチ", en: "Tetsudo Channel: Mishima Shinkansen catapult hatch" }, url: "https://tetsudo-ch.com/10325569.html" },
       { label: { ja: "東洋経済オンライン: 三島駅近くに見える新幹線「発射台」の真相", en: "Toyo Keizai Online: The truth behind Mishima's Shinkansen launchpad (Japanese)" }, url: "https://toyokeizai.net/articles/-/108792?page=2" },
-      { label: { ja: "JR東海: 三島車両所で働く人", en: "JR Central: Working at Mishima rolling-stock depot (Japanese)" }, url: "https://saiyo.jr-central.co.jp/work/interviews/article_12/" },
     ],
     map: { lat: 35.1262151, lng: 138.9001309, ja: "三島車両所", en: "Mishima rolling-stock depot" },
   },
@@ -3559,9 +3558,13 @@ const SPOTS = [
       platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
     },
     references: [
-      { label: { ja: "高陽社公式: 超☆海洋深層水100%MaHaLo", en: "Koyo-sha official: 100% MaHaLo deep-ocean water (Japanese)" }, url: "https://www.koyo-sha.jp/user_data/maharo" },
-      { label: { ja: "高陽社: 2011年社内誌（PDF）", en: "Koyo-sha: 2011 company magazine (Japanese PDF)" }, url: "https://www.koyo-sha.jp/times/koyolife/201103.pdf" },
-      { label: { ja: "デイリーポータルZ: 新幹線から見える野立て看板", en: "Daily Portal Z: Trackside billboards seen from the Shinkansen (Japanese)" }, url: "https://dailyportalz.jp/kiji/180831203814" },
+      {
+        label: { ja: "Wikipedia: 海洋深層水", en: "Wikipedia: Deep ocean water" },
+        url: {
+          ja: "https://ja.wikipedia.org/wiki/%E6%B5%B7%E6%B4%8B%E6%B7%B1%E5%B1%A4%E6%B0%B4",
+          en: "https://en.wikipedia.org/wiki/Deep_ocean_water",
+        },
+      },
     ],
     map: { lat: 35.31579561, lng: 136.68565144, ja: "岐阜羽島駅 車窓の目安位置", en: "Approximate viewing location at Gifu-Hashima" },
   },
