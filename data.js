@@ -1649,13 +1649,13 @@ const SPOTS = [
       {
         src: "images/20250706_mishima_catapult_1_letus10.jpg",
         alt: { ja: "三島車両所の発射台のような高架線", en: "The Mishima tracks that look like a launchpad" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
         sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
       },
       {
         src: "images/20250706_mishima_catapult_2_letus10.jpg",
         alt: { ja: "三島車両所の着発線", en: "The Mishima depot's arrival and departure tracks" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
         sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
       },
     ],
