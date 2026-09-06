@@ -910,7 +910,10 @@ const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
 const CURATED_ANGLE_PHOTOS = {
   hamanako: ["hamanako_torii_letus10"], // 主画像は E 席。反対の A 席・赤鳥居を見せる
 };
-const RAIL_THUMB_CATEGORIES = new Set(["classic", "notable"]);
+// Every category now carries a representative photo. The list was written when the
+// curious spots - billboards, oddities - had none, and it kept 11 of 43 rail rows
+// blank long after their photos landed.
+const RAIL_THUMB_CATEGORIES = new Set(["classic", "notable", "curious"]);
 
 /** 本文に差し込む写真を選ぶ。主画像と別の視点（反対席側／夜景）に限定する */
 function inlinePhotoIndices(spot) {
