@@ -1367,11 +1367,13 @@ const SPOTS = [
         "熱海は、箱根外輪山へ続く山地から相模湾へ下る斜面に発達した街です。そのため車窓では、海だけでなく、山肌に重なる家やホテルまで一緒に見えます。平らな海辺の街ではなく、海・街・山が縦に重なることが、熱海らしい景色です。",
         "沖に低く浮かぶ島は初島です。熱海港から約10km沖にあり、周囲約4kmの有人島。大きな山には見えず、水平線の手前に細長く浮かぶ輪郭を探すのがコツです。",
         "山の上に見える白い天守風の建物は熱海城です。戦国時代から残る城ではなく、1959年に建てられた観光施設。錦ヶ浦の山上に立つため、新幹線からは熱海到着を知らせる白い目印になります。",
+        "トンネルが多いのは、この区間で山がそのまま海へ落ちているからです。箱根の火山体から続く斜面は平地をほとんど残さずに海岸へ達し、線路を通せる平らな土地がありません。だから新幹線は山側を掘って進み、谷が海へ開ける場所でだけ外の光が入ります。海が途切れて見えるのは演出ではなく、地形そのものがこの車窓のリズムを決めているからです。",
       ],
       en: [
         "Atami developed on steep slopes descending from the mountains toward Sagami Bay. From the train, the sea, stacked houses and hotels, and the green hills appear in layers. That vertical overlap is what makes the Atami coastline distinctive.",
         "The low island offshore is Hatsushima, an inhabited island about 10 kilometers from Atami Port and roughly 4 kilometers around. Look for a long, low outline in front of the horizon rather than a mountainous island.",
         "The white, castle-like building on the hill is Atami Castle. It is not a surviving feudal castle; it was built in 1959 as a tourist attraction. Its position above Nishikigaura makes it a useful visual marker that Atami is close.",
+        "The tunnels exist because the mountains here drop straight into the sea. Slopes descending from the Hakone volcanic complex reach the shore with almost no flat land left, so there is no level ground for a railway. The Shinkansen therefore runs inside the hillside and admits daylight only where a valley opens toward the water. The broken view is not a matter of scenery but of terrain: the landform sets the rhythm of this window.",
       ],
     },
     guideHighlight: {
@@ -1572,34 +1574,34 @@ const SPOTS = [
     ja: {
       name: "三島車両所のカタパルト",
       area: "三島 → 新富士",
-      hook: "空へ向かう？三島の発射台",
+      hook: "空へ向かう、新幹線発射台",
       story: "三島を出て新富士へ向かうA席側に、空へ伸びるように見える高架線があります。通称「発射台」ですが、ロケットの設備ではありません。これは三島車両所の着発線です。車両基地へ入る列車は、いったん本線の西側まで進んでから進行方向を変え、基地へ入ります。黄瀬川の谷へ向かって本線が下る一方、着発線は高い位置を保つため、車窓では線路が空へ駆け上がるように見えます。早朝には停車中の車両が見えることもあります。",
     },
     en: {
       name: "Mishima Shinkansen Catapult",
       area: "Mishima → Shin-Fuji",
-      hook: "A track that seems to launch",
+      hook: "A Shinkansen track into the sky",
       story: "After Mishima, an elevated track on the Seat A side seems to rise into the sky. The nickname “catapult” describes its appearance, not a launch system. These are the arrival and departure tracks of the Mishima rolling-stock depot. A train entering the depot first runs west beyond the main line, then reverses into the yard. The main line drops toward the Kise River valley while these tracks stay high, so they appear to climb into the sky. Parked cars may sometimes be visible in the early morning.",
     },
     pageTitle: {
-      ja: "三島車両所の新幹線カタパルト｜A席から見る着発線とスイッチバック | 新幹線の窓",
-      en: "Mishima's Shinkansen Catapult | Switchback Tracks from Seat A",
+      ja: "空へと向かう三島車両所の新幹線発射台｜カタパルトの謎 | 新幹線の窓",
+      en: "Mishima's Shinkansen Catapult | The Track That Climbs into the Sky",
     },
     pageHeading: {
-      ja: "空へ伸びるような三島車両所の着発線",
-      en: "Mishima's arrival tracks that seem to launch",
+      ja: "空へと向かう三島車両所の新幹線発射台",
+      en: "Mishima's Shinkansen catapult, climbing into the sky",
     },
     pageHeadingChunks: {
-      ja: ["空へ伸びるような", "三島車両所の着発線"],
-      en: ["Tracks that seem to launch", "at Mishima"],
+      ja: ["空へと向かう", "三島車両所の新幹線発射台"],
+      en: ["Mishima's Shinkansen catapult,", "climbing into the sky"],
     },
     metaDescription: {
-      ja: "三島を出て新富士へ向かうA席側に、空へ伸びるような高架線が見えます。通称「発射台」の正体である三島車両所の着発線と、スイッチバックの仕組みを車窓から紹介します。",
-      en: "After Mishima, elevated tracks on the Seat A side seem to rise into the sky. Learn why the tracks are nicknamed a catapult and how the Mishima depot's switchback works.",
+      ja: "三島を出て新富士へ向かうA席側に、空へ伸びるような新幹線発射台が見えます。通称カタパルトの正体である三島車両所の着発線と、スイッチバックの仕組みを紹介します。",
+      en: "After Mishima, elevated tracks on the Seat A side seem to climb into the sky. Learn why they are nicknamed a catapult and how the Mishima depot's switchback works.",
     },
     sectionHeading: {
-      ja: "なぜ発射台のように見える？",
-      en: "Why does it look like a launchpad?",
+      ja: "車窓から見上げるカタパルトの謎",
+      en: "The mystery of Mishima's window-side catapult",
     },
     pageStory: {
       ja: "「銀河鉄道999のよう」と言いたくなる高架線は、飾りでも廃線跡でもありません。三島車両所の着発線で、実際に新幹線が使う折り返しスペースです。三島車両所は日常点検や修繕を担う中間基地。東京から来た編成は、基地へ入るためにいったん駅と反対側の西へ進み、ここで折り返して車両所へ入ります。見た目はSFでも、営業運転を支える合理的な配線なのです。",
@@ -2861,11 +2863,13 @@ const SPOTS = [
         "立岩は標高約88mの岩山の通称です。南側にはチャート質の岩肌が最大約30m切り立ち、周囲の林から岩壁だけが大きく露出しています。この形が、高速で通過する新幹線からでも目に入りやすい理由です。",
         "麓には立岩稲荷があります。ただし、立岩と信仰の直接的な関係を示す確かな資料は確認されておらず、御神体や磐座と断定するのは避けたほうがよさそうです。",
         "現地はロッククライミングでも知られます。豊橋市は利用方法を愛知県東三河遭難対策協議会へ案内しており、現地案内では岩登りに申請が必要とされています。車窓で見る岩と、現地で登る岩では前提が異なります。",
+        "チャートは、放散虫などの微生物の殻が海底に降り積もってできた、二酸化ケイ素を90%以上含む硬い堆積岩です。硬いぶん侵食に強く、まわりのやわらかい地層が削られてもチャートだけが残り、崖や岩峰になることがよく知られています。立岩の南面が林の上へ突き出して見える形も、この性質から説明されることの多いものです。数十秒で通り過ぎる灰色の壁は、そういう時間のかかり方でできています。",
       ],
       en: [
         "Tateiwa is the local name for an approximately 88-meter-high rocky hill. Its south face exposes as much as 30 meters of steep chert above the surrounding trees, which is why it remains conspicuous even from a fast-moving Shinkansen.",
         "Tateiwa Inari stands at the foot of the hill. Some accounts connect the rock with worship, but firm evidence of a direct religious relationship has not been established, so it is best not to describe Tateiwa definitively as a sacred object.",
         "The cliff is also known to rock climbers. Toyohashi City directs visitors to the Aichi Higashi-Mikawa Mountain Rescue Council for access information, and local guidance requires an application for climbing. Seeing it from the train and visiting the cliff are very different activities.",
+        "Chert is a hard sedimentary rock, more than 90 percent silica, formed as the remains of radiolarians and other microscopic organisms settled on the sea floor. Because it resists erosion far better than softer surrounding rock, chert commonly survives as crags and cliffs after its surroundings have worn away. That property is the usual explanation for a bare face standing above woodland, as it does here. The grey wall you pass in a few seconds was shaped on that timescale.",
       ],
     },
     guideHighlight: {
@@ -3467,34 +3471,34 @@ const SPOTS = [
     ja: {
       name: "岐阜羽島のマハロ看板",
       area: "岐阜羽島駅",
-      hook: "ホーム越しに、マハロの大看板。",
+      hook: "岐阜なのにハワイ？",
       story: "岐阜羽島駅に差しかかるA席側、ホームの向こうに「MaHaLo」の大きな文字が現れます。マハロは、羽島市に本社を置く高陽社が販売する、ハワイ島コナ沖で取水した海洋深層水の商品名です。海から遠い岐阜の田園に突然ハワイ語が現れるように見えて、実は販売元のお膝元。ホーム、線路、空と一緒に一枚の景色へ入るので、通過の短さに比べて強く印象に残ります。",
     },
     en: {
       name: "Mahalo Sign at Gifu-Hashima",
       area: "Gifu-Hashima Station",
-      hook: "Mahalo beyond the platform.",
+      hook: "Hawaiʻi in inland Gifu?",
       story: "At Gifu-Hashima, large letters reading 'MaHaLo' appear beyond the platform on the Seat A side. Mahalo is the name of deep-ocean water drawn off Kona, Hawaiʻi, and sold by Koyo-sha, whose headquarters are in Hashima. It seems like Hawaiian suddenly appearing in inland Gifu, but this is the seller's home ground. Platform, tracks, sky, and billboard enter one frame, making it memorable despite the brief passage.",
     },
     pageTitle: {
-      ja: "岐阜羽島駅のマハロ看板｜A席のホーム越しに見える海洋深層水 | 新幹線の窓",
-      en: "Mahalo's Sign at Gifu-Hashima | Deep-Ocean Water beyond Seat A",
+      ja: "岐阜羽島に立つマハロの巨大看板｜岐阜なのにハワイ？ | 新幹線の窓",
+      en: "Mahalo's Giant Sign at Gifu-Hashima | Hawaiʻi in inland Gifu?",
     },
     pageHeading: {
-      ja: "ホーム越しに現れる、岐阜羽島のマハロ看板",
-      en: "Mahalo's giant sign beyond the Gifu-Hashima platform",
+      ja: "岐阜羽島に立つマハロの巨大看板",
+      en: "Mahalo's giant sign at Gifu-Hashima",
     },
     pageHeadingChunks: {
-      ja: ["ホーム越しに現れる、", "岐阜羽島のマハロ看板"],
-      en: ["Mahalo's giant sign", "beyond the platform"],
+      ja: ["岐阜羽島に立つ", "マハロの巨大看板"],
+      en: ["Mahalo's giant sign", "at Gifu-Hashima"],
     },
     metaDescription: {
       ja: "岐阜羽島駅を通過するとき、A席側のホーム越しに見える海洋深層水マハロの大きな看板を紹介。岐阜羽島の会社が扱う水のブランドと、駅の景色に残る理由をたどります。",
       en: "As the Shinkansen passes Gifu-Hashima, Mahalo's large deep-ocean-water sign appears beyond the Seat A platform. Learn about the water brand handled in Gifu-Hashima and why this station view stays with you.",
     },
     sectionHeading: {
-      ja: "この大きなマハロ看板は何？",
-      en: "What is the giant Mahalo sign?",
+      ja: "岐阜なのにハワイ？ 巨大看板の正体",
+      en: "Hawaiʻi in inland Gifu? The giant sign explained",
     },
     pageStory: {
       ja: "岐阜羽島駅を通過するA席側の車窓に、海洋深層水を掲げるMaHaLoの大きな看板があります。商品はハワイ島コナ沖で取水され、高陽社が2003年から販売しているものです。高陽社は1998年に本社を羽島へ移しており、海から遠い新幹線駅のホーム越しにハワイ語と深海の水が現れる意外さは、まさに販売元のお膝元だからこそ生まれた景色です。",
@@ -3504,9 +3508,9 @@ const SPOTS = [
       heading: { ja: "海から遠い岐阜羽島に、なぜ海洋深層水？", en: "Why deep-ocean water in inland Gifu-Hashima?" },
       ja: [
         "MaHaLo（マハロ）は、ハワイ島コナ沖で取水する海洋深層水の商品名です。「Mahalo」はハワイ語で感謝を表す言葉として知られます。岐阜の田園にハワイ語が立つように見えて、販売する高陽社は羽島市に本社を置きます。看板は、遠い海の水と地元企業を一瞬でつなぐ目印です。",
-        "高陽社は1972年に東京で創業し、1994年に羽島市へ研修センター、1996年にホテルKOYOを開設、1998年に本社を移しました。2003年にMaHaLoの販売を始めています。巨大な看板は、商品を説明するより先に「羽島に高陽社がある」と伝える、販売元の沿線サインでもあります。",
+        "高陽社は1972年に東京で創業し、1994年に羽島市へ研修センターを開き、1996年にホテルKOYO、1998年に本社を移しました。2003年にMaHaLoの販売を始めています。巨大な看板は、商品を説明するより先に「羽島に高陽社がある」と伝える、販売元の沿線サインでもあります。",
         "高陽社の2011年の広報誌には、岐阜羽島駅前の写真とともに「車窓からの景色が、この水との出会いでした。」というコピーが載っています。つまり、この看板はたまたま線路際にあるのではなく、新幹線の車窓で見つけられることを会社自身が表現に取り込んできたものです。",
-        "新幹線からは小さな説明文を読む余裕がありません。だから沿線には、727のように商品名や会社名だけを極端に大きく掲げる野立て看板が残ります。MaHaLoの大きさも時速で通過する乗客へのメッセージ。ホーム越しに大きな文字だけをまず見つければ、この広告の設計そのものを体験できます。",
+        "新幹線からは小さな説明文を読む余裕がありません。だから沿線には、727のように商品名や会社名だけを極端に大きく掲げる野立て看板が残ります。MaHaLoの大きさも、時速200km超で通過する乗客へのメッセージ。ホーム越しに大きな文字だけをまず見つければ、この広告の設計そのものを体験できます。",
       ],
       en: [
         "MaHaLo is the name of deep-ocean water drawn off Kona, Hawaiʻi. 'Mahalo' is widely known as a Hawaiian word expressing thanks. The sign looks like Hawaii has appeared in the Gifu countryside, but Koyo-sha, the seller, is headquartered in Hashima. It connects a faraway ocean with a local company in a single glance.",
@@ -3533,6 +3537,13 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-16",
         note: { ja: "印象に残るメッセージが、ホーム越しに見える", en: "A memorable message appears beyond the platform" },
+      },
+      {
+        src: "images/20260906_gifu_hashima_station_michikusa.jpg",
+        alt: { ja: "新幹線の車窓から見た岐阜羽島駅のホームと駅前", en: "Gifu-Hashima platform and station area from the Shinkansen window" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-06",
+        note: { ja: "ホーム越しに巨大看板を探す、岐阜羽島駅の車窓", en: "The Gifu-Hashima station view where the giant billboards appear beyond the platform" },
       },
     ],
     media: {
@@ -3870,11 +3881,11 @@ const SPOTS = [
       en: "After a Kyoto-to-Nagoya train passes Maibara, a sign reading 'Se-n-ne-n-kyū' one character at a time appears on the Seat A side. It is a trackside marker for Sennen Kyū, a company founded at the foot of Mt. Ibuki in 1949. The name represents moxibustion made with moxa prepared from mugwort, reshaped into easier-to-use products, and becomes a memorable signal that the train has left Maibara behind.",
     },
     explainer: {
-      heading: { ja: "せんねん灸の看板を探すには？", en: "How do you spot the Sennen Kyū sign?" },
+      heading: { ja: "せんねん灸とは？", en: "What is Sennen Kyū?" },
       ja: [
         "もぐさは、乾燥させたよもぎから葉や葉脈を除き、葉の裏側にある白い綿毛を集めて精製したものです。火がつきやすく、ゆっくり燃えるためお灸に使われます。せんねん灸は伊吹山のふもとで1949年に創業し、このもぐさを使うお灸をつくってきました。看板の文字は、伊吹山と深く結びつく土地で育ったブランド名でもあります。",
         "1976年発売の「せんねん灸オフ」は、もぐさと肌の間に紙パルプ製の台座を置き、熱さを和らげて使えるようにした商品です。直接燃やすお灸の「熱い・跡が残る」という印象を、家庭で使いやすい日用品へ変えた工夫。2026年に発売50年を迎える定番の背景が、車窓で見る赤い商品名にあります。",
-        "この看板がいつからあるかは設置年が明らかでありませんが、少なくとも2001年1月28日には、新幹線で東京から神戸へ移動した今敏の車窓記録に「山の崖に大きく『せんねん灸』の看板が！」と残っています。四半世紀以上、乗客に「米原の先」を知らせてきた目印です。",
+        "この看板の設置年は明らかではありませんが、少なくとも2001年1月28日には、新幹線で東京から神戸へ移動したアニメ監督・今敏の車窓記録に「山の崖に大きく『せんねん灸』の看板が！」と残っています。四半世紀以上、乗客に「米原の先」を知らせてきた目印です。",
         "米原を過ぎたら、A席側で赤い文字が並ぶ白い看板を探してください。文字を一枚ずつ追ううちに通り過ぎますが、看板を見送ったあとも、滋賀から名古屋方面へ移っていく田畑や建物の変化を、ひと続きの車窓として楽しめます。",
       ],
       en: [
@@ -3946,11 +3957,13 @@ const SPOTS = [
         "公式案内によると、研究塔には13基のエレベータがあり、毎分1,000m級の高速機などを試験しています。建物の高さそのものが目的ではなく、実際の昇降機を安全に評価するための試験設備です。",
         "Big Wingは本社、研究開発、製造を同じ拠点に集めた施設です。研究の塔と工場の建物が並ぶため、車窓からは一本の高い塔だけでなく、その周囲の低い建物も合わせて見ると場所をつかみやすくなります。",
         "研究塔は2006年の開設時、世界最大級のエレベータ研究施設として紹介されました。現在の順位を断定するのではなく、エレベータを実物大で試験するための沿線拠点として眺めるのが適切です。",
+        "毎分1,000mは、秒に直すと約17mです。この速さの機械を試すには、加速し、一定の速さで走り、安全に止まるまでの距離が実物として必要になります。塔が170mあるのは眺めのためではなく、その一連の動きを丸ごと収めるための高さです。おおよそ40階建てのビルに相当する高さが、そのまま1台の試験装置になっているということでもあります。",
       ],
       en: [
         "FUJITEC's official information says the research tower contains 13 elevators and tests high-speed models in the roughly 1,000 m/min class. The height serves a practical purpose: it provides a full-scale test environment for safely evaluating elevator movement.",
         "Big Wing combines headquarters, research and development, and manufacturing on one site. From the train, use the tall tower together with the lower buildings around it as a visual group rather than searching for an isolated skyscraper.",
         "When the tower opened in 2006, it was described as world-leading or world-largest-class for elevator research. This page does not make a present-day ranking claim; the useful clue is the full-scale test facility beside the route.",
+        "A thousand metres a minute is about 17 metres a second. Testing a machine at that speed needs real distance: room to accelerate, to run at speed, and to stop safely. The tower is 170 metres tall not for the view but to contain that whole sequence. It amounts to a structure roughly forty storeys high working as a single piece of test equipment.",
       ],
     },
     guideHighlight: {
@@ -4214,38 +4227,38 @@ const SPOTS = [
     ja: {
       name: "ロッテ滋賀工場の菓子看板",
       area: "米原 → 京都",
-      hook: "お菓子の看板が続く",
-      story: "米原を過ぎて京都へ向かうA席側、ロッテ滋賀工場の近くで、お菓子の看板が続きます。雪見だいふくのサインも見える、商品ごとの色や形が連なる車窓です。滋賀工場は1985年にアイスクリーム工場として始まり、1993年には菓子も生産するようになりました。工場でつくられる身近なお菓子の看板が続くこと自体が、この区間の楽しさです。",
+      hook: "本当にここでつくってます",
+      story: "米原を過ぎて京都へ向かうA席側、ロッテ滋賀工場の近くで、お菓子の看板が続きます。今見えるのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。滋賀工場は1985年にアイスクリーム工場として始まり、1993年には菓子も生産するようになりました。巨大な雪見だいふくは、ただ広告を出しているのではなく、本当にここでつくられている商品の看板です。見ていると、少しお腹がすいてくる車窓です。",
     },
     en: {
       name: "Lotte Shiga's Candy Billboards",
       area: "Maibara → Kyoto",
-      hook: "A run of candy billboards",
-      story: "After Maibara toward Kyoto, a series of candy billboards appears on the Seat A side near Lotte's Shiga plant. The Yukimi Daifuku sign is among the familiar products in view. The plant began as an ice-cream factory in 1985 and added confectionery production in 1993. The sequence of products, colors, and shapes turns familiar things made there into a moving window motif.",
+      hook: "They are really made here.",
+      story: "After Maibara toward Kyoto, candy billboards appear on the Seat A side near Lotte's Shiga plant: Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The plant began as an ice-cream factory in 1985 and added confectionery production in 1993. The giant Yukimi Daifuku is not just an advert; it points to a product really made here. It is the kind of window view that can make you hungry.",
     },
     pageTitle: {
-      ja: "ロッテ滋賀工場のお菓子看板｜A席に続く雪見だいふくの車窓 | 新幹線の窓",
-      en: "Lotte Shiga's Candy Billboards | Yukimi Daifuku from Seat A",
+      ja: "雪見だいふく、クーリッシュ｜ロッテ滋賀工場のお菓子看板 | 新幹線の窓",
+      en: "Yukimi Daifuku and Coolish | Lotte's Shiga Factory Signs",
     },
     pageHeading: {
-      ja: "雪見だいふくも見える、ロッテ滋賀工場の看板列",
-      en: "A run of Lotte signs with Yukimi Daifuku",
+      ja: "雪見だいふく、クーリッシュ——ロッテ滋賀工場のお菓子看板",
+      en: "Yukimi Daifuku and Coolish: Lotte factory signs",
     },
     pageHeadingChunks: {
-      ja: ["雪見だいふくも見える、", "ロッテ滋賀工場の看板列"],
-      en: ["A run of Lotte signs", "with Yukimi Daifuku"],
+      ja: ["雪見だいふく、クーリッシュ——", "ロッテ滋賀工場のお菓子看板"],
+      en: ["Yukimi Daifuku and Coolish:", "Lotte factory signs"],
     },
     metaDescription: {
-      ja: "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見えるお菓子の看板を紹介。雪見だいふくのサインも含む、安土の車窓を楽しみます。",
-      en: "Between Maibara and Kyoto, a series of candy billboards appears near Lotte's Shiga plant on the Seat A side, including a Yukimi Daifuku sign.",
+      ja: "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見えるお菓子の看板を紹介。クーリッシュ、トッポ、ガーナチョコ、雪見だいふく。安土の車窓で、実際にここでつくられている商品の看板を楽しみます。",
+      en: "Between Maibara and Kyoto, candy billboards appear near Lotte's Shiga plant on the Seat A side: Coolish, Toppo, Ghana chocolate and Yukimi Daifuku, all made at the factory behind them.",
     },
     sectionHeading: {
       ja: "お菓子の看板はどこから？",
       en: "Where do the candy billboards come from?",
     },
     pageStory: {
-      ja: "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。巨大な雪見だいふくは、ただ広告を出しているだけではありません。雪見だいふく、クーリッシュ、爽、モナ王、トッポ、パイの実など、この工場でつくられる商品が看板の色と形で景色をつないでいます。1985年にアイスクリーム工場として始まり、1993年に菓子も加わった滋賀工場の前を、列車は一気に通り過ぎます。",
-      en: "On the Seat A side between Maibara and Kyoto, candy billboards appear in sequence around Lotte's Shiga plant. The giant Yukimi Daifuku is not merely advertising nearby: Yukimi Daifuku, Coolish, Sou, Monaka King, Toppo and Pie no Mi are among the products made here. Their colors and shapes link the landscape as the train races past the factory, which began with ice cream in 1985 and added confectionery in 1993.",
+      ja: "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。いま目に入るのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。巨大な雪見だいふくは、ただ広告を出しているだけではありません。この工場でつくられる商品の看板が、色と形で景色をつないでいます。1985年にアイスクリーム工場として始まり、1993年に菓子も加わった滋賀工場の前を、列車は一気に通り過ぎます。",
+      en: "On the Seat A side between Maibara and Kyoto, candy billboards appear in sequence around Lotte's Shiga plant. The signs now in view are Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The giant Yukimi Daifuku is not merely advertising nearby: it is a product made at this factory. Their colors and shapes link the landscape as the train races past the plant, which began with ice cream in 1985 and added confectionery in 1993.",
     },
     explainer: {
       heading: { ja: "看板の奥にあるロッテ滋賀工場", en: "The Lotte Shiga plant behind the signs" },
