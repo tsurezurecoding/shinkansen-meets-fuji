@@ -10,6 +10,12 @@ vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\ngl
 const spots = dataContext.__SPOTS;
 const spotCount = dataContext.__SPOT_COUNT;
 const spotIds = spots.map((spot) => spot.id);
+// 本文をホスト側ページの章として持つスポットは、自分ではなくホストを代表URLにする。
+// 同じクエリで自社2ページが並ぶ状態を避けるための、意図的な非自己canonical。
+const canonicalSpotIdOf = (id) => {
+  const spot = spots.find((item) => item.id === id);
+  return spot && spot.guidePageId && spot.guidePageId !== spot.id ? spot.guidePageId : id;
+};
 const pairs = [
   ["/", "/en/"],
   ["/zukan.html", "/en/zukan.html"],
@@ -82,17 +88,19 @@ for (const [label, directory] of spotPageDirectories) {
 }
 
 for (const id of spotIds) {
-  const jaPath = `/spots/${id}.html`;
-  const enPath = `/en/spots/${id}.html`;
+  const canonicalId = canonicalSpotIdOf(id);
+  const jaPath = `/spots/${canonicalId}.html`;
+  const enPath = `/en/spots/${canonicalId}.html`;
   for (const [urlPath, language] of [[jaPath, "ja"], [enPath, "en"]]) {
-    const file = diskPath(urlPath);
+    const selfPath = language === "ja" ? `/spots/${id}.html` : `/en/spots/${id}.html`;
+    const file = diskPath(selfPath);
     if (!fs.existsSync(file)) continue;
     const html = fs.readFileSync(file, "utf8");
     if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
-      errors.push(`${urlPath}: html lang must be ${language}`);
+      errors.push(`${selfPath}: html lang must be ${language}`);
     }
     if (!hasCanonical(html, urlPath)) {
-      errors.push(`${urlPath}: canonical must point to ${origin}${urlPath}`);
+      errors.push(`${selfPath}: canonical must point to ${origin}${urlPath}`);
     }
     if (!hasAlternate(html, "ja", jaPath)) {
       errors.push(`${urlPath}: missing Japanese hreflang`);
@@ -253,7 +261,7 @@ for (const [urlPath, language, hreflang] of localizedGuidePages) {
     errors.push(`${urlPath}: guide rail must contain ${spotCount} tracked spot links, found ${railSpotLinks.length}`);
   }
   for (const match of railSpotLinks) {
-    if (!/^\.\.\/en\/spots\/[a-z0-9-]+\.html$/.test(match[1])) {
+    if (!/^\.\.\/en\/spots\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(match[1])) {
       errors.push(`${urlPath}: localized rail link must point to an English spot page: ${match[1]}`);
     }
   }

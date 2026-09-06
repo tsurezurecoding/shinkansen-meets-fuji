@@ -1296,7 +1296,7 @@ function renderShowcase() {
       : sceneSVG(sp.scene);
     return `<div class="show-card" data-show-spot="${sp.id}" role="button" tabindex="0" aria-label="${t("more")}: ${L.name}">
         <div class="show-media">${media}</div>
-        <span class="show-caption"><strong>${sp.icon} ${L.name}</strong>${showCreditHTML(sp)}<span>${L.hook}</span><a class="show-guide-link" href="spots/${sp.id}.html">${t("readGuide")}</a></span>
+        <span class="show-caption"><strong>${sp.icon} ${L.name}</strong>${showCreditHTML(sp)}<span>${L.hook}</span><a class="show-guide-link" href="${spotPageHref(sp)}">${t("readGuide")}</a></span>
       </div>`;
   }).join("");
   const ctaLabel = lang === "ja" ? "もっと見る" : "More";

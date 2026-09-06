@@ -1106,6 +1106,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       name: spotNames[sp.id] || data.name || sp.en?.name || sp.id,
       side: sp.side,
       thumb: RAIL_THUMB_CATEGORIES.has(sp.category) && sp.image ? sp.image : "",
+      guide: spotGuideHref(sp),
     });
   }
   rows.sort((a, b) => a.min - b.min || (a.kind === "station" ? -1 : 1));
@@ -1127,7 +1128,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       const isCurrent = r.id === currentId;
       const seatCls = r.side === "E" ? "is-e" : r.side === "A" ? "is-a" : "";
       const seatLabel = r.side === "E" ? "E" : r.side === "A" ? "A" : "—";
-      const href = `${spotHrefPrefix}${r.id}.html`;
+      const href = `${spotHrefPrefix}${r.guide || `${r.id}.html`}`;
       const trackingAttributes = options.trackSpotClicks
         ? ` data-guide-rail-spot="${escapeHTML(r.id)}" data-guide-rail-placement="${escapeHTML(railPlacement)}"`
         : "";
@@ -1382,6 +1383,16 @@ function photoGalleryHTML(spot, lang, prefix, itemsOverride) {
 function spotGuideHref(spot) {
   const pageId = spot.guidePageId || spot.id;
   return `${pageId}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`;
+}
+
+// 本文をホスト側ページの章として持つスポット。個別URLは残すが、検索上の代表は
+// ホスト1本へ寄せて、同じクエリで自社2ページが順位を分け合う状態を作らない。
+function isSubordinateSpot(spot) {
+  return Boolean(spot.guidePageId && spot.guidePageId !== spot.id);
+}
+
+function canonicalSpotId(spot) {
+  return isSubordinateSpot(spot) ? spot.guidePageId : spot.id;
 }
 
 function referencesHTML(spot, lang) {
@@ -1658,7 +1669,9 @@ function thinSpotPageHTML(spot, lang) {
     ? `${data.name}はいつ見える？座席側は？ ${data.area}${ui.titleSuffix}`
     : `When can you see ${data.name} from the Shinkansen? ${data.area} | Shinkansen Window`);
   const desc = localized(spot.metaDescription, lang) || description(spot, lang);
-  const url = pageUrl(lang, spot.id);
+  // canonical・og:url・JSON-LD をすべて代表ページの URL で揃える。
+  // 従属スポットの個別URLは残るが、自分自身を代表として主張しない。
+  const url = pageUrl(lang, canonicalSpotId(spot));
   const prefix = lang === "ja" ? "../" : "../../";
   // Static link graph (2026-08-17): nav / content-rail / related-spot links are
   // baked directly into the HTML so search engines do not depend on
@@ -1699,10 +1712,10 @@ function thinSpotPageHTML(spot, lang) {
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">
-  <link rel="canonical" href="${url}">
-  <link rel="alternate" hreflang="ja" href="${pageUrl("ja", spot.id)}">
-  <link rel="alternate" hreflang="en" href="${pageUrl("en", spot.id)}">
-  <link rel="alternate" hreflang="x-default" href="${pageUrl("en", spot.id)}">
+  <link rel="canonical" href="${pageUrl(lang, canonicalSpotId(spot))}">
+  <link rel="alternate" hreflang="ja" href="${pageUrl("ja", canonicalSpotId(spot))}">
+  <link rel="alternate" hreflang="en" href="${pageUrl("en", canonicalSpotId(spot))}">
+  <link rel="alternate" hreflang="x-default" href="${pageUrl("en", canonicalSpotId(spot))}">
   <script src="${prefix}language-router.js?v=${assetVersion("language-router.js")}"></script>
   <link rel="stylesheet" href="${prefix}style.css?v=${assetVersion("style.css")}">
   <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=${assetVersion("spot-media-gallery.css")}">
@@ -2541,7 +2554,7 @@ function sitemapXML() {
   ];
   // 個別に更新したスポットだけ日付を上書きする。全件を一斉に書き換えないための例外表。
   const spotLastmodOverrides = { "727-board": "2026-08-15" };
-  const spotUrls = SPOTS.flatMap((spot) => ["ja", "en"].map((lang) => ({
+  const spotUrls = SPOTS.filter((spot) => !isSubordinateSpot(spot)).flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
