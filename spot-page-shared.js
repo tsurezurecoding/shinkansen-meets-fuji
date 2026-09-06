@@ -329,7 +329,7 @@
     });
     data.spots.forEach(function (spot) {
       if (!Number.isFinite(Number(spot.minutes))) return;
-      rows.push({ kind: "spot", id: spot.id, minutes: Number(spot.minutes), name: localized(spot.name, lang), seats: seatLabels(spot), thumb: spot.thumb || "", sideLabel: sideLabel(spot, lang) });
+      rows.push({ kind: "spot", id: spot.id, minutes: Number(spot.minutes), name: localized(spot.name, lang), seats: seatLabels(spot), thumb: spot.thumb || "", sideLabel: sideLabel(spot, lang), guide: spot.guide || "" });
     });
     rows.sort(function (a, b) {
       return a.minutes - b.minutes || (a.kind === "station" ? -1 : 1);
@@ -344,7 +344,7 @@
         return "<span class=\"spot-page-shared-seat is-" + escapeHTML(seat.toLowerCase()) + "\">" + escapeHTML(seat) + "</span>";
       }).join("") + "</span>";
       var thumbnail = "<span class=\"spot-page-rail-thumb-wrap\"><img class=\"spot-page-rail-thumb\" src=\"" + escapeHTML(href(rootPath, row.thumb)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\" width=\"38\" height=\"38\"><span class=\"spot-page-shared-preview\" aria-hidden=\"true\"><img src=\"" + escapeHTML(href(rootPath, row.thumb)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-shared-preview-copy\"><strong>" + escapeHTML(row.name) + "</strong><span>" + escapeHTML(ui.railPreviewTiming(row.minutes)) + " ・ " + escapeHTML(row.sideLabel) + "</span></span></span></span>";
-      return "<li class=\"spot-page-rail-row spot-page-rail-spot" + (isCurrent ? " is-current" : "") + "\"><a class=\"spot-page-rail-link\" href=\"" + escapeHTML((spotHrefPrefix || "") + row.id + ".html") + "\"" + (isCurrent ? " aria-current=\"page\"" : "") + ">" + thumbnail + "<span class=\"spot-page-rail-min\">" + escapeHTML(row.minutes) + "</span><span class=\"spot-page-rail-name\">" + escapeHTML(row.name) + "</span>" + seats + "</a></li>";
+      return "<li class=\"spot-page-rail-row spot-page-rail-spot" + (isCurrent ? " is-current" : "") + "\"><a class=\"spot-page-rail-link\" href=\"" + escapeHTML((spotHrefPrefix || "") + (row.guide || row.id + ".html")) + "\"" + (isCurrent ? " aria-current=\"page\"" : "") + ">" + thumbnail + "<span class=\"spot-page-rail-min\">" + escapeHTML(row.minutes) + "</span><span class=\"spot-page-rail-name\">" + escapeHTML(row.name) + "</span>" + seats + "</a></li>";
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
@@ -424,7 +424,7 @@
     var cards = data.showcase.map(function (item) {
       var name = localized(item.name, lang);
       var hook = localized(item.hook, lang);
-      var guideHref = href(base, "spots/" + item.id + ".html");
+      var guideHref = href(base, "spots/" + (item.guide || item.id + ".html"));
       return "<a class=\"show-card\" href=\"" + escapeHTML(guideHref) + "\" aria-label=\"" + escapeHTML(name + ": " + ui.showcaseAction) + "\">" +
         "<div class=\"show-media\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"" + escapeHTML(name) + "\" loading=\"lazy\" decoding=\"async\"></div>" +
         "<span class=\"show-caption\"><strong>" + escapeHTML((item.icon || "") + " " + name).trim() + "</strong>" + showcaseCreditHTML(item, lang) + "<span class=\"show-hook\">" + escapeHTML(hook) + "</span><span class=\"show-guide-link\">" + escapeHTML(ui.showcaseAction) + "</span></span>" +

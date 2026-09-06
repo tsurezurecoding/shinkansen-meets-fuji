@@ -142,7 +142,10 @@ for (const spot of SPOTS) {
       if (spot[field] === undefined) problems.push(`${id}: missing "${field}" for its own page`);
     }
   }
-  for (const lang of ["ja", "en"]) {
+  // ホスト側ページの章として本文を持つスポットは、別ページに canonical を寄せている。
+  // その別ページに構造化データを置くと、同じ @id に別の実体が2つ並ぶので出していない。
+  // 実体はホストページ側にあり、そちらで検証される。
+  for (const lang of sharesPage ? [] : ["ja", "en"]) {
     const expected = expectedGeneratedSide(spot, lang);
     const actual = generatedJsonLdSide(spot, lang);
     if (actual && actual !== expected) {

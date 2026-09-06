@@ -25,6 +25,8 @@ const warningKinds = new Set([
 const allowlist = new Map([
   ['canonical-mismatch:lp.html', 'Campaign alias intentionally consolidates to the Japanese home page.'],
   ['canonical-mismatch:en/lp.html', 'Campaign alias intentionally consolidates to the English home page.'],
+  ['canonical-mismatch:spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
+  ['canonical-mismatch:en/spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
   ['no-head:google00ff4d27915d01c3.html', 'Google ownership verification token.'],
   ['no-head:navercdb86f56126e5063178bc29b07c50ca0.html', 'Naver ownership verification token.'],
 ]);

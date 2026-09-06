@@ -509,6 +509,7 @@ const spots = source.SPOTS.map((spot) => ({
   sideLabel: { ja: sideLabel(spot, "ja"), en: sideLabel(spot, "en") },
   seats: seats(spot),
   thumb: spot.image ? thumbnailSrc(spot.image) : "",
+  guide: spotGuideHref(spot),
 }));
 
 const pages = {};
@@ -525,6 +526,7 @@ const showcase = SHOWCASE_SPOT_IDS.map((id) => {
     id: String(spot.id), icon: String(spot.icon || ""),
     name: { ja: String(spot.ja?.name || spot.en?.name || spot.id), en: String(spot.en?.name || spot.ja?.name || spot.id) },
     hook: { ja: String(spot.ja.hook), en: String(spot.en.hook) }, thumb: thumbnailSrc(spot.image),
+    guide: spotGuideHref(spot),
     credit: { ja: String(credit.ja || credit.en || ""), en: String(credit.en || credit.ja || "") },
     creditUrl: typeof credit.url === "string" ? credit.url : "", creditDate: typeof credit.date === "string" ? credit.date : "",
   };
