@@ -220,9 +220,13 @@ for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
   if (guideLinkCount !== 6 || metaCount !== 0 || !html.includes('class="showcase-rail"')) {
     errors.push(`${urlPath}: mobile cards must match TOP card structure without timing metadata`);
   }
-  const kakegawaPhoto2Count = (html.match(/20260712_kakegawa_castle_michikusa\.webp/g) || []).length;
-  if (kakegawaPhoto2Count !== 2 || html.includes("20260530_kakegawa_castle.webp")) {
-    errors.push(`${urlPath}: Kakegawa Castle FAQ images must use photo-2`);
+  // What this pins is *which* Kakegawa photo a guide may show, not how many times
+  // it shows it. Requiring exactly two occurrences also froze the page layout: the
+  // Japanese guide stopped listing the castle when its cloudy section was rebuilt
+  // around the five stretches where Mt. Fuji is visible, and a correct page failed.
+  // Keep the superseded photo banned; let each guide decide whether to show it.
+  if (html.includes("20260530_kakegawa_castle.webp")) {
+    errors.push(`${urlPath}: Kakegawa Castle FAQ images must use photo-2, not the superseded photo`);
   }
 }
 
