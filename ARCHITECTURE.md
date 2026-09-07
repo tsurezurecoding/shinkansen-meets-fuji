@@ -36,6 +36,7 @@ Hand-written application shell includes root and language HTML templates, CSS, b
 
 Generated output includes:
 
+- `data-runtime.js` (the browser-facing subset of `data.js`)
 - `spot-page-shared-data.js` (catalog only)
 - `data/spot-pages/<id>.<lang>.js` (one body per page, per language)
 - Japanese and English files below `spots/` and `en/spots/`
@@ -45,6 +46,16 @@ Generated output includes:
 - `content-manifest.json`
 
 `generatedAt` was removed from the tracked content manifest. A commit timestamp cannot be known before committing the file that contains it, so it created self-referential drift. `contentVersion` and file hashes are the deterministic provenance contract.
+
+## Editorial source and runtime data
+
+`data.js` is the editorial source of truth and is not served to readers. Fifteen of its spot fields exist only as input to the page generators: `explainer`, `explainerFigure`, `guideHighlight`, `guideNotice`, `metaDescription`, `pageHeading`, `pageHeadingChunks`, `pageStory`, `pageTitle`, `photoSectionHeading`, `photoTip`, `routeNote`, `sectionHeading`, `sharedGuideHeading` and `sharedGuideStory`. Readers receive that copy through `data/spot-pages/`, not through the shell.
+
+`generate-runtime-data.mjs` writes `data-runtime.js`: the same spots with those fields removed, 241 KB against 531 KB of source, under a 320 KB budget. Shell pages -- zukan, start, live, journal, mieru, somato, sparkling-dreams and 727-collection, in both languages -- load `data-runtime.js`. Nothing loads `data.js` in a browser.
+
+The exclusion list is a deny list on purpose. A field nobody has considered keeps reaching the browser rather than vanishing from it. `validate-runtime-data.mjs` checks three things: the kept fields are byte-identical to the `data.js` projection, no consumer of the `SPOTS` global reads a dropped field, and no page still loads `data.js`. `data-runtime.js` declares `SPOTS`, `ROUTE` and `BOARD_COLLECTION` with `const`, matching `data.js`, because `app.js` resolves them through `typeof SPOTS !== "undefined"`.
+
+Editing an article field now changes four files. Editing a field the shell shows, such as a hook, still changes the shell.
 
 ## Web to Android contract
 
