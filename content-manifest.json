@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d0772bedc98310b0",
+  "contentVersion": "44aafb79da0c5d85",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 15893,
-      "sha256": "ff29620bc7589df8c63c9c6a2dfd7d117b9ab1650cbc590bd23302eee53f35f8"
+      "bytes": 15901,
+      "sha256": "661e64f3f56c1075f79b1cc069ec4289d2e870fefbcfefc31d26b02258133e5a"
     },
     {
       "path": "727-collection.js",
@@ -41,6 +41,12 @@
       "sha256": "d8ebc9903819fbcfc5f5db7d8126c391385a41beb7569f88acf0adb6f2e7648e"
     },
     {
+      "path": "data-runtime.js",
+      "url": "https://www.michikusa-travel.com/data-runtime.js",
+      "bytes": 241356,
+      "sha256": "bad1079723882bd76765d5738a8e628f264f2cbbc749db3b68de1b496bbe0c31"
+    },
+    {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
       "bytes": 531028,
@@ -67,8 +73,8 @@
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 27397,
-      "sha256": "14a776a4622ee6e862fdcaec5164bc8dd66e4876cda7bc3e04174d9929ce8645"
+      "bytes": 27405,
+      "sha256": "4a1c3037378341d8423e42dd3cf75443f03b9dec8f58529465cadc55e8e29400"
     },
     {
       "path": "en/yakei.html",
@@ -247,8 +253,8 @@
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
-      "bytes": 18973,
-      "sha256": "4281cf8a9d660b144d986c4886b179d3544668141c780915667949fd3e2c98e5"
+      "bytes": 18981,
+      "sha256": "13989f4aae08159d6c14d84f2d5499d9f728d227d8367ab4acc8b90cb2c38ba0"
     },
     {
       "path": "live/narration.js",
@@ -259,8 +265,8 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 30214,
-      "sha256": "1278b444c1dc2ea2532f1cd2bf55a7e3a459b194ae17f9ecff85a8fd198730d8"
+      "bytes": 30222,
+      "sha256": "18a32f3afe434b717de1eae760a69369ecc38973a42bcdb090f8880461e071ff"
     },
     {
       "path": "sparkling-dreams.js",
