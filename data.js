@@ -1023,11 +1023,11 @@ const SPOTS = [
     },
     pageHeading: {
       ja: "多摩川を越えたら、塔の街——武蔵小杉のタワマン群",
-      en: "After the Tama River: the Musashi-Kosugi tower cluster",
+      en: "After the Tama River: a whole city of towers at Musashi-Kosugi",
     },
     pageHeadingChunks: {
       ja: ["多摩川を越えたら、塔の街——", "武蔵小杉のタワマン群"],
-      en: ["After the Tama River:", "the Musashi-Kosugi tower cluster"],
+      en: ["After the Tama River:", "a whole city of towers at Musashi-Kosugi"],
     },
     metaDescription: {
       ja: "新幹線のE席側、多摩川を越えたすぐに現れる武蔵小杉のタワーマンション群。再開発の経緯、なぜ武蔵小杉に集中したのか、いま何棟あるのかを、車窓の見つけ方と合わせて紹介します。",
@@ -1035,11 +1035,11 @@ const SPOTS = [
     },
     sectionHeading: {
       ja: "この塔の街は、いつからできた？",
-      en: "How did this tower cluster come about?",
+      en: "When did this city of towers appear?",
     },
     pageStory: {
       ja: "東海道新幹線が丸子橋で多摩川を渡ってすぐ、E席側に迫るのが武蔵小杉のタワーマンション群です。ここは川崎市中原区。もともとはNEC、三菱ふそう、日本電気硝子など大企業の工場や社宅が広がっていた地区でした。2000年代に入って生産機能が郊外や海外へ移転すると、大規模な用地転換が始まり、川崎市の「小杉駅周辺再開発」計画に沿って、住宅・オフィス・商業を積み上げた超高層タワーが次々に立ち上がっていきました。新幹線から見えるのは、その再開発が完成後に描いた新しいスカイラインそのものです。",
-      en: "Right after the Shinkansen crosses the Tama River on Maruko Bridge, the Musashi-Kosugi tower cluster comes into view on the Seat E side. This is Nakahara Ward, Kawasaki City. The area was once filled with factories and company housing of major manufacturers such as NEC, Mitsubishi Fuso and Nippon Electric Glass. When those production functions moved to the suburbs or overseas in the 2000s, large plots of land opened up for redevelopment. Following Kawasaki City's plan for the Kosugi Station area, tall towers combining housing, offices and shops were built one after another. What you see from the train is the skyline this redevelopment produced.",
+      en: "Right after the Shinkansen crosses the Tama River on Maruko Bridge, the Musashi-Kosugi high-rises come into view on the Seat E side. This is Nakahara Ward, Kawasaki City. The area was once filled with factories and company housing of major manufacturers such as NEC, Mitsubishi Fuso and Nippon Electric Glass. When those production functions moved to the suburbs or overseas in the 2000s, large plots of land opened up for redevelopment. Following Kawasaki City's plan for the Kosugi Station area, tall towers combining housing, offices and shops were built one after another. What you see from the train is the skyline this redevelopment produced.",
     },
     explainer: {
       heading: { ja: "なぜ武蔵小杉に、これだけ集まった？", en: "Why did so many towers concentrate at Musashi-Kosugi?" },
@@ -1050,7 +1050,7 @@ const SPOTS = [
       ],
       en: [
         "Musashi-Kosugi Station is a hub where JR Nambu, Yokosuka, Shonan-Shinjuku, and the Tokyu Toyoko and Meguro lines meet. From here, Shinagawa, Tokyo, Shibuya, Shinjuku and Yokohama are all reachable in 20 to 30 minutes, making the area attractive to commuters bound for both central Tokyo and Yokohama. The 2010 opening of the Yokosuka Line platform at Musashi-Kosugi further boosted access and clearly accelerated the pace of new construction and move-ins.",
-        "Supply-side conditions aligned too. Large, contiguous factory sites remained on both the north and south sides of the station, making unified large-block planning possible. Kawasaki City used redevelopment schemes that combined higher floor-area ratios with public open space. As a result, since 2008 more than twenty residential and office high-rises have been added, with more still under way. The tower cluster you see from the Shinkansen is, in effect, a compact picture of Japanese late-Heisei-to-Reiwa urban planning.",
+        "Supply-side conditions aligned too. Large, contiguous factory sites remained on both the north and south sides of the station, making unified large-block planning possible. Kawasaki City used redevelopment schemes that combined higher floor-area ratios with public open space. As a result, since 2008 more than twenty residential and office high-rises have been added, with more still under way. The skyline you see from the Shinkansen is, in effect, a compact picture of Japanese late-Heisei-to-Reiwa urban planning.",
         "The concentration has drawn known concerns as well: crowding on schools, childcare and trains, and flooding of low-lying areas during Typhoon Hagibis in 2019. The bright skyline hides an ongoing discussion about how to manage that scale. Knowing this makes the brief window view more interesting rather than less.",
       ],
     },
@@ -3102,19 +3102,19 @@ const SPOTS = [
     en: { name: "Nagoya Station Skyline", area: "Just before Nagoya", hook: "Which towers are those?", story: "Approaching Nagoya from Tokyo, the view on the Seat E side suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, and the huge glass tower right beside them, covering the platforms, is JR Gate Tower. The dark rectangular tower slightly to the north is Midland Square, while the light-colored slab a little to the west is Dai Nagoya Building — five or six clearly named high-rises grouped around one station, one of Japan's densest station-front skylines. Knowing the names turns the brief cityscape into a small architecture tour announcing your arrival." },
     pageTitle: {
       ja: "新幹線から見える名古屋駅前のスカイライン｜あの高層ビルの名前 | 新幹線の窓",
-      en: "The Nagoya Station Skyline from the Shinkansen | Naming the Towers | Shinkansen Window",
+      en: "The Nagoya Station Skyline from the Shinkansen | What Those Towers Are | Shinkansen Window",
     },
     pageHeading: {
       ja: "名古屋到着直前——駅前の高層ビル群、その正体",
-      en: "Just before arriving at Nagoya — naming the station's tower cluster",
+      en: "Just before Nagoya — what those towers actually are",
     },
     pageHeadingChunks: {
       ja: ["名古屋到着直前——", "駅前の高層ビル群、その正体"],
-      en: ["Just before arriving at Nagoya —", "naming the station's tower cluster"],
+      en: ["Just before Nagoya —", "what those towers actually are"],
     },
     metaDescription: {
       ja: "名古屋到着直前、新幹線のE席側に立ち並ぶ高層ビル群を、モード学園スパイラルタワーズ、JRセントラルタワーズ、JRゲートタワー、ミッドランドスクエアなどの名前と一緒に紹介します。",
-      en: "Just before Nagoya, the Seat E window fills with a wall of high-rises. Learn to name Mode Gakuen Spiral Towers, JR Central Towers, JR Gate Tower, Midland Square and more, and how they reshape the Nagoya Station skyline.",
+      en: "Just before Nagoya, the Seat E window fills with a wall of high-rises. Here is how to tell Mode Gakuen Spiral Towers, JR Central Towers, JR Gate Tower and Midland Square apart in the Nagoya Station skyline.",
     },
     sectionHeading: {
       ja: "あの高層ビル、どれがどれ？",

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "65e7c8a998b4bb76",
+  "contentVersion": "d0772bedc98310b0",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -8,7 +8,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 15893,
-      "sha256": "d8717b11417d452453f033af840a70003eb9eb759f779d8386e647f35fc051a5"
+      "sha256": "ff29620bc7589df8c63c9c6a2dfd7d117b9ab1650cbc590bd23302eee53f35f8"
     },
     {
       "path": "727-collection.js",
@@ -43,8 +43,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 531065,
-      "sha256": "6bc147df7a097e410851a6beba8f0b9f972c70ae304779916528586f9f8305e4"
+      "bytes": 531028,
+      "sha256": "2c4cd6f2420b06eb4149b216ec44cd4267c9bbff7ef4ad5c71ed3b566a9aa869"
     },
     {
       "path": "data/timetable.js",
@@ -68,7 +68,7 @@
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 27397,
-      "sha256": "1a8586e56ab96e7ef82d904d5eb7f45f23031bf705dabf5b315c20b6d295896e"
+      "sha256": "14a776a4622ee6e862fdcaec5164bc8dd66e4876cda7bc3e04174d9929ce8645"
     },
     {
       "path": "en/yakei.html",
@@ -248,7 +248,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18973,
-      "sha256": "852c7f09b196aeb2a3435ad2e940753b2d234d51dce114a08a4ca6330b58af3e"
+      "sha256": "4281cf8a9d660b144d986c4886b179d3544668141c780915667949fd3e2c98e5"
     },
     {
       "path": "live/narration.js",
@@ -260,7 +260,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 30214,
-      "sha256": "8cb8d5293b5427fd41a75655fbb73ef244e88c2e75eaa6d627db95027eafcbc5"
+      "sha256": "1278b444c1dc2ea2532f1cd2bf55a7e3a459b194ae17f9ecff85a8fd198730d8"
     },
     {
       "path": "sparkling-dreams.js",
