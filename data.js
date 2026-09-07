@@ -1223,7 +1223,7 @@ const SPOTS = [
         "The yellow \"248\" sign beside it advertises Kinuta Dental in Nishi-Hachioji. The digits are read as \"Nishi-Hachi,\" a shorthand for Nishi-Hachioji; the clinic's official account has confirmed that reading. Around Kuzuhara, the white 727 and yellow 248 signs sit together, making the pair look even more mysterious if you do not know what the numbers mean.",
       ],
     },
-    minutesFromTokyo: 26, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 24.5, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -1735,7 +1735,7 @@ const SPOTS = [
       ja: "東京06:00発のぞみ1号では、車内時計06:43ごろ・東京から約43分。三島を過ぎ、新富士駅周辺で富士山がきれいに見える区間に入ったら、E席側の街並みに映えるカラフルなクレヨンのようなオブジェを探してください。晴れた日は色がよく映えるので、文字を読むより先に形を目印にします。",
       en: "On Nozomi 1, departing Tokyo at 06:00, the photo clock put this view at about 06:43 — roughly 43 minutes from Tokyo. As you enter the Shin-Fuji stretch, where Mt. Fuji can look beautiful, look on Seat E for the colorful, crayon-like object standing out against the townscape. On clear days its colors pop, so use the shape rather than trying to read the distant lettering.",
     },
-    minutesFromTokyo: 43,
+    minutesFromTokyo: 44.5,
     side: "E",
     category: "curious",
     confidence: "verified",
@@ -1815,7 +1815,7 @@ const SPOTS = [
       ja: "三島側では街の向こう、新富士側では田園の向こうへと前景が変わります。トンネルで見失っても、E席側を見続けてください。抜けるたびに富士山が近づき、裾野まで見える瞬間が増えていきます。",
       en: "The foreground shifts from city blocks near Mishima to open fields near Shin-Fuji. Keep watching Seat E even after a tunnel hides the mountain; each opening brings it closer and reveals more of its foothills.",
     },
-    minutesFromTokyo: 43, side: "E", category: "classic", confidence: "verified", durationSec: 210, spotting: "easy", scene: "fuji",
+    minutesFromTokyo: 44.5, side: "E", category: "classic", confidence: "verified", durationSec: 210, spotting: "easy", scene: "fuji",
     image: "images/20210218_fuji_rumireport.jpg",
     photoCredit: {
       ja: "@rumireport",
@@ -1962,7 +1962,7 @@ const SPOTS = [
       ],
       platformNote: { ja: "動画はXの公式埋め込みを利用しています。", en: "This video uses the official X embed." },
     },
-    minutesFromTokyo: 44, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
+    minutesFromTokyo: 45, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
     image: "images/20241129_fuji_paper_mills_OliverinJapan.jpg",
     photoCredit: {
       ja: "@OliverinJapan",
@@ -2439,7 +2439,7 @@ const SPOTS = [
       ja: "静岡を過ぎたら、まず線路脇の緑の縞模様に注目してください。次に、畝の上に立つ縦長の柱と羽根（防霜ファン）を数えてみると、静岡茶の畑らしさが一気に見えてきます。掛川駅前の掛川城とあわせて、「城の前は茶畑」というリズムを楽しむと、この区間の記憶に残りやすくなります。",
       en: "After Shizuoka, first notice the striped green pattern beside the tracks. Then start counting the tall fans standing above the ridges — those frost-protection fans are a signature of Shizuoka tea. Pair the fields with the glimpse of Kakegawa Castle just after, and this stretch becomes easy to remember: tea fields first, castle right after.",
     },
-    minutesFromTokyo: 61, side: "E", category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
     photos: [
@@ -2502,7 +2502,7 @@ const SPOTS = [
       ja: "掛川駅に近づいたら、E席側の丘の上を狙ってください。白い天守は樹木の緑を背にして立つので、影に埋もれず見つけやすい形をしています。のぞみは通過するので数秒。停車するひかり・こだまなら、駅ホームから角度を変えて眺めることもできます。",
       en: "As Kakegawa Station approaches, focus on the hill just north of the tracks from Seat E. The white keep is set against a green tree line, which makes it stand out cleanly. On a passing Nozomi you have only a few seconds; on stopping Hikari or Kodama services, you can also see it at a slightly different angle from the platform.",
     },
-    minutesFromTokyo: 62, side: "E", category: "classic", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "castle",
+    minutesFromTokyo: 64, side: "E", category: "classic", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "castle",
     media: {
       heading: { ja: "動画で見る掛川城", en: "Kakegawa Castle in motion" },
       description: {
@@ -2589,7 +2589,7 @@ const SPOTS = [
       ja: "掛川を出て10分弱、ハウス食品静岡工場のオレンジ色の建物を過ぎたら、E席側の田んぼの中を注意してください。しっぺい（白い犬）と大きな平仮名で書かれたメッセージ看板が、間隔をあけて三つ並びます。速いので、事前に「白い犬・三つの看板」と頭に入れておくと見つけやすくなります。",
       en: "About eight to ten minutes past Kakegawa, once you pass the orange House Foods Shizuoka Factory building, watch the fields on the Seat E side. Three signs featuring Shippei (a white dog) and large hiragana messages appear at intervals. They pass quickly, so keeping the phrase 'white dog, three signs' in mind helps.",
     },
-    minutesFromTokyo: 64, side: "E", category: "curious", confidence: "verified", durationSec: 5, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 66.5, side: "E", category: "curious", confidence: "verified", durationSec: 5, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260712_genki_sign_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -2875,7 +2875,7 @@ const SPOTS = [
       ja: "林の輪郭から岩壁だけが縦に突き出す、不自然なほど強いシルエットが見どころです。『あれは何？』と思った瞬間に見失いやすいので、浜名湖を過ぎたら先にE席側へ目を向けてください。",
       en: "The highlight is the abrupt silhouette: a bare vertical rock face rising out of an otherwise wooded hill. It is easy to lose just as you wonder what it is, so look toward Seat E before the train reaches it.",
     },
-    minutesFromTokyo: 75, side: "E", category: "curious", confidence: "verified", durationSec: 3, spotting: "easy", visibleWhenCloudy: true, scene: "mountain",
+    minutesFromTokyo: 76.5, side: "E", category: "curious", confidence: "verified", durationSec: 3, spotting: "easy", visibleWhenCloudy: true, scene: "mountain",
     image: "images/20210923_toyohashi_tateiwa_pato727.jpg",
     photoCredit: {
       ja: "@Pato_727",
@@ -2968,7 +2968,7 @@ const SPOTS = [
       ja: "豊橋を出て蒲郡付近を進むあいだ、A席側の遠くに水平線が開ける瞬間があります。そのとき、水平線の上にごく低くひょうたん型の輪郭を探してみてください。派手なランドマークではないぶん、見つけた瞬間のちょっとした達成感がある車窓です。",
       en: "After Toyohashi, as the train passes Gamagori, watch for moments when the far horizon opens on the Seat A side. In those seconds, look for a low, gourd-shaped outline sitting just above the water. It is not a bold landmark, but exactly for that reason, spotting it feels like a small quiet win.",
     },
-    minutesFromTokyo: 84, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
+    minutesFromTokyo: 82.5, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
     image: "images/20181213_mikawa_oshima_kawasan3.jpg",
     photoCredit: {
       ja: "@kawasan3",
@@ -4851,7 +4851,7 @@ const BOARD_COLLECTION_NAMES = Object.freeze({
   45: { collection: "摂津市鳥飼八町", public: "727看板（摂津市鳥飼八町）" },
 });
 const BOARD_COLLECTION = [
-  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 26, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
+  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 24.5, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
   { sourceNo: 20, id: "727-no-20", collectionNote: "となりにはきぬた歯科", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.406712, lng: 139.410831, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg", alt: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_2_2x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
   { sourceNo: 21, id: "727-no-21", collectionNote: "727看板がひとつだけ", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.403564, lng: 139.405643, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_solo_michikusa.jpg", alt: "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_1_4x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
   { sourceNo: 22, id: "727-no-22", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
