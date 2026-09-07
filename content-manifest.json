@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "bb4aae2b856f6749",
+  "contentVersion": "65e7c8a998b4bb76",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -8,7 +8,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 15893,
-      "sha256": "fafc179264264c4eb1755f2f1365429067a62b62a37ce7a111f45c794c4b5e17"
+      "sha256": "d8717b11417d452453f033af840a70003eb9eb759f779d8386e647f35fc051a5"
     },
     {
       "path": "727-collection.js",
@@ -43,8 +43,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 531051,
-      "sha256": "0adf910e33a8315212dc312c2c0dc434bdf957daa84ec88a045a1dceb6537029"
+      "bytes": 531065,
+      "sha256": "6bc147df7a097e410851a6beba8f0b9f972c70ae304779916528586f9f8305e4"
     },
     {
       "path": "data/timetable.js",
@@ -56,7 +56,7 @@
       "path": "en/hanabi.html",
       "url": "https://www.michikusa-travel.com/en/hanabi.html",
       "bytes": 43871,
-      "sha256": "64b1223d187feb9951417975d1a6aa1a72b8912b83dde5dc1103ab2d4b5db42c"
+      "sha256": "dc54269720a9502063ca5034bd2c2ad4854b1527c223e689b7a059c4374074f0"
     },
     {
       "path": "en/index.html",
@@ -68,19 +68,19 @@
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 27397,
-      "sha256": "d936a35a61e1123a46eae07f2d8f558130f6773b889b15f5553b9ab15861f65a"
+      "sha256": "1a8586e56ab96e7ef82d904d5eb7f45f23031bf705dabf5b315c20b6d295896e"
     },
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 33793,
-      "sha256": "30d680cb9c1969d9a6a17d1f84a0afabfe8e9161ba95fbd52ce1fe9c7b3c7f66"
+      "sha256": "3330a6ce274a508614996cccbde6a256f358075ab507cee63d93526421f1ef19"
     },
     {
       "path": "hanabi.html",
       "url": "https://www.michikusa-travel.com/hanabi.html",
       "bytes": 44179,
-      "sha256": "d267fc0211279e3489efc91c40604bae8173f45808476bf807f1cba28b601069"
+      "sha256": "5d2dc3a30ab4ea019002adb7b2c2c555440b6b825b0e341d760bd56da808e55b"
     },
     {
       "path": "hanabi.js",
@@ -248,7 +248,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18973,
-      "sha256": "673f74301b82daa82278c5c550b10a5f0c7d8985376652f43d720b1923d042f3"
+      "sha256": "852c7f09b196aeb2a3435ad2e940753b2d234d51dce114a08a4ca6330b58af3e"
     },
     {
       "path": "live/narration.js",
@@ -260,7 +260,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 30214,
-      "sha256": "305ef717b39e51b5f4ccb53c64908c890e6f299b24714efba1767af522fcbb7a"
+      "sha256": "8cb8d5293b5427fd41a75655fbb73ef244e88c2e75eaa6d627db95027eafcbc5"
     },
     {
       "path": "sparkling-dreams.js",
@@ -277,8 +277,8 @@
     {
       "path": "spot-page-shared.js",
       "url": "https://www.michikusa-travel.com/spot-page-shared.js",
-      "bytes": 68160,
-      "sha256": "1e49a5df3b1750c2ed3195212f6b95dd5c74a245e0e996f6bcf95e4b62b5702e"
+      "bytes": 68497,
+      "sha256": "6bb4b3885e84cd5d10f9e35cea01c3c157b277a64c6cd7ff02f434325e3882ce"
     },
     {
       "path": "style.css",
@@ -344,7 +344,7 @@
       "path": "window-moments.html",
       "url": "https://www.michikusa-travel.com/window-moments.html",
       "bytes": 39464,
-      "sha256": "d88b6c852027c26c49565eae66c2f8ab2f58ce0655f36a2ac03b8a3fe1b435cb"
+      "sha256": "c0163cafa657c73a7da735174532eb660d737c481b0a79e64590d79012cc45a1"
     },
     {
       "path": "window-moments.js",
@@ -356,7 +356,7 @@
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
       "bytes": 36626,
-      "sha256": "8b22b1d904043a6118956b3655a910162b704d674fd52a17229946b5712e9ca5"
+      "sha256": "465040f88e3e4c6b02ef037cf85d52f9d885658f83abad5943a99e6d12144b9d"
     },
     {
       "path": "yakei.js",

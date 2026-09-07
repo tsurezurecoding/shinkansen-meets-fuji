@@ -2,6 +2,8 @@
   "use strict";
 
   var DATA_KEY = "MADO_SPOT_PAGE_SHARED_DATA";
+  // スポット本文はページごとの配信物。カタログ(DATA_KEY)には入っていない。
+  var PAGE_DATA_KEY = "MADO_SPOT_PAGE_DATA";
   var HOST_ATTRIBUTE = "data-spot-page-shared-module";
   var SUPPORTED_LANGUAGES = { ja: true, en: true };
   var UI = {
@@ -178,9 +180,10 @@
   }
 
   function validateData(data, currentId, lang) {
-    if (!data || data.version !== 2 || !Array.isArray(data.stations) || !data.stations.length || !Array.isArray(data.spots) || !data.spots.length || !data.pages || typeof data.pages !== "object") {
+    if (!data || data.version !== 3 || !Array.isArray(data.stations) || !data.stations.length || !Array.isArray(data.spots) || !data.spots.length) {
       throw new Error("shared data is missing its version, stations, or spots");
     }
+    if (data.pages) throw new Error("catalog must not carry page bodies");
     if (typeof data.affiliatesEnabled !== "boolean" || !Array.isArray(data.showcase) || !data.showcase.length) {
       throw new Error("shared presentation data is missing its feature flags or showcase");
     }
@@ -210,7 +213,7 @@
       }
       showcaseIds[item.id] = true;
     });
-    if (!spotIds[currentId] || !data.pages[currentId] || !data.pages[currentId][lang]) throw new Error("current spot is not in shared data");
+    if (!spotIds[currentId]) throw new Error("current spot is not in shared data");
   }
 
   function href(rootPath, relativePath) {
@@ -615,8 +618,7 @@
     return "<a class=\"spot-page-727-collection-link\" href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\"><span><strong>727看板コレクション</strong><small>設置場所の全" + escapeHTML(count) + "地点を見る</small></span><b aria-hidden=\"true\">→</b></a>";
   }
 
-  function pageHTML(data, rootPath, lang, currentId) {
-    var page = data.pages[currentId][lang];
+  function pageHTML(data, page, rootPath, lang, currentId) {
     var ui = PAGE_UI[lang];
     var embedded = !!root.MADO_EMBEDDED_WEB;
     var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
@@ -756,9 +758,12 @@
         var pageRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
         if (!SUPPORTED_LANGUAGES[pageLang] || !safeSpotId(pageId)) throw new Error("language or current spot context is malformed");
         var pageData = root[DATA_KEY];
+        var pageBody = root[PAGE_DATA_KEY];
         validateData(pageData, pageId, pageLang);
-        validatePageData(pageData.pages[pageId][pageLang], pageId, pageLang);
-        pageHost.outerHTML = pageHTML(pageData, pageRoot, pageLang, pageId);
+        // 別スポット・別言語のペイロードが読み込まれていたら描画しない。
+        if (!pageBody || pageBody.id !== pageId || pageBody.lang !== pageLang) throw new Error("page payload does not match this page context");
+        validatePageData(pageBody, pageId, pageLang);
+        pageHost.outerHTML = pageHTML(pageData, pageBody, pageRoot, pageLang, pageId);
         if (root.MADO_EMBEDDED_WEB) {
           var staticHosts = document.querySelectorAll("[data-spot-page-shared-static]");
           for (var staticIndex = 0; staticIndex < staticHosts.length; staticIndex += 1) {
@@ -767,7 +772,7 @@
           }
         }
         bindPageLightbox();
-        ensureXWidgetsScript(pageData.pages[pageId][pageLang]);
+        ensureXWidgetsScript(pageBody);
         return;
       }
       if (document.body.getAttribute("data-spot-page-shared-context") === "utility") {

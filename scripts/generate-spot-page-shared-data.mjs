@@ -9,6 +9,21 @@ const appDir = path.resolve(scriptDir, "..");
 const dataPath = path.join(appDir, "data.js");
 const outputPath = path.join(appDir, "spot-page-shared-data.js");
 const CHECK_ONLY = process.argv.includes("--check");
+const GENERATED_BANNER = "/* Generated from data.js. Do not edit this artifact by hand. */" + String.fromCharCode(10);
+const PAGE_PAYLOAD_DIR = "data/spot-pages";
+// 分割の目的は「1ページが全ページ本文を読まない」こと。守るのは合計ではなく
+// 1回のページ表示で落ちてくる量なので、カタログ・ページ・その合計に上限を置く。
+const CATALOG_BYTE_BUDGET = 48 * 1024;
+const PAGE_BYTE_BUDGET = 32 * 1024;
+const PAGE_LOAD_BYTE_BUDGET = 64 * 1024;
+
+function spotPagePayloadPath(id, lang) {
+  return `${PAGE_PAYLOAD_DIR}/${id}.${lang}.js`;
+}
+
+function toRelative(absolutePath) {
+  return path.relative(appDir, absolutePath).split(path.sep).join("/");
+}
 // Presentation is intentionally off for now. Re-enable this flag together with
 // the explicit global CSS kill switch in style.css when affiliate modules return.
 const AFFILIATE_PRESENTATION_ENABLED = false;
@@ -564,9 +579,66 @@ for (const spot of source.SPOTS) {
 if (spots.some((spot) => !spot.id || !Number.isFinite(spot.minutes))) throw new Error("Every spot in data.js must have an id and minutesFromTokyo for the shared rail");
 
 const collection727Count = source.BOARD_COLLECTION.length;
-const payload = { version: 2, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase, pages };
-const output = `/* Generated from data.js. Do not edit this artifact by hand. */\n(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(payload)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
-const currentOutput = fs.existsSync(outputPath) ? fs.readFileSync(outputPath, "utf8") : null;
-const changed = currentOutput !== output;
-if (!CHECK_ONLY) fs.writeFileSync(outputPath, output, "utf8");
-console.log(`${CHECK_ONLY ? "Preflight" : "Generated"} shared spot page data: ${changed ? (CHECK_ONLY ? "would change" : "written") : "unchanged"} (${spots.length} spots × 2 languages, ${stations.length} stations, ${Buffer.byteLength(output, "utf8")} bytes).`);
+
+// カタログ（全ページ共通）とページ本文を別の配信物へ分ける。
+//
+// 以前は 47 スポット × ja/en の本文を1枚の spot-page-shared-data.js に入れて
+// いたため、日向岡のページを1枚見るだけで全スポットの本文 903KB を読み込んで
+// いた。さらに ?v= は内容ハッシュなので、1スポットの文言を直すと全ページの
+// キャッシュが同時に落ちた。カタログは共有のまま、本文はページ単位にする。
+const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase };
+const catalogOutput = `${GENERATED_BANNER}(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(catalog)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
+
+const pageArtifacts = new Map();
+for (const spot of source.SPOTS) {
+  for (const lang of ["ja", "en"]) {
+    pageArtifacts.set(
+      spotPagePayloadPath(spot.id, lang),
+      `${GENERATED_BANNER}(function (root) {\n  root.MADO_SPOT_PAGE_DATA = ${JSON.stringify(pages[spot.id][lang])};\n}(typeof window !== "undefined" ? window : globalThis));\n`,
+    );
+  }
+}
+
+// 容量の上限。分割の目的は「1ページが全ページ本文を読まない」ことなので、
+// 守るべきは合計ではなく1ページあたりの転送量。超えたら失敗させる。
+const catalogBytes = Buffer.byteLength(catalogOutput, "utf8");
+if (catalogBytes > CATALOG_BYTE_BUDGET) throw new Error(`Catalog payload is ${catalogBytes} bytes, over the ${CATALOG_BYTE_BUDGET} byte budget`);
+let largestPageBytes = 0;
+let largestPagePath = "";
+for (const [relativePath, contents] of pageArtifacts) {
+  const bytes = Buffer.byteLength(contents, "utf8");
+  if (bytes > PAGE_BYTE_BUDGET) throw new Error(`${relativePath} is ${bytes} bytes, over the ${PAGE_BYTE_BUDGET} byte per-page budget`);
+  if (bytes > largestPageBytes) { largestPageBytes = bytes; largestPagePath = relativePath; }
+}
+const worstPageLoadBytes = catalogBytes + largestPageBytes;
+if (worstPageLoadBytes > PAGE_LOAD_BYTE_BUDGET) throw new Error(`Worst-case spot page load is ${worstPageLoadBytes} bytes (catalog + ${largestPagePath}), over the ${PAGE_LOAD_BYTE_BUDGET} byte budget`);
+
+const payloadDir = path.join(appDir, PAGE_PAYLOAD_DIR);
+fs.mkdirSync(payloadDir, { recursive: true });
+// data.js からスポットを消したときに、古い本文がリポジトリと配信物に残らないようにする。
+const staleFiles = fs.readdirSync(payloadDir)
+  .filter((name) => name.endsWith(".js"))
+  .map((name) => `${PAGE_PAYLOAD_DIR}/${name}`)
+  .filter((relativePath) => !pageArtifacts.has(relativePath));
+
+const writes = [[toRelative(outputPath), catalogOutput], ...pageArtifacts];
+const changedPaths = [];
+for (const [relativePath, contents] of writes) {
+  const absolutePath = path.join(appDir, relativePath);
+  const current = fs.existsSync(absolutePath) ? fs.readFileSync(absolutePath, "utf8") : null;
+  if (current === contents) continue;
+  changedPaths.push(relativePath);
+  if (!CHECK_ONLY) fs.writeFileSync(absolutePath, contents, "utf8");
+}
+for (const relativePath of staleFiles) {
+  changedPaths.push(`${relativePath} (removed)`);
+  if (!CHECK_ONLY) fs.unlinkSync(path.join(appDir, relativePath));
+}
+
+const changed = changedPaths.length > 0;
+console.log(`${CHECK_ONLY ? "Preflight" : "Generated"} shared spot page data: ${changed ? (CHECK_ONLY ? `would change ${changedPaths.length} file(s)` : `wrote ${changedPaths.length} file(s)`) : "unchanged"} (${spots.length} spots × 2 languages, ${stations.length} stations).`);
+console.log(`Catalog ${catalogBytes} bytes; ${pageArtifacts.size} page payloads, largest ${largestPageBytes} bytes (${largestPagePath}); worst-case page load ${worstPageLoadBytes} bytes against a ${PAGE_LOAD_BYTE_BUDGET} byte budget.`);
+if (CHECK_ONLY && changed) {
+  console.error(`Generated spot page data is stale:\n- ${changedPaths.join("\n- ")}`);
+  process.exitCode = 1;
+}

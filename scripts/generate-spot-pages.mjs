@@ -1661,6 +1661,11 @@ ${paras.map((para) => `        <p>${escapeHTML(para)}</p>`).join("\n")}
 `;
 }
 
+// スポット本文の配信物パス。generate-spot-page-shared-data.mjs と同じ規則。
+function spotPagePayloadPath(id, lang) {
+  return `data/spot-pages/${id}.${lang}.js`;
+}
+
 function thinSpotPageHTML(spot, lang) {
   const ui = UI[lang];
   const data = spot[lang] || spot.ja || {};
@@ -1733,6 +1738,7 @@ function thinSpotPageHTML(spot, lang) {
   <div data-spot-page-shared-module="page"></div>
   ${staticContentRailHTML}
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
+  <script src="${prefix}${spotPagePayloadPath(spot.id, lang)}?v=${assetVersion(spotPagePayloadPath(spot.id, lang))}"></script>
   <script src="${prefix}spot-page-shared.js?v=${assetVersion("spot-page-shared.js")}"></script>
   <script src="${prefix}spot-media-gallery.js?v=${assetVersion("spot-media-gallery.js")}"></script>
   <script src="${prefix}spot-map.js?v=${assetVersion("spot-map.js")}"></script>

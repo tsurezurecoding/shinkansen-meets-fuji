@@ -13,12 +13,39 @@ async function runThinValidator() {
   const sharedDataCode = fs.readFileSync(dataPath, "utf8");
   const rendererCode = fs.readFileSync(rendererPath, "utf8");
   const stylesheetCode = fs.readFileSync(stylesheetPath, "utf8");
+  const galleryStylesheetCode = fs.readFileSync(path.join(appDir, "spot-media-gallery.css"), "utf8");
   const sourceContext = {};
   vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SOURCE = { SPOTS, ROUTE };`, sourceContext, { filename: path.join(appDir, "data.js") });
   const source = sourceContext.__SOURCE;
   const dataContext = {};
   vm.runInNewContext(sharedDataCode, dataContext, { filename: dataPath });
   const payload = dataContext.MADO_SPOT_PAGE_SHARED_DATA;
+  const PAGE_PAYLOAD_DIR = "data/spot-pages";
+  const CATALOG_BYTE_BUDGET = 48 * 1024;
+  const PAGE_BYTE_BUDGET = 32 * 1024;
+  const PAGE_LOAD_BYTE_BUDGET = 64 * 1024;
+
+  function pagePayloadRelativePath(id, lang) {
+    return `${PAGE_PAYLOAD_DIR}/${id}.${lang}.js`;
+  }
+
+  // カタログとページ本文を1本の payload.pages に戻し、分割前と同じ検証を通す。
+  // 分割で本文が欠けたり入れ替わったりしたら、ここで組み立てに失敗する。
+  const pagePayloadCode = new Map();
+  const pages = {};
+  for (const sourceSpot of sourceContext.__SOURCE.SPOTS) {
+    pages[sourceSpot.id] = {};
+    for (const lang of ["ja", "en"]) {
+      const relativePath = pagePayloadRelativePath(sourceSpot.id, lang);
+      const absolutePath = path.join(appDir, relativePath);
+      if (!fs.existsSync(absolutePath)) continue;
+      const code = fs.readFileSync(absolutePath, "utf8");
+      pagePayloadCode.set(relativePath, code);
+      const pageContext = {};
+      vm.runInNewContext(code, pageContext, { filename: absolutePath });
+      pages[sourceSpot.id][lang] = pageContext.MADO_SPOT_PAGE_DATA;
+    }
+  }
   const errors = [];
   const fail = (message) => errors.push(message);
 
@@ -55,6 +82,13 @@ async function runThinValidator() {
 
   function count(value, pattern) {
     return value.match(pattern)?.length || 0;
+  }
+
+  // 727カードの本文は地点数を含む。件数の正本は生成ペイロードなので、
+  // 期待HTMLもそこから組む。文言だけ変わったときに凍結literalが腐るのを避ける。
+  function rail727CardHTML(prefix) {
+    const body = `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
+    return `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${prefix}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>${body}</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
   }
 
   function safeAsset(value) {
@@ -101,23 +135,37 @@ async function runThinValidator() {
     };
     const document = {
       body,
-      documentElement: { style: {} },
+      documentElement: (function () {
+        const rootAttrs = {};
+        return {
+          style: {},
+          className: "",
+          getAttribute(name) { return Object.prototype.hasOwnProperty.call(rootAttrs, name) ? rootAttrs[name] : null; },
+          setAttribute(name, value) { rootAttrs[name] = String(value); },
+        };
+      }()),
       head: { appendChild(script) { createdScripts.push(script); } },
       createElement() { return { async: false, src: "", charset: "" }; },
       getElementById(id) { return id === "spotPageLightbox" ? lightbox : null; },
       addEventListener() {},
       querySelectorAll(selector) {
-        if (selector.includes('data-spot-page-shared-module="page"')) return [host];
+        // レンダラはホスト重複検査で、値なしの [data-spot-page-shared-module] も引く。
+        if (selector.includes("data-spot-page-shared-module")) return [host];
         return [];
       },
     };
-    const console = { error(message) { errors.push(String(message)); } };
+    // レンダラのconsole.errorを検証側のerrorsへ流し込むと、末尾のspliceが
+    // それまでに積んだ検証失敗まで捨ててしまう。描画専用の受け皿を持つ。
+    const renderErrors = [];
+    const console = { error(message) { renderErrors.push(String(message)); } };
     const context = { document, console, MADO_EMBEDDED_WEB: embedded };
     context.window = context;
     vm.runInNewContext(sharedDataCode, context, { filename: dataPath });
-    if (mutateData) mutateData(context.MADO_SPOT_PAGE_SHARED_DATA);
+    const pagePayloadPath = pagePayloadRelativePath(currentId, lang);
+    if (pagePayloadCode.has(pagePayloadPath)) vm.runInNewContext(pagePayloadCode.get(pagePayloadPath), context, { filename: pagePayloadPath });
+    if (mutateData) mutateData(context.MADO_SPOT_PAGE_SHARED_DATA, context.MADO_SPOT_PAGE_DATA);
     vm.runInNewContext(rendererCode, context, { filename: rendererPath });
-    return { html: host.outerHTML, host, createdScripts, errors: errors.splice(0) };
+    return { html: host.outerHTML, host, createdScripts, errors: renderErrors.splice(0) };
   }
 
   function assertSpotPageShellMarkup(html, expectedClass, label) {
@@ -147,6 +195,19 @@ async function runThinValidator() {
     };
     const document = {
       body,
+      // ユーティリティ経路もCTA計測のバインドを通るため、spot経路と同じ
+      // documentElement / addEventListener の受け口が要る。
+      documentElement: (function () {
+        const rootAttrs = {};
+        return {
+          style: {},
+          className: "",
+          getAttribute(name) { return Object.prototype.hasOwnProperty.call(rootAttrs, name) ? rootAttrs[name] : null; },
+          setAttribute(name, value) { rootAttrs[name] = String(value); },
+        };
+      }()),
+      addEventListener() {},
+      getElementById() { return null; },
       querySelectorAll(selector) {
         const match = selector.match(/data-spot-page-shared-module="([^"]+)"/);
         return match && hosts[match[1]] ? [hosts[match[1]]] : [];
@@ -174,9 +235,11 @@ async function runThinValidator() {
     }
   }
 
-  if (!source || !Array.isArray(source.SPOTS) || !payload || payload.version !== 2 || payload.affiliatesEnabled !== false) fail("shared payload version/source/affiliate flag is invalid");
+  if (!source || !Array.isArray(source.SPOTS) || !payload || payload.version !== 3 || payload.affiliatesEnabled !== false) fail("shared payload version/source/affiliate flag is invalid");
+  // 分割の要点。カタログに本文が戻ったら失敗させる。
+  if (payload.pages !== undefined) fail("catalog still carries page bodies");
   const sourceIds = source.SPOTS.map((spot) => spot.id);
-  const payloadIds = Object.keys(payload.pages || {});
+  const payloadIds = Object.keys(pages);
   const expectedSpotCount = sourceIds.length;
   const expectedStationCount = Array.isArray(source.ROUTE?.refStations) ? source.ROUTE.refStations.length : 0;
   const expectedPageCount = expectedSpotCount * 2;
@@ -190,9 +253,9 @@ async function runThinValidator() {
   const expectedVideoPageCount = videoSpots.length * 2;
   let renderedVideoPageCount = 0;
   for (const spot of source.SPOTS) {
-    if (!payload.pages[spot.id] || !payload.pages[spot.id].ja || !payload.pages[spot.id].en) fail(`${spot.id} does not have both page languages`);
+    if (!pages[spot.id] || !pages[spot.id].ja || !pages[spot.id].en) fail(`${spot.id} does not have both page languages`);
     for (const lang of ["ja", "en"]) {
-      const page = payload.pages[spot.id][lang];
+      const page = pages[spot.id][lang];
       assertPageSafety(page, spot, lang);
       const expectedGalleryCount = page.photos.length - (spot.id === "ibuki" && lang === "ja" ? 0 : page.inline.length);
       if (page.gallery.length !== expectedGalleryCount || expectedGalleryCount < 1) fail(`${spot.id}/${lang} gallery count is not derived from the structured photo source`);
@@ -222,7 +285,7 @@ async function runThinValidator() {
       }
     }
   }
-  if (!stylesheetCode.includes(".spot-page-video-grid") || !stylesheetCode.includes(".spot-page-video-comment") || !stylesheetCode.includes("grid-template-columns: repeat(2") || !stylesheetCode.includes("grid-template-columns: 1fr") || !stylesheetCode.includes(".spot-page-heading-row") || !stylesheetCode.includes(".spot-page-stamp") || !stylesheetCode.includes("position: absolute") || !stylesheetCode.includes("mix-blend-mode: multiply") || !stylesheetCode.includes("[data-affiliate-module]") || !stylesheetCode.includes(".spot-page-rail-affiliate-group") || !stylesheetCode.includes(".spot-page-mobile-affiliate-note")) fail("shared gallery/video/stamp/affiliate CSS contract is incomplete");
+  if (!galleryStylesheetCode.includes(".spot-page-video-grid") || !galleryStylesheetCode.includes(".spot-page-video-comment") || !galleryStylesheetCode.includes("grid-template-columns: repeat(2") || !galleryStylesheetCode.includes("grid-template-columns: 1fr") || !stylesheetCode.includes(".spot-page-heading-row") || !stylesheetCode.includes(".spot-page-stamp") || !stylesheetCode.includes("position: absolute") || !stylesheetCode.includes("mix-blend-mode: multiply") || !stylesheetCode.includes("[data-affiliate-module]") || !stylesheetCode.includes(".spot-page-rail-affiliate-group") || !stylesheetCode.includes(".spot-page-mobile-affiliate-note")) fail("shared gallery/video/stamp/affiliate CSS contract is incomplete");
   if (!rendererCode.includes("function pageGalleryHTML") || !rendererCode.includes("function pageMediaHTML") || !rendererCode.includes("ensureXWidgetsScript")) fail("shared renderer is missing the common gallery/video/X contract");
 
   const expectedPages = [];
@@ -243,19 +306,22 @@ async function runThinValidator() {
       if (count(onDisk, /data-spot-page-shared-module=/g) !== 1 || count(onDisk, /<div data-spot-page-shared-module="page"><\/div>/g) !== 1) fail(`${relativeFile} must have exactly one strict thin page host`);
       const body = onDisk.slice(onDisk.indexOf("<body"));
       if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(body)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
-      const scripts = [
-        `<script src="${prefix}spot-page-shared-data.js?v=20260812-shared-data-video"></script>`,
-        `<script src="${prefix}spot-page-shared.js"></script>`,
-        `<script src="${prefix}spot-media-gallery.js?v=20260811-ibuki-pilot"></script>`,
-        `<script src="${prefix}spot-map.js?v=20260707-map-mode-switch"></script>`,
-      ];
+      // ?v= は sync-asset-versions.mjs が内容ハッシュから振る。値そのものではなく
+      // 「どのファイルをどの順で読むか」だけを固定する。
+      const scripts = ["spot-page-shared-data.js", pagePayloadRelativePath(spot.id, lang), "spot-page-shared.js", "spot-media-gallery.js", "spot-map.js"];
+      // 他スポットの本文を読み込んでいたら、分割の意味が消える。
+      const foreignPayloads = (onDisk.match(/data\/spot-pages\/[A-Za-z0-9-]+\.(?:ja|en)\.js/g) || []).filter((match) => match !== pagePayloadRelativePath(spot.id, lang));
+      if (foreignPayloads.length) fail(`${relativeFile} loads page payloads for other spots: ${[...new Set(foreignPayloads)].join(", ")}`);
       let previous = -1;
       for (const script of scripts) {
-        const index = onDisk.indexOf(script);
-        if (count(onDisk, new RegExp(script.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) !== 1 || index <= previous) fail(`${relativeFile} shared script order/path is invalid`);
+        const escapedSrc = (prefix + script).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+        const pattern = new RegExp(`<script src="${escapedSrc}(?:\\?v=[A-Za-z0-9._-]+)?"></script>`, "g");
+        const matches = onDisk.match(pattern) || [];
+        const index = matches.length ? onDisk.indexOf(matches[0]) : -1;
+        if (matches.length !== 1 || index <= previous) fail(`${relativeFile} shared script order/path is invalid`);
         previous = index;
       }
-      const page = payload.pages[spot.id][lang];
+      const page = pages[spot.id][lang];
       const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<link rel="stylesheet" href="[^"]*spot-media-gallery\.css[^"]*">/g, "").replace(/\s+/g, " ").trim();
       if (baselineCommit) {
         const baselineHTML = execFileSync("git", ["show", `${baselineCommit}:${relativeFile}`], { cwd: appDir, encoding: "utf8" });
@@ -273,13 +339,13 @@ async function runThinValidator() {
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
       if (lang === "ja") {
-        const expected727Card = `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${prefix}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
+        const expected727Card = rail727CardHTML(prefix);
         if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 1 || !desktopRail.includes(expected727Card)) fail(`${relativeFile} Japanese shared rail must contain exactly one complete 727 Collection card`);
       } else if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 0 || output.includes("727看板コレクション")) {
         fail(`${relativeFile} English shared rail must not contain a 727 Collection card`);
       }
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
-      if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
+      if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
       if (page.inline.length && count(output, /spot-page-inline-figure/g) !== page.inline.length) fail(`${relativeFile} inline photo module count is invalid`);
       if (page.photoHeadingCustom && !output.includes(escape(page.photoHeading))) fail(`${relativeFile} custom photo heading is missing from the shared gallery`);
       if (page.referenceImage && !output.includes("spot-page-reference-section")) fail(`${relativeFile} reference image module is missing`);
@@ -309,7 +375,7 @@ async function runThinValidator() {
   for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "727-collection.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
-    const expectedUtility727Card = '<div class="spot-page-rail-disney spot-page-rail-727"><a href="./727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="./images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>東京〜新大阪の沿線で727看板を集める</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>';
+    const expectedUtility727Card = rail727CardHTML("./");
     // 727コレクション自身のページには自分へのカードを出さない。
     const expected727Count = route === "727-collection.html" ? 0 : 1;
     const has727Card = (host) => count(host.outerHTML, /data-cta-id="spot_rail_727"/g) === expected727Count && (expected727Count === 0 || host.outerHTML.includes(expectedUtility727Card));
@@ -326,30 +392,51 @@ async function runThinValidator() {
   for (const [id, lang] of reps) {
     const prefix = lang === "ja" ? "../" : "../../";
     const result = renderPage(lang, prefix, id);
-    const page = payload.pages[id][lang];
+    const page = pages[id][lang];
     if (!result.html || result.errors.length) fail(`representative ${id}/${lang} renderer failed`);
-    if (id === "ibuki" && (page.gallery.length !== 3 || page.media.videos.length !== 3 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie.com\/embed\//g) !== 2)) fail("Ibuki representative content/video contract failed");
-    if (id === "hamanako" && (!page.sharedGuide.length || !page.photoHeading.includes("浜名湖") || !result.html.includes("hamanako-fuji"))) fail("Hamanako representative composition failed");
+    // ギャラリー枚数は写真が増えれば動く編集データ。件数の正当性は本文ループの
+    // expectedGalleryCount が data.js から導いて既に検証している。ここは動画契約だけ見る。
+    if (id === "ibuki" && (!page.gallery.length || page.media.videos.length !== 3 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 2)) fail("Ibuki representative content/video contract failed");
+    // 写真見出しは言語ごとに別文字列。日本語の部分一致を英語ページへ当てない。
+    if (id === "hamanako" && (!page.sharedGuide.length || !page.photoHeadingCustom || !page.photoHeading.includes(lang === "ja" ? "浜名湖" : "Lake Hamana") || !result.html.includes("hamanako-fuji"))) fail("Hamanako representative composition failed");
     if (id === "kiyosu" && (!page.photoTip || !result.html.includes("spot-page-phototip"))) fail("Kiyosu photoTip representative failed");
     if (id === "nagoya-station-skyline" && (!page.explainer?.figure || !result.html.includes("spot-page-explainer-figure"))) fail("Nagoya explainer-figure representative failed");
     if (id === "gifu-castle" && (!page.referenceImage || !result.html.includes("spot-page-reference-section"))) fail("Gifu reference-image representative failed");
     if (id === "fuji" && (!page.fujiGuide || !result.html.includes("guide.html"))) fail("Fuji FAQ representative failed");
     if (id === "odawara-castle" && (!page.map.viewpoint || !page.map.viewpointUrl)) fail("Odawara Castle viewpoint fallback representative failed");
   }
-  if (payload.pages.hamanako.ja.sideLabel !== "A席・海側 / E席・山側" || payload.pages["727-board"].ja.sideLabel !== "A席・E席") fail("A+E side projection is missing");
+  if (pages.hamanako.ja.sideLabel !== "A席・海側 / E席・山側" || pages["727-board"].ja.sideLabel !== "A席・E席") fail("A+E side projection is missing");
 
-  const safety = renderPage("ja", "../", "fuji", (data) => { data.pages.fuji.ja.hero.src = "images/../escape.png"; });
+  const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });
   if (!safety.errors.some((message) => message.includes("shared page asset path is malformed")) || safety.host.className !== "spot-page-shared-error") fail("malformed asset path fixture did not fail closed");
   const rootSafety = renderPage("ja", "https://evil.example/", "fuji");
   if (!rootSafety.errors.some((message) => message.includes("relative root is required"))) fail("malformed root fixture did not fail closed");
   const idSafety = renderPage("ja", "../", "../fuji");
   if (!idSafety.errors.some((message) => message.includes("language or current spot context is malformed"))) fail("malformed current ID fixture did not fail closed");
-  const payloadSafety = renderPage("ja", "../", "fuji", (data) => { data.pages.fuji.ja.name = `<img src=x onerror=alert(1)>`; data.pages.fuji.ja.sideLabel = `\" onmouseover=alert(1) x=\"`; });
-  if (payloadSafety.html.includes("<img src=x onerror=alert(1)>") || payloadSafety.html.includes("onmouseover=alert(1)")) fail("page text payload was not escaped");
+  const payloadSafety = renderPage("ja", "../", "fuji", (data, page) => { page.name = `<img src=x onerror=alert(1)>`; page.sideLabel = `\" onmouseover=alert(1) x=\"`; });
+  // エスケープ済みでも "onmouseover=alert(1)" という文字列自体は本文に残る。
+  // 危険なのは引用符が生で出ることなので、生形と逃がした形を分けて判定する。
+  if (payloadSafety.html.includes("<img src=x onerror=alert(1)>") || payloadSafety.html.includes('" onmouseover=alert(1) x="') || !payloadSafety.html.includes("&quot; onmouseover=alert(1) x=&quot;")) fail("page text payload was not escaped");
+
+  const catalogBytes = Buffer.byteLength(sharedDataCode, "utf8");
+  if (catalogBytes > CATALOG_BYTE_BUDGET) fail(`catalog is ${catalogBytes} bytes, over the ${CATALOG_BYTE_BUDGET} byte budget`);
+  let largestPageBytes = 0;
+  let largestPagePath = "";
+  for (const [relativePath, code] of pagePayloadCode) {
+    const bytes = Buffer.byteLength(code, "utf8");
+    if (bytes > PAGE_BYTE_BUDGET) fail(`${relativePath} is ${bytes} bytes, over the ${PAGE_BYTE_BUDGET} byte per-page budget`);
+    if (bytes > largestPageBytes) { largestPageBytes = bytes; largestPagePath = relativePath; }
+  }
+  const worstPageLoadBytes = catalogBytes + largestPageBytes;
+  if (worstPageLoadBytes > PAGE_LOAD_BYTE_BUDGET) fail(`worst-case page load is ${worstPageLoadBytes} bytes (catalog + ${largestPagePath}), over the ${PAGE_LOAD_BYTE_BUDGET} byte budget`);
+  const strayPayloads = fs.existsSync(path.join(appDir, PAGE_PAYLOAD_DIR))
+    ? fs.readdirSync(path.join(appDir, PAGE_PAYLOAD_DIR)).filter((name) => name.endsWith(".js") && !pagePayloadCode.has(`${PAGE_PAYLOAD_DIR}/${name}`))
+    : [];
+  if (strayPayloads.length) fail(`${PAGE_PAYLOAD_DIR} holds payloads with no spot in data.js: ${strayPayloads.join(", ")}`);
 
   if (errors.length) throw new Error(`Thin shared spot-page validation failed:\n- ${errors.join("\n- ")}`);
   console.log(`Thin shared validator passed: ${expectedSpotCount} source spots × 2 languages = ${expectedPageCount} pages, exactly one page host each, 0 legacy body/affiliate residue.`);
-  console.log(`Payload schema v${payload.version} covers ${payloadIds.length} ids × ja/en and ${expectedStationCount} stations; generated artifact bytes: ${Buffer.byteLength(sharedDataCode, "utf8")}.`);
+  console.log(`Payload schema v${payload.version}: catalog ${catalogBytes} bytes covers ${payloadIds.length} ids × ja/en and ${expectedStationCount} stations; ${pagePayloadCode.size} split page payloads, largest ${largestPageBytes} bytes (${largestPagePath}); worst-case page load ${worstPageLoadBytes} bytes against a ${PAGE_LOAD_BYTE_BUDGET} byte budget.`);
   console.log(`Gallery contract passed for all ${expectedPageCount} pages; no-video pages omit the entire video chapter, and ${renderedVideoPageCount} structured video pages passed the shared 2-column/1-column CSS contract.`);
   console.log(`All ${expectedPageCount} pages render the shared full-width showcase, retire the in-article related block, and use one of ${expectedSpotCount} distressed-ink stamp SVGs behind an unshifted H1.`);
   console.log(baselineCommit ? `Explicit baseline audit passed against ${baselineSelector} (${baselineCommit}); default mode performs no git baseline reads.` : "Baseline audit skipped: default mode performs no git baseline resolution or reads.");
