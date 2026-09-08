@@ -1874,13 +1874,6 @@ const SPOTS = [
         note: { ja: "暮らしと産業の風景の奥に、富士山が立つ", en: "Mt. Fuji rises beyond an everyday industrial landscape" },
       },
       {
-        src: "images/20260904_fuji_paper_mills_michikusa.jpg",
-        alt: { ja: "製紙工場の煙突越しに見える富士山", en: "Mt. Fuji beyond the paper-mill chimneys" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-04",
-        note: { ja: "蒸気を上げる製紙工場と富士山", en: "Mt. Fuji behind the steaming paper mills" },
-      },
-      {
         src: "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
         timeOfDay: "night",
         alt: { ja: "夕暮れの富士山と製紙工場の夜景", en: "Mt. Fuji and the paper mills at dusk" },
