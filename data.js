@@ -493,6 +493,10 @@ const REFERENCES = {
     label: { ja: "静岡県: 静岡茶ができるまで（産地と歴史）", en: "Shizuoka Prefecture: Shizuoka tea regions and history (Japanese only)" },
     url: "https://www.pref.shizuoka.jp/sangyoshigoto/nogyo/kayo/1030075/1055376.html",
   },
+  tsumagoiResort: {
+    label: { ja: "つま恋リゾート彩の郷 公式: アクセス", en: "Tsumagoi Resort Sainosato: access" },
+    url: "https://hmihotelgroup.com/sainosato/access/index.html",
+  },
   hikoneCastleUnesco: {
     label: { ja: "国指定文化財等データベース: 彦根城", en: "Agency for Cultural Affairs: Hikone Castle (National Treasure)" },
     url: "https://kunishitei.bunka.go.jp/heritage/detail/102/00001479",
@@ -1023,11 +1027,11 @@ const SPOTS = [
     },
     pageHeading: {
       ja: "多摩川を越えたら、塔の街——武蔵小杉のタワマン群",
-      en: "After the Tama River: the Musashi-Kosugi tower cluster",
+      en: "After the Tama River: a whole city of towers at Musashi-Kosugi",
     },
     pageHeadingChunks: {
       ja: ["多摩川を越えたら、塔の街——", "武蔵小杉のタワマン群"],
-      en: ["After the Tama River:", "the Musashi-Kosugi tower cluster"],
+      en: ["After the Tama River:", "a whole city of towers at Musashi-Kosugi"],
     },
     metaDescription: {
       ja: "新幹線のE席側、多摩川を越えたすぐに現れる武蔵小杉のタワーマンション群。再開発の経緯、なぜ武蔵小杉に集中したのか、いま何棟あるのかを、車窓の見つけ方と合わせて紹介します。",
@@ -1035,11 +1039,11 @@ const SPOTS = [
     },
     sectionHeading: {
       ja: "この塔の街は、いつからできた？",
-      en: "How did this tower cluster come about?",
+      en: "When did this city of towers appear?",
     },
     pageStory: {
       ja: "東海道新幹線が丸子橋で多摩川を渡ってすぐ、E席側に迫るのが武蔵小杉のタワーマンション群です。ここは川崎市中原区。もともとはNEC、三菱ふそう、日本電気硝子など大企業の工場や社宅が広がっていた地区でした。2000年代に入って生産機能が郊外や海外へ移転すると、大規模な用地転換が始まり、川崎市の「小杉駅周辺再開発」計画に沿って、住宅・オフィス・商業を積み上げた超高層タワーが次々に立ち上がっていきました。新幹線から見えるのは、その再開発が完成後に描いた新しいスカイラインそのものです。",
-      en: "Right after the Shinkansen crosses the Tama River on Maruko Bridge, the Musashi-Kosugi tower cluster comes into view on the Seat E side. This is Nakahara Ward, Kawasaki City. The area was once filled with factories and company housing of major manufacturers such as NEC, Mitsubishi Fuso and Nippon Electric Glass. When those production functions moved to the suburbs or overseas in the 2000s, large plots of land opened up for redevelopment. Following Kawasaki City's plan for the Kosugi Station area, tall towers combining housing, offices and shops were built one after another. What you see from the train is the skyline this redevelopment produced.",
+      en: "Right after the Shinkansen crosses the Tama River on Maruko Bridge, the Musashi-Kosugi high-rises come into view on the Seat E side. This is Nakahara Ward, Kawasaki City. The area was once filled with factories and company housing of major manufacturers such as NEC, Mitsubishi Fuso and Nippon Electric Glass. When those production functions moved to the suburbs or overseas in the 2000s, large plots of land opened up for redevelopment. Following Kawasaki City's plan for the Kosugi Station area, tall towers combining housing, offices and shops were built one after another. What you see from the train is the skyline this redevelopment produced.",
     },
     explainer: {
       heading: { ja: "なぜ武蔵小杉に、これだけ集まった？", en: "Why did so many towers concentrate at Musashi-Kosugi?" },
@@ -1050,7 +1054,7 @@ const SPOTS = [
       ],
       en: [
         "Musashi-Kosugi Station is a hub where JR Nambu, Yokosuka, Shonan-Shinjuku, and the Tokyu Toyoko and Meguro lines meet. From here, Shinagawa, Tokyo, Shibuya, Shinjuku and Yokohama are all reachable in 20 to 30 minutes, making the area attractive to commuters bound for both central Tokyo and Yokohama. The 2010 opening of the Yokosuka Line platform at Musashi-Kosugi further boosted access and clearly accelerated the pace of new construction and move-ins.",
-        "Supply-side conditions aligned too. Large, contiguous factory sites remained on both the north and south sides of the station, making unified large-block planning possible. Kawasaki City used redevelopment schemes that combined higher floor-area ratios with public open space. As a result, since 2008 more than twenty residential and office high-rises have been added, with more still under way. The tower cluster you see from the Shinkansen is, in effect, a compact picture of Japanese late-Heisei-to-Reiwa urban planning.",
+        "Supply-side conditions aligned too. Large, contiguous factory sites remained on both the north and south sides of the station, making unified large-block planning possible. Kawasaki City used redevelopment schemes that combined higher floor-area ratios with public open space. As a result, since 2008 more than twenty residential and office high-rises have been added, with more still under way. The skyline you see from the Shinkansen is, in effect, a compact picture of Japanese late-Heisei-to-Reiwa urban planning.",
         "The concentration has drawn known concerns as well: crowding on schools, childcare and trains, and flooding of low-lying areas during Typhoon Hagibis in 2019. The bright skyline hides an ongoing discussion about how to manage that scale. Knowing this makes the brief window view more interesting rather than less.",
       ],
     },
@@ -1564,6 +1568,20 @@ const SPOTS = [
         note: { ja: "早川付近、木立の切れ間に見える白い像", en: "The white statue seen through a break in the trees near Hayakawa" },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る魚籃観音像", en: "Gyoran Kannon in motion" },
+      description: { ja: "早川付近の海側に一瞬だけ現れる魚籃観音像を、車窓動画で見られます。", en: "See the Gyoran Kannon statue briefly appear on the sea side near Hayakawa." },
+      videos: [
+        {
+          kind: "youtube",
+          id: "yVik9PXZD8M",
+          title: { ja: "魚籃観音像の車窓動画", en: "Gyoran Kannon from the train window" },
+          url: "https://www.youtube.com/watch?v=yVik9PXZD8M",
+          comment: { ja: "海側を眺めている一瞬だけ見える魚籃観音像", en: "Gyoran Kannon appears for only a moment when looking toward the sea." },
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
     references: [REFERENCES.gyoranKannon, REFERENCES.gyoranKannonTourism, REFERENCES.gyoranKannonWiki],
     map: { lat: 35.240947333816365, lng: 139.14421331844272, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
     viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
@@ -1859,6 +1877,15 @@ const SPOTS = [
         date: "2026-09-03",
         note: { ja: "暮らしと産業の風景の奥に、富士山が立つ", en: "Mt. Fuji rises beyond an everyday industrial landscape" },
       },
+      {
+        src: "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夕暮れの富士山と製紙工場の夜景", en: "Mt. Fuji and the paper mills at dusk" },
+        credit: { ja: "@kamiyu_G1X_Mk2", en: "@kamiyu_G1X_Mk2" },
+        sourceUrl: "https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354",
+        date: "2026-05-29",
+        note: { ja: "夕暮れの富士山と工場夜景のコラボ", en: "A dusk collaboration between Mt. Fuji and the factory lights." },
+      },
     ],
     media: {
       heading: { ja: "動画で見る富士山", en: "Mt. Fuji in motion" },
@@ -1985,6 +2012,22 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-09-03",
         note: { ja: "工場の設備越しに富士山の輪郭を追う", en: "Mt. Fuji's outline beyond the mill equipment" },
+      },
+      {
+        src: "images/20260904_fuji_paper_mills_michikusa.jpg",
+        alt: { ja: "製紙工場の煙突越しに見える富士山", en: "Mt. Fuji beyond the paper-mill chimneys" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-04",
+        note: { ja: "蒸気を上げる製紙工場と富士山", en: "Mt. Fuji behind the steaming paper mills" },
+      },
+      {
+        src: "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夕暮れの富士山と製紙工場の夜景", en: "Mt. Fuji and the paper mills at dusk" },
+        credit: { ja: "@kamiyu_G1X_Mk2", en: "@kamiyu_G1X_Mk2" },
+        sourceUrl: "https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354",
+        date: "2026-05-29",
+        note: { ja: "夕暮れの富士山と工場夜景のコラボ", en: "A dusk collaboration between Mt. Fuji and the factory lights." },
       },
     ],
     relatedSpotIds: ["fuji", "fuji-pipe-sign", "fujikawa-bridge"],
@@ -2419,8 +2462,8 @@ const SPOTS = [
       en: "What kind of tea region are these ridges?",
     },
     pageStory: {
-      ja: "静岡県は長年、全国の荒茶生産量の3〜4割を占めてきた、日本最大級の茶産地です。中でも新幹線が抜ける掛川・菊川・島田・牧之原一帯は、県内でもとりわけ茶園が集中する地域。畑は等高線に沿ってなめらかに並び、細く刈り込まれた畝が丘の起伏をなぞります。畝のあいだにときおり立つ縦長の柱と羽根は防霜ファン（茶園ファン）。冷え込む春先の夜、地表付近に溜まった冷気を上下の空気と混ぜて霜害から新芽を守るための設備です。",
-      en: "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds.",
+      ja: "静岡県は長年、全国の荒茶生産量の3〜4割を占めてきた、日本最大級の茶産地です。中でも新幹線が抜ける掛川・菊川・島田・牧之原一帯は、県内でもとりわけ茶園が集中する地域。畑は等高線に沿ってなめらかに並び、細く刈り込まれた畝が丘の起伏をなぞります。畝のあいだにときおり立つ縦長の柱と羽根は防霜ファン（茶園ファン）。冷え込む春先の夜、地表付近に溜まった冷気を上下の空気と混ぜて霜害から新芽を守るための設備です。東京から大阪へ向かうA席側では、掛川の手前で茶畑の奥につま恋リゾート彩の郷の看板が見えます。つま恋リゾート彩の郷は、静岡県掛川市の豊かな自然の中に建つリゾートホテルです。",
+      en: "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the tea fields shortly before Kakegawa. Tsumagoi Resort Sainosato is a resort hotel set in the natural surroundings of Kakegawa, Shizuoka.",
     },
     explainer: {
       heading: { ja: "なぜ静岡に、これだけ茶畑が広がる？", en: "Why is so much tea grown here?" },
@@ -2436,21 +2479,29 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "静岡を過ぎたら、まず線路脇の緑の縞模様に注目してください。次に、畝の上に立つ縦長の柱と羽根（防霜ファン）を数えてみると、静岡茶の畑らしさが一気に見えてきます。掛川駅前の掛川城とあわせて、「城の前は茶畑」というリズムを楽しむと、この区間の記憶に残りやすくなります。",
-      en: "After Shizuoka, first notice the striped green pattern beside the tracks. Then start counting the tall fans standing above the ridges — those frost-protection fans are a signature of Shizuoka tea. Pair the fields with the glimpse of Kakegawa Castle just after, and this stretch becomes easy to remember: tea fields first, castle right after.",
+      ja: "静岡を過ぎたら、まず線路脇の緑の縞模様に注目してください。次に、畝の上に立つ縦長の柱と羽根（防霜ファン）を数えてみると、静岡茶の畑らしさが一気に見えてきます。東京から大阪へ向かうA席側では、掛川手前でつま恋リゾート彩の郷の看板が畑の奥に見えます。掛川駅前の掛川城とあわせて、「城の前は茶畑」というリズムを楽しむと、この区間の記憶に残りやすくなります。",
+      en: "After Shizuoka, first notice the striped green pattern beside the tracks. Then start counting the tall fans standing above the ridges — those frost-protection fans are a signature of Shizuoka tea. Toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the fields on Seat A shortly before Kakegawa. Pair the fields with the glimpse of Kakegawa Castle just after, and this stretch becomes easy to remember: tea fields first, castle right after.",
     },
-    minutesFromTokyo: 62, side: "E", category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 62, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "E席側に見える静岡の茶畑", en: "Shizuoka tea fields visible from Seat E" } },
     photos: [
       {
         src: "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
         alt: { ja: "新幹線から見える静岡の茶畑", en: "Shizuoka tea fields from the Shinkansen" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
+        note: { ja: "E席側に見える静岡の茶畑", en: "Shizuoka tea fields visible from Seat E" },
+      },
+      {
+        src: "images/20260904_shizuoka_tea_fields_a_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える静岡の茶畑", en: "Shizuoka tea fields from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-04",
+        note: { ja: "A席側にひろがる茶畑。奥に見えるのはつま恋リゾートの看板", en: "Tea fields spreading along Seat A, with the Tsumagoi Resort sign beyond" },
       },
     ],
-    references: [REFERENCES.shizuokaTeaTourism, REFERENCES.shizuokaTeaGreenTeaAssoc, REFERENCES.shizuokaTeaGeography],
+    references: [REFERENCES.shizuokaTeaTourism, REFERENCES.shizuokaTeaGreenTeaAssoc, REFERENCES.shizuokaTeaGeography, REFERENCES.tsumagoiResort],
     map: { lat: 34.774548442725724, lng: 138.099176682925, ja: "静岡の茶畑（代表通過地点）", en: "Shizuoka tea fields representative viewpoint" },
     viewpoint: { lat: 34.773971209238894, lng: 138.0997023958755 },
   },
@@ -3102,19 +3153,19 @@ const SPOTS = [
     en: { name: "Nagoya Station Skyline", area: "Just before Nagoya", hook: "Which towers are those?", story: "Approaching Nagoya from Tokyo, the view on the Seat E side suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, and the huge glass tower right beside them, covering the platforms, is JR Gate Tower. The dark rectangular tower slightly to the north is Midland Square, while the light-colored slab a little to the west is Dai Nagoya Building — five or six clearly named high-rises grouped around one station, one of Japan's densest station-front skylines. Knowing the names turns the brief cityscape into a small architecture tour announcing your arrival." },
     pageTitle: {
       ja: "新幹線から見える名古屋駅前のスカイライン｜あの高層ビルの名前 | 新幹線の窓",
-      en: "The Nagoya Station Skyline from the Shinkansen | Naming the Towers | Shinkansen Window",
+      en: "The Nagoya Station Skyline from the Shinkansen | What Those Towers Are | Shinkansen Window",
     },
     pageHeading: {
       ja: "名古屋到着直前——駅前の高層ビル群、その正体",
-      en: "Just before arriving at Nagoya — naming the station's tower cluster",
+      en: "Just before Nagoya — what those towers actually are",
     },
     pageHeadingChunks: {
       ja: ["名古屋到着直前——", "駅前の高層ビル群、その正体"],
-      en: ["Just before arriving at Nagoya —", "naming the station's tower cluster"],
+      en: ["Just before Nagoya —", "what those towers actually are"],
     },
     metaDescription: {
       ja: "名古屋到着直前、新幹線のE席側に立ち並ぶ高層ビル群を、モード学園スパイラルタワーズ、JRセントラルタワーズ、JRゲートタワー、ミッドランドスクエアなどの名前と一緒に紹介します。",
-      en: "Just before Nagoya, the Seat E window fills with a wall of high-rises. Learn to name Mode Gakuen Spiral Towers, JR Central Towers, JR Gate Tower, Midland Square and more, and how they reshape the Nagoya Station skyline.",
+      en: "Just before Nagoya, the Seat E window fills with a wall of high-rises. Here is how to tell Mode Gakuen Spiral Towers, JR Central Towers, JR Gate Tower and Midland Square apart in the Nagoya Station skyline.",
     },
     sectionHeading: {
       ja: "あの高層ビル、どれがどれ？",
@@ -3187,6 +3238,13 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-29",
         note: { ja: "夜の名古屋到着前、駅前の光が近づく", en: "City lights approach just before arriving at Nagoya at night" },
+      },
+      {
+        src: "images/20260816_nagoya_station_skyline_michikusa.jpg",
+        alt: { ja: "新幹線から見上げる名古屋駅前の高層ビル", en: "Nagoya Station's towers seen from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-16",
+        note: { ja: "駅に近づくと、ビルが窓いっぱいに立ち上がる", en: "The towers fill the window as the train reaches the station" },
       },
     ],
     references: [REFERENCES.nagoyaCentralTowers, REFERENCES.nagoyaJrGateTower, REFERENCES.nagoyaSpiralTowers, REFERENCES.nagoyaMidlandSquare, REFERENCES.meiekiRedevelopment],
@@ -3363,6 +3421,14 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-12",
         note: { ja: "五条川に架かる真っ赤な大手橋と清洲城", en: "The bright red Otehashi Bridge over the Gojo River, with the castle behind it." },
+      },
+      {
+        src: "images/20260906_kiyosu_castle_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の車窓にライトアップされて浮かぶ清洲城", en: "Kiyosu Castle illuminated against the night from the train window" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-06",
+        note: { ja: "線路脇の夜景に白い天守が浮かぶ", en: "The white keep stands out in the trackside night scene" },
       },
     ],
     references: [REFERENCES.kiyosuCastle, REFERENCES.kiyosuHistory, REFERENCES.kojodanWindowCastles],
@@ -3543,6 +3609,13 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-09-06",
         note: { ja: "ホーム越しに巨大看板を探す、岐阜羽島駅の車窓", en: "The Gifu-Hashima station view where the giant billboards appear beyond the platform" },
+      },
+      {
+        src: "images/20260904_gifu_hashima_mahalo_michikusa.jpg",
+        alt: { ja: "岐阜羽島駅付近に見えるマハロ看板", en: "The Mahalo sign near Gifu-Hashima Station" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-04",
+        note: { ja: "車窓に流れる「こんなおいしい水があったのだろうか？」", en: "The sign asks, “Could there be water this delicious?”" },
       },
     ],
     media: {
@@ -3906,7 +3979,16 @@ const SPOTS = [
     minutesFromTokyo: 111.5, side: "A", category: "curious", confidence: "needs-check", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20260816_sennenq_sign_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "米原の先に見えるせんねん灸の看板", en: "The Sennen Kyū sign beyond Maibara" } },
-    photos: [],
+    photos: [
+      {
+        src: "images/20260906_sennenq_sign_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の車窓に見えるせんねん灸の看板", en: "The Sennen Kyū sign seen from the train at night" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-06",
+        note: { ja: "暗い山際で赤い文字が光る", en: "Red lettering glows against the dark hillside" },
+      },
+    ],
     references: [
       { label: { ja: "せんねん灸公式: はじめての方へ", en: "Sennen Kyū official: introduction (Japanese)" }, url: "https://www.sennenq.co.jp/first/" },
       { label: { ja: "せんねん灸公式: オフ発売50周年", en: "Sennen Kyū official: Off's 50th anniversary (Japanese)" }, url: "https://www.sennenq.co.jp/off50th/" },
@@ -4299,6 +4381,14 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         note: { ja: "お菓子の看板が続く", en: "A row of candy billboards" },
       },
+      {
+        src: "images/20260906_lotte_shiga_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の車窓に流れるロッテ滋賀工場のお菓子看板", en: "Lotte Shiga's candy billboards passing by at night" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-06",
+        note: { ja: "夜も明るく浮かぶお菓子の看板", en: "Candy billboards glowing brightly after dark" },
+      },
     ],
     media: {
       heading: { ja: "動画で見るロッテ滋賀工場", en: "Lotte Shiga plant in motion" },
@@ -4613,6 +4703,14 @@ const SPOTS = [
         date: "2026-08-24",
         note: { ja: "夕暮れの中金色に輝く五重塔", en: "The pagoda glowing gold in the dusk" },
       },
+      {
+        src: "images/20260906_toji_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の京都に浮かぶ東寺の五重塔", en: "To-ji's five-story pagoda shining in Kyoto at night" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-06",
+        note: { ja: "暗い空を背に金色に光る五重塔", en: "The pagoda shines gold against the dark sky" },
+      },
     ],
     media: {
       heading: { ja: "動画で見る東寺 五重塔", en: "To-ji Pagoda in motion" },
@@ -4696,6 +4794,14 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-24",
         note: { ja: "引きで見ると、マンション群と高圧鉄塔のなかに輪がひとつ", en: "Pulled back, the wheel is a single ring among apartment blocks and pylons." },
+      },
+      {
+        src: "images/20260906_hirakata_park_wheel_night_michikusa.jpg",
+        timeOfDay: "night",
+        alt: { ja: "夜の淀川越しに光るひらパーの観覧車", en: "The Hirakata Park wheel glowing across the Yodo River at night" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-06",
+        note: { ja: "夜の街並みに青白く浮かぶ観覧車", en: "The wheel glows blue-white above the night skyline" },
       },
     ],
     media: {

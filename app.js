@@ -95,7 +95,7 @@ const MSG = {
     medalSummary: "集めた景色の進み具合",
     medalOverall: "看板マニア",
     medalOverallDesc: "車窓に現れる名物看板を集める。",
-    medalOverallStory: "「私は誰でしょう」、727と248、しっぺいの応援、セロテープの壁。意味を知ると次の乗車でも探したくなる、東海道新幹線らしい看板シリーズです。",
+    medalOverallStory: "「私は誰でしょう」、727と248、しっぺい、セロテープ、マハロ、せんねん灸、ロッテ。意味を知ると次の乗車でも探したくなる、東海道新幹線らしい看板シリーズです。",
     medalCastle: "城ハンター",
     medalCastleDesc: "新幹線から見える城を集める。",
     medalCastleStory: "小田原、掛川、清洲、岐阜、彦根。数秒の車窓に、戦国から城下町までの記憶が重なります。まずは通過駅の少し前から、窓の端を意識してみてください。",
@@ -279,7 +279,7 @@ const MSG = {
     medalSummary: "Your collected view progress",
     medalOverall: "Sign Spotter",
     medalOverallDesc: "Collect the route's memorable trackside signs.",
-    medalOverallStory: "The mystery “Who am I?” sign, 727 and 248, Shippei's cheering messages, and the giant CELLOTAPE wall: four trackside signs worth watching for again.",
+    medalOverallStory: "The mystery “Who am I?” sign, 727 and 248, Shippei, CELLOTAPE, Mahalo, Sennenkyu and Lotte: trackside signs worth watching for again.",
     medalCastle: "Castle Hunter",
     medalCastleDesc: "Collect castles seen from the Shinkansen.",
     medalCastleStory: "Odawara, Kakegawa, Kiyosu, Gifu and Hikone flash past in seconds. This series helps you watch for history before it disappears.",
@@ -1886,6 +1886,9 @@ const SIGN_MEDAL_IDS = [
   "727-board",
   "genki-sign",
   "nichiban-anjo",
+  "gifu-hashima-mahalo",
+  "sennenq-sign",
+  "lotte-shiga",
 ];
 const MEDAL_SETS = [
   {
@@ -2274,31 +2277,21 @@ function applyInitialGalleryFilter() {
   activeGalleryFilters.add(filter);
 }
 const activeTimelineFilters = new Set();
-const discoveryCategoryRank = { classic: 0, notable: 1, curious: 2, hidden: 1 };
-const discoverySpotPriority = {
-  fuji: 0,
-  "sagami-fuji": 1,
-  hamanako: 2,
-  ibuki: 3,
-  toji: 4,
-};
 function discoverySpotOrder(a, b) {
-  const rankA = discoveryCategoryRank[a.category] ?? 9;
-  const rankB = discoveryCategoryRank[b.category] ?? 9;
-  const priorityA = discoverySpotPriority[a.id] ?? 99;
-  const priorityB = discoverySpotPriority[b.id] ?? 99;
-  return rankA - rankB || priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo;
+  const priorityA = a.id === "fuji" ? 0 : 1;
+  const priorityB = b.id === "fuji" ? 0 : 1;
+  return priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo || a.id.localeCompare(b.id);
 }
 // 「曇りでも見える」は data.js の visibleWhenCloudy が持つ。ここに ID を並べていた頃は、
 // 席側や見やすさと同じ「実際に何が見えるか」の事実だけがスポットのデータから離れていて、
 // 構造化データにも出せなかった。以下に残る5つはジャンル分けで、別種のもの。
 // 新しく「見え方」の属性を足すときは、ここではなく data.js へ書く。
 const galleryTagGroups = {
-  nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
+  nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "fujikawa-bridge", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
-  industry: new Set(["shimizu-port-chikyu", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
-  sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign"]),
-  city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "nagoya-station-skyline"]),
+  industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "fuji-paper-mills", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
+  sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
+  city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "granship", "nagoya-station-skyline"]),
 };
 const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "727", "city"];
 const galleryTagLabelKeys = {

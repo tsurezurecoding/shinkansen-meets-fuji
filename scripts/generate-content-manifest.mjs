@@ -14,7 +14,10 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
   // ライブ案内・車窓データの本体
+  // data.js は編集の正本。data-runtime.js はブラウザが読む部分集合で、
+  // 727-collection / journal / sparkling-dreams など同梱ページが参照する。
   "data.js",
+  "data-runtime.js",
   "data/timetable.js",
   "live/narration.js",
 
