@@ -2484,13 +2484,14 @@ const SPOTS = [
     },
     minutesFromTokyo: 62, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30" },
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "E席側に見える静岡の茶畑", en: "Shizuoka tea fields visible from Seat E" } },
     photos: [
       {
         src: "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
         alt: { ja: "新幹線から見える静岡の茶畑", en: "Shizuoka tea fields from the Shinkansen" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
+        note: { ja: "E席側に見える静岡の茶畑", en: "Shizuoka tea fields visible from Seat E" },
       },
       {
         src: "images/20260904_shizuoka_tea_fields_a_michikusa.jpg",
