@@ -2287,11 +2287,11 @@ function discoverySpotOrder(a, b) {
 // 構造化データにも出せなかった。以下に残る5つはジャンル分けで、別種のもの。
 // 新しく「見え方」の属性を足すときは、ここではなく data.js へ書く。
 const galleryTagGroups = {
-  nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "ibuki", "omi-fuji"]),
+  nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "fujikawa-bridge", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
-  industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
+  industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "fuji-paper-mills", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
   sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
-  city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "nagoya-station-skyline"]),
+  city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "granship", "nagoya-station-skyline"]),
 };
 const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "727", "city"];
 const galleryTagLabelKeys = {
