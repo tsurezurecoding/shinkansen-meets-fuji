@@ -2462,8 +2462,8 @@ const SPOTS = [
       en: "What kind of tea region are these ridges?",
     },
     pageStory: {
-      ja: "静岡県は長年、全国の荒茶生産量の3〜4割を占めてきた、日本最大級の茶産地です。中でも新幹線が抜ける掛川・菊川・島田・牧之原一帯は、県内でもとりわけ茶園が集中する地域。畑は等高線に沿ってなめらかに並び、細く刈り込まれた畝が丘の起伏をなぞります。畝のあいだにときおり立つ縦長の柱と羽根は防霜ファン（茶園ファン）。冷え込む春先の夜、地表付近に溜まった冷気を上下の空気と混ぜて霜害から新芽を守るための設備です。東京から大阪へ向かうA席側では、掛川の手前で茶畑の奥につま恋リゾート彩の郷の看板が重なることがあります。",
-      en: "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign can appear beyond the tea fields shortly before Kakegawa.",
+      ja: "静岡県は長年、全国の荒茶生産量の3〜4割を占めてきた、日本最大級の茶産地です。中でも新幹線が抜ける掛川・菊川・島田・牧之原一帯は、県内でもとりわけ茶園が集中する地域。畑は等高線に沿ってなめらかに並び、細く刈り込まれた畝が丘の起伏をなぞります。畝のあいだにときおり立つ縦長の柱と羽根は防霜ファン（茶園ファン）。冷え込む春先の夜、地表付近に溜まった冷気を上下の空気と混ぜて霜害から新芽を守るための設備です。東京から大阪へ向かうA席側では、掛川の手前で茶畑の奥につま恋リゾート彩の郷の看板が見えます。つま恋リゾート彩の郷は、静岡県掛川市の豊かな自然の中に建つリゾートホテルです。",
+      en: "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the tea fields shortly before Kakegawa. Tsumagoi Resort Sainosato is a resort hotel set in the natural surroundings of Kakegawa, Shizuoka.",
     },
     explainer: {
       heading: { ja: "なぜ静岡に、これだけ茶畑が広がる？", en: "Why is so much tea grown here?" },
@@ -2479,8 +2479,8 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "静岡を過ぎたら、まず線路脇の緑の縞模様に注目してください。次に、畝の上に立つ縦長の柱と羽根（防霜ファン）を数えてみると、静岡茶の畑らしさが一気に見えてきます。東京から大阪へ向かうA席側では、掛川手前でつま恋リゾート彩の郷の看板が畑の奥に見えることもあります。掛川駅前の掛川城とあわせて、「城の前は茶畑」というリズムを楽しむと、この区間の記憶に残りやすくなります。",
-      en: "After Shizuoka, first notice the striped green pattern beside the tracks. Then start counting the tall fans standing above the ridges — those frost-protection fans are a signature of Shizuoka tea. Toward Osaka, the Tsumagoi Resort Sainosato sign can also appear beyond the fields on Seat A shortly before Kakegawa. Pair the fields with the glimpse of Kakegawa Castle just after, and this stretch becomes easy to remember: tea fields first, castle right after.",
+      ja: "静岡を過ぎたら、まず線路脇の緑の縞模様に注目してください。次に、畝の上に立つ縦長の柱と羽根（防霜ファン）を数えてみると、静岡茶の畑らしさが一気に見えてきます。東京から大阪へ向かうA席側では、掛川手前でつま恋リゾート彩の郷の看板が畑の奥に見えます。掛川駅前の掛川城とあわせて、「城の前は茶畑」というリズムを楽しむと、この区間の記憶に残りやすくなります。",
+      en: "After Shizuoka, first notice the striped green pattern beside the tracks. Then start counting the tall fans standing above the ridges — those frost-protection fans are a signature of Shizuoka tea. Toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the fields on Seat A shortly before Kakegawa. Pair the fields with the glimpse of Kakegawa Castle just after, and this stretch becomes easy to remember: tea fields first, castle right after.",
     },
     minutesFromTokyo: 62, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
