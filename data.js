@@ -1101,18 +1101,18 @@ const SPOTS = [
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "727看板と私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
+    ja: { name: "プチプチの私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
     en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     pageTitle: {
-      ja: "新幹線から見える「私は誰でしょう」看板はどこ？ | 新幹線の窓",
+      ja: "プチプチの「私は誰でしょう」看板はどこ？新幹線から見える場所と席側 | 新幹線の窓",
       en: "Who am I? Sign: A Mystery Shinkansen Billboard | Shinkansen Window",
     },
     pageHeading: {
-      ja: "727看板と私は誰でしょう看板はどこ？",
+      ja: "プチプチの「私は誰でしょう」看板はどこ？",
       en: "Where is the “Who am I?” billboard seen from the Shinkansen?",
     },
     pageHeadingChunks: {
-      ja: ["727看板と私は誰でしょう看板は、", "どこ？"],
+      ja: ["プチプチの「私は誰でしょう」看板は、", "どこ？"],
       en: ["Where is the “Who am I?” billboard", "seen from the Shinkansen?"],
     },
     metaDescription: {
@@ -1120,7 +1120,7 @@ const SPOTS = [
       en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Fujisawa. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
     },
     sectionHeading: {
-      ja: "727看板と私は誰でしょう看板とは？",
+      ja: "プチプチの「私は誰でしょう」看板とは？",
       en: "What is the 'Who am I?' sign?",
     },
     pageStory: {
@@ -1132,7 +1132,7 @@ const SPOTS = [
       ja: [
         "「プチプチ®」は、川上産業が1968年に日本で製造・発売を始めた気泡緩衝材の登録商標で、透明で気泡が並んだあの梱包材の代名詞として親しまれています。海外では bubble wrap が一般名詞ですが、日本語では商品名の『プチプチ』の方が生活語として定着しました。同社は長年ユーモアのある広告展開でも知られ、新幹線沿線のこの看板も、そのブランドコミュニケーションの一環として置かれていました。",
         "現在の「私は誰でしょう」看板は、あえて広告主を明示せず、QRコードでのアクセスに委ねる仕掛けです。新幹線の速度では車内からQRコードを読み取るのはほぼ不可能なので、実質的には「あの看板は何？」と気になった人が家に帰って調べる、という体験そのものが広告になっています。",
-        "沿線の広告は数年単位で入れ替わることがあり、以前の姿を覚えている人にはノスタルジックな要素も。ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。社名変更に関する公式案内にあわせて、看板も新しいデザインへ変わる可能性があります。",
+        "沿線の広告は数年単位で入れ替わることがあり、以前の姿を覚えている人にはノスタルジックな要素も。ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。社名変更に関する公式案内にあわせて、看板も新しいデザインへ変わる可能性があります。なお、看板そのものに広告主の表示はありませんが、出稿しているのはプチプチ®の川上産業です。同社は2026年10月1日付で「プチプチ株式会社」へ社名を変更することを公表しています。",
       ],
       en: [
         "'PUTIPUTI®' is Kawakami Sangyo's registered trademark for the clear, air-bubble packaging material it began producing in Japan in 1968; it is the everyday Japanese word for what English speakers call bubble wrap. In Japan, the brand name has become the general term for the product. Kawakami Sangyo has long run playful advertising, and its trackside sign here was part of that brand communication.",
@@ -1195,19 +1195,19 @@ const SPOTS = [
     ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "あの数字、何？どこにある？", story: "新横浜を出て藤沢市へ入ると、727 COSMETICSの白い看板が沿線に何度か現れます。代表地点は葛原付近。E席側に黄色い「248」看板と並ぶ場所です。さらに小田原方面へ進むと、用田付近などではA席側にも727が見えます。727は大阪の化粧品メーカー、248は西八王子のきぬた歯科の広告です。" },
     en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "What are those numbers, and where?", story: "After Shin-Yokohama, white 727 COSMETICS billboards appear several times as the train enters Fujisawa. The representative point is around Kuzuhara, where a 727 sign stands on the Seat E side beside a yellow '248' sign. Farther toward Odawara, more 727 signs appear on the Seat A side around Yoda and nearby areas. 727 is an Osaka cosmetics maker; 248 advertises Kinuta Dental in Nishi-Hachioji." },
     pageTitle: {
-      ja: "727看板とは何の広告？248看板との違いと見える席側 | 新幹線の窓",
+      ja: "248看板とは？きぬた歯科の広告が新幹線から見える場所と席側 | 新幹線の窓",
       en: "727 and 248 Signs: Shinkansen Billboards Explained | Shinkansen Window",
     },
     pageHeading: {
-      ja: "727看板とは何の広告？248看板との違い",
+      ja: "248看板とは？きぬた歯科の広告",
       en: "What are the 727 and 248 billboards seen from the Shinkansen?",
     },
     pageHeadingChunks: {
-      ja: ["727看板とは何の広告？", "248看板との違い"],
+      ja: ["248看板とは？", "きぬた歯科の広告"],
       en: ["What are the 727 and 248 billboards", "seen from the Shinkansen?"],
     },
     metaDescription: {
-      ja: "新幹線から見える白い727看板は、大阪のサロン専売化粧品メーカーの広告。隣の黄色い248看板は西八王子のきぬた歯科です。藤沢市葛原付近ではE席側に2つが並びます。設置場所の一覧は727看板コレクションへ。",
+      ja: "新幹線から見える黄色い248看板は、西八王子のきぬた歯科の広告です。248を「ニシハチ」と読みます。藤沢市葛原付近のE席側で、白い727看板と並んで立っています。727看板の解説と設置場所の一覧は「727看板コレクション」へ。",
       en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
     },
     pageStory: {
@@ -1215,11 +1215,10 @@ const SPOTS = [
       en: "Heading from Tokyo toward Shin-Osaka, start watching Seat E roughly eight minutes after Shin-Yokohama. Around Kuzuhara in Fujisawa, the white 727 billboard and yellow 248 billboard stand together in the fields; this is the representative point shown on the map. Farther toward Odawara, more 727 signs appear on Seat A around Yoda and beside the 'Who am I?' sign. Because 727 has multiple locations, the correct seat side depends on which sign you are looking for; the mapped point is one representative example among many signs along the route.",
     },
     explainer: {
-      heading: { ja: "727と248は何？ 数字の意味は？", en: "What do the 727 and 248 billboards mean?" },
+      heading: { ja: "248看板とは？ 数字の意味は？", en: "What do the 727 and 248 billboards mean?" },
       ja: [
-        "727は、大阪の化粧品メーカー「セブンツーセブン」の看板です。公式沿革では1945年7月27日に創業。いちばんの特徴は「サロン専売」であることです。店頭やドラッグストアでは買えず、登録された美容室でのカウンセリングを通して販売されます。商品そのものを街で見かける機会は少ないのに、看板は新幹線沿線で何度も目に入る——この不思議さが、727が語り草になる理由です。",
-        "看板のデザインも意図的です。大きく「727」、その下に小さく「COSMETICS」。高速で流れる車窓でも一瞬で「あの看板だ」と分かるようにするための見せ方です。線路や道路沿いの土地に単独で立てられるこうした広告板は、広告業界では野立て看板と呼ばれます。東海道新幹線の沿線だけでも数多く点在し、乗るたびに同じ看板に出会います。富士山のような主役ではないけれど、日本の新幹線ユーザーには“おなじみの光景”。初めて乗る人にとっては、「727って何？」と気になる最初の謎かもしれません。",
         "隣の黄色い「248」看板は、西八王子の「きぬた歯科」の広告です。248を「ニシハチ」と読み、医院がある西八王子を表しています。きぬた歯科の公式アカウントもこの読み方を認めています。葛原付近では、白い727と黄色い248という数字だけの看板が並ぶため、意味を知らないといっそう謎めいて見えます。",
+        "並んで立つ白い「727」看板は、大阪の化粧品メーカー「セブンツーセブン」の野立て看板です。727そのものの由来と、東海道新幹線沿線のどこに立っているかは「727看板コレクション」にまとめています。",
       ],
       en: [
         "727 is the sign of \"Seven Two Seven\" (727 COSMETICS), a cosmetics maker based in Osaka. Its official history records that the company was founded on July 27, 1945. The key thing to know is that 727 is salon-only: it is sold through registered hair salons with in-person advice, not through ordinary shops or drugstores. So the product is rarely seen around town, yet the signs repeatedly appear beside the Shinkansen. That contrast is why 727 has become such a talking point.",
