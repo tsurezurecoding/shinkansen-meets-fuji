@@ -81,8 +81,12 @@ assertIncludes(app, "function timeline727Order", "TOP must keep deterministic re
 assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo visual must use SVG fallback");
 assertIncludes(app, 'spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id)', "all split 727 modals must link to the collection page");
 assertIncludes(read("data.js"), "大阪の化粧品メーカー、セブンツーセブン", "synthetic 727 copy must be 727-only");
-assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板と248看板", "representative name must remain unchanged");
-assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "プチプチの私は誰でしょう看板", "putiputi representative name is pinned; change it only together with the page copy");
+assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "248看板", "the former combined spot must present 248 as its subject");
+assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "プチプチの看板", "putiputi must keep a concise primary name");
+assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.pageHeadingChunks?.ja?.join("|"), "プチプチの看板|「私は誰でしょう？」", "putiputi must retain the current sign copy as a subtitle");
+assertIncludes(read("data.js"), "2026年10月1日付で社名を「プチプチ株式会社」へ変更", "putiputi company-name change must remain in the page copy");
+assertIncludes(read("app.js"), 'spot.sourceNo === 21', "the verified standalone 727 point must remain in the regular gallery");
+assertIncludes(read("app.js"), 'spot?.is727Collection) return "727-collection.html"', "Japanese 727 entries must open the collection page");
 
 assertIncludes(shared, "727看板コレクション", "detail card title missing");
 assertIncludes(script, 'point.siteStatus === "removed"', "removed collection points must be excluded from the count");

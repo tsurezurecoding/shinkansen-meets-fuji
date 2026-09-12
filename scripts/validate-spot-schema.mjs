@@ -126,7 +126,14 @@ for (const spot of SPOTS) {
     problems.push(`${id}: visibleWhenCloudy must be true or absent (${spot.visibleWhenCloudy})`);
   }
 
+  const routesToCollection = Boolean(spot.guideRoute);
   const sharesPage = Boolean(spot.guidePageId) && spot.guidePageId !== spot.id;
+  if (routesToCollection) {
+    if (!spot.guideRoute.ja || !spot.guideRoute.en) problems.push(`${id}: guideRoute needs ja and en destinations`);
+    if (!/^[-a-z0-9/]+\.html(?:#[a-z0-9-]+)?$/i.test(spot.guideRoute.ja) || !/^[-a-z0-9/]+\.html(?:#[a-z0-9-]+)?$/i.test(spot.guideRoute.en)) {
+      problems.push(`${id}: guideRoute must contain safe relative HTML routes`);
+    }
+  }
   if (sharesPage) {
     sharedPageCount += 1;
     if (!SPOTS.some((host) => host.id === spot.guidePageId)) {
@@ -137,7 +144,7 @@ for (const spot of SPOTS) {
         problems.push(`${id}: shares a page, so it needs "${field}"`);
       }
     }
-  } else {
+  } else if (!routesToCollection) {
     for (const field of OWN_PAGE_REQUIRED) {
       if (spot[field] === undefined) problems.push(`${id}: missing "${field}" for its own page`);
     }
@@ -145,7 +152,7 @@ for (const spot of SPOTS) {
   // ホスト側ページの章として本文を持つスポットは、別ページに canonical を寄せている。
   // その別ページに構造化データを置くと、同じ @id に別の実体が2つ並ぶので出していない。
   // 実体はホストページ側にあり、そちらで検証される。
-  for (const lang of sharesPage ? [] : ["ja", "en"]) {
+  for (const lang of sharesPage || routesToCollection ? [] : ["ja", "en"]) {
     const expected = expectedGeneratedSide(spot, lang);
     const actual = generatedJsonLdSide(spot, lang);
     if (actual && actual !== expected) {

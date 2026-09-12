@@ -515,6 +515,9 @@ function appSelfForPath(pathname) {
 const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
+  const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.ja;
+  if (routed) return routed;
+  if (lang === "ja" && spot?.is727Collection) return "727-collection.html";
   const pageId = spot.guidePageId || spot.id;
   const anchor = spot.guideAnchor ? `#${spot.guideAnchor}` : "";
   return lang === "en" ? `en/spots/${pageId}.html${anchor}` : `spots/${pageId}.html${anchor}`;
@@ -1126,8 +1129,9 @@ function stampBadgeHTML(sp, size, fallbackCls) {
     return `<span class="stamp-badge"><span class="${fallbackCls} board-stamp-mark${stamps[sp.id] ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span></span>`;
   }
   const inked = !!stamps[sp.id];
+  const stampAssetId = sp.stampAssetId || sp.id;
   return `<span class="stamp-badge">` +
-    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" ` +
+    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${stampAssetId}.svg" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" ` +
     `onerror="this.hidden=true;this.nextElementSibling.hidden=false">` +
     `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
@@ -2184,7 +2188,7 @@ function renderStampboard() {
     <button type="button" class="stamp${stamps[sp.id] ? " got" : ""}${selectedStampId === sp.id ? " is-selected" : ""}"
       data-stamp-select="${sp.id}" aria-haspopup="dialog" aria-expanded="${selectedStampId === sp.id}" aria-controls="journalModal">
       <span class="s-icon stampboard-icon">
-        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="stampboard-fallback" hidden>${sp.icon}</span>
+        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.stampAssetId || sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="stampboard-fallback" hidden>${sp.icon}</span>
       </span>
       <span class="s-name">${sp[lang].name}</span>
     </button>`).join("")}
@@ -2198,7 +2202,7 @@ function stampDetailHTML(selected) {
   const media = spotMediaItems(selected)[0] || null;
   const stampVisual = selected.is727Collection
     ? `<span class="stamp-detail-image board-stamp-mark${got ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span>`
-    : `<img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.id}.svg" alt="" width="86" height="86">`;
+    : `<img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.stampAssetId || selected.id}.svg" alt="" width="86" height="86">`;
   return `<div class="stamp-detail has-selection">
           ${stampVisual}
           <div class="stamp-detail-copy">

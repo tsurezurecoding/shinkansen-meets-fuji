@@ -33,7 +33,8 @@ async function runThinValidator() {
   // 分割で本文が欠けたり入れ替わったりしたら、ここで組み立てに失敗する。
   const pagePayloadCode = new Map();
   const pages = {};
-  for (const sourceSpot of sourceContext.__SOURCE.SPOTS) {
+  const pageSourceSpots = sourceContext.__SOURCE.SPOTS.filter((spot) => !spot.guideRoute);
+  for (const sourceSpot of pageSourceSpots) {
     pages[sourceSpot.id] = {};
     for (const lang of ["ja", "en"]) {
       const relativePath = pagePayloadRelativePath(sourceSpot.id, lang);
@@ -238,21 +239,23 @@ async function runThinValidator() {
   if (!source || !Array.isArray(source.SPOTS) || !payload || payload.version !== 3 || payload.affiliatesEnabled !== false) fail("shared payload version/source/affiliate flag is invalid");
   // 分割の要点。カタログに本文が戻ったら失敗させる。
   if (payload.pages !== undefined) fail("catalog still carries page bodies");
-  const sourceIds = source.SPOTS.map((spot) => spot.id);
+  const allSourceIds = source.SPOTS.map((spot) => spot.id);
+  const sourceIds = pageSourceSpots.map((spot) => spot.id);
   const payloadIds = Object.keys(pages);
   const expectedSpotCount = sourceIds.length;
   const expectedStationCount = Array.isArray(source.ROUTE?.refStations) ? source.ROUTE.refStations.length : 0;
   const expectedPageCount = expectedSpotCount * 2;
-  if (GENERATED_SPOTS.length !== expectedSpotCount || JSON.stringify(GENERATED_SPOTS.map((spot) => spot.id)) !== JSON.stringify(sourceIds)) fail("generator/source spot ids are out of alignment");
+  if (GENERATED_SPOTS.length !== allSourceIds.length || JSON.stringify(GENERATED_SPOTS.map((spot) => spot.id)) !== JSON.stringify(allSourceIds)) fail("generator/source spot ids are out of alignment");
   if (payloadIds.length !== expectedSpotCount || JSON.stringify(payloadIds) !== JSON.stringify(sourceIds)) fail(`payload/source spot count or order mismatch: source=${expectedSpotCount}, pages=${payloadIds.length}`);
+  if (!Array.isArray(payload.spots) || payload.spots.length !== allSourceIds.length) fail(`catalog/source spot count mismatch: source=${allSourceIds.length}, catalog=${payload.spots?.length || 0}`);
   if (!Array.isArray(payload.stations) || payload.stations.length !== expectedStationCount) fail(`payload station count does not match data.js: source=${expectedStationCount}, payload=${payload.stations?.length || 0}`);
   // Video presence is editorial data in data.js. Keep this validator focused on
   // source-to-projection-to-HTML alignment instead of duplicating every URL here.
-  const videoSpots = source.SPOTS.filter((spot) => Array.isArray(spot.media?.videos) && spot.media.videos.length);
+  const videoSpots = pageSourceSpots.filter((spot) => Array.isArray(spot.media?.videos) && spot.media.videos.length);
   const videoSpotIds = new Set(videoSpots.map((spot) => spot.id));
   const expectedVideoPageCount = videoSpots.length * 2;
   let renderedVideoPageCount = 0;
-  for (const spot of source.SPOTS) {
+  for (const spot of pageSourceSpots) {
     if (!pages[spot.id] || !pages[spot.id].ja || !pages[spot.id].en) fail(`${spot.id} does not have both page languages`);
     for (const lang of ["ja", "en"]) {
       const page = pages[spot.id][lang];
@@ -291,7 +294,7 @@ async function runThinValidator() {
   const expectedPages = [];
   const currentPages = [];
   for (const lang of ["ja", "en"]) {
-    for (const spot of GENERATED_SPOTS) {
+    for (const spot of GENERATED_SPOTS.filter((item) => !item.guideRoute)) {
       const relativeFile = `${lang === "ja" ? "spots" : "en/spots"}/${spot.id}.html`;
       const absoluteFile = path.join(appDir, relativeFile);
       if (!fs.existsSync(absoluteFile)) { fail(`${relativeFile} is missing`); continue; }
@@ -405,7 +408,8 @@ async function runThinValidator() {
     if (id === "fuji" && (!page.fujiGuide || !result.html.includes("guide.html"))) fail("Fuji FAQ representative failed");
     if (id === "odawara-castle" && (!page.map.viewpoint || !page.map.viewpointUrl)) fail("Odawara Castle viewpoint fallback representative failed");
   }
-  if (pages.hamanako.ja.sideLabel !== "A席・海側 / E席・山側" || pages["727-board"].ja.sideLabel !== "A席・E席") fail("A+E side projection is missing");
+  if (pages.hamanako.ja.sideLabel !== "A席・海側 / E席・山側") fail("A+E side projection is missing");
+  if (pages["727-board"].ja.sideLabel !== "E席・山側") fail("248 page must project the representative E-seat side");
 
   const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });
   if (!safety.errors.some((message) => message.includes("shared page asset path is malformed")) || safety.host.className !== "spot-page-shared-error") fail("malformed asset path fixture did not fail closed");
@@ -435,8 +439,8 @@ async function runThinValidator() {
   if (strayPayloads.length) fail(`${PAGE_PAYLOAD_DIR} holds payloads with no spot in data.js: ${strayPayloads.join(", ")}`);
 
   if (errors.length) throw new Error(`Thin shared spot-page validation failed:\n- ${errors.join("\n- ")}`);
-  console.log(`Thin shared validator passed: ${expectedSpotCount} source spots × 2 languages = ${expectedPageCount} pages, exactly one page host each, 0 legacy body/affiliate residue.`);
-  console.log(`Payload schema v${payload.version}: catalog ${catalogBytes} bytes covers ${payloadIds.length} ids × ja/en and ${expectedStationCount} stations; ${pagePayloadCode.size} split page payloads, largest ${largestPageBytes} bytes (${largestPagePath}); worst-case page load ${worstPageLoadBytes} bytes against a ${PAGE_LOAD_BYTE_BUDGET} byte budget.`);
+  console.log(`Thin shared validator passed: ${expectedSpotCount} page-backed spots × 2 languages = ${expectedPageCount} pages, exactly one page host each, 0 legacy body/affiliate residue.`);
+  console.log(`Payload schema v${payload.version}: catalog ${catalogBytes} bytes covers all ${allSourceIds.length} spot ids and ${expectedStationCount} stations; ${pagePayloadCode.size} split page payloads, largest ${largestPageBytes} bytes (${largestPagePath}); worst-case page load ${worstPageLoadBytes} bytes against a ${PAGE_LOAD_BYTE_BUDGET} byte budget.`);
   console.log(`Gallery contract passed for all ${expectedPageCount} pages; no-video pages omit the entire video chapter, and ${renderedVideoPageCount} structured video pages passed the shared 2-column/1-column CSS contract.`);
   console.log(`All ${expectedPageCount} pages render the shared full-width showcase, retire the in-article related block, and use one of ${expectedSpotCount} distressed-ink stamp SVGs behind an unshifted H1.`);
   console.log(baselineCommit ? `Explicit baseline audit passed against ${baselineSelector} (${baselineCommit}); default mode performs no git baseline reads.` : "Baseline audit skipped: default mode performs no git baseline resolution or reads.");

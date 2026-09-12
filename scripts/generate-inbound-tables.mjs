@@ -94,6 +94,19 @@ const LANGS = {
 
 const SPOTTING_LABEL = LANGS.en.level;
 
+function routedSpotHref(spot, langKey) {
+  const L = LANGS[langKey];
+  const route = spot.guideRoute?.[langKey] || spot.guideRoute?.en || spot.guideRoute?.ja;
+  if (!route) return `${L.spotHrefPrefix || "spots/"}${spot.id}.html`;
+  const sameDirectoryPrefix = `${L.dir}/`;
+  return route.startsWith(sameDirectoryPrefix) ? route.slice(sameDirectoryPrefix.length) : `../${route}`;
+}
+
+function routedSpotUrl(spot) {
+  const route = spot.guideRoute?.en || spot.guideRoute?.ja;
+  return route ? `${SITE_ROOT}/${route}` : `${SITE_ROOT}/en/spots/${spot.id}.html`;
+}
+
 const escapeHTML = (value) =>
   String(value).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
@@ -351,7 +364,7 @@ function besidesTableHTML(langKey) {
     .slice()
     .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
     .map((spot) => {
-      const href = `${L.spotHrefPrefix || "spots/"}${spot.id}.html`;
+      const href = routedSpotHref(spot, langKey);
       // 見やすさは実車で見た人が付けた評価だけを出す。
       // 未評価は空欄のままにして、評価済みのように見せない。
       const spotting = spot.spotting
@@ -403,17 +416,20 @@ function besidesItemListLd(langKey) {
   const items = SPOTS.filter((spot) => !FUJI_VIEWPOINTS.has(spot.id))
     .slice()
     .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
-    .map((spot, index) => ({
+    .map((spot, index) => {
+      const spotUrl = routedSpotUrl(spot);
+      return {
       "@type": "ListItem",
       position: index + 1,
       item: {
         "@type": "TouristAttraction",
         // 事実の正本はスポットページ側。ここは参照だけ。
-        "@id": `${SITE_ROOT}/en/spots/${spot.id}.html#spot`,
+        "@id": `${spotUrl}#spot`,
         name: L.spotName(spot),
-        url: `${SITE_ROOT}/en/spots/${spot.id}.html`,
+        url: spotUrl,
       },
-    }));
+    };
+    });
   return {
     "@context": "https://schema.org",
     "@graph": [

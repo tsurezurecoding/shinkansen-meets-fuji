@@ -383,7 +383,8 @@ function projectGuideNotice(spot, lang) {
   };
 }
 
-function spotGuideHref(spot) {
+function spotGuideHref(spot, lang = "ja") {
+  if (spot.guideRoute) return spot.guideRoute[lang] || spot.guideRoute.en || spot.guideRoute.ja;
   return `${spot.guidePageId || spot.id}.html${spot.guideAnchor ? `#${spot.guideAnchor}` : ""}`;
 }
 
@@ -407,7 +408,7 @@ function projectRelated(spot, lang) {
   }
   return unique.slice(0, 3).map(({ label, spot: item }) => {
     const data = item[lang] || item.ja || {};
-    return { id: item.id, href: spotGuideHref(item), thumb: thumbnailSrc(item.image || item.photos?.[0]?.src || "images/og-shinkansen-window.png"), label, name: data.name || item.id, hook: data.hook || data.area || "" };
+    return { id: item.id, href: spotGuideHref(item, lang), thumb: thumbnailSrc(item.image || item.photos?.[0]?.src || "images/og-shinkansen-window.png"), label, name: data.name || item.id, hook: data.hook || data.area || "" };
   });
 }
 
@@ -525,10 +526,12 @@ const spots = source.SPOTS.map((spot) => ({
   seats: seats(spot),
   thumb: spot.image ? thumbnailSrc(spot.image) : "",
   guide: spotGuideHref(spot),
+  guideRoute: spot.guideRoute || null,
 }));
 
+const pageSpots = source.SPOTS.filter((spot) => !spot.guideRoute);
 const pages = {};
-for (const spot of source.SPOTS) {
+for (const spot of pageSpots) {
   pages[spot.id] = {};
   for (const lang of ["ja", "en"]) pages[spot.id][lang] = projectPage(spot, lang);
 }
@@ -572,7 +575,8 @@ function validatePage(page, spot) {
 
 for (const spot of source.SPOTS) {
   if (!spot.id || !safeId(spot.id) || !spot.image || !safeAssetPath(spot.image) || !fs.existsSync(path.join(appDir, spot.image))) throw new Error(`Spot id/image is missing or unsafe: ${spot.id}`);
-  if (!fs.existsSync(path.join(appDir, `images/stamps/stamp_${spot.id}.svg`))) throw new Error(`Spot stamp is missing: ${spot.id}`);
+  if (!fs.existsSync(path.join(appDir, `images/stamps/stamp_${spot.stampAssetId || spot.id}.svg`))) throw new Error(`Spot stamp is missing: ${spot.id}`);
+  if (spot.guideRoute) continue;
   validatePage(pages[spot.id].ja, spot);
   validatePage(pages[spot.id].en, spot);
 }
@@ -590,7 +594,7 @@ const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED,
 const catalogOutput = `${GENERATED_BANNER}(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(catalog)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
 
 const pageArtifacts = new Map();
-for (const spot of source.SPOTS) {
+for (const spot of pageSpots) {
   for (const lang of ["ja", "en"]) {
     pageArtifacts.set(
       spotPagePayloadPath(spot.id, lang),
