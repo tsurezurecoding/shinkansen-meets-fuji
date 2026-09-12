@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d19a3ae6c79755bc",
+  "contentVersion": "2e1089768efcd8e5",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -8,7 +8,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 17653,
-      "sha256": "71436104623410fb95653e222a71041f4067cc6c5c0faf9bd935a2214f8cea5a"
+      "sha256": "66180c2431f688ae90c9200fc66885c8af3d0f35f979983cf3e54be9f424185c"
     },
     {
       "path": "727-collection.js",
@@ -43,14 +43,14 @@
     {
       "path": "data-runtime.js",
       "url": "https://www.michikusa-travel.com/data-runtime.js",
-      "bytes": 247022,
-      "sha256": "3910fb1ce8b2de9b8dfdbba54fc4242f45135a9481c0db8d7b7c26720385be31"
+      "bytes": 247902,
+      "sha256": "70b9a0f75913723bdc3fb03e758f3682f9822c185b3ff34527ec9badf3fc91f6"
     },
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 537697,
-      "sha256": "3562a397769f225eee0c3a0c90e03aef38c0c14925d9a6d81036dbfca9cd602b"
+      "bytes": 538948,
+      "sha256": "2e57db61128b01b7ec24a36304613a0502888f8fbd8acc18bdeff2558cd97ca1"
     },
     {
       "path": "data/timetable.js",
@@ -74,13 +74,13 @@
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 27405,
-      "sha256": "34d714e35e94af247a2a1c2106409a5bf6c0c19372483d1ee8b61aed5dbe0498"
+      "sha256": "f34dd64c8480e8bcceec62507b6b968cfc8ee1b9cfbd5d62cf76c76bd2606b2b"
     },
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
-      "bytes": 33793,
-      "sha256": "d72b29ad16c9630e6eb5b3704ae8cf369c695c9e6344716141bea414c90fdd9e"
+      "bytes": 39296,
+      "sha256": "91c029a11b2e6b9967a49a3d163b74ca1be4a56564891dbb4d4ee42405ec44e2"
     },
     {
       "path": "hanabi.html",
@@ -254,7 +254,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18981,
-      "sha256": "c7a99426668cf7416f166695bb1a0e8b70e062f0bda0f16630b8e15f32a07a55"
+      "sha256": "daa455d5067aa87178924be575d711cb74901b18e0799220b315993baefc5386"
     },
     {
       "path": "live/narration.js",
@@ -266,7 +266,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 30222,
-      "sha256": "d24a0ed8381952503ac7a8b553daf0960461bdbf37b10e01cfec65cd7ae799cb"
+      "sha256": "6bb677de1244446afde21203b0973dcc64904e25676e50cc3384f6257724135f"
     },
     {
       "path": "sparkling-dreams.js",
@@ -361,8 +361,8 @@
     {
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
-      "bytes": 36626,
-      "sha256": "e77fe04c8823046e113a21c804ef4ce7ca8c810fe02b83e52ab48c06ad78d31a"
+      "bytes": 42250,
+      "sha256": "6a90bf3354c34d250ba5e41312a676ff4f75a327a885b4420e1d9312c6ff3e14"
     },
     {
       "path": "yakei.js",
@@ -1294,8 +1294,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 229,
-    "bytes": 8353498,
+    "itemCount": 231,
+    "bytes": 8371986,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2526,6 +2526,18 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260906_toji_night_michikusa.webp",
         "bytes": 13446,
         "sha256": "ea25e2839f800ad531b9ed3f57eae5f44a7782eaf7e49d260863267c214f7d39"
+      },
+      {
+        "path": "images/thumbs/20260911_kakegawa_castle_night_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260911_kakegawa_castle_night_michikusa.webp",
+        "bytes": 11880,
+        "sha256": "9a9de41eb5529ab767526399ddef43e12d3209ec72c77da5ba720c3eb0b8fc2b"
+      },
+      {
+        "path": "images/thumbs/20260911_sennenq_sign_night_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260911_sennenq_sign_night_michikusa.webp",
+        "bytes": 6608,
+        "sha256": "e4a2f13d91f495b01f3d3c7757337e57aefdcdbc5b8b79648779a1b4a9f6012a"
       },
       {
         "path": "images/thumbs/250111_hamanako_fuji_proboffin.webp",
