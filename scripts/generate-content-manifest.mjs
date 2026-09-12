@@ -13,6 +13,13 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "ferris-wheels.html",
+  "en/ferris-wheels.html",
+  "ferris-wheels.css",
+  "ferris-wheels.js",
+  "castles.html",
+  "en/castles.html",
+  "castles.css",
   // ライブ案内・車窓データの本体
   // data.js は編集の正本。data-runtime.js はブラウザが読む部分集合で、
   // 727-collection / journal / sparkling-dreams など同梱ページが参照する。

@@ -1,0 +1,67 @@
+/* 観覧車特集の本文だけ。ヘッダー・左ペイン・フッターは style.css と spot-page-shared.js の共通部品。
+   ヒーロー・見出し・カードは夜景特集（yakei.html の yk-*）と同じ寸法で揃える。 */
+.ferris-wheels-page main { padding-bottom: 40px; }
+.fw-hero { position: relative; isolation: isolate; background: var(--night); color: #fff; padding: 96px 20px 72px; overflow: hidden; }
+.fw-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("images/20260824_hirakata_park_wheel_michikusa.jpg"); background-size: cover; background-position: 26% 48%; }
+.fw-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(16,28,44,.5) 0%, rgba(16,28,44,.7) 55%, rgba(16,28,44,.93) 100%); }
+.fw-hero-inner { max-width: 720px; margin: 0 auto; text-align: center; }
+.fw-hero .eyebrow { color: var(--accent-soft); }
+.fw-hero h1 { font-family: var(--font-serif); font-size: clamp(28px, 6vw, 44px); line-height: 1.42; margin: 0 0 20px; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
+.fw-hero-lead { color: rgba(255,255,255,.9); font-size: 15px; line-height: 1.95; margin: 0 auto; max-width: 620px; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
+.fw-hero-stat { margin: 24px 0 0; color: rgba(255,255,255,.7); font-size: 12px; letter-spacing: .04em; }
+.fw-hero-credit { margin: 10px 0 0; color: rgba(255,255,255,.45); font-size: 10.5px; }
+
+.fw-article > section { padding: 62px 0 0; }
+.fw-article > section:first-child { padding-top: 40px; }
+@media (max-width: 1099px) { .fw-article > section { padding-left: 20px; padding-right: 20px; } }
+.fw-section-head { text-align: center; margin-bottom: 26px; }
+.fw-section-head h2 { font-family: var(--font-serif); font-size: clamp(21px, 4.2vw, 29px); margin: 0 0 12px; }
+.fw-section-lead { max-width: 580px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: var(--ink-soft); }
+
+/* 進み具合とメダルは 727コレクションの共通部品（.collection-progress / .collection-stage-*）を使う。 */
+.fw-progress-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 22px; box-shadow: var(--shadow); }
+.fw-progress-card .collection-progress { margin-bottom: 18px; }
+.fw-medal-icon { width: 24px; height: 24px; }
+.fw-progress-note { margin: 14px 0 0; font-size: 11.5px; line-height: 1.8; color: var(--ink-soft); text-align: center; }
+
+.fw-spot { position: relative; display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 20px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 20px; margin-bottom: 22px; scroll-margin-top: 90px; transition: border-color .2s ease; }
+.fw-spot.is-found { border-color: rgba(179,39,45,.38); }
+.fw-mark { display: grid; place-items: center; width: 48px; height: 48px; border: 2px dashed var(--line); border-radius: 50%; color: var(--ink-soft); font-family: var(--font-serif); font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; }
+.fw-spot.is-found .fw-mark { border: 2px solid var(--accent); background: var(--accent); color: #fff; }
+.fw-spot-body { min-width: 0; }
+.fw-spot-body h3 { font-family: var(--font-serif); font-size: clamp(19px, 3.4vw, 24px); margin: 0 0 8px; }
+.fw-spot-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 8px; }
+.fw-pill { font-size: 10.5px; letter-spacing: .06em; padding: 3px 9px; border-radius: 999px; background: var(--paper-deep); color: var(--ink-soft); }
+.fw-side-e { background: #dceaf6; color: #1d4b70; }
+.fw-side-a { background: #f7e2d6; color: #8a4326; }
+.fw-spot-lead { margin: 0 0 12px; font-family: var(--font-serif); font-size: 15px; color: var(--accent); }
+.fw-spot-body p { margin: 0 0 11px; font-size: 14.5px; line-height: 1.95; }
+.fw-spot-body .fw-caution { padding-left: 10px; border-left: 2px solid var(--accent-soft); color: var(--ink-soft); font-size: 12.5px; line-height: 1.8; }
+.fw-figure { margin: 4px 0 14px; max-width: 460px; }
+.fw-figure img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.fw-figure figcaption { margin-top: 7px; font-size: 10.5px; color: var(--ink-soft); line-height: 1.6; }
+.fw-links { display: grid; gap: 5px; margin: 0 0 14px !important; }
+.fw-links a { font-size: 13px; color: var(--ink); text-underline-offset: 3px; overflow-wrap: anywhere; }
+.fw-links a:hover, .fw-links a:focus-visible { color: var(--accent); }
+.fw-links a.fw-more { color: var(--accent); }
+.fw-spot-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.fw-spot-actions .collection-stamp-button { font-size: 12px; padding: 7px 14px; }
+.fw-spot-actions .collection-stamp-button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.fw-stamp-state { font-size: 11.5px; color: var(--ink-soft); }
+
+.fw-note-card { border: 1px dashed var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.fw-note-card .eyebrow { margin: 0 0 6px; }
+.fw-note-card h2 { font-family: var(--font-serif); font-size: 18px; margin: 0 0 10px; }
+.fw-note-card p { margin: 0 0 9px; font-size: 13px; line-height: 1.9; color: var(--ink-soft); }
+.fw-note-card p:last-child { margin-bottom: 0; }
+.fw-note-card a { color: var(--accent); text-underline-offset: 3px; }
+.fw-about h2 { font-size: 14px; letter-spacing: .08em; font-family: inherit; }
+.fw-about p { font-size: 12.5px; }
+
+@media (max-width: 720px) {
+  .fw-hero { padding: 72px 20px 52px; }
+  .fw-spot { grid-template-columns: 1fr; gap: 0; padding: 16px; }
+  .fw-mark { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; font-size: 12px; }
+  .fw-spot-meta { padding-right: 46px; }
+  .fw-progress-card { padding: 18px 16px; }
+}

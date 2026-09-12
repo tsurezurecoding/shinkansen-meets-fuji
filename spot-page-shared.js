@@ -226,6 +226,8 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    "ferris-wheels.html": { en: true },
+    "castles.html": { en: true },
     "mieru.html": { en: true },
     "sparkling-dreams.html": { en: true },
     "hanabi.html": { en: true },
@@ -613,6 +615,47 @@
     return "<div class=\"spot-page-lightbox\" id=\"spotPageLightbox\" hidden><button type=\"button\" class=\"spot-page-lightbox-close\" aria-label=\"" + escapeHTML(PAGE_UI[lang].lightboxClose) + "\">&times;</button><figure><img alt=\"\"><figcaption></figcaption></figure></div>";
   }
 
+  // スポット本文から次の行動へ渡すカード。リンク1本だけだと何のための行き先か伝わらないため、
+  // 「乗る列車で時刻を見る」「乗車中に音声で聞く」「同じ種類の車窓をまとめて見る」を並べる。
+  var NEXT_CARD_COLLECTIONS = {
+    castles: {
+      route: "castles.html",
+      title: { ja: "新幹線から見える城", en: "Castles from the Shinkansen" },
+      body: { ja: "天守と城跡、7か所を席側と見つけ方つきで。", en: "All seven castle views, with seat sides and spotting tips." }
+    },
+    wheels: {
+      route: "ferris-wheels.html",
+      title: { ja: "新幹線から見える観覧車", en: "Ferris wheels from the Shinkansen" },
+      body: { ja: "沿線の6基を区間と席側つきで。見つけた輪は記録できます。", en: "Six wheels along the route, with seat sides. Record the ones you spot." }
+    }
+  };
+  var NEXT_CARD_UI = {
+    ja: {
+      label: "次にできること", collectionLabel: "COLLECTION",
+      timingLabel: "TIMING", timingTitle: "乗る列車で時刻を見る", timingBody: "出発時刻を選ぶと、この車窓が近づく時刻が出ます。",
+      liveLabel: "AUDIO GUIDE", liveTitle: "乗車中に音声で知らせる", liveBody: "GPSで現在地に合わせて、次の車窓を読み上げます。"
+    },
+    en: {
+      label: "What to do next", collectionLabel: "COLLECTION",
+      timingLabel: "TIMING", timingTitle: "Check the time on your train", timingBody: "Pick your departure time to see when this view arrives.",
+      liveLabel: "AUDIO GUIDE", liveTitle: "Hear it called out on board", liveBody: "GPS follows your position and announces the next view."
+    }
+  };
+  function nextCardHTML(target, label, title, body, ctaId) {
+    return '<a class="spot-page-next-card" href="' + escapeHTML(target) + '" data-cta-track="spot_next_card_click" data-cta-id="' + escapeHTML(ctaId) + '"><small>' + escapeHTML(label) + '</small><strong>' + escapeHTML(title) + '</strong><span>' + escapeHTML(body) + '</span></a>';
+  }
+  function nextCardsHTML(rootPath, lang, key) {
+    var ui = NEXT_CARD_UI[lang], base = basePath(rootPath, lang), collection = NEXT_CARD_COLLECTIONS[key];
+    return '<nav class="spot-page-next-cards" aria-label="' + escapeHTML(ui.label) + '">' +
+      nextCardHTML(lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html"), ui.timingLabel, ui.timingTitle, ui.timingBody, "spot_next_train") +
+      nextCardHTML(href(base, "live/"), ui.liveLabel, ui.liveTitle, ui.liveBody, "spot_next_live") +
+      nextCardHTML(href(base, collection.route), ui.collectionLabel, collection.title[lang], collection.body[lang], "spot_next_" + key) +
+      '</nav>';
+  }
+
+  // 城の一覧意図（「新幹線から見える城」）は個別の城ページではなく castles.html が答える。
+  var CASTLE_COLLECTION_IDS = ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"];
+
   function collectionLinkHTML(rootPath, lang, count) {
     if (lang !== "ja") return "";
     return "<a class=\"spot-page-727-collection-link\" href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\"><span><strong>727看板コレクション</strong><small>設置場所の全" + escapeHTML(count) + "地点を見る</small></span><b aria-hidden=\"true\">→</b></a>";
@@ -637,7 +680,7 @@
     // generator (see generate-spot-pages.mjs thinSpotPageHTML). Rendering them
     // again here would duplicate the nav/content-rail on screen, so this
     // renderer no longer produces them for spot pages.
-    return "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
+    return "<main><header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + (currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + inline + explainer + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section></article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
   }
 
   function bindPageLightbox() {

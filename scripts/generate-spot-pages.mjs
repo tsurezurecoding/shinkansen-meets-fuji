@@ -2049,7 +2049,7 @@ function localizeEnglishInternalLinks(html) {
     ["href=\"spots/", "href=\"en/spots/"],
   ];
   for (const [from, to] of directRoutes) html = html.replaceAll(from, to);
-  for (const route of ["guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments"]) {
+  for (const route of ["ferris-wheels", "castles", "guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments"]) {
     html = html
       .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
@@ -2518,6 +2518,10 @@ function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-07-29" },
+    { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
+    { loc: `${siteRoot}/en/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
+    { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
+    { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },

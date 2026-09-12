@@ -82,7 +82,7 @@ assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo 
 assertIncludes(app, 'spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id)', "all split 727 modals must link to the collection page");
 assertIncludes(read("data.js"), "大阪の化粧品メーカー、セブンツーセブン", "synthetic 727 copy must be 727-only");
 assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板と248看板", "representative name must remain unchanged");
-assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "727看板と私は誰でしょう看板", "putiputi representative must remain unchanged");
+assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "プチプチの私は誰でしょう看板", "putiputi representative name is pinned; change it only together with the page copy");
 
 assertIncludes(shared, "727看板コレクション", "detail card title missing");
 assertIncludes(script, 'point.siteStatus === "removed"', "removed collection points must be excluded from the count");
