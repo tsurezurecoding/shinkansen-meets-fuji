@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "6f9d6a0155a8e488",
+  "contentVersion": "b57848db3987f03d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -80,7 +80,7 @@
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 39296,
-      "sha256": "3bb2c9638a0c701535852beaad957adae9b377db75f105f4a8c3afb712cdc36b"
+      "sha256": "6da080e67170f4ff5a54dde3225babf671d656b70646ff5b0a8a1679c2a4cae6"
     },
     {
       "path": "hanabi.html",
@@ -362,7 +362,7 @@
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
       "bytes": 42250,
-      "sha256": "f9c5049b7a607f3e3398f53cbab513af83f05edb70d30c3202900d28f73c6672"
+      "sha256": "595e2a71470a7063ee0fedc699af04e94e0ee5bd2a88f6a61b94e24d8bc8af6e"
     },
     {
       "path": "yakei.js",
