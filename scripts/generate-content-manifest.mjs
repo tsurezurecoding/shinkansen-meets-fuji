@@ -16,6 +16,7 @@ const contentFiles = [
   "ferris-wheels.html",
   "en/ferris-wheels.html",
   "ferris-wheels.css",
+  "ferris-wheels.js",
   "castles.html",
   "en/castles.html",
   "castles.css",
