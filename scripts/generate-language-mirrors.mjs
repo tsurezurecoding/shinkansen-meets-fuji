@@ -25,6 +25,12 @@ const pages = [
 
 function localizeEnglishRail(html) {
   const copy = [
+    ["車窓の観覧車を集める", "Find the ferris wheels"],
+    ['<span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span>', "Look for little wheels beyond the city."],
+    ["一度きりの車窓", "Weather Seen from the Shinkansen"],
+    ['<span class="copy-chunk">虹、雪、雲、雷。</span><span class="copy-chunk">その日だけの空に出会う。</span>', "Rainbows, snow, clouds and lightning: skies that happen only once."],
+    ["新幹線から見える城", "Castles from the Shinkansen"],
+    ['<span class="copy-chunk">天守と城跡を、</span><span class="copy-chunk">車窓の写真でめぐる。</span>', "Explore keeps and castle hills in window photographs."],
     ["車窓メダル帖", "Window Medal Book"],
     ["新幹線の窓とは？", "About Shinkansen Window"],
     ["車窓をもっと楽しむ", "More ways to enjoy the window"],
@@ -50,11 +56,14 @@ function localizeEnglishRail(html) {
     ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
   ];
   const routes = [
+    ["ferris-wheels.html", "en/ferris-wheels.html"],
+    ["castles.html", "en/castles.html"],
     ["start.html", "en/start.html"],
     ["guide.html", "en/guide.html"],
     ["mieru.html", "en/mieru.html"],
     ["hanabi.html", "en/hanabi.html"],
     ["yakei.html", "en/yakei.html"],
+    ["window-moments.html", "en/window-moments.html"],
     ["sparkling-dreams.html", "en/sparkling-dreams.html"],
     ["sumie.html", "en/sumie.html"],
     ["somato.html", "en/somato.html"],

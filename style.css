@@ -5644,6 +5644,15 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
 .spot-page-727-collection-link strong { font-family: var(--font-serif); font-size: 16px; }
 .spot-page-727-collection-link small { color: var(--ink-soft); font-size: 12px; }
 .spot-page-727-collection-link b { color: var(--accent); font-size: 20px; }
+/* スポット本文の「次にできること」3枚。城・観覧車の特集ページへ渡す導線を兼ねる。 */
+.spot-page-next-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 22px 0; }
+.spot-page-next-card { display: grid; gap: 3px; align-content: start; padding: 14px 15px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink); text-decoration: none; }
+.spot-page-next-card:hover, .spot-page-next-card:focus-visible { border-color: var(--accent); outline: 0; box-shadow: 0 0 0 3px rgba(179,39,45,.1); }
+.spot-page-next-card small { color: var(--accent); font-size: 10px; font-weight: 800; letter-spacing: .1em; }
+.spot-page-next-card strong { font-family: var(--font-serif); font-size: 15.5px; line-height: 1.5; }
+.spot-page-next-card span { color: var(--ink-soft); font-size: 12px; line-height: 1.65; }
+.spot-page-next-card:last-child { border-left: 3px solid var(--accent); background: rgba(255,248,244,.7); }
+@media (max-width: 720px) { .spot-page-next-cards { grid-template-columns: 1fr; gap: 10px; } }
 .journal-collection-callout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;

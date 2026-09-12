@@ -17,6 +17,8 @@ const canonicalSpotIdOf = (id) => {
   return spot && spot.guidePageId && spot.guidePageId !== spot.id ? spot.guidePageId : id;
 };
 const pairs = [
+  ["/ferris-wheels.html", "/en/ferris-wheels.html"],
+  ["/castles.html", "/en/castles.html"],
   ["/", "/en/"],
   ["/zukan.html", "/en/zukan.html"],
   ["/journal.html", "/en/journal.html"],

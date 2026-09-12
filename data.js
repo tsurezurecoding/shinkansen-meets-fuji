@@ -4456,7 +4456,7 @@ const SPOTS = [
       ja: "安土駅付近を通るあたりで、E席側の平野の中に「他より一段大きく、山の形が長く伸びた山」を探してください。天守も看板も見えませんが、その稜線こそが観音寺城の跡です。「あの山が城だった」と知って眺めるだけで、車窓の意味が変わります。",
       en: "Around Azuchi, look toward Seat E for a mountain that is 'clearly bigger and longer-shouldered' than its neighbors on the plain. There is no keep or sign, but the ridge itself is the castle site. Simply knowing that the mountain once *was* the fortress changes the meaning of the window.",
     },
-    minutesFromTokyo: 120, side: "E", category: "notable", confidence: "needs-check", durationSec: 5, spotting: "moderate", scene: "mountain",
+    minutesFromTokyo: 120, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", scene: "mountain",
     image: "images/20240719_kannonji_castle_asami_k920.jpg",
     photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
