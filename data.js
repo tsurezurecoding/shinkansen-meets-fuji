@@ -1684,11 +1684,18 @@ const SPOTS = [
         {
           kind: "youtube",
           id: "ZYVs1yNmZck",
-          title: { ja: "朝の三島車両所", en: "朝の三島車両所" },
+          title: { ja: "朝の三島車両所", en: "The Mishima depot in the morning" },
           url: "https://www.youtube.com/watch?v=ZYVs1yNmZck",
         },
+        {
+          kind: "youtube",
+          id: "U304GsIv2jk",
+          title: { ja: "夜の三島車両所の発射台", en: "The Mishima launchpad at night" },
+          url: "https://www.youtube.com/watch?v=U304GsIv2jk",
+          comment: { ja: "まるで夜の空間に浮かぶ新幹線。", en: "Shinkansen that look like they are floating in the dark." },
+        },
       ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "These videos use the official YouTube embed." },
     },
     references: [
       { label: { ja: "新幹線の車窓から: 銀河鉄道の出発地みたいな高架線", en: "Shinkansen window blog: Elevated tracks like a departure point for Galaxy Express 999" }, url: "https://cotetu.seesaa.net/article/516761121.html" },
@@ -3439,6 +3446,23 @@ const SPOTS = [
         note: { ja: "線路脇の夜景に白い天守が浮かぶ", en: "The white keep stands out in the trackside night scene" },
       },
     ],
+    media: {
+      heading: { ja: "動画で見る清洲城", en: "Kiyosu Castle in motion" },
+      description: {
+        ja: "名古屋を出てすぐ、五条川のそばに立つ清洲城を車窓動画で見られます。",
+        en: "See Kiyosu Castle beside the Gojo River, just after the train leaves Nagoya.",
+      },
+      videos: [
+        {
+          kind: "youtube",
+          id: "3NhPqYO42Sc",
+          title: { ja: "ライトアップされた清洲城の車窓動画", en: "Kiyosu Castle lit up, from the train window" },
+          url: "https://www.youtube.com/watch?v=3NhPqYO42Sc",
+          comment: { ja: "ライトアップされた清洲城。", en: "Kiyosu Castle under its illumination." },
+        },
+      ],
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+    },
     references: [REFERENCES.kiyosuCastle, REFERENCES.kiyosuHistory, REFERENCES.kojodanWindowCastles],
     map: { lat: 35.2165750, lng: 136.8435972, ja: "清洲城", en: "Kiyosu Castle" },
     viewpoint: { lat: 35.215840, lng: 136.842626 },
