@@ -2136,19 +2136,20 @@ const SPOTS = [
       en: "Be at the Seat E window as you leave Shin-Fuji. The moment the train reaches the bridge the riverbed opens up and the white arches line up upstream, with Mt. Fuji beyond them. A tunnel follows straight after the crossing, so starting to look once you are on the bridge is already too late.",
     },
     minutesFromTokyo: 47, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "bay",
-    image: "images/20220205_fujikawa_bridge_michikusa.jpg",
+    image: "images/20260530_fujikawa_bridge_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
-      note: { ja: "2022年2月5日。冠雪した富士山と、10連の白いアーチ", en: "5 February 2022: a snow-capped Mt. Fuji above the ten white arches." },
+      date: "2026-05-30",
+      note: { ja: "初夏の河原と白いアーチの向こうに富士山", en: "Early-summer riverbed, white arches and Mt. Fuji beyond" },
     },
     photos: [
       {
-        src: "images/20260530_fujikawa_bridge_2_michikusa.jpg",
-        alt: { ja: "富士川水管橋の白いアーチと、雲をまとった富士山", en: "The white arches of the Fujikawa water pipe bridge and Mt. Fuji wrapped in cloud" },
+        src: "images/20220205_fujikawa_bridge_michikusa.jpg",
+        alt: { ja: "富士川越しに見る冠雪の富士山と富士川水管橋", en: "Snow-capped Mt. Fuji across the Fuji River with the water pipe bridge" },
         credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
-        note: { ja: "E席側、09:05撮影（動画から切り出し）。初夏の河原と白いアーチの向こうに富士山", en: "Seat E side, 09:05 (frame from video). Early-summer riverbed, white arches and Mt. Fuji beyond." },
+        date: "2022-02-05",
+        note: { ja: "富士川越しの富士山", en: "Mt. Fuji across the Fuji River" },
       },
       {
         src: "images/20260903_fujikawa_cloudy_michikusa.jpg",
