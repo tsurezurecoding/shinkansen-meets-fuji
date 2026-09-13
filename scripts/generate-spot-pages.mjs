@@ -1072,7 +1072,9 @@ function guideMobileSpotStripHTML(lang, prefix, spotHrefPrefix) {
     const caption = `<span class="show-caption"><strong>${escapeHTML(`${spot.icon || ""} ${localizedName}`.trim())}</strong>${cardCredit}<span>${escapeHTML(localizedHook)}</span><span class="show-guide-link">${escapeHTML(ui.mobileSpotAction)}</span></span>`;
     const media = `<div class="show-media"><img src="${prefix}${escapeHTML(thumbnailSrc(image))}" alt="${escapeHTML(localizedName)}" loading="lazy" decoding="async"></div>`;
     const ariaLabel = `${localizedName}: ${ui.mobileSpotAction}`;
-    return `<a class="show-card guide-mobile-spot-card" href="${escapeHTML(`${spotHrefPrefix}${item.id}.html`)}" data-guide-mobile-spot="${escapeHTML(item.id)}" aria-label="${escapeHTML(ariaLabel)}">
+    const guideHref = spot.guideRoute?.[lang] || spot.guideRoute?.en;
+    const cardHref = guideHref ? `${prefix}${guideHref}` : `${spotHrefPrefix}${item.id}.html`;
+    return `<a class="show-card guide-mobile-spot-card" href="${escapeHTML(cardHref)}" data-guide-mobile-spot="${escapeHTML(item.id)}" aria-label="${escapeHTML(ariaLabel)}">
             ${media}
             ${caption}
           </a>`;
@@ -1107,6 +1109,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       side: sp.side,
       thumb: RAIL_THUMB_CATEGORIES.has(sp.category) && sp.image ? sp.image : "",
       guide: spotGuideHref(sp),
+      guideRoute: sp.guideRoute?.[lang] || sp.guideRoute?.en || "",
     });
   }
   rows.sort((a, b) => a.min - b.min || (a.kind === "station" ? -1 : 1));
@@ -1128,7 +1131,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       const isCurrent = r.id === currentId;
       const seatCls = r.side === "E" ? "is-e" : r.side === "A" ? "is-a" : "";
       const seatLabel = r.side === "E" ? "E" : r.side === "A" ? "A" : "—";
-      const href = `${spotHrefPrefix}${r.guide || `${r.id}.html`}`;
+      const href = r.guideRoute ? `${prefix}${r.guideRoute}` : `${spotHrefPrefix}${r.guide || `${r.id}.html`}`;
       const trackingAttributes = options.trackSpotClicks
         ? ` data-guide-rail-spot="${escapeHTML(r.id)}" data-guide-rail-placement="${escapeHTML(railPlacement)}"`
         : "";
@@ -1389,6 +1392,10 @@ function spotGuideHref(spot) {
 // ホスト1本へ寄せて、同じクエリで自社2ページが順位を分け合う状態を作らない。
 function isSubordinateSpot(spot) {
   return Boolean(spot.guidePageId && spot.guidePageId !== spot.id);
+}
+
+function hasGeneratedSpotPage(spot) {
+  return !spot.guideRoute;
 }
 
 function canonicalSpotId(spot) {
@@ -2564,7 +2571,7 @@ function sitemapXML() {
   ];
   // 個別に更新したスポットだけ日付を上書きする。全件を一斉に書き換えないための例外表。
   const spotLastmodOverrides = { "727-board": "2026-08-15" };
-  const spotUrls = SPOTS.filter((spot) => !isSubordinateSpot(spot)).flatMap((spot) => ["ja", "en"].map((lang) => ({
+  const spotUrls = SPOTS.filter((spot) => hasGeneratedSpotPage(spot) && !isSubordinateSpot(spot)).flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
@@ -2644,7 +2651,7 @@ function generateSpotPage(spotOrId, lang, options = {}) {
 
 function generateSpotPages({ requireExisting = false, preserveHead = false } = {}) {
   const plans = [];
-  for (const lang of ["ja", "en"]) for (const spot of SPOTS) plans.push(planSpotPage(spot, lang, { requireExisting, preserveHead }));
+  for (const lang of ["ja", "en"]) for (const spot of SPOTS.filter(hasGeneratedSpotPage)) plans.push(planSpotPage(spot, lang, { requireExisting, preserveHead }));
   reportSpotPagePlan(plans);
   if (!CHECK_ONLY) writeChangedSpotPagePlans(plans);
   return plans.map(({ outputPath }) => outputPath);
@@ -2771,5 +2778,6 @@ writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
 await import("./generate-content-manifest.mjs");
 
-console.log(`Generated ${SPOTS.length} Japanese spot pages, ${SPOTS.length} English spot pages, /en/, sitemap.xml, and content-manifest.json`);
+const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;
+console.log(`Generated ${generatedSpotCount} Japanese spot pages, ${generatedSpotCount} English spot pages, /en/, sitemap.xml, and content-manifest.json`);
 }

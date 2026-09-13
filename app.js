@@ -422,7 +422,7 @@ function isRetired727Point(spot) {
 }
 
 function boardCollectionSpots() {
-  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22 && !isRetired727Point(spot)).map((spot) => {
+  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22 && spot.sourceNo !== 21 && !isRetired727Point(spot)).map((spot) => {
     const representative = SPOTS.find((candidate) => candidate.id === "727-board");
     const media = spot.photo ? {
       image: spot.photo.src,
@@ -437,7 +437,8 @@ function boardCollectionSpots() {
     return {
       ...spot,
       ...media,
-      minutesFromTokyo: [20, 21].includes(spot.sourceNo) ? representative.minutesFromTokyo : spot.minutesFromTokyo,
+      // 葛原（代表・23分）→ 用田（24分）の線路順を保つため、用田の2地点は自分の分数を使う。
+      minutesFromTokyo: spot.minutesFromTokyo,
       timelineOrder: [20, 21].includes(spot.sourceNo) ? spot.sourceNo : 99,
       collectionPointId: spot.id,
       is727Collection: true,
@@ -446,7 +447,7 @@ function boardCollectionSpots() {
   });
 }
 function is727CollectionSpot(spot) {
-  return spot?.is727Collection === true || spot?.id === "727-board";
+  return spot?.is727Collection === true || spot?.id === "727-board" || spot?.id === "727-sign";
 }
 function loadStamps() {
   try {
@@ -515,6 +516,9 @@ function appSelfForPath(pathname) {
 const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
+  const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.ja;
+  if (routed) return routed;
+  if (lang === "ja" && spot?.is727Collection) return "727-collection.html";
   const pageId = spot.guidePageId || spot.id;
   const anchor = spot.guideAnchor ? `#${spot.guideAnchor}` : "";
   return lang === "en" ? `en/spots/${pageId}.html${anchor}` : `spots/${pageId}.html${anchor}`;
@@ -1126,8 +1130,9 @@ function stampBadgeHTML(sp, size, fallbackCls) {
     return `<span class="stamp-badge"><span class="${fallbackCls} board-stamp-mark${stamps[sp.id] ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span></span>`;
   }
   const inked = !!stamps[sp.id];
+  const stampAssetId = sp.stampAssetId || sp.id;
   return `<span class="stamp-badge">` +
-    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" ` +
+    `<img class="stamp-badge-image${inked ? "" : " is-uncollected"}" src="images/stamps/stamp_${stampAssetId}.svg" alt="" width="${size}" height="${size}" loading="lazy" decoding="async" ` +
     `onerror="this.hidden=true;this.nextElementSibling.hidden=false">` +
     `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
@@ -2184,7 +2189,7 @@ function renderStampboard() {
     <button type="button" class="stamp${stamps[sp.id] ? " got" : ""}${selectedStampId === sp.id ? " is-selected" : ""}"
       data-stamp-select="${sp.id}" aria-haspopup="dialog" aria-expanded="${selectedStampId === sp.id}" aria-controls="journalModal">
       <span class="s-icon stampboard-icon">
-        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="stampboard-fallback" hidden>${sp.icon}</span>
+        <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.stampAssetId || sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="stampboard-fallback" hidden>${sp.icon}</span>
       </span>
       <span class="s-name">${sp[lang].name}</span>
     </button>`).join("")}
@@ -2198,7 +2203,7 @@ function stampDetailHTML(selected) {
   const media = spotMediaItems(selected)[0] || null;
   const stampVisual = selected.is727Collection
     ? `<span class="stamp-detail-image board-stamp-mark${got ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span>`
-    : `<img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.id}.svg" alt="" width="86" height="86">`;
+    : `<img class="stamp-detail-image${got ? "" : " is-uncollected"}" src="images/stamps/stamp_${selected.stampAssetId || selected.id}.svg" alt="" width="86" height="86">`;
   return `<div class="stamp-detail has-selection">
           ${stampVisual}
           <div class="stamp-detail-copy">
@@ -2290,7 +2295,7 @@ const galleryTagGroups = {
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "fujikawa-bridge", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
   industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "fuji-paper-mills", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
-  sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
+  sign: new Set(["putiputi-sign", "727-board", "727-sign", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
   city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "granship", "nagoya-station-skyline"]),
 };
 const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "727", "city"];

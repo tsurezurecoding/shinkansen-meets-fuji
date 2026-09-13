@@ -9,7 +9,8 @@ const dataContext = {};
 vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SPOTS = SPOTS;\nglobalThis.__SPOT_COUNT = SPOTS.length;`, dataContext);
 const spots = dataContext.__SPOTS;
 const spotCount = dataContext.__SPOT_COUNT;
-const spotIds = spots.map((spot) => spot.id);
+const allSpotIds = spots.map((spot) => spot.id);
+const spotIds = spots.filter((spot) => !spot.guideRoute).map((spot) => spot.id);
 // 本文をホスト側ページの章として持つスポットは、自分ではなくホストを代表URLにする。
 // 同じクエリで自社2ページが並ぶ状態を避けるための、意図的な非自己canonical。
 const canonicalSpotIdOf = (id) => {
@@ -62,8 +63,8 @@ function hasCanonical(html, urlPath) {
 
 const errors = [];
 const expectedSpotIds = new Set(spotIds);
-if (expectedSpotIds.size !== spotCount) {
-  errors.push(`data.js: duplicate spot IDs found (${spotCount} spots, ${expectedSpotIds.size} unique IDs)`);
+if (new Set(allSpotIds).size !== spotCount) {
+  errors.push(`data.js: duplicate spot IDs found (${spotCount} spots, ${new Set(allSpotIds).size} unique IDs)`);
 }
 
 function collectSpotPageIds(directory) {
@@ -339,4 +340,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log(`Language pages valid: ${spotCount} spot page pairs, ${pairs.length} Japanese/English pairs and ${localizedGuidePages.length} localized guides`);
+console.log(`Language pages valid: ${spotIds.length} spot page pairs for ${spotCount} catalog spots, ${pairs.length} Japanese/English pairs and ${localizedGuidePages.length} localized guides`);

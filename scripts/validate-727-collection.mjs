@@ -76,13 +76,34 @@ assert.ok(collection.filter((point) => !point.photo).every((point) => point.imag
 
 assertIncludes(app, 'spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22', "TOP split must omit synthetic source 19 and 22");
 assertIncludes(app, 'id === "727-board"', "TOP must retain the 727-board representative");
-assertIncludes(app, 'minutesFromTokyo: [20, 21].includes(spot.sourceNo) ? representative.minutesFromTokyo', "Yoda pair must share representative time");
+const minutesOf = (sourceNo) => collection.find((point) => point.sourceNo === sourceNo)?.minutesFromTokyo;
+assert.ok(minutesOf(19) < minutesOf(20) && minutesOf(20) <= minutesOf(21) && minutesOf(21) < minutesOf(22), "Kuzuhara must precede Yoda, and Yoda must precede Terasaka, along the track");
+assert.equal(spots.find((spot) => spot.id === "727-board")?.minutesFromTokyo, minutesOf(19), "248 spot must share the Kuzuhara collection time");
+assert.ok(spots.find((spot) => spot.id === "727-board")?.minutesFromTokyo < spots.find((spot) => spot.id === "727-sign")?.minutesFromTokyo, "248 (Kuzuhara) must come before the Yoda 727 spot");
+const spotMinutes = (id) => spots.find((spot) => spot.id === id)?.minutesFromTokyo;
+assert.ok(spotMinutes("hinataoka") < spotMinutes("putiputi-sign") && spotMinutes("putiputi-sign") - spotMinutes("hinataoka") < 1, "putiputi must follow Hinataoka by less than a minute");
+assert.equal(spotMinutes("putiputi-sign"), minutesOf(22), "putiputi spot and the Terasaka collection point must share one time");
+assertIncludes(spots.find((spot) => spot.id === "727-sign")?.ja?.story || "", "用田付近では、A席側に続けて現れます", "the 727 modal must say the Yoda signs continue on Seat A");
+assert.ok((spots.find((spot) => spot.id === "727-sign")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos belong to the 727 spot");
+assert.ok(!(spots.find((spot) => spot.id === "727-board")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos must not stay on the 248 page");
+assertIncludes(app, "spot.sourceNo !== 21", "the standalone Yoda point is the 727-sign spot, so the expanded timeline must not repeat it");
+assertIncludes(app, 'spot?.id === "727-sign"', "the 727-sign spot must carry the 727 filter tag");
+assertIncludes(app, `"727-board", "727-sign", "genki-sign"`, "the 727-sign spot must be in the sign filter group");
+assert.ok(!(spots.find((spot) => spot.id === "putiputi-sign")?.metaDescription?.ja || "").includes("藤沢"), "putiputi search description must not place the sign in Fujisawa");
+assert.ok(!page.includes("全部で27か所"), "the hero challenge must use the collectable count, not the record count");
+assert.ok(!app.includes("representative.minutesFromTokyo"), "Yoda pair must not borrow the Kuzuhara representative time");
 assertIncludes(app, "function timeline727Order", "TOP must keep deterministic representative/Yoda order");
 assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo visual must use SVG fallback");
 assertIncludes(app, 'spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id)', "all split 727 modals must link to the collection page");
 assertIncludes(read("data.js"), "大阪の化粧品メーカー、セブンツーセブン", "synthetic 727 copy must be 727-only");
-assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "727看板と248看板", "representative name must remain unchanged");
-assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "プチプチの私は誰でしょう看板", "putiputi representative name is pinned; change it only together with the page copy");
+assert.equal(spots.find((spot) => spot.id === "727-board")?.ja?.name, "きぬた歯科の248看板", "the former combined spot must present 248 and its advertiser as its subject");
+assert.equal(spots.find((spot) => spot.id === "727-sign")?.ja?.name, "727 COSMETICS看板", "the Yoda 727 spot must name its advertiser");
+assertIncludes(spots.find((spot) => spot.id === "727-sign")?.ja?.story || "", "727看板コレクション", "the 727 modal copy must lead to the collection");
+assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.ja?.name, "プチプチの看板", "putiputi must keep a concise primary name");
+assert.equal(spots.find((spot) => spot.id === "putiputi-sign")?.pageHeadingChunks?.ja?.join("|"), "プチプチの看板|「私は誰でしょう？」", "putiputi must retain the current sign copy as a subtitle");
+assertIncludes(read("data.js"), "2026年10月1日付で社名を「プチプチ株式会社」へ変更", "putiputi company-name change must remain in the page copy");
+assertIncludes(read("app.js"), 'spot.sourceNo === 21', "the verified standalone 727 point must remain in the regular gallery");
+assertIncludes(read("app.js"), 'spot?.is727Collection) return "727-collection.html"', "Japanese 727 entries must open the collection page");
 
 assertIncludes(shared, "727看板コレクション", "detail card title missing");
 assertIncludes(script, 'point.siteStatus === "removed"', "removed collection points must be excluded from the count");

@@ -5671,20 +5671,22 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
 
 /* Japanese 727 collection page. It uses the same section/card language as the journal. */
 .collection-727-page main { overflow: clip; }
+/* ヒーローは写真タイル背景のまま、花火・夜景特集と同じ中央揃え。727はCTAを残す。 */
 .collection-hero {
   position: relative;
   isolation: isolate;
   overflow: hidden;
-  padding: 72px 20px 66px;
-  background: linear-gradient(135deg, #152b43 0%, #203b59 58%, #6a3b3b 100%);
+  padding: 72px 20px 60px;
+  background: #152b43;
   color: #fff;
+  text-align: center;
 }
 .collection-hero::after {
   content: "";
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(100deg, rgba(12,27,43,.94) 0%, rgba(19,43,66,.86) 46%, rgba(73,42,43,.72) 100%);
+  background: linear-gradient(180deg, rgba(12,27,43,.56) 0%, rgba(16,32,50,.64) 55%, rgba(16,28,44,.82) 100%);
 }
 .collection-hero-tiles {
   position: absolute;
@@ -5696,31 +5698,25 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
   background: #152b43;
 }
 .collection-hero-tiles img { width: 100%; height: 100%; min-width: 0; min-height: 0; object-fit: cover; filter: saturate(.76) contrast(1.06); }
-.collection-hero-inner { position: relative; width: min(900px, 100%); margin: 0 auto; }
-.collection-hero .eyebrow { color: #f4c8a8; }
+.collection-hero-inner { position: relative; max-width: 760px; margin: 0 auto; }
+.collection-hero .eyebrow { color: var(--accent-soft, #f4c8a8); }
 .collection-hero h1 {
   display: flex;
   flex-wrap: wrap;
-  gap: .04em .24em;
-  margin-top: 12px;
+  justify-content: center;
+  gap: 0 .2em;
+  margin: 0 0 20px;
   font-family: var(--font-serif);
-  font-size: clamp(31px, 6vw, 64px);
-  line-height: 1.18;
-  letter-spacing: .02em;
+  font-size: clamp(30px, 6.4vw, 46px);
+  line-height: 1.4;
+  text-shadow: 0 2px 18px rgba(0,0,0,.45);
 }
-.collection-hero h1 .copy-chunk { white-space: nowrap; }
-.collection-hero-lead {
-  display: flex;
-  flex-wrap: wrap;
-  gap: .08em .25em;
-  margin-top: 18px;
-  color: rgba(255,255,255,.86);
-  font-family: var(--font-serif);
-  font-size: clamp(17px, 2.5vw, 24px);
-  line-height: 1.55;
-}
-.collection-hero-note { display: flex; flex-wrap: wrap; gap: .05em .34em; max-width: 72ch; margin-top: 18px; color: rgba(255,255,255,.8); font-size: 13px; line-height: 1.8; }
-.collection-hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 25px; }
+.collection-hero-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .1em; max-width: 680px; margin: 0 auto 12px; color: #fff; font-size: 15px; font-weight: 700; line-height: 1.75; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 1px 12px rgba(0,0,0,.6); }
+.collection-hero-lead .copy-chunk,
+.collection-hero-note .copy-chunk { white-space: nowrap; }
+.collection-hero-note { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .34em; max-width: 680px; margin: 0 auto; color: rgba(255,255,255,.92); font-size: 15px; line-height: 1.75; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 1px 12px rgba(0,0,0,.6); }
+.collection-hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
+
 .collection-hero .btn-ghost { border-color: rgba(255,255,255,.48); color: #fff; }
 .collection-hero .btn-ghost:hover,
 .collection-hero .btn-ghost:focus-visible { background: rgba(255,255,255,.12); color: #fff; }
@@ -5847,7 +5843,6 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
 @media (max-width: 600px) {
   .collection-hero { padding: 48px 16px 44px; }
   .collection-hero-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: repeat(4, minmax(0, 1fr)); }
-  .collection-hero h1 { font-size: clamp(29px, 9vw, 44px); }
   .collection-hero-actions { display: grid; }
   .collection-hero-actions .btn { width: 100%; }
   .collection-progress-copy { display: grid; gap: 4px; }

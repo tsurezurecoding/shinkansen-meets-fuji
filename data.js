@@ -1101,38 +1101,39 @@ const SPOTS = [
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "プチプチの私は誰でしょう看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "私は誰でしょう？", story: "新横浜から小田原へ向かう途中、A席側に「私は誰でしょう」と問いかける謎の看板が見えます。右上にはQRコードもありますが、新幹線の速度では読み取るのはかなり困難。もともとはプチプチ®で知られる川上産業の広告が出ていた場所で、沿線の看板は時々変わります。隣にはおなじみの727 COSMETICS看板。短い出会いなので、少し幅を持って探してください。" },
-    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
+    ja: { name: "プチプチの看板", area: "新横浜 → 小田原（大磯町付近）", hook: "プチプチ®の川上産業。", story: "新横浜から小田原へ向かう途中、A席側に見える、プチプチ®で知られる川上産業の看板です。現在は「私は誰でしょう」と問いかけるコピーとQRコードを掲げています。隣には727 COSMETICS看板も立っているため、少し幅を持って探してください。" },
+    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Oiso", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     pageTitle: {
-      ja: "プチプチの「私は誰でしょう」看板はどこ？新幹線から見える場所と席側 | 新幹線の窓",
+      ja: "プチプチの看板｜「私は誰でしょう？」が新幹線から見える場所と席側 | 新幹線の窓",
       en: "Who am I? Sign: A Mystery Shinkansen Billboard | Shinkansen Window",
     },
     pageHeading: {
-      ja: "プチプチの「私は誰でしょう」看板はどこ？",
+      ja: "プチプチの看板",
       en: "Where is the “Who am I?” billboard seen from the Shinkansen?",
     },
     pageHeadingChunks: {
-      ja: ["プチプチの「私は誰でしょう」看板は、", "どこ？"],
+      ja: ["プチプチの看板", "「私は誰でしょう？」"],
       en: ["Where is the “Who am I?” billboard", "seen from the Shinkansen?"],
     },
     metaDescription: {
-      ja: "新幹線から見える「私は誰でしょう」看板の場所と見える時刻、座席側を案内。新横浜から小田原へ向かう途中、藤沢市付近のA席側に現れる謎の看板です。もともとはプチプチ®で知られる川上産業の広告枠でした。",
-      en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Fujisawa. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
+      ja: "新幹線から見える川上産業のプチプチ®看板を案内。現在の表示は「私は誰でしょう？」。大磯町付近のA席側にあり、2026年10月1日付の「プチプチ株式会社」への社名変更も紹介します。",
+      en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Oiso. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
     },
     sectionHeading: {
-      ja: "プチプチの「私は誰でしょう」看板とは？",
+      ja: "プチプチの看板とは？",
       en: "What is the 'Who am I?' sign?",
     },
     pageStory: {
-      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、藤沢市葛原の農地に立つ複数枚の広告看板のうちのひとつです。同じ場所には長年、プチプチ®（気泡緩衝材）で知られる川上産業株式会社の広告が掲げられており、緑地帯の中でぷちっとした水色のイラストと商品名が目立つ、車窓の定番でした。2025年頃から現在のように「私は誰でしょう」というコピーとQRコードだけを掲げた匿名調の看板へ差し替えられ、SNSでも「あの謎看板は何」と話題になっています。社名変更に関する公式案内も出ているため、これにあわせて看板も新しいデザインへ変わるかもしれません。",
-      en: "This billboard is one of several roadside signs standing on farmland at Kuzuhara in Fujisawa, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? The company has also published an official notice about a company-name change, so the billboard may receive a new design to match.",
+      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、大磯町寺坂の農地に立つ、プチプチ®で知られる川上産業株式会社の広告です。以前は水色の気泡のイラストと商品名を大きく掲げていましたが、2025年頃から「私は誰でしょう」というコピーとQRコードだけのデザインに変わりました。川上産業は2026年10月1日付で社名を「プチプチ株式会社」へ変更すると発表しており、この看板は社名変更前後のブランドの変化も感じられる車窓になっています。",
+      en: "This billboard is one of several roadside signs standing on farmland at Terasaka in Oiso, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? The company has also published an official notice about a company-name change, so the billboard may receive a new design to match.",
     },
     explainer: {
       heading: { ja: "背景と楽しみ方", en: "The backstory and how to enjoy it" },
       ja: [
         "「プチプチ®」は、川上産業が1968年に日本で製造・発売を始めた気泡緩衝材の登録商標で、透明で気泡が並んだあの梱包材の代名詞として親しまれています。海外では bubble wrap が一般名詞ですが、日本語では商品名の『プチプチ』の方が生活語として定着しました。同社は長年ユーモアのある広告展開でも知られ、新幹線沿線のこの看板も、そのブランドコミュニケーションの一環として置かれていました。",
         "現在の「私は誰でしょう」看板は、あえて広告主を明示せず、QRコードでのアクセスに委ねる仕掛けです。新幹線の速度では車内からQRコードを読み取るのはほぼ不可能なので、実質的には「あの看板は何？」と気になった人が家に帰って調べる、という体験そのものが広告になっています。",
-        "沿線の広告は数年単位で入れ替わることがあり、以前の姿を覚えている人にはノスタルジックな要素も。ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。社名変更に関する公式案内にあわせて、看板も新しいデザインへ変わる可能性があります。なお、看板そのものに広告主の表示はありませんが、出稿しているのはプチプチ®の川上産業です。同社は2026年10月1日付で「プチプチ株式会社」へ社名を変更することを公表しています。",
+        "ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。看板そのものには広告主名が大きく出ていませんが、出稿しているのはプチプチ®の川上産業です。同社は2026年10月1日付で「プチプチ株式会社」へ社名を変更することを公表しており、今後さらに看板のデザインが変わる可能性もあります。",
+        "この看板の隣には、白地に大きく数字を掲げた727 COSMETICSの看板も立っています。727看板はここだけでなく、東海道新幹線沿線の各地に繰り返し現れます。数字の由来と確認した設置場所は、この説明の下にある「727看板コレクション」にまとめています。",
       ],
       en: [
         "'PUTIPUTI®' is Kawakami Sangyo's registered trademark for the clear, air-bubble packaging material it began producing in Japan in 1968; it is the everyday Japanese word for what English speakers call bubble wrap. In Japan, the brand name has become the general term for the product. Kawakami Sangyo has long run playful advertising, and its trackside sign here was part of that brand communication.",
@@ -1141,10 +1142,10 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "新横浜を過ぎて藤沢市葛原付近に入ったら、A席側の田園の中を意識してください。「私は誰でしょう」と大きく書かれた白い看板と、右上にQRコードが並ぶ、少し不思議な広告が短い時間だけ現れます。同時にE席側では727看板と248看板も見え、この一帯は「沿線広告銀座」のような場所になっています。",
-      en: "After Shin-Yokohama, as the train enters the Kuzuhara area of Fujisawa, watch the farmland on the Seat A side. A white sign that reads 'Who am I?' in large Japanese, with a QR code in the upper right, appears briefly. At almost the same moment, the 727 and 248 signs appear on the Seat E side — the area is something of a 'trackside billboard alley.'",
+      ja: "相模川を渡り、E席側の丘に日向岡のカラフルな三角屋根が見えたら、すぐにA席側の田園の中を意識してください。「私は誰でしょう」と大きく書かれた白い看板と、右上にQRコードが並ぶ、少し不思議な広告が短い時間だけ現れます。すぐ隣には、おなじみの白い727 COSMETICS看板も立っています。",
+      en: "After crossing the Sagami River, once the colorful triangular roofs of Hinataoka appear on the hillside on the Seat E side, turn straight to the farmland on the Seat A side. A white sign that reads 'Who am I?' in large Japanese, with a QR code in the upper right, appears briefly. The familiar white 727 COSMETICS sign stands right beside it.",
     },
-    minutesFromTokyo: 29, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 27.5, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260704_putiputi_sign_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -1190,9 +1191,58 @@ const SPOTS = [
     viewpoint: { lat: 35.322233, lng: 139.285276 },
   },
   {
+    id: "727-sign",
+    icon: "7️⃣",
+    ja: { name: "727 COSMETICS看板", area: "新横浜 → 小田原（藤沢市用田）", hook: "新幹線から見える、あの数字の看板。", story: "東海道新幹線の車窓で「あれは何？」と気になる、定番の野立て看板です。大阪の化粧品メーカー・セブンツーセブンの広告で、沿線各地に繰り返し現れます。藤沢市用田付近では、A席側に続けて現れます。ひとつ見つけたら、次はどこにあるか探して集めるのも楽しみのひとつ。数字の由来と確認した設置場所は、727看板コレクションで詳しく紹介します。" },
+    en: { name: "727 Sign", area: "Shin-Yokohama → Odawara, Yoda in Fujisawa", hook: "A mysterious 727 in the fields.", story: "A white billboard bearing the large digits 727 appears in the fields around Yoda, Fujisawa. It advertises Seven Two Seven, an Osaka cosmetics maker. This representative point shows the 727 sign on its own, without another number sign beside it." },
+    guideRoute: { ja: "727-collection.html", en: "en/spots/727-board.html" },
+    stampAssetId: "727-board",
+    minutesFromTokyo: 24, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
+    image: "images/20260820_727_board_yoda_solo_3x_michikusa.jpg",
+    photoCredit: {
+      ja: "michikusa",
+      en: "michikusa",
+      date: "2026-08-20",
+      note: { ja: "のぞみ99号・A席側、品川06:00発、06:18撮影。藤沢市用田付近（ズームして切り出し）", en: "Nozomi 99, Seat A side, Shinagawa 06:00 departure, photographed at 06:18 near Yoda, Fujisawa (zoomed crop)." },
+    },
+    photos: [
+      {
+        src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg",
+        alt: { ja: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", en: "727 sign beside a yellow Kinuta Dental sign, Yoda, Fujisawa" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-20",
+        note: { ja: "のぞみ99号・A席側、06:17撮影。用田のうち東京寄りの727看板。院長の顔が並ぶきぬた歯科の看板の隣", en: "Nozomi 99, Seat A side, photographed at 06:17. The Tokyo-side 727 sign at Yoda, beside Kinuta Dental's face sign." },
+      },
+      {
+        src: "images/20260820_727_board_yoda_solo_michikusa.jpg",
+        alt: { ja: "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板", en: "A single 727 sign beyond the morning rice fields, Yoda, Fujisawa" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-20",
+        note: { ja: "のぞみ99号・A席側、06:18撮影。車窓からの実際の見え方", en: "Nozomi 99, Seat A side, photographed at 06:18. How it actually looks from the window." },
+      },
+      {
+        src: "images/20260629_727_board_2_2x_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "のぞみ99号・A席側、6:18撮影。用田付近のうち東京寄りの727看板。黄色い歯科看板の隣", en: "Nozomi 99, Seat A side, photographed at 6:18. The Tokyo-side 727 sign near Yoda, beside a yellow dental sign." },
+      },
+      {
+        src: "images/20260629_727_board_1_4x_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-06-29",
+        note: { ja: "のぞみ99号・A席側、6:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, photographed at 6:18 near Yoda, Fujisawa." },
+      },
+    ],
+    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory],
+    map: { lat: 35.403564, lng: 139.405643, ja: "727 COSMETICS看板 藤沢市用田", en: "727 sign, Yoda Fujisawa" },
+    viewpoint: { lat: 35.403022, lng: 139.405035 },
+  },
+  {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "727看板と248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "あの数字、何？どこにある？", story: "新横浜を出て藤沢市へ入ると、727 COSMETICSの白い看板が沿線に何度か現れます。代表地点は葛原付近。E席側に黄色い「248」看板と並ぶ場所です。さらに小田原方面へ進むと、用田付近などではA席側にも727が見えます。727は大阪の化粧品メーカー、248は西八王子のきぬた歯科の広告です。" },
+    ja: { name: "きぬた歯科の248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "248は「ニシハチ」。", story: "新横浜を出て藤沢市葛原付近へ入ると、E席側の田園に黄色い「248」看板が現れます。248は「ニシハチ」と読み、西八王子のきぬた歯科を表す広告です。院長の顔写真の看板で知られるきぬた歯科が、車窓で有名な白い727 COSMETICS看板のすぐ隣に立てた、院長の顔と大きな「248」を並べた看板です。" },
     en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "What are those numbers, and where?", story: "After Shin-Yokohama, white 727 COSMETICS billboards appear several times as the train enters Fujisawa. The representative point is around Kuzuhara, where a 727 sign stands on the Seat E side beside a yellow '248' sign. Farther toward Odawara, more 727 signs appear on the Seat A side around Yoda and nearby areas. 727 is an Osaka cosmetics maker; 248 advertises Kinuta Dental in Nishi-Hachioji." },
     pageTitle: {
       ja: "248看板とは？きぬた歯科の広告が新幹線から見える場所と席側 | 新幹線の窓",
@@ -1211,13 +1261,16 @@ const SPOTS = [
       en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
     },
     pageStory: {
-      ja: "東京から新大阪方面へ向かう場合は、新横浜を出て約8分後、藤沢市葛原付近でまずE席側を見てください。白い727看板と黄色い248看板が田園の中に並びます。これが地図で案内している代表地点です。その先、小田原方面へ進むと、用田付近や「私は誰でしょう看板」の隣など、A席側にも727が現れます。727は1か所だけではないため、「どこで見たか」によって席側が変わります。このページの下にある「727看板コレクション」では、代表地点だけでなく、東京〜新大阪の沿線で確認した設置場所を写真・席側・位置とともに一覧にしています。",
+      ja: "東京から新大阪方面へ向かう場合は、新横浜を出て約8分後、藤沢市葛原付近でE席側を見てください。田園の中に黄色い248看板が現れ、白い727看板と並びます。248は「ニシハチ」と読む、きぬた歯科の広告です。このページでは黄色い248を主役として、数字の意味と見つけ方を案内します。",
       en: "Heading from Tokyo toward Shin-Osaka, start watching Seat E roughly eight minutes after Shin-Yokohama. Around Kuzuhara in Fujisawa, the white 727 billboard and yellow 248 billboard stand together in the fields; this is the representative point shown on the map. Farther toward Odawara, more 727 signs appear on Seat A around Yoda and beside the 'Who am I?' sign. Because 727 has multiple locations, the correct seat side depends on which sign you are looking for; the mapped point is one representative example among many signs along the route.",
     },
     explainer: {
       heading: { ja: "248看板とは？ 数字の意味は？", en: "What do the 727 and 248 billboards mean?" },
       ja: [
-        "隣の黄色い「248」看板は、西八王子の「きぬた歯科」の広告です。248を「ニシハチ」と読み、医院がある西八王子を表しています。きぬた歯科の公式アカウントもこの読み方を認めています。葛原付近では、白い727と黄色い248という数字だけの看板が並ぶため、意味を知らないといっそう謎めいて見えます。",
+        "黄色い「248」看板は、西八王子の「きぬた歯科」の広告です。248を「ニシハチ」と読み、医院がある西八王子を表しています。きぬた歯科の公式アカウントもこの読み方を認めています。",
+        "きぬた歯科は、中央線の西八王子駅前にある歯科医院です。院長の顔写真を大きく載せた黄色やピンクの看板で知られ、2012年頃から八王子を中心に首都圏の道路沿いへ増えていきました。設置数は2021年10月時点で約320か所とされ、車で走っていると思わぬ場所で院長の顔に出会う、看板そのものが名物になっている医院です。",
+        "東海道新幹線の車窓で、数字の「248」看板が見えるのはこの葛原付近だけです。一方で、沿線にはきぬた歯科の別の看板もあり、文字をほとんど入れず院長の顔だけを描いたものもあります。用田付近のA席側でも、727看板の隣にきぬた歯科の黄色い看板が立っています。",
+        "248が727を意識した看板であることは、並び方を見ればはっきりしています。727は「新幹線から見える謎の数字」として長く話題になってきた看板で、きぬた歯科は車窓から目に入るよう、その727の隣に看板を置いています。白地に大きな727の横に、黄色地に院長の顔と大きな248。医院名を読ませるより、数字で目を引く727の流儀に合わせ、車窓の定番となった謎にもうひとつ謎の数字を重ねた、遊び心のある並びです。",
         "並んで立つ白い「727」看板は、大阪の化粧品メーカー「セブンツーセブン」の野立て看板です。727そのものの由来と、東海道新幹線沿線のどこに立っているかは「727看板コレクション」にまとめています。",
       ],
       en: [
@@ -1226,7 +1279,7 @@ const SPOTS = [
         "The yellow \"248\" sign beside it advertises Kinuta Dental in Nishi-Hachioji. The digits are read as \"Nishi-Hachi,\" a shorthand for Nishi-Hachioji; the clinic's official account has confirmed that reading. Around Kuzuhara, the white 727 and yellow 248 signs sit together, making the pair look even more mysterious if you do not know what the numbers mean.",
       ],
     },
-    minutesFromTokyo: 24.5, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 23, side: "E", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -1236,29 +1289,22 @@ const SPOTS = [
     },
     photos: [
       {
+        src: "images/20260804_248_board_kuzuhara_michikusa.jpg",
+        alt: { ja: "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板", en: "Kinuta Dental's 248 sign with the director's face, beside the 727 sign" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-04",
+        note: { ja: "E席側、06:23撮影（動画から切り出し）。朝の光で248看板の院長の顔まで見える", en: "Seat E side, 06:23 (frame from video). Morning light shows the director's face on the 248 sign." },
+      },
+      {
         src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
         alt: { ja: "248看板と並ぶ727 COSMETICS看板", en: "727 COSMETICS sign beside the 248 sign" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-07-04",
         note: { ja: "E席側。248看板と、みんなの介護看板の間に見える727", en: "Seat E side. 727 between the 248 sign and a care-service sign." },
       },
-      {
-        src: "images/20260629_727_board_2_2x_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "のぞみ99号・A席側、6:18撮影。用田付近のうち東京寄りの727看板。黄色い歯科看板の隣", en: "Nozomi 99, Seat A side, photographed at 6:18. The Tokyo-side 727 sign near Yoda, beside a yellow dental sign." },
-      },
-      {
-        src: "images/20260629_727_board_1_4x_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "のぞみ99号・A席側、6:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, photographed at 6:18 near Yoda, Fujisawa." },
-      },
     ],
-    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory, REFERENCES.kinutaDentist248Post, REFERENCES.kinutaDentist248Meaning],
-    map: { lat: 35.4167, lng: 139.428027, ja: "727看板と248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
+    references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory, REFERENCES.kinutaDentist248Post, REFERENCES.kinutaDentist248Meaning, { label: { ja: "Wikipedia: きぬた歯科", en: "Wikipedia: Kinuta Dental (Japanese only)" }, url: { ja: "https://ja.wikipedia.org/wiki/%E3%81%8D%E3%81%AC%E3%81%9F%E6%AD%AF%E7%A7%91", en: "https://ja.wikipedia.org/wiki/%E3%81%8D%E3%81%AC%E3%81%9F%E6%AD%AF%E7%A7%91" } }],
+    map: { lat: 35.4167, lng: 139.428027, ja: "きぬた歯科の248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
     viewpoint: { lat: 35.415637, lng: 139.428588 },
   },
   {
@@ -2090,13 +2136,21 @@ const SPOTS = [
       en: "Be at the Seat E window as you leave Shin-Fuji. The moment the train reaches the bridge the riverbed opens up and the white arches line up upstream, with Mt. Fuji beyond them. A tunnel follows straight after the crossing, so starting to look once you are on the bridge is already too late.",
     },
     minutesFromTokyo: 47, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "bay",
-    image: "images/20220205_fujikawa_bridge_michikusa.jpg",
+    image: "images/20260530_fujikawa_bridge_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
-      note: { ja: "2022年2月5日。冠雪した富士山と、10連の白いアーチ", en: "5 February 2022: a snow-capped Mt. Fuji above the ten white arches." },
+      date: "2026-05-30",
+      note: { ja: "初夏の河原と白いアーチの向こうに富士山", en: "Early-summer riverbed, white arches and Mt. Fuji beyond" },
     },
     photos: [
+      {
+        src: "images/20220205_fujikawa_bridge_michikusa.jpg",
+        alt: { ja: "富士川越しに見る冠雪の富士山と富士川水管橋", en: "Snow-capped Mt. Fuji across the Fuji River with the water pipe bridge" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2022-02-05",
+        note: { ja: "富士川越しの富士山", en: "Mt. Fuji across the Fuji River" },
+      },
       {
         src: "images/20260903_fujikawa_cloudy_michikusa.jpg",
         alt: { ja: "曇天の富士川を渡る新幹線の車窓", en: "The Fuji River from a Shinkansen window under cloud" },
@@ -4996,10 +5050,10 @@ const BOARD_COLLECTION_NAMES = Object.freeze({
   45: { collection: "摂津市鳥飼八町", public: "727看板（摂津市鳥飼八町）" },
 });
 const BOARD_COLLECTION = [
-  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 24.5, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
+  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 23, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
   { sourceNo: 20, id: "727-no-20", collectionNote: "となりにはきぬた歯科", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.406712, lng: 139.410831, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg", alt: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_2_2x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
   { sourceNo: 21, id: "727-no-21", collectionNote: "727看板がひとつだけ", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.403564, lng: 139.405643, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_solo_michikusa.jpg", alt: "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_1_4x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
-  { sourceNo: 22, id: "727-no-22", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
+  { sourceNo: 22, id: "727-no-22", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27.5, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
   { sourceNo: 23, id: "727-no-23", minutesFromTokyo: 76, segment: "浜松 → 豊橋", side: "A", lat: 34.712314, lng: 137.488205, confidence: "verified", photo: { src: "images/20260704_727_board_haracho_michikusa.jpg", alt: "A席側から見える豊橋市原町の727看板", note: "michikusa / 2026-07-04" }, ja: "原町（豊橋市）", en: "Haracho, Toyohashi" },
   { sourceNo: 24, id: "727-no-24", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "E", lat: 34.799607, lng: 137.327733, confidence: "verified", photo: { src: "images/20260816_727_board_shimosawaki_e_michikusa.jpg", alt: "E席側から見える豊川市御津町下佐脇の727看板", note: "michikusa / 2026-08-16" }, ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
   { sourceNo: 25, id: "727-no-25", siteStatus: "removed", collectionNote: "2026年時点で別の広告に入れ替わり。ストリートビューと車窓の双方で確認", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "A", lat: 34.796903, lng: 137.324582, confidence: "needs-check", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
