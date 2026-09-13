@@ -5686,7 +5686,7 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
   position: absolute;
   z-index: -1;
   inset: 0;
-  background: linear-gradient(180deg, rgba(12,27,43,.8) 0%, rgba(16,32,50,.84) 55%, rgba(16,28,44,.92) 100%);
+  background: linear-gradient(180deg, rgba(12,27,43,.56) 0%, rgba(16,32,50,.64) 55%, rgba(16,28,44,.82) 100%);
 }
 .collection-hero-tiles {
   position: absolute;
@@ -5711,10 +5711,10 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
   line-height: 1.4;
   text-shadow: 0 2px 18px rgba(0,0,0,.45);
 }
-.collection-hero-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .1em; max-width: 680px; margin: 0 auto 14px; color: rgba(255,255,255,.94); font-size: clamp(15px, 1.9vw, 18px); font-weight: 700; line-height: 1.7; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+.collection-hero-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .1em; max-width: 680px; margin: 0 auto 12px; color: #fff; font-size: 15px; font-weight: 700; line-height: 1.75; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 1px 12px rgba(0,0,0,.6); }
 .collection-hero-lead .copy-chunk,
 .collection-hero-note .copy-chunk { white-space: nowrap; }
-.collection-hero-note { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .34em; max-width: 680px; margin: 0 auto; color: rgba(255,255,255,.86); font-size: clamp(15px, 1.9vw, 18px); line-height: 1.7; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+.collection-hero-note { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .34em; max-width: 680px; margin: 0 auto; color: rgba(255,255,255,.92); font-size: 15px; line-height: 1.75; text-shadow: 0 1px 3px rgba(0,0,0,.7), 0 1px 12px rgba(0,0,0,.6); }
 .collection-hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
 
 .collection-hero .btn-ghost { border-color: rgba(255,255,255,.48); color: #fff; }
