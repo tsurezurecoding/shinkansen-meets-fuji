@@ -223,7 +223,8 @@ for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
   for (const match of links) {
     if (!hrefPattern.test(match[1])) errors.push(`${urlPath}: invalid mobile guide spot link: ${match[1]}`);
   }
-  if (!html.includes('class="spot-page-section guide-mobile-timeline"') || !html.includes('"guide_mobile_spot_click"')) {
+  // Match the class tokens, not the literal attribute: the guide sections also carry guide-feature-section.
+  if (!/class="[^"]*\bspot-page-section\b[^"]*\bguide-mobile-timeline\b[^"]*"/.test(html) || !html.includes('"guide_mobile_spot_click"')) {
     errors.push(`${urlPath}: mobile guide timeline or analytics is missing`);
   }
   const guideLinkCount = (html.match(/class="show-guide-link"/g) || []).length;
