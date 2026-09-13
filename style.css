@@ -5711,6 +5711,8 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
   line-height: 1.4;
   text-shadow: 0 2px 18px rgba(0,0,0,.45);
 }
+.collection-hero-lead { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .1em; max-width: 680px; margin: 0 auto 14px; color: rgba(255,255,255,.94); font-size: clamp(15px, 1.9vw, 18px); font-weight: 700; line-height: 1.7; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
+.collection-hero-lead .copy-chunk,
 .collection-hero-note .copy-chunk { white-space: nowrap; }
 .collection-hero-note { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 .34em; max-width: 620px; margin: 0 auto; color: rgba(255,255,255,.78); font-size: 13px; line-height: 1.85; text-shadow: 0 1px 10px rgba(0,0,0,.5); }
 .collection-hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 28px; }
