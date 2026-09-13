@@ -1198,14 +1198,28 @@ const SPOTS = [
     guideRoute: { ja: "727-collection.html", en: "en/spots/727-board.html" },
     stampAssetId: "727-board",
     minutesFromTokyo: 24, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
-    image: "images/20260820_727_board_yoda_solo_michikusa.jpg",
+    image: "images/20260820_727_board_yoda_solo_3x_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
       en: "michikusa",
       date: "2026-08-20",
-      note: { ja: "のぞみ99号・A席側、品川06:00発、06:18撮影。藤沢市用田付近", en: "Nozomi 99, Seat A side, Shinagawa 06:00 departure, photographed at 06:18 near Yoda, Fujisawa." },
+      note: { ja: "のぞみ99号・A席側、品川06:00発、06:18撮影。藤沢市用田付近（ズームして切り出し）", en: "Nozomi 99, Seat A side, Shinagawa 06:00 departure, photographed at 06:18 near Yoda, Fujisawa (zoomed crop)." },
     },
     photos: [
+      {
+        src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg",
+        alt: { ja: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", en: "727 sign beside a yellow Kinuta Dental sign, Yoda, Fujisawa" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-20",
+        note: { ja: "のぞみ99号・A席側、06:17撮影。用田のうち東京寄りの727看板。院長の顔が並ぶきぬた歯科の看板の隣", en: "Nozomi 99, Seat A side, photographed at 06:17. The Tokyo-side 727 sign at Yoda, beside Kinuta Dental's face sign." },
+      },
+      {
+        src: "images/20260820_727_board_yoda_solo_michikusa.jpg",
+        alt: { ja: "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板", en: "A single 727 sign beyond the morning rice fields, Yoda, Fujisawa" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-20",
+        note: { ja: "のぞみ99号・A席側、06:18撮影。車窓からの実際の見え方", en: "Nozomi 99, Seat A side, photographed at 06:18. How it actually looks from the window." },
+      },
       {
         src: "images/20260629_727_board_2_2x_michikusa.jpg",
         alt: { ja: "新幹線のA席側から見える727 COSMETICS看板", en: "727 COSMETICS sign from Seat A" },
@@ -1274,6 +1288,13 @@ const SPOTS = [
       note: { ja: "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa." },
     },
     photos: [
+      {
+        src: "images/20260804_248_board_kuzuhara_michikusa.jpg",
+        alt: { ja: "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板", en: "Kinuta Dental's 248 sign with the director's face, beside the 727 sign" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-04",
+        note: { ja: "E席側、06:23撮影（動画から切り出し）。朝の光で248看板の院長の顔まで見える", en: "Seat E side, 06:23 (frame from video). Morning light shows the director's face on the 248 sign." },
+      },
       {
         src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
         alt: { ja: "248看板と並ぶ727 COSMETICS看板", en: "727 COSMETICS sign beside the 248 sign" },
@@ -2122,6 +2143,13 @@ const SPOTS = [
       note: { ja: "2022年2月5日。冠雪した富士山と、10連の白いアーチ", en: "5 February 2022: a snow-capped Mt. Fuji above the ten white arches." },
     },
     photos: [
+      {
+        src: "images/20260530_fujikawa_bridge_2_michikusa.jpg",
+        alt: { ja: "富士川水管橋の白いアーチと、雲をまとった富士山", en: "The white arches of the Fujikawa water pipe bridge and Mt. Fuji wrapped in cloud" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-05-30",
+        note: { ja: "E席側、09:05撮影（動画から切り出し）。初夏の河原と白いアーチの向こうに富士山", en: "Seat E side, 09:05 (frame from video). Early-summer riverbed, white arches and Mt. Fuji beyond." },
+      },
       {
         src: "images/20260903_fujikawa_cloudy_michikusa.jpg",
         alt: { ja: "曇天の富士川を渡る新幹線の車窓", en: "The Fuji River from a Shinkansen window under cloud" },
