@@ -625,12 +625,12 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
       <a href="${lang === "en" ? `${prefix}en/start.html` : `${prefix}start.html`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a>
       <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
-      <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+      <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
       <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
       <details class="top-nav-more">
         <summary>${lang === "ja" ? "もっと見る" : "More"}</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+          <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/lp.html` : `${prefix}lp.html`}">${lang === "ja" ? "新幹線の窓とは" : "About this app"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
           <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
@@ -652,7 +652,7 @@ function contentRailHTML(lang, prefix, options = {}) {
   const staticAttr = options.staticMarker ? ` data-spot-page-shared-static="${options.staticMarker}"` : "";
   const guideHref = lang === "en" ? `${prefix}en/?intro=1` : `${prefix}lp.html`;
   const items = lang === "en" ? [
-    { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "Mt. Fuji FAQ", desc: "Check the timing, seat side and cloudy-day answers." },
+    { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "See Mt. Fuji", desc: "Check the timing, seat side and cloudy-day answers." },
     { href: `${prefix}en/mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today." },
     { href: `${prefix}en/jr-pass-fuji.html`, img: "images/thumbs/content-faq.webp", label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones." },
     { href: `${prefix}en/besides-fuji.html`, img: "images/thumbs/content-mieru.webp", label: "GREY SKY", title: "If Fuji is hidden", desc: "The other 35 views, in the order they pass your window." },
@@ -663,7 +663,7 @@ function contentRailHTML(lang, prefix, options = {}) {
     { href: `${prefix}en/references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips." },
     { href: `${prefix}en/contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "Contact", desc: "Send photo suggestions, corrections or feedback." },
   ] : [
-    { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "富士山FAQ", desc: "見える時刻、座席側、曇りの日の答えを確認。" },
+    { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "富士山を見る", desc: "5つの区間、座席側、曇りの日の見え方を確認。" },
     { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。" },
     { href: `${prefix}sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。" },
     { href: `${prefix}somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。" },
@@ -1823,12 +1823,12 @@ function spotPageHTML(spot, lang) {
   const FUJI_FAMILY = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
   const fujiGuideLink = spot.id === "fuji"
     ? (lang === "ja"
-      ? `<p>このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、<a href="../guide.html">富士山FAQ・乗車前ガイド</a>で確認できます。</p>`
-      : `<p>This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
+      ? `<p>このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、<a href="../guide.html">富士山ガイド「新幹線から富士山を見る」</a>で確認できます。</p>`
+      : `<p>This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the <a href="../guide.html">Mt. Fuji guide</a>.</p>`)
     : FUJI_FAMILY.has(spot.id)
     ? (lang === "ja"
-      ? `<p>富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、<a href="../guide.html">富士山FAQ・乗車前ガイド</a>にまとめています。</p>`
-      : `<p>Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
+      ? `<p>富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、<a href="../guide.html">富士山ガイド「新幹線から富士山を見る」</a>にまとめています。</p>`
+      : `<p>Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the <a href="../guide.html">Mt. Fuji guide</a>.</p>`)
     : "";
   const fujiGuideBlock = fujiGuideLink ? `        ${fujiGuideLink}\n` : "";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
@@ -2035,7 +2035,7 @@ function englishGuideIndexHTML() {
         <div class="spot-page-actions">
           <a class="btn btn-primary" href="./start.html#journey">Build my timed guide</a>
           <a class="btn btn-ghost" href="live/">Open Audio Guide</a>
-          <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
+          <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji guide</a>
         </div>
       </section>
     </article>
@@ -2236,7 +2236,7 @@ function englishLandingHTML() {
     ["旅の記録に。", "into a travel record."],
     ["見つけた景色を、スタンプに。", "Save each view as a stamp."],
     ["旅の思い出をあとから振り返れます。", "Revisit the journey afterward."],
-    ["富士山FAQ", "Mt. Fuji FAQ"],
+    ["富士山を見る", "See Mt. Fuji"],
     ["富士山", "Mt. Fuji"],
     ["掛川城", "Kakegawa Castle"],
     ["浜名湖", "Lake Hamana"],
@@ -2351,7 +2351,7 @@ function englishAppIndexHTML() {
     ["E席", "Seat E"],
     ["727看板を分けて表示", "Show 727 signs separately"],
     ["つぎの車窓", "Next view"],
-    ["富士山FAQ", "Mt. Fuji FAQ"],
+    ["富士山を見る", "See Mt. Fuji"],
     ["見える時刻、座席側、曇りの日の答えを確認。", "Check the timing, seat side, and what to expect on cloudy days."],
     ["今日の富士山 見える予報", "Today's Mt. Fuji Visibility Forecast"],
     ["今日の空で富士山が見えそうかを確認。", "Check how likely Mt. Fuji is to appear in today's sky."],

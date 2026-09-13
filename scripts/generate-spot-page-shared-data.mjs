@@ -416,12 +416,12 @@ function projectFujiGuide(spot, lang) {
   if (!FUJI_FAMILY.has(spot.id)) return null;
   const text = spot.id === "fuji"
     ? (lang === "ja"
-      ? "このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、富士山FAQ・乗車前ガイドで確認できます。"
-      : "This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the Mt. Fuji FAQ and pre-trip guide.")
+      ? "このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、富士山ガイド「新幹線から富士山を見る」で確認できます。"
+      : "This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the Mt. Fuji guide.")
     : (lang === "ja"
-      ? "富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、富士山FAQ・乗車前ガイドにまとめています。"
-      : "Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the Mt. Fuji FAQ and pre-trip guide.");
-  return { text, href: "../guide.html", label: lang === "ja" ? "富士山FAQ・乗車前ガイド" : "Mt. Fuji FAQ and pre-trip guide" };
+      ? "富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、富士山ガイド「新幹線から富士山を見る」にまとめています。"
+      : "Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the Mt. Fuji guide.");
+  return { text, href: "../guide.html", label: lang === "ja" ? "富士山ガイド「新幹線から富士山を見る」" : "Mt. Fuji guide" };
 }
 
 function projectMedia(spot, lang) {

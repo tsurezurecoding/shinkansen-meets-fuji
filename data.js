@@ -1853,7 +1853,7 @@ const SPOTS = [
       en: ["Mt. Fuji filling the window", "between Mishima and Shin-Fuji"],
     },
     metaDescription: {
-      ja: "東海道新幹線の三島〜新富士で窓いっぱいに見える富士山を、車窓写真・地図・景色の変化で紹介。座席や列車別時刻の疑問は富士山FAQへ分けて案内します。",
+      ja: "東海道新幹線の三島〜新富士で窓いっぱいに見える富士山を、車窓写真・地図・景色の変化で紹介。座席や列車別時刻の疑問は富士山ガイドへ分けて案内します。",
       en: "See how Mt. Fuji changes between Mishima and Shin-Fuji through window photos, a map, and viewing highlights. Seat and timing questions are covered in the separate FAQ.",
     },
     sectionHeading: {
@@ -1871,14 +1871,14 @@ const SPOTS = [
         "新富士へ近づくにつれて手前が田園や低い建物へ変わり、山頂から裾野までの輪郭を追いやすくなります。トンネルで何度か途切れるため、一度見えなくなっても終わりではありません。",
         "見えているあいだ、富士山の手前に横たわる低い山並みにも気づくはずです。これは愛鷹山（あしたかやま）で、富士山の南側に連なる独立した山群です。富士山の裾野の一部に見えますが別の山で、この区間では富士山の輪郭を手前から支えるように重なります。裾野がどこまで広がっているのかを目で追うとき、愛鷹山との境目が最初の手がかりになります。",
         "光の向きも覚えておくと写真が変わります。富士山は線路の北側にあり、日本では太陽が南寄りを通るため、日中はほぼ一日を通して順光です。曇りさえしなければ、朝でも午後でも山肌はしっかり見えます。朝夕の低い光の時間帯は、稜線や谷筋の陰影が濃くなって立体感が増し、輪郭がくっきりします。雪については、例年9月末から10月ごろに初冠雪が観測され、真夏の7〜8月にはほとんど消えます。同じ区間でも季節でまったく別の山に見えるのはこのためです。",
-        "このページでは場所・写真・景色の変化に絞ります。E席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士については、別ページの「富士山FAQ・乗車前ガイド」でまとめて確認できます。",
+        "このページでは場所・写真・景色の変化に絞ります。E席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士については、別ページの「富士山ガイド「新幹線から富士山を見る」」でまとめて確認できます。",
       ],
       en: [
         "Near Mishima, Mt. Fuji first appears behind urban scenery and power lines. The appeal is watching it gradually gain presence behind everyday landscapes rather than beginning as an isolated mountain view.",
         "Closer to Shin-Fuji, the foreground opens into fields and lower buildings, making the summit and broad foothills easier to follow. Several tunnels interrupt the view, so its first disappearance is not the end.",
         "While Fuji is in view you will also notice a lower range lying in front of it. That is Mount Ashitaka, a separate volcanic group just south of Fuji. It looks like part of Fuji's skirt but is its own mountain, and along this stretch it overlaps the base of Fuji as though propping up the outline. When you try to trace how far the foothills spread, the seam where Ashitaka ends is the first clue.",
         "The direction of the light is worth knowing too. Mt. Fuji lies north of the tracks, and in Japan the sun tracks across the southern sky, so the mountain is front-lit for essentially the whole day. As long as it is not cloudy, the slopes read clearly in the morning and in the afternoon alike. In the low light of early morning or late afternoon, the ridges and gullies gain shadow and the outline sharpens. As for snow, the first snowcap is usually recorded in late September or October, and by midsummer it has all but vanished — which is why the same stretch of line can show what looks like an entirely different mountain depending on the season.",
-        "This page is about the place, photographs, and changing scenery. Seat booking, exact timing from major stations, cloudy-day advice, and Left Fuji are collected separately in the Mt. Fuji FAQ and pre-trip guide.",
+        "This page is about the place, photographs, and changing scenery. Seat booking, exact timing from major stations, cloudy-day advice, and Left Fuji are collected separately in the Mt. Fuji guide.",
       ],
     },
     guideHighlight: {
