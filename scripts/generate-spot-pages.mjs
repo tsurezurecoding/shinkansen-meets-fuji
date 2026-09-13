@@ -909,7 +909,6 @@ const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
 const CURATED_ANGLE_PHOTOS = {
   hamanako: ["hamanako_torii_letus10"], // 主画像は E 席。反対の A 席・赤鳥居を見せる
 };
-const RAIL_THUMB_CATEGORIES = new Set(["classic", "notable"]);
 
 /** 本文に差し込む写真を選ぶ。主画像と別の視点（反対席側／夜景）に限定する */
 function inlinePhotoIndices(spot) {
@@ -1106,7 +1105,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       id: sp.id,
       name: spotNames[sp.id] || data.name || sp.en?.name || sp.id,
       side: sp.side,
-      thumb: RAIL_THUMB_CATEGORIES.has(sp.category) && sp.image ? sp.image : "",
+      thumb: sp.image ? sp.image : "",
       guide: spotGuideHref(sp),
       guideRoute: sp.guideRoute?.[lang] || sp.guideRoute?.en || "",
     });
