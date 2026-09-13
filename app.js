@@ -437,7 +437,8 @@ function boardCollectionSpots() {
     return {
       ...spot,
       ...media,
-      minutesFromTokyo: [20, 21].includes(spot.sourceNo) ? representative.minutesFromTokyo : spot.minutesFromTokyo,
+      // 葛原（代表・23分）→ 用田（24分）の線路順を保つため、用田の2地点は自分の分数を使う。
+      minutesFromTokyo: spot.minutesFromTokyo,
       timelineOrder: [20, 21].includes(spot.sourceNo) ? spot.sourceNo : 99,
       collectionPointId: spot.id,
       is727Collection: true,

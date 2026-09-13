@@ -1193,7 +1193,7 @@ const SPOTS = [
   {
     id: "727-sign",
     icon: "7️⃣",
-    ja: { name: "727看板", area: "新横浜 → 小田原（藤沢市用田）", hook: "田園に現れる、謎の727。", story: "藤沢市用田の田園に、白地へ大きく「727」と書かれた看板が現れます。727は大阪の化粧品メーカー、セブンツーセブンの広告です。この地点はほかの数字看板と並ばず、727だけを見つけやすい代表スポットです。" },
+    ja: { name: "727 COSMETICS看板", area: "新横浜 → 小田原（藤沢市用田）", hook: "新幹線から見える、あの数字の看板。", story: "東海道新幹線の車窓で「あれは何？」と気になる、定番の野立て看板です。大阪の化粧品メーカー・セブンツーセブンの広告で、沿線各地に繰り返し現れます。ひとつ見つけたら、次はどこにあるか探して集めるのも楽しみのひとつ。数字の由来と確認した設置場所は、727看板コレクションで詳しく紹介します。" },
     en: { name: "727 Sign", area: "Shin-Yokohama → Odawara, Yoda in Fujisawa", hook: "A mysterious 727 in the fields.", story: "A white billboard bearing the large digits 727 appears in the fields around Yoda, Fujisawa. It advertises Seven Two Seven, an Osaka cosmetics maker. This representative point shows the 727 sign on its own, without another number sign beside it." },
     guideRoute: { ja: "727-collection.html", en: "en/spots/727-board.html" },
     stampAssetId: "727-board",
@@ -1207,13 +1207,13 @@ const SPOTS = [
     },
     photos: [],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory],
-    map: { lat: 35.403564, lng: 139.405643, ja: "727看板 藤沢市用田", en: "727 sign, Yoda Fujisawa" },
+    map: { lat: 35.403564, lng: 139.405643, ja: "727 COSMETICS看板 藤沢市用田", en: "727 sign, Yoda Fujisawa" },
     viewpoint: { lat: 35.403022, lng: 139.405035 },
   },
   {
     id: "727-board",
     icon: "7️⃣",
-    ja: { name: "248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "248は「ニシハチ」。", story: "新横浜を出て藤沢市葛原付近へ入ると、E席側の田園に黄色い「248」看板が現れます。248は「ニシハチ」と読み、西八王子のきぬた歯科を表す広告です。隣には白い727 COSMETICS看板が立っています。" },
+    ja: { name: "きぬた歯科の248看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "248は「ニシハチ」。", story: "新横浜を出て藤沢市葛原付近へ入ると、E席側の田園に黄色い「248」看板が現れます。248は「ニシハチ」と読み、西八王子のきぬた歯科を表す広告です。隣には白い727 COSMETICS看板が立っています。" },
     en: { name: "727 and 248 Signs", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "What are those numbers, and where?", story: "After Shin-Yokohama, white 727 COSMETICS billboards appear several times as the train enters Fujisawa. The representative point is around Kuzuhara, where a 727 sign stands on the Seat E side beside a yellow '248' sign. Farther toward Odawara, more 727 signs appear on the Seat A side around Yoda and nearby areas. 727 is an Osaka cosmetics maker; 248 advertises Kinuta Dental in Nishi-Hachioji." },
     pageTitle: {
       ja: "248看板とは？きぬた歯科の広告が新幹線から見える場所と席側 | 新幹線の窓",
@@ -1247,7 +1247,7 @@ const SPOTS = [
         "The yellow \"248\" sign beside it advertises Kinuta Dental in Nishi-Hachioji. The digits are read as \"Nishi-Hachi,\" a shorthand for Nishi-Hachioji; the clinic's official account has confirmed that reading. Around Kuzuhara, the white 727 and yellow 248 signs sit together, making the pair look even more mysterious if you do not know what the numbers mean.",
       ],
     },
-    minutesFromTokyo: 24.5, side: "E", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
+    minutesFromTokyo: 23, side: "E", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -1279,7 +1279,7 @@ const SPOTS = [
       },
     ],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory, REFERENCES.kinutaDentist248Post, REFERENCES.kinutaDentist248Meaning],
-    map: { lat: 35.4167, lng: 139.428027, ja: "248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
+    map: { lat: 35.4167, lng: 139.428027, ja: "きぬた歯科の248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
     viewpoint: { lat: 35.415637, lng: 139.428588 },
   },
   {
@@ -5017,7 +5017,7 @@ const BOARD_COLLECTION_NAMES = Object.freeze({
   45: { collection: "摂津市鳥飼八町", public: "727看板（摂津市鳥飼八町）" },
 });
 const BOARD_COLLECTION = [
-  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 24.5, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
+  { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 23, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
   { sourceNo: 20, id: "727-no-20", collectionNote: "となりにはきぬた歯科", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.406712, lng: 139.410831, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg", alt: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_2_2x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
   { sourceNo: 21, id: "727-no-21", collectionNote: "727看板がひとつだけ", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.403564, lng: 139.405643, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_solo_michikusa.jpg", alt: "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_1_4x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
   { sourceNo: 22, id: "727-no-22", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
