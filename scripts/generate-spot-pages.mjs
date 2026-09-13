@@ -341,7 +341,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "727-board": "727與248號看板", hinataoka: "日向岡山坡住宅區", "putiputi-sign": "「我是誰？」看板",
       "odawara-castle": "小田原城", "gyoran-kannon": "魚籃大觀音像", odawara: "熱海與相模灣",
       fuji: "富士山", "shimizu-port-chikyu": "清水港與CHIKYU深海探查船", granship: "格蘭希普", "left-fuji": "左富士",
-      "shizuoka-tea-fields": "靜岡茶園", kakegawa: "掛川城", "genki-sign": "しっぺい加油看板",
+      "shizuoka-tea-fields": "靜岡茶園", kakegawa: "掛川城", "genki-sign": "悉平加油看板",
       hamanako: "濱名湖", "hamanako-fuji": "濱名湖遠眺富士山", "toyohashi-tateiwa": "豐橋立岩巨石",
       "mikawa-oshima": "三河大島", "nichiban-anjo": "CELLOTAPE牆面看板",
       "nagoya-station-skyline": "名古屋站前天際線", "kirin-beer-factory": "麒麟啤酒工廠",
@@ -350,6 +350,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "佐和山城跡", "hikone-castle": "彦根城", "kannonji-castle": "觀音寺城跡",
       "omi-fuji": "近江富士", "seta-karahashi": "瀨田唐橋", toji: "東寺五重塔",
       "torikai-train-depot": "鳥飼新幹線車輛基地",
+      "727-sign": "727 COSMETICS看板", "mishima-catapult": "三島車輛所的彈射台", "fuji-pipe-sign": "Fujipipe屋頂看板", "fuji-paper-mills": "富士的造紙工廠", "fujikawa-bridge": "富士川鐵橋與水管橋", "gifu-hashima-mahalo": "岐阜羽島的Mahalo看板", "sennenq-sign": "千年灸看板", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "樂天滋賀工廠的零食看板", "hirakata-park-wheel": "枚方公園摩天輪",
     },
   },
   "zh-Hans": {
@@ -374,6 +375,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "佐和山城遗址", "hikone-castle": "彦根城", "kannonji-castle": "观音寺城遗址",
       "omi-fuji": "近江富士", "seta-karahashi": "濑田唐桥", toji: "东寺五重塔",
       "torikai-train-depot": "鸟饲新干线车辆基地",
+      "727-sign": "727 COSMETICS广告牌", "mishima-catapult": "三岛车辆所的弹射台", "fuji-pipe-sign": "Fujipipe屋顶广告牌", "fuji-paper-mills": "富士的造纸厂", "fujikawa-bridge": "富士川铁桥与水管桥", "gifu-hashima-mahalo": "岐阜羽岛的Mahalo广告牌", "sennenq-sign": "千年灸广告牌", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "乐天滋贺工厂的零食广告牌", "hirakata-park-wheel": "枚方公园摩天轮",
     },
   },
   ko: {
@@ -398,6 +400,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "사와야마성 유적", "hikone-castle": "히코네성", "kannonji-castle": "간논지성 유적",
       "omi-fuji": "오미후지", "seta-karahashi": "세타노 가라하시", toji: "도지 오층탑",
       "torikai-train-depot": "도리카이 신칸센 차량기지",
+      "727-sign": "727 COSMETICS 간판", "mishima-catapult": "미시마 차량소 캐터펄트", "fuji-pipe-sign": "후지파이프 옥상 간판", "fuji-paper-mills": "후지의 제지 공장", "fujikawa-bridge": "후지강 철교와 수도관교", "gifu-hashima-mahalo": "기후하시마 마할로 간판", "sennenq-sign": "센넨큐 간판", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "롯데 시가 공장 과자 간판", "hirakata-park-wheel": "히라카타 파크 관람차",
     },
   },
   fr: {
@@ -422,6 +425,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "Ruines du château de Sawayama", "hikone-castle": "Château de Hikone", "kannonji-castle": "Ruines du château de Kannonji",
       "omi-fuji": "Omi Fuji", "seta-karahashi": "Pont Seta no Karahashi", toji: "Pagode à cinq étages de To-ji",
       "torikai-train-depot": "Dépôt Shinkansen de Torikai",
+      "727-sign": "Panneau 727 COSMETICS", "mishima-catapult": "Catapulte Shinkansen de Mishima", "fuji-pipe-sign": "Panneau Fujipipe sur le toit", "fuji-paper-mills": "Papeteries de Fuji", "fujikawa-bridge": "Pont de la Fuji et pont-conduite", "gifu-hashima-mahalo": "Panneau Mahalo à Gifu-Hashima", "sennenq-sign": "Panneau Sennen Kyū", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "Panneaux de confiserie de Lotte Shiga", "hirakata-park-wheel": "Grande roue de Hirakata Park",
     },
   },
   de: {
@@ -446,6 +450,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "Ruinen der Burg Sawayama", "hikone-castle": "Burg Hikone", "kannonji-castle": "Ruinen der Burg Kannonji",
       "omi-fuji": "Omi-Fuji", "seta-karahashi": "Seta-no-Karahashi-Brücke", toji: "Fünfstöckige Pagode des To-ji",
       "torikai-train-depot": "Shinkansen-Betriebswerk Torikai",
+      "727-sign": "727-COSMETICS-Schild", "mishima-catapult": "Shinkansen-Katapult in Mishima", "fuji-paper-mills": "Papierfabriken von Fuji", "fujikawa-bridge": "Fujikawa-Brücke und Wasserrohrbrücke", "gifu-hashima-mahalo": "Mahalo-Schild in Gifu-Hashima", "sennenq-sign": "Sennen-Kyū-Schild", "lotte-shiga": "Süßwarenschilder von Lotte Shiga", "hirakata-park-wheel": "Riesenrad im Hirakata Park",
     },
   },
   es: {
@@ -470,6 +475,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "Ruinas del castillo de Sawayama", "hikone-castle": "Castillo de Hikone", "kannonji-castle": "Ruinas del castillo de Kannonji",
       "omi-fuji": "Omi Fuji", "seta-karahashi": "Puente Seta no Karahashi", toji: "Pagoda de cinco pisos de To-ji",
       "torikai-train-depot": "Depósito de Shinkansen de Torikai",
+      "727-sign": "Cartel de 727 COSMETICS", "mishima-catapult": "Catapulta Shinkansen de Mishima", "fuji-paper-mills": "Papeleras de Fuji", "fujikawa-bridge": "Puente del río Fuji y puente acueducto", "gifu-hashima-mahalo": "Cartel Mahalo en Gifu-Hashima", "sennenq-sign": "Cartel de Sennen Kyū", "lotte-shiga": "Carteles de dulces de Lotte Shiga", "hirakata-park-wheel": "Noria de Hirakata Park",
     },
   },
 };
@@ -2731,6 +2737,14 @@ for (const config of guideRailConfigs) {
   const guidePath = path.join(appDir, config.path);
   const guideHTML = fs.readFileSync(guidePath, "utf8");
   const railLocalization = GUIDE_RAIL_LOCALIZATION[lang] || {};
+  // A spot added to data.js without a localized rail name used to fall back to Japanese silently
+  // (2026-09-13: ten recent spots showed Japanese in every localized guide). Fail the build instead.
+  if (railLocalization.spots) {
+    const missingNames = SPOTS.map((spot) => spot.id).filter((id) => !railLocalization.spots[id]);
+    if (missingNames.length) {
+      throw new Error(`GUIDE_RAIL_LOCALIZATION["${lang}"].spots is missing: ${missingNames.join(", ")}`);
+    }
+  }
   const rail = spotRailHTML(guideRailSpot, lang, config.prefix, {
     asideClass: "spot-page-rail guide-page-rail",
     spotHrefPrefix: config.spotHrefPrefix,
