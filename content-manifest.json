@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f86cecefe161969f",
+  "contentVersion": "ff0d8d33e62e48a0",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 17498,
-      "sha256": "7f8c242878152b163a8f239ceef9998f319a7f8dd824f4b0853325da26e87df0"
+      "bytes": 17492,
+      "sha256": "b27e3aa2a4c59fd2f46b8714f0a79353195838d1b043203773d7b377aa61811e"
     },
     {
       "path": "727-collection.js",
@@ -31,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 138870,
-      "sha256": "415a001f87d14b0807780fff066cff0d66d374820efcfa8bea772e9748504d42"
+      "bytes": 138933,
+      "sha256": "a1f3e6a686f03c43828c63ce29b6e98fd06333248318e39a650ecbccc2b2e6fe"
     },
     {
       "path": "castles.css",
@@ -62,7 +62,7 @@
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
       "bytes": 545233,
-      "sha256": "9ef1802c6a6c59a5ecc86455f94062e3f03e3c2278c602b814f3d567747fb8a7"
+      "sha256": "91818db17ef1c2714e05b445e8844409ed597160622fd3e7fa0b02d2de6b7cf8"
     },
     {
       "path": "data/timetable.js",
@@ -296,7 +296,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 19445,
-      "sha256": "b0e4019400975d95ffab7773e58c126c4be3427d65afdc6da161ef0b086e359c"
+      "sha256": "dad863a7ef779b5bcaedb17bf02f41bbcfeab17e983874b3ac14210243288c62"
     },
     {
       "path": "live/narration.js",

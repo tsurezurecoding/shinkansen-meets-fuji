@@ -86,6 +86,11 @@ assert.equal(spotMinutes("putiputi-sign"), minutesOf(22), "putiputi spot and the
 assertIncludes(spots.find((spot) => spot.id === "727-sign")?.ja?.story || "", "用田付近では、A席側に続けて現れます", "the 727 modal must say the Yoda signs continue on Seat A");
 assert.ok((spots.find((spot) => spot.id === "727-sign")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos belong to the 727 spot");
 assert.ok(!(spots.find((spot) => spot.id === "727-board")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos must not stay on the 248 page");
+assertIncludes(app, "spot.sourceNo !== 21", "the standalone Yoda point is the 727-sign spot, so the expanded timeline must not repeat it");
+assertIncludes(app, 'spot?.id === "727-sign"', "the 727-sign spot must carry the 727 filter tag");
+assertIncludes(app, `"727-board", "727-sign", "genki-sign"`, "the 727-sign spot must be in the sign filter group");
+assert.ok(!(spots.find((spot) => spot.id === "putiputi-sign")?.metaDescription?.ja || "").includes("藤沢"), "putiputi search description must not place the sign in Fujisawa");
+assert.ok(!page.includes("全部で27か所"), "the hero challenge must use the collectable count, not the record count");
 assert.ok(!app.includes("representative.minutesFromTokyo"), "Yoda pair must not borrow the Kuzuhara representative time");
 assertIncludes(app, "function timeline727Order", "TOP must keep deterministic representative/Yoda order");
 assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo visual must use SVG fallback");

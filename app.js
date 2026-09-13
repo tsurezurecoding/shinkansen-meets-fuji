@@ -422,7 +422,7 @@ function isRetired727Point(spot) {
 }
 
 function boardCollectionSpots() {
-  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22 && !isRetired727Point(spot)).map((spot) => {
+  return BOARD_COLLECTION.filter((spot) => spot.collectionKind === "727" && spot.sourceNo !== 19 && spot.sourceNo !== 22 && spot.sourceNo !== 21 && !isRetired727Point(spot)).map((spot) => {
     const representative = SPOTS.find((candidate) => candidate.id === "727-board");
     const media = spot.photo ? {
       image: spot.photo.src,
@@ -447,7 +447,7 @@ function boardCollectionSpots() {
   });
 }
 function is727CollectionSpot(spot) {
-  return spot?.is727Collection === true || spot?.id === "727-board";
+  return spot?.is727Collection === true || spot?.id === "727-board" || spot?.id === "727-sign";
 }
 function loadStamps() {
   try {
@@ -2295,7 +2295,7 @@ const galleryTagGroups = {
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "fujikawa-bridge", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
   industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "fuji-paper-mills", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
-  sign: new Set(["putiputi-sign", "727-board", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
+  sign: new Set(["putiputi-sign", "727-board", "727-sign", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
   city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "granship", "nagoya-station-skyline"]),
 };
 const galleryTagOrder = ["seat-a", "seat-e", "day", "night", "cloudy", "classic", "nature", "history", "industry", "sign", "727", "city"];

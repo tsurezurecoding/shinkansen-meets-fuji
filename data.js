@@ -1116,7 +1116,7 @@ const SPOTS = [
       en: ["Where is the “Who am I?” billboard", "seen from the Shinkansen?"],
     },
     metaDescription: {
-      ja: "新幹線から見える川上産業のプチプチ®看板を案内。現在の表示は「私は誰でしょう？」。藤沢市付近のA席側にあり、2026年10月1日付の「プチプチ株式会社」への社名変更も紹介します。",
+      ja: "新幹線から見える川上産業のプチプチ®看板を案内。現在の表示は「私は誰でしょう？」。大磯町付近のA席側にあり、2026年10月1日付の「プチプチ株式会社」への社名変更も紹介します。",
       en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Oiso. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
     },
     sectionHeading: {
