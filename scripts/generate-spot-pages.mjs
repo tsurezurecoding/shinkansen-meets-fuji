@@ -341,7 +341,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "727-board": "727與248號看板", hinataoka: "日向岡山坡住宅區", "putiputi-sign": "「我是誰？」看板",
       "odawara-castle": "小田原城", "gyoran-kannon": "魚籃大觀音像", odawara: "熱海與相模灣",
       fuji: "富士山", "shimizu-port-chikyu": "清水港與CHIKYU深海探查船", granship: "格蘭希普", "left-fuji": "左富士",
-      "shizuoka-tea-fields": "靜岡茶園", kakegawa: "掛川城", "genki-sign": "しっぺい加油看板",
+      "shizuoka-tea-fields": "靜岡茶園", kakegawa: "掛川城", "genki-sign": "悉平加油看板",
       hamanako: "濱名湖", "hamanako-fuji": "濱名湖遠眺富士山", "toyohashi-tateiwa": "豐橋立岩巨石",
       "mikawa-oshima": "三河大島", "nichiban-anjo": "CELLOTAPE牆面看板",
       "nagoya-station-skyline": "名古屋站前天際線", "kirin-beer-factory": "麒麟啤酒工廠",
@@ -350,6 +350,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "佐和山城跡", "hikone-castle": "彦根城", "kannonji-castle": "觀音寺城跡",
       "omi-fuji": "近江富士", "seta-karahashi": "瀨田唐橋", toji: "東寺五重塔",
       "torikai-train-depot": "鳥飼新幹線車輛基地",
+      "727-sign": "727 COSMETICS看板", "mishima-catapult": "三島車輛所的彈射台", "fuji-pipe-sign": "Fujipipe屋頂看板", "fuji-paper-mills": "富士的造紙工廠", "fujikawa-bridge": "富士川鐵橋與水管橋", "gifu-hashima-mahalo": "岐阜羽島的Mahalo看板", "sennenq-sign": "千年灸看板", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "樂天滋賀工廠的零食看板", "hirakata-park-wheel": "枚方公園摩天輪",
     },
   },
   "zh-Hans": {
@@ -374,6 +375,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "佐和山城遗址", "hikone-castle": "彦根城", "kannonji-castle": "观音寺城遗址",
       "omi-fuji": "近江富士", "seta-karahashi": "濑田唐桥", toji: "东寺五重塔",
       "torikai-train-depot": "鸟饲新干线车辆基地",
+      "727-sign": "727 COSMETICS广告牌", "mishima-catapult": "三岛车辆所的弹射台", "fuji-pipe-sign": "Fujipipe屋顶广告牌", "fuji-paper-mills": "富士的造纸厂", "fujikawa-bridge": "富士川铁桥与水管桥", "gifu-hashima-mahalo": "岐阜羽岛的Mahalo广告牌", "sennenq-sign": "千年灸广告牌", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "乐天滋贺工厂的零食广告牌", "hirakata-park-wheel": "枚方公园摩天轮",
     },
   },
   ko: {
@@ -398,6 +400,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "사와야마성 유적", "hikone-castle": "히코네성", "kannonji-castle": "간논지성 유적",
       "omi-fuji": "오미후지", "seta-karahashi": "세타노 가라하시", toji: "도지 오층탑",
       "torikai-train-depot": "도리카이 신칸센 차량기지",
+      "727-sign": "727 COSMETICS 간판", "mishima-catapult": "미시마 차량소 캐터펄트", "fuji-pipe-sign": "후지파이프 옥상 간판", "fuji-paper-mills": "후지의 제지 공장", "fujikawa-bridge": "후지강 철교와 수도관교", "gifu-hashima-mahalo": "기후하시마 마할로 간판", "sennenq-sign": "센넨큐 간판", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "롯데 시가 공장 과자 간판", "hirakata-park-wheel": "히라카타 파크 관람차",
     },
   },
   fr: {
@@ -422,6 +425,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "Ruines du château de Sawayama", "hikone-castle": "Château de Hikone", "kannonji-castle": "Ruines du château de Kannonji",
       "omi-fuji": "Omi Fuji", "seta-karahashi": "Pont Seta no Karahashi", toji: "Pagode à cinq étages de To-ji",
       "torikai-train-depot": "Dépôt Shinkansen de Torikai",
+      "727-sign": "Panneau 727 COSMETICS", "mishima-catapult": "Catapulte Shinkansen de Mishima", "fuji-pipe-sign": "Panneau Fujipipe sur le toit", "fuji-paper-mills": "Papeteries de Fuji", "fujikawa-bridge": "Pont de la Fuji et pont-conduite", "gifu-hashima-mahalo": "Panneau Mahalo à Gifu-Hashima", "sennenq-sign": "Panneau Sennen Kyū", "fujitec-big-wing": "FUJITEC Big Wing", "lotte-shiga": "Panneaux de confiserie de Lotte Shiga", "hirakata-park-wheel": "Grande roue de Hirakata Park",
     },
   },
   de: {
@@ -446,6 +450,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "Ruinen der Burg Sawayama", "hikone-castle": "Burg Hikone", "kannonji-castle": "Ruinen der Burg Kannonji",
       "omi-fuji": "Omi-Fuji", "seta-karahashi": "Seta-no-Karahashi-Brücke", toji: "Fünfstöckige Pagode des To-ji",
       "torikai-train-depot": "Shinkansen-Betriebswerk Torikai",
+      "727-sign": "727-COSMETICS-Schild", "mishima-catapult": "Shinkansen-Katapult in Mishima", "fuji-paper-mills": "Papierfabriken von Fuji", "fujikawa-bridge": "Fujikawa-Brücke und Wasserrohrbrücke", "gifu-hashima-mahalo": "Mahalo-Schild in Gifu-Hashima", "sennenq-sign": "Sennen-Kyū-Schild", "lotte-shiga": "Süßwarenschilder von Lotte Shiga", "hirakata-park-wheel": "Riesenrad im Hirakata Park",
     },
   },
   es: {
@@ -470,6 +475,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "sawayama-castle": "Ruinas del castillo de Sawayama", "hikone-castle": "Castillo de Hikone", "kannonji-castle": "Ruinas del castillo de Kannonji",
       "omi-fuji": "Omi Fuji", "seta-karahashi": "Puente Seta no Karahashi", toji: "Pagoda de cinco pisos de To-ji",
       "torikai-train-depot": "Depósito de Shinkansen de Torikai",
+      "727-sign": "Cartel de 727 COSMETICS", "mishima-catapult": "Catapulta Shinkansen de Mishima", "fuji-paper-mills": "Papeleras de Fuji", "fujikawa-bridge": "Puente del río Fuji y puente acueducto", "gifu-hashima-mahalo": "Cartel Mahalo en Gifu-Hashima", "sennenq-sign": "Cartel de Sennen Kyū", "lotte-shiga": "Carteles de dulces de Lotte Shiga", "hirakata-park-wheel": "Noria de Hirakata Park",
     },
   },
 };
@@ -625,12 +631,12 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
       <a href="${lang === "en" ? `${prefix}en/start.html` : `${prefix}start.html`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a>
       <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
-      <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+      <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
       <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
       <details class="top-nav-more">
         <summary>${lang === "ja" ? "もっと見る" : "More"}</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "FAQ" : "FAQ"}</a>
+          <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/lp.html` : `${prefix}lp.html`}">${lang === "ja" ? "新幹線の窓とは" : "About this app"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
           <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
@@ -652,10 +658,9 @@ function contentRailHTML(lang, prefix, options = {}) {
   const staticAttr = options.staticMarker ? ` data-spot-page-shared-static="${options.staticMarker}"` : "";
   const guideHref = lang === "en" ? `${prefix}en/?intro=1` : `${prefix}lp.html`;
   const items = lang === "en" ? [
-    { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "Mt. Fuji FAQ", desc: "Check the timing, seat side and cloudy-day answers." },
+    { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "See Mt. Fuji", desc: "Check the timing, seat side and cloudy-day answers." },
     { href: `${prefix}en/mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today." },
     { href: `${prefix}en/jr-pass-fuji.html`, img: "images/thumbs/content-faq.webp", label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones." },
-    { href: `${prefix}en/besides-fuji.html`, img: "images/thumbs/content-mieru.webp", label: "GREY SKY", title: "If Fuji is hidden", desc: "The other 35 views, in the order they pass your window." },
     { href: `${prefix}en/sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "Sumie Window", desc: "Ride the route as a quiet ink-painting window." },
     { href: `${prefix}en/somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "Window Journey", desc: "Let real window photos flow past like a short trip." },
     { href: `${prefix}en/journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride." },
@@ -663,7 +668,7 @@ function contentRailHTML(lang, prefix, options = {}) {
     { href: `${prefix}en/references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips." },
     { href: `${prefix}en/contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "Contact", desc: "Send photo suggestions, corrections or feedback." },
   ] : [
-    { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "FAQ", title: "富士山FAQ", desc: "見える時刻、座席側、曇りの日の答えを確認。" },
+    { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "富士山を見る", desc: "5つの区間、座席側、曇りの日の見え方を確認。" },
     { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。" },
     { href: `${prefix}sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。" },
     { href: `${prefix}somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。" },
@@ -910,7 +915,6 @@ const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
 const CURATED_ANGLE_PHOTOS = {
   hamanako: ["hamanako_torii_letus10"], // 主画像は E 席。反対の A 席・赤鳥居を見せる
 };
-const RAIL_THUMB_CATEGORIES = new Set(["classic", "notable"]);
 
 /** 本文に差し込む写真を選ぶ。主画像と別の視点（反対席側／夜景）に限定する */
 function inlinePhotoIndices(spot) {
@@ -1107,7 +1111,7 @@ function spotRailHTML(spot, lang, prefix, options = {}) {
       id: sp.id,
       name: spotNames[sp.id] || data.name || sp.en?.name || sp.id,
       side: sp.side,
-      thumb: RAIL_THUMB_CATEGORIES.has(sp.category) && sp.image ? sp.image : "",
+      thumb: sp.image ? sp.image : "",
       guide: spotGuideHref(sp),
       guideRoute: sp.guideRoute?.[lang] || sp.guideRoute?.en || "",
     });
@@ -1823,12 +1827,12 @@ function spotPageHTML(spot, lang) {
   const FUJI_FAMILY = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
   const fujiGuideLink = spot.id === "fuji"
     ? (lang === "ja"
-      ? `<p>このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、<a href="../guide.html">富士山FAQ・乗車前ガイド</a>で確認できます。</p>`
-      : `<p>This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
+      ? `<p>このページは三島〜新富士の写真と景色に集中しています。座席の取り方、東京・京都・新大阪からの時刻、曇りの日、左富士は、<a href="../guide.html">富士山ガイド「新幹線から富士山を見る」</a>で確認できます。</p>`
+      : `<p>This page focuses on the photographs and scenery between Mishima and Shin-Fuji. For seat booking, timing from Tokyo, Kyoto or Osaka, cloudy-day advice, and Left Fuji, see the <a href="../guide.html">Mt. Fuji guide</a>.</p>`)
     : FUJI_FAMILY.has(spot.id)
     ? (lang === "ja"
-      ? `<p>富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、<a href="../guide.html">富士山FAQ・乗車前ガイド</a>にまとめています。</p>`
-      : `<p>Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the <a href="../guide.html">Mt. Fuji FAQ and pre-trip guide</a>.</p>`)
+      ? `<p>富士山が見える座席側や、東京・京都・新大阪からの時刻、曇りの日の見え方、他の富士山ビュースポットとの違いは、<a href="../guide.html">富士山ガイド「新幹線から富士山を見る」</a>にまとめています。</p>`
+      : `<p>Seat side for Mt. Fuji, timing from Tokyo / Kyoto / Osaka, cloudy-day advice, and how this view compares with the other Fuji viewpoints are gathered in the <a href="../guide.html">Mt. Fuji guide</a>.</p>`)
     : "";
   const fujiGuideBlock = fujiGuideLink ? `        ${fujiGuideLink}\n` : "";
   const heroCredit = creditText(photos[0]?.credit, lang) || creditText(spot.photoCredit, lang) || ui.fallbackCredit;
@@ -2035,7 +2039,7 @@ function englishGuideIndexHTML() {
         <div class="spot-page-actions">
           <a class="btn btn-primary" href="./start.html#journey">Build my timed guide</a>
           <a class="btn btn-ghost" href="live/">Open Audio Guide</a>
-          <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji FAQ</a>
+          <a class="btn btn-ghost" href="guide.html">Read the Mt. Fuji guide</a>
         </div>
       </section>
     </article>
@@ -2236,7 +2240,7 @@ function englishLandingHTML() {
     ["旅の記録に。", "into a travel record."],
     ["見つけた景色を、スタンプに。", "Save each view as a stamp."],
     ["旅の思い出をあとから振り返れます。", "Revisit the journey afterward."],
-    ["富士山FAQ", "Mt. Fuji FAQ"],
+    ["富士山を見る", "See Mt. Fuji"],
     ["富士山", "Mt. Fuji"],
     ["掛川城", "Kakegawa Castle"],
     ["浜名湖", "Lake Hamana"],
@@ -2351,7 +2355,7 @@ function englishAppIndexHTML() {
     ["E席", "Seat E"],
     ["727看板を分けて表示", "Show 727 signs separately"],
     ["つぎの車窓", "Next view"],
-    ["富士山FAQ", "Mt. Fuji FAQ"],
+    ["富士山を見る", "See Mt. Fuji"],
     ["見える時刻、座席側、曇りの日の答えを確認。", "Check the timing, seat side, and what to expect on cloudy days."],
     ["今日の富士山 見える予報", "Today's Mt. Fuji Visibility Forecast"],
     ["今日の空で富士山が見えそうかを確認。", "Check how likely Mt. Fuji is to appear in today's sky."],
@@ -2544,24 +2548,22 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
     { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/jr-pass-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
-    { loc: `${siteRoot}/en/besides-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
-    { loc: `${siteRoot}/zh-Hant/besides-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-23" },
     { loc: `${siteRoot}/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
     { loc: `${siteRoot}/en/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-08-11" },
-    { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
-    { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-08-27" },
+    { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },
@@ -2735,6 +2737,14 @@ for (const config of guideRailConfigs) {
   const guidePath = path.join(appDir, config.path);
   const guideHTML = fs.readFileSync(guidePath, "utf8");
   const railLocalization = GUIDE_RAIL_LOCALIZATION[lang] || {};
+  // A spot added to data.js without a localized rail name used to fall back to Japanese silently
+  // (2026-09-13: ten recent spots showed Japanese in every localized guide). Fail the build instead.
+  if (railLocalization.spots) {
+    const missingNames = SPOTS.map((spot) => spot.id).filter((id) => !railLocalization.spots[id]);
+    if (missingNames.length) {
+      throw new Error(`GUIDE_RAIL_LOCALIZATION["${lang}"].spots is missing: ${missingNames.join(", ")}`);
+    }
+  }
   const rail = spotRailHTML(guideRailSpot, lang, config.prefix, {
     asideClass: "spot-page-rail guide-page-rail",
     spotHrefPrefix: config.spotHrefPrefix,

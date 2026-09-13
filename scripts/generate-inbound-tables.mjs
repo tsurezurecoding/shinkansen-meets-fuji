@@ -549,9 +549,12 @@ function validateInboundPageContracts() {
 
   const enUrl = "https://www.michikusa-travel.com/en/besides-fuji.html";
   const zhUrl = "https://www.michikusa-travel.com/zh-Hant/besides-fuji.html";
-  requireFragment(besidesEn, `hreflang="zh-Hant-TW" href="${zhUrl}"`, "English Besides-Fuji zh-Hant alternate");
-  requireFragment(besidesZh, `hreflang="en" href="${enUrl}"`, "Traditional Chinese Besides-Fuji English alternate");
-  requireFragment(besidesZh, `hreflang="x-default" href="${enUrl}"`, "Traditional Chinese Besides-Fuji x-default alternate");
+  // 2026-09-13 (GUIDE-CTR-0913): Besides-Fuji was consolidated into the guides' cloudy sections.
+  // The pages stay reachable for old links, but their canonical points at the guide and they leave the hreflang cluster.
+  requireFragment(besidesEn, `<link rel="canonical" href="https://www.michikusa-travel.com/en/guide.html">`, "English Besides-Fuji canonical to the guide");
+  requireFragment(besidesZh, `<link rel="canonical" href="https://www.michikusa-travel.com/zh-Hant/guide.html">`, "Traditional Chinese Besides-Fuji canonical to the guide");
+  if (/hreflang=/.test(besidesEn) || /hreflang=/.test(besidesZh)) throw new Error("Besides-Fuji pages must not join an hreflang cluster");
+  void enUrl; void zhUrl;
 }
 
 const KAKEGAWA_KODAMA = TIMETABLE.trains.filter(
