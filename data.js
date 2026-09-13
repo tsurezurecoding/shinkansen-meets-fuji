@@ -1101,8 +1101,8 @@ const SPOTS = [
   {
     id: "putiputi-sign",
     icon: "🫧",
-    ja: { name: "プチプチの看板", area: "新横浜 → 小田原（藤沢市付近）", hook: "プチプチ®の川上産業。", story: "新横浜から小田原へ向かう途中、A席側に見える、プチプチ®で知られる川上産業の看板です。現在は「私は誰でしょう」と問いかけるコピーとQRコードを掲げています。隣には727 COSMETICS看板も立っているため、少し幅を持って探してください。" },
-    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Fujisawa", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
+    ja: { name: "プチプチの看板", area: "新横浜 → 小田原（大磯町付近）", hook: "プチプチ®の川上産業。", story: "新横浜から小田原へ向かう途中、A席側に見える、プチプチ®で知られる川上産業の看板です。現在は「私は誰でしょう」と問いかけるコピーとQRコードを掲げています。隣には727 COSMETICS看板も立っているため、少し幅を持って探してください。" },
+    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Oiso", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     pageTitle: {
       ja: "プチプチの看板｜「私は誰でしょう？」が新幹線から見える場所と席側 | 新幹線の窓",
       en: "Who am I? Sign: A Mystery Shinkansen Billboard | Shinkansen Window",
@@ -1117,15 +1117,15 @@ const SPOTS = [
     },
     metaDescription: {
       ja: "新幹線から見える川上産業のプチプチ®看板を案内。現在の表示は「私は誰でしょう？」。藤沢市付近のA席側にあり、2026年10月1日付の「プチプチ株式会社」への社名変更も紹介します。",
-      en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Fujisawa. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
+      en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Oiso. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
     },
     sectionHeading: {
       ja: "プチプチの看板とは？",
       en: "What is the 'Who am I?' sign?",
     },
     pageStory: {
-      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、藤沢市葛原の農地に立つ、プチプチ®で知られる川上産業株式会社の広告です。以前は水色の気泡のイラストと商品名を大きく掲げていましたが、2025年頃から「私は誰でしょう」というコピーとQRコードだけのデザインに変わりました。川上産業は2026年10月1日付で社名を「プチプチ株式会社」へ変更すると発表しており、この看板は社名変更前後のブランドの変化も感じられる車窓になっています。",
-      en: "This billboard is one of several roadside signs standing on farmland at Kuzuhara in Fujisawa, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? The company has also published an official notice about a company-name change, so the billboard may receive a new design to match.",
+      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、大磯町寺坂の農地に立つ、プチプチ®で知られる川上産業株式会社の広告です。以前は水色の気泡のイラストと商品名を大きく掲げていましたが、2025年頃から「私は誰でしょう」というコピーとQRコードだけのデザインに変わりました。川上産業は2026年10月1日付で社名を「プチプチ株式会社」へ変更すると発表しており、この看板は社名変更前後のブランドの変化も感じられる車窓になっています。",
+      en: "This billboard is one of several roadside signs standing on farmland at Terasaka in Oiso, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? The company has also published an official notice about a company-name change, so the billboard may receive a new design to match.",
     },
     explainer: {
       heading: { ja: "背景と楽しみ方", en: "The backstory and how to enjoy it" },
@@ -1142,8 +1142,8 @@ const SPOTS = [
       ],
     },
     guideHighlight: {
-      ja: "新横浜を過ぎて藤沢市葛原付近に入ったら、A席側の田園の中を意識してください。「私は誰でしょう」と大きく書かれた白い看板と、右上にQRコードが並ぶ、少し不思議な広告が短い時間だけ現れます。同時にE席側では727看板と248看板も見え、この一帯は「沿線広告銀座」のような場所になっています。",
-      en: "After Shin-Yokohama, as the train enters the Kuzuhara area of Fujisawa, watch the farmland on the Seat A side. A white sign that reads 'Who am I?' in large Japanese, with a QR code in the upper right, appears briefly. At almost the same moment, the 727 and 248 signs appear on the Seat E side — the area is something of a 'trackside billboard alley.'",
+      ja: "相模川を渡り、E席側の丘に日向岡のカラフルな三角屋根が見えたら、すぐにA席側の田園の中を意識してください。「私は誰でしょう」と大きく書かれた白い看板と、右上にQRコードが並ぶ、少し不思議な広告が短い時間だけ現れます。すぐ隣には、おなじみの白い727 COSMETICS看板も立っています。",
+      en: "After crossing the Sagami River, once the colorful triangular roofs of Hinataoka appear on the hillside on the Seat E side, turn straight to the farmland on the Seat A side. A white sign that reads 'Who am I?' in large Japanese, with a QR code in the upper right, appears briefly. The familiar white 727 COSMETICS sign stands right beside it.",
     },
     minutesFromTokyo: 27.5, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260704_putiputi_sign_2_michikusa.jpg",
