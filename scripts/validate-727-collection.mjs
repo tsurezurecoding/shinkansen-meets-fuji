@@ -80,6 +80,12 @@ const minutesOf = (sourceNo) => collection.find((point) => point.sourceNo === so
 assert.ok(minutesOf(19) < minutesOf(20) && minutesOf(20) <= minutesOf(21) && minutesOf(21) < minutesOf(22), "Kuzuhara must precede Yoda, and Yoda must precede Terasaka, along the track");
 assert.equal(spots.find((spot) => spot.id === "727-board")?.minutesFromTokyo, minutesOf(19), "248 spot must share the Kuzuhara collection time");
 assert.ok(spots.find((spot) => spot.id === "727-board")?.minutesFromTokyo < spots.find((spot) => spot.id === "727-sign")?.minutesFromTokyo, "248 (Kuzuhara) must come before the Yoda 727 spot");
+const spotMinutes = (id) => spots.find((spot) => spot.id === id)?.minutesFromTokyo;
+assert.ok(spotMinutes("hinataoka") < spotMinutes("putiputi-sign") && spotMinutes("putiputi-sign") - spotMinutes("hinataoka") < 1, "putiputi must follow Hinataoka by less than a minute");
+assert.equal(spotMinutes("putiputi-sign"), minutesOf(22), "putiputi spot and the Terasaka collection point must share one time");
+assertIncludes(spots.find((spot) => spot.id === "727-sign")?.ja?.story || "", "用田付近では、A席側に続けて現れます", "the 727 modal must say the Yoda signs continue on Seat A");
+assert.ok((spots.find((spot) => spot.id === "727-sign")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos belong to the 727 spot");
+assert.ok(!(spots.find((spot) => spot.id === "727-board")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos must not stay on the 248 page");
 assert.ok(!app.includes("representative.minutesFromTokyo"), "Yoda pair must not borrow the Kuzuhara representative time");
 assertIncludes(app, "function timeline727Order", "TOP must keep deterministic representative/Yoda order");
 assertIncludes(app, 'image: "images/stamps/stamp_727-board.svg"', "TOP no-photo visual must use SVG fallback");
