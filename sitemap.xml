@@ -547,6 +547,30 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/spots/nonhoi-park-wheel.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/nonhoi-park-wheel.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/spots/laguna-wheel.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/laguna-wheel.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/spots/mikawa-oshima.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
@@ -554,6 +578,18 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/spots/mikawa-oshima.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/spots/horiuchi-park-wheel.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/horiuchi-park-wheel.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
