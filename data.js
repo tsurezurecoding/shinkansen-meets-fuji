@@ -5049,6 +5049,17 @@ const BOARD_COLLECTION_NAMES = Object.freeze({
   44: { collection: "高槻市唐崎南", public: "727看板（高槻市唐崎南）" },
   45: { collection: "摂津市鳥飼八町", public: "727看板（摂津市鳥飼八町）" },
 });
+// 英語のalt。日本語の原文（「A席側から見える〜の727看板」）と同じ内容を、
+// 地名と席側から組み立てる。地点ごとに英文を書き分ける情報は持っていない。
+function boardCollectionAltEn(item) {
+  if (!item.photo) return "";
+  const seat = item.side === "A" ? "Seat A" : "Seat E";
+  const subject = item.collectionKind === "companion"
+    ? (item.guidePageId === "putiputi-sign" ? "the 'Who am I?' sign" : "the 248 sign")
+    : `the 727 sign at ${item.en}`;
+  return `A window photograph of ${subject}, taken from the ${seat} side.`;
+}
+
 const BOARD_COLLECTION = [
   { sourceNo: 19, id: "727-no-19", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 23, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
   { sourceNo: 20, id: "727-no-20", collectionNote: "となりにはきぬた歯科", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.406712, lng: 139.410831, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg", alt: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影" }, collectionPhotos: [{ src: "images/20260629_727_board_2_2x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
@@ -5094,7 +5105,7 @@ const BOARD_COLLECTION = [
   sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
   map: { lat: item.lat, lng: item.lng, ja: names.public, en: item.en },
   image: item.photo?.src || "images/stamps/stamp_727-board.svg",
-  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: item.photo.alt }, credit: { ja: "michikusa", en: "michikusa" }, date: (item.photo.note.match(/\d{4}-\d{2}-\d{2}/) || ["2026-07-04"])[0], note: { ja: item.photo.note, en: item.photo.note } }] : [],
+  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: boardCollectionAltEn(item) }, credit: { ja: "michikusa", en: "michikusa" }, date: (item.photo.note.match(/\d{4}-\d{2}-\d{2}/) || ["2026-07-04"])[0], note: { ja: item.photo.note, en: item.photo.note } }] : [],
   ja: {
     name: names.public,
     area: "東海道沿線",
@@ -5104,12 +5115,49 @@ const BOARD_COLLECTION = [
       : "727は大阪の化粧品メーカー、セブンツーセブンの沿線看板です。車窓では一瞬だけ現れるため、少し早めに窓の外を見てください。",
   },
   en: {
-    name: item.en,
+    name: item.collectionKind === "companion" ? item.en : `727 sign · ${item.en}`,
     area: "Tokaido corridor",
-    hook: item.sourceNo === 19 ? "Representative point beside 248" : "A corridor reference point",
-    story: item.sourceNo === 19
-      ? "The representative point around Kuzuhara. The yellow 248 sign appears in the same view, with the nearby 'Who am I?' sign in the same stretch."
-      : "A collection point based on the source map location. Signs may be relocated, removed or obscured by buildings or weather.",
+    hook: item.collectionKind === "companion"
+      ? (item.guidePageId === "putiputi-sign" ? "The 'Who am I?' sign by the line." : "The 248 sign that stands beside 727.")
+      : "Gone in a blink, beside the line.",
+    story: item.collectionKind === "companion"
+      ? "A trackside sign you can find from the representative point."
+      : item.sourceNo === 19
+        ? "The representative point near Kuzuhara. The yellow 248 sign shares the same view, and the 'Who am I?' sign stands in the same stretch."
+        : "One of the roadside billboards for 727, a cosmetics maker in Osaka. It crosses the window in about two seconds, so start watching a little early. Signs may be relocated, removed or hidden by buildings or weather.",
   },
   });
 });
+
+// 観覧車コレクションの台帳。727看板と同じく、代表スポット1件（ひらかたパークの観覧車）と
+// コレクション地点に分ける。通常スポットを愛知に3件並べると同じ形のカードが続くため、
+// 乗車ガイドでは既定で代表だけを出し、トグルで全基を割り込ませる（2026-09-18会長判断）。
+// 分数・席側・線路からの距離は generate-ferris-wheel-page.mjs が線路ポリラインへ投影して
+// 検算する。ここの宣言値と食い違えば生成が止まる。
+const WHEEL_COLLECTION = [
+  {"id":"nonhoi","stampId":"ferris-wheel-nonhoi","minutesFromTokyo":77,"side":"A","lat":34.72111,"lng":137.43194,"confidence":"verified","durationSec":8,"name":{"ja":"のんほいパーク","en":"Nonhoi Park"},"area":{"ja":"浜松 → 豊橋","en":"Hamamatsu → Toyohashi"},"hook":{"ja":"豊橋の手前で、ひとつ","en":"A wheel before Toyohashi"},"body":{"ja":"豊橋に着く手前、A席側。住宅や工場の屋根の向こうに、白い輪が立っています。曇りの日でも空を背にするので、形は見分けられます。","en":"Just before Toyohashi, on the Seat A side, a white wheel stands beyond the roofs of houses and factories. It sits against the sky, so its shape reads even on a cloudy day."},"photo":{"src":"images/20260904_nonhoi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるのんほいパークの観覧車","en":"The Nonhoi Park wheel seen from the Seat A side"},"caption":{"ja":"家並みと鉄塔の向こうに立つ輪 / 写真：新幹線の窓","en":"The wheel beyond houses and pylons / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.nonhoi.jp/amusement/"},
+  {"id":"laguna","stampId":"ferris-wheel-laguna","minutesFromTokyo":82,"side":"A","lat":34.807722,"lng":137.27583,"confidence":"verified","durationSec":12,"name":{"ja":"ラグーナテンボス","en":"Laguna Ten Bosch"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"海辺の街に、輪を探す","en":"Look toward the coastal town"},"body":{"ja":"蒲郡の海辺にあるラグーナテンボスの観覧車。A席側、集合住宅や畑の向こうに白い輪が立っています。まわりの建物より高く出るので、遠くても見分けやすい輪です。","en":"The wheel at Laguna Ten Bosch stands in coastal Gamagori. On the Seat A side it rises white beyond apartment blocks and fields; it stands taller than the buildings around it, so it is easier to pick out than its distance suggests."},"photo":{"src":"images/20260820_laguna_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるラグーナテンボスの観覧車","en":"The Laguna Ten Bosch wheel seen from the Seat A side"},"caption":{"ja":"街並みの向こうに立つ白い輪 / 写真：新幹線の窓","en":"A white wheel beyond the town / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.lagunatenbosch.co.jp/lagunasia/index.html"},
+  {"id":"horiuchi","stampId":"ferris-wheel-horiuchi","minutesFromTokyo":87,"side":"A","lat":34.9288139,"lng":137.0912944,"confidence":"verified","durationSec":5,"name":{"ja":"堀内公園","en":"Horiuchi Park"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"公園の輪も、車窓の仲間","en":"A park wheel joins the journey"},"body":{"ja":"安城市の堀内公園にも観覧車があります。三河安城の手前、A席側の住宅地の奥に小さく見えます。ラグーナの輪より低く、建物に紛れやすい輪です。","en":"Horiuchi Park in Anjo has a Ferris wheel too. It appears small beyond the houses on the Seat A side before Mikawa-Anjo. Lower than the Laguna wheel, it blends easily into the buildings."},"photo":{"src":"images/20260820_horiuchi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見える堀内公園の観覧車","en":"The Horiuchi Park wheel seen from the Seat A side"},"caption":{"ja":"住宅地の奥に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel beyond the houses / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.city.anjo.aichi.jp/tanoshimu/koen/horiuchi.html"},
+  {"id":"nagoya-port","stampId":"ferris-wheel-nagoya-port","minutesFromTokyo":93,"side":"A","lat":35.0935778,"lng":136.8782056,"confidence":"source-backed","durationSec":6,"name":{"ja":"名古屋港シートレインランド","en":"Nagoya Port Sea Train Land"},"area":{"ja":"三河安城 → 名古屋","en":"Mikawa-Anjo → Nagoya"},"hook":{"ja":"ずっと遠くに、小さな輪","en":"A tiny ring in the distance"},"body":{"ja":"堀川を渡るあたり、A席側のビルの隙間に、輪郭だけの小さな輪が現れます。6基でいちばん遠く、肉眼では見つけにくい対象です。上りは名古屋を出てすぐ。朝焼けや夜のライトアップの時間帯が見つけやすく、昼は逆光になりやすいと紹介されています。","en":"Around the Horikawa River, a faint outline of a wheel appears between buildings on the Seat A side. It is the most distant of the six and hard to catch with the naked eye. On Tokyo-bound trains it comes just after Nagoya. Accounts suggest dawn light or the evening illumination make it easier to find, while daytime tends to be backlit."},"photo":{"src":"images/20250623_nagoya_port_wheel_letus10.jpg","width":960,"height":720,"alt":{"ja":"新幹線のA席側から遠くに見える名古屋港の観覧車","en":"The distant Nagoya Port wheel seen from the Seat A side"},"caption":{"ja":"左奥、街並みの上にかすかに見える輪 / 写真：新幹線の車窓から","en":"A faint ring above the rooftops at the left / Photo: Shinkansen no Shaso kara"},"credit":{"ja":"新幹線の車窓から","en":"Shinkansen no Shaso kara"},"creditUrl":"https://cotetu.seesaa.net/article/516568359.html"},"source":"https://cotetu.seesaa.net/article/516568359.html","sourceName":{"ja":"新幹線の車窓から 115","en":"新幹線の車窓から 115 (Japanese)"},"reference":"https://ameblo.jp/new-nagoyan/entry-12811240802.html","referenceName":{"ja":"参考：なごやんの旅日記「車窓の観覧車⑥ 名古屋港シートレインランド」","en":"Further reading: a blog account of this wheel from the window (Japanese)"},"official":"https://www.city.nagoya.jp/minato/miryoku/1023507/1036753/1023513.html"},
+  {"id":"hirakata","stampId":"hirakata-park-wheel","minutesFromTokyo":139,"side":"A","lat":34.8075,"lng":135.6385,"confidence":"verified","durationSec":10,"name":{"ja":"ひらかたパーク","en":"Hirakata Park"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"淀川の向こうに、ひらパー","en":"Across the Yodo River"},"body":{"ja":"淀川の対岸に見える「スカイウォーカー」。街並みと鉄塔の中に、小さな輪がひとつ。夜は光る輪が、暗い対岸にぽつんと浮かびます。","en":"Sky Walker appears across the Yodo River: a small ring among buildings and pylons. At night, the lit wheel floats alone on the dark far bank."},"photo":{"src":"images/20260824_hirakata_park_wheel_michikusa.jpg","alt":{"ja":"夕暮れの新幹線から見えるひらかたパークの観覧車","en":"The Hirakata Park wheel at dusk, seen from the Shinkansen"},"caption":{"ja":"夕暮れに光りはじめたスカイウォーカー / 写真：新幹線の窓","en":"Sky Walker lighting up at dusk / Photo: Shinkansen Window"}},"official":"https://www.hirakatapark.co.jp/attractions/skywalker/"},
+  {"id":"osaka-wheel","stampId":"ferris-wheel-osaka-wheel","minutesFromTokyo":143,"side":"E","lat":34.80625,"lng":135.53475,"confidence":"source-backed","durationSec":8,"name":{"ja":"エキスポシティの観覧車（OSAKA WHEEL）","en":"OSAKA WHEEL at EXPOCITY"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"最後の輪は、反対の窓に","en":"One more wheel, on the other side"},"body":{"ja":"万博記念公園のとなり、EXPOCITYに立つ日本一の高さの観覧車です。6基のうちこれだけがE席側。ブログ『ずっしー。』は車窓写真に矢印を添えて位置を示し、昼より夜のほうがライトアップで遠くからも見つけやすいと書いています。横から見るぶん輪は細く、建物に隠れることもあります。","en":"Japan’s tallest Ferris wheel stands at EXPOCITY, next to the Expo park. It is the only one of the six on the Seat E side. The blog Zusshi marks its position with an arrow on a window photograph and notes it is easier to find lit up at night than by day. Seen edge-on the wheel looks narrow, and buildings can hide it."},"photo":{"src":"images/20160904_osaka_wheel_zusshi.jpg","width":800,"height":600,"alt":{"ja":"矢印の先に小さく見えるエキスポシティの観覧車","en":"An arrow marking the distant EXPOCITY wheel"},"caption":{"ja":"矢印の先、街並みの向こうに立つ輪 / 写真：ずっしー。","en":"The wheel beyond the rooftops, at the arrow / Photo: Zusshi"},"credit":{"ja":"ずっしー。","en":"Zusshi"},"creditUrl":"https://ameblo.jp/ginga03142008/entry-12194686170.html"},"source":"https://ameblo.jp/ginga03142008/entry-12194686170.html","sourceName":{"ja":"ずっしー。「新幹線から観覧車見えました！」","en":"Zusshi, “I saw the Ferris wheel from the Shinkansen” (Japanese)"},"official":"https://osaka-wheel.com/","seatSource":"https://www.city.suita.osaka.jp/_res/projects/default_project/_page_/001/035/005/HP2/R6_07_tanpage.pdf","seatSourceName":{"ja":"席側の裏付け：市報すいた 2024年7月号・8ページ","en":"Seat side confirmed by Suita City newsletter, July 2024, p. 8 (Japanese PDF)"}},
+].map((item) => ({
+  ...item,
+  icon: "🎡",
+  collectionKind: "wheel",
+  // 代表のひらかたパークは通常スポットなので、コレクション側の地点としては扱わない。
+  isWheelCollection: item.stampId !== "hirakata-park-wheel",
+  guidePageId: "hirakata-park-wheel",
+  guideRoute: { ja: "ferris-wheels.html", en: "en/ferris-wheels.html" },
+  category: "notable",
+  timeOfDay: "day",
+  scene: "solar",
+  visibleWhenCloudy: true,
+  stampAssetId: item.stampId,
+  sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
+  map: { lat: item.lat, lng: item.lng, ja: item.name.ja, en: item.name.en },
+  image: item.photo?.src || "images/stamps/stamp_hirakata-park-wheel.svg",
+  photos: item.photo ? [{ src: item.photo.src, alt: item.photo.alt, credit: item.photo.credit || { ja: "michikusa", en: "michikusa" }, note: item.photo.caption }] : [],
+  ja: { name: item.name.ja, area: item.area.ja, hook: item.hook.ja, story: item.body.ja },
+  en: { name: item.name.en, area: item.area.en, hook: item.hook.en, story: item.body.en },
+}));
