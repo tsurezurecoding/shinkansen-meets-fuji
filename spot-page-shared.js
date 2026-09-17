@@ -90,6 +90,8 @@
       railHanabiBody: "Festivals along the line, and posts from people who saw them",
       railYakeiTitle: "Night views from the window",
       railYakeiBody: "Find where your train goes dark, and what only shows after it",
+      rail727Title: "The 727 sign collection",
+      rail727Body: function (count) { return "All " + count + " locations between Tokyo and Shin-Osaka"; },
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -236,8 +238,7 @@
     // en:false で言語スイッチャーごと隠す（対応する日本語URLが存在しない）。
     "jr-pass-fuji.html": { en: false },
     "besides-fuji.html": { en: false },
-    // 英語版が同名ミラーではなく既存の解説ページにあるため、パスを文字列で指定する。
-    "727-collection.html": { en: "en/spots/727-board.html" }
+    "727-collection.html": { en: true }
   };
 
   function siteHeaderHTML(rootPath, lang, currentId, utilityRoute, utilityHasAlternate) {
@@ -367,7 +368,7 @@
     if (currentRoute !== "sparkling-dreams.html") out += railDisneyHTML(rootPath, lang);
     if (currentRoute !== "hanabi.html") out += railHanabiHTML(rootPath, lang);
     if (currentRoute !== "yakei.html") out += railYakeiHTML(rootPath, lang);
-    if (lang === "ja" && currentRoute !== "727-collection.html") out += rail727HTML(rootPath, count727);
+    if (currentRoute !== "727-collection.html") out += rail727HTML(rootPath, lang, count727);
     return out;
   }
 
@@ -400,9 +401,9 @@
     return "<div class=\"spot-page-rail-disney spot-page-rail-yakei\"><a href=\"" + escapeHTML(href(base, "yakei.html")) + "\" data-cta-track=\"yakei_entry_click\" data-cta-id=\"spot_rail_yakei\"><img src=\"" + escapeHTML(href(rootPath, "images/yakei-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railYakeiTitle) + "</strong><small>" + escapeHTML(ui.railYakeiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
-  function rail727HTML(rootPath, count) {
-    var ui = UI.ja;
-    return "<div class=\"spot-page-rail-disney spot-page-rail-727\"><a href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\" data-cta-track=\"727_collection_entry_click\" data-cta-id=\"spot_rail_727\"><img src=\"" + escapeHTML(href(rootPath, "images/stamps/stamp_727-board.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.rail727Title) + "</strong><small>" + escapeHTML(ui.rail727Body(count)) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  function rail727HTML(rootPath, lang, count) {
+    var ui = UI[lang] || UI.ja;
+    return "<div class=\"spot-page-rail-disney spot-page-rail-727\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), "727-collection.html")) + "\" data-cta-track=\"727_collection_entry_click\" data-cta-id=\"spot_rail_727\"><img src=\"" + escapeHTML(href(rootPath, "images/stamps/stamp_727-board.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.rail727Title) + "</strong><small>" + escapeHTML(ui.rail727Body(count)) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {

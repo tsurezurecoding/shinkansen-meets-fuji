@@ -70,6 +70,7 @@ const contentFiles = [
   "style.css",
   "chrome.css",
   "727-collection.html",
+  "en/727-collection.html",
   "727-collection.js",
   "images/og-727-collection.jpg",
   "images/og-jr-pass-fuji.jpg",

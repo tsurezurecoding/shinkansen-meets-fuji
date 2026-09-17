@@ -115,7 +115,14 @@ assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board p
 assertIncludes(read("spots/putiputi-sign.html"), "spot-page-shared.js", "putiputi page must load shared CTA renderer");
 
 assertIncludes(page, `全${collectableCount}地点`, `page must show the collectable total ${collectableCount}`);
-assertIncludes(shared, '"727-collection.html": { en: "en/spots/727-board.html" }', "English switch must lead to the existing 727 and 248 signs guide");
+assertIncludes(shared, '"727-collection.html": { en: true }', "English switch must lead to the English collection page");
+const englishPage = read("en/727-collection.html");
+assertIncludes(englishPage, '<html lang="en">', "English collection page must declare its language");
+assertIncludes(englishPage, 'data-spot-page-shared-lang="en" data-spot-page-shared-root="../"', "English collection page must use the English shared chrome at the /en/ root");
+assertIncludes(englishPage, 'href="https://www.michikusa-travel.com/en/727-collection.html"', "English collection page must be its own canonical");
+assertIncludes(englishPage, 'src="../727-collection.js', "English collection page must load the shared collection script from the site root");
+const englishProse = englishPage.replace(/https?:\/\/[^"'<>\s]+/g, "");
+assert.ok(!/[\u3040-\u309f\u30a0-\u30ff\u4e00-\u9faf]/.test(englishProse), "English collection page must not contain Japanese copy outside URLs");
 assertIncludes(page, 'data-spot-page-shared-module="topbar"', "collection page must use the shared topbar so the rail context is valid");
 assert.ok(!page.includes("全体地図に戻る") && !page.includes("data-map-reset"), "reset button must be removed");
 assertIncludes(page, "をっつん「新幹線から見える『727看板』の設置場所はどこか」", "note attribution missing");

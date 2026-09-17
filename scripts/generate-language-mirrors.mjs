@@ -79,8 +79,7 @@ function localizeEnglishRail(html) {
   result = result
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
     .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=')
-    // 727-collection.html は日本語のみ。英語版はスポットページへ案内する。
-    .replaceAll('href="727-collection.html"', 'href="en/spots/727-board.html"');
+    .replaceAll('href="727-collection.html"', 'href="en/727-collection.html"');
   return result;
 }
 

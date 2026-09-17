@@ -87,9 +87,15 @@ async function runThinValidator() {
 
   // 727カードの本文は地点数を含む。件数の正本は生成ペイロードなので、
   // 期待HTMLもそこから組む。文言だけ変わったときに凍結literalが腐るのを避ける。
-  function rail727CardHTML(prefix) {
-    const body = `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
-    return `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${prefix}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>727看板コレクション</strong><small>${body}</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
+  // 2026-09-18に英語版 en/727-collection.html を追加した。カードは日英どちらにも出る。
+  // hrefは言語のbase（英語は <root>en/）から解決する。
+  function rail727CardHTML(prefix, lang = "ja") {
+    const base = lang === "en" ? `${prefix}en/` : prefix;
+    const title = lang === "en" ? "The 727 sign collection" : "727看板コレクション";
+    const body = lang === "en"
+      ? `All ${payload.collection727Count} locations between Tokyo and Shin-Osaka`
+      : `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
+    return `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${base}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>${title}</strong><small>${body}</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
   }
 
   function safeAsset(value) {
@@ -341,11 +347,10 @@ async function runThinValidator() {
       const desktopRailEnd = desktopRailStart >= 0 ? output.indexOf("</aside>", desktopRailStart) : -1;
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
-      if (lang === "ja") {
-        const expected727Card = rail727CardHTML(prefix);
-        if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 1 || !desktopRail.includes(expected727Card)) fail(`${relativeFile} Japanese shared rail must contain exactly one complete 727 Collection card`);
-      } else if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 0 || output.includes("727看板コレクション")) {
-        fail(`${relativeFile} English shared rail must not contain a 727 Collection card`);
+      {
+        const expected727Card = rail727CardHTML(prefix, lang);
+        if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 1 || !desktopRail.includes(expected727Card)) fail(`${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail must contain exactly one complete 727 Collection card`);
+        if (lang === "en" && output.includes("727看板コレクション")) fail(`${relativeFile} English shared rail must not carry the Japanese 727 label`);
       }
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
@@ -386,7 +391,10 @@ async function runThinValidator() {
 
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
-    if (englishUtility.hosts.rail.outerHTML.includes('data-cta-id="spot_rail_727"') || englishUtility.hosts.rail.outerHTML.includes("727看板コレクション") || englishUtility.hosts["mobile-promos"].outerHTML.includes('data-cta-id="spot_rail_727"') || englishUtility.hosts["mobile-promos"].outerHTML.includes("727看板コレクション")) fail(`English utility ${route} rail or mobile promos must not contain the 727 Collection card`);
+    const expectedEnglishUtility727Card = rail727CardHTML("../", "en");
+    const hasEnglish727Card = (host) => count(host.outerHTML, /data-cta-id="spot_rail_727"/g) === expected727Count && (expected727Count === 0 || host.outerHTML.includes(expectedEnglishUtility727Card));
+    if (!hasEnglish727Card(englishUtility.hosts.rail) || !hasEnglish727Card(englishUtility.hosts["mobile-promos"])) fail(`English utility ${route} rail and mobile promos must each contain ${expected727Count} complete 727 Collection card(s)`);
+    if (englishUtility.hosts.rail.outerHTML.includes("727看板コレクション") || englishUtility.hosts["mobile-promos"].outerHTML.includes("727看板コレクション")) fail(`English utility ${route} must not carry the Japanese 727 label`);
   }
 
   const reps = [

@@ -2051,7 +2051,7 @@ function englishGuideIndexHTML() {
 
 function localizeEnglishInternalLinks(html) {
   const directRoutes = [
-    ["href=\"727-collection.html\"", "href=\"en/zukan.html?filter=sign#gallery\""],
+    ["href=\"727-collection.html\"", "href=\"en/727-collection.html\""],
     ["href=\"index.html\"", "href=\"en/\""],
     ["href=\"start.html#journey\"", "href=\"en/start.html#journey\""],
     ["href=\"start.html\"", "href=\"en/start.html\""],
@@ -2536,7 +2536,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
-    { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-15" },
+    { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
+    { loc: `${siteRoot}/en/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
     { loc: `${siteRoot}/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/en/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-16" },
