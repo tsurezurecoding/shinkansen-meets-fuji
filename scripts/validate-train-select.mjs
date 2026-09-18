@@ -73,9 +73,24 @@ if (stops.length >= 2) {
   if (interpolated < lo || interpolated > hi) fail("interpolateSpot returned a clock outside the bounding stops");
 }
 
+// 着時刻を持つ列車では、停車駅上の基準分数が着時刻になり、次の区間は発から始まること
+{
+  const withArrivals = TT.trains.find((tr) => tr.arrivals && Object.keys(tr.arrivals).length >= 2);
+  if (withArrivals) {
+    const s = MTS.tokaidoStops(ROUTE, withArrivals);
+    const mid = s.findIndex((st, i) => i > 0 && i < s.length - 1 && st.arr < st.clock);
+    if (mid > 0) {
+      const at = MTS.interpolateSpot(s[mid].ref, s);
+      if (at !== s[mid].arr) fail(`interpolateSpot at a stopping station should give its arrival (${s[mid].id}: got ${at}, want ${s[mid].arr})`);
+      const after = MTS.interpolateSpot((s[mid].ref + s[mid + 1].ref) / 2, s);
+      if (after < s[mid].clock || after > s[mid + 1].arr) fail(`interpolateSpot after ${s[mid].id} should run from its departure to the next arrival`);
+    }
+  }
+}
+
 // ---- 3. アルゴリズム本体の二重実装ガード ----
 // interpolateSpot の中核行(線形補間の丸め込み)は train-select.js だけに存在するはず。
-const CORE_LINE = "Math.round(a.clock + f * (b.clock - a.clock))";
+const CORE_LINE = "Math.round(a.clock + f * (bArr - a.clock))";
 const appJsSrc = await readFile(rel("app.js"), "utf8");
 const mieruSrc = await readFile(rel("mieru.html"), "utf8");
 if (appJsSrc.includes(CORE_LINE)) {

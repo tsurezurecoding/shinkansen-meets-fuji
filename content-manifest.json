@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "a96295ad16a121ff",
+  "contentVersion": "f4398bdb23627143",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -79,8 +79,8 @@
     {
       "path": "data/timetable.js",
       "url": "https://www.michikusa-travel.com/data/timetable.js",
-      "bytes": 292588,
-      "sha256": "18fb2a089782d731f6966154a10454598807de16c87f842241ded1d815adf994"
+      "bytes": 423220,
+      "sha256": "5c23712ff46af6323ade894b6257807c5d581dadcba38a5c79145c95697b96f6"
     },
     {
       "path": "en/727-collection.html",
@@ -116,7 +116,7 @@
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 27405,
-      "sha256": "44deb2342efcd4968faa5b9c2d40da2c76c56386584ab34856d601fad1a50102"
+      "sha256": "fa06bfcbec72fdd731c3fea68204acfedb7198adad85e5bed9635695001913a4"
     },
     {
       "path": "en/yakei.html",
@@ -314,7 +314,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 19755,
-      "sha256": "720195687c4fb0441f2aa4be802bd5dac68440bf46e9292196f0bdf6434b4d06"
+      "sha256": "92dfdd229c76542917fa87c3aa7a2bd9aa24116ef8a2687766a73c1f57247d1c"
     },
     {
       "path": "live/narration.js",
@@ -326,7 +326,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 30222,
-      "sha256": "a6d07b0c0038de66ab54f3a7e29184740a330efa182dc105e33017ada7c63cd0"
+      "sha256": "53a2f89d78c3f415639a426af6da104b53ab1310a7a8051cae0a403663be9ef6"
     },
     {
       "path": "sparkling-dreams.js",
@@ -355,8 +355,8 @@
     {
       "path": "train-select.js",
       "url": "https://www.michikusa-travel.com/train-select.js",
-      "bytes": 3252,
-      "sha256": "ddf609c7eb9ff21f2326d854fb6d078c1aa9d67fcb8228c27cf0b63f787312ca"
+      "bytes": 3842,
+      "sha256": "a2a205240c1530510fe1bb12b431360257d16ddfaea6f9b4cbf4a7e31f2044bb"
     },
     {
       "path": "vendor/leaflet/images/layers-2x.png",

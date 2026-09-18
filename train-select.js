@@ -21,24 +21,30 @@
     return (+p[0]) * 60 + (+p[1]);
   }
 
-  /* 列車の東海道区間の停車駅（時刻順） */
+  /* 列車の東海道区間の停車駅（時刻順）。
+   * clock は発時刻（終着は着時刻）。arr は途中停車駅の着時刻で、時刻表に無ければ clock と同じ。 */
   function tokaidoStops(route, train) {
+    var arrivals = train.arrivals || {};
     return route.refStations
       .filter(function (s) { return train.times[s.id]; })
       .map(function (s) {
-        return { id: s.id, ja: s.ja, en: s.en, ref: s.min, clock: toMin(train.times[s.id]) };
+        var clock = toMin(train.times[s.id]);
+        return { id: s.id, ja: s.ja, en: s.en, ref: s.min, clock: clock, arr: arrivals[s.id] ? toMin(arrivals[s.id]) : clock };
       })
       .sort(function (a, b) { return a.clock - b.clock; });
   }
 
-  /* 実ダイヤ補間: スポットの基準分数を、前後の停車駅時刻で線形補間する */
+  /* 実ダイヤ補間: スポットの基準分数を、前駅の発から次駅の着までで線形補間する。
+   * 2026-09-19: 発時刻どうしで補間すると、こだま・ひかりの途中停車（1〜6分）が駅間の走行へ
+   * 按分され、通過予測が最大5分遅れていた（実走7便で確認）。停車駅上のスポットは着時刻になる。 */
   function interpolateSpot(spotRef, stops) {
     for (var i = 0; i < stops.length - 1; i++) {
       var a = stops[i], b = stops[i + 1];
       var lo = Math.min(a.ref, b.ref), hi = Math.max(a.ref, b.ref);
       if (spotRef >= lo && spotRef <= hi && a.ref !== b.ref) {
         var f = Math.abs(spotRef - a.ref) / Math.abs(b.ref - a.ref);
-        return Math.round(a.clock + f * (b.clock - a.clock));
+        var bArr = b.arr != null ? b.arr : b.clock;
+        return Math.round(a.clock + f * (bArr - a.clock));
       }
     }
     return null;
