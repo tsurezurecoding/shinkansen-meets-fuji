@@ -47,6 +47,30 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 // 1ページの表示で落ちてくる量の上限。分割前の data.js は531 KBだった。
 export const RUNTIME_DATA_BYTE_BUDGET = 320 * 1024;
 
+// 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
+// タイムラインは ja / en の name・area・hook・story しか使わない。
+export const BUILD_ONLY_WHEEL_FIELDS = [
+  "body",
+  "official",
+  "reference",
+  "referenceName",
+  "seatSource",
+  "seatSourceName",
+  "source",
+  "sourceName",
+  // ja.story / en.story に展開済みなので、元の story は送らない。
+  "story",
+];
+
+export function runtimeWheel(wheel) {
+  const out = {};
+  for (const key of Object.keys(wheel)) {
+    if (BUILD_ONLY_WHEEL_FIELDS.includes(key)) continue;
+    out[key] = wheel[key];
+  }
+  return out;
+}
+
 export function runtimeSpot(spot) {
   const out = {};
   for (const key of Object.keys(spot)) {
@@ -59,10 +83,10 @@ export function runtimeSpot(spot) {
 export function readSource() {
   const context = {};
   const code = fs.readFileSync(dataPath, "utf8");
-  vm.runInNewContext(`${code}\nglobalThis.__SOURCE = { SPOTS, ROUTE, BOARD_COLLECTION };`, context, { filename: dataPath });
+  vm.runInNewContext(`${code}\nglobalThis.__SOURCE = { SPOTS, ROUTE, BOARD_COLLECTION, WHEEL_COLLECTION };`, context, { filename: dataPath });
   const source = context.__SOURCE;
-  if (!source || !Array.isArray(source.SPOTS) || !source.ROUTE || !Array.isArray(source.BOARD_COLLECTION)) {
-    throw new Error("Could not read SPOTS, ROUTE and BOARD_COLLECTION from data.js");
+  if (!source || !Array.isArray(source.SPOTS) || !source.ROUTE || !Array.isArray(source.BOARD_COLLECTION) || !Array.isArray(source.WHEEL_COLLECTION)) {
+    throw new Error("Could not read SPOTS, ROUTE, BOARD_COLLECTION and WHEEL_COLLECTION from data.js");
   }
   return source;
 }
@@ -78,6 +102,7 @@ export function runtimeDataCode(source) {
     `const SPOTS = ${JSON.stringify(spots)};`,
     `const ROUTE = ${JSON.stringify(source.ROUTE)};`,
     `const BOARD_COLLECTION = ${JSON.stringify(source.BOARD_COLLECTION)};`,
+    `const WHEEL_COLLECTION = ${JSON.stringify(source.WHEEL_COLLECTION.map(runtimeWheel))};`,
     "",
   ].join("\n");
 }

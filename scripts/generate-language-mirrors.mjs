@@ -30,6 +30,8 @@ function localizeEnglishRail(html) {
     ["一度きりの車窓", "Weather Seen from the Shinkansen"],
     ['<span class="copy-chunk">虹、雪、雲、雷。</span><span class="copy-chunk">その日だけの空に出会う。</span>', "Rainbows, snow, clouds and lightning: skies that happen only once."],
     ["新幹線から見える城", "Castles from the Shinkansen"],
+    ["特集から探す", "Browse features"],
+    ["車窓一覧を見る", "See all views"],
     ['<span class="copy-chunk">天守と城跡を、</span><span class="copy-chunk">車窓の写真でめぐる。</span>', "Explore keeps and castle hills in window photographs."],
     ["車窓メダル帖", "Window Medal Book"],
     ["新幹線の窓とは？", "About Shinkansen Window"],
@@ -73,14 +75,15 @@ function localizeEnglishRail(html) {
     ["contact.html", "en/contact.html"],
     ["privacy.html", "en/privacy.html"],
   ];
-  let result = html;
+  // 日本語だけのページへのカード（<!-- ja-only --> 〜 <!-- /ja-only -->）は英語の図鑑に出さない。
+  let result = html.replace(/[ \t]*<!-- ja-only[^>]*-->[\s\S]*?<!-- \/ja-only -->\n?/g, "");
   copy.forEach(([ja, en]) => { result = result.replaceAll(ja, en); });
   routes.forEach(([ja, en]) => { result = result.replaceAll(`href="${ja}"`, `href="${en}"`); });
   result = result
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
     .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=')
-    // 727-collection.html は日本語のみ。英語版はスポットページへ案内する。
-    .replaceAll('href="727-collection.html"', 'href="en/spots/727-board.html"');
+    .replaceAll('href="zukan.html#gallery"', 'href="en/zukan.html#gallery"')
+    .replaceAll('href="727-collection.html"', 'href="en/727-collection.html"');
   return result;
 }
 

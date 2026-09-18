@@ -20,6 +20,8 @@ const contentFiles = [
   "castles.html",
   "en/castles.html",
   "castles.css",
+  "arenani.html",
+  "arenani.css",
   // ライブ案内・車窓データの本体
   // data.js は編集の正本。data-runtime.js はブラウザが読む部分集合で、
   // 727-collection / journal / sparkling-dreams など同梱ページが参照する。
@@ -70,6 +72,7 @@ const contentFiles = [
   "style.css",
   "chrome.css",
   "727-collection.html",
+  "en/727-collection.html",
   "727-collection.js",
   "images/og-727-collection.jpg",
   "images/og-jr-pass-fuji.jpg",

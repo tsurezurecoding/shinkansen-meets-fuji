@@ -86,7 +86,7 @@ const checks = [
       'href="en/sparkling-dreams.html"',
       'data-cta-id="top_journey_727"',
       'data-cta-id="top_footer_727"',
-      'href="en/zukan.html?filter=sign#gallery"',
+      'href="en/727-collection.html"',
       'https://www.googletagmanager.com/gtag/js?id=',
       'if (window.MADO_EMBEDDED_WEB) return;',
       'data-cta-track="android_app_guide_click"',

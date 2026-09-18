@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="名古屋港の観覧車 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">名古屋港の観覧車</text>
+
+<g fill="none" stroke-width="2">
+<circle cx="100" cy="84" r="15"/>
+<circle cx="100" cy="84" r="2.5"/>
+<path d="M94 99 L100 84 L106 99"/>
+</g>
+
+<g fill="none" stroke-width="1.2">
+<path d="M102.5 84.0 L115.0 84.0"/><path d="M101.8 85.8 L110.6 94.6"/><path d="M100.0 86.5 L100.0 99.0"/><path d="M98.2 85.8 L89.4 94.6"/><path d="M97.5 84.0 L85.0 84.0"/><path d="M98.2 82.2 L89.4 73.4"/><path d="M100.0 81.5 L100.0 69.0"/><path d="M101.8 82.2 L110.6 73.4"/>
+</g>
+<g fill="none" stroke-width="2.2">
+<path d="M52 140 V96 H74 V140"/>
+<path d="M126 140 V88 H148 V140"/>
+<path d="M82 140 V110 H118 V140"/>
+<path d="M46 140 H154"/>
+</g>
+<g fill="none" stroke-width="1.2">
+<path d="M57 106 H69 M57 118 H69 M131 98 H143 M131 110 H143 M131 122 H143"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約93分・A席</text>
+</g>
+</svg>

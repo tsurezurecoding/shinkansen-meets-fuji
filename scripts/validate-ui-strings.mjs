@@ -32,6 +32,8 @@ const LINKED = [
   { note: "nav: live guide", langs: ["ja", "en"], keys: [["app.js", "navLive"], ["spot-page-shared.js", "live"]] },
   { note: "nav: field guide", langs: ["ja", "en"], keys: [["app.js", "navBrowse"], ["spot-page-shared.js", "fieldGuide"]] },
   { note: "nav: FAQ", langs: ["ja", "en"], keys: [["app.js", "navFaq"], ["spot-page-shared.js", "faq"]] },
+  { note: "nav: features", langs: ["ja", "en"], keys: [["app.js", "navFeatures"], ["spot-page-shared.js", "features"]] },
+  { note: "nav: all views", langs: ["ja", "en"], keys: [["app.js", "navAllViews"], ["spot-page-shared.js", "allViews"]] },
   { note: "nav: medal book", langs: ["ja", "en"], keys: [["app.js", "navMedals"], ["spot-page-shared.js", "journal"]] },
   { note: "nav: more", langs: ["ja", "en"], keys: [["app.js", "navMore"], ["spot-page-shared.js", "more"]] },
   { note: "nav: about", langs: ["ja", "en"], keys: [["app.js", "navLp"], ["spot-page-shared.js", "about"]] },

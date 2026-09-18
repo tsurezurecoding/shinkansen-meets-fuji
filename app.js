@@ -16,7 +16,7 @@ const MSG = {
     heroCtaStart: "乗る列車でガイドを作る",
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
-    navQuick: "TOP", navStart: "列車選択", navLive: "音声ガイド", navBrowse: "車窓図鑑", navFaq: "富士山を見る", navMedals: "スタンプ帖",
+    navQuick: "TOP", navStart: "列車選択", navLive: "音声ガイド", navBrowse: "車窓図鑑", navFeatures: "特集", navAllViews: "車窓一覧", navFaq: "富士山を見る", navMedals: "スタンプ帖",
     navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
@@ -125,6 +125,8 @@ const MSG = {
     galPhotoNote: "掲載写真は、撮影者または権利者の許可を得て紹介しています。",
     zukanThemeEyebrow: "BROWSE BY THEME",
     zukanThemeTitle: "テーマから、車窓を探す",
+    zukanSwitchFeatures: "特集から探す",
+    zukanSwitchAll: "車窓一覧を見る",
     themeAllLabel: "ALL VIEWS",
     themeAllTitle: "車窓一覧を見る",
     themeAllBody: "写真から、すべての車窓を。席側やカテゴリでしぼれます。",
@@ -146,7 +148,8 @@ const MSG = {
     zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
     zukanAllTitle: "すべての車窓を見る",
     morePhotos: "ほかの写真も見る",
-    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示",
+    fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示", cWheelToggle: "観覧車を分けて表示",
+    cWheelCollectionCta: (total) => `新幹線から見える観覧車 全${total}基を見る`,
     footerNote: "時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。",
     footerGuide: "富士山の見方",
     footerReferences: "車窓リンク集",
@@ -200,7 +203,7 @@ const MSG = {
     heroCtaStart: "Build my guide",
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
-    navQuick: "Home", navStart: "Train Search", navLive: "Audio Guide", navBrowse: "Field Guide", navFaq: "See Mt. Fuji", navMedals: "Journal",
+    navQuick: "Home", navStart: "Train Search", navLive: "Audio Guide", navBrowse: "Field Guide", navFeatures: "Features", navAllViews: "All views", navFaq: "See Mt. Fuji", navMedals: "Journal",
     navMore: "More", navMieru: "Visibility β", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
@@ -309,6 +312,8 @@ const MSG = {
     galPhotoNote: "Photos are shown with permission from their photographers or rights holders.",
     zukanThemeEyebrow: "BROWSE BY THEME",
     zukanThemeTitle: "Find window views by theme",
+    zukanSwitchFeatures: "Browse features",
+    zukanSwitchAll: "See all views",
     themeAllLabel: "ALL VIEWS",
     themeAllTitle: "Browse every view",
     themeAllBody: "Every window view as a photo, filtered by seat side and category.",
@@ -330,7 +335,8 @@ const MSG = {
     zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
     zukanAllTitle: "Browse every window view",
     morePhotos: "More photos",
-    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately",
+    fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately", cWheelToggle: "Show Ferris wheels separately",
+    cWheelCollectionCta: (total) => `See all ${total} Ferris wheels visible from the window`,
     footerNote: "Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.",
     footerGuide: "How to see Mt. Fuji",
     footerReferences: "Window links",
@@ -414,6 +420,7 @@ let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
 const PREVIEW_DEP_MIN = 0;
 let boardCollectionExpanded = false;
+let wheelCollectionExpanded = false;
 
 // 現地で確認できなかった／撤去済みの地点は、列車選択後のタイムラインには出さない。
 // 727コレクションページ側のリストには記録として残す（727-collection.js の isMissing と同じ判定）。
@@ -445,6 +452,20 @@ function boardCollectionSpots() {
       map: { lat: spot.lat, lng: spot.lng, ja: spot.ja, en: spot.en },
     };
   });
+}
+// 観覧車コレクション。代表のひらかたパークは通常スポットなので除く。
+// 727と違い、地点ごとに日英の名前・hook・本文とスタンプSVGを持つ。
+function wheelCollectionSpots() {
+  if (typeof WHEEL_COLLECTION === "undefined") return [];
+  return WHEEL_COLLECTION.filter((wheel) => wheel.isWheelCollection).map((wheel) => ({
+    ...wheel,
+    id: wheel.stampId,
+    collectionPointId: wheel.id,
+    isWheelCollection: true,
+  }));
+}
+function isWheelCollectionSpot(spot) {
+  return spot?.isWheelCollection === true || spot?.id === "hirakata-park-wheel";
 }
 function is727CollectionSpot(spot) {
   return spot?.is727Collection === true || spot?.id === "727-board" || spot?.id === "727-sign";
@@ -777,18 +798,20 @@ function selectTrainFromLink() {
   track("journey_from_link", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
   return true;
 }
-function collectionTimelineSpots(expanded = boardCollectionExpanded) {
-  if (!journey || !expanded || lang !== "ja") return journey?.spots || [];
+function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
+  if (!journey || (!board && !wheel)) return journey?.spots || [];
   const boardRef = REF[boardId];
   const dirSign = direction === "west" ? 1 : -1;
   const spotClock = journey.mode === "train"
     ? (ref) => interpolateSpot(ref, journey.stops)
     : (ref) => (ref - boardRef) * dirSign < 0 ? null : journey.depMin + Math.abs(ref - boardRef);
-  const boardPoints = boardCollectionSpots()
+  const points = []
+    .concat(board ? boardCollectionSpots() : [])
+    .concat(wheel ? wheelCollectionSpots() : [])
     .map((sp) => ({ sp, clock: spotClock(sp.minutesFromTokyo) }))
     .filter((item) => item.clock != null);
   return journey.spots
-    .concat(boardPoints)
+    .concat(points)
     .sort((a, b) => a.clock - b.clock || timeline727Order(a.sp) - timeline727Order(b.sp));
 }
 function timeline727Order(spot) {
@@ -797,12 +820,14 @@ function timeline727Order(spot) {
   if (spot.is727Collection && spot.sourceNo === 21) return 2;
   return 99;
 }
-function currentTimelineSpotCandidates(expanded = boardCollectionExpanded) {
-  return collectionTimelineSpots(expanded).filter((item) => matchesTimelineFilters(item.sp));
+function currentTimelineSpotCandidates(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
+  return collectionTimelineSpots(board, wheel).filter((item) => matchesTimelineFilters(item.sp));
 }
-function reachable727Candidates() {
+function reachableCollectionCandidates(kind) {
   if (!journey || journey.direction !== direction || journey.boardId !== boardId) return [];
-  return currentTimelineSpotCandidates(true).filter((item) => is727CollectionSpot(item.sp));
+  const board = kind === "727";
+  return currentTimelineSpotCandidates(board, !board)
+    .filter((item) => (board ? item.sp.is727Collection : item.sp.isWheelCollection));
 }
 function seatTags(spot) {
   const tags = new Set();
@@ -1025,6 +1050,12 @@ function spotRelatedHTML(spot) {
   return `<div class="spot-modal-refs spot-modal-related"><span>${title}</span>${links}</div>`;
 }
 function collectionGuideLinkHTML(spot) {
+  if (isWheelCollectionSpot(spot)) {
+    const href = lang === "en" ? "en/ferris-wheels.html" : "ferris-wheels.html";
+    const total = typeof WHEEL_COLLECTION === "undefined" ? 6 : WHEEL_COLLECTION.length;
+    return `<a class="spot-modal-collection-cta" href="${href}"><span>${escapeHTML(t("cWheelCollectionCta", total))}</span><span aria-hidden="true">→</span></a>`;
+  }
+  // 727コレクションのページは日本語だけなので、英語では出さない。
   if (lang !== "ja" || !(spot?.is727Collection || ["727-board", "putiputi-sign"].includes(spot?.id))) return "";
   return `<a class="spot-modal-collection-cta" href="727-collection.html"><span>727看板の設置場所 全${BOARD_COLLECTION.length}地点を見る</span><span aria-hidden="true">→</span></a>`;
 }
@@ -1181,7 +1212,7 @@ function applyLang() {
     if (typeof v === "string") el.innerHTML = v;
   });
   $$("[data-journal-close]").forEach((el) => el.setAttribute("aria-label", t("journalModalClose")));
-  $$("[data-727-collection-toggle]").forEach((el) => el.setAttribute("aria-label", t("c727Toggle")));
+  COLLECTION_TOGGLES.forEach((group) => $$(group.selector).forEach((el) => el.setAttribute("aria-label", t(group.labelKey))));
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
   $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/guide.html" : "guide.html"));
   $$('[data-contact-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/contact.html" : "contact.html"));
@@ -1222,7 +1253,7 @@ function applyLang() {
   renderMedalBoard();
   renderStampboard();
   renderGallery();
-  sync727CollectionUI();
+  syncCollectionToggleUI();
   updateGalleryFilterButtons();
   updateTimelineFilterButtons();
   renderShowcase();
@@ -1479,7 +1510,7 @@ function buildTimeline(train = null, depMin = null, options = {}) {
   if (depMin == null) depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
   journey = computeJourney(train, depMin);
   journey.preview = !!options.preview;
-  sync727CollectionUI();
+  syncCollectionToggleUI();
   if (!options.preview) {
     track("timeline_built", {
       mode: train ? "train" : "estimate",
@@ -1507,7 +1538,7 @@ function renderInitialTimelinePreview() {
   boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
   buildTimeline(null, PREVIEW_DEP_MIN, { preview: true });
   boardId = currentBoardId;
-  sync727CollectionUI();
+  syncCollectionToggleUI();
 }
 
 function renderTimeline() {
@@ -1636,7 +1667,9 @@ function updateStampButton(btn, got) {
 }
 
 function findSpotById(id) {
-  return SPOTS.find((sp) => sp.id === id) || boardCollectionSpots().find((sp) => sp.id === id || sp.collectionPointId === id);
+  return SPOTS.find((sp) => sp.id === id)
+    || boardCollectionSpots().find((sp) => sp.id === id || sp.collectionPointId === id)
+    || wheelCollectionSpots().find((sp) => sp.id === id || sp.collectionPointId === id);
 }
 function spotHash(spotId, photoIndex = 0) {
   const index = Number(photoIndex);
@@ -2385,23 +2418,43 @@ function updateTimelineFilterButtons() {
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
-  sync727CollectionUI();
+  syncCollectionToggleUI();
 }
 
 function invalidateJourneyForInputChange() {
   journey = null;
-  sync727CollectionUI();
+  syncCollectionToggleUI();
 }
 
-function sync727CollectionUI() {
-  const hasCandidate = reachable727Candidates().length > 0;
-  $$('[data-727-collection-toggle]').forEach((toggle) => {
-    toggle.disabled = !hasCandidate;
-    toggle.setAttribute("aria-disabled", String(!hasCandidate));
-    toggle.checked = boardCollectionExpanded;
-    toggle.setAttribute("aria-checked", String(boardCollectionExpanded));
-    toggle.closest(".timeline-collection-toggle")?.classList.toggle("is-disabled", !hasCandidate);
-    toggle.closest(".timeline-collection-toggle")?.classList.toggle("is-on", boardCollectionExpanded);
+// コレクションのトグルは種別ごとに同じ作りにする。乗る区間にその種別の地点が
+// 1つも無ければ無効化する（代表スポットを通らない区間でも、地点があれば出す）。
+const COLLECTION_TOGGLES = [
+  {
+    kind: "727",
+    selector: "[data-727-collection-toggle]",
+    labelKey: "c727Toggle",
+    get expanded() { return boardCollectionExpanded; },
+    set expanded(value) { boardCollectionExpanded = value; },
+  },
+  {
+    kind: "wheel",
+    selector: "[data-wheel-collection-toggle]",
+    labelKey: "cWheelToggle",
+    get expanded() { return wheelCollectionExpanded; },
+    set expanded(value) { wheelCollectionExpanded = value; },
+  },
+];
+function syncCollectionToggleUI() {
+  COLLECTION_TOGGLES.forEach((group) => {
+    const hasCandidate = reachableCollectionCandidates(group.kind).length > 0;
+    $$(group.selector).forEach((toggle) => {
+      toggle.disabled = !hasCandidate;
+      toggle.setAttribute("aria-disabled", String(!hasCandidate));
+      toggle.checked = group.expanded;
+      toggle.setAttribute("aria-checked", String(group.expanded));
+      toggle.closest(".timeline-collection-toggle")?.classList.toggle("is-disabled", !hasCandidate);
+      toggle.closest(".timeline-collection-toggle")?.classList.toggle("is-on", group.expanded);
+    });
   });
 }
 
@@ -2551,15 +2604,17 @@ function bindGalleryControls() {
 
 function bindTimelineControls() {
   $("#timelineFilterbar")?.addEventListener("change", (event) => {
-    const toggle = event.target instanceof HTMLInputElement ? event.target.closest("[data-727-collection-toggle]") : null;
-    if (!toggle) return;
+    const input = event.target instanceof HTMLInputElement ? event.target : null;
+    const group = input ? COLLECTION_TOGGLES.find((candidate) => input.closest(candidate.selector)) : null;
+    if (!group) return;
+    const toggle = input.closest(group.selector);
     if (toggle.disabled) {
-      toggle.checked = boardCollectionExpanded;
+      toggle.checked = group.expanded;
       return;
     }
-    boardCollectionExpanded = toggle.checked;
-    sync727CollectionUI();
-    track("timeline_727_collection_toggled", { expanded: boardCollectionExpanded });
+    group.expanded = toggle.checked;
+    syncCollectionToggleUI();
+    track(group.kind === "727" ? "timeline_727_collection_toggled" : "timeline_wheel_collection_toggled", { expanded: group.expanded });
     renderTimeline();
   });
   $("#timelineFilterbar")?.addEventListener("click", (event) => {

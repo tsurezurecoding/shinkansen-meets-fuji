@@ -79,7 +79,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=b6d007f6">
+  <link rel="stylesheet" href="style.css?v=16a20788">
 </head>
 <body class="field-guide-page">
   <header class="topbar">
@@ -93,13 +93,14 @@
     <nav class="top-nav" aria-label="Primary">
       <a href="start.html" data-i18n="navStart">列車選択</a>
       <a href="live/index.html" data-i18n="navLive">音声ガイド</a>
-      <a href="zukan.html" data-i18n="navBrowse" aria-current="page">車窓図鑑</a>
-      <a class="top-nav-overflow" href="guide.html" data-i18n="navFaq">富士山を見る</a>
+      <a href="zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features" aria-current="page">特集</a>
+      <a class="top-nav-overflow" href="zukan.html#gallery" data-i18n="navAllViews" data-cta-track="header_nav_click" data-cta-id="nav_all_views">車窓一覧</a>
       <a href="journal.html" data-i18n="navMedals">スタンプ帖</a>
       <details class="top-nav-more">
         <summary data-i18n="navMore">もっと見る</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="guide.html" data-i18n="navFaq">富士山を見る</a>
+          <a class="top-nav-menu-compact" href="zukan.html#gallery" data-i18n="navAllViews" data-cta-track="header_nav_click" data-cta-id="nav_all_views">車窓一覧</a>
+          <a href="guide.html" data-i18n="navFaq">富士山を見る</a>
           <a href="lp.html" data-i18n="navLp">新幹線の窓とは</a>
           <a href="mieru.html" data-i18n="navMieru">見える予報β</a>
           <a href="sumie.html" data-i18n="navSumie">墨絵車窓</a>
@@ -125,20 +126,26 @@
     </section>
 
     <section class="journey-intents journey-intents-guide" aria-labelledby="zukanIntentsTitle">
+      <div class="zukan-switch" role="group" aria-label="図鑑の見方">
+        <a class="is-current" href="#zukanIntentsTitle" data-i18n="zukanSwitchFeatures">特集から探す</a>
+        <a href="#gallery" data-i18n="zukanSwitchAll" data-cta-track="zukan_switch_click" data-cta-id="all_views">車窓一覧を見る</a>
+      </div>
       <div class="section-head">
         <p class="eyebrow" data-i18n="zukanThemeEyebrow">BROWSE BY THEME</p>
         <h2 id="zukanIntentsTitle" data-i18n="zukanThemeTitle">テーマから、車窓を探す</h2>
       </div>
       <div class="journey-intent-grid">
-        <a class="journey-intent-card journey-intent-cloudy" href="#gallery">
-          <img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="" loading="lazy" decoding="async">
+        <!-- ja-only: arenani.html は日本語のみ。英語の図鑑では generate-language-mirrors.mjs がこのカードを外す -->
+        <a class="journey-intent-card journey-intent-cloudy" href="arenani.html" data-cta-track="zukan_theme_click" data-cta-id="arenani">
+          <img src="images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
-            <small data-i18n="themeAllLabel">ALL VIEWS</small>
-            <strong data-i18n="themeAllTitle">車窓一覧を見る</strong>
-            <span data-i18n="themeAllBody">写真から、すべての車窓を。席側やカテゴリでしぼれます。</span>
+            <small>WHAT WAS THAT?</small>
+            <strong>あれ、何？</strong>
+            <span><span class="copy-chunk">名前も分からないまま</span><span class="copy-chunk">通り過ぎた景色の正体。</span></span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-cloudy" href="castles.html">
+        <!-- /ja-only -->
+        <a class="journey-intent-card journey-intent-cloudy" href="castles.html" data-cta-track="zukan_theme_click" data-cta-id="castles">
           <img src="images/thumbs/20260704_kiyosu_castle_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small>CASTLES</small>
@@ -146,7 +153,7 @@
             <span><span class="copy-chunk">天守と城跡を、</span><span class="copy-chunk">車窓の写真でめぐる。</span></span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-night" href="hanabi.html">
+        <a class="journey-intent-card journey-intent-night" href="hanabi.html" data-cta-track="zukan_theme_click" data-cta-id="hanabi">
           <img src="images/thumbs/hanabi-hero-pd.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small data-i18n="themeHanabiLabel">SUMMER</small>
@@ -154,7 +161,7 @@
             <span data-i18n="themeHanabiBody">沿線7大会を、見える区間と時刻で。</span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-night" href="yakei.html">
+        <a class="journey-intent-card journey-intent-night" href="yakei.html" data-cta-track="zukan_theme_click" data-cta-id="yakei">
           <img src="images/thumbs/20260629_tokyo_tower_night_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small data-i18n="themeYakeiLabel">AFTER DARK</small>
@@ -162,7 +169,7 @@
             <span data-i18n="themeYakeiBody">暗くなる区間を、出発時刻から。</span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-cloudy" href="window-moments.html">
+        <a class="journey-intent-card journey-intent-cloudy" href="window-moments.html" data-cta-track="zukan_theme_click" data-cta-id="window_moments">
           <img src="images/thumbs/wm-hero-snow.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small>WINDOW MOMENTS</small>
@@ -170,7 +177,7 @@
             <span><span class="copy-chunk">虹、雪、雲、雷。</span><span class="copy-chunk">その日だけの空に出会う。</span></span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-family" href="sparkling-dreams.html">
+        <a class="journey-intent-card journey-intent-family" href="sparkling-dreams.html" data-cta-track="zukan_theme_click" data-cta-id="sparkling_dreams">
           <img src="images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small data-i18n="themeDisneyLabel">LIMITED</small>
@@ -178,7 +185,7 @@
             <span data-i18n="themeDisneyBody">すれ違えるかを、時刻から計算。</span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-family" href="ferris-wheels.html">
+        <a class="journey-intent-card journey-intent-family" href="ferris-wheels.html" data-cta-track="zukan_theme_click" data-cta-id="ferris_wheels">
           <img src="images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small>FERRIS WHEELS</small>
@@ -186,7 +193,7 @@
             <span><span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span></span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-family" href="727-collection.html">
+        <a class="journey-intent-card journey-intent-family" href="727-collection.html" data-cta-track="zukan_theme_click" data-cta-id="727_collection">
           <img src="images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small data-i18n="themeSignLabel">TRACKSIDE SIGNS</small>
@@ -194,7 +201,7 @@
             <span data-i18n="themeSignBody">沿線に何度も現れる、あの看板の正体。</span>
           </span>
         </a>
-        <a class="journey-intent-card journey-intent-cloudy" href="guide.html">
+        <a class="journey-intent-card journey-intent-cloudy" href="guide.html" data-cta-track="zukan_theme_click" data-cta-id="guide">
           <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">
             <small data-i18n="themeFujiLabel">MOUNT FUJI</small>
@@ -307,11 +314,11 @@
   </footer>
 
   <script src="data/timetable.js?v=18fb2a08"></script>
-  <script src="data-runtime.js?v=e61bb074"></script>
+  <script src="data-runtime.js?v=709c7a33"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
   <script src="train-select.js?v=ddf609c7"></script>
-  <script src="app.js?v=bb7676e7"></script>
+  <script src="app.js?v=bd7d2be3"></script>
   <script>
     window.addEventListener("load", function () {
       try {

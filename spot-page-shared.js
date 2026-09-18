@@ -13,6 +13,8 @@
       train: "列車選択",
       live: "音声ガイド",
       fieldGuide: "車窓図鑑",
+      features: "特集",
+      allViews: "車窓一覧",
       faq: "富士山を見る",
       journal: "スタンプ帖",
       more: "もっと見る",
@@ -33,14 +35,19 @@
       railFoot: "車窓図鑑で写真から探す →",
       railAppTitle: "Androidアプリ版",
       railAppBody: "無料・登録不要。Google Playで公開中",
-      railDisneyTitle: "ディズニー新幹線",
-      railDisneyBody: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る",
-      railHanabiTitle: "新幹線から見える花火",
-      railHanabiBody: "沿線の花火大会と、車窓から見えた記録を集める",
-      railYakeiTitle: "新幹線の夜景",
-      railYakeiBody: "どこから暗くなるかを調べて、夜だけの車窓を探す",
-      rail727Title: "727看板コレクション",
-      rail727Body: function (count) { return "東京〜新大阪の沿線、全" + count + "地点を集める"; },
+      railLiveTitle: "GPS音声ガイド",
+      railLiveBody: "乗車中、近づくと声で教えます",
+      railAllFeatures: "特集をすべて見る →",
+      railFeatures: {
+        "727": { title: "727看板コレクション", body: function (count) { return "東京〜新大阪の沿線、全" + count + "地点を集める"; } },
+        castles: { title: "新幹線から見える城", body: "天守と城跡を、席側と見つけ方つきで" },
+        wheels: { title: "車窓の観覧車を集める", body: "街の向こうの、小さな輪を探す" },
+        arenani: { title: "あれ、何？", body: "車窓で気になった景色の正体を確かめる" },
+        hanabi: { title: "新幹線から見える花火", body: "沿線の花火大会と、車窓から見えた記録を集める" },
+        disney: { title: "ディズニー新幹線", body: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る" },
+        yakei: { title: "新幹線の夜景", body: "どこから暗くなるかを調べて、夜だけの車窓を探す" },
+        moments: { title: "一度きりの車窓", body: "虹、雪、雲、雷。その日だけの空に出会う" }
+      },
       railStationSuffix: "分",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "車窓をもっと楽しむ",
@@ -64,6 +71,8 @@
       train: "Train Search",
       live: "Audio Guide",
       fieldGuide: "Field Guide",
+      features: "Features",
+      allViews: "All views",
       faq: "See Mt. Fuji",
       journal: "Journal",
       more: "More",
@@ -84,12 +93,18 @@
       railFoot: "Browse by photo →",
       railAppTitle: "Android app",
       railAppBody: "Free, no registration. Available on Google Play",
-      railDisneyTitle: "Disney Shinkansen",
-      railDisneyBody: "Sparkling Dreams Shinkansen · operating dates and window-side estimates",
-      railHanabiTitle: "Fireworks from the window",
-      railHanabiBody: "Festivals along the line, and posts from people who saw them",
-      railYakeiTitle: "Night views from the window",
-      railYakeiBody: "Find where your train goes dark, and what only shows after it",
+      railLiveTitle: "GPS audio guide",
+      railLiveBody: "Hear each view announced as you approach it",
+      railAllFeatures: "See all features →",
+      railFeatures: {
+        "727": { title: "The 727 sign collection", body: function (count) { return "All " + count + " locations between Tokyo and Shin-Osaka"; } },
+        castles: { title: "Castles from the Shinkansen", body: "Keeps and castle hills, with seat sides and spotting tips" },
+        wheels: { title: "Find the ferris wheels", body: "Look for little wheels beyond the city" },
+        hanabi: { title: "Fireworks from the window", body: "Festivals along the line, and posts from people who saw them" },
+        disney: { title: "Disney Shinkansen", body: "Sparkling Dreams Shinkansen · operating dates and window-side estimates" },
+        yakei: { title: "Night views from the window", body: "Find where your train goes dark, and what only shows after it" },
+        moments: { title: "Weather seen from the window", body: "Rainbows, snow, clouds and lightning: skies that happen only once" }
+      },
       railStationSuffix: " min",
       contentEyebrow: "MORE TO TRY",
       contentTitle: "More ways to enjoy the window",
@@ -227,6 +242,8 @@
   var UTILITY_ROUTES = {
     "ferris-wheels.html": { en: true },
     "castles.html": { en: true },
+    // 「あれ、何？」は日本語のみ（他路線の投稿が日本語）。言語スイッチャーを隠す。
+    "arenani.html": { en: false },
     "mieru.html": { en: true },
     "sparkling-dreams.html": { en: true },
     "hanabi.html": { en: true },
@@ -236,8 +253,7 @@
     // en:false で言語スイッチャーごと隠す（対応する日本語URLが存在しない）。
     "jr-pass-fuji.html": { en: false },
     "besides-fuji.html": { en: false },
-    // 英語版が同名ミラーではなく既存の解説ページにあるため、パスを文字列で指定する。
-    "727-collection.html": { en: "en/spots/727-board.html" }
+    "727-collection.html": { en: true }
   };
 
   function siteHeaderHTML(rootPath, lang, currentId, utilityRoute, utilityHasAlternate) {
@@ -266,13 +282,15 @@
       "<nav class=\"top-nav\" aria-label=\"Primary\">" +
         "<a href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.train) + "</a>" +
         "<a href=\"" + escapeHTML(href(base, "live/")) + "\">" + escapeHTML(ui.live) + "</a>" +
-        "<a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.fieldGuide) + "</a>" +
-        "<a class=\"top-nav-overflow\" href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
+        // 図鑑は「特集」（ページ先頭）と「車窓一覧」（#gallery）の2つの入口。車窓一覧はPCだけ上段、スマホは「もっと見る」の中。
+        "<a href=\"" + escapeHTML(href(base, "zukan.html")) + "\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_features\">" + escapeHTML(ui.features) + "</a>" +
+        "<a class=\"top-nav-overflow\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
         "<a href=\"" + escapeHTML(href(base, "journal.html")) + "\">" + escapeHTML(ui.journal) + "</a>" +
         "<details class=\"top-nav-more\">" +
           "<summary>" + escapeHTML(ui.more) + "</summary>" +
           "<div class=\"top-nav-menu\">" +
-            "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
+            "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
+            "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "lp.html")) + "\">" + escapeHTML(ui.about) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "sumie.html")) + "\">" + escapeHTML(ui.sumie) + "</a>" +
@@ -353,7 +371,7 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data)) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
   // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
@@ -362,47 +380,76 @@
     return data && typeof data.collection727Count === "number" ? data.collection727Count : 0;
   }
 
-  function railPromosHTML(rootPath, lang, currentRoute, count727) {
-    var out = railAppHTML(rootPath, lang);
-    if (currentRoute !== "sparkling-dreams.html") out += railDisneyHTML(rootPath, lang);
-    if (currentRoute !== "hanabi.html") out += railHanabiHTML(rootPath, lang);
-    if (currentRoute !== "yakei.html") out += railYakeiHTML(rootPath, lang);
-    if (lang === "ja" && currentRoute !== "727-collection.html") out += rail727HTML(rootPath, count727);
-    return out;
+  // 左ペインの案内は枠の数を固定する: アプリ1（アプリ内では非表示）＋音声ガイド1＋関連特集1＋時期の特集1＋「特集をすべて見る」。
+  // 特集を増やすときは RAIL_FEATURES に1行足すだけにする（描画は railFeatureHTML、選び方は pickRailFeatures が共通で持つ）。
+  //   spots:  関連枠でこの特集を出すスポット（今見ているスポットがこの中にあれば選ばれる）
+  //   months: 時期枠でこの特集を出す月（1〜12）。from / until: 期間限定（YYYY-MM-DD、両端を含む）
+  //   jaOnly: 英語版が無いので日本語ページだけに出す
+  // 並び順が優先順位。時期枠は上から最初に当てはまる1件で、関連枠に出した特集は時期枠に出さない。
+  var RAIL_FEATURES = [
+    { id: "727", route: "727-collection.html", icon: "images/stamps/stamp_727-board.svg", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
+    { id: "castles", route: "castles.html", icon: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
+    { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
+    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260904_mishima_catapult_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", jaOnly: true, spots: ["hinataoka", "gyoran-kannon", "mishima-catapult", "toyohashi-tateiwa", "gifu-hashima-mahalo", "kinshozan", "fujitec-big-wing"] },
+    { id: "hanabi", route: "hanabi.html", icon: "images/hanabi-window.svg", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
+    { id: "disney", route: "sparkling-dreams.html", icon: "images/sparkling-dreams-window.svg", mod: "", track: "sparkling_dreams_entry_click", from: "2026-06-19", until: "2027-03-15" },
+    { id: "yakei", route: "yakei.html", icon: "images/yakei-window.svg", mod: " spot-page-rail-yakei", track: "yakei_entry_click", months: [9, 10, 11, 12, 1, 2, 3] },
+    { id: "moments", route: "window-moments.html", icon: "images/thumbs/wm-hero-snow.webp", mod: " spot-page-rail-moments", track: "window_moments_entry_click", months: [4, 5, 6] }
+  ];
+  // 関連枠の既定（今見ているスポットがどの特集にも入っていないとき）
+  var RAIL_DEFAULT_RELATED = { ja: "arenani", en: "castles" };
+
+  function railFeatureAvailable(feature, lang, currentRoute) {
+    return feature.route !== currentRoute && !(feature.jaOnly && lang !== "ja");
   }
 
-  function mobilePromosHTML(rootPath, lang, currentRoute, count727) {
-    return "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[lang].contentTitle) + "\">" + railPromosHTML(rootPath, lang, currentRoute, count727) + "</section>";
+  function railFeatureInSeason(feature, today) {
+    var iso = today.getFullYear() + "-" + String(today.getMonth() + 1).padStart(2, "0") + "-" + String(today.getDate()).padStart(2, "0");
+    if (feature.from || feature.until) return (!feature.from || iso >= feature.from) && (!feature.until || iso <= feature.until);
+    return !!feature.months && feature.months.indexOf(today.getMonth() + 1) !== -1;
+  }
+
+  function pickRailFeatures(lang, currentId, currentRoute, today) {
+    var usable = RAIL_FEATURES.filter(function (feature) { return railFeatureAvailable(feature, lang, currentRoute); });
+    var related = usable.filter(function (feature) { return feature.spots && feature.spots.indexOf(currentId) !== -1; })[0]
+      || usable.filter(function (feature) { return feature.id === RAIL_DEFAULT_RELATED[lang]; })[0]
+      || usable.filter(function (feature) { return !!feature.spots; })[0]
+      || null;
+    var seasonal = usable.filter(function (feature) { return feature !== related && railFeatureInSeason(feature, today); })[0] || null;
+    return { related: related, seasonal: seasonal };
+  }
+
+  function railFeatureHTML(feature, rootPath, lang, slot, count727) {
+    var copy = UI[lang].railFeatures[feature.id];
+    var body = typeof copy.body === "function" ? copy.body(count727) : copy.body;
+    return "<div class=\"spot-page-rail-disney" + feature.mod + "\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), feature.route)) + "\" data-cta-track=\"" + escapeHTML(feature.track) + "\" data-cta-id=\"spot_rail_" + slot + "_" + escapeHTML(feature.id) + "\"><img src=\"" + escapeHTML(href(rootPath, feature.icon)) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(copy.title) + "</strong><small>" + escapeHTML(body) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  }
+
+  function railLiveHTML(rootPath, lang) {
+    var ui = UI[lang];
+    return "<div class=\"spot-page-rail-app spot-page-rail-live\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), "live/")) + "\" data-cta-track=\"live_guide_entry_click\" data-cta-id=\"spot_rail_live\"><img src=\"" + escapeHTML(href(rootPath, "images/thumbs/og-live-guide.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railLiveTitle) + "</strong><small>" + escapeHTML(ui.railLiveBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
+  }
+
+  function railAllFeaturesHTML(rootPath, lang) {
+    return "<a class=\"spot-page-rail-all-features\" href=\"" + escapeHTML(href(basePath(rootPath, lang), "zukan.html")) + "\" data-cta-track=\"zukan_entry_click\" data-cta-id=\"spot_rail_all_features\">" + escapeHTML(UI[lang].railAllFeatures) + "</a>";
+  }
+
+  function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today) {
+    var picked = pickRailFeatures(lang, currentId || "", currentRoute || "", today || new Date());
+    return railAppHTML(rootPath, lang) + railLiveHTML(rootPath, lang) +
+      (picked.related ? railFeatureHTML(picked.related, rootPath, lang, "related", count727) : "") +
+      (picked.seasonal ? railFeatureHTML(picked.seasonal, rootPath, lang, "seasonal", count727) : "") +
+      railAllFeaturesHTML(rootPath, lang);
+  }
+
+  function mobilePromosHTML(rootPath, lang, currentRoute, count727, currentId) {
+    return "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[lang].contentTitle) + "\">" + railPromosHTML(rootPath, lang, currentRoute, count727, currentId) + "</section>";
   }
 
   function railAppHTML(rootPath, lang) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"android_app_guide_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
-  }
-
-  function railDisneyHTML(rootPath, lang) {
-    var ui = UI[lang];
-    var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-disney\"><a href=\"" + escapeHTML(href(base, "sparkling-dreams.html")) + "\" data-cta-track=\"sparkling_dreams_entry_click\" data-cta-id=\"spot_rail_disney\"><img src=\"" + escapeHTML(href(rootPath, "images/sparkling-dreams-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railDisneyTitle) + "</strong><small>" + escapeHTML(ui.railDisneyBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
-  }
-  // レイアウトは Disney カードと同一のため .spot-page-rail-disney を土台に使い、
-  // 見分け用の modifier だけ足している（style.css は未変更）。
-  function railHanabiHTML(rootPath, lang) {
-    var ui = UI[lang];
-    var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-disney spot-page-rail-hanabi\"><a href=\"" + escapeHTML(href(base, "hanabi.html")) + "\" data-cta-track=\"hanabi_entry_click\" data-cta-id=\"spot_rail_hanabi\"><img src=\"" + escapeHTML(href(rootPath, "images/hanabi-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railHanabiTitle) + "</strong><small>" + escapeHTML(ui.railHanabiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
-  }
-
-  function railYakeiHTML(rootPath, lang) {
-    var ui = UI[lang];
-    var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-disney spot-page-rail-yakei\"><a href=\"" + escapeHTML(href(base, "yakei.html")) + "\" data-cta-track=\"yakei_entry_click\" data-cta-id=\"spot_rail_yakei\"><img src=\"" + escapeHTML(href(rootPath, "images/yakei-window.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.railYakeiTitle) + "</strong><small>" + escapeHTML(ui.railYakeiBody) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
-  }
-
-  function rail727HTML(rootPath, count) {
-    var ui = UI.ja;
-    return "<div class=\"spot-page-rail-disney spot-page-rail-727\"><a href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\" data-cta-track=\"727_collection_entry_click\" data-cta-id=\"spot_rail_727\"><img src=\"" + escapeHTML(href(rootPath, "images/stamps/stamp_727-board.svg")) + "\" alt=\"\" width=\"42\" height=\"30\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-disney-copy\"><strong>" + escapeHTML(ui.rail727Title) + "</strong><small>" + escapeHTML(ui.rail727Body(count)) + "</small></span><span class=\"spot-page-rail-disney-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {
@@ -677,7 +724,7 @@
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
     var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId);
-    var mobilePromos = embedded ? "" : mobilePromosHTML(rootPath, lang, "", collection727Count(data));
+    var mobilePromos = embedded ? "" : mobilePromosHTML(rootPath, lang, "", collection727Count(data), currentId);
     // topbar nav and the bottom content rail are baked as static HTML by the
     // generator (see generate-spot-pages.mjs thinSpotPageHTML). Rendering them
     // again here would duplicate the nav/content-rail on screen, so this
