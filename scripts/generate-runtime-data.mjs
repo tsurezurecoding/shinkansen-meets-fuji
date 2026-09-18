@@ -58,6 +58,8 @@ export const BUILD_ONLY_WHEEL_FIELDS = [
   "seatSourceName",
   "source",
   "sourceName",
+  // ja.story / en.story に展開済みなので、元の story は送らない。
+  "story",
 ];
 
 export function runtimeWheel(wheel) {
