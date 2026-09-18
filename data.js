@@ -1690,7 +1690,7 @@ const SPOTS = [
       en: "After Mishima, look on the Seat A side for two elevated tracks that seem to rise into the sky. They are not launch equipment, but switchback tracks used by trains entering and leaving the depot. Parked cars may sometimes be visible in the early morning.",
     },
     // 暫定値: 実車校正待ち（分数・秒数・見やすさ）。
-    minutesFromTokyo: 40.5, side: "A", category: "curious", confidence: "needs-check", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    minutesFromTokyo: 40.5, side: "A", category: "curious", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20260904_mishima_catapult_1_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "三島車両所の着発線を車窓から", en: "The Mishima depot's arrival tracks from the train window" } },
     photos: [
@@ -3674,7 +3674,7 @@ const SPOTS = [
       en: "As the train reaches Gifu-Hashima, look beyond the Seat A platform. Find Mahalo's deep-ocean-water sign by its scale and color in the station view rather than trying to read every word.",
     },
     // 暫定値: 写真・GPX照合による目安。実車校正待ち。
-    minutesFromTokyo: 102, side: "A", category: "curious", confidence: "needs-check", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    minutesFromTokyo: 102, side: "A", category: "curious", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20260816_gifu_hashima_mahalo_1_michikusa.jpg",
     photoCredit: {
       ja: "michikusa", en: "michikusa",
@@ -4061,7 +4061,7 @@ const SPOTS = [
       en: "After Maibara, heading toward Nagoya, look on the Seat A side for the Sennen Kyū lettering. After the sign, the fields and buildings continue to flow eastward.",
     },
     // 暫定値: 地理・写真照合による目安。実車校正待ち（分数・秒数・見やすさ）。
-    minutesFromTokyo: 111.5, side: "A", category: "curious", confidence: "needs-check", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    minutesFromTokyo: 111.5, side: "A", category: "curious", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20260816_sennenq_sign_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "米原の先に見えるせんねん灸の看板", en: "The Sennen Kyū sign beyond Maibara" } },
     photos: [
@@ -4458,7 +4458,7 @@ const SPOTS = [
       en: "After Maibara, heading toward Kyoto, look on the Seat A side for the run of candy billboards. Use the colors and shapes, including the Yukimi Daifuku sign, as your clues.",
     },
     // 暫定値: 地理・写真照合による目安。実車校正待ち（分数・秒数・見やすさ）。
-    minutesFromTokyo: 119, side: "A", category: "curious", confidence: "needs-check", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
+    minutesFromTokyo: 119, side: "A", category: "curious", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20260904_lotte_shiga_3_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "雪見だいふくの看板", en: "The Yukimi Daifuku billboard" } },
     photos: [
