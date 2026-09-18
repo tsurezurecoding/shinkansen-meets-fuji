@@ -1,0 +1,58 @@
+/* 「あれ、何？」特集の本文だけ。ヘッダー・左ペイン・フッターは style.css と spot-page-shared.js の共通部品。
+   カード（cs-spot）・見出し・注記は castles.css をそのまま使い、ここではヒーローと他路線の埋め込みだけを足す。 */
+
+/* ヒーロー: 4枚の車窓写真を田の字に並べ、中央の札に題字・説明・行き先。noteの「あれ何？」バナーを明るい地で */
+.an-hero { position: relative; background: var(--paper); color: var(--ink); padding: 0 0 40px; }
+.an-hero::before, .an-hero::after { content: none; }
+.an-stage { position: relative; }
+.an-tiles { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 230px 230px; gap: 4px; margin: 0; padding: 0; list-style: none; }
+.an-tile { position: relative; overflow: hidden; background: var(--paper-deep); }
+.an-tile a { display: block; height: 100%; }
+.an-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s ease; }
+.an-tile a:hover img, .an-tile a:focus-visible img { transform: scale(1.04); }
+.an-tile span { position: absolute; bottom: 12px; padding: 4px 11px; border-radius: 999px; background: rgba(250,246,239,.94); color: var(--ink); font-size: 12px; font-weight: 700; font-family: var(--font-serif); }
+.an-tile:nth-child(odd) span { left: 14px; }
+.an-tile:nth-child(even) span { right: 14px; }
+.an-tile span b { color: var(--accent); font-weight: 900; margin-left: 1px; }
+.an-plaque { position: absolute; z-index: 2; left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(560px, calc(100% - 36px)); background: rgba(250,246,239,.95); border-radius: 20px; box-shadow: 0 12px 34px rgba(22,32,46,.18); padding: 22px 26px 20px; text-align: center; }
+.an-plaque .eyebrow { color: var(--accent); margin: 0 0 2px; }
+.an-kicker { margin: 0; font-family: var(--font-serif); font-size: 15px; letter-spacing: .06em; }
+.an-plaque h1 { font-family: var(--font-serif); font-size: clamp(38px, 6vw, 58px); line-height: 1.2; margin: 2px 0 0; letter-spacing: .02em; white-space: nowrap; color: var(--ink); text-shadow: none; }
+.an-plaque h1 .an-bracket { color: var(--ink-soft); font-weight: 400; }
+.an-q { color: var(--accent); }
+.an-plaque .cs-hero-lead { color: var(--ink-soft); text-shadow: none; margin: 10px auto 0; font-size: 14px; max-width: 420px; }
+.an-plaque .cs-hero-credit { color: var(--ink-soft); opacity: .7; margin: 10px 0 0; }
+.an-cta { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 10px; margin: 16px 0 0 !important; }
+.an-cta .btn { min-height: 40px; display: inline-flex; align-items: center; }
+.an-cta .btn-ghost { color: var(--ink); }
+
+/* 問いを見出しに、名前は「答え」として後に置く */
+.an-question { font-family: var(--font-serif); font-size: clamp(19px, 3.4vw, 24px); line-height: 1.5; margin: 0 0 6px; }
+.an-question .an-q { margin-left: 1px; }
+.an-answer { margin: 0 0 12px !important; font-size: 13px !important; color: var(--ink-soft); }
+.an-answer strong { color: var(--ink); font-size: 15px; font-family: var(--font-serif); margin-left: 4px; }
+
+/* ほかの路線: Xの動画埋め込み + 本文。読み込みは window-moments.js（画面に近づいたら公式埋め込み） */
+.an-embed-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 20px; margin-bottom: 22px; scroll-margin-top: 90px; }
+.an-embed-card .wm-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); overflow: hidden; margin: 0; }
+.an-embed-card .wm-x { min-height: 120px; padding: 8px 8px 0; }
+.an-embed-card .wm-x::before { content: attr(data-placeholder); display: block; padding: 22px 10px; font-size: 12px; color: var(--ink-soft); text-align: center; }
+.an-embed-card .wm-x.is-loaded::before, .an-embed-card .wm-x.is-loading::before { display: none; }
+.an-embed-card .wm-x .twitter-tweet { margin: 0 auto !important; }
+.an-embed-by { margin-top: 7px; font-size: 10.5px; color: var(--ink-soft); line-height: 1.6; }
+.an-embed-by a { color: inherit; text-underline-offset: 3px; }
+.an-pill-line { background: #e3e8df; color: #3f5a38; }
+.an-links { margin: 0 !important; font-size: 13px !important; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+.an-links a { color: var(--accent); text-underline-offset: 3px; }
+
+@media (max-width: 760px) {
+  .an-tiles { grid-template-rows: 150px 150px; gap: 3px; }
+  .an-tile span { font-size: 11px; bottom: auto; top: 8px; padding: 3px 9px; }
+  .an-tile:nth-child(odd) span { left: 8px; }
+  .an-tile:nth-child(even) span { right: 8px; }
+  .an-plaque { position: relative; left: auto; top: auto; transform: none; width: calc(100% - 28px); margin: -46px auto 0; padding: 18px 16px 16px; }
+  .an-cta .btn { width: 100%; justify-content: center; }
+}
+@media (max-width: 720px) {
+  .an-embed-card { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
+}

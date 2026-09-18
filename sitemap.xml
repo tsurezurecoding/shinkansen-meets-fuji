@@ -37,6 +37,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/arenani.html</loc>
+    <lastmod>2026-09-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/zukan.html</loc>
     <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>

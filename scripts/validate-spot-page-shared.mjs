@@ -85,17 +85,27 @@ async function runThinValidator() {
     return value.match(pattern)?.length || 0;
   }
 
-  // 727カードの本文は地点数を含む。件数の正本は生成ペイロードなので、
-  // 期待HTMLもそこから組む。文言だけ変わったときに凍結literalが腐るのを避ける。
-  // 2026-09-18に英語版 en/727-collection.html を追加した。カードは日英どちらにも出る。
-  // hrefは言語のbase（英語は <root>en/）から解決する。
-  function rail727CardHTML(prefix, lang = "ja") {
-    const base = lang === "en" ? `${prefix}en/` : prefix;
-    const title = lang === "en" ? "The 727 sign collection" : "727看板コレクション";
-    const body = lang === "en"
-      ? `All ${payload.collection727Count} locations between Tokyo and Shin-Osaka`
-      : `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
-    return `<div class="spot-page-rail-disney spot-page-rail-727"><a href="${base}727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="spot_rail_727"><img src="${prefix}images/stamps/stamp_727-board.svg" alt="" width="42" height="30" loading="lazy" decoding="async"><span class="spot-page-rail-disney-copy"><strong>${title}</strong><small>${body}</small></span><span class="spot-page-rail-disney-arrow" aria-hidden="true">›</span></a></div>`;
+  // 左ペインの枠（spot-page-shared.js の RAIL_FEATURES / pickRailFeatures）:
+  // アプリ1・音声ガイド1・関連特集1・時期の特集0〜1・「特集をすべて見る」1。
+  // 自分自身の特集へのカードは出さず、英語では日本語だけの特集（arenani.html）を出さない。
+  // 727の地点数は生成ペイロードを正本にする（文言に凍結した数字を持たない）。
+  function assertRailSlots(html, label, lang, { route = "", expectRelated = "" } = {}) {
+    const n = (re) => count(html, re);
+    if (n(/data-cta-id="spot_rail_android"/g) !== 1) fail(`${label}: rail must contain exactly one Android app card`);
+    if (n(/data-cta-id="spot_rail_live"/g) !== 1) fail(`${label}: rail must contain exactly one GPS audio guide card`);
+    if (n(/data-cta-id="spot_rail_related_[^"]+"/g) !== 1) fail(`${label}: rail must contain exactly one related feature card`);
+    if (n(/data-cta-id="spot_rail_seasonal_[^"]+"/g) > 1) fail(`${label}: rail must contain at most one seasonal feature card`);
+    if (n(/data-cta-id="spot_rail_all_features"/g) !== 1) fail(`${label}: rail must end with one link to all features`);
+    const picked = [...html.matchAll(/data-cta-id="spot_rail_(?:related|seasonal)_([^"]+)"/g)].map((match) => match[1]);
+    if (new Set(picked).size !== picked.length) fail(`${label}: the related and seasonal slots must not repeat a feature`);
+    if (route && new RegExp(`href="[^"]*${route.replace(/\./g, "\\.")}" data-cta-track=`).test(html)) fail(`${label}: rail must not link to its own feature page`);
+    if (lang === "en" && html.includes("arenani.html")) fail(`${label}: English rail must not link to the Japanese-only What-was-that page`);
+    if (lang === "en" && html.includes("727看板コレクション")) fail(`${label}: English rail must not carry the Japanese 727 label`);
+    if (expectRelated && !html.includes(`data-cta-id="spot_rail_related_${expectRelated}"`)) fail(`${label}: related slot must show ${expectRelated}`);
+    if (picked.includes("727")) {
+      const body = lang === "en" ? `All ${payload.collection727Count} locations between Tokyo and Shin-Osaka` : `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
+      if (!html.includes(body)) fail(`${label}: 727 card must carry the generated location count`);
+    }
   }
 
   function safeAsset(value) {
@@ -348,9 +358,8 @@ async function runThinValidator() {
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
       {
-        const expected727Card = rail727CardHTML(prefix, lang);
-        if (count(desktopRail, /data-cta-id="spot_rail_727"/g) !== 1 || !desktopRail.includes(expected727Card)) fail(`${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail must contain exactly one complete 727 Collection card`);
-        if (lang === "en" && output.includes("727看板コレクション")) fail(`${relativeFile} English shared rail must not carry the Japanese 727 label`);
+        const relatedFor = { "727-board": "727", "727-sign": "727", "hirakata-park-wheel": "wheels", "kiyosu": "castles", "odawara-castle": "castles", "mishima-catapult": lang === "ja" ? "arenani" : "" };
+        assertRailSlots(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`, lang, { expectRelated: relatedFor[spot.id] || "" });
       }
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
@@ -380,21 +389,17 @@ async function runThinValidator() {
   if (expectedPages.length !== expectedPageCount || currentPages.length !== expectedPageCount) fail(`expected exactly ${expectedPageCount} spot pages, found ${currentPages.length}`);
   if (renderedVideoPageCount !== expectedVideoPageCount) fail(`expected ${expectedVideoPageCount} video pages from the structured source, found ${renderedVideoPageCount}`);
 
-  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "ferris-wheels.html", "castles.html", "727-collection.html"]) {
+  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "ferris-wheels.html", "castles.html", "727-collection.html", "arenani.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
-    const expectedUtility727Card = rail727CardHTML("./");
-    // 727コレクション自身のページには自分へのカードを出さない。
-    const expected727Count = route === "727-collection.html" ? 0 : 1;
-    const has727Card = (host) => count(host.outerHTML, /data-cta-id="spot_rail_727"/g) === expected727Count && (expected727Count === 0 || host.outerHTML.includes(expectedUtility727Card));
-    if (!has727Card(japaneseUtility.hosts.rail) || !has727Card(japaneseUtility.hosts["mobile-promos"])) fail(`Japanese utility ${route} rail and mobile promos must each contain ${expected727Count} complete 727 Collection card(s)`);
+    assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });
+    assertRailSlots(japaneseUtility.hosts["mobile-promos"].outerHTML, `Japanese utility ${route} mobile promos`, "ja", { route });
+    if (route === "arenani.html") continue; // 日本語のみのページ
 
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
-    const expectedEnglishUtility727Card = rail727CardHTML("../", "en");
-    const hasEnglish727Card = (host) => count(host.outerHTML, /data-cta-id="spot_rail_727"/g) === expected727Count && (expected727Count === 0 || host.outerHTML.includes(expectedEnglishUtility727Card));
-    if (!hasEnglish727Card(englishUtility.hosts.rail) || !hasEnglish727Card(englishUtility.hosts["mobile-promos"])) fail(`English utility ${route} rail and mobile promos must each contain ${expected727Count} complete 727 Collection card(s)`);
-    if (englishUtility.hosts.rail.outerHTML.includes("727看板コレクション") || englishUtility.hosts["mobile-promos"].outerHTML.includes("727看板コレクション")) fail(`English utility ${route} must not carry the Japanese 727 label`);
+    assertRailSlots(englishUtility.hosts.rail.outerHTML, `English utility ${route} rail`, "en", { route });
+    assertRailSlots(englishUtility.hosts["mobile-promos"].outerHTML, `English utility ${route} mobile promos`, "en", { route });
   }
 
   const reps = [

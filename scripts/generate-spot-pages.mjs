@@ -630,13 +630,14 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
     <nav class="top-nav" aria-label="Primary">
       <a href="${lang === "en" ? `${prefix}en/start.html` : `${prefix}start.html`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a>
-      <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
-      <a class="top-nav-overflow" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
+      <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}" data-cta-track="header_nav_click" data-cta-id="nav_features">${lang === "ja" ? "特集" : "Features"}</a>
+      <a class="top-nav-overflow" href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}#gallery" data-cta-track="header_nav_click" data-cta-id="nav_all_views">${lang === "ja" ? "車窓一覧" : "All views"}</a>
       <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
       <details class="top-nav-more">
         <summary>${lang === "ja" ? "もっと見る" : "More"}</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
+          <a class="top-nav-menu-compact" href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}#gallery" data-cta-track="header_nav_click" data-cta-id="nav_all_views">${lang === "ja" ? "車窓一覧" : "All views"}</a>
+          <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/lp.html` : `${prefix}lp.html`}">${lang === "ja" ? "新幹線の窓とは" : "About this app"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
           <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
@@ -2533,6 +2534,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
+    { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-19" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },

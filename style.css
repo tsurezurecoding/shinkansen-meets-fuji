@@ -4093,6 +4093,13 @@ body.modal-open { overflow: hidden; }
   margin-bottom: 18px;
 }
 
+/* 図鑑の先頭: 特集と車窓一覧の切り替え（ヘッダーの「特集」「車窓一覧」と同じ行き先） */
+.zukan-switch { display: flex; gap: 8px; justify-content: center; margin: 0 auto 18px; }
+.zukan-switch a { flex: 0 1 220px; text-align: center; padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 700; }
+.zukan-switch a.is-current { background: var(--accent); border-color: var(--accent); color: #fff; }
+.zukan-switch a:hover:not(.is-current) { border-color: var(--accent); }
+@media (max-width: 720px) { .zukan-switch a { flex: 1 1 0; font-size: 13px; padding: 10px 8px; } }
+
 .journey-intent-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -5551,11 +5558,16 @@ html.mado-embedded-web .spot-page-rail-affiliate-group { display: none !importan
 }
 
 /* Shared mobile placement for the rail's non-affiliate journey cards. */
+/* 左ペインの末尾: 特集の一覧（図鑑）への文字リンク。カードを増やさずに全特集へ行ける */
+.spot-page-rail-all-features { display: block; padding: .75rem .85rem .9rem; border-top: 1px solid var(--line); color: var(--accent); font-size: 13px; font-weight: 700; text-decoration: none; }
+.spot-page-rail-all-features:hover, .spot-page-rail-all-features:focus-visible { text-decoration: underline; text-underline-offset: 3px; }
+.spot-page-rail-live img { object-fit: cover; }
 .spot-page-mobile-promos { display: none; }
 @media (max-width: 1099px) {
   .spot-page-mobile-promos { display: grid; gap: 0; max-width: 620px; margin: 10px auto 0; padding: 0 20px; }
   .spot-page-mobile-promos .spot-page-rail-app,
-  .spot-page-mobile-promos .spot-page-rail-disney { padding-inline: 0; }
+  .spot-page-mobile-promos .spot-page-rail-disney,
+  .spot-page-mobile-promos .spot-page-rail-all-features { padding-inline: 0; }
   .spot-page-utility .mieru-wrap { max-width: none; margin: 0; }
 }
 @media (min-width: 1100px) {
