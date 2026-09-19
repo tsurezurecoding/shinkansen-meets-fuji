@@ -62,6 +62,24 @@
     return null;
   }
 
+  /* 時刻 clock（分）に列車がいる位置（基準分数）。停車中は駅の基準分数にとどまる。
+   * 走行区間は前駅の発から次駅の着までで線形。範囲外は null。
+   * すれ違い計算（Sparkling Dreams）で、2列車の位置が時刻上で交わる点を探すのに使う。 */
+  function positionAt(stops, clock) {
+    if (!stops.length) return null;
+    for (var i = 0; i < stops.length; i++) {
+      var s = stops[i];
+      var arr = s.arr != null ? s.arr : s.clock;
+      if (clock >= arr && clock <= s.clock) return s.ref;
+      if (i < stops.length - 1) {
+        var b = stops[i + 1];
+        var bArr = b.arr != null ? b.arr : b.clock;
+        if (clock > s.clock && clock < bArr) return s.ref + (b.ref - s.ref) * (clock - s.clock) / (bArr - s.clock);
+      }
+    }
+    return null;
+  }
+
   /* 停車駅と同じ基準分数を持つスポットが、駅の東京側(-1)か新大阪側(+1)か。
    * 位置は viewpoint（車窓から見る地点）を優先し、無ければ map（対象物）を線路へ投影する。
    * 列車の停車位置は駅中心から100m前後ずれるため、150m以内は判定しない(0)。
@@ -106,6 +124,7 @@
     tokaidoStops: tokaidoStops,
     interpolateSpot: interpolateSpot,
     spotStationSide: spotStationSide,
+    positionAt: positionAt,
     trainCandidates: trainCandidates,
   };
 })(typeof window !== "undefined" ? window : this);

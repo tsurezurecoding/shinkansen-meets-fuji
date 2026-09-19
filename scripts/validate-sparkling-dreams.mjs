@@ -264,12 +264,22 @@ expect(/DATE_PATTERNS/.test(calculatorCode), "sparkling-dreams.js: date pattern 
 expect(/SHINKANSEN_TIMETABLE/.test(calculatorCode), "sparkling-dreams.js: timetable dataset is not loaded");
 expect(/timetable\.stations/.test(calculatorCode), "sparkling-dreams.js: timetable station names are not loaded");
 expect(/refStations/.test(calculatorCode) && /intersections/.test(calculatorCode), "sparkling-dreams.js: route reference-station interpolation is missing");
+// 列車の選び方は列車選択ページと同じ部品（train-picker.js）、時刻は train-select.js の着発で出す
+expect(/MADO_TRAIN_PICKER\.mount\(/.test(calculatorCode) && /MADO_TRAIN_SELECT/.test(calculatorCode) && /positionAt\(/.test(calculatorCode), "sparkling-dreams.js: must use the shared train picker and train-select.js timing");
+for (const [label, html] of [["sparkling-dreams.html", page], ["en/sparkling-dreams.html", englishPage]]) {
+  const selectScript = html.indexOf("train-select.js");
+  const pickerScript = html.indexOf("train-picker.js");
+  const pageScript = html.indexOf("sparkling-dreams.js?");
+  expect(html.includes("data-train-picker") && !html.includes('id="sdTrain"'), `${label}: the shared train picker must replace the single train dropdown`);
+  expect(selectScript > -1 && pickerScript > selectScript && pageScript > pickerScript, `${label}: train-select.js and train-picker.js must load before sparkling-dreams.js`);
+}
 expect(calculatorCode.includes("E席側") && calculatorCode.includes("A席側") && calculatorCode.includes("±5分"), "sparkling-dreams.js: seat-side guidance or tolerance caveat is missing");
 
 const context = { window: {}, console };
 context.window.window = context.window;
 vm.runInNewContext(await readAppFile("data/timetable.js"), context, { filename: "data/timetable.js" });
 vm.runInNewContext(`${await readAppFile("data.js")}\nglobalThis.__ROUTE = ROUTE;`, context, { filename: "data.js" });
+vm.runInNewContext(await readAppFile("train-select.js"), context, { filename: "train-select.js" });
 vm.runInNewContext(calculatorCode, context, { filename: "sparkling-dreams.js" });
 const api = context.window.SPARKLING_DREAMS_CALCULATOR;
 expect(api && typeof api.calculate === "function", "sparkling-dreams.js: calculator API was not initialized");
@@ -293,8 +303,8 @@ if (api) {
     }
   }
 
-  const westTrain = api.getWindowTrains("west").find((train) => train.type === "Nozomi" && train.number === 1);
-  const eastTrain = api.getWindowTrains("east").find((train) => train.type === "Nozomi" && train.number === 2);
+  const westTrain = api.findTrain({ type: "Nozomi", number: 1, direction: "west" });
+  const eastTrain = api.findTrain({ type: "Nozomi", number: 2, direction: "east" });
   const specialEast = api.findTrain({ type: "Hikari", number: 636, direction: "east" });
   expect(typeof api.trainStaticLine === "function", "calculator fixture: train static-line formatter is missing");
   expect(westTrain, "calculator fixture: Nozomi 1 westbound option is missing");
@@ -318,6 +328,11 @@ if (api) {
     expect(eastEncounter.status === "encounter" && eastEncounter.matches?.length > 0, "calculator fixture: eastbound encounter did not resolve");
     expect(pending.status === "pending", "calculator fixture: pending date did not resolve as pending");
     expect(outsideRange.status === "outside-range", "calculator fixture: outside-range date did not resolve as outside-range");
+    // 乗車駅から先のすれ違いだけを返す（名古屋から乗ると、名古屋より東京側の交点は出ない）
+    const fromNagoya = api.calculate("2026-08-08", "west", westKey, "Nagoya");
+    const nagoyaDeparture = Number(westTrain.times.Nagoya.slice(0, 2)) * 60 + Number(westTrain.times.Nagoya.slice(3));
+    expect((fromNagoya.matches || []).every((match) => match.time >= nagoyaDeparture), "calculator fixture: encounters before the boarding station must not be returned");
+    expect((fromNagoya.matches || []).length <= (westEncounter.matches || []).length, "calculator fixture: boarding mid-route must not add encounters");
     for (const match of [...(westEncounter.matches || []), ...(eastEncounter.matches || [])]) {
       expect(/^\d{2}:\d{2}$/.test(match.clock), "calculator fixture: encounter clock is not formatted as HH:MM");
       expect(match.segment?.from && match.segment?.to, "calculator fixture: route segment is missing");

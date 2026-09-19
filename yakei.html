@@ -12,7 +12,7 @@
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/yakei.html">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/yakei.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/yakei.html">
-  <link rel="stylesheet" href="style.css?v=16a20788">
+  <link rel="stylesheet" href="style.css?v=7e7b3564">
   <link rel="icon" href="favicon.ico" sizes="any">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="新幹線の窓">
@@ -61,12 +61,10 @@
 
     .yk-tool { max-width: 760px; margin: 0 auto; padding: 40px 20px 0; }
     .yk-tool-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 22px; box-shadow: var(--shadow); }
+    @media (max-width: 480px) { .yk-tool-card { padding: 20px 14px; } }
     .yk-tool-card h2 { font-family: var(--font-serif); font-size: 20px; margin: 0 0 6px; }
     .yk-tool-note { margin: 0 0 16px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
-    .yk-form { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; border-top: 1px solid var(--line); padding-top: 16px; }
-    .yk-field { display: grid; gap: 5px; }
-    .yk-field label { font-size: 11.5px; letter-spacing: .06em; color: var(--ink-soft); font-weight: 700; }
-    .yk-field select, .yk-field input { font-family: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+    .yk-setup { border-top: 1px solid var(--line); padding-top: 16px; max-width: 560px; }
     .yk-result { margin-top: 18px; display: grid; gap: 6px; }
     .yk-row { display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 10px; background: var(--paper-deep); }
     .yk-row.is-dark { background: #16273a; color: #f3f6fa; }
@@ -187,28 +185,18 @@
 
     <section class="yk-tool" aria-labelledby="ykToolTitle">
       <div class="yk-tool-card">
-        <h2 id="ykToolTitle">その列車、どこから暗くなるか</h2>
-        <p class="yk-tool-note"><span class="copy-chunk">日の入りは季節で1時間以上ずれます。</span><span class="copy-chunk">12月なら小田原の手前でもう暗く、</span><span class="copy-chunk">7月なら名古屋を過ぎてもまだ明るい。</span><span class="copy-chunk">東海道新幹線の東京〜新大阪について、</span><span class="copy-chunk">乗る日と出発時刻を入れてください。</span></p>
-        <form class="yk-form" id="ykForm">
-          <div class="yk-field">
-            <label for="ykDir">方向</label>
-            <select id="ykDir">
-              <option value="down">東京発（下り）</option>
-              <option value="up">新大阪発（上り）</option>
-            </select>
+        <h2 id="ykToolTitle"><span class="copy-chunk">その列車、</span><span class="copy-chunk">どこから暗くなるか</span></h2>
+        <p class="yk-tool-note"><span class="copy-chunk">日の入りは季節で1時間以上ずれます。</span><span class="copy-chunk">12月なら小田原の手前でもう暗く、</span><span class="copy-chunk">7月なら名古屋を過ぎてもまだ明るい。</span><span class="copy-chunk">東海道新幹線の東京〜新大阪について、</span><span class="copy-chunk">乗る日と列車を選んでください。</span></p>
+        <div class="yk-setup">
+          <div class="setup-row">
+            <label class="setup-label" for="ykDate">乗車日</label>
+            <input type="date" id="ykDate" class="setup-date">
           </div>
-          <div class="yk-field">
-            <label for="ykTime">出発時刻</label>
-            <input type="time" id="ykTime" value="19:00" step="300">
-          </div>
-          <div class="yk-field">
-            <label for="ykDate">乗車日</label>
-            <input type="date" id="ykDate">
-          </div>
-        </form>
+          <div data-train-picker></div>
+        </div>
         <div class="yk-result" id="ykResult" aria-live="polite"></div>
         <p class="yk-summary" id="ykSummary"></p>
-        <p class="yk-tool-disclaimer">通過時刻はのぞみ基準の目安です（東京〜新大阪を147分として計算）。停車駅の多い列車や遅れがあるとずれます。日の入りは東海道沿線の平均で近似した簡易計算で、実際の空の明るさは天候にも左右されます。</p>
+        <p class="yk-tool-disclaimer">通過時刻は、選んだ列車の公式ダイヤ（各駅の着発）から計算した目安です。遅れがあるとずれます。日の入りは東海道沿線の平均で近似した簡易計算で、実際の空の明るさは天候にも左右されます。</p>
       </div>
     </section>
 
@@ -496,13 +484,17 @@
   </footer>
 
   <script>
-    window.YAKEI_SPOTS = [{"id":"tokyo-tower","min":3,"side":"E"},{"id":"maruko-bridge","min":13,"side":"E"},{"id":"musashi-kosugi-towers","min":14,"side":"E"},{"id":"odawara-castle","min":31,"side":"A"},{"id":"shimizu-port-chikyu","min":50,"side":"A"},{"id":"kakegawa","min":64,"side":"E"},{"id":"nichiban-anjo","min":88,"side":"E"},{"id":"nagoya-station-skyline","min":94,"side":"E"},{"id":"kiyosu","min":99,"side":"E"},{"id":"sennenq-sign","min":111.5,"side":"A"},{"id":"lotte-shiga","min":119,"side":"A"},{"id":"seta-karahashi","min":127,"side":"E"},{"id":"toji","min":131,"side":"A"},{"id":"hirakata-park-wheel","min":139,"side":"A"},{"id":"torikai-train-depot","min":141,"side":"E"}];
-    window.YAKEI_NAMES = {"tokyo-tower":"東京タワー","maruko-bridge":"丸子橋","musashi-kosugi-towers":"武蔵小杉のタワマン群","odawara-castle":"小田原城","shimizu-port-chikyu":"清水港とちきゅう","kakegawa":"掛川城","nichiban-anjo":"セロテープの壁看板","nagoya-station-skyline":"名古屋駅前","kiyosu":"清洲城","sennenq-sign":"せんねん灸の看板","lotte-shiga":"ロッテ滋賀工場の菓子看板","seta-karahashi":"瀬田の唐橋","toji":"東寺 五重塔","hirakata-park-wheel":"ひらパーの観覧車","torikai-train-depot":"鳥飼車両基地"};
-    window.YAKEI_TOTAL_MINUTES = 147;
+    // 載せるスポットの一覧だけ。分数・席側・名前は data.js（data-runtime.js）から読む
+    window.YAKEI_SPOT_IDS = ["tokyo-tower","maruko-bridge","musashi-kosugi-towers","odawara-castle","shimizu-port-chikyu","kakegawa","nichiban-anjo","nagoya-station-skyline","kiyosu","sennenq-sign","lotte-shiga","seta-karahashi","toji","hirakata-park-wheel","torikai-train-depot"];
     window.YAKEI_LANG = "ja";
   </script>
   <script src="spot-page-shared-data.js?v=a97194e0"></script>
   <script src="spot-page-shared.js?v=e7af334c"></script>
-  <script src="yakei.js?v=61d832b1"></script>
+  <script src="data/timetable.js?v=5c23712f"></script>
+  <script src="data-runtime.js?v=7d8fcb19"></script>
+  <script src="track.js?v=fa004fe2"></script>
+  <script src="train-select.js?v=88f5b2d7"></script>
+  <script src="train-picker.js?v=2fe929c7"></script>
+  <script src="yakei.js?v=dd5220d5"></script>
 </body>
 </html>

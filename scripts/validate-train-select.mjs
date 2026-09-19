@@ -172,4 +172,51 @@ for (const page of linkedTrainPages) {
 }
 if (!linkedTrainCount) fail("no generated train-number links were found");
 
-console.log(`Validated train-select.js: ${westFromTokyo.length} west/Tokyo candidates, ${stops.length} stops on sample train, ${linkedTrainCount} generated links, wiring OK across ${pagesLoadingAppJs.length + 1} pages.`);
+// ---- 7. 列車選択の部品（train-picker.js）を3ページが共有していること ----
+// 2026-09-19: Sparkling Dreams（全列車の1つのプルダウン）と夜景（時刻だけ・のぞみ基準の固定分数）が
+// 列車選択ページと別の作法・別の計算になっていたのを揃えた。再び独自実装へ戻らないよう確認する。
+const trainPickerSrc = await readFile(rel("train-picker.js"), "utf8");
+{
+  const pickerContext = { window: {} };
+  vm.runInNewContext(trainSelectSrc, pickerContext, { filename: "train-select.js" });
+  vm.runInNewContext(trainPickerSrc, pickerContext, { filename: "train-picker.js" });
+  if (typeof pickerContext.window.MADO_TRAIN_PICKER?.mount !== "function") fail("train-picker.js does not expose MADO_TRAIN_PICKER.mount");
+}
+const pickerPages = [
+  ["start.html", "app.js"], ["en/start.html", "app.js"],
+  ["sparkling-dreams.html", "sparkling-dreams.js"], ["en/sparkling-dreams.html", "sparkling-dreams.js"],
+  ["yakei.html", "yakei.js"], ["en/yakei.html", "yakei.js"],
+];
+for (const [page, pageScript] of pickerPages) {
+  const html = await readFile(rel(page), "utf8");
+  if (!html.includes("data-train-picker")) fail(`${page} has no [data-train-picker] container`);
+  const selectIdx = html.indexOf("train-select.js");
+  const pickerIdx = html.indexOf("train-picker.js");
+  const pageIdx = html.search(new RegExp(`src="(?:\\.\\./)?${pageScript.replace(".", "\\.")}\\?`));
+  if (selectIdx === -1 || pickerIdx === -1) fail(`${page} must load train-select.js and train-picker.js`);
+  if (!(selectIdx < pickerIdx && pickerIdx < pageIdx)) fail(`${page} must load train-select.js, then train-picker.js, before ${pageScript}`);
+}
+if (!/MADO_TRAIN_PICKER\.mount\(/.test(appJsSrc)) fail("app.js must mount the shared train picker");
+for (const name of ["sparkling-dreams.js", "yakei.js"]) {
+  const src = await readFile(rel(name), "utf8");
+  if (!/MADO_TRAIN_PICKER\.mount\(/.test(src)) fail(`${name} must mount the shared train picker`);
+  if (!/MADO_TRAIN_SELECT/.test(src)) fail(`${name} must take passing times from train-select.js`);
+  if (src.includes(CORE_LINE)) fail(`${name} re-implements the interpolation core line`);
+}
+// 夜景ページはスポットの一覧（id）だけを持ち、分数・席側・名前は data.js から読む
+{
+  const spotIds = new Set();
+  vm.runInNewContext("globalThis.__SPOT_IDS = SPOTS.map((s) => s.id);", context, { filename: "spot-ids" });
+  context.__SPOT_IDS.forEach((id) => spotIds.add(id));
+  for (const page of ["yakei.html", "en/yakei.html"]) {
+    const html = await readFile(rel(page), "utf8");
+    if (/YAKEI_SPOTS\s*=|YAKEI_NAMES\s*=|YAKEI_TOTAL_MINUTES/.test(html)) fail(`${page} still hand-copies spot minutes, sides, or names`);
+    const match = /window\.YAKEI_SPOT_IDS = (\[[^\]]*\]);/.exec(html);
+    if (!match) fail(`${page} has no window.YAKEI_SPOT_IDS list`);
+    const ids = JSON.parse(match[1]);
+    const missing = ids.filter((id) => !spotIds.has(id));
+    if (!ids.length || missing.length) fail(`${page} lists spots that are not in data.js: ${missing.join(", ")}`);
+  }
+}
+
+console.log(`Validated train-select.js: ${westFromTokyo.length} west/Tokyo candidates, ${stops.length} stops on sample train, ${linkedTrainCount} generated links, wiring OK across ${pagesLoadingAppJs.length + 1} pages, shared picker on ${pickerPages.length} pages.`);
