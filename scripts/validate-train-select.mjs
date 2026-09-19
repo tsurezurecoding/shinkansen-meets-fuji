@@ -88,6 +88,22 @@ if (stops.length >= 2) {
   }
 }
 
+// 停車駅と同じ分数のスポット: 下りは東京側=着・新大阪側=発、上りはその逆、側不明=着
+{
+  const west = [{ ref: 80, clock: 600, arr: 600 }, { ref: 88, clock: 610, arr: 605 }, { ref: 95, clock: 620, arr: 618 }];
+  const east = west.map((s) => ({ ...s })).reverse().map((s, i, a) => ({ ...s, clock: 600 + i * 10, arr: 600 + i * 10 - (i === 1 ? 5 : 0) }));
+  const cases = [
+    [west, -1, 605], [west, 1, 610], [west, 0, 605],
+    [east, -1, 610], [east, 1, 605], [east, 0, 605],
+  ];
+  for (const [stops, side, want] of cases) {
+    const got = MTS.interpolateSpot(88, stops, side);
+    if (got !== want) fail(`interpolateSpot at a stopping station (side ${side}, ${stops === west ? "west" : "east"}) gave ${got}, want ${want}`);
+  }
+  if (typeof MTS.spotStationSide !== "function") fail("MADO_TRAIN_SELECT.spotStationSide is not a function");
+  if (MTS.spotStationSide({ minutesFromTokyo: 88 }, ROUTE, null) !== 0) fail("spotStationSide should be 0 without track data");
+}
+
 // ---- 3. アルゴリズム本体の二重実装ガード ----
 // interpolateSpot の中核行(線形補間の丸め込み)は train-select.js だけに存在するはず。
 const CORE_LINE = "Math.round(a.clock + f * (bArr - a.clock))";

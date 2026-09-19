@@ -37,7 +37,19 @@
   /* 実ダイヤ補間: スポットの基準分数を、前駅の発から次駅の着までで線形補間する。
    * 2026-09-19: 発時刻どうしで補間すると、こだま・ひかりの途中停車（1〜6分）が駅間の走行へ
    * 按分され、通過予測が最大5分遅れていた（実走7便で確認）。停車駅上のスポットは着時刻になる。 */
-  function interpolateSpot(spotRef, stops) {
+  function interpolateSpot(spotRef, stops, stationSide) {
+    /* 停車駅と同じ基準分数のスポットは、駅の手前か先かで着と発を使い分ける。
+     * stationSide: -1 = 東京側、+1 = 新大阪側、0/未指定 = 不明（着時刻）。
+     * 下りは東京側を到着前に、上りは新大阪側を到着前に通る。 */
+    var west = stops.length > 1 && stops[stops.length - 1].ref > stops[0].ref;
+    for (var k = 0; k < stops.length; k++) {
+      var s = stops[k];
+      if (s.ref !== spotRef) continue;
+      var arr = s.arr != null ? s.arr : s.clock;
+      if (!stationSide) return arr;
+      var beforeArrival = west ? stationSide < 0 : stationSide > 0;
+      return beforeArrival ? arr : s.clock;
+    }
     for (var i = 0; i < stops.length - 1; i++) {
       var a = stops[i], b = stops[i + 1];
       var lo = Math.min(a.ref, b.ref), hi = Math.max(a.ref, b.ref);
@@ -48,6 +60,24 @@
       }
     }
     return null;
+  }
+
+  /* 停車駅と同じ基準分数を持つスポットが、駅の東京側(-1)か新大阪側(+1)か。
+   * 位置は viewpoint（車窓から見る地点）を優先し、無ければ map（対象物）を線路へ投影する。
+   * 列車の停車位置は駅中心から100m前後ずれるため、150m以内は判定しない(0)。
+   * 線路データ(track)が無いページ（mieru.html）では常に0。 */
+  var STATION_SIDE_MIN_KM = 0.15;
+  function spotStationSide(spot, route, track) {
+    if (!spot || !track || typeof track.anchors !== "function") return 0;
+    var station = null;
+    route.refStations.forEach(function (s) { if (s.min === spot.minutesFromTokyo) station = s; });
+    if (!station) return 0;
+    var anchor = track.anchors().filter(function (a) { return a.id === station.id; })[0];
+    var pos = spot.viewpoint || spot.map;
+    if (!anchor || !pos || typeof pos.lat !== "number") return 0;
+    var d = track.projectToTrack(pos.lat, pos.lng).km - anchor.km;
+    if (Math.abs(d) < STATION_SIDE_MIN_KM) return 0;
+    return d < 0 ? -1 : 1;
   }
 
   /* 列車検索: 方向・乗車駅に合う列車を出発時刻順に並べる */
@@ -75,6 +105,7 @@
     toMin: toMin,
     tokaidoStops: tokaidoStops,
     interpolateSpot: interpolateSpot,
+    spotStationSide: spotStationSide,
     trainCandidates: trainCandidates,
   };
 })(typeof window !== "undefined" ? window : this);

@@ -631,9 +631,16 @@ function tokaidoStops(train) {
   return MTS.tokaidoStops(ROUTE, train);
 }
 
-/* 実ダイヤ補間: スポットの基準分数を、前後の停車駅時刻で線形補間する */
-function interpolateSpot(spotRef, stops) {
-  return MTS.interpolateSpot(spotRef, stops);
+/* 実ダイヤ補間: スポットの基準分数を、前駅の発から次駅の着までで線形補間する */
+function interpolateSpot(spotRef, stops, stationSide) {
+  return MTS.interpolateSpot(spotRef, stops, stationSide);
+}
+
+/* タイムラインへ置くスポット1件。停車駅と同じ分数のスポットは、駅の手前か先か
+   （stationSide）で着・発を選び、同時刻の並びも進行方向の位置（seq）で決める。 */
+function timelinePoint(sp, spotClock, dirSign) {
+  const side = MTS.spotStationSide(sp, ROUTE, window.MADO_TRACK);
+  return { sp, clock: spotClock(sp.minutesFromTokyo, side), seq: (sp.minutesFromTokyo + side * 0.01) * dirSign };
 }
 
 /* 列車検索: 方向・乗車駅に合う列車を出発時刻順に並べる */
@@ -657,7 +664,7 @@ function computeJourney(train, depMin) {
     const all = tokaidoStops(train);
     const bi = all.findIndex((s) => s.id === boardId);
     stops = all.slice(bi);
-    spotClock = (ref) => interpolateSpot(ref, stops);
+    spotClock = (ref, side) => interpolateSpot(ref, stops, side);
   } else {
     stops = ROUTE.refStations
       .filter((s) => s.major && (s.min - boardRef) * dirSign >= 0)
@@ -667,9 +674,9 @@ function computeJourney(train, depMin) {
   }
   const spots = SPOTS
     .filter((sp) => sp.minutesFromTokyo != null)
-    .map((sp) => ({ sp, clock: spotClock(sp.minutesFromTokyo) }))
+    .map((sp) => timelinePoint(sp, spotClock, dirSign))
     .filter((x) => x.clock != null)
-    .sort((a, b) => a.clock - b.clock);
+    .sort((a, b) => a.clock - b.clock || a.seq - b.seq);
   return {
     mode: train ? "train" : "estimate",
     train,
@@ -803,16 +810,16 @@ function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelC
   const boardRef = REF[boardId];
   const dirSign = direction === "west" ? 1 : -1;
   const spotClock = journey.mode === "train"
-    ? (ref) => interpolateSpot(ref, journey.stops)
+    ? (ref, side) => interpolateSpot(ref, journey.stops, side)
     : (ref) => (ref - boardRef) * dirSign < 0 ? null : journey.depMin + Math.abs(ref - boardRef);
   const points = []
     .concat(board ? boardCollectionSpots() : [])
     .concat(wheel ? wheelCollectionSpots() : [])
-    .map((sp) => ({ sp, clock: spotClock(sp.minutesFromTokyo) }))
+    .map((sp) => timelinePoint(sp, spotClock, dirSign))
     .filter((item) => item.clock != null);
   return journey.spots
     .concat(points)
-    .sort((a, b) => a.clock - b.clock || timeline727Order(a.sp) - timeline727Order(b.sp));
+    .sort((a, b) => a.clock - b.clock || timeline727Order(a.sp) - timeline727Order(b.sp) || a.seq - b.seq);
 }
 function timeline727Order(spot) {
   if (spot.id === "727-board") return 0;
@@ -1554,10 +1561,12 @@ function renderTimeline() {
     </span>
     ${tag}`;
   const items = [];
-  journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, st: s }));
+  const dirSign = journey.direction === "west" ? 1 : -1;
+  journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, seq: s.ref * dirSign, st: s }));
   currentTimelineSpotCandidates()
-    .forEach((x) => items.push({ kind: "spot", clock: x.clock, sp: x.sp }));
-  items.sort((a, b) => a.clock - b.clock || (a.kind === "station" ? -1 : 1));
+    .forEach((x) => items.push({ kind: "spot", clock: x.clock, seq: x.seq, sp: x.sp }));
+  // 同時刻は進行方向の位置順（到着前のスポット→駅→発車後のスポット）。位置も同じなら駅を先に置く
+  items.sort((a, b) => a.clock - b.clock || a.seq - b.seq || (a.kind === "station" ? -1 : 1));
   const hasSpotItems = items.some((it) => it.kind === "spot");
   if (!hasSpotItems && activeTimelineFilters.has("favorites")) {
     $("#timeline").innerHTML = `<li class="tl-empty">${escapeHTML(t("tlFavoritesEmpty"))}</li>`;
