@@ -73,9 +73,40 @@ if (stops.length >= 2) {
   if (interpolated < lo || interpolated > hi) fail("interpolateSpot returned a clock outside the bounding stops");
 }
 
+// 着時刻を持つ列車では、停車駅上の基準分数が着時刻になり、次の区間は発から始まること
+{
+  const withArrivals = TT.trains.find((tr) => tr.arrivals && Object.keys(tr.arrivals).length >= 2);
+  if (withArrivals) {
+    const s = MTS.tokaidoStops(ROUTE, withArrivals);
+    const mid = s.findIndex((st, i) => i > 0 && i < s.length - 1 && st.arr < st.clock);
+    if (mid > 0) {
+      const at = MTS.interpolateSpot(s[mid].ref, s);
+      if (at !== s[mid].arr) fail(`interpolateSpot at a stopping station should give its arrival (${s[mid].id}: got ${at}, want ${s[mid].arr})`);
+      const after = MTS.interpolateSpot((s[mid].ref + s[mid + 1].ref) / 2, s);
+      if (after < s[mid].clock || after > s[mid + 1].arr) fail(`interpolateSpot after ${s[mid].id} should run from its departure to the next arrival`);
+    }
+  }
+}
+
+// 停車駅と同じ分数のスポット: 下りは東京側=着・新大阪側=発、上りはその逆、側不明=着
+{
+  const west = [{ ref: 80, clock: 600, arr: 600 }, { ref: 88, clock: 610, arr: 605 }, { ref: 95, clock: 620, arr: 618 }];
+  const east = west.map((s) => ({ ...s })).reverse().map((s, i, a) => ({ ...s, clock: 600 + i * 10, arr: 600 + i * 10 - (i === 1 ? 5 : 0) }));
+  const cases = [
+    [west, -1, 605], [west, 1, 610], [west, 0, 605],
+    [east, -1, 610], [east, 1, 605], [east, 0, 605],
+  ];
+  for (const [stops, side, want] of cases) {
+    const got = MTS.interpolateSpot(88, stops, side);
+    if (got !== want) fail(`interpolateSpot at a stopping station (side ${side}, ${stops === west ? "west" : "east"}) gave ${got}, want ${want}`);
+  }
+  if (typeof MTS.spotStationSide !== "function") fail("MADO_TRAIN_SELECT.spotStationSide is not a function");
+  if (MTS.spotStationSide({ minutesFromTokyo: 88 }, ROUTE, null) !== 0) fail("spotStationSide should be 0 without track data");
+}
+
 // ---- 3. アルゴリズム本体の二重実装ガード ----
 // interpolateSpot の中核行(線形補間の丸め込み)は train-select.js だけに存在するはず。
-const CORE_LINE = "Math.round(a.clock + f * (b.clock - a.clock))";
+const CORE_LINE = "Math.round(a.clock + f * (bArr - a.clock))";
 const appJsSrc = await readFile(rel("app.js"), "utf8");
 const mieruSrc = await readFile(rel("mieru.html"), "utf8");
 if (appJsSrc.includes(CORE_LINE)) {

@@ -3725,6 +3725,8 @@ const SPOTS = [
       },
     ],
     map: { lat: 35.31579561, lng: 136.68565144, ja: "岐阜羽島駅 車窓の目安位置", en: "Approximate viewing location at Gifu-Hashima" },
+    // 下りは岐阜羽島の到着前（東京側）に見える（2026-09-19会長の実車確認）。駅中心から東京側へ約300mの線路上
+    viewpoint: { lat: 35.314097, lng: 136.687589 },
   },
   {
     id: "gifu-castle",

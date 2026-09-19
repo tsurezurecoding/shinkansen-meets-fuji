@@ -47,6 +47,21 @@ for (const train of timetable.trains) {
       throw new Error(`${train.type} ${train.number} has unknown station ${station}`);
     }
   }
+
+  // arrivals: 途中停車駅の着時刻。発時刻（times）を持つ途中駅だけに置き、発より後にならない
+  if (train.arrivals !== undefined) {
+    for (const [station, arr] of Object.entries(train.arrivals)) {
+      const label = `${train.type} ${train.number} arrival at ${station}`;
+      if (!train.times[station]) throw new Error(`${label} has no departure in times`);
+      if (station === train.originStation || station === train.destination) {
+        throw new Error(`${label} must not be the origin or destination`);
+      }
+      if (!/^\d{2}:\d{2}$/.test(arr)) throw new Error(`${label} is not HH:MM: ${arr}`);
+      const toMin = (t) => Number(t.slice(0, 2)) * 60 + Number(t.slice(3));
+      const dwell = (toMin(train.times[station]) - toMin(arr) + 1440) % 1440;
+      if (dwell > 30) throw new Error(`${label} (${arr}) is not shortly before its departure ${train.times[station]}`);
+    }
+  }
 }
 
 console.log(`Validated ${timetable.trains.length} trains and ${timetable.stations.length} stations.`);

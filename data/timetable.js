@@ -267,6 +267,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:50",
         "Tokyo": "10:57"
       },
+      "arrivals": {
+        "Kokura": "06:17",
+        "Shin-Yamaguchi": "06:35",
+        "Hiroshima": "07:07",
+        "Okayama": "07:43",
+        "Shin-Kobe": "08:15",
+        "Shin-Osaka": "08:28",
+        "Kyoto": "08:43",
+        "Nagoya": "09:19",
+        "Shin-Yokohama": "10:37",
+        "Shinagawa": "10:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019911.html"
     },
     {
@@ -284,6 +296,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:40",
         "Shinagawa": "08:51",
         "Tokyo": "08:57"
+      },
+      "arrivals": {
+        "Shin-Kobe": "06:18",
+        "Shin-Osaka": "06:31",
+        "Kyoto": "06:46",
+        "Nagoya": "07:21",
+        "Shin-Yokohama": "08:39",
+        "Shinagawa": "08:50"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089441.html"
     },
@@ -305,6 +325,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:50",
         "Tokyo": "09:57"
       },
+      "arrivals": {
+        "Fukuyama": "06:24",
+        "Okayama": "06:41",
+        "Shin-Kobe": "07:15",
+        "Shin-Osaka": "07:28",
+        "Kyoto": "07:43",
+        "Nagoya": "08:19",
+        "Shin-Yokohama": "09:37",
+        "Shinagawa": "09:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089351.html"
     },
     {
@@ -320,6 +350,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:06",
         "Shinagawa": "08:17",
         "Tokyo": "08:23"
+      },
+      "arrivals": {
+        "Kyoto": "06:13",
+        "Nagoya": "06:48",
+        "Shin-Yokohama": "08:05",
+        "Shinagawa": "08:16"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026461.html"
     },
@@ -338,6 +374,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:33",
         "Shinagawa": "08:45",
         "Tokyo": "08:51"
+      },
+      "arrivals": {
+        "Shin-Kobe": "06:09",
+        "Shin-Osaka": "06:22",
+        "Kyoto": "06:37",
+        "Nagoya": "07:12",
+        "Shin-Yokohama": "08:32",
+        "Shinagawa": "08:44"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089451.html"
     },
@@ -358,6 +402,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:09",
         "Tokyo": "09:15"
       },
+      "arrivals": {
+        "Himeji": "06:20",
+        "Shin-Kobe": "06:36",
+        "Shin-Osaka": "06:49",
+        "Kyoto": "07:04",
+        "Nagoya": "07:40",
+        "Shin-Yokohama": "08:56",
+        "Shinagawa": "09:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089431.html"
     },
     {
@@ -374,6 +427,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "08:20",
         "Tokyo": "08:26"
       },
+      "arrivals": {
+        "Kyoto": "06:15",
+        "Nagoya": "06:50",
+        "Shin-Yokohama": "08:08",
+        "Shinagawa": "08:19"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021631.html"
     },
     {
@@ -388,6 +447,11 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:55",
         "Shinagawa": "08:06",
         "Tokyo": "08:12"
+      },
+      "arrivals": {
+        "Nagoya": "06:36",
+        "Shin-Yokohama": "07:54",
+        "Shinagawa": "08:05"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178161.html"
     },
@@ -404,6 +468,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:16",
         "Shinagawa": "08:27",
         "Tokyo": "08:33"
+      },
+      "arrivals": {
+        "Kyoto": "06:21",
+        "Nagoya": "06:55",
+        "Shin-Yokohama": "08:15",
+        "Shinagawa": "08:26"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021641.html"
     },
@@ -425,6 +495,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:02",
         "Tokyo": "09:09"
       },
+      "arrivals": {
+        "Kyoto": "06:24",
+        "Maibara": "06:44",
+        "Gifu-Hashima": "07:00",
+        "Nagoya": "07:14",
+        "Hamamatsu": "07:45",
+        "Shizuoka": "08:10",
+        "Shin-Yokohama": "08:50",
+        "Shinagawa": "09:01"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062341.html"
     },
     {
@@ -441,6 +521,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "08:33",
         "Tokyo": "08:39"
       },
+      "arrivals": {
+        "Kyoto": "06:28",
+        "Nagoya": "07:02",
+        "Shin-Yokohama": "08:20",
+        "Shinagawa": "08:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026451.html"
     },
     {
@@ -456,6 +542,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "06:49",
         "Shinagawa": "07:00",
         "Tokyo": "07:06"
+      },
+      "arrivals": {
+        "Atami": "06:24",
+        "Odawara": "06:32",
+        "Shin-Yokohama": "06:48",
+        "Shinagawa": "06:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129841.html"
     },
@@ -476,6 +568,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:29",
         "Tokyo": "09:36"
       },
+      "arrivals": {
+        "Himeji": "06:37",
+        "Shin-Kobe": "06:54",
+        "Shin-Osaka": "07:07",
+        "Kyoto": "07:22",
+        "Nagoya": "07:58",
+        "Shin-Yokohama": "09:17",
+        "Shinagawa": "09:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089411.html"
     },
     {
@@ -492,6 +593,13 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:57",
         "Shinagawa": "08:09",
         "Tokyo": "08:15"
+      },
+      "arrivals": {
+        "Toyohashi": "06:39",
+        "Hamamatsu": "06:57",
+        "Shizuoka": "07:18",
+        "Shin-Yokohama": "07:56",
+        "Shinagawa": "08:08"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027191.html"
     },
@@ -523,6 +631,26 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:36",
         "Tokyo": "11:42"
       },
+      "arrivals": {
+        "Higashi-Hiroshima": "06:31",
+        "Mihara": "06:45",
+        "Shin-Onomichi": "06:51",
+        "Fukuyama": "06:59",
+        "Shin-Kurashiki": "07:10",
+        "Okayama": "07:21",
+        "Aioi": "07:55",
+        "Himeji": "08:07",
+        "Nishi-Akashi": "08:21",
+        "Shin-Kobe": "08:33",
+        "Shin-Osaka": "08:46",
+        "Kyoto": "09:02",
+        "Nagoya": "09:42",
+        "Hamamatsu": "10:13",
+        "Shizuoka": "10:37",
+        "Atami": "11:04",
+        "Shin-Yokohama": "11:24",
+        "Shinagawa": "11:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128911.html"
     },
     {
@@ -543,6 +671,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "07:53",
         "Tokyo": "08:00"
       },
+      "arrivals": {
+        "Kakegawa": "06:30",
+        "Shizuoka": "06:44",
+        "Shin-Fuji": "06:55",
+        "Mishima": "07:05",
+        "Atami": "07:14",
+        "Odawara": "07:23",
+        "Shin-Yokohama": "07:40",
+        "Shinagawa": "07:52"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129791.html"
     },
     {
@@ -558,6 +696,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:31",
         "Shinagawa": "08:42",
         "Tokyo": "08:48"
+      },
+      "arrivals": {
+        "Kyoto": "06:34",
+        "Nagoya": "07:09",
+        "Shin-Yokohama": "08:30",
+        "Shinagawa": "08:41"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021651.html"
     },
@@ -576,6 +720,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:19",
         "Shinagawa": "07:30",
         "Tokyo": "07:36"
+      },
+      "arrivals": {
+        "Shin-Fuji": "06:34",
+        "Mishima": "06:44",
+        "Atami": "06:52",
+        "Odawara": "07:01",
+        "Shin-Yokohama": "07:18",
+        "Shinagawa": "07:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129821.html"
     },
@@ -598,6 +750,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:18",
         "Tokyo": "10:24"
       },
+      "arrivals": {
+        "Fukuyama": "06:49",
+        "Okayama": "07:05",
+        "Himeji": "07:26",
+        "Shin-Kobe": "07:42",
+        "Shin-Osaka": "07:55",
+        "Kyoto": "08:11",
+        "Nagoya": "08:47",
+        "Shin-Yokohama": "10:06",
+        "Shinagawa": "10:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089361.html"
     },
     {
@@ -611,6 +774,10 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:46",
         "Shinagawa": "07:57",
         "Tokyo": "08:03"
+      },
+      "arrivals": {
+        "Shin-Yokohama": "07:45",
+        "Shinagawa": "07:56"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129141.html"
     },
@@ -636,6 +803,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:23",
         "Tokyo": "09:30"
       },
+      "arrivals": {
+        "Nagoya": "06:40",
+        "Mikawa-Anjo": "06:52",
+        "Toyohashi": "07:12",
+        "Hamamatsu": "07:27",
+        "Kakegawa": "07:40",
+        "Shizuoka": "07:58",
+        "Shin-Fuji": "08:17",
+        "Mishima": "08:31",
+        "Atami": "08:43",
+        "Odawara": "08:51",
+        "Shin-Yokohama": "09:11",
+        "Shinagawa": "09:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178171.html"
     },
     {
@@ -651,6 +832,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:06",
         "Shinagawa": "07:18",
         "Tokyo": "07:24"
+      },
+      "arrivals": {
+        "Atami": "06:41",
+        "Odawara": "06:49",
+        "Shin-Yokohama": "07:05",
+        "Shinagawa": "07:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129851.html"
     },
@@ -674,6 +861,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:26",
         "Tokyo": "11:33"
       },
+      "arrivals": {
+        "Kokura": "06:51",
+        "Shin-Yamaguchi": "07:10",
+        "Hiroshima": "07:42",
+        "Okayama": "08:19",
+        "Shin-Kobe": "08:51",
+        "Shin-Osaka": "09:04",
+        "Kyoto": "09:19",
+        "Nagoya": "09:55",
+        "Shin-Yokohama": "11:14",
+        "Shinagawa": "11:25"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023571.html"
     },
     {
@@ -689,6 +888,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:48",
         "Shinagawa": "09:00",
         "Tokyo": "09:06"
+      },
+      "arrivals": {
+        "Kyoto": "06:52",
+        "Nagoya": "07:28",
+        "Shin-Yokohama": "08:47",
+        "Shinagawa": "08:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021671.html"
     },
@@ -709,6 +914,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "09:25",
         "Shinagawa": "09:36",
         "Tokyo": "09:42"
+      },
+      "arrivals": {
+        "Kyoto": "06:55",
+        "Maibara": "07:15",
+        "Gifu-Hashima": "07:30",
+        "Nagoya": "07:42",
+        "Hamamatsu": "08:13",
+        "Shizuoka": "08:37",
+        "Shin-Yokohama": "09:24",
+        "Shinagawa": "09:35"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062351.html"
     },
@@ -733,6 +948,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:23",
         "Tokyo": "09:30"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "06:52",
+        "Toyohashi": "07:12",
+        "Hamamatsu": "07:27",
+        "Kakegawa": "07:40",
+        "Shizuoka": "07:58",
+        "Shin-Fuji": "08:17",
+        "Mishima": "08:31",
+        "Atami": "08:43",
+        "Odawara": "08:51",
+        "Shin-Yokohama": "09:11",
+        "Shinagawa": "09:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129921.html"
     },
     {
@@ -753,6 +981,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "08:23",
         "Tokyo": "08:30"
       },
+      "arrivals": {
+        "Kakegawa": "06:54",
+        "Shizuoka": "07:08",
+        "Shin-Fuji": "07:21",
+        "Mishima": "07:30",
+        "Atami": "07:42",
+        "Odawara": "07:50",
+        "Shin-Yokohama": "08:11",
+        "Shinagawa": "08:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129801.html"
     },
     {
@@ -769,6 +1007,13 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:24",
         "Shinagawa": "08:35",
         "Tokyo": "08:42"
+      },
+      "arrivals": {
+        "Toyohashi": "07:04",
+        "Hamamatsu": "07:20",
+        "Shizuoka": "07:42",
+        "Shin-Yokohama": "08:23",
+        "Shinagawa": "08:34"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027181.html"
     },
@@ -790,6 +1035,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:27",
         "Shinagawa": "10:39",
         "Tokyo": "10:45"
+      },
+      "arrivals": {
+        "Fukuyama": "07:07",
+        "Okayama": "07:24",
+        "Himeji": "07:44",
+        "Shin-Kobe": "08:00",
+        "Shin-Osaka": "08:13",
+        "Kyoto": "08:29",
+        "Nagoya": "09:04",
+        "Shin-Yokohama": "10:26",
+        "Shinagawa": "10:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089371.html"
     },
@@ -813,6 +1069,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:39",
         "Tokyo": "11:45"
       },
+      "arrivals": {
+        "Kokura": "07:00",
+        "Tokuyama": "07:28",
+        "Hiroshima": "07:50",
+        "Okayama": "08:28",
+        "Shin-Kobe": "09:00",
+        "Shin-Osaka": "09:13",
+        "Kyoto": "09:29",
+        "Nagoya": "10:04",
+        "Shin-Yokohama": "11:26",
+        "Shinagawa": "11:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089661.html"
     },
     {
@@ -828,6 +1096,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:55",
         "Shinagawa": "09:06",
         "Tokyo": "09:12"
+      },
+      "arrivals": {
+        "Kyoto": "06:58",
+        "Nagoya": "07:34",
+        "Shin-Yokohama": "08:54",
+        "Shinagawa": "09:05"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021681.html"
     },
@@ -849,6 +1123,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "08:47",
         "Tokyo": "08:54"
       },
+      "arrivals": {
+        "Kakegawa": "07:06",
+        "Shizuoka": "07:28",
+        "Shin-Fuji": "07:44",
+        "Mishima": "07:55",
+        "Atami": "08:07",
+        "Odawara": "08:15",
+        "Shin-Yokohama": "08:35",
+        "Shinagawa": "08:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129811.html"
     },
     {
@@ -864,6 +1148,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:30",
         "Shinagawa": "07:41",
         "Tokyo": "07:48"
+      },
+      "arrivals": {
+        "Atami": "07:04",
+        "Odawara": "07:12",
+        "Shin-Yokohama": "07:29",
+        "Shinagawa": "07:40"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129861.html"
     },
@@ -881,6 +1171,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:18",
         "Tokyo": "09:24"
       },
+      "arrivals": {
+        "Kyoto": "07:10",
+        "Nagoya": "07:46",
+        "Shin-Yokohama": "09:06",
+        "Shinagawa": "09:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/033631.html"
     },
     {
@@ -896,6 +1192,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "09:09",
         "Shinagawa": "09:21",
         "Tokyo": "09:27"
+      },
+      "arrivals": {
+        "Kyoto": "07:14",
+        "Nagoya": "07:50",
+        "Shin-Yokohama": "09:08",
+        "Shinagawa": "09:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021691.html"
     },
@@ -915,6 +1217,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "08:11",
         "Tokyo": "08:17"
       },
+      "arrivals": {
+        "Shin-Fuji": "07:12",
+        "Mishima": "07:22",
+        "Atami": "07:31",
+        "Odawara": "07:39",
+        "Shin-Yokohama": "07:59",
+        "Shinagawa": "08:10"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129831.html"
     },
     {
@@ -931,6 +1241,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:26",
         "Tokyo": "09:33"
       },
+      "arrivals": {
+        "Kyoto": "07:19",
+        "Nagoya": "07:55",
+        "Shin-Yokohama": "09:14",
+        "Shinagawa": "09:25"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021701.html"
     },
     {
@@ -946,6 +1262,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "07:50",
         "Shinagawa": "08:02",
         "Tokyo": "08:08"
+      },
+      "arrivals": {
+        "Atami": "07:22",
+        "Odawara": "07:30",
+        "Shin-Yokohama": "07:49",
+        "Shinagawa": "08:01"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129871.html"
     },
@@ -969,6 +1291,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:09",
         "Tokyo": "12:15"
       },
+      "arrivals": {
+        "Kokura": "07:30",
+        "Tokuyama": "07:58",
+        "Hiroshima": "08:21",
+        "Okayama": "08:57",
+        "Shin-Kobe": "09:29",
+        "Shin-Osaka": "09:43",
+        "Kyoto": "09:59",
+        "Nagoya": "10:34",
+        "Shin-Yokohama": "11:56",
+        "Shinagawa": "12:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021311.html"
     },
     {
@@ -984,6 +1318,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "09:27",
         "Shinagawa": "09:39",
         "Tokyo": "09:45"
+      },
+      "arrivals": {
+        "Kyoto": "07:29",
+        "Nagoya": "08:04",
+        "Shin-Yokohama": "09:26",
+        "Shinagawa": "09:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062521.html"
     },
@@ -1003,6 +1343,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "09:55",
         "Shinagawa": "10:06",
         "Tokyo": "10:12"
+      },
+      "arrivals": {
+        "Kyoto": "07:31",
+        "Maibara": "07:52",
+        "Gifu-Hashima": "08:09",
+        "Nagoya": "08:25",
+        "Toyohashi": "08:50",
+        "Shin-Yokohama": "09:54",
+        "Shinagawa": "10:05"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027171.html"
     },
@@ -1024,6 +1373,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:09",
         "Tokyo": "11:15"
       },
+      "arrivals": {
+        "Fukuyama": "07:40",
+        "Okayama": "07:57",
+        "Shin-Kobe": "08:29",
+        "Shin-Osaka": "08:43",
+        "Kyoto": "08:59",
+        "Nagoya": "09:34",
+        "Shin-Yokohama": "10:57",
+        "Shinagawa": "11:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089381.html"
     },
     {
@@ -1039,6 +1398,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "09:33",
         "Shinagawa": "09:44",
         "Tokyo": "09:51"
+      },
+      "arrivals": {
+        "Kyoto": "07:35",
+        "Nagoya": "08:10",
+        "Shin-Yokohama": "09:32",
+        "Shinagawa": "09:43"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021711.html"
     },
@@ -1059,6 +1424,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:07",
         "Shinagawa": "11:18",
         "Tokyo": "11:24"
+      },
+      "arrivals": {
+        "Okayama": "08:06",
+        "Himeji": "08:26",
+        "Shin-Kobe": "08:42",
+        "Shin-Osaka": "08:55",
+        "Kyoto": "09:11",
+        "Nagoya": "09:47",
+        "Shin-Yokohama": "11:06",
+        "Shinagawa": "11:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089391.html"
     },
@@ -1081,6 +1456,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:36",
         "Tokyo": "10:42"
       },
+      "arrivals": {
+        "Kyoto": "07:49",
+        "Maibara": "08:09",
+        "Gifu-Hashima": "08:25",
+        "Nagoya": "08:42",
+        "Hamamatsu": "09:13",
+        "Shizuoka": "09:37",
+        "Mishima": "09:57",
+        "Shin-Yokohama": "10:24",
+        "Shinagawa": "10:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062371.html"
     },
     {
@@ -1102,6 +1488,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:15",
         "Shinagawa": "12:26",
         "Tokyo": "12:33"
+      },
+      "arrivals": {
+        "Kokura": "07:51",
+        "Shin-Yamaguchi": "08:10",
+        "Hiroshima": "08:42",
+        "Okayama": "09:19",
+        "Shin-Kobe": "09:51",
+        "Shin-Osaka": "10:04",
+        "Kyoto": "10:19",
+        "Nagoya": "10:55",
+        "Shin-Yokohama": "12:14",
+        "Shinagawa": "12:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019041.html"
     },
@@ -1126,6 +1524,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:12",
         "Tokyo": "10:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "07:48",
+        "Toyohashi": "08:05",
+        "Hamamatsu": "08:21",
+        "Kakegawa": "08:37",
+        "Shizuoka": "08:52",
+        "Shin-Fuji": "09:07",
+        "Mishima": "09:19",
+        "Atami": "09:31",
+        "Odawara": "09:39",
+        "Shin-Yokohama": "09:59",
+        "Shinagawa": "10:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129641.html"
     },
     {
@@ -1142,6 +1553,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "09:59",
         "Tokyo": "10:06"
       },
+      "arrivals": {
+        "Kyoto": "07:52",
+        "Nagoya": "08:28",
+        "Shin-Yokohama": "09:47",
+        "Shinagawa": "09:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/095/098141.html"
     },
     {
@@ -1157,6 +1574,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "08:18",
         "Shinagawa": "08:30",
         "Tokyo": "08:36"
+      },
+      "arrivals": {
+        "Atami": "07:52",
+        "Odawara": "08:00",
+        "Shin-Yokohama": "08:17",
+        "Shinagawa": "08:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129881.html"
     },
@@ -1180,6 +1603,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:39",
         "Tokyo": "12:45"
       },
+      "arrivals": {
+        "Kokura": "08:00",
+        "Shin-Yamaguchi": "08:20",
+        "Hiroshima": "08:52",
+        "Okayama": "09:28",
+        "Shin-Kobe": "10:00",
+        "Shin-Osaka": "10:13",
+        "Kyoto": "10:29",
+        "Nagoya": "11:04",
+        "Shin-Yokohama": "12:26",
+        "Shinagawa": "12:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178081.html"
     },
     {
@@ -1196,6 +1631,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:09",
         "Tokyo": "10:15"
       },
+      "arrivals": {
+        "Kyoto": "07:59",
+        "Nagoya": "08:34",
+        "Shin-Yokohama": "09:56",
+        "Shinagawa": "10:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026441.html"
     },
     {
@@ -1211,6 +1652,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:03",
         "Shinagawa": "10:14",
         "Tokyo": "10:21"
+      },
+      "arrivals": {
+        "Kyoto": "08:04",
+        "Nagoya": "08:39",
+        "Shin-Yokohama": "10:02",
+        "Shinagawa": "10:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021741.html"
     },
@@ -1239,6 +1686,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:41",
         "Tokyo": "11:48"
       },
+      "arrivals": {
+        "Kyoto": "08:09",
+        "Maibara": "08:29",
+        "Gifu-Hashima": "08:46",
+        "Nagoya": "09:02",
+        "Mikawa-Anjo": "09:19",
+        "Toyohashi": "09:36",
+        "Hamamatsu": "09:53",
+        "Kakegawa": "10:08",
+        "Shizuoka": "10:23",
+        "Shin-Fuji": "10:36",
+        "Mishima": "10:49",
+        "Atami": "11:01",
+        "Odawara": "11:09",
+        "Shin-Yokohama": "11:29",
+        "Shinagawa": "11:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129521.html"
     },
     {
@@ -1258,6 +1722,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:35",
         "Shinagawa": "11:47",
         "Tokyo": "11:54"
+      },
+      "arrivals": {
+        "Okayama": "08:32",
+        "Himeji": "08:52",
+        "Shin-Kobe": "09:09",
+        "Shin-Osaka": "09:22",
+        "Kyoto": "09:38",
+        "Nagoya": "10:13",
+        "Shin-Yokohama": "11:34",
+        "Shinagawa": "11:46"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111181.html"
     },
@@ -1281,6 +1755,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:50",
         "Tokyo": "12:57"
       },
+      "arrivals": {
+        "Kokura": "08:15",
+        "Tokuyama": "08:43",
+        "Hiroshima": "09:06",
+        "Okayama": "09:42",
+        "Shin-Kobe": "10:15",
+        "Shin-Osaka": "10:28",
+        "Kyoto": "10:43",
+        "Nagoya": "11:19",
+        "Shin-Yokohama": "12:37",
+        "Shinagawa": "12:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/000601.html"
     },
     {
@@ -1300,6 +1786,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:46",
         "Shinagawa": "11:57",
         "Tokyo": "12:03"
+      },
+      "arrivals": {
+        "Fukuyama": "08:28",
+        "Okayama": "08:45",
+        "Shin-Kobe": "09:18",
+        "Shin-Osaka": "09:31",
+        "Kyoto": "09:46",
+        "Nagoya": "10:22",
+        "Shin-Yokohama": "11:45",
+        "Shinagawa": "11:56"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089341.html"
     },
@@ -1323,6 +1819,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:59",
         "Tokyo": "13:06"
       },
+      "arrivals": {
+        "Kokura": "08:22",
+        "Hiroshima": "09:11",
+        "Fukuyama": "09:34",
+        "Okayama": "09:51",
+        "Shin-Kobe": "10:23",
+        "Shin-Osaka": "10:37",
+        "Kyoto": "10:53",
+        "Nagoya": "11:28",
+        "Shin-Yokohama": "12:47",
+        "Shinagawa": "12:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178091.html"
     },
     {
@@ -1338,6 +1846,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:15",
         "Shinagawa": "10:26",
         "Tokyo": "10:33"
+      },
+      "arrivals": {
+        "Kyoto": "08:19",
+        "Nagoya": "08:55",
+        "Shin-Yokohama": "10:14",
+        "Shinagawa": "10:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026431.html"
     },
@@ -1362,6 +1876,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:41",
         "Tokyo": "10:48"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "08:19",
+        "Toyohashi": "08:36",
+        "Hamamatsu": "08:53",
+        "Kakegawa": "09:06",
+        "Shizuoka": "09:23",
+        "Shin-Fuji": "09:36",
+        "Mishima": "09:49",
+        "Atami": "10:01",
+        "Odawara": "10:09",
+        "Shin-Yokohama": "10:29",
+        "Shinagawa": "10:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129651.html"
     },
     {
@@ -1378,6 +1905,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "08:56",
         "Tokyo": "09:03"
       },
+      "arrivals": {
+        "Atami": "08:16",
+        "Odawara": "08:24",
+        "Shin-Yokohama": "08:44",
+        "Shinagawa": "08:55"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129891.html"
     },
     {
@@ -1393,6 +1926,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:17",
         "Shinagawa": "10:29",
         "Tokyo": "10:36"
+      },
+      "arrivals": {
+        "Kyoto": "08:22",
+        "Nagoya": "08:58",
+        "Shin-Yokohama": "10:16",
+        "Shinagawa": "10:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027692.html"
     },
@@ -1416,6 +1955,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:09",
         "Tokyo": "13:15"
       },
+      "arrivals": {
+        "Kokura": "08:30",
+        "Hiroshima": "09:17",
+        "Fukuyama": "09:41",
+        "Okayama": "09:57",
+        "Shin-Kobe": "10:29",
+        "Shin-Osaka": "10:43",
+        "Kyoto": "10:59",
+        "Nagoya": "11:34",
+        "Shin-Yokohama": "12:57",
+        "Shinagawa": "13:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/002201.html"
     },
     {
@@ -1435,6 +1986,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:06",
         "Tokyo": "11:12"
       },
+      "arrivals": {
+        "Kyoto": "08:32",
+        "Maibara": "08:52",
+        "Gifu-Hashima": "09:09",
+        "Nagoya": "09:25",
+        "Odawara": "10:38",
+        "Shin-Yokohama": "10:53",
+        "Shinagawa": "11:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027161.html"
     },
     {
@@ -1450,6 +2010,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:33",
         "Shinagawa": "10:44",
         "Tokyo": "10:51"
+      },
+      "arrivals": {
+        "Kyoto": "08:35",
+        "Nagoya": "09:10",
+        "Shin-Yokohama": "10:32",
+        "Shinagawa": "10:43"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027681.html"
     },
@@ -1467,6 +2033,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "10:47",
         "Tokyo": "10:54"
       },
+      "arrivals": {
+        "Kyoto": "08:38",
+        "Nagoya": "09:13",
+        "Shin-Yokohama": "10:34",
+        "Shinagawa": "10:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027671.html"
     },
     {
@@ -1482,6 +2054,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:46",
         "Shinagawa": "10:57",
         "Tokyo": "11:03"
+      },
+      "arrivals": {
+        "Kyoto": "08:46",
+        "Nagoya": "09:22",
+        "Shin-Yokohama": "10:45",
+        "Shinagawa": "10:56"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027661.html"
     },
@@ -1504,6 +2082,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:15",
         "Shinagawa": "13:26",
         "Tokyo": "13:33"
+      },
+      "arrivals": {
+        "Kokura": "08:51",
+        "Shin-Yamaguchi": "09:10",
+        "Hiroshima": "09:42",
+        "Okayama": "10:19",
+        "Shin-Kobe": "10:51",
+        "Shin-Osaka": "11:04",
+        "Kyoto": "11:19",
+        "Nagoya": "11:55",
+        "Shin-Yokohama": "13:14",
+        "Shinagawa": "13:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/004011.html"
     },
@@ -1528,6 +2118,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:12",
         "Tokyo": "11:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "08:48",
+        "Toyohashi": "09:04",
+        "Hamamatsu": "09:21",
+        "Kakegawa": "09:37",
+        "Shizuoka": "09:52",
+        "Shin-Fuji": "10:07",
+        "Mishima": "10:22",
+        "Atami": "10:34",
+        "Odawara": "10:42",
+        "Shin-Yokohama": "10:59",
+        "Shinagawa": "11:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129661.html"
     },
     {
@@ -1543,6 +2146,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "10:48",
         "Shinagawa": "10:59",
         "Tokyo": "11:06"
+      },
+      "arrivals": {
+        "Kyoto": "08:53",
+        "Nagoya": "09:28",
+        "Shin-Yokohama": "10:47",
+        "Shinagawa": "10:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129101.html"
     },
@@ -1568,6 +2177,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:36",
         "Tokyo": "12:42"
       },
+      "arrivals": {
+        "Aioi": "08:57",
+        "Himeji": "09:08",
+        "Nishi-Akashi": "09:21",
+        "Shin-Kobe": "09:33",
+        "Shin-Osaka": "09:46",
+        "Kyoto": "10:02",
+        "Nagoya": "10:42",
+        "Hamamatsu": "11:13",
+        "Shizuoka": "11:37",
+        "Mishima": "11:57",
+        "Shin-Yokohama": "12:24",
+        "Shinagawa": "12:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128921.html"
     },
     {
@@ -1583,6 +2206,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:03",
         "Shinagawa": "11:14",
         "Tokyo": "11:21"
+      },
+      "arrivals": {
+        "Kyoto": "09:04",
+        "Nagoya": "09:39",
+        "Shin-Yokohama": "11:02",
+        "Shinagawa": "11:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027641.html"
     },
@@ -1611,6 +2240,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:41",
         "Tokyo": "12:48"
       },
+      "arrivals": {
+        "Kyoto": "09:09",
+        "Maibara": "09:29",
+        "Gifu-Hashima": "09:46",
+        "Nagoya": "10:02",
+        "Mikawa-Anjo": "10:19",
+        "Toyohashi": "10:36",
+        "Hamamatsu": "10:53",
+        "Kakegawa": "11:06",
+        "Shizuoka": "11:23",
+        "Shin-Fuji": "11:36",
+        "Mishima": "11:49",
+        "Atami": "12:01",
+        "Odawara": "12:09",
+        "Shin-Yokohama": "12:29",
+        "Shinagawa": "12:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129621.html"
     },
     {
@@ -1626,6 +2272,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "09:30",
         "Shinagawa": "09:41",
         "Tokyo": "09:48"
+      },
+      "arrivals": {
+        "Atami": "09:01",
+        "Odawara": "09:09",
+        "Shin-Yokohama": "09:29",
+        "Shinagawa": "09:40"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129901.html"
     },
@@ -1649,6 +2301,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:57",
         "Tokyo": "14:03"
       },
+      "arrivals": {
+        "Kokura": "09:15",
+        "Tokuyama": "09:43",
+        "Hiroshima": "10:07",
+        "Okayama": "10:45",
+        "Shin-Kobe": "11:18",
+        "Shin-Osaka": "11:31",
+        "Kyoto": "11:46",
+        "Nagoya": "12:22",
+        "Shin-Yokohama": "13:45",
+        "Shinagawa": "13:56"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089671.html"
     },
     {
@@ -1664,6 +2328,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:09",
         "Shinagawa": "11:21",
         "Tokyo": "11:27"
+      },
+      "arrivals": {
+        "Kyoto": "09:14",
+        "Nagoya": "09:50",
+        "Shin-Yokohama": "11:08",
+        "Shinagawa": "11:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027631.html"
     },
@@ -1683,6 +2353,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:07",
         "Shinagawa": "12:18",
         "Tokyo": "12:24"
+      },
+      "arrivals": {
+        "Himeji": "09:25",
+        "Shin-Kobe": "09:42",
+        "Shin-Osaka": "09:55",
+        "Kyoto": "10:11",
+        "Nagoya": "10:47",
+        "Shin-Yokohama": "12:06",
+        "Shinagawa": "12:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089421.html"
     },
@@ -1706,6 +2385,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:59",
         "Tokyo": "14:06"
       },
+      "arrivals": {
+        "Kokura": "09:22",
+        "Hiroshima": "10:11",
+        "Fukuyama": "10:34",
+        "Okayama": "10:51",
+        "Shin-Kobe": "11:23",
+        "Shin-Osaka": "11:37",
+        "Kyoto": "11:53",
+        "Nagoya": "12:28",
+        "Shin-Yokohama": "13:47",
+        "Shinagawa": "13:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089681.html"
     },
     {
@@ -1721,6 +2412,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:17",
         "Shinagawa": "11:29",
         "Tokyo": "11:36"
+      },
+      "arrivals": {
+        "Kyoto": "09:22",
+        "Nagoya": "09:58",
+        "Shin-Yokohama": "11:16",
+        "Shinagawa": "11:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027621.html"
     },
@@ -1741,6 +2438,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:48",
         "Shinagawa": "12:59",
         "Tokyo": "13:06"
+      },
+      "arrivals": {
+        "Fukuyama": "09:34",
+        "Okayama": "09:51",
+        "Shin-Kobe": "10:23",
+        "Shin-Osaka": "10:37",
+        "Kyoto": "10:53",
+        "Nagoya": "11:28",
+        "Shin-Yokohama": "12:47",
+        "Shinagawa": "12:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089751.html"
     },
@@ -1764,6 +2471,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:09",
         "Tokyo": "14:15"
       },
+      "arrivals": {
+        "Kokura": "09:30",
+        "Hiroshima": "10:17",
+        "Fukuyama": "10:41",
+        "Okayama": "10:57",
+        "Shin-Kobe": "11:29",
+        "Shin-Osaka": "11:43",
+        "Kyoto": "11:59",
+        "Nagoya": "12:34",
+        "Shin-Yokohama": "13:56",
+        "Shinagawa": "14:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021341.html"
     },
     {
@@ -1779,6 +2498,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:27",
         "Shinagawa": "11:39",
         "Tokyo": "11:45"
+      },
+      "arrivals": {
+        "Kyoto": "09:29",
+        "Nagoya": "10:04",
+        "Shin-Yokohama": "11:26",
+        "Shinagawa": "11:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026421.html"
     },
@@ -1799,6 +2524,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:06",
         "Tokyo": "12:12"
       },
+      "arrivals": {
+        "Kyoto": "09:31",
+        "Maibara": "09:52",
+        "Gifu-Hashima": "10:09",
+        "Nagoya": "10:25",
+        "Toyohashi": "10:50",
+        "Shin-Yokohama": "11:54",
+        "Shinagawa": "12:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062431.html"
     },
     {
@@ -1814,6 +2548,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "11:33",
         "Shinagawa": "11:44",
         "Tokyo": "11:51"
+      },
+      "arrivals": {
+        "Kyoto": "09:35",
+        "Nagoya": "10:10",
+        "Shin-Yokohama": "11:32",
+        "Shinagawa": "11:43"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027612.html"
     },
@@ -1837,6 +2577,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:18",
         "Tokyo": "14:24"
       },
+      "arrivals": {
+        "Kokura": "09:42",
+        "Hiroshima": "10:28",
+        "Okayama": "11:04",
+        "Himeji": "11:25",
+        "Shin-Kobe": "11:41",
+        "Shin-Osaka": "11:55",
+        "Kyoto": "12:11",
+        "Nagoya": "12:47",
+        "Shin-Yokohama": "14:06",
+        "Shinagawa": "14:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/075/075871.html"
     },
     {
@@ -1856,6 +2608,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:07",
         "Shinagawa": "13:18",
         "Tokyo": "13:24"
+      },
+      "arrivals": {
+        "Okayama": "10:04",
+        "Himeji": "10:25",
+        "Shin-Kobe": "10:41",
+        "Shin-Osaka": "10:55",
+        "Kyoto": "11:11",
+        "Nagoya": "11:47",
+        "Shin-Yokohama": "13:06",
+        "Shinagawa": "13:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178021.html"
     },
@@ -1881,6 +2643,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:36",
         "Tokyo": "13:42"
       },
+      "arrivals": {
+        "Aioi": "09:51",
+        "Himeji": "10:08",
+        "Nishi-Akashi": "10:21",
+        "Shin-Kobe": "10:33",
+        "Shin-Osaka": "10:46",
+        "Kyoto": "11:02",
+        "Nagoya": "11:42",
+        "Hamamatsu": "12:13",
+        "Shizuoka": "12:37",
+        "Atami": "13:04",
+        "Shin-Yokohama": "13:24",
+        "Shinagawa": "13:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128931.html"
     },
     {
@@ -1902,6 +2678,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:15",
         "Shinagawa": "14:26",
         "Tokyo": "14:33"
+      },
+      "arrivals": {
+        "Kokura": "09:51",
+        "Shin-Yamaguchi": "10:10",
+        "Hiroshima": "10:42",
+        "Okayama": "11:19",
+        "Shin-Kobe": "11:51",
+        "Shin-Osaka": "12:04",
+        "Kyoto": "12:19",
+        "Nagoya": "12:55",
+        "Shin-Yokohama": "14:14",
+        "Shinagawa": "14:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/007681.html"
     },
@@ -1926,6 +2714,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:12",
         "Tokyo": "12:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "09:48",
+        "Toyohashi": "10:04",
+        "Hamamatsu": "10:21",
+        "Kakegawa": "10:37",
+        "Shizuoka": "10:52",
+        "Shin-Fuji": "11:07",
+        "Mishima": "11:19",
+        "Atami": "11:31",
+        "Odawara": "11:39",
+        "Shin-Yokohama": "11:59",
+        "Shinagawa": "12:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129671.html"
     },
     {
@@ -1942,6 +2743,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "11:59",
         "Tokyo": "12:06"
       },
+      "arrivals": {
+        "Kyoto": "09:53",
+        "Nagoya": "10:28",
+        "Shin-Yokohama": "11:47",
+        "Shinagawa": "11:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027581.html"
     },
     {
@@ -1957,6 +2764,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:03",
         "Shinagawa": "12:14",
         "Tokyo": "12:21"
+      },
+      "arrivals": {
+        "Kyoto": "10:04",
+        "Nagoya": "10:39",
+        "Shin-Yokohama": "12:02",
+        "Shinagawa": "12:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027571.html"
     },
@@ -1985,6 +2798,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:41",
         "Tokyo": "13:48"
       },
+      "arrivals": {
+        "Kyoto": "10:09",
+        "Maibara": "10:29",
+        "Gifu-Hashima": "10:46",
+        "Nagoya": "11:02",
+        "Mikawa-Anjo": "11:19",
+        "Toyohashi": "11:36",
+        "Hamamatsu": "11:53",
+        "Kakegawa": "12:08",
+        "Shizuoka": "12:23",
+        "Shin-Fuji": "12:36",
+        "Mishima": "12:49",
+        "Atami": "13:01",
+        "Odawara": "13:09",
+        "Shin-Yokohama": "13:29",
+        "Shinagawa": "13:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129531.html"
     },
     {
@@ -2000,6 +2830,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:09",
         "Shinagawa": "12:21",
         "Tokyo": "12:27"
+      },
+      "arrivals": {
+        "Kyoto": "10:14",
+        "Nagoya": "10:50",
+        "Shin-Yokohama": "12:08",
+        "Shinagawa": "12:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027561.html"
     },
@@ -2020,6 +2856,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:38",
         "Shinagawa": "13:50",
         "Tokyo": "13:57"
+      },
+      "arrivals": {
+        "Okayama": "10:39",
+        "Himeji": "10:58",
+        "Shin-Kobe": "11:15",
+        "Shin-Osaka": "11:28",
+        "Kyoto": "11:43",
+        "Nagoya": "12:19",
+        "Shin-Yokohama": "13:37",
+        "Shinagawa": "13:49"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062361.html"
     },
@@ -2043,6 +2889,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:59",
         "Tokyo": "15:06"
       },
+      "arrivals": {
+        "Kokura": "10:22",
+        "Hiroshima": "11:11",
+        "Fukuyama": "11:34",
+        "Okayama": "11:51",
+        "Shin-Kobe": "12:23",
+        "Shin-Osaka": "12:37",
+        "Kyoto": "12:53",
+        "Nagoya": "13:28",
+        "Shin-Yokohama": "14:47",
+        "Shinagawa": "14:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089701.html"
     },
     {
@@ -2062,6 +2920,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:48",
         "Shinagawa": "13:59",
         "Tokyo": "14:06"
+      },
+      "arrivals": {
+        "Fukuyama": "10:34",
+        "Okayama": "10:51",
+        "Shin-Kobe": "11:23",
+        "Shin-Osaka": "11:37",
+        "Kyoto": "11:53",
+        "Nagoya": "12:28",
+        "Shin-Yokohama": "13:47",
+        "Shinagawa": "13:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062941.html"
     },
@@ -2085,6 +2953,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:09",
         "Tokyo": "15:15"
       },
+      "arrivals": {
+        "Kokura": "10:30",
+        "Hiroshima": "11:17",
+        "Fukuyama": "11:41",
+        "Okayama": "11:57",
+        "Shin-Kobe": "12:29",
+        "Shin-Osaka": "12:43",
+        "Kyoto": "12:59",
+        "Nagoya": "13:34",
+        "Shin-Yokohama": "14:57",
+        "Shinagawa": "15:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008311.html"
     },
     {
@@ -2100,6 +2980,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:27",
         "Shinagawa": "12:39",
         "Tokyo": "12:45"
+      },
+      "arrivals": {
+        "Kyoto": "10:29",
+        "Nagoya": "11:04",
+        "Shin-Yokohama": "12:26",
+        "Shinagawa": "12:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089461.html"
     },
@@ -2120,6 +3006,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:06",
         "Tokyo": "13:12"
       },
+      "arrivals": {
+        "Kyoto": "10:31",
+        "Maibara": "10:52",
+        "Gifu-Hashima": "11:09",
+        "Nagoya": "11:25",
+        "Odawara": "12:38",
+        "Shin-Yokohama": "12:53",
+        "Shinagawa": "13:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027151.html"
     },
     {
@@ -2135,6 +3030,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "12:33",
         "Shinagawa": "12:44",
         "Tokyo": "12:51"
+      },
+      "arrivals": {
+        "Kyoto": "10:35",
+        "Nagoya": "11:10",
+        "Shin-Yokohama": "12:32",
+        "Shinagawa": "12:43"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027541.html"
     },
@@ -2160,6 +3061,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:36",
         "Tokyo": "14:42"
       },
+      "arrivals": {
+        "Aioi": "10:51",
+        "Himeji": "11:07",
+        "Nishi-Akashi": "11:21",
+        "Shin-Kobe": "11:33",
+        "Shin-Osaka": "11:46",
+        "Kyoto": "12:02",
+        "Nagoya": "12:42",
+        "Hamamatsu": "13:13",
+        "Shizuoka": "13:37",
+        "Mishima": "13:57",
+        "Shin-Yokohama": "14:24",
+        "Shinagawa": "14:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128941.html"
     },
     {
@@ -2181,6 +3096,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:15",
         "Shinagawa": "15:26",
         "Tokyo": "15:33"
+      },
+      "arrivals": {
+        "Kokura": "10:51",
+        "Shin-Yamaguchi": "11:10",
+        "Hiroshima": "11:42",
+        "Okayama": "12:19",
+        "Shin-Kobe": "12:51",
+        "Shin-Osaka": "13:04",
+        "Kyoto": "13:19",
+        "Nagoya": "13:55",
+        "Shin-Yokohama": "15:14",
+        "Shinagawa": "15:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008921.html"
     },
@@ -2205,6 +3132,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "13:12",
         "Tokyo": "13:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "10:48",
+        "Toyohashi": "11:04",
+        "Hamamatsu": "11:21",
+        "Kakegawa": "11:37",
+        "Shizuoka": "11:52",
+        "Shin-Fuji": "12:07",
+        "Mishima": "12:22",
+        "Atami": "12:34",
+        "Odawara": "12:42",
+        "Shin-Yokohama": "12:59",
+        "Shinagawa": "13:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129681.html"
     },
     {
@@ -2221,6 +3161,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "12:59",
         "Tokyo": "13:06"
       },
+      "arrivals": {
+        "Kyoto": "10:53",
+        "Nagoya": "11:28",
+        "Shin-Yokohama": "12:47",
+        "Shinagawa": "12:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027501.html"
     },
     {
@@ -2236,6 +3182,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:03",
         "Shinagawa": "13:14",
         "Tokyo": "13:21"
+      },
+      "arrivals": {
+        "Kyoto": "11:04",
+        "Nagoya": "11:39",
+        "Shin-Yokohama": "13:02",
+        "Shinagawa": "13:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027491.html"
     },
@@ -2264,6 +3216,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:41",
         "Tokyo": "14:48"
       },
+      "arrivals": {
+        "Kyoto": "11:09",
+        "Maibara": "11:29",
+        "Gifu-Hashima": "11:46",
+        "Nagoya": "12:02",
+        "Mikawa-Anjo": "12:19",
+        "Toyohashi": "12:36",
+        "Hamamatsu": "12:53",
+        "Kakegawa": "13:06",
+        "Shizuoka": "13:23",
+        "Shin-Fuji": "13:36",
+        "Mishima": "13:49",
+        "Atami": "14:01",
+        "Odawara": "14:09",
+        "Shin-Yokohama": "14:29",
+        "Shinagawa": "14:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129541.html"
     },
     {
@@ -2279,6 +3248,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:07",
         "Shinagawa": "13:18",
         "Tokyo": "13:24"
+      },
+      "arrivals": {
+        "Kyoto": "11:11",
+        "Nagoya": "11:47",
+        "Shin-Yokohama": "13:06",
+        "Shinagawa": "13:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027481.html"
     },
@@ -2299,6 +3274,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:38",
         "Shinagawa": "14:50",
         "Tokyo": "14:57"
+      },
+      "arrivals": {
+        "Okayama": "11:39",
+        "Himeji": "11:58",
+        "Shin-Kobe": "12:15",
+        "Shin-Osaka": "12:28",
+        "Kyoto": "12:43",
+        "Nagoya": "13:19",
+        "Shin-Yokohama": "14:37",
+        "Shinagawa": "14:49"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062381.html"
     },
@@ -2322,6 +3307,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:59",
         "Tokyo": "16:06"
       },
+      "arrivals": {
+        "Kokura": "11:22",
+        "Hiroshima": "12:11",
+        "Fukuyama": "12:34",
+        "Okayama": "12:51",
+        "Shin-Kobe": "13:23",
+        "Shin-Osaka": "13:37",
+        "Kyoto": "13:53",
+        "Nagoya": "14:28",
+        "Shin-Yokohama": "15:47",
+        "Shinagawa": "15:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062991.html"
     },
     {
@@ -2344,6 +3341,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:09",
         "Tokyo": "16:15"
       },
+      "arrivals": {
+        "Kokura": "11:30",
+        "Hiroshima": "12:17",
+        "Fukuyama": "12:41",
+        "Okayama": "12:57",
+        "Shin-Kobe": "13:29",
+        "Shin-Osaka": "13:43",
+        "Kyoto": "13:59",
+        "Nagoya": "14:34",
+        "Shin-Yokohama": "15:56",
+        "Shinagawa": "16:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023611.html"
     },
     {
@@ -2359,6 +3368,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:27",
         "Shinagawa": "13:39",
         "Tokyo": "13:45"
+      },
+      "arrivals": {
+        "Kyoto": "11:29",
+        "Nagoya": "12:04",
+        "Shin-Yokohama": "13:26",
+        "Shinagawa": "13:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/075/075851.html"
     },
@@ -2379,6 +3394,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:06",
         "Tokyo": "14:12"
       },
+      "arrivals": {
+        "Kyoto": "11:31",
+        "Maibara": "11:52",
+        "Gifu-Hashima": "12:09",
+        "Nagoya": "12:25",
+        "Toyohashi": "12:50",
+        "Shin-Yokohama": "13:54",
+        "Shinagawa": "14:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062451.html"
     },
     {
@@ -2394,6 +3418,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:35",
         "Shinagawa": "13:47",
         "Tokyo": "13:54"
+      },
+      "arrivals": {
+        "Kyoto": "11:38",
+        "Nagoya": "12:13",
+        "Shin-Yokohama": "13:34",
+        "Shinagawa": "13:46"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027411.html"
     },
@@ -2418,6 +3448,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:36",
         "Tokyo": "15:42"
       },
+      "arrivals": {
+        "Aioi": "11:51",
+        "Himeji": "12:07",
+        "Nishi-Akashi": "12:21",
+        "Shin-Kobe": "12:33",
+        "Shin-Osaka": "12:46",
+        "Kyoto": "13:02",
+        "Nagoya": "13:42",
+        "Hamamatsu": "14:13",
+        "Shizuoka": "14:37",
+        "Shin-Yokohama": "15:24",
+        "Shinagawa": "15:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128951.html"
     },
     {
@@ -2439,6 +3482,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:15",
         "Shinagawa": "16:26",
         "Tokyo": "16:33"
+      },
+      "arrivals": {
+        "Kokura": "11:51",
+        "Shin-Yamaguchi": "12:10",
+        "Hiroshima": "12:42",
+        "Okayama": "13:19",
+        "Shin-Kobe": "13:51",
+        "Shin-Osaka": "14:04",
+        "Kyoto": "14:19",
+        "Nagoya": "14:55",
+        "Shin-Yokohama": "16:14",
+        "Shinagawa": "16:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021351.html"
     },
@@ -2463,6 +3518,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "14:12",
         "Tokyo": "14:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "11:48",
+        "Toyohashi": "12:04",
+        "Hamamatsu": "12:21",
+        "Kakegawa": "12:37",
+        "Shizuoka": "12:52",
+        "Shin-Fuji": "13:07",
+        "Mishima": "13:19",
+        "Atami": "13:31",
+        "Odawara": "13:39",
+        "Shin-Yokohama": "13:59",
+        "Shinagawa": "14:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129691.html"
     },
     {
@@ -2478,6 +3546,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "13:48",
         "Shinagawa": "13:59",
         "Tokyo": "14:06"
+      },
+      "arrivals": {
+        "Kyoto": "11:53",
+        "Nagoya": "12:28",
+        "Shin-Yokohama": "13:47",
+        "Shinagawa": "13:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027401.html"
     },
@@ -2501,6 +3575,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:39",
         "Tokyo": "16:45"
       },
+      "arrivals": {
+        "Kokura": "11:57",
+        "Tokuyama": "12:26",
+        "Hiroshima": "12:48",
+        "Okayama": "13:27",
+        "Shin-Kobe": "14:00",
+        "Shin-Osaka": "14:13",
+        "Kyoto": "14:29",
+        "Nagoya": "15:04",
+        "Shin-Yokohama": "16:26",
+        "Shinagawa": "16:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063011.html"
     },
     {
@@ -2516,6 +3602,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:03",
         "Shinagawa": "14:14",
         "Tokyo": "14:21"
+      },
+      "arrivals": {
+        "Kyoto": "12:04",
+        "Nagoya": "12:39",
+        "Shin-Yokohama": "14:02",
+        "Shinagawa": "14:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027381.html"
     },
@@ -2544,6 +3636,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:41",
         "Tokyo": "15:48"
       },
+      "arrivals": {
+        "Kyoto": "12:09",
+        "Maibara": "12:29",
+        "Gifu-Hashima": "12:46",
+        "Nagoya": "13:02",
+        "Mikawa-Anjo": "13:19",
+        "Toyohashi": "13:36",
+        "Hamamatsu": "13:53",
+        "Kakegawa": "14:08",
+        "Shizuoka": "14:23",
+        "Shin-Fuji": "14:36",
+        "Mishima": "14:49",
+        "Atami": "15:01",
+        "Odawara": "15:09",
+        "Shin-Yokohama": "15:29",
+        "Shinagawa": "15:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129551.html"
     },
     {
@@ -2559,6 +3668,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:07",
         "Shinagawa": "14:18",
         "Tokyo": "14:24"
+      },
+      "arrivals": {
+        "Kyoto": "12:11",
+        "Nagoya": "12:47",
+        "Shin-Yokohama": "14:06",
+        "Shinagawa": "14:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027372.html"
     },
@@ -2579,6 +3694,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:38",
         "Shinagawa": "15:50",
         "Tokyo": "15:57"
+      },
+      "arrivals": {
+        "Okayama": "12:39",
+        "Himeji": "12:58",
+        "Shin-Kobe": "13:15",
+        "Shin-Osaka": "13:28",
+        "Kyoto": "13:43",
+        "Nagoya": "14:19",
+        "Shin-Yokohama": "15:37",
+        "Shinagawa": "15:49"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062391.html"
     },
@@ -2602,6 +3727,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:00",
         "Tokyo": "17:06"
       },
+      "arrivals": {
+        "Kokura": "12:22",
+        "Hiroshima": "13:11",
+        "Fukuyama": "13:34",
+        "Okayama": "13:51",
+        "Shin-Kobe": "14:23",
+        "Shin-Osaka": "14:37",
+        "Kyoto": "14:52",
+        "Nagoya": "15:28",
+        "Shin-Yokohama": "16:48",
+        "Shinagawa": "16:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063021.html"
     },
     {
@@ -2621,6 +3758,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:48",
         "Shinagawa": "15:59",
         "Tokyo": "16:06"
+      },
+      "arrivals": {
+        "Fukuyama": "12:34",
+        "Okayama": "12:51",
+        "Shin-Kobe": "13:23",
+        "Shin-Osaka": "13:37",
+        "Kyoto": "13:53",
+        "Nagoya": "14:28",
+        "Shin-Yokohama": "15:47",
+        "Shinagawa": "15:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062971.html"
     },
@@ -2644,6 +3791,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:09",
         "Tokyo": "17:15"
       },
+      "arrivals": {
+        "Kokura": "12:30",
+        "Hiroshima": "13:17",
+        "Fukuyama": "13:41",
+        "Okayama": "13:57",
+        "Shin-Kobe": "14:29",
+        "Shin-Osaka": "14:43",
+        "Kyoto": "14:59",
+        "Nagoya": "15:34",
+        "Shin-Yokohama": "16:56",
+        "Shinagawa": "17:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023621.html"
     },
     {
@@ -2659,6 +3818,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:27",
         "Shinagawa": "14:39",
         "Tokyo": "14:45"
+      },
+      "arrivals": {
+        "Kyoto": "12:29",
+        "Nagoya": "13:04",
+        "Shin-Yokohama": "14:26",
+        "Shinagawa": "14:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/033641.html"
     },
@@ -2679,6 +3844,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:06",
         "Tokyo": "15:12"
       },
+      "arrivals": {
+        "Kyoto": "12:31",
+        "Maibara": "12:52",
+        "Gifu-Hashima": "13:09",
+        "Nagoya": "13:25",
+        "Odawara": "14:38",
+        "Shin-Yokohama": "14:53",
+        "Shinagawa": "15:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027141.html"
     },
     {
@@ -2694,6 +3868,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:35",
         "Shinagawa": "14:47",
         "Tokyo": "14:54"
+      },
+      "arrivals": {
+        "Kyoto": "12:38",
+        "Nagoya": "13:13",
+        "Shin-Yokohama": "14:34",
+        "Shinagawa": "14:46"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027331.html"
     },
@@ -2719,6 +3899,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:36",
         "Tokyo": "16:42"
       },
+      "arrivals": {
+        "Aioi": "12:51",
+        "Himeji": "13:07",
+        "Nishi-Akashi": "13:21",
+        "Shin-Kobe": "13:33",
+        "Shin-Osaka": "13:46",
+        "Kyoto": "14:02",
+        "Nagoya": "14:42",
+        "Hamamatsu": "15:13",
+        "Shizuoka": "15:37",
+        "Mishima": "15:57",
+        "Shin-Yokohama": "16:24",
+        "Shinagawa": "16:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128961.html"
     },
     {
@@ -2740,6 +3934,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:15",
         "Shinagawa": "17:26",
         "Tokyo": "17:33"
+      },
+      "arrivals": {
+        "Kokura": "12:51",
+        "Shin-Yamaguchi": "13:10",
+        "Hiroshima": "13:42",
+        "Okayama": "14:19",
+        "Shin-Kobe": "14:51",
+        "Shin-Osaka": "15:04",
+        "Kyoto": "15:20",
+        "Nagoya": "15:56",
+        "Shin-Yokohama": "17:14",
+        "Shinagawa": "17:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/010/010131.html"
     },
@@ -2764,6 +3970,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:12",
         "Tokyo": "15:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "12:48",
+        "Toyohashi": "13:04",
+        "Hamamatsu": "13:21",
+        "Kakegawa": "13:37",
+        "Shizuoka": "13:52",
+        "Shin-Fuji": "14:07",
+        "Mishima": "14:22",
+        "Atami": "14:34",
+        "Odawara": "14:42",
+        "Shin-Yokohama": "14:59",
+        "Shinagawa": "15:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129701.html"
     },
     {
@@ -2779,6 +3998,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "14:48",
         "Shinagawa": "14:59",
         "Tokyo": "15:06"
+      },
+      "arrivals": {
+        "Kyoto": "12:53",
+        "Nagoya": "13:28",
+        "Shin-Yokohama": "14:47",
+        "Shinagawa": "14:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027321.html"
     },
@@ -2802,6 +4027,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:39",
         "Tokyo": "17:45"
       },
+      "arrivals": {
+        "Kokura": "12:57",
+        "Tokuyama": "13:26",
+        "Hiroshima": "13:48",
+        "Okayama": "14:27",
+        "Shin-Kobe": "15:00",
+        "Shin-Osaka": "15:13",
+        "Kyoto": "15:29",
+        "Nagoya": "16:04",
+        "Shin-Yokohama": "17:26",
+        "Shinagawa": "17:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063031.html"
     },
     {
@@ -2817,6 +4054,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:03",
         "Shinagawa": "15:14",
         "Tokyo": "15:21"
+      },
+      "arrivals": {
+        "Kyoto": "13:04",
+        "Nagoya": "13:39",
+        "Shin-Yokohama": "15:02",
+        "Shinagawa": "15:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027311.html"
     },
@@ -2845,6 +4088,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:41",
         "Tokyo": "16:48"
       },
+      "arrivals": {
+        "Kyoto": "13:09",
+        "Maibara": "13:29",
+        "Gifu-Hashima": "13:46",
+        "Nagoya": "14:02",
+        "Mikawa-Anjo": "14:19",
+        "Toyohashi": "14:36",
+        "Hamamatsu": "14:53",
+        "Kakegawa": "15:06",
+        "Shizuoka": "15:23",
+        "Shin-Fuji": "15:36",
+        "Mishima": "15:49",
+        "Atami": "16:01",
+        "Odawara": "16:09",
+        "Shin-Yokohama": "16:29",
+        "Shinagawa": "16:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129561.html"
     },
     {
@@ -2860,6 +4120,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:07",
         "Shinagawa": "15:18",
         "Tokyo": "15:24"
+      },
+      "arrivals": {
+        "Kyoto": "13:11",
+        "Nagoya": "13:47",
+        "Shin-Yokohama": "15:06",
+        "Shinagawa": "15:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027301.html"
     },
@@ -2880,6 +4146,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:38",
         "Shinagawa": "16:50",
         "Tokyo": "16:57"
+      },
+      "arrivals": {
+        "Okayama": "13:39",
+        "Himeji": "13:58",
+        "Shin-Kobe": "14:15",
+        "Shin-Osaka": "14:28",
+        "Kyoto": "14:43",
+        "Nagoya": "15:18",
+        "Shin-Yokohama": "16:37",
+        "Shinagawa": "16:49"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062401.html"
     },
@@ -2903,6 +4179,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:00",
         "Tokyo": "18:06"
       },
+      "arrivals": {
+        "Kokura": "13:22",
+        "Tokuyama": "13:52",
+        "Hiroshima": "14:13",
+        "Okayama": "14:51",
+        "Shin-Kobe": "15:23",
+        "Shin-Osaka": "15:37",
+        "Kyoto": "15:52",
+        "Nagoya": "16:28",
+        "Shin-Yokohama": "17:48",
+        "Shinagawa": "17:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063041.html"
     },
     {
@@ -2918,6 +4206,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:17",
         "Shinagawa": "15:29",
         "Tokyo": "15:36"
+      },
+      "arrivals": {
+        "Kyoto": "13:22",
+        "Nagoya": "13:58",
+        "Shin-Yokohama": "15:16",
+        "Shinagawa": "15:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027281.html"
     },
@@ -2941,6 +4235,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:09",
         "Tokyo": "18:15"
       },
+      "arrivals": {
+        "Kokura": "13:30",
+        "Hiroshima": "14:17",
+        "Fukuyama": "14:41",
+        "Okayama": "14:57",
+        "Shin-Kobe": "15:29",
+        "Shin-Osaka": "15:43",
+        "Kyoto": "15:59",
+        "Nagoya": "16:34",
+        "Shin-Yokohama": "17:56",
+        "Shinagawa": "18:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019921.html"
     },
     {
@@ -2956,6 +4262,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:27",
         "Shinagawa": "15:39",
         "Tokyo": "15:45"
+      },
+      "arrivals": {
+        "Kyoto": "13:29",
+        "Nagoya": "14:04",
+        "Shin-Yokohama": "15:26",
+        "Shinagawa": "15:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111241.html"
     },
@@ -2976,6 +4288,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:06",
         "Tokyo": "16:12"
       },
+      "arrivals": {
+        "Kyoto": "13:31",
+        "Maibara": "13:52",
+        "Gifu-Hashima": "14:09",
+        "Nagoya": "14:25",
+        "Toyohashi": "14:50",
+        "Shin-Yokohama": "15:54",
+        "Shinagawa": "16:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062461.html"
     },
     {
@@ -2992,6 +4313,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "15:44",
         "Tokyo": "15:51"
       },
+      "arrivals": {
+        "Kyoto": "13:35",
+        "Nagoya": "14:10",
+        "Shin-Yokohama": "15:32",
+        "Shinagawa": "15:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027271.html"
     },
     {
@@ -3007,6 +4334,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:35",
         "Shinagawa": "15:47",
         "Tokyo": "15:54"
+      },
+      "arrivals": {
+        "Kyoto": "13:38",
+        "Nagoya": "14:13",
+        "Shin-Yokohama": "15:34",
+        "Shinagawa": "15:46"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027261.html"
     },
@@ -3027,6 +4360,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:07",
         "Shinagawa": "17:18",
         "Tokyo": "17:24"
+      },
+      "arrivals": {
+        "Okayama": "14:04",
+        "Himeji": "14:25",
+        "Shin-Kobe": "14:41",
+        "Shin-Osaka": "14:55",
+        "Kyoto": "15:12",
+        "Nagoya": "15:48",
+        "Shin-Yokohama": "17:06",
+        "Shinagawa": "17:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/030951.html"
     },
@@ -3051,6 +4394,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:36",
         "Tokyo": "17:42"
       },
+      "arrivals": {
+        "Aioi": "13:51",
+        "Himeji": "14:07",
+        "Nishi-Akashi": "14:21",
+        "Shin-Kobe": "14:33",
+        "Shin-Osaka": "14:46",
+        "Kyoto": "15:02",
+        "Nagoya": "15:42",
+        "Hamamatsu": "16:13",
+        "Shizuoka": "16:37",
+        "Shin-Yokohama": "17:24",
+        "Shinagawa": "17:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128971.html"
     },
     {
@@ -3072,6 +4428,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:15",
         "Shinagawa": "18:26",
         "Tokyo": "18:33"
+      },
+      "arrivals": {
+        "Kokura": "13:51",
+        "Shin-Yamaguchi": "14:10",
+        "Hiroshima": "14:42",
+        "Okayama": "15:19",
+        "Shin-Kobe": "15:51",
+        "Shin-Osaka": "16:04",
+        "Kyoto": "16:20",
+        "Nagoya": "16:56",
+        "Shin-Yokohama": "18:14",
+        "Shinagawa": "18:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023601.html"
     },
@@ -3096,6 +4464,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:12",
         "Tokyo": "16:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "13:48",
+        "Toyohashi": "14:04",
+        "Hamamatsu": "14:21",
+        "Kakegawa": "14:37",
+        "Shizuoka": "14:52",
+        "Shin-Fuji": "15:07",
+        "Mishima": "15:19",
+        "Atami": "15:31",
+        "Odawara": "15:39",
+        "Shin-Yokohama": "15:59",
+        "Shinagawa": "16:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129711.html"
     },
     {
@@ -3111,6 +4492,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "15:48",
         "Shinagawa": "15:59",
         "Tokyo": "16:06"
+      },
+      "arrivals": {
+        "Kyoto": "13:53",
+        "Nagoya": "14:28",
+        "Shin-Yokohama": "15:47",
+        "Shinagawa": "15:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027241.html"
     },
@@ -3134,6 +4521,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:39",
         "Tokyo": "18:45"
       },
+      "arrivals": {
+        "Kokura": "13:57",
+        "Tokuyama": "14:26",
+        "Hiroshima": "14:48",
+        "Okayama": "15:27",
+        "Shin-Kobe": "16:00",
+        "Shin-Osaka": "16:13",
+        "Kyoto": "16:29",
+        "Nagoya": "17:04",
+        "Shin-Yokohama": "18:26",
+        "Shinagawa": "18:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027471.html"
     },
     {
@@ -3149,6 +4548,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:03",
         "Shinagawa": "16:14",
         "Tokyo": "16:21"
+      },
+      "arrivals": {
+        "Kyoto": "14:04",
+        "Nagoya": "14:39",
+        "Shin-Yokohama": "16:02",
+        "Shinagawa": "16:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027231.html"
     },
@@ -3177,6 +4582,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:41",
         "Tokyo": "17:48"
       },
+      "arrivals": {
+        "Kyoto": "14:09",
+        "Maibara": "14:29",
+        "Gifu-Hashima": "14:46",
+        "Nagoya": "15:02",
+        "Mikawa-Anjo": "15:18",
+        "Toyohashi": "15:35",
+        "Hamamatsu": "15:52",
+        "Kakegawa": "16:07",
+        "Shizuoka": "16:23",
+        "Shin-Fuji": "16:36",
+        "Mishima": "16:50",
+        "Atami": "17:01",
+        "Odawara": "17:09",
+        "Shin-Yokohama": "17:29",
+        "Shinagawa": "17:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129571.html"
     },
     {
@@ -3192,6 +4614,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:07",
         "Shinagawa": "16:18",
         "Tokyo": "16:24"
+      },
+      "arrivals": {
+        "Kyoto": "14:11",
+        "Nagoya": "14:47",
+        "Shin-Yokohama": "16:06",
+        "Shinagawa": "16:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027221.html"
     },
@@ -3215,6 +4643,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:53",
         "Tokyo": "19:00"
       },
+      "arrivals": {
+        "Kokura": "14:15",
+        "Shin-Yamaguchi": "14:35",
+        "Hiroshima": "15:07",
+        "Okayama": "15:45",
+        "Shin-Kobe": "16:18",
+        "Shin-Osaka": "16:31",
+        "Kyoto": "16:46",
+        "Nagoya": "17:21",
+        "Shin-Yokohama": "18:40",
+        "Shinagawa": "18:52"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027451.html"
     },
     {
@@ -3230,6 +4670,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:09",
         "Shinagawa": "16:21",
         "Tokyo": "16:27"
+      },
+      "arrivals": {
+        "Kyoto": "14:14",
+        "Nagoya": "14:50",
+        "Shin-Yokohama": "16:08",
+        "Shinagawa": "16:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027211.html"
     },
@@ -3250,6 +4696,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:38",
         "Shinagawa": "17:50",
         "Tokyo": "17:57"
+      },
+      "arrivals": {
+        "Okayama": "14:39",
+        "Himeji": "14:58",
+        "Shin-Kobe": "15:15",
+        "Shin-Osaka": "15:28",
+        "Kyoto": "15:43",
+        "Nagoya": "16:18",
+        "Shin-Yokohama": "17:37",
+        "Shinagawa": "17:49"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062411.html"
     },
@@ -3273,6 +4729,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:00",
         "Tokyo": "19:06"
       },
+      "arrivals": {
+        "Kokura": "14:22",
+        "Hiroshima": "15:11",
+        "Fukuyama": "15:34",
+        "Okayama": "15:51",
+        "Shin-Kobe": "16:23",
+        "Shin-Osaka": "16:37",
+        "Kyoto": "16:52",
+        "Nagoya": "17:28",
+        "Shin-Yokohama": "18:48",
+        "Shinagawa": "18:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027421.html"
     },
     {
@@ -3288,6 +4756,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:17",
         "Shinagawa": "16:29",
         "Tokyo": "16:36"
+      },
+      "arrivals": {
+        "Kyoto": "14:22",
+        "Nagoya": "14:58",
+        "Shin-Yokohama": "16:16",
+        "Shinagawa": "16:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034381.html"
     },
@@ -3307,6 +4781,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:49",
         "Shinagawa": "18:00",
         "Tokyo": "18:06"
+      },
+      "arrivals": {
+        "Okayama": "14:51",
+        "Shin-Kobe": "15:23",
+        "Shin-Osaka": "15:37",
+        "Kyoto": "15:52",
+        "Nagoya": "16:28",
+        "Shin-Yokohama": "17:48",
+        "Shinagawa": "17:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178051.html"
     },
@@ -3330,6 +4813,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:09",
         "Tokyo": "19:15"
       },
+      "arrivals": {
+        "Kokura": "14:30",
+        "Hiroshima": "15:17",
+        "Fukuyama": "15:41",
+        "Okayama": "15:57",
+        "Shin-Kobe": "16:29",
+        "Shin-Osaka": "16:43",
+        "Kyoto": "16:59",
+        "Nagoya": "17:34",
+        "Shin-Yokohama": "18:56",
+        "Shinagawa": "19:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023561.html"
     },
     {
@@ -3345,6 +4840,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:27",
         "Shinagawa": "16:39",
         "Tokyo": "16:45"
+      },
+      "arrivals": {
+        "Kyoto": "14:29",
+        "Nagoya": "15:04",
+        "Shin-Yokohama": "16:26",
+        "Shinagawa": "16:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111251.html"
     },
@@ -3365,6 +4866,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:03",
         "Tokyo": "17:09"
       },
+      "arrivals": {
+        "Kyoto": "14:31",
+        "Maibara": "14:51",
+        "Gifu-Hashima": "15:09",
+        "Nagoya": "15:23",
+        "Odawara": "16:33",
+        "Shin-Yokohama": "16:50",
+        "Shinagawa": "17:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027131.html"
     },
     {
@@ -3381,6 +4891,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "16:47",
         "Tokyo": "16:54"
       },
+      "arrivals": {
+        "Kyoto": "14:37",
+        "Nagoya": "15:12",
+        "Shin-Yokohama": "16:34",
+        "Shinagawa": "16:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034361.html"
     },
     {
@@ -3396,6 +4912,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:41",
         "Shinagawa": "16:53",
         "Tokyo": "17:00"
+      },
+      "arrivals": {
+        "Kyoto": "14:46",
+        "Nagoya": "15:21",
+        "Shin-Yokohama": "16:40",
+        "Shinagawa": "16:52"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034351.html"
     },
@@ -3421,6 +4943,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:36",
         "Tokyo": "18:42"
       },
+      "arrivals": {
+        "Aioi": "14:51",
+        "Himeji": "15:07",
+        "Nishi-Akashi": "15:21",
+        "Shin-Kobe": "15:33",
+        "Shin-Osaka": "15:46",
+        "Kyoto": "16:02",
+        "Nagoya": "16:42",
+        "Hamamatsu": "17:13",
+        "Shizuoka": "17:37",
+        "Mishima": "17:57",
+        "Shin-Yokohama": "18:24",
+        "Shinagawa": "18:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128981.html"
     },
     {
@@ -3442,6 +4978,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:15",
         "Shinagawa": "19:26",
         "Tokyo": "19:33"
+      },
+      "arrivals": {
+        "Kokura": "14:51",
+        "Shin-Yamaguchi": "15:10",
+        "Hiroshima": "15:42",
+        "Okayama": "16:19",
+        "Shin-Kobe": "16:51",
+        "Shin-Osaka": "17:04",
+        "Kyoto": "17:20",
+        "Nagoya": "17:56",
+        "Shin-Yokohama": "19:14",
+        "Shinagawa": "19:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023581.html"
     },
@@ -3466,6 +5014,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "17:11",
         "Tokyo": "17:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "14:48",
+        "Toyohashi": "15:04",
+        "Hamamatsu": "15:21",
+        "Kakegawa": "15:37",
+        "Shizuoka": "15:51",
+        "Shin-Fuji": "16:06",
+        "Mishima": "16:20",
+        "Atami": "16:31",
+        "Odawara": "16:39",
+        "Shin-Yokohama": "16:59",
+        "Shinagawa": "17:10"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129721.html"
     },
     {
@@ -3481,6 +5042,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "16:49",
         "Shinagawa": "17:00",
         "Tokyo": "17:06"
+      },
+      "arrivals": {
+        "Kyoto": "14:52",
+        "Nagoya": "15:28",
+        "Shin-Yokohama": "16:48",
+        "Shinagawa": "16:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034341.html"
     },
@@ -3504,6 +5071,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:39",
         "Tokyo": "19:45"
       },
+      "arrivals": {
+        "Kokura": "14:57",
+        "Shin-Yamaguchi": "15:16",
+        "Hiroshima": "15:48",
+        "Okayama": "16:27",
+        "Shin-Kobe": "17:00",
+        "Shin-Osaka": "17:13",
+        "Kyoto": "17:29",
+        "Nagoya": "18:04",
+        "Shin-Yokohama": "19:26",
+        "Shinagawa": "19:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178101.html"
     },
     {
@@ -3519,6 +5098,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:03",
         "Shinagawa": "17:14",
         "Tokyo": "17:21"
+      },
+      "arrivals": {
+        "Kyoto": "15:04",
+        "Nagoya": "15:39",
+        "Shin-Yokohama": "17:02",
+        "Shinagawa": "17:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034321.html"
     },
@@ -3547,6 +5132,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:41",
         "Tokyo": "18:48"
       },
+      "arrivals": {
+        "Kyoto": "15:09",
+        "Maibara": "15:29",
+        "Gifu-Hashima": "15:46",
+        "Nagoya": "16:02",
+        "Mikawa-Anjo": "16:18",
+        "Toyohashi": "16:35",
+        "Hamamatsu": "16:52",
+        "Kakegawa": "17:07",
+        "Shizuoka": "17:23",
+        "Shin-Fuji": "17:36",
+        "Mishima": "17:50",
+        "Atami": "18:01",
+        "Odawara": "18:09",
+        "Shin-Yokohama": "18:29",
+        "Shinagawa": "18:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129581.html"
     },
     {
@@ -3562,6 +5164,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:07",
         "Shinagawa": "17:18",
         "Tokyo": "17:24"
+      },
+      "arrivals": {
+        "Kyoto": "15:12",
+        "Nagoya": "15:48",
+        "Shin-Yokohama": "17:06",
+        "Shinagawa": "17:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034311.html"
     },
@@ -3585,6 +5193,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:50",
         "Tokyo": "19:57"
       },
+      "arrivals": {
+        "Kokura": "15:15",
+        "Hiroshima": "16:02",
+        "Okayama": "16:39",
+        "Himeji": "16:58",
+        "Shin-Kobe": "17:15",
+        "Shin-Osaka": "17:28",
+        "Kyoto": "17:43",
+        "Nagoya": "18:18",
+        "Shin-Yokohama": "19:37",
+        "Shinagawa": "19:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023631.html"
     },
     {
@@ -3600,6 +5220,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:09",
         "Shinagawa": "17:21",
         "Tokyo": "17:27"
+      },
+      "arrivals": {
+        "Kyoto": "15:15",
+        "Nagoya": "15:50",
+        "Shin-Yokohama": "17:08",
+        "Shinagawa": "17:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111261.html"
     },
@@ -3620,6 +5246,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:38",
         "Shinagawa": "18:50",
         "Tokyo": "18:57"
+      },
+      "arrivals": {
+        "Okayama": "15:39",
+        "Himeji": "15:58",
+        "Shin-Kobe": "16:15",
+        "Shin-Osaka": "16:28",
+        "Kyoto": "16:43",
+        "Nagoya": "17:18",
+        "Shin-Yokohama": "18:37",
+        "Shinagawa": "18:49"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062421.html"
     },
@@ -3643,6 +5279,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:00",
         "Tokyo": "20:06"
       },
+      "arrivals": {
+        "Kokura": "15:22",
+        "Hiroshima": "16:11",
+        "Fukuyama": "16:34",
+        "Okayama": "16:51",
+        "Shin-Kobe": "17:23",
+        "Shin-Osaka": "17:37",
+        "Kyoto": "17:52",
+        "Nagoya": "18:28",
+        "Shin-Yokohama": "19:48",
+        "Shinagawa": "19:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089721.html"
     },
     {
@@ -3662,6 +5310,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:49",
         "Shinagawa": "19:00",
         "Tokyo": "19:06"
+      },
+      "arrivals": {
+        "Fukuyama": "15:34",
+        "Okayama": "15:51",
+        "Shin-Kobe": "16:23",
+        "Shin-Osaka": "16:37",
+        "Kyoto": "16:52",
+        "Nagoya": "17:28",
+        "Shin-Yokohama": "18:48",
+        "Shinagawa": "18:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178061.html"
     },
@@ -3685,6 +5343,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:09",
         "Tokyo": "20:15"
       },
+      "arrivals": {
+        "Kokura": "15:30",
+        "Tokuyama": "15:58",
+        "Hiroshima": "16:21",
+        "Okayama": "16:57",
+        "Shin-Kobe": "17:29",
+        "Shin-Osaka": "17:43",
+        "Kyoto": "17:59",
+        "Nagoya": "18:34",
+        "Shin-Yokohama": "19:56",
+        "Shinagawa": "20:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023591.html"
     },
     {
@@ -3700,6 +5370,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:27",
         "Shinagawa": "17:39",
         "Tokyo": "17:45"
+      },
+      "arrivals": {
+        "Kyoto": "15:29",
+        "Nagoya": "16:04",
+        "Shin-Yokohama": "17:26",
+        "Shinagawa": "17:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111271.html"
     },
@@ -3720,6 +5396,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:06",
         "Tokyo": "18:12"
       },
+      "arrivals": {
+        "Kyoto": "15:31",
+        "Maibara": "15:51",
+        "Gifu-Hashima": "16:09",
+        "Nagoya": "16:23",
+        "Toyohashi": "16:44",
+        "Shin-Yokohama": "17:54",
+        "Shinagawa": "18:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062511.html"
     },
     {
@@ -3735,6 +5420,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:35",
         "Shinagawa": "17:47",
         "Tokyo": "17:54"
+      },
+      "arrivals": {
+        "Kyoto": "15:37",
+        "Nagoya": "16:12",
+        "Shin-Yokohama": "17:34",
+        "Shinagawa": "17:46"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/050/054531.html"
     },
@@ -3758,6 +5449,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:18",
         "Tokyo": "20:24"
       },
+      "arrivals": {
+        "Kokura": "15:42",
+        "Hiroshima": "16:28",
+        "Okayama": "17:04",
+        "Himeji": "17:25",
+        "Shin-Kobe": "17:41",
+        "Shin-Osaka": "17:55",
+        "Kyoto": "18:12",
+        "Nagoya": "18:48",
+        "Shin-Yokohama": "20:06",
+        "Shinagawa": "20:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115191.html"
     },
     {
@@ -3777,6 +5480,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:07",
         "Shinagawa": "19:18",
         "Tokyo": "19:24"
+      },
+      "arrivals": {
+        "Okayama": "16:06",
+        "Himeji": "16:26",
+        "Shin-Kobe": "16:42",
+        "Shin-Osaka": "16:55",
+        "Kyoto": "17:12",
+        "Nagoya": "17:48",
+        "Shin-Yokohama": "19:06",
+        "Shinagawa": "19:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/031641.html"
     },
@@ -3802,6 +5515,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:36",
         "Tokyo": "19:42"
       },
+      "arrivals": {
+        "Aioi": "15:51",
+        "Himeji": "16:07",
+        "Nishi-Akashi": "16:21",
+        "Shin-Kobe": "16:33",
+        "Shin-Osaka": "16:46",
+        "Kyoto": "17:02",
+        "Nagoya": "17:42",
+        "Hamamatsu": "18:13",
+        "Shizuoka": "18:37",
+        "Atami": "19:04",
+        "Shin-Yokohama": "19:24",
+        "Shinagawa": "19:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128991.html"
     },
     {
@@ -3823,6 +5550,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:15",
         "Shinagawa": "20:26",
         "Tokyo": "20:33"
+      },
+      "arrivals": {
+        "Kokura": "15:51",
+        "Shin-Yamaguchi": "16:10",
+        "Hiroshima": "16:42",
+        "Okayama": "17:19",
+        "Shin-Kobe": "17:51",
+        "Shin-Osaka": "18:04",
+        "Kyoto": "18:20",
+        "Nagoya": "18:56",
+        "Shin-Yokohama": "20:14",
+        "Shinagawa": "20:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023531.html"
     },
@@ -3847,6 +5586,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:11",
         "Tokyo": "18:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "15:48",
+        "Toyohashi": "16:05",
+        "Hamamatsu": "16:21",
+        "Kakegawa": "16:36",
+        "Shizuoka": "16:51",
+        "Shin-Fuji": "17:06",
+        "Mishima": "17:20",
+        "Atami": "17:31",
+        "Odawara": "17:39",
+        "Shin-Yokohama": "17:59",
+        "Shinagawa": "18:10"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129731.html"
     },
     {
@@ -3862,6 +5614,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "17:49",
         "Shinagawa": "18:00",
         "Tokyo": "18:06"
+      },
+      "arrivals": {
+        "Kyoto": "15:52",
+        "Nagoya": "16:28",
+        "Shin-Yokohama": "17:48",
+        "Shinagawa": "17:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111281.html"
     },
@@ -3885,6 +5643,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:39",
         "Tokyo": "20:45"
       },
+      "arrivals": {
+        "Kokura": "15:57",
+        "Shin-Yamaguchi": "16:16",
+        "Hiroshima": "16:48",
+        "Okayama": "17:27",
+        "Shin-Kobe": "18:00",
+        "Shin-Osaka": "18:13",
+        "Kyoto": "18:29",
+        "Nagoya": "19:04",
+        "Shin-Yokohama": "20:26",
+        "Shinagawa": "20:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178111.html"
     },
     {
@@ -3900,6 +5670,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:03",
         "Shinagawa": "18:14",
         "Tokyo": "18:21"
+      },
+      "arrivals": {
+        "Kyoto": "16:04",
+        "Nagoya": "16:40",
+        "Shin-Yokohama": "18:02",
+        "Shinagawa": "18:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063071.html"
     },
@@ -3928,6 +5704,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:41",
         "Tokyo": "19:48"
       },
+      "arrivals": {
+        "Kyoto": "16:09",
+        "Maibara": "16:29",
+        "Gifu-Hashima": "16:46",
+        "Nagoya": "17:02",
+        "Mikawa-Anjo": "17:18",
+        "Toyohashi": "17:35",
+        "Hamamatsu": "17:52",
+        "Kakegawa": "18:07",
+        "Shizuoka": "18:23",
+        "Shin-Fuji": "18:36",
+        "Mishima": "18:50",
+        "Atami": "19:01",
+        "Odawara": "19:09",
+        "Shin-Yokohama": "19:29",
+        "Shinagawa": "19:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129591.html"
     },
     {
@@ -3943,6 +5736,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:07",
         "Shinagawa": "18:18",
         "Tokyo": "18:24"
+      },
+      "arrivals": {
+        "Kyoto": "16:12",
+        "Nagoya": "16:48",
+        "Shin-Yokohama": "18:06",
+        "Shinagawa": "18:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063081.html"
     },
@@ -3966,6 +5765,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:50",
         "Tokyo": "20:57"
       },
+      "arrivals": {
+        "Kokura": "16:15",
+        "Hiroshima": "17:02",
+        "Okayama": "17:39",
+        "Himeji": "17:58",
+        "Shin-Kobe": "18:15",
+        "Shin-Osaka": "18:28",
+        "Kyoto": "18:43",
+        "Nagoya": "19:18",
+        "Shin-Yokohama": "20:37",
+        "Shinagawa": "20:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023521.html"
     },
     {
@@ -3981,6 +5792,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:09",
         "Shinagawa": "18:21",
         "Tokyo": "18:27"
+      },
+      "arrivals": {
+        "Kyoto": "16:15",
+        "Nagoya": "16:50",
+        "Shin-Yokohama": "18:08",
+        "Shinagawa": "18:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129031.html"
     },
@@ -4004,6 +5821,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:00",
         "Tokyo": "21:06"
       },
+      "arrivals": {
+        "Kokura": "16:22",
+        "Hiroshima": "17:11",
+        "Fukuyama": "17:34",
+        "Okayama": "17:51",
+        "Shin-Kobe": "18:23",
+        "Shin-Osaka": "18:37",
+        "Kyoto": "18:52",
+        "Nagoya": "19:27",
+        "Shin-Yokohama": "20:47",
+        "Shinagawa": "20:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/075/075891.html"
     },
     {
@@ -4023,6 +5852,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:53",
         "Tokyo": "20:00"
       },
+      "arrivals": {
+        "Okayama": "16:45",
+        "Shin-Kobe": "17:18",
+        "Shin-Osaka": "17:31",
+        "Kyoto": "17:46",
+        "Nagoya": "18:21",
+        "Shin-Yokohama": "19:40",
+        "Shinagawa": "19:52"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029541.html"
     },
     {
@@ -4038,6 +5876,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:17",
         "Shinagawa": "18:29",
         "Tokyo": "18:36"
+      },
+      "arrivals": {
+        "Kyoto": "16:23",
+        "Nagoya": "16:58",
+        "Shin-Yokohama": "18:16",
+        "Shinagawa": "18:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063091.html"
     },
@@ -4058,6 +5902,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:49",
         "Shinagawa": "20:00",
         "Tokyo": "20:06"
+      },
+      "arrivals": {
+        "Fukuyama": "16:34",
+        "Okayama": "16:51",
+        "Shin-Kobe": "17:23",
+        "Shin-Osaka": "17:37",
+        "Kyoto": "17:52",
+        "Nagoya": "18:28",
+        "Shin-Yokohama": "19:48",
+        "Shinagawa": "19:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089401.html"
     },
@@ -4081,6 +5935,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:09",
         "Tokyo": "21:15"
       },
+      "arrivals": {
+        "Kokura": "16:30",
+        "Tokuyama": "16:58",
+        "Hiroshima": "17:21",
+        "Okayama": "17:57",
+        "Shin-Kobe": "18:29",
+        "Shin-Osaka": "18:43",
+        "Kyoto": "18:59",
+        "Nagoya": "19:34",
+        "Shin-Yokohama": "20:57",
+        "Shinagawa": "21:08"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023471.html"
     },
     {
@@ -4096,6 +5962,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:27",
         "Shinagawa": "18:39",
         "Tokyo": "18:45"
+      },
+      "arrivals": {
+        "Kyoto": "16:29",
+        "Nagoya": "17:04",
+        "Shin-Yokohama": "18:26",
+        "Shinagawa": "18:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129111.html"
     },
@@ -4116,6 +5988,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:03",
         "Tokyo": "19:09"
       },
+      "arrivals": {
+        "Kyoto": "16:31",
+        "Maibara": "16:51",
+        "Gifu-Hashima": "17:09",
+        "Nagoya": "17:23",
+        "Odawara": "18:33",
+        "Shin-Yokohama": "18:50",
+        "Shinagawa": "19:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027121.html"
     },
     {
@@ -4132,6 +6013,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "18:44",
         "Tokyo": "18:51"
       },
+      "arrivals": {
+        "Kyoto": "16:35",
+        "Nagoya": "17:10",
+        "Shin-Yokohama": "18:32",
+        "Shinagawa": "18:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063101.html"
     },
     {
@@ -4147,6 +6034,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:41",
         "Shinagawa": "18:53",
         "Tokyo": "19:00"
+      },
+      "arrivals": {
+        "Kyoto": "16:46",
+        "Nagoya": "17:21",
+        "Shin-Yokohama": "18:40",
+        "Shinagawa": "18:52"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063121.html"
     },
@@ -4172,6 +6065,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:36",
         "Tokyo": "20:42"
       },
+      "arrivals": {
+        "Aioi": "16:51",
+        "Himeji": "17:07",
+        "Nishi-Akashi": "17:21",
+        "Shin-Kobe": "17:33",
+        "Shin-Osaka": "17:46",
+        "Kyoto": "18:02",
+        "Nagoya": "18:42",
+        "Hamamatsu": "19:13",
+        "Shizuoka": "19:37",
+        "Mishima": "19:57",
+        "Shin-Yokohama": "20:24",
+        "Shinagawa": "20:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129001.html"
     },
     {
@@ -4193,6 +6100,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:15",
         "Shinagawa": "21:26",
         "Tokyo": "21:33"
+      },
+      "arrivals": {
+        "Kokura": "16:51",
+        "Shin-Yamaguchi": "17:10",
+        "Hiroshima": "17:42",
+        "Okayama": "18:19",
+        "Shin-Kobe": "18:51",
+        "Shin-Osaka": "19:04",
+        "Kyoto": "19:19",
+        "Nagoya": "19:55",
+        "Shin-Yokohama": "21:14",
+        "Shinagawa": "21:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023461.html"
     },
@@ -4217,6 +6136,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "19:11",
         "Tokyo": "19:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "16:48",
+        "Toyohashi": "17:05",
+        "Hamamatsu": "17:21",
+        "Kakegawa": "17:37",
+        "Shizuoka": "17:51",
+        "Shin-Fuji": "18:06",
+        "Mishima": "18:20",
+        "Atami": "18:31",
+        "Odawara": "18:39",
+        "Shin-Yokohama": "18:59",
+        "Shinagawa": "19:10"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129741.html"
     },
     {
@@ -4232,6 +6164,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "18:49",
         "Shinagawa": "19:00",
         "Tokyo": "19:06"
+      },
+      "arrivals": {
+        "Kyoto": "16:52",
+        "Nagoya": "17:28",
+        "Shin-Yokohama": "18:48",
+        "Shinagawa": "18:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063131.html"
     },
@@ -4255,6 +6193,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:36",
         "Tokyo": "21:42"
       },
+      "arrivals": {
+        "Kokura": "16:57",
+        "Tokuyama": "17:26",
+        "Hiroshima": "17:48",
+        "Okayama": "18:27",
+        "Shin-Kobe": "19:00",
+        "Shin-Osaka": "19:13",
+        "Kyoto": "19:28",
+        "Nagoya": "20:03",
+        "Shin-Yokohama": "21:24",
+        "Shinagawa": "21:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178121.html"
     },
     {
@@ -4270,6 +6220,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:03",
         "Shinagawa": "19:14",
         "Tokyo": "19:21"
+      },
+      "arrivals": {
+        "Kyoto": "17:04",
+        "Nagoya": "17:40",
+        "Shin-Yokohama": "19:02",
+        "Shinagawa": "19:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063151.html"
     },
@@ -4298,6 +6254,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:41",
         "Tokyo": "20:48"
       },
+      "arrivals": {
+        "Kyoto": "17:09",
+        "Maibara": "17:29",
+        "Gifu-Hashima": "17:46",
+        "Nagoya": "18:02",
+        "Mikawa-Anjo": "18:18",
+        "Toyohashi": "18:35",
+        "Hamamatsu": "18:52",
+        "Kakegawa": "19:07",
+        "Shizuoka": "19:23",
+        "Shin-Fuji": "19:36",
+        "Mishima": "19:50",
+        "Atami": "20:01",
+        "Odawara": "20:09",
+        "Shin-Yokohama": "20:29",
+        "Shinagawa": "20:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129601.html"
     },
     {
@@ -4313,6 +6286,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:07",
         "Shinagawa": "19:18",
         "Tokyo": "19:24"
+      },
+      "arrivals": {
+        "Kyoto": "17:12",
+        "Nagoya": "17:48",
+        "Shin-Yokohama": "19:06",
+        "Shinagawa": "19:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063161.html"
     },
@@ -4336,6 +6315,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:50",
         "Tokyo": "21:57"
       },
+      "arrivals": {
+        "Kokura": "17:15",
+        "Hiroshima": "18:02",
+        "Okayama": "18:39",
+        "Himeji": "18:58",
+        "Shin-Kobe": "19:15",
+        "Shin-Osaka": "19:28",
+        "Kyoto": "19:43",
+        "Nagoya": "20:19",
+        "Shin-Yokohama": "21:38",
+        "Shinagawa": "21:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023441.html"
     },
     {
@@ -4351,6 +6342,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:09",
         "Shinagawa": "19:21",
         "Tokyo": "19:27"
+      },
+      "arrivals": {
+        "Kyoto": "17:15",
+        "Nagoya": "17:50",
+        "Shin-Yokohama": "19:08",
+        "Shinagawa": "19:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129041.html"
     },
@@ -4374,6 +6371,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:00",
         "Tokyo": "22:06"
       },
+      "arrivals": {
+        "Kokura": "17:22",
+        "Hiroshima": "18:11",
+        "Fukuyama": "18:34",
+        "Okayama": "18:51",
+        "Shin-Kobe": "19:23",
+        "Shin-Osaka": "19:37",
+        "Kyoto": "19:52",
+        "Nagoya": "20:27",
+        "Shin-Yokohama": "21:48",
+        "Shinagawa": "21:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178131.html"
     },
     {
@@ -4393,6 +6402,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:53",
         "Tokyo": "21:00"
       },
+      "arrivals": {
+        "Okayama": "17:45",
+        "Shin-Kobe": "18:18",
+        "Shin-Osaka": "18:31",
+        "Kyoto": "18:46",
+        "Nagoya": "19:21",
+        "Shin-Yokohama": "20:41",
+        "Shinagawa": "20:52"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089761.html"
     },
     {
@@ -4408,6 +6426,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:18",
         "Shinagawa": "19:29",
         "Tokyo": "19:36"
+      },
+      "arrivals": {
+        "Kyoto": "17:23",
+        "Nagoya": "17:58",
+        "Shin-Yokohama": "19:17",
+        "Shinagawa": "19:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063171.html"
     },
@@ -4428,6 +6452,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:48",
         "Shinagawa": "21:00",
         "Tokyo": "21:06"
+      },
+      "arrivals": {
+        "Fukuyama": "17:34",
+        "Okayama": "17:51",
+        "Shin-Kobe": "18:23",
+        "Shin-Osaka": "18:37",
+        "Kyoto": "18:52",
+        "Nagoya": "19:27",
+        "Shin-Yokohama": "20:47",
+        "Shinagawa": "20:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062441.html"
     },
@@ -4451,6 +6485,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:08",
         "Tokyo": "22:15"
       },
+      "arrivals": {
+        "Kokura": "17:30",
+        "Hiroshima": "18:17",
+        "Fukuyama": "18:41",
+        "Okayama": "18:57",
+        "Shin-Kobe": "19:29",
+        "Shin-Osaka": "19:43",
+        "Kyoto": "19:58",
+        "Nagoya": "20:34",
+        "Shin-Yokohama": "21:56",
+        "Shinagawa": "22:07"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/025701.html"
     },
     {
@@ -4466,6 +6512,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:27",
         "Shinagawa": "19:39",
         "Tokyo": "19:45"
+      },
+      "arrivals": {
+        "Kyoto": "17:29",
+        "Nagoya": "18:04",
+        "Shin-Yokohama": "19:26",
+        "Shinagawa": "19:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129121.html"
     },
@@ -4486,6 +6538,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:06",
         "Tokyo": "20:12"
       },
+      "arrivals": {
+        "Kyoto": "17:31",
+        "Maibara": "17:51",
+        "Gifu-Hashima": "18:09",
+        "Nagoya": "18:23",
+        "Toyohashi": "18:44",
+        "Shin-Yokohama": "19:54",
+        "Shinagawa": "20:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062541.html"
     },
     {
@@ -4501,6 +6562,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "19:33",
         "Shinagawa": "19:44",
         "Tokyo": "19:51"
+      },
+      "arrivals": {
+        "Kyoto": "17:35",
+        "Nagoya": "18:10",
+        "Shin-Yokohama": "19:32",
+        "Shinagawa": "19:43"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063181.html"
     },
@@ -4521,6 +6588,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:07",
         "Shinagawa": "21:18",
         "Tokyo": "21:24"
+      },
+      "arrivals": {
+        "Okayama": "18:04",
+        "Himeji": "18:25",
+        "Shin-Kobe": "18:41",
+        "Shin-Osaka": "18:55",
+        "Kyoto": "19:11",
+        "Nagoya": "19:47",
+        "Shin-Yokohama": "21:06",
+        "Shinagawa": "21:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115131.html"
     },
@@ -4545,6 +6622,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:29",
         "Tokyo": "21:36"
       },
+      "arrivals": {
+        "Aioi": "17:51",
+        "Himeji": "18:07",
+        "Nishi-Akashi": "18:21",
+        "Shin-Kobe": "18:33",
+        "Shin-Osaka": "18:46",
+        "Kyoto": "19:02",
+        "Nagoya": "19:42",
+        "Hamamatsu": "20:11",
+        "Shizuoka": "20:37",
+        "Shin-Yokohama": "21:16",
+        "Shinagawa": "21:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129011.html"
     },
     {
@@ -4566,6 +6656,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "22:15",
         "Shinagawa": "22:26",
         "Tokyo": "22:33"
+      },
+      "arrivals": {
+        "Kokura": "17:51",
+        "Shin-Yamaguchi": "18:10",
+        "Hiroshima": "18:42",
+        "Okayama": "19:19",
+        "Shin-Kobe": "19:51",
+        "Shin-Osaka": "20:04",
+        "Kyoto": "20:19",
+        "Nagoya": "20:55",
+        "Shin-Yokohama": "22:14",
+        "Shinagawa": "22:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026411.html"
     },
@@ -4590,6 +6692,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:11",
         "Tokyo": "20:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "17:48",
+        "Toyohashi": "18:05",
+        "Hamamatsu": "18:21",
+        "Kakegawa": "18:37",
+        "Shizuoka": "18:51",
+        "Shin-Fuji": "19:06",
+        "Mishima": "19:20",
+        "Atami": "19:31",
+        "Odawara": "19:39",
+        "Shin-Yokohama": "19:59",
+        "Shinagawa": "20:10"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129751.html"
     },
     {
@@ -4612,6 +6727,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:36",
         "Tokyo": "22:42"
       },
+      "arrivals": {
+        "Kokura": "17:57",
+        "Tokuyama": "18:26",
+        "Hiroshima": "18:48",
+        "Okayama": "19:27",
+        "Shin-Kobe": "20:00",
+        "Shin-Osaka": "20:13",
+        "Kyoto": "20:28",
+        "Nagoya": "21:04",
+        "Shin-Yokohama": "22:24",
+        "Shinagawa": "22:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089731.html"
     },
     {
@@ -4627,6 +6754,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:03",
         "Shinagawa": "20:14",
         "Tokyo": "20:21"
+      },
+      "arrivals": {
+        "Kyoto": "18:04",
+        "Nagoya": "18:40",
+        "Shin-Yokohama": "20:02",
+        "Shinagawa": "20:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/063201.html"
     },
@@ -4655,6 +6788,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:41",
         "Tokyo": "21:48"
       },
+      "arrivals": {
+        "Kyoto": "18:09",
+        "Maibara": "18:29",
+        "Gifu-Hashima": "18:46",
+        "Nagoya": "19:02",
+        "Mikawa-Anjo": "19:18",
+        "Toyohashi": "19:35",
+        "Hamamatsu": "19:53",
+        "Kakegawa": "20:09",
+        "Shizuoka": "20:23",
+        "Shin-Fuji": "20:36",
+        "Mishima": "20:50",
+        "Atami": "21:01",
+        "Odawara": "21:09",
+        "Shin-Yokohama": "21:29",
+        "Shinagawa": "21:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129631.html"
     },
     {
@@ -4671,6 +6821,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:18",
         "Tokyo": "20:24"
       },
+      "arrivals": {
+        "Kyoto": "18:12",
+        "Nagoya": "18:48",
+        "Shin-Yokohama": "20:06",
+        "Shinagawa": "20:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089801.html"
     },
     {
@@ -4686,6 +6842,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:09",
         "Shinagawa": "20:21",
         "Tokyo": "20:27"
+      },
+      "arrivals": {
+        "Kyoto": "18:15",
+        "Nagoya": "18:50",
+        "Shin-Yokohama": "20:08",
+        "Shinagawa": "20:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129051.html"
     },
@@ -4709,6 +6871,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:51",
         "Tokyo": "22:57"
       },
+      "arrivals": {
+        "Kokura": "18:18",
+        "Hiroshima": "19:05",
+        "Okayama": "19:41",
+        "Himeji": "20:01",
+        "Shin-Kobe": "20:18",
+        "Shin-Osaka": "20:31",
+        "Kyoto": "20:46",
+        "Nagoya": "21:21",
+        "Shin-Yokohama": "22:38",
+        "Shinagawa": "22:50"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026401.html"
     },
     {
@@ -4731,6 +6905,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:57",
         "Tokyo": "23:03"
       },
+      "arrivals": {
+        "Kokura": "18:22",
+        "Shin-Yamaguchi": "18:41",
+        "Hiroshima": "19:13",
+        "Okayama": "19:51",
+        "Shin-Kobe": "20:23",
+        "Shin-Osaka": "20:37",
+        "Kyoto": "20:52",
+        "Nagoya": "21:27",
+        "Shin-Yokohama": "22:45",
+        "Shinagawa": "22:56"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115201.html"
     },
     {
@@ -4750,6 +6936,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:53",
         "Tokyo": "21:59"
       },
+      "arrivals": {
+        "Okayama": "18:45",
+        "Shin-Kobe": "19:18",
+        "Shin-Osaka": "19:31",
+        "Kyoto": "19:46",
+        "Nagoya": "20:21",
+        "Shin-Yokohama": "21:41",
+        "Shinagawa": "21:52"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178071.html"
     },
     {
@@ -4766,6 +6961,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:29",
         "Tokyo": "20:36"
       },
+      "arrivals": {
+        "Kyoto": "18:23",
+        "Nagoya": "18:58",
+        "Shin-Yokohama": "20:16",
+        "Shinagawa": "20:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089781.html"
     },
     {
@@ -4781,6 +6982,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:27",
         "Shinagawa": "20:39",
         "Tokyo": "20:45"
+      },
+      "arrivals": {
+        "Kyoto": "18:29",
+        "Nagoya": "19:04",
+        "Shin-Yokohama": "20:26",
+        "Shinagawa": "20:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129061.html"
     },
@@ -4800,6 +7007,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:54",
         "Shinagawa": "21:06",
         "Tokyo": "21:12"
+      },
+      "arrivals": {
+        "Kyoto": "18:31",
+        "Maibara": "18:51",
+        "Gifu-Hashima": "19:09",
+        "Nagoya": "19:25",
+        "Odawara": "20:38",
+        "Shin-Yokohama": "20:53",
+        "Shinagawa": "21:05"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027111.html"
     },
@@ -4823,6 +7039,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:06",
         "Tokyo": "23:12"
       },
+      "arrivals": {
+        "Kokura": "18:33",
+        "Hiroshima": "19:20",
+        "Fukuyama": "19:44",
+        "Okayama": "20:00",
+        "Shin-Kobe": "20:33",
+        "Shin-Osaka": "20:46",
+        "Kyoto": "21:01",
+        "Nagoya": "21:35",
+        "Shin-Yokohama": "22:53",
+        "Shinagawa": "23:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029521.html"
     },
     {
@@ -4839,6 +7067,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "20:44",
         "Tokyo": "20:51"
       },
+      "arrivals": {
+        "Kyoto": "18:35",
+        "Nagoya": "19:10",
+        "Shin-Yokohama": "20:32",
+        "Shinagawa": "20:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089811.html"
     },
     {
@@ -4854,6 +7088,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "20:35",
         "Shinagawa": "20:47",
         "Tokyo": "20:54"
+      },
+      "arrivals": {
+        "Kyoto": "18:37",
+        "Nagoya": "19:12",
+        "Shin-Yokohama": "20:34",
+        "Shinagawa": "20:46"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089791.html"
     },
@@ -4874,6 +7114,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "22:07",
         "Shinagawa": "22:18",
         "Tokyo": "22:24"
+      },
+      "arrivals": {
+        "Okayama": "19:05",
+        "Himeji": "19:25",
+        "Shin-Kobe": "19:41",
+        "Shin-Osaka": "19:56",
+        "Kyoto": "20:13",
+        "Nagoya": "20:48",
+        "Shin-Yokohama": "22:06",
+        "Shinagawa": "22:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089771.html"
     },
@@ -4896,6 +7146,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "23:09",
         "Shinagawa": "23:21",
         "Tokyo": "23:27"
+      },
+      "arrivals": {
+        "Kokura": "18:45",
+        "Tokuyama": "19:13",
+        "Hiroshima": "19:35",
+        "Okayama": "20:12",
+        "Shin-Kobe": "20:44",
+        "Shin-Osaka": "20:58",
+        "Kyoto": "21:13",
+        "Nagoya": "21:48",
+        "Shin-Yokohama": "23:08",
+        "Shinagawa": "23:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115211.html"
     },
@@ -4936,6 +7198,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:21",
         "Tokyo": "22:27"
       },
+      "arrivals": {
+        "Aioi": "18:51",
+        "Himeji": "19:07",
+        "Nishi-Akashi": "19:21",
+        "Shin-Kobe": "19:33",
+        "Shin-Osaka": "19:46",
+        "Kyoto": "20:02",
+        "Nagoya": "20:38",
+        "Toyohashi": "20:59",
+        "Shizuoka": "21:29",
+        "Shin-Yokohama": "22:08",
+        "Shinagawa": "22:20"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129021.html"
     },
     {
@@ -4957,6 +7232,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "23:15",
         "Shinagawa": "23:26",
         "Tokyo": "23:32"
+      },
+      "arrivals": {
+        "Kokura": "18:51",
+        "Shin-Yamaguchi": "19:10",
+        "Hiroshima": "19:42",
+        "Okayama": "20:19",
+        "Shin-Kobe": "20:51",
+        "Shin-Osaka": "21:04",
+        "Kyoto": "21:19",
+        "Nagoya": "21:55",
+        "Shin-Yokohama": "23:14",
+        "Shinagawa": "23:25"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029511.html"
     },
@@ -4981,6 +7268,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:12",
         "Tokyo": "21:18"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "18:48",
+        "Toyohashi": "19:05",
+        "Hamamatsu": "19:21",
+        "Kakegawa": "19:37",
+        "Shizuoka": "19:51",
+        "Shin-Fuji": "20:07",
+        "Mishima": "20:22",
+        "Atami": "20:34",
+        "Odawara": "20:42",
+        "Shin-Yokohama": "20:59",
+        "Shinagawa": "21:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129761.html"
     },
     {
@@ -5003,6 +7303,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:33",
         "Tokyo": "23:39"
       },
+      "arrivals": {
+        "Kokura": "18:57",
+        "Hiroshima": "19:45",
+        "Fukuyama": "20:09",
+        "Okayama": "20:27",
+        "Shin-Kobe": "21:00",
+        "Shin-Osaka": "21:13",
+        "Kyoto": "21:29",
+        "Nagoya": "22:05",
+        "Shin-Yokohama": "23:21",
+        "Shinagawa": "23:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178151.html"
     },
     {
@@ -5018,6 +7330,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:03",
         "Shinagawa": "21:14",
         "Tokyo": "21:21"
+      },
+      "arrivals": {
+        "Kyoto": "19:04",
+        "Nagoya": "19:39",
+        "Shin-Yokohama": "21:02",
+        "Shinagawa": "21:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089831.html"
     },
@@ -5046,6 +7364,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:41",
         "Tokyo": "22:48"
       },
+      "arrivals": {
+        "Kyoto": "19:09",
+        "Maibara": "19:29",
+        "Gifu-Hashima": "19:46",
+        "Nagoya": "20:01",
+        "Mikawa-Anjo": "20:17",
+        "Toyohashi": "20:36",
+        "Hamamatsu": "20:52",
+        "Kakegawa": "21:05",
+        "Shizuoka": "21:21",
+        "Shin-Fuji": "21:36",
+        "Mishima": "21:50",
+        "Atami": "22:01",
+        "Odawara": "22:09",
+        "Shin-Yokohama": "22:29",
+        "Shinagawa": "22:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129611.html"
     },
     {
@@ -5061,6 +7396,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:07",
         "Shinagawa": "21:18",
         "Tokyo": "21:24"
+      },
+      "arrivals": {
+        "Kyoto": "19:11",
+        "Nagoya": "19:47",
+        "Shin-Yokohama": "21:06",
+        "Shinagawa": "21:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103151.html"
     },
@@ -5083,6 +7424,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:39",
         "Tokyo": "23:45"
       },
+      "arrivals": {
+        "Kokura": "19:15",
+        "Hiroshima": "20:01",
+        "Okayama": "20:36",
+        "Shin-Kobe": "21:08",
+        "Shin-Osaka": "21:21",
+        "Kyoto": "21:37",
+        "Nagoya": "22:11",
+        "Shin-Yokohama": "23:27",
+        "Shinagawa": "23:38"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029501.html"
     },
     {
@@ -5098,6 +7450,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:09",
         "Shinagawa": "21:21",
         "Tokyo": "21:27"
+      },
+      "arrivals": {
+        "Kyoto": "19:14",
+        "Nagoya": "19:50",
+        "Shin-Yokohama": "21:08",
+        "Shinagawa": "21:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129071.html"
     },
@@ -5115,6 +7473,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:36",
         "Tokyo": "21:42"
       },
+      "arrivals": {
+        "Kyoto": "19:28",
+        "Nagoya": "20:03",
+        "Shin-Yokohama": "21:24",
+        "Shinagawa": "21:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129131.html"
     },
     {
@@ -5130,6 +7494,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:27",
         "Shinagawa": "21:39",
         "Tokyo": "21:45"
+      },
+      "arrivals": {
+        "Kyoto": "19:31",
+        "Nagoya": "20:07",
+        "Shin-Yokohama": "21:26",
+        "Shinagawa": "21:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103161.html"
     },
@@ -5150,6 +7520,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:12",
         "Tokyo": "22:18"
       },
+      "arrivals": {
+        "Kyoto": "19:34",
+        "Maibara": "19:54",
+        "Gifu-Hashima": "20:09",
+        "Nagoya": "20:25",
+        "Hamamatsu": "20:58",
+        "Shin-Yokohama": "21:59",
+        "Shinagawa": "22:11"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062551.html"
     },
     {
@@ -5166,6 +7545,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "21:44",
         "Tokyo": "21:51"
       },
+      "arrivals": {
+        "Kyoto": "19:37",
+        "Nagoya": "20:13",
+        "Shin-Yokohama": "21:32",
+        "Shinagawa": "21:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103181.html"
     },
     {
@@ -5181,6 +7566,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:42",
         "Shinagawa": "21:53",
         "Tokyo": "21:59"
+      },
+      "arrivals": {
+        "Kyoto": "19:46",
+        "Nagoya": "20:21",
+        "Shin-Yokohama": "21:41",
+        "Shinagawa": "21:52"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178461.html"
     },
@@ -5205,6 +7596,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:06",
         "Tokyo": "22:12"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "19:48",
+        "Toyohashi": "20:04",
+        "Hamamatsu": "20:21",
+        "Kakegawa": "20:33",
+        "Shizuoka": "20:47",
+        "Shin-Fuji": "21:02",
+        "Mishima": "21:13",
+        "Atami": "21:25",
+        "Odawara": "21:33",
+        "Shin-Yokohama": "21:53",
+        "Shinagawa": "22:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129771.html"
     },
     {
@@ -5220,6 +7624,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "21:49",
         "Shinagawa": "22:00",
         "Tokyo": "22:06"
+      },
+      "arrivals": {
+        "Kyoto": "19:52",
+        "Nagoya": "20:27",
+        "Shin-Yokohama": "21:48",
+        "Shinagawa": "21:59"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178471.html"
     },
@@ -5237,6 +7647,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:15",
         "Tokyo": "22:21"
       },
+      "arrivals": {
+        "Kyoto": "20:07",
+        "Nagoya": "20:42",
+        "Shin-Yokohama": "22:02",
+        "Shinagawa": "22:14"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178401.html"
     },
     {
@@ -5252,6 +7668,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "22:07",
         "Shinagawa": "22:18",
         "Tokyo": "22:24"
+      },
+      "arrivals": {
+        "Kyoto": "20:13",
+        "Nagoya": "20:48",
+        "Shin-Yokohama": "22:06",
+        "Shinagawa": "22:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129081.html"
     },
@@ -5269,6 +7691,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:29",
         "Tokyo": "22:36"
       },
+      "arrivals": {
+        "Kyoto": "20:22",
+        "Nagoya": "20:57",
+        "Shin-Yokohama": "22:16",
+        "Shinagawa": "22:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178201.html"
     },
     {
@@ -5285,6 +7713,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:36",
         "Tokyo": "22:42"
       },
+      "arrivals": {
+        "Kyoto": "20:28",
+        "Nagoya": "21:04",
+        "Shin-Yokohama": "22:24",
+        "Shinagawa": "22:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129091.html"
     },
     {
@@ -5300,6 +7734,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "22:27",
         "Shinagawa": "22:39",
         "Tokyo": "22:45"
+      },
+      "arrivals": {
+        "Kyoto": "20:31",
+        "Nagoya": "21:07",
+        "Shin-Yokohama": "22:26",
+        "Shinagawa": "22:38"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178411.html"
     },
@@ -5319,6 +7759,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:00",
         "Tokyo": "23:06"
       },
+      "arrivals": {
+        "Kyoto": "20:34",
+        "Maibara": "20:54",
+        "Nagoya": "21:18",
+        "Shizuoka": "22:07",
+        "Shin-Yokohama": "22:47",
+        "Shinagawa": "22:59"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027101.html"
     },
     {
@@ -5335,6 +7783,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:48",
         "Tokyo": "22:54"
       },
+      "arrivals": {
+        "Kyoto": "20:40",
+        "Nagoya": "21:15",
+        "Shin-Yokohama": "22:35",
+        "Shinagawa": "22:47"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178421.html"
     },
     {
@@ -5350,6 +7804,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "22:46",
         "Shinagawa": "22:57",
         "Tokyo": "23:03"
+      },
+      "arrivals": {
+        "Kyoto": "20:52",
+        "Nagoya": "21:27",
+        "Shin-Yokohama": "22:45",
+        "Shinagawa": "22:56"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178491.html"
     },
@@ -5369,6 +7829,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "23:12",
         "Shinagawa": "23:23",
         "Tokyo": "23:29"
+      },
+      "arrivals": {
+        "Kyoto": "20:58",
+        "Nagoya": "21:33",
+        "Hamamatsu": "22:06",
+        "Shizuoka": "22:26",
+        "Odawara": "22:53",
+        "Shin-Yokohama": "23:11",
+        "Shinagawa": "23:22"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062561.html"
     },
@@ -5393,6 +7862,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:18",
         "Tokyo": "23:24"
       },
+      "arrivals": {
+        "Mikawa-Anjo": "20:56",
+        "Toyohashi": "21:11",
+        "Hamamatsu": "21:30",
+        "Kakegawa": "21:45",
+        "Shizuoka": "22:01",
+        "Shin-Fuji": "22:14",
+        "Mishima": "22:30",
+        "Atami": "22:40",
+        "Odawara": "22:48",
+        "Shin-Yokohama": "23:05",
+        "Shinagawa": "23:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129781.html"
     },
     {
@@ -5408,6 +7890,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "23:04",
         "Shinagawa": "23:15",
         "Tokyo": "23:21"
+      },
+      "arrivals": {
+        "Kyoto": "21:10",
+        "Nagoya": "21:45",
+        "Shin-Yokohama": "23:03",
+        "Shinagawa": "23:14"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178431.html"
     },
@@ -5425,6 +7913,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:21",
         "Tokyo": "23:27"
       },
+      "arrivals": {
+        "Kyoto": "21:13",
+        "Nagoya": "21:48",
+        "Shin-Yokohama": "23:08",
+        "Shinagawa": "23:20"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178501.html"
     },
     {
@@ -5440,6 +7934,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "23:18",
         "Shinagawa": "23:29",
         "Tokyo": "23:36"
+      },
+      "arrivals": {
+        "Kyoto": "21:22",
+        "Nagoya": "21:57",
+        "Shin-Yokohama": "23:17",
+        "Shinagawa": "23:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178441.html"
     },
@@ -5457,6 +7957,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "23:33",
         "Tokyo": "23:39"
       },
+      "arrivals": {
+        "Kyoto": "21:29",
+        "Nagoya": "22:05",
+        "Shin-Yokohama": "23:21",
+        "Shinagawa": "23:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178511.html"
     },
     {
@@ -5472,6 +7978,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Yokohama": "23:34",
         "Shinagawa": "23:45",
         "Tokyo": "23:51"
+      },
+      "arrivals": {
+        "Kyoto": "21:43",
+        "Nagoya": "22:17",
+        "Shin-Yokohama": "23:33",
+        "Shinagawa": "23:44"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178451.html"
     },
@@ -5517,6 +8029,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "10:36",
         "Hakata": "10:52"
       },
+      "arrivals": {
+        "Shinagawa": "06:06",
+        "Shin-Yokohama": "06:17",
+        "Nagoya": "07:34",
+        "Kyoto": "08:08",
+        "Shin-Osaka": "08:22",
+        "Shin-Kobe": "08:36",
+        "Okayama": "09:09",
+        "Fukuyama": "09:26",
+        "Hiroshima": "09:49",
+        "Kokura": "10:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008031.html"
     },
     {
@@ -5537,6 +8061,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Tokuyama": "10:02",
         "Kokura": "10:31",
         "Hakata": "10:46"
+      },
+      "arrivals": {
+        "Shin-Yokohama": "06:10",
+        "Nagoya": "07:27",
+        "Kyoto": "08:02",
+        "Shin-Osaka": "08:16",
+        "Shin-Kobe": "08:31",
+        "Okayama": "09:03",
+        "Hiroshima": "09:39",
+        "Tokuyama": "10:01",
+        "Kokura": "10:30"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089331.html"
     },
@@ -5574,6 +8109,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "10:47",
         "Hakata": "11:03"
       },
+      "arrivals": {
+        "Shinagawa": "06:12",
+        "Shin-Yokohama": "06:23",
+        "Nagoya": "07:40",
+        "Kyoto": "08:15",
+        "Shin-Osaka": "08:30",
+        "Shin-Kobe": "08:44",
+        "Himeji": "09:00",
+        "Okayama": "09:21",
+        "Hiroshima": "09:58",
+        "Kokura": "10:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089471.html"
     },
     {
@@ -5589,6 +8136,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "07:41",
         "Kyoto": "08:17",
         "Shin-Osaka": "08:30"
+      },
+      "arrivals": {
+        "Shinagawa": "06:12",
+        "Shin-Yokohama": "06:23",
+        "Nagoya": "07:40",
+        "Kyoto": "08:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021511.html"
     },
@@ -5612,6 +8165,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "10:54",
         "Hakata": "11:09"
       },
+      "arrivals": {
+        "Shinagawa": "06:21",
+        "Shin-Yokohama": "06:32",
+        "Nagoya": "07:50",
+        "Kyoto": "08:24",
+        "Shin-Osaka": "08:39",
+        "Shin-Kobe": "08:53",
+        "Okayama": "09:25",
+        "Hiroshima": "10:02",
+        "Shin-Yamaguchi": "10:33",
+        "Kokura": "10:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/010/011051.html"
     },
     {
@@ -5631,6 +8196,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "08:48",
         "Kyoto": "09:08",
         "Shin-Osaka": "09:21"
+      },
+      "arrivals": {
+        "Shinagawa": "06:27",
+        "Shin-Yokohama": "06:38",
+        "Odawara": "06:54",
+        "Toyohashi": "07:48",
+        "Nagoya": "08:08",
+        "Gifu-Hashima": "08:24",
+        "Maibara": "08:42",
+        "Kyoto": "09:06"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062181.html"
     },
@@ -5654,6 +8229,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "11:05",
         "Hakata": "11:21"
       },
+      "arrivals": {
+        "Shinagawa": "06:30",
+        "Shin-Yokohama": "06:41",
+        "Nagoya": "07:58",
+        "Kyoto": "08:33",
+        "Shin-Osaka": "08:48",
+        "Shin-Kobe": "09:02",
+        "Okayama": "09:34",
+        "Hiroshima": "10:13",
+        "Shin-Yamaguchi": "10:45",
+        "Kokura": "11:04"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177601.html"
     },
     {
@@ -5669,6 +8256,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "08:00",
         "Kyoto": "08:34",
         "Shin-Osaka": "08:48"
+      },
+      "arrivals": {
+        "Shinagawa": "06:30",
+        "Shin-Yokohama": "06:41",
+        "Nagoya": "07:58",
+        "Kyoto": "08:33"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021541.html"
     },
@@ -5693,6 +8286,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "08:56",
         "Nagoya": "09:06"
       },
+      "arrivals": {
+        "Shinagawa": "06:36",
+        "Shin-Yokohama": "06:47",
+        "Odawara": "07:03",
+        "Atami": "07:13",
+        "Mishima": "07:20",
+        "Shin-Fuji": "07:34",
+        "Shizuoka": "07:49",
+        "Kakegawa": "08:05",
+        "Hamamatsu": "08:18",
+        "Toyohashi": "08:35",
+        "Mikawa-Anjo": "08:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129151.html"
     },
     {
@@ -5714,6 +8320,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Hiroshima": "10:28",
         "Kokura": "11:14",
         "Hakata": "11:30"
+      },
+      "arrivals": {
+        "Shinagawa": "06:39",
+        "Shin-Yokohama": "06:50",
+        "Nagoya": "08:10",
+        "Kyoto": "08:45",
+        "Shin-Osaka": "09:00",
+        "Shin-Kobe": "09:14",
+        "Okayama": "09:46",
+        "Fukuyama": "10:03",
+        "Hiroshima": "10:27",
+        "Kokura": "11:13"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023551.html"
     },
@@ -5737,6 +8355,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "11:23",
         "Hakata": "11:39"
       },
+      "arrivals": {
+        "Shinagawa": "06:48",
+        "Shin-Yokohama": "06:59",
+        "Nagoya": "08:16",
+        "Kyoto": "08:51",
+        "Shin-Osaka": "09:06",
+        "Shin-Kobe": "09:20",
+        "Himeji": "09:36",
+        "Okayama": "09:57",
+        "Hiroshima": "10:36",
+        "Kokura": "11:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089491.html"
     },
     {
@@ -5752,6 +8382,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "08:17",
         "Kyoto": "08:53",
         "Shin-Osaka": "09:06"
+      },
+      "arrivals": {
+        "Shinagawa": "06:48",
+        "Shin-Yokohama": "06:59",
+        "Nagoya": "08:16",
+        "Kyoto": "08:51"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026391.html"
     },
@@ -5774,6 +8410,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Hiroshima": "10:43",
         "Kokura": "11:30",
         "Hakata": "11:45"
+      },
+      "arrivals": {
+        "Shinagawa": "06:54",
+        "Shin-Yokohama": "07:05",
+        "Nagoya": "08:25",
+        "Kyoto": "09:01",
+        "Shin-Osaka": "09:15",
+        "Shin-Kobe": "09:29",
+        "Himeji": "09:45",
+        "Okayama": "10:05",
+        "Hiroshima": "10:42",
+        "Kokura": "11:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021321.html"
     },
@@ -5802,6 +8450,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "10:36",
         "Shin-Osaka": "10:51"
       },
+      "arrivals": {
+        "Shinagawa": "07:03",
+        "Shin-Yokohama": "07:14",
+        "Odawara": "07:30",
+        "Atami": "07:42",
+        "Mishima": "07:50",
+        "Shin-Fuji": "08:03",
+        "Shizuoka": "08:18",
+        "Kakegawa": "08:34",
+        "Hamamatsu": "08:48",
+        "Toyohashi": "09:04",
+        "Mikawa-Anjo": "09:21",
+        "Nagoya": "09:37",
+        "Gifu-Hashima": "09:53",
+        "Maibara": "10:10",
+        "Kyoto": "10:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129161.html"
     },
     {
@@ -5822,6 +8487,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "10:19",
         "Hiroshima": "10:55"
       },
+      "arrivals": {
+        "Shinagawa": "07:06",
+        "Shin-Yokohama": "07:17",
+        "Nagoya": "08:38",
+        "Kyoto": "09:12",
+        "Shin-Osaka": "09:27",
+        "Shin-Kobe": "09:41",
+        "Himeji": "09:57",
+        "Okayama": "10:18"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089501.html"
     },
     {
@@ -5837,6 +8512,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "08:39",
         "Kyoto": "09:14",
         "Shin-Osaka": "09:27"
+      },
+      "arrivals": {
+        "Shinagawa": "07:06",
+        "Shin-Yokohama": "07:17",
+        "Nagoya": "08:38",
+        "Kyoto": "09:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026381.html"
     },
@@ -5861,6 +8542,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "10:50",
         "Okayama": "11:06"
       },
+      "arrivals": {
+        "Shinagawa": "07:09",
+        "Shin-Yokohama": "07:20",
+        "Shizuoka": "08:02",
+        "Hamamatsu": "08:27",
+        "Nagoya": "09:01",
+        "Kyoto": "09:37",
+        "Shin-Osaka": "09:57",
+        "Shin-Kobe": "10:11",
+        "Nishi-Akashi": "10:19",
+        "Himeji": "10:33",
+        "Aioi": "10:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128691.html"
     },
     {
@@ -5876,6 +8570,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "08:47",
         "Kyoto": "09:22",
         "Shin-Osaka": "09:36"
+      },
+      "arrivals": {
+        "Shinagawa": "07:16",
+        "Shin-Yokohama": "07:28",
+        "Nagoya": "08:45",
+        "Kyoto": "09:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021581.html"
     },
@@ -5899,6 +8599,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "11:54",
         "Hakata": "12:09"
       },
+      "arrivals": {
+        "Shinagawa": "07:18",
+        "Shin-Yokohama": "07:30",
+        "Nagoya": "08:48",
+        "Kyoto": "09:23",
+        "Shin-Osaka": "09:39",
+        "Shin-Kobe": "09:53",
+        "Okayama": "10:25",
+        "Hiroshima": "11:02",
+        "Shin-Yamaguchi": "11:33",
+        "Kokura": "11:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023541.html"
     },
     {
@@ -5914,6 +8626,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "08:55",
         "Kyoto": "09:31",
         "Shin-Osaka": "09:45"
+      },
+      "arrivals": {
+        "Shinagawa": "07:24",
+        "Shin-Yokohama": "07:36",
+        "Nagoya": "08:54",
+        "Kyoto": "09:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021591.html"
     },
@@ -5937,6 +8655,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "12:03",
         "Hakata": "12:18"
       },
+      "arrivals": {
+        "Shinagawa": "07:27",
+        "Shin-Yokohama": "07:38",
+        "Nagoya": "08:56",
+        "Kyoto": "09:32",
+        "Shin-Osaka": "09:48",
+        "Shin-Kobe": "10:02",
+        "Okayama": "10:36",
+        "Hiroshima": "11:11",
+        "Tokuyama": "11:33",
+        "Kokura": "12:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089511.html"
     },
     {
@@ -5952,6 +8682,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "08:58",
         "Kyoto": "09:33",
         "Shin-Osaka": "09:48"
+      },
+      "arrivals": {
+        "Shinagawa": "07:27",
+        "Shin-Yokohama": "07:38",
+        "Nagoya": "08:56",
+        "Kyoto": "09:32"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026371.html"
     },
@@ -5976,6 +8712,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "09:55",
         "Nagoya": "10:06"
       },
+      "arrivals": {
+        "Shinagawa": "07:33",
+        "Shin-Yokohama": "07:44",
+        "Odawara": "08:00",
+        "Atami": "08:12",
+        "Mishima": "08:20",
+        "Shin-Fuji": "08:32",
+        "Shizuoka": "08:48",
+        "Kakegawa": "09:06",
+        "Hamamatsu": "09:19",
+        "Toyohashi": "09:34",
+        "Mikawa-Anjo": "09:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129171.html"
     },
     {
@@ -5998,6 +8747,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "12:14",
         "Hakata": "12:30"
       },
+      "arrivals": {
+        "Shinagawa": "07:36",
+        "Shin-Yokohama": "07:47",
+        "Nagoya": "09:09",
+        "Kyoto": "09:44",
+        "Shin-Osaka": "10:00",
+        "Shin-Kobe": "10:14",
+        "Okayama": "10:46",
+        "Fukuyama": "11:03",
+        "Hiroshima": "11:27",
+        "Kokura": "12:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/001231.html"
     },
     {
@@ -6016,6 +8777,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "09:53",
         "Kyoto": "10:14",
         "Shin-Osaka": "10:27"
+      },
+      "arrivals": {
+        "Shinagawa": "07:42",
+        "Shin-Yokohama": "07:53",
+        "Odawara": "08:09",
+        "Nagoya": "09:19",
+        "Gifu-Hashima": "09:30",
+        "Maibara": "09:48",
+        "Kyoto": "10:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026651.html"
     },
@@ -6039,6 +8809,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "12:23",
         "Hakata": "12:39"
       },
+      "arrivals": {
+        "Shinagawa": "07:45",
+        "Shin-Yokohama": "07:57",
+        "Nagoya": "09:15",
+        "Kyoto": "09:50",
+        "Shin-Osaka": "10:06",
+        "Shin-Kobe": "10:20",
+        "Okayama": "10:53",
+        "Fukuyama": "11:09",
+        "Hiroshima": "11:33",
+        "Kokura": "12:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067871.html"
     },
     {
@@ -6055,6 +8837,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "09:52",
         "Shin-Osaka": "10:06"
       },
+      "arrivals": {
+        "Shinagawa": "07:45",
+        "Shin-Yokohama": "07:57",
+        "Nagoya": "09:15",
+        "Kyoto": "09:50"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026361.html"
     },
     {
@@ -6070,6 +8858,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "09:24",
         "Kyoto": "09:59",
         "Shin-Osaka": "10:12"
+      },
+      "arrivals": {
+        "Shinagawa": "07:52",
+        "Shin-Yokohama": "08:04",
+        "Nagoya": "09:23",
+        "Kyoto": "09:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021621.html"
     },
@@ -6093,6 +8887,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "12:30",
         "Hakata": "12:45"
       },
+      "arrivals": {
+        "Shinagawa": "07:54",
+        "Shin-Yokohama": "08:06",
+        "Nagoya": "09:25",
+        "Kyoto": "10:00",
+        "Shin-Osaka": "10:15",
+        "Shin-Kobe": "10:29",
+        "Okayama": "11:02",
+        "Hiroshima": "11:38",
+        "Tokuyama": "12:01",
+        "Kokura": "12:29"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/000/003201.html"
     },
     {
@@ -6109,6 +8915,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "10:08",
         "Shin-Osaka": "10:21"
       },
+      "arrivals": {
+        "Shinagawa": "07:58",
+        "Shin-Yokohama": "08:09",
+        "Nagoya": "09:32",
+        "Kyoto": "10:06"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027051.html"
     },
     {
@@ -6124,6 +8936,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "09:35",
         "Kyoto": "10:11",
         "Shin-Osaka": "10:24"
+      },
+      "arrivals": {
+        "Shinagawa": "08:00",
+        "Shin-Yokohama": "08:12",
+        "Nagoya": "09:34",
+        "Kyoto": "10:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027041.html"
     },
@@ -6152,6 +8970,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "11:36",
         "Shin-Osaka": "11:51"
       },
+      "arrivals": {
+        "Shinagawa": "08:03",
+        "Shin-Yokohama": "08:14",
+        "Odawara": "08:30",
+        "Atami": "08:42",
+        "Mishima": "08:50",
+        "Shin-Fuji": "09:03",
+        "Shizuoka": "09:18",
+        "Kakegawa": "09:34",
+        "Hamamatsu": "09:48",
+        "Toyohashi": "10:04",
+        "Mikawa-Anjo": "10:21",
+        "Nagoya": "10:37",
+        "Gifu-Hashima": "10:53",
+        "Maibara": "11:10",
+        "Kyoto": "11:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129181.html"
     },
     {
@@ -6171,6 +9006,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Himeji": "11:01",
         "Okayama": "11:21",
         "Hiroshima": "11:59"
+      },
+      "arrivals": {
+        "Shinagawa": "08:06",
+        "Shin-Yokohama": "08:17",
+        "Nagoya": "09:39",
+        "Kyoto": "10:15",
+        "Shin-Osaka": "10:30",
+        "Shin-Kobe": "10:44",
+        "Himeji": "11:00",
+        "Okayama": "11:20"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089191.html"
     },
@@ -6195,6 +9040,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "11:47",
         "Okayama": "12:02"
       },
+      "arrivals": {
+        "Shinagawa": "08:09",
+        "Shin-Yokohama": "08:20",
+        "Shizuoka": "09:02",
+        "Hamamatsu": "09:27",
+        "Nagoya": "10:01",
+        "Kyoto": "10:37",
+        "Shin-Osaka": "10:57",
+        "Shin-Kobe": "11:11",
+        "Nishi-Akashi": "11:19",
+        "Himeji": "11:33",
+        "Aioi": "11:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128701.html"
     },
     {
@@ -6210,6 +9068,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "09:47",
         "Kyoto": "10:22",
         "Shin-Osaka": "10:36"
+      },
+      "arrivals": {
+        "Shinagawa": "08:16",
+        "Shin-Yokohama": "08:28",
+        "Nagoya": "09:45",
+        "Kyoto": "10:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027031.html"
     },
@@ -6233,6 +9097,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "12:54",
         "Hakata": "13:09"
       },
+      "arrivals": {
+        "Shinagawa": "08:18",
+        "Shin-Yokohama": "08:30",
+        "Nagoya": "09:48",
+        "Kyoto": "10:23",
+        "Shin-Osaka": "10:39",
+        "Shin-Kobe": "10:53",
+        "Okayama": "11:25",
+        "Hiroshima": "12:02",
+        "Shin-Yamaguchi": "12:34",
+        "Kokura": "12:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/005251.html"
     },
     {
@@ -6248,6 +9124,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "09:55",
         "Kyoto": "10:31",
         "Shin-Osaka": "10:45"
+      },
+      "arrivals": {
+        "Shinagawa": "08:24",
+        "Shin-Yokohama": "08:36",
+        "Nagoya": "09:54",
+        "Kyoto": "10:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026501.html"
     },
@@ -6268,6 +9150,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Himeji": "11:19",
         "Okayama": "11:40",
         "Hiroshima": "12:15"
+      },
+      "arrivals": {
+        "Shinagawa": "08:27",
+        "Shin-Yokohama": "08:38",
+        "Nagoya": "09:56",
+        "Kyoto": "10:32",
+        "Shin-Osaka": "10:48",
+        "Shin-Kobe": "11:02",
+        "Himeji": "11:18",
+        "Okayama": "11:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067881.html"
     },
@@ -6291,6 +9183,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "13:03",
         "Hakata": "13:18"
       },
+      "arrivals": {
+        "Shinagawa": "08:27",
+        "Shin-Yokohama": "08:38",
+        "Nagoya": "09:56",
+        "Kyoto": "10:32",
+        "Shin-Osaka": "10:48",
+        "Shin-Kobe": "11:02",
+        "Himeji": "11:18",
+        "Okayama": "11:39",
+        "Hiroshima": "12:15",
+        "Kokura": "13:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067891.html"
     },
     {
@@ -6307,6 +9211,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "10:33",
         "Shin-Osaka": "10:48"
       },
+      "arrivals": {
+        "Shinagawa": "08:27",
+        "Shin-Yokohama": "08:38",
+        "Nagoya": "09:56",
+        "Kyoto": "10:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026351.html"
     },
     {
@@ -6322,6 +9232,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:05",
         "Kyoto": "10:41",
         "Shin-Osaka": "10:54"
+      },
+      "arrivals": {
+        "Shinagawa": "08:30",
+        "Shin-Yokohama": "08:42",
+        "Nagoya": "10:04",
+        "Kyoto": "10:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/027021.html"
     },
@@ -6346,6 +9262,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "10:55",
         "Nagoya": "11:06"
       },
+      "arrivals": {
+        "Shinagawa": "08:33",
+        "Shin-Yokohama": "08:44",
+        "Odawara": "09:00",
+        "Atami": "09:12",
+        "Mishima": "09:20",
+        "Shin-Fuji": "09:32",
+        "Shizuoka": "09:48",
+        "Kakegawa": "10:06",
+        "Hamamatsu": "10:19",
+        "Toyohashi": "10:34",
+        "Mikawa-Anjo": "10:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129191.html"
     },
     {
@@ -6368,6 +9297,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "13:14",
         "Hakata": "13:30"
       },
+      "arrivals": {
+        "Shinagawa": "08:36",
+        "Shin-Yokohama": "08:47",
+        "Nagoya": "10:09",
+        "Kyoto": "10:44",
+        "Shin-Osaka": "11:00",
+        "Shin-Kobe": "11:14",
+        "Okayama": "11:47",
+        "Fukuyama": "12:03",
+        "Hiroshima": "12:27",
+        "Kokura": "13:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/021331.html"
     },
     {
@@ -6386,6 +9327,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "10:53",
         "Kyoto": "11:14",
         "Shin-Osaka": "11:27"
+      },
+      "arrivals": {
+        "Shinagawa": "08:39",
+        "Shin-Yokohama": "08:50",
+        "Toyohashi": "09:55",
+        "Nagoya": "10:19",
+        "Gifu-Hashima": "10:30",
+        "Maibara": "10:48",
+        "Kyoto": "11:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062231.html"
     },
@@ -6409,6 +9359,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "13:23",
         "Hakata": "13:39"
       },
+      "arrivals": {
+        "Shinagawa": "08:45",
+        "Shin-Yokohama": "08:57",
+        "Nagoya": "10:15",
+        "Kyoto": "10:50",
+        "Shin-Osaka": "11:06",
+        "Shin-Kobe": "11:20",
+        "Okayama": "11:53",
+        "Fukuyama": "12:09",
+        "Hiroshima": "12:33",
+        "Kokura": "13:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089531.html"
     },
     {
@@ -6424,6 +9386,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:16",
         "Kyoto": "10:52",
         "Shin-Osaka": "11:06"
+      },
+      "arrivals": {
+        "Shinagawa": "08:45",
+        "Shin-Yokohama": "08:57",
+        "Nagoya": "10:15",
+        "Kyoto": "10:50"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026341.html"
     },
@@ -6447,6 +9415,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "13:29",
         "Hakata": "13:45"
       },
+      "arrivals": {
+        "Shinagawa": "08:52",
+        "Shin-Yokohama": "09:04",
+        "Nagoya": "10:23",
+        "Kyoto": "10:57",
+        "Shin-Osaka": "11:12",
+        "Shin-Kobe": "11:26",
+        "Okayama": "11:58",
+        "Hiroshima": "12:37",
+        "Shin-Yamaguchi": "13:09",
+        "Kokura": "13:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062771.html"
     },
     {
@@ -6462,6 +9442,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:24",
         "Kyoto": "10:59",
         "Shin-Osaka": "11:12"
+      },
+      "arrivals": {
+        "Shinagawa": "08:52",
+        "Shin-Yokohama": "09:04",
+        "Nagoya": "10:23",
+        "Kyoto": "10:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026991.html"
     },
@@ -6483,6 +9469,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "12:06",
         "Hiroshima": "12:42"
       },
+      "arrivals": {
+        "Shinagawa": "08:54",
+        "Shin-Yokohama": "09:06",
+        "Nagoya": "10:25",
+        "Kyoto": "11:00",
+        "Shin-Osaka": "11:15",
+        "Shin-Kobe": "11:29",
+        "Himeji": "11:45",
+        "Okayama": "12:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089201.html"
     },
     {
@@ -6499,6 +9495,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "11:08",
         "Shin-Osaka": "11:21"
       },
+      "arrivals": {
+        "Shinagawa": "08:58",
+        "Shin-Yokohama": "09:09",
+        "Nagoya": "10:32",
+        "Kyoto": "11:06"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026981.html"
     },
     {
@@ -6514,6 +9516,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:35",
         "Kyoto": "11:11",
         "Shin-Osaka": "11:24"
+      },
+      "arrivals": {
+        "Shinagawa": "09:00",
+        "Shin-Yokohama": "09:12",
+        "Nagoya": "10:34",
+        "Kyoto": "11:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026971.html"
     },
@@ -6541,6 +9549,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "12:16",
         "Kyoto": "12:36",
         "Shin-Osaka": "12:51"
+      },
+      "arrivals": {
+        "Shinagawa": "09:03",
+        "Shin-Yokohama": "09:14",
+        "Odawara": "09:30",
+        "Atami": "09:42",
+        "Mishima": "09:50",
+        "Shin-Fuji": "10:03",
+        "Shizuoka": "10:18",
+        "Kakegawa": "10:34",
+        "Hamamatsu": "10:48",
+        "Toyohashi": "11:04",
+        "Mikawa-Anjo": "11:21",
+        "Nagoya": "11:37",
+        "Gifu-Hashima": "11:53",
+        "Maibara": "12:10",
+        "Kyoto": "12:34"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129201.html"
     },
@@ -6583,6 +9608,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "13:47",
         "Hakata": "14:03"
       },
+      "arrivals": {
+        "Shinagawa": "09:06",
+        "Shin-Yokohama": "09:17",
+        "Nagoya": "10:39",
+        "Kyoto": "11:15",
+        "Shin-Osaka": "11:30",
+        "Shin-Kobe": "11:44",
+        "Okayama": "12:17",
+        "Hiroshima": "12:56",
+        "Tokuyama": "13:18",
+        "Kokura": "13:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067911.html"
     },
     {
@@ -6598,6 +9635,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:41",
         "Kyoto": "11:16",
         "Shin-Osaka": "11:30"
+      },
+      "arrivals": {
+        "Shinagawa": "09:06",
+        "Shin-Yokohama": "09:17",
+        "Nagoya": "10:39",
+        "Kyoto": "11:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026331.html"
     },
@@ -6623,6 +9666,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "12:47",
         "Okayama": "13:02"
       },
+      "arrivals": {
+        "Shinagawa": "09:09",
+        "Shin-Yokohama": "09:20",
+        "Mishima": "09:45",
+        "Shizuoka": "10:02",
+        "Hamamatsu": "10:27",
+        "Nagoya": "11:01",
+        "Kyoto": "11:37",
+        "Shin-Osaka": "11:57",
+        "Shin-Kobe": "12:11",
+        "Nishi-Akashi": "12:19",
+        "Himeji": "12:33",
+        "Aioi": "12:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128711.html"
     },
     {
@@ -6638,6 +9695,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:47",
         "Kyoto": "11:22",
         "Shin-Osaka": "11:36"
+      },
+      "arrivals": {
+        "Shinagawa": "09:16",
+        "Shin-Yokohama": "09:28",
+        "Nagoya": "10:45",
+        "Kyoto": "11:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026321.html"
     },
@@ -6661,6 +9724,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "13:54",
         "Hakata": "14:09"
       },
+      "arrivals": {
+        "Shinagawa": "09:18",
+        "Shin-Yokohama": "09:30",
+        "Nagoya": "10:48",
+        "Kyoto": "11:23",
+        "Shin-Osaka": "11:39",
+        "Shin-Kobe": "11:53",
+        "Okayama": "12:25",
+        "Hiroshima": "13:02",
+        "Shin-Yamaguchi": "13:34",
+        "Kokura": "13:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008021.html"
     },
     {
@@ -6676,6 +9751,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "10:55",
         "Kyoto": "11:31",
         "Shin-Osaka": "11:45"
+      },
+      "arrivals": {
+        "Shinagawa": "09:24",
+        "Shin-Yokohama": "09:36",
+        "Nagoya": "10:54",
+        "Kyoto": "11:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026961.html"
     },
@@ -6693,6 +9774,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "11:33",
         "Shin-Osaka": "11:48"
       },
+      "arrivals": {
+        "Shinagawa": "09:27",
+        "Shin-Yokohama": "09:38",
+        "Nagoya": "10:56",
+        "Kyoto": "11:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026311.html"
     },
     {
@@ -6708,6 +9795,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:05",
         "Kyoto": "11:41",
         "Shin-Osaka": "11:54"
+      },
+      "arrivals": {
+        "Shinagawa": "09:30",
+        "Shin-Yokohama": "09:42",
+        "Nagoya": "11:04",
+        "Kyoto": "11:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026951.html"
     },
@@ -6732,6 +9825,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "11:55",
         "Nagoya": "12:06"
       },
+      "arrivals": {
+        "Shinagawa": "09:33",
+        "Shin-Yokohama": "09:44",
+        "Odawara": "10:00",
+        "Atami": "10:12",
+        "Mishima": "10:20",
+        "Shin-Fuji": "10:32",
+        "Shizuoka": "10:48",
+        "Kakegawa": "11:06",
+        "Hamamatsu": "11:19",
+        "Toyohashi": "11:34",
+        "Mikawa-Anjo": "11:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129211.html"
     },
     {
@@ -6754,6 +9860,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "14:14",
         "Hakata": "14:30"
       },
+      "arrivals": {
+        "Shinagawa": "09:36",
+        "Shin-Yokohama": "09:47",
+        "Nagoya": "11:09",
+        "Kyoto": "11:44",
+        "Shin-Osaka": "12:00",
+        "Shin-Kobe": "12:14",
+        "Okayama": "12:47",
+        "Fukuyama": "13:03",
+        "Hiroshima": "13:27",
+        "Kokura": "14:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/008391.html"
     },
     {
@@ -6769,6 +9887,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:14",
         "Kyoto": "11:49",
         "Shin-Osaka": "12:03"
+      },
+      "arrivals": {
+        "Shinagawa": "09:39",
+        "Shin-Yokohama": "09:50",
+        "Nagoya": "11:13",
+        "Kyoto": "11:48"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026931.html"
     },
@@ -6788,6 +9912,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "11:53",
         "Kyoto": "12:14",
         "Shin-Osaka": "12:27"
+      },
+      "arrivals": {
+        "Shinagawa": "09:42",
+        "Shin-Yokohama": "09:53",
+        "Odawara": "10:09",
+        "Nagoya": "11:19",
+        "Gifu-Hashima": "11:30",
+        "Maibara": "11:48",
+        "Kyoto": "12:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026641.html"
     },
@@ -6811,6 +9944,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "14:23",
         "Hakata": "14:39"
       },
+      "arrivals": {
+        "Shinagawa": "09:45",
+        "Shin-Yokohama": "09:57",
+        "Nagoya": "11:15",
+        "Kyoto": "11:50",
+        "Shin-Osaka": "12:06",
+        "Shin-Kobe": "12:20",
+        "Okayama": "12:53",
+        "Fukuyama": "13:09",
+        "Hiroshima": "13:33",
+        "Kokura": "14:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/065/067921.html"
     },
     {
@@ -6827,6 +9972,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "11:52",
         "Shin-Osaka": "12:06"
       },
+      "arrivals": {
+        "Shinagawa": "09:45",
+        "Shin-Yokohama": "09:57",
+        "Nagoya": "11:15",
+        "Kyoto": "11:50"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026301.html"
     },
     {
@@ -6842,6 +9993,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:24",
         "Kyoto": "11:59",
         "Shin-Osaka": "12:12"
+      },
+      "arrivals": {
+        "Shinagawa": "09:52",
+        "Shin-Yokohama": "10:04",
+        "Nagoya": "11:23",
+        "Kyoto": "11:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026921.html"
     },
@@ -6863,6 +10020,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "13:06",
         "Hiroshima": "13:42"
       },
+      "arrivals": {
+        "Shinagawa": "09:54",
+        "Shin-Yokohama": "10:06",
+        "Nagoya": "11:25",
+        "Kyoto": "12:00",
+        "Shin-Osaka": "12:15",
+        "Shin-Kobe": "12:29",
+        "Himeji": "12:45",
+        "Okayama": "13:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089211.html"
     },
     {
@@ -6878,6 +10045,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:35",
         "Kyoto": "12:11",
         "Shin-Osaka": "12:24"
+      },
+      "arrivals": {
+        "Shinagawa": "10:00",
+        "Shin-Yokohama": "10:12",
+        "Nagoya": "11:34",
+        "Kyoto": "12:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026901.html"
     },
@@ -6906,6 +10079,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "13:36",
         "Shin-Osaka": "13:51"
       },
+      "arrivals": {
+        "Shinagawa": "10:03",
+        "Shin-Yokohama": "10:14",
+        "Odawara": "10:30",
+        "Atami": "10:42",
+        "Mishima": "10:50",
+        "Shin-Fuji": "11:03",
+        "Shizuoka": "11:18",
+        "Kakegawa": "11:34",
+        "Hamamatsu": "11:48",
+        "Toyohashi": "12:04",
+        "Mikawa-Anjo": "12:21",
+        "Nagoya": "12:37",
+        "Gifu-Hashima": "12:53",
+        "Maibara": "13:10",
+        "Kyoto": "13:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129221.html"
     },
     {
@@ -6928,6 +10118,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "14:47",
         "Hakata": "15:03"
       },
+      "arrivals": {
+        "Shinagawa": "10:06",
+        "Shin-Yokohama": "10:17",
+        "Nagoya": "11:39",
+        "Kyoto": "12:15",
+        "Shin-Osaka": "12:30",
+        "Shin-Kobe": "12:44",
+        "Okayama": "13:17",
+        "Hiroshima": "13:55",
+        "Tokuyama": "14:18",
+        "Kokura": "14:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062821.html"
     },
     {
@@ -6943,6 +10145,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:41",
         "Kyoto": "12:16",
         "Shin-Osaka": "12:30"
+      },
+      "arrivals": {
+        "Shinagawa": "10:06",
+        "Shin-Yokohama": "10:17",
+        "Nagoya": "11:39",
+        "Kyoto": "12:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/033621.html"
     },
@@ -6968,6 +10176,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "13:47",
         "Okayama": "14:02"
       },
+      "arrivals": {
+        "Shinagawa": "10:09",
+        "Shin-Yokohama": "10:20",
+        "Atami": "10:39",
+        "Shizuoka": "11:02",
+        "Hamamatsu": "11:27",
+        "Nagoya": "12:01",
+        "Kyoto": "12:37",
+        "Shin-Osaka": "12:57",
+        "Shin-Kobe": "13:11",
+        "Nishi-Akashi": "13:19",
+        "Himeji": "13:33",
+        "Aioi": "13:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128721.html"
     },
     {
@@ -6983,6 +10205,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:47",
         "Kyoto": "12:22",
         "Shin-Osaka": "12:36"
+      },
+      "arrivals": {
+        "Shinagawa": "10:16",
+        "Shin-Yokohama": "10:28",
+        "Nagoya": "11:45",
+        "Kyoto": "12:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026891.html"
     },
@@ -7006,6 +10234,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "14:54",
         "Hakata": "15:09"
       },
+      "arrivals": {
+        "Shinagawa": "10:18",
+        "Shin-Yokohama": "10:30",
+        "Nagoya": "11:48",
+        "Kyoto": "12:23",
+        "Shin-Osaka": "12:39",
+        "Shin-Kobe": "12:53",
+        "Okayama": "13:25",
+        "Hiroshima": "14:02",
+        "Shin-Yamaguchi": "14:33",
+        "Kokura": "14:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/009151.html"
     },
     {
@@ -7022,6 +10262,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "12:31",
         "Shin-Osaka": "12:45"
       },
+      "arrivals": {
+        "Shinagawa": "10:24",
+        "Shin-Yokohama": "10:36",
+        "Nagoya": "11:54",
+        "Kyoto": "12:29"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026881.html"
     },
     {
@@ -7037,6 +10283,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "11:58",
         "Kyoto": "12:33",
         "Shin-Osaka": "12:48"
+      },
+      "arrivals": {
+        "Shinagawa": "10:27",
+        "Shin-Yokohama": "10:38",
+        "Nagoya": "11:56",
+        "Kyoto": "12:32"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032491.html"
     },
@@ -7061,6 +10313,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "12:56",
         "Nagoya": "13:06"
       },
+      "arrivals": {
+        "Shinagawa": "10:33",
+        "Shin-Yokohama": "10:44",
+        "Odawara": "11:00",
+        "Atami": "11:12",
+        "Mishima": "11:20",
+        "Shin-Fuji": "11:32",
+        "Shizuoka": "11:48",
+        "Kakegawa": "12:06",
+        "Hamamatsu": "12:19",
+        "Toyohashi": "12:34",
+        "Mikawa-Anjo": "12:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129231.html"
     },
     {
@@ -7083,6 +10348,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "15:14",
         "Hakata": "15:30"
       },
+      "arrivals": {
+        "Shinagawa": "10:36",
+        "Shin-Yokohama": "10:47",
+        "Nagoya": "12:09",
+        "Kyoto": "12:44",
+        "Shin-Osaka": "13:00",
+        "Shin-Kobe": "13:14",
+        "Okayama": "13:47",
+        "Fukuyama": "14:03",
+        "Hiroshima": "14:27",
+        "Kokura": "15:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/005/009821.html"
     },
     {
@@ -7101,6 +10378,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "12:53",
         "Kyoto": "13:14",
         "Shin-Osaka": "13:27"
+      },
+      "arrivals": {
+        "Shinagawa": "10:39",
+        "Shin-Yokohama": "10:50",
+        "Toyohashi": "11:55",
+        "Nagoya": "12:19",
+        "Gifu-Hashima": "12:30",
+        "Maibara": "12:48",
+        "Kyoto": "13:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062251.html"
     },
@@ -7124,6 +10410,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "15:23",
         "Hakata": "15:39"
       },
+      "arrivals": {
+        "Shinagawa": "10:45",
+        "Shin-Yokohama": "10:57",
+        "Nagoya": "12:15",
+        "Kyoto": "12:50",
+        "Shin-Osaka": "13:06",
+        "Shin-Kobe": "13:20",
+        "Okayama": "13:53",
+        "Fukuyama": "14:09",
+        "Hiroshima": "14:33",
+        "Kokura": "15:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062851.html"
     },
     {
@@ -7140,6 +10438,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "12:52",
         "Shin-Osaka": "13:06"
       },
+      "arrivals": {
+        "Shinagawa": "10:45",
+        "Shin-Yokohama": "10:57",
+        "Nagoya": "12:15",
+        "Kyoto": "12:50"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026861.html"
     },
     {
@@ -7155,6 +10459,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "12:24",
         "Kyoto": "12:59",
         "Shin-Osaka": "13:12"
+      },
+      "arrivals": {
+        "Shinagawa": "10:52",
+        "Shin-Yokohama": "11:04",
+        "Nagoya": "12:23",
+        "Kyoto": "12:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026841.html"
     },
@@ -7176,6 +10486,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "14:06",
         "Hiroshima": "14:42"
       },
+      "arrivals": {
+        "Shinagawa": "10:54",
+        "Shin-Yokohama": "11:06",
+        "Nagoya": "12:25",
+        "Kyoto": "13:00",
+        "Shin-Osaka": "13:15",
+        "Shin-Kobe": "13:29",
+        "Himeji": "13:45",
+        "Okayama": "14:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089221.html"
     },
     {
@@ -7191,6 +10511,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "12:35",
         "Kyoto": "13:11",
         "Shin-Osaka": "13:24"
+      },
+      "arrivals": {
+        "Shinagawa": "11:00",
+        "Shin-Yokohama": "11:12",
+        "Nagoya": "12:34",
+        "Kyoto": "13:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026821.html"
     },
@@ -7219,6 +10545,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "14:36",
         "Shin-Osaka": "14:51"
       },
+      "arrivals": {
+        "Shinagawa": "11:03",
+        "Shin-Yokohama": "11:14",
+        "Odawara": "11:30",
+        "Atami": "11:42",
+        "Mishima": "11:50",
+        "Shin-Fuji": "12:03",
+        "Shizuoka": "12:18",
+        "Kakegawa": "12:34",
+        "Hamamatsu": "12:46",
+        "Toyohashi": "13:02",
+        "Mikawa-Anjo": "13:21",
+        "Nagoya": "13:37",
+        "Gifu-Hashima": "13:53",
+        "Maibara": "14:10",
+        "Kyoto": "14:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129241.html"
     },
     {
@@ -7234,6 +10577,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "12:41",
         "Kyoto": "13:16",
         "Shin-Osaka": "13:30"
+      },
+      "arrivals": {
+        "Shinagawa": "11:06",
+        "Shin-Yokohama": "11:17",
+        "Nagoya": "12:39",
+        "Kyoto": "13:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026291.html"
     },
@@ -7259,6 +10608,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "14:47",
         "Okayama": "15:02"
       },
+      "arrivals": {
+        "Shinagawa": "11:09",
+        "Shin-Yokohama": "11:20",
+        "Mishima": "11:45",
+        "Shizuoka": "12:02",
+        "Hamamatsu": "12:27",
+        "Nagoya": "13:01",
+        "Kyoto": "13:37",
+        "Shin-Osaka": "13:57",
+        "Shin-Kobe": "14:11",
+        "Nishi-Akashi": "14:19",
+        "Himeji": "14:33",
+        "Aioi": "14:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128731.html"
     },
     {
@@ -7274,6 +10637,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "12:47",
         "Kyoto": "13:22",
         "Shin-Osaka": "13:36"
+      },
+      "arrivals": {
+        "Shinagawa": "11:16",
+        "Shin-Yokohama": "11:28",
+        "Nagoya": "12:45",
+        "Kyoto": "13:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026811.html"
     },
@@ -7297,6 +10666,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "15:54",
         "Hakata": "16:09"
       },
+      "arrivals": {
+        "Shinagawa": "11:18",
+        "Shin-Yokohama": "11:30",
+        "Nagoya": "12:48",
+        "Kyoto": "13:23",
+        "Shin-Osaka": "13:39",
+        "Shin-Kobe": "13:53",
+        "Okayama": "14:25",
+        "Hiroshima": "15:02",
+        "Shin-Yamaguchi": "15:33",
+        "Kokura": "15:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023511.html"
     },
     {
@@ -7313,6 +10694,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "13:31",
         "Shin-Osaka": "13:45"
       },
+      "arrivals": {
+        "Shinagawa": "11:24",
+        "Shin-Yokohama": "11:36",
+        "Nagoya": "12:54",
+        "Kyoto": "13:29"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026801.html"
     },
     {
@@ -7328,6 +10715,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "12:58",
         "Kyoto": "13:33",
         "Shin-Osaka": "13:48"
+      },
+      "arrivals": {
+        "Shinagawa": "11:27",
+        "Shin-Yokohama": "11:38",
+        "Nagoya": "12:56",
+        "Kyoto": "13:32"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026791.html"
     },
@@ -7352,6 +10745,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "13:56",
         "Nagoya": "14:06"
       },
+      "arrivals": {
+        "Shinagawa": "11:33",
+        "Shin-Yokohama": "11:44",
+        "Odawara": "12:00",
+        "Atami": "12:10",
+        "Mishima": "12:17",
+        "Shin-Fuji": "12:31",
+        "Shizuoka": "12:47",
+        "Kakegawa": "13:06",
+        "Hamamatsu": "13:19",
+        "Toyohashi": "13:35",
+        "Mikawa-Anjo": "13:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129251.html"
     },
     {
@@ -7374,6 +10780,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "16:14",
         "Hakata": "16:30"
       },
+      "arrivals": {
+        "Shinagawa": "11:36",
+        "Shin-Yokohama": "11:47",
+        "Nagoya": "13:09",
+        "Kyoto": "13:44",
+        "Shin-Osaka": "14:00",
+        "Shin-Kobe": "14:14",
+        "Okayama": "14:46",
+        "Fukuyama": "15:03",
+        "Hiroshima": "15:27",
+        "Kokura": "16:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019881.html"
     },
     {
@@ -7392,6 +10810,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "13:53",
         "Kyoto": "14:13",
         "Shin-Osaka": "14:27"
+      },
+      "arrivals": {
+        "Shinagawa": "11:39",
+        "Shin-Yokohama": "11:50",
+        "Odawara": "12:06",
+        "Nagoya": "13:14",
+        "Gifu-Hashima": "13:29",
+        "Maibara": "13:47",
+        "Kyoto": "14:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026631.html"
     },
@@ -7415,6 +10842,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "16:23",
         "Hakata": "16:39"
       },
+      "arrivals": {
+        "Shinagawa": "11:45",
+        "Shin-Yokohama": "11:57",
+        "Nagoya": "13:16",
+        "Kyoto": "13:51",
+        "Shin-Osaka": "14:06",
+        "Shin-Kobe": "14:20",
+        "Okayama": "14:53",
+        "Fukuyama": "15:09",
+        "Hiroshima": "15:33",
+        "Kokura": "16:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115141.html"
     },
     {
@@ -7430,6 +10869,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "13:17",
         "Kyoto": "13:52",
         "Shin-Osaka": "14:06"
+      },
+      "arrivals": {
+        "Shinagawa": "11:45",
+        "Shin-Yokohama": "11:57",
+        "Nagoya": "13:16",
+        "Kyoto": "13:51"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026771.html"
     },
@@ -7451,6 +10896,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "15:06",
         "Hiroshima": "15:42"
       },
+      "arrivals": {
+        "Shinagawa": "11:54",
+        "Shin-Yokohama": "12:06",
+        "Nagoya": "13:25",
+        "Kyoto": "14:00",
+        "Shin-Osaka": "14:15",
+        "Shin-Kobe": "14:29",
+        "Himeji": "14:45",
+        "Okayama": "15:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089231.html"
     },
     {
@@ -7467,6 +10922,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "14:07",
         "Shin-Osaka": "14:21"
       },
+      "arrivals": {
+        "Shinagawa": "11:58",
+        "Shin-Yokohama": "12:09",
+        "Nagoya": "13:31",
+        "Kyoto": "14:06"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026751.html"
     },
     {
@@ -7482,6 +10943,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "13:35",
         "Kyoto": "14:11",
         "Shin-Osaka": "14:24"
+      },
+      "arrivals": {
+        "Shinagawa": "12:00",
+        "Shin-Yokohama": "12:12",
+        "Nagoya": "13:33",
+        "Kyoto": "14:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026731.html"
     },
@@ -7510,6 +10977,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "15:36",
         "Shin-Osaka": "15:51"
       },
+      "arrivals": {
+        "Shinagawa": "12:03",
+        "Shin-Yokohama": "12:14",
+        "Odawara": "12:30",
+        "Atami": "12:42",
+        "Mishima": "12:50",
+        "Shin-Fuji": "13:03",
+        "Shizuoka": "13:18",
+        "Kakegawa": "13:34",
+        "Hamamatsu": "13:49",
+        "Toyohashi": "14:02",
+        "Mikawa-Anjo": "14:21",
+        "Nagoya": "14:37",
+        "Gifu-Hashima": "14:53",
+        "Maibara": "15:10",
+        "Kyoto": "15:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129261.html"
     },
     {
@@ -7525,6 +11009,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "13:41",
         "Kyoto": "14:16",
         "Shin-Osaka": "14:30"
+      },
+      "arrivals": {
+        "Shinagawa": "12:06",
+        "Shin-Yokohama": "12:17",
+        "Nagoya": "13:39",
+        "Kyoto": "14:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/035/038131.html"
     },
@@ -7549,6 +11039,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "15:47",
         "Okayama": "16:02"
       },
+      "arrivals": {
+        "Shinagawa": "12:09",
+        "Shin-Yokohama": "12:20",
+        "Shizuoka": "13:02",
+        "Hamamatsu": "13:27",
+        "Nagoya": "14:01",
+        "Kyoto": "14:37",
+        "Shin-Osaka": "14:57",
+        "Shin-Kobe": "15:11",
+        "Nishi-Akashi": "15:19",
+        "Himeji": "15:33",
+        "Aioi": "15:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128741.html"
     },
     {
@@ -7571,6 +11074,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "16:54",
         "Hakata": "17:09"
       },
+      "arrivals": {
+        "Shinagawa": "12:18",
+        "Shin-Yokohama": "12:30",
+        "Nagoya": "13:48",
+        "Kyoto": "14:23",
+        "Shin-Osaka": "14:39",
+        "Shin-Kobe": "14:53",
+        "Okayama": "15:25",
+        "Hiroshima": "16:02",
+        "Shin-Yamaguchi": "16:33",
+        "Kokura": "16:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019891.html"
     },
     {
@@ -7587,6 +11102,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "14:31",
         "Shin-Osaka": "14:45"
       },
+      "arrivals": {
+        "Shinagawa": "12:24",
+        "Shin-Yokohama": "12:36",
+        "Nagoya": "13:54",
+        "Kyoto": "14:29"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026691.html"
     },
     {
@@ -7602,6 +11123,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "14:05",
         "Kyoto": "14:41",
         "Shin-Osaka": "14:54"
+      },
+      "arrivals": {
+        "Shinagawa": "12:30",
+        "Shin-Yokohama": "12:42",
+        "Nagoya": "14:04",
+        "Kyoto": "14:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026671.html"
     },
@@ -7626,6 +11153,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "14:56",
         "Nagoya": "15:06"
       },
+      "arrivals": {
+        "Shinagawa": "12:33",
+        "Shin-Yokohama": "12:44",
+        "Odawara": "13:00",
+        "Atami": "13:12",
+        "Mishima": "13:20",
+        "Shin-Fuji": "13:34",
+        "Shizuoka": "13:47",
+        "Kakegawa": "14:06",
+        "Hamamatsu": "14:19",
+        "Toyohashi": "14:35",
+        "Mikawa-Anjo": "14:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129271.html"
     },
     {
@@ -7648,6 +11188,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "17:14",
         "Hakata": "17:30"
       },
+      "arrivals": {
+        "Shinagawa": "12:36",
+        "Shin-Yokohama": "12:47",
+        "Nagoya": "14:09",
+        "Kyoto": "14:44",
+        "Shin-Osaka": "15:00",
+        "Shin-Kobe": "15:14",
+        "Okayama": "15:46",
+        "Fukuyama": "16:03",
+        "Hiroshima": "16:27",
+        "Kokura": "17:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/015/019901.html"
     },
     {
@@ -7666,6 +11218,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "14:53",
         "Kyoto": "15:13",
         "Shin-Osaka": "15:27"
+      },
+      "arrivals": {
+        "Shinagawa": "12:39",
+        "Shin-Yokohama": "12:50",
+        "Toyohashi": "13:53",
+        "Nagoya": "14:14",
+        "Gifu-Hashima": "14:29",
+        "Maibara": "14:47",
+        "Kyoto": "15:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062281.html"
     },
@@ -7689,6 +11250,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "17:23",
         "Hakata": "17:39"
       },
+      "arrivals": {
+        "Shinagawa": "12:45",
+        "Shin-Yokohama": "12:57",
+        "Nagoya": "14:16",
+        "Kyoto": "14:51",
+        "Shin-Osaka": "15:06",
+        "Shin-Kobe": "15:20",
+        "Okayama": "15:53",
+        "Fukuyama": "16:09",
+        "Hiroshima": "16:33",
+        "Kokura": "17:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034231.html"
     },
     {
@@ -7704,6 +11277,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "14:23",
         "Kyoto": "14:59",
         "Shin-Osaka": "15:12"
+      },
+      "arrivals": {
+        "Shinagawa": "12:48",
+        "Shin-Yokohama": "12:59",
+        "Nagoya": "14:22",
+        "Kyoto": "14:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026661.html"
     },
@@ -7725,6 +11304,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "16:06",
         "Hiroshima": "16:42"
       },
+      "arrivals": {
+        "Shinagawa": "12:54",
+        "Shin-Yokohama": "13:06",
+        "Nagoya": "14:25",
+        "Kyoto": "15:00",
+        "Shin-Osaka": "15:15",
+        "Shin-Kobe": "15:29",
+        "Himeji": "15:45",
+        "Okayama": "16:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089241.html"
     },
     {
@@ -7740,6 +11329,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "14:32",
         "Kyoto": "15:07",
         "Shin-Osaka": "15:21"
+      },
+      "arrivals": {
+        "Shinagawa": "12:58",
+        "Shin-Yokohama": "13:09",
+        "Nagoya": "14:31",
+        "Kyoto": "15:06"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026571.html"
     },
@@ -7768,6 +11363,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "16:36",
         "Shin-Osaka": "16:51"
       },
+      "arrivals": {
+        "Shinagawa": "13:03",
+        "Shin-Yokohama": "13:14",
+        "Odawara": "13:30",
+        "Atami": "13:42",
+        "Mishima": "13:50",
+        "Shin-Fuji": "14:03",
+        "Shizuoka": "14:18",
+        "Kakegawa": "14:34",
+        "Hamamatsu": "14:46",
+        "Toyohashi": "15:02",
+        "Mikawa-Anjo": "15:21",
+        "Nagoya": "15:37",
+        "Gifu-Hashima": "15:53",
+        "Maibara": "16:10",
+        "Kyoto": "16:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129281.html"
     },
     {
@@ -7783,6 +11395,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "14:41",
         "Kyoto": "15:16",
         "Shin-Osaka": "15:30"
+      },
+      "arrivals": {
+        "Shinagawa": "13:06",
+        "Shin-Yokohama": "13:17",
+        "Nagoya": "14:39",
+        "Kyoto": "15:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026271.html"
     },
@@ -7808,6 +11426,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "16:47",
         "Okayama": "17:02"
       },
+      "arrivals": {
+        "Shinagawa": "13:09",
+        "Shin-Yokohama": "13:20",
+        "Mishima": "13:45",
+        "Shizuoka": "14:02",
+        "Hamamatsu": "14:27",
+        "Nagoya": "15:01",
+        "Kyoto": "15:37",
+        "Shin-Osaka": "15:57",
+        "Shin-Kobe": "16:11",
+        "Nishi-Akashi": "16:19",
+        "Himeji": "16:33",
+        "Aioi": "16:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128751.html"
     },
     {
@@ -7823,6 +11455,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "14:47",
         "Kyoto": "15:22",
         "Shin-Osaka": "15:36"
+      },
+      "arrivals": {
+        "Shinagawa": "13:16",
+        "Shin-Yokohama": "13:28",
+        "Nagoya": "14:45",
+        "Kyoto": "15:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026551.html"
     },
@@ -7846,6 +11484,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "17:54",
         "Hakata": "18:09"
       },
+      "arrivals": {
+        "Shinagawa": "13:18",
+        "Shin-Yokohama": "13:30",
+        "Nagoya": "14:48",
+        "Kyoto": "15:23",
+        "Shin-Osaka": "15:39",
+        "Shin-Kobe": "15:53",
+        "Okayama": "16:25",
+        "Hiroshima": "17:02",
+        "Shin-Yamaguchi": "17:33",
+        "Kokura": "17:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023501.html"
     },
     {
@@ -7865,6 +11515,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "16:36",
         "Hiroshima": "17:11"
       },
+      "arrivals": {
+        "Shinagawa": "13:27",
+        "Shin-Yokohama": "13:38",
+        "Nagoya": "14:56",
+        "Kyoto": "15:32",
+        "Shin-Osaka": "15:48",
+        "Shin-Kobe": "16:02",
+        "Okayama": "16:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/031601.html"
     },
     {
@@ -7880,6 +11539,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "14:58",
         "Kyoto": "15:33",
         "Shin-Osaka": "15:48"
+      },
+      "arrivals": {
+        "Shinagawa": "13:27",
+        "Shin-Yokohama": "13:38",
+        "Nagoya": "14:56",
+        "Kyoto": "15:32"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026531.html"
     },
@@ -7904,6 +11569,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "15:56",
         "Nagoya": "16:06"
       },
+      "arrivals": {
+        "Shinagawa": "13:33",
+        "Shin-Yokohama": "13:44",
+        "Odawara": "14:00",
+        "Atami": "14:10",
+        "Mishima": "14:17",
+        "Shin-Fuji": "14:31",
+        "Shizuoka": "14:47",
+        "Kakegawa": "15:06",
+        "Hamamatsu": "15:19",
+        "Toyohashi": "15:35",
+        "Mikawa-Anjo": "15:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129291.html"
     },
     {
@@ -7926,6 +11604,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "18:14",
         "Hakata": "18:30"
       },
+      "arrivals": {
+        "Shinagawa": "13:36",
+        "Shin-Yokohama": "13:47",
+        "Nagoya": "15:09",
+        "Kyoto": "15:44",
+        "Shin-Osaka": "16:00",
+        "Shin-Kobe": "16:14",
+        "Okayama": "16:46",
+        "Fukuyama": "17:03",
+        "Hiroshima": "17:27",
+        "Kokura": "18:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023491.html"
     },
     {
@@ -7944,6 +11634,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "15:53",
         "Kyoto": "16:13",
         "Shin-Osaka": "16:27"
+      },
+      "arrivals": {
+        "Shinagawa": "13:39",
+        "Shin-Yokohama": "13:50",
+        "Odawara": "14:06",
+        "Nagoya": "15:14",
+        "Gifu-Hashima": "15:29",
+        "Maibara": "15:47",
+        "Kyoto": "16:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026621.html"
     },
@@ -7964,6 +11663,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "16:59",
         "Hiroshima": "17:37"
       },
+      "arrivals": {
+        "Shinagawa": "13:48",
+        "Shin-Yokohama": "13:59",
+        "Nagoya": "15:22",
+        "Kyoto": "15:57",
+        "Shin-Osaka": "16:12",
+        "Shin-Kobe": "16:26",
+        "Okayama": "16:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/045/047741.html"
     },
     {
@@ -7979,6 +11687,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "15:23",
         "Kyoto": "15:59",
         "Shin-Osaka": "16:12"
+      },
+      "arrivals": {
+        "Shinagawa": "13:48",
+        "Shin-Yokohama": "13:59",
+        "Nagoya": "15:22",
+        "Kyoto": "15:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/031621.html"
     },
@@ -8000,6 +11714,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "17:06",
         "Hiroshima": "17:42"
       },
+      "arrivals": {
+        "Shinagawa": "13:54",
+        "Shin-Yokohama": "14:06",
+        "Nagoya": "15:25",
+        "Kyoto": "16:00",
+        "Shin-Osaka": "16:15",
+        "Shin-Kobe": "16:29",
+        "Himeji": "16:45",
+        "Okayama": "17:05"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089251.html"
     },
     {
@@ -8015,6 +11739,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "15:35",
         "Kyoto": "16:11",
         "Shin-Osaka": "16:24"
+      },
+      "arrivals": {
+        "Shinagawa": "14:00",
+        "Shin-Yokohama": "14:12",
+        "Nagoya": "15:33",
+        "Kyoto": "16:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032521.html"
     },
@@ -8043,6 +11773,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "17:36",
         "Shin-Osaka": "17:51"
       },
+      "arrivals": {
+        "Shinagawa": "14:03",
+        "Shin-Yokohama": "14:14",
+        "Odawara": "14:30",
+        "Atami": "14:42",
+        "Mishima": "14:50",
+        "Shin-Fuji": "15:03",
+        "Shizuoka": "15:18",
+        "Kakegawa": "15:34",
+        "Hamamatsu": "15:49",
+        "Toyohashi": "16:02",
+        "Mikawa-Anjo": "16:21",
+        "Nagoya": "16:37",
+        "Gifu-Hashima": "16:53",
+        "Maibara": "17:10",
+        "Kyoto": "17:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129301.html"
     },
     {
@@ -8058,6 +11805,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "15:41",
         "Kyoto": "16:16",
         "Shin-Osaka": "16:30"
+      },
+      "arrivals": {
+        "Shinagawa": "14:06",
+        "Shin-Yokohama": "14:17",
+        "Nagoya": "15:39",
+        "Kyoto": "16:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026261.html"
     },
@@ -8082,6 +11835,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "17:47",
         "Okayama": "18:02"
       },
+      "arrivals": {
+        "Shinagawa": "14:09",
+        "Shin-Yokohama": "14:20",
+        "Shizuoka": "15:02",
+        "Hamamatsu": "15:27",
+        "Nagoya": "16:01",
+        "Kyoto": "16:37",
+        "Shin-Osaka": "16:57",
+        "Shin-Kobe": "17:11",
+        "Nishi-Akashi": "17:19",
+        "Himeji": "17:33",
+        "Aioi": "17:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128761.html"
     },
     {
@@ -8097,6 +11863,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "15:47",
         "Kyoto": "16:22",
         "Shin-Osaka": "16:36"
+      },
+      "arrivals": {
+        "Shinagawa": "14:16",
+        "Shin-Yokohama": "14:28",
+        "Nagoya": "15:45",
+        "Kyoto": "16:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032511.html"
     },
@@ -8120,6 +11892,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "18:54",
         "Hakata": "19:09"
       },
+      "arrivals": {
+        "Shinagawa": "14:18",
+        "Shin-Yokohama": "14:30",
+        "Nagoya": "15:48",
+        "Kyoto": "16:23",
+        "Shin-Osaka": "16:39",
+        "Shin-Kobe": "16:53",
+        "Okayama": "17:25",
+        "Hiroshima": "18:02",
+        "Shin-Yamaguchi": "18:33",
+        "Kokura": "18:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023481.html"
     },
     {
@@ -8135,6 +11919,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "15:55",
         "Kyoto": "16:31",
         "Shin-Osaka": "16:45"
+      },
+      "arrivals": {
+        "Shinagawa": "14:24",
+        "Shin-Yokohama": "14:36",
+        "Nagoya": "15:54",
+        "Kyoto": "16:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/032501.html"
     },
@@ -8158,6 +11948,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "19:03",
         "Hakata": "19:18"
       },
+      "arrivals": {
+        "Shinagawa": "14:27",
+        "Shin-Yokohama": "14:38",
+        "Nagoya": "15:56",
+        "Kyoto": "16:32",
+        "Shin-Osaka": "16:48",
+        "Shin-Kobe": "17:02",
+        "Okayama": "17:35",
+        "Hiroshima": "18:11",
+        "Shin-Yamaguchi": "18:42",
+        "Kokura": "19:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062911.html"
     },
     {
@@ -8176,6 +11978,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Kobe": "17:03",
         "Okayama": "17:36",
         "Hiroshima": "18:11"
+      },
+      "arrivals": {
+        "Shinagawa": "14:27",
+        "Shin-Yokohama": "14:38",
+        "Nagoya": "15:56",
+        "Kyoto": "16:32",
+        "Shin-Osaka": "16:48",
+        "Shin-Kobe": "17:02",
+        "Okayama": "17:35"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115261.html"
     },
@@ -8209,6 +12020,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "16:41",
         "Shin-Osaka": "16:54"
       },
+      "arrivals": {
+        "Shinagawa": "14:30",
+        "Shin-Yokohama": "14:42",
+        "Nagoya": "16:04",
+        "Kyoto": "16:39"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034181.html"
     },
     {
@@ -8232,6 +12049,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "16:56",
         "Nagoya": "17:06"
       },
+      "arrivals": {
+        "Shinagawa": "14:33",
+        "Shin-Yokohama": "14:44",
+        "Odawara": "15:00",
+        "Atami": "15:12",
+        "Mishima": "15:20",
+        "Shin-Fuji": "15:34",
+        "Shizuoka": "15:47",
+        "Kakegawa": "16:06",
+        "Hamamatsu": "16:19",
+        "Toyohashi": "16:35",
+        "Mikawa-Anjo": "16:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129311.html"
     },
     {
@@ -8254,6 +12084,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "19:14",
         "Hakata": "19:30"
       },
+      "arrivals": {
+        "Shinagawa": "14:36",
+        "Shin-Yokohama": "14:47",
+        "Nagoya": "16:09",
+        "Kyoto": "16:44",
+        "Shin-Osaka": "17:00",
+        "Shin-Kobe": "17:14",
+        "Okayama": "17:46",
+        "Hiroshima": "18:23",
+        "Tokuyama": "18:45",
+        "Kokura": "19:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023451.html"
     },
     {
@@ -8272,6 +12114,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "16:53",
         "Kyoto": "17:13",
         "Shin-Osaka": "17:27"
+      },
+      "arrivals": {
+        "Shinagawa": "14:39",
+        "Shin-Yokohama": "14:50",
+        "Toyohashi": "15:53",
+        "Nagoya": "16:14",
+        "Gifu-Hashima": "16:29",
+        "Maibara": "16:47",
+        "Kyoto": "17:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062291.html"
     },
@@ -8295,6 +12146,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "19:23",
         "Hakata": "19:39"
       },
+      "arrivals": {
+        "Shinagawa": "14:45",
+        "Shin-Yokohama": "14:57",
+        "Nagoya": "16:16",
+        "Kyoto": "16:51",
+        "Shin-Osaka": "17:06",
+        "Shin-Kobe": "17:20",
+        "Okayama": "17:53",
+        "Fukuyama": "18:09",
+        "Hiroshima": "18:33",
+        "Kokura": "19:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/045/047721.html"
     },
     {
@@ -8310,6 +12173,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "16:17",
         "Kyoto": "16:52",
         "Shin-Osaka": "17:06"
+      },
+      "arrivals": {
+        "Shinagawa": "14:45",
+        "Shin-Yokohama": "14:57",
+        "Nagoya": "16:16",
+        "Kyoto": "16:51"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034171.html"
     },
@@ -8333,6 +12202,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "19:29",
         "Hakata": "19:45"
       },
+      "arrivals": {
+        "Shinagawa": "14:48",
+        "Shin-Yokohama": "14:59",
+        "Nagoya": "16:22",
+        "Kyoto": "16:57",
+        "Shin-Osaka": "17:12",
+        "Shin-Kobe": "17:26",
+        "Okayama": "17:58",
+        "Hiroshima": "18:37",
+        "Shin-Yamaguchi": "19:08",
+        "Kokura": "19:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062921.html"
     },
     {
@@ -8348,6 +12229,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "16:23",
         "Kyoto": "16:59",
         "Shin-Osaka": "17:12"
+      },
+      "arrivals": {
+        "Shinagawa": "14:48",
+        "Shin-Yokohama": "14:59",
+        "Nagoya": "16:22",
+        "Kyoto": "16:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/030/034161.html"
     },
@@ -8370,6 +12257,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Fukuyama": "18:23",
         "Hiroshima": "18:46"
       },
+      "arrivals": {
+        "Shinagawa": "14:54",
+        "Shin-Yokohama": "15:06",
+        "Nagoya": "16:25",
+        "Kyoto": "17:00",
+        "Shin-Osaka": "17:15",
+        "Shin-Kobe": "17:29",
+        "Himeji": "17:45",
+        "Okayama": "18:05",
+        "Fukuyama": "18:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089261.html"
     },
     {
@@ -8385,6 +12283,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "16:32",
         "Kyoto": "17:07",
         "Shin-Osaka": "17:21"
+      },
+      "arrivals": {
+        "Shinagawa": "14:58",
+        "Shin-Yokohama": "15:09",
+        "Nagoya": "16:31",
+        "Kyoto": "17:06"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/035/038121.html"
     },
@@ -8413,6 +12317,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "18:36",
         "Shin-Osaka": "18:51"
       },
+      "arrivals": {
+        "Shinagawa": "15:03",
+        "Shin-Yokohama": "15:14",
+        "Odawara": "15:30",
+        "Atami": "15:42",
+        "Mishima": "15:50",
+        "Shin-Fuji": "16:03",
+        "Shizuoka": "16:18",
+        "Kakegawa": "16:34",
+        "Hamamatsu": "16:46",
+        "Toyohashi": "17:02",
+        "Mikawa-Anjo": "17:21",
+        "Nagoya": "17:37",
+        "Gifu-Hashima": "17:53",
+        "Maibara": "18:10",
+        "Kyoto": "18:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129321.html"
     },
     {
@@ -8428,6 +12349,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "16:41",
         "Kyoto": "17:16",
         "Shin-Osaka": "17:30"
+      },
+      "arrivals": {
+        "Shinagawa": "15:06",
+        "Shin-Yokohama": "15:17",
+        "Nagoya": "16:39",
+        "Kyoto": "17:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026251.html"
     },
@@ -8453,6 +12380,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "18:47",
         "Okayama": "19:02"
       },
+      "arrivals": {
+        "Shinagawa": "15:09",
+        "Shin-Yokohama": "15:20",
+        "Mishima": "15:45",
+        "Shizuoka": "16:02",
+        "Hamamatsu": "16:27",
+        "Nagoya": "17:01",
+        "Kyoto": "17:37",
+        "Shin-Osaka": "17:57",
+        "Shin-Kobe": "18:11",
+        "Nishi-Akashi": "18:19",
+        "Himeji": "18:33",
+        "Aioi": "18:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128771.html"
     },
     {
@@ -8468,6 +12409,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "16:47",
         "Kyoto": "17:22",
         "Shin-Osaka": "17:36"
+      },
+      "arrivals": {
+        "Shinagawa": "15:16",
+        "Shin-Yokohama": "15:28",
+        "Nagoya": "16:45",
+        "Kyoto": "17:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062751.html"
     },
@@ -8491,6 +12438,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "19:54",
         "Hakata": "20:09"
       },
+      "arrivals": {
+        "Shinagawa": "15:18",
+        "Shin-Yokohama": "15:30",
+        "Nagoya": "16:48",
+        "Kyoto": "17:23",
+        "Shin-Osaka": "17:39",
+        "Shin-Kobe": "17:53",
+        "Okayama": "18:25",
+        "Hiroshima": "19:02",
+        "Shin-Yamaguchi": "19:33",
+        "Kokura": "19:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023431.html"
     },
     {
@@ -8506,6 +12465,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "16:55",
         "Kyoto": "17:31",
         "Shin-Osaka": "17:45"
+      },
+      "arrivals": {
+        "Shinagawa": "15:24",
+        "Shin-Yokohama": "15:36",
+        "Nagoya": "16:54",
+        "Kyoto": "17:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062741.html"
     },
@@ -8529,6 +12494,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "20:03",
         "Hakata": "20:18"
       },
+      "arrivals": {
+        "Shinagawa": "15:27",
+        "Shin-Yokohama": "15:38",
+        "Nagoya": "16:56",
+        "Kyoto": "17:32",
+        "Shin-Osaka": "17:48",
+        "Shin-Kobe": "18:02",
+        "Himeji": "18:18",
+        "Okayama": "18:39",
+        "Hiroshima": "19:15",
+        "Kokura": "20:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062931.html"
     },
     {
@@ -8549,6 +12526,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "18:40",
         "Hiroshima": "19:15"
       },
+      "arrivals": {
+        "Shinagawa": "15:27",
+        "Shin-Yokohama": "15:38",
+        "Nagoya": "16:56",
+        "Kyoto": "17:32",
+        "Shin-Osaka": "17:48",
+        "Shin-Kobe": "18:02",
+        "Himeji": "18:18",
+        "Okayama": "18:39"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115271.html"
     },
     {
@@ -8565,6 +12552,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "17:33",
         "Shin-Osaka": "17:48"
       },
+      "arrivals": {
+        "Shinagawa": "15:27",
+        "Shin-Yokohama": "15:38",
+        "Nagoya": "16:56",
+        "Kyoto": "17:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062731.html"
     },
     {
@@ -8580,6 +12573,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "17:05",
         "Kyoto": "17:41",
         "Shin-Osaka": "17:54"
+      },
+      "arrivals": {
+        "Shinagawa": "15:30",
+        "Shin-Yokohama": "15:42",
+        "Nagoya": "17:04",
+        "Kyoto": "17:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062721.html"
     },
@@ -8604,6 +12603,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "17:56",
         "Nagoya": "18:06"
       },
+      "arrivals": {
+        "Shinagawa": "15:33",
+        "Shin-Yokohama": "15:44",
+        "Odawara": "16:00",
+        "Atami": "16:10",
+        "Mishima": "16:17",
+        "Shin-Fuji": "16:31",
+        "Shizuoka": "16:47",
+        "Kakegawa": "17:06",
+        "Hamamatsu": "17:19",
+        "Toyohashi": "17:35",
+        "Mikawa-Anjo": "17:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129331.html"
     },
     {
@@ -8626,6 +12638,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "20:14",
         "Hakata": "20:30"
       },
+      "arrivals": {
+        "Shinagawa": "15:36",
+        "Shin-Yokohama": "15:47",
+        "Nagoya": "17:09",
+        "Kyoto": "17:44",
+        "Shin-Osaka": "18:00",
+        "Shin-Kobe": "18:14",
+        "Okayama": "18:46",
+        "Hiroshima": "19:23",
+        "Tokuyama": "19:45",
+        "Kokura": "20:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023421.html"
     },
     {
@@ -8644,6 +12668,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "17:53",
         "Kyoto": "18:13",
         "Shin-Osaka": "18:27"
+      },
+      "arrivals": {
+        "Shinagawa": "15:39",
+        "Shin-Yokohama": "15:50",
+        "Odawara": "16:06",
+        "Nagoya": "17:14",
+        "Gifu-Hashima": "17:29",
+        "Maibara": "17:47",
+        "Kyoto": "18:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026611.html"
     },
@@ -8667,6 +12700,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "20:23",
         "Hakata": "20:39"
       },
+      "arrivals": {
+        "Shinagawa": "15:45",
+        "Shin-Yokohama": "15:57",
+        "Nagoya": "17:16",
+        "Kyoto": "17:51",
+        "Shin-Osaka": "18:06",
+        "Shin-Kobe": "18:20",
+        "Okayama": "18:53",
+        "Fukuyama": "19:09",
+        "Hiroshima": "19:33",
+        "Kokura": "20:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177631.html"
     },
     {
@@ -8682,6 +12727,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "17:17",
         "Kyoto": "17:52",
         "Shin-Osaka": "18:06"
+      },
+      "arrivals": {
+        "Shinagawa": "15:45",
+        "Shin-Yokohama": "15:57",
+        "Nagoya": "17:16",
+        "Kyoto": "17:51"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111191.html"
     },
@@ -8705,6 +12756,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "20:29",
         "Hakata": "20:45"
       },
+      "arrivals": {
+        "Shinagawa": "15:48",
+        "Shin-Yokohama": "15:59",
+        "Nagoya": "17:22",
+        "Kyoto": "17:57",
+        "Shin-Osaka": "18:12",
+        "Shin-Kobe": "18:26",
+        "Okayama": "18:58",
+        "Hiroshima": "19:37",
+        "Shin-Yamaguchi": "20:08",
+        "Kokura": "20:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026711.html"
     },
     {
@@ -8726,6 +12789,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Fukuyama": "19:23",
         "Hiroshima": "19:46"
       },
+      "arrivals": {
+        "Shinagawa": "15:54",
+        "Shin-Yokohama": "16:06",
+        "Nagoya": "17:25",
+        "Kyoto": "18:00",
+        "Shin-Osaka": "18:15",
+        "Shin-Kobe": "18:29",
+        "Himeji": "18:45",
+        "Okayama": "19:05",
+        "Fukuyama": "19:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089271.html"
     },
     {
@@ -8741,6 +12815,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "17:35",
         "Kyoto": "18:11",
         "Shin-Osaka": "18:24"
+      },
+      "arrivals": {
+        "Shinagawa": "16:00",
+        "Shin-Yokohama": "16:12",
+        "Nagoya": "17:33",
+        "Kyoto": "18:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062701.html"
     },
@@ -8769,6 +12849,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "19:36",
         "Shin-Osaka": "19:51"
       },
+      "arrivals": {
+        "Shinagawa": "16:03",
+        "Shin-Yokohama": "16:14",
+        "Odawara": "16:30",
+        "Atami": "16:42",
+        "Mishima": "16:50",
+        "Shin-Fuji": "17:03",
+        "Shizuoka": "17:18",
+        "Kakegawa": "17:34",
+        "Hamamatsu": "17:49",
+        "Toyohashi": "18:02",
+        "Mikawa-Anjo": "18:21",
+        "Nagoya": "18:37",
+        "Gifu-Hashima": "18:53",
+        "Maibara": "19:10",
+        "Kyoto": "19:34"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129341.html"
     },
     {
@@ -8791,6 +12888,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "20:47",
         "Hakata": "21:03"
       },
+      "arrivals": {
+        "Shinagawa": "16:06",
+        "Shin-Yokohama": "16:17",
+        "Nagoya": "17:39",
+        "Kyoto": "18:15",
+        "Shin-Osaka": "18:30",
+        "Shin-Kobe": "18:44",
+        "Okayama": "19:16",
+        "Hiroshima": "19:55",
+        "Tokuyama": "20:18",
+        "Kokura": "20:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089581.html"
     },
     {
@@ -8806,6 +12915,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "17:41",
         "Kyoto": "18:16",
         "Shin-Osaka": "18:30"
+      },
+      "arrivals": {
+        "Shinagawa": "16:06",
+        "Shin-Yokohama": "16:17",
+        "Nagoya": "17:39",
+        "Kyoto": "18:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111201.html"
     },
@@ -8831,6 +12946,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "19:47",
         "Okayama": "20:02"
       },
+      "arrivals": {
+        "Shinagawa": "16:09",
+        "Shin-Yokohama": "16:20",
+        "Atami": "16:39",
+        "Shizuoka": "17:02",
+        "Hamamatsu": "17:27",
+        "Nagoya": "18:01",
+        "Kyoto": "18:37",
+        "Shin-Osaka": "18:57",
+        "Shin-Kobe": "19:11",
+        "Nishi-Akashi": "19:19",
+        "Himeji": "19:33",
+        "Aioi": "19:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128781.html"
     },
     {
@@ -8846,6 +12975,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "17:47",
         "Kyoto": "18:22",
         "Shin-Osaka": "18:36"
+      },
+      "arrivals": {
+        "Shinagawa": "16:16",
+        "Shin-Yokohama": "16:28",
+        "Nagoya": "17:45",
+        "Kyoto": "18:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062691.html"
     },
@@ -8869,6 +13004,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "20:54",
         "Hakata": "21:09"
       },
+      "arrivals": {
+        "Shinagawa": "16:18",
+        "Shin-Yokohama": "16:30",
+        "Nagoya": "17:48",
+        "Kyoto": "18:23",
+        "Shin-Osaka": "18:39",
+        "Shin-Kobe": "18:53",
+        "Okayama": "19:26",
+        "Hiroshima": "20:02",
+        "Shin-Yamaguchi": "20:33",
+        "Kokura": "20:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023411.html"
     },
     {
@@ -8884,6 +13031,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "17:55",
         "Kyoto": "18:31",
         "Shin-Osaka": "18:45"
+      },
+      "arrivals": {
+        "Shinagawa": "16:24",
+        "Shin-Yokohama": "16:36",
+        "Nagoya": "17:54",
+        "Kyoto": "18:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062681.html"
     },
@@ -8903,6 +13056,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Kobe": "19:03",
         "Okayama": "19:37",
         "Hiroshima": "20:11"
+      },
+      "arrivals": {
+        "Shinagawa": "16:27",
+        "Shin-Yokohama": "16:38",
+        "Nagoya": "17:56",
+        "Kyoto": "18:32",
+        "Shin-Osaka": "18:48",
+        "Shin-Kobe": "19:02",
+        "Okayama": "19:36"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115281.html"
     },
@@ -8926,6 +13088,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "21:03",
         "Hakata": "21:18"
       },
+      "arrivals": {
+        "Shinagawa": "16:27",
+        "Shin-Yokohama": "16:38",
+        "Nagoya": "17:56",
+        "Kyoto": "18:32",
+        "Shin-Osaka": "18:48",
+        "Shin-Kobe": "19:02",
+        "Okayama": "19:36",
+        "Hiroshima": "20:11",
+        "Shin-Yamaguchi": "20:43",
+        "Kokura": "21:02"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089591.html"
     },
     {
@@ -8942,6 +13116,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "18:33",
         "Shin-Osaka": "18:48"
       },
+      "arrivals": {
+        "Shinagawa": "16:27",
+        "Shin-Yokohama": "16:38",
+        "Nagoya": "17:56",
+        "Kyoto": "18:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062671.html"
     },
     {
@@ -8957,6 +13137,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "18:05",
         "Kyoto": "18:41",
         "Shin-Osaka": "18:54"
+      },
+      "arrivals": {
+        "Shinagawa": "16:30",
+        "Shin-Yokohama": "16:42",
+        "Nagoya": "18:04",
+        "Kyoto": "18:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062661.html"
     },
@@ -8981,6 +13167,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "18:56",
         "Nagoya": "19:06"
       },
+      "arrivals": {
+        "Shinagawa": "16:33",
+        "Shin-Yokohama": "16:44",
+        "Odawara": "17:00",
+        "Atami": "17:12",
+        "Mishima": "17:20",
+        "Shin-Fuji": "17:34",
+        "Shizuoka": "17:47",
+        "Kakegawa": "18:06",
+        "Hamamatsu": "18:19",
+        "Toyohashi": "18:35",
+        "Mikawa-Anjo": "18:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129351.html"
     },
     {
@@ -9003,6 +13202,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "21:14",
         "Hakata": "21:30"
       },
+      "arrivals": {
+        "Shinagawa": "16:36",
+        "Shin-Yokohama": "16:47",
+        "Nagoya": "18:09",
+        "Kyoto": "18:44",
+        "Shin-Osaka": "19:00",
+        "Shin-Kobe": "19:14",
+        "Okayama": "19:46",
+        "Fukuyama": "20:03",
+        "Hiroshima": "20:27",
+        "Kokura": "21:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023401.html"
     },
     {
@@ -9021,6 +13232,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "18:53",
         "Kyoto": "19:13",
         "Shin-Osaka": "19:27"
+      },
+      "arrivals": {
+        "Shinagawa": "16:39",
+        "Shin-Yokohama": "16:50",
+        "Toyohashi": "17:53",
+        "Nagoya": "18:14",
+        "Gifu-Hashima": "18:29",
+        "Maibara": "18:47",
+        "Kyoto": "19:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062301.html"
     },
@@ -9044,6 +13264,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "21:23",
         "Hakata": "21:39"
       },
+      "arrivals": {
+        "Shinagawa": "16:45",
+        "Shin-Yokohama": "16:57",
+        "Nagoya": "18:16",
+        "Kyoto": "18:51",
+        "Shin-Osaka": "19:06",
+        "Shin-Kobe": "19:20",
+        "Okayama": "19:53",
+        "Fukuyama": "20:09",
+        "Hiroshima": "20:33",
+        "Kokura": "21:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089601.html"
     },
     {
@@ -9060,6 +13292,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "18:52",
         "Shin-Osaka": "19:06"
       },
+      "arrivals": {
+        "Shinagawa": "16:45",
+        "Shin-Yokohama": "16:57",
+        "Nagoya": "18:16",
+        "Kyoto": "18:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111211.html"
     },
     {
@@ -9075,6 +13313,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "18:23",
         "Kyoto": "18:59",
         "Shin-Osaka": "19:12"
+      },
+      "arrivals": {
+        "Shinagawa": "16:48",
+        "Shin-Yokohama": "16:59",
+        "Nagoya": "18:22",
+        "Kyoto": "18:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062651.html"
     },
@@ -9098,6 +13342,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "21:29",
         "Hakata": "21:45"
       },
+      "arrivals": {
+        "Shinagawa": "16:54",
+        "Shin-Yokohama": "17:06",
+        "Nagoya": "18:25",
+        "Kyoto": "19:00",
+        "Shin-Osaka": "19:15",
+        "Shin-Kobe": "19:29",
+        "Himeji": "19:45",
+        "Okayama": "20:05",
+        "Hiroshima": "20:42",
+        "Kokura": "21:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/020/023391.html"
     },
     {
@@ -9113,6 +13369,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "18:32",
         "Kyoto": "19:07",
         "Shin-Osaka": "19:21"
+      },
+      "arrivals": {
+        "Shinagawa": "16:58",
+        "Shin-Yokohama": "17:09",
+        "Nagoya": "18:31",
+        "Kyoto": "19:06"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062641.html"
     },
@@ -9137,6 +13399,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "19:25",
         "Nagoya": "19:37"
       },
+      "arrivals": {
+        "Shinagawa": "17:03",
+        "Shin-Yokohama": "17:14",
+        "Odawara": "17:30",
+        "Atami": "17:42",
+        "Mishima": "17:50",
+        "Shin-Fuji": "18:03",
+        "Shizuoka": "18:18",
+        "Kakegawa": "18:34",
+        "Hamamatsu": "18:46",
+        "Toyohashi": "19:02",
+        "Mikawa-Anjo": "19:21"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129361.html"
     },
     {
@@ -9159,6 +13434,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "21:47",
         "Hakata": "22:03"
       },
+      "arrivals": {
+        "Shinagawa": "17:06",
+        "Shin-Yokohama": "17:17",
+        "Nagoya": "18:39",
+        "Kyoto": "19:15",
+        "Shin-Osaka": "19:30",
+        "Shin-Kobe": "19:44",
+        "Okayama": "20:16",
+        "Hiroshima": "20:54",
+        "Tokuyama": "21:18",
+        "Kokura": "21:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115161.html"
     },
     {
@@ -9174,6 +13461,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "18:41",
         "Kyoto": "19:16",
         "Shin-Osaka": "19:30"
+      },
+      "arrivals": {
+        "Shinagawa": "17:06",
+        "Shin-Yokohama": "17:17",
+        "Nagoya": "18:39",
+        "Kyoto": "19:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111221.html"
     },
@@ -9199,6 +13492,20 @@ window.SHINKANSEN_TIMETABLE = {
         "Aioi": "20:47",
         "Okayama": "21:02"
       },
+      "arrivals": {
+        "Shinagawa": "17:09",
+        "Shin-Yokohama": "17:20",
+        "Mishima": "17:45",
+        "Shizuoka": "18:02",
+        "Hamamatsu": "18:27",
+        "Nagoya": "19:01",
+        "Kyoto": "19:37",
+        "Shin-Osaka": "19:57",
+        "Shin-Kobe": "20:11",
+        "Nishi-Akashi": "20:19",
+        "Himeji": "20:33",
+        "Aioi": "20:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128791.html"
     },
     {
@@ -9214,6 +13521,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "18:47",
         "Kyoto": "19:22",
         "Shin-Osaka": "19:36"
+      },
+      "arrivals": {
+        "Shinagawa": "17:16",
+        "Shin-Yokohama": "17:28",
+        "Nagoya": "18:45",
+        "Kyoto": "19:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062621.html"
     },
@@ -9237,6 +13550,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "21:54",
         "Hakata": "22:09"
       },
+      "arrivals": {
+        "Shinagawa": "17:18",
+        "Shin-Yokohama": "17:30",
+        "Nagoya": "18:48",
+        "Kyoto": "19:23",
+        "Shin-Osaka": "19:39",
+        "Shin-Kobe": "19:53",
+        "Okayama": "20:25",
+        "Hiroshima": "21:02",
+        "Shin-Yamaguchi": "21:33",
+        "Kokura": "21:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/025691.html"
     },
     {
@@ -9252,6 +13577,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "18:55",
         "Kyoto": "19:31",
         "Shin-Osaka": "19:45"
+      },
+      "arrivals": {
+        "Shinagawa": "17:24",
+        "Shin-Yokohama": "17:36",
+        "Nagoya": "18:54",
+        "Kyoto": "19:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062611.html"
     },
@@ -9272,6 +13603,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "20:37",
         "Hiroshima": "21:11"
       },
+      "arrivals": {
+        "Shinagawa": "17:27",
+        "Shin-Yokohama": "17:38",
+        "Nagoya": "18:56",
+        "Kyoto": "19:32",
+        "Shin-Osaka": "19:48",
+        "Shin-Kobe": "20:02",
+        "Okayama": "20:36"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177561.html"
     },
     {
@@ -9288,6 +13628,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "19:33",
         "Shin-Osaka": "19:48"
       },
+      "arrivals": {
+        "Shinagawa": "17:27",
+        "Shin-Yokohama": "17:38",
+        "Nagoya": "18:56",
+        "Kyoto": "19:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/110/111231.html"
     },
     {
@@ -9303,6 +13649,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:05",
         "Kyoto": "19:41",
         "Shin-Osaka": "19:54"
+      },
+      "arrivals": {
+        "Shinagawa": "17:30",
+        "Shin-Yokohama": "17:42",
+        "Nagoya": "19:04",
+        "Kyoto": "19:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062601.html"
     },
@@ -9327,6 +13679,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "19:56",
         "Nagoya": "20:06"
       },
+      "arrivals": {
+        "Shinagawa": "17:33",
+        "Shin-Yokohama": "17:44",
+        "Odawara": "18:00",
+        "Atami": "18:10",
+        "Mishima": "18:17",
+        "Shin-Fuji": "18:31",
+        "Shizuoka": "18:47",
+        "Kakegawa": "19:06",
+        "Hamamatsu": "19:19",
+        "Toyohashi": "19:35",
+        "Mikawa-Anjo": "19:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129371.html"
     },
     {
@@ -9349,6 +13714,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "22:14",
         "Hakata": "22:30"
       },
+      "arrivals": {
+        "Shinagawa": "17:36",
+        "Shin-Yokohama": "17:47",
+        "Nagoya": "19:09",
+        "Kyoto": "19:44",
+        "Shin-Osaka": "20:00",
+        "Shin-Kobe": "20:14",
+        "Okayama": "20:46",
+        "Fukuyama": "21:03",
+        "Hiroshima": "21:27",
+        "Kokura": "22:13"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026281.html"
     },
     {
@@ -9367,6 +13744,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Maibara": "19:53",
         "Kyoto": "20:13",
         "Shin-Osaka": "20:27"
+      },
+      "arrivals": {
+        "Shinagawa": "17:39",
+        "Shin-Yokohama": "17:50",
+        "Odawara": "18:06",
+        "Nagoya": "19:14",
+        "Gifu-Hashima": "19:29",
+        "Maibara": "19:47",
+        "Kyoto": "20:12"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026601.html"
     },
@@ -9390,6 +13776,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "22:23",
         "Hakata": "22:39"
       },
+      "arrivals": {
+        "Shinagawa": "17:45",
+        "Shin-Yokohama": "17:57",
+        "Nagoya": "19:16",
+        "Kyoto": "19:51",
+        "Shin-Osaka": "20:06",
+        "Shin-Kobe": "20:20",
+        "Okayama": "20:53",
+        "Fukuyama": "21:09",
+        "Hiroshima": "21:33",
+        "Kokura": "22:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115171.html"
     },
     {
@@ -9405,6 +13803,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:17",
         "Kyoto": "19:52",
         "Shin-Osaka": "20:06"
+      },
+      "arrivals": {
+        "Shinagawa": "17:45",
+        "Shin-Yokohama": "17:57",
+        "Nagoya": "19:16",
+        "Kyoto": "19:51"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128801.html"
     },
@@ -9428,6 +13832,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "22:29",
         "Hakata": "22:45"
       },
+      "arrivals": {
+        "Shinagawa": "17:48",
+        "Shin-Yokohama": "17:59",
+        "Nagoya": "19:22",
+        "Kyoto": "19:57",
+        "Shin-Osaka": "20:12",
+        "Shin-Kobe": "20:26",
+        "Okayama": "20:58",
+        "Hiroshima": "21:37",
+        "Shin-Yamaguchi": "22:08",
+        "Kokura": "22:28"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177661.html"
     },
     {
@@ -9443,6 +13859,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:23",
         "Kyoto": "19:59",
         "Shin-Osaka": "20:12"
+      },
+      "arrivals": {
+        "Shinagawa": "17:48",
+        "Shin-Yokohama": "17:59",
+        "Nagoya": "19:22",
+        "Kyoto": "19:57"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062591.html"
     },
@@ -9465,6 +13887,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Fukuyama": "21:23",
         "Hiroshima": "21:46"
       },
+      "arrivals": {
+        "Shinagawa": "17:54",
+        "Shin-Yokohama": "18:06",
+        "Nagoya": "19:25",
+        "Kyoto": "20:00",
+        "Shin-Osaka": "20:15",
+        "Shin-Kobe": "20:29",
+        "Himeji": "20:45",
+        "Okayama": "21:05",
+        "Fukuyama": "21:22"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089281.html"
     },
     {
@@ -9481,6 +13914,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "20:07",
         "Shin-Osaka": "20:21"
       },
+      "arrivals": {
+        "Shinagawa": "17:58",
+        "Shin-Yokohama": "18:09",
+        "Nagoya": "19:31",
+        "Kyoto": "20:06"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062581.html"
     },
     {
@@ -9496,6 +13935,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:35",
         "Kyoto": "20:11",
         "Shin-Osaka": "20:24"
+      },
+      "arrivals": {
+        "Shinagawa": "18:00",
+        "Shin-Yokohama": "18:12",
+        "Nagoya": "19:33",
+        "Kyoto": "20:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062571.html"
     },
@@ -9520,6 +13965,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "20:25",
         "Nagoya": "20:37"
       },
+      "arrivals": {
+        "Shinagawa": "18:03",
+        "Shin-Yokohama": "18:14",
+        "Odawara": "18:30",
+        "Atami": "18:42",
+        "Mishima": "18:50",
+        "Shin-Fuji": "19:03",
+        "Shizuoka": "19:18",
+        "Kakegawa": "19:34",
+        "Hamamatsu": "19:46",
+        "Toyohashi": "20:02",
+        "Mikawa-Anjo": "20:21"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129391.html"
     },
     {
@@ -9542,6 +14000,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "22:47",
         "Hakata": "23:03"
       },
+      "arrivals": {
+        "Shinagawa": "18:06",
+        "Shin-Yokohama": "18:17",
+        "Nagoya": "19:39",
+        "Kyoto": "20:15",
+        "Shin-Osaka": "20:30",
+        "Shin-Kobe": "20:44",
+        "Okayama": "21:16",
+        "Hiroshima": "21:55",
+        "Tokuyama": "22:18",
+        "Kokura": "22:46"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177671.html"
     },
     {
@@ -9557,6 +14027,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:41",
         "Kyoto": "20:16",
         "Shin-Osaka": "20:30"
+      },
+      "arrivals": {
+        "Shinagawa": "18:06",
+        "Shin-Yokohama": "18:17",
+        "Nagoya": "19:39",
+        "Kyoto": "20:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128811.html"
     },
@@ -9579,6 +14055,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "20:56",
         "Shin-Osaka": "21:09"
       },
+      "arrivals": {
+        "Shinagawa": "18:09",
+        "Shin-Yokohama": "18:20",
+        "Atami": "18:39",
+        "Shizuoka": "19:02",
+        "Hamamatsu": "19:27",
+        "Nagoya": "20:01",
+        "Gifu-Hashima": "20:12",
+        "Maibara": "20:32",
+        "Kyoto": "20:54"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062311.html"
     },
     {
@@ -9594,6 +14081,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:47",
         "Kyoto": "20:22",
         "Shin-Osaka": "20:36"
+      },
+      "arrivals": {
+        "Shinagawa": "18:16",
+        "Shin-Yokohama": "18:28",
+        "Nagoya": "19:45",
+        "Kyoto": "20:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089611.html"
     },
@@ -9617,6 +14110,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "22:54",
         "Hakata": "23:09"
       },
+      "arrivals": {
+        "Shinagawa": "18:18",
+        "Shin-Yokohama": "18:30",
+        "Nagoya": "19:48",
+        "Kyoto": "20:23",
+        "Shin-Osaka": "20:39",
+        "Shin-Kobe": "20:53",
+        "Okayama": "21:25",
+        "Hiroshima": "22:02",
+        "Shin-Yamaguchi": "22:33",
+        "Kokura": "22:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029491.html"
     },
     {
@@ -9632,6 +14137,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "19:55",
         "Kyoto": "20:31",
         "Shin-Osaka": "20:45"
+      },
+      "arrivals": {
+        "Shinagawa": "18:24",
+        "Shin-Yokohama": "18:36",
+        "Nagoya": "19:54",
+        "Kyoto": "20:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089621.html"
     },
@@ -9655,6 +14166,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "23:02",
         "Hakata": "23:18"
       },
+      "arrivals": {
+        "Shinagawa": "18:27",
+        "Shin-Yokohama": "18:38",
+        "Nagoya": "19:56",
+        "Kyoto": "20:32",
+        "Shin-Osaka": "20:48",
+        "Shin-Kobe": "21:02",
+        "Okayama": "21:34",
+        "Fukuyama": "21:51",
+        "Hiroshima": "22:15",
+        "Kokura": "23:01"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177681.html"
     },
     {
@@ -9671,6 +14194,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "20:33",
         "Shin-Osaka": "20:48"
       },
+      "arrivals": {
+        "Shinagawa": "18:27",
+        "Shin-Yokohama": "18:38",
+        "Nagoya": "19:56",
+        "Kyoto": "20:32"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128821.html"
     },
     {
@@ -9686,6 +14215,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "20:05",
         "Kyoto": "20:41",
         "Shin-Osaka": "20:54"
+      },
+      "arrivals": {
+        "Shinagawa": "18:30",
+        "Shin-Yokohama": "18:42",
+        "Nagoya": "20:04",
+        "Kyoto": "20:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089631.html"
     },
@@ -9710,6 +14245,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "20:55",
         "Nagoya": "21:06"
       },
+      "arrivals": {
+        "Shinagawa": "18:33",
+        "Shin-Yokohama": "18:44",
+        "Odawara": "19:00",
+        "Atami": "19:12",
+        "Mishima": "19:20",
+        "Shin-Fuji": "19:34",
+        "Shizuoka": "19:47",
+        "Kakegawa": "20:06",
+        "Hamamatsu": "20:19",
+        "Toyohashi": "20:34",
+        "Mikawa-Anjo": "20:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129401.html"
     },
     {
@@ -9731,6 +14279,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Fukuyama": "22:07",
         "Hiroshima": "22:30"
       },
+      "arrivals": {
+        "Shinagawa": "18:36",
+        "Shin-Yokohama": "18:47",
+        "Nagoya": "20:09",
+        "Kyoto": "20:44",
+        "Shin-Osaka": "21:00",
+        "Shin-Kobe": "21:14",
+        "Himeji": "21:30",
+        "Okayama": "21:50",
+        "Fukuyama": "22:07"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062221.html"
     },
     {
@@ -9751,6 +14310,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "21:13",
         "Shin-Osaka": "21:27"
       },
+      "arrivals": {
+        "Shinagawa": "18:39",
+        "Shin-Yokohama": "18:50",
+        "Shizuoka": "19:29",
+        "Toyohashi": "19:57",
+        "Nagoya": "20:19",
+        "Gifu-Hashima": "20:29",
+        "Maibara": "20:47",
+        "Kyoto": "21:12"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026591.html"
     },
     {
@@ -9767,6 +14336,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Atami": "19:22",
         "Mishima": "19:29"
       },
+      "arrivals": {
+        "Shinagawa": "18:42",
+        "Shin-Yokohama": "18:54",
+        "Odawara": "19:09",
+        "Atami": "19:21"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129411.html"
     },
     {
@@ -9782,6 +14357,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "20:17",
         "Kyoto": "20:52",
         "Shin-Osaka": "21:06"
+      },
+      "arrivals": {
+        "Shinagawa": "18:45",
+        "Shin-Yokohama": "18:57",
+        "Nagoya": "20:16",
+        "Kyoto": "20:51"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128831.html"
     },
@@ -9805,6 +14386,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "23:26",
         "Hakata": "23:42"
       },
+      "arrivals": {
+        "Shinagawa": "18:48",
+        "Shin-Yokohama": "18:59",
+        "Nagoya": "20:22",
+        "Kyoto": "20:57",
+        "Shin-Osaka": "21:12",
+        "Shin-Kobe": "21:26",
+        "Okayama": "21:58",
+        "Hiroshima": "22:33",
+        "Shin-Yamaguchi": "23:06",
+        "Kokura": "23:25"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177691.html"
     },
     {
@@ -9821,6 +14414,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "20:59",
         "Shin-Osaka": "21:12"
       },
+      "arrivals": {
+        "Shinagawa": "18:48",
+        "Shin-Yokohama": "18:59",
+        "Nagoya": "20:22",
+        "Kyoto": "20:57"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089641.html"
     },
     {
@@ -9836,6 +14435,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "20:26",
         "Kyoto": "21:02",
         "Shin-Osaka": "21:15"
+      },
+      "arrivals": {
+        "Shinagawa": "18:54",
+        "Shin-Yokohama": "19:06",
+        "Nagoya": "20:25",
+        "Kyoto": "21:00"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089651.html"
     },
@@ -9859,6 +14464,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "23:36",
         "Hakata": "23:51"
       },
+      "arrivals": {
+        "Shinagawa": "18:58",
+        "Shin-Yokohama": "19:09",
+        "Nagoya": "20:31",
+        "Kyoto": "21:06",
+        "Shin-Osaka": "21:21",
+        "Shin-Kobe": "21:35",
+        "Okayama": "22:08",
+        "Hiroshima": "22:44",
+        "Tokuyama": "23:07",
+        "Kokura": "23:35"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/029481.html"
     },
     {
@@ -9874,6 +14491,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "20:35",
         "Kyoto": "21:11",
         "Shin-Osaka": "21:24"
+      },
+      "arrivals": {
+        "Shinagawa": "19:00",
+        "Shin-Yokohama": "19:12",
+        "Nagoya": "20:33",
+        "Kyoto": "21:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103131.html"
     },
@@ -9898,6 +14521,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "21:25",
         "Nagoya": "21:36"
       },
+      "arrivals": {
+        "Shinagawa": "19:03",
+        "Shin-Yokohama": "19:14",
+        "Odawara": "19:30",
+        "Atami": "19:42",
+        "Mishima": "19:50",
+        "Shin-Fuji": "20:03",
+        "Shizuoka": "20:18",
+        "Kakegawa": "20:34",
+        "Hamamatsu": "20:50",
+        "Toyohashi": "21:06",
+        "Mikawa-Anjo": "21:20"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129421.html"
     },
     {
@@ -9920,6 +14556,18 @@ window.SHINKANSEN_TIMETABLE = {
         "Kokura": "23:44",
         "Hakata": "23:59"
       },
+      "arrivals": {
+        "Shinagawa": "19:06",
+        "Shin-Yokohama": "19:17",
+        "Nagoya": "20:39",
+        "Kyoto": "21:15",
+        "Shin-Osaka": "21:29",
+        "Shin-Kobe": "21:44",
+        "Okayama": "22:16",
+        "Fukuyama": "22:33",
+        "Hiroshima": "22:56",
+        "Kokura": "23:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177701.html"
     },
     {
@@ -9935,6 +14583,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "20:41",
         "Kyoto": "21:16",
         "Shin-Osaka": "21:29"
+      },
+      "arrivals": {
+        "Shinagawa": "19:06",
+        "Shin-Yokohama": "19:17",
+        "Nagoya": "20:39",
+        "Kyoto": "21:15"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128841.html"
     },
@@ -9957,6 +14611,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "21:50",
         "Shin-Osaka": "22:03"
       },
+      "arrivals": {
+        "Shinagawa": "19:09",
+        "Shin-Yokohama": "19:20",
+        "Mishima": "19:45",
+        "Shizuoka": "20:02",
+        "Hamamatsu": "20:27",
+        "Nagoya": "21:01",
+        "Gifu-Hashima": "21:12",
+        "Maibara": "21:27",
+        "Kyoto": "21:49"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062321.html"
     },
     {
@@ -9978,6 +14643,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Fukuyama": "22:44",
         "Hiroshima": "23:07"
       },
+      "arrivals": {
+        "Shinagawa": "19:16",
+        "Shin-Yokohama": "19:28",
+        "Nagoya": "20:45",
+        "Kyoto": "21:21",
+        "Shin-Osaka": "21:36",
+        "Shin-Kobe": "21:50",
+        "Himeji": "22:06",
+        "Okayama": "22:26",
+        "Fukuyama": "22:43"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062241.html"
     },
     {
@@ -9994,6 +14670,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "21:25",
         "Shin-Osaka": "21:39"
       },
+      "arrivals": {
+        "Shinagawa": "19:18",
+        "Shin-Yokohama": "19:30",
+        "Nagoya": "20:48",
+        "Kyoto": "21:23"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103141.html"
     },
     {
@@ -10009,6 +14691,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "20:55",
         "Kyoto": "21:31",
         "Shin-Osaka": "21:45"
+      },
+      "arrivals": {
+        "Shinagawa": "19:24",
+        "Shin-Yokohama": "19:36",
+        "Nagoya": "20:54",
+        "Kyoto": "21:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115221.html"
     },
@@ -10029,6 +14717,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Himeji": "22:19",
         "Okayama": "22:38"
       },
+      "arrivals": {
+        "Shinagawa": "19:27",
+        "Shin-Yokohama": "19:38",
+        "Nagoya": "20:56",
+        "Kyoto": "21:32",
+        "Shin-Osaka": "21:48",
+        "Shin-Kobe": "22:02",
+        "Himeji": "22:18"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089291.html"
     },
     {
@@ -10044,6 +14741,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "21:05",
         "Kyoto": "21:41",
         "Shin-Osaka": "21:54"
+      },
+      "arrivals": {
+        "Shinagawa": "19:30",
+        "Shin-Yokohama": "19:42",
+        "Nagoya": "21:03",
+        "Kyoto": "21:39"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/115/115231.html"
     },
@@ -10068,6 +14771,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "21:53",
         "Nagoya": "22:04"
       },
+      "arrivals": {
+        "Shinagawa": "19:33",
+        "Shin-Yokohama": "19:44",
+        "Odawara": "20:00",
+        "Atami": "20:12",
+        "Mishima": "20:20",
+        "Shin-Fuji": "20:34",
+        "Shizuoka": "20:47",
+        "Kakegawa": "21:05",
+        "Hamamatsu": "21:19",
+        "Toyohashi": "21:34",
+        "Mikawa-Anjo": "21:51"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129431.html"
     },
     {
@@ -10088,6 +14804,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "22:05",
         "Shin-Osaka": "22:18"
       },
+      "arrivals": {
+        "Shinagawa": "19:36",
+        "Shin-Yokohama": "19:47",
+        "Shizuoka": "20:24",
+        "Hamamatsu": "20:46",
+        "Nagoya": "21:14",
+        "Gifu-Hashima": "21:25",
+        "Maibara": "21:40",
+        "Kyoto": "22:04"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/025/026581.html"
     },
     {
@@ -10104,6 +14830,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "21:47",
         "Shin-Osaka": "22:00"
       },
+      "arrivals": {
+        "Shinagawa": "19:39",
+        "Shin-Yokohama": "19:50",
+        "Nagoya": "21:09",
+        "Kyoto": "21:45"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177711.html"
     },
     {
@@ -10119,6 +14851,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Odawara": "20:14",
         "Atami": "20:22",
         "Mishima": "20:29"
+      },
+      "arrivals": {
+        "Shinagawa": "19:42",
+        "Shin-Yokohama": "19:54",
+        "Odawara": "20:09",
+        "Atami": "20:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129441.html"
     },
@@ -10140,6 +14878,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "22:57",
         "Hiroshima": "23:32"
       },
+      "arrivals": {
+        "Shinagawa": "19:45",
+        "Shin-Yokohama": "19:57",
+        "Nagoya": "21:17",
+        "Kyoto": "21:52",
+        "Shin-Osaka": "22:06",
+        "Shin-Kobe": "22:20",
+        "Himeji": "22:36",
+        "Okayama": "22:56"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062261.html"
     },
     {
@@ -10155,6 +14903,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "21:23",
         "Kyoto": "21:59",
         "Shin-Osaka": "22:12"
+      },
+      "arrivals": {
+        "Shinagawa": "19:48",
+        "Shin-Yokohama": "19:59",
+        "Nagoya": "21:22",
+        "Kyoto": "21:58"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177721.html"
     },
@@ -10172,6 +14926,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "22:02",
         "Shin-Osaka": "22:15"
       },
+      "arrivals": {
+        "Shinagawa": "19:54",
+        "Shin-Yokohama": "20:06",
+        "Nagoya": "21:25",
+        "Kyoto": "22:01"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128851.html"
     },
     {
@@ -10188,6 +14948,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "22:07",
         "Shin-Osaka": "22:21"
       },
+      "arrivals": {
+        "Shinagawa": "19:58",
+        "Shin-Yokohama": "20:09",
+        "Nagoya": "21:31",
+        "Kyoto": "22:06"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178211.html"
     },
     {
@@ -10203,6 +14969,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "21:35",
         "Kyoto": "22:11",
         "Shin-Osaka": "22:24"
+      },
+      "arrivals": {
+        "Shinagawa": "20:00",
+        "Shin-Yokohama": "20:12",
+        "Nagoya": "21:33",
+        "Kyoto": "22:09"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/178191.html"
     },
@@ -10231,6 +15003,23 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "23:27",
         "Shin-Osaka": "23:39"
       },
+      "arrivals": {
+        "Shinagawa": "20:03",
+        "Shin-Yokohama": "20:14",
+        "Odawara": "20:30",
+        "Atami": "20:42",
+        "Mishima": "20:50",
+        "Shin-Fuji": "21:03",
+        "Shizuoka": "21:18",
+        "Kakegawa": "21:36",
+        "Hamamatsu": "21:47",
+        "Toyohashi": "22:04",
+        "Mikawa-Anjo": "22:18",
+        "Nagoya": "22:33",
+        "Gifu-Hashima": "22:46",
+        "Maibara": "23:01",
+        "Kyoto": "23:25"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129451.html"
     },
     {
@@ -10251,6 +15040,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Fukuyama": "23:31",
         "Hiroshima": "23:54"
       },
+      "arrivals": {
+        "Shinagawa": "20:06",
+        "Shin-Yokohama": "20:17",
+        "Nagoya": "21:38",
+        "Kyoto": "22:13",
+        "Shin-Osaka": "22:27",
+        "Shin-Kobe": "22:41",
+        "Okayama": "23:13",
+        "Fukuyama": "23:30"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062271.html"
     },
     {
@@ -10266,6 +15065,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "21:43",
         "Kyoto": "22:17",
         "Shin-Osaka": "22:30"
+      },
+      "arrivals": {
+        "Shinagawa": "20:09",
+        "Shin-Yokohama": "20:20",
+        "Nagoya": "21:42",
+        "Kyoto": "22:16"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177741.html"
     },
@@ -10286,6 +15091,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Okayama": "23:24",
         "Hiroshima": "23:59"
       },
+      "arrivals": {
+        "Shinagawa": "20:16",
+        "Shin-Yokohama": "20:28",
+        "Nagoya": "21:46",
+        "Kyoto": "22:21",
+        "Shin-Osaka": "22:36",
+        "Shin-Kobe": "22:50",
+        "Okayama": "23:23"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177581.html"
     },
     {
@@ -10301,6 +15115,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "21:48",
         "Kyoto": "22:23",
         "Shin-Osaka": "22:36"
+      },
+      "arrivals": {
+        "Shinagawa": "20:16",
+        "Shin-Yokohama": "20:28",
+        "Nagoya": "21:46",
+        "Kyoto": "22:21"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128861.html"
     },
@@ -10323,6 +15143,17 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "23:02",
         "Shin-Osaka": "23:15"
       },
+      "arrivals": {
+        "Shinagawa": "20:18",
+        "Shin-Yokohama": "20:30",
+        "Shizuoka": "21:09",
+        "Hamamatsu": "21:34",
+        "Toyohashi": "21:50",
+        "Nagoya": "22:11",
+        "Gifu-Hashima": "22:21",
+        "Maibara": "22:39",
+        "Kyoto": "23:01"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062331.html"
     },
     {
@@ -10338,6 +15169,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "21:54",
         "Kyoto": "22:29",
         "Shin-Osaka": "22:42"
+      },
+      "arrivals": {
+        "Shinagawa": "20:24",
+        "Shin-Yokohama": "20:36",
+        "Nagoya": "21:53",
+        "Kyoto": "22:28"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177751.html"
     },
@@ -10358,6 +15195,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Himeji": "23:16",
         "Okayama": "23:35"
       },
+      "arrivals": {
+        "Shinagawa": "20:27",
+        "Shin-Yokohama": "20:38",
+        "Nagoya": "21:56",
+        "Kyoto": "22:31",
+        "Shin-Osaka": "22:45",
+        "Shin-Kobe": "22:59",
+        "Himeji": "23:15"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089301.html"
     },
     {
@@ -10373,6 +15219,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "22:03",
         "Kyoto": "22:38",
         "Shin-Osaka": "22:51"
+      },
+      "arrivals": {
+        "Shinagawa": "20:30",
+        "Shin-Yokohama": "20:42",
+        "Nagoya": "22:01",
+        "Kyoto": "22:36"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177761.html"
     },
@@ -10397,6 +15249,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Mikawa-Anjo": "22:58",
         "Nagoya": "23:13"
       },
+      "arrivals": {
+        "Shinagawa": "20:33",
+        "Shin-Yokohama": "20:44",
+        "Odawara": "21:00",
+        "Atami": "21:12",
+        "Mishima": "21:19",
+        "Shin-Fuji": "21:32",
+        "Shizuoka": "21:46",
+        "Kakegawa": "22:05",
+        "Hamamatsu": "22:18",
+        "Toyohashi": "22:35",
+        "Mikawa-Anjo": "22:53"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129461.html"
     },
     {
@@ -10412,6 +15277,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "22:08",
         "Kyoto": "22:43",
         "Shin-Osaka": "22:57"
+      },
+      "arrivals": {
+        "Shinagawa": "20:36",
+        "Shin-Yokohama": "20:47",
+        "Nagoya": "22:06",
+        "Kyoto": "22:42"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177791.html"
     },
@@ -10431,6 +15302,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Kobe": "23:18",
         "Okayama": "23:49"
       },
+      "arrivals": {
+        "Shinagawa": "20:45",
+        "Shin-Yokohama": "20:57",
+        "Nagoya": "22:15",
+        "Kyoto": "22:49",
+        "Shin-Osaka": "23:03",
+        "Shin-Kobe": "23:17"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089311.html"
     },
     {
@@ -10446,6 +15325,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "22:18",
         "Kyoto": "22:53",
         "Shin-Osaka": "23:06"
+      },
+      "arrivals": {
+        "Shinagawa": "20:48",
+        "Shin-Yokohama": "20:59",
+        "Nagoya": "22:17",
+        "Kyoto": "22:52"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177811.html"
     },
@@ -10463,6 +15348,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "22:59",
         "Shin-Osaka": "23:12"
       },
+      "arrivals": {
+        "Shinagawa": "20:54",
+        "Shin-Yokohama": "21:06",
+        "Nagoya": "22:23",
+        "Kyoto": "22:58"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177831.html"
     },
     {
@@ -10478,6 +15369,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Odawara": "21:29",
         "Atami": "21:37",
         "Mishima": "21:44"
+      },
+      "arrivals": {
+        "Shinagawa": "20:57",
+        "Shin-Yokohama": "21:08",
+        "Odawara": "21:23",
+        "Atami": "21:36"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129471.html"
     },
@@ -10498,6 +15395,15 @@ window.SHINKANSEN_TIMETABLE = {
         "Nishi-Akashi": "23:41",
         "Himeji": "23:51"
       },
+      "arrivals": {
+        "Shinagawa": "21:00",
+        "Shin-Yokohama": "21:11",
+        "Nagoya": "22:29",
+        "Kyoto": "23:03",
+        "Shin-Osaka": "23:18",
+        "Shin-Kobe": "23:32",
+        "Nishi-Akashi": "23:40"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/085/089321.html"
     },
     {
@@ -10514,6 +15420,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "23:07",
         "Shin-Osaka": "23:21"
       },
+      "arrivals": {
+        "Shinagawa": "21:03",
+        "Shin-Yokohama": "21:14",
+        "Nagoya": "22:31",
+        "Kyoto": "23:06"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177851.html"
     },
     {
@@ -10529,6 +15441,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "22:40",
         "Kyoto": "23:15",
         "Shin-Osaka": "23:27"
+      },
+      "arrivals": {
+        "Shinagawa": "21:09",
+        "Shin-Yokohama": "21:21",
+        "Nagoya": "22:39",
+        "Kyoto": "23:14"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128871.html"
     },
@@ -10547,6 +15465,13 @@ window.SHINKANSEN_TIMETABLE = {
         "Toyohashi": "22:45",
         "Nagoya": "23:04"
       },
+      "arrivals": {
+        "Shinagawa": "21:12",
+        "Shin-Yokohama": "21:23",
+        "Shizuoka": "22:02",
+        "Hamamatsu": "22:26",
+        "Toyohashi": "22:44"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/095/098131.html"
     },
     {
@@ -10563,6 +15488,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "23:21",
         "Shin-Osaka": "23:33"
       },
+      "arrivals": {
+        "Shinagawa": "21:16",
+        "Shin-Yokohama": "21:27",
+        "Nagoya": "22:45",
+        "Kyoto": "23:20"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177871.html"
     },
     {
@@ -10578,6 +15509,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "22:49",
         "Kyoto": "23:23",
         "Shin-Osaka": "23:36"
+      },
+      "arrivals": {
+        "Shinagawa": "21:18",
+        "Shin-Yokohama": "21:30",
+        "Nagoya": "22:47",
+        "Kyoto": "23:22"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128881.html"
     },
@@ -10597,6 +15534,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Fuji": "22:25",
         "Shizuoka": "22:36"
       },
+      "arrivals": {
+        "Shinagawa": "21:21",
+        "Shin-Yokohama": "21:33",
+        "Odawara": "21:50",
+        "Atami": "22:03",
+        "Mishima": "22:11",
+        "Shin-Fuji": "22:24"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129481.html"
     },
     {
@@ -10612,6 +15557,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "22:55",
         "Kyoto": "23:30",
         "Shin-Osaka": "23:43"
+      },
+      "arrivals": {
+        "Shinagawa": "21:27",
+        "Shin-Yokohama": "21:38",
+        "Nagoya": "22:54",
+        "Kyoto": "23:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177881.html"
     },
@@ -10629,6 +15580,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Kyoto": "23:32",
         "Shin-Osaka": "23:45"
       },
+      "arrivals": {
+        "Shinagawa": "21:30",
+        "Shin-Yokohama": "21:41",
+        "Nagoya": "22:57",
+        "Kyoto": "23:31"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/128891.html"
     },
     {
@@ -10644,6 +15601,12 @@ window.SHINKANSEN_TIMETABLE = {
         "Nagoya": "23:07",
         "Kyoto": "23:42",
         "Shin-Osaka": "23:54"
+      },
+      "arrivals": {
+        "Shinagawa": "21:36",
+        "Shin-Yokohama": "21:48",
+        "Nagoya": "23:06",
+        "Kyoto": "23:41"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177901.html"
     },
@@ -10661,6 +15624,13 @@ window.SHINKANSEN_TIMETABLE = {
         "Hamamatsu": "22:51",
         "Toyohashi": "23:03",
         "Nagoya": "23:24"
+      },
+      "arrivals": {
+        "Shinagawa": "21:39",
+        "Shin-Yokohama": "21:51",
+        "Shizuoka": "22:29",
+        "Hamamatsu": "22:50",
+        "Toyohashi": "23:02"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/100/103171.html"
     },
@@ -10682,6 +15652,16 @@ window.SHINKANSEN_TIMETABLE = {
         "Kakegawa": "23:15",
         "Hamamatsu": "23:25"
       },
+      "arrivals": {
+        "Shinagawa": "21:51",
+        "Shin-Yokohama": "22:02",
+        "Odawara": "22:18",
+        "Atami": "22:26",
+        "Mishima": "22:34",
+        "Shin-Fuji": "22:43",
+        "Shizuoka": "23:00",
+        "Kakegawa": "23:14"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129491.html"
     },
     {
@@ -10695,6 +15675,10 @@ window.SHINKANSEN_TIMETABLE = {
         "Shinagawa": "22:07",
         "Shin-Yokohama": "22:18",
         "Nagoya": "23:33"
+      },
+      "arrivals": {
+        "Shinagawa": "22:06",
+        "Shin-Yokohama": "22:17"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/175/177941.html"
     },
@@ -10712,6 +15696,13 @@ window.SHINKANSEN_TIMETABLE = {
         "Hamamatsu": "23:18",
         "Toyohashi": "23:30",
         "Nagoya": "23:49"
+      },
+      "arrivals": {
+        "Shinagawa": "22:09",
+        "Shin-Yokohama": "22:20",
+        "Shizuoka": "22:56",
+        "Hamamatsu": "23:17",
+        "Toyohashi": "23:29"
       },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/060/062191.html"
     },
@@ -10731,6 +15722,14 @@ window.SHINKANSEN_TIMETABLE = {
         "Shin-Fuji": "23:11",
         "Shizuoka": "23:22"
       },
+      "arrivals": {
+        "Shinagawa": "22:18",
+        "Shin-Yokohama": "22:29",
+        "Odawara": "22:44",
+        "Atami": "22:53",
+        "Mishima": "23:01",
+        "Shin-Fuji": "23:10"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129501.html"
     },
     {
@@ -10747,7 +15746,19 @@ window.SHINKANSEN_TIMETABLE = {
         "Atami": "23:32",
         "Mishima": "23:39"
       },
+      "arrivals": {
+        "Shinagawa": "22:54",
+        "Shin-Yokohama": "23:06",
+        "Odawara": "23:21",
+        "Atami": "23:31"
+      },
       "sourceUrl": "https://timetables.jreast.co.jp/en/2605/train/125/129511.html"
     }
-  ]
+  ],
+  "arrivalsSource": {
+    "name": "JR East timetable (English), train pages reached from the Shinagawa Tokaido Shinkansen station timetables",
+    "url": "https://timetables.jreast.co.jp/en/timetable/list0788.html",
+    "edition": "2610",
+    "fetchedAt": "2026-09-19"
+  }
 };
