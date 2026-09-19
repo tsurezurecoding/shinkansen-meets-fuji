@@ -89,7 +89,7 @@ const REFERENCES = {
     url: "https://www.rakumachi.jp/news/column/339459",
   },
   tokyoTowerBlog: {
-    label: { ja: "@letus10: 東京タワー車窓記事", en: "@letus10: Tokyo Tower window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 東京タワー車窓記事", en: "Shinkansen window blog: Tokyo Tower window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/507672955.html",
   },
   tokyoTowerOfficial: {
@@ -126,11 +126,11 @@ const REFERENCES = {
     },
   },
   hatsushimaBlog: {
-    label: { ja: "@letus10: 初島車窓記事", en: "@letus10: Hatsushima window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 初島車窓記事", en: "Shinkansen window blog: Hatsushima window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516720935.html",
   },
   atamiCastleBlog: {
-    label: { ja: "@letus10: 熱海城車窓記事", en: "@letus10: Atami Castle window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 熱海城車窓記事", en: "Shinkansen window blog: Atami Castle window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516721203.html",
   },
   weatherFuji: {
@@ -149,7 +149,7 @@ const REFERENCES = {
     url: "https://odawaracastle.com/",
   },
   odawaraCastleBlog: {
-    label: { ja: "@letus10: 小田原城車窓記事", en: "@letus10: Odawara Castle window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 小田原城車窓記事", en: "Shinkansen window blog: Odawara Castle window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516754194.html",
   },
   gyoranKannon: {
@@ -205,7 +205,7 @@ const REFERENCES = {
     url: "https://www.city.kakegawa.shizuoka.jp/kanko/spot-list/kakegawajyo.html",
   },
   genkiSignBlog: {
-    label: { ja: "@letus10: しっぺいの応援看板車窓記事", en: "@letus10: Shippei cheer-up signs window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: しっぺいの応援看板車窓記事", en: "Shinkansen window blog: Shippei cheer-up signs window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516019488.html",
   },
   shippeiOfficial: {
@@ -247,7 +247,7 @@ const REFERENCES = {
     url: "https://www.kajima.co.jp/tech/c_projects/ex/1996snmrnb/index.html",
   },
   hamanakoToriiBlog: {
-    label: { ja: "@letus10: 浜名湖と弁天島鳥居の車窓記事", en: "@letus10: Lake Hamana and Bentenjima torii article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 浜名湖と弁天島鳥居の車窓記事", en: "Shinkansen window blog: Lake Hamana and Bentenjima torii article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/517074141.html",
   },
   toyohashiTateiwa: {
@@ -271,11 +271,11 @@ const REFERENCES = {
     url: "https://www.city.toyohashi.lg.jp/53830.htm",
   },
   kirinBlog: {
-    label: { ja: "@letus10: キリンビール工場車窓記事", en: "@letus10: Kirin Beer Factory window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: キリンビール工場車窓記事", en: "Shinkansen window blog: Kirin Beer Factory window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/518214924.html",
   },
   nichibanBlog: {
-    label: { ja: "@letus10: セロテープの壁看板車窓記事", en: "@letus10: CELLOTAPE Wall Sign window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: セロテープの壁看板車窓記事", en: "Shinkansen window blog: CELLOTAPE Wall Sign window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/510591087.html",
   },
   nichibanPrtimes: {
@@ -283,7 +283,7 @@ const REFERENCES = {
     url: "https://prtimes.jp/main/html/rd/p/000000069.000011142.html",
   },
   marukoBridgeBlog: {
-    label: { ja: "@letus10: 丸子橋車窓記事", en: "@letus10: Maruko Bridge window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 丸子橋車窓記事", en: "Shinkansen window blog: Maruko Bridge window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/515810649.html",
   },
   sevenTwoSevenNote: {
@@ -327,7 +327,7 @@ const REFERENCES = {
     url: "http://kiyosujyo.com/",
   },
   gifuCastleBlog: {
-    label: { ja: "@letus10: 岐阜城車窓記事", en: "@letus10: Gifu Castle window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 岐阜城車窓記事", en: "Shinkansen window blog: Gifu Castle window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/518296647.html",
   },
   zusshiCastleBlog: {
@@ -335,7 +335,7 @@ const REFERENCES = {
     url: "https://ameblo.jp/ginga03142008/entry-12251601639.html",
   },
   solarArkBlog: {
-    label: { ja: "@letus10: ソーラーアーク車窓記事", en: "@letus10: Solar Ark from the Shinkansen" },
+    label: { ja: "新幹線の車窓から: ソーラーアーク車窓記事", en: "Shinkansen window blog: Solar Ark from the Shinkansen" },
     url: "https://cotetu.seesaa.net/article/519526266.html",
   },
   solarArkDemolitionNews: {
@@ -366,7 +366,7 @@ const REFERENCES = {
     url: "https://www.hikoneshi.com/sightseeing/article/sawayama",
   },
   sawayamaBlog: {
-    label: { ja: "@letus10: 佐和山城跡と彦根城の車窓記事", en: "@letus10: Sawayama and Hikone window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 佐和山城跡と彦根城の車窓記事", en: "Shinkansen window blog: Sawayama and Hikone window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/517840979.html",
   },
   kannonjiCastle: {
@@ -384,7 +384,7 @@ const REFERENCES = {
     },
   },
   setaKarahashi: {
-    label: { ja: "@letus10: 瀬田の唐橋車窓記事", en: "@letus10: Seta no Karahashi window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 瀬田の唐橋車窓記事", en: "Shinkansen window blog: Seta no Karahashi window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/517709224.html",
   },
   toji: {
@@ -695,8 +695,8 @@ const SPOTS = [
     minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "hills",
     image: "images/20250111_tokyo_tower_letus10.jpg",
     photoCredit: {
-      ja: "@letus10 / 新幹線の車窓から",
-      en: "@letus10 / Shinkansen window blog",
+      ja: "新幹線の車窓から",
+      en: "Shinkansen window blog",
       url: "https://cotetu.seesaa.net/article/507672955.html",
       note: { ja: "ビルの合間に見える東京タワー", en: "Tokyo Tower between the buildings" },
     },
@@ -882,7 +882,7 @@ const SPOTS = [
       ja: "品川を出たあとは、まずE席側の遠くをぼんやり見てください。近くのビルよりも「屋根の稜線の向こう」に富士山らしい輪郭を探すのがコツです。手前の景色（高層ビル・車両基地・住宅街）も一緒に眺めると、都心を横切っている実感が強くなります。",
       en: "After Shinagawa, let your eyes drift toward the far distance on Seat E. Look beyond the near buildings, along the ridge of rooftops, for a small triangular silhouette. Watching the foreground (skyscrapers, train depots, low neighborhoods) at the same time makes the sense of crossing central Tokyo much stronger.",
     },
-    minutesFromTokyo: 10, side: "E", category: "notable", confidence: "needs-check", durationSec: 30, spotting: "moderate", scene: "fuji",
+    minutesFromTokyo: 10, side: "E", category: "notable", confidence: "verified", durationSec: 30, spotting: "moderate", scene: "fuji",
     image: "images/20260509_ota_fuji_t_yangyang.jpg",
     photoCredit: {
       ja: "@T_Yangyang",
@@ -947,8 +947,8 @@ const SPOTS = [
     minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
     image: "images/20250531_maruko_bridge_letus10.jpg",
     photoCredit: {
-      ja: "@letus10 / 新幹線の車窓から",
-      en: "@letus10 / Shinkansen window blog",
+      ja: "新幹線の車窓から",
+      en: "Shinkansen window blog",
       date: "2025-05-31",
       url: "https://cotetu.seesaa.net/article/515810649.html",
       note: { ja: "多摩川に架かるライトブルーのアーチ", en: "A light-blue arch spanning the Tama River." },
@@ -1443,14 +1443,14 @@ const SPOTS = [
       {
         src: "images/20250523_hatsushima_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える初島", en: "Hatsushima Island from Seat A" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516720935.html",
         note: { ja: "初島: 静岡県唯一の有人島", en: "Hatsushima: Shizuoka's only inhabited island" },
       },
       {
         src: "images/20250524_atami_castle_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える熱海城", en: "Atami Castle from Seat A" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516721203.html",
         note: { ja: "熱海城: 1959年竣工の観光施設", en: "Atami Castle: a sightseeing facility completed in 1959" },
       },
@@ -1540,7 +1540,7 @@ const SPOTS = [
       {
         src: "images/20250526_odawara_castle_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える小田原城", en: "Odawara Castle from Seat A" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516754194.html",
         note: { ja: "のぞみではほんとに一瞬", en: "On Nozomi, it really is over in a blink." },
       },
@@ -1712,13 +1712,13 @@ const SPOTS = [
       {
         src: "images/20250706_mishima_catapult_1_letus10.jpg",
         alt: { ja: "三島車両所の発射台のような高架線", en: "The Mishima tracks that look like a launchpad" },
-        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
       },
       {
         src: "images/20250706_mishima_catapult_2_letus10.jpg",
         alt: { ja: "三島車両所の着発線", en: "The Mishima depot's arrival and departure tracks" },
-        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
       },
     ],
@@ -2720,7 +2720,7 @@ const SPOTS = [
       {
         src: "images/20250608_genki_sign_letus10.jpg",
         alt: { ja: "しっぺいの応援看板の新幹線車窓写真", en: "Shippei Cheer-up Signs from the Shinkansen window" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516019488.html",
         note: { ja: "掛川・浜松間、山側・E席から見えるしっぺいの三連続応援看板", en: "Three Shippei cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
       },
@@ -2845,7 +2845,7 @@ const SPOTS = [
       {
         src: "images/20250612_hamanako_torii_letus10.jpg",
         alt: { ja: "新幹線から一瞬見える弁天島の赤鳥居", en: "Bentenjima red torii briefly visible from the Shinkansen" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517074141.html",
         note: { ja: "A席（海側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat A, sea side: a red torii appears briefly between buildings" },
       },
@@ -3171,8 +3171,8 @@ const SPOTS = [
     minutesFromTokyo: 88, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
     photoCredit: {
-      ja: "@letus10 / 新幹線の車窓から",
-      en: "@letus10 / Shinkansen window blog",
+      ja: "新幹線の車窓から",
+      en: "Shinkansen window blog",
       url: "https://cotetu.seesaa.net/article/510591087.html",
       note: { ja: "ニチバン安城工場のセロテープの壁看板", en: "CELLOTAPE wall sign at Nichiban Anjo Factory" },
     },
@@ -3367,12 +3367,12 @@ const SPOTS = [
     },
     minutesFromTokyo: 98, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
     image: "images/20250920_kirin_beer_factory_letus10.jpg",
-    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
+    photoCredit: { ja: "新幹線の車窓から", en: "Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
     photos: [
       {
         src: "images/20250920_kirin_beer_factory_2_letus10.jpg",
         alt: { ja: "新幹線のE席側から見えるキリンビール工場の貯蔵タンク", en: "Kirin Beer Factory storage tanks from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/518214924.html",
       },
       {
@@ -3575,7 +3575,7 @@ const SPOTS = [
       {
         src: "images/20251212_solar_ark_2_letus10.jpg",
         alt: { ja: "新幹線の車窓から見えるソーラーアーク", en: "Solar Ark from the Shinkansen window" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
         date: "2025-12-12",
         note: { ja: "ソーラーアークの船形がわかる車窓写真", en: "A window photo showing the Solar Ark's ship-like form" },
@@ -3583,14 +3583,14 @@ const SPOTS = [
       {
         src: "images/20251212_solar_ark_1_letus10.jpg",
         alt: { ja: "新幹線のE席側から見えるソーラーアーク", en: "Solar Ark from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
       },
       {
         src: "images/201707_solar_ark_letus10.jpg",
         alt: { ja: "Panasonicロゴが残っていた頃のソーラーアーク", en: "Solar Ark when the Panasonic logo was still visible" },
         note: { ja: "2017年7月に撮影。Panasonicロゴがあったころの写真", en: "Photographed in July 2017, when the Panasonic logo was still visible" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
       },
     ],
@@ -3795,7 +3795,7 @@ const SPOTS = [
           en: "Gifu Castle is very far from the Shinkansen and appears only as a small speck. The photo below is a closer reference view from a JR conventional-line direction, included to show which mountain and keep you are trying to identify.",
         },
         alt: { ja: "在来線側から近く見た岐阜城", en: "Gifu Castle seen closer from a conventional-line direction" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/518296647.html",
         caption: { ja: "新幹線車窓写真ではなく、場所の理解を助けるための参考写真です。", en: "This is a reference image for orientation, not a Shinkansen-window photo." },
       },
@@ -3803,7 +3803,7 @@ const SPOTS = [
         src: "images/20250927_gifu_castle_2_letus10.jpg",
         role: "reference",
         alt: { ja: "JR在来線側から見た岐阜城", en: "Gifu Castle seen from a JR conventional-line direction" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/518296647.html",
       },
     ],
@@ -4325,7 +4325,7 @@ const SPOTS = [
       {
         src: "images/20250831_sawayama_castle_letus10.jpg",
         alt: { ja: "新幹線のE席側から見える佐和山城跡の看板と山", en: "Sawayama Castle Ruins sign and hill from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517840979.html",
       },
     ],
@@ -4379,7 +4379,7 @@ const SPOTS = [
       ja: "米原を出て少し経ったら、E席側の遠くに「街並みの上にだけ突き出た小さな緑の丘」を探してください。その頂上に白い点のような天守が見えたらそれが彦根城です。距離があるので双眼鏡や望遠が使える場合は本領を発揮します。実物の迫力を知りたい人は、いつか米原下車でぜひ寄ってみてください。",
       en: "A little after Maibara, look far off on the Seat E side for a small green hill 'poking up just above the roofs.' If you can pick out a white speck at its summit, that is Hikone Castle. Binoculars or a zoom really shine here. If you want to feel the castle's true scale, plan a stopover from Maibara on another ride.",
     },
-    minutesFromTokyo: 116, side: "E", category: "curious", confidence: "needs-check", durationSec: 3, spotting: "hard", scene: "castle",
+    minutesFromTokyo: 116, side: "E", category: "curious", confidence: "verified", durationSec: 3, spotting: "hard", scene: "castle",
     image: "images/20170307_hikone_castle_zusshi.jpg",
     photoCredit: { ja: "ずっしー。氏", en: "Zusshi", url: "https://ameblo.jp/ginga03142008/entry-12251601639.html", date: "2017-03-07", note: { ja: "新幹線から見える彦根城。遠景でも天守の位置が比較的わかりやすい写真", en: "Hikone Castle from the Shinkansen, with the keep relatively easy to place despite the distance." } },
     photos: [
@@ -4710,7 +4710,7 @@ const SPOTS = [
       {
         src: "images/20250820_seta_karahashi_letus10.jpg",
         alt: { ja: "晴れた日の瀬田の唐橋", en: "Seta no Karahashi Bridge on a clear day" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517709224.html",
       },
       {
@@ -5069,7 +5069,7 @@ const BOARD_COLLECTION = [
   { sourceNo: 22, id: "727-no-22", collectionNoteEn: "Next to the 'Who am I?' sign.", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27.5, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中", noteEn: "michikusa / 2026-07-04 · which 727 sign this pairs with is still being checked" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
   { sourceNo: 23, id: "727-no-23", minutesFromTokyo: 76, segment: "浜松 → 豊橋", side: "A", lat: 34.712314, lng: 137.488205, confidence: "verified", photo: { src: "images/20260704_727_board_haracho_michikusa.jpg", alt: "A席側から見える豊橋市原町の727看板", note: "michikusa / 2026-07-04" }, ja: "原町（豊橋市）", en: "Haracho, Toyohashi" },
   { sourceNo: 24, id: "727-no-24", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "E", lat: 34.799607, lng: 137.327733, confidence: "verified", photo: { src: "images/20260816_727_board_shimosawaki_e_michikusa.jpg", alt: "E席側から見える豊川市御津町下佐脇の727看板", note: "michikusa / 2026-08-16" }, ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
-  { sourceNo: 25, id: "727-no-25", collectionNoteEn: "Replaced by a different advertisement as of 2026, confirmed both on Street View and from the window.", siteStatus: "removed", collectionNote: "2026年時点で別の広告に入れ替わり。ストリートビューと車窓の双方で確認", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "A", lat: 34.796903, lng: 137.324582, confidence: "needs-check", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
+  { sourceNo: 25, id: "727-no-25", collectionNoteEn: "Replaced by a different advertisement as of 2026, confirmed both on Street View and from the window.", siteStatus: "removed", collectionNote: "2026年時点で別の広告に入れ替わり。ストリートビューと車窓の双方で確認", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "A", lat: 34.796903, lng: 137.324582, confidence: "verified", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
   { sourceNo: 26, id: "727-no-26", minutesFromTokyo: 86, segment: "豊橋 → 三河安城", side: "A", lat: 34.901211, lng: 137.120352, confidence: "verified", photo: { src: "images/20260820_727_board_shimomitsugi_michikusa.jpg", alt: "実りかけの田の向こうに立つ岡崎市下三ツ木町の727看板", note: "michikusa / 2026-08-20 · GPSログとA席側からNo.26に照合", noteEn: "michikusa / 2026-08-20 · matched to location 26 from the Seat A side against our GPS log" }, ja: "下三ツ木町（岡崎市）", en: "Shimomitsugi, Okazaki" },
   { sourceNo: 27, id: "727-no-27", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "E", lat: 34.940822, lng: 137.08917, confidence: "verified", photo: { src: "images/20260816_727_board_amakusa_michikusa.jpg", alt: "E席側から見える安城市安城町天草の727看板", note: "michikusa / 2026-08-16 · GPSログとE席側からNo.27に照合", noteEn: "michikusa / 2026-08-16 · matched to location 27 from the Seat E side against our GPS log" }, ja: "安城町天草（安城市）", en: "Amakusa, Anjo" },
   { sourceNo: 28, id: "727-no-28", minutesFromTokyo: 87, segment: "豊橋 → 三河安城", side: "A", lat: 34.939159, lng: 137.086311, confidence: "verified", photo: { src: "images/20260820_727_board_koshin_michikusa.jpg", alt: "A席側から見える安城市安城町庚申の727看板", note: "michikusa / 2026-08-20 · GPSログとA席側からNo.28に照合", noteEn: "michikusa / 2026-08-20 · matched to location 28 from the Seat A side against our GPS log" }, ja: "安城町庚申（安城市）", en: "Koshin, Anjo" },
@@ -5078,7 +5078,7 @@ const BOARD_COLLECTION = [
   { sourceNo: 31, id: "727-no-31", collectionNoteEn: "Next to the Murata Kinpaku gold-leaf sign.", collectionNote: "となりには村田金箔の看板", minutesFromTokyo: 90, segment: "三河安城 → 名古屋", side: "A", lat: 35.015184, lng: 136.996694, confidence: "verified", photo: { src: "images/20260820_727_board_ichibancho_michikusa.jpg", alt: "村田金箔の看板と並ぶ刈谷市一番町の727看板", note: "michikusa / 2026-08-20 · GPSログとA席側からNo.31に照合", noteEn: "michikusa / 2026-08-20 · matched to location 31 from the Seat A side against our GPS log" }, ja: "一番町（刈谷市）", en: "Ichibancho, Kariya" },
   { sourceNo: 32, id: "727-no-32", collectionNoteEn: "Next to the Tenpo no Osama sign.", collectionNote: "となりには店舗の王様の看板", minutesFromTokyo: 98, segment: "名古屋 → 岐阜羽島", side: "A", lat: 35.236042, lng: 136.783562, confidence: "verified", photo: { src: "images/20260820_727_board_hirano_michikusa.jpg", alt: "倉庫群を背に、店舗の王様の看板と並ぶ稲沢市平野町の727看板", note: "michikusa / 2026-08-20 · GPSログとA席側からNo.32に照合", noteEn: "michikusa / 2026-08-20 · matched to location 32 from the Seat A side against our GPS log" }, ja: "平野町（稲沢市）", en: "Hirano, Inazawa" },
   { sourceNo: 33, id: "727-no-33", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.250719, lng: 136.769991, confidence: "verified", photo: { src: "images/20260712_727_board_hirahachinotsubo_michikusa.jpg", alt: "車窓から見える稲沢市平蜂ノ坪町の727看板", note: "michikusa / 2026-07-12 · 上り列車から、清洲城の約2分前に撮影", noteEn: "michikusa / 2026-07-12 · from an eastbound train, about two minutes before Kiyosu Castle" }, ja: "平蜂ノ坪町（稲沢市）", en: "Hirabachinotsubo, Inazawa" },
-  { sourceNo: 34, id: "727-no-34", collectionNoteEn: "On the ride of 16 August 2026 a new building stood on the site and no sign could be seen; recorded as removed.", siteStatus: "removed", collectionNote: "2026-08-16乗車時、跡地に建物が建っており看板を確認できず。撤去済みとして記録", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.266181, lng: 136.760241, confidence: "needs-check", ja: "萩原町築込（一宮市）", en: "Hagiwara, Ichinomiya" },
+  { sourceNo: 34, id: "727-no-34", collectionNoteEn: "On the ride of 16 August 2026 a new building stood on the site and no sign could be seen; recorded as removed.", siteStatus: "removed", collectionNote: "2026-08-16乗車時、跡地に建物が建っており看板を確認できず。撤去済みとして記録", minutesFromTokyo: 99, segment: "名古屋 → 岐阜羽島", side: "E", lat: 35.266181, lng: 136.760241, confidence: "verified", ja: "萩原町築込（一宮市）", en: "Hagiwara, Ichinomiya" },
   { sourceNo: 35, id: "727-no-35", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.354772, lng: 136.549999, confidence: "verified", photo: { src: "images/20260704_727_board_osawa_michikusa.jpg", alt: "E席側から見える垂井町表佐の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で12:59ごろ撮影（宮代A席の約30秒前）", noteEn: "michikusa / 2026-07-04 · around 12:59 on Nozomi 27, the 11:12 from Tokyo, roughly 30 seconds before the Miyashiro sign on the Seat A side" }, collectionPhotos: [{ src: "images/20260712_727_board_osa_kinshozan_michikusa.jpg", alt: "金生山の手前を通り過ぎる垂井町表佐の727看板", note: "michikusa / 2026-07-12 · 金生山をながめていると通り過ぎる", noteEn: "michikusa / 2026-07-12 · it slips past while you are looking at Mount Kinsho" }], ja: "表佐（垂井町）", en: "Osawa, Tarui" },
   { sourceNo: 36, id: "727-no-36", collectionNoteEn: "With Mount Nangu standing behind it.", minutesFromTokyo: 108, segment: "岐阜羽島 → 米原", side: "A", lat: 35.361132, lng: 136.534258, collectionNote: "南宮山をバックに", confidence: "verified", photo: { src: "images/20260820_727_board_miyashiro_a_michikusa.jpg", alt: "南宮山を背にした垂井町宮代の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で07:40撮影", noteEn: "michikusa / 2026-08-20 · taken at 07:40 on Nozomi 99, the 06:00 from Shinagawa" }, collectionPhotos: [{ src: "images/20260704_727_board_miyashiro_a_michikusa.jpg", alt: "A席側から見える垂井町宮代の727看板", note: "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で13:00撮影", noteEn: "michikusa / 2026-07-04 · taken at 13:00 on Nozomi 27, the 11:12 from Tokyo" }], ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
   { sourceNo: 37, id: "727-no-37", collectionNoteEn: "With Mount Kinsho standing behind it.", minutesFromTokyo: 107, segment: "岐阜羽島 → 米原", side: "E", lat: 35.362859, lng: 136.535071, collectionNote: "金生山をバックに", confidence: "verified", photo: { src: "images/20260816_727_board_miyashiro_e_michikusa.jpg", alt: "金生山を背にした垂井町宮代の727看板", note: "michikusa / 2026-08-16" }, ja: "宮代（垂井町）", en: "Miyashiro, Tarui" },
@@ -5086,7 +5086,7 @@ const BOARD_COLLECTION = [
   { sourceNo: 39, id: "727-no-39", minutesFromTokyo: 113, segment: "岐阜羽島 → 米原", side: "E", lat: 35.356525, lng: 136.309691, confidence: "verified", photo: { src: "images/20260704_727_board_fuse_michikusa.jpg", alt: "E席側から見える長浜市布勢町の727看板", note: "michikusa / 2026-07-04" }, collectionPhotos: [{ src: "images/20260704_727_board_fuse_2_michikusa.jpg", alt: "長浜市布勢町で続けて見える727看板", note: "michikusa / 2026-07-04" }], ja: "布勢町（長浜市）", en: "Fuse, Nagahama" },
   { sourceNo: 40, id: "727-no-40", collectionNoteEn: "Just after the Furukawa Car Electronics plant. Far from the line and hard to pick out.", collectionNote: "古河のカーエレクトロニクスを過ぎてすぐ。遠いので見つけにくい", minutesFromTokyo: 116, segment: "米原 → 京都", side: "E", lat: 35.21974, lng: 136.244099, confidence: "verified", photo: { src: "images/20260816_727_board_tsuzura_michikusa.jpg", alt: "E席側の遠くに見える彦根市葛籠町の727看板", note: "michikusa / 2026-08-16" }, ja: "葛籠町（彦根市）", en: "Tsuzura, Hikone" },
   { sourceNo: 41, id: "727-no-41", minutesFromTokyo: 122, segment: "米原 → 京都", side: "A", lat: 35.092525, lng: 136.081593, confidence: "verified", photo: { src: "images/20260816_727_board_anyoji_michikusa.jpg", alt: "A席側から見える近江八幡市安養寺町の727看板", note: "michikusa / 2026-08-16" }, ja: "安養寺町（近江八幡市）", en: "Anyoji, Omihachiman" },
-  { sourceNo: 42, id: "727-no-42", collectionNoteEn: "Not found on 16 August 2026; roadworks were under way around it.", siteStatus: "not-found", collectionNote: "2026-08-16時点では確認できず（周辺が道路工事中）", minutesFromTokyo: 124, segment: "米原 → 京都", side: "A", lat: 35.039993, lng: 136.008729, confidence: "needs-check", ja: "出庭（栗東市）", en: "Deiwa, Ritto" },
+  { sourceNo: 42, id: "727-no-42", collectionNoteEn: "Not found on 16 August 2026; roadworks were under way around it.", siteStatus: "not-found", collectionNote: "2026-08-16時点では確認できず（周辺が道路工事中）", minutesFromTokyo: 124, segment: "米原 → 京都", side: "A", lat: 35.039993, lng: 136.008729, confidence: "verified", ja: "出庭（栗東市）", en: "Deiwa, Ritto" },
   { sourceNo: 43, id: "727-no-43", minutesFromTokyo: 138, segment: "京都 → 新大阪", side: "A", lat: 34.847034, lng: 135.642008, confidence: "verified", photo: { src: "images/20260816_727_board_higashiamakawa_michikusa.jpg", alt: "A席側から見える高槻市東天川の727看板", note: "michikusa / 2026-08-16" }, ja: "東天川（高槻市）", en: "Higashiamakawa, Takatsuki" },
   { sourceNo: 44, id: "727-no-44", collectionNoteEn: "Alone beyond the rice fields.", collectionNote: "田んぼの奥にぽつんと", minutesFromTokyo: 141, segment: "京都 → 新大阪", side: "E", lat: 34.81158, lng: 135.608706, confidence: "verified", photo: { src: "images/20260803_727_board_karasakiminami_michikusa.jpg", alt: "田んぼの奥に見える高槻市唐崎南の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約1〜2分前", noteEn: "michikusa / 2026-08-03 · one to two minutes before the Torikai train depot" }, ja: "唐崎南（高槻市）", en: "Karasakiminami, Takatsuki" },
   { sourceNo: 45, id: "727-no-45", collectionNoteEn: "With the Osaka Central Wholesale Market behind it.", collectionNote: "大阪中央卸売市場をバックに", minutesFromTokyo: 142, segment: "京都 → 新大阪", side: "E", lat: 34.790635, lng: 135.587403, confidence: "verified", photo: { src: "images/20260803_727_board_torikaihachicho_michikusa.jpg", alt: "大阪中央卸売市場を背にした鳥飼八町の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約30秒前", noteEn: "michikusa / 2026-08-03 · about 30 seconds before the Torikai train depot" }, ja: "鳥飼八町（摂津市）", en: "Torikaihachicho, Settsu" },
