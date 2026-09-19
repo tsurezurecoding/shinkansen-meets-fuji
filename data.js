@@ -89,7 +89,7 @@ const REFERENCES = {
     url: "https://www.rakumachi.jp/news/column/339459",
   },
   tokyoTowerBlog: {
-    label: { ja: "@letus10: 東京タワー車窓記事", en: "@letus10: Tokyo Tower window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 東京タワー車窓記事", en: "Shinkansen window blog: Tokyo Tower window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/507672955.html",
   },
   tokyoTowerOfficial: {
@@ -126,11 +126,11 @@ const REFERENCES = {
     },
   },
   hatsushimaBlog: {
-    label: { ja: "@letus10: 初島車窓記事", en: "@letus10: Hatsushima window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 初島車窓記事", en: "Shinkansen window blog: Hatsushima window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516720935.html",
   },
   atamiCastleBlog: {
-    label: { ja: "@letus10: 熱海城車窓記事", en: "@letus10: Atami Castle window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 熱海城車窓記事", en: "Shinkansen window blog: Atami Castle window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516721203.html",
   },
   weatherFuji: {
@@ -149,7 +149,7 @@ const REFERENCES = {
     url: "https://odawaracastle.com/",
   },
   odawaraCastleBlog: {
-    label: { ja: "@letus10: 小田原城車窓記事", en: "@letus10: Odawara Castle window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 小田原城車窓記事", en: "Shinkansen window blog: Odawara Castle window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516754194.html",
   },
   gyoranKannon: {
@@ -205,7 +205,7 @@ const REFERENCES = {
     url: "https://www.city.kakegawa.shizuoka.jp/kanko/spot-list/kakegawajyo.html",
   },
   genkiSignBlog: {
-    label: { ja: "@letus10: しっぺいの応援看板車窓記事", en: "@letus10: Shippei cheer-up signs window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: しっぺいの応援看板車窓記事", en: "Shinkansen window blog: Shippei cheer-up signs window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516019488.html",
   },
   shippeiOfficial: {
@@ -247,7 +247,7 @@ const REFERENCES = {
     url: "https://www.kajima.co.jp/tech/c_projects/ex/1996snmrnb/index.html",
   },
   hamanakoToriiBlog: {
-    label: { ja: "@letus10: 浜名湖と弁天島鳥居の車窓記事", en: "@letus10: Lake Hamana and Bentenjima torii article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 浜名湖と弁天島鳥居の車窓記事", en: "Shinkansen window blog: Lake Hamana and Bentenjima torii article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/517074141.html",
   },
   toyohashiTateiwa: {
@@ -271,11 +271,11 @@ const REFERENCES = {
     url: "https://www.city.toyohashi.lg.jp/53830.htm",
   },
   kirinBlog: {
-    label: { ja: "@letus10: キリンビール工場車窓記事", en: "@letus10: Kirin Beer Factory window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: キリンビール工場車窓記事", en: "Shinkansen window blog: Kirin Beer Factory window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/518214924.html",
   },
   nichibanBlog: {
-    label: { ja: "@letus10: セロテープの壁看板車窓記事", en: "@letus10: CELLOTAPE Wall Sign window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: セロテープの壁看板車窓記事", en: "Shinkansen window blog: CELLOTAPE Wall Sign window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/510591087.html",
   },
   nichibanPrtimes: {
@@ -283,7 +283,7 @@ const REFERENCES = {
     url: "https://prtimes.jp/main/html/rd/p/000000069.000011142.html",
   },
   marukoBridgeBlog: {
-    label: { ja: "@letus10: 丸子橋車窓記事", en: "@letus10: Maruko Bridge window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 丸子橋車窓記事", en: "Shinkansen window blog: Maruko Bridge window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/515810649.html",
   },
   sevenTwoSevenNote: {
@@ -327,7 +327,7 @@ const REFERENCES = {
     url: "http://kiyosujyo.com/",
   },
   gifuCastleBlog: {
-    label: { ja: "@letus10: 岐阜城車窓記事", en: "@letus10: Gifu Castle window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 岐阜城車窓記事", en: "Shinkansen window blog: Gifu Castle window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/518296647.html",
   },
   zusshiCastleBlog: {
@@ -335,7 +335,7 @@ const REFERENCES = {
     url: "https://ameblo.jp/ginga03142008/entry-12251601639.html",
   },
   solarArkBlog: {
-    label: { ja: "@letus10: ソーラーアーク車窓記事", en: "@letus10: Solar Ark from the Shinkansen" },
+    label: { ja: "新幹線の車窓から: ソーラーアーク車窓記事", en: "Shinkansen window blog: Solar Ark from the Shinkansen" },
     url: "https://cotetu.seesaa.net/article/519526266.html",
   },
   solarArkDemolitionNews: {
@@ -366,7 +366,7 @@ const REFERENCES = {
     url: "https://www.hikoneshi.com/sightseeing/article/sawayama",
   },
   sawayamaBlog: {
-    label: { ja: "@letus10: 佐和山城跡と彦根城の車窓記事", en: "@letus10: Sawayama and Hikone window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 佐和山城跡と彦根城の車窓記事", en: "Shinkansen window blog: Sawayama and Hikone window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/517840979.html",
   },
   kannonjiCastle: {
@@ -384,7 +384,7 @@ const REFERENCES = {
     },
   },
   setaKarahashi: {
-    label: { ja: "@letus10: 瀬田の唐橋車窓記事", en: "@letus10: Seta no Karahashi window article (Japanese only)" },
+    label: { ja: "新幹線の車窓から: 瀬田の唐橋車窓記事", en: "Shinkansen window blog: Seta no Karahashi window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/517709224.html",
   },
   toji: {
@@ -695,8 +695,8 @@ const SPOTS = [
     minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "hills",
     image: "images/20250111_tokyo_tower_letus10.jpg",
     photoCredit: {
-      ja: "@letus10 / 新幹線の車窓から",
-      en: "@letus10 / Shinkansen window blog",
+      ja: "新幹線の車窓から",
+      en: "Shinkansen window blog",
       url: "https://cotetu.seesaa.net/article/507672955.html",
       note: { ja: "ビルの合間に見える東京タワー", en: "Tokyo Tower between the buildings" },
     },
@@ -947,8 +947,8 @@ const SPOTS = [
     minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
     image: "images/20250531_maruko_bridge_letus10.jpg",
     photoCredit: {
-      ja: "@letus10 / 新幹線の車窓から",
-      en: "@letus10 / Shinkansen window blog",
+      ja: "新幹線の車窓から",
+      en: "Shinkansen window blog",
       date: "2025-05-31",
       url: "https://cotetu.seesaa.net/article/515810649.html",
       note: { ja: "多摩川に架かるライトブルーのアーチ", en: "A light-blue arch spanning the Tama River." },
@@ -1443,14 +1443,14 @@ const SPOTS = [
       {
         src: "images/20250523_hatsushima_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える初島", en: "Hatsushima Island from Seat A" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516720935.html",
         note: { ja: "初島: 静岡県唯一の有人島", en: "Hatsushima: Shizuoka's only inhabited island" },
       },
       {
         src: "images/20250524_atami_castle_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える熱海城", en: "Atami Castle from Seat A" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516721203.html",
         note: { ja: "熱海城: 1959年竣工の観光施設", en: "Atami Castle: a sightseeing facility completed in 1959" },
       },
@@ -1540,7 +1540,7 @@ const SPOTS = [
       {
         src: "images/20250526_odawara_castle_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える小田原城", en: "Odawara Castle from Seat A" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516754194.html",
         note: { ja: "のぞみではほんとに一瞬", en: "On Nozomi, it really is over in a blink." },
       },
@@ -1712,13 +1712,13 @@ const SPOTS = [
       {
         src: "images/20250706_mishima_catapult_1_letus10.jpg",
         alt: { ja: "三島車両所の発射台のような高架線", en: "The Mishima tracks that look like a launchpad" },
-        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
       },
       {
         src: "images/20250706_mishima_catapult_2_letus10.jpg",
         alt: { ja: "三島車両所の着発線", en: "The Mishima depot's arrival and departure tracks" },
-        credit: { ja: "新幹線の車窓から", en: "新幹線の車窓から" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516761121.html",
       },
     ],
@@ -2720,7 +2720,7 @@ const SPOTS = [
       {
         src: "images/20250608_genki_sign_letus10.jpg",
         alt: { ja: "しっぺいの応援看板の新幹線車窓写真", en: "Shippei Cheer-up Signs from the Shinkansen window" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/516019488.html",
         note: { ja: "掛川・浜松間、山側・E席から見えるしっぺいの三連続応援看板", en: "Three Shippei cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
       },
@@ -2845,7 +2845,7 @@ const SPOTS = [
       {
         src: "images/20250612_hamanako_torii_letus10.jpg",
         alt: { ja: "新幹線から一瞬見える弁天島の赤鳥居", en: "Bentenjima red torii briefly visible from the Shinkansen" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517074141.html",
         note: { ja: "A席（海側）から、ビルの谷間に一瞬だけ見える赤鳥居", en: "From Seat A, sea side: a red torii appears briefly between buildings" },
       },
@@ -3171,8 +3171,8 @@ const SPOTS = [
     minutesFromTokyo: 88, side: "E", category: "curious", confidence: "source-backed", durationSec: 3, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
     image: "images/20250221_nichiban_anjo_letus10.jpg",
     photoCredit: {
-      ja: "@letus10 / 新幹線の車窓から",
-      en: "@letus10 / Shinkansen window blog",
+      ja: "新幹線の車窓から",
+      en: "Shinkansen window blog",
       url: "https://cotetu.seesaa.net/article/510591087.html",
       note: { ja: "ニチバン安城工場のセロテープの壁看板", en: "CELLOTAPE wall sign at Nichiban Anjo Factory" },
     },
@@ -3367,12 +3367,12 @@ const SPOTS = [
     },
     minutesFromTokyo: 98, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
     image: "images/20250920_kirin_beer_factory_letus10.jpg",
-    photoCredit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
+    photoCredit: { ja: "新幹線の車窓から", en: "Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
     photos: [
       {
         src: "images/20250920_kirin_beer_factory_2_letus10.jpg",
         alt: { ja: "新幹線のE席側から見えるキリンビール工場の貯蔵タンク", en: "Kirin Beer Factory storage tanks from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/518214924.html",
       },
       {
@@ -3575,7 +3575,7 @@ const SPOTS = [
       {
         src: "images/20251212_solar_ark_2_letus10.jpg",
         alt: { ja: "新幹線の車窓から見えるソーラーアーク", en: "Solar Ark from the Shinkansen window" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
         date: "2025-12-12",
         note: { ja: "ソーラーアークの船形がわかる車窓写真", en: "A window photo showing the Solar Ark's ship-like form" },
@@ -3583,14 +3583,14 @@ const SPOTS = [
       {
         src: "images/20251212_solar_ark_1_letus10.jpg",
         alt: { ja: "新幹線のE席側から見えるソーラーアーク", en: "Solar Ark from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
       },
       {
         src: "images/201707_solar_ark_letus10.jpg",
         alt: { ja: "Panasonicロゴが残っていた頃のソーラーアーク", en: "Solar Ark when the Panasonic logo was still visible" },
         note: { ja: "2017年7月に撮影。Panasonicロゴがあったころの写真", en: "Photographed in July 2017, when the Panasonic logo was still visible" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
       },
     ],
@@ -3795,7 +3795,7 @@ const SPOTS = [
           en: "Gifu Castle is very far from the Shinkansen and appears only as a small speck. The photo below is a closer reference view from a JR conventional-line direction, included to show which mountain and keep you are trying to identify.",
         },
         alt: { ja: "在来線側から近く見た岐阜城", en: "Gifu Castle seen closer from a conventional-line direction" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/518296647.html",
         caption: { ja: "新幹線車窓写真ではなく、場所の理解を助けるための参考写真です。", en: "This is a reference image for orientation, not a Shinkansen-window photo." },
       },
@@ -3803,7 +3803,7 @@ const SPOTS = [
         src: "images/20250927_gifu_castle_2_letus10.jpg",
         role: "reference",
         alt: { ja: "JR在来線側から見た岐阜城", en: "Gifu Castle seen from a JR conventional-line direction" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/518296647.html",
       },
     ],
@@ -4325,7 +4325,7 @@ const SPOTS = [
       {
         src: "images/20250831_sawayama_castle_letus10.jpg",
         alt: { ja: "新幹線のE席側から見える佐和山城跡の看板と山", en: "Sawayama Castle Ruins sign and hill from Seat E" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517840979.html",
       },
     ],
@@ -4710,7 +4710,7 @@ const SPOTS = [
       {
         src: "images/20250820_seta_karahashi_letus10.jpg",
         alt: { ja: "晴れた日の瀬田の唐橋", en: "Seta no Karahashi Bridge on a clear day" },
-        credit: { ja: "@letus10 / 新幹線の車窓から", en: "@letus10 / Shinkansen window blog" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517709224.html",
       },
       {
