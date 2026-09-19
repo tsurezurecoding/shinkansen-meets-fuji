@@ -328,6 +328,12 @@ if (api) {
     expect(eastEncounter.status === "encounter" && eastEncounter.matches?.length > 0, "calculator fixture: eastbound encounter did not resolve");
     expect(pending.status === "pending", "calculator fixture: pending date did not resolve as pending");
     expect(outsideRange.status === "outside-range", "calculator fixture: outside-range date did not resolve as outside-range");
+    // 両方が同じ駅に停まっている間（位置の差が0のまま続く）は1回のすれ違いにまとめる
+    const dwellTrain = api.findTrain({ type: "Kodama", number: 808, direction: "east" });
+    if (dwellTrain) {
+      const dwell = api.calculate("2026-08-01", "east", api.serviceKey(dwellTrain), "Shin-Fuji");
+      expect((dwell.matches || []).length === 1, `calculator fixture: a shared station dwell must be one encounter (got ${(dwell.matches || []).length})`);
+    }
     // 乗車駅から先のすれ違いだけを返す（名古屋から乗ると、名古屋より東京側の交点は出ない）
     const fromNagoya = api.calculate("2026-08-08", "west", westKey, "Nagoya");
     const nagoyaDeparture = Number(westTrain.times.Nagoya.slice(0, 2)) * 60 + Number(westTrain.times.Nagoya.slice(3));

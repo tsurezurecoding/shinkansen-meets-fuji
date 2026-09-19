@@ -123,31 +123,46 @@
       return a == null || b == null ? null : a - b;
     };
     const STEP = 0.25; // 15秒刻みで符号の変化を探し、二分法で1秒程度まで詰める
+    const EPS = 1e-9;
     const results = [];
+    const add = (time) => {
+      const position = MTS.positionAt(selectedStops, time);
+      if (position == null) return;
+      if (results.some((result) => Math.abs(result.position - position) < 0.1)) return;
+      results.push({ position, time, clock: formatClock(time), segment: routeSegment(position), specialTrain });
+    };
     let previousClock = start;
     let previousGap = gap(start);
-    for (let clock = start + STEP; clock <= end + 1e-9; clock += STEP) {
+    // 両方が同じ駅に停まっている間は位置の差が0のまま続く。その区間は1回のすれ違いとして、
+    // 両方がそろう最初の時刻を出す（1分ごとに同じすれ違いを並べない）
+    let zeroRunStart = previousGap != null && Math.abs(previousGap) < EPS ? start : null;
+    for (let clock = start + STEP; clock <= end + EPS; clock += STEP) {
       const current = gap(clock);
-      if (previousGap != null && current != null && (previousGap === 0 || previousGap * current < 0)) {
-        let lo = previousClock;
-        let hi = clock;
-        let loGap = previousGap;
-        for (let k = 0; k < 20 && hi - lo > 1 / 120; k += 1) {
-          const mid = (lo + hi) / 2;
-          const midGap = gap(mid);
-          if (midGap == null) break;
-          if (loGap * midGap <= 0) hi = mid;
-          else { lo = mid; loGap = midGap; }
-        }
-        const time = previousGap === 0 ? previousClock : (lo + hi) / 2;
-        const position = MTS.positionAt(selectedStops, time);
-        if (position != null && !results.some((result) => Math.abs(result.time - time) < 1)) {
-          results.push({ position, time, clock: formatClock(time), segment: routeSegment(position), specialTrain });
+      const currentIsZero = current != null && Math.abs(current) < EPS;
+      if (currentIsZero) {
+        if (zeroRunStart == null) zeroRunStart = clock;
+      } else {
+        if (zeroRunStart != null) {
+          add(zeroRunStart);
+          zeroRunStart = null;
+        } else if (previousGap != null && current != null && previousGap * current < 0) {
+          let lo = previousClock;
+          let hi = clock;
+          let loGap = previousGap;
+          for (let k = 0; k < 20 && hi - lo > 1 / 120; k += 1) {
+            const mid = (lo + hi) / 2;
+            const midGap = gap(mid);
+            if (midGap == null) break;
+            if (loGap * midGap <= 0) hi = mid;
+            else { lo = mid; loGap = midGap; }
+          }
+          add((lo + hi) / 2);
         }
       }
       previousClock = clock;
       previousGap = current;
     }
+    if (zeroRunStart != null) add(zeroRunStart);
     return results;
   }
 
