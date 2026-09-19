@@ -5,7 +5,6 @@
   const timetable = root.SHINKANSEN_TIMETABLE || { trains: [] };
   const route = typeof ROUTE !== "undefined" ? ROUTE : root.ROUTE;
   const routeStations = (route?.refStations || []).slice().sort((a, b) => a.min - b.min);
-  const routeStationIds = new Set(routeStations.map((station) => station.id));
   const trains = Array.isArray(timetable.trains) ? timetable.trains : [];
   const timetableStationNames = new Map(
     (Array.isArray(timetable.stations) ? timetable.stations : [])
@@ -73,24 +72,6 @@
     return trains.find((train) => train.type === service.type && train.number === service.number && train.direction === service.direction) || null;
   }
 
-  function getWindowTrains(direction) {
-    const seen = new Set();
-    return trains
-      .filter((train) => train.direction === direction)
-      .filter((train) => Object.keys(train.times || {}).some((stationId) => routeStationIds.has(stationId)))
-      .filter((train) => {
-        const key = serviceKey(train);
-        if (seen.has(key)) return false;
-        seen.add(key);
-        return true;
-      })
-      .sort((a, b) => {
-        const aTime = parseClock(a.times?.[a.originStation]) ?? parseClock(a.times?.Tokyo) ?? parseClock(a.times?.["Shin-Osaka"]) ?? 9999;
-        const bTime = parseClock(b.times?.[b.originStation]) ?? parseClock(b.times?.Tokyo) ?? parseClock(b.times?.["Shin-Osaka"]) ?? 9999;
-        return aTime - bTime || a.number - b.number;
-      });
-  }
-
   function getScheduleState(date) {
     const dateKey = String(date || "");
     if (!/^\d{4}-\d{2}-\d{2}$/.test(dateKey)) return { status: "invalid", date: dateKey };
@@ -98,25 +79,6 @@
     const pattern = DATE_PATTERNS[dateKey];
     if (!pattern || pattern === "pending") return { status: "pending", date: dateKey };
     return { status: "known", date: dateKey, pattern };
-  }
-
-  function timeAtPosition(train, position) {
-    if (!train || !train.times) return null;
-    const stops = routeStations
-      .filter((station) => train.times[station.id] != null)
-      .map((station) => ({ position: station.min, time: parseClock(train.times[station.id]) }))
-      .filter((stop) => stop.time != null);
-    if (stops.length < 2 || position < stops[0].position || position > stops[stops.length - 1].position) return null;
-    for (let index = 0; index < stops.length - 1; index += 1) {
-      const from = stops[index];
-      const to = stops[index + 1];
-      if (position < from.position || position > to.position) continue;
-      if (position === from.position) return from.time;
-      if (position === to.position) return to.time;
-      const ratio = (position - from.position) / (to.position - from.position);
-      return from.time + (to.time - from.time) * ratio;
-    }
-    return stops[stops.length - 1].time;
   }
 
   function routeSegment(position) {
@@ -133,45 +95,80 @@
     return { from: routeStations[upperIndex - 1].ja, to: routeStations[upperIndex].ja, fromEn: routeStations[upperIndex - 1].en || routeStations[upperIndex - 1].ja, toEn: routeStations[upperIndex].en || routeStations[upperIndex].ja };
   }
 
-  function intersections(selectedTrain, specialTrain) {
-    if (!selectedTrain || !specialTrain) return [];
-    const selectedStops = routeStations.filter((station) => selectedTrain.times?.[station.id] != null);
-    const specialStops = routeStations.filter((station) => specialTrain.times?.[station.id] != null);
+  /* 選んだ列車（乗車駅から先）と特別列車が、時刻と位置の上で交わる点。
+     停車時間を含めた位置の動き（train-select.js の positionAt、公式の着発）で比べるので、
+     こだま・ひかりの停車中のすれ違いも拾える。反対方向の2列車なので交点は高々1つずつ。 */
+  function stopsFrom(train, boardId) {
+    const MTS = root.MADO_TRAIN_SELECT;
+    if (!MTS || !train) return [];
+    const all = MTS.tokaidoStops(route, train);
+    const index = boardId ? all.findIndex((stop) => stop.id === boardId) : 0;
+    return index >= 0 ? all.slice(index) : [];
+  }
+
+  function intersections(selectedTrain, specialTrain, boardId) {
+    const MTS = root.MADO_TRAIN_SELECT;
+    if (!MTS || !selectedTrain || !specialTrain) return [];
+    const selectedStops = stopsFrom(selectedTrain, boardId);
+    const specialStops = stopsFrom(specialTrain, null);
     if (selectedStops.length < 2 || specialStops.length < 2) return [];
-    const start = Math.max(selectedStops[0].min, specialStops[0].min);
-    const end = Math.min(selectedStops[selectedStops.length - 1].min, specialStops[specialStops.length - 1].min);
+    const startOf = (stops) => stops[0].clock;
+    const endOf = (stops) => { const last = stops[stops.length - 1]; return last.arr != null ? last.arr : last.clock; };
+    const start = Math.max(startOf(selectedStops), startOf(specialStops));
+    const end = Math.min(endOf(selectedStops), endOf(specialStops));
     if (start >= end) return [];
-    const positions = routeStations.map((station) => station.min).filter((position) => position >= start && position <= end);
+    const gap = (clock) => {
+      const a = MTS.positionAt(selectedStops, clock);
+      const b = MTS.positionAt(specialStops, clock);
+      return a == null || b == null ? null : a - b;
+    };
+    const STEP = 0.25; // 15秒刻みで符号の変化を探し、二分法で1秒程度まで詰める
+    const EPS = 1e-9;
     const results = [];
-    for (let index = 0; index < positions.length - 1; index += 1) {
-      const x0 = positions[index];
-      const x1 = positions[index + 1];
-      const selected0 = timeAtPosition(selectedTrain, x0);
-      const selected1 = timeAtPosition(selectedTrain, x1);
-      const special0 = timeAtPosition(specialTrain, x0);
-      const special1 = timeAtPosition(specialTrain, x1);
-      if ([selected0, selected1, special0, special1].some((value) => value == null)) continue;
-      const difference0 = selected0 - special0;
-      const difference1 = selected1 - special1;
-      let position = null;
-      if (Math.abs(difference0) < 0.000001) position = x0;
-      else if (difference0 * difference1 < 0) position = x0 + (x1 - x0) * (difference0 / (difference0 - difference1));
-      if (position == null) continue;
-      if (results.some((result) => Math.abs(result.position - position) < 0.1)) continue;
-      const selectedTime = timeAtPosition(selectedTrain, position);
-      const segment = routeSegment(position);
-      results.push({
-        position,
-        time: selectedTime,
-        clock: formatClock(selectedTime),
-        segment,
-        specialTrain,
-      });
+    const add = (time) => {
+      const position = MTS.positionAt(selectedStops, time);
+      if (position == null) return;
+      if (results.some((result) => Math.abs(result.position - position) < 0.1)) return;
+      results.push({ position, time, clock: formatClock(time), segment: routeSegment(position), specialTrain });
+    };
+    let previousClock = start;
+    let previousGap = gap(start);
+    // 両方が同じ駅に停まっている間は位置の差が0のまま続く。その区間は1回のすれ違いとして、
+    // 両方がそろう最初の時刻を出す（1分ごとに同じすれ違いを並べない）
+    let zeroRunStart = previousGap != null && Math.abs(previousGap) < EPS ? start : null;
+    for (let clock = start + STEP; clock <= end + EPS; clock += STEP) {
+      const current = gap(clock);
+      const currentIsZero = current != null && Math.abs(current) < EPS;
+      if (currentIsZero) {
+        if (zeroRunStart == null) zeroRunStart = clock;
+      } else {
+        if (zeroRunStart != null) {
+          add(zeroRunStart);
+          zeroRunStart = null;
+        } else if (previousGap != null && current != null && previousGap * current < 0) {
+          let lo = previousClock;
+          let hi = clock;
+          let loGap = previousGap;
+          for (let k = 0; k < 20 && hi - lo > 1 / 120; k += 1) {
+            const mid = (lo + hi) / 2;
+            const midGap = gap(mid);
+            if (midGap == null) break;
+            if (loGap * midGap <= 0) hi = mid;
+            else { lo = mid; loGap = midGap; }
+          }
+          add((lo + hi) / 2);
+        }
+      }
+      previousClock = clock;
+      previousGap = current;
     }
+    if (zeroRunStart != null) add(zeroRunStart);
     return results;
   }
 
-  function calculate(date, direction, selectedKey) {
+  /* 乗車日・方向・選んだ列車（serviceKey）・乗車駅から、すれ違いを計算する。
+     乗車駅を省くと始発駅から（その方向の東海道区間の端から）乗る扱い。 */
+  function calculate(date, direction, selectedKey, boardId) {
     const schedule = getScheduleState(date);
     if (schedule.status !== "known") return { ...schedule, direction, selectedKey };
     const selectedTrain = trains.find((train) => serviceKey(train) === selectedKey && train.direction === direction) || null;
@@ -182,8 +179,8 @@
       return { ...schedule, status: "self-match", direction, selectedTrain, specialServices, matches: [] };
     }
     const oppositeServices = specialServices.filter((train) => train.direction !== selectedTrain.direction);
-    const matches = oppositeServices.flatMap((train) => intersections(selectedTrain, train)).sort((a, b) => a.time - b.time);
-    return { ...schedule, status: matches.length ? "encounter" : "no-encounter", direction, selectedTrain, specialServices, matches };
+    const matches = oppositeServices.flatMap((train) => intersections(selectedTrain, train, boardId)).sort((a, b) => a.time - b.time);
+    return { ...schedule, status: matches.length ? "encounter" : "no-encounter", direction, boardId, selectedTrain, specialServices, matches };
   }
 
   const api = {
@@ -192,7 +189,6 @@
     PATTERN_SERVICES,
     DATE_PATTERNS,
     findTrain,
-    getWindowTrains,
     getScheduleState,
     serviceKey,
     intersections,
@@ -211,14 +207,9 @@
     const now = new Date();
     return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
   };
-  const trainName = (train) => `${train.type} ${train.number}`;
-
-  function renderTrainOptions(select, direction) {
-    const candidates = getWindowTrains(direction);
-    const previous = select.value;
-    select.innerHTML = candidates.map((train) => `<option value="${escapeHTML(serviceKey(train))}">${escapeHTML(trainStaticLine(train, uiLanguage))}</option>`).join("");
-    if (candidates.some((train) => serviceKey(train) === previous)) select.value = previous;
-  }
+  // 列車選択の候補と同じ表記（日本語は「のぞみ116」）
+  const TRAIN_NAMES = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
+  const trainName = (train) => uiLanguage === "ja" ? `${TRAIN_NAMES[train.type] || train.type}${train.number}` : `${train.type} ${train.number}`;
 
   function renderPatternLists() {
     document.querySelectorAll("[data-pattern-list]").forEach((list) => {
@@ -235,7 +226,7 @@
       page_context: "sparkling_dreams",
       date: result.date || "",
       pattern: result.pattern || "unknown",
-      selected_train: result.selectedTrain ? trainName(result.selectedTrain) : "",
+      selected_train: result.selectedTrain ? `${result.selectedTrain.type} ${result.selectedTrain.number}` : "",
       direction: result.direction || "",
       result_status: result.status || "unknown",
       encounter_count: String(result.matches?.length || 0),
@@ -377,22 +368,38 @@
     }, { rootMargin: "640px 0px" });
     observer.observe(groups);
   }
+  /* 乗車日と、列車選択ページと同じ列車選択（train-picker.js）。列車を選ぶとすぐ計算する */
   function init() {
-    const form = $("#sdCalculator");
     const dateInput = $("#sdDate");
-    const directionInput = $("#sdDirection");
-    const trainInput = $("#sdTrain");
-    if (!form || !dateInput || !directionInput || !trainInput) return;
+    const pickerRoot = $("[data-train-picker]");
+    if (!dateInput || !pickerRoot || !root.MADO_TRAIN_PICKER) return;
     dateInput.value = dateToday();
-    const populate = () => renderTrainOptions(trainInput, directionInput.value);
-    populate();
     renderPatternLists();
-    directionInput.addEventListener("change", populate);
-    form.addEventListener("submit", (event) => {
-      event.preventDefault();
-      const result = calculate(dateInput.value, directionInput.value, trainInput.value);
-      renderResult(result);
+    let picked = null;
+    const resultBox = $("#sdResult");
+    const placeholder = resultBox ? resultBox.innerHTML : "";
+    const reset = () => {
+      picked = null;
+      if (!resultBox) return;
+      resultBox.classList.remove("is-success", "is-note");
+      resultBox.classList.add("is-empty");
+      resultBox.innerHTML = placeholder;
+    };
+    const run = () => {
+      if (!picked) return;
+      renderResult(calculate(dateInput.value, picked.tr.direction, serviceKey(picked.tr), picked.boardId));
+    };
+    root.MADO_TRAIN_PICKER.mount(pickerRoot, {
+      lang: uiLanguage,
+      route,
+      timetable,
+      onChange: reset,
+      onSelect: ({ tr }, state) => {
+        picked = { tr, boardId: state.boardId };
+        run();
+      },
     });
+    dateInput.addEventListener("change", run);
   }
   initEmbedLoading();
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);

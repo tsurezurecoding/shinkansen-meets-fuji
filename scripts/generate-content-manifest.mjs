@@ -65,6 +65,7 @@ const contentFiles = [
   "app-embedded.js",
   "app.js",
   "train-select.js",
+  "train-picker.js",
   "index.html",
   "journal.html",
   "spot-map.js",

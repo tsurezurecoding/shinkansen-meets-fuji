@@ -648,12 +648,6 @@ function trainCandidates() {
   return MTS.trainCandidates(window.SHINKANSEN_TIMETABLE, ROUTE, direction, boardId);
 }
 
-/* 列車検索: 指定時刻以降の列車（出発時刻順に最大5本） */
-function findTrains(depMin) {
-  return trainCandidates()
-    .filter((x) => x.dep >= depMin)
-    .slice(0, 5);
-}
 
 /* タイムライン計算（train=nullなら目安モード） */
 function computeJourney(train, depMin) {
@@ -745,13 +739,8 @@ function restoreLastJourney() {
     }
     return false;
   }
-  $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
-  renderBoardSelect();
-  showTrainPage(match.dep);
-  const firstChip = $("#trainResults .train-chip");
-  if (firstChip) {
-    $("#trainResults").querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === firstChip));
-  }
+  trainPicker.showTrain(direction, boardId, match.tr);
+  invalidateJourneyForInputChange();
   buildTimeline(match.tr, match.dep);
   track("journey_restored", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
   return true;
@@ -794,13 +783,8 @@ function selectTrainFromLink() {
     boardId = prevBoardId;
     return false;
   }
-  $$("[data-dir]").forEach((x) => x.classList.toggle("active", x.dataset.dir === direction));
-  renderBoardSelect();
-  showTrainPage(match.dep);
-  const activeChip = $("#trainResults .train-chip");
-  if (activeChip) {
-    $("#trainResults").querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === activeChip));
-  }
+  trainPicker.showTrain(direction, boardId, match.tr);
+  invalidateJourneyForInputChange();
   buildTimeline(match.tr, match.dep);
   track("journey_from_link", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
   return true;
@@ -1264,11 +1248,9 @@ function applyLang() {
   updateGalleryFilterButtons();
   updateTimelineFilterButtons();
   renderShowcase();
-  renderBoardSelect();
+  trainPicker?.setLang(lang);
   const tl = $("#timelineSection");
   if (tl && !tl.hidden) renderTimeline();
-  const tr = $("#trainResults");
-  if (tr && !tr.hidden) showTrainResults();
 }
 
 function shouldShowEnglishLandingPrompt() {
@@ -1372,14 +1354,6 @@ function renderShowcase() {
   });
 }
 
-/* ---------- 乗車駅セレクト ---------- */
-function renderBoardSelect() {
-  const sel = $("#boardStation");
-  if (!sel) return;
-  const list = direction === "west" ? ROUTE.refStations.slice(0, -1) : ROUTE.refStations.slice(1).reverse();
-  sel.innerHTML = list.map((s) => `<option value="${s.id}"${s.id === boardId ? " selected" : ""}>${s[lang]}</option>`).join("");
-}
-
 /* ---------- hero sky ---------- */
 function renderHero() {
   $("#heroSky").innerHTML = `
@@ -1447,68 +1421,37 @@ function sceneSVG(type) {
 /* ---------- train picker ---------- */
 const TRAIN_NAMES = { Nozomi: { ja: "のぞみ", en: "Nozomi" }, Hikari: { ja: "ひかり", en: "Hikari" }, Kodama: { ja: "こだま", en: "Kodama" } };
 
-function trainLabel(tr) {
-  const name = (TRAIN_NAMES[tr.type] || { ja: tr.type, en: tr.type })[lang];
-  return `${name}${tr.number}`;
-}
-
-function previousTrainPageStart(firstDep) {
-  const previous = trainCandidates().filter((x) => x.dep < firstDep).slice(-5);
-  return previous.length ? previous[0].dep : null;
-}
-
-function nextTrainPageStart(lastDep) {
-  const next = trainCandidates().find((x) => x.dep > lastDep);
-  return next ? next.dep : null;
-}
-
-function showTrainPage(pageStartMin) {
-  $("#departTime").value = minToClock(pageStartMin);
-  invalidateJourneyForInputChange();
-  track("train_results_page", { direction, board_station: boardId, page_start: minToClock(pageStartMin) });
-  showTrainResults();
-}
-
-function showTrainResults() {
-  invalidateJourneyForInputChange();
-  const depMin = $("#departTime").value ? toMin($("#departTime").value) : nowMin();
-  const found = findTrains(depMin);
-  const box = $("#trainResults");
-  box.hidden = false;
-  const firstDep = found[0]?.dep ?? depMin;
-  const lastDep = found[found.length - 1]?.dep ?? depMin;
-  const prevStart = previousTrainPageStart(firstDep);
-  const nextStart = nextTrainPageStart(lastDep);
-  const controls = `
-    <div class="train-shift" role="group" aria-label="${escapeAttr(t("labelDeparture"))}">
-      <button type="button" data-page-start="${prevStart ?? ""}"${prevStart == null ? " disabled" : ""}>‹ ${escapeHTML(t("trainPrev"))}</button>
-      <span>${found.length ? `${escapeHTML(minToClock(firstDep))} - ${escapeHTML(minToClock(lastDep))}` : escapeHTML(minToClock(depMin))}</span>
-      <button type="button" data-page-start="${nextStart ?? ""}"${nextStart == null ? " disabled" : ""}>${escapeHTML(t("trainNext"))} ›</button>
-    </div>`;
-    if (!found.length) {
-      box.innerHTML = `${controls}<p class="train-none">${t("trainNone")}</p>`;
-      box.querySelectorAll("[data-page-start]").forEach((btn) => {
-        btn.addEventListener("click", () => showTrainPage(Number(btn.dataset.pageStart)));
-      });
-      return;
-    }
-    box.innerHTML = `${controls}<p class="train-pick-note">${t("trainPickNote")}</p>` + found.map(({ tr, dep }, i) => {
-      return `<button type="button" class="train-chip" data-train="${i}">
-        <strong>${trainLabel(tr)}</strong>
-        <span>${minToClock(dep)} ${t("dep")} → ${stationLabel(tr.destination)}</span>
-      </button>`;
-    }).join("");
-  box.querySelectorAll("[data-page-start]").forEach((btn) => {
-    btn.addEventListener("click", () => showTrainPage(Number(btn.dataset.pageStart)));
-  });
-  box.querySelectorAll("[data-train]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const { tr, dep } = found[Number(btn.dataset.train)];
-      box.querySelectorAll(".train-chip").forEach((c) => c.classList.toggle("active", c === btn));
+/* 列車選択の部品は train-picker.js（Sparkling Dreams・夜景と共通）。
+   このページの状態（direction / boardId / journey）への反映と計測だけをここで持つ。 */
+let trainPicker = null;
+function mountTrainPicker() {
+  const el = $("[data-train-picker]");
+  if (!el || !window.MADO_TRAIN_PICKER) return;
+  trainPicker = window.MADO_TRAIN_PICKER.mount(el, {
+    lang,
+    route: ROUTE,
+    timetable: window.SHINKANSEN_TIMETABLE,
+    direction,
+    boardId,
+    messages: { ja: { trainNone: MSG.ja.trainNone }, en: { trainNone: MSG.en.trainNone } },
+    onChange(state) {
+      const directionChanged = state.direction !== direction;
+      direction = state.direction;
+      boardId = state.boardId;
+      invalidateJourneyForInputChange();
+      if (directionChanged && $("#timelineSection")?.classList.contains("timeline-preview")) renderInitialTimelinePreview();
+    },
+    onSearch() {
+      track("train_search", { direction, board_station: boardId });
+    },
+    onPage(state, startMin) {
+      track("train_results_page", { direction, board_station: boardId, page_start: minToClock(startMin) });
+    },
+    onSelect({ tr, dep }) {
       track("train_selected", { direction, board_station: boardId, train_type: tr.type, train_number: tr.number });
       saveLastJourney(tr);
       buildTimeline(tr, dep);
-    });
+    },
   });
 }
 
@@ -2722,7 +2665,8 @@ function init() {
     }
   });
   // ここから先はアプリ画面（index.html）専用の初期化
-  if (!$("#departTime")) {
+  mountTrainPicker();
+  if (!trainPicker) {
     applyLang();
     showEnglishLandingPrompt();
     window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
@@ -2730,32 +2674,6 @@ function init() {
     syncModalWithLocation("url");
     return;
   }
-  // 出発時刻の初期値 = 現在
-  $("#departTime").value = fmtClock(new Date());
-  $("#nowBtn").addEventListener("click", () => {
-    $("#departTime").value = fmtClock(new Date());
-    invalidateJourneyForInputChange();
-  });
-  $("#departTime").addEventListener("input", invalidateJourneyForInputChange);
-  $("#departTime").addEventListener("change", invalidateJourneyForInputChange);
-  $$("[data-dir]").forEach((b) => b.addEventListener("click", () => {
-    direction = b.dataset.dir;
-    boardId = direction === "west" ? "Tokyo" : "Shin-Osaka";
-    invalidateJourneyForInputChange();
-    renderBoardSelect();
-    $("#trainResults").hidden = true;
-    $$("[data-dir]").forEach((x) => x.classList.toggle("active", x === b));
-    if ($("#timelineSection")?.classList.contains("timeline-preview")) renderInitialTimelinePreview();
-  }));
-  $("#boardStation").addEventListener("change", (e) => {
-    boardId = e.target.value;
-    invalidateJourneyForInputChange();
-    $("#trainResults").hidden = true;
-  });
-  $("#findTrainsBtn").addEventListener("click", () => {
-    track("train_search", { direction, board_station: boardId });
-    showTrainResults();
-  });
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();

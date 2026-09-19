@@ -12,7 +12,7 @@
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/yakei.html">
   <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/yakei.html">
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/yakei.html">
-  <link rel="stylesheet" href="../style.css?v=16a20788">
+  <link rel="stylesheet" href="../style.css?v=7e7b3564">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Shinkansen Window">
@@ -41,12 +41,10 @@
 
     .yk-tool { max-width: 760px; margin: 0 auto; padding: 40px 20px 0; }
     .yk-tool-card { border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 22px; box-shadow: var(--shadow); }
+    @media (max-width: 480px) { .yk-tool-card { padding: 20px 14px; } }
     .yk-tool-card h2 { font-family: var(--font-serif); font-size: 20px; margin: 0 0 6px; }
     .yk-tool-note { margin: 0 0 16px; font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); }
-    .yk-form { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: end; border-top: 1px solid var(--line); padding-top: 16px; }
-    .yk-field { display: grid; gap: 5px; }
-    .yk-field label { font-size: 11.5px; letter-spacing: .06em; color: var(--ink-soft); font-weight: 700; }
-    .yk-field select, .yk-field input { font-family: inherit; font-size: 15px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: #fff; color: var(--ink); }
+    .yk-setup { border-top: 1px solid var(--line); padding-top: 16px; max-width: 560px; }
     .yk-result { margin-top: 18px; display: grid; gap: 6px; }
     .yk-row { display: grid; grid-template-columns: 62px 1fr auto; gap: 10px; align-items: center; padding: 9px 10px; border-radius: 10px; background: var(--paper-deep); }
     .yk-row.is-dark { background: #16273a; color: #f3f6fa; }
@@ -168,27 +166,17 @@
     <section class="yk-tool" aria-labelledby="ykToolTitle">
       <div class="yk-tool-card">
         <h2 id="ykToolTitle">Where does your train go dark?</h2>
-        <p class="yk-tool-note">Sunset moves by more than an hour across the year. In December it is already dark before Odawara; in July it is still light past Nagoya. For the Tokaido Shinkansen between Tokyo and Shin-Osaka, enter the date and time you travel.</p>
-        <form class="yk-form" id="ykForm">
-          <div class="yk-field">
-            <label for="ykDir">Direction</label>
-            <select id="ykDir">
-              <option value="down">From Tokyo (westbound)</option>
-              <option value="up">From Shin-Osaka (eastbound)</option>
-            </select>
+        <p class="yk-tool-note">Sunset moves by more than an hour across the year. In December it is already dark before Odawara; in July it is still light past Nagoya. For the Tokaido Shinkansen between Tokyo and Shin-Osaka, choose your date and train.</p>
+        <div class="yk-setup">
+          <div class="setup-row">
+            <label class="setup-label" for="ykDate">Date of travel</label>
+            <input type="date" id="ykDate" class="setup-date">
           </div>
-          <div class="yk-field">
-            <label for="ykTime">Departure</label>
-            <input type="time" id="ykTime" value="19:00" step="300">
-          </div>
-          <div class="yk-field">
-            <label for="ykDate">Date of travel</label>
-            <input type="date" id="ykDate">
-          </div>
-        </form>
+          <div data-train-picker></div>
+        </div>
         <div class="yk-result" id="ykResult" aria-live="polite"></div>
         <p class="yk-summary" id="ykSummary"></p>
-        <p class="yk-tool-disclaimer">Passing times are estimates based on a Nozomi run (Tokyo to Shin-Osaka treated as 147 minutes). Trains with more stops, or any delay, will shift them. Sunset is a simplified calculation averaged along the Tokaido corridor, and how bright the sky actually looks also depends on the weather.</p>
+        <p class="yk-tool-disclaimer">Passing times are estimates from your train's published timetable, including its station stops. Any delay will shift them. Sunset is a simplified calculation averaged along the Tokaido corridor, and how bright the sky actually looks also depends on the weather.</p>
       </div>
     </section>
 
@@ -216,7 +204,7 @@
     <article class="yk-spot has-day-photo" id="yk-odawara-castle">
       <figure class="yk-figure is-day">
         <img src="../images/thumbs/20250526_odawara_castle_letus10.webp" alt="Odawara Castle from the Seat A side of the Shinkansen" width="480" height="320" loading="lazy" decoding="async">
-        <figcaption>Photo: <a href="https://cotetu.seesaa.net/article/516754194.html" target="_blank" rel="noopener noreferrer">@letus10 / 新幹線の車窓から</a><span class="yk-day-note">A daytime photo. We do not have a night shot from the train yet.</span></figcaption>
+        <figcaption>Photo: <a href="https://cotetu.seesaa.net/article/516754194.html" target="_blank" rel="noopener noreferrer">Shinkansen window blog</a><span class="yk-day-note">A daytime photo. We do not have a night shot from the train yet.</span></figcaption>
       </figure>
       <div class="yk-spot-body">
         <p class="yk-spot-meta"><span class="yk-min">31 min from Tokyo</span><span class="yk-side yk-side-a">Seat A side</span></p>
@@ -456,7 +444,7 @@
         <h2 id="ykNoteTitle">About what is shown here</h2>
         <p>Light-up dates, hours and colours change from year to year. This page does not state dates; it links to each site's official information instead. Please check there before you travel.</p>
         <p>For Odawara Castle and Kakegawa Castle we do not yet have a night photo taken from the train, so a daytime photo is shown. A castle being lit and a castle being visible from a moving Shinkansen are two different claims, and we only make the first. If you have a night shot from the window, we would be glad to hear from you.</p>
-        <p>The Kiyosu Castle photo is used with permission from @asami_k920, and the Odawara Castle photo from @letus10. The rest are our own. Passing times and sunset are both estimates, and what you actually see depends on the train, the weather and where you are sitting.</p>
+        <p>The Kiyosu Castle photo is used with permission from @asami_k920, and the Odawara Castle photo from the Shinkansen window blog. The rest are our own. Passing times and sunset are both estimates, and what you actually see depends on the train, the weather and where you are sitting.</p>
       </div>
     </section>
 
@@ -476,13 +464,17 @@
   </footer>
 
   <script>
-    window.YAKEI_SPOTS = [{"id":"tokyo-tower","min":3,"side":"E"},{"id":"maruko-bridge","min":13,"side":"E"},{"id":"musashi-kosugi-towers","min":14,"side":"E"},{"id":"odawara-castle","min":31,"side":"A"},{"id":"shimizu-port-chikyu","min":50,"side":"A"},{"id":"kakegawa","min":64,"side":"E"},{"id":"nichiban-anjo","min":88,"side":"E"},{"id":"nagoya-station-skyline","min":94,"side":"E"},{"id":"kiyosu","min":99,"side":"E"},{"id":"sennenq-sign","min":111.5,"side":"A"},{"id":"lotte-shiga","min":119,"side":"A"},{"id":"seta-karahashi","min":127,"side":"E"},{"id":"toji","min":131,"side":"A"},{"id":"hirakata-park-wheel","min":139,"side":"A"},{"id":"torikai-train-depot","min":141,"side":"E"}];
-    window.YAKEI_NAMES = {"tokyo-tower":"Tokyo Tower","maruko-bridge":"Maruko Bridge","musashi-kosugi-towers":"Musashi-Kosugi towers","odawara-castle":"Odawara Castle","shimizu-port-chikyu":"Shimizu Port and CHIKYU","kakegawa":"Kakegawa Castle","nichiban-anjo":"The CELLOTAPE wall sign","nagoya-station-skyline":"The Nagoya Station skyline","kiyosu":"Kiyosu Castle","sennenq-sign":"The Sennen Kyu sign","lotte-shiga":"The Lotte Shiga sweets signs","seta-karahashi":"Seta no Karahashi","toji":"To-ji's five-story pagoda","hirakata-park-wheel":"The Hirakata Park ferris wheel","torikai-train-depot":"Torikai rolling stock depot"};
-    window.YAKEI_TOTAL_MINUTES = 147;
+    // 載せるスポットの一覧だけ。分数・席側・名前は data.js（data-runtime.js）から読む
+    window.YAKEI_SPOT_IDS = ["tokyo-tower","maruko-bridge","musashi-kosugi-towers","odawara-castle","shimizu-port-chikyu","kakegawa","nichiban-anjo","nagoya-station-skyline","kiyosu","sennenq-sign","lotte-shiga","seta-karahashi","toji","hirakata-park-wheel","torikai-train-depot"];
     window.YAKEI_LANG = "en";
   </script>
-  <script src="../spot-page-shared-data.js?v=a97194e0"></script>
+  <script src="../spot-page-shared-data.js?v=6f0a06e3"></script>
   <script src="../spot-page-shared.js?v=e7af334c"></script>
-  <script src="../yakei.js?v=61d832b1"></script>
+  <script src="../data/timetable.js?v=5c23712f"></script>
+  <script src="../data-runtime.js?v=1dfd6743"></script>
+  <script src="../track.js?v=fa004fe2"></script>
+  <script src="../train-select.js?v=88f5b2d7"></script>
+  <script src="../train-picker.js?v=2fe929c7"></script>
+  <script src="../yakei.js?v=dd5220d5"></script>
 </body>
 </html>
