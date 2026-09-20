@@ -51,7 +51,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=d64537da">
+  <link rel="stylesheet" href="style.css?v=c85e8324">
 </head>
 <body>
 
@@ -101,28 +101,7 @@
     </div>
     <div class="journey-desktop-grid">
       <div class="journey-form-pane">
-        <div class="setup-card">
-          <div class="setup-row">
-            <span class="setup-label" data-i18n="labelDirection">方向</span>
-            <div class="seg" role="group">
-              <button type="button" data-dir="west" class="active"><span data-i18n="dirWest">東京 → 新大阪</span></button>
-              <button type="button" data-dir="east"><span data-i18n="dirEast">新大阪 → 東京</span></button>
-            </div>
-          </div>
-          <div class="setup-row">
-            <span class="setup-label" data-i18n="labelBoard">乗車駅</span>
-            <select id="boardStation" class="board-select"></select>
-          </div>
-          <div class="setup-row">
-            <span class="setup-label" data-i18n="labelDeparture">出発時刻</span>
-            <div class="depart-wrap">
-              <input type="time" id="departTime">
-              <button type="button" class="chip-btn" id="nowBtn" data-i18n="btnNow">これから乗る</button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">この時間の列車をさがす</button>
-          <div class="train-results" id="trainResults" hidden></div>
-        </div>
+        <div class="setup-card" data-train-picker></div>
 
       <!-- ===== Journey follow-up cards ===== -->
       <section class="top-promo-stack top-promo-stack--journey" aria-label="次に見る案内">
@@ -355,10 +334,11 @@
   </footer>
 
   <script src="data/timetable.js?v=5c23712f"></script>
-  <script src="data-runtime.js?v=7d8fcb19"></script>
+  <script src="data-runtime.js?v=1dfd6743"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
-  <script src="train-select.js?v=78424f8d"></script>
-  <script src="app.js?v=734cf34c"></script>
+  <script src="train-select.js?v=88f5b2d7"></script>
+  <script src="train-picker.js?v=2fe929c7"></script>
+  <script src="app.js?v=70d4c0ec"></script>
 </body>
 </html>

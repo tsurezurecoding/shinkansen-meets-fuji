@@ -52,7 +52,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=d64537da">
+  <link rel="stylesheet" href="style.css?v=c85e8324">
 </head>
 <body data-language-route="en">
   <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>
@@ -103,28 +103,7 @@
     </div>
     <div class="journey-desktop-grid">
       <div class="journey-form-pane">
-        <div class="setup-card">
-          <div class="setup-row">
-            <span class="setup-label" data-i18n="labelDirection">Direction</span>
-            <div class="seg" role="group">
-              <button type="button" data-dir="west" class="active"><span data-i18n="dirWest">Tokyo → Shin-Osaka</span></button>
-              <button type="button" data-dir="east"><span data-i18n="dirEast">Shin-Osaka → Tokyo</span></button>
-            </div>
-          </div>
-          <div class="setup-row">
-            <span class="setup-label" data-i18n="labelBoard">Boarding station</span>
-            <select id="boardStation" class="board-select"></select>
-          </div>
-          <div class="setup-row">
-            <span class="setup-label" data-i18n="labelDeparture">Departure time</span>
-            <div class="depart-wrap">
-              <input type="time" id="departTime">
-              <button type="button" class="chip-btn" id="nowBtn" data-i18n="btnNow">Boarding soon</button>
-            </div>
-          </div>
-          <button type="button" class="btn btn-primary btn-wide" id="findTrainsBtn" data-i18n="btnFind">Find trains for this time</button>
-          <div class="train-results" id="trainResults" hidden></div>
-        </div>
+        <div class="setup-card" data-train-picker></div>
 
       <!-- ===== Journey follow-up cards ===== -->
       <section class="top-promo-stack top-promo-stack--journey" aria-label="Recommended next steps">
@@ -357,10 +336,11 @@
   </footer>
 
   <script src="data/timetable.js?v=5c23712f"></script>
-  <script src="data-runtime.js?v=7d8fcb19"></script>
+  <script src="data-runtime.js?v=1dfd6743"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
-  <script src="train-select.js?v=78424f8d"></script>
-  <script src="app.js?v=734cf34c"></script>
+  <script src="train-select.js?v=88f5b2d7"></script>
+  <script src="train-picker.js?v=2fe929c7"></script>
+  <script src="app.js?v=70d4c0ec"></script>
 </body>
 </html>
