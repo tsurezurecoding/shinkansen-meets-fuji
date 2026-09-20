@@ -1488,6 +1488,11 @@ function englishLandingHTML() {
     .replace(/WINDOW CATALOG · \d+/g, `WINDOW CATALOG · ${SPOT_COUNT}`)
     .replace(/まず\d+景を見てみる/g, `Browse all ${SPOT_COUNT} views`);
   copy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
+  // English word boundaries belong in the HTML, not CSS-generated whitespace.
+  // Unwrap only plain-text copy chunks; preserve all other markup and spacing.
+  html = html.replace(/<span class="copy-chunk">[^<]*<\/span>(?:\s*<span class="copy-chunk">[^<]*<\/span>)*/g,
+    (run) => [...run.matchAll(/<span class="copy-chunk">([^<]*)<\/span>/g)]
+      .map((match) => match[1].trim()).join(" "));
   html = html.replaceAll(">窓</span>", ">W</span>");
   html = localizeEnglishInternalLinks(html)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
