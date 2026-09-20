@@ -447,6 +447,25 @@ function projectMedia(spot, lang) {
   };
 }
 
+// Editorial layout is opt-in per page/language; absence preserves legacy output.
+// Keep visibility wording separate from durationSec (the Nozomi timing datum).
+const READING_LAYOUTS = {
+  "kiyosu:ja": {
+    version: 1,
+    visibility: { label: "見える時間の目安", value: "数秒ほど", note: "列車や走行速度によって変わります" },
+    collection: {
+      route: "castles.html", title: ["ほかにもある、", "新幹線から見える城"],
+      description: "小田原城や掛川城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。",
+      label: "新幹線から見える城を探す", note: "清洲城を含む7か所。",
+      photos: [
+        { src: "images/thumbs/20260820_odawara_castle_michikusa.webp", alt: "車窓から見える小田原城", caption: "小田原城" },
+        { src: "images/thumbs/20260712_kakegawa_castle_michikusa.webp", alt: "車窓から見える掛川城", caption: "掛川城" }
+      ],
+      credit: "写真：新幹線の窓"
+    }
+  }
+};
+
 function projectPage(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const allPhotos = photoItems(spot);
@@ -463,6 +482,7 @@ function projectPage(spot, lang) {
   return {
     id: String(spot.id),
     lang,
+    ...(READING_LAYOUTS[`${spot.id}:${lang}`] ? { readingLayout: READING_LAYOUTS[`${spot.id}:${lang}`] } : {}),
     name: String(data.name || spot.id),
     area: String(data.area || ""),
     hook: String(data.hook || ""),
@@ -551,6 +571,12 @@ const showcase = SHOWCASE_SPOT_IDS.map((id) => {
 });
 
 function validatePage(page, spot) {
+  if (page.readingLayout) {
+    const layout = page.readingLayout;
+    if (layout.version !== 1 || page.lang !== "ja" || !layout.visibility?.label || !layout.visibility?.value || !layout.visibility?.note) throw new Error(`Invalid reading layout for ${spot.id}/${page.lang}`);
+    const collection = layout.collection;
+    if (collection && (!/^[a-z0-9-]+\.html$/.test(collection.route) || !Array.isArray(collection.title) || !collection.title.length || !collection.description || !collection.label || !collection.credit || !Array.isArray(collection.photos) || !collection.photos.length || collection.photos.some(photo => !safeAssetPath(photo.src) || !fs.existsSync(path.join(appDir, photo.src)) || !photo.alt || !photo.caption))) throw new Error(`Invalid reading collection for ${spot.id}/${page.lang}`);
+  }
   if (!page || page.id !== spot.id || !["ja", "en"].includes(page.lang) || !page.name || !page.hero || !Array.isArray(page.photos) || !page.photos.length || !Array.isArray(page.gallery) || !page.gallery.length || !Array.isArray(page.references)) throw new Error(`Page projection is incomplete for ${spot.id}/${page?.lang}`);
   if (!safeAssetPath(page.stamp.src) || !safeAssetPath(page.hero.src) || !safeAssetPath(page.hero.thumb)) throw new Error(`Page asset path is unsafe for ${spot.id}/${page.lang}`);
   for (const photo of [...page.photos, ...page.gallery, ...page.inline]) if (!safeAssetPath(photo.src) || !safeAssetPath(photo.thumb) || (photo.sourceUrl && !safeHttpUrl(photo.sourceUrl))) throw new Error(`Page photo is unsafe for ${spot.id}/${page.lang}`);

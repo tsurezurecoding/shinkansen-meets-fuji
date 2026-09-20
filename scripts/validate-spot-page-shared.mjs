@@ -70,6 +70,7 @@ async function runThinValidator() {
   const baselineSelector = parseArgs(process.argv.slice(2));
   let baselineCommit = null;
   if (baselineSelector) baselineCommit = execFileSync("git", ["rev-parse", "--verify", `${baselineSelector}^{commit}`], { cwd: appDir, encoding: "utf8" }).trim();
+  const baselineRendererCode = baselineCommit ? execFileSync("git", ["show", `${baselineCommit}:spot-page-shared.js`], { cwd: appDir, encoding: "utf8", maxBuffer: 1024 * 1024 }) : null;
 
   function localizedValue(value, lang) {
     if (typeof value === "string") return value;
@@ -130,7 +131,7 @@ async function runThinValidator() {
     return host;
   }
 
-  function renderPage(lang, rootPath, currentId, mutateData, embedded = false) {
+  function renderPage(lang, rootPath, currentId, mutateData, embedded = false, code = rendererCode) {
     const host = makeHost();
     const createdScripts = [];
     const bodyClasses = new Set(["spot-page"]);
@@ -181,7 +182,7 @@ async function runThinValidator() {
     const pagePayloadPath = pagePayloadRelativePath(currentId, lang);
     if (pagePayloadCode.has(pagePayloadPath)) vm.runInNewContext(pagePayloadCode.get(pagePayloadPath), context, { filename: pagePayloadPath });
     if (mutateData) mutateData(context.MADO_SPOT_PAGE_SHARED_DATA, context.MADO_SPOT_PAGE_DATA);
-    vm.runInNewContext(rendererCode, context, { filename: rendererPath });
+    vm.runInNewContext(code, context, { filename: rendererPath });
     return { html: host.outerHTML, host, createdScripts, errors: renderErrors.splice(0) };
   }
 
@@ -341,7 +342,7 @@ async function runThinValidator() {
         previous = index;
       }
       const page = pages[spot.id][lang];
-      const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<link rel="stylesheet" href="[^"]*spot-media-gallery\.css[^"]*">/g, "").replace(/\s+/g, " ").trim();
+      const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<link rel="stylesheet" href="[^"]*spot-media-gallery\.css[^"]*">/g, "").replace(/((?:src|href)="[^"]+\.(?:js|css))\?v=[A-Za-z0-9._-]+/g, "$1").replace(/\s+/g, " ").trim();
       if (baselineCommit) {
         const baselineHTML = execFileSync("git", ["show", `${baselineCommit}:${relativeFile}`], { cwd: appDir, encoding: "utf8" });
         if (normalizedHead(onDisk) !== normalizedHead(baselineHTML)) fail(`${relativeFile} static SEO/head changed from explicit baseline ${baselineSelector} (${baselineCommit})`);
@@ -349,6 +350,25 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      if (baselineRendererCode && !page.readingLayout) {
+        const baseline = renderPage(lang, prefix, spot.id, undefined, false, baselineRendererCode);
+        if (baseline.errors.length || baseline.html !== output) fail(`${relativeFile}: non-opt-in rendering changed from ${baselineSelector}`);
+        const baselinePayload = execFileSync("git", ["show", `${baselineCommit}:${pagePayloadRelativePath(spot.id, lang)}`], { cwd: appDir, encoding: "utf8" });
+        if (baselinePayload.replace(/\r\n/g, "\n") !== pagePayloadCode.get(pagePayloadRelativePath(spot.id, lang)).replace(/\r\n/g, "\n")) fail(`${relativeFile}: non-opt-in payload changed from ${baselineSelector}`);
+      }
+      if (page.readingLayout) {
+        if (spot.id !== "kiyosu" || lang !== "ja") fail(`${relativeFile}: unapproved reading layout rollout`);
+        if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
+        if (!output.includes('を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (output.indexOf('data-spot-media-gallery') > output.indexOf('class="spot-page-facts"')) fail(`${relativeFile}: photo-first ordering changed`);
+        if (!output.includes('見える時間の目安') || !output.includes('数秒ほど') || !output.includes('列車や走行速度によって変わります')) fail(`${relativeFile}: visibility fact missing`);
+        if (!output.includes(`href="${prefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${prefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
+        if (!output.includes('現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes('地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
+        if (!output.includes('class="spot-reading-sources"') || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
+        for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
+        if (output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
+        for (const photo of page.readingLayout.collection.photos) if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${relativeFile}: missing related photo ${photo.src}`);
+      }
       assertSpotPageShellMarkup(output, "spot-page-shell", `${relativeFile} normal renderer`);
       const embeddedRendered = renderPage(lang, prefix, spot.id, undefined, true);
       if (embeddedRendered.errors.length) fail(`${relativeFile} embedded renderer failed: ${embeddedRendered.errors.join(" | ")}`);
@@ -425,6 +445,10 @@ async function runThinValidator() {
   if (pages["727-board"].ja.sideLabel !== "E席・山側") fail("248 page must project the representative E-seat side");
 
   const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });
+  const missingBodyReference = renderPage("ja", "../", "kiyosu", (data, page) => { page.bodyLinks = []; });
+  if (!missingBodyReference.html.includes('spot-page-section spot-page-refs')) fail("reading layout must preserve references absent from body");
+  const collectionSafety = renderPage("ja", "../", "kiyosu", (data, page) => { page.readingLayout.collection.route = "javascript:alert(1)"; });
+  if (!collectionSafety.errors.some(message => message.includes("shared reading collection is malformed"))) fail("unsafe reading collection link did not fail closed");
   if (!safety.errors.some((message) => message.includes("shared page asset path is malformed")) || safety.host.className !== "spot-page-shared-error") fail("malformed asset path fixture did not fail closed");
   const rootSafety = renderPage("ja", "https://evil.example/", "fuji");
   if (!rootSafety.errors.some((message) => message.includes("relative root is required"))) fail("malformed root fixture did not fail closed");
