@@ -482,6 +482,7 @@ READING_LAYOUTS["kakegawa:ja"] = {
   collection: { ...castleCollection, description: "小田原城や清洲城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "掛川城を含む7か所。", photos: [castleCollection.photos[0], kiyosuPhoto] }
 };
 READING_LAYOUTS["hamanako:ja"] = {
+  sourcesAtEnd: true,
   compactGuide: true,
   version: 1,
   visibility: { label: "見える時間の目安", value: "数十秒ほど", note: "水面や目印が見える区間の目安。列車や走行速度によって変わります" }

@@ -2775,11 +2775,11 @@ const SPOTS = [
       en: "A photo guide to Lake Hamana from the Tokaido Shinkansen, including Bentenjima's red torii, Boat Race Hamanako, aquaculture structures, Sun Marine Bridge and distant Mt. Fuji.",
     },
     sectionHeading: {
-      ja: "浜名湖は、ひとつの景色ではない",
+      ja: "海とつながる、浜名湖の車窓",
       en: "Lake Hamana is a sequence of window views",
     },
     pageStory: {
-      ja: "浜松から豊橋へ向かうと、街並みの先で突然、窓のすぐ下まで水面がひろがります。東海道新幹線がこれほど水際を走る区間は珍しく、橋を渡る瞬間は、湖というより海の上を走っているような浮遊感があります。A席とE席で見えるものが違うため、往復で席を変えても楽しめる定番車窓です。",
+      ja: "浜松から豊橋へ向かうと、街並みが途切れ、窓のすぐ下まで水面がひろがります。新幹線が渡るのは、淡水と海水が混ざる汽水湖・浜名湖。海とつながるこの湖では海苔や牡蠣の養殖が営まれ、水面に並ぶ杭や棚も車窓の景色になっています。橋の上では両側に水が迫り、まるで海の上を走るように感じられます。\n\nただ広い湖を渡るだけではなく、席によって出会う景色が違うのも、この区間の面白さです。A席側には弁天島の赤鳥居、E席側には競艇場や白い橋。空気が澄んだ日には、湖の向こうに小さな富士山が見えることもあります。まずは水辺の目印を知っておくと、数十秒の車窓をより楽しめます。",
       en: "Between Hamamatsu and Toyohashi, the cityscape suddenly opens into water almost directly below the windows. Few parts of the Tokaido Shinkansen run this close to the water, and crossing the bridges can feel less like passing a lake than gliding above the sea. Seats A and E reveal different landmarks, making the view rewarding in both directions.",
     },
     explainer: {
@@ -2787,8 +2787,7 @@ const SPOTS = [
       ja: [
         "A席・海側では、弁天島に入った直後、建物の間から赤い鳥居型シンボルタワーが一瞬見えます。神社の鳥居そのものではなく、弁天島を象徴する水上のランドマークです。視界が開く前後に現れるため、湖を見てから探すと間に合わないことがあります。",
         "E席・山側では、ボートレース浜名湖の広い水面やスタンド、その西側に白いサンマリンブリッジを探せます。サンマリンブリッジは競艇場周辺の交通を支えるために架けられた斜張橋で、傾いた一本の主塔と白いケーブルが目印です。",
-        "湖面に並ぶ杭や棚は、浜名湖の海苔や牡蠣などの養殖施設です。浜名湖は淡水と海水が混ざる汽水湖で、海苔養殖は200年以上の歴史があります。水面の向こうの景色だけでなく、湖の上に続く人の営みも浜名湖らしい車窓です。",
-        "空気が澄んだ日には、E席側でサンマリンブリッジや湖のさらに奥に富士山を探せます。三島〜新富士の大きな富士山とは別物で、湖と空の境目に小さく現れる遠望です。「富士5景」のなかでも、見えたこと自体がうれしい一景です。",
+        "湖面に杭や棚が並ぶ場所では、海苔や牡蠣などを養殖しています。浜名湖の海苔養殖には200年以上の歴史があり、整然と続く養殖施設は、その営みを車窓から感じられる目印です。遠くの岸辺だけでなく、手前の水面にも目を向けてみてください。",
       ],
       en: [
         "From Seat A, just after entering Bentenjima, a red torii-shaped symbol tower flashes between the buildings. It is a waterfront landmark rather than the gate of a shrine, and it can disappear before the wider lake view fully opens.",

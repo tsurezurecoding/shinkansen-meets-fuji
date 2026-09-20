@@ -365,6 +365,9 @@ async function runThinValidator() {
         if (!output.includes(`href="${prefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${prefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
         if (!output.includes('現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes('地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
         if (!output.includes('class="spot-reading-sources"') || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
+        for (const label of ["THE STORY", "WHAT TO SEE", "ON THE MAP", "ON BOARD", ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
+        if (output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
+        if (page.readingLayout.sourcesAtEnd && output.indexOf('class="spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
         if (page.readingLayout.collection && output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
         for (const photo of page.readingLayout.collection?.photos || []) if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${relativeFile}: missing related photo ${photo.src}`);
@@ -384,7 +387,7 @@ async function runThinValidator() {
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
       if (page.inline.length && count(output, /spot-page-inline-figure/g) !== page.inline.length) fail(`${relativeFile} inline photo module count is invalid`);
-      if (page.photoHeadingCustom && !output.includes(escape(page.photoHeading))) fail(`${relativeFile} custom photo heading is missing from the shared gallery`);
+      if (!page.readingLayout && page.photoHeadingCustom && !output.includes(escape(page.photoHeading))) fail(`${relativeFile} custom photo heading is missing from the shared gallery`);
       if (page.referenceImage && !output.includes("spot-page-reference-section")) fail(`${relativeFile} reference image module is missing`);
       if (page.explainer?.figure && !output.includes("spot-page-explainer-figure")) fail(`${relativeFile} explainer figure module is missing`);
       if (page.photoTip && !output.includes("spot-page-phototip")) fail(`${relativeFile} photo tip module is missing`);
