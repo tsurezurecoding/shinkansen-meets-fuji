@@ -8,17 +8,14 @@ import { SPOT_COUNT } from "./shared/spot-count.mjs";
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com";
 
-// Spot counts in title/description must never be hand-typed here. They are the only
-// count strings on the English field guide that reach the SERP, and hand-typed ones
-// silently go stale every time a spot is added (this file claimed 37 while data.js
-// held 40). SPOT_COUNT comes from shared/spot-count.mjs, which reads data.js.
+// SPOT_COUNT supplies runtime message counts; the editorial introduction focuses on discovery.
 
 const pages = [
   {
     source: "zukan.html",
     output: "en/zukan.html",
-    title: `Tokaido Shinkansen Bullet Train Field Guide | ${SPOT_COUNT} Day and Night Views`,
-    description: `Browse ${SPOT_COUNT} window views from the Tokaido Shinkansen bullet train for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.`,
+    title: "Tokaido Shinkansen Sights in Photos | Window Field Guide",
+    description: "Discover the stories behind the Tokaido Shinkansen window views, from Mt. Fuji and paper mills to curious signs. Explore photos and find more to notice on your ride.",
     bakeI18n: true,
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
@@ -143,6 +140,13 @@ function mirrorPage(page, messages) {
     .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${enUrl}">`)
     .replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${page.title}">`)
     .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${page.description}">`)
+    .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (whole, source) => {
+      const schema = JSON.parse(source);
+      if (schema['@type'] !== 'CollectionPage') return whole;
+      Object.assign(schema, { '@id': enUrl + '#page', url: enUrl, name: page.title, description: page.description, inLanguage: 'en' });
+      if (schema.isPartOf) Object.assign(schema.isPartOf, { name: 'Shinkansen Window', url: siteRoot + '/en/' });
+      return '<script type="application/ld+json">\n' + JSON.stringify(schema, null, 2) + '\n  </script>';
+    })
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body', '<body data-language-route="en"')
     .replace('>', '>')

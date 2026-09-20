@@ -97,8 +97,8 @@ const checks = [
   {
     file: "app.js",
     required: [
-      "${MADO_SPOT_COUNT}の車窓スポット",
-      "Browse all ${MADO_SPOT_COUNT} window views",
+      // Counts belong to the catalog, not the editorial introduction.
+      'zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`',
       'APP_SELF.endsWith("start.html") ? "train_selector"',
       'APP_SELF.endsWith("zukan.html") ? "field_guide"',
       'APP_SELF.endsWith("journal.html") ? "journal"',

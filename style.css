@@ -363,6 +363,8 @@ button { font-family: inherit; cursor: pointer; }
   overflow-wrap: normal;
   line-break: strict;
 }
+.field-guide-hero .field-guide-discovery { margin: 18px auto 0; font-family: var(--font-serif); font-size: clamp(20px, 3vw, 28px); font-weight: 700; line-height: 1.5; }
+.footer .field-guide-photo-note { margin: 14px auto 0; }
 .field-guide-hero p:last-child {
   max-width: 620px;
   margin: 14px auto 0;
