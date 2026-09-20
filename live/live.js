@@ -123,7 +123,7 @@
     },
     en: {
       brandName: "Shinkansen Window",
-      brandSub: "Never miss a moment of the journey.",
+      brandSub: "Discover more through the train window.",
       navQuick: "Home",
       navStart: "Train Search",
       navLive: "Audio Guide",

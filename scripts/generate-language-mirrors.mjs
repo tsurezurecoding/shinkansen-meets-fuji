@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { assetVersion } from "./shared/asset-version.mjs";
 import { SPOT_COUNT } from "./shared/spot-count.mjs";
@@ -7,17 +8,15 @@ import { SPOT_COUNT } from "./shared/spot-count.mjs";
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com";
 
-// Spot counts in title/description must never be hand-typed here. They are the only
-// count strings on the English field guide that reach the SERP, and hand-typed ones
-// silently go stale every time a spot is added (this file claimed 37 while data.js
-// held 40). SPOT_COUNT comes from shared/spot-count.mjs, which reads data.js.
+// SPOT_COUNT supplies runtime message counts; the editorial introduction focuses on discovery.
 
 const pages = [
   {
     source: "zukan.html",
     output: "en/zukan.html",
-    title: `Tokaido Shinkansen Bullet Train Field Guide | ${SPOT_COUNT} Day and Night Views`,
-    description: `Browse ${SPOT_COUNT} window views from the Tokaido Shinkansen bullet train for clear, cloudy, and night rides, including Mt. Fuji, lakes, castles, cities, signs, and family spotting ideas.`,
+    title: "Tokaido Shinkansen Sights in Photos | Window Field Guide",
+    description: "Discover the stories behind the Tokaido Shinkansen window views, from Mt. Fuji and paper mills to curious signs. Explore photos and find more to notice on your ride.",
+    bakeI18n: true,
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
   // generic mirror pass so its localized hero, metadata, and interactive copy survive regeneration.
@@ -87,10 +86,40 @@ function localizeEnglishRail(html) {
   return result;
 }
 
-function mirrorPage(page) {
+// app.js swaps every [data-i18n] node to MSG.en at runtime, so the mirrored field guide
+// shipped a Japanese H1, section headings and nav in its static HTML (seen 2026-09-19).
+// Bake the same strings in, as the live guide does below, so crawlers and no-JS readers
+// see English. The table is evaluated rather than regex-parsed because some values are
+// template literals built from MADO_SPOT_COUNT.
+function appEnglishMessages() {
+  const src = fs.readFileSync(path.join(appDir, "app.js"), "utf8");
+  const block = src.match(/\n {2}en: \{\n([\s\S]*?)\n {2}\},?\n\};/);
+  if (!block) throw new Error("app.js: could not locate the MSG.en table");
+  const messages = vm.runInNewContext(`({${block[1]}})`, { MADO_SPOT_COUNT: SPOT_COUNT });
+  if (Object.keys(messages).length < 100) {
+    throw new Error(`app.js: MSG.en parsed as only ${Object.keys(messages).length} keys; the table shape changed`);
+  }
+  return messages;
+}
+
+function bakeEnglishI18n(html, messages) {
+  return html.replace(
+    /(<(\w+)\b[^>]*\bdata-i18n="([^"]+)"[^>]*>)([\s\S]*?)(<\/\2>)/g,
+    (whole, open, tag, key, inner, close) => {
+      // Same-tag nesting would make the lazy match stop at the inner close tag.
+      if (new RegExp(`<${tag}[\\s>]`).test(inner)) throw new Error(`data-i18n="${key}": nested <${tag}> cannot be baked`);
+      const value = messages[key];
+      if (typeof value !== "string") throw new Error(`app.js: MSG.en has no string "${key}"`);
+      return `${open}${value}${close}`;
+    }
+  );
+}
+
+function mirrorPage(page, messages) {
   const jaUrl = page.source === "index.html" ? `${siteRoot}/` : `${siteRoot}/${page.source}`;
   const enUrl = `${siteRoot}/${page.output.replace(/index\.html$/, "")}`;
-  return localizeEnglishRail(fs.readFileSync(path.join(appDir, page.source), "utf8")
+  const source = fs.readFileSync(path.join(appDir, page.source), "utf8");
+  return localizeEnglishRail((page.bakeI18n ? bakeEnglishI18n(source, messages) : source)
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1">',
@@ -111,6 +140,13 @@ function mirrorPage(page) {
     .replace(/<meta property="og:url" content="[^"]*">/, `<meta property="og:url" content="${enUrl}">`)
     .replace(/<meta name="twitter:title" content="[^"]*">/, `<meta name="twitter:title" content="${page.title}">`)
     .replace(/<meta name="twitter:description" content="[^"]*">/, `<meta name="twitter:description" content="${page.description}">`)
+    .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (whole, source) => {
+      const schema = JSON.parse(source);
+      if (schema['@type'] !== 'CollectionPage') return whole;
+      Object.assign(schema, { '@id': enUrl + '#page', url: enUrl, name: page.title, description: page.description, inLanguage: 'en' });
+      if (schema.isPartOf) Object.assign(schema.isPartOf, { name: 'Shinkansen Window', url: siteRoot + '/en/' });
+      return '<script type="application/ld+json">\n' + JSON.stringify(schema, null, 2) + '\n  </script>';
+    })
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
     .replace('<body', '<body data-language-route="en"')
     .replace('>', '>')
@@ -130,9 +166,10 @@ function writeFileIfChanged(target, content) {
 }
 
 let changedCount = 0;
+const appMessages = appEnglishMessages();
 for (const page of pages) {
   const target = path.join(appDir, page.output);
-  if (writeFileIfChanged(target, mirrorPage(page))) changedCount += 1;
+  if (writeFileIfChanged(target, mirrorPage(page, appMessages))) changedCount += 1;
 }
 
 // live.js owns the English copy for the live guide: every [data-live-copy] node, plus a few
