@@ -29,6 +29,7 @@ const shinkansen = [
  ['hinataoka', ['hinataoka'], 'images/20260530_hinataoka.jpg', '丘の斜面に並ぶカラフルな三角屋根の住宅', '街並み', '斜面いっぱいの三角屋根、あの街は何？', '平塚市の日向岡', '相模川を渡ってすぐ、丘の斜面に赤・青・緑の三角屋根が並ぶ住宅団地です。統一された家並みが等高線に沿って続き、一瞬で目に焼きつきます。', 'spots/hinataoka.html', '日向岡の車窓ページを見る'],
  ['gyoran-kannon', ['gyoran-kannon'], 'images/20260516_gyoran_kannon_michikusa.jpg', '山際に立つ白い魚籃観音像', '像', '小田原を過ぎて、山際に白い像。あれは何？', '東善院の魚籃観音像', '早川漁港のそばに立つ、高さ約10mの観音像です。手にした魚籠は漁を守る印。海上安全と大漁を願って1982年に建てられました。', 'spots/gyoran-kannon.html', '魚籃観音像の車窓ページを見る'],
  ['mishima-catapult', ['mishima-catapult'], 'images/20260904_mishima_catapult_1_michikusa.jpg', '空へ上っていくように見える三島車両所の着発線', '線路', '空へ駆け上がる線路。あれは何？', '三島車両所の着発線（通称カタパルト）', 'ロケットの発射台ではありません。車両基地へ入る列車が向きを変えるための線路です。本線が下っていく一方で高さを保つので、空へ上っていくように見えます。', 'spots/mishima-catapult.html', '三島車両所のカタパルトの車窓ページを見る'],
+ ['shizuoka-tea-fields', ['shizuoka-tea-fields'], 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg', '緑の畝の間に防霜ファンが何本も立つ静岡の茶畑', '農業設備', '茶畑の中に、何本もの扇風機。何のため？', '新芽を霜から守る防霜ファン', '風が弱く晴れた春先の夜、地表付近には冷たい空気がたまります。高い位置に残る比較的暖かい空気を斜め下へ送り、茶の新芽が凍霜害を受けるのを防ぐ設備です。', 'spots/shizuoka-tea-fields.html', '静岡の茶畑と防霜ファンを見る', ['A', 'E']],
  ['toyohashi-tateiwa', ['toyohashi-tateiwa'], 'images/20260628_toyohashi_tateiwa_michikusa.jpg', '林の丘から突き出す豊橋の立岩', '岩', '林の丘から、岩壁だけが突き出している？', '豊橋市雲谷町の立岩', '浜名湖を過ぎて豊橋へ向かう途中に現れる、標高約88mの岩山です。南側が最大約30m切り立った、むき出しのチャートの岩壁です。', 'spots/toyohashi-tateiwa.html', '豊橋の立岩の車窓ページを見る'],
  ['gifu-hashima-mahalo', ['gifu-hashima-mahalo'], 'images/20260816_gifu_hashima_mahalo_1_michikusa.jpg', '岐阜羽島駅のホーム越しに見えるMaHaLoの看板', '看板', '岐阜なのに、なぜハワイ語？', '岐阜羽島のマハロ看板', 'ホームの向こうの「MaHaLo」は、羽島市に本社を置く会社が販売する海洋深層水の商品名です。海から遠い田園に突然ハワイ語が現れますが、実は販売元のお膝元です。', 'spots/gifu-hashima-mahalo.html', 'マハロ看板の車窓ページを見る'],
  ['kinshozan', ['kinshozan'], 'images/20260704_kinshozan_michikusa.jpg', '山肌が白く切り取られた金生山', '山', 'ナイフで切り落としたような山。なぜあの形？', '石灰岩を掘り続けた金生山', '大垣付近の遠くに見える、全体が石灰岩の山です。江戸時代から採掘が続き、階段状の白い山肌は、もとの形ではなく掘り出した跡です。', 'spots/kinshozan.html', '金生山の車窓ページを見る'],
@@ -66,12 +67,12 @@ function ownPhoto(spotIds, src) {
 }
 const minutesOf = ids => Math.min(...ids.map(id => spotById(id).minutesFromTokyo));
 
-function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText]) {
+function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText, seatOverride]) {
  const thumb = ownPhoto(ids, src);
  const list = ids.map(spotById).sort((x, y) => x.minutesFromTokyo - y.minutesFromTokyo);
  const minutes = [...new Set(list.map(s => s.minutesFromTokyo))];
  const minuteText = minutes.length > 1 ? `東京から${minutes[0]}〜${minutes[minutes.length - 1]}分` : `東京から${minutes[0]}分`;
- const sides = [...new Set(list.map(s => s.side))].sort();
+ const sides = [...new Set(seatOverride || list.map(s => s.side))].sort();
  if (sides.some(side => side !== 'A' && side !== 'E')) throw Error('Unexpected seat side on ' + cardId);
  const seat = sides.map(side => `<span class="cs-pill ${side === 'A' ? 'cs-side-a' : 'cs-side-e'}">${side}席側</span>`).join('');
  return `    <article class="cs-spot" id="${cardId}">
