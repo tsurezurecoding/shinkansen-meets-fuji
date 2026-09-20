@@ -67,7 +67,7 @@
     },
     en: {
       brand: "Shinkansen Window",
-      brandSub: "Never miss a moment of the journey.",
+      brandSub: "Discover more through the train window.",
       train: "Train Search",
       live: "Audio Guide",
       fieldGuide: "Field Guide",

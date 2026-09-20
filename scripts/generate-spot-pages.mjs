@@ -623,7 +623,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
       <span class="brand-mark">窓</span>
       <span class="brand-text">
         <span class="brand-name">${escapeHTML(ui.brand)}</span>
-        <small class="brand-sub">${lang === "ja" ? "旅の瞬間を見逃さない" : "Never miss a moment of the journey."}</small>
+        <small class="brand-sub">${lang === "ja" ? "旅の瞬間を見逃さない" : "Discover more through the train window."}</small>
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
@@ -1457,7 +1457,7 @@ function englishLandingHTML() {
     ["もっと見る", "More"],
     ["乗る列車を選ぶ", "Choose your train"],
     ["新幹線の窓", "Shinkansen Window"],
-    ["旅の瞬間を見逃さない", "Never miss a moment of the journey."],
+    ["旅の瞬間を見逃さない", "Discover more through the train window."],
     ["本文へ移動", "Skip to content"],
   ];
   let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
@@ -1467,8 +1467,20 @@ function englishLandingHTML() {
       '<meta name="viewport" content="width=device-width, initial-scale=1">',
       '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">',
     );
+
+  // Keep the Japanese TOP editorial changes out of the English edition in this batch.
+  html = html.replaceAll("<span class=\"copy-chunk\">降りたあとに調べ、</span><span class=\"copy-chunk\">思い出を残す。</span>", "<span class=\"copy-chunk\">降りたあとに思い出を残す。</span>");
+  html = html.replaceAll("<span class=\"copy-chunk\">いつもの車窓を、</span><span class=\"copy-chunk\">再発見。</span>", "<span class=\"copy-chunk\">何度も乗るなら、</span><span class=\"copy-chunk\">車窓スタンプを集める。</span>");
+  html = html.replaceAll("<span class=\"copy-chunk\">いつも見かける看板や工場。</span><span class=\"copy-chunk\">何だろうと調べてみると、</span><span class=\"copy-chunk\">次に窓を見る楽しみに。</span><span class=\"copy-chunk\">見つけた景色は、スタンプにも。</span>", "<span class=\"copy-chunk\">富士山も、城も、湖も、看板も。</span><span class=\"copy-chunk\">いつもの出張で見つけた景色を残せば、</span><span class=\"copy-chunk\">同じ区間にも次の楽しみができます。</span>");
+  html = html.replaceAll('<a class="button button-primary audience-card-action" href="zukan.html" data-lp-cta="audience-repeat-browse">気になる景色を探す</a>', '<a class="button button-primary audience-card-action" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>');
+  html = html.replace(/^[ \t]*<a class="card-secondary-link" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ<\/a>\r?\n/gm, "");
+  html = html.replaceAll("<span class=\"copy-chunk\">気になった景色は、</span><span class=\"copy-chunk\">降りたあとに図鑑で探せます。</span>", "");
+  html = html.replace(/^[ \t]*<a class="card-secondary-link" href="zukan.html" data-lp-cta="step-after-browse">車窓図鑑で調べる<\/a>\r?\n/gm, "");
+  html = html.replaceAll('<span class="copy-chunk">727と248の</span><span class="copy-chunk">看板</span>', '727と248の看板');
+  html = html.replaceAll('<span class="photo-question"><span class="copy-chunk">この数字、</span><span class="copy-chunk">何の看板？</span></span>', '');
   html = html
     .replace(/東海道新幹線の\d+の車窓を、/g, `Find ${SPOT_COUNT} views from the Tokaido Shinkansen,`)
+    .replace(/\d+の車窓から、見たい景色を探す。/g, `Browse ${SPOT_COUNT} window views and find your favorites.`)
     .replace(/\d+景を写真から探す/g, `Browse ${SPOT_COUNT} views by photo`)
     .replace(/写真から\d+景を見て、/g, `Browse ${SPOT_COUNT} views by photo.`)
     .replace(/\d+の見どころがあります。/g, `${SPOT_COUNT} views are waiting.`)
@@ -1576,7 +1588,7 @@ function englishAppIndexHTML() {
     ["車窓図鑑", "Field guide"],
     ["もっと見る", "More"],
     ["新幹線の窓", "Shinkansen Window"],
-    ["旅の瞬間を見逃さない", "Never miss a moment of the journey."],
+    ["旅の瞬間を見逃さない", "Discover more through the train window."],
     ["本文へ移動", "Skip to content"],
   ];
   let html = fs.readFileSync(path.join(appDir, "start.html"), "utf8")

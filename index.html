@@ -367,6 +367,11 @@
     .stamp-note { display: block; margin-top: 13px !important; color: var(--ink-soft); font-size: 9px; text-align: center; }
     .journey-card-action { width: 100%; min-height: 48px; margin-top: 20px; padding: 0 18px; box-shadow: none; }
 
+    .card-secondary-link { position: relative; z-index: 1; display: inline-block; margin-top: 10px; padding: 6px 0; font-size: 13px; text-underline-offset: 3px; }
+    .journey-card > .card-secondary-link { grid-column: 1; color: inherit; }
+    .photo-question { display: block; margin-top: 5px; font-size: 12px; color: #fff; }
+    [data-lp-cta="scenery-card-727"] .photo-label { text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8); }
+
     .select { padding: 72px 0; background: var(--white); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
     .select-flow { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); align-items: center; gap: 48px; width: min(900px, 100%); margin: 46px auto 0; text-align: left; }
     .select-flow .mini-ui { margin: 0; border-color: var(--line); }
@@ -644,7 +649,7 @@
         <div class="section-head reveal">
           <p class="eyebrow eyebrow-on-dark">Before, during, after</p>
           <h2 id="how-title"><span class="copy-chunk">乗る前から、</span><span class="copy-chunk">降りたあとまで。</span></h2>
-          <p><span class="copy-chunk">乗る前に見どころを探し、</span><span class="copy-chunk">車内で出会い、</span><span class="copy-chunk">降りたあとに思い出を残す。</span><span class="copy-chunk">車窓の楽しみは、</span><span class="copy-chunk">移動の前からあとまで続きます。</span></p>
+          <p><span class="copy-chunk">乗る前に見どころを探し、</span><span class="copy-chunk">車内で出会い、</span><span class="copy-chunk">降りたあとに調べ、</span><span class="copy-chunk">思い出を残す。</span><span class="copy-chunk">車窓の楽しみは、</span><span class="copy-chunk">移動の前からあとまで続きます。</span></p>
         </div>
 
         <div class="journey-steps">
@@ -691,7 +696,7 @@
           <article class="journey-card reveal">
             <div class="step-top"><span class="step-when">AFTER THE RIDE</span><span class="step-no">03</span></div>
             <h3><span class="copy-chunk">見つけた景色を、</span><span class="copy-chunk">旅の記録に。</span></h3>
-            <p><span class="copy-chunk">見つけた景色を、スタンプに。</span><span class="copy-chunk">旅の思い出をあとから振り返れます。</span></p>
+            <p><span class="copy-chunk">見つけた景色を、スタンプに。</span><span class="copy-chunk">旅の思い出をあとから振り返れます。</span><span class="copy-chunk">気になった景色は、</span><span class="copy-chunk">降りたあとに図鑑で探せます。</span></p>
             <div class="mini-ui stamp-demo" aria-hidden="true">
               <small>WINDOW STAMP JOURNAL</small>
               <div class="stamp-grid">
@@ -702,6 +707,7 @@
               <span class="stamp-note">見つけた景色が、旅の手帖になる</span>
             </div>
             <a class="button button-primary journey-card-action" href="journal.html" data-lp-cta="step-journal">車窓スタンプを見る</a>
+            <a class="card-secondary-link" href="zukan.html" data-lp-cta="step-after-browse">車窓図鑑で調べる</a>
           </article>
         </div>
       </div>
@@ -734,7 +740,7 @@
           </a>
           <a class="photo-card" href="spots/727-board.html" aria-label="727看板と248看板の車窓ガイドを見る" data-lp-cta="scenery-card-727">
             <img src="images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp" alt="248看板と並んで立つ727 COSMETICSの看板" loading="lazy" decoding="async">
-            <span class="photo-label"><small>TRACKSIDE SIGNS</small><strong>727と248の看板</strong></span>
+            <span class="photo-label"><small>TRACKSIDE SIGNS</small><strong><span class="copy-chunk">727と248の</span><span class="copy-chunk">看板</span></strong><span class="photo-question"><span class="copy-chunk">この数字、</span><span class="copy-chunk">何の看板？</span></span></span>
           </a>
         </div>
         <p class="photo-credit">掲載写真 撮影：michikusa</p>
@@ -801,9 +807,10 @@
           </article>
           <article class="audience-card reveal" data-number="3">
             <small>RIDE OFTEN</small>
-            <h3><span class="copy-chunk">何度も乗るなら、</span><span class="copy-chunk">車窓スタンプを集める。</span></h3>
-            <p><span class="copy-chunk">富士山も、城も、湖も、看板も。</span><span class="copy-chunk">いつもの出張で見つけた景色を残せば、</span><span class="copy-chunk">同じ区間にも次の楽しみができます。</span></p>
-            <a class="button button-primary audience-card-action" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>
+            <h3><span class="copy-chunk">いつもの車窓を、</span><span class="copy-chunk">再発見。</span></h3>
+            <p><span class="copy-chunk">いつも見かける看板や工場。</span><span class="copy-chunk">何だろうと調べてみると、</span><span class="copy-chunk">次に窓を見る楽しみに。</span><span class="copy-chunk">見つけた景色は、スタンプにも。</span></p>
+            <a class="button button-primary audience-card-action" href="zukan.html" data-lp-cta="audience-repeat-browse">気になる景色を探す</a>
+            <a class="card-secondary-link" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>
           </article>
         </div>
       </div>
