@@ -357,17 +357,17 @@ async function runThinValidator() {
         if (baselinePayload.replace(/\r\n/g, "\n") !== pagePayloadCode.get(pagePayloadRelativePath(spot.id, lang)).replace(/\r\n/g, "\n")) fail(`${relativeFile}: non-opt-in payload changed from ${baselineSelector}`);
       }
       if (page.readingLayout) {
-        if (spot.id !== "kiyosu" || lang !== "ja") fail(`${relativeFile}: unapproved reading layout rollout`);
+        if (!["kiyosu", "odawara-castle", "kakegawa", "hamanako"].includes(spot.id) || lang !== "ja") fail(`${relativeFile}: unapproved reading layout rollout`);
         if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
-        if (!output.includes('を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (!output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
         if (output.indexOf('data-spot-media-gallery') > output.indexOf('class="spot-page-facts"')) fail(`${relativeFile}: photo-first ordering changed`);
-        if (!output.includes('見える時間の目安') || !output.includes('数秒ほど') || !output.includes('列車や走行速度によって変わります')) fail(`${relativeFile}: visibility fact missing`);
+        if (!output.includes('見える時間の目安') || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes('列車や走行速度によって変わります')) fail(`${relativeFile}: visibility fact missing`);
         if (!output.includes(`href="${prefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${prefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
         if (!output.includes('現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes('地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
         if (!output.includes('class="spot-reading-sources"') || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
-        if (output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
-        for (const photo of page.readingLayout.collection.photos) if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${relativeFile}: missing related photo ${photo.src}`);
+        if (page.readingLayout.collection && output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
+        for (const photo of page.readingLayout.collection?.photos || []) if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${relativeFile}: missing related photo ${photo.src}`);
       }
       assertSpotPageShellMarkup(output, "spot-page-shell", `${relativeFile} normal renderer`);
       const embeddedRendered = renderPage(lang, prefix, spot.id, undefined, true);

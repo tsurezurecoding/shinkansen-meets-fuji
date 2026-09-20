@@ -466,6 +466,27 @@ const READING_LAYOUTS = {
   }
 };
 
+// First rollout: two castles and one waterside view, Japanese only.
+const castleCollection = READING_LAYOUTS["kiyosu:ja"].collection;
+const kiyosuPhoto = { src: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", alt: "車窓から見える清洲城", caption: "清洲城" };
+READING_LAYOUTS["odawara-castle:ja"] = {
+  compactGuide: true,
+  version: 1,
+  visibility: { label: "見える時間の目安", value: "1〜2秒ほど", note: "のぞみ通過時の目安。列車や走行速度によって変わります" },
+  collection: { ...castleCollection, description: "清洲城や掛川城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "小田原城を含む7か所。", photos: [kiyosuPhoto, castleCollection.photos[1]] }
+};
+READING_LAYOUTS["kakegawa:ja"] = {
+  compactGuide: true,
+  version: 1,
+  visibility: { label: "見える時間の目安", value: "数秒〜10秒ほど", note: "のぞみ通過時の目安。列車や走行速度によって変わります" },
+  collection: { ...castleCollection, description: "小田原城や清洲城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "掛川城を含む7か所。", photos: [castleCollection.photos[0], kiyosuPhoto] }
+};
+READING_LAYOUTS["hamanako:ja"] = {
+  compactGuide: true,
+  version: 1,
+  visibility: { label: "見える時間の目安", value: "数十秒ほど", note: "水面や目印が見える区間の目安。列車や走行速度によって変わります" }
+};
+
 function projectPage(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const allPhotos = photoItems(spot);
