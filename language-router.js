@@ -7,6 +7,7 @@
   var routes = {
     "/ferris-wheels.html": "en/ferris-wheels.html",
     "/castles.html": "en/castles.html",
+    "/arenani.html": "en/arenani.html",
     "/": "en/",
     "/index.html": "en/",
     "/start.html": "en/start.html",

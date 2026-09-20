@@ -2510,31 +2510,31 @@ const SPOTS = [
     ja: { name: "静岡の茶畑", area: "静岡 → 掛川", hook: "緑の畝が、車窓を走る。", story: "掛川城の少し手前、線路の両側に緑の畝がきれいに並ぶ区間があります。ここは静岡県中西部——牧之原台地の南端から掛川・菊川へ続く、日本最大級の茶産地の入口です。細く整えられた畝、防霜ファン（大きな扇風機）が突き立った畑、緩やかな丘の連なり。富士山や城ほど派手ではないけれど、「日本を走っている」と一瞬で分かる車窓が、しばらく続きます。" },
     en: { name: "Shizuoka Tea Fields", area: "Shizuoka → Kakegawa", hook: "Rows of green tea from the window.", story: "A little before Kakegawa Castle, the tracks are lined on both sides by neatly ridged green fields. This is the entrance to one of Japan's largest tea-producing regions, stretching from the southern edge of the Makinohara Plateau across Kakegawa and Kikugawa. Look for the finely trimmed rows, tall frost-protection fans poking up over the fields, and the gentle rolling hills. It is subtler than Mt. Fuji or a castle, but you know at once you are crossing rural Japan." },
     pageTitle: {
-      ja: "新幹線から見える静岡の茶畑｜扇風機（防霜ファン）と牧之原・掛川 | 新幹線の窓",
-      en: "Shizuoka Tea Fields from the Shinkansen | What Are the Fans?",
+      ja: "新幹線から見える静岡の茶畑｜新緑の畝と牧之原・掛川 | 新幹線の窓",
+      en: "Shizuoka Tea Fields from the Shinkansen | Green Rows of Makinohara and Kakegawa",
     },
     pageHeading: {
-      ja: "静岡の茶畑——緑の畝に立つ、何本もの扇風機",
-      en: "Shizuoka tea fields — what are those fans above the rows?",
+      ja: "静岡の茶畑——丘を走る、新緑の畝",
+      en: "Shizuoka's bright green tea fields rolling past the window",
     },
     pageHeadingChunks: {
-      ja: ["静岡の茶畑——", "緑の畝に立つ、何本もの扇風機"],
-      en: ["Shizuoka tea fields —", "what are those fans above the rows?"],
+      ja: ["静岡の茶畑——", "丘を走る、新緑の畝"],
+      en: ["Shizuoka's bright green tea fields", "rolling past the window"],
     },
     metaDescription: {
-      ja: "静岡〜掛川の車窓に広がる茶畑と、畝の上に何本も立つ扇風機の正体を解説。防霜ファンが新芽を霜から守るしくみ、静岡茶の歴史、季節ごとの見え方を紹介します。",
-      en: "What are the fans standing above Shizuoka's tea fields? Learn how they protect young tea buds from frost, why the rows spread across Makinohara and Kakegawa, and what to watch for from the Shinkansen.",
+      ja: "静岡〜掛川の車窓に広がる、新緑の畝が美しい茶畑を紹介。牧之原・掛川に茶園が広がった歴史、季節ごとの色、畝の上に立つ防霜ファンの役割を解説します。",
+      en: "Discover the bright green tea rows of Shizuoka from the Shinkansen: why they curve across Makinohara and Kakegawa, how the view changes by season, and what the fans above the fields do.",
     },
     sectionHeading: {
-      ja: "緑の畝と、何本もの扇風機。あの景色は何？",
-      en: "Green rows and tall fans — what are you looking at?",
+      ja: "新緑の畝がつくる、静岡らしい車窓",
+      en: "What are those bright green rows?",
     },
     pageStory: {
       ja: "静岡県は長年、全国の荒茶生産量の3〜4割を占めてきた、日本最大級の茶産地です。中でも新幹線が抜ける掛川・菊川・島田・牧之原一帯は、県内でもとりわけ茶園が集中する地域。畑は等高線に沿ってなめらかに並び、細く刈り込まれた畝が丘の起伏をなぞります。畝のあいだにときおり立つ縦長の柱と羽根は防霜ファン（茶園ファン）。冷え込む春先の夜、地表付近に溜まった冷気を上下の空気と混ぜて霜害から新芽を守るための設備です。東京から大阪へ向かうA席側では、掛川の手前で茶畑の奥につま恋リゾート彩の郷の看板が見えます。つま恋リゾート彩の郷は、静岡県掛川市の豊かな自然の中に建つリゾートホテルです。",
       en: "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the tea fields shortly before Kakegawa. Tsumagoi Resort Sainosato is a resort hotel set in the natural surroundings of Kakegawa, Shizuoka.",
     },
     explainer: {
-      heading: { ja: "茶畑の扇風機と、静岡茶の風景", en: "The fans above the fields — and the tea behind them" },
+      heading: { ja: "新緑の畝、その上に立つ扇風機", en: "And what are the fans above the rows?" },
       ja: [
         "畝の上に何本も立つ大きな扇風機は、発電用でも、茶の葉を夏に冷やすためでもありません。春先の風が弱く晴れた夜は、地表付近の空気が先に冷え、その上に比較的暖かい空気が残ることがあります。防霜ファンは地上約3〜5mの暖かい空気を茶の新芽へ吹き下ろして混ぜ、遅霜による凍霜害を防ぐ設備です。高い柱の先から羽根が斜め下を向いているのは、そのためです。",
         "静岡での茶の栽培は鎌倉時代の僧・聖一国師が持ち帰った茶の種を安倍川流域にまいたのが始まりと伝わり、江戸期には駿河茶として知られるようになりました。産地を一気に広げたのは、明治時代の牧之原台地開拓です。徳川家の旧幕臣らが失職後の生活再建のためにこの台地を開墾し、水はけの良い赤土と、日照・霜対策に適した高台の気候が茶樹に合うことを見出しました。以後、牧之原・掛川・菊川はまとまった大規模茶園として発展していきます。",
@@ -2554,14 +2554,14 @@ const SPOTS = [
     },
     minutesFromTokyo: 62, side: "E", sideLabel: { ja: "A席・E席", en: "Seats A and E" }, category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
     image: "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "E席側に広がる茶畑。畝の間に防霜ファンが何本も立つ", en: "Tea fields on the Seat E side, with frost-protection fans standing between the rows" } },
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "E席側に広がる新緑の茶畑。畝の間には防霜ファンも立つ", en: "Bright green tea rows on the Seat E side, with frost-protection fans between them" } },
     photos: [
       {
         src: "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
-        alt: { ja: "新幹線から見える静岡の茶畑と防霜ファン", en: "Shizuoka tea fields and frost-protection fans from the Shinkansen" },
+        alt: { ja: "新幹線から見える新緑の静岡茶畑と防霜ファン", en: "Bright green Shizuoka tea fields and frost-protection fans from the Shinkansen" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-05-30",
-        note: { ja: "緑の畝の上に並ぶ防霜ファン", en: "Frost-protection fans rising above the green rows" },
+        note: { ja: "丘の起伏をなぞる緑の畝。その上に防霜ファンが並ぶ", en: "Green rows tracing the hills, with frost-protection fans rising above them" },
       },
       {
         src: "images/20260904_shizuoka_tea_fields_a_michikusa.jpg",

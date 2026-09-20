@@ -20,6 +20,7 @@ const canonicalSpotIdOf = (id) => {
 const pairs = [
   ["/ferris-wheels.html", "/en/ferris-wheels.html"],
   ["/castles.html", "/en/castles.html"],
+  ["/arenani.html", "/en/arenani.html"],
   ["/", "/en/"],
   ["/zukan.html", "/en/zukan.html"],
   ["/journal.html", "/en/journal.html"],

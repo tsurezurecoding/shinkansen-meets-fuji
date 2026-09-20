@@ -31,6 +31,9 @@
 .an-question .an-q { margin-left: 1px; }
 .an-answer { margin: 0 0 12px !important; font-size: 13px !important; color: var(--ink-soft); }
 .an-answer strong { color: var(--ink); font-size: 15px; font-family: var(--font-serif); margin-left: 4px; }
+.an-second-look { margin-top: 12px !important; padding: 12px 14px; border-left: 3px solid var(--accent); background: var(--paper-deep); }
+.an-second-look strong { color: var(--ink); }
+.arenani-page-en .an-plaque h1 { white-space: normal; font-size: clamp(34px, 5.6vw, 54px); }
 
 /* ほかの路線: Xの動画埋め込み + 本文。読み込みは window-moments.js（画面に近づいたら公式埋め込み） */
 .an-embed-card { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); padding: 20px; margin-bottom: 22px; scroll-margin-top: 90px; }
