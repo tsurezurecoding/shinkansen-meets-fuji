@@ -8,7 +8,9 @@
 .cs-hero .eyebrow { color: var(--accent-soft); }
 .cs-hero h1 { font-family: var(--font-serif); font-size: clamp(28px, 6vw, 44px); line-height: 1.42; margin: 0 0 20px; text-shadow: 0 2px 18px rgba(0,0,0,.5); }
 .cs-hero-lead { color: rgba(255,255,255,.9); font-size: 15px; line-height: 1.95; margin: 0 auto; max-width: 620px; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
-.cs-hero-stat { margin: 24px 0 0; color: rgba(255,255,255,.7); font-size: 12px; letter-spacing: .04em; }
+.cs-hero-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 26px; }
+.cs-hero-actions .btn { min-height: 40px; display: inline-flex; align-items: center; }
+.cs-hero-actions .btn-ghost { border-color: rgba(255,255,255,.48); color: #fff; }
 .cs-hero-credit { margin: 10px 0 0; color: rgba(255,255,255,.45); font-size: 10.5px; }
 
 .cs-article > section { padding: 62px 0 0; }
@@ -17,6 +19,11 @@
 .cs-section-head { text-align: center; margin-bottom: 26px; }
 .cs-section-head h2 { font-family: var(--font-serif); font-size: clamp(21px, 4.2vw, 29px); margin: 0 0 12px; }
 .cs-section-lead { max-width: 580px; margin: 0 auto; font-size: 14px; line-height: 1.9; color: var(--ink-soft); }
+
+/* 導入の本文。カードにせず、章の本文として読ませる。 */
+.cs-intro-body { max-width: 620px; margin: 0 auto; }
+.cs-intro-body p { margin: 0 0 13px; font-size: 14.5px; line-height: 1.95; }
+.cs-intro-body p:last-child { margin-bottom: 0; }
 
 .cs-tip-list { display: grid; gap: 14px; padding: 0; margin: 0; list-style: none; }
 .cs-tip-list li { border-left: 3px solid var(--accent-soft); padding: 2px 0 2px 16px; font-size: 14.5px; line-height: 1.95; }
@@ -53,10 +60,10 @@
 .cs-note-figure { margin: 14px 0; max-width: 460px; }
 .cs-note-figure img { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 12px; }
 .cs-note-figure figcaption { margin-top: 7px; font-size: 10.5px; line-height: 1.6; color: var(--ink-soft); }
-.cs-about h2 { font-size: 14px; letter-spacing: .08em; font-family: inherit; }
-.cs-about p { font-size: 12.5px; }
 
 @media (max-width: 720px) {
   .cs-hero { padding: 72px 20px 52px; }
+  .cs-hero-actions { display: grid; }
+  .cs-hero-actions .btn { width: 100%; justify-content: center; }
   .cs-spot { grid-template-columns: 1fr; gap: 16px; padding: 16px; }
 }
