@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "64474236dd8aeccd",
+  "contentVersion": "dfd6e4aa9792fea2",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -55,8 +55,8 @@
     {
       "path": "castles.html",
       "url": "https://www.michikusa-travel.com/castles.html",
-      "bytes": 25946,
-      "sha256": "268419b6e0902cac4d363bdc1d3d85de399f2de860dcada78226bcc777a4c546"
+      "bytes": 25964,
+      "sha256": "34aff8d97e3b636650cd3b44e26aedbf24d40fac5bdd67fb9ec2d7db8454efb8"
     },
     {
       "path": "chrome.css",
@@ -97,8 +97,8 @@
     {
       "path": "en/castles.html",
       "url": "https://www.michikusa-travel.com/en/castles.html",
-      "bytes": 25269,
-      "sha256": "4761432ad89e24208b081331b46857e1823c3957476f16c6a7ccd2a9f5a4c9c6"
+      "bytes": 25287,
+      "sha256": "a17411fca32c0ee5c9062a1290a5babf75c8e9027f39bf8aff2f124b2cdfd1a1"
     },
     {
       "path": "en/ferris-wheels.html",
