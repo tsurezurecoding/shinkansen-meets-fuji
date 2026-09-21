@@ -367,7 +367,7 @@ async function runThinValidator() {
         if (!output.includes('class="spot-reading-sources"') || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
         for (const label of ["THE STORY", "WHAT TO SEE", "ON THE MAP", "ON BOARD", ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
         if (output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
-        if (page.readingLayout.sourcesAtEnd && output.indexOf('class="spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
+        if (output.indexOf('class="spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
         if (page.readingLayout.collection && output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
         for (const photo of page.readingLayout.collection?.photos || []) if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${relativeFile}: missing related photo ${photo.src}`);
@@ -449,7 +449,7 @@ async function runThinValidator() {
 
   const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });
   const missingBodyReference = renderPage("ja", "../", "kiyosu", (data, page) => { page.bodyLinks = []; });
-  if (!missingBodyReference.html.includes('spot-page-section spot-page-refs')) fail("reading layout must preserve references absent from body");
+  if (!missingBodyReference.html.includes('class="spot-reading-sources"') || pages.kiyosu.ja.references.some(reference => !missingBodyReference.html.includes(escape(reference.href)))) fail("reading layout must preserve references absent from body");
   const collectionSafety = renderPage("ja", "../", "kiyosu", (data, page) => { page.readingLayout.collection.route = "javascript:alert(1)"; });
   if (!collectionSafety.errors.some(message => message.includes("shared reading collection is malformed"))) fail("unsafe reading collection link did not fail closed");
   if (!safety.errors.some((message) => message.includes("shared page asset path is malformed")) || safety.host.className !== "spot-page-shared-error") fail("malformed asset path fixture did not fail closed");
