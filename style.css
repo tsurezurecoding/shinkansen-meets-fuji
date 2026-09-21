@@ -882,6 +882,12 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
 .spot-reading-layout .spot-reading-screen img { display:block; width:100%; height:auto; border-radius:8px; }
 .spot-reading-layout .spot-reading-screen figcaption { font:12px/1.7 var(--font-sans); color:var(--ink-soft); padding-top:9px; }
 .spot-reading-layout .spot-reading-timing { padding:20px 0; border-top:1px solid var(--line); border-bottom:1px solid var(--line); font-size:14px; }
+.spot-reading-layout .spot-reading-steps { margin:0; padding-left:22px; }
+.spot-reading-layout .spot-reading-steps li { padding-left:5px; margin:0 0 18px; }
+.spot-reading-layout .spot-reading-steps li:last-child { margin-bottom:0; }
+.spot-reading-layout .spot-reading-steps li::marker { color:var(--accent); font-weight:700; }
+.spot-reading-layout .spot-reading-steps strong, .spot-reading-layout .spot-reading-steps span { display:block; }
+.spot-reading-layout .spot-reading-steps span { margin-top:4px; color:var(--ink-soft); line-height:1.8; }
 .spot-reading-layout .spot-reading-timing ul { padding-left:20px; margin:12px 0; line-height:2; }
 .spot-reading-layout .spot-reading-related { margin-top:64px; padding:28px; border:1px solid var(--line); border-radius:14px; background:#fffdf9; display:grid; grid-template-columns:minmax(0,1.5fr) minmax(0,1fr); gap:28px; align-items:center; }
 .spot-reading-layout .spot-reading-related h2 { font-family:var(--font-serif); font-size:24px; line-height:1.6; margin:0 0 14px; }
