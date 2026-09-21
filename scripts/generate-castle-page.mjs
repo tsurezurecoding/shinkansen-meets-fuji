@@ -35,7 +35,7 @@ const sanyoEntries = [
   station: { ja: '姫路駅の前後', en: 'Around Himeji Station' },
   photo: 'images/20260916_himeji_castle_wakaba.jpg',
   alt: { ja: '新幹線の車窓から見た姫路城の白い天守', en: 'The white keep of Himeji Castle seen from the Shinkansen window' },
-  credit: { ja: 'wakaba', en: 'wakaba' },
+  credit: { ja: '@wakaba70127479', en: '@wakaba70127479' },
   sourceUrl: 'https://x.com/wakaba70127479/status/2100095130896408840',
   hook: { ja: '街並みの上に、白い層', en: 'White tiers above the rooftops' },
   about: {
@@ -53,7 +53,7 @@ const sanyoEntries = [
   station: { ja: '福山駅のすぐ北', en: 'Right beside Fukuyama Station' },
   photo: 'images/20260919_fukuyama_castle_wakaba.jpg',
   alt: { ja: '新幹線の車窓から見た福山城の天守と石垣', en: 'The keep and stone walls of Fukuyama Castle seen from the Shinkansen window' },
-  credit: { ja: 'wakaba', en: 'wakaba' },
+  credit: { ja: '@wakaba70127479', en: '@wakaba70127479' },
   sourceUrl: 'https://x.com/wakaba70127479/status/2101193484564926710',
   hook: { ja: '線路のすぐ隣に、天守', en: 'A keep right next to the tracks' },
   about: {
