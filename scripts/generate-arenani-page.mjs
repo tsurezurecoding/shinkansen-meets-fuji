@@ -24,7 +24,7 @@ const title = 'あれ、何？｜新幹線と電車の車窓で気になった�
 const description = '東海道新幹線の727看板、空へ向かう線路、山際の白い観音。近鉄や東海道線の窓の金色の観音や朱色の門。車窓で一瞬見えて気になった景色の正体を、写真と投稿で確かめられます。';
 const heroImage = 'images/20260904_mishima_catapult_1_michikusa.jpg';
 const englishTitle = "What's That Outside the Train? | Everyday Japan from the Shinkansen";
-const englishDescription = 'Bright green tea rows, white plumes beneath Mt. Fuji, and a giant red gate in the fields. Learn what these everyday Japanese scenes are and where to see them from the Tokaido Shinkansen.';
+const englishDescription = 'Bright green tea rows, giant green nets, white plumes beneath Mt. Fuji, and a red gate in the fields. Learn what these everyday Japanese scenes are from the Tokaido Shinkansen.';
 const englishHeroImage = 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg';
 
 // 東海道新幹線: [カードのid, 対象スポット(複数可), 写真src, 写真alt, 種別, 問い, 答え, 本文, リンク先, リンク文]
@@ -78,6 +78,18 @@ const englishCards = [
     link: 'spots/fuji-paper-mills.html', linkText: "Read Fuji City's paper story"
   },
   {
+    id: 'kiyosu-golf-driving-range', spotId: 'kiyosu', src: 'images/20260704_kiyosu_golf_driving_range_michikusa.png', featurePhoto: true,
+    width: 515, height: 307,
+    alt: 'Tall green nets around a golf driving range near Kiyosu', kind: 'Everyday sport',
+    question: 'What are those giant green nets?', answer: 'A golf driving range — uchippanashi in Japanese',
+    body: 'The nets stop golf balls from reaching nearby homes and roads. In Japanese cities, many ranges stack hitting bays on two or three floors, so a place to practise golf can look like a giant cage.',
+    aside: 'This one flashes past Seat E shortly before Kiyosu Castle. The format is not unique to Japan, but it is a common city sight here. Uchippanashi (打ちっぱなし) roughly means “keep hitting.”',
+    sources: [
+      ['https://www.japan-guide.com/e/e2082.html', 'Golf ranges in Japan'],
+      ['https://www.reddit.com/r/ANormalDayInJapan/comments/1g3emo2/', 'A first-time visitor asks what it is']
+    ]
+  },
+  {
     id: 'nangu-taisha', spotId: 'nangu-taisha', src: 'images/20260629_nangu_taisha_1_michikusa.jpg',
     alt: 'A giant vermilion torii gate rising beyond farmland', kind: 'Shrine gateway',
     question: 'Why is there a giant red gate in the fields?', answer: "Nangu Taisha's Grand Torii",
@@ -89,10 +101,15 @@ const englishCards = [
 
 const englishTiles = [
   ['shizuoka-tea-fields', 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg', 'Bright green tea fields in Shizuoka', 'Green rows'],
-  ['shizuoka-tea-fields', 'images/20260530_shizuoka_tea_fields_2_michikusa.jpg', 'Frost-protection fans above Shizuoka tea fields', 'Fans above them'],
+  ['kiyosu-golf-driving-range', 'images/20260704_kiyosu_golf_driving_range_michikusa.png', 'Tall green nets around a golf driving range near Kiyosu', 'Giant green nets'],
   ['fuji-paper-mills', 'images/20260816_fuji_paper_mills_michikusa.jpg', "Fuji City's paper mills", 'White plumes'],
   ['nangu-taisha', 'images/20260629_nangu_taisha_1_michikusa.jpg', 'Nangu Taisha Grand Torii beyond fields', 'A red gate']
 ];
+
+// 特集だけで使う自前写真。地点ページのギャラリーへ無理に混ぜず、権利と資産をここで明示する。
+const englishFeaturePhotos = new Map([
+  ['images/20260704_kiyosu_golf_driving_range_michikusa.png', { credit: 'michikusa', date: '2026-07-04' }]
+]);
 
 const spotById = id => { const s = spots.find(x => x.id === id); if (!s) throw Error('Unknown spot: ' + id); return s; };
 // 写真は自前撮影（クレジット michikusa）だけを使う。スポットの主画像か掲載写真のどちらかに無ければ止める。
@@ -101,6 +118,14 @@ function ownPhoto(spotIds, src) {
  if (!owner) throw Error('Photo is not registered on ' + spotIds.join('/') + ': ' + src);
  const credit = owner.image === src ? owner.photoCredit : owner.photos.find(p => p.src === src).credit;
  if (credit?.ja !== 'michikusa') throw Error('Only own photographs may be used: ' + src);
+ if (!fs.existsSync(path.join(root, src))) throw Error('Missing photograph: ' + src);
+ const thumb = thumbnailSrc(src);
+ if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
+ return thumb;
+}
+function ownFeaturePhoto(src) {
+ const photo = englishFeaturePhotos.get(src);
+ if (!photo || photo.credit !== 'michikusa') throw Error('Unregistered English feature photograph: ' + src);
  if (!fs.existsSync(path.join(root, src))) throw Error('Missing photograph: ' + src);
  const thumb = thumbnailSrc(src);
  if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
@@ -133,11 +158,18 @@ function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText
 
 function englishCard(card) {
   const spot = spotById(card.spotId);
-  const thumb = ownPhoto([card.spotId], card.src);
+  const thumb = card.featurePhoto ? ownFeaturePhoto(card.src) : ownPhoto([card.spotId], card.src);
   const seat = spot.side === 'A' ? 'Seat A' : 'Seat E';
+  const image = `<img src="../${thumb}" alt="${esc(card.alt)}" width="${card.width || 480}" height="${card.height || 320}" loading="lazy" decoding="async">`;
+  const media = card.link ? `<a href="${card.link}">${image}</a>` : image;
+  const more = card.link ? `<p class="cs-more"><a href="${card.link}">${esc(card.linkText)}</a></p>` : '';
+  const sources = card.sources?.length
+    ? `<p class="an-links">${card.sources.map(([href, label]) => `<a href="${href}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</p>`
+    : '';
+  const extras = [sources, more].filter(Boolean).join('\n        ');
   return `    <article class="cs-spot" id="${card.id}">
       <figure class="cs-figure">
-        <a href="${card.link}"><img src="../${thumb}" alt="${esc(card.alt)}" width="480" height="320" loading="lazy" decoding="async"></a>
+        ${media}
         <figcaption>Photo: Shinkansen Window</figcaption>
       </figure>
       <div class="cs-spot-body">
@@ -145,8 +177,7 @@ function englishCard(card) {
         <h3 class="an-question">${esc(card.question).replace(/\?$/, '<span class="an-q">?</span>')}</h3>
         <p class="an-answer"><span>The answer</span><strong>${esc(card.answer)}</strong></p>
         <p>${esc(card.body)}</p>
-        <p class="an-second-look"><strong>Look again.</strong> ${esc(card.aside)}</p>
-        <p class="cs-more"><a href="${card.link}">${esc(card.linkText)}</a></p>
+        <p class="an-second-look"><strong>Look again.</strong> ${esc(card.aside)}</p>${extras ? `\n        ${extras}` : ''}
       </div>
     </article>`;
 }
@@ -184,7 +215,7 @@ function tile([cardId, src, alt, label]) {
 function englishTile([cardId, src, alt, label], index) {
   const card = englishCards.find(entry => entry.id === cardId);
   if (!card) throw Error('English hero tile must point to a card: ' + cardId);
-  ownPhoto([card.spotId], src);
+  if (card.featurePhoto) ownFeaturePhoto(src); else ownPhoto([card.spotId], src);
   return `        <li class="an-tile"><a href="#${cardId}"><img src="../${src}" alt="${esc(alt)}" width="640" height="460"${index === 0 ? ' fetchpriority="high"' : ''}><span>${esc(label)}<b>?</b></span></a></li>`;
 }
 
@@ -363,7 +394,7 @@ ${englishTiles.map(englishTile).join('\n')}
         <p class="eyebrow">EVERYDAY JAPAN, SEEN FROM THE WINDOW</p>
         <p class="an-kicker">You saw it for only a moment</p>
         <h1 id="anTitle">What's That Outside<span class="an-q">?</span></h1>
-        <p class="cs-hero-lead">Bright green rows, white plumes beneath Mt. Fuji, a red gate in the fields. Start with what caught your eye, then learn why it is there.</p>
+        <p class="cs-hero-lead">Bright green rows, giant green nets, white plumes beneath Mt. Fuji, a red gate in the fields. Start with what caught your eye, then learn why it is there.</p>
         <p class="an-cta"><a class="btn btn-primary btn-small" href="#everyday-japan" data-cta-track="arenani_section_click" data-cta-id="hero_everyday_japan">Identify the view</a></p>
         <p class="cs-hero-credit">Photos: Shinkansen Window</p>
       </div>
@@ -378,7 +409,7 @@ ${englishTiles.map(englishTile).join('\n')}
     <div class="cs-section-head">
       <p class="eyebrow">01 / EVERYDAY JAPAN</p>
       <h2 id="anEverydayTitle">Begin with the shape you remember</h2>
-      <p class="cs-section-lead">These are not tourist attractions placed for the train. They are working fields, factories and sacred markers — ordinary parts of Japan that become surprising when they flash past the window.</p>
+      <p class="cs-section-lead">These are not tourist attractions placed for the train. They are working fields, factories, sports facilities and sacred markers — ordinary parts of Japan that become surprising when they flash past the window.</p>
     </div>
 ${cards}
   </section>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f2b2b72bf80b1ca1",
+  "contentVersion": "06d19ae0697d4e3f",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -91,8 +91,8 @@
     {
       "path": "en/arenani.html",
       "url": "https://www.michikusa-travel.com/en/arenani.html",
-      "bytes": 13763,
-      "sha256": "2417cbd9413c008e12d83fbd2187f5d7e4afdcef99b177160dfa13287bee7bc2"
+      "bytes": 15394,
+      "sha256": "194ecedb1afee122f773af5e8733066eb6d20e1ea527542a949b7e762c86b966"
     },
     {
       "path": "en/castles.html",
@@ -1366,8 +1366,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 239,
-    "bytes": 8723358,
+    "itemCount": 240,
+    "bytes": 8731942,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2052,6 +2052,12 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260704_kiyosu_castle_michikusa.webp",
         "bytes": 33432,
         "sha256": "4769c16c0bf091fbe979a55d12164f281340db1b8c31142b17e090e0829839be"
+      },
+      {
+        "path": "images/thumbs/20260704_kiyosu_golf_driving_range_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260704_kiyosu_golf_driving_range_michikusa.webp",
+        "bytes": 8584,
+        "sha256": "89b1917923951398c582679d625d30a8b29bae1f57ff89f5d9986d39c7d1d309"
       },
       {
         "path": "images/thumbs/20260704_maruko_bridge_1_michikusa.webp",
