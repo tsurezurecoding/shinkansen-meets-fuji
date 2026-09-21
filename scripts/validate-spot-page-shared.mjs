@@ -88,7 +88,7 @@ async function runThinValidator() {
 
   // 左ペインの枠（spot-page-shared.js の RAIL_FEATURES / pickRailFeatures）:
   // アプリ1・音声ガイド1・関連特集1・時期の特集0〜1・「特集をすべて見る」1。
-  // 自分自身の特集へのカードは出さず、英語では日本語だけの特集（arenani.html）を出さない。
+  // 自分自身の特集へのカードは出さず、日英それぞれの関連特集を1件出す。
   // 727の地点数は生成ペイロードを正本にする（文言に凍結した数字を持たない）。
   function assertRailSlots(html, label, lang, { route = "", expectRelated = "" } = {}) {
     const n = (re) => count(html, re);
@@ -100,7 +100,6 @@ async function runThinValidator() {
     const picked = [...html.matchAll(/data-cta-id="spot_rail_(?:related|seasonal)_([^"]+)"/g)].map((match) => match[1]);
     if (new Set(picked).size !== picked.length) fail(`${label}: the related and seasonal slots must not repeat a feature`);
     if (route && new RegExp(`href="[^"]*${route.replace(/\./g, "\\.")}" data-cta-track=`).test(html)) fail(`${label}: rail must not link to its own feature page`);
-    if (lang === "en" && html.includes("arenani.html")) fail(`${label}: English rail must not link to the Japanese-only What-was-that page`);
     if (lang === "en" && html.includes("727看板コレクション")) fail(`${label}: English rail must not carry the Japanese 727 label`);
     if (expectRelated && !html.includes(`data-cta-id="spot_rail_related_${expectRelated}"`)) fail(`${label}: related slot must show ${expectRelated}`);
     if (picked.includes("727")) {
@@ -111,6 +110,11 @@ async function runThinValidator() {
 
   function safeAsset(value) {
     return typeof value === "string" && value.startsWith("images/") && !value.includes("..") && !value.includes("\\") && !/[?#]/.test(value);
+  }
+
+  function assertProjectedImage(image, label) {
+    if (!image) return;
+    if (!safeAsset(image.src) || !safeAsset(image.thumb) || (image.sourceUrl && !/^https?:\/\/[^\s<>\"']+$/i.test(image.sourceUrl))) fail(`${label} image path/source is unsafe`);
   }
 
   function strictHostHTML(lang, id, rootPath) {
@@ -246,6 +250,8 @@ async function runThinValidator() {
     for (const photo of [...(page.photos || []), ...(page.gallery || []), ...(page.inline || [])]) {
       if (!safeAsset(photo.src) || !safeAsset(photo.thumb) || (photo.sourceUrl && !/^https?:\/\/[^\s<>"']+$/i.test(photo.sourceUrl))) fail(`${spot.id}/${lang} photo path/source is unsafe`);
     }
+    assertProjectedImage(page.referenceImage, `${spot.id}/${lang} reference`);
+    assertProjectedImage(page.explainer?.figure, `${spot.id}/${lang} explainer`);
     for (const link of [...(page.bodyLinks || []), ...(page.references || [])]) if (!/^https?:\/\/[^\s<>"']+$/i.test(link.href)) fail(`${spot.id}/${lang} external link is unsafe`);
     if (page.media) for (const video of page.media.videos) {
       if (video.kind === "x" && !/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url)) fail(`${spot.id}/${lang} X URL shape is unsafe`);
@@ -277,7 +283,9 @@ async function runThinValidator() {
     for (const lang of ["ja", "en"]) {
       const page = pages[spot.id][lang];
       assertPageSafety(page, spot, lang);
-      const expectedGalleryCount = page.photos.length - (spot.id === "ibuki" && lang === "ja" ? 0 : page.inline.length);
+      if (lang === "ja" && !page.readingLayout) fail(`${spot.id}/ja is missing the Japanese reading layout`);
+      if (lang === "en" && page.readingLayout) fail(`${spot.id}/en unexpectedly opted into the Japanese reading layout`);
+      const expectedGalleryCount = page.photos.length - (spot.id === "ibuki" && lang === "ja" ? 0 : page.inline.length + (spot.id === "hamanako" && lang === "ja" && page.explainer?.figure ? 1 : 0));
       if (page.gallery.length !== expectedGalleryCount || expectedGalleryCount < 1) fail(`${spot.id}/${lang} gallery count is not derived from the structured photo source`);
       const inlineSources = new Set((page.inline || []).map((photo) => photo.src));
       const referenceSources = new Set((spot.photos || []).filter((photo) => photo.role === "reference").map((photo) => photo.src));
@@ -303,6 +311,16 @@ async function runThinValidator() {
         if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${spot.id}/${lang} gallery image is missing: ${photo.src}`);
         if (!fs.existsSync(path.join(appDir, photo.thumb))) fail(`${spot.id}/${lang} gallery thumbnail is missing: ${photo.thumb}`);
       }
+      for (const photo of [page.referenceImage, page.explainer?.figure]) {
+        if (!photo) continue;
+        if (photo.src && !fs.existsSync(path.join(appDir, photo.src))) fail(`${spot.id}/${lang} article image is missing: ${photo.src}`);
+        if (photo.thumb && !fs.existsSync(path.join(appDir, photo.thumb))) fail(`${spot.id}/${lang} article thumbnail is missing: ${photo.thumb}`);
+      }
+      if (spot.id === "hamanako" && lang === "ja" && page.explainer?.figure) {
+        const figureSource = page.explainer.figure.src;
+        if (!page.photos.some((photo) => photo.src === figureSource)) fail(`${spot.id}/${lang} explainer figure is not projected from the structured photo source`);
+        if (page.gallery.some((photo) => photo.src === figureSource) || (page.inline || []).some((photo) => photo.src === figureSource)) fail(`${spot.id}/${lang} Hamanako explainer figure is duplicated in gallery/inline photos`);
+      }
     }
   }
   if (!galleryStylesheetCode.includes(".spot-page-video-grid") || !galleryStylesheetCode.includes(".spot-page-video-comment") || !galleryStylesheetCode.includes("grid-template-columns: repeat(2") || !galleryStylesheetCode.includes("grid-template-columns: 1fr") || !stylesheetCode.includes(".spot-page-heading-row") || !stylesheetCode.includes(".spot-page-stamp") || !stylesheetCode.includes("position: absolute") || !stylesheetCode.includes("mix-blend-mode: multiply") || !stylesheetCode.includes("[data-affiliate-module]") || !stylesheetCode.includes(".spot-page-rail-affiliate-group") || !stylesheetCode.includes(".spot-page-mobile-affiliate-note")) fail("shared gallery/video/stamp/affiliate CSS contract is incomplete");
@@ -310,6 +328,11 @@ async function runThinValidator() {
 
   const expectedPages = [];
   const currentPages = [];
+  const expectedReadingCollections = {
+    "odawara-castle": "castles.html", "kakegawa": "castles.html", "kiyosu": "castles.html",
+    "gifu-castle": "castles.html", "sawayama-castle": "castles.html", "hikone-castle": "castles.html",
+    "kannonji-castle": "castles.html", "hirakata-park-wheel": "ferris-wheels.html",
+  };
   for (const lang of ["ja", "en"]) {
     for (const spot of GENERATED_SPOTS.filter((item) => !item.guideRoute)) {
       const relativeFile = `${lang === "ja" ? "spots" : "en/spots"}/${spot.id}.html`;
@@ -328,7 +351,7 @@ async function runThinValidator() {
       if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(body)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
       // ?v= は sync-asset-versions.mjs が内容ハッシュから振る。値そのものではなく
       // 「どのファイルをどの順で読むか」だけを固定する。
-      const scripts = ["spot-page-shared-data.js", pagePayloadRelativePath(spot.id, lang), "spot-page-shared.js", "spot-media-gallery.js", "spot-map.js"];
+      const scripts = ["spot-page-shared-data.js", pagePayloadRelativePath(spot.id, lang), "spot-page-loader.js"];
       // 他スポットの本文を読み込んでいたら、分割の意味が消える。
       const foreignPayloads = (onDisk.match(/data\/spot-pages\/[A-Za-z0-9-]+\.(?:ja|en)\.js/g) || []).filter((match) => match !== pagePayloadRelativePath(spot.id, lang));
       if (foreignPayloads.length) fail(`${relativeFile} loads page payloads for other spots: ${[...new Set(foreignPayloads)].join(", ")}`);
@@ -342,7 +365,7 @@ async function runThinValidator() {
         previous = index;
       }
       const page = pages[spot.id][lang];
-      const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<link rel="stylesheet" href="[^"]*spot-media-gallery\.css[^"]*">/g, "").replace(/((?:src|href)="[^"]+\.(?:js|css))\?v=[A-Za-z0-9._-]+/g, "$1").replace(/\s+/g, " ").trim();
+      const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<link rel="stylesheet" href="[^"]*(?:style|spot-media-gallery)\.css[^"]*">/g, "").replace(/((?:src|href)="[^"]+\.(?:js|css))\?v=[A-Za-z0-9._-]+/g, "$1").replace(/\s+/g, " ").trim();
       if (baselineCommit) {
         const baselineHTML = execFileSync("git", ["show", `${baselineCommit}:${relativeFile}`], { cwd: appDir, encoding: "utf8" });
         if (normalizedHead(onDisk) !== normalizedHead(baselineHTML)) fail(`${relativeFile} static SEO/head changed from explicit baseline ${baselineSelector} (${baselineCommit})`);
@@ -350,6 +373,18 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
+      if (new Set(sharedChapterIds).size !== sharedChapterIds.length) fail(`${relativeFile}: shared guide chapter ids must be unique`);
+      for (const chapter of page.sharedGuide || []) {
+        if (!chapter.id || !chapter.heading || !chapter.hook || !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length) fail(`${relativeFile}: shared guide chapter contract is incomplete`);
+        if (!output.includes(`id="${escape(chapter.id)}"`)) fail(`${relativeFile}: shared guide chapter is missing from rendered output: ${chapter.id}`);
+      }
+      if (page.guideNotice) {
+        if (!page.guideNotice.href || !output.includes(`href="${escape(page.guideNotice.href)}"`)) fail(`${relativeFile}: guide notice destination is missing`);
+        if (!page.guideNotice.heading || !page.guideNotice.body) fail(`${relativeFile}: guide notice contract is incomplete`);
+      }
+      if (spot.id === "hamanako" && sharedChapterIds.join(",") !== "hamanako-fuji") fail(`${relativeFile}: Hamanako shared chapter contract drifted`);
+      if (spot.id === "hamanako-fuji" && page.guideNotice?.href !== "hamanako.html#hamanako-fuji") fail(`${relativeFile}: Hamanako guide notice destination drifted`);
       if (baselineRendererCode && !page.readingLayout) {
         const baseline = renderPage(lang, prefix, spot.id, undefined, false, baselineRendererCode);
         if (baseline.errors.length || baseline.html !== output) fail(`${relativeFile}: non-opt-in rendering changed from ${baselineSelector}`);
@@ -357,15 +392,18 @@ async function runThinValidator() {
         if (baselinePayload.replace(/\r\n/g, "\n") !== pagePayloadCode.get(pagePayloadRelativePath(spot.id, lang)).replace(/\r\n/g, "\n")) fail(`${relativeFile}: non-opt-in payload changed from ${baselineSelector}`);
       }
       if (page.readingLayout) {
-        if (!["kiyosu", "odawara-castle", "kakegawa", "hamanako"].includes(spot.id) || lang !== "ja") fail(`${relativeFile}: unapproved reading layout rollout`);
+        if (lang !== "ja") fail(`${relativeFile}: unapproved reading layout rollout`);
+        const expectedCollectionRoute = expectedReadingCollections[spot.id];
+        if (expectedCollectionRoute && page.readingLayout.collection?.route !== expectedCollectionRoute) fail(`${relativeFile}: expected reading collection ${expectedCollectionRoute}`);
+        if (expectedCollectionRoute && !output.includes(`href="${prefix}${expectedCollectionRoute}" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection"`)) fail(`${relativeFile}: expected reading collection CTA is missing`);
         if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
         if (!output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
         if (output.indexOf('data-spot-media-gallery') > output.indexOf('class="spot-page-facts"')) fail(`${relativeFile}: photo-first ordering changed`);
-        if (!output.includes('見える時間の目安') || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes('列車や走行速度によって変わります')) fail(`${relativeFile}: visibility fact missing`);
+        if (!output.includes('見える時間の目安') || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes(escape(page.readingLayout.visibility.note))) fail(`${relativeFile}: visibility fact missing`);
         if (!output.includes(`href="${prefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${prefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
         if (!output.includes('現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes('地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
-        if (!output.includes('class="spot-reading-sources"') || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
-        for (const label of ["THE STORY", "WHAT TO SEE", "ON THE MAP", "ON BOARD", ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
+        if (((page.references.length || page.bodyLinks.length) && !output.includes('class="spot-reading-sources"')) || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
+        for (const label of ["THE STORY", "ON BOARD", ...(page.explainer ? ["WHAT TO SEE"] : []), ...(page.map?.hasCoordinates ? ["ON THE MAP"] : []), ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
         if (output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
         if (output.indexOf('class="spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
@@ -381,7 +419,7 @@ async function runThinValidator() {
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
       {
-        const relatedFor = { "727-board": "727", "727-sign": "727", "hirakata-park-wheel": "wheels", "kiyosu": "castles", "odawara-castle": "castles", "mishima-catapult": lang === "ja" ? "arenani" : "" };
+        const relatedFor = { "727-board": "727", "727-sign": "727", "hirakata-park-wheel": "wheels", "kiyosu": "castles", "odawara-castle": "castles", "mishima-catapult": "arenani", "shizuoka-tea-fields": "arenani", "fuji-paper-mills": "arenani", "nangu-taisha": "arenani" };
         assertRailSlots(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`, lang, { expectRelated: relatedFor[spot.id] || "" });
       }
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
@@ -417,8 +455,6 @@ async function runThinValidator() {
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
     assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });
     assertRailSlots(japaneseUtility.hosts["mobile-promos"].outerHTML, `Japanese utility ${route} mobile promos`, "ja", { route });
-    if (route === "arenani.html") continue; // 日本語のみのページ
-
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
     assertRailSlots(englishUtility.hosts.rail.outerHTML, `English utility ${route} rail`, "en", { route });

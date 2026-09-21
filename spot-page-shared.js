@@ -100,6 +100,7 @@
         "727": { title: "The 727 sign collection", body: function (count) { return "All " + count + " locations between Tokyo and Shin-Osaka"; } },
         castles: { title: "Castles from the Shinkansen", body: "Keeps and castle hills, with seat sides and spotting tips" },
         wheels: { title: "Find the ferris wheels", body: "Look for little wheels beyond the city" },
+        arenani: { title: "What's that outside?", body: "Everyday Japanese scenery, explained from the window" },
         hanabi: { title: "Fireworks from the window", body: "Festivals along the line, and posts from people who saw them" },
         disney: { title: "Disney Shinkansen", body: "Sparkling Dreams Shinkansen · operating dates and window-side estimates" },
         yakei: { title: "Night views from the window", body: "Find where your train goes dark, and what only shows after it" },
@@ -242,8 +243,7 @@
   var UTILITY_ROUTES = {
     "ferris-wheels.html": { en: true },
     "castles.html": { en: true },
-    // 「あれ、何？」は日本語のみ（他路線の投稿が日本語）。言語スイッチャーを隠す。
-    "arenani.html": { en: false },
+    "arenani.html": { en: true },
     "mieru.html": { en: true },
     "sparkling-dreams.html": { en: true },
     "hanabi.html": { en: true },
@@ -390,14 +390,14 @@
     { id: "727", route: "727-collection.html", icon: "images/stamps/stamp_727-board.svg", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
     { id: "castles", route: "castles.html", icon: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
     { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
-    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260904_mishima_catapult_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", jaOnly: true, spots: ["hinataoka", "gyoran-kannon", "mishima-catapult", "toyohashi-tateiwa", "gifu-hashima-mahalo", "kinshozan", "fujitec-big-wing"] },
+    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["hinataoka", "gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
     { id: "hanabi", route: "hanabi.html", icon: "images/hanabi-window.svg", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
     { id: "disney", route: "sparkling-dreams.html", icon: "images/sparkling-dreams-window.svg", mod: "", track: "sparkling_dreams_entry_click", from: "2026-06-19", until: "2027-03-15" },
     { id: "yakei", route: "yakei.html", icon: "images/yakei-window.svg", mod: " spot-page-rail-yakei", track: "yakei_entry_click", months: [9, 10, 11, 12, 1, 2, 3] },
     { id: "moments", route: "window-moments.html", icon: "images/thumbs/wm-hero-snow.webp", mod: " spot-page-rail-moments", track: "window_moments_entry_click", months: [4, 5, 6] }
   ];
   // 関連枠の既定（今見ているスポットがどの特集にも入っていないとき）
-  var RAIL_DEFAULT_RELATED = { ja: "arenani", en: "castles" };
+  var RAIL_DEFAULT_RELATED = { ja: "arenani", en: "arenani" };
 
   function railFeatureAvailable(feature, lang, currentRoute) {
     return feature.route !== currentRoute && !(feature.jaOnly && lang !== "ja");
@@ -733,7 +733,7 @@
       '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="ガイドの画面例を拡大"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="現在地と次の見どころを表示するGPS地図の画面例"></button><figcaption>既存ガイドの画面例（乗車プレビュー）。現在の位置ではありません。<br>地図：© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
       '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">GPS地図でこの先を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報を使います。</span>' + (compact ? '<span class="copy-chunk">音声案内も使えます。</span><span class="copy-chunk">地図だけでも使えます。</span>' : '<span class="copy-chunk">音声でも案内でき、地図だけでも使えます。</span>') + '</p></article>' +
       '<article class="spot-reading-action"><h3><span class="copy-chunk">列車を選ぶと、</span><span class="copy-chunk">見える時刻が分かる</span></h3><p><span class="copy-chunk">乗る列車のダイヤに合わせて、</span><span class="copy-chunk">' + escapeHTML(page.name) + 'が見えるころと</span><span class="copy-chunk">座席側を案内します。</span></p>' +
-      '<div class="spot-reading-timing"><ol class="spot-reading-steps"><li><strong>乗る列車を選ぶ</strong><span>方向・出発駅・列車の3つだけ。</span></li><li><strong>見える時刻が並ぶ</strong><span>' + escapeHTML(page.name) + 'も、ほかの景色も。<br>時刻とA席・E席を一覧で確認。</span></li><li><strong>近づいたら、窓の外へ</strong><span>地図とカウントダウンで、<br>窓を見るタイミングを案内。</span></li></ol></div>' +
+      '<div class="spot-reading-train-preview" role="img" aria-label="列車選択後の表示例。時刻は実際の運行案内ではありません"><div class="spot-reading-train-choice"><small>列車を選択</small><strong>東京 → 新大阪</strong><span>のぞみ・東京 09:00発</span></div><span class="spot-reading-preview-arrow" aria-hidden="true">↓</span><div class="spot-reading-timeline"><div><time>09:31</time><span>小田原城</span><b>A席</b></div><div><time>09:42</time><span>富士山</span><b>E席</b></div><div><time>10:13</time><span>浜名湖</span><b>A・E席</b></div></div><p>表示イメージ・時刻は例です</p></div>' +
       '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">列車を選んで時刻を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報は不要です。</span>' + (compact ? '<span class="copy-chunk">時刻は目安です。</span><span class="copy-chunk">遅れなどで変わります。</span>' : '<span class="copy-chunk">通過時刻は目安で、遅れなどにより変わります。</span>') + '</p></article></div></section>';
   }
 
@@ -752,7 +752,7 @@
     var inline = (page.inline || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join("");
     var explainer = page.explainer ? "<section class=\"spot-page-section\">" + readingEyebrow(page, "WHAT TO SEE") + "<h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
     var guideNotice = page.guideNotice ? "<section class=\"spot-page-section guide-answer-panel\"><div class=\"guide-answer-copy\"><h2>" + escapeHTML(page.guideNotice.heading) + "</h2><p>" + escapeHTML(page.guideNotice.body) + "</p><p><a class=\"inline-cta\" href=\"" + escapeHTML(page.guideNotice.href) + "\">" + escapeHTML(page.guideNotice.label) + "</a></p></div></section>" : "";
-    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\">" + readingEyebrow(page, "BEYOND THE LAKE") + "<h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>"; }).join("");
+    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\">" + readingEyebrow(page, "BEYOND THE LAKE") + "<h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + (chapter.figure ? pageInlineFigureHTML(chapter.figure, rootPath, lang) : "") + "</section>"; }).join("");
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);

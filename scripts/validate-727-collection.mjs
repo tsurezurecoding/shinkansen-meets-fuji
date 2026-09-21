@@ -111,8 +111,8 @@ assertIncludes(shared, '"東京〜新大阪の沿線、全" + count + "地点を
 assertIncludes(shared, '設置場所の全" + escapeHTML(count) + "地点を見る', "detail card copy must build its count from the shared data");
 assert.equal(sharedData.collection727Count, collection.length, "generated shared data must carry the live collection count");
 assert.ok(!shared.includes("代表地点から始めて、沿線の27地点"), "old verbose detail card must be removed");
-assertIncludes(read("spots/727-board.html"), "spot-page-shared.js", "727 board page must load shared CTA renderer");
-assertIncludes(read("spots/putiputi-sign.html"), "spot-page-shared.js", "putiputi page must load shared CTA renderer");
+assertIncludes(read("spots/727-board.html"), "spot-page-loader.js", "727 board page must load shared CTA renderer");
+assertIncludes(read("spots/putiputi-sign.html"), "spot-page-loader.js", "putiputi page must load shared CTA renderer");
 
 assertIncludes(page, `全${collectableCount}地点`, `page must show the collectable total ${collectableCount}`);
 assertIncludes(shared, '"727-collection.html": { en: true }', "English switch must lead to the English collection page");

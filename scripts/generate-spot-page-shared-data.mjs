@@ -364,6 +364,7 @@ function projectSharedGuide(spot, lang) {
       id: chapter.guideAnchor || chapter.id,
       heading: localized(chapter.sharedGuideHeading, lang) || data.name,
       hook: data.hook || "",
+      ...(lang === "ja" && chapter.id === "hamanako-fuji" ? { figure: projectPhoto(photoItems(chapter)[0], chapter, lang, 0) } : {}),
       paragraphs: Array.isArray(paragraphs) && paragraphs.length ? paragraphs : [data.story || ""],
     };
   });
@@ -447,8 +448,9 @@ function projectMedia(spot, lang) {
   };
 }
 
-// Editorial layout is opt-in per page/language; absence preserves legacy output.
-// Keep visibility wording separate from durationSec (the Nozomi timing datum).
+// Japanese spot pages use the reading layout. English pages deliberately keep
+// their existing renderer contract. Keep visibility wording separate from
+// durationSec (the Nozomi timing datum).
 const READING_LAYOUTS = {
   "kiyosu:ja": {
     version: 1,
@@ -469,6 +471,16 @@ const READING_LAYOUTS = {
 // First rollout: two castles and one waterside view, Japanese only.
 const castleCollection = READING_LAYOUTS["kiyosu:ja"].collection;
 const kiyosuPhoto = { src: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", alt: "車窓から見える清洲城", caption: "清洲城" };
+const wheelCollection = {
+  route: "ferris-wheels.html", title: ["ほかにもある、", "新幹線から見える観覧車"],
+  description: "沿線の観覧車を、写真・席側・見つける目印つきで紹介します。",
+  label: "新幹線から見える観覧車を探す", note: "沿線の6基を、席側と見つけ方つきで。",
+  photos: [
+    { src: "images/thumbs/20260904_nonhoi_wheel_michikusa.webp", alt: "車窓から見えるのんほいパークの観覧車", caption: "のんほいパーク" },
+    { src: "images/thumbs/20260824_hirakata_park_wheel_michikusa.webp", alt: "車窓から見えるひらかたパークの観覧車", caption: "ひらかたパーク" }
+  ],
+  credit: "写真：新幹線の窓"
+};
 READING_LAYOUTS["odawara-castle:ja"] = {
   compactGuide: true,
   version: 1,
@@ -487,6 +499,31 @@ READING_LAYOUTS["hamanako:ja"] = {
   visibility: { label: "見える時間の目安", value: "数十秒ほど", note: "水面や目印が見える区間の目安。列車や走行速度によって変わります" }
 };
 
+function readingLayoutFor(spot) {
+  const seconds = Number(spot.durationSec);
+  const duration = !Number.isFinite(seconds)
+    ? "条件によって変わります"
+    : seconds <= 2 ? "1〜2秒ほど"
+      : seconds <= 8 ? "数秒ほど"
+        : seconds <= 12 ? "数秒〜10秒ほど"
+          : seconds <= 20 ? "10数秒ほど"
+            : seconds <= 60 ? "数十秒ほど"
+              : seconds <= 120 ? "1分前後"
+                : "数分間・区間内で断続的";
+  const note = seconds > 120
+    ? "のぞみ基準の目安。連続して見える秒数ではなく、探し始める区間の目安です"
+    : "のぞみ基準の目安。列車や走行速度、天候・遮蔽物によって変わります";
+  const layout = { version: 1, compactGuide: true, visibility: { label: "見える時間の目安", value: duration, note }, ...(READING_LAYOUTS[spot.id + ":ja"] || {}) };
+  if (spot.scene === "castle" && !layout.collection) layout.collection = { ...castleCollection, photos: [castleCollection.photos[0], kiyosuPhoto], note: "新幹線から見える城を一覧で。" };
+  if (spot.id === "kannonji-castle" && !layout.collection) layout.collection = { ...castleCollection, photos: [castleCollection.photos[0], kiyosuPhoto], note: "新幹線から見える城を一覧で。" };
+  if (spot.id === "hirakata-park-wheel") {
+    layout.collection = { ...wheelCollection };
+  } else if (layout.collection) {
+    layout.collection = { ...layout.collection, description: "東海道・山陽新幹線から見える城を、写真・席側・見つける目印つきで紹介します。", note: "新幹線から見える城を一覧で。" };
+  }
+  return layout;
+}
+
 function projectPage(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const allPhotos = photoItems(spot);
@@ -498,12 +535,13 @@ function projectPage(spot, lang) {
   const headingChunks = localized(spot.pageHeadingChunks, lang);
   const pageHeading = localized(spot.pageHeading, lang) || (lang === "ja" ? `${data.name}はいつ見える？座席側は？` : `When can you see ${data.name} from the Shinkansen?`);
   const explainer = projectExplainer(spot, lang);
+  if (spot.id === "hamanako" && lang === "ja" && explainer && inline[0]) explainer.figure = { ...inline[0], caption: inline[0].note, afterParagraph: 0 };
   const map = projectMap(spot, lang);
   const guideHighlight = localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name);
   return {
     id: String(spot.id),
     lang,
-    ...(READING_LAYOUTS[`${spot.id}:${lang}`] ? { readingLayout: READING_LAYOUTS[`${spot.id}:${lang}`] } : {}),
+    ...(lang === "ja" ? { readingLayout: readingLayoutFor(spot) } : {}),
     name: String(data.name || spot.id),
     area: String(data.area || ""),
     hook: String(data.hook || ""),
@@ -522,7 +560,7 @@ function projectPage(spot, lang) {
     gallery,
     photoHeading: localized(spot.photoSectionHeading, lang) || UI[lang].sectionPhotos(data.name),
     photoHeadingCustom: Boolean(spot.photoSectionHeading),
-    inline,
+    inline: spot.id === "hamanako" && lang === "ja" ? [] : inline,
     photoTip: spot.photoTip ? { heading: localized(spot.photoTip.heading, lang), paragraphs: spot.photoTip[lang] || spot.photoTip.ja || [] } : null,
     bodyLinks: projectBodyLinks(spot, lang),
     routeNote: routeNote(spot, lang, data),

@@ -1116,8 +1116,6 @@ function thinSpotPageHTML(spot, lang) {
   <link rel="alternate" hreflang="en" href="${pageUrl("en", canonicalSpotId(spot))}">
   <link rel="alternate" hreflang="x-default" href="${pageUrl("en", canonicalSpotId(spot))}">
   <script src="${prefix}language-router.js?v=${assetVersion("language-router.js")}"></script>
-  <link rel="stylesheet" href="${prefix}style.css?v=${assetVersion("style.css")}">
-  <link rel="stylesheet" href="${prefix}spot-media-gallery.css?v=${assetVersion("spot-media-gallery.css")}">
   <meta property="og:title" content="${text(title)}">
   <meta property="og:description" content="${text(desc)}">
   <meta property="og:image" content="${spotOgImageUrl(spot)}">
@@ -1133,9 +1131,7 @@ function thinSpotPageHTML(spot, lang) {
   ${staticContentRailHTML}
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
   <script src="${prefix}${spotPagePayloadPath(spot.id, lang)}?v=${assetVersion(spotPagePayloadPath(spot.id, lang))}"></script>
-  <script src="${prefix}spot-page-shared.js?v=${assetVersion("spot-page-shared.js")}"></script>
-  <script src="${prefix}spot-media-gallery.js?v=${assetVersion("spot-media-gallery.js")}"></script>
-  <script src="${prefix}spot-map.js?v=${assetVersion("spot-map.js")}"></script>
+  <script src="${prefix}spot-page-loader.js?v=${assetVersion("spot-page-loader.js")}"></script>
 </body>
 </html>
 `;
@@ -1750,7 +1746,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
-    { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-19" },
+    { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
+    { loc: `${siteRoot}/en/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
