@@ -18,10 +18,14 @@ function createHarness({
   scriptSrc = "https://example.test/assets/spot-page-loader.js",
 } = {}) {
   const events = [];
+  const shellReveals = [];
   const fetchCalls = [];
   const host = { textContent: "" };
   const document = {
     currentScript: { src: scriptSrc },
+    getElementById(id) {
+      return id === 'spot-page-boot-style' ? { remove() { shellReveals.push(events.map(e => new URL(e.url).pathname.split('/').pop())); } } : null;
+    },
     documentElement: { lang },
     createElement(tagName) {
       return { tagName, onload: null, onerror: null };
@@ -60,7 +64,7 @@ function createHarness({
   };
 
   vm.runInNewContext(loaderSource, context, { filename: "spot-page-loader.js" });
-  return { context, events, fetchCalls, host };
+  return { context, events, fetchCalls, host, shellReveals };
 }
 
 function assetUrls(events) {
@@ -147,4 +151,17 @@ test("does not fetch the manifest for file URLs", async () => {
     "file:///C:/site/spot-media-gallery.js",
     "file:///C:/site/spot-map.js",
   ]);
+});
+
+test("reveals static shell only once the styled article renderer has loaded", async () => {
+  const harness = createHarness();
+  await harness.context.window.MADO_SPOT_PAGE_READY;
+  assert.deepEqual(harness.shellReveals, [['style.css', 'spot-media-gallery.css', 'spot-page-shared.js']]);
+});
+
+test("reveals fallback navigation when loading fails", async () => {
+  const harness = createHarness({ failFile: 'style.css' });
+  await harness.context.window.MADO_SPOT_PAGE_READY;
+  assert.equal(harness.shellReveals.length, 1);
+  assert.ok(harness.host.textContent.includes('再読み込み'));
 });

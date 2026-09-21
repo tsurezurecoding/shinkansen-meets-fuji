@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "14514f23e4d0173f",
+  "contentVersion": "636773fc7d2468fc",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -361,8 +361,8 @@
     {
       "path": "spot-page-loader.js",
       "url": "https://www.michikusa-travel.com/spot-page-loader.js",
-      "bytes": 2038,
-      "sha256": "64e9627dbc1d671b1a7558c6fb979d803b50c41fc8fe7d460c2bdd2529aec009"
+      "bytes": 2371,
+      "sha256": "e3268618c9e8f2d632c31b7147f3e7d537bd67b22391bfa0f3a1654f7171aa76"
     },
     {
       "path": "spot-page-shared.js",

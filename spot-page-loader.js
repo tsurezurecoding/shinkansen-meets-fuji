@@ -4,12 +4,20 @@
   var base = new URL(document.currentScript.src).href.replace(/[^/]+$/, '');
   var styles = ['style.css', 'spot-media-gallery.css'];
   var scripts = ['spot-page-shared.js', 'spot-media-gallery.js', 'spot-map.js'];
+  function revealShell() {
+    var bootStyle = document.getElementById('spot-page-boot-style');
+    if (bootStyle) bootStyle.remove();
+  }
   function load(file, versions) {
     return new Promise(function (resolve, reject) {
       var css = /\.css$/.test(file), el = document.createElement(css ? 'link' : 'script');
       var url = base + file + (versions[file] ? '?v=' + versions[file] : '');
       if (css) { el.rel = 'stylesheet'; el.href = url; } else { el.src = url; el.async = false; }
-      el.onload = resolve;
+      el.onload = function () {
+        // The renderer has now placed the article before the static footer cards.
+        if (file === 'spot-page-shared.js') revealShell();
+        resolve();
+      };
       el.onerror = function () { reject(new Error('Could not load ' + file)); };
       document.head.appendChild(el);
     });
@@ -29,6 +37,7 @@
       return scripts.reduce(function (ready, file) { return ready.then(function () { return load(file, versions); }); }, Promise.resolve());
     });
   }).catch(function () {
+    revealShell();
     var host = document.querySelector('[data-spot-page-shared-module="page"]');
     if (host) host.textContent = document.documentElement.lang === 'ja' ? 'ページを読み込めませんでした。再読み込みしてください。' : 'Unable to load this page. Please reload.';
   });

@@ -1107,6 +1107,8 @@ function thinSpotPageHTML(spot, lang) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style id="spot-page-boot-style">html { background:#faf6ef; } [data-spot-page-shared-static] { visibility:hidden; }</style>
+  <noscript><style>[data-spot-page-shared-static] { visibility:visible; }</style></noscript>
   ${embeddedHeadHTML(prefix)}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
