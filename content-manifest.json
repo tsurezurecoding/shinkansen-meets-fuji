@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "06d19ae0697d4e3f",
+  "contentVersion": "511edcd9c8c45216",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -91,8 +91,8 @@
     {
       "path": "en/arenani.html",
       "url": "https://www.michikusa-travel.com/en/arenani.html",
-      "bytes": 15394,
-      "sha256": "194ecedb1afee122f773af5e8733066eb6d20e1ea527542a949b7e762c86b966"
+      "bytes": 17211,
+      "sha256": "f422c62d7184534e49ad4d8b28f7610f7ffa2ec55724f54afae189cb1aa735cd"
     },
     {
       "path": "en/castles.html",
@@ -1366,8 +1366,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 240,
-    "bytes": 8731942,
+    "itemCount": 241,
+    "bytes": 8787956,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -2346,6 +2346,12 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/20260816_727_board_tsuzura_michikusa.webp",
         "bytes": 44328,
         "sha256": "03db4f71f0a3c6f67389aaf0a2f819ebe6e5f433c88484d0313b313e3c5e002d"
+      },
+      {
+        "path": "images/thumbs/20260816_east_mikawa_greenhouses_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20260816_east_mikawa_greenhouses_michikusa.webp",
+        "bytes": 56014,
+        "sha256": "8029531671fd2c46a34d4d58e82b1d9e33247cdd82f6d1cf7ac9111df632dc19"
       },
       {
         "path": "images/thumbs/20260816_fuji_paper_mills_michikusa.webp",

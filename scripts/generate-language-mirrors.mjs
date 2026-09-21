@@ -80,7 +80,7 @@ function localizeEnglishRail(html) {
           <span class="journey-intent-copy">
             <small>EVERYDAY JAPAN</small>
             <strong>What's that outside?</strong>
-            <span>Tea fields, giant green nets, paper mills and a red gate — start with what caught your eye.</span>
+            <span>Tea fields, greenhouses, giant nets and more — start with what caught your eye.</span>
           </span>
         </a>`;
   let result = html.replace(/[ \t]*<!-- en-arenani-card[^>]*-->[\s\S]*?<!-- \/en-arenani-card -->\n?/g, arenaniCard + "\n");

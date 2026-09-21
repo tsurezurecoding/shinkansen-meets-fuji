@@ -24,7 +24,7 @@ const title = 'あれ、何？｜新幹線と電車の車窓で気になった�
 const description = '東海道新幹線の727看板、空へ向かう線路、山際の白い観音。近鉄や東海道線の窓の金色の観音や朱色の門。車窓で一瞬見えて気になった景色の正体を、写真と投稿で確かめられます。';
 const heroImage = 'images/20260904_mishima_catapult_1_michikusa.jpg';
 const englishTitle = "What's That Outside the Train? | Everyday Japan from the Shinkansen";
-const englishDescription = 'Bright green tea rows, giant green nets, white plumes beneath Mt. Fuji, and a red gate in the fields. Learn what these everyday Japanese scenes are from the Tokaido Shinkansen.';
+const englishDescription = 'Bright green tea rows, long silver greenhouses, giant green nets, white plumes beneath Mt. Fuji, and a red gate in the fields. Learn what these everyday Japanese scenes are from the Tokaido Shinkansen.';
 const englishHeroImage = 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg';
 
 // 東海道新幹線: [カードのid, 対象スポット(複数可), 写真src, 写真alt, 種別, 問い, 答え, 本文, リンク先, リンク文]
@@ -78,6 +78,18 @@ const englishCards = [
     link: 'spots/fuji-paper-mills.html', linkText: "Read Fuji City's paper story"
   },
   {
+    id: 'east-mikawa-greenhouses', src: 'images/20260816_east_mikawa_greenhouses_michikusa.jpg', featurePhoto: true,
+    minutes: 81, side: 'E',
+    alt: 'Long silver-white greenhouses among fields in East Mikawa', kind: 'Farming',
+    question: 'What are those long silver tunnels?', answer: 'Greenhouses — “vinyl houses” in Japanese',
+    body: 'Frames covered with transparent agricultural film shelter crops from rain and cold and make growing conditions easier to manage. The repeated arches can look silver-white when they catch the sun.',
+    aside: 'This cluster appears on Seat E just after Toyohashi, in Shimosawaki, Toyokawa. Japanese people commonly call these vinyl houses, although modern covers may use several kinds of plastic. The crop inside cannot be identified reliably from the train.',
+    sources: [
+      ['https://www.maff.go.jp/j/tokei/kouhyou/engei/gaiyou/', 'How Japan defines agricultural houses (MAFF, Japanese)'],
+      ['https://www.city.toyohashi.lg.jp/18937.htm', 'Greenhouse farming around Toyohashi (Japanese)']
+    ]
+  },
+  {
     id: 'kiyosu-golf-driving-range', spotId: 'kiyosu', src: 'images/20260704_kiyosu_golf_driving_range_michikusa.png', featurePhoto: true,
     width: 515, height: 307,
     alt: 'Tall green nets around a golf driving range near Kiyosu', kind: 'Everyday sport',
@@ -108,7 +120,8 @@ const englishTiles = [
 
 // 特集だけで使う自前写真。地点ページのギャラリーへ無理に混ぜず、権利と資産をここで明示する。
 const englishFeaturePhotos = new Map([
-  ['images/20260704_kiyosu_golf_driving_range_michikusa.png', { credit: 'michikusa', date: '2026-07-04' }]
+  ['images/20260704_kiyosu_golf_driving_range_michikusa.png', { credit: 'michikusa', date: '2026-07-04' }],
+  ['images/20260816_east_mikawa_greenhouses_michikusa.jpg', { credit: 'michikusa', date: '2026-08-16' }]
 ]);
 
 const spotById = id => { const s = spots.find(x => x.id === id); if (!s) throw Error('Unknown spot: ' + id); return s; };
@@ -157,9 +170,12 @@ function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText
 }
 
 function englishCard(card) {
-  const spot = spotById(card.spotId);
+  const spot = card.spotId ? spotById(card.spotId) : null;
+  const minutes = card.minutes ?? spot?.minutesFromTokyo;
+  const side = card.side ?? spot?.side;
+  if (!Number.isFinite(minutes) || (side !== 'A' && side !== 'E')) throw Error('Missing timing or seat side on ' + card.id);
   const thumb = card.featurePhoto ? ownFeaturePhoto(card.src) : ownPhoto([card.spotId], card.src);
-  const seat = spot.side === 'A' ? 'Seat A' : 'Seat E';
+  const seat = side === 'A' ? 'Seat A' : 'Seat E';
   const image = `<img src="../${thumb}" alt="${esc(card.alt)}" width="${card.width || 480}" height="${card.height || 320}" loading="lazy" decoding="async">`;
   const media = card.link ? `<a href="${card.link}">${image}</a>` : image;
   const more = card.link ? `<p class="cs-more"><a href="${card.link}">${esc(card.linkText)}</a></p>` : '';
@@ -173,7 +189,7 @@ function englishCard(card) {
         <figcaption>Photo: Shinkansen Window</figcaption>
       </figure>
       <div class="cs-spot-body">
-        <p class="cs-spot-meta"><span class="cs-pill">${spot.minutesFromTokyo} min from Tokyo</span><span class="cs-pill ${spot.side === 'A' ? 'cs-side-a' : 'cs-side-e'}">${seat} side</span><span class="cs-pill">${esc(card.kind)}</span></p>
+        <p class="cs-spot-meta"><span class="cs-pill">${minutes} min from Tokyo</span><span class="cs-pill ${side === 'A' ? 'cs-side-a' : 'cs-side-e'}">${seat} side</span><span class="cs-pill">${esc(card.kind)}</span></p>
         <h3 class="an-question">${esc(card.question).replace(/\?$/, '<span class="an-q">?</span>')}</h3>
         <p class="an-answer"><span>The answer</span><strong>${esc(card.answer)}</strong></p>
         <p>${esc(card.body)}</p>
@@ -394,7 +410,7 @@ ${englishTiles.map(englishTile).join('\n')}
         <p class="eyebrow">EVERYDAY JAPAN, SEEN FROM THE WINDOW</p>
         <p class="an-kicker">You saw it for only a moment</p>
         <h1 id="anTitle">What's That Outside<span class="an-q">?</span></h1>
-        <p class="cs-hero-lead">Bright green rows, giant green nets, white plumes beneath Mt. Fuji, a red gate in the fields. Start with what caught your eye, then learn why it is there.</p>
+        <p class="cs-hero-lead">Bright green rows, long silver tunnels, giant green nets, white plumes beneath Mt. Fuji, a red gate in the fields. Start with what caught your eye, then learn why it is there.</p>
         <p class="an-cta"><a class="btn btn-primary btn-small" href="#everyday-japan" data-cta-track="arenani_section_click" data-cta-id="hero_everyday_japan">Identify the view</a></p>
         <p class="cs-hero-credit">Photos: Shinkansen Window</p>
       </div>
