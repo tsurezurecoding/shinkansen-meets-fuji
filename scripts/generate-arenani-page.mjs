@@ -5,8 +5,9 @@ import { fileURLToPath } from 'node:url';
 import { thumbnailSrc } from './shared/geo.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 
-// 「あれ、何？」特集（日本語のみ）。東海道新幹線のカードは castles.html と同じ形で、
-// 分数・席側・写真は data.js から読む。ほかの路線は画像を転載せず、Xの動画だけを公式埋め込みで出す。
+// 日英の「あれ、何？」特集。日本語版は変わった目印を集め、英語版は訪日旅行者が
+// 最初に正体を知りたくなる日常景を扱う。分数・席側・写真は data.js から読む。
+// 日本語版のほかの路線は画像を転載せず、Xの動画だけを公式埋め込みで出す。
 // 決定: .codex-local/company/departments/product/2026-09-14_arenani-feature-candidates.md
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const spots = vm.runInNewContext(fs.readFileSync(path.join(root, 'data.js'), 'utf8') + ';SPOTS');
@@ -18,9 +19,13 @@ const analytics = fs.readFileSync(path.join(root, 'zukan.html'), 'utf8').match(/
 if (!analytics.includes('measurementId')) throw Error('Analytics source not found');
 
 const pageUrl = 'https://www.michikusa-travel.com/arenani.html';
+const englishPageUrl = 'https://www.michikusa-travel.com/en/arenani.html';
 const title = 'あれ、何？｜新幹線と電車の車窓で気になった景色の正体';
 const description = '東海道新幹線の727看板、空へ向かう線路、山際の白い観音。近鉄や東海道線の窓の金色の観音や朱色の門。車窓で一瞬見えて気になった景色の正体を、写真と投稿で確かめられます。';
 const heroImage = 'images/20260904_mishima_catapult_1_michikusa.jpg';
+const englishTitle = "What's That Outside the Train? | Everyday Japan from the Shinkansen";
+const englishDescription = 'Bright green tea rows, long silver greenhouses, giant green nets, white plumes beneath Mt. Fuji, and a red gate in the fields. Learn what these everyday Japanese scenes are from the Tokaido Shinkansen.';
+const englishHeroImage = 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg';
 
 // 東海道新幹線: [カードのid, 対象スポット(複数可), 写真src, 写真alt, 種別, 問い, 答え, 本文, リンク先, リンク文]
 // 並びは東京からの時間順（複数スポットのカードは最小の分数で並べる）。
@@ -29,6 +34,7 @@ const shinkansen = [
  ['hinataoka', ['hinataoka'], 'images/20260530_hinataoka.jpg', '丘の斜面に並ぶカラフルな三角屋根の住宅', '街並み', '斜面いっぱいの三角屋根、あの街は何？', '平塚市の日向岡', '相模川を渡ってすぐ、丘の斜面に赤・青・緑の三角屋根が並ぶ住宅団地です。統一された家並みが等高線に沿って続き、一瞬で目に焼きつきます。', 'spots/hinataoka.html', '日向岡の車窓ページを見る'],
  ['gyoran-kannon', ['gyoran-kannon'], 'images/20260516_gyoran_kannon_michikusa.jpg', '山際に立つ白い魚籃観音像', '像', '小田原を過ぎて、山際に白い像。あれは何？', '東善院の魚籃観音像', '早川漁港のそばに立つ、高さ約10mの観音像です。手にした魚籠は漁を守る印。海上安全と大漁を願って1982年に建てられました。', 'spots/gyoran-kannon.html', '魚籃観音像の車窓ページを見る'],
  ['mishima-catapult', ['mishima-catapult'], 'images/20260904_mishima_catapult_1_michikusa.jpg', '空へ上っていくように見える三島車両所の着発線', '線路', '空へ駆け上がる線路。あれは何？', '三島車両所の着発線（通称カタパルト）', 'ロケットの発射台ではありません。車両基地へ入る列車が向きを変えるための線路です。本線が下っていく一方で高さを保つので、空へ上っていくように見えます。', 'spots/mishima-catapult.html', '三島車両所のカタパルトの車窓ページを見る'],
+ ['shizuoka-tea-fields', ['shizuoka-tea-fields'], 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg', '緑の畝の間に防霜ファンが何本も立つ静岡の茶畑', '農業設備', '茶畑の中に、何本もの扇風機。何のため？', '新芽を霜から守る防霜ファン', '風が弱く晴れた春先の夜、地表付近には冷たい空気がたまります。高い位置に残る比較的暖かい空気を斜め下へ送り、茶の新芽が凍霜害を受けるのを防ぐ設備です。', 'spots/shizuoka-tea-fields.html', '静岡の茶畑と防霜ファンを見る', ['A', 'E']],
  ['toyohashi-tateiwa', ['toyohashi-tateiwa'], 'images/20260628_toyohashi_tateiwa_michikusa.jpg', '林の丘から突き出す豊橋の立岩', '岩', '林の丘から、岩壁だけが突き出している？', '豊橋市雲谷町の立岩', '浜名湖を過ぎて豊橋へ向かう途中に現れる、標高約88mの岩山です。南側が最大約30m切り立った、むき出しのチャートの岩壁です。', 'spots/toyohashi-tateiwa.html', '豊橋の立岩の車窓ページを見る'],
  ['gifu-hashima-mahalo', ['gifu-hashima-mahalo'], 'images/20260816_gifu_hashima_mahalo_1_michikusa.jpg', '岐阜羽島駅のホーム越しに見えるMaHaLoの看板', '看板', '岐阜なのに、なぜハワイ語？', '岐阜羽島のマハロ看板', 'ホームの向こうの「MaHaLo」は、羽島市に本社を置く会社が販売する海洋深層水の商品名です。海から遠い田園に突然ハワイ語が現れますが、実は販売元のお膝元です。', 'spots/gifu-hashima-mahalo.html', 'マハロ看板の車窓ページを見る'],
  ['kinshozan', ['kinshozan'], 'images/20260704_kinshozan_michikusa.jpg', '山肌が白く切り取られた金生山', '山', 'ナイフで切り落としたような山。なぜあの形？', '石灰岩を掘り続けた金生山', '大垣付近の遠くに見える、全体が石灰岩の山です。江戸時代から採掘が続き、階段状の白い山肌は、もとの形ではなく掘り出した跡です。', 'spots/kinshozan.html', '金生山の車窓ページを見る'],
@@ -52,6 +58,72 @@ const tiles = [
  ['gyoran-kannon', 'images/20260516_gyoran_kannon_michikusa.jpg', '山際に立つ白い魚籃観音像', '山際の白い像']
 ];
 
+// 英語版は「日本では見慣れていても、初めて見る旅行者には正体が分かりにくい景色」から始める。
+// 茶畑は畝の美しさを主役にし、防霜ファンは二つ目の発見として扱う。
+const englishCards = [
+  {
+    id: 'shizuoka-tea-fields', spotId: 'shizuoka-tea-fields', src: 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg',
+    alt: 'Bright green tea rows rolling across the hills of Shizuoka', kind: 'Landscape',
+    question: 'What are those bright green rows?', answer: "Shizuoka's tea fields",
+    body: 'Tea bushes are trimmed into long, rounded hedges that follow the rise and fall of the hills. In spring, the first new leaves turn the fields a vivid yellow-green — one of the signature landscapes of Shizuoka.',
+    aside: 'And the fans? The propellers above the rows are frost-protection fans. On cold spring nights they blow relatively warmer air down toward the tender new buds.',
+    link: 'spots/shizuoka-tea-fields.html', linkText: 'See the tea fields from the train'
+  },
+  {
+    id: 'fuji-paper-mills', spotId: 'fuji-paper-mills', src: 'images/20260816_fuji_paper_mills_michikusa.jpg',
+    alt: "Fuji City's paper mills beneath a cloudy Mt. Fuji", kind: 'Industry',
+    question: 'Why are there so many chimneys below Mt. Fuji?', answer: "Fuji City's paper mills",
+    body: 'Fuji is one of Japan\'s great papermaking towns. Its mills grew around abundant groundwater from Mt. Fuji and industrial water from the Fuji River; the white plumes you notice are steam from a working industrial landscape.',
+    aside: 'Keep watching Seat E after Mt. Fuji. About a minute before Shin-Fuji, the foreground changes from fields to chimneys, tanks and pipes.',
+    link: 'spots/fuji-paper-mills.html', linkText: "Read Fuji City's paper story"
+  },
+  {
+    id: 'east-mikawa-greenhouses', src: 'images/20260816_east_mikawa_greenhouses_michikusa.jpg', featurePhoto: true,
+    minutes: 81, side: 'E',
+    alt: 'Long silver-white greenhouses among fields in East Mikawa', kind: 'Farming',
+    question: 'What are those long silver tunnels?', answer: 'Greenhouses — “vinyl houses” in Japanese',
+    body: 'Frames covered with transparent agricultural film shelter crops from rain and cold and make growing conditions easier to manage. The repeated arches can look silver-white when they catch the sun.',
+    aside: 'This cluster appears on Seat E just after Toyohashi, in Shimosawaki, Toyokawa. Japanese people commonly call these vinyl houses, although modern covers may use several kinds of plastic. The crop inside cannot be identified reliably from the train.',
+    sources: [
+      ['https://www.maff.go.jp/j/tokei/kouhyou/engei/gaiyou/', 'How Japan defines agricultural houses (MAFF, Japanese)'],
+      ['https://www.city.toyohashi.lg.jp/18937.htm', 'Greenhouse farming around Toyohashi (Japanese)']
+    ]
+  },
+  {
+    id: 'kiyosu-golf-driving-range', spotId: 'kiyosu', src: 'images/20260704_kiyosu_golf_driving_range_michikusa.png', featurePhoto: true,
+    width: 515, height: 307,
+    alt: 'Tall green nets around a golf driving range near Kiyosu', kind: 'Everyday sport',
+    question: 'What are those giant green nets?', answer: 'A golf driving range — uchippanashi in Japanese',
+    body: 'The nets stop golf balls from reaching nearby homes and roads. In Japanese cities, many ranges stack hitting bays on two or three floors, so a place to practise golf can look like a giant cage.',
+    aside: 'This one flashes past Seat E shortly before Kiyosu Castle. The format is not unique to Japan, but it is a common city sight here. Uchippanashi (打ちっぱなし) roughly means “keep hitting.”',
+    sources: [
+      ['https://www.japan-guide.com/e/e2082.html', 'Golf ranges in Japan'],
+      ['https://www.reddit.com/r/ANormalDayInJapan/comments/1g3emo2/', 'A first-time visitor asks what it is']
+    ]
+  },
+  {
+    id: 'nangu-taisha', spotId: 'nangu-taisha', src: 'images/20260629_nangu_taisha_1_michikusa.jpg',
+    alt: 'A giant vermilion torii gate rising beyond farmland', kind: 'Shrine gateway',
+    question: 'Why is there a giant red gate in the fields?', answer: "Nangu Taisha's Grand Torii",
+    body: 'A torii marks the approach to a Shinto shrine. This one stands about a kilometre from Nangu Taisha itself and spans the road below, announcing the entrance long before the sanctuary comes into view.',
+    aside: 'At more than 21 metres tall, it flashes past Seat A between Gifu-Hashima and Maibara. The low farmland around it makes the red gate look even larger.',
+    link: 'spots/nangu-taisha.html', linkText: 'See the giant torii and its shrine'
+  }
+];
+
+const englishTiles = [
+  ['shizuoka-tea-fields', 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg', 'Bright green tea fields in Shizuoka', 'Green rows'],
+  ['kiyosu-golf-driving-range', 'images/20260704_kiyosu_golf_driving_range_michikusa.png', 'Tall green nets around a golf driving range near Kiyosu', 'Giant green nets'],
+  ['fuji-paper-mills', 'images/20260816_fuji_paper_mills_michikusa.jpg', "Fuji City's paper mills", 'White plumes'],
+  ['nangu-taisha', 'images/20260629_nangu_taisha_1_michikusa.jpg', 'Nangu Taisha Grand Torii beyond fields', 'A red gate']
+];
+
+// 特集だけで使う自前写真。地点ページのギャラリーへ無理に混ぜず、権利と資産をここで明示する。
+const englishFeaturePhotos = new Map([
+  ['images/20260704_kiyosu_golf_driving_range_michikusa.png', { credit: 'michikusa', date: '2026-07-04' }],
+  ['images/20260816_east_mikawa_greenhouses_michikusa.jpg', { credit: 'michikusa', date: '2026-08-16' }]
+]);
+
 const spotById = id => { const s = spots.find(x => x.id === id); if (!s) throw Error('Unknown spot: ' + id); return s; };
 // 写真は自前撮影（クレジット michikusa）だけを使う。スポットの主画像か掲載写真のどちらかに無ければ止める。
 function ownPhoto(spotIds, src) {
@@ -64,14 +136,22 @@ function ownPhoto(spotIds, src) {
  if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
  return thumb;
 }
+function ownFeaturePhoto(src) {
+ const photo = englishFeaturePhotos.get(src);
+ if (!photo || photo.credit !== 'michikusa') throw Error('Unregistered English feature photograph: ' + src);
+ if (!fs.existsSync(path.join(root, src))) throw Error('Missing photograph: ' + src);
+ const thumb = thumbnailSrc(src);
+ if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
+ return thumb;
+}
 const minutesOf = ids => Math.min(...ids.map(id => spotById(id).minutesFromTokyo));
 
-function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText]) {
+function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText, seatOverride]) {
  const thumb = ownPhoto(ids, src);
  const list = ids.map(spotById).sort((x, y) => x.minutesFromTokyo - y.minutesFromTokyo);
  const minutes = [...new Set(list.map(s => s.minutesFromTokyo))];
  const minuteText = minutes.length > 1 ? `東京から${minutes[0]}〜${minutes[minutes.length - 1]}分` : `東京から${minutes[0]}分`;
- const sides = [...new Set(list.map(s => s.side))].sort();
+ const sides = [...new Set(seatOverride || list.map(s => s.side))].sort();
  if (sides.some(side => side !== 'A' && side !== 'E')) throw Error('Unexpected seat side on ' + cardId);
  const seat = sides.map(side => `<span class="cs-pill ${side === 'A' ? 'cs-side-a' : 'cs-side-e'}">${side}席側</span>`).join('');
  return `    <article class="cs-spot" id="${cardId}">
@@ -85,6 +165,35 @@ function shinkansenCard([cardId, ids, src, alt, kind, q, a, body, link, linkText
         <p class="an-answer">答え<strong>${esc(a)}</strong></p>
         <p>${esc(body)}</p>
         <p class="cs-more"><a href="${link}">${esc(linkText)}</a></p>
+      </div>
+    </article>`;
+}
+
+function englishCard(card) {
+  const spot = card.spotId ? spotById(card.spotId) : null;
+  const minutes = card.minutes ?? spot?.minutesFromTokyo;
+  const side = card.side ?? spot?.side;
+  if (!Number.isFinite(minutes) || (side !== 'A' && side !== 'E')) throw Error('Missing timing or seat side on ' + card.id);
+  const thumb = card.featurePhoto ? ownFeaturePhoto(card.src) : ownPhoto([card.spotId], card.src);
+  const seat = side === 'A' ? 'Seat A' : 'Seat E';
+  const image = `<img src="../${thumb}" alt="${esc(card.alt)}" width="${card.width || 480}" height="${card.height || 320}" loading="lazy" decoding="async">`;
+  const media = card.link ? `<a href="${card.link}">${image}</a>` : image;
+  const more = card.link ? `<p class="cs-more"><a href="${card.link}">${esc(card.linkText)}</a></p>` : '';
+  const sources = card.sources?.length
+    ? `<p class="an-links">${card.sources.map(([href, label]) => `<a href="${href}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</p>`
+    : '';
+  const extras = [sources, more].filter(Boolean).join('\n        ');
+  return `    <article class="cs-spot" id="${card.id}">
+      <figure class="cs-figure">
+        ${media}
+        <figcaption>Photo: Shinkansen Window</figcaption>
+      </figure>
+      <div class="cs-spot-body">
+        <p class="cs-spot-meta"><span class="cs-pill">${minutes} min from Tokyo</span><span class="cs-pill ${side === 'A' ? 'cs-side-a' : 'cs-side-e'}">${seat} side</span><span class="cs-pill">${esc(card.kind)}</span></p>
+        <h3 class="an-question">${esc(card.question).replace(/\?$/, '<span class="an-q">?</span>')}</h3>
+        <p class="an-answer"><span>The answer</span><strong>${esc(card.answer)}</strong></p>
+        <p>${esc(card.body)}</p>
+        <p class="an-second-look"><strong>Look again.</strong> ${esc(card.aside)}</p>${extras ? `\n        ${extras}` : ''}
       </div>
     </article>`;
 }
@@ -119,8 +228,16 @@ function tile([cardId, src, alt, label]) {
  return `        <li class="an-tile"><a href="#${cardId}"><img src="${src}" alt="${esc(alt)}" width="640" height="460"${cardId === tiles[0][0] ? ' fetchpriority="high"' : ''}><span>${esc(label)}<b>？</b></span></a></li>`;
 }
 
-function featureFooter() {
- const footer = fs.readFileSync(path.join(root, 'yakei.html'), 'utf8').match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
+function englishTile([cardId, src, alt, label], index) {
+  const card = englishCards.find(entry => entry.id === cardId);
+  if (!card) throw Error('English hero tile must point to a card: ' + cardId);
+  if (card.featurePhoto) ownFeaturePhoto(src); else ownPhoto([card.spotId], src);
+  return `        <li class="an-tile"><a href="#${cardId}"><img src="../${src}" alt="${esc(alt)}" width="640" height="460"${index === 0 ? ' fetchpriority="high"' : ''}><span>${esc(label)}<b>?</b></span></a></li>`;
+}
+
+function featureFooter(lang = 'ja') {
+ const source = lang === 'en' ? path.join(root, 'en', 'yakei.html') : path.join(root, 'yakei.html');
+ const footer = fs.readFileSync(source, 'utf8').match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
  if (!footer) throw Error('Shared footer source not found');
  return footer;
 }
@@ -140,6 +257,9 @@ function render() {
   <title>${title} | 新幹線の窓</title>
   <meta name="description" content="${description}">
   <link rel="canonical" href="${pageUrl}">
+  <link rel="alternate" hreflang="ja" href="${pageUrl}">
+  <link rel="alternate" hreflang="en" href="${englishPageUrl}">
+  <link rel="alternate" hreflang="x-default" href="${englishPageUrl}">
   <link rel="stylesheet" href="style.css?v=${assetVersion('style.css')}">
   <link rel="stylesheet" href="castles.css?v=${assetVersion('castles.css')}">
   <link rel="stylesheet" href="arenani.css?v=${assetVersion('arenani.css')}">
@@ -238,9 +358,119 @@ ${otherLines.map(otherLineCard).join('\n')}
 `;
 }
 
+function renderEnglish() {
+ const cards = englishCards.map(englishCard).join('\n');
+ const json = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: englishTitle, description: englishDescription, url: englishPageUrl, inLanguage: 'en', isPartOf: { '@type': 'WebSite', name: 'Shinkansen Window', url: 'https://www.michikusa-travel.com/en/' } };
+ return `<!doctype html>
+<!-- Generated by scripts/generate-arenani-page.mjs; edit the generator. -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../app-embedded.js?v=${assetVersion('app-embedded.js')}"></script>
+  <link rel="stylesheet" href="../app-embedded.css?v=${assetVersion('app-embedded.css')}">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>${englishTitle}</title>
+  <meta name="description" content="${englishDescription}">
+  <link rel="canonical" href="${englishPageUrl}">
+  <link rel="alternate" hreflang="ja" href="${pageUrl}">
+  <link rel="alternate" hreflang="en" href="${englishPageUrl}">
+  <link rel="alternate" hreflang="x-default" href="${englishPageUrl}">
+  <link rel="stylesheet" href="../style.css?v=${assetVersion('style.css')}">
+  <link rel="stylesheet" href="../castles.css?v=${assetVersion('castles.css')}">
+  <link rel="stylesheet" href="../arenani.css?v=${assetVersion('arenani.css')}">
+  <link rel="preload" as="image" href="../${englishHeroImage}" fetchpriority="high">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shinkansen Window">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="${englishTitle}">
+  <meta property="og:description" content="${englishDescription}">
+  <meta property="og:image" content="https://www.michikusa-travel.com/${englishHeroImage}">
+  <meta property="og:image:alt" content="Bright green tea rows rolling across the hills of Shizuoka">
+  <meta property="og:url" content="${englishPageUrl}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="${englishTitle}">
+  <meta name="twitter:description" content="${englishDescription}">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/${englishHeroImage}">
+  <meta name="twitter:image:alt" content="Bright green tea rows rolling across the hills of Shizuoka">
+  <script type="application/ld+json">${JSON.stringify(json)}</script>
+  ${analytics}
+</head>
+<body class="castles-page arenani-page arenani-page-en spot-page spot-page-utility" data-page="arenani" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="arenani.html">
+  <div data-spot-page-shared-module="topbar"></div>
+
+  <main>
+    <section class="cs-hero an-hero" aria-labelledby="anTitle">
+      <div class="an-stage">
+      <ul class="an-tiles" aria-label="Scenes explained on this page">
+${englishTiles.map(englishTile).join('\n')}
+      </ul>
+      <div class="an-plaque">
+        <p class="eyebrow">EVERYDAY JAPAN, SEEN FROM THE WINDOW</p>
+        <p class="an-kicker">You saw it for only a moment</p>
+        <h1 id="anTitle">What's That Outside<span class="an-q">?</span></h1>
+        <p class="cs-hero-lead">Bright green rows, long silver tunnels, giant green nets, white plumes beneath Mt. Fuji, a red gate in the fields. Start with what caught your eye, then learn why it is there.</p>
+        <p class="an-cta"><a class="btn btn-primary btn-small" href="#everyday-japan" data-cta-track="arenani_section_click" data-cta-id="hero_everyday_japan">Identify the view</a></p>
+        <p class="cs-hero-credit">Photos: Shinkansen Window</p>
+      </div>
+      </div>
+    </section>
+
+    <div class="spot-page-shell cs-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article cs-article">
+
+  <section class="cs-section" id="everyday-japan" aria-labelledby="anEverydayTitle">
+    <div class="cs-section-head">
+      <p class="eyebrow">01 / EVERYDAY JAPAN</p>
+      <h2 id="anEverydayTitle">Begin with the shape you remember</h2>
+      <p class="cs-section-lead">These are not tourist attractions placed for the train. They are working fields, factories, sports facilities and sacred markers — ordinary parts of Japan that become surprising when they flash past the window.</p>
+    </div>
+${cards}
+  </section>
+
+  <section class="cs-next" aria-labelledby="anNextTitle">
+    <div class="cs-card">
+      <h2 id="anNextTitle">Look for them on your next ride</h2>
+      <p>Choose your train to see when each view should pass, or browse the full field guide for castles, signs, rivers and more.</p>
+      <div class="cs-card-actions"><a class="btn btn-primary" href="start.html">Choose your train</a><a href="zukan.html">Browse every view</a></div>
+    </div>
+  </section>
+
+  <section class="cs-about" aria-labelledby="anAboutTitle">
+    <div class="cs-note-card">
+      <h2 id="anAboutTitle">About these views</h2>
+      <p>Every photo on this page was taken through a Tokaido Shinkansen window. Times are Nozomi-based estimates; start watching a little early.</p>
+    </div>
+  </section>
+
+      </article>
+    </div>
+
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
+  </main>
+
+  ${featureFooter('en')}
+
+  <script src="../spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}"></script>
+  <script src="../spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}"></script>
+</body>
+</html>
+`;
+}
+
 const dest = path.join(root, 'arenani.html');
 const html = render();
+const englishDest = path.join(root, 'en', 'arenani.html');
+const englishHtml = renderEnglish();
 if (process.argv.includes('--check')) {
  if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('What-was-that page out of date: ' + dest);
-} else fs.writeFileSync(dest, html);
-console.log(`What-was-that page: ${shinkansen.length} Shinkansen cards from data.js, ${otherLines.length} other-line cards with X video embeds.`);
+ if (!fs.existsSync(englishDest) || fs.readFileSync(englishDest, 'utf8') !== englishHtml) throw Error('English What-was-that page out of date: ' + englishDest);
+} else {
+ fs.writeFileSync(dest, html);
+ fs.writeFileSync(englishDest, englishHtml);
+}
+console.log(`What-was-that pages: ${shinkansen.length} Japanese Shinkansen cards, ${otherLines.length} Japanese other-line cards, ${englishCards.length} English everyday-view cards.`);

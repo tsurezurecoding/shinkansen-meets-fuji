@@ -88,7 +88,7 @@ async function runThinValidator() {
 
   // 左ペインの枠（spot-page-shared.js の RAIL_FEATURES / pickRailFeatures）:
   // アプリ1・音声ガイド1・関連特集1・時期の特集0〜1・「特集をすべて見る」1。
-  // 自分自身の特集へのカードは出さず、英語では日本語だけの特集（arenani.html）を出さない。
+  // 自分自身の特集へのカードは出さず、日英それぞれの関連特集を1件出す。
   // 727の地点数は生成ペイロードを正本にする（文言に凍結した数字を持たない）。
   function assertRailSlots(html, label, lang, { route = "", expectRelated = "" } = {}) {
     const n = (re) => count(html, re);
@@ -100,7 +100,6 @@ async function runThinValidator() {
     const picked = [...html.matchAll(/data-cta-id="spot_rail_(?:related|seasonal)_([^"]+)"/g)].map((match) => match[1]);
     if (new Set(picked).size !== picked.length) fail(`${label}: the related and seasonal slots must not repeat a feature`);
     if (route && new RegExp(`href="[^"]*${route.replace(/\./g, "\\.")}" data-cta-track=`).test(html)) fail(`${label}: rail must not link to its own feature page`);
-    if (lang === "en" && html.includes("arenani.html")) fail(`${label}: English rail must not link to the Japanese-only What-was-that page`);
     if (lang === "en" && html.includes("727看板コレクション")) fail(`${label}: English rail must not carry the Japanese 727 label`);
     if (expectRelated && !html.includes(`data-cta-id="spot_rail_related_${expectRelated}"`)) fail(`${label}: related slot must show ${expectRelated}`);
     if (picked.includes("727")) {
@@ -378,7 +377,7 @@ async function runThinValidator() {
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
       {
-        const relatedFor = { "727-board": "727", "727-sign": "727", "hirakata-park-wheel": "wheels", "kiyosu": "castles", "odawara-castle": "castles", "mishima-catapult": lang === "ja" ? "arenani" : "" };
+        const relatedFor = { "727-board": "727", "727-sign": "727", "hirakata-park-wheel": "wheels", "kiyosu": "castles", "odawara-castle": "castles", "mishima-catapult": "arenani", "shizuoka-tea-fields": "arenani", "fuji-paper-mills": "arenani", "nangu-taisha": "arenani" };
         assertRailSlots(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`, lang, { expectRelated: relatedFor[spot.id] || "" });
       }
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
@@ -414,8 +413,6 @@ async function runThinValidator() {
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
     assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });
     assertRailSlots(japaneseUtility.hosts["mobile-promos"].outerHTML, `Japanese utility ${route} mobile promos`, "ja", { route });
-    if (route === "arenani.html") continue; // 日本語のみのページ
-
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
     assertRailSlots(englishUtility.hosts.rail.outerHTML, `English utility ${route} rail`, "en", { route });

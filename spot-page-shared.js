@@ -100,6 +100,7 @@
         "727": { title: "The 727 sign collection", body: function (count) { return "All " + count + " locations between Tokyo and Shin-Osaka"; } },
         castles: { title: "Castles from the Shinkansen", body: "Keeps and castle hills, with seat sides and spotting tips" },
         wheels: { title: "Find the ferris wheels", body: "Look for little wheels beyond the city" },
+        arenani: { title: "What's that outside?", body: "Everyday Japanese scenery, explained from the window" },
         hanabi: { title: "Fireworks from the window", body: "Festivals along the line, and posts from people who saw them" },
         disney: { title: "Disney Shinkansen", body: "Sparkling Dreams Shinkansen · operating dates and window-side estimates" },
         yakei: { title: "Night views from the window", body: "Find where your train goes dark, and what only shows after it" },
@@ -242,8 +243,7 @@
   var UTILITY_ROUTES = {
     "ferris-wheels.html": { en: true },
     "castles.html": { en: true },
-    // 「あれ、何？」は日本語のみ（他路線の投稿が日本語）。言語スイッチャーを隠す。
-    "arenani.html": { en: false },
+    "arenani.html": { en: true },
     "mieru.html": { en: true },
     "sparkling-dreams.html": { en: true },
     "hanabi.html": { en: true },
@@ -390,14 +390,14 @@
     { id: "727", route: "727-collection.html", icon: "images/stamps/stamp_727-board.svg", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
     { id: "castles", route: "castles.html", icon: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
     { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
-    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260904_mishima_catapult_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", jaOnly: true, spots: ["hinataoka", "gyoran-kannon", "mishima-catapult", "toyohashi-tateiwa", "gifu-hashima-mahalo", "kinshozan", "fujitec-big-wing"] },
+    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["hinataoka", "gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
     { id: "hanabi", route: "hanabi.html", icon: "images/hanabi-window.svg", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
     { id: "disney", route: "sparkling-dreams.html", icon: "images/sparkling-dreams-window.svg", mod: "", track: "sparkling_dreams_entry_click", from: "2026-06-19", until: "2027-03-15" },
     { id: "yakei", route: "yakei.html", icon: "images/yakei-window.svg", mod: " spot-page-rail-yakei", track: "yakei_entry_click", months: [9, 10, 11, 12, 1, 2, 3] },
     { id: "moments", route: "window-moments.html", icon: "images/thumbs/wm-hero-snow.webp", mod: " spot-page-rail-moments", track: "window_moments_entry_click", months: [4, 5, 6] }
   ];
   // 関連枠の既定（今見ているスポットがどの特集にも入っていないとき）
-  var RAIL_DEFAULT_RELATED = { ja: "arenani", en: "castles" };
+  var RAIL_DEFAULT_RELATED = { ja: "arenani", en: "arenani" };
 
   function railFeatureAvailable(feature, lang, currentRoute) {
     return feature.route !== currentRoute && !(feature.jaOnly && lang !== "ja");

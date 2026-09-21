@@ -74,8 +74,16 @@ function localizeEnglishRail(html) {
     ["contact.html", "en/contact.html"],
     ["privacy.html", "en/privacy.html"],
   ];
-  // 日本語だけのページへのカード（<!-- ja-only --> 〜 <!-- /ja-only -->）は英語の図鑑に出さない。
-  let result = html.replace(/[ \t]*<!-- ja-only[^>]*-->[\s\S]*?<!-- \/ja-only -->\n?/g, "");
+  // 日本語版と英語版で題材の選び方が異なる「あれ、何？」カードは英語向けの入口に差し替える。
+  const arenaniCard = `        <a class="journey-intent-card journey-intent-cloudy" href="en/arenani.html" data-cta-track="zukan_theme_click" data-cta-id="arenani">
+          <img src="images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>EVERYDAY JAPAN</small>
+            <strong>What's that outside?</strong>
+            <span>Tea fields, greenhouses, giant nets and more — start with what caught your eye.</span>
+          </span>
+        </a>`;
+  let result = html.replace(/[ \t]*<!-- en-arenani-card[^>]*-->[\s\S]*?<!-- \/en-arenani-card -->\n?/g, arenaniCard + "\n");
   copy.forEach(([ja, en]) => { result = result.replaceAll(ja, en); });
   routes.forEach(([ja, en]) => { result = result.replaceAll(`href="${ja}"`, `href="${en}"`); });
   result = result

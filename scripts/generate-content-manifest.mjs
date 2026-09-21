@@ -21,6 +21,7 @@ const contentFiles = [
   "en/castles.html",
   "castles.css",
   "arenani.html",
+  "en/arenani.html",
   "arenani.css",
   // ライブ案内・車窓データの本体
   // data.js は編集の正本。data-runtime.js はブラウザが読む部分集合で、
