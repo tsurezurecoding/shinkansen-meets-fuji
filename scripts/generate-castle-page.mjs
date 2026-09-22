@@ -208,7 +208,7 @@ function render(lang) {
   <meta name="twitter:image:alt" content="${heroAlt}">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
   <script src="${prefix}language-router.js?v=${assetVersion('language-router.js')}"></script>
-  ${ANALYTICS.plain}
+  ${ANALYTICS.withEmbeddedGuard}
 </head>
 <body class="castles-page spot-page spot-page-utility" data-page="castles" data-spot-page-shared-context="utility" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${en ? '../' : './'}" data-spot-page-shared-route="castles.html">
   <div data-spot-page-shared-module="topbar"></div>

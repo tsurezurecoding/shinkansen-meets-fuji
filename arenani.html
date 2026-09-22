@@ -35,6 +35,7 @@
   <script src="language-router.js?v=a8d4ab78"></script>
     <script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
@@ -44,12 +45,8 @@
       var storageOptedOut = false;
 
       try {
-        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
-          localStorage.setItem(optoutKey, "1");
-        }
-        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
-          localStorage.removeItem(optoutKey);
-        }
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
         storageOptedOut = localStorage.getItem(optoutKey) === "1";
       } catch (error) {
         storageOptedOut = false;

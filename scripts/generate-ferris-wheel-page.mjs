@@ -160,7 +160,7 @@ function render(lang) {
   <meta name="twitter:image:alt" content="${heroAlt}">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
   <script src="${prefix}language-router.js?v=${assetVersion('language-router.js')}"></script>
-  ${ANALYTICS.plain}
+  ${ANALYTICS.withEmbeddedGuard}
 </head>
 <body class="ferris-wheels-page spot-page spot-page-utility" data-page="ferris-wheels" data-spot-page-shared-context="utility" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${en ? '../' : './'}" data-spot-page-shared-route="ferris-wheels.html">
   <div data-spot-page-shared-module="topbar"></div>

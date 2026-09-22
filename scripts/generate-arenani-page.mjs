@@ -279,7 +279,7 @@ function render() {
   <meta name="twitter:image:alt" content="空へ上っていくように見える三島車両所の線路">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
   <script src="language-router.js?v=${assetVersion('language-router.js')}"></script>
-  ${ANALYTICS.plain}
+  ${ANALYTICS.withEmbeddedGuard}
 </head>
 <body class="castles-page arenani-page spot-page spot-page-utility" data-page="arenani" data-spot-page-shared-context="utility" data-spot-page-shared-lang="ja" data-spot-page-shared-root="./" data-spot-page-shared-route="arenani.html">
   <div data-spot-page-shared-module="topbar"></div>
@@ -394,7 +394,7 @@ function renderEnglish() {
   <meta name="twitter:image" content="https://www.michikusa-travel.com/${englishHeroImage}">
   <meta name="twitter:image:alt" content="Bright green tea rows rolling across the hills of Shizuoka">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
-  ${ANALYTICS.plain}
+  ${ANALYTICS.withEmbeddedGuard}
 </head>
 <body class="castles-page arenani-page arenani-page-en spot-page spot-page-utility" data-page="arenani" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="arenani.html">
   <div data-spot-page-shared-module="topbar"></div>

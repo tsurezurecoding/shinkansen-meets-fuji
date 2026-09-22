@@ -34,6 +34,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"What's That Outside the Train? | Everyday Japan from the Shinkansen","description":"Bright green tea rows, long silver greenhouses, giant green nets, white plumes beneath Mt. Fuji, and a red gate in the fields. Learn what these everyday Japanese scenes are from the Tokaido Shinkansen.","url":"https://www.michikusa-travel.com/en/arenani.html","inLanguage":"en","isPartOf":{"@type":"WebSite","name":"Shinkansen Window","url":"https://www.michikusa-travel.com/en/"}}</script>
     <script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
@@ -43,12 +44,8 @@
       var storageOptedOut = false;
 
       try {
-        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
-          localStorage.setItem(optoutKey, "1");
-        }
-        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
-          localStorage.removeItem(optoutKey);
-        }
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
         storageOptedOut = localStorage.getItem(optoutKey) === "1";
       } catch (error) {
         storageOptedOut = false;
