@@ -90,7 +90,7 @@ const INTRO = {
   title: ['The line and the castles follow the same road'],
   lead: ['Highways, river crossings, open plains: the places chosen for castles are the places the railway later chose too.'],
   body: [
-   'Somewhere between the cities, a white tower appears above the rooftops for a few seconds and is gone. That is a castle. The part you see is the keep, called <i>tenshu</i>: a wooden tower on a high, curving base of fitted stone, once ringed by moats, gates and lesser turrets. It was not a stone house to live in, as in Europe, but the seat of a <i>daimyo</i>, the lord who governed the province around it, with a town grown up below its walls.',
+   'Somewhere between the cities, a white tower rises above the rooftops beyond the bullet train window, holds for a few seconds, and is gone. That is a castle. The part you see is the keep, called <i>tenshu</i>: a wooden tower on a high, curving base of fitted stone, once ringed by moats, gates and lesser turrets. It was not a stone house to live in, as in Europe, but the seat of a <i>daimyo</i>, the lord who governed the province around it, with a town grown up below its walls.',
    'Castles were placed where people and goods already moved: post towns on the old highways, the fords and ferries of the big rivers, hills with a view across the plain. The road between Edo, now Tokyo, and Kyoto or Osaka was the one the shogunate watched most closely, and castles stand along it one after another.',
    'The railways built from the 1870s on chose the same ground for the same reasons: easy gradients, the simplest river crossings, and the towns where people already were. Those castle towns became the station cities, and the Tokaido Shinkansen runs along much the same corridor as the old highway. The castles at the window are not a coincidence.',
    'The tower itself is often not the old one. Many keeps were dismantled after 1873, when the new government ordered most castles abandoned, and others burned in the air raids of 1945; concrete reconstructions followed in the postwar decades. The stone bases beneath them are usually original, and where no tower was rebuilt, what remains is the shape of the hill and its walls.',
@@ -117,8 +117,8 @@ function render(lang) {
  // 一覧は4.7位（2026-09-16までの90日 SC）。城名の需要も英語にある（odawara castle 米1,900・日本18,100、
  // hikone castle 1,300/6,600、gifu castle 720/8,100、himeji castle 110,000。2026-09-20 Keyword Planner）。
  // そのため英語だけ、強い城名をtitle・descriptionへ入れる。日本語へ機械的に持ち込まない（2026-09-21）。
- const title = pick('新幹線から見える城｜東海道新幹線の車窓で探す天守と城跡', 'Japanese Castles from the Shinkansen | Himeji, Odawara, Kiyosu');
- const description = pick('東海道新幹線の車窓から見える城。小田原城・掛川城・清洲城・岐阜城・彦根城の天守、佐和山と観音寺の城跡、新大阪から西の姫路城・福山城まで。席側と探し方を車窓写真つきで。', 'Which Japanese castles can you see from the bullet train? Odawara, Kakegawa, Kiyosu, Gifu and Hikone from the Tokaido Shinkansen, Himeji and Fukuyama west of Shin-Osaka. Window photographs, which seat to take, and when to look.');
+ const title = pick('新幹線から見える日本の名城｜東海道新幹線の車窓で探す天守と城跡', 'Japanese Castles from the Shinkansen | Himeji, Odawara, Kiyosu');
+ const description = pick('東海道新幹線の車窓から見える日本の名城。小田原城・掛川城・清洲城・岐阜城・彦根城の天守、佐和山と観音寺の城跡、新大阪から西の姫路城・福山城まで。どちらの席側か、いつ見えるかを車窓写真つきで。', 'Which Japanese castles can you see from the bullet train? Odawara, Kakegawa, Kiyosu, Gifu and Hikone from the Tokaido Shinkansen, Himeji and Fukuyama west of Shin-Osaka. Window photographs, which seat to take, and when to look.');
  const heroAlt = pick('新幹線の車窓から見える清洲城', 'Kiyosu Castle from the Shinkansen window');
  const sidePhoto = (spotId, src) => {
   const spot = spots.find(s => s.id === spotId);
@@ -218,7 +218,7 @@ function render(lang) {
     <section class="cs-hero" aria-labelledby="csTitle">
       <div class="cs-hero-inner">
         <p class="eyebrow">CASTLES</p>
-        <h1 id="csTitle">${pick(chunk(['新幹線から', '見える城']), 'Castles from the Shinkansen')}</h1>
+        <h1 id="csTitle">${pick(chunk(['新幹線から見える', '日本の名城']), 'Japanese Castles from the Shinkansen')}</h1>
         <p class="cs-hero-lead">${pick(chunk(['線路のすぐそばにも。', '遠くの山の上にも。', '東京から新大阪へ、', '窓の外の城めぐり。']), 'Beside the tracks. On a distant summit. Castles pass the window all the way from Tokyo, so the ride west is castle hopping without the detours.')}</p>
         <div class="cs-hero-actions">
           <a class="btn btn-primary" href="#castles">${pick('東京〜新大阪の城', 'Tokyo to Shin-Osaka')}</a>
