@@ -952,7 +952,7 @@ function miniMapDetailsHTML(spot, options = {}) {
   const fallbackLink = mapLinkHTML(spot, "spot-mini-map-link");
   if (!hasCoordinates && !fallbackLink) return "";
   const title = options.summary || t("miniMapSummary");
-  const liveHref = lang === "ja" ? "live/index.html" : "live/index.html";
+  const liveHref = "live/";
   const liveLabel = lang === "ja" ? "乗車中は音声ガイドで見る" : "Use Audio Guide while riding";
   if (!hasCoordinates) {
     return `<section class="spot-static-map">
@@ -1234,6 +1234,7 @@ function applyLang() {
       "references.html": "en/references.html",
       "privacy.html": "en/privacy.html",
       "lp.html": "en/lp.html",
+      "live/": "en/live/",
       "live/index.html": "en/live/",
     };
     $$("a[href]").forEach((link) => {
