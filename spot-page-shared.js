@@ -36,15 +36,15 @@
       railAppTitle: "Androidアプリ版",
       railAppBody: "無料・登録不要。Google Playで公開中",
       railLiveTitle: "GPS音声ガイド",
-      railLiveBody: "乗車中、近づくと声で教えます",
+      railLiveBody: "次の景色を音声で案内",
       railAllFeatures: "特集をすべて見る →",
       railFeatures: {
         "727": { title: "727看板コレクション", body: function (count) { return "東京〜新大阪の沿線、全" + count + "地点を集める"; } },
-        castles: { title: "新幹線から見える城", body: "天守と城跡を、席側と見つけ方つきで" },
+        castles: { title: "新幹線から見える城", body: "天守と城跡を写真で紹介" },
         wheels: { title: "車窓の観覧車を集める", body: "街の向こうの、小さな輪を探す" },
         arenani: { title: "あれ、何？", body: "車窓で気になった景色の正体を確かめる" },
         hanabi: { title: "新幹線から見える花火", body: "沿線の花火大会と、車窓から見えた記録を集める" },
-        disney: { title: "ディズニー新幹線", body: "Sparkling Dreams Shinkansen｜運転日と車窓の目安を見る" },
+        disney: { title: "ディズニー新幹線", body: "運転日・車窓の見どころ" },
         yakei: { title: "新幹線の夜景", body: "どこから暗くなるかを調べて、夜だけの車窓を探す" },
         moments: { title: "一度きりの車窓", body: "虹、雪、雲、雷。その日だけの空に出会う" }
       },
@@ -92,9 +92,9 @@
       railCta: "Build my guide by train",
       railFoot: "Browse by photo →",
       railAppTitle: "Android app",
-      railAppBody: "Free, no registration. Available on Google Play",
+      railAppBody: "Free · No sign-up needed",
       railLiveTitle: "GPS audio guide",
-      railLiveBody: "Hear each view announced as you approach it",
+      railLiveBody: "Hear the next view as you ride",
       railAllFeatures: "See all features →",
       railFeatures: {
         "727": { title: "The 727 sign collection", body: function (count) { return "All " + count + " locations between Tokyo and Shin-Osaka"; } },
@@ -102,8 +102,8 @@
         wheels: { title: "Find the ferris wheels", body: "Look for little wheels beyond the city" },
         arenani: { title: "What's that outside?", body: "Everyday Japanese scenery, explained from the window" },
         hanabi: { title: "Fireworks from the window", body: "Festivals along the line, and posts from people who saw them" },
-        disney: { title: "Disney Shinkansen", body: "Sparkling Dreams Shinkansen · operating dates and window-side estimates" },
-        yakei: { title: "Night views from the window", body: "Find where your train goes dark, and what only shows after it" },
+        disney: { title: "Disney Shinkansen", body: "Operating dates and window views" },
+        yakei: { title: "Shinkansen night views", body: "Find night scenery along your route" },
         moments: { title: "Weather seen from the window", body: "Rainbows, snow, clouds and lightning: skies that happen only once" }
       },
       railStationSuffix: " min",
@@ -387,13 +387,13 @@
   //   jaOnly: 英語版が無いので日本語ページだけに出す
   // 並び順が優先順位。時期枠は上から最初に当てはまる1件で、関連枠に出した特集は時期枠に出さない。
   var RAIL_FEATURES = [
-    { id: "727", route: "727-collection.html", icon: "images/stamps/stamp_727-board.svg", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
-    { id: "castles", route: "castles.html", icon: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
+    { id: "727", route: "727-collection.html", icon: "images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
+    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
     { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
-    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["hinataoka", "gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
-    { id: "hanabi", route: "hanabi.html", icon: "images/hanabi-window.svg", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
-    { id: "disney", route: "sparkling-dreams.html", icon: "images/sparkling-dreams-window.svg", mod: "", track: "sparkling_dreams_entry_click", from: "2026-06-19", until: "2027-03-15" },
-    { id: "yakei", route: "yakei.html", icon: "images/yakei-window.svg", mod: " spot-page-rail-yakei", track: "yakei_entry_click", months: [9, 10, 11, 12, 1, 2, 3] },
+    { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
+    { id: "hanabi", route: "hanabi.html", icon: "images/thumbs/hanabi-hero-pd.webp", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
+    { id: "disney", route: "sparkling-dreams.html", icon: "images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg", mod: "", track: "sparkling_dreams_entry_click", from: "2026-06-19", until: "2027-03-15" },
+    { id: "yakei", route: "yakei.html", icon: "images/20260629_2158_nagoya_station_night_michikusa.jpg", mod: " spot-page-rail-yakei", track: "yakei_entry_click", months: [9, 10, 11, 12, 1, 2, 3], spots: ["tokyo-tower", "musashi-kosugi-towers", "nagoya-station-skyline", "hinataoka"] },
     { id: "moments", route: "window-moments.html", icon: "images/thumbs/wm-hero-snow.webp", mod: " spot-page-rail-moments", track: "window_moments_entry_click", months: [4, 5, 6] }
   ];
   // 関連枠の既定（今見ているスポットがどの特集にも入っていないとき）
@@ -427,7 +427,7 @@
 
   function railLiveHTML(rootPath, lang) {
     var ui = UI[lang];
-    return "<div class=\"spot-page-rail-app spot-page-rail-live\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), "live/")) + "\" data-cta-track=\"live_guide_entry_click\" data-cta-id=\"spot_rail_live\"><img src=\"" + escapeHTML(href(rootPath, "images/thumbs/og-live-guide.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railLiveTitle) + "</strong><small>" + escapeHTML(ui.railLiveBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
+    return "<div class=\"spot-page-rail-app spot-page-rail-live\"><a href=\"" + escapeHTML(href(basePath(rootPath, lang), "live/")) + "\" data-cta-track=\"live_guide_entry_click\" data-cta-id=\"spot_rail_live\"><img src=\"" + escapeHTML(href(rootPath, "images/og-live-guide.jpg")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railLiveTitle) + "</strong><small>" + escapeHTML(ui.railLiveBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a><small class=\"spot-page-rail-map-credit\">Map: © <a href=\"https://www.openstreetmap.org/copyright\" target=\"_blank\" rel=\"noopener noreferrer\">OpenStreetMap contributors</a></small></div>";
   }
 
   function railAllFeaturesHTML(rootPath, lang) {
@@ -448,8 +448,7 @@
 
   function railAppHTML(rootPath, lang) {
     var ui = UI[lang];
-    var base = basePath(rootPath, lang);
-    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML(href(base, "early-access.html?src=spot")) + "\" data-cta-track=\"android_app_guide_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
+    return "<div class=\"spot-page-rail-app hide-in-app\"><a href=\"" + escapeHTML("https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow") + "\" target=\"_blank\" rel=\"noopener noreferrer\" data-cta-track=\"android_app_guide_click\" data-cta-id=\"spot_rail_android\"><img src=\"" + escapeHTML(href(rootPath, "images/android/app-icon-192.webp")) + "\" alt=\"\" width=\"36\" height=\"36\" loading=\"lazy\" decoding=\"async\"><span class=\"spot-page-rail-app-copy\"><strong>" + escapeHTML(ui.railAppTitle) + "</strong><small>" + escapeHTML(ui.railAppBody) + "</small></span><span class=\"spot-page-rail-app-arrow\" aria-hidden=\"true\">›</span></a></div>";
   }
 
   function contentRailHTML(rootPath, lang) {
@@ -550,8 +549,8 @@
   function validatePageData(page, currentId, lang) {
     if (page && page.readingLayout) {
       var layout = page.readingLayout, collection = layout.collection;
-      if (layout.version !== 1 || lang !== "ja" || !layout.visibility || !layout.visibility.label || !layout.visibility.value || !layout.visibility.note) throw new Error("shared reading layout is malformed");
-      if (collection && (!/^[a-z0-9-]+\.html$/.test(collection.route) || !Array.isArray(collection.title) || !collection.title.length || !collection.description || !collection.label || !collection.credit || !Array.isArray(collection.photos) || !collection.photos.length || collection.photos.some(function (photo) { return !photo || !safeAssetPath(photo.src) || !photo.alt || !photo.caption; }))) throw new Error("shared reading collection is malformed");
+      if (layout.version !== 1 || (lang !== "ja" && lang !== "en") || !layout.visibility || !layout.visibility.label || !layout.visibility.value || !layout.visibility.note) throw new Error("shared reading layout is malformed");
+      if (collection && (!/^(?:en\/)?[a-z0-9-]+\.html$/.test(collection.route) || !Array.isArray(collection.title) || !collection.title.length || !collection.description || !collection.label || !collection.credit || !Array.isArray(collection.photos) || !collection.photos.length || collection.photos.some(function (photo) { return !photo || !safeAssetPath(photo.src) || !photo.alt || !photo.caption; }))) throw new Error("shared reading collection is malformed");
     }
     if (!page || page.id !== currentId || page.lang !== lang || !page.name || !page.hero || !Array.isArray(page.photos) || !page.photos.length || !Array.isArray(page.gallery) || !page.gallery.length) throw new Error("shared page data is malformed");
     if (!safeAssetPath(page.stamp && page.stamp.src) || !safeAssetPath(page.hero.src) || !safeAssetPath(page.hero.thumb)) throw new Error("shared page asset path is malformed");
@@ -593,7 +592,7 @@
     var ui = PAGE_UI[lang];
     var items = page.gallery;
     var first = items[0];
-    var heading = page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
+    var heading = !page.readingLayout && page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
     var thumbs = items.map(function (item, index) {
       var note = item.note || item.alt;
       return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"\" loading=\"" + (index === 0 ? "eager" : "lazy") + "\" decoding=\"async\"></button>";
@@ -605,11 +604,19 @@
     return "<div class=\"spot-page-media-gallery" + (items.length === 1 ? " is-single" : "") + "\" data-spot-media-gallery>" + heading + "<div class=\"spot-photo-thumbs\" role=\"group\" aria-label=\"" + escapeHTML(ui.photoChoose(page.name)) + "\">" + thumbs + "</div><figure class=\"spot-page-figure spot-page-media-gallery-active\">" + imageLink + caption + "</figure></div>";
   }
 
+  function readingVisibility(page, lang) {
+    var visibility = page.readingLayout.visibility || {};
+    if (lang !== "en" || (visibility.label && !/[぀-ヿ㐀-鿿]/.test(visibility.label))) return visibility;
+    var values = { "1〜2秒ほど": "about 1–2 seconds", "数秒ほど": "a few seconds", "数秒〜10秒ほど": "a few seconds to around 10 seconds", "10数秒ほど": "around 10–20 seconds", "数十秒ほど": "tens of seconds", "1分前後": "around one minute", "数分間・区間内で断続的": "several minutes, intermittently along the section" };
+    return { label: "Visibility window", value: values[visibility.value] || visibility.value || "It depends on the conditions", note: /連続して見える秒数ではなく/.test(visibility.note || "") ? "Nozomi estimate. This is the section to start watching, not a continuous visibility claim." : "Nozomi estimate. Trains, speed, weather and obstructions can change the view." };
+  }
+
   function pageFactsHTML(page, lang) {
     if (page.readingLayout) {
-      var visibility = page.readingLayout.visibility;
+      var visibility = readingVisibility(page, lang);
+      var labels = lang === "en" ? ["Area", "Seat side", "Timing"] : page.facts.labels;
       return '<dl class="spot-page-facts">' + [page.area, page.sideLabel, page.facts.timing].map(function (value, index) {
-        return '<div><dt>' + escapeHTML(page.facts.labels[index]) + '</dt><dd>' + escapeHTML(value) + '</dd></div>';
+        return '<div><dt>' + escapeHTML(labels[index]) + '</dt><dd>' + escapeHTML(value) + '</dd></div>';
       }).join('') + '<div><dt>' + escapeHTML(visibility.label) + '</dt><dd>' + escapeHTML(visibility.value) + '<small>' + escapeHTML(visibility.note) + '</small></dd></div></dl>';
     }
     return "<dl class=\"spot-page-facts\"><div><dt>" + escapeHTML(page.facts.labels[0]) + "</dt><dd>" + escapeHTML(page.area) + "</dd></div><div><dt>" + escapeHTML(page.facts.labels[1]) + "</dt><dd>" + escapeHTML(page.sideLabel) + "</dd></div><div><dt>" + escapeHTML(page.facts.labels[2]) + "</dt><dd>" + escapeHTML(page.facts.timing) + "</dd></div><div><dt>" + escapeHTML(page.facts.labels[3]) + "</dt><dd>" + escapeHTML(page.photos.length + " " + page.facts.photoUnit) + "</dd></div></dl>";
@@ -620,7 +627,7 @@
     var note = photo.note || photo.alt;
     var credit = pageCreditHTML(photo);
     var date = photo.date ? "<span>" + escapeHTML(photo.date) + "</span>" : "";
-    return "<figure class=\"spot-page-inline-figure\"><button type=\"button\" class=\"spot-page-inline-zoom\" data-zoom-src=\"" + escapeHTML(href(rootPath, photo.src)) + "\" aria-label=\"" + escapeHTML(note) + "を表示\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, photo.thumb)) + "\" alt=\"" + escapeHTML(photo.alt) + "\"></button><figcaption>" + (note ? "<strong>" + escapeHTML(note) + "</strong>" : "") + "<span>" + credit + "</span>" + date + "<span class=\"spot-page-zoom-hint\">" + escapeHTML(ui.zoomHint || (lang === "ja" ? "クリックで拡大" : "click to enlarge")) + "</span></figcaption></figure>";
+    return "<figure class=\"spot-page-inline-figure\"><button type=\"button\" class=\"spot-page-inline-zoom\" data-zoom-src=\"" + escapeHTML(href(rootPath, photo.src)) + "\" aria-label=\"" + escapeHTML(lang === "en" ? "Show " + note : note + "を表示") + "\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, photo.thumb)) + "\" alt=\"" + escapeHTML(photo.alt) + "\"></button><figcaption>" + (note ? "<strong>" + escapeHTML(note) + "</strong>" : "") + "<span>" + credit + "</span>" + date + "<span class=\"spot-page-zoom-hint\">" + escapeHTML(ui.zoomHint || (lang === "ja" ? "クリックで拡大" : "click to enlarge")) + "</span></figcaption></figure>";
   }
 
   function pageExplainerFigureHTML(figure, rootPath) {
@@ -638,18 +645,22 @@
     return "<section class=\"spot-page-section spot-page-reference-section\"><h2>" + escapeHTML(image.heading || "") + "</h2><p>" + escapeHTML(image.intro || "") + "</p><figure class=\"spot-page-reference-figure\"><a href=\"" + escapeHTML(imageHref) + "\"" + (image.sourceUrl ? " rel=\"noopener\" target=\"_blank\"" : "") + "><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, image.thumb)) + "\" alt=\"" + escapeHTML(image.alt || "") + "\"></a><figcaption><strong>" + escapeHTML(image.caption || "") + "</strong><span>" + credit + "</span>" + date + "</figcaption></figure></section>";
   }
 
+  function readingEyebrow(page, label) {
+    return page.readingLayout ? '<p class="eyebrow spot-reading-eyebrow" lang="en">' + escapeHTML(label) + '</p>' : "";
+  }
+
   function pageMapHTML(page, rootPath, lang) {
     var ui = PAGE_UI[lang];
     var map = page.map;
     if (!map || (!map.hasCoordinates && !map.externalUrl)) return "";
     var fallbackLink = map.externalUrl ? "<a class=\"map-link spot-mini-map-link\" href=\"" + escapeHTML(map.externalUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\" data-map=\"" + escapeHTML(page.id) + "\"><span class=\"map-link-icon\" aria-hidden=\"true\">↗</span><span>" + escapeHTML(ui.mapLink) + "</span></a>" : "";
-    if (!map.hasCoordinates) return "<section class=\"spot-static-map\"><div class=\"spot-static-map-head\"><h2>" + escapeHTML(ui.mapSummary) + "</h2></div><div class=\"spot-mini-map-fallback\"><p>" + escapeHTML(ui.mapFallback) + "</p>" + fallbackLink + "</div></section>";
+    if (!map.hasCoordinates) return "<section class=\"spot-static-map\">" + readingEyebrow(page, "ON THE MAP") + "<div class=\"spot-static-map-head\"><h2>" + escapeHTML(ui.mapSummary) + "</h2></div><div class=\"spot-mini-map-fallback\"><p>" + escapeHTML(ui.mapFallback) + "</p>" + fallbackLink + "</div></section>";
     var modebar = map.viewpointUrl ? "<div class=\"spot-map-modebar\" role=\"group\" aria-label=\"" + escapeHTML(ui.mapSummary) + "\"><button type=\"button\" class=\"spot-map-mode is-active\" data-mini-map-mode=\"spot\" data-map-src=\"" + escapeHTML(map.embedUrl) + "\" aria-pressed=\"true\">" + escapeHTML(ui.mapSpot) + "</button><button type=\"button\" class=\"spot-map-mode\" data-mini-map-mode=\"viewpoint\" data-map-src=\"" + escapeHTML(map.viewpointUrl) + "\" aria-pressed=\"false\">" + escapeHTML(ui.mapViewpoint) + "</button></div>" : "";
-    return "<section class=\"spot-static-map\"><div class=\"spot-static-map-head\"><h2>" + escapeHTML(ui.mapSummary) + "</h2>" + fallbackLink + "</div>" + modebar + "<iframe class=\"spot-google-map-frame\" src=\"" + escapeHTML(map.embedUrl) + "\" title=\"" + escapeHTML(ui.mapOpen(map.name)) + "\" loading=\"lazy\" allowfullscreen referrerpolicy=\"no-referrer-when-downgrade\"></iframe><p class=\"spot-mini-map-note\">" + escapeHTML(ui.mapNote) + "</p></section>";
+    return "<section class=\"spot-static-map\">" + readingEyebrow(page, "ON THE MAP") + "<div class=\"spot-static-map-head\"><h2>" + escapeHTML(ui.mapSummary) + "</h2>" + fallbackLink + "</div>" + modebar + "<iframe class=\"spot-google-map-frame\" src=\"" + escapeHTML(map.embedUrl) + "\" title=\"" + escapeHTML(ui.mapOpen(map.name)) + "\" loading=\"lazy\" allowfullscreen referrerpolicy=\"no-referrer-when-downgrade\"></iframe><p class=\"spot-mini-map-note\">" + escapeHTML(ui.mapNote) + "</p></section>";
   }
 
   function pageGuideHTML(page, rootPath, lang) {
-    if (page.readingLayout) return readingGuideHTML(page, rootPath);
+    if (page.readingLayout) return readingGuideHTML(page, rootPath, lang);
     var guide = page.guide;
     return "<section class=\"spot-page-section\"><h2>" + escapeHTML(guide.title) + "</h2><h3>" + escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first") + "</h3><p>" + escapeHTML(guide.intro) + "</p><p>" + escapeHTML(guide.duration) + "</p><aside class=\"spot-page-timing-cta\"><p>" + escapeHTML(guide.timingLead) + "</p><a class=\"btn btn-primary\" href=\"" + escapeHTML(guide.href) + "\" data-cta-track=\"cta_train_search_click\" data-cta-id=\"spot_guide_timing\">" + escapeHTML(guide.cta) + "</a></aside><h3>" + escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights") + "</h3><p>" + escapeHTML(guide.highlight) + "</p></section>";
   }
@@ -669,7 +680,7 @@
       var youtubeComment = video.comment ? "<p class=\"spot-page-video-comment\">" + escapeHTML(video.comment) + "</p>" : "";
       return "<article class=\"spot-page-video-card\" aria-label=\"" + escapeHTML(video.title) + "\"><div class=\"spot-page-video-frame\"><iframe src=\"https://www.youtube-nocookie.com/embed/" + escapeHTML(video.id) + "\" title=\"" + escapeHTML(video.title) + "\" loading=\"lazy\" referrerpolicy=\"strict-origin-when-cross-origin\" allow=\"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share\" allowfullscreen></iframe></div>" + youtubeComment + "<p class=\"spot-page-video-source\">" + escapeHTML(ui.source) + "<a href=\"" + escapeHTML(video.url) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(video.url) + "</a></p></article>";
     }).join("");
-    return "<section class=\"spot-page-section spot-page-video-section\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\"><h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
+    return "<section class=\"spot-page-section spot-page-video-section\" data-video-loading-label=\"" + escapeHTML(ui.videoLoading) + "\" aria-labelledby=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + readingEyebrow(page, "IN MOTION") + "<h2 id=\"spotVideoTitle-" + escapeHTML(page.id) + "\">" + escapeHTML(page.media.heading) + "</h2><p>" + escapeHTML(page.media.description || "") + "</p><div class=\"spot-page-video-grid\" aria-label=\"" + escapeHTML(ui.videoLabel(page.name)) + "\">" + cards + "</div><p class=\"spot-page-video-platform-note\">" + escapeHTML(page.media.platformNote) + "</p></section>";
   }
 
   function pageLightboxHTML(lang) {
@@ -722,33 +733,43 @@
     return "<a class=\"spot-page-727-collection-link\" href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\"><span><strong>727看板コレクション</strong><small>設置場所の全" + escapeHTML(count) + "地点を見る</small></span><b aria-hidden=\"true\">→</b></a>";
   }
 
-  function readingGuideHTML(page, rootPath) {
-    return '<section class="spot-page-section spot-reading-guide"><h2>' + escapeHTML(page.name) + 'を見逃さないために</h2><div class="spot-reading-actions">' +
-      '<article class="spot-reading-action"><h3><span class="copy-chunk">現在地から、</span><span class="copy-chunk">次の車窓を見る</span></h3><p><span class="copy-chunk">GPS地図で、いまいる場所と</span><span class="copy-chunk">次の見どころ・席側を確認できます。</span><span class="copy-chunk">列車を選ぶ必要はありません。</span></p>' +
+  function readingGuideHTML(page, rootPath, lang) {
+    var compact = page.readingLayout.compactGuide;
+    if (lang === "en") {
+      return '<section class="spot-page-section spot-reading-guide">' + readingEyebrow(page, 'ON BOARD') + '<h2>How to spot ' + escapeHTML(page.name) + '</h2><div class="spot-reading-actions">' +
+        '<article class="spot-reading-action"><h3>See the next window view</h3><p>Use GPS to check your location, the next view and its seat side. No train selection is needed.</p>' +
+        '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="Enlarge the GPS guide preview"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="GPS guide preview showing your location and the next window view"></button><figcaption>Preview screen, not your current location.<br>Map: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
+        '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'en/live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">Open the GPS guide →</a><p class="spot-reading-note">Uses your location. Audio guidance is also available. You can use the map alone.</p></article>' +
+        '<article class="spot-reading-action"><h3>Choose a train to see the timing</h3><p>Match the timetable to your train to see when ' + escapeHTML(page.name) + ' should appear and which side to watch.</p>' +
+        '<div class="spot-reading-train-preview" role="img" aria-label="Example display after choosing a train. Times are illustrative, not live operations"><div class="spot-reading-train-choice"><small>Choose a train</small><strong>Tokyo → Shin-Osaka</strong><span>Nozomi · Tokyo departs 09:00</span></div><span class="spot-reading-preview-arrow" aria-hidden="true">↓</span><div class="spot-reading-timeline"><div><time>09:31</time><span>Odawara Castle</span><b>Seat A</b></div><div><time>09:42</time><span>Mt. Fuji</span><b>Seat E</b></div><div><time>10:13</time><span>Lake Hamana</span><b>Seats A/E</b></div></div><p>Example display · times are illustrative</p></div>' +
+        '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'en/start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">Find your viewing times →</a><p class="spot-reading-note">Location access is not needed. Times are estimates. Delays can change them.</p></article></div></section>';
+    }
+    return '<section class="spot-page-section spot-reading-guide">' + readingEyebrow(page, 'ON BOARD') + '<h2>' + (compact ? '<span class="copy-chunk">' + escapeHTML(page.name) + 'を</span><span class="copy-chunk">見逃さないために</span>' : escapeHTML(page.name) + 'を見逃さないために') + '</h2><div class="spot-reading-actions">' +
+      '<article class="spot-reading-action"><h3><span class="copy-chunk">現在地から、</span><span class="copy-chunk">次の車窓を見る</span></h3><p>' + (compact ? '<span class="copy-chunk">GPSで現在地と、</span><span class="copy-chunk">次の景色・席側を確認。</span><span class="copy-chunk">列車選択は不要です。</span>' : '<span class="copy-chunk">GPS地図で、いまいる場所と</span><span class="copy-chunk">次の見どころ・席側を確認できます。</span><span class="copy-chunk">列車を選ぶ必要はありません。</span>') + '</p>' +
       '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="ガイドの画面例を拡大"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="現在地と次の見どころを表示するGPS地図の画面例"></button><figcaption>既存ガイドの画面例（乗車プレビュー）。現在の位置ではありません。<br>地図：© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
-      '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">GPS地図でこの先を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報を使います。</span><span class="copy-chunk">音声でも案内でき、地図だけでも使えます。</span></p></article>' +
-      '<article class="spot-reading-action"><h3><span class="copy-chunk">乗る列車で、</span><span class="copy-chunk">見える時刻を調べる</span></h3><p><span class="copy-chunk">出発駅と列車を選ぶと、</span><span class="copy-chunk">' + escapeHTML(page.name) + 'を含む見どころの</span><span class="copy-chunk">通過予定時刻を一覧で確認できます。</span></p>' +
-      '<div class="spot-reading-timing"><strong>列車を選ぶと分かること</strong><ul><li>' + escapeHTML(page.name) + 'が見える予定時刻</li><li>同じ列車で出会うほかの景色</li><li>A席・E席のどちらに見えるか</li></ul><p>乗る前の準備にも、乗車中の確認にも。</p></div>' +
-      '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">列車を選んで時刻を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報は不要です。</span><span class="copy-chunk">通過時刻は目安で、遅れなどにより変わります。</span></p></article></div></section>';
+      '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">GPS地図でこの先を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報を使います。</span>' + (compact ? '<span class="copy-chunk">音声案内も使えます。</span><span class="copy-chunk">地図だけでも使えます。</span>' : '<span class="copy-chunk">音声でも案内でき、地図だけでも使えます。</span>') + '</p></article>' +
+      '<article class="spot-reading-action"><h3><span class="copy-chunk">列車を選ぶと、</span><span class="copy-chunk">見える時刻が分かる</span></h3><p><span class="copy-chunk">乗る列車のダイヤに合わせて、</span><span class="copy-chunk">' + escapeHTML(page.name) + 'が見えるころと</span><span class="copy-chunk">座席側を案内します。</span></p>' +
+      '<div class="spot-reading-train-preview" role="img" aria-label="列車選択後の表示例。時刻は実際の運行案内ではありません"><div class="spot-reading-train-choice"><small>列車を選択</small><strong>東京 → 新大阪</strong><span>のぞみ・東京 09:00発</span></div><span class="spot-reading-preview-arrow" aria-hidden="true">↓</span><div class="spot-reading-timeline"><div><time>09:31</time><span>小田原城</span><b>A席</b></div><div><time>09:42</time><span>富士山</span><b>E席</b></div><div><time>10:13</time><span>浜名湖</span><b>A・E席</b></div></div><p>表示イメージ・時刻は例です</p></div>' +
+      '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">列車を選んで時刻を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報は不要です。</span>' + (compact ? '<span class="copy-chunk">時刻は目安です。</span><span class="copy-chunk">遅れなどで変わります。</span>' : '<span class="copy-chunk">通過時刻は目安で、遅れなどにより変わります。</span>') + '</p></article></div></section>';
   }
 
-  function readingCollectionHTML(page, rootPath) {
+  function readingCollectionHTML(page, rootPath, lang) {
     var collection = page.readingLayout.collection;
     if (!collection) return '';
-    return '<aside class="spot-reading-related" aria-labelledby="spotReadingRelatedTitle"><div><h2 id="spotReadingRelatedTitle">' + collection.title.map(function (chunk) { return '<span class="copy-chunk">' + escapeHTML(chunk) + '</span>'; }).join('') + '</h2><p>' + escapeHTML(collection.description) + '</p><a href="' + escapeHTML(href(rootPath, collection.route)) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection">' + escapeHTML(collection.label) + ' →</a><p class="spot-reading-note">' + escapeHTML(collection.note) + '</p></div><div class="spot-reading-photos">' + collection.photos.map(function (photo) { return '<figure><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, photo.src)) + '" alt="' + escapeHTML(photo.alt) + '"><figcaption>' + escapeHTML(photo.caption) + '</figcaption></figure>'; }).join('') + '<small>' + escapeHTML(collection.credit) + '</small></div></aside>';
+    var collectionTitle = lang === "en" ? escapeHTML(collection.title.join(" ")) : collection.title.map(function (chunk) { return '<span class="copy-chunk">' + escapeHTML(chunk) + '</span>'; }).join('');
+    return '<aside class="spot-reading-related" aria-labelledby="spotReadingRelatedTitle"><div>' + readingEyebrow(page, 'MORE TO SEE') + '<h2 id="spotReadingRelatedTitle">' + collectionTitle + '</h2><p>' + escapeHTML(collection.description) + '</p><a href="' + escapeHTML(href(rootPath, collection.route)) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection">' + escapeHTML(collection.label) + ' →</a><p class="spot-reading-note">' + escapeHTML(collection.note) + '</p></div><div class="spot-reading-photos">' + collection.photos.map(function (photo) { return '<figure><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, photo.src)) + '" alt="' + escapeHTML(photo.alt) + '"><figcaption>' + escapeHTML(photo.caption) + '</figcaption></figure>'; }).join('') + '<small>' + escapeHTML(collection.credit) + '</small></div></aside>';
   }
 
   function pageHTML(data, page, rootPath, lang, currentId) {
     var ui = PAGE_UI[lang];
     var embedded = !!root.MADO_EMBEDDED_WEB;
     var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
-    if (page.readingLayout && bodyLinks) bodyLinks = '<nav class="spot-reading-sources" aria-label="' + escapeHTML(page.name) + 'についての参考リンク"><p>詳しく読む・参考リンク</p><ul>' + page.bodyLinks.map(function (item) { return '<li><a href="' + escapeHTML(item.href) + '" rel="noopener" target="_blank">' + escapeHTML(item.label) + '</a></li>'; }).join('') + '</ul></nav>';
     var fujiGuide = page.fujiGuide ? (function () { var text = escapeHTML(page.fujiGuide.text); return "<p>" + text.replace(escapeHTML(page.fujiGuide.label), "<a href=\"" + escapeHTML(page.fujiGuide.href) + "\">" + escapeHTML(page.fujiGuide.label) + "</a>") + "</p>"; }()) : "";
-    var intro = "<section class=\"spot-page-section\"><h2>" + escapeHTML(page.sectionHeading) + "</h2><p>" + escapeHTML(page.story) + "</p>" + bodyLinks + "<p>" + escapeHTML(page.routeNote) + "</p>" + fujiGuide + (page.readingLayout ? "" : "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p>") + "</section>";
+    var intro = "<section class=\"spot-page-section\">" + readingEyebrow(page, "THE STORY") + "<h2>" + escapeHTML(page.sectionHeading) + "</h2><p>" + (page.readingLayout ? page.story.split(/\n\n/).map(escapeHTML).join("</p><p>") : escapeHTML(page.story)) + "</p>" + (page.readingLayout ? "" : bodyLinks) + (currentId === "kiyosu" ? "" : "<p>" + escapeHTML(page.routeNote) + "</p>") + fujiGuide + (page.readingLayout ? "" : "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p>") + "</section>";
     var inline = (page.inline || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join("");
-    var explainer = page.explainer ? "<section class=\"spot-page-section\"><h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
+    var explainer = page.explainer ? "<section class=\"spot-page-section\">" + readingEyebrow(page, "WHAT TO SEE") + "<h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
     var guideNotice = page.guideNotice ? "<section class=\"spot-page-section guide-answer-panel\"><div class=\"guide-answer-copy\"><h2>" + escapeHTML(page.guideNotice.heading) + "</h2><p>" + escapeHTML(page.guideNotice.body) + "</p><p><a class=\"inline-cta\" href=\"" + escapeHTML(page.guideNotice.href) + "\">" + escapeHTML(page.guideNotice.label) + "</a></p></div></section>" : "";
-    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\"><h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>"; }).join("");
+    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\">" + readingEyebrow(page, "BEYOND THE LAKE") + "<h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + (chapter.figure ? pageInlineFigureHTML(chapter.figure, rootPath, lang) : "") + "</section>"; }).join("");
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
@@ -759,8 +780,11 @@
     // again here would duplicate the nav/content-rail on screen, so this
     // renderer no longer produces them for spot pages.
     var references = "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section>";
-    if (page.readingLayout && (page.references || []).every(function (reference) { return (page.bodyLinks || []).some(function (link) { return link.href === reference.href; }); })) references = "";
-    return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\"><h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + guideNotice + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + (page.readingLayout ? readingCollectionHTML(page, rootPath) : "") + references + "</article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
+    if (page.readingLayout) {
+      var sources = (page.references || []).concat(page.bodyLinks || []).filter(function (item, index, all) { return all.findIndex(function (other) { return other.href === item.href; }) === index; });
+      references = sources.length ? '<section class="spot-page-section spot-reading-sources" id="references" aria-labelledby="spotSourcesTitle">' + readingEyebrow(page, 'FURTHER READING') + '<h2 id="spotSourcesTitle">' + (lang === "ja" ? "参考リンク" : "References") + '</h2><p class="spot-reading-sources-lead">' + (lang === "ja" ? "公式案内・車窓の記録はこちら。" : "Official guidance and window-view records.") + '</p><ul>' + sources.map(function (item) { return '<li><a href="' + escapeHTML(item.href) + '" rel="noopener" target="_blank">' + escapeHTML(item.label) + '</a></li>'; }).join('') + '</ul></section>' : '';
+    }
+    return (page.readingLayout ? '<main class="spot-reading-layout">' : "<main>") + "<header class=\"spot-page-article spot-page-hero\"><p class=\"eyebrow\">" + escapeHTML(ui.eyebrow) + "</p><div class=\"spot-page-heading-row\"><h1>" + (page.headingChunks.length ? page.headingChunks.map(function (chunk) { return "<span class=\"copy-chunk\">" + escapeHTML(chunk) + "</span>"; }).join(lang === "en" ? " " : "") : escapeHTML(page.heading)) + "</h1>" + stamp + "</div><p class=\"spot-page-lead\">" + escapeHTML(page.hook) + "</p></header><div class=\"spot-page-shell" + (embedded ? " mado-embedded-shell" : "") + "\">" + rail + "<article class=\"spot-page-article\">" + pageGalleryHTML(page, rootPath, lang) + pageFactsHTML(page, lang) + guideNotice + intro + (page.readingLayout ? "" : currentId === "hirakata-park-wheel" ? nextCardsHTML(rootPath, lang, "wheels") : CASTLE_COLLECTION_IDS.indexOf(currentId) !== -1 ? nextCardsHTML(rootPath, lang, "castles") : "") + inline + explainer + (page.photoTip ? "<section class=\"spot-page-section spot-page-phototip\">" + readingEyebrow(page, "PHOTO TIPS") + "<h2>" + escapeHTML(page.photoTip.heading) + "</h2>" + page.photoTip.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + "</section>" : "") + ((currentId === "727-board" || currentId === "putiputi-sign") ? collectionLinkHTML(rootPath, lang, collection727Count(data)) : "") + pageReferenceImageHTML(page.referenceImage, rootPath) + sharedGuide + pageMapHTML(page, rootPath, lang) + pageGuideHTML(page, rootPath, lang) + pageMediaHTML(page, rootPath, lang) + (page.readingLayout ? readingCollectionHTML(page, rootPath, lang) : "") + references + "</article></div>" + mobilePromos + showcase + "</main>" + pageLightboxHTML(lang);
   }
 
   function bindPageLightbox() {

@@ -364,6 +364,7 @@ function projectSharedGuide(spot, lang) {
       id: chapter.guideAnchor || chapter.id,
       heading: localized(chapter.sharedGuideHeading, lang) || data.name,
       hook: data.hook || "",
+      ...(chapter.id === "hamanako-fuji" ? { figure: projectPhoto(photoItems(chapter)[0], chapter, lang, 0) } : {}),
       paragraphs: Array.isArray(paragraphs) && paragraphs.length ? paragraphs : [data.story || ""],
     };
   });
@@ -447,8 +448,8 @@ function projectMedia(spot, lang) {
   };
 }
 
-// Editorial layout is opt-in per page/language; absence preserves legacy output.
-// Keep visibility wording separate from durationSec (the Nozomi timing datum).
+// Both languages share the reading layout structure. Keep visibility wording
+// separate from durationSec (the Nozomi timing datum).
 const READING_LAYOUTS = {
   "kiyosu:ja": {
     version: 1,
@@ -466,6 +467,119 @@ const READING_LAYOUTS = {
   }
 };
 
+// Curated starting points; all spot pages use the same reading contract.
+const castleCollection = READING_LAYOUTS["kiyosu:ja"].collection;
+const kiyosuPhoto = { src: "images/thumbs/20260704_kiyosu_castle_michikusa.webp", alt: "車窓から見える清洲城", caption: "清洲城" };
+const wheelCollection = {
+  route: "ferris-wheels.html", title: ["ほかにもある、", "新幹線から見える観覧車"],
+  description: "沿線の観覧車を、写真・席側・見つける目印つきで紹介します。",
+  label: "新幹線から見える観覧車を探す", note: "沿線の6基を、席側と見つけ方つきで。",
+  photos: [
+    { src: "images/thumbs/20260904_nonhoi_wheel_michikusa.webp", alt: "車窓から見えるのんほいパークの観覧車", caption: "のんほいパーク" },
+    { src: "images/thumbs/20260824_hirakata_park_wheel_michikusa.webp", alt: "車窓から見えるひらかたパークの観覧車", caption: "ひらかたパーク" }
+  ],
+  credit: "写真：新幹線の窓"
+};
+READING_LAYOUTS["odawara-castle:ja"] = {
+  compactGuide: true,
+  version: 1,
+  visibility: { label: "見える時間の目安", value: "1〜2秒ほど", note: "のぞみ通過時の目安。列車や走行速度によって変わります" },
+  collection: { ...castleCollection, description: "清洲城や掛川城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "小田原城を含む7か所。", photos: [kiyosuPhoto, castleCollection.photos[1]] }
+};
+READING_LAYOUTS["kakegawa:ja"] = {
+  compactGuide: true,
+  version: 1,
+  visibility: { label: "見える時間の目安", value: "数秒〜10秒ほど", note: "のぞみ通過時の目安。列車や走行速度によって変わります" },
+  collection: { ...castleCollection, description: "小田原城や清洲城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "掛川城を含む7か所。", photos: [castleCollection.photos[0], kiyosuPhoto] }
+};
+READING_LAYOUTS["hamanako:ja"] = {
+  compactGuide: true,
+  version: 1,
+  visibility: { label: "見える時間の目安", value: "数十秒ほど", note: "水面や目印が見える区間の目安。列車や走行速度によって変わります" }
+};
+
+function readingLayoutFor(spot, lang = "ja") {
+  if (lang === "en") return englishReadingLayout(spot);
+  const seconds = Number(spot.durationSec);
+  const duration = !Number.isFinite(seconds)
+    ? "条件によって変わります"
+    : seconds <= 2 ? "1〜2秒ほど"
+      : seconds <= 8 ? "数秒ほど"
+        : seconds <= 12 ? "数秒〜10秒ほど"
+          : seconds <= 20 ? "10数秒ほど"
+            : seconds <= 60 ? "数十秒ほど"
+              : seconds <= 120 ? "1分前後"
+                : "数分間・区間内で断続的";
+  const note = seconds > 120
+    ? "のぞみ基準の目安。連続して見える秒数ではなく、探し始める区間の目安です"
+    : "のぞみ基準の目安。列車や走行速度、天候・遮蔽物によって変わります";
+  const layout = { version: 1, compactGuide: true, visibility: { label: "見える時間の目安", value: duration, note }, ...(READING_LAYOUTS[spot.id + ":ja"] || {}) };
+  if (spot.scene === "castle" && !layout.collection) layout.collection = { ...castleCollection, photos: [castleCollection.photos[0], kiyosuPhoto], note: "新幹線から見える城を一覧で。" };
+  if (spot.id === "kannonji-castle" && !layout.collection) layout.collection = { ...castleCollection, photos: [castleCollection.photos[0], kiyosuPhoto], note: "新幹線から見える城を一覧で。" };
+  if (spot.id === "hirakata-park-wheel") {
+    layout.collection = { ...wheelCollection };
+  } else if (layout.collection) {
+    layout.collection = { ...layout.collection, description: "東海道・山陽新幹線から見える城を、写真・席側・見つける目印つきで紹介します。", note: "新幹線から見える城を一覧で。" };
+  }
+  return layout;
+}
+
+function englishReadingLayout(spot) {
+  const layout = readingLayoutFor(spot, "ja");
+  const seconds = Number(spot.durationSec);
+  let value = !Number.isFinite(seconds) ? "Varies with conditions"
+    : seconds <= 2 ? "About 1–2 seconds"
+      : seconds <= 8 ? "A few seconds"
+        : seconds <= 12 ? "A few seconds to about 10 seconds"
+          : seconds <= 20 ? "About 10–20 seconds"
+            : seconds <= 60 ? "Several dozen seconds"
+              : seconds <= 120 ? "About a minute"
+                : "Intermittent views over several minutes";
+  let note = seconds > 120
+    ? "Approximate Nozomi timing: a stretch to watch, not continuous visibility."
+    : "Approximate Nozomi timing; varies with train speed, weather and obstructions.";
+  if (spot.id === "kiyosu") {
+    value = "A few seconds";
+    note = "Approximate; varies with the train and its speed.";
+  } else if (spot.id === "odawara-castle") {
+    value = "About 1–2 seconds";
+    note = "Approximate for a passing Nozomi; varies with the train and its speed.";
+  } else if (spot.id === "kakegawa") {
+    value = "A few seconds to about 10 seconds";
+    note = "Approximate for a passing Nozomi; varies with the train and its speed.";
+  } else if (spot.id === "hamanako") {
+    value = "Several dozen seconds";
+    note = "An approximate stretch for water views and landmarks; varies with the train and its speed.";
+  }
+  layout.visibility = { label: "Viewing window", value, note };
+  if (layout.collection) {
+    const wheel = layout.collection.route === "ferris-wheels.html";
+    const captions = new Map([
+      [castleCollection.photos[0].src, "Odawara Castle"],
+      [castleCollection.photos[1].src, "Kakegawa Castle"],
+      [kiyosuPhoto.src, "Kiyosu Castle"],
+      [wheelCollection.photos[0].src, "Non Hoi Park"],
+      [wheelCollection.photos[1].src, "Hirakata Park"],
+    ]);
+    layout.collection = {
+      route: "en/" + layout.collection.route,
+      title: wheel ? ["More Ferris wheels", "from the Shinkansen"] : ["More castles", "from the Shinkansen"],
+      description: wheel
+        ? "Discover Ferris wheels along the route, with photos, seat sides and landmarks to look for."
+        : "Discover castles along the Tokaido and Sanyo Shinkansen, with photos, seat sides and landmarks to look for.",
+      label: wheel ? "Explore the Ferris wheel guide" : "Explore the castle guide",
+      note: wheel ? "Six wheels along the route, with seat sides and spotting tips." : "Keep an eye out for your next castle.",
+      photos: layout.collection.photos.map(photo => {
+        const caption = captions.get(photo.src);
+        if (!caption) throw new Error("Missing English reading collection caption: " + photo.src);
+        return { ...photo, caption, alt: caption + (wheel ? " Ferris wheel from the train" : " from the train") };
+      }),
+      credit: "Photos: Shinkansen Window",
+    };
+  }
+  return layout;
+}
+
 function projectPage(spot, lang) {
   const data = spot[lang] || spot.ja || {};
   const allPhotos = photoItems(spot);
@@ -477,12 +591,13 @@ function projectPage(spot, lang) {
   const headingChunks = localized(spot.pageHeadingChunks, lang);
   const pageHeading = localized(spot.pageHeading, lang) || (lang === "ja" ? `${data.name}はいつ見える？座席側は？` : `When can you see ${data.name} from the Shinkansen?`);
   const explainer = projectExplainer(spot, lang);
+  if (spot.id === "hamanako" && explainer && inline[0]) explainer.figure = { ...inline[0], caption: inline[0].note, afterParagraph: 0 };
   const map = projectMap(spot, lang);
   const guideHighlight = localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name);
   return {
     id: String(spot.id),
     lang,
-    ...(READING_LAYOUTS[`${spot.id}:${lang}`] ? { readingLayout: READING_LAYOUTS[`${spot.id}:${lang}`] } : {}),
+    readingLayout: readingLayoutFor(spot, lang),
     name: String(data.name || spot.id),
     area: String(data.area || ""),
     hook: String(data.hook || ""),
@@ -501,7 +616,7 @@ function projectPage(spot, lang) {
     gallery,
     photoHeading: localized(spot.photoSectionHeading, lang) || UI[lang].sectionPhotos(data.name),
     photoHeadingCustom: Boolean(spot.photoSectionHeading),
-    inline,
+    inline: spot.id === "hamanako" ? [] : inline,
     photoTip: spot.photoTip ? { heading: localized(spot.photoTip.heading, lang), paragraphs: spot.photoTip[lang] || spot.photoTip.ja || [] } : null,
     bodyLinks: projectBodyLinks(spot, lang),
     routeNote: routeNote(spot, lang, data),
@@ -573,9 +688,9 @@ const showcase = SHOWCASE_SPOT_IDS.map((id) => {
 function validatePage(page, spot) {
   if (page.readingLayout) {
     const layout = page.readingLayout;
-    if (layout.version !== 1 || page.lang !== "ja" || !layout.visibility?.label || !layout.visibility?.value || !layout.visibility?.note) throw new Error(`Invalid reading layout for ${spot.id}/${page.lang}`);
+    if (layout.version !== 1 || !["ja", "en"].includes(page.lang) || !layout.visibility?.label || !layout.visibility?.value || !layout.visibility?.note) throw new Error(`Invalid reading layout for ${spot.id}/${page.lang}`);
     const collection = layout.collection;
-    if (collection && (!/^[a-z0-9-]+\.html$/.test(collection.route) || !Array.isArray(collection.title) || !collection.title.length || !collection.description || !collection.label || !collection.credit || !Array.isArray(collection.photos) || !collection.photos.length || collection.photos.some(photo => !safeAssetPath(photo.src) || !fs.existsSync(path.join(appDir, photo.src)) || !photo.alt || !photo.caption))) throw new Error(`Invalid reading collection for ${spot.id}/${page.lang}`);
+    if (collection && (!/^(?:en\/)?[a-z0-9-]+\.html$/.test(collection.route) || !Array.isArray(collection.title) || !collection.title.length || !collection.description || !collection.label || !collection.credit || !Array.isArray(collection.photos) || !collection.photos.length || collection.photos.some(photo => !safeAssetPath(photo.src) || !fs.existsSync(path.join(appDir, photo.src)) || !photo.alt || !photo.caption))) throw new Error(`Invalid reading collection for ${spot.id}/${page.lang}`);
   }
   if (!page || page.id !== spot.id || !["ja", "en"].includes(page.lang) || !page.name || !page.hero || !Array.isArray(page.photos) || !page.photos.length || !Array.isArray(page.gallery) || !page.gallery.length || !Array.isArray(page.references)) throw new Error(`Page projection is incomplete for ${spot.id}/${page?.lang}`);
   if (!safeAssetPath(page.stamp.src) || !safeAssetPath(page.hero.src) || !safeAssetPath(page.hero.thumb)) throw new Error(`Page asset path is unsafe for ${spot.id}/${page.lang}`);

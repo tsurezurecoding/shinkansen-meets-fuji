@@ -204,6 +204,10 @@ const REFERENCES = {
     label: { ja: "掛川市: 掛川城", en: "Kakegawa City: Kakegawa Castle (Japanese only)" },
     url: "https://www.city.kakegawa.shizuoka.jp/kanko/spot-list/kakegawajyo.html",
   },
+  kakegawaCastleTravel: {
+    label: { ja: "全国転勤OLの休日：掛川城と城下町の旅", en: "Zenkoku Tenkin OL no Kyujitsu: Kakegawa Castle and its castle town (Japanese only)" },
+    url: "https://note.com/mtryna/n/nbae8afed6626",
+  },
   genkiSignBlog: {
     label: { ja: "新幹線の車窓から: しっぺいの応援看板車窓記事", en: "Shinkansen window blog: Shippei cheer-up signs window article (Japanese only)" },
     url: "https://cotetu.seesaa.net/article/516019488.html",
@@ -858,7 +862,7 @@ const SPOTS = [
       en: "Mt. Fuji seen across the Tokyo skyline",
     },
     pageHeadingChunks: {
-      ja: ["東京の街並み越しに見える、", "都内からの富士山"],
+      ja: ["東京の街並み越しに", "見える、", "都内からの富士山"],
       en: ["Mt. Fuji seen across", "the Tokyo skyline"],
     },
     metaDescription: {
@@ -1329,7 +1333,7 @@ const SPOTS = [
       en: "Mt. Fuji beyond the Sagami Plain, rising behind the Tanzawa range",
     },
     pageHeadingChunks: {
-      ja: ["丹沢山地の背後にそびえる、", "相模平野越しの富士山"],
+      ja: ["丹沢山地の背後に", "そびえる、", "相模平野越しの", "富士山"],
       en: ["Mt. Fuji beyond the Sagami Plain,", "rising behind the Tanzawa range"],
     },
     metaDescription: {
@@ -1403,7 +1407,7 @@ const SPOTS = [
       en: "Atami and Sagami Bay between the tunnels",
     },
     pageHeadingChunks: {
-      ja: ["トンネルの合間にひらく、", "熱海と相模湾"],
+      ja: ["トンネルの合間に", "ひらく、", "熱海と相模湾"],
       en: ["Atami and Sagami Bay", "between the tunnels"],
     },
     metaDescription: {
@@ -1483,6 +1487,13 @@ const SPOTS = [
         date: "2026-09-03",
         note: { ja: "熱海の海越しに、低く横たわる初島", en: "Hatsushima lies low across the sea from Atami" },
       },
+      {
+        src: "images/20260919_atami_castle_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える錦ヶ浦山頂の熱海城", en: "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-19",
+        note: { ja: "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。", en: "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami." },
+      },
     ],
     references: [REFERENCES.atami, REFERENCES.atamiHatsushima, REFERENCES.atamiCastle, REFERENCES.atamiCityEnvironment, REFERENCES.hatsushimaBlog, REFERENCES.atamiCastleBlog],
     map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
@@ -1502,7 +1513,7 @@ const SPOTS = [
       en: "The white keep of Odawara Castle, glimpsed from the Shinkansen",
     },
     pageHeadingChunks: {
-      ja: ["新幹線から一瞬だけ見える、", "小田原城の白い天守"],
+      ja: ["新幹線から", "一瞬だけ見える、", "小田原城の", "白い天守"],
       en: ["The white keep of Odawara Castle,", "glimpsed from the Shinkansen"],
     },
     metaDescription: {
@@ -1558,6 +1569,13 @@ const SPOTS = [
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-08-20",
         note: { ja: "2026-08-20 · 品川06:00発のぞみ99号で06:24撮影", en: "2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:24." },
+      },
+      {
+        src: "images/20260919_odawara_castle_michikusa.jpg",
+        alt: { ja: "小田原停車のこだまからズームで撮影した小田原城", en: "A zoomed-in view of Odawara Castle from a Kodama stopping at Odawara" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-19",
+        note: { ja: "小田原停車のこだまだと少し余裕があるのでズーム撮影。", en: "A Kodama that stops at Odawara gives a little more time for a zoomed-in shot." },
       },
     ],
     references: [REFERENCES.odawaraCastle, REFERENCES.odawaraCastleOfficialEn, REFERENCES.odawaraCastleBlog],
@@ -1663,7 +1681,7 @@ const SPOTS = [
       en: "Mishima's Shinkansen catapult, climbing into the sky",
     },
     pageHeadingChunks: {
-      ja: ["空へと向かう", "三島車両所の新幹線発射台"],
+      ja: ["空へと向かう", "三島車両所の", "新幹線発射台"],
       en: ["Mishima's Shinkansen catapult,", "climbing into the sky"],
     },
     metaDescription: {
@@ -1781,7 +1799,7 @@ const SPOTS = [
       en: "Fujikako's Showa-retro rooftop trademark",
     },
     pageHeadingChunks: {
-      ja: ["富士化工の", "昭和レトロなトレードマーク"],
+      ja: ["富士化工の", "昭和レトロな", "トレードマーク"],
       en: ["Fujikako's Showa-retro", "rooftop trademark"],
     },
     metaDescription: {
@@ -1988,7 +2006,7 @@ const SPOTS = [
       en: "A papermaking town, with Mt. Fuji standing behind the chimneys",
     },
     pageHeadingChunks: {
-      ja: ["煙突の向こうに富士山が立つ、", "製紙の街"],
+      ja: ["煙突の向こうに", "富士山が立つ、", "製紙の街"],
       en: ["A papermaking town, with Mt. Fuji", "standing behind the chimneys"],
     },
     metaDescription: {
@@ -2109,7 +2127,7 @@ const SPOTS = [
       en: "Mt. Fuji beyond the white arches of the Fuji River",
     },
     pageHeadingChunks: {
-      ja: ["白いアーチの向こうに立つ、", "富士川の富士山"],
+      ja: ["白いアーチの", "向こうに立つ、", "富士川の富士山"],
       en: ["Mt. Fuji beyond the white arches", "of the Fuji River"],
     },
     metaDescription: {
@@ -2259,7 +2277,7 @@ const SPOTS = [
       en: "A white drilling tower among the cranes: Shimizu Port and CHIKYU",
     },
     pageHeadingChunks: {
-      ja: ["港のクレーンの中に立つ、白い掘削やぐら——", "清水港と「ちきゅう」"],
+      ja: ["港のクレーンの", "中に立つ、", "白い掘削やぐら——", "清水港と", "「ちきゅう」"],
       en: ["A white drilling tower among the cranes:", "Shimizu Port and CHIKYU"],
     },
     metaDescription: {
@@ -2570,6 +2588,13 @@ const SPOTS = [
         date: "2026-09-04",
         note: { ja: "A席側にひろがる茶畑。奥に見えるのはつま恋リゾートの看板", en: "Tea fields spreading along Seat A, with the Tsumagoi Resort sign beyond" },
       },
+      {
+        src: "images/20260919_shizuoka_tea_fields_a_michikusa.jpg",
+        alt: { ja: "新幹線のA席側から見える茶畑とつま恋リゾートの看板", en: "Tea fields and the Tsumagoi Resort sign from Seat A on the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-19",
+        note: { ja: "A席側、茶畑の奥に見えるつま恋リゾートの看板。", en: "The Tsumagoi Resort sign beyond the tea fields on the Seat A side." },
+      },
     ],
     references: [REFERENCES.shizuokaTeaTourism, REFERENCES.shizuokaTeaGreenTeaAssoc, REFERENCES.shizuokaTeaGeography, REFERENCES.shizuokaFrostFan, REFERENCES.naroFrostFan, REFERENCES.tsumagoiResort],
     map: { lat: 34.774548442725724, lng: 138.099176682925, ja: "静岡の茶畑（代表通過地点）", en: "Shizuoka tea fields representative viewpoint" },
@@ -2668,7 +2693,7 @@ const SPOTS = [
         note: { ja: "夜の街並みの奥に、白い天守が浮かぶ", en: "The white keep floats above the night townscape" },
       },
     ],
-    references: [REFERENCES.kakegawaCastle],
+    references: [REFERENCES.kakegawaCastle, REFERENCES.kakegawaCastleTravel],
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
     viewpoint: { lat: 34.769664, lng: 138.017389 },
   },
@@ -2686,7 +2711,7 @@ const SPOTS = [
       en: "Cheer-up messages in a rice field: Iwata's three Shippei signs",
     },
     pageHeadingChunks: {
-      ja: ["田んぼの中の応援メッセージ——", "しっぺいの三連看板"],
+      ja: ["田んぼの中の", "応援メッセージ——", "しっぺいの", "三連看板"],
       en: ["Cheer-up messages in a rice field:", "Iwata's three Shippei signs"],
     },
     metaDescription: {
@@ -2785,11 +2810,11 @@ const SPOTS = [
       en: "A photo guide to Lake Hamana from the Tokaido Shinkansen, including Bentenjima's red torii, Boat Race Hamanako, aquaculture structures, Sun Marine Bridge and distant Mt. Fuji.",
     },
     sectionHeading: {
-      ja: "浜名湖は、ひとつの景色ではない",
+      ja: "海とつながる、浜名湖の車窓",
       en: "Lake Hamana is a sequence of window views",
     },
     pageStory: {
-      ja: "浜松から豊橋へ向かうと、街並みの先で突然、窓のすぐ下まで水面がひろがります。東海道新幹線がこれほど水際を走る区間は珍しく、橋を渡る瞬間は、湖というより海の上を走っているような浮遊感があります。A席とE席で見えるものが違うため、往復で席を変えても楽しめる定番車窓です。",
+      ja: "浜松から豊橋へ向かうと、街並みが途切れ、窓のすぐ下まで水面がひろがります。新幹線が渡るのは、淡水と海水が混ざる汽水湖・浜名湖。海とつながるこの湖では海苔や牡蠣の養殖が営まれ、水面に並ぶ杭や棚も車窓の景色になっています。橋の上では両側に水が迫り、まるで海の上を走るように感じられます。\n\nただ広い湖を渡るだけではなく、席によって出会う景色が違うのも、この区間の面白さです。A席側には弁天島の赤鳥居、E席側には競艇場や白い橋。空気が澄んだ日には、湖の向こうに小さな富士山が見えることもあります。まずは水辺の目印を知っておくと、数十秒の車窓をより楽しめます。",
       en: "Between Hamamatsu and Toyohashi, the cityscape suddenly opens into water almost directly below the windows. Few parts of the Tokaido Shinkansen run this close to the water, and crossing the bridges can feel less like passing a lake than gliding above the sea. Seats A and E reveal different landmarks, making the view rewarding in both directions.",
     },
     explainer: {
@@ -2797,8 +2822,7 @@ const SPOTS = [
       ja: [
         "A席・海側では、弁天島に入った直後、建物の間から赤い鳥居型シンボルタワーが一瞬見えます。神社の鳥居そのものではなく、弁天島を象徴する水上のランドマークです。視界が開く前後に現れるため、湖を見てから探すと間に合わないことがあります。",
         "E席・山側では、ボートレース浜名湖の広い水面やスタンド、その西側に白いサンマリンブリッジを探せます。サンマリンブリッジは競艇場周辺の交通を支えるために架けられた斜張橋で、傾いた一本の主塔と白いケーブルが目印です。",
-        "湖面に並ぶ杭や棚は、浜名湖の海苔や牡蠣などの養殖施設です。浜名湖は淡水と海水が混ざる汽水湖で、海苔養殖は200年以上の歴史があります。水面の向こうの景色だけでなく、湖の上に続く人の営みも浜名湖らしい車窓です。",
-        "空気が澄んだ日には、E席側でサンマリンブリッジや湖のさらに奥に富士山を探せます。三島〜新富士の大きな富士山とは別物で、湖と空の境目に小さく現れる遠望です。「富士5景」のなかでも、見えたこと自体がうれしい一景です。",
+        "湖面に杭や棚が並ぶ場所では、海苔や牡蠣などを養殖しています。浜名湖の海苔養殖には200年以上の歴史があり、整然と続く養殖施設は、その営みを車窓から感じられる目印です。遠くの岸辺だけでなく、手前の水面にも目を向けてみてください。",
       ],
       en: [
         "From Seat A, just after entering Bentenjima, a red torii-shaped symbol tower flashes between the buildings. It is a waterfront landmark rather than the gate of a shrine, and it can disappear before the wider lake view fully opens.",
@@ -2879,14 +2903,21 @@ const SPOTS = [
       description: { ja: "湖の上を走るような浜名湖の車窓を、投稿動画でも確かめられます。", en: "See the Lake Hamana crossing as the train seems to run across the water." },
       videos: [
         {
-          kind: "x",
-          url: "https://x.com/KS_1013/status/2075104617000743133",
-          handle: "@KS_1013",
-          accessibleTitle: { ja: "浜名湖のX動画", en: "X video of Lake Hamana" },
-          fallbackText: { ja: "浜名湖を渡る新幹線の車窓動画", en: "The Shinkansen crossing Lake Hamana" },
+          kind: "youtube",
+          id: "92ix63nsJ9E",
+          title: { ja: "[新幹線の車窓] 浜名湖 (E席山側)", en: "[新幹線の車窓] 浜名湖 (E席山側)" },
+          url: "https://www.youtube.com/watch?v=92ix63nsJ9E",
+          comment: { ja: "E席（山側）から見る浜名湖の車窓。", en: "Lake Hamana from Seat E on the mountain side." },
+        },
+        {
+          kind: "youtube",
+          id: "RZ9HmAfu7I4",
+          title: { ja: "[新幹線の車窓] 浜名湖 (A席海側)", en: "[新幹線の車窓] 浜名湖 (A席海側)" },
+          url: "https://www.youtube.com/watch?v=RZ9HmAfu7I4",
+          comment: { ja: "A席（海側）から見る浜名湖の車窓。", en: "Lake Hamana from Seat A on the sea side." },
         },
       ],
-      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "These videos use official YouTube embeds." },
     },
     relatedSpotIds: ["toyohashi-tateiwa", "kakegawa"],
     references: [REFERENCES.hamanakoTourism, REFERENCES.hamanakoEnvironment, REFERENCES.hamanakoBentenjima, REFERENCES.hamanakoNori, REFERENCES.hamanakoBoatRace, REFERENCES.sunMarineBridge, REFERENCES.hamanakoToriiBlog],
@@ -2895,6 +2926,7 @@ const SPOTS = [
   },
   {
     id: "hamanako-fuji", icon: "🗻",
+    pageHeadingChunks: { ja: ["浜名湖越しの", "富士山は", "いつ見える？", "座席側は？"], en: [] },
     ja: { name: "浜名湖越しの富士山", area: "浜松 → 豊橋", hook: "湖の向こうに、遠くの富士山。", story: "浜名湖を渡るころ、E席側の水面と空の境目に、想像より遠いところに富士山が浮かぶことがあります。浜名湖から富士山までの直線距離は約120km。新富士付近の主役級の富士山とはまったく違い、湖と空の奥に小さく探す一景です。空気が澄んだ冬の朝や、雨上がりで大気が洗われた日など、条件がそろった時だけ会える車窓です。" },
     en: { name: "Mt. Fuji beyond Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "A far, tiny Fuji beyond the lake.", story: "Crossing Lake Hamana, look far off on the Seat E side toward the boundary between water and sky. Mt. Fuji is about 120 km away from here, so this is a small distant Fuji to search for—nothing like the huge main-event Fuji near Shin-Fuji. It shows itself only when conditions align, especially on crisp winter mornings or after rain has washed the air." },
     guidePageId: "hamanako",
@@ -3065,7 +3097,7 @@ const SPOTS = [
       en: "The gourd-shaped island beyond the bay: what is Mikawa Oshima?",
     },
     pageHeadingChunks: {
-      ja: ["海の向こうのひょうたん型——", "三河大島とは？"],
+      ja: ["海の向こうの", "ひょうたん型——", "三河大島とは？"],
       en: ["The gourd-shaped island beyond the bay:", "what is Mikawa Oshima?"],
     },
     metaDescription: {
@@ -3146,7 +3178,7 @@ const SPOTS = [
       en: "A factory wall painted with a giant CELLOTAPE ad",
     },
     pageHeadingChunks: {
-      ja: ["工場の壁いっぱいに広がる、", "セロテープの壁看板"],
+      ja: ["工場の壁いっぱいに", "広がる、", "セロテープの", "壁看板"],
       en: ["A factory wall painted with", "a giant CELLOTAPE ad"],
     },
     metaDescription: {
@@ -3544,7 +3576,7 @@ const SPOTS = [
       en: "Solar Ark is scheduled for demolition — can you still see it?",
     },
     pageHeadingChunks: {
-      ja: ["解体予定のソーラーアーク——", "まだ見られる、太陽の船"],
+      ja: ["解体予定の", "ソーラーアーク——", "まだ見られる、", "太陽の船"],
       en: ["Solar Ark is scheduled for demolition —", "can you still see it?"],
     },
     metaDescription: {
@@ -3847,7 +3879,7 @@ const SPOTS = [
       en: "What is that pale, carved-away mountain? Mt. Kinsho at Ogaki",
     },
     pageHeadingChunks: {
-      ja: ["白く削られたあの山は何？——", "大垣の金生山"],
+      ja: ["白く削られた", "あの山は何？——", "大垣の金生山"],
       en: ["What is that pale, carved-away mountain?", "Mt. Kinsho at Ogaki"],
     },
     metaDescription: {
@@ -3914,7 +3946,7 @@ const SPOTS = [
       en: "Mt. Ibuki: the mountain that dominates the Sekigahara window",
     },
     pageHeadingChunks: {
-      ja: ["関ヶ原の車窓を支配する、", "伊吹山"],
+      ja: ["関ヶ原の車窓を", "支配する、", "伊吹山"],
       en: ["Mt. Ibuki: the mountain that dominates", "the Sekigahara window"],
     },
     metaDescription: {
@@ -4126,7 +4158,7 @@ const SPOTS = [
       en: "FUJITEC's elevator research tower near Maibara",
     },
     pageHeadingChunks: {
-      ja: ["米原近くに立つ、", "フジテックのエレベータ研究塔"],
+      ja: ["米原近くに立つ、", "フジテックの", "エレベータ研究塔"],
       en: ["FUJITEC's elevator research tower", "near Maibara"],
     },
     metaDescription: {
@@ -4225,7 +4257,7 @@ const SPOTS = [
       en: "Nangu Taisha's Grand Torii rising beyond the fields",
     },
     pageHeadingChunks: {
-      ja: ["田園の向こうにそびえる、", "南宮大社の大鳥居"],
+      ja: ["田園の向こうに", "そびえる、", "南宮大社の大鳥居"],
       en: ["Nangu Taisha's Grand Torii", "rising beyond the fields"],
     },
     metaDescription: {
@@ -4435,7 +4467,7 @@ const SPOTS = [
       en: "Yukimi Daifuku and Coolish: Lotte factory signs",
     },
     pageHeadingChunks: {
-      ja: ["雪見だいふく、クーリッシュ——", "ロッテ滋賀工場のお菓子看板"],
+      ja: ["雪見だいふく、", "クーリッシュ——", "ロッテ滋賀工場の", "お菓子看板"],
       en: ["Yukimi Daifuku and Coolish:", "Lotte factory signs"],
     },
     metaDescription: {
@@ -4847,7 +4879,7 @@ const SPOTS = [
       en: "The Hirakata Park Ferris wheel across the Yodo",
     },
     pageHeadingChunks: {
-      ja: ["淀川の対岸に立つ、", "ひらパーのスカイウォーカー"],
+      ja: ["淀川の対岸に立つ、", "ひらパーの", "スカイウォーカー"],
       en: ["The Hirakata Park Ferris wheel", "across the Yodo"],
     },
     metaDescription: {
@@ -4945,7 +4977,7 @@ const SPOTS = [
       en: "Just before Shin-Osaka: the Torikai Rail Yard opens up",
     },
     pageHeadingChunks: {
-      ja: ["新大阪の手前にひらける、", "鳥飼車両基地"],
+      ja: ["新大阪の手前に", "ひらける、", "鳥飼車両基地"],
       en: ["Just before Shin-Osaka:", "the Torikai Rail Yard opens up"],
     },
     metaDescription: {
