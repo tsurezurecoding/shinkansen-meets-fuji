@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "280e34d8e8f87be2",
+  "contentVersion": "bc968132ed7d41f2",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -109,8 +109,8 @@
     {
       "path": "en/hanabi.html",
       "url": "https://www.michikusa-travel.com/en/hanabi.html",
-      "bytes": 43871,
-      "sha256": "7332932a707d1907bcf2160494691b733f140f841729c8a61360574de06193ee"
+      "bytes": 35697,
+      "sha256": "d36145a0dac996e176a3cf6628e1c7678f7b36ae41bc14a526d7d184f83373b3"
     },
     {
       "path": "en/index.html",
@@ -121,14 +121,14 @@
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 27107,
-      "sha256": "25db7c1a502faf8d8cec841dfc01032b433d1cb9acb81e55eac74eb015955803"
+      "bytes": 27112,
+      "sha256": "ce9bd61dcaf32825592583cb444effc31620173b2156b1a0672f3e459be07268"
     },
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
-      "bytes": 37872,
-      "sha256": "648deeb9d688e5f6ea1d7c18344d8425ce544029d05434621f6fcc427f90d93d"
+      "bytes": 31065,
+      "sha256": "7f8463979b04b313a3e7d980d4b31b2ca2c07788401cde628b3ae173ae6af115"
     },
     {
       "path": "ferris-wheels.css",
@@ -151,8 +151,8 @@
     {
       "path": "hanabi.html",
       "url": "https://www.michikusa-travel.com/hanabi.html",
-      "bytes": 44179,
-      "sha256": "76f4b410182b7c3d9633b639e1ae141e79ad8f637f0153fe40f9e5c4ab209650"
+      "bytes": 36005,
+      "sha256": "44f26007eaa41500effb419df20d4840dde624325b4b691f32a7fca49ccc2ba6"
     },
     {
       "path": "hanabi.js",
@@ -439,8 +439,8 @@
     {
       "path": "window-moments.html",
       "url": "https://www.michikusa-travel.com/window-moments.html",
-      "bytes": 38217,
-      "sha256": "72c54d7715dfc7a1ca5680d059bd979dedf7960787e94400b05372d1ab5f404c"
+      "bytes": 29398,
+      "sha256": "779f8fb113e702e03699856914a7725e5c92ca8972600e42c6507f33876a91fc"
     },
     {
       "path": "window-moments.js",
@@ -451,8 +451,8 @@
     {
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
-      "bytes": 40920,
-      "sha256": "ba45d2c74e2b3098a4a88413cbee828781d38cea33d52717f0561b4003fa1558"
+      "bytes": 34113,
+      "sha256": "083ef846cb2247cd40923e7a430c5d4c4bbe8d990331d1ed2ce390a3f7af098a"
     },
     {
       "path": "yakei.js",

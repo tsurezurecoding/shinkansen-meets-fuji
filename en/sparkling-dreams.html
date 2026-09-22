@@ -40,6 +40,7 @@
       var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
       var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
+
       try {
         if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
         if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
@@ -47,9 +48,11 @@
       } catch (error) {
         storageOptedOut = false;
       }
+
       window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
       window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
       if (window.MADO_ANALYTICS_DISABLED) return;
+
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
       var script = document.createElement("script");
@@ -63,6 +66,7 @@
 </head>
 <body class="sparkling-dreams-page spot-page spot-page-utility" data-page="sparkling-dreams" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="sparkling-dreams.html" data-mado-lang="en">
   <div data-spot-page-shared-module="topbar"></div>
+
   <main>
     <section class="sd-hero" aria-labelledby="sdTitle"><div class="sd-hero-inner"><div class="sd-hero-grid">
       <div class="sd-hero-copy">
@@ -73,11 +77,12 @@
         <div class="sd-hero-rule" aria-hidden="true"><span></span><i></i><span></span></div>
         <p class="sd-hero-note"><span class="copy-chunk">Operating plans can change.</span> <span class="copy-chunk">Always check the latest official information.</span></p>
       </div>
-      <figure class="sd-hero-media"><img src="../images/20260816_sparkling_dreams_shizuoka_michikusa.jpg" width="900" height="600" alt="The Sparkling Dreams Shinkansen seen side on, its livery fading from white into deep teal" fetchpriority="high" decoding="async"><figcaption>Photo: Shinkansen Window (c)Disney</figcaption></figure>
+    <figure class="sd-hero-media"><img src="../images/20260816_sparkling_dreams_shizuoka_michikusa.jpg" width="900" height="600" alt="The Sparkling Dreams Shinkansen seen side on, its livery fading from white into deep teal" fetchpriority="high" decoding="async"><figcaption>Photo: Shinkansen Window (c)Disney</figcaption></figure>
     </div></div></section>
     <div class="spot-page-shell sd-shell">
       <aside data-spot-page-shared-module="rail"></aside>
       <article class="spot-page-article sd-article">
+
     <section class="sd-section sd-facts" aria-labelledby="sdFactsTitle"><div class="section-head"><p class="eyebrow">THE BASICS</p><h2 id="sdFactsTitle">What to know before you watch</h2></div><div class="sd-basics-copy"><p><span class="copy-chunk">This is one specially painted train running between Tokyo and Shin-Osaka in regular published timetable slots.</span> <span class="copy-chunk">Its exterior features Disney characters dressed for the 25th anniversary of Tokyo DisneySea, with the park's eight themed ports behind them.</span> <span class="copy-chunk">For the complete design and latest operating days, see JR Central's official information.</span></p><p>This page is not an official guide. It organizes published operating patterns for window watching, then estimates when and where your selected train may meet it and which side to watch. Official information takes priority for operating days and times.</p></div></section>
     <section class="sd-section sd-posts" aria-labelledby="sdVideosTitle">
   <div class="section-head">
@@ -128,6 +133,7 @@
     </div>
   </div>
 </section>
+
     <section class="sd-section sd-calculator-section" aria-labelledby="sdCalculatorTitle"><div class="section-head"><p class="eyebrow">CHECK YOUR ENCOUNTER</p><h2 id="sdCalculatorTitle">When your train may pass it</h2><p class="section-sub"><span class="copy-chunk">Choose your travel date and train.</span> <span class="copy-chunk">We estimate where it may meet the special train traveling the other way.</span></p></div><div id="sdCalculator" class="setup-card sd-setup"><div class="setup-row"><label class="setup-label" for="sdDate">Travel date</label><input type="date" id="sdDate" class="setup-date" name="date" required></div><div data-train-picker></div></div><div id="sdResult" class="sd-result is-empty" aria-live="polite"><h3>Your estimate appears here</h3><p>Choose a travel date, then pick your train.</p></div><noscript><p class="sd-noscript">Enable JavaScript to use the calculator. The A/B/C patterns and official links below are still available without it.</p></noscript></section>
     <section class="sd-section" aria-labelledby="sdPatternsTitle"><div class="section-head"><p class="eyebrow">PUBLISHED PATTERNS</p><h2 id="sdPatternsTitle">Operating patterns A, B, and C</h2><p class="section-sub">The combination changes by day. When a date is not confirmed, check the official schedule rather than guessing.</p></div><div class="sd-pattern-grid"><article class="sd-pattern-card"><p class="sd-pattern-label">PATTERN A</p><h3>A — Full day return</h3><p>Runs from the morning westbound and eastbound services through afternoon and evening.</p><ul data-pattern-list="A"></ul></article><article class="sd-pattern-card"><p class="sd-pattern-label">PATTERN B</p><h3>B — Morning return</h3><p>Follows morning Hikari 636 and its return as Kodama 815.</p><ul data-pattern-list="B"></ul></article><article class="sd-pattern-card"><p class="sd-pattern-label">PATTERN C</p><h3>C — Morning and evening return</h3><p>Combines morning Hikari 636 and evening Hikari 659.</p><ul data-pattern-list="C"></ul></article></div></section>
     <section class="sd-section sd-caveats" aria-labelledby="sdCaveatTitle"><div class="section-head"><p class="eyebrow">READ BEFORE YOU WATCH</p><h2 id="sdCaveatTitle">About these estimates</h2></div><div class="sd-caveat-grid"><p>Times are estimates calculated by linearly interpolating station times between reference stations on the Tokaido Shinkansen. Use ±5 minutes as a guide and start looking out a little early.</p><p>Station stops, track and speed operations, delays, and changes on the day can all change the view. If your train is part of the same special operation, the result says that your train is the special train rather than an encounter.</p><p>We do not calculate unconfirmed dates or dates outside the operating period. For the latest dates, trains, and times, rely on the official sources below.</p></div></section>
@@ -139,6 +145,7 @@
     <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
+
   <footer class="footer"><p class="footer-brand">Shinkansen Window <span>Notice the moments on your journey</span></p><p>Times are estimates. The view varies with your train, weather, and seat.</p><p class="footer-links"><a href="index.html">TOP</a> · <a href="guide.html">How to see Mt. Fuji</a> · <a href="references.html">Window view links</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy policy</a></p><p class="footer-credit">Michikusa — A slower journey, and unexpected discoveries.</p></footer>
   <script src="../spot-page-shared-data.js?v=6f0a06e3"></script>
   <script src="../spot-page-shared.js?v=83160a69"></script>
