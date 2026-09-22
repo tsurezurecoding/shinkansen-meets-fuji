@@ -283,9 +283,8 @@ async function runThinValidator() {
     for (const lang of ["ja", "en"]) {
       const page = pages[spot.id][lang];
       assertPageSafety(page, spot, lang);
-      if (lang === "ja" && !page.readingLayout) fail(`${spot.id}/ja is missing the Japanese reading layout`);
-      if (lang === "en" && page.readingLayout) fail(`${spot.id}/en unexpectedly opted into the Japanese reading layout`);
-      const expectedGalleryCount = page.photos.length - (spot.id === "ibuki" && lang === "ja" ? 0 : page.inline.length + (spot.id === "hamanako" && lang === "ja" && page.explainer?.figure ? 1 : 0));
+      if (!page.readingLayout) fail(`${spot.id}/${lang} is missing the shared reading layout`);
+      const expectedGalleryCount = page.photos.length - (spot.id === "ibuki" && lang === "ja" ? 0 : page.inline.length + (spot.id === "hamanako" && page.explainer?.figure ? 1 : 0));
       if (page.gallery.length !== expectedGalleryCount || expectedGalleryCount < 1) fail(`${spot.id}/${lang} gallery count is not derived from the structured photo source`);
       const inlineSources = new Set((page.inline || []).map((photo) => photo.src));
       const referenceSources = new Set((spot.photos || []).filter((photo) => photo.role === "reference").map((photo) => photo.src));
@@ -392,20 +391,26 @@ async function runThinValidator() {
         if (baselinePayload.replace(/\r\n/g, "\n") !== pagePayloadCode.get(pagePayloadRelativePath(spot.id, lang)).replace(/\r\n/g, "\n")) fail(`${relativeFile}: non-opt-in payload changed from ${baselineSelector}`);
       }
       if (page.readingLayout) {
-        if (lang !== "ja") fail(`${relativeFile}: unapproved reading layout rollout`);
-        const expectedCollectionRoute = expectedReadingCollections[spot.id];
+        const expectedCollectionRoute = expectedReadingCollections[spot.id] ? (lang === "en" ? "en/" : "") + expectedReadingCollections[spot.id] : "";
         if (expectedCollectionRoute && page.readingLayout.collection?.route !== expectedCollectionRoute) fail(`${relativeFile}: expected reading collection ${expectedCollectionRoute}`);
         if (expectedCollectionRoute && !output.includes(`href="${prefix}${expectedCollectionRoute}" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection"`)) fail(`${relativeFile}: expected reading collection CTA is missing`);
         if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
-        if (!output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (lang === "ja" && !output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (lang === "en" && !output.includes('<h2>How to spot ' + escape(page.name) + '</h2>')) fail(`${relativeFile}: English guide heading missing`);
         if (output.indexOf('data-spot-media-gallery') > output.indexOf('class="spot-page-facts"')) fail(`${relativeFile}: photo-first ordering changed`);
-        if (!output.includes('見える時間の目安') || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes(escape(page.readingLayout.visibility.note))) fail(`${relativeFile}: visibility fact missing`);
-        if (!output.includes(`href="${prefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${prefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
-        if (!output.includes('現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes('地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
-        if (((page.references.length || page.bodyLinks.length) && !output.includes('class="spot-reading-sources"')) || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
+        if (!output.includes(escape(page.readingLayout.visibility.label)) || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes(escape(page.readingLayout.visibility.note))) fail(`${relativeFile}: visibility fact missing`);
+        const languagePrefix = prefix + (lang === "en" ? "en/" : "");
+        if (!output.includes(`href="${languagePrefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${languagePrefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
+        if (!output.includes(lang === "en" ? 'not your current location' : '現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes(lang === "en" ? 'You can use the map alone' : '地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
+        if (page.references.length && !output.includes('<section class="spot-page-section spot-reading-sources"')) fail(`${relativeFile}: references must be an article section`);
+        const storyIndex = output.indexOf('lang="en">THE STORY</p>');
+        const tipsIndex = output.indexOf('lang="en">PHOTO TIPS</p>');
+        const sightsIndex = output.indexOf('lang="en">WHAT TO SEE</p>');
+        if (tipsIndex >= 0 && (tipsIndex < storyIndex || (sightsIndex >= 0 && tipsIndex < sightsIndex))) fail(`${relativeFile}: photo tips must follow the story and sights`);
+        if (((page.references.length || page.bodyLinks.length) && !output.includes('class="spot-page-section spot-reading-sources"')) || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
         for (const label of ["THE STORY", "ON BOARD", ...(page.explainer ? ["WHAT TO SEE"] : []), ...(page.map?.hasCoordinates ? ["ON THE MAP"] : []), ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
         if (output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
-        if (output.indexOf('class="spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
+        if (output.indexOf('class="spot-page-section spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
         if (page.readingLayout.collection && output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
         for (const photo of page.readingLayout.collection?.photos || []) if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${relativeFile}: missing related photo ${photo.src}`);
@@ -485,7 +490,7 @@ async function runThinValidator() {
 
   const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });
   const missingBodyReference = renderPage("ja", "../", "kiyosu", (data, page) => { page.bodyLinks = []; });
-  if (!missingBodyReference.html.includes('class="spot-reading-sources"') || pages.kiyosu.ja.references.some(reference => !missingBodyReference.html.includes(escape(reference.href)))) fail("reading layout must preserve references absent from body");
+  if (!missingBodyReference.html.includes('class="spot-page-section spot-reading-sources"') || pages.kiyosu.ja.references.some(reference => !missingBodyReference.html.includes(escape(reference.href)))) fail("reading layout must preserve references absent from body");
   const collectionSafety = renderPage("ja", "../", "kiyosu", (data, page) => { page.readingLayout.collection.route = "javascript:alert(1)"; });
   if (!collectionSafety.errors.some(message => message.includes("shared reading collection is malformed"))) fail("unsafe reading collection link did not fail closed");
   if (!safety.errors.some((message) => message.includes("shared page asset path is malformed")) || safety.host.className !== "spot-page-shared-error") fail("malformed asset path fixture did not fail closed");

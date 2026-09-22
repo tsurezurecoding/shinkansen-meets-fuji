@@ -862,7 +862,7 @@ const SPOTS = [
       en: "Mt. Fuji seen across the Tokyo skyline",
     },
     pageHeadingChunks: {
-      ja: ["東京の街並み越しに見える、", "都内からの富士山"],
+      ja: ["東京の街並み越しに", "見える、", "都内からの富士山"],
       en: ["Mt. Fuji seen across", "the Tokyo skyline"],
     },
     metaDescription: {
@@ -1333,7 +1333,7 @@ const SPOTS = [
       en: "Mt. Fuji beyond the Sagami Plain, rising behind the Tanzawa range",
     },
     pageHeadingChunks: {
-      ja: ["丹沢山地の背後にそびえる、", "相模平野越しの富士山"],
+      ja: ["丹沢山地の背後に", "そびえる、", "相模平野越しの", "富士山"],
       en: ["Mt. Fuji beyond the Sagami Plain,", "rising behind the Tanzawa range"],
     },
     metaDescription: {
@@ -1407,7 +1407,7 @@ const SPOTS = [
       en: "Atami and Sagami Bay between the tunnels",
     },
     pageHeadingChunks: {
-      ja: ["トンネルの合間にひらく、", "熱海と相模湾"],
+      ja: ["トンネルの合間に", "ひらく、", "熱海と相模湾"],
       en: ["Atami and Sagami Bay", "between the tunnels"],
     },
     metaDescription: {
@@ -1513,7 +1513,7 @@ const SPOTS = [
       en: "The white keep of Odawara Castle, glimpsed from the Shinkansen",
     },
     pageHeadingChunks: {
-      ja: ["新幹線から一瞬だけ見える、", "小田原城の白い天守"],
+      ja: ["新幹線から", "一瞬だけ見える、", "小田原城の", "白い天守"],
       en: ["The white keep of Odawara Castle,", "glimpsed from the Shinkansen"],
     },
     metaDescription: {
@@ -1681,7 +1681,7 @@ const SPOTS = [
       en: "Mishima's Shinkansen catapult, climbing into the sky",
     },
     pageHeadingChunks: {
-      ja: ["空へと向かう", "三島車両所の新幹線発射台"],
+      ja: ["空へと向かう", "三島車両所の", "新幹線発射台"],
       en: ["Mishima's Shinkansen catapult,", "climbing into the sky"],
     },
     metaDescription: {
@@ -1799,7 +1799,7 @@ const SPOTS = [
       en: "Fujikako's Showa-retro rooftop trademark",
     },
     pageHeadingChunks: {
-      ja: ["富士化工の", "昭和レトロなトレードマーク"],
+      ja: ["富士化工の", "昭和レトロな", "トレードマーク"],
       en: ["Fujikako's Showa-retro", "rooftop trademark"],
     },
     metaDescription: {
@@ -2006,7 +2006,7 @@ const SPOTS = [
       en: "A papermaking town, with Mt. Fuji standing behind the chimneys",
     },
     pageHeadingChunks: {
-      ja: ["煙突の向こうに富士山が立つ、", "製紙の街"],
+      ja: ["煙突の向こうに", "富士山が立つ、", "製紙の街"],
       en: ["A papermaking town, with Mt. Fuji", "standing behind the chimneys"],
     },
     metaDescription: {
@@ -2127,7 +2127,7 @@ const SPOTS = [
       en: "Mt. Fuji beyond the white arches of the Fuji River",
     },
     pageHeadingChunks: {
-      ja: ["白いアーチの向こうに立つ、", "富士川の富士山"],
+      ja: ["白いアーチの", "向こうに立つ、", "富士川の富士山"],
       en: ["Mt. Fuji beyond the white arches", "of the Fuji River"],
     },
     metaDescription: {
@@ -2277,7 +2277,7 @@ const SPOTS = [
       en: "A white drilling tower among the cranes: Shimizu Port and CHIKYU",
     },
     pageHeadingChunks: {
-      ja: ["港のクレーンの中に立つ、白い掘削やぐら——", "清水港と「ちきゅう」"],
+      ja: ["港のクレーンの", "中に立つ、", "白い掘削やぐら——", "清水港と", "「ちきゅう」"],
       en: ["A white drilling tower among the cranes:", "Shimizu Port and CHIKYU"],
     },
     metaDescription: {
@@ -2711,7 +2711,7 @@ const SPOTS = [
       en: "Cheer-up messages in a rice field: Iwata's three Shippei signs",
     },
     pageHeadingChunks: {
-      ja: ["田んぼの中の応援メッセージ——", "しっぺいの三連看板"],
+      ja: ["田んぼの中の", "応援メッセージ——", "しっぺいの", "三連看板"],
       en: ["Cheer-up messages in a rice field:", "Iwata's three Shippei signs"],
     },
     metaDescription: {
@@ -2926,6 +2926,7 @@ const SPOTS = [
   },
   {
     id: "hamanako-fuji", icon: "🗻",
+    pageHeadingChunks: { ja: ["浜名湖越しの", "富士山は", "いつ見える？", "座席側は？"], en: [] },
     ja: { name: "浜名湖越しの富士山", area: "浜松 → 豊橋", hook: "湖の向こうに、遠くの富士山。", story: "浜名湖を渡るころ、E席側の水面と空の境目に、想像より遠いところに富士山が浮かぶことがあります。浜名湖から富士山までの直線距離は約120km。新富士付近の主役級の富士山とはまったく違い、湖と空の奥に小さく探す一景です。空気が澄んだ冬の朝や、雨上がりで大気が洗われた日など、条件がそろった時だけ会える車窓です。" },
     en: { name: "Mt. Fuji beyond Lake Hamana", area: "Hamamatsu → Toyohashi", hook: "A far, tiny Fuji beyond the lake.", story: "Crossing Lake Hamana, look far off on the Seat E side toward the boundary between water and sky. Mt. Fuji is about 120 km away from here, so this is a small distant Fuji to search for—nothing like the huge main-event Fuji near Shin-Fuji. It shows itself only when conditions align, especially on crisp winter mornings or after rain has washed the air." },
     guidePageId: "hamanako",
@@ -3096,7 +3097,7 @@ const SPOTS = [
       en: "The gourd-shaped island beyond the bay: what is Mikawa Oshima?",
     },
     pageHeadingChunks: {
-      ja: ["海の向こうのひょうたん型——", "三河大島とは？"],
+      ja: ["海の向こうの", "ひょうたん型——", "三河大島とは？"],
       en: ["The gourd-shaped island beyond the bay:", "what is Mikawa Oshima?"],
     },
     metaDescription: {
@@ -3177,7 +3178,7 @@ const SPOTS = [
       en: "A factory wall painted with a giant CELLOTAPE ad",
     },
     pageHeadingChunks: {
-      ja: ["工場の壁いっぱいに広がる、", "セロテープの壁看板"],
+      ja: ["工場の壁いっぱいに", "広がる、", "セロテープの", "壁看板"],
       en: ["A factory wall painted with", "a giant CELLOTAPE ad"],
     },
     metaDescription: {
@@ -3575,7 +3576,7 @@ const SPOTS = [
       en: "Solar Ark is scheduled for demolition — can you still see it?",
     },
     pageHeadingChunks: {
-      ja: ["解体予定のソーラーアーク——", "まだ見られる、太陽の船"],
+      ja: ["解体予定の", "ソーラーアーク——", "まだ見られる、", "太陽の船"],
       en: ["Solar Ark is scheduled for demolition —", "can you still see it?"],
     },
     metaDescription: {
@@ -3878,7 +3879,7 @@ const SPOTS = [
       en: "What is that pale, carved-away mountain? Mt. Kinsho at Ogaki",
     },
     pageHeadingChunks: {
-      ja: ["白く削られたあの山は何？——", "大垣の金生山"],
+      ja: ["白く削られた", "あの山は何？——", "大垣の金生山"],
       en: ["What is that pale, carved-away mountain?", "Mt. Kinsho at Ogaki"],
     },
     metaDescription: {
@@ -3945,7 +3946,7 @@ const SPOTS = [
       en: "Mt. Ibuki: the mountain that dominates the Sekigahara window",
     },
     pageHeadingChunks: {
-      ja: ["関ヶ原の車窓を支配する、", "伊吹山"],
+      ja: ["関ヶ原の車窓を", "支配する、", "伊吹山"],
       en: ["Mt. Ibuki: the mountain that dominates", "the Sekigahara window"],
     },
     metaDescription: {
@@ -4157,7 +4158,7 @@ const SPOTS = [
       en: "FUJITEC's elevator research tower near Maibara",
     },
     pageHeadingChunks: {
-      ja: ["米原近くに立つ、", "フジテックのエレベータ研究塔"],
+      ja: ["米原近くに立つ、", "フジテックの", "エレベータ研究塔"],
       en: ["FUJITEC's elevator research tower", "near Maibara"],
     },
     metaDescription: {
@@ -4256,7 +4257,7 @@ const SPOTS = [
       en: "Nangu Taisha's Grand Torii rising beyond the fields",
     },
     pageHeadingChunks: {
-      ja: ["田園の向こうにそびえる、", "南宮大社の大鳥居"],
+      ja: ["田園の向こうに", "そびえる、", "南宮大社の大鳥居"],
       en: ["Nangu Taisha's Grand Torii", "rising beyond the fields"],
     },
     metaDescription: {
@@ -4466,7 +4467,7 @@ const SPOTS = [
       en: "Yukimi Daifuku and Coolish: Lotte factory signs",
     },
     pageHeadingChunks: {
-      ja: ["雪見だいふく、クーリッシュ——", "ロッテ滋賀工場のお菓子看板"],
+      ja: ["雪見だいふく、", "クーリッシュ——", "ロッテ滋賀工場の", "お菓子看板"],
       en: ["Yukimi Daifuku and Coolish:", "Lotte factory signs"],
     },
     metaDescription: {
@@ -4878,7 +4879,7 @@ const SPOTS = [
       en: "The Hirakata Park Ferris wheel across the Yodo",
     },
     pageHeadingChunks: {
-      ja: ["淀川の対岸に立つ、", "ひらパーのスカイウォーカー"],
+      ja: ["淀川の対岸に立つ、", "ひらパーの", "スカイウォーカー"],
       en: ["The Hirakata Park Ferris wheel", "across the Yodo"],
     },
     metaDescription: {
@@ -4976,7 +4977,7 @@ const SPOTS = [
       en: "Just before Shin-Osaka: the Torikai Rail Yard opens up",
     },
     pageHeadingChunks: {
-      ja: ["新大阪の手前にひらける、", "鳥飼車両基地"],
+      ja: ["新大阪の手前に", "ひらける、", "鳥飼車両基地"],
       en: ["Just before Shin-Osaka:", "the Torikai Rail Yard opens up"],
     },
     metaDescription: {
