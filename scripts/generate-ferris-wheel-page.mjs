@@ -3,6 +3,7 @@ import vm from 'node:vm';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assetVersion } from './shared/asset-version.mjs';
+import { ANALYTICS } from './shared/feature-page.mjs';
 import { thumbnailSrc } from './shared/geo.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -33,8 +34,6 @@ function trackGeometry(lat, lng) {
   const cross = (p1.x - p0.x) * (pt.y - p0.y) - (p1.y - p0.y) * (pt.x - p0.x);
   return { minutes: TRACK.kmToMin(km), distanceKm: TRACK.haversineKm(lat, lng, onTrack.lat, onTrack.lng), seat: cross > 0 ? 'A' : 'E' };
 }
-const analytics = fs.readFileSync(path.join(root, 'zukan.html'), 'utf8').match(/<script>\s*\(function \(\) \{[\s\S]*?<\/script>/)?.[0] || '';
-if (!analytics.includes('measurementId')) throw Error('Analytics source not found');
 const esc = s => String(s).replace(/[&<>\"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // 台帳は data.js の WHEEL_COLLECTION が正本。727看板の BOARD_COLLECTION と同じく、
 // 乗車ガイドのタイムラインとこのページが同じ1件のデータを読む。
@@ -161,7 +160,7 @@ function render(lang) {
   <meta name="twitter:image:alt" content="${heroAlt}">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
   <script src="${prefix}language-router.js?v=${assetVersion('language-router.js')}"></script>
-  ${analytics}
+  ${ANALYTICS.plain}
 </head>
 <body class="ferris-wheels-page spot-page spot-page-utility" data-page="ferris-wheels" data-spot-page-shared-context="utility" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${en ? '../' : './'}" data-spot-page-shared-route="ferris-wheels.html">
   <div data-spot-page-shared-module="topbar"></div>

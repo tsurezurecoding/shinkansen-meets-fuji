@@ -4,12 +4,11 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { thumbnailSrc } from './shared/geo.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
+import { ANALYTICS } from './shared/feature-page.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const spots = vm.runInNewContext(fs.readFileSync(path.join(root, 'data.js'), 'utf8') + ';SPOTS');
 const esc = s => String(s).replace(/[&<>\"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 // Only window photographs; reference views from conventional lines are excluded.
-const analytics = fs.readFileSync(path.join(root, 'zukan.html'), 'utf8').match(/<script>\s*\(function \(\) \{[\s\S]*?<\/script>/)?.[0] || '';
-if (!analytics.includes('measurementId')) throw Error('Analytics source not found');
 // ヒーロー背景は castles.css が参照する清洲城の写真。
 const heroImage = 'images/20260704_kiyosu_castle_michikusa.jpg';
 if (!fs.existsSync(path.join(root, heroImage))) throw Error('Missing hero photograph: ' + heroImage);
@@ -209,7 +208,7 @@ function render(lang) {
   <meta name="twitter:image:alt" content="${heroAlt}">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
   <script src="${prefix}language-router.js?v=${assetVersion('language-router.js')}"></script>
-  ${analytics}
+  ${ANALYTICS.plain}
 </head>
 <body class="castles-page spot-page spot-page-utility" data-page="castles" data-spot-page-shared-context="utility" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${en ? '../' : './'}" data-spot-page-shared-route="castles.html">
   <div data-spot-page-shared-module="topbar"></div>

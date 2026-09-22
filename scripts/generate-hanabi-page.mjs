@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assetVersion } from './shared/asset-version.mjs';
+import { ANALYTICS } from './shared/feature-page.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = 'https://www.michikusa-travel.com';
@@ -332,39 +333,7 @@ function render(lang) {
   ${t.copy10}
   <script src="${p}language-router.js?v=${assetVersion('language-router.js')}"></script>
   <link rel="stylesheet" href="${p}hanabi.css?v=${assetVersion('hanabi.css')}">
-  <script>
-    (function () {
-      if (window.MADO_EMBEDDED_WEB) return;
-      var measurementId = "G-C2ESB694FV";
-      var optoutKey = "mado-ga-optout";
-      var params = new URLSearchParams(window.location.search);
-      var host = window.location.hostname;
-      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
-      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
-      var storageOptedOut = false;
-
-      try {
-        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
-        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
-        storageOptedOut = localStorage.getItem(optoutKey) === "1";
-      } catch (error) {
-        storageOptedOut = false;
-      }
-
-      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
-      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
-      if (window.MADO_ANALYTICS_DISABLED) return;
-
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function () { window.dataLayer.push(arguments); };
-      var script = document.createElement("script");
-      script.async = true;
-      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
-      document.head.appendChild(script);
-      window.gtag("js", new Date());
-      window.gtag("config", measurementId);
-    })();
-  </script>
+${ANALYTICS.withEmbeddedGuard}
 </head>
 ${t.hanabi_page}
   <div data-spot-page-shared-module="topbar"></div>
