@@ -32,8 +32,9 @@
   <meta name="twitter:image:alt" content="Hirakata Park Ferris wheel at dusk from the Shinkansen">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Ferris Wheels from the Tokaido Shinkansen | Six Wheels to Spot from the Window","description":"Find six Ferris wheels visible from the Tokaido Shinkansen, with seat sides, route sections and sighting sources, from Toyohashi to Osaka.","inLanguage":"en","url":"https://www.michikusa-travel.com/en/ferris-wheels.html","isPartOf":{"@type":"WebSite","name":"Shinkansen Window","url":"https://www.michikusa-travel.com/"},"mainEntity":{"@type":"ItemList","itemListElement":[{"@type":"ListItem","position":1,"name":"Nonhoi Park","url":"https://www.michikusa-travel.com/en/ferris-wheels.html#nonhoi"},{"@type":"ListItem","position":2,"name":"Laguna Ten Bosch","url":"https://www.michikusa-travel.com/en/ferris-wheels.html#laguna"},{"@type":"ListItem","position":3,"name":"Horiuchi Park","url":"https://www.michikusa-travel.com/en/ferris-wheels.html#horiuchi"},{"@type":"ListItem","position":4,"name":"Nagoya Port Sea Train Land","url":"https://www.michikusa-travel.com/en/ferris-wheels.html#nagoya-port"},{"@type":"ListItem","position":5,"name":"Hirakata Park","url":"https://www.michikusa-travel.com/en/ferris-wheels.html#hirakata"},{"@type":"ListItem","position":6,"name":"OSAKA WHEEL at EXPOCITY","url":"https://www.michikusa-travel.com/en/ferris-wheels.html#osaka-wheel"}]}}</script>
   <script src="../language-router.js?v=a8d4ab78"></script>
-  <script>
+    <script>
     (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
       var measurementId = "G-C2ESB694FV";
       var optoutKey = "mado-ga-optout";
       var params = new URLSearchParams(window.location.search);
@@ -43,12 +44,8 @@
       var storageOptedOut = false;
 
       try {
-        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
-          localStorage.setItem(optoutKey, "1");
-        }
-        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
-          localStorage.removeItem(optoutKey);
-        }
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
         storageOptedOut = localStorage.getItem(optoutKey) === "1";
       } catch (error) {
         storageOptedOut = false;

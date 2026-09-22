@@ -30,35 +30,7 @@
   <meta name="twitter:description" content="All 24 locations of the mysterious 727 billboards on the Tokaido Shinkansen, with seat sides and passing times.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-727-collection.jpg">
   <link rel="stylesheet" href="../style.css?v=d14014c6">
-  <style>
-    .collection-route-intro { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 16px; margin: 20px 0 8px; }
-    .collection-route-intro strong { font-family: var(--font-serif); font-size: 18px; }
-    .collection-route-intro span { color: var(--ink-soft); font-size: 11px; }
-    .collection-route-segment + .collection-route-segment { margin-top: 28px; }
-    .collection-route-segment-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; padding: 0 0 9px 32px; border-bottom: 1px solid rgba(125,155,192,.3); }
-    .collection-route-stations { display: flex; align-items: center; gap: 8px; font-family: var(--font-serif); font-size: 17px; font-weight: 700; }
-    .collection-route-arrow { color: var(--accent); font-family: var(--font-sans); font-size: 15px; }
-    .collection-route-segment-meta { display: flex; flex-wrap: wrap; gap: 5px 12px; color: var(--ink-soft); font-size: 11px; font-weight: 700; }
-    .collection-route-points { position: relative; display: grid; gap: 10px; margin-top: 12px; padding-left: 32px; }
-    .collection-route-points::before { content: ""; position: absolute; top: -13px; bottom: -29px; left: 9px; width: 2px; background: linear-gradient(180deg, var(--accent), rgba(125,155,192,.38)); }
-    .collection-route-segment:last-child .collection-route-points::before { bottom: 50%; }
-    .collection-route-point { position: relative; min-width: 0; }
-    .collection-route-point::before { content: ""; position: absolute; z-index: 2; top: 25px; left: -28px; width: 10px; height: 10px; border: 3px solid var(--paper); border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px rgba(179,39,45,.28); }
-    .collection-route-point.is-missing-point::before { background: #8793a0; }
-    .collection-point-summary-meta { display: flex; flex-wrap: wrap; gap: 3px 10px; color: var(--ink-soft); font-size: 11px; font-weight: 700; line-height: 1.45; }
-    .collection-point-summary-time { color: var(--accent); }
-    @media (max-width: 600px) {
-      .collection-route-segment-header { align-items: flex-start; padding-left: 24px; }
-      .collection-route-stations { font-size: 15px; }
-      .collection-route-points { padding-left: 24px; }
-      .collection-route-points::before { left: 6px; }
-      .collection-route-point::before { left: -23px; }
-    }
-    @media (max-width: 360px) {
-      .collection-point-summary { grid-template-columns: minmax(0, 1fr) auto; }
-      .collection-point-summary-thumb { display: none; }
-    }
-  </style>
+  <link rel="stylesheet" href="../727-collection.css?v=bf7db6db">
   <script>
     (function () {
       if (window.MADO_EMBEDDED_WEB) return;
@@ -69,6 +41,7 @@
       var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
       var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
       var storageOptedOut = false;
+
       try {
         if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
         if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
@@ -76,9 +49,11 @@
       } catch (error) {
         storageOptedOut = false;
       }
+
       window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
       window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
       if (window.MADO_ANALYTICS_DISABLED) return;
+
       window.dataLayer = window.dataLayer || [];
       window.gtag = function () { window.dataLayer.push(arguments); };
       var script = document.createElement("script");

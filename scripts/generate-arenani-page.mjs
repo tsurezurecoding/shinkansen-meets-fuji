@@ -4,6 +4,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { thumbnailSrc } from './shared/geo.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
+import { ANALYTICS } from './shared/feature-page.mjs';
 
 // 日英の「あれ、何？」特集。日本語版は変わった目印を集め、英語版は訪日旅行者が
 // 最初に正体を知りたくなる日常景を扱う。分数・席側・写真は data.js から読む。
@@ -15,8 +16,6 @@ const esc = s => String(s).replace(/[&<>\"]/g, c => ({ '&': '&amp;', '<': '&lt;'
 const chunk = parts => parts.map(part => `<span class="copy-chunk">${part}</span>`).join('');
 // 問いの末尾の「？」だけ橙にする
 const question = text => esc(text).replace(/？$/, '<span class="an-q">？</span>');
-const analytics = fs.readFileSync(path.join(root, 'zukan.html'), 'utf8').match(/<script>\s*\(function \(\) \{[\s\S]*?<\/script>/)?.[0] || '';
-if (!analytics.includes('measurementId')) throw Error('Analytics source not found');
 
 const pageUrl = 'https://www.michikusa-travel.com/arenani.html';
 const englishPageUrl = 'https://www.michikusa-travel.com/en/arenani.html';
@@ -280,7 +279,7 @@ function render() {
   <meta name="twitter:image:alt" content="空へ上っていくように見える三島車両所の線路">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
   <script src="language-router.js?v=${assetVersion('language-router.js')}"></script>
-  ${analytics}
+  ${ANALYTICS.withEmbeddedGuard}
 </head>
 <body class="castles-page arenani-page spot-page spot-page-utility" data-page="arenani" data-spot-page-shared-context="utility" data-spot-page-shared-lang="ja" data-spot-page-shared-root="./" data-spot-page-shared-route="arenani.html">
   <div data-spot-page-shared-module="topbar"></div>
@@ -395,7 +394,7 @@ function renderEnglish() {
   <meta name="twitter:image" content="https://www.michikusa-travel.com/${englishHeroImage}">
   <meta name="twitter:image:alt" content="Bright green tea rows rolling across the hills of Shizuoka">
   <script type="application/ld+json">${JSON.stringify(json)}</script>
-  ${analytics}
+  ${ANALYTICS.withEmbeddedGuard}
 </head>
 <body class="castles-page arenani-page arenani-page-en spot-page spot-page-utility" data-page="arenani" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="arenani.html">
   <div data-spot-page-shared-module="topbar"></div>
