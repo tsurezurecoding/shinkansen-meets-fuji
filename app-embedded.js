@@ -154,8 +154,8 @@
     if (path === "/en/zukan.html") return "en/zukan.html";
     if (path === "/journal.html") return "journal.html";
     if (path === "/en/journal.html") return "en/journal.html";
-    if (path === "/live" || path === "/live/index.html") return "live/index.html";
-    if (path === "/en/live" || path === "/en/live/index.html") return "en/live/index.html";
+    if (path === "/live" || path === "/live/" || path === "/live/index.html") return "live/index.html";
+    if (path === "/en/live" || path === "/en/live/" || path === "/en/live/index.html") return "en/live/index.html";
     return "";
   }
 

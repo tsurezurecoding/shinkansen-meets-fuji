@@ -1430,9 +1430,12 @@
         localStorage.setItem("madoLive.lang", nextLang);
         localStorage.setItem("mado-lang", nextLang);
       } catch (error) {}
-      location.href = nextLang === "en"
-        ? new URL("../en/live/index.html", document.baseURI).href
-        : new URL("../../live/index.html", document.baseURI).href;
+      // 公開Webのcanonicalはディレクトリ形式。ネイティブバンドルだけがindex.htmlを必要とする
+      // （language-router.jsと同じ契約）。両形式のリンクが混在するとGoogleが古い方をクロールし、
+      // 2026-08-16に外したnoindexを持ち続ける事故が起きた（2026-09-22に判明）。
+      var liveTarget = nextLang === "en" ? "../en/live/" : "../../live/";
+      if (window.MADO_NATIVE_APP) liveTarget += "index.html";
+      location.href = new URL(liveTarget, document.baseURI).href;
     });
   });
   document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);
