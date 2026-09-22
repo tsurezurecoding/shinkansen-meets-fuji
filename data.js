@@ -902,6 +902,15 @@ const SPOTS = [
       url: "https://x.com/T_Yangyang/status/2056673343630426163",
       note: { ja: "大田区付近から見える富士山", en: "Mt. Fuji seen from around Ota." },
     },
+    photos: [
+      {
+        src: "images/20240709_ota_fuji_asami_k920.jpg",
+        alt: { ja: "新幹線のE席側から見える都内の街並みと、黒い円で示された遠くの富士山", en: "Tokyo rooftops from Seat E, with a black circle marking distant Mt. Fuji" },
+        credit: { ja: "@asami_k920", en: "@asami_k920" },
+        sourceUrl: "https://x.com/asami_k920/status/1814134818638274715",
+        note: { ja: "写真内の黒い円が富士山の位置を示す", en: "The black circle in the original photo marks Mt. Fuji" },
+      },
+    ],
     references: [REFERENCES.weatherFuji, REFERENCES.otaFujiEarlyMorning],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（大田区付近からの遠望対象）", en: "Mt. Fuji, viewed from around Ota" },
     viewpoint: { lat: 35.600575, lng: 139.734265 },
