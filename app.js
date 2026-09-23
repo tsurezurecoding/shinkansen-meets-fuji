@@ -2282,7 +2282,7 @@ function discoverySpotOrder(a, b) {
 const galleryTagGroups = {
   nature: new Set(["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "odawara", "hamanako", "hamanako-fuji", "toyohashi-tateiwa", "mikawa-oshima", "shizuoka-tea-fields", "fujikawa-bridge", "ibuki", "omi-fuji"]),
   history: new Set(["odawara-castle", "gyoran-kannon", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "seta-karahashi", "toji"]),
-  industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "fuji-paper-mills", "kirin-beer-factory", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
+  industry: new Set(["shimizu-port-chikyu", "mishima-catapult", "fuji-paper-mills", "kirin-beer-factory", "sapporo-shizuoka-factory", "rakusai-egg-tanks", "solar-ark", "torikai-train-depot", "kinshozan", "fujitec-big-wing"]),
   sign: new Set(["putiputi-sign", "727-board", "727-sign", "genki-sign", "nichiban-anjo", "fuji-pipe-sign", "gifu-hashima-mahalo", "sennenq-sign", "lotte-shiga"]),
   city: new Set(["tokyo-tower", "maruko-bridge", "musashi-kosugi-towers", "hinataoka", "granship", "nagoya-station-skyline"]),
 };
