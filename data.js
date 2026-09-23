@@ -910,6 +910,13 @@ const SPOTS = [
         sourceUrl: "https://x.com/asami_k920/status/1814134818638274715",
         note: { ja: "写真内の黒い円が富士山の位置を示す", en: "The black circle in the original photo marks Mt. Fuji" },
       },
+      {
+        src: "images/20241103_ota_fuji_magrittian.jpg",
+        alt: { ja: "新幹線の車窓から見える都内の住宅街と、遠くに淡く浮かぶ富士山", en: "Tokyo rooftops seen from the Shinkansen, with a faint Mt. Fuji in the distance" },
+        credit: { ja: "@magrittian", en: "@magrittian" },
+        sourceUrl: "https://x.com/magrittian/status/1853058445089587416",
+        note: { ja: "街並みの奥に、淡い富士山の輪郭が見える", en: "A faint outline of Mt. Fuji beyond the city" },
+      },
     ],
     references: [REFERENCES.weatherFuji, REFERENCES.otaFujiEarlyMorning],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（大田区付近からの遠望対象）", en: "Mt. Fuji, viewed from around Ota" },
