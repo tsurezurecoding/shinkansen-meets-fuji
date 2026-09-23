@@ -499,6 +499,10 @@ READING_LAYOUTS["hamanako:ja"] = {
 };
 
 const SPOT_VIEWING_NOTES = {
+  "fuji-bus-sales": {
+    ja: "バスの列が見えたら、赤い看板も探してください",
+    en: "Look for the red sign above the bus rows.",
+  },
   "ota-fuji": {
     ja: "建物に遮られるため、連続して見える秒数ではありません",
     en: "Buildings interrupt the view; this is not one continuous glimpse.",
