@@ -1744,22 +1744,22 @@ function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-07-29" },
-    { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
-    { loc: `${siteRoot}/en/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
+    { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-23" },
+    { loc: `${siteRoot}/en/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-12" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/en/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
-    { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
-    { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-07-29" },
-    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
+    { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-09-23" },
+    { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-09-23" },
+    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
     { loc: `${siteRoot}/en/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
     { loc: `${siteRoot}/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/en/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-16" },
     { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: "2026-08-16" },
-    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-08-09" },
+    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
@@ -1790,7 +1790,13 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/privacy.html`, priority: "0.3", changefreq: "yearly" },
   ];
   // 個別に更新したスポットだけ日付を上書きする。全件を一斉に書き換えないための例外表。
-  const spotLastmodOverrides = { "727-board": "2026-08-15" };
+  const spotLastmodOverrides = {
+    "727-board": "2026-08-15",
+    "ota-fuji": "2026-09-23",
+    "fuji-bus-sales": "2026-09-23",
+    "sapporo-shizuoka-factory": "2026-09-23",
+    "rakusai-egg-tanks": "2026-09-23",
+  };
   const spotUrls = SPOTS.filter((spot) => hasGeneratedSpotPage(spot) && !isSubordinateSpot(spot)).flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
