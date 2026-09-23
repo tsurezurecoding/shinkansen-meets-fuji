@@ -498,6 +498,25 @@ READING_LAYOUTS["hamanako:ja"] = {
   visibility: { label: "見える時間の目安", value: "数十秒ほど", note: "水面や目印が見える区間の目安。列車や走行速度によって変わります" }
 };
 
+const SPOT_VIEWING_NOTES = {
+  "fuji-bus-sales": {
+    ja: "バスの列が見えたら、赤い看板も探してください",
+    en: "Look for the red sign above the bus rows.",
+  },
+  "ota-fuji": {
+    ja: "建物に遮られるため、連続して見える秒数ではありません",
+    en: "Buildings interrupt the view; this is not one continuous glimpse.",
+  },
+  "sapporo-shizuoka-factory": {
+    ja: "タンク列と星印を続けて探してください",
+    en: "Look for the tank row, then the star.",
+  },
+  "rakusai-egg-tanks": {
+    ja: "二つ並ぶ輪郭を見つけるのが目印です",
+    en: "Look for the pair of rounded silhouettes.",
+  },
+};
+
 function readingLayoutFor(spot, lang = "ja") {
   if (lang === "en") return englishReadingLayout(spot);
   const seconds = Number(spot.durationSec);
@@ -510,10 +529,10 @@ function readingLayoutFor(spot, lang = "ja") {
             : seconds <= 60 ? "数十秒ほど"
               : seconds <= 120 ? "1分前後"
                 : "数分間・区間内で断続的";
-  const note = seconds > 120
+  const note = SPOT_VIEWING_NOTES[spot.id]?.ja || (seconds > 120
     ? "のぞみ基準の目安。連続して見える秒数ではなく、探し始める区間の目安です"
-    : "のぞみ基準の目安。列車や走行速度、天候・遮蔽物によって変わります";
-  const layout = { version: 1, compactGuide: true, visibility: { label: "見える時間の目安", value: duration, note }, ...(READING_LAYOUTS[spot.id + ":ja"] || {}) };
+    : "のぞみ基準の目安。列車や走行速度、天候・遮蔽物によって変わります");
+  const layout = { version: 1, compactGuide: true, visibility: { label: "見える時間の目安", value: spot.id === "ota-fuji" ? "十数秒ほど" : duration, note }, ...(READING_LAYOUTS[spot.id + ":ja"] || {}) };
   if (spot.scene === "castle" && !layout.collection) layout.collection = { ...castleCollection, photos: [castleCollection.photos[0], kiyosuPhoto], note: "新幹線から見える城を一覧で。" };
   if (spot.id === "kannonji-castle" && !layout.collection) layout.collection = { ...castleCollection, photos: [castleCollection.photos[0], kiyosuPhoto], note: "新幹線から見える城を一覧で。" };
   if (spot.id === "hirakata-park-wheel") {
@@ -535,9 +554,9 @@ function englishReadingLayout(spot) {
             : seconds <= 60 ? "Several dozen seconds"
               : seconds <= 120 ? "About a minute"
                 : "Intermittent views over several minutes";
-  let note = seconds > 120
+  let note = SPOT_VIEWING_NOTES[spot.id]?.en || (seconds > 120
     ? "Approximate Nozomi timing: a stretch to watch, not continuous visibility."
-    : "Approximate Nozomi timing; varies with train speed, weather and obstructions.";
+    : "Approximate Nozomi timing; varies with train speed, weather and obstructions.");
   if (spot.id === "kiyosu") {
     value = "A few seconds";
     note = "Approximate; varies with the train and its speed.";
