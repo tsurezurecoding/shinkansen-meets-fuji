@@ -1792,6 +1792,7 @@ function sitemapXML() {
   // 個別に更新したスポットだけ日付を上書きする。全件を一斉に書き換えないための例外表。
   const spotLastmodOverrides = {
     "727-board": "2026-08-15",
+    "solar-ark": "2026-09-25",
     "ota-fuji": "2026-09-23",
     "fuji-bus-sales": "2026-09-23",
     "sapporo-shizuoka-factory": "2026-09-23",
