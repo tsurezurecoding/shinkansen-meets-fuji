@@ -12,7 +12,7 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">小田原城</text>
+<text x="100" y="52" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">小田原城</text>
 
 
 <g stroke-width="2.5" fill="none">
@@ -25,6 +25,6 @@
 <path d="M94.8 62.599999999999994 L100 56.099999999999994 L105.2 62.599999999999994"/>
 </g>
 <path d="M58 138 H142" fill="none" stroke-width="2"/>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約31分・A席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">A席</text>
 </g>
 </svg>

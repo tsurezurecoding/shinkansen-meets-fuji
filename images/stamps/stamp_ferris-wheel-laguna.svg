@@ -12,7 +12,7 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">ラグーナの観覧車</text>
+<text x="100" y="52" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">ラグーナの観覧車</text>
 
 <g fill="none" stroke-width="2.5">
 <circle cx="100" cy="90" r="32"/>
@@ -29,6 +29,6 @@
 <circle cx="129.6" cy="102.2" r="2.8"/><circle cx="112.2" cy="119.6" r="2.8"/><circle cx="87.8" cy="119.6" r="2.8"/><circle cx="70.4" cy="102.2" r="2.8"/><circle cx="70.4" cy="77.8" r="2.8"/><circle cx="87.8" cy="60.4" r="2.8"/><circle cx="112.2" cy="60.4" r="2.8"/><circle cx="129.6" cy="77.8" r="2.8"/>
 </g>
 <path d="M48 141 q5.2 -7 10.4 0 M68.8 141 q5.2 -7 10.4 0 M89.6 141 q5.2 -7 10.4 0 M110.4 141 q5.2 -7 10.4 0 M131.2 141 q5.2 -7 10.4 0 " fill="none" stroke-width="2"/>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約82分・A席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">A席</text>
 </g>
 </svg>

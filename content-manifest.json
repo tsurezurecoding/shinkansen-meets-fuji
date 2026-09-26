@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "10ee633f98677579",
+  "contentVersion": "0dc77e6e71175cbb",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -289,8 +289,8 @@
     {
       "path": "images/stamps/stamp_727-board.svg",
       "url": "https://www.michikusa-travel.com/images/stamps/stamp_727-board.svg",
-      "bytes": 1707,
-      "sha256": "b56580299f95ba8f688fe5b428a1599cc98fc9fce2143ce4cf16d7e8ffb68402"
+      "bytes": 1702,
+      "sha256": "90f8b39e3d419ebb03abedfa6e8db00e7b3ac63945ba53cee9c5c20bc3d262c3"
     },
     {
       "path": "images/wm-hero-snow.jpg",

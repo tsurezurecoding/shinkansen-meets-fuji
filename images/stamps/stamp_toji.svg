@@ -12,13 +12,13 @@
 <g stroke="#b83a2a" fill="#b83a2a" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東寺 五重塔</text>
+<text x="100" y="52" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東寺 五重塔</text>
 
 <g fill="none" stroke-width="2.2">
-<path d="M69 132 Q100 125 131 132 M76 132 V122 M124 132 V122"/><path d="M73.5 115 Q100 108 126.5 115 M80.5 115 V105 M119.5 115 V105"/><path d="M78 98 Q100 91 122 98 M85 98 V88 M115 98 V88"/><path d="M82.5 81 Q100 74 117.5 81 M89.5 81 V71 M110.5 81 V71"/><path d="M87 64 Q100 57 113 64 M94 64 V54 M106 64 V54"/>
-<path d="M100 62 V44 M95 50 h10 M96 55 h8"/>
-<path d="M78 140 H122"/>
+<path d="M69 138 Q100 131 131 138 M76 138 V128 M124 138 V128"/><path d="M73.5 123 Q100 116 126.5 123 M80.5 123 V113 M119.5 123 V113"/><path d="M78 108 Q100 101 122 108 M85 108 V98 M115 108 V98"/><path d="M82.5 93 Q100 86 117.5 93 M89.5 93 V83 M110.5 93 V83"/><path d="M87 78 Q100 71 113 78 M94 78 V68 M106 78 V68"/>
+<path d="M100 72 V62 M95 65 h10 M96 69 h8"/>
+<path d="M78 145 H122"/>
 </g>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約131分・A席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">A席</text>
 </g>
 </svg>

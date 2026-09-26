@@ -12,7 +12,7 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">武蔵小杉のタワー</text>
+<text x="100" y="52" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">武蔵小杉のタワー</text>
 
 <g fill="none" stroke-width="2.5">
 <rect x="62" y="74" width="18" height="64" rx="3"/>
@@ -21,6 +21,6 @@
 <path d="M52 138 H150"/>
 </g>
 <path d="M67 86 h8 M67 98 h8 M93 72 h10 M93 84 h10 M93 96 h10 M120 92 h8 M120 104 h8" fill="none" stroke-width="1.6"/>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約14分・E席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">E席</text>
 </g>
 </svg>
