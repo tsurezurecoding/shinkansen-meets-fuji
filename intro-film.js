@@ -49,3 +49,35 @@
     else if(['start','half','complete','browse'].includes(d.action))track('intro_film_'+d.action);
   });
 })();
+
+/* A silent, fifteen-second hero digest; no film engine or audio is loaded. */
+(() => {
+  const reel=document.querySelector('.hero-reel');if(!reel)return;
+  const stage=reel.querySelector('.hero-reel-stage'),button=reel.querySelector('button');
+  const en=document.documentElement.lang==='en',motion=matchMedia('(prefers-reduced-motion: reduce)');
+  const connection=navigator.connection;
+  let ready=false,loading=false,failed=false,manual=false,visible=false,time=0,last=0,raf=0;
+  const suppressed=()=>motion.matches||connection?.saveData;
+  const permitted=()=>ready&&!manual&&!suppressed()&&visible&&!document.hidden&&!document.documentElement.classList.contains('intro-film-open')&&time<15000;
+  function label(){button.textContent=time>=15000?(en?'Replay scenes':'もう一度見る'):manual||suppressed()?(en?'Play scenes':'映像を再生'):(en?'Pause scenes':'映像を停止');button.setAttribute('aria-label',button.textContent);}
+  function draw(){const index=Math.min(2,Math.floor(time/5000));[...stage.children].forEach((s,i)=>s.classList.toggle('is-active',i===index));}
+  function tick(now){if(!permitted()){raf=0;last=0;return;}if(last)time=Math.min(15000,time+now-last);last=now;draw();label();raf=time<15000?requestAnimationFrame(tick):0;}
+  function sync(){button.hidden=!ready||suppressed();cancelAnimationFrame(raf);raf=0;last=0;if(suppressed()){time=0;}draw();label();if(permitted())raf=requestAnimationFrame(tick);else if(!ready&&!loading&&!failed&&!suppressed()&&visible)load();}
+  async function load(){
+    loading=true;
+    const guide=document.createElement('div');guide.className='hero-reel-scene reel-guide';
+    const night=document.createElement('div');night.className='hero-reel-scene';
+    const image=name=>{const im=new Image();im.alt='';im.decoding='async';im.src=new URL('promo/assets/'+name,document.baseURI).href;return im;};
+    const title=(node,text)=>{const s=document.createElement('span');s.textContent=text;node.append(s);};
+    guide.append(image('ui/'+(en?'en':'ja')+'-live-fuji-eta03.webp'));title(guide,en?'Know when to look up.':'見える時刻が、わかる。');
+    const grid=document.createElement('div');grid.className='hero-reel-night';
+    for(const [file,name] of [['tower-night-alt',en?'Tokyo Tower':'東京タワー'],['castle-night',en?'Kiyosu Castle':'清洲城'],['chikyu-night',en?'Chikyu':'ちきゅう']]){const figure=document.createElement('figure'),caption=document.createElement('figcaption');caption.textContent=name;figure.append(image('photos/'+file+'.webp'),caption);grid.append(figure);}
+    night.append(grid);title(night,en?'The journey continues after dark.':'夜にも、見たい景色がある。');
+    try{await Promise.all([...guide.querySelectorAll('img'),...night.querySelectorAll('img')].map(i=>i.decode()));stage.append(guide,night);ready=true;button.hidden=false;sync();}catch{failed=true;}finally{loading=false;}
+  }
+  button.addEventListener('click',()=>{if(time>=15000){time=0;manual=false;}else manual=!manual;sync();});
+  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync();},{threshold:.15}).observe(reel);
+  new MutationObserver(sync).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+  motion.addEventListener('change',sync);connection?.addEventListener('change',sync);document.addEventListener('visibilitychange',sync);
+  addEventListener('pagehide',()=>cancelAnimationFrame(raf));addEventListener('pageshow',sync);
+})();

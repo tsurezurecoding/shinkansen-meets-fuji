@@ -14,4 +14,29 @@
 .intro-film-actions a:first-child {background:#e8704a;border-color:#e8704a}
 .intro-film-actions .intro-film-separate {border:0;padding-inline:5px;font-weight:400;font-size:12px;text-decoration:underline}
 html.intro-film-open {overflow:hidden}
+.hero .hero-inner {max-width:1200px;width:100%;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:40px;text-align:left;padding:48px 28px 32px}
+.hero-inner>.hero-kicker,.hero-inner>.hero-title,.hero-inner>.hero-lead,.hero-inner>.hero-actions {grid-column:1}
+.hero .hero-title {font-size:clamp(28px,3.2vw,42px)}
+.hero .hero-lead {margin:18px 0 0}
+.hero .hero-actions {justify-content:flex-start;align-self:start}
+.hero .hero-cards {grid-column:1/-1;width:100%}
+.hero-reel {grid-column:2;grid-row:1/5;align-self:center;min-width:0;border:1px solid #ffffff35;border-radius:20px;overflow:hidden;background:#0b1c2b;box-shadow:0 20px 60px #0004}
+.hero-reel-stage {position:relative;aspect-ratio:4/3;overflow:hidden}
+.hero-reel-scene {position:absolute;inset:0;opacity:0;transition:opacity .7s;background:#101f30;overflow:hidden}
+.hero-reel-scene.is-active {opacity:1}
+.hero-reel-scene>img {width:100%;height:100%;object-fit:cover;display:block}
+.hero-reel-scene>span {position:absolute;inset:auto 0 0;padding:50px 20px 22px;background:linear-gradient(transparent,#081521e8);font:600 clamp(18px,2vw,26px)/1.5 var(--serif)}
+.hero-reel-scene.reel-guide>img {object-fit:contain;padding:20px 0 48px;box-sizing:border-box;background:radial-gradient(ellipse at center,#426976,#101f30)}
+.hero-reel-night {display:grid;grid-template-columns:repeat(3,minmax(0,1fr));height:100%;gap:4px}
+.hero-reel-night figure {margin:0;position:relative;overflow:hidden}
+.hero-reel-night img {width:100%;height:100%;object-fit:cover}
+.hero-reel-night figure:nth-child(1) img {object-position:43% 45%}
+.hero-reel-night figure:nth-child(2) img {object-position:66% 55%}
+.hero-reel-night figure:nth-child(3) img {object-position:38% 55%}
+.hero-reel-night figcaption {position:absolute;bottom:80px;inset-inline:0;text-align:center;text-shadow:0 1px 5px #000;font-size:12px;color:white}
+.hero-reel-bar {display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;min-height:48px;font-size:12px}
+.hero-reel-toggle {flex-shrink:0;min-height:44px;border:1px solid #ffffff60;border-radius:24px;padding:6px 12px;background:transparent;color:white;font:inherit;cursor:pointer}
+.hero-reel-toggle:focus-visible {outline:3px solid #f3b59f;outline-offset:2px}
+@media(max-width:800px){.hero .hero-inner{display:flex;flex-direction:column;padding:32px 18px;gap:0;text-align:center}.hero .hero-lead{margin:14px auto 0}.hero .hero-actions{align-self:stretch;justify-content:center}.hero-reel{width:100%;max-width:520px;margin:24px auto 0}.hero-reel-stage{aspect-ratio:16/9}.hero .hero-title{font-size:clamp(27px,5vw,38px)}}
+@media(prefers-reduced-motion:reduce){.hero-reel-scene{transition:none}}
 @media(max-width:600px){.intro-film-dialog{width:calc(100% - 16px);max-height:94dvh;border-radius:12px}.intro-film-head{padding:8px 12px}.intro-film-head h2{font-size:16px}.intro-film-actions{padding:14px 12px;gap:8px}.intro-film-actions a{flex:1 1 auto;font-size:13px}}

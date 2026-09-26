@@ -1467,6 +1467,10 @@ function englishLandingHTML() {
     );
 
   html = html.replace('promo/player.html?film=ja', 'promo/player.html?film=en')
+    .replaceAll('車窓のダイジェスト', 'A glimpse of your window journey')
+    .replaceAll('その一瞬を、見逃さない。', 'Catch that fleeting view.')
+    .replaceAll('富士山から、夜の景色まで。', 'From Mount Fuji to city lights.')
+    .replaceAll('映像を停止', 'Pause scenes')
     .replace('<span class="copy-chunk">1分でわかる、</span><span class="copy-chunk">新幹線の窓</span>', 'Discover Shinkansen Window in a minute')
     .replaceAll('50以上の景色の時刻が並ぶ', '50+ views in a timed list')
     .replaceAll('50以上の景色を見てみる', 'Explore 50+ views');
