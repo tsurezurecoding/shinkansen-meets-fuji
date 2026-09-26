@@ -41,17 +41,23 @@ const entries = vm.runInNewContext(fs.readFileSync(path.join(root, "data.js"), "
 // 座標は Wikipedia 日本語版の施設座標（ひらかたパークは data.js のスポット座標）。
 for (const item of entries) {
   const geo = trackGeometry(item.lat, item.lng);
+  const timingSpot = item.timingSpotId ? spots.find(spot => spot.id === item.timingSpotId) : null;
+  if (item.timingSpotId && !timingSpot) throw Error(`Unknown timing spot: ${item.timingSpotId}`);
+  // A wheel seen together with an existing landmark shares that landmark's calibrated timing.
+  const viewingMinutes = timingSpot ? timingSpot.minutesFromTokyo : item.viewpoint ? TRACK.kmToMin(TRACK.projectToTrack(item.viewpoint.lat, item.viewpoint.lng).km) : geo.minutes;
   if (geo.seat !== item.seat) throw Error(`Seat side disagrees with the track geometry: ${item.id} declared ${item.seat}, computed ${geo.seat}`);
   // 台帳の宣言値を線路投影で検算する。ひらかたパークはスポットの分数をそのまま使う。
-  if (item.stampId !== "hirakata-park-wheel" && Math.round(geo.minutes) !== item.minutes) throw Error(`Minutes disagree with the track geometry: ${item.id} declared ${item.minutes}, computed ${Math.round(geo.minutes)}`);
+  if (item.stampId !== "hirakata-park-wheel" && Math.round(viewingMinutes) !== item.minutes) throw Error(`Minutes disagree with the track geometry: ${item.id} declared ${item.minutes}, computed ${Math.round(viewingMinutes)}`);
   item.distanceKm = geo.distanceKm;
 }
 if (entries.some((item, i) => i > 0 && entries[i - 1].minutes > item.minutes)) throw Error('Wheels are not in route order');
+const itemPhotos = item => [...(item.photo ? [item.photo] : []), ...(item.gallery || [])];
 for (const item of entries) {
-  if (!item.photo) continue;
-  item.photo.thumb = thumbnailSrc(item.photo.src);
-  if (!fs.existsSync(path.join(root, item.photo.src))) throw Error('Missing wheel photograph: ' + item.photo.src);
-  if (!fs.existsSync(path.join(root, item.photo.thumb))) throw Error('Missing wheel thumbnail: ' + item.photo.thumb);
+  for (const photo of itemPhotos(item)) {
+    photo.thumb = thumbnailSrc(photo.src);
+    if (!fs.existsSync(path.join(root, photo.src))) throw Error('Missing wheel photograph: ' + photo.src);
+    if (!fs.existsSync(path.join(root, photo.thumb))) throw Error('Missing wheel thumbnail: ' + photo.thumb);
+  }
 }
 if (new Set(entries.map(item => item.stampId)).size !== entries.length) throw Error('Duplicate wheel stamp id');
 if (spots.some(s => entries.some(item => item.stampId !== 'hirakata-park-wheel' && item.stampId === s.id))) throw Error('Wheel-only stamp id collides with a spot');
@@ -73,8 +79,8 @@ function render(lang) {
   const pageUrl = `https://www.michikusa-travel.com/${local}ferris-wheels.html`;
   // 検索の顔は一覧の意図（「新幹線から見える観覧車」）に置く。施設名はtitleへ入れず、
   // 「ひらパー 新幹線」系の単体クエリはスポットページ hirakata-park-wheel に残す。
-  const title = pick('新幹線から見える観覧車｜東海道新幹線の車窓で探す6基', 'Ferris Wheels from the Tokaido Shinkansen | Six Wheels to Spot from the Window');
-  const description = pick('東海道新幹線から見える観覧車を、豊橋〜新大阪の6基で紹介。のんほいパーク、ラグーナテンボス、ひらかたパーク、EXPOCITYなどを区間・席側・車窓の記録つきで。見つけた観覧車は記録してメダルを集められます。', 'Find six Ferris wheels visible from the Tokaido Shinkansen, with seat sides, route sections and sighting sources, from Toyohashi to Osaka.');
+  const title = pick(`新幹線から見える観覧車｜東海道新幹線の車窓で探す${entries.length}基`, `Ferris Wheels from the Tokaido Shinkansen | ${entries.length} Wheels to Spot from the Window`);
+  const description = pick(`東海道新幹線から見える観覧車を、富士川〜新大阪の${entries.length}基で紹介。Fuji Sky View、のんほいパーク、ラグーナテンボス、ひらかたパーク、EXPOCITYなどを区間・席側・車窓の写真つきで。`, `Find ${entries.length} Ferris wheels visible from the Tokaido Shinkansen, with seat sides, route sections and window photographs, from the Fuji River to Osaka.`);
   const heroAlt = pick('夕暮れの新幹線から見えるひらかたパークの観覧車', 'Hirakata Park Ferris wheel at dusk from the Shinkansen');
   const cards = entries.map((item, i) => {
     const seatClass = item.seat === 'E' ? 'fw-side-e' : 'fw-side-a';
@@ -82,13 +88,15 @@ function render(lang) {
     const meta = `<span class="fw-pill">${esc(value(item.area))}</span><span class="fw-pill fw-pill-time">${pick(`東京から約${item.minutes}分`, `about ${item.minutes} min from Tokyo`)}</span><span class="fw-pill ${seatClass}">${pick(`${item.seat}席側`, `Seat ${item.seat} side`)}</span><span class="fw-pill">${pick(`線路から約${distance}km`, `about ${distance} km from the line`)}</span>`;
     const heading = en ? esc(value(item.name)) : value(item.name).replace('名古屋港シートレインランド', chunk(['名古屋港', 'シートレインランド']));
     const hook = en ? esc(value(item.hook)) : chunk(value(item.hook).split('、').map((part, index, all) => esc(part) + (index < all.length - 1 ? '、' : '')));
-    const caption = item.photo ? (item.photo.creditUrl
-      ? esc(value(item.photo.caption)).replace(esc(value(item.photo.credit)), `<a href="${esc(item.photo.creditUrl)}" target="_blank" rel="noopener noreferrer">${esc(value(item.photo.credit))}</a>`)
-      : esc(value(item.photo.caption))) : '';
-    const figure = item.photo ? `<figure class="fw-figure"><img src="${prefix}${item.photo.thumb}" alt="${esc(value(item.photo.alt))}" width="${item.photo.width || 960}" height="${item.photo.height || 540}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>` : '';
+    const figure = itemPhotos(item).map(photo => {
+      const caption = photo.creditUrl
+        ? esc(value(photo.caption)).replace(esc(value(photo.credit)), `<a href="${esc(photo.creditUrl)}" target="_blank" rel="noopener noreferrer">${esc(value(photo.credit))}</a>`)
+        : esc(value(photo.caption));
+      return `<figure class="fw-figure"><img src="${prefix}${photo.thumb}" alt="${esc(value(photo.alt))}" width="${photo.width || 960}" height="${photo.height || 540}" loading="lazy" decoding="async"><figcaption>${caption}</figcaption></figure>`;
+    }).join('');
     const caution = item.id === 'osaka-wheel' ? `<p class="fw-caution">${pick('2026年9月10日の確認時点で、公式は営業休止を案内しています。車窓からの見え方と営業・点灯状況は別です。', 'On 10 September 2026, the official website listed a suspension of operations. Visibility from the train does not imply that the attraction or its lighting is operating.')}</p>` : '';
     const links = [
-      item.source ? `<a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">${pick('車窓の記録：', 'Sighting: ')}${esc(value(item.sourceName))} ↗</a>` : `<a class="fw-more" href="${prefix}${local}spots/hirakata-park-wheel.html">${pick('ひらかたパークの車窓ページを見る', 'Open the Hirakata Park window guide')}</a>`,
+      item.source ? `<a href="${esc(item.source)}" target="_blank" rel="noopener noreferrer">${pick('車窓の記録：', 'Sighting: ')}${esc(value(item.sourceName))} ↗</a>` : `<a class="fw-more" href="${prefix}${local}spots/${item.guidePageId}.html">${pick('車窓ページを見る', 'Open the window guide')}</a>`,
       item.reference ? `<a href="${esc(item.reference)}" target="_blank" rel="noopener noreferrer">${esc(value(item.referenceName))} ↗</a>` : '',
       `<a href="https://www.google.com/maps/search/?api=1&amp;query=${item.lat},${item.lng}" target="_blank" rel="noopener noreferrer">${pick('Googleマップで位置を見る', 'Open the location in Google Maps')} ↗</a>`,
       `<a href="https://www.google.com/maps/@?api=1&amp;map_action=pano&amp;viewpoint=${item.lat},${item.lng}" target="_blank" rel="noopener noreferrer">${pick('ストリートビューで周辺を見る', 'Look around in Street View')} ↗</a>`,
@@ -171,7 +179,7 @@ function render(lang) {
         <p class="eyebrow">FERRIS WHEELS</p>
         <h1 id="fwTitle">${pick(chunk(['新幹線から', '見える観覧車']), 'Ferris Wheels from the Shinkansen')}</h1>
         <p class="fw-hero-lead">${pick(chunk(['街の向こうに、', '小さな輪。', '気づくと、', '次も探したくなる。', '東海道新幹線の窓の外に見える観覧車を、', '見つけた順に集めてみてください。']), 'Little rings beyond the town. Once you spot one, you start looking for the next. Collect the wheels beyond the Tokaido Shinkansen window as you find them.')}</p>
-        <p class="fw-hero-stat">${pick(`${total}基 ／ A席側5・E席側1`, `${total} wheels · 5 on the A side, 1 on the E side`)}</p>
+        <p class="fw-hero-stat">${pick(`${total}基 ／ A席側${entries.filter(x => x.side === 'A').length}・E席側${entries.filter(x => x.side === 'E').length}`, `${total} wheels · ${entries.filter(x => x.side === 'A').length} on the A side, ${entries.filter(x => x.side === 'E').length} on the E side`)}</p>
         <p class="fw-hero-credit">${pick('写真：新幹線の窓（ひらかたパーク）', 'Photo: Shinkansen Window (Hirakata Park)')}</p>
       </div>
     </section>
@@ -200,15 +208,6 @@ function render(lang) {
       <p class="fw-section-lead">${pick(chunk(['東京発のぞみを基準にした通過の目安と、', '線路からの距離をつけました。', '東京行きでは現れる順番が逆になりますが、', 'A席・E席の側は変わりません。', '遠くの輪は、天気や建物の重なりで見え方が変わります。']), 'Each wheel shows an estimated passing time for a Tokyo-departing Nozomi and its distance from the line. Toward Tokyo the order reverses, but the seat side stays the same. Weather and intervening buildings affect distant views.')}</p>
     </div>
 ${cards}
-  </section>
-
-  <section class="fw-candidate" aria-labelledby="fwCandidateTitle">
-    <div class="fw-note-card">
-      <p class="eyebrow">${pick('次に確かめたい輪', 'ONE TO CHECK NEXT')}</p>
-      <h2 id="fwCandidateTitle">${pick('富士川SA・Fuji Sky View', 'Fuji Sky View at Fujikawa SA')}</h2>
-      <p>${pick('新富士〜静岡の候補。「新幹線から見て気になっていた」という旅行記があります。車窓写真と席側を確かめてから、このコレクションに加えたい輪です。', 'A candidate between Shin-Fuji and Shizuoka. A traveller mentions noticing it from the Shinkansen. Its window view and seat side still need confirmation before it joins the collection.')}</p>
-      <p><a href="https://note.com/hasiba_hn/n/n7b53a9cebd3e" target="_blank" rel="noopener noreferrer">${pick('富士川の観覧車を訪ねた旅行記', 'Read the traveller’s account (Japanese)')} ↗</a></p>
-    </div>
   </section>
 
   <section class="fw-about" aria-labelledby="fwAboutTitle">
@@ -247,4 +246,4 @@ for (const lang of ['ja', 'en']) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('Ferris wheel page out of date: ' + dest);
   } else fs.writeFileSync(dest, html);
 }
-console.log(`Ferris wheel pages: ${entries.length} sightings with stamp medals, 1 tentative candidate, shared utility chrome.`);
+console.log(`Ferris wheel pages: ${entries.length} sightings with stamp medals, shared utility chrome.`);

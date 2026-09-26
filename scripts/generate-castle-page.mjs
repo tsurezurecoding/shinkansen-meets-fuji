@@ -14,6 +14,7 @@ const heroImage = 'images/20260704_kiyosu_castle_michikusa.jpg';
 if (!fs.existsSync(path.join(root, heroImage))) throw Error('Missing hero photograph: ' + heroImage);
 // group: keep = 天守を探す、ruins = 城跡を眺める。各グループの中は東京からの時間順に並べる。
 const entries = [
+ ['edo-castle-fujimi-yagura', 'keep', '櫓', 'Turret', '東京駅の手前に、江戸城の櫓', 'An Edo Castle turret before Tokyo', '東京駅のすぐ手前、E席側の街並みの間に富士見櫓が見えます。白壁と重なる屋根が目印。天守ではなく、皇居に残る江戸城の櫓です。', 'Just before Tokyo Station, look through gaps in the buildings on Seat E for the white walls and layered roofs of Fujimi Yagura. This is a turret of Edo Castle within the Imperial Palace grounds.'],
  ['odawara-castle', 'keep', '天守', 'Keep', '駅の近くに、白い天守', 'A white keep near the station', '小田原駅付近ではA席側へ。街並みの向こうに白い天守が現れます。見える時間は短いので、駅に近づく前から窓を見ておきましょう。', 'Watch Seat A near Odawara Station. A white keep appears beyond the buildings, briefly: start watching before you reach the station.'],
  ['kakegawa', 'keep', '天守', 'Keep', '丘の上を、一瞬だけ', 'A brief glimpse on the hill', '掛川駅の前後、E席側の小高い丘に天守があります。のぞみでは一瞬。屋根の重なりを目印に探してみてください。', 'Near Kakegawa Station, look for the keep on a low hill on the Seat E side. From a Nozomi, the glimpse is brief; look for its layered roof.'],
  ['kiyosu', 'keep', '天守', 'Keep', '線路のそばの、白と朱', 'White and vermilion by the tracks', '名古屋と岐阜羽島のあいだ、E席側の線路近くに現れる清洲城。白と朱の天守、赤い大手橋が目印です。遠くの城より見つけやすく、最初の一城に。', 'Between Nagoya and Gifu-Hashima, Kiyosu Castle stands close to the Seat E side. Its white and vermilion keep and red bridge make this a good first castle to look for.'],
@@ -131,7 +132,7 @@ function render(lang) {
  const nagoya = sidePhoto('nagoya-station-skyline', 'images/20260530_nagoya_station_3_michikusa.jpg');
  const card = ([id, , kind, kindEn, hook, hookEn, body, bodyEn]) => {
   const s = spots.find(s => s.id === id); if (!s) throw Error(id);
-  const photo = s.photos.find(p => p.role !== 'reference' && p.timeOfDay !== 'night' && p.credit?.ja === 'michikusa') || s.photos.find(p => p.role !== 'reference' && p.timeOfDay !== 'night');
+  const photo = (s.photos || []).find(p => p.role !== 'reference' && p.timeOfDay !== 'night' && p.credit?.ja === 'michikusa') || (s.photos || []).find(p => p.role !== 'reference' && p.timeOfDay !== 'night') || { src: s.image, alt: { ja: s.ja.name, en: s.en.name }, credit: s.photoCredit, sourceUrl: s.photoCredit?.url };
   const src = thumbnailSrc(photo.src); if (!fs.existsSync(path.join(root, src))) throw Error(src);
   const ownPhoto = photo.credit?.ja === 'michikusa';
   const creditText = ownPhoto ? pick('新幹線の窓', 'Shinkansen Window') : esc(photo.credit[lang] || photo.credit.ja);
@@ -246,7 +247,7 @@ ${INTRO[lang].body.map(paragraph => `      <p>${paragraph}</p>`).join('\n')}
   <section class="cs-section" id="castles" aria-labelledby="csKeepsTitle">
     <div class="cs-section-head">
       <p class="eyebrow">KEEPS</p>
-      <h2 id="csKeepsTitle">${pick('天守を探す', 'Look for the keep')}</h2>
+      <h2 id="csKeepsTitle">${pick('天守と櫓を探す', 'Look for keeps and turrets')}</h2>
       <p class="cs-section-lead">${pick(chunk(['線路沿いの天守から、', '山頂の小さな点まで。', '東京からの時間順です。']), 'From a keep beside the tracks to a tiny point on a summit, in order from Tokyo.')}</p>
     </div>
 ${group('keep')}
@@ -335,4 +336,4 @@ ${sanyoEntries.map(sanyoCard).join('\n')}
 `;
 }
 for (const lang of ['ja', 'en']) { const dest = path.join(root, lang === 'ja' ? 'castles.html' : 'en/castles.html'), html = render(lang); if (process.argv.includes('--check')) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('Castle page out of date: ' + dest); } else fs.writeFileSync(dest, html); }
-console.log('Castle pages: 7 existing spots in keep/ruin groups, shared utility chrome.');
+console.log('Castle pages: 8 existing spots in keep/ruin groups, shared utility chrome.');
