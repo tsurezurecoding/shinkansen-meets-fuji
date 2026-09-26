@@ -6103,7 +6103,7 @@ const WHEEL_COLLECTION = [
   sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
   map: { lat: item.lat, lng: item.lng, ja: item.name.ja, en: item.name.en },
   image: item.photo?.src || "images/stamps/stamp_hirakata-park-wheel.svg",
-  photos: item.photo ? [{ src: item.photo.src, alt: item.photo.alt, credit: item.photo.credit || { ja: "michikusa", en: "michikusa" }, note: item.photo.caption }] : [],
+  photos: [item.photo, ...(item.gallery || [])].filter(Boolean).map(photo => ({ src: photo.src, alt: photo.alt, credit: photo.credit || { ja: "michikusa", en: "michikusa" }, note: photo.caption })),
   ja: { name: wheelDisplayName(item.name.ja, "ja"), area: item.area.ja, hook: item.hook.ja, story: (item.story || item.body).ja },
   en: { name: wheelDisplayName(item.name.en, "en"), area: item.area.en, hook: item.hook.en, story: (item.story || item.body).en },
 }));
