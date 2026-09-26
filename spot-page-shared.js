@@ -556,7 +556,7 @@
     if (!safeAssetPath(page.stamp && page.stamp.src) || !safeAssetPath(page.hero.src) || !safeAssetPath(page.hero.thumb)) throw new Error("shared page asset path is malformed");
     ["gallery", "inline"].forEach(function (key) {
       (page[key] || []).forEach(function (photo) {
-        if (!photo || !safeAssetPath(photo.src) || !safeAssetPath(photo.thumb) || (photo.sourceUrl && !safeHttpUrl(photo.sourceUrl))) throw new Error("shared page photo data is malformed");
+        if (!photo || !safeAssetPath(photo.src) || !safeAssetPath(photo.thumb) || (key === "gallery" && !safeAssetPath(photo.smallThumb)) || (photo.sourceUrl && !safeHttpUrl(photo.sourceUrl))) throw new Error("shared page photo data is malformed");
       });
     });
     (page.bodyLinks || []).concat(page.references || []).forEach(function (item) {
@@ -593,9 +593,10 @@
     var items = page.gallery;
     var first = items[0];
     var heading = !page.readingLayout && page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
+    // The chooser is immediately scrollable: request its compact images together.
     var thumbs = items.map(function (item, index) {
       var note = item.note || item.alt;
-      return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img src=\"" + escapeHTML(href(rootPath, item.thumb)) + "\" alt=\"\" loading=\"" + (index === 0 ? "eager" : "lazy") + "\" decoding=\"async\"></button>";
+      return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img src=\"" + escapeHTML(href(rootPath, item.smallThumb)) + "\" alt=\"\" loading=\"eager\" decoding=\"async\"></button>";
     }).join("");
     var sourceLink = first.sourceUrl ? "<a data-gallery-source-output class=\"spot-page-gallery-source\" href=\"" + escapeHTML(first.sourceUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(ui.photoSource) + "</a>" : "<a data-gallery-source-output class=\"spot-page-gallery-source\" hidden></a>";
     var imageLink = first.sourceUrl ? "<a data-gallery-image-link class=\"spot-page-gallery-image-link\" href=\"" + escapeHTML(first.sourceUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"" + escapeHTML(ui.photoSource) + "\">" : "<a data-gallery-image-link class=\"spot-page-gallery-image-link\" aria-hidden=\"true\" tabindex=\"-1\">";

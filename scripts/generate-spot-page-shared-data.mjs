@@ -605,7 +605,7 @@ function projectPage(spot, lang) {
   const inlineIndices = inlinePhotoIndices(spot);
   const inlineSrcs = new Set(inlineIndices.map((index) => spot.photos?.[index]?.src).filter(Boolean));
   const projectedPhotos = allPhotos.map((item, index) => projectPhoto(item, spot, lang, index));
-  const gallery = projectedPhotos.filter((item) => spot.id === "ibuki" && lang === "ja" ? true : !inlineSrcs.has(item.src));
+  const gallery = projectedPhotos.filter((item) => spot.id === "ibuki" && lang === "ja" ? true : !inlineSrcs.has(item.src)).map((item) => ({ ...item, smallThumb: String(item.src).replace(/^images\/(.+)\.(jpe?g|png|webp)$/i, "images/thumbs/gallery/$1.webp") }));
   const inline = inlineIndices.map((index) => spot.photos?.[index]).filter(Boolean).map((item, index) => projectPhoto(item, spot, lang, index));
   const headingChunks = localized(spot.pageHeadingChunks, lang);
   const pageHeading = localized(spot.pageHeading, lang) || (lang === "ja" ? `${data.name}はいつ見える？座席側は？` : `When can you see ${data.name} from the Shinkansen?`);
@@ -713,7 +713,8 @@ function validatePage(page, spot) {
   }
   if (!page || page.id !== spot.id || !["ja", "en"].includes(page.lang) || !page.name || !page.hero || !Array.isArray(page.photos) || !page.photos.length || !Array.isArray(page.gallery) || !page.gallery.length || !Array.isArray(page.references)) throw new Error(`Page projection is incomplete for ${spot.id}/${page?.lang}`);
   if (!safeAssetPath(page.stamp.src) || !safeAssetPath(page.hero.src) || !safeAssetPath(page.hero.thumb)) throw new Error(`Page asset path is unsafe for ${spot.id}/${page.lang}`);
-  for (const photo of [...page.photos, ...page.gallery, ...page.inline]) if (!safeAssetPath(photo.src) || !safeAssetPath(photo.thumb) || (photo.sourceUrl && !safeHttpUrl(photo.sourceUrl))) throw new Error(`Page photo is unsafe for ${spot.id}/${page.lang}`);
+  for (const photo of [...page.photos, ...page.gallery, ...page.inline]) if (!safeAssetPath(photo.src) || !safeAssetPath(photo.thumb) || (photo.smallThumb && !safeAssetPath(photo.smallThumb)) || (photo.sourceUrl && !safeHttpUrl(photo.sourceUrl))) throw new Error(`Page photo is unsafe for ${spot.id}/${page.lang}`);
+  for (const photo of page.gallery) if (!safeAssetPath(photo.smallThumb)) throw new Error(`Page gallery thumbnail is unsafe for ${spot.id}/${page.lang}`);
   for (const item of [...page.bodyLinks, ...page.references]) if (!safeHttpUrl(item.href)) throw new Error(`Page reference URL is unsafe for ${spot.id}/${page.lang}`);
   if (page.map.externalUrl && !safeHttpUrl(page.map.externalUrl)) throw new Error(`Page map URL is unsafe for ${spot.id}/${page.lang}`);
   if (page.map.embedUrl && !/^https:\/\/www\.google\.com\/maps\/embed\//.test(page.map.embedUrl)) throw new Error(`Page map embed URL is unsafe for ${spot.id}/${page.lang}`);

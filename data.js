@@ -688,27 +688,29 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "東京駅の発車直後・到着直前、E席側に一瞬見える江戸城の富士見櫓。朝の新幹線から撮影した写真と、見つけるための目印を紹介します。",
-      "en": "Look for Edo Castle's Fujimi Turret from Seat E just after leaving or before reaching Tokyo Station, with a morning train-window photograph and viewing tips."
+      "ja": "東京駅の発車直後・到着直前、E席側に一瞬見える江戸城の富士見櫓。大火から再建された櫓の歴史と、ビルの間に白壁や三重の屋根を見つける目印を紹介します。",
+      "en": "Discover Edo Castle’s Fujimi Turret near Tokyo Station: its history after the Great Fire of Meireki, and the white walls and tiered roofs to look for from Seat E."
     },
     "pageStory": {
-      "ja": "東京駅へ入る直前、ビルのすきまの奥に白い三重の櫓が見えました。2026年9月24日の朝、新大阪から東京へ向かう列車で撮影した、江戸城の富士見櫓です。皇居の本丸南端に残る櫓を、新幹線からほんの短い間だけ見ることができます。",
-      "en": "Just before the train entered Tokyo Station, a white turret with three roof tiers appeared beyond a gap in the buildings. This photograph of Edo Castle’s Fujimi-yagura was taken on a Tokyo-bound train on the morning of 24 September 2026. The turret at the southern corner of the former main enclosure is visible only briefly from the Shinkansen."
+      "ja": "東京駅のそばでビルの間にのぞく白い建物は、江戸城の富士見櫓です。本丸の南の隅に立ち、高さは16m。江戸城に現存する櫓のうち、三重の屋根を持つ唯一の建物です。\n\n1657年の明暦の大火では、天守と富士見櫓がともに焼失しました。富士見櫓は2年後の1659年に再建されましたが、天守は再建されませんでした。再建された富士見櫓は、天守の代わりとしても使われました。\n\n宮内庁の案内によると、江戸時代の将軍はこの櫓から富士山や品川の海、両国の花火を眺めることもあったそうです。高層ビルのすきまに残る建物から、かつては遠い山や海まで見渡せた。その風景の変化も、東京駅近くでこの櫓を探す楽しみです。",
+      "en": "The white building glimpsed between office blocks near Tokyo Station is Fujimi-yagura, a surviving turret of Edo Castle. It stands 16 metres tall at the southern corner of the castle’s main enclosure and is the only surviving Edo Castle turret with three roof tiers.\n\nThe Great Fire of Meireki destroyed both this turret and the main keep in 1657. Fujimi-yagura was rebuilt two years later, in 1659; the main keep was never rebuilt. The rebuilt turret also served in place of the main keep.\n\nAccording to the Imperial Household Agency, shoguns sometimes watched Mount Fuji, the sea at Shinagawa and fireworks at Ryogoku from this turret. A building now glimpsed through modern office blocks once offered views of distant mountains and water. That change in the surrounding landscape adds another dimension to this brief view near Tokyo Station."
+    },
+    "sectionHeading": {
+      "ja": "江戸を見渡した富士見櫓",
+      "en": "A castle turret with a shogun’s view"
     },
     "explainer": {
       "heading": {
-        "ja": "天守ではなく、皇居に残る櫓",
-        "en": "A turret in the Imperial Palace grounds"
+        "ja": "緑に浮かぶ白壁と屋根",
+        "en": "White walls and tiered roofs beyond the street"
       },
       "ja": [
-        "富士見櫓は、江戸城本丸の南の隅に立つ、高さ16mの櫓です。宮内庁によると、江戸城に残る櫓の中で三重の屋根を持つ唯一のもの。写真の白い壁と、段を重ねた屋根が見分ける手がかりです。",
-        "1657年の明暦の大火で、江戸城の天守と富士見櫓はともに焼失しました。富士見櫓は1659年に再建され、再建されなかった天守の代わりとしても使われました。街のビルのすきまから、江戸城の歴史が小さくのぞく車窓です。",
-        "東京駅から出発するなら、荷物を置いたら早めにE席側の窓へ。到着する列車なら、東京駅に入る直前まで窓を見ておきます。ビルに隠れるため、駅から近くても見つけるには準備が必要です。"
+        "写真の中央、通りを奥へたどった先に見える白い建物が富士見櫓です。皇居の木々を背景に、白壁と灰色の屋根が段々に重なっています。周囲の四角いビルとは違う、横に張り出した屋根の形が手がかりになります。",
+        "車窓では建物の下部が木々に隠れ、手前の架線も重なります。城全体や石垣を探すより、緑の中の白い壁と屋根の輪郭に目を向けると見つけやすくなります。建物のすきまを通して見るため、見える範囲は列車の位置で大きく変わります。"
       ],
       "en": [
-        "Fujimi-yagura is a 16-metre turret at the southern corner of Edo Castle’s main enclosure. The Imperial Household Agency identifies it as the castle’s only surviving turret with three roof tiers. Those layered roofs and white walls are the features to look for in the photograph.",
-        "The Great Fire of Meireki destroyed both the castle’s main keep and Fujimi-yagura in 1657. The turret was rebuilt in 1659 and also served in place of the main keep, which was never reconstructed. A small gap in the modern city reveals this fragment of Edo Castle’s history.",
-        "Leaving Tokyo, be ready at the Seat E window as soon as the train starts. Arriving, keep watching until just before the station. Nearby buildings make this a fleeting view, despite its proximity to the terminus."
+        "Follow the street into the centre of the photograph: the small white building at its far end is Fujimi-yagura. Its white walls and grey roofs rise in tiers against the palace trees. The projecting roof edges help distinguish it from the rectangular office blocks around it.",
+        "Trees hide the lower part of the building, and railway wires cross the view. Focus on the white walls and roof outline among the greenery. This is a glimpse through a gap in the city, so the portion visible changes quickly as the train moves."
       ]
     },
     "guideHighlight": {
@@ -770,21 +772,21 @@ const SPOTS = [
       "name": "かぐやの灯",
       "area": "京都 → 新大阪（向日市）",
       "hook": "竹のまちに、配水塔。",
-      "story": "京都と新大阪のあいだ、E席側の街並みに立つ配水塔。向日市の上植野浄水場にある「かぐやの灯」です。竹をモチーフにした輪郭は、街へ水を届ける設備のもの。朝の車窓で見つけた、暮らしを支える塔です。"
+      "story": "京都と新大阪のあいだ、E席側の住宅地に立つ「かぐやの灯（とう）」。向日市の上植野浄水場にある配水塔で、水の落差を利用して家庭へ水を届けています。横からは竹、上からはヒマワリを表す形。市の木と花を取り入れた、暮らしを支えるランドマークです。"
     },
     "en": {
-      "name": "Kaguya no Akari Water Tower",
+      "name": "Kaguya no To Water Tower",
       "area": "Kyoto → Shin-Osaka (Muko)",
       "hook": "A bamboo-shaped water tower.",
-      "story": "Between Kyoto and Shin-Osaka, a water tower rises above the town on the Seat E side. This is Kaguya no Akari at Kamiueno Water Treatment Plant in Muko. Its bamboo-inspired outline belongs to the infrastructure that delivers water to the city: an everyday landmark caught from a morning train."
+      "story": "Kaguya no To rises above Muko’s houses on the Seat E side between Kyoto and Shin-Osaka. This water tower at Kamiueno Water Treatment Plant uses a difference in height to supply homes with water. Its design represents bamboo from the side and a sunflower from above, combining the city’s tree and flower in an everyday landmark."
     },
     "pageTitle": {
       "ja": "新幹線から見えるかぐやの灯｜向日市の上植野浄水場配水塔 | 新幹線の窓",
-      "en": "Kaguya no Akari Water Tower from the Shinkansen | Shinkansen Window"
+      "en": "Kaguya no To Water Tower from the Shinkansen | Shinkansen Window"
     },
     "pageHeading": {
       "ja": "竹のかたちの配水塔、かぐやの灯",
-      "en": "Kaguya no Akari: a bamboo-inspired water tower"
+      "en": "Kaguya no To: a bamboo-inspired water tower"
     },
     "pageHeadingChunks": {
       "ja": [
@@ -793,25 +795,31 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "京都〜新大阪のE席側に見える「かぐやの灯」。向日市の上植野浄水場配水塔を、朝の車窓写真とともに紹介します。",
-      "en": "Spot Kaguya no Akari, the bamboo-inspired water tower in Muko, from Seat E between Kyoto and Shin-Osaka, with a photograph from a morning train."
+      "ja": "京都〜新大阪のE席側に見える「かぐやの灯（とう）」。竹とヒマワリをかたどった向日市の配水塔について、水を届ける仕組みや名前の由来、車窓で目印になる形を写真とともに紹介します。",
+      "en": "Discover Kaguya no To, Muko’s water tower: how it supplies homes, why its shape evokes bamboo and a sunflower, and what to look for from the Shinkansen."
     },
     "pageStory": {
-      "ja": "朝の街並みの上に立つ、先端がひらいた塔。2026年9月24日、新大阪から東京へ向かう新幹線の車窓から撮影しました。向日市が「かぐやの灯」と呼ぶ、上植野浄水場の配水塔です。線路から少し離れているため、建物の間から特徴のある輪郭を探してみてください。",
-      "en": "A tower with a flared top rises above the morning townscape. Photographed from a Tokyo-bound Shinkansen on 24 September 2026, it is the Kamiueno water tower that Muko calls Kaguya no Akari. It stands some distance from the railway, so look for its distinctive outline between buildings."
+      "ja": "住宅の屋根を大きく越えて立つ塔は、向日市の上植野浄水場にある配水塔です。高さは約36m。配水池から送られてきた水を高い位置に受け、その高低差を利用して家庭などへ届けます。街の中でひときわ背が高いのは、水道を支えるためです。\n\nその形には、向日市の木である孟宗竹と、市の花であるヒマワリが取り入れられています。横からは竹、真上からはヒマワリを表すデザイン。市の水道資料には、新幹線の高架に近く、多くの人の目に触れることから、親しみを持てる姿にしたと説明されています。車窓から見られることも、この塔の形を考える理由になっていたのです。\n\n愛称の「かぐやの灯」は「かぐやのとう」と読みます。2025年に市民から名前を募り、投票を経て決まりました。かぐや姫の物語と縁のある向日市を光る竹のように照らし、人々をつなぐ存在に、という願いが込められています。水を届ける塔は、夜には市の取り組みに合わせた色のライトアップで街の目印にもなります。",
+      "en": "The tower rising well above the houses belongs to Kamiueno Water Treatment Plant in Muko. About 36 metres tall, it receives water from a distribution reservoir and uses the difference in height to deliver it to homes and other buildings. Its height serves a practical purpose in the city’s water supply.\n\nThe design combines Muko’s official tree, moso bamboo, with its official flower, the sunflower. It represents bamboo when viewed from the side and a sunflower from directly above. The city’s waterworks documents explain that its position near the elevated Shinkansen line, where many people would see it, helped inspire an approachable design. The view from a passing train was part of the thinking behind its shape.\n\nThe nickname Kaguya no To was chosen through public suggestions and a vote in 2025. It refers to Princess Kaguya, the fairy-tale figure associated with a glowing bamboo stalk, and expresses a wish for the tower to illuminate Muko and bring people together. At night, coloured lighting for city campaigns and events gives this working water tower another role as a local landmark."
+    },
+    "sectionHeading": {
+      "ja": "水を届ける高さに、竹のまちの意匠を",
+      "en": "A water tower shaped by its town"
     },
     "explainer": {
       "heading": {
-        "ja": "街の水を支える、竹のかたち",
-        "en": "Bamboo-inspired infrastructure"
+        "ja": "竹の節のような上部",
+        "en": "A broad top above the rooftops"
       },
       "ja": [
-        "照明を納入したパナソニックの紹介によると、配水塔は高さ約36m。向日市の名産である竹をモチーフにしています。車窓で気になるかたちは、街の水道を支える施設の目印です。",
-        "市は施策や事業のテーマに合わせ、配水塔をカラーライトアップしています。毎晩同じ色が灯るわけではありません。夜の車窓で探すときは、市が公開する当月の点灯日と時間を確かめてください。"
+        "目印は、まっすぐ伸びる柱と、その上で横に大きく張り出す円筒形の部分。写真では住宅の屋根越しに塔の全体の輪郭が現れ、朝日を受けた壁が暖かい色に見えます。細い柱と太い上部の組み合わせを、竹の節に見立てて眺めてみてください。",
+        "車窓から見えるのは塔の側面です。ヒマワリを表す真上からの形は、この写真や新幹線の座席からは確認できません。横からの竹の姿に、上からは花になる仕掛けが隠れています。",
+        "夜にはライトアップで表情が変わります。掲載写真の暖かな色は朝の光によるものです。夜の姿を探す場合は、参考リンクにある市の点灯スケジュールで当日の実施と時間を確認できます。"
       ],
       "en": [
-        "Panasonic, which supplied its lighting, describes the tower as about 36 metres tall and inspired by bamboo, a local specialty of Muko. Its unusual silhouette marks a working piece of the city's water infrastructure.",
-        "Muko lights the tower in different colours for public campaigns and events. It is not a fixed nightly display; consult the city's current schedule for dates and lighting hours before looking for it after dark."
+        "Look for a straight shaft topped by a much wider cylindrical section. In the photograph, the tower’s outline rises above the house roofs, with its walls warmed by morning sunlight. The contrast between the narrow shaft and broad top suggests a joint in a bamboo stem.",
+        "The train gives you a side view. The sunflower design, visible from directly above, cannot be seen in this photograph or from a Shinkansen seat. It is another face of the same structure, hidden from the passing passenger.",
+        "Lighting changes its appearance after dark; the warm colour in the photograph comes from the morning sun. For a night-time view, the city’s lighting schedule in the references gives the dates and hours of each display."
       ]
     },
     "guideHighlight": {
@@ -833,8 +841,29 @@ const SPOTS = [
     "references": [
       {
         "label": {
+          "ja": "向日市：配水塔の愛称が「かぐやの灯」に決定",
+          "en": "Muko City: choosing the name Kaguya no To (Japanese)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/soshiki/1/11831.html"
+      },
+      {
+        "label": {
+          "ja": "向日市：水道事業年報（水が届くまで）",
+          "en": "Muko City: waterworks annual report and supply process (Japanese PDF)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/uploaded/attachment/17251.pdf"
+      },
+      {
+        "label": {
+          "ja": "向日市：水道ビジョン素案（配水塔の意匠）",
+          "en": "Muko City: draft waterworks vision, tower design (Japanese PDF)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/ikkrwebBrowse/material/files/group/5/suidou_plan.pdf"
+      },
+      {
+        "label": {
           "ja": "向日市：かぐやの灯ライトアップスケジュール",
-          "en": "Muko City: Kaguya no Akari lighting schedule (Japanese)"
+          "en": "Muko City: Kaguya no To lighting schedule (Japanese)"
         },
         "url": "https://www.city.muko.kyoto.jp/soshiki/1/11316.html"
       },

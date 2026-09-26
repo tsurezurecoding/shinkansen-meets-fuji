@@ -210,15 +210,6 @@ function render(lang) {
 ${cards}
   </section>
 
-  <section class="fw-candidate" aria-labelledby="fwCandidateTitle">
-    <div class="fw-note-card">
-      <p class="eyebrow">${pick('次に確かめたい輪', 'ONE TO CHECK NEXT')}</p>
-      <h2 id="fwCandidateTitle">${pick('富士川SA・Fuji Sky View', 'Fuji Sky View at Fujikawa SA')}</h2>
-      <p>${pick('新富士〜静岡の候補。「新幹線から見て気になっていた」という旅行記があります。車窓写真と席側を確かめてから、このコレクションに加えたい輪です。', 'A candidate between Shin-Fuji and Shizuoka. A traveller mentions noticing it from the Shinkansen. Its window view and seat side still need confirmation before it joins the collection.')}</p>
-      <p><a href="https://note.com/hasiba_hn/n/n7b53a9cebd3e" target="_blank" rel="noopener noreferrer">${pick('富士川の観覧車を訪ねた旅行記', 'Read the traveller’s account (Japanese)')} ↗</a></p>
-    </div>
-  </section>
-
   <section class="fw-about" aria-labelledby="fwAboutTitle">
     <div class="fw-note-card">
       <h2 id="fwAboutTitle">${pick('掲載について', 'About this collection')}</h2>
@@ -255,4 +246,4 @@ for (const lang of ['ja', 'en']) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('Ferris wheel page out of date: ' + dest);
   } else fs.writeFileSync(dest, html);
 }
-console.log(`Ferris wheel pages: ${entries.length} sightings with stamp medals, 1 tentative candidate, shared utility chrome.`);
+console.log(`Ferris wheel pages: ${entries.length} sightings with stamp medals, shared utility chrome.`);
