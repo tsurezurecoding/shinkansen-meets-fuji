@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "1f225843254ab9f1",
+  "contentVersion": "a1f0210f54446274",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -115,8 +115,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 57717,
-      "sha256": "a352770c5fff843d4f1a7cb316ea21abe5109b0ce5328fbc86f9658d428f72eb"
+      "bytes": 57594,
+      "sha256": "5072d4db81498211b31f3c8daa8853e74e584a38816924820255dbc7965a3d82"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -159,6 +159,18 @@
       "url": "https://www.michikusa-travel.com/hanabi.js",
       "bytes": 5263,
       "sha256": "fd054563332b05e7bc2af3e89446c13320f2fa66807511dc729d2151036c962b"
+    },
+    {
+      "path": "hero-cinema.css",
+      "url": "https://www.michikusa-travel.com/hero-cinema.css",
+      "bytes": 12337,
+      "sha256": "0c9f268dbabd83dfabb40e5628d79005924ab720072256be01149b2d6cfec975"
+    },
+    {
+      "path": "hero-cinema.js",
+      "url": "https://www.michikusa-travel.com/hero-cinema.js",
+      "bytes": 6310,
+      "sha256": "414c72d594422b6df629238a63f835fa099b8cc377908258b1f5291d082d5dba"
     },
     {
       "path": "images/20260629_2158_nagoya_station_night_michikusa.jpg",
@@ -313,20 +325,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 61796,
-      "sha256": "24aee3d29fac1752f5496370ddedbd07df885d1e712b441708878a122dbeddd2"
-    },
-    {
-      "path": "intro-film.css",
-      "url": "https://www.michikusa-travel.com/intro-film.css",
-      "bytes": 4874,
-      "sha256": "6808bcfdb079be953d64bbd7d6f32e4dee885728d07158f55d938f9876f548f4"
-    },
-    {
-      "path": "intro-film.js",
-      "url": "https://www.michikusa-travel.com/intro-film.js",
-      "bytes": 8059,
-      "sha256": "8c61256a6f04dd471e66580b6dadcc28d1d6bd0fce22d389421dbc41d003f61d"
+      "bytes": 61604,
+      "sha256": "22578dbbd77011cc99499ad63813467a80885e8740c51a9f63e3940e9758e8b5"
     },
     {
       "path": "journal.html",
@@ -597,6 +597,24 @@
       "url": "https://www.michikusa-travel.com/promo/film.js",
       "bytes": 29606,
       "sha256": "68b3ce165ed9b5381e969a8874d7496f6bcb4a1d269c98cb539d168793bdec4f"
+    },
+    {
+      "path": "promo/hero-stage.css",
+      "url": "https://www.michikusa-travel.com/promo/hero-stage.css",
+      "bytes": 1752,
+      "sha256": "f98dfda3f8cd806399ea71275f3ba67a138f52979c742bc3104e794d30748385"
+    },
+    {
+      "path": "promo/hero-stage.html",
+      "url": "https://www.michikusa-travel.com/promo/hero-stage.html",
+      "bytes": 9838,
+      "sha256": "da7da926dd86fcfff475be035f57b06aee6a360aee4bcd759e275665f62dc516"
+    },
+    {
+      "path": "promo/hero-stage.js",
+      "url": "https://www.michikusa-travel.com/promo/hero-stage.js",
+      "bytes": 9521,
+      "sha256": "e4a14d3e4ffaa0e80bc139cbff5954c98b2f7c1fd1a970c0b23c6c566932ba80"
     },
     {
       "path": "promo/night-cut.css",

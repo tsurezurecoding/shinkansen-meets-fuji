@@ -1467,6 +1467,9 @@ function englishLandingHTML() {
     );
 
   html = html.replace('promo/player.html?film=ja', 'promo/player.html?film=en')
+    .replace('<span class="copy-chunk">ディズニー</span><span class="copy-chunk">新幹線</span>', 'Disney Shinkansen')
+    .replace('<span class="copy-chunk">一度きりの</span><span class="copy-chunk">車窓</span>', 'Weather from the window')
+    .replace('href="arenani.html" data-lp-cta="audience-repeat-arenani"', 'href="en/arenani.html" data-lp-cta="audience-repeat-arenani"')
     .replaceAll('車窓のダイジェスト', 'A glimpse of your window journey')
     .replaceAll('その一瞬を、見逃さない。', 'Catch that fleeting view.')
     .replaceAll('富士山から、夜の景色まで。', 'From Mount Fuji to city lights.')
@@ -1474,10 +1477,14 @@ function englishLandingHTML() {
     .replace('<span class="copy-chunk">1分でわかる、</span><span class="copy-chunk">新幹線の窓</span>', 'Discover Shinkansen Window in a minute')
     .replaceAll('50以上の景色の時刻が並ぶ', '50+ views in a timed list')
     .replaceAll('50以上の景色を見てみる', 'Explore 50+ views');
-  // Keep the Japanese TOP editorial changes out of the English edition in this batch.
+  // Approved hero integration: English audience copy is pending editorial confirmation.
+  html = html.replaceAll('見えるころと座席側がわかる', 'See when and which side to look')
+    .replaceAll('スタンプ帖で遊ぶ', 'Play with Window Stamps')
+    .replaceAll('あれ、何？を見る', "What's that outside?");
+  // Preserve other earlier editorial decisions outside this integration.
   html = html.replaceAll("<span class=\"copy-chunk\">降りたあとに調べ、</span><span class=\"copy-chunk\">思い出を残す。</span>", "<span class=\"copy-chunk\">降りたあとに思い出を残す。</span>");
-  html = html.replaceAll("<span class=\"copy-chunk\">あの看板、</span><span class=\"copy-chunk\">何だろう。</span>", "<span class=\"copy-chunk\">何度も乗るなら、</span><span class=\"copy-chunk\">車窓スタンプを集める。</span>");
-  html = html.replaceAll("<span class=\"copy-chunk\">いつも見かける看板や工場。</span><span class=\"copy-chunk\">何だろうと調べてみると、</span><span class=\"copy-chunk\">次に窓を見る楽しみに。</span><span class=\"copy-chunk\">見つけた景色は、スタンプにも。</span>", "<span class=\"copy-chunk\">富士山も、城も、湖も、看板も。</span><span class=\"copy-chunk\">いつもの出張で見つけた景色を残せば、</span><span class=\"copy-chunk\">同じ区間にも次の楽しみができます。</span>");
+  html = html.replaceAll("<span class=\"copy-chunk\">あの看板、</span><span class=\"copy-chunk\">何だろう。</span>", "Ride often? See more each time.");
+  html = html.replaceAll("<span class=\"copy-chunk\">いつも見かける看板や工場。</span><span class=\"copy-chunk\">何だろうと調べてみると、</span><span class=\"copy-chunk\">次に窓を見る楽しみに。</span><span class=\"copy-chunk\">見つけた景色は、スタンプにも。</span>", "The signs, factories, and towers you pass every time have stories to tell. Look one up, and you may spot something new on your next ride.");
   html = html.replaceAll('<a class="button button-primary audience-card-action" href="zukan.html" data-lp-cta="audience-repeat-browse">気になる景色を探す</a>', '<a class="button button-primary audience-card-action" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>');
   html = html.replace(/^[ \t]*<a class="card-secondary-link" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ<\/a>\r?\n/gm, "");
   html = html.replaceAll("<span class=\"copy-chunk\">気になった景色は、</span><span class=\"copy-chunk\">降りたあとに図鑑で探せます。</span>", "");

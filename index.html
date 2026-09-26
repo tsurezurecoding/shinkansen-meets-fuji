@@ -79,8 +79,8 @@
     })();
   </script>
   <link rel="stylesheet" href="chrome.css?v=d8ebc990">
-  <link rel="stylesheet" href="intro-film.css?v=6808bcfd">
-  <script src="intro-film.js?v=8c61256a" defer></script>
+  <link rel="stylesheet" href="hero-cinema.css?v=0c9f268d">
+  <script src="hero-cinema.js?v=414c72d5" defer></script>
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
@@ -402,24 +402,24 @@
 
     .for-you { padding: clamp(64px, 7vw, 96px) 0; background: var(--white); }
     .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 42px; }
-    .audience-card { position: relative; overflow: hidden; padding: 29px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); display: flex; flex-direction: column; }
-    .audience-card-action { position: relative; z-index: 1; align-self: flex-start; min-height: 44px; margin-top: auto; padding: 0 17px; font-size: 13px; box-shadow: none; }
-    .audience-card::after { content: attr(data-number); position: absolute; right: 14px; bottom: -32px; color: rgba(18, 35, 52, 0.05); font-family: var(--serif); font-size: 145px; font-weight: 700; line-height: 1; }
+    .audience-card { position: relative; overflow: hidden; padding: 24px 26px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); display: flex; flex-direction: column; }
+    .audience-card-action { position: relative; z-index: 1; align-self: flex-start; min-height: 44px; margin-top: 20px; padding: 0 17px; font-size: 13px; box-shadow: none; }
+    .audience-card::after { content: attr(data-number); position: absolute; right: 14px; bottom: -24px; color: rgba(18, 35, 52, 0.05); font-family: var(--serif); font-size: 110px; font-weight: 700; line-height: 1; }
     .audience-card small { color: var(--coral-dark); font-size: 10px; font-weight: 900; letter-spacing: 0.14em; }
-    .audience-card h3 { position: relative; z-index: 1; margin: 24px 0 0; font-family: var(--serif); font-size: 25px; line-height: 1.4; }
-    .audience-card p { position: relative; z-index: 1; margin: 13px 0 0; color: var(--ink-soft); font-size: 13px; }
+    .audience-card h3 { position: relative; z-index: 1; margin: 14px 0 0; font-family: var(--serif); font-size: 22px; line-height: 1.4; }
+    .audience-card p { position: relative; z-index: 1; margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; }
 
     .afterglow { padding: clamp(64px, 7vw, 96px) 0; background: #dfe8e8; }
     .afterglow-head { display: grid; grid-template-columns: 0.78fr 1fr; align-items: end; gap: 50px; }
     .afterglow-head .section-head p:last-child { margin-bottom: 4px; }
     .afterglow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 42px; }
-    .afterglow-card { position: relative; min-height: 390px; overflow: hidden; border-radius: 24px; background: var(--night-soft); color: #fff; }
+    .afterglow-card { position: relative; min-height: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px; background: var(--night-soft); color: #fff; }
     .afterglow-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.72; transition: transform 700ms cubic-bezier(.2,.75,.2,1), opacity 300ms ease; }
     .afterglow-card:hover img { transform: scale(1.045); opacity: 0.82; }
     .afterglow-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 16, 24, 0.04), rgba(5, 16, 24, 0.86)); }
-    .afterglow-copy { position: absolute; inset: auto 25px 24px; z-index: 2; }
+    .afterglow-copy { position: absolute; inset: auto 20px 18px; z-index: 2; }
     .afterglow-copy small { color: #f3b59f; font-size: 9px; font-weight: 900; letter-spacing: 0.14em; }
-    .afterglow-copy h3 { margin: 7px 0 0; font-family: var(--serif); font-size: 24px; }
+    .afterglow-copy h3 { margin: 7px 0 0; font-family: var(--serif); font-size: 21px; }
     .afterglow-copy p { margin: 8px 0 0; color: rgba(255, 255, 255, 0.68); font-size: 12px; }
 
     .trust { padding: 64px 0; background: var(--paper); }
@@ -488,6 +488,16 @@
     /* 761〜900px はブランド名＋ナビ＋言語＋CTAが1段に収まらないため、
        ナビ本体は「もっと見る」へ畳む（768pxでヘッダーが3段になっていた） */
 
+    @media (max-width: 899px) {
+      .afterglow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .afterglow-card { aspect-ratio: 4 / 5; border-radius: 18px; }
+      .afterglow-copy { inset: auto 14px 14px; }
+      .afterglow-copy h3 { font-size: 17px; }
+      .afterglow-copy p { font-size: 11px; }
+      .audience-card { padding: 20px 20px 22px; }
+      .audience-card h3 { font-size: 20px; }
+      .audience-card-action { margin-top: 16px; }
+    }
     @media (max-width: 760px) {
       .section-shell, .manifesto-copy { width: min(100% - 30px, 1160px); }
       .journey, .scenery, .for-you, .afterglow { padding: 54px 0; }
@@ -508,10 +518,10 @@
       .journey-steps, .audience-grid, .afterglow-grid { margin-top: 32px; }
       .manifesto { min-height: 620px; }
       .manifesto-copy { padding: 72px 0; }
-      .audience-grid, .afterglow-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
       .select { padding: 54px 0; }
       .select-flow { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
-      .afterglow-card { min-height: 350px; }
+
       .trust-list { grid-template-columns: 1fr; gap: 18px; }
       .final-cta { padding: 64px 0; }
     }
@@ -523,7 +533,7 @@
       .photo-label strong { font-size: 16px; }
       .hero-actions { display: grid; }
       .button { width: 100%; }
-      .afterglow-card { min-height: 320px; }
+
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -576,11 +586,9 @@
   </header>
 
   <main id="main">
-    <section class="hero hero-photo" id="quick-intro" aria-labelledby="hero-title">
-      <div class="hero-photo-bg" aria-hidden="true">
-        <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="" width="960" height="540" fetchpriority="high" decoding="async">
-      </div>
+    <section class="hero hero-photo hv" id="quick-intro" aria-labelledby="hero-title">
       <div class="hero-inner">
+        <div class="hv-screen"><div class="hv-poster" aria-hidden="true"><img src="promo/assets/photos/fuji-snow.webp" width="1920" height="1080" alt="" fetchpriority="high" decoding="async"></div><div class="hv-copy">
         <p class="hero-kicker">TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA</p>
         <h1 id="hero-title" class="hero-title">
           <span class="hero-title-line">窓のむこうに、</span>
@@ -591,18 +599,17 @@
           <span class="copy-chunk">知ると、いつもの車窓が</span><span class="copy-chunk">変わって見える。</span>
           <span class="copy-chunk">写真と解説で楽しみ、</span><span class="copy-chunk">いつ・どちら側に見えるかも</span><span class="copy-chunk">調べられます。</span>
         </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="start.html#journey" data-lp-cta="hero-primary">乗る列車を選ぶ</a>
-          <a class="button intro-film-trigger" href="promo/player.html?film=ja" data-intro-film><span aria-hidden="true">▶</span> <span><span class="copy-chunk">1分でわかる、</span><span class="copy-chunk">新幹線の窓</span></span></a>
-        </div>
-
-        <div class="hero-reel" aria-label="車窓のダイジェスト">
-          <div class="hero-reel-stage" aria-hidden="true">
-            <div class="hero-reel-scene is-active"><img src="images/thumbs/20240211_Mt.Fuji.webp" width="960" height="540" alt=""><span>その一瞬を、見逃さない。</span></div>
-          </div>
-          <div class="hero-reel-bar"><span class="hero-reel-caption">富士山から、夜の景色まで。</span><button type="button" class="hero-reel-toggle" hidden>映像を停止</button></div>
-        </div>
+        </div></div>
         <div class="hero-cards">
+          <a class="hero-card" href="start.html#journey" data-lp-cta="hero-card-train">
+            <span class="hero-card-visual hcv-train" aria-hidden="true">
+              <svg viewBox="0 0 44 40" width="44" height="40" fill="none"><path d="M8 5v30" stroke="currentColor" stroke-opacity=".4"/><circle cx="8" cy="8" r="3.2" fill="#f3b59f"/><circle cx="8" cy="20" r="2.4" fill="currentColor"/><circle cx="8" cy="32" r="2.4" fill="currentColor"/><path d="M17 8h21M17 20h15M17 32h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-opacity=".75"/></svg>
+            </span>
+            <span class="hero-card-body">
+              <strong>乗る列車を選ぶ</strong>
+              <span>見えるころと座席側がわかる</span>
+            </span>
+          </a>
           <a class="hero-card" href="live/" data-lp-cta="hero-card-live">
             <span class="hero-card-visual hcv-live" aria-hidden="true">
               <span class="hcv-live-route"></span>
@@ -640,16 +647,7 @@
             </span>
           </a>
 
-          <a class="hero-card" href="guide.html" data-lp-cta="hero-card-faq">
-            <span class="hero-card-visual hcv-pills" aria-hidden="true">
-              <span class="hcv-pill">A席</span>
-              <span class="hcv-pill is-on">E席</span>
-            </span>
-            <span class="hero-card-body">
-              <strong>富士山を見る</strong>
-              <span>いつ・どちら側かを調べる</span>
-            </span>
-          </a>
+
         </div>
       </div>
     </section>
@@ -813,14 +811,13 @@
             <small>WITH CHILDREN</small>
             <h3><span class="copy-chunk">子どもと乗るなら、</span><span class="copy-chunk">車窓を探すゲームに。</span></h3>
             <p><span class="copy-chunk">富士山、城、湖、ふしぎな看板。</span><span class="copy-chunk">次は何が見えるか一緒に探せば、</span><span class="copy-chunk">移動時間そのものが旅になります。</span></p>
-            <a class="button button-primary audience-card-action" href="zukan.html" data-lp-cta="audience-family">親子で探せる車窓を見る</a>
+            <a class="button button-primary audience-card-action" href="journal.html" data-lp-cta="audience-family">スタンプ帖で遊ぶ</a>
           </article>
           <article class="audience-card reveal" data-number="3">
             <small>RIDE OFTEN</small>
             <h3><span class="copy-chunk">あの看板、</span><span class="copy-chunk">何だろう。</span></h3>
             <p><span class="copy-chunk">いつも見かける看板や工場。</span><span class="copy-chunk">何だろうと調べてみると、</span><span class="copy-chunk">次に窓を見る楽しみに。</span><span class="copy-chunk">見つけた景色は、スタンプにも。</span></p>
-            <a class="button button-primary audience-card-action" href="zukan.html" data-lp-cta="audience-repeat-browse">気になる景色を探す</a>
-            <a class="card-secondary-link" href="journal.html" data-lp-cta="audience-repeat">スタンプ帖へ</a>
+            <a class="button button-primary audience-card-action" href="arenani.html" data-lp-cta="audience-repeat-arenani">あれ、何？を見る</a>
           </article>
         </div>
       </div>
@@ -847,11 +844,11 @@
           </a>
           <a class="afterglow-card reveal" href="sparkling-dreams.html" data-lp-cta="special-disney">
             <img src="images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp" alt="ラッピング車両が走る東海道新幹線の車窓" loading="lazy" decoding="async">
-            <span class="afterglow-copy"><small>LIMITED</small><h3>ディズニー新幹線</h3><p>すれ違えるかを、時刻から計算。</p></span>
+            <span class="afterglow-copy"><small>LIMITED</small><h3><span class="copy-chunk">ディズニー</span><span class="copy-chunk">新幹線</span></h3><p>すれ違えるかを、時刻から計算。</p></span>
           </a>
           <a class="afterglow-card reveal" href="window-moments.html" data-lp-cta="special-window-moments">
             <img src="images/wm-hero-snow.jpg" alt="雪に覆われた田畑と集落を東海道新幹線の車窓から見る" loading="lazy" decoding="async">
-            <span class="afterglow-copy"><small>WEATHER</small><h3>一度きりの車窓</h3><p>虹、雪、雲、雷。その日にだけ出会う空。</p></span>
+            <span class="afterglow-copy"><small>WEATHER</small><h3><span class="copy-chunk">一度きりの</span><span class="copy-chunk">車窓</span></h3><p>虹、雪、雲、雷。その日にだけ出会う空。</p></span>
           </a>
         </div>
       </div>
