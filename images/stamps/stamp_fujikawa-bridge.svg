@@ -12,7 +12,7 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">富士川橋梁</text>
+<text x="100" y="52" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">富士川橋梁</text>
 
 
 <path d="M61 104 L90.64 70 L96.1 76.12 L100 70 L103.9 76.12 L109.36 70 L139 104" fill="none" stroke-width="2.2"/>
@@ -23,6 +23,6 @@
 </g>
 <path d="M58 122 V132 M79 122 V132 M100 122 V132 M121 122 V132 M142 122 V132" fill="none" stroke-width="1.8"/>
 <path d="M48 140 q5.2 -7 10.4 0 M68.8 140 q5.2 -7 10.4 0 M89.6 140 q5.2 -7 10.4 0 M110.4 140 q5.2 -7 10.4 0 M131.2 140 q5.2 -7 10.4 0 " fill="none" stroke-width="2"/>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約47分・E席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">E席</text>
 </g>
 </svg>
