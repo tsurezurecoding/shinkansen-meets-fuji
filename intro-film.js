@@ -6,6 +6,8 @@
   const en=document.documentElement.lang==='en';
   const copy=en?{title:'Discover Shinkansen Window',close:'Close',loading:'Preparing your window journey…',error:'The film could not load. You can open it separately below.',browse:'Explore the views',preview:'Try a preview ride',separate:'Open the film separately',frame:'Shinkansen Window introduction film'}:{title:'新幹線の窓を知る',close:'閉じる',loading:'旅の準備をしています…',error:'PVを読み込めませんでした。下のリンクから別画面でも開けます。',browse:'車窓図鑑を見る',preview:'乗車プレビューで試す',separate:'PVを別画面で開く',frame:'新幹線の窓 紹介PV'};
   let dialog,frame,launch;
+  const fitFilm=()=>frame?.contentWindow?.postMessage({type:'intro-film-viewport',height:Math.max(120,innerHeight*.92-320)},location.protocol==='file:'?'*':location.origin);
+  addEventListener('resize',fitFilm);
   const track=(event,extra={})=>{if(typeof window.gtag==='function')window.gtag('event',event,{language:en?'en':'ja',placement:'top_hero',film:'cinema',...extra});};
   function close(){if(dialog?.open)dialog.close();}
   function create(){
@@ -16,6 +18,7 @@
     header.append(heading,button);
     const status=document.createElement('p');status.className='intro-film-status';status.setAttribute('role','status');status.textContent=copy.loading;
     frame=document.createElement('iframe');frame.className='intro-film-frame';frame.title=copy.frame;frame.allow='autoplay; fullscreen';
+    frame.addEventListener('load',fitFilm);
     const actions=document.createElement('div');actions.className='intro-film-actions';
     for(const [route,label,kind] of [[(en?'en/':'')+'zukan.html',copy.browse,'browse'],[(en?'en/':'')+'live/',copy.preview,'preview'],[trigger.getAttribute('href'),copy.separate,'separate']]){
       const a=document.createElement('a');a.href=new URL(route,document.baseURI).href;a.textContent=label;
@@ -41,7 +44,7 @@
     const d=e.data,status=dialog.querySelector('.intro-film-status');
     if(d.action==='close')close();
     else if(d.action==='height'&&Number.isFinite(d.height))frame.style.height=Math.max(240,Math.min(6000,d.height))+'px';
-    else if(d.action==='ready'){status.hidden=true;}
+    else if(d.action==='ready'){status.hidden=true;fitFilm();}
     else if(d.action==='error'){status.hidden=false;status.textContent=copy.error;}
     else if(['start','half','complete','browse'].includes(d.action))track('intro_film_'+d.action);
   });

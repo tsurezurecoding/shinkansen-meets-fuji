@@ -1,5 +1,17 @@
 (() => {
   'use strict';
+  addEventListener('message',e=>{
+    const ownOrigin=location.protocol==='file:'?['null','file://'].includes(e.origin):e.origin===location.origin;
+    if(e.source!==parent||!ownOrigin||e.data?.type!=='intro-film-viewport'||!Number.isFinite(e.data.height))return;
+    document.documentElement.style.setProperty('--film-screen-height',Math.max(120,Math.min(900,e.data.height))+'px');
+  });
+  // Keep the film and controls visible; supplementary reading remains available.
+  const details=document.createElement('details');details.className='film-details';
+  const summary=document.createElement('summary');summary.textContent=PV_FILM.lang==='en'?'Scenes, transcript & credits':'シーン説明・文字起こし・クレジット';
+  details.append(summary);
+  const main=document.querySelector('main');
+  for(const node of main.querySelectorAll('.caption,.motion-note,.transcript,.credits'))details.append(node);
+  main.append(details);
   const send=(action,data={})=>{if(parent!==window)parent.postMessage({type:'intro-film',action,...data},location.protocol==='file:'?'*':location.origin);};
   addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();send('close');}});
   let lastHeight=0;

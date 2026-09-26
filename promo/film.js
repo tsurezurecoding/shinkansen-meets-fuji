@@ -402,12 +402,23 @@
   }
 
   // ---------- soundtrack (synthesized, see storyboard/final.json "audio") ----------
-  async function audio(from, to) {
-    return renderAudio(from, to, async (api, rev) => {
+  async function audio(from, to, { night = false } = {}) {
+    return renderAudio(from, to, async (sourceApi, sourceRev) => {
+      // Schedule one continuous score. Only scene cues move for the night chapter;
+      // the noise bed and oscillator phases never stop or restart at its edges.
+      const shift = t => night && t >= 32.5 ? t + 6 : t;
+      const retime = source => {
+        const target = { ...source, T: t => source.T(shift(t)) };
+        for (const name of ['tone', 'whoosh', 'tick', 'thump'])
+          target[name] = (t, ...args) => source[name](shift(t), ...args);
+        return target;
+      };
+      const api = retime(sourceApi), rev = retime(sourceRev);
+      const scoreDuration = DURATION + (night ? 6 : 0);
       const { ctx, T } = api;
       const dur = to - from;
       // BED: brown noise → HP 35 → LP (morph-linked) → level
-      const src = api.noise('brown', 0, DURATION, 21);
+      const src = api.noise('brown', 0, scoreDuration, 21);
       const hp = ctx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 35;
       const lp = ctx.createBiquadFilter(); lp.type = 'lowpass'; lp.Q.value = 0.5;
       const g = ctx.createGain();

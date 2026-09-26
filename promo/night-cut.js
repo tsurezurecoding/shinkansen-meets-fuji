@@ -18,12 +18,7 @@
   const row=window.PV_ASSET_DATA[base.lang],time=/\d\d:\d\d/.exec(row.rect.text)[0];
   const timed=time+(en?' approx. ':'頃 ')+row.row+' · '+c.seatE+'　'+c.caveat;
   async function audio(){
-    const old=await base.audio(0,43), sr=old.sampleRate,cut=Math.round(32.5*sr),insert=6*sr;
-    const night=await PV.renderAudio(0,6,async(api)=>{
-      for(const hz of [110,164.81,220]) api.tone(.1,hz,{db:-28,attack:.6,decay:2.4,dur:5.8});
-    },{peakDb:-15,reverbWet:.15});
-    const data=old.data.map((channel,i)=>{const out=new Float32Array(49*sr);out.set(channel.subarray(0,cut));out.set(night.data[i],cut);out.set(channel.subarray(cut),cut+insert);for(let k=0;k<sr/20;k++){out[cut-1-k]*=k/(sr/20);out[cut+insert+k]*=k/(sr/20);}return out;});
-    return {sampleRate:sr,data};
+    return base.audio(0,49,{night:true});
   }
   const ready=Promise.all([base.ready,...[...overlay.querySelectorAll('img')].map(im=>im.decode())]).then(()=>render(0));
   window.PV_CINEMA=null;
