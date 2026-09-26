@@ -84,6 +84,8 @@
     })();
   </script>
   <link rel="stylesheet" href="chrome.css?v=d8ebc990">
+  <link rel="stylesheet" href="hero-cinema.css?v=ac8e7be4">
+  <script src="hero-cinema.js?v=362b9f49" defer></script>
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
@@ -405,24 +407,24 @@
 
     .for-you { padding: clamp(64px, 7vw, 96px) 0; background: var(--white); }
     .audience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 42px; }
-    .audience-card { position: relative; overflow: hidden; padding: 29px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); display: flex; flex-direction: column; }
-    .audience-card-action { position: relative; z-index: 1; align-self: flex-start; min-height: 44px; margin-top: auto; padding: 0 17px; font-size: 13px; box-shadow: none; }
-    .audience-card::after { content: attr(data-number); position: absolute; right: 14px; bottom: -32px; color: rgba(18, 35, 52, 0.05); font-family: var(--serif); font-size: 145px; font-weight: 700; line-height: 1; }
+    .audience-card { position: relative; overflow: hidden; padding: 24px 26px; border: 1px solid var(--line); border-radius: 24px; background: var(--paper); display: flex; flex-direction: column; }
+    .audience-card-action { position: relative; z-index: 1; align-self: flex-start; min-height: 44px; margin-top: 20px; padding: 0 17px; font-size: 13px; box-shadow: none; }
+    .audience-card::after { content: attr(data-number); position: absolute; right: 14px; bottom: -24px; color: rgba(18, 35, 52, 0.05); font-family: var(--serif); font-size: 110px; font-weight: 700; line-height: 1; }
     .audience-card small { color: var(--coral-dark); font-size: 10px; font-weight: 900; letter-spacing: 0.14em; }
-    .audience-card h3 { position: relative; z-index: 1; margin: 24px 0 0; font-family: var(--serif); font-size: 25px; line-height: 1.4; }
-    .audience-card p { position: relative; z-index: 1; margin: 13px 0 0; color: var(--ink-soft); font-size: 13px; }
+    .audience-card h3 { position: relative; z-index: 1; margin: 14px 0 0; font-family: var(--serif); font-size: 22px; line-height: 1.4; }
+    .audience-card p { position: relative; z-index: 1; margin: 10px 0 0; color: var(--ink-soft); font-size: 13px; }
 
     .afterglow { padding: clamp(64px, 7vw, 96px) 0; background: #dfe8e8; }
     .afterglow-head { display: grid; grid-template-columns: 0.78fr 1fr; align-items: end; gap: 50px; }
     .afterglow-head .section-head p:last-child { margin-bottom: 4px; }
     .afterglow-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 42px; }
-    .afterglow-card { position: relative; min-height: 390px; overflow: hidden; border-radius: 24px; background: var(--night-soft); color: #fff; }
+    .afterglow-card { position: relative; min-height: 0; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 24px; background: var(--night-soft); color: #fff; }
     .afterglow-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.72; transition: transform 700ms cubic-bezier(.2,.75,.2,1), opacity 300ms ease; }
     .afterglow-card:hover img { transform: scale(1.045); opacity: 0.82; }
     .afterglow-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 16, 24, 0.04), rgba(5, 16, 24, 0.86)); }
-    .afterglow-copy { position: absolute; inset: auto 25px 24px; z-index: 2; }
+    .afterglow-copy { position: absolute; inset: auto 20px 18px; z-index: 2; }
     .afterglow-copy small { color: #f3b59f; font-size: 9px; font-weight: 900; letter-spacing: 0.14em; }
-    .afterglow-copy h3 { margin: 7px 0 0; font-family: var(--serif); font-size: 24px; }
+    .afterglow-copy h3 { margin: 7px 0 0; font-family: var(--serif); font-size: 21px; }
     .afterglow-copy p { margin: 8px 0 0; color: rgba(255, 255, 255, 0.68); font-size: 12px; }
 
     .trust { padding: 64px 0; background: var(--paper); }
@@ -491,6 +493,16 @@
     /* 761〜900px はブランド名＋ナビ＋言語＋CTAが1段に収まらないため、
        ナビ本体は「More」へ畳む（768pxでヘッダーが3段になっていた） */
 
+    @media (max-width: 899px) {
+      .afterglow-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .afterglow-card { aspect-ratio: 4 / 5; border-radius: 18px; }
+      .afterglow-copy { inset: auto 14px 14px; }
+      .afterglow-copy h3 { font-size: 17px; }
+      .afterglow-copy p { font-size: 11px; }
+      .audience-card { padding: 20px 20px 22px; }
+      .audience-card h3 { font-size: 20px; }
+      .audience-card-action { margin-top: 16px; }
+    }
     @media (max-width: 760px) {
       .section-shell, .manifesto-copy { width: min(100% - 30px, 1160px); }
       .journey, .scenery, .for-you, .afterglow { padding: 54px 0; }
@@ -511,10 +523,10 @@
       .journey-steps, .audience-grid, .afterglow-grid { margin-top: 32px; }
       .manifesto { min-height: 620px; }
       .manifesto-copy { padding: 72px 0; }
-      .audience-grid, .afterglow-grid { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
       .select { padding: 54px 0; }
       .select-flow { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
-      .afterglow-card { min-height: 350px; }
+
       .trust-list { grid-template-columns: 1fr; gap: 18px; }
       .final-cta { padding: 64px 0; }
     }
@@ -526,7 +538,7 @@
       .photo-label strong { font-size: 16px; }
       .hero-actions { display: grid; }
       .button { width: 100%; }
-      .afterglow-card { min-height: 320px; }
+
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -579,11 +591,9 @@
   </header>
 
   <main id="main">
-    <section class="hero hero-photo" id="quick-intro" aria-labelledby="hero-title">
-      <div class="hero-photo-bg" aria-hidden="true">
-        <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="" width="960" height="540" fetchpriority="high" decoding="async">
-      </div>
+    <section class="hero hero-photo hv" id="quick-intro" aria-labelledby="hero-title">
       <div class="hero-inner">
+        <div class="hv-screen"><div class="hv-poster" aria-hidden="true"><img src="promo/assets/photos/fuji-snow.webp" width="1920" height="1080" alt="" fetchpriority="high" decoding="async"></div><div class="hv-copy">
         <p class="hero-kicker">TOKAIDO SHINKANSEN · TOKYO ⇄ SHIN-OSAKA</p>
         <h1 id="hero-title" class="hero-title">
           <span class="hero-title-line">There’s another journey</span>
@@ -592,11 +602,17 @@
         <p class="hero-lead">
           Mt. Fuji, castles, lakes, and unexpected signs. Get to know the sights, and see more through your train window. Explore photos and stories, and find when and which side to look.
         </p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="en/start.html#journey" data-lp-cta="hero-primary">Choose your train</a>
-        </div>
-
+        </div></div>
         <div class="hero-cards">
+          <a class="hero-card" href="en/start.html#journey" data-lp-cta="hero-card-train">
+            <span class="hero-card-visual hcv-train" aria-hidden="true">
+              <svg viewBox="0 0 44 40" width="44" height="40" fill="none"><path d="M8 5v30" stroke="currentColor" stroke-opacity=".4"/><circle cx="8" cy="8" r="3.2" fill="#f3b59f"/><circle cx="8" cy="20" r="2.4" fill="currentColor"/><circle cx="8" cy="32" r="2.4" fill="currentColor"/><path d="M17 8h21M17 20h15M17 32h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-opacity=".75"/></svg>
+            </span>
+            <span class="hero-card-body">
+              <strong>Choose your train</strong>
+              <span>See when and which side to look</span>
+            </span>
+          </a>
           <a class="hero-card" href="en/live/" data-lp-cta="hero-card-live">
             <span class="hero-card-visual hcv-live" aria-hidden="true">
               <span class="hcv-live-route"></span>
@@ -634,16 +650,7 @@
             </span>
           </a>
 
-          <a class="hero-card" href="en/guide.html" data-lp-cta="hero-card-faq">
-            <span class="hero-card-visual hcv-pills" aria-hidden="true">
-              <span class="hcv-pill">Seat A</span>
-              <span class="hcv-pill is-on">Seat E</span>
-            </span>
-            <span class="hero-card-body">
-              <strong>See Mt. Fuji</strong>
-              <span>Check when and which side to watch</span>
-            </span>
-          </a>
+
         </div>
       </div>
     </section>
@@ -666,15 +673,15 @@
               <div class="photo-strip">
                 <span class="photo-strip-item">
                   <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="">
-                  <em>Mt. Fuji<i>Seat E · 43 min</i></em>
+                  <em>Mt. Fuji<i>Seat E · 45 min</i></em>
                 </span>
                 <span class="photo-strip-item">
                   <img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="">
-                  <em>Kakegawa Castle<i>Seat E · 62 min</i></em>
+                  <em>Kakegawa Castle<i>Seat E · 64 min</i></em>
                 </span>
                 <span class="photo-strip-item">
                   <img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="">
-                  <em>Lake Hamana<i>Seat E · 73 min</i></em>
+                  <em>Lake Hamana<i>Both sides · 73 min</i></em>
                 </span>
               </div>
             </div>
@@ -726,8 +733,8 @@
 
         <div class="photo-mosaic reveal">
           <a class="photo-card" href="en/spots/hamanako.html" aria-label="See the Lake Hamana window guide" data-lp-cta="scenery-card-hamanako">
-            <img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="Lake Hamana from the Shinkansen's Seat E side" loading="lazy" decoding="async">
-            <span class="photo-label"><small>LAKE · SEAT E</small><strong>Lake Hamana</strong></span>
+            <img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="Lake Hamana from the Shinkansen's Seat A side" loading="lazy" decoding="async">
+            <span class="photo-label"><small>LAKE · SEAT A</small><strong>Lake Hamana</strong></span>
           </a>
           <a class="photo-card" href="en/spots/kakegawa.html" aria-label="See the Kakegawa Castle window guide" data-lp-cta="scenery-card-kakegawa">
             <img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="Kakegawa Castle from the Shinkansen's Seat E side" loading="lazy" decoding="async">
@@ -767,7 +774,7 @@
           </div>
           <ol class="select-list">
             <li><strong>Choose your train</strong><span>Just three choices: direction, station, and train.</span></li>
-            <li><strong>53 views in a timed list</strong><span>Each view includes its estimated time and seat side.</span></li>
+            <li><strong>50+ views in a timed list</strong><span>Each view includes its estimated time and seat side.</span></li>
             <li><strong>Get a nudge at the right time</strong><span>A map and countdown tell you when to look.</span></li>
           </ol>
         </div>
@@ -806,13 +813,13 @@
             <small>WITH CHILDREN</small>
             <h3>Riding with children? Turn the window into a game.</h3>
             <p>Mt. Fuji, castles, lakes, and curious signs. Look together for what comes next, and the ride itself becomes part of the journey.</p>
-            <a class="button button-primary audience-card-action" href="en/zukan.html" data-lp-cta="audience-family">Find views together</a>
+            <a class="button button-primary audience-card-action" href="en/journal.html" data-lp-cta="audience-family">Play with Window Stamps</a>
           </article>
           <article class="audience-card reveal" data-number="3">
             <small>RIDE OFTEN</small>
-            <h3>Ride often? Collect Window Stamps.</h3>
-            <p>Mt. Fuji, castles, lakes, and signs. Save what you spot on familiar business trips, and the same route gives you something new to look forward to.</p>
-            <a class="button button-primary audience-card-action" href="en/journal.html" data-lp-cta="audience-repeat">Open Window Stamps</a>
+            <h3>Ride often? See more each time.</h3>
+            <p>The signs, factories, and towers you pass every time have stories to tell. Look one up, and you may spot something new on your next ride.</p>
+            <a class="button button-primary audience-card-action" href="en/arenani.html" data-lp-cta="audience-repeat-arenani">What's that outside?</a>
           </article>
         </div>
       </div>
@@ -868,7 +875,7 @@
         <p>Choose one train. We will show the timing and seat side for your journey.</p>
         <div class="hero-actions">
           <a class="button button-dark" href="en/start.html#journey" data-lp-cta="final-primary">Choose your train</a>
-          <a class="button button-ghost" href="en/zukan.html" data-lp-cta="final-secondary">Browse all 53 views</a>
+          <a class="button button-ghost" href="en/zukan.html" data-lp-cta="final-secondary">Explore 50+ views</a>
         </div>
       </div>
     </section>

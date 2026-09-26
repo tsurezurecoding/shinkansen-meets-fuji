@@ -1,0 +1,163 @@
+/* TOP hero as the film's screen (v3). The picture is the approved CINEMA,
+ * rendered by its own engine in an iframe. The hero heading and its one CTA
+ * are overlaid, centred, while the hero frame shows; the film then plays in
+ * the same place and returns to the hero. Phones switch in the same place too. */
+
+.hero.hv { background: #081521; }
+.hero.hv .hero-photo-bg { display: none; }
+.hero.hv.hero-photo { display: block; min-height: 0; }
+.hero.hv .hero-inner { display: block; max-width: none; width: 100%; padding: 0; text-align: center; }
+.hero.hv .intro-film-trigger { display: none; }
+
+/* the screen: size set from the viewport minus the real header and rail (hero-cinema.js) */
+.hv-screen { position: relative; width: var(--hv-w, 100%); height: var(--hv-h, 56.25vw); margin: 0 auto; container-type: size; overflow: hidden; background: #081521; }
+.hv-screen iframe { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; border: 0; display: block; }
+
+/* centred hero heading over the hero frame */
+.hv-copy { position: absolute; inset: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0 6cqw; pointer-events: none; color: #fffdf8; transition: opacity .6s cubic-bezier(.2,.75,.2,1); }
+.hv-copy a, .hv-copy button { pointer-events: auto; }
+.hv-copy[data-hidden="true"] { opacity: 0; transition: opacity .5s; }
+.hv-copy .hero-kicker { margin: 0 0 clamp(10px, 2.2cqh, 22px); font: 700 clamp(9.5px, 1.35cqw, 15px)/1.4 var(--sans); letter-spacing: .24em; opacity: .85; }
+.hv-copy .hero-title { margin: 0; font: 600 clamp(24px, 4.6cqw, 60px)/1.28 var(--serif); letter-spacing: .005em; text-shadow: 0 2px 22px rgba(8, 21, 33, .3); }
+.hv-copy .hero-title-line { display: block; white-space: nowrap; }
+.hv-copy .hero-lead { max-width: 40em; margin: clamp(10px, 2.4cqh, 22px) 0 0; font: 500 clamp(12px, 1.35cqw, 16px)/1.9 var(--sans); color: rgba(255, 253, 248, .88); text-shadow: 0 1px 12px rgba(8, 21, 33, .4); }
+.hero.hv .hv-copy .hero-actions { display: flex; align-self: center; justify-content: center; width: 100%; margin: clamp(14px, 3.6cqh, 32px) 0 0; }
+.hv-copy .hero-actions .button { min-height: 48px; }
+
+/* chapter rail: numbered segments (the current one is coral), the current
+   chapter's name, arrows and play/pause — shows the scenes can be browsed */
+.hv-rail { display: flex; align-items: center; gap: 14px; width: var(--hv-w, 100%); margin: 0 auto; padding: 12px clamp(12px, 2.5vw, 32px) 0; box-sizing: border-box; color: #fffdf8; }
+.hv-now { flex: none; min-width: 9.5em; margin: 0; font: 700 12px/1.3 var(--sans); letter-spacing: .08em; text-align: left; color: #fffdf8; white-space: nowrap; }
+.hv-now .num { color: #f3b59f; margin-right: 8px; font-variant-numeric: tabular-nums; }
+.hv-arrow { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35); background: transparent; color: #fffdf8; font: 400 18px/1 var(--sans); cursor: pointer; }
+.hv-arrow:hover { background: rgba(255, 255, 255, .1); }
+.hv-chapters { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.hv-chapters button { width: 100%; height: 34px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; color: rgba(255, 253, 248, .5); font: 700 11px/1 var(--sans); font-variant-numeric: tabular-nums; }
+.hv-chapters button::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: rgba(255, 255, 255, .22); transition: background .3s; }
+.hv-chapters button span { position: absolute; left: 0; top: 16px; }
+.hv-chapters button:hover { color: #fffdf8; }
+.hv-chapters button[aria-current="true"] { color: #f3b59f; }
+.hv-chapters button[aria-current="true"]::before { background: #e8704a; }
+.hv-toggle { flex: none; min-height: 40px; padding: 0 16px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 999px; background: transparent; color: #fffdf8; font: 700 12px/1 var(--sans); cursor: pointer; white-space: nowrap; }
+.hv-arrow:focus-visible, .hv-toggle:focus-visible, .hv-chapters button:focus-visible { outline: 3px solid #e8704a; outline-offset: 3px; }
+
+
+@media (max-width: 899px) {
+  .hv-copy { padding: 0 18px; }
+  .hv-copy .hero-lead { font-size: 12.5px; line-height: 1.8; }
+  .hv-copy .hero-actions .button { width: min(100%, 300px); justify-content: center; font-size: 14px; }
+  .hv-rail { gap: 8px; padding: 10px 10px 0; }
+  .hv-now { display: none; }
+  .hv-chapters button span { display: none; }
+  .hv-chapters button { height: 22px; }
+  .hv-arrow { width: 36px; height: 36px; }
+
+}
+
+/* the hero CTA moved into the entry cards ("乗る列車を選ぶ" card) */
+.hero.hv .hv-copy .hero-actions { display: none; }
+.hcv-train { align-items: center; }
+.hcv-time { font: 600 20px/1 var(--serif); letter-spacing: .02em; color: #fff; font-variant-numeric: tabular-nums; margin-right: 4px; }
+
+/* phones: the screen is 16:9 like the film, so the heading adapts to its height
+   but always keeps the main description */
+@container (max-height: 330px) {
+  .hv-copy .hero-title { font-size: clamp(19px, 6cqw, 28px); }
+  .hv-copy .hero-lead { margin-top: 10px; font-size: 12px; line-height: 1.7; }
+}
+@container (max-height: 240px) {
+  .hv-copy .hero-kicker { display: none; }
+  .hv-copy .hero-title { font-size: clamp(18px, 5.6cqw, 22px); line-height: 1.3; }
+  .hv-copy .hero-lead { margin-top: 8px; font-size: 11.5px; line-height: 1.65; }
+}
+@container (max-height: 190px) {
+  .hv-copy .hero-lead { font-size: 11px; line-height: 1.6; }
+}
+
+/* entry cards: always below the screen, so they stay usable while the film
+   plays. Quiet, even night panels with a hairline; serif titles; an arrow on
+   the right. Train selection leads, marked only by a coral top rule and arrow. */
+.hero.hv .hero-cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; width: min(var(--hv-w, 100%) - 2 * clamp(12px, 2.5vw, 32px), 1240px); max-width: none; margin: 16px auto 0; padding: 0 0 28px; box-sizing: border-box; text-align: left; }
+.hero.hv .hero-card { position: relative; display: grid; grid-template-columns: 64px minmax(0, 1fr) 16px; align-items: center; gap: 14px; min-height: 0; padding: 16px 18px 16px 16px; border: 1px solid rgba(255, 255, 255, .14); border-radius: 14px; background: linear-gradient(180deg, rgba(28, 47, 71, .92), rgba(16, 38, 56, .92)); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06); color: #fffdf8; backdrop-filter: none; transition: border-color .25s, transform .25s, background .25s; }
+.hero.hv .hero-card::after { content: "→"; grid-column: 3; justify-self: end; font: 400 16px/1 var(--sans); color: rgba(255, 253, 248, .45); transition: transform .25s, color .25s; }
+.hero.hv .hero-card:hover { transform: translateY(-2px); border-color: rgba(255, 255, 255, .32); }
+.hero.hv .hero-card:hover::after { transform: translateX(3px); color: #fffdf8; }
+.hero.hv .hero-card-visual { width: 64px; height: 40px; overflow: hidden; }
+.hero.hv .hero-card-body { gap: 4px; text-align: left; }
+.hero.hv .hcv-train { color: #fffdf8; }
+.hero.hv .hero-card-body strong { font: 600 16px/1.35 var(--serif); letter-spacing: .02em; color: #fffdf8; white-space: nowrap; }
+.hero.hv .hero-card-body span { font-size: 11px; line-height: 1.55; color: rgba(255, 253, 248, .62); text-wrap: pretty; }
+/* line-art visuals, as on the site, fitted to the 64px column */
+.hero.hv .hcv-live { transform: scale(.6); transform-origin: left center; width: 110px; }
+.hero.hv .hcv-zukan img { width: 30px; height: 30px; border-radius: 6px; }
+.hero.hv .hcv-zukan img:nth-child(n+3) { display: none; }
+.hero.hv .hcv-stamp img { width: 32px; height: 32px; }
+.hero.hv .hcv-stamp img:nth-child(3) { display: none; }
+.hero.hv .hcv-time { font: 600 20px/1 var(--serif); color: #fffdf8; font-variant-numeric: tabular-nums; }
+.hero.hv .hcv-train .hcv-pill { display: none; }
+/* the leading card: train selection */
+.hero.hv .hero-card[data-lp-cta="hero-card-train"] { border-color: rgba(232, 112, 74, .45); box-shadow: inset 0 2px 0 #e8704a, inset 0 1px 0 rgba(255, 255, 255, .06); }
+.hero.hv .hero-card[data-lp-cta="hero-card-train"]::after { color: #f3b59f; }
+.hero.hv .hero-card[data-lp-cta="hero-card-train"] .hcv-time { color: #f3b59f; }
+.hero.hv .hero-card[data-lp-cta="hero-card-train"]:hover { border-color: #e8704a; }
+
+@media (max-width: 1180px) {
+  .hero.hv .hero-card { grid-template-columns: 44px minmax(0, 1fr) 14px; gap: 12px; padding: 14px 14px 14px 12px; }
+  .hero.hv .hero-card-visual { width: 44px; }
+  .hero.hv .hcv-live { transform: none; width: 44px; }
+  .hero.hv .hcv-live-route, .hero.hv .hcv-live-dot { display: none; }
+  .hero.hv .hcv-live-audio { left: 10px; }
+  .hero.hv .hcv-zukan img:nth-child(n+2), .hero.hv .hcv-stamp img:nth-child(n+2) { display: none; }
+  .hero.hv .hcv-time { font-size: 16px; }
+  .hero.hv .hero-card-body strong { font-size: 14.5px; }
+  .hero.hv .hero-card-body span { display: none; }
+}
+@media (min-width: 1181px) and (max-width: 1500px) {
+  .hero.hv .hero-card { grid-template-columns: 54px minmax(0, 1fr) 14px; gap: 12px; padding: 15px 14px 15px 14px; }
+  .hero.hv .hero-card-visual { width: 54px; }
+  .hero.hv .hcv-live { transform: none; width: 54px; }
+  .hero.hv .hcv-live-route, .hero.hv .hcv-live-dot { display: none; }
+  .hero.hv .hcv-live-audio { left: 14px; }
+  .hero.hv .hcv-zukan img:nth-child(n+2), .hero.hv .hcv-stamp img:nth-child(n+2) { display: none; }
+}
+@media (max-width: 899px) {
+  /* phones: stacked cards (picture, then title and line), arrow top right */
+  .hero.hv .hero-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; width: auto; margin: 10px 16px 0; padding-bottom: 12px; }
+  .hero.hv .hero-card { grid-template-columns: minmax(0, 1fr) 14px; grid-template-rows: auto auto; align-items: start; gap: 6px; padding: 8px; }
+  .hero.hv .hero-card-visual { grid-column: 1; grid-row: 1; width: auto; height: 28px; }
+  .hero.hv .hero-card::after { grid-column: 2; grid-row: 1; align-self: center; }
+  .hero.hv .hero-card-body { grid-column: 1 / -1; grid-row: 2; }
+  .hero.hv .hcv-live { transform: scale(.7); }
+  .hero.hv .hcv-live-route, .hero.hv .hcv-live-dot { display: block; }
+  .hero.hv .hcv-live-audio { left: 82px; }
+  .hero.hv .hcv-zukan img:nth-child(-n+3), .hero.hv .hcv-stamp img:nth-child(-n+2) { display: block; }
+  .hero.hv .hero-card-body span { display: block; font-size: 10.5px; word-break: auto-phrase; }
+  .hero.hv .hero-card-body strong { font-size: 14.5px; white-space: normal; }
+}
+
+/* 700-899px (tablets, zoomed PCs): four compact cards in a row, like narrow PC */
+@media (min-width: 700px) and (max-width: 899px) {
+  .hero.hv .hero-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); margin: 14px 16px 0; }
+  .hero.hv .hero-card { grid-template-columns: 36px minmax(0, 1fr) 12px; grid-template-rows: auto; align-items: center; gap: 8px; padding: 12px 10px; }
+  .hero.hv .hero-card-visual { grid-column: 1; grid-row: 1; width: 36px; height: 34px; }
+  .hero.hv .hero-card::after { grid-column: 3; grid-row: 1; }
+  .hero.hv .hero-card-body { grid-column: 2; grid-row: 1; }
+  .hero.hv .hero-card-body span { display: none; }
+  .hero.hv .hero-card-body strong { font-size: 13px; }
+  .hero.hv .hcv-live { transform: none; width: 36px; }
+  .hero.hv .hcv-live-route, .hero.hv .hcv-live-dot { display: none; }
+  .hero.hv .hcv-live-audio { left: 6px; }
+  .hero.hv .hcv-zukan img:nth-child(n+2), .hero.hv .hcv-stamp img:nth-child(n+2) { display: none !important; }
+  .hero.hv .hcv-train svg { width: 36px; }
+}
+
+
+.hv-poster {position:absolute;inset:0;overflow:hidden;background:#081521}
+.hv-poster img {width:100%;height:100%;object-fit:cover;transform:scale(1.26);transform-origin:63.4% 44.4%}
+.hv-poster::after {content:"";position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 46%,#08152161,transparent 75%),linear-gradient(180deg,#08152194,#0815214d 44%,#081521bd)}
+.hv-screen iframe {opacity:0;transition:opacity .2s}
+.hv-screen[data-ready="true"] iframe {opacity:1}
+.hv-status {padding:10px 20px;margin:0;color:#fffdf8;font-size:12px}
+.hv-status:empty {display:none}
+.hv-screen:focus-visible {outline:3px solid #e8704a;outline-offset:-3px}
+@media(prefers-reduced-motion:reduce){.hv-copy,.hv-screen iframe{transition:none}}

@@ -1,0 +1,17 @@
+.hero-actions .intro-film-trigger {background:transparent;border:1px solid rgba(255,255,255,.55);color:#fffdf8;gap:10px;line-height:1.5;text-align:center}
+.hero-actions .intro-film-trigger:hover {background:rgba(255,255,255,.12);border-color:#fffdf8}
+.intro-film-trigger>span:first-child {font-size:13px}
+.intro-film-dialog {box-sizing:border-box;width:min(960px,calc(100% - 32px));max-height:92dvh;margin:auto;padding:0;border:0;border-radius:18px;background:#f6f2e9;color:#122334;box-shadow:0 28px 100px #0007;overscroll-behavior:contain}
+.intro-film-dialog::backdrop {background:rgba(8,21,33,.82)}
+.intro-film-head {position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 20px;background:#f6f2e9;border-bottom:1px solid #d9d0bf}
+.intro-film-head h2 {font:600 18px/1.4 "Yu Mincho",serif;margin:0}
+.intro-film-close {flex-shrink:0;min-height:44px;padding:8px 15px;border:1px solid #bfc3c2;border-radius:25px;background:transparent;color:#122334;font:700 13px/1.4 inherit;cursor:pointer}
+.intro-film-close:focus-visible,.intro-film-dialog a:focus-visible {outline:3px solid #bf4d31;outline-offset:3px}
+.intro-film-status {padding:16px 20px;margin:0;font-size:14px}
+.intro-film-frame {display:block;border:0;width:100%;height:740px;background:#f6f2e9}
+.intro-film-actions {display:flex;flex-wrap:wrap;gap:12px;padding:18px 20px;border-top:1px solid #d9d0bf}
+.intro-film-actions a {display:flex;justify-content:center;align-items:center;min-height:44px;padding:10px 18px;border:1px solid #bf4d31;border-radius:25px;font-size:14px;font-weight:700;text-decoration:none;color:#122334}
+.intro-film-actions a:first-child {background:#e8704a;border-color:#e8704a}
+.intro-film-actions .intro-film-separate {border:0;padding-inline:5px;font-weight:400;font-size:12px;text-decoration:underline}
+html.intro-film-open {overflow:hidden}
+@media(max-width:600px){.intro-film-dialog{width:calc(100% - 16px);max-height:94dvh;border-radius:12px}.intro-film-head{padding:8px 12px}.intro-film-head h2{font-size:16px}.intro-film-actions{padding:14px 12px;gap:8px}.intro-film-actions a{flex:1 1 auto;font-size:13px}}

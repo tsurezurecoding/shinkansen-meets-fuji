@@ -155,6 +155,12 @@ for (const group of LINKED) {
   }
 }
 
+for (const [lang, prefix, suffix] of [["ja", "", "頃"], ["en", "~", ""]]) {
+  for (const [key, value] of [["timelineTimePrefix", prefix], ["timelineTimeSuffix", suffix]]) {
+    if (tables["app.js"][lang].get(key) !== value) failures.push("Timeline time marker mismatch: " + lang + ":" + key);
+  }
+}
+
 if (failures.length) {
   throw new Error(`UI string validation failed:\n- ${failures.join("\n- ")}`);
 }

@@ -1,0 +1,113 @@
+/* PV base — tokens and components shared by every scene.
+ * Tokens mirror the current home page (app/index.html inline :root), which
+ * refines app/style.css's dawn-window palette. */
+:root {
+  --ink: #122334;
+  --ink-soft: #54616c;
+  --paper: #f6f2e9;
+  --paper-deep: #e9e2d4;
+  --white: #fffdf8;
+  --night: #081521;
+  --night-2: #102638;
+  --night-mist: #1e3d52;
+  --sky: #b9dbe7;
+  --accent: #e8704a;
+  --accent-dark: #bf4d31;
+  --accent-soft: #f3b59f;
+  --fuji: #7d9bc0;
+  --fuji-snow: #f3f6fa;
+  --green: #5d8a5e;
+  --gold: #d9a440;
+  --line: #e3dccd;
+  --seat-a-bg: rgba(125, 155, 192, 0.24);
+  --seat-a-ink: #2b4a73;
+  --seat-e-bg: rgba(93, 138, 94, 0.2);
+  --seat-e-ink: #3f6b40;
+  --serif: "Yu Mincho", "YuMincho", serif;
+  --sans: "Noto Sans JP", "Yu Gothic", sans-serif;
+  --reveal: cubic-bezier(.2, .75, .2, 1);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #05080d; }
+body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; overflow: hidden; }
+img { display: block; }
+
+/* Preview layout: stage scaled to fit; render mode: exactly 1920x1080 at 0,0. */
+#frame { position: relative; overflow: hidden; margin: 0 auto; }
+#stage {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden;
+  background: var(--paper); contain: strict;
+  font-feature-settings: "palt";
+}
+body.render #frame { width: 1920px !important; height: 1080px !important; margin: 0; }
+body.render #stage { transform: none !important; }
+
+/* Layers: every scene element is absolutely positioned and driven from JS. */
+.layer { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+.abs { position: absolute; }
+.hide { visibility: hidden; }
+
+/* Typography */
+.serif { font-family: var(--serif); font-weight: 600; letter-spacing: -0.02em; }
+.sans { font-family: var(--sans); }
+.eyebrow {
+  font-family: var(--sans); font-weight: 800; font-size: 18px; letter-spacing: 0.24em;
+  text-transform: uppercase; color: var(--accent-dark);
+}
+.on-night .eyebrow, .eyebrow.on-dark { color: var(--accent-soft); }
+.headline { font-family: var(--serif); font-weight: 600; font-size: 76px; line-height: 1.3; letter-spacing: -0.02em; }
+.lang-en .headline { font-size: 68px; letter-spacing: -0.01em; line-height: 1.22; }
+.meta { font-family: var(--sans); font-weight: 500; font-size: 28px; color: var(--ink-soft); }
+.on-night { color: #fff; }
+.on-night .meta { color: rgba(255, 255, 255, 0.72); }
+
+/* Masked line reveal: .lines > .ln > span */
+.lines { position: absolute; }
+.ln { display: block; overflow: hidden; white-space: nowrap; padding: 0.04em 0 0.1em; margin-bottom: -0.1em; }
+.ln > span { display: inline-block; will-change: transform, opacity; }
+
+/* Seat pills (match the product's live badges) */
+.pill {
+  display: inline-flex; align-items: center; gap: 8px; border-radius: 999px;
+  font-family: var(--sans); font-weight: 700; font-size: 22px; padding: 6px 16px 7px; white-space: nowrap;
+}
+.pill.e { background: var(--seat-e-bg); color: var(--seat-e-ink); }
+.pill.a { background: var(--seat-a-bg); color: var(--seat-a-ink); }
+.pill.both { background: rgba(217, 164, 64, 0.2); color: #7a5a17; }
+.on-night .pill.e, .pill.e.on-dark { background: rgba(93, 138, 94, 0.32); color: #cfe6cf; }
+.on-night .pill.a, .pill.a.on-dark { background: rgba(125, 155, 192, 0.32); color: #dbe7f6; }
+
+/* Window aperture: clip box with photo inside */
+.window { position: absolute; overflow: hidden; border-radius: 36px; background: #0b1420; }
+.window > img, .window > .ph { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; }
+.window::after { content: ""; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12); pointer-events: none; }
+
+/* Phone mockup (neutral, no device branding). Screen shows a real capture. */
+.phone { position: absolute; width: 412px; height: 860px; border-radius: 60px; background: #0b1420; box-shadow: 0 40px 90px rgba(16, 28, 44, 0.32), inset 0 0 0 1px rgba(255, 255, 255, 0.08); }
+.phone .screen { position: absolute; left: 14px; top: 14px; width: 384px; height: 832px; border-radius: 46px; overflow: hidden; background: #fff; }
+.phone .screen img { position: absolute; left: 0; top: 0; width: 384px; will-change: transform; }
+.phone .cam { position: absolute; left: 50%; top: 26px; width: 10px; height: 10px; margin-left: -5px; border-radius: 50%; background: #1d2a3a; box-shadow: 0 0 0 2px #0b1420; z-index: 2; }
+
+/* Tap ring */
+.tap { position: absolute; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(255, 255, 255, 0.35); box-shadow: 0 0 0 3px #fff; }
+
+/* Stamp */
+.stamp { position: absolute; width: 220px; height: 220px; mix-blend-mode: multiply; }
+.stamp img { width: 100%; height: 100%; }
+
+/* Persistent credit / brand bug */
+.bug { position: absolute; font-family: var(--sans); font-weight: 600; font-size: 20px; white-space: nowrap; }
+
+/* Film grain overlay (static, seeded) */
+.grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.035; mix-blend-mode: overlay; }
+
+/* Preview player */
+#pv-player {
+  position: fixed; left: 0; right: 0; bottom: 0; height: 56px; display: flex; align-items: center; gap: 12px;
+  padding: 0 16px; background: #0b1420; color: #fff; font: 600 14px/1 var(--sans); z-index: 10;
+}
+#pv-player button { min-width: 44px; height: 36px; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.2); background: #1c2f47; color: #fff; font: inherit; padding: 0 12px; }
+#pv-player input { flex: 1; min-width: 0; accent-color: #e8704a; }
+#pv-player output { font-variant-numeric: tabular-nums; min-width: 110px; text-align: right; }
+body.render #pv-player { display: none; }

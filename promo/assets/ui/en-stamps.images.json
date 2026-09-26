@@ -1,0 +1,254 @@
+[
+ {
+  "i": 0,
+  "src": "/images/stamps/stamp_tokyo-tower.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 1,
+  "src": "/images/stamps/stamp_hinataoka.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 2,
+  "src": "/images/stamps/stamp_ota-fuji.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 3,
+  "src": "/images/stamps/stamp_maruko-bridge.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 4,
+  "src": "/images/stamps/stamp_musashi-kosugi-towers.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 5,
+  "src": "/images/stamps/stamp_putiputi-sign.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 6,
+  "src": "/images/stamps/stamp_727-board.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 7,
+  "src": "/images/stamps/stamp_sagami-fuji.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 8,
+  "src": "/images/stamps/stamp_odawara.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 9,
+  "src": "/images/stamps/stamp_odawara-castle.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 10,
+  "src": "/images/stamps/stamp_gyoran-kannon.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 11,
+  "src": "/images/stamps/stamp_mishima-catapult.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 12,
+  "src": "/images/stamps/stamp_fuji-pipe-sign.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 13,
+  "src": "/images/stamps/stamp_fuji.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 14,
+  "src": "/images/stamps/stamp_fuji-bus-sales.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 15,
+  "src": "/images/stamps/stamp_fuji-paper-mills.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 16,
+  "src": "/images/stamps/stamp_fujikawa-bridge.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 17,
+  "src": "/images/stamps/stamp_left-fuji.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 18,
+  "src": "/images/stamps/stamp_shimizu-port-chikyu.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 19,
+  "src": "/images/stamps/stamp_granship.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 20,
+  "src": "/images/stamps/stamp_sapporo-shizuoka-factory.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 21,
+  "src": "/images/stamps/stamp_shizuoka-tea-fields.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 22,
+  "src": "/images/stamps/stamp_kakegawa.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 23,
+  "src": "/images/stamps/stamp_genki-sign.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 24,
+  "src": "/images/stamps/stamp_hamanako.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 25,
+  "src": "/images/stamps/stamp_hamanako-fuji.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 26,
+  "src": "/images/stamps/stamp_toyohashi-tateiwa.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 27,
+  "src": "/images/stamps/stamp_mikawa-oshima.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 28,
+  "src": "/images/stamps/stamp_nichiban-anjo.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 29,
+  "src": "/images/stamps/stamp_nagoya-station-skyline.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 30,
+  "src": "/images/stamps/stamp_kirin-beer-factory.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 31,
+  "src": "/images/stamps/stamp_kiyosu.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 32,
+  "src": "/images/stamps/stamp_solar-ark.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 33,
+  "src": "/images/stamps/stamp_gifu-hashima-mahalo.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 34,
+  "src": "/images/stamps/stamp_gifu-castle.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 35,
+  "src": "/images/stamps/stamp_kinshozan.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ }
+]

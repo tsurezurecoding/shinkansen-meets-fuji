@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="新幹線の窓の紹介PV。車窓を知り、楽しみ、旅を記録する使い方を紹介します。">
+<meta name="color-scheme" content="light">
+<title>窓を見る時間へ。｜新幹線の窓</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="pv-base.css?v=20bba61d">
+<link rel="stylesheet" href="film.css?v=724848e5">
+
+<link rel="stylesheet" href="player.css?v=277bd61b">
+<link rel="stylesheet" href="embed.css?v=6f53ef6b">
+<link rel="stylesheet" href="cinema.css?v=c0bd6e19"><link rel="stylesheet" href="night-cut.css?v=4d821c61">
+</head>
+<body class="cinema">
+<a class="skip-link" href="#main">PVへ / Skip to film</a>
+
+<main id="main">
+
+  <section class="player" aria-label="紹介PV" aria-busy="true">
+    <div class="screen">
+      <div id="frame" aria-hidden="true"><div id="stage">
+  <div id="bg"></div>
+  <div id="vignette"></div>
+
+  <!-- tiles of S6 (separate windows) -->
+  <div class="tile" id="tile2"><img id="tea" src="assets/photos/tea-fields.webp" alt=""></div>
+  <div class="bar" id="bar2"></div>
+  <div class="tile" id="tile3"><img id="toji3" src="assets/photos/toji.webp" alt=""></div>
+  <div class="bar" id="bar3"></div>
+
+  <!-- the one morphing rect: shadow, clipped contents, bezel -->
+  <div id="phoneShadow"></div>
+  <div class="clip" id="cHome"><div class="cap" id="homeBox"><img data-src="assets/ui/ja-home.webp" data-en="assets/ui/en-home.webp" alt=""></div></div>
+  <div class="clip" id="c0913"><img class="photo" id="p0913" src="assets/photos/fuji-window.webp" alt=""></div>
+  <div class="clip" id="cForm"><div class="cap" id="formBox"><img id="formImg" data-src="assets/ui/ja-start-timeline.webp" data-en="assets/ui/en-start-timeline.webp" alt=""></div></div>
+  <div class="clip" id="cRow"><div class="cap" id="rowBox"><img id="rowImg" data-src="assets/ui/ja-timeline-fuji.webp" data-en="assets/ui/en-timeline-fuji.webp" alt=""></div></div>
+  <div class="clip" id="cLive"><div class="cap" id="liveBox" style="background:#081521"></div></div>
+  <div class="clip" id="c0211"><img class="photo" id="p0211" src="assets/photos/fuji-snow.webp" alt=""></div>
+  <div class="clip" id="cToji"><img class="photo" id="pToji" src="assets/photos/toji.webp" alt=""></div>
+  <div class="clip" id="cStamps"><div class="cap" id="stampsBox"><img data-src="assets/ui/ja-stamps.webp" data-en="assets/ui/en-stamps.webp" alt=""></div></div>
+  <div class="clip" id="cCoral"><div style="position:absolute;inset:0;background:#e8704a"></div></div>
+  <div id="bezel"></div>
+  <div id="cam"></div>
+
+  <!-- scrims over photos -->
+  <div class="scrim" id="scrimL"></div>
+  <div class="scrim" id="scrimB"></div>
+
+  <!-- S1 -->
+  <div class="t eb" id="s1eb" style="left:120px;top:180px;color:#f3b59f"></div>
+  <div class="lines hd" id="s1l1" style="left:120px;top:236px;font-size:88px;color:#faf6ef"></div>
+  <div class="lines hd" id="s1l2" style="left:120px;top:348px;font-size:88px;color:#faf6ef"></div>
+  <div class="t credit" id="credit" style="color:rgba(255,255,255,.75)"></div>
+
+  <!-- S2 -->
+  <div class="lines" id="s2lock" style="left:120px;top:230px">
+    <span class="ln"><span style="display:inline-flex;align-items:center;gap:28px">
+      <span id="markTile" style="display:grid;place-items:center;width:112px;height:112px;border-radius:31px;background:#e8704a;color:#fff;font:600 64px var(--serif)"></span>
+      <span class="hd" id="wordmark" style="font-size:104px;color:#faf6ef;line-height:1.1"></span>
+    </span></span>
+  </div>
+  <div class="lines hd" id="s2def" style="left:120px;top:400px;font-size:88px;color:rgba(255,255,255,.92);line-height:1.25"></div>
+  <div class="t" id="s2count" style="left:120px;top:650px;color:#faf6ef">
+    <span class="hd" id="count" style="display:inline-block;width:190px;text-align:right;font-size:150px;font-variant-numeric:tabular-nums;line-height:1"></span><span class="hd" id="countUnit" style="font-size:72px;margin-left:10px"></span>
+  </div>
+  <div class="t" id="s2label" style="left:420px;top:752px;font:700 36px var(--sans);color:rgba(255,255,255,.75)"></div>
+
+  <!-- S3 -->
+  <div class="t eb" id="s3eb" style="left:120px;top:170px;color:#bf4d31"></div>
+  <div class="lines hd" id="s3h" style="left:120px;top:225px;font-size:80px;color:#16202e;line-height:1.3"></div>
+  <div class="ring" id="rowRing"></div>
+  <div id="tag">
+    <div class="thumb"><img src="assets/photos/fuji-snow.webp" alt=""></div>
+    <div class="t" style="left:210px;top:30px;color:#16202e"><span class="hd" id="tagTime" style="font-size:72px;font-variant-numeric:tabular-nums;line-height:1"></span><span id="tagSuffix"></span><span class="hd" id="tagName" style="font-size:72px;margin-left:32px;line-height:1"></span></div>
+    <div class="pill2" id="tagSeat" style="position:absolute;left:210px;top:118px;height:60px;padding:0 26px;font-size:40px;background:#16202e;color:#fff"></div>
+  </div>
+  <div class="t" id="caveat3" style="left:120px;top:750px;font:500 26px var(--sans);color:#54616c"></div>
+  <div class="tap" id="tap"></div>
+
+  <!-- S4 -->
+  <div class="t eb" id="s4eb" style="left:120px;top:170px;color:#f3b59f"></div>
+  <div class="lines hd" id="s4h" style="left:120px;top:225px;font-size:80px;color:#faf6ef;line-height:1.3"></div>
+  <div class="t" id="s4audio" style="left:120px;top:236px;height:44px">
+    <div id="bars" style="position:absolute;left:0;top:0;width:100px;height:44px"></div>
+    <span id="audioLabel" style="position:absolute;left:120px;top:2px;font:700 30px var(--sans);color:#f3b59f;white-space:nowrap"></span>
+  </div>
+  <div class="lines hd" id="s4sub" style="left:120px;top:300px;font-size:80px;color:#faf6ef;line-height:1.3"></div>
+  <div class="pill2 t" id="s4pill" style="left:120px;top:530px;height:64px;padding:0 28px;font-size:40px;background:#faf6ef;color:#16202e"></div>
+  <div class="t" id="s4cdl" style="left:120px;top:650px;font:700 36px var(--sans);color:rgba(255,255,255,.75)"></div>
+  <div class="t" id="s4cd" style="left:120px;top:700px;height:170px;overflow:hidden;font:800 150px/1.1 var(--sans);font-variant-numeric:tabular-nums;color:#e5b45a"><span id="cdDigits" style="display:inline-block"></span></div>
+  <div class="ring" id="dotRing"></div>
+
+  <!-- S5 -->
+  <div class="lines hd" id="s5h" style="left:120px;top:200px;font-size:96px;color:#fff;line-height:1.25;text-shadow:0 2px 24px rgba(16,28,44,.35)"></div>
+  <div class="t" id="s5cap" style="left:120px;top:926px;color:#fff;text-shadow:0 2px 18px rgba(16,28,44,.35)">
+    <span class="hd" id="capTime" style="font-size:52px;font-variant-numeric:tabular-nums"></span><span id="capSuffix"></span><span class="hd" id="capName" style="font-size:52px;margin:0 24px"></span><span class="pill2" id="capSeat" style="height:52px;padding:0 22px;font-size:36px;background:#faf6ef;color:#16202e;text-shadow:none;vertical-align:10px"></span>
+  </div>
+  <div class="t" id="s5cav" style="left:120px;top:1010px;font:500 24px var(--sans);color:rgba(255,255,255,.85)"></div>
+
+  <!-- S6 -->
+  <div class="t eb" id="s6eb" style="left:120px;top:110px;color:#f3b59f"></div>
+  <div class="lines hd" id="s6h" style="left:120px;top:150px;font-size:80px;color:#faf6ef"></div>
+  <div class="t" id="s6sub" style="left:120px;top:258px;font:500 40px var(--sans);color:rgba(255,255,255,.8)"></div>
+  <div class="t" id="tc1" style="left:120px;top:650px"></div>
+  <div class="t" id="tc2" style="left:700px;top:650px"></div>
+  <div class="t" id="tc3" style="left:1280px;top:650px"></div>
+  <div id="rail" style="position:absolute;left:120px;top:880px;height:1.5px;background:rgba(255,255,255,.35)"></div>
+  <div class="t" id="railA" style="left:120px;top:902px;font:700 36px var(--sans);color:rgba(255,255,255,.85)"></div>
+  <div class="t" id="railB" style="right:120px;top:902px;font:700 36px var(--sans);color:rgba(255,255,255,.85)"></div>
+  <div id="railDots"></div>
+
+  <!-- S7 -->
+  <div class="t eb" id="s7eb" style="left:120px;top:170px;color:#bf4d31"></div>
+  <div class="lines hd" id="s7h" style="left:120px;top:225px;font-size:80px;color:#16202e;line-height:1.3"></div>
+  <div class="stamp200" id="st1"><img src="assets/stamps/stamp_fuji.svg" alt=""></div>
+  <div class="stamp200" id="st2"><img src="assets/stamps/stamp_fujikawa-bridge.svg" alt=""></div>
+  <div class="stamp200" id="st3"><img src="assets/stamps/stamp_ibuki.svg" alt=""></div>
+  <div class="ring" id="stampRing"></div>
+
+  <!-- S8 -->
+  <div class="t hd" id="water" style="font-size:640px;line-height:1;color:rgba(255,255,255,.09)">窓</div>
+  <div class="t" id="s8eb" style="left:0;width:1920px;text-align:center;top:150px;font:800 26px var(--sans);letter-spacing:.22em;color:rgba(255,255,255,.72)"></div>
+  <div class="lines hd" id="s8h" style="left:0;width:1920px;text-align:center;top:200px;font-size:88px;color:#fff;line-height:1.28"></div>
+  <div class="t" id="s8lock" style="left:0;width:1920px;top:470px;display:flex;justify-content:center;align-items:center;gap:28px">
+    <span id="sealTile" style="display:grid;place-items:center;width:112px;height:112px;border-radius:31px;background:#fff;color:#e8704a;font:600 64px var(--serif)"></span>
+    <span class="hd" id="s8word" style="font-size:72px;color:#fff"></span>
+  </div>
+  <div class="t" id="s8url" style="left:0;width:1920px;top:640px;display:flex;justify-content:center">
+    <span id="urlPill" style="display:inline-block;background:#081521;border-radius:999px;padding:14px 64px 22px;box-shadow:0 16px 40px rgba(88,29,15,.2);font:700 80px/1.2 var(--sans);letter-spacing:.01em;color:#fff"></span>
+  </div>
+  <div class="t" id="s8foot" style="left:0;width:1920px;text-align:center;top:1002px;font:500 24px var(--sans);color:rgba(255,255,255,.85)"></div>
+</div></div>
+      <div id="static-stage" aria-hidden="true"></div>
+      <a id="end-link" class="end-link" href="https://www.michikusa-travel.com/" hidden aria-label="新幹線の窓を開く"></a>
+      <div class="loading" id="loading" role="status"><span class="loading-mark">窓</span><p id="loading-text">旅の準備をしています…</p></div>
+    </div>
+    <div class="controls">
+      <label class="sr-only" for="seek">再生位置 / Playback position</label><input id="seek" type="range" min="0" max="43" step="0.0333333333333333" value="0" disabled>
+      <div class="control-row"><button id="play" class="play" type="button" disabled>再生</button><output id="time">00:00 / 00:43</output><div class="control-spacer"></div><button id="sound" type="button" aria-pressed="false" disabled>音なし</button><button id="replay" type="button" disabled>もう一度</button></div>
+    </div>
+  </section>
+  <section class="caption" aria-label="シーンの文言">
+    <p class="caption-index"><span id="scene-no">01 / 08</span><span id="scene-label">WINDOW TIME</span></p>
+    <div class="caption-body"><h2 id="caption-title"></h2><p id="caption-detail"></p><a id="visit" class="visit" href="https://www.michikusa-travel.com/" hidden>新幹線の窓へ ↗</a></div>
+  </section>
+  <p id="motion-note" class="motion-note" hidden>動きを抑えた静止カードで再生しています。</p>
+
+  <details class="transcript"><summary id="transcript-title">シーンを選ぶ・文言を読む</summary><ol id="scene-list"></ol></details>
+  <p class="credits" id="credits">写真：michikusa ｜ 地図：© OpenStreetMap contributors<br>※時刻はのぞみ基準の目安です</p>
+</main>
+
+<noscript><p style="padding:24px">PVの再生にはJavaScriptを有効にしてください。<a href="https://www.michikusa-travel.com/">新幹線の窓へ</a></p></noscript>
+<script src="assets/assets-data.js?v=18486bf4"></script>
+
+<script src="scenes.js?v=6a54a80d"></script>
+<script src="pv-engine.js?v=2bfe4981"></script>
+<script src="film.js?v=68b3ce16"></script>
+<script src="cinema.js?v=e3ff0c2a"></script><script src="night-cut.js?v=3f645858"></script>
+<script src="player.js?v=4cc53221"></script>
+<script src="embed.js?v=825fe26f"></script>
+</body>
+</html>

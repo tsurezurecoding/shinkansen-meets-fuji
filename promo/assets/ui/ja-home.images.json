@@ -1,0 +1,58 @@
+[
+ {
+  "i": 0,
+  "src": "/images/thumbs/20240211_Mt.Fuji.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 1,
+  "src": "/images/thumbs/20260516_hamanako_seaside_1_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 2,
+  "src": "/images/thumbs/20260712_kakegawa_castle_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 3,
+  "src": "/images/thumbs/20260530_ibukiyama_2_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 4,
+  "src": "/images/thumbs/20260712_toji_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 5,
+  "src": "/images/stamps/stamp_fuji.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 6,
+  "src": "/images/stamps/stamp_hamanako.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 7,
+  "src": "/images/stamps/stamp_kiyosu.svg",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ }
+]

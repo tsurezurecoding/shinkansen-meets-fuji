@@ -1,0 +1,13 @@
+{
+ "train": "Nozomi-1",
+ "row": "Mt. Fuji",
+ "rect": {
+  "x": 70,
+  "y": 299.84375,
+  "w": 280,
+  "h": 136.484375,
+  "cls": "tl-card tl-card-button",
+  "text": "06:44 頃 🗻 Mt. Fuji Classic Seat E"
+ },
+ "dpr": 3
+}
