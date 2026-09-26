@@ -1,0 +1,44 @@
+[
+ {
+  "i": 17,
+  "src": "/images/thumbs/20260904_mishima_catapult_1_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 18,
+  "src": "/images/thumbs/20260804_fujipipe_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 19,
+  "src": "/images/thumbs/20230913_fuji_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 20,
+  "src": "/images/thumbs/20260919_fuji_bus_sales_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 21,
+  "src": "/images/thumbs/20260816_fuji_paper_mills_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ },
+ {
+  "i": 22,
+  "src": "/images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ }
+]

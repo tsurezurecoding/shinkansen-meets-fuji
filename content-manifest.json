@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "804abffe61793384",
+  "contentVersion": "57d03e9f432e7810",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -115,8 +115,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 56881,
-      "sha256": "7560fd81fff8a4ad7e0d80e0f0e7d918346e346df4654037d77edea4bd2e58b3"
+      "bytes": 57184,
+      "sha256": "8e6069abe29fbbae2bb32d504a157917dbc580ed0320c8bf9a5f6b9a646d0b12"
     },
     {
       "path": "en/sparkling-dreams.html",
@@ -313,8 +313,20 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 60864,
-      "sha256": "1abd1a130e5c49fb8383292cd975f49163121d04c23b99ee4ad91dc90c83f5a2"
+      "bytes": 61246,
+      "sha256": "10371c5f80de259341fa7075a4fa7c987e7d69062b6895c98ff2155c5634e8f0"
+    },
+    {
+      "path": "intro-film.css",
+      "url": "https://www.michikusa-travel.com/intro-film.css",
+      "bytes": 2155,
+      "sha256": "37e8dc537dad69757341fc5f8513bcdcebe74bdb01d9a22f2aa830a34d878890"
+    },
+    {
+      "path": "intro-film.js",
+      "url": "https://www.michikusa-travel.com/intro-film.js",
+      "bytes": 4312,
+      "sha256": "6aae3d4074390d7009730e53a84155e9f241b0cd6de0bf64130577a1efcd3174"
     },
     {
       "path": "journal.html",
@@ -327,6 +339,312 @@
       "url": "https://www.michikusa-travel.com/live/narration.js",
       "bytes": 70449,
       "sha256": "10aacbc508ad69ab7cf54d41e34e1fae66e5df9588f8f95e4b0b9e15e60ad792"
+    },
+    {
+      "path": "promo/assets/assets-data.js",
+      "url": "https://www.michikusa-travel.com/promo/assets/assets-data.js",
+      "bytes": 625,
+      "sha256": "18486bf405e5d0eef3730f137ff95f7dc97fa57709bb35b4b36ac580e34f593c"
+    },
+    {
+      "path": "promo/assets/photos/castle-night.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/castle-night.webp",
+      "bytes": 58736,
+      "sha256": "dc23e32da525f3e4669ed361e2505d0c8a9f6a5dcf6bb099e6a98149b81eb8d3"
+    },
+    {
+      "path": "promo/assets/photos/chikyu-night.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/chikyu-night.webp",
+      "bytes": 62624,
+      "sha256": "5347701677a63f257f5df3c68d2aceac9ed097bcb63eb3ca25ea164daeb86406"
+    },
+    {
+      "path": "promo/assets/photos/fuji-snow.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/fuji-snow.webp",
+      "bytes": 132804,
+      "sha256": "95913a273c65535462dd5e27fb4b2170c89d32d460b32b35267b19821004cf84"
+    },
+    {
+      "path": "promo/assets/photos/fuji-window.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/fuji-window.webp",
+      "bytes": 144252,
+      "sha256": "7e3c5aabb014fcd7ea70add159e310f217209f195073fa977c86dd4791127658"
+    },
+    {
+      "path": "promo/assets/photos/tea-fields.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/tea-fields.webp",
+      "bytes": 277528,
+      "sha256": "519e3a6b233c13c692dc1d256363afb3a484482e9eb7fcaa55d1e498693a4d4c"
+    },
+    {
+      "path": "promo/assets/photos/toji.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/toji.webp",
+      "bytes": 66992,
+      "sha256": "b6294b7497ab71f3a65cc40a86c64aa97ba7bd5fac5e0618a2e06eb3906d0d79"
+    },
+    {
+      "path": "promo/assets/photos/tower-night-alt.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/photos/tower-night-alt.webp",
+      "bytes": 44654,
+      "sha256": "71af276ce37f866ea958e4a86fcb8f190ff88364cfabdb298592d7b67a52f736"
+    },
+    {
+      "path": "promo/assets/stamps/stamp_fuji.svg",
+      "url": "https://www.michikusa-travel.com/promo/assets/stamps/stamp_fuji.svg",
+      "bytes": 1828,
+      "sha256": "dddb45caf4985e6f24916726d5a099a8588fd12d57142818760227745463e3e1"
+    },
+    {
+      "path": "promo/assets/stamps/stamp_fujikawa-bridge.svg",
+      "url": "https://www.michikusa-travel.com/promo/assets/stamps/stamp_fujikawa-bridge.svg",
+      "bytes": 2268,
+      "sha256": "d109a3884f79d5fb6e27d7d3c1ed2f78d7d01e7c5a0861d09a22888e17103faf"
+    },
+    {
+      "path": "promo/assets/stamps/stamp_ibuki.svg",
+      "url": "https://www.michikusa-travel.com/promo/assets/stamps/stamp_ibuki.svg",
+      "bytes": 1685,
+      "sha256": "c23267eab096ff956edba46d7a3f11909f576154562706ef11a0db98f4c6a570"
+    },
+    {
+      "path": "promo/assets/ui/en-home.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-home.webp",
+      "bytes": 91132,
+      "sha256": "5a8b1c960bd2419d93aa1e2a2bc85b8c6fa4940b798414836ddaaddcbc8d5671"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta00.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta00.webp",
+      "bytes": 103436,
+      "sha256": "7a8cd8d3885fdb65d077ef164e7bc198f618458df4996e1413885ebc02088f0f"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta01.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta01.webp",
+      "bytes": 103320,
+      "sha256": "a947d013972e2facf8d62ff8025b7f83565579e17b780285e3ae985b35a079d0"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta02.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta02.webp",
+      "bytes": 103522,
+      "sha256": "1c322a3401c1169d9e23b573fdf70b0bd4b5af4073ba647a4698e4a801d18646"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta03.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta03.webp",
+      "bytes": 103568,
+      "sha256": "5eb22d5afd0a467afecfcb371a524d6089d4d7ff9490566d179766d2f429820a"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta04.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta04.webp",
+      "bytes": 103876,
+      "sha256": "0b563ceed30acdcbded4996cad6fec18a6d7b1fdc63323fafc3e6594faacc2d4"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta05.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta05.webp",
+      "bytes": 103868,
+      "sha256": "c0a8f85dfefe438bb4defd2a0e6e421fe557333cc3cb7adf2c11c0ad35bc5a60"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta06.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta06.webp",
+      "bytes": 104152,
+      "sha256": "857ed084fec238d3bfbb65029c8a1c0a4a779c1bd6bc0a0d58a0fa1b57c4ccbf"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta07.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta07.webp",
+      "bytes": 104848,
+      "sha256": "722e853900b892a4a4e8db8f552db597b8dd0b1282ca4cf80b3bd7adedfede05"
+    },
+    {
+      "path": "promo/assets/ui/en-live-fuji-eta08.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-live-fuji-eta08.webp",
+      "bytes": 105088,
+      "sha256": "072d579b6ea99588dd3c530726a31cc35e37b20d5b1aef749af38f28f874deaa"
+    },
+    {
+      "path": "promo/assets/ui/en-stamps.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-stamps.webp",
+      "bytes": 109624,
+      "sha256": "3cee94f0d0874bb80ba6ea32547c65d073c38918335e753e0199190916cc3960"
+    },
+    {
+      "path": "promo/assets/ui/en-start-timeline.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-start-timeline.webp",
+      "bytes": 49290,
+      "sha256": "59f550e7ffdcc3306a327dac537dc9cbd28ba3ad46e2091330b89934630ba5d8"
+    },
+    {
+      "path": "promo/assets/ui/en-timeline-fuji.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/en-timeline-fuji.webp",
+      "bytes": 78518,
+      "sha256": "9b82bb6ebbf8713059318b988d4e1039d61385b8f9c24bf32da0264d6ed10e6d"
+    },
+    {
+      "path": "promo/assets/ui/ja-home.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-home.webp",
+      "bytes": 85646,
+      "sha256": "59b278d59a077d1eb8764633e1c3ab60165956ec478585c56a694f5ec82c0047"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta00.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta00.webp",
+      "bytes": 106176,
+      "sha256": "3061202da4242a8d0f2751a014d7e96d930ac086f714a1f2e721c1c737ec184c"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta01.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta01.webp",
+      "bytes": 106310,
+      "sha256": "013d3826b3d651624fe18e5d72c1675ad0e841678c0dd1b41ef3dbc25efcb6cc"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta02.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta02.webp",
+      "bytes": 106888,
+      "sha256": "770bcaf2d4bb9a045e3f51013199df130700fc2ec4595942c3e5e0a6a19551e2"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta03.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta03.webp",
+      "bytes": 106704,
+      "sha256": "14ea0a1758b5470602a65bc7ccf08acb9eb553ff6915efbaad2279b8202d9777"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta04.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta04.webp",
+      "bytes": 106752,
+      "sha256": "f1f84e235d3b6beb84e05554310e14ec7a90f292b355727b79194a2067d14ccb"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta05.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta05.webp",
+      "bytes": 107522,
+      "sha256": "257a99eccbd8c8b07b119f3d39b568af451971b40a74eed9be12711e43ded136"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta06.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta06.webp",
+      "bytes": 107410,
+      "sha256": "d5f9bc424eba2e6d2b4d2998c89c18992f3ce4f3862d87e054e4cce801cb86bd"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta07.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta07.webp",
+      "bytes": 107206,
+      "sha256": "c2fff0fd84aaf60e91c695f1979238976c04ad6a1dc0a13ca7768fb55b16febe"
+    },
+    {
+      "path": "promo/assets/ui/ja-live-fuji-eta08.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-live-fuji-eta08.webp",
+      "bytes": 108784,
+      "sha256": "39d6365670196c5eab18ed711ab9b1d7093eda221f958b1d260a16d8c0f038b4"
+    },
+    {
+      "path": "promo/assets/ui/ja-stamps.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-stamps.webp",
+      "bytes": 103086,
+      "sha256": "61f8151855e15076d7bca23a20fc698b758f08b602417d5c1061527a96d913b0"
+    },
+    {
+      "path": "promo/assets/ui/ja-start-timeline.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-start-timeline.webp",
+      "bytes": 55596,
+      "sha256": "0c68cc479d83fa3dcaa06e8eeb87f135b583708aaf74b691253c22e2c4373014"
+    },
+    {
+      "path": "promo/assets/ui/ja-timeline-fuji.webp",
+      "url": "https://www.michikusa-travel.com/promo/assets/ui/ja-timeline-fuji.webp",
+      "bytes": 76814,
+      "sha256": "0c0ce851a81c89b59e34e5a91af6ac468f807435dec37e5a3e568592ce23febe"
+    },
+    {
+      "path": "promo/cinema.css",
+      "url": "https://www.michikusa-travel.com/promo/cinema.css",
+      "bytes": 5505,
+      "sha256": "c0bd6e1995226bfa6bff618ac606dc3c27946b47d1b5c0e4a94ba378ec5cb468"
+    },
+    {
+      "path": "promo/cinema.js",
+      "url": "https://www.michikusa-travel.com/promo/cinema.js",
+      "bytes": 3062,
+      "sha256": "e3ff0c2aa6e9029a9666197adcd34afae2925e4a5bf2d79e623283004adce476"
+    },
+    {
+      "path": "promo/embed.css",
+      "url": "https://www.michikusa-travel.com/promo/embed.css",
+      "bytes": 555,
+      "sha256": "017bb61ce65496a39c98cea988e11cc9fb5968c66a955f91ffff7bae64349583"
+    },
+    {
+      "path": "promo/embed.js",
+      "url": "https://www.michikusa-travel.com/promo/embed.js",
+      "bytes": 1365,
+      "sha256": "ddf229e07ec4adf91ded4d76db268a1b3c7f606fa090e31c630815605f3cb0da"
+    },
+    {
+      "path": "promo/film.css",
+      "url": "https://www.michikusa-travel.com/promo/film.css",
+      "bytes": 2397,
+      "sha256": "724848e59712a264e8cd5026df2757ac9877b2417e97a2441b072b8776a78195"
+    },
+    {
+      "path": "promo/film.js",
+      "url": "https://www.michikusa-travel.com/promo/film.js",
+      "bytes": 28956,
+      "sha256": "db44749add9d5b78e56ad9745a1c5fde8c25c9e5fbe831a9793ca7afb1797686"
+    },
+    {
+      "path": "promo/night-cut.css",
+      "url": "https://www.michikusa-travel.com/promo/night-cut.css",
+      "bytes": 1136,
+      "sha256": "4d821c61ebdd68fec681868ecaff4af777b3c69c754b8b07358010042ff47c65"
+    },
+    {
+      "path": "promo/night-cut.js",
+      "url": "https://www.michikusa-travel.com/promo/night-cut.js",
+      "bytes": 3561,
+      "sha256": "5eaf3eb78a3f160c94474c67e663fc2bc951104faac6ea6663ad3e40dde7ccc8"
+    },
+    {
+      "path": "promo/player.css",
+      "url": "https://www.michikusa-travel.com/promo/player.css",
+      "bytes": 7920,
+      "sha256": "277bd61bfb9c122f47bc02d339e27b5001dec9ede42d13c1b861ebcd7f2377b1"
+    },
+    {
+      "path": "promo/player.html",
+      "url": "https://www.michikusa-travel.com/promo/player.html",
+      "bytes": 12121,
+      "sha256": "fbf1a91e6166bab0ad0a322f0be7e74d23cc86abfa766b510008ed5229340aca"
+    },
+    {
+      "path": "promo/player.js",
+      "url": "https://www.michikusa-travel.com/promo/player.js",
+      "bytes": 13738,
+      "sha256": "4cc5322110316cd5c3eb258e2fa1a27b560fab1aa4e7b71eb1572302f89b1d2c"
+    },
+    {
+      "path": "promo/pv-base.css",
+      "url": "https://www.michikusa-travel.com/promo/pv-base.css",
+      "bytes": 5770,
+      "sha256": "20bba61d950465a4b8e72b63b4a686faaf90ee64137c1e047d2179bec82634a7"
+    },
+    {
+      "path": "promo/pv-engine.js",
+      "url": "https://www.michikusa-travel.com/promo/pv-engine.js",
+      "bytes": 14486,
+      "sha256": "2bfe49815703de3cab2485b93417345a6292138c2c376f546293958620917243"
+    },
+    {
+      "path": "promo/scenes.js",
+      "url": "https://www.michikusa-travel.com/promo/scenes.js",
+      "bytes": 4169,
+      "sha256": "6a54a80d14f0ffe66d7aeacb67f82e3ff2e2417383aea0822a740186a74d62aa"
     },
     {
       "path": "sparkling-dreams.html",

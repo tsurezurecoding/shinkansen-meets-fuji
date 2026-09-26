@@ -1,0 +1,51 @@
+[
+ {
+  "i": 0,
+  "src": "https://tile.openstreetmap.org/12/3626/1619.png",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 1,
+  "src": "https://tile.openstreetmap.org/12/3626/1620.png",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 2,
+  "src": "https://tile.openstreetmap.org/12/3625/1619.png",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 3,
+  "src": "https://tile.openstreetmap.org/12/3627/1619.png",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 4,
+  "src": "https://tile.openstreetmap.org/12/3625/1620.png",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 5,
+  "src": "https://tile.openstreetmap.org/12/3627/1620.png",
+  "isPhoto": false,
+  "mine": false,
+  "action": "keep"
+ },
+ {
+  "i": 6,
+  "src": "/images/20230913_fuji_michikusa.jpg",
+  "isPhoto": true,
+  "mine": true,
+  "action": "keep"
+ }
+]

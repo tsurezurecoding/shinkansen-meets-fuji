@@ -1466,6 +1466,10 @@ function englishLandingHTML() {
       '<meta name="viewport" content="width=device-width, initial-scale=1">\n  <base href="../">',
     );
 
+  html = html.replace('promo/player.html?film=ja', 'promo/player.html?film=en')
+    .replace('<span class="copy-chunk">1分でわかる、</span><span class="copy-chunk">新幹線の窓</span>', 'Discover Shinkansen Window in a minute')
+    .replaceAll('50以上の景色の時刻が並ぶ', '50+ views in a timed list')
+    .replaceAll('50以上の景色を見てみる', 'Explore 50+ views');
   // Keep the Japanese TOP editorial changes out of the English edition in this batch.
   html = html.replaceAll("<span class=\"copy-chunk\">降りたあとに調べ、</span><span class=\"copy-chunk\">思い出を残す。</span>", "<span class=\"copy-chunk\">降りたあとに思い出を残す。</span>");
   html = html.replaceAll("<span class=\"copy-chunk\">あの看板、</span><span class=\"copy-chunk\">何だろう。</span>", "<span class=\"copy-chunk\">何度も乗るなら、</span><span class=\"copy-chunk\">車窓スタンプを集める。</span>");

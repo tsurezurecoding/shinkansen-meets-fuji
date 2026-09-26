@@ -1,0 +1,10 @@
+main {max-width:none;padding:0 16px 16px}
+.player,.screen {border-radius:0}
+.player {box-shadow:none}
+.caption {padding:18px 4px;min-height:0;gap:20px;grid-template-columns:160px 1fr}
+.caption h2 {font-size:23px}
+.credits {margin:18px 4px 0}
+.transcript {margin-top:16px}
+#s2count #count {width:270px!important;font-size:150px;text-align:left!important}
+body.cinema #stage #s2label {left:120px!important;top:890px!important}
+@media(max-width:640px){main{padding:0 8px 12px}.caption{display:block;min-height:0;padding:18px 4px}.caption h2{font-size:21px}}

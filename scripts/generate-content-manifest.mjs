@@ -13,6 +13,8 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "intro-film.js", "intro-film.css",
+  ...await walkFiles("promo", p => /\.(?:html|js|css|webp|svg)$/.test(p)),
   "ferris-wheels.html",
   "en/ferris-wheels.html",
   "ferris-wheels.css",
