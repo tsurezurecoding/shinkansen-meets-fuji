@@ -12,22 +12,22 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">オオサカホイール</text>
+<text x="100" y="52" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">オオサカホイール</text>
 
 <g fill="none" stroke-width="2.5">
-<ellipse cx="100" cy="88" rx="15" ry="36"/>
-<ellipse cx="100" cy="88" rx="9" ry="28" stroke-width="1.6"/>
-<circle cx="100" cy="88" r="3.5"/>
-<path d="M90 124 L100 88 L110 124"/>
+<ellipse cx="100" cy="94" rx="14" ry="32"/>
+<ellipse cx="100" cy="94" rx="8.5" ry="25" stroke-width="1.6"/>
+<circle cx="100" cy="94" r="3.5"/>
+<path d="M90 126 L100 94 L110 126"/>
 <path d="M86 132 H114"/>
 </g>
 <g fill="none" stroke-width="1.4">
-<path d="M103.5 88.0 L109.0 88.0"/><path d="M102.5 90.5 L106.4 107.8"/><path d="M100.0 91.5 L100.0 116.0"/><path d="M97.5 90.5 L93.6 107.8"/><path d="M96.5 88.0 L91.0 88.0"/><path d="M97.5 85.5 L93.6 68.2"/><path d="M100.0 84.5 L100.0 60.0"/><path d="M102.5 85.5 L106.4 68.2"/>
+<path d="M103.5 94.0 L108.5 94.0"/><path d="M102.5 96.5 L106.0 111.7"/><path d="M100.0 97.5 L100.0 119.0"/><path d="M97.5 96.5 L94.0 111.7"/><path d="M96.5 94.0 L91.5 94.0"/><path d="M97.5 91.5 L94.0 76.3"/><path d="M100.0 90.5 L100.0 69.0"/><path d="M102.5 91.5 L106.0 76.3"/>
 </g>
 <g fill="none" stroke-width="2">
 <path d="M48 140 H152"/>
 <path d="M52 140 V128 H68 V140 M132 140 V124 H148 V140"/>
 </g>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約143分・E席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">E席</text>
 </g>
 </svg>

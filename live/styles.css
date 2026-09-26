@@ -9,8 +9,8 @@
   --live-sub: #b3c2d8;
   --live-accent: #e8704a;    /* = --accent 夕焼けオレンジ */
   --live-accent-2: #e5b45a;  /* = --gold を夜背景用に持ち上げた値 */
-  --live-mountain: #8fc0a0;
-  --live-sea: #9dbbdd;       /* = --fuji を夜背景用に持ち上げた値 */
+  --live-seat-a: #8fc0a0;
+  --live-seat-e: #9dbbdd;       /* = --fuji を夜背景用に持ち上げた値 */
   --live-danger: #ff6b6b;
   --live-radius: 18px;       /* = --radius */
 }
@@ -73,7 +73,7 @@ body.live-page {
   text-overflow: ellipsis;
 }
 
-.tb-status.ok { color: var(--live-mountain); }
+.tb-status.ok { color: var(--live-seat-a); }
 .tb-status.warn { color: var(--live-accent-2); }
 .tb-status.err { color: var(--live-danger); }
 
@@ -465,10 +465,10 @@ body.live-page.is-idle #sheet {
   color: #08131f;
 }
 
-.side-badge.E { background: var(--live-mountain); }
-.side-badge.A { background: var(--live-sea); }
+.side-badge.E { background: var(--live-seat-e); }
+.side-badge.A { background: var(--live-seat-a); }
 .side-badge.both {
-  background: linear-gradient(90deg, var(--live-sea) 0 50%, var(--live-mountain) 50% 100%);
+  background: linear-gradient(90deg, var(--live-seat-a) 0 50%, var(--live-seat-e) 50% 100%);
 }
 
 #upcoming {
@@ -541,7 +541,7 @@ body.live-page.is-idle #sheet {
   color: var(--live-sub);
 }
 
-.pa-row .ok { color: var(--live-mountain); }
+.pa-row .ok { color: var(--live-seat-a); }
 
 #idle-panel {
   text-align: left;

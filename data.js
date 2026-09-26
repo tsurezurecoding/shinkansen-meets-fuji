@@ -659,6 +659,236 @@ const REFERENCES = {
 
 const SPOTS = [
   {
+    "id": "edo-castle-fujimi-yagura",
+    "icon": "🏯",
+    "ja": {
+      "name": "江戸城の富士見櫓",
+      "area": "東京 → 品川（東京駅のすぐ南）",
+      "hook": "都心のすきまに、江戸の櫓。",
+      "story": "東京駅のすぐ南、E席側のビルのすきまから白い櫓がのぞきます。皇居に残る江戸城の富士見櫓です。大きな天守を探すのではなく、通りの奥に小さく重なる白壁と屋根が目印。東京から乗るなら発車直後、東京へ向かうなら到着直前の一瞬です。"
+    },
+    "en": {
+      "name": "Edo Castle's Fujimi Turret",
+      "area": "Tokyo → Shinagawa (just south of Tokyo Station)",
+      "hook": "A castle turret between the towers.",
+      "story": "Just south of Tokyo Station, a pale turret appears through a gap in the buildings on the Seat E side. This is Fujimi-yagura, a surviving turret of Edo Castle within the Imperial Palace grounds. Look down the street for small white walls and layered roofs. It is a brief view just after departure from Tokyo, or just before arrival."
+    },
+    "pageTitle": {
+      "ja": "新幹線から見える江戸城の富士見櫓｜東京駅のすぐそばで探す | 新幹線の窓",
+      "en": "Edo Castle's Fujimi Turret from the Shinkansen | Shinkansen Window"
+    },
+    "pageHeading": {
+      "ja": "東京駅のすぐそばで、江戸城の富士見櫓を探す",
+      "en": "Spot Edo Castle's Fujimi Turret near Tokyo Station"
+    },
+    "pageHeadingChunks": {
+      "ja": [
+        "東京駅のすぐそばで、",
+        "江戸城の富士見櫓を探す"
+      ]
+    },
+    "metaDescription": {
+      "ja": "東京駅の発車直後・到着直前、E席側に一瞬見える江戸城の富士見櫓。大火から再建された櫓の歴史と、ビルの間に白壁や三重の屋根を見つける目印を紹介します。",
+      "en": "Discover Edo Castle’s Fujimi Turret near Tokyo Station: its history after the Great Fire of Meireki, and the white walls and tiered roofs to look for from Seat E."
+    },
+    "pageStory": {
+      "ja": "東京駅のそばでビルの間にのぞく白い建物は、江戸城の富士見櫓です。本丸の南の隅に立ち、高さは16m。江戸城に現存する櫓のうち、三重の屋根を持つ唯一の建物です。\n\n1657年の明暦の大火では、天守と富士見櫓がともに焼失しました。富士見櫓は2年後の1659年に再建されましたが、天守は再建されませんでした。再建された富士見櫓は、天守の代わりとしても使われました。\n\n宮内庁の案内によると、江戸時代の将軍はこの櫓から富士山や品川の海、両国の花火を眺めることもあったそうです。高層ビルのすきまに残る建物から、かつては遠い山や海まで見渡せた。その風景の変化も、東京駅近くでこの櫓を探す楽しみです。",
+      "en": "The white building glimpsed between office blocks near Tokyo Station is Fujimi-yagura, a surviving turret of Edo Castle. It stands 16 metres tall at the southern corner of the castle’s main enclosure and is the only surviving Edo Castle turret with three roof tiers.\n\nThe Great Fire of Meireki destroyed both this turret and the main keep in 1657. Fujimi-yagura was rebuilt two years later, in 1659; the main keep was never rebuilt. The rebuilt turret also served in place of the main keep.\n\nAccording to the Imperial Household Agency, shoguns sometimes watched Mount Fuji, the sea at Shinagawa and fireworks at Ryogoku from this turret. A building now glimpsed through modern office blocks once offered views of distant mountains and water. That change in the surrounding landscape adds another dimension to this brief view near Tokyo Station."
+    },
+    "sectionHeading": {
+      "ja": "江戸を見渡した富士見櫓",
+      "en": "A castle turret with a shogun’s view"
+    },
+    "explainer": {
+      "heading": {
+        "ja": "緑に浮かぶ白壁と屋根",
+        "en": "White walls and tiered roofs beyond the street"
+      },
+      "ja": [
+        "写真の中央、通りを奥へたどった先に見える白い建物が富士見櫓です。皇居の木々を背景に、白壁と灰色の屋根が段々に重なっています。周囲の四角いビルとは違う、横に張り出した屋根の形が手がかりになります。",
+        "車窓では建物の下部が木々に隠れ、手前の架線も重なります。城全体や石垣を探すより、緑の中の白い壁と屋根の輪郭に目を向けると見つけやすくなります。建物のすきまを通して見るため、見える範囲は列車の位置で大きく変わります。"
+      ],
+      "en": [
+        "Follow the street into the centre of the photograph: the small white building at its far end is Fujimi-yagura. Its white walls and grey roofs rise in tiers against the palace trees. The projecting roof edges help distinguish it from the rectangular office blocks around it.",
+        "Trees hide the lower part of the building, and railway wires cross the view. Focus on the white walls and roof outline among the greenery. This is a glimpse through a gap in the city, so the portion visible changes quickly as the train moves."
+      ]
+    },
+    "guideHighlight": {
+      "ja": "東京駅の発車直後・到着直前にE席側へ。ビルの間、通りの奥の小さな白い櫓を探します。 見える秒数は暫定の目安です。",
+      "en": "Watch Seat E just after departure from Tokyo or just before arrival. Look beyond the buildings for a small pale turret at the far end of the street. The viewing duration is a provisional estimate."
+    },
+    "minutesFromTokyo": 0.5,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 3,
+    "scene": "castle",
+    "image": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-09-24"
+    },
+    "references": [
+      {
+        "label": {
+          "ja": "宮内庁：富士見櫓",
+          "en": "Imperial Household Agency: Fujimi-yagura"
+        },
+        "url": "https://sankan.kunaicho.go.jp/multilingual/koukyo/place03.html"
+      },
+      {
+        "label": {
+          "ja": "宮内庁：園内に残る歴史的建造物と皇居附属庭園の美",
+          "en": "Imperial Household Agency: historic structures in the East Gardens (Japanese)"
+        },
+        "url": "https://www.kunaicho.go.jp/visit/higashigyoen/structures-gardens/index.html"
+      },
+      {
+        "label": {
+          "ja": "宮内庁：ようこそ皇居へ（案内図）",
+          "en": "Imperial Household Agency: illustrated palace guide (Japanese PDF)"
+        },
+        "url": "https://www.kunaicho.go.jp/wp-content/uploads/2026/03/illustrationmap-j.pdf"
+      }
+    ],
+    "map": {
+      "lat": 35.68419,
+      "lng": 139.7566,
+      "ja": "江戸城 富士見櫓",
+      "en": "Edo Castle Fujimi-yagura"
+    },
+    "viewpoint": {
+      "lat": 35.6775448,
+      "lng": 139.76584789
+    },
+    "photos": []
+  },
+
+  {
+    "id": "kaguya-no-akari",
+    "icon": "💧",
+    "ja": {
+      "name": "かぐやの灯",
+      "area": "京都 → 新大阪（向日市）",
+      "hook": "竹のまちに、配水塔。",
+      "story": "京都と新大阪のあいだ、E席側の住宅地に立つ「かぐやの灯（とう）」。向日市の上植野浄水場にある配水塔で、水の落差を利用して家庭へ水を届けています。横からは竹、上からはヒマワリを表す形。市の木と花を取り入れた、暮らしを支えるランドマークです。"
+    },
+    "en": {
+      "name": "Kaguya no To Water Tower",
+      "area": "Kyoto → Shin-Osaka (Muko)",
+      "hook": "A bamboo-shaped water tower.",
+      "story": "Kaguya no To rises above Muko’s houses on the Seat E side between Kyoto and Shin-Osaka. This water tower at Kamiueno Water Treatment Plant uses a difference in height to supply homes with water. Its design represents bamboo from the side and a sunflower from above, combining the city’s tree and flower in an everyday landmark."
+    },
+    "pageTitle": {
+      "ja": "新幹線から見えるかぐやの灯｜向日市の上植野浄水場配水塔 | 新幹線の窓",
+      "en": "Kaguya no To Water Tower from the Shinkansen | Shinkansen Window"
+    },
+    "pageHeading": {
+      "ja": "竹のかたちの配水塔、かぐやの灯",
+      "en": "Kaguya no To: a bamboo-inspired water tower"
+    },
+    "pageHeadingChunks": {
+      "ja": [
+        "竹のかたちの配水塔、",
+        "かぐやの灯"
+      ]
+    },
+    "metaDescription": {
+      "ja": "京都〜新大阪のE席側に見える「かぐやの灯（とう）」。竹とヒマワリをかたどった向日市の配水塔について、水を届ける仕組みや名前の由来、車窓で目印になる形を写真とともに紹介します。",
+      "en": "Discover Kaguya no To, Muko’s water tower: how it supplies homes, why its shape evokes bamboo and a sunflower, and what to look for from the Shinkansen."
+    },
+    "pageStory": {
+      "ja": "住宅の屋根を大きく越えて立つ塔は、向日市の上植野浄水場にある配水塔です。高さは約36m。配水池から送られてきた水を高い位置に受け、その高低差を利用して家庭などへ届けます。街の中でひときわ背が高いのは、水道を支えるためです。\n\nその形には、向日市の木である孟宗竹と、市の花であるヒマワリが取り入れられています。横からは竹、真上からはヒマワリを表すデザイン。市の水道資料には、新幹線の高架に近く、多くの人の目に触れることから、親しみを持てる姿にしたと説明されています。車窓から見られることも、この塔の形を考える理由になっていたのです。\n\n愛称の「かぐやの灯」は「かぐやのとう」と読みます。2025年に市民から名前を募り、投票を経て決まりました。かぐや姫の物語と縁のある向日市を光る竹のように照らし、人々をつなぐ存在に、という願いが込められています。水を届ける塔は、夜には市の取り組みに合わせた色のライトアップで街の目印にもなります。",
+      "en": "The tower rising well above the houses belongs to Kamiueno Water Treatment Plant in Muko. About 36 metres tall, it receives water from a distribution reservoir and uses the difference in height to deliver it to homes and other buildings. Its height serves a practical purpose in the city’s water supply.\n\nThe design combines Muko’s official tree, moso bamboo, with its official flower, the sunflower. It represents bamboo when viewed from the side and a sunflower from directly above. The city’s waterworks documents explain that its position near the elevated Shinkansen line, where many people would see it, helped inspire an approachable design. The view from a passing train was part of the thinking behind its shape.\n\nThe nickname Kaguya no To was chosen through public suggestions and a vote in 2025. It refers to Princess Kaguya, the fairy-tale figure associated with a glowing bamboo stalk, and expresses a wish for the tower to illuminate Muko and bring people together. At night, coloured lighting for city campaigns and events gives this working water tower another role as a local landmark."
+    },
+    "sectionHeading": {
+      "ja": "水を届ける高さに、竹のまちの意匠を",
+      "en": "A water tower shaped by its town"
+    },
+    "explainer": {
+      "heading": {
+        "ja": "竹の節のような上部",
+        "en": "A broad top above the rooftops"
+      },
+      "ja": [
+        "目印は、まっすぐ伸びる柱と、その上で横に大きく張り出す円筒形の部分。写真では住宅の屋根越しに塔の全体の輪郭が現れ、朝日を受けた壁が暖かい色に見えます。細い柱と太い上部の組み合わせを、竹の節に見立てて眺めてみてください。",
+        "車窓から見えるのは塔の側面です。ヒマワリを表す真上からの形は、この写真や新幹線の座席からは確認できません。横からの竹の姿に、上からは花になる仕掛けが隠れています。",
+        "夜にはライトアップで表情が変わります。掲載写真の暖かな色は朝の光によるものです。夜の姿を探す場合は、参考リンクにある市の点灯スケジュールで当日の実施と時間を確認できます。"
+      ],
+      "en": [
+        "Look for a straight shaft topped by a much wider cylindrical section. In the photograph, the tower’s outline rises above the house roofs, with its walls warmed by morning sunlight. The contrast between the narrow shaft and broad top suggests a joint in a bamboo stem.",
+        "The train gives you a side view. The sunflower design, visible from directly above, cannot be seen in this photograph or from a Shinkansen seat. It is another face of the same structure, hidden from the passing passenger.",
+        "Lighting changes its appearance after dark; the warm colour in the photograph comes from the morning sun. For a night-time view, the city’s lighting schedule in the references gives the dates and hours of each display."
+      ]
+    },
+    "guideHighlight": {
+      "ja": "京都と新大阪のあいだ、E席側へ。街並みの上にひらく、竹のような塔の輪郭が目印です。 見える秒数は暫定の目安です。",
+      "en": "Between Kyoto and Shin-Osaka, watch Seat E for the tower's flared, bamboo-inspired outline above the town. The viewing duration is a provisional estimate."
+    },
+    "minutesFromTokyo": 133.6,
+    "side": "E",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 5,
+    "scene": "solar",
+    "image": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-09-24"
+    },
+    "references": [
+      {
+        "label": {
+          "ja": "向日市：配水塔の愛称が「かぐやの灯」に決定",
+          "en": "Muko City: choosing the name Kaguya no To (Japanese)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/soshiki/1/11831.html"
+      },
+      {
+        "label": {
+          "ja": "向日市：水道事業年報（水が届くまで）",
+          "en": "Muko City: waterworks annual report and supply process (Japanese PDF)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/uploaded/attachment/17251.pdf"
+      },
+      {
+        "label": {
+          "ja": "向日市：水道ビジョン素案（配水塔の意匠）",
+          "en": "Muko City: draft waterworks vision, tower design (Japanese PDF)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/ikkrwebBrowse/material/files/group/5/suidou_plan.pdf"
+      },
+      {
+        "label": {
+          "ja": "向日市：かぐやの灯ライトアップスケジュール",
+          "en": "Muko City: Kaguya no To lighting schedule (Japanese)"
+        },
+        "url": "https://www.city.muko.kyoto.jp/soshiki/1/11316.html"
+      },
+      {
+        "label": {
+          "ja": "パナソニック：向日市上植野浄水場配水塔",
+          "en": "Panasonic: Kamiueno water tower lighting project (Japanese)"
+        },
+        "url": "https://www2.panasonic.biz/jp/works/led/building/detail/id/677580000/"
+      }
+    ],
+    "map": {
+      "lat": 34.93563388,
+      "lng": 135.71233679,
+      "ja": "上植野浄水場付近",
+      "en": "Kamiueno Water Treatment Plant"
+    },
+    "viewpoint": {
+      "lat": 34.93504114,
+      "lng": 135.7141769
+    },
+    "photos": []
+  },
+
+  {
     id: "tokyo-tower",
     icon: "🗼",
     ja: { name: "東京タワー", area: "東京 → 品川", hook: "東京の空に、赤い塔。", story: "東京駅を出て品川へ向かう数分、E席側のビルの合間に赤い東京タワーが立ちます。窓の前後には汐留・浜松町のオフィス街、増上寺の緑、その先には品川のガラス張り高層ビル群が続き、東京の中心部を横切っている感覚が短い時間に凝縮されます。夜は東京タワーそのもののライトアップが街の中で明るく浮かび、旅の入口を印象的に演出してくれます。" },
@@ -1648,12 +1878,37 @@ const SPOTS = [
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
     photos: [
       {
-        src: "images/20260903_gyoran_kannon_michikusa.jpg",
-        alt: { ja: "一瞬で通り過ぎる魚籃観音像", en: "Gyoran Kannon flashing past the Shinkansen window" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "早川付近、木立の切れ間に見える白い像", en: "The white statue seen through a break in the trees near Hayakawa" },
+        "src": "images/20260903_gyoran_kannon_michikusa.jpg",
+        "alt": {
+          "ja": "一瞬で通り過ぎる魚籃観音像",
+          "en": "Gyoran Kannon flashing past the Shinkansen window"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "早川付近、木立の切れ間に見える白い像",
+          "en": "The white statue seen through a break in the trees near Hayakawa"
+        }
       },
+      {
+        "src": "images/20260924_gyoran-kannon_48143_michikusa.jpg",
+        "alt": {
+          "ja": "朝の魚籃観音像",
+          "en": "Gyoran Kannon in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝の魚籃観音像",
+          "en": "Gyoran Kannon in the morning"
+        }
+      }
     ],
     media: {
       heading: { ja: "動画で見る魚籃観音像", en: "Gyoran Kannon in motion" },
@@ -1937,49 +2192,151 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20240211_fuji_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2024-02-11",
-        note: { ja: "雪化粧の富士山はいつ見ても美しい", en: "Snow-capped Mt. Fuji is beautiful every time." },
+        "src": "images/20240211_fuji_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える富士山",
+          "en": "Mt. Fuji from Seat E"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2024-02-11",
+        "note": {
+          "ja": "雪化粧の富士山はいつ見ても美しい",
+          "en": "Snow-capped Mt. Fuji is beautiful every time."
+        }
       },
       {
-        src: "images/20260616_fuji_sttraveler.jpg",
-        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
-        credit: { ja: "@STTraveler", en: "@STTraveler" },
-        sourceUrl: "https://x.com/STTraveler/status/2066661705372033042",
-        note: { ja: "田んぼの緑とのコントラストが美しい", en: "The contrast with the green rice fields is beautiful." },
+        "src": "images/20260616_fuji_sttraveler.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える富士山",
+          "en": "Mt. Fuji from Seat E"
+        },
+        "credit": {
+          "ja": "@STTraveler",
+          "en": "@STTraveler"
+        },
+        "sourceUrl": "https://x.com/STTraveler/status/2066661705372033042",
+        "note": {
+          "ja": "田んぼの緑とのコントラストが美しい",
+          "en": "The contrast with the green rice fields is beautiful."
+        }
       },
       {
-        src: "images/20260619_fuji_sttraveler.jpg",
-        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
-        credit: { ja: "@STTraveler", en: "@STTraveler" },
-        sourceUrl: "https://x.com/STTraveler/status/2067980954287951976",
-        note: { ja: "街並みの向こうにうっすらと浮かぶ幻想的な富士山", en: "A dreamlike Mt. Fuji faintly floating beyond the town." },
+        "src": "images/20260619_fuji_sttraveler.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える富士山",
+          "en": "Mt. Fuji from Seat E"
+        },
+        "credit": {
+          "ja": "@STTraveler",
+          "en": "@STTraveler"
+        },
+        "sourceUrl": "https://x.com/STTraveler/status/2067980954287951976",
+        "note": {
+          "ja": "街並みの向こうにうっすらと浮かぶ幻想的な富士山",
+          "en": "A dreamlike Mt. Fuji faintly floating beyond the town."
+        }
       },
       {
-        src: "images/20230913_fuji_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える富士山", en: "Mt. Fuji from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2023-09-13",
-        note: { ja: "小麦色の田んぼと雪のない富士山の対比もまた美しい", en: "The contrast between wheat-colored fields and a snowless Fuji is beautiful too." },
+        "src": "images/20230913_fuji_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える富士山",
+          "en": "Mt. Fuji from Seat E"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2023-09-13",
+        "note": {
+          "ja": "小麦色の田んぼと雪のない富士山の対比もまた美しい",
+          "en": "The contrast between wheat-colored fields and a snowless Fuji is beautiful too."
+        }
       },
       {
-        src: "images/20260903_fuji_beyond_factory_smoke_michikusa.jpg",
-        alt: { ja: "工場の煙の奥に見える富士山", en: "Mt. Fuji beyond factory steam" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "暮らしと産業の風景の奥に、富士山が立つ", en: "Mt. Fuji rises beyond an everyday industrial landscape" },
+        "src": "images/20260903_fuji_beyond_factory_smoke_michikusa.jpg",
+        "alt": {
+          "ja": "工場の煙の奥に見える富士山",
+          "en": "Mt. Fuji beyond factory steam"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "暮らしと産業の風景の奥に、富士山が立つ",
+          "en": "Mt. Fuji rises beyond an everyday industrial landscape"
+        }
       },
       {
-        src: "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夕暮れの富士山と製紙工場の夜景", en: "Mt. Fuji and the paper mills at dusk" },
-        credit: { ja: "@kamiyu_G1X_Mk2", en: "@kamiyu_G1X_Mk2" },
-        sourceUrl: "https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354",
-        date: "2026-05-29",
-        note: { ja: "夕暮れの富士山と工場夜景のコラボ", en: "A dusk collaboration between Mt. Fuji and the factory lights." },
+        "src": "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夕暮れの富士山と製紙工場の夜景",
+          "en": "Mt. Fuji and the paper mills at dusk"
+        },
+        "credit": {
+          "ja": "@kamiyu_G1X_Mk2",
+          "en": "@kamiyu_G1X_Mk2"
+        },
+        "sourceUrl": "https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354",
+        "date": "2026-05-29",
+        "note": {
+          "ja": "夕暮れの富士山と工場夜景のコラボ",
+          "en": "A dusk collaboration between Mt. Fuji and the factory lights."
+        }
       },
+      {
+        "src": "images/20260924_fuji-paper-mills_75983_michikusa.jpg",
+        "alt": {
+          "ja": "製紙工場と朝の富士山",
+          "en": "Paper mills and Mt. Fuji in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "製紙工場と朝の富士山",
+          "en": "Paper mills and Mt. Fuji in the morning"
+        }
+      },
+      {
+        "src": "images/20260924_fuji-paper-mills-reflection_81128_michikusa.jpg",
+        "alt": {
+          "ja": "製紙工場の沈殿池に映る逆さ富士",
+          "en": "Mt. Fuji reflected in a settling pond at the paper mill"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "製紙工場の沈殿池に映る逆さ富士",
+          "en": "Mt. Fuji reflected in a settling pond at the paper mill"
+        }
+      },
+      {
+        "src": "images/20260924_fuji-ucc_171517_michikusa.jpg",
+        "alt": {
+          "ja": "UCCの向こうに見える富士山",
+          "en": "Mt. Fuji beyond UCC"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "UCCの向こうに見える富士山",
+          "en": "Mt. Fuji beyond UCC"
+        }
+      }
     ],
     media: {
       heading: { ja: "動画で見る富士山", en: "Mt. Fuji in motion" },
@@ -2131,35 +2488,103 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20260816_fuji_paper_mills_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える富士の製紙工場", en: "Fuji's paper mills from Seat E on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-16",
-        note: { ja: "右奥、雲の切れ間に富士山のシルエットが写っています", en: "At the far right, Mt. Fuji's silhouette shows through a gap in the cloud." },
+        "src": "images/20260816_fuji_paper_mills_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える富士の製紙工場",
+          "en": "Fuji's paper mills from Seat E on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-16",
+        "note": {
+          "ja": "右奥、雲の切れ間に富士山のシルエットが写っています",
+          "en": "At the far right, Mt. Fuji's silhouette shows through a gap in the cloud."
+        }
       },
       {
-        src: "images/20260903_fuji_paper_mills_fuji_michikusa.jpg",
-        alt: { ja: "日本製紙工場の奥に見える富士山", en: "Mt. Fuji beyond the Nippon Paper mill" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "工場の設備越しに富士山の輪郭を追う", en: "Mt. Fuji's outline beyond the mill equipment" },
+        "src": "images/20260903_fuji_paper_mills_fuji_michikusa.jpg",
+        "alt": {
+          "ja": "日本製紙工場の奥に見える富士山",
+          "en": "Mt. Fuji beyond the Nippon Paper mill"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "工場の設備越しに富士山の輪郭を追う",
+          "en": "Mt. Fuji's outline beyond the mill equipment"
+        }
       },
       {
-        src: "images/20260904_fuji_paper_mills_michikusa.jpg",
-        alt: { ja: "製紙工場の煙突越しに見える富士山", en: "Mt. Fuji beyond the paper-mill chimneys" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-04",
-        note: { ja: "蒸気を上げる製紙工場と富士山", en: "Mt. Fuji behind the steaming paper mills" },
+        "src": "images/20260904_fuji_paper_mills_michikusa.jpg",
+        "alt": {
+          "ja": "製紙工場の煙突越しに見える富士山",
+          "en": "Mt. Fuji beyond the paper-mill chimneys"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-04",
+        "note": {
+          "ja": "蒸気を上げる製紙工場と富士山",
+          "en": "Mt. Fuji behind the steaming paper mills"
+        }
       },
       {
-        src: "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夕暮れの富士山と製紙工場の夜景", en: "Mt. Fuji and the paper mills at dusk" },
-        credit: { ja: "@kamiyu_G1X_Mk2", en: "@kamiyu_G1X_Mk2" },
-        sourceUrl: "https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354",
-        date: "2026-05-29",
-        note: { ja: "夕暮れの富士山と工場夜景のコラボ", en: "A dusk collaboration between Mt. Fuji and the factory lights." },
+        "src": "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夕暮れの富士山と製紙工場の夜景",
+          "en": "Mt. Fuji and the paper mills at dusk"
+        },
+        "credit": {
+          "ja": "@kamiyu_G1X_Mk2",
+          "en": "@kamiyu_G1X_Mk2"
+        },
+        "sourceUrl": "https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354",
+        "date": "2026-05-29",
+        "note": {
+          "ja": "夕暮れの富士山と工場夜景のコラボ",
+          "en": "A dusk collaboration between Mt. Fuji and the factory lights."
+        }
       },
+      {
+        "src": "images/20260924_fuji-paper-mills_75983_michikusa.jpg",
+        "alt": {
+          "ja": "製紙工場と朝の富士山",
+          "en": "Paper mills and Mt. Fuji in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "製紙工場と朝の富士山",
+          "en": "Paper mills and Mt. Fuji in the morning"
+        }
+      },
+      {
+        "src": "images/20260924_fuji-paper-mills-reflection_81128_michikusa.jpg",
+        "alt": {
+          "ja": "製紙工場の沈殿池に映る逆さ富士",
+          "en": "Mt. Fuji reflected in a settling pond at the paper mill"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "製紙工場の沈殿池に映る逆さ富士",
+          "en": "Mt. Fuji reflected in a settling pond at the paper mill"
+        }
+      }
     ],
     relatedSpotIds: ["fuji", "fuji-pipe-sign", "fujikawa-bridge"],
     references: [REFERENCES.fujiCityPaperTown, REFERENCES.fujiCityPaperHistory, REFERENCES.nipponPaperFuji, REFERENCES.nipponPaperFujiMerger],
@@ -2196,19 +2621,24 @@ const SPOTS = [
       en: "The Fujikawa Bridge that the Shinkansen crosses is not the white one. Running parallel just upstream is the Fujikawa water pipe bridge: about 1,040 metres long, formed of ten white arches. The arches are structure, not decoration — this is a Langer design in which a 2,200-millimetre steel pipe is itself stiffened by the arch above it. The water main is not carried by the bridge; the water main is the bridge. When it was built in the late 1960s it was the largest of its type in Japan and among the longest water pipe bridges in the world; Fuji City's public magazine put it on its cover in 1970 as the world's greatest water pipe bridge. What flows through it is industrial water, not drinking water, and it is bound for the paper mills downstream.",
     },
     explainer: {
-      heading: { ja: "十数秒をどう使うか", en: "How to spend the dozen seconds" },
-      ja: [
+      "heading": {
+        "ja": "十数秒をどう使うか",
+        "en": "How to spend the dozen seconds"
+      },
+      "ja": [
         "新富士を出たら、E席側の窓に張りついてください。橋に乗ると視界がひらけ、広い河原と水面、その川上に白いアーチの列が現れます。富士山は正面やや右、アーチの向こうに立ちます。",
         "渡り終えた直後にトンネルへ入ります。つまり「気づいてから探す」では間に合いません。新富士を出た時点で身構えておくのが唯一のコツです。",
         "冬から早春は、雪をかぶった富士山と白いアーチが対になって、いちばん絵になります。夏は富士山が空に溶けやすいので、その場合はアーチと河原の広さを楽しむ区間だと割り切るのが現実的です。",
         "A席側は下流、駿河湾の方向です。富士山は見えませんが、河口へ向かって広がる河原と、遠くに海が見えることがあります。",
+        "水管橋の向こうをよく見ると、小さな観覧車が見えます。東名高速道路・富士川サービスエリア上りの「Fuji Sky View」です。地上60mの観覧車ですが、車窓では白い水管橋と周囲の建物を目印に、その奥の輪を探してみてください。2026年9月24日の上り列車から撮影した2枚を掲載しています。"
       ],
-      en: [
+      "en": [
         "Once you leave Shin-Fuji, stay at the Seat E window. As the train reaches the bridge the view opens onto a broad gravel riverbed and the water, with the row of white arches upstream. Mt. Fuji stands ahead and slightly right, beyond the arches.",
         "A tunnel begins the moment the crossing ends. There is no time to notice it and then go looking — the only trick is to be ready as you pull out of Shin-Fuji.",
         "Winter and early spring are the best pairing: a snow-capped Fuji above white arches. In summer the mountain tends to dissolve into the sky, and it is more realistic to enjoy the arches and the width of the riverbed instead.",
         "The Seat A side looks downstream toward Suruga Bay. There is no Mt. Fuji, but the riverbed widens toward the mouth and the sea is sometimes visible in the distance.",
-      ],
+        "Look beyond the water pipe bridge for a small Ferris wheel. Fuji Sky View stands at the Tokyo-bound Fujikawa Service Area on the Tomei Expressway and rises 60 metres above the ground. From the train, use the white bridge and nearby buildings to locate the distant wheel. These two photographs were taken from an eastbound train on 24 September 2026."
+      ]
     },
     guideHighlight: {
       ja: "新富士を出たらE席側で構えてください。橋に乗った瞬間に河原がひらけ、川上に白いアーチが並びます。その向こうが富士山です。渡り終えるとすぐトンネルなので、探し始めるのでは遅すぎます。",
@@ -2224,22 +2654,88 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20220205_fujikawa_bridge_michikusa.jpg",
-        alt: { ja: "富士川越しに見る冠雪の富士山と富士川水管橋", en: "Snow-capped Mt. Fuji across the Fuji River with the water pipe bridge" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2022-02-05",
-        note: { ja: "富士川越しの富士山", en: "Mt. Fuji across the Fuji River" },
+        "src": "images/20220205_fujikawa_bridge_michikusa.jpg",
+        "alt": {
+          "ja": "富士川越しに見る冠雪の富士山と富士川水管橋",
+          "en": "Snow-capped Mt. Fuji across the Fuji River with the water pipe bridge"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2022-02-05",
+        "note": {
+          "ja": "富士川越しの富士山",
+          "en": "Mt. Fuji across the Fuji River"
+        }
       },
       {
-        src: "images/20260903_fujikawa_cloudy_michikusa.jpg",
-        alt: { ja: "曇天の富士川を渡る新幹線の車窓", en: "The Fuji River from a Shinkansen window under cloud" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "曇りの日は、川幅と白いアーチの存在感が際立つ", en: "On a cloudy day, the river's width and white arches stand out" },
+        "src": "images/20260903_fujikawa_cloudy_michikusa.jpg",
+        "alt": {
+          "ja": "曇天の富士川を渡る新幹線の車窓",
+          "en": "The Fuji River from a Shinkansen window under cloud"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "曇りの日は、川幅と白いアーチの存在感が際立つ",
+          "en": "On a cloudy day, the river's width and white arches stand out"
+        }
       },
+      {
+        "src": "images/20260924_fujikawa-bridge_21859_michikusa.jpg",
+        "alt": {
+          "ja": "富士川橋梁から眺める水管橋と富士山",
+          "en": "The water pipe bridge and Mt. Fuji from the Fujikawa railway crossing"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "富士川橋梁から眺める水管橋と富士山",
+          "en": "The water pipe bridge and Mt. Fuji from the Fujikawa railway crossing"
+        }
+      },
+      {
+        "src": "images/20260924_fuji-sky-view_30973_michikusa.jpg",
+        "alt": {
+          "ja": "水管橋の向こうに見えるFuji Sky Viewの観覧車",
+          "en": "Fuji Sky View Ferris wheel beyond the water pipe bridge"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "水管橋の向こうに見えるFuji Sky Viewの観覧車",
+          "en": "Fuji Sky View Ferris wheel beyond the water pipe bridge"
+        }
+      },
+      {
+        "src": "images/20260924_fuji-sky-view_33058_michikusa.jpg",
+        "alt": {
+          "ja": "水管橋の向こうに見えるFuji Sky Viewの観覧車",
+          "en": "Fuji Sky View Ferris wheel beyond the water pipe bridge"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "水管橋の向こうに見えるFuji Sky Viewの観覧車",
+          "en": "Fuji Sky View Ferris wheel beyond the water pipe bridge"
+        }
+      }
     ],
     relatedSpotIds: ["fuji", "fuji-paper-mills", "shimizu-port-chikyu"],
-    references: [REFERENCES.fujikawaBridgeSuruga, REFERENCES.fujikawaSuikankyoDoboku],
+    references: [{ label: { ja: "Fuji Sky View：公式案内", en: "Fuji Sky View: official information (Japanese)" }, url: "https://www.senyo.co.jp/company/archivements/" },REFERENCES.fujikawaBridgeSuruga, REFERENCES.fujikawaSuikankyoDoboku],
     map: { lat: 35.1310, lng: 138.5985, ja: "富士川水管橋", en: "Fujikawa water pipe bridge" },
     viewpoint: { lat: 35.1265, lng: 138.5945 },
   },
@@ -2372,48 +2868,118 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU from Seat A on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "港のクレーン越しに見える、ちきゅうのデリック", en: "CHIKYU's derrick beyond the port cranes" },
+        "src": "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える清水港とちきゅう",
+          "en": "Shimizu Port and CHIKYU from Seat A on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "港のクレーン越しに見える、ちきゅうのデリック",
+          "en": "CHIKYU's derrick beyond the port cranes"
+        }
       },
       {
-        src: "images/20260712_shimizu_port_chikyu_2_michikusa.jpg",
-        alt: { ja: "新幹線から見える清水港のクレーンとちきゅう", en: "Port cranes and CHIKYU from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "清水港の工業景と、停泊中のちきゅう", en: "Shimizu Port industry with CHIKYU docked" },
+        "src": "images/20260712_shimizu_port_chikyu_2_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から見える清水港のクレーンとちきゅう",
+          "en": "Port cranes and CHIKYU from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "清水港の工業景と、停泊中のちきゅう",
+          "en": "Shimizu Port industry with CHIKYU docked"
+        }
       },
       {
-        src: "images/20260629_shimizu_port_chikyu_morning_michikusa.jpg",
-        alt: { ja: "朝の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU in the morning from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "朝の港に、ちきゅう", en: "CHIKYU in the morning port" },
+        "src": "images/20260629_shimizu_port_chikyu_morning_michikusa.jpg",
+        "alt": {
+          "ja": "朝の新幹線から見える清水港とちきゅう",
+          "en": "Shimizu Port and CHIKYU in the morning from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "朝の港に、ちきゅう",
+          "en": "CHIKYU in the morning port"
+        }
       },
       {
-        src: "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の新幹線から見える清水港とちきゅう", en: "Shimizu Port and CHIKYU at night from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "夜の港に、ちきゅう", en: "CHIKYU in the night port" },
+        "src": "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の新幹線から見える清水港とちきゅう",
+          "en": "Shimizu Port and CHIKYU at night from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "夜の港に、ちきゅう",
+          "en": "CHIKYU in the night port"
+        }
       },
       {
-        src: "images/20260820_shimizu_port_chikyu_1_michikusa.jpg",
-        alt: { ja: "曇り空の朝、クレーンの列の奥にちきゅうの櫓が立つ清水港", en: "Shimizu Port on a cloudy morning, CHIKYU's derrick standing beyond a line of cranes" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-20",
-        note: { ja: "2026-08-20 · 品川06:00発のぞみ99号で06:43撮影", en: "2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:43." },
+        "src": "images/20260820_shimizu_port_chikyu_1_michikusa.jpg",
+        "alt": {
+          "ja": "曇り空の朝、クレーンの列の奥にちきゅうの櫓が立つ清水港",
+          "en": "Shimizu Port on a cloudy morning, CHIKYU's derrick standing beyond a line of cranes"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-20",
+        "note": {
+          "ja": "2026-08-20 · 品川06:00発のぞみ99号で06:43撮影",
+          "en": "2026-08-20 · Nozomi 99 from Shinagawa, taken at 06:43."
+        }
       },
       {
-        src: "images/20260820_shimizu_port_chikyu_2_michikusa.jpg",
-        alt: { ja: "電線越しに大きく捉えたちきゅうの掘削櫓", en: "CHIKYU's drilling derrick framed large through the overhead wires" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-20",
-        note: { ja: "2026-08-20 · 2秒後、櫓が真横に来たところ", en: "2026-08-20 · Two seconds later, with the derrick abeam." },
+        "src": "images/20260820_shimizu_port_chikyu_2_michikusa.jpg",
+        "alt": {
+          "ja": "電線越しに大きく捉えたちきゅうの掘削櫓",
+          "en": "CHIKYU's drilling derrick framed large through the overhead wires"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-20",
+        "note": {
+          "ja": "2026-08-20 · 2秒後、櫓が真横に来たところ",
+          "en": "2026-08-20 · Two seconds later, with the derrick abeam."
+        }
       },
+      {
+        "src": "images/20260924_shimizu-port-chikyu_43876_michikusa.jpg",
+        "alt": {
+          "ja": "朝の清水港に停泊する「ちきゅう」",
+          "en": "Chikyu berthed at Shimizu Port in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝の清水港に停泊する「ちきゅう」",
+          "en": "Chikyu berthed at Shimizu Port in the morning"
+        }
+      }
     ],
     media: {
       heading: { ja: "動画で見る清水港とちきゅう", en: "Shimizu Port and CHIKYU in motion" },
@@ -2601,6 +3167,24 @@ const SPOTS = [
     },
     guideHighlight: { ja: "静岡を出たらA席側へ。SAPPOROの星印より先に銀色のタンク列が近づきます。", en: "After Shizuoka, watch Seat A: the silver tank row arrives before the SAPPORO star." },
     minutesFromTokyo: 56, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "easy", scene: "solar", visibleWhenCloudy: true,
+    photos: [
+      {
+        "src": "images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg",
+        "alt": {
+          "ja": "朝のサッポロビール静岡工場",
+          "en": "Sapporo’s Shizuoka brewery in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝のサッポロビール静岡工場",
+          "en": "Sapporo’s Shizuoka brewery in the morning"
+        }
+      }
+    ],
     image: "images/20260904_sapporo_shizuoka_factory_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-09-04", note: { ja: "焼津付近、A席から見たタンク列", en: "The tank row from Seat A near Yaizu" } },
     references: [
@@ -3059,19 +3643,53 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20191203_hamanako_fuji_kawasan3.jpg",
-        alt: { ja: "浜名湖から見える遠くの富士山", en: "Distant Mt. Fuji seen from Lake Hamana" },
-        credit: { ja: "@kawasan3", en: "@kawasan3" },
-        sourceUrl: "https://x.com/kawasan3/status/2071620687626973333",
-        note: { ja: "湖の向こうに小さく見える富士山", en: "A tiny Fuji beyond the lake" },
+        "src": "images/20191203_hamanako_fuji_kawasan3.jpg",
+        "alt": {
+          "ja": "浜名湖から見える遠くの富士山",
+          "en": "Distant Mt. Fuji seen from Lake Hamana"
+        },
+        "credit": {
+          "ja": "@kawasan3",
+          "en": "@kawasan3"
+        },
+        "sourceUrl": "https://x.com/kawasan3/status/2071620687626973333",
+        "note": {
+          "ja": "湖の向こうに小さく見える富士山",
+          "en": "A tiny Fuji beyond the lake"
+        }
       },
       {
-        src: "images/190103_hamanako_fuji_sentokia.jpg",
-        alt: { ja: "浜名湖から見える富士山", en: "Mt. Fuji seen from Lake Hamana" },
-        credit: { ja: "@sentokia", en: "@sentokia" },
-        sourceUrl: "https://x.com/sentokia/status/1080626377701748737",
-        note: { ja: "サンマリンブリッジの右奥に小さく富士山", en: "Mt. Fuji is small beyond the right side of Sun Marine Bridge" },
+        "src": "images/190103_hamanako_fuji_sentokia.jpg",
+        "alt": {
+          "ja": "浜名湖から見える富士山",
+          "en": "Mt. Fuji seen from Lake Hamana"
+        },
+        "credit": {
+          "ja": "@sentokia",
+          "en": "@sentokia"
+        },
+        "sourceUrl": "https://x.com/sentokia/status/1080626377701748737",
+        "note": {
+          "ja": "サンマリンブリッジの右奥に小さく富士山",
+          "en": "Mt. Fuji is small beyond the right side of Sun Marine Bridge"
+        }
       },
+      {
+        "src": "images/20260924_hamanako-fuji_88188_michikusa.jpg",
+        "alt": {
+          "ja": "浜名湖越しに小さく見える朝の富士山",
+          "en": "Distant Mt. Fuji beyond Lake Hamana in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "浜名湖越しに小さく見える朝の富士山",
+          "en": "Distant Mt. Fuji beyond Lake Hamana in the morning"
+        }
+      }
     ],
     relatedSpotIds: ["hamanako"],
     references: [REFERENCES.hamanakoTourism, REFERENCES.weatherFuji],
@@ -3502,24 +4120,77 @@ const SPOTS = [
     photoCredit: { ja: "新幹線の車窓から", en: "Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
     photos: [
       {
-        src: "images/20250920_kirin_beer_factory_2_letus10.jpg",
-        alt: { ja: "新幹線のE席側から見えるキリンビール工場の貯蔵タンク", en: "Kirin Beer Factory storage tanks from Seat E" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/518214924.html",
+        "src": "images/20250920_kirin_beer_factory_2_letus10.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見えるキリンビール工場の貯蔵タンク",
+          "en": "Kirin Beer Factory storage tanks from Seat E"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/518214924.html"
       },
       {
-        src: "images/20260530_kirin_beer_factory_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見えるキリンビール工場", en: "Kirin Beer Factory from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
+        "src": "images/20260530_kirin_beer_factory_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見えるキリンビール工場",
+          "en": "Kirin Beer Factory from Seat E"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-30"
       },
       {
-        src: "images/20260629_kirin_beer_factory_michikusa.jpg",
-        alt: { ja: "朝の新幹線から見えるキリンビール名古屋工場", en: "Kirin Beer Nagoya Factory from a morning Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "朝の光で銀色のタンク列が見分けやすい写真", en: "Morning light makes the row of silver tanks easier to read." },
+        "src": "images/20260629_kirin_beer_factory_michikusa.jpg",
+        "alt": {
+          "ja": "朝の新幹線から見えるキリンビール名古屋工場",
+          "en": "Kirin Beer Nagoya Factory from a morning Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "朝の光で銀色のタンク列が見分けやすい写真",
+          "en": "Morning light makes the row of silver tanks easier to read."
+        }
       },
+      {
+        "src": "images/20260924_kirin-beer-factory_36523_michikusa.jpg",
+        "alt": {
+          "ja": "朝焼けの中に立つキリンビール工場のタンク",
+          "en": "Kirin brewery tanks in the dawn light"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝焼けの中に立つキリンビール工場のタンク",
+          "en": "Kirin brewery tanks in the dawn light"
+        }
+      },
+      {
+        "src": "images/20260924_kirin-beer-factory_40249_michikusa.jpg",
+        "alt": {
+          "ja": "朝焼けの中に立つキリンビール工場のタンク",
+          "en": "Kirin brewery tanks in the dawn light"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝焼けの中に立つキリンビール工場のタンク",
+          "en": "Kirin brewery tanks in the dawn light"
+        }
+      }
     ],
     references: [REFERENCES.kirinBrewery, REFERENCES.kirinBlog],
     map: { lat: 35.2098489, lng: 136.8501779, ja: "キリンビール 名古屋工場", en: "Kirin Beer Nagoya Factory" },
@@ -3705,26 +4376,66 @@ const SPOTS = [
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "青空に映えるソーラーアーク", en: "Solar Ark against a clear blue sky." } },
     photos: [
       {
-        src: "images/20251212_solar_ark_2_letus10.jpg",
-        alt: { ja: "新幹線の車窓から見えるソーラーアーク", en: "Solar Ark from the Shinkansen window" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
-        date: "2025-12-12",
-        note: { ja: "ソーラーアークの船形がわかる車窓写真", en: "A window photo showing the Solar Ark's ship-like form" },
+        "src": "images/20251212_solar_ark_2_letus10.jpg",
+        "alt": {
+          "ja": "新幹線の車窓から見えるソーラーアーク",
+          "en": "Solar Ark from the Shinkansen window"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/519526266.html",
+        "date": "2025-12-12",
+        "note": {
+          "ja": "ソーラーアークの船形がわかる車窓写真",
+          "en": "A window photo showing the Solar Ark's ship-like form"
+        }
       },
       {
-        src: "images/20251212_solar_ark_1_letus10.jpg",
-        alt: { ja: "新幹線のE席側から見えるソーラーアーク", en: "Solar Ark from Seat E" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
+        "src": "images/20251212_solar_ark_1_letus10.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見えるソーラーアーク",
+          "en": "Solar Ark from Seat E"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/519526266.html"
       },
       {
-        src: "images/201707_solar_ark_letus10.jpg",
-        alt: { ja: "Panasonicロゴが残っていた頃のソーラーアーク", en: "Solar Ark when the Panasonic logo was still visible" },
-        note: { ja: "2017年7月に撮影。Panasonicロゴがあったころの写真", en: "Photographed in July 2017, when the Panasonic logo was still visible" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/519526266.html",
+        "src": "images/201707_solar_ark_letus10.jpg",
+        "alt": {
+          "ja": "Panasonicロゴが残っていた頃のソーラーアーク",
+          "en": "Solar Ark when the Panasonic logo was still visible"
+        },
+        "note": {
+          "ja": "2017年7月に撮影。Panasonicロゴがあったころの写真",
+          "en": "Photographed in July 2017, when the Panasonic logo was still visible"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/519526266.html"
       },
+      {
+        "src": "images/20260924_solar-ark_9169_michikusa.jpg",
+        "alt": {
+          "ja": "朝焼けのソーラーアーク",
+          "en": "Solar Ark in the dawn light"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝焼けのソーラーアーク",
+          "en": "Solar Ark in the dawn light"
+        }
+      }
     ],
     media: {
       heading: { ja: "動画で見るソーラーアーク", en: "Solar Ark in motion" },
@@ -4988,6 +5699,40 @@ const SPOTS = [
     },
     guideHighlight: { ja: "京都を出たらA席側へ。低い建物の上に二つのたまねぎ型が並ぶのが目印です。", en: "After Kyoto, watch Seat A for two onion-shaped silhouettes above the lower buildings." },
     minutesFromTokyo: 132, side: "A", category: "curious", confidence: "verified", durationSec: 5, spotting: "easy", scene: "solar", visibleWhenCloudy: true,
+    photos: [
+      {
+        "src": "images/20260924_rakusai-egg-tanks_8885_michikusa.jpg",
+        "alt": {
+          "ja": "朝焼けの洛西浄化センターの卵形タンク",
+          "en": "Rakusai’s egg-shaped tanks in the dawn light"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝焼けの洛西浄化センターの卵形タンク",
+          "en": "Rakusai’s egg-shaped tanks in the dawn light"
+        }
+      },
+      {
+        "src": "images/20260924_rakusai-egg-tanks_10371_michikusa.jpg",
+        "alt": {
+          "ja": "朝焼けの洛西浄化センターの卵形タンク",
+          "en": "Rakusai’s egg-shaped tanks in the dawn light"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "朝焼けの洛西浄化センターの卵形タンク",
+          "en": "Rakusai’s egg-shaped tanks in the dawn light"
+        }
+      }
+    ],
     image: "images/20260919_rakusai_egg_tanks_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-09-19", note: { ja: "A席から見た二つの卵形タンク", en: "Two egg-shaped tanks from Seat A" } },
     media: { heading: { ja: "動画で見る卵形タンク", en: "See the tanks in motion" }, description: { ja: "車窓からの動画をYouTubeで見ることができます。", en: "Watch a train-window video of the tanks on YouTube." }, videos: [{ kind: "youtube", id: "geqKd62HV5Y", url: "https://www.youtube.com/watch?v=geqKd62HV5Y", title: { ja: "洛西浄化センターの卵形タンク", en: "Egg-shaped tanks at Rakusai" } }] },
@@ -5149,27 +5894,70 @@ const SPOTS = [
     photoCredit: { ja: "@yamato160", en: "@yamato160", url: "https://x.com/yamato160/status/2066003172884365364" },
     photos: [
       {
-        src: "images/20260629_torikai_train_depot_michikusa.jpg",
-        alt: { ja: "新幹線から見える鳥飼車両基地", en: "Torikai Train Depot from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "白い列車がずらり", en: "Rows of white trains" },
+        "src": "images/20260629_torikai_train_depot_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から見える鳥飼車両基地",
+          "en": "Torikai Train Depot from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "白い列車がずらり",
+          "en": "Rows of white trains"
+        }
       },
       {
-        src: "images/20260629_torikai_train_depot_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の新幹線から見える鳥飼車両基地", en: "Torikai Train Depot at night from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "夜に眠る新幹線たち", en: "Shinkansen sleeping at night" },
+        "src": "images/20260629_torikai_train_depot_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の新幹線から見える鳥飼車両基地",
+          "en": "Torikai Train Depot at night from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "夜に眠る新幹線たち",
+          "en": "Shinkansen sleeping at night"
+        }
       },
       {
-        src: "images/20260712_torikai_depot_michikusa.jpg",
-        alt: { ja: "朝の新幹線から見える鳥飼車両基地", en: "Torikai Train Depot from a morning Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "検修庫と留置線の広がりが見える朝の車窓", en: "A morning view showing the inspection sheds and wide yard tracks." },
+        "src": "images/20260712_torikai_depot_michikusa.jpg",
+        "alt": {
+          "ja": "朝の新幹線から見える鳥飼車両基地",
+          "en": "Torikai Train Depot from a morning Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "検修庫と留置線の広がりが見える朝の車窓",
+          "en": "A morning view showing the inspection sheds and wide yard tracks."
+        }
       },
+      {
+        "src": "images/20260924_torikai-train-depot_34977_michikusa.jpg",
+        "alt": {
+          "ja": "鳥飼車両基地の奥、ビルの陰に小さく見えるEXPOCITYの観覧車",
+          "en": "Torikai depot, with the EXPOCITY wheel small behind the distant buildings"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "鳥飼車両基地の奥、ビルの陰に小さく見えるEXPOCITYの観覧車",
+          "en": "Torikai depot, with the EXPOCITY wheel small behind the distant buildings"
+        }
+      }
     ],
     media: {
       heading: { ja: "動画で見る鳥飼車両基地", en: "Torikai Rail Yard in motion" },
@@ -5321,20 +6109,21 @@ function wheelDisplayName(name, lang) {
 }
 
 const WHEEL_COLLECTION = [
-  {"id":"nonhoi","stampId":"ferris-wheel-nonhoi","minutesFromTokyo":77,"side":"A","lat":34.72111,"lng":137.43194,"confidence":"verified","durationSec":8,"name":{"ja":"のんほいパーク","en":"Nonhoi Park"},"area":{"ja":"浜松 → 豊橋","en":"Hamamatsu → Toyohashi"},"hook":{"ja":"豊橋の手前で、ひとつ","en":"A wheel before Toyohashi"},"body":{"ja":"豊橋に着く手前、A席側。住宅や工場の屋根の向こうに、白い輪が立っています。曇りの日でも空を背にするので、形は見分けられます。","en":"Just before Toyohashi, on the Seat A side, a white wheel stands beyond the roofs of houses and factories. It sits against the sky, so its shape reads even on a cloudy day."},"story":{"ja":"浜松を出て豊橋へ向かう終盤、A席側の住宅と工場の屋根の向こうに、白い観覧車が立っています。豊橋総合動植物公園「のんほいパーク」の大観覧車です。高さは約50m、ゴンドラは6人乗りで、一周はおよそ12分。まわりに高い建物がない平地なので、空を背にした輪の形だけがすっと抜けて見え、曇りの日でも形は見分けられます。のんほいパークは動物園・植物園・自然史博物館・遊園地の4つをひとつにした39.6haの公園で、1992年に今の総合公園として開園しました。愛称の「のんほい」は、東三河の方言「のん」「ほい」から。線路から約0.65kmと近いぶん、現れてから消えるまでは8秒ほどです。東京から来ると最初に出会う観覧車で、まもなく豊橋、という合図でもあります。","en":"In the last minutes before Toyohashi, a white Ferris wheel stands beyond the houses and factory roofs on the Seat A side. It belongs to Nonhoi Park, the combined zoo, botanical garden, natural history museum and amusement park that Toyohashi opened in its present form in 1992; the odd name is two words of the local dialect. The wheel is about 50 metres tall, each gondola holds six people, and a full turn takes twelve minutes. Nothing around it comes close to that height, so on this wide, flat plain the ring simply lifts clear of the rooftops against the sky, even on an overcast day. It is only about 0.65 km from the line, which also means it is gone in around eight seconds. Coming from Tokyo it is the first wheel of the collection, and a reliable sign that Toyohashi is about a minute away."},"photo":{"src":"images/20260904_nonhoi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるのんほいパークの観覧車","en":"The Nonhoi Park wheel seen from the Seat A side"},"caption":{"ja":"家並みと鉄塔の向こうに立つ輪 / 写真：新幹線の窓","en":"The wheel beyond houses and pylons / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.nonhoi.jp/amusement/"},
-  {"id":"laguna","stampId":"ferris-wheel-laguna","minutesFromTokyo":82,"side":"A","lat":34.807722,"lng":137.27583,"confidence":"verified","durationSec":12,"name":{"ja":"ラグーナテンボス","en":"Laguna Ten Bosch"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"海辺の街に、輪を探す","en":"Look toward the coastal town"},"body":{"ja":"蒲郡の海辺にあるラグーナテンボスの観覧車。A席側、集合住宅や畑の向こうに白い輪が立っています。まわりの建物より高く出るので、遠くても見分けやすい輪です。","en":"The wheel at Laguna Ten Bosch stands in coastal Gamagori. On the Seat A side it rises white beyond apartment blocks and fields; it stands taller than the buildings around it, so it is easier to pick out than its distance suggests."},"story":{"ja":"豊橋を出て三河安城へ向かう途中、A席側に大きな白い輪が立ちます。蒲郡の海辺にあるラグーナテンボスの観覧車です。高さは65m、ゴンドラは4人乗りで、頂上からは三河湾が一望できます。中心のテーマパーク「ラグナシア」は2002年にラグーナ蒲郡として開業し、いまはラグーナテンボスの名前で営業しています。線路からは約0.8km。集合住宅や畑の向こうに立っていますが、まわりの建物よりずっと高く出るので、探すというより目に入ってくる輪です。夜はイルミネーションが灯り、暗い海辺に光の輪が浮かびます。見送ったあとも窓はそのままに。30秒ほどあと、同じA席側の遠くに三河湾と三河大島が現れます。海側の窓がいちばん楽しい区間です。","en":"Between Toyohashi and Mikawa-Anjo, a large white wheel rises on the Seat A side. This is the Ferris wheel at Laguna Ten Bosch, a seaside resort on the coast at Gamagori whose theme park opened in 2002: 65 metres tall, four to a gondola, with the whole of Mikawa Bay laid out from the top. It stands about 0.8 km from the line, beyond apartment blocks and fields, but it clears everything around it so comprehensively that you do not really have to look for it. After dark it is lit, and the ring floats above the coast. Keep watching the same window afterwards: about half a minute later, Mikawa Bay and the gourd-shaped island of Mikawa Oshima appear in the distance. This is the stretch where the sea side earns its keep."},"photo":{"src":"images/20260820_laguna_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるラグーナテンボスの観覧車","en":"The Laguna Ten Bosch wheel seen from the Seat A side"},"caption":{"ja":"街並みの向こうに立つ白い輪 / 写真：新幹線の窓","en":"A white wheel beyond the town / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.lagunatenbosch.co.jp/lagunasia/index.html"},
-  {"id":"horiuchi","stampId":"ferris-wheel-horiuchi","minutesFromTokyo":87,"side":"A","lat":34.9288139,"lng":137.0912944,"confidence":"verified","durationSec":5,"name":{"ja":"堀内公園","en":"Horiuchi Park"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"公園の輪も、車窓の仲間","en":"A park wheel joins the journey"},"body":{"ja":"安城市の堀内公園にも観覧車があります。三河安城の手前、A席側の住宅地の奥に小さく見えます。ラグーナの輪より低く、建物に紛れやすい輪です。","en":"Horiuchi Park in Anjo has a Ferris wheel too. It appears small beyond the houses on the Seat A side before Mikawa-Anjo. Lower than the Laguna wheel, it blends easily into the buildings."},"story":{"ja":"三河安城に着く1分ほど前、A席側の住宅地の奥に、小さな観覧車が見えます。安城市の堀内公園です。「花とみどりとメルヘン」をテーマにした市営の公園で、入園は無料。汽車のメルヘン号、メリーゴーランド、サイクルモノレール、そしてこの観覧車が、どれも1回100円前後で動いています。遊園地というより、観覧車のある公園。数分前に見えるラグーナテンボスの輪（65m）にくらべるとずっと低く、屋根や電柱と同じ高さの帯に入ってしまいます。空ではなく、屋根の並びのなかに丸い骨組みが混じっていないかを探してください。線路からは約0.45kmと、ここで紹介する観覧車のなかでいちばん近いのに、いちばん見つけにくい——そういう小ささが、この輪の性格です。","en":"About a minute before Mikawa-Anjo, a small Ferris wheel shows beyond the houses on the Seat A side. It belongs to Horiuchi Park, a free municipal park in Anjo built around the theme of flowers, greenery and fairy tales. A little train, a carousel, a cycle monorail and this wheel all run for around a hundred yen a ride; it is less an amusement park than a park that happens to have a Ferris wheel. Compared with the 65-metre wheel at Laguna Ten Bosch a few minutes earlier it is much lower, and it sits in the same band of the window as the roofs and power poles in front of it. Do not look for a ring against the sky — look for something round and latticed among the rooflines. At about 0.45 km it is the closest wheel in this collection to the line and still the hardest to find, which is rather the point of it."},"photo":{"src":"images/20260820_horiuchi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見える堀内公園の観覧車","en":"The Horiuchi Park wheel seen from the Seat A side"},"caption":{"ja":"住宅地の奥に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel beyond the houses / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.city.anjo.aichi.jp/tanoshimu/koen/horiuchi.html"},
+  {"id":"fuji-sky-view","stampId":"ferris-wheel-fuji-sky-view","minutesFromTokyo":46,"side":"E","lat":35.16175,"lng":138.61735,"confidence":"verified","durationSec":5,"name":{"ja":"Fuji Sky Viewの観覧車","en":"Fuji Sky View Ferris Wheel"},"area":{"ja":"新富士 → 静岡（富士川橋梁）","en":"Shin-Fuji → Shizuoka (Fuji River bridge)"},"hook":{"ja":"水管橋のむこうに、小さな輪","en":"A small wheel beyond the pipe bridge"},"body":{"ja":"富士川を渡るとき、E席側で白い水管橋のさらに向こうを探してみてください。富士川SA上り線の「Fuji Sky View」が、小さな輪として見えます。富士山や橋といっしょに楽しむ、川上の遠景です。","en":"As the train crosses the Fuji River, look beyond the white pipe bridge on the Seat E side. Fuji Sky View, at the Tokyo-bound Fujikawa service area, appears as a small distant wheel: one more detail in the river-and-mountain panorama."},"story":{"ja":"白い水管橋のむこう、富士川の川上に見える小さな観覧車が「Fuji Sky View」です。2017年2月23日の「富士山の日」に、東名高速道路の富士川SA上り線に開業しました。運営する泉陽興業によると、ゴンドラの最上部は地上60m。新幹線からは約2.8km離れた遠景なので、富士川橋梁へ入る前にE席側へ構え、水管橋の奥を探すのが手がかりです。","en":"The small wheel upstream beyond the white pipe bridge is Fuji Sky View. It opened on Mount Fuji Day, 23 February 2017, at the Tokyo-bound Fujikawa service area on the Tomei Expressway. Operator Senyo describes gondolas reaching 60 metres above ground. From the Shinkansen it is roughly 2.8 km away, so be ready at the Seat E window before crossing the river and look beyond the pipe bridge."},"official":"https://www.senyo.co.jp/fujiskyview/","guidePageId":"fujikawa-bridge","guideRoute":{"ja":"spots/fujikawa-bridge.html","en":"en/spots/fujikawa-bridge.html"},"viewpoint":{"lat":35.138661,"lng":138.63660565},"photo":{"src":"images/20260924_fuji-sky-view_33058_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"水管橋の奥に見えるFuji Sky View","en":"Fuji Sky View beyond the water pipe bridge"},"caption":{"ja":"富士川水管橋の向こうの小さな輪 / 写真：michikusa（2026-09-24）","en":"A small wheel beyond the pipe bridge / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}},
+  {"id":"nonhoi","stampId":"ferris-wheel-nonhoi","minutesFromTokyo":77,"side":"A","lat":34.72111,"lng":137.43194,"confidence":"verified","durationSec":8,"name":{"ja":"のんほいパーク","en":"Nonhoi Park"},"area":{"ja":"浜松 → 豊橋","en":"Hamamatsu → Toyohashi"},"hook":{"ja":"豊橋の手前で、ひとつ","en":"A wheel before Toyohashi"},"body":{"ja":"豊橋に着く手前、A席側。住宅や工場の屋根の向こうに、白い輪が立っています。曇りの日でも空を背にするので、形は見分けられます。","en":"Just before Toyohashi, on the Seat A side, a white wheel stands beyond the roofs of houses and factories. It sits against the sky, so its shape reads even on a cloudy day."},"story":{"ja":"浜松を出て豊橋へ向かう終盤、A席側の住宅と工場の屋根の向こうに、白い観覧車が立っています。豊橋総合動植物公園「のんほいパーク」の大観覧車です。高さは約50m、ゴンドラは6人乗りで、一周はおよそ12分。まわりに高い建物がない平地なので、空を背にした輪の形だけがすっと抜けて見え、曇りの日でも形は見分けられます。のんほいパークは動物園・植物園・自然史博物館・遊園地の4つをひとつにした39.6haの公園で、1992年に今の総合公園として開園しました。愛称の「のんほい」は、東三河の方言「のん」「ほい」から。線路から約0.65kmと近いぶん、現れてから消えるまでは8秒ほどです。まもなく豊橋、という合図にもなる観覧車です。","en":"In the last minutes before Toyohashi, a white Ferris wheel stands beyond the houses and factory roofs on the Seat A side. It belongs to Nonhoi Park, the combined zoo, botanical garden, natural history museum and amusement park that Toyohashi opened in its present form in 1992; the odd name is two words of the local dialect. The wheel is about 50 metres tall, each gondola holds six people, and a full turn takes twelve minutes. Nothing around it comes close to that height, so on this wide, flat plain the ring simply lifts clear of the rooftops against the sky, even on an overcast day. It is only about 0.65 km from the line, which also means it is gone in around eight seconds. It is a sign that Toyohashi is approaching."},"photo":{"src":"images/20260904_nonhoi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるのんほいパークの観覧車","en":"The Nonhoi Park wheel seen from the Seat A side"},"caption":{"ja":"家並みと鉄塔の向こうに立つ輪 / 写真：新幹線の窓","en":"The wheel beyond houses and pylons / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.nonhoi.jp/amusement/","gallery":[{"src":"images/20260924_nonhoi-wheel_15060_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"のんほいパークの観覧車","en":"Nonhoi Park Ferris wheel"},"caption":{"ja":"のんほいパークの観覧車 / 写真：michikusa（2026-09-24）","en":"Nonhoi Park Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
+  {"id":"laguna","stampId":"ferris-wheel-laguna","minutesFromTokyo":82,"side":"A","lat":34.807722,"lng":137.27583,"confidence":"verified","durationSec":12,"name":{"ja":"ラグーナテンボス","en":"Laguna Ten Bosch"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"海辺の街に、輪を探す","en":"Look toward the coastal town"},"body":{"ja":"蒲郡の海辺にあるラグーナテンボスの観覧車。A席側、集合住宅や畑の向こうに白い輪が立っています。まわりの建物より高く出るので、遠くても見分けやすい輪です。","en":"The wheel at Laguna Ten Bosch stands in coastal Gamagori. On the Seat A side it rises white beyond apartment blocks and fields; it stands taller than the buildings around it, so it is easier to pick out than its distance suggests."},"story":{"ja":"豊橋を出て三河安城へ向かう途中、A席側に大きな白い輪が立ちます。蒲郡の海辺にあるラグーナテンボスの観覧車です。高さは65m、ゴンドラは4人乗りで、頂上からは三河湾が一望できます。中心のテーマパーク「ラグナシア」は2002年にラグーナ蒲郡として開業し、いまはラグーナテンボスの名前で営業しています。線路からは約0.8km。集合住宅や畑の向こうに立っていますが、まわりの建物よりずっと高く出るので、探すというより目に入ってくる輪です。夜はイルミネーションが灯り、暗い海辺に光の輪が浮かびます。見送ったあとも窓はそのままに。30秒ほどあと、同じA席側の遠くに三河湾と三河大島が現れます。海側の窓がいちばん楽しい区間です。","en":"Between Toyohashi and Mikawa-Anjo, a large white wheel rises on the Seat A side. This is the Ferris wheel at Laguna Ten Bosch, a seaside resort on the coast at Gamagori whose theme park opened in 2002: 65 metres tall, four to a gondola, with the whole of Mikawa Bay laid out from the top. It stands about 0.8 km from the line, beyond apartment blocks and fields, but it clears everything around it so comprehensively that you do not really have to look for it. After dark it is lit, and the ring floats above the coast. Keep watching the same window afterwards: about half a minute later, Mikawa Bay and the gourd-shaped island of Mikawa Oshima appear in the distance. This is the stretch where the sea side earns its keep."},"photo":{"src":"images/20260820_laguna_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるラグーナテンボスの観覧車","en":"The Laguna Ten Bosch wheel seen from the Seat A side"},"caption":{"ja":"街並みの向こうに立つ白い輪 / 写真：新幹線の窓","en":"A white wheel beyond the town / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.lagunatenbosch.co.jp/lagunasia/index.html","gallery":[{"src":"images/20260924_laguna-wheel_5380_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"ラグーナテンボスの観覧車","en":"Laguna Ten Bosch Ferris wheel"},"caption":{"ja":"ラグーナテンボスの観覧車 / 写真：michikusa（2026-09-24）","en":"Laguna Ten Bosch Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
+  {"id":"horiuchi","stampId":"ferris-wheel-horiuchi","minutesFromTokyo":87,"side":"A","lat":34.9288139,"lng":137.0912944,"confidence":"verified","durationSec":5,"name":{"ja":"堀内公園","en":"Horiuchi Park"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"公園の輪も、車窓の仲間","en":"A park wheel joins the journey"},"body":{"ja":"安城市の堀内公園にも観覧車があります。三河安城の手前、A席側の住宅地の奥に小さく見えます。ラグーナの輪より低く、建物に紛れやすい輪です。","en":"Horiuchi Park in Anjo has a Ferris wheel too. It appears small beyond the houses on the Seat A side before Mikawa-Anjo. Lower than the Laguna wheel, it blends easily into the buildings."},"story":{"ja":"三河安城に着く1分ほど前、A席側の住宅地の奥に、小さな観覧車が見えます。安城市の堀内公園です。「花とみどりとメルヘン」をテーマにした市営の公園で、入園は無料。汽車のメルヘン号、メリーゴーランド、サイクルモノレール、そしてこの観覧車が、どれも1回100円前後で動いています。遊園地というより、観覧車のある公園。数分前に見えるラグーナテンボスの輪（65m）にくらべるとずっと低く、屋根や電柱と同じ高さの帯に入ってしまいます。空ではなく、屋根の並びのなかに丸い骨組みが混じっていないかを探してください。線路からは約0.45kmと、ここで紹介する観覧車のなかでいちばん近いのに、いちばん見つけにくい——そういう小ささが、この輪の性格です。","en":"About a minute before Mikawa-Anjo, a small Ferris wheel shows beyond the houses on the Seat A side. It belongs to Horiuchi Park, a free municipal park in Anjo built around the theme of flowers, greenery and fairy tales. A little train, a carousel, a cycle monorail and this wheel all run for around a hundred yen a ride; it is less an amusement park than a park that happens to have a Ferris wheel. Compared with the 65-metre wheel at Laguna Ten Bosch a few minutes earlier it is much lower, and it sits in the same band of the window as the roofs and power poles in front of it. Do not look for a ring against the sky — look for something round and latticed among the rooflines. At about 0.45 km it is the closest wheel in this collection to the line and still the hardest to find, which is rather the point of it."},"photo":{"src":"images/20260820_horiuchi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見える堀内公園の観覧車","en":"The Horiuchi Park wheel seen from the Seat A side"},"caption":{"ja":"住宅地の奥に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel beyond the houses / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.city.anjo.aichi.jp/tanoshimu/koen/horiuchi.html","gallery":[{"src":"images/20260924_horiuchi-wheel_17960_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"堀内公園の観覧車","en":"Horiuchi Park Ferris wheel"},"caption":{"ja":"堀内公園の観覧車 / 写真：michikusa（2026-09-24）","en":"Horiuchi Park Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
   {"id":"nagoya-port","stampId":"ferris-wheel-nagoya-port","minutesFromTokyo":93,"side":"A","lat":35.0935778,"lng":136.8782056,"confidence":"source-backed","durationSec":6,"name":{"ja":"名古屋港シートレインランド","en":"Nagoya Port Sea Train Land"},"area":{"ja":"三河安城 → 名古屋","en":"Mikawa-Anjo → Nagoya"},"hook":{"ja":"ずっと遠くに、小さな輪","en":"A tiny ring in the distance"},"body":{"ja":"堀川を渡るあたり、A席側のビルの隙間に、輪郭だけの小さな輪が現れます。6基でいちばん遠く、肉眼では見つけにくい対象です。上りは名古屋を出てすぐ。朝焼けや夜のライトアップの時間帯が見つけやすく、昼は逆光になりやすいと紹介されています。","en":"Around the Horikawa River, a faint outline of a wheel appears between buildings on the Seat A side. It is the most distant of the six and hard to catch with the naked eye. On Tokyo-bound trains it comes just after Nagoya. Accounts suggest dawn light or the evening illumination make it easier to find, while daytime tends to be backlit."},"story":{"ja":"三河安城を過ぎ、名古屋の市街に入って堀川を渡るあたり。A席側のビルの隙間の遠くに、輪郭だけの観覧車が現れます。名古屋港シートレインランドの大観覧車です。1995年に開業した入園無料の遊園地にあり、高さは85m。名古屋市は東海地区最大級と紹介していて、頂上からは伊勢湾や名古屋の市街、晴れた日には鈴鹿山脈や伊吹山まで見渡せます。ただ、線路からは約3kmと、ここで紹介する観覧車のなかでも遠い部類です。肉眼では輪郭をつかむのがやっとで、昼は逆光になりやすく、朝焼けや夜のライトアップの時間帯のほうが見つけやすいと車窓の記録では紹介されています。上り列車なら名古屋を出てすぐです。","en":"Past Mikawa-Anjo, as the train enters Nagoya and crosses the Horikawa River, the faint outline of a wheel appears far off between buildings on the Seat A side. This is the big wheel at Nagoya Port Sea Train Land, a free-entry amusement park that opened in 1995. The wheel is 85 metres tall, which the city describes as among the largest in the Tokai region, and from the top you can see across Ise Bay and the city, and on clear days as far as the Suzuka mountains and Mount Ibuki. From the train, though, it is about 3 km away — one of the most distant wheels in this collection — and with the naked eye you will do well to make out its shape. People who have photographed it from the window say dawn light or the evening illumination makes it easier, while daytime tends to be backlit. On a Tokyo-bound train it comes just after Nagoya."},"photo":{"src":"images/20260919_nagoya_port_wheel_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"新幹線のA席側から堀川越しに遠く見える名古屋港シートレインランドの観覧車","en":"The distant Nagoya Port Sea Train Land wheel seen from Seat A across the Horikawa River"},"caption":{"ja":"川の向こう、街並みの上に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel above the buildings beyond the river / Photo: Shinkansen Window"},"credit":{"ja":"michikusa","en":"michikusa"}},"source":"https://cotetu.seesaa.net/article/516568359.html","sourceName":{"ja":"新幹線の車窓から 115","en":"新幹線の車窓から 115 (Japanese)"},"reference":"https://ameblo.jp/new-nagoyan/entry-12811240802.html","referenceName":{"ja":"参考：なごやんの旅日記「車窓の観覧車⑥ 名古屋港シートレインランド」","en":"Further reading: a blog account of this wheel from the window (Japanese)"},"official":"https://www.city.nagoya.jp/minato/miryoku/1023507/1036753/1023513.html"},
   {"id":"hirakata","stampId":"hirakata-park-wheel","minutesFromTokyo":139,"side":"A","lat":34.8075,"lng":135.6385,"confidence":"verified","durationSec":10,"name":{"ja":"ひらかたパーク","en":"Hirakata Park"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"淀川の向こうに、ひらパー","en":"Across the Yodo River"},"body":{"ja":"淀川の対岸に見える「スカイウォーカー」。街並みと鉄塔の中に、小さな輪がひとつ。夜は光る輪が、暗い対岸にぽつんと浮かびます。","en":"Sky Walker appears across the Yodo River: a small ring among buildings and pylons. At night, the lit wheel floats alone on the dark far bank."},"photo":{"src":"images/20260824_hirakata_park_wheel_michikusa.jpg","alt":{"ja":"夕暮れの新幹線から見えるひらかたパークの観覧車","en":"The Hirakata Park wheel at dusk, seen from the Shinkansen"},"caption":{"ja":"夕暮れに光りはじめたスカイウォーカー / 写真：新幹線の窓","en":"Sky Walker lighting up at dusk / Photo: Shinkansen Window"}},"official":"https://www.hirakatapark.co.jp/attractions/skywalker/"},
-  {"id":"osaka-wheel","stampId":"ferris-wheel-osaka-wheel","minutesFromTokyo":143,"side":"E","lat":34.80625,"lng":135.53475,"confidence":"source-backed","durationSec":8,"name":{"ja":"エキスポシティの観覧車（OSAKA WHEEL）","en":"OSAKA WHEEL at EXPOCITY"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"最後の輪は、反対の窓に","en":"One more wheel, on the other side"},"body":{"ja":"万博記念公園のとなり、EXPOCITYに立つ日本一の高さの観覧車です。6基のうちこれだけがE席側。ブログ『ずっしー。』は車窓写真に矢印を添えて位置を示し、昼より夜のほうがライトアップで遠くからも見つけやすいと書いています。横から見るぶん輪は細く、建物に隠れることもあります。","en":"Japan’s tallest Ferris wheel stands at EXPOCITY, next to the Expo park. It is the only one of the six on the Seat E side. The blog Zusshi marks its position with an arrow on a window photograph and notes it is easier to find lit up at night than by day. Seen edge-on the wheel looks narrow, and buildings can hide it."},"story":{"ja":"京都を過ぎて新大阪が近づくころ、今度は反対のE席側、万博記念公園のとなりに大きな観覧車が立ちます。エキスポシティのOSAKA WHEELです。高さ123mは日本一で、全ゴンドラの床がシースルー、世界初の免震構造を備えた観覧車として知られています。ここまでの観覧車はすべてA席側だったので、E席に座っている人にとっては最初で最後の一基。ただし線路からは約4.8kmあり、しかも横から見る角度になるため、輪は細い楕円に見え、建物に隠れることもあります。公式サイトによると、現在は営業休止中で、再開の時期は未定です。輪そのものは立っていますが、夜のライトアップが見られるかどうかは分かりません。","en":"As Shin-Osaka approaches, the last wheel appears on the other side of the train — Seat E — beside the Expo '70 Commemorative Park. This is OSAKA WHEEL at EXPOCITY: at 123 metres the tallest Ferris wheel in Japan, with see-through floors in every gondola and a seismic-isolation structure its operator calls a world first. Every wheel before it has been on the Seat A side, so for anyone in Seat E this is the first and only one. It is about 4.8 km from the line, though, and seen almost edge-on, so the ring reads as a narrow oval and can drop behind buildings. According to its official site the wheel is currently closed, with no date set for reopening. The structure still stands, but whether it is lit at night is uncertain."},"photo":{"src":"images/20160904_osaka_wheel_zusshi.jpg","width":800,"height":600,"alt":{"ja":"矢印の先に小さく見えるエキスポシティの観覧車","en":"An arrow marking the distant EXPOCITY wheel"},"caption":{"ja":"矢印の先、街並みの向こうに立つ輪 / 写真：ずっしー。","en":"The wheel beyond the rooftops, at the arrow / Photo: Zusshi"},"credit":{"ja":"ずっしー。","en":"Zusshi"},"creditUrl":"https://ameblo.jp/ginga03142008/entry-12194686170.html"},"source":"https://ameblo.jp/ginga03142008/entry-12194686170.html","sourceName":{"ja":"ずっしー。「新幹線から観覧車見えました！」","en":"Zusshi, “I saw the Ferris wheel from the Shinkansen” (Japanese)"},"official":"https://osaka-wheel.com/","seatSource":"https://www.city.suita.osaka.jp/_res/projects/default_project/_page_/001/035/005/HP2/R6_07_tanpage.pdf","seatSourceName":{"ja":"席側の裏付け：市報すいた 2024年7月号・8ページ","en":"Seat side confirmed by Suita City newsletter, July 2024, p. 8 (Japanese PDF)"}},
+  {"id":"osaka-wheel","timingSpotId":"torikai-train-depot","stampId":"ferris-wheel-osaka-wheel","minutesFromTokyo":141,"side":"E","lat":34.80625,"lng":135.53475,"confidence":"source-backed","durationSec":8,"name":{"ja":"エキスポシティの観覧車（OSAKA WHEEL）","en":"OSAKA WHEEL at EXPOCITY"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"最後の輪は、反対の窓に","en":"One more wheel, on the other side"},"body":{"ja":"鳥飼車両基地と同じE席側の車窓。車両基地の奥、ビルの陰にEXPOCITYの観覧車が小さく見えます。輪全体が見えるとは限らないので、写真を目印に建物の間を探してください。","en":"From Seat E at Torikai depot, look behind the buildings beyond the parked trains for the small EXPOCITY wheel. It may be partly hidden: use the photograph to find the gap."},"story":{"ja":"京都を過ぎて新大阪が近づくころ、今度は反対のE席側、万博記念公園のとなりに大きな観覧車が立ちます。エキスポシティのOSAKA WHEELです。高さ123mは日本一で、全ゴンドラの床がシースルー、世界初の免震構造を備えた観覧車として知られています。富士川のFuji Sky Viewと同じく、E席側から探せる一基。ただし車窓からは数km離れており、しかも横から見る角度になるため、輪は細い楕円に見え、建物に隠れることもあります。公式サイトによると、現在は営業休止中で、再開の時期は未定です。輪そのものは立っていますが、夜のライトアップが見られるかどうかは分かりません。","en":"As Shin-Osaka approaches, the last wheel appears on the other side of the train — Seat E — beside the Expo '70 Commemorative Park. This is OSAKA WHEEL at EXPOCITY: at 123 metres the tallest Ferris wheel in Japan, with see-through floors in every gondola and a seismic-isolation structure its operator calls a world first. Like Fuji Sky View by the Fuji River, this is a wheel to look for from Seat E. It is several kilometres away, though, and seen almost edge-on, so the ring reads as a narrow oval and can drop behind buildings. According to its official site the wheel is currently closed, with no date set for reopening. The structure still stands, but whether it is lit at night is uncertain."},"photo":{"src":"images/20260924_expocity-wheel_42162_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"鳥飼車両基地の奥に見えるEXPOCITYの観覧車","en":"EXPOCITY Ferris wheel beyond Torikai depot"},"caption":{"ja":"鳥飼車両基地の奥に見えるEXPOCITYの観覧車 / 写真：michikusa（2026-09-24）","en":"EXPOCITY Ferris wheel beyond Torikai depot / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}},"source":"https://ameblo.jp/ginga03142008/entry-12194686170.html","sourceName":{"ja":"ずっしー。「新幹線から観覧車見えました！」","en":"Zusshi, “I saw the Ferris wheel from the Shinkansen” (Japanese)"},"official":"https://osaka-wheel.com/","seatSource":"https://www.city.suita.osaka.jp/_res/projects/default_project/_page_/001/035/005/HP2/R6_07_tanpage.pdf","seatSourceName":{"ja":"席側の裏付け：市報すいた 2024年7月号・8ページ","en":"Seat side confirmed by Suita City newsletter, July 2024, p. 8 (Japanese PDF)"},"viewpoint":{"lat":34.775259,"lng":135.571088}},
 ].map((item) => ({
   ...item,
   icon: "🎡",
   collectionKind: "wheel",
   // 代表のひらかたパークは通常スポットなので、コレクション側の地点としては扱わない。
   isWheelCollection: item.stampId !== "hirakata-park-wheel",
-  guidePageId: "hirakata-park-wheel",
-  guideRoute: { ja: "ferris-wheels.html", en: "en/ferris-wheels.html" },
+  guidePageId: item.guidePageId || "hirakata-park-wheel",
+  guideRoute: item.guideRoute || { ja: "ferris-wheels.html", en: "en/ferris-wheels.html" },
   category: "notable",
   timeOfDay: "day",
   scene: "solar",
@@ -5343,7 +6132,7 @@ const WHEEL_COLLECTION = [
   sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
   map: { lat: item.lat, lng: item.lng, ja: item.name.ja, en: item.name.en },
   image: item.photo?.src || "images/stamps/stamp_hirakata-park-wheel.svg",
-  photos: item.photo ? [{ src: item.photo.src, alt: item.photo.alt, credit: item.photo.credit || { ja: "michikusa", en: "michikusa" }, note: item.photo.caption }] : [],
+  photos: [item.photo, ...(item.gallery || [])].filter(Boolean).map(photo => ({ src: photo.src, alt: photo.alt, credit: photo.credit || { ja: "michikusa", en: "michikusa" }, note: photo.caption })),
   ja: { name: wheelDisplayName(item.name.ja, "ja"), area: item.area.ja, hook: item.hook.ja, story: (item.story || item.body).ja },
   en: { name: wheelDisplayName(item.name.en, "en"), area: item.area.en, hook: item.hook.en, story: (item.story || item.body).en },
 }));

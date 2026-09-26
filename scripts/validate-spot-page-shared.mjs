@@ -250,6 +250,7 @@ async function runThinValidator() {
     for (const photo of [...(page.photos || []), ...(page.gallery || []), ...(page.inline || [])]) {
       if (!safeAsset(photo.src) || !safeAsset(photo.thumb) || (photo.sourceUrl && !/^https?:\/\/[^\s<>"']+$/i.test(photo.sourceUrl))) fail(`${spot.id}/${lang} photo path/source is unsafe`);
     }
+    for (const photo of page.gallery) if (!safeAsset(photo.smallThumb)) fail(`${spot.id}/${lang} gallery small thumbnail path is unsafe`);
     assertProjectedImage(page.referenceImage, `${spot.id}/${lang} reference`);
     assertProjectedImage(page.explainer?.figure, `${spot.id}/${lang} explainer`);
     for (const link of [...(page.bodyLinks || []), ...(page.references || [])]) if (!/^https?:\/\/[^\s<>"']+$/i.test(link.href)) fail(`${spot.id}/${lang} external link is unsafe`);
@@ -310,6 +311,7 @@ async function runThinValidator() {
         if (!fs.existsSync(path.join(appDir, photo.src))) fail(`${spot.id}/${lang} gallery image is missing: ${photo.src}`);
         if (!fs.existsSync(path.join(appDir, photo.thumb))) fail(`${spot.id}/${lang} gallery thumbnail is missing: ${photo.thumb}`);
       }
+      for (const photo of page.gallery) if (!fs.existsSync(path.join(appDir, photo.smallThumb))) fail(`${spot.id}/${lang} gallery small thumbnail is missing: ${photo.smallThumb}`);
       for (const photo of [page.referenceImage, page.explainer?.figure]) {
         if (!photo) continue;
         if (photo.src && !fs.existsSync(path.join(appDir, photo.src))) fail(`${spot.id}/${lang} article image is missing: ${photo.src}`);

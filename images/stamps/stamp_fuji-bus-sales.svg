@@ -12,7 +12,7 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">富士バス販売</text>
+<text x="100" y="52" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">富士バス販売</text>
 
 <g fill="none" stroke-width="2.3">
 <rect x="45" y="83" width="110" height="40" rx="5"/>
@@ -20,6 +20,6 @@
 <circle cx="68" cy="124" r="6"/><circle cx="132" cy="124" r="6"/>
 <path d="M55 137 H145 M59 143 H141" stroke-width="1.8"/>
 </g>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約45分・A席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">A席</text>
 </g>
 </svg>

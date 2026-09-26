@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="江戸城 富士見櫓 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="56" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">江戸城 富士見櫓</text>
+
+
+<g stroke-width="2.5" fill="none">
+<path d="M72.7 130 L79 113.2 H121 L127.3 130"/>
+<path d="M74.8 113.2 Q100 102.7 125.2 113.2"/>
+<rect x="85.3" y="94.3" width="29.400000000000002" height="18.900000000000002"/>
+<path d="M79 94.3 Q100 83.8 121 94.3"/>
+<rect x="90.55" y="79.6" width="18.900000000000002" height="14.700000000000001"/>
+<path d="M84.25 79.6 Q100 69.1 115.75 79.6"/>
+<path d="M95.8 69.1 L100 63.849999999999994 L104.2 69.1"/>
+</g>
+<g fill="none" stroke-width="2.5">
+<path d="M73 130 L65 144 H135 L127 130 M69 138 H131"/>
+<path d="M84 131 L81 138 M100 131 V138 M116 131 L119 138" stroke-width="1.8"/>
+</g>
+<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約1分・E席</text>
+</g>
+</svg>

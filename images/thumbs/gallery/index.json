@@ -1,0 +1,1578 @@
+{
+  "images/thumbs/gallery/190103_hamanako_fuji_sentokia.webp": {
+    "source": "images/190103_hamanako_fuji_sentokia.jpg",
+    "sourceSha256": "9ffbc3a94dda3dbd70f27d3766299d110c22ed83bb5932383f862a3480d09a7e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2862bb1dd8cdf44fb9ae2646306e7bc58928ca29d24ab7fa47fc598b81423dd0"
+  },
+  "images/thumbs/gallery/20170307_gifu_castle_zusshi.webp": {
+    "source": "images/20170307_gifu_castle_zusshi.jpg",
+    "sourceSha256": "6bb86137f51210593b1ebd04b2ed72f6f5f3ecab7684b6322a5f0f44b5738220",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "975ef15aed8599422d8d019c9a615ce5e97d47fa9d2791896ba1e0afb172ea74"
+  },
+  "images/thumbs/gallery/20170307_hikone_castle_zusshi.webp": {
+    "source": "images/20170307_hikone_castle_zusshi.jpg",
+    "sourceSha256": "dd58a7b519c3a84a5df1d595708983016a74aeb391f923edf4ebf18adcdc9784",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a5b41f1a57ed88f369f11ab7b3bf03ea67276a863f284473df23675dc53b9601"
+  },
+  "images/thumbs/gallery/201707_solar_ark_letus10.webp": {
+    "source": "images/201707_solar_ark_letus10.jpg",
+    "sourceSha256": "c5edef0229e3b94be7b035e6d940d854ca5e9ccddf98dd4934c2f3af4a89702f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "716a9f206e054de38b05769e28238c0c7f5c092b23a195f6c23675024c92c0f4"
+  },
+  "images/thumbs/gallery/20181213_mikawa_oshima_kawasan3.webp": {
+    "source": "images/20181213_mikawa_oshima_kawasan3.jpg",
+    "sourceSha256": "424b315ce5d64ba4cfb8847c639df44b414393711ca7479a74bf9296ae68703d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f8a9f2be2180bb9e28be1a15867bf9ff8fc045bd68bfa2b4f7fa656c542747f5"
+  },
+  "images/thumbs/gallery/20190127_putiputi_sign_putiputi0808.webp": {
+    "source": "images/20190127_putiputi_sign_putiputi0808.jpg",
+    "sourceSha256": "7e8409e9836f4163c7871b8dcbcb30ef771d73ebf460aaab793db30b5cda2be1",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "892fbc65345f80da9f97ee3104bcc56b6e1006e165a9cd840ae41cba505346a5"
+  },
+  "images/thumbs/gallery/20191027_toyohashi_tateiwa_aosemi1995.webp": {
+    "source": "images/20191027_toyohashi_tateiwa_aosemi1995.jpg",
+    "sourceSha256": "5ea753b815fff7ff4ebd9d81367ff2fc84d48a19219e7ec8a2db258c6fa5f8e6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e5c687ebada57c1084903d952334aff4274e6aeb54bbd46edd1c18c01c0486a8"
+  },
+  "images/thumbs/gallery/20191203_hamanako_fuji_kawasan3.webp": {
+    "source": "images/20191203_hamanako_fuji_kawasan3.jpg",
+    "sourceSha256": "10a646fa82786c5d22c9d1190073e8738b824d7a2b6f6f2b82e075a0c9f8b4e4",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3bbf4aa0ce2ab038b18759c46ed8b1655d8db3fd29a862c01aaa509ff900e3de"
+  },
+  "images/thumbs/gallery/20210218_fuji_rumireport.webp": {
+    "source": "images/20210218_fuji_rumireport.jpg",
+    "sourceSha256": "4bb3ea36ec601d636def5c0dd49f26d7a119a6b312bcf3d440b477db2b64ac91",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9009671407fee02b3417b5b0bf8b7189ca4a28a26959bd79cc6bac030f72fa1d"
+  },
+  "images/thumbs/gallery/20210923_toyohashi_tateiwa_pato727.webp": {
+    "source": "images/20210923_toyohashi_tateiwa_pato727.jpg",
+    "sourceSha256": "f91fadb212617c560e87c2bca23011599c170fd0935ba45932db9eaec2cd6de0",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e8c4b6311d3cc46d987fa60a4ab309b572b747b53f2f5cd4ed25930acf1e089e"
+  },
+  "images/thumbs/gallery/20220205_fujikawa_bridge_michikusa.webp": {
+    "source": "images/20220205_fujikawa_bridge_michikusa.jpg",
+    "sourceSha256": "b290afcf434572b8b42e1f6990c4fc6e9e72986cc215e83defa0236388dc920f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "905481ff1eeade2838f7ce9a942d7cf809e9b7b781b604c7bb7ab79984a4f398"
+  },
+  "images/thumbs/gallery/20220312_kakegawa_castle_neoromancefan.webp": {
+    "source": "images/20220312_kakegawa_castle_neoromancefan.jpg",
+    "sourceSha256": "49fce6438106e8ea7a4a358a40c33250aa37204f691f18afefde92ddcda9e5d7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "13ba58fa3aec275c01544d16f1d77eaa02cb94be5e286e474654680d356a066f"
+  },
+  "images/thumbs/gallery/20220626_toyohashi_tateiwa_suyqs3wr42jnm5i.webp": {
+    "source": "images/20220626_toyohashi_tateiwa_suyqs3wr42jnm5i.jpg",
+    "sourceSha256": "7d74e407d100ffbe2350a2509e1aeecfa509805df116bd1751c6ff89ba572b01",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f608667101e95e43a53bba4ce508e7a8e882e3c1e5d26befe08f57a54a214f3e"
+  },
+  "images/thumbs/gallery/20230913_fuji_michikusa.webp": {
+    "source": "images/20230913_fuji_michikusa.jpg",
+    "sourceSha256": "c9bbaed3637e31a41574b8eb33051c3947f7fdd746e74217dca3e3d4d2360990",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b66f8dbf5d1ce5df0fba019b71f57d14df2f1c1ac261f899c24854a615058a6e"
+  },
+  "images/thumbs/gallery/20240114_ibukiyama.webp": {
+    "source": "images/20240114_ibukiyama.png",
+    "sourceSha256": "f5b2601cd46a457b4c0466a05e1602e52d4bf5fd2405c432a59a8154332ed288",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8e6a4bfb65ce73134464047b5543d8e20eb5d3ad1167bdb8fe88f70e898b8af9"
+  },
+  "images/thumbs/gallery/20240114_sagami_fuji_odawara_michikusa.webp": {
+    "source": "images/20240114_sagami_fuji_odawara_michikusa.jpg",
+    "sourceSha256": "be70f8c950ce117f1f4d5cc00cb32c9676955821382eb1004a74b5c73cc10157",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "abf728a1042bf7a5b05c90bfb2a87c8307436cf807de891c03fa9ad162dc99a9"
+  },
+  "images/thumbs/gallery/20240119_shimizu_port_chikyu_senba16530315.webp": {
+    "source": "images/20240119_shimizu_port_chikyu_senba16530315.jpg",
+    "sourceSha256": "385aa725101deda0b75596728b29f0b28abe12233b6bc35054b46d50535fa2d2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "32e0c0470f760b66c933a143ecd6d87ba667d9fea2b1324c56b032d3839a0fd5"
+  },
+  "images/thumbs/gallery/20240211_fuji_michikusa.webp": {
+    "source": "images/20240211_fuji_michikusa.jpg",
+    "sourceSha256": "ece7c5ccf60886a7cbb45b233c082a8f1d843a7a1ca38cfcf0b888f432df20f2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d0d40dc813c5bbdce4256881ed1b940021ce70714a28838001b94dde3aa4c56b"
+  },
+  "images/thumbs/gallery/20240410_left_fuji_earlyretiremile.webp": {
+    "source": "images/20240410_left_fuji_earlyretiremile.jpg",
+    "sourceSha256": "709d0716f285fb38e706f198e194dcd9a496e3d186b86ea6de98e9f24c9b4e20",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "05e006ee2db8f485d42a0cbad7ed5b7bfb9bd5302ee939a1fc74632bc4a29e4d"
+  },
+  "images/thumbs/gallery/20240709_ota_fuji_asami_k920.webp": {
+    "source": "images/20240709_ota_fuji_asami_k920.jpg",
+    "sourceSha256": "5e528053856c3febfca071863c2007f6ad299991b732cb31e88fbb4bff5def84",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2d06c9b0b61aeabc54858402b28c116fcfaee070b126fd4272bd964e97ea32e6"
+  },
+  "images/thumbs/gallery/20240719_hikone_castle_asami_k920.webp": {
+    "source": "images/20240719_hikone_castle_asami_k920.jpg",
+    "sourceSha256": "624db8d130241fc24690c0e4ca49528df73319f3de60e272b7a31a3c0f03a8da",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a0392557eb350268c919e142eb275887cbbf234734102b631651f6b3d5d3b73c"
+  },
+  "images/thumbs/gallery/20240719_kannonji_castle_asami_k920.webp": {
+    "source": "images/20240719_kannonji_castle_asami_k920.jpg",
+    "sourceSha256": "7812430c0d5edf440baa3afa897bdf60bb1db6eff68a1c8e5a3f8d5a53f6d5ab",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e6c125978a072cf8aea071eade623eb85f6c488701407f5a2c051d726dbbc47a"
+  },
+  "images/thumbs/gallery/20240719_kiyosu_castle_asami_k920.webp": {
+    "source": "images/20240719_kiyosu_castle_asami_k920.jpg",
+    "sourceSha256": "1df9f538d694e74241f6715d8df5530f2df1cd9ba5256769ed7963b726badcff",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "bb9877e2f11ec509b11bc95a98f8e845de8e71c06e19a2af6a78bf05685bb37a"
+  },
+  "images/thumbs/gallery/20240719_sawayama_castle_asami_k920.webp": {
+    "source": "images/20240719_sawayama_castle_asami_k920.jpg",
+    "sourceSha256": "d57daa12f7c7a9f359e99d53146f879ae3208750e388a4e179778f7390dd0bf0",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3933b55536604a1ea98607c0c394c7de632de6ad6ee9b20c168f32da89d7e15d"
+  },
+  "images/thumbs/gallery/20241103_ota_fuji_magrittian.webp": {
+    "source": "images/20241103_ota_fuji_magrittian.jpg",
+    "sourceSha256": "94ab66dcf1d19e81ad03ad3428c9ca42a6f75e08d827d4b9c02fdee6dccdb7b1",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "574e2b9d8bbd246b44e869db682fcc8991ce44fd3411da1c9cf6203ff7ffa363"
+  },
+  "images/thumbs/gallery/20241129_fuji_paper_mills_OliverinJapan.webp": {
+    "source": "images/20241129_fuji_paper_mills_OliverinJapan.jpg",
+    "sourceSha256": "8b933d246f78a2bb15ab1fc83e296c18ff1f8e82f1916e6dc39715b6d11e9f68",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d81bbbed11e4866a027cc52976ed8c34610b29f5ecc8f830569281738d360faa"
+  },
+  "images/thumbs/gallery/20241212_left_fuji_kawasan3.webp": {
+    "source": "images/20241212_left_fuji_kawasan3.jpg",
+    "sourceSha256": "c0eb84e4eacfb4f693a310e7160bcf8a029aa5d1ed895cfa66b7fadfe519cba4",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c16f2a5fdd7b6c71fb0c96bdb8fcfb74b60e44124cccea96b6dcc565c3b43dd9"
+  },
+  "images/thumbs/gallery/20250111_tokyo_tower_letus10.webp": {
+    "source": "images/20250111_tokyo_tower_letus10.jpg",
+    "sourceSha256": "bc93f502190c1b50c116b6aa90fcd66c2d40540d857e433bd2b1e13c85f75952",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6df05a5ad8c56732c94cebe4b5462701dd80df75fc5c1c0afb42a8b73f1f0b2d"
+  },
+  "images/thumbs/gallery/20250221_nichiban_anjo_letus10.webp": {
+    "source": "images/20250221_nichiban_anjo_letus10.jpg",
+    "sourceSha256": "a00bad17f8a2d9ac76a2da9e3fce859d744e9bb7f6feb32a2d0c22dd3dd803df",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "85dcfb891aa3aaeedcd5042fceb889384c0cd3ecd74ceebae9b79e331176bcca"
+  },
+  "images/thumbs/gallery/20250309_kiyosu_castle_lightup_asami_k920.webp": {
+    "source": "images/20250309_kiyosu_castle_lightup_asami_k920.jpg",
+    "sourceSha256": "bd9cb4c858d620e7aba5b67c5f7f1b92f4099a94f07f71fa79279787b35886f3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b1dd4a02bae7343aa0d590c102d4036e850a5b62216ffeccd8ccd74ce8f1aefe"
+  },
+  "images/thumbs/gallery/20250523_hatsushima_letus10.webp": {
+    "source": "images/20250523_hatsushima_letus10.jpg",
+    "sourceSha256": "64e174a22eee635905f644521756288e7c6afa364460d5a77c53d4a688bb8fb9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2791c98e29bbe8880bfc0255c552d09641a6639f9e25dd8b86a4178e397dd391"
+  },
+  "images/thumbs/gallery/20250523_omi_fuji_kawasan3.webp": {
+    "source": "images/20250523_omi_fuji_kawasan3.jpg",
+    "sourceSha256": "f9951b87a8cbac90c22e90283f8a264416f6fc46f566d75eeec3d4b7c86c1f9c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5695cf85b77e03278f6ee414951a1429ee17ba9c1f993ac6d4f6e274b4b08408"
+  },
+  "images/thumbs/gallery/20250523_omi_fuji_wheat_kawasan3.webp": {
+    "source": "images/20250523_omi_fuji_wheat_kawasan3.jpg",
+    "sourceSha256": "2ce748d6df0c7116948c3722bdaf0bf448136045f2a22bb3cd4a82109ff76804",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "974cc8181551c276b8a6c10f42195b642f6777556a0650bb7af69d68af169d16"
+  },
+  "images/thumbs/gallery/20250524_atami_castle_letus10.webp": {
+    "source": "images/20250524_atami_castle_letus10.jpg",
+    "sourceSha256": "b5b3f8b25698fcfb0094b20a8ee212ad060b07dbb2c3eb4d5208c02f6d62cb82",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c3f85ab1dafaf7348773132940ca0e14e065894988e5dea748ac8152ec68c862"
+  },
+  "images/thumbs/gallery/20250526_odawara_castle_letus10.webp": {
+    "source": "images/20250526_odawara_castle_letus10.jpg",
+    "sourceSha256": "ab4577b2e5cba64f7210dc34ea10f510b472faf9c9180188036bda8f8557e4eb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9c85e56d805133e3a2073480448356614071be4b725aa24c16b72b41d1ad7b92"
+  },
+  "images/thumbs/gallery/20250531_maruko_bridge_letus10.webp": {
+    "source": "images/20250531_maruko_bridge_letus10.jpg",
+    "sourceSha256": "6fab1086dad938b499e2a3a68a52250ddb4e9f1582702d1d041a6201cf9e7315",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4a07037009c6fafdeebff517565970cc03731c4cfee31fb34b6d418888cdd043"
+  },
+  "images/thumbs/gallery/20250608_genki_sign_letus10.webp": {
+    "source": "images/20250608_genki_sign_letus10.jpg",
+    "sourceSha256": "8927094cf4becfb5dc176099a8dadf55536195fd256929703a712184a0124b38",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "bade69ab3c96f5599f9e94fb4e8bc2d1b2645afd1ef6a72ae8062fce2d500429"
+  },
+  "images/thumbs/gallery/20250706_mishima_catapult_1_letus10.webp": {
+    "source": "images/20250706_mishima_catapult_1_letus10.jpg",
+    "sourceSha256": "dddde40a8d6737e3583ccd08c9fbde7abe400fc3d34b475e8150ca1235cc8057",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "809c5b6e93d8fba4d94591351271b4ee61c4d01cfcba9fa0f66e69224b298432"
+  },
+  "images/thumbs/gallery/20250706_mishima_catapult_2_letus10.webp": {
+    "source": "images/20250706_mishima_catapult_2_letus10.jpg",
+    "sourceSha256": "52507b0f16b1df30ff2b35e04bb668d0659c50b44100a60c724d3eaa3b269627",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8eb9966b3a7687eccb4f8712fd1352826f237f3cd5d79fef902f9b4b88c84ab8"
+  },
+  "images/thumbs/gallery/20250820_seta_karahashi_letus10.webp": {
+    "source": "images/20250820_seta_karahashi_letus10.jpg",
+    "sourceSha256": "f2d901d5cb817d957962dc874452c356b1adfd4d7e3e5d003ad8a06035a9e9f2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "796300d2299bbfeb4a1b14d760ecdc392a64dcc231930fa3962242de9ff2998c"
+  },
+  "images/thumbs/gallery/20250831_sawayama_castle_letus10.webp": {
+    "source": "images/20250831_sawayama_castle_letus10.jpg",
+    "sourceSha256": "f14519590caf95c78e8bdc786892f415dc4996cdf2529fd5587245309b1ce360",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a598d061f06b957da0e7b7a9fd9f3367a9cfafa6056151834af6dd6b8c171094"
+  },
+  "images/thumbs/gallery/20250906_ibukiyama_ye__ba.webp": {
+    "source": "images/20250906_ibukiyama_ye__ba.jpg",
+    "sourceSha256": "3c6f0bc2d4273e8c23db723e2abc073e8f706345c3ec73c64759be83ecfb7e90",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1d5430f0b3bc51a79ea0caa80ce0fdc39ba98a1777bd2417c66872bb2ccfa18b"
+  },
+  "images/thumbs/gallery/20250909_seta_karahashi_c91256633.webp": {
+    "source": "images/20250909_seta_karahashi_c91256633.jpg",
+    "sourceSha256": "89474086429ade7540fe0dd52ab4e0c5c8b2fb475eb54af239c6e2c10ab614b9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "21f4e651e6bb460c50ae29e09c32e42a17c40d0f8b8f523e167303486e0e34d5"
+  },
+  "images/thumbs/gallery/20250920_kirin_beer_factory_2_letus10.webp": {
+    "source": "images/20250920_kirin_beer_factory_2_letus10.jpg",
+    "sourceSha256": "205cc7419babbb849c67f1228ecfdd90f43c7f11273d3d624bd0e289952fe0d9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e2469744e378f42113a46511df52179652da009c0aadd5daa279cb750cf26685"
+  },
+  "images/thumbs/gallery/20250920_kirin_beer_factory_letus10.webp": {
+    "source": "images/20250920_kirin_beer_factory_letus10.jpg",
+    "sourceSha256": "ec8e1ff13bff8f58d7a61b6dc9782ddd37a6f353c563815701a04708d6bd0123",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "38b9c645bde3e5f2e2a55821e3d2da29e31b6133f01fd5bf16479c035aa2272c"
+  },
+  "images/thumbs/gallery/20251112_odawara_castle_castle_traveler.webp": {
+    "source": "images/20251112_odawara_castle_castle_traveler.jpg",
+    "sourceSha256": "6d8ee9f0df893de7f439b6b6ec4da902c7e74695675f505648a79ed6c4f1bd99",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "564fa39104c4403df3bf1de82d4622e73bf0393786933ebbddc902f57f1d555e"
+  },
+  "images/thumbs/gallery/20251212_solar_ark_1_letus10.webp": {
+    "source": "images/20251212_solar_ark_1_letus10.jpg",
+    "sourceSha256": "b46e30a83271a238c6dfa638f17f7b1de9fd86b7e3bd33bc0e1ec147702a80d9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "bbfe6360c5447295509c578c6e8c2d4c31461a7e8a69b4434c2866fa08af80c7"
+  },
+  "images/thumbs/gallery/20251212_solar_ark_2_letus10.webp": {
+    "source": "images/20251212_solar_ark_2_letus10.jpg",
+    "sourceSha256": "78d8b319bf15189cbb8712d386d8d3472ea1c330c58fa4186839243a864102dd",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2b9b63abdf08902bbc4a7020b82d0be17e8a24d09c472a47d7b3ec816fce7c15"
+  },
+  "images/thumbs/gallery/20260505_hamanako_design_photosy_2.webp": {
+    "source": "images/20260505_hamanako_design_photosy_2.jpg",
+    "sourceSha256": "a8a82cbe915f3575d78e9b0c089b96fa9579d978d75b6a1d13a7e2221d76c207",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e5b88bba6fb5a2126178dd9c9bcc1e2fc4aeefb025657ea095b7ce0789d89d74"
+  },
+  "images/thumbs/gallery/20260505_hamanako_design_photosy.webp": {
+    "source": "images/20260505_hamanako_design_photosy.jpg",
+    "sourceSha256": "15f715307dd34f3d532832d1d08985a94296c38a023aa8db07f0ccbb66ecbeb7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5637c023fe4e49beec974afdd5e2380da66edf75eaeef1d1a6ff6511da257bee"
+  },
+  "images/thumbs/gallery/20260509_ota_fuji_t_yangyang.webp": {
+    "source": "images/20260509_ota_fuji_t_yangyang.jpg",
+    "sourceSha256": "b4e4eb71135f57acd609651252fb3567c074e65d47d908ddba8db6a2b236eebe",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0c37a2c63bd865af43e383d5841c155dd52a0e10159a4062b1c49a4bf23fcfc6"
+  },
+  "images/thumbs/gallery/20260510_toji.webp": {
+    "source": "images/20260510_toji.png",
+    "sourceSha256": "36de756ff062bc2ddcd9df34785c8f979a51a1f0a495ea58a71b5e60e6e4fbee",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3f90c6b2b2e7782fd058d26004f3c6727ba8aba2fa80a5359bd6efbdda7d6746"
+  },
+  "images/thumbs/gallery/20260513_left_fuji.webp": {
+    "source": "images/20260513_left_fuji.jpg",
+    "sourceSha256": "2186ce153bec8056b1b8116912c4ad7f603ad95bffa6c4bec7c1a349bc020ae8",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "61e225b3330479745b50046d9a7f88c4a95dfbf54d1623fce92729b6660354a9"
+  },
+  "images/thumbs/gallery/20260515_atami_sagami_bay.webp": {
+    "source": "images/20260515_atami_sagami_bay.jpg",
+    "sourceSha256": "11eb6e450583fabe0871af5d039947db3cfcaba6ea0ebb5b713f356c040fa094",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3aadb0914138711d17b73ba93145ddfe650bf48b8d4d09d1644e293e8cf40da3"
+  },
+  "images/thumbs/gallery/20260516_gyoran_kannon_michikusa.webp": {
+    "source": "images/20260516_gyoran_kannon_michikusa.jpg",
+    "sourceSha256": "0607148fecc5165bd74b8558a0fb86e36337f065d7e7196e30094f0f50547558",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ae71a98c63cb63124e62b207e3ead7c74072ef76a0f918772d4394d122d45c6b"
+  },
+  "images/thumbs/gallery/20260516_hamanako_seaside_1_michikusa.webp": {
+    "source": "images/20260516_hamanako_seaside_1_michikusa.jpg",
+    "sourceSha256": "4df80eb7fc690ee4547a2331b99c3bcf5eeae01956f1ac9c64c5bd3e5fab9475",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "72d88ae8642336c2690f635e8517c2c9f644a20554e8902fd93c6ac19a12d843"
+  },
+  "images/thumbs/gallery/20260516_hamanako_seaside_2_michikusa.webp": {
+    "source": "images/20260516_hamanako_seaside_2_michikusa.jpg",
+    "sourceSha256": "01d1d766499c9d4d231aa33a89601f3fd55b155df0da5030c4cfc04f8873c62d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a0343e56f99e25d882c66326f639445e79694647e51402028d5b2f829a79d5ac"
+  },
+  "images/thumbs/gallery/20260516_hamanako_torii_michikusa.webp": {
+    "source": "images/20260516_hamanako_torii_michikusa.jpg",
+    "sourceSha256": "7c511c2ae634beeb21b293937c822a420c26a4ae3f8ea84d33d5b83e8686d1d6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "214a66293a68e42082545b9dc28c7e2c840335973025d2ce92e6a0facd6d3099"
+  },
+  "images/thumbs/gallery/20260529_fuji_paper_mills_kamiyu_g1x_mk2.webp": {
+    "source": "images/20260529_fuji_paper_mills_kamiyu_g1x_mk2.jpg",
+    "sourceSha256": "3144024f636cc9355b31cf33089602da82c5d6fc5de603f7a8e834d7d779d629",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b03ab6108f6d2afac84dee46ebc783e83b61db912704078fe9d069d554d03137"
+  },
+  "images/thumbs/gallery/20260530_fujikawa_bridge_2_michikusa.webp": {
+    "source": "images/20260530_fujikawa_bridge_2_michikusa.jpg",
+    "sourceSha256": "3e7dcaba6c1999f92f69575eb92c56e40e8de97fadbcaea824ad34185ab04a9b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d2508933caf0591ba638cb55344375c4ea09b8737a229b7085aceebb7806cb8e"
+  },
+  "images/thumbs/gallery/20260530_hamanako.webp": {
+    "source": "images/20260530_hamanako.jpg",
+    "sourceSha256": "f0e709c52b0f6f781dae258f0d36160e87279e926e74c322fc47736b0d194eba",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ab600b9f257a8c249e13437e47a7ec180cc27d84c9d7a0e333ab16ee4c8b632e"
+  },
+  "images/thumbs/gallery/20260530_hinataoka_2_michikusa.webp": {
+    "source": "images/20260530_hinataoka_2_michikusa.jpg",
+    "sourceSha256": "9d015e7fc47aee2bdd0e89453fcc34a897669de34addf3cb5862becbaac64150",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9ce3e067a871868e6126ca1ab1bf9cd7d002169e459241df2a0cff701b0fe1d9"
+  },
+  "images/thumbs/gallery/20260530_hinataoka.webp": {
+    "source": "images/20260530_hinataoka.jpg",
+    "sourceSha256": "18eebb1a4580648641c46c5ef72a16e9276ad6504c4ca81a53f3240fbb119f99",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b8586b883599ca3ab7163bdf63e0f670076f5a74e4f696c3bf2df0237daa8073"
+  },
+  "images/thumbs/gallery/20260530_ibukiyama_2_michikusa.webp": {
+    "source": "images/20260530_ibukiyama_2_michikusa.jpg",
+    "sourceSha256": "d0bcef8fe5d7a7a57c4fe3b4a5fcc8f1ed85407f87d52bfaf31f99a0991ebdca",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d1e5715ba75c06c0fd4434fde345ef04fcb4d893ce9cb66ac347a7511e85c8ba"
+  },
+  "images/thumbs/gallery/20260530_ibukiyama.webp": {
+    "source": "images/20260530_ibukiyama.jpg",
+    "sourceSha256": "94f26f0295939fecb3b868d47cb4444b2eee9c47879e16bf637eaddb381da5b0",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1cac4563d74200cc3ee63f034a36ffb3d74bf4f34e0a09d5645611bba2868d66"
+  },
+  "images/thumbs/gallery/20260530_kakegawa_castle.webp": {
+    "source": "images/20260530_kakegawa_castle.jpg",
+    "sourceSha256": "47638517b06103680ebd4666e9341e9136d49393b24d70efff8daeb65512165f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e8d86bcaee47e8dfbf1ee844f8f660ade6ea004d7898e3196c7b4947d655075a"
+  },
+  "images/thumbs/gallery/20260530_kirin_beer_factory_michikusa.webp": {
+    "source": "images/20260530_kirin_beer_factory_michikusa.jpg",
+    "sourceSha256": "9ed31bb39e6bdcc6b05276df036a8466c5f204a55db8f825fe21e30caf43bc4f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "049c3ae71c5c5446e08ef190749f2726c0bfd8065d7c6293c75100dcc5f288fc"
+  },
+  "images/thumbs/gallery/20260530_kiyosu_castle.webp": {
+    "source": "images/20260530_kiyosu_castle.jpg",
+    "sourceSha256": "d6ea4d5984dade5e00e894c7237fe2ebcc7e0e293e712c8c7c529cf041576e10",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5e7f4b77ddbd3176ded4bbe41d23d7a19133f788178b64857857d34e1d8ec60b"
+  },
+  "images/thumbs/gallery/20260530_nagoya_station_1_michikusa.webp": {
+    "source": "images/20260530_nagoya_station_1_michikusa.jpg",
+    "sourceSha256": "4f30d038ce6ad6c28845958a94982755d974acaa878237275dc5e41b1c0f311e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d8c1cedeac91b32edc21901fbadb19929390f95ea7ee47af20c1f81157b6da9d"
+  },
+  "images/thumbs/gallery/20260530_nagoya_station_2_michikusa.webp": {
+    "source": "images/20260530_nagoya_station_2_michikusa.jpg",
+    "sourceSha256": "c847965b0228945a6ea631ca1b108082f735a18a54235ed5ff131eaf96e72c5b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e2ed22b584e234d9d303b04e9cf5ff7f752d6a1e0b93fc9384e2304569aeaeef"
+  },
+  "images/thumbs/gallery/20260530_nagoya_station_3_michikusa.webp": {
+    "source": "images/20260530_nagoya_station_3_michikusa.jpg",
+    "sourceSha256": "1a016fb43e1180b91cf93f8d0a5d073a00dca9a3635ca232ebab7d44241bc84c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d667ce255228a23c09c03d1c509c1d9dddefe2eeb6528b5fa7402ad014d9b759"
+  },
+  "images/thumbs/gallery/20260530_sagami_fuji_hiratsuka_michikusa.webp": {
+    "source": "images/20260530_sagami_fuji_hiratsuka_michikusa.jpg",
+    "sourceSha256": "d0a6602513d44c1a2611e64181c0eeeb280a2d30c27273cd329016ab02192ea2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3d52eb80992d9004f3d54208c4c7996c9a95277c923cde3a06bb0ccdf3894785"
+  },
+  "images/thumbs/gallery/20260530_sagami_fuji_samukawa_michikusa.webp": {
+    "source": "images/20260530_sagami_fuji_samukawa_michikusa.jpg",
+    "sourceSha256": "1daed0ea451dfce525c1f0fe07fdd0161acc1ded1a4a666db6b6af7d9e5c1735",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b874fbeb2d9cae43fc1d5ea4c62984b4946199ffe9c3948f128375769d473f07"
+  },
+  "images/thumbs/gallery/20260530_shizuoka_tea_fields_1_michikusa.webp": {
+    "source": "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
+    "sourceSha256": "9d4c925d8dccbd230fe8cb729e2d7291911712f7cd13e640c712a45e65153990",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "44fb46aead5ef189020be83a007492102f9b8f64b4a8299f528cd99ba682365c"
+  },
+  "images/thumbs/gallery/20260530_shizuoka_tea_fields_2_michikusa.webp": {
+    "source": "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
+    "sourceSha256": "0ac1541542f46e2558d4d7bd53cae61b2e5011c4d344d3b53454b54c01ccd46c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a99f2eb079afef5b37a4e0b2f93f46a27c3ba9debd657d9900e970c3c5f8e3c0"
+  },
+  "images/thumbs/gallery/20260530_solar_ark.webp": {
+    "source": "images/20260530_solar_ark.jpg",
+    "sourceSha256": "4ff439b9c7b227d4ffce381bc770c310ea946f4d25cd002c02d93be2af00e758",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "03a9f890ada137c75fc575f88ad229af1b04e47e649d508b8352b2389f9bf0b6"
+  },
+  "images/thumbs/gallery/20260614_torikai_train_depot_yamato160.webp": {
+    "source": "images/20260614_torikai_train_depot_yamato160.jpg",
+    "sourceSha256": "cd667591f3e2be3013dae8f2083e3d831f3be3b56c915e99960131492c21c90d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "adad78731b5c45d09ce7bc540f667169b81715886165a7325f3b414154a9febf"
+  },
+  "images/thumbs/gallery/20260616_fuji_sttraveler.webp": {
+    "source": "images/20260616_fuji_sttraveler.jpg",
+    "sourceSha256": "bc61764579485661d16a63d170bce98d5c7ece50ffb988401b0ece76fa6bfc59",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "977fcfecb774468936fefd8ab3faf2c6b3c96959ae774ece85b719bde5d15fc9"
+  },
+  "images/thumbs/gallery/20260619_fuji_sttraveler.webp": {
+    "source": "images/20260619_fuji_sttraveler.jpg",
+    "sourceSha256": "0ec76c457c3682536dfa3b42f1fecbd00bbb23b1e50b63db1cacd033e8abe1d9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "95f455a6ccc68f5ffe7bbe49fd0f80ebb6fc6a3840bdedc716e3a74a0a1d5dd2"
+  },
+  "images/thumbs/gallery/20260628_toyohashi_tateiwa_michikusa.webp": {
+    "source": "images/20260628_toyohashi_tateiwa_michikusa.jpg",
+    "sourceSha256": "f1fc1471d71bd5119812c2666eb118275907163219cd8a8f49fdf3498081edab",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b11a5ca051628b2ed4f687641a75cf69295caf53de51ae27dc251690587d0c0d"
+  },
+  "images/thumbs/gallery/20260629_2125_seta_karahashi_night_michikusa.webp": {
+    "source": "images/20260629_2125_seta_karahashi_night_michikusa.jpg",
+    "sourceSha256": "20a0289e717dc4189abb06bc9ce4f2314079cd76b9b68a1774b2a5c7770bfdcb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5eac49cd17b006714d9a61bc13cb93f8dff42bbf17ad9345fabecb267a2cfa53"
+  },
+  "images/thumbs/gallery/20260629_2158_nagoya_station_night_michikusa.webp": {
+    "source": "images/20260629_2158_nagoya_station_night_michikusa.jpg",
+    "sourceSha256": "cca2ca04bbe91615df0fa27e5e106c4481e2b8af1689e80fb0b36d71ffcc2778",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "96e484c496e1be8f2025e377cccf9ab3bfcf37350530194e363542ee4227126e"
+  },
+  "images/thumbs/gallery/20260629_2242_shimizu_port_chikyu_night_michikusa.webp": {
+    "source": "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
+    "sourceSha256": "047005ca3df320e904d9cedf073889d3f12b22964829a86b7da6b255b62b1852",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9c7399ef6103c34a290b6ab9f29273202c8dec2290c6ece845de75c7f8e06323"
+  },
+  "images/thumbs/gallery/20260629_2320_maruko_bridge_night_michikusa.webp": {
+    "source": "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
+    "sourceSha256": "80c52909e141206851142ee3a7945a17f3077b2cbf7ca62fe5f066932014009e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "620dedd07c269362283920b6b18e4438e511da16b0b46fe3c14fa33a988af209"
+  },
+  "images/thumbs/gallery/20260629_kirin_beer_factory_michikusa.webp": {
+    "source": "images/20260629_kirin_beer_factory_michikusa.jpg",
+    "sourceSha256": "ab5077ddea39b7019df5e70d47125f62e20e09fdd5e517632ee2a2d83f17e6f5",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "07e211631fc582d9d710045ae2cc0ca72b8abba11cde4527b85f5273e4e2a795"
+  },
+  "images/thumbs/gallery/20260629_musashi_kosugi_towers_night_michikusa.webp": {
+    "source": "images/20260629_musashi_kosugi_towers_night_michikusa.jpg",
+    "sourceSha256": "2912c2084219e3ba8226cff52af70e924f635613c7d9f006247ca94b96e43653",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "cb6b65d148ad21d7c40a01be144d006df35211e4a85258623ced51e185bf9df8"
+  },
+  "images/thumbs/gallery/20260629_nangu_taisha_1_michikusa.webp": {
+    "source": "images/20260629_nangu_taisha_1_michikusa.jpg",
+    "sourceSha256": "743567ad93eb2fb7a7a69e7adddd07bb5d337a85adf86272bdb312d4d782ea4d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f1aebe577eb9a9b6dc0e8fbd942348894f7e1dc4fe6e7d0e5ee5872e147e55cd"
+  },
+  "images/thumbs/gallery/20260629_nangu_taisha_2_michikusa.webp": {
+    "source": "images/20260629_nangu_taisha_2_michikusa.jpg",
+    "sourceSha256": "bbb8ed72b3f7b8bb1db55bfafe9c8b0fd09612d2104b6e96434dd77cb8e7c5f9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1788b69f8e2ed38b71eaded86cda7d9ec81bc2d701244e520f9eab728bace379"
+  },
+  "images/thumbs/gallery/20260629_nichiban_anjo_night_michikusa.webp": {
+    "source": "images/20260629_nichiban_anjo_night_michikusa.jpg",
+    "sourceSha256": "e0403029d0e0d4c8f6f3181f8b9c587385b207639d5b5be2986288d3aee83e23",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "496ab34bd6a1107bff9a9780e7520db07c2ba8de07ce945e5df6bd869ebfa01d"
+  },
+  "images/thumbs/gallery/20260629_omi_fuji_michikusa.webp": {
+    "source": "images/20260629_omi_fuji_michikusa.jpg",
+    "sourceSha256": "e8122ccb7b56770b2f228d76ae09f59baaf79e406b9f4da62e3de4cf01b4cffd",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f0f0c6b2bfa36005572820f7f6e16e333668a53d8a209fc32b86caff7b1be0fb"
+  },
+  "images/thumbs/gallery/20260629_shimizu_port_chikyu_morning_michikusa.webp": {
+    "source": "images/20260629_shimizu_port_chikyu_morning_michikusa.jpg",
+    "sourceSha256": "4e3cf4cf6dea8c464c41724112864c7dfeb4ae0763ca85af1abd01e71559adc1",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ea53a41668089a9486b1809511bffb8cba680a921c5ed0349e3cda4a17aaeebe"
+  },
+  "images/thumbs/gallery/20260629_tokyo_tower_night_2_michikusa.webp": {
+    "source": "images/20260629_tokyo_tower_night_2_michikusa.jpg",
+    "sourceSha256": "f2bb215ee16e2fffdd9fe8a3fbe60480fc3f10bf2238518deae8d9802083a885",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "95f3ba21905b90fbd42f6b407ff37068bedf560a022a551a6fdd7a85c550730d"
+  },
+  "images/thumbs/gallery/20260629_tokyo_tower_night_michikusa.webp": {
+    "source": "images/20260629_tokyo_tower_night_michikusa.jpg",
+    "sourceSha256": "d8061e37861f3eae5b6fa98e5634f994449389574398da2df5099b9e233ffeeb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5b10b2fb044015a605dbae00e655464cae93fea93808af99f7d328be2f52021e"
+  },
+  "images/thumbs/gallery/20260629_torikai_train_depot_michikusa.webp": {
+    "source": "images/20260629_torikai_train_depot_michikusa.jpg",
+    "sourceSha256": "7c881bdd53daa8b4ebaeee0d1f61d469155bf1e6d4322425f54fab6d0b55f6c8",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f62ef70dc72f6c74de525681381737b8832f52e1844038d24a7525a4d67ced9d"
+  },
+  "images/thumbs/gallery/20260629_torikai_train_depot_night_michikusa.webp": {
+    "source": "images/20260629_torikai_train_depot_night_michikusa.jpg",
+    "sourceSha256": "8df86180c31670af8c100aa0799da109c59ba8434499d2201ac4727cb19e546e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1f1cdb3c07b4e77ce9d2403f7fd24e97489a22413a8c6863ecc163471addb5f7"
+  },
+  "images/thumbs/gallery/20260704_727_board_kuzuhara_1_michikusa.webp": {
+    "source": "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+    "sourceSha256": "6b96cefd961ccb6c960852a61d4709915c38d126c05c5478fb825ea3a9108745",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c6b360ac05e796e3a5fd037f1a1361297ea9223fd4d730d66ad25ba0fb91283e"
+  },
+  "images/thumbs/gallery/20260704_727_board_kuzuhara_2_michikusa.webp": {
+    "source": "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
+    "sourceSha256": "f9aec7dff0cb676af37a902e39a0225d4de0ae813d7aa26a25115cde922d35e2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a78596a42b9f02a74516b21e231423edd3ec74f0299e4988887ffc593b6974f1"
+  },
+  "images/thumbs/gallery/20260704_kinshozan_michikusa.webp": {
+    "source": "images/20260704_kinshozan_michikusa.jpg",
+    "sourceSha256": "5fcc86adbeef476c185e072354fd897c0407b327db4b1c855dacd4ff48b11ace",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "cadc2ef26d9cd043c107b7adfc057fd33d9b0cc7a0fa195d8a53f2e2dfef29f2"
+  },
+  "images/thumbs/gallery/20260704_kiyosu_castle_michikusa.webp": {
+    "source": "images/20260704_kiyosu_castle_michikusa.jpg",
+    "sourceSha256": "7c6ef7bafa4c0422c4d0b240ce98c93c6b638be848a7bbfa2061700aafa43827",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b33b244f96192c0ff6c842cab52653d8d6aaa1c81d547441ab99898798b3ca83"
+  },
+  "images/thumbs/gallery/20260704_maruko_bridge_1_michikusa.webp": {
+    "source": "images/20260704_maruko_bridge_1_michikusa.jpg",
+    "sourceSha256": "4854b5b9a5178cfd718581865943550bf651b2c58e2d4a4c66dc51fa830db58c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "871b7f992d1908e33191dce3dc4738215bce55ecc7f8924f57413f38daaabd9b"
+  },
+  "images/thumbs/gallery/20260704_maruko_bridge_2_michikusa.webp": {
+    "source": "images/20260704_maruko_bridge_2_michikusa.jpg",
+    "sourceSha256": "e9a46104154512a7a64912a12133b49d7a87b67e0fa19901436fe76d60e2be52",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "392c84600c489fd44a4858dbb2bcd242d1c7b6d21a1e6307345fb6f27ea39493"
+  },
+  "images/thumbs/gallery/20260704_musashi_kosugi_towers_1_michikusa.webp": {
+    "source": "images/20260704_musashi_kosugi_towers_1_michikusa.jpg",
+    "sourceSha256": "2f748345cf9fd7d96d3e43ee859c5dbfda28b9d3af13fff280c003adec21ce44",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "607a896a6f4b2cb9d36de37b9c065a47215b75c342e56d28c3822d5fdb3cd9c6"
+  },
+  "images/thumbs/gallery/20260704_nichiban_anjo_michikusa.webp": {
+    "source": "images/20260704_nichiban_anjo_michikusa.jpg",
+    "sourceSha256": "95d97578f4ce54851deb4c2fffbdbc95d6439b6cf1d9b7062a28f7d7a5e394d2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9d552a6b763eb58ee9677757eaa64f5946305baece811b05dfffb85ba2ef76f3"
+  },
+  "images/thumbs/gallery/20260704_putiputi_sign_1_michikusa.webp": {
+    "source": "images/20260704_putiputi_sign_1_michikusa.jpg",
+    "sourceSha256": "56878a6bb9e8da593eb62a67e45224a02c366ad83042bf01e89afc1d43b69701",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6b0d70313cbdf75826f8e29c0aa93b425ca6957b27a410ffb74bca79b9502ae4"
+  },
+  "images/thumbs/gallery/20260704_putiputi_sign_2_michikusa.webp": {
+    "source": "images/20260704_putiputi_sign_2_michikusa.jpg",
+    "sourceSha256": "55188ac9d66421f115c8c156a71d80f2d3ca366e729a680b649520ae4051673a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0f20209ffde6cdc2d1d6592dca348b0426985a732718eb58bdf32de1012db1de"
+  },
+  "images/thumbs/gallery/20260712_atami_castle_michikusa.webp": {
+    "source": "images/20260712_atami_castle_michikusa.jpg",
+    "sourceSha256": "3b4fc6c7bebf085ab4dcabade198db3dde8c08d4a2538c5911c6906db89f5259",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "689463a9ebc992bedbe427209213515a46fe6e70def0886538787cb43a66580a"
+  },
+  "images/thumbs/gallery/20260712_fujitec_big_wing_michikusa.webp": {
+    "source": "images/20260712_fujitec_big_wing_michikusa.jpg",
+    "sourceSha256": "ab2c20e8acdc6d95121df7e632f0ca93aa27150f88e248ff69cb2e4e4c1d09a2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a9d99f9b88f637e7083e79792677e81c87394c3f7fd107042148d94317e8c8ba"
+  },
+  "images/thumbs/gallery/20260712_genki_sign_michikusa.webp": {
+    "source": "images/20260712_genki_sign_michikusa.jpg",
+    "sourceSha256": "e895fec21d3667622b0377565606c131353eaec14ebf971e98116b239b795199",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "aea9620b15df19789ed900e3ea647fc6a6d743b8d44ec9da5bd326275e1a7ccf"
+  },
+  "images/thumbs/gallery/20260712_gifu_castle_michikusa.webp": {
+    "source": "images/20260712_gifu_castle_michikusa.jpg",
+    "sourceSha256": "4349bfe841924db46f4eeb348a209ec954a7865694dda7f668cada18dacfbef9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0bbf7f0523e27c7a2f65007a337ddb21c233fc41834308a1579f7c84c1dafa44"
+  },
+  "images/thumbs/gallery/20260712_hikone_castle_michikusa.webp": {
+    "source": "images/20260712_hikone_castle_michikusa.jpg",
+    "sourceSha256": "8677d3a3a41745bbe76ced0abd7880c35623707734a9dba47fea42af388b89a7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a626861719a9e552fda18a31151fb1b3dc47cec380420d319d52270299f4e344"
+  },
+  "images/thumbs/gallery/20260712_kakegawa_castle_michikusa.webp": {
+    "source": "images/20260712_kakegawa_castle_michikusa.jpg",
+    "sourceSha256": "cac2a9b3c746fff9deb6997edf9f4baece1b1d71e861d23a1713e5306e24cf19",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "949a19fd0917d88d1b1c99868ea7802340a9063364b6a07d5c211fa5e5afb1ea"
+  },
+  "images/thumbs/gallery/20260712_kannonji_azuchi_castle_sign_michikusa.webp": {
+    "source": "images/20260712_kannonji_azuchi_castle_sign_michikusa.jpg",
+    "sourceSha256": "66ab531393c81361fa299d0a6926ecdb56ed319f9038308324eab761a1691bc3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ce21d11a232c9a22844374d95eab37f1aea2a336bd1fb257960cc38766801f37"
+  },
+  "images/thumbs/gallery/20260712_kannonji_castle_michikusa.webp": {
+    "source": "images/20260712_kannonji_castle_michikusa.jpg",
+    "sourceSha256": "513b357c9f8bdb719a93d46b43465384d24ec3c5e0a5d334781d74364150fb12",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "baf6219300daeafd63cf52d659155634924507687e4fc2a1c4463275babe05d8"
+  },
+  "images/thumbs/gallery/20260712_kinshozan_michikusa.webp": {
+    "source": "images/20260712_kinshozan_michikusa.jpg",
+    "sourceSha256": "793b2be77ddf14575eb1bc66c8a82758c6b605b73fbe1e709391ec8d886aadae",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3d5cfda683ec0d9a83096b8a92b74f86eaa0d5b0937634d78d5ca4fb5d9ff9a4"
+  },
+  "images/thumbs/gallery/20260712_kiyosu_castle_otehashi_michikusa.webp": {
+    "source": "images/20260712_kiyosu_castle_otehashi_michikusa.jpg",
+    "sourceSha256": "e1688d0b336c3505e2565807d3f076cc9c51b4ef5a1155808fce6fffeb0710c3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "67961a8b9a792a4a62b1d11523cc68dd0cc8653f2c23eb8e3adb5fccc20c8b5d"
+  },
+  "images/thumbs/gallery/20260712_maruko_bridge_michikusa.webp": {
+    "source": "images/20260712_maruko_bridge_michikusa.jpg",
+    "sourceSha256": "06633e6eebe2e04e329fd0148050bae2c18172979df0b8e5e3701c377c36bdd9",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ffc1cace0f5b1b27637aaaf39ad86abb40083a0bc2f022527b3e2f54efcb5011"
+  },
+  "images/thumbs/gallery/20260712_mikawa_oshima_michikusa.webp": {
+    "source": "images/20260712_mikawa_oshima_michikusa.jpg",
+    "sourceSha256": "80ec28fe50abc831063d2b826cb4c25c7f0b5557d47ed53c3fe1fa4dbc017646",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c4837a2da655fe72cdb6f80b777df2c67607bf38b9423eb5c2c2fc5b49c5cdca"
+  },
+  "images/thumbs/gallery/20260712_musashi_kosugi_towers_michikusa.webp": {
+    "source": "images/20260712_musashi_kosugi_towers_michikusa.jpg",
+    "sourceSha256": "75d686bcc8b1383da44657840f9da13cd9c4daa01169632043444152064227e3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4f7e11e06e831ab32d0a10e7a210036b945cd1995f08748d47eac1f28cdd8e6c"
+  },
+  "images/thumbs/gallery/20260712_seta_karahashi_michikusa.webp": {
+    "source": "images/20260712_seta_karahashi_michikusa.jpg",
+    "sourceSha256": "82bdfa72ea307719f8063015e1e60d777c6a64e8ca53c983525b783614ba55af",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b3578267885264aeedc596a06180e48ef0f720d0305e3e527d7e886be190201d"
+  },
+  "images/thumbs/gallery/20260712_shimizu_port_chikyu_1_michikusa.webp": {
+    "source": "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
+    "sourceSha256": "950a430e18df1b2b1c2479adf681a55832b48e78741bee6f444e8f40ca71f9a8",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2260a6e5c533948572a271b30bbec00e8a32c9d26deb4a22814d200b12fc91ef"
+  },
+  "images/thumbs/gallery/20260712_shimizu_port_chikyu_2_michikusa.webp": {
+    "source": "images/20260712_shimizu_port_chikyu_2_michikusa.jpg",
+    "sourceSha256": "4e47369475b4cafe41fe49107e60d3b8db315b88fa86a63636182f8177af6d92",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6806dc876fe152f1c0ea93fad97851e6f705411321bbbba7ffd49043dba48bbf"
+  },
+  "images/thumbs/gallery/20260712_toji_michikusa.webp": {
+    "source": "images/20260712_toji_michikusa.jpg",
+    "sourceSha256": "33731641ed4e3da9372a6e0225fafd9b64e3de5ce8d939da67ac41882755b18c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e743f461452ed3f0bf2c6b8b3225315635a4d2a46ae787f7a3f8d803f19ba8ff"
+  },
+  "images/thumbs/gallery/20260712_tokyo_tower_michikusa.webp": {
+    "source": "images/20260712_tokyo_tower_michikusa.jpg",
+    "sourceSha256": "d805dcd5e442c4af0bbaf5f2b43d13a5eb09f38209b56619ba1cbabcea986cb1",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0ae8c78d4be16bc168a353d44199546d76cc682ba5314395374779334a016777"
+  },
+  "images/thumbs/gallery/20260712_torikai_depot_michikusa.webp": {
+    "source": "images/20260712_torikai_depot_michikusa.jpg",
+    "sourceSha256": "48170d75aea0de049e245b2de2e86d9c00c652601eb1e07e4a643b1bbd9dc13a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8757c0d2ec0d733bf0d6f71c8a76422d11b2873d6c4038d84f6735710e1121fd"
+  },
+  "images/thumbs/gallery/20260712_who_am_i_sign_michikusa.webp": {
+    "source": "images/20260712_who_am_i_sign_michikusa.jpg",
+    "sourceSha256": "f9b0bc851cf7a5b1553ca55adc0616b11c6de3cb5a2afd03d490fb0e14f2753a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "74ec540347967f4a2aba3208a619c97f0dd2c688e9a4c67261c7c7ae821b8e07"
+  },
+  "images/thumbs/gallery/20260804_248_board_kuzuhara_michikusa.webp": {
+    "source": "images/20260804_248_board_kuzuhara_michikusa.jpg",
+    "sourceSha256": "7f92ad192811e1a711f444eea1f1a0980bace4338f4e00db2750def6b6da4bb3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "fce38ae72d8748181e66409219d48372186b272099c75d67572d3f093680cd81"
+  },
+  "images/thumbs/gallery/20260804_atami_michikusa.webp": {
+    "source": "images/20260804_atami_michikusa.jpg",
+    "sourceSha256": "af464c5059ffd62a68b56010f33d6bcf4b767c34110e32f6da3f5a099923d83a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1ad3dd30d9c275ec5864171afaad532ab5d3b3326160998d411337bd8d2bfb29"
+  },
+  "images/thumbs/gallery/20260804_fujipipe_michikusa.webp": {
+    "source": "images/20260804_fujipipe_michikusa.jpg",
+    "sourceSha256": "f7cbf23ea72cc8e5ecc20358069eb02f04a1867d6b21cfb99cad47a3b80f326a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4bc4e814416e2f15d68e2c43e77fffed97158d09d71cd2d3e56d1c531da71c0c"
+  },
+  "images/thumbs/gallery/20260804_fujitec_big_wing_michikusa.webp": {
+    "source": "images/20260804_fujitec_big_wing_michikusa.jpg",
+    "sourceSha256": "3c98344376626937fc07551daeffc8fed7f75f13a6a1de45c190b1fd2284da7e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6a7a855fb39bbb6ced6ddaa6acf70bec752285bde272037df9b9fdd27632f5f4"
+  },
+  "images/thumbs/gallery/20260804_musashi_kosugi_towers_michikusa.webp": {
+    "source": "images/20260804_musashi_kosugi_towers_michikusa.jpg",
+    "sourceSha256": "ce7e1557eafabf3b4a92044389f44f1385ad62b55d54aae04e10fe30be40f73f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "41745fa58d4bed1f6c978df8ef05fa75fc8aa85e60572cb6819f1c17bcf6247b"
+  },
+  "images/thumbs/gallery/20260804_sagami_bay_michikusa.webp": {
+    "source": "images/20260804_sagami_bay_michikusa.jpg",
+    "sourceSha256": "5d4feb852f897c9ad77e838f04f36ff2a56dbb5edc34f180a5466e4c0164327e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4c83becebcea2b7a7a392bd61e5021b79a7ebe9cd5ba8eda0c45ec5bd7ee3562"
+  },
+  "images/thumbs/gallery/20260816_fuji_paper_mills_michikusa.webp": {
+    "source": "images/20260816_fuji_paper_mills_michikusa.jpg",
+    "sourceSha256": "b8ed036ff8db3687bf588ecc3a039f0f72a61e854c5a2a5ee9c93c7e329e73b6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d559aaec23a0ce0fea0ef7d9244b575fef6c9568865953465e32fb0e1d4ee35b"
+  },
+  "images/thumbs/gallery/20260816_gifu_hashima_mahalo_1_michikusa.webp": {
+    "source": "images/20260816_gifu_hashima_mahalo_1_michikusa.jpg",
+    "sourceSha256": "a9ecc1a1ba04b3219af3ca786ee86a101718d7c81d2f1a8357e5c4a0c2af69d8",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "323b43fcc498f8cbc22a8d0137bff7df2f0d8f22fbd50614d08e40aadd57cd92"
+  },
+  "images/thumbs/gallery/20260816_gifu_hashima_mahalo_2_michikusa.webp": {
+    "source": "images/20260816_gifu_hashima_mahalo_2_michikusa.jpg",
+    "sourceSha256": "c6ac0d1368ff58e69a0ca31d454295edc8f20d85f97e52dabc0b7912a8d3fca7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e2f1e58e1e2eb54f40524d8c02db4705e718734082ce09758bb13925f05ee61f"
+  },
+  "images/thumbs/gallery/20260816_granship_2_michikusa.webp": {
+    "source": "images/20260816_granship_2_michikusa.jpg",
+    "sourceSha256": "a9c54da66e1944035d3a6e705bec4f4d2b2df2725edda4ffd9d1cdcf719a71f7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b0c61018e5a73ad8935c77b5ce7408fe37f0b81b8dee6ef3a2d2991b8233d0f2"
+  },
+  "images/thumbs/gallery/20260816_granship_michikusa.webp": {
+    "source": "images/20260816_granship_michikusa.jpg",
+    "sourceSha256": "b868abc238fe87ce1ade7e178b769e8ac44c2bcfb58561755c0858917f466ebf",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6a248afe5afef6fb921a33f8c0f433462918e60abf599747f201a9f58a3a020f"
+  },
+  "images/thumbs/gallery/20260816_nagoya_station_skyline_michikusa.webp": {
+    "source": "images/20260816_nagoya_station_skyline_michikusa.jpg",
+    "sourceSha256": "760788b62681aea75f57d8a98d7fabac04035823e1697a2220c67438a4650451",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "792a88297f606440332156c807255ee37a4d4e82d6f988ca00292eeaf3fa2c14"
+  },
+  "images/thumbs/gallery/20260816_sennenq_sign_michikusa.webp": {
+    "source": "images/20260816_sennenq_sign_michikusa.jpg",
+    "sourceSha256": "38de585cec123cd5bfd5b2ed105c274fdfbf904709a91afc5f7c9356d734548b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "90937adf60437128ead4534947af5bc769ecbb7bc74144e2bbdc9a814b04157c"
+  },
+  "images/thumbs/gallery/20260820_mikawa_oshima_1_michikusa.webp": {
+    "source": "images/20260820_mikawa_oshima_1_michikusa.jpg",
+    "sourceSha256": "ceaf06904fca260d70f08faba75e0e45383e90647cc6fbe30cd0a52f0644bfeb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "82b9deff348924ce702d6374d0fd6b5dffb77af08ef82c204ddf500c9d943edf"
+  },
+  "images/thumbs/gallery/20260820_mikawa_oshima_2_michikusa.webp": {
+    "source": "images/20260820_mikawa_oshima_2_michikusa.jpg",
+    "sourceSha256": "60a47cc40671202d31ecc2c04177915b79140c35b7fb77c4b8ddb39bff5712e3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1d96942fab814a71cd03c2d59599625815bcef3fa61ee203f5dcc121eee3f815"
+  },
+  "images/thumbs/gallery/20260820_odawara_castle_michikusa.webp": {
+    "source": "images/20260820_odawara_castle_michikusa.jpg",
+    "sourceSha256": "8ab605aa2ca201ab84f97b2d6c6096c3c9bfb9452d161cef7a318416732fa995",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "785e697bb102ca48fd7ae207c85a105edbef441c08c52243d312842cf7d24dee"
+  },
+  "images/thumbs/gallery/20260820_shimizu_port_chikyu_1_michikusa.webp": {
+    "source": "images/20260820_shimizu_port_chikyu_1_michikusa.jpg",
+    "sourceSha256": "971dc6c9b8d0bef19fcbb46757ab279c92a54a14e01d14e31a18dcd69581e032",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "12fbcca2fb1f9459a9b7364a6931694bd050903d0460385c1d08bafeab317c66"
+  },
+  "images/thumbs/gallery/20260820_shimizu_port_chikyu_2_michikusa.webp": {
+    "source": "images/20260820_shimizu_port_chikyu_2_michikusa.jpg",
+    "sourceSha256": "291662639671df62cff8166a636207f65d32e91d8db66ee2b05fc51ddc96bdfb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6102290052a70f2bcbb7ac479c3331154bce6e42a58da254e24bb7dd1026e7b2"
+  },
+  "images/thumbs/gallery/20260824_hirakata_park_wheel_michikusa.webp": {
+    "source": "images/20260824_hirakata_park_wheel_michikusa.jpg",
+    "sourceSha256": "811f0c79bb697ce7b998d40bcab3777ac64d16adfc82bee4d0ed4358e067c515",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ee39dab3090b0a2c724e648de48e810c6d4332d78a8ae56b341691d9302a62de"
+  },
+  "images/thumbs/gallery/20260824_hirakata_park_wheel_wide_michikusa.webp": {
+    "source": "images/20260824_hirakata_park_wheel_wide_michikusa.jpg",
+    "sourceSha256": "76fce210cc109f67c4a00372098b30dd84b138bca3a0311626a022dfe5e85592",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "52e9abe6bf5ff52977214f8867d224bd78aa38b0a6f6ab6a612304357c20b346"
+  },
+  "images/thumbs/gallery/20260824_toji_michikusa.webp": {
+    "source": "images/20260824_toji_michikusa.jpg",
+    "sourceSha256": "f3a551eaeb222ab546d5e562432d1fd671f089c074b011d8aef14adc38de6c55",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e7632f24cd74596b694ecca6a98a57f82cc2f7ff56d4d904975ed45dcacc25ab"
+  },
+  "images/thumbs/gallery/20260903_atami_hatsushima_michikusa.webp": {
+    "source": "images/20260903_atami_hatsushima_michikusa.jpg",
+    "sourceSha256": "c273ac60f6efff65d3c91e2b33eddf0de5bbe9ce7f8c085ae13d7657703256d0",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "bce5220d37dff07504a1b3c127d6aa83190217077f45ac73f33effd4e56defdd"
+  },
+  "images/thumbs/gallery/20260903_fuji_beyond_factory_smoke_michikusa.webp": {
+    "source": "images/20260903_fuji_beyond_factory_smoke_michikusa.jpg",
+    "sourceSha256": "e4b339c5fac33bec80c460ab41e2aec8cf342c79b88afa9487ddf48cf535c967",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5f9f6e92132e83d9ccf7b319748579f75677f720eaea6252f271245c9b535ac9"
+  },
+  "images/thumbs/gallery/20260903_fuji_paper_mills_fuji_michikusa.webp": {
+    "source": "images/20260903_fuji_paper_mills_fuji_michikusa.jpg",
+    "sourceSha256": "e5a3a4a9f48679c7f4e24e0453947e898f6dedb917253142858b6cbc6e4eca0d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8c6ffada1fada2657943371a786607b91ee0e00a575b4f5483200d7c36aa61ae"
+  },
+  "images/thumbs/gallery/20260903_fujikawa_cloudy_michikusa.webp": {
+    "source": "images/20260903_fujikawa_cloudy_michikusa.jpg",
+    "sourceSha256": "72714b6ba2e9fa2de00ae2654df382528fe234301aaeda04508c0011bb00d786",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2fba8db67bcaac80c6fadb6bf27bac47039632df97dff7afe355c23011d44872"
+  },
+  "images/thumbs/gallery/20260903_fujipipe_fuji_michikusa.webp": {
+    "source": "images/20260903_fujipipe_fuji_michikusa.jpg",
+    "sourceSha256": "d7937707ae692e8ab576ead23f5fcb84ab400443638a570d93d4c513cd126c9c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ebed6fd6d5b78c2ff61527135b3769553d44b72ab5cbc25ff0a2f40f6a86bca2"
+  },
+  "images/thumbs/gallery/20260903_gyoran_kannon_michikusa.webp": {
+    "source": "images/20260903_gyoran_kannon_michikusa.jpg",
+    "sourceSha256": "5f5043b4b30a8388410798d4cbc19171dc18c09b195d8d164a2ddb7342dfceb2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f88a0245b1d083af76aedb272bb0190ed7b9fa939237dd7b69c1fe6558198db4"
+  },
+  "images/thumbs/gallery/20260903_omi_fuji_cloudy_michikusa.webp": {
+    "source": "images/20260903_omi_fuji_cloudy_michikusa.jpg",
+    "sourceSha256": "672350c893a4d6cfeb472eb40f89d30601b49c21909b0bfa95f6988a87cce5ee",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2aae5c97cf7e77d284f5d077d419046741b9a921e2625261d5fc885afb96b0cb"
+  },
+  "images/thumbs/gallery/20260904_fuji_paper_mills_michikusa.webp": {
+    "source": "images/20260904_fuji_paper_mills_michikusa.jpg",
+    "sourceSha256": "e4b339c5fac33bec80c460ab41e2aec8cf342c79b88afa9487ddf48cf535c967",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5f9f6e92132e83d9ccf7b319748579f75677f720eaea6252f271245c9b535ac9"
+  },
+  "images/thumbs/gallery/20260904_gifu_hashima_mahalo_michikusa.webp": {
+    "source": "images/20260904_gifu_hashima_mahalo_michikusa.jpg",
+    "sourceSha256": "333f3638f1aab84a06e116af0dc268ea643218f6ce92d9bfa8fe98b9d66deac5",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "155b96343471bc9d4c46a3af019e10453f2db7e54b60a43a590c75801a7c082b"
+  },
+  "images/thumbs/gallery/20260904_lotte_shiga_1_michikusa.webp": {
+    "source": "images/20260904_lotte_shiga_1_michikusa.jpg",
+    "sourceSha256": "7640c192ab27bf94b47cbf2e1ac33e150ad276eac1d5170f0f740cb42b6f5754",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "dfe822092f8f6ac07f6113027c9e7de7a2ba2b47d7b7804b4ee99cf2429c630f"
+  },
+  "images/thumbs/gallery/20260904_lotte_shiga_2_michikusa.webp": {
+    "source": "images/20260904_lotte_shiga_2_michikusa.jpg",
+    "sourceSha256": "22e835cde4108c0d3419afe433c984eef343ab05db63c61467dba94c753250d7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "44cde9fb490685ebc2fff3d8413f6e3e8155606baa8978606e27f93c084d5da1"
+  },
+  "images/thumbs/gallery/20260904_lotte_shiga_3_michikusa.webp": {
+    "source": "images/20260904_lotte_shiga_3_michikusa.jpg",
+    "sourceSha256": "8e608567481d7d9cdee1f74a5035ef2c76034123872081606954c5abf1973bc2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a77df30db59b9f1202f3e925780251fc950ba9f8e3c4d35cf8fae5c0e74fa676"
+  },
+  "images/thumbs/gallery/20260904_mishima_catapult_1_michikusa.webp": {
+    "source": "images/20260904_mishima_catapult_1_michikusa.jpg",
+    "sourceSha256": "b750f6fa0509203c9f1f790393b641d3ebba693883616aa01a13c58e61cad395",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "eb9cd22ba81a83723679442ad04724fcd2b7ed93ee91630bae8d7f8c63fc5600"
+  },
+  "images/thumbs/gallery/20260904_mishima_catapult_2_michikusa.webp": {
+    "source": "images/20260904_mishima_catapult_2_michikusa.jpg",
+    "sourceSha256": "6a0d7510ece89e5570328ff1c526bba2bdd438223af002a46c9d05343227bcd4",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "901759cf234a45934f013ce996c52e2232fc7104e6afbdd80ca1d31d113ac157"
+  },
+  "images/thumbs/gallery/20260904_mishima_catapult_3_michikusa.webp": {
+    "source": "images/20260904_mishima_catapult_3_michikusa.jpg",
+    "sourceSha256": "b16fe182c14fb01fbdc9f70318e4a16b07ef3fe3b4638a4b9ea6e7e1ae1b5442",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0fe74f92ec1ee1ab6ccd3b302c5ad750e27bc0bb04bf10cbe2ad7a372b9a4a17"
+  },
+  "images/thumbs/gallery/20260904_mishima_catapult_4_michikusa.webp": {
+    "source": "images/20260904_mishima_catapult_4_michikusa.jpg",
+    "sourceSha256": "17379e150c31c4234f9135cd1d2bd7dce01e272259736db9d4c0a40a73c4511d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "238999415711b3388a5dd28e3a620eff7d9a99d32a29f91dd8be96f9b3361e60"
+  },
+  "images/thumbs/gallery/20260904_sapporo_shizuoka_factory_michikusa.webp": {
+    "source": "images/20260904_sapporo_shizuoka_factory_michikusa.jpg",
+    "sourceSha256": "f41e81aac6a09e6c5c6c35aa2388a42d2a56ad3bb73986afbecb50b2b15067d2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b22ca8b2dfc1217f76cba95471663b577724593efb908d83b497c41238b69111"
+  },
+  "images/thumbs/gallery/20260904_shizuoka_tea_fields_a_michikusa.webp": {
+    "source": "images/20260904_shizuoka_tea_fields_a_michikusa.jpg",
+    "sourceSha256": "7691790506d3866813793974f03050b95ebedfefea7f89d289cc207a5cba6658",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "7ef731e7b1a5973e278d17380311c60056822f7d5f6ad5e2e039b0c4ebf56752"
+  },
+  "images/thumbs/gallery/20260906_gifu_hashima_station_michikusa.webp": {
+    "source": "images/20260906_gifu_hashima_station_michikusa.jpg",
+    "sourceSha256": "aaff3d149ffd227761846514d8e36a9ee654914d34436b0b6a3c7126c30b41d6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a35c8e95993b5f0832d03acb69ed7e6f8281d642397a4a9c578a7a101a3626fa"
+  },
+  "images/thumbs/gallery/20260906_hirakata_park_wheel_night_michikusa.webp": {
+    "source": "images/20260906_hirakata_park_wheel_night_michikusa.jpg",
+    "sourceSha256": "bc228ee265c64efad243eb5ee76ab9b8d08926aac6bd4f42313dc56446eafabc",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8f1fe4bd5aee1d11305dfb1f47c5a85de811357546fae0e75149897aa4ae7e47"
+  },
+  "images/thumbs/gallery/20260906_kiyosu_castle_night_michikusa.webp": {
+    "source": "images/20260906_kiyosu_castle_night_michikusa.jpg",
+    "sourceSha256": "9cceee2d93ec45dde18b5c18c2975322b5bc5002324a8314dcee4908043d8025",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "701a9de0dab7dd2008c77ff904c79a481aae8f2f878fe4e750877bb960f7bd28"
+  },
+  "images/thumbs/gallery/20260906_lotte_shiga_night_michikusa.webp": {
+    "source": "images/20260906_lotte_shiga_night_michikusa.jpg",
+    "sourceSha256": "1bb6515a1b26b6738a231ad1c2e769f67db717016e49605e533154c08261aa0c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a71cb5464b83769b62c3b1c856515965be0078139db6c66081b32c1ef7fbb9ac"
+  },
+  "images/thumbs/gallery/20260906_sennenq_sign_night_michikusa.webp": {
+    "source": "images/20260906_sennenq_sign_night_michikusa.jpg",
+    "sourceSha256": "8b02c7b81a608cbda8db450181e9e6d900de01c77f8df3d25e61555bf0a442e3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "da471eab3a4e1f0a8a4b0177b6f9de3619877bc0b79d7d30aa295d7d94b6bfdc"
+  },
+  "images/thumbs/gallery/20260906_toji_night_michikusa.webp": {
+    "source": "images/20260906_toji_night_michikusa.jpg",
+    "sourceSha256": "470373bca6e15a8fa32fc66cc77e6e32a126c595dd0d9309bac412acd0e4b137",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "7c2f6852e53089ea3c1d8ed22a3fb3f1b14b034860c3db60a59ffc242eae2223"
+  },
+  "images/thumbs/gallery/20260911_kakegawa_castle_night_michikusa.webp": {
+    "source": "images/20260911_kakegawa_castle_night_michikusa.jpg",
+    "sourceSha256": "617268218a36ff27bf86d0e954ec4f294644d4289a029c806551e293266e34e2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4c6b7f7176e2f52b12559fe4aeea275431584e7cf8d16dff656ee700d8bc364d"
+  },
+  "images/thumbs/gallery/20260911_sennenq_sign_night_michikusa.webp": {
+    "source": "images/20260911_sennenq_sign_night_michikusa.jpg",
+    "sourceSha256": "a954dd6c38201a7ed6a42803988bc9ac5930d8cd783ac1c92a71778155cf4fec",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a7eb7cba6b6b3dabf64166d9041dc1bf31d47a9f1244ef17899255b3c4e7f97a"
+  },
+  "images/thumbs/gallery/20260919_atami_castle_michikusa.webp": {
+    "source": "images/20260919_atami_castle_michikusa.jpg",
+    "sourceSha256": "5e24e7f9237c10c9c2ea0a475c356bbc42a53f569e25ae3e442b13a18f84b610",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "7e711d43be1f161c33a70b08fb58e91bb22d7c85c530d0d071911a625f218097"
+  },
+  "images/thumbs/gallery/20260919_fuji_bus_sales_2_michikusa.webp": {
+    "source": "images/20260919_fuji_bus_sales_2_michikusa.jpg",
+    "sourceSha256": "f9893e99eda1d4bc143e8cf397731a8063dd26485834b45114c379bd5ad84fca",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6e12c88b7b25a2c5a55fb8587c3108dbdec17146b41362f12a52088dc4412504"
+  },
+  "images/thumbs/gallery/20260919_fuji_bus_sales_michikusa.webp": {
+    "source": "images/20260919_fuji_bus_sales_michikusa.jpg",
+    "sourceSha256": "79a69ff83c9bec1b1a89b2412fed13cd7561488001706e03248045025402ce98",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8418ada25f9fd1d4a095226954bffa7b3c835aa0d33d9598f6dbd2d2e5851a9d"
+  },
+  "images/thumbs/gallery/20260919_odawara_castle_michikusa.webp": {
+    "source": "images/20260919_odawara_castle_michikusa.jpg",
+    "sourceSha256": "fd5651a52e5b99de9c48bd6b5d77c7b3093317c36aba392ef5d7a1d80ffa0a3a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ccd4c5af42ad4300f059cbed363dd407fd43871514e4b4ac9bf261d7c42726fa"
+  },
+  "images/thumbs/gallery/20260919_rakusai_egg_tanks_michikusa.webp": {
+    "source": "images/20260919_rakusai_egg_tanks_michikusa.jpg",
+    "sourceSha256": "bf955af346d8f1af1a2d7fd1d7d1ee4809c4bfcf9c827d5f13de67e3f46040b2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1eb5490f225250f35ee403a5ac7b08c1bb75ac3f33248273ef7aa947e6a13c28"
+  },
+  "images/thumbs/gallery/20260919_shizuoka_tea_fields_a_michikusa.webp": {
+    "source": "images/20260919_shizuoka_tea_fields_a_michikusa.jpg",
+    "sourceSha256": "8e59526531db5a53a26cd47762e089731ce7b881aecdb5e830052e747a7888ab",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "eba95a4ad4d60f3e3030d55e60b90035edd7addbaa9a6d1bf8311847a1fe498d"
+  },
+  "images/thumbs/gallery/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp": {
+    "source": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+    "sourceSha256": "94684b97089f79f35dedc2ae5b8337545007e52a1c5c5dce79102ffdf39921e2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b432693ef9765ea5997f85846b6ae3667289170e7bc6a0ffaa7d32c29c7b85a3"
+  },
+  "images/thumbs/gallery/20260924_fuji-paper-mills_75983_michikusa.webp": {
+    "source": "images/20260924_fuji-paper-mills_75983_michikusa.jpg",
+    "sourceSha256": "d0b6d044e6016b1279b6f4e3dfa6b20bf115ccc25801b5bc1ea88bd177a79aa6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b4b6a0591d176476ed0fba01e53f639d65786db8f9e4bfa9ea8ba0887501f57e"
+  },
+  "images/thumbs/gallery/20260924_fuji-paper-mills-reflection_81128_michikusa.webp": {
+    "source": "images/20260924_fuji-paper-mills-reflection_81128_michikusa.jpg",
+    "sourceSha256": "2e2243ea5d671c770b5fc8a1b937c9735931967b93e72ee96ee55f7a38990f11",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5f65093bacc616e91268836adbb1b122e6d9d39ac7377f7717499f5dc59d9cb3"
+  },
+  "images/thumbs/gallery/20260924_fuji-sky-view_30973_michikusa.webp": {
+    "source": "images/20260924_fuji-sky-view_30973_michikusa.jpg",
+    "sourceSha256": "b0dae29aad7a39adf59cbee37714cf2b3a2d3a1defae632892c23e8beb4fbf0d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4197405d743c20b596711b49b90907c22f5297da7e94beb9797a19e254bdb230"
+  },
+  "images/thumbs/gallery/20260924_fuji-sky-view_33058_michikusa.webp": {
+    "source": "images/20260924_fuji-sky-view_33058_michikusa.jpg",
+    "sourceSha256": "4953a87ce7f515ba327be93a3ad51bdc18831ef094db93d70c1b8d2302f47a22",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ef9c0c4fa7b3188dda85f4b6cf6ce3e1de22c62849ed196d5fdcde237358cccf"
+  },
+  "images/thumbs/gallery/20260924_fuji-ucc_171517_michikusa.webp": {
+    "source": "images/20260924_fuji-ucc_171517_michikusa.jpg",
+    "sourceSha256": "e354723896931ef6a7012dae8150df86430c61a32e0c6e16041e422c661c0adb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "3dd17e1147b645cbaa3b8314d71daa7c34466ce2a75cc8906c432e75fb2fb80c"
+  },
+  "images/thumbs/gallery/20260924_fujikawa-bridge_21859_michikusa.webp": {
+    "source": "images/20260924_fujikawa-bridge_21859_michikusa.jpg",
+    "sourceSha256": "b102def435de250594baf34ffc9119684cc8da7e01402979d08c6d2f51c53f4c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6873570977eb58e599c9ae47ebe164f57dc5a4b69582c858d31943b8382c7cc2"
+  },
+  "images/thumbs/gallery/20260924_gyoran-kannon_48143_michikusa.webp": {
+    "source": "images/20260924_gyoran-kannon_48143_michikusa.jpg",
+    "sourceSha256": "bebfc73c873f8e7f0dcf26a2c42ff573bd5b3693644a89cdcb178923763ff1e7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "01b9f8116a3686a8174684fa83991855130a9ff3ef6c33006f5e5210fcfea2d3"
+  },
+  "images/thumbs/gallery/20260924_hamanako-fuji_88188_michikusa.webp": {
+    "source": "images/20260924_hamanako-fuji_88188_michikusa.jpg",
+    "sourceSha256": "94e8f332253d25232b2af428d0ab5afeb8c9e42d5ef0ab6c895df59e65d4a08a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "cb97f7b7a0991f2fd72621e2cb2e3461ee46a8a94bda4bf581aac2a484bb9495"
+  },
+  "images/thumbs/gallery/20260924_kaguya-no-akari_28703_michikusa.webp": {
+    "source": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+    "sourceSha256": "e1506848d9aa32fccda54e4fc337f9ae89353cfd21ae4de3695f65092ddc2d37",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "cc0d7054d05a2d20c0c8cfc72ef06a32ee85d2c1d2ce02bceb3bd85d85d2216d"
+  },
+  "images/thumbs/gallery/20260924_kirin-beer-factory_36523_michikusa.webp": {
+    "source": "images/20260924_kirin-beer-factory_36523_michikusa.jpg",
+    "sourceSha256": "631b4bb2741b5db8d9537064a278fc97c02068abf3403e4d84cf5d10c30e36d8",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "99b108f30cd299a5e4e5c5140eacf9974b9aa1fdfeed1faae847e8d9d45f3bd8"
+  },
+  "images/thumbs/gallery/20260924_kirin-beer-factory_40249_michikusa.webp": {
+    "source": "images/20260924_kirin-beer-factory_40249_michikusa.jpg",
+    "sourceSha256": "48435cf629586b98bf501b7ef844a7175c001eea8d254517b596a6950b30c488",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5d5e815f4ae7910baacce1ebad6bc7616df9b8d421a599f7c69b5eb1930b7c65"
+  },
+  "images/thumbs/gallery/20260924_rakusai-egg-tanks_10371_michikusa.webp": {
+    "source": "images/20260924_rakusai-egg-tanks_10371_michikusa.jpg",
+    "sourceSha256": "b90934c3cdc59afd7cc104ee810b59f7244afc35e4c81e66983e72e193232b61",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5a44ce72cd4a3e36c81295baea58bc8f1ba548132350bbb3dad931e1ef7be31b"
+  },
+  "images/thumbs/gallery/20260924_rakusai-egg-tanks_8885_michikusa.webp": {
+    "source": "images/20260924_rakusai-egg-tanks_8885_michikusa.jpg",
+    "sourceSha256": "39507b7f64e9f7c1d87f9f22c74991ee616e960f09bca9ffdfcb0d1868a12f53",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4615af42003be216553f4a47eda8aa5d6aa825391dc10280dae635aac026c4ca"
+  },
+  "images/thumbs/gallery/20260924_sapporo-shizuoka-factory_34042_michikusa.webp": {
+    "source": "images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg",
+    "sourceSha256": "ac871993f7dc4e4a8d0ae7900a73ddac08f42b2bb2482fd1c6eab61111103669",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e7e20bd630d3d9a655797b669ce5dd9b65fe71aa5497a385a3ef264b0a04ad32"
+  },
+  "images/thumbs/gallery/20260924_shimizu-port-chikyu_43876_michikusa.webp": {
+    "source": "images/20260924_shimizu-port-chikyu_43876_michikusa.jpg",
+    "sourceSha256": "671c7f3ff478ce162eaf933797ed94dc575a73be70b76608cb73eb81b91e300b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "131a43e28295b45c9600d87e9ab6983b0609f622b954c7150a3c91e830668c1f"
+  },
+  "images/thumbs/gallery/20260924_solar-ark_9169_michikusa.webp": {
+    "source": "images/20260924_solar-ark_9169_michikusa.jpg",
+    "sourceSha256": "dd2308c021350995c52d58b20104aceaaaee8b47d296642ed3ebabaa55feeb1c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9414e234211b0d0d99af9c3e9f81e0db1bf0c1943b4369bbde63417860823647"
+  },
+  "images/thumbs/gallery/20260924_torikai-train-depot_34977_michikusa.webp": {
+    "source": "images/20260924_torikai-train-depot_34977_michikusa.jpg",
+    "sourceSha256": "5f742670aae266cf23827d679eb253a3844ccb93d4b67f67e2cbd91c5b7ecb6d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5766c471ec89ac536247b220e18130cef1bcc4765ca887553ab3f074b4b7b23d"
+  },
+  "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
+    "source": "images/250111_hamanako_fuji_proboffin.jpg",
+    "sourceSha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8f18036b140aeb9314312fcf269dfe397bc60ad3eab20cb72c95b1ac8745555d"
+  }
+}

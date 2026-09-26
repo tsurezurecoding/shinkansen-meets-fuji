@@ -12,22 +12,22 @@
 <g stroke="#2b4a73" fill="#2b4a73" filter="url(#stampInk)">
 <circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
 <circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
-<text x="100" y="56" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">清洲城</text>
+<text x="100" y="52" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">清洲城</text>
 
 
 <g stroke-width="2.5" fill="none">
-<path d="M71.4 122 L78 104.4 H122 L128.6 122"/>
-<path d="M73.6 104.4 Q100 93.4 126.4 104.4"/>
-<rect x="84.6" y="84.6" width="30.800000000000004" height="19.8"/>
-<path d="M78 84.6 Q100 73.6 122 84.6"/>
-<rect x="90.1" y="69.19999999999999" width="19.8" height="15.400000000000002"/>
-<path d="M83.5 69.19999999999999 Q100 58.199999999999996 116.5 69.19999999999999"/>
-<path d="M95.6 58.199999999999996 L100 52.69999999999999 L104.4 58.199999999999996"/>
+<path d="M72.7 127 L79 110.2 H121 L127.3 127"/>
+<path d="M74.8 110.2 Q100 99.7 125.2 110.2"/>
+<rect x="85.3" y="91.3" width="29.400000000000002" height="18.900000000000002"/>
+<path d="M79 91.3 Q100 80.8 121 91.3"/>
+<rect x="90.55" y="76.6" width="18.900000000000002" height="14.700000000000001"/>
+<path d="M84.25 76.6 Q100 66.1 115.75 76.6"/>
+<path d="M95.8 66.1 L100 60.849999999999994 L104.2 66.1"/>
 </g>
 <g fill="none" stroke-width="2.5">
 <path d="M48 134 H152 M48 142 H152"/>
 </g>
 <path d="M58 134 V142 M74 134 V142 M90 134 V142 M106 134 V142 M122 134 V142 M138 134 V142" stroke-width="1.8"/>
-<text x="100" y="160" text-anchor="middle" font-size="10.5" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">東京から 約99分・E席</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">E席</text>
 </g>
 </svg>

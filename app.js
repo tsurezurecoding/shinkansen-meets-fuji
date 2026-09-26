@@ -174,6 +174,7 @@ const MSG = {
     faqLinkGallery: "車窓図鑑を見る",
     faqQEnglish: "英語でも使えますか？",
     faqAEnglish: "ページ上部のENボタンで英語表示に切り替えられます。海外から来た人にも、富士山の見える席側やタイミングが伝わるようにしています。",
+    timelineTimePrefix: "", timelineTimeSuffix: "頃",
     seatE: "E席・山側", seatA: "A席・海側",
     confCheck: "裏取り中",
     nightPhotoAvailable: "夜景あり",
@@ -362,6 +363,7 @@ const MSG = {
     faqLinkGallery: "Browse the field guide",
     faqQEnglish: "Can I use it in English?",
     faqAEnglish: "Yes. Use the EN button at the top of the page to switch the app to English.",
+    timelineTimePrefix: "~", timelineTimeSuffix: "",
     seatE: "Seat E", seatA: "Seat A",
     confCheck: "verifying",
     nightPhotoAvailable: "Night view",
@@ -617,6 +619,8 @@ const TIMETABLE_STATION = Object.fromEntries((window.SHINKANSEN_TIMETABLE?.stati
 
 function toMin(hhmm) { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; }
 function minToClock(m) {
+  // Keep fractional minutes in journey calculations; round only the displayed clock.
+  m = Math.round(m);
   m = ((m % 1440) + 1440) % 1440;
   return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
@@ -1552,7 +1556,7 @@ function spotItemHTML(sp, clock) {
   const lowLightLimited = lowLight && !hasNightMedia;
   const time = clock == null
     ? `<span class="tl-time-big">✦</span>`
-    : `<span class="tl-time-big">${minToClock(clock)}<span class="tl-time-suffix">頃</span></span>`;
+    : `<span class="tl-time-big">${t("timelineTimePrefix")}${minToClock(clock)}<span class="tl-time-suffix">${t("timelineTimeSuffix")}</span></span>`;
   const thumb = featuredMedia
     ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" decoding="async" src="${thumbnailSrc(featuredMedia.src)}" alt=""></div>`
     : "";
