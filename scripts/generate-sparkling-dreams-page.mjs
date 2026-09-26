@@ -88,6 +88,7 @@ function render(lang) {
   const pageUrl = en ? `${site}/en/sparkling-dreams.html` : `${site}/sparkling-dreams.html`;
   const footer = t.footer
     .replaceAll(/spot-page-shared-data\.js\?v=[0-9a-f]{8}/g, `spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}`)
+    .replaceAll(/spot-page-shared\.js\?v=[0-9a-f]{8}/g, `spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}`)
     .replaceAll(/data-runtime\.js\?v=[0-9a-f]{8}/g, `data-runtime.js?v=${assetVersion('data-runtime.js')}`);
   return `<!doctype html>
 <html lang="${lang}">

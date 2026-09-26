@@ -22,7 +22,7 @@ const { SPOTS } = vm.runInNewContext(
 // 全スポットが必ず持つもの。
 const REQUIRED = [
   "id", "icon", "ja", "en", "minutesFromTokyo", "side", "category",
-  "confidence", "durationSec", "spotting", "scene", "image", "photoCredit",
+  "confidence", "durationSec", "scene", "image", "photoCredit",
   "references", "map",
 ];
 

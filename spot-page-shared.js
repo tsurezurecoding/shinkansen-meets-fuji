@@ -698,7 +698,7 @@
     wheels: {
       route: "ferris-wheels.html",
       title: { ja: "新幹線から見える観覧車", en: "Ferris wheels from the Shinkansen" },
-      body: { ja: "沿線の6基を区間と席側つきで。見つけた輪は記録できます。", en: "Six wheels along the route, with seat sides. Record the ones you spot." }
+      body: { ja: "沿線の7基を区間と席側つきで。見つけた輪は記録できます。", en: "Seven wheels along the route, with seat sides. Record the ones you spot." }
     }
   };
   var NEXT_CARD_UI = {

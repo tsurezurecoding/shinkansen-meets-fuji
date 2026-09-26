@@ -456,8 +456,8 @@ const READING_LAYOUTS = {
     visibility: { label: "見える時間の目安", value: "数秒ほど", note: "列車や走行速度によって変わります" },
     collection: {
       route: "castles.html", title: ["ほかにもある、", "新幹線から見える城"],
-      description: "小田原城や掛川城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。",
-      label: "新幹線から見える城を探す", note: "清洲城を含む7か所。",
+      description: "小田原城や掛川城も、車窓から。天守5城・櫓1か所と城跡2か所を、写真・席側・見つける目印つきで紹介します。",
+      label: "新幹線から見える城を探す", note: "清洲城を含む8か所。",
       photos: [
         { src: "images/thumbs/20260820_odawara_castle_michikusa.webp", alt: "車窓から見える小田原城", caption: "小田原城" },
         { src: "images/thumbs/20260712_kakegawa_castle_michikusa.webp", alt: "車窓から見える掛川城", caption: "掛川城" }
@@ -473,7 +473,7 @@ const kiyosuPhoto = { src: "images/thumbs/20260704_kiyosu_castle_michikusa.webp"
 const wheelCollection = {
   route: "ferris-wheels.html", title: ["ほかにもある、", "新幹線から見える観覧車"],
   description: "沿線の観覧車を、写真・席側・見つける目印つきで紹介します。",
-  label: "新幹線から見える観覧車を探す", note: "沿線の6基を、席側と見つけ方つきで。",
+  label: "新幹線から見える観覧車を探す", note: "沿線の7基を、席側と見つけ方つきで。",
   photos: [
     { src: "images/thumbs/20260904_nonhoi_wheel_michikusa.webp", alt: "車窓から見えるのんほいパークの観覧車", caption: "のんほいパーク" },
     { src: "images/thumbs/20260824_hirakata_park_wheel_michikusa.webp", alt: "車窓から見えるひらかたパークの観覧車", caption: "ひらかたパーク" }
@@ -484,13 +484,13 @@ READING_LAYOUTS["odawara-castle:ja"] = {
   compactGuide: true,
   version: 1,
   visibility: { label: "見える時間の目安", value: "1〜2秒ほど", note: "のぞみ通過時の目安。列車や走行速度によって変わります" },
-  collection: { ...castleCollection, description: "清洲城や掛川城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "小田原城を含む7か所。", photos: [kiyosuPhoto, castleCollection.photos[1]] }
+  collection: { ...castleCollection, description: "清洲城や掛川城も、車窓から。天守5城・櫓1か所と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "小田原城を含む8か所。", photos: [kiyosuPhoto, castleCollection.photos[1]] }
 };
 READING_LAYOUTS["kakegawa:ja"] = {
   compactGuide: true,
   version: 1,
   visibility: { label: "見える時間の目安", value: "数秒〜10秒ほど", note: "のぞみ通過時の目安。列車や走行速度によって変わります" },
-  collection: { ...castleCollection, description: "小田原城や清洲城も、車窓から。天守5城と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "掛川城を含む7か所。", photos: [castleCollection.photos[0], kiyosuPhoto] }
+  collection: { ...castleCollection, description: "小田原城や清洲城も、車窓から。天守5城・櫓1か所と城跡2か所を、写真・席側・見つける目印つきで紹介します。", note: "掛川城を含む8か所。", photos: [castleCollection.photos[0], kiyosuPhoto] }
 };
 READING_LAYOUTS["hamanako:ja"] = {
   compactGuide: true,
@@ -587,7 +587,7 @@ function englishReadingLayout(spot) {
         ? "Discover Ferris wheels along the route, with photos, seat sides and landmarks to look for."
         : "Discover castles along the Tokaido and Sanyo Shinkansen, with photos, seat sides and landmarks to look for.",
       label: wheel ? "Explore the Ferris wheel guide" : "Explore the castle guide",
-      note: wheel ? "Six wheels along the route, with seat sides and spotting tips." : "Keep an eye out for your next castle.",
+      note: wheel ? "Seven wheels along the route, with seat sides and spotting tips." : "Keep an eye out for your next castle.",
       photos: layout.collection.photos.map(photo => {
         const caption = captions.get(photo.src);
         if (!caption) throw new Error("Missing English reading collection caption: " + photo.src);

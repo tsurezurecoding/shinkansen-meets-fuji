@@ -617,6 +617,8 @@ const TIMETABLE_STATION = Object.fromEntries((window.SHINKANSEN_TIMETABLE?.stati
 
 function toMin(hhmm) { const [h, m] = hhmm.split(":").map(Number); return h * 60 + m; }
 function minToClock(m) {
+  // Keep fractional minutes in journey calculations; round only the displayed clock.
+  m = Math.round(m);
   m = ((m % 1440) + 1440) % 1440;
   return `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
 }
