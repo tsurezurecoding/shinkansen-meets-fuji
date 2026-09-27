@@ -35,6 +35,9 @@ export function photosOf(spot) {
   for (const photo of spot.photos || []) {
     list.push({ src: photo.src, credit: text(photo.credit), role: photo.role || "gallery" });
   }
+  for (const chapter of spot.pageChapters || []) {
+    for (const photo of chapter.photos || []) list.push({ src: photo.src, credit: text(photo.credit), role: "article" });
+  }
   // 同じ src が二度出たら一度にまとめる（本来 image と photos[] は排他）。
   return [...new Map(list.map((photo) => [photo.src, photo])).values()];
 }

@@ -374,6 +374,7 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      if (lang === "en" && /[\u3040-\u30ff\u3400-\u9fff]/.test(output.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "")) fail(`${relativeFile}: English page heading contains Japanese text`);
       const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
       if (new Set(sharedChapterIds).size !== sharedChapterIds.length) fail(`${relativeFile}: shared guide chapter ids must be unique`);
       for (const chapter of page.sharedGuide || []) {
@@ -397,7 +398,18 @@ async function runThinValidator() {
         if (expectedCollectionRoute && page.readingLayout.collection?.route !== expectedCollectionRoute) fail(`${relativeFile}: expected reading collection ${expectedCollectionRoute}`);
         if (expectedCollectionRoute && !output.includes(`href="${prefix}${expectedCollectionRoute}" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection"`)) fail(`${relativeFile}: expected reading collection CTA is missing`);
         if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
-        if (lang === "ja" && !output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (lang === "ja" && !page.chapters && !output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (page.chapters) {
+          // Multi-view articles need seat/timing guidance per landmark; single-view pages remain concise.
+          if (!output.includes(escape(page.guide.highlight))) fail(`${relativeFile}: multi-view boarding guidance missing`);
+          for (const chapter of page.chapters) {
+            if (output.split(`id="${chapter.id}"`).length !== 2) fail(`${relativeFile}: article chapter anchor missing or duplicated: ${chapter.id}`);
+            for (const photo of chapter.photos) {
+              if (!output.includes(`data-zoom-src="${prefix}${photo.src}"`) || !output.includes(`src="${prefix}${photo.thumb}"`)) fail(`${relativeFile}: article photo missing: ${photo.src}`);
+              if (!fs.existsSync(path.join(appDir, photo.src)) || !fs.existsSync(path.join(appDir, photo.thumb))) fail(`${relativeFile}: article photo asset missing: ${photo.src}`);
+            }
+          }
+        }
         if (lang === "en" && !output.includes('<h2>How to spot ' + escape(page.name) + '</h2>')) fail(`${relativeFile}: English guide heading missing`);
         if (output.indexOf('data-spot-media-gallery') > output.indexOf('class="spot-page-facts"')) fail(`${relativeFile}: photo-first ordering changed`);
         if (!output.includes(escape(page.readingLayout.visibility.label)) || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes(escape(page.readingLayout.visibility.note))) fail(`${relativeFile}: visibility fact missing`);

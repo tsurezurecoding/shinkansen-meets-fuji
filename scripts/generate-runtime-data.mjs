@@ -34,6 +34,8 @@ export const BUILD_ONLY_SPOT_FIELDS = [
   "metaDescription",
   "pageHeading",
   "pageHeadingChunks",
+  "pageChapters",
+  "pageFacts",
   "pageStory",
   "pageTitle",
   "photoSectionHeading",
