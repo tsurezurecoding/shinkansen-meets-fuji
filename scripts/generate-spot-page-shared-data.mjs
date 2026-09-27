@@ -627,7 +627,8 @@ function projectPage(spot, lang) {
   const projectedPhotos = allPhotos.map((item, index) => projectPhoto(item, spot, lang, index));
   const gallery = projectedPhotos.filter((item) => spot.id === "ibuki" && lang === "ja" ? true : !inlineSrcs.has(item.src)).map((item) => ({ ...item, smallThumb: String(item.src).replace(/^images\/(.+)\.(jpe?g|png|webp)$/i, "images/thumbs/gallery/$1.webp") }));
   const inline = inlineIndices.map((index) => spot.photos?.[index]).filter(Boolean).map((item, index) => projectPhoto(item, spot, lang, index));
-  const headingChunks = localized(spot.pageHeadingChunks, lang);
+  // Line-break chunks are language-specific; do not borrow Japanese chunks for English headings.
+  const headingChunks = spot.pageHeadingChunks?.[lang];
   const pageHeading = localized(spot.pageHeading, lang) || (lang === "ja" ? `${data.name}はいつ見える？座席側は？` : `When can you see ${data.name} from the Shinkansen?`);
   const explainer = projectExplainer(spot, lang);
   if (spot.id === "hamanako" && explainer && inline[0]) explainer.figure = { ...inline[0], caption: inline[0].note, afterParagraph: 0 };

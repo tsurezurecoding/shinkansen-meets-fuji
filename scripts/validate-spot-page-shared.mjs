@@ -374,6 +374,7 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      if (lang === "en" && /[\u3040-\u30ff\u3400-\u9fff]/.test(output.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "")) fail(`${relativeFile}: English page heading contains Japanese text`);
       const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
       if (new Set(sharedChapterIds).size !== sharedChapterIds.length) fail(`${relativeFile}: shared guide chapter ids must be unique`);
       for (const chapter of page.sharedGuide || []) {
