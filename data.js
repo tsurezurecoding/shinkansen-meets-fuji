@@ -6279,7 +6279,7 @@ const SPOTS = [
       ],
     },
     guideHighlight: { ja: "京都を出たらA席側へ。低い建物の上に二つのたまねぎ型が並ぶのが目印です。", en: "After Kyoto, watch Seat A for two onion-shaped silhouettes above the lower buildings." },
-    minutesFromTokyo: 132, side: "A", category: "curious", confidence: "verified", durationSec: 5, spotting: "easy", scene: "solar", visibleWhenCloudy: true,
+    minutesFromTokyo: 135, side: "A", category: "curious", confidence: "verified", durationSec: 5, spotting: "easy", scene: "solar", visibleWhenCloudy: true,
     photos: [
       {
         "src": "images/20260924_rakusai-egg-tanks_8885_michikusa.jpg",
@@ -6323,8 +6323,8 @@ const SPOTS = [
       { label: { ja: "京都市：卵形汚泥消化タンクの仕組み", en: "Kyoto City: how egg-shaped digestion tanks work (Japanese)" }, url: "https://www.city.kyoto.lg.jp/suido/page/0000241781.html" },
       { label: { ja: "土木ウォッチング：卵形汚泥消化タンクの例（横浜市）", en: "Doboku Watching: an egg-shaped tank in Yokohama (Japanese)" }, url: "https://www.doboku-watching.com/index.php?Kiji_Detail&kijiId=2" },
     ],
-    map: { lat: 34.9711, lng: 135.7185, ja: "洛西浄化センター卵形汚泥消化タンク付近", en: "Rakusai egg-shaped digestion tanks" },
-    viewpoint: { lat: 34.97157874, lng: 135.71872637 },
+    map: { lat: 34.90956964, lng: 135.70650466, ja: "洛西浄化センター卵形汚泥消化タンク付近", en: "Rakusai egg-shaped digestion tanks" },
+    viewpoint: { lat: 34.90967319, lng: 135.70612273 },
   },
   {
     id: "hirakata-park-wheel",
