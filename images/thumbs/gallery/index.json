@@ -1063,6 +1063,14 @@
     "quality": 72,
     "sha256": "d559aaec23a0ce0fea0ef7d9244b575fef6c9568865953465e32fb0e1d4ee35b"
   },
+  "images/thumbs/gallery/20260816_fujitec-big-wing_cp0166_michikusa.webp": {
+    "source": "images/20260816_fujitec-big-wing_cp0166_michikusa.jpg",
+    "sourceSha256": "08b83a57c4516d634181cd7914d390d06b61eb602247d2ca6fa5797b55006e2c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d3d5710dd4d573bd6c94ecf3fb745f2b0576f04d2872af620942816313df6df2"
+  },
   "images/thumbs/gallery/20260816_gifu_hashima_mahalo_1_michikusa.webp": {
     "source": "images/20260816_gifu_hashima_mahalo_1_michikusa.jpg",
     "sourceSha256": "a9ecc1a1ba04b3219af3ca786ee86a101718d7c81d2f1a8357e5c4a0c2af69d8",
@@ -1367,6 +1375,22 @@
     "quality": 72,
     "sha256": "a7eb7cba6b6b3dabf64166d9041dc1bf31d47a9f1244ef17899255b3c4e7f97a"
   },
+  "images/thumbs/gallery/20260914_hikone-castle_cp0149_michikusa.webp": {
+    "source": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
+    "sourceSha256": "8665b70e5dd50aae6675f0224aa45de85f26daf5182b70cfa5f600f9a012f6d0",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6066169a14e71945394d6a7d9617bfc5464f38b49ef46a4bcb369c301bdc6444"
+  },
+  "images/thumbs/gallery/20260914_seta-karahashi_cp0148_michikusa.webp": {
+    "source": "images/20260914_seta-karahashi_cp0148_michikusa.jpg",
+    "sourceSha256": "f836ba7c7fbf430970c300895ea68be214d0daf5c6fb3189cb626c3943b79987",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "64d4946675aeeed91598184ae7b5a6601c24ffe276af8de5d20de5eec70f0906"
+  },
   "images/thumbs/gallery/20260919_atami_castle_michikusa.webp": {
     "source": "images/20260919_atami_castle_michikusa.jpg",
     "sourceSha256": "5e24e7f9237c10c9c2ea0a475c356bbc42a53f569e25ae3e442b13a18f84b610",
@@ -1415,6 +1439,38 @@
     "quality": 72,
     "sha256": "99d1e3c7456d65c46a628372667d0e6f369616493b7d75e4a38cffadced13263"
   },
+  "images/thumbs/gallery/20260919_nagoya-station-skyline_cp0154_michikusa.webp": {
+    "source": "images/20260919_nagoya-station-skyline_cp0154_michikusa.jpg",
+    "sourceSha256": "1482146c04265a843b3bdbe1e92a442ba9ef0ecce3fff3befd7b3a3db4593585",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "26cd80bfafb7c2bf1fae14031f37a646f320b1fa199b49e36d96e8164c818455"
+  },
+  "images/thumbs/gallery/20260919_nagoya-station-skyline_cp0155_michikusa.webp": {
+    "source": "images/20260919_nagoya-station-skyline_cp0155_michikusa.jpg",
+    "sourceSha256": "ec7698bcedb34c69da7810cf839ec8c55197841c058dc298295b04ace03e0bba",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ad68b9437840426ef95c7a7abe01a4092d415c181e3a94cbe391ab353b725f32"
+  },
+  "images/thumbs/gallery/20260919_nagoya-station-skyline_cp0156_michikusa.webp": {
+    "source": "images/20260919_nagoya-station-skyline_cp0156_michikusa.jpg",
+    "sourceSha256": "d46630a539d04bb80d65a5fadeba17b5f8cef31b50f726a832a014036627e46a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5ebb9a854ff1d17aaf3c842e4ccfb85037885846e5bf2613d3cdb08285a9e241"
+  },
+  "images/thumbs/gallery/20260919_nangu-taisha_cp0169_michikusa.webp": {
+    "source": "images/20260919_nangu-taisha_cp0169_michikusa.jpg",
+    "sourceSha256": "1e3653b0a4d7c3d6d147c27b7a12c67dfd41c2ec3b5fba9b3c69d791f6bcef3d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1fd5890ec428cc160aff4f9178d2a88bae572d220bb345e570d43aa5c41fd8bd"
+  },
   "images/thumbs/gallery/20260919_odawara_castle_michikusa.webp": {
     "source": "images/20260919_odawara_castle_michikusa.jpg",
     "sourceSha256": "fd5651a52e5b99de9c48bd6b5d77c7b3093317c36aba392ef5d7a1d80ffa0a3a",
@@ -1431,6 +1487,14 @@
     "quality": 72,
     "sha256": "1eb5490f225250f35ee403a5ac7b08c1bb75ac3f33248273ef7aa947e6a13c28"
   },
+  "images/thumbs/gallery/20260919_sennenq-sign_cp0157_michikusa.webp": {
+    "source": "images/20260919_sennenq-sign_cp0157_michikusa.jpg",
+    "sourceSha256": "91ece9d8c133bf70d78ab554e40e3c092eb20047472b6e3c57919459460edd6b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "382e0fbcef058080e9d001e45a4021b1133694f27c872755d1adb61373f0fb11"
+  },
   "images/thumbs/gallery/20260919_shizuoka_tea_fields_a_michikusa.webp": {
     "source": "images/20260919_shizuoka_tea_fields_a_michikusa.jpg",
     "sourceSha256": "8e59526531db5a53a26cd47762e089731ce7b881aecdb5e830052e747a7888ab",
@@ -1438,6 +1502,22 @@
     "height": 198,
     "quality": 72,
     "sha256": "eba95a4ad4d60f3e3030d55e60b90035edd7addbaa9a6d1bf8311847a1fe498d"
+  },
+  "images/thumbs/gallery/20260919_tokyo-tower_cp0167_michikusa.webp": {
+    "source": "images/20260919_tokyo-tower_cp0167_michikusa.jpg",
+    "sourceSha256": "c52987d2af98488ce32bff1f2ec8423574f14a831e3a515d41463ce6f1c039db",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "de169e95ab10cc2483b42dad4d84f064606fce0f4c5c3e40721ae20301c6a822"
+  },
+  "images/thumbs/gallery/20260919_tokyo-tower_cp0168_michikusa.webp": {
+    "source": "images/20260919_tokyo-tower_cp0168_michikusa.jpg",
+    "sourceSha256": "c60a394846811c525cfd5bdf21761add6944574b7aa4b54e9ae26ddd190b77f6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8cfafe527a3eb1ca02a9dfdf482a4f02dacd46e9c0dadd5124df4746c74af4e0"
   },
   "images/thumbs/gallery/20260919_yurakucho-reflection_46521_michikusa.webp": {
     "source": "images/20260919_yurakucho-reflection_46521_michikusa.jpg",
@@ -1519,6 +1599,14 @@
     "quality": 72,
     "sha256": "cb97f7b7a0991f2fd72621e2cb2e3461ee46a8a94bda4bf581aac2a484bb9495"
   },
+  "images/thumbs/gallery/20260924_hikone-castle_cp0170_michikusa.webp": {
+    "source": "images/20260924_hikone-castle_cp0170_michikusa.jpg",
+    "sourceSha256": "7d8e557b1fb58bf141db6ca7384e8319b3ed007fe965948ab2a6a40d0f2b6f25",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b0abd589567e9899044a0447e6320ef001775fb63984fd5e036966d4522f02b4"
+  },
   "images/thumbs/gallery/20260924_kaguya-no-akari_28703_michikusa.webp": {
     "source": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
     "sourceSha256": "e1506848d9aa32fccda54e4fc337f9ae89353cfd21ae4de3695f65092ddc2d37",
@@ -1542,6 +1630,22 @@
     "height": 198,
     "quality": 72,
     "sha256": "5d5e815f4ae7910baacce1ebad6bc7616df9b8d421a599f7c69b5eb1930b7c65"
+  },
+  "images/thumbs/gallery/20260924_kiyosu_cp0171_michikusa.webp": {
+    "source": "images/20260924_kiyosu_cp0171_michikusa.jpg",
+    "sourceSha256": "a2c5205011f85a57f80a7c6c94de77962ee89219f0a737876b12d67abc56371a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c09b9603153117a383edd8fac296508799ae27fed456bf2c6c26dce53f8e0ecf"
+  },
+  "images/thumbs/gallery/20260924_maruko-bridge_cp0162_michikusa.webp": {
+    "source": "images/20260924_maruko-bridge_cp0162_michikusa.jpg",
+    "sourceSha256": "71c48e353efaacfa832f45e4f29fccf6de63da4731f4fd84b37def77aa93512e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "42e43b3e88dd96e183771cfecd3a718c215fe9d3429cc72f133c9fbffedaecd9"
   },
   "images/thumbs/gallery/20260924_rainbow-bridge_21057_michikusa.webp": {
     "source": "images/20260924_rainbow-bridge_21057_michikusa.jpg",

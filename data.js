@@ -1124,6 +1124,38 @@ const SPOTS = [
           "ja": "E席側、通りの奥の白壁と三重の屋根",
           "en": "Seat E side: white walls and three tiers of roofs beyond the street"
         }
+      },
+      {
+        "src": "images/20260919_tokyo-tower_cp0167_michikusa.jpg",
+        "alt": {
+          "ja": "品川を出た先、ビルの窓に映る列車",
+          "en": "The train reflected in windows just beyond Shinagawa"
+        },
+        "note": {
+          "ja": "品川を出た先、ビルの窓に映る列車",
+          "en": "The train reflected in windows just beyond Shinagawa"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
+      },
+      {
+        "src": "images/20260919_tokyo-tower_cp0168_michikusa.jpg",
+        "alt": {
+          "ja": "品川を出た先のガラスに、長く映る車体",
+          "en": "The train stretches across glass just beyond Shinagawa"
+        },
+        "note": {
+          "ja": "品川を出た先のガラスに、長く映る車体",
+          "en": "The train stretches across glass just beyond Shinagawa"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
       }
     ],
     "media": {
@@ -1645,126 +1677,264 @@ const SPOTS = [
     viewpoint: { lat: 35.600575, lng: 139.734265 },
   },
   {
-    id: "maruko-bridge",
-    icon: "🌉",
-    ja: { name: "丸子橋", area: "品川 → 新横浜（多摩川付近）", hook: "多摩川に、青いアーチ橋。", story: "品川を過ぎて新横浜へ向かう途中、多摩川を渡る前後でE席側に青いアーチの丸子橋があらわれます。東京都大田区田園調布本町と、川崎市中原区上丸子八幡町を結ぶ国道1号（旧東海道の系譜を継ぐ道）の橋で、東京のビル街から一気に川の景色に切り替わる序盤の小さな節目です。現在の橋は2000年に架け替えられた2代目で、青く塗られたブレースドリブ・タイドアーチ橋という珍しい形式。映画『シン・ゴジラ』にゴジラ第2形態が上陸するシーンなど、ドラマ・映画のロケ地としても知られます。橋のすぐ手前（多摩川台）には亀甲山古墳を含む多摩川台古墳群の緑が広がり、都心近郊とは思えない古代の面影が重なります。" },
-    en: { name: "Maruko Bridge", area: "Shinagawa → Shin-Yokohama, near the Tama River", hook: "A blue arch over the Tama River.", story: "After Shinagawa, as the train heads toward Shin-Yokohama, the blue-painted arch of Maruko Bridge comes into view on the Seat E side as you cross the Tama River. Carrying National Route 1 — an heir to the old Tokaido highway — the bridge links Denenchofu-honmachi in Ota, Tokyo with Kami-Maruko in Nakahara, Kawasaki. It marks a small early turning point in the ride, where central Tokyo suddenly becomes river scenery. The current bridge is a second-generation braced-rib tied-arch bridge, rebuilt in 2000 and unusual in Japan. Film fans may know it as one of the landmarks in Shin Godzilla, where Godzilla's second form crawls ashore nearby. Just before the bridge on the Tokyo side rises the green of Tamagawadai Park, home to the Kamenokoyama Kofun and several other early tumuli — an ancient presence you rarely expect this close to central Tokyo." },
-    pageTitle: {
-      ja: "新幹線から見える丸子橋｜多摩川の青いアーチ橋 | 新幹線の窓",
-      en: "Maruko Bridge from the Shinkansen | Blue Arch over the Tama River",
+    "id": "maruko-bridge",
+    "icon": "🌉",
+    "ja": {
+      "name": "丸子橋",
+      "area": "品川 → 新横浜（多摩川付近）",
+      "hook": "多摩川に、青いアーチ橋。",
+      "story": "品川を過ぎて新横浜へ向かう途中、多摩川を渡る前後でE席側に青いアーチの丸子橋があらわれます。東京都大田区田園調布本町と、川崎市中原区上丸子八幡町を結ぶ国道1号（旧東海道の系譜を継ぐ道）の橋で、東京のビル街から一気に川の景色に切り替わる序盤の小さな節目です。現在の橋は2000年に架け替えられた2代目で、青く塗られたブレースドリブ・タイドアーチ橋という珍しい形式。映画『シン・ゴジラ』にゴジラ第2形態が上陸するシーンなど、ドラマ・映画のロケ地としても知られます。橋のすぐ手前（多摩川台）には亀甲山古墳を含む多摩川台古墳群の緑が広がり、都心近郊とは思えない古代の面影が重なります。"
     },
-    pageHeading: {
-      ja: "多摩川を渡る合図——青いアーチの丸子橋",
-      en: "Crossing the Tama on a blue arch: Maruko Bridge",
+    "en": {
+      "name": "Maruko Bridge",
+      "area": "Shinagawa → Shin-Yokohama, near the Tama River",
+      "hook": "A blue arch over the Tama River.",
+      "story": "After Shinagawa, as the train heads toward Shin-Yokohama, the blue-painted arch of Maruko Bridge comes into view on the Seat E side as you cross the Tama River. Carrying National Route 1 — an heir to the old Tokaido highway — the bridge links Denenchofu-honmachi in Ota, Tokyo with Kami-Maruko in Nakahara, Kawasaki. It marks a small early turning point in the ride, where central Tokyo suddenly becomes river scenery. The current bridge is a second-generation braced-rib tied-arch bridge, rebuilt in 2000 and unusual in Japan. Film fans may know it as one of the landmarks in Shin Godzilla, where Godzilla's second form crawls ashore nearby. Just before the bridge on the Tokyo side rises the green of Tamagawadai Park, home to the Kamenokoyama Kofun and several other early tumuli — an ancient presence you rarely expect this close to central Tokyo."
     },
-    pageHeadingChunks: {
-      ja: ["多摩川を渡る合図——", "青いアーチの丸子橋"],
-      en: ["Crossing the Tama on a blue arch:", "Maruko Bridge"],
+    "pageTitle": {
+      "ja": "新幹線から見える丸子橋｜多摩川の青いアーチ橋 | 新幹線の窓",
+      "en": "Maruko Bridge from the Shinkansen | Blue Arch over the Tama River"
     },
-    metaDescription: {
-      ja: "新幹線が多摩川を渡る前後、E席側に見える青いアーチ橋が丸子橋。国道1号の橋で、映画『シン・ゴジラ』のロケ地としても知られる橋の由来、アーチの構造、周辺の多摩川台古墳群まで紹介します。",
-      en: "As the Shinkansen crosses the Tama River, the blue arch on the Seat E side is Maruko Bridge — a National Route 1 crossing between Ota, Tokyo and Kawasaki. Learn its history, its unusual arch design, its Shin Godzilla connection, and the ancient tumuli beside it.",
+    "pageHeading": {
+      "ja": "多摩川を渡る合図——青いアーチの丸子橋",
+      "en": "Crossing the Tama on a blue arch: Maruko Bridge"
     },
-    sectionHeading: {
-      ja: "この青いアーチ橋は何？",
-      en: "What is this blue arch bridge?",
+    "pageHeadingChunks": {
+      "ja": [
+        "多摩川を渡る合図——",
+        "青いアーチの丸子橋"
+      ],
+      "en": [
+        "Crossing the Tama on a blue arch:",
+        "Maruko Bridge"
+      ]
     },
-    pageStory: {
-      ja: "丸子橋は多摩川の下流にかかる国道1号の橋で、東京都大田区田園調布本町側と、川崎市中原区上丸子八幡町側を結んでいます。最初の橋は1934年（昭和9年）、初代・東京五輪招致とほぼ同時期の重要インフラとして架けられました。歩道と車道を備えた鋼製アーチ橋で、多摩川下流の代表的な橋のひとつとして70年近く使われ続けたのち、老朽化と交通量増加に対応するため2000年に2代目が架け替え竣工しました。現在の橋は青色に塗られたブレースドリブ・タイドアーチ橋という珍しい形式で、初代の姿を意識した意匠のバランスが評価されています。",
-      en: "Maruko Bridge is a National Route 1 crossing over the lower Tama River, linking Denenchofu-honmachi in Ota, Tokyo with Kami-Maruko in Nakahara, Kawasaki. The first bridge opened in 1934 as a key piece of infrastructure and served central-Tokyo traffic for nearly seventy years. Rising traffic and age eventually required replacement, and the current second-generation bridge was completed in 2000 as a braced-rib tied-arch bridge — an unusual form in Japan. Painted a distinctive blue, its design deliberately echoes the original's silhouette.",
+    "metaDescription": {
+      "ja": "新幹線が多摩川を渡る前後、E席側に見える青いアーチ橋が丸子橋。国道1号の橋で、映画『シン・ゴジラ』のロケ地としても知られる橋の由来、アーチの構造、周辺の多摩川台古墳群まで紹介します。",
+      "en": "As the Shinkansen crosses the Tama River, the blue arch on the Seat E side is Maruko Bridge — a National Route 1 crossing between Ota, Tokyo and Kawasaki. Learn its history, its unusual arch design, its Shin Godzilla connection, and the ancient tumuli beside it."
     },
-    explainer: {
-      heading: { ja: "青いアーチと、周辺のもう一つの顔", en: "The blue arch and a second, older face of the area" },
-      ja: [
+    "sectionHeading": {
+      "ja": "この青いアーチ橋は何？",
+      "en": "What is this blue arch bridge?"
+    },
+    "pageStory": {
+      "ja": "丸子橋は多摩川の下流にかかる国道1号の橋で、東京都大田区田園調布本町側と、川崎市中原区上丸子八幡町側を結んでいます。最初の橋は1934年（昭和9年）、初代・東京五輪招致とほぼ同時期の重要インフラとして架けられました。歩道と車道を備えた鋼製アーチ橋で、多摩川下流の代表的な橋のひとつとして70年近く使われ続けたのち、老朽化と交通量増加に対応するため2000年に2代目が架け替え竣工しました。現在の橋は青色に塗られたブレースドリブ・タイドアーチ橋という珍しい形式で、初代の姿を意識した意匠のバランスが評価されています。",
+      "en": "Maruko Bridge is a National Route 1 crossing over the lower Tama River, linking Denenchofu-honmachi in Ota, Tokyo with Kami-Maruko in Nakahara, Kawasaki. The first bridge opened in 1934 as a key piece of infrastructure and served central-Tokyo traffic for nearly seventy years. Rising traffic and age eventually required replacement, and the current second-generation bridge was completed in 2000 as a braced-rib tied-arch bridge — an unusual form in Japan. Painted a distinctive blue, its design deliberately echoes the original's silhouette."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "青いアーチと、周辺のもう一つの顔",
+        "en": "The blue arch and a second, older face of the area"
+      },
+      "ja": [
         "現在の丸子橋のアーチは、上向きに湾曲した主構と斜めに交差する副材（ブレース）を組んだ「ブレースドリブ・タイドアーチ」と呼ばれる形式です。全長は約400m、中央のアーチ支間が160m以上あります。青いカラーリングは、多摩川の水色と河川敷の緑に合わせて選ばれたと言われ、対岸の武蔵小杉のタワマン群と対比する形で、都心通勤路の景観アイコンにもなっています。",
         "橋の東京側の手前、多摩川台には多摩川台公園と多摩川台古墳群があります。中でも亀甲山古墳（かめのこやまこふん）は4世紀後半に築かれた前方後円墳で、国指定史跡。都心近郊とは思えない緑の丘陵と、その中に眠る大型古墳の存在は、車窓から見えるコンクリートと川面の風景に「意外な深い時間」を差し込んでくれます。",
-        "撮影スポットとしても人気で、映画『シン・ゴジラ』ではゴジラ第2形態が多摩川を遡上する場面の背景として登場しました。テレビドラマやドキュメンタリーの撮影も多く、東急東横線の多摩川鉄橋・武蔵小杉の高層ビル群と組み合わせて撮られる、川崎・大田の代表的な都市景観のひとつです。",
+        "撮影スポットとしても人気で、映画『シン・ゴジラ』ではゴジラ第2形態が多摩川を遡上する場面の背景として登場しました。テレビドラマやドキュメンタリーの撮影も多く、東急東横線の多摩川鉄橋・武蔵小杉の高層ビル群と組み合わせて撮られる、川崎・大田の代表的な都市景観のひとつです。"
       ],
-      en: [
+      "en": [
         "The current arch is what engineers call a braced-rib tied-arch — a curved main rib stiffened by diagonal cross-bracing. It is roughly 400 meters long, with a central arch span of over 160 meters. The blue color was chosen to blend with the Tama River's water and the riverside greenery, and today it forms a visual counterpart to the tall towers of Musashi-Kosugi rising on the opposite bank.",
         "Just before the bridge on the Tokyo side lies Tamagawadai Park and the Tamagawadai kofun cluster. Its centerpiece, Kamenokoyama Kofun, is a keyhole-shaped tumulus built in the late 4th century and designated a National Historic Site. Finding a wooded ridge with a large ancient tumulus this close to central Tokyo adds an unexpectedly deep layer of time to a view otherwise dominated by concrete and river.",
-        "The bridge is also a popular filming location. In Shin Godzilla (2016), Godzilla's second form appears crawling up the Tama River with Maruko Bridge in the background. Together with the Tokyu Toyoko Line's Tama River bridge and the Musashi-Kosugi high-rises, it is one of the most recognizable urban river scenes on the Kawasaki-Ota border.",
-      ],
+        "The bridge is also a popular filming location. In Shin Godzilla (2016), Godzilla's second form appears crawling up the Tama River with Maruko Bridge in the background. Together with the Tokyu Toyoko Line's Tama River bridge and the Musashi-Kosugi high-rises, it is one of the most recognizable urban river scenes on the Kawasaki-Ota border."
+      ]
     },
-    guideHighlight: {
-      ja: "多摩川を渡る少し前、E席側の遠くに青いアーチの輪郭を探してください。渡り始める瞬間から、川面と橋、その先に武蔵小杉のタワマン群という都市景観がまとまって窓に入ります。多摩川を渡り終える前に、東京側の亀甲山古墳の緑もちらりと見えます。夜は橋の照明が川面に長く伸び、タワマンの窓明かりと合わせて、昼とはまったく違う光の景色になります。",
-      en: "Just before the train crosses the Tama, look far off on the Seat E side for the blue arch. The moment you start crossing, the river surface, the arch itself, and the Musashi-Kosugi towers beyond come into the window as a single urban composition. If you glance back toward Tokyo just before finishing the crossing, you can catch the wooded hill of Kamenokoyama Kofun too. At night the bridge lights stretch out across the water and combine with the lit windows of the towers, making a completely different scene from the daytime one.",
+    "guideHighlight": {
+      "ja": "多摩川を渡る少し前、E席側の遠くに青いアーチの輪郭を探してください。渡り始める瞬間から、川面と橋、その先に武蔵小杉のタワマン群という都市景観がまとまって窓に入ります。多摩川を渡り終える前に、東京側の亀甲山古墳の緑もちらりと見えます。夜は橋の照明が川面に長く伸び、タワマンの窓明かりと合わせて、昼とはまったく違う光の景色になります。",
+      "en": "Just before the train crosses the Tama, look far off on the Seat E side for the blue arch. The moment you start crossing, the river surface, the arch itself, and the Musashi-Kosugi towers beyond come into the window as a single urban composition. If you glance back toward Tokyo just before finishing the crossing, you can catch the wooded hill of Kamenokoyama Kofun too. At night the bridge lights stretch out across the water and combine with the lit windows of the towers, making a completely different scene from the daytime one."
     },
-    routeNote: {
-      ja: "東京から新大阪方面へ向かう場合は、品川を出て多摩川を渡る直前、E席・山側の窓を見てください。新大阪から東京方面へ向かう場合は、新横浜を出て多摩川を渡り始める直前がタイミングで、同じくE席側に青い丸子橋が見えます。",
-      en: "From Tokyo toward Shin-Osaka, watch the right-hand window (Seat E) just before crossing the Tama River after Shinagawa. From Shin-Osaka toward Tokyo, look for the blue arch on the same Seat E side just as the train starts crossing the Tama River after leaving Shin-Yokohama.",
+    "routeNote": {
+      "ja": "東京から新大阪方面へ向かう場合は、品川を出て多摩川を渡る直前、E席・山側の窓を見てください。新大阪から東京方面へ向かう場合は、新横浜を出て多摩川を渡り始める直前がタイミングで、同じくE席側に青い丸子橋が見えます。",
+      "en": "From Tokyo toward Shin-Osaka, watch the right-hand window (Seat E) just before crossing the Tama River after Shinagawa. From Shin-Osaka toward Tokyo, look for the blue arch on the same Seat E side just as the train starts crossing the Tama River after leaving Shin-Yokohama."
     },
-    minutesFromTokyo: 13, side: "E", category: "notable", confidence: "verified", durationSec: 3, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
-    image: "images/20250531_maruko_bridge_letus10.jpg",
-    photoCredit: {
-      ja: "新幹線の車窓から",
-      en: "Shinkansen window blog",
-      date: "2025-05-31",
-      url: "https://cotetu.seesaa.net/article/515810649.html",
-      note: { ja: "多摩川に架かるライトブルーのアーチ", en: "A light-blue arch spanning the Tama River." },
+    "minutesFromTokyo": 13,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 3,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "bay",
+    "image": "images/20250531_maruko_bridge_letus10.jpg",
+    "photoCredit": {
+      "ja": "新幹線の車窓から",
+      "en": "Shinkansen window blog",
+      "date": "2025-05-31",
+      "url": "https://cotetu.seesaa.net/article/515810649.html",
+      "note": {
+        "ja": "多摩川に架かるライトブルーのアーチ",
+        "en": "A light-blue arch spanning the Tama River."
+      }
     },
-    photos: [
+    "photos": [
       {
-        src: "images/20260704_maruko_bridge_1_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える丸子橋", en: "Maruko Bridge from Seat E on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-04",
-        note: { ja: "新幹線から見える丸子橋の全景", en: "A wide view of Maruko Bridge from the Shinkansen" },
+        "src": "images/20260704_maruko_bridge_1_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える丸子橋",
+          "en": "Maruko Bridge from Seat E on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "新幹線から見える丸子橋の全景",
+          "en": "A wide view of Maruko Bridge from the Shinkansen"
+        }
       },
       {
-        src: "images/20260712_maruko_bridge_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える丸子橋", en: "Maruko Bridge from Seat E on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "多摩川にかかる青いアーチ橋", en: "The blue arch bridge over the Tama River" },
+        "src": "images/20260712_maruko_bridge_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える丸子橋",
+          "en": "Maruko Bridge from Seat E on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "多摩川にかかる青いアーチ橋",
+          "en": "The blue arch bridge over the Tama River"
+        }
       },
       {
-        src: "images/20260704_maruko_bridge_2_michikusa.jpg",
-        alt: { ja: "多摩川越しに見える丸子橋", en: "Maruko Bridge seen across the Tama River" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-04",
-        note: { ja: "多摩川と河川敷越しに見える丸子橋", en: "Maruko Bridge beyond the Tama River and riverside fields" },
+        "src": "images/20260704_maruko_bridge_2_michikusa.jpg",
+        "alt": {
+          "ja": "多摩川越しに見える丸子橋",
+          "en": "Maruko Bridge seen across the Tama River"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "多摩川と河川敷越しに見える丸子橋",
+          "en": "Maruko Bridge beyond the Tama River and riverside fields"
+        }
       },
       {
-        src: "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の新幹線から見える丸子橋付近", en: "Around Maruko Bridge at night from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "夜の多摩川に続く橋の灯り", en: "Bridge lights stretching across the night Tama River" },
+        "src": "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の新幹線から見える丸子橋付近",
+          "en": "Around Maruko Bridge at night from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "夜の多摩川に続く橋の灯り",
+          "en": "Bridge lights stretching across the night Tama River"
+        }
       },
+      {
+        "src": "images/20260924_maruko-bridge_cp0162_michikusa.jpg",
+        "alt": {
+          "ja": "丸子橋と多摩川沿いのゴルフ練習場",
+          "en": "Maruko Bridge and the golf practice area beside the Tama River"
+        },
+        "note": {
+          "ja": "丸子橋と多摩川沿いのゴルフ練習場",
+          "en": "Maruko Bridge and the golf practice area beside the Tama River"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24"
+      }
     ],
-    media: {
-      heading: { ja: "動画で見る丸子橋", en: "Maruko Bridge in motion" },
-      description: { ja: "多摩川を渡る前後の丸子橋と周辺の車窓を、投稿動画でも確かめられます。", en: "See Maruko Bridge and the surrounding Tama River window view in motion." },
-      videos: [
+    "media": {
+      "heading": {
+        "ja": "動画で見る丸子橋",
+        "en": "Maruko Bridge in motion"
+      },
+      "description": {
+        "ja": "多摩川を渡る前後の丸子橋と周辺の車窓を、投稿動画でも確かめられます。",
+        "en": "See Maruko Bridge and the surrounding Tama River window view in motion."
+      },
+      "videos": [
         {
-          kind: "x",
-          url: "https://x.com/michikusatravel/status/2087327217852502514",
-          handle: "@michikusatravel",
-          accessibleTitle: { ja: "丸子橋のX動画", en: "X video of Maruko Bridge" },
-          fallbackText: { ja: "多摩川と丸子橋を通過する車窓動画", en: "Window video passing the Tama River and Maruko Bridge" },
+          "kind": "x",
+          "url": "https://x.com/michikusatravel/status/2087327217852502514",
+          "handle": "@michikusatravel",
+          "accessibleTitle": {
+            "ja": "丸子橋のX動画",
+            "en": "X video of Maruko Bridge"
+          },
+          "fallbackText": {
+            "ja": "多摩川と丸子橋を通過する車窓動画",
+            "en": "Window video passing the Tama River and Maruko Bridge"
+          }
         },
         {
-          kind: "x",
-          url: "https://x.com/michikusatravel/status/2087321985542226423",
-          handle: "@michikusatravel",
-          accessibleTitle: { ja: "丸子橋のX動画 2", en: "Second X video of Maruko Bridge" },
-          fallbackText: { ja: "新幹線から見る丸子橋の車窓動画", en: "Maruko Bridge from the Shinkansen window" },
+          "kind": "x",
+          "url": "https://x.com/michikusatravel/status/2087321985542226423",
+          "handle": "@michikusatravel",
+          "accessibleTitle": {
+            "ja": "丸子橋のX動画 2",
+            "en": "Second X video of Maruko Bridge"
+          },
+          "fallbackText": {
+            "ja": "新幹線から見る丸子橋の車窓動画",
+            "en": "Maruko Bridge from the Shinkansen window"
+          }
         },
         {
-          kind: "x",
-          url: "https://x.com/michikusatravel/status/2087324649671807155",
-          handle: "@michikusatravel",
-          accessibleTitle: { ja: "丸子橋のX動画 3", en: "Third X video of Maruko Bridge" },
-          fallbackText: { ja: "丸子橋と多摩川の車窓動画", en: "Maruko Bridge and the Tama River from the train" },
-        },
+          "kind": "x",
+          "url": "https://x.com/michikusatravel/status/2087324649671807155",
+          "handle": "@michikusatravel",
+          "accessibleTitle": {
+            "ja": "丸子橋のX動画 3",
+            "en": "Third X video of Maruko Bridge"
+          },
+          "fallbackText": {
+            "ja": "丸子橋と多摩川の車窓動画",
+            "en": "Maruko Bridge and the Tama River from the train"
+          }
+        }
       ],
-      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+      "platformNote": {
+        "ja": "動画はX・YouTubeの公式埋め込みを利用しています。",
+        "en": "These videos use official X and YouTube embeds."
+      }
     },
-    references: [REFERENCES.marukoBridgeWiki, REFERENCES.kamenokoyamaKofun, REFERENCES.marukoBridgeBlog],
-    map: { lat: 35.58537, lng: 139.66883, ja: "丸子橋 多摩川", en: "Maruko Bridge Tama River" },
-    viewpoint: { lat: 35.581074, lng: 139.670656 },
+    "references": [
+      {
+        "label": {
+          "ja": "Wikipedia: 丸子橋",
+          "en": "Wikipedia: Maruko Bridge (Japanese only)"
+        },
+        "url": "https://ja.wikipedia.org/wiki/%E4%B8%B8%E5%AD%90%E6%A9%8B"
+      },
+      {
+        "label": {
+          "ja": "大田区: 亀甲山古墳（多摩川台古墳群）",
+          "en": "Ota City: Kamenokoyama Kofun (Tamagawadai kofun group) (Japanese only)"
+        },
+        "url": "https://www.city.ota.tokyo.jp/seikatsu/rekishitobunka/bunkazai/1shitei_shiseki/kounotoritukougouryou.html"
+      },
+      {
+        "label": {
+          "ja": "新幹線の車窓から: 丸子橋車窓記事",
+          "en": "Shinkansen window blog: Maruko Bridge window article (Japanese only)"
+        },
+        "url": "https://cotetu.seesaa.net/article/515810649.html"
+      }
+    ],
+    "map": {
+      "lat": 35.58537,
+      "lng": 139.66883,
+      "ja": "丸子橋 多摩川",
+      "en": "Maruko Bridge Tama River"
+    },
+    "viewpoint": {
+      "lat": 35.581074,
+      "lng": 139.670656
+    }
   },
   {
     id: "musashi-kosugi-towers",
@@ -4457,109 +4627,272 @@ const SPOTS = [
     viewpoint: { lat: 34.971971, lng: 137.057485 },
   },
   {
-    id: "nagoya-station-skyline",
-    icon: "🏙️",
-    ja: { name: "名古屋駅前", area: "名古屋到着直前", hook: "あのビル群は何？名古屋駅前。", story: "東京から新大阪方面へ向かう列車では、名古屋到着直前にE席側の景色が一気に高層ビル街へ変わります。ねじれた網目模様はモード学園スパイラルタワーズ、駅の真上に並ぶ2本の白い塔はJRセントラルタワーズ、その隣で駅ホームを覆うガラスの巨大な塔はJRゲートタワー。少し北寄りに濃い色をした四角い塔はミッドランドスクエア、少し西の白い塔は大名古屋ビルヂング……と、名古屋駅前は明確に名前の付いた高層ビルが5〜6本、密集して立つ日本屈指の駅前スカイラインです。建物の名前が分かるだけで、短い駅前風景が名古屋到着の小さな建築案内になります。" },
-    en: { name: "Nagoya Station Skyline", area: "Just before Nagoya", hook: "Which towers are those?", story: "Approaching Nagoya from Tokyo, the view on the Seat E side suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, and the huge glass tower right beside them, covering the platforms, is JR Gate Tower. The dark rectangular tower slightly to the north is Midland Square, while the light-colored slab a little to the west is Dai Nagoya Building — five or six clearly named high-rises grouped around one station, one of Japan's densest station-front skylines. Knowing the names turns the brief cityscape into a small architecture tour announcing your arrival." },
-    pageTitle: {
-      ja: "新幹線から見える名古屋駅前のスカイライン｜あの高層ビルの名前 | 新幹線の窓",
-      en: "The Nagoya Station Skyline from the Shinkansen | What Those Towers Are | Shinkansen Window",
+    "id": "nagoya-station-skyline",
+    "icon": "🏙️",
+    "ja": {
+      "name": "名古屋駅前",
+      "area": "名古屋到着直前",
+      "hook": "あのビル群は何？名古屋駅前。",
+      "story": "東京から新大阪方面へ向かう列車では、名古屋到着直前にE席側の景色が一気に高層ビル街へ変わります。ねじれた網目模様はモード学園スパイラルタワーズ、駅の真上に並ぶ2本の白い塔はJRセントラルタワーズ、その隣で駅ホームを覆うガラスの巨大な塔はJRゲートタワー。少し北寄りに濃い色をした四角い塔はミッドランドスクエア、少し西の白い塔は大名古屋ビルヂング……と、名古屋駅前は明確に名前の付いた高層ビルが5〜6本、密集して立つ日本屈指の駅前スカイラインです。建物の名前が分かるだけで、短い駅前風景が名古屋到着の小さな建築案内になります。"
     },
-    pageHeading: {
-      ja: "名古屋到着直前——駅前の高層ビル群、その正体",
-      en: "Just before Nagoya — what those towers actually are",
+    "en": {
+      "name": "Nagoya Station Skyline",
+      "area": "Just before Nagoya",
+      "hook": "Which towers are those?",
+      "story": "Approaching Nagoya from Tokyo, the view on the Seat E side suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, and the huge glass tower right beside them, covering the platforms, is JR Gate Tower. The dark rectangular tower slightly to the north is Midland Square, while the light-colored slab a little to the west is Dai Nagoya Building — five or six clearly named high-rises grouped around one station, one of Japan's densest station-front skylines. Knowing the names turns the brief cityscape into a small architecture tour announcing your arrival."
     },
-    pageHeadingChunks: {
-      ja: ["名古屋到着直前——", "駅前の高層ビル群、その正体"],
-      en: ["Just before Nagoya —", "what those towers actually are"],
+    "pageTitle": {
+      "ja": "新幹線から見える名古屋駅前のスカイライン｜あの高層ビルの名前 | 新幹線の窓",
+      "en": "The Nagoya Station Skyline from the Shinkansen | What Those Towers Are | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "名古屋到着直前、新幹線のE席側に立ち並ぶ高層ビル群を、モード学園スパイラルタワーズ、JRセントラルタワーズ、JRゲートタワー、ミッドランドスクエアなどの名前と一緒に紹介します。",
-      en: "Just before Nagoya, the Seat E window fills with a wall of high-rises. Here is how to tell Mode Gakuen Spiral Towers, JR Central Towers, JR Gate Tower and Midland Square apart in the Nagoya Station skyline.",
+    "pageHeading": {
+      "ja": "名古屋到着直前——駅前の高層ビル群、その正体",
+      "en": "Just before Nagoya — what those towers actually are"
     },
-    sectionHeading: {
-      ja: "あの高層ビル、どれがどれ？",
-      en: "Which tower is which?",
+    "pageHeadingChunks": {
+      "ja": [
+        "名古屋到着直前——",
+        "駅前の高層ビル群、その正体"
+      ],
+      "en": [
+        "Just before Nagoya —",
+        "what those towers actually are"
+      ]
     },
-    pageStory: {
-      ja: "名古屋駅前（名駅・めいえき）エリアは、平成〜令和にかけて名古屋の顔として大きく変化してきた再開発エリアです。1999年、駅の真上にJRセントラルタワーズがオフィス・ホテル・百貨店を統合した超高層複合施設として完成し、名古屋のスカイラインを大きく塗り替えました。その後、2007年ミッドランドスクエア（トヨタ自動車グループ本社ビル）、2008年モード学園スパイラルタワーズ、2017年JRゲートタワーと、10〜20年のスパンで駅を取り囲む形で超高層ビルが積み上がっていき、駅前は日本国内でも屈指の高層ビル集積地になりました。",
-      en: "The area right in front of Nagoya Station — known locally as Meieki — is one of Japan's most dramatically redeveloped station districts of the Heisei and Reiwa eras. In 1999, JR Central Towers rose directly above the station as a combined office, hotel and department-store complex, redrawing Nagoya's skyline. That was followed by Midland Square (headquarters of the Toyota Motor group) in 2007, Mode Gakuen Spiral Towers in 2008 and JR Gate Tower in 2017 — a two-decade run of skyscraper construction that has turned Meieki into one of Japan's densest concentrations of high-rise buildings.",
+    "metaDescription": {
+      "ja": "名古屋到着直前、新幹線のE席側に立ち並ぶ高層ビル群を、モード学園スパイラルタワーズ、JRセントラルタワーズ、JRゲートタワー、ミッドランドスクエアなどの名前と一緒に紹介します。",
+      "en": "Just before Nagoya, the Seat E window fills with a wall of high-rises. Here is how to tell Mode Gakuen Spiral Towers, JR Central Towers, JR Gate Tower and Midland Square apart in the Nagoya Station skyline."
     },
-    explainer: {
-      heading: { ja: "主な高層ビル、それぞれの特徴", en: "The main towers, one by one" },
-      ja: [
+    "sectionHeading": {
+      "ja": "あの高層ビル、どれがどれ？",
+      "en": "Which tower is which?"
+    },
+    "pageStory": {
+      "ja": "名古屋駅前（名駅・めいえき）エリアは、平成〜令和にかけて名古屋の顔として大きく変化してきた再開発エリアです。1999年、駅の真上にJRセントラルタワーズがオフィス・ホテル・百貨店を統合した超高層複合施設として完成し、名古屋のスカイラインを大きく塗り替えました。その後、2007年ミッドランドスクエア（トヨタ自動車グループ本社ビル）、2008年モード学園スパイラルタワーズ、2017年JRゲートタワーと、10〜20年のスパンで駅を取り囲む形で超高層ビルが積み上がっていき、駅前は日本国内でも屈指の高層ビル集積地になりました。",
+      "en": "The area right in front of Nagoya Station — known locally as Meieki — is one of Japan's most dramatically redeveloped station districts of the Heisei and Reiwa eras. In 1999, JR Central Towers rose directly above the station as a combined office, hotel and department-store complex, redrawing Nagoya's skyline. That was followed by Midland Square (headquarters of the Toyota Motor group) in 2007, Mode Gakuen Spiral Towers in 2008 and JR Gate Tower in 2017 — a two-decade run of skyscraper construction that has turned Meieki into one of Japan's densest concentrations of high-rise buildings."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "主な高層ビル、それぞれの特徴",
+        "en": "The main towers, one by one"
+      },
+      "ja": [
         "JRセントラルタワーズ（1999年）は、駅の真上に立つ双塔で、オフィス側245m、ホテル側226m。当時「駅ビル」の常識を大きく塗り替えた建築として国際的にも注目されました。名古屋駅の顔として長く親しまれる存在です。",
         "JRゲートタワー（2017年）は、セントラルタワーズと隣接して立つ約220mの複合ビル。低層部にはJR名古屋高島屋のゲートタワーモール、上層はオフィスとホテル。新幹線ホームが直接ビルの下に組み込まれた特殊な構成で、乗車したまま巨大なガラス壁の下を潜っていく感覚があります。",
         "モード学園スパイラルタワーズ（2008年）は、名駅エリアで最も目立つ独特のシルエットを持つ170mの校舎ビル。3本の光沢帯（ホワイトカーテンウォール、ダークメタリック、シルバー系ガラス）が上方向に螺旋を描く外観で、専門学校3校（HAL・モード学園・首都医校）が入居しています。日本建築学会賞など多数の受賞歴があるモダン建築です。",
         "ミッドランドスクエア（2007年）は、トヨタ自動車グループの本社ビルとして建てられた247mの複合ビル。低層階のブランドショップ、上層のオフィス、最上階には屋外展望施設「スカイプロムナード」があります。夜景スポットとしても知られる存在です。",
-        "そのほか、駅の南西側には大名古屋ビルヂング（2016年建替、180m）、名古屋ルーセントタワー（2007年、180m）などが並び、車窓では複数の高層ビルが折り重なるように見えます。",
+        "そのほか、駅の南西側には大名古屋ビルヂング（2016年建替、180m）、名古屋ルーセントタワー（2007年、180m）などが並び、車窓では複数の高層ビルが折り重なるように見えます。"
       ],
-      en: [
+      "en": [
         "JR Central Towers (1999) — the twin towers rising directly above the station, 245 m on the office side and 226 m on the hotel side. When it opened, this complex redefined what a Japanese station building could be and drew international attention.",
         "JR Gate Tower (2017) — a roughly 220 m mixed-use tower right next to JR Central Towers. Its lower floors house the JR Nagoya Takashimaya Gate Tower Mall, its upper floors host offices and a hotel. Unusually, the Shinkansen platforms slide directly beneath the tower, so trains literally arrive under a huge wall of glass.",
         "Mode Gakuen Spiral Towers (2008) — the 170 m academic building with the most distinctive silhouette in Meieki. Three vertical strips (white curtain wall, dark metallic panel and silver glass) spiral upward around the tower. It houses three vocational schools (HAL, Mode Gakuen and Shuto Iko) and has won multiple architecture awards.",
         "Midland Square (2007) — the 247 m headquarters complex of the Toyota Motor group. Boutique shops fill the lower floors, offices the middle, and an open-air observatory 'Sky Promenade' crowns the top; it is also a well-known night-view spot.",
-        "Nearby stand additional towers such as the redeveloped Dai Nagoya Building (2016, 180 m) and Nagoya Lucent Tower (2007, 180 m), so from the train the skyline appears as multiple high-rises overlapping.",
-      ],
+        "Nearby stand additional towers such as the redeveloped Dai Nagoya Building (2016, 180 m) and Nagoya Lucent Tower (2007, 180 m), so from the train the skyline appears as multiple high-rises overlapping."
+      ]
     },
-    guideHighlight: {
-      ja: "名古屋到着の数分前から、E席側に高層ビル群が見え始めます。まずは「ねじれたスパイラル型」（モード学園）を目印に、そこから駅の方向へ視線を寄せると2本並ぶ白い塔（JRセントラルタワーズ）と、その隣のガラスの塔（JRゲートタワー）が見つかります。もっと視線を上へ振ると濃い色のミッドランドスクエア。夜はライトアップや窓明かりで層状のスカイラインが強調され、昼とは違う印象を楽しめます。",
-      en: "A few minutes before arriving at Nagoya, the Seat E window starts filling with towers. Use the twisted 'spiral' outline of Mode Gakuen Spiral Towers as your first landmark, then move your gaze toward the station itself: the two matching white towers (JR Central Towers) and the glass tower right beside them (JR Gate Tower) come into focus. Look a little higher and to the side for the darker Midland Square. At night, lit windows and building illumination emphasize the layered skyline in a different way from daytime.",
+    "guideHighlight": {
+      "ja": "名古屋到着の数分前から、E席側に高層ビル群が見え始めます。まずは「ねじれたスパイラル型」（モード学園）を目印に、そこから駅の方向へ視線を寄せると2本並ぶ白い塔（JRセントラルタワーズ）と、その隣のガラスの塔（JRゲートタワー）が見つかります。もっと視線を上へ振ると濃い色のミッドランドスクエア。夜はライトアップや窓明かりで層状のスカイラインが強調され、昼とは違う印象を楽しめます。",
+      "en": "A few minutes before arriving at Nagoya, the Seat E window starts filling with towers. Use the twisted 'spiral' outline of Mode Gakuen Spiral Towers as your first landmark, then move your gaze toward the station itself: the two matching white towers (JR Central Towers) and the glass tower right beside them (JR Gate Tower) come into focus. Look a little higher and to the side for the darker Midland Square. At night, lit windows and building illumination emphasize the layered skyline in a different way from daytime."
     },
-    explainerFigure: {
-      src: "images/20160111_nagoya_station_buildings_alpsdake_cc-by-sa-4.0.jpg",
-      alt: { ja: "名古屋駅前の高層ビルを建物名付きで示した参考図", en: "Labeled reference image of the high-rise buildings around Nagoya Station" },
-      caption: {
-        ja: "名古屋駅前の主なビル位置関係を確認するための参考図。2016年撮影のため、JRゲートタワーは建設中の状態で写っています。",
-        en: "Reference image showing the relative positions of Nagoya Station's main towers. Photographed in 2016, with JR Gate Tower still under construction.",
+    "explainerFigure": {
+      "src": "images/20160111_nagoya_station_buildings_alpsdake_cc-by-sa-4.0.jpg",
+      "alt": {
+        "ja": "名古屋駅前の高層ビルを建物名付きで示した参考図",
+        "en": "Labeled reference image of the high-rise buildings around Nagoya Station"
       },
-      credit: { ja: "Alpsdake / Wikimedia Commons / CC BY-SA 4.0", en: "Alpsdake / Wikimedia Commons / CC BY-SA 4.0" },
-      sourceUrl: "https://commons.wikimedia.org/wiki/File:Skyscrapers_of_Meieki_(2016-01-11_with_note).JPG",
-      date: "2016-01-11",
-      afterParagraph: 0,
+      "caption": {
+        "ja": "名古屋駅前の主なビル位置関係を確認するための参考図。2016年撮影のため、JRゲートタワーは建設中の状態で写っています。",
+        "en": "Reference image showing the relative positions of Nagoya Station's main towers. Photographed in 2016, with JR Gate Tower still under construction."
+      },
+      "credit": {
+        "ja": "Alpsdake / Wikimedia Commons / CC BY-SA 4.0",
+        "en": "Alpsdake / Wikimedia Commons / CC BY-SA 4.0"
+      },
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Skyscrapers_of_Meieki_(2016-01-11_with_note).JPG",
+      "date": "2016-01-11",
+      "afterParagraph": 0
     },
-    minutesFromTokyo: 94, side: "E", category: "notable", confidence: "verified", durationSec: 30, spotting: "easy", visibleWhenCloudy: true, scene: "hills",
-    image: "images/20260530_nagoya_station_1_michikusa.jpg",
-    photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      date: "2026-05-30",
-      note: { ja: "ねじれた形のビルはモード学園スパイラルタワーズ", en: "The twisted tower is Mode Gakuen Spiral Towers" },
+    "minutesFromTokyo": 94,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 30,
+    "spotting": "easy",
+    "visibleWhenCloudy": true,
+    "scene": "hills",
+    "image": "images/20260530_nagoya_station_1_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-05-30",
+      "note": {
+        "ja": "ねじれた形のビルはモード学園スパイラルタワーズ",
+        "en": "The twisted tower is Mode Gakuen Spiral Towers"
+      }
     },
-    photos: [
+    "photos": [
       {
-        src: "images/20260530_nagoya_station_2_michikusa.jpg",
-        alt: { ja: "新幹線から見える名古屋駅前の高層ビル", en: "Nagoya Station skyline from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
-        note: { ja: "中央がJRセントラルタワーズ、右手がミッドランドスクエア", en: "JR Central Towers in the center, Midland Square on the right" },
+        "src": "images/20260530_nagoya_station_2_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から見える名古屋駅前の高層ビル",
+          "en": "Nagoya Station skyline from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-30",
+        "note": {
+          "ja": "中央がJRセントラルタワーズ、右手がミッドランドスクエア",
+          "en": "JR Central Towers in the center, Midland Square on the right"
+        }
       },
       {
-        src: "images/20260530_nagoya_station_3_michikusa.jpg",
-        alt: { ja: "新幹線から見える名古屋駅前の都市景観", en: "Urban view around Nagoya Station from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
-        note: { ja: "モールが建つ前は名古屋城が合間に見えていた", en: "Before the mall was built, Nagoya Castle could be glimpsed between the buildings" },
+        "src": "images/20260530_nagoya_station_3_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から見える名古屋駅前の都市景観",
+          "en": "Urban view around Nagoya Station from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-30",
+        "note": {
+          "ja": "モールが建つ前は名古屋城が合間に見えていた",
+          "en": "Before the mall was built, Nagoya Castle could be glimpsed between the buildings"
+        }
       },
       {
-        src: "images/20260629_2158_nagoya_station_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の新幹線から見える名古屋駅前", en: "Nagoya Station skyline at night from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "夜の名古屋到着前、駅前の光が近づく", en: "City lights approach just before arriving at Nagoya at night" },
+        "src": "images/20260629_2158_nagoya_station_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の新幹線から見える名古屋駅前",
+          "en": "Nagoya Station skyline at night from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "夜の名古屋到着前、駅前の光が近づく",
+          "en": "City lights approach just before arriving at Nagoya at night"
+        }
       },
       {
-        src: "images/20260816_nagoya_station_skyline_michikusa.jpg",
-        alt: { ja: "新幹線から見上げる名古屋駅前の高層ビル", en: "Nagoya Station's towers seen from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-16",
-        note: { ja: "駅に近づくと、ビルが窓いっぱいに立ち上がる", en: "The towers fill the window as the train reaches the station" },
+        "src": "images/20260816_nagoya_station_skyline_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から見上げる名古屋駅前の高層ビル",
+          "en": "Nagoya Station's towers seen from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-16",
+        "note": {
+          "ja": "駅に近づくと、ビルが窓いっぱいに立ち上がる",
+          "en": "The towers fill the window as the train reaches the station"
+        }
       },
+      {
+        "src": "images/20260919_nagoya-station-skyline_cp0154_michikusa.jpg",
+        "alt": {
+          "ja": "名古屋駅付近、ビルの窓に映る列車",
+          "en": "The train reflected in windows near Nagoya Station"
+        },
+        "note": {
+          "ja": "名古屋駅付近、ビルの窓に映る列車",
+          "en": "The train reflected in windows near Nagoya Station"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
+      },
+      {
+        "src": "images/20260919_nagoya-station-skyline_cp0155_michikusa.jpg",
+        "alt": {
+          "ja": "線路沿いのガラスに続く列車の反射",
+          "en": "A train reflection across glass beside the tracks"
+        },
+        "note": {
+          "ja": "線路沿いのガラスに続く列車の反射",
+          "en": "A train reflection across glass beside the tracks"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
+      },
+      {
+        "src": "images/20260919_nagoya-station-skyline_cp0156_michikusa.jpg",
+        "alt": {
+          "ja": "名古屋のビルに映る、もう一つの新幹線",
+          "en": "Another view of the Shinkansen in Nagoya’s windows"
+        },
+        "note": {
+          "ja": "名古屋のビルに映る、もう一つの新幹線",
+          "en": "Another view of the Shinkansen in Nagoya’s windows"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
+      }
     ],
-    references: [REFERENCES.nagoyaCentralTowers, REFERENCES.nagoyaJrGateTower, REFERENCES.nagoyaSpiralTowers, REFERENCES.nagoyaMidlandSquare, REFERENCES.meiekiRedevelopment],
-    map: { lat: 35.170693, lng: 136.881638, ja: "名古屋駅", en: "Nagoya Station" },
-    viewpoint: { lat: 35.168703, lng: 136.882497 },
+    "references": [
+      {
+        "label": {
+          "ja": "JRセントラルタワーズ 公式",
+          "en": "JR Central Towers official site"
+        },
+        "url": "https://www.towers.jp/"
+      },
+      {
+        "label": {
+          "ja": "JRゲートタワー 公式",
+          "en": "JR Gate Tower official site"
+        },
+        "url": "https://www.jrgatetower.com/"
+      },
+      {
+        "label": {
+          "ja": "名古屋モード学園: スパイラルタワーズ",
+          "en": "Nagoya Mode Gakuen: Spiral Towers"
+        },
+        "url": "https://www.mode.ac.jp/nagoya/facilities"
+      },
+      {
+        "label": {
+          "ja": "ミッドランドスクエア 公式",
+          "en": "Midland Square official site"
+        },
+        "url": "https://www.midland-square.com/concept/"
+      },
+      {
+        "label": {
+          "ja": "名古屋市: 名駅地区のまちづくり",
+          "en": "Nagoya City: Meieki district development (Japanese only)"
+        },
+        "url": "https://www.city.nagoya.jp/jutakutoshi/page/0000097960.html"
+      }
+    ],
+    "map": {
+      "lat": 35.170693,
+      "lng": 136.881638,
+      "ja": "名古屋駅",
+      "en": "Nagoya Station"
+    },
+    "viewpoint": {
+      "lat": 35.168703,
+      "lng": 136.882497
+    }
   },
   {
     id: "kirin-beer-factory",
@@ -4689,131 +5022,258 @@ const SPOTS = [
     viewpoint: { lat: 35.208877, lng: 136.848211 },
   },
   {
-    id: "kiyosu",
-    icon: "🏯",
-    ja: { name: "清洲城", area: "名古屋 → 岐阜羽島", hook: "信長の城が、線路のすぐ横に。", story: "名古屋を出て数分、線路のすぐ近くに朱塗りの欄干をまとった清洲城の天守があらわれます。ここは織田信長が本拠を置き、桶狭間の戦いへ出陣した城。信長の死後、後継と領地を決めた歴史的な「清洲会議」が開かれた城でもあります。江戸時代初期に名古屋城へ機能が移されて廃城となり、現在の白と朱の天守は1989年に再建された模擬天守。それでも、日本の城で新幹線が最も近くを通る城のひとつであることに変わりはありません。" },
-    en: { name: "Kiyosu Castle", area: "Nagoya → Gifu-Hashima", hook: "Nobunaga's trackside castle.", story: "A few minutes out of Nagoya, Kiyosu Castle appears startlingly close to the line, its red-railed white keep coming into view. This was Oda Nobunaga's base and the castle from which he set out for the pivotal Battle of Okehazama. It is also where, after his death, the famous 1582 Kiyosu Conference decided his succession. The original was decommissioned in the early Edo period when its functions moved to Nagoya Castle; today's white-and-vermilion keep was rebuilt in 1989 as a modern reconstruction. Even so, this is arguably the closest the Shinkansen ever runs to a castle in Japan." },
-    pageTitle: {
-      ja: "新幹線から見える清洲城｜3秒で撮る「清洲城チャレンジ」 | 新幹線の窓",
-      en: "Kiyosu Castle from the Shinkansen | Seat Side, Timing and Photo Tips",
+    "id": "kiyosu",
+    "icon": "🏯",
+    "ja": {
+      "name": "清洲城",
+      "area": "名古屋 → 岐阜羽島",
+      "hook": "信長の城が、線路のすぐ横に。",
+      "story": "名古屋を出て数分、線路のすぐ近くに朱塗りの欄干をまとった清洲城の天守があらわれます。ここは織田信長が本拠を置き、桶狭間の戦いへ出陣した城。信長の死後、後継と領地を決めた歴史的な「清洲会議」が開かれた城でもあります。江戸時代初期に名古屋城へ機能が移されて廃城となり、現在の白と朱の天守は1989年に再建された模擬天守。それでも、日本の城で新幹線が最も近くを通る城のひとつであることに変わりはありません。"
     },
-    pageHeading: {
-      ja: "新幹線から見える清洲城——3秒の「清洲城チャレンジ」",
-      en: "Kiyosu Castle from Seat E — a three-second window",
+    "en": {
+      "name": "Kiyosu Castle",
+      "area": "Nagoya → Gifu-Hashima",
+      "hook": "Nobunaga's trackside castle.",
+      "story": "A few minutes out of Nagoya, Kiyosu Castle appears startlingly close to the line, its red-railed white keep coming into view. This was Oda Nobunaga's base and the castle from which he set out for the pivotal Battle of Okehazama. It is also where, after his death, the famous 1582 Kiyosu Conference decided his succession. The original was decommissioned in the early Edo period when its functions moved to Nagoya Castle; today's white-and-vermilion keep was rebuilt in 1989 as a modern reconstruction. Even so, this is arguably the closest the Shinkansen ever runs to a castle in Japan."
     },
-    pageHeadingChunks: {
-      ja: ["新幹線から見える清洲城——", "3秒の「清洲城チャレンジ」"],
-      en: ["Kiyosu Castle from Seat E —", "a three-second window"],
+    "pageTitle": {
+      "ja": "新幹線から見える清洲城｜3秒で撮る「清洲城チャレンジ」 | 新幹線の窓",
+      "en": "Kiyosu Castle from the Shinkansen | Seat Side, Timing and Photo Tips"
     },
-    metaDescription: {
-      ja: "清洲城は新幹線から見えます。名古屋を出て数分、E席側のすぐ近くに白と朱の天守が現れ、見えるのは約3秒。走行中に撮る「清洲城チャレンジ」の狙い方を上り・下り別に、目印とタイミング、カメラ設定まで解説。織田信長の本拠・清洲会議の舞台としての歴史もまとめました。",
-      en: "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — in view for only about three seconds. Which seat to take, what to watch for in each direction, and how to photograph it from a moving train, plus its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference.",
+    "pageHeading": {
+      "ja": "新幹線から見える清洲城——3秒の「清洲城チャレンジ」",
+      "en": "Kiyosu Castle from Seat E — a three-second window"
     },
-    sectionHeading: {
-      ja: "清洲城はどんな城？",
-      en: "What kind of castle is Kiyosu?",
+    "pageHeadingChunks": {
+      "ja": [
+        "新幹線から見える清洲城——",
+        "3秒の「清洲城チャレンジ」"
+      ],
+      "en": [
+        "Kiyosu Castle from Seat E —",
+        "a three-second window"
+      ]
     },
-    pageStory: {
-      ja: "清洲城は15世紀に尾張守護代の斯波氏の下で築かれ、戦国期には織田信長の本拠として大きく発展しました。信長はここから隣国駿河の今川義元を破った桶狭間の戦い（1560年）に出陣し、以降尾張を統一。清洲は東海道と美濃・伊勢を結ぶ交通の要衝でもあり、城下町として繁栄しました。信長が本能寺で倒れた1582年、羽柴（豊臣）秀吉・柴田勝家・丹羽長秀・池田恒興らが集まり、信長の後継と領地配分を決めた「清洲会議」が開かれたのもこの城です。日本史の分岐点となる会議の舞台として、名前を知る人は多いはずです。",
-      en: "Kiyosu Castle was first built in the 15th century under the Shiba family, deputy governors of Owari Province, and grew dramatically as the base of Oda Nobunaga during the Sengoku era. From here Nobunaga set out to defeat the invading Imagawa Yoshimoto at the Battle of Okehazama in 1560, sealing his control of Owari. Kiyosu sat at a strategic crossroads between the Tokaido and routes to Mino and Ise provinces, and thrived as a castle town. After Nobunaga's assassination in 1582, the famous Kiyosu Conference — where Hashiba (Toyotomi) Hideyoshi, Shibata Katsuie, Niwa Nagahide and Ikeda Tsuneoki decided his succession and the division of his lands — was held at this castle, a well-known turning point in Japanese history.",
+    "metaDescription": {
+      "ja": "清洲城は新幹線から見えます。名古屋を出て数分、E席側のすぐ近くに白と朱の天守が現れ、見えるのは約3秒。走行中に撮る「清洲城チャレンジ」の狙い方を上り・下り別に、目印とタイミング、カメラ設定まで解説。織田信長の本拠・清洲会議の舞台としての歴史もまとめました。",
+      "en": "A few minutes out of Nagoya, the white-and-vermilion keep right beside the Shinkansen is Kiyosu Castle — in view for only about three seconds. Which seat to take, what to watch for in each direction, and how to photograph it from a moving train, plus its history as Oda Nobunaga's base and site of the 1582 Kiyosu Conference."
     },
-    explainer: {
-      heading: { ja: "今見える天守は、いつの建物？", en: "What is the keep you see today?" },
-      ja: [
+    "sectionHeading": {
+      "ja": "清洲城はどんな城？",
+      "en": "What kind of castle is Kiyosu?"
+    },
+    "pageStory": {
+      "ja": "清洲城は15世紀に尾張守護代の斯波氏の下で築かれ、戦国期には織田信長の本拠として大きく発展しました。信長はここから隣国駿河の今川義元を破った桶狭間の戦い（1560年）に出陣し、以降尾張を統一。清洲は東海道と美濃・伊勢を結ぶ交通の要衝でもあり、城下町として繁栄しました。信長が本能寺で倒れた1582年、羽柴（豊臣）秀吉・柴田勝家・丹羽長秀・池田恒興らが集まり、信長の後継と領地配分を決めた「清洲会議」が開かれたのもこの城です。日本史の分岐点となる会議の舞台として、名前を知る人は多いはずです。",
+      "en": "Kiyosu Castle was first built in the 15th century under the Shiba family, deputy governors of Owari Province, and grew dramatically as the base of Oda Nobunaga during the Sengoku era. From here Nobunaga set out to defeat the invading Imagawa Yoshimoto at the Battle of Okehazama in 1560, sealing his control of Owari. Kiyosu sat at a strategic crossroads between the Tokaido and routes to Mino and Ise provinces, and thrived as a castle town. After Nobunaga's assassination in 1582, the famous Kiyosu Conference — where Hashiba (Toyotomi) Hideyoshi, Shibata Katsuie, Niwa Nagahide and Ikeda Tsuneoki decided his succession and the division of his lands — was held at this castle, a well-known turning point in Japanese history."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "今見える天守は、いつの建物？",
+        "en": "What is the keep you see today?"
+      },
+      "ja": [
         "江戸時代初期の1610年、徳川家康の命で始まった「清洲越し」により、清洲の街と城の機能はまるごと新設の名古屋城下へ移されました。清洲城はこのとき廃城となり、以後、城郭建築は残っていません。現在、五条川のほとりに立つ白と朱の天守は、1989年（平成元年）に清須市が観光・地域振興のために建てた模擬天守です。史実の外観を復元したものではありませんが、鮮やかな色合いと立地の良さから、清須の新しいランドマークになっています。",
         "内部は歴史資料の展示や体験施設になっており、映像や模型で信長・秀吉・家康と清洲の関わりを学ぶことができます。天守と五条川、朱色の大手橋、周辺に整備された「清洲城信長公園」を含めた景観は、桜の季節を中心に地元でも人気です。",
         "新幹線からは、線路のすぐ北側に朱色の欄干と白い壁が突然あらわれるので、事前にE席側の窓を見ておくのがコツ。速度が出ているので数秒ですが、これだけ線路と接近して見える城は東海道新幹線でも珍しく、印象に残ります。",
-        "夜のライトアップは通年ではなく、冬の「きよすイルミ」や春の清洲城桜まつりなど時期を区切って行われます。点灯している夜に通りかかると、暗い車窓に朱色の天守だけが浮かび上がり、昼とはまったく違う見え方になります。開催時期は年によって変わるので、清須市の公式案内で確認してください。",
+        "夜のライトアップは通年ではなく、冬の「きよすイルミ」や春の清洲城桜まつりなど時期を区切って行われます。点灯している夜に通りかかると、暗い車窓に朱色の天守だけが浮かび上がり、昼とはまったく違う見え方になります。開催時期は年によって変わるので、清須市の公式案内で確認してください。"
       ],
-      en: [
+      "en": [
         "In 1610, under Tokugawa Ieyasu's orders, the so-called Kiyosu-goshi ('Kiyosu Move') relocated the entire town and castle functions of Kiyosu to the new Nagoya Castle town. Kiyosu Castle was decommissioned then, and no castle-era buildings survive. The white-and-vermilion keep you see today beside the Gojo River is a modern reconstruction, built by Kiyosu City in 1989 for tourism and civic revitalization. It is not a faithful restoration of the historical keep, but its vivid coloring and prominent site have made it a fresh local landmark.",
         "Inside, exhibits and interactive displays show how Nobunaga, Hideyoshi and Ieyasu were connected to Kiyosu. The keep, the river, the red Ote Bridge and the surrounding Kiyosu Castle Nobunaga Park form a scenic ensemble, especially popular in cherry-blossom season.",
         "From the train, the red railings and white walls of the keep flash into view just north of the tracks, so look toward the Seat E window in advance. At Shinkansen speed the view lasts only a few seconds — but few castles along the Tokaido line come this close to the rails, which is exactly what makes the moment memorable.",
-        "The night illumination is seasonal rather than year-round: it runs during the winter Kiyosu Illumi and the spring cherry blossom festival. If you pass on a night when it is lit, the vermilion keep is the only thing floating in an otherwise black window. Dates change from year to year, so check the city's official information.",
-      ],
+        "The night illumination is seasonal rather than year-round: it runs during the winter Kiyosu Illumi and the spring cherry blossom festival. If you pass on a night when it is lit, the vermilion keep is the only thing floating in an otherwise black window. Dates change from year to year, so check the city's official information."
+      ]
     },
-    guideHighlight: {
-      ja: "名古屋と岐阜羽島のあいだ、線路のすぐ北側で朱色と白の建物を探してください。天守と五条川、朱塗りの大手橋がまとまって見えます。桜の季節や夕方は、川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
-      en: "Between Nagoya and Gifu-Hashima, look for a red-and-white structure just north of the tracks. The keep, the Gojo River and the vermilion Ote Bridge read as one composition. In cherry-blossom season or the evening, the vivid colors stand out against the river. At night the keep is illuminated, and the vermilion against the dark stands out especially well.",
+    "guideHighlight": {
+      "ja": "名古屋と岐阜羽島のあいだ、線路のすぐ北側で朱色と白の建物を探してください。天守と五条川、朱塗りの大手橋がまとまって見えます。桜の季節や夕方は、川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
+      "en": "Between Nagoya and Gifu-Hashima, look for a red-and-white structure just north of the tracks. The keep, the Gojo River and the vermilion Ote Bridge read as one composition. In cherry-blossom season or the evening, the vivid colors stand out against the river. At night the keep is illuminated, and the vermilion against the dark stands out especially well."
     },
-    photoTip: {
-      heading: {
-        ja: "「清洲城チャレンジ」——3秒で撮るには",
-        en: "How to get the shot in three seconds",
+    "photoTip": {
+      "heading": {
+        "ja": "「清洲城チャレンジ」——3秒で撮るには",
+        "en": "How to get the shot in three seconds"
       },
-      ja: [
+      "ja": [
         "走行中の車内から清洲城を撮ることは「清洲城チャレンジ」と呼ばれ、何度も挑む人がいます。難しい理由ははっきりしていて、見えているのが約3秒しかないうえ、線路との距離が近いぶん流れが速く、気づいてから構えたのでは間に合わないからです。城が見えてからカメラを出すのではなく、見える前から構えて待つ——これが唯一のコツと言っていいくらいです。",
         "下り（東京 → 新大阪）は、名古屋を出たらすぐ北側の窓に構えてください。合図になるのがキリンビール名古屋工場で、銀色の巨大タンクがずらりと並ぶのが見えたら、その直後が清洲城です。名古屋発車からおよそ3分、タンク列が過ぎたら数を数えるくらいのつもりで待つと取りこぼしません。",
         "上り（新大阪 → 東京）は順番が逆で、清洲城のあとにキリン工場が来ます。手前の目印はソーラーアークで、そこから約4分。名古屋到着の車内アナウンスが流れる少し前が本番なので、アナウンスを合図にすると遅れます。減速が始まる前、まだ速度が乗っているうちに構えておいてください。",
-        "設定は、シャッター速度を上げる（目安1/1000秒）か連写にしておくと、流れる景色でも天守を止めて写せます。ガラスの反射はレンズを窓に近づけるとかなり消えます。なお車内から窓越しに撮るぶんには問題ありませんが、デッキや通路で立ち止まっての撮影は他のお客さんの通行を妨げるので避けてください。",
+        "設定は、シャッター速度を上げる（目安1/1000秒）か連写にしておくと、流れる景色でも天守を止めて写せます。ガラスの反射はレンズを窓に近づけるとかなり消えます。なお車内から窓越しに撮るぶんには問題ありませんが、デッキや通路で立ち止まっての撮影は他のお客さんの通行を妨げるので避けてください。"
       ],
-      en: [
+      "en": [
         "Getting a clean photo of Kiyosu Castle from a moving train is genuinely hard, and for a specific reason: it is in view for only about three seconds, and because it sits so close to the line it sweeps past fast. If you wait until you see it, you have already missed it. The one real trick is to be aimed and waiting before it appears. Japanese train fans attempt this often enough that they have a name for it — the \"Kiyosu Castle challenge\".",
         "Southbound (Tokyo → Shin-Osaka), get ready at the north-side window as soon as you leave Nagoya. Your cue is the Kirin Beer Nagoya Factory: once its row of giant silver tanks fills the window, Kiyosu Castle is next. It comes roughly three minutes after leaving Nagoya, so once the tanks have passed, hold your aim and count.",
         "Northbound (Shin-Osaka → Tokyo) the order reverses — the castle comes first, then the Kirin factory. Your earlier marker is the Solar Ark, about four minutes ahead. The castle arrives slightly before the Nagoya arrival announcement, so do not use the announcement as your cue or you will be late. Be ready while the train is still at speed, before it starts slowing.",
-        "For settings, raise the shutter speed (around 1/1000s) or shoot a burst, and you can freeze the keep even at full speed. Pressing the lens close to the glass removes most of the reflections. Shooting through the window from your seat is fine, but please avoid standing in the vestibules or aisles to shoot, as it blocks other passengers.",
-      ],
+        "For settings, raise the shutter speed (around 1/1000s) or shoot a burst, and you can freeze the keep even at full speed. Pressing the lens close to the glass removes most of the reflections. Shooting through the window from your seat is fine, but please avoid standing in the vestibules or aisles to shoot, as it blocks other passengers."
+      ]
     },
-    minutesFromTokyo: 99, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "easy", visibleWhenCloudy: true, scene: "castle",
-    image: "images/20240719_kiyosu_castle_asami_k920.jpg",
-    photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
-    photos: [
+    "minutesFromTokyo": 99,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 5,
+    "spotting": "easy",
+    "visibleWhenCloudy": true,
+    "scene": "castle",
+    "image": "images/20240719_kiyosu_castle_asami_k920.jpg",
+    "photoCredit": {
+      "ja": "@asami_k920",
+      "en": "@asami_k920",
+      "url": "https://x.com/asami_k920/status/1814165589851795710"
+    },
+    "photos": [
       {
-        src: "images/20250309_kiyosu_castle_lightup_asami_k920.jpg",
-        timeOfDay: "night",
-        alt: { ja: "ライトアップされた清洲城", en: "Illuminated Kiyosu Castle" },
-        credit: { ja: "@asami_k920", en: "@asami_k920" },
-        sourceUrl: "https://x.com/asami_k920/status/1898673771084492889",
-      },
-      {
-        src: "images/20260530_kiyosu_castle.jpg",
-        alt: { ja: "新幹線のE席側から見える清洲城", en: "Kiyosu Castle from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
-      },
-      {
-        src: "images/20260704_kiyosu_castle_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える清洲城と五条川周辺", en: "Kiyosu Castle and the Gojo River area from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-04",
-        note: { ja: "名古屋を出てすぐ、線路近くに現れる白と朱の城", en: "A white-and-vermilion keep appearing close to the tracks just after Nagoya." },
-      },
-      {
-        src: "images/20260712_kiyosu_castle_otehashi_michikusa.jpg",
-        alt: { ja: "五条川に架かる真っ赤な大手橋と清洲城", en: "The vermilion Otehashi Bridge over the Gojo River and Kiyosu Castle" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "五条川に架かる真っ赤な大手橋と清洲城", en: "The bright red Otehashi Bridge over the Gojo River, with the castle behind it." },
-      },
-      {
-        src: "images/20260906_kiyosu_castle_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の車窓にライトアップされて浮かぶ清洲城", en: "Kiyosu Castle illuminated against the night from the train window" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-06",
-        note: { ja: "線路脇の夜景に白い天守が浮かぶ", en: "The white keep stands out in the trackside night scene" },
-      },
-    ],
-    media: {
-      heading: { ja: "動画で見る清洲城", en: "Kiyosu Castle in motion" },
-      description: {
-        ja: "名古屋を出てすぐ、五条川のそばに立つ清洲城を車窓動画で見られます。",
-        en: "See Kiyosu Castle beside the Gojo River, just after the train leaves Nagoya.",
-      },
-      videos: [
-        {
-          kind: "youtube",
-          id: "3NhPqYO42Sc",
-          title: { ja: "ライトアップされた清洲城の車窓動画", en: "Kiyosu Castle lit up, from the train window" },
-          url: "https://www.youtube.com/watch?v=3NhPqYO42Sc",
-          comment: { ja: "ライトアップされた清洲城。", en: "Kiyosu Castle under its illumination." },
+        "src": "images/20250309_kiyosu_castle_lightup_asami_k920.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "ライトアップされた清洲城",
+          "en": "Illuminated Kiyosu Castle"
         },
+        "credit": {
+          "ja": "@asami_k920",
+          "en": "@asami_k920"
+        },
+        "sourceUrl": "https://x.com/asami_k920/status/1898673771084492889"
+      },
+      {
+        "src": "images/20260530_kiyosu_castle.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える清洲城",
+          "en": "Kiyosu Castle from Seat E"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-30"
+      },
+      {
+        "src": "images/20260704_kiyosu_castle_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える清洲城と五条川周辺",
+          "en": "Kiyosu Castle and the Gojo River area from Seat E"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "名古屋を出てすぐ、線路近くに現れる白と朱の城",
+          "en": "A white-and-vermilion keep appearing close to the tracks just after Nagoya."
+        }
+      },
+      {
+        "src": "images/20260712_kiyosu_castle_otehashi_michikusa.jpg",
+        "alt": {
+          "ja": "五条川に架かる真っ赤な大手橋と清洲城",
+          "en": "The vermilion Otehashi Bridge over the Gojo River and Kiyosu Castle"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "五条川に架かる真っ赤な大手橋と清洲城",
+          "en": "The bright red Otehashi Bridge over the Gojo River, with the castle behind it."
+        }
+      },
+      {
+        "src": "images/20260906_kiyosu_castle_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の車窓にライトアップされて浮かぶ清洲城",
+          "en": "Kiyosu Castle illuminated against the night from the train window"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-06",
+        "note": {
+          "ja": "線路脇の夜景に白い天守が浮かぶ",
+          "en": "The white keep stands out in the trackside night scene"
+        }
+      },
+      {
+        "src": "images/20260924_kiyosu_cp0171_michikusa.jpg",
+        "alt": {
+          "ja": "朝の車窓から見える清洲城",
+          "en": "Kiyosu Castle seen from the train in the morning"
+        },
+        "note": {
+          "ja": "朝の車窓から見える清洲城",
+          "en": "Kiyosu Castle seen from the train in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24"
+      }
+    ],
+    "media": {
+      "heading": {
+        "ja": "動画で見る清洲城",
+        "en": "Kiyosu Castle in motion"
+      },
+      "description": {
+        "ja": "名古屋を出てすぐ、五条川のそばに立つ清洲城を車窓動画で見られます。",
+        "en": "See Kiyosu Castle beside the Gojo River, just after the train leaves Nagoya."
+      },
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "3NhPqYO42Sc",
+          "title": {
+            "ja": "ライトアップされた清洲城の車窓動画",
+            "en": "Kiyosu Castle lit up, from the train window"
+          },
+          "url": "https://www.youtube.com/watch?v=3NhPqYO42Sc",
+          "comment": {
+            "ja": "ライトアップされた清洲城。",
+            "en": "Kiyosu Castle under its illumination."
+          }
+        }
       ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "This video uses the official YouTube embed."
+      }
     },
-    references: [REFERENCES.kiyosuCastle, REFERENCES.kiyosuHistory, REFERENCES.kojodanWindowCastles],
-    map: { lat: 35.2165750, lng: 136.8435972, ja: "清洲城", en: "Kiyosu Castle" },
-    viewpoint: { lat: 35.215840, lng: 136.842626 },
+    "references": [
+      {
+        "label": {
+          "ja": "清洲城",
+          "en": "Kiyosu Castle"
+        },
+        "url": "http://kiyosujyo.com/"
+      },
+      {
+        "label": {
+          "ja": "清須市: 清洲城と清須会議",
+          "en": "Kiyosu City: Kiyosu Castle and the Kiyosu Conference (Japanese only)"
+        },
+        "url": "https://www.city.kiyosu.aichi.jp/kanko_bunka/kiyosujo/rekishi.html"
+      },
+      {
+        "label": {
+          "ja": "攻城団: 新幹線から見える城",
+          "en": "Kojodan: Castles visible from the Shinkansen"
+        },
+        "url": "https://blog.kojodan.jp/entry/2019/03/10/130620"
+      }
+    ],
+    "map": {
+      "lat": 35.216575,
+      "lng": 136.8435972,
+      "ja": "清洲城",
+      "en": "Kiyosu Castle"
+    },
+    "viewpoint": {
+      "lat": 35.21584,
+      "lng": 136.842626
+    }
   },
   {
     id: "solar-ark",
@@ -5347,272 +5807,552 @@ const SPOTS = [
     viewpoint: { lat: 35.361280, lng: 136.411719 },
   },
   {
-    id: "sennenq-sign",
-    icon: "♨️",
-    ja: {
-      name: "せんねん灸の看板",
-      area: "米原 → 岐阜羽島（名古屋方面）",
-      hook: "米原の先に、せんねん灸",
-      story: "米原を過ぎて名古屋方面へ進むA席側に、緑の斜面と、赤い文字を載せた白い四角が5つ並ぶせんねん灸の看板が現れます。せんねん灸は、よもぎからつくる「もぐさ」を使ったお灸のブランド。伊吹山のふもとで1949年に創業した会社で、米原を離れた直後にその名前が車窓の記憶になります。看板を見つけたら、その先で田畑や建物が流れていく景色にも目を向けてください。",
+    "id": "sennenq-sign",
+    "icon": "♨️",
+    "ja": {
+      "name": "せんねん灸の看板",
+      "area": "米原 → 岐阜羽島（名古屋方面）",
+      "hook": "米原の先に、せんねん灸",
+      "story": "米原を過ぎて名古屋方面へ進むA席側に、緑の斜面と、赤い文字を載せた白い四角が5つ並ぶせんねん灸の看板が現れます。せんねん灸は、よもぎからつくる「もぐさ」を使ったお灸のブランド。伊吹山のふもとで1949年に創業した会社で、米原を離れた直後にその名前が車窓の記憶になります。看板を見つけたら、その先で田畑や建物が流れていく景色にも目を向けてください。"
     },
-    en: {
-      name: "Sennen Kyū Sign",
-      area: "Maibara → Gifu-Hashima, toward Nagoya",
-      hook: "Sennen Kyu after Maibara",
-      story: "Soon after Maibara, heading toward Nagoya, the Sennen Kyū sign appears on the Seat A side: five white panels with red lettering stand out against a green hillside. Sennen Kyū is a moxibustion brand using moxa prepared from mugwort, made by a company founded at the foot of Mt. Ibuki in 1949. Its name becomes a memorable marker just after Maibara. Once the sign slips away, keep watching the fields and buildings as the view continues toward the Tokai region.",
+    "en": {
+      "name": "Sennen Kyū Sign",
+      "area": "Maibara → Gifu-Hashima, toward Nagoya",
+      "hook": "Sennen Kyu after Maibara",
+      "story": "Soon after Maibara, heading toward Nagoya, the Sennen Kyū sign appears on the Seat A side: five white panels with red lettering stand out against a green hillside. Sennen Kyū is a moxibustion brand using moxa prepared from mugwort, made by a company founded at the foot of Mt. Ibuki in 1949. Its name becomes a memorable marker just after Maibara. Once the sign slips away, keep watching the fields and buildings as the view continues toward the Tokai region."
     },
-    pageTitle: {
-      ja: "米原の先で見えるせんねん灸の看板｜A席の車窓目印 | 新幹線の窓",
-      en: "The Sennen Kyū Sign after Maibara | A Seat A Window Marker",
+    "pageTitle": {
+      "ja": "米原の先で見えるせんねん灸の看板｜A席の車窓目印 | 新幹線の窓",
+      "en": "The Sennen Kyū Sign after Maibara | A Seat A Window Marker"
     },
-    pageHeading: {
-      ja: "米原を過ぎて、せんねん灸の看板",
-      en: "The Sennen Kyū sign after Maibara",
+    "pageHeading": {
+      "ja": "米原を過ぎて、せんねん灸の看板",
+      "en": "The Sennen Kyū sign after Maibara"
     },
-    pageHeadingChunks: {
-      ja: ["米原を過ぎて、", "せんねん灸の看板"],
-      en: ["After Maibara,", "the Sennen Kyū sign"],
+    "pageHeadingChunks": {
+      "ja": [
+        "米原を過ぎて、",
+        "せんねん灸の看板"
+      ],
+      "en": [
+        "After Maibara,",
+        "the Sennen Kyū sign"
+      ]
     },
-    metaDescription: {
-      ja: "米原を過ぎて名古屋方面へ向かう新幹線のA席側に見える、せんねん灸の看板を紹介。文字を車窓の目印に、滋賀から東へ続く景色を楽しみます。",
-      en: "Soon after Maibara toward Nagoya, the Sennen Kyū sign appears on the Seat A side. Use its lettering as a simple marker while the Shiga landscape continues east.",
+    "metaDescription": {
+      "ja": "米原を過ぎて名古屋方面へ向かう新幹線のA席側に見える、せんねん灸の看板を紹介。文字を車窓の目印に、滋賀から東へ続く景色を楽しみます。",
+      "en": "Soon after Maibara toward Nagoya, the Sennen Kyū sign appears on the Seat A side. Use its lettering as a simple marker while the Shiga landscape continues east."
     },
-    sectionHeading: {
-      ja: "米原の先で目印になる看板",
-      en: "A signpost just beyond Maibara",
+    "sectionHeading": {
+      "ja": "米原の先で目印になる看板",
+      "en": "A signpost just beyond Maibara"
     },
-    pageStory: {
-      ja: "京都方面から名古屋へ向かう列車が米原を過ぎると、A席側の車窓に「せ・ん・ね・ん・灸」と一文字ずつ並ぶ看板が現れます。看板の正体は、伊吹山のふもとで1949年に創業したせんねん灸の沿線サインです。よもぎからつくる「もぐさ」を使うお灸を、使いやすい形へ変えてきた会社の名が、移り変わる景色の中で米原を離れたことを印象づけます。",
-      en: "After a Kyoto-to-Nagoya train passes Maibara, a sign reading 'Se-n-ne-n-kyū' one character at a time appears on the Seat A side. It is a trackside marker for Sennen Kyū, a company founded at the foot of Mt. Ibuki in 1949. The name represents moxibustion made with moxa prepared from mugwort, reshaped into easier-to-use products, and becomes a memorable signal that the train has left Maibara behind.",
+    "pageStory": {
+      "ja": "京都方面から名古屋へ向かう列車が米原を過ぎると、A席側の車窓に「せ・ん・ね・ん・灸」と一文字ずつ並ぶ看板が現れます。看板の正体は、伊吹山のふもとで1949年に創業したせんねん灸の沿線サインです。よもぎからつくる「もぐさ」を使うお灸を、使いやすい形へ変えてきた会社の名が、移り変わる景色の中で米原を離れたことを印象づけます。",
+      "en": "After a Kyoto-to-Nagoya train passes Maibara, a sign reading 'Se-n-ne-n-kyū' one character at a time appears on the Seat A side. It is a trackside marker for Sennen Kyū, a company founded at the foot of Mt. Ibuki in 1949. The name represents moxibustion made with moxa prepared from mugwort, reshaped into easier-to-use products, and becomes a memorable signal that the train has left Maibara behind."
     },
-    explainer: {
-      heading: { ja: "せんねん灸とは？", en: "What is Sennen Kyū?" },
-      ja: [
+    "explainer": {
+      "heading": {
+        "ja": "せんねん灸とは？",
+        "en": "What is Sennen Kyū?"
+      },
+      "ja": [
         "もぐさは、乾燥させたよもぎから葉や葉脈を除き、葉の裏側にある白い綿毛を集めて精製したものです。火がつきやすく、ゆっくり燃えるためお灸に使われます。せんねん灸は伊吹山のふもとで1949年に創業し、このもぐさを使うお灸をつくってきました。看板の文字は、伊吹山と深く結びつく土地で育ったブランド名でもあります。",
         "1976年発売の「せんねん灸オフ」は、もぐさと肌の間に紙パルプ製の台座を置き、熱さを和らげて使えるようにした商品です。直接燃やすお灸の「熱い・跡が残る」という印象を、家庭で使いやすい日用品へ変えた工夫。2026年に発売50年を迎える定番の背景が、車窓で見る赤い商品名にあります。",
         "この看板の設置年は明らかではありませんが、少なくとも2001年1月28日には、新幹線で東京から神戸へ移動したアニメ監督・今敏の車窓記録に「山の崖に大きく『せんねん灸』の看板が！」と残っています。四半世紀以上、乗客に「米原の先」を知らせてきた目印です。",
-        "米原を過ぎたら、A席側で赤い文字が並ぶ白い看板を探してください。文字を一枚ずつ追ううちに通り過ぎますが、看板を見送ったあとも、滋賀から名古屋方面へ移っていく田畑や建物の変化を、ひと続きの車窓として楽しめます。",
+        "米原を過ぎたら、A席側で赤い文字が並ぶ白い看板を探してください。文字を一枚ずつ追ううちに通り過ぎますが、看板を見送ったあとも、滋賀から名古屋方面へ移っていく田畑や建物の変化を、ひと続きの車窓として楽しめます。"
       ],
-      en: [
+      "en": [
         "Moxa is made by drying mugwort, removing leaf matter and veins, then refining the soft white fibres from the underside of the leaves. It catches easily and burns slowly, which makes it suitable for moxibustion. Founded at the foot of Mt. Ibuki in 1949, Sennen Kyū grew from a landscape closely tied to moxa.",
         "Sennen Kyū Off, introduced in 1976, puts a paper-pulp base between moxa and skin to soften the heat and make moxibustion easier to use at home. It changed the image of direct-burning moxibustion into an everyday product; in 2026 that classic reaches its 50th anniversary.",
         "The sign's installation date is not known, but an entry written by director Satoshi Kon while travelling from Tokyo to Kobe on 28 January 2001 records a large 'Sennen Kyū' sign on a mountainside. It has therefore marked the view beyond Maibara for at least a quarter-century.",
-        "After Maibara, look on the Seat A side for the red lettering across separate white panels. It passes while you follow the characters one by one; then enjoy the continuing change in fields and buildings as the route carries on from Shiga toward Nagoya.",
-      ],
+        "After Maibara, look on the Seat A side for the red lettering across separate white panels. It passes while you follow the characters one by one; then enjoy the continuing change in fields and buildings as the route carries on from Shiga toward Nagoya."
+      ]
     },
-    guideHighlight: {
-      ja: "米原を過ぎて名古屋方面へ進んだら、A席側の窓でせんねん灸の文字を探してください。看板のあとも、東へ流れる田畑や建物の景色が続きます。",
-      en: "After Maibara, heading toward Nagoya, look on the Seat A side for the Sennen Kyū lettering. After the sign, the fields and buildings continue to flow eastward.",
+    "guideHighlight": {
+      "ja": "米原を過ぎて名古屋方面へ進んだら、A席側の窓でせんねん灸の文字を探してください。看板のあとも、東へ流れる田畑や建物の景色が続きます。",
+      "en": "After Maibara, heading toward Nagoya, look on the Seat A side for the Sennen Kyū lettering. After the sign, the fields and buildings continue to flow eastward."
     },
-    // 暫定値: 地理・写真照合による目安。実車校正待ち（分数・秒数・見やすさ）。
-    minutesFromTokyo: 111.5, side: "A", category: "curious", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
-    image: "images/20260816_sennenq_sign_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "米原の先に見えるせんねん灸の看板", en: "The Sennen Kyū sign beyond Maibara" } },
-    photos: [
+    "minutesFromTokyo": 111.5,
+    "side": "A",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 5,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "solar",
+    "image": "images/20260816_sennenq_sign_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "note": {
+        "ja": "米原の先に見えるせんねん灸の看板",
+        "en": "The Sennen Kyū sign beyond Maibara"
+      }
+    },
+    "photos": [
       {
-        src: "images/20260906_sennenq_sign_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の車窓に見えるせんねん灸の看板", en: "The Sennen Kyū sign seen from the train at night" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-06",
-        note: { ja: "暗い山際で赤い文字が光る", en: "Red lettering glows against the dark hillside" },
+        "src": "images/20260906_sennenq_sign_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の車窓に見えるせんねん灸の看板",
+          "en": "The Sennen Kyū sign seen from the train at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-06",
+        "note": {
+          "ja": "暗い山際で赤い文字が光る",
+          "en": "Red lettering glows against the dark hillside"
+        }
       },
       {
-        src: "images/20260911_sennenq_sign_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の車窓に赤く光るせんねん灸の看板", en: "The Sennen Kyū sign glowing red from the train at night" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-11",
-        note: { ja: "下り列車から。米原の手前で、赤い文字だけが闇に浮かぶ", en: "From a westbound train: before Maibara, only the red letters show in the dark" },
+        "src": "images/20260911_sennenq_sign_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の車窓に赤く光るせんねん灸の看板",
+          "en": "The Sennen Kyū sign glowing red from the train at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-11",
+        "note": {
+          "ja": "下り列車から。米原の手前で、赤い文字だけが闇に浮かぶ",
+          "en": "From a westbound train: before Maibara, only the red letters show in the dark"
+        }
       },
+      {
+        "src": "images/20260919_sennenq-sign_cp0157_michikusa.jpg",
+        "alt": {
+          "ja": "車窓に現れるせんねん灸の看板",
+          "en": "The Sennenkyu sign seen from the train"
+        },
+        "note": {
+          "ja": "車窓に現れるせんねん灸の看板",
+          "en": "The Sennenkyu sign seen from the train"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
+      }
     ],
-    references: [
-      { label: { ja: "せんねん灸公式: はじめての方へ", en: "Sennen Kyū official: introduction (Japanese)" }, url: "https://www.sennenq.co.jp/first/" },
-      { label: { ja: "せんねん灸公式: オフ発売50周年", en: "Sennen Kyū official: Off's 50th anniversary (Japanese)" }, url: "https://www.sennenq.co.jp/off50th/" },
-      { label: { ja: "せんねん灸公式: 会社概要", en: "Sennen Kyū official: company profile (Japanese)" }, url: "https://www.sennenq.co.jp/company/outline.html" },
-      { label: { ja: "KON'S TONE: 2001年1月28日の車窓記録", en: "KON'S TONE: Train-window note of 28 January 2001 (Japanese)" }, url: "https://konstone.s-kon.net/modules/notebook/archives/62" },
+    "references": [
+      {
+        "label": {
+          "ja": "せんねん灸公式: はじめての方へ",
+          "en": "Sennen Kyū official: introduction (Japanese)"
+        },
+        "url": "https://www.sennenq.co.jp/first/"
+      },
+      {
+        "label": {
+          "ja": "せんねん灸公式: オフ発売50周年",
+          "en": "Sennen Kyū official: Off's 50th anniversary (Japanese)"
+        },
+        "url": "https://www.sennenq.co.jp/off50th/"
+      },
+      {
+        "label": {
+          "ja": "せんねん灸公式: 会社概要",
+          "en": "Sennen Kyū official: company profile (Japanese)"
+        },
+        "url": "https://www.sennenq.co.jp/company/outline.html"
+      },
+      {
+        "label": {
+          "ja": "KON'S TONE: 2001年1月28日の車窓記録",
+          "en": "KON'S TONE: Train-window note of 28 January 2001 (Japanese)"
+        },
+        "url": "https://konstone.s-kon.net/modules/notebook/archives/62"
+      }
     ],
-    map: { lat: 35.31613772, lng: 136.28994808, ja: "せんねん灸 車窓の目安位置", en: "Approximate viewing location for Sennen Kyū" },
+    "map": {
+      "lat": 35.31613772,
+      "lng": 136.28994808,
+      "ja": "せんねん灸 車窓の目安位置",
+      "en": "Approximate viewing location for Sennen Kyū"
+    }
   },
   {
-    id: "fujitec-big-wing",
-    icon: "🏢",
-    ja: {
-      name: "フジテック Big Wing",
-      area: "岐阜羽島 → 米原（米原付近）",
-      hook: "米原近くの、170m研究塔。",
-      story: "米原付近のE席側に見える細長い塔は、フジテックのBig Wingにあるエレベータ研究塔です。Big Wingは本社・研究開発・製造を一体にした拠点で、2006年に開設。約15万㎡の敷地に、高層・中層の塔からなる高さ170mの研究塔があります。エレベータを実物大で試験するための施設として、低い建物の向こうに立つ塔が車窓の目印になります。",
+    "id": "fujitec-big-wing",
+    "icon": "🏢",
+    "ja": {
+      "name": "フジテック Big Wing",
+      "area": "岐阜羽島 → 米原（米原付近）",
+      "hook": "米原近くの、170m研究塔。",
+      "story": "米原付近のE席側に見える細長い塔は、フジテックのBig Wingにあるエレベータ研究塔です。Big Wingは本社・研究開発・製造を一体にした拠点で、2006年に開設。約15万㎡の敷地に、高層・中層の塔からなる高さ170mの研究塔があります。エレベータを実物大で試験するための施設として、低い建物の向こうに立つ塔が車窓の目印になります。"
     },
-    en: {
-      name: "FUJITEC Big Wing",
-      area: "Near Maibara",
-      hook: "A 170 m elevator research tower.",
-      story: "The slender towers near Maibara on the Seat E side belong to Fujitec's Big Wing, where headquarters, R&D and manufacturing are integrated. Opened in 2006 across roughly 150,000 square metres, the site includes a 170-metre elevator research tower made up of high-rise and mid-rise towers. It contains 13 elevators and has been used to test high-speed models at around 1,000 m/min.",
+    "en": {
+      "name": "FUJITEC Big Wing",
+      "area": "Near Maibara",
+      "hook": "A 170 m elevator research tower.",
+      "story": "The slender towers near Maibara on the Seat E side belong to Fujitec's Big Wing, where headquarters, R&D and manufacturing are integrated. Opened in 2006 across roughly 150,000 square metres, the site includes a 170-metre elevator research tower made up of high-rise and mid-rise towers. It contains 13 elevators and has been used to test high-speed models at around 1,000 m/min."
     },
-    pageTitle: {
-      ja: "新幹線から見えるフジテックBig Wingのエレベータ研究塔｜高さ170mの研究拠点",
-      en: "FUJITEC Big Wing's 170 m Elevator Research Tower from the Shinkansen",
+    "pageTitle": {
+      "ja": "新幹線から見えるフジテックBig Wingのエレベータ研究塔｜高さ170mの研究拠点",
+      "en": "FUJITEC Big Wing's 170 m Elevator Research Tower from the Shinkansen"
     },
-    pageHeading: {
-      ja: "米原近くに立つ、フジテックのエレベータ研究塔",
-      en: "FUJITEC's elevator research tower near Maibara",
+    "pageHeading": {
+      "ja": "米原近くに立つ、フジテックのエレベータ研究塔",
+      "en": "FUJITEC's elevator research tower near Maibara"
     },
-    pageHeadingChunks: {
-      ja: ["米原近くに立つ、", "フジテックの", "エレベータ研究塔"],
-      en: ["FUJITEC's elevator research tower", "near Maibara"],
+    "pageHeadingChunks": {
+      "ja": [
+        "米原近くに立つ、",
+        "フジテックの",
+        "エレベータ研究塔"
+      ],
+      "en": [
+        "FUJITEC's elevator research tower",
+        "near Maibara"
+      ]
     },
-    metaDescription: {
-      ja: "米原付近のE席側に見える高さ170mの塔は、フジテックBig Wingのエレベータ研究塔。2006年開設、約15万㎡の拠点と、車窓からの見つけ方を紹介します。",
-      en: "Near Maibara, the 170 m tower on Seat E belongs to FUJITEC Big Wing's elevator research facility, opened in 2006.",
+    "metaDescription": {
+      "ja": "米原付近のE席側に見える高さ170mの塔は、フジテックBig Wingのエレベータ研究塔。2006年開設、約15万㎡の拠点と、車窓からの見つけ方を紹介します。",
+      "en": "Near Maibara, the 170 m tower on Seat E belongs to FUJITEC Big Wing's elevator research facility, opened in 2006."
     },
-    sectionHeading: {
-      ja: "この高い塔は何？",
-      en: "What is the tall tower?",
+    "sectionHeading": {
+      "ja": "この高い塔は何？",
+      "en": "What is the tall tower?"
     },
-    pageStory: {
-      ja: "米原付近のE席側に見える塔は、フジテックのBig Wingにあるエレベータ研究塔です。Big Wingは本社、研究開発、製造を一体にした拠点として2006年に開設され、約15万㎡の敷地に施設が広がります。高さ170mの研究塔は高層塔と中層塔からなり、エレベータの試験に使われています。",
-      en: "The tower on the Seat E side near Maibara belongs to the elevator research facility at Fujitec's Big Wing. Big Wing opened in 2006 as an integrated headquarters, R&D and manufacturing base spread over roughly 150,000 square metres. Its 170-metre research tower consists of high-rise and mid-rise towers used for elevator testing.",
+    "pageStory": {
+      "ja": "米原付近のE席側に見える塔は、フジテックのBig Wingにあるエレベータ研究塔です。Big Wingは本社、研究開発、製造を一体にした拠点として2006年に開設され、約15万㎡の敷地に施設が広がります。高さ170mの研究塔は高層塔と中層塔からなり、エレベータの試験に使われています。",
+      "en": "The tower on the Seat E side near Maibara belongs to the elevator research facility at Fujitec's Big Wing. Big Wing opened in 2006 as an integrated headquarters, R&D and manufacturing base spread over roughly 150,000 square metres. Its 170-metre research tower consists of high-rise and mid-rise towers used for elevator testing."
     },
-    explainer: {
-      heading: { ja: "研究塔では何を試す？", en: "What is tested there?" },
-      ja: [
+    "explainer": {
+      "heading": {
+        "ja": "研究塔では何を試す？",
+        "en": "What is tested there?"
+      },
+      "ja": [
         "公式案内によると、研究塔には13基のエレベータがあり、毎分1,000m級の高速機などを試験しています。建物の高さそのものが目的ではなく、実際の昇降機を安全に評価するための試験設備です。",
         "Big Wingは本社、研究開発、製造を同じ拠点に集めた施設です。研究の塔と工場の建物が並ぶため、車窓からは一本の高い塔だけでなく、その周囲の低い建物も合わせて見ると場所をつかみやすくなります。",
         "研究塔は2006年の開設時、世界最大級のエレベータ研究施設として紹介されました。現在の順位を断定するのではなく、エレベータを実物大で試験するための沿線拠点として眺めるのが適切です。",
-        "毎分1,000mは、秒に直すと約17mです。この速さの機械を試すには、加速し、一定の速さで走り、安全に止まるまでの距離が実物として必要になります。塔が170mあるのは眺めのためではなく、その一連の動きを丸ごと収めるための高さです。おおよそ40階建てのビルに相当する高さが、そのまま1台の試験装置になっているということでもあります。",
+        "毎分1,000mは、秒に直すと約17mです。この速さの機械を試すには、加速し、一定の速さで走り、安全に止まるまでの距離が実物として必要になります。塔が170mあるのは眺めのためではなく、その一連の動きを丸ごと収めるための高さです。おおよそ40階建てのビルに相当する高さが、そのまま1台の試験装置になっているということでもあります。"
       ],
-      en: [
+      "en": [
         "FUJITEC's official information says the research tower contains 13 elevators and tests high-speed models in the roughly 1,000 m/min class. The height serves a practical purpose: it provides a full-scale test environment for safely evaluating elevator movement.",
         "Big Wing combines headquarters, research and development, and manufacturing on one site. From the train, use the tall tower together with the lower buildings around it as a visual group rather than searching for an isolated skyscraper.",
         "When the tower opened in 2006, it was described as world-leading or world-largest-class for elevator research. This page does not make a present-day ranking claim; the useful clue is the full-scale test facility beside the route.",
-        "A thousand metres a minute is about 17 metres a second. Testing a machine at that speed needs real distance: room to accelerate, to run at speed, and to stop safely. The tower is 170 metres tall not for the view but to contain that whole sequence. It amounts to a structure roughly forty storeys high working as a single piece of test equipment.",
-      ],
+        "A thousand metres a minute is about 17 metres a second. Testing a machine at that speed needs real distance: room to accelerate, to run at speed, and to stop safely. The tower is 170 metres tall not for the view but to contain that whole sequence. It amounts to a structure roughly forty storeys high working as a single piece of test equipment."
+      ]
     },
-    guideHighlight: {
-      ja: "東京06:00発のぞみ1号では、車内時計07:52ごろ・東京から約113分。岐阜羽島を出て米原へ向かうE席側で、周囲の低い建物から抜け出す細長い塔を探してください。",
-      en: "On Nozomi 1, departing Tokyo at 06:00, this photo was taken at about 07:52 — roughly 113 minutes from Tokyo. After Gifu-Hashima, watch Seat E for the slender tower rising above the lower Big Wing buildings.",
+    "guideHighlight": {
+      "ja": "東京06:00発のぞみ1号では、車内時計07:52ごろ・東京から約113分。岐阜羽島を出て米原へ向かうE席側で、周囲の低い建物から抜け出す細長い塔を探してください。",
+      "en": "On Nozomi 1, departing Tokyo at 06:00, this photo was taken at about 07:52 — roughly 113 minutes from Tokyo. After Gifu-Hashima, watch Seat E for the slender tower rising above the lower Big Wing buildings."
     },
-    minutesFromTokyo: 113,
-    side: "E",
-    category: "notable",
-    confidence: "verified",
-    durationSec: 6, spotting: "moderate",
-    scene: "hills",
-    image: "images/20260712_fujitec_big_wing_michikusa.jpg",
-    photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      date: "2026-07-12",
-      note: { ja: "夕暮れ時のフジテック Big Wing。", en: "FUJITEC Big Wing at dusk." },
+    "minutesFromTokyo": 113,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 6,
+    "spotting": "moderate",
+    "scene": "hills",
+    "image": "images/20260712_fujitec_big_wing_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-07-12",
+      "note": {
+        "ja": "夕暮れ時のフジテック Big Wing。",
+        "en": "FUJITEC Big Wing at dusk."
+      }
     },
-    photos: [
+    "photos": [
       {
-        src: "images/20260804_fujitec_big_wing_michikusa.jpg",
-        alt: { ja: "高くそびえるフジテックのエレベータ研究塔", en: "FUJITEC's elevator research tower rising high above Big Wing" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-04",
-        note: { ja: "高くそびえるエレベータ研究塔", en: "The elevator research tower rising high above Big Wing." },
+        "src": "images/20260804_fujitec_big_wing_michikusa.jpg",
+        "alt": {
+          "ja": "高くそびえるフジテックのエレベータ研究塔",
+          "en": "FUJITEC's elevator research tower rising high above Big Wing"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "高くそびえるエレベータ研究塔",
+          "en": "The elevator research tower rising high above Big Wing."
+        }
       },
+      {
+        "src": "images/20260816_fujitec-big-wing_cp0166_michikusa.jpg",
+        "alt": {
+          "ja": "フジテックの建物に映る列車",
+          "en": "The train reflected in Fujitec’s building"
+        },
+        "note": {
+          "ja": "フジテックの建物に映る列車",
+          "en": "The train reflected in Fujitec’s building"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-16"
+      }
     ],
-    media: {
-      heading: { ja: "動画で見るフジテック Big Wing", en: "FUJITEC Big Wing in motion" },
-      description: { ja: "米原近くの車窓から見える研究塔を、投稿動画でも確認できます。", en: "See the research tower near Maibara from a window-view video." },
-      videos: [
+    "media": {
+      "heading": {
+        "ja": "動画で見るフジテック Big Wing",
+        "en": "FUJITEC Big Wing in motion"
+      },
+      "description": {
+        "ja": "米原近くの車窓から見える研究塔を、投稿動画でも確認できます。",
+        "en": "See the research tower near Maibara from a window-view video."
+      },
+      "videos": [
         {
-          kind: "x",
-          url: "https://x.com/Train205turumai/status/2070756242637967619",
-          handle: "@Train205turumai",
-          accessibleTitle: { ja: "フジテック Big WingのX動画", en: "X video of FUJITEC Big Wing" },
-          fallbackText: { ja: "フジテック Big Wingの車窓動画", en: "FUJITEC Big Wing from the Shinkansen window" },
+          "kind": "x",
+          "url": "https://x.com/Train205turumai/status/2070756242637967619",
+          "handle": "@Train205turumai",
+          "accessibleTitle": {
+            "ja": "フジテック Big WingのX動画",
+            "en": "X video of FUJITEC Big Wing"
+          },
+          "fallbackText": {
+            "ja": "フジテック Big Wingの車窓動画",
+            "en": "FUJITEC Big Wing from the Shinkansen window"
+          }
         },
         {
-          kind: "x",
-          url: "https://x.com/michikusatravel/status/2087321229745414638",
-          handle: "@michikusatravel",
-          accessibleTitle: { ja: "フジテック Big WingのX動画 2", en: "Second X video of FUJITEC Big Wing" },
-          fallbackText: { ja: "フジテック前を通過する車窓動画", en: "Passing FUJITEC Big Wing from the Shinkansen window" },
-        },
+          "kind": "x",
+          "url": "https://x.com/michikusatravel/status/2087321229745414638",
+          "handle": "@michikusatravel",
+          "accessibleTitle": {
+            "ja": "フジテック Big WingのX動画 2",
+            "en": "Second X video of FUJITEC Big Wing"
+          },
+          "fallbackText": {
+            "ja": "フジテック前を通過する車窓動画",
+            "en": "Passing FUJITEC Big Wing from the Shinkansen window"
+          }
+        }
       ],
-      platformNote: { ja: "動画はX・YouTubeの公式埋め込みを利用しています。", en: "These videos use official X and YouTube embeds." },
+      "platformNote": {
+        "ja": "動画はX・YouTubeの公式埋め込みを利用しています。",
+        "en": "These videos use official X and YouTube embeds."
+      }
     },
-    references: [REFERENCES.fujitecBigWing, REFERENCES.fujitecAnnouncement, REFERENCES.fujitecHistory],
-    bodyLinks: [
-      { ref: REFERENCES.fujitecBigWing, label: { ja: "Big Wingの公式案内を見る", en: "Open the Big Wing profile" } },
-      { ref: REFERENCES.fujitecAnnouncement, label: { ja: "研究塔の公式発表を見る", en: "Read the research tower announcement" } },
+    "references": [
+      {
+        "label": {
+          "ja": "フジテック: ビッグウィング",
+          "en": "FUJITEC: Big Wing"
+        },
+        "url": "https://www.fujitec.co.jp/corporate/domestic_bases/big_wing"
+      },
+      {
+        "label": {
+          "ja": "フジテック: ビッグウィング発表",
+          "en": "FUJITEC: Big Wing announcement"
+        },
+        "url": "https://www.fujitec.co.jp/announcement/192"
+      },
+      {
+        "label": {
+          "ja": "フジテック: 沿革",
+          "en": "FUJITEC: History"
+        },
+        "url": "https://www.fujitec.co.jp/corporate/history"
+      }
     ],
-    map: { lat: 35.2961311, lng: 136.2774037, ja: "フジテック Big Wing", en: "FUJITEC Big Wing" },
-    viewpoint: { lat: 35.2962, lng: 136.2793 },
+    "bodyLinks": [
+      {
+        "ref": {
+          "label": {
+            "ja": "フジテック: ビッグウィング",
+            "en": "FUJITEC: Big Wing"
+          },
+          "url": "https://www.fujitec.co.jp/corporate/domestic_bases/big_wing"
+        },
+        "label": {
+          "ja": "Big Wingの公式案内を見る",
+          "en": "Open the Big Wing profile"
+        }
+      },
+      {
+        "ref": {
+          "label": {
+            "ja": "フジテック: ビッグウィング発表",
+            "en": "FUJITEC: Big Wing announcement"
+          },
+          "url": "https://www.fujitec.co.jp/announcement/192"
+        },
+        "label": {
+          "ja": "研究塔の公式発表を見る",
+          "en": "Read the research tower announcement"
+        }
+      }
+    ],
+    "map": {
+      "lat": 35.2961311,
+      "lng": 136.2774037,
+      "ja": "フジテック Big Wing",
+      "en": "FUJITEC Big Wing"
+    },
+    "viewpoint": {
+      "lat": 35.2962,
+      "lng": 136.2793
+    }
   },
   {
-    id: "nangu-taisha",
-    icon: "⛩️",
-    ja: { name: "南宮大社の大鳥居", area: "岐阜羽島 → 米原", hook: "田園の向こうに、朱の大鳥居。", story: "岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに、突然大きな朱色の鳥居が姿を現します。これは南宮大社の大鳥居。石造りとしては国内でも屈指の大きさで、高さは21mを超え、道路をまたぐようにそびえています。実物の下に立つと、その巨大さに車から降りて見上げたくなるほど。車窓では一瞬ですが、周りの田園の低い景色との対比で、一度見たら忘れられない鳥居です。" },
-    en: { name: "Nangu Taisha Grand Torii", area: "Gifu-Hashima → Maibara", hook: "A giant red torii in the fields.", story: "Between Gifu-Hashima and Sekigahara, a large vermilion torii suddenly rises beyond the fields on the Seat A side. This is the Grand Torii of Nangu Taisha, one of the largest stone torii gates in Japan — over 21 meters tall and striding across the road below. Seen up close, its scale makes you want to stop and look up. From the train it is only a flash, but framed against the low farmland, it is a torii you do not easily forget." },
-    pageTitle: {
-      ja: "新幹線から見える朱の大鳥居は何？南宮大社（美濃国一の宮） | 新幹線の窓",
-      en: "What Is That Giant Red Torii from the Shinkansen? Nangu Taisha | Shinkansen Window",
+    "id": "nangu-taisha",
+    "icon": "⛩️",
+    "ja": {
+      "name": "南宮大社の大鳥居",
+      "area": "岐阜羽島 → 米原",
+      "hook": "田園の向こうに、朱の大鳥居。",
+      "story": "岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに、突然大きな朱色の鳥居が姿を現します。これは南宮大社の大鳥居。石造りとしては国内でも屈指の大きさで、高さは21mを超え、道路をまたぐようにそびえています。実物の下に立つと、その巨大さに車から降りて見上げたくなるほど。車窓では一瞬ですが、周りの田園の低い景色との対比で、一度見たら忘れられない鳥居です。"
     },
-    pageHeading: {
-      ja: "田園の向こうにそびえる、南宮大社の大鳥居",
-      en: "Nangu Taisha's Grand Torii rising beyond the fields",
+    "en": {
+      "name": "Nangu Taisha Grand Torii",
+      "area": "Gifu-Hashima → Maibara",
+      "hook": "A giant red torii in the fields.",
+      "story": "Between Gifu-Hashima and Sekigahara, a large vermilion torii suddenly rises beyond the fields on the Seat A side. This is the Grand Torii of Nangu Taisha, one of the largest stone torii gates in Japan — over 21 meters tall and striding across the road below. Seen up close, its scale makes you want to stop and look up. From the train it is only a flash, but framed against the low farmland, it is a torii you do not easily forget."
     },
-    pageHeadingChunks: {
-      ja: ["田園の向こうに", "そびえる、", "南宮大社の大鳥居"],
-      en: ["Nangu Taisha's Grand Torii", "rising beyond the fields"],
+    "pageTitle": {
+      "ja": "新幹線から見える朱の大鳥居は何？南宮大社（美濃国一の宮） | 新幹線の窓",
+      "en": "What Is That Giant Red Torii from the Shinkansen? Nangu Taisha | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "岐阜羽島〜米原の車窓、A席側の田園の向こうに一瞬現れる巨大な朱の鳥居は南宮大社の大鳥居です。美濃国一の宮としての由緒、鳥居の大きさ、金山彦大神と鉄・金属信仰までまとめて紹介します。",
-      en: "Between Gifu-Hashima and Maibara, the giant vermilion torii that flashes beyond the fields on the Seat A side belongs to Nangu Taisha, the principal shrine of Mino Province. Learn its history, the scale of the torii, and its ties to Kanayamahiko, deity of mining and metalwork.",
+    "pageHeading": {
+      "ja": "田園の向こうにそびえる、南宮大社の大鳥居",
+      "en": "Nangu Taisha's Grand Torii rising beyond the fields"
     },
-    sectionHeading: {
-      ja: "南宮大社ってどんな神社？",
-      en: "What is Nangu Taisha?",
+    "pageHeadingChunks": {
+      "ja": [
+        "田園の向こうに",
+        "そびえる、",
+        "南宮大社の大鳥居"
+      ],
+      "en": [
+        "Nangu Taisha's Grand Torii",
+        "rising beyond the fields"
+      ]
     },
-    pageStory: {
-      ja: "南宮大社（なんぐうたいしゃ）は、岐阜県不破郡垂井町に鎮座する古社で、旧美濃国の一の宮です。ご祭神は金山彦命（かなやまひこのみこと）。日本神話ではイザナミの傷から生まれた神とされ、鉱山・鍛冶・金属加工を司る神として、古くから鉄鋼・金属関係者の信仰を集めてきました。全国に3,000社以上あるとも言われる鉱山・金属関連の神社の総本社的存在で、現在も金属工業関連の企業や職人からの崇敬を集めています。関ヶ原の戦い（1600年）で社殿の多くが焼失した後、江戸幕府三代将軍・徳川家光の寄進によって再建された朱塗の本殿・拝殿・楼門などは、国の重要文化財に指定されています。",
-      en: "Nangu Taisha, in Tarui Town at the western edge of the Nobi Plain, is an ancient shrine and the ichinomiya (principal shrine) of the former Mino Province. Its enshrined deity, Kanayamahiko-no-Mikoto, is a god of mining, blacksmithing and metalworking, and is said in myth to have been born from the wounds of Izanami. Nangu Taisha is regarded as a kind of head shrine for the thousands of mining and metal-related shrines across Japan, and continues to be revered by metal-industry firms and craftspeople. After the shrine buildings largely burned in the Battle of Sekigahara in 1600, the third Tokugawa shogun Iemitsu funded a full reconstruction; today the vermilion main sanctuary, worship hall and tower gate are Nationally Designated Important Cultural Properties.",
+    "metaDescription": {
+      "ja": "岐阜羽島〜米原の車窓、A席側の田園の向こうに一瞬現れる巨大な朱の鳥居は南宮大社の大鳥居です。美濃国一の宮としての由緒、鳥居の大きさ、金山彦大神と鉄・金属信仰までまとめて紹介します。",
+      "en": "Between Gifu-Hashima and Maibara, the giant vermilion torii that flashes beyond the fields on the Seat A side belongs to Nangu Taisha, the principal shrine of Mino Province. Learn its history, the scale of the torii, and its ties to Kanayamahiko, deity of mining and metalwork."
     },
-    explainer: {
-      heading: { ja: "あの大鳥居は、実はどれくらい大きい？", en: "How big is that torii, really?" },
-      ja: [
+    "sectionHeading": {
+      "ja": "南宮大社ってどんな神社？",
+      "en": "What is Nangu Taisha?"
+    },
+    "pageStory": {
+      "ja": "南宮大社（なんぐうたいしゃ）は、岐阜県不破郡垂井町に鎮座する古社で、旧美濃国の一の宮です。ご祭神は金山彦命（かなやまひこのみこと）。日本神話ではイザナミの傷から生まれた神とされ、鉱山・鍛冶・金属加工を司る神として、古くから鉄鋼・金属関係者の信仰を集めてきました。全国に3,000社以上あるとも言われる鉱山・金属関連の神社の総本社的存在で、現在も金属工業関連の企業や職人からの崇敬を集めています。関ヶ原の戦い（1600年）で社殿の多くが焼失した後、江戸幕府三代将軍・徳川家光の寄進によって再建された朱塗の本殿・拝殿・楼門などは、国の重要文化財に指定されています。",
+      "en": "Nangu Taisha, in Tarui Town at the western edge of the Nobi Plain, is an ancient shrine and the ichinomiya (principal shrine) of the former Mino Province. Its enshrined deity, Kanayamahiko-no-Mikoto, is a god of mining, blacksmithing and metalworking, and is said in myth to have been born from the wounds of Izanami. Nangu Taisha is regarded as a kind of head shrine for the thousands of mining and metal-related shrines across Japan, and continues to be revered by metal-industry firms and craftspeople. After the shrine buildings largely burned in the Battle of Sekigahara in 1600, the third Tokugawa shogun Iemitsu funded a full reconstruction; today the vermilion main sanctuary, worship hall and tower gate are Nationally Designated Important Cultural Properties."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "あの大鳥居は、実はどれくらい大きい？",
+        "en": "How big is that torii, really?"
+      },
+      "ja": [
         "新幹線から見える朱の鳥居は、南宮大社の一の鳥居（大鳥居）で、県道を跨ぐ形で立っています。石造・鉄骨造の大鳥居としては国内屈指の高さで、地元資料では高さ約21m、幅約28mと紹介されます。周辺は田園と低い住宅が広がる場所なので、実際の大きさ以上に「ぽつんと現れる巨大な赤」の印象が強く残ります。",
         "この鳥居から本殿までは約1km。車窓から社殿そのものは見えませんが、大鳥居は本殿へ続く参道の入口を告げるシンボルとして機能しています。周辺には旧中山道の垂井宿があり、江戸時代の街道と、金山彦を祀る美濃国一の宮が並び立つ場所として整えられてきました。",
-        "参拝すると、朱の楼門、山を背にした社殿、金属関係の奉納品、そして境内の金山神社（金物職人の信仰）など、金属をキーワードにした独自の空気を感じられます。新幹線から鳥居しか見えないのが少しもったいないくらいの神社です。",
+        "参拝すると、朱の楼門、山を背にした社殿、金属関係の奉納品、そして境内の金山神社（金物職人の信仰）など、金属をキーワードにした独自の空気を感じられます。新幹線から鳥居しか見えないのが少しもったいないくらいの神社です。"
       ],
-      en: [
+      "en": [
         "The vermilion gate you see from the train is Nangu Taisha's first torii — the Grand Torii — straddling a prefectural road. As a large-scale stone-and-steel torii, it is among the tallest in Japan; local sources give it as roughly 21 meters tall and 28 meters wide. Surrounded by low farmland and modest housing, it stands out even more than its size suggests: a sudden, isolated block of red.",
         "The main sanctuary lies about a kilometer beyond the torii, out of sight from the train. Even so, the Grand Torii clearly marks the entrance to the approach that leads there. Nearby is Tarui-juku, one of the old post-towns on the Nakasendo highway; the shrine and the old road grew up together as a hub of religious life in Mino Province.",
-        "If you visit in person, you notice a distinct 'metal' theme — the vermilion tower gate, the sanctuary set against a wooded slope, votive offerings from metal-related companies, and a small Kaneyama subshrine dedicated to metal craftspeople. Seeing only the torii from the Shinkansen leaves quite a lot unseen.",
-      ],
+        "If you visit in person, you notice a distinct 'metal' theme — the vermilion tower gate, the sanctuary set against a wooded slope, votive offerings from metal-related companies, and a small Kaneyama subshrine dedicated to metal craftspeople. Seeing only the torii from the Shinkansen leaves quite a lot unseen."
+      ]
     },
-    guideHighlight: {
-      ja: "岐阜羽島を出て関ヶ原方向へ進む区間、A席側の田園の向こうを注意してみてください。真っ赤な柱が田畑の背後にぬっと立ち上がる瞬間があります。周りの低い景色との対比で見つけやすく、「あれ、大きい鳥居あった！」と驚く人が多いスポットです。",
-      en: "Between Gifu-Hashima and Sekigahara, watch across the farmland on the Seat A side. At one point, a tall red column rises abruptly out of the fields. Its contrast with the low surroundings makes it easy to spot — and a common 'wait, that torii was huge!' moment for first-time riders.",
+    "guideHighlight": {
+      "ja": "岐阜羽島を出て関ヶ原方向へ進む区間、A席側の田園の向こうを注意してみてください。真っ赤な柱が田畑の背後にぬっと立ち上がる瞬間があります。周りの低い景色との対比で見つけやすく、「あれ、大きい鳥居あった！」と驚く人が多いスポットです。",
+      "en": "Between Gifu-Hashima and Sekigahara, watch across the farmland on the Seat A side. At one point, a tall red column rises abruptly out of the fields. Its contrast with the low surroundings makes it easy to spot — and a common 'wait, that torii was huge!' moment for first-time riders."
     },
-    minutesFromTokyo: 107, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "pagoda",
-    routeNote: {
-      ja: "東京から新大阪方面なら岐阜羽島を出たあと、新大阪から東京方面なら米原を出て関ヶ原を越えたあと、A席側を見てください。",
-      en: "Tokyo to Shin-Osaka: watch Seat A after Gifu-Hashima. Shin-Osaka to Tokyo: watch Seat A after Maibara and Sekigahara.",
+    "minutesFromTokyo": 107,
+    "side": "A",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 2,
+    "spotting": "hard",
+    "visibleWhenCloudy": true,
+    "scene": "pagoda",
+    "routeNote": {
+      "ja": "東京から新大阪方面なら岐阜羽島を出たあと、新大阪から東京方面なら米原を出て関ヶ原を越えたあと、A席側を見てください。",
+      "en": "Tokyo to Shin-Osaka: watch Seat A after Gifu-Hashima. Shin-Osaka to Tokyo: watch Seat A after Maibara and Sekigahara."
     },
-    image: "images/20260629_nangu_taisha_1_michikusa.jpg",
-    photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      date: "2026-06-29",
-      note: { ja: "のぞみ99号・A席側、7:40撮影", en: "Nozomi 99, Seat A side, photographed at 7:40." },
+    "image": "images/20260629_nangu_taisha_1_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-06-29",
+      "note": {
+        "ja": "のぞみ99号・A席側、7:40撮影",
+        "en": "Nozomi 99, Seat A side, photographed at 7:40."
+      }
     },
-    photos: [
+    "photos": [
       {
-        src: "images/20260629_nangu_taisha_2_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える南宮大社の大鳥居", en: "Nangu Taisha torii gate from Seat A" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "田園の向こうに見える大鳥居", en: "The large torii beyond the fields" },
+        "src": "images/20260629_nangu_taisha_2_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える南宮大社の大鳥居",
+          "en": "Nangu Taisha torii gate from Seat A"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "田園の向こうに見える大鳥居",
+          "en": "The large torii beyond the fields"
+        }
       },
+      {
+        "src": "images/20260919_nangu-taisha_cp0169_michikusa.jpg",
+        "alt": {
+          "ja": "住宅の屋根の向こうに立つ南宮大社の大鳥居",
+          "en": "Nangu Taisha’s large torii beyond the rooftops"
+        },
+        "note": {
+          "ja": "住宅の屋根の向こうに立つ南宮大社の大鳥居",
+          "en": "Nangu Taisha’s large torii beyond the rooftops"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19"
+      }
     ],
-    references: [REFERENCES.nanguTaisha, REFERENCES.nanguTaishaWiki],
-    map: { lat: 35.36582150225837, lng: 136.52692401984618, ja: "南宮大社 大鳥居", en: "Nangu Taisha torii gate" },
-    viewpoint: { lat: 35.365985862164244, lng: 136.52702479196853 },
+    "references": [
+      {
+        "label": {
+          "ja": "南宮大社 公式",
+          "en": "Nangu Taisha official site"
+        },
+        "url": "https://www.nangu-san.com/"
+      },
+      {
+        "label": {
+          "ja": "Wikipedia: 南宮大社",
+          "en": "Wikipedia: Nangu Taisha"
+        },
+        "url": {
+          "ja": "https://ja.wikipedia.org/wiki/%E5%8D%97%E5%AE%AE%E5%A4%A7%E7%A4%BE",
+          "en": "https://en.wikipedia.org/wiki/Nangu_Shrine"
+        }
+      }
+    ],
+    "map": {
+      "lat": 35.36582150225837,
+      "lng": 136.52692401984618,
+      "ja": "南宮大社 大鳥居",
+      "en": "Nangu Taisha torii gate"
+    },
+    "viewpoint": {
+      "lat": 35.365985862164244,
+      "lng": 136.52702479196853
+    }
   },
   {
     id: "sawayama-castle",
@@ -5676,72 +6416,184 @@ const SPOTS = [
     viewpoint: { lat: 35.283291, lng: 136.281051 },
   },
   {
-    id: "hikone-castle",
-    icon: "🏯",
-    ja: { name: "彦根城", area: "米原 → 京都", hook: "国宝の天守を、街の向こうに。", story: "米原を出たあと、E席側の街並みの向こうに、こんもりとした山の上に立つ白い天守が小さく見えることがあります。それが国宝・彦根城。関ヶ原の戦い後、井伊直政・直継が徳川譜代の要として1622年頃に完成させた城で、江戸時代を通じて彦根藩井伊家35万石の本拠でした。現存12天守のひとつであり、そのうち姫路城・松本城・松江城・犬山城と並んで国宝に指定された「国宝5城」の一角。琵琶湖東岸の歴史を代表するランドマークが、車窓の街並みの上にちらりと現れます。" },
-    en: { name: "Hikone Castle", area: "Maibara → Kyoto", hook: "A tiny National Treasure keep.", story: "After Maibara, a small white keep on a low green hill may appear beyond the town on the Seat E side. That is Hikone Castle — one of only twelve original castle keeps left in Japan, and one of just five designated National Treasures (alongside Himeji, Matsumoto, Matsue and Inuyama). Built for Ii Naomasa and completed around 1622 as a key Tokugawa vassal fortress, it served throughout the Edo period as the seat of the 350,000-koku Ii-family Hikone domain. A landmark of eastern Lake Biwa, briefly framed above the roofs from the train." },
-    pageTitle: {
-      ja: "新幹線から見える彦根城｜国宝天守を米原の車窓から探す | 新幹線の窓",
-      en: "Hikone Castle from the Shinkansen | Spotting the National Treasure Keep from Seat E",
+    "id": "hikone-castle",
+    "icon": "🏯",
+    "ja": {
+      "name": "彦根城",
+      "area": "米原 → 京都",
+      "hook": "国宝の天守を、街の向こうに。",
+      "story": "米原を出たあと、E席側の街並みの向こうに、こんもりとした山の上に立つ白い天守が小さく見えることがあります。それが国宝・彦根城。関ヶ原の戦い後、井伊直政・直継が徳川譜代の要として1622年頃に完成させた城で、江戸時代を通じて彦根藩井伊家35万石の本拠でした。現存12天守のひとつであり、そのうち姫路城・松本城・松江城・犬山城と並んで国宝に指定された「国宝5城」の一角。琵琶湖東岸の歴史を代表するランドマークが、車窓の街並みの上にちらりと現れます。"
     },
-    pageHeading: {
-      ja: "街の向こうにちらり——国宝・彦根城",
-      en: "A glimpse beyond the town: National Treasure Hikone Castle",
+    "en": {
+      "name": "Hikone Castle",
+      "area": "Maibara → Kyoto",
+      "hook": "A tiny National Treasure keep.",
+      "story": "After Maibara, a small white keep on a low green hill may appear beyond the town on the Seat E side. That is Hikone Castle — one of only twelve original castle keeps left in Japan, and one of just five designated National Treasures (alongside Himeji, Matsumoto, Matsue and Inuyama). Built for Ii Naomasa and completed around 1622 as a key Tokugawa vassal fortress, it served throughout the Edo period as the seat of the 350,000-koku Ii-family Hikone domain. A landmark of eastern Lake Biwa, briefly framed above the roofs from the train."
     },
-    pageHeadingChunks: {
-      ja: ["街の向こうにちらり——", "国宝・彦根城"],
-      en: ["A glimpse beyond the town:", "National Treasure Hikone Castle"],
+    "pageTitle": {
+      "ja": "新幹線から見える彦根城｜国宝天守を米原の車窓から探す | 新幹線の窓",
+      "en": "Hikone Castle from the Shinkansen | Spotting the National Treasure Keep from Seat E"
     },
-    metaDescription: {
-      ja: "米原を出た新幹線のE席側、街並みの向こうに小さく見える白い天守は国宝・彦根城。井伊家35万石の本拠として整えられた城の歴史と、車窓での見つけ方を紹介します。",
-      en: "After Maibara, the tiny white keep glimpsed beyond the town from Seat E is National-Treasure Hikone Castle — seat of the Ii clan for over two centuries. Learn its history and how to spot it from the Shinkansen.",
+    "pageHeading": {
+      "ja": "街の向こうにちらり——国宝・彦根城",
+      "en": "A glimpse beyond the town: National Treasure Hikone Castle"
     },
-    sectionHeading: {
-      ja: "彦根城はどんな城？",
-      en: "What kind of castle is Hikone?",
+    "pageHeadingChunks": {
+      "ja": [
+        "街の向こうにちらり——",
+        "国宝・彦根城"
+      ],
+      "en": [
+        "A glimpse beyond the town:",
+        "National Treasure Hikone Castle"
+      ]
     },
-    pageStory: {
-      ja: "彦根城は、滋賀県彦根市の彦根山（標高約136m）に立つ平山城で、井伊直政のあとを継いだ直継（直勝）が1604年に築城を開始、1622年頃に完成しました。関ヶ原以後の徳川政権にとって、京・大坂方面を睨む戦略上の要衝であったため、周辺の佐和山城・大津城・長浜城・小谷城など複数の城の建材を転用してでも急いで整えられた城です。江戸時代を通じて、井伊家が近江彦根藩の藩主として代々居城とし、幕末には大老・井伊直弼を輩出したことでも知られます。",
-      en: "Hikone Castle is a hilltop-plain castle on the roughly 136-meter Mt. Hikone in Hikone City, Shiga Prefecture. Construction began in 1604 under Ii Naotsugu (Naokatsu), successor to Ii Naomasa, and was largely completed around 1622. For the post-Sekigahara Tokugawa regime, Hikone commanded a vital position facing Kyoto and Osaka, and the shogunate hurried its completion — even reusing timber and stone from nearby castles such as Sawayama, Otsu, Nagahama and Odani. Throughout the Edo period the Ii family ruled the Hikone domain from here, and in the late Edo period the castle was the home of the shogunate's chief councillor Ii Naosuke.",
+    "metaDescription": {
+      "ja": "米原を出た新幹線のE席側、街並みの向こうに小さく見える白い天守は国宝・彦根城。井伊家35万石の本拠として整えられた城の歴史と、車窓での見つけ方を紹介します。",
+      "en": "After Maibara, the tiny white keep glimpsed beyond the town from Seat E is National-Treasure Hikone Castle — seat of the Ii clan for over two centuries. Learn its history and how to spot it from the Shinkansen."
     },
-    explainer: {
-      heading: { ja: "現存12天守、そして国宝5城のひとつ", en: "One of Japan's twelve surviving keeps — and five National Treasures" },
-      ja: [
+    "sectionHeading": {
+      "ja": "彦根城はどんな城？",
+      "en": "What kind of castle is Hikone?"
+    },
+    "pageStory": {
+      "ja": "彦根城は、滋賀県彦根市の彦根山（標高約136m）に立つ平山城で、井伊直政のあとを継いだ直継（直勝）が1604年に築城を開始、1622年頃に完成しました。関ヶ原以後の徳川政権にとって、京・大坂方面を睨む戦略上の要衝であったため、周辺の佐和山城・大津城・長浜城・小谷城など複数の城の建材を転用してでも急いで整えられた城です。江戸時代を通じて、井伊家が近江彦根藩の藩主として代々居城とし、幕末には大老・井伊直弼を輩出したことでも知られます。",
+      "en": "Hikone Castle is a hilltop-plain castle on the roughly 136-meter Mt. Hikone in Hikone City, Shiga Prefecture. Construction began in 1604 under Ii Naotsugu (Naokatsu), successor to Ii Naomasa, and was largely completed around 1622. For the post-Sekigahara Tokugawa regime, Hikone commanded a vital position facing Kyoto and Osaka, and the shogunate hurried its completion — even reusing timber and stone from nearby castles such as Sawayama, Otsu, Nagahama and Odani. Throughout the Edo period the Ii family ruled the Hikone domain from here, and in the late Edo period the castle was the home of the shogunate's chief councillor Ii Naosuke."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "現存12天守、そして国宝5城のひとつ",
+        "en": "One of Japan's twelve surviving keeps — and five National Treasures"
+      },
+      "ja": [
         "日本には、江戸時代までに建てられた天守が今も残る「現存12天守」があり、彦根城の三重三階の天守もそのひとつです。さらに姫路城・松本城・犬山城・松江城とあわせて、国宝に指定された「国宝5城」のひとつでもあります。屋根は入母屋・唐破風・切妻を組み合わせた複雑な意匠で、比較的小ぶりながら装飾的で美しい天守として評価が高い建物です。天守以外にも、附櫓・多聞櫓、二の丸の佐和口多聞櫓、太鼓門櫓、天秤櫓など、数多くの江戸期の建物が現存し、これらの多くも国指定重要文化財に指定されています。",
         "麓には大名庭園「玄宮園」が広がり、天守と池を組み合わせた眺めは彦根城を象徴する景観のひとつです。城下町の街並みも近世彦根の面影を残し、「夢京橋キャッスルロード」や旧町人町が今も歩いて楽しめる街として整備されています。滋賀県が世界文化遺産登録を目指している対象でもあり、日本の城郭史のなかで極めて重要な位置を占めています。",
-        "新幹線からは、E席側の車窓の「街並みの向こう、小高い緑の丘の上」に白い建物を探すことになります。距離があるので大きくは見えませんが、周囲に高い山がなく彦根山だけが独立して盛り上がっているため、意識すれば意外と輪郭がわかります。米原から数十秒後、街並みの切れ間に出るタイミングを狙うのがコツです。",
+        "新幹線からは、E席側の車窓の「街並みの向こう、小高い緑の丘の上」に白い建物を探すことになります。距離があるので大きくは見えませんが、周囲に高い山がなく彦根山だけが独立して盛り上がっているため、意識すれば意外と輪郭がわかります。米原から数十秒後、街並みの切れ間に出るタイミングを狙うのがコツです。"
       ],
-      en: [
+      "en": [
         "Japan has twelve surviving pre-modern castle keeps, known collectively as the genson junitenshu. Hikone's three-tier, three-story keep is one of them, and it is also one of the five keeps designated as National Treasures (along with Himeji, Matsumoto, Inuyama and Matsue). The relatively small tower is admired for its intricate roofline — combining hip-and-gable, kara-hafu curved gables, and standard gables — and for its refined decoration. Beyond the keep, many other Edo-era structures survive on the grounds (turrets, gates, connecting walls), most of them Nationally Designated Important Cultural Properties.",
         "At its foot, the Genkyu-en garden — a daimyo-style stroll garden combining a pond with the keep in the background — is one of Hikone's most iconic views. The old castle-town streets still evoke early-modern Hikone, and areas like Yumekyobashi Castle Road preserve a walkable feudal-period feel. Shiga Prefecture has been pursuing UNESCO World Heritage inscription for the castle, underscoring its central place in Japanese castle history.",
-        "From the train, look toward Seat E for the 'small white building on a slightly higher green hill beyond the town.' At this distance it is not large, but because Mt. Hikone rises alone from the surrounding plain, the shape is surprisingly clear once you know what to look for. Aim for the moment a few tens of seconds after Maibara when the buildings briefly thin out.",
-      ],
+        "From the train, look toward Seat E for the 'small white building on a slightly higher green hill beyond the town.' At this distance it is not large, but because Mt. Hikone rises alone from the surrounding plain, the shape is surprisingly clear once you know what to look for. Aim for the moment a few tens of seconds after Maibara when the buildings briefly thin out."
+      ]
     },
-    guideHighlight: {
-      ja: "米原を出て少し経ったら、E席側の遠くに「街並みの上にだけ突き出た小さな緑の丘」を探してください。その頂上に白い点のような天守が見えたらそれが彦根城です。距離があるので双眼鏡や望遠が使える場合は本領を発揮します。実物の迫力を知りたい人は、いつか米原下車でぜひ寄ってみてください。",
-      en: "A little after Maibara, look far off on the Seat E side for a small green hill 'poking up just above the roofs.' If you can pick out a white speck at its summit, that is Hikone Castle. Binoculars or a zoom really shine here. If you want to feel the castle's true scale, plan a stopover from Maibara on another ride.",
+    "guideHighlight": {
+      "ja": "米原を出て少し経ったら、E席側の遠くに「街並みの上にだけ突き出た小さな緑の丘」を探してください。その頂上に白い点のような天守が見えたらそれが彦根城です。距離があるので双眼鏡や望遠が使える場合は本領を発揮します。実物の迫力を知りたい人は、いつか米原下車でぜひ寄ってみてください。",
+      "en": "A little after Maibara, look far off on the Seat E side for a small green hill 'poking up just above the roofs.' If you can pick out a white speck at its summit, that is Hikone Castle. Binoculars or a zoom really shine here. If you want to feel the castle's true scale, plan a stopover from Maibara on another ride."
     },
-    minutesFromTokyo: 116, side: "E", category: "curious", confidence: "verified", durationSec: 3, spotting: "hard", scene: "castle",
-    image: "images/20170307_hikone_castle_zusshi.jpg",
-    photoCredit: { ja: "ずっしー。氏", en: "Zusshi", url: "https://ameblo.jp/ginga03142008/entry-12251601639.html", date: "2017-03-07", note: { ja: "新幹線から見える彦根城。遠景でも天守の位置が比較的わかりやすい写真", en: "Hikone Castle from the Shinkansen, with the keep relatively easy to place despite the distance." } },
-    photos: [
+    "minutesFromTokyo": 116,
+    "side": "E",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 3,
+    "spotting": "hard",
+    "scene": "castle",
+    "image": "images/20170307_hikone_castle_zusshi.jpg",
+    "photoCredit": {
+      "ja": "ずっしー。氏",
+      "en": "Zusshi",
+      "url": "https://ameblo.jp/ginga03142008/entry-12251601639.html",
+      "date": "2017-03-07",
+      "note": {
+        "ja": "新幹線から見える彦根城。遠景でも天守の位置が比較的わかりやすい写真",
+        "en": "Hikone Castle from the Shinkansen, with the keep relatively easy to place despite the distance."
+      }
+    },
+    "photos": [
       {
-        src: "images/20240719_hikone_castle_asami_k920.jpg",
-        alt: { ja: "新幹線のE席側から遠くに見える彦根城", en: "Hikone Castle seen far away from Seat E" },
-        credit: { ja: "@asami_k920", en: "@asami_k920" },
-        sourceUrl: "https://x.com/asami_k920/status/1814165589851795710",
+        "src": "images/20240719_hikone_castle_asami_k920.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から遠くに見える彦根城",
+          "en": "Hikone Castle seen far away from Seat E"
+        },
+        "credit": {
+          "ja": "@asami_k920",
+          "en": "@asami_k920"
+        },
+        "sourceUrl": "https://x.com/asami_k920/status/1814165589851795710"
       },
       {
-        src: "images/20260712_hikone_castle_michikusa.jpg",
-        alt: { ja: "曇りの夕方、新幹線のE席側から見える彦根城", en: "Hikone Castle from Seat E on a cloudy evening" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "奥の鉄塔の後ろにごく小さく見える彦根城", en: "The keep is extremely small, behind the distant transmission tower." },
+        "src": "images/20260712_hikone_castle_michikusa.jpg",
+        "alt": {
+          "ja": "曇りの夕方、新幹線のE席側から見える彦根城",
+          "en": "Hikone Castle from Seat E on a cloudy evening"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "奥の鉄塔の後ろにごく小さく見える彦根城",
+          "en": "The keep is extremely small, behind the distant transmission tower."
+        }
       },
+      {
+        "src": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
+        "alt": {
+          "ja": "夜の彦根城を車窓から探す",
+          "en": "Hikone Castle seen from the train at night"
+        },
+        "note": {
+          "ja": "夜の彦根城を車窓から探す",
+          "en": "Hikone Castle seen from the train at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-14",
+        "timeOfDay": "night"
+      },
+      {
+        "src": "images/20260924_hikone-castle_cp0170_michikusa.jpg",
+        "alt": {
+          "ja": "朝の車窓、街の奥に見える彦根城",
+          "en": "Hikone Castle beyond the town in the morning"
+        },
+        "note": {
+          "ja": "朝の車窓、街の奥に見える彦根城",
+          "en": "Hikone Castle beyond the town in the morning"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24"
+      }
     ],
-    references: [REFERENCES.hikoneCastle, REFERENCES.hikoneCastleUnesco, REFERENCES.zusshiCastleBlog],
-    map: { lat: 35.2765, lng: 136.2518, ja: "彦根城", en: "Hikone Castle" },
-    viewpoint: { lat: 35.271532, lng: 136.263314 },
+    "references": [
+      {
+        "label": {
+          "ja": "国宝 彦根城公式",
+          "en": "Hikone Castle official site"
+        },
+        "url": "https://hikonecastle.com/"
+      },
+      {
+        "label": {
+          "ja": "国指定文化財等データベース: 彦根城",
+          "en": "Agency for Cultural Affairs: Hikone Castle (National Treasure)"
+        },
+        "url": "https://kunishitei.bunka.go.jp/heritage/detail/102/00001479"
+      },
+      {
+        "label": {
+          "ja": "ずっしー。氏: 新幹線からお城を撮影",
+          "en": "Zusshi: Castles from the Shinkansen (Japanese only)"
+        },
+        "url": "https://ameblo.jp/ginga03142008/entry-12251601639.html"
+      }
+    ],
+    "map": {
+      "lat": 35.2765,
+      "lng": 136.2518,
+      "ja": "彦根城",
+      "en": "Hikone Castle"
+    },
+    "viewpoint": {
+      "lat": 35.271532,
+      "lng": 136.263314
+    }
   },
   {
     "id": "lotte-shiga",
@@ -6087,82 +6939,192 @@ const SPOTS = [
     viewpoint: { lat: 35.0575405061877, lng: 136.01790212955294 },
   },
   {
-    id: "seta-karahashi",
-    icon: "🌉",
-    ja: { name: "瀬田の唐橋", area: "米原 → 京都", hook: "京の手前、伝説を渡る橋。", story: "京都へ近づく少し前、E席側に瀬田川と、川を渡る二連の橋が見えてきます。これが瀬田の唐橋（せたのからはし）。日本書紀にも登場する古代からの交通の要衝で、京の東の玄関口として「唐橋を制する者は天下を制す」と言われた橋です。中央の中の島を挟んで大橋・小橋が並ぶ独特の形状と、朱塗りの欄干が印象的で、日本三名橋・近江八景「瀬田の夕照」にも数えられます。俵藤太（藤原秀郷）の百足退治伝説、壬申の乱、木曽義仲の最期、本能寺の変直後の攻防など、日本史の節目にたびたび登場した舞台でもあります。" },
-    en: { name: "Seta no Karahashi Bridge", area: "Maibara → Kyoto", hook: "A legendary bridge before Kyoto.", story: "A little before Kyoto, Seat E opens onto the Seta River and a distinctive two-span bridge crossing it. This is Seta no Karahashi, one of Japan's oldest strategic river crossings — mentioned already in the 8th-century Nihon Shoki as the eastern gate to the capital, and long summed up in the saying, 'whoever controls the Karahashi controls the realm.' Its unusual shape (a large and a small bridge meeting at a central islet) and vermilion railings make it easy to recognize. It is counted among Japan's Three Famous Bridges and among the Eight Views of Omi ('the Evening Glow at Seta'). Countless turning points of Japanese history — the Jinshin War of 672, the death of Kiso Yoshinaka, battles just after the Honnoji Incident, and the legend of Tawara Toda slaying a giant centipede — unfolded here." },
-    pageTitle: {
-      ja: "新幹線から見える瀬田の唐橋｜日本三名橋の由緒と車窓 | 新幹線の窓",
-      en: "Seta no Karahashi from the Shinkansen | One of Japan's Three Famous Bridges",
+    "id": "seta-karahashi",
+    "icon": "🌉",
+    "ja": {
+      "name": "瀬田の唐橋",
+      "area": "米原 → 京都",
+      "hook": "京の手前、伝説を渡る橋。",
+      "story": "京都へ近づく少し前、E席側に瀬田川と、川を渡る二連の橋が見えてきます。これが瀬田の唐橋（せたのからはし）。日本書紀にも登場する古代からの交通の要衝で、京の東の玄関口として「唐橋を制する者は天下を制す」と言われた橋です。中央の中の島を挟んで大橋・小橋が並ぶ独特の形状と、朱塗りの欄干が印象的で、日本三名橋・近江八景「瀬田の夕照」にも数えられます。俵藤太（藤原秀郷）の百足退治伝説、壬申の乱、木曽義仲の最期、本能寺の変直後の攻防など、日本史の節目にたびたび登場した舞台でもあります。"
     },
-    pageHeading: {
-      ja: "京の手前で、歴史を渡る——瀬田の唐橋",
-      en: "Crossing history before Kyoto: Seta no Karahashi",
+    "en": {
+      "name": "Seta no Karahashi Bridge",
+      "area": "Maibara → Kyoto",
+      "hook": "A legendary bridge before Kyoto.",
+      "story": "A little before Kyoto, Seat E opens onto the Seta River and a distinctive two-span bridge crossing it. This is Seta no Karahashi, one of Japan's oldest strategic river crossings — mentioned already in the 8th-century Nihon Shoki as the eastern gate to the capital, and long summed up in the saying, 'whoever controls the Karahashi controls the realm.' Its unusual shape (a large and a small bridge meeting at a central islet) and vermilion railings make it easy to recognize. It is counted among Japan's Three Famous Bridges and among the Eight Views of Omi ('the Evening Glow at Seta'). Countless turning points of Japanese history — the Jinshin War of 672, the death of Kiso Yoshinaka, battles just after the Honnoji Incident, and the legend of Tawara Toda slaying a giant centipede — unfolded here."
     },
-    pageHeadingChunks: {
-      ja: ["京の手前で、歴史を渡る——", "瀬田の唐橋"],
-      en: ["Crossing history before Kyoto:", "Seta no Karahashi"],
+    "pageTitle": {
+      "ja": "新幹線から見える瀬田の唐橋｜日本三名橋の由緒と車窓 | 新幹線の窓",
+      "en": "Seta no Karahashi from the Shinkansen | One of Japan's Three Famous Bridges"
     },
-    metaDescription: {
-      ja: "京都駅の手前、新幹線のE席側に一瞬見える朱の欄干の橋が瀬田の唐橋。日本三名橋・近江八景のひとつで、壬申の乱・俵藤太の百足退治・木曽義仲の最期など、多くの日本史の舞台となった橋の由緒を紹介します。",
-      en: "Just before Kyoto, the vermilion-railed bridge across the Seta River on the Seat E side is Seta no Karahashi. One of Japan's Three Famous Bridges and an Eight Views of Omi scene, it has been the setting of many turning points in Japanese history — from the 7th-century Jinshin War to the death of Kiso Yoshinaka.",
+    "pageHeading": {
+      "ja": "京の手前で、歴史を渡る——瀬田の唐橋",
+      "en": "Crossing history before Kyoto: Seta no Karahashi"
     },
-    sectionHeading: {
-      ja: "瀬田の唐橋とはどんな橋？",
-      en: "What is Seta no Karahashi?",
+    "pageHeadingChunks": {
+      "ja": [
+        "京の手前で、歴史を渡る——",
+        "瀬田の唐橋"
+      ],
+      "en": [
+        "Crossing history before Kyoto:",
+        "Seta no Karahashi"
+      ]
     },
-    pageStory: {
-      ja: "瀬田の唐橋は、琵琶湖から流れ出た瀬田川に架かる橋で、滋賀県大津市瀬田に位置します。橋の始まりは大化年間（7世紀）以前まで遡るとされ、以来1400年近くにわたってこの地点に橋が架け続けられてきました。京・大津側から東国へ抜けるほぼ唯一の陸路上の主要橋であり、古代から中世・近世を通じて、東国と畿内の軍勢がぶつかる戦略上の要でした。「京の東の玄関」「唐橋を制する者は天下を制す」と評される所以です。現代の橋は昭和54年（1979年）に架け替えられた鉄筋コンクリート橋ですが、木造の伝統橋を踏襲した独特のシルエットと、朱塗りの欄干は今も変わりません。",
-      en: "Seta no Karahashi crosses the Seta River, which flows out of Lake Biwa, in Seta, Otsu City, Shiga Prefecture. Bridges have been recorded at this exact spot since before the mid-7th century, meaning some form of the crossing has stood here for close to 1,400 years. For most of Japanese history it was effectively the only major bridge on the land route between the capital region and the east — the natural clash point whenever eastern armies moved toward the capital or vice versa. Hence the phrase 'the eastern gate to Kyoto' and the old saying that whoever holds Karahashi holds the realm. The present bridge, reconstructed in reinforced concrete in 1979, keeps the silhouette and vermilion railings of the traditional wooden bridge.",
+    "metaDescription": {
+      "ja": "京都駅の手前、新幹線のE席側に一瞬見える朱の欄干の橋が瀬田の唐橋。日本三名橋・近江八景のひとつで、壬申の乱・俵藤太の百足退治・木曽義仲の最期など、多くの日本史の舞台となった橋の由緒を紹介します。",
+      "en": "Just before Kyoto, the vermilion-railed bridge across the Seta River on the Seat E side is Seta no Karahashi. One of Japan's Three Famous Bridges and an Eight Views of Omi scene, it has been the setting of many turning points in Japanese history — from the 7th-century Jinshin War to the death of Kiso Yoshinaka."
     },
-    explainer: {
-      heading: { ja: "この橋にまつわる、日本史のエピソード", en: "Famous stories tied to this bridge" },
-      ja: [
+    "sectionHeading": {
+      "ja": "瀬田の唐橋とはどんな橋？",
+      "en": "What is Seta no Karahashi?"
+    },
+    "pageStory": {
+      "ja": "瀬田の唐橋は、琵琶湖から流れ出た瀬田川に架かる橋で、滋賀県大津市瀬田に位置します。橋の始まりは大化年間（7世紀）以前まで遡るとされ、以来1400年近くにわたってこの地点に橋が架け続けられてきました。京・大津側から東国へ抜けるほぼ唯一の陸路上の主要橋であり、古代から中世・近世を通じて、東国と畿内の軍勢がぶつかる戦略上の要でした。「京の東の玄関」「唐橋を制する者は天下を制す」と評される所以です。現代の橋は昭和54年（1979年）に架け替えられた鉄筋コンクリート橋ですが、木造の伝統橋を踏襲した独特のシルエットと、朱塗りの欄干は今も変わりません。",
+      "en": "Seta no Karahashi crosses the Seta River, which flows out of Lake Biwa, in Seta, Otsu City, Shiga Prefecture. Bridges have been recorded at this exact spot since before the mid-7th century, meaning some form of the crossing has stood here for close to 1,400 years. For most of Japanese history it was effectively the only major bridge on the land route between the capital region and the east — the natural clash point whenever eastern armies moved toward the capital or vice versa. Hence the phrase 'the eastern gate to Kyoto' and the old saying that whoever holds Karahashi holds the realm. The present bridge, reconstructed in reinforced concrete in 1979, keeps the silhouette and vermilion railings of the traditional wooden bridge."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "この橋にまつわる、日本史のエピソード",
+        "en": "Famous stories tied to this bridge"
+      },
+      "ja": [
         "瀬田の唐橋を語るうえで欠かせないのが、672年の壬申の乱です。天智天皇の弟・大海人皇子（後の天武天皇）と、皇子の大友皇子との皇位継承争いは、この橋を境にした瀬田川の戦いで大海人側の勝利が決定的となりました。日本古代史における最大の内乱の帰結が決した場所でもあります。",
         "平安中期には、俵藤太（たわらとうた）こと藤原秀郷が、瀬田橋で美しい姫（実は琵琶湖の龍神）に頼まれ、三上山に住む巨大な百足を退治したという「百足退治」の伝説の舞台。三上山（近江富士）の項目とも重なるエピソードで、この橋と山、湖を結ぶ物語として今も語られています。",
         "源平合戦末期の1184年、木曽義仲は京から敗走する中で瀬田橋を目指し、粟津の戦いで討たれました。義仲の腹心・今井兼平が「橋の上で名乗って戦った」場面は『平家物語』の名場面のひとつです。1582年、本能寺の変で織田信長を討った明智光秀の家臣・山岡景隆はいったんこの唐橋を焼き落として光秀の東進を阻止しようとしました。江戸期には東海道の重要な橋として絵図にも度々描かれ、歌川広重の『近江八景』にも「瀬田夕照（せたのせきしょう）」として登場します。",
-        "実は日本語のことわざ「急がば回れ」も、この橋が生まれの地です。室町時代の連歌師・宗長（そうちょう）の歌「もののふの やばせの舟は 早くとも 急がば回れ 瀬田の長橋」——武士が京へ急ぐなら、比叡おろしの強風で危険な琵琶湖上の「矢橋（やばせ）の渡し」より、遠回りでも安全な瀬田の唐橋を陸路で渡れ、という意味です。この一首から「急ぐときこそ、遠回りに見えても安全確実な道を」という教訓が広まり、現代まで日常語として使われ続けています。窓から見える橋そのものが、日本人が今も口にすることわざの原風景です。",
+        "実は日本語のことわざ「急がば回れ」も、この橋が生まれの地です。室町時代の連歌師・宗長（そうちょう）の歌「もののふの やばせの舟は 早くとも 急がば回れ 瀬田の長橋」——武士が京へ急ぐなら、比叡おろしの強風で危険な琵琶湖上の「矢橋（やばせ）の渡し」より、遠回りでも安全な瀬田の唐橋を陸路で渡れ、という意味です。この一首から「急ぐときこそ、遠回りに見えても安全確実な道を」という教訓が広まり、現代まで日常語として使われ続けています。窓から見える橋そのものが、日本人が今も口にすることわざの原風景です。"
       ],
-      en: [
+      "en": [
         "One episode that cannot be left out is the Jinshin War of 672. In the succession struggle between Emperor Tenji's younger brother Prince Oama (later Emperor Tenmu) and Tenji's son Prince Otomo, the decisive battle for the capital was fought along the Seta River right at this bridge, with victory going to Prince Oama. In effect, the outcome of ancient Japan's largest civil war was settled here.",
         "In the middle Heian period, this bridge is the setting of the legendary Fujiwara no Hidesato — known as Tawara Toda — being asked by a beautiful woman (secretly the dragon deity of Lake Biwa) to slay a giant centipede living on Mt. Mikami. The story overlaps with the Omi Fuji entry on this site: bridge, mountain and lake are bound together as a single legend.",
         "In 1184, at the tail end of the Genpei War, the warlord Kiso Yoshinaka retreated from Kyoto toward Seta Bridge and was killed at the nearby Battle of Awazu. The scene in The Tale of the Heike where his loyal retainer Imai Kanehira 'names himself on the bridge and fights to the death' is one of that epic's most famous passages. In 1582, right after Akechi Mitsuhide killed Oda Nobunaga at the Honnoji Incident, the Mitsuhide-side commander Yamaoka Kagetaka burned this bridge in an attempt to block his own former ally's eastward advance. During the Edo period the bridge appears repeatedly in Tokaido guidebooks, and Utagawa Hiroshige's woodblock series Eight Views of Omi includes it as 'Evening Glow at Seta.'",
-        "The Japanese proverb 'isogaba maware' — 'if you're in a hurry, take the long way around' — was born from this bridge. The Muromachi-era renga poet Socho wrote: 'For a warrior, even if the ferry across Lake Biwa from Yabase is faster, if you are truly in a hurry, cross by the long Seta Bridge instead.' The point: the Yabase ferry was quick but exposed to sudden dangerous winds off Mt. Hiei, while the land route via Seta no Karahashi was longer but reliably safe. From that single poem grew a proverb still used every day in modern Japanese, teaching that when time really matters, the trusted route beats the shortcut. The bridge outside the window is the original scene behind an expression the whole country still speaks.",
-      ],
+        "The Japanese proverb 'isogaba maware' — 'if you're in a hurry, take the long way around' — was born from this bridge. The Muromachi-era renga poet Socho wrote: 'For a warrior, even if the ferry across Lake Biwa from Yabase is faster, if you are truly in a hurry, cross by the long Seta Bridge instead.' The point: the Yabase ferry was quick but exposed to sudden dangerous winds off Mt. Hiei, while the land route via Seta no Karahashi was longer but reliably safe. From that single poem grew a proverb still used every day in modern Japanese, teaching that when time really matters, the trusted route beats the shortcut. The bridge outside the window is the original scene behind an expression the whole country still speaks."
+      ]
     },
-    guideHighlight: {
-      ja: "京都駅が近づく前の数分、E席側の窓の外に川と橋を探してください。中の島を挟んで大橋・小橋が並ぶシルエットと、朱塗りの欄干が目印です。橋そのものは一瞬ですが、「あの下の川を、天下分け目の軍勢が何度も渡ろうとした」と思って眺めると、京都到着の直前の景色に別の重みが加わります。夜は橋の明かりが瀬田川の水面に映り、朱塗りの欄干の輪郭だけが闇に残ります。京都に着く前の、最後の見どころです。",
-      en: "In the last minutes before Kyoto Station, look toward Seat E for a river and a distinctive bridge. Watch for the two-span silhouette meeting at a central islet, framed by vermilion railings. The bridge itself passes in a moment, but if you view it thinking 'countless armies fought to cross this water,' the last stretch into Kyoto carries a different kind of weight. At night the bridge lights sit on the surface of the Seta River and only the outline of the vermilion railings is left against the dark — the last thing worth watching for before Kyoto.",
+    "guideHighlight": {
+      "ja": "京都駅が近づく前の数分、E席側の窓の外に川と橋を探してください。中の島を挟んで大橋・小橋が並ぶシルエットと、朱塗りの欄干が目印です。橋そのものは一瞬ですが、「あの下の川を、天下分け目の軍勢が何度も渡ろうとした」と思って眺めると、京都到着の直前の景色に別の重みが加わります。夜は橋の明かりが瀬田川の水面に映り、朱塗りの欄干の輪郭だけが闇に残ります。京都に着く前の、最後の見どころです。",
+      "en": "In the last minutes before Kyoto Station, look toward Seat E for a river and a distinctive bridge. Watch for the two-span silhouette meeting at a central islet, framed by vermilion railings. The bridge itself passes in a moment, but if you view it thinking 'countless armies fought to cross this water,' the last stretch into Kyoto carries a different kind of weight. At night the bridge lights sit on the surface of the Seta River and only the outline of the vermilion railings is left against the dark — the last thing worth watching for before Kyoto."
     },
-    minutesFromTokyo: 127, side: "E", category: "notable", confidence: "source-backed", durationSec: 3, spotting: "moderate", visibleWhenCloudy: true, scene: "lake",
-    image: "images/20250909_seta_karahashi_c91256633.jpg",
-    photoCredit: { ja: "@C91256633", en: "@C91256633", url: "https://x.com/C91256633/status/1965377316537925644" },
-    photos: [
+    "minutesFromTokyo": 127,
+    "side": "E",
+    "category": "notable",
+    "confidence": "source-backed",
+    "durationSec": 3,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "lake",
+    "image": "images/20250909_seta_karahashi_c91256633.jpg",
+    "photoCredit": {
+      "ja": "@C91256633",
+      "en": "@C91256633",
+      "url": "https://x.com/C91256633/status/1965377316537925644"
+    },
+    "photos": [
       {
-        src: "images/20250820_seta_karahashi_letus10.jpg",
-        alt: { ja: "晴れた日の瀬田の唐橋", en: "Seta no Karahashi Bridge on a clear day" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/517709224.html",
+        "src": "images/20250820_seta_karahashi_letus10.jpg",
+        "alt": {
+          "ja": "晴れた日の瀬田の唐橋",
+          "en": "Seta no Karahashi Bridge on a clear day"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/517709224.html"
       },
       {
-        src: "images/20260629_2125_seta_karahashi_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の新幹線から見える瀬田の唐橋付近", en: "Around Seta no Karahashi at night from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "夜の瀬田川を渡る光", en: "Lights crossing the Seta River at night" },
+        "src": "images/20260629_2125_seta_karahashi_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の新幹線から見える瀬田の唐橋付近",
+          "en": "Around Seta no Karahashi at night from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "夜の瀬田川を渡る光",
+          "en": "Lights crossing the Seta River at night"
+        }
       },
       {
-        src: "images/20260712_seta_karahashi_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える瀬田川と瀬田の唐橋付近", en: "Seta River and the Seta no Karahashi area from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "京都到着前、川と橋が一瞬ひらく昼の車窓", en: "A daytime glimpse of the river and bridge before Kyoto." },
+        "src": "images/20260712_seta_karahashi_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える瀬田川と瀬田の唐橋付近",
+          "en": "Seta River and the Seta no Karahashi area from Seat E"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "京都到着前、川と橋が一瞬ひらく昼の車窓",
+          "en": "A daytime glimpse of the river and bridge before Kyoto."
+        }
       },
+      {
+        "src": "images/20260914_seta-karahashi_cp0148_michikusa.jpg",
+        "alt": {
+          "ja": "夕暮れの瀬田の唐橋と川面",
+          "en": "Seta Karahashi and the river at dusk"
+        },
+        "note": {
+          "ja": "夕暮れの瀬田の唐橋と川面",
+          "en": "Seta Karahashi and the river at dusk"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-14"
+      }
     ],
-    references: [REFERENCES.setaKarahashiOtsu, REFERENCES.setaKarahashiIsogaba, REFERENCES.setaKarahashiWiki, REFERENCES.setaKarahashi],
-    map: { lat: 34.97306, lng: 135.90611, ja: "瀬田の唐橋", en: "Seta no Karahashi Bridge" },
-    viewpoint: { lat: 34.969755, lng: 135.905686 },
+    "references": [
+      {
+        "label": {
+          "ja": "大津市観光協会: 瀬田の唐橋",
+          "en": "Otsu Tourism: Seta no Karahashi Bridge"
+        },
+        "url": "https://otsu.or.jp/spot/detail/id/26"
+      },
+      {
+        "label": {
+          "ja": "びわ湖コモン: 瀬田の唐橋と『急がば回れ』の由来",
+          "en": "Biwa-ko Common: The origin of the proverb 'isogaba maware' at Seta no Karahashi (Japanese only)"
+        },
+        "url": "https://biwacommon.com/cat003/seta-no-karahashi/"
+      },
+      {
+        "label": {
+          "ja": "Wikipedia: 瀬田の唐橋",
+          "en": "Wikipedia: Seta no Karahashi Bridge"
+        },
+        "url": {
+          "ja": "https://ja.wikipedia.org/wiki/%E7%80%AC%E7%94%B0%E3%81%AE%E5%94%90%E6%A9%8B",
+          "en": "https://en.wikipedia.org/wiki/Seta_no_Karahashi"
+        }
+      },
+      {
+        "label": {
+          "ja": "新幹線の車窓から: 瀬田の唐橋車窓記事",
+          "en": "Shinkansen window blog: Seta no Karahashi window article (Japanese only)"
+        },
+        "url": "https://cotetu.seesaa.net/article/517709224.html"
+      }
+    ],
+    "map": {
+      "lat": 34.97306,
+      "lng": 135.90611,
+      "ja": "瀬田の唐橋",
+      "en": "Seta no Karahashi Bridge"
+    },
+    "viewpoint": {
+      "lat": 34.969755,
+      "lng": 135.905686
+    }
   },
   {
     id: "toji",
