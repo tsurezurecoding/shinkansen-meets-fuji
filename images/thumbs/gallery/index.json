@@ -1239,30 +1239,6 @@
     "quality": 72,
     "sha256": "155b96343471bc9d4c46a3af019e10453f2db7e54b60a43a590c75801a7c082b"
   },
-  "images/thumbs/gallery/20260904_lotte_shiga_1_michikusa.webp": {
-    "source": "images/20260904_lotte_shiga_1_michikusa.jpg",
-    "sourceSha256": "7640c192ab27bf94b47cbf2e1ac33e150ad276eac1d5170f0f740cb42b6f5754",
-    "width": 264,
-    "height": 198,
-    "quality": 72,
-    "sha256": "dfe822092f8f6ac07f6113027c9e7de7a2ba2b47d7b7804b4ee99cf2429c630f"
-  },
-  "images/thumbs/gallery/20260904_lotte_shiga_2_michikusa.webp": {
-    "source": "images/20260904_lotte_shiga_2_michikusa.jpg",
-    "sourceSha256": "22e835cde4108c0d3419afe433c984eef343ab05db63c61467dba94c753250d7",
-    "width": 264,
-    "height": 198,
-    "quality": 72,
-    "sha256": "44cde9fb490685ebc2fff3d8413f6e3e8155606baa8978606e27f93c084d5da1"
-  },
-  "images/thumbs/gallery/20260904_lotte_shiga_3_michikusa.webp": {
-    "source": "images/20260904_lotte_shiga_3_michikusa.jpg",
-    "sourceSha256": "8e608567481d7d9cdee1f74a5035ef2c76034123872081606954c5abf1973bc2",
-    "width": 264,
-    "height": 198,
-    "quality": 72,
-    "sha256": "a77df30db59b9f1202f3e925780251fc950ba9f8e3c4d35cf8fae5c0e74fa676"
-  },
   "images/thumbs/gallery/20260904_mishima_catapult_1_michikusa.webp": {
     "source": "images/20260904_mishima_catapult_1_michikusa.jpg",
     "sourceSha256": "b750f6fa0509203c9f1f790393b641d3ebba693883616aa01a13c58e61cad395",
@@ -1398,6 +1374,30 @@
     "height": 198,
     "quality": 72,
     "sha256": "8418ada25f9fd1d4a095226954bffa7b3c835aa0d33d9598f6dbd2d2e5851a9d"
+  },
+  "images/thumbs/gallery/20260919_lotte-shiga_4190_michikusa.webp": {
+    "source": "images/20260919_lotte-shiga_4190_michikusa.jpg",
+    "sourceSha256": "cc4313f885e82a34cf21522e47dbf90afe0c52f649856fd1953b77b1e6be8be5",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "5095af733a389c49739a99ee4ede3b9416640c4ab454c6835ac4d75ec39ffa80"
+  },
+  "images/thumbs/gallery/20260919_lotte-shiga_5876_michikusa.webp": {
+    "source": "images/20260919_lotte-shiga_5876_michikusa.jpg",
+    "sourceSha256": "2938cd21e846f76507c9b7c8c426242c8dd7245156037e8334ab910c0eb2bb1c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0e81750949b1cd25d58b1b78167182658d05b97c4e506f4ae6e45076717d56b7"
+  },
+  "images/thumbs/gallery/20260919_lotte-shiga_6845_michikusa.webp": {
+    "source": "images/20260919_lotte-shiga_6845_michikusa.jpg",
+    "sourceSha256": "a571e28d662620b8b31333cdd0d4d63a0a5b3ade318776ca7464c4f4a5196a1d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "99d1e3c7456d65c46a628372667d0e6f369616493b7d75e4a38cffadced13263"
   },
   "images/thumbs/gallery/20260919_odawara_castle_michikusa.webp": {
     "source": "images/20260919_odawara_castle_michikusa.jpg",

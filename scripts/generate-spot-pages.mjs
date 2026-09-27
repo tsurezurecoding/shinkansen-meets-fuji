@@ -1806,6 +1806,8 @@ function sitemapXML() {
   ];
   // 個別に更新したスポットだけ日付を上書きする。全件を一斉に書き換えないための例外表。
   const spotLastmodOverrides = {
+    "tokyo-tower": "2026-09-27",
+    "lotte-shiga": "2026-09-27",
     "hamanako": "2026-09-26",
     "edo-castle-fujimi-yagura": "2026-09-26",
     "gyoran-kannon": "2026-09-26",

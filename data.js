@@ -889,111 +889,477 @@ const SPOTS = [
   },
 
   {
-    id: "tokyo-tower",
-    icon: "🗼",
-    ja: { name: "東京タワー", area: "東京 → 品川", hook: "東京の空に、赤い塔。", story: "東京駅を出て品川へ向かう数分、E席側のビルの合間に赤い東京タワーが立ちます。窓の前後には汐留・浜松町のオフィス街、増上寺の緑、その先には品川のガラス張り高層ビル群が続き、東京の中心部を横切っている感覚が短い時間に凝縮されます。夜は東京タワーそのもののライトアップが街の中で明るく浮かび、旅の入口を印象的に演出してくれます。" },
-    en: { name: "Tokyo Tower", area: "Tokyo → Shinagawa", hook: "A red tower in the Tokyo skyline.", story: "In the first few minutes after leaving Tokyo Station for Shinagawa, the red Tokyo Tower slips between the buildings on the Seat E side. The window is framed by the Shiodome and Hamamatsucho office towers, the green of Zojo-ji Temple, and, beyond them, the glass high-rises around Shinagawa. It is a compressed cross-section of central Tokyo. At night, Tokyo Tower's own illumination glows warmly amid the city — a memorable curtain-up for the journey." },
-    pageTitle: {
-      ja: "新幹線から見える東京タワー｜E席で楽しむ都心の景色とライトアップ | 新幹線の窓",
-      en: "Tokyo Tower from the Shinkansen | Central Tokyo Skyline from Seat E",
+    "id": "tokyo-tower",
+    "icon": "🗼",
+    "ja": {
+      "name": "東京タワー",
+      "area": "東京 → 品川",
+      "hook": "ビルのすきまに、東京の顔。",
+      "story": "東京〜品川では、東京駅の赤レンガ、ビルの窓、港へ架かる橋が車窓に重なります。その中でE席側の目印になるのが、赤と白の東京タワー。放送を支えてきた塔の姿と、A席側のレインボーブリッジまで、短い区間に広がる東京の景色を紹介します。"
     },
-    pageHeading: {
-      ja: "新幹線から見える東京タワーと都心の景色",
-      en: "Tokyo Tower and the central Tokyo skyline from the Shinkansen",
+    "en": {
+      "name": "Tokyo Tower",
+      "area": "Tokyo → Shinagawa",
+      "hook": "Tokyo, between the buildings.",
+      "story": "Between Tokyo and Shinagawa, brick station buildings, glass facades and a bridge toward the bay share the skyline. Tokyo Tower is the red-and-white landmark on the Seat E side. Explore the broadcasting tower and the city around it, including Rainbow Bridge on the Seat A side."
     },
-    pageHeadingChunks: {
-      ja: ["新幹線から見える、", "東京タワーと都心の景色"],
-      en: ["Tokyo Tower and the central Tokyo skyline", "from the Shinkansen"],
+    "pageTitle": {
+      "ja": "東京タワーと東京の街並み｜東京〜品川の車窓 | 新幹線の窓",
+      "en": "Tokyo Tower and the City: Shinkansen Views Between Tokyo and Shinagawa | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "東京駅を出てすぐ、新幹線のE席側に見える東京タワー。周辺の汐留・浜松町・品川の街並みや、夜のライトアップの見え方まで、車窓の楽しみ方を写真付きで案内します。",
-      en: "Just after leaving Tokyo Station, Tokyo Tower appears from Seat E on the Shinkansen. See how it fits with the Shiodome, Hamamatsucho and Shinagawa skyline, and how it looks when illuminated at night.",
+    "pageHeading": {
+      "ja": "東京タワーと東京の街並み｜東京〜品川の車窓",
+      "en": "Tokyo Tower and the City Between Tokyo and Shinagawa"
     },
-    sectionHeading: {
-      ja: "東京駅を出てすぐ、車窓には何が映る？",
-      en: "What do you see just after leaving Tokyo Station?",
-    },
-    pageStory: {
-      ja: "東海道新幹線を東京駅から新大阪方面へ乗ると、まず車窓を横切るのは、有楽町・新橋のガラス張りビル群、汐留の高層オフィス街、そして芝公園の緑です。その合間、E席側のビルとビルのすきまに、赤と白の東京タワーが縦に立ちます。見えている時間はほんの数秒。品川へ近づくにつれ景色は再び高層ビルへ切り替わり、大井町付近では車両基地と京浜工業地帯の裏側も車窓に流れます。「東京タワーが見えた」という一瞬に、東京の中心部を通過している事実が凝縮されている区間です。",
-      en: "Right after leaving Tokyo Station on the Tokaido Shinkansen, the window fills with the glass towers of Yurakucho and Shimbashi, the high-rise offices of Shiodome, and the green of Shiba Park. In a gap between buildings on the Seat E side, the red-and-white Tokyo Tower rises vertically for just a few seconds. As the train nears Shinagawa the view returns to high-rises, and around Oimachi you glimpse the backside of the train depots and the Keihin industrial area. Catching Tokyo Tower is really about noticing how quickly the ride crosses central Tokyo.",
-    },
-    explainer: {
-      heading: { ja: "東京タワーはどこにある？周辺の街並みと合わせて", en: "Where is Tokyo Tower, and what surrounds it?" },
-      ja: [
-        "東京タワーは港区芝公園にある高さ333mの総合電波塔で、1958年に完成しました。当時は自立式鉄塔として世界一の高さで、いまでも都心に赤い塔を立たせているのは東京タワーだけです。新幹線からは線路の東側、E席から見えますが、必ずビルの合間に一瞬だけ姿を見せる形になります。",
-        "周辺の景色も車窓の主役です。汐留エリアの高層ビル群、増上寺の大屋根、六本木ヒルズ・虎ノ門ヒルズの遠景、その先に続く品川の再開発ビル群。東京タワーはそれ自体が目印であると同時に、東京都心の地形の目盛りにもなっています。「今どこを通っているか」を教えてくれる存在です。",
-        "夜は東京タワーの意匠がさらに際立ちます。通常は夏の白色・冬の暖色を切り替える『ランドマークライト』、季節や記念日にはピンクや虹色などの『ダイヤモンドヴェール』も点灯されます。当日のライトアップは日ごとに変わるので、公式サイトのライトアップ情報を旅の前に見ておくと予測しやすくなります（ページ末の参考リンク）。",
+    "pageHeadingChunks": {
+      "ja": [
+        "東京タワーと",
+        "東京の街並み",
+        "東京〜品川の車窓"
       ],
-      en: [
-        "Tokyo Tower is a 333-meter broadcasting tower in Shiba Park, Minato-ku, completed in 1958. When it opened it was the world's tallest self-supporting steel tower, and it is still the only red tower rising above central Tokyo. From the Shinkansen you see it on the east side (Seat E), always as a brief flash between buildings.",
-        "The surroundings matter too. Shiodome's high-rises, the sweeping roof of Zojo-ji Temple, the distant silhouettes of Roppongi Hills and Toranomon Hills, and the redevelopment towers around Shinagawa all pass in sequence. Tokyo Tower is both the landmark itself and a compass mark that tells you which part of central Tokyo the train is crossing at that moment.",
-        "At night the tower's design comes forward. Its baseline 'Landmark Light' switches between a cool summer white and a warm winter glow, while the seasonal 'Diamond Veil' illumination adds pinks, blues, or rainbow colors for events and anniversaries. The official illumination schedule is linked below the map.",
+      "en": []
+    },
+    "metaDescription": {
+      "ja": "東京〜品川の新幹線車窓を写真で紹介。E席側の東京タワーと東京駅、ビルの窓に映る列車、A席側のレインボーブリッジを探します。江戸城富士見櫓の記事への案内と、席側・見るタイミングも。",
+      "en": "Explore Tokyo Tower, Tokyo Station, train reflections and Rainbow Bridge through Shinkansen window photos. Find out what to look for on the Seat E and Seat A sides between Tokyo and Shinagawa."
+    },
+    "sectionHeading": {
+      "ja": "鉄道、電波、港がつくる東京",
+      "en": "A city connected by rail, radio and the bay"
+    },
+    "pageStory": {
+      "ja": "東京駅の赤レンガと、その背後に立つ高層ビル。東京〜品川の車窓には、異なる時代に街を支えてきた建物が重なります。1914年に開業した東京駅は、各方面へ延びる鉄道をつなぐ玄関口。丸の内駅舎は、今も駅として使われる歴史的な建物です。\n\n東京タワーは1958年に完成した、高さ333mの総合電波塔です。関東へ放送を届けるための高さが、街の遠くからも分かる姿をつくりました。展望台のある観光名所であると同時に、人々の日常へ情報を届けてきた塔でもあります。\n\n海側に目を向けると、レインボーブリッジが東京港を横断しています。1993年に開通したこの吊橋は、芝浦と台場を結ぶ道。東京タワーの縦の線と、橋の主塔をつなぐケーブルの曲線は、ビルが続く景色の中で異なる輪郭を描きます。",
+      "en": "Tokyo Station’s red brick sits beneath a skyline of much taller buildings. Opened in 1914 as a gateway linking railway routes, the Marunouchi station building remains part of a working station. Between Tokyo and Shinagawa, buildings from different periods sit side by side.\n\nTokyo Tower was completed in 1958 as a 333-metre broadcasting tower. Its height was chosen to carry broadcasts across the Kanto region; that practical purpose also gave Tokyo a landmark visible from far away. Alongside its observation decks, the tower has helped deliver information into everyday life.\n\nOn the bay side, Rainbow Bridge crosses Tokyo Port. Opened in 1993, the suspension bridge connects Shibaura and Daiba. The tower’s vertical outline and the bridge’s curved cables offer two very different shapes among the city’s buildings."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "窓に現れる東京の顔",
+        "en": "Tokyo landmarks to look for"
+      },
+      "ja": [
+        "東京タワーだけでなく、駅舎の屋根、ガラスに映る列車、遠くの橋にも注目してみてください。東京〜品川を中心に、品川を出た先へ続く街並みも写真で紹介します。席側は章ごとに異なります。"
       ],
+      "en": [
+        "Look beyond Tokyo Tower: station roofs, a train reflected in glass and a distant suspension bridge all reward a closer look. These photos explore Tokyo–Shinagawa, with a glimpse of the skyline just beyond Shinagawa. The seat side varies by landmark."
+      ]
     },
-    guideHighlight: {
-      ja: "東京駅を出たら、まずE席側の窓を先に見ておくのがおすすめです。汐留や浜松町のビル群のすきまに、赤い縦のシルエットが一瞬だけ差し込みます。見えなくても、その先に続く品川の高層ビル街や芝公園の緑まで含めて、東京の中心部を横切っている実感を楽しんでください。夜はライトアップされた塔が特に映えます。",
-      en: "As soon as the train leaves Tokyo Station, look toward the Seat E window early. A red vertical silhouette flashes through the gaps between the Shiodome and Hamamatsucho towers. Even if you miss the tower itself, the Shinagawa high-rise cluster and the green of Shiba Park make it clear you are crossing central Tokyo. At night, the illuminated tower stands out especially well.",
+    "guideHighlight": {
+      "ja": "東京タワーはE席側。東京発では発車後から、東京行きでは品川を出てから窓を意識すると、ビルのすきまに塔が現れます。列車別時刻と地図は東京タワーの目安です。レインボーブリッジはA席側、品川〜田町付近の別の位置で探します。東京駅の駅舎と富士見櫓は、東京発車直後・到着直前のE席側です。",
+      "en": "For Tokyo Tower, watch the Seat E side after leaving Tokyo, or after leaving Shinagawa on a Tokyo-bound train. The train times and map refer to Tokyo Tower. Rainbow Bridge is a separate view on the Seat A side between Shinagawa and Tamachi. Look for Tokyo Station and the Fujimi turret on the Seat E side just after departure from Tokyo or just before arrival."
     },
-    minutesFromTokyo: 3, side: "E", category: "classic", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "hills",
-    image: "images/20250111_tokyo_tower_letus10.jpg",
-    photoCredit: {
-      ja: "新幹線の車窓から",
-      en: "Shinkansen window blog",
-      url: "https://cotetu.seesaa.net/article/507672955.html",
-      note: { ja: "ビルの合間に見える東京タワー", en: "Tokyo Tower between the buildings" },
+    "minutesFromTokyo": 3,
+    "side": "E",
+    "category": "classic",
+    "confidence": "verified",
+    "durationSec": 5,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "hills",
+    "image": "images/20250111_tokyo_tower_letus10.jpg",
+    "photoCredit": {
+      "ja": "新幹線の車窓から",
+      "en": "Shinkansen window blog",
+      "url": "https://cotetu.seesaa.net/article/507672955.html",
+      "note": {
+        "ja": "ビルの合間に見える東京タワー",
+        "en": "Tokyo Tower between the buildings"
+      }
     },
-    photos: [
+    "photos": [
       {
-        src: "images/20260712_tokyo_tower_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える東京タワー", en: "Tokyo Tower from Seat E on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "東京を出てすぐ、ビルの間に赤い塔", en: "A red tower between buildings just after leaving Tokyo" },
+        "src": "images/20260712_tokyo_tower_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のE席側から見える東京タワー",
+          "en": "Tokyo Tower from Seat E on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "東京へ向かう夕暮れ、ビルの間に光る塔",
+          "en": "The illuminated tower between buildings on an evening approach to Tokyo"
+        }
       },
       {
-        src: "images/20260629_tokyo_tower_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の新幹線から見える東京タワー", en: "Tokyo Tower at night from the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "夜の街に、東京タワー", en: "Tokyo Tower in the night city" },
+        "src": "images/20260629_tokyo_tower_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の新幹線から見える東京タワー",
+          "en": "Tokyo Tower at night from the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "夜の街に、東京タワー",
+          "en": "Tokyo Tower in the night city"
+        }
       },
       {
-        src: "images/20260629_tokyo_tower_night_2_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜のビルの合間に見える東京タワー", en: "Tokyo Tower between buildings at night" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "ビルの合間に光る塔", en: "A lit tower between buildings" },
-      },
+        "src": "images/20260629_tokyo_tower_night_2_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜のビルの合間に見える東京タワー",
+          "en": "Tokyo Tower between buildings at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "ビルの合間に光る塔",
+          "en": "A lit tower between buildings"
+        }
+      }
     ],
-    media: {
-      heading: { ja: "動画で見る東京タワー", en: "Tokyo Tower in motion" },
-      description: {
-        ja: "見えるのはビルの合間の数秒です。どのくらいの速さで現れて消えるのか、そして夜のほうが見つけやすいことを動画で確かめられます。",
-        en: "The tower shows for only a few seconds between buildings. These videos show how fast it comes and goes — and why night is the easier time to catch it.",
+    "media": {
+      "heading": {
+        "ja": "動画で見る東京タワー",
+        "en": "Tokyo Tower in motion"
       },
-      videos: [
+      "description": {
+        "ja": "見えるのはビルの合間の数秒です。どのくらいの速さで現れて消えるのか、そして夜のほうが見つけやすいことを動画で確かめられます。",
+        "en": "The tower shows for only a few seconds between buildings. These videos show how fast it comes and goes — and why night is the easier time to catch it."
+      },
+      "videos": [
         {
-          kind: "youtube",
-          id: "37PHRoFLIhc",
-          title: { ja: "ライトアップされた東京タワーの車窓動画", en: "Window video of Tokyo Tower illuminated at night" },
-          url: "https://www.youtube.com/watch?v=37PHRoFLIhc",
-          comment: { ja: "E席側、ビルの合間に赤い塔が差し込む数秒をそのまま。", en: "From Seat E: the few seconds in which the red tower slots into a gap between buildings." },
+          "kind": "youtube",
+          "id": "37PHRoFLIhc",
+          "title": {
+            "ja": "ライトアップされた東京タワーの車窓動画",
+            "en": "Window video of Tokyo Tower illuminated at night"
+          },
+          "url": "https://www.youtube.com/watch?v=37PHRoFLIhc",
+          "comment": {
+            "ja": "E席側、ビルの合間に赤い塔が差し込む数秒をそのまま。",
+            "en": "From Seat E: the few seconds in which the red tower slots into a gap between buildings."
+          }
         },
         {
-          kind: "youtube",
-          id: "6Wl0WBldtyE",
-          title: { ja: "品川〜東京の夜景（ディズニー新幹線の車内から）", en: "Night skyline from Shinagawa to Tokyo, aboard the Sparkling Dreams Shinkansen" },
-          url: "https://www.youtube.com/watch?v=6Wl0WBldtyE",
-          comment: { ja: "ディズニー新幹線「Sparkling Dreams」の車内から、品川〜東京の夜景を通しで。", en: "Aboard the Sparkling Dreams Shinkansen: the night run from Shinagawa into Tokyo, uncut." },
-        },
+          "kind": "youtube",
+          "id": "6Wl0WBldtyE",
+          "title": {
+            "ja": "品川〜東京の夜景（ディズニー新幹線の車内から）",
+            "en": "Night skyline from Shinagawa to Tokyo, aboard the Sparkling Dreams Shinkansen"
+          },
+          "url": "https://www.youtube.com/watch?v=6Wl0WBldtyE",
+          "comment": {
+            "ja": "ディズニー新幹線「Sparkling Dreams」の車内から、品川〜東京の夜景を通しで。",
+            "en": "Aboard the Sparkling Dreams Shinkansen: the night run from Shinagawa into Tokyo, uncut."
+          }
+        }
       ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "These videos use the official YouTube embed." },
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "These videos use the official YouTube embed."
+      }
     },
-    references: [REFERENCES.tokyoTowerOfficial, REFERENCES.tokyoTowerLightup, REFERENCES.tokyoTowerBlog],
-    map: { lat: 35.65858, lng: 139.74543, ja: "東京タワー", en: "Tokyo Tower" },
-    viewpoint: { lat: 35.656460, lng: 139.757770 },
+    "references": [
+      {
+        "label": {
+          "ja": "東京タワー 公式",
+          "en": "Tokyo Tower official site"
+        },
+        "url": {
+          "ja": "https://www.tokyotower.co.jp/",
+          "en": "https://www.tokyotower.co.jp/en/"
+        }
+      },
+      {
+        "label": {
+          "ja": "東京タワー: ライトアップ情報",
+          "en": "Tokyo Tower: Illumination information"
+        },
+        "url": {
+          "ja": "https://www.tokyotower.co.jp/lightup/",
+          "en": "https://www.tokyotower.co.jp/en/lightup/"
+        }
+      },
+      {
+        "label": {
+          "ja": "新幹線の車窓から: 東京タワー車窓記事",
+          "en": "Shinkansen window blog: Tokyo Tower window article (Japanese only)"
+        },
+        "url": "https://cotetu.seesaa.net/article/507672955.html"
+      },
+      {
+        "label": {
+          "ja": "JR東日本：東京駅開業110周年",
+          "en": "JR East: Tokyo Station’s 110th anniversary (Japanese)"
+        },
+        "url": "https://media.jreast.co.jp/articles/1976"
+      },
+      {
+        "label": {
+          "ja": "東京タワー：タワペディア",
+          "en": "Tokyo Tower: Towerpedia (Japanese)"
+        },
+        "url": "https://www.tokyotower.co.jp/plan/towerpedia/"
+      },
+      {
+        "label": {
+          "ja": "首都高速：レインボーブリッジ",
+          "en": "Metropolitan Expressway: Rainbow Bridge (Japanese)"
+        },
+        "url": "https://www.shutoko.co.jp/activities/database/bridge/rainbow-bridge/"
+      }
+    ],
+    "map": {
+      "lat": 35.65858,
+      "lng": 139.74543,
+      "ja": "東京タワー",
+      "en": "Tokyo Tower"
+    },
+    "viewpoint": {
+      "lat": 35.65646,
+      "lng": 139.75777
+    },
+    "routeNote": {
+      "ja": "東京タワーはE席側、レインボーブリッジはA席側。上り・下りとも座席の文字は同じです。",
+      "en": "Tokyo Tower is on the Seat E side; Rainbow Bridge is on the Seat A side. The seat letters stay the same in both directions."
+    },
+    "pageFacts": {
+      "side": {
+        "ja": "東京タワー：E席／橋：A席",
+        "en": "Tokyo Tower: E / Rainbow Bridge: A"
+      },
+      "timing": {
+        "ja": "東京タワー：東京発約3分／橋は別地点",
+        "en": "Tokyo Tower: about 3 min from Tokyo; the bridge appears elsewhere"
+      },
+      "visibilityNote": {
+        "ja": "東京タワーの目安。列車・速度・建物によって変わります。",
+        "en": "For Tokyo Tower; varies with the train, speed and buildings."
+      }
+    },
+    "pageChapters": [
+      {
+        "id": "tokyo-station",
+        "heading": {
+          "ja": "東京駅｜赤レンガと屋根を探す",
+          "en": "Tokyo Station: red brick beyond the platforms"
+        },
+        "paragraphs": {
+          "ja": [
+            "E席側の写真中央、線路やホームの向こうに低く見える赤レンガの建物が、東京駅の丸の内駅舎です。背後の四角い高層ビルと比べると、屋根のふくらみや細かな装飾が目に留まります。駅前から見る正面全景とは異なる、鉄道の中からの眺めです。"
+          ],
+          "en": [
+            "In the centre of this Seat E-side photo, the low red-brick building beyond the tracks is Tokyo Station’s Marunouchi building. Its rounded roof and smaller details contrast with the rectangular towers behind it. This is a view from within the railway, rather than the familiar full facade seen from the station square."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260924_tokyo-station_19505_michikusa.jpg",
+            "alt": {
+              "ja": "線路とホーム越しに見える東京駅丸の内駅舎と高層ビル",
+              "en": "Tokyo Station’s Marunouchi building and high-rises beyond the tracks and platforms"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-24",
+            "note": {
+              "ja": "E席側、ホームの向こうの赤レンガ駅舎",
+              "en": "Seat E side: the red-brick station beyond the platforms"
+            }
+          }
+        ]
+      },
+      {
+        "id": "city-buildings",
+        "heading": {
+          "ja": "高層ビルと、窓に映る列車",
+          "en": "High-rises and a train reflected in glass"
+        },
+        "paragraphs": {
+          "ja": [
+            "高いビルだけでなく、線路に近い建物の窓も見どころです。有楽町マルイの写真では、横に並ぶ窓に列車の白い車体が映っています。大きな壁やガラスの帯、奥の高層ビルを見比べると、街の距離感も伝わってきます。反射は光の向きや窓との角度で変わり、いつも同じように見えるとは限りません。"
+          ],
+          "en": [
+            "The buildings closest to the tracks can be as interesting as the tallest towers. In this photo of Yurakucho Marui, the train’s pale body appears in a row of windows. Compare the broad walls, strips of glass and taller buildings behind them to get a sense of the city’s depth. Reflections depend on the light and viewing angle, so they will not look the same on every trip."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260919_yurakucho-reflection_46521_michikusa.jpg",
+            "alt": {
+              "ja": "有楽町マルイの窓に映るディズニー新幹線",
+              "en": "The Disney-themed Shinkansen reflected in the windows of Yurakucho Marui"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-19",
+            "note": {
+              "ja": "A席側、窓に映った自分の列車を探す",
+              "en": "Seat A side: look for your train in the windows"
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260804_shinagawa-skyline_46614_michikusa.jpg",
+            "alt": {
+              "ja": "品川を出た先の車窓に並ぶ高層ビル",
+              "en": "High-rise buildings seen just after leaving Shinagawa"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-08-04",
+            "note": {
+              "ja": "品川を出た先にも、高層ビルの街並みが続きます。",
+              "en": "The high-rise skyline continues just beyond Shinagawa."
+            }
+          }
+        ]
+      },
+      {
+        "id": "tokyo-tower",
+        "heading": {
+          "ja": "東京タワー｜ビルの間の赤い縦線",
+          "en": "Tokyo Tower: a red line between buildings"
+        },
+        "paragraphs": {
+          "ja": [
+            "赤と白の細い鉄塔が、ビルとビルのすきまに立ちます。塔の足元まで見渡せる場所を探すより、上部のアンテナと展望台の張り出しを目印にすると見つけやすくなります。薄暮や夜は照明が輪郭を浮かび上がらせますが、点灯の色や内容は日によって異なります。"
+          ],
+          "en": [
+            "Look for a slender red-and-white lattice tower in a gap between buildings. Rather than expecting to see its base, use the antenna and the projecting observation deck as clues. After dusk, the lights pick out its outline; colours and lighting programmes vary by date."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260712_tokyo_tower_michikusa.jpg",
+            "alt": {
+              "ja": "新幹線のE席側から見える東京タワー",
+              "en": "Tokyo Tower from Seat E on the Shinkansen"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-07-12",
+            "note": {
+              "ja": "東京へ向かう夕暮れ、ビルの間に光る塔",
+              "en": "The illuminated tower between buildings on an evening approach to Tokyo"
+            }
+          }
+        ]
+      },
+      {
+        "id": "rainbow-bridge",
+        "heading": {
+          "ja": "レインボーブリッジ｜A席側の遠景",
+          "en": "Rainbow Bridge: a distant view from Seat A"
+        },
+        "paragraphs": {
+          "ja": [
+            "昼の写真では、右奥に二つの白い主塔と、間に垂れるケーブルが見えます。手前には屋根や設備、左側には高層住宅が重なります。橋の全体や海面が大きく開ける眺めではなく、街の向こうに橋の輪郭を見つける景色です。",
+            "夜の写真では、離れて立つ主塔が白く浮かびます。東京タワーとは席側も見える位置も異なります。A席側、品川〜田町付近でビルの向こうへ目を向けてください。"
+          ],
+          "en": [
+            "In the daytime photo, two white towers and the cables curving between them appear in the right background. Roofs and equipment fill the foreground, with tall residential buildings to the left. You are looking for the bridge’s outline beyond the city, rather than an unobstructed panorama of the bridge and bay.",
+            "At night, the separated towers stand out in white. This view is on the opposite seat side from Tokyo Tower and appears at a different point. Watch the Seat A side between Shinagawa and Tamachi."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260924_rainbow-bridge_21057_michikusa.jpg",
+            "alt": {
+              "ja": "ビルと屋根の向こうに見えるレインボーブリッジの主塔とケーブル",
+              "en": "Rainbow Bridge’s towers and cables beyond buildings and roofs"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-24",
+            "note": {
+              "ja": "A席側、写真右奥の二つの主塔と曲がるケーブル",
+              "en": "Seat A side: the two bridge towers and curved cables in the right background"
+            }
+          },
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260824_rainbow-bridge-night_6198_michikusa.jpg",
+            "alt": {
+              "ja": "夜の街の向こうに白く点灯したレインボーブリッジの主塔",
+              "en": "Rainbow Bridge’s white-lit towers beyond the city at night"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-08-24",
+            "note": {
+              "ja": "A席側、夜は白く浮かぶ主塔が目印",
+              "en": "Seat A side: the white-lit towers stand out at night"
+            },
+            "timeOfDay": "night"
+          }
+        ]
+      },
+      {
+        "id": "edo-view",
+        "heading": {
+          "ja": "ビルの間に残る、江戸城の富士見櫓",
+          "en": "A glimpse of Edo Castle between buildings"
+        },
+        "paragraphs": {
+          "ja": [
+            "東京駅のすぐ南では、通りの奥に白い櫓がのぞきます。皇居の木々を背景にした白壁と、三重に重なる屋根が目印です。現代のビルの間に江戸城の建物が残る景色を、独立記事でも紹介しています。"
+          ],
+          "en": [
+            "Just south of Tokyo Station, a white turret appears at the far end of a street. Look for three tiers of roofs against the trees of the Imperial Palace grounds. Explore this remnant of Edo Castle among modern buildings in its own guide."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+            "alt": {
+              "ja": "ビルの間の通りの奥に見える江戸城富士見櫓",
+              "en": "The Fujimi turret of Edo Castle at the far end of a street between buildings"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-24",
+            "note": {
+              "ja": "E席側、通りの奥の白壁と三重の屋根",
+              "en": "Seat E side: white walls and three tiers of roofs beyond the street"
+            }
+          }
+        ],
+        "link": {
+          "route": "spots/edo-castle-fujimi-yagura.html",
+          "label": {
+            "ja": "江戸城の富士見櫓を詳しく見る",
+            "en": "Explore the Fujimi turret guide"
+          }
+        }
+      }
+    ]
   },
   {
     id: "hinataoka",
@@ -5252,108 +5618,197 @@ const SPOTS = [
     viewpoint: { lat: 35.271532, lng: 136.263314 },
   },
   {
-    id: "lotte-shiga",
-    icon: "🍬",
-    ja: {
-      name: "ロッテ滋賀工場の菓子看板",
-      area: "米原 → 京都",
-      hook: "本当にここでつくってます",
-      story: "米原を過ぎて京都へ向かうA席側、ロッテ滋賀工場の近くで、お菓子の看板が続きます。今見えるのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。滋賀工場は1985年にアイスクリーム工場として始まり、1993年には菓子も生産するようになりました。巨大な雪見だいふくは、ただ広告を出しているのではなく、本当にここでつくられている商品の看板です。見ていると、少しお腹がすいてくる車窓です。",
+    "id": "lotte-shiga",
+    "icon": "🍬",
+    "ja": {
+      "name": "ロッテ滋賀工場の菓子看板",
+      "area": "米原 → 京都",
+      "hook": "本当にここでつくってます",
+      "story": "米原を過ぎて京都へ向かうA席側、ロッテ滋賀工場の近くで、お菓子の看板が続きます。今見えるのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。滋賀工場は1985年にアイスクリーム工場として始まり、1993年には菓子も生産するようになりました。巨大な雪見だいふくは、ただ広告を出しているのではなく、本当にここでつくられている商品の看板です。見ていると、少しお腹がすいてくる車窓です。"
     },
-    en: {
-      name: "Lotte Shiga's Candy Billboards",
-      area: "Maibara → Kyoto",
-      hook: "They are really made here.",
-      story: "After Maibara toward Kyoto, candy billboards appear on the Seat A side near Lotte's Shiga plant: Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The plant began as an ice-cream factory in 1985 and added confectionery production in 1993. The giant Yukimi Daifuku is not just an advert; it points to a product really made here. It is the kind of window view that can make you hungry.",
+    "en": {
+      "name": "Lotte Shiga's Candy Billboards",
+      "area": "Maibara → Kyoto",
+      "hook": "They are really made here.",
+      "story": "After Maibara toward Kyoto, candy billboards appear on the Seat A side near Lotte's Shiga plant: Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The plant began as an ice-cream factory in 1985 and added confectionery production in 1993. The giant Yukimi Daifuku is not just an advert; it points to a product really made here. It is the kind of window view that can make you hungry."
     },
-    pageTitle: {
-      ja: "雪見だいふく、クーリッシュ｜ロッテ滋賀工場のお菓子看板 | 新幹線の窓",
-      en: "Yukimi Daifuku and Coolish | Lotte's Shiga Factory Signs",
+    "pageTitle": {
+      "ja": "雪見だいふく、クーリッシュ｜ロッテ滋賀工場のお菓子看板 | 新幹線の窓",
+      "en": "Yukimi Daifuku and Coolish | Lotte's Shiga Factory Signs"
     },
-    pageHeading: {
-      ja: "雪見だいふく、クーリッシュ——ロッテ滋賀工場のお菓子看板",
-      en: "Yukimi Daifuku and Coolish: Lotte factory signs",
+    "pageHeading": {
+      "ja": "雪見だいふく、クーリッシュ——ロッテ滋賀工場のお菓子看板",
+      "en": "Yukimi Daifuku and Coolish: Lotte factory signs"
     },
-    pageHeadingChunks: {
-      ja: ["雪見だいふく、", "クーリッシュ——", "ロッテ滋賀工場の", "お菓子看板"],
-      en: ["Yukimi Daifuku and Coolish:", "Lotte factory signs"],
+    "pageHeadingChunks": {
+      "ja": [
+        "雪見だいふく、",
+        "クーリッシュ——",
+        "ロッテ滋賀工場の",
+        "お菓子看板"
+      ],
+      "en": [
+        "Yukimi Daifuku and Coolish:",
+        "Lotte factory signs"
+      ]
     },
-    metaDescription: {
-      ja: "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見えるお菓子の看板を紹介。クーリッシュ、トッポ、ガーナチョコ、雪見だいふく。安土の車窓で、実際にここでつくられている商品の看板を楽しみます。",
-      en: "Between Maibara and Kyoto, candy billboards appear near Lotte's Shiga plant on the Seat A side: Coolish, Toppo, Ghana chocolate and Yukimi Daifuku, all made at the factory behind them.",
+    "metaDescription": {
+      "ja": "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見えるお菓子の看板を紹介。クーリッシュ、トッポ、ガーナチョコ、雪見だいふく。安土の車窓で、実際にここでつくられている商品の看板を楽しみます。",
+      "en": "Between Maibara and Kyoto, candy billboards appear near Lotte's Shiga plant on the Seat A side: Coolish, Toppo, Ghana chocolate and Yukimi Daifuku, all made at the factory behind them."
     },
-    sectionHeading: {
-      ja: "お菓子の看板はどこから？",
-      en: "Where do the candy billboards come from?",
+    "sectionHeading": {
+      "ja": "お菓子の看板はどこから？",
+      "en": "Where do the candy billboards come from?"
     },
-    pageStory: {
-      ja: "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。いま目に入るのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。巨大な雪見だいふくは、ただ広告を出しているだけではありません。この工場でつくられる商品の看板が、色と形で景色をつないでいます。1985年にアイスクリーム工場として始まり、1993年に菓子も加わった滋賀工場の前を、列車は一気に通り過ぎます。",
-      en: "On the Seat A side between Maibara and Kyoto, candy billboards appear in sequence around Lotte's Shiga plant. The signs now in view are Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The giant Yukimi Daifuku is not merely advertising nearby: it is a product made at this factory. Their colors and shapes link the landscape as the train races past the plant, which began with ice cream in 1985 and added confectionery in 1993.",
+    "pageStory": {
+      "ja": "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。いま目に入るのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。巨大な雪見だいふくは、ただ広告を出しているだけではありません。この工場でつくられる商品の看板が、色と形で景色をつないでいます。1985年にアイスクリーム工場として始まり、1993年に菓子も加わった滋賀工場の前を、列車は一気に通り過ぎます。",
+      "en": "On the Seat A side between Maibara and Kyoto, candy billboards appear in sequence around Lotte's Shiga plant. The signs now in view are Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The giant Yukimi Daifuku is not merely advertising nearby: it is a product made at this factory. Their colors and shapes link the landscape as the train races past the plant, which began with ice cream in 1985 and added confectionery in 1993."
     },
-    explainer: {
-      heading: { ja: "看板の奥にあるロッテ滋賀工場", en: "The Lotte Shiga plant behind the signs" },
-      ja: [
+    "explainer": {
+      "heading": {
+        "ja": "看板の奥にあるロッテ滋賀工場",
+        "en": "The Lotte Shiga plant behind the signs"
+      },
+      "ja": [
         "ロッテ滋賀工場は1985年にアイスクリーム工場として始まり、1993年には菓子工場も稼働しました。雪見だいふく、クーリッシュ、爽、モナ王、トッポ、パイの実など、車窓で見覚えのある名前がここでつくられています。",
         "雪見だいふくは、1980年のアイス「わたぼうし」を出発点に、マシュマロの代わりにもちでアイスを包む発想から1981年に生まれました。当時、アイスは夏に売れるものという感覚が強く、冬にも食べてもらえるアイスを考えた開発でした。看板の丸い白さは、その逆転の発想から生まれた「冬のアイス」の目印です。",
         "普通のもちなら冷凍庫で硬くなります。雪見だいふくは、低温でもふっくらやわらかく食べられるもちをつくったことで、冷たいアイスをもちで包む組み合わせを実現しました。当初は秋冬限定でしたが、2018年から通年販売に。40年以上続く商品の看板の向こうで、今も実際に製造が続いています。",
-        "車窓では工場そのものを探すより、いくつかの菓子看板を色と形の連なりとして追うのがコツです。雪見だいふくのサインを入口に、次の広告も探しているうちに区間が終わります。",
+        "車窓では工場そのものを探すより、いくつかの菓子看板を色と形の連なりとして追うのがコツです。雪見だいふくのサインを入口に、次の広告も探しているうちに区間が終わります。"
       ],
-      en: [
+      "en": [
         "Lotte's Shiga plant began as an ice-cream factory in 1985, with confectionery production added in 1993. It makes familiar products including Yukimi Daifuku, Coolish, Sou, Monaka King, Toppo and Pie no Mi.",
         "Yukimi Daifuku grew out of a 1980 ice cream called Wataboshi and launched in 1981 with ice cream wrapped in mochi rather than marshmallow. At the time ice cream was strongly associated with summer, so the aim was to make an ice cream people would choose in winter too. The rounded white sign marks that reversal of expectation.",
         "Ordinary mochi hardens in a freezer. Yukimi Daifuku developed mochi that remains soft at low temperatures, making the cold-ice-cream-and-soft-mochi combination possible. It began as an autumn-and-winter item, became available year-round in 2018, and is still made behind the billboard more than forty years after launch.",
-        "From the train, do not try to identify the factory itself. Follow the candy billboards as a sequence of colors and shapes, using the Yukimi Daifuku sign as your first clue; looking for the next sign is part of the view.",
-      ],
+        "From the train, do not try to identify the factory itself. Follow the candy billboards as a sequence of colors and shapes, using the Yukimi Daifuku sign as your first clue; looking for the next sign is part of the view."
+      ]
     },
-    guideHighlight: {
-      ja: "米原を過ぎて京都方面へ進んだら、A席側の窓でお菓子の看板の連なりを探してください。雪見だいふくのサインなど、色と形を目印にします。",
-      en: "After Maibara, heading toward Kyoto, look on the Seat A side for the run of candy billboards. Use the colors and shapes, including the Yukimi Daifuku sign, as your clues.",
+    "guideHighlight": {
+      "ja": "米原を過ぎて京都方面へ進んだら、A席側の窓でお菓子の看板の連なりを探してください。雪見だいふくのサインなど、色と形を目印にします。",
+      "en": "After Maibara, heading toward Kyoto, look on the Seat A side for the run of candy billboards. Use the colors and shapes, including the Yukimi Daifuku sign, as your clues."
     },
-    // 暫定値: 地理・写真照合による目安。実車校正待ち（分数・秒数・見やすさ）。
-    minutesFromTokyo: 119, side: "A", category: "curious", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
-    image: "images/20260904_lotte_shiga_3_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", note: { ja: "雪見だいふくの看板", en: "The Yukimi Daifuku billboard" } },
-    photos: [
+    "minutesFromTokyo": 119,
+    "side": "A",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 10,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "solar",
+    "image": "images/20260919_lotte-shiga_6845_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-09-19",
+      "note": {
+        "ja": "雪見だいふくの看板とロッテ滋賀工場",
+        "en": "The Yukimi Daifuku sign at Lotte’s Shiga plant"
+      }
+    },
+    "photos": [
       {
-        src: "images/20260904_lotte_shiga_1_michikusa.jpg",
-        alt: { ja: "ロッテ滋賀工場付近のお菓子の看板", en: "Candy signage near Lotte's Shiga plant" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        note: { ja: "工場付近の菓子看板", en: "Candy signage around the plant" },
-      },
-      {
-        src: "images/20260904_lotte_shiga_2_michikusa.jpg",
-        alt: { ja: "続けて現れるお菓子の看板", en: "A row of candy billboards" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        note: { ja: "お菓子の看板が続く", en: "A row of candy billboards" },
-      },
-      {
-        src: "images/20260906_lotte_shiga_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の車窓に流れるロッテ滋賀工場のお菓子看板", en: "Lotte Shiga's candy billboards passing by at night" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-06",
-        note: { ja: "夜も明るく浮かぶお菓子の看板", en: "Candy billboards glowing brightly after dark" },
-      },
-    ],
-    media: {
-      heading: { ja: "動画で見るロッテ滋賀工場", en: "Lotte Shiga plant in motion" },
-      description: { ja: "ロッテ滋賀工場付近で続けて現れるお菓子の看板を、車窓動画で見られます。", en: "See the series of candy billboards near Lotte's Shiga plant from the train window." },
-      videos: [
-        {
-          kind: "youtube",
-          id: "F9ZZdSjRlGA",
-          title: { ja: "ロッテ滋賀工場", en: "ロッテ滋賀工場" },
-          url: "https://www.youtube.com/watch?v=F9ZZdSjRlGA",
+        "src": "images/20260919_lotte-shiga_4190_michikusa.jpg",
+        "alt": {
+          "ja": "クーリッシュ、トッポ、ガーナの看板",
+          "en": "Coolish, Toppo and Ghana signs"
         },
-      ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
-    },
-    references: [
-      { label: { ja: "ロッテ公式: おかしの学校・滋賀工場", en: "Lotte official: Okashi School / Shiga plant (Japanese)" }, url: "https://www.lotte.co.jp/kengaku/" },
-      { label: { ja: "ロッテ公式: 沿革", en: "Lotte official: company history (Japanese)" }, url: "https://www.lotte.co.jp/corporate/about/history/index.html" },
-      { label: { ja: "ロッテ公式: 雪見だいふくのもち", en: "Lotte official: the mochi in Yukimi Daifuku (Japanese)" }, url: "https://www.lotte.co.jp/entertainment/shallwelotte/product/sozai/mochi/" },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "クーリッシュ、トッポ、ガーナの看板",
+          "en": "Coolish, Toppo and Ghana signs"
+        }
+      },
+      {
+        "src": "images/20260919_lotte-shiga_5876_michikusa.jpg",
+        "alt": {
+          "ja": "ガーナと雪見だいふくの看板を一緒に",
+          "en": "Ghana and Yukimi Daifuku signs together"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "ガーナと雪見だいふくの看板を一緒に",
+          "en": "Ghana and Yukimi Daifuku signs together"
+        }
+      },
+      {
+        "src": "images/20260906_lotte_shiga_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の車窓に流れるロッテ滋賀工場のお菓子看板",
+          "en": "Lotte Shiga's candy billboards passing by at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-06",
+        "note": {
+          "ja": "夜も明るく浮かぶお菓子の看板",
+          "en": "Candy billboards glowing brightly after dark"
+        }
+      }
     ],
-    map: { lat: 35.12811, lng: 136.15554, ja: "ロッテ滋賀工場", en: "Lotte Shiga plant" },
+    "media": {
+      "heading": {
+        "ja": "動画で見るロッテ滋賀工場",
+        "en": "Lotte Shiga plant in motion"
+      },
+      "description": {
+        "ja": "ロッテ滋賀工場付近で続けて現れるお菓子の看板を、車窓動画で見られます。",
+        "en": "See the series of candy billboards near Lotte's Shiga plant from the train window."
+      },
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "F9ZZdSjRlGA",
+          "title": {
+            "ja": "ロッテ滋賀工場",
+            "en": "ロッテ滋賀工場"
+          },
+          "url": "https://www.youtube.com/watch?v=F9ZZdSjRlGA"
+        }
+      ],
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "This video uses the official YouTube embed."
+      }
+    },
+    "references": [
+      {
+        "label": {
+          "ja": "ロッテ公式: おかしの学校・滋賀工場",
+          "en": "Lotte official: Okashi School / Shiga plant (Japanese)"
+        },
+        "url": "https://www.lotte.co.jp/kengaku/"
+      },
+      {
+        "label": {
+          "ja": "ロッテ公式: 沿革",
+          "en": "Lotte official: company history (Japanese)"
+        },
+        "url": "https://www.lotte.co.jp/corporate/about/history/index.html"
+      },
+      {
+        "label": {
+          "ja": "ロッテ公式: 雪見だいふくのもち",
+          "en": "Lotte official: the mochi in Yukimi Daifuku (Japanese)"
+        },
+        "url": "https://www.lotte.co.jp/entertainment/shallwelotte/product/sozai/mochi/"
+      }
+    ],
+    "map": {
+      "lat": 35.12811,
+      "lng": 136.15554,
+      "ja": "ロッテ滋賀工場",
+      "en": "Lotte Shiga plant"
+    }
   },
   {
     id: "kannonji-castle",

@@ -289,6 +289,26 @@ function projectExplainer(spot, lang) {
   };
 }
 
+function projectChapters(spot, lang) {
+  const ids = new Set();
+  return spot.pageChapters.map((chapter) => {
+    if (!/^[a-z][a-z0-9-]+$/.test(chapter.id) || ids.has(chapter.id)) throw new Error(`Invalid article chapter for ${spot.id}`);
+    ids.add(chapter.id);
+    const heading = localized(chapter.heading, lang);
+    const paragraphs = chapter.paragraphs?.[lang];
+    if (!heading || !Array.isArray(paragraphs) || !paragraphs.length) throw new Error(`Missing chapter copy for ${spot.id}/${lang}`);
+    const photos = (chapter.photos || []).map((photo, index) => {
+      if (!/^images\/[a-zA-Z0-9_-]+\.(jpg|png|webp)$/.test(photo.src) || !fs.existsSync(path.join(appDir, photo.src))) throw new Error(`Missing chapter photo: ${photo.src}`);
+      if (!localized(photo.alt, lang) || !creditText(photo.credit, lang)) throw new Error(`Missing chapter photo metadata: ${photo.src}/${lang}`);
+      if (!(photo.width > 0 && photo.height > 0)) throw new Error(`Missing chapter photo dimensions: ${photo.src}`);
+      return { ...projectPhoto(photo, spot, lang, index), width: photo.width, height: photo.height };
+    });
+    const link = chapter.link;
+    if (link && (!/^spots\/[a-z0-9-]+\.html$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
+    return { id: chapter.id, heading, paragraphs, photos, ...(link ? { link: { route: (lang === "en" ? "en/" : "") + link.route, label: localized(link.label, lang) } } : {}) };
+  });
+}
+
 function projectArticleImage(spot, lang) {
   const image = spot.articleImage || (spot.photos || []).find((item) => item.role === "reference");
   if (!image?.src) return null;
@@ -613,10 +633,12 @@ function projectPage(spot, lang) {
   if (spot.id === "hamanako" && explainer && inline[0]) explainer.figure = { ...inline[0], caption: inline[0].note, afterParagraph: 0 };
   const map = projectMap(spot, lang);
   const guideHighlight = localized(spot.guideHighlight, lang) || sceneGuideText(spot, lang, data.name);
+  const readingLayout = readingLayoutFor(spot, lang);
+  if (spot.pageFacts?.visibilityNote && readingLayout) readingLayout.visibility.note = localized(spot.pageFacts.visibilityNote, lang);
   return {
     id: String(spot.id),
     lang,
-    readingLayout: readingLayoutFor(spot, lang),
+    readingLayout,
     name: String(data.name || spot.id),
     area: String(data.area || ""),
     hook: String(data.hook || ""),
@@ -626,10 +648,10 @@ function projectPage(spot, lang) {
     story: localized(spot.pageStory, lang) || data.story || "",
     minutes: Number(spot.minutesFromTokyo),
     side: String(spot.side || ""),
-    sideLabel: sideLabel(spot, lang),
+    sideLabel: localized(spot.pageFacts?.side, lang) || sideLabel(spot, lang),
     // 見やすさ。未評価は載せない（推測値と実車観察を混ぜないため）。
     spotting: spot.spotting || null,
-    facts: { labels: UI[lang].facts, timing: UI[lang].minutes(spot.minutesFromTokyo), photoUnit: UI[lang].photoUnit },
+    facts: { labels: UI[lang].facts, timing: localized(spot.pageFacts?.timing, lang) || UI[lang].minutes(spot.minutesFromTokyo), photoUnit: UI[lang].photoUnit },
     photos: projectedPhotos,
     hero: projectedPhotos[0] || null,
     gallery,
@@ -641,6 +663,7 @@ function projectPage(spot, lang) {
     routeNote: routeNote(spot, lang, data),
     fujiGuide: projectFujiGuide(spot, lang),
     explainer,
+    ...(spot.pageChapters ? { chapters: projectChapters(spot, lang) } : {}),
     referenceImage: projectArticleImage(spot, lang),
     sharedGuide: projectSharedGuide(spot, lang),
     guideNotice: projectGuideNotice(spot, lang),
