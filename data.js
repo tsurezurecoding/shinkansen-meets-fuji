@@ -904,17 +904,17 @@ const SPOTS = [
       "story": "Between Tokyo and Shinagawa, brick station buildings, glass facades and a bridge toward the bay share the skyline. Tokyo Tower is the red-and-white landmark on the Seat E side. Explore the broadcasting tower and the city around it, including Rainbow Bridge on the Seat A side."
     },
     "pageTitle": {
-      "ja": "東京タワーと東京の街並み｜東京〜品川の車窓 | 新幹線の窓",
-      "en": "Tokyo Tower and the City: Shinkansen Views Between Tokyo and Shinagawa | Shinkansen Window"
+      "ja": "東京タワーと都心の風景｜東京〜品川の車窓 | 新幹線の窓",
+      "en": "Tokyo Tower and City Views: Tokyo to Shinagawa | Shinkansen Window"
     },
     "pageHeading": {
-      "ja": "東京タワーと東京の街並み｜東京〜品川の車窓",
-      "en": "Tokyo Tower and the City Between Tokyo and Shinagawa"
+      "ja": "東京タワーと都心の風景｜東京〜品川の車窓",
+      "en": "Tokyo Tower and City Views: Tokyo to Shinagawa"
     },
     "pageHeadingChunks": {
       "ja": [
         "東京タワーと",
-        "東京の街並み",
+        "都心の風景｜",
         "東京〜品川の車窓"
       ],
       "en": []
@@ -937,10 +937,10 @@ const SPOTS = [
         "en": "Tokyo landmarks to look for"
       },
       "ja": [
-        "東京タワーだけでなく、駅舎の屋根、ガラスに映る列車、遠くの橋にも注目してみてください。東京〜品川を中心に、品川を出た先へ続く街並みも写真で紹介します。席側は章ごとに異なります。"
+        "東京駅から品川へ向かう順に、駅舎の屋根、ビルの窓に映る列車、塔や遠くの橋を紹介します。最後に、品川を出た先の高層ビルも添えました。席側は章ごとに異なります。"
       ],
       "en": [
-        "Look beyond Tokyo Tower: station roofs, a train reflected in glass and a distant suspension bridge all reward a closer look. These photos explore Tokyo–Shinagawa, with a glimpse of the skyline just beyond Shinagawa. The seat side varies by landmark."
+        "Follow the views from Tokyo Station toward Shinagawa: station roofs, your train reflected in glass, Tokyo Tower and a distant bridge. A final photo shows the skyline just beyond Shinagawa. The seat side varies by landmark."
       ]
     },
     "guideHighlight": {
@@ -1014,6 +1014,115 @@ const SPOTS = [
         "note": {
           "ja": "ビルの合間に光る塔",
           "en": "A lit tower between buildings"
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "src": "images/20260924_tokyo-station_19505_michikusa.jpg",
+        "alt": {
+          "ja": "線路とホーム越しに見える東京駅丸の内駅舎と高層ビル",
+          "en": "Tokyo Station’s Marunouchi building and high-rises beyond the tracks and platforms"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "E席側、ホームの向こうの赤レンガ駅舎",
+          "en": "Seat E side: the red-brick station beyond the platforms"
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "src": "images/20260919_yurakucho-reflection_46521_michikusa.jpg",
+        "alt": {
+          "ja": "有楽町マルイの窓に映るディズニー新幹線",
+          "en": "The Disney-themed Shinkansen reflected in the windows of Yurakucho Marui"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "A席側、窓に映った自分の列車を探す",
+          "en": "Seat A side: look for your train in the windows"
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "src": "images/20260804_shinagawa-skyline_46614_michikusa.jpg",
+        "alt": {
+          "ja": "品川を出た先の車窓に並ぶ高層ビル",
+          "en": "High-rise buildings seen just after leaving Shinagawa"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "品川を出た先にも、高層ビルの街並みが続きます。",
+          "en": "The high-rise skyline continues just beyond Shinagawa."
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "src": "images/20260924_rainbow-bridge_21057_michikusa.jpg",
+        "alt": {
+          "ja": "ビルと屋根の向こうに見えるレインボーブリッジの主塔とケーブル",
+          "en": "Rainbow Bridge’s towers and cables beyond buildings and roofs"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "A席側、写真右奥の二つの主塔と曲がるケーブル",
+          "en": "Seat A side: the two bridge towers and curved cables in the right background"
+        }
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "src": "images/20260824_rainbow-bridge-night_6198_michikusa.jpg",
+        "alt": {
+          "ja": "夜の街の向こうに白く点灯したレインボーブリッジの主塔",
+          "en": "Rainbow Bridge’s white-lit towers beyond the city at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-24",
+        "note": {
+          "ja": "A席側、夜は白く浮かぶ主塔が目印",
+          "en": "Seat A side: the white-lit towers stand out at night"
+        },
+        "timeOfDay": "night"
+      },
+      {
+        "width": 1920,
+        "height": 1080,
+        "src": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+        "alt": {
+          "ja": "ビルの間の通りの奥に見える江戸城富士見櫓",
+          "en": "The Fujimi turret of Edo Castle at the far end of a street between buildings"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "E席側、通りの奥の白壁と三重の屋根",
+          "en": "Seat E side: white walls and three tiers of roofs beyond the street"
         }
       }
     ],
@@ -1174,10 +1283,52 @@ const SPOTS = [
         ]
       },
       {
+        "id": "edo-view",
+        "heading": {
+          "ja": "ビルの間に残る、江戸城の富士見櫓",
+          "en": "A glimpse of Edo Castle between buildings"
+        },
+        "paragraphs": {
+          "ja": [
+            "東京駅のすぐ南では、通りの奥に白い櫓がのぞきます。皇居の木々を背景にした白壁と、三重に重なる屋根が目印です。現代のビルの間に江戸城の建物が残る景色を、独立記事でも紹介しています。"
+          ],
+          "en": [
+            "Just south of Tokyo Station, a white turret appears at the far end of a street. Look for three tiers of roofs against the trees of the Imperial Palace grounds. Explore this remnant of Edo Castle among modern buildings in its own guide."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+            "alt": {
+              "ja": "ビルの間の通りの奥に見える江戸城富士見櫓",
+              "en": "The Fujimi turret of Edo Castle at the far end of a street between buildings"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-24",
+            "note": {
+              "ja": "E席側、通りの奥の白壁と三重の屋根",
+              "en": "Seat E side: white walls and three tiers of roofs beyond the street"
+            }
+          }
+        ],
+        "link": {
+          "route": "spots/edo-castle-fujimi-yagura.html",
+          "label": {
+            "ja": "江戸城の富士見櫓を詳しく見る",
+            "en": "Explore the Fujimi turret guide"
+          }
+        }
+      },
+      {
         "id": "city-buildings",
         "heading": {
-          "ja": "高層ビルと、窓に映る列車",
-          "en": "High-rises and a train reflected in glass"
+          "ja": "有楽町｜ビルの窓に映る列車",
+          "en": "Yurakucho: your train reflected in glass"
         },
         "paragraphs": {
           "ja": [
@@ -1204,24 +1355,6 @@ const SPOTS = [
             "note": {
               "ja": "A席側、窓に映った自分の列車を探す",
               "en": "Seat A side: look for your train in the windows"
-            }
-          },
-          {
-            "width": 1920,
-            "height": 1080,
-            "src": "images/20260804_shinagawa-skyline_46614_michikusa.jpg",
-            "alt": {
-              "ja": "品川を出た先の車窓に並ぶ高層ビル",
-              "en": "High-rise buildings seen just after leaving Shinagawa"
-            },
-            "credit": {
-              "ja": "michikusa",
-              "en": "michikusa"
-            },
-            "date": "2026-08-04",
-            "note": {
-              "ja": "品川を出た先にも、高層ビルの街並みが続きます。",
-              "en": "The high-rise skyline continues just beyond Shinagawa."
             }
           }
         ]
@@ -1318,46 +1451,39 @@ const SPOTS = [
         ]
       },
       {
-        "id": "edo-view",
+        "id": "beyond-shinagawa",
         "heading": {
-          "ja": "ビルの間に残る、江戸城の富士見櫓",
-          "en": "A glimpse of Edo Castle between buildings"
+          "ja": "品川を出た先にも、都心の風景",
+          "en": "Beyond Shinagawa: the skyline continues"
         },
         "paragraphs": {
           "ja": [
-            "東京駅のすぐ南では、通りの奥に白い櫓がのぞきます。皇居の木々を背景にした白壁と、三重に重なる屋根が目印です。現代のビルの間に江戸城の建物が残る景色を、独立記事でも紹介しています。"
+            "品川を出た先にも、高層ビルの風景が続きます。"
           ],
           "en": [
-            "Just south of Tokyo Station, a white turret appears at the far end of a street. Look for three tiers of roofs against the trees of the Imperial Palace grounds. Explore this remnant of Edo Castle among modern buildings in its own guide."
+            "The high-rise skyline continues just beyond Shinagawa."
           ]
         },
         "photos": [
           {
             "width": 1920,
             "height": 1080,
-            "src": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+            "src": "images/20260804_shinagawa-skyline_46614_michikusa.jpg",
             "alt": {
-              "ja": "ビルの間の通りの奥に見える江戸城富士見櫓",
-              "en": "The Fujimi turret of Edo Castle at the far end of a street between buildings"
+              "ja": "品川を出た先の車窓に並ぶ高層ビル",
+              "en": "High-rise buildings seen just after leaving Shinagawa"
             },
             "credit": {
               "ja": "michikusa",
               "en": "michikusa"
             },
-            "date": "2026-09-24",
+            "date": "2026-08-04",
             "note": {
-              "ja": "E席側、通りの奥の白壁と三重の屋根",
-              "en": "Seat E side: white walls and three tiers of roofs beyond the street"
+              "ja": "品川を出た先にも、高層ビルの街並みが続きます。",
+              "en": "The high-rise skyline continues just beyond Shinagawa."
             }
           }
-        ],
-        "link": {
-          "route": "spots/edo-castle-fujimi-yagura.html",
-          "label": {
-            "ja": "江戸城の富士見櫓を詳しく見る",
-            "en": "Explore the Fujimi turret guide"
-          }
-        }
+        ]
       }
     ]
   },

@@ -403,7 +403,7 @@ async function runThinValidator() {
           // Multi-view articles need seat/timing guidance per landmark; single-view pages remain concise.
           if (!output.includes(escape(page.guide.highlight))) fail(`${relativeFile}: multi-view boarding guidance missing`);
           for (const chapter of page.chapters) {
-            if (output.split(`id="${chapter.id}"`).length !== 2 || !output.includes(`href="#${chapter.id}"`)) fail(`${relativeFile}: article chapter anchor missing or duplicated: ${chapter.id}`);
+            if (output.split(`id="${chapter.id}"`).length !== 2) fail(`${relativeFile}: article chapter anchor missing or duplicated: ${chapter.id}`);
             for (const photo of chapter.photos) {
               if (!output.includes(`data-zoom-src="${prefix}${photo.src}"`) || !output.includes(`src="${prefix}${photo.thumb}"`)) fail(`${relativeFile}: article photo missing: ${photo.src}`);
               if (!fs.existsSync(path.join(appDir, photo.src)) || !fs.existsSync(path.join(appDir, photo.thumb))) fail(`${relativeFile}: article photo asset missing: ${photo.src}`);

@@ -640,10 +640,7 @@
 
   function pageChaptersHTML(page, rootPath, lang) {
     if (!page.chapters) return "";
-    var contents = '<nav aria-label="' + (lang === "en" ? 'Views in this guide' : 'このページの景色') + '"><ul>' + page.chapters.map(function (chapter) {
-      return '<li><a href="#' + escapeHTML(chapter.id) + '">' + escapeHTML(chapter.heading) + '</a></li>';
-    }).join('') + '</ul></nav>';
-    return contents + page.chapters.map(function (chapter) {
+    return page.chapters.map(function (chapter) {
       var heading = lang === "ja" ? chapter.heading.split('｜').map(function (text) { return '<span class="copy-chunk">' + escapeHTML(text) + '</span>'; }).join(' ') : escapeHTML(chapter.heading);
       return '<section class="spot-page-section" id="' + escapeHTML(chapter.id) + '"><h3>' + heading + '</h3>' +
         chapter.paragraphs.map(function (text) { return '<p>' + escapeHTML(text) + '</p>'; }).join('') +
