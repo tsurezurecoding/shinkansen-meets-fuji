@@ -36,6 +36,7 @@ const pairs = [
   ["/hanabi.html", "/en/hanabi.html"],
   ["/yakei.html", "/en/yakei.html"],
   ["/window-moments.html", "/en/window-moments.html"],
+  ["/reflections.html", "/en/reflections.html"],
   ["/727-collection.html", "/en/727-collection.html"]
 ];
 

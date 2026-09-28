@@ -84,6 +84,16 @@ function localizeEnglishRail(html) {
           </span>
         </a>`;
   let result = html.replace(/[ \t]*<!-- en-arenani-card[^>]*-->[\s\S]*?<!-- \/en-arenani-card -->\n?/g, arenaniCard + "\n");
+  // 反射鉄の特集カードは、日本語の説明文ごと英語のカードに差し替える。
+  const reflectionsCard = `        <a class="journey-intent-card journey-intent-family" href="en/reflections.html" data-cta-track="zukan_theme_click" data-cta-id="reflections">
+          <img src="images/reflections/shinagawa-1.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>REFLECTIONS</small>
+            <strong>Your train in the glass</strong>
+            <span>Where your own Shinkansen shows up in trackside glass.</span>
+          </span>
+        </a>`;
+  result = result.replace(/[ \t]*<!-- en-reflections-card[^>]*-->[\s\S]*?<!-- \/en-reflections-card -->\n?/g, reflectionsCard + "\n");
   copy.forEach(([ja, en]) => { result = result.replaceAll(ja, en); });
   routes.forEach(([ja, en]) => { result = result.replaceAll(`href="${ja}"`, `href="${en}"`); });
   result = result

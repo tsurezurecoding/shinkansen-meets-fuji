@@ -15,6 +15,11 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 const contentFiles = [
   "hero-cinema.js", "hero-cinema.css",
   ...await walkFiles("promo", p => /\.(?:html|js|css|webp|svg)$/.test(p)),
+  "reflections.html",
+  "en/reflections.html",
+  "reflections.css",
+  "images/og-reflection.jpg",
+  ...await walkFiles("images/reflections", p => /\.webp$/.test(p)),
   "ferris-wheels.html",
   "en/ferris-wheels.html",
   "ferris-wheels.css",

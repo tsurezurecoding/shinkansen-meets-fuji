@@ -249,6 +249,7 @@
     "hanabi.html": { en: true },
     "yakei.html": { en: true },
     "window-moments.html": { en: true },
+    "reflections.html": { en: true },
     // 英語専用。JR Passはインバウンド固有の文脈で日本語版を作る理由がないため、
     // en:false で言語スイッチャーごと隠す（対応する日本語URLが存在しない）。
     "jr-pass-fuji.html": { en: false },

@@ -469,7 +469,7 @@ async function runThinValidator() {
   if (expectedPages.length !== expectedPageCount || currentPages.length !== expectedPageCount) fail(`expected exactly ${expectedPageCount} spot pages, found ${currentPages.length}`);
   if (renderedVideoPageCount !== expectedVideoPageCount) fail(`expected ${expectedVideoPageCount} video pages from the structured source, found ${renderedVideoPageCount}`);
 
-  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "ferris-wheels.html", "castles.html", "727-collection.html", "arenani.html"]) {
+  for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "ferris-wheels.html", "castles.html", "727-collection.html", "arenani.html", "reflections.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
     assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });

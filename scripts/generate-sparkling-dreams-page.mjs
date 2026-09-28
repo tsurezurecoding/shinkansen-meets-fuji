@@ -192,7 +192,8 @@ ${t.sd_post_embed3}
 
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html');
-  const html = render(lang);
+  // COPYの中に固定で書かれた language-router.js の ?v= を、実ファイルのハッシュに揃える。
+  const html = render(lang).replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('sparkling-dreams page out of date: ' + dest);
   } else {
