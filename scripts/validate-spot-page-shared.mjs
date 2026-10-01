@@ -378,7 +378,7 @@ async function runThinValidator() {
       const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
       if (new Set(sharedChapterIds).size !== sharedChapterIds.length) fail(`${relativeFile}: shared guide chapter ids must be unique`);
       for (const chapter of page.sharedGuide || []) {
-        if (!chapter.id || !chapter.heading || !chapter.hook || !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length) fail(`${relativeFile}: shared guide chapter contract is incomplete`);
+        if (!chapter.id || !chapter.heading || typeof chapter.hook !== "string" || !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length) fail(`${relativeFile}: shared guide chapter contract is incomplete`);
         if (!output.includes(`id="${escape(chapter.id)}"`)) fail(`${relativeFile}: shared guide chapter is missing from rendered output: ${chapter.id}`);
       }
       if (page.guideNotice) {
@@ -494,7 +494,7 @@ async function runThinValidator() {
     if (id === "ibuki") {
       const seatAChapter = page.sharedGuide.find((chapter) => chapter.id === "ibuki-seat-a");
       const seatASection = result.html.match(/<section class="spot-page-section" id="ibuki-seat-a">[\s\S]*?<\/section>/)?.[0] || "";
-      if (seatAChapter?.eyebrow !== "FROM SEAT A" || seatAChapter.paragraphs.length !== 1 || !seatASection.includes("FROM SEAT A") || !seatASection.includes('class="spot-page-inline-figure"') || !seatASection.includes("20260816_ibuki-seat-a_michikusa.jpg") || /GPS|provisional|暫定|こだま836/.test(seatASection)) fail(`Ibuki Seat A article chapter failed (${lang})`);
+      if (seatAChapter?.eyebrow !== "FROM SEAT A" || seatAChapter.hook !== "" || seatAChapter.paragraphs.length !== 1 || !seatASection.includes("FROM SEAT A") || !seatASection.includes('class="spot-page-inline-figure"') || !seatASection.includes("20260816_ibuki-seat-a_michikusa.jpg") || /A席にも、伊吹山|Ibuki appears from Seat A|GPS|provisional|暫定|こだま836/.test(seatASection)) fail(`Ibuki Seat A article chapter failed (${lang})`);
     }
     if (id === "hikone-castle" && (page.media.videos.length !== 1 || !result.html.includes("V0t-dPBWI4Q"))) fail("Hikone Castle video contract failed");
     // 写真見出しは言語ごとに別文字列。日本語の部分一致を英語ページへ当てない。

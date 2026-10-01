@@ -384,7 +384,7 @@ function projectSharedGuide(spot, lang) {
       id: chapter.guideAnchor || chapter.id,
       heading: localized(chapter.sharedGuideHeading, lang) || data.name,
       eyebrow: localized(chapter.sharedGuideEyebrow, lang) || "ANOTHER VIEW",
-      hook: data.hook || "",
+      hook: chapter.sharedGuideShowHook === false ? "" : data.hook || "",
       ...(chapter.sharedGuideFigure ? { figure: projectPhoto(photoItems(chapter)[0], chapter, lang, 0) } : {}),
       paragraphs: Array.isArray(paragraphs) && paragraphs.length ? paragraphs : [data.story || ""],
     };

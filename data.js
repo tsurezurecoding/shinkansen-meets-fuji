@@ -5848,6 +5848,7 @@ const SPOTS = [
     sharedGuideHeading: { ja: "A席からも見える伊吹山", en: "Mt. Ibuki from Seat A" },
     sharedGuideEyebrow: "FROM SEAT A",
     sharedGuideFigure: true,
+    sharedGuideShowHook: false,
     sharedGuideStory: {
       ja: ["米原に近づくころ、線路が曲がる場所ではA席側からも伊吹山が見えます。田んぼと低い山並みの奥、写真の左端にある採石跡の白っぽい山を探してください。E席側で大きく見る伊吹山とは、見える地点も角度も異なります。"],
       en: ["Near Maibara, the curve in the tracks brings Mt. Ibuki into view from Seat A. Look beyond the fields and lower hills for the mountain with a pale quarry scar at the far left of the photograph. This is a different angle from the larger Seat E view."],
