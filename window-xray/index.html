@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="新幹線の窓から撮った夕暮れの車窓と、同じ場所・同じ向きの3D模型をくらべて、あのビルの名前を答え合わせする試作。">
+  <title>窓の答え合わせ｜あのビル、なんだった？｜新幹線の窓</title>
+  <link rel="icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="window.css">
+</head>
+<body class="win-page">
+  <a class="skip-link" href="#stage">車窓へ</a>
+  <header class="topbar">
+    <a class="brand" href="../index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a>
+    <nav class="top-nav" aria-label="サイトナビゲーション">
+      <a href="../start.html">列車選択</a><a href="../live/">音声ガイド</a><a href="../zukan.html">特集</a><a class="top-nav-overflow" href="../zukan.html#gallery">車窓一覧</a><a href="../journal.html">スタンプ帖</a>
+      <details class="top-nav-more"><summary>もっと見る</summary><div class="top-nav-menu"><a class="top-nav-menu-compact" href="../zukan.html#gallery">車窓一覧</a><a href="../guide.html">富士山を見る</a><a href="../lp.html">新幹線の窓とは</a><a href="../mieru.html">見える予報β</a><a href="../sumie.html">墨絵車窓</a><a href="../somato.html">車窓走馬灯</a><a href="../references.html">リンク集</a><a href="../contact.html">お問い合わせ</a><a href="../privacy.html">プライバシーポリシー</a></div></details>
+    </nav>
+  </header>
+
+  <main class="win-main">
+    <section class="win-intro">
+      <div>
+        <p class="win-eyebrow">車窓の答え合わせ <span>WINDOW X-RAY</span></p>
+        <h1><span class="copy-chunk">あのビル、</span><span class="copy-chunk">なんだった？</span></h1>
+        <p class="win-lead"><span class="copy-chunk">本物の車窓に、</span><span class="copy-chunk">同じ向きの街の模型を重ねる。</span><span class="copy-chunk">気になるビルを押せば、</span><span class="copy-chunk">答え合わせ。</span></p>
+      </div>
+      <dl class="win-ride-meta" aria-label="この車窓について">
+        <div><dt>列車</dt><dd>こだま836号</dd></div>
+        <div><dt>区間</dt><dd>品川 → 東京</dd></div>
+        <div><dt>窓</dt><dd>E席・西向き</dd></div>
+        <div><dt>撮影</dt><dd>8月16日 18:43</dd></div>
+        <p class="win-tag">操作できる試作</p>
+      </dl>
+    </section>
+
+    <section class="win-player" aria-label="車窓と模型">
+      <div class="win-modebar">
+        <div class="win-modes" role="group" aria-label="見せ方">
+          <button type="button" data-mode="ghost" aria-pressed="true"><b>光る線</b><small>模型を重ねる</small></button>
+          <button type="button" data-mode="xray" aria-pressed="false"><b>めくる</b><small>窓の向こうの模型</small></button>
+          <button type="button" data-mode="tags" aria-pressed="false"><b>名札</b><small>名前だけ</small></button>
+          <button type="button" data-mode="side" aria-pressed="false"><b>並べる</b><small>左右でくらべる</small></button>
+        </div>
+      </div>
+
+      <div class="win-body">
+        <div class="win-stage-col">
+          <div id="stage" class="win-stage" tabindex="0" aria-label="車窓。建物をタップすると答え合わせできます。">
+            <div id="frames" class="win-frames">
+              <div id="frameVideo" class="win-frame win-frame-video">
+                <video id="video" class="win-video" playsinline muted preload="auto" poster="media/ride-e-dusk-poster.jpg" src="media/ride-e-dusk.mp4"></video>
+              </div>
+              <div id="frameModel" class="win-frame win-frame-model">
+                <div id="model" class="win-model"></div>
+              </div>
+            </div>
+            <div id="wipe" class="win-wipe" role="slider" tabindex="0" aria-label="透視の境目" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span class="win-wipe-grip" aria-hidden="true"><i></i></span><span class="win-wipe-labels" aria-hidden="true"><b>模型</b><b>実写</b></span></div>
+            <div id="tags" class="win-tags" aria-hidden="true"></div>
+            <svg id="fx" class="win-fx" aria-hidden="true"></svg>
+            <div class="win-hud" aria-live="off">
+              <span class="win-hud-place" id="hudPlace">高輪ゲートウェイ付近</span>
+              <span class="win-hud-meta"><span id="hudSpeed">時速 --km</span><span id="hudClock">18:43</span></span>
+            </div>
+            <div class="win-window-edge" aria-hidden="true"></div>
+            <div id="toast" class="win-toast" role="status" aria-live="polite" hidden></div>
+            <button type="button" id="bigPlay" class="win-bigplay"><span aria-hidden="true">▶</span><b>車窓を再生</b><small>気になるビルをタップ</small></button>
+            <div id="caption" class="win-caption" role="status" hidden></div>
+            <div id="flyBar" class="win-flybar" hidden><span id="flyTitle">空から見ています</span><button type="button" id="flyBack">窓にもどる</button></div>
+            <p id="stageStatus" class="win-status" role="status">街の模型を準備しています…</p>
+          </div>
+
+          <div class="win-transport">
+            <button type="button" id="playBtn" class="win-play" aria-label="再生"><span aria-hidden="true">▶</span></button>
+            <div class="win-timeline">
+              <input id="seek" type="range" min="0" max="394" step="0.1" value="38" aria-label="再生位置" aria-valuetext="0:38">
+              <div id="chapterMarks" class="win-chapter-marks" aria-hidden="true"></div>
+            </div>
+            <output id="timeOut" for="seek">0:38 / 6:34</output>
+            <label class="win-rate">速さ<select id="rate"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+          </div>
+          <div id="chapters" class="win-chapters" role="group" aria-label="途中の街から見る"></div>
+        </div>
+
+        <aside class="win-side" aria-label="答え合わせ">
+          <div class="win-map-card">
+            <div class="win-card-head"><span class="win-eyebrow">いま、窓の向こう</span><button type="button" id="mapZoom" aria-pressed="false">全体</button></div>
+            <svg id="miniMap" class="win-minimap" role="img" aria-label="列車の位置と窓の視野"></svg>
+            <p class="win-map-note"><i class="dot-cone" aria-hidden="true"></i>窓の視野 <i class="dot-name" aria-hidden="true"></i>名前のあるビル</p>
+          </div>
+          <div id="answer" class="win-answer" aria-live="polite">
+            <p class="win-eyebrow">答え合わせ</p>
+            <h2 class="win-answer-title"><span class="copy-chunk">ビルをタップ、</span><span class="copy-chunk">名前がわかる。</span></h2>
+            <p class="win-answer-text">再生中でも止めていても、窓に見える建物を押すと、同じ位置の模型で調べます。</p>
+            <ol class="win-howto"><li><b>押す</b>気になるビルを窓の上で</li><li><b>のぼる</b>空から、線路との位置を</li><li><b>めくる</b>模型と名前を、窓の向こうに</li></ol>
+          </div>
+          <div class="win-found">
+            <div class="win-card-head"><span class="win-eyebrow">見つけたビル帳</span><span id="foundCount">0</span></div>
+            <ul id="foundList" class="win-found-list"><li class="empty">まだありません</li></ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="win-emaki" aria-labelledby="emakiTitle">
+      <div class="win-emaki-head">
+        <div><p class="win-eyebrow">窓の絵巻</p><h2 id="emakiTitle"><span class="copy-chunk">6.2kmの車窓を、</span><span class="copy-chunk">一枚に。</span></h2></div>
+        <p class="win-emaki-note">動画のまん中の細い帯を、走った距離の順につないだ絵巻です。押すと、その場所へ。</p>
+      </div>
+      <div id="emaki" class="win-emaki-strip" tabindex="0" role="slider" aria-label="絵巻で位置を選ぶ" aria-valuemin="0" aria-valuemax="100">
+        <div id="emakiTrack" class="win-emaki-track"><div id="emakiNames" class="win-emaki-names"></div><div id="emakiImg" class="win-emaki-img"></div><div id="emakiPlaces" class="win-emaki-places"></div></div>
+        <span class="win-emaki-cursor" aria-hidden="true"></span>
+        <p id="emakiStatus" class="win-emaki-status">絵巻を準備しています…</p>
+      </div>
+      <p class="win-emaki-legend"><span>← 品川</span><span>東京 →</span></p>
+    </section>
+
+    <section class="win-why" aria-labelledby="whyTitle">
+      <div><p class="win-eyebrow">模型と本物</p><h2 id="whyTitle"><span class="copy-chunk">ぴったり重ならないのも、</span><span class="copy-chunk">発見のうち。</span></h2></div>
+      <ul class="win-why-list">
+        <li><b>新しいビル</b>模型は測量した時点の街。できたばかりのビルは、まだ模型にないことがあります。</li>
+        <li><b>箱の形</b>模型は建物を高さのある箱で表します。看板・窓・木・防音壁・架線はありません。</li>
+        <li><b>走る列車</b>となりの線路を走る電車は、模型には現れません。景色をさえぎる主役です。</li>
+        <li><b>位置と向き</b>列車の位置はスマホのGPS、窓の向きはカメラの映りから推定しました。数m〜十数mずれることがあります。</li>
+      </ul>
+    </section>
+
+    <details class="source-note"><summary>この車窓の作り方と出典</summary>
+      <p>車窓動画は2026年8月16日、こだま836号の7号車E席から品川→東京間で撮影したものです（運営者撮影、公開版は音声なし）。同じ乗車の実走GPS（1秒ごと）で、動画の時刻と線路上の位置を対応づけました。窓の向き・画角は、動画の空の輪郭と模型が合うよう推定した値です。</p>
+      <p>街並みは国土交通省 <a href="https://www.mlit.go.jp/plateau/" target="_blank" rel="noopener noreferrer">PLATEAU</a> の3D都市モデル（千代田区・中央区・港区・品川区、LOD1）、地面は <a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener noreferrer">地理院タイル</a>。建物名は <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">© OpenStreetMap contributors（ODbL）</a>。新幹線の模型は今回作った簡略モデルです。</p>
+      <p>名前は位置の近さから選んだ候補で、入口や正確な範囲を示すものではありません。カメラ・現在地は使いません。3D表示ではCesium、PLATEAU、地理院タイルへ通信します。</p>
+    </details>
+  </main>
+  <footer class="footer"><p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p><p class="footer-links"><a href="../index.html">TOP</a> · <a href="../guide.html">富士山の見方</a> · <a href="../references.html">車窓リンク集</a> · <a href="../contact.html">お問い合わせ</a> · <a href="../privacy.html">プライバシーポリシー</a></p><p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p></footer>
+  <script type="module" src="app.js"></script>
+</body>
+</html>

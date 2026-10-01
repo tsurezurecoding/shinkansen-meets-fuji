@@ -1,0 +1,60 @@
+{
+ "file": "emaki-tile-0.jpg",
+ "width": 15145,
+ "height": 320,
+ "sStart": 6410.5,
+ "sEnd": 185.89,
+ "metersPerPx": 0.411028,
+ "D0": 180,
+ "fOut": 437.926,
+ "fSrc": 1478,
+ "sign": 1,
+ "xToS": "s = sStart - x * metersPerPx (x = column index; 0 = Shinagawa end, right end = Tokyo)",
+ "small": {
+  "file": "emaki-small-tile-0.jpg",
+  "width": 7572,
+  "height": 160,
+  "metersPerPx": 0.82211,
+  "tiles": [
+   {
+    "file": "emaki-small-tile-0.jpg",
+    "width": 3786,
+    "x0": 0
+   },
+   {
+    "file": "emaki-small-tile-1.jpg",
+    "width": 3786,
+    "x0": 3786
+   }
+  ]
+ },
+ "tiles": [
+  {
+   "file": "emaki-tile-0.jpg",
+   "width": 3787,
+   "x0": 0
+  },
+  {
+   "file": "emaki-tile-1.jpg",
+   "width": 3787,
+   "x0": 3787
+  },
+  {
+   "file": "emaki-tile-2.jpg",
+   "width": 3787,
+   "x0": 7574
+  },
+  {
+   "file": "emaki-tile-3.jpg",
+   "width": 3784,
+   "x0": 11361
+  }
+ ],
+ "note": "Slit-scan mosaic from the real E-seat (west-facing) video, resampled by track distance: each column is an area-averaged slit of the frame nearest in time to t(s), shifted so scenery at D0=180 m depth stitches seamlessly. Nearer objects appear compressed or chopped, farther ones stretched; passing trains, poles and window reflections become streaks. Where the train is slow or stopped the columns still advance by distance, so those stretches come from many similar frames. The first ~17 s use ride-sync's extrapolated positions (no GPS yet). Not mirrored: left = Shinagawa, right = Tokyo.",
+ "build": {
+  "seconds": 332.4,
+  "jobs": 4,
+  "seamRatio": 6.131,
+  "script": "tools/emaki_real.py"
+ }
+}
