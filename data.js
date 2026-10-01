@@ -832,28 +832,28 @@ const SPOTS = [
     "confidence": "verified",
     "durationSec": 5,
     "scene": "solar",
-    "image": "images/20260930_kaguya-no-akari_32405_michikusa.jpg",
+    "image": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
     "photoCredit": {
       "ja": "michikusa",
       "en": "michikusa",
-      "date": "2026-09-30",
+      "date": "2026-09-24",
       "note": {
-        "ja": "望遠で見ると、竹をイメージした上部の縦の造形と張り出しがわかります。",
-        "en": "The zoomed view reveals the bamboo-inspired vertical forms and projecting rim."
+        "ja": "住宅地の屋根越しに、竹をイメージした塔の全体像が見えます。",
+        "en": "The wider view shows the bamboo-inspired tower above the neighbourhood roofs."
       }
     },
     "photos": [
       {
-        "src": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+        "src": "images/20260930_kaguya-no-akari_32405_michikusa.jpg",
         "alt": {
-          "ja": "住宅地の上に立つ、かぐやの灯の全景",
-          "en": "Kaguya no To rising above the neighbourhood"
+          "ja": "竹をイメージした上部を望遠で捉えた、かぐやの灯",
+          "en": "A zoomed view of Kaguya no To's bamboo-inspired upper section"
         },
         "credit": { "ja": "michikusa", "en": "michikusa" },
-        "date": "2026-09-24",
+        "date": "2026-09-30",
         "note": {
-          "ja": "広い車窓では住宅地の屋根越しに塔を探します。",
-          "en": "The wider window view shows where to look for the tower above the roofs."
+          "ja": "望遠で見ると、竹をイメージした上部の縦の造形と張り出しがわかります。",
+          "en": "The zoomed view reveals the bamboo-inspired vertical forms and projecting rim."
         }
       }
     ],
@@ -903,8 +903,7 @@ const SPOTS = [
     "viewpoint": {
       "lat": 34.93504114,
       "lng": 135.7141769
-    },
-    "photos": []
+    }
   },
 
   {
@@ -5734,6 +5733,9 @@ const SPOTS = [
       ja: "岐阜羽島から米原へ向かうE席側で大きく見える伊吹山（1,377m）。米原手前ではA席側からも別の角度で探せます。日本武尊の伝説、積雪記録、季節ごとの表情を紹介します。",
       en: "Mt. Ibuki fills the Seat E window between Gifu-Hashima and Maibara. Near Maibara, it can also be spotted from Seat A at a separate point. Explore its legends, snowfall record and changing seasonal colours.",
     },
+    pageFacts: {
+      side: { ja: "E席・山側／A席・海側（米原付近）", en: "Seat E · right / Seat A · left (near Maibara)" },
+    },
     sectionHeading: {
       ja: "伊吹山とはどんな山？",
       en: "What kind of mountain is Mt. Ibuki?",
@@ -5824,6 +5826,13 @@ const SPOTS = [
           url: "https://www.youtube.com/watch?v=OW_kRftmgfc",
           comment: { ja: "山霧の向こうに現れる伊吹山（2026年9月29日撮影）。", en: "Mt. Ibuki emerging beyond mountain mist (filmed 29 September 2026)." },
         },
+        {
+          kind: "youtube",
+          id: "vVk7fMbhc10",
+          title: { ja: "[新幹線の車窓] A席側から見える伊吹山", en: "Mt. Ibuki from Seat A on the Shinkansen" },
+          url: "https://www.youtube.com/watch?v=vVk7fMbhc10",
+          comment: { ja: "A席側から見える短い眺め（2026年8月16日撮影）。", en: "A brief Seat A view, filmed on 16 August 2026." },
+        },
       ],
       platformNote: {
         ja: "動画はX・YouTubeの公式埋め込みを利用しています。",
@@ -5854,7 +5863,7 @@ const SPOTS = [
       en: ["Near Maibara, the curve in the tracks brings Mt. Ibuki into view from Seat A. Look beyond the fields and lower hills for the mountain with a pale quarry scar at the far left of the photograph. This is a different angle from the larger Seat E view."],
     },
     guideHighlight: { ja: "米原に近づく下り列車ではA席側へ。田んぼの向こう、低い山並みの左奥に採石跡のある伊吹山を探します。上り列車では米原を出たあとが目安です。", en: "On a westbound train approaching Maibara, watch Seat A for Mt. Ibuki beyond the fields and lower hills. On an eastbound train, look after leaving Maibara." },
-    minutesFromTokyo: 111.5, side: "A", category: "classic", confidence: "verified", durationSec: 5, scene: "mountain",
+    minutesFromTokyo: 111.5, side: "A", category: "classic", confidence: "verified", durationSec: 15, scene: "mountain",
     image: "images/20260816_ibuki-seat-a_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-16", note: { ja: "A席側。写真左奥に採石跡の見える伊吹山", en: "Seat A view: Mt. Ibuki and its pale quarried slope at the far left." } },
     references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara],
