@@ -481,7 +481,7 @@ async function runThinValidator() {
   }
 
   const reps = [
-    ["ibuki", "ja"], ["ibuki", "en"], ["hikone-castle", "ja"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],
+    ["ibuki", "ja"], ["ibuki", "en"], ["hikone-castle", "ja"], ["kaguya-no-akari", "ja"], ["kaguya-no-akari", "en"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],
   ];
   for (const [id, lang] of reps) {
     const prefix = lang === "ja" ? "../" : "../../";
@@ -490,7 +490,8 @@ async function runThinValidator() {
     if (!result.html || result.errors.length) fail(`representative ${id}/${lang} renderer failed`);
     // ギャラリー枚数は写真が増えれば動く編集データ。件数の正当性は本文ループの
     // expectedGalleryCount が data.js から導いて既に検証している。ここは動画契約だけ見る。
-    if (id === "ibuki" && (!page.gallery.some((photo) => photo.src.includes("ibuki-seat-a")) || page.media.videos.length !== 4 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 3 || !page.sharedGuide.some((guide) => guide.id === "ibuki-seat-a"))) fail("Ibuki representative content/video contract failed");
+    if (id === "ibuki" && (!page.gallery.some((photo) => photo.src.includes("ibuki-seat-a")) || page.media.videos.length !== 5 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 4 || !result.html.includes("vVk7fMbhc10") || !page.sharedGuide.some((guide) => guide.id === "ibuki-seat-a") || !page.sideLabel.includes(lang === "ja" ? "A席" : "Seat A"))) fail("Ibuki representative content/video contract failed");
+    if (id === "kaguya-no-akari" && (!page.hero?.src.includes("20260924_kaguya-no-akari_28703") || !page.gallery.some((photo) => photo.src.includes("20260930_kaguya-no-akari_32405")))) fail(`Kaguya photo order failed (${lang})`);
     if (id === "ibuki") {
       const seatAChapter = page.sharedGuide.find((chapter) => chapter.id === "ibuki-seat-a");
       const seatASection = result.html.match(/<section class="spot-page-section" id="ibuki-seat-a">[\s\S]*?<\/section>/)?.[0] || "";
