@@ -1607,14 +1607,6 @@
     "quality": 72,
     "sha256": "b0abd589567e9899044a0447e6320ef001775fb63984fd5e036966d4522f02b4"
   },
-  "images/thumbs/gallery/20260924_kaguya-no-akari_28703_michikusa.webp": {
-    "source": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
-    "sourceSha256": "e1506848d9aa32fccda54e4fc337f9ae89353cfd21ae4de3695f65092ddc2d37",
-    "width": 264,
-    "height": 198,
-    "quality": 72,
-    "sha256": "cc0d7054d05a2d20c0c8cfc72ef06a32ee85d2c1d2ce02bceb3bd85d85d2216d"
-  },
   "images/thumbs/gallery/20260924_kirin-beer-factory_36523_michikusa.webp": {
     "source": "images/20260924_kirin-beer-factory_36523_michikusa.jpg",
     "sourceSha256": "631b4bb2741b5db8d9537064a278fc97c02068abf3403e4d84cf5d10c30e36d8",
@@ -1710,6 +1702,22 @@
     "height": 198,
     "quality": 72,
     "sha256": "5766c471ec89ac536247b220e18130cef1bcc4765ca887553ab3f074b4b7b23d"
+  },
+  "images/thumbs/gallery/20260930_hikone-castle_26175_michikusa.webp": {
+    "source": "images/20260930_hikone-castle_26175_michikusa.jpg",
+    "sourceSha256": "ef1e350169f374e2872f2d570fcec55adcf539a7a8f6e725c35578ee646aef2d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "aadc4e7e9f03703dabe6bfcd18aa8b941cedd18aee82afa66ea9cb5b3b39b118"
+  },
+  "images/thumbs/gallery/20260930_kaguya-no-akari_32405_michikusa.webp": {
+    "source": "images/20260930_kaguya-no-akari_32405_michikusa.jpg",
+    "sourceSha256": "b30d2576623834d365a27d8a93bb5223f9c238653c70f5bdc98574f53a640cd0",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "840aac976e2aefd951dbea0caedbfb4ece8bea5f3b44f5a7f7e42856c1ebcb7e"
   },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",

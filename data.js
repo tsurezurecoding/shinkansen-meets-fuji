@@ -812,14 +812,14 @@ const SPOTS = [
         "en": "A broad top above the rooftops"
       },
       "ja": [
-        "目印は、まっすぐ伸びる柱と、その上で横に大きく張り出す円筒形の部分。写真では住宅の屋根越しに塔の全体の輪郭が現れ、朝日を受けた壁が暖かい色に見えます。細い柱と太い上部の組み合わせを、竹の節に見立てて眺めてみてください。",
+        "望遠写真では、上部を取り巻く縦の丸みと、節のように横へ張り出す輪郭がよくわかります。細い柱から太い上部へ広がる形に、横から見た竹をイメージした意匠が表れています。広い車窓写真では、住宅地の屋根より高く立つ塔の位置も確かめられます。",
         "車窓から見えるのは塔の側面です。ヒマワリを表す真上からの形は、この写真や新幹線の座席からは確認できません。横からの竹の姿に、上からは花になる仕掛けが隠れています。",
-        "夜にはライトアップで表情が変わります。掲載写真の暖かな色は朝の光によるものです。夜の姿を探す場合は、参考リンクにある市の点灯スケジュールで当日の実施と時間を確認できます。"
+        "夜にはライトアップで表情が変わります。夜の姿を探す場合は、参考リンクにある市の点灯スケジュールで当日の実施と時間を確認できます。"
       ],
       "en": [
-        "Look for a straight shaft topped by a much wider cylindrical section. In the photograph, the tower’s outline rises above the house roofs, with its walls warmed by morning sunlight. The contrast between the narrow shaft and broad top suggests a joint in a bamboo stem.",
+        "The zoomed photograph shows the rounded vertical forms around the top and its ledge-like, jointed outline. The design evokes bamboo from the side, widening from the narrow shaft to the broad upper section. The wider window photograph shows where the tower stands above the neighbourhood roofs.",
         "The train gives you a side view. The sunflower design, visible from directly above, cannot be seen in this photograph or from a Shinkansen seat. It is another face of the same structure, hidden from the passing passenger.",
-        "Lighting changes its appearance after dark; the warm colour in the photograph comes from the morning sun. For a night-time view, the city’s lighting schedule in the references gives the dates and hours of each display."
+        "Lighting changes its appearance after dark. For a night-time view, the city’s lighting schedule in the references gives the dates and hours of each display."
       ]
     },
     "guideHighlight": {
@@ -832,12 +832,31 @@ const SPOTS = [
     "confidence": "verified",
     "durationSec": 5,
     "scene": "solar",
-    "image": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+    "image": "images/20260930_kaguya-no-akari_32405_michikusa.jpg",
     "photoCredit": {
       "ja": "michikusa",
       "en": "michikusa",
-      "date": "2026-09-24"
+      "date": "2026-09-30",
+      "note": {
+        "ja": "望遠で見ると、竹をイメージした上部の縦の造形と張り出しがわかります。",
+        "en": "The zoomed view reveals the bamboo-inspired vertical forms and projecting rim."
+      }
     },
+    "photos": [
+      {
+        "src": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+        "alt": {
+          "ja": "住宅地の上に立つ、かぐやの灯の全景",
+          "en": "Kaguya no To rising above the neighbourhood"
+        },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "広い車窓では住宅地の屋根越しに塔を探します。",
+          "en": "The wider window view shows where to look for the tower above the roofs."
+        }
+      }
+    ],
     "references": [
       {
         "label": {
@@ -6559,6 +6578,19 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-24"
+      },
+      {
+        "src": "images/20260930_hikone-castle_26175_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から遠くの彦根城天守を望遠で拡大した写真",
+          "en": "Zoomed view of Hikone Castle's distant keep from the Shinkansen"
+        },
+        "note": {
+          "ja": "遠くの天守を望遠で拡大。肉眼の車窓では、丘の上の小さな白い点に見えます。",
+          "en": "Zoomed in on the distant keep. To the unaided eye, it is a tiny white point on the hill."
+        },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-09-30"
       }
     ],
     "references": [
