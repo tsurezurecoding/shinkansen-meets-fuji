@@ -812,14 +812,14 @@ const SPOTS = [
         "en": "A broad top above the rooftops"
       },
       "ja": [
-        "目印は、まっすぐ伸びる柱と、その上で横に大きく張り出す円筒形の部分。写真では住宅の屋根越しに塔の全体の輪郭が現れ、朝日を受けた壁が暖かい色に見えます。細い柱と太い上部の組み合わせを、竹の節に見立てて眺めてみてください。",
+        "望遠写真では、上部を取り巻く縦の丸みと、節のように横へ張り出す輪郭がよくわかります。細い柱から太い上部へ広がる形に、横から見た竹をイメージした意匠が表れています。広い車窓写真では、住宅地の屋根より高く立つ塔の位置も確かめられます。",
         "車窓から見えるのは塔の側面です。ヒマワリを表す真上からの形は、この写真や新幹線の座席からは確認できません。横からの竹の姿に、上からは花になる仕掛けが隠れています。",
-        "夜にはライトアップで表情が変わります。掲載写真の暖かな色は朝の光によるものです。夜の姿を探す場合は、参考リンクにある市の点灯スケジュールで当日の実施と時間を確認できます。"
+        "夜にはライトアップで表情が変わります。夜の姿を探す場合は、参考リンクにある市の点灯スケジュールで当日の実施と時間を確認できます。"
       ],
       "en": [
-        "Look for a straight shaft topped by a much wider cylindrical section. In the photograph, the tower’s outline rises above the house roofs, with its walls warmed by morning sunlight. The contrast between the narrow shaft and broad top suggests a joint in a bamboo stem.",
+        "The zoomed photograph shows the rounded vertical forms around the top and its ledge-like, jointed outline. The design evokes bamboo from the side, widening from the narrow shaft to the broad upper section. The wider window photograph shows where the tower stands above the neighbourhood roofs.",
         "The train gives you a side view. The sunflower design, visible from directly above, cannot be seen in this photograph or from a Shinkansen seat. It is another face of the same structure, hidden from the passing passenger.",
-        "Lighting changes its appearance after dark; the warm colour in the photograph comes from the morning sun. For a night-time view, the city’s lighting schedule in the references gives the dates and hours of each display."
+        "Lighting changes its appearance after dark. For a night-time view, the city’s lighting schedule in the references gives the dates and hours of each display."
       ]
     },
     "guideHighlight": {
@@ -832,12 +832,31 @@ const SPOTS = [
     "confidence": "verified",
     "durationSec": 5,
     "scene": "solar",
-    "image": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+    "image": "images/20260930_kaguya-no-akari_32405_michikusa.jpg",
     "photoCredit": {
       "ja": "michikusa",
       "en": "michikusa",
-      "date": "2026-09-24"
+      "date": "2026-09-30",
+      "note": {
+        "ja": "望遠で見ると、竹をイメージした上部の縦の造形と張り出しがわかります。",
+        "en": "The zoomed view reveals the bamboo-inspired vertical forms and projecting rim."
+      }
     },
+    "photos": [
+      {
+        "src": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+        "alt": {
+          "ja": "住宅地の上に立つ、かぐやの灯の全景",
+          "en": "Kaguya no To rising above the neighbourhood"
+        },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "広い車窓では住宅地の屋根越しに塔を探します。",
+          "en": "The wider window view shows where to look for the tower above the roofs."
+        }
+      }
+    ],
     "references": [
       {
         "label": {
@@ -4285,6 +4304,8 @@ const SPOTS = [
       ja: "もうひとつの主役：浜名湖越しの富士山",
       en: "A second highlight: Mt. Fuji beyond Lake Hamana",
     },
+    sharedGuideEyebrow: "BEYOND THE LAKE",
+    sharedGuideFigure: true,
     sharedGuideStory: {
       ja: [
         "浜名湖越しの富士山は、富士5景のなかで最も遠く、小さく探す一景です。E席側で、サンマリンブリッジの奥から湖と空の境目へ視線を移してください。冬を中心に空気が澄んだ日だけ出会いやすい、見えたこと自体がうれしい富士山です。",
@@ -5710,8 +5731,8 @@ const SPOTS = [
       en: ["Mt. Ibuki: the mountain that dominates", "the Sekigahara window"],
     },
     metaDescription: {
-      ja: "岐阜羽島から米原へ向かうE席側、関ヶ原を抜けたあたりで大きく見える独立峰が伊吹山（1,377m）。日本武尊の伝説、日本一の積雪記録、季節ごとの表情の変化を、車窓での楽しみ方と合わせて紹介します。",
-      en: "Between Gifu-Hashima and Maibara, the low massive mountain filling the Seat E window after Sekigahara is 1,377-meter Mt. Ibuki. Learn about its Yamato Takeru legend, Japan's record-deep snowfall here, and how its face changes through the seasons — with tips for spotting it from the Shinkansen.",
+      ja: "岐阜羽島から米原へ向かうE席側で大きく見える伊吹山（1,377m）。米原手前ではA席側からも別の角度で探せます。日本武尊の伝説、積雪記録、季節ごとの表情を紹介します。",
+      en: "Mt. Ibuki fills the Seat E window between Gifu-Hashima and Maibara. Near Maibara, it can also be spotted from Seat A at a separate point. Explore its legends, snowfall record and changing seasonal colours.",
     },
     sectionHeading: {
       ja: "伊吹山とはどんな山？",
@@ -5796,6 +5817,13 @@ const SPOTS = [
           title: { ja: "伊吹山の車窓動画 3", en: "Mt. Ibuki window video 3" },
           url: "https://www.youtube.com/watch?v=puK5Tr_2Sxo",
         },
+        {
+          kind: "youtube",
+          id: "OW_kRftmgfc",
+          title: { ja: "[新幹線の車窓] 山霧と伊吹山", en: "[新幹線の車窓] 山霧と伊吹山" },
+          url: "https://www.youtube.com/watch?v=OW_kRftmgfc",
+          comment: { ja: "山霧の向こうに現れる伊吹山（2026年9月29日撮影）。", en: "Mt. Ibuki emerging beyond mountain mist (filmed 29 September 2026)." },
+        },
       ],
       platformNote: {
         ja: "動画はX・YouTubeの公式埋め込みを利用しています。",
@@ -5805,6 +5833,33 @@ const SPOTS = [
     references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara, REFERENCES.ibukiKojiki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
     viewpoint: { lat: 35.361280, lng: 136.411719 },
+  },
+  {
+    id: "ibuki-seat-a", icon: "⛰️",
+    ja: { name: "A席から見る伊吹山", area: "岐阜羽島 → 米原（米原手前）", hook: "A席にも、伊吹山。", story: "米原に近づくころ、A席側からも伊吹山が見えます。田んぼと低い山並みの奥、採石跡が見える山を探してください。E席側で大きく見る地点とは異なる、線路が曲がる場所での短い眺めです。" },
+    en: { name: "Mt. Ibuki from Seat A", area: "Gifu-Hashima → Maibara (near Maibara)", hook: "Ibuki appears from Seat A, too.", story: "Near Maibara, Mt. Ibuki also appears through the Seat A window. Look beyond the fields and lower hills for its pale quarried slope. This is a brief view at a different point from the longer Seat E view." },
+    guidePageId: "ibuki",
+    guideAnchor: "ibuki-seat-a",
+    guideNotice: {
+      heading: { ja: "伊吹山のもう一つの見え方", en: "Another view of Mt. Ibuki" },
+      body: { ja: "E席側の眺めとは地点と見え方が異なります。写真と探す目印は伊吹山の記事へ。", en: "This view uses a different point and angle from the Seat E view. See the photo and landmarks in the Mt. Ibuki guide." },
+      label: { ja: "伊吹山の記事で写真を見る →", en: "See the photograph in the Mt. Ibuki guide →" },
+    },
+    sharedGuideHeading: { ja: "A席からも見える伊吹山", en: "Mt. Ibuki from Seat A" },
+    sharedGuideEyebrow: "FROM SEAT A",
+    sharedGuideFigure: true,
+    sharedGuideShowHook: false,
+    sharedGuideStory: {
+      ja: ["米原に近づくころ、線路が曲がる場所ではA席側からも伊吹山が見えます。田んぼと低い山並みの奥、写真の左端にある採石跡の白っぽい山を探してください。E席側で大きく見る伊吹山とは、見える地点も角度も異なります。"],
+      en: ["Near Maibara, the curve in the tracks brings Mt. Ibuki into view from Seat A. Look beyond the fields and lower hills for the mountain with a pale quarry scar at the far left of the photograph. This is a different angle from the larger Seat E view."],
+    },
+    guideHighlight: { ja: "米原に近づく下り列車ではA席側へ。田んぼの向こう、低い山並みの左奥に採石跡のある伊吹山を探します。上り列車では米原を出たあとが目安です。", en: "On a westbound train approaching Maibara, watch Seat A for Mt. Ibuki beyond the fields and lower hills. On an eastbound train, look after leaving Maibara." },
+    minutesFromTokyo: 111.5, side: "A", category: "classic", confidence: "verified", durationSec: 5, scene: "mountain",
+    image: "images/20260816_ibuki-seat-a_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-16", note: { ja: "A席側。写真左奥に採石跡の見える伊吹山", en: "Seat A view: Mt. Ibuki and its pale quarried slope at the far left." } },
+    references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara],
+    map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
+    viewpoint: { lat: 35.33490966, lng: 136.29537202 },
   },
   {
     "id": "sennenq-sign",
@@ -6559,8 +6614,36 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-24"
+      },
+      {
+        "src": "images/20260930_hikone-castle_26175_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線から遠くの彦根城天守を望遠で拡大した写真",
+          "en": "Zoomed view of Hikone Castle's distant keep from the Shinkansen"
+        },
+        "note": {
+          "ja": "遠くの天守を望遠で拡大。肉眼の車窓では、丘の上の小さな白い点に見えます。",
+          "en": "Zoomed in on the distant keep. To the unaided eye, it is a tiny white point on the hill."
+        },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-09-30"
       }
     ],
+    "media": {
+      "heading": { "ja": "動画で見る彦根城", "en": "Hikone Castle in motion" },
+      "description": {
+        "ja": "遠くの天守を車窓から探す様子を動画で確かめられます。",
+        "en": "See how the distant keep appears through the train window."
+      },
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "V0t-dPBWI4Q",
+          "title": { "ja": "[新幹線の車窓] 遠くに見える彦根城", "en": "[新幹線の車窓] 遠くに見える彦根城" },
+          "url": "https://www.youtube.com/watch?v=V0t-dPBWI4Q"
+        }
+      ]
+    },
     "references": [
       {
         "label": {

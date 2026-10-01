@@ -378,7 +378,7 @@ async function runThinValidator() {
       const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
       if (new Set(sharedChapterIds).size !== sharedChapterIds.length) fail(`${relativeFile}: shared guide chapter ids must be unique`);
       for (const chapter of page.sharedGuide || []) {
-        if (!chapter.id || !chapter.heading || !chapter.hook || !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length) fail(`${relativeFile}: shared guide chapter contract is incomplete`);
+        if (!chapter.id || !chapter.heading || typeof chapter.hook !== "string" || !Array.isArray(chapter.paragraphs) || !chapter.paragraphs.length) fail(`${relativeFile}: shared guide chapter contract is incomplete`);
         if (!output.includes(`id="${escape(chapter.id)}"`)) fail(`${relativeFile}: shared guide chapter is missing from rendered output: ${chapter.id}`);
       }
       if (page.guideNotice) {
@@ -481,7 +481,7 @@ async function runThinValidator() {
   }
 
   const reps = [
-    ["ibuki", "ja"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],
+    ["ibuki", "ja"], ["ibuki", "en"], ["hikone-castle", "ja"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],
   ];
   for (const [id, lang] of reps) {
     const prefix = lang === "ja" ? "../" : "../../";
@@ -490,9 +490,15 @@ async function runThinValidator() {
     if (!result.html || result.errors.length) fail(`representative ${id}/${lang} renderer failed`);
     // ギャラリー枚数は写真が増えれば動く編集データ。件数の正当性は本文ループの
     // expectedGalleryCount が data.js から導いて既に検証している。ここは動画契約だけ見る。
-    if (id === "ibuki" && (!page.gallery.length || page.media.videos.length !== 3 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 2)) fail("Ibuki representative content/video contract failed");
+    if (id === "ibuki" && (!page.gallery.some((photo) => photo.src.includes("ibuki-seat-a")) || page.media.videos.length !== 4 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 3 || !page.sharedGuide.some((guide) => guide.id === "ibuki-seat-a"))) fail("Ibuki representative content/video contract failed");
+    if (id === "ibuki") {
+      const seatAChapter = page.sharedGuide.find((chapter) => chapter.id === "ibuki-seat-a");
+      const seatASection = result.html.match(/<section class="spot-page-section" id="ibuki-seat-a">[\s\S]*?<\/section>/)?.[0] || "";
+      if (seatAChapter?.eyebrow !== "FROM SEAT A" || seatAChapter.hook !== "" || seatAChapter.paragraphs.length !== 1 || !seatASection.includes("FROM SEAT A") || !seatASection.includes('class="spot-page-inline-figure"') || !seatASection.includes("20260816_ibuki-seat-a_michikusa.jpg") || /A席にも、伊吹山|Ibuki appears from Seat A|GPS|provisional|暫定|こだま836/.test(seatASection)) fail(`Ibuki Seat A article chapter failed (${lang})`);
+    }
+    if (id === "hikone-castle" && (page.media.videos.length !== 1 || !result.html.includes("V0t-dPBWI4Q"))) fail("Hikone Castle video contract failed");
     // 写真見出しは言語ごとに別文字列。日本語の部分一致を英語ページへ当てない。
-    if (id === "hamanako" && (!page.sharedGuide.length || !page.photoHeadingCustom || !page.photoHeading.includes(lang === "ja" ? "浜名湖" : "Lake Hamana") || !result.html.includes("hamanako-fuji"))) fail("Hamanako representative composition failed");
+    if (id === "hamanako" && (!page.sharedGuide.length || page.sharedGuide[0].eyebrow !== "BEYOND THE LAKE" || !page.sharedGuide[0].figure || !page.photoHeadingCustom || !page.photoHeading.includes(lang === "ja" ? "浜名湖" : "Lake Hamana") || !result.html.includes("hamanako-fuji"))) fail("Hamanako representative composition failed");
     if (id === "kiyosu" && (!page.photoTip || !result.html.includes("spot-page-phototip"))) fail("Kiyosu photoTip representative failed");
     if (id === "nagoya-station-skyline" && (!page.explainer?.figure || !result.html.includes("spot-page-explainer-figure"))) fail("Nagoya explainer-figure representative failed");
     if (id === "gifu-castle" && (!page.referenceImage || !result.html.includes("spot-page-reference-section"))) fail("Gifu reference-image representative failed");
@@ -500,6 +506,7 @@ async function runThinValidator() {
     if (id === "odawara-castle" && (!page.map.viewpoint || !page.map.viewpointUrl)) fail("Odawara Castle viewpoint fallback representative failed");
   }
   if (pages.hamanako.ja.sideLabel !== "A席・海側 / E席・山側") fail("A+E side projection is missing");
+  if (pages["ibuki-seat-a"].ja.sideLabel !== "A席・海側" || !pages["ibuki-seat-a"].ja.guideNotice?.href.includes("ibuki.html#ibuki-seat-a")) fail("Seat A Ibuki guide projection is missing");
   if (pages["727-board"].ja.sideLabel !== "E席・山側") fail("248 page must project the representative E-seat side");
 
   const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });

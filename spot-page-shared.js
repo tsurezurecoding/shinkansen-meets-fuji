@@ -782,7 +782,7 @@
     var inline = (page.inline || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join("");
     var explainer = page.explainer ? "<section class=\"spot-page-section\">" + readingEyebrow(page, "WHAT TO SEE") + "<h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
     var guideNotice = page.guideNotice ? "<section class=\"spot-page-section guide-answer-panel\"><div class=\"guide-answer-copy\"><h2>" + escapeHTML(page.guideNotice.heading) + "</h2><p>" + escapeHTML(page.guideNotice.body) + "</p><p><a class=\"inline-cta\" href=\"" + escapeHTML(page.guideNotice.href) + "\">" + escapeHTML(page.guideNotice.label) + "</a></p></div></section>" : "";
-    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\">" + readingEyebrow(page, "BEYOND THE LAKE") + "<h2>" + escapeHTML(chapter.heading) + "</h2><p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + (chapter.figure ? pageInlineFigureHTML(chapter.figure, rootPath, lang) : "") + "</section>"; }).join("");
+    var sharedGuide = (page.sharedGuide || []).map(function (chapter) { return "<section class=\"spot-page-section\" id=\"" + escapeHTML(chapter.id) + "\">" + readingEyebrow(page, chapter.eyebrow || "ANOTHER VIEW") + "<h2>" + escapeHTML(chapter.heading) + "</h2>" + (chapter.hook ? "<p><strong>" + escapeHTML(chapter.hook) + "</strong></p>" : "") + chapter.paragraphs.map(function (paragraph) { return "<p>" + escapeHTML(paragraph) + "</p>"; }).join("") + (chapter.figure ? pageInlineFigureHTML(chapter.figure, rootPath, lang) : "") + "</section>"; }).join("");
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
@@ -814,7 +814,11 @@
         var thumb = button.querySelector("img");
         var figureCaption = button.parentElement.querySelector("figcaption");
         image.src = button.getAttribute("data-zoom-src") || (thumb && thumb.getAttribute("src")) || "";
-        caption.textContent = figureCaption ? figureCaption.textContent.replace(/\s+/g, " ").replace(/(?:クリックで拡大|click to enlarge)\s*$/, "").trim() : "";
+        if (figureCaption && figureCaption.querySelector(".spot-page-zoom-hint")) {
+          caption.textContent = Array.from(figureCaption.children).filter(function (item) { return !item.classList.contains("spot-page-zoom-hint"); }).map(function (item) { return item.textContent.trim(); }).filter(Boolean).join(" · ");
+        } else {
+          caption.textContent = figureCaption ? figureCaption.textContent.replace(/\s+/g, " ").trim() : "";
+        }
         box.hidden = false;
         document.documentElement.style.overflow = "hidden";
       });
