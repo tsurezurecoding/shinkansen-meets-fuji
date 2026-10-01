@@ -246,3 +246,5 @@
 @media (max-width:760px){.win-caption{left:8px;right:8px;bottom:8px;max-width:none;font-size:11px}.win-caption b{font-size:13px;flex-basis:100%}}
 .win-compare{grid-column:1/-1;margin:0;font-size:11px}.win-compare a{color:var(--ink-soft)}
 .win-tag-pin.below{flex-direction:column-reverse}.win-tag-pin.below .stem{background:linear-gradient(#bfefff40,#bfefff)}.win-tag-pin.below .dot{margin:0 0 -1px}
+.win-page.mode-side.flying .win-stage{aspect-ratio:16/9}
+@media (max-width:760px){.win-page.mode-side.flying .win-stage{aspect-ratio:4/3}}

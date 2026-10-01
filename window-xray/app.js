@@ -80,7 +80,7 @@ function areaAt(s) { return AREAS.find(a => s >= a.from && s < a.to) || AREAS.at
 function layout() {
   const r = stage.getBoundingClientRect(), W = r.width, H = r.height; if (!W || !H) return;
   let v, m;
-  if (state.mode === 'side') {
+  if (state.mode === 'side' && state.view === 'window') {
     if (W / H >= 1.6) { const fw = Math.min(W / 2, H * 16 / 9), fh = fw * 9 / 16, y = (H - fh) / 2, gap = (W - 2 * fw) / 2; v = { x: gap, y, w: fw, h: fh }; m = { x: gap + fw, y, w: fw, h: fh }; }
     else { const fw = Math.min(W, H / 2 * 16 / 9), fh = fw * 9 / 16, x = (W - fw) / 2, gap = (H - 2 * fh) / 2; v = { x, y: gap, w: fw, h: fh }; m = { x, y: gap + fh, w: fw, h: fh }; }
   } else {
@@ -115,7 +115,7 @@ function setupUI() {
   $('flyBack').addEventListener('click', flyBack);
   $('mapZoom').addEventListener('click', () => { state.overview = !state.overview; $('mapZoom').setAttribute('aria-pressed', String(state.overview)); drawMap(); updateMap(poseAt(state.t)); });
   $('miniMap').addEventListener('click', onMapClick);
-  $('foundList').addEventListener('click', e => { const b = e.target.closest('[data-found]'); if (!b) return; const f = state.found.find(x => x.key === b.dataset.found); if (f) { pause(); seek(f.t); const n = names.find(x => x.name === f.key); if (n) showAnswer(answerFromName(n), { replay: true }); } });
+  $('foundList').addEventListener('click', e => { const b = e.target.closest('[data-found]'); if (!b) return; const f = state.found.find(x => x.key === b.dataset.found); if (f) { pause(); seek(f.t); const n = names.find(x => x.name === f.key) || (f.place?.lat != null ? f.place : null); if (n) showAnswer(answerFromName(n), { replay: true }); } });
   $('answer').addEventListener('click', e => {
     if (e.target.closest('[data-fly]')) flyUp();
     if (e.target.closest('[data-resume]')) play();
@@ -410,7 +410,7 @@ function showAnswer(a, opts = {}) {
     <h2 class="win-answer-title">${esc(title)}</h2>${hook ? `<p class="win-answer-sub">${esc(hook)}</p>` : ''}
     ${facts.length ? `<dl class="win-facts">${facts.slice(0, 3).map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join('')}</dl>` : ''}
     <p class="win-answer-text">${text}</p>
-    <div class="win-answer-actions">${viewer && (a.world || n) ? '<button type="button" class="primary" data-fly>空から見る ↗</button>' : ''}<button type="button" data-resume>車窓のつづき</button>${n ? `<a href="${lm?.url ? esc(lm.url) : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(n.name)}" target="_blank" rel="noopener noreferrer">${lm?.url ? '公式の案内 ↗' : '地図で見る ↗'}</a>` : ''}</div>
+    <div class="win-answer-actions">${aerialReady() && (a.world || n) ? '<button type="button" class="primary" data-fly>空から見る ↗</button>' : ''}<button type="button" data-resume>車窓のつづき</button>${n ? `<a href="${lm?.url ? esc(lm.url) : 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(n.name)}" target="_blank" rel="noopener noreferrer">${lm?.url ? '公式の案内 ↗' : '地図で見る ↗'}</a>` : ''}</div>
     ${a.alt?.length ? `<p class="win-answer-note">近くに見えている候補</p><ul class="win-answer-alt">${a.alt.map(x => `<li><button type="button" data-alt="${esc(x)}">${esc(x)}</button></li>`).join('')}</ul>` : ''}
     <p class="win-answer-note">${n?.kind === 'plateau' ? '名前・高さ・階数は模型（PLATEAU）の属性です。' : n && n.kind !== 'landmark' ? (a.props?.bbox ? '押した建物の敷地にある、OpenStreetMapの収録名です。' : '名前はOpenStreetMapの収録名から、位置の近さで選んだ候補です。') : lm ? '' : '高さ・階数は模型（PLATEAU）の値です。'}</p>`;
   showCaption(a, title, facts);
@@ -426,7 +426,7 @@ function showAnswer(a, opts = {}) {
 function showCaption(a, title, facts) {
   const el = $('caption'); if (!el) return;
   const bits = facts.slice(0, 2).map(([k, v]) => `<span>${esc(k)} ${esc(v)}</span>`).join('');
-  el.innerHTML = `<b>${esc(title)}</b>${bits}<span class="win-caption-actions">${viewer && (a.world || a.n) ? '<button type="button" data-fly>空から ↗</button>' : ''}<button type="button" data-more>くわしく</button><button type="button" data-close aria-label="閉じる">×</button></span>`;
+  el.innerHTML = `<b>${esc(title)}</b>${bits}<span class="win-caption-actions">${aerialReady() && (a.world || a.n) ? '<button type="button" data-fly>空から ↗</button>' : ''}<button type="button" data-more>くわしく</button><button type="button" data-close aria-label="閉じる">×</button></span>`;
   el.hidden = false;
 }
 function highlightByName(n) {
@@ -450,7 +450,7 @@ function restoreFound() { try { const v = JSON.parse(localStorage.getItem('windo
 function addFound(a) {
   const key = a.n.name; const exists = state.found.find(x => x.key === key);
   if (exists) return 'again';
-  state.found.push({ key, name: a.n.short || a.n.name, t: +state.t.toFixed(1), landmark: a.n.kind === 'landmark', answer: { name: a.n.name } });
+  state.found.push({ key, name: a.n.short || a.n.name, t: +state.t.toFixed(1), landmark: a.n.kind === 'landmark', answer: { name: a.n.name }, place: a.n.kind === 'plateau' ? { name: a.n.name, short: a.n.short, lat: a.n.lat, lon: a.n.lon, height: a.n.height, kind: 'plateau' } : null });
   try { localStorage.setItem('window-xray-found-v1', JSON.stringify(state.found)); } catch {}
   renderFound(); return 'new';
 }
@@ -645,11 +645,12 @@ function setCone(pose, R) {
   else coneEntity.polygon.hierarchy = hierarchy;
 }
 let orbitState = null;
+const aerialReady = () => !!(viewer && targetEntity && routeEntity);
 function flyUp() {
-  if (!viewer || !state.answer) return;
+  if (!aerialReady() || !state.answer) return;
   const a = state.answer, w = a.world || (a.n && { lat: a.n.lat, lon: a.n.lon, h: GROUND + a.n.height / 2 }); if (!w) return;
   state.resumeAfterFly = !video.paused; pause();
-  state.view = 'aerial'; body.classList.add('flying'); applyWipe(); applyStyle(); placeTrain(state.t);
+  state.view = 'aerial'; body.classList.add('flying'); layout(); applyWipe(); applyStyle(); placeTrain(state.t);
   targetEntity.position = C.Cartesian3.fromDegrees(w.lon, w.lat, Math.max(w.h, GROUND + 20)); showAerialThings(true);
   $('flyBar').hidden = false; $('flyTitle').textContent = `${a.n?.short || a.n?.name || '選んだ建物'}を、空から`;
   const pose = poseAt(state.t), d = a.distance || dist([pose.lat, pose.lon], [w.lat, w.lon]);
@@ -667,7 +668,7 @@ function flyBack(instant = false) {
   const pose = poseAt(state.t);
   let done = false;
   const finish = () => { if (done) return; done = true; setTimeout(finishNow, 0); };
-  const finishNow = () => { cancelAnimationFrame(flyLoop); state.view = 'window'; body.classList.remove('flying'); $('flyBar').hidden = true; showAerialThings(false); applyStyle(); applyWipe(); renderAt(state.t, true); if (state.resumeAfterFly) { state.resumeAfterFly = false; play(); } };
+  const finishNow = () => { cancelAnimationFrame(flyLoop); state.view = 'window'; body.classList.remove('flying'); $('flyBar').hidden = true; showAerialThings(false); layout(); applyStyle(); applyWipe(); renderAt(state.t, true); if (state.resumeAfterFly) { state.resumeAfterFly = false; play(); } };
   if (instant === true || reduced) { done = true; viewer.camera.cancelFlight?.(); finishNow(); return; }
   state.view = 'returning';
   viewer.camera.flyTo({ destination: C.Cartesian3.fromDegrees(pose.lon, pose.lat, pose.height), orientation: { heading: rad(pose.heading), pitch: rad(pose.pitch), roll: rad(pose.roll) }, duration: 2.0, easingFunction: C.EasingFunction.CUBIC_IN_OUT, complete: finish, cancel: finish });
