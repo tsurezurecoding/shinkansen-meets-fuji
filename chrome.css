@@ -188,7 +188,7 @@
   .top-nav a,
   .top-nav-more summary {padding: 4px 7px; font-size: 11px;}
   .top-nav-overflow {display: none;}
-  .top-nav-menu {right: auto; left: 0; min-width: min(72vw, 230px);}
+  .top-nav-menu {right: 0; left: auto; min-width: min(72vw, 230px); max-height: calc(100dvh - 120px); overflow-y: auto;}
   .top-nav-menu .top-nav-menu-compact {display: block;}
   .lang-switch button {padding: 4px 9px;}
 }

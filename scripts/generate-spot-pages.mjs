@@ -1356,8 +1356,7 @@ function englishLandingHTML() {
     ["その日だけの、", "Some views only happen"],
     ["車窓。", "at certain times."],
     ["花火の夜、街の灯り、期間限定の車両、", "Fireworks, city lights, limited-run trains,"],
-    ["その日にしか出会えない空。", "and skies that appear only once."],
-    ["同じ路線が別の景色になります。", "with the season and the time of day."],
+    ["列車選択", "Train Search"],
     ["車窓図鑑でテーマから探す", "Browse by theme"],
     ["夜空にひらく花火", "Fireworks opening in the night sky"],
     ["車窓の花火", "Window fireworks"],
@@ -1446,7 +1445,6 @@ function englishLandingHTML() {
     ["7大会", "7 events"],
     ["11か所", "11 night scenes"],
     ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
-    ["同じ路線が別の景色になります。", "with the season and the time of day."],
     ["窓の外に探すものも変わります。", "and the view you look for changes too."],
     ["このページは公開前のLP案です。", "A guide to the views along your journey."],
     ["車窓図鑑", "Field guide"],
@@ -1499,6 +1497,7 @@ function englishLandingHTML() {
   html = html.replaceAll("<span class=\"copy-chunk\">知ってから見ると、</span><span class=\"copy-chunk\">気づくものが増えていきます。</span>", '<span class="copy-chunk">Get to know the sights, and discover more to notice.</span>');
   html = html.replaceAll("特集", "Features");
   html = html.replaceAll("車窓一覧", "All views");
+  html = html.replace('<p><span class="copy-chunk">花火の夜、街の灯り、期間限定の車両、</span><span class="copy-chunk">その日にしか出会えない空。</span><span class="copy-chunk">同じ路線が別の景色になります。</span></p>', '<p>Fireworks, city lights, limited-run trains, and skies shaped by the season and time of day.</p>');
   html = html
     .replace(/東海道新幹線の\d+の車窓を、/g, `Find ${SPOT_COUNT} views from the Tokaido Shinkansen,`)
     .replace(/\d+の車窓から、見たい景色を探す。/g, `Browse ${SPOT_COUNT} window views and find your favorites.`)
