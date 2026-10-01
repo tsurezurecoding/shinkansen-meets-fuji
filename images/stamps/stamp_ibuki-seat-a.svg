@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="A席から伊吹山 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#b83a2a" fill="#b83a2a" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="52" text-anchor="middle" font-size="14" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">A席から伊吹山</text>
+
+<path d="M44 130 Q64 116 82 120 Q112 82 136 112 Q147 122 158 132" fill="none" stroke-width="2.5"/>
+<path d="M100 100 l12 8 l8 -4 l8 8" fill="none" stroke-width="2"/>
+<path d="M44 135 Q76 120 96 130 Q124 122 158 138" fill="none" stroke-width="2"/>
+<path d="M52 143 H148" fill="none" stroke-width="1.8"/>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">A席</text>
+</g>
+</svg>

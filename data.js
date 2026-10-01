@@ -5729,8 +5729,8 @@ const SPOTS = [
       en: ["Mt. Ibuki: the mountain that dominates", "the Sekigahara window"],
     },
     metaDescription: {
-      ja: "岐阜羽島から米原へ向かうE席側、関ヶ原を抜けたあたりで大きく見える独立峰が伊吹山（1,377m）。日本武尊の伝説、日本一の積雪記録、季節ごとの表情の変化を、車窓での楽しみ方と合わせて紹介します。",
-      en: "Between Gifu-Hashima and Maibara, the low massive mountain filling the Seat E window after Sekigahara is 1,377-meter Mt. Ibuki. Learn about its Yamato Takeru legend, Japan's record-deep snowfall here, and how its face changes through the seasons — with tips for spotting it from the Shinkansen.",
+      ja: "岐阜羽島から米原へ向かうE席側で大きく見える伊吹山（1,377m）。米原手前ではA席側からも別の角度で探せます。日本武尊の伝説、積雪記録、季節ごとの表情を紹介します。",
+      en: "Mt. Ibuki fills the Seat E window between Gifu-Hashima and Maibara. Near Maibara, it can also be spotted from Seat A at a separate point. Explore its legends, snowfall record and changing seasonal colours.",
     },
     sectionHeading: {
       ja: "伊吹山とはどんな山？",
@@ -5815,6 +5815,13 @@ const SPOTS = [
           title: { ja: "伊吹山の車窓動画 3", en: "Mt. Ibuki window video 3" },
           url: "https://www.youtube.com/watch?v=puK5Tr_2Sxo",
         },
+        {
+          kind: "youtube",
+          id: "OW_kRftmgfc",
+          title: { ja: "[新幹線の車窓] 山霧と伊吹山", en: "[新幹線の車窓] 山霧と伊吹山" },
+          url: "https://www.youtube.com/watch?v=OW_kRftmgfc",
+          comment: { ja: "山霧の向こうに現れる伊吹山（2026年9月29日撮影）。", en: "Mt. Ibuki emerging beyond mountain mist (filmed 29 September 2026)." },
+        },
       ],
       platformNote: {
         ja: "動画はX・YouTubeの公式埋め込みを利用しています。",
@@ -5824,6 +5831,30 @@ const SPOTS = [
     references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara, REFERENCES.ibukiKojiki],
     map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
     viewpoint: { lat: 35.361280, lng: 136.411719 },
+  },
+  {
+    id: "ibuki-seat-a", icon: "⛰️",
+    ja: { name: "A席から見る伊吹山", area: "岐阜羽島 → 米原（米原手前）", hook: "A席にも、伊吹山。", story: "米原に近づくころ、A席側からも伊吹山が見えます。田んぼと低い山並みの奥、採石跡が見える山を探してください。E席側で大きく見る地点とは異なる、線路が曲がる場所での短い眺めです。" },
+    en: { name: "Mt. Ibuki from Seat A", area: "Gifu-Hashima → Maibara (near Maibara)", hook: "Ibuki appears from Seat A, too.", story: "Near Maibara, Mt. Ibuki also appears through the Seat A window. Look beyond the fields and lower hills for its pale quarried slope. This is a brief view at a different point from the longer Seat E view." },
+    guidePageId: "ibuki",
+    guideAnchor: "ibuki-seat-a",
+    guideNotice: {
+      heading: { ja: "伊吹山のもう一つの見え方", en: "Another view of Mt. Ibuki" },
+      body: { ja: "E席側の眺めとは地点と見え方が異なります。写真と探す目印は伊吹山の記事へ。", en: "This view uses a different point and angle from the Seat E view. See the photo and landmarks in the Mt. Ibuki guide." },
+      label: { ja: "伊吹山の記事で写真を見る →", en: "See the photograph in the Mt. Ibuki guide →" },
+    },
+    sharedGuideHeading: { ja: "A席からも見える伊吹山", en: "Mt. Ibuki from Seat A" },
+    sharedGuideStory: {
+      ja: ["伊吹山は、米原の手前でA席側からも見えます。線路が曲がる地点では、田んぼと手前の低い山並みの奥に、採石跡が白っぽく見える大きな山が現れます。写真では左奥に写っています。E席側から長く見る地点とは約10km離れた別の車窓です。", "2026年8月16日の上りこだま836号でA席から撮影し、同時刻のGPSと照合しました。下りのぞみ301号のGPSでも同じ地点を通過しています。見える長さは動画などで引き続き確認するため、案内の秒数は暫定です。"],
+      en: ["Near Maibara, Mt. Ibuki can also be seen from Seat A. As the track curves, look beyond the fields and lower hills for the larger mountain with a pale quarry scar. It appears at the far left of the photograph. This is a separate window view roughly 10 km from the longer Seat E viewing point.", "The photograph was taken from Seat A on an eastbound Kodama on 16 August 2026 and matched to that ride's GPS. A westbound Nozomi also passed the same point on 30 September. The viewing duration is provisional until the interval is checked against video."],
+    },
+    guideHighlight: { ja: "米原に近づく下り列車ではA席側へ。田んぼの向こう、低い山並みの左奥に採石跡のある伊吹山を探します。上り列車では米原を出たあとが目安です。見える秒数は暫定です。", en: "On a westbound train approaching Maibara, watch Seat A for Mt. Ibuki beyond the fields and lower hills. On an eastbound train, look after leaving Maibara. The viewing duration is provisional." },
+    minutesFromTokyo: 111.5, side: "A", category: "classic", confidence: "verified", durationSec: 5, scene: "mountain",
+    image: "images/20260816_ibuki-seat-a_michikusa.jpg",
+    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-16", note: { ja: "A席側。写真左奥に採石跡の見える伊吹山", en: "Seat A view: Mt. Ibuki and its pale quarried slope at the far left." } },
+    references: [REFERENCES.ibuki, REFERENCES.ibukiMaibara],
+    map: { lat: 35.41778, lng: 136.40611, ja: "伊吹山", en: "Mt. Ibuki" },
+    viewpoint: { lat: 35.33490966, lng: 136.29537202 },
   },
   {
     "id": "sennenq-sign",
@@ -6593,6 +6624,21 @@ const SPOTS = [
         "date": "2026-09-30"
       }
     ],
+    "media": {
+      "heading": { "ja": "動画で見る彦根城", "en": "Hikone Castle in motion" },
+      "description": {
+        "ja": "遠くの天守を車窓から探す様子を動画で確かめられます。",
+        "en": "See how the distant keep appears through the train window."
+      },
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "V0t-dPBWI4Q",
+          "title": { "ja": "[新幹線の車窓] 遠くに見える彦根城", "en": "[新幹線の車窓] 遠くに見える彦根城" },
+          "url": "https://www.youtube.com/watch?v=V0t-dPBWI4Q"
+        }
+      ]
+    },
     "references": [
       {
         "label": {

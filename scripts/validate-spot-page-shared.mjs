@@ -481,7 +481,7 @@ async function runThinValidator() {
   }
 
   const reps = [
-    ["ibuki", "ja"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],
+    ["ibuki", "ja"], ["hikone-castle", "ja"], ["hamanako", "ja"], ["kiyosu", "ja"], ["nagoya-station-skyline", "ja"], ["gifu-castle", "ja"], ["fuji", "ja"], ["odawara-castle", "ja"], ["hamanako", "en"],
   ];
   for (const [id, lang] of reps) {
     const prefix = lang === "ja" ? "../" : "../../";
@@ -490,7 +490,8 @@ async function runThinValidator() {
     if (!result.html || result.errors.length) fail(`representative ${id}/${lang} renderer failed`);
     // ギャラリー枚数は写真が増えれば動く編集データ。件数の正当性は本文ループの
     // expectedGalleryCount が data.js から導いて既に検証している。ここは動画契約だけ見る。
-    if (id === "ibuki" && (!page.gallery.length || page.media.videos.length !== 3 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 2)) fail("Ibuki representative content/video contract failed");
+    if (id === "ibuki" && (!page.gallery.some((photo) => photo.src.includes("ibuki-seat-a")) || page.media.videos.length !== 4 || count(result.html, /class="twitter-tweet"/g) !== 1 || count(result.html, /youtube-nocookie\.com\/embed\//g) !== 3 || !page.sharedGuide.some((guide) => guide.id === "ibuki-seat-a"))) fail("Ibuki representative content/video contract failed");
+    if (id === "hikone-castle" && (page.media.videos.length !== 1 || !result.html.includes("V0t-dPBWI4Q"))) fail("Hikone Castle video contract failed");
     // 写真見出しは言語ごとに別文字列。日本語の部分一致を英語ページへ当てない。
     if (id === "hamanako" && (!page.sharedGuide.length || !page.photoHeadingCustom || !page.photoHeading.includes(lang === "ja" ? "浜名湖" : "Lake Hamana") || !result.html.includes("hamanako-fuji"))) fail("Hamanako representative composition failed");
     if (id === "kiyosu" && (!page.photoTip || !result.html.includes("spot-page-phototip"))) fail("Kiyosu photoTip representative failed");
@@ -500,6 +501,7 @@ async function runThinValidator() {
     if (id === "odawara-castle" && (!page.map.viewpoint || !page.map.viewpointUrl)) fail("Odawara Castle viewpoint fallback representative failed");
   }
   if (pages.hamanako.ja.sideLabel !== "A席・海側 / E席・山側") fail("A+E side projection is missing");
+  if (pages["ibuki-seat-a"].ja.sideLabel !== "A席・海側" || !pages["ibuki-seat-a"].ja.guideNotice?.href.includes("ibuki.html#ibuki-seat-a")) fail("Seat A Ibuki guide projection is missing");
   if (pages["727-board"].ja.sideLabel !== "E席・山側") fail("248 page must project the representative E-seat side");
 
   const safety = renderPage("ja", "../", "fuji", (data, page) => { page.hero.src = "images/../escape.png"; });
