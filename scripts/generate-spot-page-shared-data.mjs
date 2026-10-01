@@ -383,8 +383,9 @@ function projectSharedGuide(spot, lang) {
     return {
       id: chapter.guideAnchor || chapter.id,
       heading: localized(chapter.sharedGuideHeading, lang) || data.name,
+      eyebrow: localized(chapter.sharedGuideEyebrow, lang) || "ANOTHER VIEW",
       hook: data.hook || "",
-      ...(chapter.id === "hamanako-fuji" ? { figure: projectPhoto(photoItems(chapter)[0], chapter, lang, 0) } : {}),
+      ...(chapter.sharedGuideFigure ? { figure: projectPhoto(photoItems(chapter)[0], chapter, lang, 0) } : {}),
       paragraphs: Array.isArray(paragraphs) && paragraphs.length ? paragraphs : [data.story || ""],
     };
   });

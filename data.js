@@ -4304,6 +4304,8 @@ const SPOTS = [
       ja: "もうひとつの主役：浜名湖越しの富士山",
       en: "A second highlight: Mt. Fuji beyond Lake Hamana",
     },
+    sharedGuideEyebrow: "BEYOND THE LAKE",
+    sharedGuideFigure: true,
     sharedGuideStory: {
       ja: [
         "浜名湖越しの富士山は、富士5景のなかで最も遠く、小さく探す一景です。E席側で、サンマリンブリッジの奥から湖と空の境目へ視線を移してください。冬を中心に空気が澄んだ日だけ出会いやすい、見えたこと自体がうれしい富士山です。",
@@ -5844,11 +5846,13 @@ const SPOTS = [
       label: { ja: "伊吹山の記事で写真を見る →", en: "See the photograph in the Mt. Ibuki guide →" },
     },
     sharedGuideHeading: { ja: "A席からも見える伊吹山", en: "Mt. Ibuki from Seat A" },
+    sharedGuideEyebrow: "FROM SEAT A",
+    sharedGuideFigure: true,
     sharedGuideStory: {
-      ja: ["伊吹山は、米原の手前でA席側からも見えます。線路が曲がる地点では、田んぼと手前の低い山並みの奥に、採石跡が白っぽく見える大きな山が現れます。写真では左奥に写っています。E席側から長く見る地点とは約10km離れた別の車窓です。", "2026年8月16日の上りこだま836号でA席から撮影し、同時刻のGPSと照合しました。下りのぞみ301号のGPSでも同じ地点を通過しています。見える長さは動画などで引き続き確認するため、案内の秒数は暫定です。"],
-      en: ["Near Maibara, Mt. Ibuki can also be seen from Seat A. As the track curves, look beyond the fields and lower hills for the larger mountain with a pale quarry scar. It appears at the far left of the photograph. This is a separate window view roughly 10 km from the longer Seat E viewing point.", "The photograph was taken from Seat A on an eastbound Kodama on 16 August 2026 and matched to that ride's GPS. A westbound Nozomi also passed the same point on 30 September. The viewing duration is provisional until the interval is checked against video."],
+      ja: ["米原に近づくころ、線路が曲がる場所ではA席側からも伊吹山が見えます。田んぼと低い山並みの奥、写真の左端にある採石跡の白っぽい山を探してください。E席側で大きく見る伊吹山とは、見える地点も角度も異なります。"],
+      en: ["Near Maibara, the curve in the tracks brings Mt. Ibuki into view from Seat A. Look beyond the fields and lower hills for the mountain with a pale quarry scar at the far left of the photograph. This is a different angle from the larger Seat E view."],
     },
-    guideHighlight: { ja: "米原に近づく下り列車ではA席側へ。田んぼの向こう、低い山並みの左奥に採石跡のある伊吹山を探します。上り列車では米原を出たあとが目安です。見える秒数は暫定です。", en: "On a westbound train approaching Maibara, watch Seat A for Mt. Ibuki beyond the fields and lower hills. On an eastbound train, look after leaving Maibara. The viewing duration is provisional." },
+    guideHighlight: { ja: "米原に近づく下り列車ではA席側へ。田んぼの向こう、低い山並みの左奥に採石跡のある伊吹山を探します。上り列車では米原を出たあとが目安です。", en: "On a westbound train approaching Maibara, watch Seat A for Mt. Ibuki beyond the fields and lower hills. On an eastbound train, look after leaving Maibara." },
     minutesFromTokyo: 111.5, side: "A", category: "classic", confidence: "verified", durationSec: 5, scene: "mountain",
     image: "images/20260816_ibuki-seat-a_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-16", note: { ja: "A席側。写真左奥に採石跡の見える伊吹山", en: "Seat A view: Mt. Ibuki and its pale quarried slope at the far left." } },
