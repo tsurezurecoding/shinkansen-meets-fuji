@@ -183,8 +183,9 @@
   .brand-mark {flex-shrink: 0;}
   .brand-name, .brand-name small, .brand-sub {overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
   .brand-name small, .brand-sub {letter-spacing: 0.08em;}
-  .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; gap: 2px; overflow: visible; padding-top: 2px; scrollbar-width: none;}
+  .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; gap: 2px; overflow: visible; padding-top: 2px; scrollbar-width: none; position: relative; z-index: 2;}
   .top-nav::-webkit-scrollbar {display: none;}
+  .top-nav-more {position: static;}
   .top-nav a,
   .top-nav-more summary {padding: 4px 7px; font-size: 11px;}
   .top-nav-overflow {display: none;}
