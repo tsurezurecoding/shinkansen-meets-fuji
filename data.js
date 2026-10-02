@@ -4067,8 +4067,8 @@ const SPOTS = [
       "story": "After Kakegawa toward Hamamatsu, a blue wall with white POCARI SWEAT lettering appears above a grassy slope on the Seat A side. This is Otsuka Pharmaceutical's Fukuroi Plant, which has mainly made PET bottles of Pocari Sweat since 1996. Otsuka itself notes that the plant can be seen from the Shinkansen, and the wall sign is lit up at night."
     },
     "pageTitle": {
-      "ja": "新幹線から見える大塚製薬のポカリスエット工場｜袋井工場 | 新幹線の窓",
-      "en": "Otsuka's Pocari Sweat Plant from the Shinkansen | Fukuroi"
+      "ja": "大塚製薬 袋井工場｜新幹線から見えるポカリスエットの青い工場 | 新幹線の窓",
+      "en": "What Is Pocari Sweat? Otsuka's Blue Factory from the Shinkansen"
     },
     "pageHeading": {
       "ja": "芝の丘に青い壁——大塚製薬のポカリスエット工場",
@@ -4086,8 +4086,8 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "掛川〜浜松のA席側、芝の斜面の上に見える青い壁は大塚製薬の袋井工場。ポカリスエットのペットボトルをつくる工場です。開発の歴史、名前と青い色の由来、隣に続く工場、車窓での見つけ方を写真とともに紹介します。",
-      "en": "Between Kakegawa and Hamamatsu, the blue POCARI SWEAT wall on Seat A is Otsuka Pharmaceutical's Fukuroi Plant. Learn how Pocari Sweat was created, where its name and blue come from, and how to spot it."
+      "ja": "東海道新幹線の掛川〜浜松、A席側の芝の丘に見える青い壁は大塚製薬 袋井工場。ポカリスエットをつくる工場です。「ポカリスエット」の名前の意味と青い色の由来、隣のポーラ袋井工場、車窓での見つけ方を写真で紹介します。",
+      "en": "Pocari Sweat is a Japanese drink made to replace the water and electrolytes lost in sweat. See Otsuka's blue Pocari Sweat factory in Fukuroi from Seat A between Kakegawa and Hamamatsu, and learn where the name comes from."
     },
     "sectionHeading": {
       "ja": "ポカリスエットをつくる青い工場",
@@ -4754,8 +4754,8 @@ const SPOTS = [
       "story": "After Toyohashi toward Nagoya, greenhouse roofs keep appearing on the Seat E side through Toyokawa and Gamagori. The biggest landmark is the cluster filling the foot of the hills in Kaminogo, Gamagori, beside a large sign for Gamagori mikan. Mild, sunny winters and water from the Toyokawa irrigation system made greenhouse farming thrive across East Mikawa."
     },
     "pageTitle": {
-      "ja": "新幹線から見える豊橋〜蒲郡のビニールハウス｜東三河の施設園芸と蒲郡みかんの看板 | 新幹線の窓",
-      "en": "Greenhouses from Toyohashi to Gamagori | Shinkansen Window"
+      "ja": "蒲郡みかんの看板とビニールハウス｜新幹線から見える豊橋〜蒲郡 | 新幹線の窓",
+      "en": "Greenhouses and Mikan Country from the Shinkansen"
     },
     "pageHeading": {
       "ja": "東三河のハウス群——豊橋から蒲郡へ続く屋根の海",
@@ -4773,16 +4773,16 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "豊橋〜三河安城のE席側、豊川市から蒲郡市にかけて見えるビニールハウス群と「蒲郡みかん」の看板。温暖な冬と豊川用水に支えられた東三河の施設園芸、トマト・大葉・みかん・いちごの産地を写真とともに紹介します。",
-      "en": "On Seat E after Toyohashi, greenhouses line the route through Toyokawa and Gamagori. Learn how mild winters and irrigation water shaped East Mikawa's greenhouse farming, and what the big Gamagori mikan sign stands for."
+      "ja": "東海道新幹線の豊橋〜三河安城、E席側に続くビニールハウスと「蒲郡みかん」の看板。全国屈指の農業地帯・東三河でハウスが目立つ理由、豊川用水、ハウスみかんの歴史を写真で紹介します。",
+      "en": "Why do so many greenhouses line the Shinkansen after Toyohashi? See East Mikawa, one of Japan's top farming areas, the Gamagori mikan sign, and the water and climate behind the landscape."
     },
     "sectionHeading": {
       "ja": "温暖な冬と用水が広げた東三河のハウス",
       "en": "Mild winters, irrigation water and greenhouses"
     },
     "pageStory": {
-      "ja": "豊橋を過ぎて名古屋方面へ進むと、E席側に、半透明の屋根を連ねたハウスが何度も現れます。豊橋のすぐ先、豊川市御津町のあたりで田畑の間に長いハウスが並び、約2分後の蒲郡市神ノ郷町では、山すその平地をハウスの屋根がびっしりと埋めつくします。新幹線から見えるのはその一部ですが、豊橋・豊川・蒲郡・田原を含む東三河は、ハウスで野菜や果物、花を育てる施設園芸の盛んな地域です。\n\n背景には気候と水があります。東三河は冬でも温暖で日照に恵まれ、豊橋市や田原市ではトマトの温室栽培が盛んで、一年を通じて出荷されています。もうひとつの支えが豊川用水です。宇連ダムや大島ダム、万場調整池などの施設が整い、東三河に農業用水を安定して届けられるようになりました。昔から水不足に悩んできた蒲郡市でも、1968年に完成した豊川用水によってハウス栽培が広がりました。\n\n蒲郡市は東・北・西の三方を山に囲まれ、南に三河湾がひらく温暖な土地です。市の主な作物は、みかん、「サンベリー」の名で出荷されるいちご、そして大葉や食用菊、エディブルフラワーなど料理に添える「つまもの」。看板の「蒲郡みかん」はこの地域のみかんの銘柄で、蒲郡市博物館によれば1679年の五井村の記録に数本のみかんが記され、明治中期には「神ノ郷みかん」「西郡みかん」の名で知られるようになりました。神ノ郷は、まさにこの撮影地点の町名です。1973年に隣の御津町で温室みかんが導入されると、蒲郡市内でも昭和50年代に栽培農家が飛躍的に増え、いまは約30ヘクタールのハウスみかんが4月中旬から9月中旬にかけて全国へ出荷されています。「蒲郡みかん」は2008年、愛知県の農産物で初めて地域団体商標に登録されました。\n\nただし、どのハウスで何を育てているかは、車窓から一棟ずつ見分けられません。看板は地域の銘柄を知らせるもので、周りのハウスがすべてみかん用という意味ではありません。",
-      "en": "After Toyohashi toward Nagoya, rows of translucent greenhouse roofs keep appearing on the Seat E side. Just past Toyohashi, around Mito in Toyokawa, long greenhouses stand among the fields; about two minutes later, in Kaminogo, Gamagori, greenhouse roofs pack the flat land at the foot of the hills. The train shows only a slice of it, but East Mikawa—including Toyohashi, Toyokawa, Gamagori and Tahara—is a region where vegetables, fruit and flowers are widely grown under cover.\n\nClimate and water lie behind it. East Mikawa has mild, sunny winters, and Toyohashi and Tahara grow tomatoes in greenhouses for shipment all year round. The other foundation is the Toyokawa irrigation system: dams and reservoirs such as Ure Dam, Ohshima Dam and the Manba regulating pond now deliver a stable supply of farm water across East Mikawa. In Gamagori, which long struggled with water shortages, the system's completion in 1968 allowed greenhouse farming to spread.\n\nGamagori is ringed by hills to the east, north and west and opens to Mikawa Bay in the south, giving it a mild climate. Its main crops are mikan (Japanese mandarins), strawberries sold as Sun Berry, and tsumamono—garnishes such as shiso leaves, edible chrysanthemums and edible flowers. The big sign advertises Gamagori mikan, the local mandarin brand. According to the Gamagori City Museum, a record from Goi village in 1679 lists a few mikan trees, and by the mid-Meiji period the fruit was known as Kaminogo mikan or Nishinokori mikan—Kaminogo being the very neighborhood in the photograph. After greenhouse mikan were introduced in neighboring Mito in 1973, the number of growers in Gamagori rose sharply from the late 1970s; today about 30 hectares of greenhouse mikan are shipped across Japan from mid-April to mid-September. In 2008 Gamagori mikan became the first Aichi farm product registered as a regional collective trademark.\n\nFrom the train, though, there is no way to tell what grows inside any particular greenhouse. The sign promotes the local brand; it does not mean every greenhouse around it grows mikan."
+      "ja": "豊橋を過ぎて名古屋方面へ進むと、E席側に、半透明の屋根を連ねたハウスが何度も現れます。豊橋のすぐ先、豊川市御津町のあたりで田畑の間に長いハウスが並び、約2分後の蒲郡市神ノ郷町では、山すその平地をハウスの屋根がびっしりと埋めつくします。新幹線から見えるのはその一部ですが、豊橋・豊川・蒲郡・田原を含む東三河は、ハウスで野菜や果物、花を育てる施設園芸の盛んな地域です。\n\nなぜここでハウスが目立つのか。豊橋市は市町村別の農業産出額で1967年から2004年まで全国1位を続け、いまも全国トップクラスの産地です。渥美半島の田原市は2024年に全国1位になりました。愛知県の園芸施設の設置面積は、熊本県・茨城県に次ぐ全国3位です。ただし新幹線が通るのはこの農業地帯の北の端で、温室が特に集まる豊橋市南部や渥美半島は車窓からは見えません。車窓のハウスは、その広がりの入口にあたります。\n\n背景には気候と水があります。東三河は冬でも温暖で日照に恵まれ、豊橋市や田原市ではトマトの温室栽培が盛んで、一年を通じて出荷されています。もうひとつの支えが豊川用水です。宇連ダムや大島ダム、万場調整池などの施設が整い、東三河に農業用水を安定して届けられるようになりました。昔から水不足に悩んできた蒲郡市でも、1968年に完成した豊川用水によってハウス栽培が広がりました。\n\n蒲郡市は東・北・西の三方を山に囲まれ、南に三河湾がひらく温暖な土地です。市の主な作物は、みかん、「サンベリー」の名で出荷されるいちご、そして大葉や食用菊、エディブルフラワーなど料理に添える「つまもの」。看板の「蒲郡みかん」はこの地域のみかんの銘柄で、蒲郡市博物館によれば1679年の五井村の記録に数本のみかんが記され、明治中期には「神ノ郷みかん」「西郡みかん」の名で知られるようになりました。神ノ郷は、まさにこの撮影地点の町名です。1973年に隣の御津町で温室みかんが導入されると、蒲郡市内でも昭和50年代に栽培農家が飛躍的に増え、いまは約30ヘクタールのハウスみかんが4月中旬から9月中旬にかけて全国へ出荷されています。「蒲郡みかん」は2008年、愛知県の農産物で初めて地域団体商標に登録されました。\n\nただし、どのハウスで何を育てているかは、車窓から一棟ずつ見分けられません。看板は地域の銘柄を知らせるもので、周りのハウスがすべてみかん用という意味ではありません。",
+      "en": "After Toyohashi toward Nagoya, rows of translucent greenhouse roofs keep appearing on the Seat E side. Just past Toyohashi, around Mito in Toyokawa, long greenhouses stand among the fields; about two minutes later, in Kaminogo, Gamagori, greenhouse roofs pack the flat land at the foot of the hills. The train shows only a slice of it, but East Mikawa—including Toyohashi, Toyokawa, Gamagori and Tahara—is a region where vegetables, fruit and flowers are widely grown under cover.\n\nWhy do greenhouses stand out here? Toyohashi ranked first in Japan for agricultural output by municipality every year from 1967 to 2004 and remains one of the country's top producers, while neighboring Tahara on the Atsumi Peninsula ranked first in 2024. Aichi has the third-largest area of horticultural greenhouses of any prefecture, after Kumamoto and Ibaraki. The Shinkansen, however, runs along the northern edge of this farming belt; the densest greenhouse areas, in southern Toyohashi and on the Atsumi Peninsula, are out of sight. The greenhouses you see from the window are the doorway to that landscape.\n\nClimate and water lie behind it. East Mikawa has mild, sunny winters, and Toyohashi and Tahara grow tomatoes in greenhouses for shipment all year round. The other foundation is the Toyokawa irrigation system: dams and reservoirs such as Ure Dam, Ohshima Dam and the Manba regulating pond now deliver a stable supply of farm water across East Mikawa. In Gamagori, which long struggled with water shortages, the system's completion in 1968 allowed greenhouse farming to spread.\n\nGamagori is ringed by hills to the east, north and west and opens to Mikawa Bay in the south, giving it a mild climate. Its main crops are mikan (Japanese mandarins), strawberries sold as Sun Berry, and tsumamono—garnishes such as shiso leaves, edible chrysanthemums and edible flowers. The big sign advertises Gamagori mikan, the local mandarin brand. According to the Gamagori City Museum, a record from Goi village in 1679 lists a few mikan trees, and by the mid-Meiji period the fruit was known as Kaminogo mikan or Nishinokori mikan—Kaminogo being the very neighborhood in the photograph. After greenhouse mikan were introduced in neighboring Mito in 1973, the number of growers in Gamagori rose sharply from the late 1970s; today about 30 hectares of greenhouse mikan are shipped across Japan from mid-April to mid-September. In 2008 Gamagori mikan became the first Aichi farm product registered as a regional collective trademark.\n\nFrom the train, though, there is no way to tell what grows inside any particular greenhouse. The sign promotes the local brand; it does not mean every greenhouse around it grows mikan."
     },
     "explainer": {
       "heading": {
@@ -4876,10 +4876,24 @@ const SPOTS = [
       },
       {
         "label": {
-          "ja": "豊橋市：次世代施設園芸",
-          "en": "Toyohashi City: next-generation greenhouse farming (Japanese)"
+          "ja": "豊橋市：豊橋市の農業の概要",
+          "en": "Toyohashi City: an overview of farming in Toyohashi (Japanese)"
         },
-        "url": "https://www.city.toyohashi.lg.jp/18937.htm"
+        "url": "https://www.city.toyohashi.lg.jp/50010.htm"
+      },
+      {
+        "label": {
+          "ja": "田原市：農業産出額 全国第1位",
+          "en": "Tahara City: first in Japan for agricultural output (Japanese)"
+        },
+        "url": "https://www.city.tahara.aichi.jp/kankou/nogyou/1005074/1001901.html"
+      },
+      {
+        "label": {
+          "ja": "農林水産省：施設園芸をめぐる情勢（令和8年5月）",
+          "en": "MAFF: the state of greenhouse horticulture, May 2026 (Japanese PDF)"
+        },
+        "url": "https://www.maff.go.jp/j/seisan/ryutu/engei/sisetsu/attach/pdf/index-100.pdf"
       }
     ],
     "map": {
