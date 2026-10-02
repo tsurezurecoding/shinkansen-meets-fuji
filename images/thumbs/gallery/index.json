@@ -1055,6 +1055,14 @@
     "quality": 72,
     "sha256": "00a9bd3dab1e21fa66d8047eadffaef849793fc4b8e7bc96bf7ad699c1704b31"
   },
+  "images/thumbs/gallery/20260816_east_mikawa_greenhouses_michikusa.webp": {
+    "source": "images/20260816_east_mikawa_greenhouses_michikusa.jpg",
+    "sourceSha256": "e3e8684a83c2a2c1d4e1626ff769d4c804519a42ff67c7b2358c62efc5eafa0e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "098b563734496bfa6ad69a30a09d1f899ce244b39be789d06a6199d6b603c2b5"
+  },
   "images/thumbs/gallery/20260816_fuji_paper_mills_michikusa.webp": {
     "source": "images/20260816_fuji_paper_mills_michikusa.jpg",
     "sourceSha256": "b8ed036ff8db3687bf588ecc3a039f0f72a61e854c5a2a5ee9c93c7e329e73b6",

@@ -4055,47 +4055,47 @@ const SPOTS = [
     "id": "pocari-fukuroi",
     "icon": "🥤",
     "ja": {
-      "name": "ポカリスエットの袋井工場",
+      "name": "大塚製薬のポカリスエット工場",
       "area": "掛川 → 浜松（袋井市）",
       "hook": "芝の丘に、ポカリの青。",
       "story": "掛川を過ぎて浜松へ向かうA席側、芝生の斜面の上に、青い壁と白い「POCARI SWEAT」の文字が現れます。大塚製薬の袋井工場で、1996年から主にポカリスエットのペットボトルをつくってきました。大塚製薬自身が「新幹線の車窓から見える」と紹介している工場で、夜は外壁のサインがライトアップされます。"
     },
     "en": {
-      "name": "Pocari Sweat's Fukuroi Plant",
+      "name": "Otsuka's Pocari Sweat Plant",
       "area": "Kakegawa → Hamamatsu (Fukuroi)",
       "hook": "Pocari Sweat blue on a grassy hill.",
       "story": "After Kakegawa toward Hamamatsu, a blue wall with white POCARI SWEAT lettering appears above a grassy slope on the Seat A side. This is Otsuka Pharmaceutical's Fukuroi Plant, which has mainly made PET bottles of Pocari Sweat since 1996. Otsuka itself notes that the plant can be seen from the Shinkansen, and the wall sign is lit up at night."
     },
     "pageTitle": {
-      "ja": "新幹線から見えるポカリスエットの工場｜大塚製薬袋井工場 | 新幹線の窓",
-      "en": "The Pocari Sweat Plant from the Shinkansen | Otsuka Fukuroi"
+      "ja": "新幹線から見える大塚製薬のポカリスエット工場｜袋井工場 | 新幹線の窓",
+      "en": "Otsuka's Pocari Sweat Plant from the Shinkansen | Fukuroi"
     },
     "pageHeading": {
-      "ja": "芝の丘に青い壁——ポカリスエットの袋井工場",
-      "en": "The blue wall of the Pocari Sweat plant"
+      "ja": "芝の丘に青い壁——大塚製薬のポカリスエット工場",
+      "en": "The blue wall of Otsuka's Pocari Sweat plant"
     },
     "pageHeadingChunks": {
       "ja": [
         "芝の丘に青い壁——",
-        "ポカリスエットの",
-        "袋井工場"
+        "大塚製薬の",
+        "ポカリスエット工場"
       ],
       "en": [
-        "The blue wall of the",
-        "Pocari Sweat plant"
+        "The blue wall of",
+        "Otsuka's Pocari Sweat plant"
       ]
     },
     "metaDescription": {
-      "ja": "掛川〜浜松のA席側、芝の斜面の上に見える青い壁は大塚製薬の袋井工場。ポカリスエットのペットボトルをつくる工場です。「汗の飲料」という発想、名前と青い色の由来、車窓での見つけ方を写真とともに紹介します。",
-      "en": "Between Kakegawa and Hamamatsu, the blue POCARI SWEAT wall on Seat A is Otsuka Pharmaceutical's Fukuroi Plant. Learn what Pocari Sweat is, where its name and blue come from, and how to spot it."
+      "ja": "掛川〜浜松のA席側、芝の斜面の上に見える青い壁は大塚製薬の袋井工場。ポカリスエットのペットボトルをつくる工場です。開発の歴史、名前と青い色の由来、隣に続く工場、車窓での見つけ方を写真とともに紹介します。",
+      "en": "Between Kakegawa and Hamamatsu, the blue POCARI SWEAT wall on Seat A is Otsuka Pharmaceutical's Fukuroi Plant. Learn how Pocari Sweat was created, where its name and blue come from, and how to spot it."
     },
     "sectionHeading": {
-      "ja": "「汗の飲料」をつくる青い工場",
-      "en": "Where the 'sweat drink' is made"
+      "ja": "ポカリスエットをつくる青い工場",
+      "en": "Where Pocari Sweat is made"
     },
     "pageStory": {
-      "ja": "芝生の斜面の上に横長に続く建物は、大塚製薬の袋井工場です。1996年5月に操業を始め、敷地は約9万3千平方メートル。東西に長い敷地が東海道新幹線に沿った小高い丘の上にあり、主にポカリスエットのペットボトルを製造しています。ポカリスエット イオンウォーター、ボディメンテ、アミノバリューもここでつくられる製品です。大塚製薬は、芝の斜面とポカリスエットのイメージカラーの外観を、新幹線の車窓から楽しめる工場として紹介しています。\n\nポカリスエットは1980年に発売された飲料です。開発は「汗の飲料はできないか」という提案から始まりました。汗をかくと、水分だけでなくナトリウムやカリウムなどの電解質も失われます。それを補うため、体液の浸透圧に着目して糖分を一般的なジュースの約半分に抑え、電解質の苦みを消すために1000種類以上の試作を重ねました。発売当初は「まずい。薄い。売れっこない」とまで言われましたが、野球場や陸上競技場、サウナなど汗をかく場所で試飲を配り、発売の翌年に大きく広がりました。\n\n英語を話す人が驚きやすい名前にも理由があります。「スエット（sweat）」は英語の「汗」で、身体から目に見えて失われる汗を表し、水分とイオンの大切さを訴える言葉です。「ポカリ」は軽く明るい響きを選んだ言葉で、特別な意味はありません。青と白の配色も、発売当時の飲料では「オイル缶みたい」と言われたほど異例でした。それでも、商品の本質である水と電解質の補給を表す色として採用され、40年以上ほとんど変わっていません。車窓の青い壁は、その配色をそのまま大きくした看板です。",
-      "en": "The long building above the grassy slope is Otsuka Pharmaceutical's Fukuroi Plant. It began operating in May 1996 on a site of about 93,000 square meters. The site stretches east to west on a low hill beside the Tokaido Shinkansen, and the plant mainly makes PET bottles of Pocari Sweat. Pocari Sweat Ion Water, Body Mainte and Amino-Value are also made here. Otsuka describes the grassy slope and the building in Pocari Sweat's signature colors as something passengers can enjoy from the Shinkansen.\n\nPocari Sweat went on sale in 1980. Its development began with a proposal for a 'sweat drink'. When you sweat, you lose not only water but also electrolytes such as sodium and potassium. To replace them, the developers looked at the osmotic pressure of body fluids, kept the sugar to about half that of a typical juice, and made more than 1,000 prototypes to remove the bitterness of the electrolytes. At launch it was dismissed as bland and unappealing, but Otsuka handed out samples where people sweat—at baseball stadiums, athletics tracks and saunas—and it took off the following year.\n\nThe name that surprises English speakers has its own logic. 'Sweat' stands for the visible fluid the body loses, a way of stressing the importance of water and ions; the drink replaces what sweat takes away. 'Pocari' was chosen for its light, bright sound and has no particular meaning. The blue-and-white design was just as unusual for a drink at the time—some said it looked like an oil can—but it was adopted to express water and electrolyte replenishment and has barely changed in more than 40 years. The blue wall seen from the train is that color scheme at building scale."
+      "ja": "芝生の斜面の上に横長に続く建物は、大塚製薬の袋井工場です。1996年5月に操業を始め、敷地は約9万3千平方メートル。東西に長い敷地が東海道新幹線に沿った小高い丘の上にあり、主にポカリスエットのペットボトルを製造しています。ポカリスエット イオンウォーター、ボディメンテ、アミノバリューもここでつくられる製品です。大塚製薬は、芝の斜面とポカリスエットのイメージカラーの外観を、新幹線の車窓から楽しめる工場として紹介しています。\n\nポカリスエットは1980年に発売されました。開発のきっかけは、「汗の飲料はできないか」という提案です。汗をかくと、水分だけでなくナトリウムやカリウムなどの電解質も失われます。それを補う飲み物にするため、体液の浸透圧に着目して糖分を一般的なジュースの約半分に抑え、電解質の苦みを消すために1000種類以上の試作を重ねました。発売当初は「まずい。薄い。売れっこない」とまで言われましたが、野球場や陸上競技場、サウナなど汗をかく場所で試飲を配り、発売の翌年に大きく広がりました。\n\n英語を話す人が驚きやすい名前にも理由があります。「スエット（sweat）」は英語の「汗」で、身体から目に見えて失われる汗を表し、水分とイオンの大切さを訴える言葉です。「ポカリ」は軽く明るい響きを選んだ言葉で、特別な意味はありません。青と白の配色も、発売当時の飲料では「オイル缶みたい」と言われたほど異例でした。それでも、商品の本質である水と電解質の補給を表す色として採用され、40年以上ほとんど変わっていません。車窓の青い壁は、その配色をそのまま大きくした看板です。",
+      "en": "The long building above the grassy slope is Otsuka Pharmaceutical's Fukuroi Plant. It began operating in May 1996 on a site of about 93,000 square meters. The site stretches east to west on a low hill beside the Tokaido Shinkansen, and the plant mainly makes PET bottles of Pocari Sweat. Pocari Sweat Ion Water, Body Mainte and Amino-Value are also made here. Otsuka describes the grassy slope and the building in Pocari Sweat's signature colors as something passengers can enjoy from the Shinkansen.\n\nPocari Sweat went on sale in 1980. It began with a proposal for a 'sweat drink' (ase no inryo). When you sweat, you lose not only water but also electrolytes such as sodium and potassium. To make a drink that replaces them, the developers looked at the osmotic pressure of body fluids, kept the sugar to about half that of a typical juice, and made more than 1,000 prototypes to remove the bitterness of the electrolytes. At launch it was dismissed as bland and unappealing, but Otsuka handed out samples where people sweat—at baseball stadiums, athletics tracks and saunas—and it took off the following year.\n\nThe name that surprises English speakers has its own logic. 'Sweat' stands for the visible fluid the body loses, a way of stressing the importance of water and ions; the drink replaces what sweat takes away. 'Pocari' was chosen for its light, bright sound and has no particular meaning. The blue-and-white design was just as unusual for a drink at the time—some said it looked like an oil can—but it was adopted to express water and electrolyte replenishment and has barely changed in more than 40 years. The blue wall seen from the train is that color scheme at building scale."
     },
     "explainer": {
       "heading": {
@@ -4106,14 +4106,12 @@ const SPOTS = [
         "写真では、線路沿いのフェンスと木々の奥に芝生の斜面がひろがり、その上に工場が横長に並んでいます。右側の青い外壁には、白い「POCARI SWEAT」の文字と、ボトルでおなじみの白い波形。左側にも同じ青の壁面があり、銀色の建物を青が挟む配色です。",
         "見分けるコツは、まず芝の斜面を探すことです。工場の敷地は東西に長く、斜面の上の建物が線路と平行に続きます。青い壁と白い文字が見えたら、そこがポカリスエットの工場です。手前の木々や架線柱で一瞬隠れることがあります。",
         "夜は外壁のサインがライトアップされ、暗い丘に青い壁と文字が浮かびます。この写真は曇りの日中に撮ったもので、夜の見え方はまだ撮影していません。",
-        "東京から新大阪へ向かう列車では、この約10秒手前、同じA席側にポーラ化成工業の袋井工場があります。ガラス面に新幹線が映り込むことがあり、反射鉄の特集で紹介しています。袋井の丘には、化粧品と飲料の工場が続けて並んでいます。",
         "工場では、ポカリスエットの生産ラインを見学通路から見られる無料の工場見学を、火曜日から金曜日（祝日・年末年始を除く）に完全予約制で行っています。日時や申込期間は、参考リンクの大塚製薬の案内で最新情報を確認してください。"
       ],
       "en": [
         "In the photograph, a grassy slope rises beyond the trackside fence and trees, with the plant stretched along the top. The blue wall on the right carries white POCARI SWEAT lettering and the white wave familiar from the bottles. Another blue wall on the left frames the silver buildings between the two.",
         "Look for the grassy slope first. The site is long from east to west, so the buildings on the slope run parallel to the tracks. Once you see the blue wall and white letters, you have found the Pocari Sweat plant. Trees and overhead-line poles can hide it for a moment.",
         "At night the wall sign is lit, so the blue wall and lettering float above the dark hill. This photograph was taken on a cloudy day, and we have not yet photographed the night view.",
-        "On trains from Tokyo toward Shin-Osaka, POLA Chemical Industries' Fukuroi Factory comes about 10 seconds earlier on the same Seat A side. Its glass sometimes reflects the passing Shinkansen, as shown in our reflections feature. On this hill in Fukuroi, a cosmetics plant and a drinks plant stand one after the other.",
         "The plant runs free tours from Tuesday to Friday (excluding holidays and the New Year period), with a gallery view of the Pocari Sweat production line. Tours are by advance reservation only; check Otsuka's guide in the references for current dates and booking periods."
       ]
     },
@@ -4178,6 +4176,13 @@ const SPOTS = [
           "en": "Pocari Sweat official: the 'forbidden blue' (Japanese)"
         },
         "url": "https://pocarisweat.jp/products/story/episode04/"
+      },
+      {
+        "label": {
+          "ja": "ポーラ化成工業：生産",
+          "en": "POLA Chemical Industries: production (Japanese)"
+        },
+        "url": "https://www.pola-rm.co.jp/production/"
       }
     ],
     "map": {
@@ -4189,7 +4194,46 @@ const SPOTS = [
     "viewpoint": {
       "lat": 34.74825951,
       "lng": 137.94912083
-    }
+    },
+    "pageChapters": [
+      {
+        "id": "fukuroi-factories",
+        "heading": {
+          "ja": "袋井の工場群｜ガラスに列車が映るポーラの工場",
+          "en": "Fukuroi's factories: POLA's glass wall"
+        },
+        "paragraphs": {
+          "ja": [
+            "掛川から浜松へ向かうA席側では、大塚製薬の工場のほかにも、線路沿いに大きな工場の建物が続きます。新大阪行きなら大塚製薬の約10秒手前、東京行きなら約10秒後に現れるのが、ポーラ化成工業の袋井工場です。ポーラ化成工業は、袋井工場ともう1つの工場の2工場体制でスキンケアを中心とした化粧品をつくっており、約1,400種を超える商品を年間5,000万個以上生産しています。",
+            "白く横長の建物の中ほどに、長いガラスの帯が続きます。写真では、その下のほうに通過中の列車が端から端まで一直線に映っています。手前には芝生と植え込み、奥には紅白の煙突。映り込みは光の向きや天気で変わり、いつも同じようには見えません。飲料の青い工場と、化粧品の白い工場が、袋井の線路沿いで続けて並んでいます。"
+          ],
+          "en": [
+            "On the Seat A side between Kakegawa and Hamamatsu, Otsuka's plant is not the only large factory beside the tracks. About 10 seconds before it on trains to Shin-Osaka, or about 10 seconds after it on trains to Tokyo, comes POLA Chemical Industries' Fukuroi Factory. POLA Chemical Industries makes cosmetics, mainly skincare, at two plants including this one, producing more than 50 million items a year across over 1,400 products.",
+            "A long band of glass runs along the middle of the white building. In the photograph, the passing train is reflected in its lower part from end to end. Lawns and hedges sit in front, and a red-and-white chimney rises behind. The reflection changes with the light and weather, so it will not look the same every time. Here in Fukuroi, a blue drinks plant and a white cosmetics plant stand one after the other beside the line."
+          ]
+        },
+        "photos": [
+          {
+            "width": 1920,
+            "height": 1080,
+            "src": "images/20260919_pola-fukuroi_139551_michikusa.jpg",
+            "alt": {
+              "ja": "ポーラ化成工業 袋井工場のガラス面に映るディズニー新幹線",
+              "en": "The Disney-themed Shinkansen reflected in the glass of POLA Chemical Industries' Fukuroi Factory"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-19",
+            "note": {
+              "ja": "A席側、ガラスの下のほうに映る列車（反射鉄の特集でも紹介） (c)Disney",
+              "en": "Seat A side: the train reflected low in the glass (also in our reflections feature) (c)Disney"
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     id: "genki-sign",
@@ -4698,47 +4742,47 @@ const SPOTS = [
     "id": "gamagori-greenhouses",
     "icon": "🌱",
     "ja": {
-      "name": "蒲郡のビニールハウス群",
-      "area": "豊橋 → 三河安城（蒲郡市）",
+      "name": "豊橋〜蒲郡のビニールハウス",
+      "area": "豊橋 → 三河安城（豊川市・蒲郡市）",
       "hook": "山すそに、ハウスの屋根の海。",
-      "story": "豊橋を過ぎて名古屋方面へ向かうE席側、山すその平地を、ハウスの屋根がびっしりと埋めつくします。ここは蒲郡市神ノ郷町のあたり。三方を山に囲まれ南に三河湾がひらく温暖な土地で、豊川用水の水を得てハウス栽培が広がりました。手前には地域の銘柄「蒲郡みかん」の大きな看板も立っています。"
+      "story": "豊橋を過ぎて名古屋方面へ向かうE席側、豊川市から蒲郡市にかけて、ハウスの屋根が何度も現れます。いちばんの目印は、蒲郡市神ノ郷町の山すそを埋めるハウス群と「蒲郡みかん」の大きな看板。温暖な冬と日照、そして豊川用水の水に支えられて、東三河ではハウス栽培が盛んになりました。"
     },
     "en": {
-      "name": "Gamagori's Greenhouses",
-      "area": "Toyohashi → Mikawa-Anjo (Gamagori)",
+      "name": "Greenhouses from Toyohashi to Gamagori",
+      "area": "Toyohashi → Mikawa-Anjo (Toyokawa, Gamagori)",
       "hook": "A sea of greenhouses below the hills.",
-      "story": "After Toyohashi toward Nagoya, greenhouse roofs pack the flat land at the foot of the hills on the Seat E side. This is around Kaminogo in Gamagori, a mild town ringed by hills on three sides and open to Mikawa Bay to the south, where irrigation water allowed greenhouse farming to spread. In front stands a large sign for the local brand, Gamagori mikan."
+      "story": "After Toyohashi toward Nagoya, greenhouse roofs keep appearing on the Seat E side through Toyokawa and Gamagori. The biggest landmark is the cluster filling the foot of the hills in Kaminogo, Gamagori, beside a large sign for Gamagori mikan. Mild, sunny winters and water from the Toyokawa irrigation system made greenhouse farming thrive across East Mikawa."
     },
     "pageTitle": {
-      "ja": "新幹線から見える蒲郡のビニールハウス｜山すその農地と蒲郡みかんの看板 | 新幹線の窓",
-      "en": "Gamagori's Greenhouses from the Shinkansen | Shinkansen Window"
+      "ja": "新幹線から見える豊橋〜蒲郡のビニールハウス｜東三河の施設園芸と蒲郡みかんの看板 | 新幹線の窓",
+      "en": "Greenhouses from Toyohashi to Gamagori | Shinkansen Window"
     },
     "pageHeading": {
-      "ja": "蒲郡のハウス群——山すそを埋める屋根の海",
-      "en": "Greenhouses below the hills: farming in Gamagori"
+      "ja": "東三河のハウス群——豊橋から蒲郡へ続く屋根の海",
+      "en": "Greenhouses from Toyohashi to Gamagori"
     },
     "pageHeadingChunks": {
       "ja": [
-        "蒲郡のハウス群——",
-        "山すそを埋める",
+        "東三河のハウス群——",
+        "豊橋から蒲郡へ続く",
         "屋根の海"
       ],
       "en": [
-        "Greenhouses below the hills:",
-        "farming in Gamagori"
+        "Greenhouses from",
+        "Toyohashi to Gamagori"
       ]
     },
     "metaDescription": {
-      "ja": "豊橋〜三河安城のE席側、蒲郡市神ノ郷町付近の山すそに広がるビニールハウス群と「蒲郡みかん」の看板。温暖な地形と豊川用水が広げたハウス栽培、みかん・いちご・つまものの産地を写真とともに紹介します。",
-      "en": "On Seat E between Toyohashi and Mikawa-Anjo, greenhouses fill the foothills of Gamagori. Learn how a mild climate and irrigation water shaped this farmland, and what the big Gamagori mikan sign stands for."
+      "ja": "豊橋〜三河安城のE席側、豊川市から蒲郡市にかけて見えるビニールハウス群と「蒲郡みかん」の看板。温暖な冬と豊川用水に支えられた東三河の施設園芸、トマト・大葉・みかん・いちごの産地を写真とともに紹介します。",
+      "en": "On Seat E after Toyohashi, greenhouses line the route through Toyokawa and Gamagori. Learn how mild winters and irrigation water shaped East Mikawa's greenhouse farming, and what the big Gamagori mikan sign stands for."
     },
     "sectionHeading": {
-      "ja": "温暖な地形と用水が広げたハウス",
-      "en": "A mild valley, irrigation water and greenhouses"
+      "ja": "温暖な冬と用水が広げた東三河のハウス",
+      "en": "Mild winters, irrigation water and greenhouses"
     },
     "pageStory": {
-      "ja": "豊橋を過ぎて名古屋方面へ進むと、E席側の山すそに、屋根を連ねたハウスがびっしりと並ぶ一帯が現れます。写真を撮った地点は蒲郡市神ノ郷町のあたり。蒲郡市は東・北・西の三方を山に囲まれ、南に三河湾がひらく温暖な土地です。ハウスの背後に連なる山並みは、この地形の北側にあたります。\n\n蒲郡の農業を大きく変えたのは水でした。昔から水不足に悩んできた土地でしたが、1968年に完成した豊川用水で安定して水を得られるようになり、ハウス栽培が広がりました。市の主な作物は、みかん、「サンベリー」の名で出荷されるいちご、そして大葉や食用菊、エディブルフラワーなど料理に添える「つまもの」です。つまものは1950年ごろから栽培され、約36戸が20ヘクタールほどで育てています。ハウスの中で何を育てているかは、車窓から一棟ずつ見分けることはできません。\n\n看板の「蒲郡みかん」は、この地域のみかんの銘柄です。蒲郡市博物館によれば、1679年の五井村の記録に数本のみかんが記され、明治中期には「神ノ郷みかん」「西郡みかん」の名で知られるようになりました。神ノ郷は、まさにこの撮影地点の町名です。1973年に隣の御津町で温室みかんが導入されると、蒲郡市内でも昭和50年代に栽培農家が飛躍的に増えました。いまは約30ヘクタールでハウスみかんがつくられ、4月中旬から9月中旬にかけて全国へ出荷されています。「蒲郡みかん」は2008年、愛知県の農産物で初めて地域団体商標に登録されました。",
-      "en": "After Toyohashi toward Nagoya, the foot of the hills on the Seat E side fills with rows of greenhouse roofs. The photograph was taken around Kaminogo in Gamagori. The city is ringed by hills to the east, north and west and opens to Mikawa Bay in the south, giving it a mild climate. The hills behind the greenhouses form the northern edge of that basin.\n\nWater changed farming here. Gamagori long struggled with water shortages, but the Toyokawa irrigation system, completed in 1968, brought a reliable supply and allowed greenhouse farming to spread. The city's main crops today are mikan (Japanese mandarins), strawberries sold under the name Sun Berry, and tsumamono—garnishes such as shiso leaves, edible chrysanthemums and edible flowers that decorate Japanese dishes. Tsumamono have been grown here since around 1950, today by about 36 farms on some 20 hectares. From the train, there is no way to tell what is growing inside any particular greenhouse.\n\nThe big sign advertises Gamagori mikan, the area's mandarin brand. According to the Gamagori City Museum, a record from Goi village in 1679 lists a few mikan trees, and by the mid-Meiji period the fruit was known as Kaminogo mikan or Nishinokori mikan. Kaminogo is the very neighborhood where this photograph was taken. After greenhouse mikan were introduced in neighboring Mito in 1973, the number of growers in Gamagori rose sharply from the late 1970s. Today about 30 hectares of greenhouse mikan are shipped across Japan from mid-April to mid-September. In 2008 Gamagori mikan became the first Aichi farm product registered as a regional collective trademark."
+      "ja": "豊橋を過ぎて名古屋方面へ進むと、E席側に、半透明の屋根を連ねたハウスが何度も現れます。豊橋のすぐ先、豊川市御津町のあたりで田畑の間に長いハウスが並び、約2分後の蒲郡市神ノ郷町では、山すその平地をハウスの屋根がびっしりと埋めつくします。新幹線から見えるのはその一部ですが、豊橋・豊川・蒲郡・田原を含む東三河は、ハウスで野菜や果物、花を育てる施設園芸の盛んな地域です。\n\n背景には気候と水があります。東三河は冬でも温暖で日照に恵まれ、豊橋市や田原市ではトマトの温室栽培が盛んで、一年を通じて出荷されています。もうひとつの支えが豊川用水です。宇連ダムや大島ダム、万場調整池などの施設が整い、東三河に農業用水を安定して届けられるようになりました。昔から水不足に悩んできた蒲郡市でも、1968年に完成した豊川用水によってハウス栽培が広がりました。\n\n蒲郡市は東・北・西の三方を山に囲まれ、南に三河湾がひらく温暖な土地です。市の主な作物は、みかん、「サンベリー」の名で出荷されるいちご、そして大葉や食用菊、エディブルフラワーなど料理に添える「つまもの」。看板の「蒲郡みかん」はこの地域のみかんの銘柄で、蒲郡市博物館によれば1679年の五井村の記録に数本のみかんが記され、明治中期には「神ノ郷みかん」「西郡みかん」の名で知られるようになりました。神ノ郷は、まさにこの撮影地点の町名です。1973年に隣の御津町で温室みかんが導入されると、蒲郡市内でも昭和50年代に栽培農家が飛躍的に増え、いまは約30ヘクタールのハウスみかんが4月中旬から9月中旬にかけて全国へ出荷されています。「蒲郡みかん」は2008年、愛知県の農産物で初めて地域団体商標に登録されました。\n\nただし、どのハウスで何を育てているかは、車窓から一棟ずつ見分けられません。看板は地域の銘柄を知らせるもので、周りのハウスがすべてみかん用という意味ではありません。",
+      "en": "After Toyohashi toward Nagoya, rows of translucent greenhouse roofs keep appearing on the Seat E side. Just past Toyohashi, around Mito in Toyokawa, long greenhouses stand among the fields; about two minutes later, in Kaminogo, Gamagori, greenhouse roofs pack the flat land at the foot of the hills. The train shows only a slice of it, but East Mikawa—including Toyohashi, Toyokawa, Gamagori and Tahara—is a region where vegetables, fruit and flowers are widely grown under cover.\n\nClimate and water lie behind it. East Mikawa has mild, sunny winters, and Toyohashi and Tahara grow tomatoes in greenhouses for shipment all year round. The other foundation is the Toyokawa irrigation system: dams and reservoirs such as Ure Dam, Ohshima Dam and the Manba regulating pond now deliver a stable supply of farm water across East Mikawa. In Gamagori, which long struggled with water shortages, the system's completion in 1968 allowed greenhouse farming to spread.\n\nGamagori is ringed by hills to the east, north and west and opens to Mikawa Bay in the south, giving it a mild climate. Its main crops are mikan (Japanese mandarins), strawberries sold as Sun Berry, and tsumamono—garnishes such as shiso leaves, edible chrysanthemums and edible flowers. The big sign advertises Gamagori mikan, the local mandarin brand. According to the Gamagori City Museum, a record from Goi village in 1679 lists a few mikan trees, and by the mid-Meiji period the fruit was known as Kaminogo mikan or Nishinokori mikan—Kaminogo being the very neighborhood in the photograph. After greenhouse mikan were introduced in neighboring Mito in 1973, the number of growers in Gamagori rose sharply from the late 1970s; today about 30 hectares of greenhouse mikan are shipped across Japan from mid-April to mid-September. In 2008 Gamagori mikan became the first Aichi farm product registered as a regional collective trademark.\n\nFrom the train, though, there is no way to tell what grows inside any particular greenhouse. The sign promotes the local brand; it does not mean every greenhouse around it grows mikan."
     },
     "explainer": {
       "heading": {
@@ -4746,21 +4790,21 @@ const SPOTS = [
         "en": "A sea of roofs and a red sign"
       },
       "ja": [
-        "写真の奥では、山のふもとの平地を、三角屋根やかまぼこ形の屋根を持つハウスが埋めています。屋根が幾重にも重なり、まるで屋根の海のよう。右手前には、線路のすぐ脇にかまぼこ形のハウスが何棟も並んでいます。",
-        "中央の赤と白の大きな看板には「蒲郡みかん」の文字と、みかんの絵。看板の手前には、足元に白いシートを敷いた果樹の列が続いています。看板は地域の銘柄を知らせるもので、周りのハウスがすべてみかん用という意味ではありません。",
-        "写真のように、この区間では少し高い位置からハウスの屋根の広がりを見渡せます。夏の朝は、半透明の屋根が日差しを受けて白っぽく光ります。",
-        "東京から名古屋方面へ向かう列車では、この2分ほど前、豊川市御津町付近のE席側にもハウスが並びます。反対のA席側に三河大島が見えるころが、蒲郡のハウス群の合図です。"
+        "主写真の奥では、山のふもとの平地を、三角屋根やかまぼこ形の屋根を持つハウスが埋めています。屋根が幾重にも重なり、まるで屋根の海のよう。右手前には、線路のすぐ脇にかまぼこ形のハウスが何棟も並んでいます。",
+        "中央の赤と白の大きな看板には「蒲郡みかん」の文字と、みかんの絵。看板の手前には、足元に白いシートを敷いた果樹の列が続いています。",
+        "もう1枚は、豊橋を過ぎてすぐの豊川市御津町付近。田畑の間に、長いかまぼこ形のハウスが平行に並びます。日差しを受けると、覆いのフィルムが銀白色に光って見えます。",
+        "写真のように、蒲郡のあたりでは少し高い位置からハウスの屋根の広がりを見渡せます。夏の朝は、半透明の屋根が日差しを受けて白っぽく光ります。"
       ],
       "en": [
-        "In the background of the photograph, greenhouses with peaked and arched roofs cover the flat land at the foot of the hills. The overlapping rows look like a sea of roofs. In the right foreground, several arched greenhouses stand right beside the tracks.",
-        "The large red-and-white sign in the center shows the words Gamagori mikan with pictures of the fruit. In front of it run rows of fruit trees with white sheets laid at their base. The sign promotes the local brand; it does not mean every greenhouse around it grows mikan.",
-        "As the photograph shows, this stretch gives a slightly raised view across the spread of greenhouse roofs. On summer mornings the translucent roofs catch the sun and shine almost white.",
-        "On trains from Tokyo toward Nagoya, greenhouses also line the Seat E side about two minutes earlier, around Mito in Toyokawa. When Mikawa Oshima island appears on the opposite Seat A side, the Gamagori greenhouses are coming up."
+        "In the background of the main photograph, greenhouses with peaked and arched roofs cover the flat land at the foot of the hills. The overlapping rows look like a sea of roofs. In the right foreground, several arched greenhouses stand right beside the tracks.",
+        "The large red-and-white sign in the center shows the words Gamagori mikan with pictures of the fruit. In front of it run rows of fruit trees with white sheets laid at their base.",
+        "The second photograph is from around Mito in Toyokawa, just after Toyohashi. Long arched greenhouses run in parallel among the fields, and their plastic covers can shine silver-white in the sun.",
+        "Around Gamagori, as the main photograph shows, you get a slightly raised view across the spread of roofs. On summer mornings the translucent roofs catch the sun and shine almost white."
       ]
     },
     "guideHighlight": {
-      "ja": "豊橋を過ぎて名古屋方面へ約4分、A席側に三河大島が見えるころ、反対のE席側の山すそを見てください。屋根を連ねたハウスの広がりと、赤い「蒲郡みかん」の看板が目印です。見える秒数は暫定の目安です。",
-      "en": "About four minutes after Toyohashi toward Nagoya, when Mikawa Oshima appears on the Seat A side, look at the foothills on the opposite Seat E side. Watch for the spread of greenhouse roofs and the red Gamagori mikan sign. The viewing duration is a provisional estimate."
+      "ja": "豊橋を過ぎたら、E席側の田畑に並ぶハウスを探し始めてください。約4分後、A席側に三河大島が見えるころ、反対のE席側の山すそを埋めるハウス群と赤い「蒲郡みかん」の看板が見どころです。見える秒数は暫定の目安です。",
+      "en": "After Toyohashi, start looking for greenhouses among the fields on the Seat E side. About four minutes later, when Mikawa Oshima appears on the Seat A side, the main sight is on the opposite Seat E side: greenhouses filling the foothills and the red Gamagori mikan sign. The viewing duration is a provisional estimate."
     },
     "minutesFromTokyo": 83,
     "side": "E",
@@ -4775,11 +4819,28 @@ const SPOTS = [
       "en": "michikusa",
       "date": "2026-09-24",
       "note": {
-        "ja": "山すそを埋めるハウスと、「蒲郡みかん」の看板。",
-        "en": "Greenhouses filling the foothills, with the Gamagori mikan sign."
+        "ja": "蒲郡市神ノ郷町付近、山すそを埋めるハウスと「蒲郡みかん」の看板。",
+        "en": "Around Kaminogo, Gamagori: greenhouses filling the foothills, with the Gamagori mikan sign."
       }
     },
-    "photos": [],
+    "photos": [
+      {
+        "src": "images/20260816_east_mikawa_greenhouses_michikusa.jpg",
+        "alt": {
+          "ja": "豊川市御津町付近の田畑に並ぶビニールハウス",
+          "en": "Greenhouses among fields around Mito, Toyokawa"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-16",
+        "note": {
+          "ja": "豊橋を過ぎてすぐ、豊川市御津町付近のE席側",
+          "en": "Seat E side just after Toyohashi, around Mito in Toyokawa"
+        }
+      }
+    ],
     "relatedSpotIds": [
       "mikawa-oshima",
       "shizuoka-tea-fields"
@@ -4801,10 +4862,24 @@ const SPOTS = [
       },
       {
         "label": {
+          "ja": "水資源機構：豊川用水地区のトマト",
+          "en": "Japan Water Agency: tomatoes of the Toyokawa irrigation area (Japanese)"
+        },
+        "url": "https://www.water.go.jp/honsya/honsya/torikumi/tourism/mizucard/area/kiso_toyo/toyokawa_tomato.html"
+      },
+      {
+        "label": {
           "ja": "水資源機構：豊川用水",
           "en": "Japan Water Agency: the Toyokawa irrigation system (Japanese)"
         },
         "url": "https://www.water.go.jp/chubu/toyokawa/onkei/index.html"
+      },
+      {
+        "label": {
+          "ja": "豊橋市：次世代施設園芸",
+          "en": "Toyohashi City: next-generation greenhouse farming (Japanese)"
+        },
+        "url": "https://www.city.toyohashi.lg.jp/18937.htm"
       }
     ],
     "map": {
