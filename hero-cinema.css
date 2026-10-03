@@ -9,6 +9,34 @@
 .hero.hv .hero-inner { display: block; max-width: none; width: 100%; padding: 0; text-align: center; }
 .hero.hv .intro-film-trigger { display: none; }
 
+/* The optional English notice arrives after DOMContentLoaded. Keep it out of
+   document flow so the header, film and entry cards never jump underneath it.
+   This stylesheet belongs to TOP only; other pages keep their existing notice. */
+.lang-landing-prompt {
+  position: fixed; z-index: 60; right: 12px;
+  bottom: max(12px, env(safe-area-inset-bottom));
+  box-sizing: border-box; width: min(300px, calc(100% - 24px));
+  display: grid; grid-template-columns: minmax(0, 1fr) 44px;
+  padding: 12px; gap: 4px 8px; border: 1px solid #657484;
+  border-radius: 14px; background: #102638; color: #fffdf8;
+  box-shadow: 0 4px 24px #08152140; font: 13px/1.4 var(--sans);
+}
+.lang-landing-prompt strong { display: block; font-size: 13px; }
+.lang-landing-prompt span { display: none; }
+.lang-landing-prompt a {
+  grid-column: 1; justify-self: start; display: inline-flex;
+  align-items: center; min-height: 44px; color: #f3b59f;
+  font-weight: 700; text-underline-offset: 3px;
+}
+.lang-landing-prompt button {
+  grid-column: 2; grid-row: 1 / 3; align-self: center;
+  width: 44px; height: 44px; padding: 0; border: 1px solid #657484;
+  border-radius: 50%; background: transparent; color: inherit;
+  font: 24px/1 var(--sans); cursor: pointer;
+}
+.lang-landing-prompt a:focus-visible,
+.lang-landing-prompt button:focus-visible { outline: 3px solid #f3b59f; outline-offset: 2px; }
+
 /* Reserve the same geometry before JS, while loading, and during playback. */
 .hv-screen { position: relative; width: var(--hv-w); height: min(56.25vw, 945px, max(340px, calc(100svh - 260px))); margin: 0 auto; container-type: size; overflow: hidden; background: #081521; }
 .hv-rail { min-height:52px; }
