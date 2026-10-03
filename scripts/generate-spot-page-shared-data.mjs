@@ -285,14 +285,14 @@ function projectExplainer(spot, lang) {
       credit: creditText(figure.credit, lang),
       sourceUrl: figure.sourceUrl || "",
       date: figure.date || "",
-      afterParagraph: Number.isInteger(figure.afterParagraph) ? figure.afterParagraph : 0,
+      afterParagraph: Number.isInteger(figure.afterParagraph?.[lang]) ? figure.afterParagraph[lang] : Number.isInteger(figure.afterParagraph) ? figure.afterParagraph : 0,
     } : null,
   };
 }
 
 function projectChapters(spot, lang) {
   const ids = new Set();
-  return spot.pageChapters.map((chapter) => {
+  const chapters = spot.pageChapters.map((chapter) => {
     if (!/^[a-z][a-z0-9-]+$/.test(chapter.id) || ids.has(chapter.id)) throw new Error(`Invalid article chapter for ${spot.id}`);
     ids.add(chapter.id);
     const heading = localized(chapter.heading, lang);
@@ -308,6 +308,10 @@ function projectChapters(spot, lang) {
     if (link && (!/^spots\/[a-z0-9-]+\.html$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
     return { id: chapter.id, heading, paragraphs, photos, ...(link ? { link: { route: (lang === "en" ? "en/" : "") + link.route, label: localized(link.label, lang) } } : {}) };
   });
+  const order = spot.pageChapterOrder?.[lang];
+  if (!order) return chapters;
+  if (order.length !== chapters.length || new Set(order).size !== chapters.length || order.some(id => !ids.has(id))) throw new Error(`Invalid chapter order for ${spot.id}/${lang}`);
+  return order.map(id => chapters.find(chapter => chapter.id === id));
 }
 
 function projectArticleImage(spot, lang) {
@@ -637,7 +641,9 @@ function projectPage(spot, lang) {
     readingLayout,
     name: String(data.name || spot.id),
     area: String(data.area || ""),
-    hook: String(data.hook || ""),
+    hook: localized(spot.pageHook, lang) || String(data.hook || ""),
+    ...(spot.pageEyebrow?.[lang] ? { eyebrow: spot.pageEyebrow[lang] } : {}),
+    ...(spot.pageFactsAfterArticle?.[lang] ? { factsAfterArticle: true } : {}),
     headingChunks: Array.isArray(headingChunks) ? headingChunks.map(String) : [],
     heading: pageHeading,
     sectionHeading: localized(spot.sectionHeading, lang) || UI[lang].sectionHow(data.name),

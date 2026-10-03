@@ -35,6 +35,7 @@ const shinkansen = [
  ['mishima-catapult', ['mishima-catapult'], 'images/20260904_mishima_catapult_1_michikusa.jpg', '空へ上っていくように見える三島車両所の着発線', '線路', '空へ駆け上がる線路。あれは何？', '三島車両所の着発線（通称カタパルト）', 'ロケットの発射台ではありません。車両基地へ入る列車が向きを変えるための線路です。本線が下っていく一方で高さを保つので、空へ上っていくように見えます。', 'spots/mishima-catapult.html', '三島車両所のカタパルトの車窓ページを見る'],
  ['shizuoka-tea-fields', ['shizuoka-tea-fields'], 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg', '緑の畝の間に防霜ファンが何本も立つ静岡の茶畑', '農業設備', '茶畑の中に、何本もの扇風機。何のため？', '新芽を霜から守る防霜ファン', '風が弱く晴れた春先の夜、地表付近には冷たい空気がたまります。高い位置に残る比較的暖かい空気を斜め下へ送り、茶の新芽が凍霜害を受けるのを防ぐ設備です。', 'spots/shizuoka-tea-fields.html', '静岡の茶畑と防霜ファンを見る', ['A', 'E']],
  ['toyohashi-tateiwa', ['toyohashi-tateiwa'], 'images/20260628_toyohashi_tateiwa_michikusa.jpg', '林の丘から突き出す豊橋の立岩', '岩', '林の丘から、岩壁だけが突き出している？', '豊橋市雲谷町の立岩', '浜名湖を過ぎて豊橋へ向かう途中に現れる、標高約88mの岩山です。南側が最大約30m切り立った、むき出しのチャートの岩壁です。', 'spots/toyohashi-tateiwa.html', '豊橋の立岩の車窓ページを見る'],
+ ['gamagori-greenhouses', ['gamagori-greenhouses'], 'images/20260924_gamagori-greenhouses_19169_michikusa.jpg', '蒲郡の山すそに重なるビニールハウスの屋根', '農業', 'なぜここに、こんなにハウス？', '東三河の、野菜・果物・花の産地', '豊橋の先から蒲郡へ、E席側に屋根の列が何度も現れます。温暖な冬と豊川用水が支える産地で、育つものはみかんやトマト、大葉や花まで。平野の長い屋根から、山すその屋根の海へ。その背景を写真でたどります。', 'spots/gamagori-greenhouses.html', 'ハウスの車窓をたどる'],
  ['gifu-hashima-mahalo', ['gifu-hashima-mahalo'], 'images/20260816_gifu_hashima_mahalo_1_michikusa.jpg', '岐阜羽島駅のホーム越しに見えるMaHaLoの看板', '看板', '岐阜なのに、なぜハワイ語？', '岐阜羽島のマハロ看板', 'ホームの向こうの「MaHaLo」は、羽島市に本社を置く会社が販売する海洋深層水の商品名です。海から遠い田園に突然ハワイ語が現れますが、実は販売元のお膝元です。', 'spots/gifu-hashima-mahalo.html', 'マハロ看板の車窓ページを見る'],
  ['kinshozan', ['kinshozan'], 'images/20260704_kinshozan_michikusa.jpg', '山肌が白く切り取られた金生山', '山', 'ナイフで切り落としたような山。なぜあの形？', '石灰岩を掘り続けた金生山', '大垣付近の遠くに見える、全体が石灰岩の山です。江戸時代から採掘が続き、階段状の白い山肌は、もとの形ではなく掘り出した跡です。', 'spots/kinshozan.html', '金生山の車窓ページを見る'],
  ['fujitec-big-wing', ['fujitec-big-wing'], 'images/20260712_fujitec_big_wing_michikusa.jpg', '夕暮れに立つフジテック Big Wingの研究塔', '塔', '米原の近くに、窓の少ない細長い塔？', 'フジテック Big Wingのエレベータ研究塔', '高さ170m。エレベータを実物大で試験するための塔です。低い建物の向こうに立つので、米原に近づいた目印になります。', 'spots/fujitec-big-wing.html', 'フジテック Big Wingの車窓ページを見る']
@@ -77,17 +78,12 @@ const englishCards = [
     link: 'spots/fuji-paper-mills.html', linkText: "Read Fuji City's paper story"
   },
   {
-    id: 'east-mikawa-greenhouses', src: 'images/20260816_east_mikawa_greenhouses_michikusa.jpg', featurePhoto: true,
-    minutes: 81, side: 'E',
-    alt: 'Long silver-white greenhouses among fields in East Mikawa', kind: 'Farming',
-    question: 'What are those long silver tunnels?', answer: 'Greenhouses — “vinyl houses” in Japanese',
-    body: 'Frames covered with transparent agricultural film shelter crops from rain and cold and make growing conditions easier to manage. The repeated arches can look silver-white when they catch the sun.',
-    aside: 'This cluster appears on Seat E just after Toyohashi, in Shimosawaki, Toyokawa. Japanese people commonly call these vinyl houses, although modern covers may use several kinds of plastic. The crop inside cannot be identified reliably from the train.',
-    sources: [
-      ['https://www.maff.go.jp/j/tokei/kouhyou/engei/gaiyou/', 'How Japan defines agricultural houses (MAFF, Japanese)'],
-      ['https://www.city.toyohashi.lg.jp/18937.htm', 'Greenhouse farming around Toyohashi (Japanese)']
-    ],
-    link: 'spots/gamagori-greenhouses.html', linkText: 'Greenhouses from Toyohashi to Gamagori →'
+    id: 'east-mikawa-greenhouses', spotId: 'gamagori-greenhouses', src: 'images/20260924_gamagori-greenhouses_19169_michikusa.jpg',
+    alt: 'Greenhouse roofs below the hills in Gamagori', kind: 'Farming',
+    question: 'What are those long silver roofs?', answer: 'Greenhouses in East Mikawa’s farming country',
+    body: 'Often called “vinyl houses” in Japan, these greenhouses lead into a region of tomatoes, mandarins, herbs and flowers. The crop inside each house is hidden—but the silver roofs, irrigation water and red mandarin sign have a story to tell.',
+    aside: 'Gamagori’s greenhouse-grown mandarins arrive in spring and summer. Elsewhere in Aichi, growers use light to change when chrysanthemums bloom. Discover the work behind food and flowers in Japan.',
+    link: 'spots/gamagori-greenhouses.html', linkText: 'Explore the greenhouse landscape →'
   },
   {
     id: 'kiyosu-golf-driving-range', spotId: 'kiyosu', src: 'images/20260704_kiyosu_golf_driving_range_michikusa.png', featurePhoto: true,
