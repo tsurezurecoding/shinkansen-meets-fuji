@@ -1,3 +1,4 @@
+import { CASTLE_COLLECTION, castleCollectionFor } from "./shared/castle-reading-collection.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -52,7 +53,7 @@ const trackContext = { window: { ROUTE: source.ROUTE }, ROUTE: source.ROUTE };
 vm.runInNewContext(fs.readFileSync(path.join(appDir, "track.js"), "utf8"), trackContext, { filename: path.join(appDir, "track.js") });
 const TRACK = trackContext.window.MADO_TRACK;
 const SITE_ROOT = "https://www.michikusa-travel.com";
-const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
+import { GOOGLE_MAPS_EMBED_API_KEY } from "./shared/map-config.mjs";
 const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
 const CURATED_ANGLE_PHOTOS = { hamanako: ["hamanako_torii_letus10"] };
 const FUJI_FAMILY = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);
@@ -475,16 +476,7 @@ const READING_LAYOUTS = {
   "kiyosu:ja": {
     version: 1,
     visibility: { label: "見える時間の目安", value: "数秒ほど", note: "列車や走行速度によって変わります" },
-    collection: {
-      route: "castles.html", title: ["ほかにもある、", "新幹線から見える城"],
-      description: "小田原城や掛川城も、車窓から。天守5城・櫓1か所と城跡2か所を、写真・席側・見つける目印つきで紹介します。",
-      label: "新幹線から見える城を探す", note: "清洲城を含む8か所。",
-      photos: [
-        { src: "images/thumbs/20260820_odawara_castle_michikusa.webp", alt: "車窓から見える小田原城", caption: "小田原城" },
-        { src: "images/thumbs/20260712_kakegawa_castle_michikusa.webp", alt: "車窓から見える掛川城", caption: "掛川城" }
-      ],
-      credit: "写真：新幹線の窓"
-    }
+    collection: CASTLE_COLLECTION
   }
 };
 
@@ -592,7 +584,9 @@ function englishReadingLayout(spot) {
     note = "An approximate stretch for water views and landmarks; varies with the train and its speed.";
   }
   layout.visibility = { label: "Viewing window", value, note };
-  if (layout.collection) {
+  if (layout.collection && layout.collection.route === "castles.html") {
+    layout.collection = castleCollectionFor("en", layout.collection.photos);
+  } else if (layout.collection) {
     const wheel = layout.collection.route === "ferris-wheels.html";
     const captions = new Map([
       [castleCollection.photos[0].src, "Odawara Castle"],

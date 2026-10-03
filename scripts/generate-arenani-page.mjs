@@ -86,7 +86,8 @@ const englishCards = [
     sources: [
       ['https://www.maff.go.jp/j/tokei/kouhyou/engei/gaiyou/', 'How Japan defines agricultural houses (MAFF, Japanese)'],
       ['https://www.city.toyohashi.lg.jp/18937.htm', 'Greenhouse farming around Toyohashi (Japanese)']
-    ]
+    ],
+    link: 'spots/gamagori-greenhouses.html', linkText: 'Greenhouses from Toyohashi to Gamagori →'
   },
   {
     id: 'kiyosu-golf-driving-range', spotId: 'kiyosu', src: 'images/20260704_kiyosu_golf_driving_range_michikusa.png', featurePhoto: true,

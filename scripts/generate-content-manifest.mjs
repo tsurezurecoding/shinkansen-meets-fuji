@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteBaseUrl = "https://www.michikusa-travel.com/";
@@ -27,6 +28,8 @@ const contentFiles = [
   "castles.html",
   "en/castles.html",
   "castles.css",
+  "sanyo-castles.css",
+  ...SANYO_DETAIL_CASTLES.flatMap(castle => [`spots/${castle.id}.html`, `en/spots/${castle.id}.html`, ...castle.detail.photos.map(photo => photo.src)]),
   "arenani.html",
   "en/arenani.html",
   "arenani.css",

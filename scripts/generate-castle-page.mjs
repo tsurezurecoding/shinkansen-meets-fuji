@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { thumbnailSrc } from './shared/geo.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 import { ANALYTICS } from './shared/feature-page.mjs';
+import { SANYO_CASTLES as sanyoEntries } from './shared/sanyo-castles.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const spots = vm.runInNewContext(fs.readFileSync(path.join(root, 'data.js'), 'utf8') + ';SPOTS');
 const esc = s => String(s).replace(/[&<>\"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
@@ -26,46 +27,9 @@ const entries = [
 // 新大阪から西（山陽新幹線）は、時刻表・ルート・ライブ地図の対象外（東海道のみ）。
 // 乗った人から届いた車窓の記録として、写真と目印だけを紹介する追加情報として扱う。
 // 席記号は列車で異なる: 東海道から直通する16両（N700S など）は普通車3+2でA〜E、
-// 山陽内だけを走る8両（こだま・さくらなど）は2+2でA〜D。どちらでも「北側」は共通なので、
-// 本文は北側を主に書き、16両のE席を補足に置く。
-const sanyoEntries = [
- {
-  id: 'himeji-castle',
-  name: { ja: '姫路城', en: 'Himeji Castle' },
-  station: { ja: '姫路駅の前後', en: 'Around Himeji Station' },
-  photo: 'images/20260916_himeji_castle_wakaba.jpg',
-  alt: { ja: '新幹線の車窓から見た姫路城の白い天守', en: 'The white keep of Himeji Castle seen from the Shinkansen window' },
-  credit: { ja: '@wakaba70127479', en: '@wakaba70127479' },
-  sourceUrl: 'https://x.com/wakaba70127479/status/2100095130896408840',
-  hook: { ja: '街並みの上に、白い層', en: 'White tiers above the rooftops' },
-  about: {
-   ja: '池田輝政が1609年に完成させた天守がそのまま残る城です。白漆喰の壁から白鷺城とも呼ばれ、1951年に国宝、1993年には日本で最初の世界文化遺産のひとつになりました。大天守と3つの小天守を渡櫓でつなぐ連立式天守で、層が重なって見えるのはそのためです。',
-   en: 'Himeji keeps the tower Ikeda Terumasa completed in 1609, never lost to fire or war. Its white plaster walls earned it the name White Heron Castle; it became a National Treasure in 1951 and one of Japan\'s first World Heritage sites in 1993. The main keep is linked to three smaller keeps by covered bridges, which is why it reads as layers rather than a single tower.'
-  },
-  body: {
-   ja: '線路は城の南側を通ります。北側の窓を見ていると、街並みの向こうに白い天守が現れます。手前の建物に隠れる時間が長いので、駅に近づく前から探しておくと間に合います。',
-   en: 'The line passes south of the castle, so the keep appears through the north-facing windows, beyond the rooftops. Buildings hide it for much of the approach: start watching before the train reaches the station.'
-  }
- },
- {
-  id: 'fukuyama-castle',
-  name: { ja: '福山城', en: 'Fukuyama Castle' },
-  station: { ja: '福山駅のすぐ北', en: 'Right beside Fukuyama Station' },
-  photo: 'images/20260919_fukuyama_castle_wakaba.jpg',
-  alt: { ja: '新幹線の車窓から見た福山城の天守と石垣', en: 'The keep and stone walls of Fukuyama Castle seen from the Shinkansen window' },
-  credit: { ja: '@wakaba70127479', en: '@wakaba70127479' },
-  sourceUrl: 'https://x.com/wakaba70127479/status/2101193484564926710',
-  hook: { ja: '線路のすぐ隣に、天守', en: 'A keep right next to the tracks' },
-  about: {
-   ja: '1622年に水野勝成が築いた城です。天守は1945年の福山空襲で焼け、1966年に再建されました。2022年の築城400年に合わせた改修で、天守北側の鉄板張りが復元されています。車窓から見えるのは白い南面で、鉄板張りは反対側です。本丸の南側に建つ伏見櫓は、伏見城から移された当時のままの建物とされています。',
-   en: 'Mizuno Katsunari built Fukuyama in 1622. The keep burned in an air raid in 1945 and was rebuilt in 1966; work for the castle\'s 400th anniversary in 2022 restored the iron plating on its north wall, said to be the only keep in Japan armoured that way. From the train you see the white south face, with the iron side turned away. The Fushimi Turret beside it is an original building, moved here from Fushimi Castle in Kyoto.'
-  },
-  body: {
-   ja: '天守は福山駅のすぐ北に建っていて、線路との距離がとても近い城です。石垣の上の天守が木立の向こうから一気に近づき、そのぶん通り過ぎるのも速い車窓です。',
-   en: 'The keep stands just north of Fukuyama Station, unusually close to the line. It comes up fast from behind the trees, on top of its stone wall, and passes just as fast.'
-  }
- }
-];
+// 8両の普通車は2+2ならA〜D、3+2ならA〜E。北側の窓はDまたはE。
+// 岡山城はA席側、姫路城・福山城は北側の窓を案内する。
+
 
 // 導入の文章は日英で別に持つ。**片方を訳してもう片方にしない**（2026-09-21会長指示）。
 // 英語は、城を知らない海外の読者が列車の中で読む前提で、天守とは何かから入る。
@@ -118,7 +82,7 @@ function render(lang) {
  // hikone castle 1,300/6,600、gifu castle 720/8,100、himeji castle 110,000。2026-09-20 Keyword Planner）。
  // そのため英語だけ、強い城名をtitle・descriptionへ入れる。日本語へ機械的に持ち込まない（2026-09-21）。
  const title = pick('新幹線から見える日本の名城｜東海道新幹線の車窓で探す天守と城跡', 'Japanese Castles from the Shinkansen | Himeji, Odawara, Kiyosu');
- const description = pick('東海道新幹線の車窓から見える日本の名城。小田原城・掛川城・清洲城・岐阜城・彦根城の天守、佐和山と観音寺の城跡、新大阪から西の姫路城・福山城まで。どちらの席側か、いつ見えるかを車窓写真つきで。', 'Which Japanese castles can you see from the bullet train? Odawara, Kakegawa, Kiyosu, Gifu and Hikone from the Tokaido Shinkansen, Himeji and Fukuyama west of Shin-Osaka. Window photographs, which seat to take, and when to look.');
+ const description = pick('東海道新幹線の車窓から見える日本の名城。小田原城・掛川城・清洲城・岐阜城・彦根城の天守、佐和山と観音寺の城跡、新大阪から西の姫路城・岡山城・福山城まで。席側と探す目印を車窓写真つきで。', 'Which Japanese castles can you see from the bullet train? Odawara, Kakegawa, Kiyosu, Gifu and Hikone from the Tokaido Shinkansen; Himeji, Okayama and Fukuyama to the west. Window photographs, seat sides, and what to look for.');
  const heroAlt = pick('新幹線の車窓から見える清洲城', 'Kiyosu Castle from the Shinkansen window');
  const sidePhoto = (spotId, src) => {
   const spot = spots.find(s => s.id === spotId);
@@ -128,7 +92,7 @@ function render(lang) {
   if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
   return { thumb, alt: photo.alt[lang] || photo.alt.ja };
  };
- const atami = sidePhoto('odawara', 'images/20260712_atami_castle_michikusa.jpg');
+ const atami = sidePhoto('odawara', 'images/20260919_atami_castle_michikusa.jpg');
  const nagoya = sidePhoto('nagoya-station-skyline', 'images/20260530_nagoya_station_3_michikusa.jpg');
  const card = ([id, , kind, kindEn, hook, hookEn, body, bodyEn]) => {
   const s = spots.find(s => s.id === id); if (!s) throw Error(id);
@@ -159,17 +123,21 @@ function render(lang) {
   if (!fs.existsSync(path.join(root, entry.photo))) throw Error('Missing photograph: ' + entry.photo);
   if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
   const credit = `<a href="${esc(entry.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(pick(entry.credit.ja, entry.credit.en))}</a>`;
+  const detailHref = entry.detail ? `${prefix}${local}spots/${entry.id}.html` : '';
+  const image = `<img src="${prefix}${thumb}" alt="${esc(pick(entry.alt.ja, entry.alt.en))}" width="480" height="320" loading="lazy" decoding="async">`;
+  const side = entry.side === 'A' ? pick('A席側', 'Seat A side') : pick('北側（16両ならE席側）', 'North side (Seat E on 16-car trains)');
   return `    <article class="cs-spot" id="${entry.id}">
       <figure class="cs-figure">
-        <img src="${prefix}${thumb}" alt="${esc(pick(entry.alt.ja, entry.alt.en))}" width="480" height="320" loading="lazy" decoding="async">
+        ${detailHref ? `<a href="${detailHref}">${image}</a>` : image}
         <figcaption>${pick('写真：', 'Photo: ')}${credit}</figcaption>
       </figure>
       <div class="cs-spot-body">
-        <p class="cs-spot-meta"><span class="cs-pill">${esc(pick(entry.station.ja, entry.station.en))}</span><span class="cs-pill cs-side-e">${pick('北側（16両ならE席側）', 'North side (Seat E on 16-car trains)')}</span><span class="cs-pill">${pick('山陽新幹線', 'Sanyo Shinkansen')}</span></p>
+        <p class="cs-spot-meta"><span class="cs-pill">${esc(pick(entry.station.ja, entry.station.en))}</span><span class="cs-pill cs-side-${entry.side === 'A' ? 'a' : 'e'}">${side}</span><span class="cs-pill">${pick('山陽新幹線', 'Sanyo Shinkansen')}</span></p>
         <h3>${esc(pick(entry.name.ja, entry.name.en))}</h3>
         <p class="cs-spot-lead">${pick(entry.hook.ja, entry.hook.en)}</p>
         <p>${pick(entry.about.ja, entry.about.en)}</p>
         <p>${pick(entry.body.ja, entry.body.en)}</p>
+${detailHref ? `        <p class="cs-more"><a href="${detailHref}">${pick(`${esc(entry.name.ja)}の車窓ページを見る`, `Open the ${esc(entry.name.en)} window guide`)}</a></p>` : ''}
       </div>
     </article>`;
  };
@@ -266,7 +234,7 @@ ${group('ruins')}
     <div class="cs-section-head">
       <p class="eyebrow">WEST OF SHIN-OSAKA</p>
       <h2 id="csSanyoTitle">${pick(chunk(['新大阪から西へ。', '山陽新幹線の城']), 'West of Shin-Osaka — castles on the Sanyo Shinkansen')}</h2>
-      <p class="cs-section-lead">${pick(chunk(['車窓スポットの紹介は', '新大阪までですが、', 'その先にも城はあります。', '見かけた方の投稿から。']), 'Our window guide stops at Shin-Osaka, but the castles do not. These two come from a rider who posted what passed the window.')}</p>
+      <p class="cs-section-lead">${pick(chunk(['車窓スポットの紹介は', '新大阪までですが、', 'その先にも城はあります。', '見かけた方の投稿から。']), 'Our window guide stops at Shin-Osaka, but the castles do not. These photographs were shared by people who spotted castles from their seats.')}</p>
     </div>
 ${sanyoEntries.map(sanyoCard).join('\n')}
   </section>
@@ -280,7 +248,7 @@ ${sanyoEntries.map(sanyoCard).join('\n')}
         <img src="${prefix}${atami.thumb}" alt="${esc(atami.alt)}" width="480" height="320" loading="lazy" decoding="async">
         <figcaption>${pick('熱海の斜面に立つ熱海城 / 写真：新幹線の窓', 'Atami Castle on the hillside / Photo: Shinkansen Window')}</figcaption>
       </figure>
-      <p><a href="${prefix}${local}spots/odawara.html">${pick('熱海と相模湾の車窓ページを見る', 'See the Atami and Sagami Bay window guide')}</a></p>
+      <p><a href="${prefix}${local}spots/odawara.html#spot-odawara/photo-8">${pick('熱海と相模湾の車窓ページを見る', 'See the Atami and Sagami Bay window guide')}</a></p>
     </div>
   </section>
 

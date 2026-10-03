@@ -1055,6 +1055,14 @@
     "quality": 72,
     "sha256": "00a9bd3dab1e21fa66d8047eadffaef849793fc4b8e7bc96bf7ad699c1704b31"
   },
+  "images/thumbs/gallery/20260816_east_mikawa_greenhouses_michikusa.webp": {
+    "source": "images/20260816_east_mikawa_greenhouses_michikusa.jpg",
+    "sourceSha256": "e3e8684a83c2a2c1d4e1626ff769d4c804519a42ff67c7b2358c62efc5eafa0e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "098b563734496bfa6ad69a30a09d1f899ce244b39be789d06a6199d6b603c2b5"
+  },
   "images/thumbs/gallery/20260816_fuji_paper_mills_michikusa.webp": {
     "source": "images/20260816_fuji_paper_mills_michikusa.jpg",
     "sourceSha256": "b8ed036ff8db3687bf588ecc3a039f0f72a61e854c5a2a5ee9c93c7e329e73b6",
@@ -1487,6 +1495,14 @@
     "quality": 72,
     "sha256": "ccd4c5af42ad4300f059cbed363dd407fd43871514e4b4ac9bf261d7c42726fa"
   },
+  "images/thumbs/gallery/20260919_pocari-fukuroi_150379_michikusa.webp": {
+    "source": "images/20260919_pocari-fukuroi_150379_michikusa.jpg",
+    "sourceSha256": "97879a902d974eeea408e2d2eac575eb19ce1681ab64035bf10efd4998a487bb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ad0f609bb68c860be29bb8122b06db004da2f3d1cd1e0bd3a6d40ea059430db6"
+  },
   "images/thumbs/gallery/20260919_rakusai_egg_tanks_michikusa.webp": {
     "source": "images/20260919_rakusai_egg_tanks_michikusa.jpg",
     "sourceSha256": "bf955af346d8f1af1a2d7fd1d7d1ee4809c4bfcf9c827d5f13de67e3f46040b2",
@@ -1590,6 +1606,14 @@
     "height": 198,
     "quality": 72,
     "sha256": "6873570977eb58e599c9ae47ebe164f57dc5a4b69582c858d31943b8382c7cc2"
+  },
+  "images/thumbs/gallery/20260924_gamagori-greenhouses_19169_michikusa.webp": {
+    "source": "images/20260924_gamagori-greenhouses_19169_michikusa.jpg",
+    "sourceSha256": "926ea2dd9d57039ef0a48b6da3587744100c78b43ced0b50696e3553c026dd71",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "9e0fd81af3334e08ad3c2e41a6b5fdf3abe971172d751499194f1b9444be4186"
   },
   "images/thumbs/gallery/20260924_gyoran-kannon_48143_michikusa.webp": {
     "source": "images/20260924_gyoran-kannon_48143_michikusa.jpg",

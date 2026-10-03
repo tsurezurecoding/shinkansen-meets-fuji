@@ -241,6 +241,8 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    "spots/himeji-castle.html": { en: true },
+    "spots/okayama-castle.html": { en: true },
     "ferris-wheels.html": { en: true },
     "castles.html": { en: true },
     "arenani.html": { en: true },
@@ -267,9 +269,9 @@
     // 差し替えるため、これが無いと「日本語」を押しても英語ページへ戻される（2026-08-13発覚）。
     // ?lang=ja は router 側で保存値を "ja" へ上書きしてリダイレクトを止める入口になっている。
     var jaHref = utilityRoute
-      ? (lang === "ja" ? utilityRoute : href(rootPath, utilityRoute) + "?lang=ja")
+      ? (lang === "ja" ? href(rootPath, utilityRoute) : href(rootPath, utilityRoute) + "?lang=ja")
       : (lang === "ja" ? currentId + ".html" : href(rootPath, "spots/" + currentId + ".html") + "?lang=ja");
-    var enHref = utilityRoute ? (lang === "en" ? utilityRoute : href(rootPath, typeof utilityHasAlternate === "string" ? utilityHasAlternate : "en/" + utilityRoute)) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
+    var enHref = utilityRoute ? href(rootPath, typeof utilityHasAlternate === "string" ? utilityHasAlternate : "en/" + utilityRoute) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
     var jaClass = lang === "ja" ? "active" : "";
     var enClass = lang === "en" ? "active" : "";
     return "<header class=\"topbar\">" +
@@ -342,7 +344,7 @@
     "</div>";
   }
 
-  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute) {
+  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute, options) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
@@ -372,7 +374,7 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
   // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
@@ -389,7 +391,7 @@
   // 並び順が優先順位。時期枠は上から最初に当てはまる1件で、関連枠に出した特集は時期枠に出さない。
   var RAIL_FEATURES = [
     { id: "727", route: "727-collection.html", icon: "images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
-    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
+    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "himeji-castle", "okayama-castle"] },
     { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
     { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
     { id: "hanabi", route: "hanabi.html", icon: "images/thumbs/hanabi-hero-pd.webp", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
@@ -435,9 +437,9 @@
     return "<a class=\"spot-page-rail-all-features\" href=\"" + escapeHTML(href(basePath(rootPath, lang), "zukan.html")) + "\" data-cta-track=\"zukan_entry_click\" data-cta-id=\"spot_rail_all_features\">" + escapeHTML(UI[lang].railAllFeatures) + "</a>";
   }
 
-  function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today) {
+  function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today, options) {
     var picked = pickRailFeatures(lang, currentId || "", currentRoute || "", today || new Date());
-    return railAppHTML(rootPath, lang) + railLiveHTML(rootPath, lang) +
+    return railAppHTML(rootPath, lang) + (options && options.noLive ? "" : railLiveHTML(rootPath, lang)) +
       (picked.related ? railFeatureHTML(picked.related, rootPath, lang, "related", count727) : "") +
       (picked.seasonal ? railFeatureHTML(picked.seasonal, rootPath, lang, "seasonal", count727) : "") +
       railAllFeaturesHTML(rootPath, lang);
@@ -813,6 +815,7 @@
       button.addEventListener("click", function () {
         var thumb = button.querySelector("img");
         var figureCaption = button.parentElement.querySelector("figcaption");
+        image.alt = thumb ? thumb.alt : "";
         image.src = button.getAttribute("data-zoom-src") || (thumb && thumb.getAttribute("src")) || "";
         if (figureCaption && figureCaption.querySelector(".spot-page-zoom-hint")) {
           caption.textContent = Array.from(figureCaption.children).filter(function (item) { return !item.classList.contains("spot-page-zoom-hint"); }).map(function (item) { return item.textContent.trim(); }).filter(Boolean).join(" · ");
@@ -953,6 +956,28 @@
         }
         return;
       }
+      // 左ペインの東海道タイムラインは回遊用に共用。山陽の時刻・ライブの案内はしない。
+      if (document.body.getAttribute("data-spot-page-shared-context") === "sanyo") {
+        hosts = [findHost("topbar"), findHost("rail"), findHost("mobile-promos"), findHost("content-rail"), findHost("showcase")];
+        var sanyoLang = document.body.getAttribute("data-spot-page-shared-lang");
+        var sanyoRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
+        var sanyoRoute = document.body.getAttribute("data-spot-page-shared-route");
+        if (!SUPPORTED_LANGUAGES[sanyoLang] || !/^spots\/(himeji|okayama)-castle\.html$/.test(sanyoRoute)) throw new Error("sanyo page context is malformed");
+        bindPageLightbox();
+        if (root.MADO_EMBEDDED_WEB) {
+          hosts.forEach(function (host) { if (host && host.parentNode) host.parentNode.removeChild(host); });
+          document.body.classList.add("mado-embedded-body");
+          return;
+        }
+        hosts[0].outerHTML = siteHeaderHTML(sanyoRoot, sanyoLang, "", sanyoRoute, true);
+        var sanyoId = document.body.getAttribute("data-spot-page-shared-id");
+        var promos = railPromosHTML(sanyoRoot, sanyoLang, sanyoRoute, 0, sanyoId, null, { noLive: true });
+        hosts[1].outerHTML = railHTML(root[DATA_KEY], sanyoRoot, sanyoLang, sanyoId, basePath(sanyoRoot, sanyoLang) + "spots/", sanyoRoute, { noLive: true, noTrain: true });
+        hosts[2].outerHTML = "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</section>";
+        hosts[3].outerHTML = contentRailHTML(sanyoRoot, sanyoLang);
+        hosts[4].outerHTML = showcaseHTML(root[DATA_KEY], sanyoRoot, sanyoLang);
+        return;
+      }
       if (document.body.getAttribute("data-spot-page-shared-context") === "utility") {
         hosts = [findHost("topbar"), findHost("rail"), findHost("content-rail")];
         var mobilePromosHost = findOptionalHost("mobile-promos");
@@ -997,5 +1022,6 @@
     }
   }
 
-  render();
+  root.MADO_SPOT_PAGE_COMPONENTS = { readingCollectionHTML: readingCollectionHTML };
+  if (typeof document !== "undefined") render();
 }(typeof window !== "undefined" ? window : globalThis));
