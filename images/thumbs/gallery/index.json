@@ -1175,6 +1175,14 @@
     "quality": 72,
     "sha256": "6102290052a70f2bcbb7ac479c3331154bce6e42a58da254e24bb7dd1026e7b2"
   },
+  "images/thumbs/gallery/20260820_toyokawa-greenhouses_41222_michikusa.webp": {
+    "source": "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
+    "sourceSha256": "23bbee37da8d6168b8e5e97cb4eff6bd8deca1928db5e30841e26fbb4b5a0beb",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ff2fb2936ecd45d437b16f8e66223444c84fd0350697a0cc8752942cfcdbcca9"
+  },
   "images/thumbs/gallery/20260824_hirakata_park_wheel_michikusa.webp": {
     "source": "images/20260824_hirakata_park_wheel_michikusa.jpg",
     "sourceSha256": "811f0c79bb697ce7b998d40bcab3777ac64d16adfc82bee4d0ed4358e067c515",
