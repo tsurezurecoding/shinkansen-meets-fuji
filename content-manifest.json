@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "7c76108e62aa09eb",
+  "contentVersion": "8ac9d477827fed70",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -121,8 +121,8 @@
     {
       "path": "en/drinks.html",
       "url": "https://www.michikusa-travel.com/en/drinks.html",
-      "bytes": 32359,
-      "sha256": "6e230db5ad78528b16f6efadab09509b826dda076649c8e50537a8b3d961998f"
+      "bytes": 32473,
+      "sha256": "94693d3061e4b7206d1a1dd861f0562db65c9a09251b47ff8321d163abe614f0"
     },
     {
       "path": "en/ferris-wheels.html",
