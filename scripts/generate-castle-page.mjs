@@ -92,7 +92,7 @@ function render(lang) {
   if (!fs.existsSync(path.join(root, thumb))) throw Error('Missing thumbnail: ' + thumb);
   return { thumb, alt: photo.alt[lang] || photo.alt.ja };
  };
- const atami = sidePhoto('odawara', 'images/20260712_atami_castle_michikusa.jpg');
+ const atami = sidePhoto('odawara', 'images/20260919_atami_castle_michikusa.jpg');
  const nagoya = sidePhoto('nagoya-station-skyline', 'images/20260530_nagoya_station_3_michikusa.jpg');
  const card = ([id, , kind, kindEn, hook, hookEn, body, bodyEn]) => {
   const s = spots.find(s => s.id === id); if (!s) throw Error(id);
@@ -248,7 +248,7 @@ ${sanyoEntries.map(sanyoCard).join('\n')}
         <img src="${prefix}${atami.thumb}" alt="${esc(atami.alt)}" width="480" height="320" loading="lazy" decoding="async">
         <figcaption>${pick('熱海の斜面に立つ熱海城 / 写真：新幹線の窓', 'Atami Castle on the hillside / Photo: Shinkansen Window')}</figcaption>
       </figure>
-      <p><a href="${prefix}${local}spots/odawara.html">${pick('熱海と相模湾の車窓ページを見る', 'See the Atami and Sagami Bay window guide')}</a></p>
+      <p><a href="${prefix}${local}spots/odawara.html#spot-odawara/photo-8">${pick('熱海と相模湾の車窓ページを見る', 'See the Atami and Sagami Bay window guide')}</a></p>
     </div>
   </section>
 
