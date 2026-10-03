@@ -63,7 +63,7 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     const dom = page(castle.id, lang, true), doc = dom.window.document;
     assert.equal(doc.querySelector('.topbar'), null);
     assert.equal(doc.querySelector('[data-spot-page-shared-module]'), null);
-    assert.equal(doc.querySelector('h1').textContent, castle.name[lang]);
+    assert.equal(doc.querySelector('h1').textContent, lang === 'ja' ? castle.detail.heading.ja.join(' ') : castle.detail.heading.en);
     doc.querySelectorAll('[data-gallery-thumb]')[1].click();
     assert.equal(doc.querySelectorAll('[data-gallery-thumb]')[1].getAttribute('aria-pressed'), 'true');
     doc.querySelector('[data-mini-map-mode="viewpoint"]').click();

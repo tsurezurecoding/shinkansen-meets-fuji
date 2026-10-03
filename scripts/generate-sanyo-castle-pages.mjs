@@ -92,7 +92,7 @@ function render(castle, lang, dest) {
   <main class="spot-reading-layout">
     <header class="spot-page-article spot-page-hero">
       <p class="eyebrow">${pick('新幹線の車窓スポット', 'SHINKANSEN WINDOW VIEW')}</p>
-      <div class="spot-page-heading-row"><h1>${esc(castle.name[lang])}</h1></div>
+      <div class="spot-page-heading-row"><h1>${en ? esc(detail.heading.en) : detail.heading.ja.map(chunk => `<span class="copy-chunk">${esc(chunk)}</span>`).join(' ')}</h1></div>
       <p class="spot-page-lead">${esc(castle.hook[lang])}</p>
     </header>
     <div class="sanyo-spot-shell">

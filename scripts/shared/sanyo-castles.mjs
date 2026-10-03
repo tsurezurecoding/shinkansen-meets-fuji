@@ -66,6 +66,7 @@ const contributor = '@DVfkFY3nnZdn3VJ';
 const himejiPost = 'https://x.com/DVfkFY3nnZdn3VJ/status/2105552015036440734';
 // 地図の視点は線路上の代表位置。各写真の撮影位置を意味しない（OSM照合、2026-10-03）。
 himeji.detail = {
+ heading: { ja: ['姫路城', '世界遺産の白鷺城'], en: 'Himeji Castle, the World Heritage White Heron Castle' },
  castle: { lat: 34.83933, lng: 134.69402 }, viewpoint: { lat: 34.82632, lng: 134.69169 },
  description: {
   ja: '姫路城は新幹線の北側の窓から。姫路駅の前後に見える白い天守を、車窓写真と地図で紹介。16両はE席、8両は座席配列でD席またはE席です。',
@@ -88,6 +89,7 @@ himeji.detail = {
  ]
 };
 okayama.detail = {
+ heading: { ja: ['岡山城', '黒い天守の烏城'], en: 'Okayama Castle, the dark-walled Crow Castle' },
  castle: { lat: 34.66520, lng: 133.93605 }, viewpoint: { lat: 34.67023, lng: 133.92054 },
  description: {
   ja: '新幹線から岡山城を探すならA席側。岡山駅の東側で見え隠れする黒い天守を、許諾済みの車窓写真と城・線路の地図で紹介します。',
