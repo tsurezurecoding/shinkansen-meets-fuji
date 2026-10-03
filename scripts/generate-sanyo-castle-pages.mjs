@@ -35,7 +35,7 @@ function render(castle, lang, dest) {
   const en = lang === 'en', prefix = en ? '../../' : '../', route = `spots/${castle.id}.html`;
   const local = en ? 'en/' : '', detail = castle.detail;
   const pick = (ja, english) => en ? english : ja;
-  const title = pick(`${castle.name.ja}は新幹線から見える？席側と車窓写真`, `${castle.name.en} from the Shinkansen: Which Side to Watch`);
+  const title = detail.title[lang];
   const description = detail.description[lang], url = `${origin}/${local}${route}`;
   const css = file => `<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`;
   const script = file => `<script src="${prefix}${file}?v=${assetVersion(file)}"></script>`;
@@ -92,7 +92,7 @@ function render(castle, lang, dest) {
   <main class="spot-reading-layout">
     <header class="spot-page-article spot-page-hero">
       <p class="eyebrow">${pick('新幹線の車窓スポット', 'SHINKANSEN WINDOW VIEW')}</p>
-      <div class="spot-page-heading-row"><h1>${en ? esc(detail.heading.en) : detail.heading.ja.map(chunk => `<span class="copy-chunk">${esc(chunk)}</span>`).join(' ')}</h1></div>
+      <div class="spot-page-heading-row"><h1>${en ? esc(detail.heading.en) : detail.heading.ja.map(chunk => `<span class="copy-chunk">${esc(chunk)}</span>`).join('')}</h1></div>
       <p class="spot-page-lead">${esc(castle.hook[lang])}</p>
     </header>
     <div class="sanyo-spot-shell">

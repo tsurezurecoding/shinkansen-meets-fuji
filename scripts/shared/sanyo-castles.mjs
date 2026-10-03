@@ -66,11 +66,12 @@ const contributor = '@DVfkFY3nnZdn3VJ';
 const himejiPost = 'https://x.com/DVfkFY3nnZdn3VJ/status/2105552015036440734';
 // 地図の視点は線路上の代表位置。各写真の撮影位置を意味しない（OSM照合、2026-10-03）。
 himeji.detail = {
- heading: { ja: ['姫路城', '世界遺産の白鷺城'], en: 'Himeji Castle, the World Heritage White Heron Castle' },
+ heading: { ja: ['姫路城——', '世界遺産の白鷺城'], en: 'Himeji Castle — the World Heritage White Heron Castle' },
+ title: { ja: '姫路城は新幹線から見える？席側・場所と車窓写真', en: 'Himeji Castle from the Shinkansen: Seat Side & Window Photos' },
  castle: { lat: 34.83933, lng: 134.69402 }, viewpoint: { lat: 34.82632, lng: 134.69169 },
  description: {
-  ja: '姫路城は新幹線の北側の窓から。姫路駅の前後に見える白い天守を、車窓写真と地図で紹介。16両はE席、8両は座席配列でD席またはE席です。',
-  en: 'See Himeji Castle from the Shinkansen: watch the north-facing windows around Himeji Station. Window photos, seat letters for 8- and 16-car trains, and a map.'
+  ja: '世界遺産・姫路城（白鷺城）を新幹線の車窓から探す案内。姫路駅の前後、北側の窓に見える天守の目印を写真と地図で紹介します。16両はE席、8両は座席配列によりD席またはE席。進行方向ごとの見つけ方も確認できます。',
+  en: 'Spot Himeji Castle, the World Heritage White Heron Castle, from the Shinkansen. Find the north-side seats, where to look near Himeji Station, window photos and a map.'
  },
  seat: { ja: '北側の窓', en: 'North-facing windows' },
  seatNote: { ja: '16両はE席。8両は2+2ならD席、3+2ならE席。', en: 'Seat E on 16-car trains. On 8-car trains: Seat D in 2+2 rows, Seat E in 3+2 rows.' },
@@ -89,11 +90,12 @@ himeji.detail = {
  ]
 };
 okayama.detail = {
- heading: { ja: ['岡山城', '黒い天守の烏城'], en: 'Okayama Castle, the dark-walled Crow Castle' },
+ heading: { ja: ['岡山城——', '黒い天守の烏城'], en: 'Okayama Castle — the dark-walled Crow Castle' },
+ title: { ja: '岡山城は新幹線から見える？A席側・場所と車窓写真', en: 'Okayama Castle from the Shinkansen: Seat A & Window Photos' },
  castle: { lat: 34.66520, lng: 133.93605 }, viewpoint: { lat: 34.67023, lng: 133.92054 },
  description: {
-  ja: '新幹線から岡山城を探すならA席側。岡山駅の東側で見え隠れする黒い天守を、許諾済みの車窓写真と城・線路の地図で紹介します。',
-  en: 'See Okayama Castle from the Shinkansen on the Seat A side, east of Okayama Station. Window photographs of the dark Crow Castle, where to look, and a map.'
+  ja: '岡山城（烏城）は新幹線のA席側、岡山駅の東側で探します。西へ向かう列車は到着前、東へ向かう列車は出発後。建物の向こうに見え隠れする黒い天守を、車窓写真・探す目印・城と線路の地図で紹介します。',
+  en: 'Look for Okayama Castle, the dark-walled Crow Castle, from Seat A on the Shinkansen. Find where to watch east of Okayama Station, window photos and a map.'
  },
  seat: { ja: 'A席側', en: 'Seat A side' },
  seatNote: { ja: '16両・8両ともA席側。', en: 'Seat A on both 16- and 8-car trains.' },
