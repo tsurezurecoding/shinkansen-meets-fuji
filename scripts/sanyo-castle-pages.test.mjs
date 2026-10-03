@@ -11,6 +11,7 @@ function page(id, lang, embedded = false) {
   const route = `${lang === 'en' ? 'en/' : ''}spots/${id}.html`;
   const dom = new JSDOM(fs.readFileSync(new URL(route, root), 'utf8'), { url: `https://www.michikusa-travel.com/${route}`, runScripts: 'outside-only' });
   dom.window.MADO_EMBEDDED_WEB = embedded;
+  dom.window.eval(fs.readFileSync(new URL("spot-page-shared-data.js", root), "utf8"));
   dom.window.eval(renderer);
   dom.window.eval(galleryScript);
   dom.window.eval(mapScript);
@@ -31,7 +32,11 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     assert.equal(doc.querySelectorAll('.spot-page-facts > div').length, 4);
     assert.equal(doc.querySelector('[data-gallery-source-output]').href, castle.detail.photos[0].sourceUrl);
     assert.equal(doc.querySelectorAll('[data-mini-map-mode="live"], .spot-reading-actions, .spot-train-picker').length, 0);
-    assert.equal(doc.querySelectorAll('[data-spot-page-shared-module="rail"], .spot-page-stamp').length, 0);
+    assert.equal(doc.querySelectorAll('.spot-page-rail').length, 1);
+    assert.equal(doc.querySelectorAll('.spot-page-rail-list, .spot-page-rail-live, .spot-reading-actions, .spot-page-stamp').length, 0);
+    assert.equal(doc.querySelectorAll('.spot-reading-related .spot-reading-photos img').length, 2);
+    assert.equal(new URL(doc.querySelector('.spot-reading-related a').href).pathname, lang === 'en' ? '/en/castles.html' : '/castles.html');
+    assert.equal(doc.querySelectorAll('.spot-page-showcase a').length > 0, true);
     assert.ok(!doc.querySelector('.spot-page-facts').textContent.includes('東京から'));
     assert.equal(doc.querySelector('link[rel="canonical"]').href, dom.window.location.href);
     dom.window.close();
@@ -71,3 +76,18 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     dom.window.close();
   });
 }
+
+for (const lang of ['ja', 'en']) test(`Sanyo/${lang}: collection card stays identical to Kiyosu`, () => {
+  const route = `${lang === 'en' ? 'en/' : ''}spots/kiyosu.html`;
+  const kiy = new JSDOM(fs.readFileSync(new URL(route, root), 'utf8'), { url: `https://www.michikusa-travel.com/${route}`, runScripts: 'outside-only' });
+  kiy.window.eval(fs.readFileSync(new URL('spot-page-shared-data.js', root), 'utf8'));
+  kiy.window.eval(fs.readFileSync(new URL(`data/spot-pages/kiyosu.${lang}.js`, root), 'utf8'));
+  kiy.window.eval(renderer);
+  const expected = kiy.window.document.querySelector('.spot-reading-related').outerHTML;
+  for (const castle of SANYO_DETAIL_CASTLES) {
+    const dom = page(castle.id, lang);
+    assert.equal(dom.window.document.querySelector('.spot-reading-related').outerHTML, expected);
+    dom.window.close();
+  }
+  kiy.window.close();
+});

@@ -391,7 +391,7 @@
   // 並び順が優先順位。時期枠は上から最初に当てはまる1件で、関連枠に出した特集は時期枠に出さない。
   var RAIL_FEATURES = [
     { id: "727", route: "727-collection.html", icon: "images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
-    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle"] },
+    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "himeji-castle", "okayama-castle"] },
     { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
     { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
     { id: "hanabi", route: "hanabi.html", icon: "images/thumbs/hanabi-hero-pd.webp", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
@@ -437,9 +437,9 @@
     return "<a class=\"spot-page-rail-all-features\" href=\"" + escapeHTML(href(basePath(rootPath, lang), "zukan.html")) + "\" data-cta-track=\"zukan_entry_click\" data-cta-id=\"spot_rail_all_features\">" + escapeHTML(UI[lang].railAllFeatures) + "</a>";
   }
 
-  function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today) {
+  function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today, options) {
     var picked = pickRailFeatures(lang, currentId || "", currentRoute || "", today || new Date());
-    return railAppHTML(rootPath, lang) + railLiveHTML(rootPath, lang) +
+    return railAppHTML(rootPath, lang) + (options && options.noLive ? "" : railLiveHTML(rootPath, lang)) +
       (picked.related ? railFeatureHTML(picked.related, rootPath, lang, "related", count727) : "") +
       (picked.seasonal ? railFeatureHTML(picked.seasonal, rootPath, lang, "seasonal", count727) : "") +
       railAllFeaturesHTML(rootPath, lang);
@@ -956,9 +956,9 @@
         }
         return;
       }
-      // 山陽の静的記事は共通ヘッダーと特集ナビだけを使う。東海道の時刻レールは表示しない。
+      // 山陽も本文レイアウト・関連記事・案内を共用。未対応の時刻・ライブだけ省く。
       if (document.body.getAttribute("data-spot-page-shared-context") === "sanyo") {
-        hosts = [findHost("topbar"), findHost("content-rail")];
+        hosts = [findHost("topbar"), findHost("rail"), findHost("mobile-promos"), findHost("content-rail"), findHost("showcase")];
         var sanyoLang = document.body.getAttribute("data-spot-page-shared-lang");
         var sanyoRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
         var sanyoRoute = document.body.getAttribute("data-spot-page-shared-route");
@@ -970,7 +970,12 @@
           return;
         }
         hosts[0].outerHTML = siteHeaderHTML(sanyoRoot, sanyoLang, "", sanyoRoute, true);
-        hosts[1].outerHTML = contentRailHTML(sanyoRoot, sanyoLang);
+        var sanyoId = document.body.getAttribute("data-spot-page-shared-id");
+        var promos = railPromosHTML(sanyoRoot, sanyoLang, sanyoRoute, 0, sanyoId, null, { noLive: true });
+        hosts[1].outerHTML = "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</aside>";
+        hosts[2].outerHTML = "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</section>";
+        hosts[3].outerHTML = contentRailHTML(sanyoRoot, sanyoLang);
+        hosts[4].outerHTML = showcaseHTML(root[DATA_KEY], sanyoRoot, sanyoLang);
         return;
       }
       if (document.body.getAttribute("data-spot-page-shared-context") === "utility") {
@@ -1017,5 +1022,6 @@
     }
   }
 
-  render();
+  root.MADO_SPOT_PAGE_COMPONENTS = { readingCollectionHTML: readingCollectionHTML };
+  if (typeof document !== "undefined") render();
 }(typeof window !== "undefined" ? window : globalThis));

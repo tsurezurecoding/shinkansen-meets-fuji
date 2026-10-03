@@ -1,2 +1,1 @@
-/* 通常スポットのhero・gallery・本文を利用。時刻レールのない本文は中央に置く。 */
-.sanyo-spot-shell > .spot-page-article { padding-top: 12px; }
+/* 山陽もstyle.cssの共通spot-page-shell・本文・関連記事を利用。 */

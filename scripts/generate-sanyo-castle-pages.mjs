@@ -1,5 +1,7 @@
 // 静的な山陽記事。東海道のSPOTS・payload・通過時刻には接続しない。
 import fs from 'node:fs';
+import vm from 'node:vm';
+import { castleCollectionFor } from './shared/castle-reading-collection.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
@@ -9,6 +11,8 @@ import { ANALYTICS } from './shared/feature-page.mjs';
 import { GOOGLE_MAPS_EMBED_API_KEY } from './shared/map-config.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const sharedContext = { window: {} };
+vm.runInNewContext(fs.readFileSync(path.join(root, 'spot-page-shared.js'), 'utf8'), sharedContext);
 const origin = 'https://www.michikusa-travel.com';
 const esc = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
 const localized = (value, lang) => typeof value === 'string' ? value : value[lang];
@@ -35,6 +39,7 @@ function render(castle, lang, dest) {
   const en = lang === 'en', prefix = en ? '../../' : '../', route = `spots/${castle.id}.html`;
   const local = en ? 'en/' : '', detail = castle.detail;
   const pick = (ja, english) => en ? english : ja;
+  const heading = value => en ? esc(value.en) : value.ja.split(/(?<=、)/).map(chunk => `<span class="copy-chunk">${esc(chunk)}</span>`).join('');
   const title = detail.title[lang];
   const description = detail.description[lang], url = `${origin}/${local}${route}`;
   const css = file => `<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`;
@@ -95,24 +100,30 @@ function render(castle, lang, dest) {
       <div class="spot-page-heading-row"><h1>${en ? esc(detail.heading.en) : detail.heading.ja.map(chunk => `<span class="copy-chunk">${esc(chunk)}</span>`).join('')}</h1></div>
       <p class="spot-page-lead">${esc(castle.hook[lang])}</p>
     </header>
-    <div class="sanyo-spot-shell">
+    <div class="spot-page-shell">
+    <aside data-spot-page-shared-module="rail"></aside>
     <article class="spot-page-article">
       ${gallery}
       <dl class="spot-page-facts">
         <div><dt>${pick('エリア', 'Area')}</dt><dd>${castle.id === 'himeji-castle' ? pick('兵庫県姫路市', 'Himeji, Hyogo') : pick('岡山県岡山市', 'Okayama, Okayama')}</dd></div>
         <div><dt>${pick('席側', 'Seat side')}</dt><dd>${esc(detail.seat[lang])}<small>${esc(detail.seatNote[lang])}</small></dd></div>
         <div><dt>${pick('探す場所', 'Where to look')}</dt><dd>${esc(castle.station[lang])}</dd></div>
-        <div><dt>${pick('見え方', 'Visibility')}</dt><dd>${pick('建物で見え隠れ', 'Interrupted by buildings')}<small>${pick('列車や沿線の状況で変わります。', 'The view varies with the train and surroundings.')}</small></dd></div>
+        <div><dt>${pick('見え方', 'Visibility')}</dt><dd>${pick('見え隠れ', 'Interrupted by buildings')}<small>${pick('列車や沿線の状況で変わります。', 'The view varies with the train and surroundings.')}</small></dd></div>
       </dl>
       <section class="spot-page-section">
-        <p class="spot-reading-eyebrow">THROUGH THE WINDOW</p>
+        <p class="spot-reading-eyebrow">THE STORY</p>
+        <h2>${heading(detail.storyHeading)}</h2>
+        ${detail.story[lang].map(text => `<p>${esc(text)}</p>`).join('\n')}
+      </section>
+      <section class="spot-page-section">
+        <p class="spot-reading-eyebrow">WHAT TO SEE</p>
         <h2>${pick('窓から探すには', 'Finding it from the window')}</h2>
         ${detail.looking[lang].map(text => `<p>${esc(text)}</p>`).join('\n')}
       </section>
-      <section class="spot-page-section">
-        <p class="spot-reading-eyebrow">THE CASTLE</p>
-        <h2>${pick('天守のこと', 'The keep behind the view')}</h2>
-        <p>${esc(castle.about[lang])}</p>
+      <section class="spot-page-section spot-page-phototip">
+        <p class="spot-reading-eyebrow">PHOTO TIPS</p>
+        <h2>${heading(detail.photoTip.heading)}</h2>
+        ${detail.photoTip.paragraphs[lang].map(text => `<p>${esc(text)}</p>`).join('\n')}
       </section>
       <section class="spot-page-section spot-static-map">
         <p class="spot-reading-eyebrow">ON THE MAP</p>
@@ -125,20 +136,20 @@ function render(castle, lang, dest) {
         <p class="spot-mini-map-note">${pick('新幹線の視点は線路上の代表位置です。写真ごとの撮影位置や、見える範囲を示すものではありません。', 'The train viewpoint is a representative point on the railway, rather than the exact location of each photograph or a visibility boundary.')}</p>
         <a class="map-link" href="${mapExternal}" target="_blank" rel="noopener noreferrer">${pick('Googleマップで開く', 'Open in Google Maps')} ↗</a>
       </section>
+      ${sharedContext.window.MADO_SPOT_PAGE_COMPONENTS.readingCollectionHTML({ readingLayout: { collection: castleCollectionFor(lang) } }, prefix, lang)}
       <section class="spot-page-section spot-reading-sources">
         <h2>${pick('参考リンク', 'Further reading')}</h2>
         <ul>${detail.references.map(ref => `<li><a href="${esc(localized(ref.url, lang))}" target="_blank" rel="noopener noreferrer">${esc(ref[lang])}</a></li>`).join('')}</ul>
       </section>
-      <section class="spot-page-section">
-        <h2>${pick('次の城も、窓から', 'More castles from the window')}</h2>
-        <p><a href="${prefix}${local}castles.html#sanyo">${pick('山陽の城を見比べる', 'Explore the Sanyo castle views')}</a></p>
-      </section>
     </article>
     </div>
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
   ${footer(lang, dest)}
   <div class="spot-page-lightbox" id="spotPageLightbox" hidden><button type="button" class="spot-page-lightbox-close" aria-label="${pick('閉じる', 'Close')}">&times;</button><figure><img alt=""><figcaption></figcaption></figure></div>
+  ${script('spot-page-shared-data.js')}
   ${script('spot-page-shared.js')}
   ${script('spot-media-gallery.js')}
   ${script('spot-map.js')}

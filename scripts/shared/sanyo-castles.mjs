@@ -98,7 +98,7 @@ okayama.detail = {
   en: 'Look for Okayama Castle, the dark-walled Crow Castle, from Seat A on the Shinkansen. Find where to watch east of Okayama Station, window photos and a map.'
  },
  seat: { ja: 'A席側', en: 'Seat A side' },
- seatNote: { ja: '16両・8両ともA席側。', en: 'Seat A on both 16- and 8-car trains.' },
+ seatNote: { ja: '16両・8両共通。', en: 'Seat A on both 16- and 8-car trains.' },
  looking: {
   ja: ['岡山駅の東側で、街の向こうにある黒い天守を探します。新大阪から西へ向かう列車では到着前の左側、東へ向かう列車では発車後の右側です。駅付近の線路は曲がるので、「南側」よりA席側を目印にしてください。', '城は線路から約1.5〜1.8km離れています。旭川を渡るあたりから駅に近づく間が探す目安ですが、ビルで見え隠れします。望遠写真は屋根や壁を確かめるための一枚。裸眼では、街並みの中の小さな城です。'],
   en: ['Look for the dark keep east of Okayama Station. It is on your left before arrival when travelling west, and on your right after departure when travelling east. The tracks curve here, so use the Seat A label rather than a compass direction.', 'The keep is roughly 1.5–1.8 km from the track. Watch around the Asahi River crossing and the approach to the station; modern buildings interrupt the view. These telephoto photographs help identify the roof and walls. To the eye, it is a small castle among the city buildings.']
@@ -110,5 +110,31 @@ okayama.detail = {
  references: [
   { ja: '岡山城公式：天守閣の案内', en: 'Okayama Castle: About the Tenshukaku', url: { ja: 'https://okayama-castle.jp/gather-introduction/', en: 'https://okayama-castle.jp/gather-introduction-en/' } }
  ]
+};
+// 独立ページは一覧より詳しく、歴史・車窓・撮影の順に読む。
+himeji.detail.storyHeading = { ja: '白鷺城は、なぜ白い？', en: 'Why is it called the White Heron Castle?' };
+himeji.detail.story = {
+ ja: [himeji.about.ja, '遠くからも白く見えるのは、壁を覆う白漆喰が特徴だからです。車窓では細かな装飾よりも、白い壁と幾重にも重なる屋根の輪郭が手がかりになります。いちばん高い大天守のまわりに小天守が並ぶので、街の屋根とは違う、まとまった白い姿を探してください。', '大天守は外から見ると5重、内部は地上6階と地下1階。池田輝政が1601年に始めた大改築で、現在の天守群が1609年に完成しました。その後も昭和の解体修理や平成の保存修理を重ねてきました。新幹線の窓に現れるのは、江戸時代から受け継がれてきた天守です。'],
+ en: [himeji.about.en, 'The white plaster walls are the first clue from a distance. Look for a group of white walls and overlapping roofs, with the main keep rising above the smaller towers, rather than trying to pick out fine decoration.', 'The main keep has five roof tiers, six floors above ground and a basement. Terumasa began his major rebuilding in 1601; the keep complex was completed in 1609. Extensive conservation, including dismantling repairs in the Showa era, has preserved the historic buildings you see from the train.']
+};
+himeji.detail.photoTip = {
+ heading: { ja: '街並みと天守を、一緒に見る', en: 'Use the skyline before zooming in' },
+ paragraphs: {
+  ja: ['まず街並みを広く見て、建物の上に白い屋根のまとまりを探します。城だけを大きく写した写真は形を覚えるのに役立ちますが、実際の窓ではずっと小さく見えます。広い写真と望遠の写真を切り替えると、街の中での大きさと天守の形を確かめられます。', '撮るときは、城を見つけてから大きくズームするより、少し広い画角で待つと追いやすくなります。手前の建物に隠れても、進行方向へ目を向け続けてください。窓に映る室内の反射にも気をつけ、席から無理なく眺めましょう。'],
+  en: ['Start with a wide view of the rooftops and look for a cluster of white roofs above them. Switch between the wider photograph and the telephoto close-up to learn both the scale of the castle in the city and the shape of its keep.', 'For a photograph, waiting with a moderately wide frame can make the castle easier to follow than zooming in tightly as soon as you spot it. Keep watching as foreground buildings interrupt the view, and check for reflections in the glass while remaining comfortably in your seat.']
+ }
+};
+himeji.detail.references.unshift({ja: '姫路市：姫路城の歴史', en: 'Himeji City: Castle history (Japanese)', url: 'https://www.city.himeji.lg.jp/castle/0000007750.html'});
+okayama.detail.storyHeading = { ja: '白鷺城と対照的な、黒い烏城', en: 'The dark walls of the Crow Castle' };
+okayama.detail.story = {
+ ja: ['白い姫路城に対して、岡山城の目印は黒い天守。外壁を黒塗りの下見板で覆っていることから、カラスを意味する「烏」の字を使って烏城（うじょう）と呼ばれます。新幹線の車窓でも、街の建物の間に現れる黒い壁と重なる屋根が探す手がかりです。', '現在につながる岡山城を築いたのは、豊臣秀吉のもとで活躍した宇喜多秀家です。当時の金箔瓦が発掘されており、黒い外壁だけでなく金色の瓦も特徴でした。「金烏城」という別名には、その華やかな姿が表れています。', '天守の土台と1階は不等辺五角形。岡山という丘の地盤に合わせた形といわれています。車窓の一瞬では平面の形までは見えませんが、写真で天守を見つけたあとに知ると、左右対称に見えるお城の印象が少し変わります。', '旧天守は戦災で焼失し、現在の天守は1966年に再建されたものです。姫路城の現存天守とは成り立ちが異なりますが、黒い外観を受け継ぎ、街のランドマークとして立っています。'],
+ en: ['In contrast with white-walled Himeji, Okayama Castle has dark clapboard walls. These gave it the nickname Ujo, or Crow Castle. From the train, its dark walls and stacked roofs help distinguish the keep from the surrounding buildings.', 'Ukita Hideie, a powerful lord under Toyotomi Hideyoshi, built the castle that shaped modern Okayama. Excavated gold-leaf tiles reveal that its original appearance paired black walls with golden roof tiles, hence another name: Golden Crow Castle.', 'The foundation and first floor form an irregular pentagon, thought to follow the ground of the hill called Okayama. You will not see that plan in a passing window view, but it gives the building an unusual shape.', 'The old keep was destroyed during the war. The tower you see today was reconstructed in 1966, carrying the distinctive dark exterior into the modern city.']
+};
+okayama.detail.photoTip = {
+ heading: { ja: '黒い天守を、街の中から探す', en: 'Finding the dark keep among the buildings' },
+ paragraphs: {
+  ja: ['遠い城を探すときは、写真の中の大きさをそのまま窓に当てはめないのがコツです。広い写真では周囲のビルや山並みとの位置関係を、近い写真では黒い壁と屋根の形を見ておくと、実際の車窓で探しやすくなります。', '岡山駅の東側で、A席側の窓を早めに見ておきます。西行きは到着前、東行きは発車後が目安。列車の種類や走行速度、手前の建物で見える時間は変わるため、秒数に合わせて構えるより、区間の景色を眺めながら待ってください。'],
+  en: ['Do not expect the keep to look as large through the window as it does in a telephoto picture. Use the wider photo to place it among the buildings and hills, then the closer photo to learn the dark walls and roof shape.', 'Watch through the Seat A side east of Okayama Station: before arrival westbound and after departure eastbound. Train speed and foreground buildings change the viewing window, so follow the city skyline through this stretch instead of relying on a fixed number of seconds.']
+ }
 };
 export const SANYO_DETAIL_CASTLES = SANYO_CASTLES.filter(castle => castle.detail);

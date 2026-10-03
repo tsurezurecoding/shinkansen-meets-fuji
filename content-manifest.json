@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f7407cb868f73b4b",
+  "contentVersion": "50fd6edb1dfd2b34",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -8,7 +8,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 15083,
-      "sha256": "be2c7eb8dce32c011510038bcaadb76a5e2b2659d237023324fc7ad38d5dd899"
+      "sha256": "290a06bd7087d2277aeae1fa09f30bb28459b19bc607791c6be2aa5bb01e6ff4"
     },
     {
       "path": "727-collection.js",
@@ -44,7 +44,7 @@
       "path": "arenani.html",
       "url": "https://www.michikusa-travel.com/arenani.html",
       "bytes": 28586,
-      "sha256": "f4aceca9e0841e4498e28d353412c200a7b2235f707475d6ae999a5aae99b49a"
+      "sha256": "5f0df7c65d5973c04baeb2992b35821c9d84c62bd2a2fae346a0cd9ab3f39819"
     },
     {
       "path": "castles.css",
@@ -56,7 +56,7 @@
       "path": "castles.html",
       "url": "https://www.michikusa-travel.com/castles.html",
       "bytes": 28934,
-      "sha256": "cb14806ffa06de4a429a0bbea162788ef8e5c27823426ef7a48aed8f7aefc715"
+      "sha256": "91948633430ba8d466a7b54b8ce87f0b359517c42f46056396a9bc87af437448"
     },
     {
       "path": "chrome.css",
@@ -86,31 +86,31 @@
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
       "bytes": 14067,
-      "sha256": "03ee7957c0b99716f07c2b91a9db7b0f8d2662c5c1f3e54570a005e1ba5ef403"
+      "sha256": "54fcc74320c376abf478b6efb611493fce90fbabc8a0aa0612bc1b0c91c176eb"
     },
     {
       "path": "en/arenani.html",
       "url": "https://www.michikusa-travel.com/en/arenani.html",
       "bytes": 17379,
-      "sha256": "a049ae6205ab2ff3c715caa36526dbc384578a27cabe7badffb52ea02f2b42de"
+      "sha256": "032f4e6505874e3a57d7985ce4e886e0b419a7ebb65756543e01680d45a0b505"
     },
     {
       "path": "en/castles.html",
       "url": "https://www.michikusa-travel.com/en/castles.html",
       "bytes": 28190,
-      "sha256": "391b17538c2c46cd92c493d4089fa50cb4aadd692e62fa7e0a567324e635014f"
+      "sha256": "04d5ae74e0232bf37a90562f265452c8e0bb3c8b5a2f789bb414681795946e72"
     },
     {
       "path": "en/ferris-wheels.html",
       "url": "https://www.michikusa-travel.com/en/ferris-wheels.html",
       "bytes": 26678,
-      "sha256": "16e5bc61cbc18b691d3c2a4d3494891bb4959bf6629bd023c87d6a49f025147f"
+      "sha256": "032de11075a3a0865cf5676e9565197a105db63bae27bed0fec961b780305a78"
     },
     {
       "path": "en/hanabi.html",
       "url": "https://www.michikusa-travel.com/en/hanabi.html",
       "bytes": 35697,
-      "sha256": "c2f2fde75612af20f6814de9332da117a3d33a20defba1c2e7bbc2e9cd1ce4a7"
+      "sha256": "3e5d0c82547cd5495f0860831403eaaa22e1957ba309d1e7ea0e31fc3be19b43"
     },
     {
       "path": "en/index.html",
@@ -122,31 +122,31 @@
       "path": "en/reflections.html",
       "url": "https://www.michikusa-travel.com/en/reflections.html",
       "bytes": 31535,
-      "sha256": "eefdf5be057737c60ac5678b2ce83b60d1919d6298ba57c09923539465523758"
+      "sha256": "c3cd8f98c6e8f182d27bfaf7f659c17c313d3cd2e9cca2f58020745cfcd951b5"
     },
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 27112,
-      "sha256": "86a497716bf2b0aee90905c5d9578e6aa37540a942f3df1b95ad90b87b652174"
+      "sha256": "32c7c34933226c54c61fed355d2dbb3bbddb53514c5c8511f587795e3921e25d"
     },
     {
       "path": "en/spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/himeji-castle.html",
-      "bytes": 13897,
-      "sha256": "ad54f16c509e1687dc5fe0a571a2fd33485646e38c7f86affae65311c028cf61"
+      "bytes": 16390,
+      "sha256": "e94a55a3b527aaded385ab5902b2f14ad56205a9efaaadbc7b8a0e7d2d0bf199"
     },
     {
       "path": "en/spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/okayama-castle.html",
-      "bytes": 12959,
-      "sha256": "0f84abaf876b188dd5f83be812cad32f200f0335208a3cd94ae3382bd020a75e"
+      "bytes": 15394,
+      "sha256": "409f4cb7dbfed5fee3032091e51e0bea7e75f068bcfe6942a097701eb01532a2"
     },
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 31065,
-      "sha256": "9c3ff835df8410206dd064cd4ba22991f9e8a80c18b93bfea67fb0f424116669"
+      "sha256": "2b1793e1ea776cab5f1bc6f391780f02b8086c45a34b3f88c05ab0cc169f0673"
     },
     {
       "path": "ferris-wheels.css",
@@ -158,7 +158,7 @@
       "path": "ferris-wheels.html",
       "url": "https://www.michikusa-travel.com/ferris-wheels.html",
       "bytes": 28780,
-      "sha256": "2050e481af83ae2a4ad03a3e228289ed69ffdfcff7843d04a27432c6c22f3bcf"
+      "sha256": "3a2368628124e9c88ef3fa901d9c9b6598884e8c99d70f81b5d1f55b2add4c6e"
     },
     {
       "path": "ferris-wheels.js",
@@ -170,7 +170,7 @@
       "path": "hanabi.html",
       "url": "https://www.michikusa-travel.com/hanabi.html",
       "bytes": 36005,
-      "sha256": "4dee202b2354b9ffd30d96375a9410dfc5e1ab53a1f8d750ab2b38b29b602bc9"
+      "sha256": "cd7531ef8ccc6cc34fe8394d70ec270fe51a479269e176f1bafdf7d312f72ff9"
     },
     {
       "path": "hanabi.js",
@@ -812,19 +812,19 @@
       "path": "reflections.html",
       "url": "https://www.michikusa-travel.com/reflections.html",
       "bytes": 33648,
-      "sha256": "573ad8ee78a976a3a4d2655a9275e9adff137ee2d2f749d4764ed5ca799220f3"
+      "sha256": "f978ca51d8e23cb6ac420faa5209b3a56ca6aa707219abbb2d7ea63aeb626aad"
     },
     {
       "path": "sanyo-castles.css",
       "url": "https://www.michikusa-travel.com/sanyo-castles.css",
-      "bytes": 176,
-      "sha256": "d49972d9104e87cb8a46ae544b4fb8d50f247ad772be72fe990966541ae0aa43"
+      "bytes": 85,
+      "sha256": "65fd51ea349729924c09aa8c97f637dbb22a218f687e21cee0f292f2cc0d9f63"
     },
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 29812,
-      "sha256": "e7cbd8687c61b022db3c3c76179c0ea7f70164ddfbe1a8c0b212de2fccc0c07e"
+      "sha256": "e40c46323f9283f2f23d12bfb719b09e9894314844b29d653f4879cce54c897b"
     },
     {
       "path": "sparkling-dreams.js",
@@ -859,20 +859,20 @@
     {
       "path": "spot-page-shared.js",
       "url": "https://www.michikusa-travel.com/spot-page-shared.js",
-      "bytes": 92853,
-      "sha256": "4b7afa60fb4423b70bab2a38a5403ba186e613fc672cba3b0e62832479162f77"
+      "bytes": 94713,
+      "sha256": "0c9618587dead786b3265a9af82ac7eb22ebd7102cfdc5fdfd6a01c7904e0c47"
     },
     {
       "path": "spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/spots/himeji-castle.html",
-      "bytes": 14510,
-      "sha256": "cf88e7a07d238e0d4940ccd9b4a0aa45b7c5e1f03d1c87d3dbcd7d39d5a03b8b"
+      "bytes": 17562,
+      "sha256": "fb180cdb8c1b1df5ebbb345daff8239437c6a5f59e0f594b9cebfad8faeb3ca4"
     },
     {
       "path": "spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/spots/okayama-castle.html",
-      "bytes": 13571,
-      "sha256": "63f0f70d5c58c0cb6f6c78058a338f4cec35a7bf5010c8288ea2404dfec033f3"
+      "bytes": 16689,
+      "sha256": "7991371e6a72060b274e08455ba3404afb89fd901533dcd269a5a516b51e631f"
     },
     {
       "path": "style.css",
@@ -944,7 +944,7 @@
       "path": "window-moments.html",
       "url": "https://www.michikusa-travel.com/window-moments.html",
       "bytes": 29398,
-      "sha256": "5e3be75352abe2d36470cd826670571a0305470d82137dbdbd5b092792620aaa"
+      "sha256": "0607621d72433c068227dfbca7e6c7f64ce31fa5836b8e9acc1df251069cc8a7"
     },
     {
       "path": "window-moments.js",
@@ -956,7 +956,7 @@
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
       "bytes": 34113,
-      "sha256": "7b1d2199ff9ca5642f3d3bebebac8873933470dfca061d35a57213a8593e329e"
+      "sha256": "56524dc110a23d9fb1bc866dd49d213a203b9b5b5397a09d540d15220ccdd160"
     },
     {
       "path": "yakei.js",
