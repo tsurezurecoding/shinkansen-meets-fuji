@@ -1,3 +1,4 @@
+import { FUKUYAMA_DETAIL } from './fukuyama-castle.mjs';
 // 山陽の城の正本。東海道のSPOTS・時刻表・件数には追加しない。
 export const SANYO_CASTLES = [
  {
@@ -67,11 +68,11 @@ const himejiPost = 'https://x.com/DVfkFY3nnZdn3VJ/status/2105552015036440734';
 // 地図の視点は線路上の代表位置。各写真の撮影位置を意味しない（OSM照合、2026-10-03）。
 himeji.detail = {
  heading: { ja: ['姫路城——', '世界遺産の白鷺城'], en: 'Himeji Castle — the World Heritage White Heron Castle' },
- title: { ja: '姫路城は新幹線から見える？席側・場所と車窓写真', en: 'Himeji Castle: History & Views from the Shinkansen' },
+ title: { ja: '姫路城は新幹線から見える？席側・場所と車窓写真', en: 'Himeji Castle from the Shinkansen | Where to Look & Its Story' },
  castle: { lat: 34.83933, lng: 134.69402 }, viewpoint: { lat: 34.82632, lng: 134.69169 },
  description: {
   ja: '世界遺産・姫路城（白鷺城）を新幹線の車窓から探す案内。姫路駅の前後、北側の窓に見える天守の目印を写真と地図で紹介します。16両はE席、8両は座席配列によりD席またはE席。進行方向ごとの見つけ方も確認できます。',
-  en: 'Discover Himeji Castle, Japan’s UNESCO-listed White Heron Castle: its samurai history, Shinkansen window views, which side to sit on, photos and a map.'
+  en: 'Travelling past Himeji? Look for Japan’s UNESCO-listed White Heron Castle through the Seat E side. Window photos, a map and its samurai story help you recognise the distant white keep.'
  },
  seat: { ja: '北側の窓', en: 'North-facing windows' },
  seatNote: { ja: '16両はE席。8両は2+2ならD席、3+2ならE席。', en: 'Seat E on 16-car trains. On 8-car trains: Seat D in 2+2 rows, Seat E in 3+2 rows.' },
@@ -91,11 +92,11 @@ himeji.detail = {
 };
 okayama.detail = {
  heading: { ja: ['岡山城——', '黒い天守の烏城'], en: 'Okayama Castle — the dark-walled Crow Castle' },
- title: { ja: '岡山城は新幹線から見える？A席側・場所と車窓写真', en: 'Okayama Castle: Crow Castle History & Shinkansen Views' },
+ title: { ja: '岡山城は新幹線から見える？A席側・場所と車窓写真', en: 'Okayama Castle from the Shinkansen | Seat A Views & Its Story' },
  castle: { lat: 34.66520, lng: 133.93605 }, viewpoint: { lat: 34.67023, lng: 133.92054 },
  description: {
   ja: '岡山城（烏城）は新幹線のA席側、岡山駅の東側で探します。西へ向かう列車は到着前、東へ向かう列車は出発後。建物の向こうに見え隠れする黒い天守を、車窓写真・探す目印・城と線路の地図で紹介します。',
-  en: 'Meet Okayama Castle, Japan’s black-walled Crow Castle. Discover its samurai past and rebuilt keep, with Shinkansen views, Seat A advice, photos and a map.'
+  en: 'Spot Japan’s black-walled Crow Castle east of Okayama Station through the Seat A side. Window photos, a map and the story of its samurai lord and rebuilt keep help you find it among the rooftops.'
  },
  seat: { ja: 'A席側', en: 'Seat A side' },
  seatNote: { ja: '16両・8両共通。', en: 'Seat A on both 16- and 8-car trains.' },
@@ -160,4 +161,6 @@ okayama.detail.photoTip = {
   en: ['Do not expect the keep to look as large through the window as it does in a telephoto picture. Use the wider photo to place it among the buildings and hills, then the closer photo to learn the dark walls and roof shape.', 'Watch through the Seat A side east of Okayama Station: before arrival westbound and after departure eastbound. Train speed and foreground buildings change the viewing window, so follow the city skyline through this stretch instead of relying on a fixed number of seconds.']
  }
 };
+SANYO_CASTLES.find(castle => castle.id === 'fukuyama-castle').detail = FUKUYAMA_DETAIL;
+for (const [id, ja, en] of [["himeji-castle","姫路駅の前後、E席側の街並みの上に白い天守が現れます。屋根が何段も重なる輪郭が目印。手前の建物に隠れやすいので、駅に近づく前から探してみてください。","Watch the Seat E side around Himeji Station for the white keep above the rooftops. Its layered roofs are the clue. Start looking before the station, as buildings often interrupt the view."],["okayama-castle","岡山駅の東側、A席側の建物の向こうに黒い天守が見え隠れします。西へ向かうなら到着前、東へ向かうなら出発後。旭川を渡るあたりから、重なる屋根を探します。","East of Okayama Station, watch the Seat A side for a dark keep between the buildings: before arrival westbound, after departure eastbound. Look for layered roofs around the Asahi River crossing."],["fukuyama-castle","福山駅のすぐ北、E席側に天守と石垣が現れます。線路との距離が近く、木立の向こうから一気に近づく城です。見つけやすいぶん通り過ぎるのも速いので、駅の前から窓へ。","Beside Fukuyama Station, the keep and stone walls come close to the Seat E windows. Watch before the train reaches the station: the tower appears quickly beyond the trees and can pass just as quickly."]]) SANYO_CASTLES.find(castle => castle.id === id).summary = { ja, en };
 export const SANYO_DETAIL_CASTLES = SANYO_CASTLES.filter(castle => castle.detail);

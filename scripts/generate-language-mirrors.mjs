@@ -1,3 +1,4 @@
+import { sanyoGallery } from "./shared/sanyo-discovery.mjs";
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -14,8 +15,8 @@ const pages = [
   {
     source: "zukan.html",
     output: "en/zukan.html",
-    title: "Tokaido Shinkansen Sights in Photos | Window Field Guide",
-    description: "Discover the stories behind the Tokaido Shinkansen window views, from Mt. Fuji and paper mills to curious signs. Explore photos and find more to notice on your ride.",
+    title: "Shinkansen Window Views | Tokaido & Sanyo Photo Guide",
+    description: "Discover Japan through the Shinkansen window, from Mt. Fuji to samurai castles. Explore Tokaido and Osaka–Hakata photos, learn the stories and find which side to watch.",
     bakeI18n: true,
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
@@ -23,6 +24,7 @@ const pages = [
 ];
 
 function localizeEnglishRail(html) {
+  html = html.replace(/<!-- SANYO-GALLERY:START -->[\s\S]*?<!-- SANYO-GALLERY:END -->/, sanyoGallery("en"));
   const copy = [
     ["車窓の観覧車を集める", "Find the ferris wheels"],
     ['<span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span>', "Look for little wheels beyond the city."],

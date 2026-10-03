@@ -125,7 +125,7 @@ function render(lang) {
   const credit = `<a href="${esc(entry.sourceUrl)}" target="_blank" rel="noopener noreferrer">${esc(pick(entry.credit.ja, entry.credit.en))}</a>`;
   const detailHref = entry.detail ? `${prefix}${local}spots/${entry.id}.html` : '';
   const image = `<img src="${prefix}${thumb}" alt="${esc(pick(entry.alt.ja, entry.alt.en))}" width="480" height="320" loading="lazy" decoding="async">`;
-  const side = entry.side === 'A' ? pick('A席側', 'Seat A side') : pick('北側（16両ならE席側）', 'North side (Seat E on 16-car trains)');
+  const side = pick(entry.side + '席側', 'Seat ' + entry.side + ' side');
   return `    <article class="cs-spot" id="${entry.id}">
       <figure class="cs-figure">
         ${detailHref ? `<a href="${detailHref}">${image}</a>` : image}
@@ -135,8 +135,7 @@ function render(lang) {
         <p class="cs-spot-meta"><span class="cs-pill">${esc(pick(entry.station.ja, entry.station.en))}</span><span class="cs-pill cs-side-${entry.side === 'A' ? 'a' : 'e'}">${side}</span><span class="cs-pill">${pick('山陽新幹線', 'Sanyo Shinkansen')}</span></p>
         <h3>${esc(pick(entry.name.ja, entry.name.en))}</h3>
         <p class="cs-spot-lead">${pick(entry.hook.ja, entry.hook.en)}</p>
-        <p>${pick(entry.about.ja, entry.about.en)}</p>
-        <p>${pick(entry.body.ja, entry.body.en)}</p>
+        <p>${esc(entry.summary[lang])}</p>
 ${detailHref ? `        <p class="cs-more"><a href="${detailHref}">${pick(`${esc(entry.name.ja)}の車窓ページを見る`, `Open the ${esc(entry.name.en)} window guide`)}</a></p>` : ''}
       </div>
     </article>`;

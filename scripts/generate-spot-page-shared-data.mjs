@@ -1,3 +1,4 @@
+import { SANYO_CASTLES } from "./shared/sanyo-castles.mjs";
 import { CASTLE_COLLECTION, castleCollectionFor } from "./shared/castle-reading-collection.mjs";
 import fs from "node:fs";
 import path from "node:path";
@@ -776,7 +777,8 @@ const collection727Count = source.BOARD_COLLECTION.length;
 // いたため、日向岡のページを1枚見るだけで全スポットの本文 903KB を読み込んで
 // いた。さらに ?v= は内容ハッシュなので、1スポットの文言を直すと全ページの
 // キャッシュが同時に落ちた。カタログは共有のまま、本文はページ単位にする。
-const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase };
+const sanyo = SANYO_CASTLES.map(castle => ({ id: castle.id, name: castle.name, station: castle.station, side: castle.side, thumb: thumbnailSrc(castle.photo) }));
+const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase, sanyo };
 const catalogOutput = `${GENERATED_BANNER}(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(catalog)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
 
 const pageArtifacts = new Map();
