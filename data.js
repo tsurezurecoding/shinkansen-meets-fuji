@@ -4755,56 +4755,49 @@ const SPOTS = [
     },
     "pageTitle": {
       "ja": "蒲郡みかんの看板とビニールハウス｜新幹線から見える豊橋〜蒲郡 | 新幹線の窓",
-      "en": "Greenhouses and Mikan Country from the Shinkansen"
+      "en": "Japan’s Greenhouses: Summer Mandarins, Flowers and Light"
     },
     "pageHeading": {
-      "ja": "東三河のハウス群——豊橋から蒲郡へ続く屋根の海",
-      "en": "Greenhouses from Toyohashi to Gamagori"
+      "ja": "豊橋から蒲郡へ、ハウスの屋根の海",
+      "en": "Behind Japan’s silver roofs."
     },
     "pageHeadingChunks": {
       "ja": [
-        "東三河のハウス群——",
-        "豊橋から蒲郡へ続く",
-        "屋根の海"
+        "豊橋から蒲郡へ、",
+        "ハウスの屋根の海"
       ],
-      "en": [
-        "Greenhouses from",
-        "Toyohashi to Gamagori"
-      ]
+      "en": []
     },
     "metaDescription": {
-      "ja": "東海道新幹線の豊橋〜三河安城、E席側に続くビニールハウスと「蒲郡みかん」の看板。全国屈指の農業地帯・東三河でハウスが目立つ理由、豊川用水、ハウスみかんの歴史を写真で紹介します。",
-      "en": "Why do so many greenhouses line the Shinkansen after Toyohashi? See East Mikawa, one of Japan's top farming areas, the Gamagori mikan sign, and the water and climate behind the landscape."
+      "ja": "新幹線のE席側、豊橋〜蒲郡に続くビニールハウスと蒲郡みかんの看板。豊川放水路付近から山すそへ変わる屋根の風景、ハウスみかんの歴史、豊川用水、トマト・大葉・花の産地を写真でたどります。",
+      "en": "Japanese mandarins in summer. Flowers timed with light. Discover what grows beneath Japan’s greenhouse roofs, through photographs and stories from East Mikawa: fruit, shiso leaves, irrigation and the work behind the landscape."
     },
     "sectionHeading": {
-      "ja": "温暖な冬と用水が広げた東三河のハウス",
-      "en": "Mild winters, irrigation water and greenhouses"
+      "ja": "屋根の海は、何の産地？",
+      "en": "Winter fruit. A summer harvest."
     },
     "pageStory": {
-      "ja": "豊橋を過ぎて名古屋方面へ進むと、E席側に、半透明の屋根を連ねたハウスが何度も現れます。豊橋のすぐ先、豊川市御津町のあたりで田畑の間に長いハウスが並び、約2分後の蒲郡市神ノ郷町では、山すその平地をハウスの屋根がびっしりと埋めつくします。新幹線から見えるのはその一部ですが、豊橋・豊川・蒲郡・田原を含む東三河は、ハウスで野菜や果物、花を育てる施設園芸の盛んな地域です。\n\nなぜここでハウスが目立つのか。豊橋市は市町村別の農業産出額で1967年から2004年まで全国1位を続け、いまも全国トップクラスの産地です。渥美半島の田原市は2024年に全国1位になりました。愛知県の園芸施設の設置面積は、熊本県・茨城県に次ぐ全国3位です。ただし新幹線が通るのはこの農業地帯の北の端で、温室が特に集まる豊橋市南部や渥美半島は車窓からは見えません。車窓のハウスは、その広がりの入口にあたります。\n\n背景には気候と水があります。東三河は冬でも温暖で日照に恵まれ、豊橋市や田原市ではトマトの温室栽培が盛んで、一年を通じて出荷されています。もうひとつの支えが豊川用水です。宇連ダムや大島ダム、万場調整池などの施設が整い、東三河に農業用水を安定して届けられるようになりました。昔から水不足に悩んできた蒲郡市でも、1968年に完成した豊川用水によってハウス栽培が広がりました。\n\n蒲郡市は東・北・西の三方を山に囲まれ、南に三河湾がひらく温暖な土地です。市の主な作物は、みかん、「サンベリー」の名で出荷されるいちご、そして大葉や食用菊、エディブルフラワーなど料理に添える「つまもの」。看板の「蒲郡みかん」はこの地域のみかんの銘柄で、蒲郡市博物館によれば1679年の五井村の記録に数本のみかんが記され、明治中期には「神ノ郷みかん」「西郡みかん」の名で知られるようになりました。神ノ郷は、まさにこの撮影地点の町名です。1973年に隣の御津町で温室みかんが導入されると、蒲郡市内でも昭和50年代に栽培農家が飛躍的に増えました。蒲郡市の資料によると、2018年時点のハウスみかんの栽培面積は約30ヘクタール。果実は4月中旬から9月中旬にかけて全国へ出荷されています。「蒲郡みかん」は2008年、愛知県の農産物で初めて地域団体商標に登録されました。蒲郡から東へ30kmほど、浜名湖の北岸にある静岡県浜松市の三ヶ日町には、もうひとつの有名産地「三ヶ日みかん」があります。2015年には、生鮮食品として日本で初めて機能性表示食品の届出が受理されました。ただし新幹線は浜名湖の南岸を通るため、三ヶ日のみかん畑は車窓からは見えません。\n\nただし、どのハウスで何を育てているかは、車窓から一棟ずつ見分けられません。看板は地域の銘柄を知らせるもので、周りのハウスがすべてみかん用という意味ではありません。",
-      "en": "After Toyohashi toward Nagoya, rows of translucent greenhouse roofs keep appearing on the Seat E side. Just past Toyohashi, around Mito in Toyokawa, long greenhouses stand among the fields; about two minutes later, in Kaminogo, Gamagori, greenhouse roofs pack the flat land at the foot of the hills. The train shows only a slice of it, but East Mikawa—including Toyohashi, Toyokawa, Gamagori and Tahara—is a region where vegetables, fruit and flowers are widely grown under cover.\n\nWhy do greenhouses stand out here? Toyohashi ranked first in Japan for agricultural output by municipality every year from 1967 to 2004 and remains one of the country's top producers, while neighboring Tahara on the Atsumi Peninsula ranked first in 2024. Aichi has the third-largest area of horticultural greenhouses of any prefecture, after Kumamoto and Ibaraki. The Shinkansen, however, runs along the northern edge of this farming belt; the densest greenhouse areas, in southern Toyohashi and on the Atsumi Peninsula, are out of sight. The greenhouses you see from the window are the doorway to that landscape.\n\nClimate and water lie behind it. East Mikawa has mild, sunny winters, and Toyohashi and Tahara grow tomatoes in greenhouses for shipment all year round. The other foundation is the Toyokawa irrigation system: dams and reservoirs such as Ure Dam, Ohshima Dam and the Manba regulating pond now deliver a stable supply of farm water across East Mikawa. In Gamagori, which long struggled with water shortages, the system's completion in 1968 allowed greenhouse farming to spread.\n\nGamagori is ringed by hills to the east, north and west and opens to Mikawa Bay in the south, giving it a mild climate. Its main crops are mikan (Japanese mandarins), strawberries sold as Sun Berry, and tsumamono—garnishes such as shiso leaves, edible chrysanthemums and edible flowers. The big sign advertises Gamagori mikan, the local mandarin brand. According to the Gamagori City Museum, a record from Goi village in 1679 lists a few mikan trees, and by the mid-Meiji period the fruit was known as Kaminogo mikan or Nishinokori mikan—Kaminogo being the very neighborhood in the photograph. After greenhouse mikan were introduced in neighboring Mito in 1973, the number of growers in Gamagori rose sharply from the late 1970s. City figures put the area planted with greenhouse mikan at about 30 hectares in 2018. The fruit is shipped across Japan from mid-April to mid-September. In 2008 Gamagori mikan became the first Aichi farm product registered as a regional collective trademark. About 30 km to the east, on the northern shore of Lake Hamana in Hamamatsu, Shizuoka, lies another well-known mandarin area: Mikkabi. In 2015, Mikkabi mikan became the first fresh produce in Japan accepted as a food with function claims. The Shinkansen runs along the lake's southern shore, so the Mikkabi orchards are not visible from the train.\n\nFrom the train, though, there is no way to tell what grows inside any particular greenhouse. The sign promotes the local brand; it does not mean every greenhouse around it grows mikan."
+      "ja": "豊橋を過ぎて名古屋方面へ進むと、半透明の屋根を連ねたハウスが何度も現れます。豊川放水路付近ではA席側の平野に長い屋根が並び、E席側の豊川市御津町では田畑の間にハウスが点在。さらに蒲郡市神ノ郷町へ進むと、E席側に山すそを埋めるような屋根の海が現れます。ひとつの名所というより、景色をつなげて眺めたい区間です。\n\n冬の果物と思っていたみかんが、春や夏にも出荷される。菊は夜の光を調整して、咲く時期を変える。豊橋・豊川・蒲郡・田原を含む東三河では、ハウスの下に食べ物や花を育てる工夫が広がっています。中央の赤い「蒲郡みかん」の看板も、その入口です。\n\n背景には、気候と水があります。東三河の冬は温暖で日照に恵まれ、豊橋や田原では温室栽培のトマトが一年を通じて出荷されています。もうひとつの支えが豊川用水。宇連ダムや大島ダム、万場調整池などを結ぶ水の道が、地域に農業用水を届けています。水不足に悩んできた蒲郡でも、1968年の用水完成後にハウス栽培が広がりました。\n\nただし、新幹線が通るのはこの産地の北の端。温室が特に集まる豊橋南部や渥美半島は車窓には入りません。見えている屋根を手がかりに、その向こうにある食べ物や花の産地へ、少し想像を広げてみてください。",
+      "en": "Mikan—the small mandarins familiar on a Japanese winter table—also arrive in spring and summer. In Gamagori, greenhouse-grown fruit is shipped from mid-April to mid-September. The red sign among these roofs says “Gamagori mikan”: a place-name you might meet again at a fruit counter.\n\nElsewhere in this region, growers use light to change when chrysanthemums bloom. Aromatic shiso leaves and edible flowers bring the story to a plate. These pale roofs are an invitation to discover some of the work behind everyday food and flowers in Japan."
     },
     "explainer": {
       "heading": {
-        "ja": "屋根の海と赤い看板",
-        "en": "A sea of roofs and a red sign"
+        "ja": "平野の屋根から、山すその屋根の海へ",
+        "en": "An open plain, then roofs below the hills."
       },
       "ja": [
-        "主写真の奥では、山のふもとの平地を、三角屋根やかまぼこ形の屋根を持つハウスが埋めています。屋根が幾重にも重なり、まるで屋根の海のよう。右手前には、線路のすぐ脇にかまぼこ形のハウスが何棟も並んでいます。",
-        "中央の赤と白の大きな看板には「蒲郡みかん」の文字と、みかんの絵。看板の手前には、足元に白いシートを敷いた果樹の列が続いています。",
-        "もう1枚は、豊橋を過ぎてすぐの豊川市御津町付近。田畑の間に、長いかまぼこ形のハウスが平行に並びます。日差しを受けると、覆いのフィルムが銀白色に光って見えます。",
-        "写真のように、蒲郡のあたりでは少し高い位置からハウスの屋根の広がりを見渡せます。夏の朝は、半透明の屋根が日差しを受けて白っぽく光ります。"
+        "主写真は蒲郡市神ノ郷町付近。山のふもとの平地を、三角屋根やかまぼこ形の屋根を持つハウスが埋めています。奥へ幾重にも重なり、まるで屋根の海のよう。右手前にも、線路のすぐ脇に丸い屋根のハウスが並びます。",
+        "中央の赤と白の看板は「蒲郡みかん」。手前には、足元に白いシートを敷いた果樹の列も見えます。ただし看板は地域の銘柄を知らせるもので、周囲がすべてみかんのハウスという意味ではありません。",
+        "写真を切り替えると、豊川市御津町の、田畑に平行に並ぶ長いハウスへ。覆いは光を受けて銀白色に見えます。山すその密集した屋根と、平野の長い列。同じハウスでも、土地との並び方が違います。"
       ],
       "en": [
-        "In the background of the main photograph, greenhouses with peaked and arched roofs cover the flat land at the foot of the hills. The overlapping rows look like a sea of roofs. In the right foreground, several arched greenhouses stand right beside the tracks.",
-        "The large red-and-white sign in the center shows the words Gamagori mikan with pictures of the fruit. In front of it run rows of fruit trees with white sheets laid at their base.",
-        "The second photograph is from around Mito in Toyokawa, just after Toyohashi. Long arched greenhouses run in parallel among the fields, and their plastic covers can shine silver-white in the sun.",
-        "Around Gamagori, as the main photograph shows, you get a slightly raised view across the spread of roofs. On summer mornings the translucent roofs catch the sun and shine almost white."
+        "The main photograph shows Kaminogo, Gamagori, beside Mikawa Bay. Greenhouses overlap below the hills; in the other photographs around Toyokawa, their long roofs stand among open fields. All were taken from a passing Shinkansen.",
+        "Plastic-covered greenhouses are often called “vinyl houses” in Japan, though several kinds of plastic are used. You cannot identify each crop from its roof. The food and flower stories below describe the wider region."
       ]
     },
     "guideHighlight": {
-      "ja": "豊橋を過ぎたら、E席側の田畑に並ぶハウスを探し始めてください。約4分後、A席側に三河大島が見えるころ、反対のE席側の山すそを埋めるハウス群と赤い「蒲郡みかん」の看板が見どころです。見える秒数は暫定の目安です。",
-      "en": "After Toyohashi, start looking for greenhouses among the fields on the Seat E side. About four minutes later, when Mikawa Oshima appears on the Seat A side, the main sight is on the opposite Seat E side: greenhouses filling the foothills and the red Gamagori mikan sign. The viewing duration is a provisional estimate."
+      "ja": "名古屋方面へ向かうなら、豊橋を過ぎたらE席側へ。蒲郡の赤い看板と山すその屋根の海を探してください。豊川放水路付近の副画像はA席側の別のハウスです。地図・通過時刻と数秒〜10秒の目安は蒲郡の看板付近のもの。区間全体のハウスが連続して見える秒数ではありません。東京方面は通過順が逆になります。",
+      "en": "Towards Nagoya, watch the Seat E side after Toyohashi for the Gamagori mandarin sign and roofs below the hills. The photograph near the Toyokawa Floodway shows a separate view on the Seat A side. The map and viewing time mark the Gamagori sign cluster, not the whole stretch. Towards Tokyo, the sequence is reversed."
     },
     "minutesFromTokyo": 83,
     "side": "E",
@@ -4839,6 +4832,24 @@ const SPOTS = [
           "ja": "豊橋を過ぎてすぐ、豊川市御津町付近のE席側",
           "en": "Seat E side just after Toyohashi, around Mito in Toyokawa"
         }
+      },
+      {
+        "src": "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
+        "alt": {
+          "ja": "豊川放水路付近の、丸いハウスと骨組みの見える三角屋根が並ぶ車窓",
+          "en": "Rounded greenhouse roofs close to the train, with pointed roofs and green fields beyond"
+        },
+        "note": {
+          "ja": "豊川放水路付近、A席側。丸い屋根と奥に連なる三角屋根。",
+          "en": "Near the Toyokawa Floodway, Seat A side: curved roofs in front and pointed roofs behind."
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-20",
+        "width": 1920,
+        "height": 1080
       }
     ],
     "relatedSpotIds": [
@@ -4894,6 +4905,27 @@ const SPOTS = [
           "en": "MAFF: the state of greenhouse horticulture, May 2026 (Japanese PDF)"
         },
         "url": "https://www.maff.go.jp/j/seisan/ryutu/engei/sisetsu/attach/pdf/index-100.pdf"
+      },
+      {
+        "url": "https://www.pref.aichi.jp/soshiki/engei/aichisan-hana.html",
+        "label": {
+          "ja": "愛知県：あいちの農産物（花）",
+          "en": "Aichi Prefecture: flower growing and lighting (Japanese)"
+        }
+      },
+      {
+        "url": "https://www.ja-toyohashi.com/agriculture_brand.php",
+        "label": {
+          "ja": "JA豊橋：豊橋の野菜・くだもの・花",
+          "en": "JA Toyohashi: local produce (Japanese)"
+        }
+      },
+      {
+        "url": "https://www.maff.go.jp/j/tokei/kouhyou/engei/gaiyou/",
+        "label": {
+          "ja": "農林水産省：園芸施設調査の概要",
+          "en": "MAFF: greenhouse covering definitions (Japanese)"
+        }
       }
     ],
     "map": {
@@ -4905,6 +4937,194 @@ const SPOTS = [
     "viewpoint": {
       "lat": 34.83751781,
       "lng": 137.21910828
+    },
+    "pageHook": {
+      "ja": "冬のみかんが、夏の果物にも。",
+      "en": "Mandarins in summer. Flowers with a different calendar."
+    },
+    "pageEyebrow": {
+      "en": "EVERYDAY JAPAN / EAST MIKAWA"
+    },
+    "pageFactsAfterArticle": {
+      "en": true
+    },
+    "explainerFigure": {
+      "src": "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
+      "alt": {
+        "ja": "豊川放水路付近の、丸いハウスと骨組みの見える三角屋根が並ぶ車窓",
+        "en": "Rounded greenhouse roofs close to the train, with pointed roofs and green fields beyond"
+      },
+      "note": {
+        "ja": "豊川放水路付近、A席側。丸い屋根と奥に連なる三角屋根。",
+        "en": "Near the Toyokawa Floodway, Seat A side: curved roofs in front and pointed roofs behind."
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "2026-08-20",
+      "width": 1920,
+      "height": 1080,
+      "caption": {
+        "ja": "豊川放水路付近、A席側。丸い屋根と奥に連なる三角屋根。",
+        "en": "Near the Toyokawa Floodway, Seat A side: curved roofs in front and pointed roofs behind."
+      },
+      "afterParagraph": {
+        "ja": 2,
+        "en": 0
+      }
+    },
+    "pageChapters": [
+      {
+        "id": "toyokawa-roofs",
+        "heading": {
+          "ja": "豊川放水路付近｜近くで見る、屋根の骨組み",
+          "en": "A closer look near the Toyokawa Floodway"
+        },
+        "paragraphs": {
+          "ja": [
+            "豊橋の先、豊川放水路付近をA席側から見た写真では、丸い屋根のハウスが手前を大きく横切り、その後ろに三角屋根の建物が連なっています。透けて見える骨組みの繰り返し、すぐ隣に広がる緑の田畑。遠くから銀色の帯に見えたものが、近づくと一棟ずつの形になります。",
+            "日差しや角度で、覆いは白くも銀色にも、少し透けても見えます。丸い屋根と三角の屋根、覆われた場所と露地の畑。その違いを追うだけでも、通り過ぎる景色が面白くなります。外からは、中の作物や覆いの素材までは特定できません。"
+          ],
+          "en": [
+            "On the Seat A side near the Toyokawa Floodway, rounded houses pass close to the train, with rows of pointed roofs behind them. You can see the repeated frames through the coverings. From far away, the roofs looked like a silver strip; up close, each house has a shape of its own.",
+            "Look at the coverings in the light: white, silver or partly transparent. Then notice the open green fields beside them. Curved roofs, pointed frames and uncovered fields make this plain look quite different from the crowded foothills of Gamagori."
+          ]
+        },
+        "photos": []
+      },
+      {
+        "id": "gamagori-mikan",
+        "heading": {
+          "ja": "蒲郡みかんの看板｜冬だけではない、みかんの産地",
+          "en": "The mandarin sign—and fruit beyond winter"
+        },
+        "paragraphs": {
+          "ja": [
+            "蒲郡市は東・北・西の三方を山に囲まれ、南に三河湾がひらく温暖な土地です。看板の「蒲郡みかん」は、ここで育つみかんの銘柄。市博物館によれば、1679年の五井村の記録に数本のみかんが記され、明治中期には「神ノ郷みかん」「西郡みかん」として知られていました。神ノ郷は、主写真を撮った町の名前でもあります。",
+            "1973年に隣の御津町で温室みかんが導入されると、蒲郡でも昭和50年代に栽培農家が増えました。2018年時点の市のハウスみかん栽培面積は約30ヘクタール。果実は4月中旬から9月中旬に全国へ出荷されます。冬に親しんだみかんが、ハウスでは春や夏の果物にもなるのです。",
+            "「蒲郡みかん」は2008年、愛知県の農産物で初めて地域団体商標に登録されました。車窓の看板を覚えておくと、旅先の店で同じ名前を見かけたとき、屋根の海と食卓がつながるかもしれません。"
+          ],
+          "en": [
+            "Gamagori’s orchards occupy a mild coastal landscape, sheltered by hills on three sides, with Mikawa Bay to the south. The red sign names the area’s mandarins. It identifies a regional brand, rather than the crop inside every surrounding greenhouse.",
+            "The place-name on the photograph has its own connection. Local fruit was known as “Kaminogo mikan” by the late 19th century; Kaminogo is the neighbourhood where the main photograph was taken. Greenhouse mandarin growing was introduced in nearby Mito in 1973 and expanded in Gamagori in the following years. The city recorded about 30 hectares of greenhouse mandarins in 2018, and the “Gamagori Mikan” name became a regional collective trademark in 2008.",
+            "If you see Gamagori mikan in a shop later, the name can bring this landscape of roofs back to mind."
+          ]
+        },
+        "photos": []
+      },
+      {
+        "id": "under-the-roofs",
+        "heading": {
+          "ja": "屋根の下は、果物だけではない",
+          "en": "Leaves for your meal, flowers for a vase"
+        },
+        "paragraphs": {
+          "ja": [
+            "蒲郡の主な作物には、みかんに加え、「サンベリー」の名で出荷されるいちご、そして大葉や食用菊、エディブルフラワーなど、料理に添える「つまもの」もあります。豊橋の産物にも、大葉や菊。豊橋・田原のトマトと合わせて眺めると、ハウスの風景の向こうには、果物売場だけでなく料理の彩りや花の産地も広がっています。",
+            "これらは地域の栽培の例です。車窓から、一棟ずつ「これはみかん」「これはトマト」と見分けることはできません。名前を当てるより、ここで育つものと自分の食卓とのつながりを想像してみてください。"
+          ],
+          "en": [
+            "Gamagori also grows strawberries sold as “Sunberry,” and leaves and edible flowers used to garnish food. Shiso, also called oba, is an aromatic green leaf used in Japanese cooking. It is among Toyohashi’s crops, alongside chrysanthemums. The wider region’s greenhouse story reaches from the fruit counter to herbs on a plate and flowers in a vase.",
+            "A leaf or flower you notice at a meal may have its own connection to this farming landscape. The region’s crops give the roofs a meaning that the photograph alone cannot show."
+          ]
+        },
+        "photos": []
+      },
+      {
+        "id": "flowers-and-light",
+        "heading": {
+          "ja": "光で、花の咲く日を変える",
+          "en": "A lamp can change when a flower blooms"
+        },
+        "paragraphs": {
+          "ja": [
+            "菊は夜の長さに反応して花をつけます。愛知の菊栽培では、夜に照明をつけて開花を遅らせる「電照」と、光を遮る方法を組み合わせ、出荷に合わせて咲く時期を調整しています。",
+            "ハウスは寒さをしのぐ屋根であるだけでなく、花が季節を感じる環境を整える場所でもあります。普段見ている花の咲く時期にも、そんな工夫が隠れています。これは愛知の菊栽培の話。写真の棟の作物や、この区間で夜に見える景色を示すものではありません。"
+          ],
+          "en": [
+            "Chrysanthemums respond to the length of the night. In Aichi, growers use light at night to delay flowering, and combine lighting with blackout techniques to adjust the flowering schedule.",
+            "A greenhouse can therefore do more than keep plants warm: it can help manage the signals that tell a flower when to bloom. This is a flower-growing practice in Aichi; the crops inside the photographed houses are unknown."
+          ]
+        },
+        "photos": []
+      },
+      {
+        "id": "one-more-sign",
+        "heading": {
+          "ja": "車窓のおまけ｜「がんばろう日本農業」",
+          "en": "One more window find: “Let’s support Japanese farming”"
+        },
+        "paragraphs": {
+          "ja": [
+            "同じ日の車窓で、こんな看板も見つかりました。田畑の向こうに、赤・緑・青の帯と「がんばろう 日本農業」の文字。産地の話を知ったあとに見ると、沿線には農業を応援する言葉もあるのだと気づきます。",
+            "写真は、豊川放水路付近のハウスから約6分後。さらに三河安城方面へ進んだ、別の場所で見つけたものです。"
+          ],
+          "en": [
+            "Farther along the same journey, this sign appeared beyond the fields. Its message, “Ganbarō Nihon nōgyō,” can be read as “Let’s support Japanese farming.” After seeing the greenhouse landscape, it is a small reminder that the view also includes people’s words about the work behind it.",
+            "The photograph was taken about six minutes after the houses near the Toyokawa Floodway, farther towards Mikawa-Anjo—a separate place along the same journey."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20260820_farming-sign_18635_michikusa.jpg",
+            "alt": {
+              "ja": "田畑の向こうに立つ「がんばろう 日本農業」の看板",
+              "en": "A red, green and blue sign beyond fields reading Ganbarō Nihon nōgyō"
+            },
+            "note": {
+              "ja": "同じ日の別の車窓。「がんばろう 日本農業」の文字。",
+              "en": "A separate view on the same journey: “Let’s support Japanese farming.”"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-08-20",
+            "width": 1920,
+            "height": 1080
+          }
+        ]
+      },
+      {
+        "id": "more-about-region",
+        "heading": {
+          "ja": "車窓の向こうに広がる、農業のまち",
+          "en": "Sunshine helps. Water matters too."
+        },
+        "paragraphs": {
+          "ja": [
+            "豊橋市は市町村別の農業産出額で1967年から2004年まで全国1位を続け、田原市は2024年に全国1位。愛知県の園芸施設の設置面積も、熊本県・茨城県に次ぐ全国3位です。これらは車窓のハウスだけの数字ではなく、より広い産地の規模を伝えるものです。",
+            "浜名湖の北岸にある浜松市三ヶ日町も、みかんの有名産地です。2015年には、生鮮食品として日本で初めて機能性表示食品の届出が受理されました。ただし、新幹線が通るのは浜名湖の南岸。三ヶ日のみかん畑は、この車窓からは見えません。"
+          ],
+          "en": [
+            "East Mikawa includes Toyohashi, Toyokawa, Gamagori and Tahara. Mild, sunny winters help crops such as tomatoes, which growers in Toyohashi and Tahara ship throughout the year. Greenhouses also make it easier to manage growing conditions. One less visible part of the landscape is the Toyokawa irrigation system: dams, reservoirs and channels supply farms across the region. In Gamagori, which had struggled with shortages, greenhouse growing expanded after the system was completed in 1968.",
+            "Toyohashi ranked first among Japanese municipalities for agricultural output from 1967 to 2004; Tahara ranked first in 2024. Aichi ranked third among prefectures for horticultural facility area in the Ministry of Agriculture’s May 2026 report. These figures describe the wider farming region, rather than the farms visible from your seat.",
+            "The railway follows the northern edge of the farming region; the larger greenhouse areas in southern Toyohashi and the Atsumi Peninsula lie beyond the train window. Another well-known mandarin area is Mikkabi, on the northern shore of Lake Hamana. Its mandarins became the first fresh food accepted under Japan’s Foods with Function Claims notification system in 2015. The Shinkansen runs along the southern shore, so those orchards are outside this train view."
+          ]
+        },
+        "photos": []
+      }
+    ],
+    "pageChapterOrder": {
+      "en": [
+        "gamagori-mikan",
+        "flowers-and-light",
+        "under-the-roofs",
+        "toyokawa-roofs",
+        "more-about-region",
+        "one-more-sign"
+      ]
+    },
+    "pageFacts": {
+      "visibilityNote": {
+        "ja": "蒲郡の看板付近の暫定目安。区間全体の可視時間ではなく、列車や速度・遮蔽物で変わります。",
+        "en": "Estimate for the Gamagori sign cluster, not the whole stretch. Trains, speed and obstructions change the view."
+      }
+    },
+    "routeNote": {
+      "ja": "写真は、愛知県東部の東三河で見つけたハウスの風景です。",
+      "en": "The photographs introduce East Mikawa, in eastern Aichi Prefecture, central Japan."
     }
   },
   {

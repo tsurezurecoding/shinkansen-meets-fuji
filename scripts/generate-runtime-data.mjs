@@ -35,6 +35,10 @@ export const BUILD_ONLY_SPOT_FIELDS = [
   "pageHeading",
   "pageHeadingChunks",
   "pageChapters",
+  "pageChapterOrder",
+  "pageHook",
+  "pageEyebrow",
+  "pageFactsAfterArticle",
   "pageFacts",
   "pageStory",
   "pageTitle",
@@ -47,7 +51,9 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 ];
 
 // 1ページの表示で落ちてくる量の上限。分割前の data.js は531 KBだった。
-export const RUNTIME_DATA_BYTE_BUDGET = 320 * 1024;
+// One additional gallery photo and its reference links need about 1.1 KB.
+// Article-only fields stay in the per-page payload; keep the runtime bound close.
+export const RUNTIME_DATA_BYTE_BUDGET = 324 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。

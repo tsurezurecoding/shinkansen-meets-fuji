@@ -33,6 +33,9 @@ const contentFiles = [
   "arenani.html",
   "en/arenani.html",
   "arenani.css",
+  // Greenhouse article: gallery photo and the separate farming-sign chapter.
+  "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
+  "images/20260820_farming-sign_18635_michikusa.jpg",
   // ライブ案内・車窓データの本体
   // data.js は編集の正本。data-runtime.js はブラウザが読む部分集合で、
   // 727-collection / journal / sparkling-dreams など同梱ページが参照する。
