@@ -256,6 +256,8 @@
     // 英語専用。JR Passはインバウンド固有の文脈で日本語版を作る理由がないため、
     // en:false で言語スイッチャーごと隠す（対応する日本語URLが存在しない）。
     "jr-pass-fuji.html": { en: false },
+    // English-only label/brand guide for visitors; no Japanese counterpart.
+    "drinks.html": { en: false },
     "besides-fuji.html": { en: false },
     "727-collection.html": { en: true }
   };
