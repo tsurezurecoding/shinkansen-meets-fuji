@@ -1766,6 +1766,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
+    { loc: `${siteRoot}/en/drinks.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/en/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-09-23" },
