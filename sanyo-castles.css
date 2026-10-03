@@ -1,9 +1,2 @@
-/* 山陽の記事でも現行スポットの書体・色・写真拡大・地図を使う。 */
-.sanyo-castle-page .spot-page-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.sanyo-photo-list { display: grid; gap: 28px; }
-.sanyo-breadcrumb { margin: 0 0 28px; color: var(--ink-soft); font-size: 13px; }
-.sanyo-breadcrumb a { text-decoration: underline; text-underline-offset: 4px; }
-.sanyo-castle-page .spot-reading-screen figcaption a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-@media (max-width: 600px) {
-  .sanyo-castle-page .spot-page-facts { grid-template-columns: 1fr; }
-}
+/* 通常スポットのhero・gallery・本文を利用。時刻レールのない本文は中央に置く。 */
+.sanyo-spot-shell > .spot-page-article { padding-top: 12px; }

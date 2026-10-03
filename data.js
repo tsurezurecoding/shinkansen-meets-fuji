@@ -4218,8 +4218,8 @@ const SPOTS = [
             "height": 1080,
             "src": "images/20260919_pola-fukuroi_139551_michikusa.jpg",
             "alt": {
-              "ja": "ポーラ化成工業 袋井工場のガラス面に映るディズニー新幹線",
-              "en": "The Disney-themed Shinkansen reflected in the glass of POLA Chemical Industries' Fukuroi Factory"
+              "ja": "ポーラ化成工業 袋井工場のガラス面に映る列車",
+              "en": "A train reflected in the glass of POLA Chemical Industries' Fukuroi Factory"
             },
             "credit": {
               "ja": "michikusa",
@@ -4227,8 +4227,8 @@ const SPOTS = [
             },
             "date": "2026-09-19",
             "note": {
-              "ja": "A席側、ガラスの下のほうに映る列車（反射鉄の特集でも紹介） (c)Disney",
-              "en": "Seat A side: the train reflected low in the glass (also in our reflections feature) (c)Disney"
+              "ja": "A席側、ガラスの下のほうに映る列車（反射鉄の特集でも紹介）",
+              "en": "Seat A side: the train reflected low in the glass (also in our reflections feature)"
             }
           }
         ]

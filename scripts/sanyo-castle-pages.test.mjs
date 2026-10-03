@@ -6,11 +6,13 @@ import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 const root = new URL('../', import.meta.url);
 const renderer = fs.readFileSync(new URL('spot-page-shared.js', root), 'utf8');
 const mapScript = fs.readFileSync(new URL('spot-map.js', root), 'utf8');
+const galleryScript = fs.readFileSync(new URL('spot-media-gallery.js', root), 'utf8');
 function page(id, lang, embedded = false) {
   const route = `${lang === 'en' ? 'en/' : ''}spots/${id}.html`;
   const dom = new JSDOM(fs.readFileSync(new URL(route, root), 'utf8'), { url: `https://www.michikusa-travel.com/${route}`, runScripts: 'outside-only' });
   dom.window.MADO_EMBEDDED_WEB = embedded;
   dom.window.eval(renderer);
+  dom.window.eval(galleryScript);
   dom.window.eval(mapScript);
   return dom;
 }
@@ -24,21 +26,28 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     assert.equal(new URL(switches[0].href).pathname, `/spots/${castle.id}.html`);
     assert.equal(new URL(switches[1].href).pathname, `/en/spots/${castle.id}.html`);
     if (lang === 'en') assert.equal(new URL(switches[0].href).searchParams.get('lang'), 'ja');
-    assert.equal(doc.querySelectorAll('.spot-page-inline-zoom').length, castle.detail.photos.length);
-    assert.equal(doc.querySelectorAll('.sanyo-photo-list figcaption a').length, castle.detail.photos.length);
+    assert.equal(doc.querySelectorAll('[data-gallery-thumb]').length, castle.detail.photos.length);
+    assert.equal(doc.querySelectorAll('.spot-page-hero .spot-page-heading-row h1').length, 1);
+    assert.equal(doc.querySelectorAll('.spot-page-facts > div').length, 4);
+    assert.equal(doc.querySelector('[data-gallery-source-output]').href, castle.detail.photos[0].sourceUrl);
+    assert.equal(doc.querySelectorAll('[data-mini-map-mode="live"], .spot-reading-actions, .spot-train-picker').length, 0);
     assert.equal(doc.querySelectorAll('[data-spot-page-shared-module="rail"], .spot-page-stamp').length, 0);
     assert.ok(!doc.querySelector('.spot-page-facts').textContent.includes('東京から'));
     assert.equal(doc.querySelector('link[rel="canonical"]').href, dom.window.location.href);
     dom.window.close();
   });
-  test(`${castle.id}/${lang}: photo enlargement and map viewpoint switching`, () => {
+  test(`${castle.id}/${lang}: gallery selection, credits, history and map viewpoint switching`, () => {
     const dom = page(castle.id, lang), doc = dom.window.document;
-    const zoom = doc.querySelector('.spot-page-inline-zoom'), box = doc.querySelector('#spotPageLightbox');
-    zoom.click();
-    assert.equal(box.hidden, false);
-    assert.equal(box.querySelector('img').getAttribute('src'), zoom.getAttribute('data-zoom-src'));
-    doc.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape' }));
-    assert.equal(box.hidden, true);
+    const thumbs = doc.querySelectorAll('[data-gallery-thumb]');
+    thumbs[1].click();
+    assert.equal(doc.querySelector('[data-gallery-image]').getAttribute('src'), thumbs[1].getAttribute('data-gallery-src'));
+    assert.equal(doc.querySelector('[data-gallery-image]').alt, castle.detail.photos[1].alt[lang]);
+    assert.equal(doc.querySelector('[data-gallery-credit-output]').textContent, castle.detail.photos[1].credit);
+    assert.equal(doc.querySelector('[data-gallery-source-output]').href, castle.detail.photos[1].sourceUrl);
+    assert.equal(dom.window.location.hash, `#spot-${castle.id}/photo-2`);
+    dom.window.history.replaceState({}, '', `#spot-${castle.id}`);
+    dom.window.dispatchEvent(new dom.window.PopStateEvent('popstate'));
+    assert.equal(thumbs[0].getAttribute('aria-pressed'), 'true');
     const viewpoint = doc.querySelector('[data-mini-map-mode="viewpoint"]');
     viewpoint.click();
     const actual = new URL(doc.querySelector('iframe').src);
@@ -55,8 +64,8 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     assert.equal(doc.querySelector('.topbar'), null);
     assert.equal(doc.querySelector('[data-spot-page-shared-module]'), null);
     assert.equal(doc.querySelector('h1').textContent, castle.name[lang]);
-    doc.querySelector('.spot-page-inline-zoom').click();
-    assert.equal(doc.querySelector('#spotPageLightbox').hidden, false);
+    doc.querySelectorAll('[data-gallery-thumb]')[1].click();
+    assert.equal(doc.querySelectorAll('[data-gallery-thumb]')[1].getAttribute('aria-pressed'), 'true');
     doc.querySelector('[data-mini-map-mode="viewpoint"]').click();
     assert.equal(doc.querySelector('[data-mini-map-mode="viewpoint"]').getAttribute('aria-pressed'), 'true');
     dom.window.close();
