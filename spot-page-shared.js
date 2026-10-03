@@ -243,6 +243,7 @@
   var UTILITY_ROUTES = {
     "spots/himeji-castle.html": { en: true },
     "spots/okayama-castle.html": { en: true },
+    "spots/fukuyama-castle.html": { en: true },
     "ferris-wheels.html": { en: true },
     "castles.html": { en: true },
     "arenani.html": { en: true },
@@ -344,6 +345,16 @@
     "</div>";
   }
 
+  function sanyoRailHTML(data, rootPath, lang, currentId) {
+    if (!Array.isArray(data.sanyo) || !data.sanyo.length) return "";
+    var base = basePath(rootPath, lang);
+    var rows = data.sanyo.map(function (castle) {
+      var current = castle.id === currentId;
+      return '<li class="sanyo-rail-item' + (current ? ' is-current' : '') + '"><a href="' + escapeHTML(href(base, 'spots/' + castle.id + '.html')) + '"' + (current ? ' aria-current="page"' : '') + '><img src="' + escapeHTML(href(rootPath, castle.thumb)) + '" alt="" width="38" height="38" loading="lazy" decoding="async"><span><strong>' + escapeHTML(localized(castle.name, lang)) + '</strong><small>' + escapeHTML(localized(castle.station, lang)) + '</small></span><span class="spot-page-shared-seat-group"><span class="spot-page-shared-seat is-' + castle.side.toLowerCase() + '">' + castle.side + '</span></span></a></li>';
+    }).join('');
+    return '<section class="sanyo-rail" aria-label="Sanyo Shinkansen"><p class="spot-page-rail-eyebrow">SANYO</p><ol>' + rows + '</ol><a class="sanyo-rail-all" href="' + escapeHTML(href(base, 'zukan.html')) + '#sanyo">' + (lang === 'en' ? 'Osaka–Hakata window views →' : '大阪〜博多間の車窓を見る →') + '</a></section>';
+  }
+
   function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute, options) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
@@ -374,7 +385,7 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol>" + sanyoRailHTML(data, rootPath, lang, currentId) + "</div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
   // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
@@ -391,7 +402,7 @@
   // 並び順が優先順位。時期枠は上から最初に当てはまる1件で、関連枠に出した特集は時期枠に出さない。
   var RAIL_FEATURES = [
     { id: "727", route: "727-collection.html", icon: "images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp", mod: " spot-page-rail-727", track: "727_collection_entry_click", spots: ["727-board", "727-sign"] },
-    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "himeji-castle", "okayama-castle"] },
+    { id: "castles", route: "castles.html", icon: "images/thumbs/20260919_odawara_castle_michikusa.webp", mod: " spot-page-rail-castles", track: "castles_entry_click", spots: ["odawara-castle", "kakegawa", "kiyosu", "gifu-castle", "sawayama-castle", "hikone-castle", "kannonji-castle", "himeji-castle", "okayama-castle", "fukuyama-castle"] },
     { id: "wheels", route: "ferris-wheels.html", icon: "images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp", mod: " spot-page-rail-wheels", track: "ferris_wheels_entry_click", spots: ["hirakata-park-wheel"] },
     { id: "arenani", route: "arenani.html", icon: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", mod: " spot-page-rail-arenani", track: "arenani_entry_click", spots: ["gyoran-kannon", "mishima-catapult", "shizuoka-tea-fields", "fuji-paper-mills", "toyohashi-tateiwa", "gifu-hashima-mahalo", "nangu-taisha", "kinshozan", "fujitec-big-wing"] },
     { id: "hanabi", route: "hanabi.html", icon: "images/thumbs/hanabi-hero-pd.webp", mod: " spot-page-rail-hanabi", track: "hanabi_entry_click", months: [7, 8] },
@@ -962,7 +973,7 @@
         var sanyoLang = document.body.getAttribute("data-spot-page-shared-lang");
         var sanyoRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
         var sanyoRoute = document.body.getAttribute("data-spot-page-shared-route");
-        if (!SUPPORTED_LANGUAGES[sanyoLang] || !/^spots\/(himeji|okayama)-castle\.html$/.test(sanyoRoute)) throw new Error("sanyo page context is malformed");
+        if (!SUPPORTED_LANGUAGES[sanyoLang] || !/^spots\/(himeji|okayama|fukuyama)-castle\.html$/.test(sanyoRoute)) throw new Error("sanyo page context is malformed");
         bindPageLightbox();
         if (root.MADO_EMBEDDED_WEB) {
           hosts.forEach(function (host) { if (host && host.parentNode) host.parentNode.removeChild(host); });

@@ -5956,3 +5956,11 @@ html[lang="en"] .spot-reading-layout .copy-chunk { white-space:normal; }
 .spot-reading-timeline time { font-weight:700; font-variant-numeric:tabular-nums; }
 .spot-reading-timeline b { font-size:11px; background:#fffdf9; border-radius:4px; padding:2px 5px; }
 .spot-reading-layout .spot-reading-train-preview>p { margin:10px 0 0; font-size:11px; color:var(--ink-soft); }
+
+/* Sanyo discovery: timed Tokaido entries stay unchanged. */
+#sanyo{scroll-margin-top:85px}
+.sanyo-card{cursor:default}.sanyo-card-link{display:block;color:inherit;text-decoration:none}.sanyo-card-link:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.sanyo-rail{border-top:1px dashed #b3a386;padding:20px 10px 10px;margin-top:12px}.sanyo-rail ol{padding:0;list-style:none;margin:10px 0 0}.sanyo-rail li{margin-bottom:6px}.sanyo-rail li a{display:flex;align-items:center;gap:8px;padding:9px 5px;text-decoration:none;color:var(--ink);border-radius:7px}.sanyo-rail li a:hover,.sanyo-rail .is-current a{background:#eee6d7}.sanyo-rail img{object-fit:cover;border-radius:5px;flex-shrink:0}.sanyo-rail li a>span:first-of-type{flex:1;min-width:0}.sanyo-rail strong{display:block;font-size:13px}.sanyo-rail small{display:block;font-size:10px;color:var(--muted);margin-top:3px}.sanyo-rail-all{display:block;font-size:12px;margin-top:15px;color:var(--ink)}
+@media(min-width:900px){#sanyo.section{max-width:1180px}#sanyo>.section-head{max-width:860px;margin-left:auto;margin-right:auto}}
+@media(min-width:900px){.sanyo-gallery:not(:has(>.sanyo-card:nth-child(4))){display:flex;flex-wrap:wrap;justify-content:center}.sanyo-gallery:not(:has(>.sanyo-card:nth-child(4)))>.sanyo-card{flex:0 0 calc((100% - 32px)/3)}}
+@media(min-width:1008px){.sanyo-gallery:not(:has(>.sanyo-card:nth-child(4)))>.sanyo-card{flex-basis:calc((100% - 48px)/4)}}

@@ -1947,6 +1947,7 @@ if (CHECK_ONLY) {
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 // The Japanese root is now an LP; en/index.html is the English explanatory LP; en/start.html is the train selector.
 // Keep the English selector in en/start.html and generate both English entry pages together.
+await import("./generate-sanyo-discovery.mjs");
 await import("./generate-language-mirrors.mjs");
 writeFileIfChanged(path.join(appDir, "en", "index.html"), englishLandingHTML());
 writeFileIfChanged(path.join(appDir, "en", "start.html"), englishAppIndexHTML());

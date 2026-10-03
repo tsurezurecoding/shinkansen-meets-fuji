@@ -28,9 +28,9 @@ function footer(lang, dest) {
 function mapUrl(detail, lang, viewpoint = false) {
   const point = viewpoint ? detail.viewpoint : detail.castle;
   const params = new URLSearchParams({
-    key: GOOGLE_MAPS_EMBED_API_KEY, q: `${point.lat},${point.lng}`,
-    center: `${detail.castle.lat},${detail.castle.lng}`,
-    zoom: String(miniMapZoomForViewpoint({ map: detail.castle }, detail.viewpoint, NaN)),
+    key: GOOGLE_MAPS_EMBED_API_KEY, q: point.query || `${point.lat},${point.lng}`,
+    ...(detail.castle.query ? {} : { center: `${detail.castle.lat},${detail.castle.lng}` }),
+    zoom: String(detail.castle.query ? 16 : miniMapZoomForViewpoint({ map: detail.castle }, detail.viewpoint, NaN)),
     maptype: 'satellite', language: lang
   });
   return `https://www.google.com/maps/embed/v1/place?${params}`;
@@ -44,7 +44,7 @@ function render(castle, lang, dest) {
   const description = detail.description[lang], url = `${origin}/${local}${route}`;
   const css = file => `<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`;
   const script = file => `<script src="${prefix}${file}?v=${assetVersion(file)}"></script>`;
-  const mapExternal = `https://www.google.com/maps/search/?api=1&query=${detail.castle.lat},${detail.castle.lng}`;
+  const mapExternal = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(detail.castle.query || `${detail.castle.lat},${detail.castle.lng}`)}`;
   const photos = detail.photos.map((photo, index) => {
     for (const file of [photo.src, thumbnailSrc(photo.src)]) if (!fs.existsSync(path.join(root, file))) throw Error(`Missing photograph: ${file}`);
     return `<button type="button" class="spot-photo-thumb${index === 0 ? ' active' : ''}" data-gallery-thumb data-gallery-src="${prefix}${photo.src}" data-gallery-alt="${esc(photo.alt[lang])}" data-gallery-note="${esc(photo.caption[lang])}" data-gallery-credit="${esc(photo.credit)}" data-gallery-credit-href="${esc(photo.sourceUrl)}" data-gallery-date="" aria-label="${esc(pick(photo.caption.ja + 'を表示', 'Show ' + photo.caption.en))}" aria-pressed="${index === 0}"><img src="${prefix}${thumbnailSrc(photo.src)}" alt="" loading="eager" decoding="async"></button>`;
@@ -131,7 +131,7 @@ function render(castle, lang, dest) {
           <button type="button" class="spot-map-mode" data-mini-map-mode="viewpoint" data-map-src="${esc(mapUrl(detail, lang, true))}" aria-pressed="false">${pick('新幹線の視点', 'Train viewpoint')}</button>
         </div>
         <iframe class="spot-google-map-frame" src="${esc(mapUrl(detail, lang))}" title="${esc(castle.name[lang])} ${pick('の地図', 'map')}" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <p class="spot-mini-map-note">${pick('新幹線の視点は線路上の代表位置です。写真ごとの撮影位置や、見える範囲を示すものではありません。', 'The train viewpoint is a representative point on the railway, rather than the exact location of each photograph or a visibility boundary.')}</p>
+        <p class="spot-mini-map-note">${detail.viewpointNote ? esc(detail.viewpointNote[lang]) : pick('新幹線の視点は線路上の代表位置です。写真ごとの撮影位置や、見える範囲を示すものではありません。', 'The train viewpoint is a representative point on the railway, rather than the exact location of each photograph or a visibility boundary.')}</p>
         <a class="map-link" href="${mapExternal}" target="_blank" rel="noopener noreferrer">${pick('Googleマップで開く', 'Open in Google Maps')} ↗</a>
       </section>
       ${sharedContext.window.MADO_SPOT_PAGE_COMPONENTS.readingCollectionHTML({ readingLayout: { collection: castleCollectionFor(lang) } }, prefix, lang)}
