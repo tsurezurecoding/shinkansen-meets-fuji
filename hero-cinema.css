@@ -3,14 +3,16 @@
  * are overlaid, centred, while the hero frame shows; the film then plays in
  * the same place and returns to the hero. Phones switch in the same place too. */
 
-.hero.hv { background: #081521; }
+.hero.hv { background: #081521; --hv-w: min(100%, 1680px); }
 .hero.hv .hero-photo-bg { display: none; }
 .hero.hv.hero-photo { display: block; min-height: 0; }
 .hero.hv .hero-inner { display: block; max-width: none; width: 100%; padding: 0; text-align: center; }
 .hero.hv .intro-film-trigger { display: none; }
 
-/* the screen: size set from the viewport minus the real header and rail (hero-cinema.js) */
-.hv-screen { position: relative; width: var(--hv-w, 100%); height: var(--hv-h, 56.25vw); margin: 0 auto; container-type: size; overflow: hidden; background: #081521; }
+/* Reserve the same geometry before JS, while loading, and during playback. */
+.hv-screen { position: relative; width: var(--hv-w); height: min(56.25vw, 945px, max(340px, calc(100svh - 260px))); margin: 0 auto; container-type: size; overflow: hidden; background: #081521; }
+.hv-rail { min-height:52px; }
+@media(max-width:899px){.hv-screen{height:min(56.25vw, max(180px, calc(100svh - 350px)))}.hv-rail{min-height:50px}}
 .hv-screen iframe { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; border: 0; display: block; }
 
 /* centred hero heading over the hero frame */

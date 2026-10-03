@@ -4,7 +4,8 @@
   const q = new URLSearchParams(location.search);
   const LANG = q.get('film') === 'en' ? 'en' : 'ja';
   const RENDER = false;
-  document.querySelectorAll('img[data-src]').forEach(im => { im.src = LANG === 'en' ? im.dataset.en : im.dataset.src; });
+  const progressive = document.documentElement.hasAttribute('data-progressive-film');
+  if (!progressive) document.querySelectorAll('img[data-src]').forEach(im => { im.src = LANG === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src; });
   const FPS = 30, FRAMES = 1290, DURATION = FRAMES / FPS;
   document.documentElement.lang = LANG;
   document.body.classList.toggle('lang-en', LANG === 'en');
@@ -52,7 +53,7 @@
     ['s3h', 's4h', 's4sub', 's6h', 's7h'].forEach((id) => { $('#' + id).style.fontSize = '72px'; });
     $('#s8word').style.fontSize = '64px';
     $('#countUnit').style.fontSize = '64px';
-    document.querySelectorAll('img[data-en]').forEach((im) => { im.src = im.dataset.en; });
+    if (!progressive) document.querySelectorAll('img[data-en]').forEach((im) => { im.src = im.dataset.en; });
   }
   const suffixHTML = EN ? '<span style="font:600 30px var(--sans);margin-left:10px">approx.</span>' : '<span class="hd" style="font-size:36px;color:#54616c;margin-left:4px">頃</span>';
   $('#tagSuffix').innerHTML = suffixHTML;
@@ -74,7 +75,39 @@
 
   // live frames (real in-app countdown, one capture per real second)
   const LIVE = [[480, 8], [495, 7], [525, 6], [555, 5], [585, 4], [615, 3], [645, 2], [675, 1], [705, 0]];
-  $('#liveBox').innerHTML = LIVE.map(([, n]) => `<img data-eta="${n}" src="assets/ui/${LANG}-live-fuji-eta0${n}.webp" alt="">`).join('');
+  $('#liveBox').innerHTML = progressive
+    ? `<img data-src="assets/ui/${LANG}-live-fuji-eta08.webp" alt=""><span id="liveDigits" style="position:absolute;left:286px;top:550px;width:76px;height:30px;background:#1a2c41;color:#e5b45a;font:700 28px/30px var(--sans);text-align:center;font-variant-numeric:tabular-nums">00:08</span>`
+    : LIVE.map(([, n]) => `<img data-eta="${n}" src="assets/ui/${LANG}-live-fuji-eta0${n}.webp" alt="">`).join('');
+
+  // Only the current scene and its immediate successor compete for bandwidth.
+  // Standalone player keeps its existing fully prepared playback contract.
+  const imageJobs = new WeakMap();
+  function prepareImages(images) {
+    return Promise.all(images.map(im => {
+      if (!imageJobs.has(im)) {
+        const source = LANG === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src;
+        if (source && !im.getAttribute('src')) im.src = source;
+        let timer;
+        const limit = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Film image timeout')), 15000); });
+        const job = Promise.race([im.decode(), limit]).finally(() => clearTimeout(timer)).catch(error => { imageJobs.delete(im); throw error; });
+        imageJobs.set(im, job);
+      }
+      return imageJobs.get(im);
+    }));
+  }
+  function prepare(time, ahead = 0) {
+    if (!progressive) return ready;
+    const groups = [
+      [0, 10.7, '#cHome img,#c0913 img'],
+      [10, 16.4, '#cForm img,#cRow img,#tag img'],
+      [16, 24.2, '#liveBox img'],
+      [23.5, 33.2, '#c0211 img'],
+      [28, 33.2, '#tile2 img,#tile3 img,#cToji img'],
+      [32.5, 37.2, '#cStamps img,.stamp200 img']
+    ];
+    const selectors = groups.filter(([start,end]) => time + ahead >= start && time <= end).map(g => g[2]);
+    return prepareImages(selectors.length ? [...document.querySelectorAll(selectors.join(','))] : []);
+  }
 
   // ---------- geometry ----------
   const R = {
@@ -220,7 +253,8 @@
       place(els.liveBox, R.PHONE);
       let idx = 0;
       for (let i = 0; i < LIVE.length; i++) if (f >= LIVE[i][0]) idx = i;
-      liveImgs.forEach((im, i) => op(im, i === idx ? 1 : 0));
+      liveImgs.forEach((im, i) => op(im, progressive || i === idx ? 1 : 0));
+      if (progressive) $('#liveDigits').textContent = '00:0' + LIVE[idx][1];
       op(els.cLive, inOut(f, 480, 490, 705, 723));
     }
     // 20240211 full → T1 (Ken Burns about summit 63.4%/44.4%)
@@ -496,8 +530,9 @@
     const seat = /(E席|Seat E|A席|Seat A)/.exec(j.rect.text);
     text('tagSeat', seat ? seat[1] : COPY.seatE); text('capSeat', seat ? seat[1] : COPY.seatE);
     await document.fonts.ready;
-    await Promise.all([...document.querySelectorAll('#stage img')].map(im => im.decode()));
+    if (progressive) await prepare(0);
+    else await Promise.all([...document.querySelectorAll('#stage img')].map(im => im.decode()));
     render(0);
   })();
-  window.PV_FILM = { ready, render, audio, copy: COPY, lang: LANG, fps: FPS, duration: DURATION };
+  window.PV_FILM = { ready, render, prepare, prepareImages, progressive, audio, copy: COPY, lang: LANG, fps: FPS, duration: DURATION };
 })();
