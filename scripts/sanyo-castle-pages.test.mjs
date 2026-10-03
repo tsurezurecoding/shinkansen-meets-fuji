@@ -33,7 +33,13 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     assert.equal(doc.querySelector('[data-gallery-source-output]').href, castle.detail.photos[0].sourceUrl);
     assert.equal(doc.querySelectorAll('[data-mini-map-mode="live"], .spot-reading-actions, .spot-train-picker').length, 0);
     assert.equal(doc.querySelectorAll('.spot-page-rail').length, 1);
-    assert.equal(doc.querySelectorAll('.spot-page-rail-list, .spot-page-rail-live, .spot-reading-actions, .spot-page-stamp').length, 0);
+    assert.equal(doc.querySelectorAll('.spot-page-rail-list').length, 1);
+    assert.equal(doc.querySelectorAll('.spot-page-rail-live, .spot-page-rail-cta, .spot-reading-actions, .spot-page-stamp, .spot-page-rail-now, .spot-page-rail-row.is-current').length, 0);
+    assert.equal(doc.querySelectorAll('.spot-page-rail-spot').length, dom.window.MADO_SPOT_PAGE_SHARED_DATA.spots.length);
+    assert.equal(doc.querySelectorAll('.spot-page-rail-station').length, dom.window.MADO_SPOT_PAGE_SHARED_DATA.stations.length);
+    assert.ok(doc.querySelector('.spot-page-rail-title').textContent.includes(lang === 'ja' ? '東京' : 'Tokyo'));
+    const kiyLink = [...doc.querySelectorAll('.spot-page-rail-link')].find(a => a.href.endsWith('/spots/kiyosu.html'));
+    assert.equal(new URL(kiyLink.href).pathname, lang === 'ja' ? '/spots/kiyosu.html' : '/en/spots/kiyosu.html');
     assert.equal(doc.querySelectorAll('.spot-reading-related .spot-reading-photos img').length, 2);
     assert.equal(new URL(doc.querySelector('.spot-reading-related a').href).pathname, lang === 'en' ? '/en/castles.html' : '/castles.html');
     assert.equal(doc.querySelectorAll('.spot-page-showcase a').length > 0, true);

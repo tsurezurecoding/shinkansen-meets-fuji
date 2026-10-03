@@ -344,7 +344,7 @@
     "</div>";
   }
 
-  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute) {
+  function railHTML(data, rootPath, lang, currentId, spotHrefPrefix, currentRoute, options) {
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
@@ -374,7 +374,7 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a></div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol></div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
   // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
@@ -956,7 +956,7 @@
         }
         return;
       }
-      // 山陽も本文レイアウト・関連記事・案内を共用。未対応の時刻・ライブだけ省く。
+      // 左ペインの東海道タイムラインは回遊用に共用。山陽の時刻・ライブの案内はしない。
       if (document.body.getAttribute("data-spot-page-shared-context") === "sanyo") {
         hosts = [findHost("topbar"), findHost("rail"), findHost("mobile-promos"), findHost("content-rail"), findHost("showcase")];
         var sanyoLang = document.body.getAttribute("data-spot-page-shared-lang");
@@ -972,7 +972,7 @@
         hosts[0].outerHTML = siteHeaderHTML(sanyoRoot, sanyoLang, "", sanyoRoute, true);
         var sanyoId = document.body.getAttribute("data-spot-page-shared-id");
         var promos = railPromosHTML(sanyoRoot, sanyoLang, sanyoRoute, 0, sanyoId, null, { noLive: true });
-        hosts[1].outerHTML = "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</aside>";
+        hosts[1].outerHTML = railHTML(root[DATA_KEY], sanyoRoot, sanyoLang, sanyoId, basePath(sanyoRoot, sanyoLang) + "spots/", sanyoRoute, { noLive: true, noTrain: true });
         hosts[2].outerHTML = "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</section>";
         hosts[3].outerHTML = contentRailHTML(sanyoRoot, sanyoLang);
         hosts[4].outerHTML = showcaseHTML(root[DATA_KEY], sanyoRoot, sanyoLang);
