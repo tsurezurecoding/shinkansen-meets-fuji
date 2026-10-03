@@ -112,10 +112,24 @@ okayama.detail = {
  ]
 };
 // 独立ページは一覧より詳しく、歴史・車窓・撮影の順に読む。
-himeji.detail.storyHeading = { ja: '白鷺城は、なぜ白い？', en: 'Why is it called the White Heron Castle?' };
+himeji.detail.storyHeading = { ja: '秀吉から、世界遺産へ', en: 'From Hideyoshi to World Heritage' };
 himeji.detail.story = {
- ja: [himeji.about.ja, '遠くからも白く見えるのは、壁を覆う白漆喰が特徴だからです。車窓では細かな装飾よりも、白い壁と幾重にも重なる屋根の輪郭が手がかりになります。いちばん高い大天守のまわりに小天守が並ぶので、街の屋根とは違う、まとまった白い姿を探してください。', '大天守は外から見ると5重、内部は地上6階と地下1階。池田輝政が1601年に始めた大改築で、現在の天守群が1609年に完成しました。その後も昭和の解体修理や平成の保存修理を重ねてきました。新幹線の窓に現れるのは、江戸時代から受け継がれてきた天守です。'],
- en: [himeji.about.en, 'The white plaster walls are the first clue from a distance. Look for a group of white walls and overlapping roofs, with the main keep rising above the smaller towers, rather than trying to pick out fine decoration.', 'The main keep has five roof tiers, six floors above ground and a basement. Terumasa began his major rebuilding in 1601; the keep complex was completed in 1609. Extensive conservation, including dismantling repairs in the Showa era, has preserved the historic buildings you see from the train.']
+ ja: [
+  '白い天守を見ていると、最初からこの姿で建っていたように思えます。けれど姫路城は、城主が代わるたびに役割も姿も変えてきた城です。いま車窓に現れる輪郭には、戦国の拠点づくりから江戸時代の暮らし、近代の保存までが重なっています。',
+  '1580年、黒田官兵衛として知られる黒田孝高は、姫路城を羽柴秀吉に献じました。中国地方の毛利氏を攻める秀吉は、ここを拠点に城を整え、翌年には3重の天守を築きます。のちに天下を統一する秀吉が、西へ勢力を広げていた時代の城でした。ただし、いま見える白い大天守は、この秀吉の天守とは別の建物です。',
+  '現在の天守を築いたのは、関ヶ原の戦いの後に播磨を与えられた池田輝政です。1601年から大改築を進め、1609年に大天守が完成しました。大天守と3つの小天守を渡櫓でつなぐ構成は、城の中心を一つのまとまりとして守るもの。街の上に浮かぶ白い屋根は、400年以上前に建てられた天守群の屋根です。',
+  '1617年には本多忠政が城主となり、その息子・忠刻と妻の千姫も姫路へ移りました。徳川秀忠の娘である千姫は、大坂の陣で最初の夫・豊臣秀頼を失い、忠刻と再婚していました。夫妻のために西の丸が整えられたことは、城が戦いに備える場所であると同時に、人が暮らす場所でもあったと教えてくれます。',
+  '江戸時代の建物が残るのは、建てた人だけでなく、守り続けた人たちがいたからです。1956年から8年に及んだ昭和の大修理では、天守を解体して修理し、再び組み上げました。さらに2009年からの平成の保存修理を経て、2015年に大天守の公開が再開。昔の姿を保つために、手をかけ続けてきた城です。',
+  '1993年、姫路城は法隆寺とともに、日本で初めて世界文化遺産に登録されました。評価されたのは美しい天守だけではありません。櫓や門、土塀、石垣、堀までが良好に残り、17世紀初頭の日本の城と防御の仕組みを伝えていることも大きな理由です。新幹線から見えるのはその一部ですが、白い屋根の向こうには、城全体を受け継いできた長い時間があります。'
+ ],
+ en: [
+  'Himeji’s white keep can look timeless, yet the castle changed as its rulers and their needs changed. The silhouette through your window carries a story of military ambition, family life and generations of conservation.',
+  'In 1580, Kuroda Yoshitaka, also known as Kanbei, handed Himeji Castle to Hashiba Hideyoshi, later known as Toyotomi Hideyoshi. Hideyoshi used it as a base for his campaign against the Mori clan in western Japan and built a three-tiered keep the following year. The white main keep you see today is a different building.',
+  'After the Battle of Sekigahara, Ikeda Terumasa received the province of Harima. He began rebuilding Himeji in 1601 and completed the main keep in 1609. Covered passages connect it to three smaller keeps, forming a defended group. Those white roofs above the modern city belong to buildings more than 400 years old.',
+  'Honda Tadamasa became lord in 1617. His son Tadatoki and Tadatoki’s wife, Princess Sen, came to Himeji too. A daughter of shogun Tokugawa Hidetada, Sen had lost her first husband, Toyotomi Hideyori, in the siege of Osaka before remarrying. The west bailey was prepared for the couple: this fortress was also a place to build a new life.',
+  'Keeping these buildings standing has taken sustained work. An eight-year restoration beginning in 1956 dismantled, repaired and reassembled the keep. Another major conservation project began in 2009, and the main keep reopened in 2015. Its historic appearance survives through careful intervention.',
+  'In 1993, Himeji Castle and Horyu-ji became Japan’s first World Cultural Heritage sites. Recognition went beyond the beautiful keep: the surviving turrets, gates, walls, stonework and moats preserve the architecture and defences of an early 17th-century Japanese castle. The train offers a glimpse of that larger inheritance.'
+ ]
 };
 himeji.detail.photoTip = {
  heading: { ja: '街並みと天守を、一緒に見る', en: 'Use the skyline before zooming in' },
@@ -124,7 +138,11 @@ himeji.detail.photoTip = {
   en: ['Start with a wide view of the rooftops and look for a cluster of white roofs above them. Switch between the wider photograph and the telephoto close-up to learn both the scale of the castle in the city and the shape of its keep.', 'For a photograph, waiting with a moderately wide frame can make the castle easier to follow than zooming in tightly as soon as you spot it. Keep watching as foreground buildings interrupt the view, and check for reflections in the glass while remaining comfortably in your seat.']
  }
 };
-himeji.detail.references.unshift({ja: '姫路市：姫路城の歴史', en: 'Himeji City: Castle history (Japanese)', url: 'https://www.city.himeji.lg.jp/castle/0000007750.html'});
+himeji.detail.references.unshift(
+ { ja: '姫路市：姫路城の歴史', en: 'Himeji City: Castle history (Japanese)', url: 'https://www.city.himeji.lg.jp/castle/0000007750.html' },
+ { ja: '兵庫県立歴史博物館：姫路城年表', en: 'Hyogo Prefectural Museum of History: Himeji chronology (Japanese)', url: 'https://rekihaku.pref.hyogo.lg.jp/castle/himeji-chronology/' },
+ { ja: '姫路市：世界文化遺産に評価された理由', en: 'Himeji City: Why the castle became World Heritage (Japanese)', url: 'https://www.city.himeji.lg.jp/castle/0000007744.html' }
+);
 okayama.detail.storyHeading = { ja: '白鷺城と対照的な、黒い烏城', en: 'The dark walls of the Crow Castle' };
 okayama.detail.story = {
  ja: ['白い姫路城に対して、岡山城の目印は黒い天守。外壁を黒塗りの下見板で覆っていることから、カラスを意味する「烏」の字を使って烏城（うじょう）と呼ばれます。新幹線の車窓でも、街の建物の間に現れる黒い壁と重なる屋根が探す手がかりです。', '現在につながる岡山城を築いたのは、豊臣秀吉のもとで活躍した宇喜多秀家です。当時の金箔瓦が発掘されており、黒い外壁だけでなく金色の瓦も特徴でした。「金烏城」という別名には、その華やかな姿が表れています。', '天守の土台と1階は不等辺五角形。岡山という丘の地盤に合わせた形といわれています。車窓の一瞬では平面の形までは見えませんが、写真で天守を見つけたあとに知ると、左右対称に見えるお城の印象が少し変わります。', '旧天守は戦災で焼失し、現在の天守は1966年に再建されたものです。姫路城の現存天守とは成り立ちが異なりますが、黒い外観を受け継ぎ、街のランドマークとして立っています。'],
