@@ -9,10 +9,10 @@ export const SANYO_CASTLES = [
   alt: { ja: '新幹線の車窓から見た姫路城の白い天守', en: 'The white keep of Himeji Castle seen from the Shinkansen window' },
   credit: { ja: '@wakaba70127479', en: '@wakaba70127479' },
   sourceUrl: 'https://x.com/wakaba70127479/status/2100095130896408840',
-  hook: { ja: '街並みの上に、白い層', en: 'White tiers above the rooftops' },
+  hook: { ja: '街並みの上に、白い層', en: 'Japan’s White Heron Castle, seen through a train window' },
   about: {
    ja: '池田輝政が1609年に完成させた天守がそのまま残る城です。白漆喰の壁から白鷺城とも呼ばれ、1951年に国宝、1993年には日本で最初の世界文化遺産のひとつになりました。大天守と3つの小天守を渡櫓でつなぐ連立式天守で、層が重なって見えるのはそのためです。',
-   en: 'Himeji keeps the tower Ikeda Terumasa completed in 1609, never lost to fire or war. Its white plaster walls earned it the name White Heron Castle; it became a National Treasure in 1951 and one of Japan\'s first World Heritage sites in 1993. The main keep is linked to three smaller keeps by covered bridges, which is why it reads as layers rather than a single tower.'
+   en: 'Himeji Castle is one of Japan’s 12 castles with an original main keep. Built in 1609, its wooden tower survives from the age of the samurai. White plaster walls give it the nickname White Heron Castle. A UNESCO World Heritage site since 1993, it stands above the modern city: look for a tall white keep surrounded by smaller towers.'
   },
   body: {
    ja: '線路は城の南側を通ります。北側の窓を見ていると、街並みの向こうに白い天守が現れます。手前の建物に隠れる時間が長いので、駅に近づく前から探しておくと間に合います。',
@@ -49,10 +49,10 @@ const okayama = {
  alt: { ja: '街の建物越しに見える岡山城の黒い天守', en: 'The dark keep of Okayama Castle beyond modern buildings' },
  credit: { ja: '@DVfkFY3nnZdn3VJ', en: '@DVfkFY3nnZdn3VJ' },
  sourceUrl: 'https://x.com/DVfkFY3nnZdn3VJ/status/2105536604333088797',
- hook: { ja: '街の向こうに、黒い天守', en: 'A dark keep beyond the city' },
+ hook: { ja: '街の向こうに、黒い天守', en: 'The Crow Castle’s dark walls beyond the city' },
  about: {
   ja: '黒い板張りの外壁から「烏城」と呼ばれる城です。戦災で失われた天守は1966年に再建されました。車窓では街の建物の向こうに、黒い壁と重なる屋根を探します。',
-  en: 'The dark clapboard walls gave Okayama Castle its nickname Ujo, or Crow Castle. Its keep was lost during the Second World War and reconstructed in 1966. From the train, look beyond the city buildings for dark walls and stacked roofs.'
+  en: 'Okayama Castle is nicknamed Crow Castle for the black wooden boards covering its walls. Its old main tower was destroyed during the Second World War and rebuilt in 1966. Unlike Himeji’s surviving original keep, this is a reconstruction that brings the castle’s historic shape back to the city. From the train, look for dark walls and layers of roofs beyond the modern buildings.'
  },
  body: {
   ja: '新大阪から西へ向かう列車では岡山駅に着く前、A席側です。東京方面へ向かう列車では、岡山駅を出た後の同じ席側。旭川を渡るあたりから窓を見ておきましょう。建物で見え隠れする遠景です。',
@@ -67,11 +67,11 @@ const himejiPost = 'https://x.com/DVfkFY3nnZdn3VJ/status/2105552015036440734';
 // 地図の視点は線路上の代表位置。各写真の撮影位置を意味しない（OSM照合、2026-10-03）。
 himeji.detail = {
  heading: { ja: ['姫路城——', '世界遺産の白鷺城'], en: 'Himeji Castle — the World Heritage White Heron Castle' },
- title: { ja: '姫路城は新幹線から見える？席側・場所と車窓写真', en: 'Himeji Castle from the Shinkansen: Seat Side & Window Photos' },
+ title: { ja: '姫路城は新幹線から見える？席側・場所と車窓写真', en: 'Himeji Castle: History & Views from the Shinkansen' },
  castle: { lat: 34.83933, lng: 134.69402 }, viewpoint: { lat: 34.82632, lng: 134.69169 },
  description: {
   ja: '世界遺産・姫路城（白鷺城）を新幹線の車窓から探す案内。姫路駅の前後、北側の窓に見える天守の目印を写真と地図で紹介します。16両はE席、8両は座席配列によりD席またはE席。進行方向ごとの見つけ方も確認できます。',
-  en: 'Spot Himeji Castle, the World Heritage White Heron Castle, from the Shinkansen. Find the north-side seats, where to look near Himeji Station, window photos and a map.'
+  en: 'Discover Himeji Castle, Japan’s UNESCO-listed White Heron Castle: its samurai history, Shinkansen window views, which side to sit on, photos and a map.'
  },
  seat: { ja: '北側の窓', en: 'North-facing windows' },
  seatNote: { ja: '16両はE席。8両は2+2ならD席、3+2ならE席。', en: 'Seat E on 16-car trains. On 8-car trains: Seat D in 2+2 rows, Seat E in 3+2 rows.' },
@@ -85,17 +85,17 @@ himeji.detail = {
   { src: 'images/20261001_himeji_castle_keep_dvfkfy3nnzdn3vj.jpg', alt: { ja: '望遠で捉えた姫路城の天守と重なる屋根', en: 'A telephoto view of Himeji Castle and its layered roofs' }, credit: contributor, sourceUrl: himejiPost, caption: { ja: '望遠で捉えた天守。肉眼ではもっと小さく見えます。', en: 'A telephoto close-up. The keep is much smaller to the naked eye.' } }
  ],
  references: [
-  { ja: '姫路城公式サイト', en: 'Himeji Castle official site (Japanese)', url: 'https://www.city.himeji.lg.jp/castle/' },
+  { ja: '姫路城公式サイト', en: 'JNTO: Himeji Castle travel guide (English)', url: { ja: 'https://www.city.himeji.lg.jp/castle/', en: 'https://www.japan.travel/en/spot/1030/' } },
   { ja: '姫路市観光案内（英語）', en: 'Himeji City tourist guide (English)', url: 'https://www.city.himeji.lg.jp/kanko/cmsfiles/contents/0000005/5252/HIMEJI_tourist_guide_map_ENG.pdf' }
  ]
 };
 okayama.detail = {
  heading: { ja: ['岡山城——', '黒い天守の烏城'], en: 'Okayama Castle — the dark-walled Crow Castle' },
- title: { ja: '岡山城は新幹線から見える？A席側・場所と車窓写真', en: 'Okayama Castle from the Shinkansen: Seat A & Window Photos' },
+ title: { ja: '岡山城は新幹線から見える？A席側・場所と車窓写真', en: 'Okayama Castle: Crow Castle History & Shinkansen Views' },
  castle: { lat: 34.66520, lng: 133.93605 }, viewpoint: { lat: 34.67023, lng: 133.92054 },
  description: {
   ja: '岡山城（烏城）は新幹線のA席側、岡山駅の東側で探します。西へ向かう列車は到着前、東へ向かう列車は出発後。建物の向こうに見え隠れする黒い天守を、車窓写真・探す目印・城と線路の地図で紹介します。',
-  en: 'Look for Okayama Castle, the dark-walled Crow Castle, from Seat A on the Shinkansen. Find where to watch east of Okayama Station, window photos and a map.'
+  en: 'Meet Okayama Castle, Japan’s black-walled Crow Castle. Discover its samurai past and rebuilt keep, with Shinkansen views, Seat A advice, photos and a map.'
  },
  seat: { ja: 'A席側', en: 'Seat A side' },
  seatNote: { ja: '16両・8両共通。', en: 'Seat A on both 16- and 8-car trains.' },
@@ -112,7 +112,7 @@ okayama.detail = {
  ]
 };
 // 独立ページは一覧より詳しく、歴史・車窓・撮影の順に読む。
-himeji.detail.storyHeading = { ja: '秀吉から、世界遺産へ', en: 'From Hideyoshi to World Heritage' };
+himeji.detail.storyHeading = { ja: '秀吉から、世界遺産へ', en: 'An original Japanese castle, still standing' };
 himeji.detail.story = {
  ja: [
   '白い天守を見ていると、最初からこの姿で建っていたように思えます。けれど姫路城は、城主が代わるたびに役割も姿も変えてきた城です。いま車窓に現れる輪郭には、戦国の拠点づくりから江戸時代の暮らし、近代の保存までが重なっています。',
@@ -123,12 +123,12 @@ himeji.detail.story = {
   '1993年、姫路城は法隆寺とともに、日本で初めて世界文化遺産に登録されました。評価されたのは美しい天守だけではありません。櫓や門、土塀、石垣、堀までが良好に残り、17世紀初頭の日本の城と防御の仕組みを伝えていることも大きな理由です。新幹線から見えるのはその一部ですが、白い屋根の向こうには、城全体を受け継いできた長い時間があります。'
  ],
  en: [
-  'Himeji’s white keep can look timeless, yet the castle changed as its rulers and their needs changed. The silhouette through your window carries a story of military ambition, family life and generations of conservation.',
-  'In 1580, Kuroda Yoshitaka, also known as Kanbei, handed Himeji Castle to Hashiba Hideyoshi, later known as Toyotomi Hideyoshi. Hideyoshi used it as a base for his campaign against the Mori clan in western Japan and built a three-tiered keep the following year. The white main keep you see today is a different building.',
-  'After the Battle of Sekigahara, Ikeda Terumasa received the province of Harima. He began rebuilding Himeji in 1601 and completed the main keep in 1609. Covered passages connect it to three smaller keeps, forming a defended group. Those white roofs above the modern city belong to buildings more than 400 years old.',
-  'Honda Tadamasa became lord in 1617. His son Tadatoki and Tadatoki’s wife, Princess Sen, came to Himeji too. A daughter of shogun Tokugawa Hidetada, Sen had lost her first husband, Toyotomi Hideyori, in the siege of Osaka before remarrying. The west bailey was prepared for the couple: this fortress was also a place to build a new life.',
-  'Keeping these buildings standing has taken sustained work. An eight-year restoration beginning in 1956 dismantled, repaired and reassembled the keep. Another major conservation project began in 2009, and the main keep reopened in 2015. Its historic appearance survives through careful intervention.',
-  'In 1993, Himeji Castle and Horyu-ji became Japan’s first World Cultural Heritage sites. Recognition went beyond the beautiful keep: the surviving turrets, gates, walls, stonework and moats preserve the architecture and defences of an early 17th-century Japanese castle. The train offers a glimpse of that larger inheritance.'
+  'Himeji Castle is one of Japan’s 12 castles with an original main keep—the central tower of a samurai fortress. Its wooden keep dates from 1609, rather than being a modern reconstruction. The bright white plaster walls gave it the nickname White Heron Castle, after the elegant white bird. From a passing train, you see only a distant silhouette; knowing how much of the old castle survives gives that glimpse a different meaning.',
+  'Its story began before that white tower. In 1580, the local lord Kuroda Kanbei handed the castle to Toyotomi Hideyoshi, a military leader who would later unite Japan. Hideyoshi made Himeji a base for his campaigns in western Japan and built an earlier, three-tiered keep. The tower in today’s photographs came later.',
+  'After a decisive battle in 1600 helped establish Tokugawa rule, the samurai lord Ikeda Terumasa took charge of this region. He rebuilt Himeji on a grander scale, completing the present main keep in 1609. Three smaller keeps connect to it through covered passages. This was a fortified centre of power as well as an impressive skyline.',
+  'There is a family story here too. Princess Sen, a daughter of Japan’s military ruler, the shogun, lost her first husband in the siege of Osaka. She remarried Honda Tadatoki and moved to Himeji in 1617, when his father became lord of the castle. The west enclosure, called Nishi-no-maru, was prepared for the couple. Behind the defensive walls was a place to begin again.',
+  'An original castle still needs care. From 1956 to 1964, a major restoration took the keep apart, repaired it and put it back together. Further conservation work led to its reopening in 2015. What looks timeless has survived because people keep maintaining it.',
+  'UNESCO recognised Himeji Castle in 1993, in Japan’s first group of World Heritage inscriptions. Its value extends beyond the white tower: gates, walls, smaller towers and moats preserve the layout of an early 17th-century Japanese fortress. Even if you are continuing west without stopping, that cluster of roofs is a small encounter with the world of the samurai.'
  ]
 };
 himeji.detail.photoTip = {
@@ -143,10 +143,15 @@ himeji.detail.references.unshift(
  { ja: '兵庫県立歴史博物館：姫路城年表', en: 'Hyogo Prefectural Museum of History: Himeji chronology (Japanese)', url: 'https://rekihaku.pref.hyogo.lg.jp/castle/himeji-chronology/' },
  { ja: '姫路市：世界文化遺産に評価された理由', en: 'Himeji City: Why the castle became World Heritage (Japanese)', url: 'https://www.city.himeji.lg.jp/castle/0000007744.html' }
 );
-okayama.detail.storyHeading = { ja: '白鷺城と対照的な、黒い烏城', en: 'The dark walls of the Crow Castle' };
+okayama.detail.storyHeading = { ja: '白鷺城と対照的な、黒い烏城', en: 'Why Okayama is called the Crow Castle' };
 okayama.detail.story = {
  ja: ['白い姫路城に対して、岡山城の目印は黒い天守。外壁を黒塗りの下見板で覆っていることから、カラスを意味する「烏」の字を使って烏城（うじょう）と呼ばれます。新幹線の車窓でも、街の建物の間に現れる黒い壁と重なる屋根が探す手がかりです。', '現在につながる岡山城を築いたのは、豊臣秀吉のもとで活躍した宇喜多秀家です。当時の金箔瓦が発掘されており、黒い外壁だけでなく金色の瓦も特徴でした。「金烏城」という別名には、その華やかな姿が表れています。', '天守の土台と1階は不等辺五角形。岡山という丘の地盤に合わせた形といわれています。車窓の一瞬では平面の形までは見えませんが、写真で天守を見つけたあとに知ると、左右対称に見えるお城の印象が少し変わります。', '旧天守は戦災で焼失し、現在の天守は1966年に再建されたものです。姫路城の現存天守とは成り立ちが異なりますが、黒い外観を受け継ぎ、街のランドマークとして立っています。'],
- en: ['In contrast with white-walled Himeji, Okayama Castle has dark clapboard walls. These gave it the nickname Ujo, or Crow Castle. From the train, its dark walls and stacked roofs help distinguish the keep from the surrounding buildings.', 'Ukita Hideie, a powerful lord under Toyotomi Hideyoshi, built the castle that shaped modern Okayama. Excavated gold-leaf tiles reveal that its original appearance paired black walls with golden roof tiles, hence another name: Golden Crow Castle.', 'The foundation and first floor form an irregular pentagon, thought to follow the ground of the hill called Okayama. You will not see that plan in a passing window view, but it gives the building an unusual shape.', 'The old keep was destroyed during the war. The tower you see today was reconstructed in 1966, carrying the distinctive dark exterior into the modern city.']
+ en: [
+  'If Himeji’s white towers have caught your eye, Okayama Castle offers a striking contrast. Black wooden boards cover its main tower, giving it the nickname Crow Castle, or Ujo in Japanese. A castle keep is the main fortified tower: here, its dark walls and layered roofs are the clues to watch for between the city’s buildings.',
+  'The castle took shape under Ukita Hideie, a samurai lord who served Toyotomi Hideyoshi, the military leader who unified Japan in the late 1500s. Excavations have uncovered gold-covered roof tiles from Hideie’s time. Against black walls, those tiles would have made a bold display of his power. They explain another nickname: Golden Crow Castle.',
+  'The keep also breaks with the neat symmetry you might expect. Its base and first floor have five unequal sides, thought to fit the shape of the hill beneath them. You cannot see that ground plan from the train, but it is a reminder that castles were shaped by the land as well as their builders.',
+  'The old keep was destroyed during the Second World War; the tower standing today was rebuilt in 1966. This gives it a different story from Himeji’s original wooden keep. One preserves an old building, while the other restores a familiar shape to the city. Both help you recognise the samurai castles among modern rooftops as you travel through western Japan.'
+ ]
 };
 okayama.detail.photoTip = {
  heading: { ja: '黒い天守を、街の中から探す', en: 'Finding the dark keep among the buildings' },

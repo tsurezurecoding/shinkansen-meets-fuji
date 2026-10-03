@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "10f15deae05103f0",
+  "contentVersion": "914d8f7953fe2df9",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -97,8 +97,8 @@
     {
       "path": "en/castles.html",
       "url": "https://www.michikusa-travel.com/en/castles.html",
-      "bytes": 28248,
-      "sha256": "e620215af84d6e0fa837ff6eb8266bd25e6ab756b9bee2b73e3e0bb76945c23f"
+      "bytes": 28412,
+      "sha256": "0bce923b7740524bc277334d72b92de3ff93ddf450befac34fdb172e494edb9c"
     },
     {
       "path": "en/ferris-wheels.html",
@@ -133,14 +133,14 @@
     {
       "path": "en/spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/himeji-castle.html",
-      "bytes": 17713,
-      "sha256": "125fd646a3de9e632d5533919ec49b415da28a3480c39ba1d4d75610f536a222"
+      "bytes": 17741,
+      "sha256": "dc8321972f81744c82d0b5f2264dfce5700fd7634ff2df005fcd0470faf66423"
     },
     {
       "path": "en/spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/okayama-castle.html",
-      "bytes": 15394,
-      "sha256": "d3d1dfa450e517da9ff881c0e885522a28ed814b3566867b1243e496456190c1"
+      "bytes": 15703,
+      "sha256": "e3df2db5dad5f91493f3018d72b4573ce22f0042dd4052168b0bcda7e8cd29d2"
     },
     {
       "path": "en/yakei.html",
@@ -817,8 +817,8 @@
     {
       "path": "sanyo-castles.css",
       "url": "https://www.michikusa-travel.com/sanyo-castles.css",
-      "bytes": 85,
-      "sha256": "65fd51ea349729924c09aa8c97f637dbb22a218f687e21cee0f292f2cc0d9f63"
+      "bytes": 175,
+      "sha256": "f2a1f369f4de803a2a5a71aa316f37a6037882f71dd03c5ccee19307f991d515"
     },
     {
       "path": "sparkling-dreams.html",
@@ -865,14 +865,14 @@
     {
       "path": "spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/spots/himeji-castle.html",
-      "bytes": 19331,
-      "sha256": "cb88d684be1da7408376d41b1fade2b6381e91e8b334779720a74352f7c3b9cd"
+      "bytes": 19147,
+      "sha256": "b5edb51c078d5819dca4066e343b399756033038ec638a118e9f5c1dfae1b42e"
     },
     {
       "path": "spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/spots/okayama-castle.html",
-      "bytes": 16681,
-      "sha256": "a69358b3c490c350e1073bbbd641b908605d9d357452fdf9c17027b40196d74c"
+      "bytes": 16497,
+      "sha256": "eeca5b5427880282ac2aa30c648cbd55353d1d542f53ec3c75444df798a8fcd1"
     },
     {
       "path": "style.css",

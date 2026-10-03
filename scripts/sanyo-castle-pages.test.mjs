@@ -29,7 +29,7 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     if (lang === 'en') assert.equal(new URL(switches[0].href).searchParams.get('lang'), 'ja');
     assert.equal(doc.querySelectorAll('[data-gallery-thumb]').length, castle.detail.photos.length);
     assert.equal(doc.querySelectorAll('.spot-page-hero .spot-page-heading-row h1').length, 1);
-    assert.equal(doc.querySelectorAll('.spot-page-facts > div').length, 4);
+    assert.deepEqual(Array.from(doc.querySelectorAll('.spot-page-facts dt'), el => el.textContent), lang === 'ja' ? ['席側', '探す場所'] : ['Seat side', 'Where to look']);
     assert.equal(doc.querySelector('[data-gallery-source-output]').href, castle.detail.photos[0].sourceUrl);
     assert.equal(doc.querySelectorAll('[data-mini-map-mode="live"], .spot-reading-actions, .spot-train-picker').length, 0);
     assert.equal(doc.querySelectorAll('.spot-page-rail').length, 1);

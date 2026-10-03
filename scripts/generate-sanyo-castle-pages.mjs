@@ -105,10 +105,8 @@ function render(castle, lang, dest) {
     <article class="spot-page-article">
       ${gallery}
       <dl class="spot-page-facts">
-        <div><dt>${pick('エリア', 'Area')}</dt><dd>${castle.id === 'himeji-castle' ? pick('兵庫県姫路市', 'Himeji, Hyogo') : pick('岡山県岡山市', 'Okayama, Okayama')}</dd></div>
         <div><dt>${pick('席側', 'Seat side')}</dt><dd>${esc(detail.seat[lang])}<small>${esc(detail.seatNote[lang])}</small></dd></div>
         <div><dt>${pick('探す場所', 'Where to look')}</dt><dd>${esc(castle.station[lang])}</dd></div>
-        <div><dt>${pick('見え方', 'Visibility')}</dt><dd>${pick('見え隠れ', 'Interrupted by buildings')}<small>${pick('列車や沿線の状況で変わります。', 'The view varies with the train and surroundings.')}</small></dd></div>
       </dl>
       <section class="spot-page-section">
         <p class="spot-reading-eyebrow">THE STORY</p>

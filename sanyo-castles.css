@@ -1,1 +1,2 @@
 /* 山陽もstyle.cssの共通spot-page-shell・本文・関連記事を利用。 */
+.sanyo-castle-page .spot-page-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
