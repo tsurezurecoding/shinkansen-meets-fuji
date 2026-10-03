@@ -241,6 +241,8 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    "spots/himeji-castle.html": { en: true },
+    "spots/okayama-castle.html": { en: true },
     "ferris-wheels.html": { en: true },
     "castles.html": { en: true },
     "arenani.html": { en: true },
@@ -267,9 +269,9 @@
     // 差し替えるため、これが無いと「日本語」を押しても英語ページへ戻される（2026-08-13発覚）。
     // ?lang=ja は router 側で保存値を "ja" へ上書きしてリダイレクトを止める入口になっている。
     var jaHref = utilityRoute
-      ? (lang === "ja" ? utilityRoute : href(rootPath, utilityRoute) + "?lang=ja")
+      ? (lang === "ja" ? href(rootPath, utilityRoute) : href(rootPath, utilityRoute) + "?lang=ja")
       : (lang === "ja" ? currentId + ".html" : href(rootPath, "spots/" + currentId + ".html") + "?lang=ja");
-    var enHref = utilityRoute ? (lang === "en" ? utilityRoute : href(rootPath, typeof utilityHasAlternate === "string" ? utilityHasAlternate : "en/" + utilityRoute)) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
+    var enHref = utilityRoute ? href(rootPath, typeof utilityHasAlternate === "string" ? utilityHasAlternate : "en/" + utilityRoute) : (lang === "en" ? currentId + ".html" : href(rootPath, "en/spots/" + currentId + ".html"));
     var jaClass = lang === "ja" ? "active" : "";
     var enClass = lang === "en" ? "active" : "";
     return "<header class=\"topbar\">" +
@@ -813,6 +815,7 @@
       button.addEventListener("click", function () {
         var thumb = button.querySelector("img");
         var figureCaption = button.parentElement.querySelector("figcaption");
+        image.alt = thumb ? thumb.alt : "";
         image.src = button.getAttribute("data-zoom-src") || (thumb && thumb.getAttribute("src")) || "";
         if (figureCaption && figureCaption.querySelector(".spot-page-zoom-hint")) {
           caption.textContent = Array.from(figureCaption.children).filter(function (item) { return !item.classList.contains("spot-page-zoom-hint"); }).map(function (item) { return item.textContent.trim(); }).filter(Boolean).join(" · ");
@@ -951,6 +954,23 @@
             else scrollToChapter();
           }
         }
+        return;
+      }
+      // 山陽の静的記事は共通ヘッダーと特集ナビだけを使う。東海道の時刻レールは表示しない。
+      if (document.body.getAttribute("data-spot-page-shared-context") === "sanyo") {
+        hosts = [findHost("topbar"), findHost("content-rail")];
+        var sanyoLang = document.body.getAttribute("data-spot-page-shared-lang");
+        var sanyoRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
+        var sanyoRoute = document.body.getAttribute("data-spot-page-shared-route");
+        if (!SUPPORTED_LANGUAGES[sanyoLang] || !/^spots\/(himeji|okayama)-castle\.html$/.test(sanyoRoute)) throw new Error("sanyo page context is malformed");
+        bindPageLightbox();
+        if (root.MADO_EMBEDDED_WEB) {
+          hosts.forEach(function (host) { if (host && host.parentNode) host.parentNode.removeChild(host); });
+          document.body.classList.add("mado-embedded-body");
+          return;
+        }
+        hosts[0].outerHTML = siteHeaderHTML(sanyoRoot, sanyoLang, "", sanyoRoute, true);
+        hosts[1].outerHTML = contentRailHTML(sanyoRoot, sanyoLang);
         return;
       }
       if (document.body.getAttribute("data-spot-page-shared-context") === "utility") {

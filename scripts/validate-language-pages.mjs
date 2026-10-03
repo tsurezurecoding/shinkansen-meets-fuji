@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://www.michikusa-travel.com";
@@ -18,6 +19,7 @@ const canonicalSpotIdOf = (id) => {
   return spot && spot.guidePageId && spot.guidePageId !== spot.id ? spot.guidePageId : id;
 };
 const pairs = [
+  ...SANYO_DETAIL_CASTLES.map(castle => [`/spots/${castle.id}.html`, `/en/spots/${castle.id}.html`]),
   ["/ferris-wheels.html", "/en/ferris-wheels.html"],
   ["/castles.html", "/en/castles.html"],
   ["/arenani.html", "/en/arenani.html"],
@@ -65,7 +67,7 @@ function hasCanonical(html, urlPath) {
 }
 
 const errors = [];
-const expectedSpotIds = new Set(spotIds);
+const expectedSpotIds = new Set([...spotIds, ...SANYO_DETAIL_CASTLES.map(castle => castle.id)]);
 if (new Set(allSpotIds).size !== spotCount) {
   errors.push(`data.js: duplicate spot IDs found (${spotCount} spots, ${new Set(allSpotIds).size} unique IDs)`);
 }

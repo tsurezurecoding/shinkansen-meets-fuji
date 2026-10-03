@@ -52,7 +52,7 @@ const trackContext = { window: { ROUTE: source.ROUTE }, ROUTE: source.ROUTE };
 vm.runInNewContext(fs.readFileSync(path.join(appDir, "track.js"), "utf8"), trackContext, { filename: path.join(appDir, "track.js") });
 const TRACK = trackContext.window.MADO_TRACK;
 const SITE_ROOT = "https://www.michikusa-travel.com";
-const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
+import { GOOGLE_MAPS_EMBED_API_KEY } from "./shared/map-config.mjs";
 const INLINE_PHOTO_CATEGORIES = new Set(["classic", "notable"]);
 const CURATED_ANGLE_PHOTOS = { hamanako: ["hamanako_torii_letus10"] };
 const FUJI_FAMILY = new Set(["fuji", "ota-fuji", "sagami-fuji", "left-fuji", "hamanako-fuji"]);

@@ -1,3 +1,4 @@
+import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -1762,8 +1763,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
     { loc: `${siteRoot}/en/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
-    { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
-    { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
+    { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
+    { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/en/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-09-23" },
@@ -1835,7 +1836,11 @@ function sitemapXML() {
     changefreq: "monthly",
     lastmod: spotLastmodOverrides[spot.id] || "2026-08-02",
   })));
-  const urls = [...baseUrls, ...spotUrls].map((item) => `  <url>
+  const sanyoUrls = SANYO_DETAIL_CASTLES.flatMap(castle => ["ja", "en"].map(lang => ({
+    loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
+    priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
+  })));
+  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${item.lastmod || DEFAULT_LASTMOD}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
