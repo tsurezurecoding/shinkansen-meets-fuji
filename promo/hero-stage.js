@@ -2,7 +2,7 @@
  * CINEMA film with its own engine (PV_FILM.render) — no redesign — and adds:
  * a hero frame (scene 0) that the film starts from and returns to, chapter
  * navigation driven by the parent page, swipe / horizontal wheel, and the
- * rule that any manual move stops the automatic advance. Silent. */
+ * explicit pause, visibility-aware resume and automatic repeat. Silent. */
 (() => {
   'use strict';
   const film = window.PV_FILM;
@@ -13,7 +13,7 @@
   const en = film.lang === 'en';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let restricted = motion.matches || !!navigator.connection?.saveData;
-  const HERO_SEC = 4.6, HERO_FADE = 0.9;
+  const HERO_SEC = 1.2, REPEAT_SEC = 8, HERO_FADE = 0.9;
 
   // chapters of the film, without the closing URL card (the TOP itself is the call to action)
   const scenes = window.PV_SCENES.filter((s) => s.id !== 'S8-end-card');
@@ -81,7 +81,7 @@
   const trusted=e=>location.protocol==='file:'?['null','file://'].includes(e.origin):e.origin===location.origin;
   const post=msg=>parent.postMessage({type:'hero-film',...msg},origin);
   let t=0,heroOn=1,mode='hero',auto=!restricted,chapter=-1,chapterEnd=0,last=0,heroTimer=0,jumpAt=-1,jumpDir=1;
-  let visible=false,ready=false,raf=0,pausedMode=null,finished=false,lastHero=null;
+  let visible=false,ready=false,raf=0,pausedMode=null,finished=false,lastHero=null,generation=0,heroWait=HERO_SEC;
   const PHONE_AT=1,PHONE_HOLD=1.6;let holdLeft=PHONE_HOLD;
   const playing=()=>!pausedMode&&((mode==='hero'&&auto)||['auto','chapter','return'].includes(mode));
   const state=()=>post({action:'state',playing:playing(),auto,finished});
@@ -99,24 +99,33 @@
     if(ch!==chapter){chapter=ch;post({action:'chapter',chapter});}
     const shown=heroOn>=.5;if(shown!==lastHero){lastHero=shown;post({action:'hero',value:shown?1:0});}
   }
-  function wake(){cancelAnimationFrame(raf);raf=0;last=0;if(ready&&visible&&!document.hidden&&(playing()||jumpAt>=0))raf=requestAnimationFrame(loop);}
-  function go(i,input='rail'){
+  function wake(){generation++;cancelAnimationFrame(raf);raf=0;last=0;if(ready&&visible&&!document.hidden&&(playing()||jumpAt>=0))raf=requestAnimationFrame(loop);}
+  async function go(i,input='rail'){
     if(!Number.isInteger(i)||i< -1||i>=scenes.length)return;
-    auto=false;finished=false;pausedMode=null;post({action:'manual',chapter:i,input});
-    if(i<0){if(restricted){heroOn=1;mode='hero';draw();}else mode='return';state();wake();return;}
+    const token=++generation;cancelAnimationFrame(raf);raf=0;
+    const wasPaused=!!pausedMode;
+    try { if(i>=0)await film.prepare(scenes[i].start); } catch {if(token===generation)post({action:'error'});return;}
+    if(token!==generation)return;
+    auto=!restricted&&!wasPaused;finished=false;post({action:'manual',chapter:i,input});
+    if(i<0){heroWait=REPEAT_SEC;heroTimer=0;if(restricted||wasPaused){heroOn=1;mode='hero';draw();}else mode='return';pausedMode=wasPaused?mode:null;state();wake();return;}
     const s=scenes[i];jumpDir=i>=chapter?1:-1;jumpAt=restricted?-1:performance.now();
-    t=s.start;holdLeft=PHONE_HOLD;chapterEnd=s.end-.45;mode=restricted?'hold':'chapter';
+    t=wasPaused?Math.min(s.start+2,s.end-.8):s.start;holdLeft=PHONE_HOLD;chapterEnd=s.end-.45;mode=restricted?'hold':'auto';pausedMode=wasPaused?mode:null;
     if(restricted)t=Math.max(s.start,chapterEnd-.2);heroOn=0;draw();state();wake();
   }
   function step(d,input){if(d!==1&&d!==-1)return;const n=(heroOn>.5?-1:chapter)+d;if(n< -1)return;go(n>=scenes.length?-1:n,input);}
-  function loop(now){
+  async function loop(now){
     raf=0;const dt=last?Math.min(.1,(now-last)/1000):0;last=now;
     if(!visible||document.hidden)return;
+    const token=generation;
+    try {await film.prepare(mode==='hero'?0:Math.min(t+dt,LAST-.45));}
+    catch {if(token===generation)post({action:'error'});return;}
+    if(token!==generation||!visible||document.hidden)return;
+    if(mode!=='hero')film.prepare(t,3).catch(()=>{});
     if(!pausedMode){
-      if(mode==='hero'&&auto){heroTimer+=dt;if(heroTimer>=HERO_SEC){mode='auto';t=0;holdLeft=PHONE_HOLD;}}
+      if(mode==='hero'&&auto){heroTimer+=dt;if(heroTimer>=heroWait){mode='auto';t=0;holdLeft=PHONE_HOLD;}}
       else if(mode==='auto'){heroOn=Math.max(0,heroOn-dt/HERO_FADE);advance(dt);if(t>=LAST-.45){t=LAST-.45;mode='return';}}
       else if(mode==='chapter'){advance(dt);t=Math.min(chapterEnd,t);if(t>=chapterEnd){mode='hold';state();}}
-      else if(mode==='return'){heroOn=Math.min(1,heroOn+dt/HERO_FADE);if(heroOn>=1){mode='hero';heroTimer=0;if(auto){auto=false;finished=true;post({action:'complete'});}state();}}
+      else if(mode==='return'){heroOn=Math.min(1,heroOn+dt/HERO_FADE);if(heroOn>=1){mode='hero';heroTimer=0;t=0;heroWait=REPEAT_SEC;if(auto)post({action:'complete'});state();}}
     }
     if(jumpAt>=0){const k=Math.min(1,(now-jumpAt)/420),e=1-Math.pow(1-k,3);veil.style.opacity=String(1-e);stage.style.translate=((1-e)*36*jumpDir)+'px 0';if(k>=1){jumpAt=-1;stage.style.translate='0 0';}}
     draw();if(playing()||jumpAt>=0)raf=requestAnimationFrame(loop);
@@ -128,7 +137,7 @@
   let wheelLock=0;
   addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<12)return;e.preventDefault();const now=performance.now();if(now<wheelLock)return;wheelLock=now+700;step(e.deltaX>0?1:-1,'wheel');},{passive:false});
   addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();step(e.key==='ArrowRight'?1:-1,'key');}});
-  function preferences(value){restricted=value;if(restricted){auto=false;pausedMode=null;mode='hold';jumpAt=-1;veil.style.opacity='0';stage.style.translate='0 0';draw();state();}wake();}
+  function preferences(value){const changed=restricted!==value;restricted=value;if(restricted){auto=false;mode='hold';jumpAt=-1;veil.style.opacity='0';stage.style.translate='0 0';draw();state();}else if(changed){mode=heroOn>.5?'hero':'auto';if(pausedMode)pausedMode=mode;else auto=true;state();}wake();}
   addEventListener('message',e=>{
     if(e.source!==parent||!trusted(e)||e.data?.type!=='hero-film'||!ready)return;
     const d=e.data;
@@ -136,11 +145,11 @@
     else if(d.action==='step')step(d.dir,d.input);
     else if(d.action==='visibility'){visible=!!d.visible;wake();}
     else if(d.action==='preferences')preferences(!!d.restricted||motion.matches);
-    else if(d.action==='pause'){if(playing()){pausedMode=mode;auto=false;}state();wake();}
+    else if(d.action==='pause'){pausedMode=mode;auto=false;state();wake();}
     else if(d.action==='play'){
       if(restricted){go(chapter<0?0:chapter,'play');return;}
       finished=false;auto=true;if(pausedMode){mode=pausedMode;pausedMode=null;}else if(mode==='hold'||mode==='chapter')mode='auto';
-      if(mode==='hero')heroTimer=HERO_SEC;state();wake();
+      if(mode==='hero')heroTimer=heroWait;state();wake();
     }
   });
   document.addEventListener('visibilitychange',wake);motion.addEventListener('change',()=>preferences(motion.matches||!!navigator.connection?.saveData));
