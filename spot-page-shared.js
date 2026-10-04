@@ -20,6 +20,7 @@
       more: "もっと見る",
       about: "新幹線の窓とは",
       forecast: "富士山 見える予報",
+      artworks: "車窓の作品集",
       sumie: "墨絵車窓",
       somato: "車窓走馬灯",
       links: "リンク集",
@@ -78,6 +79,7 @@
       more: "More",
       about: "About this app",
       forecast: "Visibility β",
+      artworks: "Window Artworks",
       sumie: "Sumie Window",
       somato: "Window Journey",
       links: "Links",
@@ -240,6 +242,7 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    "window-artworks.html": { en: true },
     "spots/himeji-castle.html": { en: true },
     "spots/okayama-castle.html": { en: true },
     "spots/fukuyama-castle.html": { en: true },
@@ -297,8 +300,7 @@
             "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "sumie.html")) + "\">" + escapeHTML(ui.sumie) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "somato.html")) + "\">" + escapeHTML(ui.somato) + "</a>" +
+            "<a href=\"" + escapeHTML(href(base, "window-artworks.html")) + "\">" + escapeHTML(ui.artworks) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "references.html")) + "\">" + escapeHTML(ui.links) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "contact.html")) + "\">" + escapeHTML(ui.contact) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "privacy.html")) + "\">" + escapeHTML(ui.privacy) + "</a>" +

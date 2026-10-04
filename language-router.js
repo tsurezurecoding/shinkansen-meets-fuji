@@ -5,6 +5,7 @@
   if (/\/en(?:\/|$)/.test(path)) return;
 
   var routes = {
+    "/window-artworks.html": "en/window-artworks.html",
     "/ferris-wheels.html": "en/ferris-wheels.html",
     "/castles.html": "en/castles.html",
     "/arenani.html": "en/arenani.html",

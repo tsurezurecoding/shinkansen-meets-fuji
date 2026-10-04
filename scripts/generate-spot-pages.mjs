@@ -639,8 +639,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
           <a class="top-nav-menu-compact" href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}#gallery" data-cta-track="header_nav_click" data-cta-id="nav_all_views">${lang === "ja" ? "車窓一覧" : "All views"}</a>
           <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
-          <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
-          <a href="${lang === "en" ? `${prefix}en/somato.html` : `${prefix}somato.html`}">${lang === "ja" ? "車窓走馬灯" : "Window Journey"}</a>
+          <a href="${lang === "en" ? `${prefix}en/window-artworks.html` : `${prefix}window-artworks.html`}">${lang === "ja" ? "車窓の作品集" : "Window Artworks"}</a>
           <a href="${lang === "en" ? `${prefix}en/references.html` : `${prefix}references.html`}">${lang === "ja" ? "リンク集" : "Links"}</a>
           <a href="${prefix}${lang === "en" ? "en/" : ""}contact.html">${lang === "ja" ? "お問い合わせ" : "Contact"}</a>
           <a href="${lang === "en" ? `${prefix}en/privacy.html` : `${prefix}privacy.html`}">${lang === "ja" ? "プライバシーポリシー" : "Privacy Policy"}</a>
@@ -1248,7 +1247,7 @@ function localizeEnglishInternalLinks(html) {
     ["href=\"spots/", "href=\"en/spots/"],
   ];
   for (const [from, to] of directRoutes) html = html.replaceAll(from, to);
-  for (const route of ["ferris-wheels", "castles", "guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments", "reflections"]) {
+  for (const route of ["ferris-wheels", "castles", "guide", "zukan", "journal", "mieru", "window-artworks", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments", "reflections"]) {
     html = html
       .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
@@ -1777,6 +1776,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
+    { loc: `${siteRoot}/en/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
