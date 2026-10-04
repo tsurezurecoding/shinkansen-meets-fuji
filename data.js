@@ -2038,8 +2038,10 @@ const SPOTS = [
   },
   {
     id: "putiputi-sign",
+    photoSectionHeadingAboveGallery: true,
+    photoSectionHeading: { ja: "昔と今、同じ場所の看板", en: "Earlier and current signs at the same location" },
     icon: "🫧",
-    ja: { name: "プチプチの看板", area: "新横浜 → 小田原（大磯町付近）", hook: "プチプチ®の川上産業。", story: "新横浜から小田原へ向かう途中、A席側に見える、プチプチ®で知られる川上産業の看板です。現在は「私は誰でしょう」と問いかけるコピーとQRコードを掲げています。隣には727 COSMETICS看板も立っているため、少し幅を持って探してください。" },
+    ja: { name: "プチプチの看板", area: "新横浜 → 小田原（大磯町付近）", hook: "プチプチ®の謎看板。", story: "新横浜から小田原へ向かう途中、A席側に見える、プチプチ®で知られるプチプチ株式会社（旧・川上産業）の看板です。現在は「私は誰でしょう」と問いかけるコピーとQRコードを掲げています。隣には727 COSMETICS看板も立っているため、少し幅を持って探してください。" },
     en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Oiso", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     pageTitle: {
       ja: "プチプチの看板｜「私は誰でしょう？」が新幹線から見える場所と席側 | 新幹線の窓",
@@ -2054,7 +2056,7 @@ const SPOTS = [
       en: ["Where is the “Who am I?” billboard", "seen from the Shinkansen?"],
     },
     metaDescription: {
-      ja: "新幹線から見える川上産業のプチプチ®看板を案内。現在の表示は「私は誰でしょう？」。大磯町付近のA席側にあり、2026年10月1日付の「プチプチ株式会社」への社名変更も紹介します。",
+      ja: "新幹線の「私は誰でしょう」看板は、プチプチ株式会社（旧・川上産業）の広告。大磯町のA席側で見える場所を、以前のプチプチ看板と2026年の車窓写真で見比べられます。",
       en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Oiso. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
     },
     sectionHeading: {
@@ -2062,21 +2064,21 @@ const SPOTS = [
       en: "What is the 'Who am I?' sign?",
     },
     pageStory: {
-      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、大磯町寺坂の農地に立つ、プチプチ®で知られる川上産業株式会社の広告です。以前は水色の気泡のイラストと商品名を大きく掲げていましたが、2025年頃から「私は誰でしょう」というコピーとQRコードだけのデザインに変わりました。川上産業は2026年10月1日付で社名を「プチプチ株式会社」へ変更すると発表しており、この看板は社名変更前後のブランドの変化も感じられる車窓になっています。",
-      en: "This billboard is one of several roadside signs standing on farmland at Terasaka in Oiso, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? The company has also published an official notice about a company-name change, so the billboard may receive a new design to match.",
+      ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、大磯町寺坂の農地に立つ、プチプチ®で知られるプチプチ株式会社（旧・川上産業株式会社）の広告です。以前は水色の気泡のイラストと商品名を大きく掲げていましたが、2025年頃から「私は誰でしょう」というコピーとQRコードだけのデザインに変わりました。川上産業は2026年10月1日付で社名を「プチプチ株式会社」へ変更しました。同じ場所の新旧写真から、車窓の看板の変化を見比べられます。",
+      en: "This billboard is one of several roadside signs standing on farmland at Terasaka in Oiso, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? Kawakami Sangyo changed its company name to Putiputi Co., Ltd on October 1, 2026. The photographs show how the sign at this same location has changed.",
     },
     explainer: {
       heading: { ja: "背景と楽しみ方", en: "The backstory and how to enjoy it" },
       ja: [
         "「プチプチ®」は、川上産業が1968年に日本で製造・発売を始めた気泡緩衝材の登録商標で、透明で気泡が並んだあの梱包材の代名詞として親しまれています。海外では bubble wrap が一般名詞ですが、日本語では商品名の『プチプチ』の方が生活語として定着しました。同社は長年ユーモアのある広告展開でも知られ、新幹線沿線のこの看板も、そのブランドコミュニケーションの一環として置かれていました。",
         "現在の「私は誰でしょう」看板は、あえて広告主を明示せず、QRコードでのアクセスに委ねる仕掛けです。新幹線の速度では車内からQRコードを読み取るのはほぼ不可能なので、実質的には「あの看板は何？」と気になった人が家に帰って調べる、という体験そのものが広告になっています。",
-        "ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。看板そのものには広告主名が大きく出ていませんが、出稿しているのはプチプチ®の川上産業です。同社は2026年10月1日付で「プチプチ株式会社」へ社名を変更することを公表しており、今後さらに看板のデザインが変わる可能性もあります。",
+        "ページ内には、以前のプチプチ看板と現在の「私は誰でしょう」看板の両方の写真を掲載しています。看板そのものには広告主名が大きく出ていませんが、出稿しているのはプチプチ株式会社（旧・川上産業）です。同社は2026年10月1日付で社名を変更しました。以前の看板と現在の表示を、同じ場所の写真で見比べてみてください。",
         "この看板の隣には、白地に大きく数字を掲げた727 COSMETICSの看板も立っています。727看板はここだけでなく、東海道新幹線沿線の各地に繰り返し現れます。数字の由来と確認した設置場所は、この説明の下にある「727看板コレクション」にまとめています。",
       ],
       en: [
         "'PUTIPUTI®' is Kawakami Sangyo's registered trademark for the clear, air-bubble packaging material it began producing in Japan in 1968; it is the everyday Japanese word for what English speakers call bubble wrap. In Japan, the brand name has become the general term for the product. Kawakami Sangyo has long run playful advertising, and its trackside sign here was part of that brand communication.",
         "The current 'Who am I?' sign deliberately hides the advertiser's name, leaving only a QR code. At Shinkansen speeds, actually scanning the code from the train is essentially impossible — so the sign works because the very act of wondering, 'what was that?' and looking it up later is the advertisement.",
-        "Trackside billboards in Japan often change every few years, so recent riders and long-time regulars may remember the spot differently. The photo gallery below includes both the earlier PUTIPUTI sign and the current 'Who am I?' one. Following the company's official name-change notice, the billboard may also be redesigned to match.",
+        "Trackside billboards in Japan often change every few years, so recent riders and long-time regulars may remember the spot differently. The photo gallery below includes both the earlier PUTIPUTI sign and the current 'Who am I?' one. Kawakami Sangyo changed its name to Putiputi Co., Ltd on October 1, 2026.",
       ],
     },
     guideHighlight: {
@@ -2195,7 +2197,7 @@ const SPOTS = [
       en: ["What are the 727 and 248 billboards", "seen from the Shinkansen?"],
     },
     metaDescription: {
-      ja: "新幹線から見える黄色い248看板は、西八王子のきぬた歯科の広告です。248を「ニシハチ」と読みます。藤沢市葛原付近のE席側で、白い727看板と並んで立っています。727看板の解説と設置場所の一覧は「727看板コレクション」へ。",
+      ja: "新幹線から見える黄色い248看板は、きぬた歯科の広告。藤沢市葛原のE席側で、727看板と並ぶ姿を車窓写真で確認できます。「ニシハチ」の意味、場所と見つけ方を紹介。",
       en: "A guide to the 727 and 248 billboards—the trackside signs seen from the Shinkansen—including what they advertise, where to find them, and which seat side to watch.",
     },
     pageStory: {
@@ -8236,10 +8238,10 @@ function boardCollectionAltEn(item) {
 }
 
 const BOARD_COLLECTION = [
-  { sourceNo: 19, id: "727-no-19", collectionNoteEn: "The 248 sign stands right beside it.", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 23, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
+  { sourceNo: 19, id: "727-no-19", collectionGuidePageId: "727-board", collectionNoteEn: "The 248 sign stands right beside it.", stampId: "727-board", legacyStampIds: ["727-companion-248"], collectionNote: "となりには248看板", minutesFromTokyo: 23, sourceMinutesFromTokyo: 23, segment: "新横浜 → 小田原", side: "E", lat: 35.4167, lng: 139.428027, confidence: "verified", photo: { src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg", alt: "248看板と並ぶ727 COSMETICS看板", note: "michikusa / 2026-07-04" }, ja: "葛原（藤沢市）", en: "Kuzuhara, Fujisawa" },
   { sourceNo: 20, id: "727-no-20", collectionNoteEn: "Next to the yellow Kinuta Dental sign.", collectionNote: "となりにはきぬた歯科", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.406712, lng: 139.410831, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_kinuta_michikusa.jpg", alt: "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影", noteEn: "michikusa / 2026-08-20 · taken at 06:18 on Nozomi 99, the 06:00 from Shinagawa" }, collectionPhotos: [{ src: "images/20260629_727_board_2_2x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
   { sourceNo: 21, id: "727-no-21", collectionNoteEn: "A single 727 sign, on its own.", collectionNote: "727看板がひとつだけ", minutesFromTokyo: 24, segment: "新横浜 → 小田原", side: "A", lat: 35.403564, lng: 139.405643, confidence: "verified", photo: { src: "images/20260820_727_board_yoda_solo_michikusa.jpg", alt: "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板", note: "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影", noteEn: "michikusa / 2026-08-20 · taken at 06:18 on Nozomi 99, the 06:00 from Shinagawa" }, collectionPhotos: [{ src: "images/20260629_727_board_1_4x_michikusa.jpg", alt: "用田付近の727 COSMETICS看板", note: "michikusa / 2026-06-29" }], ja: "用田（藤沢市）", en: "Yoda, Fujisawa" },
-  { sourceNo: 22, id: "727-no-22", collectionNoteEn: "Next to the 'Who am I?' sign.", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27.5, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中", noteEn: "michikusa / 2026-07-04 · which 727 sign this pairs with is still being checked" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
+  { sourceNo: 22, id: "727-no-22", collectionGuidePageId: "putiputi-sign", collectionNoteEn: "Next to the 'Who am I?' sign.", stampId: "putiputi-sign", legacyStampIds: ["727-companion-putiputi"], collectionNote: "となりには私は誰でしょう看板", minutesFromTokyo: 27.5, segment: "新横浜 → 小田原", side: "A", lat: 35.321496, lng: 139.285829, confidence: "verified", photo: { src: "images/20260704_putiputi_sign_1_michikusa.jpg", alt: "「私は誰でしょう」看板の隣に写る727看板候補", note: "michikusa / 2026-07-04・727の対応は確認中", noteEn: "michikusa / 2026-07-04 · which 727 sign this pairs with is still being checked" }, ja: "寺坂（大磯町）", en: "Terasaka, Oiso" },
   { sourceNo: 23, id: "727-no-23", minutesFromTokyo: 76, segment: "浜松 → 豊橋", side: "A", lat: 34.712314, lng: 137.488205, confidence: "verified", photo: { src: "images/20260704_727_board_haracho_michikusa.jpg", alt: "A席側から見える豊橋市原町の727看板", note: "michikusa / 2026-07-04" }, ja: "原町（豊橋市）", en: "Haracho, Toyohashi" },
   { sourceNo: 24, id: "727-no-24", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "E", lat: 34.799607, lng: 137.327733, confidence: "verified", photo: { src: "images/20260816_727_board_shimosawaki_e_michikusa.jpg", alt: "E席側から見える豊川市御津町下佐脇の727看板", note: "michikusa / 2026-08-16" }, ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
   { sourceNo: 25, id: "727-no-25", collectionNoteEn: "Replaced by a different advertisement as of 2026, confirmed both on Street View and from the window.", siteStatus: "removed", collectionNote: "2026年時点で別の広告に入れ替わり。ストリートビューと車窓の双方で確認", minutesFromTokyo: 81, segment: "豊橋 → 三河安城", side: "A", lat: 34.796903, lng: 137.324582, confidence: "verified", ja: "御津町下佐脇（豊川市）", en: "Shimosawaki, Toyokawa" },
