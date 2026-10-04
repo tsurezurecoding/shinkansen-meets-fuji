@@ -547,6 +547,96 @@
       .js .reveal { opacity: 1; transform: none; }
     }
   </style>
+<!-- ANDROID_INVITE_HEAD_START -->
+<style>.android-invite{display:none;max-width:860px;margin:24px auto;padding:18px 20px;border:1px solid var(--line,rgba(18,35,52,.14));border-radius:12px;background:var(--paper,#f6f2e9);color:var(--ink,#122334);font:inherit;text-align:left;box-sizing:border-box}.android-invite-eligible .android-invite,.android-invite.android-invite-reserved{display:block}.android-invite:not(.android-invite-reserved){visibility:hidden}.android-invite-eligible .android-invite{visibility:visible}.android-invite strong{font-size:1rem;line-height:1.6}.android-invite p{margin:6px 0 12px;font-size:.875rem;line-height:1.7}.android-invite-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px}.android-invite a,.android-invite button{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:8px 12px;font:inherit;font-size:.875rem;border-radius:6px;box-sizing:border-box}.android-invite a{background:var(--ink,#122334);color:var(--paper,#f6f2e9);text-decoration:none}.android-invite button{border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer}.android-invite a:focus-visible,.android-invite button:focus-visible{outline:3px solid #bf4d31;outline-offset:3px}@media(max-width:900px){.android-invite{margin:24px 18px}}@media print{.android-invite{display:none!important}}</style>
+<script>/* Inlined at build time: no extra request, bridge, SDK or install detection. */
+(function () {
+  "use strict";
+  var key = "mado-android-invite-v1", root = document.documentElement, claim, card;
+  var media = window.matchMedia("(display-mode: browser)");
+  function browser() {
+    var ua = navigator.userAgent || "";
+    return /Android/i.test(ua) && /(?:Chrome|Firefox|SamsungBrowser|EdgA|OPR)\//i.test(ua)
+      && !/(?:\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
+      && media.matches && !navigator.standalone && window.self === window.top
+      && !window.Capacitor && !window.MADO_EMBEDDED_WEB
+      && new URLSearchParams(location.search).get("from") !== "android-app";
+  }
+  function read() {
+    var raw = localStorage.getItem(key);
+    if (raw === null) return null;
+    var value = JSON.parse(raw);
+    if (!value || typeof value !== "object" || Array.isArray(value)
+        || (!value.stop && (!Number.isFinite(value.until) || value.until < 0))) throw new Error("invalid invite state");
+    return value;
+  }
+  try {
+    if (!browser()) return;
+    var prior = read();
+    // Corrupt or unrecognised state also suppresses the invitation.
+    if (prior && (prior.stop || typeof prior.until !== "number" || prior.until > Date.now())) return;
+    claim = { until: Date.now() + 7 * 86400000, token: Date.now() + ":" + Math.random() };
+    localStorage.setItem(key, JSON.stringify(claim));
+    if (read().token !== claim.token) return;
+    root.classList.add("android-invite-eligible");
+  } catch (error) { return; } // Storage unavailable: never show a repeatable prompt.
+
+  function hide() {
+    if (!card) return;
+    // Keep the footprint in this document: dismissal/storage/BFCache cause no shift.
+    card.style.visibility = "hidden";
+    card.setAttribute("aria-hidden", "true");
+    card.inert = true;
+    root.classList.remove("android-invite-eligible");
+  }
+  function refresh() {
+    try { if (!browser() || read().token !== claim.token || read().stop) hide(); }
+    catch (error) { hide(); }
+  }
+  function stop() {
+    try { localStorage.setItem(key, JSON.stringify({ stop: true })); }
+    catch (error) { /* This document still stays hidden. Future storage failure fails closed. */ }
+  }
+  function track(name) {
+    // Use only the site's existing analytics gate; never initialise analytics here.
+    if (window.MADO_ANALYTICS_DISABLED === false && typeof window.gtag === "function") {
+      window.gtag("event", name, {
+        entry_source: "android_browser_inline", language: root.lang,
+        cta_id: "android_browser_inline", page_context: /guide\.html$/.test(location.pathname) ? "fuji_guide" : "landing"
+      });
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    card = document.querySelector(".android-invite");
+    if (!card) return;
+    // Retain space even when another tab dismisses between head parsing and DOM ready.
+    card.classList.add("android-invite-reserved");
+    refresh();
+    card.querySelector("button").addEventListener("click", function () {
+      stop(); track("android_app_invite_dismiss");
+      var next = document.querySelector(".footer a");
+      if (next) next.focus({ preventScroll: true });
+      hide();
+    });
+    card.querySelector("a").addEventListener("click", function () {
+      stop(); track("android_install_click");
+      // Preserve the link until the ordinary navigation completes; no redirect or popup.
+    });
+    if ("IntersectionObserver" in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting && !card.inert) {
+          track("android_app_invite_view"); observer.disconnect();
+        }
+      }, { threshold: 0.5 });
+      observer.observe(card);
+    }
+  }, { once: true });
+  window.addEventListener("storage", function (event) { if (event.key === key || event.key === null) refresh(); });
+  window.addEventListener("pageshow", refresh);
+  if (media.addEventListener) media.addEventListener("change", refresh);
+}());
+</script>
+<!-- ANDROID_INVITE_HEAD_END -->
 </head>
 <body data-language-route="en">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -876,6 +966,16 @@
       </div>
     </section>
   </main>
+<!-- ANDROID_INVITE_BODY_START -->
+  <aside class="android-invite hide-in-app" aria-label="Android app">
+    <strong>Audio guide, screen off</strong>
+    <p>The Android app keeps ride audio running with the screen off. Free, no sign-up.</p>
+    <div class="android-invite-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow">Google Play</a>
+      <button type="button" aria-label="Dismiss app invitation; do not show again">Dismiss</button>
+    </div>
+  </aside>
+<!-- ANDROID_INVITE_BODY_END -->
 
   <footer class="footer">
     <p class="footer-brand">Shinkansen Window Discover more through the train window.</p>
