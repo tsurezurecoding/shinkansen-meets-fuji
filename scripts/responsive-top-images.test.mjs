@@ -20,3 +20,13 @@ test('bilingual TOP and hero frame use the same responsive first photo', () => {
     assert.ok(fs.existsSync(new URL('../'+file, import.meta.url)));
   }
 });
+
+test('TOP only defers offscreen editorial layout and restores printing', () => {
+  const css=fs.readFileSync(new URL('../hero-cinema.css',import.meta.url),'utf8');
+  assert.match(css,/main > section:not\(\.hero\)\s*\{\s*content-visibility: auto;\s*contain-intrinsic-size: auto 750px;/);
+  assert.match(css,/@media print\s*\{\s*main > section:not\(\.hero\)\s*\{ content-visibility: visible; contain-intrinsic-size: none;/);
+  for(const lang of ['', 'en/']){
+    const html=fs.readFileSync(new URL(`../${lang}index.html`,import.meta.url),'utf8');
+    for(const id of ['how','scenery','select','special','trust','final-title']) assert.ok(html.includes(`id="${id}"`));
+  }
+});

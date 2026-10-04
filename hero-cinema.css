@@ -9,6 +9,17 @@
 .hero.hv .hero-inner { display: block; max-width: none; width: 100%; padding: 0; text-align: center; }
 .hero.hv .intro-film-trigger { display: none; }
 
+/* Keep all editorial HTML available, but defer offscreen section layout.
+   The hero and entry cards are never contained or deferred. Remember measured
+   section heights when revisiting; the estimate only applies before first view. */
+main > section:not(.hero) {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 750px;
+}
+@media print {
+  main > section:not(.hero) { content-visibility: visible; contain-intrinsic-size: none; }
+}
+
 /* The optional English notice arrives after DOMContentLoaded. Keep it out of
    document flow so the header, film and entry cards never jump underneath it.
    This stylesheet belongs to TOP only; other pages keep their existing notice. */
