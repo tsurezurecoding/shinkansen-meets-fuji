@@ -1237,7 +1237,6 @@ function applyLang() {
       "somato.html": "en/somato.html",
       "references.html": "en/references.html",
       "privacy.html": "en/privacy.html",
-      "lp.html": "en/lp.html",
       "live/": "en/live/",
       "live/index.html": "en/live/",
     };
