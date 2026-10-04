@@ -28,13 +28,19 @@
   }
   addEventListener('resize', fit); fit();
   const bgEl = document.getElementById('bg');
-  let lastBand = '';
+  let lastBand = '',lastBandKey = '';
   function band() {
     // letterbox bands take the colour of the current scene background
     // the night chapter draws its own #081521 panel over the stage
     const cut = document.getElementById('nightCut');
     const nightOn = cut && cut.style.visibility === 'visible' && Number(cut.style.opacity || 0) > 0.5;
-    const c = heroOn > 0.5 || nightOn ? '#081521' : (getComputedStyle(bgEl).backgroundColor || '#081521');
+    const dark = heroOn > 0.5 || nightOn;
+    const key = dark ? 'hero' : stage.dataset.cinemaFinale + ':' + bgEl.style.backgroundColor;
+    if(key===lastBandKey)return;
+    lastBandKey=key;
+    // Only the finale overrides the renderer's inline colour with CSS.
+    const c = dark ? '#081521' : (stage.dataset.cinemaFinale==='true'
+      ? getComputedStyle(bgEl).backgroundColor : bgEl.style.backgroundColor) || '#081521';
     if (c !== lastBand) { document.body.style.background = c; document.documentElement.style.background = c; lastBand = c; }
   }
 
@@ -82,6 +88,7 @@
   const post=msg=>parent.postMessage({type:'hero-film',...msg},origin);
   let t=0,heroOn=1,mode='hero',auto=!restricted,chapter=-1,chapterEnd=0,last=0,heroTimer=0,jumpAt=-1,jumpDir=1;
   let visible=false,ready=false,raf=0,pausedMode=null,finished=false,lastHero=null,generation=0,heroWait=HERO_SEC;
+  let waitTimer=0,waitStarted=0;
   const PHONE_AT=1,PHONE_HOLD=1.6;let holdLeft=PHONE_HOLD;
   const playing=()=>!pausedMode&&((mode==='hero'&&auto)||['auto','chapter','return'].includes(mode));
   const state=()=>post({action:'state',playing:playing(),auto,finished});
@@ -99,10 +106,27 @@
     if(ch!==chapter){chapter=ch;post({action:'chapter',chapter});}
     const shown=heroOn>=.5;if(shown!==lastHero){lastHero=shown;post({action:'hero',value:shown?1:0});}
   }
-  function wake(){generation++;cancelAnimationFrame(raf);raf=0;last=0;if(ready&&visible&&!document.hidden&&(playing()||jumpAt>=0))raf=requestAnimationFrame(loop);}
+  function cancelWait(){
+    if(!waitTimer)return;
+    heroTimer+=Math.max(0,(performance.now()-waitStarted)/1000);
+    clearTimeout(waitTimer);waitTimer=0;waitStarted=0;
+  }
+  function wake(){
+    generation++;cancelWait();cancelAnimationFrame(raf);raf=0;last=0;
+    if(!ready||!visible||document.hidden||(!playing()&&jumpAt<0))return;
+    if(mode==='hero'&&auto&&!pausedMode&&jumpAt<0){
+      const token=generation;waitStarted=performance.now();
+      waitTimer=setTimeout(()=>{
+        waitTimer=0;waitStarted=0;
+        if(token!==generation||!visible||document.hidden||!playing())return;
+        heroTimer=heroWait;mode='auto';t=0;holdLeft=PHONE_HOLD;
+        raf=requestAnimationFrame(loop);
+      },Math.max(0,heroWait-heroTimer)*1000);
+    }else raf=requestAnimationFrame(loop);
+  }
   async function go(i,input='rail'){
     if(!Number.isInteger(i)||i< -1||i>=scenes.length)return;
-    const token=++generation;cancelAnimationFrame(raf);raf=0;
+    const token=++generation;cancelWait();cancelAnimationFrame(raf);raf=0;
     const wasPaused=!!pausedMode;
     try { if(i>=0)await film.prepare(scenes[i].start); } catch {if(token===generation)post({action:'error'});return;}
     if(token!==generation)return;
@@ -128,7 +152,8 @@
       else if(mode==='return'){heroOn=Math.min(1,heroOn+dt/HERO_FADE);if(heroOn>=1){mode='hero';heroTimer=0;t=0;heroWait=REPEAT_SEC;if(auto)post({action:'complete'});state();}}
     }
     if(jumpAt>=0){const k=Math.min(1,(now-jumpAt)/420),e=1-Math.pow(1-k,3);veil.style.opacity=String(1-e);stage.style.translate=((1-e)*36*jumpDir)+'px 0';if(k>=1){jumpAt=-1;stage.style.translate='0 0';}}
-    draw();if(playing()||jumpAt>=0)raf=requestAnimationFrame(loop);
+    draw();if(mode==='hero'&&auto&&!pausedMode&&jumpAt<0)wake();
+    else if(playing()||jumpAt>=0)raf=requestAnimationFrame(loop);
   }
   let sx=0,sy=0,down=false;
   addEventListener('pointerdown',e=>{down=true;sx=e.clientX;sy=e.clientY;});
@@ -153,7 +178,7 @@
     }
   });
   document.addEventListener('visibilitychange',wake);motion.addEventListener('change',()=>preferences(motion.matches||!!navigator.connection?.saveData));
-  addEventListener('pagehide',()=>cancelAnimationFrame(raf));addEventListener('pageshow',wake);
+  addEventListener('pagehide',()=>{generation++;cancelWait();cancelAnimationFrame(raf);raf=0;last=0;});addEventListener('pageshow',wake);
   Promise.all([film.ready,hero.querySelector('img').decode()]).then(()=>{ready=true;fit();draw();post({action:'ready',playing:playing(),auto});wake();},()=>post({action:'error'}));
   // Read-only playback diagnostics, also useful for deterministic integration checks.
   window.HERO_STAGE={get state(){return {time:t,mode,auto,chapter,heroOn,playing:playing(),finished,visible,restricted,holdLeft};}};
