@@ -71,7 +71,6 @@ function localizeEnglishRail(html) {
     ["sumie.html", "en/sumie.html"],
     ["somato.html", "en/somato.html"],
     ["journal.html", "en/journal.html"],
-    ["lp.html", "en/lp.html"],
     ["references.html", "en/references.html"],
     ["contact.html", "en/contact.html"],
     ["privacy.html", "en/privacy.html"],

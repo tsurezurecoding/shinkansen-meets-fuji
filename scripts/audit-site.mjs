@@ -23,8 +23,6 @@ const warningKinds = new Set([
   'meta-missing-og-image',
 ]);
 const allowlist = new Map([
-  ['canonical-mismatch:lp.html', 'Campaign alias intentionally consolidates to the Japanese home page.'],
-  ['canonical-mismatch:en/lp.html', 'Campaign alias intentionally consolidates to the English home page.'],
   ['canonical-mismatch:spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
   ['canonical-mismatch:en/spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
   ['canonical-mismatch:spots/ibuki-seat-a.html', 'The Seat A view is a chapter of the Mt. Ibuki page; both URLs consolidate there.'],

@@ -20,7 +20,6 @@
     "/contact.html": "en/contact.html",
     "/references.html": "en/references.html",
     "/privacy.html": "en/privacy.html",
-    "/lp.html": "en/lp.html",
     "/sparkling-dreams.html": "en/sparkling-dreams.html",
     "/hanabi.html": "en/hanabi.html",
     "/yakei.html": "en/yakei.html",
