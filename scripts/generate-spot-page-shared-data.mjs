@@ -660,6 +660,7 @@ function projectPage(spot, lang) {
     gallery,
     photoHeading: localized(spot.photoSectionHeading, lang) || UI[lang].sectionPhotos(data.name),
     photoHeadingCustom: Boolean(spot.photoSectionHeading),
+    ...(spot.photoSectionHeadingAboveGallery ? { photoHeadingAboveGallery: true } : {}),
     inline: spot.id === "hamanako" ? [] : inline,
     photoTip: spot.photoTip ? { heading: localized(spot.photoTip.heading, lang), paragraphs: spot.photoTip[lang] || spot.photoTip.ja || [] } : null,
     bodyLinks: projectBodyLinks(spot, lang),

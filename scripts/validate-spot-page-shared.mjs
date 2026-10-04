@@ -423,7 +423,7 @@ async function runThinValidator() {
         if (tipsIndex >= 0 && (tipsIndex < storyIndex || (sightsIndex >= 0 && tipsIndex < sightsIndex))) fail(`${relativeFile}: photo tips must follow the story and sights`);
         if (((page.references.length || page.bodyLinks.length) && !output.includes('class="spot-page-section spot-reading-sources"')) || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
         for (const label of ["THE STORY", "ON BOARD", ...(page.explainer ? ["WHAT TO SEE"] : []), ...(page.map?.hasCoordinates ? ["ON THE MAP"] : []), ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
-        if (output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
+        if (!page.photoHeadingAboveGallery && output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
         if (output.indexOf('class="spot-page-section spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
         if (page.readingLayout.collection && output.indexOf('class="spot-reading-related"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: related collection must follow videos`);
@@ -444,7 +444,7 @@ async function runThinValidator() {
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
       if (page.inline.length && count(output, /spot-page-inline-figure/g) !== page.inline.length) fail(`${relativeFile} inline photo module count is invalid`);
-      if (!page.readingLayout && page.photoHeadingCustom && !output.includes(escape(page.photoHeading))) fail(`${relativeFile} custom photo heading is missing from the shared gallery`);
+      if ((!page.readingLayout || page.photoHeadingAboveGallery) && page.photoHeadingCustom && !output.includes(escape(page.photoHeading))) fail(`${relativeFile} custom photo heading is missing from the shared gallery`);
       if (page.referenceImage && !output.includes("spot-page-reference-section")) fail(`${relativeFile} reference image module is missing`);
       if (page.explainer?.figure && !output.includes("spot-page-explainer-figure")) fail(`${relativeFile} explainer figure module is missing`);
       if (page.photoTip && !output.includes("spot-page-phototip")) fail(`${relativeFile} photo tip module is missing`);

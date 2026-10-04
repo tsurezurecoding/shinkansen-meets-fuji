@@ -606,7 +606,7 @@
     var ui = PAGE_UI[lang];
     var items = page.gallery;
     var first = items[0];
-    var heading = !page.readingLayout && page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
+    var heading = (!page.readingLayout || page.photoHeadingAboveGallery) && page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
     // The chooser is immediately scrollable: request its compact images together.
     var thumbs = items.map(function (item, index) {
       var note = item.note || item.alt;

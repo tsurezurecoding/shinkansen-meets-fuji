@@ -13,6 +13,9 @@ const collection = context.__collection;
 // データ件数(27)と、実際に集められる地点数(26)は別。撤去・確認できずの地点は後者から外す。
 const collectableCount = collection.filter((point) => !["not-found", "removed"].includes(point.siteStatus)).length;
 const spots = context.__spots;
+assert.equal(collection.find(p => p.sourceNo === 19).collectionGuidePageId, "727-board");
+assert.equal(collection.find(p => p.sourceNo === 22).collectionGuidePageId, "putiputi-sign");
+assert.ok(collection.filter(p => ![19, 22].includes(p.sourceNo)).every(p => !p.collectionGuidePageId), "Only adjacent signs should use a separate collection guide");
 const app = read("app.js");
 const page = read("727-collection.html");
 const script = read("727-collection.js");

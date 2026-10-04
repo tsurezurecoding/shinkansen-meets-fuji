@@ -23,7 +23,7 @@
       stageBody: function (n) { return n + "地点を記録"; }, stageAllBody: "全地点を記録",
       achieved: "達成", notAchieved: "未達成",
       photoEmptyTitle: "写真はまだありません", photoEmptyBody: "自前で確認できる写真がある地点だけを掲載します。",
-      detailLink: "解説を見る",
+      detailAbout: "727看板について", detail248: "となりの248看板を知る", detailMystery: "となりの謎看板を知る",
       fromTokyo: function (n) { return "東京 約" + n + "分"; },
       fromOsaka: function (n) { return "新大阪 約" + n + "分"; },
       summaryTime: function (n) { return "東京から約" + n + "分"; },
@@ -53,7 +53,7 @@
       stageBody: function (n) { return "Record " + n + " points"; }, stageAllBody: "Record every point",
       achieved: "Achieved", notAchieved: "Not yet",
       photoEmptyTitle: "No photograph yet", photoEmptyBody: "Only points we have photographed ourselves carry a picture.",
-      detailLink: "Read the guide",
+      detailAbout: "About the 727 signs", detail248: "About the neighbouring 248 sign", detailMystery: "About the neighbouring mystery sign",
       fromTokyo: function (n) { return "About " + n + " min from Tokyo"; },
       fromOsaka: function (n) { return "About " + n + " min from Shin-Osaka"; },
       summaryTime: function (n) { return "About " + n + " min from Tokyo"; },
@@ -176,7 +176,10 @@
     var found = isFound(point);
     var status = statusLabel(point);
     var statusMarkup = status ? "<span class=\"collection-status collection-status-checking\">" + escapeHTML(status) + "</span>" : "";
-    var spotLink = point.guidePageId ? "<a class=\"collection-detail-link\" href=\"spots/" + escapeHTML(point.guidePageId) + ".html\">" + escapeHTML(T.detailLink) + "<span aria-hidden=\"true\">→</span></a>" : "";
+    var guideId = point.collectionGuidePageId;
+    var guideHref = guideId ? "spots/" + guideId + ".html" : "#about727Title";
+    var guideLabel = guideId === "727-board" ? T.detail248 : guideId === "putiputi-sign" ? T.detailMystery : T.detailAbout;
+    var spotLink = "<a class=\"collection-detail-link\" href=\"" + escapeHTML(guideHref) + "\">" + escapeHTML(guideLabel) + "<span aria-hidden=\"true\">→</span></a>";
     return "<div id=\"" + escapeHTML(detailId) + "\" class=\"collection-point-detail\" data-point-detail hidden><div class=\"collection-point-detail-meta\"><span>" + escapeHTML(pointSegment(point)) + "</span><span>" + escapeHTML(sideLabel(point)) + "</span><span>" + escapeHTML(T.fromTokyo(point.minutesFromTokyo)) + "</span><span>" + escapeHTML(T.fromOsaka(fromShinOsaka(point))) + "</span></div><div class=\"collection-point-detail-grid\"><div class=\"collection-point-google-map\" data-google-map=\"" + escapeHTML(point.id) + "\" aria-label=\"" + escapeHTML(T.mapAria(pointName(point))) + "\"></div>" + photoMarkup(point) + "</div><div class=\"collection-point-detail-footer\"><div class=\"collection-point-detail-status\">" + statusMarkup + "<span>" + escapeHTML(found ? T.recordedState : T.unrecordedState) + "</span></div><div class=\"collection-point-actions\"><button type=\"button\" class=\"collection-stamp-button\" data-point-stamp=\"" + escapeHTML(point.id) + "\" aria-pressed=\"" + found + "\"><span aria-hidden=\"true\">" + (found ? "✓" : "○") + "</span>" + escapeHTML(found ? T.recorded : T.markVisited) + "</button><a class=\"collection-map-button\" href=\"" + escapeHTML(mapURL(point)) + "\" target=\"_blank\" rel=\"noopener\">" + escapeHTML(T.openMap) + "<span aria-hidden=\"true\">↗</span></a><a class=\"collection-map-button\" href=\"" + escapeHTML(streetViewURL(point)) + "\" target=\"_blank\" rel=\"noopener\">" + escapeHTML(T.streetView) + "<span aria-hidden=\"true\">↗</span></a>" + spotLink + "</div></div></div>";
   }
   function destroyExpandedMap() { document.querySelectorAll("[data-google-map]").forEach(function (target) { target.innerHTML = ""; }); }
