@@ -32,7 +32,7 @@ jobs:
         working-directory: .github/top-performance
         run: npm ci --ignore-scripts
       - name: Unit tests
-        run: node --test .github/top-performance/stats.test.mjs
+        run: node --test .github/top-performance/stats.test.mjs .github/top-performance/server.test.mjs
       - name: Fixed-version comparison (no deployment, no analytics events)
         env:
           CHROME_PATH: /usr/bin/google-chrome
