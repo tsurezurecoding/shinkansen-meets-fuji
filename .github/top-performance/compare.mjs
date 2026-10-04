@@ -15,7 +15,8 @@ import {summarize} from './stats.mjs';
 import {createSnapshotServer} from './server.mjs';
 
 const here=path.dirname(fileURLToPath(import.meta.url)),repo=path.resolve(here,'../..');
-const versions=JSON.parse(fs.readFileSync(path.join(here,'versions.json'),'utf8'));
+const versionFile=process.env.TOP_COMPARE_VERSIONS||'versions.json';assert(['versions.json','historical-versions.json'].includes(versionFile));
+const versions=JSON.parse(fs.readFileSync(path.join(here,versionFile),'utf8'));
 const rounds=Number(process.env.TOP_COMPARE_ROUNDS||6),output=process.env.TOP_COMPARE_OUTPUT;
 assert.equal(process.platform,'linux','Use the isolated Linux runner, not the user PC');
 assert(Number.isInteger(rounds)&&rounds>=1&&rounds<=6);
@@ -41,7 +42,13 @@ for(const version of versions){
 }
 const chromePath=process.env.CHROME_PATH;assert(chromePath&&fs.existsSync(chromePath));
 const chromeVersion=execFileSync(chromePath,['--version'],{encoding:'utf8'}).trim();
+const jaFonts=['serif:lang=ja','sans-serif:lang=ja'].map(pattern=>{
+ const [family,file]=execFileSync('fc-match',['-f','%{family}\n%{file}',pattern],{encoding:'utf8'}).trim().split('\n');
+ assert(/CJK/.test(family),'Missing Japanese CJK font: '+family);
+ return {pattern,family,file,sha256:crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex')};
+});
 const plan={startedAt:new Date().toISOString(),rounds,expectedRuns:rounds*18,inventory,uniqueBlobs:blobs.size,
+ versionFile,jaFonts,fontPackage:execFileSync('dpkg-query',['-W','-f=${Version}','fonts-noto-cjk'],{encoding:'utf8'}).trim(),
  integrity:'Every original Git blob SHA1 validated; no generated or modified HTML/assets',
  platform:process.platform,release:os.release(),cpu:os.cpus()[0]?.model,cores:os.cpus().length,chromeVersion,
  environment:'Single GitHub-hosted Ubuntu 24.04 runner, sequential fresh Chrome; simulated Lighthouse default mobile and desktop. Not Google PSI; local HTTP, no production CDN.',

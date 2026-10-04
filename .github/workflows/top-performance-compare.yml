@@ -17,7 +17,7 @@ concurrency:
 jobs:
   compare:
     runs-on: ubuntu-24.04
-    timeout-minutes: 40
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
         with:
@@ -31,6 +31,12 @@ jobs:
       - name: Install isolated measurement dependencies
         working-directory: .github/top-performance
         run: npm ci --ignore-scripts
+      - name: Install Japanese glyph coverage on the disposable runner only
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends fonts-noto-cjk
+          fc-match serif:lang=ja
+          fc-match sans-serif:lang=ja
       - name: Unit tests
         run: node --test .github/top-performance/stats.test.mjs .github/top-performance/server.test.mjs
       - name: Fixed-version comparison (no deployment, no analytics events)
@@ -38,7 +44,9 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
           TOP_COMPARE_ROUNDS: '6'
           TOP_COMPARE_OUTPUT: ${{ runner.temp }}/top-performance-results
-        run: node .github/top-performance/compare.mjs
+        run: |
+          TOP_COMPARE_OUTPUT="$TOP_COMPARE_OUTPUT/recent" node .github/top-performance/compare.mjs
+          TOP_COMPARE_VERSIONS=historical-versions.json TOP_COMPARE_OUTPUT="$TOP_COMPARE_OUTPUT/historical" node .github/top-performance/compare.mjs
       - name: Save reports and traces, including partial failures
         if: always()
         uses: actions/upload-artifact@v4

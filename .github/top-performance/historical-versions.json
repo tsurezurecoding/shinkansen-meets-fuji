@@ -1,0 +1,5 @@
+[
+  {"id":"058278c3","sha":"058278c309aa8b3793e046c40ae02e63b398799b","label":"9/23 public candidate inferred from deployment history; original PSI response bytes not verified"},
+  {"id":"8e6cf8e9","sha":"8e6cf8e982a0ea97296de930343938a42c60ca0a","label":"Before 10/4 performance fixes and nearby releases"},
+  {"id":"09dde5ff","sha":"09dde5ff3034c622cb25b18d8e604d3921ba2c1b","label":"Frozen current TOP; initial assets unchanged in public d9f86a7e"}
+]
