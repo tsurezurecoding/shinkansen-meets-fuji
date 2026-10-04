@@ -32,7 +32,7 @@ test('Android regular browsers allowed; UA / native / PWA / embedded exclusions 
   for (const options of [{ ua: 'iPhone Safari/18' }, { ua: 'Windows Chrome/140.0' }, { ua: 'Googlebot' },
     { ua: android + ' wv' }, { ua: android + ' Version/4.0' }, { ua: android + ' Instagram' }, { ua: android + ' Line/15' },
     { ua: android + ' FBAV/1' }, { ua: android + ' GSA/1' }, { standalone: true }, { frame: true },
-    { search: '?from=android-app' }, { window: { Capacitor: {} } }, { window: { MADO_EMBEDDED_WEB: true } }]) {
+    { search: '?from=android-app' }, { window: { Capacitor: {} } }, { window: { MADO_NATIVE_APP: true } }, { window: { MADO_EMBEDDED_WEB: true } }]) {
     assert.equal(run(options).classes.size, 0, JSON.stringify(options));
   }
 });

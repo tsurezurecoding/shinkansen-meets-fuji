@@ -94,7 +94,7 @@
     return /Android/i.test(ua) && /(?:Chrome|Firefox|SamsungBrowser|EdgA|OPR)\//i.test(ua)
       && !/(?:\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
       && media.matches && !navigator.standalone && window.self === window.top
-      && !window.Capacitor && !window.MADO_EMBEDDED_WEB
+      && !window.Capacitor && !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB
       && new URLSearchParams(location.search).get("from") !== "android-app";
   }
   function read() {

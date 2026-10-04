@@ -12,7 +12,7 @@ Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel
 
 ## 表示・頻度・操作
 
-- Android UAかつ既知の通常ブラウザ、display-mode browser、トップレベルのページだけ。wv / Version 4.0、既知SNS内ブラウザ、Capacitor、embedded marker、iframe、standaloneを除外する。
+- Android UAかつ既知の通常ブラウザ、display-mode browser、トップレベルのページだけ。wv / Version 4.0、既知SNS内ブラウザ、Capacitor、MADO_NATIVE_APP、embedded marker、iframe、standaloneを除外する。
 - UA等はbest effort。インストール済みでも通常ブラウザを開けば表示し得る。未対応のinstalled-related-apps APIを未インストール確認済みと扱わない。双方向関連付けが必要なAPIやネイティブ側変更は追加していない。
 - 初回描画前にlocalStorageを読み書きできた場合だけ、7日間の案内枠を確保する。頻度制御は案内を実際に見た回数ではなく対象ページを開いた回数で保守的に行う。見ないまま離れた場合も7日間抑える。
 - 閉じる／Playクリック後は期限なしの抑止状態を保存し、同じoriginのJA/EN・複数ページ・タブ・再訪で共有。保存データが消去されれば抑止もリセットされる。閉じるボタンの読み上げは「今後表示しない」を明示。
