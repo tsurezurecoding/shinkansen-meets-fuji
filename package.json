@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run build:data && npm run build:gallery-thumbs && npm run build:runtime-data && npm run sync:versions && npm run fix:spot-counts && npm run build:inbound && npm run build:pages",
     "test": "npm run test:generator && npm run test:narration && npm run test:service-worker",
-    "test:generator": "node --test scripts/generate-spot-pages.test.mjs scripts/shared/geo.test.mjs scripts/spot-page-loader.test.mjs scripts/sanyo-castle-pages.test.mjs scripts/responsive-top-images.test.mjs",
+    "test:generator": "node --test scripts/generate-spot-pages.test.mjs scripts/shared/geo.test.mjs scripts/spot-page-loader.test.mjs scripts/sanyo-castle-pages.test.mjs scripts/responsive-top-images.test.mjs scripts/hero-stage.test.mjs",
     "test:narration": "node scripts/test-narration.cjs .",
     "test:service-worker": "node --test scripts/service-worker.test.mjs",
     "verify": "npm run check && npm run preflight:spots && npm run check:manifest && npm run check:all-syntax && npm test && npm run audit:site && npm run check:diff",
