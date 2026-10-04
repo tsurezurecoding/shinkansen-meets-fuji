@@ -1,0 +1,50 @@
+name: top-performance-compare
+
+on:
+  push:
+    branches: [codex/top-compare-1004]
+    paths:
+      - .github/top-performance/**
+      - .github/workflows/top-performance-compare.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: top-performance-diagnostic
+  cancel-in-progress: false
+
+jobs:
+  compare:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: .github/top-performance/package-lock.json
+      - name: Install isolated measurement dependencies
+        working-directory: .github/top-performance
+        run: npm ci --ignore-scripts
+      - name: Unit tests
+        run: node --test .github/top-performance/stats.test.mjs
+      - name: Fixed-version comparison (no deployment, no analytics events)
+        env:
+          CHROME_PATH: /usr/bin/google-chrome
+          TOP_COMPARE_ROUNDS: '6'
+          TOP_COMPARE_OUTPUT: ${{ runner.temp }}/top-performance-results
+        run: node .github/top-performance/compare.mjs
+      - name: Save reports and traces, including partial failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: top-performance-${{ github.sha }}
+          path: ${{ runner.temp }}/top-performance-results
+          if-no-files-found: error
+          retention-days: 7
+          compression-level: 9

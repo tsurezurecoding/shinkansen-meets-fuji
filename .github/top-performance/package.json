@@ -1,0 +1,9 @@
+{
+  "name": "mado-top-performance-diagnostic",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "lighthouse": "13.5.0",
+    "chrome-launcher": "1.2.2"
+  }
+}
