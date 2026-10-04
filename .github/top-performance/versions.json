@@ -1,5 +1,5 @@
 [
-  {"id":"058278c3","sha":"058278c309aa8b3793e046c40ae02e63b398799b","label":"Public version at 2026-09-23 18:49 JST per successful Pages run35841513585; inferred screenshot baseline, not verified PSI response bytes"},
-  {"id":"8e6cf8e9","sha":"8e6cf8e982a0ea97296de930343938a42c60ca0a","label":"Public before 2026-10-04 performance fixes (CLS, responsive photo, layout, idle)"},
+  {"id":"17135799","sha":"1713579925a141b6237d699aef4be3322302b75e","label":"Before LP cleanup and idle change"},
+  {"id":"b87eeb52","sha":"b87eeb523469b52660bcf366781c8bc3fc9c6b90","label":"Immediately before idle change; primary baseline"},
   {"id":"09dde5ff","sha":"09dde5ff3034c622cb25b18d8e604d3921ba2c1b","label":"Current public version after idle change"}
 ]
