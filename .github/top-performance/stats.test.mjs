@@ -9,4 +9,6 @@ test('condition matching and CPU flags retain all runs',()=>{
  const result=summarize(rows);assert.equal(result.pairs.length,4);
  for(const p of result.pairs){assert.equal(p.n,2);assert.equal(p.stableN,1);assert.equal(p.matched[1].withinThreshold,false);}
  const missingFirst=rows.filter(r=>r.version!=='17135799');assert.equal(summarize(missingFirst).pairs.find(p=>p.baseline==='b87eeb52').stableN,0);
+ const historical=rows.map(r=>({...r,version:r.version==='17135799'?'058278c3':r.version==='b87eeb52'?'8e6cf8e9':r.version}));
+ const historySummary=summarize(historical);assert.equal(historySummary.groups.length,6);assert.equal(historySummary.pairs.length,4);assert.equal(historySummary.pairs[0].baseline,'058278c3');
 });

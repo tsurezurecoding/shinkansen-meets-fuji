@@ -16,11 +16,12 @@ export function summarize(rows){
  for(const form of ['mobile','desktop'])for(const mode of ['ga-on','ga-off'])for(const lang of ['ja','en']){
   const selected=rows.filter(r=>r.form===form&&r.mode===mode&&r.lang===lang&&!r.runtimeError);
   if(!selected.length)continue;
-  for(const version of ['17135799','b87eeb52','09dde5ff']){
+  const versionIds=[...new Set(selected.map(r=>r.version))];
+  for(const version of versionIds){
    const runs=selected.filter(r=>r.version===version);
    groups.push({form,mode,lang,version,n:runs.length,metrics:Object.fromEntries(metrics.map(k=>{const v=runs.map(r=>r[k]);return [k,{median:median(v),min:Math.min(...v),max:Math.max(...v),p25:quantile(v,0.25),p75:quantile(v,0.75)}];}))});
   }
-  for(const baseline of ['17135799','b87eeb52']){
+  for(const baseline of versionIds.filter(v=>v!=='09dde5ff')){
    const matched=[];
    for(const round of new Set(selected.map(r=>r.round))){
     const block=selected.filter(r=>r.round===round),a=block.find(r=>r.version===baseline),b=block.find(r=>r.version==='09dde5ff');
