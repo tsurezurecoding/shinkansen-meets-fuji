@@ -132,7 +132,6 @@
       { label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
       { label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。", href: "somato.html", img: "images/thumbs/content-somato.webp" },
       { label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
-      { label: "GUIDE", title: "新幹線の窓とは", desc: "使い方と楽しみ方を30秒で紹介。", href: "lp.html", img: "images/thumbs/og-shinkansen-window.webp" },
       { label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。", href: "references.html", img: "images/thumbs/20260616_fuji_sttraveler.webp" },
       { label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。", href: "contact.html", img: "images/thumbs/content-contact.webp" }
     ],
@@ -297,7 +296,6 @@
           "<div class=\"top-nav-menu\">" +
             "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "lp.html")) + "\">" + escapeHTML(ui.about) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "sumie.html")) + "\">" + escapeHTML(ui.sumie) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "somato.html")) + "\">" + escapeHTML(ui.somato) + "</a>" +
