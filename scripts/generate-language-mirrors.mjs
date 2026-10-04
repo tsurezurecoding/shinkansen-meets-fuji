@@ -110,7 +110,7 @@ function localizeEnglishRail(html) {
     return card;
   });
   const drinks=`<a class="journey-intent-card journey-intent-cloudy" href="en/drinks.html" data-cta-track="zukan_theme_click" data-cta-id="drinks">
-    <img src="images/drinks/tea-shelf.jpg" alt="" loading="lazy" decoding="async">
+    <img src="images/drinks/20261004-tea-shelf-michikusa.webp" alt="" loading="lazy" decoding="async">
     <span class="journey-intent-copy"><small>JAPANESE DRINKS</small><strong>Drinks for your Japan journey</strong><span>Tea, coffee and Japanese soft drinks — discover the names on the shelf.</span></span>
   </a>`;
   const ordered=[...leading,drinks,...featureCards.filter(c=>!leading.includes(c))];
@@ -121,7 +121,6 @@ function localizeEnglishRail(html) {
   });
   // Remove the runtime translation key so app.js cannot restore the narrower heading.
   result=result.replace(/ data-i18n="[^"]+"(?=>Find window views by theme)/,'').replace('Find window views by theme','Explore Japan by theme');
-  result=result.replace('</div>\n    </section>', '</div>\n      <p class="note">Drink shelf photo: <a href="https://commons.wikimedia.org/wiki/File:Cold_Tea_Drinks_(63202253).jpg">Paul Downey</a> / <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · cropped. <a href="en/drinks.html#sources">Photo credits</a></p>\n    </section>');
   return result;
 }
 

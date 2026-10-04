@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "ec7e986021d7517f",
+  "contentVersion": "023c205f9a225996",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -79,8 +79,8 @@
     {
       "path": "data/drinks-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/drinks-photo-sources.json",
-      "bytes": 12633,
-      "sha256": "55fb313477b9b13302ce2a5d52defc8d348806b869994627ad9c5752a15535d1"
+      "bytes": 25368,
+      "sha256": "64d94cb35659fe1252671e40f02af79966175d02229c63a4b7afe01f137716b8"
     },
     {
       "path": "data/timetable.js",
@@ -91,8 +91,8 @@
     {
       "path": "drinks.css",
       "url": "https://www.michikusa-travel.com/drinks.css",
-      "bytes": 11851,
-      "sha256": "82eb0d34ef019bbbd6e930b2b4fe69be6c25da616bc2cb9574ee5555c5841ad5"
+      "bytes": 12095,
+      "sha256": "9f5c0c1035807272f518cdc5831cab190c6f393c8bbca87a0913cf72834430ff"
     },
     {
       "path": "drinks.js",
@@ -121,8 +121,8 @@
     {
       "path": "en/drinks.html",
       "url": "https://www.michikusa-travel.com/en/drinks.html",
-      "bytes": 32473,
-      "sha256": "5bb4079a3f950fded7f781598548395f7fcc1a7f5c61c9a25b5251e3d7f94b0f"
+      "bytes": 33927,
+      "sha256": "18a5e6f9d60903ad9295b3824e92b8b1ee72877f93ad62e37942e2ae8eb0ceef"
     },
     {
       "path": "en/ferris-wheels.html",
@@ -345,6 +345,84 @@
       "url": "https://www.michikusa-travel.com/images/20261001_okayama_castle_summer_dvfkfy3nnzdn3vj.jpg",
       "bytes": 191670,
       "sha256": "48f4d9d402d9fae91281040d1f0b7918cfb9bfbb7a6185406ea5d0b8699d298f"
+    },
+    {
+      "path": "images/drinks/20261004-ayataka-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-ayataka-michikusa.webp",
+      "bytes": 233840,
+      "sha256": "c8f222b96fdbc9a0bef68bfcc1074d650405904322543276bb336cda6b2513fc"
+    },
+    {
+      "path": "images/drinks/20261004-boss-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-boss-michikusa.webp",
+      "bytes": 97310,
+      "sha256": "577580bc4b22845532929ec1294a9cc177c1e65f71b43e713b078b50d2d2c352"
+    },
+    {
+      "path": "images/drinks/20261004-calpis-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-calpis-michikusa.webp",
+      "bytes": 151302,
+      "sha256": "22260c74f0c278a97d8c8909d3613e1e2e4974f641024ef8c64e7bbbb37de1f7"
+    },
+    {
+      "path": "images/drinks/20261004-ilohas-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-ilohas-michikusa.webp",
+      "bytes": 168610,
+      "sha256": "8217c5345981c56c9735ddcb85c97cff875edb5d164fc47fd8d4c68fc82481d6"
+    },
+    {
+      "path": "images/drinks/20261004-iyemon-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-iyemon-michikusa.webp",
+      "bytes": 164428,
+      "sha256": "99edc6cf9ca8932a7097c141de720d659ab3ed535567f9cc3556ec9efabb736c"
+    },
+    {
+      "path": "images/drinks/20261004-mugicha-itoen-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-mugicha-itoen-michikusa.webp",
+      "bytes": 195794,
+      "sha256": "bdae8e67ea1bb91333218ce02acb027e35873b9232640425586bf52ba82d5e2f"
+    },
+    {
+      "path": "images/drinks/20261004-mugicha-yakan-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-mugicha-yakan-michikusa.webp",
+      "bytes": 215410,
+      "sha256": "5be136814a91102c75b0d065d554d1e5c7b665ff2975ea76165f3f7863740e85"
+    },
+    {
+      "path": "images/drinks/20261004-namacha-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-namacha-michikusa.webp",
+      "bytes": 92112,
+      "sha256": "2ac9b2422cc8d82401943f82f5468905e22d35cd98012c6ff12c6c2687e1ba6d"
+    },
+    {
+      "path": "images/drinks/20261004-oi-ocha-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-oi-ocha-michikusa.webp",
+      "bytes": 83144,
+      "sha256": "142a89600c84273bbc85fa0404fea0c2d5a81f488c64b6ce4aa06b69bf8e9e74"
+    },
+    {
+      "path": "images/drinks/20261004-pocari-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-pocari-michikusa.webp",
+      "bytes": 53202,
+      "sha256": "363cd8ebd49dd4cdf9507a64afd37c5572f9431d1f2590b0bce773aae3617841"
+    },
+    {
+      "path": "images/drinks/20261004-tea-shelf-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-tea-shelf-michikusa.webp",
+      "bytes": 155410,
+      "sha256": "fb62beb12b603f4ffad7feeaab97abc82f96c336384c2ffaed0c740716f282fe"
+    },
+    {
+      "path": "images/drinks/20261004-ucc-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-ucc-michikusa.webp",
+      "bytes": 112294,
+      "sha256": "c188908b782d4112c8b2877b4adf6c77e43b08172d3d8308f371ab82ddcd5423"
+    },
+    {
+      "path": "images/drinks/20261004-wonda-michikusa.webp",
+      "url": "https://www.michikusa-travel.com/images/drinks/20261004-wonda-michikusa.webp",
+      "bytes": 94056,
+      "sha256": "c0c05256ea838e0dc88e2e4cb213d98a8ecb0c8ed2658ed946a777dd7fb48b21"
     },
     {
       "path": "images/drinks/boss.jpg",
