@@ -89,7 +89,7 @@
   function browser() {
     var ua = navigator.userAgent || "";
     return /Android/i.test(ua) && /(?:Chrome|Firefox|SamsungBrowser|EdgA|OPR)\//i.test(ua)
-      && !/(?:\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
+      && !/(?:Googlebot|GoogleOther|bingbot|Applebot|DuckDuckBot|crawler|spider|\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
       && media.matches && !navigator.standalone && window.self === window.top
       && !window.Capacitor && !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB
       && new URLSearchParams(location.search).get("from") !== "android-app";
@@ -156,7 +156,7 @@
     });
     if ("IntersectionObserver" in window) {
       var observer = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && !card.inert) {
+        if (entries[0].isIntersecting && entries[0].intersectionRatio >= 0.5 && !card.inert) {
           track("android_app_invite_view"); observer.disconnect();
         }
       }, { threshold: 0.5 });
@@ -1037,7 +1037,7 @@
     <strong>画面を消して、車窓を楽しむ</strong>
     <p>Androidアプリなら、乗車中は画面を消しても音声案内が続きます。無料・登録不要。</p>
     <div class="android-invite-actions">
-      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow">Google Playで見る</a>
+      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Playで見る</a>
       <button type="button" aria-label="アプリの案内を閉じて、今後表示しない">閉じる</button>
     </div>
   </aside>

@@ -6,7 +6,7 @@
   function browser() {
     var ua = navigator.userAgent || "";
     return /Android/i.test(ua) && /(?:Chrome|Firefox|SamsungBrowser|EdgA|OPR)\//i.test(ua)
-      && !/(?:\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
+      && !/(?:Googlebot|GoogleOther|bingbot|Applebot|DuckDuckBot|crawler|spider|\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
       && media.matches && !navigator.standalone && window.self === window.top
       && !window.Capacitor && !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB
       && new URLSearchParams(location.search).get("from") !== "android-app";
@@ -73,7 +73,7 @@
     });
     if ("IntersectionObserver" in window) {
       var observer = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && !card.inert) {
+        if (entries[0].isIntersecting && entries[0].intersectionRatio >= 0.5 && !card.inert) {
           track("android_app_invite_view"); observer.disconnect();
         }
       }, { threshold: 0.5 });

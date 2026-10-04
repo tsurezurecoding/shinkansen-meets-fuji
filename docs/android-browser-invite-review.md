@@ -8,11 +8,13 @@
 
 運営正本 `reports/2026-10-04_android-production-release.md` / root `4a134a7` は、1.0.21-vc24の製品版を10/4 22:40 JSTに178国・地域へ正式公開したと記録。公開コードはmobile `9d3374f`、固定Web `8e6cf8e9`＋`346c72bc`。公開中紹介ページ、同梱liveの「画面を消しても案内と音声が続きます」、foreground serviceの既存検証を照合した。紹介文は画面消灯中の乗車音声案内・無料・登録不要だけ。新着PUSHや後続未公開機能は訴求しない。Play配信反映は端末ごとに時間差があり得る。今回Playストアはブラウズツールから取得できず、上記の最新Console確認記録を根拠にした。
 
-Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow
+Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&utm_source=shinkansen_window_web&utm_medium=android_browser_inline&utm_campaign=android_app_invite
+
+固定のUTM source/medium/campaignを通常のストアURLに追加し、Play側にも公開キャンペーン情報を渡す。個人情報や位置、保存トークンは付けない。Play Consoleの[公式UTM source/campaign定義](https://support.google.com/googleplay/android-developer/answer/9859173?hl=en)に従う。Install Referrer SDKやfirst-launch帰属の実装は追加しない。
 
 ## 表示・頻度・操作
 
-- Android UAかつ既知の通常ブラウザ、display-mode browser、トップレベルのページだけ。wv / Version 4.0、既知SNS内ブラウザ、Capacitor、MADO_NATIVE_APP、embedded marker、iframe、standaloneを除外する。
+- Android UAかつ既知の通常ブラウザ、display-mode browser、トップレベルのページだけ。Android Chrome形式のGooglebotを含む既知crawler、wv / Version 4.0、既知SNS内ブラウザ、Capacitor、MADO_NATIVE_APP、embedded marker、iframe、standaloneを除外する。bot除外は案内だけで、主要本文は同一。
 - UA等はbest effort。インストール済みでも通常ブラウザを開けば表示し得る。未対応のinstalled-related-apps APIを未インストール確認済みと扱わない。双方向関連付けが必要なAPIやネイティブ側変更は追加していない。
 - 初回描画前にlocalStorageを読み書きできた場合だけ、7日間の案内枠を確保する。頻度制御は案内を実際に見た回数ではなく対象ページを開いた回数で保守的に行う。見ないまま離れた場合も7日間抑える。
 - 閉じる／Playクリック後は期限なしの抑止状態を保存し、同じoriginのJA/EN・複数ページ・タブ・再訪で共有。保存データが消去されれば抑止もリセットされる。閉じるボタンの読み上げは「今後表示しない」を明示。
@@ -24,7 +26,7 @@ Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel
 
 本文main・title・canonical・meta・構造化データ・既存リンクは変更していない。新しい本文末asideだけを追加。JSなしと非対象端末では案内を表示しない。初期HTMLに存在し、遅延挿入しない。同期の小さな判定とCSS/ハンドラをビルド時にインライン化し、新しいJS/CSS/画像リクエスト・SDK・サービスワーカー変更を増やさない。
 
-HTML増分は約6.0KB、gzip増分はJA TOP 2,150B、EN TOP 2,046B、JA guide 2,545B、EN guide 2,294B（ローカル圧縮比較、実配信量ではない）。案内の原本は `scripts/shared/android-invite.mjs` と `android-invite-runtime.js`。`generate-android-invite.mjs` がJA TOPと日英guideを同期、既存TOP生成器がENをローカライズする。build/checkへ登録済み。`content-manifest.json`は既存生成器で再生成し、新たな実行時依存ファイルはない。Androidへの次回Web同期にも新規asset登録は不要だが、実APKの今回は未変更・未検証。表示除外はWebView/Capacitor markerで検証した。
+HTML増分は約6.3KB、gzip増分はJA TOP 2,261B、EN TOP 2,153B、JA guide 2,670B、EN guide 2,410B（最終候補のローカル圧縮比較、実配信量ではない）。案内の原本は `scripts/shared/android-invite.mjs` と `android-invite-runtime.js`。`generate-android-invite.mjs` がJA TOPと日英guideを同期、既存TOP生成器がENをローカライズする。build/checkへ登録済み。`content-manifest.json`は既存生成器で再生成し、新たな実行時依存ファイルはない。Androidへの次回Web同期にも新規asset登録は不要だが、実APKの今回は未変更・未検証。表示除外はWebView/Capacitor markerで検証した。
 
 Googleの[低侵襲な案内の指針](https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials)に沿う小さなHTMLストア導線。SEOへの影響ゼロや実端末全条件の検出を保証しない。
 
@@ -32,7 +34,7 @@ Googleの[低侵襲な案内の指針](https://developers.google.com/search/docs
 
 既存 `MADO_ANALYTICS_DISABLED === false` とgtagがある場合だけ記録し、解析を初期化しない。既存のlocal preview/GA optout設定を保持。保存トークン、位置情報、ユーザーIDはイベントへ送らない。
 
-- `android_app_invite_view`: 50%以上がviewportへ入ったときに文書中1回。IntersectionObserver未対応なら表示計測を省く。
+- `android_app_invite_view`: 50%以上がviewportへ入ったときに文書中1回。thresholdだけでなくintersectionRatio >= 0.5を明示し、微小交差では計測もobserver切断もしない。IntersectionObserver未対応なら表示計測を省く。
 - `android_install_click`: 既存のPlayクリックイベントを利用。`entry_source=android_browser_inline`、`cta_id=android_browser_inline`、language、page_contextで区別。**クリックであってインストール完了ではない。**
 - `android_app_invite_dismiss`: 閉じる操作。
 
@@ -40,7 +42,7 @@ Googleの[低侵襲な案内の指針](https://developers.google.com/search/docs
 
 ## 検証
 
-`npm run verify`成功（既存generator 41件・narration 450項目・service worker 2件、追加inviteテスト6群。site auditは0 errors / 既存5 warnings / 8 allowed）。`npm run build`による対象差分の再生成も不変。
+`npm run verify`成功（既存generator 41件・narration 450項目・service worker 2件、最終inviteテスト7群。site auditは0 errors / 既存5 warnings / 8 allowed）。`npm run build`による対象差分の再生成も不変。レビュー追補で小交差→50%以上の計測、Android Chrome形式Googlebot、MADO_NATIVE_APP、固定UTMを4ページで再確認する。保存済みスクリーンショットの見た目はこの追補でも変わらず、撮り直していない。
 
 Edge Chromiumの実ブラウザで27シナリオと追加5シナリオを確認。AndroidのJA/EN×TOP/guide×320/390/1440px、横あふれなし、カード220px未満、44pxタップ領域、閉じる・再訪・複数ページ/タブ・戻る進む・期限切れ・他タブからstorage変更・BFCache・キーボード・Playクリック/表示計測・GA無効時の抑制・storage read/write failure・noJS・iPhone/PC/bot/WebView/Instagram/standalone/Capacitor/from markerの非表示を検証。初期・スクロール後・閉じた後の枠/フッター位置も確認。
 
