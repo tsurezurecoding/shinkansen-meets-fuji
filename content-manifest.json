@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3760fa380ec67a68",
+  "contentVersion": "f9a5087f60a96b73",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1075,8 +1075,8 @@
     {
       "path": "window-moments.html",
       "url": "https://www.michikusa-travel.com/window-moments.html",
-      "bytes": 29398,
-      "sha256": "d2547334a77c278f01dc667d727de0cbeafb9bf1680615660e2a7fca0ac0f85d"
+      "bytes": 32033,
+      "sha256": "40e61f85e917c08256489b3dca410dec2bbd4fcdf4c35e3ff7be3d2a53c10f67"
     },
     {
       "path": "window-moments.js",
