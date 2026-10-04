@@ -15,7 +15,7 @@ const site = 'https://www.michikusa-travel.com';
 const COPY = {
  "ja": {
   "copy": "<title>一度きりの車窓｜虹・雪・富士山の笠雲とつるし雲・稲妻 | 新幹線の窓</title>",
-  "copy2": "<meta name=\"description\" content=\"東海道新幹線の車窓で、乗る日を選べないもの。虹、雪、富士山の笠雲・つるし雲・旗雲、雷。その日にしか出会えない景色に実際に出会った人の動画と写真を、元の投稿へのリンクとあわせて集めました。\">",
+  "copy2": "<meta name=\"description\" content=\"東海道新幹線で出会う、一度きりの車窓。富士山の笠雲・つるし雲の見分け方とできる条件を、車窓からの実投稿とともに紹介。虹、関ケ原の雪、稲妻の動画・写真も、元の記録へのリンクとあわせて集めました。\">",
   "copy3": "<meta property=\"og:site_name\" content=\"新幹線の窓\">",
   "copy4": "<meta property=\"og:locale\" content=\"ja_JP\">",
   "copy5": "<meta property=\"og:title\" content=\"一度きりの車窓｜虹・雪・富士山の笠雲とつるし雲・稲妻\">",
@@ -28,9 +28,9 @@ const COPY = {
   "window_moments_page": "<body class=\"window-moments-page spot-page spot-page-utility\" data-page=\"window-moments\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"ja\" data-spot-page-shared-root=\"./\" data-spot-page-shared-route=\"window-moments.html\">",
   "wmTitle": "<h1 id=\"wmTitle\">一度きりの車窓</h1>",
   "wm_hero_lead": "<p class=\"wm-hero-lead\"><span class=\"copy-chunk\">この路線の車窓は、</span><span class=\"copy-chunk\">たいてい時刻で決まります。</span><span class=\"copy-chunk\">何分に、どちら側に、何が見えるか。</span><span class=\"copy-chunk\">けれど空は、</span><span class=\"copy-chunk\">その日にしか出会えない</span><span class=\"copy-chunk\">景色をつくります。</span><span class=\"copy-chunk\">虹、関ケ原の雪、</span><span class=\"copy-chunk\">富士山の笠雲とつるし雲、</span><span class=\"copy-chunk\">そして稲妻。</span></p>",
-  "btn": "<a class=\"btn btn-primary btn-small\" href=\"#rainbow\">虹</a>",
+  "btn": "<a class=\"btn btn-ghost btn-small\" href=\"#rainbow\">虹</a>",
   "btn2": "<a class=\"btn btn-ghost btn-small\" href=\"#snow\">雪景色</a>",
-  "btn3": "<a class=\"btn btn-ghost btn-small\" href=\"#clouds\">富士山の雲</a>",
+  "btn3": "<a class=\"btn btn-primary btn-small\" href=\"#clouds\">富士山の雲</a>",
   "btn4": "<a class=\"btn btn-ghost btn-small\" href=\"#lightning\">稲妻</a>",
   "wm_hero_credit": "<p class=\"wm-hero-credit\">写真：新幹線の窓（2022年2月5日・名古屋〜京都間）</p>",
   "wmRainbowTitle": "<h2 id=\"wmRainbowTitle\">同じ虹は、ひとつもない。</h2>",
@@ -92,25 +92,26 @@ const COPY = {
   "copy38": "<p>参考記録</p>",
   "copy39": "<li>関ケ原地区のスプリンクラー散水と、降積雪時に速度を落とす理由 — <a href=\"https://company.jr-central.co.jp/sustainability/social/transport/\" target=\"_blank\" rel=\"noopener noreferrer\">JR東海：安定輸送への取り組み ↗</a></li>",
   "copy40": "<li>岐阜羽島〜米原、関ケ原の県境が雪景色になった沿線の記録 — <a href=\"https://rail.hobidas.com/todaysshot/533068/\" target=\"_blank\" rel=\"noopener noreferrer\">元の記録 ↗</a></li>",
-  "wmCloudsTitle": "<h2 id=\"wmCloudsTitle\"><span class=\"copy-chunk\">富士山が、</span><span class=\"copy-chunk\">見たことのない</span><span class=\"copy-chunk\">帽子をかぶる。</span></h2>",
-  "copy_chunk3": "<p><span class=\"copy-chunk\">笠雲、吊るし雲、旗雲。</span><span class=\"copy-chunk\">山があるから生まれる雲で、</span><span class=\"copy-chunk\">同じ日は二度ありません。</span></p>",
+  "wmCloudsTitle": "<h2 id=\"wmCloudsTitle\"><span class=\"copy-chunk\">富士山の笠雲、</span><span class=\"copy-chunk\">つるし雲。</span><span class=\"copy-chunk\">今日は、どんな帽子？</span></h2>",
+  "copy_chunk3": "<p><span class=\"copy-chunk\">いつもの富士山が、</span><span class=\"copy-chunk\">今日は違う顔をしている。</span><span class=\"copy-chunk\">山頂だけでなく、</span><span class=\"copy-chunk\">その隣の空にも</span><span class=\"copy-chunk\">目を向けてみてください。</span></p>",
+  "cloud_guide": "<div class=\"wm-cloud-guide\">\n        <h3>窓から見分ける</h3>\n        <dl class=\"wm-cloud-compare\">\n          <div><dt>笠雲：山頂の帽子</dt><dd>山頂を覆うように見える雲。頂上に触れる「接地笠」と、少し浮いた「離れ笠」があります。まず山の輪郭と雲の縁を見比べてみてください。</dd></div>\n          <div><dt>つるし雲：山の隣のレンズ</dt><dd>吊るし雲とも書きます。山から離れた空に、楕円や翼のような形で浮かぶレンズ雲の一種。山頂からの距離と形を合わせて見ます。離れ笠もあるため、離れているだけでは決められません。</dd></div>\n        </dl>\n        <details class=\"wm-cloud-details\"><summary>なぜできる？ 雨の前ぶれ？</summary>\n        <p>湿った空気が山を越えて上昇し、冷やされると雲ができます。つるし雲には、山を越える風がつくる大気の上下の波（山岳波）が主に関わります。筑波大学の3年間の観測では、笠雲とつるし雲は上空の風や湿度の分布が違うと分かりました。車窓から、その日の気象条件まで断定はできません。</p>\n        <p>雲が同じ場所に留まるように見えても、空気は流れています。笠雲は風上で生まれ、風下で消えることで形を保ちます。「笠雲が出たら雨」とも言われますが、晴れに向かう時に出ることもあり、必ず雨になる合図ではありません。</p>\n        <p>山頂から旗のようにたなびくのは「旗雲」。笠雲・つるし雲とは発生条件が異なります。ここに並べた3投稿は笠雲とつるし雲の記録です。</p>\n        </details>\n        <p class=\"wm-cloud-look\">窓からの楽しみは、雲と富士山の重なりが、列車の移動につれて変わること。<a href=\"guide.html\">富士山を見る区間と席側</a>を確かめたら、山頂と隣の空を一緒に眺めてみてください。</p>\n      </div>\n      <div class=\"wm-media-head\"><h3>新幹線から出会った人の記録</h3><p>投稿者の雲の呼び名を添えています。撮影地点・席側は、この3件では確認できていません。</p></div>",
   "wm_x6": "<div class=\"wm-x\" data-placeholder=\"Xの投稿を読み込みます\">",
   "wm_card_kicker4": "<p class=\"wm-card-kicker\">X · 笠雲</p>",
   "copy41": "<h4>新幹線で出会った、天使の輪</h4>",
   "wm_card_by11": "<span class=\"wm-card-by\">荒木尚子さん · @arakihisako</span>",
-  "copy42": "<a href=\"https://x.com/arakihisako/status/2016315688563179757\" target=\"_blank\" rel=\"noopener noreferrer\">元投稿を見る ↗</a>",
+  "copy42": "<a href=\"https://x.com/arakihisako/status/2016315688563179757\" target=\"_blank\" rel=\"noopener noreferrer\">元投稿を見る ↗</a><p class=\"wm-card-note\">笠雲として投稿された記録。山頂と雲の重なりに注目。</p>",
   "wm_facade6": "<div class=\"wm-facade\" style=\"--wm-thumb: url('https://i.ytimg.com/vi/umVREJ5cqHc/hqdefault.jpg')\"><button type=\"button\" aria-label=\"hiroeueharaさんのつるし雲の動画を再生\"><span aria-hidden=\"true\">▶</span></button></div>",
   "wm_card_kicker5": "<p class=\"wm-card-kicker\">YOUTUBE · 吊るし雲</p>",
   "copy43": "<h4>富士山のつるし雲</h4>",
   "wm_card_by12": "<span class=\"wm-card-by\">hiroe ueharaさん · 2020年7月公開</span>",
-  "copy44": "<a href=\"https://www.youtube.com/shorts/umVREJ5cqHc\" target=\"_blank\" rel=\"noopener noreferrer\">元動画を見る ↗</a>",
+  "copy44": "<a href=\"https://www.youtube.com/shorts/umVREJ5cqHc\" target=\"_blank\" rel=\"noopener noreferrer\">元動画を見る ↗</a><p class=\"wm-card-note\">つるし雲として紹介された動画。山の隣の空と雲の形を見比べて。</p>",
   "wm_facade7": "<div class=\"wm-facade\" style=\"--wm-thumb: url('https://i.ytimg.com/vi/g-XR980UakQ/hqdefault.jpg')\"><button type=\"button\" aria-label=\"こっとん健児チャンネルさんの笠雲の動画を再生\"><span aria-hidden=\"true\">▶</span></button></div>",
   "wm_card_kicker6": "<p class=\"wm-card-kicker\">YOUTUBE · 笠雲</p>",
   "copy45": "<h4>帽子？　煙？　変わった富士山</h4>",
   "wm_card_by13": "<span class=\"wm-card-by\">こっとん健児チャンネルさん · 2020年12月公開</span>",
-  "copy46": "<a href=\"https://www.youtube.com/shorts/g-XR980UakQ\" target=\"_blank\" rel=\"noopener noreferrer\">元動画を見る ↗</a>",
+  "copy46": "<a href=\"https://www.youtube.com/shorts/g-XR980UakQ\" target=\"_blank\" rel=\"noopener noreferrer\">元動画を見る ↗</a><p class=\"wm-card-note\">笠雲として紹介された動画。列車が進む間の山と雲の重なりに注目。</p>",
   "copy47": "<p>参考記録</p>",
-  "copy48": "<li>笠雲・吊るし雲（つるし雲）・旗雲の見分けと、生まれるしくみ — <a href=\"https://www.cbr.mlit.go.jp/fujisabo/bosai/fuji_info/chisiki/b05/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">国土交通省 富士砂防事務所 ↗</a></li>\n          <li>富士山のまわりに幾重にも現れた吊るし雲の記録 — <a href=\"https://weathernews.jp/s/topics/202009/090035/\" target=\"_blank\" rel=\"noopener noreferrer\">ウェザーニュース ↗</a></li>",
+  "copy48": "<li>笠雲・つるし雲・旗雲の3年間の観測と発生条件 — <a href=\"https://www.ccs.tsukuba.ac.jp/release251126/\" target=\"_blank\" rel=\"noopener noreferrer\">筑波大学（2025年） ↗</a></li><li>笠雲の形が保たれるしくみと天気との関係 — <a href=\"https://www.cbr.mlit.go.jp/fujisabo/bosai/fuji_info/chisiki/b05/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">国土交通省 富士砂防事務所 ↗</a></li>",
   "wmLightningTitle": "<h2 id=\"wmLightningTitle\"><span class=\"copy-chunk\">一秒だけ、</span><span class=\"copy-chunk\">空が割れる。</span></h2>",
   "copy_chunk4": "<p><span class=\"copy-chunk\">ここに集めたなかで、</span><span class=\"copy-chunk\">いちばん記録が少ないのが雷です。</span><span class=\"copy-chunk\">光る時間が短く、</span><span class=\"copy-chunk\">シャッターを押したときには、</span><span class=\"copy-chunk\">もう消えている。</span></p>",
   "wm_facade8": "<div class=\"wm-facade\" style=\"--wm-thumb: url('https://i.ytimg.com/vi/kuE7xshuBhk/maxresdefault.jpg')\"><button type=\"button\" aria-label=\"T.sound channelさんのスーパーセルの動画を再生\"><span aria-hidden=\"true\">▶</span></button></div>",
@@ -162,9 +163,9 @@ const COPY = {
   "window_moments_page": "<body class=\"window-moments-page spot-page spot-page-utility\" data-page=\"window-moments\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"en\" data-spot-page-shared-root=\"../\" data-spot-page-shared-route=\"window-moments.html\">",
   "wmTitle": "<h1 id=\"wmTitle\">Weather Seen from the Shinkansen</h1>",
   "wm_hero_lead": "<p class=\"wm-hero-lead\">Most of this route runs on a timetable. Which minute, which side, what appears at the window. The sky does not. What it makes, it makes only that day. Rainbows after the rain, snow over Sekigahara, the cap and lenticular clouds Mt. Fuji wears, and summer lightning.</p>",
-  "btn": "<a class=\"btn btn-primary btn-small\" href=\"#rainbow\">Rainbows</a>",
+  "btn": "<a class=\"btn btn-ghost btn-small\" href=\"#rainbow\">Rainbows</a>",
   "btn2": "<a class=\"btn btn-ghost btn-small\" href=\"#snow\">Snow</a>",
-  "btn3": "<a class=\"btn btn-ghost btn-small\" href=\"#clouds\">Fuji’s clouds</a>",
+  "btn3": "<a class=\"btn btn-primary btn-small\" href=\"#clouds\">Fuji’s clouds</a>",
   "btn4": "<a class=\"btn btn-ghost btn-small\" href=\"#lightning\">Lightning</a>",
   "wm_hero_credit": "<p class=\"wm-hero-credit\">Photo: Shinkansen Window (5 February 2022, between Nagoya and Kyoto)</p>",
   "wmRainbowTitle": "<h2 id=\"wmRainbowTitle\">No two rainbows are the same.</h2>",
@@ -227,24 +228,25 @@ const COPY = {
   "copy39": "<li>Why sprinklers spray the Sekigahara section, and why trains slow down in snow — <a href=\"https://company.jr-central.co.jp/sustainability/social/transport/\" target=\"_blank\" rel=\"noopener noreferrer\">JR Central on stable transport (Japanese) ↗</a></li>",
   "copy40": "<li>Gifu-Hashima to Maibara: the Sekigahara prefectural border under snow — <a href=\"https://rail.hobidas.com/todaysshot/533068/\" target=\"_blank\" rel=\"noopener noreferrer\">a lineside record (Japanese) ↗</a></li>",
   "wmCloudsTitle": "<h2 id=\"wmCloudsTitle\">Mt. Fuji puts on a hat you have never seen.</h2>",
-  "copy_chunk3": "<p>Lenticular clouds, the kind that sit still while the sky moves: a cap cloud on the summit (kasagumo), a Tsurushi cloud hanging downwind (tsurushigumo), a Hata cloud streaming off the ridge like a flag (hatagumo). The mountain makes them itself, and never the same way twice.</p>",
+  "copy_chunk3": "<p>Mt. Fuji can look different from one journey to the next. Look at the summit, then at the sky beside it: a cloud may sit like a cap, or hang apart from the mountain.</p>",
+  "cloud_guide": "<div class=\"wm-cloud-guide\">\n        <h3>What to look for at the window</h3>\n        <dl class=\"wm-cloud-compare\">\n          <div><dt>Cap cloud: over the summit</dt><dd>Kasagumo may touch the summit or hover just above it. Compare the cloud’s edge with the mountain’s outline.</dd></div>\n          <div><dt>Tsurushi cloud: a lens beside the mountain</dt><dd>Tsurushigumo is a lens-shaped cloud, sometimes oval or wing-like. Look at both its shape and its position: separation alone is not enough, because a cap cloud can also hover.</dd></div>\n        </dl>\n        <details class=\"wm-cloud-details\"><summary>How do they form? Do they mean rain?</summary>\n        <p>Moist air rising over a mountain can cool into cloud. Tsurushi clouds mainly involve mountain waves: air moving up and down after crossing the mountain. Three years of observations by the University of Tsukuba found different wind and humidity profiles for cap and Tsurushi clouds.</p>\n        <p>A cap cloud can keep its shape as air flows through it, forming upwind and evaporating downwind. It does not guarantee rain. A flag-like Hata cloud has different formation conditions.</p>\n        </details>\n        <p class=\"wm-cloud-look\">From a moving train, watch how the cloud and mountain overlap. See the <a href=\"guide.html\">Fuji viewing guide</a> for the viewing section and seat side.</p>\n      </div>\n      <div class=\"wm-media-head\"><h3>Seen from the Shinkansen</h3><p>The cloud names below follow the original posts. Exact filming locations and seat sides have not been confirmed for these three records.</p></div>",
   "wm_x6": "<div class=\"wm-x\" data-placeholder=\"Loading the post from X\">",
   "wm_card_kicker4": "<p class=\"wm-card-kicker\">X · CAP CLOUD</p>",
   "copy41": "<h4>An angel’s halo, from the Shinkansen</h4>",
   "wm_card_by11": "<span class=\"wm-card-by\">荒木尚子 · @arakihisako</span>",
-  "copy42": "<a href=\"https://x.com/arakihisako/status/2016315688563179757\" target=\"_blank\" rel=\"noopener noreferrer\">See the original post ↗</a>",
+  "copy42": "<a href=\"https://x.com/arakihisako/status/2016315688563179757\" target=\"_blank\" rel=\"noopener noreferrer\">See the original post ↗</a><p class=\"wm-card-note\">Posted as a cap cloud. Compare the cloud with the summit.</p>",
   "wm_facade6": "<div class=\"wm-facade\" style=\"--wm-thumb: url('https://i.ytimg.com/vi/umVREJ5cqHc/hqdefault.jpg')\"><button type=\"button\" aria-label=\"Play hiroe uehara’s lenticular cloud video\"><span aria-hidden=\"true\">▶</span></button></div>",
   "wm_card_kicker5": "<p class=\"wm-card-kicker\">YOUTUBE · LENTICULAR CLOUD</p>",
   "copy43": "<h4>A lenticular cloud over Mt. Fuji</h4>",
   "wm_card_by12": "<span class=\"wm-card-by\">hiroe uehara · published July 2020</span>",
-  "copy44": "<a href=\"https://www.youtube.com/shorts/umVREJ5cqHc\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the original ↗</a>",
+  "copy44": "<a href=\"https://www.youtube.com/shorts/umVREJ5cqHc\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the original ↗</a><p class=\"wm-card-note\">Presented as a Tsurushi cloud. Look beside the mountain and compare its shape.</p>",
   "wm_facade7": "<div class=\"wm-facade\" style=\"--wm-thumb: url('https://i.ytimg.com/vi/g-XR980UakQ/hqdefault.jpg')\"><button type=\"button\" aria-label=\"Play こっとん健児チャンネル’s cap cloud video\"><span aria-hidden=\"true\">▶</span></button></div>",
   "wm_card_kicker6": "<p class=\"wm-card-kicker\">YOUTUBE · CAP CLOUD</p>",
   "copy45": "<h4>A hat? Smoke? Mt. Fuji, changed</h4>",
   "wm_card_by13": "<span class=\"wm-card-by\">こっとん健児チャンネル · published December 2020</span>",
-  "copy46": "<a href=\"https://www.youtube.com/shorts/g-XR980UakQ\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the original ↗</a>",
+  "copy46": "<a href=\"https://www.youtube.com/shorts/g-XR980UakQ\" target=\"_blank\" rel=\"noopener noreferrer\">Watch the original ↗</a><p class=\"wm-card-note\">Presented as a cap cloud. Watch the overlap as the train moves.</p>",
   "copy47": "<p>SOURCES</p>",
-  "copy48": "<li>Three years of camera observations of the cap, Tsurushi and Hata clouds, and the conditions each one needs — <a href=\"https://phys.org/news/2026-01-mount-fuji-unique-clouds-insights.html\" target=\"_blank\" rel=\"noopener noreferrer\">Kusaka, University of Tsukuba, in Weather (2025) ↗</a></li>\n          <li>Telling cap, lenticular and banner clouds apart, and how each one forms — <a href=\"https://www.cbr.mlit.go.jp/fujisabo/bosai/fuji_info/chisiki/b05/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">MLIT Fuji Sabo Office (Japanese) ↗</a></li>\n          <li>Layer after layer of lenticular cloud around Mt. Fuji — <a href=\"https://weathernews.jp/s/topics/202009/090035/\" target=\"_blank\" rel=\"noopener noreferrer\">Weathernews (Japanese) ↗</a></li>",
+  "copy48": "<li>Three years of cloud observations and their formation conditions — <a href=\"https://www.ccs.tsukuba.ac.jp/release251126/\" target=\"_blank\" rel=\"noopener noreferrer\">University of Tsukuba (2025, Japanese) ↗</a></li><li>Cap cloud shape and its relationship to weather — <a href=\"https://www.cbr.mlit.go.jp/fujisabo/bosai/fuji_info/chisiki/b05/index.html\" target=\"_blank\" rel=\"noopener noreferrer\">MLIT Fuji Sabo Office (Japanese) ↗</a></li>",
   "wmLightningTitle": "<h2 id=\"wmLightningTitle\">For one second, the sky splits.</h2>",
   "copy_chunk4": "<p>Lightning is the hardest of these to find a record of. It lasts so little that by the time the shutter opens, it is already gone.</p>",
   "wm_facade8": "<div class=\"wm-facade\" style=\"--wm-thumb: url('https://i.ytimg.com/vi/kuE7xshuBhk/maxresdefault.jpg')\"><button type=\"button\" aria-label=\"Play T.sound channel’s supercell video\"><span aria-hidden=\"true\">▶</span></button></div>",
@@ -331,9 +333,9 @@ ${t.window_moments_page}
         ${t.wmTitle}
         ${t.wm_hero_lead}
         <div class="wm-hero-actions">
+          ${t.btn3}
           ${t.btn}
           ${t.btn2}
-          ${t.btn3}
           ${t.btn4}
         </div>
         ${t.wm_hero_credit}
@@ -344,9 +346,55 @@ ${t.window_moments_page}
       <aside data-spot-page-shared-module="rail"></aside>
       <article class="spot-page-article">
 
+    <section class="wm-section wm-story" data-theme="cloud" id="clouds" aria-labelledby="wmCloudsTitle">
+      <div class="wm-story-head">
+        <p class="wm-index">01 / CLOUDS OF FUJI</p>
+        ${t.wmCloudsTitle}
+        ${t.copy_chunk3}
+      </div>
+      ${t.cloud_guide}
+      <div class="wm-x-gallery is-pair">
+        <article class="wm-card" data-embed="x">
+          ${t.wm_x6}
+            <template><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><p lang="ja" dir="ltr">年明けお伊勢さんに向かう新幹線で出逢った素敵な富士山🗻 #富士山 #笠雲 #天使の輪</p>&mdash; 荒木尚子 (@arakihisako) <a href="https://x.com/arakihisako/status/2016315688563179757">元投稿</a></blockquote></template>
+          </div>
+          <div class="wm-card-body">
+            ${t.wm_card_kicker4}
+            ${t.copy41}
+            ${t.wm_card_by11}
+            ${t.copy42}
+          </div>
+        </article>
+        <article class="wm-card is-square" data-embed="youtube" data-video-id="umVREJ5cqHc" data-video-title="富士山のつるし雲 ～新幹線の車窓から～">
+          ${t.wm_facade6}
+          <div class="wm-card-body">
+            ${t.wm_card_kicker5}
+            ${t.copy43}
+            ${t.wm_card_by12}
+            ${t.copy44}
+          </div>
+        </article>
+        <article class="wm-card" data-embed="youtube" data-video-id="g-XR980UakQ" data-video-title="変わった富士山？【笠雲】新幹線からの撮影">
+          ${t.wm_facade7}
+          <div class="wm-card-body">
+            ${t.wm_card_kicker6}
+            ${t.copy45}
+            ${t.wm_card_by13}
+            ${t.copy46}
+          </div>
+        </article>
+      </div>
+      <div class="wm-refs">
+        ${t.copy47}
+        <ul>
+          ${t.copy48}
+        </ul>
+      </div>
+    </section>
+
     <section class="wm-section wm-story" data-theme="rainbow" id="rainbow" aria-labelledby="wmRainbowTitle">
       <div class="wm-story-head">
-        <p class="wm-index">01 / RAINBOW</p>
+        <p class="wm-index">02 / RAINBOW</p>
         ${t.wmRainbowTitle}
         ${t.copy_chunk}
       </div>
@@ -425,7 +473,7 @@ ${t.window_moments_page}
 
     <section class="wm-section wm-story" data-theme="snow" id="snow" aria-labelledby="wmSnowTitle">
       <div class="wm-story-head">
-        <p class="wm-index">02 / SNOW</p>
+        <p class="wm-index">03 / SNOW</p>
         ${t.wmSnowTitle}
         ${t.copy_chunk2}
       </div>
@@ -490,51 +538,6 @@ ${t.window_moments_page}
         <ul>
           ${t.copy39}
           ${t.copy40}
-        </ul>
-      </div>
-    </section>
-
-    <section class="wm-section wm-story" data-theme="cloud" id="clouds" aria-labelledby="wmCloudsTitle">
-      <div class="wm-story-head">
-        <p class="wm-index">03 / CLOUDS OF FUJI</p>
-        ${t.wmCloudsTitle}
-        ${t.copy_chunk3}
-      </div>
-      <div class="wm-x-gallery is-pair">
-        <article class="wm-card" data-embed="x">
-          ${t.wm_x6}
-            <template><blockquote class="twitter-tweet" data-dnt="true" data-conversation="none"><p lang="ja" dir="ltr">年明けお伊勢さんに向かう新幹線で出逢った素敵な富士山🗻 #富士山 #笠雲 #天使の輪</p>&mdash; 荒木尚子 (@arakihisako) <a href="https://x.com/arakihisako/status/2016315688563179757">元投稿</a></blockquote></template>
-          </div>
-          <div class="wm-card-body">
-            ${t.wm_card_kicker4}
-            ${t.copy41}
-            ${t.wm_card_by11}
-            ${t.copy42}
-          </div>
-        </article>
-        <article class="wm-card is-square" data-embed="youtube" data-video-id="umVREJ5cqHc" data-video-title="富士山のつるし雲 ～新幹線の車窓から～">
-          ${t.wm_facade6}
-          <div class="wm-card-body">
-            ${t.wm_card_kicker5}
-            ${t.copy43}
-            ${t.wm_card_by12}
-            ${t.copy44}
-          </div>
-        </article>
-        <article class="wm-card" data-embed="youtube" data-video-id="g-XR980UakQ" data-video-title="変わった富士山？【笠雲】新幹線からの撮影">
-          ${t.wm_facade7}
-          <div class="wm-card-body">
-            ${t.wm_card_kicker6}
-            ${t.copy45}
-            ${t.wm_card_by13}
-            ${t.copy46}
-          </div>
-        </article>
-      </div>
-      <div class="wm-refs">
-        ${t.copy47}
-        <ul>
-          ${t.copy48}
         </ul>
       </div>
     </section>

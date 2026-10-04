@@ -110,3 +110,19 @@ ${t.copy11}
   .wm-special-grid { grid-template-columns: 1fr; }
   .wm-special-card { min-height: 320px; }
 }
+
+/* Cloud explanations stay in the existing weather story. */
+.wm-cloud-guide { margin: 0 0 26px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); }
+.wm-cloud-guide h3 { margin: 0 0 18px; font-family: var(--font-serif); font-size: 20px; }
+.wm-cloud-compare { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 18px; margin: 0 0 18px; }
+.wm-cloud-compare dt { font-weight: 700; margin-bottom: 8px; }
+.wm-cloud-compare dd { margin: 0; }
+.wm-cloud-guide p, .wm-cloud-compare dd { font-size: 14px; line-height: 1.9; color: var(--ink-soft); }
+.wm-cloud-guide p { margin: 12px 0 0; }
+.wm-cloud-guide a { color: var(--accent); text-underline-offset: 3px; }
+.wm-cloud-look { border-top: 1px solid var(--line); padding-top: 14px; }
+.wm-card-note, .wm-media-head p { font-size: 12.5px; line-height: 1.8; color: var(--ink-soft); margin: 10px 0 0; }
+
+.wm-cloud-details { border-top: 1px solid var(--line); padding-top: 14px; }
+.wm-cloud-details summary { cursor: pointer; font-size: 14px; font-weight: 700; color: var(--ink); }
+.wm-cloud-details summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
