@@ -68,7 +68,7 @@
   // parent overlays the real hero heading and buttons on top of it
   const hero = document.createElement('div');
   hero.id = 'heroFrame';
-  hero.innerHTML = '<img src="assets/photos/fuji-snow.webp" alt="">';
+  hero.innerHTML = '<img src="assets/photos/fuji-snow.webp" srcset="../images/thumbs/20240211_Mt.Fuji.webp 960w, assets/photos/fuji-snow.webp 1920w" sizes="(max-width: 1680px) 100vw, 1680px" alt="">';
   document.body.append(hero);
 
   // transition veil used only for manual chapter jumps

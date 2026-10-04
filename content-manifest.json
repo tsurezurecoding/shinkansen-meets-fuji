@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "6cad0a0d2458b376",
+  "contentVersion": "02aa5150215d31d0",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -139,8 +139,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 57138,
-      "sha256": "32b80a97a6f2b3a3557ddd3ff8b8452c33f53e686b5ddaa8630dd9ed13672f75"
+      "bytes": 57272,
+      "sha256": "0f2b25d4d41126879e0f10b791fac8f33f4112325e44bc888ce67f2673f340b5"
     },
     {
       "path": "en/reflections.html",
@@ -211,8 +211,8 @@
     {
       "path": "hero-cinema.css",
       "url": "https://www.michikusa-travel.com/hero-cinema.css",
-      "bytes": 13888,
-      "sha256": "95b85141c949441ca4925ec1bf235aedcfd3870add41c096d577ebd63f6eee1b"
+      "bytes": 14330,
+      "sha256": "255963b0cf1102f01260cf69ca3b8c7c047d0afb218d5d199981f63809bf2d80"
     },
     {
       "path": "hero-cinema.js",
@@ -589,8 +589,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 61200,
-      "sha256": "104ccfb55c17b52808393d012d93f268a50cd1e70c341152705b971771824614"
+      "bytes": 61334,
+      "sha256": "3820cef533cf2cee3bc2c33e74cf53ef1d204c8edadb65da22576e759b59de46"
     },
     {
       "path": "journal.html",
@@ -872,13 +872,13 @@
       "path": "promo/hero-stage.html",
       "url": "https://www.michikusa-travel.com/promo/hero-stage.html",
       "bytes": 9905,
-      "sha256": "e03e7de9e2eb9d82c84eb5e789777f388a5611b909818ad19f5ab3c89afb34e0"
+      "sha256": "fe469c443cabab6f96a1703f23df5172929289843d6d70eb2e0fed37df14e9a5"
     },
     {
       "path": "promo/hero-stage.js",
       "url": "https://www.michikusa-travel.com/promo/hero-stage.js",
-      "bytes": 10369,
-      "sha256": "9e6e3197eb1d34b1b19510767e40388f1157683af456c837d8a3835f03dbede7"
+      "bytes": 10500,
+      "sha256": "69cef0da9fa0f853ebd491c89cc6fcbb529e6da269a226bf5db715a67334063c"
     },
     {
       "path": "promo/night-cut.css",
