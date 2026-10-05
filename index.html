@@ -547,7 +547,7 @@
 <script>/* Inlined at build time: no extra request, bridge, SDK or install detection. */
 (function () {
   "use strict";
-  var key = "mado-android-invite-v1", root = document.documentElement, claim, card;
+  var key = "mado-android-invite-v1", root = document.documentElement, claim, card, observer, ratio = 0, pending = false;
   var media = window.matchMedia("(display-mode: browser)");
   function browser() {
     var ua = navigator.userAgent || "";
@@ -566,13 +566,16 @@
     return value;
   }
   try {
-    if (!browser()) return;
+    if (!browser() || !("IntersectionObserver" in window)) return;
     var prior = read();
     // Corrupt or unrecognised state also suppresses the invitation.
     if (prior && (prior.stop || typeof prior.until !== "number" || prior.until > Date.now())) return;
-    claim = { until: Date.now() + 7 * 86400000, token: Date.now() + ":" + Math.random() };
-    localStorage.setItem(key, JSON.stringify(claim));
-    if (read().token !== claim.token) return;
+    // Check storage writes without claiming an invitation before it is seen.
+    var probe = key + "-probe-" + Math.random();
+    try {
+      localStorage.setItem(probe, "1");
+      if (localStorage.getItem(probe) !== "1") return;
+    } finally { localStorage.removeItem(probe); }
     root.classList.add("android-invite-eligible");
   } catch (error) { return; } // Storage unavailable: never show a repeatable prompt.
 
@@ -585,7 +588,11 @@
     root.classList.remove("android-invite-eligible");
   }
   function refresh() {
-    try { if (!browser() || read().token !== claim.token || read().stop) hide(); }
+    try {
+      var state = read();
+      if (!browser() || (state && (state.stop || (state.until > Date.now() && (!claim || state.token !== claim.token))))
+          || (claim && (!state || state.token !== claim.token))) hide();
+    }
     catch (error) { hide(); }
   }
   function stop() {
@@ -599,6 +606,30 @@
         entry_source: "android_browser_inline", language: root.lang,
         cta_id: "android_browser_inline", page_context: /guide\.html$/.test(location.pathname) ? "fuji_guide" : "landing"
       });
+    }
+  }
+  function seen() {
+    if (claim || pending || !card || card.inert || ratio < 0.5 || document.visibilityState !== "visible") return;
+    pending = true;
+    function commit() {
+      // Recheck after waiting for another tab. Locks serialize claims where supported.
+      refresh();
+      if (card.inert || ratio < 0.5 || document.visibilityState !== "visible") return;
+      var next = { until: Date.now() + 7 * 86400000, token: Date.now() + ":" + Math.random() };
+      localStorage.setItem(key, JSON.stringify(next));
+      if (read().token !== next.token) { hide(); return; }
+      claim = next;
+      track("android_app_invite_view");
+      observer.disconnect();
+    }
+    if (navigator.locks && typeof navigator.locks.request === "function") {
+      try {
+        navigator.locks.request(key + "-view", commit).then(function () { pending = false; }, function () { pending = false; hide(); });
+      } catch (error) { pending = false; hide(); }
+    } else {
+      // Storage recheck/write/verify is best effort; storage alone is not atomic across tabs.
+      try { commit(); } catch (error) { hide(); }
+      pending = false;
     }
   }
   document.addEventListener("DOMContentLoaded", function () {
@@ -617,17 +648,15 @@
       stop(); track("android_install_click");
       // Preserve the link until the ordinary navigation completes; no redirect or popup.
     });
-    if ("IntersectionObserver" in window) {
-      var observer = new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting && entries[0].intersectionRatio >= 0.5 && !card.inert) {
-          track("android_app_invite_view"); observer.disconnect();
-        }
-      }, { threshold: 0.5 });
-      observer.observe(card);
-    }
+    observer = new IntersectionObserver(function (entries) {
+      ratio = entries[0].isIntersecting ? entries[0].intersectionRatio : 0;
+      seen();
+    }, { threshold: 0.5 });
+    observer.observe(card);
   }, { once: true });
   window.addEventListener("storage", function (event) { if (event.key === key || event.key === null) refresh(); });
   window.addEventListener("pageshow", refresh);
+  document.addEventListener("visibilitychange", function () { refresh(); seen(); });
   if (media.addEventListener) media.addEventListener("change", refresh);
 }());
 </script>

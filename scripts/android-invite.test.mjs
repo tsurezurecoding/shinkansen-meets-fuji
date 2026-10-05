@@ -11,10 +11,10 @@ function run(options = {}) {
   const classes = new Set(), listeners = {}, events = [], values = new Map(options.values || []);
   const card = { style: {}, inert: false, setAttribute() {}, classList: { add() {} },
     querySelector(selector) { return { addEventListener(name, callback) { listeners[selector] = callback; } }; } };
-  const document = { documentElement: { lang: 'ja', classList: { add: x => classes.add(x), remove: x => classes.delete(x) } },
+  const document = { visibilityState: options.hidden ? 'hidden' : 'visible', documentElement: { lang: 'ja', classList: { add: x => classes.add(x), remove: x => classes.delete(x) } },
     addEventListener(name, fn) { listeners[name] = fn; }, querySelector(selector) { return selector === '.android-invite' ? card : { focus() {} }; } };
   const localStorage = { getItem(k) { if (options.readFailure) throw Error('denied'); return values.get(k) || null; },
-    setItem(k, value) { if (options.writeFailure) throw Error('quota'); values.set(k, value); } };
+    setItem(k, value) { if (options.writeFailure) throw Error('quota'); values.set(k, value); }, removeItem(k) { values.delete(k); } };
   const window = { matchMedia: () => ({ matches: !options.standalone, addEventListener() {} }),
     addEventListener(name, fn) { listeners[name] = fn; }, MADO_ANALYTICS_DISABLED: options.analytics !== true,
     gtag(...args) { events.push(args); }, ...options.window };
@@ -24,13 +24,13 @@ function run(options = {}) {
     observe() {}
     disconnect() { listeners.disconnected = true; }
   }
-  if (options.observer) window.IntersectionObserver = Observer;
-  const context = { window, document, navigator: { userAgent: options.ua || android },
+  if (options.observer !== false) window.IntersectionObserver = Observer;
+  const context = { window, document, navigator: { userAgent: options.ua || android, locks: options.locks },
     location: { search: options.search || '', pathname: '/guide.html' }, localStorage, URLSearchParams, Date, Math,
-    ...(options.observer ? { IntersectionObserver: Observer } : {}) };
+    ...(options.observer !== false ? { IntersectionObserver: Observer } : {}) };
   vm.runInNewContext(code, context);
   listeners.DOMContentLoaded?.();
-  return { classes, card, listeners, values, events };
+  return { classes, card, listeners, values, events, document };
 }
 test('Android regular browsers allowed; UA / native / PWA / embedded exclusions fail closed', () => {
   for (const ua of [android, android.replace('Chrome/140.0.0.0', 'Firefox/140.0'), android + ' SamsungBrowser/28.0', android + ' EdgA/140.0']) {
@@ -50,6 +50,9 @@ test('storage refusal, quota and corrupt state never show the invitation', () =>
 });
 test('cooldown across pages and tabs; expiry allows a new invitation', () => {
   const first = run(); assert(first.classes.size);
+  assert.equal(first.values.has(key), false);
+  assert(run({ values: first.values }).classes.size, 'unseen navigation is still eligible');
+  first.listeners.intersection([{ isIntersecting: true, intersectionRatio: 0.5 }]);
   assert.equal(run({ values: first.values }).classes.size, 0);
   assert(run({ values: [[key, JSON.stringify({ until: Date.now() - 1 })]] }).classes.size);
 });
@@ -88,9 +91,30 @@ test('view counts only at 50% visibility; small initial intersection keeps obser
   assert.equal(first.events.length, 0); assert.equal(first.listeners.disconnected, undefined);
   first.listeners.intersection([{ isIntersecting: true, intersectionRatio: 0.49 }]);
   assert.equal(first.events.length, 0);
+  assert.equal(first.values.has(key), false);
   first.listeners.intersection([{ isIntersecting: true, intersectionRatio: 0.5 }]);
   assert.equal(first.events[0][1], 'android_app_invite_view'); assert.equal(first.listeners.disconnected, true);
   const optedOut = run({ observer: true });
   optedOut.listeners.intersection([{ isIntersecting: true, intersectionRatio: 1 }]);
   assert.equal(optedOut.events.length, 0);
+  assert(JSON.parse(optedOut.values.get(key)).until > Date.now(), 'cooldown does not require analytics consent');
+});
+
+test('background view does not claim until visible; missing observer fails closed', () => {
+  assert.equal(run({ observer: false }).classes.size, 0);
+  const first = run({ hidden: true });
+  first.listeners.intersection([{ isIntersecting: true, intersectionRatio: 1 }]);
+  assert.equal(first.values.has(key), false);
+  first.document.visibilityState = 'visible'; first.listeners.visibilitychange();
+  assert(first.values.has(key));
+});
+
+test('lock recheck prevents a competing tab or dismissal from being overwritten', async () => {
+  let commit;
+  const first = run({ locks: { request(name, callback) { commit = callback; return Promise.resolve().then(() => callback()); } } });
+  first.listeners.intersection([{ isIntersecting: true, intersectionRatio: 0.5 }]);
+  assert.equal(first.values.has(key), false);
+  first.values.set(key, JSON.stringify({ stop: true }));
+  await Promise.resolve(); await Promise.resolve();
+  assert(first.card.inert); assert.equal(JSON.parse(first.values.get(key)).stop, true);
 });
