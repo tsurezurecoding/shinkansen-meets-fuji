@@ -3907,6 +3907,9 @@ const SPOTS = [
       ja: "静岡県は長年、全国の荒茶生産量の3〜4割を占めてきた、日本最大級の茶産地です。中でも新幹線が抜ける掛川・菊川・島田・牧之原一帯は、県内でもとりわけ茶園が集中する地域。畑は等高線に沿ってなめらかに並び、細く刈り込まれた畝が丘の起伏をなぞります。畝のあいだにときおり立つ縦長の柱と羽根は防霜ファン（茶園ファン）。冷え込む春先の夜、地表付近に溜まった冷気を上下の空気と混ぜて霜害から新芽を守るための設備です。東京から大阪へ向かうA席側では、掛川の手前で茶畑の奥につま恋リゾート彩の郷の看板が見えます。つま恋リゾート彩の郷は、静岡県掛川市の豊かな自然の中に建つリゾートホテルです。",
       en: "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the tea fields shortly before Kakegawa. Tsumagoi Resort Sainosato is a resort hotel set in the natural surroundings of Kakegawa, Shizuoka.",
     },
+    pageStoryLink: {
+      en: { route: "en/drinks.html#tea", label: "Choose Japanese teas for your journey →" },
+    },
     explainer: {
       heading: { ja: "新緑の畝、その上に立つ扇風機", en: "And what are the fans above the rows?" },
       ja: [
@@ -4070,7 +4073,7 @@ const SPOTS = [
     },
     "pageTitle": {
       "ja": "大塚製薬 袋井工場｜新幹線から見えるポカリスエットの青い工場 | 新幹線の窓",
-      "en": "What Is Pocari Sweat? Otsuka's Blue Factory from the Shinkansen"
+      "en": "Pocari Sweat: A Drink for Your Japan Trip"
     },
     "pageHeading": {
       "ja": "芝の丘に青い壁——大塚製薬のポカリスエット工場",
@@ -4089,15 +4092,30 @@ const SPOTS = [
     },
     "metaDescription": {
       "ja": "東海道新幹線の掛川〜浜松、A席側の芝の丘に見える青い壁は大塚製薬 袋井工場。ポカリスエットをつくる工場です。「ポカリスエット」の名前の意味と青い色の由来、隣のポーラ袋井工場、車窓での見つけ方を写真で紹介します。",
-      "en": "Pocari Sweat is a Japanese drink made to replace the water and electrolytes lost in sweat. See Otsuka's blue Pocari Sweat factory in Fukuroi from Seat A between Kakegawa and Hamamatsu, and learn where the name comes from."
+      "en": "Get to know Pocari Sweat for your Japan trip, from its blue bottle to the factory beside the Shinkansen. Explore more Japanese drinks for the journey."
     },
     "sectionHeading": {
       "ja": "ポカリスエットをつくる青い工場",
-      "en": "Where Pocari Sweat is made"
+      "en": "What is Pocari Sweat?"
     },
     "pageStory": {
       "ja": "芝生の斜面の上に横長に続く建物は、大塚製薬の袋井工場です。1996年5月に操業を始め、敷地は約9万3千平方メートル。東西に長い敷地が東海道新幹線に沿った小高い丘の上にあり、主にポカリスエットのペットボトルを製造しています。ポカリスエット イオンウォーター、ボディメンテ、アミノバリューもここでつくられる製品です。大塚製薬は、芝の斜面とポカリスエットのイメージカラーの外観を、新幹線の車窓から楽しめる工場として紹介しています。\n\nポカリスエットは1980年に発売されました。開発のきっかけは、「汗の飲料はできないか」という提案です。汗をかくと、水分だけでなくナトリウムやカリウムなどの電解質も失われます。それを補う飲み物にするため、体液の浸透圧に着目して糖分を一般的なジュースの約半分に抑え、電解質の苦みを消すために1000種類以上の試作を重ねました。発売当初は「まずい。薄い。売れっこない」とまで言われましたが、野球場や陸上競技場、サウナなど汗をかく場所で試飲を配り、発売の翌年に大きく広がりました。\n\n英語を話す人が驚きやすい名前にも理由があります。「スエット（sweat）」は英語の「汗」で、身体から目に見えて失われる汗を表し、水分とイオンの大切さを訴える言葉です。「ポカリ」は軽く明るい響きを選んだ言葉で、特別な意味はありません。青と白の配色も、発売当時の飲料では「オイル缶みたい」と言われたほど異例でした。それでも、商品の本質である水と電解質の補給を表す色として採用され、40年以上ほとんど変わっていません。車窓の青い壁は、その配色をそのまま大きくした看板です。",
-      "en": "The long building above the grassy slope is Otsuka Pharmaceutical's Fukuroi Plant. It began operating in May 1996 on a site of about 93,000 square meters. The site stretches east to west on a low hill beside the Tokaido Shinkansen, and the plant mainly makes PET bottles of Pocari Sweat. Pocari Sweat Ion Water, Body Mainte and Amino-Value are also made here. Otsuka describes the grassy slope and the building in Pocari Sweat's signature colors as something passengers can enjoy from the Shinkansen.\n\nPocari Sweat went on sale in 1980. It began with a proposal for a 'sweat drink' (ase no inryo). When you sweat, you lose not only water but also electrolytes such as sodium and potassium. To make a drink that replaces them, the developers looked at the osmotic pressure of body fluids, kept the sugar to about half that of a typical juice, and made more than 1,000 prototypes to remove the bitterness of the electrolytes. At launch it was dismissed as bland and unappealing, but Otsuka handed out samples where people sweat—at baseball stadiums, athletics tracks and saunas—and it took off the following year.\n\nThe name that surprises English speakers has its own logic. 'Sweat' stands for the visible fluid the body loses, a way of stressing the importance of water and ions; the drink replaces what sweat takes away. 'Pocari' was chosen for its light, bright sound and has no particular meaning. The blue-and-white design was just as unusual for a drink at the time—some said it looked like an oil can—but it was adopted to express water and electrolyte replenishment and has barely changed in more than 40 years. The blue wall seen from the train is that color scheme at building scale."
+      "en": "Pocari Sweat is a Japanese sports drink made by Otsuka Pharmaceutical to replenish water and electrolytes lost through sweating. Its ingredients include sugars, fruit juice and salts such as sodium and potassium. Despite the unusual English name, it does not contain sweat: it is a drink designed to replace what you lose when you perspire. Look for the blue-and-white bottle shown here when choosing a drink for your journey.\n\nWhy the name? 'Sweat' refers to perspiration and the water and ions the drink is designed to replace. 'Pocari' was chosen for its light, bright sound; it has no particular meaning. The familiar blue-and-white design expresses water and electrolyte replenishment. Those same colors become a much larger landmark outside the train window.\n\nThe long building above the grassy slope is Otsuka Pharmaceutical's Fukuroi Plant. It began operating in May 1996 on a site of about 93,000 square meters. The site stretches east to west on a low hill beside the Tokaido Shinkansen, and the plant mainly makes PET bottles of Pocari Sweat. Pocari Sweat Ion Water, Body Mainte and Amino-Value are also made here. Otsuka describes the grassy slope and the building in Pocari Sweat's signature colors as something passengers can enjoy from the Shinkansen.\n\nPocari Sweat went on sale in 1980. It began with a proposal for a 'sweat drink' (ase no inryo). When you sweat, you lose not only water but also electrolytes such as sodium and potassium. To make a drink that replaces them, the developers looked at the osmotic pressure of body fluids, kept the sugar to about half that of a typical juice, and made more than 1,000 prototypes to remove the bitterness of the electrolytes. At launch it was dismissed as bland and unappealing, but Otsuka handed out samples where people sweat—at baseball stadiums, athletics tracks and saunas—and it took off the following year."
+    },
+    "pageStoryFigure": {
+      "en": {
+        "src": "images/drinks/20261004-pocari-michikusa.webp",
+        "alt": "A Pocari Sweat bottle with its blue label and white wave design",
+        "caption": "The bottle's blue-and-white design also marks the Fukuroi plant.",
+        "owner": "michikusa",
+        "creditRequired": false,
+        "date": "2026-10-04",
+        "width": 720,
+        "height": 1280
+      }
+    },
+    "pageStoryLink": {
+      "en": { "route": "en/drinks.html#brand-pocari", "label": "Explore Japanese drinks for your journey →" }
     },
     "explainer": {
       "heading": {
@@ -4113,7 +4131,7 @@ const SPOTS = [
       "en": [
         "In the photograph, a grassy slope rises beyond the trackside fence and trees, with the plant stretched along the top. The blue wall on the right carries white POCARI SWEAT lettering and the white wave familiar from the bottles. Another blue wall on the left frames the silver buildings between the two.",
         "Look for the grassy slope first. The site is long from east to west, so the buildings on the slope run parallel to the tracks. Once you see the blue wall and white letters, you have found the Pocari Sweat plant. Trees and overhead-line poles can hide it for a moment.",
-        "At night the wall sign is lit, so the blue wall and lettering float above the dark hill. This photograph was taken on a cloudy day, and we have not yet photographed the night view.",
+        "At night the wall sign is lit, so the blue wall and lettering float above the dark hill. The photograph above shows the plant on a cloudy day.",
         "The plant runs free tours from Tuesday to Friday (excluding holidays and the New Year period), with a gallery view of the Pocari Sweat production line. Tours require advance reservations and are conducted in Japanese only; visitors who do not speak Japanese must bring a Japanese-speaking interpreter. Check Otsuka's guide in the references for current dates and booking periods."
       ]
     },
@@ -4145,6 +4163,11 @@ const SPOTS = [
     ],
     "references": [
       {
+        "languages": ["en"],
+        "label": { "en": "Otsuka Pharmaceutical: Pocari Sweat ingredients and product information" },
+        "url": "https://www.otsuka.co.jp/en/nutraceutical/products/pocarisweat/"
+      },
+      {
         "label": {
           "ja": "大塚製薬：袋井工場（バーチャル工場見学）",
           "en": "Otsuka Pharmaceutical: Fukuroi Plant virtual tour (Japanese)"
@@ -4168,9 +4191,9 @@ const SPOTS = [
       {
         "label": {
           "ja": "大塚製薬：「ポカリスエット」のネーミングの由来",
-          "en": "Otsuka Pharmaceutical: where the name Pocari Sweat comes from (Japanese)"
+          "en": "Otsuka Pharmaceutical: why it is called Pocari Sweat"
         },
-        "url": "https://www.otsuka.co.jp/faq/pocarisweat/01.html"
+        "url": { "ja": "https://www.otsuka.co.jp/faq/pocarisweat/01.html", "en": "https://www.otsuka.co.jp/en/faq/pocarisweat/01.html" }
       },
       {
         "label": {

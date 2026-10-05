@@ -1832,7 +1832,7 @@ function sitemapXML() {
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
-    lastmod: spotLastmodOverrides[spot.id] || "2026-08-02",
+    lastmod: lang === "en" && ["pocari-fukuroi", "shizuoka-tea-fields"].includes(spot.id) ? (spot.id === "pocari-fukuroi" ? "2026-10-06" : "2026-10-05") : spotLastmodOverrides[spot.id] || "2026-08-02",
   })));
   const sanyoUrls = SANYO_DETAIL_CASTLES.flatMap(castle => ["ja", "en"].map(lang => ({
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
