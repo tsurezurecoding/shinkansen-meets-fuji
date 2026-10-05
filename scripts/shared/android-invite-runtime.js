@@ -38,12 +38,13 @@
     root.classList.add("android-invite-eligible");
   } catch (error) { return; } // Storage unavailable: never show a repeatable prompt.
 
-  function hide() {
+  function hide(collapse) {
     if (!card) return;
-    // Keep the footprint in this document: dismissal/storage/BFCache cause no shift.
+    // Non-user storage/BFCache updates retain the footprint; direct dismissal collapses it.
     card.style.visibility = "hidden";
     card.setAttribute("aria-hidden", "true");
     card.inert = true;
+    if (collapse) card.style.display = "none"; // Direct user action may collapse its own document.
     root.classList.remove("android-invite-eligible");
   }
   function refresh() {
@@ -54,8 +55,8 @@
     }
     catch (error) { hide(); }
   }
-  function stop() {
-    try { localStorage.setItem(key, JSON.stringify({ stop: true })); }
+  function stop(play) {
+    try { localStorage.setItem(key, JSON.stringify(play ? { stop: true, reason: "play" } : { until: Date.now() + 30 * 86400000, reason: "dismiss" })); }
     catch (error) { /* This document still stays hidden. Future storage failure fails closed. */ }
   }
   function track(name) {
@@ -97,17 +98,21 @@
     // Retain space even when another tab dismisses between head parsing and DOM ready.
     card.classList.add("android-invite-reserved");
     refresh();
+    if (!card.inert) card.querySelectorAll("img[data-invite-src]").forEach(function (img) {
+      img.addEventListener("load", function () { if (img.classList.contains("android-invite-badge")) img.parentElement.classList.add("android-invite-badge-loaded"); });
+      img.src = img.getAttribute("data-invite-src");
+    });
     card.querySelector("button").addEventListener("click", function () {
-      stop(); track("android_app_invite_dismiss");
+      stop(false); track("android_app_invite_dismiss");
       var section = card.nextElementSibling;
       var next = section && section.querySelector("h2");
       if (next) next.setAttribute("tabindex", "-1");
       else next = document.querySelector(".footer a");
       if (next) next.focus({ preventScroll: true });
-      hide();
+      hide(true);
     });
     card.querySelector("a").addEventListener("click", function () {
-      stop(); track("android_install_click");
+      stop(true); track("android_install_click");
       // Preserve the link until the ordinary navigation completes; no redirect or popup.
     });
     observer = new IntersectionObserver(function (entries) {

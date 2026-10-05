@@ -1,83 +1,37 @@
-# Androidブラウザ向けアプリ案内（未公開）
+# Androidブラウザ向けアプリ案内（レビュー中・本番未公開）
 
-2026-10-04、`codex/android-browser-invite-1004`。基準main: `06f09a96`。
+JA/EN TOP・富士山ガイドの既存ヒーロー直後に小さな閉じられる案内を配置。本文に入る流れで公開中アプリの利点を伝える。固定バナー・モーダル・自動遷移は使わない。既存記事、title、canonical、構造化データを維持し、main PR63のE席訂正も含む。
 
-## 採用案と公開版の根拠
+## 公開版と紹介内容
 
-日英TOPと富士山ガイドのヒーロー直後に、通常フローの小さな閉じられる案内を1つ追加する。ページの導入から乗車中の実際の利点へつなぎ、列車選択・ライブ操作を妨げず、既存のアプリ紹介カードと重複するstartやスポット共通枠は増やさない。ヒーロー前への挿入、固定表示、モーダル、自動遷移、ネイティブインストールプロンプトは使わない。
+運営正本 reports/2026-10-04_android-production-release.md / root 4a134a7 に、Android 1.0.21-vc24を10/4 22:40 JST、178国・地域へ公開した記録がある。公開mobile 9d3374f、紹介ページ、live説明、既存foreground service検証を照合。紹介は「画面を消しても乗車中の音声案内が続く」「無料・登録不要」に限定し、未公開PUSH機能は含めない。Console記録に基づく確認で、全端末のストア反映・インストール済み判別は保証しない。
 
-運営正本 `reports/2026-10-04_android-production-release.md` / root `4a134a7` は、1.0.21-vc24の製品版を10/4 22:40 JSTに178国・地域へ正式公開したと記録。公開コードはmobile `9d3374f`、固定Web `8e6cf8e9`＋`346c72bc`。公開中紹介ページ、同梱liveの「画面を消しても案内と音声が続きます」、foreground serviceの既存検証を照合した。紹介文は画面消灯中の乗車音声案内・無料・登録不要だけ。新着PUSHや後続未公開機能は訴求しない。Play配信反映は端末ごとに時間差があり得る。今回Playストアはブラウズツールから取得できず、上記の最新Console確認記録を根拠にした。
+## 表示と抑制
 
-Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&utm_source=shinkansen_window_web&utm_medium=android_browser_inline&utm_campaign=android_app_invite
+- Androidの既知通常ブラウザのみ。既知bot、WebView、SNS内ブラウザ、native/embedded marker、iframe、明示的standalone等を除外。matchMediaのbrowser=false単独はインストール済みの証拠ではないため除外理由にしない。UA/APIはbest effort。
+- 初期read/write・quota・破損状態・IntersectionObserverなしは非表示。localStorageが使えない訪問で繰り返す案内を出さない。保存可能かの短命probeで確認し、読み込みだけでは期間を開始しない。
+- 可視タブで案内の50%以上がviewportに入った時点から7日間抑制。解析同意とは独立。Web Locksで同originの閲覧確保を直列化し、非対応環境は再読込/write/token照合によるbest effort。同時表示を完全保証しない。
+- 「閉じる / 30日間」「Later / 30 days」は閉じた時点から30日間、同originの全ページ/タブで抑制。期限ちょうどで再表示可能。通常の再訪には空枠を作らない。旧版のstop:true保存は期限なし抑制として引き続き尊重する。
+- Playクリック後は期限なしのstop:true、reason:play。ストア往復で繰り返し勧誘しない。ブラウザ保存データを消すと抑制も消える。インストール完了を検知した状態ではない。
+- 直接「閉じる」を押した文書ではカードと余白をdisplay:noneで消す。次の本文h2にpreventScrollでフォーカス移動。明示的操作による縮みと初期/非操作CLSを区別する。他タブのstorage通知・BFCacheの状態反映ではその文書の高さを保ち、操作中の本文が不意に動くのを防ぐ。次の読み込みでは空枠なし。
+- 保存失敗時も現在のカードは閉じる。閲覧済み7日間が残る場合はそれを維持。保存不能時のブラウザをまたぐ永続性は保証できない。
 
-固定のUTM source/medium/campaignを通常のストアURLに追加し、Play側にも公開キャンペーン情報を渡す。個人情報や位置、保存トークンは付けない。Play Consoleの[公式UTM source/campaign定義](https://support.google.com/googleplay/android-developer/answer/9859173?hl=en)に従う。Install Referrer SDKやfirst-launch帰属の実装は追加しない。
+## 画像・速度・アクセシビリティ
 
-## 表示・頻度・操作
+公式Google PlayバッジJA/ENと既存承認済みapp-icon-192.webpを使用。バッジ646×250の元PNGを変更せず、176px幅で比率維持。画像自身にある周囲余白をクロップしない。アイコン48×48、バッジの寸法をHTML/CSSで先に確保。画像ロード失敗時もGoogle Play文字リンクが表示され、リンクのaria-labelは常時提供する。closeは44px以上、focus-visible、装飾画像alt空、キーボード操作可、print非表示。
 
-- Android UAかつ既知の通常ブラウザ、明示的なアプリ表示モードなし、トップレベルのページだけ。Android Chrome形式のGooglebotを含む既知crawler、wv / Version 4.0、既知SNS内ブラウザ、Capacitor、MADO_NATIVE_APP、embedded marker、iframe、standaloneを除外する。bot除外は案内だけで、主要本文は同一。
-- UA等はbest effort。インストール済みでも通常ブラウザを開けば表示し得る。未対応のinstalled-related-apps APIを未インストール確認済みと扱わない。双方向関連付けが必要なAPIやネイティブ側変更は追加していない。
-- 初回描画前は既存の抑止を読み、短命の別キーで保存可否だけ確認する。未閲覧のページ読み込み・再訪では7日間の抑止を記録しない。案内が可視タブのviewportに50%以上入った時点で7日間を開始し、表示イベントの閾値も同じにする。解析同意なしでもUIの抑止を保存する。IntersectionObserverが利用不能なら非表示。
-- 対応ブラウザではWeb Locksで同じoriginの閲覧確保を直列化し、待機後にも状態と可視性を再確認する。先に閲覧したタブを残し、他タブはstorageイベントで高さを保って非表示にする。Web Locks非対応では保存直前の再読込・書込・token照合によるbest effortで、極めて同時の表示まで完全排除とは約束しない。
-- 閉じる／Playクリック後は期限なしの抑止状態を保存し、同じoriginのJA/EN・複数ページ・タブ・再訪で共有。保存データが消去されれば抑止もリセットされる。閉じるボタンの読み上げは「今後表示しない」を明示。
-- 初期read/write失敗・quota・破損状態、閲覧確保時の保存／lock失敗は非表示。閲覧後にdismiss保存だけが失敗した場合もその文書は閉じたままで、保存済み7日間の抑止は残る。保存不能時にブラウザを跨ぐ永続抑止を保証することはできない。
-- 閉じた直後・他タブの状態変更・BFCache復帰では同じ文書の高さを保持して不可視/inertにする。下の本文やリンクを動かさず誤タップを避け、閉じる操作後は既存フッターの最初のリンクへpreventScrollでフォーカスを移す。次のナビゲーションでは枠自体を表示しない。
-- リンクは通常の同一タブPlay遷移。戻る操作で本文へ戻れる。タップ領域44px以上、自然な折返し、キーボード操作、focus-visible、print時非表示。
+画像のsrcは対象者だけDOMContentLoadedで設定し、非Android/抑制中には案内画像の要求を追加しない。対象Androidのみ低優先度の画像2件（JAバッジ40,674B / EN 4,904B、アイコン5,594B）を追加する。新規SDK/JS/CSSリクエスト/追跡/PWA・service-worker変更はなし。画像を除く小さな同期判定/インラインCSSはHTML増分がある。既存manifest生成器で再生成する。Web資産追加が将来Androidへ同期される場合は既存mobile側資産ゲートで確認するが、今回はAPK/Playの変更対象ではない。
 
-## SEO・速度・配布
-
-既存の記事本文・title・canonical・meta・構造化データ・既存リンクは維持する。main内のヒーロー直後にasideを追加。JSなしと非対象端末では案内を表示しない。初期HTMLに存在し、遅延挿入しない。同期の小さな判定とCSS/ハンドラをビルド時にインライン化し、新しいJS/CSS/画像リクエスト・SDK・サービスワーカー変更を増やさない。
-
-従前34bea16時点のHTML増分は約6.3KB、gzip増分はJA TOP 2,261B、EN TOP 2,153B、JA guide 2,670B、EN guide 2,410B（従前候補のローカル圧縮比較、実配信量ではない）。案内の原本は `scripts/shared/android-invite.mjs` と `android-invite-runtime.js`。`generate-android-invite.mjs` がJA TOPと日英guideを同期、既存TOP生成器がENをローカライズする。build/checkへ登録済み。`content-manifest.json`は既存生成器で再生成し、新たな実行時依存ファイルはない。Androidへの次回Web同期にも新規asset登録は不要だが、実APKの今回は未変更・未検証。表示除外はWebView/Capacitor markerで検証した。
-
-Googleの[低侵襲な案内の指針](https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials)に沿う小さなHTMLストア導線。SEOへの影響ゼロや実端末全条件の検出を保証しない。
+公式根拠: [Android marketing tools](https://developer.android.com/distribute/marketing-tools/brand-guidelines)、[Google Play badge guidelines](https://partnermarketinghub.withgoogle.com/brands/google-play/google-play/lockups-icons-badges/)。公式公開配布の[JA画像](https://play.google.com/intl/en_us/badges/static/images/badges/ja_badge_web_generic.png) / [EN画像](https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png)を取得。最低バッジ高1/4のclear space、言語整合、コントラスト、非変形/非切抜きを確認。サインインが必要な最新download hubとの版一致・Googleによる個別ブランド審査を完了したとは主張しない。
 
 ## 計測
 
-既存 `MADO_ANALYTICS_DISABLED === false` とgtagがある場合だけ記録し、解析を初期化しない。既存のlocal preview/GA optout設定を保持。保存トークン、位置情報、ユーザーIDはイベントへ送らない。
+既存MADO_ANALYTICS_DISABLED===falseかつgtagが存在するときのみ、android_app_invite_view（50%可視・文書1回）、android_app_invite_dismiss、既存android_install_clickを記録。language/page_context/cta_id/entry_sourceで区別。**Playクリックはインストール完了ではない**。解析を初期化しない、保存token/位置/個人情報を送らない。Playリンクは既存固定公開UTM source=shinkansen_window_web、medium=android_browser_inline、campaign=android_app_invite。Install Referrer SDKは追加しない。
 
-- `android_app_invite_view`: 50%以上がviewportへ入ったときに文書中1回。thresholdだけでなくintersectionRatio >= 0.5を明示し、微小交差では計測もobserver切断もしない。IntersectionObserver未対応なら表示計測を省く。
-- `android_install_click`: 既存のPlayクリックイベントを利用。`entry_source=android_browser_inline`、`cta_id=android_browser_inline`、language、page_contextで区別。**クリックであってインストール完了ではない。**
-- `android_app_invite_dismiss`: 閉じる操作。
+## 検証と公開範囲
 
-効果の分母は対象Android通常ブラウザ・実表示・Playクリックを別々に扱う。既存GAの「Web」全sessionsはAndroid通常ブラウザ限定の母数ではない。クリックからinstall/first launchを推定しない。「installが少ない」は依頼者の現状認識であり、今回新たに計測したinstall数ではない。運営残件13の既存観察にこの導線のsourceを加えればよく、新規Install Referrerや別解析基盤は追加していない。
+最新の実行結果・スクリーンショットは同じowner-only private preview成果物に保存。npm run build / verify、unit 12群、JA/EN 4ページ×320/390/1440、初期CLS、閉じた後の余白消失/次h2フォーカス、30日境界/再訪、Play永続抑制、別ページ/タブ・戻る、非Android/WebView/storage失敗、画像取得失敗のリンク継続、既存本文/metadataを確認。EdgeでAndroid UAを指定したブラウザ検証であり、最新画像付き変更をPixel実機/TalkBackで検証済みとは主張しない。
 
-## 従前34bea16までの検証
+ローカルLCP/CLS比較はbadge-invite-browser-results.json。LCPは端末/回線/キャッシュでばらつく測定でフィールド回帰ゼロを保証しない。Googleの[低侵襲案内の方針](https://developers.google.com/search/docs/appearance/avoid-intrusive-interstitials)に沿う通常フローのリンクだがSEO影響ゼロを保証しない。
 
-`npm run verify`成功（既存generator 41件・narration 450項目・service worker 2件、最終inviteテスト7群。site auditは0 errors / 既存5 warnings / 8 allowed）。`npm run build`による対象差分の再生成も不変。レビュー追補で小交差→50%以上の計測、Android Chrome形式Googlebot、MADO_NATIVE_APP、固定UTMを4ページで再確認する。保存済みスクリーンショットの見た目はこの追補でも変わらず、撮り直していない。
-
-Edge Chromiumの実ブラウザで27シナリオと追加5シナリオを確認。AndroidのJA/EN×TOP/guide×320/390/1440px、横あふれなし、カード220px未満、44pxタップ領域、閉じる・再訪・複数ページ/タブ・戻る進む・期限切れ・他タブからstorage変更・BFCache・キーボード・Playクリック/表示計測・GA無効時の抑制・storage read/write failure・noJS・iPhone/PC/bot/WebView/Instagram/standalone/Capacitor/from markerの非表示を検証。初期・スクロール後・閉じた後の枠/フッター位置も確認。
-
-390px・同じローカル配信/資産の変更前後比較:
-
-| ページ | LCP変更前→後（ms） | CLS変更前→後 |
-|---|---:|---:|
-| JA TOP | 228→216 | 0→0 |
-| EN TOP | 224→244 | 0→0 |
-| JA guide | 480→496 | 0→0 |
-| EN guide | 324→356 | 0→0 |
-
-mainテキスト・title・canonical・mainの初期位置・リソース要求リストは4ページとも一致。追加リクエストなし。LCPはローカルの非スロットル単回比較で、回線/端末の実測改善や回帰ゼロの証明ではない。HTMLの小さな増分はある。新規レイアウトシフトは観測しなかった。実Android端末・TalkBack・実Play遷移/インストール・公開後SEO効果は未検証。
-
-根拠と12スクリーンショットはPC workspace `C:/Users/kynr0/Documents/Codex/2026-10-04/task-5/evidence/`。再現スクリプトは同workspace `browser-qa.cjs`、`browser-supplement.cjs`。閲覧用 `review.html`。共有の運営台帳には他担当dirty差分があるため今回上書きしない。
-
-この差分はdraft PRのレビューまで。merge・Pages公開・Androidビルド/Play提出は未実施。公開する場合は対象SHAの承認と既存公開バッチのゲートを通す。
-
-## 2026-10-05 未閲覧抑制の修正
-
-未閲覧の初回読込だけで7日間抑止されるUX欠陥を修正。可視タブで50%以上の閲覧時だけ保存し、初回描画の枠・本文・CSS・Play URLは維持する。短命probeで保存可否を確認し、閲覧時にも再読込・保存・token確認を行う。Web Locksで同時タブの閲覧確保を直列化する。解析gateはイベント送信だけを制御し、同意なしでも7日間の抑止が働く。
-
-全体build/verify成功（既存audit 0 errors / 5 warnings / 8 allowed）。単体9群、Edge実ブラウザ9群：日英TOP/guideの未閲覧reload、実際の50%以上閲覧、7日後期限、dismiss、実際の50%未満、解析なしの保存、320px・CLS <0.01、複数タブ、lock拒否、storage quota、Playと戻るを確認。CSSとasideは変更なし。旧計測値・スクリーンショットは上記の従前候補の根拠として保持する。新証跡はPC workspace seen-cooldown-browser-results.json / evidence/seen-cooldown-320.png。実機Chrome・TalkBack・本番配信性能は未検証。
-
-## 2026-10-05 display-modeの過剰除外修正
-
-委任された実機スクショの内容では、Chrome通常UIでAndroid/UA/top-level/storageは通過し、browserモードだけfalseだった。他モードの実測やChromeの不具合は未確認。browser=trueを必須にする過剰排除をやめ、standalone/fullscreen/minimal-ui/window-controls-overlay/picture-in-picture/tabbedが明示的にtrue、またはnavigator.standaloneのとき除外する。未知/未対応/例外のmode APIだけでは除外せず、Android/UA/WebView/native/frame/bot/storage/可視性のガードは保持する。API未対応時にPWAの完全判別は保証できない。
-
-単体11群、全体build/verify成功。W3C [display modes](https://www.w3.org/TR/appmanifest/#display-modes)はapplied modeとUI表現を扱い、通常ブラウザの見た目だけで実測modeを断定しない。preview診断には各queryのmatches/media、API利用可否、例外とnavigator.standaloneを表示し、データは送信しない。ブラウザでの注入テストは挙動の検証であり実機での発生原因の再現ではない。
-
-## 2026-10-05 ヒーロー直下への配置変更
-
-実機で判定と表示が確認された後、発見しやすいヒーロー直後の小さなインライン案内へ移動。POPUP/modal/overlayは採用しない。既存カードのCSS・公開機能に基づく文言・44px操作域を保持する。静的HTMLの位置を生成時に確定し、対象判定はheadで初期描画前に行う。閉じる/他タブ抑止では現在文書の枠を残し、閉じる後のフォーカスは続く本文のh2へpreventScrollで移す。次の読込では抑止時の枠を出さない。614c6591のmode判定、50%以上閲覧から7日、dismiss/Playの期限なし抑止を維持。最新main dfb67b70（PR63 E席修正）を競合なく取り込み、別担当差分は触らない。
-
-build/verifyと単体12群成功。実ブラウザ16群：4ページ×320/390/1440、位置、overflow、44px既存操作域、閉じた枠・h2フォーカス・再訪、非Android/WebView/storage失敗、記事本文（aside除外）/title/canonical保持を確認。ヒーロー寸法と要求素材を維持。4ページ各variant 3回のlocal Edge測定はCLS全て0。LCP中央値はJA TOP 356→608ms / EN TOP 312→264 / JA guide 572→512 / EN guide 440→404。JA TOPの遅い測定を切り分ける交互比較（warmup除外、各5回）では476→376msで、一貫した悪化を再現しなかった。測定ばらつきがあり、実端末/実配信の性能改善は保証しない。
-
-証跡はPC workspace hero-invite-browser-results.json / hero-lcp-focused-results.json、evidence/hero-invite-* 12枚とhero-context-* 3枚。レビュー用draft更新とowner-only previewのみ。製品mainへのmerge/公開なし。
+Git保存・draft PR62と既存owner-only Site確認まで。本番main merge/deploy、APK作成/Play提出は未承認・未実施。

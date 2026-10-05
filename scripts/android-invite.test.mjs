@@ -9,7 +9,7 @@ const key = 'mado-android-invite-v1';
 const android = 'Mozilla/5.0 (Linux; Android 15; Pixel 8) AppleWebKit/537.36 Chrome/140.0.0.0 Mobile Safari/537.36';
 function run(options = {}) {
   const classes = new Set(), listeners = {}, events = [], values = new Map(options.values || []);
-  const card = { style: {}, inert: false, setAttribute() {}, classList: { add() {} },
+  const card = { style: {}, inert: false, setAttribute() {}, classList: { add() {} }, querySelectorAll() { return []; },
     querySelector(selector) { return { addEventListener(name, callback) { listeners[selector] = callback; } }; } };
   const document = { visibilityState: options.hidden ? 'hidden' : 'visible', documentElement: { lang: 'ja', classList: { add: x => classes.add(x), remove: x => classes.delete(x) } },
     addEventListener(name, fn) { listeners[name] = fn; }, querySelector(selector) { return selector === '.android-invite' ? card : { focus() {} }; } };
@@ -26,7 +26,7 @@ function run(options = {}) {
   }
   if (options.observer !== false) window.IntersectionObserver = Observer;
   const context = { window, document, navigator: { userAgent: options.ua || android, locks: options.locks, standalone: options.navigatorStandalone },
-    location: { search: options.search || '', pathname: '/guide.html' }, localStorage, URLSearchParams, Date, Math,
+    location: { search: options.search || '', pathname: '/guide.html' }, localStorage, URLSearchParams, Date: options.now === undefined ? Date : { now: () => options.now }, Math,
     ...(options.observer !== false ? { IntersectionObserver: Observer } : {}) };
   vm.runInNewContext(code, context);
   listeners.DOMContentLoaded?.();
@@ -56,9 +56,15 @@ test('cooldown across pages and tabs; expiry allows a new invitation', () => {
   assert.equal(run({ values: first.values }).classes.size, 0);
   assert(run({ values: [[key, JSON.stringify({ until: Date.now() - 1 })]] }).classes.size);
 });
-test('dismiss stays hidden, preserves footprint, suppresses later pages; analytics optout is honoured', () => {
+test('dismiss collapses its row and suppresses exactly 30 days; analytics optout is honoured', () => {
   const first = run(); first.listeners.button();
   assert.equal(first.card.style.visibility, 'hidden'); assert(first.card.inert);
+  assert.equal(first.card.style.display, 'none');
+  const state = JSON.parse(first.values.get(key));
+  assert.equal(state.reason, 'dismiss');
+  assert.equal(run({ values: first.values, now: state.until - 1 }).classes.size, 0);
+  assert(run({ values: first.values, now: state.until }).classes.size);
+  assert(Math.abs(state.until - Date.now() - 30 * 86400000) < 1000);
   assert.equal(first.events.length, 0);
   assert.equal(run({ values: first.values }).classes.size, 0);
   const tracked = run({ analytics: true }); tracked.listeners.button();
@@ -66,6 +72,8 @@ test('dismiss stays hidden, preserves footprint, suppresses later pages; analyti
 });
 test('Play click is a click only; BFCache / other-tab stop hides without shifting', () => {
   const first = run({ analytics: true }); first.listeners.a();
+  assert.equal(JSON.parse(first.values.get(key)).reason, 'play');
+  assert.equal(run({ values: first.values, now: Date.now() + 365 * 86400000 }).classes.size, 0);
   assert.equal(first.events[0][1], 'android_install_click');
   first.listeners.pageshow(); assert.equal(first.card.style.visibility, 'hidden');
   const second = run(); second.values.set(key, JSON.stringify({ stop: true }));
@@ -77,7 +85,7 @@ test('generated blocks are deterministic and localized; metadata and original ma
     const html = withAndroidInvite(base, lang);
     assert.equal(withAndroidInvite(html, lang), html);
     assert(html.includes('<title>Keep me</title>')); assert(html.includes('<main>Keep body</main>'));
-    assert(html.includes(lang === 'en' ? '>Google Play</a>' : 'Google Playで見る'));
+    assert(html.includes(lang === 'en' ? '>Google Play</span>' : 'Google Playで見る'));
     const href = html.match(/<a href="([^"]+)"/)[1].replaceAll('&amp;', '&');
     const url = new URL(href);
     assert.equal(url.origin, 'https://play.google.com');
