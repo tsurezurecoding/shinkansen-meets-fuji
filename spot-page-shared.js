@@ -20,6 +20,7 @@
       more: "もっと見る",
       about: "新幹線の窓とは",
       forecast: "富士山 見える予報",
+      artworks: "車窓の作品集",
       sumie: "墨絵車窓",
       somato: "車窓走馬灯",
       links: "リンク集",
@@ -78,6 +79,7 @@
       more: "More",
       about: "About this app",
       forecast: "Visibility β",
+      artworks: "Window Artworks",
       sumie: "Sumie Window",
       somato: "Window Journey",
       links: "Links",
@@ -129,8 +131,7 @@
     ja: [
       { label: "MT. FUJI", title: "富士山を見る", desc: "5つの区間、座席側、曇りの日の見え方を確認。", href: "guide.html", img: "images/thumbs/content-faq.webp" },
       { label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
-      { label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
-      { label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。", href: "somato.html", img: "images/thumbs/content-somato.webp" },
+      { label: "ARTWORKS", title: "車窓の作品集", desc: "写真や墨絵で、車窓の別の表現を楽しむ。", href: "window-artworks.html", img: "images/thumbs/content-somato.webp" },
       { label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
       { label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。", href: "references.html", img: "images/thumbs/20260616_fuji_sttraveler.webp" },
       { label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。", href: "contact.html", img: "images/thumbs/content-contact.webp" }
@@ -139,8 +140,7 @@
       { label: "MT. FUJI", title: "See Mt. Fuji", desc: "Check the timing, seat side and cloudy-day answers.", href: "guide.html", img: "images/thumbs/content-faq.webp" },
       { label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today.", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
       { label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones.", href: "jr-pass-fuji.html", img: "images/thumbs/content-faq.webp" },
-      { label: "EXTRA", title: "Sumie Window", desc: "Ride the route as a quiet ink-painting window.", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
-      { label: "EXTRA", title: "Window Journey", desc: "Let real window photos flow past like a short trip.", href: "somato.html", img: "images/thumbs/content-somato.webp" },
+      { label: "ARTWORKS", title: "Window Artworks", desc: "Explore window views through photographs and ink wash.", href: "window-artworks.html", img: "images/thumbs/content-somato.webp" },
       { label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride.", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
       { label: "GUIDE", title: "About this app", desc: "See how to use and enjoy it in 30 seconds.", href: "?intro=1", img: "images/thumbs/og-shinkansen-window.webp" },
       { label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips.", href: "references.html", img: "images/thumbs/20260616_fuji_sttraveler.webp" },
@@ -240,6 +240,7 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    "window-artworks.html": { en: true },
     "spots/himeji-castle.html": { en: true },
     "spots/okayama-castle.html": { en: true },
     "spots/fukuyama-castle.html": { en: true },
@@ -297,8 +298,7 @@
             "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "sumie.html")) + "\">" + escapeHTML(ui.sumie) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "somato.html")) + "\">" + escapeHTML(ui.somato) + "</a>" +
+            "<a href=\"" + escapeHTML(href(base, "window-artworks.html")) + "\">" + escapeHTML(ui.artworks) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "references.html")) + "\">" + escapeHTML(ui.links) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "contact.html")) + "\">" + escapeHTML(ui.contact) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "privacy.html")) + "\">" + escapeHTML(ui.privacy) + "</a>" +
