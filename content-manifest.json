@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "1727ee90d3d2155b",
+  "contentVersion": "f6b7b6819543bec2",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -139,8 +139,8 @@
     {
       "path": "en/hanabi.html",
       "url": "https://www.michikusa-travel.com/en/hanabi.html",
-      "bytes": 35697,
-      "sha256": "699e1065a47e55bb63372e6cc170b6af0f57651ee82fc144acc6595b782b4354"
+      "bytes": 37707,
+      "sha256": "b2cceb1dcf69fee02eecfcbba617a3dbc1cfef036b2d86e0c5396596b77e317c"
     },
     {
       "path": "en/index.html",
@@ -211,8 +211,8 @@
     {
       "path": "hanabi.html",
       "url": "https://www.michikusa-travel.com/hanabi.html",
-      "bytes": 36005,
-      "sha256": "f16014ddfaadc00d7f70a574b08e4c34c1ad21ba3ddef472e69d8489d70fc4d8"
+      "bytes": 38041,
+      "sha256": "c59bf0488e345d705a89f7c979bc027612ac80e3aa4af3970ca09a6df6348601"
     },
     {
       "path": "hanabi.js",
