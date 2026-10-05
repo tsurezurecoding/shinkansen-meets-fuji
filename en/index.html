@@ -650,7 +650,10 @@
     refresh();
     card.querySelector("button").addEventListener("click", function () {
       stop(); track("android_app_invite_dismiss");
-      var next = document.querySelector(".footer a");
+      var section = card.nextElementSibling;
+      var next = section && section.querySelector("h2");
+      if (next) next.setAttribute("tabindex", "-1");
+      else next = document.querySelector(".footer a");
       if (next) next.focus({ preventScroll: true });
       hide();
     });
@@ -777,6 +780,16 @@
         </div>
       </div>
     </section>
+<!-- ANDROID_INVITE_BODY_START -->
+  <aside class="android-invite hide-in-app" aria-label="Android app">
+    <strong>Audio guide, screen off</strong>
+    <p>The Android app keeps ride audio running with the screen off. Free, no sign-up.</p>
+    <div class="android-invite-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Play</a>
+      <button type="button" aria-label="Dismiss app invitation; do not show again">Dismiss</button>
+    </div>
+  </aside>
+<!-- ANDROID_INVITE_BODY_END -->
 
     <section class="journey" id="how" aria-labelledby="how-title">
       <div class="section-shell">
@@ -1003,16 +1016,6 @@
       </div>
     </section>
   </main>
-<!-- ANDROID_INVITE_BODY_START -->
-  <aside class="android-invite hide-in-app" aria-label="Android app">
-    <strong>Audio guide, screen off</strong>
-    <p>The Android app keeps ride audio running with the screen off. Free, no sign-up.</p>
-    <div class="android-invite-actions">
-      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Play</a>
-      <button type="button" aria-label="Dismiss app invitation; do not show again">Dismiss</button>
-    </div>
-  </aside>
-<!-- ANDROID_INVITE_BODY_END -->
 
   <footer class="footer">
     <p class="footer-brand">Shinkansen Window Discover more through the train window.</p>

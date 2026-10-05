@@ -99,7 +99,10 @@
     refresh();
     card.querySelector("button").addEventListener("click", function () {
       stop(); track("android_app_invite_dismiss");
-      var next = document.querySelector(".footer a");
+      var section = card.nextElementSibling;
+      var next = section && section.querySelector("h2");
+      if (next) next.setAttribute("tabindex", "-1");
+      else next = document.querySelector(".footer a");
       if (next) next.focus({ preventScroll: true });
       hide();
     });

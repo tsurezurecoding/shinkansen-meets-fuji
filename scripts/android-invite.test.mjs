@@ -136,3 +136,17 @@ test('display mode change hides an existing invitation without shrinking its res
   const first = run({ window: { matchMedia: q => ({ get matches() { return appMode && q === '(display-mode: standalone)'; }, addEventListener(name, fn) { if (q === '(display-mode: standalone)') change = fn; } }) } });
   assert(first.classes.size); appMode = true; change(); assert(first.card.inert);
 });
+
+test('invitation is placed directly after hero, once, and generation is stable', () => {
+  for (const name of ['hero hero-photo','collection-hero guide-fuji-hero']) {
+    const base = `<html><head></head><body><main><section class="${name}">Keep hero</section><section id="next">Keep article</section></main></body></html>`;
+    for (const lang of ['ja','en']) {
+      const html = withAndroidInvite(base, lang);
+      assert.equal(withAndroidInvite(html, lang), html);
+      assert.equal((html.match(/<aside class="android-invite/g) || []).length, 1);
+      assert(html.indexOf('Keep hero') < html.indexOf('<aside'));
+      assert(html.indexOf('<aside') < html.indexOf('<section id="next">'));
+      assert(html.includes('Keep article'));
+    }
+  }
+});

@@ -645,7 +645,10 @@
     refresh();
     card.querySelector("button").addEventListener("click", function () {
       stop(); track("android_app_invite_dismiss");
-      var next = document.querySelector(".footer a");
+      var section = card.nextElementSibling;
+      var next = section && section.querySelector("h2");
+      if (next) next.setAttribute("tabindex", "-1");
+      else next = document.querySelector(".footer a");
       if (next) next.focus({ preventScroll: true });
       hide();
     });
@@ -774,6 +777,16 @@
         </div>
       </div>
     </section>
+<!-- ANDROID_INVITE_BODY_START -->
+  <aside class="android-invite hide-in-app" aria-label="Androidアプリ">
+    <strong>画面を消して、車窓を楽しむ</strong>
+    <p>Androidアプリなら、乗車中は画面を消しても音声案内が続きます。無料・登録不要。</p>
+    <div class="android-invite-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Playで見る</a>
+      <button type="button" aria-label="アプリの案内を閉じて、今後表示しない">閉じる</button>
+    </div>
+  </aside>
+<!-- ANDROID_INVITE_BODY_END -->
 
     <section class="journey" id="how" aria-labelledby="how-title">
       <div class="section-shell">
@@ -1001,16 +1014,6 @@
       </div>
     </section>
   </main>
-<!-- ANDROID_INVITE_BODY_START -->
-  <aside class="android-invite hide-in-app" aria-label="Androidアプリ">
-    <strong>画面を消して、車窓を楽しむ</strong>
-    <p>Androidアプリなら、乗車中は画面を消しても音声案内が続きます。無料・登録不要。</p>
-    <div class="android-invite-actions">
-      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Playで見る</a>
-      <button type="button" aria-label="アプリの案内を閉じて、今後表示しない">閉じる</button>
-    </div>
-  </aside>
-<!-- ANDROID_INVITE_BODY_END -->
 
   <footer class="footer">
     <p class="footer-brand">新幹線の窓 旅の瞬間を見逃さない</p>

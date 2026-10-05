@@ -185,7 +185,10 @@
     refresh();
     card.querySelector("button").addEventListener("click", function () {
       stop(); track("android_app_invite_dismiss");
-      var next = document.querySelector(".footer a");
+      var section = card.nextElementSibling;
+      var next = section && section.querySelector("h2");
+      if (next) next.setAttribute("tabindex", "-1");
+      else next = document.querySelector(".footer a");
       if (next) next.focus({ preventScroll: true });
       hide();
     });
@@ -272,6 +275,17 @@
         </div>
       </div>
     </section>
+<!-- ANDROID_INVITE_BODY_START -->
+  <aside class="android-invite hide-in-app" aria-label="Android app">
+    <strong>Audio guide, screen off</strong>
+    <p>The Android app keeps ride audio running with the screen off. Free, no sign-up.</p>
+    <div class="android-invite-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Play</a>
+      <button type="button" aria-label="Dismiss app invitation; do not show again">Dismiss</button>
+    </div>
+  </aside>
+<!-- ANDROID_INVITE_BODY_END -->
+
     <div class="spot-page-shell">
       <!-- GUIDE_RAIL_START -->
       <aside class="spot-page-rail guide-page-rail" aria-label="Tokyo → Shin-Osaka window">
@@ -528,16 +542,6 @@
       </article>
     </div>
   </main>
-<!-- ANDROID_INVITE_BODY_START -->
-  <aside class="android-invite hide-in-app" aria-label="Android app">
-    <strong>Audio guide, screen off</strong>
-    <p>The Android app keeps ride audio running with the screen off. Free, no sign-up.</p>
-    <div class="android-invite-actions">
-      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite">Google Play</a>
-      <button type="button" aria-label="Dismiss app invitation; do not show again">Dismiss</button>
-    </div>
-  </aside>
-<!-- ANDROID_INVITE_BODY_END -->
   <script>
     document.addEventListener("click", function (event) {
       var link = event.target.closest && event.target.closest("[data-guide-cta], [data-guide-mobile-spot], [data-affiliate-offer]");

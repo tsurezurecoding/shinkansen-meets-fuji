@@ -18,10 +18,16 @@ export function withAndroidInvite(html, lang) {
     </div>
   </aside>
 <!-- ANDROID_INVITE_BODY_END -->`;
-  for (const [part, block] of [['HEAD', head], ['BODY', card]]) {
-    const pattern = new RegExp(`<!-- ANDROID_INVITE_${part}_START -->[\\s\\S]*?<!-- ANDROID_INVITE_${part}_END -->`);
-    if (pattern.test(html)) html = html.replace(pattern, () => block);
-    else html = part === 'HEAD' ? html.replace('</head>', `${block}\n</head>`) : html.replace('</main>', `</main>\n${block}`);
+  const headPattern = /<!-- ANDROID_INVITE_HEAD_START -->[\s\S]*?<!-- ANDROID_INVITE_HEAD_END -->/;
+  html = headPattern.test(html) ? html.replace(headPattern, () => head) : html.replace('</head>', `${head}\n</head>`);
+  const bodyPattern = /[ \t]*<!-- ANDROID_INVITE_BODY_START -->[\s\S]*?<!-- ANDROID_INVITE_BODY_END -->\r?\n?/;
+  // Static placement before first paint, immediately after the existing hero.
+  const heroPattern = /(<section\b[^>]*class="[^"]*\b(?:hero|guide-fuji-hero)\b[^"]*"[^>]*>[\s\S]*?<\/section>)\s*/;
+  if (heroPattern.test(html)) {
+    html = html.replace(bodyPattern, '');
+    html = html.replace(heroPattern, (_, hero) => `${hero}\n${card}\n\n    `);
+  } else {
+    html = bodyPattern.test(html) ? html.replace(bodyPattern, match => card + (match.endsWith('\n') ? '\n' : '')) : html.replace('</main>', `</main>\n${card}`);
   }
   return html;
 }

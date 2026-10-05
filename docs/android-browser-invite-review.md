@@ -4,7 +4,7 @@
 
 ## 採用案と公開版の根拠
 
-日英TOPと富士山ガイドの本文末に、通常フローの小さな閉じられる案内を1つ追加する。本文を読み終えたところで乗車中の利点を伝え、列車選択・ライブ操作を妨げず、既存のアプリ紹介カードと重複するstartやスポット共通枠は増やさない。上部挿入、固定表示、モーダル、自動遷移、ネイティブインストールプロンプトは使わない。
+日英TOPと富士山ガイドのヒーロー直後に、通常フローの小さな閉じられる案内を1つ追加する。ページの導入から乗車中の実際の利点へつなぎ、列車選択・ライブ操作を妨げず、既存のアプリ紹介カードと重複するstartやスポット共通枠は増やさない。ヒーロー前への挿入、固定表示、モーダル、自動遷移、ネイティブインストールプロンプトは使わない。
 
 運営正本 `reports/2026-10-04_android-production-release.md` / root `4a134a7` は、1.0.21-vc24の製品版を10/4 22:40 JSTに178国・地域へ正式公開したと記録。公開コードはmobile `9d3374f`、固定Web `8e6cf8e9`＋`346c72bc`。公開中紹介ページ、同梱liveの「画面を消しても案内と音声が続きます」、foreground serviceの既存検証を照合した。紹介文は画面消灯中の乗車音声案内・無料・登録不要だけ。新着PUSHや後続未公開機能は訴求しない。Play配信反映は端末ごとに時間差があり得る。今回Playストアはブラウズツールから取得できず、上記の最新Console確認記録を根拠にした。
 
@@ -25,7 +25,7 @@ Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel
 
 ## SEO・速度・配布
 
-本文main・title・canonical・meta・構造化データ・既存リンクは変更していない。新しい本文末asideだけを追加。JSなしと非対象端末では案内を表示しない。初期HTMLに存在し、遅延挿入しない。同期の小さな判定とCSS/ハンドラをビルド時にインライン化し、新しいJS/CSS/画像リクエスト・SDK・サービスワーカー変更を増やさない。
+既存の記事本文・title・canonical・meta・構造化データ・既存リンクは維持する。main内のヒーロー直後にasideを追加。JSなしと非対象端末では案内を表示しない。初期HTMLに存在し、遅延挿入しない。同期の小さな判定とCSS/ハンドラをビルド時にインライン化し、新しいJS/CSS/画像リクエスト・SDK・サービスワーカー変更を増やさない。
 
 従前34bea16時点のHTML増分は約6.3KB、gzip増分はJA TOP 2,261B、EN TOP 2,153B、JA guide 2,670B、EN guide 2,410B（従前候補のローカル圧縮比較、実配信量ではない）。案内の原本は `scripts/shared/android-invite.mjs` と `android-invite-runtime.js`。`generate-android-invite.mjs` がJA TOPと日英guideを同期、既存TOP生成器がENをローカライズする。build/checkへ登録済み。`content-manifest.json`は既存生成器で再生成し、新たな実行時依存ファイルはない。Androidへの次回Web同期にも新規asset登録は不要だが、実APKの今回は未変更・未検証。表示除外はWebView/Capacitor markerで検証した。
 
@@ -73,3 +73,11 @@ mainテキスト・title・canonical・mainの初期位置・リソース要求�
 委任された実機スクショの内容では、Chrome通常UIでAndroid/UA/top-level/storageは通過し、browserモードだけfalseだった。他モードの実測やChromeの不具合は未確認。browser=trueを必須にする過剰排除をやめ、standalone/fullscreen/minimal-ui/window-controls-overlay/picture-in-picture/tabbedが明示的にtrue、またはnavigator.standaloneのとき除外する。未知/未対応/例外のmode APIだけでは除外せず、Android/UA/WebView/native/frame/bot/storage/可視性のガードは保持する。API未対応時にPWAの完全判別は保証できない。
 
 単体11群、全体build/verify成功。W3C [display modes](https://www.w3.org/TR/appmanifest/#display-modes)はapplied modeとUI表現を扱い、通常ブラウザの見た目だけで実測modeを断定しない。preview診断には各queryのmatches/media、API利用可否、例外とnavigator.standaloneを表示し、データは送信しない。ブラウザでの注入テストは挙動の検証であり実機での発生原因の再現ではない。
+
+## 2026-10-05 ヒーロー直下への配置変更
+
+実機で判定と表示が確認された後、発見しやすいヒーロー直後の小さなインライン案内へ移動。POPUP/modal/overlayは採用しない。既存カードのCSS・公開機能に基づく文言・44px操作域を保持する。静的HTMLの位置を生成時に確定し、対象判定はheadで初期描画前に行う。閉じる/他タブ抑止では現在文書の枠を残し、閉じる後のフォーカスは続く本文のh2へpreventScrollで移す。次の読込では抑止時の枠を出さない。614c6591のmode判定、50%以上閲覧から7日、dismiss/Playの期限なし抑止を維持。最新main dfb67b70（PR63 E席修正）を競合なく取り込み、別担当差分は触らない。
+
+build/verifyと単体12群成功。実ブラウザ16群：4ページ×320/390/1440、位置、overflow、44px既存操作域、閉じた枠・h2フォーカス・再訪、非Android/WebView/storage失敗、記事本文（aside除外）/title/canonical保持を確認。ヒーロー寸法と要求素材を維持。4ページ各variant 3回のlocal Edge測定はCLS全て0。LCP中央値はJA TOP 356→608ms / EN TOP 312→264 / JA guide 572→512 / EN guide 440→404。JA TOPの遅い測定を切り分ける交互比較（warmup除外、各5回）では476→376msで、一貫した悪化を再現しなかった。測定ばらつきがあり、実端末/実配信の性能改善は保証しない。
+
+証跡はPC workspace hero-invite-browser-results.json / hero-lcp-focused-results.json、evidence/hero-invite-* 12枚とhero-context-* 3枚。レビュー用draft更新とowner-only previewのみ。製品mainへのmerge/公開なし。
