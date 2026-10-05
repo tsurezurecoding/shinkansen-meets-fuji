@@ -4073,7 +4073,7 @@ const SPOTS = [
     },
     "pageTitle": {
       "ja": "大塚製薬 袋井工場｜新幹線から見えるポカリスエットの青い工場 | 新幹線の窓",
-      "en": "Pocari Sweat in Japan: A Drink for Your Train Journey"
+      "en": "Pocari Sweat: A Drink for Your Japan Trip"
     },
     "pageHeading": {
       "ja": "芝の丘に青い壁——大塚製薬のポカリスエット工場",
@@ -4092,7 +4092,7 @@ const SPOTS = [
     },
     "metaDescription": {
       "ja": "東海道新幹線の掛川〜浜松、A席側の芝の丘に見える青い壁は大塚製薬 袋井工場。ポカリスエットをつくる工場です。「ポカリスエット」の名前の意味と青い色の由来、隣のポーラ袋井工場、車窓での見つけ方を写真で紹介します。",
-      "en": "Choosing a drink for your train journey in Japan? Meet Pocari Sweat, recognise its blue bottle, and spot Otsuka's factory from the Shinkansen."
+      "en": "Get to know Pocari Sweat for your Japan trip, from its blue bottle to the factory beside the Shinkansen. Explore more Japanese drinks for the journey."
     },
     "sectionHeading": {
       "ja": "ポカリスエットをつくる青い工場",
