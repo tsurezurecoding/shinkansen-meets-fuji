@@ -4073,7 +4073,7 @@ const SPOTS = [
     },
     "pageTitle": {
       "ja": "大塚製薬 袋井工場｜新幹線から見えるポカリスエットの青い工場 | 新幹線の窓",
-      "en": "What Is Pocari Sweat? Otsuka's Blue Factory from the Shinkansen"
+      "en": "Pocari Sweat in Japan: A Drink for Your Train Journey"
     },
     "pageHeading": {
       "ja": "芝の丘に青い壁——大塚製薬のポカリスエット工場",
@@ -4092,7 +4092,7 @@ const SPOTS = [
     },
     "metaDescription": {
       "ja": "東海道新幹線の掛川〜浜松、A席側の芝の丘に見える青い壁は大塚製薬 袋井工場。ポカリスエットをつくる工場です。「ポカリスエット」の名前の意味と青い色の由来、隣のポーラ袋井工場、車窓での見つけ方を写真で紹介します。",
-      "en": "Pocari Sweat is a Japanese drink made to replace the water and electrolytes lost in sweat. See Otsuka's blue Pocari Sweat factory in Fukuroi from Seat A between Kakegawa and Hamamatsu, and learn where the name comes from."
+      "en": "Choosing a drink for your train journey in Japan? Meet Pocari Sweat, recognise its blue bottle, and spot Otsuka's factory from the Shinkansen."
     },
     "sectionHeading": {
       "ja": "ポカリスエットをつくる青い工場",

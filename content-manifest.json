@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "763a447d5440e39a",
+  "contentVersion": "b27333d3d7d42925",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -73,8 +73,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 715475,
-      "sha256": "21ab359eff260eb905a8e85f1476f9b1f1c423a7d75f2119699b38906a2da4d7"
+      "bytes": 715386,
+      "sha256": "456365e1e3f230bf6dbbaffa504d451f576ff9c80d1143b8500f9a6ddffbb165"
     },
     {
       "path": "data/drinks-photo-sources.json",
