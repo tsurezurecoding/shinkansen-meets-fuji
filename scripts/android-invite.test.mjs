@@ -15,7 +15,7 @@ function run(options = {}) {
     addEventListener(name, fn) { listeners[name] = fn; }, querySelector(selector) { return selector === '.android-invite' ? card : { focus() {} }; } };
   const localStorage = { getItem(k) { if (options.readFailure) throw Error('denied'); return values.get(k) || null; },
     setItem(k, value) { if (options.writeFailure) throw Error('quota'); values.set(k, value); }, removeItem(k) { values.delete(k); } };
-  const window = { matchMedia: () => ({ matches: !options.standalone, addEventListener() {} }),
+  const window = { matchMedia: query => ({ matches: query === '(display-mode: browser)' ? !options.browserFalse : query === '(display-mode: standalone)' && !!options.standalone, addEventListener(name, fn) { listeners['mode:' + query] = fn; } }),
     addEventListener(name, fn) { listeners[name] = fn; }, MADO_ANALYTICS_DISABLED: options.analytics !== true,
     gtag(...args) { events.push(args); }, ...options.window };
   window.self = window; window.top = options.frame ? {} : window;
@@ -25,7 +25,7 @@ function run(options = {}) {
     disconnect() { listeners.disconnected = true; }
   }
   if (options.observer !== false) window.IntersectionObserver = Observer;
-  const context = { window, document, navigator: { userAgent: options.ua || android, locks: options.locks },
+  const context = { window, document, navigator: { userAgent: options.ua || android, locks: options.locks, standalone: options.navigatorStandalone },
     location: { search: options.search || '', pathname: '/guide.html' }, localStorage, URLSearchParams, Date, Math,
     ...(options.observer !== false ? { IntersectionObserver: Observer } : {}) };
   vm.runInNewContext(code, context);
@@ -117,4 +117,22 @@ test('lock recheck prevents a competing tab or dismissal from being overwritten'
   first.values.set(key, JSON.stringify({ stop: true }));
   await Promise.resolve(); await Promise.resolve();
   assert(first.card.inert); assert.equal(JSON.parse(first.values.get(key)).stop, true);
+});
+
+test('browser=false, unknown or unsupported mode API does not overexclude; explicit app modes do', () => {
+  for (const options of [{ browserFalse: true }, { window: { matchMedia: undefined } },
+    { window: { matchMedia() { throw Error('unsupported'); } } },
+    { window: { matchMedia: () => ({ media: 'not all', matches: false }) } }]) {
+    assert(run(options).classes.has('android-invite-eligible'));
+  }
+  for (const name of ['standalone','fullscreen','minimal-ui','window-controls-overlay','picture-in-picture','tabbed']) {
+    assert.equal(run({ window: { matchMedia: q => ({ matches: q === `(display-mode: ${name})` }) } }).classes.size, 0, name);
+  }
+  assert.equal(run({ navigatorStandalone: true }).classes.size, 0);
+});
+
+test('display mode change hides an existing invitation without shrinking its reserved footprint', () => {
+  let appMode = false, change;
+  const first = run({ window: { matchMedia: q => ({ get matches() { return appMode && q === '(display-mode: standalone)'; }, addEventListener(name, fn) { if (q === '(display-mode: standalone)') change = fn; } }) } });
+  assert(first.classes.size); appMode = true; change(); assert(first.card.inert);
 });

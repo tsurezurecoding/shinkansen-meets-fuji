@@ -85,12 +85,17 @@
 (function () {
   "use strict";
   var key = "mado-android-invite-v1", root = document.documentElement, claim, card, observer, ratio = 0, pending = false;
-  var media = window.matchMedia("(display-mode: browser)");
+  // browser=false is not proof of an installed app: unsupported/unknown modes exist.
+  var modeNames = ["standalone", "fullscreen", "minimal-ui", "window-controls-overlay", "picture-in-picture", "tabbed"];
+  var modes = modeNames.map(function (name) {
+    try { return typeof window.matchMedia === "function" ? window.matchMedia("(display-mode: " + name + ")") : null; }
+    catch (error) { return null; }
+  });
   function browser() {
     var ua = navigator.userAgent || "";
     return /Android/i.test(ua) && /(?:Chrome|Firefox|SamsungBrowser|EdgA|OPR)\//i.test(ua)
       && !/(?:Googlebot|GoogleOther|bingbot|Applebot|DuckDuckBot|crawler|spider|\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
-      && media.matches && !navigator.standalone && window.self === window.top
+      && !modes.some(function (mode) { return mode && mode.matches; }) && !navigator.standalone && window.self === window.top
       && !window.Capacitor && !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB
       && new URLSearchParams(location.search).get("from") !== "android-app";
   }
@@ -194,7 +199,10 @@
   window.addEventListener("storage", function (event) { if (event.key === key || event.key === null) refresh(); });
   window.addEventListener("pageshow", refresh);
   document.addEventListener("visibilitychange", function () { refresh(); seen(); });
-  if (media.addEventListener) media.addEventListener("change", refresh);
+  modes.forEach(function (mode) {
+    if (mode && mode.addEventListener) mode.addEventListener("change", refresh);
+    else if (mode && mode.addListener) mode.addListener(refresh);
+  });
 }());
 </script>
 <!-- ANDROID_INVITE_HEAD_END -->

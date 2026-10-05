@@ -14,7 +14,7 @@ Playリンク: https://play.google.com/store/apps/details?id=com.michikusatravel
 
 ## 表示・頻度・操作
 
-- Android UAかつ既知の通常ブラウザ、display-mode browser、トップレベルのページだけ。Android Chrome形式のGooglebotを含む既知crawler、wv / Version 4.0、既知SNS内ブラウザ、Capacitor、MADO_NATIVE_APP、embedded marker、iframe、standaloneを除外する。bot除外は案内だけで、主要本文は同一。
+- Android UAかつ既知の通常ブラウザ、明示的なアプリ表示モードなし、トップレベルのページだけ。Android Chrome形式のGooglebotを含む既知crawler、wv / Version 4.0、既知SNS内ブラウザ、Capacitor、MADO_NATIVE_APP、embedded marker、iframe、standaloneを除外する。bot除外は案内だけで、主要本文は同一。
 - UA等はbest effort。インストール済みでも通常ブラウザを開けば表示し得る。未対応のinstalled-related-apps APIを未インストール確認済みと扱わない。双方向関連付けが必要なAPIやネイティブ側変更は追加していない。
 - 初回描画前は既存の抑止を読み、短命の別キーで保存可否だけ確認する。未閲覧のページ読み込み・再訪では7日間の抑止を記録しない。案内が可視タブのviewportに50%以上入った時点で7日間を開始し、表示イベントの閾値も同じにする。解析同意なしでもUIの抑止を保存する。IntersectionObserverが利用不能なら非表示。
 - 対応ブラウザではWeb Locksで同じoriginの閲覧確保を直列化し、待機後にも状態と可視性を再確認する。先に閲覧したタブを残し、他タブはstorageイベントで高さを保って非表示にする。Web Locks非対応では保存直前の再読込・書込・token照合によるbest effortで、極めて同時の表示まで完全排除とは約束しない。
@@ -67,3 +67,9 @@ mainテキスト・title・canonical・mainの初期位置・リソース要求�
 未閲覧の初回読込だけで7日間抑止されるUX欠陥を修正。可視タブで50%以上の閲覧時だけ保存し、初回描画の枠・本文・CSS・Play URLは維持する。短命probeで保存可否を確認し、閲覧時にも再読込・保存・token確認を行う。Web Locksで同時タブの閲覧確保を直列化する。解析gateはイベント送信だけを制御し、同意なしでも7日間の抑止が働く。
 
 全体build/verify成功（既存audit 0 errors / 5 warnings / 8 allowed）。単体9群、Edge実ブラウザ9群：日英TOP/guideの未閲覧reload、実際の50%以上閲覧、7日後期限、dismiss、実際の50%未満、解析なしの保存、320px・CLS <0.01、複数タブ、lock拒否、storage quota、Playと戻るを確認。CSSとasideは変更なし。旧計測値・スクリーンショットは上記の従前候補の根拠として保持する。新証跡はPC workspace seen-cooldown-browser-results.json / evidence/seen-cooldown-320.png。実機Chrome・TalkBack・本番配信性能は未検証。
+
+## 2026-10-05 display-modeの過剰除外修正
+
+委任された実機スクショの内容では、Chrome通常UIでAndroid/UA/top-level/storageは通過し、browserモードだけfalseだった。他モードの実測やChromeの不具合は未確認。browser=trueを必須にする過剰排除をやめ、standalone/fullscreen/minimal-ui/window-controls-overlay/picture-in-picture/tabbedが明示的にtrue、またはnavigator.standaloneのとき除外する。未知/未対応/例外のmode APIだけでは除外せず、Android/UA/WebView/native/frame/bot/storage/可視性のガードは保持する。API未対応時にPWAの完全判別は保証できない。
+
+単体11群、全体build/verify成功。W3C [display modes](https://www.w3.org/TR/appmanifest/#display-modes)はapplied modeとUI表現を扱い、通常ブラウザの見た目だけで実測modeを断定しない。preview診断には各queryのmatches/media、API利用可否、例外とnavigator.standaloneを表示し、データは送信しない。ブラウザでの注入テストは挙動の検証であり実機での発生原因の再現ではない。
