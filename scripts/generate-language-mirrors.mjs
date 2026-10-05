@@ -26,6 +26,7 @@ const pages = [
 function localizeEnglishRail(html) {
   html = html.replace(/<!-- SANYO-GALLERY:START -->[\s\S]*?<!-- SANYO-GALLERY:END -->/, sanyoGallery("en"));
   const copy = [
+    ["車窓の作品集", "Window Artworks"],
     ["車窓の観覧車を集める", "Find the ferris wheels"],
     ['<span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span>', "Look for little wheels beyond the city."],
     ["一度きりの車窓", "Weather Seen from the Shinkansen"],
@@ -68,6 +69,7 @@ function localizeEnglishRail(html) {
     ["yakei.html", "en/yakei.html"],
     ["window-moments.html", "en/window-moments.html"],
     ["sparkling-dreams.html", "en/sparkling-dreams.html"],
+    ["window-artworks.html", "en/window-artworks.html"],
     ["sumie.html", "en/sumie.html"],
     ["somato.html", "en/somato.html"],
     ["journal.html", "en/journal.html"],
