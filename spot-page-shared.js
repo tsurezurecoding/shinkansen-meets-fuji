@@ -786,12 +786,23 @@
     return '<aside class="spot-reading-related" aria-labelledby="spotReadingRelatedTitle"><div>' + readingEyebrow(page, 'MORE TO SEE') + '<h2 id="spotReadingRelatedTitle">' + collectionTitle + '</h2><p>' + escapeHTML(collection.description) + '</p><a href="' + escapeHTML(href(rootPath, collection.route)) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection">' + escapeHTML(collection.label) + ' →</a><p class="spot-reading-note">' + escapeHTML(collection.note) + '</p></div><div class="spot-reading-photos">' + collection.photos.map(function (photo) { return '<figure><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, photo.src)) + '" alt="' + escapeHTML(photo.alt) + '"><figcaption>' + escapeHTML(photo.caption) + '</figcaption></figure>'; }).join('') + '<small>' + escapeHTML(collection.credit) + '</small></div></aside>';
   }
 
+  function storyHTML(page, rootPath) {
+    var paragraphs = page.readingLayout ? page.story.split(/\n\n/) : [page.story];
+    return paragraphs.map(function (paragraph, index) {
+      var text = "<p>" + escapeHTML(paragraph) + "</p>";
+      if (index !== 0 || !page.storyFigure) return text;
+      var photo = page.storyFigure;
+      var credit = photo.creditRequired === false ? "" : "<span>" + pageCreditHTML(photo) + "</span>";
+      return '<div class="spot-page-story-lead">' + text + '<figure class="spot-page-story-figure"' + (photo.owner === "michikusa" ? ' data-photo-owner="michikusa"' : '') + '><img src="' + escapeHTML(href(rootPath, photo.src)) + '" alt="' + escapeHTML(photo.alt) + '" width="' + escapeHTML(photo.width) + '" height="' + escapeHTML(photo.height) + '" loading="lazy" decoding="async"><figcaption>' + escapeHTML(photo.caption) + credit + '</figcaption></figure></div>';
+    }).join("") + (page.storyLink ? '<p class="spot-page-story-link"><a href="' + escapeHTML(href(rootPath, page.storyLink.route)) + '">' + escapeHTML(page.storyLink.label) + '</a></p>' : "");
+  }
+
   function pageHTML(data, page, rootPath, lang, currentId) {
     var ui = PAGE_UI[lang];
     var embedded = !!root.MADO_EMBEDDED_WEB;
     var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
     var fujiGuide = page.fujiGuide ? (function () { var text = escapeHTML(page.fujiGuide.text); return "<p>" + text.replace(escapeHTML(page.fujiGuide.label), "<a href=\"" + escapeHTML(page.fujiGuide.href) + "\">" + escapeHTML(page.fujiGuide.label) + "</a>") + "</p>"; }()) : "";
-    var intro = "<section class=\"spot-page-section\">" + readingEyebrow(page, "THE STORY") + "<h2>" + escapeHTML(page.sectionHeading) + "</h2><p>" + (page.readingLayout ? page.story.split(/\n\n/).map(escapeHTML).join("</p><p>") : escapeHTML(page.story)) + "</p>" + (page.readingLayout ? "" : bodyLinks) + (currentId === "kiyosu" ? "" : "<p>" + escapeHTML(page.routeNote) + "</p>") + fujiGuide + (page.readingLayout ? "" : "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p>") + "</section>";
+    var intro = "<section class=\"spot-page-section\">" + readingEyebrow(page, "THE STORY") + "<h2>" + escapeHTML(page.sectionHeading) + "</h2>" + storyHTML(page, rootPath) + (page.readingLayout ? "" : bodyLinks) + (currentId === "kiyosu" ? "" : "<p>" + escapeHTML(page.routeNote) + "</p>") + fujiGuide + (page.readingLayout ? "" : "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p>") + "</section>";
     var inline = (page.inline || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join("");
     var explainer = page.explainer ? "<section class=\"spot-page-section\">" + readingEyebrow(page, "WHAT TO SEE") + "<h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
     var guideNotice = page.guideNotice ? "<section class=\"spot-page-section guide-answer-panel\"><div class=\"guide-answer-copy\"><h2>" + escapeHTML(page.guideNotice.heading) + "</h2><p>" + escapeHTML(page.guideNotice.body) + "</p><p><a class=\"inline-cta\" href=\"" + escapeHTML(page.guideNotice.href) + "\">" + escapeHTML(page.guideNotice.label) + "</a></p></div></section>" : "";

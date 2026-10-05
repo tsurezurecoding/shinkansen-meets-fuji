@@ -252,7 +252,7 @@ function referenceUrl(ref, lang) {
 }
 
 function projectBodyLinks(spot, lang) {
-  const sourceLinks = [...(spot.bodyLinks || []), ...(spot.references || [])];
+  const sourceLinks = [...(spot.bodyLinks || []), ...(spot.references || []).filter((ref) => !ref.languages || ref.languages.includes(lang))];
   const seen = new Set();
   const links = [];
   for (const item of sourceLinks) {
@@ -267,7 +267,24 @@ function projectBodyLinks(spot, lang) {
 }
 
 function projectReferences(spot, lang) {
-  return (spot.references || []).map((ref) => ({ label: localized(ref?.label, lang), href: referenceUrl(ref, lang) })).filter((item) => item.label && item.href);
+  return (spot.references || []).filter((ref) => !ref.languages || ref.languages.includes(lang)).map((ref) => ({ label: localized(ref?.label, lang), href: referenceUrl(ref, lang) })).filter((item) => item.label && item.href);
+}
+
+// These article additions are language-specific; never inherit a Japanese/English asset.
+function projectStoryFigure(spot, lang) {
+  const figure = spot.pageStoryFigure[lang];
+  if (!/^images\/[a-zA-Z0-9_/-]+\.(jpg|png|webp)$/.test(figure.src) || figure.src.includes("..") || !fs.existsSync(path.join(appDir, figure.src))) throw new Error(`Missing story photo: ${spot.id}/${lang}`);
+  if (!figure.alt || !figure.caption || !(figure.width > 0 && figure.height > 0)) throw new Error(`Missing story photo metadata: ${spot.id}/${lang}`);
+  const credit = creditText(figure.credit, lang);
+  if (figure.creditRequired === false && figure.owner !== "michikusa") throw new Error(`Unapproved credit omission: ${spot.id}/${lang}`);
+  if (figure.creditRequired !== false && (!credit || !figure.sourceUrl)) throw new Error(`Missing story photo credit/source: ${spot.id}/${lang}`);
+  return { ...figure, credit, thumb: figure.src };
+}
+
+function projectStoryLink(spot, lang) {
+  const link = spot.pageStoryLink[lang];
+  if (!/^en\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(link.route) || !link.label || !fs.existsSync(path.join(appDir, link.route.split("#")[0]))) throw new Error(`Invalid story link: ${spot.id}/${lang}`);
+  return link;
 }
 
 function projectExplainer(spot, lang) {
@@ -649,6 +666,8 @@ function projectPage(spot, lang) {
     heading: pageHeading,
     sectionHeading: localized(spot.sectionHeading, lang) || UI[lang].sectionHow(data.name),
     story: localized(spot.pageStory, lang) || data.story || "",
+    ...(spot.pageStoryFigure?.[lang] ? { storyFigure: projectStoryFigure(spot, lang) } : {}),
+    ...(spot.pageStoryLink?.[lang] ? { storyLink: projectStoryLink(spot, lang) } : {}),
     minutes: Number(spot.minutesFromTokyo),
     side: String(spot.side || ""),
     sideLabel: localized(spot.pageFacts?.side, lang) || sideLabel(spot, lang),
