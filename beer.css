@@ -1,0 +1,206 @@
+/* The released drinks feature supplies the editorial pattern; shared chrome is unchanged. */
+html { scroll-behavior:auto; --chapter-offset:145px; }
+.beer-page { --beer-gold:#936922; overflow-x:clip; overflow-y:visible; }
+.skip-link { position:absolute; top:-60px; left:12px; z-index:300; padding:10px 16px; background:white; color:var(--ink); }
+.skip-link:focus { top:8px; }
+.journey-hero { padding:52px 25px 42px; color:white; background:var(--night); }
+.journey-hero-inner { max-width:1120px; margin:auto; display:grid; grid-template-columns:1fr 1.05fr; gap:42px; align-items:center; }
+.hero-copy { padding:8px 0; }
+.hero-station { margin:0; }
+.hero-station img { display:block; width:100%; height:auto; border-radius:12px; }
+.hero-station figcaption { font-size:10px; line-height:1.75; color:#ffffffbf; margin-top:10px; }
+.hero-station figcaption a { color:inherit; text-underline-offset:3px; }
+.journey-hero .eyebrow { color:var(--accent-soft); font-size:11px; }
+.journey-hero h1 { font-family:var(--font-serif); font-size:clamp(43px,4.5vw,60px); line-height:1.18; margin:14px 0 14px; font-weight:600; }
+.hero-subtitle { font-family:var(--font-serif); font-size:clamp(19px,2.5vw,26px); line-height:1.4; color:#f6ddbd; }
+.journey-hero .hero-lead { font-size:15px; line-height:1.9; color:#ffffffe6; margin:20px 0 24px; }
+.journey-hero .btn { display:inline-flex; gap:14px; align-items:center; width:auto; min-height:44px; }
+.hero-credit { font-size:10px; line-height:1.75; color:#ffffffbf; margin-top:23px; }
+.hero-credit a { color:inherit; text-decoration:none; }
+.hero-credit a:hover { text-decoration:underline; }
+.drink-article { min-width:0; padding-bottom:48px; }
+.drink-intro { display:grid; grid-template-columns:1.45fr 1fr; gap:32px; align-items:center; padding:40px 0 32px; }
+.drink-intro h2 { font-family:var(--font-serif); font-size:27px; line-height:1.35; margin-bottom:14px; }
+.drink-intro p { font-size:14px; line-height:1.9; margin-bottom:12px; }
+.drink-intro .eyebrow { font-size:10px; color:var(--accent); }
+.small-note { color:var(--ink-soft); font-size:11.5px !important; line-height:1.8; }
+.shelf-note { border-left:1px solid #d9c5a7; padding:6px 0 6px 24px; }
+.shelf-note-jp { font-family:var(--font-serif); font-size:38px; color:var(--beer-gold); letter-spacing:.12em; }
+.shelf-note h3 { font-family:var(--font-serif); font-size:18px; line-height:1.45; margin:8px 0; }
+.shelf-note p { font-size:12px; }
+.shelf-note .small-note { margin-bottom:0; }
+.chapter-nav { position:sticky; top:69px; z-index:30; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); background:#faf6eff5; backdrop-filter:blur(10px); border-block:1px solid var(--line); }
+.chapter-nav a { color:var(--ink-soft); text-decoration:none; padding:14px 8px; font-size:13px; text-align:center; border-bottom:3px solid transparent; }
+.chapter-nav a span { color:var(--accent); margin-right:6px; font-size:10px; }
+.chapter-nav a:hover,.chapter-nav a[aria-current="location"] { color:var(--ink); background:var(--paper-deep); border-bottom-color:var(--accent); }
+.drink-section { padding-top:60px; scroll-margin-top:var(--chapter-offset); }
+.chapter-heading { max-width:650px; margin:0 auto 28px; text-align:center; }
+.chapter-heading .eyebrow { font-size:10px; color:var(--accent); margin-bottom:10px; }
+.chapter-heading h2 { font-family:var(--font-serif); font-size:clamp(25px,3vw,33px); line-height:1.35; margin-bottom:14px; }
+.chapter-heading > p:last-child { font-size:14px; line-height:1.9; color:var(--ink-soft); }
+.beer-explainer { display:grid; grid-template-columns:1.45fr 1fr; gap:28px; align-items:start; }
+.beer-explainer h3 { font-family:var(--font-serif); font-size:22px; line-height:1.45; margin-bottom:13px; }
+.beer-explainer p { font-size:14px; line-height:1.9; margin-bottom:14px; }
+.grain-note { background:#f7efdf; border-left:3px solid #bd954c; padding:20px 23px 9px; }
+.grain-note h3 { font-size:20px; }
+.grain-note p { font-size:13px; color:var(--ink-soft); }
+.explainer-source { margin:8px 0 28px; }
+.shelf-note a { color:#985031; text-underline-offset:3px; }
+.tasting-cue { padding-left:12px; border-left:2px solid #deccad; }
+.drink-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+.drink-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; min-width:0; scroll-margin-top:var(--chapter-offset); }
+.product-picture { margin:0; padding:16px 16px 0; }
+.picture-mat { height:245px; display:flex; align-items:center; justify-content:center; background:#f4f1e9; border-radius:10px; overflow:hidden; }
+.picture-mat img { width:100%; height:100%; object-fit:contain; }
+.product-picture figcaption { font-size:10px; line-height:1.5; margin-top:7px; color:var(--ink-soft); }
+.product-picture figcaption a { color:inherit; text-underline-offset:2px; }
+.drink-card-body { padding:19px 22px 23px; }
+.drink-kicker { font-size:10px !important; letter-spacing:.06em; line-height:1.6 !important; color:#956b30; font-weight:700; margin-bottom:9px !important; }
+.drink-card h3 { font-family:var(--font-serif); font-size:25px; line-height:1.25; margin:0 0 5px; }
+.japanese-name { font-size:13px !important; letter-spacing:.07em; color:var(--ink-soft); margin-bottom:14px !important; }
+.drink-card p { font-size:13px; line-height:1.85; margin-bottom:14px; }
+.label-clue { border-top:1px solid var(--line); padding-top:13px; color:var(--ink-soft); }
+.source-link { color:#985031; font-size:11px; text-underline-offset:3px; line-height:1.8; display:inline-block; }
+.inline-story { display:block; color:#955031; font-size:12px; font-weight:600; line-height:1.7; text-underline-offset:3px; margin-bottom:14px; }
+.section-subhead { margin:38px 0 18px; }
+.section-subhead h3 { font-family:var(--font-serif); font-size:24px; line-height:1.4; margin-bottom:6px; }
+.section-subhead p { color:var(--ink-soft); font-size:12px; line-height:1.8; }
+.section-subhead .eyebrow { font-size:9px; color:var(--accent); margin-bottom:8px; }
+.bento-note { display:flex; align-items:center; gap:25px; margin-top:28px; padding:24px 28px; border:1px solid #deccad; background:#f7efdf; border-radius:var(--radius); }
+.bento-note-mark { font-family:var(--font-serif); font-size:26px; white-space:nowrap; color:#966b2d; writing-mode:vertical-rl; letter-spacing:.12em; }
+.bento-note h3 { font-family:var(--font-serif); font-size:23px; line-height:1.4; margin-bottom:9px; }
+.bento-note p { font-size:13px; line-height:1.9; color:var(--ink-soft); }
+.bento-note p + p { margin-top:12px; }
+.beer-types { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:25px; }
+.beer-types article { border-top:3px solid #bd954c; padding-top:20px; }
+.beer-types article:nth-child(2) { border-color:#997442; }
+.type-word { display:block; font-family:var(--font-serif); font-size:35px; line-height:1.25; color:#946921; }
+.beer-types .japanese-name { margin:3px 0 14px !important; }
+.beer-types h3 { font-family:var(--font-serif); font-size:19px; line-height:1.4; margin-bottom:10px; }
+.beer-types p { font-size:13px; line-height:1.9; color:var(--ink-soft); }
+.ale-example { padding:18px 22px; margin-top:22px; border:1px solid #c6d3db; border-radius:var(--radius); background:#edf1f2; }
+.ale-example p { font-size:13px; line-height:1.85; margin-bottom:8px; }
+.style-notes { margin-top:25px; border-top:1px solid var(--line); padding-top:20px; }
+.style-notes p { font-size:13px; line-height:1.85; color:var(--ink-soft); margin-bottom:12px; }
+.style-notes b { color:var(--ink); }
+.label-reader { margin-top:28px; background:#eee6da; border-radius:var(--radius); padding:25px 27px; }
+.label-reader-head .eyebrow { font-size:9px; color:#956b30; margin-bottom:8px; }
+.label-reader-head h3 { font-family:var(--font-serif); font-size:25px; line-height:1.4; margin-bottom:19px; }
+.label-buttons { display:flex; gap:10px; margin-bottom:18px; }
+.label-buttons button { width:100px; min-height:72px; border:1px solid #cbbca6; border-radius:9px; color:var(--ink); background:#fffcf5; padding:7px 10px; }
+.label-buttons button span { display:block; font-family:var(--font-serif); font-size:23px; line-height:1.3; }
+.label-buttons button small { display:block; font-size:10px; margin-top:2px; }
+.label-buttons button[aria-pressed="true"] { color:white; border-color:#8c6330; background:#8c6330; }
+.label-answer { border-top:1px solid #d5c6b4; padding-top:17px; min-height:117px; }
+.label-answer h4 { font-family:var(--font-serif); font-size:18px; line-height:1.4; margin-bottom:9px; }
+.label-answer p { font-size:13px; line-height:1.9; }
+.shelf-labels { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:25px; margin:25px 0 16px; }
+.shelf-labels h3 { font-size:15px; line-height:1.5; margin-bottom:10px; }
+.shelf-labels p { color:var(--ink-soft); font-size:12px; line-height:1.9; }
+.decoder-source { color:var(--ink-soft); font-size:10px; line-height:1.85; }
+.decoder-source .source-link { font-size:10px; }
+.window-story { border:1px solid var(--line); background:var(--card); border-radius:var(--radius); margin:28px 0 0; overflow:hidden; scroll-margin-top:var(--chapter-offset); }
+.window-story figure { margin:0; position:relative; }
+.window-story figure > img { width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
+.window-story figcaption { position:absolute; bottom:0; right:0; padding:4px 10px; font-size:10px; background:#101c2ccc; color:#fff; }
+.window-story figcaption a { color:inherit; }
+.window-story-body { padding:25px 30px 29px; max-width:800px; }
+.window-story .drink-kicker { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+.seat-pill { display:inline-block; color:#fff; background:var(--night-2); border-radius:999px; padding:3px 10px; font-size:9px; }
+.window-story h3 { font-family:var(--font-serif); font-size:clamp(24px,3vw,30px); line-height:1.35; margin:10px 0 15px; }
+.window-story p { font-size:14px; line-height:1.9; margin-bottom:12px; }
+.story-link { display:inline-block; color:#985031; text-underline-offset:4px; font-size:13px; font-weight:600; line-height:1.8; }
+.story-link span { margin-left:9px; }
+.window-note { margin-top:17px; }
+.trolley-memory { display:grid; grid-template-columns:1.5fr 1fr; gap:30px; align-items:center; margin-top:50px; padding:28px; background:#eee6da; border-radius:var(--radius); }
+.trolley-memory .eyebrow { color:var(--accent); font-size:10px; margin-bottom:12px; }
+.trolley-memory h2 { font-family:var(--font-serif); font-size:28px; line-height:1.35; margin-bottom:18px; }
+.trolley-memory-copy > p { font-size:14px; line-height:1.9; margin-bottom:14px; }
+.trolley-memory-copy > .decoder-source { font-size:10px; margin-bottom:0; }
+.trolley-memory figure { margin:0; min-width:0; }
+.trolley-memory img { display:block; width:100%; height:auto; border-radius:8px; }
+.trolley-memory figcaption { font-size:10px; line-height:1.8; color:var(--ink-soft); margin-top:10px; }
+.trolley-memory figcaption a { color:#985031; text-underline-offset:3px; }
+.ride-note { border-block:1px solid var(--line); margin-top:45px; padding:30px 0; }
+.ride-note .eyebrow { color:var(--accent); font-size:10px; margin-bottom:10px; }
+.ride-note h2 { font-family:var(--font-serif); font-size:26px; line-height:1.4; margin-bottom:20px; }
+.ride-note-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:25px; margin-bottom:18px; }
+.ride-note h3 { font-size:13px; margin-bottom:7px; }
+.ride-note-grid p { font-size:12px; line-height:1.9; color:var(--ink-soft); }
+.ride-note-grid p + p { margin-top:12px; }
+.ride-note h2 { scroll-margin-top:var(--chapter-offset); }
+.next-journey { text-align:center; padding:48px 20px 38px; }
+.next-journey h2 { font-family:var(--font-serif); font-size:28px; line-height:1.35; margin:12px 0 16px; }
+.next-journey p { font-size:14px; line-height:1.9; color:var(--ink-soft); max-width:530px; margin-inline:auto; }
+.next-journey .eyebrow { font-size:10px; color:var(--accent); }
+.next-journey > div { margin-top:24px; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:15px; }
+.next-journey .btn { width:auto; }
+.back-top { font-size:12px; color:#985031; text-underline-offset:4px; }
+.sources-section { border-top:1px solid var(--line); font-size:12px; }
+.sources-section summary { padding:20px 0; cursor:pointer; color:var(--ink-soft); }
+.credits-body p { font-size:12px; margin-bottom:15px; line-height:1.9; }
+.image-credits { padding-left:23px; font-size:11px; line-height:1.85; }
+.image-credits li { margin-bottom:11px; scroll-margin-top:var(--chapter-offset); overflow-wrap:anywhere; }
+.credits-body a { color:#985031; }
+.beer-page :focus-visible { outline:3px solid #b8592f; outline-offset:4px; }
+@media (max-width:1099px) { .drink-article { padding-inline:20px; } }
+@media (max-width:760px) {
+ .journey-hero { padding:36px 20px 28px; }
+ .journey-hero-inner { grid-template-columns:1fr; gap:23px; max-width:540px; }
+ .hero-copy { text-align:center; }
+ .hero-subtitle { font-size:20px; }
+ .journey-hero .hero-lead { font-size:14px; }
+ .hero-credit { font-size:9px; }
+ .drink-intro { grid-template-columns:1fr; gap:15px; padding-top:29px; }
+ .beer-explainer { grid-template-columns:1fr; gap:10px; }
+ .trolley-memory { grid-template-columns:1fr; padding:22px; gap:22px; margin-top:36px; }
+ .trolley-memory figure { width:100%; max-width:360px; margin-inline:auto; }
+ .shelf-note { padding:15px 18px; border:1px solid #deccad; border-radius:10px; background:#f7efdf; }
+ .shelf-note-jp { float:left; margin:0 17px 5px 0; font-size:30px; }
+ .shelf-note h3 { margin-top:0; }
+ .shelf-note .small-note { clear:both; }
+ .chapter-nav a { padding:11px 5px; font-size:12px; line-height:1.5; }
+ .chapter-nav a span { display:block; margin:0 0 3px; font-size:9px; }
+ .drink-section { padding-top:43px; }
+ .drink-grid { gap:17px; }
+ .drink-card-body { padding:17px 18px 21px; }
+ .picture-mat { height:220px; }
+ .window-story-body { padding:23px; }
+}
+@media (max-width:540px) {
+ .drink-article { padding-inline:17px; }
+ .journey-hero { padding-inline:17px; }
+ .journey-hero h1 { font-size:43px; }
+ .hero-subtitle { font-size:20px; max-width:270px; margin-inline:auto; }
+ .hero-station figcaption { font-size:9px; }
+ .journey-hero .btn { font-size:12px; padding:11px 15px; }
+ .drink-grid { grid-template-columns:1fr; gap:22px; }
+ .product-picture { padding:16px 16px 0; }
+ .picture-mat { height:250px; }
+ .drink-card-body { padding:20px; }
+ .drink-card h3 { font-size:27px; }
+ .drink-card p { font-size:14px; }
+ .source-link { font-size:12px; }
+ .bento-note { gap:18px; padding:22px 20px; }
+ .bento-note-mark { font-size:22px; }
+ .bento-note h3 { font-size:22px; }
+ .beer-types { gap:18px; }
+ .beer-types h3 { font-size:18px; }
+ .beer-types p { font-size:12px; }
+ .type-word { font-size:32px; }
+ .style-notes p { font-size:13px; }
+ .label-reader { padding:22px 20px; }
+ .label-reader-head h3 { font-size:24px; }
+ .label-buttons { gap:8px; }
+ .label-buttons button { flex:1; min-width:0; }
+ .label-answer { min-height:172px; }
+ .shelf-labels { grid-template-columns:1fr; gap:20px; }
+ .shelf-labels p { font-size:13px; }
+ .window-story h3 { font-size:24px; }
+ .window-story-body { padding:20px; }
+ .window-story figcaption { font-size:9px; }
+ .ride-note-grid { grid-template-columns:1fr; gap:19px; }
+ .ride-note-grid p { font-size:13px; }
+ .next-journey { padding-inline:0; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
