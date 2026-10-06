@@ -86,12 +86,14 @@ const englishCards = [
     link: 'spots/gamagori-greenhouses.html', linkText: 'Explore the greenhouse landscape →'
   },
   {
-    id: 'kiyosu-golf-driving-range', spotId: 'kiyosu', src: 'images/20260704_kiyosu_golf_driving_range_michikusa.png', featurePhoto: true,
-    width: 515, height: 307,
-    alt: 'Tall green nets around a golf driving range near Kiyosu', kind: 'Everyday sport',
+    // Keep the existing fragment ID. Photo: 2026-09-30 08:06:10.808 JST, Seat E, Maibara-Kyoto.
+    // Same-second GPX: 35.0780833, 136.04498322; track projection 121.63 min from Tokyo (Nozomi reference).
+    id: 'kiyosu-golf-driving-range', minutes: 122, side: 'E', src: 'images/20260930_golf-driving-range_michikusa.jpg', featurePhoto: true,
+    width: 1920, height: 1080,
+    alt: 'Tall green nets around a golf driving range between Maibara and Kyoto', kind: 'Everyday sport',
     question: 'What are those giant green nets?', answer: 'A golf driving range — uchippanashi in Japanese',
     body: 'The nets stop golf balls from reaching nearby homes and roads. In Japanese cities, many ranges stack hitting bays on two or three floors, so a place to practise golf can look like a giant cage.',
-    aside: 'This one flashes past Seat E shortly before Kiyosu Castle. The format is not unique to Japan, but it is a common city sight here. Uchippanashi (打ちっぱなし) roughly means “keep hitting.”',
+    aside: 'This one flashes past Seat E between Maibara and Kyoto, with tiled rooftops in front and a wooded hill behind. The format is not unique to Japan, but it is a common city sight here. Uchippanashi (打ちっぱなし) roughly means “keep hitting.”',
     sources: [
       ['https://www.japan-guide.com/e/e2082.html', 'Golf ranges in Japan'],
       ['https://www.reddit.com/r/ANormalDayInJapan/comments/1g3emo2/', 'A first-time visitor asks what it is']
@@ -109,14 +111,14 @@ const englishCards = [
 
 const englishTiles = [
   ['shizuoka-tea-fields', 'images/20260530_shizuoka_tea_fields_1_michikusa.jpg', 'Bright green tea fields in Shizuoka', 'Green rows'],
-  ['kiyosu-golf-driving-range', 'images/20260704_kiyosu_golf_driving_range_michikusa.png', 'Tall green nets around a golf driving range near Kiyosu', 'Giant green nets'],
+  ['kiyosu-golf-driving-range', 'images/20260930_golf-driving-range_michikusa.jpg', 'Tall green nets around a golf driving range between Maibara and Kyoto', 'Giant green nets'],
   ['fuji-paper-mills', 'images/20260816_fuji_paper_mills_michikusa.jpg', "Fuji City's paper mills", 'White plumes'],
   ['nangu-taisha', 'images/20260629_nangu_taisha_1_michikusa.jpg', 'Nangu Taisha Grand Torii beyond fields', 'A red gate']
 ];
 
 // 特集だけで使う自前写真。地点ページのギャラリーへ無理に混ぜず、権利と資産をここで明示する。
 const englishFeaturePhotos = new Map([
-  ['images/20260704_kiyosu_golf_driving_range_michikusa.png', { credit: 'michikusa', date: '2026-07-04' }],
+  ['images/20260930_golf-driving-range_michikusa.jpg', { credit: 'michikusa', date: '2026-09-30' }],
   ['images/20260816_east_mikawa_greenhouses_michikusa.jpg', { credit: 'michikusa', date: '2026-08-16' }]
 ]);
 
