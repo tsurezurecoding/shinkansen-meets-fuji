@@ -63,6 +63,10 @@ const html = `<!doctype html><html><head></head><body>
 <button id="btn-demo-cancel"></button><button id="btn-demo-start"></button></div>
 </body></html>`;
 
+for (const e of require("./guide-copy-overrides.json").entries) {
+  const bytes=fs.readFileSync(path.join(appDir,"live/audio",e.file));
+  if(require("node:crypto").createHash("sha256").update(bytes).digest("hex")!==e.sha256) throw Error("Approved voice differs: "+e.file);
+}
 let pass = 0, fail = 0;
 function check(name, cond, detail) {
   if (cond) { pass++; console.log("  PASS " + name); }
@@ -71,15 +75,26 @@ function check(name, cond, detail) {
 
 /* ---------- セットアップ: 実ファイルをjsdomに読み込み ---------- */
 
-function createHarness(lang) {
+function createHarness(lang, options) {
+  options = options || {};
   const query = lang === "en" ? "?lang=en" : "";
   const dom = new JSDOM(html, {
     runScripts: "outside-only",
-    url: "https://example.com/live/index.html" + query,
+    url: "https://example.com" + (options.pathname || "/live/index.html") + query,
     pretendToBeVisual: true,
   });
   const w = dom.window;
   let gpsCb = null;
+  let now = options.now || Date.now();
+  const intervals = [];
+  if (options.captureTimers) {
+    w.Date.now = function () { return now; };
+    w.setInterval = function (callback, delay) { intervals.push({ callback, delay }); return intervals.length; };
+    w.clearInterval = function () {};
+  }
+  if (options.blockStorage) {
+    w.Storage.prototype.setItem = function () { throw new w.DOMException("Storage blocked", "SecurityError"); };
+  }
 
   // jsdomは安全なコンテキストとメディア再生を実装しない。ここでブラウザ契約だけを模擬し、
   // "Not implemented" の大量出力が検証結果を埋めないようにする。
@@ -101,8 +116,9 @@ function createHarness(lang) {
   w.eval(
     src("data.js") + "\n" +
     src("track.js") + "\n" +
-    src("live/narration.js") + "\n" +
+    (options.omitNarration ? "" : src("live/narration.js")) + "\n" +
     "window.__TEST_SPOTS = SPOTS;\n" +
+    (options.captureTimers ? "var originalSegmentAtKm = window.MADO_TRACK.segmentAtKm; window.MADO_TRACK.segmentAtKm = function(km) { window.__TEST_RENDER_KM = km; return originalSegmentAtKm(km); };\n" : "") +
     src("live/live.js")
   );
   return {
@@ -112,6 +128,9 @@ function createHarness(lang) {
     T: w.MADO_TRACK,
     NARR: w.NARRATIONS || {},
     gps: function () { return gpsCb; },
+    now: function () { return now; },
+    tick: function (elapsed) { now += elapsed; intervals.filter(function (timer) { return timer.delay === 1000; }).forEach(function (timer) { timer.callback(); }); },
+    renderKm: function () { return w.__TEST_RENDER_KM; },
   };
 }
 
@@ -145,6 +164,24 @@ function coLocated(id) {
 /* ---------- A. データ検証 ---------- */
 
 console.log("\n== A. データ検証 ==");
+const { firstSentences, seatFor } = require("./build-narration-from-data.cjs");
+check("文分割: Mt. Fujiを文末にしない", firstSentences("Look for Mt. Fuji. Watch the window. Then stop.", 2) === "Look for Mt. Fuji. Watch the window.");
+check("文分割: 小数を文末にしない", firstSentences("The view is 1.5 km away. Watch Mt. Kinsho. Then stop.", 2) === "The view is 1.5 km away. Watch Mt. Kinsho.");
+check("文分割: 日本語の文末", firstSentences("まもなく茶畑です。両側に見えます。次は城です。", 2) === "まもなく茶畑です。両側に見えます。");
+for (const dir of ["down", "up"]) {
+  check("両側台本/" + dir, seatFor(spotsById["shizuoka-tea-fields"], dir, "en") === "Seats A and E");
+  check("席記号固定/" + dir, seatFor(spotsById["tokyo-tower"], dir, "ja") === "E席側");
+}
+check("録音台本の対象37件を維持", ids.length === 37);
+for (const id of ["left-fuji", "shimizu-port-chikyu", "shizuoka-tea-fields", "kinshozan"]) {
+  for (const dir of ["down", "up"]) {
+    check(id + "/" + dir + ": 英語台本がMt.で途切れない", !/\bMt\.$/.test(NARR[id][dir].en.text));
+  }
+}
+for (const dir of ["down", "up"]) {
+  const tea = NARR["shizuoka-tea-fields"][dir];
+  check("茶畑/" + dir + ": 日英表示と読み上げが両側", /A席とE席/.test(tea.ja.text) && /A席とE席/.test(tea.ja.speechText) && /Seats A and E/.test(tea.en.text));
+}
 ids.forEach(function (id) {
   const n = NARR[id];
   const sp = spotsById[id];
@@ -253,6 +290,95 @@ ids.forEach(function (id) {
 /* ---------- C. UI操作（代表スポットで1回ずつ） ---------- */
 
 console.log("\n== C. UI操作 ==");
+function gapHarness(hidden) {
+  const h = createHarness("ja", { captureTimers: true, now: 1800000000000 });
+  h.d.getElementById("btn-dir").click();
+  h.d.getElementById("btn-start").click();
+  const p = h.T.latLngAtKm(100);
+  h.gps()({ coords: { latitude: p.lat, longitude: p.lng, accuracy: 10, speed: 250 / 3.6 }, timestamp: h.now() });
+  if (hidden) Object.defineProperty(h.d, "visibilityState", { configurable: true, value: "hidden" });
+  return h;
+}
+const visibleGap = gapHarness(false);
+const delayedGap = gapHarness(true);
+const hiddenGap = gapHarness(true);
+const startGapKm = visibleGap.renderKm();
+for (let sec = 0; sec < 30; sec += 1) { visibleGap.tick(1000); hiddenGap.tick(1000); }
+delayedGap.tick(15000);
+delayedGap.tick(15000);
+// 表示間引き中にも更新済みの位置を、表示復帰後のcallbackで観測する。
+Object.defineProperty(hiddenGap.d, "visibilityState", { configurable: true, value: "visible" });
+hiddenGap.tick(0);
+check("15秒へ間引かれたtimerでも実時間30秒の距離を補完", Math.abs(delayedGap.renderKm() - startGapKm - 100 * 30 / 3600) < 0.001);
+check("可視/非表示/遅延timerが同じ補完位置", Math.abs(visibleGap.renderKm() - delayedGap.renderKm()) < 0.001 && Math.abs(hiddenGap.renderKm() - delayedGap.renderKm()) < 0.001);
+
+const pausedKm = visibleGap.renderKm();
+visibleGap.d.getElementById("btn-pause").click();
+visibleGap.tick(20000);
+visibleGap.d.getElementById("btn-pause").click();
+visibleGap.tick(1000);
+check("一時停止中の20秒を補完距離へ加えない", Math.abs(visibleGap.renderKm() - pausedKm - 100 / 3600) < 0.001);
+
+const boundedGap = gapHarness(false);
+boundedGap.tick(70000);
+const limitKm = boundedGap.renderKm();
+boundedGap.tick(2000);
+check("実測から72秒の既存上限で補完を止める", boundedGap.renderKm() === limitKm);
+const fresh = boundedGap.T.latLngAtKm(102);
+boundedGap.gps()({ coords: { latitude: fresh.lat, longitude: fresh.lng, accuracy: 10, speed: 250 / 3.6 }, timestamp: boundedGap.now() });
+const freshKm = boundedGap.renderKm();
+boundedGap.tick(15000);
+check("実GPS復帰で補完基準を戻し過去の欠測を再加算しない", boundedGap.renderKm() > freshKm && boundedGap.renderKm() - freshKm < 1);
+for (const h of [visibleGap, delayedGap, hiddenGap, boundedGap]) h.dom.window.close();
+
+check("主要音声数は実台本の27件", /27/.test(base.d.getElementById("set-narr-help").textContent) && !/36/.test(base.d.getElementById("set-narr-help").textContent));
+for (const locale of ["ja", "en"]) {
+  const blocked = createHarness(locale, { blockStorage: true });
+  check("保存禁止でもライブ起動/" + locale, blocked.d.documentElement.lang === locale && blocked.d.getElementById("idle-title").textContent.length > 0);
+  const appSource = src("app.js");
+  blocked.w.eval(appSource.slice(appSource.indexOf("function getInitialLang()"), appSource.indexOf("let lang = getInitialLang();")) + "\nwindow.__APP_LANG = getInitialLang();");
+  check("保存禁止でもタイムライン初期言語/" + locale, blocked.w.__APP_LANG === locale);
+  blocked.d.getElementById("btn-dir").click();
+  blocked.d.getElementById("btn-start").click();
+  const p = blocked.T.latLngAtKm(100);
+  blocked.gps()({ coords: { latitude: p.lat, longitude: p.lng, accuracy: 10, speed: 70 }, timestamp: Date.now() });
+  blocked.d.getElementById("btn-settings").click();
+  blocked.d.getElementById("set-follow").checked = false;
+  blocked.d.getElementById("set-narr-mode").value = "off";
+  blocked.d.getElementById("btn-close-settings").click();
+  check("保存禁止でも変更した設定modalを閉じる/" + locale, blocked.d.getElementById("settings").classList.contains("hidden"));
+  check("保存禁止でも現在の設定とGPS案内を継続/" + locale, /OFF/.test(blocked.d.getElementById("btn-narr-toggle").textContent) && typeof blocked.gps() === "function" && !blocked.d.getElementById("btn-pause").classList.contains("hidden"));
+  blocked.d.getElementById("btn-settings").click();
+  check("保存禁止でもセッション内の設定を保持/" + locale, !blocked.d.getElementById("set-follow").checked && blocked.d.getElementById("set-narr-mode").value === "off");
+  blocked.dom.window.close();
+}
+const blockedEnPath = createHarness("ja", { blockStorage: true, pathname: "/en/live/" });
+check("保存禁止でも英語パスのライブ起動", blockedEnPath.d.documentElement.lang === "en");
+blockedEnPath.dom.window.close();
+const loadingNarration = createHarness("ja", { omitNarration: true });
+check("台本未ロード時に主要36件と誤表示しない", !/36/.test(loadingNarration.d.getElementById("set-narr-help").textContent) && /音声のある/.test(loadingNarration.d.getElementById("set-narr-help").textContent));
+loadingNarration.dom.window.close();
+
+// 誤った上り設定では将来の伊吹山が過去欄に入る。下りへ戻す2入口の双方で消えること。
+for (const viaSettings of [false, true]) {
+  const dirUi = createHarness("ja");
+  dirUi.d.getElementById("btn-dir").click();
+  dirUi.d.getElementById("btn-start").click();
+  const p = dirUi.T.latLngAtKm(100);
+  dirUi.gps()({ coords: { latitude: p.lat, longitude: p.lng, accuracy: 10, speed: 70 }, timestamp: Date.now() });
+  const futureName = spotsById.ibuki.ja.name;
+  dirUi.d.getElementById("btn-dir").click();
+  check("方向を誤った時の履歴を再現/" + viaSettings, dirUi.d.getElementById("passed").textContent.includes(futureName));
+  if (viaSettings) {
+    dirUi.d.getElementById("set-dir").value = "down";
+    dirUi.d.getElementById("btn-close-settings").click();
+  } else {
+    dirUi.d.getElementById("btn-dir").click();
+    dirUi.d.getElementById("btn-dir").click();
+  }
+  check("方向を戻した時に未来のスポットを過去欄から除去/" + viaSettings, !dirUi.d.getElementById("passed").textContent.includes(futureName));
+  dirUi.dom.window.close();
+}
 const rep = ids[0];
 const ui = createHarness("ja");
 const ud = ui.d;

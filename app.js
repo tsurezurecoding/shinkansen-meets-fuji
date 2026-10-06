@@ -394,11 +394,11 @@ function normalizeLang(value) {
 function getInitialLang() {
   const urlLang = new URLSearchParams(location.search).get("lang");
   if (urlLang === "ja" || urlLang === "en") {
-    localStorage.setItem("mado-lang", urlLang);
+    try { localStorage.setItem("mado-lang", urlLang); } catch (error) {}
     return urlLang;
   }
   if (/\/en(?:\/|$)/i.test(location.pathname)) {
-    localStorage.setItem("mado-lang", "en");
+    try { localStorage.setItem("mado-lang", "en"); } catch (error) {}
     return "en";
   }
   return "ja";
