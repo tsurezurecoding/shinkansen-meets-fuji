@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "e9857c3fe59f5339",
+  "contentVersion": "a8e1a3fa0df7cef1",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -31,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 139521,
-      "sha256": "6371037ae01f62859c4d51aa88f773b42e16ac03c4e9a6914a7a0cb3d1f045ba"
+      "bytes": 139571,
+      "sha256": "25b772f81956d73d750b75b8649861ac94fe08e2f1370615a91aef36b1dc184f"
     },
     {
       "path": "arenani.css",
@@ -686,13 +686,13 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "d3593d489a2bd38bb3309eed782ee898972925317a0e57a0df6aafb6fa4c735c"
+      "sha256": "21183c2ba3602275751aee4257128383153676056966049e18f11207e428e414"
     },
     {
       "path": "live/narration.js",
       "url": "https://www.michikusa-travel.com/live/narration.js",
-      "bytes": 70449,
-      "sha256": "10aacbc508ad69ab7cf54d41e34e1fae66e5df9588f8f95e4b0b9e15e60ad792"
+      "bytes": 70893,
+      "sha256": "0c54c2b61ae432d24d4819338854bf47ff80b3ddf0a69d0e007850ebd801ea6e"
     },
     {
       "path": "promo/assets/assets-data.js",
@@ -1204,7 +1204,7 @@
       "direction": "down",
       "language": "ja",
       "itemCount": 37,
-      "bytes": 4263840,
+      "bytes": 4212864,
       "items": [
         {
           "path": "live/audio/727-board_down_ja.mp3",
@@ -1251,8 +1251,8 @@
         {
           "path": "live/audio/hikone-castle_down_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/hikone-castle_down_ja.mp3",
-          "bytes": 99216,
-          "sha256": "e27f6f9a51a3e2d7ecd184363f6bec9f6f1354de0a625f6c213aadf0bb814cc6"
+          "bytes": 76032,
+          "sha256": "484059f02e653cfaa3294c1da3bc88449d0718ba2434cb5d8a1e5737a4c29f5c"
         },
         {
           "path": "live/audio/hinataoka_down_ja.mp3",
@@ -1275,14 +1275,14 @@
         {
           "path": "live/audio/kannonji-castle_down_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kannonji-castle_down_ja.mp3",
-          "bytes": 90432,
-          "sha256": "c8380758a59cdce6b824898feb9314669398589888042405dff0918e931f5ef2"
+          "bytes": 73728,
+          "sha256": "5b1d8e0255c823ee8e9b0f486de705d07f4a9a260d1b10fc7a358771c6cd3e60"
         },
         {
           "path": "live/audio/kinshozan_down_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kinshozan_down_ja.mp3",
-          "bytes": 103536,
-          "sha256": "b3052e798ff4e2891814ae63e9b5280fbabf04757c3de5d3e44d843bd412e74b"
+          "bytes": 101952,
+          "sha256": "aa1a941d42725ad3240a21d865bf04e4859e0a4507fd7e669f727ebb3ffb12e6"
         },
         {
           "path": "live/audio/kirin-beer-factory_down_ja.mp3",
@@ -1377,8 +1377,8 @@
         {
           "path": "live/audio/sawayama-castle_down_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/sawayama-castle_down_ja.mp3",
-          "bytes": 104112,
-          "sha256": "4bd515a23bd79dca63f349f5ab521d369f03a2fa270b009b9b0ae99cbd18f846"
+          "bytes": 94032,
+          "sha256": "6503d34b6e10773654cc8a20c17e73dd40278a09355fa3ebcf1da8852b751185"
         },
         {
           "path": "live/audio/seta-karahashi_down_ja.mp3",
@@ -1395,8 +1395,8 @@
         {
           "path": "live/audio/shizuoka-tea-fields_down_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/shizuoka-tea-fields_down_ja.mp3",
-          "bytes": 103680,
-          "sha256": "df5eb8d3e87ac0cd3e6b88edd8865415d9a691e1192000f88853920ca7d83a60"
+          "bytes": 104256,
+          "sha256": "1cfe21cf19b9809f49ed53d01a65b900aaf9e23f09df400043450c069b60a6b4"
         },
         {
           "path": "live/audio/solar-ark_down_ja.mp3",
@@ -1434,7 +1434,7 @@
       "direction": "down",
       "language": "en",
       "itemCount": 37,
-      "bytes": 4627872,
+      "bytes": 4485600,
       "items": [
         {
           "path": "live/audio/727-board_down_en.mp3",
@@ -1481,8 +1481,8 @@
         {
           "path": "live/audio/hikone-castle_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/hikone-castle_down_en.mp3",
-          "bytes": 116928,
-          "sha256": "d9836e1a54a647b570bd99ab381b064cab849da556f3f2893f4013d23eb10a1e"
+          "bytes": 65088,
+          "sha256": "c6bba990cf645cff817aaf4ed6337021e4239319e2a54fde19616df2b518d316"
         },
         {
           "path": "live/audio/hinataoka_down_en.mp3",
@@ -1505,14 +1505,14 @@
         {
           "path": "live/audio/kannonji-castle_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kannonji-castle_down_en.mp3",
-          "bytes": 121824,
-          "sha256": "dfcb4ac255c282ee174c98f18a1712caa6a4d9084e938fbd4c2d05b862d727fe"
+          "bytes": 65520,
+          "sha256": "8e01fbf55fc8aa54402141778767ebb413f6656d481506cc73f35da49c0ee5b3"
         },
         {
           "path": "live/audio/kinshozan_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kinshozan_down_en.mp3",
-          "bytes": 99648,
-          "sha256": "7fe2e31f3cdee8588ac4dbaf94416a52708ba9376fd8f244ed6ed8dbc758e886"
+          "bytes": 89424,
+          "sha256": "492920da0a14ca064e6d87d943929ad8867b27aeb5d01cec74f533657b068ce6"
         },
         {
           "path": "live/audio/kirin-beer-factory_down_en.mp3",
@@ -1529,8 +1529,8 @@
         {
           "path": "live/audio/left-fuji_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/left-fuji_down_en.mp3",
-          "bytes": 120960,
-          "sha256": "4ff3309781919564b58c10d88864f32ea2aac55f94c1328f0927192ea4523957"
+          "bytes": 102816,
+          "sha256": "bda8da8dd8dbcc1d80aa3fd5df972c323d43e8ee7cfd9a32dd5ba9b06bdc825a"
         },
         {
           "path": "live/audio/maruko-bridge_down_en.mp3",
@@ -1607,8 +1607,8 @@
         {
           "path": "live/audio/sawayama-castle_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/sawayama-castle_down_en.mp3",
-          "bytes": 118656,
-          "sha256": "bb8c7d5ead4c5bca3ab949c4e4cc9a51fcc4f8bf6f6cbcbd83fb9e37f967187e"
+          "bytes": 78912,
+          "sha256": "7432de5c472b104c58f7cfb95f32000a5916796a6a13519ecaf269e32ae7f4eb"
         },
         {
           "path": "live/audio/seta-karahashi_down_en.mp3",
@@ -1619,14 +1619,14 @@
         {
           "path": "live/audio/shimizu-port-chikyu_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/shimizu-port-chikyu_down_en.mp3",
-          "bytes": 115776,
-          "sha256": "03d3e3db3bc35ecb4c76d58ef5b16910e1586022d21c19945cba997eff1f0a54"
+          "bytes": 110880,
+          "sha256": "80b90238c5700b0206d5f3019bd451c879eaa5b0e91dd85d90169f2ebc4342df"
         },
         {
           "path": "live/audio/shizuoka-tea-fields_down_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/shizuoka-tea-fields_down_en.mp3",
-          "bytes": 102528,
-          "sha256": "fb5022b6c990774bbe35c8829faaac18961dd96e39f9f2ffbb6325cec75b95e7"
+          "bytes": 141408,
+          "sha256": "3e6ab3cea7ff3de4ee304951fb421f44480e922167a99916893568b7473c016c"
         },
         {
           "path": "live/audio/solar-ark_down_en.mp3",
@@ -1664,7 +1664,7 @@
       "direction": "up",
       "language": "ja",
       "itemCount": 37,
-      "bytes": 3713040,
+      "bytes": 3720960,
       "items": [
         {
           "path": "live/audio/727-board_up_ja.mp3",
@@ -1711,8 +1711,8 @@
         {
           "path": "live/audio/hikone-castle_up_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/hikone-castle_up_ja.mp3",
-          "bytes": 71712,
-          "sha256": "389fed2e74bbed385f269c6d096d046235b68c5357b6c54e16813172b6e24b3e"
+          "bytes": 75744,
+          "sha256": "baf3a07b33f41680edb0d4c10f18c43dc7c2c31a8da17731258f8bf8ffdd1a08"
         },
         {
           "path": "live/audio/hinataoka_up_ja.mp3",
@@ -1735,14 +1735,14 @@
         {
           "path": "live/audio/kannonji-castle_up_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kannonji-castle_up_ja.mp3",
-          "bytes": 73440,
-          "sha256": "490b7e1ff98ef1efdbcf493646d479604c80f4f6c6095a5ccc3bdca6140bd4fa"
+          "bytes": 67968,
+          "sha256": "669c92a40b141d1d16a4c501bee297e760fe5c643bc2840207027c802d1df7f3"
         },
         {
           "path": "live/audio/kinshozan_up_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kinshozan_up_ja.mp3",
-          "bytes": 89280,
-          "sha256": "c134ca8065dce78b1811e315d6aeed408539f0a9429f4e79caf3499f6e4fffcb"
+          "bytes": 101664,
+          "sha256": "e5fab4c6f34238eeee80c26184b6970f7ac61672219cf639739f31e8734b6a65"
         },
         {
           "path": "live/audio/kirin-beer-factory_up_ja.mp3",
@@ -1837,8 +1837,8 @@
         {
           "path": "live/audio/sawayama-castle_up_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/sawayama-castle_up_ja.mp3",
-          "bytes": 80496,
-          "sha256": "de1b4b231f7a595b479c460a284655e50b54101ec77da968991acae077219cc1"
+          "bytes": 66240,
+          "sha256": "46601275afb4249a4e224116019deeacc65b9e038ea952fcb3601abc8a9457af"
         },
         {
           "path": "live/audio/seta-karahashi_up_ja.mp3",
@@ -1855,8 +1855,8 @@
         {
           "path": "live/audio/shizuoka-tea-fields_up_ja.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/shizuoka-tea-fields_up_ja.mp3",
-          "bytes": 77760,
-          "sha256": "a975f98677c9f79b1c2ca9f295b497e610c40bb5ea2078009c86d5da35d1087b"
+          "bytes": 88992,
+          "sha256": "f7142b7f0f46056e8342bc7f795219a2927b4e82a1567be7b717868e8b4df2a5"
         },
         {
           "path": "live/audio/solar-ark_up_ja.mp3",
@@ -1894,7 +1894,7 @@
       "direction": "up",
       "language": "en",
       "itemCount": 37,
-      "bytes": 4294656,
+      "bytes": 4137984,
       "items": [
         {
           "path": "live/audio/727-board_up_en.mp3",
@@ -1941,8 +1941,8 @@
         {
           "path": "live/audio/hikone-castle_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/hikone-castle_up_en.mp3",
-          "bytes": 114912,
-          "sha256": "574c01b60a712cb47508da2d5c92b8a6cbf26a16053f25e7a4adbf3c455dc593"
+          "bytes": 60336,
+          "sha256": "f069b51d0f8b63ce75afcc3d4c4829a188bbcfdde4fba8bc2b4d4b27ab7509d2"
         },
         {
           "path": "live/audio/hinataoka_up_en.mp3",
@@ -1965,14 +1965,14 @@
         {
           "path": "live/audio/kannonji-castle_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kannonji-castle_up_en.mp3",
-          "bytes": 119952,
-          "sha256": "5dd739f60b377ae0c2eb7410d9c77e068f3157058bf222fe875d2daca7c5f6dc"
+          "bytes": 66096,
+          "sha256": "e6b29cf040582367194c60ce8db9b3ea0db0e490a92483d83e4b7c3dde76478d"
         },
         {
           "path": "live/audio/kinshozan_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/kinshozan_up_en.mp3",
-          "bytes": 89280,
-          "sha256": "466e7ccf81811f5b449b3b69775902a9a1f4ca56d64ee7ecc59a990f922cbdf3"
+          "bytes": 78912,
+          "sha256": "09c7bb06162d4edb72d0f7f47ad1cbdd8f0a339d01670a1b1165b7c63eb598ff"
         },
         {
           "path": "live/audio/kirin-beer-factory_up_en.mp3",
@@ -1989,8 +1989,8 @@
         {
           "path": "live/audio/left-fuji_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/left-fuji_up_en.mp3",
-          "bytes": 108000,
-          "sha256": "646fd19581fde8eaa75ba4a3f95fd1ffa6cd8531e6b9b823e5c0de6fb808e839"
+          "bytes": 109440,
+          "sha256": "fde62fddd6f0e0f945a24b03f1e73b2b3c287c16f4dff62702a411c0218b006e"
         },
         {
           "path": "live/audio/maruko-bridge_up_en.mp3",
@@ -2067,8 +2067,8 @@
         {
           "path": "live/audio/sawayama-castle_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/sawayama-castle_up_en.mp3",
-          "bytes": 116496,
-          "sha256": "9c83147330375e0413b3345c4178a269dad2bf90b1f3f062c5adb16ca1910036"
+          "bytes": 53136,
+          "sha256": "9480b980e7251220434032dce521a02a13aadd9c7312a91ed2c1b380f0243fe9"
         },
         {
           "path": "live/audio/seta-karahashi_up_en.mp3",
@@ -2079,14 +2079,14 @@
         {
           "path": "live/audio/shimizu-port-chikyu_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/shimizu-port-chikyu_up_en.mp3",
-          "bytes": 111456,
-          "sha256": "004b50d2b9f9528704c150bbd03da80ffcc3908a67395e9a117077e5cc355fc8"
+          "bytes": 102096,
+          "sha256": "3951776fb7e8ad0792ed731e757b0d9efc376978177f2c48d62c9de82725c197"
         },
         {
           "path": "live/audio/shizuoka-tea-fields_up_en.mp3",
           "url": "https://www.michikusa-travel.com/live/audio/shizuoka-tea-fields_up_en.mp3",
-          "bytes": 98496,
-          "sha256": "68872de2ad32d5e448da4956be503380a7ebb9f06d795871317c52b7f7b9a4ef"
+          "bytes": 131904,
+          "sha256": "24bd88c907d371726d7c837dde44d984d6735ff5150e11350b83bb267cc22768"
         },
         {
           "path": "live/audio/solar-ark_up_en.mp3",

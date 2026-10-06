@@ -298,8 +298,8 @@ var NARRATIONS = {
         "speechText": "まもなく左富士です。東京から新大阪方面へ向かうなら、静岡駅を過ぎ、安倍川を渡ってまもなく、A席側に富士山が現れます。ふつう富士山はE席側ですが、この短い区間だけ反対側に見える特別な車窓です。"
       },
       "en": {
-        "text": "Left-Side Fuji is coming up on the Seat A side, around Just after Shizuoka Sta. and the Abe River. For 28 seconds, Fuji switches sides. Heading from Tokyo toward Shin-Osaka, start looking just after Shizuoka Station, soon after crossing the Abe River. Mt.",
-        "durationSec": 20
+        "text": "Left-Side Fuji is coming up on the Seat A side, just after Shizuoka Station and the Abe River. Mt. Fuji usually appears from Seat E, but this short curve gives Seat A a brief view of the mountain. Keep watching: it lasts only a few seconds.",
+        "durationSec": 21
       }
     },
     "up": {
@@ -309,8 +309,8 @@ var NARRATIONS = {
         "speechText": "東京方面へ向かうこのあたりでは、A席側に左富士の区間が来ます。静岡駅の近くで、いつもとは反対側に富士山が見える短い特別区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Left-Side Fuji appears on the Seat A side. For 28 seconds, Fuji switches sides. Heading from Tokyo toward Shin-Osaka, start looking just after Shizuoka Station, soon after crossing the Abe River. Mt.",
-        "durationSec": 16
+        "text": "As you approach Shizuoka on the way toward Tokyo, watch Seat A for a brief view of Mt. Fuji. The mountain usually appears from Seat E, but this short stretch offers a view from the opposite side. Keep your eyes on the window: this Fuji moment lasts only a few seconds.",
+        "durationSec": 24
       }
     }
   },
@@ -322,8 +322,8 @@ var NARRATIONS = {
         "speechText": "まもなく清水港とちきゅうです。新富士から静岡へ向かう途中、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船ちきゅうも窓に入ります。"
       },
       "en": {
-        "text": "Shimizu Port and CHIKYU is coming up on the Seat A side, around Shin-Fuji → Shizuoka. Cranes and CHIKYU. Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt.",
-        "durationSec": 19
+        "text": "Between Shin-Fuji and Shizuoka, look far off on the Seat A side for the gantry cranes of Shimizu Port. If CHIKYU is in port, its white drilling tower may stand out among the cranes. The deep-sea drilling vessel has a derrick about 70 meters tall rising from its hull.",
+        "durationSec": 23
       }
     },
     "up": {
@@ -333,32 +333,32 @@ var NARRATIONS = {
         "speechText": "東京方面へ向かうこのあたりでは、A席側に清水港のクレーン群が見えてきます。停泊していれば、地球深部探査船ちきゅうも窓に入る区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Shimizu Port and CHIKYU appears on the Seat A side. Cranes and CHIKYU. Between Shin-Fuji and Shizuoka, look from Seat A for Shimizu Port: gantry cranes, and sometimes the deep-sea drilling vessel CHIKYU. After Mt.",
-        "durationSec": 18
+        "text": "Heading toward Tokyo, look to Seat A for Shimizu Port between Shizuoka and Shin-Fuji. Beyond the gantry cranes, you may spot CHIKYU if the vessel is in port. Watch for a white drilling tower about 70 meters tall rising from the middle of the ship.",
+        "durationSec": 21
       }
     }
   },
   "shizuoka-tea-fields": {
     "down": {
       "ja": {
-        "text": "まもなく静岡の茶畑です。E席側、静岡 → 掛川で見えてきます。緑の畝が、車窓を走る。 掛川城の少し手前、車窓に茶畑の緑が流れる区間があります。富士山や城ほど大きな目印ではありません。",
+        "text": "まもなく静岡の茶畑です。掛川城の少し手前、A席とE席の両側に茶畑の緑が流れる区間があります。細く整えられた畝と防霜ファンが並ぶ、静岡らしい景色です。",
         "durationSec": 12,
-        "speechText": "まもなく静岡の茶畑です。掛川城の少し手前、E席側の車窓に茶畑の緑が流れる区間があります。富士山や城ほど大きな目印ではありませんが、静岡らしい景色です。"
+        "speechText": "まもなく静岡の茶畑です。掛川城の少し手前、A席とE席の両側に茶畑の緑が流れる区間があります。細く整えられたうねと防霜ファンが並ぶ、静岡らしい景色です。"
       },
       "en": {
-        "text": "Shizuoka Tea Fields is coming up on the Seat E side, around Shizuoka → Kakegawa. Rows of green tea from the window. A little before Kakegawa Castle, rows of tea fields can slide past the window. It is not as obvious as Mt.",
-        "durationSec": 20
+        "text": "Shizuoka Tea Fields are coming up on both sides, beyond Seats A and E. Before Kakegawa Castle, neatly trimmed green rows slide past the windows, with tall frost-protection fans standing above them. This is one of Japan's great tea-growing regions. It is subtler than Mt. Fuji or a castle, but unmistakably rural Japan.",
+        "durationSec": 25
       }
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に静岡の茶畑が見えてきます。緑の畝が、車窓を走る。 掛川城の少し手前、車窓に茶畑の緑が流れる区間があります。富士山や城ほど大きな目印ではありません。",
+        "text": "東京方面へ向かうこのあたりでは、A席とE席の両側に静岡の茶畑が見えてきます。緑の畝と防霜ファンが車窓を流れる、静岡らしい短い区間です。",
         "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に静岡の茶畑が見えてきます。緑の畝が車窓を流れる、静岡らしい短い区間です。"
+        "speechText": "東京方面へ向かうこのあたりでは、A席とE席の両側に静岡の茶畑が見えてきます。緑のうねと防霜ファンが車窓を流れる、静岡らしい短い区間です。"
       },
       "en": {
-        "text": "Heading toward Tokyo, Shizuoka Tea Fields appears on the Seat E side. Rows of green tea from the window. A little before Kakegawa Castle, rows of tea fields can slide past the window. It is not as obvious as Mt.",
-        "durationSec": 19
+        "text": "Heading toward Tokyo, look out from Seats A and E for Shizuoka Tea Fields on both sides. Neatly trimmed green rows and tall frost-protection fans spread beside the tracks around Kakegawa. This is one of Japan's great tea-growing regions. It is subtler than Mt. Fuji or a castle, but unmistakably rural Japan.",
+        "durationSec": 24
       }
     }
   },
@@ -643,24 +643,30 @@ var NARRATIONS = {
   "kinshozan": {
     "down": {
       "ja": {
-        "text": "まもなく金生山です。E席側、岐阜羽島 → 米原（大垣付近）で見えてきます。消えた岐阜のピラミッド。 岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつては「岐阜のピラミッド」と呼ばれた四角錐の山頂部分が車窓から見えました。",
-        "durationSec": 12,
-        "speechText": "まもなく金生山です。岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつて消えた岐阜のピラミッドとも呼ばれた山です。"
+        "text": "まもなく金生山です。E席側に、白く削られた山肌が見えます。かつては山頂の形から「岐阜のピラミッド」と呼ばれました。石灰岩の採掘で姿を変えた山です。",
+        "durationSec": 16.992,
+        "speechText": "まもなく金生山です。E席側に、白く削られた山肌が見えます。かつては山頂の形から「岐阜のピラミッド」と呼ばれました。石灰岩の採掘で姿を変えた山です。",
+        "audio": "audio/kinshozan_down_ja.mp3"
       },
       "en": {
-        "text": "Mt. Kinsho is coming up on the Seat E side, around Gifu-Hashima → Maibara, near Ogaki. The vanished Gifu pyramid. After Gifu-Hashima, near Ogaki, a pale quarried mountainside appears on the Seat E side. Mt.",
-        "durationSec": 16
+        "text": "Mt. Kinsho is coming up on the Seat E side. Look for its pale quarried slopes. The summit once had a pyramid shape, giving the mountain the nickname Gifu’s Pyramid. Limestone quarrying has changed its shape.",
+        "durationSec": 14.904,
+        "speechText": "Mt. Kinsho is coming up on the Seat E side. Look for its pale quarried slopes. The summit once had a pyramid shape, giving the mountain the nickname Gifu’s Pyramid. Limestone quarrying has changed its shape.",
+        "audio": "audio/kinshozan_down_en.mp3"
       }
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に金生山が見えてきます。消えた岐阜のピラミッド。 岐阜羽島を過ぎて大垣へ向かうあたり、E席側に白く削られた山肌が見えます。金生山は石灰岩の山で、かつては「岐阜のピラミッド」と呼ばれた四角錐の山頂部分が車窓から見えました。",
-        "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に金生山が見えてきます。白く削られた山肌が特徴の石灰岩の山で、かつて消えた岐阜のピラミッドとも呼ばれました。"
+        "text": "E席側に金生山が見えてきます。白く削られた山肌が特徴です。かつては山頂の形から「岐阜のピラミッド」と呼ばれました。石灰岩の採掘で姿を変えた山です。",
+        "durationSec": 16.944,
+        "speechText": "E席側に金生山が見えてきます。白く削られた山肌が特徴です。かつては山頂の形から「岐阜のピラミッド」と呼ばれました。石灰岩の採掘で姿を変えた山です。",
+        "audio": "audio/kinshozan_up_ja.mp3"
       },
       "en": {
-        "text": "Heading toward Tokyo, Mt. Kinsho appears on the Seat E side. The vanished Gifu pyramid. After Gifu-Hashima, near Ogaki, a pale quarried mountainside appears on the Seat E side. Mt.",
-        "durationSec": 14
+        "text": "Look toward Seat E for Mt. Kinsho and its pale quarried slopes. The summit once had a pyramid shape, giving the mountain the nickname Gifu’s Pyramid. Limestone quarrying has changed its shape.",
+        "durationSec": 13.152,
+        "speechText": "Look toward Seat E for Mt. Kinsho and its pale quarried slopes. The summit once had a pyramid shape, giving the mountain the nickname Gifu’s Pyramid. Limestone quarrying has changed its shape.",
+        "audio": "audio/kinshozan_up_en.mp3"
       }
     }
   },
@@ -713,72 +719,90 @@ var NARRATIONS = {
   "sawayama-castle": {
     "down": {
       "ja": {
-        "text": "まもなく佐和山城跡です。E席側、米原 → 京都で見えてきます。石田三成の城跡を、田んぼ越しに。 米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城。",
-        "durationSec": 12,
-        "speechText": "まもなく佐和山城跡です。米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城です。"
+        "text": "まもなく佐和山城跡です。E席側に、城跡の山と看板が見えます。関ヶ原の戦いで敗れた石田三成の居城があった山を、田んぼ越しに探してみてください。",
+        "durationSec": 15.672,
+        "speechText": "まもなく佐和山城跡です。E席側に、城跡の山と看板が見えます。関ヶ原の戦いで敗れた石田三成の居城があった山を、田んぼ越しに探してみてください。",
+        "audio": "audio/sawayama-castle_down_ja.mp3"
       },
       "en": {
-        "text": "Sawayama Castle Ruins is coming up on the Seat E side, around Maibara → Kyoto. Mitsunari's hill beyond the fields. Soon after Maibara, the hill and sign for Sawayama Castle may appear on the Seat E side. This was the castle of Ishida Mitsunari, defeated at Sekigahara.",
-        "durationSec": 22
+        "text": "Sawayama Castle Ruins is coming up on the Seat E side. Look beyond the fields for the hill and its sign. This was the site of Ishida Mitsunari’s castle before his defeat at Sekigahara.",
+        "durationSec": 13.152,
+        "speechText": "Sawayama Castle Ruins is coming up on the Seat E side. Look beyond the fields for the hill and its sign. This was the site of Ishida Mitsunari’s castle before his defeat at Sekigahara.",
+        "audio": "audio/sawayama-castle_down_en.mp3"
       }
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に佐和山城跡が見えてきます。石田三成の城跡を、田んぼ越しに。 米原を過ぎて少し、E席側に佐和山城跡の山と看板が見えることがあります。佐和山城は、関ヶ原の戦いで敗れた石田三成の居城。",
-        "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に佐和山城跡が見えてきます。石田三成の居城だった山城跡を、田んぼ越しに探す車窓です。"
+        "text": "E席側に佐和山城跡の山が見えてきます。石田三成の居城だった山城跡を、田んぼ越しに探してみてください。",
+        "durationSec": 11.04,
+        "speechText": "E席側に佐和山城跡の山が見えてきます。石田三成の居城だった山城跡を、田んぼ越しに探してみてください。",
+        "audio": "audio/sawayama-castle_up_ja.mp3"
       },
       "en": {
-        "text": "Heading toward Tokyo, Sawayama Castle Ruins appears on the Seat E side. Mitsunari's hill beyond the fields. Soon after Maibara, the hill and sign for Sawayama Castle may appear on the Seat E side. This was the castle of Ishida Mitsunari, defeated at Sekigahara.",
-        "durationSec": 20
+        "text": "Look toward Seat E for the hill of Sawayama Castle Ruins beyond the fields. This was the site of Ishida Mitsunari’s castle.",
+        "durationSec": 8.856,
+        "speechText": "Look toward Seat E for the hill of Sawayama Castle Ruins beyond the fields. This was the site of Ishida Mitsunari’s castle.",
+        "audio": "audio/sawayama-castle_up_en.mp3"
       }
     }
   },
   "hikone-castle": {
     "down": {
       "ja": {
-        "text": "まもなく彦根城です。E席側、米原 → 京都で見えてきます。国宝の天守を、街の向こうに。 米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。大きくはありません。",
-        "durationSec": 12,
-        "speechText": "まもなく彦根城です。米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。国宝の天守が、街の向こうに少しだけ現れる区間です。"
+        "text": "まもなく彦根城です。E席側の街並みの向こうに、国宝の天守が小さく見えます。遠くの丘に立つ城を探してみてください。",
+        "durationSec": 12.672,
+        "speechText": "まもなく彦根城です。E席側の街並みの向こうに、国宝の天守が小さく見えます。遠くの丘に立つ城を探してみてください。",
+        "audio": "audio/hikone-castle_down_ja.mp3"
       },
       "en": {
-        "text": "Hikone Castle is coming up on the Seat E side, around Maibara → Kyoto. A tiny National Treasure keep. After Maibara, Hikone Castle's keep may appear small beyond the town on the Seat E side. It is not a big, obvious view; that is what makes spotting it satisfying.",
-        "durationSec": 23
+        "text": "Hikone Castle is coming up on the Seat E side. Its National Treasure keep stands small beyond the town. Look for the castle on the distant hill.",
+        "durationSec": 10.848,
+        "speechText": "Hikone Castle is coming up on the Seat E side. Its National Treasure keep stands small beyond the town. Look for the castle on the distant hill.",
+        "audio": "audio/hikone-castle_down_en.mp3"
       }
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に彦根城が見えてきます。国宝の天守を、街の向こうに。 米原を出たあと、E席側の街並みの向こうに彦根城の天守が小さく見えることがあります。大きくはありません。",
-        "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に彦根城が見えてきます。国宝の天守が街の向こうに小さく見えることがあります。"
+        "text": "E席側の街並みの向こうに、彦根城の天守が小さく見えます。国宝の天守です。遠くの丘に立つ城を探してみてください。",
+        "durationSec": 12.624,
+        "speechText": "E席側の街並みの向こうに、彦根城の天守が小さく見えます。国宝の天守です。遠くの丘に立つ城を探してみてください。",
+        "audio": "audio/hikone-castle_up_ja.mp3"
       },
       "en": {
-        "text": "Heading toward Tokyo, Hikone Castle appears on the Seat E side. A tiny National Treasure keep. After Maibara, Hikone Castle's keep may appear small beyond the town on the Seat E side. It is not a big, obvious view; that is what makes spotting it satisfying.",
-        "durationSec": 21
+        "text": "Look toward Seat E for Hikone Castle’s small keep beyond the town. It is a National Treasure. Look for the castle on the distant hill.",
+        "durationSec": 10.056,
+        "speechText": "Look toward Seat E for Hikone Castle’s small keep beyond the town. It is a National Treasure. Look for the castle on the distant hill.",
+        "audio": "audio/hikone-castle_up_en.mp3"
       }
     }
   },
   "kannonji-castle": {
     "down": {
       "ja": {
-        "text": "まもなく観音寺城跡です。E席側、米原 → 京都で見えてきます。山の稜線に、六角氏の城跡を探す。 安土の近く、E席側の山並みに観音寺城跡が見えることがあります。天守を見るスポットではなく、山城のあった稜線を探す車窓です。",
-        "durationSec": 12,
-        "speechText": "まもなく観音寺城跡です。安土の近く、E席側の山並みに観音寺城跡が見えることがあります。天守ではなく、山城のあった稜線を探す車窓です。"
+        "text": "まもなく観音寺城跡です。E席側の山並みで、山城のあった稜線を探してみてください。天守を見る景色ではありません。",
+        "durationSec": 12.288,
+        "speechText": "まもなく観音寺城跡です。E席側の山並みで、山城のあった稜線を探してみてください。天守を見る景色ではありません。",
+        "audio": "audio/kannonji-castle_down_ja.mp3"
       },
       "en": {
-        "text": "Kannonji Castle Ruins is coming up on the Seat E side, around Maibara → Kyoto. A castle ridge in the mountains. Near Azuchi, the ridge of Kannonji Castle may be visible on the Seat E side. This is not a keep-spotting view; it is about reading the mountain where a Sengoku-period castle once stood.",
-        "durationSec": 25
+        "text": "Kannonji Castle Ruins is coming up on the Seat E side. Look for the ridgeline where the mountain castle once stood. There is no castle keep to look for here.",
+        "durationSec": 10.92,
+        "speechText": "Kannonji Castle Ruins is coming up on the Seat E side. Look for the ridgeline where the mountain castle once stood. There is no castle keep to look for here.",
+        "audio": "audio/kannonji-castle_down_en.mp3"
       }
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かうこのあたりでは、E席側に観音寺城跡が見えてきます。山の稜線に、六角氏の城跡を探す。 安土の近く、E席側の山並みに観音寺城跡が見えることがあります。天守を見るスポットではなく、山城のあった稜線を探す車窓です。",
-        "durationSec": 12,
-        "speechText": "東京方面へ向かうこのあたりでは、E席側に観音寺城跡が見えてきます。六角氏の城跡があった山の稜線を探す車窓です。"
+        "text": "E席側の山並みが観音寺城跡です。山城のあった稜線を探す車窓です。天守を見る景色ではありません。",
+        "durationSec": 11.328,
+        "speechText": "E席側の山並みが観音寺城跡です。山城のあった稜線を探す車窓です。天守を見る景色ではありません。",
+        "audio": "audio/kannonji-castle_up_ja.mp3"
       },
       "en": {
-        "text": "Heading toward Tokyo, Kannonji Castle Ruins appears on the Seat E side. A castle ridge in the mountains. Near Azuchi, the ridge of Kannonji Castle may be visible on the Seat E side. This is not a keep-spotting view; it is about reading the mountain where a Sengoku-period castle once stood.",
-        "durationSec": 24
+        "text": "Look toward Seat E for the ridgeline of Kannonji Castle Ruins. This view is about the site of a former mountain castle. There is no keep to look for here.",
+        "durationSec": 11.016,
+        "speechText": "Look toward Seat E for the ridgeline of Kannonji Castle Ruins. This view is about the site of a former mountain castle. There is no keep to look for here.",
+        "audio": "audio/kannonji-castle_up_en.mp3"
       }
     }
   },
