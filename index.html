@@ -542,6 +542,141 @@
       .js .reveal { opacity: 1; transform: none; }
     }
   </style>
+<!-- ANDROID_INVITE_HEAD_START -->
+<style>.android-invite{display:none;position:relative;max-width:700px;margin:16px auto;padding:12px 48px 12px 16px;border:1px solid #d7e5ef;border-radius:14px;background:linear-gradient(120deg,#fff 0%,#f0f7fc 100%);box-shadow:0 5px 18px rgba(21,55,82,.09);color:#193c52;font:inherit;text-align:left;box-sizing:border-box;grid-template-columns:40px minmax(0,1fr) 160px;gap:8px 12px;align-items:center}.android-invite-eligible .android-invite,.android-invite.android-invite-reserved{display:grid}.android-invite:not(.android-invite-reserved){visibility:hidden}.android-invite-eligible .android-invite{visibility:visible}.android-invite-icon{display:block;width:40px;height:40px;border-radius:9px}.android-invite-copy{min-width:0}.android-invite-label{display:block;color:#42647c;font-size:.6875rem;line-height:1.5;letter-spacing:.04em}.android-invite strong{display:block;margin-top:3px;font-size:.9375rem;line-height:1.5;font-weight:600}.android-invite p{margin:4px 0 0;font-size:.8125rem;line-height:1.6;color:#36586e}.android-invite-actions{display:flex;align-items:center}.android-invite a{position:relative;display:block;width:160px;min-height:61.92px;text-decoration:none}.android-invite-badge{display:block;width:160px;height:auto;visibility:hidden}.android-invite-play-fallback{position:absolute;inset:9px 8px;display:flex;align-items:center;justify-content:center;border-radius:6px;background:#193c52;color:#fff;font-size:.8125rem}.android-invite-badge-loaded .android-invite-badge{visibility:visible}.android-invite-badge-loaded .android-invite-play-fallback{display:none}.android-invite button{position:absolute;top:2px;right:2px;width:44px;min-height:44px;display:flex;align-items:center;justify-content:center;margin:0;padding:0;border:0;border-radius:50%;background:transparent;color:#526f83;font:inherit;font-size:1.375rem;line-height:1;cursor:pointer}.android-invite button:hover{background:#e5f0f8}.android-invite a:focus-visible,.android-invite button:focus-visible{outline:3px solid #27678e;outline-offset:2px}@media(max-width:700px){.android-invite{margin:16px 18px;padding:12px 16px;grid-template-columns:40px minmax(0,1fr);align-items:start}.android-invite-icon{margin-top:8px}.android-invite-label,.android-invite strong{padding-right:24px}.android-invite-actions{grid-column:2}}@media print{.android-invite{display:none!important}}</style>
+<script>/* Inlined at build time: no extra request, bridge, SDK or install detection. */
+(function () {
+  "use strict";
+  var key = "mado-android-invite-v1", root = document.documentElement, claim, card, observer, ratio = 0, pending = false;
+  // browser=false is not proof of an installed app: unsupported/unknown modes exist.
+  var modeNames = ["standalone", "fullscreen", "minimal-ui", "window-controls-overlay", "picture-in-picture", "tabbed"];
+  var modes = modeNames.map(function (name) {
+    try { return typeof window.matchMedia === "function" ? window.matchMedia("(display-mode: " + name + ")") : null; }
+    catch (error) { return null; }
+  });
+  function browser() {
+    var ua = navigator.userAgent || "";
+    return /Android/i.test(ua) && /(?:Chrome|Firefox|SamsungBrowser|EdgA|OPR)\//i.test(ua)
+      && !/(?:Googlebot|GoogleOther|bingbot|Applebot|DuckDuckBot|crawler|spider|\bwv\b|Version\/4\.0|FBAN|FBAV|Instagram|Line\/|GSA\/|Twitter|TikTok|MicroMessenger|DuckDuckGo)/i.test(ua)
+      && !modes.some(function (mode) { return mode && mode.matches; }) && !navigator.standalone && window.self === window.top
+      && !window.Capacitor && !window.MADO_NATIVE_APP && !window.MADO_EMBEDDED_WEB
+      && new URLSearchParams(location.search).get("from") !== "android-app";
+  }
+  function read() {
+    var raw = localStorage.getItem(key);
+    if (raw === null) return null;
+    var value = JSON.parse(raw);
+    if (!value || typeof value !== "object" || Array.isArray(value)
+        || (!value.stop && (!Number.isFinite(value.until) || value.until < 0))) throw new Error("invalid invite state");
+    return value;
+  }
+  try {
+    if (!browser() || !("IntersectionObserver" in window)) return;
+    var prior = read();
+    // Corrupt or unrecognised state also suppresses the invitation.
+    if (prior && (prior.stop || typeof prior.until !== "number" || prior.until > Date.now())) return;
+    // Check storage writes without claiming an invitation before it is seen.
+    var probe = key + "-probe-" + Math.random();
+    try {
+      localStorage.setItem(probe, "1");
+      if (localStorage.getItem(probe) !== "1") return;
+    } finally { localStorage.removeItem(probe); }
+    root.classList.add("android-invite-eligible");
+  } catch (error) { return; } // Storage unavailable: never show a repeatable prompt.
+
+  function hide(collapse) {
+    if (!card) return;
+    // Non-user storage/BFCache updates retain the footprint; direct dismissal collapses it.
+    card.style.visibility = "hidden";
+    card.setAttribute("aria-hidden", "true");
+    card.inert = true;
+    if (collapse) card.style.display = "none"; // Direct user action may collapse its own document.
+    root.classList.remove("android-invite-eligible");
+  }
+  function refresh() {
+    try {
+      var state = read();
+      if (!browser() || (state && (state.stop || (state.until > Date.now() && (!claim || state.token !== claim.token))))
+          || (claim && (!state || state.token !== claim.token))) hide();
+    }
+    catch (error) { hide(); }
+  }
+  function stop(play) {
+    try { localStorage.setItem(key, JSON.stringify(play ? { stop: true, reason: "play" } : { until: Date.now() + 30 * 86400000, reason: "dismiss" })); }
+    catch (error) { /* This document still stays hidden. Future storage failure fails closed. */ }
+  }
+  function track(name) {
+    // Use only the site's existing analytics gate; never initialise analytics here.
+    if (window.MADO_ANALYTICS_DISABLED === false && typeof window.gtag === "function") {
+      window.gtag("event", name, {
+        entry_source: "android_browser_inline", language: root.lang,
+        cta_id: "android_browser_inline", page_context: /guide\.html$/.test(location.pathname) ? "fuji_guide" : "landing"
+      });
+    }
+  }
+  function seen() {
+    if (claim || pending || !card || card.inert || ratio < 0.5 || document.visibilityState !== "visible") return;
+    pending = true;
+    function commit() {
+      // Recheck after waiting for another tab. Locks serialize claims where supported.
+      refresh();
+      if (card.inert || ratio < 0.5 || document.visibilityState !== "visible") return;
+      var next = { until: Date.now() + 7 * 86400000, token: Date.now() + ":" + Math.random() };
+      localStorage.setItem(key, JSON.stringify(next));
+      if (read().token !== next.token) { hide(); return; }
+      claim = next;
+      track("android_app_invite_view");
+      observer.disconnect();
+    }
+    if (navigator.locks && typeof navigator.locks.request === "function") {
+      try {
+        navigator.locks.request(key + "-view", commit).then(function () { pending = false; }, function () { pending = false; hide(); });
+      } catch (error) { pending = false; hide(); }
+    } else {
+      // Storage recheck/write/verify is best effort; storage alone is not atomic across tabs.
+      try { commit(); } catch (error) { hide(); }
+      pending = false;
+    }
+  }
+  document.addEventListener("DOMContentLoaded", function () {
+    card = document.querySelector(".android-invite");
+    if (!card) return;
+    // Retain space even when another tab dismisses between head parsing and DOM ready.
+    card.classList.add("android-invite-reserved");
+    refresh();
+    if (!card.inert) card.querySelectorAll("img[data-invite-src]").forEach(function (img) {
+      img.addEventListener("load", function () { if (img.classList.contains("android-invite-badge")) img.parentElement.classList.add("android-invite-badge-loaded"); });
+      img.src = img.getAttribute("data-invite-src");
+    });
+    card.querySelector("button").addEventListener("click", function () {
+      stop(false); track("android_app_invite_dismiss");
+      var section = card.nextElementSibling;
+      var next = section && section.querySelector("h2");
+      if (next) next.setAttribute("tabindex", "-1");
+      else next = document.querySelector(".footer a");
+      if (next) next.focus({ preventScroll: true });
+      hide(true);
+    });
+    card.querySelector("a").addEventListener("click", function () {
+      stop(true); track("android_install_click");
+      // Preserve the link until the ordinary navigation completes; no redirect or popup.
+    });
+    observer = new IntersectionObserver(function (entries) {
+      ratio = entries[0].isIntersecting ? entries[0].intersectionRatio : 0;
+      seen();
+    }, { threshold: 0.5 });
+    observer.observe(card);
+  }, { once: true });
+  window.addEventListener("storage", function (event) { if (event.key === key || event.key === null) refresh(); });
+  window.addEventListener("pageshow", refresh);
+  document.addEventListener("visibilitychange", function () { refresh(); seen(); });
+  modes.forEach(function (mode) {
+    if (mode && mode.addEventListener) mode.addEventListener("change", refresh);
+    else if (mode && mode.addListener) mode.addListener(refresh);
+  });
+}());
+</script>
+<!-- ANDROID_INVITE_HEAD_END -->
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -646,6 +781,21 @@
         </div>
       </div>
     </section>
+<!-- ANDROID_INVITE_BODY_START -->
+  <aside class="android-invite hide-in-app" aria-label="Androidアプリ">
+    <button type="button" aria-label="アプリの案内を閉じて、30日間表示しない" title="30日間表示しない"><span aria-hidden="true">×</span></button>
+    <img class="android-invite-icon" data-invite-src="images/android/app-icon-192.webp" width="40" height="40" alt="" decoding="async" fetchpriority="low">
+    <div class="android-invite-copy">
+    <span class="android-invite-label">Androidアプリのご案内</span>
+    <strong>画面を消して、車窓へ</strong>
+    <p>乗車中は画面を消しても音声案内。<span style="white-space:nowrap">無料・登録不要。</span></p>
+    </div>
+    <div class="android-invite-actions">
+      <a href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_inline&amp;utm_campaign=android_app_invite" aria-label="Google Playで見る"><img class="android-invite-badge" data-invite-src="images/google-play/ja-badge.png" width="646" height="250" alt="" decoding="async" fetchpriority="low"><span class="android-invite-play-fallback">Google Playで見る</span></a>
+
+    </div>
+  </aside>
+<!-- ANDROID_INVITE_BODY_END -->
 
     <section class="journey" id="how" aria-labelledby="how-title">
       <div class="section-shell">

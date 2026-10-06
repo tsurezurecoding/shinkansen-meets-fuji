@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { thumbnailSrc, hasMiniMapCoordinates, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 import { assetVersion } from "./shared/asset-version.mjs";
+import { withAndroidInvite } from "./shared/android-invite.mjs";
 import { SPOT_COUNT as SHARED_SPOT_COUNT, syncSpotCountClaims } from "./shared/spot-count.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -1523,7 +1524,7 @@ function englishLandingHTML() {
     .replace('<body>', '<body data-language-route="en">')
     .replace('<button type="button" class="active" data-lang="ja" aria-pressed="true">日本語</button>', '<button type="button" data-lang="ja" aria-pressed="false">日本語</button>')
     .replace('<button type="button" data-lang="en" aria-pressed="false">EN</button>', '<button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>');
-  return syncSpotCountClaims(html);
+  return syncSpotCountClaims(withAndroidInvite(html, "en"));
 }
 
 function englishAppIndexHTML() {
