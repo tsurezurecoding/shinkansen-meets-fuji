@@ -1,0 +1,20 @@
+{
+  "works": [
+    {
+      "id": "somato",
+      "status": "published",
+      "route": "somato.html",
+      "image": "images/og-somato-window.jpg",
+      "ja": { "title": "車窓走馬灯", "medium": "写真でめぐる旅", "description": "実際の車窓写真が、走馬灯のように流れていく。東京から新大阪までの景色を、短い旅として眺めます。" },
+      "en": { "title": "Window Revue", "medium": "A journey through photographs", "description": "Real window photographs flow past like a short journey. Watch the scenery change between Tokyo and Shin-Osaka." }
+    },
+    {
+      "id": "sumie",
+      "status": "published",
+      "route": "sumie.html",
+      "image": "images/og-sumie-window.jpg",
+      "ja": { "title": "墨絵車窓", "medium": "墨絵で眺める車窓", "description": "東海道新幹線の景色を、静かな墨絵で。流れる線や山のかたちを、写真とは違う表現で楽しみます。" },
+      "en": { "title": "Ink-Wash Window", "medium": "Window views in ink wash", "description": "See the Tokaido Shinkansen scenery in quiet ink wash. Enjoy flowing lines and mountain shapes in a different way from photographs." }
+    }
+  ]
+}

@@ -26,6 +26,7 @@ const pages = [
 function localizeEnglishRail(html) {
   html = html.replace(/<!-- SANYO-GALLERY:START -->[\s\S]*?<!-- SANYO-GALLERY:END -->/, sanyoGallery("en"));
   const copy = [
+    ["車窓の作品集", "Window Artworks"],
     ["車窓の観覧車を集める", "Find the ferris wheels"],
     ['<span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span>', "Look for little wheels beyond the city."],
     ["一度きりの車窓", "Weather Seen from the Shinkansen"],
@@ -68,6 +69,7 @@ function localizeEnglishRail(html) {
     ["yakei.html", "en/yakei.html"],
     ["window-moments.html", "en/window-moments.html"],
     ["sparkling-dreams.html", "en/sparkling-dreams.html"],
+    ["window-artworks.html", "en/window-artworks.html"],
     ["sumie.html", "en/sumie.html"],
     ["somato.html", "en/somato.html"],
     ["journal.html", "en/journal.html"],
@@ -110,7 +112,7 @@ function localizeEnglishRail(html) {
     return card;
   });
   const drinks=`<a class="journey-intent-card journey-intent-cloudy" href="en/drinks.html" data-cta-track="zukan_theme_click" data-cta-id="drinks">
-    <img src="images/drinks/tea-shelf.jpg" alt="" loading="lazy" decoding="async">
+    <img src="images/drinks/20261004-tea-shelf-michikusa.webp" alt="" loading="lazy" decoding="async">
     <span class="journey-intent-copy"><small>JAPANESE DRINKS</small><strong>Drinks for your Japan journey</strong><span>Tea, coffee and Japanese soft drinks — discover the names on the shelf.</span></span>
   </a>`;
   const ordered=[...leading,drinks,...featureCards.filter(c=>!leading.includes(c))];
@@ -121,7 +123,6 @@ function localizeEnglishRail(html) {
   });
   // Remove the runtime translation key so app.js cannot restore the narrower heading.
   result=result.replace(/ data-i18n="[^"]+"(?=>Find window views by theme)/,'').replace('Find window views by theme','Explore Japan by theme');
-  result=result.replace('</div>\n    </section>', '</div>\n      <p class="note">Drink shelf photo: <a href="https://commons.wikimedia.org/wiki/File:Cold_Tea_Drinks_(63202253).jpg">Paul Downey</a> / <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a> · cropped. <a href="en/drinks.html#sources">Photo credits</a></p>\n    </section>');
   return result;
 }
 

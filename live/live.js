@@ -7,16 +7,21 @@
 
   var T = window.MADO_TRACK;
 
+  function rememberLang(value) {
+    try {
+      localStorage.setItem("madoLive.lang", value);
+      localStorage.setItem("mado-lang", value);
+    } catch (error) { /* URL language still works when storage is unavailable. */ }
+  }
+
   function initialLang() {
     var urlLang = new URLSearchParams(window.location.search).get("lang");
     if (urlLang === "ja" || urlLang === "en") {
-      localStorage.setItem("madoLive.lang", urlLang);
-      localStorage.setItem("mado-lang", urlLang);
+      rememberLang(urlLang);
       return urlLang;
     }
     if (/\/en\/live(?:\/|\/index\.html)$/.test(window.location.pathname)) {
-      localStorage.setItem("madoLive.lang", "en");
-      localStorage.setItem("mado-lang", "en");
+      rememberLang("en");
       return "en";
     }
     return "ja";
@@ -36,6 +41,7 @@
       navMedals: "スタンプ帖",
       navMore: "もっと見る",
       navMieru: "富士山 見える予報",
+      navArtworks: "車窓の作品集",
       navSumie: "墨絵車窓",
       navSomato: "車窓走馬灯",
       navRefs: "リンク集",
@@ -102,7 +108,8 @@
       narrModeFeatured: "主要スポットのみ",
       narrModeAll: "すべて",
       narrModeOff: "オフ",
-      narrModeHelp: "主要は定番・注目スポット（{featured}件）。すべては看板などの小ネタを含む{all}件です。",
+      narrModeHelp: "主要は音声のある定番・注目スポット（{featured}件）。すべては看板などの小ネタを含む{all}件です。",
+      narrModeHelpLoading: "主要は音声のある定番・注目スポットを案内します。すべては看板などの小ネタも含みます。",
       dirOptAuto: "自動判定",
       dirOptDown: "東京 → 新大阪",
       dirOptUp: "新大阪 → 東京",
@@ -134,6 +141,7 @@
       navMedals: "Journal",
       navMore: "More",
       navMieru: "Visibility β",
+      navArtworks: "Window Artworks",
       navSumie: "Sumie Window",
       navSomato: "Window Journey",
       navRefs: "Links",
@@ -200,7 +208,8 @@
       narrModeFeatured: "Key spots only",
       narrModeAll: "All spots",
       narrModeOff: "Off",
-      narrModeHelp: "Key guide covers classic and notable spots ({featured}). All guide includes small curiosities such as signs ({all}).",
+      narrModeHelp: "Key guide covers classic and notable spots with audio ({featured}). All guide includes small curiosities such as signs ({all}).",
+      narrModeHelpLoading: "Key guide covers classic and notable spots with audio. All guide also includes small curiosities such as signs.",
       dirOptAuto: "Auto-detect",
       dirOptDown: "Tokyo → Shin-Osaka",
       dirOptUp: "Shin-Osaka → Tokyo",
@@ -230,6 +239,7 @@
     km: null,
     speedKmh: 0,
     lastFix: null,
+    lastEstimateAt: 0,
     offRoute: false,
     accuracy: null,
     watchId: null,
@@ -268,7 +278,9 @@
   }
 
   function saveSettings() {
-    localStorage.setItem("madoLive.settings", JSON.stringify(state.settings));
+    try {
+      localStorage.setItem("madoLive.settings", JSON.stringify(state.settings));
+    } catch (error) { /* Keep the current session usable when saving is blocked. */ }
   }
 
   var spots = SPOTS
@@ -335,7 +347,17 @@
     return sp && sp.raw && sp.raw.category !== "curious";
   }
 
-  var featuredNarrationCount = spots.filter(isFeaturedNarrationSpot).length;
+  function updateNarrationHelp() {
+    document.getElementById("set-narr-help").textContent = hasNarrationData()
+      ? tFmt("narrModeHelp", {
+        featured: spots.filter(function (sp) {
+          var narration = explicitNarrationFor(sp);
+          return isFeaturedNarrationSpot(sp) && narration && narration.audio !== false;
+        }).length,
+        all: spots.length,
+      })
+      : t("narrModeHelpLoading");
+  }
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -497,12 +519,14 @@
           var prevDir = state.dir;
           if (state.dirAccum > 0.25) state.dir = 1;
           else if (state.dirAccum < -0.25) state.dir = -1;
+          if (prevDir && state.dir !== prevDir) resetDirectionalHistory();
           if (!prevDir && state.dir) track("live_direction_detected", { direction: state.dir > 0 ? "down" : "up", mode: state.mode });
         }
       }
     }
     if (speed != null) state.speedKmh = state.speedKmh * 0.6 + speed * 0.4;
     state.lastFix = { km: proj.km, t: now };
+    state.lastEstimateAt = now;
     if (state.mode === "gps") setStatus("ok", t("tracking") + (acc != null ? " ±" + Math.round(acc) + "m" : ""));
     render();
   }
@@ -664,6 +688,7 @@
       script.async = true;
       script.onload = function () {
         syncNarrationData();
+        updateNarrationHelp();
         render();
         resolve(NARR);
       };
@@ -749,7 +774,7 @@
         return {
           id: sp.id,
           km: sp.km,
-          side: sp.raw.side || "",
+          side: isBothSides(sp) ? "A/E" : sp.raw.side || "",
           category: sp.raw.category || "",
           group: narrationGroupKey(sp),
           down: nativeNarrationForDirection(sp, "down"),
@@ -1179,6 +1204,7 @@
     state.dir = state.dirMode === "down" ? 1 : state.dirMode === "up" ? -1 : 0;
     state.dirAccum = 0;
     state.lastFix = null;
+    state.lastEstimateAt = 0;
     state.passed = [];
     state.passedIds = {};
     state.alertedIds = {};
@@ -1191,6 +1217,27 @@
     hideNarration();
     releaseWake();
     syncRunControls();
+  }
+
+  function resetDirectionalHistory() {
+    state.passed = [];
+    state.passedIds = {};
+    state.alertedIds = {};
+    state.narratedIds = {};
+    state.suppressedDemoFirstSpotId = null;
+    hideAlert();
+    hideNarration();
+    el["passed-wrap"].classList.add("hidden");
+    el["passed"].innerHTML = "";
+    spots.forEach(function (sp) { setMarkerClass(sp, ""); });
+  }
+
+  function setDirectionMode(mode) {
+    if (state.dirMode !== mode) resetDirectionalHistory();
+    state.dirMode = mode;
+    state.dir = mode === "down" ? 1 : mode === "up" ? -1 : 0;
+    state.dirAccum = 0;
+    updateNarrationHelp();
   }
 
   function pauseRun() {
@@ -1216,6 +1263,7 @@
   function resumeRun() {
     if (state.mode === "idle" || !state.paused) return;
     state.paused = false;
+    state.lastEstimateAt = Date.now();
     if (state.mode === "gps") {
       setStatus("warn", t("locating"));
       beginGpsTracking();
@@ -1292,14 +1340,20 @@
 
   setInterval(function () {
     if (state.mode !== "idle" && !state.paused && state.km != null && !state.offRoute) {
-      if (document.visibilityState === "hidden") {
-        var nowHidden = Date.now();
-        if (state.lastHiddenRenderAt && nowHidden - state.lastHiddenRenderAt < 15000) return;
-        state.lastHiddenRenderAt = nowHidden;
-      }
+      var now = Date.now();
       if (state.dir && state.speedKmh > 30 && state.lastFix) {
-        var age = (Date.now() - state.lastFix.t) / 3600000;
-        if (age > 0.0008 && age < 0.02 && state.mode === "gps") state.km += state.dir * state.speedKmh * 0.000278;
+        var age = (now - state.lastFix.t) / 3600000;
+        if (age > 0.0008 && age < 0.02 && state.mode === "gps") {
+          var elapsed = Math.max(0, now - (state.lastEstimateAt || state.lastFix.t)) / 3600000;
+          state.km += state.dir * state.speedKmh * elapsed;
+          state.lastEstimateAt = now;
+        }
+      }
+      // Hidden tabs throttle timers. Estimate from elapsed time before reducing
+      // rendering; a delayed callback must not advance just one second of travel.
+      if (document.visibilityState === "hidden") {
+        if (state.lastHiddenRenderAt && now - state.lastHiddenRenderAt < 15000) return;
+        state.lastHiddenRenderAt = now;
       }
       render();
     }
@@ -1327,6 +1381,7 @@
       allviews: "../zukan.html#gallery",
       faq: "../guide.html",
       memories: "../journal.html",
+      lp: "../lp.html",
       mieru: "../mieru.html",
       sumie: "../sumie.html",
       somato: "../somato.html",
@@ -1340,8 +1395,7 @@
   }
 
   function applyLang() {
-    localStorage.setItem("madoLive.lang", state.lang);
-    localStorage.setItem("mado-lang", state.lang);
+    rememberLang(state.lang);
     document.documentElement.lang = state.lang;
     document.querySelectorAll("[data-live-copy]").forEach(function (node) {
       var key = node.getAttribute("data-live-copy");
@@ -1381,10 +1435,7 @@
     document.getElementById("set-wake-l").textContent = t("wakeL");
     document.getElementById("set-follow-l").textContent = t("followL");
     document.getElementById("set-narr-mode-l").textContent = t("narrModeL");
-    document.getElementById("set-narr-help").textContent = tFmt("narrModeHelp", {
-      featured: featuredNarrationCount,
-      all: spots.length,
-    });
+    updateNarrationHelp();
     document.getElementById("set-dir-l").textContent = t("dirL");
     if (state.narrSpotId) {
       var narrSp = spots.find(function (s) { return s.id === state.narrSpotId; });
@@ -1453,10 +1504,7 @@
     startDemo(document.getElementById("demo-from").value, parseInt(document.getElementById("demo-mult").value, 10) || 20);
   });
   document.getElementById("btn-dir").addEventListener("click", function () {
-    state.dirMode = state.dirMode === "auto" ? "down" : state.dirMode === "down" ? "up" : "auto";
-    if (state.dirMode === "down") state.dir = 1;
-    else if (state.dirMode === "up") state.dir = -1;
-    else { state.dir = 0; state.dirAccum = 0; }
+    setDirectionMode(state.dirMode === "auto" ? "down" : state.dirMode === "down" ? "up" : "auto");
     document.getElementById("set-dir").value = state.dirMode;
     updateNativeGuide();
     render();
@@ -1477,10 +1525,7 @@
     if (!narrationEnabled()) hideNarration();
     saveSettings();
     syncRunControls();
-    state.dirMode = document.getElementById("set-dir").value;
-    if (state.dirMode === "down") state.dir = 1;
-    else if (state.dirMode === "up") state.dir = -1;
-    else { state.dir = 0; state.dirAccum = 0; }
+    setDirectionMode(document.getElementById("set-dir").value);
     document.getElementById("settings").classList.add("hidden");
     updateNativeGuide();
     render();

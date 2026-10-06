@@ -1106,6 +1106,17 @@ html[lang="en"] .g9-answer .a-line strong { font-size: 1.15em; }
   font-size: 11px;
   line-height: 1.4;
 }
+.spot-page-story-lead { display: grid; grid-template-columns: minmax(0, 1fr) 160px; gap: 24px; align-items: start; }
+.spot-page-story-lead > p { margin-top: 0; }
+.spot-page-story-figure { margin: 0; }
+.spot-page-story-figure img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.spot-page-story-figure figcaption { margin-top: 8px; font-size: 12px; line-height: 1.6; color: var(--ink-soft); }
+.spot-page-story-figure figcaption span { display: block; }
+.spot-page-story-link { padding: 12px 16px; border-left: 3px solid var(--ink-soft); background: #f7f5ef; }
+@media (max-width: 540px) {
+  .spot-page-story-lead { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .spot-page-story-figure { width: 160px; max-width: 100%; margin: 0 auto 16px; }
+}
 .spot-page-explainer-figure {
   margin: 16px 0 20px;
   padding: 12px;

@@ -17,7 +17,7 @@ const MSG = {
     heroCtaBrowse: "車窓図鑑を見る",
     ctaStart: "乗る列車でガイドを作る", ctaBrowse: "車窓をながめる", ctaMedals: "メダルを見る", ctaQuick: "新幹線の窓とは？",
     navQuick: "TOP", navStart: "列車選択", navLive: "音声ガイド", navBrowse: "車窓図鑑", navFeatures: "特集", navAllViews: "車窓一覧", navFaq: "富士山を見る", navMedals: "スタンプ帖",
-    navMore: "もっと見る", navMieru: "富士山 見える予報", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
+    navMore: "もっと見る", navMieru: "富士山 見える予報", navArtworks: "車窓の作品集", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
     setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">きょうの旅を</span><span class="copy-chunk">教えてください</span>',
@@ -206,7 +206,7 @@ const MSG = {
     heroCtaBrowse: "Open field guide",
     ctaStart: "Build my guide", ctaBrowse: "Browse the views", ctaMedals: "See medals", ctaQuick: "What is it?",
     navQuick: "Home", navStart: "Train Search", navLive: "Audio Guide", navBrowse: "Field Guide", navFeatures: "Features", navAllViews: "All views", navFaq: "See Mt. Fuji", navMedals: "Journal",
-    navMore: "More", navMieru: "Visibility β", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
+    navMore: "More", navMieru: "Visibility β", navArtworks: "Window Artworks", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
@@ -394,11 +394,11 @@ function normalizeLang(value) {
 function getInitialLang() {
   const urlLang = new URLSearchParams(location.search).get("lang");
   if (urlLang === "ja" || urlLang === "en") {
-    localStorage.setItem("mado-lang", urlLang);
+    try { localStorage.setItem("mado-lang", urlLang); } catch (error) {}
     return urlLang;
   }
   if (/\/en(?:\/|$)/i.test(location.pathname)) {
-    localStorage.setItem("mado-lang", "en");
+    try { localStorage.setItem("mado-lang", "en"); } catch (error) {}
     return "en";
   }
   return "ja";

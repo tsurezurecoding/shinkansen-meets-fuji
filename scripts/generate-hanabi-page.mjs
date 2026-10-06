@@ -14,8 +14,8 @@ const site = 'https://www.michikusa-travel.com';
 // 文章を直すときは、直す言語の側だけを直す。対で並べ直すと、次の修正で片方が訳へ戻る。
 const COPY = {
  "ja": {
-  "copy": "<title>新幹線から見える花火｜長岡・戸田橋・いたばし・淀川・熱海・安倍川など7大会 | 新幹線の窓</title>",
-  "copy2": "<meta name=\"description\" content=\"走る新幹線の車窓から花火が見えた、という投稿を大会ごとに集めました。長岡まつり、いたばし・戸田橋、北國花火、なにわ淀川、熱海海上、安倍川、弁天島の7大会。夜の窓で花火を探すコツと、各大会の公式案内へのリンクつき。\">",
+  "copy": "<title>新幹線から見える花火｜長岡・戸田橋・いたばし・淀川・熱海・安倍川など8大会 | 新幹線の窓</title>",
+  "copy2": "<meta name=\"description\" content=\"走る新幹線の車窓から花火が見えた、という投稿を大会ごとに集めました。長岡まつり、いたばし・戸田橋、北國花火、なにわ淀川、熱海海上、安倍川、弁天島、ひがよど祭りの8大会。夜の窓で花火を探すコツと、各大会の公式案内へのリンクつき。\">",
   "copy3": "<meta property=\"og:site_name\" content=\"新幹線の窓\">",
   "copy4": "<meta property=\"og:locale\" content=\"ja_JP\">",
   "copy5": "<meta property=\"og:title\" content=\"新幹線から見える花火\">",
@@ -28,7 +28,7 @@ const COPY = {
   "hanabi_page": "<body class=\"hanabi-page spot-page spot-page-utility\" data-page=\"hanabi\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"ja\" data-spot-page-shared-root=\"./\" data-spot-page-shared-route=\"hanabi.html\">",
   "hbTitle": "<h1 id=\"hbTitle\">新幹線から見える花火</h1>",
   "hb_hero_lead": "<p class=\"hb-hero-lead\">狙って見るのは難しいけれど、運がいいと出会えます。「新幹線から花火が見えた」という投稿を、大会ごとに集めました。</p>",
-  "hb_hero_stat": "<p class=\"hb-hero-stat\">7大会 ／ 24件の投稿・動画</p>",
+  "hb_hero_stat": "<p class=\"hb-hero-stat\">8大会 ／ 26件の投稿・動画</p>",
   "hb_jump": "<nav class=\"hb-jump\" aria-label=\"花火大会一覧\">",
   "copy12": "<a href=\"#hb-nagaoka\">長岡まつり大花火大会</a>",
   "copy13": "<a href=\"#hb-itabashi-toda\">いたばし花火大会・戸田橋花火大会</a>",
@@ -85,7 +85,17 @@ const COPY = {
   "hb_credit12": "<p class=\"hb-credit\">投稿：<a href=\"https://x.com/sugipi04/status/2081011458998210577\" target=\"_blank\" rel=\"noopener noreferrer\">@sugipi04／元投稿を見る</a></p>",
   "eyebrow2": "<p class=\"eyebrow\">東海道新幹線</p>",
   "tokaido_title": "<h2 id=\"tokaido-title\">東海道新幹線から</h2>",
-  "hb_section_lead2": "<p class=\"hb-section-lead\">東京〜新大阪。海沿い、大きな川、湖と、夏の花火が上がる場所を何度も通ります。</p>",
+  "hb_section_lead2": "<p class=\"hb-section-lead\">東京〜新大阪。海沿い、大きな川、湖と、季節の花火が上がる場所を何度も通ります。</p>",
+  "hb_higayodo_jump": "<a href=\"#hb-higayodo\">ひがよど祭り</a>",
+  "hb_higayodo_title": "<h3 id=\"hb-higayodo-title\">ひがよど祭りの花火</h3>",
+  "hb_higayodo_place": "<p class=\"hb-place\">大阪市東淀川区／新大阪発・東京方面の車窓</p>",
+  "hb_higayodo_body": "<p>大阪市東淀川区の「照らせ！ひがよど祭り」。2026年は10月4日に開催されました。なにわ淀川花火大会とは別のお祭りです。</p><p>2026年10月4日に新大阪から東京方面へ向かう新幹線の車窓から撮影した花火です。秋の夜の乗車で出会った景色を、動画でどうぞ。</p>",
+  "hb_higayodo_official": "<a href=\"https://higayodomatsuri.com/\" target=\"_blank\" rel=\"noopener noreferrer\">照らせ！ひがよど祭り 公式サイト</a>",
+  "hb_higayodo_embed": "<div class=\"hb-embed\" data-embed=\"youtube\" data-video-id=\"yOXgledx3TI\" data-video-title=\"[新幹線の車窓] ひがよど祭りの花火 (大阪府東淀川区) (2026/10/4)\">",
+  "hb_higayodo_frame": "<div class=\"hb-media-frame\" data-placeholder=\"YouTubeの動画\">",
+  "hb_higayodo_facade": "<button class=\"hb-facade\" type=\"button\"><span class=\"hb-facade-play\" aria-hidden=\"true\"></span><span class=\"hb-facade-label\">ひがよど祭りの花火を読み込む</span></button>",
+  "hb_higayodo_credit": "<p class=\"hb-credit\">YouTube：<a href=\"https://www.youtube.com/watch?v=yOXgledx3TI\" target=\"_blank\" rel=\"noopener noreferrer\">[新幹線の車窓] ひがよど祭りの花火 (大阪府東淀川区) (2026/10/4)</a></p>",
+  "hb_higayodo_fallback": "<p class=\"hb-related\">再生できない場合は、上の元動画リンクからYouTubeでご覧ください。</p>",
   "hb_yodogawa_title": "<h3 id=\"hb-yodogawa-title\">なにわ淀川花火大会</h3>",
   "hb_place4": "<p class=\"hb-place\">淀川河川敷／京都 → 新大阪</p>",
   "copy29": "<p>大阪・淀川の河川敷で開かれる花火大会です。東海道新幹線は新大阪に着く直前に淀川を渡ります。終点間際、まさに降りようとしている時間帯に、窓の外で上がっていることになります。</p>",
@@ -118,6 +128,7 @@ const COPY = {
   "hb_media_frame20": "<div class=\"hb-media-frame\" data-placeholder=\"YouTubeの動画\">",
   "hb_facade": "<button class=\"hb-facade\" type=\"button\"><span class=\"hb-facade-play\" aria-hidden=\"true\"></span><span class=\"hb-facade-label\">熱海海上花火大会の動画（YouTube）を読み込む</span></button>",
   "hb_credit20": "<p class=\"hb-credit\">YouTube：<a href=\"https://www.youtube.com/watch?v=3iH_NC9h-xg\" target=\"_blank\" rel=\"noopener noreferrer\">元動画を見る</a></p>",
+  "hb_atami_distant_video": "<div class=\"hb-embed\" data-embed=\"youtube\" data-video-id=\"xocN3kAMxdE\" data-video-title=\"遠くに見えた熱海の花火（YouTube Shorts）\"><div class=\"hb-media-frame\" data-placeholder=\"YouTubeの動画\"><button type=\"button\" class=\"hb-facade\" aria-label=\"遠くに見えた熱海の花火をYouTubeから読み込む\"><span class=\"hb-facade-play\" aria-hidden=\"true\"></span><span class=\"hb-facade-label\">動画を再生</span></button></div><p class=\"hb-credit\">遠くに見えた花火（Shorts）。YouTube：<a href=\"https://youtube.com/shorts/xocN3kAMxdE\" target=\"_blank\" rel=\"noopener noreferrer\">[新幹線の車窓] 安部川付近からの熱海花火</a></p><p class=\"hb-related\">再生できない場合は、元動画リンクからYouTubeでご覧ください。</p></div>",
   "hb_media_frame21": "<div class=\"hb-media-frame\" data-placeholder=\"X（旧Twitter）の投稿\"><template><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"ja\" dir=\"ltr\">熱海海上花火大会の投稿 <a href=\"https://x.com/tokyootkinchan/status/2048583311069761559\">元投稿を見る</a></p>&mdash; @tokyootkinchan <a href=\"https://x.com/tokyootkinchan/status/2048583311069761559\">元投稿を見る</a></blockquote></template></div>",
   "hb_credit21": "<p class=\"hb-credit\">投稿：<a href=\"https://x.com/tokyootkinchan/status/2048583311069761559\" target=\"_blank\" rel=\"noopener noreferrer\">@tokyootkinchan／元投稿を見る</a></p>",
   "hb_abekawa_title": "<h3 id=\"hb-abekawa-title\">安倍川花火大会</h3>",
@@ -154,8 +165,8 @@ const COPY = {
   "footer_credit": "<p class=\"footer-credit\">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>"
  },
  "en": {
-  "copy": "<title>Fireworks Seen from the Shinkansen | 7 festivals along Japan's bullet train lines | Shinkansen Window</title>",
-  "copy2": "<meta name=\"description\" content=\"Passengers really do catch fireworks from the window of a moving Shinkansen. Posts collected festival by festival: Nagaoka, Itabashi and Todabashi, Hokkoku, Naniwa Yodogawa, Atami, Abekawa and Bentenjima. Plus how to beat window reflections at night, and links to every organizer.\">",
+  "copy": "<title>Fireworks Seen from the Shinkansen | 8 festivals along Japan's bullet train lines | Shinkansen Window</title>",
+  "copy2": "<meta name=\"description\" content=\"Passengers really do catch fireworks from the window of a moving Shinkansen. Posts collected festival by festival: Nagaoka, Itabashi and Todabashi, Hokkoku, Naniwa Yodogawa, Atami, Abekawa, Bentenjima and Higayodo. Plus how to beat window reflections at night, and links to every organizer.\">",
   "copy3": "<meta property=\"og:site_name\" content=\"Shinkansen Window\">",
   "copy4": "<meta property=\"og:locale\" content=\"en_US\">",
   "copy5": "<meta property=\"og:title\" content=\"Fireworks Seen from the Shinkansen\">",
@@ -168,7 +179,7 @@ const COPY = {
   "hanabi_page": "<body class=\"hanabi-page spot-page spot-page-utility\" data-page=\"hanabi\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"en\" data-spot-page-shared-root=\"../\" data-spot-page-shared-route=\"hanabi.html\">",
   "hbTitle": "<h1 id=\"hbTitle\">Fireworks Seen from the Shinkansen</h1>",
   "hb_hero_lead": "<p class=\"hb-hero-lead\">You cannot really plan for it, but with a little luck it happens. Here are posts from people who caught fireworks from the window, gathered festival by festival.</p>",
-  "hb_hero_stat": "<p class=\"hb-hero-stat\">7 festivals · 24 posts and videos</p>",
+  "hb_hero_stat": "<p class=\"hb-hero-stat\">8 festivals · 26 posts and videos</p>",
   "hb_jump": "<nav class=\"hb-jump\" aria-label=\"Festivals on this page\">",
   "copy12": "<a href=\"#hb-nagaoka\">Nagaoka Festival Grand Fireworks</a>",
   "copy13": "<a href=\"#hb-itabashi-toda\">Itabashi and Todabashi Fireworks</a>",
@@ -225,7 +236,17 @@ const COPY = {
   "hb_credit12": "<p class=\"hb-credit\">Posted by <a href=\"https://x.com/sugipi04/status/2081011458998210577\" target=\"_blank\" rel=\"noopener noreferrer\">@sugipi04／see the original post</a></p>",
   "eyebrow2": "<p class=\"eyebrow\">Tokaido Shinkansen</p>",
   "tokaido_title": "<h2 id=\"tokaido-title\">Tokaido Shinkansen</h2>",
-  "hb_section_lead2": "<p class=\"hb-section-lead\">Tokyo to Shin-Osaka. The route runs past coastline, wide rivers and a lagoon &mdash; the kinds of places summer fireworks go up.</p>",
+  "hb_section_lead2": "<p class=\"hb-section-lead\">Tokyo to Shin-Osaka. The route runs past coastline, wide rivers and a lagoon &mdash; the kinds of places seasonal fireworks go up.</p>",
+  "hb_higayodo_jump": "<a href=\"#hb-higayodo\">Higayodo Festival</a>",
+  "hb_higayodo_title": "<h3 id=\"hb-higayodo-title\">Higayodo Festival Fireworks</h3>",
+  "hb_higayodo_place": "<p class=\"hb-place\">Higashiyodogawa, Osaka / a Tokyo-bound journey from Shin-Osaka</p>",
+  "hb_higayodo_body": "<p>Terase! Higayodo Festival is a local festival in Higashiyodogawa, Osaka. The 2026 event took place on October 4. It is a separate event from the Naniwa Yodogawa Fireworks Festival.</p><p>This footage was filmed through a Shinkansen window on October 4, 2026, while traveling from Shin-Osaka toward Tokyo. Watch a fireworks encounter from an autumn evening on the train.</p>",
+  "hb_higayodo_official": "<a href=\"https://higayodomatsuri.com/\" target=\"_blank\" rel=\"noopener noreferrer\">Terase! Higayodo Festival official site (Japanese)</a>",
+  "hb_higayodo_embed": "<div class=\"hb-embed\" data-embed=\"youtube\" data-video-id=\"yOXgledx3TI\" data-video-title=\"Higayodo Festival fireworks from a Shinkansen window, October 4, 2026\">",
+  "hb_higayodo_frame": "<div class=\"hb-media-frame\" data-placeholder=\"YouTube video\">",
+  "hb_higayodo_facade": "<button class=\"hb-facade\" type=\"button\"><span class=\"hb-facade-play\" aria-hidden=\"true\"></span><span class=\"hb-facade-label\">Load the Higayodo fireworks video</span></button>",
+  "hb_higayodo_credit": "<p class=\"hb-credit\">YouTube: <a href=\"https://www.youtube.com/watch?v=yOXgledx3TI\" target=\"_blank\" rel=\"noopener noreferrer\" lang=\"ja\">[新幹線の車窓] ひがよど祭りの花火 (大阪府東淀川区) (2026/10/4)</a></p>",
+  "hb_higayodo_fallback": "<p class=\"hb-related\">If playback is unavailable, use the original video link above to watch on YouTube.</p>",
   "hb_yodogawa_title": "<h3 id=\"hb-yodogawa-title\">Naniwa Yodogawa Fireworks</h3>",
   "hb_place4": "<p class=\"hb-place\">Yodo River, Kyoto to Shin-Osaka</p>",
   "copy29": "<p>Held on the Yodo River flats in Osaka. The Tokaido Shinkansen crosses the Yodo just before pulling into Shin-Osaka, so the shells go up outside the window exactly when you are gathering your bags to get off.</p>",
@@ -258,6 +279,7 @@ const COPY = {
   "hb_media_frame20": "<div class=\"hb-media-frame\" data-placeholder=\"YouTube video\">",
   "hb_facade": "<button class=\"hb-facade\" type=\"button\"><span class=\"hb-facade-play\" aria-hidden=\"true\"></span><span class=\"hb-facade-label\">Atami Sea Fireworks video (YouTube) — tap to load</span></button>",
   "hb_credit20": "<p class=\"hb-credit\">YouTube: <a href=\"https://www.youtube.com/watch?v=3iH_NC9h-xg\" target=\"_blank\" rel=\"noopener noreferrer\">watch the original video</a></p>",
+  "hb_atami_distant_video": "<div class=\"hb-embed\" data-embed=\"youtube\" data-video-id=\"xocN3kAMxdE\" data-video-title=\"A distant view of Atami fireworks (YouTube Shorts)\"><div class=\"hb-media-frame\" data-placeholder=\"YouTube video\"><button type=\"button\" class=\"hb-facade\" aria-label=\"Load a distant view of Atami fireworks from YouTube\"><span class=\"hb-facade-play\" aria-hidden=\"true\"></span><span class=\"hb-facade-label\">Play video</span></button></div><p class=\"hb-credit\">A distant fireworks view (Shorts). YouTube: <a href=\"https://youtube.com/shorts/xocN3kAMxdE\" target=\"_blank\" rel=\"noopener noreferrer\" lang=\"ja\">[新幹線の車窓] 安部川付近からの熱海花火</a></p><p class=\"hb-related\">If playback is unavailable, use the original video link to watch on YouTube.</p></div>",
   "hb_media_frame21": "<div class=\"hb-media-frame\" data-placeholder=\"Post on X (formerly Twitter)\"><template><blockquote class=\"twitter-tweet\" data-dnt=\"true\" data-media-max-width=\"560\"><p lang=\"en\" dir=\"ltr\">Atami Sea Fireworks post <a href=\"https://x.com/tokyootkinchan/status/2048583311069761559\">see the original post</a></p>&mdash; @tokyootkinchan <a href=\"https://x.com/tokyootkinchan/status/2048583311069761559\">see the original post</a></blockquote></template></div>",
   "hb_credit21": "<p class=\"hb-credit\">Posted by <a href=\"https://x.com/tokyootkinchan/status/2048583311069761559\" target=\"_blank\" rel=\"noopener noreferrer\">@tokyootkinchan／see the original post</a></p>",
   "hb_abekawa_title": "<h3 id=\"hb-abekawa-title\">Abekawa Fireworks</h3>",
@@ -358,6 +380,7 @@ ${t.hanabi_page}
         ${t.copy13}
         ${t.copy14}
         ${t.copy15}
+        ${t.hb_higayodo_jump}
         ${t.copy16}
         ${t.copy17}
         ${t.copy18}
@@ -527,6 +550,26 @@ ${t.hanabi_page}
         </div>
       </div>
     </article>
+    <article class="hb-event" id="hb-higayodo" aria-labelledby="hb-higayodo-title">
+      <div class="hb-event-head">
+        ${t.hb_higayodo_title}
+        ${t.hb_higayodo_place}
+      </div>
+      <div class="hb-event-body">${t.hb_higayodo_body}</div>
+      <div class="hb-official">
+        ${t.hb_official_label4}
+        <div class="hb-official-links">${t.hb_higayodo_official}</div>
+      </div>
+      <div class="hb-media-grid">
+        ${t.hb_higayodo_embed}
+          ${t.hb_higayodo_frame}
+            ${t.hb_higayodo_facade}
+          </div>
+          ${t.hb_higayodo_credit}
+        </div>
+      </div>
+      ${t.hb_higayodo_fallback}
+    </article>
     <article class="hb-event" id="hb-atami" aria-labelledby="hb-atami-title">
       <div class="hb-event-head">
         ${t.hb_atami_title}
@@ -551,6 +594,7 @@ ${t.hanabi_page}
           </div>
           ${t.hb_credit20}
         </div>
+        ${t.hb_atami_distant_video}
         <div class="hb-embed" data-embed="x" data-aspect="portrait">
           ${t.hb_media_frame21}
           ${t.hb_credit21}

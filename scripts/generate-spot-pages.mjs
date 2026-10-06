@@ -640,8 +640,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
           <a class="top-nav-menu-compact" href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}#gallery" data-cta-track="header_nav_click" data-cta-id="nav_all_views">${lang === "ja" ? "車窓一覧" : "All views"}</a>
           <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
-          <a href="${lang === "en" ? `${prefix}en/sumie.html` : `${prefix}sumie.html`}">${lang === "ja" ? "墨絵車窓" : "Sumie Window"}</a>
-          <a href="${lang === "en" ? `${prefix}en/somato.html` : `${prefix}somato.html`}">${lang === "ja" ? "車窓走馬灯" : "Window Journey"}</a>
+          <a href="${lang === "en" ? `${prefix}en/window-artworks.html` : `${prefix}window-artworks.html`}">${lang === "ja" ? "車窓の作品集" : "Window Artworks"}</a>
           <a href="${lang === "en" ? `${prefix}en/references.html` : `${prefix}references.html`}">${lang === "ja" ? "リンク集" : "Links"}</a>
           <a href="${prefix}${lang === "en" ? "en/" : ""}contact.html">${lang === "ja" ? "お問い合わせ" : "Contact"}</a>
           <a href="${lang === "en" ? `${prefix}en/privacy.html` : `${prefix}privacy.html`}">${lang === "ja" ? "プライバシーポリシー" : "Privacy Policy"}</a>
@@ -661,8 +660,7 @@ function contentRailHTML(lang, prefix, options = {}) {
     { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "See Mt. Fuji", desc: "Check the timing, seat side and cloudy-day answers." },
     { href: `${prefix}en/mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today." },
     { href: `${prefix}en/jr-pass-fuji.html`, img: "images/thumbs/content-faq.webp", label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones." },
-    { href: `${prefix}en/sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "Sumie Window", desc: "Ride the route as a quiet ink-painting window." },
-    { href: `${prefix}en/somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "Window Journey", desc: "Let real window photos flow past like a short trip." },
+    { href: `${prefix}en/window-artworks.html`, img: "images/thumbs/content-somato.webp", label: "ARTWORKS", title: "Window Artworks", desc: "Explore window views through photographs and ink wash." },
     { href: `${prefix}en/journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride." },
     { href: `${prefix}en/?intro=1`, img: "images/thumbs/og-shinkansen-window.webp", label: "GUIDE", title: "About this app", desc: "See how to use and enjoy it in 30 seconds." },
     { href: `${prefix}en/references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips." },
@@ -670,8 +668,7 @@ function contentRailHTML(lang, prefix, options = {}) {
   ] : [
     { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "富士山を見る", desc: "5つの区間、座席側、曇りの日の見え方を確認。" },
     { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。" },
-    { href: `${prefix}sumie.html`, img: "images/thumbs/content-sumie.webp", label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。" },
-    { href: `${prefix}somato.html`, img: "images/thumbs/content-somato.webp", label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。" },
+    { href: `${prefix}window-artworks.html`, img: "images/thumbs/content-somato.webp", label: "ARTWORKS", title: "車窓の作品集", desc: "写真や墨絵で、車窓の別の表現を楽しむ。" },
     { href: `${prefix}journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。" },
     { href: `${prefix}references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。" },
     { href: `${prefix}contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。" },
@@ -1249,7 +1246,7 @@ function localizeEnglishInternalLinks(html) {
     ["href=\"spots/", "href=\"en/spots/"],
   ];
   for (const [from, to] of directRoutes) html = html.replaceAll(from, to);
-  for (const route of ["ferris-wheels", "castles", "guide", "zukan", "journal", "mieru", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments", "reflections"]) {
+  for (const route of ["ferris-wheels", "castles", "guide", "zukan", "journal", "mieru", "window-artworks", "sumie", "somato", "references", "contact", "privacy", "lp", "sparkling-dreams", "hanabi", "yakei", "window-moments", "reflections"]) {
     html = html
       .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
@@ -1778,6 +1775,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
+    { loc: `${siteRoot}/en/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
@@ -1833,7 +1832,7 @@ function sitemapXML() {
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",
     changefreq: "monthly",
-    lastmod: spotLastmodOverrides[spot.id] || "2026-08-02",
+    lastmod: lang === "en" && ["pocari-fukuroi", "shizuoka-tea-fields"].includes(spot.id) ? (spot.id === "pocari-fukuroi" ? "2026-10-06" : "2026-10-05") : spotLastmodOverrides[spot.id] || "2026-08-02",
   })));
   const sanyoUrls = SANYO_DETAIL_CASTLES.flatMap(castle => ["ja", "en"].map(lang => ({
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,

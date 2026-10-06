@@ -41,6 +41,8 @@ export const BUILD_ONLY_SPOT_FIELDS = [
   "pageFactsAfterArticle",
   "pageFacts",
   "pageStory",
+  "pageStoryFigure",
+  "pageStoryLink",
   "pageTitle",
   "photoSectionHeading",
   "photoTip",

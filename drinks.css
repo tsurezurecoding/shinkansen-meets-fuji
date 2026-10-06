@@ -50,6 +50,9 @@ html { scroll-behavior:auto; }
 .section-subhead h3 { font-family:var(--font-serif); font-size:22px; line-height:1.4; margin-bottom:6px; }
 .section-subhead p { color:var(--ink-soft); font-size:12px; }
 .drink-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; }
+.tea-brand-grid,.barley-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+#barley-tea { scroll-margin-top:145px; }
+#barley-tea > p:last-child { max-width:680px; font-size:14px; line-height:1.9; }
 .drink-card { background:var(--card); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; min-width:0; }
 .product-picture { margin:0; padding:14px 14px 0; }
 .picture-mat { height:215px; display:flex; align-items:center; justify-content:center; background:#f5f3ed; border-radius:10px; overflow:hidden; }
@@ -145,6 +148,7 @@ html { scroll-behavior:auto; }
  .coffee-decoder p { font-size:13px; }
  .coffee-decoder h3 { display:inline; margin-left:8px; font-size:19px; }
  .window-story,.image-credits li { scroll-margin-top:172px; }
+ #barley-tea { scroll-margin-top:178px; }
  .window-story h3 { font-size:23px; }
  .window-story-body { padding:20px; }
  .window-story figcaption { font-size:8px; }

@@ -20,6 +20,7 @@
       more: "もっと見る",
       about: "新幹線の窓とは",
       forecast: "富士山 見える予報",
+      artworks: "車窓の作品集",
       sumie: "墨絵車窓",
       somato: "車窓走馬灯",
       links: "リンク集",
@@ -78,6 +79,7 @@
       more: "More",
       about: "About this app",
       forecast: "Visibility β",
+      artworks: "Window Artworks",
       sumie: "Sumie Window",
       somato: "Window Journey",
       links: "Links",
@@ -129,8 +131,7 @@
     ja: [
       { label: "MT. FUJI", title: "富士山を見る", desc: "5つの区間、座席側、曇りの日の見え方を確認。", href: "guide.html", img: "images/thumbs/content-faq.webp" },
       { label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
-      { label: "EXTRA", title: "墨絵車窓", desc: "東海道新幹線の車窓を、静かな墨絵で。", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
-      { label: "EXTRA", title: "車窓走馬灯", desc: "実際の車窓写真で、旅を短くめぐる。", href: "somato.html", img: "images/thumbs/content-somato.webp" },
+      { label: "ARTWORKS", title: "車窓の作品集", desc: "写真や墨絵で、車窓の別の表現を楽しむ。", href: "window-artworks.html", img: "images/thumbs/content-somato.webp" },
       { label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
       { label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。", href: "references.html", img: "images/thumbs/20260616_fuji_sttraveler.webp" },
       { label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。", href: "contact.html", img: "images/thumbs/content-contact.webp" }
@@ -139,8 +140,7 @@
       { label: "MT. FUJI", title: "See Mt. Fuji", desc: "Check the timing, seat side and cloudy-day answers.", href: "guide.html", img: "images/thumbs/content-faq.webp" },
       { label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today.", href: "mieru.html", img: "images/thumbs/content-mieru.webp" },
       { label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones.", href: "jr-pass-fuji.html", img: "images/thumbs/content-faq.webp" },
-      { label: "EXTRA", title: "Sumie Window", desc: "Ride the route as a quiet ink-painting window.", href: "sumie.html", img: "images/thumbs/content-sumie.webp" },
-      { label: "EXTRA", title: "Window Journey", desc: "Let real window photos flow past like a short trip.", href: "somato.html", img: "images/thumbs/content-somato.webp" },
+      { label: "ARTWORKS", title: "Window Artworks", desc: "Explore window views through photographs and ink wash.", href: "window-artworks.html", img: "images/thumbs/content-somato.webp" },
       { label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride.", href: "journal.html", img: "images/stamps/stamp_fuji.svg" },
       { label: "GUIDE", title: "About this app", desc: "See how to use and enjoy it in 30 seconds.", href: "?intro=1", img: "images/thumbs/og-shinkansen-window.webp" },
       { label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips.", href: "references.html", img: "images/thumbs/20260616_fuji_sttraveler.webp" },
@@ -240,6 +240,7 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    "window-artworks.html": { en: true },
     "spots/himeji-castle.html": { en: true },
     "spots/okayama-castle.html": { en: true },
     "spots/fukuyama-castle.html": { en: true },
@@ -297,8 +298,7 @@
             "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "sumie.html")) + "\">" + escapeHTML(ui.sumie) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "somato.html")) + "\">" + escapeHTML(ui.somato) + "</a>" +
+            "<a href=\"" + escapeHTML(href(base, "window-artworks.html")) + "\">" + escapeHTML(ui.artworks) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "references.html")) + "\">" + escapeHTML(ui.links) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "contact.html")) + "\">" + escapeHTML(ui.contact) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "privacy.html")) + "\">" + escapeHTML(ui.privacy) + "</a>" +
@@ -786,12 +786,23 @@
     return '<aside class="spot-reading-related" aria-labelledby="spotReadingRelatedTitle"><div>' + readingEyebrow(page, 'MORE TO SEE') + '<h2 id="spotReadingRelatedTitle">' + collectionTitle + '</h2><p>' + escapeHTML(collection.description) + '</p><a href="' + escapeHTML(href(rootPath, collection.route)) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection">' + escapeHTML(collection.label) + ' →</a><p class="spot-reading-note">' + escapeHTML(collection.note) + '</p></div><div class="spot-reading-photos">' + collection.photos.map(function (photo) { return '<figure><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, photo.src)) + '" alt="' + escapeHTML(photo.alt) + '"><figcaption>' + escapeHTML(photo.caption) + '</figcaption></figure>'; }).join('') + '<small>' + escapeHTML(collection.credit) + '</small></div></aside>';
   }
 
+  function storyHTML(page, rootPath) {
+    var paragraphs = page.readingLayout ? page.story.split(/\n\n/) : [page.story];
+    return paragraphs.map(function (paragraph, index) {
+      var text = "<p>" + escapeHTML(paragraph) + "</p>";
+      if (index !== 0 || !page.storyFigure) return text;
+      var photo = page.storyFigure;
+      var credit = photo.creditRequired === false ? "" : "<span>" + pageCreditHTML(photo) + "</span>";
+      return '<div class="spot-page-story-lead">' + text + '<figure class="spot-page-story-figure"' + (photo.owner === "michikusa" ? ' data-photo-owner="michikusa"' : '') + '><img src="' + escapeHTML(href(rootPath, photo.src)) + '" alt="' + escapeHTML(photo.alt) + '" width="' + escapeHTML(photo.width) + '" height="' + escapeHTML(photo.height) + '" loading="lazy" decoding="async"><figcaption>' + escapeHTML(photo.caption) + credit + '</figcaption></figure></div>';
+    }).join("") + (page.storyLink ? '<p class="spot-page-story-link"><a href="' + escapeHTML(href(rootPath, page.storyLink.route)) + '">' + escapeHTML(page.storyLink.label) + '</a></p>' : "");
+  }
+
   function pageHTML(data, page, rootPath, lang, currentId) {
     var ui = PAGE_UI[lang];
     var embedded = !!root.MADO_EMBEDDED_WEB;
     var bodyLinks = page.bodyLinks && page.bodyLinks.length ? "<p class=\"spot-page-body-links\"><span>" + escapeHTML(ui.more) + "</span> " + page.bodyLinks.map(function (item, index) { return (index ? "<span aria-hidden=\"true\"> / </span>" : "") + "<a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a>"; }).join("") + "</p>" : "";
     var fujiGuide = page.fujiGuide ? (function () { var text = escapeHTML(page.fujiGuide.text); return "<p>" + text.replace(escapeHTML(page.fujiGuide.label), "<a href=\"" + escapeHTML(page.fujiGuide.href) + "\">" + escapeHTML(page.fujiGuide.label) + "</a>") + "</p>"; }()) : "";
-    var intro = "<section class=\"spot-page-section\">" + readingEyebrow(page, "THE STORY") + "<h2>" + escapeHTML(page.sectionHeading) + "</h2><p>" + (page.readingLayout ? page.story.split(/\n\n/).map(escapeHTML).join("</p><p>") : escapeHTML(page.story)) + "</p>" + (page.readingLayout ? "" : bodyLinks) + (currentId === "kiyosu" ? "" : "<p>" + escapeHTML(page.routeNote) + "</p>") + fujiGuide + (page.readingLayout ? "" : "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p>") + "</section>";
+    var intro = "<section class=\"spot-page-section\">" + readingEyebrow(page, "THE STORY") + "<h2>" + escapeHTML(page.sectionHeading) + "</h2>" + storyHTML(page, rootPath) + (page.readingLayout ? "" : bodyLinks) + (currentId === "kiyosu" ? "" : "<p>" + escapeHTML(page.routeNote) + "</p>") + fujiGuide + (page.readingLayout ? "" : "<p><a href=\"" + escapeHTML(lang === "ja" ? href(rootPath, "live/") : href(rootPath, "en/live/")) + "\">" + escapeHTML(ui.live) + "</a></p>") + "</section>";
     var inline = (page.inline || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join("");
     var explainer = page.explainer ? "<section class=\"spot-page-section\">" + readingEyebrow(page, "WHAT TO SEE") + "<h2>" + escapeHTML(page.explainer.heading) + "</h2>" + page.explainer.paragraphs.map(function (paragraph, index) { var result = "<p>" + escapeHTML(paragraph) + "</p>"; if (page.explainer.figure && index === Math.min(page.explainer.paragraphs.length - 1, Math.max(0, page.explainer.figure.afterParagraph))) result += pageExplainerFigureHTML(page.explainer.figure, rootPath); return result; }).join("") + "</section>" : "";
     var guideNotice = page.guideNotice ? "<section class=\"spot-page-section guide-answer-panel\"><div class=\"guide-answer-copy\"><h2>" + escapeHTML(page.guideNotice.heading) + "</h2><p>" + escapeHTML(page.guideNotice.body) + "</p><p><a class=\"inline-cta\" href=\"" + escapeHTML(page.guideNotice.href) + "\">" + escapeHTML(page.guideNotice.label) + "</a></p></div></section>" : "";
