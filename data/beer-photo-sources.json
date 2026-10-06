@@ -1,0 +1,349 @@
+[
+  {
+    "id": "kirin-ichiban",
+    "file": "../images/beer/20261004-kirin-ichiban-michikusa.webp",
+    "ownerProvided": true,
+    "showCredit": false,
+    "sourceType": "owner-photo",
+    "sourceFile": "myphoto/drinks/PXL_20261004_100240471.MP.jpg",
+    "originalSha256": "36e47581d3a0e90f0eec99466f797b671bace5d12c2f13861460dd2a75d4a6d2",
+    "originalBytes": 4020525,
+    "originalDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "originalOrientation": 1,
+    "orientedDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "crop": {
+      "left": 403,
+      "top": 1726,
+      "width": 947,
+      "height": 774,
+      "coordinateSpace": "EXIF-orientation-normalized source pixels"
+    },
+    "cropReference": {
+      "width": 563,
+      "height": 1000,
+      "rectangle": [
+        100,
+        428,
+        235,
+        192
+      ]
+    },
+    "date": "2026-10-04",
+    "dateTimeOriginal": "2026:10:04 19:02:40",
+    "offsetTimeOriginal": "+09:00",
+    "subSecTimeOriginal": "471",
+    "capturedAt": "2026-10-04T19:02:40.471+09:00",
+    "author": "Project owner",
+    "license": "Owner-provided; authorized for project use",
+    "rightsBasis": "User supplied myphoto/drinks and authorized use and photo replacement on 2026-10-05; no visible credit requested.",
+    "modifications": "EXIF orientation applied, faithful rectangular crop, resized to a maximum edge of 1200 px without enlargement, and encoded as WebP. No colour correction, compositing, AI generation or label changes.",
+    "width": 947,
+    "height": 774,
+    "bytes": 101356,
+    "sha256": "99294b8aba7afa5978eb0b4d5e4d43c7acdf2e8941254f8e1542d15a0450ac7d",
+    "alt": "Kirin Ichiban Shibori cans with the Kirin emblem and the Japanese name 一番搾り on a shop shelf.",
+    "caption": "Kirin Ichiban Shibori on the shelf.",
+    "inspection": "PASS: The front-facing Kirin can shows KIRIN BEER and 一番搾り. The neighbouring cans remain in their original shelf context.",
+    "verifiedDate": "2026-10-05",
+    "cp": "CP-0207"
+  },
+  {
+    "id": "asahi-super-dry",
+    "file": "../images/beer/20261004-asahi-super-dry-michikusa.webp",
+    "ownerProvided": true,
+    "showCredit": false,
+    "sourceType": "owner-photo",
+    "sourceFile": "myphoto/drinks/PXL_20261004_095319309.MP.jpg",
+    "originalSha256": "a347a35e409475dcb270c09aefbe73ac5a6a89478fc2ecf6131697526a981118",
+    "originalBytes": 3585872,
+    "originalDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "originalOrientation": 1,
+    "orientedDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "crop": {
+      "left": 81,
+      "top": 363,
+      "width": 2187,
+      "height": 2379,
+      "coordinateSpace": "EXIF-orientation-normalized source pixels"
+    },
+    "cropReference": {
+      "width": 563,
+      "height": 1000,
+      "rectangle": [
+        20,
+        90,
+        543,
+        590
+      ]
+    },
+    "date": "2026-10-04",
+    "dateTimeOriginal": "2026:10:04 18:53:19",
+    "offsetTimeOriginal": "+09:00",
+    "subSecTimeOriginal": "309",
+    "capturedAt": "2026-10-04T18:53:19.309+09:00",
+    "author": "Project owner",
+    "license": "Owner-provided; authorized for project use",
+    "rightsBasis": "User supplied myphoto/drinks and authorized use and photo replacement on 2026-10-05; no visible credit requested.",
+    "modifications": "EXIF orientation applied, faithful rectangular crop, resized to a maximum edge of 1200 px without enlargement, and encoded as WebP. No colour correction, compositing, AI generation or label changes.",
+    "width": 1103,
+    "height": 1200,
+    "bytes": 153162,
+    "sha256": "ee7539755fdc4b4a667ff06040b5dbe43fca83315ec9328000a72ded4793b9d9",
+    "alt": "Silver Asahi Super Dry cans on a refrigerated shop shelf, with SUPER DRY, Asahi and 生 visible.",
+    "caption": "Asahi Super Dry in its familiar silver can.",
+    "inspection": "PASS: Front-facing standard Asahi Super Dry can with SUPER DRY, Asahi and 生 readable. The photographed price labels are retained as scene detail, not a current price claim.",
+    "verifiedDate": "2026-10-05",
+    "cp": "CP-0208"
+  },
+  {
+    "id": "sapporo-black-label",
+    "file": "../images/beer/20261004-sapporo-black-label-michikusa.webp",
+    "ownerProvided": true,
+    "showCredit": false,
+    "sourceType": "owner-photo",
+    "sourceFile": "myphoto/drinks/PXL_20261004_095833411.MP.jpg",
+    "originalSha256": "4e9653856032bf2a76dd8b1b3389af4c5eede2382b576bc7ffef755460e66711",
+    "originalBytes": 5626859,
+    "originalDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "originalOrientation": 1,
+    "orientedDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "crop": {
+      "left": 705,
+      "top": 1125,
+      "width": 725,
+      "height": 597,
+      "coordinateSpace": "EXIF-orientation-normalized source pixels"
+    },
+    "cropReference": {
+      "width": 563,
+      "height": 1000,
+      "rectangle": [
+        175,
+        279,
+        180,
+        148
+      ]
+    },
+    "date": "2026-10-04",
+    "dateTimeOriginal": "2026:10:04 18:58:33",
+    "offsetTimeOriginal": "+09:00",
+    "subSecTimeOriginal": "411",
+    "capturedAt": "2026-10-04T18:58:33.411+09:00",
+    "author": "Project owner",
+    "license": "Owner-provided; authorized for project use",
+    "rightsBasis": "User supplied myphoto/drinks and authorized use and photo replacement on 2026-10-05; no visible credit requested.",
+    "modifications": "EXIF orientation applied, faithful rectangular crop, resized to a maximum edge of 1200 px without enlargement, and encoded as WebP. No colour correction, compositing, AI generation or label changes.",
+    "width": 725,
+    "height": 597,
+    "bytes": 72250,
+    "sha256": "e84cfd9f1d3afd2cd8065e1ddb1a704b4ae60d7006e7e1a05fc86024a0be95dc",
+    "alt": "Three Sapporo Black Label cans with a gold star inside a black circle on a shop shelf.",
+    "caption": "Sapporo Black Label: look for the gold star.",
+    "inspection": "PASS: Three front-facing silver Sapporo Black Label cans show black circles, gold stars, SAPPORO and DRAFT BEER. Caps and the main labels are retained.",
+    "verifiedDate": "2026-10-05",
+    "cp": "CP-0209"
+  },
+  {
+    "id": "premium-malts",
+    "file": "../images/beer/20261004-premium-malts-michikusa.webp",
+    "ownerProvided": true,
+    "showCredit": false,
+    "sourceType": "owner-photo",
+    "sourceFile": "myphoto/drinks/PXL_20261004_100240471.MP.jpg",
+    "originalSha256": "36e47581d3a0e90f0eec99466f797b671bace5d12c2f13861460dd2a75d4a6d2",
+    "originalBytes": 4020525,
+    "originalDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "originalOrientation": 1,
+    "orientedDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "crop": {
+      "left": 262,
+      "top": 101,
+      "width": 987,
+      "height": 746,
+      "coordinateSpace": "EXIF-orientation-normalized source pixels"
+    },
+    "cropReference": {
+      "width": 563,
+      "height": 1000,
+      "rectangle": [
+        65,
+        25,
+        245,
+        185
+      ]
+    },
+    "date": "2026-10-04",
+    "dateTimeOriginal": "2026:10:04 19:02:40",
+    "offsetTimeOriginal": "+09:00",
+    "subSecTimeOriginal": "471",
+    "capturedAt": "2026-10-04T19:02:40.471+09:00",
+    "author": "Project owner",
+    "license": "Owner-provided; authorized for project use",
+    "rightsBasis": "User supplied myphoto/drinks and authorized use and photo replacement on 2026-10-05; no visible credit requested.",
+    "modifications": "EXIF orientation applied, faithful rectangular crop, resized to a maximum edge of 1200 px without enlargement, and encoded as WebP. No colour correction, compositing, AI generation or label changes.",
+    "width": 987,
+    "height": 746,
+    "bytes": 58452,
+    "sha256": "228be3cd9ab1f53732fd380fc8e5f5942f863a33c153178b80f2e2bccfb2441f",
+    "alt": "Blue cans of Suntory The Premium Malt’s with gold lettering on the top shelf of a drinks display.",
+    "caption": "The Premium Malt’s, in blue and gold.",
+    "inspection": "PASS: The standard blue The Premium Malt’s cans are readable. Several sizes are visible in their original shelf positions; no package reconstruction or label replacement.",
+    "verifiedDate": "2026-10-05",
+    "cp": "CP-0210"
+  },
+  {
+    "id": "beer-hero",
+    "file": "../images/beer/20261004-beer-hero-michikusa.webp",
+    "ownerProvided": true,
+    "showCredit": false,
+    "sourceType": "owner-photo",
+    "sourceFile": "myphoto/drinks/PXL_20261004_095833411.MP.jpg",
+    "originalSha256": "4e9653856032bf2a76dd8b1b3389af4c5eede2382b576bc7ffef755460e66711",
+    "originalBytes": 5626859,
+    "originalDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "originalOrientation": 1,
+    "orientedDimensions": {
+      "width": 2268,
+      "height": 4032
+    },
+    "crop": {
+      "left": 0,
+      "top": 1145,
+      "width": 2268,
+      "height": 1976,
+      "coordinateSpace": "EXIF-orientation-normalized source pixels"
+    },
+    "cropReference": {
+      "width": 563,
+      "height": 1000,
+      "rectangle": [
+        0,
+        284,
+        563,
+        490
+      ]
+    },
+    "date": "2026-10-04",
+    "dateTimeOriginal": "2026:10:04 18:58:33",
+    "offsetTimeOriginal": "+09:00",
+    "subSecTimeOriginal": "411",
+    "capturedAt": "2026-10-04T18:58:33.411+09:00",
+    "author": "Project owner",
+    "license": "Owner-provided; authorized for project use",
+    "rightsBasis": "User supplied myphoto/drinks and authorized use and photo replacement on 2026-10-05; no visible credit requested.",
+    "modifications": "EXIF orientation applied, faithful rectangular crop, resized to a maximum edge of 1400 px without enlargement, and encoded as WebP. No colour correction, compositing, AI generation or label changes.",
+    "width": 1400,
+    "height": 1220,
+    "bytes": 443070,
+    "sha256": "a1efa4fbbb27a12c9a8278b6447d862fd17788adc64476c6a5507b3ad6361393",
+    "alt": "A refrigerated shop shelf displaying Asahi, Sapporo, Kirin, Suntory and other Japanese beer and beer-style drinks.",
+    "caption": "Familiar names, side by side on the shelf.",
+    "inspection": "PASS: A faithful crop of the beer-centred middle shelves. The gold-star Sapporo cans, silver Asahi cans, Kirin Ichiban Shibori, Yebisu and blue Premium Malt’s cans remain visible. The top highball rows and bottom Honkirin/BREW rows are excluded from the main image.",
+    "verifiedDate": "2026-10-05",
+    "cp": "CP-0211"
+  },
+  {
+    "id": "kirin-factory",
+    "sourceFile": "app/images/20260924_kirin-beer-factory_40249_michikusa.jpg",
+    "cp": "CP-0130",
+    "title": "Kirin Beer Nagoya Brewery from the Shinkansen",
+    "sourceUrl": "https://www.michikusa-travel.com/en/spots/kirin-beer-factory.html",
+    "alt": "A row of gold-and-silver tanks and the KIRIN name at the Nagoya brewery, seen from the Shinkansen.",
+    "date": "2026-09-24",
+    "inspection": "Viewed at source resolution: KIRIN lettering is legible; the tanks are unobstructed. Moving foreground is part of the original train-window photograph.",
+    "file": "../images/20260924_kirin-beer-factory_40249_michikusa.jpg",
+    "ownerProvided": true,
+    "showCredit": false,
+    "author": "michikusa",
+    "license": "Used with the photographer’s permission",
+    "licenseUrl": null,
+    "rights": "All rights reserved; approved owner photo. No new public-use licence granted. Visible credit omitted at the photographer’s request on 2026-10-05.",
+    "modifications": "Original product JPEG copied without modification; displayed responsively.",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 318920,
+    "originalSha256": "48435cf629586b98bf501b7ef844a7175c001eea8d254517b596a6950b30c488",
+    "sha256": "48435cf629586b98bf501b7ef844a7175c001eea8d254517b596a6950b30c488",
+    "verifiedDate": "2026-10-05"
+  },
+  {
+    "id": "sapporo-factory",
+    "sourceFile": "app/images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg",
+    "cp": "CP-0135",
+    "title": "Sapporo Beer Shizuoka Brewery from the Shinkansen",
+    "sourceUrl": "https://www.michikusa-travel.com/en/spots/sapporo-shizuoka-factory.html",
+    "alt": "Tall silver tanks at Sapporo Beer’s Shizuoka brewery in Yaizu, photographed through the Shinkansen window.",
+    "date": "2026-09-24",
+    "inspection": "Viewed at source resolution: silver tanks below a blue sky; train-window reflections retained. The SAPPORO logo is not visible in this particular frame.",
+    "file": "../images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg",
+    "ownerProvided": true,
+    "showCredit": false,
+    "author": "michikusa",
+    "license": "Used with the photographer’s permission",
+    "licenseUrl": null,
+    "rights": "All rights reserved; approved owner photo. No new public-use licence granted. Visible credit omitted at the photographer’s request on 2026-10-05.",
+    "modifications": "Original product JPEG copied without modification; displayed responsively.",
+    "width": 1920,
+    "height": 1080,
+    "bytes": 273290,
+    "originalSha256": "ac871993f7dc4e4a8d0ae7900a73ddac08f42b2bb2482fd1c6eab61111103669",
+    "sha256": "ac871993f7dc4e4a8d0ae7900a73ddac08f42b2bb2482fd1c6eab61111103669",
+    "verifiedDate": "2026-10-05"
+  },
+  {
+    "id": "trolley-history",
+    "title": "Food service aboard shinkansen.jpg",
+    "author": "Grendelkhan",
+    "authorUrl": "https://commons.wikimedia.org/wiki/User:Grendelkhan",
+    "date": "2018-04-21",
+    "dateBasis": "Commons description and original EXIF; upload occurred in 2024, not the date photographed.",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Food_service_aboard_shinkansen.jpg",
+    "sourceRevisionUrl": "https://commons.wikimedia.org/w/index.php?title=File:Food_service_aboard_shinkansen.jpg&oldid=1034476615",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Food_service_aboard_shinkansen.jpg",
+    "file": "../images/beer/20180421-trolley-grendelkhan.webp",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "rightsStatus": "approved",
+    "verifiedDate": "2026-10-06",
+    "ownerProvided": false,
+    "showCredit": true,
+    "alt": "A uniformed attendant with a refreshments trolley among blue seats in the Shinkansen aisle near Odawara, photographed in April 2018.",
+    "caption": "Trolley service near Odawara, April 2018. Photo: Grendelkhan / Wikimedia Commons · CC BY-SA 4.0. Resized and converted to WebP.",
+    "modifications": "Full photograph resized with orientation correction and converted to WebP. No crop, retouching or image generation. This displayed version is offered under CC BY-SA 4.0.",
+    "fetchedUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4c/Food_service_aboard_shinkansen.jpg",
+    "originalSha256": "8c4733c6c1ace8c8e65e0ac3119b094836881b678b1115e7bd4046cb453a6e01",
+    "sha256": "c02ef377915dc79c05c5b2e92ea73642ae0401a8687246787c99f4960da5d854",
+    "bytes": 156438,
+    "width": 900,
+    "height": 1200,
+    "inspection": "PASS: A forward-facing attendant and refreshments trolley are visible in an ordinary-car aisle, with incidental seated passengers. The full frame is preserved. Caption uses the source date/location, does not identify people or the train service, does not claim beer cans are visible, and does not imply endorsement.",
+    "cp": "CP-0212"
+  }
+]
