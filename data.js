@@ -6728,6 +6728,13 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20260930_fujitec-big-wing_michikusa.jpg",
+        "alt": { "ja": "青空の下、車窓に大きく見えるフジテックBig Wingの研究塔", "en": "FUJITEC Big Wing's research towers filling the train window beneath a blue sky" },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-09-30",
+        "note": { "ja": "青空の下の研究塔。手前の高層塔と、奥の中層塔。", "en": "Research towers beneath a blue sky: the taller tower in front and the mid-rise tower beyond." }
+      },
+      {
         "src": "images/20260804_fujitec_big_wing_michikusa.jpg",
         "alt": {
           "ja": "高くそびえるフジテックのエレベータ研究塔",
@@ -7066,11 +7073,19 @@ const SPOTS = [
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
     photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
+
       {
         src: "images/20250831_sawayama_castle_letus10.jpg",
         alt: { ja: "新幹線のE席側から見える佐和山城跡の看板と山", en: "Sawayama Castle Ruins sign and hill from Seat E" },
         credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
         sourceUrl: "https://cotetu.seesaa.net/article/517840979.html",
+      },
+      {
+        src: "images/20260930_sawayama-castle_michikusa.jpg",
+        alt: { ja: "田園越しに見える佐和山城跡の看板と緑の山", en: "The Sawayama Castle Ruins sign and green hill beyond the fields" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-09-30",
+        note: { ja: "田園越しに見える「佐和山城跡」の看板。", en: "The Sawayama Castle Ruins sign seen across the fields." },
       },
     ],
     references: [REFERENCES.sawayama, REFERENCES.sawayamaIshida, REFERENCES.sawayamaBlog],

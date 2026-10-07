@@ -38,6 +38,9 @@ const contentFiles = [
   "arenani.html",
   "en/arenani.html",
   "arenani.css",
+  "images/20260930_golf-driving-range_michikusa.jpg",
+  "images/20260930_fujitec-big-wing_michikusa.jpg",
+  "images/20260930_sawayama-castle_michikusa.jpg",
   // Greenhouse article: gallery photo and the separate farming-sign chapter.
   "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
   "images/20260820_farming-sign_18635_michikusa.jpg",
