@@ -7073,18 +7073,19 @@ const SPOTS = [
     image: "images/20240719_sawayama_castle_asami_k920.jpg",
     photoCredit: { ja: "@asami_k920", en: "@asami_k920", url: "https://x.com/asami_k920/status/1814165589851795710" },
     photos: [
+
+      {
+        src: "images/20250831_sawayama_castle_letus10.jpg",
+        alt: { ja: "新幹線のE席側から見える佐和山城跡の看板と山", en: "Sawayama Castle Ruins sign and hill from Seat E" },
+        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
+        sourceUrl: "https://cotetu.seesaa.net/article/517840979.html",
+      },
       {
         src: "images/20260930_sawayama-castle_michikusa.jpg",
         alt: { ja: "田園越しに見える佐和山城跡の看板と緑の山", en: "The Sawayama Castle Ruins sign and green hill beyond the fields" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-09-30",
         note: { ja: "田園越しに見える「佐和山城跡」の看板。", en: "The Sawayama Castle Ruins sign seen across the fields." },
-      },
-      {
-        src: "images/20250831_sawayama_castle_letus10.jpg",
-        alt: { ja: "新幹線のE席側から見える佐和山城跡の看板と山", en: "Sawayama Castle Ruins sign and hill from Seat E" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/517840979.html",
       },
     ],
     references: [REFERENCES.sawayama, REFERENCES.sawayamaIshida, REFERENCES.sawayamaBlog],
