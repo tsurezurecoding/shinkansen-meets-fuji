@@ -1,3 +1,4 @@
+import { CONTENT_METADATA, SITE, imageDimensions } from './shared/content-metadata.mjs';
 import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import vm from "node:vm";
@@ -187,9 +188,10 @@ expect(localScriptIndex > postSectionIndex && calculatorScriptIndex > localScrip
 expect(!/(?:<video\b|\bposter\s*=|(?:pbs|video)\.twimg\.com|i\.ytimg\.com)/i.test(page), "sparkling-dreams.html: copied thumbnail, poster, or local video markup found");
 expect(!/<img\b[^>]+(?:https?:)?\/\//i.test(page), "sparkling-dreams.html: hotlinked image found");
 expect(!/(?:src|srcset)=["'][^"']*(?:disney|jr-central|tokyodisney)/i.test(page), "sparkling-dreams.html: external promotional image reference found");
-expect(/og-sparkling-dreams\.png/.test(page), "sparkling-dreams.html: page-specific owned OGP image is missing");
+expect(CONTENT_METADATA["sparkling-dreams.html"].imageRights === "own" && page.includes(SITE + "/" + CONTENT_METADATA["sparkling-dreams.html"].image), "sparkling-dreams.html: page-specific owned OGP image is missing");
 expect(!/og-shinkansen-window\.png/.test(page), "sparkling-dreams.html: generic OGP image must not be used");
-expect(/<meta property="og:image:alt" content="東京ディズニーシー25周年/.test(page), "sparkling-dreams.html: OGP image alt text is missing");
+expect(page.includes(`<meta property="og:image:alt" content="${CONTENT_METADATA["sparkling-dreams.html"].imageAlt}">`), "sparkling-dreams.html: OGP image alt text is missing");
+const ogMetadata = CONTENT_METADATA['sparkling-dreams.html'];
 const expectedMetadata = [
   `<title>ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる | 新幹線の窓</title>`,
   `<meta name="description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・Cの運転パターンと運転日も掲載。">`,
@@ -198,9 +200,13 @@ const expectedMetadata = [
   `<meta name="twitter:card" content="summary_large_image">`,
   `<meta name="twitter:title" content="ディズニー新幹線はいつ走る？すれ違う時刻と窓側がわかる">`,
   `<meta name="twitter:description" content="乗車日と列車を選ぶだけで、ディズニー新幹線「Sparkling Dreams Shinkansen」とすれ違う時刻・場所・見える窓側がわかります。A・B・Cの運転パターンと運転日も掲載。">`,
-  `<meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-sparkling-dreams.png">`,
-  `<meta name="twitter:image:alt" content="東京ディズニーシー25周年の特別塗装列車を紹介する、白い新幹線と光の粒のオリジナルイラスト">`,
+  `<meta name="twitter:image" content="${SITE}/${ogMetadata.image}">`,
+  `<meta name="twitter:image:alt" content="${ogMetadata.imageAlt}">`,
 ];
+for (const [file, html] of [['sparkling-dreams.html', page], ['en/sparkling-dreams.html', englishPage]]) {
+  const meta = CONTENT_METADATA[file], size = imageDimensions(meta.image);
+  expect(size.width >= 1200 && size.width > size.height && html.includes(`${SITE}/${meta.image}`), `${file}: representative owned image contract failed`);
+}
 for (const metadata of expectedMetadata) expect(page.includes(metadata), `sparkling-dreams.html: expected metadata changed or is missing (${metadata.slice(0, 32)}...)`);
 expect(page.includes(`<link rel="stylesheet" href="style.css?v=${assetVersion("style.css")}">`), "sparkling-dreams.html: stylesheet cache token is missing or stale");
 expect(stylesheet.includes(".sd-post-grid") && stylesheet.includes("grid-template-columns: repeat(2, minmax(0, 1fr))") && stylesheet.includes(".sd-post-grid { grid-template-columns: 1fr; }"), "style.css: X videos must be two columns on desktop and one column on mobile");

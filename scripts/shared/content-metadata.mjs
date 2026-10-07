@@ -15,6 +15,7 @@ export function validContentDate(value) {
     Number.isFinite(Date.parse(value)) && new Date(value).toISOString().slice(0, 10) === value;
 }
 
+const contentImageProblem = file => `${file}: curated image needs specific rights evidence, alt and representative-image permission`;
 export function metadataProblems(registry = CONTENT_METADATA) {
   const problems = [];
   for (const [file, meta] of Object.entries(registry)) {
@@ -27,7 +28,8 @@ export function metadataProblems(registry = CONTENT_METADATA) {
     if (meta.publishedAccuracy === 'estimated-day' && (!meta.published || !meta.publishedEstimateNote)) problems.push(`${file}: estimated date needs an explicit rationale`);
     if (meta.representativeImage === false && (!meta.imageReview || meta.image)) problems.push(`${file}: nonrepresentative fallback requires a review reason and no curated image`);
     if (meta.article && meta.kind !== 'editorial article') problems.push(`${file}: Article requires an editorial decision`);
-    if (meta.image && (meta.imageRights !== 'own' || !meta.imageEvidence || !meta.imageAlt)) problems.push(`${file}: curated image needs ownership evidence and alt`);
+    if (meta.image && (!['own','permission'].includes(meta.imageRights) || !meta.imageEvidence || !meta.imageAlt)) problems.push(contentImageProblem(file));
+    if (meta.imageRights === 'permission' && (!meta.image || !meta.imageCredit || !/^https:\/\//.test(meta.imageSourceUrl || '') || !meta.imagePermissionEvidence || !['og','article'].every(use => meta.imagePermissions?.includes(use)))) problems.push(contentImageProblem(file));
   }
   return problems;
 }
@@ -112,7 +114,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
     const alt = meta?.imageAlt || selected?.alt || metaValue(head, 'og:image:alt');
     if (!alt) throw Error(`Missing representative image alt: ${file}`);
     const contentUrl = `${SITE}/${file}`;
-    const image = { '@type': 'ImageObject', '@id': `${contentUrl}#primaryimage`, url, contentUrl: url, width: size.width, height: size.height, caption: alt };
+    const image = { '@type': 'ImageObject', '@id': `${contentUrl}#primaryimage`, url, contentUrl: url, width: size.width, height: size.height, caption: alt, ...(meta?.imageCredit ? { creditText: meta.imageCredit } : {}), ...(meta?.imageSourceUrl ? { isBasedOn: meta.imageSourceUrl } : {}) };
     head = setMeta(head, 'og:image', url);
     head = setMeta(head, 'og:image:width', size.width);
     head = setMeta(head, 'og:image:height', size.height);
@@ -123,7 +125,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
     if (meta && !metaValue(head, 'robots')) head = setMeta(head, 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1', true);
     // An editorial page with no previous schema gets a page node, then the opted-in Article.
     if (meta && !/<script type="application\/ld\+json">/.test(head)) {
-      const page = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': contentUrl,
+      const page = { '@context': 'https://schema.org', '@type': meta.kind === 'collection' ? 'CollectionPage' : 'WebPage', '@id': contentUrl,
         name: metaValue(head, 'og:title'), description: metaValue(head, 'description'), url: contentUrl, inLanguage: lang };
       head = head.replace('</head>', '<script type="application/ld+json">' + JSON.stringify(page) + '</script>\n</head>');
     }

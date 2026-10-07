@@ -11,8 +11,8 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 18);
-  for (const file of ['arenani.html', '727-collection.html', 'castles.html', 'en/castles.html']) assert.equal(CONTENT_METADATA[file].article, false);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 25);
+  for (const file of ['arenani.html', '727-collection.html', 'castles.html', 'en/castles.html','hanabi.html','en/hanabi.html']) assert.equal(CONTENT_METADATA[file].article, false);
   for (const file of ['guide.html','spots/left-fuji.html','spots/gyoran-kannon.html','spots/fujitec-big-wing.html','spots/727-board.html']) assert.equal(CONTENT_METADATA[file].article, true);
 });
 
@@ -59,7 +59,7 @@ test('metadata enrichment is idempotent and does not change body content or inte
     assert.equal(next.slice(next.indexOf('<body')), html.slice(html.indexOf('<body')), file);
   }
 });
-test('standalone castle Articles retain their identity and do not extend photograph permissions', () => {
+test('standalone castle Articles retain their identity and use only explicitly permitted covers', () => {
   for (const lang of ['', 'en/']) for (const id of ['himeji-castle','okayama-castle','fukuyama-castle']) {
     const file = lang + 'spots/' + id + '.html';
     const original = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
@@ -68,10 +68,11 @@ test('standalone castle Articles retain their identity and do not extend photogr
     assert.equal(nodes.length, 1);
     const article = nodes[0];
     assert.equal(article['@type'], 'Article');
-    assert.equal('image' in article, false, 'common banner must not become the article cover');
+    assert.equal(article.image.url, SITE + '/' + CONTENT_METADATA[file].image);
+    assert.equal(article.image.creditText, CONTENT_METADATA[file].imageCredit);
     assert.equal(article.author.url, SITE + '/');
     assert.equal(article.mainEntityOfPage['@id'], SITE + '/' + file);
-    assert.equal(doc.querySelector('meta[property="og:image"]').content, SITE + '/images/og-shinkansen-window.png');
+    assert.equal(doc.querySelector('meta[property="og:image"]').content, SITE + '/' + CONTENT_METADATA[file].image);
     assert.ok(doc.querySelector('[data-gallery-source-output]').href.startsWith('https://'));
     assert.equal(enhanceContentHead(original, file).slice(enhanceContentHead(original, file).indexOf('<body')), original.slice(original.indexOf('<body')));
   }
@@ -90,6 +91,31 @@ test('drinks Article can be created from a schema-free head without changing edi
   assert.ok(doc.querySelector('meta[name="robots"]').content.includes('max-image-preview:large'));
   assert.equal(enhanced.slice(enhanced.indexOf('<body')), original.slice(original.indexOf('<body')));
   assert.equal(enhanceContentHead(enhanced, file), enhanced);
+});
+
+test('third-party covers need an exact asset, representative-image permission and attribution', () => {
+  const allowed = CONTENT_METADATA['spots/himeji-castle.html'];
+  assert.deepEqual(metadataProblems({ 'test.html': allowed }), []);
+  assert.ok(metadataProblems({ 'test.html': { ...allowed, imagePermissions: ['page'] } }).length);
+  assert.ok(metadataProblems({ 'test.html': { ...allowed, imagePermissionEvidence: null } }).length);
+  assert.ok(metadataProblems({ 'test.html': { ...allowed, imageCredit: null } }).length);
+  const file = 'test-unapproved.html';
+  try {
+    CONTENT_METADATA[file] = { kind: 'editorial article', article: true, representativeImage: false, imageReview: 'No OG permission', published: null, modified: null, imageAlt: 'Shared banner' };
+    const html = '<head><meta property="og:image" content="' + SITE + '/images/og-shinkansen-window.png"><script type="application/ld+json">{"@type":"Article","headline":"Test article","description":"Editorial reading","image":"unapproved.jpg"}</script></head><body></body>';
+    const doc = new JSDOM(enhanceContentHead(html, file)).window.document;
+    const article = JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent);
+    assert.equal('image' in article, false);
+  } finally { delete CONTENT_METADATA[file]; }
+});
+
+test('fireworks stays a collection and Disney stays a utility page, rather than becoming Articles', () => {
+  for (const file of ['hanabi.html','en/hanabi.html','sparkling-dreams.html','en/sparkling-dreams.html']) {
+    const doc = new JSDOM(fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8')).window.document;
+    const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(s => { const j = JSON.parse(s.textContent); return j['@graph'] || [j]; });
+    assert.deepEqual(nodes.map(n => n['@type']), [file.includes('hanabi') ? 'CollectionPage' : 'WebPage']);
+    if (file.includes('sparkling')) assert.equal('dateModified' in nodes[0], false);
+  }
 });
 
 import {

@@ -47,6 +47,11 @@ export function auditContentMetadata(root, spots) {
           expect((node.datePublished || null) === (meta.published || null) && (node.dateModified || null) === (meta.modified || null), 'dates disagree with source');
         }
       }
+      if (meta?.imageRights === 'permission') {
+        expect(src === meta.image, 'permitted cover differs from approved asset');
+        const cover = nodes.find(n => n['@type'] === 'Article')?.image;
+        expect(cover?.creditText === meta.imageCredit && cover?.isBasedOn === meta.imageSourceUrl, 'permitted image attribution/source missing');
+      }
       if (meta?.article) expect(nodes.some(n => n['@type'] === 'Article'), 'missing opted-in Article');
       if (meta?.modified) expect(lastmods.get(`${SITE}/${file}`) === meta.modified, 'sitemap/source modified mismatch');
       if (meta?.kind === 'collection') expect(nodes.some(n => n['@type'] === 'CollectionPage') && !nodes.some(n => n['@type'] === 'Article'), 'collection was Article-ized');

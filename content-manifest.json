@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "8e73d8241fd95f5d",
+  "contentVersion": "1b51b989535c707b",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -139,8 +139,8 @@
     {
       "path": "en/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/en/beer-on-shinkansen.html",
-      "bytes": 27356,
-      "sha256": "572d81af1387a79400fb6fba4a2d527117119f7238d3a2d488b36fd8ca257aa1"
+      "bytes": 30534,
+      "sha256": "8d6f8f015423abd0100c9770760714c42ee0fdc55155a296279a9ca2320bb41b"
     },
     {
       "path": "en/castles.html",
@@ -163,8 +163,8 @@
     {
       "path": "en/hanabi.html",
       "url": "https://www.michikusa-travel.com/en/hanabi.html",
-      "bytes": 38450,
-      "sha256": "c928b730562c87d5e04430b96157e867a3ae305779cdda853e0ed38cbd4ad4e6"
+      "bytes": 39723,
+      "sha256": "7af4fef702d32f71b8434dbfeff3e286e598fe620aa61d045fb839dbfc25e42b"
     },
     {
       "path": "en/index.html",
@@ -181,26 +181,26 @@
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 27112,
-      "sha256": "29f26f5c27ea834de67a214a3d94a8dcc06fe099667e559bce860d2ad6dc5111"
+      "bytes": 28421,
+      "sha256": "eb962eb0c0fd36a6234995fb894779e45f9549720ee1922b480aa826a8d27938"
     },
     {
       "path": "en/spots/fukuyama-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/fukuyama-castle.html",
-      "bytes": 18003,
-      "sha256": "a98fb3fadf1192148c9393298201eedfbe041cc111a5ea443bd32028c8d58f93"
+      "bytes": 18697,
+      "sha256": "cb7b44496b7f07132552e43790eb7a6c3b263b2eefdd0a244155f827682721a5"
     },
     {
       "path": "en/spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/himeji-castle.html",
-      "bytes": 18695,
-      "sha256": "1f635811e7121ca2c1c68a150e28afef555a95a4cb48aadb86f5a50177794f78"
+      "bytes": 19380,
+      "sha256": "f0af9027b48d3b1740dad8dda35d1b1f71fbaf6fa84f2bbbecc0fd4e58285154"
     },
     {
       "path": "en/spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/en/spots/okayama-castle.html",
-      "bytes": 16675,
-      "sha256": "037469413d97a3bf3463eb0197b8917b3e88ee157aff66c383fa353da515a184"
+      "bytes": 17385,
+      "sha256": "920ca6309a95ae8353b39d898852e5e1a119f351361f159a1ca256f9ce6800d3"
     },
     {
       "path": "en/window-artworks.html",
@@ -235,8 +235,8 @@
     {
       "path": "hanabi.html",
       "url": "https://www.michikusa-travel.com/hanabi.html",
-      "bytes": 38785,
-      "sha256": "f392e162f3093a6ddb174e382cb78fe5f6256b98a17a36982f21d9fdcf2292d6"
+      "bytes": 40119,
+      "sha256": "30ffd7684c46a3642ab4e47733de19fc9324cd04325ed1fc566e844bc4caafe1"
     },
     {
       "path": "hanabi.js",
@@ -1117,8 +1117,8 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 29812,
-      "sha256": "84add2fc489bdbe61b2deee1504632c61054127cbd4e24a065156cb2984f927c"
+      "bytes": 31155,
+      "sha256": "2f16254de57ba37ffbf2ae1835058fa0ea39d68a672401c28628e3ac4d78e782"
     },
     {
       "path": "sparkling-dreams.js",
@@ -1159,20 +1159,20 @@
     {
       "path": "spots/fukuyama-castle.html",
       "url": "https://www.michikusa-travel.com/spots/fukuyama-castle.html",
-      "bytes": 18800,
-      "sha256": "24412b724284459645af54ddefa38497b350d0cc5c24f08669dab3acce00c65c"
+      "bytes": 19498,
+      "sha256": "bb998576025d5eef3e5719ae29fb1216ed0ba4814f8114bc74d1104840da98aa"
     },
     {
       "path": "spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/spots/himeji-castle.html",
-      "bytes": 19905,
-      "sha256": "173a4b829ee9fb9c857996ff55072a2db262ab6d183362bae65c15269ffdf29b"
+      "bytes": 20618,
+      "sha256": "384cc5e2d420a7ff97deb3b98f6babbcbed21d81757dcfba88debb444ee95510"
     },
     {
       "path": "spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/spots/okayama-castle.html",
-      "bytes": 17257,
-      "sha256": "25f0d321f0383145504bb95a10bc95664e4077895deecf6be7f66f846a8859fd"
+      "bytes": 17992,
+      "sha256": "a0b4bb1661862e6c5f3914614fe143b613510c171632d6264d4dae3f5b611897"
     },
     {
       "path": "style.css",
@@ -1255,8 +1255,8 @@
     {
       "path": "window-moments.html",
       "url": "https://www.michikusa-travel.com/window-moments.html",
-      "bytes": 32033,
-      "sha256": "b472e1db078709700ce069573827b007a1a36aac42769d467dab39445f04cd9c"
+      "bytes": 35111,
+      "sha256": "7dcfa4d2c260af867a7639243ecbdd640b2d108389b75a3621f1ce80fa3f1d2f"
     },
     {
       "path": "window-moments.js",

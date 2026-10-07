@@ -1,3 +1,4 @@
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -641,7 +642,7 @@ ${t.window_moments_page}
 
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html');
-  const html = render(lang);
+  const html = enhanceContentHead(render(lang), lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html', root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('window-moments page out of date: ' + dest);
   } else {
