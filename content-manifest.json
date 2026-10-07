@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "91eb6cca03771f3f",
+  "contentVersion": "9e2824064d24e901",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 15749,
-      "sha256": "a67a0792e6cd1e78dcb2cbb553e36f3406df64c3fd7c69e1b896c9478b6b1831"
+      "bytes": 17231,
+      "sha256": "fffcdc8c06e6ea767ee181aba51e415d1b701601559e14881bfa481530265905"
     },
     {
       "path": "727-collection.js",
@@ -43,8 +43,8 @@
     {
       "path": "arenani.html",
       "url": "https://www.michikusa-travel.com/arenani.html",
-      "bytes": 30579,
-      "sha256": "90e9f6caf163676f9754dce221e99899c6f336ebd4c36b94cb8131ff62d93d9b"
+      "bytes": 30611,
+      "sha256": "05c0c7e13894b96f8e9c19a90105da828a27bb9cbab9276d29c70c79bae89de7"
     },
     {
       "path": "beer.css",

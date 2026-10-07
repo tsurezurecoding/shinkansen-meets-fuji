@@ -23,7 +23,9 @@ export function metadataProblems(registry = CONTENT_METADATA) {
       if (meta[field] != null && !meta[`${field}Evidence`]) problems.push(`${file}: missing ${field} evidence`);
     }
     if (meta.published && meta.modified && meta.published > meta.modified) problems.push(`${file}: published after modified`);
-    if (meta.article && (meta.kind !== 'editorial article' || !meta.published || !meta.modified)) problems.push(`${file}: Article requires an editorial decision and verified dates`);
+    if (meta.publishedAccuracy && meta.publishedAccuracy !== 'estimated-day') problems.push(`${file}: invalid publication accuracy`);
+    if (meta.publishedAccuracy === 'estimated-day' && (!meta.published || !meta.publishedEstimateNote)) problems.push(`${file}: estimated date needs an explicit rationale`);
+    if (meta.article && (meta.kind !== 'editorial article' || !meta.published || !meta.modified)) problems.push(`${file}: Article requires an editorial decision and documented dates`);
     if (meta.image && (meta.imageRights !== 'own' || !meta.imageEvidence || !meta.imageAlt)) problems.push(`${file}: curated image needs ownership evidence and alt`);
   }
   return problems;

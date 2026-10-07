@@ -10,18 +10,21 @@
   },
   "spots/left-fuji.html": {
     "kind": "editorial article",
-    "article": false,
-    "published": null,
-    "modified": null,
-    "dateReview": "First independent page publication and last substantive update are not established. Photo capture dates are not publication dates."
+    "article": true,
+    "published": "2026-07-01",
+    "modified": "2026-08-23",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
+    "modifiedEvidence": "c21873ea adds left-fuji spotting guidance; 2026-08-23_inbound-727-release-batch.md / be0fb36f / Pages 32626471235 publishes ratings for all views"
   },
   "arenani.html": {
     "kind": "collection",
     "article": false,
     "published": "2026-09-19",
-    "modified": null,
+    "modified": "2026-10-03",
     "publishedEvidence": "2026-09-19_arenani-wheels-release.md (Pages 35405275369)",
-    "dateReview": "Latest substantive card update needs release evidence; retain the existing sitemap value until confirmed."
+    "modifiedEvidence": "7502b536 adds Japanese Gamagori greenhouse card; 2026-10-03_greenhouse-story-release.md / Pages 37123020662"
   },
   "yakei.html": {
     "kind": "editorial article",
@@ -33,14 +36,56 @@
   },
   "guide.html": {
     "kind": "editorial article",
-    "article": false,
-    "published": null,
+    "article": true,
+    "published": "2026-07-01",
     "modified": "2026-10-05",
     "modifiedEvidence": "2026-10-05_guide-seat-correction-release.md (Pages 37239195428): correct Seat E reservation guidance",
-    "dateReview": "The 2026-09-06 five-view redesign is not the first publication of this existing guide URL.",
     "image": "images/20240211_fuji_michikusa.jpg",
     "imageRights": "own",
     "imageEvidence": "data.js fuji.photos: credit michikusa; existing guide hero image",
-    "imageAlt": "新幹線のE席側から見える雪化粧の富士山"
+    "imageAlt": "新幹線のE席側から見える雪化粧の富士山",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 9ae17a08; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication."
+  },
+  "spots/gyoran-kannon.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-07-01",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
+    "modified": "2026-09-26",
+    "modifiedEvidence": "f8e8237c adds self-shot morning Gyoran photo; 2026-09-26_cinema-hero-release.md / 50a79a2b / Pages 36238963944 includes the photo; later spot narrative/photo fields are identical"
+  },
+  "spots/fujitec-big-wing.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-08-09",
+    "modified": "2026-10-07",
+    "publishedEvidence": "0749f8c6 / 2026-08-09_window-stamps-39-views-sparkling-dreams-release.md explicitly publishes Big Wing",
+    "modifiedEvidence": "4dbf7d02 / 2026-10-07_spot-photo-release.md / Pages 37635368526 adds September 30 own daylight photo"
+  },
+  "spots/727-board.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-07-01",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
+    "modified": "2026-10-04",
+    "modifiedEvidence": "fbacc898 / 2026-10-04_billboard-entry-release.md / Pages 37187829438: page-specific search description and location guidance"
+  },
+  "727-collection.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-08-14",
+    "publishedEvidence": "e33dd7da first Japanese collection on historical main; 2026-08-14_727-collection-dedicated-ogp-image.md confirms that page and image published on August 14 (3d1ab8c3)",
+    "modified": "2026-10-04",
+    "modifiedEvidence": "2026-10-04_billboard-entry-release.md / 06f09a96 / Pages 37187829438 adds photo/map introduction and location guide links",
+    "image": "images/20260820_727_board_yoda_solo_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data.js 727-sign.photos: credit michikusa, dated 2026-08-20; existing page/gallery self-shot photo",
+    "imageAlt": "朝の田んぼの向こうにひとつだけ立つ藤沢市用田の727看板"
   }
 }

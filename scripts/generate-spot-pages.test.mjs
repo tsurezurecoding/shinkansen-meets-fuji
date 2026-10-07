@@ -6,12 +6,14 @@ import { JSDOM } from "jsdom";
 import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOgImage, enhanceContentHead, contentLastmod } from './shared/content-metadata.mjs';
 import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
 
-test('editorial metadata: all five candidates and generated spot contracts pass the site gate', () => {
+test('editorial metadata: curated candidates and generated spot contracts pass the site gate', () => {
   const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 5);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 9);
+  for (const file of ['arenani.html', '727-collection.html']) assert.equal(CONTENT_METADATA[file].article, false);
+  for (const file of ['guide.html','spots/left-fuji.html','spots/gyoran-kannon.html','spots/fujitec-big-wing.html','spots/727-board.html']) assert.equal(CONTENT_METADATA[file].article, true);
 });
 
 test('OG selection never promotes a third-party photo, even if its filename looks owned', () => {
@@ -28,7 +30,8 @@ test('invalid dates and unsupported Article decisions are rejected; builds do no
   assert.ok(metadataProblems({ 'test.html': { published: '2026-10-08', modified: '2026-10-07', publishedEvidence: 'fixture', modifiedEvidence: 'fixture' } }).length);
   assert.ok(metadataProblems({ 'test.html': { kind: 'collection', article: true } }).length);
   assert.equal(contentLastmod(SITE + '/index.html', '2026-07-29'), '2026-07-29');
-  assert.equal(contentLastmod(SITE + '/spots/left-fuji.html', '2026-08-02'), '2026-08-02');
+  assert.equal(contentLastmod(SITE + '/spots/left-fuji.html', '2026-08-02'), '2026-08-23');
+  assert.ok(metadataProblems({ 'test.html': { publishedAccuracy: 'estimated-day', published: '2026-07-01', publishedEvidence: 'fixture' } }).length);
   assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-09-20');
 });
 
