@@ -16,6 +16,22 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   for (const file of ['guide.html','spots/left-fuji.html','spots/gyoran-kannon.html','spots/fujitec-big-wing.html','spots/727-board.html']) assert.equal(CONTENT_METADATA[file].article, true);
 });
 
+test('editorial articles can omit unknown dates without fabricating a publication history', () => {
+  const file = 'spots/mishima-catapult.html';
+  const saved = CONTENT_METADATA[file];
+  try {
+    CONTENT_METADATA[file] = { kind: 'editorial article', article: true, published: null, modified: null };
+    assert.deepEqual(metadataProblems({ [file]: CONTENT_METADATA[file] }), []);
+    const html = enhanceContentHead(fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8'), file);
+    const doc = new JSDOM(html).window.document;
+    const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(s => { const j = JSON.parse(s.textContent); return j['@graph'] || [j]; });
+    const article = nodes.find(node => node['@type'] === 'Article');
+    assert.ok(article.headline && article.image && article.author);
+    assert.equal('datePublished' in article, false);
+    assert.equal('dateModified' in article, false);
+  } finally { CONTENT_METADATA[file] = saved; }
+});
+
 test('OG selection never promotes a third-party photo, even if its filename looks owned', () => {
   const foreign = { id: 'fixture', image: 'images/unapproved_michikusa.jpg', photoCredit: { ja: '@someone' }, photos: [{ src: 'images/20240211_fuji_michikusa.jpg', credit: { ja: '@someone' } }], ja: { name: 'Fixture' } };
   assert.equal(selectSpotOgImage(foreign).url, SITE + '/images/og-shinkansen-window.png');

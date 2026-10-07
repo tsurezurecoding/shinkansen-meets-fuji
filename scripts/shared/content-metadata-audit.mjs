@@ -37,7 +37,7 @@ export function auditContentMetadata(root, spots) {
         if (node.image?.['@type'] === 'ImageObject') expect(node.image.url === image && node.image.width === size.width && node.image.height === size.height, 'schema image inconsistent');
         if (['Article','NewsArticle','BlogPosting'].includes(node['@type'])) {
           expect(!!meta?.article, 'Article lacks explicit editorial decision');
-          for (const field of ['headline','description','image','mainEntityOfPage','datePublished','dateModified','author','publisher']) expect(!!node[field], `Article missing ${field}`);
+          for (const field of ['headline','description','image','mainEntityOfPage','author','publisher']) expect(!!node[field], `Article missing ${field}`);
           expect(node.author?.name && node.author?.url && node.publisher?.name && node.publisher?.url, 'Article organization incomplete');
         }
         if (meta && ['WebPage','CollectionPage','Article'].includes(node['@type'])) {

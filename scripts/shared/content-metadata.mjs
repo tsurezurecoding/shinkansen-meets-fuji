@@ -25,7 +25,7 @@ export function metadataProblems(registry = CONTENT_METADATA) {
     if (meta.published && meta.modified && meta.published > meta.modified) problems.push(`${file}: published after modified`);
     if (meta.publishedAccuracy && meta.publishedAccuracy !== 'estimated-day') problems.push(`${file}: invalid publication accuracy`);
     if (meta.publishedAccuracy === 'estimated-day' && (!meta.published || !meta.publishedEstimateNote)) problems.push(`${file}: estimated date needs an explicit rationale`);
-    if (meta.article && (meta.kind !== 'editorial article' || !meta.published || !meta.modified)) problems.push(`${file}: Article requires an editorial decision and documented dates`);
+    if (meta.article && meta.kind !== 'editorial article') problems.push(`${file}: Article requires an editorial decision`);
     if (meta.image && (meta.imageRights !== 'own' || !meta.imageEvidence || !meta.imageAlt)) problems.push(`${file}: curated image needs ownership evidence and alt`);
   }
   return problems;
@@ -137,7 +137,8 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
         const article = {
           '@type': 'Article', '@id': `${contentUrl}#article`, headline: page.name,
           description: page.description, image, mainEntityOfPage: { '@id': page['@id'] || contentUrl },
-          datePublished: meta.published, dateModified: meta.modified,
+          ...(meta.published ? { datePublished: meta.published } : {}),
+          ...(meta.modified ? { dateModified: meta.modified } : {}),
           author: organization, publisher: organization, inLanguage: lang,
           ...(attraction ? { about: { '@id': attraction['@id'] } } : {})
         };

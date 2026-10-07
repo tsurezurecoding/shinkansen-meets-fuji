@@ -6,7 +6,7 @@
 - `modified`: 本文・写真・事実・利用者に示す情報を実質的に更新した公開日。build、共通ナビ、CSS/asset hash、formatter、改行用chunkだけでは変更しない。
 - 日付には `publishedEvidence` / `modifiedEvidence` を添える。証拠は運営OSの公開決定・成功Pages run。会長の2026-10-08指示により、古い公開runが残らない初公開は、Gitの初出・当時のmain履歴・ドメイン移行と運用記録を照合した日単位の推定も採用する。`publishedAccuracy: estimated-day` と `publishedEstimateNote` に精度・理由を明記し、build時にGit日時から自動算出しない。未公開の本文更新候補では日付を先取りせず、公開が確認できた時点で確定する。
 - 不明な日付は `null` と `dateReview`。schemaでは省略する。modified不明のsitemapは既存値を維持し、その値を確定した記事更新日とみなさない。固定DEFAULT_LASTMODを今日へ更新しない。
-- `article: true` は1本の読み物としての採用判断と、根拠付きの両日付（明示した日単位の推定を含む）がある場合だけ。WebPage・TouristAttractionは維持する。collection・utilityを一括Article化しない。ArticleはDiscover掲載の必須条件ではない。
+- `article: true` は1本の読み物としての採用判断がある場合だけ。日付が不明ならその項目を省略し、Article追加自体を止めない。GoogleのArticle仕様は必須プロパティを設けていない。日付は根拠を得られた時だけ設定する（明示した日単位の推定を含む）。WebPage・TouristAttractionは維持する。collection・utilityを一括Article化しない。ArticleはDiscover掲載の必須条件ではない。2026-10-08確認の公式仕様: https://developers.google.com/search/docs/appearance/structured-data/article?hl=ja / https://developers.google.com/search/docs/appearance/google-discover 。headline/image/author等は推奨であり、本repoのvalidatorは今回の編集方針に沿う品質契約。Googleの必須条件と混同しない。
 - author / publisherはサイトを編集・発行する「新幹線の窓」をOrganizationとして表す。写真撮影者と記事の著者を混同しない。架空の人物・撮影者名を著者として作らない。
 - 独立ページの代表画像を明示する場合は `image`・`imageAlt`・`imageRights: own`・`imageEvidence` を記録する。第三者画像のOG許諾は今回実装していないため、自前画像だけを指定可能にしている。
 - スポットは既存の明示 `spot.ogImage` → 自前主写真 → 自前補足写真 → 共通OGの順。明示画像は掲載creditから自前と確認する。自動選択はcreditとファイル名を照合し、同じ優先群の中で幅1200px以上・横長を先に選ぶ。低解像度しかなければ勝手に拡大せず、既存自前または共通OGを使う。
