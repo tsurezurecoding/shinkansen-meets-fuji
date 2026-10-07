@@ -1256,8 +1256,8 @@ function localizeEnglishInternalLinks(html) {
 }
 
 function englishLandingHTML() {
-  const title = "Enjoy the Tokaido Shinkansen Window Views | Shinkansen Window";
-  const description = `Make more of your Tokaido Shinkansen journey. Explore photos and stories of Mt. Fuji, castles and curious signs, with timing and seat-side guides for your ride.`;
+  const title = "Mt. Fuji & More: Tokaido Shinkansen Window Views | Shinkansen Window";
+  const description = `Explore Mt. Fuji, castles and curious signs from your Tokaido Shinkansen (bullet train) window, with photos, stories, viewing times and seat-side guides.`;
   const handoff = '<script>(function(){var p=location.pathname.replace(/\\/+$/,"/"),h=location.hash,j=(p==="/en/"||p==="/en/index.html")&&(h==="#journey"||h.indexOf("#spot-")===0);if(j){var q=new URLSearchParams(location.search),r=q.get("lang"),s;try{s=localStorage.getItem("mado-lang")}catch(e){}var t="../en/start.html";if(r==="ja"){try{localStorage.setItem("mado-lang","ja")}catch(e){}t="../start.html"}else if(r==="en"||s==="en"){try{localStorage.setItem("mado-lang","en")}catch(e){}}var u=new URL(t,location.href);u.search=location.search;u.hash=location.hash;location.replace(u.href);return}})();</script>';
   const jsonLd = {
     "@context": "https://schema.org",
@@ -1752,7 +1752,7 @@ function guideHTML(lang) {
 function sitemapXML() {
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-07-29" },
-    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-07-29" },
+    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-10-07" },
     { loc: `${siteRoot}/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/en/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
@@ -1782,7 +1782,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-07" },
     { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/jr-pass-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
