@@ -1,0 +1,18 @@
+{
+  "ja": {
+    "lastmod": "2026-10-07",
+    "reason": "PR #68 / 1b7f3c7d: narration scripts/audio and guide state repaired; published 2026-10-07 JST.",
+    "fingerprints": {
+      "html": "135ff28fe9ad88cfedf03aa39dace7c3bb22f0b3d36dadae0b27151853d226fd",
+      "narration": "574707480dc71a552fe3718e8dc0285d71a740af125eb67c7032bf10eabcfbca"
+    }
+  },
+  "en": {
+    "lastmod": "2026-10-07",
+    "reason": "PR #68 / 1b7f3c7d: narration scripts/audio and guide state repaired; published 2026-10-07 JST.",
+    "fingerprints": {
+      "html": "02a2d4b1a6f921e67a432509498e99da625fb06dae158861866c4f47f23bcb78",
+      "narration": "f32369b187a19557ba96e6df5e9702a01776ce24733402a3ae9890611c047580"
+    }
+  }
+}

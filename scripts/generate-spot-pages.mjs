@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { thumbnailSrc, hasMiniMapCoordinates, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 import { assetVersion } from "./shared/asset-version.mjs";
 import { SPOT_COUNT as SHARED_SPOT_COUNT, syncSpotCountClaims } from "./shared/spot-count.mjs";
+import { readLiveSitemapState } from "./shared/live-sitemap.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
@@ -1750,6 +1751,7 @@ function guideHTML(lang) {
 }
 
 function sitemapXML() {
+  const liveSitemapState = readLiveSitemapState(appDir);
   const baseUrls = [
     { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-07-29" },
     { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-10-07" },
@@ -1770,8 +1772,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
     { loc: `${siteRoot}/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/en/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
-    { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-16" },
-    { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: "2026-08-16" },
+    { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: liveSitemapState.ja.lastmod },
+    { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: liveSitemapState.en.lastmod },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
