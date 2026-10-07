@@ -1,12 +1,60 @@
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import test from "node:test";
+import vm from "node:vm";
 import { JSDOM } from "jsdom";
 import {
   generateSpotPage,
   planSpotPage,
   writeChangedSpotPagePlans,
 } from "./generate-spot-pages.mjs";
+
+test("English Fuji train table is static, matches Japanese times and selects real services", () => {
+  const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
+  const en = new JSDOM(read("en/guide.html"), { url: "https://www.michikusa-travel.com/en/guide.html", runScripts: "outside-only" });
+  const ja = new JSDOM(read("guide.html")).window.document;
+  const doc = en.window.document;
+  const rows = [...doc.querySelectorAll("#trainTimes tbody tr")];
+  const jaRows = [...ja.querySelectorAll("#trainTimes tbody tr")];
+  assert.ok(rows.length > 500, "all train types and directions must be present without JS");
+  assert.equal(rows.length, jaRows.length);
+  assert.equal(doc.querySelectorAll("#trainTimes details").length, 6);
+  assert.equal(doc.querySelector('link[rel="canonical"]').href, doc.URL);
+  assert.ok(!doc.querySelector('meta[name="robots"]')?.content.includes("noindex"));
+  assert.ok(!/[\u3040-\u30ff\u3400-\u9fff]/.test(doc.querySelector("#trainTimes").textContent));
+  const context = { window: {} };
+  vm.runInNewContext(read("data/timetable.js"), context);
+  vm.runInNewContext(read("train-select.js"), context);
+  const { ROUTE } = vm.runInNewContext(read("data.js") + "\n;({ROUTE});", {});
+  const table = context.window.SHINKANSEN_TIMETABLE;
+  const selection = context.window.MADO_TRAIN_SELECT;
+  const keys = new Set();
+  rows.forEach((row, index) => {
+    const link = row.querySelector("a");
+    const url = new URL(link.href);
+    assert.equal(url.pathname, "/en/start.html");
+    assert.equal(url.search, new URL(jaRows[index].querySelector("a").getAttribute("href"), doc.URL).search);
+    assert.equal(row.dataset.fujiMin, jaRows[index].dataset.fujiMin);
+    assert.equal(row.lastElementChild.textContent, jaRows[index].lastElementChild.textContent);
+    const [type, number] = url.searchParams.get("train").split("-");
+    const direction = url.searchParams.get("dir");
+    const candidates = selection.trainCandidates(table, ROUTE, direction, url.searchParams.get("board"));
+    assert.ok(candidates.some(({ tr }) => tr.type === type && String(tr.number) === number), link.textContent);
+    const key = `${type}-${number}-${direction}`;
+    assert.ok(!keys.has(key), `duplicate service ${key}`);
+    keys.add(key);
+    assert.equal(link.textContent, `${type} ${number}`);
+  });
+  const start = new JSDOM(read("en/start.html")).window.document;
+  assert.equal(start.documentElement.lang, "en");
+  assert.equal(start.querySelector('meta[name="robots"]').content, "noindex,follow");
+  assert.equal(start.querySelector('link[rel="canonical"]'), null);
+  en.window.eval(read("sun-window.js"));
+  const sunScript = [...doc.scripts].find((script) => script.textContent.includes("var sun = window.MADO_SUN"));
+  en.window.eval(sunScript.textContent);
+  assert.ok(doc.querySelector('#trainTimes td[aria-label*="estimated"]'), "daylight labels must work in English");
+  en.window.close();
+});
 
 test("unchanged spot page plans do not invoke the writer", () => {
   const plan = planSpotPage("tokyo-tower", "ja", { requireExisting: true });
