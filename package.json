@@ -7,7 +7,7 @@
   "scripts": {
     "build": "npm run build:data && npm run build:gallery-thumbs && npm run build:runtime-data && npm run sync:versions && npm run fix:spot-counts && npm run build:inbound && npm run build:pages",
     "test": "npm run test:generator && npm run test:narration && npm run test:service-worker",
-    "test:generator": "node --test scripts/generate-spot-pages.test.mjs scripts/shared/geo.test.mjs scripts/spot-page-loader.test.mjs scripts/sanyo-castle-pages.test.mjs scripts/responsive-top-images.test.mjs scripts/hero-stage.test.mjs",
+    "test:generator": "node --test scripts/generate-spot-pages.test.mjs scripts/shared/geo.test.mjs scripts/spot-page-loader.test.mjs scripts/sanyo-castle-pages.test.mjs scripts/responsive-top-images.test.mjs scripts/hero-stage.test.mjs scripts/shared/live-sitemap.test.mjs",
     "test:narration": "node scripts/test-narration.cjs .",
     "test:service-worker": "node --test scripts/service-worker.test.mjs",
     "verify": "npm run check && npm run preflight:spots && npm run check:manifest && npm run check:all-syntax && npm test && npm run audit:site && npm run check:diff",
@@ -26,7 +26,8 @@
     "check:timetable": "node scripts/validate-timetable.mjs",
     "check:train-select": "node scripts/validate-train-select.mjs",
     "check:spot-pages": "node scripts/validate-spot-page-shared.mjs",
-    "check:language": "node scripts/validate-language-pages.mjs",
+    "check:language": "node scripts/validate-language-pages.mjs && npm run check:live-sitemap",
+    "check:live-sitemap": "node scripts/validate-live-sitemap.mjs",
     "check:navigation": "node scripts/validate-site-navigation.mjs",
     "check:ui-strings": "node scripts/validate-ui-strings.mjs",
     "check:727": "node scripts/validate-727-collection.mjs",
