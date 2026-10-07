@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { thumbnailSrc, hasMiniMapCoordinates, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 import { assetVersion } from "./shared/asset-version.mjs";
 import { SPOT_COUNT as SHARED_SPOT_COUNT, syncSpotCountClaims } from "./shared/spot-count.mjs";
+import { enhanceContentHead, selectSpotOgImage, contentLastmod } from './shared/content-metadata.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
@@ -808,11 +809,7 @@ function spotAttractionJsonLd(spot, lang, url, data, desc, otherLang) {
 }
 
 function spotOgImageUrl(spot) {
-  if (spot.ogImage) return `${siteRoot}/${spot.ogImage}`;
-  if (isOwnPhotoSrc(spot.image)) return `${siteRoot}/${spot.image}`;
-  const ownPhoto = (spot.photos || []).find((p) => isOwnPhotoSrc(p?.src));
-  if (ownPhoto) return `${siteRoot}/${ownPhoto.src}`;
-  return defaultOgImageUrl();
+  return selectSpotOgImage(spot, appDir).url;
 }
 
 function sideLabel(spot, lang) {
@@ -1135,7 +1132,7 @@ function thinSpotPageHTML(spot, lang) {
 }
 
 function spotPageHTML(spot, lang) {
-  return thinSpotPageHTML(spot, lang);
+  return enhanceContentHead(thinSpotPageHTML(spot, lang), `${lang === 'en' ? 'en/' : ''}spots/${spot.id}.html`, appDir, { spot });
 }
 
 function englishGuideIndexHTML() {
@@ -1840,7 +1837,7 @@ function sitemapXML() {
   })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
-    <lastmod>${item.lastmod || DEFAULT_LASTMOD}</lastmod>
+    <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
     <priority>${item.priority}</priority>
   </url>`).join("\n");
@@ -2042,6 +2039,7 @@ for (const config of guideRailConfigs) {
     new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
     `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
+  if (lang === 'ja') syncedGuideHTML = enhanceContentHead(syncedGuideHTML, 'guide.html', appDir);
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());

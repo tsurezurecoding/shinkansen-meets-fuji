@@ -11,6 +11,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import vm from 'node:vm';
+import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
 
 const ROOT = path.resolve(process.argv[2] || path.join(path.dirname(fileURLToPath(import.meta.url)), '..'));
 const ORIGIN = 'https://www.michikusa-travel.com';
@@ -359,6 +361,10 @@ for (const dataFile of ['data.js', 'spot-page-shared-data.js']) {
 }
 
 // ---------- report ----------
+const metadataSpots = vm.runInNewContext(readSrc('data.js') + ';SPOTS');
+const metadataAudit = auditContentMetadata(ROOT, metadataSpots);
+for (const problem of metadataAudit.problems) add('content-metadata', 'editorial/spot pages', problem);
+console.log(`Content metadata: ${metadataAudit.files} pages checked.`);
 const byKind = new Map();
 for (const f of findings) {
   const key = `${f.severity}:${f.kind}`;

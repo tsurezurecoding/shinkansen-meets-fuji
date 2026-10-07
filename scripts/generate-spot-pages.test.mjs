@@ -3,6 +3,43 @@ import fs from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 import { JSDOM } from "jsdom";
+import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOgImage, enhanceContentHead, contentLastmod } from './shared/content-metadata.mjs';
+import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
+
+test('editorial metadata: all five candidates and generated spot contracts pass the site gate', () => {
+  const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
+  const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
+  const audit = auditContentMetadata(root, spots);
+  assert.deepEqual(audit.problems, []);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 5);
+});
+
+test('OG selection never promotes a third-party photo, even if its filename looks owned', () => {
+  const foreign = { id: 'fixture', image: 'images/unapproved_michikusa.jpg', photoCredit: { ja: '@someone' }, photos: [{ src: 'images/20240211_fuji_michikusa.jpg', credit: { ja: '@someone' } }], ja: { name: 'Fixture' } };
+  assert.equal(selectSpotOgImage(foreign).url, SITE + '/images/og-shinkansen-window.png');
+  assert.throws(() => selectSpotOgImage({ ...foreign, ogImage: foreign.image }), /permission evidence/);
+  const own = { ...foreign, photos: [{ src: 'images/20240211_fuji_michikusa.jpg', credit: { ja: 'michikusa' } }] };
+  assert.equal(selectSpotOgImage(own).src, own.photos[0].src);
+  assert.ok(imageDimensions(own.photos[0].src).width >= 1200);
+});
+
+test('invalid dates and unsupported Article decisions are rejected; builds do not change lastmod', () => {
+  for (const date of ['2026-02-30','2026-13-01','2026-1-01','not-a-date']) assert.ok(metadataProblems({ 'test.html': { modified: date, modifiedEvidence: 'fixture' } }).length);
+  assert.ok(metadataProblems({ 'test.html': { published: '2026-10-08', modified: '2026-10-07', publishedEvidence: 'fixture', modifiedEvidence: 'fixture' } }).length);
+  assert.ok(metadataProblems({ 'test.html': { kind: 'collection', article: true } }).length);
+  assert.equal(contentLastmod(SITE + '/index.html', '2026-07-29'), '2026-07-29');
+  assert.equal(contentLastmod(SITE + '/spots/left-fuji.html', '2026-08-02'), '2026-08-02');
+  assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-09-20');
+});
+
+test('metadata enrichment is idempotent and does not change body content or internal links', () => {
+  for (const file of Object.keys(CONTENT_METADATA)) {
+    const html = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+    const next = enhanceContentHead(html, file);
+    assert.equal(next, html, file);
+    assert.equal(next.slice(next.indexOf('<body')), html.slice(html.indexOf('<body')), file);
+  }
+});
 import {
   generateSpotPage,
   planSpotPage,

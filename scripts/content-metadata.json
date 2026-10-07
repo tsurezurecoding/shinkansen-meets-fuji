@@ -1,0 +1,46 @@
+{
+  "spots/mishima-catapult.html": {
+    "kind": "editorial article",
+    "article": true,
+    "imageAlt": "空へ上っていくように見える三島車両所の着発線",
+    "published": "2026-09-06",
+    "modified": "2026-09-19",
+    "publishedEvidence": "2026-09-06_window-spots-release-complete.md (Pages 34024917103)",
+    "modifiedEvidence": "2026-09-19_arenani-wheels-release.md (Pages 35405275369): verified viewing guidance; content/photos match 995ba62b apart from heading chunks"
+  },
+  "spots/left-fuji.html": {
+    "kind": "editorial article",
+    "article": false,
+    "published": null,
+    "modified": null,
+    "dateReview": "First independent page publication and last substantive update are not established. Photo capture dates are not publication dates."
+  },
+  "arenani.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-09-19",
+    "modified": null,
+    "publishedEvidence": "2026-09-19_arenani-wheels-release.md (Pages 35405275369)",
+    "dateReview": "Latest substantive card update needs release evidence; retain the existing sitemap value until confirmed."
+  },
+  "yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-08-14",
+    "modified": "2026-09-20",
+    "publishedEvidence": "2026-08-14_yakei-page-release.md",
+    "modifiedEvidence": "2026-09-20_train-picker-release.md (Pages 35473308373): actual-service viewing times and source credits replace fixed departure estimates"
+  },
+  "guide.html": {
+    "kind": "editorial article",
+    "article": false,
+    "published": null,
+    "modified": "2026-10-05",
+    "modifiedEvidence": "2026-10-05_guide-seat-correction-release.md (Pages 37239195428): correct Seat E reservation guidance",
+    "dateReview": "The 2026-09-06 five-view redesign is not the first publication of this existing guide URL.",
+    "image": "images/20240211_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data.js fuji.photos: credit michikusa; existing guide hero image",
+    "imageAlt": "新幹線のE席側から見える雪化粧の富士山"
+  }
+}

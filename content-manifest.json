@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "5e1a6e65c3eab13e",
+  "contentVersion": "91eb6cca03771f3f",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -43,8 +43,8 @@
     {
       "path": "arenani.html",
       "url": "https://www.michikusa-travel.com/arenani.html",
-      "bytes": 29854,
-      "sha256": "019f6eacb3f6ec474d39e81af1c0bbb1ca4b76a7d98204ae36a26817916acb18"
+      "bytes": 30579,
+      "sha256": "90e9f6caf163676f9754dce221e99899c6f336ebd4c36b94cb8131ff62d93d9b"
     },
     {
       "path": "beer.css",
@@ -1267,8 +1267,8 @@
     {
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
-      "bytes": 34113,
-      "sha256": "db67f27df978241b8331ce5cf52f6c8c671f05f339da29455c85f3e982a0a83c"
+      "bytes": 36462,
+      "sha256": "918d5bdf1d759f2f82112c6da418b4380c995600a136e0e060848556dc227ed1"
     },
     {
       "path": "yakei.js",
