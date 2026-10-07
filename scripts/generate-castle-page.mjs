@@ -1,3 +1,4 @@
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -302,5 +303,5 @@ ${sanyoEntries.map(sanyoCard).join('\n')}
 </html>
 `;
 }
-for (const lang of ['ja', 'en']) { const dest = path.join(root, lang === 'ja' ? 'castles.html' : 'en/castles.html'), html = render(lang); if (process.argv.includes('--check')) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('Castle page out of date: ' + dest); } else fs.writeFileSync(dest, html); }
+for (const lang of ['ja', 'en']) { const dest = path.join(root, lang === 'ja' ? 'castles.html' : 'en/castles.html'), html = enhanceContentHead(render(lang), lang === 'ja' ? 'castles.html' : 'en/castles.html', root); if (process.argv.includes('--check')) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('Castle page out of date: ' + dest); } else fs.writeFileSync(dest, html); }
 console.log('Castle pages: 8 existing spots in keep/ruin groups, shared utility chrome.');

@@ -83,9 +83,103 @@
     "publishedEvidence": "e33dd7da first Japanese collection on historical main; 2026-08-14_727-collection-dedicated-ogp-image.md confirms that page and image published on August 14 (3d1ab8c3)",
     "modified": "2026-10-04",
     "modifiedEvidence": "2026-10-04_billboard-entry-release.md / 06f09a96 / Pages 37187829438 adds photo/map introduction and location guide links",
-    "image": "images/20260820_727_board_yoda_solo_michikusa.jpg",
+    "image": "images/20260820_727_board_yoda_solo_3x_michikusa.jpg",
     "imageRights": "own",
-    "imageEvidence": "data.js 727-sign.photos: credit michikusa, dated 2026-08-20; existing page/gallery self-shot photo",
-    "imageAlt": "朝の田んぼの向こうにひとつだけ立つ藤沢市用田の727看板"
+    "imageEvidence": "data.js 727-sign.image/photoCredit: michikusa; existing 3x self-shot photo, retained original unzoomed asset",
+    "imageAlt": "田んぼの向こうに立つ藤沢市用田の727看板を大きく写した車窓写真"
+  },
+  "castles.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-09-12",
+    "modified": "2026-10-07",
+    "publishedEvidence": "2026-09-12_castles-wheels-release.md / 509f47aa / Pages 34692373422: both languages",
+    "modifiedEvidence": "2026-10-07_spot-photo-release.md / e0e33787 / Pages 37635368526: both castle collections adopt own Sawayama photo"
+  },
+  "spots/himeji-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "representativeImage": false,
+    "imageReview": "2026-10-03_sanyo-castles-and-greenhouses-integration.md forbids external photos in OGP. Keep common OG; omit unrelated generic banner from Article.image. Own subject photo or separately confirmed representative-image permission needed.",
+    "imageAlt": "新幹線の窓 — 車窓案内の共通画像"
+  },
+  "spots/okayama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "representativeImage": false,
+    "imageReview": "2026-10-03_sanyo-castles-and-greenhouses-integration.md forbids external photos in OGP. Keep common OG; omit unrelated generic banner from Article.image. Own subject photo or separately confirmed representative-image permission needed.",
+    "imageAlt": "新幹線の窓 — 車窓案内の共通画像"
+  },
+  "spots/fukuyama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "representativeImage": false,
+    "imageReview": "2026-10-03_sanyo-castles-and-greenhouses-integration.md forbids external photos in OGP. Keep common OG; omit unrelated generic banner from Article.image. Own subject photo or separately confirmed representative-image permission needed.",
+    "imageAlt": "新幹線の窓 — 車窓案内の共通画像"
+  },
+  "en/castles.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-09-12",
+    "modified": "2026-10-07",
+    "publishedEvidence": "2026-09-12_castles-wheels-release.md / 509f47aa / Pages 34692373422: both languages",
+    "modifiedEvidence": "2026-10-07_spot-photo-release.md / e0e33787 / Pages 37635368526: both castle collections adopt own Sawayama photo"
+  },
+  "en/spots/himeji-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "representativeImage": false,
+    "imageReview": "2026-10-03_sanyo-castles-and-greenhouses-integration.md forbids external photos in OGP. Keep common OG; omit unrelated generic banner from Article.image. Own subject photo or separately confirmed representative-image permission needed.",
+    "imageAlt": "Shinkansen Window — shared window-view guide image"
+  },
+  "en/spots/okayama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "representativeImage": false,
+    "imageReview": "2026-10-03_sanyo-castles-and-greenhouses-integration.md forbids external photos in OGP. Keep common OG; omit unrelated generic banner from Article.image. Own subject photo or separately confirmed representative-image permission needed.",
+    "imageAlt": "Shinkansen Window — shared window-view guide image"
+  },
+  "en/spots/fukuyama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "representativeImage": false,
+    "imageReview": "2026-10-03_sanyo-castles-and-greenhouses-integration.md forbids external photos in OGP. Keep common OG; omit unrelated generic banner from Article.image. Own subject photo or separately confirmed representative-image permission needed.",
+    "imageAlt": "Shinkansen Window — shared window-view guide image"
+  },
+  "en/drinks.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-04",
+    "modified": "2026-10-06",
+    "publishedEvidence": "2026-10-04_drinks-release.md / 0cd6e2ea / Pages 37133291417: English only",
+    "modifiedEvidence": "2026-10-06_drinks-photo-release.md / 76742d82 / Pages 37379895666: owner shelf/product photographs and barley tea guidance",
+    "image": "images/drinks/20261004-tea-shelf-michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/drinks-photo-sources.json tea-shelf ownership owner; existing article OG photograph",
+    "imageAlt": "Japanese bottled tea arranged on a convenience-store shelf, photographed in October 2026"
   }
 }

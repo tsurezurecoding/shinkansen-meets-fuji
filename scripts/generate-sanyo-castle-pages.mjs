@@ -1,4 +1,5 @@
 // 静的な山陽記事。東海道のSPOTS・payload・通過時刻には接続しない。
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import { castleCollectionFor } from './shared/castle-reading-collection.mjs';
@@ -157,7 +158,7 @@ function render(castle, lang, dest) {
 }
 for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'en' ? 'en' : '', 'spots', `${castle.id}.html`);
-  const html = render(castle, lang, dest);
+  const html = enhanceContentHead(render(castle, lang, dest), path.relative(root, dest).replaceAll('\\', '/'), root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error(`Sanyo castle page is stale: ${dest}`);
   } else fs.writeFileSync(dest, html, 'utf8');

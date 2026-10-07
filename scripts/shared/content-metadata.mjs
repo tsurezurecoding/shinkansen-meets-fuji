@@ -25,6 +25,7 @@ export function metadataProblems(registry = CONTENT_METADATA) {
     if (meta.published && meta.modified && meta.published > meta.modified) problems.push(`${file}: published after modified`);
     if (meta.publishedAccuracy && meta.publishedAccuracy !== 'estimated-day') problems.push(`${file}: invalid publication accuracy`);
     if (meta.publishedAccuracy === 'estimated-day' && (!meta.published || !meta.publishedEstimateNote)) problems.push(`${file}: estimated date needs an explicit rationale`);
+    if (meta.representativeImage === false && (!meta.imageReview || meta.image)) problems.push(`${file}: nonrepresentative fallback requires a review reason and no curated image`);
     if (meta.article && meta.kind !== 'editorial article') problems.push(`${file}: Article requires an editorial decision`);
     if (meta.image && (meta.imageRights !== 'own' || !meta.imageEvidence || !meta.imageAlt)) problems.push(`${file}: curated image needs ownership evidence and alt`);
   }
@@ -119,33 +120,49 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
     head = setMeta(head, 'twitter:image', url, true);
     head = setMeta(head, 'twitter:image:alt', alt, true);
     if (options.spot || meta) head = setMeta(head, 'og:type', meta?.kind === 'editorial article' ? 'article' : 'website');
+    if (meta && !metaValue(head, 'robots')) head = setMeta(head, 'robots', 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1', true);
+    // An editorial page with no previous schema gets a page node, then the opted-in Article.
+    if (meta && !/<script type="application\/ld\+json">/.test(head)) {
+      const page = { '@context': 'https://schema.org', '@type': 'WebPage', '@id': contentUrl,
+        name: metaValue(head, 'og:title'), description: metaValue(head, 'description'), url: contentUrl, inLanguage: lang };
+      head = head.replace('</head>', '<script type="application/ld+json">' + JSON.stringify(page) + '</script>\n</head>');
+    }
     head = head.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g, (original, source) => {
       const json = JSON.parse(source);
       const graph = json['@graph'] || [json];
       const page = graph.find(node => ['WebPage','CollectionPage'].includes(node['@type']));
-      if (!page) return original;
-      page.image = image;
-      page.primaryImageOfPage = { '@id': image['@id'] };
-      // Curated entries own their dates. Unknown dates are omitted, never invented.
-      if (meta) {
-        if (meta.published) page.datePublished = meta.published; else delete page.datePublished;
-        if (meta.modified) page.dateModified = meta.modified; else delete page.dateModified;
+      const existingArticle = graph.find(node => node['@type'] === 'Article');
+      if (!page && !existingArticle) return original;
+      if (page) {
+        page.image = image;
+        page.primaryImageOfPage = { '@id': image['@id'] };
+        if (meta) {
+          if (meta.published) page.datePublished = meta.published; else delete page.datePublished;
+          if (meta.modified) page.dateModified = meta.modified; else delete page.dateModified;
+        }
       }
       if (meta?.article) {
-        const organization = { '@type': 'Organization', name: '新幹線の窓', url: `${SITE}/` };
+        const organization = { '@type': 'Organization', name: lang === 'en' ? 'Shinkansen Window' : '新幹線の窓', url: SITE + '/' };
         const attraction = graph.find(node => node['@type'] === 'TouristAttraction');
-        const article = {
-          '@type': 'Article', '@id': `${contentUrl}#article`, headline: page.name,
-          description: page.description, image, mainEntityOfPage: { '@id': page['@id'] || contentUrl },
-          ...(meta.published ? { datePublished: meta.published } : {}),
-          ...(meta.modified ? { dateModified: meta.modified } : {}),
+        const article = existingArticle || {
+          '@type': 'Article', '@id': contentUrl + '#article', headline: page.name, description: page.description,
+          ...(meta.representativeImage === false ? {} : { image }), mainEntityOfPage: { '@id': page['@id'] || contentUrl },
+          ...(meta.published ? { datePublished: meta.published } : {}), ...(meta.modified ? { dateModified: meta.modified } : {}),
           author: organization, publisher: organization, inLanguage: lang,
           ...(attraction ? { about: { '@id': attraction['@id'] } } : {})
         };
-        page.mainEntity = { '@id': article['@id'] };
-        const previous = graph.findIndex(node => node['@id'] === article['@id']);
-        if (previous >= 0) graph[previous] = article; else graph.push(article);
-        return `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }, null, 2)}</script>`;
+        Object.assign(article, { '@id': contentUrl + '#article', headline: existingArticle?.headline || page.name,
+          description: existingArticle?.description || page.description,
+          mainEntityOfPage: { '@id': page?.['@id'] || contentUrl }, author: organization, publisher: organization, inLanguage: lang });
+        // A generic fallback banner is not a representative article photograph.
+        if (meta.representativeImage === false) delete article.image; else article.image = image;
+        if (meta.published) article.datePublished = meta.published; else delete article.datePublished;
+        if (meta.modified) article.dateModified = meta.modified; else delete article.dateModified;
+        if (attraction) article.about = { '@id': attraction['@id'] };
+        if (page) page.mainEntity = { '@id': article['@id'] };
+        if (!existingArticle) graph.push(article);
+        const result = json['@graph'] || page ? { '@context': 'https://schema.org', '@graph': graph } : json;
+        return '<script type="application/ld+json">' + JSON.stringify(result, null, 2) + '</script>';
       }
       return `<script type="application/ld+json">${JSON.stringify(json, null, 2)}</script>`;
     });

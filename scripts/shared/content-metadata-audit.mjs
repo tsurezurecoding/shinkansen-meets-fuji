@@ -18,7 +18,8 @@ export function auditContentMetadata(root, spots) {
       const expect = (ok, detail) => { if (!ok) problems.push(`${file}: ${detail}`); };
       const meta = CONTENT_METADATA[file];
       const spot = spots.find(s => file.endsWith('/'+s.id+'.html'));
-      expect(/<link rel="canonical" href="https:\/\/www\.michikusa-travel\.com\//.test(head), 'missing canonical');
+      const canonicalFile = spot?.guidePageId && !spot.guideRoute ? `${file.startsWith('en/') ? 'en/' : ''}spots/${spot.guidePageId}.html` : file;
+      expect(head.includes(`<link rel="canonical" href="${SITE}/${canonicalFile}">`), 'canonical does not match page or declared parent');
       expect(get('robots')?.includes('max-image-preview:large'), 'missing large image preview');
       const image = get('og:image');
       expect(image?.startsWith(`${SITE}/images/`), 'missing local OG image');
@@ -37,11 +38,13 @@ export function auditContentMetadata(root, spots) {
         if (node.image?.['@type'] === 'ImageObject') expect(node.image.url === image && node.image.width === size.width && node.image.height === size.height, 'schema image inconsistent');
         if (['Article','NewsArticle','BlogPosting'].includes(node['@type'])) {
           expect(!!meta?.article, 'Article lacks explicit editorial decision');
-          for (const field of ['headline','description','image','mainEntityOfPage','author','publisher']) expect(!!node[field], `Article missing ${field}`);
+          for (const field of ['headline','description','mainEntityOfPage','author','publisher']) expect(!!node[field], `Article missing ${field}`);
+          if (meta?.representativeImage === false) expect(!node.image, 'generic/unlicensed image was asserted as article cover');
+          else expect(!!node.image, 'Article missing representative image');
           expect(node.author?.name && node.author?.url && node.publisher?.name && node.publisher?.url, 'Article organization incomplete');
         }
         if (meta && ['WebPage','CollectionPage','Article'].includes(node['@type'])) {
-          expect((node.datePublished || null) === meta.published && (node.dateModified || null) === meta.modified, 'dates disagree with source');
+          expect((node.datePublished || null) === (meta.published || null) && (node.dateModified || null) === (meta.modified || null), 'dates disagree with source');
         }
       }
       if (meta?.article) expect(nodes.some(n => n['@type'] === 'Article'), 'missing opted-in Article');

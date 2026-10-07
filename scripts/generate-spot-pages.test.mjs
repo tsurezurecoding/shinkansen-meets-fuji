@@ -11,8 +11,8 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 9);
-  for (const file of ['arenani.html', '727-collection.html']) assert.equal(CONTENT_METADATA[file].article, false);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 18);
+  for (const file of ['arenani.html', '727-collection.html', 'castles.html', 'en/castles.html']) assert.equal(CONTENT_METADATA[file].article, false);
   for (const file of ['guide.html','spots/left-fuji.html','spots/gyoran-kannon.html','spots/fujitec-big-wing.html','spots/727-board.html']) assert.equal(CONTENT_METADATA[file].article, true);
 });
 
@@ -59,6 +59,39 @@ test('metadata enrichment is idempotent and does not change body content or inte
     assert.equal(next.slice(next.indexOf('<body')), html.slice(html.indexOf('<body')), file);
   }
 });
+test('standalone castle Articles retain their identity and do not extend photograph permissions', () => {
+  for (const lang of ['', 'en/']) for (const id of ['himeji-castle','okayama-castle','fukuyama-castle']) {
+    const file = lang + 'spots/' + id + '.html';
+    const original = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+    const doc = new JSDOM(enhanceContentHead(original, file)).window.document;
+    const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(s => { const j = JSON.parse(s.textContent); return j['@graph'] || [j]; });
+    assert.equal(nodes.length, 1);
+    const article = nodes[0];
+    assert.equal(article['@type'], 'Article');
+    assert.equal('image' in article, false, 'common banner must not become the article cover');
+    assert.equal(article.author.url, SITE + '/');
+    assert.equal(article.mainEntityOfPage['@id'], SITE + '/' + file);
+    assert.equal(doc.querySelector('meta[property="og:image"]').content, SITE + '/images/og-shinkansen-window.png');
+    assert.ok(doc.querySelector('[data-gallery-source-output]').href.startsWith('https://'));
+    assert.equal(enhanceContentHead(original, file).slice(enhanceContentHead(original, file).indexOf('<body')), original.slice(original.indexOf('<body')));
+  }
+});
+
+test('drinks Article can be created from a schema-free head without changing editorial text', () => {
+  const file = 'en/drinks.html';
+  const original = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').replace(/<meta name="robots"[^>]*>/g, '');
+  const enhanced = enhanceContentHead(original, file);
+  const doc = new JSDOM(enhanced).window.document;
+  const nodes = JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+  assert.deepEqual(nodes.map(n => n['@type']), ['WebPage','Article']);
+  assert.equal(nodes[1].headline, doc.querySelector('meta[property="og:title"]').content);
+  assert.equal(nodes[1].author.name, 'Shinkansen Window');
+  assert.equal(nodes[1].image.width, 1280);
+  assert.ok(doc.querySelector('meta[name="robots"]').content.includes('max-image-preview:large'));
+  assert.equal(enhanced.slice(enhanced.indexOf('<body')), original.slice(original.indexOf('<body')));
+  assert.equal(enhanceContentHead(enhanced, file), enhanced);
+});
+
 import {
   generateSpotPage,
   planSpotPage,
