@@ -1751,6 +1751,14 @@
     "quality": 72,
     "sha256": "5766c471ec89ac536247b220e18130cef1bcc4765ca887553ab3f074b4b7b23d"
   },
+  "images/thumbs/gallery/20260930_fujitec-big-wing_michikusa.webp": {
+    "source": "images/20260930_fujitec-big-wing_michikusa.jpg",
+    "sourceSha256": "162268036c8b7a1de74de4fe27dca3f80f77c74293341d0c3abd937251665b21",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d9e8e2362527dd1bc06e83415f404e08d664024b3df03b5e363d4a7038a45598"
+  },
   "images/thumbs/gallery/20260930_hikone-castle_26175_michikusa.webp": {
     "source": "images/20260930_hikone-castle_26175_michikusa.jpg",
     "sourceSha256": "ef1e350169f374e2872f2d570fcec55adcf539a7a8f6e725c35578ee646aef2d",
@@ -1766,6 +1774,14 @@
     "height": 198,
     "quality": 72,
     "sha256": "840aac976e2aefd951dbea0caedbfb4ece8bea5f3b44f5a7f7e42856c1ebcb7e"
+  },
+  "images/thumbs/gallery/20260930_sawayama-castle_michikusa.webp": {
+    "source": "images/20260930_sawayama-castle_michikusa.jpg",
+    "sourceSha256": "d27b7f46a1ee7bc7e4f883c47071126896a318d45905872a78269d23719a5462",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e88a7489a6e919c6f13e2ea7a4c2066ebe7cc2c36ba6f064f3c2f0ca7977493e"
   },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",
