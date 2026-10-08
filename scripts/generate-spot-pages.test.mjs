@@ -11,7 +11,13 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 25);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 27);
+  for (const file of ['spots/toyohashi-tateiwa.html', 'en/spots/toyohashi-tateiwa.html']) {
+    assert.equal(CONTENT_METADATA[file].article, false);
+    assert.equal(CONTENT_METADATA[file].modified, '2026-10-08');
+  }
+  const tateiwa = spots.find(spot => spot.id === 'toyohashi-tateiwa');
+  assert.equal(selectSpotOgImage(tateiwa).src, 'images/20260816_toyohashi-tateiwa_64500_michikusa.jpg');
   for (const file of ['arenani.html', '727-collection.html', 'castles.html', 'en/castles.html','hanabi.html','en/hanabi.html']) assert.equal(CONTENT_METADATA[file].article, false);
   for (const file of ['guide.html','spots/left-fuji.html','spots/gyoran-kannon.html','spots/fujitec-big-wing.html','spots/727-board.html']) assert.equal(CONTENT_METADATA[file].article, true);
 });

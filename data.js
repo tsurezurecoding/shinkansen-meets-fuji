@@ -4637,6 +4637,7 @@ const SPOTS = [
     },
     minutesFromTokyo: 76.5, side: "E", category: "curious", confidence: "verified", durationSec: 3, spotting: "easy", visibleWhenCloudy: true, scene: "mountain",
     image: "images/20210923_toyohashi_tateiwa_pato727.jpg",
+    ogImage: "images/20260816_toyohashi-tateiwa_64500_michikusa.jpg",
     photoCredit: {
       ja: "@Pato_727",
       en: "@Pato_727",
@@ -4663,6 +4664,13 @@ const SPOTS = [
         alt: { ja: "車窓から見える豊橋の立岩", en: "Toyohashi Tateiwa Rock from the train window" },
         credit: { ja: "michikusa", en: "michikusa" },
         date: "2026-06-28",
+      },
+      {
+        src: "images/20260816_toyohashi-tateiwa_64500_michikusa.jpg",
+        alt: { ja: "林の上に露出する豊橋の立岩の岩壁", en: "The exposed rock face of Toyohashi Tateiwa rising above a wooded hill" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-08-16",
+        note: { ja: "林の上に岩壁が突き出す豊橋の立岩", en: "Tateiwa's bare rock face rises above the trees" },
       },
     ],
     media: {
