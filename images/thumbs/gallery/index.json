@@ -1135,6 +1135,14 @@
     "quality": 72,
     "sha256": "90937adf60437128ead4534947af5bc769ecbb7bc74144e2bbdc9a814b04157c"
   },
+  "images/thumbs/gallery/20260816_toyohashi-tateiwa_64500_michikusa.webp": {
+    "source": "images/20260816_toyohashi-tateiwa_64500_michikusa.jpg",
+    "sourceSha256": "d0ec72315e6551c940fcbd19c0e179a73678c73fcebb3f6b14a43e60b078e75c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a0822a444192bf138e37f83584c0ec7c82310b5b018270691da850edfa0e7d9c"
+  },
   "images/thumbs/gallery/20260820_mikawa_oshima_1_michikusa.webp": {
     "source": "images/20260820_mikawa_oshima_1_michikusa.jpg",
     "sourceSha256": "ceaf06904fca260d70f08faba75e0e45383e90647cc6fbe30cd0a52f0644bfeb",

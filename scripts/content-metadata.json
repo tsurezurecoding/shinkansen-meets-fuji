@@ -1,4 +1,16 @@
 {
+  "spots/toyohashi-tateiwa.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-08",
+    "modifiedEvidence": "2026-10-08_tateiwa-photo.md: user-requested owned supplementary photo and explicit OG image from the August 16 ride video, 64.5 seconds"
+  },
+  "en/spots/toyohashi-tateiwa.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-08",
+    "modifiedEvidence": "2026-10-08_tateiwa-photo.md: matching English gallery and explicit OG image for the user-requested owned photo"
+  },
   "spots/mishima-catapult.html": {
     "kind": "editorial article",
     "article": true,
