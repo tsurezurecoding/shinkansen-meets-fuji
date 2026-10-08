@@ -1,0 +1,319 @@
+{
+  "spots/mishima-catapult.html": {
+    "kind": "editorial article",
+    "article": true,
+    "imageAlt": "空へ上っていくように見える三島車両所の着発線",
+    "published": "2026-09-06",
+    "modified": "2026-09-19",
+    "publishedEvidence": "2026-09-06_window-spots-release-complete.md (Pages 34024917103)",
+    "modifiedEvidence": "2026-09-19_arenani-wheels-release.md (Pages 35405275369): verified viewing guidance; content/photos match 995ba62b apart from heading chunks"
+  },
+  "spots/left-fuji.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-07-01",
+    "modified": "2026-08-23",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
+    "modifiedEvidence": "c21873ea adds left-fuji spotting guidance; 2026-08-23_inbound-727-release-batch.md / be0fb36f / Pages 32626471235 publishes ratings for all views"
+  },
+  "arenani.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-09-19",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-09-19_arenani-wheels-release.md (Pages 35405275369)",
+    "modifiedEvidence": "7502b536 adds Japanese Gamagori greenhouse card; 2026-10-03_greenhouse-story-release.md / Pages 37123020662"
+  },
+  "yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-08-14",
+    "modified": "2026-09-20",
+    "publishedEvidence": "2026-08-14_yakei-page-release.md",
+    "modifiedEvidence": "2026-09-20_train-picker-release.md (Pages 35473308373): actual-service viewing times and source credits replace fixed departure estimates"
+  },
+  "guide.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-07-01",
+    "modified": "2026-10-05",
+    "modifiedEvidence": "2026-10-05_guide-seat-correction-release.md (Pages 37239195428): correct Seat E reservation guidance",
+    "image": "images/20240211_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data.js fuji.photos: credit michikusa; existing guide hero image",
+    "imageAlt": "新幹線のE席側から見える雪化粧の富士山",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 9ae17a08; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication."
+  },
+  "spots/gyoran-kannon.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-07-01",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
+    "modified": "2026-09-26",
+    "modifiedEvidence": "f8e8237c adds self-shot morning Gyoran photo; 2026-09-26_cinema-hero-release.md / 50a79a2b / Pages 36238963944 includes the photo; later spot narrative/photo fields are identical"
+  },
+  "spots/fujitec-big-wing.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-08-09",
+    "modified": "2026-10-07",
+    "publishedEvidence": "0749f8c6 / 2026-08-09_window-stamps-39-views-sparkling-dreams-release.md explicitly publishes Big Wing",
+    "modifiedEvidence": "4dbf7d02 / 2026-10-07_spot-photo-release.md / Pages 37635368526 adds September 30 own daylight photo"
+  },
+  "spots/727-board.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-07-01",
+    "publishedAccuracy": "estimated-day",
+    "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
+    "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
+    "modified": "2026-10-04",
+    "modifiedEvidence": "fbacc898 / 2026-10-04_billboard-entry-release.md / Pages 37187829438: page-specific search description and location guidance"
+  },
+  "727-collection.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-08-14",
+    "publishedEvidence": "e33dd7da first Japanese collection on historical main; 2026-08-14_727-collection-dedicated-ogp-image.md confirms that page and image published on August 14 (3d1ab8c3)",
+    "modified": "2026-10-04",
+    "modifiedEvidence": "2026-10-04_billboard-entry-release.md / 06f09a96 / Pages 37187829438 adds photo/map introduction and location guide links",
+    "image": "images/20260820_727_board_yoda_solo_3x_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data.js 727-sign.image/photoCredit: michikusa; existing 3x self-shot photo, retained original unzoomed asset",
+    "imageAlt": "田んぼの向こうに立つ藤沢市用田の727看板を大きく写した車窓写真"
+  },
+  "castles.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-09-12",
+    "modified": "2026-10-07",
+    "publishedEvidence": "2026-09-12_castles-wheels-release.md / 509f47aa / Pages 34692373422: both languages",
+    "modifiedEvidence": "2026-10-07_spot-photo-release.md / e0e33787 / Pages 37635368526: both castle collections adopt own Sawayama photo"
+  },
+  "spots/himeji-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "imageAlt": "建物の間から見える姫路城の白い天守（写真：@DVfkFY3nnZdn3VJ）",
+    "image": "images/20261001_himeji_castle_keep_dvfkfy3nnzdn3vj.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "Existing credited photograph in scripts/shared/sanyo-castles.mjs or fukuyama-castle.mjs; approved in site photo ledger",
+    "imageCredit": "@DVfkFY3nnZdn3VJ",
+    "imageSourceUrl": "https://x.com/DVfkFY3nnZdn3VJ/status/2105552015036440734",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imagePermissionEvidence": "2026-10-08_discover-feature-permissions.md: user confirms the three castles are permitted after OG/representative-image scope was explicitly discussed; exact chosen assets recorded"
+  },
+  "spots/okayama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "imageAlt": "街の建物越しに見える岡山城の黒い天守（写真：@DVfkFY3nnZdn3VJ）",
+    "image": "images/20261001_okayama_castle_summer_dvfkfy3nnzdn3vj.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "Existing credited photograph in scripts/shared/sanyo-castles.mjs or fukuyama-castle.mjs; approved in site photo ledger",
+    "imageCredit": "@DVfkFY3nnZdn3VJ",
+    "imageSourceUrl": "https://x.com/DVfkFY3nnZdn3VJ/status/2105536604333088797",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imagePermissionEvidence": "2026-10-08_discover-feature-permissions.md: user confirms the three castles are permitted after OG/representative-image scope was explicitly discussed; exact chosen assets recorded"
+  },
+  "spots/fukuyama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "imageAlt": "新幹線の車窓から見た福山城の白い天守と石垣（写真：@wakaba70127479）",
+    "image": "images/20260919_fukuyama_castle_wakaba.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "Existing credited photograph in scripts/shared/sanyo-castles.mjs or fukuyama-castle.mjs; approved in site photo ledger",
+    "imageCredit": "@wakaba70127479",
+    "imageSourceUrl": "https://x.com/wakaba70127479/status/2101193484564926710",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imagePermissionEvidence": "2026-10-08_discover-feature-permissions.md: user confirms the three castles are permitted after OG/representative-image scope was explicitly discussed; exact chosen assets recorded"
+  },
+  "en/castles.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-09-12",
+    "modified": "2026-10-07",
+    "publishedEvidence": "2026-09-12_castles-wheels-release.md / 509f47aa / Pages 34692373422: both languages",
+    "modifiedEvidence": "2026-10-07_spot-photo-release.md / e0e33787 / Pages 37635368526: both castle collections adopt own Sawayama photo"
+  },
+  "en/spots/himeji-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "imageAlt": "The white keep of Himeji Castle between buildings (Photo: @DVfkFY3nnZdn3VJ)",
+    "image": "images/20261001_himeji_castle_keep_dvfkfy3nnzdn3vj.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "Existing credited photograph in scripts/shared/sanyo-castles.mjs or fukuyama-castle.mjs; approved in site photo ledger",
+    "imageCredit": "@DVfkFY3nnZdn3VJ",
+    "imageSourceUrl": "https://x.com/DVfkFY3nnZdn3VJ/status/2105552015036440734",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imagePermissionEvidence": "2026-10-08_discover-feature-permissions.md: user confirms the three castles are permitted after OG/representative-image scope was explicitly discussed; exact chosen assets recorded"
+  },
+  "en/spots/okayama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-spots-release.md / 8f36b9e6 / Pages 37100299408: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "imageAlt": "The dark keep of Okayama Castle beyond city buildings (Photo: @DVfkFY3nnZdn3VJ)",
+    "image": "images/20261001_okayama_castle_summer_dvfkfy3nnzdn3vj.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "Existing credited photograph in scripts/shared/sanyo-castles.mjs or fukuyama-castle.mjs; approved in site photo ledger",
+    "imageCredit": "@DVfkFY3nnZdn3VJ",
+    "imageSourceUrl": "https://x.com/DVfkFY3nnZdn3VJ/status/2105536604333088797",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imagePermissionEvidence": "2026-10-08_discover-feature-permissions.md: user confirms the three castles are permitted after OG/representative-image scope was explicitly discussed; exact chosen assets recorded"
+  },
+  "en/spots/fukuyama-castle.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-03",
+    "modified": "2026-10-03",
+    "publishedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: both languages",
+    "modifiedEvidence": "2026-10-03_sanyo-discovery-release.md / c0dbda86 / Pages 37123738113: history and discovery routes, both languages",
+    "imageAlt": "The white keep and stone walls of Fukuyama Castle from the Shinkansen (Photo: @wakaba70127479)",
+    "image": "images/20260919_fukuyama_castle_wakaba.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "Existing credited photograph in scripts/shared/sanyo-castles.mjs or fukuyama-castle.mjs; approved in site photo ledger",
+    "imageCredit": "@wakaba70127479",
+    "imageSourceUrl": "https://x.com/wakaba70127479/status/2101193484564926710",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imagePermissionEvidence": "2026-10-08_discover-feature-permissions.md: user confirms the three castles are permitted after OG/representative-image scope was explicitly discussed; exact chosen assets recorded"
+  },
+  "en/drinks.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-04",
+    "modified": "2026-10-06",
+    "publishedEvidence": "2026-10-04_drinks-release.md / 0cd6e2ea / Pages 37133291417: English only",
+    "modifiedEvidence": "2026-10-06_drinks-photo-release.md / 76742d82 / Pages 37379895666: owner shelf/product photographs and barley tea guidance",
+    "image": "images/drinks/20261004-tea-shelf-michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/drinks-photo-sources.json tea-shelf ownership owner; existing article OG photograph",
+    "imageAlt": "Japanese bottled tea arranged on a convenience-store shelf, photographed in October 2026"
+  },
+  "en/beer-on-shinkansen.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-07",
+    "modified": "2026-10-07",
+    "publishedEvidence": "2026-10-07_beer-feature-release.md / 3a65a824 / Pages37489412766: first English publication",
+    "modifiedEvidence": "Same first release includes complete article and owner photographs",
+    "image": "images/beer/20261004-beer-hero-michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "data/beer-photo-sources.json beer-hero, ownerProvided true, CP-0211",
+    "imageAlt": "A vending machine stocked with familiar Japanese beer cans"
+  },
+  "hanabi.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-08-13",
+    "modified": "2026-10-06",
+    "publishedEvidence": "2026-08-13_hanabi-page-release.md / e604ecf: both language URLs first published",
+    "modifiedEvidence": "2026-10-06_atami-hanabi-release.md / caa05b34 / Pages37471797170: add Atami Shorts, both languages",
+    "imageCredit": "Jon Sullivan (public domain)",
+    "imageReview": "Keep existing page-specific public-domain fireworks OG; do not extract or promote any X/YouTube embedded photograph",
+    "imageAlt": "夜空に大きく開いた花火（イメージ写真、Jon Sullivan）"
+  },
+  "sparkling-dreams.html": {
+    "kind": "utility / application",
+    "article": false,
+    "published": "2026-08-09",
+    "publishedEvidence": "2026-08-09_window-stamps-39-views-sparkling-dreams-release.md / 0749f8c6",
+    "modified": null,
+    "dateReview": "Latest significant static page/timetable publication is not confirmed. Keep legacy sitemap lastmod; do not use this metadata/OG edit as a content update date.",
+    "image": "images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "2026-09-22_kiyosu-bilingual-layout-preview.md explicitly records this existing own photo; current shared feature cards reuse it",
+    "imageCredit": "新幹線の窓 / ©Disney",
+    "imageAlt": "静岡駅のホームで撮影したSparkling Dreams Shinkansenの青い車体（写真：新幹線の窓、©Disney）"
+  },
+  "en/hanabi.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-08-13",
+    "modified": "2026-10-06",
+    "publishedEvidence": "2026-08-13_hanabi-page-release.md / e604ecf: both language URLs first published",
+    "modifiedEvidence": "2026-10-06_atami-hanabi-release.md / caa05b34 / Pages37471797170: add Atami Shorts, both languages",
+    "imageCredit": "Jon Sullivan (public domain)",
+    "imageReview": "Keep existing page-specific public-domain fireworks OG; do not extract or promote any X/YouTube embedded photograph",
+    "imageAlt": "Fireworks in the night sky (illustrative photograph by Jon Sullivan)"
+  },
+  "en/sparkling-dreams.html": {
+    "kind": "utility / application",
+    "article": false,
+    "published": "2026-08-11",
+    "publishedEvidence": "Git historical main first addition dd834ddd on 2026-08-11; paired with 2026-08-11 release activity, exact first English Pages completion unavailable. User permits day-level estimates.",
+    "modified": null,
+    "dateReview": "Latest significant static page/timetable publication is not confirmed. Keep legacy sitemap lastmod; do not use this metadata/OG edit as a content update date.",
+    "image": "images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "2026-09-22_kiyosu-bilingual-layout-preview.md explicitly records this existing own photo; current shared feature cards reuse it",
+    "imageCredit": "新幹線の窓 / ©Disney",
+    "imageAlt": "The blue side of Sparkling Dreams Shinkansen at Shizuoka Station (Photo: Shinkansen Window, ©Disney)",
+    "publishedAccuracy": "estimated-day",
+    "publishedEstimateNote": "English page first appears on historical main on August 11. The ad5383c release tree does not contain the English file, so its Pages run is not claimed as direct English publication proof."
+  },
+  "window-moments.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-09-01",
+    "modified": "2026-10-04",
+    "publishedEvidence": "2026-09-01_window-moments-audio-release-complete.md / 01a19d90 / Pages33515742749",
+    "modifiedEvidence": "2026-10-04_window-clouds-release.md / d9f86a7e: cloud explanations and guide links, both languages",
+    "image": "images/wm-hero-snow.jpg",
+    "imageRights": "own",
+    "imageEvidence": "generate-window-moments-page.mjs wm_hero_credit / wm_photo_credit: self-shot February 5, 2022 between Nagoya and Kyoto, existing hero and OG",
+    "imageAlt": "雪に覆われた名古屋〜京都間の景色を新幹線の車窓から撮影"
+  },
+  "en/window-moments.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-09-02",
+    "modified": "2026-10-04",
+    "publishedEvidence": "2026-09-02_window-moments-en-release-complete.md / 98c94ef4 / Pages33573984504",
+    "modifiedEvidence": "2026-10-04_window-clouds-release.md / d9f86a7e: cloud explanations and guide links, both languages",
+    "image": "images/wm-hero-snow.jpg",
+    "imageRights": "own",
+    "imageEvidence": "generate-window-moments-page.mjs wm_hero_credit / wm_photo_credit: self-shot February 5, 2022 between Nagoya and Kyoto, existing hero and OG",
+    "imageAlt": "Snow-covered scenery between Nagoya and Kyoto, photographed from the Shinkansen"
+  }
+}

@@ -3,6 +3,121 @@ import fs from "node:fs";
 import test from "node:test";
 import vm from "node:vm";
 import { JSDOM } from "jsdom";
+import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOgImage, enhanceContentHead, contentLastmod } from './shared/content-metadata.mjs';
+import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
+
+test('editorial metadata: curated candidates and generated spot contracts pass the site gate', () => {
+  const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
+  const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
+  const audit = auditContentMetadata(root, spots);
+  assert.deepEqual(audit.problems, []);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 25);
+  for (const file of ['arenani.html', '727-collection.html', 'castles.html', 'en/castles.html','hanabi.html','en/hanabi.html']) assert.equal(CONTENT_METADATA[file].article, false);
+  for (const file of ['guide.html','spots/left-fuji.html','spots/gyoran-kannon.html','spots/fujitec-big-wing.html','spots/727-board.html']) assert.equal(CONTENT_METADATA[file].article, true);
+});
+
+test('editorial articles can omit unknown dates without fabricating a publication history', () => {
+  const file = 'spots/mishima-catapult.html';
+  const saved = CONTENT_METADATA[file];
+  try {
+    CONTENT_METADATA[file] = { kind: 'editorial article', article: true, published: null, modified: null };
+    assert.deepEqual(metadataProblems({ [file]: CONTENT_METADATA[file] }), []);
+    const html = enhanceContentHead(fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8'), file);
+    const doc = new JSDOM(html).window.document;
+    const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(s => { const j = JSON.parse(s.textContent); return j['@graph'] || [j]; });
+    const article = nodes.find(node => node['@type'] === 'Article');
+    assert.ok(article.headline && article.image && article.author);
+    assert.equal('datePublished' in article, false);
+    assert.equal('dateModified' in article, false);
+  } finally { CONTENT_METADATA[file] = saved; }
+});
+
+test('OG selection never promotes a third-party photo, even if its filename looks owned', () => {
+  const foreign = { id: 'fixture', image: 'images/unapproved_michikusa.jpg', photoCredit: { ja: '@someone' }, photos: [{ src: 'images/20240211_fuji_michikusa.jpg', credit: { ja: '@someone' } }], ja: { name: 'Fixture' } };
+  assert.equal(selectSpotOgImage(foreign).url, SITE + '/images/og-shinkansen-window.png');
+  assert.throws(() => selectSpotOgImage({ ...foreign, ogImage: foreign.image }), /permission evidence/);
+  const own = { ...foreign, photos: [{ src: 'images/20240211_fuji_michikusa.jpg', credit: { ja: 'michikusa' } }] };
+  assert.equal(selectSpotOgImage(own).src, own.photos[0].src);
+  assert.ok(imageDimensions(own.photos[0].src).width >= 1200);
+});
+
+test('invalid dates and unsupported Article decisions are rejected; builds do not change lastmod', () => {
+  for (const date of ['2026-02-30','2026-13-01','2026-1-01','not-a-date']) assert.ok(metadataProblems({ 'test.html': { modified: date, modifiedEvidence: 'fixture' } }).length);
+  assert.ok(metadataProblems({ 'test.html': { published: '2026-10-08', modified: '2026-10-07', publishedEvidence: 'fixture', modifiedEvidence: 'fixture' } }).length);
+  assert.ok(metadataProblems({ 'test.html': { kind: 'collection', article: true } }).length);
+  assert.equal(contentLastmod(SITE + '/index.html', '2026-07-29'), '2026-07-29');
+  assert.equal(contentLastmod(SITE + '/spots/left-fuji.html', '2026-08-02'), '2026-08-23');
+  assert.ok(metadataProblems({ 'test.html': { publishedAccuracy: 'estimated-day', published: '2026-07-01', publishedEvidence: 'fixture' } }).length);
+  assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-09-20');
+});
+
+test('metadata enrichment is idempotent and does not change body content or internal links', () => {
+  for (const file of Object.keys(CONTENT_METADATA)) {
+    const html = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+    const next = enhanceContentHead(html, file);
+    assert.equal(next, html, file);
+    assert.equal(next.slice(next.indexOf('<body')), html.slice(html.indexOf('<body')), file);
+  }
+});
+test('standalone castle Articles retain their identity and use only explicitly permitted covers', () => {
+  for (const lang of ['', 'en/']) for (const id of ['himeji-castle','okayama-castle','fukuyama-castle']) {
+    const file = lang + 'spots/' + id + '.html';
+    const original = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+    const doc = new JSDOM(enhanceContentHead(original, file)).window.document;
+    const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(s => { const j = JSON.parse(s.textContent); return j['@graph'] || [j]; });
+    assert.equal(nodes.length, 1);
+    const article = nodes[0];
+    assert.equal(article['@type'], 'Article');
+    assert.equal(article.image.url, SITE + '/' + CONTENT_METADATA[file].image);
+    assert.equal(article.image.creditText, CONTENT_METADATA[file].imageCredit);
+    assert.equal(article.author.url, SITE + '/');
+    assert.equal(article.mainEntityOfPage['@id'], SITE + '/' + file);
+    assert.equal(doc.querySelector('meta[property="og:image"]').content, SITE + '/' + CONTENT_METADATA[file].image);
+    assert.ok(doc.querySelector('[data-gallery-source-output]').href.startsWith('https://'));
+    assert.equal(enhanceContentHead(original, file).slice(enhanceContentHead(original, file).indexOf('<body')), original.slice(original.indexOf('<body')));
+  }
+});
+
+test('drinks Article can be created from a schema-free head without changing editorial text', () => {
+  const file = 'en/drinks.html';
+  const original = fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8').replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '').replace(/<meta name="robots"[^>]*>/g, '');
+  const enhanced = enhanceContentHead(original, file);
+  const doc = new JSDOM(enhanced).window.document;
+  const nodes = JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent)['@graph'];
+  assert.deepEqual(nodes.map(n => n['@type']), ['WebPage','Article']);
+  assert.equal(nodes[1].headline, doc.querySelector('meta[property="og:title"]').content);
+  assert.equal(nodes[1].author.name, 'Shinkansen Window');
+  assert.equal(nodes[1].image.width, 1280);
+  assert.ok(doc.querySelector('meta[name="robots"]').content.includes('max-image-preview:large'));
+  assert.equal(enhanced.slice(enhanced.indexOf('<body')), original.slice(original.indexOf('<body')));
+  assert.equal(enhanceContentHead(enhanced, file), enhanced);
+});
+
+test('third-party covers need an exact asset, representative-image permission and attribution', () => {
+  const allowed = CONTENT_METADATA['spots/himeji-castle.html'];
+  assert.deepEqual(metadataProblems({ 'test.html': allowed }), []);
+  assert.ok(metadataProblems({ 'test.html': { ...allowed, imagePermissions: ['page'] } }).length);
+  assert.ok(metadataProblems({ 'test.html': { ...allowed, imagePermissionEvidence: null } }).length);
+  assert.ok(metadataProblems({ 'test.html': { ...allowed, imageCredit: null } }).length);
+  const file = 'test-unapproved.html';
+  try {
+    CONTENT_METADATA[file] = { kind: 'editorial article', article: true, representativeImage: false, imageReview: 'No OG permission', published: null, modified: null, imageAlt: 'Shared banner' };
+    const html = '<head><meta property="og:image" content="' + SITE + '/images/og-shinkansen-window.png"><script type="application/ld+json">{"@type":"Article","headline":"Test article","description":"Editorial reading","image":"unapproved.jpg"}</script></head><body></body>';
+    const doc = new JSDOM(enhanceContentHead(html, file)).window.document;
+    const article = JSON.parse(doc.querySelector('script[type="application/ld+json"]').textContent);
+    assert.equal('image' in article, false);
+  } finally { delete CONTENT_METADATA[file]; }
+});
+
+test('fireworks stays a collection and Disney stays a utility page, rather than becoming Articles', () => {
+  for (const file of ['hanabi.html','en/hanabi.html','sparkling-dreams.html','en/sparkling-dreams.html']) {
+    const doc = new JSDOM(fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8')).window.document;
+    const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(s => { const j = JSON.parse(s.textContent); return j['@graph'] || [j]; });
+    assert.deepEqual(nodes.map(n => n['@type']), [file.includes('hanabi') ? 'CollectionPage' : 'WebPage']);
+    if (file.includes('sparkling')) assert.equal('dateModified' in nodes[0], false);
+  }
+});
+
 import {
   generateSpotPage,
   planSpotPage,

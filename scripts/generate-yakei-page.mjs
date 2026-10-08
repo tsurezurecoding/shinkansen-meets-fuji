@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assetVersion } from './shared/asset-version.mjs';
 import { ANALYTICS } from './shared/feature-page.mjs';
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = 'https://www.michikusa-travel.com';
@@ -23,7 +24,7 @@ const COPY = {
   "copy7": "<meta property=\"og:image:alt\" content=\"夜の新幹線から見える名古屋駅前の光\">",
   "copy8": "<meta name=\"twitter:title\" content=\"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻\">",
   "copy9": "<meta name=\"twitter:description\" content=\"夜の車窓は鏡になる。その対処と、ライトアップ・街の光・車両基地まで。出発時刻から暗くなる区間を計算します。\">",
-  "copy10": "<meta name=\"twitter:image:alt\" content=\"夜の新幹線から見える名古屋駅前の光\">\n  <script type=\"application/ld+json\">{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.michikusa-travel.com/yakei.html#webpage\",\n      \"url\": \"https://www.michikusa-travel.com/yakei.html\",\n      \"name\": \"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓\",\n      \"description\": \"東海道新幹線の夜景を、車窓から見える15か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。\",\n      \"inLanguage\": \"ja\",\n      \"datePublished\": \"2026-08-14\",\n      \"dateModified\": \"2026-08-17\",\n      \"isPartOf\": {\n        \"@type\": \"WebSite\",\n        \"name\": \"新幹線の窓\",\n        \"url\": \"https://www.michikusa-travel.com/\"\n      }\n    }\n  ]\n}</script>\n  <script src=\"language-router.js?v=a8d4ab78\"></script>",
+  "copy10": "<meta name=\"twitter:image:alt\" content=\"夜の新幹線から見える名古屋駅前の光\">\n  <script type=\"application/ld+json\">{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.michikusa-travel.com/yakei.html#webpage\",\n      \"url\": \"https://www.michikusa-travel.com/yakei.html\",\n      \"name\": \"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓\",\n      \"description\": \"東海道新幹線の夜景を、車窓から見える15か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。\",\n      \"inLanguage\": \"ja\",\n      \"isPartOf\": {\n        \"@type\": \"WebSite\",\n        \"name\": \"新幹線の窓\",\n        \"url\": \"https://www.michikusa-travel.com/\"\n      }\n    }\n  ]\n}</script>\n  <script src=\"language-router.js?v=a8d4ab78\"></script>",
   "copy11": ".yk-hero::before { content: \"\"; position: absolute; inset: 0; z-index: -2; background-image: url(\"images/20260629_2158_nagoya_station_night_michikusa.jpg\"); background-size: cover; background-position: center 55%; }",
   "yakei_page": "<body class=\"yakei-page spot-page spot-page-utility\" data-page=\"yakei\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"ja\" data-spot-page-shared-root=\"./\" data-spot-page-shared-route=\"yakei.html\">",
   "ykTitle": "<h1 id=\"ykTitle\">新幹線の夜景</h1>",
@@ -730,7 +731,8 @@ ${t.yakei_page}
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'yakei.html' : 'en/yakei.html');
   // COPYの中に固定で書かれた language-router.js の ?v= を、実ファイルのハッシュに揃える。
-  const html = render(lang).replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
+  let html = render(lang).replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
+  if (lang === 'ja') html = enhanceContentHead(html, 'yakei.html', root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('yakei page out of date: ' + dest);
   } else {

@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { thumbnailSrc } from './shared/geo.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 import { ANALYTICS } from './shared/feature-page.mjs';
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 
 // 日英の「あれ、何？」特集。日本語版は変わった目印を集め、英語版は訪日旅行者が
 // 最初に正体を知りたくなる日常景を扱う。分数・席側・写真は data.js から読む。
@@ -461,7 +462,7 @@ ${cards}
 }
 
 const dest = path.join(root, 'arenani.html');
-const html = render();
+const html = enhanceContentHead(render(), 'arenani.html', root);
 const englishDest = path.join(root, 'en', 'arenani.html');
 const englishHtml = renderEnglish();
 if (process.argv.includes('--check')) {

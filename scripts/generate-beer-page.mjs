@@ -1,4 +1,5 @@
 // Approved English Beer on the Shinkansen editorial feature.
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -87,6 +88,7 @@ ${landscape('sapporo-window','sapporo-factory','A','SHIZUOKA ↔ KAKEGAWA · YAI
 
 // Preserve internal ownership without showing attribution the owner waived.
 html=html.replace(/<figure([^>]*)>([\s\S]*?)<\/figure>/g,(whole,attrs,body)=>photos.some(p=>p.ownerProvided&&body.includes('src="'+p.file+'"'))?'<figure'+attrs+' data-photo-owner="michikusa">'+body+'</figure>':whole);
+html=enhanceContentHead(html, 'en/beer-on-shinkansen.html', root);
 const output=path.join(root,'en/beer-on-shinkansen.html');
 if(process.argv.includes('--check')){if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==html+'\n')throw Error('Beer page out of date');}else fs.writeFileSync(output,html+'\n');
 console.log('beer: English travel article, four brands, two breweries and licensed trolley history.');

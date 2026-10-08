@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { assetVersion } from './shared/asset-version.mjs';
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 import { ANALYTICS } from './shared/feature-page.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -275,7 +276,12 @@ ${t.bodyTag}
 
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? '727-collection.html' : 'en/727-collection.html');
-  const html = render(lang);
+  let html = render(lang);
+  if (lang === 'ja') {
+    const node = { '@context': 'https://schema.org', '@type': 'CollectionPage', '@id': site + '/727-collection.html', url: site + '/727-collection.html', name: COPY.ja.pageTitle.replace(/<\/?title>/g, ''), description: COPY.ja.metaDescription.match(/content="([^"]*)"/)[1], inLanguage: 'ja' };
+    html = html.replace('</head>', '  <script type="application/ld+json">' + JSON.stringify(node) + '</script>\n</head>');
+    html = enhanceContentHead(html, '727-collection.html', root);
+  }
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('727 collection page out of date: ' + dest);
   } else {
