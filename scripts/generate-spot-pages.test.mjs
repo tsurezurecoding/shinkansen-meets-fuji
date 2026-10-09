@@ -11,7 +11,7 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 27);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 65);
   for (const file of ['spots/toyohashi-tateiwa.html', 'en/spots/toyohashi-tateiwa.html']) {
     assert.equal(CONTENT_METADATA[file].article, false);
     assert.equal(CONTENT_METADATA[file].modified, '2026-10-08');
@@ -248,4 +248,24 @@ test("English tea fields link reaches the tea section of the drink guide", () =>
   const dom = renderedArticle("shizuoka-tea-fields", "en");
   assert.equal(dom.window.document.querySelector(".spot-page-story-link a").getAttribute("href"), "../../en/drinks.html#tea");
   dom.window.close();
+});
+
+
+test('remaining editorial rollout preserves optional dates, language-specific updates and collections', () => {
+  for (const prefix of ['', 'en/']) {
+    for (const id of ['gamagori-greenhouses','pocari-fukuroi','rakusai-egg-tanks','kaguya-no-akari','kinshozan','putiputi-sign','lotte-shiga','hinataoka','fuji-bus-sales','fuji-pipe-sign','kiyosu','tokyo-tower','fuji-paper-mills','edo-castle-fujimi-yagura']) {
+      const meta = CONTENT_METADATA[prefix + 'spots/' + id + '.html'];
+      assert.equal(meta.article, true);
+      assert.equal(meta.published, undefined);
+      assert.ok(meta.dateReview && meta.editorialEvidence);
+    }
+  }
+  assert.equal(CONTENT_METADATA['spots/pocari-fukuroi.html'].modified, undefined);
+  assert.equal(CONTENT_METADATA['en/spots/pocari-fukuroi.html'].modified, '2026-10-06');
+  assert.equal(contentLastmod(SITE + '/spots/pocari-fukuroi.html', '2026-10-03'), '2026-10-03');
+  for (const file of ['en/arenani.html','en/727-collection.html','reflections.html','en/reflections.html','ferris-wheels.html','en/ferris-wheels.html','window-artworks.html','en/window-artworks.html']) {
+    assert.equal(CONTENT_METADATA[file].kind, 'collection');
+    assert.equal(CONTENT_METADATA[file].article, false);
+  }
+  assert.equal(CONTENT_METADATA['en/guide.html'].imageRights, 'own');
 });

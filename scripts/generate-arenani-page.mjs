@@ -464,7 +464,7 @@ ${cards}
 const dest = path.join(root, 'arenani.html');
 const html = enhanceContentHead(render(), 'arenani.html', root);
 const englishDest = path.join(root, 'en', 'arenani.html');
-const englishHtml = renderEnglish();
+const englishHtml = enhanceContentHead(renderEnglish(), 'en/arenani.html', root);
 if (process.argv.includes('--check')) {
  if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('What-was-that page out of date: ' + dest);
  if (!fs.existsSync(englishDest) || fs.readFileSync(englishDest, 'utf8') !== englishHtml) throw Error('English What-was-that page out of date: ' + englishDest);
