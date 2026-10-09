@@ -732,7 +732,7 @@ for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'yakei.html' : 'en/yakei.html');
   // COPYの中に固定で書かれた language-router.js の ?v= を、実ファイルのハッシュに揃える。
   let html = render(lang).replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
-  if (lang === 'ja') html = enhanceContentHead(html, 'yakei.html', root);
+  html = enhanceContentHead(html, `${lang === 'en' ? 'en/' : ''}yakei.html`, root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('yakei page out of date: ' + dest);
   } else {

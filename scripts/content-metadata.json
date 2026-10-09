@@ -327,5 +327,237 @@
     "imageRights": "own",
     "imageEvidence": "generate-window-moments-page.mjs wm_hero_credit / wm_photo_credit: self-shot February 5, 2022 between Nagoya and Kyoto, existing hero and OG",
     "imageAlt": "Snow-covered scenery between Nagoya and Kyoto, photographed from the Shinkansen"
+  },
+  "spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-06",
+    "modifiedEvidence": "2026-10-06_drinks-photo-release.md / PR64 / 76742d82 / Pages37379895666: English story/explainer and owner bottle photo; Japanese story unchanged."
+  },
+  "spots/rakusai-egg-tanks.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/rakusai-egg-tanks.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/kaguya-no-akari.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/kaguya-no-akari.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/kinshozan.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/kinshozan.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/putiputi-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/putiputi-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/lotte-shiga.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/lotte-shiga.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/hinataoka.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/hinataoka.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/fuji-bus-sales.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/fuji-bus-sales.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/fuji-pipe-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/fuji-pipe-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/kiyosu.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/kiyosu.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/tokyo-tower.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/tokyo-tower.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "spots/edo-castle-fujimi-yagura.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/spots/edo-castle-fujimi-yagura.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+  },
+  "en/guide.html": {
+    "kind": "editorial article",
+    "article": true,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values.",
+    "image": "images/20240211_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "Existing guide body image; data.js fuji.photos credit michikusa.",
+    "imageAlt": "Snow-covered Mt. Fuji seen from the Seat E side of the Shinkansen",
+    "modified": "2026-10-07",
+    "modifiedEvidence": "2026-10-07_english-seo-release.md / PR70 / Pages37626697890: English editorial introduction and six service viewing-time tables."
+  },
+  "en/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "en/arenani.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "en/727-collection.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "reflections.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "en/reflections.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "ferris-wheels.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "en/ferris-wheels.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+  },
+  "window-artworks.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values.",
+    "imageAlt": "車窓走馬灯で楽しむ新幹線の車窓写真",
+    "modified": "2026-10-06",
+    "modifiedEvidence": "2026-10-06_window-artworks-release.md / PR65 / Pages37381659389: published artwork collection and centered hero."
+  },
+  "en/window-artworks.html": {
+    "kind": "collection",
+    "article": false,
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values.",
+    "imageAlt": "Photographic Shinkansen window scenes in Window Revue",
+    "modified": "2026-10-06",
+    "modifiedEvidence": "2026-10-06_window-artworks-release.md / PR65 / Pages37381659389: published artwork collection and centered hero."
   }
 }

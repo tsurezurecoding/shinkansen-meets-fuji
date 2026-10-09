@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { enhanceContentHead } from './shared/content-metadata.mjs';
 import vm from 'node:vm';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -241,7 +242,7 @@ ${cards}
 }
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'ferris-wheels.html' : 'en/ferris-wheels.html');
-  const html = render(lang);
+  const html = enhanceContentHead(render(lang), `${lang === 'en' ? 'en/' : ''}ferris-wheels.html`, root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('Ferris wheel page out of date: ' + dest);
   } else fs.writeFileSync(dest, html);

@@ -2041,8 +2041,12 @@ for (const config of guideRailConfigs) {
     new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
     `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
-  if (lang === 'ja') syncedGuideHTML = enhanceContentHead(syncedGuideHTML, 'guide.html', appDir);
+  if (['ja', 'en'].includes(lang)) syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
+}
+for (const file of ["reflections.html", "en/reflections.html"]) {
+  const target = path.join(appDir, file);
+  writeFileIfChanged(target, enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir));
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 

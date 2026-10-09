@@ -282,6 +282,7 @@ for (const lang of ['ja', 'en']) {
     html = html.replace('</head>', '  <script type="application/ld+json">' + JSON.stringify(node) + '</script>\n</head>');
     html = enhanceContentHead(html, '727-collection.html', root);
   }
+  if (lang === 'en') html = enhanceContentHead(html, 'en/727-collection.html', root);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('727 collection page out of date: ' + dest);
   } else {
