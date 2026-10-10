@@ -34,8 +34,13 @@
       { type: "Hikari", number: 636, direction: "east" },
       { type: "Hikari", number: 659, direction: "west" },
     ],
+    G: [
+      { type: "Nozomi", number: 328, direction: "east" },
+      { type: "Nozomi", number: 489, direction: "west" },
+    ],
   };
 
+  // JR Central calendar images v=261001, checked 2026-10-10. The G icon's HTML alt says D; the visible calendar and icon both say G.
   const DATE_PATTERNS = {};
   const addMonthPatterns = (month, patterns) => patterns.forEach((pattern, index) => {
     DATE_PATTERNS[`2026-${month}-${String(index + 1).padStart(2, "0")}`] = pattern;
@@ -46,6 +51,9 @@
   addMonthPatterns("09", [
     "B", "pending", "B", "A", "A", "A", "B", "C", "pending", "B", "A", "A", "A", "B", "B", "pending", "A", "A", "A", "A", "A", "A", "pending", "B", "A", "A", "A", "C", "pending", "pending",
   ]);
+
+  addMonthPatterns("10", ["G","A","A","A","B","C","B","B","A","A","A","A","B","pending","B","A","A","A","A","C","pending","B","A","A","A","B","C","pending","B","A","A"]);
+  addMonthPatterns("11", ["A","C","A","pending","pending","pending","A","A","C","B","pending","B","A","A","A","B","B","pending","A","A","A","A","A","A","pending","B","A","A","A","C"]);
 
   const START_DATE = "2026-06-19";
   const END_DATE = "2027-03-15";
