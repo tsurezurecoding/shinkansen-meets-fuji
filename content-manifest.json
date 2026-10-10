@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "c5347a54b9d0bdd5",
+  "contentVersion": "c550c3a789495684",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -103,8 +103,8 @@
     {
       "path": "data/timetable.js",
       "url": "https://www.michikusa-travel.com/data/timetable.js",
-      "bytes": 423220,
-      "sha256": "5c23712ff46af6323ade894b6257807c5d581dadcba38a5c79145c95697b96f6"
+      "bytes": 420109,
+      "sha256": "89e78630b68fe06f67899213bbf78d5077646393bf9cf68a22cac438af52462b"
     },
     {
       "path": "data/window-artworks.json",
@@ -181,8 +181,8 @@
     {
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
-      "bytes": 28421,
-      "sha256": "20fe138347b9db477f9f43e70482fdd838d960dc43ae78a8d330fa5e8cd00b83"
+      "bytes": 28983,
+      "sha256": "2b1bcd0a705032c38ea2bec69dbae06d3021d6e874287efc35698aaa44d1db8f"
     },
     {
       "path": "en/spots/fukuyama-castle.html",
@@ -212,7 +212,7 @@
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 33881,
-      "sha256": "4f0f4f37b890b6301af8aeda077813c89f46f5b427f6ea96060e3d8e3152c1b9"
+      "sha256": "f0fc130e1359f5c1bee589e7c8a0e4e6a689c6e57aa6375f98c33cf58d5d9558"
     },
     {
       "path": "ferris-wheels.css",
@@ -764,7 +764,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "c4b83b18252b23acfb5eec06f28baf38726192594cde324cdb32a3cad6f3d50d"
+      "sha256": "fa14f58255d03187995dcb8f3651eb869ca61ea56b46aa142558366420cafadc"
     },
     {
       "path": "live/narration.js",
@@ -1117,14 +1117,14 @@
     {
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
-      "bytes": 31155,
-      "sha256": "c8431b9bcb749eb54581770b7402f85020b5a814293c174c631abaa7972e2f0f"
+      "bytes": 31843,
+      "sha256": "17db28f5a09ab169ad42a635a4d56734d23685bbb8af80663ca0166b6fc034fc"
     },
     {
       "path": "sparkling-dreams.js",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.js",
-      "bytes": 21691,
-      "sha256": "cc4c05d8217aa64469706d8ac01762217ee588ee33f13da9ed525976bb2d4c09"
+      "bytes": 22314,
+      "sha256": "b92f8c0e6a98e9200fa5b79ae5a0e38ec49cefaa24b56a48df3499edd021a834"
     },
     {
       "path": "spot-map.js",
@@ -1268,7 +1268,7 @@
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
       "bytes": 36462,
-      "sha256": "53215ad71828849bd4ee098eeb1b3f868765c4611f12789160ba51d0790d84d6"
+      "sha256": "1a3f2f8a6bf36adea1f674eed4f1f05ca0cdf2bf95a72c42e4a38b4f51063a70"
     },
     {
       "path": "yakei.js",
