@@ -405,6 +405,7 @@ function projectSharedGuide(spot, lang) {
     const paragraphs = localized(chapter.sharedGuideStory, lang);
     return {
       id: chapter.guideAnchor || chapter.id,
+      ...(chapter.sharedGuidePlacement ? { placement: chapter.sharedGuidePlacement } : {}),
       heading: localized(chapter.sharedGuideHeading, lang) || data.name,
       eyebrow: localized(chapter.sharedGuideEyebrow, lang) || "ANOTHER VIEW",
       hook: chapter.sharedGuideShowHook === false ? "" : data.hook || "",
@@ -666,6 +667,7 @@ function projectPage(spot, lang) {
     heading: pageHeading,
     sectionHeading: localized(spot.sectionHeading, lang) || UI[lang].sectionHow(data.name),
     story: localized(spot.pageStory, lang) || data.story || "",
+    ...(spot.pageStoryAnchor ? { storyAnchor: spot.pageStoryAnchor } : {}),
     ...(spot.pageStoryFigure?.[lang] ? { storyFigure: projectStoryFigure(spot, lang) } : {}),
     ...(spot.pageStoryLink?.[lang] ? { storyLink: projectStoryLink(spot, lang) } : {}),
     minutes: Number(spot.minutesFromTokyo),

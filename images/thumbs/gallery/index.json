@@ -1807,6 +1807,22 @@
     "quality": 72,
     "sha256": "c3bfe1070d15f3819711b7790be9adb08045d42fb0a46fce833343d79512ce08"
   },
+  "images/thumbs/gallery/20261010_hirakata-park-wheel_105071_michikusa.webp": {
+    "source": "images/20261010_hirakata-park-wheel_105071_michikusa.jpg",
+    "sourceSha256": "b7a8b339b73c139ea3be4adcd2197e6dd0c3750ec6d528817c0d1c0e554eb43d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "01ab43c0f2aec3b57e8fd40c8d72bd9f0eba5e4cb53527f86131357526177065"
+  },
+  "images/thumbs/gallery/20261010_hirakata-park-wheel_98872_michikusa.webp": {
+    "source": "images/20261010_hirakata-park-wheel_98872_michikusa.jpg",
+    "sourceSha256": "9e04387f7eea54970b90f2edc9365295829f08dc6524b648c3ac8626d4361269",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "94608d011fda856ecbcc4c68d44b9db278454b802d26f93bcdb3f3c5b3bf5ccc"
+  },
   "images/thumbs/gallery/20261010_kirin-beer-factory_7041_michikusa.webp": {
     "source": "images/20261010_kirin-beer-factory_7041_michikusa.jpg",
     "sourceSha256": "260dad19308918ea43e7082dc0552bc990fcfa4aa8102f83105750defeb22ce2",
@@ -1822,6 +1838,14 @@
     "height": 198,
     "quality": 72,
     "sha256": "b7f17951af7a38929892ff7598652157438f7b3de7c6cdff0e1d900c43a22098"
+  },
+  "images/thumbs/gallery/20261010_maibara-test-trains_10654_michikusa.webp": {
+    "source": "images/20261010_maibara-test-trains_10654_michikusa.jpg",
+    "sourceSha256": "b99dc08822a14aa14b5b9156c94699248df53f8e70df0b0c3248181c167d026f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "d76e3a952c69a65fac8c48dfd243ae04800cecb44e0be44bc9b8aeeaf87f4176"
   },
   "images/thumbs/gallery/20261010_nagoya-station-skyline_7017_michikusa.webp": {
     "source": "images/20261010_nagoya-station-skyline_7017_michikusa.jpg",

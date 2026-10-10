@@ -387,6 +387,16 @@ async function runThinValidator() {
       }
       if (spot.id === "hamanako" && sharedChapterIds.join(",") !== "hamanako-fuji") fail(`${relativeFile}: Hamanako shared chapter contract drifted`);
       if (spot.id === "hamanako-fuji" && page.guideNotice?.href !== "hamanako.html#hamanako-fuji") fail(`${relativeFile}: Hamanako guide notice destination drifted`);
+      if (spot.id === "odawara") {
+        const bridge = output.indexOf('id="shiraitogawa-bridge"');
+        const atami = output.indexOf('id="atami-hatsushima"');
+        if (bridge < 0 || atami <= bridge || sharedChapterIds.join(",") !== "shiraitogawa-bridge") fail(`${relativeFile}: coastal article must present Nebukawa before Atami with distinct guide anchors`);
+        for (const id of ["shiraitogawa-bridge", "odawara"]) {
+          const link = id === "odawara" ? "odawara.html#atami-hatsushima" : "odawara.html#shiraitogawa-bridge";
+          if (!output.includes(link)) fail(`${relativeFile}: coastal timeline link does not reach its own chapter: ${id}`);
+        }
+      }
+      if (spot.id === "shiraitogawa-bridge" && page.guideNotice?.href !== "odawara.html#shiraitogawa-bridge") fail(`${relativeFile}: bridge guide must reach the shared coastal article`);
       if (baselineRendererCode && !page.readingLayout) {
         const baseline = renderPage(lang, prefix, spot.id, undefined, false, baselineRendererCode);
         if (baseline.errors.length || baseline.html !== output) fail(`${relativeFile}: non-opt-in rendering changed from ${baselineSelector}`);
