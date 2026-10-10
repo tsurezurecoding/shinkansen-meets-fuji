@@ -1174,6 +1174,18 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-19"
+      },
+      {
+        "src": "images/20261010_tokyo-tower_155558_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "建物の間に見える東京タワー",
+          "en": "Tokyo Tower between the buildings"
+        }
       }
     ],
     "media": {
@@ -2220,28 +2232,66 @@ const SPOTS = [
       ],
     },
     minutesFromTokyo: 23, side: "E", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
-    image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
+    image: "images/20261010_727-board_20182_michikusa.jpg",
     photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      date: "2026-07-04",
-      note: { ja: "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa." },
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-10-10",
+      "note": {
+        "ja": "田園に並ぶ248・727看板",
+        "en": "The 248 and 727 signs beside the fields"
+      }
     },
     photos: [
       {
-        src: "images/20260804_248_board_kuzuhara_michikusa.jpg",
-        alt: { ja: "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板", en: "Kinuta Dental's 248 sign with the director's face, beside the 727 sign" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-04",
-        note: { ja: "E席側、06:23撮影（動画から切り出し）。朝の光で248看板の院長の顔まで見える", en: "Seat E side, 06:23 (frame from video). Morning light shows the director's face on the 248 sign." },
+        "src": "images/20260804_248_board_kuzuhara_michikusa.jpg",
+        "alt": {
+          "ja": "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板",
+          "en": "Kinuta Dental's 248 sign with the director's face, beside the 727 sign"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "E席側、06:23撮影（動画から切り出し）。朝の光で248看板の院長の顔まで見える",
+          "en": "Seat E side, 06:23 (frame from video). Morning light shows the director's face on the 248 sign."
+        }
       },
       {
-        src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
-        alt: { ja: "248看板と並ぶ727 COSMETICS看板", en: "727 COSMETICS sign beside the 248 sign" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-04",
-        note: { ja: "E席側。248看板と、みんなの介護看板の間に見える727", en: "Seat E side. 727 between the 248 sign and a care-service sign." },
+        "src": "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+        "alt": {
+          "ja": "248看板と並ぶ727 COSMETICS看板",
+          "en": "727 COSMETICS sign beside the 248 sign"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "E席側。248看板と、みんなの介護看板の間に見える727",
+          "en": "Seat E side. 727 between the 248 sign and a care-service sign."
+        }
       },
+      {
+        "src": "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa",
+          "date": "2026-07-04",
+          "note": {
+            "ja": "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近",
+            "en": "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa."
+          }
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近",
+          "en": "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa."
+        }
+      }
     ],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory, REFERENCES.kinutaDentist248Post, REFERENCES.kinutaDentist248Meaning, { label: { ja: "Wikipedia: きぬた歯科", en: "Wikipedia: Kinuta Dental (Japanese only)" }, url: { ja: "https://ja.wikipedia.org/wiki/%E3%81%8D%E3%81%AC%E3%81%9F%E6%AD%AF%E7%A7%91", en: "https://ja.wikipedia.org/wiki/%E3%81%8D%E3%81%AC%E3%81%9F%E6%AD%AF%E7%A7%91" } }],
     map: { lat: 35.4167, lng: 139.428027, ja: "きぬた歯科の248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
@@ -2374,54 +2424,141 @@ const SPOTS = [
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-04", note: { ja: "朝の光にひらく熱海の海", en: "Atami's sea opening in the morning light." } },
     photos: [
       {
-        src: "images/20260515_atami_sagami_bay.jpg",
-        alt: { ja: "新幹線のA席側から見える熱海と相模湾", en: "Atami and Sagami Bay from Seat A" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-15",
-        note: { ja: "熱海と相模湾を一望する代表的な車窓", en: "A broad window view of Atami and Sagami Bay" },
+        "src": "images/20260515_atami_sagami_bay.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える熱海と相模湾",
+          "en": "Atami and Sagami Bay from Seat A"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-15",
+        "note": {
+          "ja": "熱海と相模湾を一望する代表的な車窓",
+          "en": "A broad window view of Atami and Sagami Bay"
+        }
       },
       {
-        src: "images/20250523_hatsushima_letus10.jpg",
-        alt: { ja: "新幹線のA席側から見える初島", en: "Hatsushima Island from Seat A" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/516720935.html",
-        note: { ja: "初島: 静岡県唯一の有人島", en: "Hatsushima: Shizuoka's only inhabited island" },
+        "src": "images/20250523_hatsushima_letus10.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える初島",
+          "en": "Hatsushima Island from Seat A"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/516720935.html",
+        "note": {
+          "ja": "初島: 静岡県唯一の有人島",
+          "en": "Hatsushima: Shizuoka's only inhabited island"
+        }
       },
       {
-        src: "images/20250524_atami_castle_letus10.jpg",
-        alt: { ja: "新幹線のA席側から見える熱海城", en: "Atami Castle from Seat A" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/516721203.html",
-        note: { ja: "熱海城: 1959年竣工の観光施設", en: "Atami Castle: a sightseeing facility completed in 1959" },
+        "src": "images/20250524_atami_castle_letus10.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える熱海城",
+          "en": "Atami Castle from Seat A"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/516721203.html",
+        "note": {
+          "ja": "熱海城: 1959年竣工の観光施設",
+          "en": "Atami Castle: a sightseeing facility completed in 1959"
+        }
       },
       {
-        src: "images/20260712_atami_castle_michikusa.jpg",
-        alt: { ja: "夕暮れの斜面にほんのり光る熱海城", en: "Atami Castle faintly lit on the evening hillside" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "夕暮れ、山の上で白く光る熱海城", en: "At dusk, Atami Castle glows white on the hill." },
+        "src": "images/20260712_atami_castle_michikusa.jpg",
+        "alt": {
+          "ja": "夕暮れの斜面にほんのり光る熱海城",
+          "en": "Atami Castle faintly lit on the evening hillside"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "夕暮れ、山の上で白く光る熱海城",
+          "en": "At dusk, Atami Castle glows white on the hill."
+        }
       },
       {
-        src: "images/20260804_sagami_bay_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える朝の相模湾", en: "Sagami Bay from Seat A on a morning Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-04",
-        note: { ja: "のぞみ1号（東京06:00発）、車内時計で06:35ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35." },
+        "src": "images/20260804_sagami_bay_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える朝の相模湾",
+          "en": "Sagami Bay from Seat A on a morning Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "のぞみ1号（東京06:00発）、車内時計で06:35ごろ",
+          "en": "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35."
+        }
       },
       {
-        src: "images/20260903_atami_hatsushima_michikusa.jpg",
-        alt: { ja: "熱海の海の向こうに見える初島", en: "Hatsushima Island beyond Atami's sea" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "熱海の海越しに、低く横たわる初島", en: "Hatsushima lies low across the sea from Atami" },
+        "src": "images/20260903_atami_hatsushima_michikusa.jpg",
+        "alt": {
+          "ja": "熱海の海の向こうに見える初島",
+          "en": "Hatsushima Island beyond Atami's sea"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "熱海の海越しに、低く横たわる初島",
+          "en": "Hatsushima lies low across the sea from Atami"
+        }
       },
       {
-        src: "images/20260919_atami_castle_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える錦ヶ浦山頂の熱海城", en: "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-19",
-        note: { ja: "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。", en: "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami." },
+        "src": "images/20260919_atami_castle_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える錦ヶ浦山頂の熱海城",
+          "en": "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。",
+          "en": "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami."
+        }
       },
+      {
+        "src": "images/20261010_odawara_2025_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "根府川付近の白糸川橋梁",
+          "en": "Shiraitogawa railway bridge near Nebukawa"
+        }
+      },
+      {
+        "src": "images/20261010_odawara_2283_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "白糸川橋梁と谷あいの町並み",
+          "en": "Shiraitogawa bridge and the surrounding valley"
+        }
+      }
     ],
     references: [REFERENCES.atami, REFERENCES.atamiHatsushima, REFERENCES.atamiCastle, REFERENCES.atamiCityEnvironment, REFERENCES.hatsushimaBlog, REFERENCES.atamiCastleBlog],
     map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
@@ -3077,7 +3214,36 @@ const SPOTS = [
     minutesFromTokyo: 44.8, side: "A", category: "notable", confidence: "verified", durationSec: 8, spotting: "easy", scene: "hills", visibleWhenCloudy: true,
     image: "images/20260919_fuji_bus_sales_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-09-19", note: { ja: "第三展示場の看板と並ぶバス", en: "The Third Display Yard sign above rows of buses" } },
-    photos: [{ src: "images/20260919_fuji_bus_sales_2_michikusa.jpg", alt: { ja: "富士バス販売の展示場に並ぶ白い中古バス", en: "Rows of white buses at the Fuji Bus Sales display yard" }, credit: { ja: "michikusa", en: "michikusa" }, date: "2026-09-19", note: { ja: "新幹線から見下ろすバスの列", en: "Bus rows viewed from the Shinkansen" } }],
+    photos: [
+      {
+        "src": "images/20260919_fuji_bus_sales_2_michikusa.jpg",
+        "alt": {
+          "ja": "富士バス販売の展示場に並ぶ白い中古バス",
+          "en": "Rows of white buses at the Fuji Bus Sales display yard"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "新幹線から見下ろすバスの列",
+          "en": "Bus rows viewed from the Shinkansen"
+        }
+      },
+      {
+        "src": "images/20261010_fuji-bus-sales_86325_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "車窓から見下ろすバスの列",
+          "en": "Rows of buses seen from the Shinkansen"
+        }
+      }
+    ],
     media: { heading: { ja: "田子の浦港からバスの列まで", en: "From Tagonoura Port to the bus yard" }, description: { ja: "A席側の車窓が田子の浦港から富士バス販売へ移る様子を動画で見られます。", en: "Follow the Seat A window view from Tagonoura Port to Fuji Bus Sales." }, videos: [{ kind: "youtube", id: "sD61YI0y12o", url: "https://www.youtube.com/watch?v=sD61YI0y12o", title: { ja: "田子の浦港から富士バス販売までのA席車窓", en: "Seat A window from Tagonoura Port to Fuji Bus Sales" } }] },
     relatedSpotIds: ["fuji", "fuji-pipe-sign", "fuji-paper-mills"],
     references: [{ label: { ja: "富士バス販売：会社概要", en: "Fuji Bus Sales: company profile (Japanese)" }, url: "https://www.fujibus-sales.co.jp/company.php" }, { label: { ja: "富士バス販売：取扱車両", en: "Fuji Bus Sales: types of buses (Japanese)" }, url: "https://www.fujibus-sales.co.jp/" }, { label: { ja: "富士バスボデー：修理・改装の実績", en: "Fuji Bus Body: repair and conversion work (Japanese)" }, url: "https://www.fujibus-sales.co.jp/body/works.html" }, { label: { ja: "国土交通省：市区町村における公共交通機関に関する調査", en: "Japan transport ministry: municipal public transport survey (Japanese PDF)" }, url: "https://www.mlit.go.jp/common/001007541.pdf" }, { label: { ja: "Merkmal：中古バス市場を考える", en: "Merkmal: the used-bus market (Japanese)" }, url: "https://merkmal-biz.jp/post/77175" }],
@@ -3865,6 +4031,30 @@ const SPOTS = [
           "ja": "朝のサッポロビール静岡工場",
           "en": "Sapporo’s Shizuoka brewery in the morning"
         }
+      },
+      {
+        "src": "images/20261010_sapporo-shizuoka-factory_10259_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "工場のタンクと周辺の風景",
+          "en": "Factory tanks and the surrounding landscape"
+        }
+      },
+      {
+        "src": "images/20261010_sapporo-shizuoka-factory_3961_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "サッポロビール静岡工場のタンク",
+          "en": "Tanks at Sapporo Beer’s Shizuoka brewery"
+        }
       }
     ],
     image: "images/20260904_sapporo_shizuoka_factory_michikusa.jpg",
@@ -4156,7 +4346,20 @@ const SPOTS = [
         "en": "The blue wall and POCARI SWEAT lettering above the grassy slope."
       }
     },
-    "photos": [],
+    "photos": [
+      {
+        "src": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "POCARI SWEATの文字が見える工場",
+          "en": "The factory with its POCARI SWEAT lettering"
+        }
+      }
+    ],
     "relatedSpotIds": [
       "lotte-shiga",
       "nichiban-anjo"
@@ -5470,6 +5673,18 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-19"
+      },
+      {
+        "src": "images/20261010_nagoya-station-skyline_7017_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "名古屋駅前の高層ビル群",
+          "en": "The high-rise skyline around Nagoya Station"
+        }
       }
     ],
     "references": [
@@ -5640,6 +5855,18 @@ const SPOTS = [
         "note": {
           "ja": "朝焼けの中に立つキリンビール工場のタンク",
           "en": "Kirin brewery tanks in the dawn light"
+        }
+      },
+      {
+        "src": "images/20261010_kirin-beer-factory_7041_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "キリンビール名古屋工場のタンクと看板",
+          "en": "Tanks and signage at Kirin’s Nagoya brewery"
         }
       }
     ],
@@ -5836,6 +6063,18 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-24"
+      },
+      {
+        "src": "images/20261010_kiyosu_30330_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "車窓から近くに見える清洲城",
+          "en": "A close view of Kiyosu Castle from the train"
+        }
       }
     ],
     "media": {
@@ -7626,26 +7865,65 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20250523_omi_fuji_wheat_kawasan3.jpg",
-        alt: { ja: "近江富士の前が小麦色になった景色", en: "Omi Fuji with golden wheat in front" },
-        credit: { ja: "@kawasan3", en: "@kawasan3" },
-        sourceUrl: "https://x.com/kawasan3/status/1925668834393960462",
-        note: { ja: "近江富士の前が小麦色", en: "The land in front of Omi Fuji turns wheat-colored" },
+        "src": "images/20250523_omi_fuji_wheat_kawasan3.jpg",
+        "alt": {
+          "ja": "近江富士の前が小麦色になった景色",
+          "en": "Omi Fuji with golden wheat in front"
+        },
+        "credit": {
+          "ja": "@kawasan3",
+          "en": "@kawasan3"
+        },
+        "sourceUrl": "https://x.com/kawasan3/status/1925668834393960462",
+        "note": {
+          "ja": "近江富士の前が小麦色",
+          "en": "The land in front of Omi Fuji turns wheat-colored"
+        }
       },
       {
-        src: "images/20260629_omi_fuji_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える近江富士", en: "Omi Fuji from Seat A on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "田園の向こうの近江富士", en: "Omi Fuji beyond the fields" },
+        "src": "images/20260629_omi_fuji_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える近江富士",
+          "en": "Omi Fuji from Seat A on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "田園の向こうの近江富士",
+          "en": "Omi Fuji beyond the fields"
+        }
       },
       {
-        src: "images/20260903_omi_fuji_cloudy_michikusa.jpg",
-        alt: { ja: "曇天の下、田園の向こうに見える三上山", en: "Mt. Mikami beyond fields under an overcast sky" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "曇天でも、独立峰らしい輪郭は追える", en: "Even under cloud, the standalone peak's outline remains visible" },
+        "src": "images/20260903_omi_fuji_cloudy_michikusa.jpg",
+        "alt": {
+          "ja": "曇天の下、田園の向こうに見える三上山",
+          "en": "Mt. Mikami beyond fields under an overcast sky"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "曇天でも、独立峰らしい輪郭は追える",
+          "en": "Even under cloud, the standalone peak's outline remains visible"
+        }
       },
+      {
+        "src": "images/20261010_omi-fuji_16003_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "手前の橋脚越しに見る三上山",
+          "en": "Mt. Mikami beyond the bridge piers"
+        }
+      }
     ],
     references: [REFERENCES.omiFujiPark, REFERENCES.omiFujiOfficial],
     map: { lat: 35.05181420454288, lng: 136.0377290179685, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },

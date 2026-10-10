@@ -53,9 +53,9 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 ];
 
 // 1ページの表示で落ちてくる量の上限。分割前の data.js は531 KBだった。
-// One additional gallery photo and its reference links need about 1.1 KB.
-// Article-only fields stay in the per-page payload; keep the runtime bound close.
-export const RUNTIME_DATA_BYTE_BUDGET = 324 * 1024;
+// October 10 adds twelve owned ride photographs across ten existing spots.
+// Keep a bounded 4 KiB allowance for their paths and bilingual captions.
+export const RUNTIME_DATA_BYTE_BUDGET = 328 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。

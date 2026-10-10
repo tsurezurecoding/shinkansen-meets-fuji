@@ -1791,6 +1791,102 @@
     "quality": 72,
     "sha256": "e88a7489a6e919c6f13e2ea7a4c2066ebe7cc2c36ba6f064f3c2f0ca7977493e"
   },
+  "images/thumbs/gallery/20261010_727-board_20182_michikusa.webp": {
+    "source": "images/20261010_727-board_20182_michikusa.jpg",
+    "sourceSha256": "d09cec1862ab60e6767c70bc91bd5c3bf98a5447c94b1e966fde84155a994766",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "920bf59639737814da1621ce8a44bc0e69243b57ea6f3facab75ca56f831c135"
+  },
+  "images/thumbs/gallery/20261010_fuji-bus-sales_86325_michikusa.webp": {
+    "source": "images/20261010_fuji-bus-sales_86325_michikusa.jpg",
+    "sourceSha256": "aba533f510e14654f482993dce40eb53edf8389df995f723ff1153a51c3e3676",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c3bfe1070d15f3819711b7790be9adb08045d42fb0a46fce833343d79512ce08"
+  },
+  "images/thumbs/gallery/20261010_kirin-beer-factory_7041_michikusa.webp": {
+    "source": "images/20261010_kirin-beer-factory_7041_michikusa.jpg",
+    "sourceSha256": "260dad19308918ea43e7082dc0552bc990fcfa4aa8102f83105750defeb22ce2",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "842e4b8fa6b28aca7d6196e854a7403272a516123771d2a18be6113884e4f9b8"
+  },
+  "images/thumbs/gallery/20261010_kiyosu_30330_michikusa.webp": {
+    "source": "images/20261010_kiyosu_30330_michikusa.jpg",
+    "sourceSha256": "7fca05e5151613bc3ce297d4244c9ed1d0505430d4373f72f9322238b08cb74a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b7f17951af7a38929892ff7598652157438f7b3de7c6cdff0e1d900c43a22098"
+  },
+  "images/thumbs/gallery/20261010_nagoya-station-skyline_7017_michikusa.webp": {
+    "source": "images/20261010_nagoya-station-skyline_7017_michikusa.jpg",
+    "sourceSha256": "411564c78a6e0cbadd9c91406b5ff303e4fbefc39b2aa9e17c1dbb8195caddd7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e73faa4847fcfccfa248cb85e1c1faafec149cf64089cfd0cc1f9fe4e6913508"
+  },
+  "images/thumbs/gallery/20261010_odawara_2025_michikusa.webp": {
+    "source": "images/20261010_odawara_2025_michikusa.jpg",
+    "sourceSha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "eb94183213e4eab41b7027630544bfb3645b028d4ddc1d12629dcdedaeb2b334"
+  },
+  "images/thumbs/gallery/20261010_odawara_2283_michikusa.webp": {
+    "source": "images/20261010_odawara_2283_michikusa.jpg",
+    "sourceSha256": "15b8e2c080ab5fac193c2d4cbcc1a5f0f11d3c752a14f9448abfc7b891d3c24b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "584b5b5b05bcaa1acc908222e5ae31e656b3d6712b08697f94027f68b6a53f33"
+  },
+  "images/thumbs/gallery/20261010_omi-fuji_16003_michikusa.webp": {
+    "source": "images/20261010_omi-fuji_16003_michikusa.jpg",
+    "sourceSha256": "83c7ec4ba6d940476736660a5fce8a8e3ddbbfaaa40fb1680990a7f46b4e43de",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "428c4f8b0ce82902805403b52b1f68a762964cbc70bbfbdb274367ed83906a74"
+  },
+  "images/thumbs/gallery/20261010_pocari-fukuroi_80185_michikusa.webp": {
+    "source": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
+    "sourceSha256": "3749e05c8f5eebcf71a28c528a5602507798710ac9e887f704af4221ca530d0f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "00f0346b62cb3b3b6549561f2656c12e5645828732b1f06bcad3c64cb2e0db49"
+  },
+  "images/thumbs/gallery/20261010_sapporo-shizuoka-factory_10259_michikusa.webp": {
+    "source": "images/20261010_sapporo-shizuoka-factory_10259_michikusa.jpg",
+    "sourceSha256": "81a6e056f22fc846c4e6209049d3551890003f36c81121fa87291294439feb04",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "1ffa1762b46bd11034ce1c90d633f7797d71d578506125a5037d04fcad2478a2"
+  },
+  "images/thumbs/gallery/20261010_sapporo-shizuoka-factory_3961_michikusa.webp": {
+    "source": "images/20261010_sapporo-shizuoka-factory_3961_michikusa.jpg",
+    "sourceSha256": "47161549d1c870b5c09e6be271fe2292baa4f9bd0cb2b84d53490a0ded0fb9c4",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c4d3251f836fdc3525d33809f9fd57de8c5d119aea13b9852a19e13b4aefe0ff"
+  },
+  "images/thumbs/gallery/20261010_tokyo-tower_155558_michikusa.webp": {
+    "source": "images/20261010_tokyo-tower_155558_michikusa.jpg",
+    "sourceSha256": "62a2f19e9fad0fca8c646d98f755e345f88837955deb2b38cc88d198cdbfb036",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "6a926d3d1d7a5c22d1b85e59a0572a6b331cf857790d4c2af0339ee1131569d2"
+  },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",
     "sourceSha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
