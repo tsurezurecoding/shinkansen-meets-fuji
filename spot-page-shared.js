@@ -262,6 +262,9 @@
     "beer-on-shinkansen.html": { en: false },
     // English countryside introduction; no Japanese counterpart.
     "countryside.html": { en: false },
+    // English-only food article and editorial collection; no Japanese counterparts.
+    "foods.html": { en: false },
+    "everyday-japan.html": { en: false },
     // Approved English station feature; no Japanese article counterpart.
     "tokyo-kyoto-stations.html": { en: false },
     "besides-fuji.html": { en: false },

@@ -11,7 +11,10 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 85);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 87);
+  assert.equal(CONTENT_METADATA['en/foods.html'].article, true);
+  assert.equal(CONTENT_METADATA['en/everyday-japan.html'].kind, 'collection');
+  assert.equal(CONTENT_METADATA['en/everyday-japan.html'].article, false);
   assert.equal(CONTENT_METADATA['en/countryside.html'].article, true);
   assert.equal(CONTENT_METADATA['en/countryside.html'].published, '2026-10-11');
   for (const prefix of ['', 'en/']) for (const id of ['shiraitogawa-bridge', 'maibara-test-trains']) {

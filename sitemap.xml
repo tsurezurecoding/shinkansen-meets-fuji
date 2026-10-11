@@ -55,6 +55,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/en/foods.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/everyday-japan.html</loc>
+    <lastmod>2026-10-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/en/tokyo-kyoto-stations.html</loc>
     <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
@@ -68,13 +80,13 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/beer-on-shinkansen.html</loc>
-    <lastmod>2026-10-07</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/drinks.html</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -92,7 +104,7 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/zukan.html</loc>
-    <lastmod>2026-09-23</lastmod>
+    <lastmod>2026-10-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

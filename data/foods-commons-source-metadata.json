@@ -1,0 +1,642 @@
+{
+  "pages": {
+    "File:Inarizushi by jetalone.jpg": {
+      "pageid": 2184765,
+      "ns": 6,
+      "title": "File:Inarizushi by jetalone.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 186634,
+          "width": 960,
+          "height": 1280,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/a/a2/Inarizushi_by_jetalone.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Inarizushi_by_jetalone.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=2184765",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2007-06-01 00:20:49",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Inarizushi by jetalone",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Inarizushi|Flickr images reviewed by FlickreviewR|Information field template with formatting|Files from Hajime Nakano Flickr stream",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "<br>Inari sushi",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2007-02-02",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/jetalone/377860618/\">Flickr</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/jetalone/\">jetalone</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY 2.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution 2.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by/2.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-2.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "File:Mitarashi dango 001.jpg": {
+      "pageid": 23785194,
+      "ns": 6,
+      "title": "File:Mitarashi dango 001.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 9048922,
+          "width": 4288,
+          "height": 2848,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/0/06/Mitarashi_dango_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Mitarashi_dango_001.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=23785194",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2022-01-20 11:50:45",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Mitarashi dango 001",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "CC-Zero|Mitarashi dango|Self-published work|3 of food",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "みたらし団子",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2013-01-12 10:08:58",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Ocdp\" title=\"User:Ocdp\">Ocdp</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Zero, Public Domain Dedication",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "File:Nikuman Kagurazaka.jpg": {
+      "pageid": 38072574,
+      "ns": 6,
+      "title": "File:Nikuman Kagurazaka.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 6071534,
+          "width": 5184,
+          "height": 2916,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Nikuman_Kagurazaka.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Nikuman_Kagurazaka.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=38072574",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2015-01-28 02:42:16",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Nikuman Kagurazaka",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Media lacking a description|Nikuman",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "DateTimeOriginal": {
+              "value": "2014-10-19",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Japanexperterna.se\" title=\"User:Japanexperterna.se\">Japanexperterna.se</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY-SA 3.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution-Share Alike 3.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Attribution": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"http://www.japanexperterna.se\">Japanexperterna</a> (<a rel=\"nofollow\" class=\"external text\" href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CCBYSA</a>)",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by-sa/3.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-sa-3.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "File:Onigiri 001.jpg": {
+      "pageid": 87462948,
+      "ns": 6,
+      "title": "File:Onigiri 001.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 2405083,
+          "width": 3746,
+          "height": 2488,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/c/c2/Onigiri_001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=87462948",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2020-02-25 21:53:24",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Onigiri 001",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "CC-Zero|Nori rolling|Self-published work|2 onigiri",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "Sample of Onigiri in Japan",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2020-02-26 06:31:21",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:Ocdp\" title=\"User:Ocdp\">Ocdp</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Zero, Public Domain Dedication",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "File:Taiyaki by SLPTWRK.jpg": {
+      "pageid": 2663491,
+      "ns": 6,
+      "title": "File:Taiyaki by SLPTWRK.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 941133,
+          "width": 1280,
+          "height": 1024,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/9/90/Taiyaki_by_SLPTWRK.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Taiyaki_by_SLPTWRK.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=2663491",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2007-09-01 11:36:49",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Taiyaki by SLPTWRK",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Taiyaki|Flickr images reviewed by FlickreviewR|Information field template with formatting",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "20:52<br>17th May 2007",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2007-05-19",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/slptwrk/503603510/\">Flickr</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a rel=\"nofollow\" class=\"external text\" href=\"https://www.flickr.com/photos/slptwrk/\">SLPTWRK</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY 2.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution 2.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by/2.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-2.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "File:Takoyaki dish.jpg": {
+      "pageid": 98953030,
+      "ns": 6,
+      "title": "File:Takoyaki dish.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 428414,
+          "width": 1600,
+          "height": 1070,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/4/45/Takoyaki_dish.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:Takoyaki_dish.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=98953030",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2021-01-18 06:27:28",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "Takoyaki dish",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Takoyaki|CC-Zero|Flickr images reviewed by FlickreviewR 2",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "A dish of takoyaki balls.",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2021-01-18",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/sayotsu/27009481923/\">https://www.flickr.com/photos/sayotsu/27009481923/</a>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "sayo ts",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Zero, Public Domain Dedication",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "false",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    },
+    "File:551 nikuman.jpg": {
+      "pageid": 148646847,
+      "ns": 6,
+      "title": "File:551 nikuman.jpg",
+      "imagerepository": "local",
+      "imageinfo": [
+        {
+          "size": 2185790,
+          "width": 4032,
+          "height": 3024,
+          "url": "https://upload.wikimedia.org/wikipedia/commons/7/7e/551_nikuman.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+          "descriptionurl": "https://commons.wikimedia.org/wiki/File:551_nikuman.jpg",
+          "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=148646847",
+          "extmetadata": {
+            "DateTime": {
+              "value": "2024-05-23 12:43:36",
+              "source": "mediawiki-metadata",
+              "hidden": ""
+            },
+            "ObjectName": {
+              "value": "551 nikuman",
+              "source": "mediawiki-metadata"
+            },
+            "CommonsMetadataExtension": {
+              "value": 1.2,
+              "source": "extension",
+              "hidden": ""
+            },
+            "Categories": {
+              "value": "Self-published work|Taken with Sony Xperia 5 IV|Nikuman",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "Assessments": {
+              "value": "",
+              "source": "commons-categories",
+              "hidden": ""
+            },
+            "ImageDescription": {
+              "value": "肉まんが皿の上に乗っている写真",
+              "source": "commons-desc-page"
+            },
+            "DateTimeOriginal": {
+              "value": "2024-05-23 21:40:52",
+              "source": "commons-desc-page"
+            },
+            "Credit": {
+              "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+              "source": "commons-desc-page"
+            },
+            "Artist": {
+              "value": "<a href=\"//commons.wikimedia.org/wiki/User:%E9%88%B4%E9%9F%B3%E9%9B%A8\" title=\"User:鈴音雨\">鈴音雨</a>",
+              "source": "commons-desc-page"
+            },
+            "LicenseShortName": {
+              "value": "CC BY 4.0",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "UsageTerms": {
+              "value": "Creative Commons Attribution 4.0",
+              "source": "commons-desc-page"
+            },
+            "AttributionRequired": {
+              "value": "true",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "LicenseUrl": {
+              "value": "https://creativecommons.org/licenses/by/4.0",
+              "source": "commons-desc-page"
+            },
+            "Copyrighted": {
+              "value": "True",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "Restrictions": {
+              "value": "",
+              "source": "commons-desc-page",
+              "hidden": ""
+            },
+            "License": {
+              "value": "cc-by-4.0",
+              "source": "commons-templates",
+              "hidden": ""
+            }
+          }
+        }
+      ]
+    }
+  }
+}
