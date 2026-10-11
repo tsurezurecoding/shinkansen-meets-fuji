@@ -1,3 +1,4 @@
+import { addEverydayRelated } from './shared/everyday-related.mjs';
 // English countryside feature: observation first, then the existing window guides.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -46,6 +47,7 @@ let html = `<!doctype html>
 </article></div><section data-spot-page-shared-module="content-rail"></section></main>
 <footer class="footer"><p class="footer-brand">Shinkansen Window <span>Catch the moment from your window</span></p><p>Times are estimates. Trains, weather and seat position all change what you see.</p><p class="footer-links"><a href="./">Home</a> · <a href="guide.html">Seeing Mt. Fuji</a> · <a href="zukan.html">Window field guide</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a></p><p class="footer-credit">Michikusa — unhurried travel, and the things you find by chance.</p></footer>
 <script src="../spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}"></script><script src="../spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}"></script></body></html>`;
+html=addEverydayRelated(html, 'countryside', 'en/countryside.html');
 html = enhanceContentHead(html, 'en/countryside.html', root);
 const output = path.join(root, 'en/countryside.html');
 if (process.argv.includes('--check')) {

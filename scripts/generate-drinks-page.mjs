@@ -1,3 +1,4 @@
+import { addEverydayRelated } from './shared/everyday-related.mjs';
 // English-only editorial feature. Approved travel-drinks preview, promoted to the site generator.
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
@@ -75,6 +76,7 @@ ${landscape('pocari-window','20260919_pocari-fukuroi_150379_michikusa.jpg','THE 
 <section class="sources-section" id="sources"><details><summary>Photo credits & reading notes</summary><div class="credits-body"><p>This is an independent editorial guide. Brand names identify the drinks; no maker endorses this page. The shelf and drink photographs marked October 2026 show products found on that visit. Other photographs are dated individually. The official links describe current ranges; stock varies by store and season.</p><p>Commons photographs are credited individually below. The linked licence applies to each image, not to the whole page. Trademark rights remain with their owners.</p><ol class="image-credits">${credits}</ol><p>Product and label references were checked on 3 October 2026; the tea, barley-tea and water additions were checked on 5 October 2026. Maker links in each section are the starting point for ingredients, allergens and current packaging.</p></div></details></section>
 </article></div>${chrome.content}</main>
 <footer class="footer"><p class="footer-brand">Shinkansen Window <span>Catch the moment from your window</span></p><p>Times are estimates. Trains, weather and seat position all change what you see.</p><p class="footer-links"><a href="${site}">Home</a> · <a href="${site}guide.html">Seeing Mt. Fuji</a> · <a href="${site}zukan.html">Window field guide</a> · <a href="${site}contact.html">Contact</a> · <a href="${site}privacy.html">Privacy</a></p><p class="footer-credit">Michikusa — unhurried travel, and the things you find by chance.</p></footer><script src="../spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}"></script><script src="../spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}"></script><script src="../drinks.js?v=${assetVersion('drinks.js')}"></script></body></html>`;
+html=addEverydayRelated(html, 'drinks', 'en/drinks.html');
 html=enhanceContentHead(html, 'en/drinks.html', root);
 const output=path.join(root,'en/drinks.html');
 if(process.argv.includes('--check')) {
