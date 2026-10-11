@@ -22,3 +22,30 @@
  .scenery-strip .photo-label strong,.scenery-strip .discovery-copy h3 {font-size:17px;}
 }
 @media(prefers-reduced-motion:reduce){.scenery-strip img{transition:none;}}
+
+/* Home chapters: shared headings and buttons, portrait scenery, rediscovery stamps. */
+.scenery-strip .photo-card,.scenery-strip .discovery-card{border:0;box-shadow:none}
+.scenery-strip .photo-card:hover,.scenery-strip .discovery-card:hover{border:0;box-shadow:none}
+.scenery-strip .photo-card:focus-visible,.scenery-strip .discovery-card:focus-visible{outline:3px solid var(--coral);outline-offset:-3px}
+.scenery-strip{scrollbar-width:none;-ms-overflow-style:none}
+.scenery-strip::-webkit-scrollbar{display:none;width:0;height:0}
+.scenery-strip .photo-card,.scenery-strip .discovery-card{height:auto;aspect-ratio:4/5}
+.scenery-strip img{position:absolute;inset:0}
+.scenery-strip [data-lp-cta="scenery-card-fuji"] img{object-position:75% center}
+.select-summary-line{display:block}
+.ride-compact{padding:clamp(54px,6vw,80px) 0;text-align:center;scroll-margin-top:120px;border-bottom:0}
+.ride-compact .section-head{max-width:900px}
+.ride-compact .section-head>p:last-child{max-width:700px;margin-left:auto;margin-right:auto}
+.ride-audio{background:var(--paper)}
+.ride-preview{width:min(660px,100%);margin:30px auto 28px}
+.ride-preview img{display:block;width:100%;height:auto;border-radius:18px}
+.ride-preview figcaption{margin-top:12px;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+.rediscovery-stamps{display:flex;justify-content:center;gap:6px;width:min(250px,100%);margin:20px auto;position:relative;z-index:1}
+.rediscovery-stamps img{width:calc((100% - 12px)/3);height:auto;aspect-ratio:1;object-fit:contain}
+.for-you .audience-card>p{margin-bottom:20px}
+.for-you .audience-card-action{margin-top:auto}
+@media(max-width:760px){
+ .ride-preview{margin-top:26px}
+ .ride-compact .button{max-width:100%}
+ .rediscovery-stamps{width:220px;margin-top:0}
+}

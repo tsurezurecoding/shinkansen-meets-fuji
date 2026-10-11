@@ -1523,8 +1523,33 @@ function englishLandingHTML() {
   const discoveryGrid = '<div class="discovery-grid scenery-strip">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
     `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="eager" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
   ).join('\n') + '</div>';
-  html = html.replace(/<div class="photo-mosaic scenery-strip">[\s\S]*?<\/div>\s*<div class="scenery-strip-controls"><small>[^<]*<\/small><\/div>\s*<p class="photo-credit">/, discoveryGrid + '<div class="scenery-strip-controls"><small>Swipe or use arrow keys to explore</small></div><p class="photo-credit">');
+  html = html.replace(/<div class="photo-mosaic scenery-strip">[\s\S]*?<\/div>\s*<div class="scenery-strip-controls"><small>[^<]*<\/small><\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Swipe or use arrow keys to explore</small></div>');
   html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
+  // Approved inbound home chapters: retain explicit audio and digital-stamp explanations.
+  html = html.replace(/<section class="select ride-compact ride-audio"[\s\S]*?<\/section>/, `<section class="select ride-compact ride-audio" id="live-guide" aria-labelledby="live-guide-title">
+ <div class="section-shell">
+   <div class="section-head">
+    <p class="eyebrow">Live audio guide</p>
+    <h2 id="live-guide-title">Listen for the next view.</h2>
+    <p>Already on board? Use GPS for a live map and audio cues as you approach the next view.</p>
+   </div>
+  <figure class="ride-preview">
+   <img src="images/og-live-guide.jpg" width="1200" height="630" alt="Preview of the live guide, showing a map, current position and the next view" loading="lazy" decoding="async">
+   <figcaption>A live map and audio guide for the views ahead.</figcaption>
+  </figure>
+  <a class="button button-primary" href="en/live/" data-lp-cta="step-live">Try the live audio guide</a>
+ </div>
+</section>`)
+    .replace(/<article class="audience-card reveal" data-number="2">[\s\S]*?<\/article>/, `<article class="audience-card reveal" data-number="2">
+  <small>WITH CHILDREN</small>
+  <h3>Riding with children? Turn the window into a game.</h3>
+  <p>Spot Mt. Fuji, castles and lakes together. Collect digital stamps of the views you find, and revisit your journey later.</p>
+  <div class="rediscovery-stamps" aria-label="Digital window stamps">
+   <img src="images/stamps/stamp_fuji.svg" width="120" height="120" alt="Mt. Fuji" loading="lazy"><img src="images/stamps/stamp_kakegawa.svg" width="120" height="120" alt="Kakegawa Castle" loading="lazy"><img src="images/stamps/stamp_hamanako.svg" width="120" height="120" alt="Lake Hamana" loading="lazy">
+  </div>
+  <a class="button button-primary audience-card-action" href="en/journal.html" data-lp-cta="audience-family">Collect Window Stamps</a>
+ </article>`)
+    .replace(/<span class="select-summary-line">[\s\S]*?<\/span>/, " The guide follows that service's timetable.");
   html = localizeEnglishInternalLinks(html)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
     .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHTML(description)}">`)

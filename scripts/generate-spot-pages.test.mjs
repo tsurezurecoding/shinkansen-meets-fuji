@@ -5,6 +5,12 @@ import vm from "node:vm";
 import { JSDOM } from "jsdom";
 import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOgImage, enhanceContentHead, contentLastmod } from './shared/content-metadata.mjs';
 import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
+import { findUnregisteredCountClaims } from './shared/spot-count.mjs';
+
+test('spot counts ignore image dimensions while still checking nearby prose', () => {
+  assert.deepEqual(findUnregisteredCountClaims('<img width="1200" height="630" alt="現在地と次の景色">'), []);
+  assert.equal(findUnregisteredCountClaims('<img height="630" alt="景色"><p>999 amazing views</p>').length, 1);
+});
 
 test('editorial metadata: curated candidates and generated spot contracts pass the site gate', () => {
   const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
