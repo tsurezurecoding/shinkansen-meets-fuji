@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "9a280f0124df7c5b",
+  "contentVersion": "becfabbf4970a4d1",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -121,8 +121,8 @@
     {
       "path": "data/station-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/station-photo-sources.json",
-      "bytes": 4309,
-      "sha256": "3233300fbeb9cc0f4cf7218bfb7e260d7b43040d0de309f6f2d31c2333d467dd"
+      "bytes": 4221,
+      "sha256": "d17f1ba8f7aa0f6f0dafb3c50347af75f7691fc4627b24f43449dfc5d721302c"
     },
     {
       "path": "data/timetable.js",
