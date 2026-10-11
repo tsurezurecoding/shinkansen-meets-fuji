@@ -147,6 +147,21 @@ function checkInteractions(dom, label) {
   }
 }
 
+for (const lang of CASTLE_LOCALE_LANGS) {
+  const guide = new JSDOM(read(`${lang}/guide.html`), { url: `${origin}/${lang}/guide.html` });
+  let nativeLinks = 0;
+  for (const el of guide.window.document.querySelectorAll('a[href]')) {
+    const url = new URL(el.href);
+    const route = url.pathname.slice(1).replace(/^(?:en|zh-Hant|fr)\//, '');
+    if (url.origin === origin && CASTLE_LOCALE_ROUTES.includes(route)) {
+      assert(url.pathname === `/${lang}/${route}`, `${lang}/guide.html`, `existing guide entry must remain in this language: ${url.pathname}`);
+      nativeLinks++;
+    }
+  }
+  assert(nativeLinks > 0, `${lang}/guide.html`, 'existing Fuji guide has no entry to localized articles');
+  guide.window.close();
+}
+
 for (const route of CASTLE_LOCALE_ROUTES) {
   const source = englishSnapshot(root, route);
   for (const lang of editions) {

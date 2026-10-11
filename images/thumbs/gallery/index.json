@@ -1791,6 +1791,14 @@
     "quality": 72,
     "sha256": "e88a7489a6e919c6f13e2ea7a4c2066ebe7cc2c36ba6f064f3c2f0ca7977493e"
   },
+  "images/thumbs/gallery/20261004_hirakata_park_wheel_night_37994_michikusa.webp": {
+    "source": "images/20261004_hirakata_park_wheel_night_37994_michikusa.jpg",
+    "sourceSha256": "c5d8e142850ba80767f3ab969516e9709a38aea56effd76b8af5cf855622a578",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a53739a7e969274e3031f85702faa4a56854dfdddf133fcfdc99deae8ac3fa08"
+  },
   "images/thumbs/gallery/20261010_727-board_20182_michikusa.webp": {
     "source": "images/20261010_727-board_20182_michikusa.jpg",
     "sourceSha256": "d09cec1862ab60e6767c70bc91bd5c3bf98a5447c94b1e966fde84155a994766",

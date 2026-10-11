@@ -2073,6 +2073,14 @@ for (const config of guideRailConfigs) {
     syncedGuideHTML=withAndroidAppInvite(syncedGuideHTML,lang,'fuji_guide');
     syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
   }
+  if (CASTLE_LOCALE_LANGS.includes(lang)) {
+    syncedGuideHTML = syncedGuideHTML.replace(/href="([^\"]+)"/g, (whole, href) => {
+      const url = new URL(href, `https://www.michikusa-travel.com/${lang}/guide.html`);
+      const route = url.pathname.replace(/^\/en\//, '');
+      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && CASTLE_LOCALE_ROUTES.includes(route)
+        ? `href="../${lang}/${route}${url.search}${url.hash}"` : whole;
+    });
+  }
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }
 for (const file of ["reflections.html", "en/reflections.html"]) {

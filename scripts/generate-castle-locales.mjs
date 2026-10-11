@@ -63,6 +63,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
       const url = new URL(href, `${origin}/en/${route}`);
       let target = url.pathname.slice(1).replace(/^en\//, '');
+      if (target === 'spots/hamanako-fuji.html') { target = 'spots/hamanako.html'; url.hash = 'hamanako-fuji'; }
       if (CASTLE_LOCALE_ROUTES.includes(target) || target === 'guide.html') {
         el.setAttribute('href', prefix + lang + '/' + target + url.search + url.hash);
       } else if (url.pathname.startsWith('/en/') && !el.closest('.lang-switch')) {

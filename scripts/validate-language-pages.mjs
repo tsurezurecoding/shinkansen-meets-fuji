@@ -3,6 +3,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
+import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://www.michikusa-travel.com";
@@ -203,6 +204,13 @@ const guideAlternates = [
   ["ar", "/ar/guide.html"],
   ["x-default", "/en/guide.html"],
 ];
+function hasLocalizedArticleHref(urlPath, href) {
+  const lang = urlPath.split('/')[1];
+  if (!CASTLE_LOCALE_LANGS.includes(lang)) return false;
+  const url = new URL(href, origin + urlPath);
+  const route = url.pathname.replace(new RegExp(`^/${lang}/`), '');
+  return url.origin === origin && CASTLE_LOCALE_ROUTES.includes(route) && href.startsWith(`../${lang}/spots/`);
+}
 for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
   const html = fs.readFileSync(diskPath(urlPath), "utf8");
   if (!html.includes('class="guide-lang-menu"') || html.includes('class="lang-switch"')) {
@@ -227,7 +235,7 @@ for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
     errors.push(`${urlPath}: mobile guide strip must contain 6 tracked spot links, found ${links.length}`);
   }
   for (const match of links) {
-    if (!hrefPattern.test(match[1])) errors.push(`${urlPath}: invalid mobile guide spot link: ${match[1]}`);
+    if (!hrefPattern.test(match[1]) && !hasLocalizedArticleHref(urlPath, match[1])) errors.push(`${urlPath}: invalid mobile guide spot link: ${match[1]}`);
   }
   // Match the class tokens, not the literal attribute: the guide sections also carry guide-feature-section.
   if (!/class="[^"]*\bspot-page-section\b[^"]*\bguide-mobile-timeline\b[^"]*"/.test(html) || !html.includes('"guide_mobile_spot_click"')) {
@@ -275,8 +283,8 @@ for (const [urlPath, language, hreflang] of localizedGuidePages) {
     errors.push(`${urlPath}: guide rail must contain ${spotCount} tracked spot links, found ${railSpotLinks.length}`);
   }
   for (const match of railSpotLinks) {
-    if (!/^\.\.\/en\/spots\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(match[1])) {
-      errors.push(`${urlPath}: localized rail link must point to an English spot page: ${match[1]}`);
+    if (!/^\.\.\/en\/spots\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(match[1]) && !hasLocalizedArticleHref(urlPath, match[1])) {
+      errors.push(`${urlPath}: rail link must use an existing English or matching localized article: ${match[1]}`);
     }
   }
   if (!html.includes('"guide_rail_spot_click"') || !html.includes('"guide_rail_view"')) {

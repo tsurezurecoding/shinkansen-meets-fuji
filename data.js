@@ -8652,6 +8652,19 @@ const SPOTS = [
         }
       },
       {
+        "src": "images/20261004_hirakata_park_wheel_night_37994_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "青と白に光るひらパー観覧車",
+          "en": "Hirakata Park wheel glowing at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-04"
+      },
+      {
         "src": "images/20260906_hirakata_park_wheel_night_michikusa.jpg",
         "timeOfDay": "night",
         "alt": {

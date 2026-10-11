@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0405364b5b73a829",
+  "contentVersion": "4a0f3aea5ea823ee",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -8,7 +8,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 17279,
-      "sha256": "a90e778db1d4f0c5a0df69f0c2956a47826cea58433c1e3e99333f914c6fa5af"
+      "sha256": "49cf73526a481bdbbebae29b9eea85da2b155b86238b167719b5c6bbcb8e69a3"
     },
     {
       "path": "727-collection.js",
@@ -97,14 +97,14 @@
     {
       "path": "data-runtime.js",
       "url": "https://www.michikusa-travel.com/data-runtime.js",
-      "bytes": 339706,
-      "sha256": "9fc9530ca11795995f5d52ecf9f93dd19e83f912f5c3ca2d22975d7d060fcbc6"
+      "bytes": 339962,
+      "sha256": "96170e32ded3365c1499a0113a737b1b5a8b0f9feacc50e83d076e1aac04b88d"
     },
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 760047,
-      "sha256": "b30463e721e85a6c5afd4d9882b9bdfd968864a3e7c4d70d9dd91c8eb21dbf8c"
+      "bytes": 760433,
+      "sha256": "cb59b103fc92edbc91d88aaec15be287dd1e53a067cbe8e1c73c27aaab441204"
     },
     {
       "path": "data/beer-photo-sources.json",
@@ -170,7 +170,7 @@
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
       "bytes": 15371,
-      "sha256": "9aede4e5b447474bba4614fc3bbc1af6a2d2b3fe850fa131362fad85a1dc8925"
+      "sha256": "5edc6cfc31ffda583a6a264248a5bf1ac7e36b92beb3c1279cbf3ef58ed85410"
     },
     {
       "path": "en/arenani.html",
@@ -242,7 +242,7 @@
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 28983,
-      "sha256": "553136234acbe62d7481da99f8373a56a2c647f391bdb0105058204d2ae48758"
+      "sha256": "b155261bd238e9716313dda038ed70be3de1df2bf7c15d18f85756b30939d283"
     },
     {
       "path": "en/spots/fukuyama-castle.html",
@@ -277,8 +277,8 @@
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
-      "bytes": 33881,
-      "sha256": "ed6aceb9a81f32aeaaf702ff984fa3860705b480f951dd0439e6d2a4efa21a0a"
+      "bytes": 33894,
+      "sha256": "62339b9c4e41d739805f0e074032b18169ee37b8d0f30cc7db4084056321fae7"
     },
     {
       "path": "everyday-related.css",
@@ -1094,7 +1094,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "a48fabcc32666edbd5e42b2c784c8dd478c671acc8f1a999e9fc9e72757bc154"
+      "sha256": "8646cde4b18b94f0d7e3f238f9214ba22214166703d7fca8971c990fdfcc2014"
     },
     {
       "path": "live/narration.js",
@@ -1454,7 +1454,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 31843,
-      "sha256": "eb15608dad62e2487efee6e03ba3953ca5c7d71c0a3c39c2c5273bf6fcd90305"
+      "sha256": "b180287bba26db42e78792edd8736abaf563187e8cb3874554b4ab300f43a180"
     },
     {
       "path": "sparkling-dreams.js",
@@ -1615,8 +1615,8 @@
     {
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
-      "bytes": 36462,
-      "sha256": "1c62ab273f99bbe19c73f8acc8491492d547d9482f63083423e716406e9a5ad5"
+      "bytes": 36489,
+      "sha256": "b954aa09c57d2b1519edbb9c5acf44ba7f05b50090555adf92dcf7a23ec91c76"
     },
     {
       "path": "yakei.js",
@@ -2644,8 +2644,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 573,
-    "bytes": 14403142,
+    "itemCount": 575,
+    "bytes": 14419610,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -4376,6 +4376,12 @@
         "sha256": "ab4af2dbd35229b370857b85b76611707013425226bc1b89949ccb22e7b84f8a"
       },
       {
+        "path": "images/thumbs/20261004_hirakata_park_wheel_night_37994_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20261004_hirakata_park_wheel_night_37994_michikusa.webp",
+        "bytes": 13948,
+        "sha256": "4f6ad4bba682d92872a9721092007a9a92c26933bf8ecb99af9dcb36f7650afc"
+      },
+      {
         "path": "images/thumbs/20261010_727-board_20182_michikusa.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/20261010_727-board_20182_michikusa.webp",
         "bytes": 89058,
@@ -5862,6 +5868,12 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20260930_sawayama-castle_michikusa.webp",
         "bytes": 8096,
         "sha256": "e88a7489a6e919c6f13e2ea7a4c2066ebe7cc2c36ba6f064f3c2f0ca7977493e"
+      },
+      {
+        "path": "images/thumbs/gallery/20261004_hirakata_park_wheel_night_37994_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261004_hirakata_park_wheel_night_37994_michikusa.webp",
+        "bytes": 2520,
+        "sha256": "a53739a7e969274e3031f85702faa4a56854dfdddf133fcfdc99deae8ac3fa08"
       },
       {
         "path": "images/thumbs/gallery/20261010_727-board_20182_michikusa.webp",
