@@ -109,10 +109,11 @@ if (stops.length >= 2) {
 const CORE_LINE = "Math.round(a.clock + f * (bArr - a.clock))";
 const appJsSrc = await readFile(rel("app.js"), "utf8");
 const mieruSrc = await readFile(rel("mieru.html"), "utf8");
+const mieruRuntime = await readFile(rel("mieru.js"), "utf8");
 if (appJsSrc.includes(CORE_LINE)) {
   fail("app.js appears to re-implement the interpolation algorithm locally — it should delegate to MADO_TRAIN_SELECT instead");
 }
-if (mieruSrc.includes(CORE_LINE)) {
+if (mieruRuntime.includes(CORE_LINE)) {
   fail("mieru.html appears to re-implement the interpolation algorithm locally — it should delegate to MADO_TRAIN_SELECT instead");
 }
 if ((trainSelectSrc.match(new RegExp(CORE_LINE.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "g")) || []).length !== 1) {
@@ -123,9 +124,9 @@ if ((trainSelectSrc.match(new RegExp(CORE_LINE.replace(/[.*+?^${}()|[\]\\]/g, "\
 if (!/MTS\.trainCandidates\(/.test(appJsSrc)) fail("app.js does not appear to delegate trainCandidates() to MADO_TRAIN_SELECT (MTS)");
 if (!/MTS\.tokaidoStops\(/.test(appJsSrc)) fail("app.js does not appear to delegate tokaidoStops() to MADO_TRAIN_SELECT (MTS)");
 if (!/MTS\.interpolateSpot\(/.test(appJsSrc)) fail("app.js does not appear to delegate interpolateSpot() to MADO_TRAIN_SELECT (MTS)");
-if (!/MTS\.trainCandidates\(/.test(mieruSrc)) fail("mieru.html does not appear to delegate trainCandidates() to MADO_TRAIN_SELECT (MTS)");
-if (!/MTS\.tokaidoStops\(/.test(mieruSrc)) fail("mieru.html does not appear to delegate tokaidoStops() to MADO_TRAIN_SELECT (MTS)");
-if (!/MTS\.interpolateSpot\(/.test(mieruSrc)) fail("mieru.html does not appear to delegate interpolateSpot() to MADO_TRAIN_SELECT (MTS)");
+if (!/MTS\.trainCandidates\(/.test(mieruRuntime)) fail("mieru.js must delegate trainCandidates to MADO_TRAIN_SELECT");
+if (!/MTS\.tokaidoStops\(/.test(mieruRuntime)) fail("mieru.js must delegate tokaidoStops to MADO_TRAIN_SELECT");
+if (!/MTS\.interpolateSpot\(/.test(mieruRuntime)) fail("mieru.js must delegate interpolateSpot to MADO_TRAIN_SELECT");
 
 // ---- 5. train-select.js が実際に読み込まれる配線になっていること ----
 const pagesLoadingAppJs = [
@@ -144,9 +145,9 @@ for (const page of pagesLoadingAppJs) {
 
 {
   const mieruTrainSelectIdx = mieruSrc.indexOf('src="train-select.js');
-  const mieruInlineScriptIdx = mieruSrc.indexOf("MADO_TRAIN_SELECT");
+  const mieruInlineScriptIdx = mieruSrc.indexOf('src="mieru.js');
   if (mieruTrainSelectIdx === -1) fail("mieru.html does not load train-select.js");
-  if (mieruInlineScriptIdx !== -1 && mieruTrainSelectIdx > mieruInlineScriptIdx) {
+  if (mieruInlineScriptIdx === -1 || mieruTrainSelectIdx > mieruInlineScriptIdx) {
     fail("mieru.html references MADO_TRAIN_SELECT before its <script src=\"train-select.js\"> tag");
   }
 }

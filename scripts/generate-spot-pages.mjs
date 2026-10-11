@@ -1845,8 +1845,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: liveSitemapState.ja.lastmod },
     { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: liveSitemapState.en.lastmod },
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
-    { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
-    { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-08-02" },
+    { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/en/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
@@ -1910,7 +1910,7 @@ function sitemapXML() {
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
-  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-11' })));
+  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'mieru.html' ? '2026-10-12' : '2026-10-11' })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
@@ -2139,6 +2139,7 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
 await import("./generate-castle-locales.mjs");
+await import("./generate-mieru-page.mjs");
 await import("./generate-utility-locales.mjs");
 await import("./generate-sparkling-locales.mjs");
 await import("./generate-content-manifest.mjs");

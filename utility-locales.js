@@ -22,6 +22,7 @@
         if (lang === edition) a.setAttribute('aria-current', 'page');
         a.addEventListener('click', function () {
           if (typeof localizedPageHref === 'function' && /(?:start|zukan)\.html$/.test(route)) a.href = localizedPageHref(edition);
+          if (route === 'mieru.html' && typeof window.madoMieruPageHref === 'function') a.href = window.madoMieruPageHref(edition);
         });
         options.appendChild(a);
       });

@@ -1,6 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Is Mt. Fuji Visible from the Shinkansen Today? | Mt. Fuji Visibility Forecast</title>
@@ -35,47 +33,7 @@
   }
   </script>
   <link rel="stylesheet" href="../style.css?v=175aa59c">
-  <style>
-    /* Forecast page, using the main dawn-window palette. */
-    .mieru-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
-    .mieru-wrap .eyebrow { color: var(--accent); letter-spacing: .18em; font-size: 12px; }
-    .mieru-wrap h1 { font-family: var(--font-serif); font-size: clamp(24px, 4vw, 34px);
-      line-height: 1.4; margin: 6px 0 10px; }
-    .mieru-lead { color: var(--ink-soft); font-size: 14px; max-width: 640px; }
-
-    .mieru-depart { background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); box-shadow: var(--shadow);
-      padding: 18px 20px; margin: 22px 0; }
-    .mieru-depart label { font-size: 13px; color: var(--ink-soft); margin-right: 14px; }
-    .mieru-depart input, .mieru-depart select { font-family: inherit; font-size: 15px;
-      padding: 5px 9px; margin-left: 6px; border: 1px solid var(--line);
-      border-radius: 8px; background: var(--paper); color: var(--ink); }
-    #mieruRide { margin-top: 12px; font-size: 14px; line-height: 2; }
-    #mieruRide b { color: var(--accent); font-weight: 700; }
-
-    .mieru-spot { background: var(--card); border: 1px solid var(--line);
-      border-radius: var(--radius); box-shadow: var(--shadow);
-      padding: 18px 20px; margin-bottom: 16px; }
-    .mieru-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-    .mieru-head h2 { font-family: var(--font-serif); font-size: 17px; font-weight: 600; }
-    .mieru-head .meta { font-size: 11.5px; color: var(--ink-soft); }
-    .mieru-verdict { margin-left: auto; font-size: 13px; color: var(--ink-soft); }
-    .mieru-verdict b { font-size: 1.45em; color: var(--ink); font-weight: 700; }
-
-    .mieru-bars { display: flex; gap: 3px; margin-top: 12px; }
-    .mieru-bar { flex: 1; height: 38px; position: relative;
-      background: var(--paper-deep); border-radius: 4px; overflow: hidden; }
-    .mieru-bar i { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 3px 3px 0 0; }
-    .mieru-bar span { position: absolute; left: 0; right: 0; top: 3px; text-align: center;
-      font-size: 8.5px; color: var(--ink-soft); }
-    .mieru-hours { display: flex; gap: 3px; margin-top: 3px; }
-    .mieru-hours div { flex: 1; text-align: center; font-size: 9px; color: var(--ink-soft); opacity: .7; }
-    .mieru-reason { margin-top: 10px; font-size: 12px; color: var(--ink-soft); }
-
-    .mieru-note { font-size: 11.5px; color: var(--ink-soft); line-height: 1.9;
-      border-top: 1px solid var(--line); margin-top: 26px; padding-top: 14px; }
-    #mieruStatus { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
-  </style>
+  <link rel="stylesheet" href="../mieru.css?v=96f08b57">
   <script>
     (function () {
       if (window.MADO_EMBEDDED_WEB) return;
@@ -106,7 +64,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <script defer src="../utility-locales.js?v=14c4adac"></script>
+  <script defer="" src="../utility-locales.js?v=baa993d2"></script>
   <link rel="stylesheet" href="../utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/mieru.html">
   <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/mieru.html">
@@ -119,16 +77,71 @@
       <article class="mieru-wrap">
       <p class="eyebrow">WEATHER FROM THE WINDOW</p>
       <h1>Mt. Fuji Visibility Forecast<small style="font-size:.55em;color:var(--accent);margin-left:8px">Beta</small></h1>
-      <p class="mieru-lead"><span class="copy-chunk">Will Mt. Fuji be visible from the Shinkansen today?</span> <span class="copy-chunk">We estimate the chance at each window viewpoint and hour</span> <span class="copy-chunk">from clouds around the summit and the clarity of the air.</span> <span class="copy-chunk">Enter your departure time to see the forecast</span> <span class="copy-chunk">for the moment your train passes each view.</span></p>
+      <p class="mieru-lead">Will Mt. Fuji be visible from the Shinkansen today? Compare clouds around the summit and the clarity of the air at five viewing areas. Choose your train, boarding station and direction, or enter a departure time, to check conditions when you pass each view.</p>
 
       <div class="mieru-depart">
-        <label>Depart Tokyo <input type="time" id="mieruDep" value="09:00" min="06:00" max="21:00" step="600"></label>
-        <label>Day <select id="mieruDay"><option value="0">Today</option><option value="1">Tomorrow</option></select></label>
+        <div class="mieru-row">
+          <label>Boarding station <select id="mieruBoard"></select></label>
+          <label>Direction
+            <select id="mieruDir">
+              <option value="west">Toward Shin-Osaka / Hakata</option>
+              <option value="east">Toward Tokyo</option>
+            </select>
+          </label>
+          <label>Day <select id="mieruDay"><option value="0">Today</option><option value="1">Tomorrow</option></select></label>
+        </div>
+        <div class="mieru-row mieru-mode-row" role="group" aria-label="Choose how to set your departure">
+          <button type="button" id="mieruModeTrain" class="mieru-mode-btn is-active" aria-pressed="true">Choose a train</button>
+          <button type="button" id="mieruModeTime" class="mieru-mode-btn" aria-pressed="false">Enter a time</button>
+        </div>
+        <div id="mieruTrainBlock">
+          <div class="mieru-train-searchbar">
+            <label>Departing after <input type="time" id="mieruTrainFrom" value="09:00" step="600"></label>
+            <button type="button" id="mieruTrainSearchBtn">Find trains</button>
+          </div>
+          <div id="mieruTrainResults" class="train-results"></div>
+        </div>
+        <div id="mieruTimeBlock" hidden="">
+          <label>Departure time (estimate) <input type="time" id="mieruDep" value="09:00" min="00:00" max="23:50" step="600"></label>
+        </div>
         <div id="mieruRide">Calculating...</div>
       </div>
 
-      <div id="mieruStatus">Loading weather data...</div>
-      <div id="mieruSpots"></div>
+      <section class="mieru-answer"><h2>Will Mt. Fuji be visible from the Shinkansen today?</h2>
+<p>Two things matter: cloud must leave the summit clear, and the air between your train and the mountain must be transparent enough. The forecast above estimates these conditions separately for the five viewing areas along the Tokaido Shinkansen.</p>
+<p>Dry winter and early-spring days often offer the clearest views. In humid summer weather, haze can hide a distant mountain even under a blue sky. Clear air after rain can occasionally make a summer view possible too.</p>
+<p>Mornings often give clearer distant views than afternoons. Later in the day, the mountain may appear as a silhouette instead of showing the detail of its slopes. The hourly forecast helps you compare conditions around your passing time.</p>
+<p>Four of these views are on the Seat E, mountain side. Left-Side Fuji, just after Shizuoka when travelling toward Shin-Osaka, is the brief exception on the Seat A, sea side. If cloud hides the mountain, explore the <a href="guide.html#cloudy">ideas for a cloudy day</a>.</p></section><div id="mieruStatus">Loading weather data...</div>
+      <div id="mieruSpots"></div><section class="mieru-factset"><h2>Five places to see Mt. Fuji from the train</h2><p>These five views are listed in order from Tokyo toward Shin-Osaka. The seat side and distance describe each viewpoint; the times from Tokyo are rough Nozomi/Hikari estimates. Use the train selector above for your service’s passing times.</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
+  <figure class="mieru-fact-photo"><a href="spots/ota-fuji.html" aria-label="See the photos and viewing guide: Mt. Fuji from Ota"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="Mt. Fuji beyond Tokyo rooftops near Ota" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
+  <div class="mieru-fact-copy"><h3>Mt. Fuji from Ota <span>Shinagawa → Shin-Yokohama (Ota, Tokyo)</span></h3>
+  <p class="mieru-fact-meta">About 10 min from Tokyo · Seat E (mountain side) · Viewing distance about 95 km</p><p class="mieru-fact-body">Look beyond Tokyo’s rooftops for a small, distant Mt. Fuji. At roughly 95 km away, this early glimpse is easiest to catch when the air is exceptionally clear. Think of it as a first hint of the mountain before the much larger view near Shin-Fuji.</p>
+  <a class="mieru-fact-more" href="spots/ota-fuji.html">See the photos and viewing guide →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="sagami-fuji">
+  <figure class="mieru-fact-photo"><a href="spots/sagami-fuji.html" aria-label="See the photos and viewing guide: Mt. Fuji over Sagami Plain"><img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="Snow-capped Mt. Fuji behind the hills near Odawara" width="735" height="414" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><h3>Mt. Fuji over Sagami Plain <span>Shin-Yokohama → Odawara</span></h3>
+  <p class="mieru-fact-meta">About 25 min from Tokyo · Seat E (mountain side) · Viewing distance about 59 km</p><p class="mieru-fact-body">Mt. Fuji appears beyond the wide Sagami Plain and the ridges of the Tanzawa mountains. The layers of plain, foothills and mountain make this view quite different from Shin-Fuji. Dry winter and early-spring mornings often give clear outlines; after rain, the view can also surprise you.</p>
+  <a class="mieru-fact-more" href="spots/sagami-fuji.html">See the photos and viewing guide →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="fuji">
+  <figure class="mieru-fact-photo"><a href="spots/fuji.html" aria-label="See the photos and viewing guide: Mt. Fuji near Shin-Fuji"><img src="../images/20240211_fuji_michikusa.jpg" alt="Snow-capped Mt. Fuji above the town near Shin-Fuji" width="4032" height="2268" loading="lazy" decoding="async"></a></figure>
+  <div class="mieru-fact-copy"><h3>Mt. Fuji near Shin-Fuji <span>Mishima → Shin-Fuji</span></h3>
+  <p class="mieru-fact-meta">About 43 min from Tokyo · Seat E (mountain side) · Viewing distance about 24 km</p><p class="mieru-fact-body">This is the closest of the five views: Mt. Fuji can fill the window for roughly three to four minutes. The mountain stands north of the railway, so its slopes are usually lit from the train side during the day. A snowy winter summit and an almost snow-free summer mountain give this same stretch very different faces.</p>
+  <a class="mieru-fact-more" href="spots/fuji.html">See the photos and viewing guide →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="left-fuji">
+  <figure class="mieru-fact-photo"><a href="spots/left-fuji.html" aria-label="See the photos and viewing guide: Left-Side Fuji"><img src="../images/20240410_left_fuji_earlyretiremile.jpg" alt="Left-Side Fuji beyond houses, seen from Seat A" width="440" height="365" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/earlyretiremile/status/1777853629682405657" target="_blank" rel="noopener noreferrer">@earlyretiremile</a></figcaption></figure>
+  <div class="mieru-fact-copy"><h3>Left-Side Fuji <span>Just after Shizuoka Station and the Abe River</span></h3>
+  <p class="mieru-fact-meta">About 54 min from Tokyo · Seat A (sea side) · Viewing distance about 56 km</p><p class="mieru-fact-body">This is the only Seat A view among the five. Heading toward Shin-Osaka, the curve of the railway briefly brings Mt. Fuji onto your left after Shizuoka and the Abe River. The glimpse lasts only seconds, so start looking early. A snow-covered summit is easier to pick out between the buildings than a hazy summer outline.</p>
+  <a class="mieru-fact-more" href="spots/left-fuji.html">See the photos and viewing guide →</a></div>
+</article>
+<article class="mieru-fact" data-viewpoint="hamanako-fuji">
+  <figure class="mieru-fact-photo"><a href="spots/hamanako.html#hamanako-fuji" aria-label="See the photos and viewing guide: Mt. Fuji beyond Lake Hamana"><img src="../images/250111_hamanako_fuji_proboffin.jpg" alt="Distant snow-capped Mt. Fuji beyond Lake Hamana" width="768" height="1024" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/ProBoffin/status/1877874599360389543" target="_blank" rel="noopener noreferrer">@ProBoffin</a></figcaption></figure>
+  <div class="mieru-fact-copy"><h3>Mt. Fuji beyond Lake Hamana <span>Hamamatsu → Toyohashi</span></h3>
+  <p class="mieru-fact-meta">About 73 min from Tokyo · Seat E (mountain side) · Viewing distance about 128 km</p><p class="mieru-fact-body">The most distant of the five views is a small Mt. Fuji beyond the lake and surrounding hills. Look far away on the Seat E side as the train crosses Lake Hamana. Very clear air is essential; this is an occasional reward rather than a view to expect on every journey.</p>
+  <a class="mieru-fact-more" href="spots/hamanako.html#hamanako-fuji">See the photos and viewing guide →</a></div>
+</article></div></section>
 
       <p class="mieru-note">
         Forecast model beta: visibility chance = probability that the summit is not obscured by cloud
@@ -157,141 +170,9 @@
 
   <script src="../spot-page-shared-data.js?v=8e3e0940"></script>
   <script src="../spot-page-shared.js?v=4ecf6548"></script>
-  <script src="../data-runtime.js?v=96170e32"></script>
-  <script>
-  (function(){
-  "use strict";
-  var SP = (typeof SPOTS !== "undefined" && SPOTS) || window.SPOTS || [];
-  var SUMMIT = [35.3606, 138.7274];
-  var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
-  var H0 = 6, H1 = 19;
+  <script src="../data-runtime.js?v=96170e32"></script><script src="../train-select.js?v=88f5b2d7"></script>
+  <script src="../mieru.js?v=a2559a18"></script>
 
-  function hav(a, b){
-    var R = 6371, dLa = (b[0]-a[0])*Math.PI/180, dLo = (b[1]-a[1])*Math.PI/180;
-    var x = Math.sin(dLa/2)*Math.sin(dLa/2) +
-            Math.cos(a[0]*Math.PI/180)*Math.cos(b[0]*Math.PI/180)*Math.sin(dLo/2)*Math.sin(dLo/2);
-    return Math.round(R*2*Math.atan2(Math.sqrt(x), Math.sqrt(1-x)));
-  }
-  // Build the Mt. Fuji viewpoints from data.js so updates stay in sync.
-  var SPOTS_M = [];
-  FUJI_IDS.forEach(function(id){
-    var s = SP.find(function(x){ return x.id === id; });
-    if (!s) return;
-    var vp = s.viewpoint || s.map;
-    if (!vp || s.minutesFromTokyo == null) return;
-    SPOTS_M.push({ id: id, name: (s.en && s.en.name) || id, area: (s.en && s.en.area) || "",
-      min: s.minutesFromTokyo, d: hav([vp.lat, vp.lng], SUMMIT),
-      vp: [vp.lat, vp.lng], side: s.side || "E" });
-  });
 
-  function estVis(rh){ return Math.max(4, 140 * Math.pow(1 - rh/100, 1.5)); }
-  function effDist(d, rh){ return d * (0.32 + 0.5 * Math.pow(rh/100, 2)); }
-  function prob(su, vp, h, d){
-    var lo = su.cloud_cover_low[h]||0, mi = su.cloud_cover_mid[h]||0, hi = su.cloud_cover_high[h]||0;
-    var pSummit = Math.max(0, 1 - Math.max(lo*0.6, mi*0.9, hi*0.3)/100);
-    var rh = vp.relative_humidity_2m[h]||70;
-    var V = vp.visibility ? vp.visibility[h] : null;
-    V = V ? V/1000 : null;
-    if (V == null || V >= 23) V = Math.max(V||0, estVis(rh));
-    var pAir = 1/(1 + Math.exp(-6*(V/effDist(d, rh) - 0.72)));
-    if ((su.precipitation[h]||0) > 0.2 || (vp.precipitation[h]||0) > 0.2) pSummit = 0;
-    return { p: pSummit*pAir, pSummit: pSummit, pAir: pAir, V: V, rh: rh, lo: lo, mi: mi, hi: hi };
-  }
-  function omAll(){
-    var points = [SUMMIT].concat(SPOTS_M.map(function(s){ return s.vp; }));
-    var lat = points.map(function(p){ return p[0]; }).join(",");
-    var lng = points.map(function(p){ return p[1]; }).join(",");
-    var vars = "cloud_cover_low,cloud_cover_mid,cloud_cover_high,visibility,relative_humidity_2m,precipitation";
-    return fetch("https://api.open-meteo.com/v1/forecast?latitude="+lat+"&longitude="+lng+
-      "&hourly="+vars+"&forecast_days=2&timezone=Asia%2FTokyo").then(function(r){
-        if (!r.ok) throw new Error("Open-Meteo HTTP " + r.status);
-        return r.json();
-      }).then(function(data){
-        if (!Array.isArray(data) || data.length !== points.length) throw new Error("Unexpected Open-Meteo response");
-        return data;
-      });
-  }
-  function col(p){
-    if (p < 0.15) return "rgba(76,90,107,.18)";
-    if (p < 0.4)  return "rgba(125,155,192,.55)";   /* --fuji */
-    if (p < 0.6)  return "rgba(217,164,64,.75)";    /* --gold */
-    if (p < 0.8)  return "rgba(232,112,74,.8)";     /* --accent */
-    return "#e8704a";
-  }
-  function verdictText(p){
-    return p >= 0.8 ? "Visible" : p >= 0.55 ? "Probably visible" : p >= 0.3 ? "A chance" : "Unlikely";
-  }
-  function reason(r){
-    if (!r) return "";
-    if (r.pSummit < 0.4){
-      var c = r.mi >= r.lo && r.mi >= r.hi ? "mid-level cloud" : (r.lo >= r.hi ? "low cloud" : "high cloud");
-      return "The summit is likely to be obscured by " + c + " (cloud cover: low " + Math.round(r.lo) + "%, mid " + Math.round(r.mi) + "%, high " + Math.round(r.hi) + "%).";
-    }
-    if (r.pAir < 0.4) return "Haze is limiting the view (visibility about " + Math.round(r.V) + " km; humidity " + Math.round(r.rh) + "%).";
-    if (r.p >= 0.55) return "The summit is mostly clear and the air is transparent (visibility about " + Math.round(r.V) + " km).";
-    return "Conditions are finely balanced.";
-  }
 
-  var DATA = { summit: null, vps: {} };
-  window.__mieru = { data: DATA, spots: SPOTS_M, results: {} };
-
-  omAll().then(function(res){
-    DATA.summit = res[0].hourly;
-    SPOTS_M.forEach(function(s, i){ DATA.vps[s.id] = res[i+1].hourly; });
-    document.getElementById("mieruStatus").textContent = "";
-    render();
-  }).catch(function(e){
-    document.getElementById("mieruStatus").textContent = "Weather data could not be loaded. Please try again in a little while.";
-  });
-
-  function render(){
-    if (!DATA.summit) return;
-    var day = +document.getElementById("mieruDay").value;
-    var dep = document.getElementById("mieruDep").value || "09:00";
-    var depMin = (+dep.slice(0,2))*60 + (+dep.slice(3,5));
-
-    var lines = [];
-    SPOTS_M.forEach(function(s){
-      var t = depMin + s.min;
-      var hh = Math.floor(t/60), mm = t%60;
-      var hIdx = day*24 + Math.min(23, Math.max(0, Math.round(t/60)));
-      var r = prob(DATA.summit, DATA.vps[s.id], hIdx, s.d);
-      window.__mieru.results[s.id] = r;
-      lines.push('<span class="copy-chunk">' + s.name + " around " + ("0"+hh).slice(-2) + ":" + ("0"+mm).slice(-2) + " <b>" +
-        Math.round(r.p*100) + "%</b> (" + verdictText(r.p) + ")</span>");
-    });
-    document.getElementById("mieruRide").innerHTML = "Forecast for this train: " + lines.join(" / ");
-
-    var root = document.getElementById("mieruSpots");
-    root.innerHTML = "";
-    SPOTS_M.forEach(function(s){
-      var rows = [];
-      for (var h = H0; h <= H1; h++) rows.push(prob(DATA.summit, DATA.vps[s.id], day*24 + h, s.d));
-      var bestP = Math.max.apply(null, rows.map(function(r){ return r.p; }));
-      var bestI = rows.findIndex(function(r){ return r.p === bestP; });
-      var div = document.createElement("div");
-      div.className = "mieru-spot";
-      var bars = rows.map(function(r, i){
-        var pct = Math.round(r.p*100);
-        return '<div class="mieru-bar" title="' + (H0+i) + ':00 ' + pct + '%">' +
-          '<span>' + pct + '</span>' +
-          '<i style="height:' + Math.max(4, r.p*100) + '%;background:' + col(r.p) + '"></i></div>';
-      }).join("");
-      var hl = rows.map(function(_, i){ return "<div>" + (H0+i) + "</div>"; }).join("");
-      div.innerHTML =
-        '<div class="mieru-head"><h2>' + s.name + '</h2>' +
-        '<span class="meta">' + s.area + ' · about ' + s.min + ' min from Tokyo · viewing distance about ' + s.d + ' km · Seat ' + s.side + '</span>' +
-        '<span class="mieru-verdict">Best ' + (day ? "tomorrow" : "today") + ': ' + (H0+bestI) + ':00 <b>' +
-          Math.round(bestP*100) + '%</b></span></div>' +
-        '<div class="mieru-bars">' + bars + '</div>' +
-        '<div class="mieru-hours">' + hl + '</div>' +
-        '<div class="mieru-reason">' + reason(rows[bestI]) + '</div>';
-      root.appendChild(div);
-    });
-  }
-  document.getElementById("mieruDep").addEventListener("input", render);
-  document.getElementById("mieruDay").addEventListener("change", render);
-  })();
-  </script>
-</body>
-</html>
+</body></html>

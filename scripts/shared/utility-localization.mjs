@@ -5,21 +5,10 @@ import { JSDOM } from 'jsdom';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './castle-localization.mjs';
 import { UTILITY_ROUTES } from './utility-locales.mjs';
 import { SPOT_COUNT } from './spot-count.mjs';
+import { FORECAST_COPY } from './mieru-copy.mjs';
+export { FORECAST_COPY } from './mieru-copy.mjs';
 export { UTILITY_ROUTES, LOCALES } from './utility-locales.mjs';
 export const ATTRS = [...TRANSLATABLE_ATTRIBUTES, 'placeholder'];
-export const FORECAST_COPY = {
-  visible: 'Visible', probable: 'Probably visible', chance: 'A chance', unlikely: 'Unlikely',
-  mid: 'mid-level cloud', low: 'low cloud', high: 'high cloud',
-  cloud: 'The summit is likely to be obscured by {0} (cloud cover: low {1}%, mid {2}%, high {3}%).',
-  haze: 'Haze is limiting the view (visibility about {0} km; humidity {1}%).',
-  clear: 'The summit is mostly clear and the air is transparent (visibility about {0} km).',
-  balanced: 'Conditions are finely balanced.',
-  error: 'Weather data could not be loaded. Please try again in a little while.',
-  around: '{0} around {1}', train: 'Forecast for this train: ',
-  meta: '{0} · about {1} min from Tokyo · viewing distance about {2} km · Seat {3}',
-  best: 'Best {0}: {1}', today: 'today', tomorrow: 'tomorrow',
-  audio: 'Audio is currently available in English.',
-};
 export const EXTRA_COPY = ['Open {name} in Google Maps', '{name}. {hook} Look around {area}.', 'YOUR TRAIN', 'Mt. Fuji', 'Seats A/E', 'Use Audio Guide while riding', 'More:', 'More', 'Browse every view in this stretch', 'Learn more', 'Related'];
 export function englishTables(root) {
   function table(file, indent) {

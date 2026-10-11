@@ -1,0 +1,79 @@
+/* 見える予報 — 本体パレット(夜明けの車窓)に従う */
+    .mieru-wrap { max-width: 900px; margin: 0 auto; padding: 28px 20px 60px; }
+    .mieru-wrap .eyebrow { color: var(--accent); letter-spacing: .18em; font-size: 12px; }
+    .mieru-wrap h1 { font-family: var(--font-serif); font-size: clamp(24px, 4vw, 34px);
+      line-height: 1.4; margin: 6px 0 10px; }
+    .mieru-lead { color: var(--ink-soft); font-size: 14px; max-width: 640px; }
+
+    .mieru-depart { background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 18px 20px; margin: 22px 0; }
+    .mieru-depart label { font-size: 13px; color: var(--ink-soft); margin-right: 14px; }
+    .mieru-depart input, .mieru-depart select { font-family: inherit; font-size: 15px;
+      padding: 5px 9px; margin-left: 6px; border: 1px solid var(--line);
+      border-radius: 8px; background: var(--paper); color: var(--ink); }
+    #mieruRide { margin-top: 12px; font-size: 14px; line-height: 2; }
+    #mieruRide b { color: var(--accent); font-weight: 700; }
+
+    .mieru-spot { background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      padding: 18px 20px; margin-bottom: 16px; }
+    .mieru-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+    .mieru-head h2 { font-family: var(--font-serif); font-size: 17px; font-weight: 600; }
+    .mieru-head .meta { font-size: 11.5px; color: var(--ink-soft); }
+    .mieru-verdict { margin-left: auto; font-size: 13px; color: var(--ink-soft); }
+    .mieru-verdict b { font-size: 1.45em; color: var(--ink); font-weight: 700; }
+
+    .mieru-bars { display: flex; gap: 3px; margin-top: 12px; }
+    .mieru-bar { flex: 1; height: 38px; position: relative;
+      background: var(--paper-deep); border-radius: 4px; overflow: hidden; }
+    .mieru-bar i { position: absolute; left: 0; right: 0; bottom: 0; border-radius: 3px 3px 0 0; }
+    .mieru-bar span { position: absolute; left: 0; right: 0; top: 3px; text-align: center;
+      font-size: 8.5px; color: var(--ink-soft); }
+    .mieru-hours { display: flex; gap: 3px; margin-top: 3px; }
+    .mieru-hours div { flex: 1; text-align: center; font-size: 9px; color: var(--ink-soft); opacity: .7; }
+    .mieru-reason { margin-top: 10px; font-size: 12px; color: var(--ink-soft); }
+
+    .mieru-note { font-size: 11.5px; color: var(--ink-soft); line-height: 1.9;
+      border-top: 1px solid var(--line); margin-top: 26px; padding-top: 14px; }
+    #mieruStatus { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 12px; }
+
+    .mieru-row { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 18px; margin-bottom: 10px; }
+    .mieru-mode-row { gap: 8px; }
+    .mieru-mode-btn { font-family: inherit; font-size: 13px; padding: 6px 14px; border: 1px solid var(--line);
+      border-radius: 999px; background: var(--paper); color: var(--ink-soft); cursor: pointer; }
+    .mieru-mode-btn.is-active { background: var(--night); border-color: var(--night); color: #fff; }
+    .mieru-train-searchbar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 4px 0 8px; }
+    .mieru-train-searchbar button, .mieru-train-more { font-family: inherit; font-size: 13px; padding: 6px 14px;
+      border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); cursor: pointer; }
+    .mieru-train-searchbar button:hover, .mieru-train-more:hover { border-color: var(--accent); }
+    .mieru-train-empty { font-size: 13px; color: var(--ink-soft); }
+
+    .mieru-answer { margin: 22px 0; }
+    .mieru-answer h2 { font-family: var(--font-serif); font-size: 18px; font-weight: 600; margin: 0 0 10px; }
+    .mieru-answer p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.9; margin: 0 0 10px; }
+    .mieru-answer a { color: var(--accent); }
+
+    .mieru-factset { margin: 8px 0 26px; }
+    .mieru-factset h2 { font-family: var(--font-serif); font-size: 18px; font-weight: 600; margin: 0 0 6px; }
+    .mieru-factset > p { font-size: 13px; color: var(--ink-soft); line-height: 1.8; margin: 0 0 14px; }
+    .mieru-factlist { display: flex; flex-direction: column; gap: 10px; }
+    .mieru-fact { background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow); display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr); overflow: hidden; }
+    .mieru-fact-photo { margin: 0; min-width: 0; }
+    .mieru-fact-photo > a { display: block; }
+    .mieru-fact-photo img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 10;
+      object-fit: cover; object-position: 50% 55%; }
+    .mieru-fact-photo figcaption { padding: 6px 12px; font-size: 11px; color: var(--ink-soft); }
+    .mieru-fact-copy { padding: 14px 18px; min-width: 0; }
+    .mieru-fact-more { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--accent); }
+    .mieru-fact h3 { font-family: var(--font-serif); font-size: 15px; font-weight: 600; margin: 0 0 4px; }
+    .mieru-fact h3 span { font-weight: 400; font-size: 12px; color: var(--ink-soft); margin-left: 8px; }
+    .mieru-fact .mieru-fact-meta { font-size: 11.5px; color: var(--ink-soft); margin: 0 0 6px; }
+    .mieru-fact p.mieru-fact-body { font-size: 13px; color: var(--ink-soft); line-height: 1.85; margin: 0; }
+    .mieru-fact h3 span { display: block; margin: 4px 0 0; }
+    @media (max-width: 640px) {
+      .mieru-fact { grid-template-columns: minmax(0, 1fr); }
+      .mieru-fact-photo img { aspect-ratio: 16 / 9; }
+    }
