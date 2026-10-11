@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f9924d25355900be",
+  "contentVersion": "5cc960989e1a27ab",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -217,8 +217,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 56535,
-      "sha256": "ae2e7390bea8a6bab8d2dd21aad2d11f4deaf18afe4c9dba55658593b09677be"
+      "bytes": 69773,
+      "sha256": "917f412b50176912c29ff1acae1bad9e7a68ca4233a3294517362db4b0fcc417"
     },
     {
       "path": "en/reflections.html",
@@ -737,6 +737,18 @@
       "sha256": "2389b1d866387600e086eb4f3e2d0e4e4a78f973d6943784ef92b2c86fa9a0ad"
     },
     {
+      "path": "images/google-play/en-badge.png",
+      "url": "https://www.michikusa-travel.com/images/google-play/en-badge.png",
+      "bytes": 4904,
+      "sha256": "f72611e2df8e88204009fd896d05d5e8e83c77009c63943bbffa169559934849"
+    },
+    {
+      "path": "images/google-play/ja-badge.png",
+      "url": "https://www.michikusa-travel.com/images/google-play/ja-badge.png",
+      "bytes": 40674,
+      "sha256": "2b1b4ff5b79346bcfc5a78e760e781a5161202adb9884c58f142b457b4bc0a9c"
+    },
+    {
       "path": "images/hanabi-hero-pd.jpg",
       "url": "https://www.michikusa-travel.com/images/hanabi-hero-pd.jpg",
       "bytes": 186536,
@@ -967,8 +979,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 60920,
-      "sha256": "12686bfa017d314bc8f22ad69608fbafdaa7addc8250ca4f6f71586682f529e5"
+      "bytes": 74158,
+      "sha256": "e65021aa9d573c07c61f999ac7202762cb85ba326648392151f72f558faa3184"
     },
     {
       "path": "journal.html",
@@ -981,6 +993,12 @@
       "url": "https://www.michikusa-travel.com/live/narration.js",
       "bytes": 70893,
       "sha256": "0c54c2b61ae432d24d4819338854bf47ff80b3ddf0a69d0e007850ebd801ea6e"
+    },
+    {
+      "path": "manifest.json",
+      "url": "https://www.michikusa-travel.com/manifest.json",
+      "bytes": 899,
+      "sha256": "7995f571c00b7534d9fba67451f216a4f8d9639a41e8ccfc2d68cc3a51c45e9f"
     },
     {
       "path": "promo/assets/assets-data.js",

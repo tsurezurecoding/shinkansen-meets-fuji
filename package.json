@@ -6,7 +6,7 @@
   "//type": "Intentionally NOT \"module\". app/*.js are browser scripts loaded by the generators via vm.runInNewContext (sloppy-mode script semantics); leaving the default keeps `node --check` faithful to that. The build/validate scripts are .mjs and are ESM regardless.",
   "scripts": {
     "build": "npm run build:data && npm run build:gallery-thumbs && npm run build:runtime-data && npm run sync:versions && npm run fix:spot-counts && npm run build:inbound && npm run build:pages",
-    "test": "npm run test:generator && npm run test:narration && npm run test:service-worker",
+    "test": "npm run test:generator && npm run test:narration && npm run test:service-worker && npm run test:android-invite",
     "test:generator": "node --test scripts/generate-spot-pages.test.mjs scripts/shared/geo.test.mjs scripts/spot-page-loader.test.mjs scripts/sanyo-castle-pages.test.mjs scripts/responsive-top-images.test.mjs scripts/hero-stage.test.mjs scripts/shared/live-sitemap.test.mjs",
     "test:narration": "node scripts/test-narration.cjs .",
     "test:service-worker": "node --test scripts/service-worker.test.mjs",
@@ -44,7 +44,8 @@
     "check:photos": "node scripts/audit-photo-credits.mjs --check",
     "audit:photos": "node scripts/audit-photo-credits.mjs",
     "build:runtime-data": "node scripts/generate-runtime-data.mjs",
-    "check:runtime-data": "node scripts/generate-runtime-data.mjs --check && node scripts/validate-runtime-data.mjs"
+    "check:runtime-data": "node scripts/generate-runtime-data.mjs --check && node scripts/validate-runtime-data.mjs",
+    "test:android-invite": "node --test scripts/android-app-invite.test.mjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1"
