@@ -30,7 +30,7 @@
     },
     en: {
       s1eb: 'LOOK UP FROM YOUR SCREEN', s1l1: ['Turn screen time'], s1l2: ['into window time.'], credit: 'Photo: michikusa',
-      mark: 'W', wordmark: 'Shinkansen Window', s2def: ['Tokaido Shinkansen', 'window-view guide'], countUnit: 'views', s2label: 'Tokyo ⇄ Shin-Osaka',
+      mark: '窓', wordmark: 'Shinkansen Window', s2def: ['Tokaido Shinkansen', 'window-view guide'], countUnit: 'views', s2label: 'Tokyo ⇄ Shin-Osaka',
       s3eb: '01  BEFORE THE RIDE', s3h: ['Choose your train,', 'and the timing follows.'], caveat: '*Times are Nozomi-based estimates', suffix: 'approx.', seatE: 'Seat E',
       s4eb: '02  ON THE TRAIN', s4h: ['Know the next view', 'with a map and audio.'], audio: 'Audio Guide α', s4sub: ['Fuji rises large', 'on the Seat E side.'], s4pill: 'Seat E · Mountain', s4cdl: 'NEXT VIEW  Mt. Fuji',
       s5h: ['Window first,', 'camera second.'],

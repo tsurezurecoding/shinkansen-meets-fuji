@@ -1525,7 +1525,7 @@ function englishLandingHTML() {
   html = html.replace(/<span class="copy-chunk">[^<]*<\/span>(?:\s*<span class="copy-chunk">[^<]*<\/span>)*/g,
     (run) => [...run.matchAll(/<span class="copy-chunk">([^<]*)<\/span>/g)]
       .map((match) => match[1].trim()).join(" "));
-  html = html.replaceAll(">窓</span>", ">W</span>");
+  // The 窓 brand mark stays as is in every language (it is the logo, not a word).
   // Approved traveller selection: familiar Fuji, then castles and everyday countryside.
   const discoveryCards = [
     ['20240211_Mt.Fuji.webp', 'Start with Mt. Fuji.', 'The view you came for. Find which side to sit on and when to look.', 'en/guide.html', 'Snow-covered Mt. Fuji from the Shinkansen', 'fuji', 'Find the Fuji view'],
@@ -1695,7 +1695,6 @@ function englishAppIndexHTML() {
     .replace(/<meta name="twitter:image:alt" content="[^"]*">/, '<meta name="twitter:image:alt" content="Tokaido Shinkansen window views, including Mt. Fuji">')
     .replace('<body>', '<body data-language-route="en">\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
   selectorCopy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
-  html = html.replaceAll(">窓</span>", ">W</span>");
   html = html.replace(/<!-- TRAIN-ENTRY-HELP:START -->[\s\S]*?<!-- TRAIN-ENTRY-HELP:END -->/, `<!-- TRAIN-ENTRY-HELP:START -->
     <div class="train-entry-help"><p>Viewing times are estimates from the timetable. Operating dates and live delays are not reflected.</p><a href="en/guide.html">Read the Mt. Fuji viewing-area and seat guide →</a><noscript><p>Enable JavaScript to choose your train, or use the train-number list below for Mt. Fuji estimates.</p></noscript></div>
     <!-- TRAIN-ENTRY-HELP:END -->`);
