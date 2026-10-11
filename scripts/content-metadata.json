@@ -559,5 +559,17 @@
     "imageAlt": "Photographic Shinkansen window scenes in Window Revue",
     "modified": "2026-10-06",
     "modifiedEvidence": "2026-10-06_window-artworks-release.md / PR65 / Pages37381659389: published artwork collection and centered hero."
+  },
+  "en/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_top-countryside-release.md: first publication batch approved by the owner on October 11",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-10_top-countryside-integration.md / 2026-10-11_top-countryside-release.md: initial English countryside article and first-release metadata",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "Green rice fields below Mount Mikami, seen from the Shinkansen"
   }
 }
