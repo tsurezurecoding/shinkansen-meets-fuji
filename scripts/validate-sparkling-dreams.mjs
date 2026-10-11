@@ -96,10 +96,10 @@ for (const text of requiredPageText) expect(page.includes(text), `sparkling-drea
 expect(!japaneseTop.includes('class="seasonal-entry"'), "index.html: standalone upper seasonal entry must be absent");
 expect(!japaneseStart.includes('class="seasonal-entry"'), "start.html: standalone upper seasonal entry must be absent");
 expect(!englishTop.includes('class="seasonal-entry"'), "en/index.html: standalone upper seasonal entry must be absent");
-expect(japaneseStart.includes('data-cta-id="top_journey_disney"') && japaneseStart.includes('data-cta-id="top_footer_disney"') && japaneseStart.includes('href="sparkling-dreams.html"'), "start.html: journey and mobile Disney promo cards must remain");
-expect(englishStart.includes('data-cta-id="top_journey_disney"') && englishStart.includes('data-cta-id="top_footer_disney"') && englishStart.includes('href="en/sparkling-dreams.html"'), "en/start.html: journey and mobile Disney promo cards must remain");
-expect(japaneseStart.includes('data-cta-id="top_journey_727"') && japaneseStart.includes('data-cta-id="top_footer_727"') && japaneseStart.includes('href="727-collection.html"'), "start.html: journey and mobile 727 Collection promo cards must remain");
-expect(englishStart.includes('data-cta-id="top_journey_727"') && englishStart.includes('data-cta-id="top_footer_727"') && englishStart.includes('href="en/727-collection.html"'), "en/start.html: English 727 Collection links must point at the English collection page");
+expect(japaneseStart.includes('data-cta-id="top_footer_disney"') && japaneseStart.includes('href="sparkling-dreams.html"'), "start.html: Disney entry must remain after the train-search section");
+expect(englishStart.includes('data-cta-id="top_footer_disney"') && englishStart.includes('href="en/sparkling-dreams.html"'), "en/start.html: Disney entry must remain after the train-search section");
+expect(japaneseStart.includes('data-cta-id="top_footer_727"') && japaneseStart.includes('href="727-collection.html"'), "start.html: 727 Collection entry must remain after the train-search section");
+expect(englishStart.includes('data-cta-id="top_footer_727"') && englishStart.includes('href="en/727-collection.html"'), "en/start.html: English 727 Collection links must point at the English collection page");
 expect(/<link rel="canonical" href="https:\/\/www\.michikusa-travel\.com\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: canonical is missing or incorrect");
 expect(/<meta name="robots" content="index,follow/.test(page), "sparkling-dreams.html: index/follow robots metadata is missing");
 expect(/<link rel="alternate" hreflang="en" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page) && /<link rel="alternate" hreflang="x-default" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: English or x-default language route is missing");

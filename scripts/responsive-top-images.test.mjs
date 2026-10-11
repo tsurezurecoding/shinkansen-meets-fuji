@@ -27,6 +27,8 @@ test('TOP only defers offscreen editorial layout and restores printing', () => {
   assert.match(css,/@media print\s*\{\s*main > section:not\(\.hero\)\s*\{ content-visibility: visible; contain-intrinsic-size: none;/);
   for(const lang of ['', 'en/']){
     const html=fs.readFileSync(new URL(`../${lang}index.html`,import.meta.url),'utf8');
-    for(const id of ['how','scenery','select','special','trust','final-title']) assert.ok(html.includes(`id="${id}"`));
+    for(const id of ['scenery','select','live-guide','special','trust','final-title']) assert.ok(html.includes(`id="${id}"`));
+    assert.ok(!html.includes('id="how"'));
+    assert.match(html, /<section class="for-you"[\s\S]*?class="rediscovery-stamps"/);
   }
 });

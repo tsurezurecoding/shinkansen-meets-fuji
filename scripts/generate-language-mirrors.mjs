@@ -16,7 +16,7 @@ const pages = [
     source: "zukan.html",
     output: "en/zukan.html",
     title: "Shinkansen Window Views | Tokaido & Sanyo Photo Guide",
-    description: "Discover Japan through the Shinkansen window, from Mt. Fuji to samurai castles. Explore Tokaido and Osaka–Hakata photos, learn the stories and find which side to watch.",
+    description: "From Mt. Fuji to castles, lakes and trackside billboards: explore Tokaido and Sanyo Shinkansen views in photos, then discover the stories behind the sights.",
     bakeI18n: true,
   },
   // journal.html is a hand-authored bilingual landing page; keep it out of the
@@ -317,8 +317,8 @@ function localizeLiveStaticCopy(html, tables) {
 }
 
 const liveSource = fs.readFileSync(path.join(appDir, "live", "index.html"), "utf8");
-const liveEnTitle = "Tokaido Shinkansen audio guide | GPS calls the next view and which side to watch | Shinkansen Window";
-const liveEnDescription = "GPS follows your position on board and calls the next window view with a map and audio, in English or Japanese: how long until it appears, and whether to watch the Seat A or Seat E side. Tokyo to Shin-Osaka, Mt. Fuji included. A preview ride works without boarding.";
+const liveEnTitle = "Shinkansen Live Guide: Alerts, Audio & Live Map | Shinkansen Window";
+const liveEnDescription = "GPS follows your location to announce Mt. Fuji and other window views with audio and a live map. Smartphone alerts are available in the Android app. Tokyo–Shin-Osaka.";
 // The Japanese page shows a screenshot of the guide running, which is the strongest possible
 // preview -- but that screenshot has a Japanese interface in it, and putting it on the English
 // page would tell English readers the app is Japanese-only. Fall back to the language-neutral
