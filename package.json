@@ -45,7 +45,7 @@
     "audit:photos": "node scripts/audit-photo-credits.mjs",
     "build:runtime-data": "node scripts/generate-runtime-data.mjs",
     "check:runtime-data": "node scripts/generate-runtime-data.mjs --check && node scripts/validate-runtime-data.mjs",
-    "test:android-invite": "node --test scripts/android-app-invite.test.mjs"
+    "test:android-invite": "node --test scripts/android-app-invite.test.mjs scripts/android-app-invite-reset.test.mjs"
   },
   "devDependencies": {
     "jsdom": "30.0.1"

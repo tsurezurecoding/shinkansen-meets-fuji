@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "51e47f491d91f01f",
+  "contentVersion": "cddd2ad6997fd70a",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -217,8 +217,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 68890,
-      "sha256": "94076c6d81bd1897463a16e18511873d88d118a3354a3ec87ae9efdd5491e150"
+      "bytes": 71181,
+      "sha256": "48370476cc9a1966f5b53f24b4816785a9e7fad2abe678728b3e0a180ec4cc57"
     },
     {
       "path": "en/reflections.html",
@@ -979,8 +979,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 71833,
-      "sha256": "222746c3e0f83727a7b5919e403ca9b48822b6506a827cbc684a7e8a4b7532a5"
+      "bytes": 74124,
+      "sha256": "55f7017ce2695ba7763ed0887e1d84d76b9d18d747a42d319e6b37acb540afdd"
     },
     {
       "path": "journal.html",
