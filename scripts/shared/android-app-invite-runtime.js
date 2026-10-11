@@ -56,7 +56,9 @@
     if(card.hidden)return;
     const vv=window.visualViewport,vw=vv?vv.width:innerWidth,vh=vv?vv.height:innerHeight,ox=vv?vv.offsetLeft:0,oy=vv?vv.offsetTop:0;
     if(document.activeElement&&!card.contains(document.activeElement)&&document.activeElement.matches('input:not([type=checkbox]):not([type=radio]),textarea,[contenteditable=true]')){card.style.visibility='hidden';card.inert=true;return;}
-    const style=getComputedStyle(card),inset=name=>parseFloat(style.getPropertyValue('--safe-'+name))||0,r=card.getBoundingClientRect();
+    const style=getComputedStyle(card),inset=name=>parseFloat(style.getPropertyValue('--safe-'+name))||0;
+    card.style.maxWidth=Math.max(0,vw-24-inset('left')-inset('right'))+'px';
+    const r=card.getBoundingClientRect();
     const controls=[...document.querySelectorAll('a,button,input,select,textarea,summary,nav,[role=button],.lang-landing-prompt')].filter(el=>!card.contains(el)&&el.getClientRects().length&&(!el.checkVisibility||el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}))&&getComputedStyle(el).visibility!=='hidden').map(el=>el.getBoundingClientRect());
     const bar=document.querySelector('.topbar,.lp-header,header')?.getBoundingClientRect();
     const top=Math.max(oy+12+inset('top'),bar&&bar.bottom>oy&&bar.bottom<oy+vh/2?bar.bottom+10:oy+12);
