@@ -84,6 +84,18 @@ const REFERENCES = {
     label: { ja: "東洋経済オンライン: 三河湾の車窓", en: "Toyo Keizai Online: Mikawa Bay window view" },
     url: "https://toyokeizai.net/articles/-/128329",
   },
+  hinataokaTokyuHistory: {
+    label: { ja: "東急100年史: 湘南日向岡ニュータウンの開発", en: "Tokyu corporate history: Shonan Hinataoka New Town (Japanese)" },
+    url: "https://www.tokyu.co.jp/history/chapter05_6_2/",
+  },
+  hiratsukaDistrictMap: {
+    label: { ja: "平塚市: 地区別地図（最終ページ）", en: "Hiratsuka City district map (last page, Japanese PDF)" },
+    url: "https://www.city.hiratsuka.kanagawa.jp/common/200038966.pdf",
+  },
+  hinataokaDistrictPlan: {
+    label: { ja: "平塚市: 日向岡地区地区計画", en: "Hiratsuka City: Hinataoka District Plan (Japanese PDF)" },
+    url: "https://www.city.hiratsuka.kanagawa.jp/common/200167385.pdf",
+  },
   hinataokaRakumachi: {
     label: { ja: "楽待: 日向岡の住宅地", en: "Rakumachi: Hinataoka hillside homes (Japanese only)" },
     url: "https://www.rakumachi.jp/news/column/339459",
@@ -1558,8 +1570,8 @@ const SPOTS = [
   {
     id: "hinataoka",
     icon: "🏘️",
-    ja: { name: "日向岡の街並み", area: "新横浜 → 小田原", hook: "斜面いっぱいに、色違いの三角屋根。", story: "日向岡（ひなたおか）は、神奈川県平塚市の北部・土屋地区の丘陵に広がる大規模住宅団地です。相模川を渡ってすぐ、E席側の丘の斜面に、赤・青・緑・灰などカラフルな三角屋根が計画的に並ぶ独特の街並みが一瞬だけ現れます。1990年代以降に開発された「日向岡タウン」を中心とした戸建て中心のニュータウンで、統一された住宅意匠が丘の等高線に沿って美しく並ぶことから、車窓の隠れた見どころとして密かに知られてきました。名所ではありませんが、「あ、あの三角屋根の丘だ」と気づく人が確実にいる、そんな景色です。" },
-    en: { name: "Hinataoka Hillside Homes", area: "Shin-Yokohama → Odawara", hook: "Rows of colorful triangular roofs.", story: "Hinataoka is a large planned residential development in the Tsuchiya area of northern Hiratsuka City, Kanagawa Prefecture. Just after the train crosses the Sagami River, look on the Seat E side to see a hillside dressed in neatly aligned triangular roofs — red, blue, green and gray — climbing the contours in a distinctive pattern. Built mostly from the 1990s onward and centered on Hinataoka Town, this detached-housing new town is unusual for its coordinated architecture, which follows the shape of the hill. It is not a landmark, but many riders quietly recognize 'the colorful triangular-roof hill' from repeat trips." },
+    ja: { name: "日向岡の街並み", area: "新横浜 → 小田原", hook: "斜面いっぱいに、色違いの三角屋根。", story: "日向岡（ひなたおか）は、神奈川県平塚市の旭地区にある丘陵の住宅地です。相模川を渡った先のE席側には、丘の斜面に赤や青など色違いの三角屋根が段々に並ぶ街並みが一瞬だけ現れます。丘の高低差を生かしたひな壇形式の宅地が、車窓から見る特徴的な景色の土台になっています。" },
+    en: { name: "Hinataoka Hillside Homes", area: "Shin-Yokohama → Odawara", hook: "Rows of colorful triangular roofs.", story: "Hinataoka is a hillside residential neighborhood in the Asahi district of Hiratsuka City, Kanagawa. Beyond the Sagami River, look on the Seat E side for a brief view of triangular roofs in different colors, arranged in tiers. The stepped lots make use of the hillside's changes in height, giving the neighborhood its distinctive shape from the train." },
     pageTitle: {
       ja: "新幹線から見えるカラフルな三角屋根の街｜日向岡（平塚市） | 新幹線の窓",
       en: "The Colorful Triangular-Roof Hillside: Hinataoka in Hiratsuka | Shinkansen Window",
@@ -1573,26 +1585,26 @@ const SPOTS = [
       en: ["Triangular roofs across the hill:", "Hinataoka in Hiratsuka"],
     },
     metaDescription: {
-      ja: "新横浜〜小田原の間、新幹線のE席側に一瞬あらわれるカラフルな三角屋根の丘は、平塚市土屋地区の日向岡（ひなたおか）住宅団地です。景観の特徴と開発の背景、車窓での見つけ方を紹介します。",
-      en: "Between Shin-Yokohama and Odawara, the hillside of colorful triangular roofs briefly visible from Seat E is Hinataoka Town in Tsuchiya, Hiratsuka City. Learn about this planned residential development and how to spot it from the Shinkansen.",
+      ja: "新横浜〜小田原のE席側に見える三角屋根の丘は、平塚市旭地区の日向岡。1979年に造成が始まり、1987年に分譲を開始した住宅地の背景と、車窓での見つけ方を紹介します。",
+      en: "Hinataoka's colorful hillside homes stand in Hiratsuka's Asahi district. Discover their 1979–1987 development history and how to spot them from Seat E.",
     },
     sectionHeading: {
       ja: "カラフルな三角屋根の街は何？",
       en: "What is this colorful triangular-roof neighborhood?",
     },
     pageStory: {
-      ja: "日向岡（ひなたおか）は、神奈川県平塚市北部の土屋地区に広がる住宅団地の総称で、中心となる街区が「日向岡タウン」として1990年代に本格開発されました。丘陵地の斜面をなだらかに削って造成された宅地に、切妻の三角屋根と統一感のある外壁色を持つ戸建て住宅が並び、赤・青・緑・グレーなどのカラフルな屋根が等高線に沿って階段状に配置されています。日本の一般的な戸建て住宅地に比べて統一感が強く、遠景から見ると「模型のような街」に見えるのが特徴です。",
-      en: "Hinataoka is the general name for a residential development in the Tsuchiya area of northern Hiratsuka City, Kanagawa Prefecture, whose core Hinataoka Town district was developed in earnest during the 1990s. Gently graded hillside lots are filled with detached homes sharing gabled triangular roofs and coordinated wall colors, with rooftops of red, blue, green and gray arranged in tiers along the contours. Compared with typical Japanese detached-housing districts, its visual consistency is unusual — from a distance, it can look like a scale model of a town.",
+      ja: "平塚市の日向岡一・二丁目は、市の地区別地図では旭地区に位置します。東急の公式史は、1979年11月の起工式と、「湘南日向岡ニュータウン」としての1987年1月の分譲開始を記録しています。開発前の土地には高低差があり、それを生かしてひな壇状に宅地を造成しました。段々の斜面に並ぶ家々を、東海道新幹線の車窓から眺められます。",
+      en: "Hinataoka 1-chome and 2-chome are in Hiratsuka City's Asahi district. Tokyu's official history records the start of construction in November 1979 and the launch of sales for Shonan Hinataoka New Town in January 1987. Stepped building lots were created to make use of the site's changes in height. Those terraces underpin the rows of homes visible from the Tokaido Shinkansen.",
     },
     explainer: {
-      heading: { ja: "なぜこんなに揃った街並み？", en: "Why does the neighborhood look this coordinated?" },
+      heading: { ja: "三角屋根と、ひな壇の斜面", en: "Triangular roofs on stepped hillside lots" },
       ja: [
-        "日本の一般的な戸建て住宅地は、施主ごとに異なるハウスメーカーが建てるため、屋根の形や外壁の色がばらばらになりがちです。それに対して日向岡タウンは、丘陵地を1つの街区として計画開発するにあたり、事業者側が屋根形状・屋根色・外壁色のパレットをある程度制限して分譲したことで、遠景から見たときの街並みの秩序を保っています。相模平野を見下ろす立地・南斜面の日照・宅地内の緑地整備など、住宅地としての快適性と、景観としての強さが両立している点が、この街の魅力です。",
+        "色の違う三角屋根が斜面に沿って段々に並び、その間に樹木の緑が入る様子が写真からわかります。平塚市の日向岡地区地区計画では、A・B地区の主たる屋根を勾配屋根に、外壁を落ち着いた色合いにすることが定められています。丘の段差と屋根の形に目を向けると、遠景でも住宅地のまとまりを捉えやすくなります。",
         "車窓では、相模川を渡ってから丹沢山地寄りに視線を向けると、丘の斜面に赤や青の点が集まっているのが目に入ります。晴れた日ほど屋根の色がくっきりし、桜や新緑の季節には周辺の樹木の色と組み合わさって、小さなおもちゃ箱のような光景になります。",
         "同じ相模平野の車窓には、丹沢山地の背後にそびえる富士山、東名高速、進む先の小田原・箱根の山々など見どころが多く、日向岡はその中で「一瞬だけ現れるカラフルな計画住宅地」として、視覚のアクセントになっています。",
       ],
       en: [
-        "Ordinary Japanese detached-housing districts tend to look visually mixed because each buyer commissions a different builder, producing varied roofs and wall colors. Hinataoka Town, by contrast, was master-planned as a single hillside district, and the developer imposed a limited palette for roof shapes, roof colors and exterior colors on the lots it sold. That coordination is why the district still reads as one composed landscape from a distance. Combined with south-facing slopes above the Sagami plain and generous internal green space, it balances comfortable living with a distinctive visual identity.",
+        "In the photos, roofs of different colors step up the hillside, with patches of greenery between them. Hiratsuka City's Hinataoka District Plan requires sloped main roofs and subdued exterior-wall colors in its A and B zones. From a distance, focus on the terraces and roof shapes to recognize the grouped hillside homes.",
         "From the train, after crossing the Sagami River, look toward the Tanzawa mountain foothills; you will notice a cluster of red and blue dots on a hillside. Sunny days make the roof colors especially crisp, and in cherry-blossom or fresh-green seasons the surrounding trees add to the effect, giving the hill a small toy-box quality.",
         "This stretch of Sagami plain has several highlights — Mt. Fuji rising behind the Tanzawa range, the Tomei Expressway, and the approaching Odawara and Hakone mountains — and Hinataoka fits in as 'the brief flash of a coordinated colorful hillside' that punctuates them.",
       ],
@@ -1634,7 +1646,7 @@ const SPOTS = [
       ],
       platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
     },
-    references: [REFERENCES.hinataokaRakumachi, REFERENCES.hiratsukaHousing],
+    references: [REFERENCES.hinataokaTokyuHistory, REFERENCES.hiratsukaDistrictMap, REFERENCES.hinataokaDistrictPlan, REFERENCES.hinataokaRakumachi],
     map: { lat: 35.34154388360787, lng: 139.30266552622092, ja: "日向岡 住宅地 平塚", en: "Hinataoka Hiratsuka" },
     viewpoint: { lat: 35.34051032924051, lng: 139.3058437145373 },
   },
