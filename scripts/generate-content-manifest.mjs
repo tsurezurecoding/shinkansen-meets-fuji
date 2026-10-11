@@ -23,6 +23,8 @@ const contentFiles = [
   ...await walkFiles("images/beer", p => /\.(?:jpg|png|webp)$/.test(p)),
   "window-artworks.html", "en/window-artworks.html", "window-artworks.css", "data/window-artworks.json",
   "en/drinks.html", "drinks.css", "drinks.js", "data/drinks-photo-sources.json",
+  "data/maibara-photo-sources.json",
+  "images/maibara_300x_commons.jpg", "images/maibara_star21_commons.jpg", "images/maibara_win350_commons.jpg",
   ...await walkFiles("images/drinks", p => /\.(?:jpg|png|webp|svg)$/.test(p)),
   "hero-cinema.js", "hero-cinema.css",
   ...await walkFiles("promo", p => /\.(?:html|js|css|webp|svg)$/.test(p)),

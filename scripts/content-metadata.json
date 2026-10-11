@@ -67,8 +67,8 @@
     "publishedAccuracy": "estimated-day",
     "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
     "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
-    "modified": "2026-09-26",
-    "modifiedEvidence": "f8e8237c adds self-shot morning Gyoran photo; 2026-09-26_cinema-hero-release.md / 50a79a2b / Pages 36238963944 includes the photo; later spot narrative/photo fields are identical"
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "spots/fujitec-big-wing.html": {
     "kind": "editorial article",
@@ -85,8 +85,8 @@
     "publishedAccuracy": "estimated-day",
     "publishedEvidence": "Git main first addition 0ea3960a; 2026-07-02 custom-domain migration d4369044; 2026-07-03_search_console_ga4_photo_queue_review.md confirms migration. User accepts day-level estimates on 2026-10-08.",
     "publishedEstimateNote": "Initial page added to historical main on July 1; exact early Pages completion is unavailable. Domain migration on July 2 does not restart page publication.",
-    "modified": "2026-10-04",
-    "modifiedEvidence": "fbacc898 / 2026-10-04_billboard-entry-release.md / Pages 37187829438: page-specific search description and location guidance"
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "727-collection.html": {
     "kind": "collection",
@@ -344,15 +344,17 @@
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "en/spots/pocari-fukuroi.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
-    "modified": "2026-10-06",
-    "modifiedEvidence": "2026-10-06_drinks-photo-release.md / PR64 / 76742d82 / Pages37379895666: English story/explainer and owner bottle photo; Japanese story unchanged."
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "spots/rakusai-egg-tanks.html": {
     "kind": "editorial article",
@@ -430,13 +432,17 @@
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "en/spots/fuji-bus-sales.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "spots/fuji-pipe-sign.html": {
     "kind": "editorial article",
@@ -454,19 +460,25 @@
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "en/spots/kiyosu.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "spots/tokyo-tower.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
   },
   "en/spots/tokyo-tower.html": {
     "kind": "editorial article",
@@ -474,7 +486,7 @@
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
     "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_station-feature-release.md: one English chapter-end station architecture link after the Tokyo Station photograph"
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update; 2026-10-11_station-feature-release.md: one English chapter-end station architecture link after the Tokyo Station photograph"
   },
   "spots/fuji-paper-mills.html": {
     "kind": "editorial article",
@@ -573,6 +585,122 @@
     "imageRights": "own",
     "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
     "imageAlt": "Green rice fields below Mount Mikami, seen from the Shinkansen"
+  },
+  "en/spots/727-board.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/odawara.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/odawara.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/gyoran-kannon.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/sapporo-shizuoka-factory.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/sapporo-shizuoka-factory.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/nagoya-station-skyline.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/nagoya-station-skyline.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/kirin-beer-factory.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/kirin-beer-factory.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/omi-fuji.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/omi-fuji.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/hirakata-park-wheel.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "en/spots/hirakata-park-wheel.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+  },
+  "spots/shiraitogawa-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update",
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_ride-editorial-release.md: first public release of the new Shiraitogawa Bridge and Maibara test-train pages"
+  },
+  "en/spots/shiraitogawa-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update",
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_ride-editorial-release.md: first public release of the new Shiraitogawa Bridge and Maibara test-train pages"
+  },
+  "spots/maibara-test-trains.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update",
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_ride-editorial-release.md: first public release of the new Shiraitogawa Bridge and Maibara test-train pages"
+  },
+  "en/spots/maibara-test-trains.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update",
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_ride-editorial-release.md: first public release of the new Shiraitogawa Bridge and Maibara test-train pages"
   },
   "en/tokyo-kyoto-stations.html": {
     "kind": "editorial article",

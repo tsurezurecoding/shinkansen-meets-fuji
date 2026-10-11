@@ -323,7 +323,8 @@ function projectChapters(spot, lang) {
       return { ...projectPhoto(photo, spot, lang, index), width: photo.width, height: photo.height };
     });
     const link = chapter.link;
-    if (link && (!/^spots\/[a-z0-9-]+\.html$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
+    if (link && (!/^(?:spots\/)?[a-z0-9-]+\.html(?:#[a-z][a-z0-9-]*)?$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
+    if (link && !fs.existsSync(path.join(appDir, lang === "en" ? "en" : "", link.route.split("#")[0]))) throw new Error(`Missing chapter link target for ${spot.id}/${lang}: ${link.route}`);
     // A language-specific editorial link does not create an absent Japanese article.
     const storyLink = chapter.storyLink?.[lang];
     if (storyLink && link) throw new Error('Conflicting chapter links for ' + spot.id);
@@ -409,6 +410,7 @@ function projectSharedGuide(spot, lang) {
     const paragraphs = localized(chapter.sharedGuideStory, lang);
     return {
       id: chapter.guideAnchor || chapter.id,
+      ...(chapter.sharedGuidePlacement ? { placement: chapter.sharedGuidePlacement } : {}),
       heading: localized(chapter.sharedGuideHeading, lang) || data.name,
       eyebrow: localized(chapter.sharedGuideEyebrow, lang) || "ANOTHER VIEW",
       hook: chapter.sharedGuideShowHook === false ? "" : data.hook || "",
@@ -670,6 +672,7 @@ function projectPage(spot, lang) {
     heading: pageHeading,
     sectionHeading: localized(spot.sectionHeading, lang) || UI[lang].sectionHow(data.name),
     story: localized(spot.pageStory, lang) || data.story || "",
+    ...(spot.pageStoryAnchor ? { storyAnchor: spot.pageStoryAnchor } : {}),
     ...(spot.pageStoryFigure?.[lang] ? { storyFigure: projectStoryFigure(spot, lang) } : {}),
     ...(spot.pageStoryLink?.[lang] ? { storyLink: projectStoryLink(spot, lang) } : {}),
     minutes: Number(spot.minutesFromTokyo),

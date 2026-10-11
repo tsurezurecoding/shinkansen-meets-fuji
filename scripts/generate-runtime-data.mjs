@@ -41,6 +41,7 @@ export const BUILD_ONLY_SPOT_FIELDS = [
   "pageFactsAfterArticle",
   "pageFacts",
   "pageStory",
+  "pageStoryAnchor",
   "pageStoryFigure",
   "pageStoryLink",
   "pageTitle",
@@ -50,12 +51,13 @@ export const BUILD_ONLY_SPOT_FIELDS = [
   "sectionHeading",
   "sharedGuideHeading",
   "sharedGuideStory",
+  "sharedGuidePlacement",
 ];
 
 // 1ページの表示で落ちてくる量の上限。分割前の data.js は531 KBだった。
-// One additional gallery photo and its reference links need about 1.1 KB.
-// Article-only fields stay in the per-page payload; keep the runtime bound close.
-export const RUNTIME_DATA_BYTE_BUDGET = 324 * 1024;
+// October 10: owned ride photos, two additional guide points and three more photos.
+// Retain a bounded allowance for the 58-spot runtime; article prose stays excluded.
+export const RUNTIME_DATA_BYTE_BUDGET = 332 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。
