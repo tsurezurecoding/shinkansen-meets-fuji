@@ -2,6 +2,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { withArticleLocales } from './castle-locales.mjs';
+import { assetVersion } from './asset-version.mjs';
 
 export const SITE = 'https://www.michikusa-travel.com';
 export const CONTENT_METADATA = JSON.parse(fs.readFileSync(new URL('../content-metadata.json', import.meta.url), 'utf8'));
@@ -168,7 +170,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
       }
       return `<script type="application/ld+json">${JSON.stringify(json, null, 2)}</script>`;
     });
-    return head;
+    return withArticleLocales(head, file, assetVersion('article-locales.js'));
   });
 }
 

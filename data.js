@@ -8037,12 +8037,12 @@ const SPOTS = [
       heading: { ja: "信長と観音寺城、そして安土城", en: "Nobunaga, Kannonji, and Azuchi" },
       ja: [
         "観音寺城が広く知られるのは、織田信長の上洛戦との関係です。1568年、信長は足利義昭を奉じて上洛を目指し、南近江の六角氏に降伏を勧告しますが拒絶されました。信長軍は同年9月、支城の箕作城（みつくりじょう）を1日で攻略し、勢いに驚いた六角義賢・義治父子は本拠の観音寺城を捨てて甲賀方面へ逃亡します。事実上、戦わずに落ちた形で、六角氏の南近江支配は終わりました。",
-        "翌1569年、信長はこの繖山のすぐ北西の琵琶湖畔・安土に、後の天下人の象徴となる安土城の建設を開始します。つまり車窓のこの山には、旧勢力の巨大な山城と、それを飲み込んで生まれた新しい時代の城が地形として隣り合っている、という重要な歴史地理があります。「観音寺城の裏に安土城がある」と知って見ると、車窓の景色が2つの時代の重なりに見えてきます。",
+        "1576年、信長はこの繖山のすぐ北西の琵琶湖畔・安土に、後の天下人の象徴となる安土城の建設を開始します。つまり車窓のこの山には、旧勢力の巨大な山城と、それを飲み込んで生まれた新しい時代の城が地形として隣り合っている、という重要な歴史地理があります。「観音寺城の裏に安土城がある」と知って見ると、車窓の景色が2つの時代の重なりに見えてきます。",
         "現在、山の稜線にはあちこちに石垣・郭跡が残り、麓の観音正寺までは徒歩やタクシーでアクセスできます。国指定史跡でもあり、遺構の保護と発掘調査が続けられています。",
       ],
       en: [
         "Kannonji Castle is best known for its role in Oda Nobunaga's advance on Kyoto. In 1568, escorting the future shogun Ashikaga Yoshiaki, Nobunaga demanded the surrender of the Rokkaku in southern Omi; they refused. His forces then took the subordinate Mitsukuri Castle in a single day. Shocked by the speed of the attack, Rokkaku Yoshikata and his son Yoshiharu abandoned Kannonji and fled toward Koga. The Rokkaku hold over southern Omi effectively ended without a real defense.",
-        "The following year, 1569, Nobunaga began building Azuchi Castle on the Lake Biwa shore just northwest of Mt. Kinugasa — a symbol of the new era he was forging. Seen from the train, this landscape holds two chapters of history stacked side by side: the huge mountain castle of the old order, and the new-age lakeside castle that displaced it. Knowing that 'Azuchi Castle is right behind Kannonji' changes how the window reads.",
+        "In 1576, Nobunaga began building Azuchi Castle on the Lake Biwa shore just northwest of Mt. Kinugasa — a symbol of the new era he was forging. Seen from the train, this landscape holds two chapters of history stacked side by side: the huge mountain castle of the old order, and the new-age lakeside castle that displaced it. Knowing that 'Azuchi Castle is right behind Kannonji' changes how the window reads.",
         "Today, remnants of stone walls and enclosures are scattered along the ridges, and Kannonshoji at the foot of the mountain can be reached on foot or by taxi. The site is a Nationally Designated Historic Site, and preservation and archaeological work continue.",
       ],
     },

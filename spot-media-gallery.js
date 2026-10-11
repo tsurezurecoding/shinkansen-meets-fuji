@@ -78,7 +78,8 @@
         if (sourceHref) {
           source.hidden = false;
           source.href = sourceHref;
-          source.textContent = document.documentElement.lang.toLowerCase().indexOf("en") === 0 ? "View original post" : "元の投稿を見る";
+          var sourceLabels = { en: 'View original post', fr: 'Voir la publication originale', 'zh-hant': '查看原始貼文' };
+          source.textContent = sourceLabels[document.documentElement.lang.toLowerCase()] || "元の投稿を見る";
           source.target = "_blank";
           source.rel = "noopener noreferrer";
         } else {

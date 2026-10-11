@@ -40,6 +40,13 @@
   document.body.append(card);
   const live=document.createElement('div');live.id='android-app-invite-announcement';live.setAttribute('role','status');live.setAttribute('aria-live','polite');live.setAttribute('aria-atomic','true');document.body.append(live);
   function track(name) {
+    // Recheck shared storage before every event, even before its storage event arrives.
+    try {
+      if (localStorage.getItem('mado-ga-optout') === '1') {
+        window.MADO_ANALYTICS_DISABLED = true;window['ga-disable-G-C2ESB694FV'] = true;
+        return false;
+      }
+    } catch(e) { return false; }
     if (window.MADO_ANALYTICS_DISABLED !== false || typeof window.gtag !== 'function') return false;
     try { window.gtag('event',name,{entry_source:'android_browser_floating',language:config.language,page_context:config.pageContext,variant:'floating_v2_14d',cta_id:'android_app_invite',install_status:status}); return true; } catch(e) { return false; }
   }

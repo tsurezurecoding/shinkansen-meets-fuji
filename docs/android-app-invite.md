@@ -53,3 +53,48 @@ Optional browser verification (Python Playwright + `/usr/bin/chromium`):
 under `/tmp/android-invite-production-evidence` and does not write source files.
 External HTTPS is blocked in this test to keep existing outbound resources local;
 first-party pages/assets and browser storage events are real HTTP requests.
+
+## GA-excluded one-time reset for testing
+
+On an eligible Android browser, open one of these URLs:
+
+- https://www.michikusa-travel.com/?ga=off&android_invite_reset=1
+- https://www.michikusa-travel.com/en/?ga=off&android_invite_reset=1
+- https://www.michikusa-travel.com/guide.html?ga=off&android_invite_reset=1
+- https://www.michikusa-travel.com/en/guide.html?ga=off&android_invite_reset=1
+
+This consumes `android_invite_reset=1` before the existing GA initializer and
+removes only `mado-android-app-invite-v2`. The address retains `ga=off` and all
+other query parameters, pathname and fragment. Subsequent reloads preserve a new
+× dismissal. To test again, explicitly reopen the original reset URL.
+
+This does not force display: PC/iPhone, WebView/native/PWA exclusions and positive
+installed-app suppression still apply. Stamp, language and legacy invitation
+storage are unchanged. Duplicate/invalid reset or ga values, missing `ga=off`,
+and conflicting `ga_optout=0` cannot reset the invitation. If history replacement
+fails, no dismissal is reset. If storage is unavailable, normal storage safety
+still hides the invitation; the current valid test page stays excluded from GA.
+
+Existing GA opt-out persists in this browser/origin after the reset parameter
+has disappeared. Finish testing and open the corresponding page with `?ga=on`
+(for example https://www.michikusa-travel.com/?ga=on) to clear that existing opt-out;
+normal analytics then resumes. `ga_optout=0` remains the existing alternative.
+Removing `ga=off` alone does not clear the stored opt-out. Storage failure may
+prevent persistence, so use the explicit test URL on every page in that case.
+The existing opt-out and explicit opt-in initialization rules remain. Already-open
+pages additionally follow shared opt-out as described below.
+
+Validation uses actual generated head scripts before the invitation runtime:
+no GA script insertion, initial pageview/config, or invitation event on test URLs;
+reload after ×, eligibility exclusions, storage/history failures, and original
+persistent off/on behavior are covered. This does not claim actual GA receipt.
+
+Saved GA opt-out is now published before shared dismissal deletion. Pages opened
+with this version follow saved opt-out on storage, pageshow, focus and visibility
+events; invitation events additionally read the current saved value just before
+calling gtag. Thus storage notification order or BFCache restoration cannot let a
+test-driven view/dismiss/Play event enter the old page's dataLayer. Existing pages
+set both the analytics gate and GA disable flag. Clearing opt-out elsewhere does
+not automatically opt an already-stopped document back in; reopen/reload with the
+existing explicit `ga=on` path. If shared opt-out cannot be saved, no dismissal is
+reset. Pages still running an earlier deployment must be reloaded before testing.
