@@ -96,3 +96,13 @@
 .scenery-strip .tool-map-credit{position:absolute;top:8px;right:10px;z-index:1;font-size:9px;line-height:1.2;color:rgba(16,38,56,.72);background:rgba(255,255,255,.7);padding:2px 5px;border-radius:4px}
 .scenery-strip .tool-card-map>img{transform:scale(1.5);transform-origin:36% 66%;object-position:25% 85%}
 .scenery-strip .tool-card-map .discovery-copy{background:linear-gradient(transparent,rgba(2,11,18,.88))}
+
+/* JA prototype: cards keep a phone-like size on wide screens, and the strip
+   runs the full window width, so more views are visible at once. */
+@media(min-width:651px){
+.scenery-under-hero{overflow-x:clip}
+ .scenery-under-hero .scenery-strip{margin-inline:calc(50% - 50vw);padding-inline:max(20px,calc(50vw - 820px));scroll-padding-inline:max(20px,calc(50vw - 820px))}
+ .scenery-under-hero .scenery-strip .discovery-card{flex-basis:208px}
+ .scenery-under-hero .scenery-strip .discovery-copy{padding:40px 14px 14px}
+ .scenery-under-hero .scenery-strip .discovery-copy h3{font-size:17px}
+}
