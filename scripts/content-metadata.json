@@ -234,9 +234,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-10-04",
-    "modified": "2026-10-06",
+    "modified": "2026-10-11",
     "publishedEvidence": "2026-10-04_drinks-release.md / 0cd6e2ea / Pages 37133291417: English only",
-    "modifiedEvidence": "2026-10-06_drinks-photo-release.md / 76742d82 / Pages 37379895666: owner shelf/product photographs and barley tea guidance",
+    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content",
     "image": "images/drinks/20261004-tea-shelf-michikusa.webp",
     "imageRights": "own",
     "imageEvidence": "data/drinks-photo-sources.json tea-shelf ownership owner; existing article OG photograph",
@@ -246,9 +246,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-10-07",
-    "modified": "2026-10-07",
+    "modified": "2026-10-11",
     "publishedEvidence": "2026-10-07_beer-feature-release.md / 3a65a824 / Pages37489412766: first English publication",
-    "modifiedEvidence": "Same first release includes complete article and owner photographs",
+    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content",
     "image": "images/beer/20261004-beer-hero-michikusa.webp",
     "imageRights": "own",
     "imageEvidence": "data/beer-photo-sources.json beer-hero, ownerProvided true, CP-0211",
@@ -580,7 +580,7 @@
     "published": "2026-10-11",
     "publishedEvidence": "2026-10-11_top-countryside-release.md: first publication batch approved by the owner on October 11",
     "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-10_top-countryside-integration.md / 2026-10-11_top-countryside-release.md: initial English countryside article and first-release metadata",
+    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content",
     "image": "images/20260629_omi_fuji_michikusa.jpg",
     "imageRights": "own",
     "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
@@ -701,5 +701,49 @@
     "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update",
     "published": "2026-10-11",
     "publishedEvidence": "2026-10-11_ride-editorial-release.md: first public release of the new Shiraitogawa Bridge and Maibara test-train pages"
+  },
+  "en/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_everyday-japan-release.md: owner approved release of the adopted English food article and Everyday Japan collection",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: initial product integration",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "Two triangular onigiri rice balls wrapped in nori on a plate.",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "en/everyday-japan.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_everyday-japan-release.md: owner approved release of the adopted English food article and Everyday Japan collection",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: initial product integration",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "Two triangular onigiri rice balls wrapped in nori on a plate.",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "en/zukan.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content"
   }
 }

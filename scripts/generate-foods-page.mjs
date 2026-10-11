@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {assetVersion} from './shared/asset-version.mjs';
+import {enhanceContentHead} from './shared/content-metadata.mjs';
+import {ANALYTICS} from './shared/feature-page.mjs';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+let html=fs.readFileSync(path.join(root,'scripts/templates/foods-en.html.tpl'),'utf8').replace(/@@ASSET:([^@]+)@@/g,(_,file)=>assetVersion(file));
+html=html.replace('</head>',ANALYTICS.withEmbeddedGuard+'\n</head>');
+html=enhanceContentHead(html,'en/foods.html',root);
+const output=path.join(root,'en/foods.html');
+if(process.argv.includes('--check')){if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==html)throw Error('foods.html out of date');}else fs.writeFileSync(output,html);
+console.log('foods.html generated from approved English source.');
