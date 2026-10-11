@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "cea4ebe562e2f7a5",
+  "contentVersion": "3f4f59fc14ad5e20",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -218,7 +218,7 @@
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 68890,
-      "sha256": "fddf3a4cb49a214a35aa7ee29d26a32ecea126431ae73a041c4414628aa8832d"
+      "sha256": "e31a68b9217c486baf0d0298a14f153c607387e11545b8e8f3adc0839edd2747"
     },
     {
       "path": "en/reflections.html",
@@ -326,7 +326,7 @@
       "path": "hero-cinema.css",
       "url": "https://www.michikusa-travel.com/hero-cinema.css",
       "bytes": 12210,
-      "sha256": "d872833939890b11fc73bb3fc90ea3d46e4a75062e6b90e57775a4000046c7d6"
+      "sha256": "bbba083b887899963d3d73572de4587e63612b8c2081720880ed91a333675226"
     },
     {
       "path": "hero-cinema.js",
@@ -343,8 +343,8 @@
     {
       "path": "home-scenery.css",
       "url": "https://www.michikusa-travel.com/home-scenery.css",
-      "bytes": 8687,
-      "sha256": "14051bdd70e34ae51c8f5c717251253b942a42870579ab83390b2d23295db67f"
+      "bytes": 8948,
+      "sha256": "3b06b5eb6c0ef097301ec1b6d4be4956241e7d60c622421deaf21cbd35d5528d"
     },
     {
       "path": "home-scenery.js",
@@ -980,7 +980,7 @@
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
       "bytes": 69870,
-      "sha256": "adc2dc6be9e9ee7d8e7476a860f356645c29ad980794ac6c08bc0673028d450b"
+      "sha256": "501c7d2b28b33a8fe430b28fccc447f8687a5fb7ee948a4310417c711ddbee9b"
     },
     {
       "path": "journal.html",

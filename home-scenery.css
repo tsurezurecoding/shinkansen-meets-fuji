@@ -106,3 +106,8 @@
  .scenery-under-hero .scenery-strip .discovery-copy{padding:40px 14px 14px}
  .scenery-under-hero .scenery-strip .discovery-copy h3{font-size:17px}
 }
+
+/* JA prototype: shorter cards (10:11 instead of 4:5) so the card titles stay
+   inside the first screen on low laptop windows as well. */
+.scenery-under-hero .scenery-strip .discovery-card{aspect-ratio:10/11}
+.scenery-under-hero .tool-phone{top:7%;width:46%}
