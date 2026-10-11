@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
+import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteBaseUrl = "https://www.michikusa-travel.com/";
@@ -18,6 +19,8 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 const contentFiles = [
   ...CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => `${lang}/${route}`)),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => [...UTILITY_ROUTES.map(route => `${lang}/${route}`), `${lang}/utility-data.js`]),
+  ...CASTLE_LOCALE_LANGS.flatMap(lang => [...EXTRA_LOCALE_ROUTES.map(route => `${lang}/${route}`), `${lang}/sparkling-data.js`]),
+  'sparkling-locale-runtime.js',
   'utility-locales.js', 'utility-locales.css', 'utility-locale-runtime.js',
   'article-locales.js', 'article-locales.css',
   "manifest.json", "images/google-play/ja-badge.png", "images/google-play/en-badge.png",

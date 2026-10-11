@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { JSDOM, VirtualConsole } from 'jsdom';
 import { UTILITY_ROUTES, LOCALES, ATTRS, collectEnglish, utilitySnapshot, englishTables, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
+import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
 import { liveHtmlContent } from './shared/live-sitemap.mjs';
 
@@ -109,7 +110,7 @@ function checkDictionary(lang) {
     }
     counts.narrationDirections++;
   }
-  for (const route of [...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, 'guide.html']) assert(adapter.href(route).startsWith(`${lang}/`), label, `same-language route missing ${route}`);
+  for (const route of [...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, ...EXTRA_LOCALE_ROUTES, 'guide.html']) assert(adapter.href(route).startsWith(`${lang}/`), label, `same-language route missing ${route}`);
   assert(adapter.href('index.html') === 'en/index.html', label, 'TOP must remain existing English fallback');
   assert(adapter.href('privacy.html') === 'en/privacy.html', label, 'untranslated route must use English fallback');
   dom.window.close(); counts.dictionaries++;
@@ -175,7 +176,7 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     const url = new URL(a.href);
     if (url.origin !== origin) continue;
     const route = canonicalRoute(url);
-    if ([...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, 'guide.html'].includes(route)) assert(url.pathname.startsWith(`/${lang}/`), label, `translated link leaves page language: ${url.pathname}`);
+    if ([...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, ...EXTRA_LOCALE_ROUTES, 'guide.html'].includes(route)) assert(url.pathname.startsWith(`/${lang}/`), label, `translated link leaves page language: ${url.pathname}`);
     else assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
   }
   if (label.endsWith('contact.html')) compare([...doc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), [...sourceDoc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), label, 'contact destination changed');

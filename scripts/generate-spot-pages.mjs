@@ -4,6 +4,7 @@ import { everydayRelatedHTML } from './shared/everyday-related.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { UTILITY_ROUTES, withUtilityLocales } from './shared/utility-locales.mjs';
+import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -1909,7 +1910,7 @@ function sitemapXML() {
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
-  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-11' })));
+  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-11' })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
@@ -2125,7 +2126,7 @@ for (const config of guideRailConfigs) {
     syncedGuideHTML = syncedGuideHTML.replace(/href="([^\"]+)"/g, (whole, href) => {
       const url = new URL(href, `https://www.michikusa-travel.com/${lang}/guide.html`);
       const route = url.pathname.replace(/^\/en\//, '');
-      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES].includes(route.replace(/^live\/$/, 'live/index.html'))
+      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].includes(route.replace(/^live\/$/, 'live/index.html'))
         ? `href="../${lang}/${route}${url.search}${url.hash}"` : whole;
     });
   }
@@ -2139,6 +2140,7 @@ writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
 await import("./generate-castle-locales.mjs");
 await import("./generate-utility-locales.mjs");
+await import("./generate-sparkling-locales.mjs");
 await import("./generate-content-manifest.mjs");
 
 const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;

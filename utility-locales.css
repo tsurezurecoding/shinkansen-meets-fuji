@@ -1,5 +1,7 @@
 /* Retain the shared chrome while allowing the longer translated labels to wrap. */
 @import url('article-locales.css');
+/* Translated prose wraps naturally, including punctuation between source chunks. */
+[data-utility-localized] .mieru-lead .copy-chunk{display:inline;white-space:normal}
 [data-utility-localized] .topbar, [data-utility-localized] .top-nav { flex-wrap: wrap; }
 [data-utility-localized] .top-nav { min-width: 0; }
 [data-utility-localized] h1, [data-utility-localized] h2, [data-utility-localized] h3 { overflow-wrap: anywhere; }
