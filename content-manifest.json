@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "1c1c1467a34a124c",
+  "contentVersion": "488541ad8487e891",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -163,8 +163,8 @@
     {
       "path": "en/countryside.html",
       "url": "https://www.michikusa-travel.com/en/countryside.html",
-      "bytes": 16212,
-      "sha256": "fec92d38e8ba4b49981e4aff68af22bde6e4c6fdd622b62d00d01ceaf79c09e8"
+      "bytes": 16286,
+      "sha256": "e2f1e58149838b9862a57c738aefad4fd33fd74ddd08fbb24efc34a1b00f131b"
     },
     {
       "path": "en/drinks.html",

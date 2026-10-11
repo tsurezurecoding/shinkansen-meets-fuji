@@ -563,8 +563,10 @@
   "en/countryside.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-10",
-    "modifiedEvidence": "2026-10-10_top-countryside-integration.md: user-approved English countryside article; local candidate, not yet published",
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_top-countryside-release.md: first publication batch approved by the owner on October 11",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-10_top-countryside-integration.md / 2026-10-11_top-countryside-release.md: initial English countryside article and first-release metadata",
     "image": "images/20260629_omi_fuji_michikusa.jpg",
     "imageRights": "own",
     "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",

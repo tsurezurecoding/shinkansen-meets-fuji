@@ -13,7 +13,7 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   assert.deepEqual(audit.problems, []);
   assert.equal(Object.keys(CONTENT_METADATA).length, 66);
   assert.equal(CONTENT_METADATA['en/countryside.html'].article, true);
-  assert.equal(CONTENT_METADATA['en/countryside.html'].published, undefined);
+  assert.equal(CONTENT_METADATA['en/countryside.html'].published, '2026-10-11');
   for (const file of ['spots/toyohashi-tateiwa.html', 'en/spots/toyohashi-tateiwa.html']) {
     assert.equal(CONTENT_METADATA[file].article, false);
     assert.equal(CONTENT_METADATA[file].modified, '2026-10-08');
