@@ -21,3 +21,8 @@ body.cinema #stage #s2label { left: 120px !important; top: 890px !important; }
 #nightCut .night-heading { overflow: hidden; }
 #nightCut .night-heading > span { display: inline-block; will-change: transform; }
 #nightCut .night-glow { position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 45% at 50% 60%, rgba(243, 181, 159, .10), rgba(8, 21, 33, 0) 70%); }
+
+/* On the TOP the stage sits in the page's own night band (#081521). The film's
+   night tone is matched (window.PV_NIGHT) and the glow fades out before every
+   edge, so neither the 16:9 frame nor the letterbox shows as a box. */
+#vignette { background: radial-gradient(ellipse closest-side at 1280px 540px, rgba(28, 47, 71, .78), rgba(28, 47, 71, 0)) !important; }

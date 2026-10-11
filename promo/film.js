@@ -164,7 +164,8 @@
   liveImgs.forEach((im) => style(im, { left: '0px', top: '0px', width: '384px' }));
 
   const mix = (c1, c2, p) => { const a = c1.match(/\w\w/g).map((h) => parseInt(h, 16)), b = c2.match(/\w\w/g).map((h) => parseInt(h, 16)); return `rgb(${a.map((v, i) => Math.round(lerp(v, b[i], p))).join(',')})`; };
-  const NIGHT = '101c2c', PAPER = 'f6f2e9', CORAL = 'e8704a';
+  // a host page can match the night tone to its own surroundings (TOP hero: 081521)
+  const NIGHT = (typeof window !== 'undefined' && window.PV_NIGHT) || '101c2c', PAPER = 'f6f2e9', CORAL = 'e8704a';
   function bgColor(f) {
     if (f < 300) return '#' + NIGHT;
     if (f < 470) return mix(NIGHT, PAPER, ease.inOut(fade(f, 300, 330)));
