@@ -1,3 +1,4 @@
+import { everydayRelatedHTML } from './shared/everyday-related.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import fs from "node:fs";
 import path from "node:path";
@@ -1102,7 +1103,7 @@ function thinSpotPageHTML(spot, lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style id="spot-page-boot-style">html { background:#faf6ef; } [data-spot-page-shared-static] { visibility:hidden; }</style>
   <noscript><style>[data-spot-page-shared-static] { visibility:visible; }</style></noscript>
-  ${embeddedHeadHTML(prefix)}
+  ${embeddedHeadHTML(prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">
@@ -1123,7 +1124,7 @@ function thinSpotPageHTML(spot, lang) {
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   ${staticNavHTML}
   <div data-spot-page-shared-module="page"></div>
-  ${staticContentRailHTML}
+  ${lang === "en" && spot.id === "gamagori-greenhouses" ? everydayRelatedHTML("greenhouses", "../") + '\n  ' : ""}${staticContentRailHTML}
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
   <script src="${prefix}${spotPagePayloadPath(spot.id, lang)}?v=${assetVersion(spotPagePayloadPath(spot.id, lang))}"></script>
   <script src="${prefix}spot-page-loader.js?v=${assetVersion("spot-page-loader.js")}"></script>

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "db49bd23db4b2340",
+  "contentVersion": "02a1eaa26af73968",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -169,8 +169,8 @@
     {
       "path": "en/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/en/beer-on-shinkansen.html",
-      "bytes": 30658,
-      "sha256": "9fc2367214c53b685cfdde1415b7cbadf85e660979f52d72337dcb66f319aaac"
+      "bytes": 32010,
+      "sha256": "c516e27d39f2e89126b0e40666580b0c99a270084292cb72060c42ca231f6854"
     },
     {
       "path": "en/castles.html",
@@ -181,14 +181,14 @@
     {
       "path": "en/countryside.html",
       "url": "https://www.michikusa-travel.com/en/countryside.html",
-      "bytes": 16410,
-      "sha256": "214c46060112d39c7aa5811beb658dc0795006fcc886a3e18414828f30b84055"
+      "bytes": 17772,
+      "sha256": "48a313025ad6b336bf08ab898f2ddecefd980826be6a80601b696360ae5bf131"
     },
     {
       "path": "en/drinks.html",
       "url": "https://www.michikusa-travel.com/en/drinks.html",
-      "bytes": 37374,
-      "sha256": "cd55478ffefe037adf3bdf922cd3e88d65705a00d9def73dbe22916318410e5c"
+      "bytes": 38750,
+      "sha256": "998bac0b7a5adec68a369b60e9e5fda27ef5c5226d6bbeb3529ec13f027ced73"
     },
     {
       "path": "en/everyday-japan.html",
@@ -205,8 +205,8 @@
     {
       "path": "en/foods.html",
       "url": "https://www.michikusa-travel.com/en/foods.html",
-      "bytes": 23651,
-      "sha256": "9727b4e39fb27f7b11d6507c2c647a374b960fa0e95e56cbd1d64f6354ab60fa"
+      "bytes": 25014,
+      "sha256": "f52401529e75bfab74da76a051e2238d7bf2d258fd3df97c4ca605d2b5520c1c"
     },
     {
       "path": "en/hanabi.html",
@@ -267,6 +267,12 @@
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 33881,
       "sha256": "6e322075854036a8969a6baceb9bf3ce436088e0938bc3cbb423b48a871336ba"
+    },
+    {
+      "path": "everyday-related.css",
+      "url": "https://www.michikusa-travel.com/everyday-related.css",
+      "bytes": 1069,
+      "sha256": "f38516171c977cb35348b7befdf69ac8a7fa0eb7439e295406586a26907de58b"
     },
     {
       "path": "everyday.css",
