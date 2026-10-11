@@ -74,14 +74,22 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       }
     }
     for (const host of doc.querySelectorAll('.lang-switch')) {
-      host.replaceChildren();
-      for (const [edition, label] of [['ja','日本語'],['en','EN'],['zh-Hant','繁體中文'],['fr','Français']]) {
+      const menu = doc.createElement('details');
+      menu.className = 'guide-lang-menu article-lang-menu';
+      const summary = doc.createElement('summary');
+      summary.textContent = lang === 'fr' ? 'Français' : '繁體中文';
+      summary.setAttribute('aria-label', lang === 'fr' ? 'Choisir la langue' : '選擇語言');
+      const options = doc.createElement('div');
+      options.className = 'guide-lang-options';
+      for (const [edition, label] of [['ja','日本語'],['en','English'],['zh-Hant','繁體中文'],['fr','Français']]) {
         const a = doc.createElement('a');
         a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
         a.lang = edition; a.textContent = label;
-        if (edition === lang) { a.className = 'active'; a.setAttribute('aria-current','page'); }
-        host.appendChild(a);
+        if (edition === lang) a.setAttribute('aria-current','page');
+        options.appendChild(a);
       }
+      menu.append(summary, options);
+      host.replaceWith(menu);
     }
     for (const el of doc.querySelectorAll('[data-map-src],iframe[src*="google.com/maps"]')) {
       const attr = el.hasAttribute('data-map-src') ? 'data-map-src' : 'src';

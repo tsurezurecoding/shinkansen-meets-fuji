@@ -67,13 +67,21 @@ function checkMetadata(doc, lang, route, label) {
 function checkSwitch(dom, lang, route, label) {
   dom.window.eval(read('article-locales.js'));
   dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
-  const switches = dom.window.document.querySelectorAll('.lang-switch');
-  assert(switches.length > 0, label, 'language switch missing');
+  const switches = dom.window.document.querySelectorAll('details.guide-lang-menu.article-lang-menu');
+  assert(switches.length === 1, label, 'one guide-style language menu required');
+  assert(!dom.window.document.querySelector('.lang-switch'), label, 'legacy language switch remains');
   for (const host of switches) {
+    const labels = { ja: '日本語', en: 'English', 'zh-Hant': '繁體中文', fr: 'Français' };
+    const prompts = { ja: '言語を選択', en: 'Choose language', 'zh-Hant': '選擇語言', fr: 'Choisir la langue' };
+    assert(host.querySelector('summary')?.textContent === labels[lang], label, 'summary must show current language');
+    assert(host.querySelector('summary')?.getAttribute('aria-label') === prompts[lang], label, 'language prompt must be localized');
+    assert(Boolean(host.querySelector('.guide-lang-options')), label, 'guide-style options missing');
+    assert(!host.open, label, 'language menu must start closed');
     const links = Array.from(host.querySelectorAll('a'));
     assert(links.length === 4, label, 'language switch must offer four editions');
     for (const edition of editions) {
       const link = links.find(el => el.lang === edition);
+      assert(link?.textContent === labels[edition], label, `language label wrong for ${edition}`);
       assert(link?.href === `${origin}/${routeFor(edition, route)}${edition === 'ja' ? '?lang=ja' : ''}`, label, `language switch destination wrong for ${edition}`);
       assert(Boolean(link?.hasAttribute('aria-current')) === (edition === lang), label, `current-language marker wrong for ${edition}`);
     }
@@ -86,7 +94,7 @@ function checkLocalizedLinks(doc, sourceDoc, lang, label) {
   const knownSource = new Set(Array.from(sourceDoc.querySelectorAll('a[href]')).map(el => nativeRoute(new URL(el.href))).filter(route => CASTLE_LOCALE_ROUTES.includes(route)));
   const localizedDestinations = new Set();
   for (const el of doc.querySelectorAll('a[href]')) {
-    if (el.closest('.lang-switch')) continue;
+    if (el.closest('.lang-switch, .article-lang-menu')) continue;
     const url = new URL(el.href);
     const route = nativeRoute(url);
     if (CASTLE_LOCALE_ROUTES.includes(route)) {

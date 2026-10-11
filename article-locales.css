@@ -1,5 +1,4 @@
 /* Existing site chrome/layout; allow the longer French labels to wrap. */
-[data-article-localized] .lang-switch { flex-wrap: wrap; }
 [data-article-localized] .topbar { flex-wrap: wrap; }
 [data-article-localized] .top-nav { min-width: 0; flex-wrap: wrap; }
 [data-article-localized] h1,[data-article-localized] h2,[data-article-localized] h3,
