@@ -1,0 +1,53 @@
+[
+  {
+    "id": "win350",
+    "title": "File:WIN350 Maibara 19981011.jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:WIN350_Maibara_19981011.jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/8/80/WIN350_Maibara_19981011.jpg",
+    "author": "DAJF",
+    "license": "CC BY-SA 4.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "date": "1998-10-11",
+    "width": 1461,
+    "height": 940,
+    "asset": "images/maibara_win350_commons.jpg",
+    "sha1": "efc1432ec9c2e5e5aefbeeaca1da6b30ca9bf859",
+    "sha256": "6b66d21522c6a8e4e83c8669aa7c899681f7ed0df415aed3022de798f36082d7",
+    "changes": "Original JPEG retained without cropping or retouching. Display thumbnail proportionally resized; no gallery thumbnail is used.",
+    "permissionStatus": "approved"
+  },
+  {
+    "id": "300x",
+    "title": "File:300X Shinkansen Test train , 新幹線 300X - panoramio (1).jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:300X_Shinkansen_Test_train_,_%E6%96%B0%E5%B9%B9%E7%B7%9A_300X_-_panoramio_(1).jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/4/44/300X_Shinkansen_Test_train_%2C_%E6%96%B0%E5%B9%B9%E7%B7%9A_300X_-_panoramio_%281%29.jpg",
+    "author": "z tanuki",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "date": "2014-04-12",
+    "width": 2133,
+    "height": 1600,
+    "asset": "images/maibara_300x_commons.jpg",
+    "sha1": "ccf3d0160ca08c9e9d89b1decadef35a3254f38c",
+    "sha256": "c2e059c3784dc91942e19c48a54883083ce4f7d4662d65409b70e0f93c66c35e",
+    "changes": "Original JPEG retained without cropping or retouching. Display thumbnail proportionally resized; no gallery thumbnail is used.",
+    "permissionStatus": "approved"
+  },
+  {
+    "id": "star21",
+    "title": "File:Star21 Shinkansen Test train , 新幹線 star21 - panoramio (1).jpg",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Star21_Shinkansen_Test_train_,_%E6%96%B0%E5%B9%B9%E7%B7%9A_star21_-_panoramio_(1).jpg",
+    "downloadUrl": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Star21_Shinkansen_Test_train_%2C_%E6%96%B0%E5%B9%B9%E7%B7%9A_star21_-_panoramio_%281%29.jpg",
+    "author": "z tanuki",
+    "license": "CC BY 3.0",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "date": "2014-04-12",
+    "width": 2133,
+    "height": 1600,
+    "asset": "images/maibara_star21_commons.jpg",
+    "sha1": "d54b84405717339a569ae983239e231e56c44232",
+    "sha256": "0e23fd54fa8c146912f8f887728dc9789624736b37879e7ab6faaeb4774c6395",
+    "changes": "Original JPEG retained without cropping or retouching. Display thumbnail proportionally resized; no gallery thumbnail is used.",
+    "permissionStatus": "approved"
+  }
+]
