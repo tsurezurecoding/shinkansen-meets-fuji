@@ -1,0 +1,38 @@
+[
+  {
+    "id": "rice",
+    "file": "images/20260629_omi_fuji_michikusa.jpg",
+    "alt": "Green rice fields below Mount Mikami, seen from the Shinkansen",
+    "caption": "Rice fields below Mount Mikami (Ōmi Fuji), Shiga · 29 June 2026 · A-seat side.",
+    "width": 1280,
+    "height": 720,
+    "ownerProvided": true,
+    "author": "michikusa",
+    "showCredit": false,
+    "ledgerId": "CP-0046"
+  },
+  {
+    "id": "tea",
+    "file": "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
+    "alt": "Rows of tea bushes on the slopes near Kakegawa, with frost-protection fans above them",
+    "caption": "Tea gardens near Kakegawa, Shizuoka · 30 May 2026 · E-seat side.",
+    "width": 1920,
+    "height": 1080,
+    "ownerProvided": true,
+    "author": "michikusa",
+    "showCredit": false,
+    "ledgerId": "CP-0041"
+  },
+  {
+    "id": "greenhouses",
+    "file": "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
+    "alt": "Curved greenhouse roofs close to the train, with pointed roofs and green fields beyond",
+    "caption": "Greenhouses near the Toyokawa Floodway, Aichi · 20 August 2026 · A-seat side.",
+    "width": 1920,
+    "height": 1080,
+    "ownerProvided": true,
+    "author": "michikusa",
+    "showCredit": false,
+    "ledgerId": "CP-0179"
+  }
+]

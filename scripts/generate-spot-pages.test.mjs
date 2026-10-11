@@ -11,7 +11,14 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 65);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 84);
+  assert.equal(CONTENT_METADATA['en/countryside.html'].article, true);
+  assert.equal(CONTENT_METADATA['en/countryside.html'].published, '2026-10-11');
+  for (const prefix of ['', 'en/']) for (const id of ['shiraitogawa-bridge', 'maibara-test-trains']) {
+    const meta = CONTENT_METADATA[prefix + 'spots/' + id + '.html'];
+    assert.equal(meta.published, '2026-10-11');
+    assert.equal(meta.modified, '2026-10-11');
+  }
   for (const file of ['spots/toyohashi-tateiwa.html', 'en/spots/toyohashi-tateiwa.html']) {
     assert.equal(CONTENT_METADATA[file].article, false);
     assert.equal(CONTENT_METADATA[file].modified, '2026-10-08');
@@ -260,9 +267,9 @@ test('remaining editorial rollout preserves optional dates, language-specific up
       assert.ok(meta.dateReview && meta.editorialEvidence);
     }
   }
-  assert.equal(CONTENT_METADATA['spots/pocari-fukuroi.html'].modified, undefined);
-  assert.equal(CONTENT_METADATA['en/spots/pocari-fukuroi.html'].modified, '2026-10-06');
-  assert.equal(contentLastmod(SITE + '/spots/pocari-fukuroi.html', '2026-10-03'), '2026-10-03');
+  assert.equal(CONTENT_METADATA['spots/pocari-fukuroi.html'].modified, '2026-10-11');
+  assert.equal(CONTENT_METADATA['en/spots/pocari-fukuroi.html'].modified, '2026-10-11');
+  assert.equal(contentLastmod(SITE + '/spots/pocari-fukuroi.html', '2026-10-03'), '2026-10-11');
   for (const file of ['en/arenani.html','en/727-collection.html','reflections.html','en/reflections.html','ferris-wheels.html','en/ferris-wheels.html','window-artworks.html','en/window-artworks.html']) {
     assert.equal(CONTENT_METADATA[file].kind, 'collection');
     assert.equal(CONTENT_METADATA[file].article, false);

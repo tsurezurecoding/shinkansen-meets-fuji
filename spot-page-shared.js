@@ -260,6 +260,8 @@
     "drinks.html": { en: false },
     // English-only travel editorial; no Japanese article counterpart.
     "beer-on-shinkansen.html": { en: false },
+    // English countryside introduction; no Japanese counterpart.
+    "countryside.html": { en: false },
     "besides-fuji.html": { en: false },
     "727-collection.html": { en: true }
   };
