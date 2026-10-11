@@ -39,3 +39,21 @@ test('legacy seen/Play/preview state and force-query do not override production'
 test('BFCache rechecks installed status; background views are not counted',async()=>{const f=await fixture();try{Object.defineProperty(f.w.document,'visibilityState',{value:'hidden',configurable:true});f.seen();assert.equal(f.events.length,0);f.w.navigator.getInstalledRelatedApps=async()=>[{platform:'play',id:'com.michikusatravel.shinkansenwindow'}];f.w.dispatchEvent(new f.w.PageTransitionEvent('pageshow',{persisted:true}));assert.equal(f.card.hidden,true);await new Promise(r=>setTimeout(r,5));assert.equal(f.card.hidden,true);assert.equal(f.events.length,0);}finally{f.close();}});
 test('API timeout is eligible error without persistent install state',async()=>{const f=await fixture();try{f.w.navigator.getInstalledRelatedApps=()=>new Promise(()=>{});f.w.dispatchEvent(new f.w.PageTransitionEvent('pageshow',{persisted:true}));assert.equal(f.card.hidden,true);await new Promise(r=>setTimeout(r,1550));assert.equal(f.card.hidden,false);f.seen();assert.equal(f.events[0][2].install_status,'error');assert.equal(f.w.localStorage.getItem(KEY),null);}finally{f.close();}});
 test('visual viewport constrains card width during magnification',async()=>{const f=await fixture();try{f.w.visualViewport={width:260,height:500,offsetLeft:0,offsetTop:0};f.refresh();assert.equal(f.card.style.maxWidth,'236px');}finally{f.close();}});
+const installed=[{platform:'play',id:'com.michikusatravel.shinkansenwindow'}];
+const settle=()=>new Promise(r=>setTimeout(r,5));
+function deferred(){let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no;});return {promise,resolve,reject};}
+function redetect(f,request){f.w.navigator.getInstalledRelatedApps=()=>request.promise;f.w.dispatchEvent(new f.w.PageTransitionEvent('pageshow',{persisted:true}));}
+test('soft deadline shows unknown then late installed hides immediately without duplicate view',async()=>{
+ const f=await fixture();try{const request=deferred();redetect(f,request);assert.equal(f.card.hidden,true);await new Promise(r=>setTimeout(r,1550));assert.equal(f.card.hidden,false);f.seen();assert.equal(f.events[0][2].install_status,'error');request.resolve(installed);await settle();assert.equal(f.card.hidden,true);f.seen();assert.equal(f.events.length,1);assert.equal(f.w.localStorage.getItem(KEY),null);
+ const next=deferred();redetect(f,next);next.resolve([]);await settle();assert.equal(f.card.hidden,false);f.seen();assert.equal(f.events.length,1);
+ }finally{f.close();}
+});
+test('late installed or unknown resolution preserves explicit 14-day dismissal',async()=>{
+ for(const apps of [installed,[]]){const f=await fixture();try{const request=deferred();redetect(f,request);await new Promise(r=>setTimeout(r,1550));f.card.querySelector('button').click();const state=f.w.localStorage.getItem(KEY);request.resolve(apps);await settle();assert.equal(f.card.hidden,true);assert.equal(f.w.localStorage.getItem(KEY),state);assert.equal(JSON.parse(state).dismissedAt,1700000000000);}finally{f.close();}}
+});
+test('older positive/error/empty response cannot overwrite a newer detection',async()=>{
+ for(const oldResult of ['positive','error','empty']){const f=await fixture();try{const old=deferred(),current=deferred();redetect(f,old);redetect(f,current);current.resolve(oldResult==='positive'?[]:installed);await settle();const expected=oldResult!=='positive';assert.equal(f.card.hidden,expected);if(oldResult==='error')old.reject(Error('late'));else old.resolve(oldResult==='positive'?installed:[]);await settle();assert.equal(f.card.hidden,expected);assert.equal(f.w.localStorage.getItem(KEY),null);}finally{f.close();}}
+});
+test('departure invalidates late answers; BFCache return checks anew',async()=>{
+ for(const answer of ['positive','error']){const f=await fixture();try{const old=deferred();redetect(f,old);f.w.dispatchEvent(new f.w.PageTransitionEvent('pagehide',{persisted:true}));assert.equal(f.card.hidden,true);if(answer==='error')old.reject(Error('away'));else old.resolve(installed);await settle();assert.equal(f.card.hidden,true);assert.equal(f.events.length,0);const current=deferred();redetect(f,current);current.resolve([]);await settle();assert.equal(f.card.hidden,false);f.seen();assert.equal(f.events.length,1);}finally{f.close();}}
+});

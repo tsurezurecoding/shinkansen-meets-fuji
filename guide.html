@@ -1155,7 +1155,7 @@
   try { if (!browser() || !window.isSecureContext || !window.IntersectionObserver) return; read(); storageReady(); }
   catch(e) { return; }
   const en = config.language === 'en';
-  let status = 'checking', generation = 0, localClosed = false, timer, frame, lastFocus, ratio = 0, viewSent = false;
+  let status = 'checking', generation = 0, localClosed = false, pageAway = false, detectionTimer, timer, frame, lastFocus, ratio = 0, viewSent = false;
   const card = document.createElement('aside'); card.id='android-app-invite';card.hidden=true;card.setAttribute('aria-labelledby','android-app-invite-title');
   const asset = path => new URL(config.assetPrefix+path,document.baseURI).href;
   card.innerHTML='<button id="android-app-invite-close" type="button" aria-label="'+(en?'Dismiss invitation for '+config.dismissDays+' days':'案内を閉じて'+config.dismissDays+'日間表示しない')+'" title="'+(en?'Hide for '+config.dismissDays+' days':config.dismissDays+'日間表示しない')+'"><span aria-hidden="true">×</span></button><div class="context-heading"><img class="context-app-icon" width="32" height="32" alt=""><div><span class="context-label">'+(en?'Android app':'Androidアプリのご案内')+'</span><h2 id="android-app-invite-title">'+(en?'Screen off. Listen on.':'画面を消して、車窓へ')+'</h2></div></div><p>'+(en?'Ride audio continues with the screen off. <span class="context-nowrap">Free, no sign-up.</span>':'画面を消しても乗車中の音声案内。<span class="context-nowrap">無料・登録不要。</span>')+'</p><a class="context-play" aria-label="'+(en?'View on Google Play (opens a new tab)':'Google Playで見る（新しいタブで開きます）')+'" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_floating&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer"><img class="context-play-badge" width="646" height="250" alt=""><span class="context-play-fallback">'+(en?'View on Google Play ↗':'Google Playで見る ↗')+'</span></a>';
@@ -1192,7 +1192,7 @@
     clearTimeout(timer);let s,available=true;
     try{s=read();storageReady();}catch(e){available=false;}
     const canShow=status!=='checking'&&status!=='installed'&&config.unknownPolicy==='show-eligible';
-    const visible=available&&browser()&&canShow&&!localClosed&&(!s||s.dismissedAt+dismissMs<=Date.now());
+    const visible=!pageAway&&available&&browser()&&canShow&&!localClosed&&(!s||s.dismissedAt+dismissMs<=Date.now());
     const focused=card.contains(document.activeElement);card.hidden=!visible;if(!visible&&focused)focusBack();
     if(visible){
       const icon=card.querySelector('.context-app-icon');if(!icon.hasAttribute('src'))icon.src=asset('images/android/app-icon-192.webp');
@@ -1203,15 +1203,23 @@
   }
   function schedule(){cancelAnimationFrame(frame);frame=requestAnimationFrame(refresh);}
   async function detect(){
+    if(pageAway)return;
+    clearTimeout(detectionTimer);
     const turn=++generation;status='checking';refresh();
     let next='unsupported',timeout;
     if(typeof navigator.getInstalledRelatedApps==='function'){
+      // The deadline permits unknown UI; it does not cancel positive evidence.
+      timeout=setTimeout(()=>{if(turn===generation&&!pageAway){status='error';refresh();}},1500);
+      detectionTimer=timeout;
       try{
-        const apps=await Promise.race([navigator.getInstalledRelatedApps(),new Promise(resolve=>{timeout=setTimeout(()=>resolve(null),1500);})]);
+        const apps=await navigator.getInstalledRelatedApps();
         next=Array.isArray(apps)?apps.some(app=>app&&app.platform==='play'&&app.id===pkg)?'installed':'not-detected':'error';
-      }catch(e){next='error';}finally{clearTimeout(timeout);}
+      }catch(e){next='error';}finally{
+        clearTimeout(timeout);
+        if(detectionTimer===timeout)detectionTimer=undefined;
+      }
     }
-    if(turn===generation){status=next;refresh();}
+    if(turn===generation&&!pageAway){status=next;refresh();}
   }
   card.querySelector('button').onclick=()=>{
     let saved=true;try{localStorage.setItem(key,JSON.stringify({v:2,dismissedAt:Date.now()}));}catch(e){saved=false;}
@@ -1223,7 +1231,8 @@
   window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
   window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
   window.addEventListener('storage',e=>{if(e.key===key||e.key===null){localClosed=false;refresh();}});
-  window.addEventListener('pageshow',e=>{if(e.persisted)detect();else refresh();});
+  window.addEventListener('pagehide',()=>{pageAway=true;++generation;clearTimeout(detectionTimer);clearTimeout(timer);cancelAnimationFrame(frame);card.hidden=true;});
+  window.addEventListener('pageshow',e=>{const returning=pageAway;pageAway=false;if(e.persisted||returning)detect();else refresh();});
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')detect();else refresh();});
   modes.forEach(m=>{if(m&&m.addEventListener)m.addEventListener('change',refresh);else if(m&&m.addListener)m.addListener(refresh);});
   detect();

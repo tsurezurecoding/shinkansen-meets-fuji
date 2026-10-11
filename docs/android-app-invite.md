@@ -10,7 +10,9 @@ Only existing eligible Android browser UAs pass; PC, iPhone, WebView/in-app brow
 standalone/PWA, native wrappers and `from=android-app` remain excluded. Unknown API
 results (`not-detected`, `unsupported`, `error`) are eligible, per final approval.
 Only a positive `play` + exact package match suppresses; no permanent install state
-is saved. Detection waits up to 1500ms without flashing the card first. `[]` is not
+is saved. Detection waits up to 1500ms without flashing the card first. This is a soft
+UI deadline: a later positive response from the current detection immediately
+hides the card. Re-detection and page departure invalidate older responses. `[]` is not
 proof of absence. Android association changes and Play release belong to the
 separate Android task. Manifest association follows Web handoff commit
 281866a74b2260fa7ec8351eebf40445fe6b372c; guides additionally link that manifest.
