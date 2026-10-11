@@ -2,6 +2,9 @@ import { trainSearchTablesHTML } from './shared/train-search-tables.mjs';
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
 import { everydayRelatedHTML } from './shared/everyday-related.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
+import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
+import { UTILITY_ROUTES, withUtilityLocales } from './shared/utility-locales.mjs';
+import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -1690,7 +1693,7 @@ function englishAppIndexHTML() {
   html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n${trainSearchTablesHTML("en")}\n<!-- TRAIN-SEARCH-TABLE:END -->`);
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
-  return syncSpotCountClaims(html);
+  return withUtilityLocales(syncSpotCountClaims(html), 'en/start.html');
 }
 
 function guideHTML(lang) {
@@ -1907,7 +1910,8 @@ function sitemapXML() {
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
-  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls].map((item) => `  <url>
+  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-11' })));
+  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
@@ -2118,6 +2122,14 @@ for (const config of guideRailConfigs) {
     syncedGuideHTML=withAndroidAppInvite(syncedGuideHTML,lang,'fuji_guide');
     syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
   }
+  if (CASTLE_LOCALE_LANGS.includes(lang)) {
+    syncedGuideHTML = syncedGuideHTML.replace(/href="([^\"]+)"/g, (whole, href) => {
+      const url = new URL(href, `https://www.michikusa-travel.com/${lang}/guide.html`);
+      const route = url.pathname.replace(/^\/en\//, '');
+      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].includes(route.replace(/^live\/$/, 'live/index.html'))
+        ? `href="../${lang}/${route}${url.search}${url.hash}"` : whole;
+    });
+  }
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }
 for (const file of ["reflections.html", "en/reflections.html"]) {
@@ -2126,6 +2138,9 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
+await import("./generate-castle-locales.mjs");
+await import("./generate-utility-locales.mjs");
+await import("./generate-sparkling-locales.mjs");
 await import("./generate-content-manifest.mjs");
 
 const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;

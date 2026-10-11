@@ -35,7 +35,7 @@ for (const relative of htmlFiles()) {
   const baseHref = html.match(/<base\b[^>]*href="([^"]+)"/)?.[1];
   const baseUrl = baseHref ? new URL(baseHref, pageUrl) : pageUrl;
   const actual = new URL(firstLink[1], baseUrl);
-  const expectedPath = lang === "ja" ? "/start.html" : "/en/start.html";
+  const expectedPath = lang === "ja" ? "/start.html" : `/${['fr', 'zh-Hant'].includes(lang) ? lang : 'en'}/start.html`;
   if (actual.pathname !== expectedPath || actual.hash) {
     failures.push(`${relative}: train-selection nav must resolve to ${expectedPath} without a hash, got ${actual.pathname}${actual.hash}`);
   }

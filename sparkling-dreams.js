@@ -2,6 +2,9 @@
 (function (root) {
   "use strict";
 
+  const localizedCopy = root.MADO_SPARKLING_LOCALE;
+  const tr = value => localizedCopy ? localizedCopy.t(value) : value;
+  const fmt = (text, ...args) => tr(text).replace(/\{(\d+)\}/g, (_, index) => args[Number(index)]);
   const timetable = root.SHINKANSEN_TIMETABLE || { trains: [] };
   const route = typeof ROUTE !== "undefined" ? ROUTE : root.ROUTE;
   const routeStations = (route?.refStations || []).slice().sort((a, b) => a.min - b.min);
@@ -12,7 +15,11 @@
       .map((station) => [station.id, { ja: station.ja, en: station.en || station.ja }])
   );
 
-  const stationName = (id, language = "ja") => timetableStationNames.get(id)?.[language] || routeStations.find((station) => station.id === id)?.[language] || routeStations.find((station) => station.id === id)?.ja || id;
+  const stationName = (id, language = "ja") => {
+    const sourceLanguage = language === "ja" ? "ja" : "en";
+    const name = timetableStationNames.get(id)?.[sourceLanguage] || routeStations.find((station) => station.id === id)?.[sourceLanguage] || routeStations.find((station) => station.id === id)?.ja || id;
+    return language !== "ja" && language !== "en" && root.MADO_UTILITY_LOCALE ? root.MADO_UTILITY_LOCALE.stationName(name) : name;
+  };
   const trainStaticLine = (train, language = "ja") => {
     const from = train.originStation || (train.direction === "west" ? "Tokyo" : "Shin-Osaka");
     const to = train.destination || (train.direction === "west" ? "Shin-Osaka" : "Tokyo");
@@ -208,7 +215,7 @@
   if (typeof document === "undefined") return;
 
   const $ = (selector) => document.querySelector(selector);
-  const uiLanguage = document.documentElement.lang === "en" ? "en" : "ja";
+  const uiLanguage = localizedCopy?.lang || (document.documentElement.lang === "en" ? "en" : "ja");
   const escapeHTML = (value) => String(value ?? "").replace(/[&<>\"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
   const directionName = (direction) => direction === "west" ? "西向き（東京 → 新大阪）" : "東向き（新大阪 → 東京）";
   const dateToday = () => {
@@ -217,7 +224,7 @@
   };
   // 列車選択の候補と同じ表記（日本語は「のぞみ116」）
   const TRAIN_NAMES = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
-  const trainName = (train) => uiLanguage === "ja" ? `${TRAIN_NAMES[train.type] || train.type}${train.number}` : `${train.type} ${train.number}`;
+  const trainName = (train) => uiLanguage === "ja" ? `${TRAIN_NAMES[train.type] || train.type}${train.number}` : `${root.MADO_UTILITY_LOCALE?.t(train.type) || train.type} ${train.number}`;
 
   function renderPatternLists() {
     document.querySelectorAll("[data-pattern-list]").forEach((list) => {
@@ -245,45 +252,46 @@
     resultBox.classList.remove("is-success", "is-note", "is-empty");
     if (result.status === "outside-range") {
       resultBox.classList.add("is-empty");
-      resultBox.innerHTML = `<h3>That date is outside the operating period</h3><p>${escapeHTML(result.date)} is outside the published operating period, June 19, 2026 to March 15, 2027. Please check official information for the latest dates.</p>`;
+      resultBox.innerHTML = fmt("<h3>That date is outside the operating period</h3><p>{0} is outside the published operating period, June 19, 2026 to March 15, 2027. Please check official information for the latest dates.</p>", escapeHTML(result.date));
       return;
     }
     if (result.status === "pending") {
       resultBox.classList.add("is-note");
-      resultBox.innerHTML = `<h3>The pattern for this date is not confirmed</h3><p>The operating pattern for ${escapeHTML(result.date)} has not been published yet. Please check the official schedule when it is available.</p>`;
+      resultBox.innerHTML = fmt("<h3>The pattern for this date is not confirmed</h3><p>The operating pattern for {0} has not been published yet. Please check the official schedule when it is available.</p>", escapeHTML(result.date));
       return;
     }
     if (result.status === "invalid" || result.status === "invalid-train") {
       resultBox.classList.add("is-empty");
-      resultBox.innerHTML = "<h3>Please choose a date and train</h3><p>Check your date and direction, then try again.</p>";
+      resultBox.innerHTML = tr("<h3>Please choose a date and train</h3><p>Check your date and direction, then try again.</p>");
       return;
     }
     const selectedName = trainName(result.selectedTrain);
-    const scheduleName = `Pattern ${result.pattern}`;
+    const scheduleName = fmt("Pattern {0}", result.pattern);
     if (result.status === "self-match") {
       resultBox.classList.add("is-note");
-      resultBox.innerHTML = `<h3>Your selected train is the special train</h3><p>${escapeHTML(selectedName)} is part of ${escapeHTML(scheduleName)} on ${escapeHTML(result.date)}. It is the Sparkling Dreams Shinkansen itself, so there is no passing encounter to estimate.</p>`;
+      resultBox.innerHTML = fmt("<h3>Your selected train is the special train</h3><p>{0} is part of {1} on {2}. It is the Sparkling Dreams Shinkansen itself, so there is no passing encounter to estimate.</p>", escapeHTML(selectedName), escapeHTML(scheduleName), escapeHTML(result.date));
       trackCalculation(result);
       return;
     }
     if (result.status === "no-encounter") {
       resultBox.classList.add("is-note");
-      resultBox.innerHTML = `<h3>No likely passing encounter was found</h3><p>${escapeHTML(selectedName)} and the opposite-direction special train in ${escapeHTML(scheduleName)} do not appear to cross within the calculated route. Please still check official information, as the plan can change.</p>`;
+      resultBox.innerHTML = fmt("<h3>No likely passing encounter was found</h3><p>{0} and the opposite-direction special train in {1} do not appear to cross within the calculated route. Please still check official information, as the plan can change.</p>", escapeHTML(selectedName), escapeHTML(scheduleName));
       trackCalculation(result);
       return;
     }
-    const watchSide = result.direction === "west" ? "E-seat side" : "A-seat side";
-    const direction = result.direction === "west" ? "Westbound (Tokyo → Shin-Osaka)" : "Eastbound (Shin-Osaka → Tokyo)";
-    const rows = result.matches.map((match) => `<li><strong>Around ${escapeHTML(match.clock)}</strong><span>${escapeHTML(trainName(match.specialTrain))} between ${escapeHTML(match.segment.fromEn || match.segment.from)} and ${escapeHTML(match.segment.toEn || match.segment.to)}</span></li>`).join("");
+    const watchSide = tr(result.direction === "west" ? "E-seat side" : "A-seat side");
+    const direction = tr(result.direction === "west" ? "Westbound (Tokyo → Shin-Osaka)" : "Eastbound (Shin-Osaka → Tokyo)");
+    const segmentName = name => root.MADO_UTILITY_LOCALE?.stationName(name) || name;
+    const rows = result.matches.map((match) => fmt('<li><strong>Around {0}</strong><span>{1} between {2} and {3}</span></li>', escapeHTML(match.clock), escapeHTML(trainName(match.specialTrain)), escapeHTML(segmentName(match.segment.fromEn || match.segment.from)), escapeHTML(segmentName(match.segment.toEn || match.segment.to)))).join("");
     resultBox.classList.add("is-success");
-    resultBox.innerHTML = `<h3>Likely passing estimate</h3><p class="sd-result-lead">Your ${escapeHTML(direction)} ${escapeHTML(selectedName)} may pass the special train at the following time and place on ${escapeHTML(result.date)} (${escapeHTML(scheduleName)}).</p><ul class="sd-result-list">${rows}</ul><p class="sd-seat-note"><strong>Watch from the ${escapeHTML(watchSide)}</strong> and start looking out about ±5 minutes early. Station stops, delays, speed, and operating changes can shift the actual moment.</p>`;
+    resultBox.innerHTML = fmt('<h3>Likely passing estimate</h3><p class="sd-result-lead">Your {0} {1} may pass the special train at the following time and place on {2} ({3}).</p><ul class="sd-result-list">{4}</ul><p class="sd-seat-note"><strong>Watch from the {5}</strong> and start looking out about ±5 minutes early. Station stops, delays, speed, and operating changes can shift the actual moment.</p>', escapeHTML(direction), escapeHTML(selectedName), escapeHTML(result.date), escapeHTML(scheduleName), rows, escapeHTML(watchSide));
     trackCalculation(result);
   }
 
   function renderResult(result) {
     const resultBox = $("#sdResult");
     if (!resultBox) return;
-    if (uiLanguage === "en") {
+    if (uiLanguage !== "ja") {
       renderEnglishResult(result, resultBox);
       return;
     }
