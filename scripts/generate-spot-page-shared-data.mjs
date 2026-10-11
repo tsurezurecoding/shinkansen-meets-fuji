@@ -324,7 +324,11 @@ function projectChapters(spot, lang) {
     });
     const link = chapter.link;
     if (link && (!/^spots\/[a-z0-9-]+\.html$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
-    return { id: chapter.id, heading, paragraphs, photos, ...(link ? { link: { route: (lang === "en" ? "en/" : "") + link.route, label: localized(link.label, lang) } } : {}) };
+    // A language-specific editorial link does not create an absent Japanese article.
+    const storyLink = chapter.storyLink?.[lang];
+    if (storyLink && link) throw new Error('Conflicting chapter links for ' + spot.id);
+    const projectedLink = storyLink ? projectStoryLink({ id: spot.id, pageStoryLink: chapter.storyLink }, lang) : link ? { route: (lang === "en" ? "en/" : "") + link.route, label: localized(link.label, lang) } : null;
+    return { id: chapter.id, heading, paragraphs, photos, ...(projectedLink ? { link: projectedLink } : {}) };
   });
   const order = spot.pageChapterOrder?.[lang];
   if (!order) return chapters;
