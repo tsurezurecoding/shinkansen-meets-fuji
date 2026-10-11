@@ -1277,6 +1277,8 @@ function englishLandingHTML() {
     }],
   };
   const copy = [
+    ['<span class="copy-chunk">相模湾、茶畑、浜名湖、城。</span><span class="copy-chunk">窓の向こうに、気になる景色が続きます。</span>', 'Castles, rice fields, lakes and a glimpse of Kyoto. There’s more to discover along the way.'],
+    ['乗る列車の車窓時刻を調べる', 'Find viewing times for your train'],
     ["富士山が見える時間と座席側を調べ、", "Find when and which side to see Mt. Fuji."],
     ["沿線の景色を写真と解説で楽しめます。", "Discover more with photos and stories from the route."],
     ["乗る列車の", "Check your train’s"],
@@ -1526,14 +1528,15 @@ function englishLandingHTML() {
     ['20240211_Mt.Fuji.webp', 'Start with Mt. Fuji.', 'The view you came for. Find which side to sit on and when to look.', 'en/guide.html', 'Snow-covered Mt. Fuji from the Shinkansen', 'fuji', 'Find the Fuji view'],
     ['20260712_kakegawa_castle_michikusa.webp', 'Castles beside the railway.', 'A white tower above the rooftops. Discover castles and the towns around them.', 'en/castles.html', 'Kakegawa Castle above the town', 'castles', 'Discover the castles'],
     ['20260629_omi_fuji_michikusa.webp', 'Japan’s countryside.', 'Rice paddies, crop fields, tea hills and greenhouse roofs. Look closer at everyday Japan.', 'en/countryside.html', 'Green rice paddies below Mount Mikami', 'countryside', 'Explore the countryside'],
-    ['20260516_hamanako_seaside_1_michikusa.webp', 'A lake along the way.', 'The water opens up beside the train. Meet Lake Hamana, between the cities of your journey.', 'en/spots/hamanako.html', 'Lake Hamana seen beside the railway', 'hamanako', 'Meet Lake Hamana'],
+    ['20260516_hamanako_seaside_1_michikusa.webp', 'Find your next window view.', 'Lakes, mountains and towns. Browse the photographs and choose a view that catches your eye.', 'en/zukan.html', 'Lake Hamana, one of the views in the photo guide', 'zukan', 'Browse the photo guide'],
+    ['20260712_toji_michikusa.webp', 'Spot Kyoto’s five-story pagoda.', 'Look above the rooftops near Kyoto Station for To-ji Temple’s pagoda.', 'en/spots/toji.html', 'To-ji’s pagoda rising above Kyoto’s rooftops', 'toji', 'Explore To-ji Temple'],
+    ['20260816_fuji_paper_mills_michikusa.webp', 'What was that?', 'Chimneys, bright green rows and long silver roofs. Discover the stories behind everyday Japan.', 'en/arenani.html', 'Paper-mill chimneys and buildings beside the Shinkansen', 'arenani', 'Discover everyday Japan'],
   ];
-  const discoveryGrid = '<div class="discovery-grid scenery-strip">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
+  const discoveryGrid = '<div class="discovery-grid scenery-strip" id="scenery-photos">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
     `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="eager" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
   ).join('\n') + '</div>';
-  html = html.replace(/<div class="(?:photo-mosaic|discovery-grid) scenery-strip">[\s\S]*?<\/div>\s*<div class="scenery-strip-controls"><small>[^<]*<\/small><\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Swipe or use arrow keys to explore</small></div>');
+  html = html.replace(/<div class="(?:photo-mosaic|discovery-grid) scenery-strip"[^>]*>[\s\S]*?<\/div>\s*<div class="scenery-strip-controls">[\s\S]*?<\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Scroll to explore more views</small><span class="scenery-strip-nav"><button type="button" data-strip-prev aria-label="Previous views" aria-controls="scenery-photos"><span aria-hidden="true">←</span></button><button type="button" data-strip-next aria-label="Next views" aria-controls="scenery-photos"><span aria-hidden="true">→</span></button></span></div>');
   html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
-  html = html.replace(/<p class="fuji-home-answer">[\s\S]*?<\/p>/, '<p class="fuji-home-answer">Mt. Fuji is on the right toward Kyoto, on the left toward Tokyo: ordinary-car seat E or Green Car seat D. Look between Mishima and the Fuji River; timing depends on your train.</p>');
   // Approved inbound home chapters: retain explicit audio and digital-stamp explanations.
   html = html.replace(/<section class="select ride-compact ride-audio"[\s\S]*?<\/section>/, `<section class="select ride-compact ride-audio" id="live-guide" aria-labelledby="live-guide-title">
  <div class="section-shell">
@@ -1577,11 +1580,12 @@ function englishLandingHTML() {
 }
 
 function englishAppIndexHTML() {
-  const title = "Mt. Fuji Viewing Times by Train | Tokaido Shinkansen Train Search";
-  const description = "Choose your Nozomi, Hikari or Kodama train to find estimated Mt. Fuji viewing times and seat side, plus castles, lakes and other Tokaido Shinkansen views.";
+  const title = "Tokaido Shinkansen Train Search: Mt. Fuji & Window Viewing Times";
+  const description = "Choose your Nozomi, Hikari or Kodama train to see estimated viewing times and seat sides for Mt. Fuji, castles, lakes and other Tokaido Shinkansen sights.";
   const selectorCopy = [
-    ['<span class="copy-chunk">富士山の通過時刻を、</span><span class="copy-chunk">乗る列車から。</span>', "Find Mt. Fuji times for your train."],
-    ['<span class="copy-chunk">方向・乗車駅・出発時刻から列車を選ぶと、</span><span class="copy-chunk">富士山や沿線の景色の時刻と座席側がわかります。</span>', "Choose your direction, boarding station and train. Find estimated times and seat sides for Mt. Fuji and the views along the way."],
+    ['<span class="copy-chunk">富士山も、湖も。</span><span class="copy-chunk">通過時刻を、</span><span class="copy-chunk">乗る列車に合わせて。</span>', "Mt. Fuji, lakes and more. Find viewing times for your train."],
+    ['<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>', "Choose your direction, boarding station and departure time."],
+    ["乗る列車の車窓時刻を調べる", "Find viewing times for your train"],
     ["列車番号から富士山の時刻を探す", "Find Mt. Fuji times by train number"],
     ["フッターナビゲーション", "Footer navigation"],
     ["新幹線の窓 トップへ", "Shinkansen Window home"],
@@ -1681,7 +1685,7 @@ function englishAppIndexHTML() {
   selectorCopy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
   html = html.replaceAll(">窓</span>", ">W</span>");
   html = html.replace(/<!-- TRAIN-ENTRY-HELP:START -->[\s\S]*?<!-- TRAIN-ENTRY-HELP:END -->/, `<!-- TRAIN-ENTRY-HELP:START -->
-    <div class="train-entry-help"><p>Look right toward Kyoto, left toward Tokyo: ordinary-car seat E or Green Car seat D.</p><p>Times are estimates calculated from scheduled station times and the location of each view. Service dates, live delays and weather are not included.</p><a href="en/guide.html">Read the viewing-area and seat guide →</a><noscript><p>Enable JavaScript to choose your train, or use the train-number list below for estimated times.</p></noscript></div>
+    <div class="train-entry-help"><p>Viewing times are estimates from the timetable. Operating dates and live delays are not reflected.</p><a href="en/guide.html">Read the Mt. Fuji viewing-area and seat guide →</a><noscript><p>Enable JavaScript to choose your train, or use the train-number list below for Mt. Fuji estimates.</p></noscript></div>
     <!-- TRAIN-ENTRY-HELP:END -->`);
   html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n${trainSearchTablesHTML("en")}\n<!-- TRAIN-SEARCH-TABLE:END -->`);
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');

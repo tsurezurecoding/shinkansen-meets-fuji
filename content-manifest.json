@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "14e81208e91fb907",
+  "contentVersion": "5efb687dd3709165",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -31,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 146332,
-      "sha256": "c4c19604bff16aed7abd363f24fa25895684d18d49c41aef6802d7d6dc9a034b"
+      "bytes": 146450,
+      "sha256": "2109de3293fd954c9d8f05aeaf6da561a9c7b072f36d91f0ae7510fa64d8225b"
     },
     {
       "path": "arenani.css",
@@ -217,8 +217,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 67791,
-      "sha256": "c073b4c57f8ec02b0861ef3ee0062e3aaeaf2637e3198978eb3895f590fcfe43"
+      "bytes": 68854,
+      "sha256": "4a0f20fbb1f4e7fb4a58f80e9ac35b7935ae29cb678b0d941e46526c97e60a11"
     },
     {
       "path": "en/reflections.html",
@@ -343,14 +343,14 @@
     {
       "path": "home-scenery.css",
       "url": "https://www.michikusa-travel.com/home-scenery.css",
-      "bytes": 4370,
-      "sha256": "e866bbb59de1a1dfdd1601703e4e72abeb6b138ba0ff8bbaa7f39565d1f5f8cb"
+      "bytes": 5017,
+      "sha256": "fb73cb8e0b5ea07200c3241e5656f064539915b0bb6038ef05caac6763c56e6e"
     },
     {
       "path": "home-scenery.js",
       "url": "https://www.michikusa-travel.com/home-scenery.js",
-      "bytes": 2665,
-      "sha256": "57890d58963977b1f5e35544690920e5e98b2c2197620290b0c0e27abae39749"
+      "bytes": 3102,
+      "sha256": "d2736d476557e7bac1d8e96dad50ffbe637998bb93fd28cc3abe0cb0ca462013"
     },
     {
       "path": "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
@@ -979,14 +979,14 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 70713,
-      "sha256": "743552fd0231677d7add8afcad0e9647bcbc983d02160417c9ecb5fd9b59a909"
+      "bytes": 71713,
+      "sha256": "e610f2aae459103bd5f6acbf31ad8001a5e080fd492ab8c2462259e0e1464f3c"
     },
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "4361bf54082ca2586a296e36212c8f58fa9f813565c45acb1713aa4a851a933b"
+      "sha256": "c65184dd0f2a4fdd841b5121e92a3a42b03784edb206634667b8349d310813b4"
     },
     {
       "path": "live/narration.js",

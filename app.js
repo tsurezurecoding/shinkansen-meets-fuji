@@ -20,8 +20,8 @@ const MSG = {
     navMore: "もっと見る", navMieru: "富士山 見える予報", navArtworks: "車窓の作品集", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
-    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">富士山の通過時刻を、</span><span class="copy-chunk">乗る列車から。</span>',
-    setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から列車を選ぶと、</span><span class="copy-chunk">富士山や沿線の景色の時刻と座席側がわかります。</span>',
+    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">富士山も、湖も。</span><span class="copy-chunk">通過時刻を、</span><span class="copy-chunk">乗る列車に合わせて。</span>',
+    setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>',
     trainLinkInvalid: "リンクの列車を確認できませんでした。方向・乗車駅・出発時刻から、乗る列車を選び直してください。",
     fujiAnswerTitle: "富士山の通過目安",
     fujiAnswerTime: (time) => `${time}頃 · 新富士付近`,
@@ -217,8 +217,8 @@ const MSG = {
     navMore: "More", navMieru: "Visibility β", navArtworks: "Window Artworks", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
-    setupEyebrow: "YOUR JOURNEY", setupTitle: "Find Mt. Fuji times for your train.",
-    setupSub: "Choose your direction, boarding station, and departure time. See when Mt. Fuji and other views appear, and which side to watch.",
+    setupEyebrow: "YOUR JOURNEY", setupTitle: "Mt. Fuji, lakes and more. Find viewing times for your train.",
+    setupSub: "Choose your direction, boarding station and departure time.",
     trainLinkInvalid: "We could not find the train in this link. Choose your direction, boarding station, and departure time to select the right train.",
     fujiAnswerTitle: "Mt. Fuji passing time",
     fujiAnswerTime: (time) => `Around ${time} · near Shin-Fuji`,
@@ -1640,6 +1640,12 @@ function renderFujiTrainAnswer() {
   const train = journey.train;
   const type = (TRAIN_NAMES[train.type] || { ja: train.type, en: train.type })[lang];
   const trainName = lang === "ja" ? `${type}${train.number}号` : `${type} ${train.number}`;
+  if (!hasFujiIntent()) {
+    answer.hidden = true;
+    answer.replaceChildren();
+    document.title = `${trainName} | ${BASE_PAGE_TITLE}`;
+    return;
+  }
   const fuji = journey.spots.find((item) => item.sp.id === "fuji" && Number.isFinite(item.clock));
   const time = fuji ? minToClock(fuji.clock) : null;
   const boarding = `${stationLabel(journey.boardId)} ${minToClock(journey.depMin)} ${t("dep")}`;

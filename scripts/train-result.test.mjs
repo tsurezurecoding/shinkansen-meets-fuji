@@ -72,17 +72,34 @@ test('valid westbound deep link answers using the actual journey time and focuse
   } finally { f.close(); }
 });
 
-test('eastbound English result gives left side and general journeys keep timeline scrolling', async () => {
-  const f = await fixture({ path: 'en/start.html', query: '?train=Nozomi-2&board=Shin-Osaka&dir=east' });
+test('eastbound English Fuji entry gives left side', async () => {
+  const f = await fixture({ path: 'en/start.html', query: '?train=Nozomi-2&board=Shin-Osaka&dir=east&focus=fuji' });
   try {
     assert.equal(f.answer().hidden, false);
     assert.match(f.answer().textContent, /Nozomi 2/);
     assert.match(f.answer().textContent, /Look left toward Tokyo/);
     assert.match(f.answer().textContent, /Ordinary car: seat E · Green Car: seat D/);
     assert.match(f.answer().textContent, /clouds and darkness/);
-    assert.equal(f.scrolls.at(-1), 'timelineSection');
+    assert.equal(f.scrolls.at(-1), 'fujiTrainAnswer');
     assert.ok(f.w.document.querySelectorAll('#timeline [data-spot]').length > 10);
   } finally { f.close(); }
+});
+
+test('general journeys show the chronological timeline without a Fuji-only result', async () => {
+  for (const options of [
+    { query: '?train=Nozomi-1&board=Tokyo&dir=west' },
+    { path: 'en/start.html', query: '?train=Nozomi-1&board=Nagoya&dir=west' },
+  ]) {
+    const f = await fixture(options);
+    try {
+      assert.equal(f.answer().hidden, true);
+      assert.equal(f.answer().textContent, '');
+      assert.equal(f.scrolls.at(-1), 'timelineSection');
+      assert.ok(f.w.document.querySelectorAll('#timeline [data-spot]').length > 10);
+      const base = f.read('BASE_PAGE_TITLE');
+      assert.equal(f.w.document.title, `${options.path ? 'Nozomi 1' : 'のぞみ1号'} | ${base}`);
+    } finally { f.close(); }
+  }
 });
 
 test('boarding beyond Fuji shows an honest out-of-section answer with no Fuji time', async () => {

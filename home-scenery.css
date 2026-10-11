@@ -14,6 +14,10 @@
 .scenery-strip[data-overflow="true"] [data-strip-clone] {display:block;}
 .scenery-strip-controls {display:flex;justify-content:space-between;align-items:center;gap:12px;margin:4px 0 0;color:#4a6175;}
 .scenery-strip-controls small {font-size:12px;}
+.scenery-strip-nav {display:flex;gap:8px;}
+.scenery-strip-nav button {display:grid;place-items:center;width:42px;height:42px;border:1px solid #bdc5cb;border-radius:50%;background:transparent;color:var(--ink);font-size:20px;cursor:pointer;}
+.scenery-strip-nav button:hover {background:rgba(15,35,50,.06);}
+.scenery-strip-nav button:focus-visible {outline:3px solid var(--coral);outline-offset:3px;}
 .scenery-strip:focus-visible {outline:3px solid #e8704a;outline-offset:3px;}
 .scenery-strip-controls[hidden] {display:none;}
 #scenery .photo-credit {margin-top:8px;}
@@ -32,6 +36,8 @@
 .scenery-strip .photo-card,.scenery-strip .discovery-card{height:auto;aspect-ratio:4/5}
 .scenery-strip img{position:absolute;inset:0}
 .scenery-strip img[src$="/20240211_Mt.Fuji.webp"]{object-position:75% center}
+.scenery-strip img[src$="/20260712_toji_michikusa.webp"]{object-position:35% center}
+.scenery-strip img[src$="/20260904_mishima_catapult_1_michikusa.webp"]{object-position:20% center}
 .select-summary-line{display:block}
 .ride-compact{padding:clamp(54px,6vw,80px) 0;text-align:center;scroll-margin-top:120px;border-bottom:0}
 .ride-compact .section-head{max-width:900px}
@@ -56,4 +62,4 @@
 .scenery-strip .discovery-copy>span{display:block;margin-top:8px;font-size:12px;line-height:1.4;color:#fff}
 .scenery-strip .discovery-copy{padding:48px 16px 18px;background:linear-gradient(transparent,rgba(2,11,18,.88))}
 .scenery-strip .discovery-copy h3{font-size:clamp(18px,1.5vw,22px);line-height:1.4;text-wrap:balance}
-.fuji-home-answer{max-width:760px;margin-inline:auto}
+@media(min-width:651px){.scenery-strip .photo-card,.scenery-strip .discovery-card{flex-basis:calc((100% - 48px)/4.2)}}
