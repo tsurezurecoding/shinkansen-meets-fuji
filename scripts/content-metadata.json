@@ -727,18 +727,11 @@
     "published": "2026-10-11",
     "publishedEvidence": "2026-10-11_everyday-japan-release.md: owner approved release of the adopted English food article and Everyday Japan collection",
     "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: initial product integration",
-    "image": "images/foods/onigiri.webp",
-    "imageRights": "permission",
-    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
-    "imageAlt": "Two triangular onigiri rice balls wrapped in nori on a plate.",
-    "imageCredit": "Ocdp / CC0",
-    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
-    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
-    "imagePermissions": [
-      "og",
-      "article"
-    ]
+    "modifiedEvidence": "2026-10-11_everyday-review-release.md: review fixes to hub card labels and own representative image",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "Green rice fields below Mount Mikami, seen from the Shinkansen"
   },
   "en/tokyo-kyoto-stations.html": {
     "kind": "editorial article",

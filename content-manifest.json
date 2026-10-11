@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "386bb1fd5b4b7f93",
+  "contentVersion": "3b3a3583469ebbb2",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -193,8 +193,8 @@
     {
       "path": "en/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/en/everyday-japan.html",
-      "bytes": 11371,
-      "sha256": "1cd22eb61ced81daac062b7cbc148a81e8a3c64875b63e582589184c7c1916f2"
+      "bytes": 11318,
+      "sha256": "0d714eed011873b37b3270575f5b91e3a4dce8d10b55924f09b3f955b3b0405d"
     },
     {
       "path": "en/ferris-wheels.html",
