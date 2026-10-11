@@ -1522,7 +1522,7 @@ function englishLandingHTML() {
     `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="eager" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
   ).join('\n') + '</div>';
   html = html.replace(/<div class="photo-mosaic">[\s\S]*?<\/div>\s*<p class="photo-credit">/, discoveryGrid + '<p class="photo-credit">');
-  html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs. Get to know the sights, and discover more to notice.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way — and find a little more of Japan through your window.</p>');
+  html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
   html = localizeEnglishInternalLinks(html)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
     .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHTML(description)}">`)
