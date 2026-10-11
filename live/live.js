@@ -6,6 +6,14 @@
   "use strict";
 
   var T = window.MADO_TRACK;
+  var utilityLocale = window.MADO_UTILITY_LOCALE;
+  function translate(value) { return utilityLocale && state.lang === utilityLocale.lang ? utilityLocale.t(value) : value; }
+  function stationName(station, fallback) {
+    var name = state.lang === "ja" ? (station && (station.ja || station.en)) : (station && (station.en || station.ja));
+    name = name || fallback || "";
+    return utilityLocale && state.lang === utilityLocale.lang ? utilityLocale.stationName(name) : name;
+  }
+  function recordingLang() { return state.lang === "ja" ? "ja" : "en"; }
 
   function rememberLang(value) {
     try {
@@ -15,6 +23,11 @@
   }
 
   function initialLang() {
+    var pathLang = window.location.pathname.match(/\/(en|zh-Hant|fr)\/live(?:\/|$)/i);
+    if (pathLang) {
+      var code = pathLang[1].toLowerCase() === "zh-hant" ? "zh-Hant" : pathLang[1].toLowerCase();
+      if (code === "en" || (utilityLocale && code === utilityLocale.lang)) { rememberLang(code); return code; }
+    }
     var urlLang = new URLSearchParams(window.location.search).get("lang");
     if (urlLang === "ja" || urlLang === "en") {
       rememberLang(urlLang);
@@ -230,6 +243,8 @@
     },
   };
 
+  if (utilityLocale && utilityLocale.tables && utilityLocale.tables.live) STR[utilityLocale.lang] = Object.assign({}, STR.en, utilityLocale.tables.live);
+
   var state = {
     lang: initialLang(),
     mode: "idle",
@@ -301,9 +316,13 @@
     })
     .sort(function (a, b) { return a.km - b.km; });
 
-  function spotName(sp) { return sp.raw[state.lang] ? sp.raw[state.lang].name : sp.raw.ja.name; }
-  function spotHook(sp) { return sp.raw[state.lang] ? sp.raw[state.lang].hook : sp.raw.ja.hook; }
-  function spotArea(sp) { return sp.raw[state.lang] ? sp.raw[state.lang].area : sp.raw.ja.area; }
+  function spotField(sp, field) {
+    var copy = sp.raw[state.lang] || sp.raw[recordingLang()] || sp.raw.en || sp.raw.ja || {};
+    return translate(copy[field] || "");
+  }
+  function spotName(sp) { return spotField(sp, "name"); }
+  function spotHook(sp) { return spotField(sp, "hook"); }
+  function spotArea(sp) { return spotField(sp, "area"); }
   function spotPhoto(sp) {
     var img = sp.raw.image || (sp.raw.photos && sp.raw.photos.length ? sp.raw.photos[0].src : null);
     if (!img) return null;
@@ -312,7 +331,7 @@
     }
     try { return new URL(img, APP_ASSET_BASE).href; } catch (e) { return "../" + img; }
   }
-  function t(key) { return STR[state.lang][key] || key; }
+  function t(key) { return (STR[state.lang] && STR[state.lang][key]) || STR.en[key] || key; }
   function tFmt(key, vars) {
     return t(key).replace(/\{(\w+)\}/g, function (_, name) {
       return vars && vars[name] != null ? vars[name] : "";
@@ -396,7 +415,7 @@
           fillColor: major ? "#ffd166" : "#9fb0ca",
           fillOpacity: 1,
         }).addTo(map).bindTooltip(
-          '<span class="station-label">' + (st ? (state.lang === "ja" ? st.ja : st.en) : a.id) + "</span>",
+          '<span class="station-label">' + stationName(st, a.id) + "</span>",
           { permanent: major, direction: "right", className: "station-tip", opacity: 0.9 }
         );
       });
@@ -484,7 +503,7 @@
       fillColor: "#ffd166",
       fillOpacity: 0.6,
     }).addTo(map).bindTooltip(
-      '<span class="station-label">🎯 ' + esc(state.lang === "ja" ? (m.ja || "") : (m.en || m.ja || "")) + "</span>",
+      '<span class="station-label">🎯 ' + esc(stationName(m, "")) + "</span>",
       { direction: "top", opacity: 0.95 }
     );
   }
@@ -699,19 +718,30 @@
     return narrLoadPromise;
   }
 
-  function explicitNarrationFor(sp) {
-    syncNarrationData();
+  function directionalNarration(sp, dirKey) {
     var n = NARR[sp.id];
     if (!n) return null;
-    var dirKey = state.dir < 0 ? "up" : "down";
-    if (n[dirKey]) return n[dirKey][state.lang] || n[dirKey].ja || n[dirKey].en || null;
-    if (n.down) return n.down[state.lang] || n.down.ja || n.down.en || null;
-    return n[state.lang] || n.ja || null;
+    var directional = n[dirKey] || n.down || n;
+    var original = directional[state.lang] || directional[recordingLang()] || (state.lang === "ja" ? directional.en : state.lang === "en" ? directional.ja : null) || null;
+    if (!original || !utilityLocale || state.lang !== utilityLocale.lang) return original;
+    var localized = utilityLocale.narrations && utilityLocale.narrations[sp.id];
+    var translatedNarration = localized && (localized[dirKey] || localized.down);
+    var copy = Object.assign({}, original, typeof translatedNarration === "string" ? { text: translatedNarration } : translatedNarration || {});
+    copy.text = typeof translatedNarration === "string" ? translatedNarration : (translatedNarration && translatedNarration.text) || translate(original.text);
+    // UI/subtitle language and recording language differ until native recordings exist.
+    if (original.audio === false) copy.audio = false;
+    else if (!copy.audio) copy.audio = "audio/" + sp.id + "_" + (n[dirKey] ? dirKey : "down") + "_en.mp3";
+    return copy;
+  }
+
+  function explicitNarrationFor(sp) {
+    syncNarrationData();
+    return directionalNarration(sp, state.dir < 0 ? "up" : "down");
   }
 
   function fallbackNarrationFor(sp) {
-    if (state.lang === "en") {
-      return { audio: false, text: spotName(sp) + ". " + spotHook(sp) + " Look around " + spotArea(sp) + "." };
+    if (state.lang !== "ja") {
+      return { audio: false, text: translate("{name}. {hook} Look around {area}.").replace("{name}", spotName(sp)).replace("{hook}", spotHook(sp)).replace("{area}", spotArea(sp)) };
     }
     return { audio: false, text: spotName(sp) + "です。" + spotHook(sp) + " " + spotArea(sp) + "付近で見えてきます。" };
   }
@@ -731,7 +761,7 @@
       return new URL(n.audio.replace(/^live\//, ""), LIVE_ASSET_BASE).href;
     }
     var dirKey = state.dir < 0 ? "up" : "down";
-    return new URL("audio/" + sp.id + "_" + dirKey + "_" + state.lang + ".mp3", LIVE_ASSET_BASE).href;
+    return new URL("audio/" + sp.id + "_" + dirKey + "_" + recordingLang() + ".mp3", LIVE_ASSET_BASE).href;
   }
 
   function narrationGroupKey(sp) {
@@ -740,15 +770,13 @@
   }
 
   function nativeNarrationForDirection(sp, dirKey) {
-    var entry = NARR[sp.id];
-    var directional = entry && (entry[dirKey] || entry.down);
-    var narration = directional && (directional[state.lang] || directional.ja || directional.en);
+    var narration = directionalNarration(sp, dirKey);
     if (!narration && state.settings.narrMode === "all") {
       narration = fallbackNarrationFor(sp);
     }
     var audio = "";
     if (narration && narration.audio !== false) {
-      audio = narration.audio || (sp.id + "_" + dirKey + "_" + state.lang + ".mp3");
+      audio = narration.audio || (sp.id + "_" + dirKey + "_" + recordingLang() + ".mp3");
       if (audio.indexOf("live/") !== 0) {
         audio = "live/" + (audio.indexOf("audio/") === 0 ? audio : "audio/" + audio);
       }
@@ -1012,7 +1040,7 @@
     if (seg) {
       var nameOf = function (id) {
         var st = ((typeof ROUTE !== "undefined" && ROUTE.refStations) || (window.ROUTE && window.ROUTE.refStations) || []).find(function (s) { return s.id === id; });
-        return st ? (state.lang === "ja" ? st.ja : st.en) : id;
+        return stationName(st, id);
       };
       var txt = seg.at
         ? "🚉 " + nameOf(seg.at.id) + " " + t("atStation")
@@ -1388,6 +1416,10 @@
       references: "../references.html",
       privacy: "../privacy.html",
     };
+    if (utilityLocale && state.lang === utilityLocale.lang) {
+      var rootRoutes = { home: "index.html", journey: "start.html", live: "live/", zukan: "zukan.html", allviews: "zukan.html#gallery", faq: "guide.html", memories: "journal.html", mieru: "mieru.html", sumie: "sumie.html", somato: "somato.html", references: "references.html", privacy: "privacy.html", contact: "contact.html" };
+      Object.keys(rootRoutes).forEach(function (key) { links[key] = new URL(utilityLocale.href(rootRoutes[key]), APP_ASSET_BASE).href; });
+    }
     document.querySelectorAll("[data-live-link]").forEach(function (link) {
       var key = link.getAttribute("data-live-link");
       if (links[key]) link.setAttribute("href", links[key]);
@@ -1482,9 +1514,13 @@
       // 公開Webのcanonicalはディレクトリ形式。ネイティブバンドルだけがindex.htmlを必要とする
       // （language-router.jsと同じ契約）。両形式のリンクが混在するとGoogleが古い方をクロールし、
       // 2026-08-16に外したnoindexを持ち続ける事故が起きた（2026-09-22に判明）。
-      var liveTarget = nextLang === "en" ? "../en/live/" : "../../live/";
+      var liveTarget = nextLang === "ja" ? "live/" : nextLang + "/live/";
       if (window.MADO_NATIVE_APP) liveTarget += "index.html";
-      location.href = new URL(liveTarget, document.baseURI).href;
+      var destination = new URL(liveTarget, APP_ASSET_BASE);
+      destination.search = location.search;
+      if (destination.searchParams.has("lang")) destination.searchParams.set("lang", nextLang);
+      destination.hash = location.hash;
+      location.href = destination.href;
     });
   });
   document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);

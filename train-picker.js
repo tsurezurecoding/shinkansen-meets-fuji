@@ -37,6 +37,10 @@
       trainPickNote: "Pick your train (real timetable)", dep: "dep",
     },
   };
+  var utilityLocale = root.MADO_UTILITY_LOCALE;
+  if (utilityLocale && utilityLocale.tables && utilityLocale.tables.picker) MSG[utilityLocale.lang] = Object.assign({}, MSG.en, utilityLocale.tables.picker);
+  function normalizeLang(value) { return MSG[value] ? value : "ja"; }
+  function translated(value, lang) { return utilityLocale && lang === utilityLocale.lang ? utilityLocale.t(value) : value; }
   var TRAIN_NAMES = { Nozomi: { ja: "のぞみ", en: "Nozomi" }, Hikari: { ja: "ひかり", en: "Hikari" }, Kodama: { ja: "こだま", en: "Kodama" } };
   var PAGE_SIZE = 5;
 
@@ -65,7 +69,7 @@
     var opts = options || {};
     var route = opts.route;
     var timetable = opts.timetable;
-    var lang = opts.lang === "en" ? "en" : "ja";
+    var lang = normalizeLang(opts.lang);
     var state = {
       direction: opts.direction === "east" ? "east" : "west",
       boardId: opts.boardId || (opts.direction === "east" ? "Shin-Osaka" : "Tokyo"),
@@ -84,10 +88,11 @@
     function stationLabel(id) {
       var s = stationNames[id];
       if (!s) return id;
-      return lang === "ja" ? (s.ja || s.en || id) : (s.en || s.ja || id);
+      var name = lang === "ja" ? (s.ja || s.en || id) : (s.en || s.ja || id);
+      return utilityLocale && lang === utilityLocale.lang ? utilityLocale.stationName(name) : name;
     }
     function trainLabel(tr) {
-      return (TRAIN_NAMES[tr.type] || { ja: tr.type, en: tr.type })[lang] + tr.number;
+      return translated((TRAIN_NAMES[tr.type] || { ja: tr.type, en: tr.type })[lang === "ja" ? "ja" : "en"], lang) + tr.number;
     }
     function trainKey(tr) { return tr.type + "-" + tr.number; }
     function candidates() { return MTS.trainCandidates(timetable, route, state.direction, state.boardId); }
@@ -131,7 +136,7 @@
     function renderBoard() {
       var list = state.direction === "west" ? route.refStations.slice(0, -1) : route.refStations.slice(1).reverse();
       $("#boardStation").innerHTML = list.map(function (s) {
-        return '<option value="' + esc(s.id) + '"' + (s.id === state.boardId ? " selected" : "") + ">" + esc(s[lang] || s.ja) + "</option>";
+        return '<option value="' + esc(s.id) + '"' + (s.id === state.boardId ? " selected" : "") + ">" + esc(stationLabel(s.id)) + "</option>";
       }).join("");
     }
 
@@ -239,7 +244,7 @@
       get departMin() { return clockToMin($time().value); },
       /* 言語を切り替える（列車選択ページの言語ボタン）。表示中の候補も描き直す */
       setLang: function (next) {
-        lang = next === "en" ? "en" : "ja";
+        lang = normalizeLang(next);
         renderLabels();
         renderBoard();
         if (shown && !$results().hidden) renderResults(shown.startMin);

@@ -1,3 +1,4 @@
+import { withSparklingLocales } from './shared/sparkling-locales.mjs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -92,6 +93,7 @@ function render(lang) {
     .replaceAll(/spot-page-shared\.js\?v=[0-9a-f]{8}/g, `spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}`)
     .replaceAll(/data-runtime\.js\?v=[0-9a-f]{8}/g, `data-runtime.js?v=${assetVersion('data-runtime.js')}`)
     .replaceAll(/data\/timetable\.js\?v=[0-9a-f]{8}/g, `data/timetable.js?v=${assetVersion('data/timetable.js')}`)
+    .replaceAll(/train-picker\.js\?v=[0-9a-f]{8}/g, `train-picker.js?v=${assetVersion('train-picker.js')}`)
     .replaceAll(/sparkling-dreams\.js\?v=[0-9a-f]{8}/g, `sparkling-dreams.js?v=${assetVersion('sparkling-dreams.js')}`);
   return `<!doctype html>
 <html lang="${lang}">
@@ -196,7 +198,7 @@ ${t.sd_post_embed3}
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html');
   // COPYの中に固定で書かれた language-router.js の ?v= を、実ファイルのハッシュに揃える。
-  const html = enhanceContentHead(render(lang), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html', root).replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
+  const html = withSparklingLocales(enhanceContentHead(render(lang), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html', root), lang === 'ja' ? 'sparkling-dreams.html' : 'en/sparkling-dreams.html').replaceAll(/language-router\.js\?v=[0-9a-f]{8}/g, `language-router.js?v=${assetVersion('language-router.js')}`);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('sparkling-dreams page out of date: ' + dest);
   } else {

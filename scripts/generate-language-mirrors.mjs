@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { assetVersion } from "./shared/asset-version.mjs";
 import { SPOT_COUNT } from "./shared/spot-count.mjs";
+import { withUtilityLocales } from './shared/utility-locales.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com";
@@ -206,7 +207,7 @@ let changedCount = 0;
 const appMessages = appEnglishMessages();
 for (const page of pages) {
   const target = path.join(appDir, page.output);
-  if (writeFileIfChanged(target, mirrorPage(page, appMessages))) changedCount += 1;
+  if (writeFileIfChanged(target, withUtilityLocales(mirrorPage(page, appMessages), page.output))) changedCount += 1;
 }
 
 // live.js owns the English copy for the live guide: every [data-live-copy] node, plus a few
@@ -363,6 +364,6 @@ const liveEnglish = localizeLiveStaticCopy(liveSource, liveStringTables())
   )
   .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
 const liveTarget = path.join(appDir, "en", "live", "index.html");
-if (writeFileIfChanged(liveTarget, liveEnglish)) changedCount += 1;
+if (writeFileIfChanged(liveTarget, withUtilityLocales(liveEnglish, 'en/live/index.html'))) changedCount += 1;
 
 console.log(`Generated ${pages.length + 1} English app mirrors: ${changedCount} changed, ${pages.length + 1 - changedCount} unchanged.`);
