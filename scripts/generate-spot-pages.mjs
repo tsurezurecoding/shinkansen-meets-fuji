@@ -1583,7 +1583,7 @@ function englishAppIndexHTML() {
   const title = "Tokaido Shinkansen Train Search: Mt. Fuji & Window Viewing Times";
   const description = "Choose your Nozomi, Hikari or Kodama train to see estimated viewing times and seat sides for Mt. Fuji, castles, lakes and other Tokaido Shinkansen sights.";
   const selectorCopy = [
-    ['<span class="copy-chunk">富士山も、湖も。</span><span class="copy-chunk">通過時刻を、</span><span class="copy-chunk">乗る列車に合わせて。</span>', "Mt. Fuji, lakes and more. Find viewing times for your train."],
+    ['<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">通過時刻を</span><span class="copy-chunk">乗る列車に合わせて</span>', "Mt. Fuji, lakes and more. Find viewing times for your train."],
     ['<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>', "Choose your direction, boarding station and departure time."],
     ["乗る列車の車窓時刻を調べる", "Find viewing times for your train"],
     ["列車番号から富士山の時刻を探す", "Find Mt. Fuji times by train number"],

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "5efb687dd3709165",
+  "contentVersion": "fc79ba9cb8227c53",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -31,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 146450,
-      "sha256": "2109de3293fd954c9d8f05aeaf6da561a9c7b072f36d91f0ae7510fa64d8225b"
+      "bytes": 146441,
+      "sha256": "50cef9b35245761cb900254666efe5716c8a255cc0b13ab7b0ff0cb7a84d0347"
     },
     {
       "path": "arenani.css",
@@ -986,7 +986,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "c65184dd0f2a4fdd841b5121e92a3a42b03784edb206634667b8349d310813b4"
+      "sha256": "920b41bf35b1959f67a349b57607b222f384f9a4f14391c2e957386b8ecaf003"
     },
     {
       "path": "live/narration.js",
