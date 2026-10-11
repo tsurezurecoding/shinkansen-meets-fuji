@@ -1777,6 +1777,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/en/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/everyday-japan.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/en/tokyo-kyoto-stations.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-10" },
     { loc: `${siteRoot}/en/beer-on-shinkansen.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-07" },
     { loc: `${siteRoot}/en/drinks.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-04" },

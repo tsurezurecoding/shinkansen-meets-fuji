@@ -745,5 +745,24 @@
     "article": false,
     "modified": "2026-10-11",
     "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content"
+  },
+  "en/tokyo-kyoto-stations.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_station-feature-release.md: owner approved station article and quiet spot-page entrance",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "Approved three-chapter prototype 1012124 / 88be23a; first product publication",
+    "image": "images/stations/tokyo-station-marunouchi-kakidai.jpg",
+    "imageRights": "permission",
+    "imageCredit": "Kakidai / CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Station_Marunouchi_Building.jpg",
+    "imagePermissionEvidence": "CC BY-SA 4.0, verified 2026-10-11; CP-0236; attribution, licence and CSS crop disclosure retained",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imageEvidence": "data/station-photo-sources.json facade / CP-0236",
+    "imageAlt": "Tokyo Station’s red-brick Marunouchi facade and two domes"
   }
 }

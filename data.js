@@ -1342,7 +1342,13 @@ const SPOTS = [
               "en": "Seat E side: the red-brick station beyond the platforms"
             }
           }
-        ]
+        ],
+        "storyLink": {
+          "en": {
+            "route": "en/tokyo-kyoto-stations.html#look-up",
+            "label": "Take a closer look at Tokyo & Kyoto stations →"
+          }
+        }
       },
       {
         "id": "edo-view",
