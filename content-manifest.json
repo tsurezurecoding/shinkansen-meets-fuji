@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "cddd2ad6997fd70a",
+  "contentVersion": "386bb1fd5b4b7f93",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -169,8 +169,8 @@
     {
       "path": "en/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/en/beer-on-shinkansen.html",
-      "bytes": 33752,
-      "sha256": "a7138186034561dd6027ca7219533c085511c5cb893ec4f35fb730be90cd7819"
+      "bytes": 33134,
+      "sha256": "1ff4c8c276d72ac14354427ddf25b80ff853fd447862bda4f899cd8865587529"
     },
     {
       "path": "en/castles.html",
@@ -181,20 +181,20 @@
     {
       "path": "en/countryside.html",
       "url": "https://www.michikusa-travel.com/en/countryside.html",
-      "bytes": 19525,
-      "sha256": "47cd0e34ef58e11173e45ce509250fcc01d18ac358141a822327b47e45f20233"
+      "bytes": 19413,
+      "sha256": "63f5f631a858a20448f268c020d77f13999456bdd5c479f6d16201f259895455"
     },
     {
       "path": "en/drinks.html",
       "url": "https://www.michikusa-travel.com/en/drinks.html",
-      "bytes": 40487,
-      "sha256": "9da8bfabd2bffbfe80fc7ccf5b241c22fce63755a1bba37ef0f6cc03f1878fd3"
+      "bytes": 40447,
+      "sha256": "bbbca08a81d4415f5f911384910de140a60c59b1dddf92ddd6a8b14e8c6c5cb8"
     },
     {
       "path": "en/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/en/everyday-japan.html",
-      "bytes": 11368,
-      "sha256": "bfa88668dc1f3d452a39e897a648dbfc7f018debda606678379c2fc825941fdf"
+      "bytes": 11371,
+      "sha256": "1cd22eb61ced81daac062b7cbc148a81e8a3c64875b63e582589184c7c1916f2"
     },
     {
       "path": "en/ferris-wheels.html",
@@ -205,8 +205,8 @@
     {
       "path": "en/foods.html",
       "url": "https://www.michikusa-travel.com/en/foods.html",
-      "bytes": 27765,
-      "sha256": "6d6136e3eedbd6ab4094490df6970cddd46b97bdba2d01b8257483b53f615482"
+      "bytes": 26604,
+      "sha256": "c975412e3eb25564fa08e49def36feaf428252cb13c08702d39ee6f698e7fd57"
     },
     {
       "path": "en/hanabi.html",
@@ -271,8 +271,8 @@
     {
       "path": "everyday-related.css",
       "url": "https://www.michikusa-travel.com/everyday-related.css",
-      "bytes": 2998,
-      "sha256": "660ad507929cb599044f2a527330d94e4c8246bfba05306bc8f6677538715b04"
+      "bytes": 3274,
+      "sha256": "ef197ae314fc9a633932b16421287acf5ee3df04891cd79b236ffc465836b15e"
     },
     {
       "path": "everyday.css",
