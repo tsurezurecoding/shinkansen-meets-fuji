@@ -48,5 +48,25 @@ with sync_playwright() as p:
   x.goto(BASE+file+'?ga=on&lang='+lang,wait_until='domcontentloaded');assert x.evaluate("localStorage.getItem('mado-ga-optout')") is None
   assert x.evaluate('window.MADO_ANALYTICS_DISABLED===false')
   results.append({'page':file,'reset_consumed':True,'dismiss_reload_retained':True,'explicit_reset_again':True,'other_storage_preserved':True,'test_phase_analytics_requests':0,'ga_on_restores_existing_initializer_without_outbound_traffic':True,'source':'local route fixture at production origin'});c.close()
+ # Real same-origin browser storage events into an already-open, GA-enabled guide.
+ c=b.new_context(user_agent=UA,viewport={'width':320,'height':568},locale='ja-JP')
+ c.add_init_script("navigator.getInstalledRelatedApps=async()=>[]")
+ analytics=[];c.route('**/*',handle);c.route(BASE+'seed.html',lambda r:r.fulfill(body='<html></html>',content_type='text/html'))
+ old=c.new_page();old.goto(BASE+'seed.html');old.evaluate("localStorage.setItem('mado-android-app-invite-v2',JSON.stringify({v:2,dismissedAt:Date.now()}));localStorage.setItem('mado-lang','ja')")
+ old.goto(BASE+'guide.html?lang=ja',wait_until='domcontentloaded');assert old.evaluate('window.MADO_ANALYTICS_DISABLED===false')
+ assert old.locator('#android-app-invite').get_attribute('hidden') is not None
+ reset=c.new_page();reset.goto(BASE+'index.html?ga=off&android_invite_reset=1&lang=ja',wait_until='domcontentloaded')
+ old.bring_to_front();old.wait_for_function("window.MADO_ANALYTICS_DISABLED===true&&!document.querySelector('#android-app-invite').hidden")
+ old.wait_for_timeout(250)
+ def count_events():return old.evaluate("(window.dataLayer||[]).filter(a=>a[0]==='event'&&String(a[1]).startsWith('android_app_invite_')).length")
+ assert count_events()==0 and old.evaluate("window['ga-disable-G-C2ESB694FV']===true")
+ old.evaluate("{const a=document.querySelector('#android-app-invite a');a.addEventListener('click',e=>e.preventDefault(),{once:true});a.click()}")
+ old.locator('#android-app-invite-close').click();assert count_events()==0
+ saved=old.evaluate("localStorage.getItem('mado-android-app-invite-v2')");assert saved
+ old.reload(wait_until='domcontentloaded');assert old.evaluate('window.MADO_ANALYTICS_DISABLED===true')
+ assert old.locator('#android-app-invite').get_attribute('hidden') is not None
+ assert old.evaluate("localStorage.getItem('mado-android-app-invite-v2')")==saved
+ results.append({'case':'already-open guide, reset in another tab, real storage/focus, view/Play/dismiss/reload','invite_events_in_old_dataLayer':0,'ga_disabled':True,'dismiss_preserved':True,'source':'local route fixture at production origin, no outbound network'})
+ c.close()
  b.close()
-Path('/tmp/android-invite-reset-browser.json').write_text(json.dumps(results,indent=2)+'\n');print('PASS 4 actual-page reset/reload/reopen/GA-stop-and-restore fixture cases; no outbound network')
+Path('/tmp/android-invite-reset-browser.json').write_text(json.dumps(results,indent=2)+'\n');print('PASS 4 actual-page + 1 real two-tab reset/reload/reopen/GA-stop-and-restore fixture cases; no outbound network')

@@ -81,9 +81,20 @@ has disappeared. Finish testing and open the corresponding page with `?ga=on`
 normal analytics then resumes. `ga_optout=0` remains the existing alternative.
 Removing `ga=off` alone does not clear the stored opt-out. Storage failure may
 prevent persistence, so use the explicit test URL on every page in that case.
-The original GA behavior outside this valid reset path is unchanged.
+The existing opt-out and explicit opt-in initialization rules remain. Already-open
+pages additionally follow shared opt-out as described below.
 
 Validation uses actual generated head scripts before the invitation runtime:
 no GA script insertion, initial pageview/config, or invitation event on test URLs;
 reload after ×, eligibility exclusions, storage/history failures, and original
 persistent off/on behavior are covered. This does not claim actual GA receipt.
+
+Saved GA opt-out is now published before shared dismissal deletion. Pages opened
+with this version follow saved opt-out on storage, pageshow, focus and visibility
+events; invitation events additionally read the current saved value just before
+calling gtag. Thus storage notification order or BFCache restoration cannot let a
+test-driven view/dismiss/Play event enter the old page's dataLayer. Existing pages
+set both the analytics gate and GA disable flag. Clearing opt-out elsewhere does
+not automatically opt an already-stopped document back in; reopen/reload with the
+existing explicit `ga=on` path. If shared opt-out cannot be saved, no dismissal is
+reset. Pages still running an earlier deployment must be reloaded before testing.
