@@ -19,7 +19,7 @@ const contentFiles = [
   ...await walkFiles("images/foods", p => /\.webp$/.test(p)),
   "en/tokyo-kyoto-stations.html", "stations.css", "stations.js", "data/station-photo-sources.json",
   ...await walkFiles("images/stations", p => /\.jpg$/.test(p)),
-  "en/countryside.html", "countryside.css", "home-cards.css", "data/countryside-photo-sources.json",
+  "en/countryside.html", "countryside.css", "home-cards.css", "home-scenery.css", "home-scenery.js", "data/countryside-photo-sources.json",
   "images/20260629_omi_fuji_michikusa.jpg", "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
   "images/og-live-guide.jpg", "images/stamps/stamp_fuji.svg", "images/stamps/stamp_kakegawa.svg", "images/stamps/stamp_hamanako.svg",
   "en/beer-on-shinkansen.html", "beer.css", "beer.js", "data/beer-photo-sources.json",

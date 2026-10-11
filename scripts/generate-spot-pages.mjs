@@ -1275,6 +1275,7 @@ function englishLandingHTML() {
   const copy = [
     ["フッターナビゲーション", "Footer navigation"],
     ["新幹線の窓 トップへ", "Shinkansen Window home"],
+    ["横にスワイプして景色を見る", "Swipe or use arrow keys to explore"],
     ["掲載写真 撮影：michikusa", "Photos: michikusa"],
     ["248看板と並んで立つ727 COSMETICSの看板", "727 COSMETICS sign beside the 248 sign"],
     ["新幹線のE席側から見える掛川城", "Kakegawa Castle from the Shinkansen's Seat E side"],
@@ -1518,11 +1519,11 @@ function englishLandingHTML() {
     ['20260629_omi_fuji_michikusa.webp', 'Japan’s countryside.', 'Rice paddies, crop fields, tea hills and greenhouse roofs. Look closer at everyday Japan.', 'en/countryside.html', 'Green rice paddies below Mount Mikami', 'countryside', 'Explore the countryside'],
     ['20260516_hamanako_seaside_1_michikusa.webp', 'A lake along the way.', 'The water opens up beside the train. Meet Lake Hamana, between the cities of your journey.', 'en/spots/hamanako.html', 'Lake Hamana seen beside the railway', 'hamanako', 'Meet Lake Hamana'],
   ];
-  const discoveryGrid = '<div class="discovery-grid reveal">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
-    `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="lazy" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
+  const discoveryGrid = '<div class="discovery-grid scenery-strip">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
+    `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="eager" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
   ).join('\n') + '</div>';
-  html = html.replace(/<div class="photo-mosaic reveal">[\s\S]*?<\/div>\s*<p class="photo-credit">/, discoveryGrid + '<p class="photo-credit">');
-  html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs. Get to know the sights, and discover more to notice.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way — and find a little more of Japan through your window.</p>');
+  html = html.replace(/<div class="photo-mosaic scenery-strip">[\s\S]*?<\/div>\s*<div class="scenery-strip-controls"><small>[^<]*<\/small><\/div>\s*<p class="photo-credit">/, discoveryGrid + '<div class="scenery-strip-controls"><small>Swipe or use arrow keys to explore</small></div><p class="photo-credit">');
+  html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
   html = localizeEnglishInternalLinks(html)
     .replace(/<title>[^<]*<\/title>/, `<title>${escapeHTML(title)}</title>`)
     .replace(/<meta name="description" content="[^"]*">/, `<meta name="description" content="${escapeHTML(description)}">`)
