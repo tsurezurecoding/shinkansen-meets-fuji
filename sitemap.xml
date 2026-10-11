@@ -949,6 +949,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/spots/shiraitogawa-bridge.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/shiraitogawa-bridge.html</loc>
+    <lastmod>2026-08-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/spots/maibara-test-trains.html</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>

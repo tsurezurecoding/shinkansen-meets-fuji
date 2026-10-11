@@ -2387,12 +2387,12 @@ const SPOTS = [
       "story": "As Atami approaches, Seat A reveals hillside buildings and the sea. The low island offshore is Hatsushima; the white Atami Castle stands above the town. This is a later opening than the Shiraitogawa bridge near Nebukawa. Watch the window again as daylight returns after the tunnels."
     },
     "pageTitle": {
-      "ja": "新幹線の相模湾車窓｜白糸川橋梁から熱海・初島へ | 新幹線の窓",
-      "en": "Sagami Bay from the Shinkansen: Shiraitogawa Bridge, Atami & Hatsushima"
+      "ja": "新幹線から見える熱海城と初島｜熱海の車窓 | 新幹線の窓",
+      "en": "Atami from the Shinkansen: Atami Castle & Hatsushima | Shinkansen Window"
     },
     "pageHeading": {
-      "ja": "根府川から熱海へ、相模湾の車窓",
-      "en": "Along Sagami Bay: from Nebukawa to Atami"
+      "ja": "新幹線から見る熱海城と初島",
+      "en": "Atami from the Shinkansen: a castle above the sea"
     },
     "pageHeadingChunks": {
       "ja": [
@@ -2405,16 +2405,16 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "小田原〜熱海の新幹線A席から見る相模湾。根府川の白糸川橋梁と、熱海の街・初島・熱海城を、別々の案内地点として紹介。車窓写真と見つけ方をまとめました。",
-      "en": "Two Seat A views between Odawara and Atami: the Shiraitogawa railway bridge against Sagami Bay, then Atami’s hillside town, Hatsushima Island and Atami Castle. Photographs and spotting tips."
+      "ja": "東海道新幹線のA席側に見える熱海城と初島。山上の白い天守風の建物と海に浮かぶ低い島を、車窓写真で見分けます。",
+      "en": "See Atami Castle and Hatsushima from Seat A on the Tokaido Shinkansen. Window photographs show the hillside landmark and the low island offshore."
     },
     "sectionHeading": {
-      "ja": "熱海と初島｜海・街・山が重なる",
-      "en": "Atami & Hatsushima: sea, town and hills"
+      "ja": "海へ下る熱海の街",
+      "en": "Atami, where the hills meet the sea"
     },
     "pageStory": {
-      "ja": "根府川の白糸川橋梁を過ぎ、さらにトンネルを抜けると、熱海の街と海が重なって見えてきます。熱海は山から海へ下る斜面に家やホテルが積み重なる街。沖に低く浮かぶ初島は、熱海港から約10kmの有人島です。水平線の手前に細長い輪郭を探すと見つけやすくなります。山上の白い天守風の建物は熱海城。1959年に建てられた観光施設で、古い城の遺構ではありません。橋梁の案内から数分後、もう一度A席側を見るための目印です。",
-      "en": "After the Shiraitogawa bridge and more tunnels, Atami’s buildings appear in layers between hills and sea. Houses and hotels climb the slopes; offshore, Hatsushima forms a low, long outline rather than a mountainous silhouette. The inhabited island lies about ten kilometres from Atami Port. The white castle-like building above Nishikigaura is Atami Castle, a tourist attraction built in 1959. These landmarks appear later in the journey than the bridge, so be ready for a second look from Seat A."
+      "ja": "熱海では、山から海へ下る斜面に家やホテルが重なります。東海道新幹線のA席側で、街の先に相模湾が開ける短い瞬間。山上の白い天守風の建物は熱海城、沖に低く横たわる島は初島です。根府川の白糸川橋梁とは別の車窓なので、トンネルを挟んであらためて窓の外へ目を向けてみてください。",
+      "en": "Atami is a seaside resort city where buildings climb the hills above Sagami Bay. From Seat A on the Tokaido Shinkansen, brief openings between tunnels reveal a white castle-like landmark on the hillside and a low island offshore. They are Atami Castle and Hatsushima. This view comes after the separate Shiraitogawa Bridge scene near Nebukawa."
     },
     "explainer": {
       "heading": {
@@ -2551,7 +2551,9 @@ const SPOTS = [
         "note": {
           "ja": "熱海の海越しに、低く横たわる初島",
           "en": "Hatsushima lies low across the sea from Atami"
-        }
+        },
+        "width": 1920,
+        "height": 1080
       },
       {
         "src": "images/20260919_atami_castle_michikusa.jpg",
@@ -2567,7 +2569,9 @@ const SPOTS = [
         "note": {
           "ja": "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。",
           "en": "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami."
-        }
+        },
+        "width": 1920,
+        "height": 1080
       }
     ],
     "references": [
@@ -2615,20 +2619,6 @@ const SPOTS = [
           "en": "Shinkansen window blog: Atami Castle window article (Japanese only)"
         },
         "url": "https://cotetu.seesaa.net/article/516721203.html"
-      },
-      {
-        "label": {
-          "ja": "神奈川県：白糸川鉄橋の記録",
-          "en": "Kanagawa Prefecture: Shiraitogawa bridge (Japanese)"
-        },
-        "url": "https://www.pref.kanagawa.jp/docs/j8g/100th/photo/49.html"
-      },
-      {
-        "label": {
-          "ja": "小田原市：旧熱海線の土木遺産",
-          "en": "Odawara City: former Atami Line heritage (Japanese)"
-        },
-        "url": "https://www.city.odawara.kanagawa.jp/press/detail.php?prs_id=10447"
       }
     ],
     "map": {
@@ -2642,13 +2632,114 @@ const SPOTS = [
       "lng": 139.07235
     },
     "pageHook": {
-      "ja": "橋の向こうの海から、初島へ。",
-      "en": "From the railway bridge to an island."
+      "ja": "山上の城、沖に浮かぶ島。",
+      "en": "A hilltop castle and an island offshore."
     },
     "pageStoryAnchor": "atami-hatsushima",
     "guideAnchor": "atami-hatsushima",
     "relatedSpotIds": [
-      "shiraitogawa-bridge"
+      "shiraitogawa-bridge",
+      "gyoran-kannon",
+      "sagami-fuji"
+    ],
+    "pageChapters": [
+      {
+        "id": "atami-castle",
+        "heading": {
+          "ja": "山上に見える熱海城",
+          "en": "Atami Castle: the white landmark on the hill"
+        },
+        "paragraphs": {
+          "ja": [
+            "錦ヶ浦の山上に立つ熱海城は、1959年に造られた観光施設です。天守のような姿をしていますが、戦国時代の城跡を復元したものではありません。城の形をした建物が海を見下ろす風景として眺めると、この街らしさが見えてきます。",
+            "車窓では山の稜線付近の白い建物を探します。写真のように、手前のホテルや架線が重なることもあります。全景が長く見える場所ではなく、街の向こうに天守の屋根が現れる一瞬が見どころです。"
+          ],
+          "en": [
+            "Atami Castle is a tourist attraction built above Nishikigaura in 1959, rather than a restored feudal fortress. Its castle-like silhouette overlooks the sea and helps you recognise the hillside from the train.",
+            "Watch near the ridge for white walls and layered roofs. Hotels and wires may interrupt the view, as they do in the photograph. The glimpse is brief; do not expect an uninterrupted panorama."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20260919_atami_castle_michikusa.jpg",
+            "alt": {
+              "ja": "新幹線のA席側から見える錦ヶ浦山頂の熱海城",
+              "en": "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-19",
+            "note": {
+              "ja": "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。",
+              "en": "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami."
+            },
+            "width": 1920,
+            "height": 1080
+          }
+        ]
+      },
+      {
+        "id": "hatsushima",
+        "heading": {
+          "ja": "海に低く横たわる初島",
+          "en": "Hatsushima: a low island offshore"
+        },
+        "paragraphs": {
+          "ja": [
+            "初島は熱海港から約10km沖にある有人島です。山のように高く盛り上がる島ではなく、海面の上に細長く横たわる輪郭が目印。写真では、建物の左に開いた海の上に島が見えます。",
+            "海が見え始めても、初島がすぐ見えるとは限りません。手前の建物が切れ、水平線近くまで視線が通る瞬間に探してみてください。霞や雨で輪郭が消える日もあります。"
+          ],
+          "en": [
+            "Hatsushima is an inhabited island about ten kilometres from Atami Port. Look for a long, low outline rather than a mountainous shape. In this photograph, it appears in the opening to the left of the buildings.",
+            "Wait for a gap that lets you see across the water. Buildings can hide the island even when the sea itself is visible, and haze or rain can soften its outline."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20260903_atami_hatsushima_michikusa.jpg",
+            "alt": {
+              "ja": "熱海の海の向こうに見える初島",
+              "en": "Hatsushima Island beyond Atami's sea"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-03",
+            "note": {
+              "ja": "熱海の海越しに、低く横たわる初島",
+              "en": "Hatsushima lies low across the sea from Atami"
+            },
+            "width": 1920,
+            "height": 1080
+          }
+        ]
+      },
+      {
+        "id": "earlier-nebukawa",
+        "heading": {
+          "ja": "少し前の車窓：白糸川橋梁",
+          "en": "Earlier on the route: Shiraitogawa Bridge"
+        },
+        "paragraphs": {
+          "ja": [
+            "東京から新大阪へ向かう場合、白糸川橋梁は熱海より手前、根府川付近です。赤い鉄橋と海を楽しむ場面は別記事にまとめています。"
+          ],
+          "en": [
+            "On a Tokyo-to-Shin-Osaka journey, the red bridge near Nebukawa appears before Atami. Its railway history and viewing tips have their own article."
+          ]
+        },
+        "photos": [],
+        "link": {
+          "route": "spots/shiraitogawa-bridge.html",
+          "label": {
+            "ja": "白糸川橋梁と相模湾の車窓へ →",
+            "en": "See Shiraitogawa Bridge and Sagami Bay →"
+          }
+        }
+      }
     ]
   },
 
@@ -2735,55 +2826,85 @@ const SPOTS = [
     map: { lat: 35.2509722, lng: 139.1535778, ja: "小田原城", en: "Odawara Castle" },
   },
   {
-    id: "gyoran-kannon",
-    icon: "🙏",
-    ja: { name: "魚籃観音像", area: "小田原 → 熱海（早川付近）", hook: "魚籠を持つ、白い観音。", story: "小田原を過ぎ、早川漁港のそばでA席側に一瞬あらわれる白い像は、東善院の魚籃大観音です。像の高さは約10m、蓮台まで含めると全体で13m前後。手にした魚籠（ぎょらん）は漁を守る象徴で、海上安全と大漁、そして魚介への感謝を願って1982年に建立されました。相模湾を望む早川の斜面に立ち、新幹線が海側へ景色を切り替える序章の目印になっています。" },
-    en: { name: "Gyoran Kannon Statue", area: "Odawara → Atami, near Hayakawa", hook: "A white Kannon holding a fish basket.", story: "The white statue that flashes past on the Seat A side near Hayakawa Fishing Port is Gyoran Dai-Kannon at Tozen-in Temple. The image itself is about 10 meters tall — around 13 meters including its lotus pedestal — and holds a woven basket of fish, the traditional attribute of this form of Kannon. Erected in 1982 to pray for safety at sea, plentiful catches and gratitude for marine life, it stands on a slope above Sagami Bay and marks the moment the Shinkansen view opens toward the coast." },
-    pageTitle: {
-      ja: "小田原・早川の白い観音は何？東善院の魚籃大観音 | 新幹線の窓",
-      en: "What is the white Kannon near Odawara? Gyoran Dai-Kannon | Shinkansen Window",
+    "id": "gyoran-kannon",
+    "icon": "🙏",
+    "ja": {
+      "name": "魚籃観音像",
+      "area": "小田原 → 熱海（早川付近）",
+      "hook": "魚籠を持つ、白い観音。",
+      "story": "小田原を過ぎ、早川漁港のそばでA席側に一瞬あらわれる白い像は、東善院の魚籃大観音です。像の高さは約10m、蓮台まで含めると全体で13m前後。手にした魚籠（ぎょらん）は漁を守る象徴で、海上安全と大漁、そして魚介への感謝を願って1982年に建立されました。相模湾を望む早川の斜面に立ち、新幹線が海側へ景色を切り替える序章の目印になっています。"
     },
-    pageHeading: {
-      ja: "小田原・早川の白い観音は何？",
-      en: "What is the white Kannon near Odawara?",
+    "en": {
+      "name": "Gyoran Kannon Statue",
+      "area": "Odawara → Atami, near Hayakawa",
+      "hook": "A white Kannon holding a fish basket.",
+      "story": "The white statue that flashes past on the Seat A side near Hayakawa Fishing Port is Gyoran Dai-Kannon at Tozen-in Temple. The image itself is about 10 meters tall — around 13 meters including its lotus pedestal — and holds a woven basket of fish, the traditional attribute of this form of Kannon. Erected in 1982 to pray for safety at sea, plentiful catches and gratitude for marine life, it stands on a slope above Sagami Bay and marks the moment the Shinkansen view opens toward the coast."
     },
-    pageHeadingChunks: {
-      ja: ["小田原・早川の", "白い観音は何？"],
-      en: ["What is the white Kannon", "near Odawara?"],
+    "pageTitle": {
+      "ja": "小田原・早川の白い観音は何？東善院の魚籃大観音 | 新幹線の窓",
+      "en": "What is the white Kannon near Odawara? Gyoran Dai-Kannon | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "小田原を過ぎて新幹線のA席側に一瞬見える白い観音は、早川漁港近くの東善院・魚籃大観音。高さ約10m、1982年建立。海上安全と大漁、魚介への感謝を願って建てられた像の背景と、車窓での見つけ方を紹介します。",
-      en: "The white Kannon briefly seen from Seat A after Odawara is Gyoran Dai-Kannon at Tozen-in in Hayakawa: about 10 meters tall, erected in 1982 to pray for safety at sea, good catches and gratitude for marine life. Learn what it is and how to spot it from the train.",
+    "pageHeading": {
+      "ja": "小田原・早川の白い観音は何？",
+      "en": "What is the white Kannon near Odawara?"
     },
-    sectionHeading: {
-      ja: "魚籃観音とは？どんな信仰？",
-      en: "What is Gyoran Kannon?",
+    "pageHeadingChunks": {
+      "ja": [
+        "小田原・早川の",
+        "白い観音は何？"
+      ],
+      "en": [
+        "What is the white Kannon",
+        "near Odawara?"
+      ]
     },
-    pageStory: {
-      ja: "魚籃観音（ぎょらんかんのん）は観音菩薩の三十三観音のうちの一体で、手に魚を入れた籠を持つ姿で表されます。中国・唐の時代に、魚を売る美しい娘に姿を変えて仏法を広めたという伝説に由来するとされ、日本では漁業関係者を中心に、魚介への慈しみと海上安全を祈る対象として信仰されてきました。早川の魚籃大観音は、この形の観音を10mを超える大きさで屋外に安置しているという点で全国的にも珍しい存在です。",
-      en: "Gyoran Kannon is one of the traditional 33 forms of the Bodhisattva Kannon (Guanyin), depicted holding a basket of fish. The imagery is linked to a Tang-dynasty legend in which the bodhisattva appeared as a beautiful young woman selling fish to spread the Buddhist teaching. In Japan it has long been revered especially by people working with the sea, both as a prayer for safe voyages and good catches and as an expression of gratitude toward marine life. The 10-meter statue at Hayakawa is a rare example of this form enshrined outdoors at large scale.",
+    "metaDescription": {
+      "ja": "小田原を過ぎて新幹線のA席側に一瞬見える白い観音は、早川漁港近くの東善院・魚籃大観音。高さ約10m、1982年建立。海上安全と大漁、魚介への感謝を願って建てられた像の背景と、車窓での見つけ方を紹介します。",
+      "en": "The white Kannon briefly seen from Seat A after Odawara is Gyoran Dai-Kannon at Tozen-in in Hayakawa: about 10 meters tall, erected in 1982 to pray for safety at sea, good catches and gratitude for marine life. Learn what it is and how to spot it from the train."
     },
-    explainer: {
-      heading: { ja: "早川に大きな観音が立つ理由", en: "Why a large Kannon stands at Hayakawa" },
-      ja: [
+    "sectionHeading": {
+      "ja": "魚籃観音とは？どんな信仰？",
+      "en": "What is Gyoran Kannon?"
+    },
+    "pageStory": {
+      "ja": "魚籃観音（ぎょらんかんのん）は観音菩薩の三十三観音のうちの一体で、手に魚を入れた籠を持つ姿で表されます。中国・唐の時代に、魚を売る美しい娘に姿を変えて仏法を広めたという伝説に由来するとされ、日本では漁業関係者を中心に、魚介への慈しみと海上安全を祈る対象として信仰されてきました。早川の魚籃大観音は、この形の観音を10mを超える大きさで屋外に安置しているという点で全国的にも珍しい存在です。",
+      "en": "Gyoran Kannon is one of the traditional 33 forms of the Bodhisattva Kannon (Guanyin), depicted holding a basket of fish. The imagery is linked to a Tang-dynasty legend in which the bodhisattva appeared as a beautiful young woman selling fish to spread the Buddhist teaching. In Japan it has long been revered especially by people working with the sea, both as a prayer for safe voyages and good catches and as an expression of gratitude toward marine life. The 10-meter statue at Hayakawa is a rare example of this form enshrined outdoors at large scale."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "早川に大きな観音が立つ理由",
+        "en": "Why a large Kannon stands at Hayakawa"
+      },
+      "ja": [
         "早川はJR早川駅を中心とした小田原市南部の港町で、目の前には全国有数の水揚量を誇る早川漁港（小田原漁港）があります。定置網漁を主体に、四季を通じて多彩な魚が水揚げされる場所で、地元にとって「海の恵み」は生活そのもの。魚籃大観音は、この漁港の背後の斜面に立ち、海に出る人と海の生き物、その両方を包むように相模湾を向いています。",
         "像は東善院（真言宗）の境内にあり、正式には「魚籃大観音」と呼ばれます。台座までを含めた高さは約13m。1982年、地元の願いをまとめるかたちで建立されました。境内には水子供養の観音像も並び、静かな祈りの場になっています。",
-        "新幹線からは、海側A席の窓外に、樹木のあいだから白い胴体と観音特有の穏やかな顔立ちが一瞬だけ差し込むように見えます。速度が速く、実物の大きさが直感的に伝わりにくいので、「意外と大きい」と知って眺めると印象が変わります。",
+        "新幹線からは、海側A席の窓外に、樹木のあいだから白い胴体と観音特有の穏やかな顔立ちが一瞬だけ差し込むように見えます。速度が速く、実物の大きさが直感的に伝わりにくいので、「意外と大きい」と知って眺めると印象が変わります。"
       ],
-      en: [
+      "en": [
         "Hayakawa is a fishing town at the southern edge of Odawara City, centered on Hayakawa (Odawara) Fishing Port, one of Japan's most productive coastal ports. Fixed-net fishing brings in a wide seasonal variety of fish here, so 'the bounty of the sea' has always been central to local life. The large Kannon sits on the slope behind the port, facing Sagami Bay as if watching over both the fishermen who go out and the sea life they draw on.",
         "The statue stands in the grounds of Tozen-in, a Shingon Buddhist temple, where it is formally known as Gyoran Dai-Kannon. Including the pedestal, its total height is about 13 meters. It was erected in 1982 to gather the community's prayers into one place. Nearby stand memorial statues for unborn children, adding to the quiet atmosphere of the grounds.",
-        "From the train, on the Seat A side, only a brief slice of the white robe and the calm face of the bodhisattva shows through the trees. The speed makes it hard to grasp the true scale on the fly — knowing it is over ten meters tall changes how the moment reads.",
-      ],
+        "From the train, on the Seat A side, only a brief slice of the white robe and the calm face of the bodhisattva shows through the trees. The speed makes it hard to grasp the true scale on the fly — knowing it is over ten meters tall changes how the moment reads."
+      ]
     },
-    guideHighlight: {
-      ja: "早川駅を通過するあたりで、A席側の斜面を見てください。海を背にした白い像は、木立の切れ間にほんの数秒だけ現れます。相模湾がA席側に開ける区間の入口の目印として覚えておくと、続く熱海・初島・熱海城の車窓もつながって楽しめます。",
-      en: "Around Hayakawa Station, look toward the slope on the Seat A side. The white figure with the sea behind it shows only for a few seconds between the trees. Use it as a marker: right after the Kannon, Sagami Bay opens up on Seat A and the sequence continues with Atami, Hatsushima and Atami Castle.",
+    "guideHighlight": {
+      "ja": "早川駅を通過するあたりで、A席側の斜面を見てください。海を背にした白い像は、木立の切れ間にほんの数秒だけ現れます。相模湾がA席側に開ける区間の入口の目印として覚えておくと、続く熱海・初島・熱海城の車窓もつながって楽しめます。",
+      "en": "Around Hayakawa Station, look toward the slope on the Seat A side. The white figure with the sea behind it shows only for a few seconds between the trees. Use it as a marker: right after the Kannon, Sagami Bay opens up on Seat A and the sequence continues with Atami, Hatsushima and Atami Castle."
     },
-    minutesFromTokyo: 33, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "pagoda",
-    image: "images/20260516_gyoran_kannon_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
-    photos: [
+    "minutesFromTokyo": 31.5,
+    "side": "A",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 2,
+    "spotting": "hard",
+    "visibleWhenCloudy": true,
+    "scene": "pagoda",
+    "image": "images/20260516_gyoran_kannon_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-05-16"
+    },
+    "photos": [
       {
         "src": "images/20260903_gyoran_kannon_michikusa.jpg",
         "alt": {
@@ -2817,24 +2938,73 @@ const SPOTS = [
         }
       }
     ],
-    media: {
-      heading: { ja: "動画で見る魚籃観音像", en: "Gyoran Kannon in motion" },
-      description: { ja: "早川付近の海側に一瞬だけ現れる魚籃観音像を、車窓動画で見られます。", en: "See the Gyoran Kannon statue briefly appear on the sea side near Hayakawa." },
-      videos: [
+    "media": {
+      "heading": {
+        "ja": "動画で見る魚籃観音像",
+        "en": "Gyoran Kannon in motion"
+      },
+      "description": {
+        "ja": "早川付近の海側に一瞬だけ現れる魚籃観音像を、車窓動画で見られます。",
+        "en": "See the Gyoran Kannon statue briefly appear on the sea side near Hayakawa."
+      },
+      "videos": [
         {
-          kind: "youtube",
-          id: "yVik9PXZD8M",
-          title: { ja: "魚籃観音像の車窓動画", en: "Gyoran Kannon from the train window" },
-          url: "https://www.youtube.com/watch?v=yVik9PXZD8M",
-          comment: { ja: "海側を眺めている一瞬だけ見える魚籃観音像", en: "Gyoran Kannon appears for only a moment when looking toward the sea." },
-        },
+          "kind": "youtube",
+          "id": "yVik9PXZD8M",
+          "title": {
+            "ja": "魚籃観音像の車窓動画",
+            "en": "Gyoran Kannon from the train window"
+          },
+          "url": "https://www.youtube.com/watch?v=yVik9PXZD8M",
+          "comment": {
+            "ja": "海側を眺めている一瞬だけ見える魚籃観音像",
+            "en": "Gyoran Kannon appears for only a moment when looking toward the sea."
+          }
+        }
       ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "This video uses the official YouTube embed."
+      }
     },
-    references: [REFERENCES.gyoranKannon, REFERENCES.gyoranKannonTourism, REFERENCES.gyoranKannonWiki],
-    map: { lat: 35.240947333816365, lng: 139.14421331844272, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
-    viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
+    "references": [
+      {
+        "label": {
+          "ja": "小田原市郷土文化館: 早川東善院の魚籃観音",
+          "en": "Odawara City: Gyoran Kannon at Tozen-in (Japanese only)"
+        },
+        "url": "https://www.city.odawara.kanagawa.jp/public-i/facilities/kyodo/stoneworks/searchforstoneworks20191203.html"
+      },
+      {
+        "label": {
+          "ja": "小田原市観光協会: 魚籃大観音（東善院）",
+          "en": "Odawara Tourism: Gyoran Dai-Kannon at Tozen-in (Japanese only)"
+        },
+        "url": "https://www.odawara-kankou.com/spot/spot_area/gyokou.html"
+      },
+      {
+        "label": {
+          "ja": "Wikipedia: 魚籃観音",
+          "en": "Wikipedia: Gyoran Kannon"
+        },
+        "url": {
+          "ja": "https://ja.wikipedia.org/wiki/%E9%AD%9A%E7%B1%83%E8%A6%B3%E9%9F%B3",
+          "en": "https://en.wikipedia.org/wiki/Guanyin#Gyoran_Kannon"
+        }
+      }
+    ],
+    "map": {
+      "lat": 35.240947333816365,
+      "lng": 139.14421331844272,
+      "ja": "東善院 魚籃観音 小田原 早川",
+      "en": "Tozen-in Gyoran Kannon Odawara Hayakawa"
+    },
+    "viewpoint": {
+      "lat": 35.24082633591658,
+      "lng": 139.14394093224604
+    }
   },
+
   {
     id: "mishima-catapult",
     icon: "🚄",
@@ -8804,41 +8974,7 @@ const SPOTS = [
       "hook": "A railway bridge against the sea.",
       "story": "Near Nebukawa, a brief opening on Seat A shows the Shiraitogawa railway bridge with Sagami Bay beyond it. The bridge carries the conventional Tokaido Main Line across the valley. This is an earlier glimpse than Atami and Hatsushima."
     },
-    "guidePageId": "odawara",
     "guideAnchor": "shiraitogawa-bridge",
-    "guideNotice": {
-      "heading": {
-        "ja": "相模湾の車窓を続けて読む",
-        "en": "Continue along the Sagami Bay coast"
-      },
-      "body": {
-        "ja": "根府川の橋と海、そして熱海の街と初島。案内時刻は分け、記事では海沿いの景色を一緒に紹介します。",
-        "en": "Bridge and sea near Nebukawa, then Atami and Hatsushima: separate guide timings within one coastal article."
-      },
-      "label": {
-        "ja": "白糸川橋梁と相模湾の章へ →",
-        "en": "Read the Shiraitogawa bridge chapter →"
-      }
-    },
-    "sharedGuideHeading": {
-      "ja": "相模湾と白糸川橋梁｜根府川の一瞬",
-      "en": "Shiraitogawa Bridge & Sagami Bay: a glimpse near Nebukawa"
-    },
-    "sharedGuidePlacement": "before-story",
-    "sharedGuideEyebrow": "NEBUKAWA",
-    "sharedGuideFigure": true,
-    "sharedGuideStory": {
-      "ja": [
-        "小田原を過ぎたA席側で、山あいの家々の向こうに赤い鉄橋と青い海が重なる瞬間があります。根府川駅の南にある白糸川橋梁です。写真の橋を渡るのは東海道本線で、新幹線からは橋の側面と、その奥の相模湾を眺めます。",
-        "初代の橋は1922年に完成しましたが、翌年の関東大震災で地震と土砂災害により失われました。その後架け直された橋は、旧熱海線の鉄道施設群の一つとして2019年に土木学会選奨土木遺産に認定されています。今の東海道本線がかつて御殿場経由だったこと、熱海線と丹那トンネルが海沿いの道筋をつないだことも、この鉄橋の背景にあります。",
-        "見るコツは、トンネルを出てから探し始めず、A席側へ先に顔を向けておくこと。家の屋根の上に横長の鉄橋、その下の三角形の骨組み、その奥の海を探してください。通過は短く、橋梁の先にはまたトンネルが続きます。熱海と初島はさらに先の別の開けた場所で見えます。"
-      ],
-      "en": [
-        "After Odawara, watch Seat A for a railway bridge stretched across a valley, with Sagami Bay behind it. This is Shiraitogawa Bridge south of Nebukawa Station, carrying the conventional Tokaido Main Line. From the Shinkansen you see its side: triangular steelwork, village rooftops and sea.",
-        "The first bridge was completed in 1922 and lost in the Great Kanto Earthquake the following year. A replacement was built, and the bridge became part of the former Atami Line facilities recognised as civil engineering heritage in 2019. These structures recall the coastal route that replaced the old Tokaido Main Line path through Gotemba.",
-        "Be looking before daylight returns after the tunnel. Find the long bridge above the rooftops, then the triangular framework and water behind it. The opening is brief. Atami’s hillside town and Hatsushima appear farther on, after more tunnels, and have their own guide timing."
-      ]
-    },
     "minutesFromTokyo": 32.7,
     "side": "A",
     "category": "notable",
@@ -8895,8 +9031,81 @@ const SPOTS = [
     "viewpoint": {
       "lat": 35.20292891908608,
       "lng": 139.1275524720286
-    }
+    },
+    "pageTitle": {
+      "ja": "白糸川橋梁と相模湾｜新幹線A席から見る根府川の赤い鉄橋 | 新幹線の窓",
+      "en": "Shiraitogawa Bridge & Sagami Bay from the Shinkansen | Shinkansen Window"
+    },
+    "pageHeading": {
+      "ja": "白糸川橋梁と相模湾の車窓",
+      "en": "Shiraitogawa Bridge: a red railway bridge above Sagami Bay"
+    },
+    "pageHook": {
+      "ja": "赤い鉄橋の向こうに、海。",
+      "en": "A red railway bridge against the sea."
+    },
+    "metaDescription": {
+      "ja": "根府川の白糸川橋梁は東海道本線の赤い鉄橋。東海道新幹線のA席から、魚籃観音像を過ぎた先で橋と相模湾を眺める見方と、その歴史を紹介します。",
+      "en": "Identify the red Shiraitogawa Bridge near Nebukawa from Seat A on the Tokaido Shinkansen. Learn its history and where to look after Gyoran Kannon."
+    },
+    "sectionHeading": {
+      "ja": "根府川の谷を渡る、東海道本線の橋",
+      "en": "The Tokaido Main Line bridge across the Nebukawa valley"
+    },
+    "pageStory": {
+      "ja": "小田原を過ぎたA席側で、山あいの家々の向こうに赤い鉄橋と青い海が重なる瞬間があります。根府川駅の南にある白糸川橋梁です。写真の橋を渡るのは東海道本線で、新幹線からは橋の側面と、その奥の相模湾を眺めます。\n\n初代の橋は1922年に完成しましたが、翌年の関東大震災で地震と土砂災害により失われました。その後架け直された橋は、旧熱海線の鉄道施設群の一つとして2019年に土木学会選奨土木遺産に認定されています。今の東海道本線がかつて御殿場経由だったこと、熱海線と丹那トンネルが海沿いの道筋をつないだことも、この鉄橋の背景にあります。",
+      "en": "After Odawara, watch Seat A for a railway bridge stretched across a valley, with Sagami Bay behind it. This is Shiraitogawa Bridge south of Nebukawa Station, carrying the conventional Tokaido Main Line. From the Shinkansen you see its side: triangular steelwork, village rooftops and sea.\n\nThe first bridge was completed in 1922 and lost in the Great Kanto Earthquake the following year. A replacement was built, and the bridge became part of the former Atami Line facilities recognised as civil engineering heritage in 2019. These structures recall the coastal route that replaced the old Tokaido Main Line path through Gotemba."
+    },
+    "pageStoryAnchor": "shiraitogawa-bridge",
+    "explainer": {
+      "heading": {
+        "ja": "魚籃観音を過ぎてから、赤い鉄橋へ",
+        "en": "After Gyoran Kannon, look for the red bridge"
+      },
+      "ja": [
+        "東京から新大阪へ向かう順番は、魚籃観音像→白糸川橋梁→熱海です。相模湾が少し早く見える区間もありますが、このスポットは白糸川橋梁を見つける場面を基準にしています。",
+        "新幹線が渡る橋ではなく、海側の谷にある東海道本線の橋を横から眺めます。赤い桁の三角形が連なる形と、その向こうの海が目印。トンネルや遮蔽物の間の短い開けた場所なので、観音像を過ぎたらA席側を見ておくと見つけやすくなります。"
+      ],
+      "en": [
+        "On a Tokyo-to-Shin-Osaka journey, the order is Gyoran Kannon, Shiraitogawa Bridge, then Atami. The sea may be visible earlier, but this guide point is positioned for the bridge itself.",
+        "The Shinkansen does not cross this bridge. You see the Tokaido Main Line structure across the valley on the seaward side. Look for repeated triangular red girders with water beyond them, through a brief opening between tunnels and obstructions."
+      ]
+    },
+    "guideHighlight": {
+      "ja": "東京→新大阪では魚籃観音のあと。A席側の谷に、赤い鉄橋と海を探してください。",
+      "en": "After Gyoran Kannon towards Shin-Osaka, watch Seat A for a red bridge across the valley with the sea beyond."
+    },
+    "pageChapters": [
+      {
+        "id": "later-atami",
+        "heading": {
+          "ja": "この先の車窓：熱海城と初島",
+          "en": "Next along the coast: Atami Castle and Hatsushima"
+        },
+        "paragraphs": {
+          "ja": [
+            "さらにトンネルを抜けて進むと、熱海の街と海が見えてきます。山上の城と沖の島は、橋とは別の見どころ。引き続きA席側から探せます。"
+          ],
+          "en": [
+            "Farther along the route, gaps between tunnels reveal Atami. Its hilltop castle and offshore island form a separate viewing scene, also on Seat A."
+          ]
+        },
+        "photos": [],
+        "link": {
+          "route": "spots/odawara.html",
+          "label": {
+            "ja": "熱海城と初島の車窓へ →",
+            "en": "See Atami Castle and Hatsushima →"
+          }
+        }
+      }
+    ],
+    "relatedSpotIds": [
+      "gyoran-kannon",
+      "odawara"
+    ]
   },
+
   {
     "id": "maibara-test-trains",
     "icon": "🚄",
@@ -8913,12 +9122,12 @@ const SPOTS = [
       "story": "Just after Maibara toward Shin-Osaka, look on Seat A for Shinkansen noses under a shelter beside the tracks. This preservation site holds 300X, WIN350 and STAR21, experimental trains used in the development of faster rail travel."
     },
     "pageTitle": {
-      "ja": "新幹線から見える米原の高速試験車両｜300X・WIN350・STAR21 | 新幹線の窓",
-      "en": "Maibara’s Preserved Shinkansen Test Trains: 300X, WIN350 & STAR21"
+      "ja": "米原の新幹線高速試験車両保存場｜300X・WIN350・STAR21 | 新幹線の窓",
+      "en": "Maibara Shinkansen Test Trains: 300X, WIN350 & STAR21 | Shinkansen Window"
     },
     "pageHeading": {
-      "ja": "米原の線路脇に並ぶ、高速試験車両",
-      "en": "Three experimental Shinkansen beside the tracks at Maibara"
+      "ja": "米原の新幹線高速試験車両保存場",
+      "en": "Maibara’s preserved Shinkansen test trains"
     },
     "pageHeadingChunks": {
       "ja": [
@@ -8931,16 +9140,16 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "米原駅の南側、新幹線のA席から一瞬見える高速試験車両保存場。300X・WIN350・STAR21と鉄道総研の風洞研究を、車窓写真と見つけ方で紹介します。",
-      "en": "Look from Seat A just south of Maibara for preserved 300X, WIN350 and STAR21 experimental Shinkansen. A window photograph, spotting tips and the story of the neighbouring wind-tunnel research centre."
+      "ja": "米原駅の南、新幹線A席から見える新幹線高速試験車両保存場。300X・WIN350・STAR21の3車両が試した技術と、車窓での見つけ方を写真付きで紹介。",
+      "en": "Spot preserved Shinkansen test trains south of Maibara Station from Seat A. Meet JR Central’s 300X, JR West’s WIN350 and JR East’s STAR21 in photographs."
     },
     "sectionHeading": {
       "ja": "どうして新幹線の顔が並んでいる？",
       "en": "Why are these Shinkansen noses here?"
     },
     "pageStory": {
-      "ja": "米原駅の東口から南へ向かうと、鉄道総合技術研究所の風洞技術センターがあります。その一角に保存されているのが、300X・WIN350・STAR21の3両の高速試験車両です。営業列車のように旅客を運ぶことを主役とせず、新幹線をさらに速く走らせるための技術を試した車両たち。300Xは1996年に電車方式で当時の世界最高速度となる443km/hを記録しました。隣接する大型低騒音風洞では、車体に風を当て、高速走行で生じる空気抵抗や空力騒音を調べています。車窓に一瞬見える先頭車は、速さだけでなく、静かさや環境への配慮も研究してきた新幹線の歩みを思わせます。",
-      "en": "Three preserved experimental trains—300X, WIN350 and STAR21—stand at the Railway Technical Research Institute site south of Maibara Station. Their purpose was testing, rather than carrying regular passengers. In 1996, 300X reached 443 km/h, then a world record for an electric multiple-unit train. The neighbouring low-noise wind tunnel studies aerodynamic drag and the noise produced by vehicles at speed. The display is a small glimpse of the research behind a fast, quieter journey."
+      "ja": "米原駅の南にある新幹線高速試験車両保存場には、JR東海の300X、JR西日本のWIN350、JR東日本のSTAR21の先頭車が1両ずつ並んでいます。1990年代、各社がより速く、より静かに走る新幹線を目指して試作した車両たちです。保存場がある鉄道総研の風洞技術センターでは、風を当てて車体の空気抵抗や騒音を調べます。線路脇に違う顔が並ぶのは、高速化の試みを3社分、同じ場所で見比べられるからです。",
+      "en": "South of Maibara Station, three preserved cab cars stand at the Railway Technical Research Institute’s Wind Tunnel Technical Center: JR Central’s 300X, JR West’s WIN350 and JR East’s STAR21. In the 1990s these prototypes explored faster, quieter Shinkansen travel. The neighbouring wind tunnel studies aerodynamic drag and noise; the three different train fronts offer a glimpse of that research history."
     },
     "explainer": {
       "heading": {
@@ -9001,6 +9210,48 @@ const SPOTS = [
           "en": "JR Central: 300X exhibit (Japanese)"
         },
         "url": "https://museum.jr-central.co.jp/floormap/"
+      },
+      {
+        "label": {
+          "ja": "JR西日本：WIN350と500系の開発",
+          "en": "JR West: WIN350 and the 500 series (Japanese)"
+        },
+        "url": "https://www.jr-odekake.net/navi/the_last_run/project-500k/"
+      },
+      {
+        "label": {
+          "ja": "JR東日本：高速試験車両の開発とSTAR21",
+          "en": "JR East: high-speed test trains and STAR21"
+        },
+        "url": "https://www.jreast.co.jp/en/e/press/20040201/index.html"
+      },
+      {
+        "label": {
+          "ja": "国立科学博物館：WIN350の技術史資料",
+          "en": "National Museum of Nature and Science: WIN350 (Japanese)"
+        },
+        "url": "https://sts.kahaku.go.jp/sts/detail.php?c=&city=&id=&no=100910131426&org=&p=259&pref=&word=&y1=&y2="
+      },
+      {
+        "label": {
+          "ja": "国立科学博物館：STAR21の技術史資料",
+          "en": "National Museum of Nature and Science: STAR21 (Japanese)"
+        },
+        "url": "https://sts.kahaku.go.jp/sts/detail.php?c=&city=&id=&no=100910131427&org=&p=257&pref=&word=&y1=&y2="
+      },
+      {
+        "label": {
+          "ja": "300X・STAR21写真：CC BY 3.0（z tanuki）",
+          "en": "300X and STAR21 photographs: CC BY 3.0 (z tanuki)"
+        },
+        "url": "https://creativecommons.org/licenses/by/3.0/"
+      },
+      {
+        "label": {
+          "ja": "WIN350写真：CC BY-SA 4.0（DAJF）",
+          "en": "WIN350 photograph: CC BY-SA 4.0 (DAJF)"
+        },
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/"
       }
     ],
     "relatedSpotIds": [
@@ -9016,8 +9267,125 @@ const SPOTS = [
     "viewpoint": {
       "lat": 35.31007050780591,
       "lng": 136.28769948344979
-    }
+    },
+    "pageChapters": [
+      {
+        "id": "train-300x",
+        "heading": {
+          "ja": "300X：JR東海の高速鉄道システム研究",
+          "en": "300X — JR Central’s high-speed research train"
+        },
+        "paragraphs": {
+          "ja": [
+            "300Xは新幹線955形の試験電車です。車体や台車などを含む高速鉄道システムを研究するために造られ、1996年には443km/hという電車方式で当時の世界最高速度を記録しました。速度だけを競うのではなく、その先の営業車両を支える技術を試す役割でした。",
+            "参考写真では、白と青の車体に「300X」の文字が見えます。今の車窓写真では架線や電柱が重なり、文字まで読めるとは限りません。"
+          ],
+          "en": [
+            "300X, designated Class 955, was built by JR Central to test a high-speed railway system, including vehicle and running-gear technology. In 1996 it reached 443 km/h, then a world record for an electric multiple-unit train.",
+            "The reference photograph shows its white and blue body and 300X lettering. Wires and poles can hide those details in the brief view from a passing train."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/maibara_300x_commons.jpg",
+            "width": 2133,
+            "height": 1600,
+            "alt": {
+              "ja": "米原に保存されている300Xの先頭車",
+              "en": "300X cab car preserved at Maibara"
+            },
+            "credit": {
+              "ja": "z tanuki / Wikimedia Commons / CC BY 3.0",
+              "en": "z tanuki / Wikimedia Commons / CC BY 3.0"
+            },
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:300X_Shinkansen_Test_train_,_%E6%96%B0%E5%B9%B9%E7%B7%9A_300X_-_panoramio_(1).jpg",
+            "date": "2014-04-12",
+            "note": {
+              "ja": "車両を見分ける参考写真。原版無加工、縮小表示。撮影年は下記のとおり。",
+              "en": "Reference photograph to identify the vehicle; original uncropped, resized for display. Taken on the date shown below."
+            }
+          }
+        ]
+      },
+      {
+        "id": "train-win350",
+        "heading": {
+          "ja": "WIN350：500系へつながったJR西日本の試験車",
+          "en": "WIN350 — JR West’s route to the 500 series"
+        },
+        "paragraphs": {
+          "ja": [
+            "WIN350はJR西日本の500系900番台。山陽新幹線の高速化に向けて試験を行い、その成果が営業用500系の開発に生かされました。名前の350は350km/h運転を目指した開発を表しています。",
+            "参考写真では、低く伸びた先頭部と青い帯、側面の「WIN350」が目印です。速さを支える先頭形状を、ほかの2両と見比べてみてください。"
+          ],
+          "en": [
+            "WIN350 was JR West’s experimental 500-900 series for higher speeds on the Sanyo Shinkansen. The trials informed the production 500 series, and the 350 in its name refers to the development goal of 350 km/h operation.",
+            "In the reference photograph, note the long, low front, blue stripe and WIN350 lettering. Compare its profile with the other two experimental trains."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/maibara_win350_commons.jpg",
+            "width": 1461,
+            "height": 940,
+            "alt": {
+              "ja": "米原に保存されているWIN350の先頭車",
+              "en": "WIN350 cab car preserved at Maibara"
+            },
+            "credit": {
+              "ja": "DAJF / Wikimedia Commons / CC BY-SA 4.0",
+              "en": "DAJF / Wikimedia Commons / CC BY-SA 4.0"
+            },
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:WIN350_Maibara_19981011.jpg",
+            "date": "1998-10-11",
+            "note": {
+              "ja": "車両を見分ける参考写真。原版無加工、縮小表示。撮影年は下記のとおり。",
+              "en": "Reference photograph to identify the vehicle; original uncropped, resized for display. Taken on the date shown below."
+            }
+          }
+        ]
+      },
+      {
+        "id": "train-star21",
+        "heading": {
+          "ja": "STAR21：軽さと静かさを試したJR東日本の車両",
+          "en": "STAR21 — JR East’s lighter, quieter prototype"
+        },
+        "paragraphs": {
+          "ja": [
+            "STAR21はJR東日本の新幹線952・953形の試験車両。軽量化や空気の流れを整える車体など、次世代車両のための技術を試しました。1993年には試験走行で425km/hを記録しています。",
+            "参考写真は米原で保存されている先頭車を正面から見たもの。幅のある運転台の窓と、滑らかに下へ続く前面が印象的です。写真は保存車両の姿を知る参考で、車窓からこの角度で見えるわけではありません。"
+          ],
+          "en": [
+            "STAR21, JR East’s Class 952/953 prototype, explored lower weight, smoother aerodynamics and other technologies for the next generation. It reached 425 km/h during testing in 1993.",
+            "This reference photograph faces the preserved Maibara cab car. Notice the broad cab window and the smooth front below it. A passing Shinkansen gives you a different, much briefer angle."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/maibara_star21_commons.jpg",
+            "width": 2133,
+            "height": 1600,
+            "alt": {
+              "ja": "米原に保存されているSTAR21の先頭車",
+              "en": "STAR21 cab car preserved at Maibara"
+            },
+            "credit": {
+              "ja": "z tanuki / Wikimedia Commons / CC BY 3.0",
+              "en": "z tanuki / Wikimedia Commons / CC BY 3.0"
+            },
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Star21_Shinkansen_Test_train_,_%E6%96%B0%E5%B9%B9%E7%B7%9A_star21_-_panoramio_(1).jpg",
+            "date": "2014-04-12",
+            "note": {
+              "ja": "車両を見分ける参考写真。原版無加工、縮小表示。撮影年は下記のとおり。",
+              "en": "Reference photograph to identify the vehicle; original uncropped, resized for display. Taken on the date shown below."
+            }
+          }
+        ]
+      }
+    ]
   },
+
 ];
 
 // 727看板コレクションの内部台帳。sourceNo / id は外部調査元・管理画面との照合用で、公開UIには出さない。
