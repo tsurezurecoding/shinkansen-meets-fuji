@@ -323,7 +323,8 @@ function projectChapters(spot, lang) {
       return { ...projectPhoto(photo, spot, lang, index), width: photo.width, height: photo.height };
     });
     const link = chapter.link;
-    if (link && (!/^spots\/[a-z0-9-]+\.html$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
+    if (link && (!/^(?:spots\/)?[a-z0-9-]+\.html(?:#[a-z][a-z0-9-]*)?$/.test(link.route) || !localized(link.label, lang))) throw new Error(`Invalid chapter link for ${spot.id}`);
+    if (link && !fs.existsSync(path.join(appDir, lang === "en" ? "en" : "", link.route.split("#")[0]))) throw new Error(`Missing chapter link target for ${spot.id}/${lang}: ${link.route}`);
     return { id: chapter.id, heading, paragraphs, photos, ...(link ? { link: { route: (lang === "en" ? "en/" : "") + link.route, label: localized(link.label, lang) } } : {}) };
   });
   const order = spot.pageChapterOrder?.[lang];

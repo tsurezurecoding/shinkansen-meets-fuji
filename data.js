@@ -2387,26 +2387,20 @@ const SPOTS = [
       "story": "As Atami approaches, Seat A reveals hillside buildings and the sea. The low island offshore is Hatsushima; the white Atami Castle stands above the town. This is a later opening than the Shiraitogawa bridge near Nebukawa. Watch the window again as daylight returns after the tunnels."
     },
     "pageTitle": {
-      "ja": "新幹線から見える熱海城と初島｜熱海の車窓 | 新幹線の窓",
+      "ja": "熱海城と初島｜新幹線A席から見える熱海の車窓 | 新幹線の窓",
       "en": "Atami from the Shinkansen: Atami Castle & Hatsushima | Shinkansen Window"
     },
     "pageHeading": {
       "ja": "新幹線から見る熱海城と初島",
-      "en": "Atami from the Shinkansen: a castle above the sea"
+      "en": "Atami from the Shinkansen: Atami Castle & Hatsushima"
     },
     "pageHeadingChunks": {
-      "ja": [
-        "根府川から熱海へ、",
-        "相模湾の車窓"
-      ],
-      "en": [
-        "Along Sagami Bay:",
-        "from Nebukawa to Atami"
-      ]
+      "ja": ["新幹線から見る", "熱海城と初島"],
+      "en": []
     },
     "metaDescription": {
-      "ja": "東海道新幹線のA席側に見える熱海城と初島。山上の白い天守風の建物と海に浮かぶ低い島を、車窓写真で見分けます。",
-      "en": "See Atami Castle and Hatsushima from Seat A on the Tokaido Shinkansen. Window photographs show the hillside landmark and the low island offshore."
+      "ja": "熱海城は新幹線から見える？東海道新幹線のA席側で探す、山上の白い熱海城と沖の初島。車窓写真で見える位置と目印を紹介し、熱海海上花火の車窓記録も案内します。",
+      "en": "Can you see Atami Castle from the Shinkansen? Find the hillside landmark and Hatsushima from Seat A, with window photos and a link to Atami Sea Fireworks views."
     },
     "sectionHeading": {
       "ja": "海へ下る熱海の街",
@@ -2519,22 +2513,6 @@ const SPOTS = [
         "note": {
           "ja": "夕暮れ、山の上で白く光る熱海城",
           "en": "At dusk, Atami Castle glows white on the hill."
-        }
-      },
-      {
-        "src": "images/20260804_sagami_bay_michikusa.jpg",
-        "alt": {
-          "ja": "新幹線のA席側から見える朝の相模湾",
-          "en": "Sagami Bay from Seat A on a morning Shinkansen"
-        },
-        "credit": {
-          "ja": "michikusa",
-          "en": "michikusa"
-        },
-        "date": "2026-08-04",
-        "note": {
-          "ja": "のぞみ1号（東京06:00発）、車内時計で06:35ごろ",
-          "en": "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35."
         }
       },
       {
@@ -2718,6 +2696,29 @@ const SPOTS = [
         ]
       },
       {
+        "id": "atami-fireworks",
+        "heading": {
+          "ja": "夜の熱海：海上花火の車窓",
+          "en": "Atami at night: fireworks over the sea"
+        },
+        "paragraphs": {
+          "ja": [
+            "熱海の海は、夜には花火の舞台にもなります。花火ページでは、走る新幹線から熱海海上花火が見えた投稿を紹介しています。開催日や列車の通過時刻が合うときの、昼とは違う車窓の楽しみです。"
+          ],
+          "en": [
+            "Atami’s coastline also hosts fireworks at night. Our fireworks page collects posts showing Atami Sea Fireworks from moving Shinkansen trains—a different window view when an event and your train’s timing coincide."
+          ]
+        },
+        "photos": [],
+        "link": {
+          "route": "hanabi.html#hb-atami",
+          "label": {
+            "ja": "熱海海上花火の車窓記録を見る →",
+            "en": "See Atami Sea Fireworks from the train →"
+          }
+        }
+      },
+      {
         "id": "earlier-nebukawa",
         "heading": {
           "ja": "少し前の車窓：白糸川橋梁",
@@ -2742,7 +2743,6 @@ const SPOTS = [
       }
     ]
   },
-
   {
     id: "odawara-castle",
     icon: "🏯",
@@ -9004,6 +9004,22 @@ const SPOTS = [
           "ja": "白糸川橋梁と谷あいの町並み",
           "en": "Shiraitogawa bridge and the surrounding valley"
         }
+      },
+      {
+        "src": "images/20260804_sagami_bay_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える朝の相模湾",
+          "en": "Sagami Bay from Seat A on a morning Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "のぞみ1号（東京06:00発）、車内時計で06:35ごろ 相模湾の海景。橋自体はこの写真には写っていません。",
+          "en": "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35. A sea view of Sagami Bay; the bridge itself is not pictured."
+        }
       }
     ],
     "references": [
@@ -9105,7 +9121,6 @@ const SPOTS = [
       "odawara"
     ]
   },
-
   {
     "id": "maibara-test-trains",
     "icon": "🚄",
@@ -9131,13 +9146,10 @@ const SPOTS = [
     },
     "pageHeadingChunks": {
       "ja": [
-        "米原の線路脇に並ぶ、",
-        "高速試験車両"
+        "米原の",
+        "新幹線高速試験車両保存場"
       ],
-      "en": [
-        "Three experimental Shinkansen",
-        "beside the tracks at Maibara"
-      ]
+      "en": []
     },
     "metaDescription": {
       "ja": "米原駅の南、新幹線A席から見える新幹線高速試験車両保存場。300X・WIN350・STAR21の3車両が試した技術と、車窓での見つけ方を写真付きで紹介。",
@@ -9385,7 +9397,6 @@ const SPOTS = [
       }
     ]
   },
-
 ];
 
 // 727看板コレクションの内部台帳。sourceNo / id は外部調査元・管理画面との照合用で、公開UIには出さない。
