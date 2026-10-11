@@ -1,8 +1,8 @@
 .everyday-related{width:min(1100px,calc(100% - 40px));margin:56px auto;padding-top:30px;border-top:1px solid var(--line);box-sizing:border-box}
-.everyday-related .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;text-align:left;margin-bottom:24px}
+.everyday-related .section-head{display:block;text-align:center;margin-bottom:27px}
 .everyday-related .eyebrow{color:#9b5033;font-size:11px;letter-spacing:.16em;margin:0 0 8px}
-.everyday-related h2{font-family:var(--font-serif);font-size:clamp(26px,3vw,34px);line-height:1.25;margin:0}
-.everyday-all-stories{color:var(--ink);font-size:13px;text-decoration:none;white-space:nowrap;padding:12px 0;border-bottom:1px solid var(--ink)}
+.everyday-related h2{font-family:var(--font-serif);font-weight:600;font-size:clamp(25px,3vw,32px);line-height:1.4;margin:0}
+.everyday-all-stories{display:inline-block;color:var(--ink);font-size:13px;text-decoration:none;white-space:nowrap;margin-top:10px;padding:5px 0;border-bottom:1px solid var(--ink)}
 .everyday-related-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .everyday-story-card{display:grid;grid-template-columns:42% minmax(0,1fr);min-width:0;overflow:hidden;background:var(--card);border:1px solid var(--line);border-radius:12px;color:var(--ink);text-decoration:none;transition:border-color .2s,box-shadow .2s}
 .everyday-story-photo{display:block;overflow:hidden;min-height:190px;background:var(--paper-deep)}
