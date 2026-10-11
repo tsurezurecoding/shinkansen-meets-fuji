@@ -1,7 +1,7 @@
 # Android invitation: release contract
 
 Approved scope: Japanese/English TOP (`index.html`) and Fuji guide (`guide.html`),
-latest main 969b62b1450827d98914473f8c42dc24b6b41352. PR62 is untouched.
+base main 82a8f01365cc56df7c4e169e6112c12396dc2e1f (PR83 integrated). PR62 is untouched.
 The scoped floating invitation retains the approved app icon and official localized
 Play badges. The canonical generator injects the same implementation into all four
 pages. No other language or app page receives the invitation.
