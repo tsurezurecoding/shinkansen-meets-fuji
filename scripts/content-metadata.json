@@ -50,8 +50,8 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-07-01",
-    "modified": "2026-10-05",
-    "modifiedEvidence": "2026-10-05_guide-seat-correction-release.md (Pages 37239195428): correct Seat E reservation guidance",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_train-seo-entry.md: general viewing guide retained; train-number index and personal estimates moved to train search",
     "image": "images/20240211_fuji_michikusa.jpg",
     "imageRights": "own",
     "imageEvidence": "data.js fuji.photos: credit michikusa; existing guide hero image",
@@ -520,8 +520,8 @@
     "imageRights": "own",
     "imageEvidence": "Existing guide body image; data.js fuji.photos credit michikusa.",
     "imageAlt": "Snow-covered Mt. Fuji seen from the Seat E side of the Shinkansen",
-    "modified": "2026-10-07",
-    "modifiedEvidence": "2026-10-07_english-seo-release.md / PR70 / Pages37626697890: English editorial introduction and six service viewing-time tables."
+    "modified": "2026-10-11",
+    "modifiedEvidence": "2026-10-11_train-seo-entry.md: general viewing guide retained; train-number index and personal estimates moved to train search"
   },
   "en/yakei.html": {
     "kind": "editorial article",

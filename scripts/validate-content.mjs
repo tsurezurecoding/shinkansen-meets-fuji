@@ -42,12 +42,10 @@ const checks = [
   {
     file: "start.html",
     required: [
-      '<meta name="robots" content="noindex,follow">',
+      '<meta name="robots" content="index,follow,max-image-preview:large">',
       'id="journey"',
-      'data-cta-id="top_journey_disney"',
       'data-cta-id="top_footer_disney"',
       'href="sparkling-dreams.html"',
-      'data-cta-id="top_journey_727"',
       'data-cta-id="top_footer_727"',
       'href="727-collection.html"',
       'https://www.googletagmanager.com/gtag/js?id=',
@@ -79,12 +77,10 @@ const checks = [
     file: "en/start.html",
     required: [
       '<html lang="en"',
-      '<meta name="robots" content="noindex,follow">',
+      '<meta name="robots" content="index,follow,max-image-preview:large">',
       'id="journey"',
-      'data-cta-id="top_journey_disney"',
       'data-cta-id="top_footer_disney"',
       'href="en/sparkling-dreams.html"',
-      'data-cta-id="top_journey_727"',
       'data-cta-id="top_footer_727"',
       'href="en/727-collection.html"',
       'https://www.googletagmanager.com/gtag/js?id=',
@@ -92,7 +88,7 @@ const checks = [
       'data-cta-track="android_app_guide_click"',
       'Available on Google Play.',
     ],
-    forbidden: ['<link rel="canonical"', 'hreflang=', 'application/ld+json', 'window.MADO_ANALYTICS_DISABLED=true', 'early_access_click'],
+    forbidden: [ 'window.MADO_ANALYTICS_DISABLED=true', 'early_access_click'],
   },
   {
     file: "app.js",
@@ -179,11 +175,11 @@ if (!appSelfSource) {
 
 for (const file of ["start.html", "en/start.html"]) {
   const text = await readFile(new URL(file, root), "utf8");
-  if (!/<meta name="robots" content="noindex,follow">/.test(text)) {
-    failures.push(`${file}: train selector must be noindex,follow`);
+  if (!/<meta name="robots" content="index,follow,max-image-preview:large">/.test(text)) {
+    failures.push(`${file}: train search must be indexable`);
   }
-  if (/<link\s+rel="canonical"|hreflang=|application\/ld\+json/.test(text)) {
-    failures.push(`${file}: train selector must not publish canonical, hreflang, or JSON-LD metadata`);
+  if (!text.includes(`<link rel="canonical" href="https://www.michikusa-travel.com/${file}">`) || !text.includes('hreflang="x-default"')) {
+    failures.push(`${file}: train search must publish canonical and language alternates`);
   }
 }
 

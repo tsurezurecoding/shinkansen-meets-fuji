@@ -20,8 +20,16 @@ const MSG = {
     navMore: "もっと見る", navMieru: "富士山 見える予報", navArtworks: "車窓の作品集", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
-    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">きょうの旅を</span><span class="copy-chunk">教えてください</span>',
-    setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">見どころの時刻と座席側を調べます。</span>',
+    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">見える時間を</span><span class="copy-chunk">乗る列車に合わせて</span>',
+    setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>',
+    trainLinkInvalid: "リンクの列車を確認できませんでした。方向・乗車駅・出発時刻から、乗る列車を選び直してください。",
+    fujiAnswerTitle: "富士山の通過目安",
+    fujiAnswerTime: (time) => `${time}頃 · 新富士付近`,
+    fujiAnswerSeat: "普通車はE席・グリーン車はD席",
+    fujiAnswerWest: "京都・新大阪方面は進行方向の右側です。",
+    fujiAnswerEast: "東京方面は進行方向の左側です。",
+    fujiAnswerNote: "時刻はダイヤからの目安です。遅れ・天候・日没により、時刻や見え方が変わります。",
+    fujiAnswerOutside: "この乗車区間に、新富士付近の富士山ポイントは含まれません。",
     labelDirection: "方向", labelDeparture: "出発時刻",
     dirWest: "西へ（大阪方面）", dirEast: "東へ（東京方面）",
     btnNow: "これから乗る",
@@ -209,8 +217,16 @@ const MSG = {
     navMore: "More", navMieru: "Visibility β", navArtworks: "Window Artworks", navSumie: "Sumie Window", navSomato: "Window Journey", navRefs: "Links", navLp: "About this app", navContact: "Contact", navPrivacy: "Privacy Policy",
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
-    setupEyebrow: "YOUR JOURNEY", setupTitle: "Tell us about today's ride",
-    setupSub: '<span class="copy-chunk">Choose a direction, station, and departure time.</span> <span class="copy-chunk">Check when and which side to watch.</span>',
+    setupEyebrow: "YOUR JOURNEY", setupTitle: "Mt. Fuji, lakes and more. Find viewing times for your train.",
+    setupSub: "Choose your direction, boarding station and departure time.",
+    trainLinkInvalid: "We could not find the train in this link. Choose your direction, boarding station, and departure time to select the right train.",
+    fujiAnswerTitle: "Mt. Fuji passing time",
+    fujiAnswerTime: (time) => `Around ${time} · near Shin-Fuji`,
+    fujiAnswerSeat: "Ordinary car: seat E · Green Car: seat D",
+    fujiAnswerWest: "Look right toward Kyoto / Shin-Osaka.",
+    fujiAnswerEast: "Look left toward Tokyo.",
+    fujiAnswerNote: "Estimated from the timetable. Delays may shift the time; clouds and darkness can hide Mt. Fuji.",
+    fujiAnswerOutside: "The Mt. Fuji viewpoint near Shin-Fuji is outside your boarding section.",
     labelDirection: "Direction", labelDeparture: "Departure",
     dirWest: "Westbound (for Osaka)", dirEast: "Eastbound (for Tokyo)",
     btnNow: "Boarding soon",
@@ -416,12 +432,17 @@ function localizedPageHref(targetLang) {
     : file;
   const destination = new URL(target, document.baseURI);
   destination.search = location.search;
+  // A query-language override must follow the switch, not force the previous language.
+  if (destination.searchParams.has("lang")) destination.searchParams.set("lang", targetLang);
+  if (isTrainSearchPage() && journey?.mode === "train") setJourneyParams(destination, journey);
   destination.hash = location.hash;
   return destination.href;
 }
 let direction = "west";
 let boardId = "Tokyo";        // 乗車駅
 let journey = null;           // 生成済みタイムライン {mode, train, stops, spots}
+let invalidTrainLink = false;
+const BASE_PAGE_TITLE = document.title;
 const PREVIEW_DEP_MIN = 0;
 let boardCollectionExpanded = false;
 let wheelCollectionExpanded = false;
@@ -747,7 +768,7 @@ function restoreLastJourney() {
   }
   trainPicker.showTrain(direction, boardId, match.tr);
   invalidateJourneyForInputChange();
-  buildTimeline(match.tr, match.dep);
+  buildTimeline(match.tr, match.dep, { initial: true });
   track("journey_restored", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
   return true;
 }
@@ -758,7 +779,7 @@ function restoreLastJourney() {
 function restoreLastJourneyAfterHydration() {
   if (!window.MadoStorage) return;
   window.addEventListener("mado:storage-ready", () => {
-    if (journey) return;
+    if (journey || invalidTrainLink) return;
     restoreLastJourney();
   }, { once: true });
 }
@@ -768,16 +789,21 @@ function restoreLastJourneyAfterHydration() {
    保存値より優先する。リンクで来た人は、前回の選択ではなくリンク先を見たいため。 */
 function selectTrainFromLink() {
   const params = new URLSearchParams(location.search);
+  if (!["train", "board", "dir"].some((key) => params.has(key))) return "none";
+  const rejectLink = () => {
+    invalidTrainLink = true;
+    renderTrainLinkNotice();
+    return "invalid";
+  };
   const raw = params.get("train");
-  if (!raw) return false;
-  const parsed = /^([A-Za-z]+)[-\s]?(\d{1,4})$/.exec(raw.trim());
-  if (!parsed) return false;
+  const parsed = /^([A-Za-z]+)[-\s]?(\d{1,4})$/.exec((raw || "").trim());
+  if (!parsed) return rejectLink();
   const wantType = parsed[1].charAt(0).toUpperCase() + parsed[1].slice(1).toLowerCase();
   const wantNumber = Number(parsed[2]);
   const wantBoard = params.get("board");
   const wantDir = params.get("dir");
-  if (wantDir !== "west" && wantDir !== "east") return false;
-  if (!wantBoard || !Object.prototype.hasOwnProperty.call(REF, wantBoard)) return false;
+  if (wantDir !== "west" && wantDir !== "east") return rejectLink();
+  if (!wantBoard || !Object.prototype.hasOwnProperty.call(REF, wantBoard)) return rejectLink();
 
   const prevDirection = direction;
   const prevBoardId = boardId;
@@ -787,13 +813,56 @@ function selectTrainFromLink() {
   if (!match) {
     direction = prevDirection;
     boardId = prevBoardId;
-    return false;
+    return rejectLink();
   }
   trainPicker.showTrain(direction, boardId, match.tr);
   invalidateJourneyForInputChange();
-  buildTimeline(match.tr, match.dep);
+  buildTimeline(match.tr, match.dep, { initial: true });
   track("journey_from_link", { direction, board_station: boardId, train_type: match.tr.type, train_number: match.tr.number });
-  return true;
+  return "selected";
+}
+
+function isTrainSearchPage() {
+  return /\/start\.html$/i.test(location.pathname.replace(/\\/g, "/"));
+}
+
+function hasFujiIntent() {
+  return isTrainSearchPage() && new URLSearchParams(location.search).get("focus") === "fuji";
+}
+
+function setJourneyParams(url, selected) {
+  url.searchParams.set("train", `${selected.train.type}-${selected.train.number}`);
+  url.searchParams.set("board", selected.boardId);
+  url.searchParams.set("dir", selected.direction);
+}
+
+// Keep the current route, query flags, and modal hash. Native/embedded pages own their URLs.
+function syncJourneyUrl() {
+  if (!isTrainSearchPage() || window.MADO_EMBEDDED_WEB || window.MADO_NATIVE_APP || window.Capacitor || window.top !== window.self) return;
+  try {
+    const url = new URL(location.href);
+    if (journey?.mode === "train") setJourneyParams(url, journey);
+    else ["train", "board", "dir"].forEach((key) => url.searchParams.delete(key));
+    history.replaceState(history.state, "", url);
+  } catch {
+    // Some local-file and embedded previews cannot update history; the result still works.
+  }
+}
+
+function renderTrainLinkNotice() {
+  let notice = $("#trainLinkNotice");
+  if (!notice && invalidTrainLink) {
+    const picker = $("[data-train-picker]");
+    if (!picker) return;
+    notice = document.createElement("p");
+    notice.id = "trainLinkNotice";
+    notice.className = "train-link-notice";
+    notice.setAttribute("role", "status");
+    picker.before(notice);
+  }
+  if (!notice) return;
+  notice.hidden = !invalidTrainLink;
+  notice.textContent = invalidTrainLink ? t("trainLinkInvalid") : "";
 }
 function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
   if (!journey || (!board && !wheel)) return journey?.spots || [];
@@ -1254,6 +1323,7 @@ function applyLang() {
   updateGalleryFilterButtons();
   updateTimelineFilterButtons();
   renderShowcase();
+  renderTrainLinkNotice();
   trainPicker?.setLang(lang);
   const tl = $("#timelineSection");
   if (tl && !tl.hidden) renderTimeline();
@@ -1445,6 +1515,7 @@ function mountTrainPicker() {
       direction = state.direction;
       boardId = state.boardId;
       invalidateJourneyForInputChange();
+      syncJourneyUrl();
       if (directionChanged && $("#timelineSection")?.classList.contains("timeline-preview")) renderInitialTimelinePreview();
     },
     onSearch() {
@@ -1455,8 +1526,11 @@ function mountTrainPicker() {
     },
     onSelect({ tr, dep }) {
       track("train_selected", { direction, board_station: boardId, train_type: tr.type, train_number: tr.number });
+      invalidTrainLink = false;
+      renderTrainLinkNotice();
       saveLastJourney(tr);
       buildTimeline(tr, dep);
+      syncJourneyUrl();
     },
   });
 }
@@ -1485,8 +1559,27 @@ function buildTimeline(train = null, depMin = null, options = {}) {
     stopLive();
   } else {
     startLive();
-    timelineSection.scrollIntoView({ behavior: "smooth" });
+    scrollToJourneyResult(options);
   }
+}
+
+function scrollToJourneyResult(options = {}) {
+  const answer = $("#fujiTrainAnswer");
+  const focusAnswer = hasFujiIntent() && answer && !answer.hidden;
+  if (options.initial && focusAnswer) {
+    const initialJourney = journey;
+    // The browser can apply #journey after DOMContentLoaded and cancel a smooth scroll.
+    // Wait for the initial load/fragment layout, then make one definite navigation.
+    // Timeline thumbnails are below the answer, so their lazy loads need no retries.
+    const afterLoad = () => requestAnimationFrame(() => {
+      if (journey !== initialJourney || !hasFujiIntent() || answer.hidden || activeSpotModal || activeQuickModal) return;
+      answer.scrollIntoView({ behavior: "instant", block: "start" });
+    });
+    if (document.readyState === "complete") afterLoad();
+    else window.addEventListener("load", afterLoad, { once: true });
+    return;
+  }
+  (focusAnswer ? answer : $("#timelineSection")).scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function renderInitialTimelinePreview() {
@@ -1499,6 +1592,7 @@ function renderInitialTimelinePreview() {
 
 function renderTimeline() {
   if (!journey) return;
+  renderFujiTrainAnswer();
   const base = t(direction === "west" ? "tlTitleWest" : "tlTitleEast");
   const tag = journey.mode === "train"
     ? timelineTrainTagHTML(journey.train)
@@ -1531,6 +1625,43 @@ function renderTimeline() {
   });
   $("#timeline").innerHTML = html.join("");
   bindSpotEvents($("#timeline"));
+}
+
+function renderFujiTrainAnswer() {
+  if (!isTrainSearchPage()) return;
+  const answer = $("#fujiTrainAnswer");
+  if (!answer) return;
+  if (!journey || journey.mode !== "train") {
+    answer.hidden = true;
+    answer.replaceChildren();
+    document.title = BASE_PAGE_TITLE;
+    return;
+  }
+  const train = journey.train;
+  const type = (TRAIN_NAMES[train.type] || { ja: train.type, en: train.type })[lang];
+  const trainName = lang === "ja" ? `${type}${train.number}号` : `${type} ${train.number}`;
+  if (!hasFujiIntent()) {
+    answer.hidden = true;
+    answer.replaceChildren();
+    document.title = `${trainName} | ${BASE_PAGE_TITLE}`;
+    return;
+  }
+  const fuji = journey.spots.find((item) => item.sp.id === "fuji" && Number.isFinite(item.clock));
+  const time = fuji ? minToClock(fuji.clock) : null;
+  const boarding = `${stationLabel(journey.boardId)} ${minToClock(journey.depMin)} ${t("dep")}`;
+  answer.setAttribute("aria-labelledby", "fujiTrainAnswerTitle");
+  answer.innerHTML = `
+    <p class="fuji-train-answer-kicker">YOUR TRAIN</p>
+    <h2 class="fuji-train-answer-title" id="fujiTrainAnswerTitle">${escapeHTML(t("fujiAnswerTitle"))}</h2>
+    <p class="fuji-train-answer-train">${escapeHTML(trainName)} · ${escapeHTML(boarding)}</p>
+    ${fuji ? `
+      <p class="fuji-train-answer-time"><time datetime="${time}">${escapeHTML(t("fujiAnswerTime", time).split(" · ")[0])}</time><span>${escapeHTML(t("fujiAnswerTime", time).split(" · ")[1])}</span></p>
+      <p class="fuji-train-answer-seat"><strong>${escapeHTML(t("fujiAnswerSeat"))}</strong><span>${escapeHTML(t(journey.direction === "west" ? "fujiAnswerWest" : "fujiAnswerEast"))}</span></p>
+      <p class="fuji-train-answer-note">${escapeHTML(t("fujiAnswerNote"))}</p>
+    ` : `<p class="fuji-train-answer-note">${escapeHTML(t("fujiAnswerOutside"))}</p>`}`;
+  answer.hidden = false;
+  const titleAnswer = time ? (lang === "ja" ? `富士山 ${time}頃` : `Mt. Fuji ~${time}`) : t("fujiAnswerTitle");
+  document.title = `${trainName} — ${titleAnswer} | ${BASE_PAGE_TITLE}`;
 }
 
 function timelineTrainTagHTML(train) {
@@ -2381,6 +2512,7 @@ function updateTimelineFilterButtons() {
 
 function invalidateJourneyForInputChange() {
   journey = null;
+  renderFujiTrainAnswer();
   syncCollectionToggleUI();
 }
 
@@ -2683,7 +2815,8 @@ function init() {
   $("#buildBtn")?.addEventListener("click", () => buildTimeline(null));
   applyLang();
   renderInitialTimelinePreview();
-  if (!selectTrainFromLink() && !restoreLastJourney()) restoreLastJourneyAfterHydration();
+  const trainLinkResult = selectTrainFromLink();
+  if (trainLinkResult === "none" && !restoreLastJourney()) restoreLastJourneyAfterHydration();
   window.addEventListener("hashchange", () => syncModalWithLocation("hashchange"));
   window.addEventListener("popstate", () => syncModalWithLocation("popstate"));
   const params = new URLSearchParams(location.search);
