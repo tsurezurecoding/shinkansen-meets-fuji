@@ -15,6 +15,7 @@
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   gap: 9px; padding: 5px 12px;
+  line-height: 1.5; /* fixed here so every page's header has the same height */
   background: rgba(16, 28, 44, 0.92);
   backdrop-filter: blur(8px);
   color: #fff;
@@ -118,6 +119,8 @@
 }
 
 .top-nav-menu .top-nav-menu-compact { display: none; }
+/* スタンプ帖は狭い幅では「もっと見る」の中へ移る */
+.top-nav-menu .top-nav-menu-stamp { display: none; }
 
 .top-nav a:hover,
 .top-nav a:focus-visible {
@@ -152,7 +155,8 @@
 .lang-switch button.active,
 .lang-switch a.active { background: #fff; color: var(--night, #101c2c); font-weight: 700; }
 
-@media (min-width: 900px) {
+/* from 760px the header is one row with the same logo, tagline and height */
+@media (min-width: 760px) {
   .topbar {padding: 10px 24px; gap: 16px;}
   .brand {gap: 10px;}
   .brand-mark {width: 38px; height: 38px; border-radius: 10px; font-size: 20px;}
@@ -165,7 +169,30 @@
   .lang-switch button {font-size: 12.5px; padding: 6px 12px;}
 }
 
-@media (max-width: 1099px) {
+/* 760-1099px: the nav items tighten so they fit beside the logo. */
+@media (min-width: 760px) and (max-width: 1099px) {
+  .topbar {gap: 10px; padding-inline: 18px;}
+  .brand-sub {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+  .top-nav {gap: 2px; flex-wrap: nowrap;}
+  .top-nav a,
+  .top-nav-more summary {padding: 6px 9px; font-size: 12.5px;}
+  .top-nav-overflow {display: none;}
+  .top-nav-menu .top-nav-menu-compact {display: block;}
+  .lang-switch button {padding: 5px 10px;}
+}
+/* below 900px the stamp book (and a page's extra overflow link) live in the menu */
+@media (max-width: 899px) {
+  .top-nav-stamp,
+  .top-nav-overflow {display: none;}
+  .top-nav-menu .top-nav-menu-stamp,
+  .top-nav-menu .top-nav-menu-compact {display: block;}
+}
+@media (min-width: 760px) and (max-width: 999px) {
+  .top-nav a,
+  .top-nav-more summary {padding: 6px 7px; font-size: 12px;}
+}
+
+@media (max-width: 759px) {
   .topbar {display: grid; grid-template-columns: minmax(0, 1fr) auto; min-width: 0;}
   .brand {min-width: 0;}
   .brand-name,
@@ -173,8 +200,14 @@
   .brand-sub {min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
   .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; row-gap: 4px; min-width: 0; max-width: 100%; overflow: visible; padding-top: 2px;}
   .top-nav a,
-  .top-nav-more summary {white-space: nowrap;}
+  .top-nav-more summary {white-space: nowrap; padding: 4px 7px; font-size: 11px;}
   .lang-switch {min-width: max-content; white-space: nowrap;}
+}
+/* Pages in other languages (fr, de, es, ko, zh) have longer labels: they keep
+   the two-row header up to 1279px instead of overlapping the language switch. */
+@media (min-width: 760px) and (max-width: 1279px) {
+  .topbar:not(:lang(ja)):not(:lang(en)) {display: grid; grid-template-columns: minmax(0, 1fr) auto;}
+  .topbar:not(:lang(ja)):not(:lang(en)) .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; padding-top: 2px;}
 }
 
 @media (max-width: 540px) {

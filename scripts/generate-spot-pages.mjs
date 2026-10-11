@@ -635,13 +635,12 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
     <nav class="top-nav" aria-label="Primary">
       <a href="${lang === "en" ? `${prefix}en/start.html` : `${prefix}start.html`}">${lang === "ja" ? "列車選択" : "Train Search"}</a>
       <a href="${liveHref(lang, prefix)}">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a>
-      <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}" data-cta-track="header_nav_click" data-cta-id="nav_features">${lang === "ja" ? "特集" : "Features"}</a>
-      <a class="top-nav-overflow" href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}#gallery" data-cta-track="header_nav_click" data-cta-id="nav_all_views">${lang === "ja" ? "車窓一覧" : "All views"}</a>
-      <a href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
+      <a href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}" data-cta-track="header_nav_click" data-cta-id="nav_features">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a>
+      <a class="top-nav-stamp" href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
       <details class="top-nav-more">
         <summary>${lang === "ja" ? "もっと見る" : "More"}</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="${lang === "en" ? `${prefix}en/zukan.html` : `${prefix}zukan.html`}#gallery" data-cta-track="header_nav_click" data-cta-id="nav_all_views">${lang === "ja" ? "車窓一覧" : "All views"}</a>
+          <a class="top-nav-menu-stamp" href="${lang === "en" ? `${prefix}en/journal.html` : `${prefix}journal.html`}">${lang === "ja" ? "スタンプ帖" : "Journal"}</a>
           <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
           <a href="${lang === "en" ? `${prefix}en/window-artworks.html` : `${prefix}window-artworks.html`}">${lang === "ja" ? "車窓の作品集" : "Window Artworks"}</a>
@@ -1456,6 +1455,7 @@ function englishLandingHTML() {
     ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
     ["窓の外に探すものも変わります。", "and the view you look for changes too."],
     ["このページは公開前のLP案です。", "A guide to the views along your journey."],
+    ["data-cta-id=\"nav_features\">車窓図鑑</a>", "data-cta-id=\"nav_features\">Field Guide</a>"],
     ["車窓図鑑", "Field guide"],
     ["スタンプ帖", "Window Stamps"],
     ["音声ガイド", "Audio Guide"],
@@ -1662,6 +1662,7 @@ function englishAppIndexHTML() {
     ["旅の途中の景色を、少し早めに。", "Start noticing the views a little early."],
     ["列車選択", "Train search"],
     ["音声ガイド", "Audio Guide"],
+    ["data-cta-id=\"nav_features\">車窓図鑑</a>", "data-cta-id=\"nav_features\">Field Guide</a>"],
     ["車窓図鑑", "Field guide"],
     ["もっと見る", "More"],
     ["新幹線の窓", "Shinkansen Window"],
