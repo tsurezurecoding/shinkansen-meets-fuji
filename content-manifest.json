@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3e3a294976720954",
+  "contentVersion": "cea4ebe562e2f7a5",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1255,26 +1255,26 @@
     {
       "path": "promo/film.js",
       "url": "https://www.michikusa-travel.com/promo/film.js",
-      "bytes": 31777,
-      "sha256": "988ddefd199509571bb2488e4ea214607fe9ce4d5abd11b7039da68f023031ec"
+      "bytes": 33300,
+      "sha256": "3cf67b43ee86d86d213ad90cde57ee70ea1f42949f3a1a9e497892b4b55fafae"
     },
     {
       "path": "promo/hero-stage.css",
       "url": "https://www.michikusa-travel.com/promo/hero-stage.css",
-      "bytes": 2120,
-      "sha256": "5b5e78fc68c080be5fb66e2ede503a0247462c9f17f66fb54ca2638055a9fb3d"
+      "bytes": 3252,
+      "sha256": "e5b4e4d8a80383a0efa4db18c7619083310db936360c3dd38f46641c95ac1c75"
     },
     {
       "path": "promo/hero-stage.html",
       "url": "https://www.michikusa-travel.com/promo/hero-stage.html",
       "bytes": 9948,
-      "sha256": "142f247ad1958e486522e9035f71c42e9897b0c1379c17a08f330299eb8b19de"
+      "sha256": "6b06840595b2812666e835a7207c30287ac9f0f593fa60f0fd01d2467c9dbd62"
     },
     {
       "path": "promo/hero-stage.js",
       "url": "https://www.michikusa-travel.com/promo/hero-stage.js",
-      "bytes": 11613,
-      "sha256": "863b778c70b710b375ed8b1f35bc2f91f3791ef6162466c527e7bfcef7683af9"
+      "bytes": 12569,
+      "sha256": "02f3cd3c52b7e24cc2909ec174c670ecdd66e9505c5dff7228d7bf66881e9ec5"
     },
     {
       "path": "promo/night-cut.css",
@@ -1298,7 +1298,7 @@
       "path": "promo/player.html",
       "url": "https://www.michikusa-travel.com/promo/player.html",
       "bytes": 12121,
-      "sha256": "32058c968eab546020c5598c386b33625cbce30ddfbb3988f390f48ed0a2db4f"
+      "sha256": "796a484347e77f8cf4ec6506bc2e586c4c59de1f550c7a071087c5432ed7e30f"
     },
     {
       "path": "promo/player.js",

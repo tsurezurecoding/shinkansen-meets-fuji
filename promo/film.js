@@ -117,6 +117,26 @@
     FULL: [0, 0, 1920, 1080, 0],
     T1: [120, 330, 520, 292, 28], T2: [700, 330, 520, 292, 28], T3: [1280, 330, 520, 292, 28],
   };
+  // Wide stage (TOP hero): the stage may be wider than 1920. Copy stays left
+  // (shifted by TX), phone/window visuals move right (VX), the S6 row is
+  // centred (MX), and full-bleed rects span the whole width. 1920 = original.
+  const L = { SW: 1920, VX: 0, TX: 0, MX: 0, TY: 0, RW: 1680, TC: [0, 0, 0], RB: 0 };
+  function setStageWidth(w) {
+    const sw = Math.max(1920, Math.round(w)), dx = sw - 1920;
+    Object.assign(L, { SW: sw, VX: Math.round(dx * 0.68), TX: Math.round(dx * 0.3), MX: Math.round(dx / 2) });
+    R.PHONE[0] = 1088 + L.VX; R.FULL[2] = sw; R.WL[2] = sw - 192;
+    // the S2 window grows with the room it has, centred where it used to sit
+    const ww = Math.round(Math.min(1300, 880 + dx * 0.4)), wh = Math.round(ww * 495 / 880);
+    R.WR[0] = 1360 + L.VX - Math.round(ww / 2); R.WR[1] = Math.round(230 - (wh - 495) / 2); R.WR[2] = ww; R.WR[3] = wh;
+    // S6: the three views spread over the copy column's full width
+    const x0 = 120 + L.TX, tw = Math.round(Math.min(760, (sw - 2 * x0 - 120) / 3)), th = Math.round(tw * 292 / 520);
+    [R.T1, R.T2, R.T3].forEach((T, i) => { T[0] = x0 + i * (tw + 60); T[2] = tw; T[3] = th; });
+    L.TY = th - 292; L.RW = 3 * tw + 120;
+    L.TC = [0, 1, 2].map((i) => x0 + i * (tw + 60) - (120 + 580 * i));
+    L.RB = (sw - 120) - (x0 + L.RW);
+    DOTS.forEach(([m], i) => { const d = document.getElementById('rd' + i); if (d) d.style.left = 120 + L.RW * m / 147 - 7 + 'px'; });
+    return { ...L };
+  }
   const F = (n) => n; // frames
   const lerpRect = (a, b, p, pr) => [0, 1, 2, 3].map((i) => lerp(a[i], b[i], p)).concat(lerp(a[4], b[4], pr));
   const MORPHS = [ // [start, from, to, kind: open|close|move]
@@ -138,7 +158,7 @@
     }
     return [...rect, bezel];
   }
-  const clipStr = (r) => `inset(${r[1]}px ${1920 - r[0] - r[2]}px ${1080 - r[1] - r[3]}px ${r[0]}px round ${r[4]}px)`;
+  const clipStr = (r) => `inset(${r[1]}px ${L.SW - r[0] - r[2]}px ${1080 - r[1] - r[3]}px ${r[0]}px round ${r[4]}px)`;
   const place = (el, r) => style(el, { left: r[0] + 'px', top: r[1] + 'px', width: r[2] + 'px', height: r[3] + 'px' });
   const op = (el, v) => style(el, { opacity: String(clamp(v)), visibility: v > 0.001 ? 'visible' : 'hidden' });
   const fade = (f, a, b) => clamp((f - a) / (b - a)); // linear 0..1
@@ -278,7 +298,7 @@
     // scrims (only over full / window photos)
     style(els.scrimL, { left: '0px', top: '0px', width: '1100px', height: '1080px', background: 'linear-gradient(90deg, rgba(8,21,33,.62), rgba(8,21,33,0))' });
     op(els.scrimL, Math.max(inOut(f, 48, 66, 141, 160) * 0.9, inOut(f, 720, 740, 828, 840)));
-    style(els.scrimB, { left: '0px', top: '760px', width: '1920px', height: '320px', background: 'linear-gradient(0deg, rgba(8,21,33,.7), rgba(8,21,33,0))' });
+    style(els.scrimB, { left: '0px', top: '760px', width: L.SW + 'px', height: '320px', background: 'linear-gradient(0deg, rgba(8,21,33,.7), rgba(8,21,33,0))' });
     op(els.scrimB, inOut(f, 711, 729, 840, 860));
 
     // ---- S1 ----
@@ -313,12 +333,12 @@
     // tap ring at the find button
     {
       const k = (f - 348) / 12;
-      if (k >= 0 && k <= 1) { const s = lerp(0.6, 1, ease.out(k)); style(els.tap, { left: '1280px', top: (124 + (2113 - 210) * CAP_S) + 'px', transform: `scale(${s})`, background: 'rgba(232,112,74,.18)', boxShadow: '0 0 0 2px #e8704a', width: '56px', height: '56px', margin: '-28px 0 0 -28px' }); op(els.tap, 1 - k); }
+      if (k >= 0 && k <= 1) { const s = lerp(0.6, 1, ease.out(k)); style(els.tap, { left: 1280 + L.VX + 'px', top: (124 + (2113 - 210) * CAP_S) + 'px', transform: `scale(${s})`, background: 'rgba(232,112,74,.18)', boxShadow: '0 0 0 2px #e8704a', width: '56px', height: '56px', margin: '-28px 0 0 -28px' }); op(els.tap, 1 - k); }
       else op(els.tap, 0);
     }
     // row pulse and tag flip
     const ROW = window.__row || { x: 70, y: 300, w: 280, h: 136.5 };
-    const rowV = [1088 + ROW.x * 0.98462, 124 + ROW.y * 0.98462, ROW.w * 0.98462, ROW.h * 0.98462];
+    const rowV = [1088 + L.VX + ROW.x * 0.98462, 124 + ROW.y * 0.98462, ROW.w * 0.98462, ROW.h * 0.98462];
     {
       const k = (f - 372) / 12;
       if (k >= 0 && k <= 1) {
@@ -330,7 +350,7 @@
     {
       const p = ease.reveal(fade(f, 378, 396));
       const tr = [120, 520, 860, 200];
-      const x = lerp(rowV[0], tr[0], p), y = lerp(rowV[1], tr[1], p), w = lerp(rowV[2], tr[2], p), h = lerp(rowV[3], tr[3], p);
+      const x = lerp(rowV[0] - L.TX, tr[0], p), y = lerp(rowV[1], tr[1], p), w = lerp(rowV[2], tr[2], p), h = lerp(rowV[3], tr[3], p);
       style(els.tag, { transform: `translate(${x - tr[0]}px, ${y - tr[1]}px) scale(${w / tr[2]}, ${h / tr[3]})`, transformOrigin: '0 0' });
       op(els.tag, f >= 378 ? inOut(f, 378, 384, 471, 480) : 0);
     }
@@ -362,7 +382,7 @@
       style(els.cdDigits, { transform: `translateY(${(1 - p) * 16}px)`, opacity: String(f < 615 ? 1 : Math.max(0.2, p)) });
     }
     // pulse on the live map train marker every 30 frames from 520
-    if (f >= 520 && f < 705) { const s = 520 + Math.floor((f - 520) / 30) * 30; ring(els.dotRing, f, s, 1277, 354, 8, 22, 30, 0.6); } else op(els.dotRing, 0);
+    if (f >= 520 && f < 705) { const s = 520 + Math.floor((f - 520) / 30) * 30; ring(els.dotRing, f, s, 1277 + L.VX, 354, 8, 22, 30, 0.6); } else op(els.dotRing, 0);
 
     // ---- S5 ----
     lines('s5h', f, 714, 8, 837);
@@ -399,7 +419,7 @@
     rise('tc3', f, 874, 975, 18, 12);
     {
       const p = ease.reveal(fade(f, 890, 914));
-      style(els.rail, { width: 1680 * p + 'px' });
+      style(els.rail, { width: L.RW * p + 'px' });
       const o = 1 - fade(f, 963, 975);
       op(els.rail, f >= 890 ? o : 0);
       rise('railA', f, 890, 975, 18, 12); rise('railB', f, 896, 975, 18, 12);
@@ -414,7 +434,7 @@
       const o = press(el, f, s, rot);
       if (f >= 1095) op(el, (o || 1) * (1 - fade(f, 1095, 1104)));
     });
-    ring(els.stampRing, f, 1026, 1236, 542, 35, 40, 12, 0.8);
+    ring(els.stampRing, f, 1026, 1236 + L.VX, 542, 35, 40, 12, 0.8);
 
     // ---- S8 ----
     {
@@ -535,5 +555,5 @@
     else await Promise.all([...document.querySelectorAll('#stage img')].map(im => im.decode()));
     render(0);
   })();
-  window.PV_FILM = { ready, render, prepare, prepareImages, progressive, audio, copy: COPY, lang: LANG, fps: FPS, duration: DURATION };
+  window.PV_FILM = { ready, render, prepare, prepareImages, setStageWidth, progressive, audio, copy: COPY, lang: LANG, fps: FPS, duration: DURATION };
 })();

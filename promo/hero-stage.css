@@ -25,4 +25,23 @@ body.cinema #stage #s2label { left: 120px !important; top: 890px !important; }
 /* On the TOP the stage sits in the page's own night band (#081521). The film's
    night tone is matched (window.PV_NIGHT) and the glow fades out before every
    edge, so neither the 16:9 frame nor the letterbox shows as a box. */
-#vignette { background: radial-gradient(ellipse closest-side at 1280px 540px, rgba(28, 47, 71, .78), rgba(28, 47, 71, 0)) !important; }
+
+/* Wide stage (set from hero-stage.js): copy keeps its left column, shifted by
+   --tx; the S6 row is centred by --mx; full-width layers follow --sw. The
+   renderer's own transforms are untouched because these use `translate`. */
+#stage { --sw: 1920px; --tx: 0px; --vx: 0px; --mx: 0px; }
+#stage .clip { width: var(--sw); }
+#vignette { background: radial-gradient(ellipse closest-side at calc(1280px + var(--vx)) 540px, rgba(28, 47, 71, .78), rgba(28, 47, 71, 0)) !important; }
+#s1eb, #s1l1, #s1l2, #s2lock, #s2def, #s2count, #s2label,
+#s3eb, #s3h, #tag, #caveat3,
+#s4eb, #s4h, #s4audio, #s4sub, #s4pill, #s4cdl, #s4cd,
+#s5h, #s5cap, #s5cav, #s7eb, #s7h, .stamp200,
+#cinemaOpeningRule, #cinemaPayoffRule, #cinemaSideRail { translate: var(--tx) 0; }
+#s6eb, #s6h, #s6sub { translate: var(--tx) 0; }
+#tc1 { translate: var(--tc1, 0px) var(--ty, 0px); }
+#tc2 { translate: var(--tc2, 0px) var(--ty, 0px); }
+#tc3 { translate: var(--tc3, 0px) var(--ty, 0px); }
+#rail, #railA, #railDots { translate: var(--tx) var(--ty, 0px); }
+#railB { translate: var(--rb, 0px) var(--ty, 0px); }
+#nightCut .night-kicker, #nightCut .night-heading, #nightCut .night-credit { translate: var(--tx) 0; }
+#nightCut .night-gallery { left: calc(120px + var(--tx)); right: calc(120px + var(--tx)); }
