@@ -65,6 +65,12 @@ html { scroll-behavior:auto; }
 .food-next .cs-card h2 { font-size:25px; font-weight:600; }
 .food-next .cs-card { box-shadow:none; }
 .food-next .cs-card .eyebrow { margin-bottom:12px; }
+.food-pairing-heading { max-width:650px; margin-bottom:22px; }
+.food-pairing-heading h2 { font-family:var(--font-serif); font-size:clamp(25px,3vw,32px); line-height:1.3; margin:10px 0 14px; }
+.food-pairing-heading>p:last-child { color:var(--ink-soft); font-size:14px; line-height:1.9; }
+.food-pairings { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+.food-pairing-credit { color:var(--ink-soft); font-size:10px; margin-top:12px; }
+@media(max-width:600px) { .food-pairings { grid-template-columns:1fr; gap:14px; } .food-pairings .everyday-story-card { grid-template-columns:38% minmax(0,1fr); } .food-pairings .everyday-story-photo { aspect-ratio:auto; } .food-pairings .everyday-story-copy { padding:16px; } }
 .sources-section { border-top:1px solid var(--line); margin-top:45px; padding-top:0; }
 .sources-section summary { padding:20px 0; cursor:pointer; font-size:12px; color:var(--ink-soft); }
 .credits-body { font-size:12px; line-height:1.9; }
