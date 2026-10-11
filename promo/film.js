@@ -2,13 +2,16 @@
   'use strict';
   const { ease, clamp, lerp, $, style, renderAudio } = PV;
   const q = new URLSearchParams(location.search);
-  const LANG = q.get('film') === 'en' ? 'en' : 'ja';
+  // ja and en have their own captures; fr and zh-Hant reuse the English captures.
+  const LANG = ['en', 'fr', 'zh-Hant'].includes(q.get('film')) ? q.get('film') : 'ja';
+  const ASSET = LANG === 'ja' ? 'ja' : 'en';
+  const LATIN = LANG === 'en' || LANG === 'fr';
   const RENDER = false;
   const progressive = document.documentElement.hasAttribute('data-progressive-film');
-  if (!progressive) document.querySelectorAll('img[data-src]').forEach(im => { im.src = LANG === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src; });
+  if (!progressive) document.querySelectorAll('img[data-src]').forEach(im => { im.src = ASSET === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src; });
   const FPS = 30, FRAMES = 1290, DURATION = FRAMES / FPS;
   document.documentElement.lang = LANG;
-  document.body.classList.toggle('lang-en', LANG === 'en');
+  document.body.classList.toggle('lang-en', LATIN);
   if (RENDER) document.body.classList.add('render');
 
   // ---------- copy ----------
@@ -37,8 +40,34 @@
       s8eb: 'YOUR NEXT WINDOW JOURNEY', s8h: ['Your next Shinkansen ride', 'starts with the window.'], url: 'michikusa-travel.com →',
       foot: 'Photos: michikusa | Map: © OpenStreetMap contributors | Times are Nozomi-based estimates',
     },
+    fr: {
+      s1eb: 'LEVEZ LES YEUX DE L’ÉCRAN', s1l1: ['Moins d’écran,'], s1l2: ['plus de fenêtre.'], credit: 'Photo : michikusa',
+      mark: '窓', wordmark: 'Fenêtre du Shinkansen', s2def: ['Le guide des paysages', 'du Tokaido Shinkansen'], countUnit: 'vues', s2label: 'Tokyo ⇄ Shin-Osaka',
+      s3eb: '01  AVANT LE TRAJET', s3h: ['Choisissez votre train,', 'les horaires suivent.'], caveat: '*Horaires estimés sur la base du Nozomi', suffix: 'env.', seatE: 'Siège E',
+      s4eb: '02  À BORD', s4h: ['La prochaine vue,', 'sur la carte et à l’oreille.'], audio: 'Guide audio α', s4sub: ['Le Fuji grandit', 'côté siège E.'], s4pill: 'Siège E · Montagne', s4cdl: 'PROCHAINE VUE  Mont Fuji',
+      s5h: ['La fenêtre d’abord,', 'l’appareil ensuite.'],
+      s6eb: 'GUIDE DES PAYSAGES', s6h: ['Le mont Fuji n’est qu’un début.'], s6sub: 'Trouvez les paysages que vous voulez voir.',
+      tiles: [['Mont Fuji', 'Siège E', 'e'], ['Thé de Shizuoka', 'Sièges A et E', 'ae'], ['Pagode du To-ji', 'Siège A', 'a']], railA: 'Tokyo', railB: 'Shin-Osaka',
+      s7eb: '03  APRÈS LE TRAJET', s7h: ['Les vues repérées', 'deviennent un carnet.'],
+      s8eb: 'VOTRE PROCHAIN VOYAGE', s8h: ['Votre prochain Shinkansen', 'commence par la fenêtre.'], url: 'michikusa-travel.com →',
+      foot: 'Photos : michikusa | Carte : © OpenStreetMap contributors | Horaires estimés (Nozomi)',
+      fuji: 'Mont Fuji',
+    },
+    'zh-Hant': {
+      s1eb: 'LOOK UP FROM YOUR SCREEN', s1l1: ['把看手機的時間，'], s1l2: ['留給車窗。'], credit: '照片：michikusa',
+      mark: '窓', wordmark: '新幹線之窗', s2def: ['東海道新幹線的', '車窗導覽'], countUnit: '景', s2label: '東京 ⇄ 新大阪',
+      s3eb: '01　搭車前', s3h: ['選好要搭的列車，', '時間就跟著確定。'], caveat: '※時間為以希望號為準的估計', suffix: '左右', seatE: 'E座',
+      s4eb: '02　搭車中', s4h: ['下一個景色，', '用地圖和語音得知。'], audio: '語音導覽 α', s4sub: ['富士山在E座側', '大大地映入眼簾。'], s4pill: 'E座・山側', s4cdl: '下一個車窗　富士山',
+      s5h: ['先看窗外，', '再拿起手機。'],
+      s6eb: '車窗圖鑑', s6h: ['不只富士山。'], s6sub: '從照片與解說，找到想看的景色。',
+      tiles: [['富士山', 'E座', 'e'], ['靜岡茶田', 'A座・E座', 'ae'], ['東寺 五重塔', 'A座', 'a']], railA: '東京', railB: '新大阪',
+      s7eb: '03　下車後', s7h: ['把發現的景色，', '變成旅行紀錄。'],
+      s8eb: 'YOUR NEXT WINDOW JOURNEY', s8h: ['下一趟新幹線，', '從車窗開始。'], url: 'michikusa-travel.com →',
+      foot: '照片：michikusa ｜ 地圖：© OpenStreetMap contributors ｜ 時間為以希望號為準的估計',
+      fuji: '富士山',
+    },
   }[LANG];
-  const EN = LANG === 'en';
+  const EN = LATIN;
 
   const setLines = (id, lines) => { $('#' + id).innerHTML = lines.map((l) => `<span class="ln"><span>${l}</span></span>`).join(''); };
   const text = (id, s) => { $('#' + id).textContent = s; };
@@ -53,18 +82,19 @@
     ['s3h', 's4h', 's4sub', 's6h', 's7h'].forEach((id) => { $('#' + id).style.fontSize = '72px'; });
     $('#s8word').style.fontSize = '64px';
     $('#countUnit').style.fontSize = '64px';
-    if (!progressive) document.querySelectorAll('img[data-en]').forEach((im) => { im.src = im.dataset.en; });
+    if (!progressive && ASSET === 'en') document.querySelectorAll('img[data-en]').forEach((im) => { im.src = im.dataset.en; });
   }
-  const suffixHTML = EN ? '<span style="font:600 30px var(--sans);margin-left:10px">approx.</span>' : '<span class="hd" style="font-size:36px;color:#54616c;margin-left:4px">頃</span>';
+  const SUFFIX = COPY.suffix;
+  const suffixHTML = EN ? `<span style="font:600 30px var(--sans);margin-left:10px">${SUFFIX}</span>` : `<span class="hd" style="font-size:36px;color:#54616c;margin-left:4px">${SUFFIX}</span>`;
   $('#tagSuffix').innerHTML = suffixHTML;
-  $('#capSuffix').innerHTML = EN ? '<span style="font:600 24px var(--sans);margin-left:8px">approx.</span>' : '<span class="hd" style="font-size:28px;margin-left:4px">頃</span>';
+  $('#capSuffix').innerHTML = EN ? `<span style="font:600 24px var(--sans);margin-left:8px">${SUFFIX}</span>` : `<span class="hd" style="font-size:28px;margin-left:4px">${SUFFIX}</span>`;
   // tiles captions
   COPY.tiles.forEach(([name, seat, kind], i) => {
     const pill = kind === 'e' ? 'background:#faf6ef;color:#16202e'
       : kind === 'a' ? 'box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);color:#fff'
       : 'background:linear-gradient(90deg,transparent 0 50%,#faf6ef 50%);box-shadow:inset 0 0 0 2px rgba(255,255,255,.85);color:#16202e';
     $('#tc' + (i + 1)).innerHTML = `<div class="hd" style="font-size:${EN ? 48 : 56}px;color:#faf6ef;line-height:1.2">${name}</div>` +
-      `<div class="pill2" style="margin-top:18px;height:56px;padding:0 24px;font-size:36px;${pill}">${kind === 'ae' ? `<span style="color:#fff">${seat.split(/・| and /)[0]}</span><span style="margin:0 .15em;color:#fff">${EN ? '&nbsp;and&nbsp;' : '・'}</span><span>${seat.split(/・| and /)[1]}</span>` : seat}</div>`;
+      `<div class="pill2" style="margin-top:18px;height:56px;padding:0 24px;font-size:36px;${pill}">${kind === 'ae' ? `<span style="color:#fff">${seat.split(/・| and | et /)[0]}</span><span style="margin:0 .15em;color:#fff">${LANG === 'fr' ? '&nbsp;et&nbsp;' : EN ? '&nbsp;and&nbsp;' : '・'}</span><span>${seat.split(/・| and | et /)[1]}</span>` : seat}</div>`;
   });
   // audio bars
   const BAR_H = [16, 32, 22, 44, 22, 32, 16];
@@ -76,8 +106,8 @@
   // live frames (real in-app countdown, one capture per real second)
   const LIVE = [[480, 8], [495, 7], [525, 6], [555, 5], [585, 4], [615, 3], [645, 2], [675, 1], [705, 0]];
   $('#liveBox').innerHTML = progressive
-    ? `<img data-src="assets/ui/${LANG}-live-fuji-eta08.webp" alt=""><span id="liveDigits" style="position:absolute;left:286px;top:550px;width:76px;height:30px;background:#1a2c41;color:#e5b45a;font:700 28px/30px var(--sans);text-align:center;font-variant-numeric:tabular-nums">00:08</span>`
-    : LIVE.map(([, n]) => `<img data-eta="${n}" src="assets/ui/${LANG}-live-fuji-eta0${n}.webp" alt="">`).join('');
+    ? `<img data-src="assets/ui/${ASSET}-live-fuji-eta08.webp" alt=""><span id="liveDigits" style="position:absolute;left:286px;top:550px;width:76px;height:30px;background:#1a2c41;color:#e5b45a;font:700 28px/30px var(--sans);text-align:center;font-variant-numeric:tabular-nums">00:08</span>`
+    : LIVE.map(([, n]) => `<img data-eta="${n}" src="assets/ui/${ASSET}-live-fuji-eta0${n}.webp" alt="">`).join('');
 
   // Only the current scene and its immediate successor compete for bandwidth.
   // Standalone player keeps its existing fully prepared playback contract.
@@ -85,7 +115,7 @@
   function prepareImages(images) {
     return Promise.all(images.map(im => {
       if (!imageJobs.has(im)) {
-        const source = LANG === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src;
+        const source = ASSET === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src;
         if (source && !im.getAttribute('src')) im.src = source;
         let timer;
         const limit = new Promise((_, reject) => { timer = setTimeout(() => reject(new Error('Film image timeout')), 15000); });
@@ -541,15 +571,18 @@
 
   // File-safe metadata from the captured DOM; no fetch / server is needed.
   const ready = (async () => {
-    const j = window.PV_ASSET_DATA[LANG];
+    const j = window.PV_ASSET_DATA[ASSET];
     if (!j?.rect?.text) throw new Error('Missing captured timetable metadata');
     window.__row = j.rect;
     const m = /(\d\d:\d\d)/.exec(j.rect.text);
     if (!m) throw new Error('Missing captured timetable time');
     text('tagTime', m[1]); text('capTime', m[1]);
-    text('tagName', j.row); text('capName', j.row);
+    const rowName = COPY.fuji || j.row;
+    text('tagName', rowName); text('capName', rowName);
     const seat = /(E席|Seat E|A席|Seat A)/.exec(j.rect.text);
-    text('tagSeat', seat ? seat[1] : COPY.seatE); text('capSeat', seat ? seat[1] : COPY.seatE);
+    // fr / zh-Hant read the English capture, so the seat label comes from their copy
+    const seatLabel = COPY.fuji ? COPY.seatE : (seat ? seat[1] : COPY.seatE);
+    text('tagSeat', seatLabel); text('capSeat', seatLabel);
     await document.fonts.ready;
     if (progressive) await prepare(0);
     else await Promise.all([...document.querySelectorAll('#stage img')].map(im => im.decode()));

@@ -3,12 +3,12 @@
   'use strict';
   const hero=document.querySelector('.hero.hv');if(!hero)return;
   const inner=hero.querySelector('.hero-inner'),screen=hero.querySelector('.hv-screen'),copy=hero.querySelector('.hv-copy');
-  const en=document.documentElement.lang==='en',motion=matchMedia('(prefers-reduced-motion: reduce)'),connection=navigator.connection;
+  const page=document.documentElement.lang,film=['en','fr','zh-Hant'].includes(page)?page:'ja',en=film!=='ja',motion=matchMedia('(prefers-reduced-motion: reduce)'),connection=navigator.connection;
   const pauseKey='michikusa.heroCinema.paused';
   let userPaused=false; // no pause control any more, so an old stored pause is ignored
   const rememberPause=value=>{userPaused=value;try{sessionStorage.setItem(pauseKey,value?'1':'0');}catch{}};
   const restricted=()=>motion.matches||!!connection?.saveData;
-  const text=en?{frame:'Shinkansen Window introduction film',error:'The film could not load. You can still use the links below.'}:{frame:'新幹線の窓 紹介PV',error:'紹介映像を読み込めませんでした。下のリンクからご利用いただけます。'};
+  const text={ja:{frame:'新幹線の窓 紹介PV',error:'紹介映像を読み込めませんでした。下のリンクからご利用いただけます。'},en:{frame:'Shinkansen Window introduction film',error:'The film could not load. You can still use the links below.'},fr:{frame:'Fenêtre du Shinkansen : film de présentation',error:'Le film n’a pas pu être chargé. Les liens ci-dessous restent disponibles.'},'zh-Hant':{frame:'新幹線之窗 介紹影片',error:'無法載入介紹影片。仍可使用下方連結。'}}[film];
   // No controls under or over the film: it plays once per view, then rests on
   // the hero frame (and never autoplays with reduced motion or Save-Data).
   inner.querySelector('.hv-rail')?.remove();
@@ -20,7 +20,7 @@
   const track=(event,data={})=>{if(typeof window.gtag==='function')window.gtag('event',event,{language:en?'en':'ja',placement:'top_hero',...data});};
   function label(){}
   function failed(){clearTimeout(timeout);frame?.remove();frame=null;ready=false;pending=null;status.textContent=text.error;copy.dataset.hidden='false';screen.dataset.ready='false';playing=false;label();}
-  function load(){if(frame)return;status.textContent='';frame=document.createElement('iframe');frame.title=text.frame;frame.src=new URL('promo/hero-stage.html?film='+(en?'en':'ja'),document.baseURI).href;screen.prepend(frame);timeout=setTimeout(()=>{if(!ready)failed();},20000);}
+  function load(){if(frame)return;status.textContent='';frame=document.createElement('iframe');frame.title=text.frame;frame.src=new URL('promo/hero-stage.html?film='+film,document.baseURI).href;screen.prepend(frame);timeout=setTimeout(()=>{if(!ready)failed();},20000);}
   function schedule(){if(scheduled||frame||restricted()||userPaused||!visible||document.hidden)return;scheduled=true;const poster=screen.querySelector('.hv-poster img');Promise.resolve(poster?.decode()).catch(()=>{}).then(()=>requestAnimationFrame(()=>requestAnimationFrame(()=>{scheduled=false;if(visible&&!document.hidden&&!restricted()&&!userPaused)load();})));}
   function command(data){if(data.action==='pause'){rememberPause(true);playing=false;label();if(!frame)return;}if(data.action==='play')rememberPause(false);if(!ready){pending=data;load();}else send(data);}
   function visibility(){send({action:'visibility',visible:visible&&!document.hidden});}

@@ -1535,9 +1535,17 @@ function englishLandingHTML() {
     ['20260712_toji_michikusa.webp', 'Spot Kyoto’s five-story pagoda.', 'Look above the rooftops near Kyoto Station for To-ji Temple’s pagoda.', 'en/spots/toji.html', 'To-ji’s pagoda rising above Kyoto’s rooftops', 'toji', 'Explore To-ji Temple'],
     ['20260816_fuji_paper_mills_michikusa.webp', 'What was that?', 'Chimneys, bright green rows and long silver roofs. Discover the stories behind everyday Japan.', 'en/arenani.html', 'Paper-mill chimneys and buildings beside the Shinkansen', 'arenani', 'Discover everyday Japan'],
   ];
-  const discoveryGrid = '<div class="discovery-grid scenery-strip" id="scenery-photos">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
+  // Tools lead the strip (train timeline, live GPS map, stamp book), as on the Japanese TOP.
+  const toolCards = [
+    '<a class="discovery-card tool-card" href="en/start.html#journey" data-lp-cta="strip-card-train"><span class="tool-phone tool-phone-train"><img src="promo/assets/ui/en-timeline-fuji.webp" alt="Viewing times and seat sides listed for a chosen train" loading="eager" decoding="async"></span><div class="discovery-copy"><h3>Find viewing times for your train.</h3><p>Choose your train to see when each view passes and which side to sit on.</p></div></a>',
+    '<a class="discovery-card tool-card tool-card-map" href="en/live/" data-lp-cta="strip-card-live"><img src="images/og-live-guide.jpg" alt="Live guide map showing the train’s GPS position on the route" loading="eager" decoding="async"><small class="tool-map-credit">© OpenStreetMap contributors</small><div class="discovery-copy"><h3>Hear the next view coming.</h3><p>GPS follows your train and counts down to the next view.</p></div></a>',
+  ];
+  const stampCard = '<a class="discovery-card tool-card" href="en/journal.html" data-lp-cta="strip-card-stamp"><span class="tool-phone tool-phone-stamp"><img src="promo/assets/ui/en-stamps.webp" alt="Window stamps collected in the stamp book" loading="lazy" decoding="async"></span><div class="discovery-copy"><h3>Collect the views as stamps.</h3><p>Stamp the views you spot and look back on your trip.</p></div></a>';
+  const discoveryGrid = '<div class="discovery-grid scenery-strip" id="scenery-photos">' + toolCards.join('\n') + '\n' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
     `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="eager" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
-  ).join('\n') + '</div>';
+  ).join('\n') + '\n' + stampCard + '</div>';
+  html = html.replace(/<h2 id="scenery-title" class="visually-hidden">[^<]*<\/h2>/, '<h2 id="scenery-title" class="visually-hidden">Mt. Fuji and more: window views and on-board guides</h2>');
+  html = html.replaceAll('>車窓の作品集</a>', '>Window Artworks</a>');
   html = html.replace(/<div class="(?:photo-mosaic|discovery-grid) scenery-strip"[^>]*>[\s\S]*?<\/div>\s*<div class="scenery-strip-controls">[\s\S]*?<\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Scroll to explore more views</small><span class="scenery-strip-nav"><button type="button" data-strip-prev aria-label="Previous views" aria-controls="scenery-photos"><span aria-hidden="true">←</span></button><button type="button" data-strip-next aria-label="Next views" aria-controls="scenery-photos"><span aria-hidden="true">→</span></button></span></div>');
   html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
   // Approved inbound home chapters: retain explicit audio and digital-stamp explanations.
@@ -1911,7 +1919,7 @@ function sitemapXML() {
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
-  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-11' })));
+  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['index.html', 'journal.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
@@ -2127,7 +2135,7 @@ for (const config of guideRailConfigs) {
     syncedGuideHTML = syncedGuideHTML.replace(/href="([^\"]+)"/g, (whole, href) => {
       const url = new URL(href, `https://www.michikusa-travel.com/${lang}/guide.html`);
       const route = url.pathname.replace(/^\/en\//, '');
-      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].includes(route.replace(/^live\/$/, 'live/index.html'))
+      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].includes(route.replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html'))
         ? `href="../${lang}/${route}${url.search}${url.hash}"` : whole;
     });
   }

@@ -121,9 +121,9 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="chrome.css?v=9d0a7143">
+  <link rel="stylesheet" href="chrome.css?v=f6502a08">
   <link rel="stylesheet" href="hero-cinema.css?v=bbba083b">
-  <script src="hero-cinema.js?v=0ac3142b" defer></script>
+  <script src="hero-cinema.js?v=a4fc0324" defer></script>
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
@@ -193,16 +193,16 @@
     .section-head h2 {
       margin: 0;
       font-family: var(--serif);
-      font-size: clamp(31px, 5vw, 58px);
+      font-size: clamp(25px, 3.1vw, 38px);
       font-weight: 700;
-      letter-spacing: -0.035em;
+      letter-spacing: -0.02em;
       line-height: 1.28;
     }
     .section-head p:last-child {
       max-width: 620px;
       margin: 20px auto 0;
       color: var(--ink-soft);
-      font-size: clamp(14px, 1.7vw, 17px);
+      font-size: clamp(13.5px, 1.4vw, 15.5px);
     }
 
     /* ヘッダーの見た目は chrome.css が正本。ここに複製を書かないこと。
@@ -439,7 +439,7 @@
     .manifesto-bg img { object-fit: cover; object-position: center 56%; }
     .manifesto-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 16, 24, 0.06), rgba(5, 16, 24, 0.76) 80%, rgba(5, 16, 24, 0.92)); }
     .manifesto-copy { position: relative; z-index: 2; width: min(1160px, calc(100% - 40px)); margin: 0 auto; padding: 90px 0; text-align: center; }
-    .manifesto h2 { max-width: 900px; margin: 0 auto; font-family: var(--serif); font-size: clamp(38px, 6.5vw, 76px); line-height: 1.26; letter-spacing: -0.045em; text-shadow: 0 4px 35px rgba(0, 0, 0, 0.34); }
+    .manifesto h2 { max-width: 900px; margin: 0 auto; font-family: var(--serif); font-size: clamp(28px, 4vw, 46px); line-height: 1.3; letter-spacing: -0.02em; text-shadow: 0 4px 35px rgba(0, 0, 0, 0.34); }
     .manifesto p { max-width: 600px; margin: 25px auto 0; color: rgba(255, 255, 255, 0.76); font-size: 15px; }
     .manifesto .photo-credit { color: rgba(255, 255, 255, 0.64); }
 
@@ -468,7 +468,7 @@
     .trust { padding: 64px 0; background: var(--paper); }
     .trust-inner { display: grid; justify-items: center; gap: 34px; text-align: center; }
     .trust-inner > h2 { max-width: 980px; }
-    .trust h2 { margin: 0; font-family: var(--serif); font-size: clamp(27px, 4vw, 43px); line-height: 1.35; }
+    .trust h2 { margin: 0; font-family: var(--serif); font-size: clamp(22px, 2.6vw, 32px); line-height: 1.35; }
     .trust-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: min(100%, 900px); }
     .trust-item { padding: 21px; border-top: 1px solid var(--line); text-align: center; }
     .trust-item strong { display: block; font-family: var(--serif); font-size: 18px; }
@@ -479,7 +479,7 @@
     .final-cta::before { content: "窓"; position: absolute; right: -0.08em; bottom: -0.4em; color: rgba(255, 255, 255, 0.09); font-family: var(--serif); font-size: min(62vw, 610px); font-weight: 700; line-height: 1; }
     .final-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center; }
     .final-inner .eyebrow { color: rgba(255, 255, 255, 0.72); }
-    .final-inner h2 { margin: 0; font-family: var(--serif); font-size: clamp(40px, 6.7vw, 72px); line-height: 1.22; letter-spacing: -0.045em; }
+    .final-inner h2 { margin: 0; font-family: var(--serif); font-size: clamp(28px, 4vw, 46px); line-height: 1.28; letter-spacing: -0.02em; }
     .final-inner p { max-width: 590px; margin: 24px 0 0; color: rgba(255, 255, 255, 0.8); }
     .final-inner .hero-actions { margin-top: 32px; }
     .final-inner .button-dark { background: var(--night); box-shadow: 0 16px 40px rgba(88, 29, 15, 0.2); }
@@ -508,7 +508,7 @@
       .hero .hero-actions { margin-top: 20px; }
       .hero-cards { margin-top: 20px; }
       .journey { padding: 42px 0 48px; }
-      .journey .section-head h2 { font-size: clamp(38px, 4vw, 50px); }
+      .journey .section-head h2 { font-size: clamp(30px, 3.1vw, 38px); }
       .journey .section-head p:last-child { margin-top: 12px; font-size: 15px; line-height: 1.75; }
       .journey-steps { margin-top: 28px; }
       .journey-card { padding: 22px; }
@@ -570,7 +570,7 @@
     }
 
     @media (max-width: 460px) {
-      .manifesto-copy h2 { font-size: clamp(27px, 8.6vw, 38px); }
+      .manifesto-copy h2 { font-size: clamp(25px, 7.4vw, 32px); }
       .photo-mosaic { grid-template-rows: 245px 185px 185px; }
       .photo-label small { letter-spacing: 0.08em; }
       .photo-label strong { font-size: 16px; }
@@ -587,6 +587,10 @@
   </style>
   <link rel="stylesheet" href="home-cards.css?v=2a0b82f6">
   <link rel="stylesheet" href="home-scenery.css?v=3b06b5eb">
+  <script defer src="utility-locales.js?v=14c4adac"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/">
 </head>
 <body data-language-route="en">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -610,7 +614,7 @@
           <a class="top-nav-menu-stamp" href="en/journal.html" data-i18n="navMedals">Window Stamps</a>
           <a href="en/guide.html" data-i18n="navFaq">See Mt. Fuji</a>
           <a href="en/mieru.html" data-i18n="navMieru">Visibility β</a>
-          <a href="en/window-artworks.html" data-i18n="navArtworks">車窓の作品集</a>
+          <a href="en/window-artworks.html" data-i18n="navArtworks">Window Artworks</a>
           <a href="en/references.html" data-i18n="navRefs">Links</a>
           <a href="en/contact.html" data-contact-nav data-i18n="navContact">Contact</a>
           <a href="en/privacy.html" data-i18n="navPrivacy">Privacy Policy</a>
@@ -633,78 +637,26 @@
           <span class="hero-title-line">outside your window.</span>
         </h1>
         <p class="hero-lead">
-          Mt. Fuji, castles, lakes, and unexpected signs. Get to know the sights, and see more through your train window. Find when and which side to see Mt. Fuji. Discover more with photos and stories from the route.
+          Mt. Fuji, castles, lakes, and unexpected signs. Get to know the sights, and see more through your train window.
         </p>
         </div></div>
-        <div class="hv-rail" aria-hidden="true"></div>
-        <div class="hero-cards">
-          <a class="hero-card" href="en/start.html#journey" data-lp-cta="hero-card-train">
-            <span class="hero-card-visual hcv-train" aria-hidden="true">
-              <svg viewBox="0 0 44 40" width="44" height="40" fill="none"><path d="M8 5v30" stroke="currentColor" stroke-opacity=".4"/><circle cx="8" cy="8" r="3.2" fill="#f3b59f"/><circle cx="8" cy="20" r="2.4" fill="currentColor"/><circle cx="8" cy="32" r="2.4" fill="currentColor"/><path d="M17 8h21M17 20h15M17 32h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-opacity=".75"/></svg>
-            </span>
-            <span class="hero-card-body">
-              <strong>Choose your train</strong>
-              <span>See when and which side to look</span>
-            </span>
-          </a>
-          <a class="hero-card" href="en/live/" data-lp-cta="hero-card-live">
-            <span class="hero-card-visual hcv-live" aria-hidden="true">
-              <span class="hcv-live-route"></span>
-              <span class="hcv-live-dot"></span>
-              <span class="hcv-live-audio"><i></i><i></i><i></i><i></i><i></i></span>
-            </span>
-            <span class="hero-card-body">
-              <strong>Live Audio Guide</strong>
-              <span>GPS calls the next view, with map and audio</span>
-            </span>
-          </a>
-
-          <a class="hero-card" href="en/zukan.html" data-lp-cta="hero-card-zukan">
-            <span class="hero-card-visual hcv-zukan" aria-hidden="true">
-              <img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="" loading="lazy" decoding="async">
-              <img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="" loading="lazy" decoding="async">
-              <img src="images/thumbs/20260530_ibukiyama_2_michikusa.webp" alt="" loading="lazy" decoding="async">
-              <img src="images/thumbs/20260712_toji_michikusa.webp" alt="" loading="lazy" decoding="async">
-            </span>
-            <span class="hero-card-body">
-              <strong>Field guide</strong>
-              <span>Find a view that catches your eye</span>
-            </span>
-          </a>
-
-          <a class="hero-card" href="en/journal.html" data-lp-cta="hero-card-stamp">
-            <span class="hero-card-visual hcv-stamp" aria-hidden="true">
-              <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
-              <img src="images/stamps/stamp_hamanako.svg" alt="" loading="lazy" decoding="async">
-              <img src="images/stamps/stamp_kiyosu.svg" alt="" loading="lazy" decoding="async">
-            </span>
-            <span class="hero-card-body">
-              <strong>Window Stamps</strong>
-              <span>Record the views you spot</span>
-            </span>
-          </a>
-
-
-        </div>
       </div>
     </section>
 
-    <section class="scenery" id="scenery" aria-labelledby="scenery-title">
+    <section class="scenery scenery-under-hero" id="scenery" aria-labelledby="scenery-title">
       <div class="section-shell">
-        <div class="section-head reveal">
-          <p class="eyebrow">More than Mt. Fuji</p>
-          <h2 id="scenery-title">Mt. Fuji is only the beginning.</h2>
-          <p>Castles, rice fields, lakes and a glimpse of Kyoto. There’s more to discover along the way.</p>
-        </div>
+        <h2 id="scenery-title" class="visually-hidden">Mt. Fuji and more: window views and on-board guides</h2>
 
-        <div class="discovery-grid scenery-strip" id="scenery-photos"><a class="discovery-card" href="en/guide.html" data-lp-cta="scenery-card-fuji"><img src="images/thumbs/20240211_Mt.Fuji.webp" alt="Snow-covered Mt. Fuji from the Shinkansen" loading="eager" decoding="async"><div class="discovery-copy"><h3>Start with Mt. Fuji.</h3><p>The view you came for. Find which side to sit on and when to look.</p><span>Find the Fuji view <span aria-hidden="true">→</span></span></div></a>
+        <div class="discovery-grid scenery-strip" id="scenery-photos"><a class="discovery-card tool-card" href="en/start.html#journey" data-lp-cta="strip-card-train"><span class="tool-phone tool-phone-train"><img src="promo/assets/ui/en-timeline-fuji.webp" alt="Viewing times and seat sides listed for a chosen train" loading="eager" decoding="async"></span><div class="discovery-copy"><h3>Find viewing times for your train.</h3><p>Choose your train to see when each view passes and which side to sit on.</p></div></a>
+<a class="discovery-card tool-card tool-card-map" href="en/live/" data-lp-cta="strip-card-live"><img src="images/og-live-guide.jpg" alt="Live guide map showing the train’s GPS position on the route" loading="eager" decoding="async"><small class="tool-map-credit">© OpenStreetMap contributors</small><div class="discovery-copy"><h3>Hear the next view coming.</h3><p>GPS follows your train and counts down to the next view.</p></div></a>
+<a class="discovery-card" href="en/guide.html" data-lp-cta="scenery-card-fuji"><img src="images/thumbs/20240211_Mt.Fuji.webp" alt="Snow-covered Mt. Fuji from the Shinkansen" loading="eager" decoding="async"><div class="discovery-copy"><h3>Start with Mt. Fuji.</h3><p>The view you came for. Find which side to sit on and when to look.</p><span>Find the Fuji view <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="en/castles.html" data-lp-cta="scenery-card-castles"><img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="Kakegawa Castle above the town" loading="eager" decoding="async"><div class="discovery-copy"><h3>Castles beside the railway.</h3><p>A white tower above the rooftops. Discover castles and the towns around them.</p><span>Discover the castles <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="en/countryside.html" data-lp-cta="scenery-card-countryside"><img src="images/thumbs/20260629_omi_fuji_michikusa.webp" alt="Green rice paddies below Mount Mikami" loading="eager" decoding="async"><div class="discovery-copy"><h3>Japan’s countryside.</h3><p>Rice paddies, crop fields, tea hills and greenhouse roofs. Look closer at everyday Japan.</p><span>Explore the countryside <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="en/zukan.html" data-lp-cta="scenery-card-zukan"><img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="Lake Hamana, one of the views in the photo guide" loading="eager" decoding="async"><div class="discovery-copy"><h3>Find your next window view.</h3><p>Lakes, mountains and towns. Browse the photographs and choose a view that catches your eye.</p><span>Browse the photo guide <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="en/spots/toji.html" data-lp-cta="scenery-card-toji"><img src="images/thumbs/20260712_toji_michikusa.webp" alt="To-ji’s pagoda rising above Kyoto’s rooftops" loading="eager" decoding="async"><div class="discovery-copy"><h3>Spot Kyoto’s five-story pagoda.</h3><p>Look above the rooftops near Kyoto Station for To-ji Temple’s pagoda.</p><span>Explore To-ji Temple <span aria-hidden="true">→</span></span></div></a>
-<a class="discovery-card" href="en/arenani.html" data-lp-cta="scenery-card-arenani"><img src="images/thumbs/20260816_fuji_paper_mills_michikusa.webp" alt="Paper-mill chimneys and buildings beside the Shinkansen" loading="eager" decoding="async"><div class="discovery-copy"><h3>What was that?</h3><p>Chimneys, bright green rows and long silver roofs. Discover the stories behind everyday Japan.</p><span>Discover everyday Japan <span aria-hidden="true">→</span></span></div></a></div><div class="scenery-strip-controls"><small>Scroll to explore more views</small><span class="scenery-strip-nav"><button type="button" data-strip-prev aria-label="Previous views" aria-controls="scenery-photos"><span aria-hidden="true">←</span></button><button type="button" data-strip-next aria-label="Next views" aria-controls="scenery-photos"><span aria-hidden="true">→</span></button></span></div>
+<a class="discovery-card" href="en/arenani.html" data-lp-cta="scenery-card-arenani"><img src="images/thumbs/20260816_fuji_paper_mills_michikusa.webp" alt="Paper-mill chimneys and buildings beside the Shinkansen" loading="eager" decoding="async"><div class="discovery-copy"><h3>What was that?</h3><p>Chimneys, bright green rows and long silver roofs. Discover the stories behind everyday Japan.</p><span>Discover everyday Japan <span aria-hidden="true">→</span></span></div></a>
+<a class="discovery-card tool-card" href="en/journal.html" data-lp-cta="strip-card-stamp"><span class="tool-phone tool-phone-stamp"><img src="promo/assets/ui/en-stamps.webp" alt="Window stamps collected in the stamp book" loading="lazy" decoding="async"></span><div class="discovery-copy"><h3>Collect the views as stamps.</h3><p>Stamp the views you spot and look back on your trip.</p></div></a></div><div class="scenery-strip-controls"><small>Scroll to explore more views</small><span class="scenery-strip-nav"><button type="button" data-strip-prev aria-label="Previous views" aria-controls="scenery-photos"><span aria-hidden="true">←</span></button><button type="button" data-strip-next aria-label="Next views" aria-controls="scenery-photos"><span aria-hidden="true">→</span></button></span></div>
 
-        <div class="scenery-actions"><a class="button button-primary" href="en/start.html#journey" data-lp-cta="scenery-train-time">Find viewing times for your train</a></div>
       </div>
     </section>
 

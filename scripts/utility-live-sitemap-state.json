@@ -1,17 +1,17 @@
 {
   "zh-Hant": {
     "lastmod": "2026-10-11",
-    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings.",
+    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept).",
     "fingerprints": {
-      "html": "41908920f64e604f1d4eb64857c6981d49e7da2c7d90dd6d21c3fc0f49cea53b",
+      "html": "061b613843479f82a38b337737d67d3bc799b403ff23f11ef0e2a87571a7ef5a",
       "narration": "ab0fa7172f350936a8433b9df1231c73685418ac682d656c9ea516009dc496bf"
     }
   },
   "fr": {
     "lastmod": "2026-10-11",
-    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings.",
+    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept).",
     "fingerprints": {
-      "html": "10e098a759f247ab177360e219a849c028fbc416f2f62e000303d13ed21d24c5",
+      "html": "9b3ddc91898381bc396a2f4f02ef142a82a8607a96d53693d2487e55c10752cf",
       "narration": "9f96624965cf6e0bf9c072c599579e94af049a9205207f7112e10ef93e7e3f24"
     }
   }

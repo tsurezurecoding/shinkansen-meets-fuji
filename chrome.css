@@ -203,11 +203,17 @@
   .top-nav-more summary {white-space: nowrap; padding: 4px 7px; font-size: 11px;}
   .lang-switch {min-width: max-content; white-space: nowrap;}
 }
-/* Pages in other languages (fr, de, es, ko, zh) have longer labels: they keep
-   the two-row header up to 1279px instead of overlapping the language switch. */
+/* French, German and Spanish labels are long: those pages keep the two-row
+   header up to 1279px instead of overlapping the language menu, and tighten
+   the nav on phones so it stays on one line under the logo. */
 @media (min-width: 760px) and (max-width: 1279px) {
-  .topbar:not(:lang(ja)):not(:lang(en)) {display: grid; grid-template-columns: minmax(0, 1fr) auto;}
-  .topbar:not(:lang(ja)):not(:lang(en)) .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; padding-top: 2px;}
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) {display: grid; grid-template-columns: minmax(0, 1fr) auto;}
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; padding-top: 2px;}
+}
+@media (max-width: 540px) {
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav {gap: 0;}
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav a,
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav-more summary {padding: 4px 5px; font-size: 10.5px; letter-spacing: -0.01em;}
 }
 
 @media (max-width: 540px) {

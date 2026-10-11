@@ -6,7 +6,8 @@ import { UTILITY_ROUTES, LOCALES, ATTRS, FORECAST_COPY, collectEnglish, utilityS
 import { textNodes } from './shared/castle-localization.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
-import { withUtilityLocales } from './shared/utility-locales.mjs';
+import { withUtilityLocales, publicPath } from './shared/utility-locales.mjs';
+const publicFile = file => file.replace(/(^|\/)index\.html$/, '$1').replace('live/index.html', 'live/');
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
@@ -95,17 +96,17 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     for (const el of doc.querySelectorAll('meta')) {
       const name = el.name || el.getAttribute('property') || '';
       if (/(?:description|title|image:alt)$/.test(name)) el.content = tr(el.content);
-      if (name === 'og:url') el.content = `${origin}/${file.replace('live/index.html', 'live/')}`;
+      if (name === 'og:url') el.content = `${origin}/${publicFile(file)}`;
       if (name === 'og:locale') el.content = lang === 'fr' ? 'fr_FR' : 'zh_TW';
     }
-    doc.querySelector('link[rel="canonical"]').href = `${origin}/${file.replace('live/index.html', 'live/')}`;
+    doc.querySelector('link[rel="canonical"]').href = `${origin}/${publicFile(file)}`;
     for (const schema of doc.querySelectorAll('script[type="application/ld+json"]')) {
       let item = translateObject(JSON.parse(schema.textContent));
       function localizeSchema(value) {
         if (!value || typeof value !== 'object') return;
         for (const [key, field] of Object.entries(value)) {
           if (key === 'inLanguage') value[key] = lang;
-          else if (typeof field === 'string' && field.startsWith(`${origin}/en/${route.replace('live/index.html', 'live/')}`)) value[key] = field.replace(`${origin}/en/${route.replace('live/index.html', 'live/')}`, `${origin}/${file.replace('live/index.html', 'live/')}`);
+          else if (typeof field === 'string' && (publicPath(route) ? field.startsWith(`${origin}/en/${publicPath(route)}`) : field === `${origin}/en/`)) value[key] = field.replace(`${origin}/en/${publicPath(route)}`, `${origin}/${publicFile(file)}`);
           else localizeSchema(field);
         }
       }
@@ -116,8 +117,8 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       const href = el.getAttribute('href');
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
       const url = new URL(href, doc.baseURI);
-      const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html');
-      const destination = (routes.includes(target) ? `${lang}/` : 'en/') + target;
+      const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
+      const destination = (routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       el.setAttribute('href', prefix + destination + url.search + url.hash);
     }

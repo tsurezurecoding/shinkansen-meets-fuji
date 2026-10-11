@@ -21,9 +21,9 @@ const dataScript = () => read('data-runtime.js') + '\nObject.assign(window, { SP
 const exists = file => fs.existsSync(path.join(root, file));
 const assert = (ok, label, detail) => { if (!ok) errors.push(`${label}: ${detail}`); };
 const fileFor = (lang, route) => (lang === 'ja' ? '' : `${lang}/`) + route;
-const publicRoute = route => route.replace('live/index.html', 'live/');
+const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 const urlFor = (lang, route) => `${origin}/${fileFor(lang, publicRoute(route))}`;
-const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html');
+const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
 const normal = text => String(text).replace(/\s+/g, ' ').trim();
 const placeholders = text => (String(text).match(/\{(?:\d+|name|hook|area)\}/g) || []).sort().join('|');
 const compare = (actual, expected, label, detail) => assert(JSON.stringify(actual) === JSON.stringify(expected), label, detail);
@@ -111,7 +111,7 @@ function checkDictionary(lang) {
     counts.narrationDirections++;
   }
   for (const route of [...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, ...EXTRA_LOCALE_ROUTES, 'guide.html']) assert(adapter.href(route).startsWith(`${lang}/`), label, `same-language route missing ${route}`);
-  assert(adapter.href('index.html') === 'en/index.html', label, 'TOP must remain existing English fallback');
+  assert(adapter.href('index.html') === `${lang}/index.html`, label, 'TOP must use the same-language edition');
   assert(adapter.href('privacy.html') === 'en/privacy.html', label, 'untranslated route must use English fallback');
   dom.window.close(); counts.dictionaries++;
   return dictionary;
@@ -157,7 +157,7 @@ function checkMenu(dom, lang, route, label) {
     for (const edition of editions) {
       const a = [...menu.querySelectorAll('a')].find(node => node.lang === edition);
       const href = a && new URL(a.href);
-      assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route)}`, label, `language switch differs ${edition}`);
+      assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route === 'index.html' ? '' : route)}`, label, `language switch differs ${edition}`);
       assert(Boolean(a?.hasAttribute('aria-current')) === (lang === edition), label, `current marker differs ${edition}`);
     }
   }
