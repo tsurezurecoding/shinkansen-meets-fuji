@@ -14,13 +14,20 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
-  "en/countryside.html", "countryside.css", "home-cards.css", "data/countryside-photo-sources.json",
+  "en/foods.html", "foods.css", "foods.js", "data/foods-photo-sources.json",
+  "en/everyday-japan.html", "everyday.css",
+  ...await walkFiles("images/foods", p => /\.webp$/.test(p)),
+  "en/tokyo-kyoto-stations.html", "stations.css", "stations.js", "data/station-photo-sources.json",
+  ...await walkFiles("images/stations", p => /\.jpg$/.test(p)),
+  "en/countryside.html", "countryside.css", "home-cards.css", "home-scenery.css", "home-scenery.js", "data/countryside-photo-sources.json",
   "images/20260629_omi_fuji_michikusa.jpg", "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
   "images/og-live-guide.jpg", "images/stamps/stamp_fuji.svg", "images/stamps/stamp_kakegawa.svg", "images/stamps/stamp_hamanako.svg",
   "en/beer-on-shinkansen.html", "beer.css", "beer.js", "data/beer-photo-sources.json",
   ...await walkFiles("images/beer", p => /\.(?:jpg|png|webp)$/.test(p)),
   "window-artworks.html", "en/window-artworks.html", "window-artworks.css", "data/window-artworks.json",
   "en/drinks.html", "drinks.css", "drinks.js", "data/drinks-photo-sources.json",
+  "data/maibara-photo-sources.json",
+  "images/maibara_300x_commons.jpg", "images/maibara_star21_commons.jpg", "images/maibara_win350_commons.jpg",
   ...await walkFiles("images/drinks", p => /\.(?:jpg|png|webp|svg)$/.test(p)),
   "hero-cinema.js", "hero-cinema.css",
   ...await walkFiles("promo", p => /\.(?:html|js|css|webp|svg)$/.test(p)),

@@ -111,15 +111,8 @@ function localizeEnglishRail(html) {
     if(!card)throw Error('Missing English feature card '+id);
     return card;
   });
-  const drinks=`<a class="journey-intent-card journey-intent-cloudy" href="en/drinks.html" data-cta-track="zukan_theme_click" data-cta-id="drinks">
-    <img src="images/drinks/20261004-tea-shelf-michikusa.webp" alt="" loading="lazy" decoding="async">
-    <span class="journey-intent-copy"><small>JAPANESE DRINKS</small><strong>Drinks for your Japan journey</strong><span>Tea, coffee and Japanese soft drinks — discover the names on the shelf.</span></span>
-  </a>`;
-  const beer=`<a class="journey-intent-card journey-intent-cloudy" href="en/beer-on-shinkansen.html" data-cta-track="zukan_theme_click" data-cta-id="beer">
-    <img src="images/beer/20261004-beer-hero-michikusa.webp" alt="" loading="lazy" decoding="async">
-    <span class="journey-intent-copy"><small>JAPANESE BEER</small><strong>Beer on the Shinkansen</strong><span>Choose a Japanese lager, enjoy it with an ekiben, and spot the breweries outside.</span></span>
-  </a>`;
-  const ordered=[...leading,drinks,beer,...featureCards.filter(c=>!leading.includes(c))];
+  const everyday=`<a class="journey-intent-card journey-intent-cloudy" href="en/everyday-japan.html" data-cta-track="zukan_theme_click" data-cta-id="everyday_japan"><img src="images/foods/onigiri.webp" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>EVERYDAY JAPAN</small><strong>Everyday Japan</strong><span>Food, drinks and countryside stories.</span></span></a>`;
+  const ordered=[...leading,everyday,...featureCards.filter(c=>!leading.includes(c))];
   let index=0;
   result=result.replace(/<a class="journey-intent-card\b[\s\S]*?<\/a>/g,()=>{
     const i=index++;

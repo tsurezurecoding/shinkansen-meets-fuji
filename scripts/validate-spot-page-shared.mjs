@@ -387,6 +387,14 @@ async function runThinValidator() {
       }
       if (spot.id === "hamanako" && sharedChapterIds.join(",") !== "hamanako-fuji") fail(`${relativeFile}: Hamanako shared chapter contract drifted`);
       if (spot.id === "hamanako-fuji" && page.guideNotice?.href !== "hamanako.html#hamanako-fuji") fail(`${relativeFile}: Hamanako guide notice destination drifted`);
+      if (["odawara", "shiraitogawa-bridge"].includes(spot.id)) {
+        if (page.guideNotice || sharedChapterIds.length) fail(`${relativeFile}: coastal scenes must have independent articles`);
+        for (const link of ["odawara.html#atami-hatsushima", "shiraitogawa-bridge.html#shiraitogawa-bridge"]) {
+          if (!output.includes(link)) fail(`${relativeFile}: coastal timeline link must reach the correct independent article: ${link}`);
+        }
+      }
+      if (spot.id === "odawara" && (!output.includes('id="atami-castle"') || !output.includes('id="hatsushima"'))) fail(`${relativeFile}: Atami needs both landmark chapters`);
+      if (spot.id === "maibara-test-trains" && ["train-300x", "train-win350", "train-star21"].some(id => !output.includes(`id="${id}"`))) fail(`${relativeFile}: preserved test trains need individual chapters`);
       if (baselineRendererCode && !page.readingLayout) {
         const baseline = renderPage(lang, prefix, spot.id, undefined, false, baselineRendererCode);
         if (baseline.errors.length || baseline.html !== output) fail(`${relativeFile}: non-opt-in rendering changed from ${baselineSelector}`);

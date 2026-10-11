@@ -1174,6 +1174,18 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-19"
+      },
+      {
+        "src": "images/20261010_tokyo-tower_155558_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "建物の間に見える東京タワー",
+          "en": "Tokyo Tower between the buildings"
+        }
       }
     ],
     "media": {
@@ -1330,7 +1342,13 @@ const SPOTS = [
               "en": "Seat E side: the red-brick station beyond the platforms"
             }
           }
-        ]
+        ],
+        "storyLink": {
+          "en": {
+            "route": "en/tokyo-kyoto-stations.html#look-up",
+            "label": "Take a closer look at Tokyo & Kyoto stations →"
+          }
+        }
       },
       {
         "id": "edo-view",
@@ -2220,28 +2238,66 @@ const SPOTS = [
       ],
     },
     minutesFromTokyo: 23, side: "E", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "hills",
-    image: "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
+    image: "images/20261010_727-board_20182_michikusa.jpg",
     photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      date: "2026-07-04",
-      note: { ja: "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近", en: "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa." },
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-10-10",
+      "note": {
+        "ja": "田園に並ぶ248・727看板",
+        "en": "The 248 and 727 signs beside the fields"
+      }
     },
     photos: [
       {
-        src: "images/20260804_248_board_kuzuhara_michikusa.jpg",
-        alt: { ja: "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板", en: "Kinuta Dental's 248 sign with the director's face, beside the 727 sign" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-04",
-        note: { ja: "E席側、06:23撮影（動画から切り出し）。朝の光で248看板の院長の顔まで見える", en: "Seat E side, 06:23 (frame from video). Morning light shows the director's face on the 248 sign." },
+        "src": "images/20260804_248_board_kuzuhara_michikusa.jpg",
+        "alt": {
+          "ja": "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板",
+          "en": "Kinuta Dental's 248 sign with the director's face, beside the 727 sign"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "E席側、06:23撮影（動画から切り出し）。朝の光で248看板の院長の顔まで見える",
+          "en": "Seat E side, 06:23 (frame from video). Morning light shows the director's face on the 248 sign."
+        }
       },
       {
-        src: "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
-        alt: { ja: "248看板と並ぶ727 COSMETICS看板", en: "727 COSMETICS sign beside the 248 sign" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-04",
-        note: { ja: "E席側。248看板と、みんなの介護看板の間に見える727", en: "Seat E side. 727 between the 248 sign and a care-service sign." },
+        "src": "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+        "alt": {
+          "ja": "248看板と並ぶ727 COSMETICS看板",
+          "en": "727 COSMETICS sign beside the 248 sign"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "E席側。248看板と、みんなの介護看板の間に見える727",
+          "en": "Seat E side. 727 between the 248 sign and a care-service sign."
+        }
       },
+      {
+        "src": "images/20260704_727_board_kuzuhara_2_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa",
+          "date": "2026-07-04",
+          "note": {
+            "ja": "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近",
+            "en": "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa."
+          }
+        },
+        "date": "2026-07-04",
+        "note": {
+          "ja": "のぞみ27号・E席側、東京11:12発、11:38撮影。藤沢市葛原付近",
+          "en": "Nozomi 27, Seat E side, Tokyo 11:12 departure, photographed at 11:38 near Kuzuhara, Fujisawa."
+        }
+      }
     ],
     references: [REFERENCES.sevenTwoSevenNote, REFERENCES.sevenTwoSevenOfficial, REFERENCES.sevenTwoSevenHistory, REFERENCES.kinutaDentist248Post, REFERENCES.kinutaDentist248Meaning, { label: { ja: "Wikipedia: きぬた歯科", en: "Wikipedia: Kinuta Dental (Japanese only)" }, url: { ja: "https://ja.wikipedia.org/wiki/%E3%81%8D%E3%81%AC%E3%81%9F%E6%AD%AF%E7%A7%91", en: "https://ja.wikipedia.org/wiki/%E3%81%8D%E3%81%AC%E3%81%9F%E6%AD%AF%E7%A7%91" } }],
     map: { lat: 35.4167, lng: 139.428027, ja: "きぬた歯科の248看板 藤沢市葛原", en: "727 and 248 signs, Kuzuhara Fujisawa" },
@@ -2322,110 +2378,376 @@ const SPOTS = [
     viewpoint: { lat: 35.392780295389095, lng: 139.37658144602017 },
   },
   {
-    id: "odawara",
-    icon: "🌊",
-    ja: { name: "熱海と相模湾", area: "小田原 → 熱海", hook: "トンネルの合間、海がひらく。", story: "小田原を過ぎ、早川から熱海へ向かうA席側。トンネルの切れ目ごとに相模湾が現れ、斜面に重なる街、沖の初島、山上の熱海城へと景色が移ります。海がずっと続くのではなく、暗いトンネルのあとに青い水面が突然ひらく。その反復が、東京の都市風景から伊豆の旅へ切り替わる合図です。" },
-    en: { name: "Atami & Sagami Bay", area: "Odawara → Atami", hook: "The sea opens between tunnels.", story: "After Odawara, watch Seat A from Hayakawa toward Atami. Sagami Bay flashes into view between tunnels, followed by the city climbing the slopes, Hatsushima offshore, and Atami Castle on its hill. The sea is not continuous; it opens suddenly after each stretch of darkness. That rhythm marks the shift from metropolitan scenery to the Izu coast." },
-    pageTitle: {
-      ja: "新幹線から見える熱海・相模湾｜初島と熱海城をA席から | 新幹線の窓",
-      en: "Atami and Sagami Bay from the Shinkansen | Seat A Guide",
+    "id": "odawara",
+    "icon": "🌊",
+    "ja": {
+      "name": "熱海と初島",
+      "area": "熱海駅の手前",
+      "hook": "海に浮かぶ、低い島。",
+      "story": "熱海が近づくと、A席側に斜面の街と海がひらきます。沖に低く横たわる島は初島。山上の白い熱海城も、街と海が重なる景色の目印です。根府川の白糸川橋梁とは別のタイミングで現れるので、トンネルを抜けたらもう一度窓の外へ。"
     },
-    pageHeading: {
-      ja: "トンネルの合間にひらく、熱海と相模湾",
-      en: "Atami and Sagami Bay between the tunnels",
+    "en": {
+      "name": "Atami & Hatsushima",
+      "area": "Approaching Atami Station",
+      "hook": "A low island beyond the hillside town.",
+      "story": "As Atami approaches, Seat A reveals hillside buildings and the sea. The low island offshore is Hatsushima; the white Atami Castle stands above the town. This is a later opening than the Shiraitogawa bridge near Nebukawa. Watch the window again as daylight returns after the tunnels."
     },
-    pageHeadingChunks: {
-      ja: ["トンネルの合間に", "ひらく、", "熱海と相模湾"],
-      en: ["Atami and Sagami Bay", "between the tunnels"],
+    "pageTitle": {
+      "ja": "熱海城と初島｜新幹線A席から見える熱海の車窓 | 新幹線の窓",
+      "en": "Atami from the Shinkansen: Atami Castle & Hatsushima | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "小田原から熱海へ向かう新幹線のA席側では、トンネルの合間に相模湾、斜面の街、初島、熱海城が見えます。見つけ方とそれぞれの正体を写真付きで紹介します。",
-      en: "Between Odawara and Atami, Seat A reveals Sagami Bay, the hillside city, Hatsushima Island, and Atami Castle in brief gaps between tunnels.",
+    "pageHeading": {
+      "ja": "新幹線から見る熱海城と初島",
+      "en": "Atami from the Shinkansen: Atami Castle & Hatsushima"
     },
-    sectionHeading: {
-      ja: "新幹線から海が見えるのはどこ？",
-      en: "Where does the sea appear from the Shinkansen?",
+    "pageHeadingChunks": {
+      "ja": ["新幹線から見る", "熱海城と初島"],
+      "en": []
     },
-    pageStory: {
-      ja: "東京から新大阪方面へ向かうなら、小田原を出て魚籃観音像を過ぎたころからA席側を意識してください。早川から熱海まではトンネルが多く、相模湾は連続して見えるのではありません。窓が明るくなった一瞬に、海岸線と岬、斜面に広がる街が重なります。熱海が近づくと、沖に低く浮かぶ初島や、山の上の白い熱海城を見つけられることがあります。",
-      en: "Heading from Tokyo toward Shin-Osaka, start watching Seat A after Odawara and the Gyoran Kannon statue. The Hayakawa–Atami stretch has many tunnels, so Sagami Bay appears in short openings rather than as one continuous panorama. In those bright gaps, the coastline, headlands, and hillside neighborhoods overlap. Near Atami, you may also pick out low-lying Hatsushima offshore and the white Atami Castle on the hill.",
+    "metaDescription": {
+      "ja": "熱海城は新幹線から見える？東海道新幹線のA席側で探す、山上の白い熱海城と沖の初島。車窓写真で見える位置と目印を紹介し、熱海海上花火の車窓記録も案内します。",
+      "en": "Can you see Atami Castle from the Shinkansen? Find the hillside landmark and Hatsushima from Seat A, with window photos and a link to Atami Sea Fireworks views."
     },
-    explainer: {
-      heading: { ja: "海の向こうと山の上、何が見えている？", en: "What are the island and the white castle?" },
-      ja: [
+    "sectionHeading": {
+      "ja": "海へ下る熱海の街",
+      "en": "Atami, where the hills meet the sea"
+    },
+    "pageStory": {
+      "ja": "熱海では、山から海へ下る斜面に家やホテルが重なります。東海道新幹線のA席側で、街の先に相模湾が開ける短い瞬間。山上の白い天守風の建物は熱海城、沖に低く横たわる島は初島です。根府川の白糸川橋梁とは別の車窓なので、トンネルを挟んであらためて窓の外へ目を向けてみてください。",
+      "en": "Atami is a seaside resort city where buildings climb the hills above Sagami Bay. From Seat A on the Tokaido Shinkansen, brief openings between tunnels reveal a white castle-like landmark on the hillside and a low island offshore. They are Atami Castle and Hatsushima. This view comes after the separate Shiraitogawa Bridge scene near Nebukawa."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "海の向こうと山の上、何が見えている？",
+        "en": "What are the island and the white castle?"
+      },
+      "ja": [
         "熱海は、箱根外輪山へ続く山地から相模湾へ下る斜面に発達した街です。そのため車窓では、海だけでなく、山肌に重なる家やホテルまで一緒に見えます。平らな海辺の街ではなく、海・街・山が縦に重なることが、熱海らしい景色です。",
         "沖に低く浮かぶ島は初島です。熱海港から約10km沖にあり、周囲約4kmの有人島。大きな山には見えず、水平線の手前に細長く浮かぶ輪郭を探すのがコツです。",
         "山の上に見える白い天守風の建物は熱海城です。戦国時代から残る城ではなく、1959年に建てられた観光施設。錦ヶ浦の山上に立つため、新幹線からは熱海到着を知らせる白い目印になります。",
-        "トンネルが多いのは、この区間で山がそのまま海へ落ちているからです。箱根の火山体から続く斜面は平地をほとんど残さずに海岸へ達し、線路を通せる平らな土地がありません。だから新幹線は山側を掘って進み、谷が海へ開ける場所でだけ外の光が入ります。海が途切れて見えるのは演出ではなく、地形そのものがこの車窓のリズムを決めているからです。",
+        "トンネルが多いのは、この区間で山がそのまま海へ落ちているからです。箱根の火山体から続く斜面は平地をほとんど残さずに海岸へ達し、線路を通せる平らな土地がありません。だから新幹線は山側を掘って進み、谷が海へ開ける場所でだけ外の光が入ります。海が途切れて見えるのは演出ではなく、地形そのものがこの車窓のリズムを決めているからです。"
       ],
-      en: [
+      "en": [
         "Atami developed on steep slopes descending from the mountains toward Sagami Bay. From the train, the sea, stacked houses and hotels, and the green hills appear in layers. That vertical overlap is what makes the Atami coastline distinctive.",
         "The low island offshore is Hatsushima, an inhabited island about 10 kilometers from Atami Port and roughly 4 kilometers around. Look for a long, low outline in front of the horizon rather than a mountainous island.",
         "The white, castle-like building on the hill is Atami Castle. It is not a surviving feudal castle; it was built in 1959 as a tourist attraction. Its position above Nishikigaura makes it a useful visual marker that Atami is close.",
-        "The tunnels exist because the mountains here drop straight into the sea. Slopes descending from the Hakone volcanic complex reach the shore with almost no flat land left, so there is no level ground for a railway. The Shinkansen therefore runs inside the hillside and admits daylight only where a valley opens toward the water. The broken view is not a matter of scenery but of terrain: the landform sets the rhythm of this window.",
-      ],
+        "The tunnels exist because the mountains here drop straight into the sea. Slopes descending from the Hakone volcanic complex reach the shore with almost no flat land left, so there is no level ground for a railway. The Shinkansen therefore runs inside the hillside and admits daylight only where a valley opens toward the water. The broken view is not a matter of scenery but of terrain: the landform sets the rhythm of this window."
+      ]
     },
-    guideHighlight: {
-      ja: "この区間の主役は、ひとつの建物ではなく景色の切り替わりです。魚籃観音像を過ぎたらA席側を見て、トンネルを抜けた瞬間の明るさに反応してください。初島は海上の低い輪郭、熱海城は山上の白い建物として探すと見つけやすくなります。",
-      en: "The main attraction is the changing sequence rather than one landmark. After Gyoran Kannon, watch Seat A and react when the window brightens after a tunnel. Hatsushima is a low outline on the water; Atami Castle is the white building high on the slope.",
+    "guideHighlight": {
+      "ja": "案内は2か所に分けています。根府川では橋と海、熱海の手前では街と初島。どちらもA席側ですが、一度の案内で見続ける景色ではなく、トンネルの合間に別々に現れます。",
+      "en": "The guide marks two separate openings: bridge and sea near Nebukawa, then town and island near Atami. Both are on Seat A, with tunnels between them."
     },
-    minutesFromTokyo: 36, side: "A", category: "notable", confidence: "verified", durationSec: 60, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
-    image: "images/20260804_atami_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-08-04", note: { ja: "朝の光にひらく熱海の海", en: "Atami's sea opening in the morning light." } },
-    photos: [
+    "minutesFromTokyo": 36,
+    "side": "A",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 60,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "bay",
+    "image": "images/20260804_atami_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-08-04",
+      "note": {
+        "ja": "朝の光にひらく熱海の海",
+        "en": "Atami's sea opening in the morning light."
+      }
+    },
+    "photos": [
       {
-        src: "images/20260515_atami_sagami_bay.jpg",
-        alt: { ja: "新幹線のA席側から見える熱海と相模湾", en: "Atami and Sagami Bay from Seat A" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-15",
-        note: { ja: "熱海と相模湾を一望する代表的な車窓", en: "A broad window view of Atami and Sagami Bay" },
+        "src": "images/20260515_atami_sagami_bay.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える熱海と相模湾",
+          "en": "Atami and Sagami Bay from Seat A"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-15",
+        "note": {
+          "ja": "熱海と相模湾を一望する代表的な車窓",
+          "en": "A broad window view of Atami and Sagami Bay"
+        }
       },
       {
-        src: "images/20250523_hatsushima_letus10.jpg",
-        alt: { ja: "新幹線のA席側から見える初島", en: "Hatsushima Island from Seat A" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/516720935.html",
-        note: { ja: "初島: 静岡県唯一の有人島", en: "Hatsushima: Shizuoka's only inhabited island" },
+        "src": "images/20250523_hatsushima_letus10.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える初島",
+          "en": "Hatsushima Island from Seat A"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/516720935.html",
+        "note": {
+          "ja": "初島: 静岡県唯一の有人島",
+          "en": "Hatsushima: Shizuoka's only inhabited island"
+        }
       },
       {
-        src: "images/20250524_atami_castle_letus10.jpg",
-        alt: { ja: "新幹線のA席側から見える熱海城", en: "Atami Castle from Seat A" },
-        credit: { ja: "新幹線の車窓から", en: "Shinkansen window blog" },
-        sourceUrl: "https://cotetu.seesaa.net/article/516721203.html",
-        note: { ja: "熱海城: 1959年竣工の観光施設", en: "Atami Castle: a sightseeing facility completed in 1959" },
+        "src": "images/20250524_atami_castle_letus10.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える熱海城",
+          "en": "Atami Castle from Seat A"
+        },
+        "credit": {
+          "ja": "新幹線の車窓から",
+          "en": "Shinkansen window blog"
+        },
+        "sourceUrl": "https://cotetu.seesaa.net/article/516721203.html",
+        "note": {
+          "ja": "熱海城: 1959年竣工の観光施設",
+          "en": "Atami Castle: a sightseeing facility completed in 1959"
+        }
       },
       {
-        src: "images/20260712_atami_castle_michikusa.jpg",
-        alt: { ja: "夕暮れの斜面にほんのり光る熱海城", en: "Atami Castle faintly lit on the evening hillside" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "夕暮れ、山の上で白く光る熱海城", en: "At dusk, Atami Castle glows white on the hill." },
+        "src": "images/20260712_atami_castle_michikusa.jpg",
+        "alt": {
+          "ja": "夕暮れの斜面にほんのり光る熱海城",
+          "en": "Atami Castle faintly lit on the evening hillside"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-07-12",
+        "note": {
+          "ja": "夕暮れ、山の上で白く光る熱海城",
+          "en": "At dusk, Atami Castle glows white on the hill."
+        }
       },
       {
-        src: "images/20260804_sagami_bay_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える朝の相模湾", en: "Sagami Bay from Seat A on a morning Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-04",
-        note: { ja: "のぞみ1号（東京06:00発）、車内時計で06:35ごろ", en: "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35." },
+        "src": "images/20260903_atami_hatsushima_michikusa.jpg",
+        "alt": {
+          "ja": "熱海の海の向こうに見える初島",
+          "en": "Hatsushima Island beyond Atami's sea"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "熱海の海越しに、低く横たわる初島",
+          "en": "Hatsushima lies low across the sea from Atami"
+        },
+        "width": 1920,
+        "height": 1080
       },
       {
-        src: "images/20260903_atami_hatsushima_michikusa.jpg",
-        alt: { ja: "熱海の海の向こうに見える初島", en: "Hatsushima Island beyond Atami's sea" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "熱海の海越しに、低く横たわる初島", en: "Hatsushima lies low across the sea from Atami" },
-      },
-      {
-        src: "images/20260919_atami_castle_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える錦ヶ浦山頂の熱海城", en: "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-19",
-        note: { ja: "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。", en: "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami." },
-      },
+        "src": "images/20260919_atami_castle_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える錦ヶ浦山頂の熱海城",
+          "en": "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。",
+          "en": "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami."
+        },
+        "width": 1920,
+        "height": 1080
+      }
     ],
-    references: [REFERENCES.atami, REFERENCES.atamiHatsushima, REFERENCES.atamiCastle, REFERENCES.atamiCityEnvironment, REFERENCES.hatsushimaBlog, REFERENCES.atamiCastleBlog],
-    map: { lat: 35.0864250, lng: 139.0786972, ja: "熱海城", en: "Atami Castle" },
-    viewpoint: { lat: 35.100080, lng: 139.072350 },
+    "references": [
+      {
+        "label": {
+          "ja": "熱海市観光協会: 熱海のおすすめ観光スポット",
+          "en": "Atami Tourism: Highlights of Atami (Japanese only)"
+        },
+        "url": "https://www.ataminews.gr.jp/features/42"
+      },
+      {
+        "label": {
+          "ja": "熱海市観光協会: 初島",
+          "en": "Atami Tourism: Hatsushima Island (Japanese only)"
+        },
+        "url": "https://www.ataminews.gr.jp/spot/779"
+      },
+      {
+        "label": {
+          "ja": "熱海市観光協会: 熱海城",
+          "en": "Atami Tourism: Atami Castle (Japanese only)"
+        },
+        "url": "https://www.ataminews.gr.jp/spot/12"
+      },
+      {
+        "label": {
+          "ja": "熱海市: 熱海市の地形と環境",
+          "en": "Atami City: Geography and environment of Atami (Japanese only)"
+        },
+        "url": {
+          "ja": "https://www.city.atami.lg.jp/_res/projects/default_project/_page_/001/007/555/202310_atami_kankyo.pdf",
+          "en": "https://www.city.atami.lg.jp/_res/projects/default_project/_page_/001/007/555/202310_atami_kankyo.pdf"
+        }
+      },
+      {
+        "label": {
+          "ja": "新幹線の車窓から: 初島車窓記事",
+          "en": "Shinkansen window blog: Hatsushima window article (Japanese only)"
+        },
+        "url": "https://cotetu.seesaa.net/article/516720935.html"
+      },
+      {
+        "label": {
+          "ja": "新幹線の車窓から: 熱海城車窓記事",
+          "en": "Shinkansen window blog: Atami Castle window article (Japanese only)"
+        },
+        "url": "https://cotetu.seesaa.net/article/516721203.html"
+      }
+    ],
+    "map": {
+      "lat": 35.086425,
+      "lng": 139.0786972,
+      "ja": "熱海城",
+      "en": "Atami Castle"
+    },
+    "viewpoint": {
+      "lat": 35.10008,
+      "lng": 139.07235
+    },
+    "pageHook": {
+      "ja": "山上の城、沖に浮かぶ島。",
+      "en": "A hilltop castle and an island offshore."
+    },
+    "pageStoryAnchor": "atami-hatsushima",
+    "guideAnchor": "atami-hatsushima",
+    "relatedSpotIds": [
+      "shiraitogawa-bridge",
+      "gyoran-kannon",
+      "sagami-fuji"
+    ],
+    "pageChapters": [
+      {
+        "id": "atami-castle",
+        "heading": {
+          "ja": "山上に見える熱海城",
+          "en": "Atami Castle: the white landmark on the hill"
+        },
+        "paragraphs": {
+          "ja": [
+            "錦ヶ浦の山上に立つ熱海城は、1959年に造られた観光施設です。天守のような姿をしていますが、戦国時代の城跡を復元したものではありません。城の形をした建物が海を見下ろす風景として眺めると、この街らしさが見えてきます。",
+            "車窓では山の稜線付近の白い建物を探します。写真のように、手前のホテルや架線が重なることもあります。全景が長く見える場所ではなく、街の向こうに天守の屋根が現れる一瞬が見どころです。"
+          ],
+          "en": [
+            "Atami Castle is a tourist attraction built above Nishikigaura in 1959, rather than a restored feudal fortress. Its castle-like silhouette overlooks the sea and helps you recognise the hillside from the train.",
+            "Watch near the ridge for white walls and layered roofs. Hotels and wires may interrupt the view, as they do in the photograph. The glimpse is brief; do not expect an uninterrupted panorama."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20260919_atami_castle_michikusa.jpg",
+            "alt": {
+              "ja": "新幹線のA席側から見える錦ヶ浦山頂の熱海城",
+              "en": "Atami Castle rising on the summit of Nishikigaura, seen from Seat A on the Shinkansen"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-19",
+            "note": {
+              "ja": "熱海の名勝地、錦ヶ浦山頂にそびえたつ熱海城。",
+              "en": "Atami Castle rising above the summit of Nishikigaura, a scenic landmark of Atami."
+            },
+            "width": 1920,
+            "height": 1080
+          }
+        ]
+      },
+      {
+        "id": "hatsushima",
+        "heading": {
+          "ja": "海に低く横たわる初島",
+          "en": "Hatsushima: a low island offshore"
+        },
+        "paragraphs": {
+          "ja": [
+            "初島は熱海港から約10km沖にある有人島です。山のように高く盛り上がる島ではなく、海面の上に細長く横たわる輪郭が目印。写真では、建物の左に開いた海の上に島が見えます。",
+            "海が見え始めても、初島がすぐ見えるとは限りません。手前の建物が切れ、水平線近くまで視線が通る瞬間に探してみてください。霞や雨で輪郭が消える日もあります。"
+          ],
+          "en": [
+            "Hatsushima is an inhabited island about ten kilometres from Atami Port. Look for a long, low outline rather than a mountainous shape. In this photograph, it appears in the opening to the left of the buildings.",
+            "Wait for a gap that lets you see across the water. Buildings can hide the island even when the sea itself is visible, and haze or rain can soften its outline."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20260903_atami_hatsushima_michikusa.jpg",
+            "alt": {
+              "ja": "熱海の海の向こうに見える初島",
+              "en": "Hatsushima Island beyond Atami's sea"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-09-03",
+            "note": {
+              "ja": "熱海の海越しに、低く横たわる初島",
+              "en": "Hatsushima lies low across the sea from Atami"
+            },
+            "width": 1920,
+            "height": 1080
+          }
+        ]
+      },
+      {
+        "id": "atami-fireworks",
+        "heading": {
+          "ja": "夜の熱海：海上花火の車窓",
+          "en": "Atami at night: fireworks over the sea"
+        },
+        "paragraphs": {
+          "ja": [
+            "熱海の海は、夜には花火の舞台にもなります。花火ページでは、走る新幹線から熱海海上花火が見えた投稿を紹介しています。開催日や列車の通過時刻が合うときの、昼とは違う車窓の楽しみです。"
+          ],
+          "en": [
+            "Atami’s coastline also hosts fireworks at night. Our fireworks page collects posts showing Atami Sea Fireworks from moving Shinkansen trains—a different window view when an event and your train’s timing coincide."
+          ]
+        },
+        "photos": [],
+        "link": {
+          "route": "hanabi.html#hb-atami",
+          "label": {
+            "ja": "熱海海上花火の車窓記録を見る →",
+            "en": "See Atami Sea Fireworks from the train →"
+          }
+        }
+      },
+      {
+        "id": "earlier-nebukawa",
+        "heading": {
+          "ja": "少し前の車窓：白糸川橋梁",
+          "en": "Earlier on the route: Shiraitogawa Bridge"
+        },
+        "paragraphs": {
+          "ja": [
+            "東京から新大阪へ向かう場合、白糸川橋梁は熱海より手前、根府川付近です。赤い鉄橋と海を楽しむ場面は別記事にまとめています。"
+          ],
+          "en": [
+            "On a Tokyo-to-Shin-Osaka journey, the red bridge near Nebukawa appears before Atami. Its railway history and viewing tips have their own article."
+          ]
+        },
+        "photos": [],
+        "link": {
+          "route": "spots/shiraitogawa-bridge.html",
+          "label": {
+            "ja": "白糸川橋梁と相模湾の車窓へ →",
+            "en": "See Shiraitogawa Bridge and Sagami Bay →"
+          }
+        }
+      }
+    ]
   },
   {
     id: "odawara-castle",
@@ -2510,55 +2832,85 @@ const SPOTS = [
     map: { lat: 35.2509722, lng: 139.1535778, ja: "小田原城", en: "Odawara Castle" },
   },
   {
-    id: "gyoran-kannon",
-    icon: "🙏",
-    ja: { name: "魚籃観音像", area: "小田原 → 熱海（早川付近）", hook: "魚籠を持つ、白い観音。", story: "小田原を過ぎ、早川漁港のそばでA席側に一瞬あらわれる白い像は、東善院の魚籃大観音です。像の高さは約10m、蓮台まで含めると全体で13m前後。手にした魚籠（ぎょらん）は漁を守る象徴で、海上安全と大漁、そして魚介への感謝を願って1982年に建立されました。相模湾を望む早川の斜面に立ち、新幹線が海側へ景色を切り替える序章の目印になっています。" },
-    en: { name: "Gyoran Kannon Statue", area: "Odawara → Atami, near Hayakawa", hook: "A white Kannon holding a fish basket.", story: "The white statue that flashes past on the Seat A side near Hayakawa Fishing Port is Gyoran Dai-Kannon at Tozen-in Temple. The image itself is about 10 meters tall — around 13 meters including its lotus pedestal — and holds a woven basket of fish, the traditional attribute of this form of Kannon. Erected in 1982 to pray for safety at sea, plentiful catches and gratitude for marine life, it stands on a slope above Sagami Bay and marks the moment the Shinkansen view opens toward the coast." },
-    pageTitle: {
-      ja: "小田原・早川の白い観音は何？東善院の魚籃大観音 | 新幹線の窓",
-      en: "What is the white Kannon near Odawara? Gyoran Dai-Kannon | Shinkansen Window",
+    "id": "gyoran-kannon",
+    "icon": "🙏",
+    "ja": {
+      "name": "魚籃観音像",
+      "area": "小田原 → 熱海（早川付近）",
+      "hook": "魚籠を持つ、白い観音。",
+      "story": "小田原を過ぎ、早川漁港のそばでA席側に一瞬あらわれる白い像は、東善院の魚籃大観音です。像の高さは約10m、蓮台まで含めると全体で13m前後。手にした魚籠（ぎょらん）は漁を守る象徴で、海上安全と大漁、そして魚介への感謝を願って1982年に建立されました。相模湾を望む早川の斜面に立ち、新幹線が海側へ景色を切り替える序章の目印になっています。"
     },
-    pageHeading: {
-      ja: "小田原・早川の白い観音は何？",
-      en: "What is the white Kannon near Odawara?",
+    "en": {
+      "name": "Gyoran Kannon Statue",
+      "area": "Odawara → Atami, near Hayakawa",
+      "hook": "A white Kannon holding a fish basket.",
+      "story": "The white statue that flashes past on the Seat A side near Hayakawa Fishing Port is Gyoran Dai-Kannon at Tozen-in Temple. The image itself is about 10 meters tall — around 13 meters including its lotus pedestal — and holds a woven basket of fish, the traditional attribute of this form of Kannon. Erected in 1982 to pray for safety at sea, plentiful catches and gratitude for marine life, it stands on a slope above Sagami Bay and marks the moment the Shinkansen view opens toward the coast."
     },
-    pageHeadingChunks: {
-      ja: ["小田原・早川の", "白い観音は何？"],
-      en: ["What is the white Kannon", "near Odawara?"],
+    "pageTitle": {
+      "ja": "小田原・早川の白い観音は何？東善院の魚籃大観音 | 新幹線の窓",
+      "en": "What is the white Kannon near Odawara? Gyoran Dai-Kannon | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "小田原を過ぎて新幹線のA席側に一瞬見える白い観音は、早川漁港近くの東善院・魚籃大観音。高さ約10m、1982年建立。海上安全と大漁、魚介への感謝を願って建てられた像の背景と、車窓での見つけ方を紹介します。",
-      en: "The white Kannon briefly seen from Seat A after Odawara is Gyoran Dai-Kannon at Tozen-in in Hayakawa: about 10 meters tall, erected in 1982 to pray for safety at sea, good catches and gratitude for marine life. Learn what it is and how to spot it from the train.",
+    "pageHeading": {
+      "ja": "小田原・早川の白い観音は何？",
+      "en": "What is the white Kannon near Odawara?"
     },
-    sectionHeading: {
-      ja: "魚籃観音とは？どんな信仰？",
-      en: "What is Gyoran Kannon?",
+    "pageHeadingChunks": {
+      "ja": [
+        "小田原・早川の",
+        "白い観音は何？"
+      ],
+      "en": [
+        "What is the white Kannon",
+        "near Odawara?"
+      ]
     },
-    pageStory: {
-      ja: "魚籃観音（ぎょらんかんのん）は観音菩薩の三十三観音のうちの一体で、手に魚を入れた籠を持つ姿で表されます。中国・唐の時代に、魚を売る美しい娘に姿を変えて仏法を広めたという伝説に由来するとされ、日本では漁業関係者を中心に、魚介への慈しみと海上安全を祈る対象として信仰されてきました。早川の魚籃大観音は、この形の観音を10mを超える大きさで屋外に安置しているという点で全国的にも珍しい存在です。",
-      en: "Gyoran Kannon is one of the traditional 33 forms of the Bodhisattva Kannon (Guanyin), depicted holding a basket of fish. The imagery is linked to a Tang-dynasty legend in which the bodhisattva appeared as a beautiful young woman selling fish to spread the Buddhist teaching. In Japan it has long been revered especially by people working with the sea, both as a prayer for safe voyages and good catches and as an expression of gratitude toward marine life. The 10-meter statue at Hayakawa is a rare example of this form enshrined outdoors at large scale.",
+    "metaDescription": {
+      "ja": "小田原を過ぎて新幹線のA席側に一瞬見える白い観音は、早川漁港近くの東善院・魚籃大観音。高さ約10m、1982年建立。海上安全と大漁、魚介への感謝を願って建てられた像の背景と、車窓での見つけ方を紹介します。",
+      "en": "The white Kannon briefly seen from Seat A after Odawara is Gyoran Dai-Kannon at Tozen-in in Hayakawa: about 10 meters tall, erected in 1982 to pray for safety at sea, good catches and gratitude for marine life. Learn what it is and how to spot it from the train."
     },
-    explainer: {
-      heading: { ja: "早川に大きな観音が立つ理由", en: "Why a large Kannon stands at Hayakawa" },
-      ja: [
+    "sectionHeading": {
+      "ja": "魚籃観音とは？どんな信仰？",
+      "en": "What is Gyoran Kannon?"
+    },
+    "pageStory": {
+      "ja": "魚籃観音（ぎょらんかんのん）は観音菩薩の三十三観音のうちの一体で、手に魚を入れた籠を持つ姿で表されます。中国・唐の時代に、魚を売る美しい娘に姿を変えて仏法を広めたという伝説に由来するとされ、日本では漁業関係者を中心に、魚介への慈しみと海上安全を祈る対象として信仰されてきました。早川の魚籃大観音は、この形の観音を10mを超える大きさで屋外に安置しているという点で全国的にも珍しい存在です。",
+      "en": "Gyoran Kannon is one of the traditional 33 forms of the Bodhisattva Kannon (Guanyin), depicted holding a basket of fish. The imagery is linked to a Tang-dynasty legend in which the bodhisattva appeared as a beautiful young woman selling fish to spread the Buddhist teaching. In Japan it has long been revered especially by people working with the sea, both as a prayer for safe voyages and good catches and as an expression of gratitude toward marine life. The 10-meter statue at Hayakawa is a rare example of this form enshrined outdoors at large scale."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "早川に大きな観音が立つ理由",
+        "en": "Why a large Kannon stands at Hayakawa"
+      },
+      "ja": [
         "早川はJR早川駅を中心とした小田原市南部の港町で、目の前には全国有数の水揚量を誇る早川漁港（小田原漁港）があります。定置網漁を主体に、四季を通じて多彩な魚が水揚げされる場所で、地元にとって「海の恵み」は生活そのもの。魚籃大観音は、この漁港の背後の斜面に立ち、海に出る人と海の生き物、その両方を包むように相模湾を向いています。",
         "像は東善院（真言宗）の境内にあり、正式には「魚籃大観音」と呼ばれます。台座までを含めた高さは約13m。1982年、地元の願いをまとめるかたちで建立されました。境内には水子供養の観音像も並び、静かな祈りの場になっています。",
-        "新幹線からは、海側A席の窓外に、樹木のあいだから白い胴体と観音特有の穏やかな顔立ちが一瞬だけ差し込むように見えます。速度が速く、実物の大きさが直感的に伝わりにくいので、「意外と大きい」と知って眺めると印象が変わります。",
+        "新幹線からは、海側A席の窓外に、樹木のあいだから白い胴体と観音特有の穏やかな顔立ちが一瞬だけ差し込むように見えます。速度が速く、実物の大きさが直感的に伝わりにくいので、「意外と大きい」と知って眺めると印象が変わります。"
       ],
-      en: [
+      "en": [
         "Hayakawa is a fishing town at the southern edge of Odawara City, centered on Hayakawa (Odawara) Fishing Port, one of Japan's most productive coastal ports. Fixed-net fishing brings in a wide seasonal variety of fish here, so 'the bounty of the sea' has always been central to local life. The large Kannon sits on the slope behind the port, facing Sagami Bay as if watching over both the fishermen who go out and the sea life they draw on.",
         "The statue stands in the grounds of Tozen-in, a Shingon Buddhist temple, where it is formally known as Gyoran Dai-Kannon. Including the pedestal, its total height is about 13 meters. It was erected in 1982 to gather the community's prayers into one place. Nearby stand memorial statues for unborn children, adding to the quiet atmosphere of the grounds.",
-        "From the train, on the Seat A side, only a brief slice of the white robe and the calm face of the bodhisattva shows through the trees. The speed makes it hard to grasp the true scale on the fly — knowing it is over ten meters tall changes how the moment reads.",
-      ],
+        "From the train, on the Seat A side, only a brief slice of the white robe and the calm face of the bodhisattva shows through the trees. The speed makes it hard to grasp the true scale on the fly — knowing it is over ten meters tall changes how the moment reads."
+      ]
     },
-    guideHighlight: {
-      ja: "早川駅を通過するあたりで、A席側の斜面を見てください。海を背にした白い像は、木立の切れ間にほんの数秒だけ現れます。相模湾がA席側に開ける区間の入口の目印として覚えておくと、続く熱海・初島・熱海城の車窓もつながって楽しめます。",
-      en: "Around Hayakawa Station, look toward the slope on the Seat A side. The white figure with the sea behind it shows only for a few seconds between the trees. Use it as a marker: right after the Kannon, Sagami Bay opens up on Seat A and the sequence continues with Atami, Hatsushima and Atami Castle.",
+    "guideHighlight": {
+      "ja": "早川駅を通過するあたりで、A席側の斜面を見てください。海を背にした白い像は、木立の切れ間にほんの数秒だけ現れます。相模湾がA席側に開ける区間の入口の目印として覚えておくと、続く熱海・初島・熱海城の車窓もつながって楽しめます。",
+      "en": "Around Hayakawa Station, look toward the slope on the Seat A side. The white figure with the sea behind it shows only for a few seconds between the trees. Use it as a marker: right after the Kannon, Sagami Bay opens up on Seat A and the sequence continues with Atami, Hatsushima and Atami Castle."
     },
-    minutesFromTokyo: 33, side: "A", category: "curious", confidence: "verified", durationSec: 2, spotting: "hard", visibleWhenCloudy: true, scene: "pagoda",
-    image: "images/20260516_gyoran_kannon_michikusa.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-16" },
-    photos: [
+    "minutesFromTokyo": 31.5,
+    "side": "A",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 2,
+    "spotting": "hard",
+    "visibleWhenCloudy": true,
+    "scene": "pagoda",
+    "image": "images/20260516_gyoran_kannon_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-05-16"
+    },
+    "photos": [
       {
         "src": "images/20260903_gyoran_kannon_michikusa.jpg",
         "alt": {
@@ -2592,24 +2944,73 @@ const SPOTS = [
         }
       }
     ],
-    media: {
-      heading: { ja: "動画で見る魚籃観音像", en: "Gyoran Kannon in motion" },
-      description: { ja: "早川付近の海側に一瞬だけ現れる魚籃観音像を、車窓動画で見られます。", en: "See the Gyoran Kannon statue briefly appear on the sea side near Hayakawa." },
-      videos: [
+    "media": {
+      "heading": {
+        "ja": "動画で見る魚籃観音像",
+        "en": "Gyoran Kannon in motion"
+      },
+      "description": {
+        "ja": "早川付近の海側に一瞬だけ現れる魚籃観音像を、車窓動画で見られます。",
+        "en": "See the Gyoran Kannon statue briefly appear on the sea side near Hayakawa."
+      },
+      "videos": [
         {
-          kind: "youtube",
-          id: "yVik9PXZD8M",
-          title: { ja: "魚籃観音像の車窓動画", en: "Gyoran Kannon from the train window" },
-          url: "https://www.youtube.com/watch?v=yVik9PXZD8M",
-          comment: { ja: "海側を眺めている一瞬だけ見える魚籃観音像", en: "Gyoran Kannon appears for only a moment when looking toward the sea." },
-        },
+          "kind": "youtube",
+          "id": "yVik9PXZD8M",
+          "title": {
+            "ja": "魚籃観音像の車窓動画",
+            "en": "Gyoran Kannon from the train window"
+          },
+          "url": "https://www.youtube.com/watch?v=yVik9PXZD8M",
+          "comment": {
+            "ja": "海側を眺めている一瞬だけ見える魚籃観音像",
+            "en": "Gyoran Kannon appears for only a moment when looking toward the sea."
+          }
+        }
       ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "This video uses the official YouTube embed."
+      }
     },
-    references: [REFERENCES.gyoranKannon, REFERENCES.gyoranKannonTourism, REFERENCES.gyoranKannonWiki],
-    map: { lat: 35.240947333816365, lng: 139.14421331844272, ja: "東善院 魚籃観音 小田原 早川", en: "Tozen-in Gyoran Kannon Odawara Hayakawa" },
-    viewpoint: { lat: 35.24082633591658, lng: 139.14394093224604 },
+    "references": [
+      {
+        "label": {
+          "ja": "小田原市郷土文化館: 早川東善院の魚籃観音",
+          "en": "Odawara City: Gyoran Kannon at Tozen-in (Japanese only)"
+        },
+        "url": "https://www.city.odawara.kanagawa.jp/public-i/facilities/kyodo/stoneworks/searchforstoneworks20191203.html"
+      },
+      {
+        "label": {
+          "ja": "小田原市観光協会: 魚籃大観音（東善院）",
+          "en": "Odawara Tourism: Gyoran Dai-Kannon at Tozen-in (Japanese only)"
+        },
+        "url": "https://www.odawara-kankou.com/spot/spot_area/gyokou.html"
+      },
+      {
+        "label": {
+          "ja": "Wikipedia: 魚籃観音",
+          "en": "Wikipedia: Gyoran Kannon"
+        },
+        "url": {
+          "ja": "https://ja.wikipedia.org/wiki/%E9%AD%9A%E7%B1%83%E8%A6%B3%E9%9F%B3",
+          "en": "https://en.wikipedia.org/wiki/Guanyin#Gyoran_Kannon"
+        }
+      }
+    ],
+    "map": {
+      "lat": 35.240947333816365,
+      "lng": 139.14421331844272,
+      "ja": "東善院 魚籃観音 小田原 早川",
+      "en": "Tozen-in Gyoran Kannon Odawara Hayakawa"
+    },
+    "viewpoint": {
+      "lat": 35.24082633591658,
+      "lng": 139.14394093224604
+    }
   },
+
   {
     id: "mishima-catapult",
     icon: "🚄",
@@ -3077,7 +3478,36 @@ const SPOTS = [
     minutesFromTokyo: 44.8, side: "A", category: "notable", confidence: "verified", durationSec: 8, spotting: "easy", scene: "hills", visibleWhenCloudy: true,
     image: "images/20260919_fuji_bus_sales_michikusa.jpg",
     photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-09-19", note: { ja: "第三展示場の看板と並ぶバス", en: "The Third Display Yard sign above rows of buses" } },
-    photos: [{ src: "images/20260919_fuji_bus_sales_2_michikusa.jpg", alt: { ja: "富士バス販売の展示場に並ぶ白い中古バス", en: "Rows of white buses at the Fuji Bus Sales display yard" }, credit: { ja: "michikusa", en: "michikusa" }, date: "2026-09-19", note: { ja: "新幹線から見下ろすバスの列", en: "Bus rows viewed from the Shinkansen" } }],
+    photos: [
+      {
+        "src": "images/20260919_fuji_bus_sales_2_michikusa.jpg",
+        "alt": {
+          "ja": "富士バス販売の展示場に並ぶ白い中古バス",
+          "en": "Rows of white buses at the Fuji Bus Sales display yard"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-19",
+        "note": {
+          "ja": "新幹線から見下ろすバスの列",
+          "en": "Bus rows viewed from the Shinkansen"
+        }
+      },
+      {
+        "src": "images/20261010_fuji-bus-sales_86325_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "車窓から見下ろすバスの列",
+          "en": "Rows of buses seen from the Shinkansen"
+        }
+      }
+    ],
     media: { heading: { ja: "田子の浦港からバスの列まで", en: "From Tagonoura Port to the bus yard" }, description: { ja: "A席側の車窓が田子の浦港から富士バス販売へ移る様子を動画で見られます。", en: "Follow the Seat A window view from Tagonoura Port to Fuji Bus Sales." }, videos: [{ kind: "youtube", id: "sD61YI0y12o", url: "https://www.youtube.com/watch?v=sD61YI0y12o", title: { ja: "田子の浦港から富士バス販売までのA席車窓", en: "Seat A window from Tagonoura Port to Fuji Bus Sales" } }] },
     relatedSpotIds: ["fuji", "fuji-pipe-sign", "fuji-paper-mills"],
     references: [{ label: { ja: "富士バス販売：会社概要", en: "Fuji Bus Sales: company profile (Japanese)" }, url: "https://www.fujibus-sales.co.jp/company.php" }, { label: { ja: "富士バス販売：取扱車両", en: "Fuji Bus Sales: types of buses (Japanese)" }, url: "https://www.fujibus-sales.co.jp/" }, { label: { ja: "富士バスボデー：修理・改装の実績", en: "Fuji Bus Body: repair and conversion work (Japanese)" }, url: "https://www.fujibus-sales.co.jp/body/works.html" }, { label: { ja: "国土交通省：市区町村における公共交通機関に関する調査", en: "Japan transport ministry: municipal public transport survey (Japanese PDF)" }, url: "https://www.mlit.go.jp/common/001007541.pdf" }, { label: { ja: "Merkmal：中古バス市場を考える", en: "Merkmal: the used-bus market (Japanese)" }, url: "https://merkmal-biz.jp/post/77175" }],
@@ -3865,6 +4295,30 @@ const SPOTS = [
           "ja": "朝のサッポロビール静岡工場",
           "en": "Sapporo’s Shizuoka brewery in the morning"
         }
+      },
+      {
+        "src": "images/20261010_sapporo-shizuoka-factory_10259_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "工場のタンクと周辺の風景",
+          "en": "Factory tanks and the surrounding landscape"
+        }
+      },
+      {
+        "src": "images/20261010_sapporo-shizuoka-factory_3961_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "サッポロビール静岡工場のタンク",
+          "en": "Tanks at Sapporo Beer’s Shizuoka brewery"
+        }
       }
     ],
     image: "images/20260904_sapporo_shizuoka_factory_michikusa.jpg",
@@ -4156,7 +4610,20 @@ const SPOTS = [
         "en": "The blue wall and POCARI SWEAT lettering above the grassy slope."
       }
     },
-    "photos": [],
+    "photos": [
+      {
+        "src": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "POCARI SWEATの文字が見える工場",
+          "en": "The factory with its POCARI SWEAT lettering"
+        }
+      }
+    ],
     "relatedSpotIds": [
       "lotte-shiga",
       "nichiban-anjo"
@@ -5470,6 +5937,18 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-19"
+      },
+      {
+        "src": "images/20261010_nagoya-station-skyline_7017_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "名古屋駅前の高層ビル群",
+          "en": "The high-rise skyline around Nagoya Station"
+        }
       }
     ],
     "references": [
@@ -5640,6 +6119,18 @@ const SPOTS = [
         "note": {
           "ja": "朝焼けの中に立つキリンビール工場のタンク",
           "en": "Kirin brewery tanks in the dawn light"
+        }
+      },
+      {
+        "src": "images/20261010_kirin-beer-factory_7041_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "キリンビール名古屋工場のタンクと看板",
+          "en": "Tanks and signage at Kirin’s Nagoya brewery"
         }
       }
     ],
@@ -5836,6 +6327,18 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-09-24"
+      },
+      {
+        "src": "images/20261010_kiyosu_30330_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "車窓から近くに見える清洲城",
+          "en": "A close view of Kiyosu Castle from the train"
+        }
       }
     ],
     "media": {
@@ -7626,26 +8129,65 @@ const SPOTS = [
     },
     photos: [
       {
-        src: "images/20250523_omi_fuji_wheat_kawasan3.jpg",
-        alt: { ja: "近江富士の前が小麦色になった景色", en: "Omi Fuji with golden wheat in front" },
-        credit: { ja: "@kawasan3", en: "@kawasan3" },
-        sourceUrl: "https://x.com/kawasan3/status/1925668834393960462",
-        note: { ja: "近江富士の前が小麦色", en: "The land in front of Omi Fuji turns wheat-colored" },
+        "src": "images/20250523_omi_fuji_wheat_kawasan3.jpg",
+        "alt": {
+          "ja": "近江富士の前が小麦色になった景色",
+          "en": "Omi Fuji with golden wheat in front"
+        },
+        "credit": {
+          "ja": "@kawasan3",
+          "en": "@kawasan3"
+        },
+        "sourceUrl": "https://x.com/kawasan3/status/1925668834393960462",
+        "note": {
+          "ja": "近江富士の前が小麦色",
+          "en": "The land in front of Omi Fuji turns wheat-colored"
+        }
       },
       {
-        src: "images/20260629_omi_fuji_michikusa.jpg",
-        alt: { ja: "新幹線のA席側から見える近江富士", en: "Omi Fuji from Seat A on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-29",
-        note: { ja: "田園の向こうの近江富士", en: "Omi Fuji beyond the fields" },
+        "src": "images/20260629_omi_fuji_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える近江富士",
+          "en": "Omi Fuji from Seat A on the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-06-29",
+        "note": {
+          "ja": "田園の向こうの近江富士",
+          "en": "Omi Fuji beyond the fields"
+        }
       },
       {
-        src: "images/20260903_omi_fuji_cloudy_michikusa.jpg",
-        alt: { ja: "曇天の下、田園の向こうに見える三上山", en: "Mt. Mikami beyond fields under an overcast sky" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-03",
-        note: { ja: "曇天でも、独立峰らしい輪郭は追える", en: "Even under cloud, the standalone peak's outline remains visible" },
+        "src": "images/20260903_omi_fuji_cloudy_michikusa.jpg",
+        "alt": {
+          "ja": "曇天の下、田園の向こうに見える三上山",
+          "en": "Mt. Mikami beyond fields under an overcast sky"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-03",
+        "note": {
+          "ja": "曇天でも、独立峰らしい輪郭は追える",
+          "en": "Even under cloud, the standalone peak's outline remains visible"
+        }
       },
+      {
+        "src": "images/20261010_omi-fuji_16003_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "手前の橋脚越しに見る三上山",
+          "en": "Mt. Mikami beyond the bridge piers"
+        }
+      }
     ],
     references: [REFERENCES.omiFujiPark, REFERENCES.omiFujiOfficial],
     map: { lat: 35.05181420454288, lng: 136.0377290179685, ja: "三上山 近江富士", en: "Mt. Mikami Omi Fuji" },
@@ -8002,103 +8544,289 @@ const SPOTS = [
     viewpoint: { lat: 34.90967319, lng: 135.70612273 },
   },
   {
-    id: "hirakata-park-wheel",
-    icon: "🎡",
-    ja: { name: "ひらパーの観覧車", area: "京都 → 新大阪", hook: "淀川の向こうに、観覧車。", story: "京都を出て新大阪へ向かう終盤、淀川の対岸にぽつんと観覧車が立っています。ひらかたパークの「スカイウォーカー」。最頂部は約80mあり、2km以上離れた線路からでもはっきり見つかります。よく見ると輪の右手に、白く波打つ骨組みが横に伸びています。ジェットコースター「レッドファルコン」の軌道です。ひらかたパークは1912年からこの地で続く、日本でいちばん古い遊園地。もとは京阪電車が沿線に人を呼ぶために作った遊園地で、いまも京阪の子会社が運営しています。地元では「ひらパー」。日が落ちるとイルミネーションが灯り、青と金の輪が薄暮の街に浮かびます。もうすぐ新大阪、という合図の一景です。" },
-    en: { name: "The Hirakata Park Ferris Wheel", area: "Kyoto → Shin-Osaka", hook: "A Ferris wheel across the river.", story: "In the last stretch from Kyoto toward Shin-Osaka, a lone Ferris wheel stands on the far bank of the Yodo River. It is the Skywalker at Hirakata Park, reaching about 80 metres at the top — tall enough to pick out clearly from a line more than two kilometres away. Look to its right and a pale undulating lattice runs sideways: the track of the Red Falcon rollercoaster. Hirakata Park has operated on this site since 1912 and is the oldest amusement park still running in Japan. A railway company built it to draw passengers out along its new line, and a subsidiary of that same railway still runs it today. After dark the wheel lights up, a ring of blue and gold above the town at dusk. Treat it as your signal that Shin-Osaka is close." },
-    pageTitle: {
-      ja: "新幹線から見えるひらパーの観覧車｜京都〜新大阪のA席で探す | 新幹線の窓",
-      en: "The Hirakata Park Ferris Wheel from the Shinkansen | Spotting It from Seat A | Shinkansen Window",
+    "id": "hirakata-park-wheel",
+    "icon": "🎡",
+    "ja": {
+      "name": "ひらパーの観覧車",
+      "area": "京都 → 新大阪",
+      "hook": "淀川の向こうに、観覧車。",
+      "story": "京都を出て新大阪へ向かう終盤、淀川の対岸にぽつんと観覧車が立っています。ひらかたパークの「スカイウォーカー」。最頂部は約80mあり、2km以上離れた線路からでもはっきり見つかります。よく見ると輪の右手に、白く波打つ骨組みが横に伸びています。ジェットコースター「レッドファルコン」の軌道です。ひらかたパークは1912年からこの地で続く、日本でいちばん古い遊園地。もとは京阪電車が沿線に人を呼ぶために作った遊園地で、いまも京阪の子会社が運営しています。地元では「ひらパー」。日が落ちるとイルミネーションが灯り、青と金の輪が薄暮の街に浮かびます。もうすぐ新大阪、という合図の一景です。"
     },
-    pageHeading: {
-      ja: "淀川の対岸に立つ、ひらパーのスカイウォーカー",
-      en: "The Hirakata Park Ferris wheel across the Yodo",
+    "en": {
+      "name": "The Hirakata Park Ferris Wheel",
+      "area": "Kyoto → Shin-Osaka",
+      "hook": "A Ferris wheel across the river.",
+      "story": "In the last stretch from Kyoto toward Shin-Osaka, a lone Ferris wheel stands on the far bank of the Yodo River. It is the Skywalker at Hirakata Park, reaching about 80 metres at the top — tall enough to pick out clearly from a line more than two kilometres away. Look to its right and a pale undulating lattice runs sideways: the track of the Red Falcon rollercoaster. Hirakata Park has operated on this site since 1912 and is the oldest amusement park still running in Japan. A railway company built it to draw passengers out along its new line, and a subsidiary of that same railway still runs it today. After dark the wheel lights up, a ring of blue and gold above the town at dusk. Treat it as your signal that Shin-Osaka is close."
     },
-    pageHeadingChunks: {
-      ja: ["淀川の対岸に立つ、", "ひらパーの", "スカイウォーカー"],
-      en: ["The Hirakata Park Ferris wheel", "across the Yodo"],
+    "pageTitle": {
+      "ja": "新幹線から見えるひらパーの観覧車｜京都〜新大阪のA席で探す | 新幹線の窓",
+      "en": "The Hirakata Park Ferris Wheel from the Shinkansen | Spotting It from Seat A | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "東海道新幹線の京都〜新大阪、A席側の淀川の向こうに見えるひらかたパークの観覧車スカイウォーカー。夜のライトアップの見え方、高さ約80m、線路からの距離、見えるタイミングを、車窓写真と動画・地図で解説します。",
-      en: "Between Kyoto and Shin-Osaka, the Seat A side shows the Skywalker Ferris wheel at Hirakata Park across the Yodo River. How it looks lit up at night, its height, its distance from the line and exactly when to watch, with window photos, video and a map.",
+    "pageHeading": {
+      "ja": "淀川の対岸に立つ、ひらパーのスカイウォーカー",
+      "en": "The Hirakata Park Ferris wheel across the Yodo"
     },
-    sectionHeading: {
-      ja: "あの観覧車は、何の遊園地？",
-      en: "What is that amusement park?",
+    "pageHeadingChunks": {
+      "ja": [
+        "淀川の対岸に立つ、",
+        "ひらパーの",
+        "スカイウォーカー"
+      ],
+      "en": [
+        "The Hirakata Park Ferris wheel",
+        "across the Yodo"
+      ]
     },
-    pageStory: {
-      ja: "ひらかたパークは、いま日本でいちばん古くから続いている遊園地です。前身は1910年（明治43年）、京阪電車の開通に合わせて寝屋川市の香里駅近くに開かれた「香里遊園地」。1912年（大正元年）に現在の枚方へ移り、以後この場所で営業を続けています。運営は今も京阪電気鉄道の子会社です。つまりこれは、鉄道会社が沿線に人を呼ぶために作った遊園地が、100年以上そのまま生き残っている姿でもあります。開園の年の秋、東京・両国国技館で人気を集めていた菊人形展を香里遊園地で開いたところ大好評となり、以後「菊人形」がひらかたパークの代名詞になりました。ひらかた大菊人形は2005年12月4日の「義経」を最後に96年の歴史を閉じましたが、いまも園内には菊人形が飾られ、翌年には市民ボランティアの会も生まれています。地元では「ひらパー」と呼ばれ、俳優の岡田准一さんが2代目「ひらパー兄さん」、のちに園長を務めたキャンペーンでも知られます。年間来園者数100万人という達成条件付きの園長就任は、2014年度に約104万人で見事にクリアしました。",
-      en: "Hirakata Park is the oldest amusement park still operating in Japan. It began in 1910 as Kori Amusement Park, opened beside a station on a brand-new Keihan Railway line, and moved to its present site in Hirakata in 1912; it has run here ever since, and is still operated by a Keihan Railway subsidiary. That lineage matters more than it sounds. In early twentieth-century Japan, private railway companies routinely built amusement parks, department stores and baseball grounds at the ends of their lines in order to create passengers — a business model that shaped the suburbs of Osaka and Tokyo. Hirakata Park is that model still running, more than a century later, and you are looking at it from another railway. In its first autumn the park staged an exhibition of kiku-ningyo — life-size figures costumed in living chrysanthemum blooms, an exhibition art then popular in Tokyo — and the chrysanthemum dolls became the park's signature for the next 96 seasons, until the last one closed in December 2005 as the craftsmen aged out and no successors came. Dolls are still displayed in the park, and a citizens' volunteer group formed the following year to keep the craft alive locally.",
+    "metaDescription": {
+      "ja": "東海道新幹線の京都〜新大阪、A席側の淀川の向こうに見えるひらかたパークの観覧車スカイウォーカー。夜のライトアップの見え方、高さ約80m、線路からの距離、見えるタイミングを、車窓写真と動画・地図で解説します。",
+      "en": "Between Kyoto and Shin-Osaka, the Seat A side shows the Skywalker Ferris wheel at Hirakata Park across the Yodo River. How it looks lit up at night, its height, its distance from the line and exactly when to watch, with window photos, video and a map."
     },
-    explainer: {
-      heading: { ja: "見つけ方と、窓に写るもの", en: "How to find it, and what else is in the frame" },
-      ja: [
+    "sectionHeading": {
+      "ja": "あの観覧車は、何の遊園地？",
+      "en": "What is that amusement park?"
+    },
+    "pageStory": {
+      "ja": "ひらかたパークは、いま日本でいちばん古くから続いている遊園地です。前身は1910年（明治43年）、京阪電車の開通に合わせて寝屋川市の香里駅近くに開かれた「香里遊園地」。1912年（大正元年）に現在の枚方へ移り、以後この場所で営業を続けています。運営は今も京阪電気鉄道の子会社です。つまりこれは、鉄道会社が沿線に人を呼ぶために作った遊園地が、100年以上そのまま生き残っている姿でもあります。開園の年の秋、東京・両国国技館で人気を集めていた菊人形展を香里遊園地で開いたところ大好評となり、以後「菊人形」がひらかたパークの代名詞になりました。ひらかた大菊人形は2005年12月4日の「義経」を最後に96年の歴史を閉じましたが、いまも園内には菊人形が飾られ、翌年には市民ボランティアの会も生まれています。地元では「ひらパー」と呼ばれ、俳優の岡田准一さんが2代目「ひらパー兄さん」、のちに園長を務めたキャンペーンでも知られます。年間来園者数100万人という達成条件付きの園長就任は、2014年度に約104万人で見事にクリアしました。",
+      "en": "Hirakata Park is the oldest amusement park still operating in Japan. It began in 1910 as Kori Amusement Park, opened beside a station on a brand-new Keihan Railway line, and moved to its present site in Hirakata in 1912; it has run here ever since, and is still operated by a Keihan Railway subsidiary. That lineage matters more than it sounds. In early twentieth-century Japan, private railway companies routinely built amusement parks, department stores and baseball grounds at the ends of their lines in order to create passengers — a business model that shaped the suburbs of Osaka and Tokyo. Hirakata Park is that model still running, more than a century later, and you are looking at it from another railway. In its first autumn the park staged an exhibition of kiku-ningyo — life-size figures costumed in living chrysanthemum blooms, an exhibition art then popular in Tokyo — and the chrysanthemum dolls became the park's signature for the next 96 seasons, until the last one closed in December 2005 as the craftsmen aged out and no successors came. Dolls are still displayed in the park, and a citizens' volunteer group formed the following year to keep the craft alive locally."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "見つけ方と、窓に写るもの",
+        "en": "How to find it, and what else is in the frame"
+      },
+      "ja": [
         "東海道新幹線は京都を出たあと、淀川の北側を高槻・茨木・摂津と抜けて新大阪へ向かいます。ひらかたパークがあるのは川の南側、枚方市枚方公園町。線路からの距離は約2.3kmあり、決して近くはありません。それでも見つかるのは、観覧車スカイウォーカーの最頂部が約80mと高く、周囲に同じ高さのものがないからです。マンション群の屋根の上に、輪だけがひとつ抜き出て見えます。",
         "東京から新大阪へ向かう場合はA席側です。京都を出てしばらく走り、727看板でおなじみの高槻あたりを過ぎたころ、進行方向左手のやや遠くに輪が現れます。ビルではなく「輪」を探すのが確実です。距離があるので、手前の高圧鉄塔やマンションに紛れて見落としやすい一景でもあります。地平線のあたりではなく、屋根の少し上の高さに視線を置いてください。",
         "見えているのは観覧車だけではありません。輪の右手に、白く波打つ骨組みが横に長く伸びています。ジェットコースター「レッドファルコン」の軌道で、全長1,300m・最高速度は時速70km。園内でいちばん大きな乗り物です。観覧車の輪とコースターの起伏、この二つが並んで見えたら、それがひらかたパークだと確信して構いません。",
         "日中は白っぽい骨組みだけなので難易度が上がります。逆に日没後はスカイウォーカーにイルミネーションが灯り、青や金の輪がはっきり浮かぶので、夕方以降の列車のほうが成功率は高めです。ゴンドラは10色あり、ひとつに最大5人まで乗れます。",
+        "昼の写真では、手前の青い鷺打橋も目印になります。橋を見つけたら、さらに奥の街並みへ視線を移してください。観覧車は橋とは別の、淀川の対岸にあります。"
       ],
-      en: [
+      "en": [
         "After Kyoto, the Tokaido Shinkansen runs along the north side of the Yodo River through Takatsuki, Ibaraki and Settsu on its way to Shin-Osaka. Hirakata Park sits on the south side, in Hirakata City. It is about 2.3 kilometres from the line — not close at all. You can still find it because the Skywalker Ferris wheel reaches roughly 80 metres at the top and nothing around it is anywhere near that tall, so the wheel alone lifts clear of the apartment rooftops.",
         "Heading from Tokyo toward Shin-Osaka, this is a Seat A view. A while after Kyoto, around the Takatsuki area familiar from the 727 signs, a ring appears in the middle distance to the left. Look for a ring, not a building — that is the reliable cue. Because of the distance it is easy to lose among the pylons and apartment blocks in front, so keep your eyes a little above the rooflines rather than on the horizon.",
         "The wheel is not the only thing in the frame. To its right, a pale undulating lattice runs a long way sideways: that is the track of the Red Falcon, the park's biggest ride, 1,300 metres long and reaching 70 km/h. A ring and a rollercoaster's humps side by side is the combination that confirms you are looking at Hirakata Park and not some other tower.",
         "In daylight the structures are only pale skeletons, which makes them harder to pick out. After sunset the Skywalker is illuminated and the blue and gold ring stands out clearly, so an evening train gives you a much better chance. The wheel's gondolas come in ten colours and seat up to five people each.",
-      ],
+        "In daylight, the blue Sagiuchi Bridge offers a foreground clue. Move your gaze beyond it toward the buildings on the far side of the Yodo; the wheel is farther away than the bridge."
+      ]
     },
-    guideHighlight: {
-      ja: "高槻を過ぎたら、A席側の屋根の少し上を見てください。ビルではなく「輪」を探すのが確実です。日没後は青と金のイルミネーションが灯るので、夕方以降の列車ならぐっと見つけやすくなります。",
-      en: "Once past Takatsuki, look a little above the rooflines on the Seat A side, and search for a ring rather than a building. After sunset the wheel is lit in blue and gold, so an evening train makes it far easier to find.",
+    "guideHighlight": {
+      "ja": "高槻を過ぎたら、A席側の屋根の少し上を見てください。ビルではなく「輪」を探すのが確実です。日没後は青と金のイルミネーションが灯るので、夕方以降の列車ならぐっと見つけやすくなります。",
+      "en": "Once past Takatsuki, look a little above the rooflines on the Seat A side, and search for a ring rather than a building. After sunset the wheel is lit in blue and gold, so an evening train makes it far easier to find."
     },
-    minutesFromTokyo: 139, side: "A", category: "notable", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "solar",
-    routeNote: {
-      ja: "上下どちらもA席側です。東海道新幹線は編成の向きが変わらないため、A席は常に線路の南側になります。変わるのは進行方向に対する左右だけで、東京から新大阪へ向かうときは左手、新大阪から東京へ向かうときは右手です。上り列車では新大阪を出ておよそ6分後に現れます。",
-      en: "Seat A in both directions. Tokaido Shinkansen sets keep the same orientation, so Seat A is always on the southern side of the line; only its relation to your direction of travel changes — on your left toward Shin-Osaka, on your right toward Tokyo. On an eastbound train it appears about six minutes after leaving Shin-Osaka.",
+    "minutesFromTokyo": 139,
+    "side": "A",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 10,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "solar",
+    "routeNote": {
+      "ja": "上下どちらもA席側です。東海道新幹線は編成の向きが変わらないため、A席は常に線路の南側になります。変わるのは進行方向に対する左右だけで、東京から新大阪へ向かうときは左手、新大阪から東京へ向かうときは右手です。上り列車では新大阪を出ておよそ6分後に現れます。",
+      "en": "Seat A in both directions. Tokaido Shinkansen sets keep the same orientation, so Seat A is always on the southern side of the line; only its relation to your direction of travel changes — on your left toward Shin-Osaka, on your right toward Tokyo. On an eastbound train it appears about six minutes after leaving Shin-Osaka."
     },
-    image: "images/20260824_hirakata_park_wheel_michikusa.jpg",
-    photoCredit: {
-      ja: "michikusa",
-      en: "michikusa",
-      note: { ja: "2026-08-24・上りのぞみ104号、18:45頃。輪の右手に伸びる白い骨組みがレッドファルコンの軌道", en: "24 August 2026, eastbound Nozomi 104, around 18:45. The pale lattice to the right of the wheel is the Red Falcon's track." },
+    "image": "images/20260824_hirakata_park_wheel_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "note": {
+        "ja": "2026-08-24・上りのぞみ104号、18:45頃。輪の右手に伸びる白い骨組みがレッドファルコンの軌道",
+        "en": "24 August 2026, eastbound Nozomi 104, around 18:45. The pale lattice to the right of the wheel is the Red Falcon's track."
+      }
     },
-    photos: [
+    "photos": [
       {
-        src: "images/20260824_hirakata_park_wheel_wide_michikusa.jpg",
-        alt: { ja: "夕焼けの空の下、淀川の対岸に小さく光るひらパーの観覧車", en: "The Hirakata Park wheel glowing across the Yodo River under a sunset sky" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-24",
-        note: { ja: "引きで見ると、マンション群と高圧鉄塔のなかに輪がひとつ", en: "Pulled back, the wheel is a single ring among apartment blocks and pylons." },
-      },
-      {
-        src: "images/20260906_hirakata_park_wheel_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の淀川越しに光るひらパーの観覧車", en: "The Hirakata Park wheel glowing across the Yodo River at night" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-06",
-        note: { ja: "夜の街並みに青白く浮かぶ観覧車", en: "The wheel glows blue-white above the night skyline" },
-      },
-    ],
-    media: {
-      heading: { ja: "動画で見るひらパーの観覧車", en: "The Hirakata Park wheel in motion" },
-      description: {
-        ja: "写真だと止まって見えますが、実際は回りながら光の模様が変わっていきます。薄暮のイルミネーションが2.3km先からどう見えるのかを動画で確かめられます。",
-        en: "In a still photo the wheel looks fixed, but it turns and its pattern of light keeps changing. The video shows how the dusk illumination actually reads from 2.3 kilometres away.",
-      },
-      videos: [
-        {
-          kind: "youtube",
-          id: "jStt6nf_CNc",
-          title: { ja: "薄暮にライトアップされたスカイウォーカーの車窓動画", en: "Window video of the Skywalker lit up at dusk" },
-          url: "https://www.youtube.com/watch?v=jStt6nf_CNc",
-          comment: { ja: "2026-08-24、上りのぞみ104号から。薄暮に灯ったスカイウォーカーを通り過ぎるまで。", en: "2026-08-24, from an eastbound Nozomi: the Skywalker lit against the dusk, until it slips away." },
+        "src": "images/20260824_hirakata_park_wheel_wide_michikusa.jpg",
+        "alt": {
+          "ja": "夕焼けの空の下、淀川の対岸に小さく光るひらパーの観覧車",
+          "en": "The Hirakata Park wheel glowing across the Yodo River under a sunset sky"
         },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-24",
+        "note": {
+          "ja": "引きで見ると、マンション群と高圧鉄塔のなかに輪がひとつ",
+          "en": "Pulled back, the wheel is a single ring among apartment blocks and pylons."
+        }
+      },
+      {
+        "src": "images/20260906_hirakata_park_wheel_night_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の淀川越しに光るひらパーの観覧車",
+          "en": "The Hirakata Park wheel glowing across the Yodo River at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-06",
+        "note": {
+          "ja": "夜の街並みに青白く浮かぶ観覧車",
+          "en": "The wheel glows blue-white above the night skyline"
+        }
+      },
+      {
+        "src": "images/20261010_hirakata-park-wheel_105071_michikusa.jpg",
+        "alt": {
+          "ja": "日中の新幹線から見えるひらパーの観覧車",
+          "en": "Hirakata Park’s Ferris wheel seen from the Shinkansen by day"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "街並みの向こうに見える、昼のスカイウォーカー",
+          "en": "Skywalker above the distant buildings in daylight"
+        }
+      },
+      {
+        "src": "images/20261010_hirakata-park-wheel_98872_michikusa.jpg",
+        "alt": {
+          "ja": "手前の青い鷺打橋と、左奥に見えるひらパーの観覧車",
+          "en": "Blue Sagiuchi Bridge in front, with Hirakata Park’s Ferris wheel at the far left"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "手前は芥川の鷺打橋。左端の奥に観覧車の輪が見える",
+          "en": "Sagiuchi Bridge spans the Akutagawa in front; the wheel is visible at the far left beyond it"
+        }
+      }
+    ],
+    "media": {
+      "heading": {
+        "ja": "動画で見るひらパーの観覧車",
+        "en": "The Hirakata Park wheel in motion"
+      },
+      "description": {
+        "ja": "写真だと止まって見えますが、実際は回りながら光の模様が変わっていきます。薄暮のイルミネーションが2.3km先からどう見えるのかを動画で確かめられます。",
+        "en": "In a still photo the wheel looks fixed, but it turns and its pattern of light keeps changing. The video shows how the dusk illumination actually reads from 2.3 kilometres away."
+      },
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "jStt6nf_CNc",
+          "title": {
+            "ja": "薄暮にライトアップされたスカイウォーカーの車窓動画",
+            "en": "Window video of the Skywalker lit up at dusk"
+          },
+          "url": "https://www.youtube.com/watch?v=jStt6nf_CNc",
+          "comment": {
+            "ja": "2026-08-24、上りのぞみ104号から。薄暮に灯ったスカイウォーカーを通り過ぎるまで。",
+            "en": "2026-08-24, from an eastbound Nozomi: the Skywalker lit against the dusk, until it slips away."
+          }
+        }
       ],
-      platformNote: { ja: "動画はYouTubeの公式埋め込みを利用しています。", en: "This video uses the official YouTube embed." },
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "This video uses the official YouTube embed."
+      }
     },
-    relatedSpotIds: ["toji", "torikai-train-depot"],
-    references: [REFERENCES.hirakataSkywalker, REFERENCES.hirakataRedFalcon, REFERENCES.hirakataParkKeihan, REFERENCES.hirakataKikuNingyo],
-    map: { lat: 34.8075, lng: 135.6385, ja: "ひらかたパーク", en: "Hirakata Park" },
-    viewpoint: { lat: 34.818985, lng: 135.617755 },
+    "relatedSpotIds": [
+      "toji",
+      "torikai-train-depot"
+    ],
+    "references": [
+      {
+        "label": {
+          "ja": "ひらかたパーク: スカイウォーカー",
+          "en": "Hirakata Park: the Skywalker Ferris wheel (Japanese only)"
+        },
+        "url": "https://www.hirakatapark.co.jp/attractions/skywalker/"
+      },
+      {
+        "label": {
+          "ja": "ひらかたパーク: レッドファルコン",
+          "en": "Hirakata Park: the Red Falcon coaster (Japanese only)"
+        },
+        "url": "https://www.hirakatapark.co.jp/attractions/red-falcon/"
+      },
+      {
+        "label": {
+          "ja": "京阪グループ: ひらかたパーク",
+          "en": "Keihan Group: Hirakata Park (Japanese only)"
+        },
+        "url": "https://www.keihan.co.jp/visiting/spot/detail/117.html"
+      },
+      {
+        "label": {
+          "ja": "ひらかた大菊人形（Wikipedia）",
+          "en": "Hirakata Chrysanthemum Doll Exhibition (Japanese Wikipedia)"
+        },
+        "url": "https://ja.wikipedia.org/wiki/%E3%81%B2%E3%82%89%E3%81%8B%E3%81%9F%E5%A4%A7%E8%8F%8A%E4%BA%BA%E5%BD%A2"
+      },
+      {
+        "label": {
+          "ja": "大阪府：橋梁個別施設計画（鷺打橋）",
+          "en": "Osaka Prefecture: bridge inventory, Sagiuchi Bridge (Japanese PDF)"
+        },
+        "url": "https://www.pref.osaka.lg.jp/documents/2904/kobetsu_kyouryou.pdf"
+      },
+      {
+        "label": {
+          "ja": "大阪府：芥川・鷺打橋の水質観測地点",
+          "en": "Osaka Prefecture: Akutagawa at Sagiuchi Bridge (Japanese)"
+        },
+        "url": "https://www.pref.osaka.lg.jp/o120070/kankyohozen/osaka-wan/sokuho_kasen_r7.html"
+      }
+    ],
+    "map": {
+      "lat": 34.8075,
+      "lng": 135.6385,
+      "ja": "ひらかたパーク",
+      "en": "Hirakata Park"
+    },
+    "viewpoint": {
+      "lat": 34.818985,
+      "lng": 135.617755
+    },
+    "pageChapters": [
+      {
+        "id": "sagiuchi-bridge",
+        "heading": {
+          "ja": "青い鷺打橋の、その向こうに",
+          "en": "Beyond the blue Sagiuchi Bridge"
+        },
+        "paragraphs": {
+          "ja": [
+            "手前に青い弧を描く小さな橋が見えたら、鷺打橋（さぎうちばし）です。淀川へ注ぐ芥川に架かる道路橋で、大阪府の橋梁台帳では1988年架設、橋長95mのアーチ橋とされています。青いアーチと縦の部材の並びは、多摩川の丸子橋を小さくしたようにも見えます。写真の似た形を楽しむ見方で、同じ設計という意味ではありません。この橋に目を引かれたら、さらに奥、淀川の対岸へ。今回の写真では左端に、ひらパーの観覧車が小さく写っています。"
+          ],
+          "en": [
+            "The small blue arch in the foreground is Sagiuchi Bridge, a road crossing over the Akutagawa, which flows into the Yodo. Osaka Prefecture lists it as a 95-metre arch bridge built in 1988. Its blue curve and vertical members can look like a smaller Maruko Bridge over the Tama River—a visual resemblance, rather than a claim of identical design. Use the bridge as a foreground landmark, then look farther across the Yodo. In this photograph, Hirakata Park’s wheel sits at the far left."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20261010_hirakata-park-wheel_98872_michikusa.jpg",
+            "width": 1920,
+            "height": 1080,
+            "alt": {
+              "ja": "手前の青い鷺打橋と、左奥に見えるひらパーの観覧車",
+              "en": "Blue Sagiuchi Bridge in front, with Hirakata Park’s Ferris wheel at the far left"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-10-10",
+            "note": {
+              "ja": "手前は芥川の鷺打橋。左端の奥に観覧車の輪が見える",
+              "en": "Sagiuchi Bridge spans the Akutagawa in front; the wheel is visible at the far left beyond it"
+            }
+          }
+        ]
+      }
+    ]
   },
+
   {
     id: "torikai-train-depot",
     icon: "🚄",
@@ -8236,6 +8964,444 @@ const SPOTS = [
     references: [REFERENCES.tokaidoShinkansen, REFERENCES.torikaiDepotWiki],
     map: { lat: 34.77598, lng: 135.5704782, ja: "鳥飼車両基地", en: "Torikai Train Depot" },
     viewpoint: { lat: 34.775259, lng: 135.571088 },
+  },
+  {
+    "id": "shiraitogawa-bridge",
+    "icon": "🌉",
+    "ja": {
+      "name": "相模湾と白糸川橋梁",
+      "area": "小田原 → 熱海（根府川付近）",
+      "hook": "赤い鉄橋の向こうに、海。",
+      "story": "根府川付近でトンネルを抜けると、A席側に白糸川橋梁と相模湾が一瞬ひらきます。海を背に谷を渡るのは、東海道本線の列車を支える鉄橋。熱海の街や初島より手前の、独立した車窓の一瞬です。"
+    },
+    "en": {
+      "name": "Sagami Bay & Shiraitogawa Bridge",
+      "area": "Odawara → Atami, near Nebukawa",
+      "hook": "A railway bridge against the sea.",
+      "story": "Near Nebukawa, a brief opening on Seat A shows the Shiraitogawa railway bridge with Sagami Bay beyond it. The bridge carries the conventional Tokaido Main Line across the valley. This is an earlier glimpse than Atami and Hatsushima."
+    },
+    "guideAnchor": "shiraitogawa-bridge",
+    "minutesFromTokyo": 32.7,
+    "side": "A",
+    "category": "notable",
+    "confidence": "source-backed",
+    "durationSec": 3,
+    "visibleWhenCloudy": true,
+    "scene": "bay",
+    "image": "images/20261010_odawara_2025_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-10-10",
+      "note": {
+        "ja": "根府川付近の白糸川橋梁",
+        "en": "Shiraitogawa railway bridge near Nebukawa"
+      }
+    },
+    "photos": [
+      {
+        "src": "images/20261010_odawara_2283_michikusa.jpg",
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-10",
+        "note": {
+          "ja": "白糸川橋梁と谷あいの町並み",
+          "en": "Shiraitogawa bridge and the surrounding valley"
+        }
+      },
+      {
+        "src": "images/20260804_sagami_bay_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から見える朝の相模湾",
+          "en": "Sagami Bay from Seat A on a morning Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-08-04",
+        "note": {
+          "ja": "のぞみ1号（東京06:00発）、車内時計で06:35ごろ 相模湾の海景。橋自体はこの写真には写っていません。",
+          "en": "Nozomi 1 (departed Tokyo at 06:00), onboard clock about 06:35. A sea view of Sagami Bay; the bridge itself is not pictured."
+        }
+      }
+    ],
+    "references": [
+      {
+        "label": {
+          "ja": "神奈川県：白糸川鉄橋の記録",
+          "en": "Kanagawa Prefecture: Shiraitogawa bridge (Japanese)"
+        },
+        "url": "https://www.pref.kanagawa.jp/docs/j8g/100th/photo/49.html"
+      },
+      {
+        "label": {
+          "ja": "小田原市：旧熱海線の土木遺産",
+          "en": "Odawara City: former Atami Line heritage (Japanese)"
+        },
+        "url": "https://www.city.odawara.kanagawa.jp/press/detail.php?prs_id=10447"
+      }
+    ],
+    "map": {
+      "lat": 35.200093,
+      "lng": 139.136958,
+      "ja": "白糸川橋梁（東海道本線）",
+      "en": "Shiraitogawa Bridge, Tokaido Main Line"
+    },
+    "viewpoint": {
+      "lat": 35.20292891908608,
+      "lng": 139.1275524720286
+    },
+    "pageTitle": {
+      "ja": "白糸川橋梁と相模湾｜新幹線A席から見る根府川の赤い鉄橋 | 新幹線の窓",
+      "en": "Shiraitogawa Bridge & Sagami Bay from the Shinkansen | Shinkansen Window"
+    },
+    "pageHeading": {
+      "ja": "白糸川橋梁と相模湾の車窓",
+      "en": "Shiraitogawa Bridge: a red railway bridge above Sagami Bay"
+    },
+    "pageHook": {
+      "ja": "赤い鉄橋の向こうに、海。",
+      "en": "A red railway bridge against the sea."
+    },
+    "metaDescription": {
+      "ja": "根府川の白糸川橋梁は東海道本線の赤い鉄橋。東海道新幹線のA席から、魚籃観音像を過ぎた先で橋と相模湾を眺める見方と、その歴史を紹介します。",
+      "en": "Identify the red Shiraitogawa Bridge near Nebukawa from Seat A on the Tokaido Shinkansen. Learn its history and where to look after Gyoran Kannon."
+    },
+    "sectionHeading": {
+      "ja": "根府川の谷を渡る、東海道本線の橋",
+      "en": "The Tokaido Main Line bridge across the Nebukawa valley"
+    },
+    "pageStory": {
+      "ja": "小田原を過ぎたA席側で、山あいの家々の向こうに赤い鉄橋と青い海が重なる瞬間があります。根府川駅の南にある白糸川橋梁です。写真の橋を渡るのは東海道本線で、新幹線からは橋の側面と、その奥の相模湾を眺めます。\n\n初代の橋は1922年に完成しましたが、翌年の関東大震災で地震と土砂災害により失われました。その後架け直された橋は、旧熱海線の鉄道施設群の一つとして2019年に土木学会選奨土木遺産に認定されています。今の東海道本線がかつて御殿場経由だったこと、熱海線と丹那トンネルが海沿いの道筋をつないだことも、この鉄橋の背景にあります。",
+      "en": "After Odawara, watch Seat A for a railway bridge stretched across a valley, with Sagami Bay behind it. This is Shiraitogawa Bridge south of Nebukawa Station, carrying the conventional Tokaido Main Line. From the Shinkansen you see its side: triangular steelwork, village rooftops and sea.\n\nThe first bridge was completed in 1922 and lost in the Great Kanto Earthquake the following year. A replacement was built, and the bridge became part of the former Atami Line facilities recognised as civil engineering heritage in 2019. These structures recall the coastal route that replaced the old Tokaido Main Line path through Gotemba."
+    },
+    "pageStoryAnchor": "shiraitogawa-bridge",
+    "explainer": {
+      "heading": {
+        "ja": "魚籃観音を過ぎてから、赤い鉄橋へ",
+        "en": "After Gyoran Kannon, look for the red bridge"
+      },
+      "ja": [
+        "東京から新大阪へ向かう順番は、魚籃観音像→白糸川橋梁→熱海です。相模湾が少し早く見える区間もありますが、このスポットは白糸川橋梁を見つける場面を基準にしています。",
+        "新幹線が渡る橋ではなく、海側の谷にある東海道本線の橋を横から眺めます。赤い桁の三角形が連なる形と、その向こうの海が目印。トンネルや遮蔽物の間の短い開けた場所なので、観音像を過ぎたらA席側を見ておくと見つけやすくなります。"
+      ],
+      "en": [
+        "On a Tokyo-to-Shin-Osaka journey, the order is Gyoran Kannon, Shiraitogawa Bridge, then Atami. The sea may be visible earlier, but this guide point is positioned for the bridge itself.",
+        "The Shinkansen does not cross this bridge. You see the Tokaido Main Line structure across the valley on the seaward side. Look for repeated triangular red girders with water beyond them, through a brief opening between tunnels and obstructions."
+      ]
+    },
+    "guideHighlight": {
+      "ja": "東京→新大阪では魚籃観音のあと。A席側の谷に、赤い鉄橋と海を探してください。",
+      "en": "After Gyoran Kannon towards Shin-Osaka, watch Seat A for a red bridge across the valley with the sea beyond."
+    },
+    "pageChapters": [
+      {
+        "id": "later-atami",
+        "heading": {
+          "ja": "この先の車窓：熱海城と初島",
+          "en": "Next along the coast: Atami Castle and Hatsushima"
+        },
+        "paragraphs": {
+          "ja": [
+            "さらにトンネルを抜けて進むと、熱海の街と海が見えてきます。山上の城と沖の島は、橋とは別の見どころ。引き続きA席側から探せます。"
+          ],
+          "en": [
+            "Farther along the route, gaps between tunnels reveal Atami. Its hilltop castle and offshore island form a separate viewing scene, also on Seat A."
+          ]
+        },
+        "photos": [],
+        "link": {
+          "route": "spots/odawara.html",
+          "label": {
+            "ja": "熱海城と初島の車窓へ →",
+            "en": "See Atami Castle and Hatsushima →"
+          }
+        }
+      }
+    ],
+    "relatedSpotIds": [
+      "gyoran-kannon",
+      "odawara"
+    ]
+  },
+  {
+    "id": "maibara-test-trains",
+    "icon": "🚄",
+    "ja": {
+      "name": "米原の高速試験車両",
+      "area": "米原駅の南側",
+      "hook": "速さを試した、三つの顔。",
+      "story": "米原駅を過ぎたA席側、線路脇の屋根の下に新幹線の先頭車が並びます。ここは新幹線高速試験車両保存場。300X・WIN350・STAR21という高速化を支えた試験車両が、走る新幹線を見送っています。"
+    },
+    "en": {
+      "name": "Maibara’s Shinkansen Test Trains",
+      "area": "South of Maibara Station",
+      "hook": "Three faces that tested faster travel.",
+      "story": "Just after Maibara toward Shin-Osaka, look on Seat A for Shinkansen noses under a shelter beside the tracks. This preservation site holds 300X, WIN350 and STAR21, experimental trains used in the development of faster rail travel."
+    },
+    "pageTitle": {
+      "ja": "米原の新幹線高速試験車両保存場｜300X・WIN350・STAR21 | 新幹線の窓",
+      "en": "Maibara Shinkansen Test Trains: 300X, WIN350 & STAR21 | Shinkansen Window"
+    },
+    "pageHeading": {
+      "ja": "米原の新幹線高速試験車両保存場",
+      "en": "Maibara’s preserved Shinkansen test trains"
+    },
+    "pageHeadingChunks": {
+      "ja": [
+        "米原の",
+        "新幹線高速試験車両保存場"
+      ],
+      "en": []
+    },
+    "metaDescription": {
+      "ja": "米原駅の南、新幹線A席から見える新幹線高速試験車両保存場。300X・WIN350・STAR21の3車両が試した技術と、車窓での見つけ方を写真付きで紹介。",
+      "en": "Spot preserved Shinkansen test trains south of Maibara Station from Seat A. Meet JR Central’s 300X, JR West’s WIN350 and JR East’s STAR21 in photographs."
+    },
+    "sectionHeading": {
+      "ja": "どうして新幹線の顔が並んでいる？",
+      "en": "Why are these Shinkansen noses here?"
+    },
+    "pageStory": {
+      "ja": "米原駅の南にある新幹線高速試験車両保存場には、JR東海の300X、JR西日本のWIN350、JR東日本のSTAR21の先頭車が1両ずつ並んでいます。1990年代、各社がより速く、より静かに走る新幹線を目指して試作した車両たちです。保存場がある鉄道総研の風洞技術センターでは、風を当てて車体の空気抵抗や騒音を調べます。線路脇に違う顔が並ぶのは、高速化の試みを3社分、同じ場所で見比べられるからです。",
+      "en": "South of Maibara Station, three preserved cab cars stand at the Railway Technical Research Institute’s Wind Tunnel Technical Center: JR Central’s 300X, JR West’s WIN350 and JR East’s STAR21. In the 1990s these prototypes explored faster, quieter Shinkansen travel. The neighbouring wind tunnel studies aerodynamic drag and noise; the three different train fronts offer a glimpse of that research history."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "米原を過ぎたら、A席側の線路脇へ",
+        "en": "After Maibara, watch the tracks on Seat A"
+      },
+      "ja": [
+        "東京から新大阪へ向かう場合、米原駅を通過してすぐのA席側です。通過列車では駅が見えてからカメラを準備するより、米原に近づく前に窓の外を向いておくと安心です。",
+        "在来線の線路を挟んだ屋根の下に、形の違う先頭車が横に並びます。写真には架線や電柱も重なるので、細部の車番より「新幹線の顔がいくつも並ぶ場所」を目印にしてください。",
+        "通常は敷地内の一般公開がなく、外からの見学が基本です。訪問する場合は公式案内で公開条件を確認してください。車窓からの撮影では席を離れて追いかけず、短い出会いとして楽しみましょう。"
+      ],
+      "en": [
+        "For a Tokyo-to-Shin-Osaka journey, watch Seat A immediately after Maibara Station. On a passing train, be ready before the station rather than waiting to start looking after it.",
+        "Look across the conventional tracks for differently shaped noses lined up beneath a shelter. Wires and poles cross the view; the row of train fronts is an easier clue than small vehicle numbers.",
+        "The grounds are normally closed to general visitors. Official information describes viewing from outside the fence; check current arrangements before making a visit."
+      ]
+    },
+    "guideHighlight": {
+      "ja": "米原駅のすぐ南、A席側。屋根の下に並ぶ先頭車を、駅を過ぎる前から探してください。",
+      "en": "Immediately south of Maibara on Seat A. Be ready before passing the station and look for noses beneath the shelter."
+    },
+    "minutesFromTokyo": 112.1,
+    "side": "A",
+    "category": "curious",
+    "confidence": "verified",
+    "durationSec": 3,
+    "visibleWhenCloudy": true,
+    "scene": "curious",
+    "image": "images/20261010_maibara-test-trains_10654_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-10-10",
+      "note": {
+        "ja": "米原駅南側の新幹線高速試験車両保存場",
+        "en": "Preserved Shinkansen test trains south of Maibara Station"
+      }
+    },
+    "photos": [],
+    "references": [
+      {
+        "label": {
+          "ja": "米原市：新幹線高速試験車両保存場",
+          "en": "Maibara City: preserved test trains (Japanese)"
+        },
+        "url": "https://www.city.maibara.lg.jp/kanko/station/jr_maibara/4560.html"
+      },
+      {
+        "label": {
+          "ja": "鉄道総研：風洞技術センター",
+          "en": "RTRI: Wind Tunnel Technical Center (Japanese)"
+        },
+        "url": "https://www.rtri.or.jp/rtri/labo_maibara.html"
+      },
+      {
+        "label": {
+          "ja": "JR東海：300Xと高速鉄道の展示",
+          "en": "JR Central: 300X exhibit (Japanese)"
+        },
+        "url": "https://museum.jr-central.co.jp/floormap/"
+      },
+      {
+        "label": {
+          "ja": "JR西日本：WIN350と500系の開発",
+          "en": "JR West: WIN350 and the 500 series (Japanese)"
+        },
+        "url": "https://www.jr-odekake.net/navi/the_last_run/project-500k/"
+      },
+      {
+        "label": {
+          "ja": "JR東日本：高速試験車両の開発とSTAR21",
+          "en": "JR East: high-speed test trains and STAR21"
+        },
+        "url": "https://www.jreast.co.jp/en/e/press/20040201/index.html"
+      },
+      {
+        "label": {
+          "ja": "国立科学博物館：WIN350の技術史資料",
+          "en": "National Museum of Nature and Science: WIN350 (Japanese)"
+        },
+        "url": "https://sts.kahaku.go.jp/sts/detail.php?c=&city=&id=&no=100910131426&org=&p=259&pref=&word=&y1=&y2="
+      },
+      {
+        "label": {
+          "ja": "国立科学博物館：STAR21の技術史資料",
+          "en": "National Museum of Nature and Science: STAR21 (Japanese)"
+        },
+        "url": "https://sts.kahaku.go.jp/sts/detail.php?c=&city=&id=&no=100910131427&org=&p=257&pref=&word=&y1=&y2="
+      },
+      {
+        "label": {
+          "ja": "300X・STAR21写真：CC BY 3.0（z tanuki）",
+          "en": "300X and STAR21 photographs: CC BY 3.0 (z tanuki)"
+        },
+        "url": "https://creativecommons.org/licenses/by/3.0/"
+      },
+      {
+        "label": {
+          "ja": "WIN350写真：CC BY-SA 4.0（DAJF）",
+          "en": "WIN350 photograph: CC BY-SA 4.0 (DAJF)"
+        },
+        "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+      }
+    ],
+    "relatedSpotIds": [
+      "sawayama-castle",
+      "fujitec-big-wing"
+    ],
+    "map": {
+      "lat": 35.309707,
+      "lng": 136.289042,
+      "ja": "新幹線高速試験車両保存場",
+      "en": "Preserved Shinkansen test trains"
+    },
+    "viewpoint": {
+      "lat": 35.31007050780591,
+      "lng": 136.28769948344979
+    },
+    "pageChapters": [
+      {
+        "id": "train-300x",
+        "heading": {
+          "ja": "300X：JR東海の高速鉄道システム研究",
+          "en": "300X — JR Central’s high-speed research train"
+        },
+        "paragraphs": {
+          "ja": [
+            "300Xは新幹線955形の試験電車です。車体や台車などを含む高速鉄道システムを研究するために造られ、1996年には443km/hという電車方式で当時の世界最高速度を記録しました。速度だけを競うのではなく、その先の営業車両を支える技術を試す役割でした。",
+            "参考写真では、白と青の車体に「300X」の文字が見えます。今の車窓写真では架線や電柱が重なり、文字まで読めるとは限りません。"
+          ],
+          "en": [
+            "300X, designated Class 955, was built by JR Central to test a high-speed railway system, including vehicle and running-gear technology. In 1996 it reached 443 km/h, then a world record for an electric multiple-unit train.",
+            "The reference photograph shows its white and blue body and 300X lettering. Wires and poles can hide those details in the brief view from a passing train."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/maibara_300x_commons.jpg",
+            "width": 2133,
+            "height": 1600,
+            "alt": {
+              "ja": "米原に保存されている300Xの先頭車",
+              "en": "300X cab car preserved at Maibara"
+            },
+            "credit": {
+              "ja": "z tanuki / Wikimedia Commons / CC BY 3.0",
+              "en": "z tanuki / Wikimedia Commons / CC BY 3.0"
+            },
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:300X_Shinkansen_Test_train_,_%E6%96%B0%E5%B9%B9%E7%B7%9A_300X_-_panoramio_(1).jpg",
+            "date": "2014-04-12",
+            "note": {
+              "ja": "車両を見分ける参考写真。原版無加工、縮小表示。撮影年は下記のとおり。",
+              "en": "Reference photograph to identify the vehicle; original uncropped, resized for display. Taken on the date shown below."
+            }
+          }
+        ]
+      },
+      {
+        "id": "train-win350",
+        "heading": {
+          "ja": "WIN350：500系へつながったJR西日本の試験車",
+          "en": "WIN350 — JR West’s route to the 500 series"
+        },
+        "paragraphs": {
+          "ja": [
+            "WIN350はJR西日本の500系900番台。山陽新幹線の高速化に向けて試験を行い、その成果が営業用500系の開発に生かされました。名前の350は350km/h運転を目指した開発を表しています。",
+            "参考写真では、低く伸びた先頭部と青い帯、側面の「WIN350」が目印です。速さを支える先頭形状を、ほかの2両と見比べてみてください。"
+          ],
+          "en": [
+            "WIN350 was JR West’s experimental 500-900 series for higher speeds on the Sanyo Shinkansen. The trials informed the production 500 series, and the 350 in its name refers to the development goal of 350 km/h operation.",
+            "In the reference photograph, note the long, low front, blue stripe and WIN350 lettering. Compare its profile with the other two experimental trains."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/maibara_win350_commons.jpg",
+            "width": 1461,
+            "height": 940,
+            "alt": {
+              "ja": "米原に保存されているWIN350の先頭車",
+              "en": "WIN350 cab car preserved at Maibara"
+            },
+            "credit": {
+              "ja": "DAJF / Wikimedia Commons / CC BY-SA 4.0",
+              "en": "DAJF / Wikimedia Commons / CC BY-SA 4.0"
+            },
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:WIN350_Maibara_19981011.jpg",
+            "date": "1998-10-11",
+            "note": {
+              "ja": "車両を見分ける参考写真。原版無加工、縮小表示。撮影年は下記のとおり。",
+              "en": "Reference photograph to identify the vehicle; original uncropped, resized for display. Taken on the date shown below."
+            }
+          }
+        ]
+      },
+      {
+        "id": "train-star21",
+        "heading": {
+          "ja": "STAR21：軽さと静かさを試したJR東日本の車両",
+          "en": "STAR21 — JR East’s lighter, quieter prototype"
+        },
+        "paragraphs": {
+          "ja": [
+            "STAR21はJR東日本の新幹線952・953形の試験車両。軽量化や空気の流れを整える車体など、次世代車両のための技術を試しました。1993年には試験走行で425km/hを記録しています。",
+            "参考写真は米原で保存されている先頭車を正面から見たもの。幅のある運転台の窓と、滑らかに下へ続く前面が印象的です。写真は保存車両の姿を知る参考で、車窓からこの角度で見えるわけではありません。"
+          ],
+          "en": [
+            "STAR21, JR East’s Class 952/953 prototype, explored lower weight, smoother aerodynamics and other technologies for the next generation. It reached 425 km/h during testing in 1993.",
+            "This reference photograph faces the preserved Maibara cab car. Notice the broad cab window and the smooth front below it. A passing Shinkansen gives you a different, much briefer angle."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/maibara_star21_commons.jpg",
+            "width": 2133,
+            "height": 1600,
+            "alt": {
+              "ja": "米原に保存されているSTAR21の先頭車",
+              "en": "STAR21 cab car preserved at Maibara"
+            },
+            "credit": {
+              "ja": "z tanuki / Wikimedia Commons / CC BY 3.0",
+              "en": "z tanuki / Wikimedia Commons / CC BY 3.0"
+            },
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Star21_Shinkansen_Test_train_,_%E6%96%B0%E5%B9%B9%E7%B7%9A_star21_-_panoramio_(1).jpg",
+            "date": "2014-04-12",
+            "note": {
+              "ja": "車両を見分ける参考写真。原版無加工、縮小表示。撮影年は下記のとおり。",
+              "en": "Reference photograph to identify the vehicle; original uncropped, resized for display. Taken on the date shown below."
+            }
+          }
+        ]
+      }
+    ]
   },
 ];
 
