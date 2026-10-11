@@ -1,3 +1,4 @@
+import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
 import { everydayRelatedHTML } from './shared/everyday-related.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import fs from "node:fs";
@@ -1976,7 +1977,7 @@ if (requestedSpotIds.length) {
 generateSpotPages();
 if (CHECK_ONLY) {
   const generatedEntryPages = [
-    [path.join(appDir, "en", "index.html"), englishLandingHTML()],
+    [path.join(appDir, "en", "index.html"), withAndroidAppInvite(englishLandingHTML(), "en", "landing")],
     [path.join(appDir, "en", "start.html"), englishAppIndexHTML()],
   ];
   for (const [outputPath, generatedHTML] of generatedEntryPages) {
@@ -1993,7 +1994,9 @@ fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 // Keep the English selector in en/start.html and generate both English entry pages together.
 await import("./generate-sanyo-discovery.mjs");
 await import("./generate-language-mirrors.mjs");
-writeFileIfChanged(path.join(appDir, "en", "index.html"), englishLandingHTML());
+const jaLandingPath=path.join(appDir,'index.html');
+writeFileIfChanged(jaLandingPath,withAndroidAppInvite(fs.readFileSync(jaLandingPath,'utf8'),'ja','landing'));
+writeFileIfChanged(path.join(appDir, "en", "index.html"), withAndroidAppInvite(englishLandingHTML(),'en','landing'));
 writeFileIfChanged(path.join(appDir, "en", "start.html"), englishAppIndexHTML());
 for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
   const absolutePath = path.join(appDir, relativePath);
@@ -2088,7 +2091,11 @@ for (const config of guideRailConfigs) {
     new RegExp(`${mobileStart}[\\s\\S]*?${mobileEnd}`),
     `${mobileStart}\n        ${mobileSpots}\n        ${mobileEnd}`,
   );
-  if (['ja', 'en'].includes(lang)) syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
+  if (['ja', 'en'].includes(lang)) {
+    if(!syncedGuideHTML.includes('rel="manifest"'))syncedGuideHTML=syncedGuideHTML.replace('</head>',`  <link rel="manifest" href="${config.prefix}manifest.json">\n</head>`);
+    syncedGuideHTML=withAndroidAppInvite(syncedGuideHTML,lang,'fuji_guide');
+    syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
+  }
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }
 for (const file of ["reflections.html", "en/reflections.html"]) {
