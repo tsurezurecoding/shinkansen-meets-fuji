@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "bd7103e73f0cee47",
+  "contentVersion": "2bfd4ad49e95e18d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -463,8 +463,8 @@
     {
       "path": "fr/zukan.html",
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
-      "bytes": 24779,
-      "sha256": "2f471c7c2e44bd868b1ef6f0fce1226b4a73bd6bdbd55983ad2f419a4dfc7cbd"
+      "bytes": 24805,
+      "sha256": "61dff2cb68deba4700221efa00dad17ee264ba8f130ba32abbfcc6343db501e2"
     },
     {
       "path": "hanabi.html",
@@ -1849,8 +1849,8 @@
     {
       "path": "zh-Hant/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/zukan.html",
-      "bytes": 24003,
-      "sha256": "574d5909dcb97689614344405fc2b5e42c98db0dda6835b7dcc972d214b6cba2"
+      "bytes": 24039,
+      "sha256": "bd088e2d039f21f67cf4651f7d0c79abec73eaf8d7fb13d1497227b1c96752a7"
     }
   ],
   "audioPacks": [
