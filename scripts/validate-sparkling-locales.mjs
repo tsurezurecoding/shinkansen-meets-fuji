@@ -47,6 +47,11 @@ for(const lang of editions){
  for(const a of menu?.querySelectorAll('a')||[])assert(new URL(a.href).pathname===`/${(a.lang==='ja'?'':a.lang+'/')+SPARKLING_ROUTE}`,label,'language dropdown destination differs');
  if(SPARKLING_LOCALES.includes(lang)){
   const dictionary=JSON.parse(read(`scripts/locales/sparkling-${lang}.json`)),tr=value=>dictionary[value.trim()]?value.replace(value.trim(),()=>dictionary[value.trim()]):value;
+  const noScriptDom=new JSDOM(read(label));
+  const fallback=noScriptDom.window.document.querySelector('noscript p.sd-noscript');
+  assert(Boolean(fallback)&&!fallback.textContent.includes('<p'),label,'noscript fallback must be real paragraph markup');
+  assert(fallback?.textContent===dictionary['Enable JavaScript to use the calculator. The A/B/C patterns and official links below are still available without it.'],label,'noscript fallback translation differs');
+  noScriptDom.window.close();
   for(const key of keys){assert(Boolean(dictionary[key]),label,'missing translation '+key.slice(0,65));assert(tokens(key)===tokens(dictionary[key]),label,'placeholder mismatch '+key.slice(0,65));}
   const texts=document=>textNodes(document).filter(node=>!node.parentElement.closest(SPARKLING_EXCLUDE+',.utility-lang-menu')).map(node=>normal(node.textContent));
   compare(texts(doc),texts(sourceDoc).map(text=>normal(tr(text))),label,'static text differs from translated English source');

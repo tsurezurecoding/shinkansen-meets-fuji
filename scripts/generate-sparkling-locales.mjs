@@ -23,8 +23,12 @@ for(const lang of SPARKLING_LOCALES){
  doc.documentElement.lang=lang;doc.body.setAttribute('data-article-localized','');doc.body.setAttribute('data-utility-localized','');doc.body.setAttribute('data-spot-page-shared-lang',lang);
  doc.querySelectorAll('[data-spot-page-shared-module]').forEach(el=>el.removeAttribute('data-spot-page-shared-module'));
  for(const node of textNodes(doc))if(!node.parentElement.closest(SPARKLING_EXCLUDE))node.textContent=tr(node.textContent);
- // noscript content is a text node containing HTML in parsing mode; use its real markup text.
- for(const el of doc.querySelectorAll('noscript'))el.innerHTML=el.innerHTML.replace(/>([^<>]+)</g,(_,text)=>'>'+tr(text)+'<');
+ // Avoid noscript.innerHTML's special parsing mode by translating real nodes separately.
+ for(const el of doc.querySelectorAll('noscript')){
+  const fallback=doc.createElement('div');fallback.innerHTML=el.innerHTML;
+  for(const node of textNodes(doc,fallback))node.textContent=tr(node.textContent);
+  el.replaceChildren(...fallback.childNodes);
+ }
  for(const el of doc.querySelectorAll('*'))if(!el.closest(SPARKLING_EXCLUDE))for(const attr of SPARKLING_ATTRS)if(el.hasAttribute(attr))el.setAttribute(attr,tr(el.getAttribute(attr)));
  doc.title=tr(doc.title);
  for(const meta of doc.querySelectorAll('meta')){const key=meta.name||meta.getAttribute('property')||'';if(/(?:description|title|image:alt)$/.test(key))meta.content=tr(meta.content);if(key==='og:url')meta.content=`${origin}/${file}`;if(key==='og:locale')meta.content=lang==='fr'?'fr_FR':'zh_TW';}

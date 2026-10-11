@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "8ba89a1bee97ece5",
+  "contentVersion": "cf5cb1547f1ca19b",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -355,8 +355,8 @@
     {
       "path": "fr/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/fr/sparkling-dreams.html",
-      "bytes": 103660,
-      "sha256": "679e850af4df25995391b433a95891963b6cd7c9b0d512b5c43be7c55a25e382"
+      "bytes": 103648,
+      "sha256": "72eb56390e48a65cf9abcd08f3c66dcfaf041fcb28bf532c6a11fa41d67d370f"
     },
     {
       "path": "fr/spots/edo-castle-fujimi-yagura.html",
@@ -1729,8 +1729,8 @@
     {
       "path": "zh-Hant/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/sparkling-dreams.html",
-      "bytes": 100518,
-      "sha256": "48e457f1ebd7b03315b816c4ed3aea52d7ac2cb212df97111b3cb41200d56bc3"
+      "bytes": 100506,
+      "sha256": "1c59f86a62bc6a273d1e7a463e1c6e3b3d69b105a7664c3605d3b8f9e22a1c55"
     },
     {
       "path": "zh-Hant/spots/edo-castle-fujimi-yagura.html",
