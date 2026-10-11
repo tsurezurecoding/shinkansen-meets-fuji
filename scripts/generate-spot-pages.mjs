@@ -1,3 +1,4 @@
+import { trainSearchTablesHTML } from './shared/train-search-tables.mjs';
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
 import { everydayRelatedHTML } from './shared/everyday-related.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
@@ -1239,6 +1240,7 @@ function localizeEnglishInternalLinks(html) {
     ["href=\"727-collection.html\"", "href=\"en/727-collection.html\""],
     ["href=\"index.html\"", "href=\"en/\""],
     ["href=\"start.html#journey\"", "href=\"en/start.html#journey\""],
+    ["href=\"start.html?", "href=\"en/start.html?"],
     ["href=\"start.html\"", "href=\"en/start.html\""],
     ["href=\"live/index.html\"", "href=\"en/live/\""],
     ["href=\"live/\"", "href=\"en/live/\""],
@@ -1257,7 +1259,7 @@ function localizeEnglishInternalLinks(html) {
 
 function englishLandingHTML() {
   const title = "Mt. Fuji & More: Tokaido Shinkansen Window Views | Shinkansen Window";
-  const description = `Explore Mt. Fuji, castles and curious signs from your Tokaido Shinkansen (bullet train) window, with photos, stories, viewing times and seat-side guides.`;
+  const description = `Explore Mt. Fuji, castles, farmland and lakes from the Tokaido Shinkansen. Choose your train for estimated viewing times and find which side to look.`;
   const handoff = '<script>(function(){var p=location.pathname.replace(/\\/+$/,"/"),h=location.hash,j=(p==="/en/"||p==="/en/index.html")&&(h==="#journey"||h.indexOf("#spot-")===0);if(j){var q=new URLSearchParams(location.search),r=q.get("lang"),s;try{s=localStorage.getItem("mado-lang")}catch(e){}var t="../en/start.html";if(r==="ja"){try{localStorage.setItem("mado-lang","ja")}catch(e){}t="../start.html"}else if(r==="en"||s==="en"){try{localStorage.setItem("mado-lang","en")}catch(e){}}var u=new URL(t,location.href);u.search=location.search;u.hash=location.hash;location.replace(u.href);return}})();</script>';
   const jsonLd = {
     "@context": "https://schema.org",
@@ -1275,6 +1277,11 @@ function englishLandingHTML() {
     }],
   };
   const copy = [
+    ["富士山が見える時間と座席側を調べ、", "Find when and which side to see Mt. Fuji."],
+    ["沿線の景色を写真と解説で楽しめます。", "Discover more with photos and stories from the route."],
+    ["乗る列車の", "Check your train’s"],
+    ["富士山通過時刻を調べる", "Mt. Fuji time"],
+    ["ほかの景色も写真から探す", "Explore more window views"],
     ["フッターナビゲーション", "Footer navigation"],
     ["新幹線の窓 トップへ", "Shinkansen Window home"],
     ["横にスワイプして景色を見る", "Swipe or use arrow keys to explore"],
@@ -1524,8 +1531,9 @@ function englishLandingHTML() {
   const discoveryGrid = '<div class="discovery-grid scenery-strip">' + discoveryCards.map(([image, heading, copy, url, alt, id, label]) =>
     `<a class="discovery-card" href="${url}" data-lp-cta="scenery-card-${id}"><img src="images/thumbs/${image}" alt="${alt}" loading="eager" decoding="async"><div class="discovery-copy"><h3>${heading}</h3><p>${copy}</p><span>${label} <span aria-hidden="true">→</span></span></div></a>`
   ).join('\n') + '</div>';
-  html = html.replace(/<div class="photo-mosaic scenery-strip">[\s\S]*?<\/div>\s*<div class="scenery-strip-controls"><small>[^<]*<\/small><\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Swipe or use arrow keys to explore</small></div>');
+  html = html.replace(/<div class="(?:photo-mosaic|discovery-grid) scenery-strip">[\s\S]*?<\/div>\s*<div class="scenery-strip-controls"><small>[^<]*<\/small><\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Swipe or use arrow keys to explore</small></div>');
   html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
+  html = html.replace(/<p class="fuji-home-answer">[\s\S]*?<\/p>/, '<p class="fuji-home-answer">Mt. Fuji is on the right toward Kyoto, on the left toward Tokyo: ordinary-car seat E or Green Car seat D. Look between Mishima and the Fuji River; timing depends on your train.</p>');
   // Approved inbound home chapters: retain explicit audio and digital-stamp explanations.
   html = html.replace(/<section class="select ride-compact ride-audio"[\s\S]*?<\/section>/, `<section class="select ride-compact ride-audio" id="live-guide" aria-labelledby="live-guide-title">
  <div class="section-shell">
@@ -1569,9 +1577,12 @@ function englishLandingHTML() {
 }
 
 function englishAppIndexHTML() {
-  const title = "Choose Your Tokaido Shinkansen Train | Shinkansen Window";
-  const description = `Choose a Tokaido Shinkansen train between Tokyo and Shin-Osaka to see ${SPOT_COUNT} window views in timetable order, with the time and seat side for each view.`;
+  const title = "Mt. Fuji Viewing Times by Train | Tokaido Shinkansen Train Search";
+  const description = "Choose your Nozomi, Hikari or Kodama train to find estimated Mt. Fuji viewing times and seat side, plus castles, lakes and other Tokaido Shinkansen views.";
   const selectorCopy = [
+    ['<span class="copy-chunk">富士山の通過時刻を、</span><span class="copy-chunk">乗る列車から。</span>', "Find Mt. Fuji times for your train."],
+    ['<span class="copy-chunk">方向・乗車駅・出発時刻から列車を選ぶと、</span><span class="copy-chunk">富士山や沿線の景色の時刻と座席側がわかります。</span>', "Choose your direction, boarding station and train. Find estimated times and seat sides for Mt. Fuji and the views along the way."],
+    ["列車番号から富士山の時刻を探す", "Find Mt. Fuji times by train number"],
     ["フッターナビゲーション", "Footer navigation"],
     ["新幹線の窓 トップへ", "Shinkansen Window home"],
     ["方向・乗車駅・出発時刻から、", "Choose a direction, station, and departure time."],
@@ -1669,6 +1680,11 @@ function englishAppIndexHTML() {
     .replace('<body>', '<body data-language-route="en">\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
   selectorCopy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
   html = html.replaceAll(">窓</span>", ">W</span>");
+  html = html.replace(/<!-- TRAIN-ENTRY-HELP:START -->[\s\S]*?<!-- TRAIN-ENTRY-HELP:END -->/, `<!-- TRAIN-ENTRY-HELP:START -->
+    <div class="train-entry-help"><p>Look right toward Kyoto, left toward Tokyo: ordinary-car seat E or Green Car seat D.</p><p>Times are estimates calculated from scheduled station times and the location of each view. Service dates, live delays and weather are not included.</p><a href="en/guide.html">Read the viewing-area and seat guide →</a><noscript><p>Enable JavaScript to choose your train, or use the train-number list below for estimated times.</p></noscript></div>
+    <!-- TRAIN-ENTRY-HELP:END -->`);
+  html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n${trainSearchTablesHTML("en")}\n<!-- TRAIN-SEARCH-TABLE:END -->`);
+  html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
   return syncSpotCountClaims(html);
 }
@@ -1794,8 +1810,10 @@ function guideHTML(lang) {
 function sitemapXML() {
   const liveSitemapState = readLiveSitemapState(appDir);
   const baseUrls = [
-    { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-10-10" },
-    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-10-10" },
+    { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/start.html`, priority: "0.9", changefreq: "weekly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/en/start.html`, priority: "0.9", changefreq: "weekly", lastmod: "2026-10-11" },
+    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/en/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
@@ -1828,8 +1846,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
-    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-07" },
+    { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
     { loc: `${siteRoot}/en/jr-pass-fuji.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-22" },
@@ -2010,11 +2028,11 @@ const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
 const guideRailConfigs = [
   {
     lang: "ja", path: "guide.html", prefix: "", spotHrefPrefix: "spots/",
-    ctaHref: "start.html#journey", footHref: "zukan.html", includeAffiliate: true,
+    ctaHref: "start.html?focus=fuji#journey", footHref: "zukan.html", includeAffiliate: true,
   },
   {
     lang: "en", path: path.join("en", "guide.html"), prefix: "../", spotHrefPrefix: "spots/",
-    ctaHref: "./start.html#journey", footHref: "zukan.html", includeAffiliate: true,
+    ctaHref: "./start.html?focus=fuji#journey", footHref: "zukan.html", includeAffiliate: true,
   },
   {
     lang: "zh-Hant", path: path.join("zh-Hant", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
