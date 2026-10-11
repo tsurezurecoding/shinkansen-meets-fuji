@@ -740,12 +740,6 @@
       "article"
     ]
   },
-  "en/zukan.html": {
-    "kind": "collection",
-    "article": false,
-    "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content"
-  },
   "en/tokyo-kyoto-stations.html": {
     "kind": "editorial article",
     "article": true,

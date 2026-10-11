@@ -5,7 +5,7 @@ import {assetVersion} from './shared/asset-version.mjs';
 import {enhanceContentHead} from './shared/content-metadata.mjs';
 import {ANALYTICS} from './shared/feature-page.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-let html=fs.readFileSync(path.join(root,'scripts/templates/everyday-en.html.tpl'),'utf8').replace(/@@ASSET:([^@]+)@@/g,(_,file)=>assetVersion(file));
+let html=fs.readFileSync(path.join(root,'scripts/templates/everyday-en.html.tpl'),'utf8').replace(/\r/g,'').replace(/@@ASSET:([^@]+)@@/g,(_,file)=>assetVersion(file));
 html=html.replace('</head>',ANALYTICS.withEmbeddedGuard+'\n</head>');
 html=enhanceContentHead(html,'en/everyday-japan.html',root);
 const output=path.join(root,'en/everyday-japan.html');

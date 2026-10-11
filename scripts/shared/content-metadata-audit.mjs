@@ -49,7 +49,7 @@ export function auditContentMetadata(root, spots) {
       }
       if (meta?.imageRights === 'permission') {
         expect(src === meta.image, 'permitted cover differs from approved asset');
-        const cover = nodes.find(n => n['@type'] === 'Article')?.image;
+        const cover = (nodes.find(n => n['@type'] === 'Article') || nodes.find(n => ['WebPage','CollectionPage'].includes(n['@type'])))?.image;
         expect(cover?.creditText === meta.imageCredit && cover?.isBasedOn === meta.imageSourceUrl, 'permitted image attribution/source missing');
       }
       if (meta?.article) expect(nodes.some(n => n['@type'] === 'Article'), 'missing opted-in Article');
