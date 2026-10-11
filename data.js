@@ -3221,8 +3221,8 @@ const SPOTS = [
     ja: { name: "富士山", area: "三島 → 新富士", hook: "日本でいちばん有名な3分間。", story: "三島から新富士のあいだ、富士山が車窓いっぱいに迫ります。見えている時間はおよそ3〜4分。トンネルを抜けるたびに大きくなる富士山は、何度乗っても声が出ます。E席側、少し前から窓の外を。" },
     en: { name: "Mt. Fuji", area: "Mishima → Shin-Fuji", hook: "Japan's famous three minutes.", story: "Between Mishima and Shin-Fuji, Mt. Fuji fills the window — for roughly three to four minutes. It grows bigger after each tunnel, and it gets a gasp out of people every single time. Seat E side; be ready a little early." },
     pageTitle: {
-      ja: "三島〜新富士の富士山｜新幹線の車窓写真と見どころ | 新幹線の窓",
-      en: "Mt. Fuji between Mishima and Shin-Fuji | Shinkansen Window View",
+      ja: "三島〜新富士の富士山｜季節で変わる車窓の姿 | 新幹線の窓",
+      en: "Mt. Fuji between Mishima and Shin-Fuji: Seasonal Window Views",
     },
     pageHeading: {
       ja: "三島〜新富士、窓いっぱいの富士山",
@@ -3233,8 +3233,8 @@ const SPOTS = [
       en: ["Mt. Fuji filling the window", "between Mishima and Shin-Fuji"],
     },
     metaDescription: {
-      ja: "東海道新幹線の三島〜新富士で窓いっぱいに見える富士山を、車窓写真・地図・景色の変化で紹介。座席や列車別時刻の疑問は富士山ガイドへ分けて案内します。",
-      en: "See how Mt. Fuji changes between Mishima and Shin-Fuji through window photos, a map, and viewing highlights. Seat and timing questions are covered in the separate FAQ.",
+      ja: "田んぼや製紙工場越しに眺める三島〜新富士の富士山を、車窓写真で紹介。雪化粧の冬、雪のない夏、夕暮れの山影など、季節と光によって変わる姿を楽しめます。",
+      en: "Window photos of Mt. Fuji beyond rice fields and paper mills near Shin-Fuji, from snowy winter slopes to snowless summer views and dusk silhouettes.",
     },
     sectionHeading: {
       ja: "この3〜4分で、富士山はどう見える？",

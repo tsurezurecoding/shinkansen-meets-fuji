@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { trainSearchTablesHTML } from "./shared/train-search-tables.mjs";
 
 // Fills the Mt. Fuji timing table on en/jr-pass-fuji.html from data/timetable.js.
 //
@@ -213,108 +214,6 @@ function hikariLinksHTML() {
   );
 }
 
-/* 日本語 guide.html 向けの列車別 富士山通過時刻。
-   のぞみ・ひかりは新富士に停まらないので駅の実時刻がない。距離按分（fujiOffsetsMinutes）は
-   「ひかりがのぞみより速い」という不可能値を出したため使わない。ここでは app.js のタイムラインと
-   同じ方法、すなわち "その列車自身の停車時刻" の間を線形補間する。のぞみ45分 < ひかり48分 <
-   こだま64分 と順序が保たれることを確認済み。
-
-   明暗は季節で変わるため、年間を通じて断定できる帯だけに印を付ける。
-   新富士の日の入りは約16:35〜19:00、日の出は約04:25〜06:50。その外側だけ「夜」と言い切り、
-   薄明帯は「朝夕」として読者の判断に委ねる。 */
-const JA_EARLIEST_SUNRISE = 4 * 60 + 25;
-const JA_LATEST_SUNRISE = 6 * 60 + 50;
-const JA_EARLIEST_SUNSET = 16 * 60 + 35;
-const JA_LATEST_SUNSET = 19 * 60;
-
-function jaToMin(hhmm) {
-  const p = String(hhmm).split(":");
-  return Number(p[0]) * 60 + Number(p[1]);
-}
-function jaStops(train) {
-  return ROUTE.refStations
-    .filter((s) => train.times[s.id])
-    .map((s) => ({ ref: s.min, clock: jaToMin(train.times[s.id]) }))
-    .sort((a, b) => a.clock - b.clock);
-}
-function jaInterpolate(spotRef, stops) {
-  for (let i = 0; i < stops.length - 1; i++) {
-    const a = stops[i];
-    const b = stops[i + 1];
-    const lo = Math.min(a.ref, b.ref);
-    const hi = Math.max(a.ref, b.ref);
-    if (spotRef >= lo && spotRef <= hi && a.ref !== b.ref) {
-      const f = Math.abs(spotRef - a.ref) / Math.abs(b.ref - a.ref);
-      return Math.round(a.clock + f * (b.clock - a.clock));
-    }
-  }
-  return null;
-}
-function jaClock(min) {
-  const m = ((min % 1440) + 1440) % 1440;
-  return String(Math.floor(m / 60)).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0");
-}
-const JA_TYPE_LABEL = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
-const JA_STATION2 = Object.fromEntries((ROUTE?.refStations || []).map((st) => [st.id, st.ja || st.id]));
-
-/* 明暗は文字で書かず、閲覧時の日付から sun-window.js が色で表す。
-   ここでは判定に必要な通過時刻（0時からの分）だけ data 属性で渡す。
-   季節で変わるものを静的HTMLに焼き込まないための分担。 */
-// Both guides use the same existing timetable and interpolation, never a separate
-// set of estimated times. English train names are static text for search readers.
-function trainTablesHTML(lang = "ja") {
-  const english = lang === "en";
-  const fuji = SPOTS.find((spot) => spot.id === "fuji");
-  if (!fuji || !ROUTE || !ROUTE.refStations) return "";
-
-  const build = (type, direction) => {
-    const seen = new Set();
-    const rows = TIMETABLE.trains
-      .filter((train) => train.type === type && train.direction === direction)
-      .map((train) => ({ train, at: jaInterpolate(fuji.minutesFromTokyo, jaStops(train)) }))
-      .filter((row) => row.at !== null)
-      .filter((row) => {
-        if (seen.has(row.train.number)) return false;
-        seen.add(row.train.number);
-        return true;
-      })
-      .sort((a, b) => a.train.number - b.train.number)
-      .map((row) => {
-        const label = english ? type + " " + row.train.number : JA_TYPE_LABEL[type] + row.train.number + "号";
-        const dep = row.train.times[row.train.originStation] || "—";
-        const href = "start.html?train=" + type + "-" + row.train.number
-          + "&amp;board=" + encodeURIComponent(routeBoardId(row.train))
-          + "&amp;dir=" + direction;
-        const station = escapeHTML((english ? STATION_EN : JA_STATION2)[row.train.originStation] || row.train.originStation);
-        return "<tr data-fuji-min=\"" + (row.at % 1440) + "\">"
-          + "<td><a href=\"" + href + "\">" + label + "</a></td>"
-          + "<td>" + station + " " + dep + "</td>"
-          + "<td><b>" + jaClock(row.at) + "</b></td></tr>";
-      });
-    if (!rows.length) return "";
-    const dirLabel = english
-      ? (direction === "west" ? "toward Kyoto / Shin-Osaka" : "toward Tokyo")
-      : (direction === "west" ? "下り" : "上り");
-    return "          <details class=\"ja-train-list\">\n"
-      + "            <summary>" + (english ? type + " · " + dirLabel + " (" + rows.length + " trains)" : JA_TYPE_LABEL[type] + "・" + dirLabel + "（" + rows.length + "本）") + "</summary>\n"
-      + "            <div class=\"jp-table-wrap\"><table class=\"jp-table ja-train-table\">\n"
-      + (english ? "              <thead><tr><th>Train</th><th>Origin / departure</th><th>Mt. Fuji (est.)</th></tr></thead>\n" : "              <thead><tr><th>列車</th><th>始発</th><th>富士山</th></tr></thead>\n")
-      + "              <tbody>\n              " + rows.join("\n              ") + "\n              </tbody>\n"
-      + "            </table></div>\n"
-      + "          </details>";
-  };
-
-  const cells = [];
-  for (const type of ["Nozomi", "Hikari", "Kodama"]) {
-    for (const direction of ["west", "east"]) {
-      const html = build(type, direction);
-      if (html) cells.push(html);
-    }
-  }
-  if (!cells.length) return "";
-  return "        <div class=\"ja-train-grid\">\n" + cells.join("\n") + "\n        </div>";
-}
-
 const west = rowsFor("west");
 const east = rowsFor("east");
 
@@ -340,33 +239,15 @@ const generated =
   hikariLinksHTML() +
   `\n      ${END}`;
 
-// --- 日本語 guide.html: 列車ごとの富士山通過時刻 ---
-
-const JA_START = "<!-- JA_TRAIN_TABLES_START -->";
-const JA_END = "<!-- JA_TRAIN_TABLES_END -->";
-const JA_GUIDE_PAGE = path.join(appDir, "guide.html");
-{
-  const generatedJa = `${JA_START}
-` + trainTablesHTML() + `
-        ${JA_END}`;
-  const current = fs.readFileSync(JA_GUIDE_PAGE, "utf8");
-  const startIdx = current.indexOf(JA_START);
-  const endIdx = current.indexOf(JA_END);
-  if (startIdx === -1 || endIdx === -1) throw new Error("guide.html: JA_TRAIN_TABLES markers missing");
-  const next = current.slice(0, startIdx) + generatedJa + current.slice(endIdx + JA_END.length);
-  if (CHECK_ONLY) {
-    if (next !== current) throw new Error("guide.html: train tables are stale; run generate-inbound-tables.mjs");
-  } else if (next !== current) {
-    fs.writeFileSync(JA_GUIDE_PAGE, next);
-  }
-}
+// The general Fuji guide links to the train selector. Keep the complete static
+// number index with that tool; the central page generator supplies its EN version.
+const TRAIN_START = "<!-- TRAIN-SEARCH-TABLE:START -->";
+const TRAIN_END = "<!-- TRAIN-SEARCH-TABLE:END -->";
+applyTo(path.join(appDir, "start.html"), TRAIN_START, TRAIN_END,
+  TRAIN_START + "\n" + trainSearchTablesHTML("ja") + "\n        " + TRAIN_END,
+  "Japanese train-search index");
 
 // --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
-
-applyTo(path.join(appDir, "en", "guide.html"),
-  "<!-- EN_TRAIN_TABLES_START -->", "<!-- EN_TRAIN_TABLES_END -->",
-  "<!-- EN_TRAIN_TABLES_START -->\n" + trainTablesHTML("en") + "\n        <!-- EN_TRAIN_TABLES_END -->",
-  "English guide train tables");
 
 function besidesTableHTML(langKey) {
   const L = LANGS[langKey];

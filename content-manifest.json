@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "fefa94948d3e3839",
+  "contentVersion": "51e47f491d91f01f",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -31,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 139571,
-      "sha256": "25b772f81956d73d750b75b8649861ac94fe08e2f1370615a91aef36b1dc184f"
+      "bytes": 146444,
+      "sha256": "526a371386f026e1ab369ee1055307dc6f540e145ae260a09085c5ce73d56147"
     },
     {
       "path": "arenani.css",
@@ -91,8 +91,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 760453,
-      "sha256": "82d9247aff24aa8fb4dad812472480e5917abcd76c7b1225ab99e59ac6af4402"
+      "bytes": 760426,
+      "sha256": "2d37368719b212a50256d567b115800c3a06565c5792705acf4783ab41a16112"
     },
     {
       "path": "data/beer-photo-sources.json",
@@ -217,8 +217,8 @@
     {
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
-      "bytes": 69773,
-      "sha256": "917f412b50176912c29ff1acae1bad9e7a68ca4233a3294517362db4b0fcc417"
+      "bytes": 68890,
+      "sha256": "94076c6d81bd1897463a16e18511873d88d118a3354a3ec87ae9efdd5491e150"
     },
     {
       "path": "en/reflections.html",
@@ -343,14 +343,14 @@
     {
       "path": "home-scenery.css",
       "url": "https://www.michikusa-travel.com/home-scenery.css",
-      "bytes": 1967,
-      "sha256": "321436dcc5a210373ea29461ef5a5d3d4ef13282f966cd6cad07251912133fb8"
+      "bytes": 5017,
+      "sha256": "fb73cb8e0b5ea07200c3241e5656f064539915b0bb6038ef05caac6763c56e6e"
     },
     {
       "path": "home-scenery.js",
       "url": "https://www.michikusa-travel.com/home-scenery.js",
-      "bytes": 2665,
-      "sha256": "57890d58963977b1f5e35544690920e5e98b2c2197620290b0c0e27abae39749"
+      "bytes": 3102,
+      "sha256": "d2736d476557e7bac1d8e96dad50ffbe637998bb93fd28cc3abe0cb0ca462013"
     },
     {
       "path": "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
@@ -979,14 +979,14 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 74158,
-      "sha256": "e65021aa9d573c07c61f999ac7202762cb85ba326648392151f72f558faa3184"
+      "bytes": 71833,
+      "sha256": "222746c3e0f83727a7b5919e403ca9b48822b6506a827cbc684a7e8a4b7532a5"
     },
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "fa4dbdf73aba668aaddb544c3b199d67c5b3ed23216b24400e918f41597935cf"
+      "sha256": "1a7aaaaced269150d0bc8792faa6a50d0ac99a4013ed6867b46ce77cba0a0ad1"
     },
     {
       "path": "live/narration.js",

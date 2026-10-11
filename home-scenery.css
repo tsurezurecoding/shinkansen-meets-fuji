@@ -14,6 +14,10 @@
 .scenery-strip[data-overflow="true"] [data-strip-clone] {display:block;}
 .scenery-strip-controls {display:flex;justify-content:space-between;align-items:center;gap:12px;margin:4px 0 0;color:#4a6175;}
 .scenery-strip-controls small {font-size:12px;}
+.scenery-strip-nav {display:flex;gap:8px;}
+.scenery-strip-nav button {display:grid;place-items:center;width:42px;height:42px;border:1px solid #bdc5cb;border-radius:50%;background:transparent;color:var(--ink);font-size:20px;cursor:pointer;}
+.scenery-strip-nav button:hover {background:rgba(15,35,50,.06);}
+.scenery-strip-nav button:focus-visible {outline:3px solid var(--coral);outline-offset:3px;}
 .scenery-strip:focus-visible {outline:3px solid #e8704a;outline-offset:3px;}
 .scenery-strip-controls[hidden] {display:none;}
 #scenery .photo-credit {margin-top:8px;}
@@ -22,3 +26,40 @@
  .scenery-strip .photo-label strong,.scenery-strip .discovery-copy h3 {font-size:17px;}
 }
 @media(prefers-reduced-motion:reduce){.scenery-strip img{transition:none;}}
+
+/* Home chapters: shared headings and buttons, portrait scenery, rediscovery stamps. */
+.scenery-strip .photo-card,.scenery-strip .discovery-card{border:0;box-shadow:none}
+.scenery-strip .photo-card:hover,.scenery-strip .discovery-card:hover{border:0;box-shadow:none}
+.scenery-strip .photo-card:focus-visible,.scenery-strip .discovery-card:focus-visible{outline:3px solid var(--coral);outline-offset:-3px}
+.scenery-strip{scrollbar-width:none;-ms-overflow-style:none}
+.scenery-strip::-webkit-scrollbar{display:none;width:0;height:0}
+.scenery-strip .photo-card,.scenery-strip .discovery-card{height:auto;aspect-ratio:4/5}
+.scenery-strip img{position:absolute;inset:0}
+.scenery-strip img[src$="/20240211_Mt.Fuji.webp"]{object-position:75% center}
+.scenery-strip img[src$="/20260712_toji_michikusa.webp"]{object-position:35% center}
+.scenery-strip img[src$="/20260904_mishima_catapult_1_michikusa.webp"]{object-position:20% center}
+.select-summary-line{display:block}
+.ride-compact{padding:clamp(54px,6vw,80px) 0;text-align:center;scroll-margin-top:120px;border-bottom:0}
+.ride-compact .section-head{max-width:900px}
+.ride-compact .section-head>p:last-child{max-width:700px;margin-left:auto;margin-right:auto}
+.ride-audio{background:var(--paper)}
+.ride-preview{width:min(660px,100%);margin:30px auto 28px}
+.ride-preview img{display:block;width:100%;height:auto;border-radius:18px}
+.ride-preview figcaption{margin-top:12px;font-size:12px;line-height:1.6;color:var(--ink-soft)}
+.rediscovery-stamps{display:flex;justify-content:center;gap:6px;width:min(250px,100%);margin:20px auto;position:relative;z-index:1}
+.rediscovery-stamps img{width:calc((100% - 12px)/3);height:auto;aspect-ratio:1;object-fit:contain}
+.for-you .audience-card>p{margin-bottom:20px}
+.for-you .audience-card-action{margin-top:auto}
+@media(max-width:760px){
+ .ride-preview{margin-top:26px}
+ .ride-compact .button{max-width:100%}
+ .rediscovery-stamps{width:220px;margin-top:0}
+}
+
+/* A visible next step from the Fuji-led feature strip. */
+.scenery-actions{display:flex;flex-direction:column;align-items:center;gap:18px;margin-top:28px;text-align:center}
+.scenery-actions .button{max-width:100%;flex-wrap:wrap;justify-content:center;column-gap:0}
+.scenery-strip .discovery-copy>span{display:block;margin-top:8px;font-size:12px;line-height:1.4;color:#fff}
+.scenery-strip .discovery-copy{padding:48px 16px 18px;background:linear-gradient(transparent,rgba(2,11,18,.88))}
+.scenery-strip .discovery-copy h3{font-size:clamp(18px,1.5vw,22px);line-height:1.4;text-wrap:balance}
+@media(min-width:651px){.scenery-strip .photo-card,.scenery-strip .discovery-card{flex-basis:calc((100% - 48px)/4.2)}}

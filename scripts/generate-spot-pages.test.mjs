@@ -5,6 +5,12 @@ import vm from "node:vm";
 import { JSDOM } from "jsdom";
 import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOgImage, enhanceContentHead, contentLastmod } from './shared/content-metadata.mjs';
 import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
+import { findUnregisteredCountClaims } from './shared/spot-count.mjs';
+
+test('spot counts ignore image dimensions while still checking nearby prose', () => {
+  assert.deepEqual(findUnregisteredCountClaims('<img width="1200" height="630" alt="現在地と次の景色">'), []);
+  assert.equal(findUnregisteredCountClaims('<img height="630" alt="景色"><p>999 amazing views</p>').length, 1);
+});
 
 test('editorial metadata: curated candidates and generated spot contracts pass the site gate', () => {
   const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
@@ -140,16 +146,16 @@ import {
   writeChangedSpotPagePlans,
 } from "./generate-spot-pages.mjs";
 
-test("English Fuji train table is static, matches Japanese times and selects real services", () => {
+test("Train search is indexable with a bilingual static train index and valid service links", () => {
   const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
-  const en = new JSDOM(read("en/guide.html"), { url: "https://www.michikusa-travel.com/en/guide.html", runScripts: "outside-only" });
-  const ja = new JSDOM(read("guide.html")).window.document;
+  const en = new JSDOM(read("en/start.html"), { url: "https://www.michikusa-travel.com/en/start.html", runScripts: "outside-only" });
+  const ja = new JSDOM(read("start.html")).window.document;
   const doc = en.window.document;
   const rows = [...doc.querySelectorAll("#trainTimes tbody tr")];
   const jaRows = [...ja.querySelectorAll("#trainTimes tbody tr")];
   assert.ok(rows.length > 500, "all train types and directions must be present without JS");
   assert.equal(rows.length, jaRows.length);
-  assert.equal(doc.querySelectorAll("#trainTimes details").length, 6);
+  assert.equal(doc.querySelectorAll("#trainTimes .ja-train-list").length, 6);
   assert.equal(doc.querySelector('link[rel="canonical"]').href, doc.URL);
   assert.ok(!doc.querySelector('meta[name="robots"]')?.content.includes("noindex"));
   assert.ok(!/[\u3040-\u30ff\u3400-\u9fff]/.test(doc.querySelector("#trainTimes").textContent));
@@ -178,12 +184,13 @@ test("English Fuji train table is static, matches Japanese times and selects rea
   });
   const start = new JSDOM(read("en/start.html")).window.document;
   assert.equal(start.documentElement.lang, "en");
-  assert.equal(start.querySelector('meta[name="robots"]').content, "noindex,follow");
-  assert.equal(start.querySelector('link[rel="canonical"]'), null);
-  en.window.eval(read("sun-window.js"));
-  const sunScript = [...doc.scripts].find((script) => script.textContent.includes("var sun = window.MADO_SUN"));
-  en.window.eval(sunScript.textContent);
-  assert.ok(doc.querySelector('#trainTimes td[aria-label*="estimated"]'), "daylight labels must work in English");
+  assert.ok(!start.querySelector('meta[name="robots"]').content.includes("noindex"));
+  assert.equal(start.querySelector('link[rel="canonical"]').href, "https://www.michikusa-travel.com/en/start.html");
+  for (const file of ["guide.html", "en/guide.html"]) {
+    const guide = new JSDOM(read(file)).window.document;
+    assert.equal(guide.querySelectorAll("#trainTimes tbody tr").length, 0);
+    assert.ok(guide.querySelector('#trainTimes a[href*="focus=fuji"]'));
+  }
   en.window.close();
 });
 

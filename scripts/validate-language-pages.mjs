@@ -160,11 +160,17 @@ for (const [jaPath, enPath] of [["/start.html", "/en/start.html"]]) {
     if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
       errors.push(`${urlPath}: html lang must be ${language}`);
     }
-    if (!/<meta name="robots" content="noindex,follow">/i.test(html)) {
-      errors.push(`${urlPath}: train selector must be noindex,follow`);
+    if (/<meta name="robots"[^>]*content="[^"]*noindex/i.test(html)) {
+      errors.push(`${urlPath}: train search must be indexable`);
     }
-    if (/<link\s+rel=["']canonical["']|hreflang=|application\/ld\+json/i.test(html)) {
-      errors.push(`${urlPath}: train selector must not have canonical, hreflang, or JSON-LD metadata`);
+    if (!hasCanonical(html, urlPath)) {
+      errors.push(`${urlPath}: missing self canonical for the train-search entry`);
+    }
+    if (!hasAlternate(html, "ja", jaPath) || !hasAlternate(html, "en", enPath) || !hasAlternate(html, "x-default", enPath)) {
+      errors.push(`${urlPath}: train-search language alternates are incomplete`);
+    }
+    if (!html.includes('id="trainTimes"') || !html.includes('id="fujiTrainAnswer"')) {
+      errors.push(`${urlPath}: train-search static index or Fuji answer slot is missing`);
     }
     if (!html.includes('id="journey"')) {
       errors.push(`${urlPath}: train selector journey anchor is missing`);
