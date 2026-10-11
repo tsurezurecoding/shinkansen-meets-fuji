@@ -1,6 +1,7 @@
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
 import { everydayRelatedHTML } from './shared/everyday-related.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
+import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -1860,7 +1861,8 @@ function sitemapXML() {
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
-  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls].map((item) => `  <url>
+  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => ({ loc: `${siteRoot}/${lang}/${route}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-11' })));
+  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
@@ -2079,6 +2081,7 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
+await import("./generate-castle-locales.mjs");
 await import("./generate-content-manifest.mjs");
 
 const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;

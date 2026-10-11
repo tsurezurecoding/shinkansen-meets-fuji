@@ -3,6 +3,7 @@ import { readdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
+import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteBaseUrl = "https://www.michikusa-travel.com/";
@@ -14,6 +15,8 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  ...CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => `${lang}/${route}`)),
+  'article-locales.js', 'article-locales.css',
   "manifest.json", "images/google-play/ja-badge.png", "images/google-play/en-badge.png",
   "en/foods.html", "foods.css", "foods.js", "data/foods-photo-sources.json",
   "en/everyday-japan.html", "everyday.css", "everyday-related.css",

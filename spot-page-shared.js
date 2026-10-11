@@ -948,6 +948,14 @@
     try {
       if (!document.body || !document.body.classList.contains("spot-page")) throw new Error("spot-page body context is required");
       bindCtaTracking();
+      // New editions are deterministic English-derived snapshots. Keep the same
+      // photo/lightbox behavior without replacing their translated article/chrome.
+      if (typeof document.body.hasAttribute === 'function' && document.body.hasAttribute('data-article-localized')) {
+        bindPageLightbox();
+        var localizedMedia = document.querySelector('.twitter-tweet');
+        if (localizedMedia) ensureXWidgetsScript({ media: { videos: [{ kind: 'x' }] } });
+        return;
+      }
       if (root.MADO_EMBEDDED_WEB) document.body.classList.add("mado-embedded-body");
       var pageHost = findOptionalHost("page");
       if (pageHost) {

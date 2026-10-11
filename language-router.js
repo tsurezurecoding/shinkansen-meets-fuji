@@ -2,7 +2,7 @@
   "use strict";
 
   var path = location.pathname.replace(/\/+$/, "/");
-  if (/\/en(?:\/|$)/.test(path)) return;
+  if (/\/(?:en|zh-Hant|fr)(?:\/|$)/.test(path)) return;
 
   var routes = {
     "/window-artworks.html": "en/window-artworks.html",
