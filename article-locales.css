@@ -3,5 +3,4 @@
 [data-article-localized] .top-nav { min-width: 0; flex-wrap: wrap; }
 [data-article-localized] h1,[data-article-localized] h2,[data-article-localized] h3,
 [data-article-localized] .spot-page-facts dd { overflow-wrap: anywhere; }
-.article-language-hint { font-size: .7em; opacity: .7; white-space: nowrap; }
 .article-title-chunk { display: inline-block; }

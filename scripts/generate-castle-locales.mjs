@@ -55,8 +55,8 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       if (/article:(?:published|modified)_time/.test(key)) el.remove();
     }
     doc.querySelector('link[rel="canonical"]').href = `${origin}/${file}`;
-    // Known translated destinations remain in this edition. Other site tools are
-    // explicitly labelled English until the separately scheduled TOP/search work.
+    // Known translated destinations remain in this edition. Keep the English
+    // fallback routes, without repeating a visible language label on every link.
     for (const el of doc.querySelectorAll('a[href]')) {
       if (el.closest('.lang-switch')) continue;
       const href = el.getAttribute('href');
@@ -69,8 +69,6 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       } else if (url.pathname.startsWith('/en/') && !el.closest('.lang-switch')) {
         el.setAttribute('href', prefix + 'en/' + target + url.search + url.hash);
         el.setAttribute('hreflang', 'en');
-        const badge = doc.createElement('small'); badge.className = 'article-language-hint';
-        badge.textContent = lang === 'fr' ? ' (anglais)' : '（英文）'; el.appendChild(badge);
       }
     }
     for (const host of doc.querySelectorAll('.lang-switch')) {

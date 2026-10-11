@@ -101,7 +101,7 @@ function checkLocalizedLinks(doc, sourceDoc, lang, label) {
       assert(url.pathname === `/${lang}/${route}`, label, `translated article link leaves ${lang}: ${url.pathname}`);
       localizedDestinations.add(route);
     } else if (url.origin === origin && url.pathname.startsWith('/en/')) {
-      assert(el.hreflang === 'en' && Boolean(el.querySelector('.article-language-hint')), label, `English-only destination lacks language hint: ${url.pathname}`);
+      assert(el.hreflang === 'en', label, `English fallback language metadata missing: ${url.pathname}`);
     }
   }
   for (const route of knownSource) assert(localizedDestinations.has(route), label, `English source article destination missing: ${route}`);
@@ -186,6 +186,7 @@ for (const route of CASTLE_LOCALE_ROUTES) {
     checkMetadata(doc, lang, route, file);
     checkSwitch(dom, lang, route, file);
     if (CASTLE_LOCALE_LANGS.includes(lang)) {
+      assert(!doc.querySelector('.article-language-hint'), file, 'visible English fallback labels must not be added');
       assert(doc.body.hasAttribute('data-article-localized'), file, 'static localization marker missing');
       assert(Boolean(doc.querySelector('main')?.textContent.trim()), file, 'article body empty before JavaScript');
       assert(!doc.querySelector('script[src*="spot-page-loader"], script[src*="data/spot-pages/"]'), file, 'English dynamic loader remains');
