@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "6f1b172eb810e329",
+  "contentVersion": "239027e263c73775",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -218,7 +218,7 @@
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 68890,
-      "sha256": "dfe6de6fdaeedd9e0760e22ae26d4c5a8b1c06f8c09d0f1020dfa4eb5c33b3c2"
+      "sha256": "7bf082f4a2490f4f920f33a4190c71bc31461ee768de7b785bdd0eecab3c4237"
     },
     {
       "path": "en/reflections.html",
@@ -325,14 +325,14 @@
     {
       "path": "hero-cinema.css",
       "url": "https://www.michikusa-travel.com/hero-cinema.css",
-      "bytes": 13415,
-      "sha256": "36f17e8ee00cea8b7bc8ec0c7083781d35115f85a5a6e129b3598756ccc0439a"
+      "bytes": 12210,
+      "sha256": "19e0700665c3bfa041a8a4e66a4cefd6b4954a922dd85df93de6bb8f71904809"
     },
     {
       "path": "hero-cinema.js",
       "url": "https://www.michikusa-travel.com/hero-cinema.js",
-      "bytes": 5251,
-      "sha256": "3f73c4c591d8a4f13f4869db7556926d866e24c647a91c6d19c0dc7a8c821ee6"
+      "bytes": 4707,
+      "sha256": "0ac3142ba1ac04b23d8c30e40e54dfc6f8a5f9c2ccd84a8eaef0c494555b2ede"
     },
     {
       "path": "home-cards.css",
@@ -343,14 +343,14 @@
     {
       "path": "home-scenery.css",
       "url": "https://www.michikusa-travel.com/home-scenery.css",
-      "bytes": 6852,
-      "sha256": "752e5a27b4f5d339672d2149905177cfacbcf0b3fc825a0573f27ffda8f6a44a"
+      "bytes": 7432,
+      "sha256": "715b892743535fcfd6ef19708330f8f31490a112e3d7bb34615aae9ce58965c1"
     },
     {
       "path": "home-scenery.js",
       "url": "https://www.michikusa-travel.com/home-scenery.js",
-      "bytes": 3102,
-      "sha256": "d2736d476557e7bac1d8e96dad50ffbe637998bb93fd28cc3abe0cb0ca462013"
+      "bytes": 3264,
+      "sha256": "31712bf2bc1e050bb131dc033c0b127b2ce6d469ef14b71a6e3c27a9042c586d"
     },
     {
       "path": "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
@@ -979,8 +979,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 70718,
-      "sha256": "e1324c4a66f57c421fa9da7b8d9907e582003503497d3fcb09a5bb6d769a7b9c"
+      "bytes": 69975,
+      "sha256": "89db8cb412d75e2202d0bfd084fbe34b9f39af5f883a8c4a9f8d069f6e704cec"
     },
     {
       "path": "journal.html",

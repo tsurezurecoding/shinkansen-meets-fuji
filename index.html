@@ -79,8 +79,8 @@
     })();
   </script>
   <link rel="stylesheet" href="chrome.css?v=db5e5721">
-  <link rel="stylesheet" href="hero-cinema.css?v=36f17e8e">
-  <script src="hero-cinema.js?v=3f73c4c5" defer></script>
+  <link rel="stylesheet" href="hero-cinema.css?v=19e07006">
+  <script src="hero-cinema.js?v=0ac3142b" defer></script>
   <script>document.documentElement.classList.add("js");</script>
   <style>
     :root {
@@ -150,16 +150,16 @@
     .section-head h2 {
       margin: 0;
       font-family: var(--serif);
-      font-size: clamp(31px, 5vw, 58px);
+      font-size: clamp(25px, 3.1vw, 38px);
       font-weight: 700;
-      letter-spacing: -0.035em;
+      letter-spacing: -0.02em;
       line-height: 1.28;
     }
     .section-head p:last-child {
       max-width: 620px;
       margin: 20px auto 0;
       color: var(--ink-soft);
-      font-size: clamp(14px, 1.7vw, 17px);
+      font-size: clamp(13.5px, 1.4vw, 15.5px);
     }
 
     /* ヘッダーの見た目は chrome.css が正本。ここに複製を書かないこと。
@@ -396,7 +396,7 @@
     .manifesto-bg img { object-fit: cover; object-position: center 56%; }
     .manifesto-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(5, 16, 24, 0.06), rgba(5, 16, 24, 0.76) 80%, rgba(5, 16, 24, 0.92)); }
     .manifesto-copy { position: relative; z-index: 2; width: min(1160px, calc(100% - 40px)); margin: 0 auto; padding: 90px 0; text-align: center; }
-    .manifesto h2 { max-width: 900px; margin: 0 auto; font-family: var(--serif); font-size: clamp(38px, 6.5vw, 76px); line-height: 1.26; letter-spacing: -0.045em; text-shadow: 0 4px 35px rgba(0, 0, 0, 0.34); }
+    .manifesto h2 { max-width: 900px; margin: 0 auto; font-family: var(--serif); font-size: clamp(28px, 4vw, 46px); line-height: 1.3; letter-spacing: -0.02em; text-shadow: 0 4px 35px rgba(0, 0, 0, 0.34); }
     .manifesto p { max-width: 600px; margin: 25px auto 0; color: rgba(255, 255, 255, 0.76); font-size: 15px; }
     .manifesto .photo-credit { color: rgba(255, 255, 255, 0.64); }
 
@@ -425,7 +425,7 @@
     .trust { padding: 64px 0; background: var(--paper); }
     .trust-inner { display: grid; justify-items: center; gap: 34px; text-align: center; }
     .trust-inner > h2 { max-width: 980px; }
-    .trust h2 { margin: 0; font-family: var(--serif); font-size: clamp(27px, 4vw, 43px); line-height: 1.35; }
+    .trust h2 { margin: 0; font-family: var(--serif); font-size: clamp(22px, 2.6vw, 32px); line-height: 1.35; }
     .trust-list { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; width: min(100%, 900px); }
     .trust-item { padding: 21px; border-top: 1px solid var(--line); text-align: center; }
     .trust-item strong { display: block; font-family: var(--serif); font-size: 18px; }
@@ -436,7 +436,7 @@
     .final-cta::before { content: "窓"; position: absolute; right: -0.08em; bottom: -0.4em; color: rgba(255, 255, 255, 0.09); font-family: var(--serif); font-size: min(62vw, 610px); font-weight: 700; line-height: 1; }
     .final-inner { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; text-align: center; }
     .final-inner .eyebrow { color: rgba(255, 255, 255, 0.72); }
-    .final-inner h2 { margin: 0; font-family: var(--serif); font-size: clamp(40px, 6.7vw, 72px); line-height: 1.22; letter-spacing: -0.045em; }
+    .final-inner h2 { margin: 0; font-family: var(--serif); font-size: clamp(28px, 4vw, 46px); line-height: 1.28; letter-spacing: -0.02em; }
     .final-inner p { max-width: 590px; margin: 24px 0 0; color: rgba(255, 255, 255, 0.8); }
     .final-inner .hero-actions { margin-top: 32px; }
     .final-inner .button-dark { background: var(--night); box-shadow: 0 16px 40px rgba(88, 29, 15, 0.2); }
@@ -465,7 +465,7 @@
       .hero .hero-actions { margin-top: 20px; }
       .hero-cards { margin-top: 20px; }
       .journey { padding: 42px 0 48px; }
-      .journey .section-head h2 { font-size: clamp(38px, 4vw, 50px); }
+      .journey .section-head h2 { font-size: clamp(30px, 3.1vw, 38px); }
       .journey .section-head p:last-child { margin-top: 12px; font-size: 15px; line-height: 1.75; }
       .journey-steps { margin-top: 28px; }
       .journey-card { padding: 22px; }
@@ -527,7 +527,7 @@
     }
 
     @media (max-width: 460px) {
-      .manifesto-copy h2 { font-size: clamp(27px, 8.6vw, 38px); }
+      .manifesto-copy h2 { font-size: clamp(25px, 7.4vw, 32px); }
       .photo-mosaic { grid-template-rows: 245px 185px 185px; }
       .photo-label small { letter-spacing: 0.08em; }
       .photo-label strong { font-size: 16px; }
@@ -543,7 +543,7 @@
     }
   </style>
   <link rel="stylesheet" href="home-cards.css?v=2a0b82f6">
-  <link rel="stylesheet" href="home-scenery.css?v=752e5a27">
+  <link rel="stylesheet" href="home-scenery.css?v=715b8927">
 </head>
 <body>
   <a class="skip-link" href="#main">本文へ移動</a>
@@ -598,26 +598,21 @@
       </div>
     </section>
 
-    <section class="scenery" id="scenery" aria-labelledby="scenery-title">
+    <section class="scenery scenery-under-hero" id="scenery" aria-labelledby="scenery-title">
       <div class="section-shell">
-        <div class="section-head reveal">
-          <p class="eyebrow">More than Mt. Fuji</p>
-          <h2 id="scenery-title"><span class="copy-chunk">富士山だけで、</span><span class="copy-chunk">終わらせない。</span></h2>
-          <p><span class="copy-chunk">相模湾、茶畑、浜名湖、城。</span><span class="copy-chunk">見える時刻を調べて、</span><span class="copy-chunk">乗車中は音声で知らせます。</span></p>
-        </div>
+        <h2 id="scenery-title" class="visually-hidden">富士山だけで終わらせない、車窓の見どころと乗車ガイド</h2>
 
-        <div class="discovery-grid scenery-strip" id="scenery-photos"><a class="discovery-card tool-card" href="start.html#journey" data-lp-cta="strip-card-train"><img src="promo/assets/ui/ja-timeline-fuji.webp" alt="列車を選ぶと、富士山などの見えるころと座席側が時刻順に並ぶ画面" loading="eager" decoding="async"><em class="tool-chip">乗る前に</em><div class="discovery-copy"><h3><span class="copy-chunk">見える時刻を、</span><span class="copy-chunk">列車で調べる。</span></h3><p>乗る便を選ぶと、富士山や城の見えるころと座席側が並ぶ。</p><span>乗る列車を選ぶ <span aria-hidden="true">→</span></span></div></a>
-<a class="discovery-card tool-card" href="live/" data-lp-cta="strip-card-live"><img src="promo/assets/ui/ja-live-fuji-eta04.webp" alt="現在地から次の車窓・富士山まであと4秒と知らせる音声ガイドの画面" loading="eager" decoding="async"><em class="tool-chip">乗車中に</em><div class="discovery-copy"><h3><span class="copy-chunk">近づく景色を、</span><span class="copy-chunk">音声で知らせる。</span></h3><p>GPSで現在地を確認し、次の車窓をカウントダウン。</p><span>音声ガイドを試す <span aria-hidden="true">→</span></span></div></a>
+        <div class="discovery-grid scenery-strip" id="scenery-photos"><a class="discovery-card tool-card" href="start.html#journey" data-lp-cta="strip-card-train"><span class="tool-phone tool-phone-train"><img src="promo/assets/ui/ja-timeline-fuji.webp" alt="列車を選ぶと、富士山などの見えるころと座席側が時刻順に並ぶ画面" loading="eager" decoding="async"></span><div class="discovery-copy"><h3><span class="copy-chunk">見える時刻を、</span><span class="copy-chunk">列車で調べる。</span></h3><p>乗る便を選ぶと、富士山や城の見えるころと座席側が並ぶ。</p><span>列車を選ぶ</span></div></a>
+<a class="discovery-card tool-card" href="live/" data-lp-cta="strip-card-live"><span class="tool-phone tool-phone-live"><img src="promo/assets/ui/ja-live-fuji-eta04.webp" alt="現在地から次の車窓・富士山まであと4秒と知らせる音声ガイドの画面" loading="eager" decoding="async"></span><div class="discovery-copy"><h3><span class="copy-chunk">近づく景色を、</span><span class="copy-chunk">音声で知らせる。</span></h3><p>GPSで現在地を確認し、次の車窓をカウントダウン。</p><span>音声ガイドを試す</span></div></a>
 <a class="discovery-card" href="guide.html" data-lp-cta="scenery-card-fuji"><img src="images/thumbs/20240211_Mt.Fuji.webp" alt="雪をいただく富士山を新幹線の車窓から見る" loading="eager" decoding="async"><div class="discovery-copy"><h3>富士山を見る。</h3><p>見える区間、座席、東京から何分後か。乗る前に知りたいことを。</p><span>富士山ガイドへ <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="castles.html" data-lp-cta="scenery-card-castles"><img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="街の屋根の向こうに見える掛川城" loading="eager" decoding="async"><div class="discovery-copy"><h3>窓から、城を探す。</h3><p>屋根の向こうに白い天守。城と、そのまわりの街を知る旅へ。</p><span>城の特集へ <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="zukan.html" data-lp-cta="scenery-card-zukan"><img src="images/thumbs/20260516_hamanako_seaside_1_michikusa.webp" alt="水辺を渡る列車と浜名湖" loading="eager" decoding="async"><div class="discovery-copy"><h3>写真から、景色を探す。</h3><p>湖、海、山、街。写真を入口に、気になる景色を選ぶ。</p><span>車窓図鑑へ <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="spots/toji.html" data-lp-cta="scenery-card-toji"><img src="images/thumbs/20260712_toji_michikusa.webp" alt="京都の街並みからそびえる東寺の五重塔" loading="eager" decoding="async"><div class="discovery-copy"><h3>京都の五重塔を探す。</h3><p>京都駅のそば、街の向こうに東寺の塔。到着の前後も、窓に目を。</p><span>東寺のガイドへ <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="727-collection.html" data-lp-cta="scenery-card-727"><img src="images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp" alt="248と並ぶ727 COSMETICSの看板" loading="eager" decoding="async"><div class="discovery-copy"><h3>あの727、何の看板？</h3><p>線路ぎわで目にする数字。その正体を知り、沿線の看板を集める。</p><span>727の特集へ <span aria-hidden="true">→</span></span></div></a>
 <a class="discovery-card" href="arenani.html" data-lp-cta="scenery-card-arenani"><img src="images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="空へ上っていくように見える三島車両所の線路" loading="eager" decoding="async"><div class="discovery-copy"><h3>今の「あれ」、何？</h3><p>空へ向かう線路、山際の白い像。一瞬気になったものの正体を。</p><span>「あれ、何？」の特集へ <span aria-hidden="true">→</span></span></div></a>
-<a class="discovery-card tool-card tool-card-paper" href="journal.html" data-lp-cta="strip-card-stamp"><span class="tool-stamps" aria-hidden="true"><img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async"><img src="images/stamps/stamp_kakegawa.svg" alt="" loading="lazy" decoding="async"><img src="images/stamps/stamp_hamanako.svg" alt="" loading="lazy" decoding="async"></span><em class="tool-chip">降りたあと</em><div class="discovery-copy"><h3><span class="copy-chunk">見つけた景色を、</span><span class="copy-chunk">スタンプに。</span></h3><p>見た景色を押して、旅を振り返る。</p><span>スタンプ帖へ <span aria-hidden="true">→</span></span></div></a></div>
+<a class="discovery-card tool-card" href="journal.html" data-lp-cta="strip-card-stamp"><span class="tool-phone tool-phone-stamp"><img src="promo/assets/ui/ja-stamps.webp" alt="見つけた景色のスタンプが並ぶスタンプ帖の画面" loading="lazy" decoding="async"></span><div class="discovery-copy"><h3><span class="copy-chunk">見つけた景色を、</span><span class="copy-chunk">スタンプに。</span></h3><p>見た景色を押して、旅を振り返る。</p><span>スタンプ帖を開く</span></div></a></div>
         <div class="scenery-strip-controls"><small>横にたどって、気になる景色へ</small><span class="scenery-strip-nav"><button type="button" data-strip-prev aria-label="前の景色へ" aria-controls="scenery-photos"><span aria-hidden="true">←</span></button><button type="button" data-strip-next aria-label="次の景色へ" aria-controls="scenery-photos"><span aria-hidden="true">→</span></button></span></div>
 
-        <div class="scenery-actions"><a class="button button-primary" href="start.html#journey" data-lp-cta="scenery-train-time">乗る列車の車窓時刻を調べる</a></div>
       </div>
     </section>
 
@@ -827,7 +822,7 @@
       });
     })();
   </script>
-<script src="home-scenery.js?v=d2736d47" defer></script>
+<script src="home-scenery.js?v=31712bf2" defer></script>
 <!-- ANDROID_APP_INVITE_START -->
 <style>#android-app-invite{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);position:fixed;z-index:90;width:min(310px,calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));margin:0;padding:10px 12px;border:1px solid #d7e5ef;border-radius:14px;background:linear-gradient(120deg,#fff,#f0f7fc);box-shadow:0 5px 24px #15375230;color:#193c52;font:13px/1.5 system-ui,sans-serif;text-align:left;box-sizing:border-box;max-height:40dvh;overflow:auto}
 #android-app-invite[hidden]{display:none!important}#android-app-invite .context-label{display:block;color:#486b82;font-size:10px;line-height:12px}#android-app-invite h2{font:600 14px/20px system-ui,sans-serif;margin:0}#android-app-invite p{font:12px/1.45 system-ui,sans-serif;margin:4px 0 0}

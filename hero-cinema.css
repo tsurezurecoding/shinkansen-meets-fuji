@@ -67,15 +67,6 @@ main > section:not(.hero) {
 .hero.hv .hv-copy .hero-actions { display: flex; align-self: center; justify-content: center; width: 100%; margin: clamp(14px, 3.6cqh, 32px) 0 0; }
 .hv-copy .hero-actions .button { min-height: 48px; }
 
-/* pause / replay: one quiet icon in the film's corner */
-.hv-toggle { position: absolute; z-index: 3; right: clamp(10px, 1.6cqw, 22px); bottom: clamp(10px, 2.4cqh, 22px); display: grid; place-items: center; width: 40px; height: 40px; padding: 0; border: 1px solid rgba(255, 253, 248, .32); border-radius: 50%; background: rgba(8, 21, 33, .42); color: #fffdf8; cursor: pointer; opacity: .72; transition: opacity .25s, background .25s; }
-.hv-toggle:hover, .hv-toggle:focus-visible { opacity: 1; background: rgba(8, 21, 33, .7); }
-.hv-toggle:focus-visible { outline: 3px solid #e8704a; outline-offset: 3px; }
-.hv-toggle::before { content: ""; width: 10px; height: 12px; border-left: 3px solid currentColor; border-right: 3px solid currentColor; box-sizing: border-box; }
-.hv-toggle[data-state="play"]::before { width: 0; height: 0; border: 0; border-left: 11px solid currentColor; border-top: 7px solid transparent; border-bottom: 7px solid transparent; margin-left: 3px; }
-.hv-toggle[data-state="again"]::before { content: "↻"; width: auto; height: auto; border: 0; font: 400 18px/1 var(--sans); }
-.hv-screen:not([data-ready="true"]) .hv-toggle[data-state="pause"] { opacity: 0; pointer-events: none; }
-
 @media (max-width: 899px) {
   .hv-copy { padding: 0 18px; }
   .hv-copy .hero-lead { font-size: 12.5px; line-height: 1.8; }
