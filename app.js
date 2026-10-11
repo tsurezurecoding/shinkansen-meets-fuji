@@ -403,11 +403,44 @@ const MSG = {
   },
 };
 
+// Additional utility locales are loaded by their HTML entry before this script.
+const utilityLocale = window.MADO_UTILITY_LOCALE;
+if (utilityLocale?.tables?.app) MSG[utilityLocale.lang] = { ...MSG.en, ...utilityLocale.tables.app };
+function translateUtility(value) {
+  return utilityLocale && lang === utilityLocale.lang && typeof value === "string" ? utilityLocale.t(value) : value;
+}
+function localizedValue(value) {
+  if (!value || typeof value !== "object") return translateUtility(value);
+  return translateUtility(value[lang] ?? value[lang === "ja" ? "ja" : "en"] ?? value.en ?? value.ja);
+}
+function attributionValue(value) {
+  if (!value || typeof value !== "object") return value;
+  return value[lang === "ja" ? "ja" : "en"] ?? value.en ?? value.ja;
+}
+function spotCopy(spot) {
+  if (!spot) return {};
+  const copy = spot[lang] || (lang === "ja" ? spot.ja : spot.en) || spot.en || spot.ja || {};
+  return Object.fromEntries(Object.entries(copy).map(([key, value]) => [key, translateUtility(value)]));
+}
+function utilityHref(route) {
+  return utilityLocale && lang === utilityLocale.lang ? utilityLocale.href(route) : lang === "ja" ? route : `en/${route === "index.html" ? "" : route}`;
+}
+function translatedStation(station, fallback = "") {
+  const value = lang === "ja" ? station?.ja || station?.en || fallback : station?.en || station?.ja || fallback;
+  return utilityLocale && lang === utilityLocale.lang ? utilityLocale.stationName(value) : value;
+}
+
 /* ---------- state ---------- */
 function normalizeLang(value) {
-  return String(value || "").toLowerCase().startsWith("ja") ? "ja" : "en";
+  const normalized = String(value || "").toLowerCase();
+  if (normalized.startsWith("ja")) return "ja";
+  if (normalized.startsWith("zh") && MSG["zh-Hant"]) return "zh-Hant";
+  if (normalized.startsWith("fr") && MSG.fr) return "fr";
+  return "en";
 }
 function getInitialLang() {
+  const pathLang = location.pathname.match(/\/(en|zh-Hant|fr)(?:\/|$)/i)?.[1];
+  if (pathLang && MSG[normalizeLang(pathLang)]) return normalizeLang(pathLang);
   const urlLang = new URLSearchParams(location.search).get("lang");
   if (urlLang === "ja" || urlLang === "en") {
     try { localStorage.setItem("mado-lang", urlLang); } catch (error) {}
@@ -427,9 +460,7 @@ function localizedPageHref(targetLang) {
     : path.endsWith("/zukan.html") ? "zukan.html"
     : path.endsWith("/journal.html") ? "journal.html"
     : "index.html";
-  const target = targetLang === "en"
-    ? `en/${file === "index.html" ? "" : file}`
-    : file;
+  const target = targetLang === "ja" ? file : `${targetLang}/${file === "index.html" ? "" : file}`;
   const destination = new URL(target, document.baseURI);
   destination.search = location.search;
   // A query-language override must follow the switch, not force the previous language.
@@ -550,30 +581,30 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 function appSelfForPath(pathname) {
   const normalized = String(pathname).replace(/\\/g, "/");
-  const isEnglish = /(^|\/)en(?:\/|$)/i.test(normalized);
+  const routeLang = normalized.match(/(?:^|\/)(en|zh-Hant|fr)(?:\/|$)/i)?.[1];
   const file = normalized.endsWith("/zukan.html") ? "zukan.html"
     : normalized.endsWith("/start.html") ? "start.html"
     : normalized.endsWith("/journal.html") ? "journal.html"
     : "index.html";
-  if (!isEnglish) return file;
-  if (normalized.endsWith("/en") || normalized.endsWith("/en/")) return "en/";
-  return `en/${file}`;
+  if (!routeLang) return file;
+  if (normalized.endsWith(`/${routeLang}`) || normalized.endsWith(`/${routeLang}/`)) return `${routeLang}/`;
+  return `${routeLang}/${file}`;
 }
 const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
-  const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.ja;
-  if (routed) return routed;
+  const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.[lang === "ja" ? "ja" : "en"];
+  if (routed) return utilityLocale && lang === utilityLocale.lang ? utilityHref(routed.replace(/^en\//, "")) : routed;
   if (lang === "ja" && spot?.is727Collection) return "727-collection.html";
   const pageId = spot.guidePageId || spot.id;
   const anchor = spot.guideAnchor ? `#${spot.guideAnchor}` : "";
-  return lang === "en" ? `en/spots/${pageId}.html${anchor}` : `spots/${pageId}.html${anchor}`;
+  return utilityHref(`spots/${pageId}.html${anchor}`);
 }
 function liveMapHref(targetLang = lang) {
-  return targetLang === "en" ? "en/live/" : "live/";
+  return targetLang === lang ? utilityHref("live/") : targetLang === "ja" ? "live/" : `${targetLang}/live/`;
 }
 const t = (key, ...args) => {
-  const v = MSG[lang][key];
+  const v = MSG[lang]?.[key] ?? MSG.en[key];
   return typeof v === "function" ? v(...args) : (v ?? key);
 };
 function track(eventName, params = {}) {
@@ -613,7 +644,7 @@ function spotAnalyticsParams(spot, source, extra = {}) {
 function referenceHref(ref) {
   if (!ref) return "";
   const url = ref.url;
-  return typeof url === "object" ? (url[lang] || url.ja || url.en || "") : (url || "");
+  return typeof url === "object" ? (localizedValue(url) || "") : (url || "");
 }
 function bodyLinksHTML(spot, className = "spot-body-links") {
   const sourceLinks = [...(spot.bodyLinks || []), ...(spot.references || [])];
@@ -621,15 +652,15 @@ function bodyLinksHTML(spot, className = "spot-body-links") {
   const links = sourceLinks.map((item) => {
     const ref = item.ref || item;
     const href = item.url
-      ? (typeof item.url === "object" ? (item.url[lang] || item.url.ja || item.url.en || "") : item.url)
+      ? (typeof item.url === "object" ? (localizedValue(item.url) || "") : item.url)
       : referenceHref(ref);
-    const label = (item.label && (item.label[lang] || item.label.ja || item.label.en)) || (ref.label && (ref.label[lang] || ref.label.ja || ref.label.en));
+    const label = (item.label && (localizedValue(item.label))) || (ref.label && (localizedValue(ref.label)));
     if (!href || !label) return "";
     if (seen.has(href)) return "";
     seen.add(href);
     return `<a href="${escapeAttr(href)}" target="_blank" rel="noopener noreferrer">${escapeHTML(label)}</a>`;
   }).filter(Boolean);
-  const prefix = lang === "ja" ? "もっと見る:" : "More:";
+  const prefix = lang === "ja" ? "もっと見る:" : translateUtility("More:");
   return links.length ? `<p class="${className}"><span>${prefix}</span> ${links.join("<span aria-hidden=\"true\"> / </span>")}</p>` : "";
 }
 
@@ -910,7 +941,7 @@ function seatBadge(spot) {
   const cls = tags.has("seat-a") && tags.has("seat-e")
     ? "badge-seat-both"
     : (spot.side === "E" ? "badge-seat-E" : "badge-seat-A");
-  const label = spot.sideLabel?.[lang] || (spot.side === "E" ? t("seatE") : t("seatA"));
+  const label = localizedValue(spot.sideLabel) || (spot.side === "E" ? t("seatE") : t("seatA"));
   return `<span class="badge ${cls}">${label}</span>`;
 }
 function seatShortBadge(spot) {
@@ -919,7 +950,7 @@ function seatShortBadge(spot) {
   const bothSides = tags.has("seat-a") && tags.has("seat-e");
   const cls = bothSides ? "badge-seat-both" : (tags.has("seat-e") ? "badge-seat-E" : "badge-seat-A");
   const label = bothSides
-    ? (lang === "ja" ? "A/E席" : "Seats A/E")
+    ? (lang === "ja" ? "A/E席" : translateUtility("Seats A/E"))
     : (tags.has("seat-e") ? t("fSeatE") : t("fSeatA"));
   const compactLabel = bothSides ? "A/E" : (tags.has("seat-e") ? "E" : "A");
   return `<span class="badge ${cls}"><span class="seat-badge-label-full">${escapeHTML(label)}</span><span class="seat-badge-label-compact" aria-hidden="true">${compactLabel}</span></span>`;
@@ -935,12 +966,12 @@ function confBadge(spot) {
 function stationLabel(id) {
   const station = STATION[id] || TIMETABLE_STATION[id];
   if (!station) return id;
-  return lang === "ja" ? station.ja || station.en || id : station.en || station.ja || id;
+  return translatedStation(station, id);
 }
 function mapHref(spot) {
   if (!spot.map) return "";
   if (spot.map.lat != null && spot.map.lng != null) return `https://www.google.com/maps/search/?api=1&query=${spot.map.lat},${spot.map.lng}`;
-  const query = spot.map[lang] || spot.map.ja || spot.map.en;
+  const query = localizedValue(spot.map);
   return query ? `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}` : "";
 }
 function mapLinkHTML(spot, className = "") {
@@ -998,7 +1029,7 @@ function googleMapsEmbedHref(spot) {
     center: `${spot.map.lat},${spot.map.lng}`,
     zoom: String(miniMapZoomForViewpoint(spot, viewPos, distanceKm)),
     maptype: "satellite",
-    language: lang === "ja" ? "ja" : "en",
+    language: lang === "zh-Hant" ? "zh-TW" : lang,
   });
   return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
 }
@@ -1016,7 +1047,7 @@ function googleMapsViewpointHref(spot) {
     center: `${spot.map.lat},${spot.map.lng}`,
     zoom: String(miniMapZoomForViewpoint(spot, viewPos, distanceKm)),
     maptype: "satellite",
-    language: lang === "ja" ? "ja" : "en",
+    language: lang === "zh-Hant" ? "zh-TW" : lang,
   });
   return `https://www.google.com/maps/embed/v1/place?${params.toString()}`;
 }
@@ -1025,8 +1056,8 @@ function miniMapDetailsHTML(spot, options = {}) {
   const fallbackLink = mapLinkHTML(spot, "spot-mini-map-link");
   if (!hasCoordinates && !fallbackLink) return "";
   const title = options.summary || t("miniMapSummary");
-  const liveHref = "live/";
-  const liveLabel = lang === "ja" ? "乗車中は音声ガイドで見る" : "Use Audio Guide while riding";
+  const liveHref = liveMapHref();
+  const liveLabel = lang === "ja" ? "乗車中は音声ガイドで見る" : translateUtility("Use Audio Guide while riding");
   if (!hasCoordinates) {
     return `<section class="spot-static-map">
     <div class="spot-static-map-head">
@@ -1038,10 +1069,10 @@ function miniMapDetailsHTML(spot, options = {}) {
     </div>
   </section>`;
   }
-  const name = spot[lang]?.name || spot.ja?.name || spot.en?.name || spot.id;
+  const name = spotCopy(spot).name || spot.id;
   const embedHref = googleMapsEmbedHref(spot);
   const viewpointHref = googleMapsViewpointHref(spot);
-  const openMapLabel = lang === "ja" ? `${name}をGoogle Mapsで開く` : `Open ${name} in Google Maps`;
+  const openMapLabel = lang === "ja" ? `${name}をGoogle Mapsで開く` : translateUtility("Open {name} in Google Maps").replace("{name}", name);
   const modebar = viewpointHref ? `<div class="spot-map-modebar" role="group" aria-label="${escapeAttr(t("miniMapSummary"))}">
       <button type="button" class="spot-map-mode is-active" data-mini-map-mode="spot" data-map-src="${escapeAttr(embedHref)}" aria-pressed="true">${t("miniMapSpotMode")}</button>
       <button type="button" class="spot-map-mode" data-mini-map-mode="viewpoint" data-map-src="${escapeAttr(viewpointHref)}" aria-pressed="false">${t("miniMapViewpointMode")}</button>
@@ -1066,10 +1097,10 @@ function escapeAttr(value) {
 function photoCreditHTML(spot, options = {}) {
   if (!spot.photoCredit) return "";
   const showNote = options.showNote !== false;
-  const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
+  const label = attributionValue(spot.photoCredit);
   const isMichikusa = String(label).toLowerCase() === "michikusa";
   const text = isMichikusa ? spot.photoCredit.date : compactCreditLabel(label);
-  const note = showNote ? spot.photoCredit.note?.[lang] || spot.photoCredit.note?.ja || spot.photoCredit.note?.en || "" : "";
+  const note = showNote ? localizedValue(spot.photoCredit.note) || "" : "";
   if (!text) return "";
   const source = spot.photoCredit.url
     ? `<a href="${spot.photoCredit.url}" target="_blank" rel="noopener noreferrer">${text}</a>`
@@ -1080,10 +1111,10 @@ function photoCreditHTML(spot, options = {}) {
 function photoMetaHTML(photo) {
   if (!photo) return "";
   // Date-only gallery photos are Michikusa-owned; third-party photos must keep credit/sourceUrl.
-  const credit = photo.credit?.[lang] || photo.credit?.ja || photo.credit?.en || "";
+  const credit = attributionValue(photo.credit) || "";
   const isMichikusa = String(credit).toLowerCase() === "michikusa";
   const creditText = isMichikusa || (!credit && photo.date) ? photo.date : (credit ? compactCreditLabel(credit) : "");
-  const note = photo.note?.[lang] || photo.note?.ja || photo.note?.en || "";
+  const note = localizedValue(photo.note) || "";
   const source = photo.sourceUrl
     ? `<a href="${photo.sourceUrl}" target="_blank" rel="noopener noreferrer">${creditText}</a>`
     : creditText;
@@ -1097,10 +1128,10 @@ function escapeHTML(value) {
 function spotReferencesHTML(spot) {
   const refs = spot.references || [];
   if (!refs.length) return "";
-  const title = lang === "ja" ? "もっと知る" : "Learn more";
+  const title = lang === "ja" ? "もっと知る" : translateUtility("Learn more");
   const links = refs.map((ref) => {
-    const url = typeof ref.url === "object" ? (ref.url?.[lang] || ref.url?.ja || ref.url?.en) : ref.url;
-    const label = ref.label?.[lang] || ref.label?.ja || ref.label?.en || url;
+    const url = typeof ref.url === "object" ? (localizedValue(ref.url)) : ref.url;
+    const label = localizedValue(ref.label) || url;
     return `<a href="${escapeAttr(url)}" target="_blank" rel="noopener noreferrer">${escapeAttr(label)}</a>`;
   }).join("");
   return `<div class="spot-modal-refs"><span>${title}</span>${links}</div>`;
@@ -1108,16 +1139,16 @@ function spotReferencesHTML(spot) {
 function spotRelatedHTML(spot) {
   const related = (spot.relatedSpotIds || []).map(findSpotById).filter(Boolean);
   if (!related.length) return "";
-  const title = lang === "ja" ? "関連" : "Related";
+  const title = lang === "ja" ? "関連" : translateUtility("Related");
   const links = related.map((item) => {
-    const label = item[lang]?.name || item.ja?.name || item.en?.name || item.id;
+    const label = spotCopy(item).name || item.id;
     return `<a href="${APP_SELF}${spotHash(item.id)}">${escapeAttr(label)}</a>`;
   }).join("");
   return `<div class="spot-modal-refs spot-modal-related"><span>${title}</span>${links}</div>`;
 }
 function collectionGuideLinkHTML(spot) {
   if (isWheelCollectionSpot(spot)) {
-    const href = lang === "en" ? "en/ferris-wheels.html" : "ferris-wheels.html";
+    const href = utilityHref("ferris-wheels.html");
     const total = typeof WHEEL_COLLECTION === "undefined" ? 6 : WHEEL_COLLECTION.length;
     return `<a class="spot-modal-collection-cta" href="${href}"><span>${escapeHTML(t("cWheelCollectionCta", total))}</span><span aria-hidden="true">→</span></a>`;
   }
@@ -1127,7 +1158,7 @@ function collectionGuideLinkHTML(spot) {
 }
 function showCreditHTML(spot) {
   if (!spot.photoCredit) return "";
-  const label = spot.photoCredit[lang] || spot.photoCredit.ja || spot.photoCredit.en;
+  const label = attributionValue(spot.photoCredit);
   const isMichikusa = String(label).toLowerCase() === "michikusa";
   const text = isMichikusa ? spot.photoCredit.date : compactCreditLabel(label);
   if (!text) return "";
@@ -1149,7 +1180,7 @@ function spotMediaFigureHTML(item, className = "spot-photo") {
   return `<figure class="photo-figure"><img class="${className}" loading="lazy" decoding="async" src="${thumbnailSrc(item.src)}" alt="${escapeAttr(item.alt)}">${item.creditHTML}</figure>`;
 }
 function spotMediaItems(spot) {
-  const L = spot[lang];
+  const L = spotCopy(spot);
   const items = [];
   const seen = new Set();
   const add = (item) => {
@@ -1161,7 +1192,7 @@ function spotMediaItems(spot) {
     add({ src: spot.image, alt: L.name, creditHTML: photoCreditHTML(spot), timeOfDay: spot.timeOfDay || "day" });
   }
   (spot.photos || []).forEach((photo) => {
-    const alt = photo.alt?.[lang] || photo.alt?.ja || photo.alt?.en || spot[lang].name;
+    const alt = localizedValue(photo.alt) || spotCopy(spot).name;
     add({ src: photo.src, alt, creditHTML: photoMetaHTML(photo), timeOfDay: photo.timeOfDay || "day" });
   });
   return items;
@@ -1234,13 +1265,13 @@ function stampBadgeHTML(sp, size, fallbackCls) {
     `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
 function spotDetailModalHTML(spot) {
-  const L = spot[lang];
+  const L = spotCopy(spot);
   const heroMedia = spotModalMediaHTML(spot);
   const guideAria = t("readGuideDetailAria", L.name);
   return `
     <div class="spot-modal-backdrop" data-modal-close></div>
     <section class="spot-modal-panel" role="dialog" aria-modal="true" aria-labelledby="spot-modal-title" tabindex="-1">
-      <button type="button" class="spot-modal-close" data-modal-close aria-label="Close">×</button>
+      <button type="button" class="spot-modal-close" data-modal-close aria-label="${escapeAttr(t('quickModalClose'))}">×</button>
       <div class="spot-modal-head">
         ${stampBadgeHTML(spot, 64, "spot-modal-icon")}
         <div class="spot-modal-titleblock">
@@ -1274,15 +1305,15 @@ function spotDetailModalHTML(spot) {
 function applyLang() {
   document.documentElement.lang = lang;
   $$("[data-i18n]").forEach((el) => {
-    const v = MSG[lang][el.dataset.i18n];
+    const v = MSG[lang]?.[el.dataset.i18n] ?? MSG.en[el.dataset.i18n];
     if (typeof v === "string") el.innerHTML = v;
   });
   $$("[data-journal-close]").forEach((el) => el.setAttribute("aria-label", t("journalModalClose")));
   COLLECTION_TOGGLES.forEach((group) => $$(group.selector).forEach((el) => el.setAttribute("aria-label", t(group.labelKey))));
   $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
-  $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/guide.html" : "guide.html"));
-  $$('[data-contact-nav]').forEach((link) => link.setAttribute("href", lang === "en" ? "en/contact.html" : "contact.html"));
-  if (lang === "en") {
+  $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", utilityHref("guide.html")));
+  $$('[data-contact-nav]').forEach((link) => link.setAttribute("href", utilityHref("contact.html")));
+  if (lang !== "ja") {
     const englishRoutes = {
       "index.html": "en/",
       "index.html#journey": "en/start.html#journey",
@@ -1311,7 +1342,10 @@ function applyLang() {
     };
     $$("a[href]").forEach((link) => {
       const href = link.getAttribute("href");
-      if (englishRoutes[href]) link.setAttribute("href", englishRoutes[href]);
+      if (link.hasAttribute("hreflang") || link.closest(".article-lang-menu, .utility-lang-menu")) return;
+      if (utilityLocale && lang === utilityLocale.lang) {
+        if (href && !/^(?:[a-z]+:|\/|#)/i.test(href)) link.setAttribute("href", utilityHref(href.replace(/^(?:en|fr|zh-Hant)\//, "")));
+      } else if (englishRoutes[href]) link.setAttribute("href", englishRoutes[href]);
     });
   }
   $$("[data-live-nav]").forEach((link) => link.setAttribute("href", liveMapHref()));
@@ -1391,7 +1425,7 @@ function renderShowcase() {
     .map((id) => SPOTS.find((sp) => sp.id === id))
     .filter(Boolean);
   rail.innerHTML = spots.map((sp) => {
-    const L = sp[lang];
+    const L = spotCopy(sp);
     const media = sp.image
       ? `<img loading="lazy" decoding="async" src="${thumbnailSrc(sp.image)}" alt="${L.name}">`
       : sceneSVG(sp.scene);
@@ -1400,8 +1434,8 @@ function renderShowcase() {
         <span class="show-caption"><strong>${sp.icon} ${L.name}</strong>${showCreditHTML(sp)}<span>${L.hook}</span><a class="show-guide-link" href="${spotPageHref(sp)}">${t("readGuide")}</a></span>
       </div>`;
   }).join("");
-  const ctaLabel = lang === "ja" ? "もっと見る" : "More";
-  const ctaSub = lang === "ja" ? "この区間の景色を一覧で見る" : "Browse every view in this stretch";
+  const ctaLabel = lang === "ja" ? "もっと見る" : translateUtility("More");
+  const ctaSub = lang === "ja" ? "この区間の景色を一覧で見る" : translateUtility("Browse every view in this stretch");
   const remaining = Math.max(0, SPOTS.length - showcaseSpotIds.length);
   rail.insertAdjacentHTML("beforeend", `
     <a class="show-card show-card-cta" href="zukan.html" aria-label="${ctaLabel}: ${t("galTitle")}">
@@ -1509,7 +1543,7 @@ function mountTrainPicker() {
     timetable: window.SHINKANSEN_TIMETABLE,
     direction,
     boardId,
-    messages: { ja: { trainNone: MSG.ja.trainNone }, en: { trainNone: MSG.en.trainNone } },
+    messages: Object.fromEntries(Object.entries(MSG).map(([code, messages]) => [code, { trainNone: messages.trainNone }])),
     onChange(state) {
       const directionChanged = state.direction !== direction;
       direction = state.direction;
@@ -1618,7 +1652,7 @@ function renderTimeline() {
   const html = [];
   items.forEach((it, i) => {
     if (it.kind === "station") {
-      html.push(`<li class="tl-station"><span class="tl-time">${minToClock(it.clock)}</span>${it.st[lang]}</li>`);
+      html.push(`<li class="tl-station"><span class="tl-time">${minToClock(it.clock)}</span>${translatedStation(it.st)}</li>`);
     } else {
       html.push(spotItemHTML(it.sp, it.clock));
     }
@@ -1638,7 +1672,7 @@ function renderFujiTrainAnswer() {
     return;
   }
   const train = journey.train;
-  const type = (TRAIN_NAMES[train.type] || { ja: train.type, en: train.type })[lang];
+  const type = localizedValue(TRAIN_NAMES[train.type] || { ja: train.type, en: train.type });
   const trainName = lang === "ja" ? `${type}${train.number}号` : `${type} ${train.number}`;
   if (!hasFujiIntent()) {
     answer.hidden = true;
@@ -1651,7 +1685,7 @@ function renderFujiTrainAnswer() {
   const boarding = `${stationLabel(journey.boardId)} ${minToClock(journey.depMin)} ${t("dep")}`;
   answer.setAttribute("aria-labelledby", "fujiTrainAnswerTitle");
   answer.innerHTML = `
-    <p class="fuji-train-answer-kicker">YOUR TRAIN</p>
+    <p class="fuji-train-answer-kicker">${translateUtility("YOUR TRAIN")}</p>
     <h2 class="fuji-train-answer-title" id="fujiTrainAnswerTitle">${escapeHTML(t("fujiAnswerTitle"))}</h2>
     <p class="fuji-train-answer-train">${escapeHTML(trainName)} · ${escapeHTML(boarding)}</p>
     ${fuji ? `
@@ -1660,12 +1694,12 @@ function renderFujiTrainAnswer() {
       <p class="fuji-train-answer-note">${escapeHTML(t("fujiAnswerNote"))}</p>
     ` : `<p class="fuji-train-answer-note">${escapeHTML(t("fujiAnswerOutside"))}</p>`}`;
   answer.hidden = false;
-  const titleAnswer = time ? (lang === "ja" ? `富士山 ${time}頃` : `Mt. Fuji ~${time}`) : t("fujiAnswerTitle");
+  const titleAnswer = time ? (lang === "ja" ? `富士山 ${time}頃` : `${translateUtility("Mt. Fuji")} ~${time}`) : t("fujiAnswerTitle");
   document.title = `${trainName} — ${titleAnswer} | ${BASE_PAGE_TITLE}`;
 }
 
 function timelineTrainTagHTML(train) {
-  const type = (TRAIN_NAMES[train?.type] || { ja: train?.type || "", en: train?.type || "" })[lang];
+  const type = localizedValue(TRAIN_NAMES[train?.type] || { ja: train?.type || "", en: train?.type || "" });
   const number = escapeHTML(train?.number || "");
   return `
     <span class="tl-title-train">
@@ -1678,7 +1712,7 @@ function timelineTrainTagHTML(train) {
 }
 
 function spotItemHTML(sp, clock) {
-  const L = sp[lang];
+  const L = spotCopy(sp);
   const lowLight = journey?.mode !== "estimate" && isClearlyDark(clock);
   const timeMode = activeTimelineTimeOfDayFilter() || (lowLight ? "night" : "day");
   const featuredMedia = preferredSpotMedia(sp, timeMode);
@@ -1721,7 +1755,7 @@ function spotItemHTML(sp, clock) {
 function spotCardStampButtonHTML(spotId, got) {
   const fullLabel = got ? t("spotBtnDone") : t("spotBtn");
   const compactLabel = got ? t("spotBtnDoneCompact") : t("spotBtnCompact");
-  const spotName = findSpotById(spotId)?.[lang]?.name || fullLabel;
+  const spotName = spotCopy(findSpotById(spotId)).name || fullLabel;
   const ariaLabel = got ? t("spotBtnAriaRemove", spotName) : t("spotBtnAriaAdd", spotName);
   const icon = got
     ? '<svg class="spot-btn-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="m3.2 8.2 3 3 6.6-6.6"/></svg>'
@@ -1987,7 +2021,7 @@ function updateLive() {
   if (!upcoming) { banner.hidden = true; return; }
   const remain = upcoming.clock - now;
   banner.hidden = false;
-  $("#nextupName").textContent = `${upcoming.sp.icon} ${upcoming.sp[lang].name}`;
+  $("#nextupName").textContent = `${upcoming.sp.icon} ${spotCopy(upcoming.sp).name}`;
   $("#nextupCount").textContent = remain <= 1 ? t("soon") : t("inMinutes", remain);
 }
 
@@ -2163,7 +2197,7 @@ function medalDetailHTML(selectedSet) {
       </div>
       <div class="medal-target-list">
         ${selectedProgress.targets.map((sp) => {
-          const L = sp[lang] || sp.ja;
+          const L = spotCopy(sp);
           return `<button type="button" class="medal-target-card${stamps[sp.id] ? " is-stamped" : ""}" data-medal-target="${sp.id}">
             ${sp.is727Collection ? `<span class="medal-target-stamp board-stamp-mark${stamps[sp.id] ? "" : " is-uncollected"}" aria-hidden="true"><strong>727</strong></span>` : `<img class="medal-target-stamp" src="images/stamps/stamp_${sp.id}.svg" alt="" width="42" height="42" loading="lazy" decoding="async">`}
             <span class="medal-target-copy"><strong>${escapeHTML(L.name)}</strong><span>${escapeHTML(L.hook || sp.hook || "")}</span></span>
@@ -2269,7 +2303,7 @@ function toggleFavorite(id) {
 }
 function favoriteButtonHTML(spotId, faved, size = "sm") {
   const spot = findSpotById(spotId);
-  const spotName = spot?.[lang]?.name || spotId;
+  const spotName = spotCopy(spot).name || spotId;
   const ariaLabel = faved ? t("favBtnAriaRemove", spotName) : t("favBtnAriaAdd", spotName);
   const cls = size === "lg" ? "spot-icon-btn spot-fav-btn spot-fav-btn-lg" : "spot-icon-btn spot-fav-btn";
   const iconPath = faved
@@ -2279,7 +2313,7 @@ function favoriteButtonHTML(spotId, faved, size = "sm") {
 }
 function stampIconButtonHTML(spotId, got, size = "sm") {
   const spot = findSpotById(spotId);
-  const spotName = spot?.[lang]?.name || spotId;
+  const spotName = spotCopy(spot).name || spotId;
   const ariaLabel = got ? t("spotBtnAriaRemove", spotName) : t("spotBtnAriaAdd", spotName);
   const cls = size === "lg" ? "spot-icon-btn spot-stamp-btn spot-stamp-btn-lg" : "spot-icon-btn spot-stamp-btn";
   const iconMarkup = got
@@ -2313,14 +2347,14 @@ function renderStampboard() {
       <span class="s-icon stampboard-icon">
         <img class="stampboard-image${stamps[sp.id] ? "" : " is-uncollected"}" src="images/stamps/stamp_${sp.stampAssetId || sp.id}.svg" alt="" width="36" height="36" loading="lazy" decoding="async" onerror="this.hidden=true;this.nextElementSibling.hidden=false"><span class="stampboard-fallback" hidden>${sp.icon}</span>
       </span>
-      <span class="s-name">${sp[lang].name}</span>
+      <span class="s-name">${spotCopy(sp).name}</span>
     </button>`).join("")}
     </div>`;
   bindSpotEvents(board);
 }
 
 function stampDetailHTML(selected) {
-  const L = selected[lang] || selected.ja;
+  const L = spotCopy(selected);
   const got = Boolean(stamps[selected.id]);
   const media = spotMediaItems(selected)[0] || null;
   const stampVisual = selected.is727Collection
@@ -2561,7 +2595,7 @@ function renderGallery() {
   }
   grid.innerHTML = visibleSpots
       .map((sp) => {
-        const L = sp[lang];
+        const L = spotCopy(sp);
         const featuredMedia = preferredSpotMedia(sp, activeTimeOfDayFilter());
         const media = featuredMedia
           ? spotMediaFigureHTML({ ...featuredMedia, creditHTML: featuredMedia.creditHTML.replace(/<span class="photo-note">.*?<\/span>/g, "") }, "gal-photo")

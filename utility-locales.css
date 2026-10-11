@@ -1,0 +1,6 @@
+/* Retain the shared chrome while allowing the longer translated labels to wrap. */
+@import url('article-locales.css');
+[data-utility-localized] .topbar, [data-utility-localized] .top-nav { flex-wrap: wrap; }
+[data-utility-localized] .top-nav { min-width: 0; }
+[data-utility-localized] h1, [data-utility-localized] h2, [data-utility-localized] h3 { overflow-wrap: anywhere; }
+.utility-audio-note { font-size: .85rem; color: var(--muted, #52616b); }

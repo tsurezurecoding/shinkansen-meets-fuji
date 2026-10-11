@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './shared/castle-localization.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES, withArticleLocales } from './shared/castle-locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
+import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
@@ -64,7 +65,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       const url = new URL(href, `${origin}/en/${route}`);
       let target = url.pathname.slice(1).replace(/^en\//, '');
       if (target === 'spots/hamanako-fuji.html') { target = 'spots/hamanako.html'; url.hash = 'hamanako-fuji'; }
-      if (CASTLE_LOCALE_ROUTES.includes(target) || target === 'guide.html') {
+      if (CASTLE_LOCALE_ROUTES.includes(target) || UTILITY_ROUTES.includes(target.replace(/^live\/$/, 'live/index.html')) || target === 'guide.html') {
         el.setAttribute('href', prefix + lang + '/' + target + url.search + url.hash);
       } else if (url.pathname.startsWith('/en/') && !el.closest('.lang-switch')) {
         el.setAttribute('href', prefix + 'en/' + target + url.search + url.hash);
