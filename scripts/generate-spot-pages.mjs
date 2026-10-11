@@ -1259,7 +1259,7 @@ function localizeEnglishInternalLinks(html) {
 
 function englishLandingHTML() {
   const title = "Mt. Fuji & More: Tokaido Shinkansen Window Views | Shinkansen Window";
-  const description = `Explore Mt. Fuji, castles, farmland and lakes from the Tokaido Shinkansen. Choose your train for estimated viewing times and find which side to look.`;
+  const description = `Discover Mt. Fuji, castles, farmland, lakes and glimpses of Kyoto from the Tokaido Shinkansen. Explore the photo guides and find viewing times for your train.`;
   const handoff = '<script>(function(){var p=location.pathname.replace(/\\/+$/,"/"),h=location.hash,j=(p==="/en/"||p==="/en/index.html")&&(h==="#journey"||h.indexOf("#spot-")===0);if(j){var q=new URLSearchParams(location.search),r=q.get("lang"),s;try{s=localStorage.getItem("mado-lang")}catch(e){}var t="../en/start.html";if(r==="ja"){try{localStorage.setItem("mado-lang","ja")}catch(e){}t="../start.html"}else if(r==="en"||s==="en"){try{localStorage.setItem("mado-lang","en")}catch(e){}}var u=new URL(t,location.href);u.search=location.search;u.hash=location.hash;location.replace(u.href);return}})();</script>';
   const jsonLd = {
     "@context": "https://schema.org",
@@ -1580,8 +1580,8 @@ function englishLandingHTML() {
 }
 
 function englishAppIndexHTML() {
-  const title = "Tokaido Shinkansen Train Search: Mt. Fuji & Window Viewing Times";
-  const description = "Choose your Nozomi, Hikari or Kodama train to see estimated viewing times and seat sides for Mt. Fuji, castles, lakes and other Tokaido Shinkansen sights.";
+  const title = "Tokaido Shinkansen Train Search: Estimated Viewing Times";
+  const description = "Choose your Nozomi, Hikari or Kodama to calculate estimated viewing times for Mt. Fuji, castles, lakes and more from the timetable. Plan when to look before you board.";
   const selectorCopy = [
     ['<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">通過時刻を</span><span class="copy-chunk">乗る列車に合わせて</span>', "Mt. Fuji, lakes and more. Find viewing times for your train."],
     ['<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>', "Choose your direction, boarding station and departure time."],
