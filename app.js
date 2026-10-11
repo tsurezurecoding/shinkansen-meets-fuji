@@ -20,7 +20,7 @@ const MSG = {
     navMore: "もっと見る", navMieru: "富士山 見える予報", navArtworks: "車窓の作品集", navSumie: "墨絵車窓", navSomato: "車窓走馬灯", navRefs: "リンク集", navLp: "新幹線の窓とは", navContact: "お問い合わせ", navPrivacy: "プライバシーポリシー",
     quickModalTitle: "新幹線の窓とは？",
     quickModalClose: "閉じる",
-    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">通過時刻を</span><span class="copy-chunk">乗る列車に合わせて</span>',
+    setupEyebrow: "YOUR JOURNEY", setupTitle: '<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">見える時間を</span><span class="copy-chunk">乗る列車に合わせて</span>',
     setupSub: '<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>',
     trainLinkInvalid: "リンクの列車を確認できませんでした。方向・乗車駅・出発時刻から、乗る列車を選び直してください。",
     fujiAnswerTitle: "富士山の通過目安",

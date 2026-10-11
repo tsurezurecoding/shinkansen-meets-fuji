@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3ef6e28eaf78648b",
+  "contentVersion": "90a8d5e87b8afb2e",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -31,8 +31,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 146441,
-      "sha256": "50cef9b35245761cb900254666efe5716c8a255cc0b13ab7b0ff0cb7a84d0347"
+      "bytes": 146444,
+      "sha256": "526a371386f026e1ab369ee1055307dc6f540e145ae260a09085c5ce73d56147"
     },
     {
       "path": "arenani.css",
@@ -91,8 +91,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 760067,
-      "sha256": "8bfc59795018065077bb8acef299af482682b14d8154fe4889c34dd2d383870b"
+      "bytes": 760040,
+      "sha256": "478cf3bd87254ee702bfb794e1f17f8baf8b16d862d5fa77e8a10e5134039c5f"
     },
     {
       "path": "data/beer-photo-sources.json",
@@ -986,7 +986,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 18944,
-      "sha256": "920b41bf35b1959f67a349b57607b222f384f9a4f14391c2e957386b8ecaf003"
+      "sha256": "9b5f107762b98be221d07e5f8c0f5f91c6d403d07339caef85fdf82944478385"
     },
     {
       "path": "live/narration.js",
