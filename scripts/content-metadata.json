@@ -486,7 +486,7 @@
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
     "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update; 2026-10-11_station-feature-release.md: one English chapter-end station architecture link after the Tokyo Station photograph"
   },
   "spots/fuji-paper-mills.html": {
     "kind": "editorial article",
@@ -701,5 +701,24 @@
     "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update",
     "published": "2026-10-11",
     "publishedEvidence": "2026-10-11_ride-editorial-release.md: first public release of the new Shiraitogawa Bridge and Maibara test-train pages"
+  },
+  "en/tokyo-kyoto-stations.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-11",
+    "publishedEvidence": "2026-10-11_station-feature-release.md: owner approved station article and quiet spot-page entrance",
+    "modified": "2026-10-11",
+    "modifiedEvidence": "Approved three-chapter prototype 1012124 / 88be23a; first product publication",
+    "image": "images/stations/tokyo-station-marunouchi-kakidai.jpg",
+    "imageRights": "permission",
+    "imageCredit": "Kakidai / CC BY-SA 4.0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Tokyo_Station_Marunouchi_Building.jpg",
+    "imagePermissionEvidence": "CC BY-SA 4.0, verified 2026-10-11; CP-0236; attribution, licence and CSS crop disclosure retained",
+    "imagePermissions": [
+      "og",
+      "article"
+    ],
+    "imageEvidence": "data/station-photo-sources.json facade / CP-0236",
+    "imageAlt": "Tokyo Station’s red-brick Marunouchi facade and two domes"
   }
 }
