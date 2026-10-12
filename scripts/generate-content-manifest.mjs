@@ -17,6 +17,8 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "images/og-window-trip.png", "window-trip.html", "window-trip.js", "window-trip.css", "window-trip-base.css", "window-trip-stage.js", "window-trip-data.js", "window-trip-map.js", "data/window-trip-photo-sources.json",
+  ...await walkFiles("window-trip-assets", p => /\.png$/.test(p)),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => `${lang}/${route}`)),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => [...UTILITY_ROUTES.map(route => `${lang}/${route}`), `${lang}/utility-data.js`]),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => [...EXTRA_LOCALE_ROUTES.map(route => `${lang}/${route}`), `${lang}/sparkling-data.js`]),
@@ -145,6 +147,12 @@ const contentFiles = [
   "vendor/leaflet/leaflet.css",
   "vendor/leaflet/leaflet.js",
 ];
+
+// Offline journeys need every original selected by the registered photo plan.
+const tripPhotos = JSON.parse(await readFile(path.join(appRoot, "data/window-trip-photo-sources.json"), "utf8")).photos;
+for (const { src } of tripPhotos) {
+  if (!contentFiles.includes(src)) contentFiles.push(src);
+}
 
 // contentVersion は files の並び順に依存するため、宣言順ではなくパスの昇順で正規化する。
 // これで「配列のどこへ足したか」で contentVersion が変わることがなくなる。

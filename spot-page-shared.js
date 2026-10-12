@@ -240,6 +240,8 @@
 
   // ユーティリティ（スポット以外）で共通chromeを使うページ。en: 英語版が存在するか
   var UTILITY_ROUTES = {
+    // Japanese-only interactive artwork; other language editions are a separate task.
+    "window-trip.html": { en: false },
     "window-artworks.html": { en: true },
     "spots/himeji-castle.html": { en: true },
     "spots/okayama-castle.html": { en: true },
@@ -1019,7 +1021,9 @@
         return;
       }
       if (document.body.getAttribute("data-spot-page-shared-context") === "utility") {
-        hosts = [findHost("topbar"), findHost("rail"), findHost("content-rail")];
+        // Full-width artworks use the common header and content rail without a side timeline.
+        var wideUtility = document.body.getAttribute("data-spot-page-shared-layout") === "wide";
+        hosts = [findHost("topbar"), wideUtility ? findOptionalHost("rail") : findHost("rail"), findHost("content-rail")];
         var mobilePromosHost = findOptionalHost("mobile-promos");
         if (mobilePromosHost) hosts.push(mobilePromosHost);
         var utilityShowcaseHost = findOptionalHost("showcase");
@@ -1036,7 +1040,7 @@
           return;
         }
         hosts[0].outerHTML = siteHeaderHTML(utilityRoot, utilityLang, "", utilityRoute, UTILITY_ROUTES[utilityRoute].en);
-        hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/", utilityRoute);
+        if (hosts[1]) hosts[1].outerHTML = railHTML(utilityData, utilityRoot, utilityLang, "", basePath(utilityRoot, utilityLang) + "spots/", utilityRoute);
         hosts[2].outerHTML = contentRailHTML(utilityRoot, utilityLang);
         if (mobilePromosHost) mobilePromosHost.outerHTML = mobilePromosHTML(utilityRoot, utilityLang, utilityRoute, collection727Count(utilityData));
         if (utilityShowcaseHost) utilityShowcaseHost.outerHTML = showcaseHTML(utilityData, utilityRoot, utilityLang);

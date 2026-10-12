@@ -1,0 +1,1662 @@
+{
+  "reviewed": "2026-10-12",
+  "counts": {
+    "scenery": 54,
+    "boards": 23,
+    "dayScenery": 53,
+    "nightScenery": 15
+  },
+  "coverage": [
+    {
+      "id": "edo-castle-fujimi-yagura",
+      "state": "included",
+      "representativeIds": [
+        "edo-castle-fujimi-yagura"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kaguya-no-akari",
+      "state": "included",
+      "representativeIds": [
+        "kaguya-no-akari"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "tokyo-tower",
+      "state": "included",
+      "representativeIds": [
+        "tokyo-tower"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "hinataoka",
+      "state": "included",
+      "representativeIds": [
+        "hinataoka"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "ota-fuji",
+      "state": "excluded",
+      "representativeIds": [],
+      "reason": "今回の旅は自前の実車窓写真を使っています。この地点の自前写真は未収録。"
+    },
+    {
+      "id": "maruko-bridge",
+      "state": "included",
+      "representativeIds": [
+        "maruko-bridge"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "musashi-kosugi-towers",
+      "state": "included",
+      "representativeIds": [
+        "musashi-kosugi-towers"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "putiputi-sign",
+      "state": "included",
+      "representativeIds": [
+        "putiputi-sign"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "727-sign",
+      "state": "alias",
+      "representativeIds": [
+        "727-no-20",
+        "727-no-21"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "727-board",
+      "state": "alias",
+      "representativeIds": [
+        "727-no-19"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "sagami-fuji",
+      "state": "included",
+      "representativeIds": [
+        "sagami-fuji"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "odawara",
+      "state": "included",
+      "representativeIds": [
+        "odawara"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "odawara-castle",
+      "state": "included",
+      "representativeIds": [
+        "odawara-castle"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "gyoran-kannon",
+      "state": "included",
+      "representativeIds": [
+        "gyoran-kannon"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "mishima-catapult",
+      "state": "included",
+      "representativeIds": [
+        "mishima-catapult"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "fuji-pipe-sign",
+      "state": "included",
+      "representativeIds": [
+        "fuji-pipe-sign"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "fuji",
+      "state": "included",
+      "representativeIds": [
+        "fuji"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "fuji-bus-sales",
+      "state": "included",
+      "representativeIds": [
+        "fuji-bus-sales"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "fuji-paper-mills",
+      "state": "included",
+      "representativeIds": [
+        "fuji-paper-mills"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "fujikawa-bridge",
+      "state": "included",
+      "representativeIds": [
+        "fujikawa-bridge"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "left-fuji",
+      "state": "included",
+      "representativeIds": [
+        "left-fuji"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "shimizu-port-chikyu",
+      "state": "included",
+      "representativeIds": [
+        "shimizu-port-chikyu"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "granship",
+      "state": "included",
+      "representativeIds": [
+        "granship"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "sapporo-shizuoka-factory",
+      "state": "included",
+      "representativeIds": [
+        "sapporo-shizuoka-factory"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "shizuoka-tea-fields",
+      "state": "included",
+      "representativeIds": [
+        "shizuoka-tea-fields"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kakegawa",
+      "state": "included",
+      "representativeIds": [
+        "kakegawa"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "pocari-fukuroi",
+      "state": "included",
+      "representativeIds": [
+        "pocari-fukuroi"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "genki-sign",
+      "state": "excluded",
+      "representativeIds": [],
+      "reason": "収録写真は夕暮れ。昼夜の旅へは混ぜません。"
+    },
+    {
+      "id": "hamanako",
+      "state": "included",
+      "representativeIds": [
+        "hamanako"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "hamanako-fuji",
+      "state": "included",
+      "representativeIds": [
+        "hamanako-fuji"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "toyohashi-tateiwa",
+      "state": "included",
+      "representativeIds": [
+        "toyohashi-tateiwa"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "mikawa-oshima",
+      "state": "included",
+      "representativeIds": [
+        "mikawa-oshima"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "gamagori-greenhouses",
+      "state": "included",
+      "representativeIds": [
+        "gamagori-greenhouses"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "nichiban-anjo",
+      "state": "included",
+      "representativeIds": [
+        "nichiban-anjo"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "nagoya-station-skyline",
+      "state": "included",
+      "representativeIds": [
+        "nagoya-station-skyline"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kirin-beer-factory",
+      "state": "included",
+      "representativeIds": [
+        "kirin-beer-factory"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kiyosu",
+      "state": "included",
+      "representativeIds": [
+        "kiyosu"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "solar-ark",
+      "state": "included",
+      "representativeIds": [
+        "solar-ark"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "gifu-hashima-mahalo",
+      "state": "included",
+      "representativeIds": [
+        "gifu-hashima-mahalo"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "gifu-castle",
+      "state": "included",
+      "representativeIds": [
+        "gifu-castle"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kinshozan",
+      "state": "included",
+      "representativeIds": [
+        "kinshozan"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "ibuki",
+      "state": "included",
+      "representativeIds": [
+        "ibuki"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "ibuki-seat-a",
+      "state": "included",
+      "representativeIds": [
+        "ibuki-seat-a"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "sennenq-sign",
+      "state": "included",
+      "representativeIds": [
+        "sennenq-sign"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "fujitec-big-wing",
+      "state": "included",
+      "representativeIds": [
+        "fujitec-big-wing"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "nangu-taisha",
+      "state": "included",
+      "representativeIds": [
+        "nangu-taisha"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "sawayama-castle",
+      "state": "included",
+      "representativeIds": [
+        "sawayama-castle"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "hikone-castle",
+      "state": "included",
+      "representativeIds": [
+        "hikone-castle"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "lotte-shiga",
+      "state": "included",
+      "representativeIds": [
+        "lotte-shiga"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "kannonji-castle",
+      "state": "included",
+      "representativeIds": [
+        "kannonji-castle"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "omi-fuji",
+      "state": "included",
+      "representativeIds": [
+        "omi-fuji"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "seta-karahashi",
+      "state": "included",
+      "representativeIds": [
+        "seta-karahashi"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "toji",
+      "state": "included",
+      "representativeIds": [
+        "toji"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "rakusai-egg-tanks",
+      "state": "included",
+      "representativeIds": [
+        "rakusai-egg-tanks"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "hirakata-park-wheel",
+      "state": "included",
+      "representativeIds": [
+        "hirakata-park-wheel"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "torikai-train-depot",
+      "state": "included",
+      "representativeIds": [
+        "torikai-train-depot"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "shiraitogawa-bridge",
+      "state": "included",
+      "representativeIds": [
+        "shiraitogawa-bridge"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "maibara-test-trains",
+      "state": "included",
+      "representativeIds": [
+        "maibara-test-trains"
+      ],
+      "reason": ""
+    }
+  ],
+  "photos": [
+    {
+      "stopId": "edo-castle-fujimi-yagura",
+      "kind": "scenery",
+      "src": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "",
+      "alt": "江戸城の富士見櫓の車窓",
+      "light": "day",
+      "sha256": "94684b97089f79f35dedc2ae5b8337545007e52a1c5c5dce79102ffdf39921e2",
+      "bytes": 543938,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kaguya-no-akari",
+      "kind": "scenery",
+      "src": "images/20260924_kaguya-no-akari_28703_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "住宅地の屋根越しに、竹をイメージした塔の全体像が見えます。",
+      "alt": "かぐやの灯の車窓",
+      "light": "day",
+      "sha256": "e1506848d9aa32fccda54e4fc337f9ae89353cfd21ae4de3695f65092ddc2d37",
+      "bytes": 311627,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "tokyo-tower",
+      "kind": "scenery",
+      "src": "images/20260629_tokyo_tower_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜の街に、東京タワー",
+      "alt": "夜の新幹線から見える東京タワー",
+      "light": "night",
+      "sha256": "d8061e37861f3eae5b6fa98e5634f994449389574398da2df5099b9e233ffeeb",
+      "bytes": 86155,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hinataoka",
+      "kind": "scenery",
+      "src": "images/20260530_hinataoka_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "カラフルな三角屋根が並ぶ「日向岡住宅」",
+      "alt": "新幹線のE席側から見える日向岡の住宅地",
+      "light": "day",
+      "sha256": "9d015e7fc47aee2bdd0e89453fcc34a897669de34addf3cb5862becbaac64150",
+      "bytes": 568321,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "maruko-bridge",
+      "kind": "scenery",
+      "src": "images/20260704_maruko_bridge_1_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "新幹線から見える丸子橋の全景",
+      "alt": "新幹線のE席側から見える丸子橋",
+      "light": "day",
+      "sha256": "4854b5b9a5178cfd718581865943550bf651b2c58e2d4a4c66dc51fa830db58c",
+      "bytes": 297892,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "maruko-bridge",
+      "kind": "scenery",
+      "src": "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜の多摩川に続く橋の灯り",
+      "alt": "夜の新幹線から見える丸子橋付近",
+      "light": "night",
+      "sha256": "80c52909e141206851142ee3a7945a17f3077b2cbf7ca62fe5f066932014009e",
+      "bytes": 116896,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "musashi-kosugi-towers",
+      "kind": "scenery",
+      "src": "images/20260804_musashi_kosugi_towers_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-04",
+      "note": "青空に映える武蔵小杉のタワマン群",
+      "alt": "武蔵小杉のタワマン群の車窓",
+      "light": "day",
+      "sha256": "ce7e1557eafabf3b4a92044389f44f1385ad62b55d54aae04e10fe30be40f73f",
+      "bytes": 397809,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "musashi-kosugi-towers",
+      "kind": "scenery",
+      "src": "images/20260629_musashi_kosugi_towers_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜は窓明かりが積み重なる街並みに変わる",
+      "alt": "夜の新幹線から見える武蔵小杉のタワマン群",
+      "light": "night",
+      "sha256": "2912c2084219e3ba8226cff52af70e924f635613c7d9f006247ca94b96e43653",
+      "bytes": 79419,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "putiputi-sign",
+      "kind": "scenery",
+      "src": "images/20260704_putiputi_sign_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "のぞみ27号・A席側、東京11:12発、11:41撮影。2026年7月時点の謎看板",
+      "alt": "プチプチの看板の車窓",
+      "light": "day",
+      "sha256": "55188ac9d66421f115c8c156a71d80f2d3ca366e729a680b649520ae4051673a",
+      "bytes": 36303,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "sagami-fuji",
+      "kind": "scenery",
+      "src": "images/20260530_sagami_fuji_samukawa_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "丹沢・箱根の山なみの奥に富士山",
+      "alt": "寒川町付近から見える相模平野越しの富士山",
+      "light": "day",
+      "sha256": "1daed0ea451dfce525c1f0fe07fdd0161acc1ded1a4a666db6b6af7d9e5c1735",
+      "bytes": 93081,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "odawara",
+      "kind": "scenery",
+      "src": "images/20260804_atami_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-04",
+      "note": "朝の光にひらく熱海の海",
+      "alt": "熱海と初島の車窓",
+      "light": "day",
+      "sha256": "af464c5059ffd62a68b56010f33d6bcf4b767c34110e32f6da3f5a099923d83a",
+      "bytes": 284042,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "odawara-castle",
+      "kind": "scenery",
+      "src": "images/20260820_odawara_castle_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "2026-08-20 · 品川06:00発のぞみ99号で06:24撮影",
+      "alt": "朝のA席側、街並みの奥に立つ小田原城の天守",
+      "light": "day",
+      "sha256": "8ab605aa2ca201ab84f97b2d6c6096c3c9bfb9452d161cef7a318416732fa995",
+      "bytes": 302754,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "gyoran-kannon",
+      "kind": "scenery",
+      "src": "images/20260924_gyoran-kannon_48143_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "朝の魚籃観音像",
+      "alt": "朝の魚籃観音像",
+      "light": "day",
+      "sha256": "bebfc73c873f8e7f0dcf26a2c42ff573bd5b3693644a89cdcb178923763ff1e7",
+      "bytes": 244920,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "mishima-catapult",
+      "kind": "scenery",
+      "src": "images/20260904_mishima_catapult_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-04",
+      "note": "",
+      "alt": "三島車両所の着発線と周辺の車窓",
+      "light": "day",
+      "sha256": "6a0d7510ece89e5570328ff1c526bba2bdd438223af002a46c9d05343227bcd4",
+      "bytes": 253753,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "fuji-pipe-sign",
+      "kind": "scenery",
+      "src": "images/20260804_fujipipe_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-04",
+      "note": "街並みに映えるカラフルな屋上広告",
+      "alt": "フジパイプの車窓",
+      "light": "day",
+      "sha256": "f7cbf23ea72cc8e5ecc20358069eb02f04a1867d6b21cfb99cad47a3b80f326a",
+      "bytes": 228838,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "fuji",
+      "kind": "scenery",
+      "src": "images/20240211_fuji_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2024-02-11",
+      "note": "雪化粧の富士山はいつ見ても美しい",
+      "alt": "新幹線のE席側から見える富士山",
+      "light": "day",
+      "sha256": "ece7c5ccf60886a7cbb45b233c082a8f1d843a7a1ca38cfcf0b888f432df20f2",
+      "bytes": 483510,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "fuji-bus-sales",
+      "kind": "scenery",
+      "src": "images/20260919_fuji_bus_sales_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-19",
+      "note": "新幹線から見下ろすバスの列",
+      "alt": "富士バス販売の展示場に並ぶ白い中古バス",
+      "light": "day",
+      "sha256": "f9893e99eda1d4bc143e8cf397731a8063dd26485834b45114c379bd5ad84fca",
+      "bytes": 406177,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "fuji-paper-mills",
+      "kind": "scenery",
+      "src": "images/20260904_fuji_paper_mills_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-04",
+      "note": "蒸気を上げる製紙工場と富士山",
+      "alt": "製紙工場の煙突越しに見える富士山",
+      "light": "day",
+      "sha256": "e4b339c5fac33bec80c460ab41e2aec8cf342c79b88afa9487ddf48cf535c967",
+      "bytes": 265111,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "fujikawa-bridge",
+      "kind": "scenery",
+      "src": "images/20260924_fujikawa-bridge_21859_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "富士川橋梁から眺める水管橋と富士山",
+      "alt": "富士川橋梁から眺める水管橋と富士山",
+      "light": "day",
+      "sha256": "b102def435de250594baf34ffc9119684cc8da7e01402979d08c6d2f51c53f4c",
+      "bytes": 313065,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "left-fuji",
+      "kind": "scenery",
+      "src": "images/20260513_left_fuji.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-13",
+      "note": "雪がないと見つけるのがさらに大変。",
+      "alt": "新幹線のA席側から見える左富士",
+      "light": "day",
+      "sha256": "2186ce153bec8056b1b8116912c4ad7f603ad95bffa6c4bec7c1a349bc020ae8",
+      "bytes": 138007,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "shimizu-port-chikyu",
+      "kind": "scenery",
+      "src": "images/20260924_shimizu-port-chikyu_43876_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "朝の清水港に停泊する「ちきゅう」",
+      "alt": "朝の清水港に停泊する「ちきゅう」",
+      "light": "day",
+      "sha256": "671c7f3ff478ce162eaf933797ed94dc575a73be70b76608cb73eb81b91e300b",
+      "bytes": 197132,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "shimizu-port-chikyu",
+      "kind": "scenery",
+      "src": "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜の港に、ちきゅう",
+      "alt": "夜の新幹線から見える清水港とちきゅう",
+      "light": "night",
+      "sha256": "047005ca3df320e904d9cedf073889d3f12b22964829a86b7da6b255b62b1852",
+      "bytes": 143492,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "granship",
+      "kind": "scenery",
+      "src": "images/20260816_granship_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "東静岡駅を過ぎてすぐ、線路脇に迫るグランシップ。",
+      "alt": "新幹線のA席側から見たグランシップの銀色の外観",
+      "light": "day",
+      "sha256": "a9c54da66e1944035d3a6e705bec4f4d2b2df2725edda4ffd9d1cdcf719a71f7",
+      "bytes": 371733,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "sapporo-shizuoka-factory",
+      "kind": "scenery",
+      "src": "images/20260904_sapporo_shizuoka_factory_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-04",
+      "note": "焼津付近、A席から見たタンク列",
+      "alt": "サッポロビール静岡工場の車窓",
+      "light": "day",
+      "sha256": "f41e81aac6a09e6c5c6c35aa2388a42d2a56ad3bb73986afbecb50b2b15067d2",
+      "bytes": 201681,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "shizuoka-tea-fields",
+      "kind": "scenery",
+      "src": "images/20260530_shizuoka_tea_fields_1_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "E席側に広がる新緑の茶畑。畝の間には防霜ファンも立つ",
+      "alt": "静岡の茶畑の車窓",
+      "light": "day",
+      "sha256": "9d4c925d8dccbd230fe8cb729e2d7291911712f7cd13e640c712a45e65153990",
+      "bytes": 462794,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kakegawa",
+      "kind": "scenery",
+      "src": "images/20260530_kakegawa_castle.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "",
+      "alt": "新幹線のE席側から見える掛川城",
+      "light": "day",
+      "sha256": "47638517b06103680ebd4666e9341e9136d49393b24d70efff8daeb65512165f",
+      "bytes": 390248,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kakegawa",
+      "kind": "scenery",
+      "src": "images/20260911_kakegawa_castle_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-11",
+      "note": "夜の街並みの奥に、白い天守が浮かぶ",
+      "alt": "夜の車窓からライトアップされて見える掛川城の天守",
+      "light": "night",
+      "sha256": "617268218a36ff27bf86d0e954ec4f294644d4289a029c806551e293266e34e2",
+      "bytes": 35604,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "pocari-fukuroi",
+      "kind": "scenery",
+      "src": "images/20260919_pocari-fukuroi_150379_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-19",
+      "note": "芝の斜面の上に、青い外壁と「POCARI SWEAT」の文字が見えます。",
+      "alt": "大塚製薬のポカリスエット工場の車窓",
+      "light": "day",
+      "sha256": "97879a902d974eeea408e2d2eac575eb19ce1681ab64035bf10efd4998a487bb",
+      "bytes": 334330,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hamanako",
+      "kind": "scenery",
+      "src": "images/20260530_hamanako.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "E席（山側）から見える浜名湖",
+      "alt": "新幹線のE席側から見える浜名湖",
+      "light": "day",
+      "sha256": "f0e709c52b0f6f781dae258f0d36160e87279e926e74c322fc47736b0d194eba",
+      "bytes": 181238,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hamanako-fuji",
+      "kind": "scenery",
+      "src": "images/20260924_hamanako-fuji_88188_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "浜名湖越しに小さく見える朝の富士山",
+      "alt": "浜名湖越しに小さく見える朝の富士山",
+      "light": "day",
+      "sha256": "94e8f332253d25232b2af428d0ab5afeb8c9e42d5ef0ab6c895df59e65d4a08a",
+      "bytes": 225453,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "toyohashi-tateiwa",
+      "kind": "scenery",
+      "src": "images/20260628_toyohashi_tateiwa_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-28",
+      "note": "",
+      "alt": "車窓から見える豊橋の立岩",
+      "light": "day",
+      "sha256": "f1fc1471d71bd5119812c2666eb118275907163219cd8a8f49fdf3498081edab",
+      "bytes": 207855,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "mikawa-oshima",
+      "kind": "scenery",
+      "src": "images/20260820_mikawa_oshima_1_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "2026-08-20 · 品川06:00発のぞみ99号で07:13撮影",
+      "alt": "朝の三河湾に浮かぶ三河大島と、手前を走る貨物列車",
+      "light": "day",
+      "sha256": "ceaf06904fca260d70f08faba75e0e45383e90647cc6fbe30cd0a52f0644bfeb",
+      "bytes": 282610,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "gamagori-greenhouses",
+      "kind": "scenery",
+      "src": "images/20260924_gamagori-greenhouses_19169_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "蒲郡市神ノ郷町付近、山すそを埋めるハウスと「蒲郡みかん」の看板。",
+      "alt": "豊橋〜蒲郡のビニールハウスの車窓",
+      "light": "day",
+      "sha256": "926ea2dd9d57039ef0a48b6da3587744100c78b43ced0b50696e3553c026dd71",
+      "bytes": 453128,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "nichiban-anjo",
+      "kind": "scenery",
+      "src": "images/20260704_nichiban_anjo_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "セロテープの色帯が工場壁面の目印",
+      "alt": "新幹線のE席側から見えるニチバン安城工場",
+      "light": "day",
+      "sha256": "95d97578f4ce54851deb4c2fffbdbc95d6439b6cf1d9b7062a28f7d7a5e394d2",
+      "bytes": 247341,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "nichiban-anjo",
+      "kind": "scenery",
+      "src": "images/20260629_nichiban_anjo_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜に浮かぶセロテープ広告",
+      "alt": "夜の新幹線から見えるセロテープの壁看板",
+      "light": "night",
+      "sha256": "e0403029d0e0d4c8f6f3181f8b9c587385b207639d5b5be2986288d3aee83e23",
+      "bytes": 30309,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "nagoya-station-skyline",
+      "kind": "scenery",
+      "src": "images/20260816_nagoya_station_skyline_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "駅に近づくと、ビルが窓いっぱいに立ち上がる",
+      "alt": "新幹線から見上げる名古屋駅前の高層ビル",
+      "light": "day",
+      "sha256": "760788b62681aea75f57d8a98d7fabac04035823e1697a2220c67438a4650451",
+      "bytes": 3780329,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "nagoya-station-skyline",
+      "kind": "scenery",
+      "src": "images/20260629_2158_nagoya_station_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜の名古屋到着前、駅前の光が近づく",
+      "alt": "夜の新幹線から見える名古屋駅前",
+      "light": "night",
+      "sha256": "cca2ca04bbe91615df0fa27e5e106c4481e2b8af1689e80fb0b36d71ffcc2778",
+      "bytes": 207222,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kirin-beer-factory",
+      "kind": "scenery",
+      "src": "images/20260629_kirin_beer_factory_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "朝の光で銀色のタンク列が見分けやすい写真",
+      "alt": "朝の新幹線から見えるキリンビール名古屋工場",
+      "light": "day",
+      "sha256": "ab5077ddea39b7019df5e70d47125f62e20e09fdd5e517632ee2a2d83f17e6f5",
+      "bytes": 384086,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kiyosu",
+      "kind": "scenery",
+      "src": "images/20260530_kiyosu_castle.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "",
+      "alt": "新幹線のE席側から見える清洲城",
+      "light": "day",
+      "sha256": "d6ea4d5984dade5e00e894c7237fe2ebcc7e0e293e712c8c7c529cf041576e10",
+      "bytes": 243876,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kiyosu",
+      "kind": "scenery",
+      "src": "images/20260906_kiyosu_castle_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-06",
+      "note": "線路脇の夜景に白い天守が浮かぶ",
+      "alt": "夜の車窓にライトアップされて浮かぶ清洲城",
+      "light": "night",
+      "sha256": "9cceee2d93ec45dde18b5c18c2975322b5bc5002324a8314dcee4908043d8025",
+      "bytes": 130650,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "solar-ark",
+      "kind": "scenery",
+      "src": "images/20260530_solar_ark.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "青空に映えるソーラーアーク",
+      "alt": "ソーラーアークの車窓",
+      "light": "day",
+      "sha256": "4ff439b9c7b227d4ffce381bc770c310ea946f4d25cd002c02d93be2af00e758",
+      "bytes": 280165,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "gifu-hashima-mahalo",
+      "kind": "scenery",
+      "src": "images/20260904_gifu_hashima_mahalo_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-04",
+      "note": "車窓に流れる「こんなおいしい水があったのだろうか？」",
+      "alt": "岐阜羽島駅付近に見えるマハロ看板",
+      "light": "day",
+      "sha256": "333f3638f1aab84a06e116af0dc268ea643218f6ce92d9bfa8fe98b9d66deac5",
+      "bytes": 260758,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "gifu-castle",
+      "kind": "scenery",
+      "src": "images/20260712_gifu_castle_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-12",
+      "note": "橋の向こう、金華山の上に小さく写る岐阜城",
+      "alt": "岐阜城の車窓",
+      "light": "day",
+      "sha256": "4349bfe841924db46f4eeb348a209ec954a7865694dda7f668cada18dacfbef9",
+      "bytes": 200837,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kinshozan",
+      "kind": "scenery",
+      "src": "images/20260704_kinshozan_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "のぞみ27号、東京11:12発、13:00撮影",
+      "alt": "金生山の車窓",
+      "light": "day",
+      "sha256": "5fcc86adbeef476c185e072354fd897c0407b327db4b1c855dacd4ff48b11ace",
+      "bytes": 46838,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "ibuki",
+      "kind": "scenery",
+      "src": "images/20260530_ibukiyama_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-05-30",
+      "note": "田園と街並みの向こうに、単独で盛り上がる姿",
+      "alt": "初夏、関ヶ原の街並み越しに横たわる伊吹山",
+      "light": "day",
+      "sha256": "d0bcef8fe5d7a7a57c4fe3b4a5fcc8f1ed85407f87d52bfaf31f99a0991ebdca",
+      "bytes": 336158,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "ibuki-seat-a",
+      "kind": "scenery",
+      "src": "images/20260816_ibuki-seat-a_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "A席側。写真左奥に採石跡の見える伊吹山",
+      "alt": "A席から見る伊吹山の車窓",
+      "light": "day",
+      "sha256": "f145a9b66923eed870e52f416d8f29daf77c681c103eee204ccf1071d60babc2",
+      "bytes": 4344718,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "sennenq-sign",
+      "kind": "scenery",
+      "src": "images/20260816_sennenq_sign_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "米原の先に見えるせんねん灸の看板",
+      "alt": "せんねん灸の看板の車窓",
+      "light": "day",
+      "sha256": "38de585cec123cd5bfd5b2ed105c274fdfbf904709a91afc5f7c9356d734548b",
+      "bytes": 385040,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "sennenq-sign",
+      "kind": "scenery",
+      "src": "images/20260911_sennenq_sign_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-11",
+      "note": "下り列車から。米原の手前で、赤い文字だけが闇に浮かぶ",
+      "alt": "夜の車窓に赤く光るせんねん灸の看板",
+      "light": "night",
+      "sha256": "a954dd6c38201a7ed6a42803988bc9ac5930d8cd783ac1c92a71778155cf4fec",
+      "bytes": 161436,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "fujitec-big-wing",
+      "kind": "scenery",
+      "src": "images/20260804_fujitec_big_wing_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-04",
+      "note": "高くそびえるエレベータ研究塔",
+      "alt": "高くそびえるフジテックのエレベータ研究塔",
+      "light": "day",
+      "sha256": "3c98344376626937fc07551daeffc8fed7f75f13a6a1de45c190b1fd2284da7e",
+      "bytes": 172845,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "nangu-taisha",
+      "kind": "scenery",
+      "src": "images/20260629_nangu_taisha_2_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "田園の向こうに見える大鳥居",
+      "alt": "新幹線のA席側から見える南宮大社の大鳥居",
+      "light": "day",
+      "sha256": "bbb8ed72b3f7b8bb1db55bfafe9c8b0fd09612d2104b6e96434dd77cb8e7c5f9",
+      "bytes": 96963,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hikone-castle",
+      "kind": "scenery",
+      "src": "images/20260924_hikone-castle_cp0170_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "朝の車窓、街の奥に見える彦根城",
+      "alt": "朝の車窓、街の奥に見える彦根城",
+      "light": "day",
+      "sha256": "7d8e557b1fb58bf141db6ca7384e8319b3ed007fe965948ab2a6a40d0f2b6f25",
+      "bytes": 139981,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hikone-castle",
+      "kind": "scenery",
+      "src": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-14",
+      "note": "夜の彦根城を車窓から探す",
+      "alt": "夜の彦根城を車窓から探す",
+      "light": "night",
+      "sha256": "8665b70e5dd50aae6675f0224aa45de85f26daf5182b70cfa5f600f9a012f6d0",
+      "bytes": 197211,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "lotte-shiga",
+      "kind": "scenery",
+      "src": "images/20260919_lotte-shiga_6845_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-19",
+      "note": "雪見だいふくの看板とロッテ滋賀工場",
+      "alt": "ロッテ滋賀工場の菓子看板の車窓",
+      "light": "day",
+      "sha256": "a571e28d662620b8b31333cdd0d4d63a0a5b3ade318776ca7464c4f4a5196a1d",
+      "bytes": 285194,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "lotte-shiga",
+      "kind": "scenery",
+      "src": "images/20260906_lotte_shiga_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-06",
+      "note": "夜も明るく浮かぶお菓子の看板",
+      "alt": "夜の車窓に流れるロッテ滋賀工場のお菓子看板",
+      "light": "night",
+      "sha256": "1bb6515a1b26b6738a231ad1c2e769f67db717016e49605e533154c08261aa0c",
+      "bytes": 142955,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "kannonji-castle",
+      "kind": "scenery",
+      "src": "images/20260712_kannonji_castle_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-12",
+      "note": "天守ではなく、繖山の山並みそのものを読む車窓",
+      "alt": "新幹線のE席側から見える観音寺城跡の山並み",
+      "light": "day",
+      "sha256": "513b357c9f8bdb719a93d46b43465384d24ec3c5e0a5d334781d74364150fb12",
+      "bytes": 285185,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "omi-fuji",
+      "kind": "scenery",
+      "src": "images/20260629_omi_fuji_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "田園の向こうの近江富士",
+      "alt": "新幹線のA席側から見える近江富士",
+      "light": "day",
+      "sha256": "e8122ccb7b56770b2f228d76ae09f59baaf79e406b9f4da62e3de4cf01b4cffd",
+      "bytes": 63363,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "seta-karahashi",
+      "kind": "scenery",
+      "src": "images/20260712_seta_karahashi_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-12",
+      "note": "京都到着前、川と橋が一瞬ひらく昼の車窓",
+      "alt": "新幹線のE席側から見える瀬田川と瀬田の唐橋付近",
+      "light": "day",
+      "sha256": "82bdfa72ea307719f8063015e1e60d777c6a64e8ca53c983525b783614ba55af",
+      "bytes": 230343,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "seta-karahashi",
+      "kind": "scenery",
+      "src": "images/20260629_2125_seta_karahashi_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜の瀬田川を渡る光",
+      "alt": "夜の新幹線から見える瀬田の唐橋付近",
+      "light": "night",
+      "sha256": "20a0289e717dc4189abb06bc9ce4f2314079cd76b9b68a1774b2a5c7770bfdcb",
+      "bytes": 160042,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "toji",
+      "kind": "scenery",
+      "src": "images/20260712_toji_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-12",
+      "note": "京都駅の前後で見える五重塔",
+      "alt": "新幹線のA席側から見える東寺 五重塔",
+      "light": "day",
+      "sha256": "33731641ed4e3da9372a6e0225fafd9b64e3de5ce8d939da67ac41882755b18c",
+      "bytes": 229892,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "toji",
+      "kind": "scenery",
+      "src": "images/20260906_toji_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-06",
+      "note": "暗い空を背に金色に光る五重塔",
+      "alt": "夜の京都に浮かぶ東寺の五重塔",
+      "light": "night",
+      "sha256": "470373bca6e15a8fa32fc66cc77e6e32a126c595dd0d9309bac412acd0e4b137",
+      "bytes": 192369,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "rakusai-egg-tanks",
+      "kind": "scenery",
+      "src": "images/20260919_rakusai_egg_tanks_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-19",
+      "note": "A席から見た二つの卵形タンク",
+      "alt": "洛西浄化センターの卵形タンクの車窓",
+      "light": "day",
+      "sha256": "bf955af346d8f1af1a2d7fd1d7d1ee4809c4bfcf9c827d5f13de67e3f46040b2",
+      "bytes": 97647,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hirakata-park-wheel",
+      "kind": "scenery",
+      "src": "images/20261010_hirakata-park-wheel_98872_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-10",
+      "note": "手前は芥川の鷺打橋。左端の奥に観覧車の輪が見える",
+      "alt": "手前の青い鷺打橋と、左奥に見えるひらパーの観覧車",
+      "light": "day",
+      "sha256": "9e04387f7eea54970b90f2edc9365295829f08dc6524b648c3ac8626d4361269",
+      "bytes": 334433,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "hirakata-park-wheel",
+      "kind": "scenery",
+      "src": "images/20261004_hirakata_park_wheel_night_37994_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-04",
+      "note": "",
+      "alt": "青と白に光るひらパー観覧車",
+      "light": "night",
+      "sha256": "c5d8e142850ba80767f3ab969516e9709a38aea56effd76b8af5cf855622a578",
+      "bytes": 160241,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "torikai-train-depot",
+      "kind": "scenery",
+      "src": "images/20260712_torikai_depot_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-12",
+      "note": "検修庫と留置線の広がりが見える朝の車窓",
+      "alt": "朝の新幹線から見える鳥飼車両基地",
+      "light": "day",
+      "sha256": "48170d75aea0de049e245b2de2e86d9c00c652601eb1e07e4a643b1bbd9dc13a",
+      "bytes": 409842,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "torikai-train-depot",
+      "kind": "scenery",
+      "src": "images/20260629_torikai_train_depot_night_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-06-29",
+      "note": "夜に眠る新幹線たち",
+      "alt": "夜の新幹線から見える鳥飼車両基地",
+      "light": "night",
+      "sha256": "8df86180c31670af8c100aa0799da109c59ba8434499d2201ac4727cb19e546e",
+      "bytes": 63380,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "shiraitogawa-bridge",
+      "kind": "scenery",
+      "src": "images/20261010_odawara_2025_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-10",
+      "note": "根府川付近の白糸川橋梁",
+      "alt": "相模湾と白糸川橋梁の車窓",
+      "light": "day",
+      "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4",
+      "bytes": 314364,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "maibara-test-trains",
+      "kind": "scenery",
+      "src": "images/20261010_maibara-test-trains_10654_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-10",
+      "note": "米原駅南側の新幹線高速試験車両保存場",
+      "alt": "米原の高速試験車両の車窓",
+      "light": "day",
+      "sha256": "b99dc08822a14aa14b5b9156c94699248df53f8e70df0b0c3248181c167d026f",
+      "bytes": 505394,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "sawayama-castle",
+      "kind": "scenery",
+      "src": "images/20260930_sawayama-castle_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-30",
+      "note": "田園越しに見える「佐和山城跡」の看板。",
+      "alt": "田園越しに見える佐和山城跡の看板と緑の山",
+      "light": "day",
+      "sha256": "d27b7f46a1ee7bc7e4f883c47071126896a318d45905872a78269d23719a5462",
+      "bytes": 434673,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-19",
+      "kind": "727",
+      "src": "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "michikusa / 2026-07-04",
+      "alt": "248看板と並ぶ727 COSMETICS看板",
+      "light": "day",
+      "sha256": "6b96cefd961ccb6c960852a61d4709915c38d126c05c5478fb825ea3a9108745",
+      "bytes": 370158,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-20",
+      "kind": "727",
+      "src": "images/20260820_727_board_yoda_kinuta_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影",
+      "alt": "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板",
+      "light": "day",
+      "sha256": "c52a1500a0e3a4788e31a21eea2eea1d45a6bcb73488da4013f9b90ca9a50d77",
+      "bytes": 397762,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-21",
+      "kind": "727",
+      "src": "images/20260820_727_board_yoda_solo_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で06:18撮影",
+      "alt": "朝の田の向こうにひとつだけ立つ藤沢市用田の727看板",
+      "light": "day",
+      "sha256": "8b087aae939394c3b70a35f89f11e6fb63578eb7e6283cab04d9651a6783d514",
+      "bytes": 266021,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-23",
+      "kind": "727",
+      "src": "images/20260704_727_board_haracho_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "michikusa / 2026-07-04",
+      "alt": "A席側から見える豊橋市原町の727看板",
+      "light": "day",
+      "sha256": "883255760b5dd0e77467efc358415094ac491805bb316d7401f7a7ca4c2a8941",
+      "bytes": 237164,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-24",
+      "kind": "727",
+      "src": "images/20260816_727_board_shimosawaki_e_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "E席側から見える豊川市御津町下佐脇の727看板",
+      "light": "day",
+      "sha256": "ff16169583013071e3074d459cf7b9a564a5481ab7022ff567930f0bc2ffc94f",
+      "bytes": 328843,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-26",
+      "kind": "727",
+      "src": "images/20260820_727_board_shimomitsugi_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · GPSログとA席側からNo.26に照合",
+      "alt": "実りかけの田の向こうに立つ岡崎市下三ツ木町の727看板",
+      "light": "day",
+      "sha256": "07d559cfe78d70cdba1ff6653de28bc38af081773f8a66f3209f24b37ca85e9a",
+      "bytes": 223232,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-27",
+      "kind": "727",
+      "src": "images/20260816_727_board_amakusa_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16 · GPSログとE席側からNo.27に照合",
+      "alt": "E席側から見える安城市安城町天草の727看板",
+      "light": "day",
+      "sha256": "da682a9383839e7fb8ba45501178a747da388a50351aa84661e0fac9a94877d2",
+      "bytes": 278884,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-28",
+      "kind": "727",
+      "src": "images/20260820_727_board_koshin_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · GPSログとA席側からNo.28に照合",
+      "alt": "A席側から見える安城市安城町庚申の727看板",
+      "light": "day",
+      "sha256": "88ac5ca75908fe278774e55aa57a44dcc743651dd6d6b7492904c455ed1a849b",
+      "bytes": 216431,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-29",
+      "kind": "727",
+      "src": "images/20260816_727_board_kamishigehara_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "E席側から見える知立市上重原町の727看板",
+      "light": "day",
+      "sha256": "9dd7203025842b2cb085acd7ab5ed08ad01bf605b75223876b1cc92a44b0b40c",
+      "bytes": 430703,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-30",
+      "kind": "727",
+      "src": "images/20260816_727_board_shinden_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "E席側から見える刈谷市新田町の727看板",
+      "light": "day",
+      "sha256": "201cff19ef2fea66bd37831ecab7e6062a19d72fb4768b74156e96cf46f4e151",
+      "bytes": 339139,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-31",
+      "kind": "727",
+      "src": "images/20260820_727_board_ichibancho_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · GPSログとA席側からNo.31に照合",
+      "alt": "村田金箔の看板と並ぶ刈谷市一番町の727看板",
+      "light": "day",
+      "sha256": "1ed5fb1c1b105436b28351b232534066aaa731e8ddd2a08fdf00e8d3c5813182",
+      "bytes": 327618,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-32",
+      "kind": "727",
+      "src": "images/20260820_727_board_hirano_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · GPSログとA席側からNo.32に照合",
+      "alt": "倉庫群を背に、店舗の王様の看板と並ぶ稲沢市平野町の727看板",
+      "light": "day",
+      "sha256": "a3cea6a000251dbb46f6ed364650ec0c5824e5b9a04b118ca591231388439acb",
+      "bytes": 352337,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-33",
+      "kind": "727",
+      "src": "images/20260712_727_board_hirahachinotsubo_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-12",
+      "note": "michikusa / 2026-07-12 · 上り列車から、清洲城の約2分前に撮影",
+      "alt": "車窓から見える稲沢市平蜂ノ坪町の727看板",
+      "light": "day",
+      "sha256": "b92e30dfa9f9d0d810b2f60d5efd3eb6310c4e43a49386740dfe3759a385494d",
+      "bytes": 110370,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-35",
+      "kind": "727",
+      "src": "images/20260704_727_board_osawa_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "michikusa / 2026-07-04 · 東京11:12発のぞみ27号で12:59ごろ撮影（宮代A席の約30秒前）",
+      "alt": "E席側から見える垂井町表佐の727看板",
+      "light": "day",
+      "sha256": "2fa914fa43a51ec2d01da2b4f43674daed28ace926e907dc0f31d86a91b4495c",
+      "bytes": 132621,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-36",
+      "kind": "727",
+      "src": "images/20260820_727_board_miyashiro_a_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-20",
+      "note": "michikusa / 2026-08-20 · 品川06:00発のぞみ99号で07:40撮影",
+      "alt": "南宮山を背にした垂井町宮代の727看板",
+      "light": "day",
+      "sha256": "409ecb1d9330ea4be6c5b55130b02ec4863ba95f06200f86ceb211a2822a6ee8",
+      "bytes": 424052,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-37",
+      "kind": "727",
+      "src": "images/20260816_727_board_miyashiro_e_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "金生山を背にした垂井町宮代の727看板",
+      "light": "day",
+      "sha256": "722a60cdfcb8cb08566f34a3653739b46fbf631203984bd77a278f311c126cf0",
+      "bytes": 339895,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-38",
+      "kind": "727",
+      "src": "images/20260816_727_board_onogi_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "A席側から見える米原市大野木の727看板",
+      "light": "day",
+      "sha256": "5864f3f610cd4a12f9d98a6955d42c357ea1f2d06039db355dad6b3ec12d8d6d",
+      "bytes": 345756,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-39",
+      "kind": "727",
+      "src": "images/20260704_727_board_fuse_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-07-04",
+      "note": "michikusa / 2026-07-04",
+      "alt": "E席側から見える長浜市布勢町の727看板",
+      "light": "day",
+      "sha256": "1e90a99a510f43c042a1b9e15476d6297d2577cbb49fabe29c195d465375a479",
+      "bytes": 203149,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-40",
+      "kind": "727",
+      "src": "images/20260816_727_board_tsuzura_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "E席側の遠くに見える彦根市葛籠町の727看板",
+      "light": "day",
+      "sha256": "a3776bd4aea1316238ef3c9d3d8d6489ee15bf228f7469c59fc55e37a4683cb1",
+      "bytes": 363905,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-41",
+      "kind": "727",
+      "src": "images/20260816_727_board_anyoji_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "A席側から見える近江八幡市安養寺町の727看板",
+      "light": "day",
+      "sha256": "31256e046a9a50a09fb1ff3f48876463bcdfb15cdb39224b2526fb804293c119",
+      "bytes": 436488,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-43",
+      "kind": "727",
+      "src": "images/20260816_727_board_higashiamakawa_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-16",
+      "note": "michikusa / 2026-08-16",
+      "alt": "A席側から見える高槻市東天川の727看板",
+      "light": "day",
+      "sha256": "b27ffa910a915475bcd2961df1fd1cf3138804af390b1eb421cc0b693b0b2015",
+      "bytes": 347871,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-44",
+      "kind": "727",
+      "src": "images/20260803_727_board_karasakiminami_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-03",
+      "note": "michikusa / 2026-08-03 · 鳥飼車両基地の約1〜2分前",
+      "alt": "田んぼの奥に見える高槻市唐崎南の727看板",
+      "light": "day",
+      "sha256": "da7c2f142d6923214eb9839fd234afbef7f272de54cbe13afced589cc0d21347",
+      "bytes": 233891,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-45",
+      "kind": "727",
+      "src": "images/20260803_727_board_torikaihachicho_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-08-03",
+      "note": "michikusa / 2026-08-03 · 鳥飼車両基地の約30秒前",
+      "alt": "大阪中央卸売市場を背にした鳥飼八町の727看板",
+      "light": "day",
+      "sha256": "395ad38ddb98b5b66aee9643d8448e7aa20e240292c751b520982d4aa845edb7",
+      "bytes": 214072,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    }
+  ],
+  "mapCredit": "地理院タイル（淡色地図を加工）",
+  "sourceHashes": {
+    "data.js": "0023cca7306d2e5d341d8f9c1f077a4a31010b014f3b8ed400e99897c4ce5b7c",
+    "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
+  }
+}
