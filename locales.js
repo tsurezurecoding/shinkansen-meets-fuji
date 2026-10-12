@@ -19,7 +19,7 @@
   var castles = ['castles.html'].concat(castleIds.map(function (id) { return 'spots/' + id + '.html'; }));
   var extra = ['sparkling-dreams.html'];
   var routes = utility.concat(castles, extra, ['guide.html']);
-  var episodes = { 'spots/fuji.html': ['de', 'fr'], 'spots/fujitec-big-wing.html': ['de', 'zh-Hans', 'zh-Hant'], 'spots/pocari-fukuroi.html': ['ko'] };
+  var episodes = { 'spots/fuji.html': ['de', 'fr'], 'spots/fujitec-big-wing.html': translated.slice(), 'spots/pocari-fukuroi.html': translated.slice() };
   var pattern = languages.filter(function (lang) { return lang !== 'ja'; }).concat(['ar']).join('|');
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();

@@ -30,6 +30,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang))]) {
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
+    doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());
     const prefix = route.startsWith('spots/') ? '../../' : '../';
     const file = `${lang}/${route}`;
     // The translated snapshot is already rendered. Reuse common interaction scripts.
