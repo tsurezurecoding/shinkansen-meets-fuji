@@ -1,0 +1,158 @@
+{
+ "purpose": "Photographs for window-film.html (車窓の映画『147分』). All are michikusa's own (credit in data.js).",
+ "conversion": "ImageMagick: resize 1600x900^ center-crop, strip, WebP q74 method6",
+ "photos": [
+  {
+   "file": "images/window-film/tokyo.webp",
+   "sha256": "4e5d3fadc56652ca99e6d4a25a38b4088c2ec00441763509edef035a8fa80326",
+   "source": "images/20261010_tokyo-tower_155558_michikusa.jpg",
+   "sourceSha256": "62a2f19e9fad0fca8c646d98f755e345f88837955deb2b38cc88d198cdbfb036",
+   "spot": "tokyo-tower",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/maruko.webp",
+   "sha256": "9d971fcb32ec18648a036b4759d2732f3bb9d004a47aac755666fbca0a07e9b2",
+   "source": "images/20260704_maruko_bridge_1_michikusa.jpg",
+   "sourceSha256": "4854b5b9a5178cfd718581865943550bf651b2c58e2d4a4c66dc51fa830db58c",
+   "spot": "maruko-bridge",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/kosugi.webp",
+   "sha256": "1564f5175da0aa86c2fe247b74d1fc8db9fc8f95fa70f0ed774fc4c546d21505",
+   "source": "images/20260712_musashi_kosugi_towers_michikusa.jpg",
+   "sourceSha256": "75d686bcc8b1383da44657840f9da13cd9c4daa01169632043444152064227e3",
+   "spot": "musashi-kosugi-towers",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/s727.webp",
+   "sha256": "b830956f513ec285534475099aef747dfe49ce3b3a4756ac9d274d6a4cee3b57",
+   "source": "images/20260629_727_board_1_4x_michikusa.jpg",
+   "sourceSha256": "c82dcf97efbcfed85e7e82f6f2ab5ed233227a4f7458454ae60c25ce90081d2e",
+   "spot": "727-sign",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/odawara-castle.webp",
+   "sha256": "5e3377535b01f6616325b9e4aee3e5f76efbbe739e342850aa8f9e17b9aebe58",
+   "source": "images/20260919_odawara_castle_michikusa.jpg",
+   "sourceSha256": "fd5651a52e5b99de9c48bd6b5d77c7b3093317c36aba392ef5d7a1d80ffa0a3a",
+   "spot": "odawara-castle",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/fuji.webp",
+   "sha256": "1122d29f0ac8f3ce0e673c2a2b353a31ca56b34caad5efa8bdf6999179c95812",
+   "source": "images/20240211_fuji_michikusa.jpg",
+   "sourceSha256": "ece7c5ccf60886a7cbb45b233c082a8f1d843a7a1ca38cfcf0b888f432df20f2",
+   "spot": "fuji",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/fuji-field.webp",
+   "sha256": "7cb3da77b35f473787da82fae232993991c7bf652d9ac8bb7d46d89576ab46ca",
+   "source": "images/20230913_fuji_michikusa.jpg",
+   "sourceSha256": "c9bbaed3637e31a41574b8eb33051c3947f7fdd746e74217dca3e3d4d2360990",
+   "spot": "fuji",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/tea.webp",
+   "sha256": "727260486af90cd3a5df01ef6b8fd50694794e618ffed8dd4be9d50d7dad2c2f",
+   "source": "images/20260530_shizuoka_tea_fields_2_michikusa.jpg",
+   "sourceSha256": "0ac1541542f46e2558d4d7bd53cae61b2e5011c4d344d3b53454b54c01ccd46c",
+   "spot": "shizuoka-tea-fields",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/hamanako.webp",
+   "sha256": "2a6c86f35c468b7aadf95a90c57c856e46518f806a8ec525811fa834dcfe01cc",
+   "source": "images/20260530_hamanako.jpg",
+   "sourceSha256": "f0e709c52b0f6f781dae258f0d36160e87279e926e74c322fc47736b0d194eba",
+   "spot": "hamanako",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/ibuki.webp",
+   "sha256": "5d52fa56bcc76a208d369b6a2de3671102b08a8c52ab9a846aa4edf35455b700",
+   "source": "images/20260530_ibukiyama_2_michikusa.jpg",
+   "sourceSha256": "d0bcef8fe5d7a7a57c4fe3b4a5fcc8f1ed85407f87d52bfaf31f99a0991ebdca",
+   "spot": "ibuki",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/toji.webp",
+   "sha256": "79d0cd3b998d934d0d30bad63b86fca422f1a67f6100bfc81b8a49734e27197d",
+   "source": "images/20260712_toji_michikusa.jpg",
+   "sourceSha256": "33731641ed4e3da9372a6e0225fafd9b64e3de5ce8d939da67ac41882755b18c",
+   "spot": "toji",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/whoami.webp",
+   "sha256": "38426ffbe2dc63c90f628fc0de17fd69cc4fc58310f31cb4adb6141fe2a50e14",
+   "source": "images/20260712_who_am_i_sign_michikusa.jpg",
+   "sourceSha256": "f9b0bc851cf7a5b1553ca55adc0616b11c6de3cb5a2afd03d490fb0e14f2753a",
+   "spot": "putiputi-sign",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/chikyu.webp",
+   "sha256": "98001086d69e11aeb3c6b302637cd3d04a92c0b0d72e8896aadb359567dfb2b6",
+   "source": "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
+   "sourceSha256": "950a430e18df1b2b1c2479adf681a55832b48e78741bee6f444e8f40ca71f9a8",
+   "spot": "shimizu-port-chikyu",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/solar.webp",
+   "sha256": "567aafd2cf2b0c01dd82272f854c57b7b62900428e64c6f29dcacaf2dab22780",
+   "source": "images/20260924_solar-ark_9169_michikusa.jpg",
+   "sourceSha256": "dd2308c021350995c52d58b20104aceaaaee8b47d296642ed3ebabaa55feeb1c",
+   "spot": "solar-ark",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/egg.webp",
+   "sha256": "084e94c5c54eb9ca1a466a1e31e175f4ccc3a7439d82a64ba684250448541f4d",
+   "source": "images/20260924_rakusai-egg-tanks_8885_michikusa.jpg",
+   "sourceSha256": "39507b7f64e9f7c1d87f9f22c74991ee616e960f09bca9ffdfcb0d1868a12f53",
+   "spot": "rakusai-egg-tanks",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/tower-night.webp",
+   "sha256": "ee0ed377ff2bb23ae78db4441dbd7f56911ff975b6c967c9d76993487dba9e4d",
+   "source": "images/20260629_tokyo_tower_night_michikusa.jpg",
+   "sourceSha256": "d8061e37861f3eae5b6fa98e5634f994449389574398da2df5099b9e233ffeeb",
+   "spot": "tokyo-tower",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/toji-night.webp",
+   "sha256": "43086a83a9877e56a2f16d96b2873a2609cc610b94eca920b778fe6e98332757",
+   "source": "images/20260906_toji_night_michikusa.jpg",
+   "sourceSha256": "470373bca6e15a8fa32fc66cc77e6e32a126c595dd0d9309bac412acd0e4b137",
+   "spot": "toji",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/kiyosu-night.webp",
+   "sha256": "d05660dd78ed8ea629e0d7def3bde2b07e7bfb7233eb943817c5f79d34cf57c3",
+   "source": "images/20260906_kiyosu_castle_night_michikusa.jpg",
+   "sourceSha256": "9cceee2d93ec45dde18b5c18c2975322b5bc5002324a8314dcee4908043d8025",
+   "spot": "kiyosu",
+   "credit": "michikusa"
+  },
+  {
+   "file": "images/window-film/wheel-night.webp",
+   "sha256": "acb846fa9caa40ac5fddde616286b85db3ab0ac955a475a9736f4ac34b26c72d",
+   "source": "images/20261004_hirakata_park_wheel_night_37994_michikusa.jpg",
+   "sourceSha256": "c5d8e142850ba80767f3ab969516e9709a38aea56effd76b8af5cf855622a578",
+   "spot": "hirakata-park-wheel",
+   "credit": "michikusa"
+  }
+ ]
+}

@@ -31,6 +31,7 @@ const pairs = [
   ["/journal.html", "/en/journal.html"],
   ["/mieru.html", "/en/mieru.html"],
   ["/window-artworks.html", "/en/window-artworks.html"],
+  ["/window-film.html", "/en/window-film.html"],
   ["/sumie.html", "/en/sumie.html"],
   ["/somato.html", "/en/somato.html"],
   ["/guide.html", "/en/guide.html"],
