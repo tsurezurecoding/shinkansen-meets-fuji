@@ -1,49 +1,49 @@
 {
   "zh-Hant": {
     "lastmod": "2026-10-11",
-    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept).",
+    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept). 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
     "fingerprints": {
-      "html": "061b613843479f82a38b337737d67d3bc799b403ff23f11ef0e2a87571a7ef5a",
+      "html": "59c4e4ab1ff5871ffd886a8047220d5fe52aad7df2422116a0885ad21408938e",
       "narration": "ab0fa7172f350936a8433b9df1231c73685418ac682d656c9ea516009dc496bf"
     }
   },
   "fr": {
     "lastmod": "2026-10-11",
-    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept).",
+    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept). 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
     "fingerprints": {
-      "html": "9b3ddc91898381bc396a2f4f02ef142a82a8607a96d53693d2487e55c10752cf",
+      "html": "534c2662ffabe7795c7f92a0de9b5c25e5dfca26b337af26b2e76f2e8f25004e",
       "narration": "9f96624965cf6e0bf9c072c599579e94af049a9205207f7112e10ef93e7e3f24"
     }
   },
   "de": {
     "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
     "fingerprints": {
-      "html": "3e779f2a9f45da05455cb0c9d51d52b296ebc4f8ddf66857b61c62579a45f0bc",
+      "html": "6607a79bddc8ce269c4cb83cbb04079ec1f83bc4c75558b2d3aed9d6ebeb8888",
       "narration": "4010eed122ac26282335c84c34f512af9e50a328cfa8ecd6444496f2fc5dc836"
     }
   },
   "es": {
     "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
     "fingerprints": {
-      "html": "0a185ef8626aaebca715ff59d6f41e2391205c209517e13fa7430dbfef158956",
+      "html": "d605318ba06192542bc8c2b51cbf0a68a8df0fb027f075411c1afbaebd731a60",
       "narration": "3a0334fc0f374759a4f2f6b7d6f5d85c96db75c893a67fcb7b172a0348fd1ba6"
     }
   },
   "zh-Hans": {
     "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
     "fingerprints": {
-      "html": "57d965d7731a118c6cf8e661329ffdfc7d82c4f28a349213c823a11dd3104113",
+      "html": "269b1152a337fed655c783455c4016d5531825eff89cf20c322a237443a931c8",
       "narration": "b51cc86bcc52e9de53195ded9a24a7530545cd4cde44917c2aca3ee61db9dd89"
     }
   },
   "ko": {
     "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
     "fingerprints": {
-      "html": "00340cb6b05855484e24b4dac40eee1ff15ddea65c126c1fba4f986208b23655",
+      "html": "06d439ed69555649a928ea6299d079cc2d2f185c3d293ff01a1db58f66a5a677",
       "narration": "4e6d5a6181d88edbd5ab7095b35649fef92373fdfb64c6db4c3bdc84162ada64"
     }
   }

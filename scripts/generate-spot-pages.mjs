@@ -1308,6 +1308,8 @@ function englishLandingHTML() {
     ["もうひとつの旅がある。", "outside your window."],
     ["富士山も、城も、湖も、", "Mt. Fuji, castles, lakes,"],
     ["ふしぎな看板も。", "and unexpected signs."],
+    ["車窓の正体を写真と解説で紹介し、", "Photos and stories explain what you pass,"],
+    ["乗る列車で見えるころと座席側も調べられます。", "and you can check when and which side to look for your train."],
     ["地図と音声で次を知らせる", "Map and audio for the next view"],
     ["いつ・どちら側かを調べる", "Check when and which side to watch"],
     ["見つけた景色を記録する", "Record the views you spot"],
@@ -1332,6 +1334,7 @@ function englishLandingHTML() {
     ["出発駅", "Boarding at"],
     ["乗る便を選択", "Choose your service"],
     ["実際のダイヤから、見えるころと座席側が並びます。", "Each view includes its estimated time and seat side."],
+    ["停車駅の時刻をもとに推計した見えるころと、座席側が並びます。", "Each view includes its estimated time and seat side."],
     ["その時刻に知らせる", "Get a nudge at the right time"],
     ["近づくと、地図とカウントダウンで知らせます。", "A map and countdown tell you when to look."],
     ["方向・出発駅・列車の3つだけです。", "Just three choices: direction, station, and train."],
@@ -1352,6 +1355,9 @@ function englishLandingHTML() {
     ["やっぱり富士山。", "start with Mt. Fuji."],
     ["どちら側の席に座るか、", "Which side to sit on,"],
     ["東京から何分ごろ見えるか。", "and when it should appear from Tokyo."],
+    ["いつごろ見えるか。", "and when it should appear."],
+    ["目的に合わせて、", "Whatever brings you aboard,"],
+    ["窓の外を楽しむ。", "enjoy the view outside."],
     ["乗る前に、ここだけ確認しておけば十分です。", "Those are the only details you need before boarding."],
     ["富士山ガイドへ", "Open the Mt. Fuji guide"],
     ["子どもと乗るなら、", "Riding with children?"],
@@ -1367,6 +1373,8 @@ function englishLandingHTML() {
     ["同じ区間にも次の楽しみができます。", "and the same route gives you something new to look forward to."],
     ["スタンプ帖へ", "Open Window Stamps"],
     ["その日だけの、", "Some views only happen"],
+    ["時間と季節で、", "The view changes"],
+    ["車窓は変わる。", "with time and season."],
     ["車窓。", "at certain times."],
     ["花火の夜、街の灯り、期間限定の車両、", "Fireworks, city lights, limited-run trains,"],
     ["列車選択", "Train Search"],
@@ -1374,10 +1382,12 @@ function englishLandingHTML() {
     ["夜空にひらく花火", "Fireworks opening in the night sky"],
     ["車窓の花火", "Window fireworks"],
     ["沿線の花火が、窓から見える夜。", "Fireworks along the route, seen from the window."],
+    ["新幹線の窓から花火が見えた夜。東海道以外の路線も含みます。", "Nights when fireworks were seen from the train, including lines beyond the Tokaido."],
     ["夜の車窓に見える丸子橋あたりの灯り", "Lights around Maruko Bridge after dark"],
     ["新幹線の夜景", "Tokaido Shinkansen at night"],
     ["暗くなる区間を、出発時刻から。", "See where night begins from your departure time."],
     ["ラッピング車両が走る東海道新幹線の車窓", "A wrapped train on the Tokaido Shinkansen route"],
+    ["ホームに停まるディズニーデザインのラッピング新幹線", "A Disney-wrapped Shinkansen stopped at a platform"],
     ["ディズニー新幹線", "Disney Shinkansen"],
     ["すれ違えるかを、時刻から計算。", "Check whether you can catch it from the timetable."],
     ["雪に覆われた田畑と集落を東海道新幹線の車窓から見る", "Snow-covered fields and homes seen from the Tokaido Shinkansen"],
@@ -1389,8 +1399,10 @@ function englishLandingHTML() {
     ["丁寧に。", "carefully kept."],
     ["実車で確認", "Checked from the train"],
     ["見えるころと座席側を、乗って確かめています", "We ride the route to check the timing and seat side."],
+    ["ほとんどの景色は、見えるころと座席側を乗って確かめています", "For most views, we ride the route to check the timing and seat side."],
     ["通過時刻の目安", "Estimated passing times"],
     ["列車と停車駅の実ダイヤから計算", "Calculated from train and station timetables."],
+    ["乗る列車の停車駅の時刻をもとに推計", "Estimated from your train’s stop times."],
     ["写真と出典", "Photos and sources"],
     ["提供写真はクレジット、未確認はそう明記", "Contributed photos are credited; unconfirmed details are marked."],
     ["時刻や見え方は、運行状況・天候・座席位置により前後します。少し早めに窓の外を見てください。", "Times and visibility vary with service conditions, weather, and your seat. Start watching a little early."],
@@ -1400,6 +1412,8 @@ function englishLandingHTML() {
     ["見えるころと座席側を、", "We will show the timing and seat side"],
     ["あなたの旅に合わせて案内します。", "for your journey."],
     ["まず40景を見てみる", `Browse all ${SPOT_COUNT} views`],
+    ["写真と解説で景色を探す", "Explore views in photos and stories"],
+    ["時刻は目安です（列車を選ばない場合はのぞみ基準）。列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are estimates (Nozomi-based until you choose a train); visibility varies by train, weather, and seat. Start watching a little early."],
     ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
     ["道草 / Michikusa — 急がない旅と、偶然の発見を。", "Michikusa — Slow travel and unexpected discoveries."],
     ["富士山の見方", "How to See Mt. Fuji"],
@@ -1421,6 +1435,7 @@ function englishLandingHTML() {
     ["車窓図鑑をひらく", "Open the field guide"],
     ["乗る列車を選ぶと、", "Choose your train,"],
     ["時刻が決まる。", "and the timing follows."],
+    ["見えるころがわかる。", "and see when to look."],
     ["乗る前から、", "Before, during,"],
     ["降りたあとまで。", "and after your ride."],
     ["乗る前に見どころを探し、", "Find views before you board,"],
@@ -1456,6 +1471,7 @@ function englishLandingHTML() {
     ["A席", "Seat A"],
     ["E席", "Seat E"],
     ["7大会", "7 events"],
+    ["8大会", "8 events"],
     [`${YAKEI_SPOT_COUNT}か所`, `${YAKEI_SPOT_COUNT} night scenes`],
     ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
     ["窓の外に探すものも変わります。", "and the view you look for changes too."],
@@ -1574,7 +1590,7 @@ function englishLandingHTML() {
   <div class="rediscovery-stamps" aria-label="Digital window stamps">
    <img src="images/stamps/stamp_fuji.svg" width="120" height="120" alt="Mt. Fuji" loading="lazy"><img src="images/stamps/stamp_kakegawa.svg" width="120" height="120" alt="Kakegawa Castle" loading="lazy"><img src="images/stamps/stamp_hamanako.svg" width="120" height="120" alt="Lake Hamana" loading="lazy">
   </div>
-  <a class="button button-primary audience-card-action" href="en/journal.html" data-lp-cta="audience-family">Collect Window Stamps</a>
+  <a class="text-link audience-card-action" href="en/journal.html" data-lp-cta="audience-family">Collect Window Stamps</a>
  </article>`)
     .replace(/<span class="select-summary-line">[\s\S]*?<\/span>/, " The guide follows that service's timetable.");
   html = localizeEnglishInternalLinks(html)
