@@ -1,13 +1,13 @@
 // Explicit editorial additions are independent of source translation dictionaries.
 import fs from 'node:fs';
-import { translated, castles } from './locales.mjs';
+import { translated, castles, supported } from './locales.mjs';
 export const editorial = JSON.parse(fs.readFileSync(new URL('../locales/editorial-notes.json', import.meta.url), 'utf8'));
 const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 for (const [lang, notes] of Object.entries(editorial.notes)) {
   if (!translated.includes(lang) || !editorial.labels[lang]) throw Error('Unknown editorial edition: ' + lang);
   for (const [spot, note] of Object.entries(notes)) {
     if (!note.id || !note.theme || !note.heading?.trim() || !note.paragraphs?.length || (!note.article && !note.modal)) throw Error('Incomplete editorial note: ' + lang + '/' + spot);
-    if (note.article && !castles.includes(note.article)) throw Error('Editorial article is outside the active route contract: ' + note.article);
+    if (note.article && !supported(note.article).includes(lang)) throw Error('Editorial article is outside the active route contract: ' + note.article);
     for (const paragraph of note.paragraphs) {
       if (!['fact','inference'].includes(paragraph.kind) || !paragraph.text?.trim() || !Array.isArray(paragraph.sources) || paragraph.kind === 'fact' && !paragraph.sources.length) throw Error('Unclassified or unsourced editorial paragraph: ' + note.id);
       for (const id of paragraph.sources) {
@@ -38,6 +38,8 @@ export function appendArticleEditorialNote(doc, lang, route) {
     if (!article) throw Error('Editorial article host missing: ' + lang + '/' + route);
     article.querySelectorAll('[data-editorial-note]').forEach(el => el.remove());
     const template = doc.createElement('template'); template.innerHTML = renderEditorialNote(lang, id, true);
-    article.prepend(template.content);
+    const anchor = article.querySelector('.spot-page-section');
+    if (anchor) anchor.after(template.content);
+    else article.append(template.content);
   }
 }

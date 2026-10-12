@@ -13,7 +13,7 @@ export const SPARKLING_EXTRA = [
  '<h3>Likely passing estimate</h3><p class="sd-result-lead">Your {0} {1} may pass the special train at the following time and place on {2} ({3}).</p><ul class="sd-result-list">{4}</ul><p class="sd-seat-note"><strong>Watch from the {5}</strong> and start looking out about ±5 minutes early. Station stops, delays, speed, and operating changes can shift the actual moment.</p>',
 ];
 export const SPARKLING_ATTRS = [...TRANSLATABLE_ATTRIBUTES, 'data-placeholder', 'placeholder'];
-export const SPARKLING_EXCLUDE = 'iframe,blockquote,.sd-post-credit,figcaption,.show-credit,.lang-switch,.guide-lang-menu';
+export const SPARKLING_EXCLUDE = '.brand-mark,iframe,blockquote,.sd-post-credit,figcaption,.show-credit,.lang-switch,.guide-lang-menu';
 export function sparklingSnapshot(root) { return englishSnapshot(root, SPARKLING_ROUTE); }
 export function collectSparklingEnglish(root) {
  const dom = sparklingSnapshot(root), doc = dom.window.document;

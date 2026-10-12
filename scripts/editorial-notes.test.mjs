@@ -4,6 +4,8 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import { JSDOM } from 'jsdom';
 import { editorial, renderEditorialNote, appendArticleEditorialNote, utilityEditorialNotes } from './shared/editorial-notes.mjs';
+import { episodes, supported, translated, castles } from './shared/locales.mjs';
+import { englishSnapshot } from './shared/castle-localization.mjs';
 const read = file => fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
 const pairs = Object.entries(editorial.notes).flatMap(([lang,notes])=>Object.entries(notes).map(([id,note])=>({lang,id,note})));
 const expectedModal = {de:['fuji','fujitec-big-wing'],fr:['fuji'],'zh-Hans':['fujitec-big-wing','toji'],'zh-Hant':['fujitec-big-wing','toji'],ko:['pocari-fukuroi']};
@@ -39,4 +41,53 @@ test('historical and exhibition boundaries stay in the approved note copy',()=>{
  for(const lang of ['zh-Hans','zh-Hant']){const text=renderEditorialNote(lang,'toji');assert.match(text,/5幅/);assert.match(text,/公開時間未定|公开时间未定/);}
  assert.ok(!renderEditorialNote('ko','pocari-fukuroi').includes('1위'));
  assert.ok(renderEditorialNote('de','fuji').includes('China und den Niederlanden'));
+});
+
+test('article stories follow the photo and first chapter, and the logo retains its glyph',()=>{
+ for(const p of pairs){
+  assert.ok(p.note.article, p.note.id + ' needs an article');
+  const dom=new JSDOM(read(p.lang+'/'+p.note.article)),doc=dom.window.document;
+  const article=doc.querySelector('article.spot-page-article'),note=article.querySelector('[data-editorial-note]');
+  assert.ok(article.querySelector('.spot-page-section').compareDocumentPosition(note)&4);
+  assert.equal(doc.querySelector('.brand-mark').textContent,'窓');
+  dom.window.close();
+ }
+ for(const lang of translated)for(const route of castles){
+  const dom=new JSDOM(read(lang+'/'+route));assert.equal(dom.window.document.querySelector('.brand-mark').textContent,'窓');dom.window.close();
+ }
+});
+
+test('six episode articles have matching routes, menus, reciprocal metadata and distribution',()=>{
+ const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml');
+ let count=0;
+ for(const [route,langs]of Object.entries(episodes))for(const lang of langs){
+  count++;
+  const file=lang+'/'+route,dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file,runScripts:'outside-only'}),doc=dom.window.document;
+  assert.equal(doc.documentElement.lang,lang);
+  assert.equal(doc.querySelector('link[rel="canonical"]').href,'https://www.michikusa-travel.com/'+file);
+  assert.ok(sitemap.includes('/'+file+'</loc>'));
+  assert.ok(manifest.files.some(f=>(typeof f==='string'?f:f.path)===file));
+  dom.window.eval(read('locales.js'));dom.window.eval(read('article-locales.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+  assert.deepEqual([...doc.querySelectorAll('.article-lang-menu a')].map(a=>a.lang),supported(route));
+  for(const edition of ['ja','en',...langs]){
+   const counterpart=new JSDOM(read((edition==='ja'?'':edition+'/')+route));
+   assert.equal(counterpart.window.document.querySelectorAll(`link[hreflang="${lang}"]`).length,1);counterpart.window.close();
+  }
+  dom.window.close();
+ }
+ assert.equal(count,6);
+});
+
+test('episode articles preserve English gallery images and original attribution',()=>{
+ const root=new URL('..',import.meta.url).pathname.replace(/^\/(\w:)/,'$1');
+ let images=0;
+ for(const [route,langs]of Object.entries(episodes)){
+  const source=englishSnapshot(decodeURIComponent(root),route);
+  const media=doc=>[...doc.querySelectorAll('[data-gallery-thumb]')].map(el=>Object.fromEntries(['data-gallery-src','data-gallery-credit','data-gallery-credit-href'].map(a=>[a,el.getAttribute(a)])));
+  const original=media(source.window.document);
+  assert.ok(original.length);
+  for(const lang of langs){const dom=new JSDOM(read(lang+'/'+route));assert.deepEqual(media(dom.window.document),original);images+=original.length;dom.window.close();}
+  source.window.close();
+ }
+ assert.ok(images>=30);
 });

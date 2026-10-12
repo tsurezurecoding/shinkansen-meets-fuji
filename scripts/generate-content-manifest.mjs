@@ -6,6 +6,7 @@ import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
+import { episodes } from './shared/locales.mjs';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteBaseUrl = "https://www.michikusa-travel.com/";
@@ -17,6 +18,7 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  ...Object.entries(episodes).flatMap(([route, langs]) => langs.map(lang => `${lang}/${route}`)),
   "zukan-hero.css",
   "images/og-window-trip.png", "images/window-trip-card.webp", "window-trip.html", "window-trip.js", "window-trip.css", "window-trip-base.css", "window-trip-stage.js", "window-trip-data.js", "window-trip-map.js", "data/window-trip-photo-sources.json",
   ...await walkFiles("window-trip-assets", p => /\.png$/.test(p)),
