@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {JSDOM} from 'jsdom';
 const script=fs.readFileSync(new URL('../promo/hero-stage.js',import.meta.url),'utf8');
-async function harness(){
+async function harness({restricted=false}={}){
  const dom=new JSDOM('<div id="frame"><div id="stage"><div id="bg"></div></div></div>',{url:'https://www.michikusa-travel.com/promo/hero-stage.html',runScripts:'outside-only',pretendToBeVisual:true});
  const w=dom.window,jobs=new Map(),messages=[];let now=0,id=0,hidden=false,renders=0,prepares=0,styleReads=0;
  Object.defineProperty(w.performance,'now',{value:()=>now});Object.defineProperty(w.document,'hidden',{get:()=>hidden});
- w.matchMedia=()=>({matches:false,addEventListener(){}});w.HTMLImageElement.prototype.decode=async()=>{};
+ w.matchMedia=()=>({matches:restricted,addEventListener(){}});w.HTMLImageElement.prototype.decode=async()=>{};
  const parent={postMessage:m=>messages.push({...m,at:now})};Object.defineProperty(w,'parent',{value:parent});
  w.setTimeout=(fn,ms)=>{jobs.set(++id,{at:now+ms,fn,type:'timer'});return id;};w.clearTimeout=n=>jobs.delete(n);
  w.requestAnimationFrame=fn=>{jobs.set(++id,{at:now+1000/60,fn,type:'raf'});return id;};w.cancelAnimationFrame=n=>jobs.delete(n);
@@ -43,3 +43,7 @@ test('repeat wait stays idle, repeats automatically and survives pagehide',async
 test('letterbox preserves the CSS finale colour and avoids repeated computed-style reads',async()=>{
  const h=await harness();try{await h.send('visibility',{visible:true});await h.send('go',{chapter:1});await h.advance(500);assert.equal(h.background,'rgb(18, 52, 86)');const reads=h.counts.styleReads;await h.advance(500);assert.equal(h.counts.styleReads,reads);}finally{h.close();}
 });
+
+ test('restricted preferences prevent autoplay but explicit play opts in',async()=>{
+ const h=await harness({restricted:true});try{await h.send('visibility',{visible:true});await h.advance(8000);assert.equal(h.state.playing,false);await h.send('play');await h.send('preferences',{restricted:true});await h.advance(100);assert.equal(h.state.mode,'auto');assert.equal(h.state.playing,true);}finally{h.close();}
+ });

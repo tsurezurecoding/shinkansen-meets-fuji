@@ -13,6 +13,7 @@
   const en = film.lang === 'en';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let restricted = motion.matches || !!navigator.connection?.saveData;
+  let manualPlay = false;
   const HERO_SEC = 7, REPEAT_SEC = 8, HERO_FADE = 0.9;
 
   // chapters of the film, without the closing URL card (the TOP itself is the call to action)
@@ -176,7 +177,7 @@
   let wheelLock=0;
   addEventListener('wheel',e=>{if(Math.abs(e.deltaX)<=Math.abs(e.deltaY)||Math.abs(e.deltaX)<12)return;e.preventDefault();const now=performance.now();if(now<wheelLock)return;wheelLock=now+700;step(e.deltaX>0?1:-1,'wheel');},{passive:false});
   addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();step(e.key==='ArrowRight'?1:-1,'key');}});
-  function preferences(value){const changed=restricted!==value;restricted=value;if(restricted){auto=false;mode='hold';jumpAt=-1;veil.style.opacity='0';stage.style.translate='0 0';draw();state();}else if(changed){mode=heroOn>.5?'hero':'auto';if(pausedMode)pausedMode=mode;else auto=true;state();}wake();}
+  function preferences(value){value=!!value&&!manualPlay;const changed=restricted!==value;restricted=value;if(restricted){auto=false;mode='hold';jumpAt=-1;veil.style.opacity='0';stage.style.translate='0 0';draw();state();}else if(changed){mode=heroOn>.5?'hero':'auto';if(pausedMode)pausedMode=mode;else auto=true;state();}wake();}
   addEventListener('message',e=>{
     if(e.source!==parent||!trusted(e)||e.data?.type!=='hero-film'||!ready)return;
     const d=e.data;
@@ -184,9 +185,10 @@
     else if(d.action==='step')step(d.dir,d.input);
     else if(d.action==='visibility'){visible=!!d.visible;wake();}
     else if(d.action==='preferences')preferences(!!d.restricted||motion.matches);
-    else if(d.action==='pause'){pausedMode=mode;auto=false;state();wake();}
+    else if(d.action==='pause'){manualPlay=false;pausedMode=mode;auto=false;state();wake();}
     else if(d.action==='play'){
-      if(restricted){go(chapter<0?0:chapter,'play');return;}
+      // Explicit play opts into animation; reduced motion and Save-Data still prevent autoplay.
+      manualPlay=true;restricted=false;
       finished=false;auto=true;if(pausedMode){mode=pausedMode;pausedMode=null;}else if(mode==='hold'||mode==='chapter')mode='auto';
       if(mode==='hero')heroTimer=heroWait;state();wake();
     }
