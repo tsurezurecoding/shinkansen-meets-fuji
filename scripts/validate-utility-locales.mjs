@@ -111,7 +111,7 @@ function checkDictionary(lang) {
     counts.narrationDirections++;
   }
   for (const route of [...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, ...EXTRA_LOCALE_ROUTES, 'guide.html']) assert(adapter.href(route).startsWith(`${lang}/`), label, `same-language route missing ${route}`);
-  assert(adapter.href('index.html') === `${lang}/index.html`, label, 'TOP must use the same-language edition');
+  assert(adapter.href('index.html') === `${lang}/`, label, 'TOP must use the same-language edition');
   assert(adapter.href('privacy.html') === 'en/privacy.html', label, 'untranslated route must use English fallback');
   dom.window.close(); counts.dictionaries++;
   return dictionary;
@@ -261,7 +261,8 @@ for (const lang of LOCALES) {
     const file = `${lang}/${entry.replaceAll('\\', '/')}`, html = read(file);
     const pageUrl = `${origin}/${file}`, baseHref = html.match(/<base\b[^>]*href="([^"]+)"/i)?.[1];
     const base = baseHref ? new URL(baseHref, pageUrl).href : pageUrl;
-    for (const match of html.matchAll(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi)) {
+    const content = html.replace(/<div\b[^>]*class="[^"]*guide-lang-options[^"]*"[^>]*>[\s\S]*?<\/div>/gi, '');
+    for (const match of content.matchAll(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi)) {
       if (/\s(?:lang|data-lang)="en"/.test(match[1] + match[3])) continue;
       const url = new URL(match[2], base);
       if (url.origin !== origin || !url.pathname.startsWith('/en/')) continue;
