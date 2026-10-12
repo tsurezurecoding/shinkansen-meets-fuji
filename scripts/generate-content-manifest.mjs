@@ -148,6 +148,12 @@ const contentFiles = [
   "vendor/leaflet/leaflet.js",
 ];
 
+// Offline journeys need every original selected by the registered photo plan.
+const tripPhotos = JSON.parse(await readFile(path.join(appRoot, "data/window-trip-photo-sources.json"), "utf8")).photos;
+for (const { src } of tripPhotos) {
+  if (!contentFiles.includes(src)) contentFiles.push(src);
+}
+
 // contentVersion は files の並び順に依存するため、宣言順ではなくパスの昇順で正規化する。
 // これで「配列のどこへ足したか」で contentVersion が変わることがなくなる。
 const sortedContentFiles = [...new Set(contentFiles)].sort((a, b) => a.localeCompare(b));
