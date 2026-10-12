@@ -559,6 +559,8 @@
       .audience-grid { grid-template-columns: 1fr; }
       .select { padding: 54px 0; }
       .select-flow { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
+      /* Mobile keeps the three steps in view without the decorative selector mockup. */
+      #select .train-select-demo { display: none; }
 
       .trust-list { grid-template-columns: 1fr; gap: 18px; }
       .final-cta { padding: 64px 0; }
@@ -660,12 +662,12 @@
 
     <section class="select" id="select" aria-labelledby="select-title">
       <div class="section-shell">
-        <div class="section-head reveal">
+        <div class="section-head">
           <p class="eyebrow">Your train, your times</p>
           <h2 id="select-title"><span class="copy-chunk">乗る列車を選ぶと、</span><span class="copy-chunk">時刻が決まる。</span></h2>
           <p><span class="copy-chunk">方向・出発駅・列車の3つを選ぶだけ。</span><span class="select-summary-line"><span class="copy-chunk">あとは、その列車の</span><span class="copy-chunk">ダイヤに合わせて動きます。</span></span></p>
         </div>
-        <div class="select-flow reveal">
+        <div class="select-flow">
           <div class="mini-ui train-select-demo" aria-hidden="true">
             <small>MY SHINKANSEN</small>
             <div class="route-choice"><span>東京 → 新大阪</span><span>新大阪 → 東京</span></div>

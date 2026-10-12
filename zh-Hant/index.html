@@ -562,6 +562,8 @@
       .audience-grid { grid-template-columns: 1fr; }
       .select { padding: 54px 0; }
       .select-flow { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
+      /* Mobile keeps the three steps in view without the decorative selector mockup. */
+      #select .train-select-demo { display: none; }
 
       .trust-list { grid-template-columns: 1fr; gap: 18px; }
       .final-cta { padding: 64px 0; }
@@ -659,12 +661,12 @@
 
     <section class="select" id="select" aria-labelledby="select-title">
       <div class="section-shell">
-        <div class="section-head reveal">
+        <div class="section-head">
           <p class="eyebrow">你的列車，你的時間</p>
           <h2 id="select-title">選列車，查觀景時刻</h2>
           <p>選擇方向、出發車站和列車，導覽就會依照該班次的時刻表進行。</p>
         </div>
-        <div class="select-flow reveal">
+        <div class="select-flow">
           <div class="mini-ui train-select-demo" aria-hidden="true">
             <small>我的新幹線</small>
             <div class="route-choice"><span>東京 → 新大阪</span><span>新大阪→東京</span></div>

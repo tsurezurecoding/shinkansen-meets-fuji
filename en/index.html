@@ -564,6 +564,8 @@
       .audience-grid { grid-template-columns: 1fr; }
       .select { padding: 54px 0; }
       .select-flow { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
+      /* Mobile keeps the three steps in view without the decorative selector mockup. */
+      #select .train-select-demo { display: none; }
 
       .trust-list { grid-template-columns: 1fr; gap: 18px; }
       .final-cta { padding: 64px 0; }
@@ -664,12 +666,12 @@
 
     <section class="select" id="select" aria-labelledby="select-title">
       <div class="section-shell">
-        <div class="section-head reveal">
+        <div class="section-head">
           <p class="eyebrow">Your train, your times</p>
           <h2 id="select-title">Choose your train, and the timing follows.</h2>
           <p>Pick a direction, departure station, and train. The guide follows that service's timetable.</p>
         </div>
-        <div class="select-flow reveal">
+        <div class="select-flow">
           <div class="mini-ui train-select-demo" aria-hidden="true">
             <small>MY SHINKANSEN</small>
             <div class="route-choice"><span>Tokyo → Shin-Osaka</span><span>Shin-Osaka → Tokyo</span></div>
