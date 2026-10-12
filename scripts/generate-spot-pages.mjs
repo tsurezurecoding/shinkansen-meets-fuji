@@ -2130,12 +2130,18 @@ for (const config of guideRailConfigs) {
     syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
   }
   if (CASTLE_LOCALE_LANGS.includes(lang)) {
+    const languageMenus = [];
+    syncedGuideHTML = syncedGuideHTML.replace(/<details\b[^>]*class="[^"]*guide-lang-menu[^"]*"[^>]*>[\s\S]*?<\/details>/g, menu => {
+      languageMenus.push(menu);
+      return `<!-- MADO_GUIDE_LANGUAGE_MENU_${languageMenus.length - 1} -->`;
+    });
     syncedGuideHTML = syncedGuideHTML.replace(/<a\b[^>]*href="([^\"]+)"[^>]*>/g, (whole, href) => {
       const url = new URL(href, `https://www.michikusa-travel.com/${lang}/guide.html`);
       const route = url.pathname.replace(/^\/en\//, '');
       return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && supported(route).includes(lang)
         ? whole.replace(`href="${href}"`, `href="../${lang}/${route}${url.search}${url.hash}"`).replace(/\s+hreflang="en"/, '') : whole;
     });
+    syncedGuideHTML = syncedGuideHTML.replace(/<!-- MADO_GUIDE_LANGUAGE_MENU_(\d+) -->/g, (_, index) => languageMenus[Number(index)]);
   }
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }
