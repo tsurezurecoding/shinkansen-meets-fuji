@@ -1,17 +1,17 @@
 {
   "ja": {
     "lastmod": "2026-10-07",
-    "reason": "Metadata wording only: describe GPS/audio/live map and Android alerts; no guide behavior or narration change. Retain the last significant published update date from PR68.",
+    "reason": "Removed the alpha badge and alpha note from the live page per the owner's decision to drop the alpha label; no guide behavior or narration change. Keep the PR68 significant-update date.",
     "fingerprints": {
-      "html": "c23311457fc48c87c55f4fde0e4325ea1be4cac75010eb358d99b8de92deebf3",
+      "html": "72e5156d2f397078498d250d2c7507fed8cb024bf89c42a1eb083ed1be37c343",
       "narration": "574707480dc71a552fe3718e8dc0285d71a740af125eb67c7032bf10eabcfbca"
     }
   },
   "en": {
     "lastmod": "2026-10-07",
-    "reason": "Metadata wording only: describe GPS/audio/live map and Android alerts; no guide behavior or narration change. Retain the last significant published update date from PR68.",
+    "reason": "Removed the alpha badge and alpha note from the live page per the owner's decision to drop the alpha label; no guide behavior or narration change. Keep the PR68 significant-update date.",
     "fingerprints": {
-      "html": "94b77a18aedb21eb2f984f32ed8c9c7ffac88215d7a8d35636efdb5bdd1535cf",
+      "html": "aabc5fee8d9598da6aa5107d446bc2ca532a23b923d30f2ce4f5e63b8c6e56db",
       "narration": "f32369b187a19557ba96e6df5e9702a01776ce24733402a3ae9890611c047580"
     }
   }
