@@ -17,6 +17,7 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "zukan-hero.css",
   "images/og-window-trip.png", "window-trip.html", "window-trip.js", "window-trip.css", "window-trip-base.css", "window-trip-stage.js", "window-trip-data.js", "window-trip-map.js", "data/window-trip-photo-sources.json",
   ...await walkFiles("window-trip-assets", p => /\.png$/.test(p)),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => `${lang}/${route}`)),

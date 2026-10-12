@@ -1,0 +1,16 @@
+.field-guide-hero > p:last-of-type {
+  max-width: 620px;
+  margin: 14px auto 0;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 1.85;
+}
+.field-guide-hero .zukan-switch {
+  flex-wrap: wrap;
+  max-width: 720px;
+  margin: 24px auto 0;
+}
+.field-guide-hero .zukan-switch a {
+  flex: 1 1 130px;
+  max-width: 220px;
+}

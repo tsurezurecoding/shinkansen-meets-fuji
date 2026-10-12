@@ -81,6 +81,7 @@
     })();
   </script>
   <link rel="stylesheet" href="style.css?v=f05e5c64">
+  <link rel="stylesheet" href="zukan-hero.css?v=c941329d">
   <script defer src="utility-locales.js?v=baa993d2"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/zukan.html">
@@ -125,13 +126,16 @@
       <h1 data-i18n="galTitle">車窓図鑑</h1>
       <p class="field-guide-discovery" data-i18n="galDiscovery"><span class="copy-chunk">知ると、</span><span class="copy-chunk">車窓はもっと面白い。</span></p>
       <p data-i18n="galSub"><span class="copy-chunk">見慣れた看板の正体も、</span><span class="copy-chunk">富士山と工場のつながりも。</span><span class="copy-chunk">写真と解説で知ると、</span><span class="copy-chunk">次に窓を見る楽しみが増えます。</span></p>
-    </section>
-
-    <section class="journey-intents journey-intents-guide" aria-labelledby="zukanIntentsTitle">
       <div class="zukan-switch" role="group" aria-label="図鑑の見方">
         <a class="is-current" href="#zukanIntentsTitle" data-i18n="zukanSwitchFeatures">特集から探す</a>
         <a href="#gallery" data-i18n="zukanSwitchAll" data-cta-track="zukan_switch_click" data-cta-id="all_views">車窓一覧を見る</a>
+        <!-- WINDOW-TRIP-JA:START -->
+        <a href="window-trip.html" data-cta-track="zukan_theme_click" data-cta-id="window_trip">車窓を眺める</a>
+        <!-- WINDOW-TRIP-JA:END -->
       </div>
+    </section>
+
+    <section class="journey-intents journey-intents-guide" aria-labelledby="zukanIntentsTitle">
       <div class="section-head">
         <p class="eyebrow" data-i18n="zukanThemeEyebrow">BROWSE BY THEME</p>
         <h2 id="zukanIntentsTitle" data-i18n="zukanThemeTitle">テーマから、車窓を探す</h2>
@@ -224,9 +228,6 @@
       </div>
     </section>
 
-    <!-- WINDOW-TRIP-JA:START -->
-    <section class="section trip-guide-entry" aria-label="写真と地図でめぐる旅"><a class="journey-intent-card" style="display:block" href="window-trip.html" data-cta-track="zukan_theme_click" data-cta-id="window_trip"><img src="images/thumbs/20240211_fuji_michikusa.webp" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>WINDOW JOURNEY</small><strong>車窓を、つないで。</strong><span>好きな景色を選び、写真と地図で東京から新大阪へ。</span></span></a></section>
-    <!-- WINDOW-TRIP-JA:END -->
     <section class="section" id="gallery">
       <div class="section-head">
         <p class="eyebrow" data-i18n="zukanAllEyebrow">ALL 58 VIEWS</p>
