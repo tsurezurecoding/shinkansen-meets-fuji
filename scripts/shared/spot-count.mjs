@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { YAKEI_SPOT_COUNT } from "./yakei-spots.mjs";
 
 // Single build-time source for "how many window views does this site cover".
 //
@@ -116,6 +117,8 @@ const UNITS = [
 // 単位ではなく語句で期待値が決まるもの。同じ「地点」でも意味が違う数がある。
 const PHRASE_CLAIMS = [
   { text: "このほかに#地点", count: () => COLLECTION_727_RETIRED },
+  { text: "NIGHT · #か所", count: () => YAKEI_SPOT_COUNT },
+  { text: "NIGHT · # night scenes", count: () => YAKEI_SPOT_COUNT },
 ];
 
 // Numbers that look like a claim but are not one.
@@ -184,7 +187,14 @@ export function scanSpotCountClaims(html) {
       expected,
     });
   }
-  return claims;
+  // Phrase-only subsets have their own units, outside the total-view unit list.
+  const known = new Set(claims.map((claim) => claim.index));
+  for (const [index, expected] of byPhrase) {
+    if (known.has(index)) continue;
+    const raw = html.slice(index).match(/^\d{1,3}/)[0];
+    claims.push({ index, raw, unit: "phrase", actual: Number(raw), expected });
+  }
+  return claims.sort((a, b) => a.index - b.index);
 }
 
 // Safety net. Any number sitting just before a counting noun is probably a claim

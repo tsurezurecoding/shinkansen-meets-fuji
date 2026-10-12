@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { assetVersion } from './shared/asset-version.mjs';
 import { ANALYTICS } from './shared/feature-page.mjs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
+import { YAKEI_SPOT_IDS, YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const site = 'https://www.michikusa-travel.com';
@@ -16,7 +17,7 @@ const site = 'https://www.michikusa-travel.com';
 const COPY = {
  "ja": {
   "copy": "<title>新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓</title>",
-  "copy2": "<meta name=\"description\" content=\"東海道新幹線の夜景を、車窓から見える15か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。\">",
+  "copy2": "<meta name=\"description\" content=\"東海道新幹線の夜景を、車窓から見える{{nightSpotCount}}か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。\">",
   "copy3": "<meta property=\"og:site_name\" content=\"新幹線の窓\">",
   "copy4": "<meta property=\"og:locale\" content=\"ja_JP\">",
   "copy5": "<meta property=\"og:title\" content=\"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻\">",
@@ -24,7 +25,7 @@ const COPY = {
   "copy7": "<meta property=\"og:image:alt\" content=\"夜の新幹線から見える名古屋駅前の光\">",
   "copy8": "<meta name=\"twitter:title\" content=\"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻\">",
   "copy9": "<meta name=\"twitter:description\" content=\"夜の車窓は鏡になる。その対処と、ライトアップ・街の光・車両基地まで。出発時刻から暗くなる区間を計算します。\">",
-  "copy10": "<meta name=\"twitter:image:alt\" content=\"夜の新幹線から見える名古屋駅前の光\">\n  <script type=\"application/ld+json\">{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.michikusa-travel.com/yakei.html#webpage\",\n      \"url\": \"https://www.michikusa-travel.com/yakei.html\",\n      \"name\": \"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓\",\n      \"description\": \"東海道新幹線の夜景を、車窓から見える15か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。\",\n      \"inLanguage\": \"ja\",\n      \"isPartOf\": {\n        \"@type\": \"WebSite\",\n        \"name\": \"新幹線の窓\",\n        \"url\": \"https://www.michikusa-travel.com/\"\n      }\n    }\n  ]\n}</script>\n  <script src=\"language-router.js?v=a8d4ab78\"></script>",
+  "copy10": "<meta name=\"twitter:image:alt\" content=\"夜の新幹線から見える名古屋駅前の光\">\n  <script type=\"application/ld+json\">{\n  \"@context\": \"https://schema.org\",\n  \"@graph\": [\n    {\n      \"@type\": \"WebPage\",\n      \"@id\": \"https://www.michikusa-travel.com/yakei.html#webpage\",\n      \"url\": \"https://www.michikusa-travel.com/yakei.html\",\n      \"name\": \"新幹線の夜景｜車窓から見えるライトアップと、暗くなる時刻 | 新幹線の窓\",\n      \"description\": \"東海道新幹線の夜景を、車窓から見える{{nightSpotCount}}か所で紹介。東京タワーと小田原城のライトアップ、清洲城・掛川城の期間限定ライトアップ、武蔵小杉・名古屋の街あかり、鳥飼車両基地まで。出発時刻を入れると、どこから暗くなるかがわかります。\",\n      \"inLanguage\": \"ja\",\n      \"isPartOf\": {\n        \"@type\": \"WebSite\",\n        \"name\": \"新幹線の窓\",\n        \"url\": \"https://www.michikusa-travel.com/\"\n      }\n    }\n  ]\n}</script>\n  <script src=\"language-router.js?v=a8d4ab78\"></script>",
   "copy11": ".yk-hero::before { content: \"\"; position: absolute; inset: 0; z-index: -2; background-image: url(\"images/20260629_2158_nagoya_station_night_michikusa.jpg\"); background-size: cover; background-position: center 55%; }",
   "yakei_page": "<body class=\"yakei-page spot-page spot-page-utility\" data-page=\"yakei\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"ja\" data-spot-page-shared-root=\"./\" data-spot-page-shared-route=\"yakei.html\">",
   "ykTitle": "<h1 id=\"ykTitle\">新幹線の夜景</h1>",
@@ -176,7 +177,7 @@ const COPY = {
   "copy90": "<li><strong>暗い側と明るい側がある</strong>市街地を抜けると、片側だけ真っ暗ということが起こります。E席側とA席側で見えるものが違うので、上の判定で席側も確認してください。</li>",
   "ykNoteTitle": "<h2 id=\"ykNoteTitle\">掲載について</h2>",
   "copy91": "<p>ライトアップの実施日・点灯時間・色は、年や事情によって変わります。このページでは日付を断定せず、各施設の公式案内へのリンクを置いています。乗車前に必ず公式でご確認ください。</p>",
-  "copy92": "<p>小田原城と掛川城は、当サイトがまだ夜の車窓写真を持っていません。そのため昼の写真を掲載しています。ライトアップが行われていることと、走行中の新幹線から見えることは別の話なので、「見える」とは書いていません。夜の車窓から撮れた写真をお持ちの方は、お問い合わせからご連絡いただけると助かります。</p>",
+  "copy92": "<p>小田原城は、当サイトがまだ夜の車窓写真を持っていないため昼の写真を掲載しています。掛川城は、夜の車窓から撮影した写真を掲載しています。ライトアップが行われていても、車窓からの見え方は列車・時刻・天候によって変わります。夜の車窓写真をお持ちの方は、お問い合わせからご連絡いただけると助かります。</p>",
   "copy93": "<p>写真のうち清洲城は @asami_k920 さん、小田原城はブログ「新幹線の車窓から」の許諾済み写真です。それ以外は当サイトの撮影です。通過時刻と日の入りはいずれも目安の計算で、実際の見え方は列車・天候・座席位置によって変わります。</p>",
   "footer_brand": "<p class=\"footer-brand\">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>",
   "copy94": "<p>時刻は目安です。列車・天候・座席位置により見え方は変わります。</p>",
@@ -190,10 +191,10 @@ const COPY = {
   "copy3": "<meta property=\"og:site_name\" content=\"Shinkansen Window\">",
   "copy4": "<meta property=\"og:locale\" content=\"en_US\">",
   "copy5": "<meta property=\"og:title\" content=\"Night Views from the Shinkansen\">",
-  "copy6": "<meta property=\"og:description\" content=\"At night the window becomes a mirror. How to see past it, and the eleven things worth looking for. Enter a departure time to find where darkness starts.\">",
+  "copy6": "<meta property=\"og:description\" content=\"At night the window becomes a mirror. How to see past it, and the {{nightSpotCount}} night scenes worth looking for. Enter a departure time to find where darkness starts.\">",
   "copy7": "<meta property=\"og:image:alt\" content=\"The lights of Nagoya Station seen from a Shinkansen at night\">",
   "copy8": "<meta name=\"twitter:title\" content=\"Night Views from the Shinkansen\">",
-  "copy9": "<meta name=\"twitter:description\" content=\"At night the window becomes a mirror. How to see past it, and the eleven things worth looking for. Enter a departure time to find where darkness starts.\">",
+  "copy9": "<meta name=\"twitter:description\" content=\"At night the window becomes a mirror. How to see past it, and the {{nightSpotCount}} night scenes worth looking for. Enter a departure time to find where darkness starts.\">",
   "copy10": "<meta name=\"twitter:image:alt\" content=\"The lights of Nagoya Station seen from a Shinkansen at night\">\n  <script src=\"../language-router.js?v=a8d4ab78\"></script>",
   "copy11": ".yk-hero::before { content: \"\"; position: absolute; inset: 0; z-index: -2; background-image: url(\"../images/20260629_2158_nagoya_station_night_michikusa.jpg\"); background-size: cover; background-position: center 55%; }",
   "yakei_page": "<body class=\"yakei-page spot-page spot-page-utility\" data-page=\"yakei\" data-spot-page-shared-context=\"utility\" data-spot-page-shared-lang=\"en\" data-spot-page-shared-root=\"../\" data-spot-page-shared-route=\"yakei.html\">",
@@ -346,7 +347,7 @@ const COPY = {
   "copy90": "<li><strong>One side is dark, the other is not</strong>Once you are past the built-up areas, it is common for one side of the train to be completely black. Seat E and Seat A see different things, so check the side column in the tool above.</li>",
   "ykNoteTitle": "<h2 id=\"ykNoteTitle\">About what is shown here</h2>",
   "copy91": "<p>Light-up dates, hours and colours change from year to year. This page does not state dates; it links to each site's official information instead. Please check there before you travel.</p>",
-  "copy92": "<p>For Odawara Castle and Kakegawa Castle we do not yet have a night photo taken from the train, so a daytime photo is shown. A castle being lit and a castle being visible from a moving Shinkansen are two different claims, and we only make the first. If you have a night shot from the window, we would be glad to hear from you.</p>",
+  "copy92": "<p>Odawara Castle is illustrated with a daytime photo because we do not yet have a night photo taken from the train. Kakegawa Castle is shown in a night photo from the Shinkansen window. Whether a light-up is visible from your train depends on its timing, the service and the weather. If you have a night shot from the window, we would be glad to hear from you.</p>",
   "copy93": "<p>The Kiyosu Castle photo is used with permission from @asami_k920, and the Odawara Castle photo from the Shinkansen window blog. The rest are our own. Passing times and sunset are both estimates, and what you actually see depends on the train, the weather and where you are sitting.</p>",
   "footer_brand": "<p class=\"footer-brand\">Shinkansen Window <span>Catch the moment from your window</span></p>",
   "copy94": "<p>Times are estimates. Trains, weather and seat position all change what you see.</p>",
@@ -359,7 +360,7 @@ const COPY = {
 function render(lang) {
   const en = lang === 'en';
   const p = en ? '../' : '';
-  const t = COPY[lang];
+  const t = Object.fromEntries(Object.entries(COPY[lang]).map(([key, value]) => [key, value.replaceAll('{{nightSpotCount}}', String(YAKEI_SPOT_COUNT))]));
   const pageUrl = en ? `${site}/en/yakei.html` : `${site}/yakei.html`;
   return `<!doctype html>
 <html lang="${lang}">
@@ -712,7 +713,7 @@ ${t.yakei_page}
 
   <script>
     // 載せるスポットの一覧だけ。分数・席側・名前は data.js（data-runtime.js）から読む
-    window.YAKEI_SPOT_IDS = ["tokyo-tower","maruko-bridge","musashi-kosugi-towers","odawara-castle","shimizu-port-chikyu","kakegawa","nichiban-anjo","nagoya-station-skyline","kiyosu","sennenq-sign","lotte-shiga","seta-karahashi","toji","hirakata-park-wheel","torikai-train-depot"];
+    window.YAKEI_SPOT_IDS = ${JSON.stringify(YAKEI_SPOT_IDS)};
     ${t.copy95}
   </script>
   <script src="${p}spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}"></script>

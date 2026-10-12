@@ -1,4 +1,5 @@
 import { enhanceContentHead } from './shared/content-metadata.mjs';
+import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -139,7 +140,7 @@ const COPY = {
   "copy59": "<img src=\"images/thumbs/hanabi-hero-pd.webp\" width=\"960\" height=\"720\" alt=\"夜空にひらく花火\" loading=\"lazy\" decoding=\"async\">",
   "wm_special_copy": "<span class=\"wm-special-copy\"><small>SUMMER · 7大会</small><h3>車窓の花火</h3><p>沿線の花火が、窓から見える夜。</p></span>",
   "copy60": "<img src=\"images/thumbs/20260629_2320_maruko_bridge_night_michikusa.webp\" width=\"960\" height=\"540\" alt=\"夜の車窓に見える丸子橋あたりの灯り\" loading=\"lazy\" decoding=\"async\">",
-  "wm_special_copy2": "<span class=\"wm-special-copy\"><small>NIGHT · 11か所</small><h3>新幹線の夜景</h3><p>暗くなる区間を、出発時刻から。</p></span>",
+  "wm_special_copy2": "<span class=\"wm-special-copy\"><small>NIGHT · {{nightSpotCount}}か所</small><h3>新幹線の夜景</h3><p>暗くなる区間を、出発時刻から。</p></span>",
   "copy61": "<img src=\"images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp\" width=\"900\" height=\"600\" alt=\"ラッピング車両が走る東海道新幹線の車窓\" loading=\"lazy\" decoding=\"async\">",
   "wm_special_copy3": "<span class=\"wm-special-copy\"><small>LIMITED · 期間限定のラッピング</small><h3>ディズニー新幹線</h3><p>すれ違えるかを、時刻から計算。</p></span>",
   "wmNoteTitle": "<h2 id=\"wmNoteTitle\">掲載について</h2>",
@@ -274,7 +275,7 @@ const COPY = {
   "copy59": "<img src=\"../images/thumbs/hanabi-hero-pd.webp\" width=\"960\" height=\"720\" alt=\"Fireworks opening in the night sky\" loading=\"lazy\" decoding=\"async\">",
   "wm_special_copy": "<span class=\"wm-special-copy\"><small>SUMMER · 7 events</small><h3>Window fireworks</h3><p>Fireworks along the route, seen from the window.</p></span>",
   "copy60": "<img src=\"../images/thumbs/20260629_2320_maruko_bridge_night_michikusa.webp\" width=\"960\" height=\"540\" alt=\"Lights around Maruko Bridge after dark\" loading=\"lazy\" decoding=\"async\">",
-  "wm_special_copy2": "<span class=\"wm-special-copy\"><small>NIGHT · 11 night scenes</small><h3>Tokaido Shinkansen at night</h3><p>See where night begins from your departure time.</p></span>",
+  "wm_special_copy2": "<span class=\"wm-special-copy\"><small>NIGHT · {{nightSpotCount}} night scenes</small><h3>Tokaido Shinkansen at night</h3><p>See where night begins from your departure time.</p></span>",
   "copy61": "<img src=\"../images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp\" width=\"900\" height=\"600\" alt=\"A wrapped train on the Tokaido Shinkansen route\" loading=\"lazy\" decoding=\"async\">",
   "wm_special_copy3": "<span class=\"wm-special-copy\"><small>LIMITED · LIMITED-TIME WRAP</small><h3>Disney Shinkansen</h3><p>Check whether you can catch it from the timetable.</p></span>",
   "wmNoteTitle": "<h2 id=\"wmNoteTitle\">About the material on this page</h2>",
@@ -289,7 +290,7 @@ const COPY = {
 function render(lang) {
   const en = lang === 'en';
   const p = en ? '../' : '';
-  const t = COPY[lang];
+  const t = Object.fromEntries(Object.entries(COPY[lang]).map(([key, value]) => [key, value.replaceAll('{{nightSpotCount}}', String(YAKEI_SPOT_COUNT))]));
   const pageUrl = en ? `${site}/en/window-moments.html` : `${site}/window-moments.html`;
   return `<!doctype html>
 <html lang="${lang}">

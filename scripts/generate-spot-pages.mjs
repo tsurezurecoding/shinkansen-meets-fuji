@@ -14,6 +14,7 @@ import { assetVersion } from "./shared/asset-version.mjs";
 import { SPOT_COUNT as SHARED_SPOT_COUNT, syncSpotCountClaims } from "./shared/spot-count.mjs";
 import { enhanceContentHead, selectSpotOgImage, contentLastmod } from './shared/content-metadata.mjs';
 import { readLiveSitemapState } from "./shared/live-sitemap.mjs";
+import { YAKEI_SPOT_COUNT } from "./shared/yakei-spots.mjs";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(__dirname, "..");
@@ -1454,7 +1455,7 @@ function englishLandingHTML() {
     ["A席", "Seat A"],
     ["E席", "Seat E"],
     ["7大会", "7 events"],
-    ["11か所", "11 night scenes"],
+    [`${YAKEI_SPOT_COUNT}か所`, `${YAKEI_SPOT_COUNT} night scenes`],
     ["新幹線から見える花火", "Fireworks visible from the Shinkansen"],
     ["窓の外に探すものも変わります。", "and the view you look for changes too."],
     ["このページは公開前のLP案です。", "A guide to the views along your journey."],
@@ -1825,10 +1826,10 @@ function guideHTML(lang) {
 function sitemapXML() {
   const liveSitemapState = readLiveSitemapState(appDir);
   const baseUrls = [
-    { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-10-11" },
+    { loc: pageUrl("ja"), priority: "1.0", changefreq: "weekly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/start.html`, priority: "0.9", changefreq: "weekly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/start.html`, priority: "0.9", changefreq: "weekly", lastmod: "2026-10-11" },
-    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-10-11" },
+    { loc: pageUrl("en"), priority: "0.9", changefreq: "weekly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/en/reflections.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-29" },
     { loc: `${siteRoot}/ferris-wheels.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-26" },
@@ -1845,14 +1846,14 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     { loc: `${siteRoot}/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-09-23" },
     { loc: `${siteRoot}/en/zukan.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-10-11" },
-    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
+    { loc: `${siteRoot}/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
     { loc: `${siteRoot}/en/727-collection.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-18" },
     { loc: `${siteRoot}/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/en/window-moments.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-09-01" },
     { loc: `${siteRoot}/live/`, priority: "0.7", changefreq: "monthly", lastmod: liveSitemapState.ja.lastmod },
     { loc: `${siteRoot}/en/live/`, priority: "0.6", changefreq: "monthly", lastmod: liveSitemapState.en.lastmod },
-    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-09-23" },
+    { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
@@ -1895,7 +1896,7 @@ function sitemapXML() {
     "gyoran-kannon": "2026-09-26",
     "fuji": "2026-09-26",
     "fuji-paper-mills": "2026-09-26",
-    "fujikawa-bridge": "2026-09-26",
+    "fujikawa-bridge": "2026-10-12",
     "shimizu-port-chikyu": "2026-09-26",
     "hamanako-fuji": "2026-09-26",
     "kirin-beer-factory": "2026-09-26",

@@ -42,9 +42,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-08-14",
-    "modified": "2026-09-20",
+    "modified": "2026-10-12",
     "publishedEvidence": "2026-08-14_yakei-page-release.md",
-    "modifiedEvidence": "2026-09-20_train-picker-release.md (Pages 35473308373): actual-service viewing times and source credits replace fixed departure estimates"
+    "modifiedEvidence": "2026-10-12_top-multilingual-release.md: merged morning correction d8844a33; Hinataoka official district/development facts or night-photo explanation and shared 15-scene count"
   },
   "guide.html": {
     "kind": "editorial article",
@@ -420,13 +420,17 @@
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication remains unconfirmed. The substantive factual correction is included in the approved October 12 release.",
+    "modified": "2026-10-12",
+    "modifiedEvidence": "2026-10-12_top-multilingual-release.md: merged morning correction d8844a33; Hinataoka official district/development facts or night-photo explanation and shared 15-scene count"
   },
   "en/spots/hinataoka.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication remains unconfirmed. The substantive factual correction is included in the approved October 12 release.",
+    "modified": "2026-10-12",
+    "modifiedEvidence": "2026-10-12_top-multilingual-release.md: merged morning correction d8844a33; Hinataoka official district/development facts or night-photo explanation and shared 15-scene count"
   },
   "spots/fuji-bus-sales.html": {
     "kind": "editorial article",
@@ -526,7 +530,9 @@
   "en/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values."
+    "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values.",
+    "modified": "2026-10-12",
+    "modifiedEvidence": "2026-10-12_top-multilingual-release.md: merged morning correction d8844a33; Hinataoka official district/development facts or night-photo explanation and shared 15-scene count"
   },
   "en/arenani.html": {
     "kind": "collection",
