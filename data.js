@@ -3756,7 +3756,7 @@ const SPOTS = [
       ja: "新富士を出たらE席側で構えてください。橋に乗った瞬間に河原がひらけ、川上に白いアーチが並びます。その向こうが富士山です。渡り終えるとすぐトンネルなので、探し始めるのでは遅すぎます。",
       en: "Be at the Seat E window as you leave Shin-Fuji. The moment the train reaches the bridge the riverbed opens up and the white arches line up upstream, with Mt. Fuji beyond them. A tunnel follows straight after the crossing, so starting to look once you are on the bridge is already too late.",
     },
-    minutesFromTokyo: 47, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "bay",
+    minutesFromTokyo: 45.75, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "bay",
     image: "images/20260530_fujikawa_bridge_2_michikusa.jpg",
     photoCredit: {
       ja: "michikusa",
@@ -3848,8 +3848,10 @@ const SPOTS = [
     ],
     relatedSpotIds: ["fuji", "fuji-paper-mills", "shimizu-port-chikyu"],
     references: [{ label: { ja: "Fuji Sky View：公式案内", en: "Fuji Sky View: official information (Japanese)" }, url: "https://www.senyo.co.jp/company/archivements/" },REFERENCES.fujikawaBridgeSuruga, REFERENCES.fujikawaSuikankyoDoboku],
-    map: { lat: 35.1310, lng: 138.5985, ja: "富士川水管橋", en: "Fujikawa water pipe bridge" },
-    viewpoint: { lat: 35.1265, lng: 138.5945 },
+    map: { lat: 35.1452, lng: 138.6303, ja: "富士川水管橋", en: "Fujikawa water pipe bridge" },
+    // GSI bridge centre; seven fast-train GPX station-crossing inverses: median 45.747 min.
+    // A common centre gives both directions about 20 s before bridge entry with the native 30 s short cue.
+    viewpoint: { lat: 35.13813, lng: 138.63160 },
   },
   {
     id: "left-fuji",

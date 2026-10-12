@@ -62,32 +62,35 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=175aa59c">
+  <link rel="stylesheet" href="style.css?v=f05e5c64">
+  <script defer src="utility-locales.js?v=baa993d2"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/journal.html">
 </head>
 <body data-language-route="en" class="journal-page">
   <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>
   <header class="topbar">
-    <a class="brand" href="index.html">
+    <a class="brand" href="en/index.html">
       <span class="brand-mark">窓</span>
       <span class="brand-text">
-        <span class="brand-name" data-i18n="brandName">新幹線の窓</span>
-        <small class="brand-sub" data-i18n="brandSub">旅の瞬間を見逃さない</small>
+        <span class="brand-name" data-i18n="brandName">Shinkansen Window</span>
+        <small class="brand-sub" data-i18n="brandSub">Discover more through the train window.</small>
       </span>
     </a>
     <nav class="top-nav" aria-label="Primary">
-      <a href="en/start.html" data-i18n="navStart">列車選択</a>
-      <a href="live/" data-i18n="navLive">音声ガイド</a>
-      <a href="zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features">特集</a>
-      <a class="top-nav-overflow" href="en/zukan.html#gallery" data-i18n="navAllViews" data-cta-track="header_nav_click" data-cta-id="nav_all_views">車窓一覧</a>
-      <a href="en/journal.html" data-i18n="navMedals" aria-current="page">Window Medal Book</a>
+      <a href="en/start.html" data-i18n="navStart">Train Search</a>
+      <a href="en/live/" data-i18n="navLive">Audio Guide</a>
+      <a href="en/zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features">Field Guide</a>
+      <a class="top-nav-stamp" href="en/journal.html" data-i18n="navMedals" aria-current="page">Journal</a>
       <details class="top-nav-more">
-        <summary data-i18n="navMore">もっと見る</summary>
+        <summary data-i18n="navMore">More</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="en/zukan.html#gallery" data-i18n="navAllViews" data-cta-track="header_nav_click" data-cta-id="nav_all_views">車窓一覧</a>
+          <a class="top-nav-menu-stamp" href="en/journal.html" data-i18n="navMedals">Journal</a>
           <a href="en/guide.html" data-i18n="navFaq">See Mt. Fuji</a>
-          <a href="en/mieru.html" data-i18n="navMieru">Mt. Fuji Visibility Beta</a>
+          <a href="en/mieru.html" data-i18n="navMieru">Visibility β</a>
           <a href="en/window-artworks.html" data-i18n="navArtworks">Window Artworks</a>
-          <a href="en/references.html" data-i18n="navRefs">リンク集</a>
+          <a href="en/references.html" data-i18n="navRefs">Links</a>
           <a href="en/contact.html" data-contact-nav data-i18n="navContact">Contact</a>
           <a href="en/privacy.html" data-i18n="navPrivacy">Privacy Policy</a>
         </div>
@@ -106,7 +109,7 @@
         <h1 id="journalHeroTitle" data-i18n="journalHeroTitle"><span class="copy-chunk">Turn the views you find</span> <span class="copy-chunk">into digital stamps</span></h1>
         <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">Like collecting station stamps,</span> <span class="copy-chunk">save Mt. Fuji, castles, lakes and signs from the Tokaido Shinkansen window.</span> <span class="copy-chunk">Make it a family spotting game</span> <span class="copy-chunk">or a journal for a solo ride.</span></p>
         <div class="journal-hero-actions">
-          <a class="btn btn-primary" href="en/index.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">Build my guide</a>
+          <a class="btn btn-primary" href="en/start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">Build my guide</a>
           <a class="btn btn-ghost journal-hero-secondary" href="en/journal.html#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">What is it?</a>
           <a class="btn btn-ghost journal-hero-secondary" href="en/journal.html#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">See the stamp board</a>
         </div>
@@ -147,6 +150,8 @@
         <h2 data-i18n="memTitle">Window Stamps &amp; Medals</h2>
         <p class="section-sub" data-i18n="memSub">Record the views you find and watch your journey take shape.</p>
         <p class="journal-intro" data-i18n="journalIntro">Keep the Mt. Fuji, castles, lakes and signs you spot from the Tokaido Shinkansen as Window Stamps.</p>
+        <p class="journal-intro" id="journal-save-help">Save views you want to see with the star in the <a href="en/zukan.html#gallery">window view gallery</a>. Use stamps to record views you have spotted.</p>
+        <p class="journal-intro" id="journal-storage-help">Favorites and stamps are saved in this browser. In the Android app, they are saved within the app. They do not sync automatically between the app, browsers or devices.</p>
       </div>
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">All stamps</h3>
@@ -155,6 +160,7 @@
           <div><p class="eyebrow">FERRIS WHEELS</p><h3>A collection of little wheels</h3><p>Explore the wheels along the route in a separate field guide.</p></div>
           <a class="inline-cta" href="en/ferris-wheels.html">Explore ferris wheels<span aria-hidden="true">→</span></a>
         </aside>
+      <p class="journal-intro" id="journal-reset-help">Resetting removes both your stamps and your favorites.</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">Reset stamps</button>
       </div>
@@ -198,9 +204,9 @@
     </section>
   </main>
   <div class="journal-modal" id="journalModal" hidden>
-    <button type="button" class="journal-modal-backdrop" data-journal-close aria-label="閉じる"></button>
+    <button type="button" class="journal-modal-backdrop" data-journal-close aria-label="Close"></button>
     <section class="journal-modal-panel" role="dialog" aria-modal="true" aria-labelledby="journalModalTitle">
-      <button type="button" class="journal-modal-close" data-journal-close aria-label="閉じる">×</button>
+      <button type="button" class="journal-modal-close" data-journal-close aria-label="Close">×</button>
       <div class="journal-modal-content" id="journalModalContent"></div>
     </section>
   </div>
@@ -250,17 +256,17 @@
   </section>
 
   <footer class="footer">
-    <p class="footer-brand"><span data-i18n="brandName">新幹線の窓</span> <span data-i18n="brandSub">旅の瞬間を見逃さない</span></p>
-    <p data-i18n="footerNote">Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early.</p>
-    <p class="footer-links"><a href="en/guide.html" data-guide-nav data-i18n="footerGuide">How to See Mt. Fuji</a> · <a href="en/references.html" data-i18n="footerReferences">Window View Links</a> · <a href="en/contact.html" data-contact-nav data-i18n="footerContact">Contact</a> · <a href="en/privacy.html" data-i18n="footerPrivacy">Privacy Policy</a></p>
-    <p class="footer-credit" data-i18n="footerCredit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+    <p class="footer-brand"><span data-i18n="brandName">Shinkansen Window</span> <span data-i18n="brandSub">Discover more through the train window.</span></p>
+    <p data-i18n="footerNote">Times are Nozomi-based estimates; visibility varies by train, weather and seat. Start watching a little early.</p>
+    <p class="footer-links"><a href="en/guide.html" data-guide-nav data-i18n="footerGuide">How to see Mt. Fuji</a> · <a href="en/references.html" data-i18n="footerReferences">Window links</a> · <a href="en/contact.html" data-contact-nav data-i18n="footerContact">Contact</a> · <a href="en/privacy.html" data-i18n="footerPrivacy">Privacy Policy</a></p>
+    <p class="footer-credit" data-i18n="footerCredit">Michikusa — unhurried journeys and chance discoveries.</p>
   </footer>
 
   <script src="data/timetable.js?v=89e78630"></script>
-  <script src="data-runtime.js?v=96170e32"></script>
+  <script src="data-runtime.js?v=5db487cc"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
-  <script src="app.js?v=8ec67f87"></script>
+  <script src="app.js?v=48e0e93a"></script>
 </body>
 </html>

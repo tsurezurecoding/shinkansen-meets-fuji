@@ -61,7 +61,11 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=175aa59c">
+  <link rel="stylesheet" href="style.css?v=f05e5c64">
+  <script defer src="utility-locales.js?v=baa993d2"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/journal.html">
 </head>
 <body class="journal-page">
   <header class="topbar">
@@ -75,13 +79,12 @@
     <nav class="top-nav" aria-label="Primary">
       <a href="start.html" data-i18n="navStart">列車選択</a>
       <a href="live/" data-i18n="navLive">音声ガイド</a>
-      <a href="zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features">特集</a>
-      <a class="top-nav-overflow" href="zukan.html#gallery" data-i18n="navAllViews" data-cta-track="header_nav_click" data-cta-id="nav_all_views">車窓一覧</a>
-      <a href="journal.html" data-i18n="navMedals" aria-current="page">スタンプ帖</a>
+      <a href="zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features">車窓図鑑</a>
+      <a class="top-nav-stamp" href="journal.html" data-i18n="navMedals" aria-current="page">スタンプ帖</a>
       <details class="top-nav-more">
         <summary data-i18n="navMore">もっと見る</summary>
         <div class="top-nav-menu">
-          <a class="top-nav-menu-compact" href="zukan.html#gallery" data-i18n="navAllViews" data-cta-track="header_nav_click" data-cta-id="nav_all_views">車窓一覧</a>
+          <a class="top-nav-menu-stamp" href="journal.html" data-i18n="navMedals">スタンプ帖</a>
           <a href="guide.html" data-i18n="navFaq">富士山を見る</a>
           <a href="mieru.html" data-i18n="navMieru">見える予報β</a>
           <a href="window-artworks.html" data-i18n="navArtworks">車窓の作品集</a>
@@ -145,6 +148,8 @@
         <h2 data-i18n="memTitle">車窓スタンプとメダル</h2>
         <p class="section-sub" data-i18n="memSub">見つけた景色を記録して、旅の進み具合を眺めます。</p>
         <p class="journal-intro" data-i18n="journalIntro">見つけた景色を、車窓スタンプとして残せます。メダルを選ぶと、対象の景色と記録状況を確認できます。</p>
+        <p class="journal-intro" id="journal-save-help">次に見たい景色は、<a href="zukan.html#gallery">車窓一覧</a>の★でお気に入りに。実際に見つけた景色は、スタンプで記録できます。</p>
+        <p class="journal-intro" id="journal-storage-help">お気に入りとスタンプは、このブラウザに保存されます。Androidアプリではアプリ内に保存され、ブラウザや別の端末とは自動で共有されません。</p>
       </div>
       <div class="medal-board" id="medalBoard" aria-live="polite"></div>
       <h3 class="stamp-heading" data-i18n="stampHeading">すべてのスタンプ</h3>
@@ -165,6 +170,7 @@
         </div>
         <a class="inline-cta" href="ferris-wheels.html">観覧車コレクションを見る<span aria-hidden="true">→</span></a>
       </aside>
+      <p class="journal-intro" id="journal-reset-help">リセットすると、スタンプとお気に入りが両方消えます。</p>
       <div class="mem-actions">
         <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">スタンプをリセット</button>
       </div>
@@ -267,10 +273,10 @@
   </footer>
 
   <script src="data/timetable.js?v=89e78630"></script>
-  <script src="data-runtime.js?v=96170e32"></script>
+  <script src="data-runtime.js?v=5db487cc"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=6b2eadb5"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
-  <script src="app.js?v=8ec67f87"></script>
+  <script src="app.js?v=48e0e93a"></script>
 </body>
 </html>

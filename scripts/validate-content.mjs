@@ -26,7 +26,7 @@ const checks = [
     required: [
       '<link rel="canonical" href="https://www.michikusa-travel.com/">',
       'id="quick-intro"',
-      'href="start.html#journey" data-lp-cta="hero-card-train"',
+      'href="start.html#journey" data-lp-cta="strip-card-train"',
       'https://www.googletagmanager.com/gtag/js?id=',
       'if (window.MADO_EMBEDDED_WEB) return;',
       'window.gtag("event", `lp_${valuePath}_click`, payload);',

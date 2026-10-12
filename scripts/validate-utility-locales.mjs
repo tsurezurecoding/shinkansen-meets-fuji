@@ -21,9 +21,9 @@ const dataScript = () => read('data-runtime.js') + '\nObject.assign(window, { SP
 const exists = file => fs.existsSync(path.join(root, file));
 const assert = (ok, label, detail) => { if (!ok) errors.push(`${label}: ${detail}`); };
 const fileFor = (lang, route) => (lang === 'ja' ? '' : `${lang}/`) + route;
-const publicRoute = route => route.replace('live/index.html', 'live/');
+const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 const urlFor = (lang, route) => `${origin}/${fileFor(lang, publicRoute(route))}`;
-const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html');
+const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
 const normal = text => String(text).replace(/\s+/g, ' ').trim();
 const placeholders = text => (String(text).match(/\{(?:\d+|name|hook|area)\}/g) || []).sort().join('|');
 const compare = (actual, expected, label, detail) => assert(JSON.stringify(actual) === JSON.stringify(expected), label, detail);
@@ -111,7 +111,7 @@ function checkDictionary(lang) {
     counts.narrationDirections++;
   }
   for (const route of [...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, ...EXTRA_LOCALE_ROUTES, 'guide.html']) assert(adapter.href(route).startsWith(`${lang}/`), label, `same-language route missing ${route}`);
-  assert(adapter.href('index.html') === 'en/index.html', label, 'TOP must remain existing English fallback');
+  assert(adapter.href('index.html') === `${lang}/index.html`, label, 'TOP must use the same-language edition');
   assert(adapter.href('privacy.html') === 'en/privacy.html', label, 'untranslated route must use English fallback');
   dom.window.close(); counts.dictionaries++;
   return dictionary;
@@ -157,7 +157,7 @@ function checkMenu(dom, lang, route, label) {
     for (const edition of editions) {
       const a = [...menu.querySelectorAll('a')].find(node => node.lang === edition);
       const href = a && new URL(a.href);
-      assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route)}`, label, `language switch differs ${edition}`);
+      assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route === 'index.html' ? '' : route)}`, label, `language switch differs ${edition}`);
       assert(Boolean(a?.hasAttribute('aria-current')) === (lang === edition), label, `current marker differs ${edition}`);
     }
   }
@@ -180,6 +180,24 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     else assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
   }
   if (label.endsWith('contact.html')) compare([...doc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), [...sourceDoc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), label, 'contact destination changed');
+}
+function checkHomeAndJournal(doc, lang, route, label) {
+  if (route === 'journal.html') {
+    const link = doc.querySelector('[data-cta-id="journal-hero-train-search"]');
+    const target = link && new URL(link.href);
+    assert(target?.pathname === `/${fileFor(lang, 'start.html')}` && target.hash === '#journey', label, 'journal train CTA must open the train selector directly');
+    for (const id of ['journal-save-help', 'journal-storage-help', 'journal-reset-help']) assert(Boolean(doc.getElementById(id)?.textContent.trim()), label, `storage explanation missing: ${id}`);
+  }
+  if (route !== 'index.html') return;
+  const handoff = [...doc.querySelectorAll('script:not([src]):not([type])')].find(el => el.textContent.includes('h.indexOf("#spot-")'))?.textContent;
+  assert(Boolean(handoff), label, 'legacy train-entry handoff missing');
+  if (!handoff) return;
+  for (const hash of ['#journey', '#spot-fuji']) {
+    const current = new URL(urlFor(lang, route) + '?board=Shinagawa&dir=west' + hash);
+    let redirected = '';
+    vm.runInNewContext(handoff, { URL, URLSearchParams, document: { baseURI: doc.baseURI }, localStorage: { getItem: () => null, setItem() {} }, location: { pathname: current.pathname, href: current.href, search: current.search, hash, replace: value => { redirected = value; } } });
+    assert(redirected === `${urlFor(lang, 'start.html')}?board=Shinagawa&dir=west${hash}`, label, `legacy handoff lost language or journey: ${hash}`);
+  }
 }
 function checkDynamic(lang, route) {
   const dom = domFor(lang, route), { window } = dom;
@@ -240,7 +258,7 @@ for (const route of UTILITY_ROUTES) {
   const source = utilitySnapshot(root, route);
   for (const lang of editions) {
     const label = fileFor(lang, route), dom = domFor(lang, route), doc = dom.window.document;
-    checkMetadata(doc, lang, route, label); checkFiles(doc, label); checkMenu(dom, lang, route, label);
+    checkMetadata(doc, lang, route, label); checkFiles(doc, label); checkMenu(dom, lang, route, label); checkHomeAndJournal(doc, lang, route, label);
     assert(sitemapUrls.has(urlFor(lang, route)), label, 'sitemap registration missing');
     // Japanese/English utility HTML is bundled by the existing shell, outside the content manifest.
     if (LOCALES.includes(lang) || manifest.has(label)) checkManifest(label);
