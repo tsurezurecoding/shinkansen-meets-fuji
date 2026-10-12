@@ -85,7 +85,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
         if (!value || typeof value !== 'object') return;
         for (const [key, field] of Object.entries(value)) {
           if (key === 'inLanguage') value[key] = lang;
-          else if (typeof field === 'string' && (publicPath(route) ? field.startsWith(`${origin}/en/${publicPath(route)}`) : field === `${origin}/en/`)) value[key] = field.replace(`${origin}/en/${publicPath(route)}`, `${origin}/${publicFile(file)}`);
+          else if (typeof field === 'string' && (publicPath(route) ? field.startsWith(`${origin}/en/${publicPath(route)}`) : field === `${origin}/en/` || field.startsWith(`${origin}/en/#`))) value[key] = field.replace(`${origin}/en/${publicPath(route)}`, `${origin}/${publicFile(file)}`);
           else localizeSchema(field);
         }
       }
@@ -118,7 +118,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     // Explicit page language replaces the English mirror's storage bootstrap.
     for (const el of doc.querySelectorAll('script:not([src]):not([type])')) {
       if (route === 'index.html' && el.textContent.includes('h.indexOf("#spot-")')) {
-        el.textContent = `(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=["ja","en","fr","zh-Hant"].includes(r)?r:${JSON.stringify(lang)},u=new URL((l==="ja"?"":l+"/")+"start.html",document.baseURI);u.search=location.search;u.hash=h;location.replace(u.href)})();`;
+        el.textContent = `(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=["ja","en","fr","zh-Hant"].includes(r)?r:${JSON.stringify(lang)},u=new URL("../"+(l==="ja"?"":l+"/")+"start.html",location.href);u.search=location.search;u.hash=h;location.replace(u.href)})();`;
       }
       if (el.textContent.includes('localStorage.setItem("mado-lang", "en")')) el.textContent = el.textContent.replace('localStorage.setItem("mado-lang", "en")', `localStorage.setItem("mado-lang", "${lang}")`);
     }

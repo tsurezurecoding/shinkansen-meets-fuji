@@ -1,5 +1,5 @@
 <!DOCTYPE html><html lang="zh-Hant" class="english-lp"><head>
-<script>(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=["ja","en","fr","zh-Hant"].includes(r)?r:"zh-Hant",u=new URL((l==="ja"?"":l+"/")+"start.html",document.baseURI);u.search=location.search;u.hash=h;location.replace(u.href)})();</script>
+<script>(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=["ja","en","fr","zh-Hant"].includes(r)?r:"zh-Hant",u=new URL("../"+(l==="ja"?"":l+"/")+"start.html",location.href);u.search=location.search;u.hash=h;location.replace(u.href)})();</script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="../">
@@ -31,7 +31,7 @@
   "@graph": [
     {
       "@type": "WebApplication",
-      "@id": "https://www.michikusa-travel.com/en/#app",
+      "@id": "https://www.michikusa-travel.com/zh-Hant/#app",
       "name": "新幹線之窗",
       "alternateName": "新幹線の窓",
       "url": "https://www.michikusa-travel.com/zh-Hant/",

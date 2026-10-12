@@ -126,7 +126,7 @@ function checkMetadata(doc, lang, route, label) {
   assert(Boolean(doc.title.trim() && doc.querySelector('meta[name=description]')?.content.trim()), label, 'title/description missing');
   for (const node of doc.querySelectorAll('script[type="application/ld+json"]')) {
     try {
-      const walk = value => { if (value && typeof value === 'object') { if ('inLanguage' in value) assert(value.inLanguage === lang, label, 'JSON-LD language differs'); Object.values(value).forEach(walk); } };
+      const walk = value => { if (value && typeof value === 'object') { if ('inLanguage' in value) assert(value.inLanguage === lang, label, 'JSON-LD language differs'); if (route === 'index.html' && value['@type'] === 'WebApplication') assert(value['@id'] === urlFor(lang, route) + '#app', label, 'TOP JSON-LD identity differs from page language'); Object.values(value).forEach(walk); } };
       walk(JSON.parse(node.textContent));
     } catch (error) { errors.push(`${label}: invalid JSON-LD: ${error.message}`); }
   }
@@ -195,7 +195,8 @@ function checkHomeAndJournal(doc, lang, route, label) {
   for (const hash of ['#journey', '#spot-fuji']) {
     const current = new URL(urlFor(lang, route) + '?board=Shinagawa&dir=west' + hash);
     let redirected = '';
-    vm.runInNewContext(handoff, { URL, URLSearchParams, document: { baseURI: doc.baseURI }, localStorage: { getItem: () => null, setItem() {} }, location: { pathname: current.pathname, href: current.href, search: current.search, hash, replace: value => { redirected = value; } } });
+    // The early inline handoff executes before the parser reaches <base>.
+    vm.runInNewContext(handoff, { URL, URLSearchParams, document: { baseURI: current.href }, localStorage: { getItem: () => null, setItem() {} }, location: { pathname: current.pathname, href: current.href, search: current.search, hash, replace: value => { redirected = value; } } });
     assert(redirected === `${urlFor(lang, 'start.html')}?board=Shinagawa&dir=west${hash}`, label, `legacy handoff lost language or journey: ${hash}`);
   }
 }
