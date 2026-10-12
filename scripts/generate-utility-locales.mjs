@@ -10,6 +10,7 @@ import { assetVersion } from './shared/asset-version.mjs';
 import { withUtilityLocales, publicPath } from './shared/utility-locales.mjs';
 const publicFile = file => file.replace(/(^|\/)index\.html$/, '$1').replace('live/index.html', 'live/');
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
+import { utilityEditorialNotes } from './shared/editorial-notes.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
@@ -58,6 +59,8 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     forecast: Object.fromEntries(Object.entries(FORECAST_COPY).map(([key, text]) => [key, tr(text)])),
     routes,
   };
+  const editorialNotes = utilityEditorialNotes(lang, data.SPOTS.map(spot => spot.id));
+  if (Object.keys(editorialNotes).length) payload.editorialNotes = editorialNotes;
   write(`${lang}/utility-data.js`, '/* Generated from English utility content; edit scripts/locales/utility-' + lang + '.json. */\nwindow.MADO_UTILITY_PAYLOAD=' + JSON.stringify(payload) + ';\n');
   for (const route of UTILITY_ROUTES) {
     const dom = utilitySnapshot(root, route);

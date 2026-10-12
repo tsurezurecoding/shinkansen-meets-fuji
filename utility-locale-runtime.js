@@ -39,6 +39,7 @@
   });
   window.MADO_UTILITY_LOCALE = {
     lang: payload.lang, tables: tables, spots: payload.spots, narrations: payload.narrations,
+    editorialNotes: payload.editorialNotes || {},
     t: t, stationName: t, forecast: payload.forecast,
     format: function (key) {
       var args = Array.prototype.slice.call(arguments, 1);

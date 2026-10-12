@@ -1261,6 +1261,10 @@ function stampBadgeHTML(sp, size, fallbackCls) {
     `onerror="this.hidden=true;this.nextElementSibling.hidden=false">` +
     `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
+function editorialNoteHTML(spot) {
+  const locale = window.MADO_UTILITY_LOCALE;
+  return locale?.lang === lang ? locale.editorialNotes?.[spot.id] || '' : '';
+}
 function spotDetailModalHTML(spot) {
   const L = spotCopy(spot);
   const heroMedia = spotModalMediaHTML(spot);
@@ -1282,6 +1286,7 @@ function spotDetailModalHTML(spot) {
         <div class="spot-modal-copy">
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
+          ${editorialNoteHTML(spot)}
           ${bodyLinksHTML(spot, "spot-modal-body-links")}
           ${collectionGuideLinkHTML(spot)}
           <div class="spot-modal-actions">
