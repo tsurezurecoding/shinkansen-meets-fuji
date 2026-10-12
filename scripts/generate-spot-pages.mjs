@@ -1547,7 +1547,7 @@ function englishLandingHTML() {
   ).join('\n') + '\n' + stampCard + '</div>';
   html = html.replace(/<h2 id="scenery-title" class="visually-hidden">[^<]*<\/h2>/, '<h2 id="scenery-title" class="visually-hidden">Mt. Fuji and more: window views and on-board guides</h2>');
   html = html.replaceAll('>車窓の作品集</a>', '>Window Artworks</a>');
-  html = html.replace(/<div class="(?:photo-mosaic|discovery-grid) scenery-strip"[^>]*>[\s\S]*?<\/div>\s*<div class="scenery-strip-controls">[\s\S]*?<\/div>/, discoveryGrid + '<div class="scenery-strip-controls"><small>Scroll to explore more views</small><span class="scenery-strip-nav"><button type="button" data-strip-prev aria-label="Previous views" aria-controls="scenery-photos"><span aria-hidden="true">←</span></button><button type="button" data-strip-next aria-label="Next views" aria-controls="scenery-photos"><span aria-hidden="true">→</span></button></span></div>');
+  html = html.replace(/<div class="(?:photo-mosaic|discovery-grid) scenery-strip"[^>]*>[\s\S]*?<\/div>(?=\s*<\/div>\s*<\/section>)/, discoveryGrid);
   html = html.replace('<p>Sagami Bay, tea fields, Lake Hamana, castles, architecture, and trackside signs.</p>', '<p>Come for Mt. Fuji. Discover castles, farmland and lakes along the way.</p>');
   // Approved inbound home chapters: retain explicit audio and digital-stamp explanations.
   html = html.replace(/<section class="select ride-compact ride-audio"[\s\S]*?<\/section>/, `<section class="select ride-compact ride-audio" id="live-guide" aria-labelledby="live-guide-title">

@@ -9,21 +9,21 @@
  const resize=()=>{
   strip.dataset.overflow='false';
   const first=originals[0].getBoundingClientRect(),end=originals.at(-1).getBoundingClientRect();
-  overflow=end.right-first.left>strip.clientWidth+1;strip.dataset.overflow=String(overflow);controls.hidden=!overflow;
+  overflow=end.right-first.left>strip.clientWidth+1;strip.dataset.overflow=String(overflow);if(controls)controls.hidden=!overflow;
   cycle=overflow?strip.querySelector('[data-strip-clone]').offsetLeft-originals[0].offsetLeft:0;
   if(!overflow)strip.scrollLeft=0;
  };
  const pause=()=>{pauseUntil=performance.now()+3000;};
  const move=direction=>{pause();const step=originals[0].getBoundingClientRect().width+parseFloat(getComputedStyle(strip).columnGap||12);strip.scrollBy({left:direction*step,behavior:reduced.matches?'instant':'smooth'});};
- controls.querySelector('[data-strip-prev]')?.addEventListener('click',()=>move(-1));
- controls.querySelector('[data-strip-next]')?.addEventListener('click',()=>move(1));
+ controls?.querySelector('[data-strip-prev]')?.addEventListener('click',()=>move(-1));
+ controls?.querySelector('[data-strip-next]')?.addEventListener('click',()=>move(1));
  strip.addEventListener('pointerdown',()=>{dragging=true;pause();});
  const release=()=>{if(dragging){dragging=false;pause();}};
  window.addEventListener('pointerup',release);window.addEventListener('pointercancel',release);
  strip.addEventListener('wheel',pause,{passive:true});
  strip.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse')hovered=true;});strip.addEventListener('pointerleave',()=>{hovered=false;});
  strip.addEventListener('focusin',()=>{focused=true;});strip.addEventListener('focusout',()=>{focused=false;});
- controls.addEventListener('focusin',()=>{focused=true;});controls.addEventListener('focusout',()=>{focused=false;});
+ controls?.addEventListener('focusin',()=>{focused=true;});controls?.addEventListener('focusout',()=>{focused=false;});
  strip.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key))return;e.preventDefault();move(e.key==='ArrowRight'?1:-1);});
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;},{threshold:0}).observe(strip);
  new ResizeObserver(resize).observe(strip);resize();
