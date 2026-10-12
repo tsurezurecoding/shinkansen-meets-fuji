@@ -1,4 +1,5 @@
 import { SANYO_CASTLES } from "./shared/sanyo-castles.mjs";
+import { renderArticleConnections } from './shared/editorial-notes.mjs';
 import { CASTLE_COLLECTION, castleCollectionFor } from "./shared/castle-reading-collection.mjs";
 import fs from "node:fs";
 import path from "node:path";
@@ -740,7 +741,11 @@ const pageSpots = source.SPOTS.filter((spot) => !spot.guideRoute);
 const pages = {};
 for (const spot of pageSpots) {
   pages[spot.id] = {};
-  for (const lang of ["ja", "en"]) pages[spot.id][lang] = projectPage(spot, lang);
+  for (const lang of ["ja", "en"]) {
+    pages[spot.id][lang] = projectPage(spot, lang);
+    const connection = renderArticleConnections(lang, spot.id);
+    if (connection) pages[spot.id][lang].articleConnections = connection;
+  }
 }
 
 const showcase = SHOWCASE_SPOT_IDS.map((id) => {

@@ -1,6 +1,6 @@
 // English traveler-facing pages are the structural/content source for these editions.
 import fs from 'node:fs';
-import { editions, languages, stripEdition } from './shared/locales.mjs';
+import { episodes, editions, languages, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { UTILITY_ROUTES, LOCALES, ATTRS, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
@@ -57,7 +57,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     spots: Object.fromEntries(data.SPOTS.map(spot => [spot.id, translateObject(spot.en)])),
     narrations: translatedNarrations,
     forecast: Object.fromEntries(Object.entries(FORECAST_COPY).map(([key, text]) => [key, tr(text)])),
-    routes,
+    routes: [...routes, ...Object.keys(episodes).filter(route => episodes[route].includes(lang))],
   };
   const editorialNotes = utilityEditorialNotes(lang, data.SPOTS.map(spot => spot.id));
   if (Object.keys(editorialNotes).length) payload.editorialNotes = editorialNotes;
@@ -73,7 +73,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       doc.body.setAttribute('data-spot-page-shared-lang', lang);
       doc.querySelectorAll('[data-spot-page-shared-module]').forEach(el => el.removeAttribute('data-spot-page-shared-module'));
     }
-    for (const node of textNodes(doc)) if (!node.parentElement.closest('.lang-switch,.show-credit')) node.textContent = tr(node.textContent);
+    for (const node of textNodes(doc)) if (!node.parentElement.closest('.brand-mark,.lang-switch,.show-credit')) node.textContent = tr(node.textContent);
     for (const el of doc.querySelectorAll('*')) for (const attr of ATTRS) if (el.getAttribute(attr)?.trim()) el.setAttribute(attr, tr(el.getAttribute(attr)));
     doc.title = tr(doc.title);
     for (const el of doc.querySelectorAll('meta')) {
@@ -101,7 +101,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
       const url = new URL(href, doc.baseURI);
       const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
-      const destination = (routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
+      const destination = (payload.routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       el.setAttribute('href', prefix + destination + url.search + url.hash);
     }

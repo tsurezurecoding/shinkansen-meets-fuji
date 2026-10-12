@@ -4,6 +4,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { trainSearchTablesHTML } from "./shared/train-search-tables.mjs";
 import { CASTLE_LOCALE_ROUTES } from "./shared/castle-locales.mjs";
+import { supported } from "./shared/locales.mjs";
 
 // Fills the Mt. Fuji timing table on en/jr-pass-fuji.html from data/timetable.js.
 //
@@ -100,7 +101,7 @@ function routedSpotHref(spot, langKey) {
   const L = LANGS[langKey];
   const route = spot.guideRoute?.[langKey] || spot.guideRoute?.en || spot.guideRoute?.ja;
   const localizedRoute = (route || `en/spots/${spot.id}.html`).replace(/^en\//, '');
-  if (langKey === 'zh-Hant' && CASTLE_LOCALE_ROUTES.includes(localizedRoute.split('#')[0])) return localizedRoute;
+  if (langKey === 'zh-Hant' && supported(localizedRoute).includes(langKey)) return localizedRoute;
   if (!route) return `${L.spotHrefPrefix || "spots/"}${spot.id}.html`;
   const sameDirectoryPrefix = `${L.dir}/`;
   return route.startsWith(sameDirectoryPrefix) ? route.slice(sameDirectoryPrefix.length) : `../${route}`;

@@ -1,7 +1,7 @@
 // Source of truth: the overseas-traveler English edition plus reviewed translations.
 // Snapshot only first-party rendering, preserving photographs, credits and DOM behavior.
 import fs from 'node:fs';
-import { editions, languages, stripEdition } from './shared/locales.mjs';
+import { episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './shared/castle-localization.mjs';
@@ -17,7 +17,8 @@ const missing = new Set();
 const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
 if (requestedLang && !CASTLE_LOCALE_LANGS.includes(requestedLang)) throw Error('Unknown castle locale: ' + requestedLang);
 for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
-  const dictionary = JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8'));
+  const episodeFile = path.join(root, 'scripts/locales', `episode-${lang}.json`);
+  const dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
   function tr(value) {
     const key = value.trim();
     if (!key) return value;
@@ -26,9 +27,10 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     if (typeof result !== 'string' || !result.trim()) { missing.add(`${lang}: ${key}`); return value; }
     return value.replace(key, () => result);
   }
-  for (const route of CASTLE_LOCALE_ROUTES) {
+  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang))]) {
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
+    doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());
     const prefix = route.startsWith('spots/') ? '../../' : '../';
     const file = `${lang}/${route}`;
     // The translated snapshot is already rendered. Reuse common interaction scripts.
@@ -40,7 +42,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     doc.body.setAttribute('data-spot-page-shared-lang', lang);
     doc.documentElement.lang = lang;
     doc.querySelectorAll('[lang="en"]').forEach(el => el.lang = lang);
-    for (const node of textNodes(doc)) if (!node.parentElement.closest('.show-credit, figcaption a:not([data-gallery-source-output])')) node.textContent = tr(node.textContent);
+    for (const node of textNodes(doc)) if (!node.parentElement.closest('.brand-mark, .show-credit, figcaption a:not([data-gallery-source-output])')) node.textContent = tr(node.textContent);
     for (const el of doc.querySelectorAll('*')) for (const attr of TRANSLATABLE_ATTRIBUTES) {
       if (el.hasAttribute(attr) && el.getAttribute(attr).trim()) el.setAttribute(attr, tr(el.getAttribute(attr)));
     }
@@ -70,7 +72,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       const url = new URL(href, `${origin}/en/${route}`);
       let target = url.pathname.slice(1).replace(/^en\//, '').replace(/^$/, 'index.html');
       if (target === 'spots/hamanako-fuji.html') { target = 'spots/hamanako.html'; url.hash = 'hamanako-fuji'; }
-      if (CASTLE_LOCALE_ROUTES.includes(target) || EXTRA_LOCALE_ROUTES.includes(target) || UTILITY_ROUTES.includes(target.replace(/^live\/$/, 'live/index.html')) || target === 'guide.html') {
+      if (supported(target).includes(lang)) {
         el.setAttribute('href', prefix + lang + '/' + (target === 'index.html' ? '' : target) + url.search + url.hash);
       } else if (url.pathname.startsWith('/en/') && !el.closest('.lang-switch')) {
         el.setAttribute('href', prefix + 'en/' + target + url.search + url.hash);
@@ -85,7 +87,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       summary.setAttribute('aria-label', editions[lang].prompt);
       const options = doc.createElement('div');
       options.className = 'guide-lang-options';
-      for (const [edition, label] of languages.map(edition => [edition, editions[edition].label])) {
+      for (const [edition, label] of supported(route).map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a');
         a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
         a.lang = edition; a.textContent = label;
@@ -107,7 +109,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
         if (typeof value !== 'string') return value;
         if (value.startsWith(origin + '/en/')) {
           const rest = value.slice((origin + '/en/').length).split('#')[0];
-          if (CASTLE_LOCALE_ROUTES.includes(rest)) return value.replace('/en/', `/${lang}/`);
+          if (supported(rest).includes(lang)) return value.replace('/en/', `/${lang}/`);
         }
         return ['name','headline','description','caption'].includes(key) && dictionary[value] ? dictionary[value] : value;
       };

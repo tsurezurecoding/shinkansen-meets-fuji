@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
-import { languages, translated, stripEdition, routes, withLocaleRegistry } from './shared/locales.mjs';
+import { episodes, supported, editions, languages, translated, stripEdition, routes, withLocaleRegistry } from './shared/locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
@@ -14,13 +14,21 @@ for (const lang of languages) {
   const dom = new JSDOM(html, { url: origin + '/' + file });
   const prefix = dom.window.document.querySelector('base') ? '' : lang === 'ja' ? '' : '../';
   const menus = [];
-  html = html.replace(/<details\b[^>]*class="[^"]*guide-lang-menu[^\"]*"[^>]*>[\s\S]*?<\/details>/g, menu => { menus.push(menu); return '<!-- MADO_GUIDE_MENU_' + (menus.length - 1) + ' -->'; });
+  html = html.replace(/<details\b[^>]*class="[^"]*guide-lang-menu[^\"]*"[^>]*>[\s\S]*?<\/details>/g, menu => {
+    const options = supported('guide.html').map(edition => {
+      const href = prefix + (edition === 'ja' ? '' : edition + '/') + 'guide.html' + (edition === 'ja' ? '?lang=ja' : '');
+      return `<a href="${href}"${edition === lang ? ' aria-current="page"' : ''}>${editions[edition].label}</a>`;
+    }).join('');
+    menus.push(menu.replace(/(<div class="guide-lang-options">)[\s\S]*?(<\/div>)/, `$1\n        ${options}\n      $2`));
+    return '<!-- MADO_GUIDE_MENU_' + (menus.length - 1) + ' -->';
+  });
   // Preserve the hand-authored markup, tracked rail attributes and original credits.
   html = html.replace(/<a\b[^>]*href="([^"]+)"[^>]*>/g, (tag, href) => {
-    if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href) || /\blang=|hreflang=/.test(tag)) return tag;
+    if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href) || /\blang=/.test(tag)) return tag;
     const url = new URL(href, dom.window.document.baseURI);
     const route = stripEdition(url.pathname.slice(1)).replace(/^live\/$/, 'live/index.html') || 'index.html';
-    if (!routes.includes(route)) return tag;
+    if (!supported(route).includes(lang)) return tag;
+    tag = tag.replace(/\s+hreflang="en"/, '');
     if (tag.includes('data-guide-cta="hero_exact_time"')) url.searchParams.set('focus', 'fuji');
     if (['ja', 'en'].includes(lang) && /data-guide-cta="(?:rail_exact_time(?:_bottom)?|train_times_picker)"/.test(tag)) url.searchParams.set('focus', 'fuji');
     if (translated.includes(lang) && tag.includes('data-guide-cta="rail_exact_time')) url.searchParams.delete('focus');

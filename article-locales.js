@@ -2,11 +2,11 @@
 (function () {
   'use strict';
   function connect() {
-    var alternate = document.querySelector('link[hreflang="zh-Hant"]');
-    if (!alternate) return;
+    var canonical = document.querySelector('link[rel="canonical"]');
+    if (!canonical) return;
     var config = window.MADO_LOCALES;
     if (!config) return;
-    var route = new URL(alternate.href).pathname.replace(/^\/zh-Hant\//, '');
+    var route = config.canonicalRoute(new URL(canonical.href).pathname.slice(1));
     var lang = document.documentElement.lang;
     var depth = route.indexOf('spots/') === 0 ? (lang === 'ja' ? '../' : '../../') : (lang === 'ja' ? './' : '../');
     document.querySelectorAll('.lang-switch, .article-lang-menu').forEach(function (host) {

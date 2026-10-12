@@ -1,4 +1,4 @@
-import { editions as localeInfo, stripEdition } from './shared/locales.mjs';
+import { supported, editions as localeInfo, stripEdition } from './shared/locales.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -61,7 +61,7 @@ for(const lang of editions){
   compare(sources(doc),sources(sourceDoc),label,'English PV/media URLs or original video titles changed');
   compare(credits(doc),credits(sourceDoc),label,'embedded post/byline/credit changed');counts.media+=sources(doc).length;
   assert(doc.querySelector('noscript')?.innerHTML.includes(dictionary['Enable JavaScript to use the calculator. The A/B/C patterns and official links below are still available without it.']),label,'noscript fallback untranslated');
-  for(const a of doc.querySelectorAll('a[href]')){if(a.closest('blockquote,.utility-lang-menu')||/^(?:#|mailto:|tel:)/.test(a.getAttribute('href')))continue;const url=new URL(a.href);if(url.origin!==origin)continue;const route=url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'),'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');assert(url.pathname.startsWith(`/${known.includes(route)?lang:'en'}/`),label,'internal route leaves expected language '+url.pathname);}
+  for(const a of doc.querySelectorAll('a[href]')){if(a.closest('blockquote,.utility-lang-menu')||/^(?:#|mailto:|tel:)/.test(a.getAttribute('href')))continue;const url=new URL(a.href);if(url.origin!==origin)continue;const route=url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'),'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');assert(url.pathname.startsWith(`/${supported(route).includes(lang)?lang:'en'}/`),label,'internal route leaves expected language '+url.pathname);}
   assert(!/\(anglais\)|（英文）|\(English\)/i.test(doc.querySelector('header')?.textContent||''),label,'visible English fallback badge');
   const allowed=new Set(['locales.js','data/timetable.js','data-runtime.js','train-select.js','train-picker.js','sparkling-dreams.js','utility-locale-runtime.js',`${lang}/utility-data.js`,`${lang}/sparkling-data.js`,'sparkling-locale-runtime.js']);
   for(const script of doc.querySelectorAll('script[src]')){const file=new URL(script.src).pathname.slice(1);if(!allowed.has(file))continue;let code=file==='data-runtime.js'?dataScript():read(file);if(file==='sparkling-dreams.js')code=code.replace('  initEmbedLoading();','  root.__testSparklingRender = renderResult;\n  initEmbedLoading();');dom.window.eval(code);}
