@@ -45,7 +45,7 @@
       return payload.forecast[key].replace(/\{(\d+)\}/g, function (_, i) { return args[Number(i)]; });
     },
     href: function (route) {
-      route = route.replace(/^(?:en|fr|zh-Hant)\//, '');
+      route = window.MADO_LOCALES ? window.MADO_LOCALES.stripEdition(route) : route;
       var path = route.split(/[?#]/)[0].replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
       return (payload.routes.indexOf(path) >= 0 ? payload.lang : 'en') + '/' + (route === 'index.html' ? '' : route);
     },

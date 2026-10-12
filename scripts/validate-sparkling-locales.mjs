@@ -1,3 +1,4 @@
+import { editions as localeInfo, stripEdition } from './shared/locales.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -42,8 +43,8 @@ for(const lang of editions){
  assert(doc.querySelector('link[rel=canonical]')?.href===`${origin}/${label}`,label,'canonical differs');
  for(const edition of [...editions,'x-default']){const links=doc.querySelectorAll(`link[rel=alternate][hreflang="${edition}"]`),file=(edition==='ja'?'':(edition==='x-default'?'en':edition)+'/')+SPARKLING_ROUTE;assert(links.length===1&&links[0].href===`${origin}/${file}`,label,`hreflang ${edition} differs`);}
  if(!doc.querySelector('header .lang-switch,header .utility-lang-menu')){dom.window.eval(read('spot-page-shared-data.js'));dom.window.eval(read('spot-page-shared.js'));}
- dom.window.eval(read('utility-locales.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
- const menu=doc.querySelector('details.guide-lang-menu.utility-lang-menu');assert(Boolean(menu)&&menu.querySelectorAll('a').length===4&&!doc.querySelector('.lang-switch'),label,'guide-style four-language dropdown missing');
+ dom.window.eval(read('locales.js')); dom.window.eval(read('utility-locales.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+ const menu=doc.querySelector('details.guide-lang-menu.utility-lang-menu');assert(Boolean(menu)&&menu.querySelectorAll('a').length===editions.length&&!doc.querySelector('.lang-switch'),label,'guide-style four-language dropdown missing');
  for(const a of menu?.querySelectorAll('a')||[])assert(new URL(a.href).pathname===`/${(a.lang==='ja'?'':a.lang+'/')+SPARKLING_ROUTE}`,label,'language dropdown destination differs');
  if(SPARKLING_LOCALES.includes(lang)){
   const dictionary=JSON.parse(read(`scripts/locales/sparkling-${lang}.json`)),tr=value=>dictionary[value.trim()]?value.replace(value.trim(),()=>dictionary[value.trim()]):value;
@@ -60,9 +61,9 @@ for(const lang of editions){
   compare(sources(doc),sources(sourceDoc),label,'English PV/media URLs or original video titles changed');
   compare(credits(doc),credits(sourceDoc),label,'embedded post/byline/credit changed');counts.media+=sources(doc).length;
   assert(doc.querySelector('noscript')?.innerHTML.includes(dictionary['Enable JavaScript to use the calculator. The A/B/C patterns and official links below are still available without it.']),label,'noscript fallback untranslated');
-  for(const a of doc.querySelectorAll('a[href]')){if(a.closest('blockquote,.utility-lang-menu')||/^(?:#|mailto:|tel:)/.test(a.getAttribute('href')))continue;const url=new URL(a.href);if(url.origin!==origin)continue;const route=url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//,'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');assert(url.pathname.startsWith(`/${known.includes(route)?lang:'en'}/`),label,'internal route leaves expected language '+url.pathname);}
+  for(const a of doc.querySelectorAll('a[href]')){if(a.closest('blockquote,.utility-lang-menu')||/^(?:#|mailto:|tel:)/.test(a.getAttribute('href')))continue;const url=new URL(a.href);if(url.origin!==origin)continue;const route=url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'),'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');assert(url.pathname.startsWith(`/${known.includes(route)?lang:'en'}/`),label,'internal route leaves expected language '+url.pathname);}
   assert(!/\(anglais\)|（英文）|\(English\)/i.test(doc.querySelector('header')?.textContent||''),label,'visible English fallback badge');
-  const allowed=new Set(['data/timetable.js','data-runtime.js','train-select.js','train-picker.js','sparkling-dreams.js','utility-locale-runtime.js',`${lang}/utility-data.js`,`${lang}/sparkling-data.js`,'sparkling-locale-runtime.js']);
+  const allowed=new Set(['locales.js','data/timetable.js','data-runtime.js','train-select.js','train-picker.js','sparkling-dreams.js','utility-locale-runtime.js',`${lang}/utility-data.js`,`${lang}/sparkling-data.js`,'sparkling-locale-runtime.js']);
   for(const script of doc.querySelectorAll('script[src]')){const file=new URL(script.src).pathname.slice(1);if(!allowed.has(file))continue;let code=file==='data-runtime.js'?dataScript():read(file);if(file==='sparkling-dreams.js')code=code.replace('  initEmbedLoading();','  root.__testSparklingRender = renderResult;\n  initEmbedLoading();');dom.window.eval(code);}
   doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   assert(doc.querySelector('[data-picker-text=btnFind]')?.textContent===dom.window.MADO_UTILITY_LOCALE.tables.picker.btnFind,label,'picker does not retain language');

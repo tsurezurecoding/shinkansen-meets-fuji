@@ -1,5 +1,6 @@
 // English traveler-facing pages are the structural/content source for these editions.
 import fs from 'node:fs';
+import { editions, languages, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { UTILITY_ROUTES, LOCALES, ATTRS, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
@@ -76,7 +77,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       const name = el.name || el.getAttribute('property') || '';
       if (/(?:description|title|image:alt)$/.test(name)) el.content = tr(el.content);
       if (name === 'og:url') el.content = `${origin}/${publicFile(file)}`;
-      if (name === 'og:locale') el.content = lang === 'fr' ? 'fr_FR' : 'zh_TW';
+      if (name === 'og:locale') el.content = editions[lang].og;
     }
     doc.querySelector('link[rel="canonical"]').href = `${origin}/${publicFile(file)}`;
     for (const schema of doc.querySelectorAll('script[type="application/ld+json"]')) {
@@ -104,10 +105,10 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     for (const host of doc.querySelectorAll('.lang-switch')) {
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       const menu = doc.createElement('details'); menu.className = 'guide-lang-menu utility-lang-menu';
-      const summary = doc.createElement('summary'); summary.textContent = lang === 'fr' ? 'Français' : '繁體中文';
-      summary.setAttribute('aria-label', lang === 'fr' ? 'Choisir la langue' : '選擇語言');
+      const summary = doc.createElement('summary'); summary.textContent = editions[lang].label;
+      summary.setAttribute('aria-label', editions[lang].prompt);
       const options = doc.createElement('div'); options.className = 'guide-lang-options';
-      for (const [edition, label] of [['ja','日本語'], ['en','English'], ['zh-Hant','繁體中文'], ['fr','Français']]) {
+      for (const [edition, label] of languages.map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a'); a.textContent = label; a.lang = edition;
         a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
         if (edition === lang) a.setAttribute('aria-current', 'page');
@@ -118,7 +119,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     // Explicit page language replaces the English mirror's storage bootstrap.
     for (const el of doc.querySelectorAll('script:not([src]):not([type])')) {
       if (route === 'index.html' && el.textContent.includes('h.indexOf("#spot-")')) {
-        el.textContent = `(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=["ja","en","fr","zh-Hant"].includes(r)?r:${JSON.stringify(lang)},u=new URL("../"+(l==="ja"?"":l+"/")+"start.html",location.href);u.search=location.search;u.hash=h;location.replace(u.href)})();`;
+        el.textContent = `(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=${JSON.stringify(languages)}.includes(r)?r:${JSON.stringify(lang)},u=new URL("../"+(l==="ja"?"":l+"/")+"start.html",location.href);u.search=location.search;u.hash=h;location.replace(u.href)})();`;
       }
       if (el.textContent.includes('localStorage.setItem("mado-lang", "en")')) el.textContent = el.textContent.replace('localStorage.setItem("mado-lang", "en")', `localStorage.setItem("mado-lang", "${lang}")`);
     }

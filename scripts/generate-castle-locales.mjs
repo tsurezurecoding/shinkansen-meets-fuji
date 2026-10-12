@@ -1,6 +1,7 @@
 // Source of truth: the overseas-traveler English edition plus reviewed translations.
 // Snapshot only first-party rendering, preserving photographs, credits and DOM behavior.
 import fs from 'node:fs';
+import { editions, languages, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './shared/castle-localization.mjs';
@@ -52,7 +53,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
     for (const el of doc.querySelectorAll('meta')) {
       const key = el.getAttribute('name') || el.getAttribute('property') || '';
       if (/(?:description|title|image:alt)$/.test(key)) el.setAttribute('content', tr(el.content));
-      if (key === 'og:locale') el.content = lang === 'fr' ? 'fr_FR' : 'zh_TW';
+      if (key === 'og:locale') el.content = editions[lang].og;
       if (key === 'og:url') el.content = `${origin}/${file}`;
       if (/article:(?:published|modified)_time/.test(key)) el.remove();
     }
@@ -77,11 +78,11 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       const menu = doc.createElement('details');
       menu.className = 'guide-lang-menu article-lang-menu';
       const summary = doc.createElement('summary');
-      summary.textContent = lang === 'fr' ? 'Français' : '繁體中文';
-      summary.setAttribute('aria-label', lang === 'fr' ? 'Choisir la langue' : '選擇語言');
+      summary.textContent = editions[lang].label;
+      summary.setAttribute('aria-label', editions[lang].prompt);
       const options = doc.createElement('div');
       options.className = 'guide-lang-options';
-      for (const [edition, label] of [['ja','日本語'],['en','English'],['zh-Hant','繁體中文'],['fr','Français']]) {
+      for (const [edition, label] of languages.map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a');
         a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
         a.lang = edition; a.textContent = label;
@@ -93,7 +94,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
     }
     for (const el of doc.querySelectorAll('[data-map-src],iframe[src*="google.com/maps"]')) {
       const attr = el.hasAttribute('data-map-src') ? 'data-map-src' : 'src';
-      const url = new URL(el.getAttribute(attr)); url.searchParams.set('language', lang === 'zh-Hant' ? 'zh-TW' : 'fr'); el.setAttribute(attr, url.href);
+      const url = new URL(el.getAttribute(attr)); url.searchParams.set('language', editions[lang].map); el.setAttribute(attr, url.href);
     }
     for (const el of doc.querySelectorAll('script[type="application/ld+json"]')) {
       const rewrite = (value, key = '') => {

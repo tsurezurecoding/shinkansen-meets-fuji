@@ -1,3 +1,4 @@
+import { editions as localeInfo, stripEdition } from './shared/locales.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -23,7 +24,7 @@ const assert = (ok, label, detail) => { if (!ok) errors.push(`${label}: ${detail
 const fileFor = (lang, route) => (lang === 'ja' ? '' : `${lang}/`) + route;
 const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 const urlFor = (lang, route) => `${origin}/${fileFor(lang, publicRoute(route))}`;
-const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
+const canonicalRoute = url => url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'), '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
 const normal = text => String(text).replace(/\s+/g, ' ').trim();
 const placeholders = text => (String(text).match(/\{(?:\d+|name|hook|area)\}/g) || []).sort().join('|');
 const compare = (actual, expected, label, detail) => assert(JSON.stringify(actual) === JSON.stringify(expected), label, detail);
@@ -59,7 +60,7 @@ function translation(dictionary, value) {
   return dictionary[key] ? value.replace(key, () => dictionary[key]) : value;
 }
 function initAdapter(dom, lang) {
-  dom.window.eval(dataScript());
+  dom.window.eval(read('locales.js')); dom.window.eval(dataScript());
   dom.window.eval(read(`${lang}/utility-data.js`));
   dom.window.eval(read('utility-locale-runtime.js'));
   return dom.window.MADO_UTILITY_LOCALE;
@@ -146,14 +147,14 @@ function checkMenu(dom, lang, route, label) {
   if (!window.document.querySelector('header .lang-switch,header .utility-lang-menu') && window.document.querySelector('[data-spot-page-shared-module]')) {
     window.eval(read('spot-page-shared-data.js')); window.eval(read('spot-page-shared.js'));
   }
-  window.eval(read('utility-locales.js')); window.document.dispatchEvent(new window.Event('DOMContentLoaded'));
+  window.eval(read('locales.js')); window.eval(read('utility-locales.js')); window.document.dispatchEvent(new window.Event('DOMContentLoaded'));
   const doc = window.document, menus = doc.querySelectorAll('details.guide-lang-menu.utility-lang-menu');
   assert(menus.length === 1 && !doc.querySelector('.lang-switch'), label, 'one guide-style menu must replace old language buttons');
-  const labels = { ja: '日本語', en: 'English', 'zh-Hant': '繁體中文', fr: 'Français' };
-  const prompts = { ja: '言語を選択', en: 'Choose language', 'zh-Hant': '選擇語言', fr: 'Choisir la langue' };
+  const labels = Object.fromEntries(editions.map(x=>[x,localeInfo[x].label]));
+  const prompts = Object.fromEntries(editions.map(x=>[x,localeInfo[x].prompt]));
   for (const menu of menus) {
     assert(menu.querySelector('summary')?.textContent === labels[lang] && menu.querySelector('summary')?.getAttribute('aria-label') === prompts[lang], label, 'current language/prompt differs');
-    assert(menu.querySelectorAll('a').length === 4 && !menu.open, label, 'four languages and closed initial state required');
+    assert(menu.querySelectorAll('a').length === editions.length && !menu.open, label, 'four languages and closed initial state required');
     for (const edition of editions) {
       const a = [...menu.querySelectorAll('a')].find(node => node.lang === edition);
       const href = a && new URL(a.href);
@@ -206,7 +207,7 @@ function checkDynamic(lang, route) {
   window.matchMedia = () => ({ matches: false, addEventListener() {}, removeEventListener() {} });
   window.requestAnimationFrame = callback => window.setTimeout(callback, 0);
   window.MADO_ANALYTICS_DISABLED = true;
-  const allowed = new Set(['data/timetable.js', 'data-runtime.js', 'track.js', 'spot-map.js', 'train-select.js', 'train-picker.js', 'app.js', 'utility-locale-runtime.js', `${lang}/utility-data.js`]);
+  const allowed = new Set(['locales.js','data/timetable.js', 'data-runtime.js', 'track.js', 'spot-map.js', 'train-select.js', 'train-picker.js', 'app.js', 'utility-locale-runtime.js', `${lang}/utility-data.js`]);
   for (const script of window.document.querySelectorAll('script[src]')) {
     const file = new URL(script.src).pathname.slice(1);
     if (allowed.has(file)) window.eval(file === 'data-runtime.js' ? dataScript() : read(file));

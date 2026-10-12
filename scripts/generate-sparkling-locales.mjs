@@ -1,5 +1,6 @@
 // English traveler-facing Disney page is the structural/content source.
 import fs from 'node:fs';
+import { editions, languages, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { collectSparklingEnglish, sparklingSnapshot, SPARKLING_ROUTE, SPARKLING_LOCALES, SPARKLING_ATTRS, SPARKLING_EXCLUDE } from './shared/sparkling-localization.mjs';
@@ -31,7 +32,7 @@ for(const lang of SPARKLING_LOCALES){
  }
  for(const el of doc.querySelectorAll('*'))if(!el.closest(SPARKLING_EXCLUDE))for(const attr of SPARKLING_ATTRS)if(el.hasAttribute(attr))el.setAttribute(attr,tr(el.getAttribute(attr)));
  doc.title=tr(doc.title);
- for(const meta of doc.querySelectorAll('meta')){const key=meta.name||meta.getAttribute('property')||'';if(/(?:description|title|image:alt)$/.test(key))meta.content=tr(meta.content);if(key==='og:url')meta.content=`${origin}/${file}`;if(key==='og:locale')meta.content=lang==='fr'?'fr_FR':'zh_TW';}
+ for(const meta of doc.querySelectorAll('meta')){const key=meta.name||meta.getAttribute('property')||'';if(/(?:description|title|image:alt)$/.test(key))meta.content=tr(meta.content);if(key==='og:url')meta.content=`${origin}/${file}`;if(key==='og:locale')meta.content=editions[lang].og;}
  doc.querySelector('link[rel=canonical]').href=`${origin}/${file}`;
  for(const script of doc.querySelectorAll('script[type="application/ld+json"]')){
   const walk=value=>{if(Array.isArray(value))return value.map(walk);if(value&&typeof value==='object')return Object.fromEntries(Object.entries(value).map(([key,item])=>[key,key==='inLanguage'?lang:walk(item)]));return typeof value==='string'?tr(value.replace(`${origin}/en/${SPARKLING_ROUTE}`,`${origin}/${file}`)):value;};
@@ -44,8 +45,8 @@ for(const lang of SPARKLING_LOCALES){
   a.setAttribute('href','../'+(known.includes(route)?lang:'en')+'/'+(route==='index.html'?'':route)+url.search+url.hash);
  }
  for(const host of doc.querySelectorAll('.lang-switch')){
-  const menu=doc.createElement('details');menu.className='guide-lang-menu utility-lang-menu';const summary=doc.createElement('summary');summary.textContent=lang==='fr'?'Français':'繁體中文';summary.setAttribute('aria-label',lang==='fr'?'Choisir la langue':'選擇語言');const options=doc.createElement('div');options.className='guide-lang-options';
-  for(const [edition,label]of[['ja','日本語'],['en','English'],['zh-Hant','繁體中文'],['fr','Français']]){const a=doc.createElement('a');a.textContent=label;a.lang=edition;a.href='../'+(edition==='ja'?'':edition+'/')+SPARKLING_ROUTE+(edition==='ja'?'?lang=ja':'');if(edition===lang)a.setAttribute('aria-current','page');options.append(a);}menu.append(summary,options);host.replaceWith(menu);
+  const menu=doc.createElement('details');menu.className='guide-lang-menu utility-lang-menu';const summary=doc.createElement('summary');summary.textContent=editions[lang].label;summary.setAttribute('aria-label',editions[lang].prompt);const options=doc.createElement('div');options.className='guide-lang-options';
+  for(const [edition,label]oflanguages.map(edition => [edition, editions[edition].label])){const a=doc.createElement('a');a.textContent=label;a.lang=edition;a.href='../'+(edition==='ja'?'':edition+'/')+SPARKLING_ROUTE+(edition==='ja'?'?lang=ja':'');if(edition===lang)a.setAttribute('aria-current','page');options.append(a);}menu.append(summary,options);host.replaceWith(menu);
  }
  for(const script of doc.querySelectorAll('script:not([src]):not([type])'))script.textContent=script.textContent.replace('localStorage.setItem("mado-lang", "en")',`localStorage.setItem("mado-lang", "${lang}")`);
  const payload={lang,translations:dictionary};write(`${lang}/sparkling-data.js`,'/* Generated from English Disney content. */\nwindow.MADO_SPARKLING_PAYLOAD='+JSON.stringify(payload)+';\n');
