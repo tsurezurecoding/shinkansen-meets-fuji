@@ -345,7 +345,8 @@
 
     // cabin on/off: day run, hard cut to black, then the cast run
     track(q('cabin'), 'opacity', [[5.0, 0, 'ease-out'], [5.8, 1], [22.58, 1], [22.6, 0], [34.7, 0, 'ease-out'], [35.25, 1], [54.7, 1, 'ease-in'], [55.3, 0]]);
-    track(q('shade'), 'transform', [[6.0, 'translateY(0%)', EASE_IO], [7.7, 'translateY(-101%)']]);
+    if (M) track(q('shade'), 'transform', [[6.0, 'translateY(0%)', EASE_IO], [7.7, 'translateY(-101%)']]);
+    else track(q('shade'), 'opacity', [[6.0, 1, 'ease-in-out'], [7.2, 0]]);
     track(q('leak'), 'opacity', [[5.4, 0], [5.9, 1], [6.3, 1, 'ease-in'], [7.2, 0]]);
     track(q('glass'), 'transform', [[5.2, `translateX(${-18 * M}%)`], [55, `translateX(${18 * M}%)`]]);
     track(q('glass'), 'opacity', [[47.2, 0.7], [48.2, 1]]);
@@ -441,7 +442,20 @@
     vis(q('credits'), 60.95, 70.6, 0.35, 0.35);
     const H = stage.clientHeight || 540;
     const R = q('roll').offsetHeight || H * 2;
-    track(q('roll'), 'transform', [[61.0, `translateY(${H}px)`], [70.4, `translateY(${Math.round(H * 0.45 - R)}px)`]]);
+    if (M) {
+      track(q('roll'), 'transform', [[61.0, `translateY(${H}px)`], [70.4, `translateY(${Math.round(H * 0.45 - R)}px)`]]);
+    } else {
+      // Reduced motion: the roll turns over in still pages with a fade instead of scrolling.
+      const span = H * 0.8, pages = Math.max(1, Math.ceil((R - span) / span) + 1), step = 9.4 / pages;
+      const tf = [], of = [];
+      for (let k = 0; k < pages; k++) {
+        const s0 = 61.0 + k * step, y = `translateY(${Math.round(H * 0.1 - k * span)}px)`;
+        tf.push([s0, y], [s0 + step - 0.01, y]);
+        of.push([s0, 0, 'ease-out'], [s0 + 0.3, 1], [s0 + step - 0.3, 1, 'ease-in'], [s0 + step - 0.01, 0]);
+      }
+      track(q('roll'), 'transform', tf);
+      track(q('roll'), 'opacity', of);
+    }
 
     // 1:10 end card
     vis(q('endcard'), 70.6, 75.1, 0.5, 0.45);

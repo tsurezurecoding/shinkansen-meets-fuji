@@ -11,7 +11,7 @@ const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'
 const origin='https://www.michikusa-travel.com/';
 const copy={
  ja:{title:'車窓の作品集',description:'写真と地図で旅をつないだり、走馬灯や墨絵を眺めたり。新幹線の車窓から生まれた作品を集めました。',lead:'流れていく景色を、別のかたちで。',intro:'地図と写真で旅をつないだり、墨絵の線を眺めたり。車窓から生まれた作品を集めました。',open:'作品を見る',skip:'作品一覧へ',note:'乗車中の案内とは別に、車窓の表現を楽しむためのページです。'},
- en:{title:'Window Artworks',description:'Explore Shinkansen window views through photographs and ink wash. Choose Window Revue or Ink-Wash Window and enjoy a different expression of the journey.',lead:'A different way to watch the passing scenery.',intro:'Take a short trip through photographs, or watch a landscape drawn in ink wash. These two works begin with the view from a train window.',open:'Explore the work',skip:'Skip to the artworks',note:'These works are for enjoying the scenery as art, rather than guiding you during a train ride.'}
+ en:{title:'Window Artworks',description:'Explore Shinkansen window views as a short film, in photographs and in ink wash, and enjoy a different expression of the journey.',lead:'A different way to watch the passing scenery.',intro:'Watch the window as an 80-second film, take a short trip through photographs, or watch a landscape drawn in ink wash. Each work begins with the view from a train window.',open:'Explore the work',skip:'Skip to the artworks',note:'These works are for enjoying the scenery as art, rather than guiding you during a train ride.'}
 };
 let changed=0;
 for(const lang of ['ja','en']){
