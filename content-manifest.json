@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "53877f091932f50f",
+  "contentVersion": "b3d832299f0ff136",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -151,8 +151,8 @@
     {
       "path": "data/window-artworks.json",
       "url": "https://www.michikusa-travel.com/data/window-artworks.json",
-      "bytes": 1793,
-      "sha256": "a7b05fb4673e63238fed67d2d22cf5a183fa25ba3899986029e5df3c733e5624"
+      "bytes": 2596,
+      "sha256": "7230b35c9a9cd34d7d90a0b8da384e12fee3e265ab8f11cd999420e7f6d79964"
     },
     {
       "path": "data/window-trip-photo-sources.json",
@@ -451,8 +451,8 @@
     {
       "path": "en/window-artworks.html",
       "url": "https://www.michikusa-travel.com/en/window-artworks.html",
-      "bytes": 7296,
-      "sha256": "da4f0476d53f27665889e615e1df4f7d1b7a3a3ddd5217b4ab96bd94766cf703"
+      "bytes": 8806,
+      "sha256": "fac0e7aac2e0739f751727636867a2976ed2c0bc295a83cfe872cd1951bce1c7"
     },
     {
       "path": "en/yakei.html",
@@ -2737,8 +2737,8 @@
     {
       "path": "window-artworks.html",
       "url": "https://www.michikusa-travel.com/window-artworks.html",
-      "bytes": 7899,
-      "sha256": "1b34f74ef850854166a3f9da85e58952483a90d8ef5ef510b40407c9130e3fe0"
+      "bytes": 9502,
+      "sha256": "b7903ab990d605a2e2029104757f12ed3bdac414bf32ba033197b7be3ad411ca"
     },
     {
       "path": "window-moments.html",
