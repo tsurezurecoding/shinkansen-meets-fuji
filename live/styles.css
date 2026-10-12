@@ -977,19 +977,3 @@ body.live-page.is-idle #sheet {
   gap: 5px;
   min-width: 0;
 }
-
-.live-alpha-badge {
-  color: var(--live-accent);
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
-/* 注意書きは「使い方」の末尾に、本文と同じ調子の一文として置く */
-#idle-panel .idle-alpha-note {
-  margin: -6px 0 16px;
-  font-size: 0.76rem;
-  line-height: 1.7;
-  color: var(--live-sub);
-}

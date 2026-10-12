@@ -266,10 +266,8 @@ function localizeLiveStaticCopy(html, tables) {
   );
   for (const [id, key] of [
     ["live-title", "appTitle"],
-    ["live-alpha-badge", "alphaBadge"],
     ["idle-title", "idleTitle"],
     ["idle-desc", "idleDesc"],
-    ["idle-alpha-note", "alphaNote"],
     // Toolbar controls whose initial label is a fixed string live.js also renders from STR.
     // The narration toggles are deliberately absent: their label is derived from run state
     // (narrFeatured / narrAll / narrOff) and has no single key to bake in.
