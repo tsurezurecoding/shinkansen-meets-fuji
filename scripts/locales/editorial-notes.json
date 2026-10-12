@@ -74,19 +74,19 @@
         "paragraphs": [{ "kind": "fact", "text": "Am 26. März 2015 schlossen Burg Himeji und Schloss Neuschwanstein ein Abkommen zur touristischen Zusammenarbeit und zum freundschaftlichen Austausch. Zu den Zielen gehört der Austausch darüber, wie sich Kulturerbe bewahren und Tourismus nachhaltig gestalten lässt.", "sources": ["bavaria"] }]
       },
       "fuji": {
-        "id": "fuji-berlin-blue", "theme": "fuji-berlin-blue", "modal": true,
+        "id": "fuji-berlin-blue", "theme": "fuji-berlin-blue", "article": "spots/fuji.html", "modal": true,
         "heading": "Berliner Blau in Hokusais Fuji-Bildern",
         "paragraphs": [{ "kind": "fact", "text": "Hokusai verwendete Preußischblau, etwa in der Großen Welle mit dem Fuji im Hintergrund. Dieses synthetische Pigment wurde Anfang des 18. Jahrhunderts in Berlin entdeckt. Nach Japan gelangte es über den Handel mit China und den Niederlanden.", "sources": ["british-museum", "smith-blue"] }]
       },
       "fujitec-big-wing": {
-        "id": "fujitec-reichstag", "theme": "fujitec-reichstag", "modal": true,
+        "id": "fujitec-reichstag", "theme": "fujitec-reichstag", "article": "spots/fujitec-big-wing.html", "modal": true,
         "heading": "Fujitec und der Berliner Reichstag",
         "paragraphs": [{ "kind": "fact", "text": "Der Turm gehört zum Forschungs- und Produktionsstandort Big Wing von Fujitec. In den Unterlagen des Unternehmens zur Erneuerung des Berliner Reichstags 1999 ist eine Lieferung von 19 Aufzügen dokumentiert. Der Standort Big Wing nahm seinen Betrieb im April 2006 auf.", "sources": ["fujitec-reichstag", "fujitec-big-wing"] }]
       }
     },
     "fr": {
       "fuji": {
-        "id": "fuji-riviere", "theme": "fuji-riviere", "modal": true,
+        "id": "fuji-riviere", "theme": "fuji-riviere", "article": "spots/fuji.html", "modal": true,
         "heading": "Du mont Fuji à la tour Eiffel",
         "paragraphs": [{ "kind": "fact", "text": "Entre 1888 et 1902, Henri Rivière a réalisé les Trente-six vues de la tour Eiffel. Cette série rend hommage aux Trente-six vues du mont Fuji d’Hokusai : un même monument se découvre à travers des cadrages et des points de vue différents.", "sources": ["bnf"] }]
       }
@@ -98,7 +98,7 @@
         "paragraphs": [{ "kind": "fact", "text": "空海曾在唐都长安向惠果学习密教。东寺珍藏的《真言七祖像》中，有5幅由唐代宫廷画家李真等人绘制。寺院介绍，空海从唐带回的密教法器如今仍用于后七日御修法仪式。", "sources": ["toji-kukai", "toji-treasures"] }, { "kind": "fact", "text": "寺宝的公开时间未定，请以东寺的公告为准。", "sources": ["toji-treasures"] }]
       },
       "fujitec-big-wing": {
-        "id": "fujitec-wangjing", "theme": "fujitec-wangjing", "modal": true,
+        "id": "fujitec-wangjing", "theme": "fujitec-wangjing", "article": "spots/fujitec-big-wing.html", "modal": true,
         "heading": "Big Wing与北京望京SOHO的联系",
         "paragraphs": [{ "kind": "fact", "text": "Big Wing是Fujitec的电梯研发基地。Fujitec也为北京的望京SOHO提供了电梯和自动扶梯。这座由扎哈·哈迪德设计的建筑，是同一家公司在中国的项目实例。", "sources": ["fujitec-big-wing", "fujitec-quality", "fujitec-wangjing"] }]
       }
@@ -110,14 +110,14 @@
         "paragraphs": [{ "kind": "fact", "text": "空海曾在唐都長安向惠果學習密教。東寺珍藏的《真言七祖像》中，有5幅出自唐代宮廷畫家李真等人之手。寺院介紹，空海從唐帶回的密教法器，至今仍用於後七日御修法儀式。", "sources": ["toji-kukai", "toji-treasures"] }, { "kind": "fact", "text": "寺寶公開時間未定，請以東寺公告為準。", "sources": ["toji-treasures"] }]
       },
       "fujitec-big-wing": {
-        "id": "fujitec-wangjing", "theme": "fujitec-wangjing", "modal": true,
+        "id": "fujitec-wangjing", "theme": "fujitec-wangjing", "article": "spots/fujitec-big-wing.html", "modal": true,
         "heading": "Big Wing與北京望京SOHO的連結",
         "paragraphs": [{ "kind": "fact", "text": "Big Wing是Fujitec的電梯研發基地。Fujitec也曾為北京的望京SOHO供應電梯與電扶梯。這座由札哈·哈蒂設計的建築，是同一家企業在中國的工程實例。", "sources": ["fujitec-big-wing", "fujitec-quality", "fujitec-wangjing"] }]
       }
     },
     "ko": {
       "pocari-fukuroi": {
-        "id": "pocari-korea-fukuroi", "theme": "pocari-korea-fukuroi", "modal": true,
+        "id": "pocari-korea-fukuroi", "theme": "pocari-korea-fukuroi", "article": "spots/pocari-fukuroi.html", "modal": true,
         "heading": "한국에서도 만나는 포카리스웨트",
         "paragraphs": [
           { "kind": "fact", "text": "동아오츠카는 한국에서 포카리스웨트를 소개하며 다양한 활동에 이 제품을 활용하고 있습니다. 차창 밖의 후쿠로이 공장은 일본에서 포카리스웨트의 페트병 음료와 분말 제품 등을 만드는 오츠카제약의 생산 거점입니다.", "sources": ["donga-otsuka", "otsuka-production"] },

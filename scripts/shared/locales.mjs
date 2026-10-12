@@ -1,7 +1,7 @@
 import locales from '../../locales.js';
 import { assetVersion } from './asset-version.mjs';
 export default locales;
-export const { editions, languages, translated, utility, castleIds, castles, extra, routes, pattern, normalize, stripEdition, canonicalRoute, supported } = locales;
+export const { episodes, editions, languages, translated, utility, castleIds, castles, extra, routes, pattern, normalize, stripEdition, canonicalRoute, supported } = locales;
 // Synchronous routing must see the edition contract before evaluating a saved language.
 // Keep a base element ahead of the registry so relative assets resolve identically.
 export function withLocaleRegistry(html, prefix = '') {

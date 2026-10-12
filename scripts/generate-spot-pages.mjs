@@ -5,7 +5,7 @@ import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { UTILITY_ROUTES, withUtilityLocales } from './shared/utility-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
-import { languages, translated } from './shared/locales.mjs';
+import { episodes, supported, languages, translated } from './shared/locales.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -1941,8 +1941,9 @@ function sitemapXML() {
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
   const utilityLiveState = JSON.parse(fs.readFileSync(path.join(appDir, 'scripts/utility-live-sitemap-state.json'), 'utf8'));
+  const episodeUrls = Object.entries(episodes).flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-12" })));
   const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
-  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
+  const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
@@ -2129,12 +2130,18 @@ for (const config of guideRailConfigs) {
     syncedGuideHTML = enhanceContentHead(syncedGuideHTML, `${lang === 'en' ? 'en/' : ''}guide.html`, appDir);
   }
   if (CASTLE_LOCALE_LANGS.includes(lang)) {
-    syncedGuideHTML = syncedGuideHTML.replace(/href="([^\"]+)"/g, (whole, href) => {
+    const languageMenus = [];
+    syncedGuideHTML = syncedGuideHTML.replace(/<details\b[^>]*class="[^"]*guide-lang-menu[^"]*"[^>]*>[\s\S]*?<\/details>/g, menu => {
+      languageMenus.push(menu);
+      return `<!-- MADO_GUIDE_LANGUAGE_MENU_${languageMenus.length - 1} -->`;
+    });
+    syncedGuideHTML = syncedGuideHTML.replace(/<a\b[^>]*href="([^\"]+)"[^>]*>/g, (whole, href) => {
       const url = new URL(href, `https://www.michikusa-travel.com/${lang}/guide.html`);
       const route = url.pathname.replace(/^\/en\//, '');
-      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].includes(route.replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html'))
-        ? `href="../${lang}/${route}${url.search}${url.hash}"` : whole;
+      return url.origin === 'https://www.michikusa-travel.com' && url.pathname.startsWith('/en/') && supported(route).includes(lang)
+        ? whole.replace(`href="${href}"`, `href="../${lang}/${route}${url.search}${url.hash}"`).replace(/\s+hreflang="en"/, '') : whole;
     });
+    syncedGuideHTML = syncedGuideHTML.replace(/<!-- MADO_GUIDE_LANGUAGE_MENU_(\d+) -->/g, (_, index) => languageMenus[Number(index)]);
   }
   writeFileIfChanged(guidePath, syncSpotCountClaims(syncedGuideHTML));
 }

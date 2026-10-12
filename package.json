@@ -28,7 +28,7 @@
     "check:timetable": "node scripts/validate-timetable.mjs",
     "check:train-select": "node scripts/validate-train-select.mjs",
     "check:spot-pages": "node scripts/validate-spot-page-shared.mjs",
-    "check:language": "node scripts/validate-castle-locales.mjs && node scripts/validate-language-pages.mjs && node scripts/validate-utility-locales.mjs && node scripts/validate-mieru.mjs && node scripts/validate-sparkling-locales.mjs && npm run check:live-sitemap",
+    "check:language": "node scripts/validate-castle-locales.mjs && node scripts/validate-language-pages.mjs && node scripts/validate-utility-locales.mjs && node scripts/validate-mieru.mjs && node scripts/validate-sparkling-locales.mjs && node --test scripts/editorial-notes.test.mjs && npm run check:live-sitemap",
     "check:utility-locales": "node scripts/validate-utility-locales.mjs",
     "check:live-sitemap": "node scripts/validate-live-sitemap.mjs",
     "check:navigation": "node scripts/validate-site-navigation.mjs",

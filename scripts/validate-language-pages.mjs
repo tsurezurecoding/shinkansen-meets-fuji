@@ -1,4 +1,4 @@
-import { translated } from './shared/locales.mjs';
+import { supported, translated } from './shared/locales.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -217,7 +217,7 @@ function hasLocalizedArticleHref(urlPath, href) {
   if (!CASTLE_LOCALE_LANGS.includes(lang)) return false;
   const url = new URL(href, origin + urlPath);
   const route = url.pathname.replace(new RegExp(`^/${lang}/`), '');
-  return url.origin === origin && CASTLE_LOCALE_ROUTES.includes(route) && href.startsWith(`../${lang}/spots/`);
+  return url.origin === origin && supported(route).includes(lang) && href.startsWith(`../${lang}/spots/`);
 }
 for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
   const html = fs.readFileSync(diskPath(urlPath), "utf8");

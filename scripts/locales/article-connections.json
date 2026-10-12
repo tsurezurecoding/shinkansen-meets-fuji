@@ -1,0 +1,42 @@
+{
+  "ja": {
+    "sources": "出典", "checked": "確認日",
+    "fujitec": ["世界の建物とのつながり", "ベルリンの国会議事堂", "フジテックの資料には、1999年のベルリン国会議事堂改修でエレベータ19台を納入した仕様が記録されています。これは当時の同社資料の数値です。Big Wingの業務開始は2006年4月で、1999年の設備がこの塔で開発・製造されたことを示すものではありません。", "北京の望京SOHO", "フジテックは、ザハ・ハディド設計の北京・望京SOHOにもエレベータとエスカレータを納入しています。車窓のBig Wingと中国の建物を結ぶ、同じ企業の仕事です。この塔で望京SOHOの設備を製造・試験したとは確認されていません。"],
+    "pocari": ["韓国でも親しまれるポカリ", "韓国では東亜大塚がポカリスエットを紹介し、さまざまな活動に活用しています。車窓に見える袋井工場は、日本でポカリスエットのPETボトル飲料や粉末製品などを作る大塚製薬の生産拠点です。", "韓国でポカリを見かけたことがあれば、車窓の工場も少し身近に感じられるかもしれません。韓国向け製品がこの工場で作られるという意味ではありません。"]
+  },
+  "en": {
+    "sources": "Sources", "checked": "Checked",
+    "fujitec": ["Connections to buildings around the world", "Berlin's Reichstag", "Fujitec's documentation records a supply of 19 elevators for the 1999 renovation of Berlin's Reichstag. This is a historical specification in the company's own materials. Big Wing began operating in April 2006; the record does not mean the 1999 equipment was developed or made in this tower.", "Beijing's Wangjing SOHO", "Fujitec also supplied elevators and escalators to Wangjing SOHO in Beijing, designed by Zaha Hadid. It is a connection between the Big Wing seen from the train and a Chinese building through the same company's work. The sources do not establish that Wangjing SOHO's equipment was made or tested in this tower."],
+    "pocari": ["Pocari Sweat in South Korea", "Dong-A Otsuka presents Pocari Sweat in South Korea and uses the product in various activities. The Fukuroi plant outside the window is an Otsuka Pharmaceutical production base in Japan, making Pocari Sweat PET-bottle drinks and powdered products, among others.", "If you have seen Pocari Sweat in South Korea, the factory outside the window may feel more familiar. This does not mean that products sold in South Korea are made at this plant."]
+  },
+  "zh-Hant": {
+    "sources": "資料來源", "checked": "確認日期",
+    "fujitec": ["與世界建築的連結", "柏林國會大廈", "Fujitec的資料記錄了1999年柏林國會大廈改建時供應19部電梯的規格。這是該企業資料中的歷史數字。Big Wing於2006年4月開始營運，並不表示1999年的設備是在這座塔開發或製造。", "北京望京SOHO", "Fujitec也為札哈·哈蒂設計的北京望京SOHO供應電梯與電扶梯。同一家企業的工程，將車窗中的Big Wing與中國建築連在一起。資料並未證實望京SOHO的設備是在這座塔製造或測試。"],
+    "pocari": ["在韓國也能遇見寶礦力", "東亞大塚在韓國介紹寶礦力水得，並在各種活動中使用這項產品。車窗外的袋井工廠是大塚製藥在日本的生產基地，製造寶礦力PET瓶飲料與粉末產品等。", "若您在韓國見過寶礦力，車窗外的工廠或許會更親切。這並不表示在韓國銷售的產品由這座工廠製造。"]
+  },
+  "zh-Hans": {
+    "sources": "资料来源", "checked": "确认日期",
+    "fujitec": ["与世界建筑的联系", "柏林国会大厦", "Fujitec的资料记录了1999年柏林国会大厦改建时供应19部电梯的规格。这是该企业资料中的历史数字。Big Wing于2006年4月开始运营，并不表示1999年的设备是在这座塔开发或制造。", "北京望京SOHO", "Fujitec也为扎哈·哈迪德设计的北京望京SOHO供应电梯和自动扶梯。同一家企业的工程，将车窗中的Big Wing与中国建筑联系起来。资料并未证实望京SOHO的设备是在这座塔制造或测试。"],
+    "pocari": ["在韩国也能遇见宝矿力", "东亚大冢在韩国介绍宝矿力水特，并在各种活动中使用这项产品。车窗外的袋井工厂是大冢制药在日本的生产基地，制造宝矿力PET瓶饮料与粉末产品等。", "若您在韩国见过宝矿力，车窗外的工厂或许会更亲切。这并不表示在韩国销售的产品由这座工厂制造。"]
+  },
+  "fr": {
+    "sources": "Sources", "checked": "Vérifié le",
+    "fujitec": ["Des liens avec des bâtiments du monde entier", "Le Reichstag de Berlin", "La documentation de Fujitec indique la fourniture de 19 ascenseurs pour la rénovation du Reichstag de Berlin en 1999. Il s'agit d'une spécification historique dans les documents de l'entreprise. Big Wing a ouvert en avril 2006 ; cela ne signifie pas que les équipements de 1999 ont été développés ou fabriqués dans cette tour.", "Wangjing SOHO à Pékin", "Fujitec a également fourni des ascenseurs et des escaliers mécaniques à Wangjing SOHO, à Pékin, conçu par Zaha Hadid. Le travail d'une même entreprise relie ainsi Big Wing, visible depuis le train, à un bâtiment chinois. Les sources ne permettent pas d'affirmer que ses équipements ont été fabriqués ou testés dans cette tour."],
+    "pocari": ["Pocari Sweat en Corée du Sud", "Dong-A Otsuka présente Pocari Sweat en Corée du Sud et l'utilise dans différentes activités. L'usine de Fukuroi, visible par la fenêtre, est un site de production japonais d'Otsuka Pharmaceutical qui fabrique notamment des boissons Pocari Sweat en bouteilles PET et des produits en poudre.", "Si vous avez déjà vu Pocari Sweat en Corée du Sud, cette usine vous semblera peut-être plus familière. Cela ne signifie pas que les produits vendus en Corée du Sud y sont fabriqués."]
+  },
+  "de": {
+    "sources": "Quellen", "checked": "Geprüft am",
+    "fujitec": ["Verbindungen zu Gebäuden weltweit", "Der Berliner Reichstag", "Fujitecs Unterlagen dokumentieren die Lieferung von 19 Aufzügen für die Erneuerung des Berliner Reichstags 1999. Die Zahl stammt aus den historischen Spezifikationen des Unternehmens. Big Wing nahm im April 2006 den Betrieb auf; die Aufzüge von 1999 wurden damit nicht nachweislich in diesem Turm entwickelt oder hergestellt.", "Wangjing SOHO in Peking", "Fujitec lieferte auch Aufzüge und Rolltreppen für das von Zaha Hadid entworfene Wangjing SOHO in Peking. Die Arbeit desselben Unternehmens verbindet Big Wing vor dem Zugfenster mit einem Gebäude in China. Die Quellen belegen nicht, dass dessen Anlagen in diesem Turm hergestellt oder getestet wurden."],
+    "pocari": ["Pocari Sweat in Südkorea", "Dong-A Otsuka stellt Pocari Sweat in Südkorea vor und setzt das Produkt bei verschiedenen Aktivitäten ein. Das Werk Fukuroi vor dem Zugfenster ist ein Produktionsstandort von Otsuka Pharmaceutical in Japan. Es stellt unter anderem Pocari Sweat in PET-Flaschen und Pulverprodukte her.", "Wenn Sie Pocari Sweat aus Südkorea kennen, wirkt die Fabrik vor dem Fenster vielleicht vertrauter. Das bedeutet nicht, dass die in Südkorea verkauften Produkte in diesem Werk hergestellt werden."]
+  },
+  "es": {
+    "sources": "Fuentes", "checked": "Comprobado el",
+    "fujitec": ["Conexiones con edificios de todo el mundo", "El Reichstag de Berlín", "La documentación de Fujitec registra el suministro de 19 ascensores para la renovación del Reichstag de Berlín en 1999. Es una especificación histórica de los documentos de la empresa. Big Wing comenzó a funcionar en abril de 2006; esto no significa que los equipos de 1999 se desarrollaran o fabricaran en esta torre.", "Wangjing SOHO en Pekín", "Fujitec también suministró ascensores y escaleras mecánicas a Wangjing SOHO, en Pekín, diseñado por Zaha Hadid. El trabajo de la misma empresa conecta Big Wing, visible desde el tren, con un edificio chino. Las fuentes no confirman que sus equipos se fabricaran o probaran en esta torre."],
+    "pocari": ["Pocari Sweat en Corea del Sur", "Dong-A Otsuka presenta Pocari Sweat en Corea del Sur y utiliza el producto en distintas actividades. La fábrica de Fukuroi, visible por la ventanilla, es una planta de Otsuka Pharmaceutical en Japón que produce, entre otros, Pocari Sweat en botellas PET y productos en polvo.", "Si ha visto Pocari Sweat en Corea del Sur, la fábrica quizá le resulte más familiar. Esto no significa que los productos vendidos en Corea del Sur se fabriquen en esta planta."]
+  },
+  "ko": {
+    "sources": "출처", "checked": "확인일",
+    "fujitec": ["세계의 건물과 이어지는 이야기", "베를린 국회의사당", "후지테크 자료에는 1999년 베를린 국회의사당 개보수 당시 엘리베이터 19대를 납품한 사양이 기록되어 있습니다. 이는 회사 자료의 역사적 수치입니다. Big Wing은 2006년 4월에 운영을 시작했으므로, 1999년 설비가 이 탑에서 개발·제조되었다는 뜻은 아닙니다.", "베이징 왕징 SOHO", "후지테크는 자하 하디드가 설계한 베이징 왕징 SOHO에도 엘리베이터와 에스컬레이터를 납품했습니다. 같은 회사의 작업이 차창의 Big Wing과 중국의 건물을 연결합니다. 왕징 SOHO의 설비를 이 탑에서 제조하거나 시험했다는 사실은 자료에서 확인되지 않습니다."],
+    "pocari": ["한국에서도 만나는 포카리스웨트", "동아오츠카는 한국에서 포카리스웨트를 소개하며 다양한 활동에 이 제품을 활용하고 있습니다. 차창 밖의 후쿠로이 공장은 일본에서 포카리스웨트의 페트병 음료와 분말 제품 등을 만드는 오츠카제약의 생산 거점입니다.", "한국에서 포카리스웨트를 본 적이 있다면 차창 밖 공장이 한층 친숙하게 느껴질 수 있습니다. 한국에서 판매하는 제품이 이 공장에서 만들어진다는 뜻은 아닙니다."]
+  }
+}
