@@ -13,7 +13,7 @@
   const en = film.lang === 'en';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   let restricted = motion.matches || !!navigator.connection?.saveData;
-  const HERO_SEC = 1.2, REPEAT_SEC = 8, HERO_FADE = 0.9;
+  const HERO_SEC = 7, REPEAT_SEC = 8, HERO_FADE = 0.9;
 
   // chapters of the film, without the closing URL card (the TOP itself is the call to action)
   const scenes = window.PV_SCENES.filter((s) => s.id !== 'S8-end-card');

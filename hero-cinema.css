@@ -181,3 +181,10 @@ main > section:not(.hero) {
 .hv-status:empty {display:none}
 .hv-screen:focus-visible {outline:3px solid #e8704a;outline-offset:-3px}
 @media(prefers-reduced-motion:reduce){.hv-copy,.hv-screen iframe{transition:none}}
+
+/* Approved TOP introduction button, shared by all four languages. */
+.hero-film-button{margin-top:clamp(10px,2.5cqh,22px);padding:10px 24px;min-height:44px;border:1px solid #fff8eb;border-radius:999px;background:#f5e8d6;color:#253747;font:700 15px/1.3 var(--sans);box-shadow:0 4px 20px #08152145;cursor:pointer}
+.hero-film-button:hover{background:#fff4e3}
+.hero-film-button:focus-visible{outline:3px solid #fff;outline-offset:4px}
+.hv-copy[data-hidden="true"] .hero-film-button{visibility:hidden;pointer-events:none}
+@container(max-height:240px){.hv-copy .hero-lead{font-size:11px;line-height:1.45;margin-top:6px}.hero-film-button{margin-top:8px;padding:8px 20px;font-size:13px}}
