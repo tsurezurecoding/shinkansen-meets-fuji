@@ -70,7 +70,7 @@ test('invalid dates and unsupported Article decisions are rejected; builds do no
   assert.equal(contentLastmod(SITE + '/index.html', '2026-07-29'), '2026-07-29');
   assert.equal(contentLastmod(SITE + '/spots/left-fuji.html', '2026-08-02'), '2026-08-23');
   assert.ok(metadataProblems({ 'test.html': { publishedAccuracy: 'estimated-day', published: '2026-07-01', publishedEvidence: 'fixture' } }).length);
-  assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-09-20');
+  assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-10-12');
 });
 
 test('metadata enrichment is idempotent and does not change body content or internal links', () => {

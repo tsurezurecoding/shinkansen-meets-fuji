@@ -21,9 +21,9 @@ const dataScript = () => read('data-runtime.js') + '\nObject.assign(window, { SP
 const exists = file => fs.existsSync(path.join(root, file));
 const assert = (ok, label, detail) => { if (!ok) errors.push(`${label}: ${detail}`); };
 const fileFor = (lang, route) => (lang === 'ja' ? '' : `${lang}/`) + route;
-const publicRoute = route => route.replace('live/index.html', 'live/');
+const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 const urlFor = (lang, route) => `${origin}/${fileFor(lang, publicRoute(route))}`;
-const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html');
+const canonicalRoute = url => url.pathname.slice(1).replace(/^(?:en|fr|zh-Hant)\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
 const normal = text => String(text).replace(/\s+/g, ' ').trim();
 const placeholders = text => (String(text).match(/\{(?:\d+|name|hook|area)\}/g) || []).sort().join('|');
 const compare = (actual, expected, label, detail) => assert(JSON.stringify(actual) === JSON.stringify(expected), label, detail);
@@ -111,7 +111,7 @@ function checkDictionary(lang) {
     counts.narrationDirections++;
   }
   for (const route of [...UTILITY_ROUTES, ...CASTLE_LOCALE_ROUTES, ...EXTRA_LOCALE_ROUTES, 'guide.html']) assert(adapter.href(route).startsWith(`${lang}/`), label, `same-language route missing ${route}`);
-  assert(adapter.href('index.html') === 'en/index.html', label, 'TOP must remain existing English fallback');
+  assert(adapter.href('index.html') === `${lang}/index.html`, label, 'TOP must use the same-language edition');
   assert(adapter.href('privacy.html') === 'en/privacy.html', label, 'untranslated route must use English fallback');
   dom.window.close(); counts.dictionaries++;
   return dictionary;
@@ -126,7 +126,7 @@ function checkMetadata(doc, lang, route, label) {
   assert(Boolean(doc.title.trim() && doc.querySelector('meta[name=description]')?.content.trim()), label, 'title/description missing');
   for (const node of doc.querySelectorAll('script[type="application/ld+json"]')) {
     try {
-      const walk = value => { if (value && typeof value === 'object') { if ('inLanguage' in value) assert(value.inLanguage === lang, label, 'JSON-LD language differs'); Object.values(value).forEach(walk); } };
+      const walk = value => { if (value && typeof value === 'object') { if ('inLanguage' in value) assert(value.inLanguage === lang, label, 'JSON-LD language differs'); if (route === 'index.html' && value['@type'] === 'WebApplication') assert(value['@id'] === urlFor(lang, route) + '#app', label, 'TOP JSON-LD identity differs from page language'); Object.values(value).forEach(walk); } };
       walk(JSON.parse(node.textContent));
     } catch (error) { errors.push(`${label}: invalid JSON-LD: ${error.message}`); }
   }
@@ -157,7 +157,7 @@ function checkMenu(dom, lang, route, label) {
     for (const edition of editions) {
       const a = [...menu.querySelectorAll('a')].find(node => node.lang === edition);
       const href = a && new URL(a.href);
-      assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route)}`, label, `language switch differs ${edition}`);
+      assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route === 'index.html' ? '' : route)}`, label, `language switch differs ${edition}`);
       assert(Boolean(a?.hasAttribute('aria-current')) === (lang === edition), label, `current marker differs ${edition}`);
     }
   }
@@ -180,6 +180,25 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     else assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
   }
   if (label.endsWith('contact.html')) compare([...doc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), [...sourceDoc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), label, 'contact destination changed');
+}
+function checkHomeAndJournal(doc, lang, route, label) {
+  if (route === 'journal.html') {
+    const link = doc.querySelector('[data-cta-id="journal-hero-train-search"]');
+    const target = link && new URL(link.href);
+    assert(target?.pathname === `/${fileFor(lang, 'start.html')}` && target.hash === '#journey', label, 'journal train CTA must open the train selector directly');
+    for (const id of ['journal-save-help', 'journal-storage-help', 'journal-reset-help']) assert(Boolean(doc.getElementById(id)?.textContent.trim()), label, `storage explanation missing: ${id}`);
+  }
+  if (route !== 'index.html') return;
+  const handoff = [...doc.querySelectorAll('script:not([src]):not([type])')].find(el => el.textContent.includes('h.indexOf("#spot-")'))?.textContent;
+  assert(Boolean(handoff), label, 'legacy train-entry handoff missing');
+  if (!handoff) return;
+  for (const hash of ['#journey', '#spot-fuji']) {
+    const current = new URL(urlFor(lang, route) + '?board=Shinagawa&dir=west' + hash);
+    let redirected = '';
+    // The early inline handoff executes before the parser reaches <base>.
+    vm.runInNewContext(handoff, { URL, URLSearchParams, document: { baseURI: current.href }, localStorage: { getItem: () => null, setItem() {} }, location: { pathname: current.pathname, href: current.href, search: current.search, hash, replace: value => { redirected = value; } } });
+    assert(redirected === `${urlFor(lang, 'start.html')}?board=Shinagawa&dir=west${hash}`, label, `legacy handoff lost language or journey: ${hash}`);
+  }
 }
 function checkDynamic(lang, route) {
   const dom = domFor(lang, route), { window } = dom;
@@ -211,8 +230,9 @@ async function forecastDom(lang) {
   };
   window.eval(dataScript());
   if (lang !== 'en') { window.eval(read(`${lang}/utility-data.js`)); window.eval(read('utility-locale-runtime.js')); }
-  const code = [...window.document.querySelectorAll('script:not([src])')].find(node => node.textContent.includes('var SUMMIT'))?.textContent;
-  assert(Boolean(code), `${lang}/mieru.html`, 'forecast inline source missing');
+  window.eval(read('train-select.js'));
+  const code = window.document.querySelector('script[src*="mieru.js"]') ? read('mieru.js') : null;
+  assert(Boolean(code), `${lang}/mieru.html`, 'shared forecast source missing');
   if (code) window.eval(code);
   await new Promise(resolve => setImmediate(resolve));
   assert(Boolean(window.__mieru?.data.summit), `${lang}/mieru.html`, 'mock forecast fetch/render failed');
@@ -222,9 +242,10 @@ async function checkForecastParity() {
   const doms = await Promise.all(['en', ...LOCALES].map(forecastDom));
   for (const [day, time] of [[0,'06:00'],[0,'09:25'],[0,'18:10'],[1,'07:40'],[1,'12:05'],[1,'18:55']]) {
     const snapshots = doms.map(dom => {
-      const { window } = dom; window.document.getElementById('mieruDay').value = String(day); window.document.getElementById('mieruDep').value = time;
+      const { window } = dom; window.document.getElementById('mieruModeTime').click(); window.document.getElementById('mieruDay').value = String(day); window.document.getElementById('mieruDep').value = time;
       window.document.getElementById('mieruDay').dispatchEvent(new window.Event('change'));
       window.document.getElementById('mieruDep').dispatchEvent(new window.Event('input'));
+      assert(Object.keys(window.__mieru.results).length === 5, 'forecast manual mode', 'five calculated results missing');
       return JSON.parse(JSON.stringify(window.__mieru.results));
     });
     for (let i = 1; i < snapshots.length; i++) compare(snapshots[i], snapshots[0], `${LOCALES[i - 1]}/mieru.html`, `forecast values differ from English (day=${day}, departure=${time})`);
@@ -238,7 +259,7 @@ for (const route of UTILITY_ROUTES) {
   const source = utilitySnapshot(root, route);
   for (const lang of editions) {
     const label = fileFor(lang, route), dom = domFor(lang, route), doc = dom.window.document;
-    checkMetadata(doc, lang, route, label); checkFiles(doc, label); checkMenu(dom, lang, route, label);
+    checkMetadata(doc, lang, route, label); checkFiles(doc, label); checkMenu(dom, lang, route, label); checkHomeAndJournal(doc, lang, route, label);
     assert(sitemapUrls.has(urlFor(lang, route)), label, 'sitemap registration missing');
     // Japanese/English utility HTML is bundled by the existing shell, outside the content manifest.
     if (LOCALES.includes(lang) || manifest.has(label)) checkManifest(label);

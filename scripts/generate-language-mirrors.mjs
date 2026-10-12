@@ -104,6 +104,9 @@ function localizeEnglishRail(html) {
     .replaceAll('href="guide.html#', 'href="en/guide.html#')
     .replaceAll('href="zukan.html?filter=', 'href="en/zukan.html?filter=')
     .replaceAll('href="zukan.html#gallery"', 'href="en/zukan.html#gallery"')
+    // Fragment-only links resolve against <base>, so name the current guide explicitly.
+    .replaceAll('href="#zukanIntentsTitle"', 'href="en/zukan.html#zukanIntentsTitle"')
+    .replaceAll('href="#gallery"', 'href="en/zukan.html#gallery"')
     .replaceAll('href="727-collection.html"', 'href="en/727-collection.html"');
   // English editorial priority: iconic views, everyday discoveries, then drinks.
   const featureCards=[...result.matchAll(/<a class="journey-intent-card\b[\s\S]*?<\/a>/g)].map(m=>m[0]);

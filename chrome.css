@@ -15,6 +15,7 @@
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; justify-content: space-between;
   gap: 9px; padding: 5px 12px;
+  line-height: 1.5; /* fixed here so every page's header has the same height */
   background: rgba(16, 28, 44, 0.92);
   backdrop-filter: blur(8px);
   color: #fff;
@@ -118,6 +119,8 @@
 }
 
 .top-nav-menu .top-nav-menu-compact { display: none; }
+/* スタンプ帖は狭い幅では「もっと見る」の中へ移る */
+.top-nav-menu .top-nav-menu-stamp { display: none; }
 
 .top-nav a:hover,
 .top-nav a:focus-visible {
@@ -152,7 +155,75 @@
 .lang-switch button.active,
 .lang-switch a.active { background: #fff; color: var(--night, #101c2c); font-weight: 700; }
 
-@media (min-width: 900px) {
+/* Four-language menu (replaces .lang-switch on pages with translated editions).
+   Moved here from style.css so the TOP, which does not load style.css, matches. */
+.guide-lang-menu {
+  position: relative;
+  z-index: 4;
+  flex-shrink: 0;
+}
+.guide-lang-menu summary {
+  min-width: 72px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  font-size: 11.5px;
+  font-weight: 800;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+  list-style: none;
+}
+.guide-lang-menu summary::-webkit-details-marker { display: none; }
+.guide-lang-menu summary::after {
+  content: "";
+  display: inline-block;
+  margin-left: 7px;
+  vertical-align: 2px;
+  border-top: 4px solid currentColor;
+  border-right: 3.5px solid transparent;
+  border-left: 3.5px solid transparent;
+}
+.guide-lang-menu summary:hover,
+.guide-lang-menu summary:focus-visible,
+.guide-lang-menu[open] summary {
+  background: #fff;
+  color: var(--night, #101c2c);
+  outline: 0;
+}
+.guide-lang-options {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  display: grid;
+  min-width: 150px;
+  padding: 7px;
+  border: 1px solid rgba(255,255,255,.18);
+  border-radius: 13px;
+  background: rgba(16,28,44,.97);
+  box-shadow: 0 16px 34px rgba(0,0,0,.24);
+}
+.guide-lang-options a {
+  padding: 9px 11px;
+  border-radius: 9px;
+  color: rgba(255,255,255,.84);
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.guide-lang-options a:hover,
+.guide-lang-options a:focus-visible,
+.guide-lang-options a[aria-current="page"] {
+  background: rgba(255,255,255,.12);
+  color: #fff;
+  outline: 0;
+}
+
+/* from 760px the header is one row with the same logo, tagline and height */
+@media (min-width: 760px) {
   .topbar {padding: 10px 24px; gap: 16px;}
   .brand {gap: 10px;}
   .brand-mark {width: 38px; height: 38px; border-radius: 10px; font-size: 20px;}
@@ -165,7 +236,30 @@
   .lang-switch button {font-size: 12.5px; padding: 6px 12px;}
 }
 
-@media (max-width: 1099px) {
+/* 760-1099px: the nav items tighten so they fit beside the logo. */
+@media (min-width: 760px) and (max-width: 1099px) {
+  .topbar {gap: 10px; padding-inline: 18px;}
+  .brand-sub {white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+  .top-nav {gap: 2px; flex-wrap: nowrap;}
+  .top-nav a,
+  .top-nav-more summary {padding: 6px 9px; font-size: 12.5px;}
+  .top-nav-overflow {display: none;}
+  .top-nav-menu .top-nav-menu-compact {display: block;}
+  .lang-switch button {padding: 5px 10px;}
+}
+/* below 900px the stamp book (and a page's extra overflow link) live in the menu */
+@media (max-width: 899px) {
+  .top-nav-stamp,
+  .top-nav-overflow {display: none;}
+  .top-nav-menu .top-nav-menu-stamp,
+  .top-nav-menu .top-nav-menu-compact {display: block;}
+}
+@media (min-width: 760px) and (max-width: 999px) {
+  .top-nav a,
+  .top-nav-more summary {padding: 6px 7px; font-size: 12px;}
+}
+
+@media (max-width: 759px) {
   .topbar {display: grid; grid-template-columns: minmax(0, 1fr) auto; min-width: 0;}
   .brand {min-width: 0;}
   .brand-name,
@@ -173,8 +267,20 @@
   .brand-sub {min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
   .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; row-gap: 4px; min-width: 0; max-width: 100%; overflow: visible; padding-top: 2px;}
   .top-nav a,
-  .top-nav-more summary {white-space: nowrap;}
+  .top-nav-more summary {white-space: nowrap; padding: 4px 7px; font-size: 11px;}
   .lang-switch {min-width: max-content; white-space: nowrap;}
+}
+/* French, German and Spanish labels are long: those pages keep the two-row
+   header up to 1279px instead of overlapping the language menu, and tighten
+   the nav on phones so it stays on one line under the logo. */
+@media (min-width: 760px) and (max-width: 1279px) {
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) {display: grid; grid-template-columns: minmax(0, 1fr) auto;}
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav {grid-column: 1 / -1; grid-row: 2; justify-content: flex-start; flex-wrap: wrap; padding-top: 2px;}
+}
+@media (max-width: 540px) {
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav {gap: 0;}
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav a,
+  .topbar:is(:lang(fr), :lang(de), :lang(es)) .top-nav-more summary {padding: 4px 5px; font-size: 10.5px; letter-spacing: -0.01em;}
 }
 
 @media (max-width: 540px) {

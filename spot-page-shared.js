@@ -13,7 +13,7 @@
       train: "列車選択",
       live: "音声ガイド",
       fieldGuide: "車窓図鑑",
-      features: "特集",
+      features: "車窓図鑑",
       allViews: "車窓一覧",
       faq: "富士山を見る",
       journal: "スタンプ帖",
@@ -72,7 +72,7 @@
       train: "Train Search",
       live: "Audio Guide",
       fieldGuide: "Field Guide",
-      features: "Features",
+      features: "Field Guide",
       allViews: "All views",
       faq: "See Mt. Fuji",
       journal: "Journal",
@@ -297,14 +297,13 @@
       "<nav class=\"top-nav\" aria-label=\"Primary\">" +
         "<a href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.train) + "</a>" +
         "<a href=\"" + escapeHTML(href(base, "live/")) + "\">" + escapeHTML(ui.live) + "</a>" +
-        // 図鑑は「特集」（ページ先頭）と「車窓一覧」（#gallery）の2つの入口。車窓一覧はPCだけ上段、スマホは「もっと見る」の中。
+        // 図鑑の入口は「車窓図鑑」1つ（ページ先頭）。スタンプ帖は幅によって「もっと見る」の中へ移る。
         "<a href=\"" + escapeHTML(href(base, "zukan.html")) + "\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_features\">" + escapeHTML(ui.features) + "</a>" +
-        "<a class=\"top-nav-overflow\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
-        "<a href=\"" + escapeHTML(href(base, "journal.html")) + "\">" + escapeHTML(ui.journal) + "</a>" +
+        "<a class=\"top-nav-stamp\" href=\"" + escapeHTML(href(base, "journal.html")) + "\">" + escapeHTML(ui.journal) + "</a>" +
         "<details class=\"top-nav-more\">" +
           "<summary>" + escapeHTML(ui.more) + "</summary>" +
           "<div class=\"top-nav-menu\">" +
-            "<a class=\"top-nav-menu-compact\" href=\"" + escapeHTML(href(base, "zukan.html")) + "#gallery\" data-cta-track=\"header_nav_click\" data-cta-id=\"nav_all_views\">" + escapeHTML(ui.allViews) + "</a>" +
+            "<a class=\"top-nav-menu-stamp\" href=\"" + escapeHTML(href(base, "journal.html")) + "\">" + escapeHTML(ui.journal) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "window-artworks.html")) + "\">" + escapeHTML(ui.artworks) + "</a>" +

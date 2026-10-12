@@ -63,3 +63,51 @@
 .scenery-strip .discovery-copy{padding:48px 16px 18px;background:linear-gradient(transparent,rgba(2,11,18,.88))}
 .scenery-strip .discovery-copy h3{font-size:clamp(18px,1.5vw,22px);line-height:1.4;text-wrap:balance}
 @media(min-width:651px){.scenery-strip .photo-card,.scenery-strip .discovery-card{flex-basis:calc((100% - 48px)/4.2)}}
+
+/* Tools in the strip: the train timeline, live guide and stamp book appear as
+   small phones (as in the film), cropped by the card so only the useful part shows. */
+.scenery-strip .tool-card{background:radial-gradient(120% 80% at 50% 18%,#1f3a52 0%,#122a3d 55%,#0d2131 100%)}
+.tool-phone{position:absolute;left:50%;top:9%;width:50%;aspect-ratio:768/1662;transform:translateX(-50%);overflow:hidden;border-radius:20px;background:#f6f2e9;box-shadow:0 0 0 5px #0b1420,0 0 0 6px rgba(255,255,255,.14),0 18px 40px rgba(0,0,0,.42)}
+.scenery-strip .tool-phone img{position:absolute;inset:auto 0 auto 0;width:100%;height:auto;object-fit:initial;aspect-ratio:768/1662}
+.scenery-strip .tool-phone-train img{top:-30%}
+.scenery-strip .tool-phone-live{background:#0d1626}
+.scenery-strip .tool-phone-live img{top:-50%}
+.scenery-strip .tool-phone-stamp img{top:-46%}
+.scenery-strip .tool-card .discovery-copy{background:linear-gradient(rgba(13,33,49,0),rgba(13,33,49,.9) 34%,#0d2131)}
+.scenery-strip .tool-card .discovery-copy>span{display:inline-flex;width:fit-content;align-items:center;gap:6px;margin-top:10px;padding:8px 14px;border-radius:999px;background:#fffdf8;color:#102638;font-weight:700;font-size:12.5px}
+.scenery-strip .tool-card:hover .discovery-copy>span{background:#e8704a;color:#fffdf8}
+.scenery-strip .tool-card:hover .tool-phone{transform:translateX(-50%) translateY(-4px)}
+.tool-phone{transition:transform .3s}
+@media(max-width:650px){.tool-phone{border-radius:16px;box-shadow:0 0 0 4px #0b1420,0 0 0 5px rgba(255,255,255,.14),0 14px 30px rgba(0,0,0,.42)}}
+
+/* JA prototype: the strip sits directly under the hero, on the hero's night
+   band, without a chapter heading (kept for assistive tech and outline). */
+.visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.scenery.scenery-under-hero{background:#081521;padding:clamp(14px,2vw,22px) 0 clamp(36px,4vw,52px)}
+.scenery-under-hero .scenery-strip{margin-top:0}
+.scenery-under-hero .scenery-strip-controls{color:rgba(255,253,248,.62)}
+.scenery-under-hero .scenery-strip-nav button{border-color:rgba(255,255,255,.3);color:#fffdf8}
+.scenery-under-hero .scenery-strip-nav button:hover{background:rgba(255,255,255,.08)}
+.scenery-under-hero .scenery-actions{margin-top:22px}
+.scenery-under-hero .discovery-card:not(.tool-card) .discovery-copy>span{display:none}
+/* the live guide is shown by its GPS map (with the OSM credit), not a phone */
+.scenery-strip .tool-card-map{background:#dfe6dc}
+.scenery-strip .tool-card-map>img{object-fit:cover;object-position:25% 70%;transform:scale(1.35);transform-origin:36% 70%}
+.scenery-strip .tool-map-credit{position:absolute;top:8px;right:10px;z-index:1;font-size:9px;line-height:1.2;color:rgba(16,38,56,.72);background:rgba(255,255,255,.7);padding:2px 5px;border-radius:4px}
+.scenery-strip .tool-card-map>img{transform:scale(1.5);transform-origin:36% 66%;object-position:25% 85%}
+.scenery-strip .tool-card-map .discovery-copy{background:linear-gradient(transparent,rgba(2,11,18,.88))}
+
+/* JA prototype: cards keep a phone-like size on wide screens, and the strip
+   runs the full window width, so more views are visible at once. */
+@media(min-width:651px){
+.scenery-under-hero{overflow-x:clip}
+ .scenery-under-hero .scenery-strip{margin-inline:calc(50% - 50vw);padding-inline:max(20px,calc(50vw - 820px));scroll-padding-inline:max(20px,calc(50vw - 820px))}
+ .scenery-under-hero .scenery-strip .discovery-card{flex-basis:208px}
+ .scenery-under-hero .scenery-strip .discovery-copy{padding:40px 14px 14px}
+ .scenery-under-hero .scenery-strip .discovery-copy h3{font-size:17px}
+}
+
+/* JA prototype: shorter cards (10:11 instead of 4:5) so the card titles stay
+   inside the first screen on low laptop windows as well. */
+.scenery-under-hero .scenery-strip .discovery-card{aspect-ratio:10/11}
+.scenery-under-hero .tool-phone{top:7%;width:46%}

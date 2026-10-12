@@ -6,7 +6,8 @@ import { UTILITY_ROUTES, LOCALES, ATTRS, FORECAST_COPY, collectEnglish, utilityS
 import { textNodes } from './shared/castle-localization.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
-import { withUtilityLocales } from './shared/utility-locales.mjs';
+import { withUtilityLocales, publicPath } from './shared/utility-locales.mjs';
+const publicFile = file => file.replace(/(^|\/)index\.html$/, '$1').replace('live/index.html', 'live/');
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
@@ -22,27 +23,6 @@ function write(file, value) {
   if (check) throw Error(`Utility locale output is stale: ${file}`);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, value);
-}
-function forecastScript(source) {
-  let code = source;
-  function replace(from, to) {
-    if (!code.includes(from)) throw Error(`English forecast contract changed: ${from.slice(0, 60)}`);
-    code = code.replace(from, to);
-  }
-  replace('"use strict";', '"use strict";\n  var U = window.MADO_UTILITY_LOCALE;');
-  replace('(s.en && s.en.name) || id, area: (s.en && s.en.area) || ""', '(s[U.lang] && s[U.lang].name) || id, area: (s[U.lang] && s[U.lang].area) || ""');
-  replace('p >= 0.8 ? "Visible" : p >= 0.55 ? "Probably visible" : p >= 0.3 ? "A chance" : "Unlikely"', 'p >= 0.8 ? U.forecast.visible : p >= 0.55 ? U.forecast.probable : p >= 0.3 ? U.forecast.chance : U.forecast.unlikely');
-  replace('r.mi >= r.lo && r.mi >= r.hi ? "mid-level cloud" : (r.lo >= r.hi ? "low cloud" : "high cloud")', 'r.mi >= r.lo && r.mi >= r.hi ? U.forecast.mid : (r.lo >= r.hi ? U.forecast.low : U.forecast.high)');
-  replace('"The summit is likely to be obscured by " + c + " (cloud cover: low " + Math.round(r.lo) + "%, mid " + Math.round(r.mi) + "%, high " + Math.round(r.hi) + "%)."', 'U.format("cloud", c, Math.round(r.lo), Math.round(r.mi), Math.round(r.hi))');
-  replace('"Haze is limiting the view (visibility about " + Math.round(r.V) + " km; humidity " + Math.round(r.rh) + "%)."', 'U.format("haze", Math.round(r.V), Math.round(r.rh))');
-  replace('"The summit is mostly clear and the air is transparent (visibility about " + Math.round(r.V) + " km)."', 'U.format("clear", Math.round(r.V))');
-  replace('"Conditions are finely balanced."', 'U.forecast.balanced');
-  replace('"Weather data could not be loaded. Please try again in a little while."', 'U.forecast.error');
-  replace('s.name + " around " + ("0"+hh).slice(-2) + ":" + ("0"+mm).slice(-2)', 'U.format("around", s.name, ("0"+hh).slice(-2) + ":" + ("0"+mm).slice(-2))');
-  replace('"Forecast for this train: "', 'U.forecast.train');
-  replace("s.area + ' · about ' + s.min + ' min from Tokyo · viewing distance about ' + s.d + ' km · Seat ' + s.side", 'U.format("meta", s.area, s.min, s.d, s.side)');
-  replace("'<span class=\"mieru-verdict\">Best ' + (day ? \"tomorrow\" : \"today\") + ': ' + (H0+bestI) + ':00 <b>'", "'<span class=\"mieru-verdict\">' + U.format(\"best\", day ? U.forecast.tomorrow : U.forecast.today, (H0+bestI) + ':00') + ' <b>'");
-  return code;
 }
 const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
 if (requestedLang && !LOCALES.includes(requestedLang)) throw Error(`Unknown utility locale: ${requestedLang}`);
@@ -95,17 +75,17 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     for (const el of doc.querySelectorAll('meta')) {
       const name = el.name || el.getAttribute('property') || '';
       if (/(?:description|title|image:alt)$/.test(name)) el.content = tr(el.content);
-      if (name === 'og:url') el.content = `${origin}/${file.replace('live/index.html', 'live/')}`;
+      if (name === 'og:url') el.content = `${origin}/${publicFile(file)}`;
       if (name === 'og:locale') el.content = lang === 'fr' ? 'fr_FR' : 'zh_TW';
     }
-    doc.querySelector('link[rel="canonical"]').href = `${origin}/${file.replace('live/index.html', 'live/')}`;
+    doc.querySelector('link[rel="canonical"]').href = `${origin}/${publicFile(file)}`;
     for (const schema of doc.querySelectorAll('script[type="application/ld+json"]')) {
       let item = translateObject(JSON.parse(schema.textContent));
       function localizeSchema(value) {
         if (!value || typeof value !== 'object') return;
         for (const [key, field] of Object.entries(value)) {
           if (key === 'inLanguage') value[key] = lang;
-          else if (typeof field === 'string' && field.startsWith(`${origin}/en/${route.replace('live/index.html', 'live/')}`)) value[key] = field.replace(`${origin}/en/${route.replace('live/index.html', 'live/')}`, `${origin}/${file.replace('live/index.html', 'live/')}`);
+          else if (typeof field === 'string' && (publicPath(route) ? field.startsWith(`${origin}/en/${publicPath(route)}`) : field === `${origin}/en/` || field.startsWith(`${origin}/en/#`))) value[key] = field.replace(`${origin}/en/${publicPath(route)}`, `${origin}/${publicFile(file)}`);
           else localizeSchema(field);
         }
       }
@@ -116,8 +96,8 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       const href = el.getAttribute('href');
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
       const url = new URL(href, doc.baseURI);
-      const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html');
-      const destination = (routes.includes(target) ? `${lang}/` : 'en/') + target;
+      const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
+      const destination = (routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       el.setAttribute('href', prefix + destination + url.search + url.hash);
     }
@@ -137,8 +117,10 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     }
     // Explicit page language replaces the English mirror's storage bootstrap.
     for (const el of doc.querySelectorAll('script:not([src]):not([type])')) {
+      if (route === 'index.html' && el.textContent.includes('h.indexOf("#spot-")')) {
+        el.textContent = `(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var q=new URLSearchParams(location.search),r=q.get("lang"),l=["ja","en","fr","zh-Hant"].includes(r)?r:${JSON.stringify(lang)},u=new URL("../"+(l==="ja"?"":l+"/")+"start.html",location.href);u.search=location.search;u.hash=h;location.replace(u.href)})();`;
+      }
       if (el.textContent.includes('localStorage.setItem("mado-lang", "en")')) el.textContent = el.textContent.replace('localStorage.setItem("mado-lang", "en")', `localStorage.setItem("mado-lang", "${lang}")`);
-      if (route === 'mieru.html' && el.textContent.includes('var SUMMIT')) el.textContent = forecastScript(el.textContent);
     }
     const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
     const dataScript = doc.createElement('script'); dataScript.src = prefix + lang + '/utility-data.js?v=' + assetVersion(`${lang}/utility-data.js`);

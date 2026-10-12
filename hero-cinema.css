@@ -49,9 +49,11 @@ main > section:not(.hero) {
 .lang-landing-prompt button:focus-visible { outline: 3px solid #f3b59f; outline-offset: 2px; }
 
 /* Reserve the same geometry before JS, while loading, and during playback. */
-.hv-screen { position: relative; width: var(--hv-w); height: min(56.25vw, 945px, max(340px, calc(100svh - 260px))); margin: 0 auto; container-type: size; overflow: hidden; background: #081521; }
-.hv-rail { min-height:52px; }
-@media(max-width:899px){.hv-screen{height:min(56.25vw, max(180px, calc(100svh - 350px)))}.hv-rail{min-height:50px}}
+/* The film no longer has a chapter band underneath, so it can be shorter: on
+   PCs the first scroll reaches the train/live cards in the strip below. The
+   stage letterboxes in the same night colour, so the bands do not show. */
+.hv-screen { position: relative; width: var(--hv-w); height: min(56.25vw, 720px, max(300px, calc(100svh - 380px))); margin: 0 auto; container-type: size; overflow: hidden; background: #081521; }
+@media(max-width:899px){.hv-screen{height:min(56.25vw, max(180px, calc(100svh - 300px)))}}
 .hv-screen iframe { position: absolute; inset: 0; z-index: 1; width: 100%; height: 100%; border: 0; display: block; }
 
 /* centred hero heading over the hero frame */
@@ -65,40 +67,15 @@ main > section:not(.hero) {
 .hero.hv .hv-copy .hero-actions { display: flex; align-self: center; justify-content: center; width: 100%; margin: clamp(14px, 3.6cqh, 32px) 0 0; }
 .hv-copy .hero-actions .button { min-height: 48px; }
 
-/* chapter rail: numbered segments (the current one is coral), the current
-   chapter's name, arrows and play/pause — shows the scenes can be browsed */
-.hv-rail { display: flex; align-items: center; gap: 14px; width: var(--hv-w, 100%); margin: 0 auto; padding: 12px clamp(12px, 2.5vw, 32px) 0; box-sizing: border-box; color: #fffdf8; }
-.hv-now { flex: none; min-width: 9.5em; margin: 0; font: 700 12px/1.3 var(--sans); letter-spacing: .08em; text-align: left; color: #fffdf8; white-space: nowrap; }
-.hv-now .num { color: #f3b59f; margin-right: 8px; font-variant-numeric: tabular-nums; }
-.hv-arrow { flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255, 255, 255, .35); background: transparent; color: #fffdf8; font: 400 18px/1 var(--sans); cursor: pointer; }
-.hv-arrow:hover { background: rgba(255, 255, 255, .1); }
-.hv-chapters { flex: 1; min-width: 0; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
-.hv-chapters button { width: 100%; height: 34px; padding: 0; border: 0; background: none; cursor: pointer; position: relative; color: rgba(255, 253, 248, .5); font: 700 11px/1 var(--sans); font-variant-numeric: tabular-nums; }
-.hv-chapters button::before { content: ""; position: absolute; left: 0; right: 0; top: 6px; height: 2px; background: rgba(255, 255, 255, .22); transition: background .3s; }
-.hv-chapters button span { position: absolute; left: 0; top: 16px; }
-.hv-chapters button:hover { color: #fffdf8; }
-.hv-chapters button[aria-current="true"] { color: #f3b59f; }
-.hv-chapters button[aria-current="true"]::before { background: #e8704a; }
-.hv-toggle { flex: none; min-height: 40px; padding: 0 16px; border: 1px solid rgba(255, 255, 255, .35); border-radius: 999px; background: transparent; color: #fffdf8; font: 700 12px/1 var(--sans); cursor: pointer; white-space: nowrap; }
-.hv-arrow:focus-visible, .hv-toggle:focus-visible, .hv-chapters button:focus-visible { outline: 3px solid #e8704a; outline-offset: 3px; }
-
-
 @media (max-width: 899px) {
   .hv-copy { padding: 0 18px; }
   .hv-copy .hero-lead { font-size: 12.5px; line-height: 1.8; }
   .hv-copy .hero-actions .button { width: min(100%, 300px); justify-content: center; font-size: 14px; }
-  .hv-rail { gap: 8px; padding: 10px 10px 0; }
-  .hv-now { display: none; }
-  .hv-chapters button span { display: none; }
-  .hv-chapters button { height: 22px; }
-  .hv-arrow { width: 36px; height: 36px; }
 
 }
 
-/* the hero CTA moved into the entry cards ("乗る列車を選ぶ" card) */
+/* the hero CTA lives in the strip's train card */
 .hero.hv .hv-copy .hero-actions { display: none; }
-.hcv-train { align-items: center; }
-.hcv-time { font: 600 20px/1 var(--serif); letter-spacing: .02em; color: #fff; font-variant-numeric: tabular-nums; margin-right: 4px; }
 
 /* phones: the screen is 16:9 like the film, so the heading adapts to its height
    but always keeps the main description */
@@ -115,6 +92,8 @@ main > section:not(.hero) {
   .hv-copy .hero-lead { font-size: 11px; line-height: 1.6; }
 }
 
+/* Japanese TOP: the entry cards moved from under the film into the scenery
+   strip. The English TOP still has them here and keeps these styles. */
 /* entry cards: always below the screen, so they stay usable while the film
    plays. Quiet, even night panels with a hairline; serif titles; an arrow on
    the right. Train selection leads, marked only by a coral top rule and arrow. */

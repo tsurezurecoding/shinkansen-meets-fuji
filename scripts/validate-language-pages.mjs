@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
+import { JSDOM } from "jsdom";
 import { fileURLToPath } from "node:url";
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
@@ -359,6 +360,37 @@ for (const required of [
   if (!englishLiveHtml.includes(required)) {
     errors.push(`/en/live/: missing shared live asset reference ${required}`);
   }
+}
+
+// Page fragments must stay on the field guide despite its root-relative base.
+for (const lang of ['en', 'zh-Hant', 'fr']) {
+  const route = '/' + lang + '/zukan.html';
+  const dom = new JSDOM(fs.readFileSync(diskPath(route), 'utf8'), { url: origin + route });
+  for (const hash of ['#zukanIntentsTitle', '#gallery']) {
+    const links = [...dom.window.document.querySelectorAll('.zukan-switch a')];
+    const link = links.find(a => new URL(a.href).hash === hash);
+    if (!link || new URL(link.href).pathname !== route || !dom.window.document.getElementById(hash.slice(1))) errors.push(route + ': switch fragment must stay on this field guide: ' + hash);
+  }
+  dom.window.close();
+}
+for (const lang of ['zh-Hant', 'fr']) {
+  const route = '/' + lang + '/guide.html';
+  const dom = new JSDOM(fs.readFileSync(diskPath(route), 'utf8'), { url: origin + route });
+  const doc = dom.window.document;
+  const hero = doc.querySelector('[data-guide-cta="hero_exact_time"]');
+  const url = hero && new URL(hero.href);
+  if (!url || url.pathname !== '/' + lang + '/start.html' || url.searchParams.get('focus') !== 'fuji' || url.hash !== '#journey') errors.push(route + ': Fuji hero must open the matching-language Fuji answer');
+  for (const name of ['rail_exact_time', 'rail_exact_time_bottom']) {
+    const a = doc.querySelector('[data-guide-cta="' + name + '"]'), dest = a && new URL(a.href);
+    if (!dest || dest.pathname !== '/' + lang + '/start.html' || dest.searchParams.has('focus')) errors.push(route + ': general scenery rail must keep general train search');
+  }
+  const description = doc.querySelector('meta[name="description"]').content;
+  if (/搭乘日期|votre date/.test(description)) errors.push(route + ': metadata promises unsupported date selection');
+  for (const query of ['meta[property="og:description"]', 'meta[name="twitter:description"]']) if (doc.querySelector(query).content !== description) errors.push(route + ': description differs in ' + query);
+  const walk = value => { if (!value || typeof value !== 'object') return; if (value['@type'] === 'WebPage' && value.description !== description) errors.push(route + ': WebPage description differs'); Object.values(value).forEach(walk); };
+  doc.querySelectorAll('script[type="application/ld+json"]').forEach(node => walk(JSON.parse(node.textContent)));
+  if (lang === 'fr') for (const a of doc.querySelectorAll('.content-rail-card,.footer-links a')) if (new URL(a.href).pathname.endsWith('/guide.html') && new URL(a.href).pathname !== route) errors.push(route + ': FAQ link leaves the existing French guide');
+  dom.window.close();
 }
 
 if (errors.length) {

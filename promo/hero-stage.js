@@ -20,13 +20,27 @@
   const LAST = scenes[scenes.length - 1].end;
 
   // fit the 1920x1080 stage into the iframe (the parent keeps the iframe 16:9)
+  // A wide hero is not letterboxed: the HTML stage itself grows up to 3600
+  // (up to about 3.3:1); copy stays left and the visuals move into the extra room.
+  const MAX_W = 3600;
+  let stageW = 1920, needRedraw = false;
   function fit() {
-    const s = Math.min(innerWidth / 1920, innerHeight / 1080);
+    const want = Math.min(MAX_W, Math.max(1920, Math.round(1080 * innerWidth / Math.max(1, innerHeight))));
+    if (want !== stageW && film.setStageWidth) {
+      const g = film.setStageWidth(want); stageW = g.SW;
+      stage.style.width = stageW + 'px';
+      stage.style.setProperty('--sw', stageW + 'px'); stage.style.setProperty('--tx', g.TX + 'px');
+      stage.style.setProperty('--vx', g.VX + 'px'); stage.style.setProperty('--mx', g.MX + 'px');
+      stage.style.setProperty('--ty', g.TY + 'px'); stage.style.setProperty('--rb', -g.RB + 'px');
+      g.TC.forEach((v, i) => stage.style.setProperty('--tc' + (i + 1), v + 'px'));
+      needRedraw = true;
+    }
+    const s = Math.min(innerWidth / stageW, innerHeight / 1080);
     stage.style.transform = `scale(${s})`;
     stage.style.transformOrigin = '0 0';
-    Object.assign(frame.style, { width: 1920 * s + 'px', height: 1080 * s + 'px', position: 'absolute', left: (innerWidth - 1920 * s) / 2 + 'px', top: (innerHeight - 1080 * s) / 2 + 'px', margin: '0' });
+    Object.assign(frame.style, { width: stageW * s + 'px', height: 1080 * s + 'px', position: 'absolute', left: (innerWidth - stageW * s) / 2 + 'px', top: (innerHeight - 1080 * s) / 2 + 'px', margin: '0' });
   }
-  addEventListener('resize', fit); fit();
+  addEventListener('resize', () => { fit(); if (ready) draw(); }); fit();
   const bgEl = document.getElementById('bg');
   let lastBand = '',lastBandKey = '';
   function band() {
@@ -99,7 +113,7 @@
   }
   const drawn={f:-1};
   function draw(){
-    const f=Math.round(t*FPS);if(f!==drawn.f){film.render(f);drawn.f=f;nightFx();}
+    const f=Math.round(t*FPS);if(f!==drawn.f||needRedraw){film.render(f);drawn.f=f;needRedraw=false;nightFx();}
     band();hero.style.opacity=String(heroOn);hero.style.visibility=heroOn>.001?'visible':'hidden';
     hero.querySelector('img').style.transform='scale('+ (1.22+.04*heroOn)+')';
     let ch=-1;if(heroOn<.5)scenes.forEach((s,i)=>{if(t>=s.start-.001)ch=i;});
