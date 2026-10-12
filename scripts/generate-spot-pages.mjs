@@ -1856,6 +1856,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/window-trip.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/en/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },

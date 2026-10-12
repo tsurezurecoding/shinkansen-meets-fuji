@@ -25,6 +25,8 @@ const pages = [
 ];
 
 function localizeEnglishRail(html) {
+  // The new artwork currently has a Japanese edition only.
+  html=html.replace(/^[ \t]*<!-- WINDOW-TRIP-JA:START -->[\s\S]*?<!-- WINDOW-TRIP-JA:END -->[ \t]*\r?\n/gm, "");
   html = html.replace(/<!-- SANYO-GALLERY:START -->[\s\S]*?<!-- SANYO-GALLERY:END -->/, sanyoGallery("en"));
   const copy = [
     ["車窓の作品集", "Window Artworks"],
