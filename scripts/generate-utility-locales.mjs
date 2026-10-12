@@ -153,4 +153,4 @@ for (const route of UTILITY_ROUTES) for (const lang of ['ja', 'en']) {
   const file = (lang === 'ja' ? '' : 'en/') + route;
   write(file, withUtilityLocales(fs.readFileSync(path.join(root, file), 'utf8'), file));
 }
-console.log('Utility locales: 10 translated pages, shared dynamic dictionaries, four-way language routes.');
+console.log(`Utility locales: ${LOCALES.length * UTILITY_ROUTES.length} translated pages, shared dictionaries and edition routes.`);

@@ -436,7 +436,7 @@ function normalizeLang(value) {
   return MSG[normalized] ? normalized : "en";
 }
 function getInitialLang() {
-  const pathLang = window.MADO_LOCALES?.routeLanguage(location.pathname) || utilityLocale?.lang;
+  const pathLang = window.MADO_LOCALES?.routeLanguage(location.pathname) || window.MADO_UTILITY_LOCALE?.lang;
   if (pathLang && MSG[normalizeLang(pathLang)]) return normalizeLang(pathLang);
   const urlLang = new URLSearchParams(location.search).get("lang");
   if (urlLang === "ja" || urlLang === "en") {
@@ -461,7 +461,7 @@ function localizedPageHref(targetLang) {
   const destination = new URL(target, document.baseURI);
   destination.search = location.search;
   // A query-language override must follow the switch, not force the previous language.
-  if (destination.searchParams.has("lang")) destination.searchParams.set("lang", targetLang);
+  if (targetLang === "ja" || destination.searchParams.has("lang")) destination.searchParams.set("lang", targetLang);
   if (isTrainSearchPage() && journey?.mode === "train") setJourneyParams(destination, journey);
   destination.hash = location.hash;
   return destination.href;
@@ -578,7 +578,7 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 function appSelfForPath(pathname) {
   const normalized = String(pathname).replace(/\\/g, "/");
-  const routeLang = window.MADO_LOCALES?.routeLanguage(normalized) || utilityLocale?.lang || (/\/(?:en)(?:\/|$)/.test(normalized) ? "en" : null);
+  const routeLang = (typeof window !== "undefined" && window.MADO_LOCALES ? window.MADO_LOCALES.routeLanguage(normalized) : null) || (/\/(?:en)(?:\/|$)/.test(normalized) ? "en" : null);
   const file = normalized.endsWith("/zukan.html") ? "zukan.html"
     : normalized.endsWith("/start.html") ? "start.html"
     : normalized.endsWith("/journal.html") ? "journal.html"

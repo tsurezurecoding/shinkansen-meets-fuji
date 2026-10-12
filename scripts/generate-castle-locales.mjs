@@ -13,14 +13,16 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
 const missing = new Set();
-for (const lang of CASTLE_LOCALE_LANGS) {
+const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
+if (requestedLang && !CASTLE_LOCALE_LANGS.includes(requestedLang)) throw Error('Unknown castle locale: ' + requestedLang);
+for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   const dictionary = JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8'));
   function tr(value) {
     const key = value.trim();
     if (!key) return value;
     let result = dictionary[key];
     if (result === undefined && key.endsWith(' | Shinkansen Window')) result = tr(key.slice(0, -' | Shinkansen Window'.length)) + ' | Shinkansen Window';
-    if (result === undefined) { missing.add(`${lang}: ${key}`); return value; }
+    if (typeof result !== 'string' || !result.trim()) { missing.add(`${lang}: ${key}`); return value; }
     return value.replace(key, () => result);
   }
   for (const route of CASTLE_LOCALE_ROUTES) {
@@ -139,4 +141,4 @@ for (const lang of CASTLE_LOCALE_LANGS) {
   }
 }
 if (missing.size) throw Error(`Translation missing:\n${[...missing].join('\n')}`);
-console.log('Castle/companion localized articles: 32 pages, English source, zh-Hant/fr.');
+console.log(`Castle/companion localized articles: ${CASTLE_LOCALE_LANGS.length * CASTLE_LOCALE_ROUTES.length} pages, English source.`);

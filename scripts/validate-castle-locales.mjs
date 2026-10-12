@@ -79,7 +79,7 @@ function checkSwitch(dom, lang, route, label) {
     assert(Boolean(host.querySelector('.guide-lang-options')), label, 'guide-style options missing');
     assert(!host.open, label, 'language menu must start closed');
     const links = Array.from(host.querySelectorAll('a'));
-    assert(links.length === editions.length, label, 'language switch must offer four editions');
+    assert(links.length === editions.length, label, 'language switch must offer all supported editions');
     for (const edition of editions) {
       const link = links.find(el => el.lang === edition);
       assert(link?.textContent === labels[edition], label, `language label wrong for ${edition}`);
@@ -215,5 +215,5 @@ if (errors.length) {
   console.error(`Castle locales: ${errors.length} failure(s)\n${uniqueErrors.slice(0, 50).join('\n')}${uniqueErrors.length > 50 ? `\n... ${uniqueErrors.length - 50} further unique failures.` : ''}`);
   process.exitCode = 1;
 } else {
-  console.log(`Castle locales OK: ${counts.pages} static pages; four-language switches ${counts.languageSwitches}; galleries ${counts.galleries}, maps ${counts.maps}, photo zooms ${counts.lightboxes}; assets, credits, translations and reciprocal metadata.`);
+  console.log(`Castle locales OK: ${counts.pages} static pages; ${editions.length}-language switches ${counts.languageSwitches}; galleries ${counts.galleries}, maps ${counts.maps}, photo zooms ${counts.lightboxes}; assets, credits, translations and reciprocal metadata.`);
 }

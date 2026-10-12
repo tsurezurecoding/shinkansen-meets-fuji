@@ -150,7 +150,8 @@ const appSelfSource = appCode.match(/function appSelfForPath\(pathname\) \{[\s\S
 if (!appSelfSource) {
   failures.push("app.js: appSelfForPath() is missing");
 } else {
-  const routeContext = {};
+  const locales = (await import('./shared/locales.mjs')).default;
+  const routeContext = { window: { MADO_LOCALES: locales } };
   vm.runInNewContext(appSelfSource + "\nglobalThis.__appSelfForPath = appSelfForPath;", routeContext);
   const routeFixtures = [
     ["/start.html", "start.html"],
@@ -163,6 +164,7 @@ if (!appSelfSource) {
     ["/en/journal.html", "en/journal.html"],
     ["/preview/en/start.html", "en/start.html"],
     ["/index.html", "index.html"],
+    ...['de','es','zh-Hans','zh-Hant','fr','ko'].flatMap(lang => [[`/${lang}/start.html`, `${lang}/start.html`], [`/preview/${lang}/journal.html`, `${lang}/journal.html`]]),
   ];
   for (const [pathname, expected] of routeFixtures) {
     const actual = routeContext.__appSelfForPath(pathname);

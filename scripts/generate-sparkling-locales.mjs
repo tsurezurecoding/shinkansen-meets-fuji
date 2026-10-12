@@ -15,7 +15,9 @@ const check=process.argv.includes('--check');
 const known=[SPARKLING_ROUTE,...UTILITY_ROUTES,...CASTLE_LOCALE_ROUTES,'guide.html'];
 const keys=collectSparklingEnglish(root);
 function write(file,text){const target=path.join(root,file);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')===text)return;if(check)throw Error('Stale Disney locale output: '+file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,text);}
-for(const lang of SPARKLING_LOCALES){
+const requestedLang=process.argv.includes('--lang')?process.argv[process.argv.indexOf('--lang')+1]:null;
+if(requestedLang&&!SPARKLING_LOCALES.includes(requestedLang))throw Error('Unknown Disney locale: '+requestedLang);
+for(const lang of requestedLang?[requestedLang]:SPARKLING_LOCALES){
  const dictionary=JSON.parse(fs.readFileSync(path.join(root,'scripts/locales',`sparkling-${lang}.json`),'utf8'));
  const missing=keys.filter(key=>!dictionary[key]);if(missing.length)throw Error(`${lang}: ${missing.length} Disney translations missing: ${missing.slice(0,5).join(' / ')}`);
  const tr=value=>typeof value==='string'&&dictionary[value.trim()]?value.replace(value.trim(),()=>dictionary[value.trim()]):value;
@@ -46,7 +48,7 @@ for(const lang of SPARKLING_LOCALES){
  }
  for(const host of doc.querySelectorAll('.lang-switch')){
   const menu=doc.createElement('details');menu.className='guide-lang-menu utility-lang-menu';const summary=doc.createElement('summary');summary.textContent=editions[lang].label;summary.setAttribute('aria-label',editions[lang].prompt);const options=doc.createElement('div');options.className='guide-lang-options';
-  for(const [edition,label]oflanguages.map(edition => [edition, editions[edition].label])){const a=doc.createElement('a');a.textContent=label;a.lang=edition;a.href='../'+(edition==='ja'?'':edition+'/')+SPARKLING_ROUTE+(edition==='ja'?'?lang=ja':'');if(edition===lang)a.setAttribute('aria-current','page');options.append(a);}menu.append(summary,options);host.replaceWith(menu);
+  for(const [edition,label] of languages.map(edition => [edition, editions[edition].label])){const a=doc.createElement('a');a.textContent=label;a.lang=edition;a.href='../'+(edition==='ja'?'':edition+'/')+SPARKLING_ROUTE+(edition==='ja'?'?lang=ja':'');if(edition===lang)a.setAttribute('aria-current','page');options.append(a);}menu.append(summary,options);host.replaceWith(menu);
  }
  for(const script of doc.querySelectorAll('script:not([src]):not([type])'))script.textContent=script.textContent.replace('localStorage.setItem("mado-lang", "en")',`localStorage.setItem("mado-lang", "${lang}")`);
  const payload={lang,translations:dictionary};write(`${lang}/sparkling-data.js`,'/* Generated from English Disney content. */\nwindow.MADO_SPARKLING_PAYLOAD='+JSON.stringify(payload)+';\n');
@@ -57,4 +59,4 @@ for(const lang of SPARKLING_LOCALES){
  for(const el of doc.querySelectorAll('script[src],link[rel=stylesheet]')){const attr=el.tagName==='SCRIPT'?'src':'href',value=el.getAttribute(attr);if(/^(?:https?:|\/\/)/.test(value)||!/\.(?:js|css)\?v=/.test(value))continue;const asset=new URL(value,doc.baseURI).pathname.slice(1);el.setAttribute(attr,value.replace(/\?v=[^&#]+/,`?v=${assetVersion(asset)}`));}
  write(file,withSparklingLocales(dom.serialize(),file));dom.window.close();
 }
-console.log('Disney locales: 2 English-based pages with translated calculator and preserved media attribution.');
+console.log(`Disney locales: ${SPARKLING_LOCALES.length} translated calculators with preserved media attribution.`);

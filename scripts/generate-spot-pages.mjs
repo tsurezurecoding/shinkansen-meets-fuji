@@ -5,6 +5,7 @@ import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { UTILITY_ROUTES, withUtilityLocales } from './shared/utility-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
+import { languages, translated } from './shared/locales.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -1588,7 +1589,7 @@ function englishLandingHTML() {
     .replace('<body>', '<body data-language-route="en">')
     .replace('<button type="button" class="active" data-lang="ja" aria-pressed="true">日本語</button>', '<button type="button" data-lang="ja" aria-pressed="false">日本語</button>')
     .replace('<button type="button" data-lang="en" aria-pressed="false">EN</button>', '<button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>');
-  return syncSpotCountClaims(html);
+  return withUtilityLocales(syncSpotCountClaims(html), 'en/index.html');
 }
 
 function englishAppIndexHTML() {
@@ -1873,11 +1874,11 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/hanabi.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-13" },
     { loc: `${siteRoot}/en/sparkling-dreams.html`, priority: "0.8", changefreq: "weekly", lastmod: "2026-10-10" },
     { loc: `${siteRoot}/zh-Hant/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
-    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
-    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/ko/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/zh-Hans/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
-    { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
-    { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
+    { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
@@ -1920,7 +1921,8 @@ function sitemapXML() {
     loc: `${siteRoot}/${lang === 'en' ? 'en/' : ''}spots/${castle.id}.html`,
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
-  const localizedUrls = CASTLE_LOCALE_LANGS.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
+  const utilityLiveState = JSON.parse(fs.readFileSync(path.join(appDir, 'scripts/utility-live-sitemap-state.json'), 'utf8'));
+  const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
@@ -2043,40 +2045,15 @@ for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
 // Guide pages are hand-edited SEO answer pages.
 // Keep only their shared route rail generated from the same source as spot pages.
 const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
-const guideRailConfigs = [
-  {
-    lang: "ja", path: "guide.html", prefix: "", spotHrefPrefix: "spots/",
-    ctaHref: "start.html?focus=fuji#journey", footHref: "zukan.html", includeAffiliate: true,
-  },
-  {
-    lang: "en", path: path.join("en", "guide.html"), prefix: "../", spotHrefPrefix: "spots/",
-    ctaHref: "./start.html?focus=fuji#journey", footHref: "zukan.html", includeAffiliate: true,
-  },
-  {
-    lang: "zh-Hant", path: path.join("zh-Hant", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
-  },
-  {
-    lang: "ko", path: path.join("ko", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
-  },
-  {
-    lang: "zh-Hans", path: path.join("zh-Hans", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
-  },
-  {
-    lang: "fr", path: path.join("fr", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
-  },
-  {
-    lang: "de", path: path.join("de", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
-  },
-  {
-    lang: "es", path: path.join("es", "guide.html"), prefix: "../", spotHrefPrefix: "../en/spots/",
-    ctaHref: "../en/start.html#journey", footHref: "../en/zukan.html", includeAffiliate: false, trackSpotClicks: true,
-  },
-];
+const guideRailConfigs = languages.map(lang => ({
+  lang, path: lang === 'ja' ? 'guide.html' : path.join(lang, 'guide.html'),
+  prefix: lang === 'ja' ? '' : '../',
+  spotHrefPrefix: ['ja','en'].includes(lang) ? 'spots/' : '../en/spots/',
+  ctaHref: lang === 'ja' ? 'start.html?focus=fuji#journey' : lang === 'en' ? './start.html?focus=fuji#journey' : '../en/start.html#journey',
+  footHref: ['ja','en'].includes(lang) ? 'zukan.html' : '../en/zukan.html',
+  includeAffiliate: ['ja','en'].includes(lang),
+  trackSpotClicks: !['ja','en'].includes(lang),
+}));
 for (const config of guideRailConfigs) {
   const lang = config.lang;
   const guidePath = path.join(appDir, config.path);
@@ -2152,6 +2129,7 @@ await import("./generate-castle-locales.mjs");
 await import("./generate-mieru-page.mjs");
 await import("./generate-utility-locales.mjs");
 await import("./generate-sparkling-locales.mjs");
+await import("./generate-guide-locale-routes.mjs");
 await import("./generate-content-manifest.mjs");
 
 const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;

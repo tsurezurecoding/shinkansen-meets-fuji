@@ -32,7 +32,8 @@
     var match = String(path).match(new RegExp('/(' + pattern + ')(?:/|$)', 'i'));
     return match ? normalize(match[1]) : null;
   }
-  var api = { editions: editions, languages: languages, translated: translated, utility: utility, castleIds: castleIds, castles: castles, extra: extra, routes: routes, pattern: pattern, normalize: normalize, stripEdition: stripEdition, canonicalRoute: canonicalRoute, supported: supported, routeLanguage: routeLanguage };
+  function recognized(value) { return /^(?:ja|en|zh|fr|de|es|ko|ar)(?:-|_|$)/i.test(String(value || '')); }
+  var api = { editions: editions, languages: languages, translated: translated, utility: utility, castleIds: castleIds, castles: castles, extra: extra, routes: routes, pattern: pattern, normalize: normalize, recognized: recognized, stripEdition: stripEdition, canonicalRoute: canonicalRoute, supported: supported, routeLanguage: routeLanguage };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.MADO_LOCALES = api;
 }(typeof window === 'object' ? window : null));

@@ -2,7 +2,8 @@
   "use strict";
 
   var path = location.pathname.replace(/\/+$/, "/");
-  if (/\/(?:en|zh-Hant|fr)(?:\/|$)/.test(path)) return;
+  var config = window.MADO_LOCALES;
+  if (config ? config.routeLanguage(path) : /\/(?:en)(?:\/|$)/.test(path)) return;
 
   var routes = {
     "/window-artworks.html": "en/window-artworks.html",
@@ -51,10 +52,13 @@
     return;
   }
 
-  // 利用者が明示的に選んだ時だけ英語版へ移す。
-  if (requested === "en" || saved === "en") {
-    try { localStorage.setItem("mado-lang", "en"); } catch (error) {}
-    var destination = new URL(targetRoute, document.baseURI);
+  // Route only an explicit selection or a saved preference. Browser languages are notices.
+  var selected = requested || saved;
+  var edition = config && selected ? config.normalize(selected) : selected;
+  var route = config ? config.canonicalRoute(targetRoute.replace(/^(?:\.\.\/)+/, '')) : targetRoute;
+  if ((!config || config.recognized(selected)) && edition !== 'ja' && (edition === 'en' || config && config.supported(route).indexOf(edition) >= 0)) {
+    try { localStorage.setItem("mado-lang", edition); } catch (error) {}
+    var destination = new URL(targetRoute.replace(/(^|\/)en\//, '$1' + edition + '/'), document.baseURI);
     destination.search = location.search;
     destination.hash = location.hash;
     location.replace(destination.href);

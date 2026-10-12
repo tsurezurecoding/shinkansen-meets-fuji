@@ -9,6 +9,7 @@
 // Read-only. Usage: npm run audit:site   (or: node scripts/audit-site.mjs [appRoot])
 // Env: LIMIT=n caps how many findings print per category (default 12).
 import fs from 'node:fs';
+import { editions, normalize } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
@@ -215,11 +216,8 @@ for (const f of htmlFiles) {
   }
 
   // ---- <html lang> must agree with the language directory ----
-  const dirLang = f.startsWith('en/') ? 'en'
-    : f.startsWith('ar/') ? 'ar' : f.startsWith('fr/') ? 'fr' : f.startsWith('de/') ? 'de'
-    : f.startsWith('es/') ? 'es' : f.startsWith('ko/') ? 'ko'
-    : f.startsWith('zh-Hans/') ? 'zh' : f.startsWith('zh-Hant/') ? 'zh' : 'ja';
-  if (info.lang && !info.lang.toLowerCase().startsWith(dirLang)) {
+  const dirLang = Object.hasOwn(editions, f.split('/')[0]) ? f.split('/')[0] : 'ja';
+  if (info.lang && normalize(info.lang) !== dirLang) {
     add('lang-dir-mismatch', f, `<html lang="${info.lang}"> in ${dirLang}/ tree`);
   }
 

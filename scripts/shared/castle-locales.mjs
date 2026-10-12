@@ -1,4 +1,4 @@
-import { translated, castleIds, castles, stripEdition } from './locales.mjs';
+import { translated, castleIds, castles, stripEdition, withLocaleRegistry } from './locales.mjs';
 import { assetVersion } from './asset-version.mjs';
 export const CASTLE_LOCALE_LANGS = translated;
 export const CASTLE_LOCALE_IDS = castleIds;
@@ -11,6 +11,6 @@ export function withArticleLocales(head, file, version) {
   head = head.replace(new RegExp('\\s*<link\\b[^>]*rel="alternate"[^>]*hreflang="(?:' + translated.join('|') + ')"[^>]*>', 'g'), '');
   const links = CASTLE_LOCALE_LANGS.map(lang => `  <link rel="alternate" hreflang="${lang}" href="https://www.michikusa-travel.com/${lang}/${route}">`).join('\n');
   if (!head.includes('article-locales.js')) head = head.replace('</head>', `  <script defer src="${prefix}article-locales.js?v=${version}"></script>\n</head>`);
-  if (!head.includes('src="' + prefix + 'locales.js')) head = head.replace('</head>', `  <script src="${prefix}locales.js?v=${assetVersion('locales.js')}"></script>\n</head>`);
+  head = withLocaleRegistry(head, prefix);
   return head.replace('</head>', `${links}\n</head>`);
 }

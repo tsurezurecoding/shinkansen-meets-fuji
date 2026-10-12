@@ -1,4 +1,4 @@
-// Only articles with all four editions load this file. TOP/search keep their existing routes.
+// Article edition menus use the shared route contract and retain navigation state.
 (function () {
   'use strict';
   function connect() {
@@ -24,6 +24,13 @@
         if (edition === 'ja' || url.searchParams.has('lang')) url.searchParams.set('lang', edition);
         a.href = url.href;
         a.lang = edition; a.textContent = config.editions[edition].label;
+        a.addEventListener('click', function () {
+          if (lang === 'ja') {
+            var source = new URL(location.href); source.searchParams.set('lang', 'ja');
+            try { history.replaceState(history.state, '', source); } catch (error) {}
+          }
+          try { localStorage.setItem('mado-lang', edition); } catch (error) {}
+        });
         if (lang === edition) a.setAttribute('aria-current', 'page');
         options.appendChild(a);
       });

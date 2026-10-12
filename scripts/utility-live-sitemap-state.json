@@ -14,5 +14,37 @@
       "html": "9b3ddc91898381bc396a2f4f02ef142a82a8607a96d53693d2487e55c10752cf",
       "narration": "9f96624965cf6e0bf9c072c599579e94af049a9205207f7112e10ef93e7e3f24"
     }
+  },
+  "de": {
+    "lastmod": "2026-10-12",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "fingerprints": {
+      "html": "3e779f2a9f45da05455cb0c9d51d52b296ebc4f8ddf66857b61c62579a45f0bc",
+      "narration": "4010eed122ac26282335c84c34f512af9e50a328cfa8ecd6444496f2fc5dc836"
+    }
+  },
+  "es": {
+    "lastmod": "2026-10-12",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "fingerprints": {
+      "html": "0a185ef8626aaebca715ff59d6f41e2391205c209517e13fa7430dbfef158956",
+      "narration": "3a0334fc0f374759a4f2f6b7d6f5d85c96db75c893a67fcb7b172a0348fd1ba6"
+    }
+  },
+  "zh-Hans": {
+    "lastmod": "2026-10-12",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "fingerprints": {
+      "html": "57d965d7731a118c6cf8e661329ffdfc7d82c4f28a349213c823a11dd3104113",
+      "narration": "b51cc86bcc52e9de53195ded9a24a7530545cd4cde44917c2aca3ee61db9dd89"
+    }
+  },
+  "ko": {
+    "lastmod": "2026-10-12",
+    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion.",
+    "fingerprints": {
+      "html": "00340cb6b05855484e24b4dac40eee1ff15ddea65c126c1fba4f986208b23655",
+      "narration": "4e6d5a6181d88edbd5ab7095b35649fef92373fdfb64c6db4c3bdc84162ada64"
+    }
   }
 }

@@ -48,4 +48,4 @@ for(let i=0;i<pages.length;i++){
  p.d.getElementById('mieruBoard').value='Tokyo';p.d.getElementById('mieruBoard').dispatchEvent(new p.w.Event('change'));p.d.getElementById('mieruDir').value='east';p.d.getElementById('mieruDir').dispatchEvent(new p.w.Event('change'));
  assert(!Object.keys(p.w.__mieru.results).length,'stale forecast remains for no viewpoints');p.dom.window.close();
 }
-console.log(`Forecast PASS: 4 languages, 20 static photo explanations/credits, ${scenarios} nonempty calculation scenarios, 4 train language restorations, lazy timetable and stale-result clearing.`);
+console.log(`Forecast PASS: ${langs.length} languages, ${langs.length * 5} static photo explanations/credits, ${scenarios} nonempty calculation scenarios, ${langs.length} train language restorations, lazy timetable and stale-result clearing.`);
