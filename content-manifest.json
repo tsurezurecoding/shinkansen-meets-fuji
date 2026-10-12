@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "00cf16cac849abd7",
+  "contentVersion": "13a059719a4b9536",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1625,6 +1625,12 @@
       "sha256": "f1177f0031781b325d25f45218ed360831b685be7d2bcebda69312a99bd0f077"
     },
     {
+      "path": "images/window-trip-card.webp",
+      "url": "https://www.michikusa-travel.com/images/window-trip-card.webp",
+      "bytes": 17104,
+      "sha256": "bb2ef05c89da80e334073c24940006de3fbd459a3533c14259910917d100f3ca"
+    },
+    {
       "path": "images/wm-hero-snow.jpg",
       "url": "https://www.michikusa-travel.com/images/wm-hero-snow.jpg",
       "bytes": 263676,
@@ -1645,8 +1651,8 @@
     {
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
-      "bytes": 72477,
-      "sha256": "f37ca3f6f50c0b097cd0cfe5abc1205021dad23e3324595a8f7fdded5b22644a"
+      "bytes": 72480,
+      "sha256": "c4b257ef813950aa9973177b7b75bf5d186a6b73957a3dc33ce9bdf4b8be93ec"
     },
     {
       "path": "journal.html",
