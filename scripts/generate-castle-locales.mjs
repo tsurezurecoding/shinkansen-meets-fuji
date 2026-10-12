@@ -64,10 +64,10 @@ for (const lang of CASTLE_LOCALE_LANGS) {
       const href = el.getAttribute('href');
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
       const url = new URL(href, `${origin}/en/${route}`);
-      let target = url.pathname.slice(1).replace(/^en\//, '');
+      let target = url.pathname.slice(1).replace(/^en\//, '').replace(/^$/, 'index.html');
       if (target === 'spots/hamanako-fuji.html') { target = 'spots/hamanako.html'; url.hash = 'hamanako-fuji'; }
       if (CASTLE_LOCALE_ROUTES.includes(target) || EXTRA_LOCALE_ROUTES.includes(target) || UTILITY_ROUTES.includes(target.replace(/^live\/$/, 'live/index.html')) || target === 'guide.html') {
-        el.setAttribute('href', prefix + lang + '/' + target + url.search + url.hash);
+        el.setAttribute('href', prefix + lang + '/' + (target === 'index.html' ? '' : target) + url.search + url.hash);
       } else if (url.pathname.startsWith('/en/') && !el.closest('.lang-switch')) {
         el.setAttribute('href', prefix + 'en/' + target + url.search + url.hash);
         el.setAttribute('hreflang', 'en');

@@ -254,6 +254,30 @@ async function checkForecastParity() {
   doms.forEach(dom => dom.window.close());
 }
 const dictionaries = Object.fromEntries(LOCALES.map(lang => [lang, checkDictionary(lang)]));
+// Translated pages must use available translated destinations, including TOP.
+for (const lang of LOCALES) {
+  for (const entry of fs.readdirSync(path.join(root, lang), { recursive: true })) {
+    if (!entry.endsWith('.html')) continue;
+    const file = `${lang}/${entry.replaceAll('\\', '/')}`, html = read(file);
+    const pageUrl = `${origin}/${file}`, baseHref = html.match(/<base\b[^>]*href="([^"]+)"/i)?.[1];
+    const base = baseHref ? new URL(baseHref, pageUrl).href : pageUrl;
+    for (const match of html.matchAll(/<a\b([^>]*?)href="([^"]+)"([^>]*)>/gi)) {
+      if (/\s(?:lang|data-lang)="en"/.test(match[1] + match[3])) continue;
+      const url = new URL(match[2], base);
+      if (url.origin !== origin || !url.pathname.startsWith('/en/')) continue;
+      const target = url.pathname.slice(4) || 'index.html';
+      const local = `${lang}/${target}${url.pathname.endsWith('/') && target !== 'index.html' ? 'index.html' : ''}`;
+      assert(!exists(local), file, `available localized destination bypassed: ${match[2]} -> ${local}`);
+    }
+  }
+  const dom = new JSDOM('', { runScripts: 'outside-only' });
+  dom.window.MADO_UTILITY_PAYLOAD = { lang, translations: {}, tables: {}, routes: UTILITY_ROUTES };
+  dom.window.eval(read('utility-locale-runtime.js'));
+  for (const route of ['', 'index.html', '?intro=1', '#journey']) {
+    assert(dom.window.MADO_UTILITY_LOCALE.href(route) === `${lang}/${route === 'index.html' ? '' : route}`, lang, `TOP runtime route leaves language: ${route}`);
+  }
+  dom.window.close();
+}
 for (const file of ['utility-locale-runtime.js','utility-locales.js','utility-locales.css', ...LOCALES.map(lang => `${lang}/utility-data.js`)]) checkManifest(file);
 for (const route of UTILITY_ROUTES) {
   const source = utilitySnapshot(root, route);

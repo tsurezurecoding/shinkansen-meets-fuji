@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3fbc30fb3bf25cef",
+  "contentVersion": "91475f90a3093104",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -325,38 +325,38 @@
     {
       "path": "fr/castles.html",
       "url": "https://www.michikusa-travel.com/fr/castles.html",
-      "bytes": 104147,
-      "sha256": "c9d382fc4a7b3343edae7cc126d1a2907f60581b88ce62693f17fdbf1360cf76"
+      "bytes": 104105,
+      "sha256": "5ee9e58fb939fb99c07f222cc8cfb94aaabb28e621c2c88bcda1a9e102aafa17"
     },
     {
       "path": "fr/contact.html",
       "url": "https://www.michikusa-travel.com/fr/contact.html",
       "bytes": 9270,
-      "sha256": "a07eb1dbbbda16d1e50b7181d5f5739b2c1a62a7ea0f69ea37aeefa67f42bac8"
+      "sha256": "d1e08f5a305e288be00bac568be9ace42588a856d4cdbec5f8974c2c9a31855c"
     },
     {
       "path": "fr/index.html",
       "url": "https://www.michikusa-travel.com/fr/index.html",
       "bytes": 70522,
-      "sha256": "295bb9da8dfafafb7b4f222191f4d5d8cc0f348dbcf24519f491785d0c633a96"
+      "sha256": "39a956905e9346145fe50a93c64adf59902c16aa97b7123f276e5eba0fe1c2dd"
     },
     {
       "path": "fr/journal.html",
       "url": "https://www.michikusa-travel.com/fr/journal.html",
       "bytes": 19652,
-      "sha256": "5bbeb91acfaa4651347d17ed94523e16fd3fcb204e4c661fda812073b7be18cd"
+      "sha256": "2ef79905fcea1177929fd962d24c8945f190cd5fd1755c4235e247e8ec41066a"
     },
     {
       "path": "fr/live/index.html",
       "url": "https://www.michikusa-travel.com/fr/live/index.html",
       "bytes": 17018,
-      "sha256": "45c3f2255992fda0f028e50abfa0579f9445fcca1e72165c1c40fa50a7350456"
+      "sha256": "9f8ebd1686ae76fef3003172ff50106ed4b2855cde57bd09c5eb7d46edd1e0dd"
     },
     {
       "path": "fr/mieru.html",
       "url": "https://www.michikusa-travel.com/fr/mieru.html",
       "bytes": 90724,
-      "sha256": "6e488d115c7e814af61ca91e4ea9c759e395c21184347f6fd614f3cd428c5c77"
+      "sha256": "122c7e30cb0b8a17b6d561c5c05bf2048b841c6b4b2e9bff48be780ead490584"
     },
     {
       "path": "fr/sparkling-data.js",
@@ -367,104 +367,104 @@
     {
       "path": "fr/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/fr/sparkling-dreams.html",
-      "bytes": 103462,
-      "sha256": "b28648f624d0f7f740a00966c3237512aa9c679584412d8f6df3446029dd6c35"
+      "bytes": 103452,
+      "sha256": "ae10457fb58e8c7d701d759e2c63e24f6b02afc514c20e6ad486eb4a8b44c275"
     },
     {
       "path": "fr/spots/edo-castle-fujimi-yagura.html",
       "url": "https://www.michikusa-travel.com/fr/spots/edo-castle-fujimi-yagura.html",
-      "bytes": 96453,
-      "sha256": "3263f162e1fa2a9acc735bafc07a0e70f013282ff13a45f9c8956c083cd2eaa8"
+      "bytes": 96425,
+      "sha256": "84f2a8e0ddc73f3d0e0e746f6683906f1547af5f79cf09e5164e453ea9dc1500"
     },
     {
       "path": "fr/spots/fukuyama-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fukuyama-castle.html",
-      "bytes": 92672,
-      "sha256": "138f4567dbe6621e0204b9794851cf049339065c99ec260848ec723efe2367f2"
+      "bytes": 92630,
+      "sha256": "3e526488b3cc7e5f46d882a110fe7d040dc1c7932287edb483c43119f10db94b"
     },
     {
       "path": "fr/spots/gifu-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/gifu-castle.html",
-      "bytes": 97573,
-      "sha256": "06a8cce47666b24817431a6be2fedfb837e0e95b47b50c97f65d8b1c00b8882e"
+      "bytes": 97545,
+      "sha256": "70600cd9d17877ff423513c5d58d56671a9758b161634c5ccf5284ad563c8fff"
     },
     {
       "path": "fr/spots/hamanako.html",
       "url": "https://www.michikusa-travel.com/fr/spots/hamanako.html",
-      "bytes": 103728,
-      "sha256": "e9ff88751b58f6b370c07141226900532c8a3bd5fb7953111beb4c9497525fa4"
+      "bytes": 103700,
+      "sha256": "507ecaa0f71c72f4efb1b07cf84f060e042b97359e5fd13bfbda8c814df9ddcb"
     },
     {
       "path": "fr/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/hikone-castle.html",
-      "bytes": 99942,
-      "sha256": "11b5f8286999bec21a283ae934ddf6e7c4a5f2e616f6cbb0c58aae647c5873c3"
+      "bytes": 99914,
+      "sha256": "e1cf084e3c9632ac8d309ce887d6dbaa4ee2fc8bcdd5e30af543b60d8e6bbf75"
     },
     {
       "path": "fr/spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/himeji-castle.html",
-      "bytes": 93524,
-      "sha256": "85f5fe41655f636bea05a366ebd7d25834091a8c570cb23ad76e2b96adad9fed"
+      "bytes": 93482,
+      "sha256": "5cab43679c06dceee4ad9f3a7b78a9252b625befe140937b0359dfe4fdc2fe25"
     },
     {
       "path": "fr/spots/kakegawa.html",
       "url": "https://www.michikusa-travel.com/fr/spots/kakegawa.html",
-      "bytes": 98725,
-      "sha256": "24ab6f7af1f2ace40683b4f0b6b2d959bf5a937bc0bd568c8079ba4cba35464a"
+      "bytes": 98697,
+      "sha256": "8a86e88ed4a00411b50b16fd05fd6b3d22d325370d7eaa0ea123b4629f93c7d2"
     },
     {
       "path": "fr/spots/kannonji-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/kannonji-castle.html",
-      "bytes": 96355,
-      "sha256": "2e974c0f9d0410b8f2513768a81eb12dfa054fedf28a15de6a33c6e49df1209d"
+      "bytes": 96327,
+      "sha256": "ab02a62c3cf9f7171cb39922ba228e07611188c43d854f459b591246dc6cbd79"
     },
     {
       "path": "fr/spots/kiyosu.html",
       "url": "https://www.michikusa-travel.com/fr/spots/kiyosu.html",
-      "bytes": 103846,
-      "sha256": "7fc2700eafc8f8b071a1073587a8183b63e0779ba91d19d31bbe8b0f0ea78d19"
+      "bytes": 103818,
+      "sha256": "8415ed62b0ec05fdcf2105e5bb117a31a78950dad8f95901f2c870aae0d6b59a"
     },
     {
       "path": "fr/spots/nagoya-station-skyline.html",
       "url": "https://www.michikusa-travel.com/fr/spots/nagoya-station-skyline.html",
-      "bytes": 99867,
-      "sha256": "3678507ae88e141fde725f3c9bcaea1a13cbdba9a0808e78ff52c6a8df4a8f73"
+      "bytes": 99839,
+      "sha256": "de12a139264759b241cd6cb59a921bf8f900e95c3953f19cf87e2706f1b3d75c"
     },
     {
       "path": "fr/spots/odawara-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/odawara-castle.html",
-      "bytes": 97506,
-      "sha256": "b455727ecc5d70bf943b46b165fa859a4d35e9c0a15cd16db8d504caefb81a93"
+      "bytes": 97478,
+      "sha256": "4e0c029c5948cd6c4f2ffcbcac4fcbc21f7d295ebf7008eab97428c3a624f6a3"
     },
     {
       "path": "fr/spots/odawara.html",
       "url": "https://www.michikusa-travel.com/fr/spots/odawara.html",
-      "bytes": 100802,
-      "sha256": "80922bd6b5c8f953cae7f8ad06ac47e92be9de852b58112c95b35524458e9bec"
+      "bytes": 100774,
+      "sha256": "1f03b0f2d154fa9cc0d5ee70d9f14e82ddbd35093ec308451e2fa84968828a9b"
     },
     {
       "path": "fr/spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/okayama-castle.html",
-      "bytes": 91372,
-      "sha256": "428e62999eef68ca5346d02a606c66136058193d167b12a7d365eb9b45bbb821"
+      "bytes": 91330,
+      "sha256": "8758dd36a4c7dc40845067e7f0a7c0445abb36026a546c6d66e7dadbe3afa3cb"
     },
     {
       "path": "fr/spots/sawayama-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/sawayama-castle.html",
-      "bytes": 96928,
-      "sha256": "6999e9dad2f51c250f1082a90161e5a22643c7db31dd7ee489ac9b73a97965b3"
+      "bytes": 96900,
+      "sha256": "d4d27270e3ecff14546b21ce59023bccdb04fe96477daf2e4ac3deb9eac1373b"
     },
     {
       "path": "fr/spots/toji.html",
       "url": "https://www.michikusa-travel.com/fr/spots/toji.html",
-      "bytes": 96947,
-      "sha256": "4ccd7e53dddc65ffcb8414abd063c09f0fac6ab3546add8f0633c4f0e21e6e5f"
+      "bytes": 96919,
+      "sha256": "f749885ca6776fb2036d13ddbd591db2c6fadff225010b9a2dc3ab17d01bef61"
     },
     {
       "path": "fr/start.html",
       "url": "https://www.michikusa-travel.com/fr/start.html",
       "bytes": 131484,
-      "sha256": "f559c47154e7dcf9281cf028157217486c21cb81c3c8584a18922f2c88f5720e"
+      "sha256": "50121c0381e18d6d4943a4ccbe3581bed4a10150c962e380e93e8ada3d1fc4d9"
     },
     {
       "path": "fr/utility-data.js",
@@ -476,7 +476,7 @@
       "path": "fr/zukan.html",
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
       "bytes": 24573,
-      "sha256": "a5b6a5ce4510c9bbf1046273f236403b14f7804408ed897f2d96939697976a0a"
+      "sha256": "0ae4c35c8d9cafd57aa47098fa44465296ddd0d0f1d0fa80f05cb1cc814f86cb"
     },
     {
       "path": "hanabi.html",
@@ -1621,8 +1621,8 @@
     {
       "path": "utility-locale-runtime.js",
       "url": "https://www.michikusa-travel.com/utility-locale-runtime.js",
-      "bytes": 2650,
-      "sha256": "23d95f7b4ab5385afaa9a5a5c5fe9761f285be3d13055817d45e3dc7d6e2fab1"
+      "bytes": 2710,
+      "sha256": "27a46bafb92b6d382c042716169a81185739fa17dd396edad401303432e0253c"
     },
     {
       "path": "utility-locales.css",
@@ -1723,38 +1723,38 @@
     {
       "path": "zh-Hant/castles.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/castles.html",
-      "bytes": 99491,
-      "sha256": "4bd7d7b69acd197f21f85a9b6b00553d15aa5fb7efbc4aaf3d05582c2d1dfdc6"
+      "bytes": 99464,
+      "sha256": "ccc6aad970c66ea26550e2f6e2945f3ec56a8fd39080c940fd1a027902107e8b"
     },
     {
       "path": "zh-Hant/contact.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/contact.html",
       "bytes": 9010,
-      "sha256": "efcfb96b83918c2bfc79088dfedd3cf227d6fc59d65dd11e110ee2e693e4e7d8"
+      "sha256": "aab79b7914ba07c3d9ba812ee7fb8815400ec70dae9b34d788b94891a6960751"
     },
     {
       "path": "zh-Hant/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/index.html",
       "bytes": 68953,
-      "sha256": "fe9f01fe086ea4189ebf10ac542d519de927b677025cefbb3f11a7fe68b13f89"
+      "sha256": "cdfb3a06153f8a0e06f754680d6c852c2b77372627629eb66ce327c90fffa829"
     },
     {
       "path": "zh-Hant/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/journal.html",
       "bytes": 18729,
-      "sha256": "f342a7ce94eaceccb9eef6b990e29020752691a35c91eb9feaf0464bb989b7a4"
+      "sha256": "b3a6a7da1cf15f6fec68609b16aad435af0f80ed90326aede2db0c41c448d726"
     },
     {
       "path": "zh-Hant/live/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/live/index.html",
       "bytes": 16478,
-      "sha256": "6c4102f2872d76115a38f01127c48b35c1bcdc937eea863ba13c6dcdacac6876"
+      "sha256": "fbe3e1932555330d9ddb902a5b0048670b65867fb0b8ec227935c55cb7c4722a"
     },
     {
       "path": "zh-Hant/mieru.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/mieru.html",
       "bytes": 87257,
-      "sha256": "d7abbfad11d2b1dc0283803d15c8d54fb0fe7ac6f5c23fce6681350af2296dc4"
+      "sha256": "5e55cf8932e31ca58e55c15a7f90b25475f703d2e3385b7e36d83d16464be8d1"
     },
     {
       "path": "zh-Hant/sparkling-data.js",
@@ -1766,103 +1766,103 @@
       "path": "zh-Hant/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/sparkling-dreams.html",
       "bytes": 100336,
-      "sha256": "438f28bb4946c04a9afe2374f9af2fd7da2456ed65696b8cf202ae5e275cd4b8"
+      "sha256": "99ec9abb2ad9b9b879e9610bcf19731cf6018ac6c1c5194be585369be1922351"
     },
     {
       "path": "zh-Hant/spots/edo-castle-fujimi-yagura.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/edo-castle-fujimi-yagura.html",
-      "bytes": 93101,
-      "sha256": "726bedf670c01c0a82725f1edb44ff4f5eb7ef6f5ba012d6c1788925dad46d07"
+      "bytes": 93083,
+      "sha256": "713ce965a8d9dd81e081581e379ba4c2425dcde329673a07549565d58aab98d2"
     },
     {
       "path": "zh-Hant/spots/fukuyama-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/fukuyama-castle.html",
-      "bytes": 89075,
-      "sha256": "f8d450bfbc28f6759ddc5ab355e1f56a40bafbb10984bdcda1e0712cafc95610"
+      "bytes": 89048,
+      "sha256": "85b622d0957be7b430e3e520c25b671c759838831d385027e05e1837cff344b4"
     },
     {
       "path": "zh-Hant/spots/gifu-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/gifu-castle.html",
-      "bytes": 94420,
-      "sha256": "370c59b6c66bbf2b145ee73fd265afeb919b196176faa1bf45730028dd379ca9"
+      "bytes": 94402,
+      "sha256": "0a5b1317720ddd5383acb1ec387270702e5bdd2dff59675723a138f2ad92ddc4"
     },
     {
       "path": "zh-Hant/spots/hamanako.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/hamanako.html",
-      "bytes": 99905,
-      "sha256": "ff57887ade959f88c382c8962a90dbd5c70e983e07a724634f2eaa63b03eac61"
+      "bytes": 99887,
+      "sha256": "a985009a4ee417785f4b185a3fc54a7e17d41bcf5ba31b6664b3d4f26271f3ea"
     },
     {
       "path": "zh-Hant/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/hikone-castle.html",
-      "bytes": 96097,
-      "sha256": "9b771607e7a993265bd49bc2b30c55e16a0410d0eace1b2bb540956fe33a8a92"
+      "bytes": 96079,
+      "sha256": "c141cfec405fc5e905a012986d2cb800b5abd585899b0893788962f628269973"
     },
     {
       "path": "zh-Hant/spots/himeji-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/himeji-castle.html",
-      "bytes": 89976,
-      "sha256": "281a96a683c7e2aa507d8558de088ae1ff54c887ebbe03375e626a37055db469"
+      "bytes": 89949,
+      "sha256": "6d039a41dbc106e0f30a1a9bbf92e2c76d112a281b17da69518be8819dc21ff5"
     },
     {
       "path": "zh-Hant/spots/kakegawa.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/kakegawa.html",
-      "bytes": 94989,
-      "sha256": "fc4c9ebbafc9f8a1c5a13489eb194438c114a2d8565bd26fb40c28977d00f493"
+      "bytes": 94971,
+      "sha256": "b983b0a9217c8d0fbe4062f397abd6993cfb6249422523de545cff3cb7c63d76"
     },
     {
       "path": "zh-Hant/spots/kannonji-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/kannonji-castle.html",
-      "bytes": 93087,
-      "sha256": "7cfd04d57c7ca5205f80edd8b46b756aefbdbfc4de472bd91609a74738474974"
+      "bytes": 93069,
+      "sha256": "d7e55e31ff1110e2432e0f4e8805c937d18b0a478e67765278449d1e75a4d6ae"
     },
     {
       "path": "zh-Hant/spots/kiyosu.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/kiyosu.html",
-      "bytes": 100072,
-      "sha256": "906b2800800b797d74d7eabafe771664b9267961bee9aca04a3560c89c794a61"
+      "bytes": 100054,
+      "sha256": "ecf0874b93044762292524b77a7b4cbac4375d9e3ba243aec5ac42a706e2b6df"
     },
     {
       "path": "zh-Hant/spots/nagoya-station-skyline.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/nagoya-station-skyline.html",
-      "bytes": 96722,
-      "sha256": "3904b16ff9bf84c7ea4fc5ca24755329916b71a818f594ecceb9da77cc8099a6"
+      "bytes": 96704,
+      "sha256": "644b388eb8202a78b171a94cda57158a0c5a2008d9d3e468ee1da796f3476bb7"
     },
     {
       "path": "zh-Hant/spots/odawara-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/odawara-castle.html",
-      "bytes": 94204,
-      "sha256": "bf5a1f533fec35c5a8cb1e61ce73164dfe113ac3fdacdff061d13d576217eb6a"
+      "bytes": 94186,
+      "sha256": "c6f943414eac92f88f0e6ce8d422aceab83704a4b76a331869c63a4daa74c9c0"
     },
     {
       "path": "zh-Hant/spots/odawara.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/odawara.html",
-      "bytes": 97008,
-      "sha256": "1b4622feaeb9a7a3f2c361b929f0ec740180ffc22dac715addd1c9ef4b5f0520"
+      "bytes": 96990,
+      "sha256": "fb8df8dce0f53f6a7a5883dfbd7e6f94323019af66404b66ff6f415c596ca997"
     },
     {
       "path": "zh-Hant/spots/okayama-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/okayama-castle.html",
-      "bytes": 88155,
-      "sha256": "9c191bad4b72b040497e90d9fcc142ea12b704e7c199401d81998efd8a84797a"
+      "bytes": 88128,
+      "sha256": "47bdf6bc1f5dadc603ffbd43d67086d1a9b31d69677515c96b8831efc31e5da6"
     },
     {
       "path": "zh-Hant/spots/sawayama-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/sawayama-castle.html",
-      "bytes": 93565,
-      "sha256": "73b236ccfe90dc6857b86da5199d08c0dbd7fe63219a332ef4f8f47b75a07264"
+      "bytes": 93547,
+      "sha256": "b3aaa974fdc0bd543bc5a837c57dec35356a6044175d44e9997ce2cd9d388d8f"
     },
     {
       "path": "zh-Hant/spots/toji.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/toji.html",
-      "bytes": 93598,
-      "sha256": "75338a4679b402431b965ab2ceb7d5cb00149bbf6f6273afd612b4553d183410"
+      "bytes": 93580,
+      "sha256": "0bb03ac036fc9d9be51ed715d72aae3ee0eb0a94441a0edc3a0d5588c45b59af"
     },
     {
       "path": "zh-Hant/start.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/start.html",
       "bytes": 134775,
-      "sha256": "6508265ddfac703d9dc3b5aa24a5ab1f6cc2930d0cda4e677e7e7d6c199716d4"
+      "sha256": "49d900986f67336ced02cbc3743531d3b30e357180c296f0425bb427da01e4e3"
     },
     {
       "path": "zh-Hant/utility-data.js",
@@ -1874,7 +1874,7 @@
       "path": "zh-Hant/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/zukan.html",
       "bytes": 23823,
-      "sha256": "61baa1ff0d10e2aa9ed4c244ed2854fc3412e3025529b962f9bd9f7982dee264"
+      "sha256": "91ab2043f0679bb023a5716ba563c5c504f4ab9725f24f35b0873e136ad2877e"
     }
   ],
   "audioPacks": [

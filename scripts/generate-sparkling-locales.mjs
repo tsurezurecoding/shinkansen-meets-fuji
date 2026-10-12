@@ -40,8 +40,8 @@ for(const lang of SPARKLING_LOCALES){
  for(const a of doc.querySelectorAll('a[href]')){
   if(a.closest(SPARKLING_EXCLUDE))continue;const href=a.getAttribute('href');if(!href||/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href))continue;
   const url=new URL(href,doc.baseURI);if(url.origin!==origin)continue;
-  const route=url.pathname.slice(1).replace(/^en\//,'').replace(/^live\/$/,'live/index.html');
-  a.setAttribute('href','../'+(known.includes(route)?lang:'en')+'/'+route+url.search+url.hash);
+  const route=url.pathname.slice(1).replace(/^en\//,'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');
+  a.setAttribute('href','../'+(known.includes(route)?lang:'en')+'/'+(route==='index.html'?'':route)+url.search+url.hash);
  }
  for(const host of doc.querySelectorAll('.lang-switch')){
   const menu=doc.createElement('details');menu.className='guide-lang-menu utility-lang-menu';const summary=doc.createElement('summary');summary.textContent=lang==='fr'?'Français':'繁體中文';summary.setAttribute('aria-label',lang==='fr'?'Choisir la langue':'選擇語言');const options=doc.createElement('div');options.className='guide-lang-options';
