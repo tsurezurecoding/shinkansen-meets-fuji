@@ -1,3 +1,4 @@
+import { translated } from './shared/locales.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -363,7 +364,7 @@ for (const required of [
 }
 
 // Page fragments must stay on the field guide despite its root-relative base.
-for (const lang of ['en', 'zh-Hant', 'fr']) {
+for (const lang of ['en', ...translated]) {
   const route = '/' + lang + '/zukan.html';
   const dom = new JSDOM(fs.readFileSync(diskPath(route), 'utf8'), { url: origin + route });
   for (const hash of ['#zukanIntentsTitle', '#gallery']) {
@@ -373,7 +374,7 @@ for (const lang of ['en', 'zh-Hant', 'fr']) {
   }
   dom.window.close();
 }
-for (const lang of ['zh-Hant', 'fr']) {
+for (const lang of translated) {
   const route = '/' + lang + '/guide.html';
   const dom = new JSDOM(fs.readFileSync(diskPath(route), 'utf8'), { url: origin + route });
   const doc = dom.window.document;

@@ -3,9 +3,9 @@
   const { ease, clamp, lerp, $, style, renderAudio } = PV;
   const q = new URLSearchParams(location.search);
   // ja and en have their own captures; fr and zh-Hant reuse the English captures.
-  const LANG = ['en', 'fr', 'zh-Hant'].includes(q.get('film')) ? q.get('film') : 'ja';
+  const LANG = window.MADO_LOCALES?.languages.includes(q.get('film')) ? q.get('film') : (['en', 'fr', 'zh-Hant'].includes(q.get('film')) ? q.get('film') : 'ja');
   const ASSET = LANG === 'ja' ? 'ja' : 'en';
-  const LATIN = LANG === 'en' || LANG === 'fr';
+  const LATIN = ['en', 'fr', 'de', 'es'].includes(LANG);
   const RENDER = false;
   const progressive = document.documentElement.hasAttribute('data-progressive-film');
   if (!progressive) document.querySelectorAll('img[data-src]').forEach(im => { im.src = ASSET === 'en' && im.dataset.en ? im.dataset.en : im.dataset.src; });
@@ -15,7 +15,7 @@
   if (RENDER) document.body.classList.add('render');
 
   // ---------- copy ----------
-  const COPY = {
+  const COPY = window.MADO_FILM_COPY?.[LANG] || {
     ja: {
       s1eb: 'LOOK UP FROM YOUR SCREEN', s1l1: ['スマホを見る時間を、'], s1l2: ['窓を見る時間へ。'], credit: '写真：michikusa',
       mark: '窓', wordmark: '新幹線の窓', s2def: ['東海道新幹線の', '車窓ガイド'], countUnit: '景', s2label: '東京 ⇄ 新大阪',

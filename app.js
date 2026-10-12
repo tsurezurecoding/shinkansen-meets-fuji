@@ -432,14 +432,11 @@ function translatedStation(station, fallback = "") {
 
 /* ---------- state ---------- */
 function normalizeLang(value) {
-  const normalized = String(value || "").toLowerCase();
-  if (normalized.startsWith("ja")) return "ja";
-  if (normalized.startsWith("zh") && MSG["zh-Hant"]) return "zh-Hant";
-  if (normalized.startsWith("fr") && MSG.fr) return "fr";
-  return "en";
+  const normalized = window.MADO_LOCALES ? window.MADO_LOCALES.normalize(value) : String(value || "");
+  return MSG[normalized] ? normalized : "en";
 }
 function getInitialLang() {
-  const pathLang = location.pathname.match(/\/(en|zh-Hant|fr)(?:\/|$)/i)?.[1];
+  const pathLang = window.MADO_LOCALES?.routeLanguage(location.pathname) || window.MADO_UTILITY_LOCALE?.lang;
   if (pathLang && MSG[normalizeLang(pathLang)]) return normalizeLang(pathLang);
   const urlLang = new URLSearchParams(location.search).get("lang");
   if (urlLang === "ja" || urlLang === "en") {
@@ -464,7 +461,7 @@ function localizedPageHref(targetLang) {
   const destination = new URL(target, document.baseURI);
   destination.search = location.search;
   // A query-language override must follow the switch, not force the previous language.
-  if (destination.searchParams.has("lang")) destination.searchParams.set("lang", targetLang);
+  if (targetLang === "ja" || destination.searchParams.has("lang")) destination.searchParams.set("lang", targetLang);
   if (isTrainSearchPage() && journey?.mode === "train") setJourneyParams(destination, journey);
   destination.hash = location.hash;
   return destination.href;
@@ -581,7 +578,7 @@ const $ = (sel) => document.querySelector(sel);
 const $$ = (sel) => Array.from(document.querySelectorAll(sel));
 function appSelfForPath(pathname) {
   const normalized = String(pathname).replace(/\\/g, "/");
-  const routeLang = normalized.match(/(?:^|\/)(en|zh-Hant|fr)(?:\/|$)/i)?.[1];
+  const routeLang = (typeof window !== "undefined" && window.MADO_LOCALES ? window.MADO_LOCALES.routeLanguage(normalized) : null) || (/\/(?:en)(?:\/|$)/.test(normalized) ? "en" : null);
   const file = normalized.endsWith("/zukan.html") ? "zukan.html"
     : normalized.endsWith("/start.html") ? "start.html"
     : normalized.endsWith("/journal.html") ? "journal.html"
@@ -1264,6 +1261,10 @@ function stampBadgeHTML(sp, size, fallbackCls) {
     `onerror="this.hidden=true;this.nextElementSibling.hidden=false">` +
     `<span class="${fallbackCls}" hidden>${sp.icon}</span></span>`;
 }
+function editorialNoteHTML(spot) {
+  const locale = window.MADO_UTILITY_LOCALE;
+  return locale?.lang === lang ? locale.editorialNotes?.[spot.id] || '' : '';
+}
 function spotDetailModalHTML(spot) {
   const L = spotCopy(spot);
   const heroMedia = spotModalMediaHTML(spot);
@@ -1285,6 +1286,7 @@ function spotDetailModalHTML(spot) {
         <div class="spot-modal-copy">
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
+          ${editorialNoteHTML(spot)}
           ${bodyLinksHTML(spot, "spot-modal-body-links")}
           ${collectionGuideLinkHTML(spot)}
           <div class="spot-modal-actions">
@@ -1344,7 +1346,7 @@ function applyLang() {
       const href = link.getAttribute("href");
       if (link.hasAttribute("hreflang") || link.closest(".article-lang-menu, .utility-lang-menu")) return;
       if (utilityLocale && lang === utilityLocale.lang) {
-        if (href && !/^(?:[a-z]+:|\/|#)/i.test(href)) link.setAttribute("href", utilityHref(href.replace(/^(?:en|fr|zh-Hant)\//, "")));
+        if (href && !/^(?:[a-z]+:|\/|#)/i.test(href)) link.setAttribute("href", utilityHref(window.MADO_LOCALES ? window.MADO_LOCALES.stripEdition(href) : href));
       } else if (englishRoutes[href]) link.setAttribute("href", englishRoutes[href]);
     });
   }

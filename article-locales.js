@@ -1,28 +1,36 @@
-// Only articles with all four editions load this file. TOP/search keep their existing routes.
+// Article edition menus use the shared route contract and retain navigation state.
 (function () {
   'use strict';
   function connect() {
     var alternate = document.querySelector('link[hreflang="zh-Hant"]');
     if (!alternate) return;
+    var config = window.MADO_LOCALES;
+    if (!config) return;
     var route = new URL(alternate.href).pathname.replace(/^\/zh-Hant\//, '');
     var lang = document.documentElement.lang;
     var depth = route.indexOf('spots/') === 0 ? (lang === 'ja' ? '../' : '../../') : (lang === 'ja' ? './' : '../');
-    var labels = { ja: '日本語', en: 'English', 'zh-Hant': '繁體中文', fr: 'Français' };
-    var prompts = { ja: '言語を選択', en: 'Choose language', 'zh-Hant': '選擇語言', fr: 'Choisir la langue' };
     document.querySelectorAll('.lang-switch, .article-lang-menu').forEach(function (host) {
-      // Keep generated native menus intact; only legacy ja/en switches need replacing.
-      if (host.matches('details.article-lang-menu')) return;
       var menu = document.createElement('details');
       menu.className = 'guide-lang-menu article-lang-menu';
       var summary = document.createElement('summary');
-      summary.textContent = labels[lang];
-      summary.setAttribute('aria-label', prompts[lang]);
+      summary.textContent = config.editions[lang].label;
+      summary.setAttribute('aria-label', config.editions[lang].prompt);
       var options = document.createElement('div');
       options.className = 'guide-lang-options';
-      Object.keys(labels).forEach(function (edition) {
+      config.supported(route).forEach(function (edition) {
         var a = document.createElement('a');
-        a.href = depth + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
-        a.lang = edition; a.textContent = labels[edition];
+        var url = new URL(depth + (edition === 'ja' ? '' : edition + '/') + route, location.href);
+        url.search = location.search; url.hash = location.hash;
+        if (edition === 'ja' || url.searchParams.has('lang')) url.searchParams.set('lang', edition);
+        a.href = url.href;
+        a.lang = edition; a.textContent = config.editions[edition].label;
+        a.addEventListener('click', function () {
+          if (lang === 'ja') {
+            var source = new URL(location.href); source.searchParams.set('lang', 'ja');
+            try { history.replaceState(history.state, '', source); } catch (error) {}
+          }
+          try { localStorage.setItem('mado-lang', edition); } catch (error) {}
+        });
         if (lang === edition) a.setAttribute('aria-current', 'page');
         options.appendChild(a);
       });

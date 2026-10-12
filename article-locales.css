@@ -4,3 +4,9 @@
 [data-article-localized] h1,[data-article-localized] h2,[data-article-localized] h3,
 [data-article-localized] .spot-page-facts dd { overflow-wrap: anywhere; }
 .article-title-chunk { display: inline-block; }
+.locale-note { margin: 1.4rem 0; padding: 1rem 1.15rem; border-inline-start: 3px solid #4b8c8e; background: rgba(75,140,142,.07); border-radius: 0 10px 10px 0; overflow-wrap: anywhere; scroll-margin-top: 110px; }
+.locale-note h2,.locale-note h3 { margin: 0 0 .7rem; font-size: 1.12rem; line-height: 1.5; letter-spacing: normal; }
+.locale-note p { margin: .7rem 0 0; line-height: 1.75; }
+.locale-note .locale-note-sources { font-size: .78rem; line-height: 1.6; }
+.locale-note-sources a { text-underline-offset: .18em; }
+html[lang="ko"] .locale-note { word-break: keep-all; overflow-wrap: break-word; }

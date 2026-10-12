@@ -78,7 +78,7 @@
         if (sourceHref) {
           source.hidden = false;
           source.href = sourceHref;
-          var sourceLabels = { en: 'View original post', fr: 'Voir la publication originale', 'zh-hant': '查看原始貼文' };
+          var sourceLabels = { en: 'View original post', fr: 'Voir la publication originale', 'zh-hant': '查看原始貼文', de: 'Originalbeitrag ansehen', es: 'Ver publicación original', 'zh-hans': '查看原始帖子', ko: '원본 게시물 보기' };
           source.textContent = sourceLabels[document.documentElement.lang.toLowerCase()] || "元の投稿を見る";
           source.target = "_blank";
           source.rel = "noopener noreferrer";

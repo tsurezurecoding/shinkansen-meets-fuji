@@ -25,7 +25,7 @@ const contentFiles = [
   ...CASTLE_LOCALE_LANGS.flatMap(lang => [...EXTRA_LOCALE_ROUTES.map(route => `${lang}/${route}`), `${lang}/sparkling-data.js`]),
   'sparkling-locale-runtime.js',
   'mieru.js', 'mieru.css',
-  'utility-locales.js', 'utility-locales.css', 'utility-locale-runtime.js',
+  'locales.js', 'utility-locales.js', 'utility-locales.css', 'utility-locale-runtime.js',
   'article-locales.js', 'article-locales.css',
   "manifest.json", "images/google-play/ja-badge.png", "images/google-play/en-badge.png",
   "en/foods.html", "foods.css", "foods.js", "data/foods-photo-sources.json",

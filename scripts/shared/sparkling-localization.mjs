@@ -1,6 +1,6 @@
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './castle-localization.mjs';
 export const SPARKLING_ROUTE = 'sparkling-dreams.html';
-export const SPARKLING_LOCALES = ['zh-Hant', 'fr'];
+export { translated as SPARKLING_LOCALES } from './locales.mjs';
 export const SPARKLING_EXTRA = [
  'Enable JavaScript to use the calculator. The A/B/C patterns and official links below are still available without it.',
  'Pattern {0}', 'E-seat side', 'A-seat side', 'Westbound (Tokyo → Shin-Osaka)', 'Eastbound (Shin-Osaka → Tokyo)',

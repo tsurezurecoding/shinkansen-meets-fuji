@@ -23,9 +23,9 @@
   }
 
   function initialLang() {
-    var pathLang = window.location.pathname.match(/\/(en|zh-Hant|fr)\/live(?:\/|$)/i);
+    var pathLang = window.MADO_LOCALES ? window.MADO_LOCALES.routeLanguage(window.location.pathname) : utilityLocale && utilityLocale.lang;
     if (pathLang) {
-      var code = pathLang[1].toLowerCase() === "zh-hant" ? "zh-Hant" : pathLang[1].toLowerCase();
+      var code = pathLang;
       if (code === "en" || (utilityLocale && code === utilityLocale.lang)) { rememberLang(code); return code; }
     }
     var urlLang = new URLSearchParams(window.location.search).get("lang");

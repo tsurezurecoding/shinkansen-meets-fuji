@@ -3,7 +3,7 @@
  const lang=document.documentElement.lang,controls=document.querySelector('.scenery-strip-controls');
  const originals=[...strip.children],reduced=matchMedia('(prefers-reduced-motion: reduce)');
  let speed=1,pauseUntil=0,dragging=false,visible=false,hovered=false,focused=false,overflow=false,cycle=0,last=0,position=0;
- const stripLabels={ja:'景色の写真帯。横にスワイプ、または左右キーで移動。',en:'Scenery photo strip. Swipe or use arrow keys.',fr:'Bande de photos. Balayez ou utilisez les flèches du clavier.','zh-Hant':'風景照片帶。可左右滑動，或使用方向鍵瀏覽。'};
+ const stripLabels={ja:'景色の写真帯。横にスワイプ、または左右キーで移動。',en:'Scenery photo strip. Swipe or use arrow keys.',fr:'Bande de photos. Balayez ou utilisez les flèches du clavier.','zh-Hant':'風景照片帶。可左右滑動，或使用方向鍵瀏覽。',de:'Fotostreifen mit Ausblicken. Wischen Sie seitlich oder verwenden Sie die Pfeiltasten.',es:'Galería de paisajes. Desliza o usa las teclas de flecha.','zh-Hans':'风景照片带。可左右滑动，或使用方向键浏览。',ko:'풍경 사진 모음. 좌우로 밀거나 방향키로 이동하세요.'};
  strip.tabIndex=0;strip.setAttribute('aria-label',stripLabels[lang]||stripLabels.en);
  for(const card of originals){const clone=card.cloneNode(true);clone.dataset.stripClone='';clone.setAttribute('aria-hidden','true');clone.tabIndex=-1;clone.removeAttribute('data-lp-cta');strip.append(clone);}
  const resize=()=>{

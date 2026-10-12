@@ -6,13 +6,13 @@ import { MIERU_CONTENT } from './shared/mieru-content.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const assert=(ok,msg)=>{if(!ok)throw Error(msg);};
-const langs=['ja','en','zh-Hant','fr'];
+import { languages as langs, translated } from './shared/locales.mjs';
 const ids=MIERU_CONTENT.photos.map(p=>p.id);
 const fixture=i=>({hourly:Object.fromEntries(['cloud_cover_low','cloud_cover_mid','cloud_cover_high','visibility','relative_humidity_2m','precipitation'].map(k=>[k,Array.from({length:48},(_,h)=>k==='visibility'?8000+(h+i)%9*5000:k==='relative_humidity_2m'?40+(h+i)%40:k==='precipitation'?((h+i)%13===0?.4:0):(h*7+i*11)%100)]))});
 async function page(lang,query=''){
  const route=(lang==='ja'?'':lang+'/')+'mieru.html',dom=new JSDOM(read(route),{url:'https://www.michikusa-travel.com/'+route+query,runScripts:'outside-only'}),w=dom.window,d=w.document;
  w.eval(read('data-runtime.js')+';Object.assign(window,{SPOTS,ROUTE});');w.eval(read('train-select.js'));
- if(lang==='fr'||lang==='zh-Hant'){w.eval(read(lang+'/utility-data.js'));w.eval(read('utility-locale-runtime.js'));}
+ if(translated.includes(lang)){w.eval(read(lang+'/utility-data.js'));w.eval(read('utility-locale-runtime.js'));}
  w.fetch=async()=>({ok:true,json:async()=>Array.from({length:6},(_,i)=>fixture(i))});
  const append=d.head.appendChild.bind(d.head);let loads=0;
  d.head.appendChild=function(el){if(el.tagName==='SCRIPT'&&el.src.includes('/data/timetable.js')){loads++;queueMicrotask(()=>{w.eval(read('data/timetable.js'));el.onload();});return el;}return append(el);};
@@ -41,11 +41,11 @@ for(const [board,dir]of [['Tokyo','west'],['Nagoya','east']]){
  compare('train '+board+'/'+dir,5);
 }
 for(let i=0;i<pages.length;i++){
- const p=pages[i],href=p.w.madoMieruPageHref(langs[(i+1)%4]),url=new URL(href);
+ const p=pages[i],href=p.w.madoMieruPageHref(langs[(i+1)%langs.length]),url=new URL(href);
  assert(url.searchParams.get('board')==='Nagoya'&&url.searchParams.get('dir')==='east'&&url.searchParams.get('train'),langs[i]+': selected train lost on language switch');
- const restored=await page(langs[(i+1)%4],url.search);assert(restored.w.__mieru.state.selectedTrain?.tr.type===p.w.__mieru.state.selectedTrain.tr.type&&restored.w.__mieru.state.selectedTrain?.tr.number===p.w.__mieru.state.selectedTrain.tr.number,'train restoration changed');
+ const restored=await page(langs[(i+1)%langs.length],url.search);assert(restored.w.__mieru.state.selectedTrain?.tr.type===p.w.__mieru.state.selectedTrain.tr.type&&restored.w.__mieru.state.selectedTrain?.tr.number===p.w.__mieru.state.selectedTrain.tr.number,'train restoration changed');
  assert(JSON.stringify(restored.w.__mieru.results)===JSON.stringify(p.w.__mieru.results),'restored train forecast differs');restored.dom.window.close();
  p.d.getElementById('mieruBoard').value='Tokyo';p.d.getElementById('mieruBoard').dispatchEvent(new p.w.Event('change'));p.d.getElementById('mieruDir').value='east';p.d.getElementById('mieruDir').dispatchEvent(new p.w.Event('change'));
  assert(!Object.keys(p.w.__mieru.results).length,'stale forecast remains for no viewpoints');p.dom.window.close();
 }
-console.log(`Forecast PASS: 4 languages, 20 static photo explanations/credits, ${scenarios} nonempty calculation scenarios, 4 train language restorations, lazy timetable and stale-result clearing.`);
+console.log(`Forecast PASS: ${langs.length} languages, ${langs.length * 5} static photo explanations/credits, ${scenarios} nonempty calculation scenarios, ${langs.length} train language restorations, lazy timetable and stale-result clearing.`);

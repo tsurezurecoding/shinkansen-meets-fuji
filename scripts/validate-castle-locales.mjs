@@ -1,3 +1,4 @@
+import { editions as localeInfo, stripEdition } from './shared/locales.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -65,20 +66,20 @@ function checkMetadata(doc, lang, route, label) {
 }
 
 function checkSwitch(dom, lang, route, label) {
-  dom.window.eval(read('article-locales.js'));
+  dom.window.eval(read('locales.js')); dom.window.eval(read('article-locales.js'));
   dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   const switches = dom.window.document.querySelectorAll('details.guide-lang-menu.article-lang-menu');
   assert(switches.length === 1, label, 'one guide-style language menu required');
   assert(!dom.window.document.querySelector('.lang-switch'), label, 'legacy language switch remains');
   for (const host of switches) {
-    const labels = { ja: '日本語', en: 'English', 'zh-Hant': '繁體中文', fr: 'Français' };
-    const prompts = { ja: '言語を選択', en: 'Choose language', 'zh-Hant': '選擇語言', fr: 'Choisir la langue' };
+    const labels = Object.fromEntries(editions.map(x=>[x,localeInfo[x].label]));
+    const prompts = Object.fromEntries(editions.map(x=>[x,localeInfo[x].prompt]));
     assert(host.querySelector('summary')?.textContent === labels[lang], label, 'summary must show current language');
     assert(host.querySelector('summary')?.getAttribute('aria-label') === prompts[lang], label, 'language prompt must be localized');
     assert(Boolean(host.querySelector('.guide-lang-options')), label, 'guide-style options missing');
     assert(!host.open, label, 'language menu must start closed');
     const links = Array.from(host.querySelectorAll('a'));
-    assert(links.length === 4, label, 'language switch must offer four editions');
+    assert(links.length === editions.length, label, 'language switch must offer all supported editions');
     for (const edition of editions) {
       const link = links.find(el => el.lang === edition);
       assert(link?.textContent === labels[edition], label, `language label wrong for ${edition}`);
@@ -90,7 +91,7 @@ function checkSwitch(dom, lang, route, label) {
 }
 
 function checkLocalizedLinks(doc, sourceDoc, lang, label) {
-  const nativeRoute = url => url.origin === origin ? url.pathname.slice(1).replace(/^(?:en|zh-Hant|fr)\//, '') : null;
+  const nativeRoute = url => url.origin === origin ? url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'), '') : null;
   const knownSource = new Set(Array.from(sourceDoc.querySelectorAll('a[href]')).map(el => nativeRoute(new URL(el.href))).filter(route => CASTLE_LOCALE_ROUTES.includes(route)));
   const localizedDestinations = new Set();
   for (const el of doc.querySelectorAll('a[href]')) {
@@ -140,7 +141,7 @@ function checkInteractions(dom, label) {
     for (const button of buttons) {
       button.click();
       assert(map.querySelector('iframe')?.getAttribute('src') === button.getAttribute('data-map-src'), label, 'map mode does not change location');
-      assert(new URL(button.getAttribute('data-map-src')).searchParams.get('language') === (doc.documentElement.lang === 'zh-Hant' ? 'zh-TW' : 'fr'), label, 'map mode loses localized map language');
+      assert(new URL(button.getAttribute('data-map-src')).searchParams.get('language') === localeInfo[doc.documentElement.lang].map, label, 'map mode loses localized map language');
       assert(button.getAttribute('aria-pressed') === 'true' && buttons.filter(el => el.getAttribute('aria-pressed') === 'true').length === 1, label, 'map mode active state broken');
     }
     counts.maps++;
@@ -160,7 +161,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
   let nativeLinks = 0;
   for (const el of guide.window.document.querySelectorAll('a[href]')) {
     const url = new URL(el.href);
-    const route = url.pathname.slice(1).replace(/^(?:en|zh-Hant|fr)\//, '');
+    const route = url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'), '');
     if (url.origin === origin && CASTLE_LOCALE_ROUTES.includes(route)) {
       assert(url.pathname === `/${lang}/${route}`, `${lang}/guide.html`, `existing guide entry must remain in this language: ${url.pathname}`);
       nativeLinks++;
@@ -214,5 +215,5 @@ if (errors.length) {
   console.error(`Castle locales: ${errors.length} failure(s)\n${uniqueErrors.slice(0, 50).join('\n')}${uniqueErrors.length > 50 ? `\n... ${uniqueErrors.length - 50} further unique failures.` : ''}`);
   process.exitCode = 1;
 } else {
-  console.log(`Castle locales OK: ${counts.pages} static pages; four-language switches ${counts.languageSwitches}; galleries ${counts.galleries}, maps ${counts.maps}, photo zooms ${counts.lightboxes}; assets, credits, translations and reciprocal metadata.`);
+  console.log(`Castle locales OK: ${counts.pages} static pages; ${editions.length}-language switches ${counts.languageSwitches}; galleries ${counts.galleries}, maps ${counts.maps}, photo zooms ${counts.lightboxes}; assets, credits, translations and reciprocal metadata.`);
 }
