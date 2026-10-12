@@ -1471,6 +1471,8 @@ function englishLandingHTML() {
     ["本文へ移動", "Skip to content"],
   ];
   let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
+    // This map-based entry currently has only a Japanese destination.
+    .replace(/<a class="discovery-card"[^>]*data-lp-cta="scenery-card-window-trip">[\s\S]*?<\/a>/, '')
     .replace(/<script>\(function\(\)\{var p=location\.pathname[\s\S]*?<\/script>/, handoff)
     .replace('<html lang="ja">', '<html lang="en" class="english-lp">')
     .replace(
@@ -1655,6 +1657,7 @@ function englishAppIndexHTML() {
     ["今日の空で富士山が見えそうかを確認。", "Check how likely Mt. Fuji is to appear in today's sky."],
     ["東海道新幹線の車窓を、静かな墨絵で。", "See the Tokaido Shinkansen window as a quiet ink-wash journey."],
     ["実際の車窓写真で、旅を短くめぐる。", "Take a short journey through real window photographs."],
+    ["写真や墨絵で、車窓の別の表現を楽しむ。", "Explore window views through photographs and ink wash."],
     ["見つけた景色をスタンプとメダルで記録。", "Record each view with Window Stamps and medals."],
     ["使い方と楽しみ方を30秒で紹介。", "See how the guide works in 30 seconds."],
     ["出典や参考記事をまとめて読む。", "Browse sources and useful articles about the route."],

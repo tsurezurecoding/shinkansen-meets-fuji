@@ -23,6 +23,14 @@ test('new editions match the 25 active pages and Arabic stays guide-only', () =>
   assert.ok(!locales.supported('start.html').includes('ar'));
   assert.deepEqual(locales.supported('drinks.html'), ['ja','en']);
 });
+test('PR96 Japanese map entry is retained without untranslated cards in other editions', () => {
+  assert.ok(read('index.html').includes('data-lp-cta="scenery-card-window-trip"'));
+  assert.ok(read('scripts/generate-content-manifest.mjs').includes('images/window-trip-card.webp'));
+  for (const lang of ['en','de','es','fr','zh-Hans','zh-Hant','ko']) {
+    assert.ok(!read(lang + '/index.html').includes('data-lp-cta="scenery-card-window-trip"'));
+    for (const route of ['start.html','zukan.html']) assert.ok(!read(lang+'/'+route).includes('写真や墨絵で、車窓の別の表現を楽しむ。'));
+  }
+});
 test('Chinese scripts, regions and exact path editions remain distinct', () => {
   for (const code of ['zh','zh-CN','zh-SG','zh-Hans','zh-Hans-CN','zh_hans']) assert.equal(locales.normalize(code), 'zh-Hans');
   for (const code of ['zh-TW','zh-HK','zh-MO','zh-Hant','zh-Hant-TW','zh_hant']) assert.equal(locales.normalize(code), 'zh-Hant');

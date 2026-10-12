@@ -30,6 +30,7 @@ function localizeEnglishRail(html) {
   html = html.replace(/<!-- SANYO-GALLERY:START -->[\s\S]*?<!-- SANYO-GALLERY:END -->/, sanyoGallery("en"));
   const copy = [
     ["車窓の作品集", "Window Artworks"],
+    ["写真や墨絵で、車窓の別の表現を楽しむ。", "Explore window views through photographs and ink wash."],
     ["車窓の観覧車を集める", "Find the ferris wheels"],
     ['<span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span>', "Look for little wheels beyond the city."],
     ["一度きりの車窓", "Weather Seen from the Shinkansen"],
