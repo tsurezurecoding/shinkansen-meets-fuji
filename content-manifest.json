@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2e9fe1550ff89de2",
+  "contentVersion": "be2605b0785a990d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -843,6 +843,24 @@
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
       "bytes": 25265,
       "sha256": "5ad430efaaed928264722367c7bfd771500ca8595048c56c39a25c8952327514"
+    },
+    {
+      "path": "fujimi-sightline-stage.js",
+      "url": "https://www.michikusa-travel.com/fujimi-sightline-stage.js",
+      "bytes": 6701,
+      "sha256": "a087fbc3e82e6aa695fca799035633e5f353addc90ab107175d368a5047fb42d"
+    },
+    {
+      "path": "fujimi-sightline.css",
+      "url": "https://www.michikusa-travel.com/fujimi-sightline.css",
+      "bytes": 2314,
+      "sha256": "4ea02f8e89debce068b24ae798f58397e8d5f05d017d6efde4b3a40365fb302a"
+    },
+    {
+      "path": "fujimi-sightline.js",
+      "url": "https://www.michikusa-travel.com/fujimi-sightline.js",
+      "bytes": 4233,
+      "sha256": "6cd6517cff8c1bb623f94287235e784586507fb781caa87d290077f001fb4587"
     },
     {
       "path": "hanabi.html",
@@ -2205,6 +2223,12 @@
       "url": "https://www.michikusa-travel.com/manifest.json",
       "bytes": 899,
       "sha256": "7995f571c00b7534d9fba67451f216a4f8d9639a41e8ccfc2d68cc3a51c45e9f"
+    },
+    {
+      "path": "media/fujimi-sightline-film.mp4",
+      "url": "https://www.michikusa-travel.com/media/fujimi-sightline-film.mp4",
+      "bytes": 2672712,
+      "sha256": "5684324b06201c6e36959173aa90250a647c565777f4cd6644a726a58a9013e7"
     },
     {
       "path": "mieru.css",

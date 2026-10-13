@@ -1,0 +1,27 @@
+.fujimi-sightline { max-width:820px; margin:40px auto; padding:24px 20px; box-sizing:border-box; color:#243c35; }
+.spot-page-article .fujimi-sightline { margin:40px 0; padding:24px 0; border-top:1px solid #d5dfd5; }
+.fujimi-sightline h2 { font-family:var(--font-serif,serif); line-height:1.45; text-wrap:balance; }
+.fujimi-sightline .copy-chunk { display:inline-block; }
+.fujimi-sightline p { line-height:1.85; }
+.fujimi-sightline figure { margin:22px 0; }
+.fujimi-sightline-photo img { display:block; width:100%; height:auto; border-radius:12px; }
+.fujimi-sightline figcaption, .fujimi-sightline-note, .fujimi-sightline-sources { font-size:12px; line-height:1.8; color:#53665d; }
+.fujimi-sightline-facts { display:flex; flex-wrap:wrap; gap:10px 24px; padding:14px; border-radius:10px; background:#f0eee4; font-size:14px; }
+.fujimi-sightline-facts b { display:block; font-size:12px; font-weight:500; }
+.fujimi-sightline-actions, .fujimi-sightline-views { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 12px; }
+.fujimi-sightline button { white-space:normal; min-height:44px; max-width:100%; }
+.fujimi-sightline button[aria-pressed="true"] { background:#e4ebdf; border-color:#647e64; }
+.fujimi-sightline button:focus-visible, .fujimi-sightline summary:focus-visible { outline:3px solid #a96620; outline-offset:3px; }
+.fujimi-sightline [hidden] { display:none !important; }
+.fujimi-sightline-status { font-size:13px; min-height:2em; }
+.fujimi-sightline-stage { position:relative; height:clamp(330px,55vw,470px); overflow:hidden; border-radius:12px; background:#10212d; }
+.fujimi-sightline-stage .cesium-viewer-bottom { max-width:100%; }
+.fujimi-sightline-stage .cesium-widget-credits { display:block; max-width:100%; white-space:normal; }
+.fujimi-sightline-key { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:12px; }
+.fujimi-sightline-key span:first-child { color:#277268; }
+.fujimi-sightline-key span:nth-child(2) { color:#a65e10; }
+.fujimi-sightline details { margin:22px 0; padding:14px; border:1px solid #d5dfd5; border-radius:12px; }
+.fujimi-sightline summary { cursor:pointer; line-height:1.8; }
+.fujimi-sightline video { display:block; width:100%; height:auto; margin-top:14px; border-radius:8px; }
+.fujimi-sightline details p { font-size:12px; }
+.fujimi-sightline a { overflow-wrap:anywhere; }
