@@ -22,6 +22,54 @@
   display: none !important;
 }
 
+/* The app already provides train selection and guidance in its own navigation.
+   Keep article facts, seat-side advice, sources and related collections visible. */
+:root.mado-embedded-web [data-app-redundant],
+:root.mado-embedded-web .spot-page-next-card[data-cta-id="spot_next_train"],
+:root.mado-embedded-web .spot-page-next-card[data-cta-id="spot_next_live"] {
+  display: none !important;
+}
+
+:root.mado-embedded-web .spot-page-next-cards {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.mado-embedded-navigation-notice {
+  position: fixed;
+  z-index: 30;
+  inset: auto 12px 12px;
+  width: fit-content;
+  max-width: min(38rem, calc(100% - 24px));
+  margin-inline: auto;
+  padding: 12px 16px;
+  border: 1px solid var(--line, #d8d0c3);
+  border-radius: 12px;
+  background: var(--paper, #fffaf1);
+  color: var(--ink, #2e2923);
+  box-shadow: 0 4px 20px #0002;
+  font-size: 14px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.mado-embedded-navigation-notice a {
+  display: inline-block;
+  margin-inline-start: 0.6em;
+  text-decoration: underline;
+}
+
+.mado-embedded-navigation-notice p { margin: 0 0 8px; }
+.mado-embedded-navigation-notice button {
+  min-height: 44px;
+  margin-inline-start: 12px;
+  padding: 6px 12px;
+  border: 1px solid currentColor;
+  border-radius: 8px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
 :root.mado-embedded-web body {
   min-width: 0;
   background: var(--paper);

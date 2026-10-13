@@ -406,7 +406,7 @@ async function runThinValidator() {
         if (expectedCollectionRoute && page.readingLayout.collection?.route !== expectedCollectionRoute) fail(`${relativeFile}: expected reading collection ${expectedCollectionRoute}`);
         if (expectedCollectionRoute && !output.includes(`href="${prefix}${expectedCollectionRoute}" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection"`)) fail(`${relativeFile}: expected reading collection CTA is missing`);
         if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
-        if (lang === "ja" && !page.chapters && !output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions">' : 'を見逃さないために</h2><div class="spot-reading-actions">')) fail(`${relativeFile}: redundant guide lead returned`);
+        if (lang === "ja" && !page.chapters && !output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions" data-app-redundant>' : 'を見逃さないために</h2><div class="spot-reading-actions" data-app-redundant>')) fail(`${relativeFile}: redundant guide lead returned`);
         if (page.chapters) {
           // Multi-view articles need seat/timing guidance per landmark; single-view pages remain concise.
           if (!output.includes(escape(page.guide.highlight))) fail(`${relativeFile}: multi-view boarding guidance missing`);
