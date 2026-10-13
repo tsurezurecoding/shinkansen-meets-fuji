@@ -235,6 +235,45 @@ function renderedArticle(id, lang, embedded = false) {
   return dom;
 }
 
+test('embedded articles hide duplicate ride prompts but retain facts, stamps and sources', () => {
+  const css = fs.readFileSync(new URL('../app-embedded.css', import.meta.url), 'utf8');
+  for (const lang of ['ja', 'en']) for (const id of ['kiyosu', 'fuji', 'pocari-fukuroi']) {
+    for (const embedded of [false, true]) {
+      const dom = renderedArticle(id, lang, embedded);
+      const doc = dom.window.document;
+      const style = doc.createElement('style'); style.textContent = css; doc.head.append(style);
+      if (embedded) doc.documentElement.classList.add('mado-embedded-web');
+      const hidden = el => { for (; el; el = el.parentElement) if (dom.window.getComputedStyle(el).display === 'none') return true; return false; };
+      const ctas = [...doc.querySelectorAll('[data-cta-id="spot_next_train"], [data-cta-id="spot_next_live"], [data-cta-id="spot_guide_timing"]')];
+      assert.ok(ctas.length, `${lang}/${id}: ride prompts remain available on the Web`);
+      for (const cta of ctas) assert.equal(hidden(cta), embedded, `${lang}/${id}: ${cta.dataset.ctaId}`);
+      assert.equal(hidden(doc.querySelector('.spot-page-stamp')), false);
+      assert.equal(hidden(doc.querySelector('.spot-page-refs, .spot-reading-sources')), false);
+      const reading = doc.querySelector('.spot-reading-guide');
+      if (reading) assert.equal(hidden(reading), embedded && ![...reading.children].some(el => el.tagName === 'P' && !el.classList.contains('spot-reading-eyebrow')), `${lang}/${id}: factual guide visibility`);
+      dom.window.close();
+    }
+  }
+});
+
+test('translated article snapshots preserve app-only suppression and collection/stamp routes', () => {
+  const css = fs.readFileSync(new URL('../app-embedded.css', import.meta.url), 'utf8');
+  for (const lang of ['', 'en/', 'zh-Hant/', 'fr/', 'de/', 'es/', 'zh-Hans/', 'ko/']) {
+    const dom = new JSDOM(fs.readFileSync(new URL(`../${lang}castles.html`, import.meta.url), 'utf8'));
+    const doc = dom.window.document;
+    const prompts = [...doc.querySelectorAll('.cs-hero-actions a[href*="start.html"], .cs-card-actions a[href*="start.html"]')];
+    assert.equal(prompts.length, 2);
+    for (const prompt of prompts) assert.ok(prompt.hasAttribute('data-app-redundant'), lang);
+    assert.ok(doc.querySelector('.cs-next p [data-app-redundant]'), lang);
+    assert.ok(doc.querySelector('.cs-card-actions a[href*="journal.html"]:not([data-app-redundant])'), lang);
+    const style = doc.createElement('style'); style.textContent = css; doc.head.append(style);
+    assert.notEqual(dom.window.getComputedStyle(prompts[0]).display, 'none');
+    doc.documentElement.classList.add('mado-embedded-web');
+    assert.equal(dom.window.getComputedStyle(prompts[0]).display, 'none');
+    dom.window.close();
+  }
+});
+
 test("English article additions stay out of Japanese pages", () => {
   for (const id of ["pocari-fukuroi", "shizuoka-tea-fields"]) {
     const dom = renderedArticle(id, "ja");

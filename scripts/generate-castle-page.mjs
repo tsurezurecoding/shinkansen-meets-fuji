@@ -191,7 +191,7 @@ ${detailHref ? `        <p class="cs-more"><a href="${detailHref}">${pick(`${esc
         <div class="cs-hero-actions">
           <a class="btn btn-primary" href="#castles">${pick('東京〜新大阪の城', 'Tokyo to Shin-Osaka')}</a>
           <a class="btn btn-ghost" href="#sanyo">${pick('新大阪〜博多の城', 'West of Shin-Osaka')}</a>
-          <a class="btn btn-ghost" href="${prefix}${local}start.html">${pick('乗る列車で見える時間', 'Times for your train')}</a>
+          <a class="btn btn-ghost" href="${prefix}${local}start.html" data-app-redundant>${pick('乗る列車で見える時間', 'Times for your train')}</a>
         </div>
         <p class="cs-hero-credit">${pick('写真：新幹線の窓（清洲城）', 'Photo: Shinkansen Window (Kiyosu Castle)')}</p>
       </div>
@@ -282,8 +282,8 @@ ${sanyoEntries.map(sanyoCard).join('\n')}
   <section class="cs-next" aria-labelledby="csNextTitle">
     <div class="cs-card">
       <h2 id="csNextTitle">${pick('次の乗車で、探してみる', 'Look for them on your next ride')}</h2>
-      <p>${pick('乗る列車を選ぶと、城の通過時刻を調べられます。見つけた城はスタンプ帖に記録すると「城ハンター」のメダルが育ちます。', 'Choose your train for estimated passing times. Record the castles you spot in your Window Stamps to grow the Castle Hunter medal.')}</p>
-      <div class="cs-card-actions"><a class="btn btn-primary" href="${prefix}${local}start.html">${pick('列車を選ぶ', 'Choose a train')}</a><a href="${prefix}${local}journal.html">${pick('スタンプ帖を見る', 'Open Window Stamps')}</a></div>
+      <p><span data-app-redundant>${pick('乗る列車を選ぶと、城の通過時刻を調べられます。', 'Choose your train for estimated passing times. ' )}</span>${pick('見つけた城はスタンプ帖に記録すると「城ハンター」のメダルが育ちます。', 'Record the castles you spot in your Window Stamps to grow the Castle Hunter medal.')}</p>
+      <div class="cs-card-actions"><a class="btn btn-primary" href="${prefix}${local}start.html" data-app-redundant>${pick('列車を選ぶ', 'Choose a train')}</a><a href="${prefix}${local}journal.html">${pick('スタンプ帖を見る', 'Open Window Stamps')}</a></div>
     </div>
   </section>
 

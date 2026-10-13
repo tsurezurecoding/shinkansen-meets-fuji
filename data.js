@@ -6177,8 +6177,10 @@ const SPOTS = [
     },
     "pageHeadingChunks": {
       "ja": [
-        "新幹線から見える清洲城——",
-        "3秒の「清洲城チャレンジ」"
+        "新幹線から見える",
+        "清洲城——",
+        "3秒の",
+        "「清洲城チャレンジ」"
       ],
       "en": [
         "Kiyosu Castle from Seat E —",
