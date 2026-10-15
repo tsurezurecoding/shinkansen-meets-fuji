@@ -13,11 +13,12 @@ function setup(factory) {
   const find = selector => dom.window.document.querySelector(selector);
   return {dom,find};
 }
-test('no model, engine or video request until the reader opens it', () => {
+test('model is opt-in and the photo links to the standard YouTube section', () => {
   let calls=0;
   const {dom,find}=setup(()=>{calls++;});
   assert.equal(calls,0);
-  assert.equal(find('video').getAttribute('src'),null);
+  assert.equal(find('video'),null);
+  assert.equal(find('a[href="#spotVideoTitle-edo-castle-fujimi-yagura"]').textContent,'YouTube動画でこの一瞬を見る →');
   assert.equal(find('#fujimi-sightline-model').hidden,true);
   assert.equal(dom.window.document.querySelector('head script'),null);
   dom.window.close();

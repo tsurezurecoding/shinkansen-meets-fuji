@@ -53,6 +53,7 @@
       await loadEngine();
       if (!current()) return;
       var next = await window.createFujimiStage(host, {
+        scene: JSON.parse(section.dataset.scene),
         isCurrent: current,
         onStatus: function (message) { if (current()) status.textContent = message; },
         onError: function () { if (current()) reset('3Dを読み込めませんでした。写真と記事を引き続きご覧いただけます。ボタンで再試行できます。'); }
@@ -72,11 +73,4 @@
     views.forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
   }); });
   window.addEventListener('pagehide', function () { reset('3Dはボタンを押すと読み込みます。'); });
-  var film = section.querySelector('[data-fujimi-film]'), video = film.querySelector('video');
-  // Wait for playable data: metadata alone can expose an empty seek range.
-  video.addEventListener('canplay', function () { video.currentTime = Math.min(3.705, video.duration || 3.705); }, { once: true });
-  film.addEventListener('toggle', function () {
-    if (film.open && !video.getAttribute('src')) { video.src = video.dataset.src; video.load(); }
-    if (!film.open) video.pause();
-  });
 }());

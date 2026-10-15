@@ -736,6 +736,14 @@ const SPOTS = [
     "durationSec": 3,
     "scene": "castle",
     "image": "images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg",
+    "media": {
+      "videos": [{
+        "kind": "youtube",
+        "id": "p-Bjt2tz2JA",
+        "url": "https://www.youtube.com/watch?v=p-Bjt2tz2JA",
+        "title": "[新幹線の車窓] 江戸城の富士見櫓と東京駅舎"
+      }]
+    },
     "photoCredit": {
       "ja": "michikusa",
       "en": "michikusa",

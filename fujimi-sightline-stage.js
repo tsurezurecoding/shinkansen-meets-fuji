@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // Adapted from window-unfold-0929/city-stage.js. Only the confirmed scene:
+  // Adapted from window-unfold-0929/city-stage.js. One estimated scene:
   // no building picking, district exploration, video tracking or roof model.
   var base = 'https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/';
   var libraryPromise;
@@ -39,19 +39,20 @@
       viewer.scene.backgroundColor = C.Color.fromCssColorString('#10212d'); viewer.scene.globe.baseColor = C.Color.fromCssColorString('#26383d');
       var map = viewer.imageryLayers.addImageryProvider(new C.UrlTemplateImageryProvider({ url:'https://cyberjapandata.gsi.go.jp/xyz/{gsiLayer}/{z}/{x}/{y}.png', customTags:{gsiLayer:function (_provider,_x,_y,level) { return level < 5 ? 'std' : 'pale'; }}, maximumLevel:18, credit:'地理院タイル' }));
       map.alpha = .12; map.saturation = 0; map.brightness = .45;
-      // film-data.json: GPS interpolated at the visually identified 3.705s.
-      // Heights are diagram settings, not calibrated rail/tower elevations.
-      var train = C.Cartesian3.fromDegrees(139.76588175,35.67758694,64);
-      var tower = C.Cartesian3.fromDegrees(139.7566,35.68419,54);
+      // The generator supplies the photo/map estimate, distinct from raw GPS.
+      // Heights remain diagram settings, not calibrated rail/tower elevations.
+      var scene = options.scene;
+      var train = C.Cartesian3.fromDegrees.apply(null, scene.train);
+      var tower = C.Cartesian3.fromDegrees.apply(null, scene.tower);
       var middle = C.Cartesian3.lerp(train,tower,.5,new C.Cartesian3());
-      function marker(position, label, color) {
-        viewer.entities.add({ position:position, point:{pixelSize:10,color:C.Color.fromCssColorString(color),outlineColor:C.Color.fromCssColorString('#10212d'),outlineWidth:3,disableDepthTestDistance:Infinity}, label:{text:label,font:'12px sans-serif',fillColor:C.Color.fromCssColorString('#fff5d9'),outlineColor:C.Color.fromCssColorString('#10212d'),outlineWidth:4,style:C.LabelStyle.FILL_AND_OUTLINE,pixelOffset:new C.Cartesian2(0,-24),disableDepthTestDistance:Infinity} });
+      function marker(position, label, color, align) {
+        viewer.entities.add({ position:position, point:{pixelSize:10,color:C.Color.fromCssColorString(color),outlineColor:C.Color.fromCssColorString('#10212d'),outlineWidth:3,disableDepthTestDistance:Infinity}, label:{text:label,font:'12px sans-serif',fillColor:C.Color.fromCssColorString('#fff5d9'),outlineColor:C.Color.fromCssColorString('#10212d'),outlineWidth:4,style:C.LabelStyle.FILL_AND_OUTLINE,horizontalOrigin:align ?? C.HorizontalOrigin.CENTER,pixelOffset:new C.Cartesian2(0,-24),disableDepthTestDistance:Infinity} });
       }
-      marker(train,'列車位置（3.705秒）','#7fcaba'); marker(tower,'富士見櫓','#efb75f');
-      viewer.entities.add({polyline:{positions:[train,tower],arcType:C.ArcType.NONE,width:3,material:C.Color.fromCssColorString('#efac49'),depthFailMaterial:C.Color.fromCssColorString('#efac49')}});
+      marker(train,'撮影位置（推定）','#7fcaba',C.HorizontalOrigin.RIGHT); marker(tower,'富士見櫓','#efb75f');
+      viewer.entities.add({polyline:{positions:[train,tower],arcType:C.ArcType.NONE,width:3,material:C.Color.fromCssColorString('#efac49')}});
       function setView(mode) {
         if (!current()) return;
-        viewer.camera.lookAt(middle, new C.HeadingPitchRange(C.Math.toRadians(mode === 'top' ? 0 : 311.21), C.Math.toRadians(mode === 'top' ? -90 : -50), mode === 'top' ? 1900 : 2100));
+        viewer.camera.lookAt(middle, new C.HeadingPitchRange(C.Math.toRadians(mode === 'top' ? 0 : scene.heading), C.Math.toRadians(mode === 'top' ? -90 : -50), mode === 'top' ? 1900 : 2100));
         viewer.camera.lookAtTransform(C.Matrix4.IDENTITY); viewer.scene.requestRender();
       }
       setView('oblique');
@@ -65,10 +66,10 @@
       tile.style = new C.Cesium3DTileStyle({color:"color('#b4c7bf')"});
       tile.tileVisible.addEventListener(function () {
         if (!current() || ready) return;
-        ready = true; clearTimeout(timer); options.onStatus('オレンジの線が列車と櫓を結びます。建物模型は位置関係の説明です。');
+        ready = true; clearTimeout(timer); options.onStatus('写真から推定した撮影位置と櫓を結びます。線の高さは模式的です。');
       });
       tile.loadProgress.addEventListener(function (pending,processing) {
-        if (current() && ready) options.onStatus(pending + processing > 0 ? '周辺の建物を読み込んでいます…' : 'オレンジの線が列車と櫓を結びます。北西へ約1.1km。');
+        if (current() && ready) options.onStatus(pending + processing > 0 ? '周辺の建物を読み込んでいます…' : '推定撮影位置から西北西へ約' + scene.distanceKm + 'km。高さは模式的です。');
       });
       tile.tileFailed.addEventListener(fail);
       viewer.scene.requestRender();

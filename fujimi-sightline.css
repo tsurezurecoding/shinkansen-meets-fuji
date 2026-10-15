@@ -11,7 +11,7 @@
 .fujimi-sightline-actions, .fujimi-sightline-views { display:flex; flex-wrap:wrap; gap:10px; margin:18px 0 12px; }
 .fujimi-sightline button { white-space:normal; min-height:44px; max-width:100%; }
 .fujimi-sightline button[aria-pressed="true"] { background:#e4ebdf; border-color:#647e64; }
-.fujimi-sightline button:focus-visible, .fujimi-sightline summary:focus-visible { outline:3px solid #a96620; outline-offset:3px; }
+.fujimi-sightline button:focus-visible { outline:3px solid #a96620; outline-offset:3px; }
 .fujimi-sightline [hidden] { display:none !important; }
 .fujimi-sightline-status { font-size:13px; min-height:2em; }
 .fujimi-sightline-stage { position:relative; height:clamp(330px,55vw,470px); overflow:hidden; border-radius:12px; background:#10212d; }
@@ -20,8 +20,4 @@
 .fujimi-sightline-key { display:flex; flex-wrap:wrap; gap:6px 18px; font-size:12px; }
 .fujimi-sightline-key span:first-child { color:#277268; }
 .fujimi-sightline-key span:nth-child(2) { color:#a65e10; }
-.fujimi-sightline details { margin:22px 0; padding:14px; border:1px solid #d5dfd5; border-radius:12px; }
-.fujimi-sightline summary { cursor:pointer; line-height:1.8; }
-.fujimi-sightline video { display:block; width:100%; height:auto; margin-top:14px; border-radius:8px; }
-.fujimi-sightline details p { font-size:12px; }
 .fujimi-sightline a { overflow-wrap:anywhere; }
