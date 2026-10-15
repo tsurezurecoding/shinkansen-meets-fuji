@@ -20,30 +20,26 @@ export function fujimiSightlineHead(spot, lang, prefix) {
 export function fujimiSightlineHTML(spot, lang, prefix) {
   if (spot.id !== 'edo-castle-fujimi-yagura' || lang !== 'ja') return '';
   return `\n  <section class="spot-page-section fujimi-sightline" id="fujimi-sightline" aria-labelledby="fujimi-sightline-title" data-fujimi-sightline data-scene="${JSON.stringify(FUJIMI_SCENE).replaceAll('"', '&quot;')}" data-engine="${prefix}fujimi-sightline-stage.js?v=${assetVersion('fujimi-sightline-stage.js')}">
-    <p class="eyebrow">FROM THE WINDOW</p>
-    <h2 id="fujimi-sightline-title"><span class="copy-chunk">櫓は街の</span><span class="copy-chunk">どの奥にある？</span></h2>
-    <p>東京駅へ向かう列車の左側。ビルのすきまに見える白い櫓は、皇居の中にあります。写真から推定した撮影位置を使い、街の奥行きを確かめてみましょう。</p>
-    <figure class="fujimi-sightline-photo">
-      <img src="${prefix}images/20260924_edo-castle-fujimi-yagura_3705_michikusa.jpg" alt="東京着直前の車窓。通りの奥、木々の上に白い富士見櫓が見える" width="1920" height="1080" loading="lazy" decoding="async">
-      <figcaption>2026年9月24日、東京着直前。動画開始から約3.7秒の場面。撮影：michikusa</figcaption>
-    </figure>
-    <div class="fujimi-sightline-facts"><span><b>推定撮影位置 → 富士見櫓</b> 約${FUJIMI_SCENE.distanceKm}km</span><span><b>方角</b> 西北西（約${Math.round(FUJIMI_SCENE.heading)}°）</span></div>
-    <div class="fujimi-sightline-actions">
-      <button class="btn btn-primary" type="button" data-fujimi-open aria-expanded="false" aria-controls="fujimi-sightline-model">位置関係を3Dで見る</button>
-      <button class="btn btn-ghost" type="button" data-fujimi-close hidden>写真に戻る</button>
-    </div>
-    <p class="fujimi-sightline-status" data-fujimi-status role="status" aria-live="polite">3Dはボタンを押すと読み込みます。通信が必要です。</p>
-    <div id="fujimi-sightline-model" hidden>
-      <div class="fujimi-sightline-views" role="group" aria-label="模型の見方">
-        <button class="btn btn-ghost" type="button" data-fujimi-view="oblique" aria-pressed="true" disabled>斜め上から</button>
-        <button class="btn btn-ghost" type="button" data-fujimi-view="top" aria-pressed="false" disabled>真上から</button>
+    <p class="eyebrow spot-reading-eyebrow" lang="en">IN 3D</p>
+    <h2 id="fujimi-sightline-title"><span class="copy-chunk">街の奥行きを</span><span class="copy-chunk">3Dで見る</span></h2>
+    <p>推定撮影位置から富士見櫓まで、西北西へ約${FUJIMI_SCENE.distanceKm}km。街を動かして、ビルのすきまと櫓の位置関係を確かめてみましょう。</p>
+    <div id="fujimi-sightline-model">
+      <div class="fujimi-sightline-tools" role="group" aria-label="3Dの操作">
+        <button class="btn btn-ghost" type="button" data-fujimi-reset disabled>初期位置へ</button>
+        <button class="btn btn-ghost" type="button" data-fujimi-zoom="in" aria-label="3Dを拡大" disabled>＋</button>
+        <button class="btn btn-ghost" type="button" data-fujimi-zoom="out" aria-label="3Dを縮小" disabled>−</button>
+        <button class="btn btn-primary" type="button" data-fujimi-open hidden>3Dを読み込む</button>
       </div>
-      <div class="fujimi-sightline-stage" data-fujimi-stage role="img" aria-label="写真から推定した撮影位置と富士見櫓を結ぶ3D位置関係図"></div>
+      <p class="fujimi-sightline-help" id="fujimi-sightline-help"><span class="copy-chunk">ドラッグで移動、右ドラッグで回転。</span><span class="copy-chunk">スマホは2本指で拡大・回転。</span><span class="copy-chunk">Ctrl＋ホイールでも拡大できます。</span></p>
+      <div class="fujimi-sightline-stage" data-fujimi-stage data-placeholder="ここまで読み進めると3Dを表示します" tabindex="0" role="group" aria-label="自由に操作できる、撮影位置と富士見櫓の3D模型" aria-describedby="fujimi-sightline-help"></div>
       <p class="fujimi-sightline-key"><span>● 推定撮影位置</span><span>● 富士見櫓</span><span>オレンジの線：両地点の方向</span></p>
     </div>
-    <p><a href="#spotVideoTitle-edo-castle-fujimi-yagura">YouTube動画でこの一瞬を見る →</a></p>
-    <p class="fujimi-sightline-note">撮影位置は、写真の通りの抜けと地図上の線路からの推定です。同時刻のGPS補間点とは約390mの差があり、位置・時刻の誤差は確定していません。線の高さは模式的な設定で、窓から屋根への精密な視線ではありません。建物模型（LOD1）は屋根や細かなすきまを省略しています。</p>
+    <p class="fujimi-sightline-status" data-fujimi-status role="status" aria-live="polite">この章に近づくと3Dを読み込みます。通信が必要です。</p>
+    <p class="fujimi-sightline-note">撮影位置は推定です。GPSとの差約390mと高さの精密校正は未解決で、線の高さは模式的です。</p>
+    <details class="fujimi-sightline-sources"><summary>模型のデータについて</summary>
+    <p>撮影位置は写真の通りの抜けと地図上の線路から推定しています。建物模型（LOD1）は屋根や細かなすきまを省略しています。</p>
     <p class="fujimi-sightline-sources">建物：<a href="https://www.mlit.go.jp/plateau/" target="_blank" rel="noopener">国土交通省 PLATEAU（千代田区・LOD1）</a> ／ 地図：<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a> ／ 櫓：<a href="https://sankan.kunaicho.go.jp/multilingual/koukyo/place03.html" target="_blank" rel="noopener">宮内庁</a>。3D表示：CesiumJS。通信できない場合も写真と記事を読めます。</p>
+    </details>
   </section>
   <script defer src="${prefix}fujimi-sightline.js?v=${assetVersion('fujimi-sightline.js')}"></script>`;
 }

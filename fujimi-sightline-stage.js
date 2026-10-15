@@ -34,7 +34,12 @@
       viewer = new C.Viewer(host, { animation:false, timeline:false, baseLayerPicker:false, geocoder:false, homeButton:false, sceneModePicker:false, navigationHelpButton:false, fullscreenButton:false, infoBox:false, selectionIndicator:false, baseLayer:false, requestRenderMode:true, maximumRenderTimeChange:Infinity, contextOptions:{webgl:{antialias:true}} });
       viewer.clock.currentTime = C.JulianDate.fromIso8601('2026-09-24T03:00:00Z'); viewer.clock.shouldAnimate = false;
       viewer.resolutionScale = Math.min(1, 1.5 / (window.devicePixelRatio || 1));
-      viewer.scene.screenSpaceCameraController.enableInputs = false;
+      var cameraControls = viewer.scene.screenSpaceCameraController;
+      cameraControls.minimumZoomDistance = 80; cameraControls.maximumZoomDistance = 8000;
+      cameraControls.tiltEventTypes = [C.CameraEventType.RIGHT_DRAG, C.CameraEventType.PINCH];
+      cameraControls.zoomEventTypes = [C.CameraEventType.PINCH, {eventType:C.CameraEventType.WHEEL,modifier:C.KeyboardEventModifier.CTRL}];
+      // Ordinary wheel gestures keep scrolling the article, even over the canvas.
+      host.addEventListener('wheel', function (event) { if (!event.ctrlKey) event.stopPropagation(); }, {capture:true,passive:true});
       viewer.scene.skyBox.show = false; viewer.scene.skyAtmosphere.show = false; viewer.scene.sun.show = false; viewer.scene.moon.show = false; viewer.scene.fog.enabled = false;
       viewer.scene.backgroundColor = C.Color.fromCssColorString('#10212d'); viewer.scene.globe.baseColor = C.Color.fromCssColorString('#26383d');
       var map = viewer.imageryLayers.addImageryProvider(new C.UrlTemplateImageryProvider({ url:'https://cyberjapandata.gsi.go.jp/xyz/{gsiLayer}/{z}/{x}/{y}.png', customTags:{gsiLayer:function (_provider,_x,_y,level) { return level < 5 ? 'std' : 'pale'; }}, maximumLevel:18, credit:'地理院タイル' }));
@@ -50,17 +55,43 @@
       }
       marker(train,'撮影位置（推定）','#7fcaba',C.HorizontalOrigin.RIGHT); marker(tower,'富士見櫓','#efb75f');
       viewer.entities.add({polyline:{positions:[train,tower],arcType:C.ArcType.NONE,width:3,material:C.Color.fromCssColorString('#efac49')}});
-      function setView(mode) {
+      function resetView() {
         if (!current()) return;
-        viewer.camera.lookAt(middle, new C.HeadingPitchRange(C.Math.toRadians(mode === 'top' ? 0 : scene.heading), C.Math.toRadians(mode === 'top' ? -90 : -50), mode === 'top' ? 1900 : 2100));
+        viewer.camera.lookAt(middle, new C.HeadingPitchRange(C.Math.toRadians(scene.heading), C.Math.toRadians(-50), 2100));
         viewer.camera.lookAtTransform(C.Matrix4.IDENTITY); viewer.scene.requestRender();
       }
-      setView('oblique');
+      function zoom(direction) {
+        if (!current()) return;
+        var range = C.Cartesian3.distance(viewer.camera.position, middle);
+        if (direction > 0) viewer.camera.zoomIn(Math.max(0,Math.min(range*.22,range-100)));
+        else viewer.camera.zoomOut(Math.max(0,Math.min(range*.25,8000-range)));
+        viewer.scene.requestRender();
+      }
+      function key(value) {
+        if (!current()) return false;
+        var moves = {ArrowLeft:'moveLeft',ArrowRight:'moveRight',ArrowUp:'moveForward',ArrowDown:'moveBackward'};
+        if (moves[value]) viewer.camera[moves[value]](40);
+        else if (value === '+' || value === '=') zoom(1);
+        else if (value === '-') zoom(-1);
+        else if (value === 'Home') resetView();
+        else return false;
+        viewer.scene.requestRender(); return true;
+      }
+      function setActive(value) {
+        if (!current()) return;
+        viewer.useDefaultRenderLoop = value;
+        clearTimeout(timer);
+        if (value) {
+          if (!ready) timer = setTimeout(fail,35000);
+          viewer.resize(); viewer.scene.requestRender();
+        }
+      }
+      resetView();
       removeError = viewer.scene.renderError.addEventListener(fail);
       timer = setTimeout(fail,35000);
       if (window.ResizeObserver) { resize = new ResizeObserver(function () { if (current()) { viewer.resize(); viewer.scene.requestRender(); } }); resize.observe(container); }
       options.onStatus('千代田区の建物を読み込んでいます…');
-      void C.Cesium3DTileset.fromUrl('https://api.plateauview.mlit.go.jp/datacatalog/3dtiles/13101-bldg-lod1-latest/tileset.json', {maximumScreenSpaceError:12,cacheBytes:32*1024*1024,maximumCacheOverflowBytes:16*1024*1024,dynamicScreenSpaceError:false,skipLevelOfDetail:false,preferLeaves:false,preloadWhenHidden:false,preloadFlightDestinations:false}).then(function (tile) {
+      void C.Cesium3DTileset.fromUrl('https://api.plateauview.mlit.go.jp/datacatalog/3dtiles/13101-bldg-lod1-latest/tileset.json', {maximumScreenSpaceError:window.innerWidth < 600 ? 24 : 16,cacheBytes:24*1024*1024,maximumCacheOverflowBytes:8*1024*1024,dynamicScreenSpaceError:false,skipLevelOfDetail:false,preferLeaves:false,preloadWhenHidden:false,preloadFlightDestinations:false}).then(function (tile) {
       if (!current()) { tile.destroy(); destroy(); return; }
       viewer.scene.primitives.add(tile); tile.colorBlendMode = C.Cesium3DTileColorBlendMode.REPLACE;
       tile.style = new C.Cesium3DTileStyle({color:"color('#b4c7bf')"});
@@ -74,7 +105,7 @@
       tile.tileFailed.addEventListener(fail);
       viewer.scene.requestRender();
       }).catch(fail);
-      return {setView:setView,destroy:destroy};
+      return {resetView:resetView,zoom:zoom,key:key,setActive:setActive,destroy:destroy};
     } catch (error) { destroy(); throw error; }
   };
 }());
