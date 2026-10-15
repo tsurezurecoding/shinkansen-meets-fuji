@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d075d607342263be",
+  "contentVersion": "b5a951903e8fb817",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2713,8 +2713,8 @@
     {
       "path": "sudoori/assets/refine.css",
       "url": "https://www.michikusa-travel.com/sudoori/assets/refine.css",
-      "bytes": 3484,
-      "sha256": "c5222b44735eda3a3535fd2c9d44c7c8cc51daf4b88726ba04dac742b25e46d0"
+      "bytes": 3483,
+      "sha256": "ef03404c9af14d93a91ab6af1458e828c75d01b19d96900282f7fa89e75e2f03"
     },
     {
       "path": "sudoori/assets/route.js",
@@ -2744,7 +2744,7 @@
       "path": "sudoori/index.html",
       "url": "https://www.michikusa-travel.com/sudoori/index.html",
       "bytes": 16329,
-      "sha256": "5ebf6991212a63ec9e69647a01ee01d293d162022f99889c86400a0c47c8ab45"
+      "sha256": "5e34d2cf9cb489776526f4adcb9a83c494a39fd35f63a615a37ee087c5d27c7b"
     },
     {
       "path": "sudoori/stories/nishio.html",
@@ -2767,8 +2767,8 @@
     {
       "path": "sudoori/stories/tanna.html",
       "url": "https://www.michikusa-travel.com/sudoori/stories/tanna.html",
-      "bytes": 20488,
-      "sha256": "814a6cb6fa79edf8ce81c9447b53ad13f3ecc64f7f5dc446853d12323321c138"
+      "bytes": 20476,
+      "sha256": "6c2d30642013191547a22ff8797ebd283cb71ea27100a0b245624429ff84e776"
     },
     {
       "path": "train-picker.js",
