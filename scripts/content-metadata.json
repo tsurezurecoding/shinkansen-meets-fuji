@@ -757,5 +757,55 @@
     ],
     "imageEvidence": "data/station-photo-sources.json facade / CP-0236",
     "imageAlt": "Tokyo Station’s red-brick Marunouchi facade and two domes"
+  },
+  "sudoori/index.html": {
+    "kind": "collection",
+    "article": false,
+    "published": "2026-10-16",
+    "modified": "2026-10-16",
+    "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
+    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "representativeImage": false,
+    "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
+  },
+  "sudoori/stories/tanna.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-16",
+    "modified": "2026-10-16",
+    "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
+    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "representativeImage": false,
+    "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
+  },
+  "sudoori/stories/nishio.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-16",
+    "modified": "2026-10-16",
+    "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
+    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "representativeImage": false,
+    "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
+  },
+  "sudoori/stories/sekigahara.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-16",
+    "modified": "2026-10-16",
+    "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
+    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "representativeImage": false,
+    "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
+  },
+  "sudoori/stories/shimamoto.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-16",
+    "modified": "2026-10-16",
+    "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
+    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "representativeImage": false,
+    "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
   }
 }
