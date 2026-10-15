@@ -90,6 +90,8 @@ function localizeEnglishRail(html) {
             <span>Tea fields, greenhouses, giant nets and more — start with what caught your eye.</span>
           </span>
         </a>`;
+  html = html.replace(/<!-- ja-only-sudoori-credit:start -->[\s\S]*?<!-- ja-only-sudoori-credit:end -->/g, '');
+  html = html.replace(/<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->/g, '');
   let result = html.replace(/[ \t]*<!-- en-arenani-card[^>]*-->[\s\S]*?<!-- \/en-arenani-card -->\n?/g, arenaniCard + "\n");
   // 反射鉄の特集カードは、日本語の説明文ごと英語のカードに差し替える。
   const reflectionsCard = `        <a class="journey-intent-card journey-intent-family" href="en/reflections.html" data-cta-track="zukan_theme_click" data-cta-id="reflections">
@@ -119,7 +121,10 @@ function localizeEnglishRail(html) {
     return card;
   });
   const everyday=`<a class="journey-intent-card journey-intent-cloudy" href="en/everyday-japan.html" data-cta-track="zukan_theme_click" data-cta-id="everyday_japan"><img src="images/foods/onigiri.webp" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>EVERYDAY JAPAN</small><strong>Everyday Japan</strong><span>Food, drinks and countryside stories.</span></span></a>`;
-  const ordered=[...leading,everyday,...featureCards.filter(c=>!leading.includes(c))];
+  const restOrder=['hanabi','yakei','window_moments','sparkling_dreams','reflections','ferris_wheels','727_collection'];
+  const rest=featureCards.filter(c=>!leading.includes(c));
+  rest.sort((a,b)=>restOrder.indexOf(a.match(/data-cta-id="([^"]+)"/)?.[1])-restOrder.indexOf(b.match(/data-cta-id="([^"]+)"/)?.[1]));
+  const ordered=[...leading,everyday,...rest];
   let index=0;
   result=result.replace(/<a class="journey-intent-card\b[\s\S]*?<\/a>/g,()=>{
     const i=index++;
