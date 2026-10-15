@@ -6,9 +6,8 @@
   var host = section.querySelector('[data-fujimi-stage]');
   var status = section.querySelector('[data-fujimi-status]');
   var controls = Array.from(section.querySelectorAll('[data-fujimi-reset], [data-fujimi-zoom]'));
-  var stage, epoch = 0, loader, observer, near = false, loading = false, attempted = false;
-  var connection = navigator.connection;
-  var manual = !!(connection && (connection.saveData || /(^|-)2g$/.test(connection.effectiveType || '')));
+  var model = section.querySelector('#fujimi-sightline-model');
+  var stage, epoch = 0, loader, observer, near = false, loading = false;
   function active() { return near && !document.hidden; }
   function reset(message) {
     epoch++; loading = false;
@@ -30,7 +29,8 @@
   }
   async function start() {
     if (loading || stage) return;
-    var token = ++epoch; attempted = true; loading = true; open.disabled = true;
+    var token = ++epoch; loading = true; open.disabled = true;
+    model.hidden = false; open.setAttribute('aria-expanded', 'true');
     host.dataset.placeholder = '3Dを読み込んでいます…'; status.textContent = '3Dを読み込んでいます…';
     function current() { return epoch === token; }
     function fail() { if (current()) reset('3Dを読み込めませんでした。本文と動画は引き続き読めます。ボタンで再試行できます。'); }
@@ -54,24 +54,19 @@
   });
   host.addEventListener('keydown', function (event) { if (stage?.key(event.key)) event.preventDefault(); });
   document.addEventListener('visibilitychange', function () { stage?.setActive?.(active()); });
-  window.addEventListener('pagehide', function () { observer?.disconnect(); reset('3Dは再読み込みできます。'); attempted = false; });
+  window.addEventListener('pagehide', function () { observer?.disconnect(); reset('「3Dを開く」を押すと読み込みます。'); model.hidden = true; open.textContent = '3Dを開く'; open.setAttribute('aria-expanded','false'); });
   window.addEventListener('pageshow', function (event) { if (event.persisted) watch(); });
   function watch() {
-    if (!window.IntersectionObserver) { open.hidden = false; return; }
+    if (!window.IntersectionObserver) { near = true; open.hidden = false; return; }
     observer?.disconnect();
     observer = new IntersectionObserver(function (entries) {
       near = entries[0].isIntersecting; stage?.setActive?.(active());
-      if (near && !manual && !attempted) void start();
     }, {rootMargin:'160px 0px'});
     observer.observe(host);
   }
   function mount() {
     var map = document.querySelector('.spot-page-shell article .spot-static-map');
     if (map) map.before(section);
-    if (manual) {
-      open.hidden = false; host.dataset.placeholder = 'ボタンで3Dを読み込めます';
-      status.textContent = '通信量を抑える設定のため、ボタンを押すと3Dを読み込みます。';
-    }
     watch();
   }
   if (window.MADO_SPOT_PAGE_READY) window.MADO_SPOT_PAGE_READY.then(mount); else mount();
