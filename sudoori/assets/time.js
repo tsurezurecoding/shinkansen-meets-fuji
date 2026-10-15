@@ -20,10 +20,10 @@
   if(i!==last){document.querySelectorAll('[data-slice]').forEach(b=>b.setAttribute('aria-pressed',String(+b.dataset.slice===i)));if(active)$('slice-scroll').scrollLeft=Math.max(0,t*2-$('slice-scroll').clientWidth/3);last=i;}
  }
  function seek(i){if(!D.runs[i])return;document.dispatchEvent(new CustomEvent('time-seek',{detail:{index:i}}));show()}
- function toggle(on){active=on;$('time-panel').hidden=!on;$('time-toggle').setAttribute('aria-expanded',String(on));$('time-toggle').textContent=on?'通過時間を閉じる ↑':'町ごとの通過時間を見る ↗';const url=new URL(location.href);if(on)url.searchParams.set('view','time');else url.searchParams.delete('view');history.replaceState(null,'',url);document.dispatchEvent(new CustomEvent('time-mode',{detail:{active:on}}));last=-1;show()}
+ function toggle(on){active=on;$('time-panel').hidden=!on;$('time-toggle').setAttribute('aria-expanded',String(on));$('time-toggle').textContent=on?'通過時間を閉じる ↑':'町ごとの通過時間を見る ↗';const url=new URL(location.href);if(on)url.searchParams.set('view','time');else url.searchParams.delete('view');history.replaceState(null,'',url);last=-1;show()}
  $('time-town').innerHTML=D.towns.map(tw=>'<option value="'+tw.key+'">'+tw.pref+' '+tw.name+' · '+duration(tw.sec)+'</option>').join('');
  $('slice-track').style.width=D.totalSec*2+'px';
  for(const [i,r] of D.runs.entries()){const tw=towns[r.key],b=document.createElement('button');b.type='button';b.className='time-slice '+(tw.nozomi?'has-nozomi':tw.stations.length?'has-station':'no-station');b.dataset.slice=i;b.style.left=r.sa*2+'px';b.style.width=(r.sb-r.sa)*2+'px';b.textContent=tw.name+' '+duration(r.sb-r.sa);b.title=tw.pref+' '+b.textContent;b.setAttribute('aria-label',b.title);b.onclick=()=>seek(i);$('slice-track').appendChild(b)}
  $('time-toggle').onclick=()=>toggle(!active);$('time-town').onchange=()=>seek(D.runs.findIndex(r=>r.key===$('time-town').value));$('slice-prev').onclick=()=>seek(current()-1);$('slice-next').onclick=()=>seek(current()+1);
- document.addEventListener('route-update',show);show();if(new URLSearchParams(location.search).get('view')==='time')toggle(true);
+ document.addEventListener('route-update',show);toggle(true);
 })();

@@ -3,3 +3,5 @@
 @media(max-width:680px){.portal .portal-intro{padding:32px 0 35px}.portal-intro .hero-count{font-size:12px;margin-top:14px}.hero-count b{font-size:24px}.hero-count .copy-chunk{display:block;margin:0}.portal-intro>p{font-size:12px}.portal .journey-heading>p{font-size:11px}.portal .municipality-focus{grid-template-columns:1fr;gap:9px;min-height:0;padding:16px 18px}.municipality-focus h3{font-size:24px}.municipality-focus>p{font-size:12px}.portal .time-panel{grid-template-columns:1fr;gap:14px}.time-details{padding:16px}.mascot-card{padding:20px}.mascot-image{height:150px}.mascot-card h3{font-size:23px}.portal .section-heading h2{font-size:26px}}
 
 .portal .portal-intro{padding:30px 0 26px}.portal .portal-intro h1{margin:10px auto 14px}.portal .portal-intro>p{margin-top:10px}.preview-picture img[src*='shimamoto']{object-position:center}.portal .municipality-focus{margin-top:0}@media(max-width:680px){.portal .portal-intro{padding:22px 0 20px}}
+
+.portal .story-preview.is-overview{display:block}.story-preview.is-overview .preview-copy{max-width:740px;margin:auto;padding:28px}.story-preview.is-overview h3{margin-bottom:14px}
