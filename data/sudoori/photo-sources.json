@@ -1,0 +1,76 @@
+{
+  "reviewed": "2026-10-16",
+  "scope": "Japanese municipality editorial pages; no ads or affiliate links. No mascot image for Shimamoto.",
+  "entries": [
+    {
+      "id": "CP-0246",
+      "file": "images/sudoori/tanna.jpg",
+      "author": "Batholith",
+      "license": "Public domain",
+      "source": "https://commons.wikimedia.org/wiki/File:Tanna_Basin_01.jpg",
+      "usage": "Public domain; CSS crop",
+      "reviewed": "2026-10-16",
+      "sha256": "c23de3dc2557b8a677a84b944bea4bba5eab36c7c7142f8e3aebb7a43821d84a"
+    },
+    {
+      "id": "CP-0247",
+      "file": "images/sudoori/nishio.jpg",
+      "author": "At by At",
+      "license": "CC0",
+      "source": "https://commons.wikimedia.org/wiki/File:Nishio_Tea_plantation1.JPG",
+      "usage": "CC0; CSS crop",
+      "reviewed": "2026-10-16",
+      "sha256": "6644672f860a08b3d95c45eca1e699f6bd0b4cfa68adf5a8e3ff28fd5dbc2a97"
+    },
+    {
+      "id": "CP-0248",
+      "file": "images/sudoori/sekigahara.jpg",
+      "author": "Saigen Jiro",
+      "license": "CC0",
+      "source": "https://commons.wikimedia.org/wiki/File:Battlefield_of_Sekigahara_viewed_from_site_of_Ishida_Mitsunari.jpg",
+      "usage": "CC0; CSS crop",
+      "reviewed": "2026-10-16",
+      "sha256": "990fcbebdc263c2a73ccc2d8687434db3995fbad54792493bf73d564990726b2"
+    },
+    {
+      "id": "CP-0249",
+      "file": "images/sudoori/shimamoto.jpg",
+      "author": "れたす「新幹線の車窓から」",
+      "license": "個別掲載許諾",
+      "source": "https://cotetu.seesaa.net/article/520073679.html",
+      "usage": "会長取得済みの掲載許諾。作者・記事リンク・トリミング表示。OGには使用しない",
+      "reviewed": "2026-10-16",
+      "sha256": "1865ab5fb89d4810b86b35144be83074a64c560f9c053079116650e84e7a8f83"
+    },
+    {
+      "id": "CP-0250",
+      "file": "images/sudoori/mascots/fujisawa.png",
+      "author": "藤沢市",
+      "license": "非営利利用・手続不要",
+      "source": "https://www.city.fujisawa.kanagawa.jp/documents/16966/tebiki_ver6-3_1.pdf",
+      "usage": "ふじキュン♡（©藤沢市）。無改変・縦横比維持、非営利の自治体紹介",
+      "reviewed": "2026-10-16",
+      "sha256": "cbe90e1e968e03ec92d35e3c1d5c4a54c87e20a8b8524865955f3f957f084169"
+    },
+    {
+      "id": "CP-0251",
+      "file": "images/sudoori/mascots/mishima.jpg",
+      "author": "三島市",
+      "license": "非営利利用・申請不要",
+      "source": "https://www.city.mishima.shizuoka.jp/site/mishimarukun-mishimarukochan/3731.html",
+      "usage": "みしまるくん・みしまるこちゃん（三島市）。無改変・縦横比維持、非営利の自治体紹介",
+      "reviewed": "2026-10-16",
+      "sha256": "1da4fa436f0af8ac85760522a71b8f74813e2e492e05a068b14f1946d395d680"
+    },
+    {
+      "id": "CP-0252",
+      "file": "images/sudoori/mascots/shizuoka.jpg",
+      "author": "静岡市清水区",
+      "license": "CC BY-NC-ND 2.1 JP",
+      "source": "https://www.city.shizuoka.lg.jp/s2978/s005615.html",
+      "usage": "シズラ（清水区、CC-BY-NC-ND2.1JP）。無改変・縦横比維持、非営利の自治体紹介",
+      "reviewed": "2026-10-16",
+      "sha256": "fba8599336d61fdaca827ccbf03041bd190acbd502f820fcf8d0b0f009aa7f1e"
+    }
+  ]
+}

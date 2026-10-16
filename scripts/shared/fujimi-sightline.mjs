@@ -31,7 +31,7 @@ export function fujimiSightlineHTML(spot, lang, prefix) {
         <button class="btn btn-ghost" type="button" data-fujimi-zoom="in" aria-label="3Dを拡大" disabled>＋</button>
         <button class="btn btn-ghost" type="button" data-fujimi-zoom="out" aria-label="3Dを縮小" disabled>−</button>
       </div>
-      <p class="fujimi-sightline-help" id="fujimi-sightline-help"><span class="copy-chunk">ドラッグで移動、右ドラッグで回転。</span><span class="copy-chunk">スマホは2本指で拡大・回転。</span><span class="copy-chunk">Ctrl＋ホイールでも拡大できます。</span></p>
+      <p class="fujimi-sightline-help" id="fujimi-sightline-help"><span class="copy-chunk">PC：左ボタンを押したまま動かすと移動。</span><span class="copy-chunk">右ボタンを押したまま動かすと向き・角度を変更。</span><span class="copy-chunk">スマホ：2本指を広げる・縮めると拡大縮小。</span><span class="copy-chunk">2本指をそろえて上下に動かすと角度を変更。</span><span class="copy-chunk">Ctrl＋ホイールでも拡大できます。</span></p>
       <div class="fujimi-sightline-stage" data-fujimi-stage data-placeholder="ボタンを押すと3Dを読み込みます" tabindex="0" role="group" aria-label="自由に操作できる、撮影位置と富士見櫓の3D模型" aria-describedby="fujimi-sightline-help"></div>
       <p class="fujimi-sightline-key"><span>● 推定撮影位置</span><span>● 富士見櫓</span><span>オレンジの線：両地点の方向</span></p>
     </div>

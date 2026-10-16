@@ -1933,6 +1933,7 @@ function sitemapXML() {
     "sapporo-shizuoka-factory": "2026-09-26",
     "rakusai-egg-tanks": "2026-09-26",
   };
+  baseUrls.push(...["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html"].map(route=>({loc:siteRoot+'/'+route,priority:'0.6',changefreq:'monthly',lastmod:'2026-10-16'})));
   const spotUrls = SPOTS.filter((spot) => hasGeneratedSpotPage(spot) && !isSubordinateSpot(spot)).flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",

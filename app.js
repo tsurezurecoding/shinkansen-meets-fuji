@@ -1287,7 +1287,6 @@ function spotDetailModalHTML(spot) {
           <p class="spot-modal-hook">${L.hook}</p>
           <p class="spot-modal-story">${L.story}</p>
           ${editorialNoteHTML(spot)}
-          ${bodyLinksHTML(spot, "spot-modal-body-links")}
           ${collectionGuideLinkHTML(spot)}
           <div class="spot-modal-actions">
             <a class="spot-modal-guide-cta" href="${spotPageHref(spot)}" aria-label="${escapeAttr(guideAria)}"><span class="spot-modal-guide-label">${escapeHTML(t("readGuideDetail"))}</span><span class="spot-modal-guide-arrow" aria-hidden="true">→</span></a>
@@ -1944,39 +1943,31 @@ function bindSpotEvents(root) {
       toggleFavorite(btn.dataset.fav);
     });
   });
+  root.querySelectorAll("[data-gallery-detail]").forEach((link) => {
+    const trackDetailOpen = () => {
+      const spot = findSpotById(link.closest(".gal-card")?.dataset.spot);
+      if (spot) track("spot_detail_open", spotAnalyticsParams(spot, "gallery"));
+    };
+    link.addEventListener("click", trackDetailOpen);
+    link.addEventListener("auxclick", (event) => {
+      if (event.button === 1) trackDetailOpen();
+    });
+  });
   root.querySelectorAll("[data-more]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       if (event.target.closest("a")) return;
       if (event.target.closest("[data-stamp], [data-fav]")) return;
-      const item = btn.closest(".tl-item, .gal-card");
-      if (item?.classList.contains("gal-card")) {
-        const spot = findSpotById(item.dataset.spot);
-        if (spot) {
-          track("spot_detail_open", spotAnalyticsParams(spot, "gallery"));
-          window.location.assign(spotPageHref(spot));
-        }
-        return;
-      }
-      const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
+      const item = btn.closest(".tl-item");
       const photoIndex = item?.dataset.galleryPhotoIndex;
-      openSpotModal(item?.dataset.spot, source, { photoIndex });
+      openSpotModal(item?.dataset.spot, "timeline", { photoIndex });
     });
     btn.addEventListener("keydown", (event) => {
       if (event.key !== "Enter" && event.key !== " ") return;
       if (event.target.closest("[data-stamp], [data-fav]")) return;
       event.preventDefault();
-      const item = btn.closest(".tl-item, .gal-card");
-      if (item?.classList.contains("gal-card")) {
-        const spot = findSpotById(item.dataset.spot);
-        if (spot) {
-          track("spot_detail_open", spotAnalyticsParams(spot, "gallery"));
-          window.location.assign(spotPageHref(spot));
-        }
-        return;
-      }
-      const source = item?.classList.contains("gal-card") ? "gallery" : "timeline";
+      const item = btn.closest(".tl-item");
       const photoIndex = item?.dataset.galleryPhotoIndex;
-      openSpotModal(item?.dataset.spot, source, { photoIndex });
+      openSpotModal(item?.dataset.spot, "timeline", { photoIndex });
     });
   });
   root.querySelectorAll("[data-map]").forEach((link) => {
@@ -2603,13 +2594,13 @@ function renderGallery() {
           ? spotMediaFigureHTML({ ...featuredMedia, creditHTML: featuredMedia.creditHTML.replace(/<span class="photo-note">.*?<\/span>/g, "") }, "gal-photo")
           : sceneSVG(sp.scene);
         return `
-          <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}" data-more role="button" tabindex="0" aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
+          <div class="gal-card" id="spot-${sp.id}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
             <div class="gal-media-wrap">
               ${media}
             </div>
             <div class="gal-body">
               <div class="gal-top">
-                <div class="gal-top-left">${stampBadgeHTML(sp, 38, "tl-icon")}<span class="gal-name">${L.name}</span></div>
+                <div class="gal-top-left">${stampBadgeHTML(sp, 38, "tl-icon")}<a class="gal-name gal-detail-link" data-gallery-detail href="${escapeAttr(spotPageHref(sp))}" aria-label="${escapeAttr(t("readGuideDetailAria", L.name))}">${L.name}</a></div>
                 <div class="spot-card-toggles gal-toggles">
                   ${favoriteButtonHTML(sp.id, Boolean(favorites[sp.id]))}
                   ${stampIconButtonHTML(sp.id, Boolean(stamps[sp.id]))}
