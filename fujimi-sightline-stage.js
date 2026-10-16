@@ -1,0 +1,115 @@
+(function () {
+  'use strict';
+  // Adapted from window-unfold-0929/city-stage.js. One estimated scene:
+  // no building picking, district exploration, video tracking or roof model.
+  var base = 'https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/';
+  var libraryPromise;
+  function library() {
+    if (window.Cesium) return Promise.resolve(window.Cesium);
+    if (!libraryPromise) libraryPromise = new Promise(function (resolve, reject) {
+      var script = document.createElement('script'); script.src = base + 'Cesium.js'; script.async = true;
+      var timer = setTimeout(function () { script.remove(); reject(new Error('Cesium timeout')); }, 20000);
+      script.onload = function () { clearTimeout(timer); window.Cesium ? resolve(window.Cesium) : reject(new Error('Cesium unavailable')); };
+      script.onerror = function () { clearTimeout(timer); script.remove(); reject(new Error('Cesium network')); };
+      document.head.append(script);
+    }).catch(function (error) { libraryPromise = null; throw error; });
+    return libraryPromise;
+  }
+  window.createFujimiStage = async function (container, options) {
+    var C = await library();
+    if (!options.isCurrent() || !container.isConnected) return null;
+    if (!document.querySelector('[data-fujimi-cesium-css]')) {
+      var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = base + 'Widgets/widgets.css'; css.dataset.fujimiCesiumCss = ''; document.head.append(css);
+    }
+    var host = document.createElement('div'); host.style.cssText = 'position:absolute;inset:0;overflow:hidden'; container.append(host);
+    var viewer, destroyed = false, ready = false, partialFailure = false, timer, resize, removeError;
+    function current() { return !destroyed && options.isCurrent(); }
+    function destroy() {
+      if (destroyed) return;
+      destroyed = true; clearTimeout(timer); resize?.disconnect(); removeError?.();
+      if (viewer && !viewer.isDestroyed()) viewer.destroy(); host.remove();
+    }
+    function fail() { if (!current()) return; destroy(); options.onError(); }
+    try {
+      viewer = new C.Viewer(host, { animation:false, timeline:false, baseLayerPicker:false, geocoder:false, homeButton:false, sceneModePicker:false, navigationHelpButton:false, fullscreenButton:false, infoBox:false, selectionIndicator:false, baseLayer:false, requestRenderMode:true, maximumRenderTimeChange:Infinity, contextOptions:{webgl:{antialias:true}} });
+      viewer.clock.currentTime = C.JulianDate.fromIso8601('2026-09-24T03:00:00Z'); viewer.clock.shouldAnimate = false;
+      viewer.resolutionScale = Math.min(1, 1.5 / (window.devicePixelRatio || 1));
+      var cameraControls = viewer.scene.screenSpaceCameraController;
+      cameraControls.minimumZoomDistance = 80; cameraControls.maximumZoomDistance = 8000;
+      cameraControls.tiltEventTypes = [C.CameraEventType.RIGHT_DRAG, C.CameraEventType.PINCH];
+      cameraControls.zoomEventTypes = [C.CameraEventType.PINCH, {eventType:C.CameraEventType.WHEEL,modifier:C.KeyboardEventModifier.CTRL}];
+      // Ordinary wheel gestures keep scrolling the article, even over the canvas.
+      host.addEventListener('wheel', function (event) { if (!event.ctrlKey) event.stopPropagation(); }, {capture:true,passive:true});
+      viewer.scene.skyBox.show = false; viewer.scene.skyAtmosphere.show = false; viewer.scene.sun.show = false; viewer.scene.moon.show = false; viewer.scene.fog.enabled = false;
+      viewer.scene.backgroundColor = C.Color.fromCssColorString('#10212d'); viewer.scene.globe.baseColor = C.Color.fromCssColorString('#26383d');
+      var map = viewer.imageryLayers.addImageryProvider(new C.UrlTemplateImageryProvider({ url:'https://cyberjapandata.gsi.go.jp/xyz/{gsiLayer}/{z}/{x}/{y}.png', customTags:{gsiLayer:function (_provider,_x,_y,level) { return level < 5 ? 'std' : 'pale'; }}, maximumLevel:18, credit:'地理院タイル' }));
+      map.alpha = .12; map.saturation = 0; map.brightness = .45;
+      // The generator supplies the photo/map estimate, distinct from raw GPS.
+      // Heights remain diagram settings, not calibrated rail/tower elevations.
+      var scene = options.scene;
+      var train = C.Cartesian3.fromDegrees.apply(null, scene.train);
+      var tower = C.Cartesian3.fromDegrees.apply(null, scene.tower);
+      var middle = C.Cartesian3.lerp(train,tower,.5,new C.Cartesian3());
+      function marker(position, label, color, align) {
+        viewer.entities.add({ position:position, point:{pixelSize:10,color:C.Color.fromCssColorString(color),outlineColor:C.Color.fromCssColorString('#10212d'),outlineWidth:3,disableDepthTestDistance:Infinity}, label:{text:label,font:'12px sans-serif',fillColor:C.Color.fromCssColorString('#fff5d9'),outlineColor:C.Color.fromCssColorString('#10212d'),outlineWidth:4,style:C.LabelStyle.FILL_AND_OUTLINE,horizontalOrigin:align ?? C.HorizontalOrigin.CENTER,pixelOffset:new C.Cartesian2(0,-24),disableDepthTestDistance:Infinity} });
+      }
+      marker(train,'撮影位置（推定）','#7fcaba',C.HorizontalOrigin.RIGHT); marker(tower,'富士見櫓','#efb75f');
+      viewer.entities.add({polyline:{positions:[train,tower],arcType:C.ArcType.NONE,width:3,material:C.Color.fromCssColorString('#efac49')}});
+      function resetView() {
+        if (!current()) return;
+        viewer.camera.lookAt(middle, new C.HeadingPitchRange(C.Math.toRadians(scene.heading), C.Math.toRadians(-50), 2100));
+        viewer.camera.lookAtTransform(C.Matrix4.IDENTITY); viewer.scene.requestRender();
+      }
+      function zoom(direction) {
+        if (!current()) return;
+        var range = C.Cartesian3.distance(viewer.camera.position, middle);
+        if (direction > 0) viewer.camera.zoomIn(Math.max(0,Math.min(range*.22,range-100)));
+        else viewer.camera.zoomOut(Math.max(0,Math.min(range*.25,8000-range)));
+        viewer.scene.requestRender();
+      }
+      function key(value) {
+        if (!current()) return false;
+        var moves = {ArrowLeft:'moveLeft',ArrowRight:'moveRight',ArrowUp:'moveForward',ArrowDown:'moveBackward'};
+        if (moves[value]) viewer.camera[moves[value]](40);
+        else if (value === '+' || value === '=') zoom(1);
+        else if (value === '-') zoom(-1);
+        else if (value === 'Home') resetView();
+        else return false;
+        viewer.scene.requestRender(); return true;
+      }
+      function setActive(value) {
+        if (!current()) return;
+        viewer.useDefaultRenderLoop = value;
+        clearTimeout(timer);
+        if (value) {
+          if (!ready) timer = setTimeout(fail,35000);
+          viewer.resize(); viewer.scene.requestRender();
+        }
+      }
+      resetView();
+      removeError = viewer.scene.renderError.addEventListener(fail);
+      timer = setTimeout(fail,35000);
+      if (window.ResizeObserver) { resize = new ResizeObserver(function () { if (current()) { viewer.resize(); viewer.scene.requestRender(); } }); resize.observe(container); }
+      options.onStatus('千代田区の建物を読み込んでいます…');
+      void C.Cesium3DTileset.fromUrl('https://api.plateauview.mlit.go.jp/datacatalog/3dtiles/13101-bldg-lod1-latest/tileset.json', {maximumScreenSpaceError:window.innerWidth < 600 ? 24 : 16,cacheBytes:24*1024*1024,maximumCacheOverflowBytes:8*1024*1024,dynamicScreenSpaceError:false,skipLevelOfDetail:false,preferLeaves:false,preloadWhenHidden:false,preloadFlightDestinations:false}).then(function (tile) {
+      if (!current()) { tile.destroy(); destroy(); return; }
+      viewer.scene.primitives.add(tile); tile.colorBlendMode = C.Cesium3DTileColorBlendMode.REPLACE;
+      tile.style = new C.Cesium3DTileStyle({color:"color('#b4c7bf')"});
+      tile.tileVisible.addEventListener(function () {
+        if (!current() || ready) return;
+        ready = true; clearTimeout(timer); if (!partialFailure) options.onStatus('写真から推定した撮影位置と櫓を結びます。線の高さは模式的です。');
+      });
+      tile.loadProgress.addEventListener(function (pending,processing) {
+        if (current() && ready && !partialFailure) options.onStatus(pending + processing > 0 ? '周辺の建物を読み込んでいます…' : '推定撮影位置から西北西へ約' + scene.distanceKm + 'km。高さは模式的です。');
+      });
+      tile.tileFailed.addEventListener(function () {
+        if (!current()) return;
+        partialFailure = true;
+        options.onStatus('一部の建物を読み込めませんでした。表示済みの3Dは操作できます。');
+      });
+      viewer.scene.requestRender();
+      }).catch(fail);
+      return {resetView:resetView,zoom:zoom,key:key,setActive:setActive,destroy:destroy};
+    } catch (error) { destroy(); throw error; }
+  };
+}());

@@ -4,6 +4,7 @@ import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { SPOTS as GENERATED_SPOTS, spotPageHTML } from "./generate-spot-pages.mjs";
+import { fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 
 async function runThinValidator() {
   const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -349,7 +350,12 @@ async function runThinValidator() {
       if (bodyTag !== strictHostHTML(lang, spot.id, prefix)) fail(`${relativeFile} body context/mode is incorrect`);
       if (count(onDisk, /data-spot-page-shared-module=/g) !== 1 || count(onDisk, /<div data-spot-page-shared-module="page"><\/div>/g) !== 1) fail(`${relativeFile} must have exactly one strict thin page host`);
       const body = onDisk.slice(onDisk.indexOf("<body"));
-      if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(body)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
+      // One generated, opt-in supplement has a static photo fallback. Exempt
+      // only its exact generated block; the rest of the thin page stays checked.
+      const supplement = fujimiSightlineHTML(spot, lang, lang === 'ja' ? '../' : '../../');
+      if (supplement && !body.includes(supplement)) fail(`${relativeFile} sightline supplement is missing or stale`);
+      const thinBody = supplement ? body.replace(supplement, '') : body;
+      if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(thinBody)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
       // ?v= は sync-asset-versions.mjs が内容ハッシュから振る。値そのものではなく
       // 「どのファイルをどの順で読むか」だけを固定する。
       const scripts = ["spot-page-shared-data.js", pagePayloadRelativePath(spot.id, lang), "spot-page-loader.js"];

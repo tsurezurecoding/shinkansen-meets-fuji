@@ -18,6 +18,7 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "fujimi-sightline.js", "fujimi-sightline-stage.js", "fujimi-sightline.css",
   'data/sudoori/photo-sources.json',
   ...await walkFiles('sudoori',p=>/\.(?:html|css|js)$/.test(p)),
   ...await walkFiles('images/sudoori',p=>/\.(?:jpg|png)$/.test(p)),
