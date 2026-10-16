@@ -22,7 +22,7 @@
       var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = base + 'Widgets/widgets.css'; css.dataset.fujimiCesiumCss = ''; document.head.append(css);
     }
     var host = document.createElement('div'); host.style.cssText = 'position:absolute;inset:0;overflow:hidden'; container.append(host);
-    var viewer, destroyed = false, ready = false, timer, resize, removeError;
+    var viewer, destroyed = false, ready = false, partialFailure = false, timer, resize, removeError;
     function current() { return !destroyed && options.isCurrent(); }
     function destroy() {
       if (destroyed) return;
@@ -97,12 +97,16 @@
       tile.style = new C.Cesium3DTileStyle({color:"color('#b4c7bf')"});
       tile.tileVisible.addEventListener(function () {
         if (!current() || ready) return;
-        ready = true; clearTimeout(timer); options.onStatus('写真から推定した撮影位置と櫓を結びます。線の高さは模式的です。');
+        ready = true; clearTimeout(timer); if (!partialFailure) options.onStatus('写真から推定した撮影位置と櫓を結びます。線の高さは模式的です。');
       });
       tile.loadProgress.addEventListener(function (pending,processing) {
-        if (current() && ready) options.onStatus(pending + processing > 0 ? '周辺の建物を読み込んでいます…' : '推定撮影位置から西北西へ約' + scene.distanceKm + 'km。高さは模式的です。');
+        if (current() && ready && !partialFailure) options.onStatus(pending + processing > 0 ? '周辺の建物を読み込んでいます…' : '推定撮影位置から西北西へ約' + scene.distanceKm + 'km。高さは模式的です。');
       });
-      tile.tileFailed.addEventListener(fail);
+      tile.tileFailed.addEventListener(function () {
+        if (!current()) return;
+        partialFailure = true;
+        options.onStatus('一部の建物を読み込めませんでした。表示済みの3Dは操作できます。');
+      });
       viewer.scene.requestRender();
       }).catch(fail);
       return {resetView:resetView,zoom:zoom,key:key,setActive:setActive,destroy:destroy};

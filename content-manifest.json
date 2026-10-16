@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "8e0a8112325975ed",
+  "contentVersion": "294ea3711b0388d0",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -853,8 +853,8 @@
     {
       "path": "fujimi-sightline-stage.js",
       "url": "https://www.michikusa-travel.com/fujimi-sightline-stage.js",
-      "bytes": 8445,
-      "sha256": "5da01d5f51eb15d0da121164fb3c73f38f967d47d2a6120173542554877dcd31"
+      "bytes": 8711,
+      "sha256": "bbd56f345c3f9413ec6fcec01a8dfd4fc23503c87c67e1185bd8dfa669d148c6"
     },
     {
       "path": "fujimi-sightline.css",
