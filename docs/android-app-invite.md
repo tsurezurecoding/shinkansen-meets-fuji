@@ -41,7 +41,13 @@ cta_id, and install_status. Unknown states retain their distinct API status and 
 never called uninstalled. **Play click is not installation.** No URL/query/PII,
 install success event, or permanent click suppression is added.
 
-The card avoids visible existing controls, navigation, header, map, media and photos;
+The card avoids visible direct controls, navigation, header and media controls.
+Maps, canvas and photos (including photo links) may sit behind the dismissible card;
+active map/train-picker pointer interaction temporarily hides it. Placement checks
+at most six fixed positions (bottom/top/middle on either side), with a cached control
+list invalidated by relevant DOM changes.
+Scroll/resize coalesce into one placement per animation frame and do not probe or
+write storage; eligibility and shared dismissal refresh on their existing lifecycle events.
 dialogs/fullscreen and train input/selection interactions temporarily suppress it.
 Live state explicitly suppresses it during GPS permission/acquisition, GPS/demo
 guidance and pause. Initial idle and complete stop permit placement. Nested sheet

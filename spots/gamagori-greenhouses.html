@@ -370,7 +370,14 @@
     if(target){if(!target.matches('a,button,input,select,textarea,[tabindex]'))target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
   }
   function overlap(a,b){return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;}
-  let pointerBusy=false;
+  let pointerBusy=false, controlsDirty=true, controlElements=[];
+  function controls(){
+    if(controlsDirty){
+      controlElements=[...document.querySelectorAll('a[href],button,input,select,textarea,summary,nav,[role=button],.lang-landing-prompt,iframe,video,[data-android-invite-protect]')].filter(el=>!card.contains(el)&&!(el.matches('a:not([role=button]):not([data-cta-track]):not([data-cta-id]):not([data-android-invite-protect])')&&el.querySelector('img,picture')));
+      controlsDirty=false;
+    }
+    return controlElements;
+  }
   const visibleElement=el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden'&&getComputedStyle(el).display!=='none'&&(!el.checkVisibility||el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}));
   function interactionBusy(){
     if(pointerBusy||window.MADO_ANDROID_INVITE_BUSY===true||document.fullscreenElement)return true;
@@ -384,11 +391,20 @@
     const style=getComputedStyle(card),inset=name=>parseFloat(style.getPropertyValue('--safe-'+name))||0;
     card.style.maxWidth=Math.max(0,vw-24-inset('left')-inset('right'))+'px';
     const r=card.getBoundingClientRect();
-    const controls=[...document.querySelectorAll('a,button,input,select,textarea,summary,nav,[role=button],.lang-landing-prompt,.leaflet-container,#map,iframe,video,canvas,main img,[data-android-invite-protect]')].filter(el=>!card.contains(el)&&el.getClientRects().length&&(!el.checkVisibility||el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}))&&getComputedStyle(el).visibility!=='hidden').map(el=>el.getBoundingClientRect());
+    const protectedRects=[];
+    for(const el of controls()){
+      const t=el.getBoundingClientRect();
+      if(t.width&&t.height&&t.right>ox&&t.left<ox+vw&&t.bottom>oy&&t.top<oy+vh&&(el.checkVisibility?el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}):getComputedStyle(el).visibility!=='hidden'))protectedRects.push(t);
+    }
     const bar=document.querySelector('.topbar,.lp-header,header')?.getBoundingClientRect();
     const top=Math.max(oy+12+inset('top'),bar&&bar.bottom>oy&&bar.bottom<oy+vh/2?bar.bottom+10:oy+12);
     let good;
-    for(let y=oy+vh-r.height-12-inset('bottom');y>=top&&!good;y-=12)for(const x of [ox+vw-r.width-12-inset('right'),ox+12+inset('left')])if(!controls.some(t=>overlap({left:x-4,right:x+r.width+4,top:y-4,bottom:y+r.height+4},t))){good={x,y};break;}
+    const bottom=oy+vh-r.height-12-inset('bottom');
+    for(const y of [bottom,top,(top+bottom)/2]){
+      if(y<top||y+r.height>oy+vh-12-inset('bottom'))continue;
+      for(const x of [ox+vw-r.width-12-inset('right'),ox+12+inset('left')])if(!protectedRects.some(t=>overlap({left:x-4,right:x+r.width+4,top:y-4,bottom:y+r.height+4},t))){good={x,y};break;}
+      if(good)break;
+    }
     card.style.visibility=good?'visible':'hidden';card.inert=!good;if(good){card.style.left=good.x+'px';card.style.top=good.y+'px';}viewed();
   }
   function refresh(){
@@ -404,7 +420,8 @@
     }
     if(available&&s&&s.dismissedAt+dismissMs>Date.now()&&!localClosed)timer=setTimeout(refresh,Math.min(s.dismissedAt+dismissMs-Date.now(),2147483647));
   }
-  function schedule(){if(!card.isConnected||pageAway)return;cancelAnimationFrame(frame);frame=requestAnimationFrame(refresh);}
+  // Scroll/resize only place the card: no storage probe or eligibility recheck.
+  function schedule(){if(!card.isConnected||pageAway||frame)return;frame=requestAnimationFrame(()=>{frame=0;place();});}
   async function detect(){
     if(pageAway)return;
     clearTimeout(detectionTimer);
@@ -432,14 +449,16 @@
   card.querySelector('a').addEventListener('click',()=>track('android_app_invite_play_click')); // Click is not installation; no persistent stop.
   window.addEventListener('mado:android-invite-state',schedule);
   document.addEventListener('pointerdown',e=>{if(!card.contains(e.target)&&e.target.closest('.leaflet-container,#map,[data-train-picker],.train-results,[data-android-invite-protect]')){pointerBusy=true;schedule();}},{passive:true});
-  window.addEventListener('pointerup',()=>{pointerBusy=false;schedule();},{passive:true});
-  window.addEventListener('pointercancel',()=>{pointerBusy=false;schedule();},{passive:true});
-  new MutationObserver(records=>{if(records.some(r=>r.target!==card&&!card.contains(r.target)&&r.target!==live))schedule();}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class','open'],childList:true});
+  function pointerEnd(){if(pointerBusy){pointerBusy=false;schedule();}}
+  window.addEventListener('pointerup',pointerEnd,{passive:true});
+  window.addEventListener('pointercancel',pointerEnd,{passive:true});
+  new MutationObserver(records=>{if(records.some(r=>r.target!==card&&!card.contains(r.target)&&r.target!==live)){controlsDirty=true;schedule();}}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class','open','href'],childList:true});
+  document.addEventListener('fullscreenchange',schedule);
   document.addEventListener('focusin',e=>{if(!card.contains(e.target))lastFocus=e.target;schedule();});document.addEventListener('focusout',schedule);
   window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
   window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
   window.addEventListener('storage',e=>{if(e.key===key||e.key===null){localClosed=false;refresh();}});
-  window.addEventListener('pagehide',()=>{pageAway=true;++generation;clearTimeout(detectionTimer);clearTimeout(timer);cancelAnimationFrame(frame);card.hidden=true;});
+  window.addEventListener('pagehide',()=>{pageAway=true;++generation;clearTimeout(detectionTimer);clearTimeout(timer);cancelAnimationFrame(frame);frame=0;card.hidden=true;});
   window.addEventListener('pageshow',e=>{const returning=pageAway;pageAway=false;if(e.persisted||returning)detect();else refresh();});
   document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')detect();else refresh();});
   modes.forEach(m=>{if(m&&m.addEventListener)m.addEventListener('change',refresh);else if(m&&m.addListener)m.addListener(refresh);});
