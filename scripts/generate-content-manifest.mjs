@@ -24,6 +24,7 @@ const contentFiles = [
   ...await walkFiles('images/sudoori',p=>/\.(?:jpg|png)$/.test(p)),
   ...Object.entries(episodes).flatMap(([route, langs]) => langs.map(lang => `${lang}/${route}`)),
   "zukan-hero.css",
+  "fujikawa-frequency.css",
   "images/og-window-trip.png", "images/window-trip-card.webp", "window-trip.html", "window-trip.js", "window-trip.css", "window-trip-base.css", "window-trip-stage.js", "window-trip-data.js", "window-trip-map.js", "data/window-trip-photo-sources.json",
   ...await walkFiles("window-trip-assets", p => /\.png$/.test(p)),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => `${lang}/${route}`)),

@@ -36,6 +36,7 @@ export const BUILD_ONLY_SPOT_FIELDS = [
   "pageHeadingChunks",
   "pageChapters",
   "pageChapterOrder",
+  "pageReferences",
   "pageHook",
   "pageEyebrow",
   "pageFactsAfterArticle",

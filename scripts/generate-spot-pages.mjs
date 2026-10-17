@@ -1110,7 +1110,7 @@ function thinSpotPageHTML(spot, lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style id="spot-page-boot-style">html { background:#faf6ef; } [data-spot-page-shared-static] { visibility:hidden; }</style>
   <noscript><style>[data-spot-page-shared-static] { visibility:visible; }</style></noscript>
-  ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}
+  ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}${spot.id === "fujikawa-bridge" ? `\n  <link rel="stylesheet" href="${prefix}fujikawa-frequency.css?v=${assetVersion("fujikawa-frequency.css")}">` : ""}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">

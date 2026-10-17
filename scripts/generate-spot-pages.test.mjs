@@ -235,6 +235,62 @@ function renderedArticle(id, lang, embedded = false) {
   return dom;
 }
 
+test('Fujikawa background notes use editorial headings and a safe static comparison; device advice is English-only', () => {
+  for (const lang of ['ja', 'en']) for (const embedded of [false, true]) {
+    const dom = renderedArticle('fujikawa-bridge', lang, embedded);
+    const doc = dom.window.document;
+    const frequency = doc.querySelector('#frequency-divide');
+    const charging = doc.querySelector('#charging-in-japan');
+    assert.ok(frequency, `${lang}: frequency note is present`);
+    assert.ok(frequency.querySelector(':scope > h2'));
+    assert.equal(frequency.querySelector(':scope > .spot-reading-eyebrow').textContent, 'BEYOND THE VIEW');
+    assert.equal(Boolean(charging), lang === 'en', `${lang}: charging advice is English-only`);
+    if (charging) {
+      assert.ok(frequency.compareDocumentPosition(charging) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING);
+      assert.ok(charging.querySelector(':scope > h2'));
+      assert.equal(charging.querySelector(':scope > .spot-reading-eyebrow').textContent, 'TRAVEL NOTES');
+    }
+    assert.ok((charging || frequency).compareDocumentPosition(doc.querySelector('.spot-static-map')) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, `${lang}: notes precede the map`);
+    const viewingAdvice = [...doc.querySelectorAll('h2')].find(heading => heading.textContent === (lang === 'ja' ? '十数秒をどう使うか' : 'How to spend the dozen seconds'));
+    assert.ok(viewingAdvice, `${lang}: original viewing advice remains`);
+    assert.ok(viewingAdvice.compareDocumentPosition(frequency) & dom.window.Node.DOCUMENT_POSITION_FOLLOWING, `${lang}: background follows the scenic advice`);
+    assert.ok(doc.querySelector('[data-gallery-src$="20260530_fujikawa_bridge_2_michikusa.jpg"]'), `${lang}: original scenery photo remains`);
+    assert.match(frequency.textContent, /50\s?Hz/);
+    assert.match(frequency.textContent, /60\s?Hz/);
+    const diagram = frequency.querySelector('.spot-frequency-diagram');
+    assert.ok(diagram && diagram.getAttribute('aria-label'));
+    assert.equal(diagram.querySelectorAll('svg[role="img"] title').length, 2);
+    assert.equal(diagram.querySelectorAll('svg[role="img"] desc').length, 2);
+    assert.deepEqual([...diagram.querySelectorAll('[data-frequency-layer="regional"] .spot-frequency-values strong')].map(el => el.textContent), ['60 Hz', '50 Hz']);
+    assert.deepEqual([...diagram.querySelectorAll('[data-frequency-layer="rail"] .spot-frequency-values strong')].map(el => el.textContent), ['60 Hz', '60 Hz']);
+    assert.equal(diagram.querySelectorAll('animate,animateTransform,iframe,button').length, 0);
+    assert.match(diagram.textContent, lang === 'ja' ? /走行用電力/ : /traction power/);
+    assert.match(diagram.querySelector('figcaption').textContent, lang === 'ja' ? /厳密な地理境界ではありません/ : /not an exact geographic boundary/);
+    assert.match(diagram.querySelector('figcaption').textContent, lang === 'ja' ? /車内コンセントの仕様は示していません/ : /does not show a switch at the bridge or specify passenger sockets/);
+    if (charging) {
+      assert.match(charging.textContent, /100–240\s?V/);
+      assert.match(charging.textContent, /110–240\s?V/);
+      assert.match(charging.textContent, /50\/60\s?Hz/);
+    }
+    assert.ok(doc.querySelector('.spot-reading-guide[data-app-redundant]'), `${lang}: an editorial note does not expose duplicate ride prompts`);
+    assert.equal(doc.querySelector('.spot-reading-guide > p:not(.spot-reading-eyebrow)'), null, `${lang}: no repeated viewing highlight`);
+    const sources = doc.querySelector('.spot-reading-sources');
+    const deviceSources = ['https://www.japan.travel/en/plan/plug-and-electricity/', 'https://support.apple.com/en-gb/120548', 'https://epaper.brennenstuhl.com/Stromverteilung_2024-2025/125/'];
+    for (const destination of ['https://www.chuden.co.jp/energy/ene_about/electric/chishiki/mame_area/', 'https://jr-central.co.jp/news/release/_pdf/000042735.pdf#page=1', ...(lang === 'en' ? deviceSources : [])]) {
+      assert.ok([...sources.querySelectorAll('a')].some(a => a.href === destination), `${lang}: primary source ${destination}`);
+    }
+    if (lang === 'ja') assert.ok(deviceSources.every(url => ![...sources.querySelectorAll('a')].some(a => a.href === url)));
+    dom.window.close();
+  }
+  for (const lang of ['ja', 'en']) {
+    const dom = renderedArticle('tokyo-tower', lang, true);
+    assert.equal(dom.window.document.querySelector('.spot-frequency-diagram'), null);
+    assert.ok(dom.window.document.querySelector('#tokyo-station > h3'), `${lang}: existing landmark headings retain h3`);
+    assert.ok(dom.window.document.querySelector('.spot-reading-guide:not([data-app-redundant]) > p:not(.spot-reading-eyebrow)'), `${lang}: landmark chapters retain their boarding context`);
+    dom.window.close();
+  }
+});
+
 test('embedded articles hide duplicate ride prompts but retain facts, stamps and sources', () => {
   const css = fs.readFileSync(new URL('../app-embedded.css', import.meta.url), 'utf8');
   for (const lang of ['ja', 'en']) for (const id of ['kiyosu', 'fuji', 'pocari-fukuroi']) {
