@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-16",
+  "reviewed": "2026-10-17",
   "scope": "Japanese municipality editorial pages; no ads or affiliate links. No mascot image for Shimamoto.",
   "entries": [
     {
@@ -38,9 +38,10 @@
       "author": "れたす「新幹線の車窓から」",
       "license": "個別掲載許諾",
       "source": "https://cotetu.seesaa.net/article/520073679.html",
-      "usage": "会長取得済みの掲載許諾。作者・記事リンク・トリミング表示。OGには使用しない",
+      "usage": "会長取得済みの掲載許諾。作者・記事リンク・トリミング表示。OGには使用しない。2026-10-17に会長撮影CP-0253へ差替え。旧画像・許諾根拠は履歴として保全し、現在の表示には使用しない",
       "reviewed": "2026-10-16",
-      "sha256": "1865ab5fb89d4810b86b35144be83074a64c560f9c053079116650e84e7a8f83"
+      "sha256": "1865ab5fb89d4810b86b35144be83074a64c560f9c053079116650e84e7a8f83",
+      "active": false
     },
     {
       "id": "CP-0250",
@@ -71,6 +72,16 @@
       "usage": "シズラ（清水区、CC-BY-NC-ND2.1JP）。無改変・縦横比維持、非営利の自治体紹介",
       "reviewed": "2026-10-16",
       "sha256": "fba8599336d61fdaca827ccbf03041bd190acbd502f820fcf8d0b0f009aa7f1e"
+    },
+    {
+      "id": "CP-0253",
+      "file": "images/20260924_yamazaki-distillery_6867_michikusa.jpg",
+      "author": "michikusa",
+      "license": "撮影者本人の写真",
+      "source": "",
+      "usage": "会長撮影。島本町記事・地図プレビュー・関連記事カード・図鑑入口。CSS crop・撮影者と撮影日を表示",
+      "reviewed": "2026-10-17",
+      "sha256": "a6ae308c597db6a26efcce5f4eb8318f893ddaa0e8283f8dc724e9c78edfaf10"
     }
   ]
 }
