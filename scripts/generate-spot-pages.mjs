@@ -1,3 +1,4 @@
+import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
 import { trainSearchTablesHTML } from './shared/train-search-tables.mjs';
 import { fujimiSightlineHead, fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
@@ -1702,7 +1703,7 @@ function englishAppIndexHTML() {
     ["旅の瞬間を見逃さない", "Discover more through the train window."],
     ["本文へ移動", "Skip to content"],
   ];
-  let html = fs.readFileSync(path.join(appDir, "start.html"), "utf8")
+  let html = stripJaTrainWindow(fs.readFileSync(path.join(appDir, "start.html"), "utf8"))
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1">',
