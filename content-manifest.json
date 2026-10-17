@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "4f26e4291ccdbafc",
+  "contentVersion": "bab668db729a25cc",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2805,6 +2805,30 @@
       "url": "https://www.michikusa-travel.com/train-select.js",
       "bytes": 6542,
       "sha256": "88f5b2d71281c91e93cefc05a245c79e51fde74671cf4a327bb338338b1dc96c"
+    },
+    {
+      "path": "train-window-geometry.js",
+      "url": "https://www.michikusa-travel.com/train-window-geometry.js",
+      "bytes": 12203,
+      "sha256": "8fe1ede3f24133ab6938d1226a818f4bf53a802fbc9f29f424504d7e25d85c64"
+    },
+    {
+      "path": "train-window-preview.css",
+      "url": "https://www.michikusa-travel.com/train-window-preview.css",
+      "bytes": 15882,
+      "sha256": "dac0665babfa86ab3b16cae211f8bd24977f693ec9f90ec781c02d33987a3dd4"
+    },
+    {
+      "path": "train-window-preview.js",
+      "url": "https://www.michikusa-travel.com/train-window-preview.js",
+      "bytes": 9922,
+      "sha256": "2f2a47d4424c90333512e03753b19f66441afa74ff7229fc9489dcb8b592e767"
+    },
+    {
+      "path": "train-window-stage.js",
+      "url": "https://www.michikusa-travel.com/train-window-stage.js",
+      "bytes": 12908,
+      "sha256": "8d7bea02f6692f292be7d27db9450dc79360f1483dd00cecbf47c92ba8ee5c28"
     },
     {
       "path": "utility-locale-runtime.js",
