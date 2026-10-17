@@ -1,0 +1,23 @@
+/* Static comparison loaded only by the two Fujikawa article pages. */
+.spot-frequency-diagram { margin:26px 0; padding:18px; border:1px solid var(--line); border-radius:12px; background:#fffdf9; }
+.spot-frequency-diagram .spot-frequency-layer+ .spot-frequency-layer { margin-top:20px; }
+.spot-frequency-diagram .spot-frequency-layer h3 { margin:0 0 10px; font:700 15px/1.6 var(--font-sans); }
+.spot-frequency-layer h3>span { margin-right:6px; color:var(--accent); font-size:11px; letter-spacing:.12em; }
+.spot-frequency-band { position:relative; overflow:hidden; border-radius:7px; }
+.spot-frequency-band svg { display:block; width:100%; height:104px; }
+.spot-frequency-values { position:absolute; inset:0; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:44px; align-items:center; text-align:center; }
+.spot-frequency-values>span { font:700 12px/1.5 var(--font-sans); color:var(--ink); }
+.spot-frequency-values strong { display:block; font-size:30px; line-height:1.3; }
+.spot-frequency-values small { font-size:15px; font-weight:500; }
+.spot-frequency-west { fill:#eee1c8; }
+.spot-frequency-east { fill:#dce9eb; }
+.spot-frequency-river-line { fill:none; stroke:#6798ab; stroke-width:10; }
+.spot-frequency-mountain { fill:#bcc8c5; }
+.spot-frequency-snow { fill:#fffdf9; }
+.spot-frequency-rail-ground { fill:#e4ece7; }
+.spot-frequency-track { fill:none; stroke:#58716c; stroke-width:2; }
+.spot-frequency-sleepers { fill:none; stroke:#58716c; stroke-width:2; }
+.spot-reading-layout .spot-page-section .spot-frequency-boundary { margin:5px 0 0; text-align:center; font-size:12px; line-height:1.6; }
+.spot-reading-layout .spot-page-section .spot-frequency-all-route { margin:5px 0 0; color:var(--ink); text-align:center; font:700 12px/1.6 var(--font-sans); }
+.spot-reading-layout .spot-page-section .spot-frequency-conversion { margin:10px 0 0; font-size:13px; line-height:1.7; }
+.spot-frequency-diagram figcaption { margin-top:16px; padding-top:12px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:12px; line-height:1.7; }

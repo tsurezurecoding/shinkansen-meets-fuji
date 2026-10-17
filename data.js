@@ -36,6 +36,38 @@ const ROUTE = {
 };
 
 const REFERENCES = {
+  chudenFrequencyDivide: {
+    label: { ja: "中部電力：地域と周波数", en: "Chubu Electric Power: regions and frequencies (Japanese)" },
+    url: "https://www.chuden.co.jp/energy/ene_about/electric/chishiki/mame_area/",
+  },
+  chudenMixedFrequencies: {
+    label: { ja: "中部電力ミライズ：お届けする電気の周波数", en: "Chubu Electric Power Miraiz: mixed-frequency districts (Japanese)" },
+    url: "https://miraiz.chuden.co.jp/home/electric/contract/structure/frequency/",
+  },
+  kepcoFrequencyHistory: {
+    label: { ja: "関西電力：東日本と西日本で電気の周波数が違うのはなぜ？", en: "Kansai Electric Power: why eastern and western Japan use different frequencies (Japanese)" },
+    url: "https://www.kepco.co.jp/brand/for_kids/teach/2016_03/detail1.html",
+  },
+  jrCentralFrequencyConversion: {
+    label: { ja: "JR東海：東海道新幹線の周波数変換（PDF・1ページ）", en: "JR Central: Tokaido Shinkansen frequency conversion (Japanese PDF, p. 1)" },
+    url: "https://jr-central.co.jp/news/release/_pdf/000042735.pdf#page=1",
+  },
+  jntoElectricity: {
+    label: { ja: "日本政府観光局：日本のプラグと電気（英語）", en: "Japan National Tourism Organization: plugs and electricity" },
+    url: "https://www.japan.travel/en/plan/plug-and-electricity/",
+  },
+  jntoTravelPlanning: {
+    label: { ja: "日本政府観光局：旅行の基本情報・プラグ形状（英語）", en: "Japan National Tourism Organization: travel basics and plug shape" },
+    url: "https://www.japan.travel/en/plan/",
+  },
+  appleAdapterInput: {
+    label: { ja: "Apple：USB電源アダプタの入力仕様の例（英語）", en: "Apple: an example of USB power adapter input specifications" },
+    url: "https://support.apple.com/en-gb/120548",
+  },
+  brennenstuhlTravelAdapter: {
+    label: { ja: "Brennenstuhl：変換プラグの種類と注意（公式カタログ125ページ・英語）", en: "Brennenstuhl: plug adapter types and limitations (catalogue, p. 125)" },
+    url: "https://epaper.brennenstuhl.com/Stromverteilung_2024-2025/125/",
+  },
   fujiCityPaperTown: {
     label: { ja: "富士市: 「紙のまち」富士市", en: "Fuji City: 'the paper town' (Japanese only)" },
     url: "https://www.city.fuji.shizuoka.jp/1035050000/miryoku/p007635.html",
@@ -3772,6 +3804,46 @@ const SPOTS = [
         "Look beyond the water pipe bridge for a small Ferris wheel. Fuji Sky View stands at the Tokyo-bound Fujikawa Service Area on the Tomei Expressway and rises 60 metres above the ground. From the train, use the white bridge and nearby buildings to locate the distant wheel. These two photographs were taken from an eastbound train on 24 September 2026."
       ]
     },
+    pageChapters: [
+      {
+        id: "frequency-divide",
+        kind: "background",
+        eyebrow: "BEYOND THE VIEW",
+        diagram: "fujikawa-frequency",
+        heading: {
+          ja: "富士川と50Hz・60Hz：｜車窓から知る電気の境界",
+          en: "Fujikawa and Japan’s 50/60 Hz divide",
+        },
+        paragraphs: {
+          ja: [
+            "日本の家庭用電力は、富士川と新潟県の糸魚川あたりを境に、東が50Hz、西が60Hz。境界付近には混合地区もあり、一本の線では区切れません。",
+            "明治時代に東京がドイツ製の50Hz発電機、大阪がアメリカ製の60Hz発電機を導入した歴史が背景にあります。",
+            "東海道新幹線の走行用電力は全線60Hzです。富士川より東では、電力会社から受けた50Hzの電気を60Hzへ変換しています。車内コンセントの仕様や、橋での切替を示す説明ではありません。",
+          ],
+          en: [
+            "The river below is also a landmark in Japan’s electricity story. Eastern Japan generally uses 50 Hz power and western Japan 60 Hz, with the divide running roughly between Fujikawa and Itoigawa in Niigata. There are local exceptions near the boundary.",
+            "The split traces back to German-built 50 Hz generators introduced in Tokyo and American-built 60 Hz generators in Osaka.",
+            "The Tokaido Shinkansen itself uses 60 Hz traction power throughout its route. East of Fujikawa, frequency converters change the utility supply from 50 Hz to 60 Hz. This describes traction power; it does not specify passenger sockets or a switch at the bridge.",
+          ],
+        },
+      },
+      {
+        id: "charging-in-japan",
+        kind: "background",
+        languages: ["en"],
+        eyebrow: "TRAVEL NOTES",
+        heading: {
+          en: "Will my devices work in Japan?",
+        },
+        paragraphs: {
+          en: [
+            "Japan’s standard household supply is 100 V, and two-flat-pin Type A plugs are common. Check your charger’s INPUT label. “100–240 V, 50/60 Hz” covers Japan’s voltage and both regional frequencies; still follow the manufacturer’s instructions and use a suitable plug connection.",
+            "A voltage range alone does not confirm frequency compatibility. A label showing only 110–240 V or 120 V does not include 100 V. A plug adapter changes the connection, not the voltage or frequency.",
+            "Check hair dryers, straighteners and other heating or motor-driven appliances individually. If compatibility is unclear, ask the manufacturer before use, or ask your accommodation about available appliances.",
+          ],
+        },
+      },
+    ],
     guideHighlight: {
       ja: "新富士を出たらE席側で構えてください。橋に乗った瞬間に河原がひらけ、川上に白いアーチが並びます。その向こうが富士山です。渡り終えるとすぐトンネルなので、探し始めるのでは遅すぎます。",
       en: "Be at the Seat E window as you leave Shin-Fuji. The moment the train reaches the bridge the riverbed opens up and the white arches line up upstream, with Mt. Fuji beyond them. A tunnel follows straight after the crossing, so starting to look once you are on the bridge is already too late.",
@@ -3867,7 +3939,8 @@ const SPOTS = [
       }
     ],
     relatedSpotIds: ["fuji", "fuji-paper-mills", "shimizu-port-chikyu"],
-    references: [{ label: { ja: "Fuji Sky View：公式案内", en: "Fuji Sky View: official information (Japanese)" }, url: "https://www.senyo.co.jp/company/archivements/" },REFERENCES.fujikawaBridgeSuruga, REFERENCES.fujikawaSuikankyoDoboku],
+    references: [{ label: { ja: "Fuji Sky View：公式案内", en: "Fuji Sky View: official information (Japanese)" }, url: "https://www.senyo.co.jp/company/archivements/" }, REFERENCES.fujikawaBridgeSuruga, REFERENCES.fujikawaSuikankyoDoboku],
+    pageReferences: [REFERENCES.chudenFrequencyDivide, REFERENCES.chudenMixedFrequencies, REFERENCES.kepcoFrequencyHistory, REFERENCES.jrCentralFrequencyConversion, ...[REFERENCES.jntoElectricity, REFERENCES.jntoTravelPlanning, REFERENCES.appleAdapterInput, REFERENCES.brennenstuhlTravelAdapter].map(reference => ({ ...reference, languages: ["en"] }))],
     map: { lat: 35.1452, lng: 138.6303, ja: "富士川水管橋", en: "Fujikawa water pipe bridge" },
     // GSI bridge centre; seven fast-train GPX station-crossing inverses: median 45.747 min.
     // A common centre gives both directions about 20 s before bridge entry with the native 30 s short cue.

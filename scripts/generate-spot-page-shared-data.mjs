@@ -268,7 +268,7 @@ function projectBodyLinks(spot, lang) {
 }
 
 function projectReferences(spot, lang) {
-  return (spot.references || []).filter((ref) => !ref.languages || ref.languages.includes(lang)).map((ref) => ({ label: localized(ref?.label, lang), href: referenceUrl(ref, lang) })).filter((item) => item.label && item.href);
+  return [...(spot.references || []), ...(spot.pageReferences || [])].filter((ref) => !ref.languages || ref.languages.includes(lang)).map((ref) => ({ label: localized(ref?.label, lang), href: referenceUrl(ref, lang) })).filter((item) => item.label && item.href);
 }
 
 // These article additions are language-specific; never inherit a Japanese/English asset.
@@ -311,12 +311,18 @@ function projectExplainer(spot, lang) {
 
 function projectChapters(spot, lang) {
   const ids = new Set();
-  const chapters = spot.pageChapters.map((chapter) => {
+  const chapters = spot.pageChapters.filter((chapter) => {
+    if (chapter.languages && (!Array.isArray(chapter.languages) || !chapter.languages.length || new Set(chapter.languages).size !== chapter.languages.length || chapter.languages.some(value => !["ja", "en"].includes(value)))) throw new Error(`Invalid chapter languages for ${spot.id}/${chapter.id}`);
+    return !chapter.languages || chapter.languages.includes(lang);
+  }).map((chapter) => {
     if (!/^[a-z][a-z0-9-]+$/.test(chapter.id) || ids.has(chapter.id)) throw new Error(`Invalid article chapter for ${spot.id}`);
     ids.add(chapter.id);
     const heading = localized(chapter.heading, lang);
     const paragraphs = chapter.paragraphs?.[lang];
     if (!heading || !Array.isArray(paragraphs) || !paragraphs.length) throw new Error(`Missing chapter copy for ${spot.id}/${lang}`);
+    if (chapter.kind && chapter.kind !== "background") throw new Error(`Invalid chapter kind for ${spot.id}/${chapter.id}`);
+    if (chapter.eyebrow && (chapter.kind !== "background" || !/^[A-Z][A-Z ]{1,40}$/.test(chapter.eyebrow))) throw new Error(`Invalid chapter eyebrow for ${spot.id}/${chapter.id}`);
+    if (chapter.diagram && (spot.id !== "fujikawa-bridge" || chapter.id !== "frequency-divide" || chapter.diagram !== "fujikawa-frequency")) throw new Error(`Invalid chapter diagram for ${spot.id}/${chapter.id}`);
     const photos = (chapter.photos || []).map((photo, index) => {
       if (!/^images\/[a-zA-Z0-9_-]+\.(jpg|png|webp)$/.test(photo.src) || !fs.existsSync(path.join(appDir, photo.src))) throw new Error(`Missing chapter photo: ${photo.src}`);
       if (!localized(photo.alt, lang) || !creditText(photo.credit, lang)) throw new Error(`Missing chapter photo metadata: ${photo.src}/${lang}`);
@@ -330,7 +336,7 @@ function projectChapters(spot, lang) {
     const storyLink = chapter.storyLink?.[lang];
     if (storyLink && link) throw new Error('Conflicting chapter links for ' + spot.id);
     const projectedLink = storyLink ? projectStoryLink({ id: spot.id, pageStoryLink: chapter.storyLink }, lang) : link ? { route: (lang === "en" ? "en/" : "") + link.route, label: localized(link.label, lang) } : null;
-    return { id: chapter.id, heading, paragraphs, photos, ...(projectedLink ? { link: projectedLink } : {}) };
+    return { id: chapter.id, ...(chapter.kind ? { kind: chapter.kind } : {}), ...(chapter.eyebrow ? { eyebrow: chapter.eyebrow } : {}), ...(chapter.diagram ? { diagram: chapter.diagram } : {}), heading, paragraphs, photos, ...(projectedLink ? { link: projectedLink } : {}) };
   });
   const order = spot.pageChapterOrder?.[lang];
   if (!order) return chapters;

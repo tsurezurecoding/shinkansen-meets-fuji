@@ -662,12 +662,50 @@
     return "<figure class=\"spot-page-explainer-figure\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, figure.thumb)) + "\" alt=\"" + escapeHTML(figure.alt || "") + "\">" + (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
   }
 
+  function pageFrequencyDiagramHTML(lang) {
+    var copy = lang === "ja" ? {
+      label: "地域の電力と新幹線の走行用電力を比べる模式図",
+      regional: "地域の電力", railway: "東海道新幹線の走行用電力", west: "西側", east: "東側", river: "富士川付近",
+      regionalTitle: "地域の電力は概ね西60 Hz、東50 Hz",
+      regionalAlt: "富士川付近を目安に、西側60 Hz、東側50 Hzを左右に示す模式図。厳密な地理境界ではなく、混合地区などの例外があります。",
+      railTitle: "東海道新幹線の走行用電力は全線60 Hz",
+      railAlt: "西側も東側も60 Hzでつながる走行用電力の模式図。富士川より東の50 Hzの受電電力を60 Hzへ変換します。川の位置に変換装置があるという図ではありません。",
+      allRoute: "全線60 Hz", conversion: "富士川以東：受電50 Hz → 変換 → 走行用60 Hz",
+      note: "模式図。地域の境界には例外があり、厳密な地理境界ではありません。新幹線は走行用電力を示し、橋での切替や車内コンセントの仕様は示していません。"
+    } : {
+      label: "Schematic comparison of regional electricity and Shinkansen traction power",
+      regional: "Regional electricity", railway: "Tokaido Shinkansen · traction power", west: "WEST", east: "EAST", river: "Fuji River area",
+      regionalTitle: "Regional electricity: broadly west 60 Hz, east 50 Hz",
+      regionalAlt: "A schematic divide near the Fuji River area: 60 Hz to the west and 50 Hz to the east. This is not an exact geographic boundary; local exceptions and mixed areas exist.",
+      railTitle: "Tokaido Shinkansen traction power: 60 Hz along the entire route",
+      railAlt: "A continuous 60 Hz traction supply on both sides. East of Fujikawa, received 50 Hz utility power is converted to 60 Hz. This does not locate a converter at the river.",
+      allRoute: "60 Hz along the entire route", conversion: "East of Fujikawa: received 50 Hz → frequency conversion → traction 60 Hz",
+      note: "Schematic, with local exceptions, not an exact geographic boundary. The railway layer shows traction power; it does not show a switch at the bridge or specify passenger sockets."
+    };
+    var river = '<path class="spot-frequency-river-line" d="M320-8C295 14 339 36 316 57S337 88 318 113"/>';
+    var mountain = '<path class="spot-frequency-mountain" d="M269 39L320 5 371 39Z"/><path class="spot-frequency-snow" d="M303 17L320 5 337 17 327 15 320 20 314 15Z"/>';
+    function svg(kind, title, description, shapes) {
+      return '<svg viewBox="0 0 640 104" preserveAspectRatio="xMidYMid slice" role="img" aria-labelledby="frequency-' + kind + '-title" aria-describedby="frequency-' + kind + '-desc"><title id="frequency-' + kind + '-title">' + escapeHTML(title) + '</title><desc id="frequency-' + kind + '-desc">' + escapeHTML(description) + '</desc>' + shapes + '</svg>';
+    }
+    function values(east) {
+      return '<div class="spot-frequency-values"><span>' + escapeHTML(copy.west) + '<strong>60 <small>Hz</small></strong></span><span>' + escapeHTML(copy.east) + '<strong>' + east + ' <small>Hz</small></strong></span></div>';
+    }
+    var conversion = lang === "ja" ? copy.conversion.split(' → ').map(function (text, index) { return '<span class="copy-chunk">' + (index ? '→ ' : '') + escapeHTML(text) + '</span>'; }).join(' ') : escapeHTML(copy.conversion);
+    return '<figure class="spot-frequency-diagram" aria-label="' + escapeHTML(copy.label) + '">' +
+      '<div class="spot-frequency-layer" data-frequency-layer="regional"><h3><span aria-hidden="true">01 /</span> ' + escapeHTML(copy.regional) + '</h3><div class="spot-frequency-band">' +
+      svg('regional', copy.regionalTitle, copy.regionalAlt, '<path class="spot-frequency-west" d="M0 0H320V104H0Z"/><path class="spot-frequency-east" d="M320 0H640V104H320Z"/>' + mountain + river) + values('50') + '</div><p class="spot-frequency-boundary">' + escapeHTML(copy.river) + '</p></div>' +
+      '<div class="spot-frequency-layer is-rail" data-frequency-layer="rail"><h3><span aria-hidden="true">02 /</span> ' + escapeHTML(copy.railway) + '</h3><div class="spot-frequency-band">' +
+      svg('rail', copy.railTitle, copy.railAlt, '<path class="spot-frequency-rail-ground" d="M0 0H640V104H0Z"/><path class="spot-frequency-track" d="M0 82H640M0 92H640"/><path class="spot-frequency-sleepers" d="M30 78V96M90 78V96M150 78V96M210 78V96M270 78V96M330 78V96M390 78V96M450 78V96M510 78V96M570 78V96M630 78V96"/>') + values('60') + '</div><p class="spot-frequency-all-route">' + escapeHTML(copy.allRoute) + '</p><p class="spot-frequency-conversion">' + conversion + '</p></div>' +
+      '<figcaption>' + escapeHTML(copy.note) + '</figcaption></figure>';
+  }
+
   function pageChaptersHTML(page, rootPath, lang) {
     if (!page.chapters) return "";
     return page.chapters.map(function (chapter) {
       var heading = lang === "ja" ? chapter.heading.split('｜').map(function (text) { return '<span class="copy-chunk">' + escapeHTML(text) + '</span>'; }).join(' ') : escapeHTML(chapter.heading);
-      return '<section class="spot-page-section" id="' + escapeHTML(chapter.id) + '"><h3>' + heading + '</h3>' +
-        chapter.paragraphs.map(function (text) { return '<p>' + escapeHTML(text) + '</p>'; }).join('') +
+      var title = chapter.kind === "background" ? readingEyebrow(page, chapter.eyebrow || "BACKGROUND") + '<h2>' + heading + '</h2>' : '<h3>' + heading + '</h3>';
+      return '<section class="spot-page-section" id="' + escapeHTML(chapter.id) + '">' + title +
+        chapter.paragraphs.map(function (text, index) { return '<p>' + escapeHTML(text) + '</p>' + (index === 0 && chapter.diagram === "fujikawa-frequency" ? pageFrequencyDiagramHTML(lang) : ''); }).join('') +
         chapter.photos.map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join('') +
         (chapter.link ? '<p><a href="' + escapeHTML(href(rootPath, chapter.link.route)) + '">' + escapeHTML(chapter.link.label) + '</a></p>' : '') + '</section>';
     }).join('');
@@ -771,8 +809,10 @@
 
   function readingGuideHTML(page, rootPath, lang) {
     var compact = page.readingLayout.compactGuide;
+    // Background notes do not turn a single-view article into a multi-view guide.
+    var landmarkChapters = page.chapters && page.chapters.some(function (chapter) { return chapter.kind !== "background"; });
     if (lang === "en") {
-      return '<section class="spot-page-section spot-reading-guide"' + (page.chapters ? '' : ' data-app-redundant') + '>' + readingEyebrow(page, 'ON BOARD') + '<h2>How to spot ' + escapeHTML(page.name) + '</h2>' + (page.chapters ? '<p>' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="spot-reading-actions" data-app-redundant>' +
+      return '<section class="spot-page-section spot-reading-guide"' + (landmarkChapters ? '' : ' data-app-redundant') + '>' + readingEyebrow(page, 'ON BOARD') + '<h2>How to spot ' + escapeHTML(page.name) + '</h2>' + (landmarkChapters ? '<p>' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="spot-reading-actions" data-app-redundant>' +
         '<article class="spot-reading-action"><h3>See the next window view</h3><p>Use GPS to check your location, the next view and its seat side. No train selection is needed.</p>' +
         '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="Enlarge the GPS guide preview"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="GPS guide preview showing your location and the next window view"></button><figcaption>Preview screen, not your current location.<br>Map: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
         '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'en/live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">Open the GPS guide →</a><p class="spot-reading-note">Uses your location. Audio guidance is also available. You can use the map alone.</p></article>' +
@@ -780,7 +820,7 @@
         '<div class="spot-reading-train-preview" role="img" aria-label="Example display after choosing a train. Times are illustrative, not live operations"><div class="spot-reading-train-choice"><small>Choose a train</small><strong>Tokyo → Shin-Osaka</strong><span>Nozomi · Tokyo departs 09:00</span></div><span class="spot-reading-preview-arrow" aria-hidden="true">↓</span><div class="spot-reading-timeline"><div><time>09:31</time><span>Odawara Castle</span><b>Seat A</b></div><div><time>09:42</time><span>Mt. Fuji</span><b>Seat E</b></div><div><time>10:13</time><span>Lake Hamana</span><b>Seats A/E</b></div></div><p>Example display · times are illustrative</p></div>' +
         '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'en/start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">Find your viewing times →</a><p class="spot-reading-note">Location access is not needed. Times are estimates. Delays can change them.</p></article></div></section>';
     }
-    return '<section class="spot-page-section spot-reading-guide"' + (page.chapters ? '' : ' data-app-redundant') + '>' + readingEyebrow(page, 'ON BOARD') + '<h2>' + (compact ? '<span class="copy-chunk">' + escapeHTML(page.name) + 'を</span><span class="copy-chunk">見逃さないために</span>' : escapeHTML(page.name) + 'を見逃さないために') + '</h2>' + (page.chapters ? '<p>' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="spot-reading-actions" data-app-redundant>' +
+    return '<section class="spot-page-section spot-reading-guide"' + (landmarkChapters ? '' : ' data-app-redundant') + '>' + readingEyebrow(page, 'ON BOARD') + '<h2>' + (compact ? '<span class="copy-chunk">' + escapeHTML(page.name) + 'を</span><span class="copy-chunk">見逃さないために</span>' : escapeHTML(page.name) + 'を見逃さないために') + '</h2>' + (landmarkChapters ? '<p>' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="spot-reading-actions" data-app-redundant>' +
       '<article class="spot-reading-action"><h3><span class="copy-chunk">現在地から、</span><span class="copy-chunk">次の車窓を見る</span></h3><p>' + (compact ? '<span class="copy-chunk">GPSで現在地と、</span><span class="copy-chunk">次の景色・席側を確認。</span><span class="copy-chunk">列車選択は不要です。</span>' : '<span class="copy-chunk">GPS地図で、いまいる場所と</span><span class="copy-chunk">次の見どころ・席側を確認できます。</span><span class="copy-chunk">列車を選ぶ必要はありません。</span>') + '</p>' +
       '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="ガイドの画面例を拡大"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="現在地と次の見どころを表示するGPS地図の画面例"></button><figcaption>既存ガイドの画面例（乗車プレビュー）。現在の位置ではありません。<br>地図：© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
       '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">GPS地図でこの先を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報を使います。</span>' + (compact ? '<span class="copy-chunk">音声案内も使えます。</span><span class="copy-chunk">地図だけでも使えます。</span>' : '<span class="copy-chunk">音声でも案内でき、地図だけでも使えます。</span>') + '</p></article>' +
