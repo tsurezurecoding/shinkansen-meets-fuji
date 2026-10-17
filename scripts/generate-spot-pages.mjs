@@ -793,8 +793,8 @@ function spotAttractionJsonLd(spot, lang, url, data, desc, otherLang) {
   const properties = [
     { name: L.side, value: sideLabel(spot, lang) },
     { name: L.minutes, value: spot.minutesFromTokyo },
-    { name: L.duration, value: spot.durationSec },
   ];
+  if (typeof spot.durationSec === 'number' && Number.isFinite(spot.durationSec) && spot.durationSec > 0) properties.push({ name: L.duration, value: spot.durationSec });
   if (spot.spotting) properties.push({ name: L.spotting, value: L.levels[spot.spotting] });
   // 曇天可否は true のときだけ載せる。未記載を「見えない」と読ませない。
   if (spot.visibleWhenCloudy) properties.push({ name: L.cloudy, value: L.cloudyYes });

@@ -12,6 +12,25 @@ test('spot counts ignore image dimensions while still checking nearby prose', ()
   assert.equal(findUnregisteredCountClaims('<img height="630" alt="景色"><p>999 amazing views</p>').length, 1);
 });
 
+test('unmeasured viewing windows stay unknown in both page facts and structured data', () => {
+  const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
+  assert.equal(spots.find(spot => spot.id === 'yamazaki-distillery').durationSec, null);
+  for (const lang of ['ja', 'en']) {
+    const context = {}; context.window = context;
+    vm.runInNewContext(fs.readFileSync(new URL('../data/spot-pages/yamazaki-distillery.' + lang + '.js', import.meta.url), 'utf8'), context);
+    assert.equal(context.MADO_SPOT_PAGE_DATA.readingLayout.visibility.value, lang === 'ja' ? '未計測' : 'Not measured');
+    const durationName = lang === 'ja' ? '見えている時間の目安（秒）' : 'Typical time in view (seconds)';
+    const prefix = lang === 'en' ? 'en/' : '';
+    const properties = id => {
+      const doc = new JSDOM(fs.readFileSync(new URL('../' + prefix + 'spots/' + id + '.html', import.meta.url), 'utf8')).window.document;
+      const nodes = [...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(node => { const value = JSON.parse(node.textContent); return value['@graph'] || [value]; });
+      return nodes.find(node => node['@type'] === 'TouristAttraction').additionalProperty;
+    };
+    assert.equal(properties('yamazaki-distillery').some(property => property.name === durationName), false);
+    assert.equal(properties('fuji').find(property => property.name === durationName).value, spots.find(spot => spot.id === 'fuji').durationSec);
+  }
+});
+
 test('editorial metadata: curated candidates and generated spot contracts pass the site gate', () => {
   const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');

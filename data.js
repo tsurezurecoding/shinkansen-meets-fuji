@@ -8806,7 +8806,7 @@ const SPOTS = [
     "side": "E",
     "category": "notable",
     "confidence": "verified",
-    "durationSec": 5,
+    "durationSec": null,
     "scene": "hills",
     "visibleWhenCloudy": true,
     "pageFacts": {
