@@ -50,7 +50,7 @@ test('expanded pages resolve deep assets, contexts, languages and retained exclu
   assert.ok(html.includes('"language":"'+cfg.language+'"'));
   assert.ok(html.includes('"pageContext":"'+cfg.pageContext+'"'));
  }
- for(const file of ['privacy.html','contact.html','references.html','early-access.html','v0/index.html','v1/spots/fuji.html'])assert.equal(withPageAndroidAppInvite(source,file),source);
+ for(const file of ['privacy.html','contact.html','references.html','early-access.html','android-app.html','v0/index.html','v1/spots/fuji.html'])assert.equal(withPageAndroidAppInvite(source,file),source);
  const general=withPageAndroidAppInvite(source,'en/spots/himeji-castle.html');assert.ok(general.includes('Audio guidance covers Tokyo–Shin-Osaka.'));
  const plain=source.replace('if (window.MADO_EMBEDDED_WEB) return;','');assert.ok(withPageAndroidAppInvite(plain,'zukan.html').includes('ANDROID_APP_INVITE_RESET_START'));
 });

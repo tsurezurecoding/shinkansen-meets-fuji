@@ -26,6 +26,8 @@ const warningKinds = new Set([
   'meta-missing-og-image',
 ]);
 const allowlist = new Map([
+  ['canonical-mismatch:early-access.html', 'Legacy app-guide URL permanently redirects to android-app.html.'],
+  ['canonical-mismatch:en/early-access.html', 'Legacy English app-guide URL permanently redirects to en/android-app.html.'],
   ['canonical-mismatch:spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
   ['canonical-mismatch:en/spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
   ['canonical-mismatch:spots/ibuki-seat-a.html', 'The Seat A view is a chapter of the Mt. Ibuki page; both URLs consolidate there.'],
