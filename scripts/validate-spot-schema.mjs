@@ -117,8 +117,8 @@ for (const spot of SPOTS) {
   if (typeof spot.minutesFromTokyo !== "number" || spot.minutesFromTokyo < 0 || spot.minutesFromTokyo > 200) {
     problems.push(`${id}: minutesFromTokyo out of range (${spot.minutesFromTokyo})`);
   }
-  if (typeof spot.durationSec !== "number" || spot.durationSec <= 0) {
-    problems.push(`${id}: durationSec must be a positive number (${spot.durationSec})`);
+  if (spot.durationSec !== null && (typeof spot.durationSec !== "number" || !Number.isFinite(spot.durationSec) || spot.durationSec <= 0)) {
+    problems.push(`${id}: durationSec must be a positive finite number or null (unmeasured), got ${spot.durationSec}`);
   }
   // 曇天でも見えるスポットにだけ true を書く。false を明示的に置かない
   // （「見えない」と「まだ判断していない」を取り違えるため）。

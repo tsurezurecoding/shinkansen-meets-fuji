@@ -246,9 +246,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-10-07",
-    "modified": "2026-10-11",
+    "modified": "2026-10-17",
     "publishedEvidence": "2026-10-07_beer-feature-release.md / 3a65a824 / Pages37489412766: first English publication",
-    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content",
+    "modifiedEvidence": "2026-10-17_yamazaki-implementation.md: Yamazaki standard spot cross-links",
     "image": "images/beer/20261004-beer-hero-michikusa.webp",
     "imageRights": "own",
     "imageEvidence": "data/beer-photo-sources.json beer-hero, ownerProvided true, CP-0211",
@@ -802,10 +802,22 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-10-16",
-    "modified": "2026-10-16",
+    "modified": "2026-10-17",
     "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
-    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "modifiedEvidence": "2026-10-17_yamazaki-implementation.md: Yamazaki standard spot cross-links",
     "representativeImage": false,
     "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
+  },
+  "spots/yamazaki-distillery.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-17",
+    "modifiedEvidence": "2026-10-17_yamazaki-implementation.md: owner-approved standard spot, confirmed ride photographs and official whisky history"
+  },
+  "en/spots/yamazaki-distillery.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-17",
+    "modifiedEvidence": "2026-10-17_yamazaki-implementation.md: owner-approved standard spot, confirmed ride photographs and official whisky history"
   }
 }

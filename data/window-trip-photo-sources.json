@@ -1,9 +1,9 @@
 {
   "reviewed": "2026-10-12",
   "counts": {
-    "scenery": 54,
+    "scenery": 55,
     "boards": 23,
-    "dayScenery": 53,
+    "dayScenery": 54,
     "nightScenery": 15
   },
   "coverage": [
@@ -433,6 +433,14 @@
       "state": "included",
       "representativeIds": [
         "rakusai-egg-tanks"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "yamazaki-distillery",
+      "state": "included",
+      "representativeIds": [
+        "yamazaki-distillery"
       ],
       "reason": ""
     },
@@ -1264,6 +1272,19 @@
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
     },
     {
+      "stopId": "yamazaki-distillery",
+      "kind": "scenery",
+      "src": "images/20260924_yamazaki-distillery_6867_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-09-24",
+      "note": "",
+      "alt": "サントリー山崎蒸溜所の車窓",
+      "light": "day",
+      "sha256": "a6ae308c597db6a26efcce5f4eb8318f893ddaa0e8283f8dc724e9c78edfaf10",
+      "bytes": 93227,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
       "stopId": "hirakata-park-wheel",
       "kind": "scenery",
       "src": "images/20261010_hirakata-park-wheel_98872_michikusa.jpg",
@@ -1656,7 +1677,7 @@
   ],
   "mapCredit": "地理院タイル（淡色地図を加工）",
   "sourceHashes": {
-    "data.js": "45cdd1f6fc37a6a03f6d9c838b0d73a1bfeaea25714ec512b40abbe698ca2d4c",
+    "data.js": "1ed2158efb4ef235532917bdefafc722f09821bfeff5cf70e6ac83afe13262e8",
     "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
   }
 }

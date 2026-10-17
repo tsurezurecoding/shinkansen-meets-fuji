@@ -160,12 +160,16 @@ function sceneGuideText(spot, lang, name) {
   return "This view turns a short stretch between stations into something to watch. Knowing the seat side and timing changes how much of the journey you notice.";
 }
 
+function durationSeconds(spot) {
+  return typeof spot.durationSec === "number" && Number.isFinite(spot.durationSec) && spot.durationSec > 0 ? spot.durationSec : NaN;
+}
+
 function durationGuideText(spot, lang) {
-  const seconds = Number(spot.durationSec);
+  const seconds = durationSeconds(spot);
   if (!Number.isFinite(seconds)) {
     return lang === "ja"
-      ? "見える時間は列車や天候で変わります。近づいてから探すより、少し前から窓の外を追う方が見つけやすくなります。"
-      : "Visibility changes by train and weather. Start watching a little early instead of waiting until the view is already beside you.";
+      ? "総可視時間は未計測です。列車や天候、遮蔽物によって変わるため、少し前から窓の外を追うと見つけやすくなります。"
+      : "The full viewing window has not been measured. Start watching early; train speed, weather and obstructions can affect the view.";
   }
   if (lang === "ja") {
     if (seconds <= 2) return "はっきり見えるのは1〜2秒ほど。音声ガイドの案内が出たら、先に窓へ目を移しておくのが現実的です。";
@@ -284,7 +288,7 @@ function projectStoryFigure(spot, lang) {
 
 function projectStoryLink(spot, lang) {
   const link = spot.pageStoryLink[lang];
-  if (!/^en\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(link.route) || !link.label || !fs.existsSync(path.join(appDir, link.route.split("#")[0]))) throw new Error(`Invalid story link: ${spot.id}/${lang}`);
+  if (!(lang === "en" ? /^en\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/ : /^sudoori\/stories\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/).test(link.route) || !link.label || !fs.existsSync(path.join(appDir, link.route.split("#")[0]))) throw new Error(`Invalid story link: ${spot.id}/${lang}`);
   return link;
 }
 
@@ -567,9 +571,9 @@ const SPOT_VIEWING_NOTES = {
 
 function readingLayoutFor(spot, lang = "ja") {
   if (lang === "en") return englishReadingLayout(spot);
-  const seconds = Number(spot.durationSec);
+  const seconds = durationSeconds(spot);
   const duration = !Number.isFinite(seconds)
-    ? "条件によって変わります"
+    ? "未計測"
     : seconds <= 2 ? "1〜2秒ほど"
       : seconds <= 8 ? "数秒ほど"
         : seconds <= 12 ? "数秒〜10秒ほど"
@@ -593,8 +597,8 @@ function readingLayoutFor(spot, lang = "ja") {
 
 function englishReadingLayout(spot) {
   const layout = readingLayoutFor(spot, "ja");
-  const seconds = Number(spot.durationSec);
-  let value = !Number.isFinite(seconds) ? "Varies with conditions"
+  const seconds = durationSeconds(spot);
+  let value = !Number.isFinite(seconds) ? "Not measured"
     : seconds <= 2 ? "About 1–2 seconds"
       : seconds <= 8 ? "A few seconds"
         : seconds <= 12 ? "A few seconds to about 10 seconds"

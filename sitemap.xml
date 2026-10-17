@@ -92,7 +92,7 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/en/beer-on-shinkansen.html</loc>
-    <lastmod>2026-10-11</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -392,7 +392,7 @@
   </url>
   <url>
     <loc>https://www.michikusa-travel.com/sudoori/stories/shimamoto.html</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1005,6 +1005,18 @@
   <url>
     <loc>https://www.michikusa-travel.com/en/spots/rakusai-egg-tanks.html</loc>
     <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/spots/yamazaki-distillery.html</loc>
+    <lastmod>2026-10-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/spots/yamazaki-distillery.html</loc>
+    <lastmod>2026-10-17</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
