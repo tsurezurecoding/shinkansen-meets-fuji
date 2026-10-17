@@ -4,7 +4,7 @@ import {inviteCopy} from './android-app-invite-copy.mjs';
 const runtime=fs.readFileSync(new URL('./android-app-invite-runtime.js',import.meta.url),'utf8');
 const reset=fs.readFileSync(new URL('./android-app-invite-reset.js',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('./android-app-invite.css',import.meta.url),'utf8');
-export function inviteRuntime(config){return runtime.replace('__INVITE_CONFIG__',JSON.stringify({dismissDays:DISMISS_DAYS,unknownPolicy:UNKNOWN_STATUS_POLICY,...config}));}
+export function inviteRuntime(config){return runtime.replace('__INVITE_CONFIG__',JSON.stringify({dismissDays:DISMISS_DAYS,unknownPolicy:UNKNOWN_STATUS_POLICY,copy:inviteCopy(config.language||'ja',config.general),...config}));}
 export function withAndroidAppInvite(html,language,pageContext,options={}){
  const resetBlock='<!-- ANDROID_APP_INVITE_RESET_START -->\n<script>'+reset+'</script>\n<!-- ANDROID_APP_INVITE_RESET_END -->\n';
  const resetPattern=/<!-- ANDROID_APP_INVITE_RESET_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_RESET_END -->\n/;

@@ -321,7 +321,7 @@
 <script>/* Inlined by android-app-invite.mjs. No preview controls or install-click persistence. */
 (function () {
   'use strict';
-  const config = {"dismissDays":14,"unknownPolicy":"show-eligible","language":"en","pageContext":"spot","assetPrefix":"../../","copy":{"label":"Android app","title":"Screen off. Listen on.","body":"Ride audio continues with the screen off.","free":"Free, no sign-up.","play":"View on Google Play","playLabel":"View on Google Play (opens a new tab)","close":"Dismiss invitation for 14 days","closed":"Invitation hidden for 14 days.","failed":"Dismissed here; saving failed."}};
+  const config = {"dismissDays":14,"unknownPolicy":"show-eligible","copy":{"label":"Android app","title":"Screen off. Listen on.","body":"Ride audio continues with the screen off.","free":"Free, no sign-up.","play":"View on Google Play","playLabel":"View on Google Play (opens a new tab)","close":"Dismiss invitation for 14 days","closed":"Invitation hidden for 14 days.","failed":"Dismissed here; saving failed."},"language":"en","pageContext":"spot","assetPrefix":"../../"};
   const key = 'mado-android-app-invite-v2';
   const dismissMs = config.dismissDays * 86400000;
   const pkg = 'com.michikusatravel.shinkansenwindow';
@@ -356,7 +356,7 @@
   let status = 'checking', generation = 0, localClosed = false, pageAway = false, detectionTimer, timer, frame, lastFocus, ratio = 0, viewSent = false;
   const card = document.createElement('aside'); card.id='android-app-invite';card.hidden=true;card.setAttribute('aria-labelledby','android-app-invite-title');
   const asset = path => new URL(config.assetPrefix+path,document.baseURI).href;
-  const c = config.copy || (en ? {label:'Android app',title:'Screen off. Listen on.',body:'Ride audio continues with the screen off.',free:'Free, no sign-up.',play:'View on Google Play',close:'Dismiss invitation for '+config.dismissDays+' days',closed:'Invitation hidden for '+config.dismissDays+' days.',failed:'Dismissed here; saving failed.'} : {label:'Androidアプリのご案内',title:'画面を消して、車窓へ',body:'画面を消しても乗車中の音声案内。',free:'無料・登録不要。',play:'Google Playで見る',close:'案内を閉じて'+config.dismissDays+'日間表示しない',closed:'案内を閉じました。'+config.dismissDays+'日間表示しません。',failed:'案内を閉じました。保存できませんでした。'});
+  const c = config.copy;
   const escape = value => String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
   card.innerHTML='<button id="android-app-invite-close" type="button" aria-label="'+escape(c.close)+'" title="'+escape(c.close)+'"><span aria-hidden="true">×</span></button><div class="context-heading"><img class="context-app-icon" width="32" height="32" alt=""><div><span class="context-label">'+escape(c.label)+'</span><h2 id="android-app-invite-title">'+escape(c.title)+'</h2></div></div><p>'+escape(c.body)+' <span>'+escape(c.free)+'</span></p><a class="context-play" aria-label="'+escape(c.playLabel||c.play)+' ↗" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_floating&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer"><img class="context-play-badge" width="646" height="250" alt=""><span class="context-play-fallback">'+escape(c.play)+' ↗</span></a>';
   document.body.append(card);
