@@ -354,7 +354,10 @@ async function runThinValidator() {
       // only its exact generated block; the rest of the thin page stays checked.
       const supplement = fujimiSightlineHTML(spot, lang, lang === 'ja' ? '../' : '../../');
       if (supplement && !body.includes(supplement)) fail(`${relativeFile} sightline supplement is missing or stale`);
-      const thinBody = supplement ? body.replace(supplement, '') : body;
+      // The exact generated invitation is a separate shared component. The
+      // on-disk/in-memory equality check above still rejects altered blocks.
+      const inviteBlock = generatedHTML.match(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/)?.[0] || '';
+      const thinBody = (supplement ? body.replace(supplement, '') : body).replace(inviteBlock, '');
       if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(thinBody)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
       // ?v= は sync-asset-versions.mjs が内容ハッシュから振る。値そのものではなく
       // 「どのファイルをどの順で読むか」だけを固定する。

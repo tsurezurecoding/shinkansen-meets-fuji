@@ -2,7 +2,7 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {JSDOM} from 'jsdom';
-import {inviteRuntime,withAndroidAppInvite} from './shared/android-app-invite.mjs';
+import {inviteRuntime,withAndroidAppInvite,withPageAndroidAppInvite,invitePageConfig} from './shared/android-app-invite.mjs';
 const DAY=86400000,KEY='mado-android-app-invite-v2';
 const ua='Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/130.0 Mobile Safari/537.36';
 async function fixture({agent=ua,apps=[],api=true,state,language='ja',disabled=false,url='https://michikusa-travel.com/',native=false,standalone=false,throwStorage=false}={}){
@@ -40,6 +40,79 @@ test('BFCache rechecks installed status; background views are not counted',async
 test('API timeout is eligible error without persistent install state',async()=>{const f=await fixture();try{f.w.navigator.getInstalledRelatedApps=()=>new Promise(()=>{});f.w.dispatchEvent(new f.w.PageTransitionEvent('pageshow',{persisted:true}));assert.equal(f.card.hidden,true);await new Promise(r=>setTimeout(r,1550));assert.equal(f.card.hidden,false);f.seen();assert.equal(f.events[0][2].install_status,'error');assert.equal(f.w.localStorage.getItem(KEY),null);}finally{f.close();}});
 test('visual viewport constrains card width during magnification',async()=>{const f=await fixture();try{f.w.visualViewport={width:260,height:500,offsetLeft:0,offsetTop:0};f.refresh();assert.equal(f.card.style.maxWidth,'236px');}finally{f.close();}});
 const installed=[{platform:'play',id:'com.michikusatravel.shinkansenwindow'}];
+test('expanded pages resolve deep assets, contexts, languages and retained exclusions',()=>{
+ const source=fs.readFileSync(new URL('../index.html',import.meta.url),'utf8');
+ for(const file of ['spots/solar-ark.html','en/spots/solar-ark.html','live/index.html','fr/live/index.html','zh-Hant/zukan.html','de/spots/himeji-castle.html']){
+  const html=withPageAndroidAppInvite(source,file),cfg=invitePageConfig(file);
+  assert.equal(withPageAndroidAppInvite(html,file),html);
+  assert.equal((html.match(/ANDROID_APP_INVITE_START/g)||[]).length,1);
+  assert.ok(html.includes('"assetPrefix":"'+'../'.repeat(file.split('/').length-1)+'"'));
+  assert.ok(html.includes('"language":"'+cfg.language+'"'));
+  assert.ok(html.includes('"pageContext":"'+cfg.pageContext+'"'));
+ }
+ for(const file of ['privacy.html','contact.html','references.html','early-access.html','v0/index.html','v1/spots/fuji.html'])assert.equal(withPageAndroidAppInvite(source,file),source);
+ const general=withPageAndroidAppInvite(source,'en/spots/himeji-castle.html');assert.ok(general.includes('Audio guidance covers Tokyo–Shin-Osaka.'));
+ const plain=source.replace('if (window.MADO_EMBEDDED_WEB) return;','');assert.ok(withPageAndroidAppInvite(plain,'zukan.html').includes('ANDROID_APP_INVITE_RESET_START'));
+});
+test('live state suppression is temporary and shared dismissal survives it',async()=>{
+ const f=await fixture();try{
+  f.w.MADO_ANDROID_INVITE_BUSY=true;f.refresh();assert.equal(f.card.inert,true);f.seen();assert.equal(f.events.length,0);
+  f.w.MADO_ANDROID_INVITE_BUSY=false;f.refresh();assert.equal(f.card.inert,false);f.seen();assert.equal(f.events.length,1);
+  f.card.querySelector('button').click();const saved=f.w.localStorage.getItem(KEY);
+  f.w.MADO_ANDROID_INVITE_BUSY=true;f.refresh();f.w.MADO_ANDROID_INVITE_BUSY=false;f.refresh();assert.equal(f.card.hidden,true);assert.equal(f.w.localStorage.getItem(KEY),saved);
+ }finally{f.close();}
+});
+test('visible unselected train candidates suppress, selection and empty results permit placement',async()=>{
+ const f=await fixture();try{
+  const box=f.w.document.createElement('div');box.setAttribute('data-train-picker','');box.innerHTML='<div class="train-results"><button class="train-chip">Train</button></div>';f.w.document.body.append(box);
+  const results=box.firstElementChild;results.getClientRects=()=>[{}];f.refresh();assert.equal(f.card.inert,true);
+  results.querySelector('button').classList.add('active');f.refresh();assert.equal(f.card.inert,false);
+  results.innerHTML='<p>No trains</p>';f.refresh();assert.equal(f.card.inert,false);
+ }finally{f.close();}
+});
+
+test('maps and linked photos may overlap; direct controls and map interaction remain protected',async()=>{
+ const f=await fixture();try{
+  const map=f.w.document.createElement('div');map.id='map';map.innerHTML='<a href="#photo"><img alt="Photo"></a>';f.w.document.body.append(map);
+  for(const el of [map,...map.querySelectorAll('*')])el.getBoundingClientRect=()=>({left:0,top:0,right:1024,bottom:768,width:1024,height:768});
+  await new Promise(r=>setTimeout(r,30));assert.equal(f.card.inert,false);
+  map.dispatchEvent(new f.w.Event('pointerdown',{bubbles:true}));await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,true);
+  f.w.dispatchEvent(new f.w.Event('pointerup'));await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,false);
+  const button=f.w.document.createElement('button');button.textContent='Map action';button.getBoundingClientRect=()=>({left:0,top:560,right:1024,bottom:768,width:1024,height:208});map.append(button);
+  await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,false);assert.equal(f.card.style.top,'12px','move to a top corner instead of covering the button');
+ }finally{f.close();}
+});
+
+test('scroll bursts coalesce placement without storage writes or repeated control discovery',async()=>{
+ const f=await fixture();try{
+  await new Promise(r=>setTimeout(r,25));let writes=0,queries=0,frames=0;
+  const set=f.w.Storage.prototype.setItem,query=f.w.document.querySelectorAll.bind(f.w.document),raf=f.w.requestAnimationFrame.bind(f.w);
+  f.w.Storage.prototype.setItem=function(...args){writes++;return set.apply(this,args);};
+  f.w.document.querySelectorAll=function(selector){if(selector.startsWith('a[href]'))queries++;return query(selector);};
+  f.w.requestAnimationFrame=callback=>{frames++;return raf(callback);};
+  for(let i=0;i<100;i++)f.w.dispatchEvent(new f.w.Event('scroll'));
+  await new Promise(r=>setTimeout(r,30));assert.equal(writes,0);assert.equal(queries,0);assert.equal(frames,1);assert.equal(f.card.inert,false);
+ }finally{f.close();}
+});
+
+test('image CTA links and explicitly protected image links remain protected',async()=>{
+ const f=await fixture();try{
+  for(const attributes of ['data-cta-track="android_app_guide_click" data-cta-id="spot_rail_android"','data-cta-track="live_guide_entry_click" data-cta-id="spot_rail_live"','data-android-invite-protect','role="button"']){
+   const link=f.w.document.createElement('a');link.href='#action';link.innerHTML='<img alt=""><span>Action</span>';
+   const holder=f.w.document.createElement('div');holder.innerHTML='<a '+attributes+'></a>';for(const a of holder.firstChild.attributes)link.setAttribute(a.name,a.value);
+   link.getBoundingClientRect=()=>({left:0,top:0,right:1024,bottom:768,width:1024,height:768});f.w.document.body.append(link);
+   await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,true,attributes);link.remove();
+   await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,false);
+  }
+ }finally{f.close();}
+});
+test('all analytics bootstrap variants insert reset before GA without changing their consent gates',()=>{
+ for(const [variable,gate] of [['measurementId','isLocalPreview || storageOptedOut'],['id','local || optedOut']]){
+  const html='<html><head><script>(function () { var '+variable+' = "G-C2ESB694FV"; window.MADO_ANALYTICS_DISABLED = '+gate+'; })();</script></head><body></body></html>';
+  const actual=withPageAndroidAppInvite(html,'ko/guide.html');assert(actual.indexOf('ANDROID_APP_INVITE_RESET_START')<actual.indexOf('var '+variable+' ='));
+  assert(actual.includes(gate+' || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true'));
+ }
+});
 const settle=()=>new Promise(r=>setTimeout(r,5));
 function deferred(){let resolve,reject;const promise=new Promise((yes,no)=>{resolve=yes;reject=no;});return {promise,resolve,reject};}
 function redetect(f,request){f.w.navigator.getInstalledRelatedApps=()=>request.promise;f.w.dispatchEvent(new f.w.PageTransitionEvent('pageshow',{persisted:true}));}

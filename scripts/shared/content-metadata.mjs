@@ -1,3 +1,4 @@
+import {withPageAndroidAppInvite} from './android-app-invite.mjs';
 // Explicit editorial metadata. Neither the clock, mtime nor Git timestamps are inputs.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -107,7 +108,7 @@ function setMeta(head, key, value, name = false) {
 }
 export function enhanceContentHead(html, file, root = defaultRoot, options = {}) {
   const meta = CONTENT_METADATA[file];
-  return html.replace(/<head[\s\S]*?<\/head>/i, head => {
+  return withPageAndroidAppInvite(html.replace(/<head[\s\S]*?<\/head>/i, head => {
     const lang = file.startsWith('en/') ? 'en' : 'ja';
     const selected = options.spot ? selectSpotOgImage(options.spot, root, lang) : null;
     const src = meta?.image || selected?.src || metaValue(head, 'og:image').replace(`${SITE}/`, '');
@@ -171,7 +172,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
       return `<script type="application/ld+json">${JSON.stringify(json, null, 2)}</script>`;
     });
     return withArticleLocales(head, file, assetVersion('article-locales.js'));
-  });
+  }), file);
 }
 
 export function contentLastmod(url, legacy) {

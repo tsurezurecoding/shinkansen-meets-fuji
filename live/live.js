@@ -1136,6 +1136,8 @@
     );
   }
 
+  function invitationBusy(busy) { window.MADO_ANDROID_INVITE_BUSY=busy; window.dispatchEvent(new Event('mado:android-invite-state')); }
+
   function startGps() {
     if (!navigator.geolocation) {
       setStatus("err", t("noGeo"));
@@ -1147,6 +1149,7 @@
     }
     stopAll();
     state.mode = "gps";
+    invitationBusy(true);
     state.paused = false;
     state.runStartedAt = Date.now();
     state.lastMapFollowAt = 0;
@@ -1162,6 +1165,7 @@
   function startDemo(dirStr, mult) {
     stopAll();
     state.mode = "demo";
+    invitationBusy(true);
     state.paused = false;
     state.runStartedAt = Date.now();
     state.lastMapFollowAt = 0;
@@ -1223,6 +1227,7 @@
     state.demo = null;
     state.paused = false;
     state.mode = "idle";
+    invitationBusy(false);
     state.km = null;
     state.speedKmh = 0;
     state.dir = state.dirMode === "down" ? 1 : state.dirMode === "up" ? -1 : 0;
