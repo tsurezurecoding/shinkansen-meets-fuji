@@ -273,13 +273,17 @@
   function focusPoint(id) { if (points.some(function (point) { return point.id === id; })) setAccordion(id, true, true); }
   function loadLocalLeaflet() {
     if (window.L) return Promise.resolve(window.L);
-    return new Promise(function (resolve, reject) {
-      var css = document.createElement("link"); css.rel = "stylesheet"; css.href = new URL("vendor/leaflet/leaflet.css", document.baseURI).href; document.head.appendChild(css);
-      var script = document.createElement("script"); script.src = new URL("vendor/leaflet/leaflet.js", document.baseURI).href;
+    var styleReady = new Promise(function (resolve, reject) {
+      var css = document.createElement("link"); css.rel = "stylesheet"; css.href = new URL(ASSET_PREFIX + "vendor/leaflet/leaflet.css", document.baseURI).href;
+      css.onload = resolve; css.onerror = function () { reject(new Error("Local Leaflet styles load failed")); }; document.head.appendChild(css);
+    });
+    var scriptReady = new Promise(function (resolve, reject) {
+      var script = document.createElement("script"); script.src = new URL(ASSET_PREFIX + "vendor/leaflet/leaflet.js", document.baseURI).href;
       script.onload = function () { window.L ? resolve(window.L) : reject(new Error("Leaflet global missing")); }; script.onerror = function () { reject(new Error("Local Leaflet load failed")); }; document.head.appendChild(script);
     });
+    return Promise.all([styleReady, scriptReady]).then(function (ready) { return ready[1]; });
   }
-  function getLeaflet() { if (window.L) return Promise.resolve(window.L); if (!leafletPromise) leafletPromise = window.MADO_LEAFLET && typeof window.MADO_LEAFLET.load === "function" ? window.MADO_LEAFLET.load() : loadLocalLeaflet(); return leafletPromise; }
+  function getLeaflet() { if (!leafletPromise) leafletPromise = window.MADO_LEAFLET && typeof window.MADO_LEAFLET.load === "function" ? window.MADO_LEAFLET.load() : loadLocalLeaflet(); return leafletPromise; }
   function initMap() {
     var container = document.getElementById("collectionMap"); if (!container) return;
     getLeaflet().then(function (L) {

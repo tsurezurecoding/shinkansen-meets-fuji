@@ -25,20 +25,27 @@
   }
 
   function loadLeaflet() {
-    if (window.L) return Promise.resolve(window.L);
     if (leafletPromise) return leafletPromise;
-    leafletPromise = new Promise(function (resolve, reject) {
+    if (window.L) return Promise.resolve(window.L);
+    var styleReady = new Promise(function (resolve, reject) {
       var css = document.createElement("link");
       css.rel = "stylesheet";
       css.href = new URL("vendor/leaflet/leaflet.css", assetRoot).href;
+      css.onload = resolve;
+      css.onerror = function () { reject(new Error("Leaflet styles load failed")); };
       document.head.appendChild(css);
-
+    });
+    var scriptReady = new Promise(function (resolve, reject) {
       var script = document.createElement("script");
       script.src = new URL("vendor/leaflet/leaflet.js", assetRoot).href;
-      script.onload = function () { resolve(window.L); };
+      script.onload = function () {
+        window.L ? resolve(window.L) : reject(new Error("Leaflet global missing"));
+      };
       script.onerror = function () { reject(new Error("Leaflet load failed")); };
       document.head.appendChild(script);
     });
+    // Default marker image paths are detected from Leaflet's loaded stylesheet.
+    leafletPromise = Promise.all([styleReady, scriptReady]).then(function (ready) { return ready[1]; });
     return leafletPromise;
   }
 
