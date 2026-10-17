@@ -1258,8 +1258,8 @@ function localizeEnglishInternalLinks(html) {
       .replaceAll(`href=\"${route}.html#`, `href=\"en/${route}.html#`)
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
   }
-  html = html.replaceAll('href="early-access.html?src=top-promo"', 'href="en/early-access.html?src=top-promo"');
-  html = html.replaceAll('href="early-access.html?src=lp-footer"', 'href="en/early-access.html?src=lp-footer"');
+  html = html.replaceAll('href="android-app.html?src=top-promo"', 'href="en/android-app.html?src=top-promo"');
+  html = html.replaceAll('href="android-app.html?src=lp-footer"', 'href="en/android-app.html?src=lp-footer"');
   return html;
 }
 
@@ -1903,8 +1903,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
-    { loc: `${siteRoot}/early-access.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-17" },
-    { loc: `${siteRoot}/en/early-access.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-17" },
+    { loc: `${siteRoot}/android-app.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-18" },
+    { loc: `${siteRoot}/en/android-app.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-18" },
     { loc: `${siteRoot}/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/en/references.html`, priority: "0.4", changefreq: "monthly" },
     { loc: `${siteRoot}/contact.html`, priority: "0.4", changefreq: "monthly" },

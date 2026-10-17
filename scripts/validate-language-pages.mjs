@@ -36,6 +36,7 @@ const pairs = [
   ["/somato.html", "/en/somato.html"],
   ["/guide.html", "/en/guide.html"],
   ["/contact.html", "/en/contact.html"],
+  ["/android-app.html", "/en/android-app.html"],
   ["/references.html", "/en/references.html"],
   ["/privacy.html", "/en/privacy.html"],
   ["/live/", "/en/live/"],

@@ -31,7 +31,7 @@ const checks = [
       'if (window.MADO_EMBEDDED_WEB) return;',
       'window.gtag("event", `lp_${valuePath}_click`, payload);',
       '<footer class="footer">',
-      'href="early-access.html?src=lp-footer">Androidアプリ</a>',
+      'href="android-app.html?src=lp-footer">Androidアプリ</a>',
       'h==="#journey"',
       // 旧 /#spot-<id> の共有リンク・ブックマークが LP で行き止まりにならないこと
       'h.indexOf("#spot-")===0',
@@ -69,7 +69,7 @@ const checks = [
       'if (window.MADO_EMBEDDED_WEB) return;',
       'window.gtag("event", `lp_${valuePath}_click`, payload);',
       '<footer class="footer">',
-      'href="en/early-access.html?src=lp-footer">Android app</a>',
+      'href="en/android-app.html?src=lp-footer">Android app</a>',
     ],
     forbidden: ['class="seasonal-entry"'],
   },
@@ -102,7 +102,7 @@ const checks = [
     ],
   },
   {
-    file: "early-access.html",
+    file: "android-app.html",
     required: [
       'Google Playで公開中',
       'eaRideTitle',
@@ -115,7 +115,7 @@ const checks = [
     forbidden: ['noindex', 'groups.google.com', '/apps/testing/', 'early_access_step', '12人以上', '14日間'],
   },
   {
-    file: "en/early-access.html",
+    file: "en/android-app.html",
     required: [
       'Available on Google Play',
       'eaRideTitle',
