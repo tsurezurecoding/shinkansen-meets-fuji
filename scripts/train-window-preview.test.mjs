@@ -47,3 +47,19 @@ test('integration retains native saved journeys and live state, without prototyp
  assert(!/startLive\s*=/.test(js));assert(!/restoreLastJourney\s*=/.test(js));
  assert(!/window\.open\(/.test(js));assert(!/location\.(?:href|assign)\s*=/.test(js));
 });
+
+test('combined day/night route filters retain both day-only and night media',()=>{
+ const runtime=read('train-window-preview.js');
+ const source=runtime.slice(runtime.indexOf('function items('),runtime.indexOf('function baselineLabels('));
+ const spot=(id,media)=>({sp:{id,media},clock:1200});
+ const day={src:'day.webp',timeOfDay:'day',index:0},night={src:'night.webp',timeOfDay:'night',index:1};
+ const ctx={activeTimelineFilters:new Set(['day','night']),activeTimelineTimeOfDayFilter:()=> 'night',matchesTimelineFilters:()=>true,isClearlyDark:()=>true,
+  spotHasTimeOfDay:(s,mode)=>s.media.some(m=>m.timeOfDay===mode),preferredSpotMedia:(s,mode)=>s.media.find(m=>m.timeOfDay===mode)||s.media[0]};
+ vm.createContext(ctx);vm.runInContext(source+';globalThis.makeItems=items',ctx);
+ const journey={spots:[spot('day-only',[day]),spot('both',[day,night]),spot('night-only',[night])]};
+ const combined=ctx.makeItems(journey,true);
+ assert.deepEqual(Array.from(combined,x=>x.sp.id),['day-only','both','night-only']);
+ assert.deepEqual(Array.from(combined,x=>x.timeOfDay),['day','night','night']);
+ ctx.activeTimelineFilters.delete('day');
+ assert.deepEqual(Array.from(ctx.makeItems(journey,true),x=>x.sp.id),['both','night-only']);
+});

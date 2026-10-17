@@ -25,3 +25,5 @@ Androidは未変更です。次回同梱する際にはmobile/scripts/sync-capac
 追加で動的motion変更、縦タッチ、詳細表示中の景色とhashの一致・巡回停止、既存Fuji focus回答、背景復帰時の手動維持、英語列車検索を確認。確認用URLには`?ga=off`を使用し、実GPS・自動音声・GA送信・欠落asset・JSエラーは0です。実機Android・Safariは未確認です。
 
 ローカルでHTTPサーバーを起動して`start.html?ga=off`を開いてください。公開は同じ候補のquality-gateと決定的buildを通し、mergeした40桁SHAをPagesへ指定します。列車候補を選ぶと既存処理でtimelineSection先頭へsmooth移動し、方向/駅/時刻の変更や検索ボタンだけでは移動しません。
+
+PRレビューで、夜景の詳細表示へ選択中photoIndexを渡し、昼景/夜景の同時フィルタではOR条件に合う昼景専用スポットも保持する回帰を追加しました。既存app.jsの計算・フィルタAPIは変更しません。

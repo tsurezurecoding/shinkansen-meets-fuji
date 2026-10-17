@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "c51dd83f1735aad2",
+  "contentVersion": "980558e54626a360",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2821,8 +2821,8 @@
     {
       "path": "train-window-preview.js",
       "url": "https://www.michikusa-travel.com/train-window-preview.js",
-      "bytes": 9737,
-      "sha256": "0fb22a3a8ef6eea4c751ff98da031dcac122c6374f52ad1f04af6ac6d5b7e554"
+      "bytes": 9922,
+      "sha256": "2f2a47d4424c90333512e03753b19f66441afa74ff7229fc9489dcb8b592e767"
     },
     {
       "path": "train-window-stage.js",
