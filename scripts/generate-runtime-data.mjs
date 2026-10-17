@@ -57,8 +57,9 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 
 // 1ページの表示で落ちてくる量の上限。分割前の data.js は531 KBだった。
 // October 10: owned ride photos, two additional guide points and three more photos.
-// Retain a bounded allowance for the 58-spot runtime; article prose stays excluded.
-export const RUNTIME_DATA_BYTE_BUDGET = 332 * 1024;
+// October 17: one Yamazaki spot, two owned photographs and bilingual modal copy.
+// Retain a bounded allowance for the 59-spot runtime; article prose stays excluded.
+export const RUNTIME_DATA_BYTE_BUDGET = 336 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。

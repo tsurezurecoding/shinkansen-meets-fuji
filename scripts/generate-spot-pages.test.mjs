@@ -17,7 +17,7 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 92);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 94);
   assert.equal(CONTENT_METADATA['en/foods.html'].article, true);
   assert.equal(CONTENT_METADATA['en/everyday-japan.html'].kind, 'collection');
   assert.equal(CONTENT_METADATA['en/everyday-japan.html'].article, false);

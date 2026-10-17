@@ -8641,6 +8641,261 @@ const SPOTS = [
     viewpoint: { lat: 34.90967319, lng: 135.70612273 },
   },
   {
+    "id": "yamazaki-distillery",
+    "icon": "🥃",
+    "ja": {
+      "name": "サントリー山崎蒸溜所",
+      "area": "京都 → 新大阪（島本町）",
+      "hook": "車窓に、ウイスキーの故郷。",
+      "story": "天王山のふもと、屋根と電線の向こうに「山崎」の文字が現れます。ここは1923年に建設が始まったサントリー山崎蒸溜所。シングルモルトウイスキー「山崎」が生まれる場所を、京都〜新大阪のE席側から探してみてください。"
+    },
+    "en": {
+      "name": "Suntory Yamazaki Distillery",
+      "area": "Kyoto → Shin-Osaka (Shimamoto)",
+      "hook": "A whisky name becomes a place.",
+      "story": "You may know Yamazaki from a bottle or a bar menu. Between Kyoto and Shin-Osaka, its distillery appears beyond the rooftops on the Seat E side. Beneath wooded hills in Shimamoto, Osaka Prefecture, Suntory has made malt whisky since the 1920s."
+    },
+    "pageTitle": {
+      "ja": "新幹線から見える山崎蒸溜所｜ウイスキーの故郷をE席側から | 新幹線の窓",
+      "en": "Yamazaki Distillery from the Shinkansen | A Whisky Landmark near Kyoto"
+    },
+    "pageHeading": {
+      "ja": "車窓で出会う、ウイスキーの山崎",
+      "en": "Yamazaki, beyond the window"
+    },
+    "pageHeadingChunks": {
+      "ja": [
+        "車窓で出会う、",
+        "ウイスキーの山崎"
+      ]
+    },
+    "metaDescription": {
+      "ja": "京都〜新大阪のE席側に見えるサントリー山崎蒸溜所。1923年の着工と1984年の銘柄誕生、シングルモルトの意味、車窓で探す目印を写真で紹介。島本町の水と気候の物語へもつながります。",
+      "en": "Spot Suntory’s Yamazaki Distillery from the E-seat side between Kyoto and Shin-Osaka. Discover the whisky behind the name and official English visitor information."
+    },
+    "sectionHeading": {
+      "ja": "蒸溜所と銘柄、二つの「山崎」の始まり",
+      "en": "The place behind the whisky name"
+    },
+    "pageStory": {
+      "ja": "サントリー山崎蒸溜所は、大阪府島本町の天王山のふもとにあります。鳥井信治郎が日本の風土でウイスキーをつくろうと、1923年に建設に着手しました。一方、銘柄としてのシングルモルトウイスキー「山崎」が発売されたのは1984年。車窓に見えるのは、いま知られる銘柄より長い歴史を持つ、日本のモルトウイスキーづくりの出発点です。",
+      "en": "Yamazaki is more than a name on a whisky label. Suntory founder Shinjiro Torii began building this malt whisky distillery in 1923; the single malt named Yamazaki followed in 1984. Although often described as near Kyoto, the distillery’s address is in Shimamoto, Osaka Prefecture. It is a place you can glimpse on the journey between Kyoto and Shin-Osaka."
+    },
+    "pageStoryLink": {
+      "ja": {
+        "route": "sudoori/stories/shimamoto.html",
+        "label": "なぜこの土地に？ 素通りの街・島本町を読む →"
+      }
+    },
+    "pageChapters": [
+      {
+        "id": "single-malt",
+        "kind": "background",
+        "eyebrow": "THE WHISKY",
+        "heading": {
+          "ja": "「シングル」は、ひとつの蒸溜所。",
+          "en": "One distillery, many component whiskies"
+        },
+        "paragraphs": {
+          "ja": [
+            "シングルモルトの「シングル」は、ひとつの蒸溜所を指し、「モルト」は原料の麦芽を表します。「山崎」は、山崎蒸溜所で生まれたモルト原酒を組み合わせてつくられるウイスキーです。ひとつの樽から、そのまま瓶に詰めた酒という意味ではありません。",
+            "山崎蒸溜所では、発酵槽や蒸溜釜、熟成樽を使い分け、多様な原酒をつくり分けています。それぞれの香味を見極め、組み合わせることで、一つの蒸溜所から生まれる味わいを形にしていきます。窓の向こうの建物は、そのものづくりが続く場所です。"
+          ],
+          "en": [
+            "In single malt, “single” refers to one distillery; “malt” refers to malted grain. Yamazaki brings together malt whiskies made at Yamazaki Distillery. It does not mean that every bottle comes from just one cask.",
+            "Different fermentation vessels, stills and maturation casks help the distillery create a range of component whiskies. Combining those characters is part of making the finished single malt. The familiar name on the bottle belongs to a place where that work continues."
+          ]
+        }
+      },
+      {
+        "id": "yamazaki-label",
+        "kind": "background",
+        "eyebrow": "A NAME TO RECOGNISE",
+        "heading": {
+          "ja": "土地の名が、世界へ伝わる銘柄に。",
+          "en": "A Japanese name recognised overseas"
+        },
+        "paragraphs": {
+          "ja": [
+            "シングルモルト「山崎」は1984年3月14日に発売されました。ラベルの「山崎」の文字を手がけたのは、2代目マスターブレンダーの佐治敬三。土地の名前を冠したウイスキーに、つくり手の思いを込めました。",
+            "2003年には「山崎12年」が、英国の国際的な酒類品評会インターナショナル・スピリッツ・チャレンジで金賞を受賞しました。海外でも知られるウイスキーの名前を、日本の風景の中に見つける。短い車窓にも、そんなつながりがあります。"
+          ],
+          "en": [
+            "Yamazaki single malt was launched on 14 March 1984. Its Japanese label lettering was written by Keizo Saji, Suntory’s second master blender. The whisky takes its name from the place where it is made.",
+            "Yamazaki 12 won gold at the International Spirits Challenge in 2003. If you have encountered the name overseas, spotting the distillery gives it a place on your map of Japan. You can enjoy that connection without being a whisky expert."
+          ]
+        }
+      },
+      {
+        "id": "water-and-place",
+        "kind": "background",
+        "eyebrow": "THE PLACE",
+        "heading": {
+          "ja": "山と川のあいだで、原酒を育てる。",
+          "en": "Water, hills and time"
+        },
+        "paragraphs": {
+          "ja": [
+            "山崎の良質な水と、桂川・宇治川・木津川が合流する一帯の湿潤な気候は、蒸溜所がこの土地を選んだ背景にあります。仕込みに使う水から樽で過ごす時間まで、土地の条件がウイスキーづくりに関わります。水無瀬の名水や山と川の話は、「素通りの街」の島本町編でたどれます。"
+          ],
+          "en": [
+            "The area’s water and humid climate helped make Yamazaki the chosen site. Rivers and surrounding hills are part of the setting in which the whisky is made and matured. The buildings you see from the train belong to that landscape, rather than standing apart from it."
+          ]
+        }
+      },
+      {
+        "id": "visit",
+        "kind": "background",
+        "eyebrow": "PLAN A VISIT",
+        "heading": {
+          "ja": "いつか降りて、ものづくりの現場へ。",
+          "en": "Plan a visit separately from the train ride"
+        },
+        "paragraphs": {
+          "ja": [
+            "車窓からは建物の外観を眺められます。製造や熟成の現場をもっと知りたくなったら、サントリーの公式サイトで見学・入場の予約案内を確認してみてください。訪問には公共交通機関が案内されており、一般駐車場はありません。"
+          ],
+          "en": [
+            "The Shinkansen offers a glimpse of the outside. Exploring inside is a separate local trip: start with Suntory’s official English visitor information and reservation links, then check the visit options, conditions and transport guidance before planning your day."
+          ]
+        }
+      },
+      {
+        "id": "beer-connection",
+        "languages": [
+          "en"
+        ],
+        "kind": "background",
+        "eyebrow": "MORE TO EXPLORE",
+        "heading": {
+          "ja": "旅の飲み物と、沿線の風景。",
+          "en": "Another taste of the journey"
+        },
+        "paragraphs": {
+          "en": [
+            "Suntory also makes The Premium Malt’s beer. Our Beer on the Shinkansen guide introduces familiar Japanese lagers and the Kirin and Sapporo breweries along the line: more names to connect with the landscape."
+          ]
+        },
+        "storyLink": {
+          "en": {
+            "route": "en/beer-on-shinkansen.html",
+            "label": "Read Beer on the Shinkansen →"
+          }
+        }
+      }
+    ],
+    "explainer": {
+      "heading": {
+        "ja": "茶色い建物と「山崎」の文字を探す",
+        "en": "Look for brown buildings and the 山崎 lettering"
+      },
+      "ja": [
+        "E席側の山すそにある、大きな茶色い建物が目印です。壁面の「SUNTORY YAMAZAKI DISTILLERY」と、縦に並ぶ「山崎」の文字を探してみてください。手前には住宅の屋根と電線が重なります。",
+        "近くの屋根が流れても、その奥の山すそへ目を向けると建物を追いやすくなります。写真に写った棟の用途は外観だけでは特定せず、蒸溜所の建物として紹介しています。"
+      ],
+      "en": [
+        "Watch the wooded hillside on the Seat E side for the large brown buildings. Look for SUNTORY YAMAZAKI DISTILLERY and the vertical 山崎 lettering. Houses and overhead wires cross the foreground.",
+        "Keep your gaze beyond the nearby rooftops towards the hill. The photographs show the distillery’s buildings, but do not identify the purpose of each individual building."
+      ]
+    },
+    "guideHighlight": {
+      "ja": "新大阪→京都では進行方向の左、京都→新大阪では右のE席側です。山すその茶色い建物へ先に目を向け、屋根や電線の奥に「山崎」の文字を探してください。",
+      "en": "Use the E-seat side: left from Shin-Osaka towards Kyoto, right from Kyoto towards Shin-Osaka. Watch the brown buildings beneath the hills and look beyond the rooftops and wires for the Yamazaki lettering."
+    },
+    "minutesFromTokyo": 136.25,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 5,
+    "scene": "hills",
+    "visibleWhenCloudy": true,
+    "pageFacts": {
+      "visibilityNote": {
+        "ja": "総可視時間は未計測。写真で確認した短い区間を手がかりに、早めに窓を見てください",
+        "en": "The full viewing window has not been measured. Be ready early; rooftops and wires partly screen the view."
+      }
+    },
+    "image": "images/20260924_yamazaki-distillery_6867_michikusa.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa",
+      "date": "2026-09-24"
+    },
+    "photos": [
+      {
+        "src": "images/20260924_yamazaki-distillery_4134_michikusa.jpg",
+        "width": 1280,
+        "height": 720,
+        "alt": {
+          "ja": "屋根と電線の向こう、山すそに見えるサントリー山崎蒸溜所",
+          "en": "Suntory Yamazaki Distillery beneath wooded hills, beyond rooftops and wires"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-24",
+        "note": {
+          "ja": "広い眺め。新大阪から京都へ向かう車窓から",
+          "en": "The wider view, travelling from Shin-Osaka towards Kyoto"
+        }
+      }
+    ],
+    "references": [
+      {
+        "label": {
+          "ja": "サントリー山崎蒸溜所：見学・予約",
+          "en": "Suntory Yamazaki Distillery: visits and reservations"
+        },
+        "url": {
+          "ja": "https://www.suntory.co.jp/factory/yamazaki/",
+          "en": "https://www.suntory.com/factory/yamazaki/"
+        }
+      },
+      {
+        "label": {
+          "ja": "サントリー：シングルモルト「山崎」の誕生と歩み",
+          "en": "Suntory: the birth and history of Yamazaki (Japanese)"
+        },
+        "url": "https://www.suntory.co.jp/factory/blog-d/000127.html"
+      },
+      {
+        "label": {
+          "ja": "サントリー：シングルモルトウイスキーとは",
+          "en": "Suntory: what single malt means (Japanese)"
+        },
+        "url": "https://www.suntory.co.jp/whisky/yamazaki/yamazaki_club/001/"
+      },
+      {
+        "label": {
+          "ja": "サントリー：山崎蒸溜所リニューアル（製造・風土）",
+          "en": "Suntory: distillery production and environment (Japanese)"
+        },
+        "url": "https://www.suntory.co.jp/news/article/14475.html"
+      },
+      {
+        "label": {
+          "ja": "サントリー山崎蒸溜所：アクセス",
+          "en": "Suntory Yamazaki Distillery: access and transport"
+        },
+        "url": {
+          "ja": "https://www.suntory.co.jp/factory/yamazaki/access/",
+          "en": "https://www.suntory.com/factory/yamazaki/access/"
+        }
+      }
+    ],
+    "map": {
+      "lat": 34.8924574,
+      "lng": 135.6744508,
+      "ja": "サントリー山崎蒸溜所",
+      "en": "Suntory Yamazaki Distillery"
+    },
+    "viewpoint": {
+      "lat": 34.89154,
+      "lng": 135.681904
+    }
+  },
+  {
     "id": "hirakata-park-wheel",
     "icon": "🎡",
     "ja": {

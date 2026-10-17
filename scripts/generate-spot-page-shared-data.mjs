@@ -161,6 +161,7 @@ function sceneGuideText(spot, lang, name) {
 }
 
 function durationGuideText(spot, lang) {
+  if (spot.id === "yamazaki-distillery") return lang === "ja" ? "総可視時間は未計測です。屋根や電線に遮られるため、案内が近づいたら早めにE席側の山すそへ目を向けてください。" : "The full viewing window has not been measured. Watch the hillside on the E-seat side early; rooftops and wires can interrupt the view.";
   const seconds = Number(spot.durationSec);
   if (!Number.isFinite(seconds)) {
     return lang === "ja"
@@ -284,7 +285,7 @@ function projectStoryFigure(spot, lang) {
 
 function projectStoryLink(spot, lang) {
   const link = spot.pageStoryLink[lang];
-  if (!/^en\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/.test(link.route) || !link.label || !fs.existsSync(path.join(appDir, link.route.split("#")[0]))) throw new Error(`Invalid story link: ${spot.id}/${lang}`);
+  if (!(lang === "en" ? /^en\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/ : /^sudoori\/stories\/[a-z0-9-]+\.html(?:#[a-z0-9-]+)?$/).test(link.route) || !link.label || !fs.existsSync(path.join(appDir, link.route.split("#")[0]))) throw new Error(`Invalid story link: ${spot.id}/${lang}`);
   return link;
 }
 
