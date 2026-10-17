@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "db01a4f0564affad",
+  "contentVersion": "60f11aba213c340c",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2792,19 +2792,19 @@
       "path": "sudoori/index.html",
       "url": "https://www.michikusa-travel.com/sudoori/index.html",
       "bytes": 34025,
-      "sha256": "f99c6cec0f1117dcd084c7ac595107eba9d7f0d5271ae6306b73e7c2af8b3ea2"
+      "sha256": "527e6b1e38cbbc5adffb00312f3dec966fcd60ba0ac50523eaf04e3ee6b29dbc"
     },
     {
       "path": "sudoori/stories/nishio.html",
       "url": "https://www.michikusa-travel.com/sudoori/stories/nishio.html",
       "bytes": 20415,
-      "sha256": "c1c8a89ab09137a506b5f637433efad02e6621ddc280ae92defd1e8b3f838c69"
+      "sha256": "3a1b895d595c087256cee46c5aaa6e7bcab5a696a100f4d9cdf39fdcdcbbb93d"
     },
     {
       "path": "sudoori/stories/sekigahara.html",
       "url": "https://www.michikusa-travel.com/sudoori/stories/sekigahara.html",
       "bytes": 21469,
-      "sha256": "dd960117176c8b721f5c6ad67d32a8e410c8e64cdb3ac75d983590fba581e78d"
+      "sha256": "6882f2494c5e175f1520b5b03213cf659eeb71b3483f76d93d5e86620e382c8b"
     },
     {
       "path": "sudoori/stories/shimamoto.html",
@@ -2816,7 +2816,7 @@
       "path": "sudoori/stories/tanna.html",
       "url": "https://www.michikusa-travel.com/sudoori/stories/tanna.html",
       "bytes": 20407,
-      "sha256": "815f96c6c9509cff8bca7e8f6ab0e22b267a67aac36547c6290d6a30937a0a9e"
+      "sha256": "b867cb015d9b7eea95ce857f3626e0bc690723da9ebdfcaf071d65574500b192"
     },
     {
       "path": "train-picker.js",
