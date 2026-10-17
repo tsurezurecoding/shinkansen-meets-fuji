@@ -15,7 +15,12 @@ export function withAndroidAppInvite(html,language,pageContext,options={}){
  html=html.replace('window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;', 'window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;');
  html=html.replace('window.MADO_ANALYTICS_DISABLED = local || optedOut;', 'window.MADO_ANALYTICS_DISABLED = local || optedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;');
  const assetPrefix=options.assetPrefix ?? (language==='en'&&!html.includes('<base ')?'../':'');
- if(!html.includes('rel="manifest"'))html=html.replace('</head>','  <link rel="manifest" href="'+assetPrefix+'manifest.json">\n</head>');
+ // A fixed position after the registry/base avoids head-order churn when
+ // metadata and language generators run in either order.
+ html=html.replace(/\s*<link\b(?=[^>]*\brel=["']manifest["'])[^>]*>/g,'');
+ const registry=/<script\b[^>]*src="(?:\.\.\/)*locales\.js(?:\?[^" ]*)?"[^>]*>\s*<\/script>/;
+ const anchor=/<base\b[^>]*>/i.test(html)?/<base\b[^>]*>/i:registry.test(html)?registry:/<meta\b[^>]*charset[^>]*>/i.test(html)?/<meta\b[^>]*charset[^>]*>/i:/<head\b[^>]*>/i;
+ html=html.replace(anchor,match=>match+'\n  <link rel="manifest" href="'+assetPrefix+'manifest.json">');
  const block='<!-- ANDROID_APP_INVITE_START -->\n<style>'+css+'</style>\n<script>'+inviteRuntime({language,pageContext,assetPrefix,copy:inviteCopy(language,options.general)})+'</script>\n<!-- ANDROID_APP_INVITE_END -->';
  const pattern=/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/;
  // Runtime requires body; insert its script before </body>, CSS is scoped to the invitation.
