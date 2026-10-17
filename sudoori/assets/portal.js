@@ -9,7 +9,7 @@
  ];
  const towns=Object.fromEntries(D.towns.map(t=>[t.key,t]));
  const firstStory=stories.find(s=>s.id==='shimamoto');stories.splice(stories.indexOf(firstStory),1);stories.unshift(firstStory);
- Object.assign(firstStory,{context:'京都〜新大阪／E席側。山裾の蒸溜所は、屋根や電線の向こうに一瞬見えます。',image:'../images/20260924_yamazaki-distillery_6867_michikusa.jpg',ownerCredit:'車窓写真：michikusa（2026年9月24日撮影） · トリミング表示'});
+ Object.assign(firstStory,{context:'京都〜新大阪／E席側。山裾の蒸溜所は、屋根や電線の向こうに一瞬見えます。',image:'../images/20260924_yamazaki-distillery_6867_michikusa.jpg',ownerCredit:'車窓写真：michikusa（2026年9月撮影）'});
  let selected=stories[0],t=0,playing=false,last=0,follow=false,map,train,activeLine=-1,lastPan=0,lastTown='',animation;
  const lines=[],pins={};
  const fmt=n=>Math.floor(n/60)+':'+String(Math.floor(n%60)).padStart(2,'0');
