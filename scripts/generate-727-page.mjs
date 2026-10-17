@@ -152,16 +152,10 @@ ${t.bodyTag}
   <main>
     <section class="collection-hero" id="top" aria-labelledby="collectionHeroTitle">
       <div class="collection-hero-tiles" aria-hidden="true">
-        <img src="${p}images/20260704_727_board_kuzuhara_1_michikusa.jpg" alt="">
-        <img src="${p}images/20260629_727_board_2_2x_michikusa.jpg" alt="">
-        <img src="${p}images/20260629_727_board_1_4x_michikusa.jpg" alt="">
-        <img src="${p}images/20260704_putiputi_sign_1_michikusa.jpg" alt="">
-        <img src="${p}images/20260704_727_board_haracho_michikusa.jpg" alt="">
-        <img src="${p}images/20260704_727_board_osawa_michikusa.jpg" alt="">
-        <img src="${p}images/20260704_727_board_miyashiro_a_michikusa.jpg" alt="">
-        <img src="${p}images/20260704_727_board_fuse_michikusa.jpg" alt="">
-        <img src="${p}images/20260803_727_board_karasakiminami_michikusa.jpg" alt="">
-        <img src="${p}images/20260803_727_board_torikaihachicho_michikusa.jpg" alt="">
+        <picture>
+          <source media="(max-width: 600px)" srcset="${p}images/727-hero-mobile.webp">
+          <img src="${p}images/727-hero-wide.webp" width="1440" height="640" alt="" fetchpriority="high">
+        </picture>
       </div>
       <div class="collection-hero-inner">
         <p class="eyebrow">727 COLLECTION</p>

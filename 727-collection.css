@@ -27,3 +27,6 @@
   .collection-point-summary { grid-template-columns: minmax(0, 1fr) auto; }
   .collection-point-summary-thumb { display: none; }
 }
+.collection-727-page .collection-hero-tiles { display: block; }
+.collection-727-page .collection-hero-tiles picture { display: block; width: 100%; height: 100%; }
+.collection-727-page .collection-hero-tiles img { display: block; filter: none; }
