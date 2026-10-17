@@ -80,6 +80,9 @@
   </style>
   <script defer src="utility-locales.js?v=4f2b7fba"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+<!-- JA-TRAIN-WINDOW:START -->
+<link rel="stylesheet" href="train-window-preview.css?v=dac0665b">
+<!-- JA-TRAIN-WINDOW:END -->
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/start.html">
   <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/start.html">
   <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/start.html">
@@ -134,8 +137,31 @@
       <div class="journey-form-pane">
         <div class="setup-card" data-train-picker></div>
         <!-- TRAIN-ENTRY-HELP:START -->
-        <div class="train-entry-help"><p>車窓の時刻はダイヤから計算した目安です。運転日・当日の遅延は反映しません。</p><a href="guide.html">富士山の見える区間・座席を読む →</a><noscript><p>列車の選択にはJavaScriptが必要です。下の列車番号一覧でも富士山の通過時刻の目安を確認できます。</p></noscript></div>
+        <noscript><p>列車の選択にはJavaScriptが必要です。下の列車番号一覧でも富士山の通過時刻の目安を確認できます。</p></noscript>
         <!-- TRAIN-ENTRY-HELP:END -->
+<!-- JA-TRAIN-WINDOW:START -->
+<details id="sp-view" data-state="sample">
+ <summary><span id="sp-summary-label">結果の見本を見る</span><button type="button" id="sp-clear" aria-label="列車の選択を取り消す" hidden>選択を取消</button></summary>
+ <div class="sp-body">
+  <div id="sp-top-stage" class="hi-stage">
+   <div class="sp-map-column">
+   <div id="sp-line" class="hi-line"><svg id="sp-map" role="group" aria-label="路線をなぞって景色を選びます。矢印キーでも選べます" tabindex="0"></svg></div>
+   </div>
+   <div class="sp-window-column">
+   <div class="hi-window"><div class="hi-led"><i class="hi-led-dot" aria-hidden="true"></i><span id="sp-led-text" class="hi-led-text"></span><span id="sp-led-right" class="hi-led-right"></span></div>
+   <div class="hi-glass-wrap"><div id="sp-glass" class="hi-glass is-moving" data-side="E">
+    <img id="sp-photo" class="hi-photo" alt="" decoding="async"><img id="sp-photo-back" class="hi-photo" alt="" decoding="async"><span class="hi-mast" aria-hidden="true"></span>
+    <div id="sp-seat-badge" class="hi-seat"></div><p id="sp-empty" class="sp-empty">写真を読み込んでいます…</p>
+    <div class="hi-caption"><p id="sp-time" class="hi-caption-time"></p><h2 id="sp-name" class="hi-caption-name"></h2><p id="sp-hook" class="hi-caption-hook"></p><div class="hi-pills"><span id="sp-seat" class="sp-seat"></span></div></div>
+   </div></div><div class="hi-sill" aria-hidden="true"></div></div>
+   <small id="sp-credit" class="sp-credit"></small>
+   </div>
+  </div>
+  <p id="sp-state" class="sp-state">見本 · まだ列車は選ばれていません</p>
+  <div class="sp-links"><button type="button" id="sp-detail" hidden>この景色を詳しく</button><a id="sp-guide" class="sp-guide" href="guide.html" hidden>富士山の区間・席側ガイド</a><a id="sp-list-link" href="#timeline" hidden>景色一覧へ</a></div>
+ </div>
+</details>
+<!-- JA-TRAIN-WINDOW:END -->
       </div>
 
       <div class="journey-timeline-pane">
@@ -182,6 +208,9 @@
             </label>
           </div>
           <ol class="timeline" id="timeline"></ol>
+<!-- JA-TRAIN-WINDOW:START -->
+<div id="timeline-calculation-note" class="train-entry-help"><p>車窓の時刻はダイヤから計算した目安です。運転日・当日の遅延は反映しません。</p></div>
+<!-- JA-TRAIN-WINDOW:END -->
         </section>
       </div>
     </div>
@@ -886,5 +915,10 @@
   <script src="train-select.js?v=88f5b2d7"></script>
   <script src="train-picker.js?v=6cafb7d9"></script>
   <script src="app.js?v=2fd1fc89"></script>
+<!-- JA-TRAIN-WINDOW:START -->
+<script src="train-window-geometry.js?v=8fe1ede3"></script>
+<script src="train-window-stage.js?v=8d7bea02"></script>
+<script src="train-window-preview.js?v=0fb22a3a"></script>
+<!-- JA-TRAIN-WINDOW:END -->
 </body>
 </html>
