@@ -888,7 +888,7 @@
 <script>/* Inlined by android-app-invite.mjs. No preview controls or install-click persistence. */
 (function () {
   'use strict';
-  const config = {"dismissDays":14,"unknownPolicy":"show-eligible","language":"en","pageContext":"landing","assetPrefix":""};
+  const config = {"dismissDays":14,"unknownPolicy":"show-eligible","language":"en","pageContext":"landing","assetPrefix":"","copy":{"label":"Android app","title":"Screen off. Listen on.","body":"Ride audio continues with the screen off.","free":"Free, no sign-up.","play":"View on Google Play","playLabel":"View on Google Play (opens a new tab)","close":"Dismiss invitation for 14 days","closed":"Invitation hidden for 14 days.","failed":"Dismissed here; saving failed."}};
   const key = 'mado-android-app-invite-v2';
   const dismissMs = config.dismissDays * 86400000;
   const pkg = 'com.michikusatravel.shinkansenwindow';
@@ -923,7 +923,9 @@
   let status = 'checking', generation = 0, localClosed = false, pageAway = false, detectionTimer, timer, frame, lastFocus, ratio = 0, viewSent = false;
   const card = document.createElement('aside'); card.id='android-app-invite';card.hidden=true;card.setAttribute('aria-labelledby','android-app-invite-title');
   const asset = path => new URL(config.assetPrefix+path,document.baseURI).href;
-  card.innerHTML='<button id="android-app-invite-close" type="button" aria-label="'+(en?'Dismiss invitation for '+config.dismissDays+' days':'案内を閉じて'+config.dismissDays+'日間表示しない')+'" title="'+(en?'Hide for '+config.dismissDays+' days':config.dismissDays+'日間表示しない')+'"><span aria-hidden="true">×</span></button><div class="context-heading"><img class="context-app-icon" width="32" height="32" alt=""><div><span class="context-label">'+(en?'Android app':'Androidアプリのご案内')+'</span><h2 id="android-app-invite-title">'+(en?'Screen off. Listen on.':'画面を消して、車窓へ')+'</h2></div></div><p>'+(en?'Ride audio continues with the screen off. <span class="context-nowrap">Free, no sign-up.</span>':'画面を消しても乗車中の音声案内。<span class="context-nowrap">無料・登録不要。</span>')+'</p><a class="context-play" aria-label="'+(en?'View on Google Play (opens a new tab)':'Google Playで見る（新しいタブで開きます）')+'" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_floating&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer"><img class="context-play-badge" width="646" height="250" alt=""><span class="context-play-fallback">'+(en?'View on Google Play ↗':'Google Playで見る ↗')+'</span></a>';
+  const c = config.copy || (en ? {label:'Android app',title:'Screen off. Listen on.',body:'Ride audio continues with the screen off.',free:'Free, no sign-up.',play:'View on Google Play',close:'Dismiss invitation for '+config.dismissDays+' days',closed:'Invitation hidden for '+config.dismissDays+' days.',failed:'Dismissed here; saving failed.'} : {label:'Androidアプリのご案内',title:'画面を消して、車窓へ',body:'画面を消しても乗車中の音声案内。',free:'無料・登録不要。',play:'Google Playで見る',close:'案内を閉じて'+config.dismissDays+'日間表示しない',closed:'案内を閉じました。'+config.dismissDays+'日間表示しません。',failed:'案内を閉じました。保存できませんでした。'});
+  const escape = value => String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+  card.innerHTML='<button id="android-app-invite-close" type="button" aria-label="'+escape(c.close)+'" title="'+escape(c.close)+'"><span aria-hidden="true">×</span></button><div class="context-heading"><img class="context-app-icon" width="32" height="32" alt=""><div><span class="context-label">'+escape(c.label)+'</span><h2 id="android-app-invite-title">'+escape(c.title)+'</h2></div></div><p>'+escape(c.body)+' <span>'+escape(c.free)+'</span></p><a class="context-play" aria-label="'+escape(c.playLabel||c.play)+' ↗" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_floating&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer"><img class="context-play-badge" width="646" height="250" alt=""><span class="context-play-fallback">'+escape(c.play)+' ↗</span></a>';
   document.body.append(card);
   const live=document.createElement('div');live.id='android-app-invite-announcement';live.setAttribute('role','status');live.setAttribute('aria-live','polite');live.setAttribute('aria-atomic','true');document.body.append(live);
   function track(name) {
@@ -946,14 +948,21 @@
     if(target){if(!target.matches('a,button,input,select,textarea,[tabindex]'))target.setAttribute('tabindex','-1');target.focus({preventScroll:true});}
   }
   function overlap(a,b){return a.left<b.right&&a.right>b.left&&a.top<b.bottom&&a.bottom>b.top;}
+  let pointerBusy=false;
+  const visibleElement=el=>el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden'&&getComputedStyle(el).display!=='none'&&(!el.checkVisibility||el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}));
+  function interactionBusy(){
+    if(pointerBusy||window.MADO_ANDROID_INVITE_BUSY===true||document.fullscreenElement)return true;
+    if([...document.querySelectorAll('[data-train-picker] .train-results')].some(el=>visibleElement(el)&&el.querySelector('.train-chip')&&!el.querySelector('.train-chip.active')))return true;
+    return [...document.querySelectorAll('dialog[open],[role="dialog"],.modal,.lightbox,.spot-page-lightbox')].some(visibleElement);
+  }
   function place(){
     if(card.hidden)return;
     const vv=window.visualViewport,vw=vv?vv.width:innerWidth,vh=vv?vv.height:innerHeight,ox=vv?vv.offsetLeft:0,oy=vv?vv.offsetTop:0;
-    if(document.activeElement&&!card.contains(document.activeElement)&&document.activeElement.matches('input:not([type=checkbox]):not([type=radio]),textarea,[contenteditable=true]')){card.style.visibility='hidden';card.inert=true;return;}
+    if(interactionBusy()||(document.activeElement&&!card.contains(document.activeElement)&&document.activeElement.matches('input,select,textarea,[contenteditable=true],.train-chip'))){card.style.visibility='hidden';card.inert=true;return;}
     const style=getComputedStyle(card),inset=name=>parseFloat(style.getPropertyValue('--safe-'+name))||0;
     card.style.maxWidth=Math.max(0,vw-24-inset('left')-inset('right'))+'px';
     const r=card.getBoundingClientRect();
-    const controls=[...document.querySelectorAll('a,button,input,select,textarea,summary,nav,[role=button],.lang-landing-prompt')].filter(el=>!card.contains(el)&&el.getClientRects().length&&(!el.checkVisibility||el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}))&&getComputedStyle(el).visibility!=='hidden').map(el=>el.getBoundingClientRect());
+    const controls=[...document.querySelectorAll('a,button,input,select,textarea,summary,nav,[role=button],.lang-landing-prompt,.leaflet-container,#map,iframe,video,canvas,main img,[data-android-invite-protect]')].filter(el=>!card.contains(el)&&el.getClientRects().length&&(!el.checkVisibility||el.checkVisibility({checkVisibilityCSS:true,checkOpacity:true}))&&getComputedStyle(el).visibility!=='hidden').map(el=>el.getBoundingClientRect());
     const bar=document.querySelector('.topbar,.lp-header,header')?.getBoundingClientRect();
     const top=Math.max(oy+12+inset('top'),bar&&bar.bottom>oy&&bar.bottom<oy+vh/2?bar.bottom+10:oy+12);
     let good;
@@ -968,12 +977,12 @@
     const focused=card.contains(document.activeElement);card.hidden=!visible;if(!visible&&focused)focusBack();
     if(visible){
       const icon=card.querySelector('.context-app-icon');if(!icon.hasAttribute('src'))icon.src=asset('images/android/app-icon-192.webp');
-      const badge=card.querySelector('.context-play-badge');if(!badge.hasAttribute('src')){badge.addEventListener('load',()=>{badge.parentElement.classList.add('context-badge-loaded');schedule();},{once:true});badge.src=asset('images/google-play/'+(en?'en':'ja')+'-badge.png');}
+      const badge=card.querySelector('.context-play-badge');if(!badge.hasAttribute('src')){badge.addEventListener('load',()=>{badge.parentElement.classList.add('context-badge-loaded');schedule();},{once:true});badge.src=asset('images/google-play/'+(config.language==='ja'?'ja':'en')+'-badge.png');}
       place();
     }
     if(available&&s&&s.dismissedAt+dismissMs>Date.now()&&!localClosed)timer=setTimeout(refresh,Math.min(s.dismissedAt+dismissMs-Date.now(),2147483647));
   }
-  function schedule(){cancelAnimationFrame(frame);frame=requestAnimationFrame(refresh);}
+  function schedule(){if(!card.isConnected||pageAway)return;cancelAnimationFrame(frame);frame=requestAnimationFrame(refresh);}
   async function detect(){
     if(pageAway)return;
     clearTimeout(detectionTimer);
@@ -996,11 +1005,16 @@
   card.querySelector('button').onclick=()=>{
     let saved=true;try{localStorage.setItem(key,JSON.stringify({v:2,dismissedAt:Date.now()}));}catch(e){saved=false;}
     localClosed=!saved;track('android_app_invite_dismiss');focusBack();refresh();
-    live.textContent=en?(saved?'Invitation hidden for '+config.dismissDays+' days.':'Dismissed here; saving failed.'):(saved?'案内を閉じました。'+config.dismissDays+'日間表示しません。':'案内を閉じました。保存できませんでした。');
+    live.textContent=saved?c.closed:c.failed;
   };
   card.querySelector('a').addEventListener('click',()=>track('android_app_invite_play_click')); // Click is not installation; no persistent stop.
+  window.addEventListener('mado:android-invite-state',schedule);
+  document.addEventListener('pointerdown',e=>{if(!card.contains(e.target)&&e.target.closest('.leaflet-container,#map,[data-train-picker],.train-results,[data-android-invite-protect]')){pointerBusy=true;schedule();}},{passive:true});
+  window.addEventListener('pointerup',()=>{pointerBusy=false;schedule();},{passive:true});
+  window.addEventListener('pointercancel',()=>{pointerBusy=false;schedule();},{passive:true});
+  new MutationObserver(records=>{if(records.some(r=>r.target!==card&&!card.contains(r.target)&&r.target!==live))schedule();}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class','open'],childList:true});
   document.addEventListener('focusin',e=>{if(!card.contains(e.target))lastFocus=e.target;schedule();});document.addEventListener('focusout',schedule);
-  window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);
+  window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
   window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
   window.addEventListener('storage',e=>{if(e.key===key||e.key===null){localClosed=false;refresh();}});
   window.addEventListener('pagehide',()=>{pageAway=true;++generation;clearTimeout(detectionTimer);clearTimeout(timer);cancelAnimationFrame(frame);card.hidden=true;});

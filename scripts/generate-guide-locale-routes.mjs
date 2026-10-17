@@ -1,3 +1,4 @@
+import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 // Guide prose remains hand authored; shared edition navigation is generated.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -52,6 +53,7 @@ for (const lang of languages) {
       html = html.replace('</head>', '  ' + element + '\n</head>');
     }
   }
+  html = withPageAndroidAppInvite(html,file);
   if (check && html !== fs.readFileSync(path.join(root, file), 'utf8')) throw Error('Guide edition routes stale: ' + file);
   if (!check) fs.writeFileSync(path.join(root, file), html);
   dom.window.close();

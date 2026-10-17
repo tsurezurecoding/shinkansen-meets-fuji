@@ -2160,6 +2160,7 @@ await import("./generate-mieru-page.mjs");
 await import("./generate-utility-locales.mjs");
 await import("./generate-sparkling-locales.mjs");
 await import("./generate-guide-locale-routes.mjs");
+await import("./generate-android-app-invites.mjs");
 await import("./generate-content-manifest.mjs");
 
 const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;

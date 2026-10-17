@@ -1,3 +1,4 @@
+import {withPageAndroidAppInvite} from './android-app-invite.mjs';
 import { assetVersion } from './asset-version.mjs';
 import { utility, translated, stripEdition, languages, withLocaleRegistry } from './locales.mjs';
 export const UTILITY_ROUTES = utility;
@@ -7,6 +8,7 @@ export const publicPath = route => route === 'index.html' ? '' : route.replace('
 export function withUtilityLocales(html, file) {
   const route = stripEdition(file);
   if (!UTILITY_ROUTES.includes(route)) return html;
+  html = withPageAndroidAppInvite(html,file);
   html = html.replaceAll('["ja","en","fr","zh-Hant"]', JSON.stringify(languages));
   const prefix = /<base\b/.test(html) ? '' : '../'.repeat(file.split('/').length - 1);
   html = html.replace(new RegExp('\\s*<link\\b[^>]*rel="alternate"[^>]*hreflang="(?:' + translated.join('|') + ')"[^>]*>', 'g'), '');

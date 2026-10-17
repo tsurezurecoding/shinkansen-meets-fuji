@@ -1,10 +1,17 @@
 # Android invitation: release contract
 
-Approved scope: Japanese/English TOP (`index.html`) and Fuji guide (`guide.html`),
-base main 82a8f01365cc56df7c4e169e6112c12396dc2e1f (PR83 integrated). PR62 is untouched.
+Approved expansion (2026-10-17, local integration; not yet published): existing
+TOP/guide plus 727, field guide, train selection, live, public features and all
+spot articles in their existing eight language editions. Base main 2fb08ce1.
+Private preview publication is authorized separately; public Web/Android release is not.
 The scoped floating invitation retains the approved app icon and official localized
 Play badges. The canonical generator injects the same implementation into all four
-pages. No other language or app page receives the invitation.
+pages. `invitePageConfig` is the shared explicit scope; contact, privacy, references,
+app introduction and old v0/v1 are excluded. No new language article is created.
+The supplied official badge is Japanese for JA and English for other editions;
+copy, accessible link/close labels and dismissal announcements are localized.
+Deep routes resolve assets and the Web manifest relative to the page/base URI.
+Sanyo spot copy presents the app field guide and limits audio to Tokyo–Shin-Osaka.
 
 Only existing eligible Android browser UAs pass; PC, iPhone, WebView/in-app browsers,
 standalone/PWA, native wrappers and `from=android-app` remain excluded. Unknown API
@@ -19,7 +26,7 @@ separate Android task. Manifest association follows Web handoff commit
 
 The new production key `mado-android-app-invite-v2` stores only `{v:2,dismissedAt}`
 on explicit × dismissal. It derives a **14-day** expiry from that timestamp across
-all four pages/tabs. First display and Play clicks do not suppress. Legacy PR62
+all eligible pages/tabs. First display and Play clicks do not suppress. Legacy PR62
 seen/30-day/Play-click keys and the separate preview 30-day key are not imported.
 Corrupt/unavailable storage hides the invitation; a failed dismissal write still
 closes it in this page. No preview force/reset/expiry UI or query override ships.
@@ -34,7 +41,12 @@ cta_id, and install_status. Unknown states retain their distinct API status and 
 never called uninstalled. **Play click is not installation.** No URL/query/PII,
 install success event, or permanent click suppression is added.
 
-The card avoids visible existing controls, navigation and header; if no safe slot
+The card avoids visible existing controls, navigation, header, map, media and photos;
+dialogs/fullscreen and train input/selection interactions temporarily suppress it.
+Live state explicitly suppresses it during GPS permission/acquisition, GPS/demo
+guidance and pause. Initial idle and complete stop permit placement. Nested sheet
+scroll also re-evaluates placement. Existing normal-flow app cards remain.
+If no safe slot
 exists it temporarily becomes invisible/inert. It responds to scrolling, visual
 viewport changes and safe-area insets. Keyboard text input also hides/inerts it;
 close returns focus and announces the 14-day duration through a polite status.

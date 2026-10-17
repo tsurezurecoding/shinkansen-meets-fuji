@@ -1,5 +1,6 @@
 // English traveler-facing Disney page is the structural/content source.
 import fs from 'node:fs';
+import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 import { supported, editions, languages, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -14,7 +15,7 @@ const origin='https://www.michikusa-travel.com';
 const check=process.argv.includes('--check');
 const known=[SPARKLING_ROUTE,...UTILITY_ROUTES,...CASTLE_LOCALE_ROUTES,'guide.html'];
 const keys=collectSparklingEnglish(root);
-function write(file,text){const target=path.join(root,file);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')===text)return;if(check)throw Error('Stale Disney locale output: '+file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,text);}
+function write(file,text){text=withPageAndroidAppInvite(text,file);const target=path.join(root,file);if(fs.existsSync(target)&&fs.readFileSync(target,'utf8')===text)return;if(check)throw Error('Stale Disney locale output: '+file);fs.mkdirSync(path.dirname(target),{recursive:true});fs.writeFileSync(target,text);}
 const requestedLang=process.argv.includes('--lang')?process.argv[process.argv.indexOf('--lang')+1]:null;
 if(requestedLang&&!SPARKLING_LOCALES.includes(requestedLang))throw Error('Unknown Disney locale: '+requestedLang);
 for(const lang of requestedLang?[requestedLang]:SPARKLING_LOCALES){
