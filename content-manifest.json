@@ -1,14 +1,20 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "4fc546ea22ee58a6",
+  "contentVersion": "29c452118b6511e7",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
+      "path": "727-collection.css",
+      "url": "https://www.michikusa-travel.com/727-collection.css",
+      "bytes": 2989,
+      "sha256": "2fe438bf6ab5c3ae7c94ed020ff915fab3862209578bde37143e2b4a3913d4f8"
+    },
+    {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 35070,
-      "sha256": "276304611ff2a467ba1006b087049aa931c9a32d8e157e3fd790b8e458244359"
+      "bytes": 34533,
+      "sha256": "16560c64e395d2e63e36bf665dd93b435a3dc594ef21f59d72aaefa8ef80bbca"
     },
     {
       "path": "727-collection.js",
@@ -355,8 +361,8 @@
     {
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
-      "bytes": 33045,
-      "sha256": "bcad30390a04cb59fc844df1aba8765059d7dbba55c7f3087ec54dd279db3974"
+      "bytes": 32484,
+      "sha256": "b5732a24c3e1b03879317e5548a95a34e7242525118a9ed39e8b3df619f08d19"
     },
     {
       "path": "en/arenani.html",
@@ -1557,6 +1563,18 @@
       "url": "https://www.michikusa-travel.com/images/20261010_odawara_2025_michikusa.jpg",
       "bytes": 314364,
       "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4"
+    },
+    {
+      "path": "images/727-hero-mobile.webp",
+      "url": "https://www.michikusa-travel.com/images/727-hero-mobile.webp",
+      "bytes": 100766,
+      "sha256": "5feef5280a1e2e7941bcb61e43c0200100fe67ea18cf7ffc85c15cfee0c9e3b2"
+    },
+    {
+      "path": "images/727-hero-wide.webp",
+      "url": "https://www.michikusa-travel.com/images/727-hero-wide.webp",
+      "bytes": 97338,
+      "sha256": "f70d22864d8862e6ddb8d5fb74402f063968a7cfb793e29eef2d4a953a9de5e2"
     },
     {
       "path": "images/beer/20180421-trolley-grendelkhan.webp",
