@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "74fb631becebdc28",
+  "contentVersion": "704e2e97e80812e5",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -170,7 +170,7 @@
       "path": "data/window-trip-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/window-trip-photo-sources.json",
       "bytes": 58718,
-      "sha256": "a1fba73cb0e717d437f8baca9f8af31d2b37fb4562ba79c2f470a1e4b580cfbb"
+      "sha256": "cc8126cf55e6cc75d66c45885e53bc805a0a5bd0db535d59bbf07e8e2f42f4a7"
     },
     {
       "path": "de/castles.html",
