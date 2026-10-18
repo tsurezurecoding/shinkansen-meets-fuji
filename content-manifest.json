@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "01380a900fe500f7",
+  "contentVersion": "518d39cee70d93e2",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -50,7 +50,7 @@
       "path": "arenani.html",
       "url": "https://www.michikusa-travel.com/arenani.html",
       "bytes": 49617,
-      "sha256": "b8a37477d5e1be014e4059599ff89a07340527d97f6b844c215ee913988c65d6"
+      "sha256": "ce8554960ae1e56e9d080903f22b67dca34f72616a1d3e73a713bfc7650a69af"
     },
     {
       "path": "article-locales.css",
