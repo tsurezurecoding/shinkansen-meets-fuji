@@ -440,7 +440,9 @@ ${cards}
 
   <section class="cs-next" aria-labelledby="anNextTitle">
     <div class="cs-card">
-      <h2 id="anNextTitle">Look for them on your next ride</h2>
+      <h2 id="anNextTitle">Remember a 727 sign?</h2>
+      <p><a href="727-collection.html"><img src="../images/thumbs/20260820_727_board_yoda_kinuta_michikusa.webp" alt="White 727 COSMETICS sign beside a yellow 248 sign" width="240" height="160" loading="lazy" decoding="async" style="max-width:100%;height:auto"> Match your sign in the 727 photo and location index →</a></p>
+      <p>Compare the photograph, then use the map or trackside location list to find where you saw it.</p>
       <p>Choose your train to see when each view should pass, or browse the full field guide for castles, signs, rivers and more.</p>
       <div class="cs-card-actions"><a class="btn btn-primary" href="start.html">Choose your train</a><a href="zukan.html">Browse every view</a></div>
     </div>
