@@ -1935,6 +1935,46 @@
     "quality": 72,
     "sha256": "6a926d3d1d7a5c22d1b85e59a0572a6b331cf857790d4c2af0339ee1131569d2"
   },
+  "images/thumbs/gallery/20261018_fuji-sky-view_night_0_michikusa.webp": {
+    "source": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+    "sourceSha256": "2fceca682367168cd4ff01029477725517ae9e4fb74a2c98afb910a5e720192d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "8df7b931cce9f524101d971a6a6936545cdd70e8134eafc94b54a576a9779ba2"
+  },
+  "images/thumbs/gallery/20261018_hikone-castle_night_52688_michikusa.webp": {
+    "source": "images/20261018_hikone-castle_night_52688_michikusa.jpg",
+    "sourceSha256": "c5c79c0c918e285d7cd2ff08372e571ce7be5eca4413a17a1b16d6687598f4be",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a3c3eeed056e194b44a44d31694a4035451cf267ec706f80a36ad0b5ed4535f6"
+  },
+  "images/thumbs/gallery/20261018_kaguya-no-akari_night_1747_michikusa.webp": {
+    "source": "images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+    "sourceSha256": "c553e35bb3e145dc9d18e0943f83c92955822823cd0ac32a492d3a0412125a0a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0b9bb15ad67eacabb7be27a91c1efc3da0417299f2872c92730d4ea3db714d5d"
+  },
+  "images/thumbs/gallery/20261018_pocari-fukuroi_night_82493_michikusa.webp": {
+    "source": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+    "sourceSha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "aba35043cd3d68caebecd1c6335c02bf0ee8301b344db30b3949fa2fce0ed394"
+  },
+  "images/thumbs/gallery/20261018_shimizu-port-chikyu_night_8189_michikusa.webp": {
+    "source": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
+    "sourceSha256": "a0187401a9d9a85ff78ae3c3f634d408f2d31a03ea08ae70e30b26befbe37e37",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "019db9a4e55af05e6e976b42917fa4a85caec6b8bdbc09db54567deafd766ebf"
+  },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",
     "sourceSha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",

@@ -18,7 +18,7 @@ function record(item,p,light){
  const note=text(p.note||p.credit?.note),alt=text(p.alt)||item.ja+'の車窓';
  if(light==='day')assert(!/夕暮れ|夕焼け|薄暮|朝焼け|night|dusk|sunset/i.test(note+' '+alt)&&p.timeOfDay!=='night',item.id+' is not a day photograph');
  const photo={src:p.src,credit:'michikusa',date,note,alt,light};
- photos.push({stopId:item.id,kind:item.kind,...photo,sha256:sha(bytes),bytes:bytes.length,lightEvidence:'2026-10-12 source annotation and original photograph review'});return photo;
+ photos.push({stopId:item.id,kind:item.kind,...photo,sha256:sha(bytes),bytes:bytes.length,lightEvidence:p.src.startsWith('images/20261018_')?'2026-10-18 owner night photograph and GPX review':'2026-10-12 source annotation and original photograph review'});return photo;
 }
 const scenery=plan.day.map(([id,file,category])=>{
  const s=source.find(s=>s.id===id);assert(s,'Unknown spot '+id);const p=s.viewpoint||s.map;assert(p,'Missing position '+id);

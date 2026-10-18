@@ -4,7 +4,7 @@
     "scenery": 55,
     "boards": 23,
     "dayScenery": 54,
-    "nightScenery": 15
+    "nightScenery": 18
   },
   "coverage": [
     {
@@ -505,6 +505,19 @@
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
     },
     {
+      "stopId": "kaguya-no-akari",
+      "kind": "scenery",
+      "src": "images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-18",
+      "note": "緑に照らされた塔が、夜の街の屋根越しに見えます。",
+      "alt": "緑に光るかぐやの灯",
+      "light": "night",
+      "sha256": "c553e35bb3e145dc9d18e0943f83c92955822823cd0ac32a492d3a0412125a0a",
+      "bytes": 139845,
+      "lightEvidence": "2026-10-18 owner night photograph and GPX review"
+    },
+    {
       "stopId": "tokyo-tower",
       "kind": "scenery",
       "src": "images/20260629_tokyo_tower_night_michikusa.jpg",
@@ -726,6 +739,19 @@
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
     },
     {
+      "stopId": "fujikawa-bridge",
+      "kind": "scenery",
+      "src": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-18",
+      "note": "暗い川の向こうに、緑色に光る観覧車の輪が見えます。",
+      "alt": "夜の富士川の奥に緑色に光るFuji Sky View",
+      "light": "night",
+      "sha256": "2fceca682367168cd4ff01029477725517ae9e4fb74a2c98afb910a5e720192d",
+      "bytes": 80589,
+      "lightEvidence": "2026-10-18 owner night photograph and GPX review"
+    },
+    {
       "stopId": "left-fuji",
       "kind": "scenery",
       "src": "images/20260513_left_fuji.jpg",
@@ -754,15 +780,15 @@
     {
       "stopId": "shimizu-port-chikyu",
       "kind": "scenery",
-      "src": "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
+      "src": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
       "credit": "michikusa",
-      "date": "2026-06-29",
-      "note": "夜の港に、ちきゅう",
-      "alt": "夜の新幹線から見える清水港とちきゅう",
+      "date": "2026-10-18",
+      "note": "港のクレーンの間に、作業灯に照らされたちきゅうのデリックが見えます。",
+      "alt": "夜の清水港で作業灯に照らされたちきゅうのデリック",
       "light": "night",
-      "sha256": "047005ca3df320e904d9cedf073889d3f12b22964829a86b7da6b255b62b1852",
-      "bytes": 143492,
-      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+      "sha256": "a0187401a9d9a85ff78ae3c3f634d408f2d31a03ea08ae70e30b26befbe37e37",
+      "bytes": 72892,
+      "lightEvidence": "2026-10-18 owner night photograph and GPX review"
     },
     {
       "stopId": "granship",
@@ -841,6 +867,19 @@
       "sha256": "97879a902d974eeea408e2d2eac575eb19ce1681ab64035bf10efd4998a487bb",
       "bytes": 334330,
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "pocari-fukuroi",
+      "kind": "scenery",
+      "src": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-18",
+      "note": "夜の走行中の撮影でぶれています。青く光るポカリスエットのロゴが目印です。",
+      "alt": "夜の大塚製薬袋井工場で青く光るポカリスエットのロゴ",
+      "light": "night",
+      "sha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
+      "bytes": 187737,
+      "lightEvidence": "2026-10-18 owner night photograph and GPX review"
     },
     {
       "stopId": "hamanako",
@@ -1144,15 +1183,15 @@
     {
       "stopId": "hikone-castle",
       "kind": "scenery",
-      "src": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
+      "src": "images/20261018_hikone-castle_night_52688_michikusa.jpg",
       "credit": "michikusa",
-      "date": "2026-09-14",
-      "note": "夜の彦根城を車窓から探す",
-      "alt": "夜の彦根城を車窓から探す",
+      "date": "2026-10-18",
+      "note": "街の明かりの奥、丘の上に白く光る小さな天守が彦根城です。",
+      "alt": "夜の街の奥に白く光る彦根城",
       "light": "night",
-      "sha256": "8665b70e5dd50aae6675f0224aa45de85f26daf5182b70cfa5f600f9a012f6d0",
-      "bytes": 197211,
-      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+      "sha256": "c5c79c0c918e285d7cd2ff08372e571ce7be5eca4413a17a1b16d6687598f4be",
+      "bytes": 206102,
+      "lightEvidence": "2026-10-18 owner night photograph and GPX review"
     },
     {
       "stopId": "lotte-shiga",
@@ -1677,7 +1716,7 @@
   ],
   "mapCredit": "地理院タイル（淡色地図を加工）",
   "sourceHashes": {
-    "data.js": "5b7a7551db3521aa684f97529a45cef647b6e9c77cd1ef539fe7f5ea2c8e123d",
+    "data.js": "d6ae6e53f7ec21513dd37ef0f682c5e5ffc6dc0c2d9fc6587f8e34e8e82734f8",
     "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
   }
 }
