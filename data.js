@@ -4734,13 +4734,13 @@ const SPOTS = [
       "ja": [
         "写真では、線路沿いのフェンスと木々の奥に芝生の斜面がひろがり、その上に工場が横長に並んでいます。右側の青い外壁には、白い「POCARI SWEAT」の文字と、ボトルでおなじみの白い波形。左側にも同じ青の壁面があり、銀色の建物を青が挟む配色です。",
         "見分けるコツは、まず芝の斜面を探すことです。工場の敷地は東西に長く、斜面の上の建物が線路と平行に続きます。青い壁と白い文字が見えたら、そこがポカリスエットの工場です。手前の木々や架線柱で一瞬隠れることがあります。",
-        "夜は外壁のサインがライトアップされ、暗い丘に青い壁と文字が浮かびます。この写真は曇りの日中に撮ったもので、夜の見え方はまだ撮影していません。",
+        "夜は、青く光るポカリスエットのロゴが目印です。ギャラリーの夜景写真は、夜の走行中に撮影したためぶれています。",
         "工場では、ポカリスエットの生産ラインを見学通路から見られる無料の工場見学を、火曜日から金曜日（祝日・年末年始を除く）に完全予約制で行っています。日時や申込期間は、参考リンクの大塚製薬の案内で最新情報を確認してください。"
       ],
       "en": [
         "In the photograph, a grassy slope rises beyond the trackside fence and trees, with the plant stretched along the top. The blue wall on the right carries white POCARI SWEAT lettering and the white wave familiar from the bottles. Another blue wall on the left frames the silver buildings between the two.",
         "Look for the grassy slope first. The site is long from east to west, so the buildings on the slope run parallel to the tracks. Once you see the blue wall and white letters, you have found the Pocari Sweat plant. Trees and overhead-line poles can hide it for a moment.",
-        "At night the wall sign is lit, so the blue wall and lettering float above the dark hill. The photograph above shows the plant on a cloudy day.",
+        "At night, look for the blue-lit Pocari Sweat logo. The night photograph in the gallery is blurred because it was taken from a moving train.",
         "The plant runs free tours from Tuesday to Friday (excluding holidays and the New Year period), with a gallery view of the Pocari Sweat production line. Tours require advance reservations and are conducted in Japanese only; visitors who do not speak Japanese must bring a Japanese-speaking interpreter. Check Otsuka's guide in the references for current dates and booking periods."
       ]
     },
