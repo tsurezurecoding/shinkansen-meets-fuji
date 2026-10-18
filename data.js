@@ -896,6 +896,23 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+        "alt": {
+          "ja": "緑に光るかぐやの灯",
+          "en": "Kaguya no To glowing green at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-18",
+        "timeOfDay": "night",
+        "note": {
+          "ja": "緑に照らされた塔が、夜の街の屋根越しに見えます。",
+          "en": "The green-lit tower rises above the rooftops at night."
+        }
+      },
+      {
         "src": "images/20260930_kaguya-no-akari_32405_michikusa.jpg",
         "alt": {
           "ja": "竹をイメージした上部を望遠で捉えた、かぐやの灯",
@@ -3867,6 +3884,23 @@ const SPOTS = [
     },
     photos: [
       {
+        "src": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+        "alt": {
+          "ja": "夜の富士川の奥に緑色に光るFuji Sky View",
+          "en": "Fuji Sky View glowing green beyond the Fuji River at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-18",
+        "timeOfDay": "night",
+        "note": {
+          "ja": "暗い川の向こうに、緑色に光る観覧車の輪が見えます。",
+          "en": "A green-lit Ferris wheel stands out beyond the dark river."
+        }
+      },
+      {
         "src": "images/20220205_fujikawa_bridge_michikusa.jpg",
         "alt": {
           "ja": "富士川越しに見る冠雪の富士山と富士川水管橋",
@@ -4083,6 +4117,23 @@ const SPOTS = [
       note: { ja: "ガントリークレーンの合間に見える、停泊中の「ちきゅう」の巨大なデリック", en: "CHIKYU's huge derrick, docked between the gantry cranes" },
     },
     photos: [
+      {
+        "src": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
+        "alt": {
+          "ja": "夜の清水港で作業灯に照らされたちきゅうのデリック",
+          "en": "CHIKYU’s drilling derrick illuminated by work lights at Shimizu Port at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-18",
+        "timeOfDay": "night",
+        "note": {
+          "ja": "港のクレーンの間に、作業灯に照らされたちきゅうのデリックが見えます。",
+          "en": "CHIKYU’s drilling derrick is lit by work lights between the port cranes."
+        }
+      },
       {
         "src": "images/20260712_shimizu_port_chikyu_1_michikusa.jpg",
         "alt": {
@@ -4715,6 +4766,23 @@ const SPOTS = [
       }
     },
     "photos": [
+      {
+        "src": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+        "alt": {
+          "ja": "夜の大塚製薬袋井工場で青く光るポカリスエットのロゴ",
+          "en": "The blue-lit Pocari Sweat logo at Otsuka Pharmaceutical’s Fukuroi Plant at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-18",
+        "timeOfDay": "night",
+        "note": {
+          "ja": "夜の走行中の撮影でぶれています。青く光るポカリスエットのロゴが目印です。",
+          "en": "This photograph is blurred because it was taken from a moving train at night. Look for the blue-lit Pocari Sweat logo."
+        }
+      },
       {
         "src": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
         "credit": {
@@ -7794,6 +7862,23 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20261018_hikone-castle_night_52688_michikusa.jpg",
+        "alt": {
+          "ja": "夜の街の奥に白く光る彦根城",
+          "en": "The illuminated white keep of Hikone Castle beyond the town at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-10-18",
+        "timeOfDay": "night",
+        "note": {
+          "ja": "街の明かりの奥、丘の上に白く光る小さな天守が彦根城です。",
+          "en": "Hikone Castle is the small white-lit keep on the hill beyond the town lights."
+        }
+      },
+      {
         "src": "images/20240719_hikone_castle_asami_k920.jpg",
         "alt": {
           "ja": "新幹線のE席側から遠くに見える彦根城",
@@ -9905,7 +9990,7 @@ function wheelDisplayName(name, lang) {
 }
 
 const WHEEL_COLLECTION = [
-  {"id":"fuji-sky-view","stampId":"ferris-wheel-fuji-sky-view","minutesFromTokyo":46,"side":"E","lat":35.16175,"lng":138.61735,"confidence":"verified","durationSec":5,"name":{"ja":"Fuji Sky Viewの観覧車","en":"Fuji Sky View Ferris Wheel"},"area":{"ja":"新富士 → 静岡（富士川橋梁）","en":"Shin-Fuji → Shizuoka (Fuji River bridge)"},"hook":{"ja":"水管橋のむこうに、小さな輪","en":"A small wheel beyond the pipe bridge"},"body":{"ja":"富士川を渡るとき、E席側で白い水管橋のさらに向こうを探してみてください。富士川SA上り線の「Fuji Sky View」が、小さな輪として見えます。富士山や橋といっしょに楽しむ、川上の遠景です。","en":"As the train crosses the Fuji River, look beyond the white pipe bridge on the Seat E side. Fuji Sky View, at the Tokyo-bound Fujikawa service area, appears as a small distant wheel: one more detail in the river-and-mountain panorama."},"story":{"ja":"白い水管橋のむこう、富士川の川上に見える小さな観覧車が「Fuji Sky View」です。2017年2月23日の「富士山の日」に、東名高速道路の富士川SA上り線に開業しました。運営する泉陽興業によると、ゴンドラの最上部は地上60m。新幹線からは約2.8km離れた遠景なので、富士川橋梁へ入る前にE席側へ構え、水管橋の奥を探すのが手がかりです。","en":"The small wheel upstream beyond the white pipe bridge is Fuji Sky View. It opened on Mount Fuji Day, 23 February 2017, at the Tokyo-bound Fujikawa service area on the Tomei Expressway. Operator Senyo describes gondolas reaching 60 metres above ground. From the Shinkansen it is roughly 2.8 km away, so be ready at the Seat E window before crossing the river and look beyond the pipe bridge."},"official":"https://www.senyo.co.jp/fujiskyview/","guidePageId":"fujikawa-bridge","guideRoute":{"ja":"spots/fujikawa-bridge.html","en":"en/spots/fujikawa-bridge.html"},"viewpoint":{"lat":35.138661,"lng":138.63660565},"photo":{"src":"images/20260924_fuji-sky-view_33058_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"水管橋の奥に見えるFuji Sky View","en":"Fuji Sky View beyond the water pipe bridge"},"caption":{"ja":"富士川水管橋の向こうの小さな輪 / 写真：michikusa（2026-09-24）","en":"A small wheel beyond the pipe bridge / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}},
+  {"id":"fuji-sky-view","stampId":"ferris-wheel-fuji-sky-view","minutesFromTokyo":46,"side":"E","lat":35.16175,"lng":138.61735,"confidence":"verified","durationSec":5,"name":{"ja":"Fuji Sky Viewの観覧車","en":"Fuji Sky View Ferris Wheel"},"area":{"ja":"新富士 → 静岡（富士川橋梁）","en":"Shin-Fuji → Shizuoka (Fuji River bridge)"},"hook":{"ja":"水管橋のむこうに、小さな輪","en":"A small wheel beyond the pipe bridge"},"body":{"ja":"富士川を渡るとき、E席側で白い水管橋のさらに向こうを探してみてください。富士川SA上り線の「Fuji Sky View」が、小さな輪として見えます。富士山や橋といっしょに楽しむ、川上の遠景です。","en":"As the train crosses the Fuji River, look beyond the white pipe bridge on the Seat E side. Fuji Sky View, at the Tokyo-bound Fujikawa service area, appears as a small distant wheel: one more detail in the river-and-mountain panorama."},"story":{"ja":"白い水管橋のむこう、富士川の川上に見える小さな観覧車が「Fuji Sky View」です。2017年2月23日の「富士山の日」に、東名高速道路の富士川SA上り線に開業しました。運営する泉陽興業によると、ゴンドラの最上部は地上60m。新幹線からは約2.8km離れた遠景なので、富士川橋梁へ入る前にE席側へ構え、水管橋の奥を探すのが手がかりです。","en":"The small wheel upstream beyond the white pipe bridge is Fuji Sky View. It opened on Mount Fuji Day, 23 February 2017, at the Tokyo-bound Fujikawa service area on the Tomei Expressway. Operator Senyo describes gondolas reaching 60 metres above ground. From the Shinkansen it is roughly 2.8 km away, so be ready at the Seat E window before crossing the river and look beyond the pipe bridge."},"official":"https://www.senyo.co.jp/fujiskyview/","guidePageId":"fujikawa-bridge","guideRoute":{"ja":"spots/fujikawa-bridge.html","en":"en/spots/fujikawa-bridge.html"},"viewpoint":{"lat":35.138661,"lng":138.63660565},"photo":{"src":"images/20260924_fuji-sky-view_33058_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"水管橋の奥に見えるFuji Sky View","en":"Fuji Sky View beyond the water pipe bridge"},"caption":{"ja":"富士川水管橋の向こうの小さな輪 / 写真：michikusa（2026-09-24）","en":"A small wheel beyond the pipe bridge / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}},"gallery":[{"src":"images/20261018_fuji-sky-view_night_0_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"夜の富士川の奥に緑色に光るFuji Sky View","en":"Fuji Sky View glowing green beyond the Fuji River at night"},"caption":{"ja":"暗い川の向こうに、緑色に光る観覧車の輪が見えます。 / 写真：michikusa（2026年10月）","en":"A green-lit Ferris wheel stands out beyond the dark river. / Photo: michikusa (October 2026)"},"credit":{"ja":"michikusa","en":"michikusa"},"date":"2026-10-18","timeOfDay":"night"}]},
   {"id":"nonhoi","stampId":"ferris-wheel-nonhoi","minutesFromTokyo":77,"side":"A","lat":34.72111,"lng":137.43194,"confidence":"verified","durationSec":8,"name":{"ja":"のんほいパーク","en":"Nonhoi Park"},"area":{"ja":"浜松 → 豊橋","en":"Hamamatsu → Toyohashi"},"hook":{"ja":"豊橋の手前で、ひとつ","en":"A wheel before Toyohashi"},"body":{"ja":"豊橋に着く手前、A席側。住宅や工場の屋根の向こうに、白い輪が立っています。曇りの日でも空を背にするので、形は見分けられます。","en":"Just before Toyohashi, on the Seat A side, a white wheel stands beyond the roofs of houses and factories. It sits against the sky, so its shape reads even on a cloudy day."},"story":{"ja":"浜松を出て豊橋へ向かう終盤、A席側の住宅と工場の屋根の向こうに、白い観覧車が立っています。豊橋総合動植物公園「のんほいパーク」の大観覧車です。高さは約50m、ゴンドラは6人乗りで、一周はおよそ12分。まわりに高い建物がない平地なので、空を背にした輪の形だけがすっと抜けて見え、曇りの日でも形は見分けられます。のんほいパークは動物園・植物園・自然史博物館・遊園地の4つをひとつにした39.6haの公園で、1992年に今の総合公園として開園しました。愛称の「のんほい」は、東三河の方言「のん」「ほい」から。線路から約0.65kmと近いぶん、現れてから消えるまでは8秒ほどです。まもなく豊橋、という合図にもなる観覧車です。","en":"In the last minutes before Toyohashi, a white Ferris wheel stands beyond the houses and factory roofs on the Seat A side. It belongs to Nonhoi Park, the combined zoo, botanical garden, natural history museum and amusement park that Toyohashi opened in its present form in 1992; the odd name is two words of the local dialect. The wheel is about 50 metres tall, each gondola holds six people, and a full turn takes twelve minutes. Nothing around it comes close to that height, so on this wide, flat plain the ring simply lifts clear of the rooftops against the sky, even on an overcast day. It is only about 0.65 km from the line, which also means it is gone in around eight seconds. It is a sign that Toyohashi is approaching."},"photo":{"src":"images/20260904_nonhoi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるのんほいパークの観覧車","en":"The Nonhoi Park wheel seen from the Seat A side"},"caption":{"ja":"家並みと鉄塔の向こうに立つ輪 / 写真：新幹線の窓","en":"The wheel beyond houses and pylons / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.nonhoi.jp/amusement/","gallery":[{"src":"images/20260924_nonhoi-wheel_15060_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"のんほいパークの観覧車","en":"Nonhoi Park Ferris wheel"},"caption":{"ja":"のんほいパークの観覧車 / 写真：michikusa（2026-09-24）","en":"Nonhoi Park Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
   {"id":"laguna","stampId":"ferris-wheel-laguna","minutesFromTokyo":82,"side":"A","lat":34.807722,"lng":137.27583,"confidence":"verified","durationSec":12,"name":{"ja":"ラグーナテンボス","en":"Laguna Ten Bosch"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"海辺の街に、輪を探す","en":"Look toward the coastal town"},"body":{"ja":"蒲郡の海辺にあるラグーナテンボスの観覧車。A席側、集合住宅や畑の向こうに白い輪が立っています。まわりの建物より高く出るので、遠くても見分けやすい輪です。","en":"The wheel at Laguna Ten Bosch stands in coastal Gamagori. On the Seat A side it rises white beyond apartment blocks and fields; it stands taller than the buildings around it, so it is easier to pick out than its distance suggests."},"story":{"ja":"豊橋を出て三河安城へ向かう途中、A席側に大きな白い輪が立ちます。蒲郡の海辺にあるラグーナテンボスの観覧車です。高さは65m、ゴンドラは4人乗りで、頂上からは三河湾が一望できます。中心のテーマパーク「ラグナシア」は2002年にラグーナ蒲郡として開業し、いまはラグーナテンボスの名前で営業しています。線路からは約0.8km。集合住宅や畑の向こうに立っていますが、まわりの建物よりずっと高く出るので、探すというより目に入ってくる輪です。夜はイルミネーションが灯り、暗い海辺に光の輪が浮かびます。見送ったあとも窓はそのままに。30秒ほどあと、同じA席側の遠くに三河湾と三河大島が現れます。海側の窓がいちばん楽しい区間です。","en":"Between Toyohashi and Mikawa-Anjo, a large white wheel rises on the Seat A side. This is the Ferris wheel at Laguna Ten Bosch, a seaside resort on the coast at Gamagori whose theme park opened in 2002: 65 metres tall, four to a gondola, with the whole of Mikawa Bay laid out from the top. It stands about 0.8 km from the line, beyond apartment blocks and fields, but it clears everything around it so comprehensively that you do not really have to look for it. After dark it is lit, and the ring floats above the coast. Keep watching the same window afterwards: about half a minute later, Mikawa Bay and the gourd-shaped island of Mikawa Oshima appear in the distance. This is the stretch where the sea side earns its keep."},"photo":{"src":"images/20260820_laguna_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるラグーナテンボスの観覧車","en":"The Laguna Ten Bosch wheel seen from the Seat A side"},"caption":{"ja":"街並みの向こうに立つ白い輪 / 写真：新幹線の窓","en":"A white wheel beyond the town / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.lagunatenbosch.co.jp/lagunasia/index.html","gallery":[{"src":"images/20260924_laguna-wheel_5380_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"ラグーナテンボスの観覧車","en":"Laguna Ten Bosch Ferris wheel"},"caption":{"ja":"ラグーナテンボスの観覧車 / 写真：michikusa（2026-09-24）","en":"Laguna Ten Bosch Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
   {"id":"horiuchi","stampId":"ferris-wheel-horiuchi","minutesFromTokyo":87,"side":"A","lat":34.9288139,"lng":137.0912944,"confidence":"verified","durationSec":5,"name":{"ja":"堀内公園","en":"Horiuchi Park"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"公園の輪も、車窓の仲間","en":"A park wheel joins the journey"},"body":{"ja":"安城市の堀内公園にも観覧車があります。三河安城の手前、A席側の住宅地の奥に小さく見えます。ラグーナの輪より低く、建物に紛れやすい輪です。","en":"Horiuchi Park in Anjo has a Ferris wheel too. It appears small beyond the houses on the Seat A side before Mikawa-Anjo. Lower than the Laguna wheel, it blends easily into the buildings."},"story":{"ja":"三河安城に着く1分ほど前、A席側の住宅地の奥に、小さな観覧車が見えます。安城市の堀内公園です。「花とみどりとメルヘン」をテーマにした市営の公園で、入園は無料。汽車のメルヘン号、メリーゴーランド、サイクルモノレール、そしてこの観覧車が、どれも1回100円前後で動いています。遊園地というより、観覧車のある公園。数分前に見えるラグーナテンボスの輪（65m）にくらべるとずっと低く、屋根や電柱と同じ高さの帯に入ってしまいます。空ではなく、屋根の並びのなかに丸い骨組みが混じっていないかを探してください。線路からは約0.45kmと、ここで紹介する観覧車のなかでいちばん近いのに、いちばん見つけにくい——そういう小ささが、この輪の性格です。","en":"About a minute before Mikawa-Anjo, a small Ferris wheel shows beyond the houses on the Seat A side. It belongs to Horiuchi Park, a free municipal park in Anjo built around the theme of flowers, greenery and fairy tales. A little train, a carousel, a cycle monorail and this wheel all run for around a hundred yen a ride; it is less an amusement park than a park that happens to have a Ferris wheel. Compared with the 65-metre wheel at Laguna Ten Bosch a few minutes earlier it is much lower, and it sits in the same band of the window as the roofs and power poles in front of it. Do not look for a ring against the sky — look for something round and latticed among the rooflines. At about 0.45 km it is the closest wheel in this collection to the line and still the hardest to find, which is rather the point of it."},"photo":{"src":"images/20260820_horiuchi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見える堀内公園の観覧車","en":"The Horiuchi Park wheel seen from the Seat A side"},"caption":{"ja":"住宅地の奥に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel beyond the houses / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.city.anjo.aichi.jp/tanoshimu/koen/horiuchi.html","gallery":[{"src":"images/20260924_horiuchi-wheel_17960_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"堀内公園の観覧車","en":"Horiuchi Park Ferris wheel"},"caption":{"ja":"堀内公園の観覧車 / 写真：michikusa（2026-09-24）","en":"Horiuchi Park Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
@@ -9928,7 +10013,7 @@ const WHEEL_COLLECTION = [
   sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
   map: { lat: item.lat, lng: item.lng, ja: item.name.ja, en: item.name.en },
   image: item.photo?.src || "images/stamps/stamp_hirakata-park-wheel.svg",
-  photos: [item.photo, ...(item.gallery || [])].filter(Boolean).map(photo => ({ src: photo.src, alt: photo.alt, credit: photo.credit || { ja: "michikusa", en: "michikusa" }, note: photo.caption })),
+  photos: [item.photo, ...(item.gallery || [])].filter(Boolean).map(photo => ({ src: photo.src, alt: photo.alt, credit: photo.credit || { ja: "michikusa", en: "michikusa" }, ...(photo.timeOfDay ? { timeOfDay: photo.timeOfDay } : {}), ...(photo.date ? { date: photo.date } : {}), note: photo.caption })),
   ja: { name: wheelDisplayName(item.name.ja, "ja"), area: item.area.ja, hook: item.hook.ja, story: (item.story || item.body).ja },
   en: { name: wheelDisplayName(item.name.en, "en"), area: item.area.en, hook: item.hook.en, story: (item.story || item.body).en },
 }));
