@@ -70,7 +70,15 @@
   function isSupportedWebPath(path) {
     var route = stripEdition(path);
     return /^\/spots\/[a-z0-9][a-z0-9-]*\.html$/i.test(route)
-      || /^\/(?:sparkling-dreams|hanabi|yakei|727-collection|castles|ferris-wheels|window-moments)\.html$/.test(route);
+      || /^\/(?:sparkling-dreams|hanabi|yakei|727-collection|castles|ferris-wheels|window-moments)\.html$/.test(route)
+      || isHostRoutedArticlePath(path);
+  }
+
+  function isHostRoutedArticlePath(path) {
+    var route = stripEdition(path);
+    return route === "/guide.html"
+      || ((languageFor(path) === "ja" || languageFor(path) === "en")
+        && /^\/(?:arenani|reflections)\.html$/.test(route));
   }
 
   function stripEdition(path) {
@@ -80,9 +88,11 @@
   function legacyWebPath(path) {
     // Android 1.0.27 has these JA/EN routes. No capabilities response is an
     // old host, not permission to send it a new native navigation contract.
+    var route = stripEdition(path);
     return (languageFor(path) === "ja" || languageFor(path) === "en")
       && path !== "/en/727-collection.html"
-      && isSupportedWebPath(path);
+      && (/^\/spots\/[a-z0-9][a-z0-9-]*\.html$/i.test(route)
+        || /^\/(?:sparkling-dreams|hanabi|yakei|727-collection|castles|ferris-wheels|window-moments)\.html$/.test(route));
   }
 
   function cleanPublicUrl(value) {
@@ -294,7 +304,10 @@
         requestNativeNavigation(route);
         return;
       }
-      if (isSupportedWebPath(pathName(url))) {
+      // Older version-2 hosts cannot navigate these newer article routes.
+      // Keep their existing public-URL request below: new hosts embed it,
+      // older hosts open the browser, and standalone pages keep normal links.
+      if (isSupportedWebPath(pathName(url)) && !isHostRoutedArticlePath(pathName(url))) {
         event.preventDefault();
         if (!(hostCapabilities || legacyWebPath(pathName(url))) || !post("navigation", {
           kind: "web",
@@ -336,11 +349,29 @@
     post("content-ready", meta);
   }
 
+  function retainGuideLanguageMenu() {
+    if (stripEdition(pathName(root.location)) !== "/guide.html") return;
+    var menu = document.querySelector(".topbar .guide-lang-menu");
+    var hero = document.querySelector("main .collection-hero-inner");
+    if (!menu || !hero) return;
+    // utility-locales may replace the menu before or after DOMContentLoaded.
+    // Moving its container keeps either ordering visible outside hidden chrome.
+    var holder = document.createElement("div");
+    holder.className = "mado-embedded-guide-language";
+    hero.insertBefore(holder, hero.firstChild);
+    holder.appendChild(menu);
+  }
+
+  function initializeContent() {
+    retainGuideLanguageMenu();
+    announceContentReady();
+  }
+
   document.addEventListener("click", handleLinkClick, true);
   root.addEventListener("message", handleHostMessage);
   root.addEventListener("pageshow", announceContentReady);
   root.addEventListener("hashchange", announceContentReady);
   patchShare();
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", announceContentReady, { once: true });
-  else announceContentReady();
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initializeContent, { once: true });
+  else initializeContent();
 }(typeof window !== "undefined" ? window : globalThis));

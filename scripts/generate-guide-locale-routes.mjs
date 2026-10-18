@@ -1,5 +1,5 @@
 import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
-// Guide prose remains hand authored; shared edition navigation is generated.
+// Guide prose remains hand authored; shared edition navigation and embedded entry are generated.
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -46,6 +46,10 @@ for (const lang of languages) {
     }));
   }
   html = html.replace(/<!-- MADO_GUIDE_MENU_(\d+) -->/g, (_, index) => menus[+index]);
+  if (!html.includes('app-embedded.js')) {
+    const embeddedHead = `<script src="${prefix}app-embedded.js?v=${assetVersion('app-embedded.js')}"></script>\n  <link rel="stylesheet" href="${prefix}app-embedded.css?v=${assetVersion('app-embedded.css')}">`;
+    html = html.replace(/(<meta name="viewport"[^>]*>)/, '$1\n  ' + embeddedHead);
+  }
   html = withLocaleRegistry(html, prefix);
   for (const [tag, asset] of [['script', 'utility-locales.js'], ['link', 'utility-locales.css']]) {
     if (!html.includes((tag === 'script' ? 'src="' : 'href="') + prefix + asset)) {

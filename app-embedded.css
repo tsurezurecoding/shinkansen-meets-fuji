@@ -80,6 +80,12 @@
   padding-bottom: 24px;
 }
 
+:root.mado-embedded-web .mado-embedded-guide-language {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
 :root.mado-embedded-web .spot-page-shell {
   display: block;
   width: min(900px, 100%);
