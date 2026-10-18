@@ -47,8 +47,8 @@ const shinkansen = [
 const otherLines = [
  { id: 'ofuna-kannon', line: 'JR東海道線・横須賀線', area: '大船駅付近', kind: '像', q: '森から顔だけ出した、白い観音は何？', a: '大船観音寺の白衣観音', body: '大船駅に近づくと、山の木々の上に大きな白い顔が現れます。高さ25mの像は、立っているのではなく胸から上だけの姿。1960年に完成しました。', links: [['https://oofuna-kannon.or.jp/about-us/', '大船観音寺 公式サイト']], x: { handle: 'tamachan16sai', name: '上野東京ライン 高槻行き', status: '2055542554482155914', text: '🐈️タマちゃんの、世界の車窓から🐈️ 上り東海道本線の電車に乗車中、左車窓に“大船観音”が見えたら『あ～、大船駅に着くなぁ…』と実感するニャッ😻' } },
  { id: 'tire-park', line: 'JR京浜東北線', area: '川崎〜蒲田', kind: '公園', q: 'タイヤでできた怪獣がいる、あの公園は何？', a: '大田区の西六郷公園（タイヤ公園）', body: '線路沿いの住宅街に、古タイヤで作られた怪獣やロボットが立つ公園です。タイヤの遊具も多く、「タイヤ公園」の名で親しまれています。', links: [['https://www.city.ota.tokyo.jp/shisetsu/park/nishirokugou.html', '大田区 西六郷公園']], x: { handle: 'tamachan16sai', name: '上野東京ライン 高槻行き', status: '1811693998974681328', text: '🐈タマちゃんの、世界の車窓から🐈 京浜東北線の南行電車に乗車中、右車窓に“タイヤ公園”が見えたら『あ〜、蒲田に来たなぁ…』と実感するニャッ😻' } },
- { id: 'heijo-palace', line: '近鉄奈良線', area: '大和西大寺〜新大宮', kind: '史跡', q: '大きな朱色の門。電車が遺跡の中を走っている？', a: '世界遺産・平城宮跡の朱雀門と大極殿', body: '奈良行きでは右に朱雀門、左の奥に大極殿。どちらも復元された建物です。1914年に開業した線路が、のちに世界遺産となる宮跡の真ん中を横切っています。', links: [['https://www.heijo-park.jp/', '国営平城宮跡歴史公園']], x: { handle: 'fuku_musuko', name: '奈良の福', status: '1762414136460464516', text: '奈良の車窓から。#平城宮跡 #朱雀門 #近鉄' } },
- { id: 'sakakibara', line: '近鉄大阪線', area: '榊原温泉口駅付近', kind: '像', q: '三重の山あいに、金色の観音とサモトラケのニケ？', a: '寶珠山大観音寺と、ルーブル彫刻美術館', body: '近鉄特急の窓から見える金色の像は、高さ33mの純金大観音。そのそばには、ニケやミロのヴィーナスの巨大な像を屋外に置いたルーブル彫刻美術館があります。どちらも榊原温泉口駅から歩ける場所です。', links: [['https://www.daikannon.or.jp/', '寶珠山大観音寺'], ['https://www.louvre-m.com/', 'ルーブル彫刻美術館']], x: { handle: 'Haatainen', name: 'Freddie池畑【公式】', status: '1771665809015750687', text: '近鉄榊原温泉口駅から見える、今日のルーブル彫刻美術館。' } }
+ { id: 'heijo-palace', line: '近鉄奈良線', area: '大和西大寺〜新大宮', kind: '史跡', q: '遺跡の中を走っている？', heading: ['近鉄奈良線の', '朱雀門と大極殿'], a: '世界遺産・平城宮跡の朱雀門と大極殿', body: '奈良行きでは右に朱雀門、左の奥に大極殿。どちらも復元された建物です。1914年に開業した線路が、のちに世界遺産となる宮跡の真ん中を横切っています。', links: [['https://www.heijo-park.jp/', '国営平城宮跡歴史公園']], x: { handle: 'fuku_musuko', name: '奈良の福', status: '1762414136460464516', text: '奈良の車窓から。#平城宮跡 #朱雀門 #近鉄' } },
+ { id: 'sakakibara', line: '近鉄大阪線', area: '榊原温泉口駅付近', kind: '像', q: '金色の観音と、翼のある像？', heading: ['近鉄大阪線の大観音と', 'ルーブル彫刻美術館'], a: '寶珠山大観音寺と、ルーブル彫刻美術館', body: '近鉄特急の窓から見える金色の像は、高さ33mの純金大観音。そのそばには、ニケやミロのヴィーナスの巨大な像を屋外に置いたルーブル彫刻美術館があります。どちらも榊原温泉口駅から歩ける場所です。', links: [['https://www.daikannon.or.jp/', '寶珠山大観音寺'], ['https://www.louvre-m.com/', 'ルーブル彫刻美術館']], x: { handle: 'Haatainen', name: 'Freddie池畑【公式】', status: '1771665809015750687', text: '近鉄榊原温泉口駅から見える、今日のルーブル彫刻美術館。' } }
 ];
 
 // ヒーローの4枚（左上・右上・左下・右下）。観音像は写真の右端に写るので右下に置く。
@@ -212,7 +212,7 @@ function otherLineCard(c) {
       </div>
       <div class="cs-spot-body">
         <p class="cs-spot-meta"><span class="cs-pill an-pill-line">${esc(c.line)}</span><span class="cs-pill">${esc(c.area)}</span><span class="cs-pill">${esc(c.kind)}</span></p>
-        <h3 class="an-question">${question(c.q)}</h3>
+        ${c.heading ? `<p class="an-answer">${question(c.q)}</p><h3 class="an-question">${chunk(c.heading)}</h3>` : `<h3 class="an-question">${question(c.q)}</h3>`}
         <p class="an-answer">答え<strong>${esc(c.a)}</strong></p>
         <p>${esc(c.body)}</p>
         <p class="an-links">${c.links.map(([href, label]) => `<a href="${href}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</p>
@@ -295,7 +295,7 @@ ${tiles.map(tile).join('\n')}
         <p class="an-kicker">車窓で気になった</p>
         <h1 id="anTitle"><span class="an-bracket">『</span>あれ、何<span class="an-q">？</span><span class="an-bracket">』</span></h1>
         <p class="cs-hero-lead">${chunk(['窓の外に一瞬あらわれて、', '名前も分からないまま', '通り過ぎた景色。', 'その正体を、ここで。'])}</p>
-        <p class="an-cta"><a class="btn btn-primary btn-small" href="#shinkansen" data-cta-track="arenani_section_click" data-cta-id="hero_shinkansen">東海道新幹線の${shinkansen.length}枚</a><a class="btn btn-ghost btn-small" href="#other-lines" data-cta-track="arenani_section_click" data-cta-id="hero_other_lines">ほかの路線の${otherLines.length}枚</a></p>
+        <p class="an-cta"><a class="btn btn-primary btn-small" href="#shinkansen" data-cta-track="arenani_section_click" data-cta-id="hero_shinkansen">東海道新幹線の${shinkansen.length}枚</a><a class="btn btn-ghost btn-small" href="#other-lines" data-cta-track="arenani_section_click" data-cta-id="hero_other_lines">JR在来線の${otherLines.filter(c => !c.heading).length}題</a><a class="btn btn-ghost btn-small" href="#kintetsu" data-cta-track="arenani_section_click" data-cta-id="hero_kintetsu">近鉄の${otherLines.filter(c => c.heading).length}題</a></p>
         <p class="cs-hero-credit">写真：新幹線の窓</p>
       </div>
       </div>
@@ -317,10 +317,19 @@ ${cards}
   <section class="cs-section" id="other-lines" aria-labelledby="anOtherTitle">
     <div class="cs-section-head">
       <p class="eyebrow">02 / OTHER LINES</p>
-      <h2 id="anOtherTitle">ほかの路線の「あれ、何？」</h2>
-      <p class="cs-section-lead">${chunk(['在来線や私鉄の窓にも、', '気になる景色があります。', '見かけた人の投稿と、', '公式の案内を並べました。'])}</p>
+      <h2 id="anOtherTitle">JR在来線の「あれ、何？」</h2>
+      <p class="cs-section-lead">${chunk(['JRの在来線の窓にも、', '気になる景色があります。', '見かけた人の投稿と、', '公式の案内を並べました。'])}</p>
     </div>
-${otherLines.map(otherLineCard).join('\n')}
+${otherLines.filter(c => !c.heading).map(otherLineCard).join('\n')}
+  </section>
+
+  <section class="cs-section" id="kintetsu" aria-labelledby="anKintetsuTitle">
+    <div class="cs-section-head">
+      <p class="eyebrow">03 / KINTETSU</p>
+      <h2 id="anKintetsuTitle">${chunk(['近鉄の車窓で', '「あれ、何？」'])}</h2>
+      <p class="cs-section-lead">${chunk(['近鉄奈良線では、', '平城宮跡の朱雀門と大極殿。', '大阪線の榊原温泉口では、', '金色の観音と', 'ルーブル彫刻美術館。'])}${chunk(['窓に現れる景色を、', '投稿の映像と公式案内で', 'たどります。'])}</p>
+    </div>
+${otherLines.filter(c => c.heading).map(otherLineCard).join('\n')}
   </section>
 
   <section class="cs-next" aria-labelledby="anNextTitle">
@@ -335,7 +344,7 @@ ${otherLines.map(otherLineCard).join('\n')}
     <div class="cs-note-card">
       <h2 id="anAboutTitle">掲載について</h2>
       <p>東海道新幹線の写真は、すべて新幹線の車窓から撮影したものです。</p>
-      <p>ほかの路線は、画像を転載せず、投稿者の元の投稿を公式の埋め込みで表示しています。再生すると、Xから読み込みます。席の側や通過時刻は案内していません。</p>
+      <p>ほかの路線は、画像を転載せず、投稿者の元の投稿を公式の埋め込みで表示しています。再生すると、Xから読み込みます。左右の説明は進行方向に対する目安です。座席番号や通過時刻の案内はありません。</p>
     </div>
   </section>
 
