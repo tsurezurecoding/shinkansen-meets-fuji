@@ -4,6 +4,9 @@ import fs from 'node:fs';
 import { JSDOM } from 'jsdom';
 
 const source = fs.readFileSync(new URL('../app-embedded.js', import.meta.url), 'utf8');
+const embeddedCss = fs.readFileSync(new URL('../app-embedded.css', import.meta.url), 'utf8');
+const localeSource = fs.readFileSync(new URL('../locales.js', import.meta.url), 'utf8');
+const utilityLocaleSource = fs.readFileSync(new URL('../utility-locales.js', import.meta.url), 'utf8');
 const origin = 'https://www.michikusa-travel.com';
 const languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko'];
 const prefix = language => language === 'ja' ? '/' : `/${language}/`;
@@ -12,9 +15,9 @@ const capabilities = language => ({
   payload: { navigationVersion: 2, language },
 });
 
-function fixture({ language = 'ja', embedded = true, host = true, path = 'spots/kiyosu.html' } = {}) {
+function fixture({ language = 'ja', embedded = true, host = true, path = 'spots/kiyosu.html', html = '<!doctype html><html><body><main><h1>Article</h1><section id="photos"></section></main></body></html>' } = {}) {
   const url = `${origin}${prefix(language)}${path}${embedded ? '?from=android-app&madoBuild=test' : ''}`;
-  const dom = new JSDOM('<!doctype html><html><body><main><h1>Article</h1><section id="photos"></section></main></body></html>', { url, runScripts: 'outside-only' });
+  const dom = new JSDOM(html, { url, runScripts: 'outside-only' });
   const w = dom.window;
   const messages = [];
   const shares = [];
@@ -155,6 +158,89 @@ test('legacy JA/EN related article support agrees with Android 1.0.27', () => {
   } finally { f.close(); }
 });
 
+test('new articles keep public URL requests compatible with old hosts before and after capabilities', () => {
+  for (const language of languages) {
+    const paths = ['guide.html'];
+    if (['ja', 'en'].includes(language)) paths.push('arenani.html', 'reflections.html');
+    for (const path of paths) {
+      const f = fixture({ language, path });
+      try {
+        const href = `${prefix(language)}${path}?view=photo#references`;
+        assert.equal(f.click(href).handled, true);
+        assert.deepEqual(f.navigation(), [], `${href} is not an old host navigation route`);
+        assert.deepEqual(f.external(), [{ url: origin + href }]);
+        assert.equal(f.notice(), null);
+        f.ready(language);
+        f.click(href);
+        assert.deepEqual(f.navigation(), []);
+        assert.deepEqual(f.external().at(-1), { url: origin + href });
+      } finally { f.close(); }
+      const standalone = fixture({ language, path, host: false });
+      try {
+        const href = `${origin}${prefix(language)}${path}?view=photo&from=android-app&madoBuild=old#references`;
+        const clicked = standalone.click(href);
+        assert.equal(clicked.handled, false);
+        assert.equal(clicked.link.href, `${origin}${prefix(language)}${path}?view=photo#references`);
+        assert.equal(standalone.notice(), null);
+        assert.deepEqual(standalone.navigation(), []);
+      } finally { standalone.close(); }
+    }
+  }
+});
+
+test('new article families accept only their published editions', () => {
+  const f = fixture();
+  try {
+    const unsupported = languages.slice(2).flatMap(language => ['arenani.html', 'reflections.html'].map(path => `${prefix(language)}${path}`));
+    unsupported.push('/ar/guide.html');
+    for (const path of unsupported) f.click(path);
+    assert.deepEqual(f.navigation(), []);
+    assert.deepEqual(f.external(), unsupported.map(path => ({ url: origin + path })));
+    const arabicGuide = fs.readFileSync(new URL('../ar/guide.html', import.meta.url), 'utf8');
+    assert.doesNotMatch(arabicGuide, /app-embedded\.(?:js|css)/);
+  } finally { f.close(); }
+});
+
+for (const language of languages) {
+  test(`${language}: real Fuji guide loads embedded mode before chrome and keeps article, train and language links usable`, () => {
+    const route = `${language === 'ja' ? '' : language + '/'}guide.html`;
+    const html = fs.readFileSync(new URL('../' + route, import.meta.url), 'utf8');
+    const f = fixture({ language, path: 'guide.html', html });
+    try {
+      f.w.eval(localeSource);
+      f.w.eval(utilityLocaleSource);
+      assert.equal((html.match(/app-embedded\.js/g) || []).length, 1);
+      assert.equal((html.match(/app-embedded\.css/g) || []).length, 1);
+      assert.ok(html.indexOf('app-embedded.js') < html.indexOf('style.css'));
+      const style = f.w.document.createElement('style');
+      style.textContent = embeddedCss;
+      f.w.document.head.appendChild(style);
+      assert.equal(f.w.getComputedStyle(f.w.document.querySelector('.topbar')).display, 'none');
+      assert.equal(f.w.getComputedStyle(f.w.document.querySelector('.footer')).display, 'none');
+      assert.notEqual(f.w.getComputedStyle(f.w.document.querySelector('main')).display, 'none');
+      assert.ok(f.w.document.querySelector('main h1').textContent.trim());
+      const menu = f.w.document.querySelector('main .mado-embedded-guide-language .guide-lang-menu');
+      assert.ok(menu, 'language menu remains visible outside the hidden header');
+      assert.equal(f.w.document.querySelector('.topbar .guide-lang-menu'), null);
+      assert.notEqual(f.w.getComputedStyle(menu).display, 'none');
+      f.ready(language);
+      const train = f.w.document.querySelector('[data-guide-cta="hero_exact_time"]');
+      assert.ok(train, 'guide keeps its actual train selection CTA');
+      assert.equal(f.clickElement(train).handled, true);
+      assert.deepEqual(f.navigation().at(-1), { kind: 'native', screen: 'train', hash: '#journey' });
+      const targetLanguage = language === 'en' ? 'ja' : 'en';
+      const languageLink = [...f.w.document.querySelectorAll('.guide-lang-options a')].find(link => new URL(link.href).pathname === `${prefix(targetLanguage)}guide.html`);
+      assert.ok(languageLink);
+      menu.open = true;
+      assert.equal(f.clickElement(languageLink).handled, true);
+      // Both old and new version-2 hosts understand the public URL request.
+      // The new host embeds it; older hosts fall back to the browser.
+      assert.deepEqual(f.external(), [{ url: `${origin}${prefix(targetLanguage)}guide.html` }]);
+      assert.deepEqual(f.navigation(), [{ kind: 'native', screen: 'train', hash: '#journey' }]);
+    } finally { f.close(); }
+  });
+}
+
 test('older hosts explain additional editions and only leave the app on an explicit browser action', () => {
   for (const language of languages.slice(2)) {
     const f = fixture({ language });
@@ -262,26 +348,34 @@ test('share links are canonical, analytics remain bridged, and pageshow reannoun
   } finally { f.close(); }
 });
 
-test('same-document hash navigation and Back announce the current article fragment', async () => {
-  const f = fixture({ language: 'ko' });
-  const canonical = `${origin}/ko/spots/kiyosu.html`;
+test('same-document Fuji guide anchors and Back keep the embedded article and announce its fragment', async () => {
+  const html = fs.readFileSync(new URL('../fr/guide.html', import.meta.url), 'utf8');
+  const f = fixture({ language: 'fr', path: 'guide.html', html });
+  const canonical = `${origin}/fr/guide.html`;
   const changeHash = action => new Promise(resolve => {
     f.w.addEventListener('hashchange', resolve, { once: true });
     action();
   });
   const latestReady = () => f.messages.filter(entry => entry.message.type === 'content-ready').at(-1).message.payload;
   try {
-    await changeHash(() => f.click(`${canonical}#photos`));
-    assert.equal(latestReady().page_location, `${canonical}#photos`);
-    await changeHash(() => { f.w.location.hash = '#references'; });
-    assert.equal(latestReady().page_location, `${canonical}#references`);
+    const anchor = f.w.document.querySelector('main a[href^="#"]');
+    assert.ok(anchor && f.w.document.querySelector(anchor.getAttribute('href')));
+    const firstHash = anchor.getAttribute('href');
+    // The fixture cancels browser defaults; use the actual anchor's absolute URL
+    // so the embedded handler performs the fragment navigation itself.
+    await changeHash(() => f.click(anchor.href));
+    assert.equal(latestReady().page_location, `${canonical}${firstHash}`);
+    await changeHash(() => { f.w.location.hash = '#cloudy'; });
+    assert.equal(latestReady().page_location, `${canonical}#cloudy`);
     await changeHash(() => f.w.history.back());
-    assert.equal(f.w.location.hash, '#photos');
-    assert.equal(latestReady().page_location, `${canonical}#photos`);
+    assert.equal(f.w.location.hash, firstHash);
+    assert.equal(latestReady().page_location, `${canonical}${firstHash}`);
     await changeHash(() => f.w.history.back());
     assert.equal(f.w.location.hash, '');
     assert.equal(latestReady().page_location, canonical);
-    assert.equal(latestReady().content_path, '/ko/spots/kiyosu.html');
+    assert.equal(latestReady().content_path, '/fr/guide.html');
+    assert.equal(latestReady().content_id, 'guide');
+    assert.equal(latestReady().content_type, 'utility');
     assert.equal(new URL(f.w.location.href).searchParams.get('from'), 'android-app');
     assert.deepEqual(f.navigation(), []);
   } finally { f.close(); }
