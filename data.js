@@ -3313,6 +3313,15 @@ const SPOTS = [
         "This page is about the place, photographs, and changing scenery. Seat booking, exact timing from major stations, cloudy-day advice, and Left Fuji are collected separately in the Mt. Fuji guide.",
       ],
     },
+    pageChapters: [{
+      id: "fuji-clouds",
+      kind: "background",
+      eyebrow: "CLOUDS",
+      languages: ["ja"],
+      heading: { ja: "山頂と、隣の空にも" },
+      paragraphs: { ja: ["山頂や隣の空に、不思議な形の雲が見えたら。「一度きりの車窓」で、笠雲・つるし雲の見分け方と車窓の記録を紹介しています。"] },
+      link: { route: "window-moments.html#clouds", label: { ja: "笠雲・つるし雲の見分け方" } },
+    }],
     guideHighlight: {
       ja: "三島側では街の向こう、新富士側では田園の向こうへと前景が変わります。トンネルで見失っても、E席側を見続けてください。抜けるたびに富士山が近づき、裾野まで見える瞬間が増えていきます。",
       en: "The foreground shifts from city blocks near Mishima to open fields near Shin-Fuji. Keep watching Seat E even after a tunnel hides the mountain; each opening brings it closer and reveals more of its foothills.",

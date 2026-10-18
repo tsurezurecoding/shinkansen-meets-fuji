@@ -32,7 +32,7 @@ const COPY = {
   "wm_hero_lead": "<p class=\"wm-hero-lead\"><span class=\"copy-chunk\">この路線の車窓は、</span><span class=\"copy-chunk\">たいてい時刻で決まります。</span><span class=\"copy-chunk\">何分に、どちら側に、何が見えるか。</span><span class=\"copy-chunk\">けれど空は、</span><span class=\"copy-chunk\">その日にしか出会えない</span><span class=\"copy-chunk\">景色をつくります。</span><span class=\"copy-chunk\">虹、関ケ原の雪、</span><span class=\"copy-chunk\">富士山の笠雲とつるし雲、</span><span class=\"copy-chunk\">そして稲妻。</span></p>",
   "btn": "<a class=\"btn btn-ghost btn-small\" href=\"#rainbow\">虹</a>",
   "btn2": "<a class=\"btn btn-ghost btn-small\" href=\"#snow\">雪景色</a>",
-  "btn3": "<a class=\"btn btn-primary btn-small\" href=\"#clouds\">富士山の雲</a>",
+  "btn3": "<a class=\"btn btn-primary btn-small\" href=\"#clouds\">笠雲・つるし雲</a>",
   "btn4": "<a class=\"btn btn-ghost btn-small\" href=\"#lightning\">稲妻</a>",
   "wm_hero_credit": "<p class=\"wm-hero-credit\">写真：新幹線の窓（2022年2月5日・名古屋〜京都間）</p>",
   "wmRainbowTitle": "<h2 id=\"wmRainbowTitle\">同じ虹は、ひとつもない。</h2>",
