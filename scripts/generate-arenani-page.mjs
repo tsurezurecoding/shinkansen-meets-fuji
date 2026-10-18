@@ -21,7 +21,7 @@ const question = text => esc(text).replace(/？$/, '<span class="an-q">？</span
 const pageUrl = 'https://www.michikusa-travel.com/arenani.html';
 const englishPageUrl = 'https://www.michikusa-travel.com/en/arenani.html';
 const title = 'あれ、何？｜新幹線と電車の車窓で気になった景色の正体';
-const description = '東海道新幹線の727看板、空へ向かう線路、山際の白い観音。近鉄や東海道線の窓の金色の観音や朱色の門。車窓で一瞬見えて気になった景色の正体を、写真と投稿で確かめられます。';
+const description = '東海道新幹線の727看板から、近鉄奈良線の朱雀門、大阪線の金色の観音・ルーブル彫刻美術館まで。車窓で気になった「あれ、何？」の正体を、写真や動画、公式案内でたどります。';
 const heroImage = 'images/20260904_mishima_catapult_1_michikusa.jpg';
 const englishTitle = "What's That Outside the Train? | Everyday Japan from the Shinkansen";
 const englishDescription = 'Bright green tea rows, long silver greenhouses, giant green nets, white plumes beneath Mt. Fuji, and a red gate in the fields. Learn what these everyday Japanese scenes are from the Tokaido Shinkansen.';
