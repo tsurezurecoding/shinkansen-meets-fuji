@@ -1,0 +1,51 @@
+/* Date-aware journey light and encounter presentation. */
+.nd-date-time{display:grid!important;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) auto;gap:8px!important;align-items:center}
+.nd-date-time input{width:100%!important;min-width:0;max-width:100%;box-sizing:border-box;height:46px;padding:9px 7px!important;font-size:14px!important;border:1px solid #dfd2bf;border-radius:12px;background:#faf7f0;color:#102033;font-family:inherit}
+.nd-date-time #nd-now{padding:8px 9px;white-space:nowrap;font-size:12px;height:36px}
+.nd-date-note{font-size:11px;line-height:1.7;color:#667685;margin:10px 0 16px;overflow-wrap:anywhere}
+.nd-date-note.nd-warning{color:#805b2d}
+.nd-trip{margin:0 0 20px;padding:0;border:0}
+#timelineSection>.section-head{margin-bottom:8px}
+.nd-trip-date{font-size:12px;font-weight:500;color:#6b7783;margin:0 0 16px;text-align:center;line-height:1.7}
+.nd-disney{margin:12px auto 20px;padding:10px 12px;max-width:700px;border-left:2px solid #8da4be;border-radius:0 8px 8px 0;background:linear-gradient(105deg,#edf3f9,rgba(247,249,251,.35));color:#405a72;line-height:1.8;font-size:12px}.nd-disney[hidden]{display:none}.nd-disney p{margin:0}
+#timeline .nd-ambient .tl-card{background:linear-gradient(110deg,rgb(var(--nd-tint)) 0%,rgb(var(--nd-face)) 100%);box-shadow:inset 3px 0 rgb(var(--nd-edge)/.64),0 2px 10px #16202e08}
+.tl-item-classic.nd-ambient .tl-card{box-shadow:inset 3px 0 rgb(var(--nd-edge)/.64),0 3px 14px rgba(198,124,78,.13)}
+.nd-ambient::before{background:rgb(var(--nd-edge))}
+.nd-name-chunk{display:inline-block;white-space:nowrap;vertical-align:top}.nd-time-row{display:inline-flex;align-items:baseline;gap:7px;white-space:nowrap}.nd-time-row .tl-time-big{margin-right:0}
+.nd-event{position:relative;list-style:none;margin:20px 0;padding:0;border:0;background:none;box-shadow:none}
+.nd-event-icon{position:absolute;left:-34px;top:15px;display:flex;align-items:center;justify-content:center;width:28px;height:28px;box-sizing:border-box;border:1px solid #dfc7a7;border-radius:50%;background:#faf7f0;color:#a36b39;font-size:13px;line-height:1;white-space:nowrap}
+.nd-event-copy{min-width:0;padding:14px 16px;border:1px solid transparent;border-block-color:#e9ddcd;border-radius:9px;background:linear-gradient(100deg,#f7ebdb70,transparent 80%)}
+.nd-event-heading{display:flex;align-items:baseline;gap:6px 10px;flex-wrap:wrap}.nd-event-heading strong{font-size:14px;font-weight:650;color:#65513e;line-height:1.65}.nd-event-heading .tl-time{margin-right:0;color:#71624f;line-height:1.6;white-space:nowrap}.nd-event-time{display:inline-flex;align-items:baseline;gap:7px;white-space:nowrap}.nd-event-estimate{font-size:11px;color:#687d91;white-space:nowrap}.nd-event p{margin:3px 0 0;color:#7a7e82;font-size:11px;line-height:1.7}
+.nd-event-disney .nd-event-copy{border-color:#dbe4ee;background:linear-gradient(100deg,#e9f0f890,transparent 85%)}.nd-event-disney .nd-event-icon{border-color:#c7d5e5;color:#597897}.nd-event-disney strong,.nd-event-disney time{color:#405c78}
+.nd-basis{font-size:12px;line-height:1.9;color:#6b7780;padding:12px 0 4px}.nd-basis summary{cursor:pointer;font-weight:600;color:#536678}.nd-basis p{margin:10px 0}.nd-basis a{text-decoration:underline}
+@media(max-width:599px){.nd-ambient .tl-icon{display:none}.nd-ambient .tl-name{text-wrap:balance;line-height:1.45}
+.nd-wide-title .tl-copy{display:contents}.nd-wide-title .tl-top{grid-column:1/-1;grid-row:1}.nd-wide-title .tl-top-left{width:100%}.nd-wide-title .nd-time-row{flex-basis:100%}
+.nd-wide-title .spot-card-footer{grid-column:1;grid-row:2;flex-direction:column;align-items:flex-start;justify-content:space-between;gap:8px;margin-top:0;padding-top:0}
+.nd-wide-title .tl-thumb{grid-column:2;grid-row:2;align-self:center;aspect-ratio:4/3;height:auto;min-height:0}
+}
+@media(max-width:359px){
+#timeline .spot-card-footer{flex-direction:column;align-items:flex-start;gap:7px}
+#timeline .spot-card-footer .tl-meta{flex:none;max-width:100%}
+#timeline .spot-card-toggles{gap:4px;flex:none;flex-wrap:nowrap}
+#timeline .spot-icon-btn{width:44px;height:44px;flex:0 0 44px}
+.nd-date-time{gap:5px!important;grid-template-columns:minmax(0,1.45fr) minmax(0,.95fr) auto}.nd-date-time input{font-size:12px!important;padding:7px 4px!important}.nd-date-time #nd-now{font-size:11px;padding:6px}.nd-event-icon{left:-31px}.nd-event-copy{padding:11px}.nd-event-heading{gap:4px 8px}.nd-time-row{gap:4px}}
+
+.nd-event-link{display:block;position:relative;min-height:44px;color:inherit;text-decoration:none;border-radius:9px}
+.nd-event-link .nd-event-copy{padding-right:30px}.nd-event-link .nd-event-heading strong{text-decoration:underline;text-decoration-color:#a6b7c9;text-underline-offset:3px}.nd-event-link .copy-chunk{display:inline-block;white-space:nowrap}
+.nd-event-link:focus-visible{outline:3px solid #365f8b;outline-offset:4px}.nd-event-link:hover .nd-event-copy{border-color:#a8bed6}.nd-event-go{position:absolute;right:11px;top:13px;font-size:14px;color:#607e9e}
+
+.nd-disney .copy-chunk{display:inline-block;white-space:nowrap}
+
+.nd-event-link .nd-event-copy p{display:flex;flex-wrap:wrap;gap:0 8px;color:#5b6b7c}
+
+/* Match the native spot card time inset and type, with long event names below it on mobile. */
+@media(max-width:540px){.nd-event-copy{padding:13px 14px}}
+@media(max-width:380px){.nd-event-copy{padding:11px}}
+@media(max-width:599px){.nd-event-disney .nd-event-heading .nd-event-time{flex-basis:100%}}
+
+/* Summary links land on the current encounter card; its ordinary article link remains the next action. */
+.nd-disney a{display:block;min-height:44px;padding:6px 0;color:inherit;text-decoration:underline;text-underline-offset:3px}
+.nd-disney a .copy-chunk{text-decoration:underline;text-underline-offset:3px}
+.nd-disney a:focus-visible,.nd-event-link.nd-jump-target:focus{outline:3px solid #365f8b;outline-offset:4px;border-radius:6px}
+.nd-event-disney{scroll-margin-top:96px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
