@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d7af90f2c8a42bf6",
+  "contentVersion": "d303b551082e0aec",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2115,6 +2115,24 @@
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 20134,
       "sha256": "6925101b67aff45b435e5df09eddbb8303fb8d396c718b5df9421de253389695"
+    },
+    {
+      "path": "journey-light-events.css",
+      "url": "https://www.michikusa-travel.com/journey-light-events.css",
+      "bytes": 5962,
+      "sha256": "e32b3af4d3a0d9e42997a1c89c51cbc0a7198178703734049dbabc31407a6143"
+    },
+    {
+      "path": "journey-light-events.js",
+      "url": "https://www.michikusa-travel.com/journey-light-events.js",
+      "bytes": 14796,
+      "sha256": "e48686d478569c52285aa882f8e09ea7f71b030d60fabfc3b51c824beae94fbb"
+    },
+    {
+      "path": "journey-light-model.js",
+      "url": "https://www.michikusa-travel.com/journey-light-model.js",
+      "bytes": 7318,
+      "sha256": "f5e4461499e039852898a4237b075b79e69fd854cdf2361c2c5ed024fb017c6f"
     },
     {
       "path": "ko/castles.html",
