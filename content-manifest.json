@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "7f39ba174b3a3c7c",
+  "contentVersion": "4172fada1c74d551",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -169,8 +169,8 @@
     {
       "path": "data/window-trip-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/window-trip-photo-sources.json",
-      "bytes": 58718,
-      "sha256": "8e2777ce8079e067232ed46d150a47662aabdcaf5da5dbc34c028d8f5821c45e"
+      "bytes": 60575,
+      "sha256": "5719ac23cf7c0d0c71155c7787e6c4261778b57a28f13c80a1cf0fbb5bf88576"
     },
     {
       "path": "de/castles.html",
@@ -1001,12 +1001,6 @@
       "sha256": "cca2ca04bbe91615df0fa27e5e106c4481e2b8af1689e80fb0b36d71ffcc2778"
     },
     {
-      "path": "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
-      "url": "https://www.michikusa-travel.com/images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
-      "bytes": 143492,
-      "sha256": "047005ca3df320e904d9cedf073889d3f12b22964829a86b7da6b255b62b1852"
-    },
-    {
       "path": "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
       "url": "https://www.michikusa-travel.com/images/20260629_2320_maruko_bridge_night_michikusa.jpg",
       "bytes": 116896,
@@ -1409,12 +1403,6 @@
       "sha256": "a954dd6c38201a7ed6a42803988bc9ac5930d8cd783ac1c92a71778155cf4fec"
     },
     {
-      "path": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
-      "url": "https://www.michikusa-travel.com/images/20260914_hikone-castle_cp0149_michikusa.jpg",
-      "bytes": 197211,
-      "sha256": "8665b70e5dd50aae6675f0224aa45de85f26daf5182b70cfa5f600f9a012f6d0"
-    },
-    {
       "path": "images/20260916_himeji_castle_wakaba.jpg",
       "url": "https://www.michikusa-travel.com/images/20260916_himeji_castle_wakaba.jpg",
       "bytes": 72669,
@@ -1569,6 +1557,36 @@
       "url": "https://www.michikusa-travel.com/images/20261010_odawara_2025_michikusa.jpg",
       "bytes": 314364,
       "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4"
+    },
+    {
+      "path": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+      "bytes": 80589,
+      "sha256": "2fceca682367168cd4ff01029477725517ae9e4fb74a2c98afb910a5e720192d"
+    },
+    {
+      "path": "images/20261018_hikone-castle_night_52688_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_hikone-castle_night_52688_michikusa.jpg",
+      "bytes": 206102,
+      "sha256": "c5c79c0c918e285d7cd2ff08372e571ce7be5eca4413a17a1b16d6687598f4be"
+    },
+    {
+      "path": "images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+      "bytes": 139845,
+      "sha256": "c553e35bb3e145dc9d18e0943f83c92955822823cd0ac32a492d3a0412125a0a"
+    },
+    {
+      "path": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+      "bytes": 187737,
+      "sha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898"
+    },
+    {
+      "path": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
+      "bytes": 72892,
+      "sha256": "a0187401a9d9a85ff78ae3c3f634d408f2d31a03ea08ae70e30b26befbe37e37"
     },
     {
       "path": "images/727-hero-mobile.webp",
@@ -3961,8 +3979,8 @@
     {
       "path": "window-trip-data.js",
       "url": "https://www.michikusa-travel.com/window-trip-data.js",
-      "bytes": 108050,
-      "sha256": "bba350221a6a8f5a9da34aa825cf272dab4ff5d5b5e6c0336c6c024204fc4291"
+      "bytes": 109056,
+      "sha256": "75ea5f766971e1f079253790fab4473c0424bf6053fc4147a88538bc36825d5a"
     },
     {
       "path": "window-trip-map.js",
@@ -3986,7 +4004,7 @@
       "path": "window-trip.html",
       "url": "https://www.michikusa-travel.com/window-trip.html",
       "bytes": 33368,
-      "sha256": "b15607089e5af8d450c23bfe3d45e5aa62ff3fe2d2c80a63c3660cae465abc50"
+      "sha256": "bfd8b7db524e008bbeebc06a10704f6ca182a612bf69fb6b137020b7fd61b569"
     },
     {
       "path": "window-trip.js",
