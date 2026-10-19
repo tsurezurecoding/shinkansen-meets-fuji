@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "7ac15c5d3020c08c",
+  "contentVersion": "0521c58fc4af5a8e",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -14,7 +14,7 @@
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
       "bytes": 34533,
-      "sha256": "dea2b155a4485d99c0fea48aecca1ed4d4552680fdda3a21141be3a6e1d84c6d"
+      "sha256": "d62123166961d81840ade4529828634916119e762f389fea84681a17c189ca27"
     },
     {
       "path": "727-collection.js",
@@ -103,14 +103,14 @@
     {
       "path": "data-runtime.js",
       "url": "https://www.michikusa-travel.com/data-runtime.js",
-      "bytes": 343049,
-      "sha256": "41bb491f5782df0000970434c5ada288b183b4b897a302fdadb91e7c8a1666d6"
+      "bytes": 346527,
+      "sha256": "4d45d450a6a4eafbc75d12cc5d340251e9461019cba31a96461704294172542c"
     },
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 779956,
-      "sha256": "e6b2e741ee622135d112e3521cbbc6325aa45203bcf44409415e8ea81404b0eb"
+      "bytes": 783841,
+      "sha256": "21992807cd6faa5fe75eb74cc66fa308bf17e9a20135c90d5b1ef2ecb9e5838d"
     },
     {
       "path": "data/beer-photo-sources.json",
@@ -169,8 +169,8 @@
     {
       "path": "data/window-trip-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/window-trip-photo-sources.json",
-      "bytes": 58718,
-      "sha256": "0cbbb366deac4929d14d2089f62413a20d824bacfed912d711484c1c0b71a043"
+      "bytes": 60575,
+      "sha256": "9ac1a27eea5c1297e9e69035a9d95172dc42d2b17e44b3aa08c5419661f80f9c"
     },
     {
       "path": "de/castles.html",
@@ -182,31 +182,31 @@
       "path": "de/contact.html",
       "url": "https://www.michikusa-travel.com/de/contact.html",
       "bytes": 9854,
-      "sha256": "c1d2e71320ebd7385682850f9d5adff460c10ca640500d53d4b5d177364e9873"
+      "sha256": "c72cf028c816dd7ec24dfb53dd2ab0862a9eab086db7761547f1f7f579c73e14"
     },
     {
       "path": "de/index.html",
       "url": "https://www.michikusa-travel.com/de/index.html",
       "bytes": 72917,
-      "sha256": "1a0a1df53560f858704f747f0b06a43e8a76dc15abf5f0ad52e194f6a278a8a1"
+      "sha256": "5f94e31ea96588cae22c5ed6395250dbdda91f4320153462a513e02c13102f2c"
     },
     {
       "path": "de/journal.html",
       "url": "https://www.michikusa-travel.com/de/journal.html",
       "bytes": 20160,
-      "sha256": "6ba34e57f605d4d51fe93227ba10093f61d18169efb9cc2c66c7ddb092cc9f02"
+      "sha256": "7e10edcdbe4998ff3f9fec76f4584b01c1d3a58a0abb9584641908854bf19d6e"
     },
     {
       "path": "de/live/index.html",
       "url": "https://www.michikusa-travel.com/de/live/index.html",
       "bytes": 35135,
-      "sha256": "4a0ef00e86ae0f9e77b1964ac1b3bb78cbe09b0c8b8f1562b38001096edbf00d"
+      "sha256": "5b86f1d59199300560ed0a011892f8e03a70316bdb3da59763c100bf801c79dc"
     },
     {
       "path": "de/mieru.html",
       "url": "https://www.michikusa-travel.com/de/mieru.html",
       "bytes": 109179,
-      "sha256": "d1d9161476cfc3a31c737d2fda79c568ef1fa04e09b4ba5509b3c486276c98b1"
+      "sha256": "3718c72295629559bd31207c8dbef21818695871cf6480a9f5b1bca1a0ff1602"
     },
     {
       "path": "de/sparkling-data.js",
@@ -218,7 +218,7 @@
       "path": "de/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/de/sparkling-dreams.html",
       "bytes": 122607,
-      "sha256": "c398ed3dc30f5b5c302bcb7684fc9c216620acfa063f8875ded1bb6421d2ce4c"
+      "sha256": "042d5eae4d436f692c4e5154d99dcebd99d56ce058ef8cf0c2da96295eed6539"
     },
     {
       "path": "de/spots/edo-castle-fujimi-yagura.html",
@@ -259,8 +259,8 @@
     {
       "path": "de/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/de/spots/hikone-castle.html",
-      "bytes": 119259,
-      "sha256": "8192ee7df0f6e1505abc0ca12da89261f9f2f436daa1dc90ce5356086850c8c1"
+      "bytes": 120107,
+      "sha256": "0f7c99c85296de41db706f29f9bb492d139f64f2863e43a4de5b253734dd66ca"
     },
     {
       "path": "de/spots/himeji-castle.html",
@@ -313,8 +313,8 @@
     {
       "path": "de/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/de/spots/pocari-fukuroi.html",
-      "bytes": 119931,
-      "sha256": "cbad7874b4b95f9392bdafa6c18cb91cb7ed40997217e4ab3b603ccd95ddf127"
+      "bytes": 120752,
+      "sha256": "ce3e49dfe4bdb5bc0649ecf9df0d65202b63482ff54942bd0366e613c5dcd8ac"
     },
     {
       "path": "de/spots/sawayama-castle.html",
@@ -332,19 +332,19 @@
       "path": "de/start.html",
       "url": "https://www.michikusa-travel.com/de/start.html",
       "bytes": 149884,
-      "sha256": "1c2d5a053933e55a3a2b1c4e67325d4c82232e929f036b07bb12266a010842c2"
+      "sha256": "d95e2dfccc28a1cbae07ac92e9afb3759f566bc304d8abf95125b4c4c4d0fc00"
     },
     {
       "path": "de/utility-data.js",
       "url": "https://www.michikusa-travel.com/de/utility-data.js",
-      "bytes": 396464,
-      "sha256": "c31cb823749da875351f18242cc159854c394455e6e9d0199163bd0951fae22b"
+      "bytes": 398519,
+      "sha256": "d6c7f4f15272de31ef269925179b2fd99672e5495ead641a9596fbe0128479cf"
     },
     {
       "path": "de/zukan.html",
       "url": "https://www.michikusa-travel.com/de/zukan.html",
       "bytes": 43007,
-      "sha256": "34575163be08922d6e4868604c001747d1b2257c8c648b013d116f27b847519b"
+      "sha256": "f29fcd514958d1c535129d4f33f953f327af9dd7b41504fbf823edb7b738baef"
     },
     {
       "path": "drinks.css",
@@ -362,7 +362,7 @@
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
       "bytes": 32484,
-      "sha256": "2368ec04812e871812625ce652601ae7f3d4041fe8a02889a4024e1085bb473d"
+      "sha256": "f396b6bcd2c0e72fe70669fb909c808bfe3dcf797efba37fe5352d00a197bf07"
     },
     {
       "path": "en/arenani.html",
@@ -403,8 +403,8 @@
     {
       "path": "en/ferris-wheels.html",
       "url": "https://www.michikusa-travel.com/en/ferris-wheels.html",
-      "bytes": 45435,
-      "sha256": "51a60d55854d2bed2056ecf6b1423c3d16bc224dad6234fa960c6ceca533ce91"
+      "bytes": 45785,
+      "sha256": "03924fba929ea4c9e2fbc443af094dfee7f49c9a430c2fe3fb41385867cd3a72"
     },
     {
       "path": "en/foods.html",
@@ -434,7 +434,7 @@
       "path": "en/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/en/sparkling-dreams.html",
       "bytes": 47462,
-      "sha256": "9e13a8b523b7a5c788c7df1ca505a32f719bc547893846d7de795c60e0bc7c6d"
+      "sha256": "d8c67df5439e8822cc1d4f4469c192b8d157a8c6c43e242f314b24fda0c0847d"
     },
     {
       "path": "en/spots/fukuyama-castle.html",
@@ -470,7 +470,7 @@
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
       "bytes": 51656,
-      "sha256": "89aae906cc86243e99547a2e2eae48efda3ce32324b775614f9bafaae53cfed2"
+      "sha256": "a2c559858ab94ca1b94a12c3646f8644b633f3ae89648c907d2065d65a43b121"
     },
     {
       "path": "es/castles.html",
@@ -482,31 +482,31 @@
       "path": "es/contact.html",
       "url": "https://www.michikusa-travel.com/es/contact.html",
       "bytes": 9824,
-      "sha256": "e2c0f2d7a8d4f7320a8e611af1f4cfd940ab8eee7ad613e014b725c994b73117"
+      "sha256": "215819b353cd9333a73561cc2ff02644104fee49fc097a560bd7c382bd4f8df9"
     },
     {
       "path": "es/index.html",
       "url": "https://www.michikusa-travel.com/es/index.html",
       "bytes": 72624,
-      "sha256": "e8cab99b5f9b97f43486d8823af6ebb3671cd332b3f46111b38464ea53f580d9"
+      "sha256": "236f7a3f3d722fe5ee2be1cb99e7417b57591b247643b4b2fa55e52b16db4143"
     },
     {
       "path": "es/journal.html",
       "url": "https://www.michikusa-travel.com/es/journal.html",
       "bytes": 19990,
-      "sha256": "afb26c61cb17354021acc45c2cdcb09245e3e062b77d02200a95537a5f40faaf"
+      "sha256": "7f82d7dd758d9f30bba01e363d8e6c1bfc5ba9ebdbc0575c81e42265f046cbd1"
     },
     {
       "path": "es/live/index.html",
       "url": "https://www.michikusa-travel.com/es/live/index.html",
       "bytes": 35100,
-      "sha256": "f9cb7d2621331932a4ea47571df8c0aa5686c621bbf6b1bc5d40ab3b455fdaeb"
+      "sha256": "1254b181b6e8e7b9d54babf47d83f42f17c5db772d3eb88ffb5221e66000ad7c"
     },
     {
       "path": "es/mieru.html",
       "url": "https://www.michikusa-travel.com/es/mieru.html",
       "bytes": 110037,
-      "sha256": "849e0828ebee339541b959931b0ba0bd11f990b9e221069ccb246087725a2676"
+      "sha256": "6f4e6b4ee95e8199ea0db32efabc2942e00067dcca72c6115b173c8daddc02f4"
     },
     {
       "path": "es/sparkling-data.js",
@@ -518,7 +518,7 @@
       "path": "es/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/es/sparkling-dreams.html",
       "bytes": 122683,
-      "sha256": "8ef3106412318ec96dd1459db0d57d24922530297bcc51c705e301e6b8bdbb66"
+      "sha256": "6a14a4b4f4167a67f6f6d2af347b39c38d3be0a74dc2a874578e848982ccf05d"
     },
     {
       "path": "es/spots/edo-castle-fujimi-yagura.html",
@@ -553,8 +553,8 @@
     {
       "path": "es/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/es/spots/hikone-castle.html",
-      "bytes": 120015,
-      "sha256": "9589706752337cd451a801c745ee8076ba26b2c74569a0c86476f2e7e337f952"
+      "bytes": 120914,
+      "sha256": "2baec62e234d05d34abad47a391e6da9a79624e314a217e5a0e7d7b3e8a3ed93"
     },
     {
       "path": "es/spots/himeji-castle.html",
@@ -607,8 +607,8 @@
     {
       "path": "es/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/es/spots/pocari-fukuroi.html",
-      "bytes": 119936,
-      "sha256": "49ce67f6e15f61950ef463edbdc5fcc25754948a0ae78a38f33cf134c306b1f2"
+      "bytes": 120758,
+      "sha256": "ecc323d48b393d0914af78505ec30383d080820fb0a505f2b87a29aa49a4d8c2"
     },
     {
       "path": "es/spots/sawayama-castle.html",
@@ -626,19 +626,19 @@
       "path": "es/start.html",
       "url": "https://www.michikusa-travel.com/es/start.html",
       "bytes": 149850,
-      "sha256": "ebcd63f5791319f99d9ffe2dd5fc5ca0ea2e231793e1c653ebded60181ca0d05"
+      "sha256": "45135b795317f33c26d30bc2e701e0cdb43e72bd715056c7ca1b913720417f59"
     },
     {
       "path": "es/utility-data.js",
       "url": "https://www.michikusa-travel.com/es/utility-data.js",
-      "bytes": 403724,
-      "sha256": "f13a16e1ed61725f4b247dc63d9a4ecdfa849bc6de6e153d0b6af702341edc9a"
+      "bytes": 405873,
+      "sha256": "c965238bc62962c2ca643efe4bbaa817d491028c5557f5b35aeae9b73d75f001"
     },
     {
       "path": "es/zukan.html",
       "url": "https://www.michikusa-travel.com/es/zukan.html",
       "bytes": 42735,
-      "sha256": "1a93807b465ffe4846f735475bf525b5170b953527189a992b72fd0c508be428"
+      "sha256": "7c99fc49ff37d603fc2c3329896a855c5cc18ed78e68f62beab11fc9464cea83"
     },
     {
       "path": "everyday-related.css",
@@ -661,8 +661,8 @@
     {
       "path": "ferris-wheels.html",
       "url": "https://www.michikusa-travel.com/ferris-wheels.html",
-      "bytes": 47663,
-      "sha256": "e6876f271425498d1375b22f507def837cfa4619a1a6f53d4f8138e1fc817a99"
+      "bytes": 48026,
+      "sha256": "fc2b0aca1d026993a64a0a9ca8852fbec5b386672bbe9670d26b84fc2b1b67ad"
     },
     {
       "path": "ferris-wheels.js",
@@ -692,31 +692,31 @@
       "path": "fr/contact.html",
       "url": "https://www.michikusa-travel.com/fr/contact.html",
       "bytes": 9928,
-      "sha256": "74c1c0add092ef3d283a0cbd7ebea7455b399a0b309f3ffb2174f3cd19e82752"
+      "sha256": "998a0989c3fc590764c0b60416aa676b81204ede98c0da88a0d0ed029af60c78"
     },
     {
       "path": "fr/index.html",
       "url": "https://www.michikusa-travel.com/fr/index.html",
       "bytes": 73160,
-      "sha256": "354c5d673b757a0f01e579384c453ae90571c6490cbd20cb77d2b4315317d5ec"
+      "sha256": "4656884fa0937646e8c822a959cfe17a68e1c6fe8e3ff8fd7384670b97d005dc"
     },
     {
       "path": "fr/journal.html",
       "url": "https://www.michikusa-travel.com/fr/journal.html",
       "bytes": 20296,
-      "sha256": "c32ad7bb4598f20cf16f84c908a89b8aab87f9e1b830d0f31ba7ec5b03557856"
+      "sha256": "21b4570cae9f9315035b6ac302657b089e720398db29ffe654f2e1bc2a03f24f"
     },
     {
       "path": "fr/live/index.html",
       "url": "https://www.michikusa-travel.com/fr/live/index.html",
       "bytes": 35143,
-      "sha256": "992b06041890ad908c79387816e258f4c7695a0066264250c3270ea7a3176f9d"
+      "sha256": "1d2393aaa2d9cae3114f9e35e5bad18165dac4d28a81b8397ac148628bc6a715"
     },
     {
       "path": "fr/mieru.html",
       "url": "https://www.michikusa-travel.com/fr/mieru.html",
       "bytes": 110055,
-      "sha256": "e8a08f8a4a0fc8b8fdf2604aae0e2025295e668806b5963c4689cb432a4a1914"
+      "sha256": "0319911c0fff461f7e2a8f7387f452b4d4e8ef19fe05894e56433e20a78f13a8"
     },
     {
       "path": "fr/sparkling-data.js",
@@ -728,7 +728,7 @@
       "path": "fr/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/fr/sparkling-dreams.html",
       "bytes": 122871,
-      "sha256": "152c256f9b519577f5313f8eca0245553ea9d679c57943a8621136070d3b0d86"
+      "sha256": "079b4c6f269b7b969cd22770c552cc2e7d670be3eb25c6adb4e9a9c4e93f4e0b"
     },
     {
       "path": "fr/spots/edo-castle-fujimi-yagura.html",
@@ -769,8 +769,8 @@
     {
       "path": "fr/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/hikone-castle.html",
-      "bytes": 119386,
-      "sha256": "f75dc45fa8db8cb4a8f7d71c4512dcf1b9d51c2862da8017e39a6a683890946e"
+      "bytes": 120268,
+      "sha256": "b9596fba1dcc418e44e9bf55b42d473aa1f2fb7fa55f352269e7659030cc272d"
     },
     {
       "path": "fr/spots/himeji-castle.html",
@@ -823,8 +823,8 @@
     {
       "path": "fr/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/fr/spots/pocari-fukuroi.html",
-      "bytes": 120565,
-      "sha256": "7c93028f731d54eeb3cdbfd3bb96a558c0331ee6b3259ea2af27895ff413c504"
+      "bytes": 121385,
+      "sha256": "4c4e11cdd03c8ee93e11a11f5eb3e21d440771a8cac975902f99ecc616989054"
     },
     {
       "path": "fr/spots/sawayama-castle.html",
@@ -842,19 +842,19 @@
       "path": "fr/start.html",
       "url": "https://www.michikusa-travel.com/fr/start.html",
       "bytes": 149965,
-      "sha256": "b2338c93ea84321b4bd80bfb613b58e14505ef698c345b547053bf21b5c1cc1f"
+      "sha256": "fe368ea3519716990823c5c6883a11ce053a7685f422304ad171cbf7a6e6d179"
     },
     {
       "path": "fr/utility-data.js",
       "url": "https://www.michikusa-travel.com/fr/utility-data.js",
-      "bytes": 375531,
-      "sha256": "e7c3316760330a32708994c000f71d827a6c46f6bd1163d1a0a63718c688fc0e"
+      "bytes": 377657,
+      "sha256": "e4f04daf12abd89c369928d04db3b7dacabb7e189a5ba229ffb3710217af5bd6"
     },
     {
       "path": "fr/zukan.html",
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
       "bytes": 42877,
-      "sha256": "0f7ae46c15d9869915eb1fe4edfb128d6d15991719106ae0dabb9ef06d599f99"
+      "sha256": "d0cdc9d1dd7360c01acdb50189856e40b75af4f965ef897264850b6ac4c83fdb"
     },
     {
       "path": "fujikawa-frequency.css",
@@ -999,12 +999,6 @@
       "url": "https://www.michikusa-travel.com/images/20260629_2158_nagoya_station_night_michikusa.jpg",
       "bytes": 207222,
       "sha256": "cca2ca04bbe91615df0fa27e5e106c4481e2b8af1689e80fb0b36d71ffcc2778"
-    },
-    {
-      "path": "images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
-      "url": "https://www.michikusa-travel.com/images/20260629_2242_shimizu_port_chikyu_night_michikusa.jpg",
-      "bytes": 143492,
-      "sha256": "047005ca3df320e904d9cedf073889d3f12b22964829a86b7da6b255b62b1852"
     },
     {
       "path": "images/20260629_2320_maruko_bridge_night_michikusa.jpg",
@@ -1409,12 +1403,6 @@
       "sha256": "a954dd6c38201a7ed6a42803988bc9ac5930d8cd783ac1c92a71778155cf4fec"
     },
     {
-      "path": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
-      "url": "https://www.michikusa-travel.com/images/20260914_hikone-castle_cp0149_michikusa.jpg",
-      "bytes": 197211,
-      "sha256": "8665b70e5dd50aae6675f0224aa45de85f26daf5182b70cfa5f600f9a012f6d0"
-    },
-    {
       "path": "images/20260916_himeji_castle_wakaba.jpg",
       "url": "https://www.michikusa-travel.com/images/20260916_himeji_castle_wakaba.jpg",
       "bytes": 72669,
@@ -1569,6 +1557,36 @@
       "url": "https://www.michikusa-travel.com/images/20261010_odawara_2025_michikusa.jpg",
       "bytes": 314364,
       "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4"
+    },
+    {
+      "path": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_fuji-sky-view_night_0_michikusa.jpg",
+      "bytes": 80589,
+      "sha256": "2fceca682367168cd4ff01029477725517ae9e4fb74a2c98afb910a5e720192d"
+    },
+    {
+      "path": "images/20261018_hikone-castle_night_52688_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_hikone-castle_night_52688_michikusa.jpg",
+      "bytes": 206102,
+      "sha256": "c5c79c0c918e285d7cd2ff08372e571ce7be5eca4413a17a1b16d6687598f4be"
+    },
+    {
+      "path": "images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
+      "bytes": 139845,
+      "sha256": "c553e35bb3e145dc9d18e0943f83c92955822823cd0ac32a492d3a0412125a0a"
+    },
+    {
+      "path": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+      "bytes": 187737,
+      "sha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898"
+    },
+    {
+      "path": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
+      "bytes": 72892,
+      "sha256": "a0187401a9d9a85ff78ae3c3f634d408f2d31a03ea08ae70e30b26befbe37e37"
     },
     {
       "path": "images/727-hero-mobile.webp",
@@ -2114,7 +2132,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 20134,
-      "sha256": "539273fe5b4d120c3b18f2c8055c2b7795e1d963719ef75bbd2ec21178c53abe"
+      "sha256": "beb60e825598edcfcbd18d1359d50141c8961ecdf2acf10539a4c815dbab4a7d"
     },
     {
       "path": "journey-light-events.css",
@@ -2144,31 +2162,31 @@
       "path": "ko/contact.html",
       "url": "https://www.michikusa-travel.com/ko/contact.html",
       "bytes": 9854,
-      "sha256": "d23ebca084d73476fbf6ec64ae5e853f42a43b0cc9491890b78d4d54ba50c6af"
+      "sha256": "4acac80a5a36b9b72929260af507788c6e0c24646ed3aaff799b6ba5a1966fd8"
     },
     {
       "path": "ko/index.html",
       "url": "https://www.michikusa-travel.com/ko/index.html",
       "bytes": 73174,
-      "sha256": "d45762267248e45409c6b4586d05ad538c237bfde3383af80f2b5e61c575a2c2"
+      "sha256": "3388557f63e5c6fd53f578452bc40a0f90d5712f8a4baa7f2cd143c6e2104f77"
     },
     {
       "path": "ko/journal.html",
       "url": "https://www.michikusa-travel.com/ko/journal.html",
       "bytes": 20243,
-      "sha256": "2ccbfe16a227feb305a103bb463cd7c6827e5066f92cdfe1b5383ccb73fa0ca8"
+      "sha256": "838ffa75cd71ae866d0a0e920452e127246ea424c6d2cf28a230ffb519a856c9"
     },
     {
       "path": "ko/live/index.html",
       "url": "https://www.michikusa-travel.com/ko/live/index.html",
       "bytes": 35354,
-      "sha256": "79a746f564bb50033f316d4ff3a0da31db0b7564842982be2fc4ea89cb5ea895"
+      "sha256": "9de3050dd5c48c054ed480be0434b2cd2e787b66eac60eb7ae20ceb25cc3b079"
     },
     {
       "path": "ko/mieru.html",
       "url": "https://www.michikusa-travel.com/ko/mieru.html",
       "bytes": 108728,
-      "sha256": "1d9acd2f7afc0d384595ba55f9c3b6caa215faa9df5959524dbf1e2012c57fc2"
+      "sha256": "b0a9c0c2599a6efcffc22ffc4ddd9170004ddb892cc8844d07cf3f3914efa54e"
     },
     {
       "path": "ko/sparkling-data.js",
@@ -2180,7 +2198,7 @@
       "path": "ko/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/ko/sparkling-dreams.html",
       "bytes": 121751,
-      "sha256": "2437bc019c61d28fba1e11dbe04e1e0b447acf466e25dbe3dfe15e350690946a"
+      "sha256": "29952999b3b4d47b48d4d9453455665ccd0504a2d0ada50408f7d671da38fc2c"
     },
     {
       "path": "ko/spots/edo-castle-fujimi-yagura.html",
@@ -2215,8 +2233,8 @@
     {
       "path": "ko/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/ko/spots/hikone-castle.html",
-      "bytes": 118773,
-      "sha256": "2ebfddf957380471494bd9a6d24c89ac343ee0026119af8aaeda00cfab9dc18b"
+      "bytes": 119649,
+      "sha256": "a5e6f091261461395951f4b6bc6492b6fb630e6d24cefdaae37954732f141a3a"
     },
     {
       "path": "ko/spots/himeji-castle.html",
@@ -2269,8 +2287,8 @@
     {
       "path": "ko/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/ko/spots/pocari-fukuroi.html",
-      "bytes": 119949,
-      "sha256": "997e3985f16a450dfd3985d9387d0dccdd439e04659dd9ea83b05af33009a5b3"
+      "bytes": 120824,
+      "sha256": "56d7bd43072a493a42d4eff9da986aacab0a4a5b83aa28a000ba5b20d519f167"
     },
     {
       "path": "ko/spots/sawayama-castle.html",
@@ -2288,19 +2306,19 @@
       "path": "ko/start.html",
       "url": "https://www.michikusa-travel.com/ko/start.html",
       "bytes": 150816,
-      "sha256": "b695e123cb18229bbe923797ff1f1dfc3b8909b7c80c701b1e146b8bc97b97d6"
+      "sha256": "5356baec28c0ccda4ae58323958702d7933fec37a5d5ec45773880bd8ab93e64"
     },
     {
       "path": "ko/utility-data.js",
       "url": "https://www.michikusa-travel.com/ko/utility-data.js",
-      "bytes": 396857,
-      "sha256": "6d0901023886f13275fc6a14bf52e86268d68fee2d720ebedb3309075d6323f3"
+      "bytes": 398940,
+      "sha256": "5fb33c65314778b18a789c137cef646e5e48ab25df6b83aff6325656666ee6d2"
     },
     {
       "path": "ko/zukan.html",
       "url": "https://www.michikusa-travel.com/ko/zukan.html",
       "bytes": 42878,
-      "sha256": "00b9303002f4473018a8c7063b11f345fa5d218da11b63bb7dac0e3ad5316fa3"
+      "sha256": "bc6e045e1e51d45db5a06ec9d135149bb616c8617344a8d97671c759f0e124d8"
     },
     {
       "path": "live/narration.js",
@@ -2684,7 +2702,7 @@
       "path": "sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/sparkling-dreams.html",
       "bytes": 50430,
-      "sha256": "4f15bd3fbd235fa56d00006b68785f18963665b39eedac27fb316f214728d66a"
+      "sha256": "6e887fa61e700117de3b060be111216662743fe768429e243943ccb97bbdaade"
     },
     {
       "path": "sparkling-dreams.js",
@@ -3961,8 +3979,8 @@
     {
       "path": "window-trip-data.js",
       "url": "https://www.michikusa-travel.com/window-trip-data.js",
-      "bytes": 108050,
-      "sha256": "bba350221a6a8f5a9da34aa825cf272dab4ff5d5b5e6c0336c6c024204fc4291"
+      "bytes": 109056,
+      "sha256": "75ea5f766971e1f079253790fab4473c0424bf6053fc4147a88538bc36825d5a"
     },
     {
       "path": "window-trip-map.js",
@@ -3986,7 +4004,7 @@
       "path": "window-trip.html",
       "url": "https://www.michikusa-travel.com/window-trip.html",
       "bytes": 33368,
-      "sha256": "b15607089e5af8d450c23bfe3d45e5aa62ff3fe2d2c80a63c3660cae465abc50"
+      "sha256": "bfd8b7db524e008bbeebc06a10704f6ca182a612bf69fb6b137020b7fd61b569"
     },
     {
       "path": "window-trip.js",
@@ -3998,7 +4016,7 @@
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
       "bytes": 54261,
-      "sha256": "45c747d273ca5867422b326523cfadb11dad3753f193175f235cbfd00872afe6"
+      "sha256": "8a6f31f34ccfa2355ba79c4fc0ca68aa2c3c9b9bf0aa5f50aad6f37f41606974"
     },
     {
       "path": "yakei.js",
@@ -4016,31 +4034,31 @@
       "path": "zh-Hans/contact.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/contact.html",
       "bytes": 9668,
-      "sha256": "0dd0969dad7a5edc1b2e9993a37ba2314e03b38f39547a8756632b9a8c9dc053"
+      "sha256": "1032e022a6855d7359b651279d5c65d7b5f825a1446c66d6134525b60f4bfd67"
     },
     {
       "path": "zh-Hans/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/index.html",
       "bytes": 71560,
-      "sha256": "5d4f9799ae942fb418593cb6d6148b0738f7ab18d72214878b305adf831c04cd"
+      "sha256": "6e490516778a130c12406dde905d79758a4deabc84496cabde6b50abf41197da"
     },
     {
       "path": "zh-Hans/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/journal.html",
       "bytes": 19373,
-      "sha256": "3b3122d230fa02702f63058f89987594d523d42d2fae8e99d8b20e7bd31afcd7"
+      "sha256": "4923a1048967911ef2eb319a691b2556347f2bc6a73b73d672566b942fce1fe3"
     },
     {
       "path": "zh-Hans/live/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/live/index.html",
       "bytes": 34600,
-      "sha256": "740f64f5983b25d392cd636b952bbe11f74de15d7f99ecc152f1cccba8ed1ae5"
+      "sha256": "276e3cc42905c99f9296ddc3bca1b0dc90bc6d49dea563544bfca958709a4dd0"
     },
     {
       "path": "zh-Hans/mieru.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/mieru.html",
       "bytes": 106543,
-      "sha256": "9006a9dc59440fdac909b986cbf1c5ce20db6cf697806e2167387c246fecb0af"
+      "sha256": "b2e2a8bf39a26fbb95f58a3897ab90e5f015f3cd9b44e4dd370048b45ce70940"
     },
     {
       "path": "zh-Hans/sparkling-data.js",
@@ -4052,7 +4070,7 @@
       "path": "zh-Hans/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/sparkling-dreams.html",
       "bytes": 119710,
-      "sha256": "2660a02fe8a2702884425ee4cdfe1e13815d2183c89b539ca925941d195d50fb"
+      "sha256": "1cbdcddd88172fea8c55a67fc245d258a79e1627a24503699b18ab44eae60c5a"
     },
     {
       "path": "zh-Hans/spots/edo-castle-fujimi-yagura.html",
@@ -4087,8 +4105,8 @@
     {
       "path": "zh-Hans/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/hikone-castle.html",
-      "bytes": 115536,
-      "sha256": "0cef1a94630d08b9526a74b440e5e09ad319ffa607a6cc5796b37c10fe114568"
+      "bytes": 116301,
+      "sha256": "48d601396d1009e633159e9f0ffe3bc036bd0e8572637dc77d1ffff3c402fb7c"
     },
     {
       "path": "zh-Hans/spots/himeji-castle.html",
@@ -4141,8 +4159,8 @@
     {
       "path": "zh-Hans/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/pocari-fukuroi.html",
-      "bytes": 116438,
-      "sha256": "a4ad8e394161f78780325066e4860112ef282748e3370f684ce4c1a2e3eefd51"
+      "bytes": 117241,
+      "sha256": "fe2b082fcbe72b2d90828a4d1cf42fa3341e4c32fd483dff3b19b78d1b2685f9"
     },
     {
       "path": "zh-Hans/spots/sawayama-castle.html",
@@ -4160,19 +4178,19 @@
       "path": "zh-Hans/start.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/start.html",
       "bytes": 153181,
-      "sha256": "9b49851a108ba0ec7f6e948379b2274ef1e39b3bdf9aa31ed1a0f4b26ce436c3"
+      "sha256": "88000eaaccf4b5c3c7ce74ba9143d96d7f33c2742af4bffd4c4518575eae3f96"
     },
     {
       "path": "zh-Hans/utility-data.js",
       "url": "https://www.michikusa-travel.com/zh-Hans/utility-data.js",
-      "bytes": 339359,
-      "sha256": "db2c7c62ce7fa8a3b8932c99e1d685dd5a3e33fe0132c26c958d7679459fae04"
+      "bytes": 341263,
+      "sha256": "8457f03874fa65d562e61a956fc9ebfe24da8112baac145f02b40021c18aab60"
     },
     {
       "path": "zh-Hans/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/zukan.html",
       "bytes": 42069,
-      "sha256": "f7d24d65658c2f8f740c99bce343a65573399af35416d16f7b62310aca18c1a3"
+      "sha256": "1ea8cf68d38618070c1716344fc6d4409d50a0242fe44ce1a7b5394396b21e8c"
     },
     {
       "path": "zh-Hant/castles.html",
@@ -4184,31 +4202,31 @@
       "path": "zh-Hant/contact.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/contact.html",
       "bytes": 9668,
-      "sha256": "075dc8bdb4f3aae6b36f4fa9033678aa73b79747a1285c5dca476c1bb3301de1"
+      "sha256": "3622d0b291c1a2840b3c59ea59e8f1bae594cdfdee90d62ac1d06f3a74a835f0"
     },
     {
       "path": "zh-Hant/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/index.html",
       "bytes": 71557,
-      "sha256": "dd59a74500159df284a648e8d95b7109ab58302e0136055695596308d4f17fab"
+      "sha256": "5c7749024789ad3c2bc46f2b7b62d9e3ab9f9dc66ed7325ac14f84c322921141"
     },
     {
       "path": "zh-Hant/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/journal.html",
       "bytes": 19373,
-      "sha256": "9d2db1f7fce031bd0f202734ff73cdae030e51955c2bae33e0aec91b5148aea5"
+      "sha256": "b306e2ab47bb1bf375c72cb20b6bba92b9737b111ce2ef59d1d17d0cc6b07918"
     },
     {
       "path": "zh-Hant/live/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/live/index.html",
       "bytes": 34603,
-      "sha256": "3e856e941b3586e5db0aa61d97ddf0b470f3540ce4faa21a8df9d102c3638245"
+      "sha256": "e3e335f9da8bc21003833f8ac7d0fbe1bf4ac691b049287fdcfe3ee65caa3f9e"
     },
     {
       "path": "zh-Hant/mieru.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/mieru.html",
       "bytes": 106546,
-      "sha256": "3f5ac44ff91dd530314f01c82180209deff143ca8af0fcf66d0a07875ee8a57d"
+      "sha256": "35a571a01937ff5c28de5c094087acdcad1a2127e869d091b98f06ceaf59428c"
     },
     {
       "path": "zh-Hant/sparkling-data.js",
@@ -4220,7 +4238,7 @@
       "path": "zh-Hant/sparkling-dreams.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/sparkling-dreams.html",
       "bytes": 119713,
-      "sha256": "58cd2b851eda62ae22a9db5c8c27ee40c2d6c83cdcf132b662d707e8009f36a6"
+      "sha256": "887b0acd68799bde595c07f209ee0a8293c5014198dd86e29afffcec62943c88"
     },
     {
       "path": "zh-Hant/spots/edo-castle-fujimi-yagura.html",
@@ -4255,8 +4273,8 @@
     {
       "path": "zh-Hant/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/hikone-castle.html",
-      "bytes": 115542,
-      "sha256": "44685959aa627d790179c97aaea57d3eeb98bdc15643f7c8c1adaca2cc4f84b3"
+      "bytes": 116319,
+      "sha256": "bfbfada98c77ebf3cc463d832502b1c0cf28b21a70f6c14e0b55aa05140f00dd"
     },
     {
       "path": "zh-Hant/spots/himeji-castle.html",
@@ -4309,8 +4327,8 @@
     {
       "path": "zh-Hant/spots/pocari-fukuroi.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/pocari-fukuroi.html",
-      "bytes": 116447,
-      "sha256": "4cf0ee4fbdbb383c750fde4daa714b3cb26dec7ff04aef7583ae68329b9f2223"
+      "bytes": 117250,
+      "sha256": "5fc85abf91eb46adc313723fa10e8ceb3990a2e4c33bdcd6d4b3e3411b58f887"
     },
     {
       "path": "zh-Hant/spots/sawayama-castle.html",
@@ -4328,19 +4346,19 @@
       "path": "zh-Hant/start.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/start.html",
       "bytes": 153184,
-      "sha256": "b1e1678ff6fb8ee6b4cab2a9c628dca7cd463deb3e9103fd420245a0ec49b310"
+      "sha256": "b105fad7841dddcfc7d59fa76094a6840b1e552a33a5522e9be657e5bb2b64ca"
     },
     {
       "path": "zh-Hant/utility-data.js",
       "url": "https://www.michikusa-travel.com/zh-Hant/utility-data.js",
-      "bytes": 339557,
-      "sha256": "63c9abf29c4992bff1ae6a6cf60ffa4f7e0ddc12f0f710d38fdecb8a62ff8564"
+      "bytes": 341464,
+      "sha256": "b270fdaebbe39bfea9f7fa41e7d041f589e8e05e0a8923eb5f6215de1ee543b9"
     },
     {
       "path": "zh-Hant/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/zukan.html",
       "bytes": 42072,
-      "sha256": "6c957b1c8dfd1776a5c8357e2b24b1fc22a87976b908bb6027f12fa7dabdbd32"
+      "sha256": "1a2383c72bfeb52bd46585bd9bafbca3f0d6b778b83cff6b34c2784bd39a5c91"
     },
     {
       "path": "zukan-hero.css",
@@ -5272,8 +5290,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 579,
-    "bytes": 14499020,
+    "itemCount": 589,
+    "bytes": 14528872,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -7112,6 +7130,36 @@
         "sha256": "e22b33d080c92cf64a8cb7a6ab54e5500bb8cbad6c9cb150bb0dbf56c7bc61ee"
       },
       {
+        "path": "images/thumbs/20261018_fuji-sky-view_night_0_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20261018_fuji-sky-view_night_0_michikusa.webp",
+        "bytes": 1794,
+        "sha256": "26752f99316f0a7bb85ef337c9158ac44a3fc4a7749cff250e746548e40a1f9c"
+      },
+      {
+        "path": "images/thumbs/20261018_hikone-castle_night_52688_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20261018_hikone-castle_night_52688_michikusa.webp",
+        "bytes": 8006,
+        "sha256": "8c4b687e35d84cd6b05045adbf6d119b073de7a058bc4356df7c6a790d0866cd"
+      },
+      {
+        "path": "images/thumbs/20261018_kaguya-no-akari_night_1747_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20261018_kaguya-no-akari_night_1747_michikusa.webp",
+        "bytes": 6088,
+        "sha256": "e1b2d86ae644ed05954ab6b4748a3ceb1f2c5fb528335cdd9fabf35dfaba81b2"
+      },
+      {
+        "path": "images/thumbs/20261018_pocari-fukuroi_night_82493_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20261018_pocari-fukuroi_night_82493_michikusa.webp",
+        "bytes": 2908,
+        "sha256": "3482234456fe4d5387ef4e9ebf335f8dfbf76e9875b1b5dc22499a93345e7aed"
+      },
+      {
+        "path": "images/thumbs/20261018_shimizu-port-chikyu_night_8189_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/20261018_shimizu-port-chikyu_night_8189_michikusa.webp",
+        "bytes": 3186,
+        "sha256": "42c466b800f1d7310b4eaa1942b1065a44cf4b440a865b231e39d73905656258"
+      },
+      {
         "path": "images/thumbs/250111_hamanako_fuji_proboffin.webp",
         "url": "https://www.michikusa-travel.com/images/thumbs/250111_hamanako_fuji_proboffin.webp",
         "bytes": 36808,
@@ -8616,6 +8664,36 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261010_tokyo-tower_155558_michikusa.webp",
         "bytes": 11796,
         "sha256": "6a926d3d1d7a5c22d1b85e59a0572a6b331cf857790d4c2af0339ee1131569d2"
+      },
+      {
+        "path": "images/thumbs/gallery/20261018_fuji-sky-view_night_0_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261018_fuji-sky-view_night_0_michikusa.webp",
+        "bytes": 688,
+        "sha256": "8df7b931cce9f524101d971a6a6936545cdd70e8134eafc94b54a576a9779ba2"
+      },
+      {
+        "path": "images/thumbs/gallery/20261018_hikone-castle_night_52688_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261018_hikone-castle_night_52688_michikusa.webp",
+        "bytes": 2786,
+        "sha256": "a3c3eeed056e194b44a44d31694a4035451cf267ec706f80a36ad0b5ed4535f6"
+      },
+      {
+        "path": "images/thumbs/gallery/20261018_kaguya-no-akari_night_1747_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261018_kaguya-no-akari_night_1747_michikusa.webp",
+        "bytes": 2350,
+        "sha256": "0b9bb15ad67eacabb7be27a91c1efc3da0417299f2872c92730d4ea3db714d5d"
+      },
+      {
+        "path": "images/thumbs/gallery/20261018_pocari-fukuroi_night_82493_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261018_pocari-fukuroi_night_82493_michikusa.webp",
+        "bytes": 708,
+        "sha256": "aba35043cd3d68caebecd1c6335c02bf0ee8301b344db30b3949fa2fce0ed394"
+      },
+      {
+        "path": "images/thumbs/gallery/20261018_shimizu-port-chikyu_night_8189_michikusa.webp",
+        "url": "https://www.michikusa-travel.com/images/thumbs/gallery/20261018_shimizu-port-chikyu_night_8189_michikusa.webp",
+        "bytes": 1338,
+        "sha256": "019db9a4e55af05e6e976b42917fa4a85caec6b8bdbc09db54567deafd766ebf"
       },
       {
         "path": "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp",
