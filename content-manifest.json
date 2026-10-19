@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "a69a769b4447b90d",
+  "contentVersion": "f2d261a26af2407f",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -109,8 +109,8 @@
     {
       "path": "data.js",
       "url": "https://www.michikusa-travel.com/data.js",
-      "bytes": 783841,
-      "sha256": "21992807cd6faa5fe75eb74cc66fa308bf17e9a20135c90d5b1ef2ecb9e5838d"
+      "bytes": 783823,
+      "sha256": "d1cdb6c538640b097e8961980ab4589bc9dcd6b7c3be5c67127c6b137f5938fa"
     },
     {
       "path": "data/beer-photo-sources.json",
@@ -170,7 +170,7 @@
       "path": "data/window-trip-photo-sources.json",
       "url": "https://www.michikusa-travel.com/data/window-trip-photo-sources.json",
       "bytes": 60575,
-      "sha256": "9ac1a27eea5c1297e9e69035a9d95172dc42d2b17e44b3aa08c5419661f80f9c"
+      "sha256": "ac447334ee6736a40724612118a59026fbb05a101303c6cb09e1449617d6b835"
     },
     {
       "path": "de/castles.html",

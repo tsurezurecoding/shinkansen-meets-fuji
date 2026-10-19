@@ -9322,12 +9322,12 @@ const SPOTS = [
       ja: [
         "鳥飼車両基地では、走行後の列車に対して段階的な検査・整備が行われます。運転間の短時間で行われる仕業検査（列車の外観・機器の目視点検、走行装置の異音チェックなど）、数日〜数十日おきに実施される交番検査（車両を建屋に入れて詳細に点検）、車内清掃、パンタグラフや台車部の点検、外板の洗浄などが一体的に行われ、次の運行へ整えられます。",
         "施設内には、大屋根で覆われた検修庫、パンタ検査用の高い足場、大規模な洗車機、留置線が広い扇状に伸び、車両を切り替える大量のポイントが敷かれています。新幹線の車両基地としては東海道・山陽で最大規模で、東京の大井車両基地とセットで、東海道新幹線の運行を東西から支える車両運用の要と言えます。",
-        "見学は原則として一般開放されていませんが、周辺には摂津市が整備した「安満遺跡公園」など、線路とセットで新幹線を眺められるエリアもあります。車窓では減速中の数十秒ほど、じっくりと横目で楽しんでください。",
+        "見学は原則として一般開放されていません。見学イベントがある場合は、JR東海など主催者の公式案内で開催日と申込条件を確認してください。車窓では減速中の数十秒ほど、じっくりと横目で楽しんでください。",
       ],
       en: [
         "Trains here undergo a graded set of inspections. Between short-term operations, quick 'shigyo' inspections check exterior and mechanical condition, listening for irregular noises. Every few days to weeks, more thorough 'kōban' inspections take place inside the depot buildings. On top of these, interior cleaning, pantograph and bogie checks, and washing of the exterior all happen here and prepare each train for the next run.",
         "The site holds long roofed inspection sheds, elevated platforms for pantograph work, large train-wash facilities, and long yard tracks fanning out into a wide grid. Torikai is the largest Shinkansen depot on the Tokaido / Sanyo network. Together with Oi Rail Yard in Tokyo, it forms the eastern and western anchor of the fleet-management system that keeps the Tokaido Shinkansen running.",
-        "The depot itself is generally not open for public tours, but nearby parks such as Ama-Yato-iseki Park in Settsu City offer good vantage points to watch Shinkansen pass in front of the tracks. From the train, the slowing speed here means you have several tens of seconds to enjoy this backstage view — take your time.",
+        "The depot itself is generally not open for public tours. If an organised depot visit is officially announced, check its dates and entry conditions with the organiser, such as JR Central. From the train, the slowing speed here means you have several tens of seconds to enjoy this backstage view — take your time.",
       ],
     },
     guideHighlight: {
