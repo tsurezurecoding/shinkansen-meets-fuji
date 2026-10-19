@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "8db666e6e8f84021",
+  "contentVersion": "a1c052b7a9cf3bfb",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2853,6 +2853,24 @@
       "url": "https://www.michikusa-travel.com/sudoori/stories/tanna.html",
       "bytes": 20407,
       "sha256": "b867cb015d9b7eea95ce857f3626e0bc690723da9ebdfcaf071d65574500b192"
+    },
+    {
+      "path": "tokyo-sightline-stage.js",
+      "url": "https://www.michikusa-travel.com/tokyo-sightline-stage.js",
+      "bytes": 10722,
+      "sha256": "f2364bc3770f22509e3d7ac2419518070ec3cb122bfa8c2f95ea055c5d3b9bf7"
+    },
+    {
+      "path": "tokyo-sightline.css",
+      "url": "https://www.michikusa-travel.com/tokyo-sightline.css",
+      "bytes": 2394,
+      "sha256": "0e067f5642bfb4a7711681088cbdb874a41247d44d195752128eb0fd35ec1595"
+    },
+    {
+      "path": "tokyo-sightline.js",
+      "url": "https://www.michikusa-travel.com/tokyo-sightline.js",
+      "bytes": 5311,
+      "sha256": "f5372c831c713b09d051f4440407463c9962869b5b4958c891122ad9b000f2e0"
     },
     {
       "path": "train-picker.js",

@@ -21,6 +21,7 @@ const contentFiles = [
   "journey-light-model.js", "journey-light-events.js", "journey-light-events.css",
   "727-collection.css", "images/727-hero-wide.webp", "images/727-hero-mobile.webp",
   "train-window-preview.css", "train-window-preview.js", "train-window-stage.js", "train-window-geometry.js",
+  "tokyo-sightline.js", "tokyo-sightline-stage.js", "tokyo-sightline.css",
   "fujimi-sightline.js", "fujimi-sightline-stage.js", "fujimi-sightline.css",
   'data/sudoori/photo-sources.json',
   ...await walkFiles('sudoori',p=>/\.(?:html|css|js)$/.test(p)),

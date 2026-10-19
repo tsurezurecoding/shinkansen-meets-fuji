@@ -5,6 +5,7 @@ import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
 import { SPOTS as GENERATED_SPOTS, spotPageHTML } from "./generate-spot-pages.mjs";
 import { fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
+import { tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
 
 async function runThinValidator() {
   const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -350,9 +351,9 @@ async function runThinValidator() {
       if (bodyTag !== strictHostHTML(lang, spot.id, prefix)) fail(`${relativeFile} body context/mode is incorrect`);
       if (count(onDisk, /data-spot-page-shared-module=/g) !== 1 || count(onDisk, /<div data-spot-page-shared-module="page"><\/div>/g) !== 1) fail(`${relativeFile} must have exactly one strict thin page host`);
       const body = onDisk.slice(onDisk.indexOf("<body"));
-      // One generated, opt-in supplement has a static photo fallback. Exempt
+      // Generated, opt-in supplements can have a static photo fallback. Exempt
       // only its exact generated block; the rest of the thin page stays checked.
-      const supplement = fujimiSightlineHTML(spot, lang, lang === 'ja' ? '../' : '../../');
+      const supplement = fujimiSightlineHTML(spot, lang, prefix) + tokyoSightlineHTML(spot, lang, prefix);
       if (supplement && !body.includes(supplement)) fail(`${relativeFile} sightline supplement is missing or stale`);
       // The exact generated invitation is a separate shared component. The
       // on-disk/in-memory equality check above still rejects altered blocks.
