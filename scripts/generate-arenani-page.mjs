@@ -197,23 +197,23 @@ function englishCard(card) {
     </article>`;
 }
 
-function otherLineCard(c) {
+function otherLineCard(c, lang = 'ja') {
  const post = `https://x.com/${c.x.handle}/status/${c.x.status}`;
  if (!/^[A-Za-z0-9_]+$/.test(c.x.handle) || !/^\d+$/.test(c.x.status)) throw Error('Malformed X post on ' + c.id);
  c.links.forEach(([href]) => { if (!/^https:\/\//.test(href)) throw Error('Official link must be https: ' + href); });
  return `    <article class="an-embed-card" id="${c.id}">
       <div>
         <div class="wm-card" data-embed="x">
-          <div class="wm-x" data-placeholder="Xの動画を読み込みます">
-            <template><blockquote class="twitter-tweet" data-dnt="true" data-media-max-width="560"><p lang="ja" dir="ltr">${esc(c.x.text)}</p>&mdash; @${c.x.handle} <a href="${post}/video/1">元投稿</a></blockquote></template>
+          <div class="wm-x" data-placeholder="${lang === 'en' ? 'Load the original video on X' : 'Xの動画を読み込みます'}">
+            <template><blockquote class="twitter-tweet" data-dnt="true" data-media-max-width="560"><p lang="ja" dir="ltr">${esc(c.x.text)}</p>&mdash; @${c.x.handle} <a href="${post}/video/1">${lang === 'en' ? 'Original post' : '元投稿'}</a></blockquote></template>
           </div>
         </div>
-        <p class="an-embed-by">X：${esc(c.x.name)}さん · @${c.x.handle} · <a href="${post}" target="_blank" rel="noopener noreferrer">元投稿を見る ↗</a></p>
+        <p class="an-embed-by">${lang === 'en' ? 'X: ' : 'X：'}${esc(c.x.name)}${lang === 'en' ? '' : 'さん'} · @${c.x.handle} · <a href="${post}" target="_blank" rel="noopener noreferrer">${lang === 'en' ? 'View original post ↗' : '元投稿を見る ↗'}</a></p>
       </div>
       <div class="cs-spot-body">
         <p class="cs-spot-meta"><span class="cs-pill an-pill-line">${esc(c.line)}</span><span class="cs-pill">${esc(c.area)}</span><span class="cs-pill">${esc(c.kind)}</span></p>
-        ${c.heading ? `<p class="an-answer">${question(c.q)}</p><h3 class="an-question">${chunk(c.heading)}</h3>` : `<h3 class="an-question">${question(c.q)}</h3>`}
-        <p class="an-answer">答え<strong>${esc(c.a)}</strong></p>
+        ${c.heading ? `<p class="an-answer">${question(c.q)}</p><h3 class="an-question">${chunk(c.heading)}</h3>` : `<h3 class="an-question">${lang === 'en' ? esc(c.q) : question(c.q)}</h3>`}
+        <p class="an-answer">${lang === 'en' ? 'Answer: ' : '答え'}<strong>${esc(c.a)}</strong></p>
         <p>${esc(c.body)}</p>
         <p class="an-links">${c.links.map(([href, label]) => `<a href="${href}" target="_blank" rel="noopener noreferrer">${esc(label)} ↗</a>`).join('')}</p>
       </div>
@@ -366,6 +366,23 @@ ${otherLines.filter(c => c.heading).map(otherLineCard).join('\n')}
 `;
 }
 
+const englishKintetsu = [
+  {
+    ...otherLines.find(c => c.id === 'heijo-palace'), heading: null,
+    line: 'Kintetsu Nara Line', area: 'Yamato-Saidaiji–Shin-Omiya, Nara', kind: 'Palace site',
+    q: 'A red gate and a palace beyond the tracks?', a: 'Suzaku Gate and Daigokuden Hall at Heijo Palace',
+    body: 'The Kintetsu Nara Line crosses the grounds of Heijo Palace. On a train toward Kintetsu-Nara, look right for Suzaku Gate and left into the distance for Daigokuden Hall. Both buildings are reconstructions. The railway opened in 1914, long before the palace site became part of a World Heritage property.',
+    links: [['https://www.heijo-park.jp/', 'Heijo Palace Site Historical Park (Japanese)']]
+  },
+  {
+    ...otherLines.find(c => c.id === 'sakakibara'), heading: null,
+    line: 'Kintetsu Osaka Line', area: 'Near Sakakibara-onsenguchi, Tsu, Mie', kind: 'Statues',
+    q: 'A golden Kannon and a giant winged statue?', a: 'Daikannonji Temple and the Louvre Sculpture Museum',
+    body: 'The 33-metre golden Kannon belongs to Daikannonji Temple. Nearby, the Louvre Sculpture Museum displays giant outdoor statues of the Winged Victory of Samothrace and the Venus de Milo. These are sights beside the Kintetsu Osaka Line, near Sakakibara-onsenguchi Station. Both places can also be visited on foot from the station.',
+    links: [['https://www.daikannon.or.jp/', 'Daikannonji Temple (Japanese)'], ['https://www.louvre-m.com/', 'Louvre Sculpture Museum (Japanese)']]
+  }
+];
+
 function renderEnglish() {
  const cards = englishCards.map(englishCard).join('\n');
  const json = { '@context': 'https://schema.org', '@type': 'CollectionPage', name: englishTitle, description: englishDescription, url: englishPageUrl, inLanguage: 'en', isPartOf: { '@type': 'WebSite', name: 'Shinkansen Window', url: 'https://www.michikusa-travel.com/en/' } };
@@ -419,7 +436,7 @@ ${englishTiles.map(englishTile).join('\n')}
         <p class="an-kicker">You saw it for only a moment</p>
         <h1 id="anTitle">What's That Outside<span class="an-q">?</span></h1>
         <p class="cs-hero-lead">Bright green rows, long silver tunnels, giant green nets, white plumes beneath Mt. Fuji, a red gate in the fields. Start with what caught your eye, then learn why it is there.</p>
-        <p class="an-cta"><a class="btn btn-primary btn-small" href="#everyday-japan" data-cta-track="arenani_section_click" data-cta-id="hero_everyday_japan">Identify the view</a></p>
+        <p class="an-cta"><a class="btn btn-primary btn-small" href="#everyday-japan" data-cta-track="arenani_section_click" data-cta-id="hero_everyday_japan">Identify the view</a> <a class="btn btn-ghost btn-small" href="#kintetsu">Kintetsu: Nara &amp; Mie</a></p>
         <p class="cs-hero-credit">Photos: Shinkansen Window</p>
       </div>
       </div>
@@ -438,12 +455,21 @@ ${englishTiles.map(englishTile).join('\n')}
 ${cards}
   </section>
 
+  <section class="cs-section" id="kintetsu" aria-labelledby="anKintetsuTitle">
+    <div class="cs-section-head">
+      <p class="eyebrow">02 / KINTETSU · NARA &amp; MIE</p>
+      <h2 id="anKintetsuTitle">Palace grounds and giant statues on Kintetsu</h2>
+      <p class="cs-section-lead">These two views are on Kintetsu's conventional railway lines, not the Tokaido Shinkansen. Check the line and location below; the Shinkansen train times and seat guidance on this site do not apply here.</p>
+    </div>
+${englishKintetsu.map(c => otherLineCard(c, 'en')).join('\n')}
+  </section>
+
   <section class="cs-next" aria-labelledby="anNextTitle">
     <div class="cs-card">
       <h2 id="anNextTitle">Remember a 727 sign?</h2>
       <p><a href="727-collection.html"><img src="../images/thumbs/20260820_727_board_yoda_kinuta_michikusa.webp" alt="White 727 COSMETICS sign beside a yellow 248 sign" width="240" height="160" loading="lazy" decoding="async" style="max-width:100%;height:auto"> Match your sign in the 727 photo and location index →</a></p>
       <p>Compare the photograph, then use the map or trackside location list to find where you saw it.</p>
-      <p>Choose your train to see when each view should pass, or browse the full field guide for castles, signs, rivers and more.</p>
+      <p>For the Tokaido Shinkansen views, choose your train to see when they should pass, or browse the full field guide for castles, signs, rivers and more.</p>
       <div class="cs-card-actions"><a class="btn btn-primary" href="start.html">Choose your train</a><a href="zukan.html">Browse every view</a></div>
     </div>
   </section>
@@ -451,7 +477,7 @@ ${cards}
   <section class="cs-about" aria-labelledby="anAboutTitle">
     <div class="cs-note-card">
       <h2 id="anAboutTitle">About these views</h2>
-      <p>Every photo on this page was taken through a Tokaido Shinkansen window. Times are Nozomi-based estimates; start watching a little early.</p>
+      <p>Our photos show views from the Tokaido Shinkansen. Its times are Nozomi-based estimates; start watching a little early. The separate Kintetsu section uses the original X videos credited to their creators. Loading a video connects to X; you can also open the original post. Kintetsu views are not included in the Shinkansen timeline.</p>
     </div>
   </section>
 
@@ -467,6 +493,7 @@ ${cards}
 
   <script src="../spot-page-shared-data.js?v=${assetVersion('spot-page-shared-data.js')}"></script>
   <script src="../spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}"></script>
+  <script src="../window-moments.js?v=${assetVersion('window-moments.js')}"></script>
 </body>
 </html>
 `;

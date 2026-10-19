@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "ff90e0f1f69dc3b4",
+  "contentVersion": "7ac15c5d3020c08c",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -367,8 +367,8 @@
     {
       "path": "en/arenani.html",
       "url": "https://www.michikusa-travel.com/en/arenani.html",
-      "bytes": 35850,
-      "sha256": "aac91feb900f1988bc6bd906d2c9175c5fa4d408bfd7fa991427e6f9f0f15886"
+      "bytes": 40253,
+      "sha256": "894400af6dd2c94e0eebb0c2c281828ff91757e27a0a242bb88b9d402a910cba"
     },
     {
       "path": "en/beer-on-shinkansen.html",
