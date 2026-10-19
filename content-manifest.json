@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0521c58fc4af5a8e",
+  "contentVersion": "a69a769b4447b90d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -85,8 +85,8 @@
     {
       "path": "castles.html",
       "url": "https://www.michikusa-travel.com/castles.html",
-      "bytes": 47506,
-      "sha256": "dbc6aa32eb9bfc0400af5b70e16e6905129f31e14583a2814a264e9a3859af72"
+      "bytes": 47498,
+      "sha256": "f581b225119243cef0bf1cbc3f008269c334e810fc910645f52672ca9d8a78ef"
     },
     {
       "path": "chrome.css",
@@ -175,8 +175,8 @@
     {
       "path": "de/castles.html",
       "url": "https://www.michikusa-travel.com/de/castles.html",
-      "bytes": 123093,
-      "sha256": "0fa2ac27a97877b81beeea67c9cb1893f49e9f377044c6970935ebb002042cba"
+      "bytes": 123085,
+      "sha256": "39460b0e0cc10385ae3f6fc4f92ca87bdd9bd61004527cd41a80fb70d7618680"
     },
     {
       "path": "de/contact.html",
@@ -379,8 +379,8 @@
     {
       "path": "en/castles.html",
       "url": "https://www.michikusa-travel.com/en/castles.html",
-      "bytes": 46755,
-      "sha256": "76ebfeba27360a381e747f6777ac01889b05566f57da8989ae0aaac8ddba03af"
+      "bytes": 46747,
+      "sha256": "9f77e53dcd54110add5f12068c597c369d261be4131cbb5c3ae728e3f1f6cfb0"
     },
     {
       "path": "en/countryside.html",
@@ -475,8 +475,8 @@
     {
       "path": "es/castles.html",
       "url": "https://www.michikusa-travel.com/es/castles.html",
-      "bytes": 123923,
-      "sha256": "f6ab078fedc61d707949390524a53e0e6caaf5f4cfb7a21fd32cc98baa3c29eb"
+      "bytes": 123915,
+      "sha256": "998630201917b0d2a171611bc16f4bed346ef0a1e75b8f4eb1ec36675e529497"
     },
     {
       "path": "es/contact.html",
@@ -685,8 +685,8 @@
     {
       "path": "fr/castles.html",
       "url": "https://www.michikusa-travel.com/fr/castles.html",
-      "bytes": 123489,
-      "sha256": "bf5ec3556540f582045257afd596412806ce65540376a9c3daf5a2e65af1b73a"
+      "bytes": 123481,
+      "sha256": "fb4947a93dd632e849749fc912a82d8e099965a04b08df6b7ca243f08b51aacf"
     },
     {
       "path": "fr/contact.html",
@@ -2155,8 +2155,8 @@
     {
       "path": "ko/castles.html",
       "url": "https://www.michikusa-travel.com/ko/castles.html",
-      "bytes": 123211,
-      "sha256": "4888ff41d68f58b4d404b443c3c96fdcd0781703356c9a90321275a061a700da"
+      "bytes": 123203,
+      "sha256": "60d93d2d2781350660ea17191692d9b3ed5569e410fef0231845bc6fddd50006"
     },
     {
       "path": "ko/contact.html",
@@ -4027,8 +4027,8 @@
     {
       "path": "zh-Hans/castles.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/castles.html",
-      "bytes": 118750,
-      "sha256": "95493c8dd3dadb5717d82bb9079d2cfdfb94e248d1436b46988a238c0dfb1c41"
+      "bytes": 118742,
+      "sha256": "ea226a9649d7f3e1aa8e5bc64996409e2050d27168844e410a9903d1c89eae87"
     },
     {
       "path": "zh-Hans/contact.html",
@@ -4195,8 +4195,8 @@
     {
       "path": "zh-Hant/castles.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/castles.html",
-      "bytes": 118835,
-      "sha256": "d0760b6a930654af2e564e8eca2b52b5a24d10a63d453c9a3e8b4d246c3489f2"
+      "bytes": 118827,
+      "sha256": "33048c70c344d552f5fa879fceab2eac6c5d76db1e98f7f73fff2e90d84be1a9"
     },
     {
       "path": "zh-Hant/contact.html",
