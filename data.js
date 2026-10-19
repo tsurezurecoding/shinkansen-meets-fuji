@@ -8574,6 +8574,8 @@ const SPOTS = [
   },
   {
     id: "toji",
+    routeNote: { en: "Toward Shin-Osaka: look from the left-hand window (Seat A) just after leaving Kyoto. Toward Tokyo: look from the right-hand window (Seat A) just before arriving at Kyoto. The main viewing point is west of Kyoto Station; buildings can interrupt the view." },
+    guideIntro: { en: "The main viewing point is between Kyoto and Shin-Osaka. Watch just after leaving Kyoto toward Shin-Osaka, or just before arriving at Kyoto toward Tokyo. Use the map below to place the pagoda beside the line." },
     icon: "⛩️",
     ja: { name: "東寺 五重塔", area: "京都駅 前後", hook: "「京都に来た」が、一瞬でわかる。", story: "京都駅の南、A席側の街並みの向こうに、黒々とした瓦屋根を重ねた五重塔がそびえます。これが東寺（教王護国寺）の五重塔。高さ54.8mは、現存する木造塔として日本最高。平安京遷都のわずか2年後、796年に創建された東寺そのものは、平安京の正門・羅城門の東に建てられた官立の大寺で、後に空海（弘法大師）に下賜され、日本の真言密教の根本道場となりました。塔自体は落雷などで4度焼失し、現在のものは1644年、徳川家光の寄進で再建された5代目。1200年にわたって京都の南のスカイラインを守ってきた塔が、新幹線の窓から一瞬で見える——京都到着の最高の合図です。" },
     en: { name: "To-ji Pagoda", area: "Around Kyoto Sta.", hook: "One glance, and you know it's Kyoto.", story: "South of Kyoto Station, on the Seat A side, a dark-tiled tower of stacked eaves rises above the roofs. This is the five-story pagoda of To-ji Temple (Kyo-o-gokoku-ji). At 54.8 meters it is the tallest surviving wooden tower in Japan. To-ji itself was founded in 796, just two years after the capital moved to Heian-kyo (Kyoto), as an official state temple guarding the eastern side of the Rajomon capital gate. Later it was granted to the priest Kukai (Kobo Daishi) and became the head training temple of Japan's Shingon esoteric Buddhism. The pagoda has burned down four times over the centuries; the current fifth iteration was rebuilt in 1644 with funding from the third Tokugawa shogun, Iemitsu. A tower that has anchored Kyoto's southern skyline for 1,200 years — the perfect announcement, from the Shinkansen window, that you have arrived in Kyoto." },
@@ -8616,7 +8618,7 @@ const SPOTS = [
     },
     guideHighlight: {
       ja: "京都駅に近づいたら、A席側の窓を早めに見ておくのがおすすめ。街並みの上から、他の建物より一段抜きん出た黒い塔が姿を現します。逆に京都駅を出て新大阪方向へ進む列車では、駅を出てすぐ振り返るように後方を眺めると、去っていく京都のシンボルとしての五重塔が印象的です。",
-      en: "As Kyoto Station approaches, look toward Seat A a little in advance. Above the roofs, a dark tower rises noticeably higher than the surrounding buildings. On trains leaving Kyoto for Shin-Osaka, glancing back just after departure also gives you the pagoda as a fading symbol of the city you are leaving.",
+      en: "Heading from Tokyo toward Shin-Osaka, keep an eye on the Seat A side just after Kyoto departure. Heading toward Tokyo, start watching the same side before Kyoto arrival. Look above the roofs for the dark, stacked eaves; the short glimpse changes as buildings pass in front.",
     },
     minutesFromTokyo: 131, side: "A", category: "classic", confidence: "verified", durationSec: 10, spotting: "moderate", visibleWhenCloudy: true, scene: "pagoda",
     image: "images/20260510_toji.png",

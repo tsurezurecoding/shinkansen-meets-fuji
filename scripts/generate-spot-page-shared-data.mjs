@@ -365,7 +365,7 @@ function projectArticleImage(spot, lang) {
 }
 
 function routeNote(spot, lang, data) {
-  return localized(spot.routeNote, lang) || UI[lang].routeNote(data.area, sideLabel(spot, lang));
+  return (typeof spot.routeNote === "string" ? spot.routeNote : spot.routeNote?.[lang]) || UI[lang].routeNote(data.area, sideLabel(spot, lang));
 }
 
 function mapEmbedUrl(spot, lang, viewpoint) {
@@ -711,9 +711,9 @@ function projectPage(spot, lang) {
     map,
     guide: {
       title: lang === "ja" ? `${data.name}を見逃さないコツ` : `How to catch ${data.name}`,
-      intro: lang === "ja"
+      intro: spot.guideIntro?.[lang] || (lang === "ja"
         ? `${data.area || "この区間"}が近づいたら、${sideLabel(spot, lang)}の窓を先に意識してください。現在地から追う場合は音声ガイド、事前に確認する場合はこのページの地図が役立ちます。`
-        : `As you approach ${enApproachArea(data.area)}, start watching from ${sideLabel(spot, lang)}. Use Audio Guide while riding, or the map on this page before you board.`,
+        : `As you approach ${enApproachArea(data.area)}, start watching from ${sideLabel(spot, lang)}. Use Audio Guide while riding, or the map on this page before you board.`),
       duration: durationGuideText(spot, lang),
       timingLead: lang === "ja" ? "乗る列車が決まっているなら、列車選択で実際のダイヤに合わせた見える時刻を調べられます。" : "Know your train? Select it to see this view's estimated time on the actual timetable.",
       cta: lang === "ja" ? "列車を選んで、見える時刻を調べる" : "Select my train and check the time",
