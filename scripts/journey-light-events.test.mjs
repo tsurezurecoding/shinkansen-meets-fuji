@@ -45,15 +45,23 @@ test('unknown Disney schedules and mismatched train variants cannot become encou
  assert.equal(M.disney({...base,journey:{...journey,stops:[{clock:1430},{clock:1445}]},sparkling}).status,'cross-day-unknown');
 });
 
-test('the production integration keeps SEO/analytics and excludes translated shells',()=>{
+test('the production integration keeps SEO/analytics and includes all translated selectors',()=>{
  const html=read('start.html'),doc=new JSDOM(html).window.document;
  assert(!doc.querySelector('meta[name=robots]').content.includes('noindex'));
  assert.equal(doc.querySelector('link[rel=canonical]').href,'https://www.michikusa-travel.com/start.html');
  assert(!html.includes('window.MADO_ANALYTICS_DISABLED=true'));
  assert(!html.includes('preview-hosting.js'));
  for(const asset of ['journey-light-model.js','journey-light-events.js','journey-light-events.css']){
-  assert(html.includes(asset));assert(!stripJaTrainWindow(html).includes(asset));
+  assert(html.includes(asset));assert(stripJaTrainWindow(html).includes(asset));
   assert(JSON.parse(read('content-manifest.json')).files.some(f=>f.path===asset));
  }
- for(const lang of ['en','fr','zh-Hant','de','es','zh-Hans','ko'])assert(!read(lang+'/start.html').includes('journey-light-events.js'),lang);
+ for(const lang of ['en','fr','zh-Hant','de','es','zh-Hans','ko']){
+  const shell=read(lang+'/start.html'),doc=new JSDOM(shell).window.document;
+  assert(shell.includes('journey-light-events.js'),lang);
+  assert(shell.includes('journey-light-model.js'),lang);
+  assert(shell.includes('sparkling-dreams.js'),lang);
+  assert(doc.querySelector('#timeline-calculation-note'),lang);
+  assert.equal(doc.querySelector('link[rel=canonical]').href,`https://www.michikusa-travel.com/${lang}/start.html`);
+  assert(!/noindex/.test(doc.querySelector('meta[name=robots]')?.content||''));
+ }
 });

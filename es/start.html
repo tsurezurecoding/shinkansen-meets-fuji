@@ -117,6 +117,7 @@
   </style>
   <script defer="" src="utility-locales.js?v=4f2b7fba"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+<link rel="stylesheet" href="journey-light-events.css?v=c85fb63f">
   <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/start.html">
   <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/start.html">
   <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/start.html">
@@ -217,6 +218,7 @@
             </label>
           </div>
           <ol class="timeline" id="timeline"></ol>
+<div id="timeline-calculation-note" class="train-entry-help"><p>Las horas son estimaciones del horario. No se reflejan los días de circulación ni los retrasos actuales.</p></div>
         </section>
       </div>
     </div>
@@ -915,12 +917,15 @@
   </footer>
 
   <script src="data/timetable.js?v=89e78630"></script>
-  <script src="data-runtime.js?v=4d45d450"></script><script src="es/utility-data.js?v=c965238b"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=4d45d450"></script><script src="es/utility-data.js?v=f6869aa0"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
   <script src="train-picker.js?v=6cafb7d9"></script>
   <script src="app.js?v=2fd1fc89"></script>
+<script src="sparkling-dreams.js?v=983a36e3"></script>
+<script src="journey-light-model.js?v=f5e44614"></script>
+<script src="journey-light-events.js?v=bff2642e"></script>
 <!-- ANDROID_APP_INVITE_START -->
 <style>#android-app-invite{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);position:fixed;z-index:90;width:min(310px,calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));margin:0;padding:10px 12px;border:1px solid #d7e5ef;border-radius:14px;background:linear-gradient(120deg,#fff,#f0f7fc);box-shadow:0 5px 24px #15375230;color:#193c52;font:13px/1.5 system-ui,sans-serif;text-align:left;box-sizing:border-box;max-height:40dvh;overflow:auto}
 #android-app-invite[hidden]{display:none!important}#android-app-invite .context-label{display:block;color:#486b82;font-size:10px;line-height:12px}#android-app-invite h2{font:600 14px/20px system-ui,sans-serif;margin:0}#android-app-invite p{font:12px/1.45 system-ui,sans-serif;margin:4px 0 0}

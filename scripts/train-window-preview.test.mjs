@@ -23,7 +23,7 @@ test('JA-only markup and dependencies are removed before translating the existin
  const stripped=stripJaTrainWindow(read('start.html'));
  assert(!stripped.includes('id="sp-view"'));
  assert(!stripped.includes('train-window-preview.js'));
- assert(!stripped.includes('timeline-calculation-note'));
+ assert(stripped.includes('timeline-calculation-note'));
  assert(stripped.includes('TRAIN-ENTRY-HELP:START'));
  for(const locale of ['en','fr','zh-Hant','de','es','zh-Hans','ko']){
   const shell=read(locale+'/start.html');
