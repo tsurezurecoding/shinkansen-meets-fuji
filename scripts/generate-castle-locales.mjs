@@ -44,16 +44,6 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     doc.body.setAttribute('data-spot-page-shared-lang', lang);
     doc.documentElement.lang = lang;
     if (route === 'yakei.html') {
-      // The inherited shared CSS still contains an unexpanded ${t.copy11}
-      // token, so its intended photograph is absent. The existing overlay works.
-      // Restore only the photograph rule in these localized pages;
-      // changing the shared Japanese/English stylesheet is a separate decision.
-      const heroStyle = doc.createElement('style');
-      heroStyle.setAttribute('data-localized-night-hero', '');
-      heroStyle.textContent = `
-.yakei-page[data-article-localized] .yk-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("../images/20260629_2158_nagoya_station_night_michikusa.jpg"); background-size: cover; background-position: center 55%; }
-`;
-      doc.head.appendChild(heroStyle);
       // Retain the existing night-view calculator; the utility adapter supplies
       // the translated station/spot names and the shared eight-language picker.
       for (const script of doc.querySelectorAll('script:not([src])')) {

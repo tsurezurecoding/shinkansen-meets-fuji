@@ -2,7 +2,7 @@
    2026-09-22に yakei.html のインラインstyleから切り出した（日英2ファイルに同じCSSが重複していた）。 */
 .yakei-page main { padding-bottom: 40px; }
 .yk-hero { position: relative; isolation: isolate; background: var(--night); color: #fff; padding: 96px 20px 72px; overflow: hidden; }
-${t.copy11}
+.yk-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("images/20260629_2158_nagoya_station_night_michikusa.jpg"); background-size: cover; background-position: center 55%; }
 .yk-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(8,17,32,.72) 0%, rgba(8,17,32,.8) 55%, rgba(8,17,32,.94) 100%); }
 .yk-hero-inner { max-width: 720px; margin: 0 auto; text-align: center; }
 .yk-hero .eyebrow { color: var(--accent-soft); }
