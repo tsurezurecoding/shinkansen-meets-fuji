@@ -854,5 +854,40 @@
     "modified": "2026-10-20",
     "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
     "dateReview": "Publication remains unapproved; no publication date is asserted."
+  },
+  "zh-Hans/spots/fuji.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-21",
+    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "dateReview": "Text revision date; no historical publication date asserted."
+  },
+  "ko/spots/fuji.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-21",
+    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "dateReview": "Text revision date; no historical publication date asserted."
+  },
+  "es/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-10-21",
+    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "dateReview": "Text revision date; no historical publication date asserted."
+  },
+  "zh-Hans/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-10-21",
+    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "dateReview": "Text revision date; no historical publication date asserted."
+  },
+  "ko/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-10-21",
+    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "dateReview": "Text revision date; no historical publication date asserted."
   }
 }

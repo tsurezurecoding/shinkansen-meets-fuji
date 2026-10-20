@@ -1981,8 +1981,8 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.michikusa-travel.com/de/spots/fuji.html</loc>
-    <lastmod>2026-10-12</lastmod>
+    <loc>https://www.michikusa-travel.com/zh-Hant/spots/fuji.html</loc>
+    <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -1993,8 +1993,8 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.michikusa-travel.com/zh-Hant/spots/fuji.html</loc>
-    <lastmod>2026-10-20</lastmod>
+    <loc>https://www.michikusa-travel.com/de/spots/fuji.html</loc>
+    <lastmod>2026-10-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -2005,7 +2005,19 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.michikusa-travel.com/de/yakei.html</loc>
+    <loc>https://www.michikusa-travel.com/zh-Hans/spots/fuji.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/ko/spots/fuji.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/zh-Hant/yakei.html</loc>
     <lastmod>2026-10-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -2017,8 +2029,26 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.michikusa-travel.com/zh-Hant/yakei.html</loc>
+    <loc>https://www.michikusa-travel.com/de/yakei.html</loc>
     <lastmod>2026-10-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/es/yakei.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/zh-Hans/yakei.html</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/ko/yakei.html</loc>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
