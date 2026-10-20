@@ -248,7 +248,7 @@ ${sanyoEntries.map(sanyoCard).join('\n')}
         <img src="${prefix}${atami.thumb}" alt="${esc(atami.alt)}" width="480" height="320" loading="lazy" decoding="async">
         <figcaption>${pick('熱海の斜面に立つ熱海城 / 写真：新幹線の窓', 'Atami Castle on the hillside / Photo: Shinkansen Window')}</figcaption>
       </figure>
-      <p><a href="${prefix}${local}spots/odawara.html#spot-odawara/photo-8">${pick('熱海と相模湾の車窓ページを見る', 'See the Atami and Sagami Bay window guide')}</a></p>
+      <p><a href="${prefix}${local}spots/odawara.html#atami-castle">${pick('熱海と相模湾の車窓ページを見る', 'See the Atami and Sagami Bay window guide')}</a></p>
     </div>
   </section>
 

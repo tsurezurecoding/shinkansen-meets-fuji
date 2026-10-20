@@ -48,4 +48,6 @@
 .nd-disney a .copy-chunk{text-decoration:underline;text-underline-offset:3px}
 .nd-disney a:focus-visible,.nd-event-link.nd-jump-target:focus{outline:3px solid #365f8b;outline-offset:4px;border-radius:6px}
 .nd-event-disney{scroll-margin-top:96px}
+html:not(:lang(ja)) .nd-event .tl-time-suffix{margin-inline-start:.25em}
+html:not(:lang(ja)) .nd-event-copy{overflow-wrap:anywhere}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

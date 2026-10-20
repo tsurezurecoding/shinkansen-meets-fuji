@@ -1616,6 +1616,7 @@ function englishAppIndexHTML() {
   const title = "Tokaido Shinkansen Viewing Times for Your Train";
   const description = "Find when to see Mt. Fuji, castles and lakes based on your Nozomi, Hikari or Kodama timetable. Times are estimates. Set smartphone alerts for selected views in the Android app.";
   const selectorCopy = [
+    ["車窓の時刻はダイヤから計算した目安です。運転日・当日の遅延は反映しません。", "Viewing times are timetable estimates. Operating dates and live delays are not reflected."],
     ['<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">見える時間を</span><span class="copy-chunk">乗る列車に合わせて</span>', "Mt. Fuji, lakes and more. Find viewing times for your train."],
     ['<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>', "Choose your direction, boarding station and departure time."],
     ["乗る列車の車窓時刻を調べる", "Find viewing times for your train"],
