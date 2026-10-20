@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "e7028ab8fb81b385",
+  "contentVersion": "4094ffa76d3c4261",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2863,8 +2863,8 @@
     {
       "path": "sudoori/stories/shimamoto.html",
       "url": "https://www.michikusa-travel.com/sudoori/stories/shimamoto.html",
-      "bytes": 21447,
-      "sha256": "c2a881d700c5294dabec78ae47222d81baccba846a3950f15e76a3f8dae5da25"
+      "bytes": 22251,
+      "sha256": "1b7a4eee05c7d3ac9d8b650cba4b720a1bd77df1839eae4cc8ce29d2c2e161e6"
     },
     {
       "path": "sudoori/stories/tanna.html",
