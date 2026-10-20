@@ -40,6 +40,7 @@ export function generateDrinkLocales(){
     const t=translate(value);if(t===value&&/[A-Za-z]{3}/.test(value)&&!map.has(value))throw Error('Untranslated attribute '+value);
     return key+'="'+escape(decode(t))+'"';
    });
+   html=html.replace(/<meta\b[^>]*(?:property|name)="(?:og|twitter):image:alt"[^>]*>/g,whole=>whole.replace(/content="([^"]*)"/,(m,v)=>'content="'+escape(translate(v))+'"'));
    html=html.replace('<html lang="en">',`<html lang="${lang}">`).replace('data-spot-page-shared-lang="en"',`data-spot-page-shared-lang="${lang}"`);
    const title=decode(map.get(data.source[0]));const description=descriptions[lang][name==='drinks'?0:1];
    html=html.replace(/<meta\b([^>]*(?:name="description"|property="og:description")[^>]*)>/g,whole=>whole.replace(/content="[^"]*"/,`content="${escape(description)}"`))
