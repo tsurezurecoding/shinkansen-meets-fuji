@@ -3,6 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { withLocaleRegistry, supported } from './shared/locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
+import { englishSnapshot } from './shared/castle-localization.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const langs=['zh-Hant','fr','de','es','zh-Hans','ko'];
 const read=name=>JSON.parse(fs.readFileSync(path.join(root,'scripts/shared/'+name+'.json'),'utf8'));
@@ -30,18 +31,23 @@ function targetRoute(route,lang){
 export function generateDrinkLocales(){
  const changes=[];
  for(const [slug,name]of [['drinks','drinks'],['beer-on-shinkansen','beer']]){
-  const source=fs.readFileSync(path.join(root,`en/${slug}.html`),'utf8');const data=read(name+'-translations');
+  const dom=englishSnapshot(root,slug+'.html');
+  dom.window.document.body.setAttribute('data-article-localized','');
+  dom.window.document.querySelectorAll('[data-spot-page-shared-module]').forEach(el=>el.removeAttribute('data-spot-page-shared-module'));
+  dom.window.document.querySelectorAll('script[src*="spot-page-shared-data"]').forEach(el=>el.remove());
+  const source=dom.serialize();dom.window.close();const data=read(name+'-translations');
   for(const lang of langs){
-   const map=dictionary(data,lang,name);const translate=s=>{if(map.has(s))return map.get(s);if(attrs[s]?.[lang])return attrs[s][lang];if(/[A-Za-z]{3}/.test(s)&&!s.startsWith("'+"))throw Error('New untranslated copy: '+s);return s;};
+   const common=JSON.parse(fs.readFileSync(path.join(root,`scripts/locales/utility-${lang}.json`),'utf8'));
+   const map=dictionary(data,lang,name);for(const [key,value]of [...map])map.set(escape(decode(key)),value);const translate=s=>{if(common[decode(s)]&&!map.has(s))return escape(common[decode(s)]);if(map.has(s))return map.get(s);if(attrs[s]?.[lang])return attrs[s][lang];if(/[A-Za-z]{3}/.test(s)&&!s.startsWith("'+"))throw Error('New untranslated copy: '+s);return s;};
    let html=source.split(/(<script\b[^>]*>[\s\S]*?<\/script>|<style\b[^>]*>[\s\S]*?<\/style>)/g).map(part=>/^<(?:script|style)\b/i.test(part)?part:part.replace(/>([^<>]+)</g,(whole,text)=>'>'+text.replace(/\S[\s\S]*\S|\S/,s=>translate(s))+'<')).join('');
    html=html.replace(/\b(alt|aria-label|title)="([^"]*)"/g,(whole,key,value)=>{
     if(value.startsWith("'+"))return whole;
     if(value.startsWith('Image credit for '))value=data.source[189];
-    const t=translate(value);if(t===value&&/[A-Za-z]{3}/.test(value)&&!map.has(value))throw Error('Untranslated attribute '+value);
+    const t=translate(value);
     return key+'="'+escape(decode(t))+'"';
    });
    html=html.replace(/<meta\b[^>]*(?:property|name)="(?:og|twitter):image:alt"[^>]*>/g,whole=>whole.replace(/content="([^"]*)"/,(m,v)=>'content="'+escape(translate(v))+'"'));
-   html=html.replace('<html lang="en">',`<html lang="${lang}">`).replace('data-spot-page-shared-lang="en"',`data-spot-page-shared-lang="${lang}"`);
+   html=html.replace(/(<html\b[^>]*\blang=)"en"/,`$1"${lang}"`).replace('data-spot-page-shared-lang="en"',`data-spot-page-shared-lang="${lang}"`);
    const title=decode(map.get(data.source[0]));const description=descriptions[lang][name==='drinks'?0:1];
    html=html.replace(/<meta\b([^>]*(?:name="description"|property="og:description")[^>]*)>/g,whole=>whole.replace(/content="[^"]*"/,`content="${escape(description)}"`))
     .replace(/<meta property="og:title" content="[^"]*">/,`<meta property="og:title" content="${escape(title)}">`)
@@ -52,17 +58,21 @@ export function generateDrinkLocales(){
    html=html.replace('</head>',alternates+`\n<link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/${slug}.html">\n</head>`);
    html=html.replace(/<a\b([^>]*?)href="([^"#][^"]*)"([^>]*)>([\s\S]*?)<\/a>/g,(whole,before,href,after,body)=>{
     if(/^(?:https?:|mailto:|tel:|javascript:)/.test(href))return whole;
-    const url=new URL(href,`https://local/en/${slug}.html`);const route=url.pathname.replace(/^\/en\//,'')||'index.html';
+    const url=new URL(href,`https://local/en/${slug}.html`);let route=url.pathname.replace(/^\/en\//,'')||'index.html';if(route.endsWith('/'))route+='index.html';
     if(!route.endsWith('.html'))return whole;
     const target=targetRoute(route,lang);const rel=path.posix.relative(lang,path.posix.dirname(target))+'/'+path.posix.basename(target);const dest=(rel.startsWith('/')?'.'+rel:rel)+url.search+url.hash;
     const fallback=target.startsWith('en/');
     return `<a${before}href="${dest}"${after}${fallback?' hreflang="en"':''}>${body}${fallback?' <small class="article-language-note">('+englishNote[lang]+')</small>':''}</a>`;
    });
+   const labels={'zh-Hant':'繁體中文',fr:'Français',de:'Deutsch',es:'Español','zh-Hans':'简体中文',ko:'한국어',en:'English'};
+   const menu=`<details class="guide-lang-menu article-lang-menu"><summary>${labels[lang]}</summary><div class="guide-lang-options">${['en',...langs].map(l=>`<a href="../${l}/${slug}.html?lang=${l}" lang="${l}"${l===lang?' aria-current="page"':''}>${labels[l]}</a>`).join('')}</div></details>`;
+   html=html.replace('</nav></header>',`</nav>${menu}</header>`);
    if(name==='beer'){
     const t=i=>decode(data.translations[lang][i]||data.source[i]);
     const answers={nama:[t(91),`生 — ${t(93)}`],dry:[t(94),t(95)],black:[t(96),t(97)]};
     html=html.replace(/<script src="\.\.\/beer\.js[^>]*><\/script>/,`<script type="application/json" id="beer-label-copy">${JSON.stringify(answers).replace(/</g,'\\u003c')}</script><script src="../beer.js?v=${assetVersion('beer.js')}"></script>`);
    }
+   html=html.replace('</head>',`<link rel="stylesheet" href="../article-locales.css?v=${assetVersion('article-locales.css')}"><script defer src="../article-locales.js?v=${assetVersion('article-locales.js')}"></script></head>`);
    html=withLocaleRegistry(html,'../');
    const relative=`${lang}/${slug}.html`;const output=path.join(root,relative);
    if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==html){changes.push(relative);if(!process.argv.includes('--check')){fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,html);}}
