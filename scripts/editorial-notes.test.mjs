@@ -64,9 +64,13 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   count++;
   const file=lang+'/'+route,dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file,runScripts:'outside-only'}),doc=dom.window.document;
   if(route==='yakei.html'){
-   const style=doc.querySelector('style[data-localized-night-hero]');assert.ok(style);
-   assert.match(style.textContent,/\.yakei-page\[data-article-localized\] \.yk-hero::before/);
-   assert.match(style.textContent,/20260629_2158_nagoya_station_night_michikusa\.jpg/);
+   assert.equal(doc.querySelector('style[data-localized-night-hero]'),null);
+   assert.ok(doc.querySelector('link[href*="yakei.css"]'));
+   const cssDom=new JSDOM(`<style>${read('yakei.css')}</style>`);
+   const heroRule=[...cssDom.window.document.styleSheets[0].cssRules].find(rule=>rule.selectorText==='.yk-hero::before');
+   assert.ok(heroRule,'shared stylesheet must contain the photograph rule');
+   assert.match(heroRule.style.getPropertyValue('background-image'),/20260629_2158_nagoya_station_night_michikusa\.jpg/);
+   cssDom.window.close();
    assert.ok(doc.querySelector('.yk-hero-credit').textContent.includes('Shinkansen Window'));
   }
   assert.equal(doc.documentElement.lang,lang);
