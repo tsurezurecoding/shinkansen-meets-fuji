@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "a13a2ddc5de7aa96",
+  "contentVersion": "00dd128c191c93c4",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -175,8 +175,8 @@
     {
       "path": "de/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/de/beer-on-shinkansen.html",
-      "bytes": 120223,
-      "sha256": "565199a47c0fb5dd8725ca4887833ec09716b5877ffcebe556ff6eaaabe67b04"
+      "bytes": 120191,
+      "sha256": "7065fb6b696c09e36d815d634e1e7d4df9626557d531d480b3a1167e0cb30144"
     },
     {
       "path": "de/castles.html",
@@ -193,8 +193,8 @@
     {
       "path": "de/drinks.html",
       "url": "https://www.michikusa-travel.com/de/drinks.html",
-      "bytes": 127672,
-      "sha256": "cdcb5f3324b3975ade38c35d5088a40270161e2e62f09fe514ca15653b2d84ae"
+      "bytes": 127598,
+      "sha256": "f2ba9a76f2b250eb3b2d930e27e11af36698d47b45934265810134d5af178690"
     },
     {
       "path": "de/index.html",
@@ -523,8 +523,8 @@
     {
       "path": "es/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/es/beer-on-shinkansen.html",
-      "bytes": 120103,
-      "sha256": "7fdb96af942b26438532af2e06a85d60014cbe66977778585921e86b41ff5177"
+      "bytes": 120047,
+      "sha256": "9cdf7ef897799e869c1ee28072ddb5df82fa87e264aa8117bfeb17c9c860f347"
     },
     {
       "path": "es/castles.html",
@@ -541,8 +541,8 @@
     {
       "path": "es/drinks.html",
       "url": "https://www.michikusa-travel.com/es/drinks.html",
-      "bytes": 127407,
-      "sha256": "6bf47c493d48924c8e38602368755a27d9c4fa8233e19b28ab80ce08fb01a05c"
+      "bytes": 127331,
+      "sha256": "e2016b356a1dee07f609bc44519521dc7aaac019b2514ab0bc60c054f3885832"
     },
     {
       "path": "es/index.html",
@@ -781,8 +781,8 @@
     {
       "path": "fr/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/fr/beer-on-shinkansen.html",
-      "bytes": 121264,
-      "sha256": "0580803a8a0d27f74c77788e63503cc79425c4483aac2a7757651775dba83875"
+      "bytes": 121240,
+      "sha256": "4acf6de973f1df5c53b54d603594fd73ce55c4a3ff7c76103ec508588ca9936c"
     },
     {
       "path": "fr/castles.html",
@@ -799,8 +799,8 @@
     {
       "path": "fr/drinks.html",
       "url": "https://www.michikusa-travel.com/fr/drinks.html",
-      "bytes": 128242,
-      "sha256": "13be5377b87c6f2a32bdee66444fd7a6514f092831c1e4272fef8fb5f4c3658e"
+      "bytes": 128156,
+      "sha256": "ce5e6f6027c4184a8c36b4f401e3fc97dfd296b5e4bcd4d839afaaf7c12a8cd9"
     },
     {
       "path": "fr/index.html",
@@ -2299,8 +2299,8 @@
     {
       "path": "ko/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/ko/beer-on-shinkansen.html",
-      "bytes": 120821,
-      "sha256": "f7ffbd13318ce69d94e344d1896b348a19e17af924978b319f84a74dfe3b19e2"
+      "bytes": 120801,
+      "sha256": "ad51b2b88ef82ca14f45dda9bc34ce22cc1b5736523b477a0e0243a1cc6919b7"
     },
     {
       "path": "ko/castles.html",
@@ -2317,8 +2317,8 @@
     {
       "path": "ko/drinks.html",
       "url": "https://www.michikusa-travel.com/ko/drinks.html",
-      "bytes": 127797,
-      "sha256": "ac50f7895e671d74cbcb36e1fbd440d20e305a64a5458552250b91e00182b8aa"
+      "bytes": 127725,
+      "sha256": "57ac8e387a5988444cf4d7d7e8bc3566ff88d21199ecb852cc8a70afa6147aed"
     },
     {
       "path": "ko/index.html",
@@ -4213,8 +4213,8 @@
     {
       "path": "zh-Hans/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/beer-on-shinkansen.html",
-      "bytes": 117556,
-      "sha256": "2f3c6a515f246329cf2247c0a5d2fbd65e3d07552c2bf3d1366fcdca26ba0610"
+      "bytes": 117534,
+      "sha256": "c9710fa8ef644808f20cbb0667186507afdc69c33dddbeec7dcbce72097f9124"
     },
     {
       "path": "zh-Hans/castles.html",
@@ -4231,8 +4231,8 @@
     {
       "path": "zh-Hans/drinks.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/drinks.html",
-      "bytes": 124358,
-      "sha256": "7a0b12da41e2f0caefda4e7c49b4fbbe13b2ce5201362dc17f48ed71186bcd56"
+      "bytes": 124300,
+      "sha256": "8c818cb4e23a9db758437f0b6b3601d749ae05210610a9a95fc47aafb8d430f2"
     },
     {
       "path": "zh-Hans/index.html",
@@ -4423,8 +4423,8 @@
     {
       "path": "zh-Hant/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/beer-on-shinkansen.html",
-      "bytes": 117488,
-      "sha256": "b6647a5e791ae9d9bf6f4b010ab84d0c3b4ae294210fc356b881a9d86aee941f"
+      "bytes": 117466,
+      "sha256": "8039bbea2f013a0a80f5e93c598e047b966a2d50f5eb5aac32f3ee04e65384cf"
     },
     {
       "path": "zh-Hant/castles.html",
@@ -4441,8 +4441,8 @@
     {
       "path": "zh-Hant/drinks.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/drinks.html",
-      "bytes": 124219,
-      "sha256": "7c3e1695fae7e12bd607c57dcd8cc118bbb78d354df165967621d2f95bf1fc14"
+      "bytes": 124167,
+      "sha256": "3eafc6b25913812d42146da52199740e8d50fb0cf661224e0752cd93084f1f7a"
     },
     {
       "path": "zh-Hant/index.html",
