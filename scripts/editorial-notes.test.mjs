@@ -66,7 +66,6 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   if(route==='yakei.html'){
    const style=doc.querySelector('style[data-localized-night-hero]');assert.ok(style);
    assert.match(style.textContent,/\.yakei-page\[data-article-localized\] \.yk-hero::before/);
-   assert.match(style.textContent,/\.yk-hero::after/);
    assert.match(style.textContent,/20260629_2158_nagoya_station_night_michikusa\.jpg/);
    assert.ok(doc.querySelector('.yk-hero-credit').textContent.includes('Shinkansen Window'));
   }
