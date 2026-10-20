@@ -58,7 +58,7 @@ test('article stories follow the photo and first chapter, and the logo retains i
 });
 
 test('all episode articles have matching routes, menus, reciprocal metadata and distribution',()=>{
- const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml');
+ const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml'),metadata=JSON.parse(read('scripts/content-metadata.json'));
  let count=0;
  for(const [route,langs]of Object.entries(episodes))for(const lang of langs){
   count++;
@@ -74,6 +74,11 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
    assert.ok(doc.querySelector('.yk-hero-credit').textContent.includes('Shinkansen Window'));
   }
   assert.equal(doc.documentElement.lang,lang);
+  if(metadata[file]?.article){
+   const nodes=[...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(el=>{const json=JSON.parse(el.textContent);return json['@graph']||[json];});
+   const article=nodes.find(node=>node['@type']==='Article');assert.ok(article);
+   assert.equal(article.inLanguage,lang);assert.equal(article.publisher.name,'Shinkansen Window');
+  }
   assert.equal(doc.querySelector('link[rel="canonical"]').href,'https://www.michikusa-travel.com/'+file);
   assert.ok(sitemap.includes('/'+file+'</loc>'));
   assert.ok(manifest.files.some(f=>(typeof f==='string'?f:f.path)===file));

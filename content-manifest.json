@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "521f721ec0401eff",
+  "contentVersion": "e7028ab8fb81b385",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -343,8 +343,8 @@
     {
       "path": "de/yakei.html",
       "url": "https://www.michikusa-travel.com/de/yakei.html",
-      "bytes": 129155,
-      "sha256": "d999eb764f0b5931969e06709ad23102dd53f38e421e27450739dda449374ecd"
+      "bytes": 129159,
+      "sha256": "0fe19cbafce3c9a955ed7a6f1ad7c4cfecb1508ac95ee0246fb17ed8dcd714fb"
     },
     {
       "path": "de/zukan.html",
@@ -865,8 +865,8 @@
     {
       "path": "fr/yakei.html",
       "url": "https://www.michikusa-travel.com/fr/yakei.html",
-      "bytes": 130181,
-      "sha256": "09425fa99d94b8b9fdf0ff45421edd2159a26bcdcc567abdc2f4cf4fe3adb207"
+      "bytes": 130185,
+      "sha256": "c4563e3042adcb9ef930e35b2cfc0c649bdc22889658e28a83f39422b2e625bd"
     },
     {
       "path": "fr/zukan.html",
@@ -4381,8 +4381,8 @@
     {
       "path": "zh-Hant/yakei.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/yakei.html",
-      "bytes": 124614,
-      "sha256": "3e8613a684e3bd44dbcfaf1e42fb189e834aa1c90b618eadb913cf29c606e546"
+      "bytes": 124623,
+      "sha256": "3499e8dc5487734b777f405a2bf72a23b098bacd321ab89ab061ec1b0dec2cc0"
     },
     {
       "path": "zh-Hant/zukan.html",
