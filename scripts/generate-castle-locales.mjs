@@ -23,7 +23,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   const episodeFile = path.join(root, 'scripts/locales', `episode-${lang}.json`);
   let dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
   const sceneryFile = path.join(root, 'scripts/locales', `scenery-${lang}.json`);
-  if (fs.existsSync(sceneryFile)) Object.assign(dictionary, JSON.parse(fs.readFileSync(sceneryFile, 'utf8')));
+  const sceneryDictionary = fs.existsSync(sceneryFile) ? JSON.parse(fs.readFileSync(sceneryFile, 'utf8')) : {};
   const commonDictionary = dictionary;
   function tr(value) {
     const key = value.trim();
@@ -34,7 +34,8 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     return value.replace(key, () => result);
   }
   for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && !enOnly.includes(route))]) {
-    dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : commonDictionary;
+    const sceneryRoute = /^spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki(?:-seat-a)?)\.html$/.test(route);
+    dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : commonDictionary;
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
     doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());

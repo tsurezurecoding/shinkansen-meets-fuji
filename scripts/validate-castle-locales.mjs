@@ -198,7 +198,8 @@ for (const route of articleRoutes) {
       assert(!doc.querySelector('script[src*="spot-page-loader"], script[src*="data/spot-pages/"]'), file, 'English dynamic loader remains');
       compare(imageSources(doc), imageSources(source.window.document), file, 'photograph assets/order differ from English source');
       compare(creditRecords(doc), creditRecords(source.window.document), file, 'photograph attribution/credit URLs differ from English source');
-      const dictionary = Object.assign({}, ...['utility', 'castle', 'episode', 'scenery'].map(group => JSON.parse(read(`scripts/locales/${group}-${lang}.json`))));
+      const groups = ['utility', 'castle', 'episode', ...(sceneryRoutes.includes(route) ? ['scenery'] : [])];
+      const dictionary = Object.assign({}, ...groups.map(group => JSON.parse(read(`scripts/locales/${group}-${lang}.json`))));
       const bodyText = normalizeText(doc.body.textContent);
       for (const node of textNodes(source.window.document)) {
         const key = node.textContent.trim();
