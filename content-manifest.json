@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "9f031956e14d2d51",
+  "contentVersion": "a13a2ddc5de7aa96",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -853,8 +853,8 @@
     {
       "path": "fr/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fuji.html",
-      "bytes": 120514,
-      "sha256": "49fd18cfdcb7c8a7c47f3f883f484433f7e0ac273d16eb028a75b9e506362a1e"
+      "bytes": 120509,
+      "sha256": "27db53aab9ee7a9754454d9c8b25447cd78dc529331ad1f13b48e435c3cbe4b9"
     },
     {
       "path": "fr/spots/fujikawa-bridge.html",
