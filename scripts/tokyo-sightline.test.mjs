@@ -50,7 +50,7 @@ test('the supplement and its assets are emitted only for the Japanese Tokyo arti
     assert.equal(tokyoSightlineHead(spot, lang, '../../'), '');
   }
   assert.match(tokyoSightlineHead({ id: 'tokyo-tower' }, 'ja', '../'), /href="\.\.\/tokyo-sightline\.css\?v=[a-f0-9]+"/);
-  assert.deepEqual(TOKYO_SCENES.map(scene => scene.id), ['tower', 'bridge', 'station']);
+  assert.deepEqual(TOKYO_SCENES.map(scene => scene.id), ['tower', 'bridge', 'station', 'toranomon']);
   for (const scene of TOKYO_SCENES) {
     const image = new URL('../images/' + scene.photo, import.meta.url);
     const stat = fs.statSync(image);
@@ -82,13 +82,13 @@ test('mounting and scrolling never load the engine; an explicit click opens the 
   assert.equal(find('[data-tokyo-reset]').disabled, false);
 });
 
-test('all three scenes update the photo, explanatory text and pressed state before loading 3D', async t => {
+test('all four scenes update the photo, explanatory text and pressed state before loading 3D', async t => {
   let calls = 0, initialScene;
   const { find, all } = await setup(t, async (_host, options) => {
     calls++; initialScene = options.scene.id;
     return { destroy() {}, setScene() {} };
   });
-  for (const index of [0, 1, 2]) {
+  for (const index of [0, 1, 2, 3]) {
     const scene = TOKYO_SCENES[index];
     find(`[data-tokyo-scene="${index}"]`).click();
     assert.equal(find('[data-tokyo-photo]').src, `https://example.com/images/${scene.photo}`);
@@ -103,7 +103,7 @@ test('all three scenes update the photo, explanatory text and pressed state befo
   }
   find('[data-tokyo-open]').click();
   await tick();
-  assert.equal(initialScene, 'station');
+  assert.equal(initialScene, 'toranomon');
 });
 
 test('changing scenes reuses the existing stage through setScene', async t => {
@@ -265,4 +265,25 @@ test('reset, zoom and handled keyboard commands reach the active stage', async t
   assert.deepEqual(keys, ['ArrowLeft', 'Tab']);
   assert.equal(arrow.defaultPrevented, true);
   assert.equal(tab.defaultPrevented, false);
+});
+
+
+test('the short Mori Tower clip loads only after its details opens, and stops on scene changes', async t => {
+  const {dom,find}=await setup(t,async()=>({destroy(){},setScene(){}}));
+  const video=find('[data-tokyo-video]'),clip=find('[data-tokyo-clip]');let paused=0,loads=0;
+  video.pause=()=>{paused++;};video.load=()=>{loads++;};
+  assert.equal(clip.hidden,true);assert.equal(video.hasAttribute('src'),false);
+  find('[data-tokyo-scene="3"]').click();assert.equal(clip.hidden,false);assert.equal(video.hasAttribute('src'),false);
+  clip.open=true;clip.dispatchEvent(new dom.window.Event('toggle'));
+  assert.match(video.src,/videos\/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4$/);
+  assert.equal(video.autoplay,false);assert.equal(video.preload,'none');
+  find('[data-tokyo-scene="1"]').click();assert.equal(clip.open,false);assert.equal(clip.hidden,true);assert.equal(video.hasAttribute('src'),false);assert(paused>0);assert.equal(loads,1);
+});
+
+test('closing a clip or hiding the document pauses it, and pagehide releases its source', async t => {
+  const {dom,find,hidden}=await setup(t,async()=>({destroy(){},setScene(){}}));const v=find('[data-tokyo-video]'),c=find('[data-tokyo-clip]');let pauses=0;
+  v.pause=()=>{pauses++;};v.load=()=>{};
+  find('[data-tokyo-scene="3"]').click();c.open=true;c.dispatchEvent(new dom.window.Event('toggle'));
+  c.open=false;c.dispatchEvent(new dom.window.Event('toggle'));assert(pauses>0);
+  hidden(true);assert(pauses>1);dom.window.dispatchEvent(new dom.window.Event('pagehide'));assert.equal(v.hasAttribute('src'),false);
 });

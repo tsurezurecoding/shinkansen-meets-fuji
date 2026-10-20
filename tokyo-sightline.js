@@ -10,6 +10,16 @@
   var scenes = JSON.parse(section.dataset.scenes), selected = 0;
   var photo = section.querySelector('[data-tokyo-photo]');
   var photoBase = photo.src.slice(0, photo.src.lastIndexOf('/') + 1);
+  var clip = section.querySelector('[data-tokyo-clip]'), video = section.querySelector('[data-tokyo-video]');
+  function stopClip() {
+    if (video.hasAttribute('src')) { video.pause(); video.removeAttribute('src'); video.load(); }
+    clip.open = false;
+  }
+  clip.addEventListener('toggle', function() {
+    if (!clip.open) { if (video.hasAttribute('src')) video.pause(); return; }
+    var scene = scenes[selected];
+    if (scene.clip && !video.hasAttribute('src')) video.src = new URL('../' + scene.clip, photoBase).href;
+  });
   var stage, epoch = 0, loader, observer, near = false, loading = false;
   function active() { return near && !document.hidden; }
   function reset(message) {
@@ -52,7 +62,10 @@
   }
   section.querySelectorAll('[data-tokyo-scene]').forEach(function(button) {
     button.addEventListener('click', function() {
+      stopClip();
       selected = Number(button.dataset.tokyoScene); var scene = scenes[selected];
+      clip.hidden = !scene.clip;
+      video.poster = photoBase + scene.photo;
       section.querySelectorAll('[data-tokyo-scene]').forEach(function(b) { b.setAttribute('aria-pressed', String(b === button)); });
       photo.src = photoBase + scene.photo; photo.alt = scene.alt;
       section.querySelector('[data-tokyo-caption]').textContent = scene.date + '・' + scene.seat + '／撮影：道草';
@@ -67,8 +80,8 @@
     button.addEventListener('click', function () { stage?.zoom(button.dataset.tokyoZoom === 'in' ? 1 : -1); });
   });
   host.addEventListener('keydown', function (event) { if (stage?.key(event.key)) event.preventDefault(); });
-  document.addEventListener('visibilitychange', function () { stage?.setActive?.(active()); });
-  window.addEventListener('pagehide', function () { observer?.disconnect(); reset('「3Dを開く」を押すと読み込みます。'); model.hidden = true; open.textContent = '3Dを開く'; open.setAttribute('aria-expanded','false'); });
+  document.addEventListener('visibilitychange', function () { stage?.setActive?.(active()); if (document.hidden && video.hasAttribute('src')) video.pause(); });
+  window.addEventListener('pagehide', function () { stopClip(); observer?.disconnect(); reset('「3Dを開く」を押すと読み込みます。'); model.hidden = true; open.textContent = '3Dを開く'; open.setAttribute('aria-expanded','false'); });
   window.addEventListener('pageshow', function (event) { if (event.persisted) watch(); });
   function watch() {
     if (!window.IntersectionObserver) { near = true; open.hidden = false; return; }

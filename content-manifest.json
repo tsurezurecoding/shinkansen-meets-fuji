@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "a1c052b7a9cf3bfb",
+  "contentVersion": "e4fce9b153953c57",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1559,6 +1559,12 @@
       "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4"
     },
     {
+      "path": "images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg",
+      "bytes": 617790,
+      "sha256": "e97e363d5efd44837f570f5a730bdfb8af459bdf9cf547de7a77ec7fb0b4b78a"
+    },
+    {
       "path": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",
       "url": "https://www.michikusa-travel.com/images/20261018_fuji-sky-view_night_0_michikusa.jpg",
       "bytes": 80589,
@@ -2863,14 +2869,14 @@
     {
       "path": "tokyo-sightline.css",
       "url": "https://www.michikusa-travel.com/tokyo-sightline.css",
-      "bytes": 2394,
-      "sha256": "0e067f5642bfb4a7711681088cbdb874a41247d44d195752128eb0fd35ec1595"
+      "bytes": 2754,
+      "sha256": "b83092e077541faae43189aaba389d072534ad23d87bf3547d049d7fea72a1f5"
     },
     {
       "path": "tokyo-sightline.js",
       "url": "https://www.michikusa-travel.com/tokyo-sightline.js",
-      "bytes": 5311,
-      "sha256": "f5372c831c713b09d051f4440407463c9962869b5b4958c891122ad9b000f2e0"
+      "bytes": 6016,
+      "sha256": "0e4f974d6ec1ef2dc37c64d250581d82e1e723c8dabb6f8d992399bcd0343a0a"
     },
     {
       "path": "train-picker.js",
@@ -2973,6 +2979,12 @@
       "url": "https://www.michikusa-travel.com/vendor/leaflet/LICENSE",
       "bytes": 1369,
       "sha256": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b"
+    },
+    {
+      "path": "videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4",
+      "url": "https://www.michikusa-travel.com/videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4",
+      "bytes": 3215364,
+      "sha256": "7db7ce71521bcdb157d282b6e77d3024a487dcaef72fb7add5bc27d29aa96d17"
     },
     {
       "path": "window-artworks.css",

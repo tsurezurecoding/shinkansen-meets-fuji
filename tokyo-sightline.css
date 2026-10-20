@@ -27,3 +27,7 @@
 .tokyo-sightline-photo img {display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#10212d;border-radius:10px;}
 .tokyo-sightline-photo figcaption {font-size:12px;color:#53665d;margin-top:6px;}
 .tokyo-sightline-meta {font-size:13px;color:#53665d;}
+
+.tokyo-sightline-clip {margin:14px 0;}
+.tokyo-sightline-clip summary {flex-wrap:wrap;column-gap:.2em;cursor:pointer;min-height:44px;display:flex;align-items:center;color:#244c42;text-decoration:underline;text-underline-offset:4px;}
+.tokyo-sightline-clip video {display:block;width:100%;max-width:100%;aspect-ratio:16/9;background:#10212d;border-radius:10px;}

@@ -21,6 +21,7 @@ const contentFiles = [
   "journey-light-model.js", "journey-light-events.js", "journey-light-events.css",
   "727-collection.css", "images/727-hero-wide.webp", "images/727-hero-mobile.webp",
   "train-window-preview.css", "train-window-preview.js", "train-window-stage.js", "train-window-geometry.js",
+  "images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg", "videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4",
   "tokyo-sightline.js", "tokyo-sightline-stage.js", "tokyo-sightline.css",
   "fujimi-sightline.js", "fujimi-sightline-stage.js", "fujimi-sightline.css",
   'data/sudoori/photo-sources.json',

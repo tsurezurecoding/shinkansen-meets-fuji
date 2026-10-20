@@ -5,7 +5,8 @@ import { assetVersion } from './asset-version.mjs';
 export const TOKYO_SCENES = [
   {id:'tower',label:'東京タワー',photo:'20261010_tokyo-tower_155558_michikusa.jpg',alt:'車窓のビルの間に見える赤い東京タワー',date:'2026年10月10日',seat:'E席側',train:[139.7574288,35.6560242,64],target:[139.74543,35.65858,370],heading:283,distanceKm:1.1,district:'13103',range:2100,note:'手前のビルの向こうに、赤い塔。線の先が東京タワーの位置です。'},
   {id:'bridge',label:'レインボーブリッジ',photo:'20260924_rainbow-bridge_21057_michikusa.jpg',alt:'建物と倉庫の向こうに見えるレインボーブリッジの白い主塔',date:'2026年9月24日',seat:'A席側',train:[139.74263081,35.63631611,64],target:[139.7634,35.6366,140],heading:89,distanceKm:1.9,district:'13103',range:3000,note:'倉庫の屋根の向こうに白い主塔。線は橋の中央付近を示します。橋の主塔・ケーブルの形は模型に含まれません。'},
-  {id:'station',label:'東京駅',photo:'20260924_tokyo-station_19505_michikusa.jpg',alt:'線路とホームの向こうに見える東京駅丸の内駅舎のドーム',date:'2026年9月24日',seat:'E席側',train:[139.76714909,35.67930879,64],target:[139.7653,35.6805,54],heading:308,distanceKm:0.2,district:'13101',range:1000,note:'ホームの向こう、丸の内駅舎のドーム。線の先は駅舎南側の代表点です。'}
+  {id:'station',label:'東京駅',photo:'20260924_tokyo-station_19505_michikusa.jpg',alt:'線路とホームの向こうに見える東京駅丸の内駅舎のドーム',date:'2026年9月24日',seat:'E席側',train:[139.76714909,35.67930879,64],target:[139.7653,35.6805,54],heading:308,distanceKm:0.2,district:'13101',range:1000,note:'ホームの向こう、丸の内駅舎のドーム。線の先は駅舎南側の代表点です。'},
+  {id:'toranomon',label:'虎ノ門ヒルズ森タワー',photo:'20261010_toranomon-hills-mori-tower_126000_michikusa.jpg',alt:'新橋の街路の奥に、斜めの頂部を見せる虎ノ門ヒルズ森タワー',date:'2026年10月10日',seat:'E席側の景色',train:[139.75874142535,35.6629714458,64],target:[139.74915,35.66683,284],heading:296.1,distanceKm:1.0,district:'13103',range:1950,clip:'videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4',note:'新橋の街路の奥に、斜めの頂部を持つ森タワー。手前の建物のすきまを通して、塔の姿が現れます。'}
 ];
 const enabled=(spot,lang)=>spot.id==='tokyo-tower'&&lang==='ja';
 export function tokyoSightlineHead(spot,lang,prefix){return enabled(spot,lang)?'\n  <link rel="stylesheet" href="'+prefix+'tokyo-sightline.css?v='+assetVersion('tokyo-sightline.css')+'">':'';}
@@ -18,6 +19,7 @@ export function tokyoSightlineHTML(spot,lang,prefix){
  <p>車窓に見えたものと撮影位置を、一本の線でつなぎます。写真を選び、街を回して奥行きを探してみましょう。</p>
  <div class="tokyo-sightline-scenes" role="group" aria-label="写真を選ぶ">${TOKYO_SCENES.map((scene,i)=>'<button type="button" class="btn btn-ghost" data-tokyo-scene="'+i+'" aria-pressed="'+(i===0)+'">'+scene.label+'</button>').join('')}</div>
  <figure class="tokyo-sightline-photo"><img data-tokyo-photo src="${prefix}images/${s.photo}" alt="${s.alt}" loading="lazy" width="1920" height="1080"><figcaption><span data-tokyo-caption>${s.date}・${s.seat}／撮影：道草</span></figcaption></figure>
+ <details class="tokyo-sightline-clip" data-tokyo-clip hidden><summary><span class="copy-chunk">この瞬間を動画で見る</span><span class="copy-chunk">（4秒・約3MB）</span></summary><video data-tokyo-video controls playsinline preload="none" aria-label="虎ノ門ヒルズ森タワーが見える、無音の4秒の車窓動画"></video><p class="tokyo-sightline-note">2026年10月10日・撮影：道草。無音／再生ボタンで開始します。</p></details>
  <p data-tokyo-note>${s.note}</p>
  <p class="tokyo-sightline-meta" data-tokyo-distance>推定撮影位置から約${s.distanceKm}km</p>
  <p class="tokyo-sightline-note" id="tokyo-sightline-traffic">3Dは数十MB以上の通信が発生する場合があります。場面の切り替えや操作でも追加通信が発生します。</p>
