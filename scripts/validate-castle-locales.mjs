@@ -51,6 +51,7 @@ function checkMetadata(doc, lang, route, label) {
   if (route === 'spots/ibuki-seat-a.html') route = 'spots/ibuki.html';
   assert(doc.documentElement.lang === lang, label, `html lang must be ${lang}`);
   assert(doc.querySelector('link[rel="canonical"]')?.href === `${origin}/${routeFor(lang, route)}`, label, 'self canonical missing');
+  assert(doc.querySelector('meta[property="og:url"]')?.content === `${origin}/${routeFor(lang, route)}`, label, 'Open Graph URL must match the canonical article');
   for (const edition of [...editions, 'x-default']) {
     const links = doc.querySelectorAll(`link[rel="alternate"][hreflang="${edition}"]`);
     assert(links.length === 1 && links[0].href === `${origin}/${routeFor(edition === 'x-default' ? 'en' : edition, route)}`, label, `reciprocal hreflang ${edition} missing or duplicated`);

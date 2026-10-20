@@ -88,6 +88,8 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     }
     const canonicalRoute = stripEdition(new URL(doc.querySelector('link[rel="canonical"]').href).pathname.slice(1));
     doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${canonicalRoute}`;
+    const ogUrl = doc.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = doc.querySelector('link[rel="canonical"]').href;
     // Known translated destinations remain in this edition. Keep the English
     // fallback routes, without repeating a visible language label on every link.
     for (const el of doc.querySelectorAll('a[href]')) {

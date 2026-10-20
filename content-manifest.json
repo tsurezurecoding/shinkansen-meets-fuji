@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "00dd128c191c93c4",
+  "contentVersion": "ee5c2179fe2269f9",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -295,8 +295,8 @@
     {
       "path": "de/spots/ibuki-seat-a.html",
       "url": "https://www.michikusa-travel.com/de/spots/ibuki-seat-a.html",
-      "bytes": 108087,
-      "sha256": "5cdea23c81cf9404d3bfa8bcd67164f941e1ce23fefa4145a710e5235bc9467c"
+      "bytes": 108080,
+      "sha256": "8ce421ae48745838737e1bcb08c7cc88b924572b3abd4292bc528190298347a6"
     },
     {
       "path": "de/spots/ibuki.html",
@@ -643,8 +643,8 @@
     {
       "path": "es/spots/ibuki-seat-a.html",
       "url": "https://www.michikusa-travel.com/es/spots/ibuki-seat-a.html",
-      "bytes": 108524,
-      "sha256": "bb6b0d7662c743206dcebf4ec9b7b0fc55a6be012da888484cf0dcb159883f04"
+      "bytes": 108517,
+      "sha256": "68dfba195b2828ca390b7f273f979987a4e008e52c76b4820db2dc88d5c6a1f7"
     },
     {
       "path": "es/spots/ibuki.html",
@@ -901,8 +901,8 @@
     {
       "path": "fr/spots/ibuki-seat-a.html",
       "url": "https://www.michikusa-travel.com/fr/spots/ibuki-seat-a.html",
-      "bytes": 108793,
-      "sha256": "cbb62664b25efacafaab5dc60bda9ee2748720b4e4622ae3eab97fbbe2d7160c"
+      "bytes": 108786,
+      "sha256": "b54efdeb30d9db8b571917f57f2220b8d7a6ab0d82e0792e2ea6205f85205dd3"
     },
     {
       "path": "fr/spots/ibuki.html",
@@ -2413,8 +2413,8 @@
     {
       "path": "ko/spots/ibuki-seat-a.html",
       "url": "https://www.michikusa-travel.com/ko/spots/ibuki-seat-a.html",
-      "bytes": 108018,
-      "sha256": "38d439c6d93053704b354726356da1b403d9b5fac2bc4f0164ebe4b9faa6a98f"
+      "bytes": 108011,
+      "sha256": "d466a597faae1790dbd83d76e129af991793506bf72f9ed80b91a810f85ee6b2"
     },
     {
       "path": "ko/spots/ibuki.html",
@@ -4327,8 +4327,8 @@
     {
       "path": "zh-Hans/spots/ibuki-seat-a.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/ibuki-seat-a.html",
-      "bytes": 106203,
-      "sha256": "badd8b521012629c1d217053d31a3c62a0bb9526615d00e3ca5cd0d42a0ce17a"
+      "bytes": 106196,
+      "sha256": "7b2fcdbc827c7f8cfb3c4f62c00ea7a0b48937183e9b8e363cb5e7a4e20558c1"
     },
     {
       "path": "zh-Hans/spots/ibuki.html",
@@ -4543,8 +4543,8 @@
     {
       "path": "zh-Hant/spots/ibuki-seat-a.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/ibuki-seat-a.html",
-      "bytes": 106188,
-      "sha256": "040ff1d6f6a0e887d78173aa7728971152e2bfba8560768328ceed1f6d2d49e2"
+      "bytes": 106181,
+      "sha256": "066b37bf6f40df21190786a24758dd557bfaf3ccafc4e52d08241aaba66e1a95"
     },
     {
       "path": "zh-Hant/spots/ibuki.html",
