@@ -802,9 +802,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-10-16",
-    "modified": "2026-10-17",
+    "modified": "2026-10-21",
     "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
-    "modifiedEvidence": "2026-10-17_yamazaki-implementation.md: Yamazaki standard spot cross-links",
+    "modifiedEvidence": "PR123 / 267873475f34b704fd13283039ff8779bc3166c4: owner-approved Shimamoto article explains the Yamazaki name and cross-prefecture region, edited 2026-10-21 JST",
     "representativeImage": false,
     "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
   },
