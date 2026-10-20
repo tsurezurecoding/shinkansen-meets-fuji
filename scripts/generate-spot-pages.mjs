@@ -358,7 +358,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "mikawa-oshima": "三河大島", "nichiban-anjo": "CELLOTAPE牆面看板",
       "nagoya-station-skyline": "名古屋站前天際線", "kirin-beer-factory": "麒麟啤酒工廠",
       kiyosu: "清洲城", "solar-ark": "Solar Ark太陽能設施", "gifu-castle": "岐阜城",
-      kinshozan: "金生山", "nangu-taisha": "南宮大社大鳥居", ibuki: "伊吹山", "ibuki-seat-a": "A席から見る伊吹山",
+      kinshozan: "金生山", "nangu-taisha": "南宮大社大鳥居", ibuki: "伊吹山", "ibuki-seat-a": "A座看伊吹山",
       "sawayama-castle": "佐和山城跡", "hikone-castle": "彦根城", "kannonji-castle": "觀音寺城跡",
       "omi-fuji": "近江富士", "seta-karahashi": "瀨田唐橋", toji: "東寺五重塔", "rakusai-egg-tanks": "洛西淨化中心蛋形消化槽", "edo-castle-fujimi-yagura": "江戶城富士見櫓", "kaguya-no-akari": "輝夜之燈配水塔", "yamazaki-distillery": "三得利山崎蒸溜所",
       "torikai-train-depot": "鳥飼新幹線車輛基地",
@@ -1949,7 +1949,9 @@ function sitemapXML() {
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
   const utilityLiveState = JSON.parse(fs.readFileSync(path.join(appDir, 'scripts/utility-live-sitemap-state.json'), 'utf8'));
-  const episodeUrls = Object.entries(episodes).flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-12" })));
+  const episodeUrls = Object.entries(episodes)
+    .filter(([route]) => !SPOTS.some(spot => spot.guidePageId && spot.guidePageId !== spot.id && route === `spots/${spot.id}.html`))
+    .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
   const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
@@ -2164,6 +2166,7 @@ await import("./generate-mieru-page.mjs");
 await import("./generate-utility-locales.mjs");
 await import("./generate-sparkling-locales.mjs");
 await import("./generate-guide-locale-routes.mjs");
+await import("./generate-drinks-locales.mjs");
 await import("./generate-android-app-invites.mjs");
 await import("./generate-content-manifest.mjs");
 
