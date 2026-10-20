@@ -63,6 +63,13 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
  for(const [route,langs]of Object.entries(episodes))for(const lang of langs){
   count++;
   const file=lang+'/'+route,dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file,runScripts:'outside-only'}),doc=dom.window.document;
+  if(route==='yakei.html'){
+   const style=doc.querySelector('style[data-localized-night-hero]');assert.ok(style);
+   assert.match(style.textContent,/\.yakei-page\[data-article-localized\] \.yk-hero::before/);
+   assert.match(style.textContent,/\.yk-hero::after/);
+   assert.match(style.textContent,/20260629_2158_nagoya_station_night_michikusa\.jpg/);
+   assert.ok(doc.querySelector('.yk-hero-credit').textContent.includes('Shinkansen Window'));
+  }
   assert.equal(doc.documentElement.lang,lang);
   assert.equal(doc.querySelector('link[rel="canonical"]').href,'https://www.michikusa-travel.com/'+file);
   assert.ok(sitemap.includes('/'+file+'</loc>'));
