@@ -12,7 +12,8 @@ const appRoot = path.resolve(__dirname, "..", "..");
 
 const cache = new Map();
 
-export function assetVersion(relativePathFromAppRoot) {
+export function assetVersion(relativePathFromAppRoot, refresh = false) {
+  if (refresh) cache.delete(relativePathFromAppRoot);
   if (cache.has(relativePathFromAppRoot)) return cache.get(relativePathFromAppRoot);
   const absolutePath = path.join(appRoot, relativePathFromAppRoot);
   if (!fs.existsSync(absolutePath)) {

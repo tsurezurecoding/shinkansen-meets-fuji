@@ -21,7 +21,7 @@
   var extra = ['sparkling-dreams.html'];
   var routes = utility.concat(castles, extra, ['guide.html']);
   var enOnly = ['drinks.html', 'beer-on-shinkansen.html'];
-  var episodes = { 'spots/fuji.html': ['de', 'fr'], 'spots/fujitec-big-wing.html': translated.slice(), 'spots/pocari-fukuroi.html': translated.slice(), 'spots/fujikawa-bridge.html': translated.slice(), 'spots/fuji-paper-mills.html': translated.slice(), 'spots/ibuki.html': translated.slice(), 'spots/ibuki-seat-a.html': translated.slice(), 'spots/yamazaki-distillery.html': translated.slice(), 'drinks.html': translated.slice(), 'beer-on-shinkansen.html': translated.slice() };
+  var episodes = {"spots/fuji.html":["de","fr","zh-Hant","es"],"yakei.html":["de","fr","zh-Hant"],"spots/fujitec-big-wing.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/pocari-fukuroi.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/fujikawa-bridge.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/fuji-paper-mills.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/ibuki.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/ibuki-seat-a.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/yamazaki-distillery.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"drinks.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"beer-on-shinkansen.html":["zh-Hant","fr","de","es","zh-Hans","ko"]};
   var pattern = languages.filter(function (lang) { return lang !== 'ja'; }).concat(['ar']).join('|');
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();

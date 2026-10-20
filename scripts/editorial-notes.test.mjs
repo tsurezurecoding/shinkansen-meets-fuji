@@ -43,7 +43,7 @@ test('historical and exhibition boundaries stay in the approved note copy',()=>{
  assert.ok(renderEditorialNote('de','fuji').includes('China und den Niederlanden'));
 });
 
-test('article stories follow the photo and first chapter, and the logo retains its glyph',()=>{
+test('article stories follow the photo and first chapter, and the logo retains its glyph',async()=>{
  for(const p of pairs){
   assert.ok(p.note.article, p.note.id + ' needs an article');
   const dom=new JSDOM(read(p.lang+'/'+p.note.article)),doc=dom.window.document;
@@ -53,29 +53,49 @@ test('article stories follow the photo and first chapter, and the logo retains i
   dom.window.close();
  }
  for(const lang of translated)for(const route of castles){
-  const dom=new JSDOM(read(lang+'/'+route));assert.equal(dom.window.document.querySelector('.brand-mark').textContent,'窓');dom.window.close();
+  const dom=new JSDOM(read(lang+'/'+route));assert.equal(dom.window.document.querySelector('.brand-mark').textContent,'窓');dom.window.close();await new Promise(setImmediate);
  }
 });
 
-test('all episode articles have matching routes, menus, reciprocal metadata and distribution',()=>{
- const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml');
+test('all episode articles have matching routes, menus, reciprocal metadata and distribution',async()=>{
+ const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml'),metadata=JSON.parse(read('scripts/content-metadata.json'));
  let count=0;
  for(const [route,langs]of Object.entries(episodes))for(const lang of langs){
   count++;
   const file=lang+'/'+route,dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file,runScripts:'outside-only'}),doc=dom.window.document;
+  if(route==='yakei.html'){
+   assert.equal(doc.querySelector('style[data-localized-night-hero]'),null);
+   assert.ok(doc.querySelector('link[href*="yakei.css"]'));
+   const cssDom=new JSDOM(`<style>${read('yakei.css')}</style>`);
+   const heroRule=[...cssDom.window.document.styleSheets[0].cssRules].find(rule=>rule.selectorText==='.yk-hero::before');
+   assert.ok(heroRule,'shared stylesheet must contain the photograph rule');
+   assert.match(heroRule.style.getPropertyValue('background-image'),/20260629_2158_nagoya_station_night_michikusa\.jpg/);
+   cssDom.window.close();
+   assert.ok(doc.querySelector('.yk-hero-credit').textContent.includes('Shinkansen Window'));
+  }
   assert.equal(doc.documentElement.lang,lang);
-  assert.equal(doc.querySelector('link[rel="canonical"]').href,'https://www.michikusa-travel.com/'+file);
-  assert.ok(sitemap.includes('/'+file+'</loc>'));
+  if(metadata[file]?.article){
+   const nodes=[...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(el=>{const json=JSON.parse(el.textContent);return json['@graph']||[json];});
+   const article=nodes.find(node=>node['@type']==='Article');assert.ok(article);
+   assert.equal(article.inLanguage,lang);assert.equal(article.publisher.name,'Shinkansen Window');
+  }
+  const canonicalRoute=route==='spots/ibuki-seat-a.html'?'spots/ibuki.html':route;
+  assert.equal(doc.querySelector('link[rel="canonical"]').href,'https://www.michikusa-travel.com/'+lang+'/'+canonicalRoute);
+  assert.ok(sitemap.includes('/'+lang+'/'+canonicalRoute+'</loc>'));
+  if(canonicalRoute!==route)assert.ok(!sitemap.includes('/'+file+'</loc>'));
   assert.ok(manifest.files.some(f=>(typeof f==='string'?f:f.path)===file));
   dom.window.eval(read('locales.js'));dom.window.eval(read('article-locales.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   assert.deepEqual([...doc.querySelectorAll('.article-lang-menu a')].map(a=>a.lang),supported(route));
-  for(const edition of ['ja','en',...langs]){
-   const counterpart=new JSDOM(read((edition==='ja'?'':edition+'/')+route));
-   assert.equal(counterpart.window.document.querySelectorAll(`link[hreflang="${lang}"]`).length,1);counterpart.window.close();
+  for(const edition of supported(route)){
+   // Metadata is enough for this reciprocal check; repeatedly constructing the
+   // same large article DOM for every language exhausted the Node heap.
+   const counterpart=read((edition==='ja'?'':edition+'/')+canonicalRoute);
+   const links=[...counterpart.matchAll(/<link\b[^>]*>/g)].filter(match=>new RegExp(`\\bhreflang="${lang}"`).test(match[0]));
+   assert.equal(links.length,1,`${file}: ${edition}/${canonicalRoute} has duplicate/missing ${lang} alternate`);
   }
-  dom.window.close();
+  dom.window.close();await new Promise(setImmediate);
  }
- assert.equal(count,14);
+ assert.equal(count,61);
 });
 
 test('Fujitec and Pocari have complete eight-language articles and worldwide chapters',()=>{
@@ -114,18 +134,20 @@ test('guide language menus preserve every destination independently of body link
  }
 });
 
-test('episode articles preserve English gallery images and original attribution',()=>{
+test('episode articles preserve English gallery images and original attribution',async()=>{
  const root=new URL('..',import.meta.url).pathname.replace(/^\/(\w:)/,'$1');
  let images=0;
  for(const [route,langs]of Object.entries(episodes)){
   const source=englishSnapshot(decodeURIComponent(root),route);
   const media=doc=>[...doc.querySelectorAll('[data-gallery-thumb]')].map(el=>Object.fromEntries(['data-gallery-src','data-gallery-credit','data-gallery-credit-href'].map(a=>[a,el.getAttribute(a)])));
   const original=media(source.window.document);
-  assert.ok(original.length);
+  const figures=doc=>[...doc.querySelectorAll('article img')].map(el=>({src:el.getAttribute('src'),width:el.getAttribute('width'),height:el.getAttribute('height')}));
+  const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());return copy.textContent.replace(/^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：/,'').trim();});
+  assert.ok(original.length || figures(source.window.document).length);
   const inline=doc=>[...doc.querySelectorAll('.spot-page-inline-figure img, .spot-page-reference-figure img')].map(el=>el.getAttribute('src'));
   const credit=doc=>[...doc.querySelectorAll('.spot-page-inline-figure figcaption a, .spot-page-reference-figure figcaption a')].map(el=>({href:el.getAttribute('href'),label:el.textContent}));
-  for(const lang of langs){const dom=new JSDOM(read(lang+'/'+route));assert.deepEqual(media(dom.window.document),original);assert.deepEqual(inline(dom.window.document),inline(source.window.document));assert.deepEqual(credit(dom.window.document),credit(source.window.document));images+=original.length;dom.window.close();}
-  source.window.close();
+  for(const lang of langs){const dom=new JSDOM(read(lang+'/'+route));assert.deepEqual(media(dom.window.document),original);assert.deepEqual(inline(dom.window.document),inline(source.window.document));assert.deepEqual(credit(dom.window.document),credit(source.window.document));assert.deepEqual(figures(dom.window.document),figures(source.window.document));assert.deepEqual(figureCredits(dom.window.document),figureCredits(source.window.document));images+=original.length+figures(source.window.document).length;dom.window.close();await new Promise(setImmediate);}
+  source.window.close();await new Promise(setImmediate);
  }
  assert.ok(images>=30);
 });
