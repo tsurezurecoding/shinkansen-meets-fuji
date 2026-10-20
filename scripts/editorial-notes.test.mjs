@@ -137,7 +137,7 @@ test('episode articles preserve English gallery images and original attribution'
   const media=doc=>[...doc.querySelectorAll('[data-gallery-thumb]')].map(el=>Object.fromEntries(['data-gallery-src','data-gallery-credit','data-gallery-credit-href'].map(a=>[a,el.getAttribute(a)])));
   const original=media(source.window.document);
   const figures=doc=>[...doc.querySelectorAll('.yk-figure img')].map(el=>({src:el.getAttribute('src'),width:el.getAttribute('width'),height:el.getAttribute('height')}));
-  const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());return copy.textContent.replace(/^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：/,'').trim();});
+  const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());return copy.textContent.replace(/^摄影[：:]|^사진\s*[：:]|^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：/,'').trim();});
   assert.ok(original.length || figures(source.window.document).length);
   const inline=doc=>[...doc.querySelectorAll('.spot-page-inline-figure img, .spot-page-reference-figure img')].map(el=>el.getAttribute('src'));
   const credit=doc=>[...doc.querySelectorAll('.spot-page-inline-figure figcaption a, .spot-page-reference-figure figcaption a')].map(el=>({href:el.getAttribute('href'),label:el.textContent}));
