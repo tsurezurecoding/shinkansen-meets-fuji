@@ -819,5 +819,40 @@
     "article": false,
     "modified": "2026-10-17",
     "modifiedEvidence": "2026-10-17_yamazaki-implementation.md: owner-approved standard spot, confirmed ride photographs and official whisky history"
+  },
+  "zh-Hant/spots/fuji.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-20",
+    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "dateReview": "Publication remains unapproved; no publication date is asserted."
+  },
+  "es/spots/fuji.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-10-20",
+    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "dateReview": "Publication remains unapproved; no publication date is asserted."
+  },
+  "de/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-10-20",
+    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "dateReview": "Publication remains unapproved; no publication date is asserted."
+  },
+  "fr/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-10-20",
+    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "dateReview": "Publication remains unapproved; no publication date is asserted."
+  },
+  "zh-Hant/yakei.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-10-20",
+    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "dateReview": "Publication remains unapproved; no publication date is asserted."
   }
 }

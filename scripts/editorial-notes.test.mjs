@@ -58,12 +58,27 @@ test('article stories follow the photo and first chapter, and the logo retains i
 });
 
 test('all episode articles have matching routes, menus, reciprocal metadata and distribution',()=>{
- const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml');
+ const manifest=JSON.parse(read('content-manifest.json')),sitemap=read('sitemap.xml'),metadata=JSON.parse(read('scripts/content-metadata.json'));
  let count=0;
  for(const [route,langs]of Object.entries(episodes))for(const lang of langs){
   count++;
   const file=lang+'/'+route,dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file,runScripts:'outside-only'}),doc=dom.window.document;
+  if(route==='yakei.html'){
+   assert.equal(doc.querySelector('style[data-localized-night-hero]'),null);
+   assert.ok(doc.querySelector('link[href*="yakei.css"]'));
+   const cssDom=new JSDOM(`<style>${read('yakei.css')}</style>`);
+   const heroRule=[...cssDom.window.document.styleSheets[0].cssRules].find(rule=>rule.selectorText==='.yk-hero::before');
+   assert.ok(heroRule,'shared stylesheet must contain the photograph rule');
+   assert.match(heroRule.style.getPropertyValue('background-image'),/20260629_2158_nagoya_station_night_michikusa\.jpg/);
+   cssDom.window.close();
+   assert.ok(doc.querySelector('.yk-hero-credit').textContent.includes('Shinkansen Window'));
+  }
   assert.equal(doc.documentElement.lang,lang);
+  if(metadata[file]?.article){
+   const nodes=[...doc.querySelectorAll('script[type="application/ld+json"]')].flatMap(el=>{const json=JSON.parse(el.textContent);return json['@graph']||[json];});
+   const article=nodes.find(node=>node['@type']==='Article');assert.ok(article);
+   assert.equal(article.inLanguage,lang);assert.equal(article.publisher.name,'Shinkansen Window');
+  }
   assert.equal(doc.querySelector('link[rel="canonical"]').href,'https://www.michikusa-travel.com/'+file);
   assert.ok(sitemap.includes('/'+file+'</loc>'));
   assert.ok(manifest.files.some(f=>(typeof f==='string'?f:f.path)===file));
@@ -75,7 +90,7 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   }
   dom.window.close();
  }
- assert.equal(count,14);
+ assert.equal(count,19);
 });
 
 test('Fujitec and Pocari have complete eight-language articles and worldwide chapters',()=>{
@@ -121,10 +136,12 @@ test('episode articles preserve English gallery images and original attribution'
   const source=englishSnapshot(decodeURIComponent(root),route);
   const media=doc=>[...doc.querySelectorAll('[data-gallery-thumb]')].map(el=>Object.fromEntries(['data-gallery-src','data-gallery-credit','data-gallery-credit-href'].map(a=>[a,el.getAttribute(a)])));
   const original=media(source.window.document);
-  assert.ok(original.length);
+  const figures=doc=>[...doc.querySelectorAll('.yk-figure img')].map(el=>({src:el.getAttribute('src'),width:el.getAttribute('width'),height:el.getAttribute('height')}));
+  const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());return copy.textContent.replace(/^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：/,'').trim();});
+  assert.ok(original.length || figures(source.window.document).length);
   const inline=doc=>[...doc.querySelectorAll('.spot-page-inline-figure img, .spot-page-reference-figure img')].map(el=>el.getAttribute('src'));
   const credit=doc=>[...doc.querySelectorAll('.spot-page-inline-figure figcaption a, .spot-page-reference-figure figcaption a')].map(el=>({href:el.getAttribute('href'),label:el.textContent}));
-  for(const lang of langs){const dom=new JSDOM(read(lang+'/'+route));assert.deepEqual(media(dom.window.document),original);assert.deepEqual(inline(dom.window.document),inline(source.window.document));assert.deepEqual(credit(dom.window.document),credit(source.window.document));images+=original.length;dom.window.close();}
+  for(const lang of langs){const dom=new JSDOM(read(lang+'/'+route));assert.deepEqual(media(dom.window.document),original);assert.deepEqual(inline(dom.window.document),inline(source.window.document));assert.deepEqual(credit(dom.window.document),credit(source.window.document));assert.deepEqual(figures(dom.window.document),figures(source.window.document));assert.deepEqual(figureCredits(dom.window.document),figureCredits(source.window.document));images+=original.length+figures(source.window.document).length;dom.window.close();}
   source.window.close();
  }
  assert.ok(images>=30);
