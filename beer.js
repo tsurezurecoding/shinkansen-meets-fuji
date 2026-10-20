@@ -22,7 +22,8 @@
     if (!pending) requestAnimationFrame(() => { orient(); pending = false; });
     pending = true;
   }, {passive:true});
-  const explanations = {
+  const localCopy = document.getElementById('beer-label-copy');
+  const explanations = localCopy ? JSON.parse(localCopy.textContent) : {
     nama: ['“Nama” can come in a can.', 'On beer, <span lang="ja">生</span> means it has not been heat-treated for pasteurisation. It can be canned or bottled; the word alone does not mean it was poured from a tap.'],
     dry: ['“Dry” is a clue to the finish.', '<span lang="ja">辛口</span> (<em>karakuchi</em>) means “dry” on a beer label. It points to a crisp character, not chilli heat. Look for it on Asahi Super Dry.'],
     black: ['Read the whole name.', '<span lang="ja">黒</span> (<em>kuro</em>) means “black”. In <span lang="ja">黒ラベル</span> (Black Label), it is part of the product name: Sapporo Black Label is a golden lager.']
