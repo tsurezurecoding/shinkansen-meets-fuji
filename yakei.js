@@ -14,7 +14,8 @@
   if (!root || !root.document) return;
   var doc = root.document;
 
-  var LANG = root.YAKEI_LANG === "en" ? "en" : "ja";
+  var requestedLang = root.YAKEI_LANG || doc.documentElement.lang;
+  var LANG = ["ja", "en", "de", "fr", "zh-Hant"].indexOf(requestedLang) >= 0 ? requestedLang : "en";
   var MTS = root.MADO_TRAIN_SELECT;
   var DATA_SPOTS = typeof SPOTS !== "undefined" ? SPOTS : [];
   var DATA_ROUTE = typeof ROUTE !== "undefined" ? ROUTE : null;
@@ -40,6 +41,30 @@
       allLight: function (sunset) { return "At this time every view on the page is passed in daylight. Sunset is around " + sunset + "."; },
       allDark: function (sunset, n) { return "The whole run is after dark. <strong>Beat the reflection of the cabin lights</strong> and all " + n + " of these are available in their night form. Sunset is around " + sunset + "."; },
       mixed: function (sunset, name, time) { return "Sunset is around " + sunset + ". <strong>From " + name + " (about " + time + ") onward you are travelling in the dark.</strong> That is where the window turns into a mirror, so read &ldquo;How to see night views through the window&rdquo; below before you get there."; },
+    },
+    de: {
+      dark: "Dunkel", dusk: "Dämmerung", light: "Noch hell",
+      side: function (s) { return "Sitzseite " + s; },
+      needTrain: "Wählen Sie Ihren Zug, um die voraussichtliche Vorbeifahrtszeit und die Lichtverhältnisse für jeden Ausblick zu sehen.",
+      allLight: function (sunset) { return "Zu dieser Zeit passieren Sie alle hier gezeigten Ausblicke bei Tageslicht. Der Sonnenuntergang liegt ungefähr bei " + sunset + " Uhr."; },
+      allDark: function (sunset, n) { return "Die gesamte Strecke liegt im Dunkeln. <strong>Wenn Sie die Spiegelung der Innenbeleuchtung abschirmen</strong>, können Sie alle " + n + " Ausblicke in ihrer nächtlichen Gestalt erleben. Sonnenuntergang ist ungefähr um " + sunset + " Uhr."; },
+      mixed: function (sunset, name, time) { return "Sonnenuntergang ist ungefähr um " + sunset + " Uhr. <strong>Ab " + name + " (gegen " + time + " Uhr) reisen Sie im Dunkeln.</strong> Dann wird das Fenster zum Spiegel. Lesen Sie vorher die Tipps zum Betrachten der nächtlichen Aussicht weiter unten."; },
+    },
+    fr: {
+      dark: "Nuit", dusk: "Crépuscule", light: "Encore jour",
+      side: function (s) { return "Côté siège " + s; },
+      needTrain: "Choisissez votre train pour voir l’heure de passage estimée et la luminosité de chaque paysage.",
+      allLight: function (sunset) { return "À cette heure, vous passez devant tous les paysages de cette page en plein jour. Le coucher du soleil est estimé vers " + sunset + "."; },
+      allDark: function (sunset, n) { return "Tout le trajet se déroule de nuit. <strong>En masquant le reflet de l’éclairage intérieur</strong>, vous pourrez découvrir ces " + n + " paysages sous leur aspect nocturne. Le coucher du soleil est estimé vers " + sunset + "."; },
+      mixed: function (sunset, name, time) { return "Le coucher du soleil est estimé vers " + sunset + ". <strong>À partir de " + name + " (vers " + time + "), vous voyagez dans l’obscurité.</strong> La vitre devient alors un miroir : lisez auparavant les conseils ci-dessous pour profiter des paysages nocturnes."; },
+    },
+    "zh-Hant": {
+      dark: "天黑", dusk: "晨昏微光", light: "天還亮",
+      side: function (s) { return s + "席側"; },
+      needTrain: "選擇列車，即可查看各處景色的預估通過時刻與當時的明暗程度。",
+      allLight: function (sunset) { return "依此時刻出發，通過本頁所有景點時都還是白天。日落時間約為" + sunset + "。"; },
+      allDark: function (sunset, n) { return "全程都在天黑後。<strong>只要遮住車廂燈光在玻璃上的倒影</strong>，就有機會看見這" + n + "處景色的夜間面貌。日落時間約為" + sunset + "。"; },
+      mixed: function (sunset, name, time) { return "日落時間約為" + sunset + "。<strong>從" + name + "（約" + time + "）起，列車會進入天黑的時段。</strong>這時車窗容易像鏡子一樣反光，建議先閱讀下方的「如何欣賞夜間車窗景色」。"; },
     },
   }[LANG];
 
