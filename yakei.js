@@ -75,7 +75,7 @@
       mixed: function (sunset, name, time) { return "La puesta de sol es hacia las " + sunset + ". <strong>A partir de " + name + " (hacia las " + time + "), viajarás de noche.</strong> La ventana se convierte en un espejo: lee antes los consejos para observar los paisajes nocturnos que aparecen más abajo."; },
     },
     "zh-Hans": {
-      dark: "天黑", dusk: "暮色时分", light: "天还亮",
+      dark: "天黑", dusk: "晨昏微光", light: "天还亮",
       side: function (s) { return s + "座侧"; },
       needTrain: "选择列车，查看各处景色的预计经过时间和当时的明暗程度。",
       allLight: function (sunset) { return "按这个时刻，列车经过本页所有景色时都还是白天。日落时间约为" + sunset + "。"; },
@@ -83,7 +83,7 @@
       mixed: function (sunset, name, time) { return "日落时间约为" + sunset + "。<strong>从" + name + "（约" + time + "）起，列车进入天黑的时段。</strong>这时玻璃容易映出车厢倒影，请提前阅读下方的夜间观景提示。"; },
     },
     ko: {
-      dark: "밤", dusk: "해 질 무렵", light: "아직 밝음",
+      dark: "밤", dusk: "어스름", light: "아직 밝음",
       side: function (s) { return s + "석 쪽"; },
       needTrain: "열차를 선택하면 각 풍경의 예상 통과 시각과 그때의 밝기를 볼 수 있습니다.",
       allLight: function (sunset) { return "이 시각에는 이 페이지의 모든 풍경을 밝을 때 지나갑니다. 일몰은 약 " + sunset + "입니다."; },
