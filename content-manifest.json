@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "4e8c573043b0a894",
+  "contentVersion": "4618b6f6831f4353",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1977,6 +1977,12 @@
       "url": "https://www.michikusa-travel.com/images/foods/takoyaki.webp",
       "bytes": 119658,
       "sha256": "2389b1d866387600e086eb4f3e2d0e4e4a78f973d6943784ef92b2c86fa9a0ad"
+    },
+    {
+      "path": "images/fuji-guide-hero.webp",
+      "url": "https://www.michikusa-travel.com/images/fuji-guide-hero.webp",
+      "bytes": 96950,
+      "sha256": "0363ac2bd8215757bc360572a65be49e62843c2b1e77640836380df43895c4ea"
     },
     {
       "path": "images/google-play/en-badge.png",
