@@ -2161,9 +2161,10 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
+await import("./generate-utility-locales.mjs");
+// Article snapshots hash their locale payload; write it before reading its version.
 await import("./generate-castle-locales.mjs");
 await import("./generate-mieru-page.mjs");
-await import("./generate-utility-locales.mjs");
 await import("./generate-sparkling-locales.mjs");
 await import("./generate-guide-locale-routes.mjs");
 await import("./generate-drinks-locales.mjs");
