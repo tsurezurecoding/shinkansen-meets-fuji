@@ -6,7 +6,7 @@ import {JSDOM} from 'jsdom';
 import {YAKEI_SPOT_IDS} from './shared/yakei-spots.mjs';
 
 const read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
-const names={de:['Dunkel','Dämmerung','Noch hell'],fr:['Nuit','Crépuscule','Encore jour'],'zh-Hant':['天黑','晨昏微光','天還亮'],es:['Noche','Crepúsculo','Todavía de día'],'zh-Hans':['天黑','暮色时分','天还亮'],ko:['밤','해 질 무렵','아직 밝음']};
+const names={de:['Dunkel','Dämmerung','Noch hell'],fr:['Nuit','Crépuscule','Encore jour'],'zh-Hant':['天黑','晨昏微光','天還亮'],es:['Noche','Crepúsculo','Todavía de día'],'zh-Hans':['天黑','晨昏微光','天还亮'],ko:['밤','어스름','아직 밝음']};
 function calculator(lang){
  const dom=new JSDOM('<input id="ykDate" value="2026-10-20"><div data-train-picker></div><div id="ykResult"></div><p id="ykSummary"></p>');
  Object.defineProperty(dom.window.document,'readyState',{value:'complete'});
