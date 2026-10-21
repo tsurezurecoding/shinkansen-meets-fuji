@@ -9,7 +9,7 @@
 // Read-only. Usage: npm run audit:site   (or: node scripts/audit-site.mjs [appRoot])
 // Env: LIMIT=n caps how many findings print per category (default 12).
 import fs from 'node:fs';
-import { editions, normalize } from './shared/locales.mjs';
+import { editions, normalize, translated } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
@@ -32,6 +32,7 @@ const allowlist = new Map([
   ['canonical-mismatch:en/spots/hamanako-fuji.html', 'Lake Hamana Fuji is a chapter of the Lake Hamana page; both URLs consolidate there.'],
   ['canonical-mismatch:spots/ibuki-seat-a.html', 'The Seat A view is a chapter of the Mt. Ibuki page; both URLs consolidate there.'],
   ['canonical-mismatch:en/spots/ibuki-seat-a.html', 'The Seat A view is a chapter of the Mt. Ibuki page; both URLs consolidate there.'],
+  ...translated.map(lang => [`canonical-mismatch:${lang}/spots/ibuki-seat-a.html`, 'The translated Seat A companion retains the Japanese/English canonical to the same-language Mt. Ibuki article; validate-castle-locales checks that exact target and matching Open Graph URL.']),
   ['canonical-mismatch:en/besides-fuji.html', 'Besides-Fuji was consolidated into the English guide cloudy section (GUIDE-CTR-0913).'],
   ['canonical-mismatch:zh-Hant/besides-fuji.html', 'Besides-Fuji was consolidated into the Traditional Chinese guide cloudy section (GUIDE-CTR-0913).'],
   ['no-head:google00ff4d27915d01c3.html', 'Google ownership verification token.'],

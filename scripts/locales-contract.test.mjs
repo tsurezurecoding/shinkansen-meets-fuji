@@ -4,7 +4,30 @@ import fs from 'node:fs';
 import { JSDOM } from 'jsdom';
 import locales from '../locales.js';
 import { withLocaleRegistry } from './shared/locales.mjs';
+import { withArticleLocales } from './shared/castle-locales.mjs';
 const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
+  for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
+    assert.deepEqual(locales.supported(`spots/${id}.html`), locales.languages);
+  }
+  const head = '<head><link rel="canonical" href="https://www.michikusa-travel.com/en/spots/ibuki.html"></head>';
+  const html = withArticleLocales(head, 'en/spots/ibuki-seat-a.html', 'test');
+  assert.ok(html.includes('hreflang="fr" href="https://www.michikusa-travel.com/fr/spots/ibuki.html"'));
+  assert.ok(!html.includes('/fr/spots/ibuki-seat-a.html'));
+  const unregistered = '<head><link rel="canonical" href="https://www.michikusa-travel.com/en/spots/hamanako.html"></head>';
+  assert.equal(withArticleLocales(unregistered, 'en/spots/hamanako-fuji.html', 'test'), unregistered);
+});
+test('English visitor articles expose seven real editions without a Japanese destination', () => {
+  const dom = new JSDOM('<html lang="en"><head><link rel="canonical" href="https://www.michikusa-travel.com/en/drinks.html"></head><body><header class="topbar"></header></body></html>', {url:'https://www.michikusa-travel.com/en/drinks.html?train=Nozomi-1#tea',runScripts:'outside-only'});
+  dom.window.eval(read('locales.js')); dom.window.eval(read('article-locales.js'));
+  dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+  const menu = dom.window.document.querySelector('.article-lang-menu');
+  assert.equal(menu.querySelectorAll('a').length,7);
+  assert.equal(menu.querySelector('a[lang="ja"]'),null);
+  const target = new URL(menu.querySelector('a[lang="fr"]').href);
+  assert.equal(target.pathname,'/fr/drinks.html'); assert.equal(target.searchParams.get('train'),'Nozomi-1'); assert.equal(target.hash,'#tea');
+  dom.window.close();
+});
 test('edition registry loads before synchronous routing and after the base URL', () => {
   for (const base of ['', '<base href="../">']) {
     const source = `<html><head><meta charset="utf-8">${base}<script src="language-router.js"></script><script src="../locales.js?v=old"></script></head></html>`;
@@ -21,7 +44,8 @@ test('new editions match the 25 active pages and Arabic stays guide-only', () =>
   for (const route of locales.routes) for (const lang of ['de','es','zh-Hans','ko']) assert.ok(locales.supported(route).includes(lang), lang + '/' + route);
   assert.ok(locales.supported('guide.html').includes('ar'));
   assert.ok(!locales.supported('start.html').includes('ar'));
-  assert.deepEqual(locales.supported('drinks.html'), ['ja','en']);
+  assert.deepEqual(locales.supported('drinks.html'), ['en', ...locales.translated]);
+  assert.deepEqual(locales.supported('beer-on-shinkansen.html'), ['en', ...locales.translated]);
 });
 test('PR96 Japanese map entry is retained without untranslated cards in other editions', () => {
   assert.ok(read('index.html').includes('data-lp-cta="scenery-card-window-trip"'));

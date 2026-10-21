@@ -2,7 +2,8 @@ import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 // Source of truth: the overseas-traveler English edition plus reviewed translations.
 // Snapshot only first-party rendering, preserving photographs, credits and DOM behavior.
 import fs from 'node:fs';
-import { episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
+import { enOnly, episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
+import { YAMAZAKI_TRANSLATIONS } from './shared/yamazaki-locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './shared/castle-localization.mjs';
@@ -20,7 +21,10 @@ const requestedLang = process.argv.includes('--lang') ? process.argv[process.arg
 if (requestedLang && !CASTLE_LOCALE_LANGS.includes(requestedLang)) throw Error('Unknown castle locale: ' + requestedLang);
 for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   const episodeFile = path.join(root, 'scripts/locales', `episode-${lang}.json`);
-  const dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
+  let dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
+  const sceneryFile = path.join(root, 'scripts/locales', `scenery-${lang}.json`);
+  const sceneryDictionary = fs.existsSync(sceneryFile) ? JSON.parse(fs.readFileSync(sceneryFile, 'utf8')) : {};
+  const commonDictionary = dictionary;
   function tr(value) {
     const key = value.trim();
     if (!key) return value;
@@ -29,7 +33,9 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     if (typeof result !== 'string' || !result.trim()) { missing.add(`${lang}: ${key}`); return value; }
     return value.replace(key, () => result);
   }
-  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang))]) {
+  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && !enOnly.includes(route))]) {
+    const sceneryRoute = /^spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki(?:-seat-a)?)\.html$/.test(route);
+    dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : commonDictionary;
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
     doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());
@@ -80,7 +86,10 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       if (key === 'og:url') el.content = `${origin}/${file}`;
       if (/article:(?:published|modified)_time/.test(key)) el.remove();
     }
-    doc.querySelector('link[rel="canonical"]').href = `${origin}/${file}`;
+    const canonicalRoute = stripEdition(new URL(doc.querySelector('link[rel="canonical"]').href).pathname.slice(1));
+    doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${canonicalRoute}`;
+    const ogUrl = doc.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = doc.querySelector('link[rel="canonical"]').href;
     // Known translated destinations remain in this edition. Keep the English
     // fallback routes, without repeating a visible language label on every link.
     for (const el of doc.querySelectorAll('a[href]')) {
@@ -105,9 +114,9 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       summary.setAttribute('aria-label', editions[lang].prompt);
       const options = doc.createElement('div');
       options.className = 'guide-lang-options';
-      for (const [edition, label] of supported(route).map(edition => [edition, editions[edition].label])) {
+      for (const [edition, label] of supported(canonicalRoute).map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a');
-        a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
+        a.href = prefix + (edition === 'ja' ? '' : edition + '/') + canonicalRoute + (edition === 'ja' ? '?lang=ja' : '');
         a.lang = edition; a.textContent = label;
         if (edition === lang) a.setAttribute('aria-current','page');
         options.appendChild(a);

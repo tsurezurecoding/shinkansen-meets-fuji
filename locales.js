@@ -20,7 +20,8 @@
   var castles = ['castles.html'].concat(castleIds.map(function (id) { return 'spots/' + id + '.html'; }));
   var extra = ['sparkling-dreams.html'];
   var routes = utility.concat(castles, extra, ['guide.html']);
-  var episodes = { 'spots/fuji.html': translated.slice(), 'yakei.html': translated.slice(), 'spots/fujitec-big-wing.html': translated.slice(), 'spots/pocari-fukuroi.html': translated.slice() };
+  var enOnly = ['drinks.html', 'beer-on-shinkansen.html'];
+  var episodes = {"spots/fuji.html":translated.slice(),"yakei.html":translated.slice(),"spots/fujitec-big-wing.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/pocari-fukuroi.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/fujikawa-bridge.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/fuji-paper-mills.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/ibuki.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/ibuki-seat-a.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/yamazaki-distillery.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"drinks.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"beer-on-shinkansen.html":["zh-Hant","fr","de","es","zh-Hans","ko"]};
   var pattern = languages.filter(function (lang) { return lang !== 'ja'; }).concat(['ar']).join('|');
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();
@@ -29,13 +30,13 @@
   }
   function stripEdition(route) { return String(route).replace(new RegExp('^(?:' + pattern + ')/', 'i'), ''); }
   function canonicalRoute(route) { return stripEdition(route).split(/[?#]/)[0].replace(/^live\/$/, 'live/index.html') || 'index.html'; }
-  function supported(route) { var key = canonicalRoute(route); return jaOnly.indexOf(key) >= 0 ? ['ja'] : key === 'guide.html' ? languages.concat(['ar']) : routes.indexOf(key) >= 0 ? languages.slice() : ['ja', 'en'].concat(episodes[key] || []); }
+  function supported(route) { var key = canonicalRoute(route); return jaOnly.indexOf(key) >= 0 ? ['ja'] : enOnly.indexOf(key) >= 0 ? ['en'].concat(translated) : key === 'guide.html' ? languages.concat(['ar']) : routes.indexOf(key) >= 0 ? languages.slice() : ['ja', 'en'].concat(episodes[key] || []); }
   function routeLanguage(path) {
     var match = String(path).match(new RegExp('/(' + pattern + ')(?:/|$)', 'i'));
     return match ? normalize(match[1]) : null;
   }
   function recognized(value) { return /^(?:ja|en|zh|fr|de|es|ko|ar)(?:-|_|$)/i.test(String(value || '')); }
-  var api = { jaOnly: jaOnly, episodes: episodes, editions: editions, languages: languages, translated: translated, utility: utility, castleIds: castleIds, castles: castles, extra: extra, routes: routes, pattern: pattern, normalize: normalize, recognized: recognized, stripEdition: stripEdition, canonicalRoute: canonicalRoute, supported: supported, routeLanguage: routeLanguage };
+  var api = { jaOnly: jaOnly, enOnly: enOnly, episodes: episodes, editions: editions, languages: languages, translated: translated, utility: utility, castleIds: castleIds, castles: castles, extra: extra, routes: routes, pattern: pattern, normalize: normalize, recognized: recognized, stripEdition: stripEdition, canonicalRoute: canonicalRoute, supported: supported, routeLanguage: routeLanguage };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.MADO_LOCALES = api;
 }(typeof window === 'object' ? window : null));

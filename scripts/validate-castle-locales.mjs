@@ -9,6 +9,9 @@ import { englishSnapshot, textNodes } from './shared/castle-localization.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const editions = ['ja', 'en', ...CASTLE_LOCALE_LANGS];
+// Exercise the scenery companions with the same photo, map and edition contracts.
+const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a'].map(id => `spots/${id}.html`);
+const articleRoutes = [...CASTLE_LOCALE_ROUTES, ...sceneryRoutes];
 const errors = [];
 const counts = { pages: 0, galleries: 0, maps: 0, lightboxes: 0, languageSwitches: 0 };
 const assert = (ok, label, message) => { if (!ok) errors.push(`${label}: ${message}`); };
@@ -45,8 +48,10 @@ function checkLocalFiles(doc, label) {
 }
 
 function checkMetadata(doc, lang, route, label) {
+  if (route === 'spots/ibuki-seat-a.html') route = 'spots/ibuki.html';
   assert(doc.documentElement.lang === lang, label, `html lang must be ${lang}`);
   assert(doc.querySelector('link[rel="canonical"]')?.href === `${origin}/${routeFor(lang, route)}`, label, 'self canonical missing');
+  assert(doc.querySelector('meta[property="og:url"]')?.content === `${origin}/${routeFor(lang, route)}`, label, 'Open Graph URL must match the canonical article');
   for (const edition of [...editions, 'x-default']) {
     const links = doc.querySelectorAll(`link[rel="alternate"][hreflang="${edition}"]`);
     assert(links.length === 1 && links[0].href === `${origin}/${routeFor(edition === 'x-default' ? 'en' : edition, route)}`, label, `reciprocal hreflang ${edition} missing or duplicated`);
@@ -66,6 +71,7 @@ function checkMetadata(doc, lang, route, label) {
 }
 
 function checkSwitch(dom, lang, route, label) {
+  if (route === 'spots/ibuki-seat-a.html') route = 'spots/ibuki.html';
   dom.window.eval(read('locales.js')); dom.window.eval(read('article-locales.js'));
   dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   const switches = dom.window.document.querySelectorAll('details.guide-lang-menu.article-lang-menu');
@@ -92,13 +98,13 @@ function checkSwitch(dom, lang, route, label) {
 
 function checkLocalizedLinks(doc, sourceDoc, lang, label) {
   const nativeRoute = url => url.origin === origin ? url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'), '') : null;
-  const knownSource = new Set(Array.from(sourceDoc.querySelectorAll('a[href]')).map(el => nativeRoute(new URL(el.href))).filter(route => CASTLE_LOCALE_ROUTES.includes(route)));
+  const knownSource = new Set(Array.from(sourceDoc.querySelectorAll('a[href]')).map(el => nativeRoute(new URL(el.href))).filter(route => articleRoutes.includes(route)));
   const localizedDestinations = new Set();
   for (const el of doc.querySelectorAll('a[href]')) {
     if (el.closest('.lang-switch, .article-lang-menu')) continue;
     const url = new URL(el.href);
     const route = nativeRoute(url);
-    if (CASTLE_LOCALE_ROUTES.includes(route)) {
+    if (articleRoutes.includes(route)) {
       assert(url.pathname === `/${lang}/${route}`, label, `translated article link leaves ${lang}: ${url.pathname}`);
       localizedDestinations.add(route);
     } else if (url.origin === origin && url.pathname.startsWith('/en/')) {
@@ -162,7 +168,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
   for (const el of guide.window.document.querySelectorAll('a[href]')) {
     const url = new URL(el.href);
     const route = url.pathname.slice(1).replace(new RegExp('^(?:' + Object.keys(localeInfo).filter(x=>x!=='ja').join('|') + ')/'), '');
-    if (url.origin === origin && CASTLE_LOCALE_ROUTES.includes(route)) {
+    if (url.origin === origin && articleRoutes.includes(route)) {
       assert(url.pathname === `/${lang}/${route}`, `${lang}/guide.html`, `existing guide entry must remain in this language: ${url.pathname}`);
       nativeLinks++;
     }
@@ -171,7 +177,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
   guide.window.close();
 }
 
-for (const route of CASTLE_LOCALE_ROUTES) {
+for (const route of articleRoutes) {
   const source = englishSnapshot(root, route);
   for (const lang of editions) {
     const file = routeFor(lang, route);
@@ -193,7 +199,8 @@ for (const route of CASTLE_LOCALE_ROUTES) {
       assert(!doc.querySelector('script[src*="spot-page-loader"], script[src*="data/spot-pages/"]'), file, 'English dynamic loader remains');
       compare(imageSources(doc), imageSources(source.window.document), file, 'photograph assets/order differ from English source');
       compare(creditRecords(doc), creditRecords(source.window.document), file, 'photograph attribution/credit URLs differ from English source');
-      const dictionary = JSON.parse(read(`scripts/locales/castle-${lang}.json`));
+      const groups = ['utility', 'castle', 'episode', ...(sceneryRoutes.includes(route) ? ['scenery'] : [])];
+      const dictionary = Object.assign({}, ...groups.map(group => JSON.parse(read(`scripts/locales/${group}-${lang}.json`))));
       const bodyText = normalizeText(doc.body.textContent);
       for (const node of textNodes(source.window.document)) {
         const key = node.textContent.trim();

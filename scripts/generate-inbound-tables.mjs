@@ -107,9 +107,8 @@ function routedSpotHref(spot, langKey) {
   return route.startsWith(sameDirectoryPrefix) ? route.slice(sameDirectoryPrefix.length) : `../${route}`;
 }
 
-function routedSpotUrl(spot) {
-  const route = spot.guideRoute?.en || spot.guideRoute?.ja;
-  return route ? `${SITE_ROOT}/${route}` : `${SITE_ROOT}/en/spots/${spot.id}.html`;
+function routedSpotUrl(spot, langKey) {
+  return new URL(routedSpotHref(spot, langKey), `${SITE_ROOT}/${LANGS[langKey].dir}/besides-fuji.html`).href;
 }
 
 const escapeHTML = (value) =>
@@ -312,7 +311,7 @@ function besidesItemListLd(langKey) {
     .slice()
     .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
     .map((spot, index) => {
-      const spotUrl = routedSpotUrl(spot);
+      const spotUrl = routedSpotUrl(spot, langKey);
       return {
       "@type": "ListItem",
       position: index + 1,
