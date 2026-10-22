@@ -1860,9 +1860,11 @@ function sitemapXML() {
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
+    { loc: `${siteRoot}/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/everyday-japan.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/tokyo-kyoto-stations.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-10" },
     { loc: `${siteRoot}/en/beer-on-shinkansen.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-07" },
     { loc: `${siteRoot}/en/drinks.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-04" },
@@ -2161,6 +2163,7 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
+await import("./generate-food-country-ja.mjs");
 await import("./generate-utility-locales.mjs");
 // Article snapshots hash their locale payload; write it before reading its version.
 await import("./generate-castle-locales.mjs");
