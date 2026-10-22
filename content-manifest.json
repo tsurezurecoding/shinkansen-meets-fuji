@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "4618b6f6831f4353",
+  "contentVersion": "10129e5f024bcee2",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -217,8 +217,8 @@
     {
       "path": "de/mieru.html",
       "url": "https://www.michikusa-travel.com/de/mieru.html",
-      "bytes": 109179,
-      "sha256": "3bbf42b21e9685119c6423545987a7a9bd3c6cba848331a61cdb108711cf6401"
+      "bytes": 109178,
+      "sha256": "89a61dd1d895645644488706a15ee451306a6ddfc2947d49a3f5c5dc7b6eb9cd"
     },
     {
       "path": "de/sparkling-data.js",
@@ -565,8 +565,8 @@
     {
       "path": "es/mieru.html",
       "url": "https://www.michikusa-travel.com/es/mieru.html",
-      "bytes": 110037,
-      "sha256": "3001097bb3215ff56a729d0839419610e51aab15a88d4566f757392ec873f96b"
+      "bytes": 110036,
+      "sha256": "7c5985c0e65cc504325b4b5ccbc69779f9cf46ebca7f29a892a8fac2ae3111de"
     },
     {
       "path": "es/sparkling-data.js",
@@ -829,8 +829,8 @@
     {
       "path": "fr/mieru.html",
       "url": "https://www.michikusa-travel.com/fr/mieru.html",
-      "bytes": 110055,
-      "sha256": "a5a9129f16205204e52c57c7323041c7adf3c3433def351bf4c4a492627ab399"
+      "bytes": 110054,
+      "sha256": "0cc1c3e239ae6ffed63d0b6b78bbc19ca163bf5582c6c6aeac5614a114b3a6e1"
     },
     {
       "path": "fr/sparkling-data.js",
@@ -2353,8 +2353,8 @@
     {
       "path": "ko/mieru.html",
       "url": "https://www.michikusa-travel.com/ko/mieru.html",
-      "bytes": 108728,
-      "sha256": "8e13ad5c79b3dc0755a83b0c9ac1d30c817fe00f4cf84c5af641647d1acf52f7"
+      "bytes": 108727,
+      "sha256": "16504e15cd8297e272a92696e5007cdf3f96b15be39659a07287a56eb3778479"
     },
     {
       "path": "ko/sparkling-data.js",
@@ -2557,8 +2557,8 @@
     {
       "path": "mieru.js",
       "url": "https://www.michikusa-travel.com/mieru.js",
-      "bytes": 21824,
-      "sha256": "a2559a18aba0057b79ca454f6579a728bdf92df0f73d4635126fa8ce10f2508f"
+      "bytes": 24731,
+      "sha256": "074c0de4df771407099986400f69f573989fc059d0fbd98229b0401cef5f50e5"
     },
     {
       "path": "promo/assets/assets-data.js",
@@ -4279,8 +4279,8 @@
     {
       "path": "zh-Hans/mieru.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/mieru.html",
-      "bytes": 106588,
-      "sha256": "b471573d3c254a14e533c28eee5fa9fef9b93e746951a800d7d80a5b209dc996"
+      "bytes": 106587,
+      "sha256": "a1115cf2c256d1ad3695cee210f30ca5cb85f60bd5ba9b1350e0893cec6dbef0"
     },
     {
       "path": "zh-Hans/sparkling-data.js",
@@ -4501,8 +4501,8 @@
     {
       "path": "zh-Hant/mieru.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/mieru.html",
-      "bytes": 106591,
-      "sha256": "c8fcd2410683bafd93967c560fbec3c8763cb2d917a87ffab6bf04928404c0d9"
+      "bytes": 106590,
+      "sha256": "a9aa0536e714481a432f4c3df08076f33a090589265381f2bae4a0c5eb27623d"
     },
     {
       "path": "zh-Hant/sparkling-data.js",
