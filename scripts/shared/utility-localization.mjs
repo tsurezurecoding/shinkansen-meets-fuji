@@ -33,7 +33,21 @@ export function englishNarrations(root) {
   return context.window.MADO_NARRATIONS || context.NARRATIONS;
 }
 export function utilitySnapshot(root, route) {
-  if (route === 'mieru.html') return englishSnapshot(root, route);
+  if (route === 'mieru.html') {
+    const dom = englishSnapshot(root, route);
+    const doc = dom.window.document;
+    // ML-02 is an English-only presentation change. Keep the accepted locale
+    // source text/order until those editions receive their own reviewed copy.
+    doc.querySelectorAll('[data-mieru-en-only]').forEach(el => { if (el.previousSibling?.nodeType === 3 && !el.previousSibling.textContent.trim()) el.previousSibling.remove(); el.remove(); });
+    doc.querySelectorAll('[data-mieru-locale-copy]').forEach(el => el.replaceWith(el.getAttribute('data-mieru-locale-copy')));
+    doc.body.normalize();
+    doc.querySelector('.mieru-note')?.removeAttribute('id');
+    const status = doc.getElementById('mieruStatus');
+    status?.removeAttribute('role');
+    const answer = doc.querySelector('.mieru-answer');
+    if (status && answer) status.before(answer);
+    return dom;
+  }
   const dom = new JSDOM(fs.readFileSync(path.join(root, 'en', route), 'utf8'), {
     url: `https://www.michikusa-travel.com/en/${route}`, runScripts: 'outside-only',
   });
