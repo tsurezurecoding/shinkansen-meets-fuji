@@ -228,7 +228,7 @@ async function forecastDom(lang) {
   const fixture = index => ({ hourly: Object.fromEntries(['cloud_cover_low','cloud_cover_mid','cloud_cover_high','visibility','relative_humidity_2m','precipitation'].map(field => [field, Array.from({ length: 48 }, (_, h) => field === 'visibility' ? 5000 + ((h + index) % 10) * 4000 : field === 'relative_humidity_2m' ? 30 + ((h * 3 + index) % 65) : field === 'precipitation' ? ((h + index) % 11 === 0 ? 0.6 : 0) : (h * 7 + index * 11) % 100)])) });
   window.fetch = async url => {
     const count = new URL(url).searchParams.get('latitude').split(',').length;
-    return { ok: true, json: async () => Array.from({ length: count }, (_, i) => fixture(i)) };
+    return { ok: true, json: async () => Array.from({ length: count }, (_, i) => { const data = fixture(i); data.hourly.time = Array.from({ length: 48 }, (_, h) => new Date(Date.UTC(2026, 9, 22, h)).toISOString().slice(0, 16)); return data; }) };
   };
   window.eval(dataScript());
   if (lang !== 'en') { window.eval(read(`${lang}/utility-data.js`)); window.eval(read('utility-locale-runtime.js')); }
