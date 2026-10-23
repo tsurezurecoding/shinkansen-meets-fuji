@@ -889,5 +889,276 @@
     "modified": "2026-10-21",
     "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
     "dateReview": "Text revision date; no historical publication date asserted."
+  },
+  "zh-Hant/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "盤子上放著兩顆以海苔包裹的三角飯糰。",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "fr/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "Deux onigiri triangulaires enveloppés de nori, posés sur une assiette.",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "de/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "Zwei dreieckige Onigiri, in Nori gewickelt, auf einem Teller.",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "es/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "Dos onigiri triangulares envueltos en nori sobre un plato.",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hans/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "盘子上放着两颗以海苔包裹的三角饭团。",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "ko/foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "접시 위에 김으로 감싼 삼각 오니기리 두 개.",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "foods.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/foods/onigiri.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
+    "imageAlt": "皿に並んだ、海苔を巻いた三角形のおにぎり二つ。",
+    "imageCredit": "Ocdp / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg",
+    "imagePermissionEvidence": "https://creativecommons.org/publicdomain/zero/1.0/deed.en",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hant/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "從新幹線看見三上山下的青綠稻田"
+  },
+  "fr/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "Rizières vertes au pied du mont Mikami, vues depuis le Shinkansen"
+  },
+  "de/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "Grüne Reisfelder unter dem Berg Mikami, vom Shinkansen aus gesehen"
+  },
+  "es/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "Arrozales verdes bajo el monte Mikami, vistos desde el Shinkansen"
+  },
+  "zh-Hans/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "从新干线看见三上山下的青绿稻田"
+  },
+  "ko/countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "신칸센에서 바라본 미카미산 아래 초록 논"
+  },
+  "countryside.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modified": "2026-10-23",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation",
+    "image": "images/20260629_omi_fuji_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "data/countryside-photo-sources.json rice / CP-0046 / ownerProvided true",
+    "imageAlt": "新幹線から見た、三上山の麓に広がる緑の水田"
+  },
+  "zh-Hant/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "published": "2026-10-23",
+    "modified": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
+  },
+  "fr/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "published": "2026-10-23",
+    "modified": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
+  },
+  "de/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "published": "2026-10-23",
+    "modified": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
+  },
+  "es/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "published": "2026-10-23",
+    "modified": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
+  },
+  "zh-Hans/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "published": "2026-10-23",
+    "modified": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
+  },
+  "ko/spots/gamagori-greenhouses.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "published": "2026-10-23",
+    "modified": "2026-10-23",
+    "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
+    "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
   }
 }

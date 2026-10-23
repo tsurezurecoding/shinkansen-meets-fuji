@@ -22,6 +22,8 @@ const canonicalSpotIdOf = (id) => {
   return spot && spot.guidePageId && spot.guidePageId !== spot.id ? spot.guidePageId : id;
 };
 const pairs = [
+  ["/foods.html", "/en/foods.html"],
+  ["/countryside.html", "/en/countryside.html"],
   ...SANYO_DETAIL_CASTLES.map(castle => [`/spots/${castle.id}.html`, `/en/spots/${castle.id}.html`]),
   ["/ferris-wheels.html", "/en/ferris-wheels.html"],
   ["/castles.html", "/en/castles.html"],
