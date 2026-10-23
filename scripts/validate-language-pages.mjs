@@ -176,8 +176,8 @@ for (const [jaPath, enPath] of [["/start.html", "/en/start.html"]]) {
     if (!hasAlternate(html, "ja", jaPath) || !hasAlternate(html, "en", enPath) || !hasAlternate(html, "x-default", enPath)) {
       errors.push(`${urlPath}: train-search language alternates are incomplete`);
     }
-    if (!html.includes('id="trainTimes"') || !html.includes('id="fujiTrainAnswer"')) {
-      errors.push(`${urlPath}: train-search static index or Fuji answer slot is missing`);
+    if (!html.includes('data-train-picker') || !html.includes('id="fujiTrainAnswer"')) {
+      errors.push(`${urlPath}: train picker or Fuji answer slot is missing`);
     }
     if (!html.includes('id="journey"')) {
       errors.push(`${urlPath}: train selector journey anchor is missing`);
