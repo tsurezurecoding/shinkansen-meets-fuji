@@ -33,6 +33,14 @@ assert.equal(new Set(collection.map((point) => point.id)).size, 28, "collection 
 const tateiwa = collection.find(p => p.id === "727-no-46");
 assert.equal(tateiwa.side, "E");
 assert.notEqual(tateiwa.side, collection.find(p => p.sourceNo === 23).side, "Tateiwa and Haracho are on opposite sides");
+assert.equal(tateiwa.minutesFromTokyo, 76.5, "Tateiwa 727 should retain the measured 76.5-minute timing");
+assert.equal(tateiwa.confidence, "verified", "the 13 October Nozomi 300 ride calibrated this point");
+assert.match(tateiwa.collectionNote, /のぞみ300号の実測で校正/);
+assert.doesNotMatch(tateiwa.collectionNote, /未校正/);
+assert.equal(tateiwa.collectionJaName, "豊橋市豊清町（立岩前）");
+assert.equal(tateiwa.publicJaName, "727看板（豊橋市豊清町・立岩前）");
+assert.equal(tateiwa.ja.name, "727看板（豊橋市豊清町・立岩前）");
+assert.equal(tateiwa.en.name, "727 sign · Hoseicho, Toyohashi (by Tateiwa)");
 assert.equal(tateiwa.durationSec, null, "new site duration is unmeasured");
 assert.ok(tateiwa.photo.src.includes("20261013_toyohashi_tateiwa_727"));
 assert.match(tateiwa.collectionNote, /概略位置/);
@@ -96,6 +104,8 @@ assertIncludes(spots.find((spot) => spot.id === "727-sign")?.ja?.story || "", "�
 assert.ok((spots.find((spot) => spot.id === "727-sign")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos belong to the 727 spot");
 assert.ok(!(spots.find((spot) => spot.id === "727-board")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos must not stay on the 248 page");
 assertIncludes(app, "spot.sourceNo !== 21", "the standalone Yoda point is the 727-sign spot, so the expanded timeline must not repeat it");
+assertIncludes(app, ".concat(board ? boardCollectionSpots() : [])", "expanded 727 points must enter the journey timeline");
+assertIncludes(app, "minutesFromTokyo: spot.minutesFromTokyo", "expanded points must retain their own calibrated timing");
 assertIncludes(app, 'spot?.id === "727-sign"', "the 727-sign spot must carry the 727 filter tag");
 assertIncludes(app, `"727-board", "727-sign", "genki-sign"`, "the 727-sign spot must be in the sign filter group");
 assert.ok(!(spots.find((spot) => spot.id === "putiputi-sign")?.metaDescription?.ja || "").includes("藤沢"), "putiputi search description must not place the sign in Fujisawa");
