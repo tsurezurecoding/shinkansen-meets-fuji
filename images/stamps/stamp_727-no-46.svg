@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="立岩前の727看板 車窓スタンプ">
+<defs>
+<filter id="stampInk" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+<feTurbulence type="fractalNoise" baseFrequency="0.045 0.32" numOctaves="2" seed="17" result="paperGrain"/>
+<feDisplacementMap in="SourceGraphic" in2="paperGrain" scale="0.85" xChannelSelector="R" yChannelSelector="G" result="roughInk"/>
+<feColorMatrix in="paperGrain" type="matrix" values="0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0.3 0.3 0.3 0 0.15" result="inkDensity"/>
+<feComposite in="roughInk" in2="inkDensity" operator="in" result="unevenInk"/>
+<feGaussianBlur in="unevenInk" stdDeviation="0.16" result="inkBleed"/>
+<feMerge><feMergeNode in="inkBleed"/><feMergeNode in="unevenInk"/></feMerge>
+</filter>
+</defs>
+<g stroke="#3d6b4f" fill="#3d6b4f" filter="url(#stampInk)">
+<circle cx="100" cy="102" r="90" fill="none" stroke-width="3.5"/>
+<circle cx="100" cy="102" r="82" fill="none" stroke-width="1.2"/>
+<text x="100" y="52" text-anchor="middle" font-size="12" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">立岩前の727看板</text>
+
+<g fill="none" stroke-width="2.5">
+<rect x="56" y="74" width="88" height="46"/>
+<path d="M72 120 V140 M128 120 V140"/>
+</g>
+<text x="100" y="106" text-anchor="middle" font-size="30" font-weight="500" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">727</text>
+<text x="100" y="161" text-anchor="middle" font-size="12" letter-spacing="1.2" font-family="'Shippori Mincho','Hiragino Mincho ProN','Yu Mincho',serif" stroke="none">E席</text>
+</g>
+</svg>

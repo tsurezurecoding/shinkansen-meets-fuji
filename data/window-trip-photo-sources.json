@@ -2,7 +2,7 @@
   "reviewed": "2026-10-12",
   "counts": {
     "scenery": 55,
-    "boards": 23,
+    "boards": 24,
     "dayScenery": 54,
     "nightScenery": 18
   },
@@ -832,14 +832,14 @@
     {
       "stopId": "kakegawa",
       "kind": "scenery",
-      "src": "images/20260530_kakegawa_castle.jpg",
+      "src": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
       "credit": "michikusa",
-      "date": "2026-05-30",
-      "note": "",
-      "alt": "新幹線のE席側から見える掛川城",
+      "date": "2026-10-13",
+      "note": "朝の掛川城。2026年10月13日7:22ごろ、E席側から",
+      "alt": "朝の光を受ける掛川城の白い天守",
       "light": "day",
-      "sha256": "47638517b06103680ebd4666e9341e9136d49393b24d70efff8daeb65512165f",
-      "bytes": 390248,
+      "sha256": "7ccfbc17a76cd5fde7f0c86075ce8eaebcab7daf12cd570cb8c1c92732db477f",
+      "bytes": 214361,
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
     },
     {
@@ -1712,11 +1712,24 @@
       "sha256": "395ad38ddb98b5b66aee9643d8448e7aa20e240292c751b520982d4aa845edb7",
       "bytes": 214072,
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
+      "stopId": "727-no-46",
+      "kind": "727",
+      "src": "images/20261013_toyohashi_tateiwa_727_michikusa.jpg",
+      "credit": "michikusa",
+      "date": "2026-10-13",
+      "note": "michikusa / 2026-10-13 · 07:10ごろ、立岩と同じE席側",
+      "alt": "E席側の田畑に立つ727看板と、その奥の豊橋の立岩",
+      "light": "day",
+      "sha256": "439649f4a2afd6db67d36ace68145c2efdb0734d00f0105d19a8b7e5cf970c83",
+      "bytes": 319266,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
     }
   ],
   "mapCredit": "地理院タイル（淡色地図を加工）",
   "sourceHashes": {
-    "data.js": "d1cdb6c538640b097e8961980ab4589bc9dcd6b7c3be5c67127c6b137f5938fa",
+    "data.js": "99f6de8ce0d7888bd6db3b43fbe59fb98873b3337be08ac3fb223dce7ffba2b4",
     "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
   }
 }
