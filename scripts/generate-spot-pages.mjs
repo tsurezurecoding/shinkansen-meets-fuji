@@ -1,5 +1,4 @@
 import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
-import { trainSearchTablesHTML } from './shared/train-search-tables.mjs';
 import { fujimiSightlineHead, fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
 import { everydayRelatedHTML } from './shared/everyday-related.mjs';
@@ -1720,9 +1719,9 @@ function englishAppIndexHTML() {
     .replace('<body>', '<body data-language-route="en">\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
   selectorCopy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
   html = html.replace(/<!-- TRAIN-ENTRY-HELP:START -->[\s\S]*?<!-- TRAIN-ENTRY-HELP:END -->/, `<!-- TRAIN-ENTRY-HELP:START -->
-    <div class="train-entry-help"><p>Viewing times are estimates from the timetable. Operating dates and live delays are not reflected.</p><a href="en/guide.html#seat">Which seat for Mt. Fuji? →</a><p>For today’s clouds and haze, <a href="en/mieru.html">check the visibility forecast</a>. A passing time is not a promise of a clear view.</p><noscript><p>Enable JavaScript to choose your train, or use the train-number list below for Mt. Fuji estimates.</p></noscript></div>
+    <div class="train-entry-help"><p>Viewing times are estimates from the timetable. Operating dates and live delays are not reflected.</p><a href="en/guide.html#seat">Which seat for Mt. Fuji? →</a><p>For today’s clouds and haze, <a href="en/mieru.html">check the visibility forecast</a>. A passing time is not a promise of a clear view.</p><noscript><p>Enable JavaScript to choose your train.</p></noscript></div>
     <!-- TRAIN-ENTRY-HELP:END -->`);
-  html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n${trainSearchTablesHTML("en")}\n<!-- TRAIN-SEARCH-TABLE:END -->`);
+  html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n\n<!-- TRAIN-SEARCH-TABLE:END -->`);
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
   return withUtilityLocales(syncSpotCountClaims(html), 'en/start.html');
