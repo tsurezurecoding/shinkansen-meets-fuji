@@ -4639,28 +4639,56 @@ const SPOTS = [
     image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
     photos: [
-      {
-        src: "images/20260712_kakegawa_castle_michikusa.jpg",
-        alt: { ja: "新幹線のE席側から見える掛川城", en: "Kakegawa Castle from Seat E on the Shinkansen" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-07-12",
-        note: { ja: "掛川駅の近くに一瞬見える天守", en: "The castle keep appearing briefly near Kakegawa Station" },
-      },
-      {
-        src: "images/20260530_kakegawa_castle.jpg",
-        alt: { ja: "新幹線のE席側から見える掛川城", en: "Kakegawa Castle from Seat E" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-05-30",
-      },
-      {
-        src: "images/20260911_kakegawa_castle_night_michikusa.jpg",
-        timeOfDay: "night",
-        alt: { ja: "夜の車窓からライトアップされて見える掛川城の天守", en: "Kakegawa Castle's keep lit up, seen from the train at night" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-09-11",
-        note: { ja: "夜の街並みの奥に、白い天守が浮かぶ", en: "The white keep floats above the night townscape" },
-      },
-    ],
+  {
+    "src": "images/20260712_kakegawa_castle_michikusa.jpg",
+    "alt": {
+      "ja": "新幹線のE席側から見える掛川城",
+      "en": "Kakegawa Castle from Seat E on the Shinkansen"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-07-12",
+    "note": {
+      "ja": "掛川駅の近くに一瞬見える天守",
+      "en": "The castle keep appearing briefly near Kakegawa Station"
+    }
+  },
+  {
+    "src": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "alt": {
+      "ja": "朝の光を受ける掛川城の白い天守",
+      "en": "Kakegawa Castle’s white keep in the morning light"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-10-13",
+    "note": {
+      "ja": "朝の掛川城。2026年10月13日7:22ごろ、E席側から",
+      "en": "Kakegawa Castle in the morning, around 07:22 on 13 October 2026, from Seat E"
+    }
+  },
+  {
+    "src": "images/20260911_kakegawa_castle_night_michikusa.jpg",
+    "timeOfDay": "night",
+    "alt": {
+      "ja": "夜の車窓からライトアップされて見える掛川城の天守",
+      "en": "Kakegawa Castle's keep lit up, seen from the train at night"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-09-11",
+    "note": {
+      "ja": "夜の街並みの奥に、白い天守が浮かぶ",
+      "en": "The white keep floats above the night townscape"
+    }
+  }
+],
     references: [REFERENCES.kakegawaCastle, REFERENCES.kakegawaCastleTravel],
     map: { lat: 34.775417, lng: 138.0147333, ja: "掛川城", en: "Kakegawa Castle" },
     viewpoint: { lat: 34.769664, lng: 138.017389 },
@@ -5284,34 +5312,83 @@ const SPOTS = [
       note: { ja: "2021年9月23日新幹線の車窓から撮影", en: "Shot from the Shinkansen window on September 23, 2021" },
     },
     photos: [
-      {
-        src: "images/20191027_toyohashi_tateiwa_aosemi1995.jpg",
-        alt: { ja: "新幹線のE席側から見える豊橋の立岩", en: "Toyohashi Tateiwa Rock from Seat E" },
-        credit: { ja: "@aosemi1995", en: "@aosemi1995" },
-        sourceUrl: "https://x.com/aosemi1995/status/1188265245686427654",
-        note: { ja: "新幹線の窓から一瞬見える不思議な岩山", en: "A mysterious rocky hill that appears briefly from the Shinkansen window" },
-      },
-      {
-        src: "images/20220626_toyohashi_tateiwa_suyqs3wr42jnm5i.jpg",
-        alt: { ja: "車窓から見える豊橋の立岩", en: "Toyohashi Tateiwa Rock from the train window" },
-        credit: { ja: "@SUyqs3wR42jNm5I", en: "@SUyqs3wR42jNm5I" },
-        sourceUrl: "https://x.com/SUyqs3wR42jNm5I/status/1541009819804778497",
-        note: { ja: "実際に見るとその雄大さに感動", en: "Its scale is moving when seen in person" },
-      },
-      {
-        src: "images/20260628_toyohashi_tateiwa_michikusa.jpg",
-        alt: { ja: "車窓から見える豊橋の立岩", en: "Toyohashi Tateiwa Rock from the train window" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-06-28",
-      },
-      {
-        src: "images/20260816_toyohashi-tateiwa_64500_michikusa.jpg",
-        alt: { ja: "林の上に露出する豊橋の立岩の岩壁", en: "The exposed rock face of Toyohashi Tateiwa rising above a wooded hill" },
-        credit: { ja: "michikusa", en: "michikusa" },
-        date: "2026-08-16",
-        note: { ja: "林の上に岩壁が突き出す豊橋の立岩", en: "Tateiwa's bare rock face rises above the trees" },
-      },
-    ],
+  {
+    "src": "images/20191027_toyohashi_tateiwa_aosemi1995.jpg",
+    "alt": {
+      "ja": "新幹線のE席側から見える豊橋の立岩",
+      "en": "Toyohashi Tateiwa Rock from Seat E"
+    },
+    "credit": {
+      "ja": "@aosemi1995",
+      "en": "@aosemi1995"
+    },
+    "sourceUrl": "https://x.com/aosemi1995/status/1188265245686427654",
+    "note": {
+      "ja": "新幹線の窓から一瞬見える不思議な岩山",
+      "en": "A mysterious rocky hill that appears briefly from the Shinkansen window"
+    }
+  },
+  {
+    "src": "images/20220626_toyohashi_tateiwa_suyqs3wr42jnm5i.jpg",
+    "alt": {
+      "ja": "車窓から見える豊橋の立岩",
+      "en": "Toyohashi Tateiwa Rock from the train window"
+    },
+    "credit": {
+      "ja": "@SUyqs3wR42jNm5I",
+      "en": "@SUyqs3wR42jNm5I"
+    },
+    "sourceUrl": "https://x.com/SUyqs3wR42jNm5I/status/1541009819804778497",
+    "note": {
+      "ja": "実際に見るとその雄大さに感動",
+      "en": "Its scale is moving when seen in person"
+    }
+  },
+  {
+    "src": "images/20260628_toyohashi_tateiwa_michikusa.jpg",
+    "alt": {
+      "ja": "車窓から見える豊橋の立岩",
+      "en": "Toyohashi Tateiwa Rock from the train window"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-06-28"
+  },
+  {
+    "src": "images/20260816_toyohashi-tateiwa_64500_michikusa.jpg",
+    "alt": {
+      "ja": "林の上に露出する豊橋の立岩の岩壁",
+      "en": "The exposed rock face of Toyohashi Tateiwa rising above a wooded hill"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-08-16",
+    "note": {
+      "ja": "林の上に岩壁が突き出す豊橋の立岩",
+      "en": "Tateiwa's bare rock face rises above the trees"
+    }
+  },
+  {
+    "src": "images/20261013_toyohashi_tateiwa_727_michikusa.jpg",
+    "alt": {
+      "ja": "田畑の727看板と、その奥に見える豊橋の立岩",
+      "en": "A 727 sign in the fields with Toyohashi Tateiwa Rock beyond it"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-10-13",
+    "note": {
+      "ja": "立岩と727看板が同じ車窓に。2026年10月13日7:10ごろ、E席側から",
+      "en": "Tateiwa and a 727 sign in the same view, around 07:10 on 13 October 2026, from Seat E"
+    }
+  }
+],
     media: {
       heading: { ja: "動画で見る豊橋の立岩", en: "Toyohashi Tateiwa Rock in motion" },
       description: { ja: "新幹線の車窓から見える豊橋の立岩を、投稿動画でも確かめられます。", en: "See Toyohashi Tateiwa Rock from the Shinkansen window in a video." },
@@ -9667,7 +9744,24 @@ const SPOTS = [
         "en": "Preserved Shinkansen test trains south of Maibara Station"
       }
     },
-    "photos": [],
+    "photos": [
+  {
+    "src": "images/20261013_maibara_test_trains_michikusa.jpg",
+    "alt": {
+      "ja": "屋根の下に並ぶ米原の高速試験車両",
+      "en": "Preserved high-speed test trains beneath their shelters at Maibara"
+    },
+    "credit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "date": "2026-10-13",
+    "note": {
+      "ja": "朝の高速試験車両保存場。2026年10月13日6:32ごろ。走行中のため、写真にぶれがあります",
+      "en": "The test-train preservation site around 06:32 on 13 October 2026. This photograph is blurred by the moving train"
+    }
+  }
+],
     "references": [
       {
         "label": {
@@ -9897,6 +9991,7 @@ const BOARD_COLLECTION_NAMES = Object.freeze({
   42: { collection: "栗東市出庭", public: "727看板（栗東市出庭）" },
   43: { collection: "高槻市東天川", public: "727看板（高槻市東天川）" },
   44: { collection: "高槻市唐崎南", public: "727看板（高槻市唐崎南）" },
+  46: { collection: "豊橋市豊清町（立岩前）", public: "727看板（豊橋市豊清町・立岩前）" },
   45: { collection: "摂津市鳥飼八町", public: "727看板（摂津市鳥飼八町）" },
 });
 // 英語のalt。日本語の原文（「A席側から見える〜の727看板」）と同じ内容を、
@@ -9938,6 +10033,8 @@ const BOARD_COLLECTION = [
   { sourceNo: 43, id: "727-no-43", minutesFromTokyo: 138, segment: "京都 → 新大阪", side: "A", lat: 34.847034, lng: 135.642008, confidence: "verified", photo: { src: "images/20260816_727_board_higashiamakawa_michikusa.jpg", alt: "A席側から見える高槻市東天川の727看板", note: "michikusa / 2026-08-16" }, ja: "東天川（高槻市）", en: "Higashiamakawa, Takatsuki" },
   { sourceNo: 44, id: "727-no-44", collectionNoteEn: "Alone beyond the rice fields.", collectionNote: "田んぼの奥にぽつんと", minutesFromTokyo: 141, segment: "京都 → 新大阪", side: "E", lat: 34.81158, lng: 135.608706, confidence: "verified", photo: { src: "images/20260803_727_board_karasakiminami_michikusa.jpg", alt: "田んぼの奥に見える高槻市唐崎南の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約1〜2分前", noteEn: "michikusa / 2026-08-03 · one to two minutes before the Torikai train depot" }, ja: "唐崎南（高槻市）", en: "Karasakiminami, Takatsuki" },
   { sourceNo: 45, id: "727-no-45", collectionNoteEn: "With the Osaka Central Wholesale Market behind it.", collectionNote: "大阪中央卸売市場をバックに", minutesFromTokyo: 142, segment: "京都 → 新大阪", side: "E", lat: 34.790635, lng: 135.587403, confidence: "verified", photo: { src: "images/20260803_727_board_torikaihachicho_michikusa.jpg", alt: "大阪中央卸売市場を背にした鳥飼八町の727看板", note: "michikusa / 2026-08-03 · 鳥飼車両基地の約30秒前", noteEn: "michikusa / 2026-08-03 · about 30 seconds before the Torikai train depot" }, ja: "鳥飼八町（摂津市）", en: "Torikaihachicho, Settsu" },
+  // 自前写真による追加。46は内部ID。地図はGPS撮影地点付近の概略位置。
+  {"sourceNo":46,"id":"727-no-46","minutesFromTokyo":76.5,"segment":"浜松 → 豊橋","side":"E","lat":34.71836189,"lng":137.4695668,"confidence":"verified","durationSec":null,"collectionNote":"立岩をバックに。地図は車内からの撮影地点付近の概略位置","collectionNoteEn":"With Tateiwa Rock behind it. The map marks the approximate area seen from the train.","photo":{"src":"images/20261013_toyohashi_tateiwa_727_michikusa.jpg","alt":"E席側の田畑に立つ727看板と、その奥の豊橋の立岩","note":"michikusa / 2026-10-13 · 07:10ごろ、立岩と同じE席側","noteEn":"michikusa / 2026-10-13 · around 07:10, on the Seat E side with Tateiwa"},"ja":"豊橋市豊清町（立岩前）","en":"Hoseicho, Toyohashi (by Tateiwa)"},
 ].map((item) => {
   const names = BOARD_COLLECTION_NAMES[item.sourceNo] || { collection: item.collectionJaName, public: item.publicJaName };
   return ({
@@ -9948,14 +10045,14 @@ const BOARD_COLLECTION = [
   is727Collection: item.collectionKind !== "companion",
   collectionKind: item.collectionKind || "727",
   category: "sign",
-  durationSec: 2,
+  durationSec: item.durationSec === null ? null : 2,
   timeOfDay: "day",
   scene: "hills",
   guidePageId: item.guidePageId || "727-board",
   sideLabel: { ja: item.side === "A" ? "A席側" : "E席側", en: item.side === "A" ? "Seat A" : "Seat E" },
   map: { lat: item.lat, lng: item.lng, ja: names.public, en: item.en },
   image: item.photo?.src || "images/stamps/stamp_727-board.svg",
-  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: boardCollectionAltEn(item) }, credit: { ja: "michikusa", en: "michikusa" }, date: (item.photo.note.match(/\d{4}-\d{2}-\d{2}/) || ["2026-07-04"])[0], note: { ja: item.photo.note, en: item.photo.note } }] : [],
+  photos: item.photo ? [{ src: item.photo.src, alt: { ja: item.photo.alt, en: boardCollectionAltEn(item) }, credit: { ja: "michikusa", en: "michikusa" }, date: (item.photo.note.match(/\d{4}-\d{2}-\d{2}/) || ["2026-07-04"])[0], note: { ja: item.photo.note, en: item.photo.noteEn || item.photo.note } }] : [],
   ja: {
     name: names.public,
     area: "東海道沿線",
