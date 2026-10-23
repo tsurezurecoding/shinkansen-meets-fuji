@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <script src="locales.js?v=ddaa8cc5"></script>
+  <script src="locales.js?v=f3ad132e"></script>
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="app-embedded.js?v=32708d67"></script>
@@ -13,6 +13,14 @@
   <meta name="description" content="東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。">
   <link rel="canonical" href="https://www.michikusa-travel.com/guide.html">
   <link rel="stylesheet" href="style.css?v=55bdfd77">
+  <style>
+    .guide-single-photo { position: absolute; inset: 0; z-index: -2; }
+    .guide-single-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 52%; }
+    .guide-fuji-hero::after { background: linear-gradient(180deg, rgba(12,27,43,.46), rgba(16,32,50,.56) 55%, rgba(16,28,44,.82)); }
+    #trainTimes > p:last-child { text-align: center; }
+    #trainTimes .btn { max-width: 100%; white-space: normal; color: #fff; text-decoration: none; }
+    @media (max-width: 640px) { .guide-single-photo img { object-position: 66% center; } }
+  </style>
   <meta property="og:title" content="新幹線から富士山を見る｜5つの区間と座席ガイド">
   <meta property="og:description" content="東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg">
@@ -212,17 +220,8 @@
   </header>
   <main>
     <section class="collection-hero guide-fuji-hero" id="top" aria-labelledby="guideHeroTitle">
-      <div class="collection-hero-tiles" aria-hidden="true">
-        <img src="images/20240211_fuji_michikusa.jpg" alt="">
-        <img src="images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="">
-        <img src="images/20260903_fuji_paper_mills_fuji_michikusa.jpg" alt="">
-        <img src="images/20220205_fujikawa_bridge_michikusa.jpg" alt="">
-        <img src="images/20260530_sagami_fuji_hiratsuka_michikusa.jpg" alt="">
-        <img src="images/20260903_fujipipe_fuji_michikusa.jpg" alt="">
-        <img src="images/20260530_fujikawa_bridge_2_michikusa.jpg" alt="">
-        <img src="images/20260816_fuji_paper_mills_michikusa.jpg" alt="">
-        <img src="images/20260530_sagami_fuji_samukawa_michikusa.jpg" alt="">
-        <img src="images/20260903_fuji_beyond_factory_smoke_michikusa.jpg" alt="">
+      <div class="guide-single-photo" aria-hidden="true">
+        <img src="images/fuji-guide-hero.webp" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
       </div>
       <div class="collection-hero-inner">
         <p class="eyebrow">MT. FUJI WINDOW</p>
@@ -412,7 +411,7 @@
         <span id="train-times" aria-hidden="true"></span>
         <div class="section-head"><p class="eyebrow">YOUR TRAIN</p><h2><span class="copy-chunk">乗る列車の、</span><span class="copy-chunk">富士山の時刻を。</span></h2></div>
         <p>東京からの分数は目安です。乗る列車と乗車駅を選ぶと、停車時刻から推定した富士山の通過時刻と、ほかの車窓が並びます。</p>
-        <p><a class="btn btn-primary" href="start.html?focus=fuji#journey" data-guide-cta="train_times_picker">乗る列車の富士山通過時刻を調べる</a></p>
+        <p><a class="btn btn-primary" href="start.html?focus=fuji#journey" data-guide-cta="train_times_picker"><span class="copy-chunk">乗る列車の</span><span class="copy-chunk">富士山通過時刻を調べる</span></a></p>
       </section>
 
       <section class="spot-page-section guide-mobile-timeline guide-feature-section" id="timeline">

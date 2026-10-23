@@ -13,6 +13,41 @@
   var SUMMIT = [35.3606, 138.7274];
   var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
   var H0 = 6, H1 = 19;
+  var forecastContext = lang === 'en' ? document.getElementById('mieruForecastContext') : null;
+  var retrievedAt = null;
+  var forecastDates = [];
+  var forecastError = 'Weather data could not be loaded. No forecast is available. Please reload to try again.';
+  var dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'long', year: 'numeric' });
+  function forecastDateLabel(day){
+    return dateFormat.format(new Date(forecastDates[day] + 'T00:00:00+09:00'));
+  }
+  function validateForecastDates(res){
+    var times = res[0].hourly && res[0].hourly.time;
+    if (!Array.isArray(times) || times.length < 48 || !/^\d{4}-\d{2}-\d{2}T00:00$/.test(times[0])) throw Error('Missing forecast dates');
+    var start = Date.parse(times[0] + '+09:00');
+    if (!Number.isFinite(start)) throw Error('Invalid forecast date');
+    var fields = ['cloud_cover_low', 'cloud_cover_mid', 'cloud_cover_high', 'visibility', 'relative_humidity_2m', 'precipitation'];
+    res.forEach(function(point){
+      var hourly = point.hourly;
+      if (!hourly || !Array.isArray(hourly.time)) throw Error('Missing hourly data');
+      for (var i = 0; i < 48; i++) {
+        var expected = new Date(start + i * 3600000 + 9 * 3600000).toISOString().slice(0, 16);
+        if (hourly.time[i] !== expected) throw Error('Mismatched forecast hours');
+        fields.forEach(function(field){
+          if (!Array.isArray(hourly[field]) || !Number.isFinite(hourly[field][i])) throw Error('Incomplete weather data');
+        });
+      }
+    });
+    forecastDates = [times[0].slice(0, 10), times[24].slice(0, 10)];
+  }
+  function renderForecastContext(day){
+    if (!forecastContext || !retrievedAt) return;
+    document.getElementById('mieruForecastDate').textContent = 'Forecast for ' + forecastDateLabel(day) + ' · 06:00–19:00 Japan time (JST, UTC+9).';
+    document.getElementById('mieruRetrievedAt').textContent = 'Weather data retrieved ' + dateFormat.format(retrievedAt) + ', ' + new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(retrievedAt) + ' JST. Reload to retrieve the forecast again.';
+    // Absolute dates remain accurate when a visitor leaves the page open overnight.
+    Array.prototype.forEach.call(document.getElementById('mieruDay').options, function(option){ option.textContent = forecastDateLabel(Number(option.value)); });
+    forecastContext.hidden = false;
+  }
   var TRAIN_NAMES = { Nozomi: C.nozomi, Hikari: C.hikari, Kodama: C.kodama };
 
   function hav(a, b){
@@ -290,17 +325,27 @@
   }
 
   omAll().then(function(res){
+    if (forecastContext) validateForecastDates(res);
     DATA.summit = res[0].hourly;
     SPOTS_M.forEach(function(s, i){ DATA.vps[s.id] = res[i+1].hourly; });
+    retrievedAt = new Date();
     document.getElementById("mieruStatus").textContent = "";
     render();
   }).catch(function(e){
-    document.getElementById("mieruStatus").textContent = C.error;
+    DATA.summit = null;
+    window.__mieru.results = {};
+    document.getElementById('mieruSpots').textContent = '';
+    if (forecastContext) {
+      forecastContext.hidden = true;
+      document.getElementById('mieruRide').textContent = '';
+    }
+    document.getElementById("mieruStatus").textContent = forecastContext ? forecastError : C.error;
   });
 
   function render(){
     if (!DATA.summit) return;
     var day = +document.getElementById("mieruDay").value;
+    renderForecastContext(day);
     var spots = aheadSpots(STATE.dir, STATE.board);
     window.__mieru.results = {};
 
@@ -352,7 +397,7 @@
       div.innerHTML =
         '<div class="mieru-head"><h2>' + s.name + '</h2>' +
         '<span class="meta">' + format('meta', s.area, s.min, s.d, s.side) + '</span>' +
-        '<span class="mieru-verdict">' + format('best', day ? C.tomorrow : C.today, (H0+bestI) + ':00') + ' <b>' +
+        '<span class="mieru-verdict">' + format('best', forecastContext ? forecastDateLabel(day) : (day ? C.tomorrow : C.today), (H0+bestI) + ':00') + ' <b>' +
           Math.round(bestP*100) + '%</b></span></div>' +
         '<div class="mieru-bars">' + bars + '</div>' +
         '<div class="mieru-hours">' + hl + '</div>' +

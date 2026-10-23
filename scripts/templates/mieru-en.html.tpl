@@ -108,10 +108,20 @@
         <div id="mieruRide">Calculating...</div>
       </div>
 
-      <!--MIERU:ANSWER--><div id="mieruStatus">Loading weather data...</div>
-      <div id="mieruSpots"></div><!--MIERU:FACTS-->
+      <section class="mieru-answer" data-mieru-en-only="">
+        <h2>How to read this forecast</h2>
+        <p>Hourly estimates for five viewing areas along the Tokaido Shinkansen, using weather data around the summit and each viewpoint. These are forecasts, not live sightings; cloud and haze can change before your train arrives.</p>
+        <p>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Visibility estimates: Shinkansen Window (beta). <a href="#forecast-method">How the estimate works</a>.</p>
+        <p>All departure and forecast times are in Japan time (JST, UTC+9).</p>
+        <div id="mieruForecastContext" aria-live="polite" hidden="">
+          <p id="mieruForecastDate"></p>
+          <p id="mieruRetrievedAt"></p>
+        </div>
+      </section>
+      <div id="mieruStatus" role="status">Loading weather data...</div>
+      <div id="mieruSpots"></div><!--MIERU:ANSWER--><!--MIERU:FACTS-->
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         Forecast model beta: visibility chance = probability that the summit is not obscured by cloud
         × probability that atmospheric visibility reaches the effective viewing distance.
         Because the sightline rises diagonally through the haze layer toward the summit, the effective
@@ -121,7 +131,7 @@
         and is converted into our own probability estimate.
         In a retrospective check against window-photo records, the model classified 9 out of 10
         successful photography days as visible.
-        Passing times are approximate and based on Nozomi services. Sudden weather changes may make
+        <span data-mieru-locale-copy="Passing times are approximate and based on Nozomi services.">Passing times for a selected train are estimated from its timetable. “Enter a time” uses approximate travel times between your boarding station and each viewpoint. These estimates do not include live delays.</span> Sudden weather changes may make
         the forecast inaccurate. For ideas on cloudy days, see the <a href="guide.html#cloudy">Mt. Fuji guide</a>.
       </p>
       </article>

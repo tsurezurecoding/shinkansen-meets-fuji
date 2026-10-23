@@ -2,7 +2,8 @@ import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 // Source of truth: the overseas-traveler English edition plus reviewed translations.
 // Snapshot only first-party rendering, preserving photographs, credits and DOM behavior.
 import fs from 'node:fs';
-import { episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
+import { enOnly, episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
+import { YAMAZAKI_TRANSLATIONS } from './shared/yamazaki-locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './shared/castle-localization.mjs';
@@ -11,6 +12,7 @@ import { assetVersion } from './shared/asset-version.mjs';
 import { appendArticleEditorialNote } from './shared/editorial-notes.mjs';
 import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
+import { CONTENT_METADATA, enhanceContentHead } from './shared/content-metadata.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
@@ -19,7 +21,11 @@ const requestedLang = process.argv.includes('--lang') ? process.argv[process.arg
 if (requestedLang && !CASTLE_LOCALE_LANGS.includes(requestedLang)) throw Error('Unknown castle locale: ' + requestedLang);
 for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   const episodeFile = path.join(root, 'scripts/locales', `episode-${lang}.json`);
-  const dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
+  let dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
+  const sceneryFile = path.join(root, 'scripts/locales', `scenery-${lang}.json`);
+  const sceneryDictionary = fs.existsSync(sceneryFile) ? JSON.parse(fs.readFileSync(sceneryFile, 'utf8')) : {};
+  const commonDictionary = dictionary;
+  const everydayDictionaries = Object.fromEntries([['foods.html','foods'],['countryside.html','countryside'],['spots/gamagori-greenhouses.html','greenhouses']].map(([route,name]) => { const file=path.join(root,`scripts/shared/${name}-locales.json`); return [route, fs.existsSync(file) ? JSON.parse(fs.readFileSync(file,'utf8'))[lang] || {} : {}]; }));
   function tr(value) {
     const key = value.trim();
     if (!key) return value;
@@ -28,7 +34,9 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     if (typeof result !== 'string' || !result.trim()) { missing.add(`${lang}: ${key}`); return value; }
     return value.replace(key, () => result);
   }
-  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang))]) {
+  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && !enOnly.includes(route))]) {
+    const sceneryRoute = /^spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki(?:-seat-a)?)\.html$/.test(route);
+    dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : everydayDictionaries[route] ? { ...commonDictionary, ...everydayDictionaries[route] } : commonDictionary;
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
     doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());
@@ -42,6 +50,22 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     doc.body.setAttribute('data-article-localized', '');
     doc.body.setAttribute('data-spot-page-shared-lang', lang);
     doc.documentElement.lang = lang;
+    if (route === 'yakei.html') {
+      // Retain the existing night-view calculator; the utility adapter supplies
+      // the translated station/spot names and the shared eight-language picker.
+      for (const script of doc.querySelectorAll('script:not([src])')) {
+        script.textContent = script.textContent.replace('window.YAKEI_LANG = "en";', `window.YAKEI_LANG = ${JSON.stringify(lang)};`);
+      }
+      const runtime = doc.querySelector('script[src*="data-runtime.js"]');
+      let runtimeAnchor = runtime;
+      for (const asset of [`${lang}/utility-data.js`, 'utility-locale-runtime.js']) {
+        const script = doc.createElement('script');
+        script.src = `${prefix}${asset}?v=${assetVersion(asset)}`;
+        // Insert in source order: data, payload, adapter, then train picker.
+        runtimeAnchor.after(script);
+        runtimeAnchor = script;
+      }
+    }
     doc.querySelectorAll('[lang="en"]').forEach(el => el.lang = lang);
     for (const node of textNodes(doc)) if (!node.parentElement.closest('.brand-mark, .show-credit, figcaption a:not([data-gallery-source-output])')) node.textContent = tr(node.textContent);
     for (const el of doc.querySelectorAll('*')) for (const attr of TRANSLATABLE_ATTRIBUTES) {
@@ -63,7 +87,10 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       if (key === 'og:url') el.content = `${origin}/${file}`;
       if (/article:(?:published|modified)_time/.test(key)) el.remove();
     }
-    doc.querySelector('link[rel="canonical"]').href = `${origin}/${file}`;
+    const canonicalRoute = stripEdition(new URL(doc.querySelector('link[rel="canonical"]').href).pathname.slice(1));
+    doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${canonicalRoute}`;
+    const ogUrl = doc.querySelector('meta[property="og:url"]');
+    if (ogUrl) ogUrl.content = doc.querySelector('link[rel="canonical"]').href;
     // Known translated destinations remain in this edition. Keep the English
     // fallback routes, without repeating a visible language label on every link.
     for (const el of doc.querySelectorAll('a[href]')) {
@@ -88,9 +115,9 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       summary.setAttribute('aria-label', editions[lang].prompt);
       const options = doc.createElement('div');
       options.className = 'guide-lang-options';
-      for (const [edition, label] of supported(route).map(edition => [edition, editions[edition].label])) {
+      for (const [edition, label] of supported(canonicalRoute).map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a');
-        a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
+        a.href = prefix + (edition === 'ja' ? '' : edition + '/') + canonicalRoute + (edition === 'ja' ? '?lang=ja' : '');
         a.lang = edition; a.textContent = label;
         if (edition === lang) a.setAttribute('aria-current','page');
         options.appendChild(a);
@@ -139,6 +166,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     appendArticleEditorialNote(doc, lang, route);
     let html = dom.serialize().replace(/^[ \t]+$/gm, '').replace(/<!-- Generated by [^>]+-->/, '<!-- Generated by scripts/generate-castle-locales.mjs from the English edition; edit scripts/locales. -->');
     html = html.replace(/<head[\s\S]*?<\/head>/, head => withArticleLocales(head, file, assetVersion('article-locales.js')));
+    if (CONTENT_METADATA[file]) html = enhanceContentHead(html, file, root, {lang});
     html = withPageAndroidAppInvite(html,file);
     const dest = path.join(root, file);
     if (check) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error(`Localized article stale: ${file}`); }

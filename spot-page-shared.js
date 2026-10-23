@@ -262,10 +262,10 @@
     "drinks.html": { en: false },
     // English-only travel editorial; no Japanese article counterpart.
     "beer-on-shinkansen.html": { en: false },
-    // English countryside introduction; no Japanese counterpart.
-    "countryside.html": { en: false },
-    // English-only food article and editorial collection; no Japanese counterparts.
-    "foods.html": { en: false },
+    // Japanese and English editions; other article editions use the shared registry.
+    "countryside.html": { en: true },
+    // Food article has a Japanese edition; the editorial collection remains English-only.
+    "foods.html": { en: true },
     "everyday-japan.html": { en: false },
     // Approved English station feature; no Japanese article counterpart.
     "tokyo-kyoto-stations.html": { en: false },

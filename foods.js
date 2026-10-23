@@ -1,16 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
-  const fillings = {
-    salmon:'Salmon: savoury flakes of fish tucked into the rice.',
-    tuna:'Tuna mayo: tuna mixed with creamy mayonnaise. Look for ツナマヨ on the label.',
-    ume:'Ume: pickled plum with a tangy taste. Look for 梅; the full ingredients depend on the product.'
-  };
   const buttons = [...document.querySelectorAll('[data-filling]')];
   const output = document.getElementById('filling-description');
   buttons.forEach(button => button.addEventListener('click', () => {
-    if (!fillings[button.dataset.filling]) return;
+    if (!button.dataset.fillingDescription) return;
     buttons.forEach(b => b.setAttribute('aria-pressed',String(b === button)));
-    output.textContent = fillings[button.dataset.filling];
+    output.textContent = button.dataset.fillingDescription;
   }));
 
   const sourceDetails = document.getElementById('source-details');

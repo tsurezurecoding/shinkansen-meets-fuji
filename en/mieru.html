@@ -1,6 +1,6 @@
 <!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8">
-  <script src="../locales.js?v=ddaa8cc5"></script>
+  <script src="../locales.js?v=f3ad132e"></script>
   <link rel="manifest" href="../manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Is Mt. Fuji Visible from the Shinkansen Today? | Mt. Fuji Visibility Forecast</title>
@@ -151,12 +151,22 @@
         <div id="mieruRide">Calculating...</div>
       </div>
 
-      <section class="mieru-answer"><h2>Will Mt. Fuji be visible from the Shinkansen today?</h2>
+      <section class="mieru-answer" data-mieru-en-only="">
+        <h2>How to read this forecast</h2>
+        <p>Hourly estimates for five viewing areas along the Tokaido Shinkansen, using weather data around the summit and each viewpoint. These are forecasts, not live sightings; cloud and haze can change before your train arrives.</p>
+        <p>Weather data: <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>. Visibility estimates: Shinkansen Window (beta). <a href="#forecast-method">How the estimate works</a>.</p>
+        <p>All departure and forecast times are in Japan time (JST, UTC+9).</p>
+        <div id="mieruForecastContext" aria-live="polite" hidden="">
+          <p id="mieruForecastDate"></p>
+          <p id="mieruRetrievedAt"></p>
+        </div>
+      </section>
+      <div id="mieruStatus" role="status">Loading weather data...</div>
+      <div id="mieruSpots"></div><section class="mieru-answer"><h2>Will Mt. Fuji be visible from the Shinkansen today?</h2>
 <p>Two things matter: cloud must leave the summit clear, and the air between your train and the mountain must be transparent enough. The forecast above estimates these conditions separately for the five viewing areas along the Tokaido Shinkansen.</p>
 <p>Dry winter and early-spring days often offer the clearest views. In humid summer weather, haze can hide a distant mountain even under a blue sky. Clear air after rain can occasionally make a summer view possible too.</p>
 <p>Mornings often give clearer distant views than afternoons. Later in the day, the mountain may appear as a silhouette instead of showing the detail of its slopes. The hourly forecast helps you compare conditions around your passing time.</p>
-<p>Four of these views are on the Seat E, mountain side. Left-Side Fuji, just after Shizuoka when travelling toward Shin-Osaka, is the brief exception on the Seat A, sea side. If cloud hides the mountain, explore the <a href="guide.html#cloudy">ideas for a cloudy day</a>.</p></section><div id="mieruStatus">Loading weather data...</div>
-      <div id="mieruSpots"></div><section class="mieru-factset"><h2>Five places to see Mt. Fuji from the train</h2><p>These five views are listed in order from Tokyo toward Shin-Osaka. The seat side and distance describe each viewpoint; the times from Tokyo are rough Nozomi/Hikari estimates. Use the train selector above for your service’s passing times.</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
+<p>Four of these views are on the Seat E, mountain side. Left-Side Fuji, just after Shizuoka when travelling toward Shin-Osaka, is the brief exception on the Seat A, sea side. If cloud hides the mountain, explore the <a href="guide.html#cloudy">ideas for a cloudy day</a>.</p></section><section class="mieru-factset"><h2>Five places to see Mt. Fuji from the train</h2><p>These five views are listed in order from Tokyo toward Shin-Osaka. The seat side and distance describe each viewpoint; the times from Tokyo are rough Nozomi/Hikari estimates. Use the train selector above for your service’s passing times.</p><div class="mieru-factlist"><article class="mieru-fact" data-viewpoint="ota-fuji">
   <figure class="mieru-fact-photo"><a href="spots/ota-fuji.html" aria-label="See the photos and viewing guide: Mt. Fuji from Ota"><img src="../images/20260509_ota_fuji_t_yangyang.jpg" alt="Mt. Fuji beyond Tokyo rooftops near Ota" width="2030" height="2707" loading="lazy" decoding="async"></a><figcaption class="show-credit"><a href="https://x.com/T_Yangyang/status/2056673343630426163" target="_blank" rel="noopener noreferrer">@T_Yangyang</a></figcaption></figure>
   <div class="mieru-fact-copy"><h3>Mt. Fuji from Ota <span>Shinagawa → Shin-Yokohama (Ota, Tokyo)</span></h3>
   <p class="mieru-fact-meta">About 10 min from Tokyo · Seat E (mountain side) · Viewing distance about 95 km</p><p class="mieru-fact-body">Look beyond Tokyo’s rooftops for a small, distant Mt. Fuji. At roughly 95 km away, this early glimpse is easiest to catch when the air is exceptionally clear. Think of it as a first hint of the mountain before the much larger view near Shin-Fuji.</p>
@@ -187,7 +197,7 @@
   <a class="mieru-fact-more" href="spots/hamanako.html#hamanako-fuji">See the photos and viewing guide →</a></div>
 </article></div></section>
 
-      <p class="mieru-note">
+      <p class="mieru-note" id="forecast-method">
         Forecast model beta: visibility chance = probability that the summit is not obscured by cloud
         × probability that atmospheric visibility reaches the effective viewing distance.
         Because the sightline rises diagonally through the haze layer toward the summit, the effective
@@ -197,7 +207,7 @@
         and is converted into our own probability estimate.
         In a retrospective check against window-photo records, the model classified 9 out of 10
         successful photography days as visible.
-        Passing times are approximate and based on Nozomi services. Sudden weather changes may make
+        <span data-mieru-locale-copy="Passing times are approximate and based on Nozomi services.">Passing times for a selected train are estimated from its timetable. “Enter a time” uses approximate travel times between your boarding station and each viewpoint. These estimates do not include live delays.</span> Sudden weather changes may make
         the forecast inaccurate. For ideas on cloudy days, see the <a href="guide.html#cloudy">Mt. Fuji guide</a>.
       </p>
       </article>
@@ -213,9 +223,9 @@
   </footer>
 
   <script src="../spot-page-shared-data.js?v=7d816f28"></script>
-  <script src="../spot-page-shared.js?v=7955347f"></script>
+  <script src="../spot-page-shared.js?v=05c5e0c1"></script>
   <script src="../data-runtime.js?v=1cabc937"></script><script src="../train-select.js?v=88f5b2d7"></script>
-  <script src="../mieru.js?v=a2559a18"></script>
+  <script src="../mieru.js?v=074c0de4"></script>
 
 
 

@@ -62,6 +62,8 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
   const editorialNotes = utilityEditorialNotes(lang, data.SPOTS.map(spot => spot.id));
   if (Object.keys(editorialNotes).length) payload.editorialNotes = editorialNotes;
   write(`${lang}/utility-data.js`, '/* Generated from English utility content; edit scripts/locales/utility-' + lang + '.json. */\nwindow.MADO_UTILITY_PAYLOAD=' + JSON.stringify(payload) + ';\n');
+  // Earlier generators in this process may have hashed the previous payload.
+  assetVersion(`${lang}/utility-data.js`, true);
   for (const route of UTILITY_ROUTES) {
     const dom = utilitySnapshot(root, route);
     const doc = dom.window.document;

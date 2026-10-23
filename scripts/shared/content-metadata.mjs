@@ -109,7 +109,7 @@ function setMeta(head, key, value, name = false) {
 export function enhanceContentHead(html, file, root = defaultRoot, options = {}) {
   const meta = CONTENT_METADATA[file];
   return withPageAndroidAppInvite(html.replace(/<head[\s\S]*?<\/head>/i, head => {
-    const lang = file.startsWith('en/') ? 'en' : 'ja';
+    const lang = options.lang || html.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1] || (file.startsWith('en/') ? 'en' : 'ja');
     const selected = options.spot ? selectSpotOgImage(options.spot, root, lang) : null;
     const src = meta?.image || selected?.src || metaValue(head, 'og:image').replace(`${SITE}/`, '');
     const size = imageDimensions(src, root);
@@ -147,7 +147,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
         }
       }
       if (meta?.article) {
-        const organization = { '@type': 'Organization', name: lang === 'en' ? 'Shinkansen Window' : '新幹線の窓', url: SITE + '/' };
+        const organization = { '@type': 'Organization', name: lang === 'ja' ? '新幹線の窓' : 'Shinkansen Window', url: SITE + '/' };
         const attraction = graph.find(node => node['@type'] === 'TouristAttraction');
         const article = existingArticle || {
           '@type': 'Article', '@id': contentUrl + '#article', headline: page.name, description: page.description,

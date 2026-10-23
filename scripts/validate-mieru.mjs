@@ -9,11 +9,13 @@ const assert=(ok,msg)=>{if(!ok)throw Error(msg);};
 import { languages as langs, translated } from './shared/locales.mjs';
 const ids=MIERU_CONTENT.photos.map(p=>p.id);
 const fixture=i=>({hourly:Object.fromEntries(['cloud_cover_low','cloud_cover_mid','cloud_cover_high','visibility','relative_humidity_2m','precipitation'].map(k=>[k,Array.from({length:48},(_,h)=>k==='visibility'?8000+(h+i)%9*5000:k==='relative_humidity_2m'?40+(h+i)%40:k==='precipitation'?((h+i)%13===0?.4:0):(h*7+i*11)%100)]))});
-async function page(lang,query=''){
+async function page(lang,query='',options={}){
  const route=(lang==='ja'?'':lang+'/')+'mieru.html',dom=new JSDOM(read(route),{url:'https://www.michikusa-travel.com/'+route+query,runScripts:'outside-only'}),w=dom.window,d=w.document;
  w.eval(read('data-runtime.js')+';Object.assign(window,{SPOTS,ROUTE});');w.eval(read('train-select.js'));
  if(translated.includes(lang)){w.eval(read(lang+'/utility-data.js'));w.eval(read('utility-locale-runtime.js'));}
- w.fetch=async()=>({ok:true,json:async()=>Array.from({length:6},(_,i)=>fixture(i))});
+ const response=Array.from({length:6},(_,i)=>{const data=fixture(i);data.hourly.time=Array.from({length:48},(_,h)=>new Date(Date.UTC(2026,9,22,h)).toISOString().slice(0,16));return data;});
+ if(options.mutate) options.mutate(response);
+ w.fetch=async()=>{if(options.fail)throw Error('network unavailable');return {ok:true,json:async()=>response};};
  const append=d.head.appendChild.bind(d.head);let loads=0;
  d.head.appendChild=function(el){if(el.tagName==='SCRIPT'&&el.src.includes('/data/timetable.js')){loads++;queueMicrotask(()=>{w.eval(read('data/timetable.js'));el.onload();});return el;}return append(el);};
  w.eval(read('mieru.js'));await new Promise(r=>setImmediate(r));
@@ -21,8 +23,27 @@ async function page(lang,query=''){
 }
 let scenarios=0;
 const pages=await Promise.all(langs.map(lang=>page(lang)));
+const english=pages[langs.indexOf('en')];
+assert(!english.d.getElementById('mieruForecastContext').hidden,'English forecast date hidden');
+assert(english.d.getElementById('mieruForecastDate').textContent.includes('22 October 2026'),'Date must come from API, not the client calendar');
+assert(english.d.getElementById('mieruForecastDate').textContent.includes('JST, UTC+9'),'Explicit Japan timezone missing');
+const retrieved=english.d.getElementById('mieruRetrievedAt').textContent;
+english.d.getElementById('mieruDay').value='1';english.d.getElementById('mieruDay').dispatchEvent(new english.w.Event('change'));
+assert(english.d.getElementById('mieruForecastDate').textContent.includes('23 October 2026'),'Tomorrow API date missing');
+assert(english.d.getElementById('mieruDay').options[0].textContent==='22 October 2026','Absolute dates must survive midnight without relabeling old data');
+assert(english.d.querySelector('.mieru-verdict').textContent.includes('23 October 2026'),'Best hour must use selected absolute date');
+assert(english.d.getElementById('mieruRetrievedAt').textContent===retrieved,'Changing date must not change data retrieval timestamp');
+assert(english.d.querySelector('a[href="#forecast-method"]')&&english.d.getElementById('forecast-method'),'Method link target missing');
+for(const opts of [{fail:true},{mutate:r=>delete r[0].hourly.time},{mutate:r=>r[1].hourly.time[24]='2026-10-24T00:00'},{mutate:r=>r[2].hourly.visibility[6]=null},{mutate:r=>r[0].hourly.time[0]='2026-02-30T00:00'}]){
+ const p=await page('en','',opts);
+ assert(p.d.getElementById('mieruForecastContext').hidden,'Failed data must not show retrieval success');
+ assert(!p.d.querySelector('.mieru-spot')&&!Object.keys(p.w.__mieru.results).length,'Invalid data must not produce forecasts');
+ assert(p.d.getElementById('mieruStatus').textContent.includes('No forecast is available'),'Failure must be explicit');
+ p.dom.window.close();
+}
 for(let li=0;li<langs.length;li++){
  const lang=langs[li],{d,w,loads}=pages[li];
+ if(lang!=='en')assert(!d.getElementById('mieruForecastContext')&&!d.querySelector('[data-mieru-en-only]'),'English-only explanation leaked into '+lang);
  const cards=[...d.querySelectorAll('.mieru-fact')];assert(cards.length===5,lang+': five static explanations missing');
  assert(cards.map(x=>x.dataset.viewpoint).join('|')===ids.join('|'),lang+': viewpoint order differs');
  cards.forEach((card,i)=>{const photo=MIERU_CONTENT.photos[i],img=card.querySelector('img'),url=new URL(img.src);assert(url.pathname==='/'+photo.src,lang+': photo differs '+photo.id);assert(img.alt.trim()&&img.width>0&&img.height>0,lang+': photo alt/dimensions missing');assert(card.querySelector('.mieru-fact-body')?.textContent.length>50,lang+': explanation missing');if(photo.credit){const credit=card.querySelector('figcaption a');assert(credit?.textContent===photo.credit&&credit.href===photo.sourceUrl,lang+': attribution changed '+photo.id);}assert(fs.existsSync(path.join(root,new URL(card.querySelector('.mieru-fact-more').href).pathname.slice(1))),lang+': article destination missing');});
