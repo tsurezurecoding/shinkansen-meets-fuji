@@ -5,14 +5,16 @@ import { JSDOM } from 'jsdom';
 
 const source = fs.readFileSync(new URL('../727-collection.js', import.meta.url), 'utf8');
 
-function mount({ disabled = false } = {}) {
+function mount(options = {}) {
+  const { optout = false, throwGtag = false } = options;
   const dom = new JSDOM('<!doctype html><html lang="en"><body><main class="collection-727-page"><div id="collectionProgress"></div><div id="collectionMedals"></div><div id="collectionList"></div><div id="collectionMap"></div></main></body></html>', { url: 'https://example.test/en/727-collection.html', runScripts: 'outside-only' });
   const { window } = dom;
   window.HTMLElement.prototype.scrollIntoView = () => {};
   const events = [];
   const markerHandlers = [];
-  window.MADO_ANALYTICS_DISABLED = disabled;
-  window.gtag = (...args) => events.push(args);
+  window.MADO_ANALYTICS_DISABLED = Object.hasOwn(options, 'disabled') ? options.disabled : false;
+  if (optout) window.localStorage.setItem('mado-ga-optout', '1');
+  window.gtag = (...args) => { if (throwGtag) throw new Error('analytics unavailable'); events.push(args); };
   window.BOARD_COLLECTION = [{ id: 'point-a', ja: '地点A', en: 'Point A', segment: '東京 → 品川', side: 'E', minutesFromTokyo: 10, lat: 35.5, lng: 139.5 }];
   window.ROUTE = { refStations: [{ ja: '東京', en: 'Tokyo' }, { ja: '品川', en: 'Shinagawa' }] };
   const map = { setView() { return this; }, fitBounds() {}, invalidateSize() {} };
@@ -32,15 +34,36 @@ test('each 727 user action sends one named event; opening a card programmaticall
   try {
     await new Promise((resolve) => setTimeout(resolve, 0));
     f.markerHandlers[0]();
-    assert.deepEqual(f.events.map((event) => event[1]), ['map_selection']);
+    assert.deepEqual(f.events.map((event) => event[1]), ['collection_727_map_select']);
     // Marker focus opens the card programmatically, so that focus itself must not count as a card-open event.
     const filter = f.window.document.createElement('button'); filter.setAttribute('data-collection-filter', 'seat-e'); f.window.document.querySelector('main').append(filter); filter.click();
-    assert.deepEqual(f.events.map((event) => event[1]), ['map_selection', 'regionfilter']);
+    assert.deepEqual(f.events.map((event) => event[1]), ['collection_727_map_select', 'collection_727_filter']);
     const card = f.window.document.querySelector('[data-point-accordion]'); card.click(); card.click();
-    assert.deepEqual(f.events.map((event) => event[1]), ['map_selection', 'regionfilter', 'cardopen']);
+    assert.deepEqual(f.events.map((event) => event[1]), ['collection_727_map_select', 'collection_727_filter', 'collection_727_card_open']);
     f.window.document.querySelector('[data-point-stamp]').click();
-    assert.deepEqual(f.events.map((event) => event[1]), ['map_selection', 'regionfilter', 'cardopen', 'stamp_operation']);
+    assert.deepEqual(f.events.map((event) => event[1]), ['collection_727_map_select', 'collection_727_filter', 'collection_727_card_open', 'collection_727_stamp']);
     assert.equal(f.events.at(-1)[2].operation, 'add');
+  } finally { f.dom.window.close(); }
+});
+
+test('727 analytics fails closed for missing consent state and local opt-out', async () => {
+  for (const options of [{ disabled: undefined }, { optout: true }]) {
+    const f = mount(options);
+    try {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+      f.window.document.querySelector('[data-collection-filter]')?.click();
+      const filter = f.window.document.createElement('button'); filter.setAttribute('data-collection-filter', 'seat-e'); f.window.document.querySelector('main').append(filter); filter.click();
+      assert.equal(f.events.length, 0);
+    } finally { f.dom.window.close(); }
+  }
+});
+
+test('a throwing gtag does not prevent collection interactions', async () => {
+  const f = mount({ throwGtag: true });
+  try {
+    await new Promise((resolve) => setTimeout(resolve, 0));
+    const filter = f.window.document.createElement('button'); filter.setAttribute('data-collection-filter', 'seat-e'); f.window.document.querySelector('main').append(filter); filter.click();
+    assert.equal(f.window.document.querySelector('[data-collection-filter="seat-e"]').getAttribute('aria-pressed'), 'true');
   } finally { f.dom.window.close(); }
 });
 

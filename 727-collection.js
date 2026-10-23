@@ -9,8 +9,9 @@
   var LANG = String(document.documentElement.lang || "ja").toLowerCase().indexOf("en") === 0 ? "en" : "ja";
   var ASSET_PREFIX = LANG === "en" ? "../" : "";
   function track727(name, params) {
-    if (window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
-    window.gtag("event", name, params || {});
+    if (window.MADO_ANALYTICS_DISABLED !== false || typeof window.gtag !== "function") return;
+    try { if (window.localStorage.getItem("mado-ga-optout") === "1") return; } catch (error) { return; }
+    try { window.gtag("event", name, params || {}); } catch (error) { /* analytics must not interrupt the collection */ }
   }
   var TEXT = {
     ja: {
@@ -257,7 +258,7 @@
     } else {
       stamps[id] = Date.now();
     }
-    track727("stamp_operation", { point_id: point.id, operation: operation });
+    track727("collection_727_stamp", { point_id: point.id, operation: operation });
     saveStamps(); renderProgress(); renderList();
     if (mapState && mapState.markers.has(point.id)) updateMarkerPopup(point);
   }
@@ -298,7 +299,7 @@
       var markers = new Map(); var bounds = [];
       points.forEach(function (point) {
         var marker = L.marker([point.lat, point.lng], { title: pointName(point) }).addTo(map);
-        marker.bindPopup(popupHTML(point)); marker.on("click", function () { track727("map_selection", { point_id: point.id }); focusPoint(point.id); }); markers.set(point.id, marker); bounds.push([point.lat, point.lng]);
+        marker.bindPopup(popupHTML(point)); marker.on("click", function () { track727("collection_727_map_select", { point_id: point.id, source: "marker" }); focusPoint(point.id); }); markers.set(point.id, marker); bounds.push([point.lat, point.lng]);
       });
       mapState = { map: map, markers: markers, bounds: bounds.length ? L.latLngBounds(bounds) : null };
       window.requestAnimationFrame(function () { map.invalidateSize(); fitFullMap(); setMapStatus(T.mapStatusAll(points.length)); });
@@ -309,7 +310,7 @@
     if (filterButton) {
       event.preventDefault();
       var filter = filterButton.getAttribute("data-collection-filter") || "all";
-      track727("regionfilter", { filter: filter, operation: filter === "all" ? "select" : (activeFilters.has(filter) ? "remove" : "add") });
+      track727("collection_727_filter", { filter: filter, operation: filter === "all" ? "select" : (activeFilters.has(filter) ? "remove" : "add") });
       if (filter === "all") activeFilters.clear();
       else if (activeFilters.has(filter)) activeFilters.delete(filter);
       else activeFilters.add(filter);
@@ -320,9 +321,9 @@
     var stampButton = event.target.closest("[data-point-stamp]");
     if (stampButton) { event.preventDefault(); var stampPoint = points.find(function (point) { return point.id === stampButton.getAttribute("data-point-stamp"); }); if (stampPoint) toggleStamp(stampPoint); return; }
     var accordionButton = event.target.closest("[data-point-accordion]");
-    if (accordionButton) { event.preventDefault(); var id = accordionButton.closest("[data-point-card]").getAttribute("data-point-id"); var opening = openPointId !== id; if (opening) track727("cardopen", { point_id: id, source: "list" }); setAccordion(id, opening, true); return; }
+    if (accordionButton) { event.preventDefault(); var id = accordionButton.closest("[data-point-card]").getAttribute("data-point-id"); var opening = openPointId !== id; if (opening) track727("collection_727_card_open", { point_id: id, source: "list" }); setAccordion(id, opening, true); return; }
     var mapButton = event.target.closest("[data-map-point]");
-    if (mapButton) { event.preventDefault(); var mapPointId = mapButton.getAttribute("data-map-point"); track727("cardopen", { point_id: mapPointId, source: "map" }); focusPoint(mapPointId); }
+    if (mapButton) { event.preventDefault(); var mapPointId = mapButton.getAttribute("data-map-point"); track727("collection_727_map_select", { point_id: mapPointId, source: "list" }); focusPoint(mapPointId); }
   });
   renderProgress(); renderList(); initMap();
 })();
