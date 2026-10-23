@@ -60,3 +60,22 @@ test('new dictionaries cover their bounded source copy without empty translation
     }
   }
 });
+
+test('all three filling buttons retain the selected edition after interaction',()=>{
+  for(const lang of languages){
+    const file=(lang==='ja'?'':lang+'/')+'foods.html';
+    const dom=lang==='en'?englishSnapshot(root,'foods.html'):new JSDOM(read(file),{url:origin+file,runScripts:'outside-only'}),doc=dom.window.document;
+    dom.window.eval(read('foods.js'));
+    doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+    for(const button of doc.querySelectorAll('[data-filling]')){
+      const description=button.getAttribute('data-filling-description');
+      assert(description?.trim(),file+' '+button.dataset.filling);
+      if(lang!=='en')assert(!/^(?:Salmon: savoury|Tuna mayo: tuna|Ume: pickled)/.test(description),file+' untranslated runtime');
+      button.click();
+      assert.equal(doc.getElementById('filling-description').textContent,description);
+      assert.equal(button.getAttribute('aria-pressed'),'true');
+      assert.equal(doc.querySelectorAll('[data-filling][aria-pressed="true"]').length,1);
+    }
+    dom.window.close();
+  }
+});

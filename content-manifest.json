@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "1c9c27c2b7aa06cb",
+  "contentVersion": "69368ed690c11e23",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -205,8 +205,8 @@
     {
       "path": "de/foods.html",
       "url": "https://www.michikusa-travel.com/de/foods.html",
-      "bytes": 113427,
-      "sha256": "66dafb837ac6d5e9104f52476051c8af3e1909c70c8631e040d7badb38e65939"
+      "bytes": 113755,
+      "sha256": "c8c1343fafb12677df3aeb3c8a3d5df6881cce9905991695a6aaba3ea7648867"
     },
     {
       "path": "de/index.html",
@@ -475,8 +475,8 @@
     {
       "path": "en/foods.html",
       "url": "https://www.michikusa-travel.com/en/foods.html",
-      "bytes": 45300,
-      "sha256": "8bbf58d9a076ba6eb5e07ffe4e5d8035c9f05c810313aa98f37c84b585c0525d"
+      "bytes": 45612,
+      "sha256": "b33590822dcea357e00676ccce6fc7ad48cbc3a7a54d8eddc2d390ecd228a16f"
     },
     {
       "path": "en/hanabi.html",
@@ -571,8 +571,8 @@
     {
       "path": "es/foods.html",
       "url": "https://www.michikusa-travel.com/es/foods.html",
-      "bytes": 113639,
-      "sha256": "42f0154013a4f4a50797c62ce5c74b2b3eb298834421ceeae520ebf251734629"
+      "bytes": 113973,
+      "sha256": "3eee3e4ffd115d0c00120f4c7f920b2a17d11ca3873726c3bb45f9f298a6cb5d"
     },
     {
       "path": "es/index.html",
@@ -817,8 +817,8 @@
     {
       "path": "foods.js",
       "url": "https://www.michikusa-travel.com/foods.js",
-      "bytes": 2477,
-      "sha256": "dc9eeb952901b9286ac8e2ddbe75b7a992fe9a9953ac2b541759a1461f6e96b8"
+      "bytes": 2186,
+      "sha256": "10c02e490312c9d568b07b8dde69d84a2e746644e02913084da6bd32c3f0fae8"
     },
     {
       "path": "fr/beer-on-shinkansen.html",
@@ -853,8 +853,8 @@
     {
       "path": "fr/foods.html",
       "url": "https://www.michikusa-travel.com/fr/foods.html",
-      "bytes": 114913,
-      "sha256": "0abf879cb1afe85b84d46a0f7dc413901564342888e0e98845eea700d51bd0bd"
+      "bytes": 115271,
+      "sha256": "ea428f9fd70a9be56bfc503c2431420bf9a240dc8fd48f067fdea90e701705eb"
     },
     {
       "path": "fr/index.html",
@@ -2395,8 +2395,8 @@
     {
       "path": "ko/foods.html",
       "url": "https://www.michikusa-travel.com/ko/foods.html",
-      "bytes": 113842,
-      "sha256": "06accd00afa055dc7f3514686a5e56149b68d4e83fed07cc27bc2b489a4c0527"
+      "bytes": 114216,
+      "sha256": "53c82a16b054b9d33ea26a064bf96e8d8b471538e6839d8b845fe7bdd64a45fb"
     },
     {
       "path": "ko/index.html",
@@ -4339,8 +4339,8 @@
     {
       "path": "zh-Hans/foods.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/foods.html",
-      "bytes": 110781,
-      "sha256": "d16dc037a94fddcfe46bc7db00454f6f9714aea0889cbfcc0a641483b863a0c2"
+      "bytes": 111081,
+      "sha256": "473649f028da8354956696c4eed30613573433b7c03449fd8421b8676b7461a9"
     },
     {
       "path": "zh-Hans/index.html",
@@ -4579,8 +4579,8 @@
     {
       "path": "zh-Hant/foods.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/foods.html",
-      "bytes": 110772,
-      "sha256": "d66f7c10736d7c0088ab13dce844510b07fab75799dc53ecfa55ee115e5df225"
+      "bytes": 111066,
+      "sha256": "a421ee3d280bbd410551d64de92028e95190c77fb18f8738b02dc1f39b394ebc"
     },
     {
       "path": "zh-Hant/index.html",
