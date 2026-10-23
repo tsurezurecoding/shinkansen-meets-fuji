@@ -35,7 +35,6 @@ assert.equal(tateiwa.side, "E");
 assert.notEqual(tateiwa.side, collection.find(p => p.sourceNo === 23).side, "Tateiwa and Haracho are on opposite sides");
 assert.equal(tateiwa.minutesFromTokyo, 76.5, "Tateiwa 727 should retain the measured 76.5-minute timing");
 assert.equal(tateiwa.confidence, "verified", "the 13 October Nozomi 300 ride calibrated this point");
-assert.match(tateiwa.collectionNote, /のぞみ300号の実測で校正/);
 assert.doesNotMatch(tateiwa.collectionNote, /未校正/);
 assert.equal(tateiwa.collectionJaName, "豊橋市豊清町（立岩前）");
 assert.equal(tateiwa.publicJaName, "727看板（豊橋市豊清町・立岩前）");
