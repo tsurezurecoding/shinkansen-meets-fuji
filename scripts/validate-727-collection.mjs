@@ -28,11 +28,24 @@ const manifest = JSON.parse(read("content-manifest.json"));
 const assertIncludes = (value, needle, message) => assert.ok(value.includes(needle), message);
 const thumbnailPath = (src) => String(src || "").replace(/^images\/(.+)\.(jpe?g|png)$/i, "images/thumbs/$1.webp");
 
-assert.equal(collection.length, 27, "expected 27 dedicated collection items");
-assert.equal(new Set(collection.map((point) => point.id)).size, 27, "collection IDs must be unique");
+assert.equal(collection.length, 28, "expected 28 dedicated collection items");
+assert.equal(new Set(collection.map((point) => point.id)).size, 28, "collection IDs must be unique");
+const tateiwa = collection.find(p => p.id === "727-no-46");
+assert.equal(tateiwa.side, "E");
+assert.notEqual(tateiwa.side, collection.find(p => p.sourceNo === 23).side, "Tateiwa and Haracho are on opposite sides");
+assert.equal(tateiwa.minutesFromTokyo, 76.5, "Tateiwa 727 should retain the measured 76.5-minute timing");
+assert.equal(tateiwa.confidence, "verified", "the 13 October Nozomi 300 ride calibrated this point");
+assert.doesNotMatch(tateiwa.collectionNote, /未校正/);
+assert.equal(tateiwa.collectionJaName, "豊橋市豊清町（立岩前）");
+assert.equal(tateiwa.publicJaName, "727看板（豊橋市豊清町・立岩前）");
+assert.equal(tateiwa.ja.name, "727看板（豊橋市豊清町・立岩前）");
+assert.equal(tateiwa.en.name, "727 sign · Hoseicho, Toyohashi (by Tateiwa)");
+assert.equal(tateiwa.durationSec, null, "new site duration is unmeasured");
+assert.ok(tateiwa.photo.src.includes("20261013_toyohashi_tateiwa_727"));
+assert.match(tateiwa.collectionNote, /概略位置/);
 const signs727 = collection.filter((point) => point.collectionKind === "727");
-assert.equal(signs727.length, 27, "must retain all 27 727 source points");
-assert.equal(signs727.map((point) => point.sourceNo).join(","), Array.from({ length: 27 }, (_, index) => index + 19).join(","), "727 source numbering must remain stable");
+assert.equal(signs727.length, 28, "must retain all 28 727 source points");
+assert.equal(signs727.map((point) => point.sourceNo).join(","), Array.from({ length: 28 }, (_, index) => index + 19).join(","), "727 source numbering must remain stable");
 assert.equal(collection.find((point) => point.sourceNo === 19)?.stampId, "727-board", "representative keeps old stamp state");
 assert.equal(collection.find((point) => point.sourceNo === 22)?.stampId, "putiputi-sign", "Oiso point must share the Who-am-I stamp state");
 assert.equal(collection.find((point) => point.sourceNo === 22)?.legacyStampIds?.[0], "727-companion-putiputi", "Oiso point must preserve the removed companion-row state");
@@ -90,6 +103,8 @@ assertIncludes(spots.find((spot) => spot.id === "727-sign")?.ja?.story || "", "�
 assert.ok((spots.find((spot) => spot.id === "727-sign")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos belong to the 727 spot");
 assert.ok(!(spots.find((spot) => spot.id === "727-board")?.photos || []).some((photo) => photo.src.includes("20260629_727_board")), "Yoda 727 photos must not stay on the 248 page");
 assertIncludes(app, "spot.sourceNo !== 21", "the standalone Yoda point is the 727-sign spot, so the expanded timeline must not repeat it");
+assertIncludes(app, ".concat(board ? boardCollectionSpots() : [])", "expanded 727 points must enter the journey timeline");
+assertIncludes(app, "minutesFromTokyo: spot.minutesFromTokyo", "expanded points must retain their own calibrated timing");
 assertIncludes(app, 'spot?.id === "727-sign"', "the 727-sign spot must carry the 727 filter tag");
 assertIncludes(app, `"727-board", "727-sign", "genki-sign"`, "the 727-sign spot must be in the sign filter group");
 assert.ok(!(spots.find((spot) => spot.id === "putiputi-sign")?.metaDescription?.ja || "").includes("藤沢"), "putiputi search description must not place the sign in Fujisawa");
@@ -174,4 +189,4 @@ for (const relativePath of ["app.js", "data.js", "style.css", "spot-page-shared.
   assert.ok(entry, `manifest entry missing: ${relativePath}`);
   assert.equal(entry.sha256, createHash("sha256").update(fs.readFileSync(path.join(appDir, relativePath))).digest("hex"), `stale manifest hash: ${relativePath}`);
 }
-console.log("727 collection validation passed: 27 items, shared representative stamps, list notes, TOP omissions, Google map, attribution, no reset/grid.");
+console.log("727 collection validation passed: 28 items, shared representative stamps, list notes, TOP omissions, Google map, attribution, no reset/grid.");
