@@ -50,7 +50,7 @@ test('the supplement and its assets are emitted only for the Japanese Tokyo arti
     assert.equal(tokyoSightlineHead(spot, lang, '../../'), '');
   }
   assert.match(tokyoSightlineHead({ id: 'tokyo-tower' }, 'ja', '../'), /href="\.\.\/tokyo-sightline\.css\?v=[a-f0-9]+"/);
-  assert.deepEqual(TOKYO_SCENES.map(scene => scene.id), ['tower', 'bridge', 'station', 'toranomon']);
+  assert.deepEqual(TOKYO_SCENES.map(scene => scene.id), ['tower', 'bridge', 'station', 'toranomon', 'takanawa', 'mon', 'shiodome']);
   for (const scene of TOKYO_SCENES) {
     const image = new URL('../images/' + scene.photo, import.meta.url);
     const stat = fs.statSync(image);
@@ -82,13 +82,13 @@ test('mounting and scrolling never load the engine; an explicit click opens the 
   assert.equal(find('[data-tokyo-reset]').disabled, false);
 });
 
-test('all four scenes update the photo, explanatory text and pressed state before loading 3D', async t => {
+test('all seven scenes update the photo, explanatory text and pressed state before loading 3D', async t => {
   let calls = 0, initialScene;
   const { find, all } = await setup(t, async (_host, options) => {
     calls++; initialScene = options.scene.id;
     return { destroy() {}, setScene() {} };
   });
-  for (const index of [0, 1, 2, 3]) {
+  for (const index of TOKYO_SCENES.keys()) {
     const scene = TOKYO_SCENES[index];
     find(`[data-tokyo-scene="${index}"]`).click();
     assert.equal(find('[data-tokyo-photo]').src, `https://example.com/images/${scene.photo}`);
@@ -103,7 +103,7 @@ test('all four scenes update the photo, explanatory text and pressed state befor
   }
   find('[data-tokyo-open]').click();
   await tick();
-  assert.equal(initialScene, 'toranomon');
+  assert.equal(initialScene, 'shiodome');
 });
 
 test('changing scenes reuses the existing stage through setScene', async t => {
@@ -114,10 +114,10 @@ test('changing scenes reuses the existing stage through setScene', async t => {
     return { destroy() { destroyed++; }, setScene(scene) { selected.push(scene.id); } };
   });
   find('[data-tokyo-open]').click(); await tick();
-  for (const index of [1, 2, 0]) find(`[data-tokyo-scene="${index}"]`).click();
+  for (const index of [1, 2, 4, 5, 6, 0]) find(`[data-tokyo-scene="${index}"]`).click();
   assert.equal(calls, 1);
   assert.equal(destroyed, 0);
-  assert.deepEqual(selected, ['tower', 'bridge', 'station', 'tower']);
+  assert.deepEqual(selected, ['tower', 'bridge', 'station', 'takanawa', 'mon', 'shiodome', 'tower']);
 });
 
 test('a pending factory applies the most recently selected scene when it resolves', async t => {

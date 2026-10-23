@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "e4fce9b153953c57",
+  "contentVersion": "d66cf0351fff83c1",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1403,6 +1403,12 @@
       "sha256": "a954dd6c38201a7ed6a42803988bc9ac5930d8cd783ac1c92a71778155cf4fec"
     },
     {
+      "path": "images/20260911_shiodome-city-center_74500_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20260911_shiodome-city-center_74500_michikusa.jpg",
+      "bytes": 474825,
+      "sha256": "268703417d2d6aa4a7cb8f17b580984b8e99d260085658ac1ecc20b74fa50213"
+    },
+    {
       "path": "images/20260916_himeji_castle_wakaba.jpg",
       "url": "https://www.michikusa-travel.com/images/20260916_himeji_castle_wakaba.jpg",
       "bytes": 72669,
@@ -1553,10 +1559,22 @@
       "sha256": "b99dc08822a14aa14b5b9156c94699248df53f8e70df0b0c3248181c167d026f"
     },
     {
+      "path": "images/20261010_mon-takanawa_257000_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261010_mon-takanawa_257000_michikusa.jpg",
+      "bytes": 574588,
+      "sha256": "d10a112c8fa19784af5606a4cd76e3716d7a1d1c27e8c211f994d1171f7b06e2"
+    },
+    {
       "path": "images/20261010_odawara_2025_michikusa.jpg",
       "url": "https://www.michikusa-travel.com/images/20261010_odawara_2025_michikusa.jpg",
       "bytes": 314364,
       "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4"
+    },
+    {
+      "path": "images/20261010_takanawa-linkpillar-1_275000_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261010_takanawa-linkpillar-1_275000_michikusa.jpg",
+      "bytes": 612856,
+      "sha256": "07f15be05d96a44cc5a263f43fe00c51fab88fa18550173317b87477c5135ea1"
     },
     {
       "path": "images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg",
@@ -2863,8 +2881,8 @@
     {
       "path": "tokyo-sightline-stage.js",
       "url": "https://www.michikusa-travel.com/tokyo-sightline-stage.js",
-      "bytes": 10722,
-      "sha256": "f2364bc3770f22509e3d7ac2419518070ec3cb122bfa8c2f95ea055c5d3b9bf7"
+      "bytes": 10733,
+      "sha256": "01989a4a67cc2d96dd63834ed5e6387ad1989f93c73ea07e8305f2abb1bb3ea2"
     },
     {
       "path": "tokyo-sightline.css",

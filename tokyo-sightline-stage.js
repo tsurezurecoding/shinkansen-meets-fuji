@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  // Three estimated sightlines, sharing one Viewer and at most two district tilesets.
+  // Estimated sightlines share one Viewer and at most two district tilesets.
   // Targets remain points: this module does not invent bridge or tower geometry.
   var base = 'https://cesium.com/downloads/cesiumjs/releases/1.117/Build/Cesium/';
   var libraryPromise;
@@ -135,7 +135,7 @@
         var train=C.Cartesian3.fromDegrees.apply(null,scene.train),target=C.Cartesian3.fromDegrees.apply(null,scene.target);
         middle=C.Cartesian3.lerp(train,target,.5,new C.Cartesian3());
         trainMarker.position=train; trainMarker.label.text='撮影位置（推定）';
-        targetMarker.position=target; targetMarker.label.text=scene.label;
+        targetMarker.position=target; targetMarker.label.text=scene.markerLabel||scene.label;
         line.polyline.positions=[train,target];
         selected=cache.get(scene.district)||loadDistrict(scene.district);
         cache.forEach(function (record) { if (record.tile) record.tile.show=record===selected; });
