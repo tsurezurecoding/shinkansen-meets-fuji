@@ -1,4 +1,5 @@
 import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
+import { tokyoSightlineHead, tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
 import { fujimiSightlineHead, fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
 import { everydayRelatedHTML } from './shared/everyday-related.mjs';
@@ -1110,7 +1111,7 @@ function thinSpotPageHTML(spot, lang) {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style id="spot-page-boot-style">html { background:#faf6ef; } [data-spot-page-shared-static] { visibility:hidden; }</style>
   <noscript><style>[data-spot-page-shared-static] { visibility:visible; }</style></noscript>
-  ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}${spot.id === "fujikawa-bridge" ? `\n  <link rel="stylesheet" href="${prefix}fujikawa-frequency.css?v=${assetVersion("fujikawa-frequency.css")}">` : ""}
+  ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${tokyoSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}${spot.id === "fujikawa-bridge" ? `\n  <link rel="stylesheet" href="${prefix}fujikawa-frequency.css?v=${assetVersion("fujikawa-frequency.css")}">` : ""}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
   <meta name="description" content="${text(desc)}">
@@ -1130,7 +1131,7 @@ function thinSpotPageHTML(spot, lang) {
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
   ${staticNavHTML}
-  <div data-spot-page-shared-module="page"></div>${fujimiSightlineHTML(spot, lang, prefix)}
+  <div data-spot-page-shared-module="page"></div>${fujimiSightlineHTML(spot, lang, prefix)}${tokyoSightlineHTML(spot, lang, prefix)}
   ${lang === "en" && spot.id === "gamagori-greenhouses" ? everydayRelatedHTML("greenhouses", "../") + '\n  ' : ""}${staticContentRailHTML}
   <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
   <script src="${prefix}${spotPagePayloadPath(spot.id, lang)}?v=${assetVersion(spotPagePayloadPath(spot.id, lang))}"></script>

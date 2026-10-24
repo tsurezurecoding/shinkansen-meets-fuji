@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "bb4371b293ec9892",
+  "contentVersion": "2113e3071526374e",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2735,6 +2735,12 @@
       "sha256": "a954dd6c38201a7ed6a42803988bc9ac5930d8cd783ac1c92a71778155cf4fec"
     },
     {
+      "path": "images/20260911_shiodome-city-center_74500_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20260911_shiodome-city-center_74500_michikusa.jpg",
+      "bytes": 474825,
+      "sha256": "268703417d2d6aa4a7cb8f17b580984b8e99d260085658ac1ecc20b74fa50213"
+    },
+    {
       "path": "images/20260916_himeji_castle_wakaba.jpg",
       "url": "https://www.michikusa-travel.com/images/20260916_himeji_castle_wakaba.jpg",
       "bytes": 72669,
@@ -2885,10 +2891,28 @@
       "sha256": "b99dc08822a14aa14b5b9156c94699248df53f8e70df0b0c3248181c167d026f"
     },
     {
+      "path": "images/20261010_mon-takanawa_257000_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261010_mon-takanawa_257000_michikusa.jpg",
+      "bytes": 574588,
+      "sha256": "d10a112c8fa19784af5606a4cd76e3716d7a1d1c27e8c211f994d1171f7b06e2"
+    },
+    {
       "path": "images/20261010_odawara_2025_michikusa.jpg",
       "url": "https://www.michikusa-travel.com/images/20261010_odawara_2025_michikusa.jpg",
       "bytes": 314364,
       "sha256": "8e18c4625a60dab72816284419fdff2b5e5abe2cf1a4bb85f3708b4a3ac650f4"
+    },
+    {
+      "path": "images/20261010_takanawa-linkpillar-1_275000_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261010_takanawa-linkpillar-1_275000_michikusa.jpg",
+      "bytes": 612856,
+      "sha256": "07f15be05d96a44cc5a263f43fe00c51fab88fa18550173317b87477c5135ea1"
+    },
+    {
+      "path": "images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg",
+      "url": "https://www.michikusa-travel.com/images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg",
+      "bytes": 617790,
+      "sha256": "e97e363d5efd44837f570f5a730bdfb8af459bdf9cf547de7a77ec7fb0b4b78a"
     },
     {
       "path": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
@@ -3447,6 +3471,12 @@
       "url": "https://www.michikusa-travel.com/images/sudoori/tanna.jpg",
       "bytes": 232051,
       "sha256": "c23de3dc2557b8a677a84b944bea4bba5eab36c7c7142f8e3aebb7a43821d84a"
+    },
+    {
+      "path": "images/tokyo-sightline-tower-preview.png",
+      "url": "https://www.michikusa-travel.com/images/tokyo-sightline-tower-preview.png",
+      "bytes": 110918,
+      "sha256": "282c67a6e324d340e48b3a8f184b58027d9ab9a1fcaf358266a885560ccf097a"
     },
     {
       "path": "images/window-trip-card.webp",
@@ -4283,6 +4313,24 @@
       "sha256": "3a1a1b94657d6769095f1f1545e71ed5eb1811444b1285797c770d8f1b6e95b6"
     },
     {
+      "path": "tokyo-sightline-stage.js",
+      "url": "https://www.michikusa-travel.com/tokyo-sightline-stage.js",
+      "bytes": 11240,
+      "sha256": "247ded1f365efe284f76ba96925e158462fc3d0fd0ed75261ba9c6e8cc1607dc"
+    },
+    {
+      "path": "tokyo-sightline.css",
+      "url": "https://www.michikusa-travel.com/tokyo-sightline.css",
+      "bytes": 5102,
+      "sha256": "f2de8dd9be3b4bf3fe3b2a83212b268792d4684d3ba986c9b79f17649fbb4fcf"
+    },
+    {
+      "path": "tokyo-sightline.js",
+      "url": "https://www.michikusa-travel.com/tokyo-sightline.js",
+      "bytes": 7587,
+      "sha256": "60f5b595b90e4b4510bd348677751aed36187b32def65889a049303cbbe8b3bf"
+    },
+    {
       "path": "train-picker.js",
       "url": "https://www.michikusa-travel.com/train-picker.js",
       "bytes": 13730,
@@ -4383,6 +4431,12 @@
       "url": "https://www.michikusa-travel.com/vendor/leaflet/LICENSE",
       "bytes": 1369,
       "sha256": "bbc959aaef7488b38942e7f05cfd1244351f8bce54261951ea17dd7cf60f894b"
+    },
+    {
+      "path": "videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4",
+      "url": "https://www.michikusa-travel.com/videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4",
+      "bytes": 3215364,
+      "sha256": "7db7ce71521bcdb157d282b6e77d3024a487dcaef72fb7add5bc27d29aa96d17"
     },
     {
       "path": "window-artworks.css",
