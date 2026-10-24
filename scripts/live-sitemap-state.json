@@ -1,18 +1,18 @@
 {
   "ja": {
-    "lastmod": "2026-10-07",
-    "reason": "Removed the alpha badge and alpha note from the live page per the owner's decision to drop the alpha label; no guide behavior or narration change. Keep the PR68 significant-update date.",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: correct Nichiban and Solar Ark direction/timing and Maruko opening year; replace nine recordings with corrected narration using the existing voices.",
     "fingerprints": {
       "html": "72e5156d2f397078498d250d2c7507fed8cb024bf89c42a1eb083ed1be37c343",
-      "narration": "574707480dc71a552fe3718e8dc0285d71a740af125eb67c7032bf10eabcfbca"
+      "narration": "32261b28d6dd43ae3ffb00839341bf467aa148998d19e4bc958691d489e90e9d"
     }
   },
   "en": {
-    "lastmod": "2026-10-07",
-    "reason": "Removed the alpha badge and alpha note from the live page per the owner's decision to drop the alpha label; no guide behavior or narration change. Keep the PR68 significant-update date.",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: correct Nichiban and Solar Ark direction/timing and Maruko opening year; replace nine recordings with corrected narration using the existing voices.",
     "fingerprints": {
       "html": "aabc5fee8d9598da6aa5107d446bc2ca532a23b923d30f2ce4f5e63b8c6e56db",
-      "narration": "f32369b187a19557ba96e6df5e9702a01776ce24733402a3ae9890611c047580"
+      "narration": "cf598e9407dbe8a8e8a2e9736611a2d69ef0ce93a42c464f8654bb7e3d26d5fb"
     }
   }
 }

@@ -85,7 +85,7 @@ const UI = {
           : "";
       return `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${window} as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed${flip}.`;
     },
-    sideA: "Seat A · left side toward Kyoto", sideE: "Seat E · right side toward Kyoto", sideBoth: "Both sides", hamanakoSide: "Seat A · left / Seat E · right (toward Kyoto)",
+    sideA: "Seat A · left side toward Shin-Osaka; right side toward Tokyo", sideE: "Seat E · right side toward Shin-Osaka; left side toward Tokyo", sideBoth: "Both sides", hamanakoSide: "Seat A · left / Seat E · right (toward Shin-Osaka; reversed toward Tokyo)",
     minutes: (m) => Number.isFinite(Number(m)) ? `About ${Math.round(m)} minutes after leaving Tokyo on a Nozomi train` : "Timing varies by train", relatedCategory: "Related", fallbackCredit: "Shinkansen Window",
     photoAlt: (name) => `${name} from the Shinkansen window`, photoFallback: (name, index) => `${name} window photo ${index + 1}`,
   },
@@ -93,7 +93,7 @@ const UI = {
 
 const SIDE_LABELS = {
   ja: { A: "A席・海側", E: "E席・山側", both: "左右両側", hamanako: "A席・海側 / E席・山側" },
-  en: { A: "Seat A · left side toward Kyoto", E: "Seat E · right side toward Kyoto", both: "Both sides", hamanako: "Seat A · left / Seat E · right (toward Kyoto)" },
+  en: { A: "Seat A · left side toward Shin-Osaka; right side toward Tokyo", E: "Seat E · right side toward Shin-Osaka; left side toward Tokyo", both: "Both sides", hamanako: "Seat A · left / Seat E · right (toward Shin-Osaka; reversed toward Tokyo)" },
 };
 
 function localized(value, lang) {

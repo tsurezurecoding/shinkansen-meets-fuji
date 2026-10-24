@@ -188,13 +188,13 @@ function applyAudioCopyOverrides(entries) {
   setNarrationText(entries, "mikawa-oshima", "down", "ja", "まもなく三河大島です。豊橋を過ぎたあと、A席側に三河湾と小さな島影が見えることがあります。大きな観光名所というより、海の向こうにぽつんと浮かぶ発見型の車窓です。見通しがよい日に、海側の窓を探してみてください。");
   setNarrationText(entries, "mikawa-oshima", "up", "ja", "東京方面へ向かうこのあたりでは、A席側に三河湾と三河大島が見えることがあります。窓の外に一瞬だけ現れる小さな島影です。浜名湖のあとにも、海側にはまだ見つける楽しみがあります。");
 
-  setNarrationText(entries, "nichiban-anjo", "down", "ja", "まもなくセロテープの壁看板です。三河安城の少し手前で、E席側にニチバン安城工場の大きな壁看板が見えてきます。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。");
-  setNarrationText(entries, "nichiban-anjo", "up", "ja", "東京方面へ向かう場合は、三河安城を出てすぐ、E席側にセロテープの壁看板が見えてきます。ニチバン安城工場の壁いっぱいに、赤、白、青の広告が大きく現れます。ただの広告なのに、妙に記憶に残る車窓です。");
+  setNarrationText(entries, "nichiban-anjo", "down", "ja", "まもなくセロテープの壁看板です。三河安城を出て、または通過してすぐ、E席側にニチバン安城工場の大きな壁看板が見えてきます。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。");
+  setNarrationText(entries, "nichiban-anjo", "up", "ja", "東京方面へ向かう場合は、三河安城に着く、または通過する直前、E席側にセロテープの壁看板が見えてきます。ニチバン安城工場の壁いっぱいに、赤、白、青の広告が大きく現れます。ただの広告なのに、妙に記憶に残る車窓です。");
 
   setNarrationText(entries, "nagoya-station-skyline", "down", "ja", "まもなく名古屋駅前です。E席側の車窓が、高層ビル、駅前の密度、線路の重なりへ一気に切り替わります。山や城とは違いますが、名古屋に着くことを知らせる大事な都市の車窓です。");
   setNarrationText(entries, "nagoya-station-skyline", "up", "ja", "東京方面へ向かうこのあたりでは、E席側に名古屋駅前の高層ビル群が見えてきます。駅前の密度と線路の重なりが、名古屋の大きさを短い時間で見せてくれます。");
 
-  setNarrationText(entries, "solar-ark", "down", "ja", "まもなくソーラーアークです。名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描く建物が現れます。かつて三洋電機、現在のパナソニックによって建てられた太陽光発電モニュメントです。");
+  setNarrationText(entries, "solar-ark", "down", "ja", "まもなくソーラーアークです。岐阜羽島を出て、または通過してすぐ、E席側に巨大な弧を描く建物が現れます。かつて三洋電機、現在のパナソニックによって建てられた太陽光発電モニュメントです。");
   setNarrationText(entries, "solar-ark", "up", "ja", "東京方面へ向かうこのあたりでは、E席側にソーラーアークが見えてきます。巨大な弧を描く建物で、かつて太陽光発電の象徴として建てられたモニュメントです。名所案内には出にくいですが、一度見つけると忘れにくい車窓です。");
 
   setNarrationText(entries, "sagami-fuji", "down", "ja", "東京を出て最初に探したい富士山が、相模平野越しの富士山です。E席側、丹沢山地の背後に雄大な富士山を望むことができます。空気が澄んだ日は、平野と山なみの奥に大きな姿が浮かびます。");
@@ -202,6 +202,12 @@ function applyAudioCopyOverrides(entries) {
 }
 
 function applyJapaneseSpeechTextPolish(entries) {
+  setNarrationText(entries, "maruko-bridge", "up", "en", "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge opened in 1935, replacing the old Maruko Ferry. This stretch of the river also appears as the defense line in Shin Godzilla. After Shin-Yokohama, it is a small scene change before the train slips back toward Tokyo.");
+  setNarrationText(entries, "maruko-bridge", "down", "en", "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge here opened in 1935, replacing an old ferry crossing known as the Maruko Ferry. Film fans may recognize this stretch of the river as the defense line in Shin Godzilla. The wooded rise beyond the bridge hides Kamenokoyama Kofun, an ancient burial mound. From city blocks to open water — the journey's first little scene change.");
+  setNarrationText(entries, "solar-ark", "up", "en", "Heading toward Tokyo, look to the Seat E side just before arriving at or passing Gifu-Hashima for Solar Ark, a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.");
+  setNarrationText(entries, "solar-ark", "down", "en", "Solar Ark is coming up on the Seat E side, around Gifu-Hashima → Maibara. A giant solar ship, out of nowhere. Just after leaving or passing Gifu-Hashima toward Shin-Osaka, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.");
+  setNarrationText(entries, "nichiban-anjo", "up", "en", "Heading toward Tokyo, look on the Seat E side just before arriving at or passing Mikawa-Anjo for the CELLOTAPE wall sign. The huge red-and-blue brand mark covers the wall of the Nichiban Anjo Factory.");
+  setNarrationText(entries, "nichiban-anjo", "down", "en", "CELLOTAPE Wall Sign is coming up on the Seat E side, just after leaving or passing Mikawa-Anjo toward Shin-Osaka. Look for the huge red-and-blue CELLOTAPE brand mark painted across the wall of the Nichiban Anjo Factory.");
   setSpeechText(entries, "tokyo-tower", "down", "まもなく東京タワーです。東京駅を出て品川へ向かう数分のあいだ、E席側のビルの間に赤い塔が見えることがあります。旅の序盤に、東京らしい都市の景色を知らせる合図です。");
   setSpeechText(entries, "tokyo-tower", "up", "東京方面へ向かうこのあたりでは、E席側のビルの間に東京タワーが見えることがあります。旅の終わりに東京の街へ戻ってきたことを知らせる合図です。");
 

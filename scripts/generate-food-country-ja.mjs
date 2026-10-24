@@ -30,6 +30,12 @@ for(const name of ['foods','countryside']){
   const tr=s=>{const key=s.trim();if(!key)return s;if(typeof copy[key]!=='string'){missing.add(key);return s;}return s.replace(key,()=>copy[key]);};
   for(const node of textNodes(doc))if(!node.parentElement.closest('header.topbar,.spot-page-rail,footer,.brand-mark,.show-credit,figcaption a:not([data-gallery-source-output])'))node.textContent=tr(node.textContent);
   for(const el of doc.querySelectorAll('*'))if(!el.closest('header.topbar,.spot-page-rail,footer'))for(const attr of TRANSLATABLE_ATTRIBUTES)if(el.hasAttribute(attr)&&el.getAttribute(attr).trim())el.setAttribute(attr,tr(el.getAttribute(attr)));
+  if(name==='foods'){
+    // Translate complete sentences whose English emphasis splits the Japanese predicate.
+    doc.querySelector('#nikuman .japanese-name').nextElementSibling.innerHTML='豚肉の具をふっくらした生地で包んだ蒸しまんです。関西では「<em>豚まん</em>」という名前もよく見かけます。';
+    doc.querySelector('#taiyaki .japanese-name').nextElementSibling.innerHTML='魚の形をしたお菓子です。中には「<em>あんこ</em>」と呼ばれる甘い小豆あんが入っていることが多くあります。カスタードなど、メニューを眺める楽しみが広がる具もあります。';
+    for(const el of doc.querySelectorAll('noscript'))el.innerHTML='<p>ツナマヨ：ツナをまろやかなマヨネーズで和えた具。梅：酸味のある梅干し。</p>';
+  }
   doc.title=tr(doc.title);
   for(const el of doc.querySelectorAll('meta[name],meta[property]')){
     const key=el.getAttribute('name')||el.getAttribute('property');
