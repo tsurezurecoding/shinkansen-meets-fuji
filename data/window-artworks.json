@@ -37,8 +37,8 @@
         "ja"
       ],
       "webOnly": true,
-      "route": "memory-express.html",
-      "image": "images/memory-express-cover.png",
+      "route": "artworks/memory-express/index.html",
+      "image": "artworks/memory-express/cover.png",
       "ja": {
         "title": "記憶特急",
         "medium": "70秒の3D作品",

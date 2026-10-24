@@ -17,7 +17,7 @@ let changed=0;
 for(const lang of ['ja','en']){
  const c=copy[lang],prefix=lang==='en'?'../':'',route=(lang==='en'?'en/':'')+'window-artworks.html',url=origin+route;
  const visibleWorks=works.filter(w=>!w.languages||w.languages.includes(lang));
- const cards=visibleWorks.map(w=>{if(!/^[a-z-]+\.html$/.test(w.route)||!fs.existsSync(path.join(root,w.route)))throw Error('Invalid published route');const t=w[lang];if(w.id==='window-film'||w.webOnly) {
+ const cards=visibleWorks.map(w=>{if(!/^(?:[a-z-]+\/)*[a-z-]+\.html$/.test(w.route)||!fs.existsSync(path.join(root,w.route)))throw Error('Invalid published route');const t=w[lang];if(w.id==='window-film'||w.webOnly) {
  // The film is Web-only. A bundled catalog must never load its absent image or local route.
  const publicUrl=origin+(lang==='en'?'en/':'')+w.route;
  const online=lang==='ja'?'オンラインで鑑賞（通信が必要です）':'Watch online (internet connection required)';

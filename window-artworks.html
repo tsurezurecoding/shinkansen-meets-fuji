@@ -111,15 +111,15 @@
 })();
 </script>
 <article class="artwork-card" data-artwork="window-trip"><a href="window-trip.html" tabindex="-1" aria-hidden="true"><img src="images/og-window-trip.png" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">写真と地図でめぐる旅</p><h2>車窓を、つないで。</h2><p>好きな景色を選んで、東京から新大阪へ。写真と地図が流れ続ける、自分だけの車窓の旅。</p><a class="artwork-open" href="window-trip.html">作品を見る <span aria-hidden="true">→</span><span class="sr-only"> — 車窓を、つないで。</span></a></div></article>
-<article class="artwork-card" data-artwork="memory-express"><a hidden href="https://www.michikusa-travel.com/memory-express.html" tabindex="-1" aria-hidden="true"><img data-film-image="images/memory-express-cover.png" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">70秒の3D作品</p><h2>記憶特急</h2><p>新幹線が架空の街を駆け、米原・豊橋・掛川で撮った3枚の車窓写真へ。あの日の窓をくぐる、小さな記憶の旅。</p><a class="artwork-open" href="https://www.michikusa-travel.com/memory-express.html">オンラインで鑑賞（通信が必要です）<span class="sr-only"> — 記憶特急</span></a></div></article><script>
+<article class="artwork-card" data-artwork="memory-express"><a hidden href="https://www.michikusa-travel.com/artworks/memory-express/index.html" tabindex="-1" aria-hidden="true"><img data-film-image="artworks/memory-express/cover.png" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">70秒の3D作品</p><h2>記憶特急</h2><p>新幹線が架空の街を駆け、米原・豊橋・掛川で撮った3枚の車窓写真へ。あの日の窓をくぐる、小さな記憶の旅。</p><a class="artwork-open" href="https://www.michikusa-travel.com/artworks/memory-express/index.html">オンラインで鑑賞（通信が必要です）<span class="sr-only"> — 記憶特急</span></a></div></article><script>
 (function () {
  var card=document.currentScript.previousElementSibling;
  var native=!!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform==='function' && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform==='function' && window.Capacitor.getPlatform()!=='web')));
  var bundled=native || (location.protocol==='file:' && location.pathname.charAt(2)!==':') || location.hostname==='localhost';
  if(bundled) { card.querySelector('a[hidden]').remove(); return; }
  var image=card.querySelector('img'); image.src=image.dataset.filmImage;
- var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',"memory-express.html");
- var open=card.querySelector('.artwork-open'); open.setAttribute('href',"memory-express.html");
+ var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',"artworks/memory-express/index.html");
+ var open=card.querySelector('.artwork-open'); open.setAttribute('href',"artworks/memory-express/index.html");
  open.firstChild.textContent="作品を見る →";
 })();
 </script>

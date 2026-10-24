@@ -18,8 +18,8 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
-  "memory-express.html", "images/memory-express-cover.png",
-  ...await walkFiles("memory-express", p => /\.(?:js|css|txt)$/.test(p)),
+  "memory-express.html",
+  ...await walkFiles("artworks/memory-express", p => /\.(?:html|js|css|txt|png)$/.test(p)),
   "images/fuji-guide-hero.webp",
   "journey-light-model.js", "journey-light-events.js", "journey-light-events.css",
   "727-collection.css", "images/727-hero-wide.webp", "images/727-hero-mobile.webp",
