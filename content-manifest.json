@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "c57bbbc14952ba18",
+  "contentVersion": "bb4371b293ec9892",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -79,8 +79,8 @@
     {
       "path": "artworks/memory-express/models/models.js",
       "url": "https://www.michikusa-travel.com/artworks/memory-express/models/models.js",
-      "bytes": 602733,
-      "sha256": "7b57f206a8374f4361e7d1175e7aa95ee9fe9c94175d0c8c76e7fa6b424c79b5"
+      "bytes": 602731,
+      "sha256": "16cdf5eb2710e4446ad2c7a4338c2f286fa27700c832f2f02700d922f37e4b31"
     },
     {
       "path": "artworks/memory-express/photos.js",
