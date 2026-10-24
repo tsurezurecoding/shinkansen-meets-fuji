@@ -38,8 +38,8 @@
 </div>
 <section id="round-result" class="round-result" hidden tabindex="-1" aria-labelledby="result-title"><div class="result-top"><div><p class="eyebrow">ANSWER · お題の瞬間</p><h2 id="result-title">街の向こうに、三河湾。</h2><p id="result-location">愛知県蒲郡市 · 三河安城〜豊橋の間</p></div><div class="result-numbers"><p><small>撮影地点から</small><strong id="distance"></strong></p><p><small>旅のスコア</small><strong id="round-score"></strong></p></div></div><div class="result-bottom"><p id="result-story">ここは蒲郡の街並みを見下ろすあたり。屋根や建物の間から、三河湾の水面や島の輪郭がのぞきます。一枚では隠れていた景色も、少し時間を戻すとつながって見えてきます。</p></div><div class="evidence-jumps"><button data-time="5" type="button">① 屋根の向こうを眺める</button><button data-time="22" type="button">② お題の瞬間を見直す</button><button data-time="37" type="button">③ 水面が開けるところへ</button></div><p class="evidence-note">答え合わせの後は、映像を動かすと地図の紫の点も動きます。緑の「お題」は同じ場所に残ります。</p><div class="result-actions"><p><span class="legend-guess">●</span> あなたの回答　<span class="legend-answer">●</span> お題　<span class="sync-key">●</span> 再生位置</p><div class="journey-actions"><button id="restart" type="button" class="text-button">この車窓をもう一度 ↻</button><button id="next-question" type="button" class="primary-button">次の車窓へ →</button></div></div></section>
 <section id="journey-result" class="journey-result" hidden tabindex="-1"><p class="eyebrow">WINDOW JOURNEY</p><h2>18の車窓を、旅しました。</h2><p id="journey-total"></p><p>気になった景色は、上の番号から何度でも。</p><ol id="journey-scores"></ol></section>
-<p class="prototype-note"><span>18問の試作</span> 撮影時刻と同じ乗車のGPSを対応づけています。距離は線路に沿った目安で、GPS誤差を含みます。</p>
-<noscript>この試作にはJavaScriptが必要です。</noscript>
+<p class="prototype-note"><span>18の車窓</span> 撮影時刻と同じ乗車のGPSを対応づけています。距離は線路に沿った目安で、GPS誤差を含みます。</p>
+<noscript>クイズを遊ぶにはJavaScriptを有効にしてください。</noscript>
 </main>
 <!-- COMMON_CONTENT_RAIL -->
 <footer class="footer"><p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p><p class="footer-links"><a href="guide.html">富士山の見方</a> · <a href="references.html">車窓リンク集</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p><p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p></footer>
