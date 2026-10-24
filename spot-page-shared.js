@@ -309,6 +309,7 @@
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "window-artworks.html")) + "\">" + escapeHTML(ui.artworks) + "</a>" +
+            (lang === "ja" ? "<a href=\"" + escapeHTML(href(base, "sudoori/index.html#stories")) + "\">素通りの街</a>" : "") +
             "<a href=\"" + escapeHTML(href(base, "references.html")) + "\">" + escapeHTML(ui.links) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "contact.html")) + "\">" + escapeHTML(ui.contact) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "privacy.html")) + "\">" + escapeHTML(ui.privacy) + "</a>" +

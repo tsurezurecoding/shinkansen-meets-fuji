@@ -1,5 +1,5 @@
 {
-  "reviewed": "2026-10-17",
+  "reviewed": "2026-10-24",
   "scope": "Japanese municipality editorial pages; no ads or affiliate links. No mascot image for Shimamoto.",
   "entries": [
     {
@@ -82,6 +82,61 @@
       "usage": "会長撮影。島本町記事・地図プレビュー・関連記事カード・図鑑入口。CSS crop・撮影者と撮影日を表示",
       "reviewed": "2026-10-17",
       "sha256": "a6ae308c597db6a26efcce5f4eb8318f893ddaa0e8283f8dc724e9c78edfaf10"
+    },
+    {
+      "id": "CP-0267",
+      "file": "images/sudoori/echigawa-bridge.jpg",
+      "author": "Kurage5555",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Echigawa_bridge.jpg",
+      "usage": "Original file; CSS crop; body and related/list cards only; historical illustration not a measured plan.",
+      "reviewed": "2026-10-24",
+      "sha256": "2c0926b520a5ba3f0bc9283c24388a0fd623fa094dd64f3b815fe7720fcf298d"
+    },
+    {
+      "id": "CP-0268",
+      "file": "images/sudoori/echigawa-juku-hatago.jpg",
+      "author": "Douggers",
+      "license": "CC BY 3.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by/3.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Echigawa-juku_hatago.jpg",
+      "usage": "Original file; CSS crop; body and related/list cards only; historical illustration not a measured plan.",
+      "reviewed": "2026-10-24",
+      "sha256": "da1c3e84de1b13a6dc6c22aac71b4db5963e487ba478c127aafc7c5e4a50c161"
+    },
+    {
+      "id": "CP-0269",
+      "file": "images/sudoori/kisokaido65-echigawa.jpg",
+      "author": "Utagawa Hiroshige",
+      "license": "Public domain",
+      "licenseUrl": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Kisokaido65_Echigawa.jpg",
+      "usage": "Original file; CSS crop; body and related/list cards only; historical illustration not a measured plan.",
+      "reviewed": "2026-10-24",
+      "sha256": "32e288c9c825fa9dc06f9a5d669a4d63ecbf775c1322af225dfd41f99d23eccd"
+    },
+    {
+      "id": "CP-0270",
+      "file": "images/sudoori/inugami-river-from-kanaya-bridge.jpg",
+      "author": "運動会プロテインパワー",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Inugami_River_from_Kanaya_bridge.jpg",
+      "usage": "Original file; CSS crop; body and related/list cards only; historical illustration not a measured plan.",
+      "reviewed": "2026-10-24",
+      "sha256": "1c03d8850ef8499cf1cb30f0c324958877527d24fd7bc65cf7b306d3de407e5f"
+    },
+    {
+      "id": "CP-0271",
+      "file": "images/sudoori/kanaya-weir.jpg",
+      "author": "運動会プロテインパワー",
+      "license": "CC BY-SA 4.0",
+      "licenseUrl": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source": "https://commons.wikimedia.org/wiki/File:Kanaya_weir.jpg",
+      "usage": "Original file; CSS crop; body and related/list cards only; historical illustration not a measured plan.",
+      "reviewed": "2026-10-24",
+      "sha256": "e063453e1b74e5fabaf5039eaa563a69890e92e067e2ec75b9dba02b6a69d4b5"
     }
   ]
 }

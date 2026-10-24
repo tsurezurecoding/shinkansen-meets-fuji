@@ -91,7 +91,7 @@ function localizeEnglishRail(html) {
           </span>
         </a>`;
   html = html.replace(/<!-- ja-only-sudoori-credit:start -->[\s\S]*?<!-- ja-only-sudoori-credit:end -->/g, '');
-  html = html.replace(/<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->/g, '');
+  html = html.replace(/[ \t]*<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->\r?\n?/g, '');
   let result = html.replace(/[ \t]*<!-- en-arenani-card[^>]*-->[\s\S]*?<!-- \/en-arenani-card -->\n?/g, arenaniCard + "\n");
   // 反射鉄の特集カードは、日本語の説明文ごと英語のカードに差し替える。
   const reflectionsCard = `        <a class="journey-intent-card journey-intent-family" href="en/reflections.html" data-cta-track="zukan_theme_click" data-cta-id="reflections">
