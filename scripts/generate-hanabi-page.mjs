@@ -270,7 +270,7 @@ const COPY = {
   "hb_credit19": "<p class=\"hb-credit\">Posted by <a href=\"https://x.com/bizen_akasaki/status/1687783339934068737\" target=\"_blank\" rel=\"noopener noreferrer\">@bizen_akasaki／see the original post</a></p>",
   "hb_atami_title": "<h3 id=\"hb-atami-title\">Atami Sea Fireworks</h3>",
   "hb_place5": "<p class=\"hb-place\">Atami Bay on Sagami Bay, Odawara to Atami</p>",
-  "copy32": "<p>Shells are fired from barges out on Atami Bay. After Odawara the Tokaido Shinkansen swings toward the Sagami Bay coast before reaching Atami &mdash; a stretch where the track runs unusually close to the water, threaded between the sea and the town.</p>",
+  "copy32": "<p>Fireworks are launched around Atami Port, over Atami Bay. After Odawara the Tokaido Shinkansen swings toward the Sagami Bay coast before reaching Atami &mdash; a stretch where the track runs unusually close to the water, threaded between the sea and the town.</p>",
   "copy33": "<p>What sets Atami apart is that it is <strong>not only a summer festival</strong>. Where most Japanese fireworks cluster into July and August, Atami holds displays through autumn and winter too, a dozen or more times a year, with different start times outside summer. Even a trip in a colder month can fall on a display night.</p>",
   "copy34": "<p>Our window spot for this stretch, &ldquo;Atami and Sagami Bay&rdquo;, is listed on the <strong>Seat A side</strong> &mdash; the left of the train when leaving Tokyo. Use it as a rough guide to which way the sea lies.</p>",
   "hb_related": "<p class=\"hb-related\"><a href=\"spots/odawara.html\">See the window spot: Atami and Sagami Bay</a></p>",
