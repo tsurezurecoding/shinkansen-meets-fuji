@@ -1,7 +1,7 @@
 /* 車窓の映画『147分』 — one dark auditorium; the train window is the screen. Single dark look by design. */
-@font-face { font-family: "WF Mincho"; font-style: normal; font-weight: 400 599; font-display: swap; src: url("fonts/window-film/wf-mincho-500.woff2") format("woff2"); }
-@font-face { font-family: "WF Mincho"; font-style: normal; font-weight: 600 900; font-display: swap; src: url("fonts/window-film/wf-mincho-700.woff2") format("woff2"); }
-@font-face { font-family: "WF Dot"; font-style: normal; font-weight: 400; font-display: swap; src: url("fonts/window-film/wf-dot-400.woff2") format("woff2"); }
+@font-face { font-family: "WF Mincho"; font-style: normal; font-weight: 400 599; font-display: swap; src: url("../../fonts/window-film/wf-mincho-500.woff2") format("woff2"); }
+@font-face { font-family: "WF Mincho"; font-style: normal; font-weight: 600 900; font-display: swap; src: url("../../fonts/window-film/wf-mincho-700.woff2") format("woff2"); }
+@font-face { font-family: "WF Dot"; font-style: normal; font-weight: 400; font-display: swap; src: url("../../fonts/window-film/wf-dot-400.woff2") format("woff2"); }
 /* Layout: one dark auditorium. The train window is the screen, the cabin wall is the house,
    and the player rail sits under it like the front row. Single dark world by design. */
 :root {
