@@ -9,6 +9,12 @@
     var route = config.canonicalRoute(new URL(canonical.href).pathname.slice(1));
     var lang = document.documentElement.lang;
     var depth = route.indexOf('spots/') === 0 ? (lang === 'ja' ? '../' : '../../') : (lang === 'ja' ? './' : '../');
+    // Visitor articles have no Japanese counterpart; their original English
+    // header omitted the old two-language switch entirely.
+    if (!document.querySelector('.lang-switch, .article-lang-menu') && (config.enOnly || []).indexOf(route) >= 0) {
+      var header = document.querySelector('.topbar');
+      if (header) { var host = document.createElement('div'); host.className = 'lang-switch'; header.appendChild(host); }
+    }
     document.querySelectorAll('.lang-switch, .article-lang-menu').forEach(function (host) {
       var menu = document.createElement('details');
       menu.className = 'guide-lang-menu article-lang-menu';

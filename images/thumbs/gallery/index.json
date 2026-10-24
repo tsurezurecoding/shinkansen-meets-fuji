@@ -519,14 +519,6 @@
     "quality": 72,
     "sha256": "1cac4563d74200cc3ee63f034a36ffb3d74bf4f34e0a09d5645611bba2868d66"
   },
-  "images/thumbs/gallery/20260530_kakegawa_castle.webp": {
-    "source": "images/20260530_kakegawa_castle.jpg",
-    "sourceSha256": "47638517b06103680ebd4666e9341e9136d49393b24d70efff8daeb65512165f",
-    "width": 264,
-    "height": 198,
-    "quality": 72,
-    "sha256": "e8d86bcaee47e8dfbf1ee844f8f660ade6ea004d7898e3196c7b4947d655075a"
-  },
   "images/thumbs/gallery/20260530_kirin_beer_factory_michikusa.webp": {
     "source": "images/20260530_kirin_beer_factory_michikusa.jpg",
     "sourceSha256": "9ed31bb39e6bdcc6b05276df036a8466c5f204a55db8f825fe21e30caf43bc4f",
@@ -1934,6 +1926,30 @@
     "height": 198,
     "quality": 72,
     "sha256": "6a926d3d1d7a5c22d1b85e59a0572a6b331cf857790d4c2af0339ee1131569d2"
+  },
+  "images/thumbs/gallery/20261013_kakegawa_castle_morning_michikusa.webp": {
+    "source": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "sourceSha256": "7ccfbc17a76cd5fde7f0c86075ce8eaebcab7daf12cd570cb8c1c92732db477f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b2c8cb8890c4f80fd4f33cfd34719e10fa015a5e71ab42f6b5f7e3a37e2e5d3b"
+  },
+  "images/thumbs/gallery/20261013_maibara_test_trains_michikusa.webp": {
+    "source": "images/20261013_maibara_test_trains_michikusa.jpg",
+    "sourceSha256": "ce5164f32a63f4dffeb31e5b7c7bfbdff4bd5cdbef9823d8e83c9aee8dbb4c7f",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a9d4d2173ba6cc8bb2e2b3e59ec0573ea460e6870581487f4fc251b25e4a425f"
+  },
+  "images/thumbs/gallery/20261013_toyohashi_tateiwa_727_michikusa.webp": {
+    "source": "images/20261013_toyohashi_tateiwa_727_michikusa.jpg",
+    "sourceSha256": "439649f4a2afd6db67d36ace68145c2efdb0734d00f0105d19a8b7e5cf970c83",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "76cc3e81cc15ae2173142057cbd20e1a222dc144b832dfe1860c89748e575f85"
   },
   "images/thumbs/gallery/20261018_fuji-sky-view_night_0_michikusa.webp": {
     "source": "images/20261018_fuji-sky-view_night_0_michikusa.jpg",

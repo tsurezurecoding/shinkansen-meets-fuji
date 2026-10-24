@@ -1,50 +1,50 @@
 {
   "zh-Hant": {
-    "lastmod": "2026-10-11",
-    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept). 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: reviewed corrected station timing and spot facts in translated guidance, with nine replaced Japanese/English recordings and updated durations.",
     "fingerprints": {
       "html": "59c4e4ab1ff5871ffd886a8047220d5fe52aad7df2422116a0885ad21408938e",
-      "narration": "ab0fa7172f350936a8433b9df1231c73685418ac682d656c9ea516009dc496bf"
+      "narration": "1da18fe8ff0bfcd6a081012c4688d893994f6fb198cab969125ca3f9195aefa4"
     }
   },
   "fr": {
-    "lastmod": "2026-10-11",
-    "reason": "First traveler-facing edition: translated controls and subtitles, existing English recordings. 2026-10-12: home link now opens the same-language TOP (no content change; lastmod kept). 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: reviewed corrected station timing and spot facts in translated guidance, with nine replaced Japanese/English recordings and updated durations.",
     "fingerprints": {
       "html": "534c2662ffabe7795c7f92a0de9b5c25e5dfca26b337af26b2e76f2e8f25004e",
-      "narration": "9f96624965cf6e0bf9c072c599579e94af049a9205207f7112e10ef93e7e3f24"
+      "narration": "a767c69504b7465a6d649565abbfd2b448a95071ab8cce8546aaaa2498f28e19"
     }
   },
   "de": {
-    "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: reviewed corrected station timing and spot facts in translated guidance, with nine replaced Japanese/English recordings and updated durations.",
     "fingerprints": {
       "html": "6607a79bddc8ce269c4cb83cbb04079ec1f83bc4c75558b2d3aed9d6ebeb8888",
-      "narration": "4010eed122ac26282335c84c34f512af9e50a328cfa8ecd6444496f2fc5dc836"
+      "narration": "7ee3e09315b2fa2a9ee8ab485d7570dacf4127b46ec19f1893f44251d643ebbe"
     }
   },
   "es": {
-    "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: reviewed corrected station timing and spot facts in translated guidance, with nine replaced Japanese/English recordings and updated durations.",
     "fingerprints": {
       "html": "d605318ba06192542bc8c2b51cbf0a68a8df0fb027f075411c1afbaebd731a60",
-      "narration": "3a0334fc0f374759a4f2f6b7d6f5d85c96db75c893a67fcb7b172a0348fd1ba6"
+      "narration": "4c6a16949dd8b5d525ca707bca0e4ef5cf05079513e762d548673d6ecf616515"
     }
   },
   "zh-Hans": {
-    "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: reviewed corrected station timing and spot facts in translated guidance, with nine replaced Japanese/English recordings and updated durations.",
     "fingerprints": {
       "html": "269b1152a337fed655c783455c4016d5531825eff89cf20c322a237443a931c8",
-      "narration": "b51cc86bcc52e9de53195ded9a24a7530545cd4cde44917c2aca3ee61db9dd89"
+      "narration": "9c1f5439abed63b52cbb85723504f49e58729223b6c3b23d8824ba7376005fb6"
     }
   },
   "ko": {
-    "lastmod": "2026-10-12",
-    "reason": "First complete traveler edition: translated controls and subtitles, shared calculations and existing English recordings. Explicit source-content review for this locale expansion. 2026-10-12: alpha badge and alpha note removed per owner decision (no guide behavior change; lastmod kept).",
+    "lastmod": "2026-10-24",
+    "reason": "COPY-FIX-1024: reviewed corrected station timing and spot facts in translated guidance, with nine replaced Japanese/English recordings and updated durations.",
     "fingerprints": {
       "html": "06d439ed69555649a928ea6299d079cc2d2f185c3d293ff01a1db58f66a5a677",
-      "narration": "4e6d5a6181d88edbd5ab7095b35649fef92373fdfb64c6db4c3bdc84162ada64"
+      "narration": "de9b347fb508db0a9739c8d6d7c828f02459d41fbfbec808effef4205f01c4a1"
     }
   }
 }

@@ -27,3 +27,15 @@ jobs:
           git diff --exit-code
           npm run build
           git diff --exit-code
+      - name: Stage verified checkout for Pages
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          mkdir "$RUNNER_TEMP/pages-site"
+          git archive HEAD | tar -x -C "$RUNNER_TEMP/pages-site"
+      - name: Save verified Pages candidate
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          name: pages-candidate-${{ github.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/pages-site
+          retention-days: 30

@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
-import { trainSearchTablesHTML } from "./shared/train-search-tables.mjs";
 import { CASTLE_LOCALE_ROUTES } from "./shared/castle-locales.mjs";
 import { supported } from "./shared/locales.mjs";
 
@@ -107,9 +106,8 @@ function routedSpotHref(spot, langKey) {
   return route.startsWith(sameDirectoryPrefix) ? route.slice(sameDirectoryPrefix.length) : `../${route}`;
 }
 
-function routedSpotUrl(spot) {
-  const route = spot.guideRoute?.en || spot.guideRoute?.ja;
-  return route ? `${SITE_ROOT}/${route}` : `${SITE_ROOT}/en/spots/${spot.id}.html`;
+function routedSpotUrl(spot, langKey) {
+  return new URL(routedSpotHref(spot, langKey), `${SITE_ROOT}/${LANGS[langKey].dir}/besides-fuji.html`).href;
 }
 
 const escapeHTML = (value) =>
@@ -243,13 +241,13 @@ const generated =
   hikariLinksHTML() +
   `\n      ${END}`;
 
-// The general Fuji guide links to the train selector. Keep the complete static
-// number index with that tool; the central page generator supplies its EN version.
+// Do not publish a static directory of parameterized train URLs.
+// Train selection and shared deep links remain available in the runtime.
 const TRAIN_START = "<!-- TRAIN-SEARCH-TABLE:START -->";
 const TRAIN_END = "<!-- TRAIN-SEARCH-TABLE:END -->";
 applyTo(path.join(appDir, "start.html"), TRAIN_START, TRAIN_END,
-  TRAIN_START + "\n" + trainSearchTablesHTML("ja") + "\n        " + TRAIN_END,
-  "Japanese train-search index");
+  TRAIN_START + "\n  " + TRAIN_END,
+  "Japanese train-search directory removal");
 
 // --- "Mt. Fuji is hidden" page: everything that does not need a clear horizon ---
 
@@ -312,7 +310,7 @@ function besidesItemListLd(langKey) {
     .slice()
     .sort((a, b) => a.minutesFromTokyo - b.minutesFromTokyo)
     .map((spot, index) => {
-      const spotUrl = routedSpotUrl(spot);
+      const spotUrl = routedSpotUrl(spot, langKey);
       return {
       "@type": "ListItem",
       position: index + 1,

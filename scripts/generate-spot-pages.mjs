@@ -1,5 +1,4 @@
 import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
-import { trainSearchTablesHTML } from './shared/train-search-tables.mjs';
 import { tokyoSightlineHead, tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
 import { fujimiSightlineHead, fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { withAndroidAppInvite } from './shared/android-app-invite.mjs';
@@ -165,10 +164,10 @@ const UI = {
       return `If you are traveling from Tokyo toward Shin-Osaka, start watching the ${window} as you approach ${enApproachArea(area)}. If you are traveling toward Tokyo, the order is reversed${flip}.`;
     },
     pointText: (name) => `${name} is one of the window views that make the Tokaido Shinkansen more than a transfer. The train moves fast, so visibility depends on weather, seat position, and timing.`,
-    sideA: "Seat A · left side toward Kyoto",
-    sideE: "Seat E · right side toward Kyoto",
+    sideA: "Seat A · left side toward Shin-Osaka; right side toward Tokyo",
+    sideE: "Seat E · right side toward Shin-Osaka; left side toward Tokyo",
     sideBoth: "Both sides",
-    hamanakoSide: "Seat A · left / Seat E · right (toward Kyoto)",
+    hamanakoSide: "Seat A · left / Seat E · right (toward Shin-Osaka; reversed toward Tokyo)",
     minutes: (m) => Number.isFinite(Number(m)) ? `About ${Math.round(m)} minutes after leaving Tokyo on a Nozomi train` : "Timing varies by train",
     relatedPrev: "Previous",
     relatedNext: "Next",
@@ -359,7 +358,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       "mikawa-oshima": "三河大島", "nichiban-anjo": "CELLOTAPE牆面看板",
       "nagoya-station-skyline": "名古屋站前天際線", "kirin-beer-factory": "麒麟啤酒工廠",
       kiyosu: "清洲城", "solar-ark": "Solar Ark太陽能設施", "gifu-castle": "岐阜城",
-      kinshozan: "金生山", "nangu-taisha": "南宮大社大鳥居", ibuki: "伊吹山", "ibuki-seat-a": "A席から見る伊吹山",
+      kinshozan: "金生山", "nangu-taisha": "南宮大社大鳥居", ibuki: "伊吹山", "ibuki-seat-a": "A座看伊吹山",
       "sawayama-castle": "佐和山城跡", "hikone-castle": "彦根城", "kannonji-castle": "觀音寺城跡",
       "omi-fuji": "近江富士", "seta-karahashi": "瀨田唐橋", toji: "東寺五重塔", "rakusai-egg-tanks": "洛西淨化中心蛋形消化槽", "edo-castle-fujimi-yagura": "江戶城富士見櫓", "kaguya-no-akari": "輝夜之燈配水塔", "yamazaki-distillery": "三得利山崎蒸溜所",
       "torikai-train-depot": "鳥飼新幹線車輛基地",
@@ -1417,7 +1416,7 @@ function englishLandingHTML() {
     ["まず40景を見てみる", `Browse all ${SPOT_COUNT} views`],
     ["写真と解説で景色を探す", "Explore views in photos and stories"],
     ["時刻は目安です（列車を選ばない場合はのぞみ基準）。列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are estimates (Nozomi-based until you choose a train); visibility varies by train, weather, and seat. Start watching a little early."],
-    ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
+    ["時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。", "Times use your selected train’s timetable; the unselected sample uses Nozomi times. Visibility varies by weather and seat. Start watching a little early."],
     ["道草 / Michikusa — 急がない旅と、偶然の発見を。", "Michikusa — Slow travel and unexpected discoveries."],
     ["富士山の見方", "How to See Mt. Fuji"],
     ["車窓リンク集", "Window View Links"],
@@ -1628,7 +1627,7 @@ function englishAppIndexHTML() {
     ["見どころの時刻と座席側を調べます。", "Check when and which side to watch."],
     ["次に見る案内", "Recommended next steps"],
     ["運転日と、車窓で出会う目安を確認。", "Check operating dates and window-side estimates."],
-    ["長岡・淀川・熱海など沿線7大会の目撃記録。", "Sightings from 7 fireworks events along the route, including Nagaoka, Yodogawa, and Atami."],
+    ["長岡・淀川・熱海など沿線8大会の目撃記録。", "Sightings from 8 fireworks events along the route, including Nagaoka, Yodogawa, and Atami."],
     ["どこから暗くなるか、夜だけの車窓11景。", "11 nighttime scenes showing where darkness begins."],
     ["東京〜新大阪の沿線で727看板を集める", "Collect 727 signs along the Tokyo–Shin-Osaka route."],
     ["無料・登録不要。Google Playで公開中。", "Free, no registration. Available on Google Play."],
@@ -1652,7 +1651,7 @@ function englishAppIndexHTML() {
     ["この時間の列車をさがす", "Find trains for this time"],
     ["これはサンプルです", "This is a sample"],
     ["左のフォームで列車を選ぶと、あなたの列車に合わせたタイムラインに切り替わります。", "Choose a train on the left to see its timed window guide."],
-    ["時刻はのぞみ基準の目安です。すこし前から窓の外を意識してみてください。", "Times are estimates based on Nozomi trains. Start watching a little early."],
+    ["時刻は目安です。列車を選ぶと停車時刻を基に計算します。少し早めに窓の外を見てください。", "Times are estimates. Choose a train to use its timetable. Start watching a little early."],
     ["タイムラインフィルタ", "Timeline filters"],
     ["お気に入り・座席側", "Favorites and seat side"],
     ["時間帯", "Time of day"],
@@ -1682,7 +1681,7 @@ function englishAppIndexHTML() {
     ["使い方と楽しみ方を30秒で紹介。", "See how the guide works in 30 seconds."],
     ["出典や参考記事をまとめて読む。", "Browse sources and useful articles about the route."],
     ["写真提供、情報の訂正、ご感想はこちら。", "Send a photo, suggest a correction, or share feedback."],
-    ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
+    ["時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。", "Times use your selected train’s timetable; the unselected sample uses Nozomi times. Visibility varies by weather and seat. Start watching a little early."],
     ["富士山の見方", "How to See Mt. Fuji"],
     ["新幹線の窓とは？", "About Shinkansen Window"],
     ["車窓をもっと楽しむ", "More ways to enjoy the window"],
@@ -1721,9 +1720,9 @@ function englishAppIndexHTML() {
     .replace('<body>', '<body data-language-route="en">\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>');
   selectorCopy.sort((a, b) => b[0].length - a[0].length).forEach(([from, to]) => { html = html.replaceAll(from, to); });
   html = html.replace(/<!-- TRAIN-ENTRY-HELP:START -->[\s\S]*?<!-- TRAIN-ENTRY-HELP:END -->/, `<!-- TRAIN-ENTRY-HELP:START -->
-    <div class="train-entry-help"><p>Viewing times are estimates from the timetable. Operating dates and live delays are not reflected.</p><a href="en/guide.html#seat">Which seat for Mt. Fuji? →</a><p>For today’s clouds and haze, <a href="en/mieru.html">check the visibility forecast</a>. A passing time is not a promise of a clear view.</p><noscript><p>Enable JavaScript to choose your train, or use the train-number list below for Mt. Fuji estimates.</p></noscript></div>
+    <div class="train-entry-help"><p>Viewing times are estimates from the timetable. Operating dates and live delays are not reflected.</p><a href="en/guide.html#seat">Which seat for Mt. Fuji? →</a><p>For today’s clouds and haze, <a href="en/mieru.html">check the visibility forecast</a>. A passing time is not a promise of a clear view.</p><noscript><p>Enable JavaScript to choose your train.</p></noscript></div>
     <!-- TRAIN-ENTRY-HELP:END -->`);
-  html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n${trainSearchTablesHTML("en")}\n<!-- TRAIN-SEARCH-TABLE:END -->`);
+  html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n\n<!-- TRAIN-SEARCH-TABLE:END -->`);
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
   return withUtilityLocales(syncSpotCountClaims(html), 'en/start.html');
@@ -1861,9 +1860,11 @@ function sitemapXML() {
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
+    { loc: `${siteRoot}/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/everyday-japan.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/tokyo-kyoto-stations.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-10" },
     { loc: `${siteRoot}/en/beer-on-shinkansen.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-07" },
     { loc: `${siteRoot}/en/drinks.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-04" },
@@ -1950,7 +1951,9 @@ function sitemapXML() {
     priority: "0.6", changefreq: "monthly", lastmod: "2026-10-03"
   })));
   const utilityLiveState = JSON.parse(fs.readFileSync(path.join(appDir, 'scripts/utility-live-sitemap-state.json'), 'utf8'));
-  const episodeUrls = Object.entries(episodes).flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-12" })));
+  const episodeUrls = Object.entries(episodes)
+    .filter(([route]) => !SPOTS.some(spot => spot.guidePageId && spot.guidePageId !== spot.id && route === `spots/${spot.id}.html`))
+    .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
   const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const urls = [...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
@@ -2158,13 +2161,16 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
   const target = path.join(appDir, file);
   writeFileIfChanged(target, enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir));
 }
-writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
+writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML().replace(/\/(somato|sumie|window-trip|window-film)\.html/g,'/artworks/$1/index.html'));
 
+await import("./generate-food-country-ja.mjs");
+await import("./generate-utility-locales.mjs");
+// Article snapshots hash their locale payload; write it before reading its version.
 await import("./generate-castle-locales.mjs");
 await import("./generate-mieru-page.mjs");
-await import("./generate-utility-locales.mjs");
 await import("./generate-sparkling-locales.mjs");
 await import("./generate-guide-locale-routes.mjs");
+await import("./generate-drinks-locales.mjs");
 await import("./generate-android-app-invites.mjs");
 await import("./generate-content-manifest.mjs");
 

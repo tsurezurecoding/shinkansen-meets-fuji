@@ -22,6 +22,8 @@ const canonicalSpotIdOf = (id) => {
   return spot && spot.guidePageId && spot.guidePageId !== spot.id ? spot.guidePageId : id;
 };
 const pairs = [
+  ["/foods.html", "/en/foods.html"],
+  ["/countryside.html", "/en/countryside.html"],
   ...SANYO_DETAIL_CASTLES.map(castle => [`/spots/${castle.id}.html`, `/en/spots/${castle.id}.html`]),
   ["/ferris-wheels.html", "/en/ferris-wheels.html"],
   ["/castles.html", "/en/castles.html"],
@@ -31,9 +33,9 @@ const pairs = [
   ["/journal.html", "/en/journal.html"],
   ["/mieru.html", "/en/mieru.html"],
   ["/window-artworks.html", "/en/window-artworks.html"],
-  ["/window-film.html", "/en/window-film.html"],
-  ["/sumie.html", "/en/sumie.html"],
-  ["/somato.html", "/en/somato.html"],
+  ["/artworks/window-film/index.html", "/en/artworks/window-film/index.html"],
+  ["/artworks/sumie/index.html", "/en/artworks/sumie/index.html"],
+  ["/artworks/somato/index.html", "/en/artworks/somato/index.html"],
   ["/guide.html", "/en/guide.html"],
   ["/contact.html", "/en/contact.html"],
   ["/android-app.html", "/en/android-app.html"],
@@ -174,8 +176,8 @@ for (const [jaPath, enPath] of [["/start.html", "/en/start.html"]]) {
     if (!hasAlternate(html, "ja", jaPath) || !hasAlternate(html, "en", enPath) || !hasAlternate(html, "x-default", enPath)) {
       errors.push(`${urlPath}: train-search language alternates are incomplete`);
     }
-    if (!html.includes('id="trainTimes"') || !html.includes('id="fujiTrainAnswer"')) {
-      errors.push(`${urlPath}: train-search static index or Fuji answer slot is missing`);
+    if (!html.includes('data-train-picker') || !html.includes('id="fujiTrainAnswer"')) {
+      errors.push(`${urlPath}: train picker or Fuji answer slot is missing`);
     }
     if (!html.includes('id="journey"')) {
       errors.push(`${urlPath}: train selector journey anchor is missing`);

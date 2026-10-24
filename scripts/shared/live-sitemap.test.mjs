@@ -50,14 +50,15 @@ test("CLI catches stale content and stale sitemap; explicit language review repa
     assert.match(stale.stderr, /html changed since lastmod review/);
     const stateFile = path.join(temporaryDirectory, "scripts/live-sitemap-state.json");
     const before = JSON.parse(fs.readFileSync(stateFile, "utf8"));
-    assert.equal(run("--record", "2026-10-08", "--reason", "Updated landing explanation", "--lang", "ja").status, 0);
+    const reviewedDate = new Date(Date.parse(`${before.ja.lastmod}T00:00:00Z`) + 86400000).toISOString().slice(0, 10);
+    assert.equal(run("--record", reviewedDate, "--reason", "Updated landing explanation", "--lang", "ja").status, 0);
     const after = JSON.parse(fs.readFileSync(stateFile, "utf8"));
     assert.deepEqual(after.en, before.en);
     assert.match(run().stderr, /sitemap lastmod does not match/);
     const sitemapFile = path.join(temporaryDirectory, "sitemap.xml");
-    fs.writeFileSync(sitemapFile, fs.readFileSync(sitemapFile, "utf8").replace(/(<loc>https:\/\/www\.michikusa-travel\.com\/live\/<\/loc>\s*<lastmod>)2026-10-07/, "$12026-10-08"));
+    fs.writeFileSync(sitemapFile, fs.readFileSync(sitemapFile, "utf8").replace(/(<loc>https:\/\/www\.michikusa-travel\.com\/live\/<\/loc>\s*<lastmod>)[^<]+/, (_, prefix) => prefix + reviewedDate));
     assert.equal(run().status, 0);
-    assert.notEqual(run("--record", "2026-08-16", "--reason", "Wrong earlier date").status, 0);
+    assert.notEqual(run("--record", before.ja.lastmod, "--reason", "Wrong earlier date", "--lang", "ja").status, 0);
   } finally {
     fs.rmSync(temporaryDirectory, { recursive: true, force: true });
   }

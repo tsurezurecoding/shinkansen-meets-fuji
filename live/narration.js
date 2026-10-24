@@ -86,8 +86,8 @@ var NARRATIONS = {
         "speechText": "まもなく多摩川を渡ります。E席側に見える青いアーチが丸子橋です。初代は昭和9年、「丸子の渡し」と呼ばれた渡し舟に代わって架けられた橋です。橋の奥の緑は、古代の首長が眠る亀甲山古墳の森です。ビル街から川の景色へ変わる、旅の序盤の小さな見せ場です。"
       },
       "en": {
-        "text": "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge here opened in 1934, replacing an old ferry crossing known as the Maruko Ferry. Film fans may recognize this stretch of the river as the defense line in Shin Godzilla. The wooded rise beyond the bridge hides Kamenokoyama Kofun, an ancient burial mound. From city blocks to open water — the journey's first little scene change.",
-        "durationSec": 36
+        "text": "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge here opened in 1935, replacing an old ferry crossing known as the Maruko Ferry. Film fans may recognize this stretch of the river as the defense line in Shin Godzilla. The wooded rise beyond the bridge hides Kamenokoyama Kofun, an ancient burial mound. From city blocks to open water — the journey's first little scene change.",
+        "durationSec": 31.152
       }
     },
     "up": {
@@ -97,8 +97,8 @@ var NARRATIONS = {
         "speechText": "まもなく多摩川を渡ります。E席側の窓に見える青いアーチが丸子橋です。初代は昭和9年、「丸子の渡し」と呼ばれた渡し舟に代わって架けられた橋です。新横浜を出て、東京の街へ近づく手前の小さな見せ場です。"
       },
       "en": {
-        "text": "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge opened in 1934, replacing the old Maruko Ferry. This stretch of the river also appears as the defense line in Shin Godzilla. After Shin-Yokohama, it is a small scene change before the train slips back toward Tokyo.",
-        "durationSec": 28
+        "text": "We're about to cross the Tama River. On the Seat E side, look for the blue arch of Maruko Bridge. The first bridge opened in 1935, replacing the old Maruko Ferry. This stretch of the river also appears as the defense line in Shin Godzilla. After Shin-Yokohama, it is a small scene change before the train slips back toward Tokyo.",
+        "durationSec": 23.952
       }
     }
   },
@@ -509,22 +509,22 @@ var NARRATIONS = {
   "nichiban-anjo": {
     "down": {
       "ja": {
-        "text": "まもなくセロテープの壁看板です。三河安城の少し手前で、E席側にニチバン安城工場の大きな壁看板が見えてきます。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。",
-        "durationSec": 13
+        "text": "まもなくセロテープの壁看板です。三河安城を出て、または通過してすぐ、E席側にニチバン安城工場の大きな壁看板が見えてきます。赤、白、青のセロテープ広告が工場の壁いっぱいに現れる、東海道新幹線らしい沿線の発見です。",
+        "durationSec": 22.944
       },
       "en": {
-        "text": "CELLOTAPE Wall Sign is coming up on the Seat E side, around Around Mikawa-Anjo. A giant tape sign. On trains from Tokyo toward Nagoya, the large CELLOTAPE wall sign at the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo.",
-        "durationSec": 24
+        "text": "CELLOTAPE Wall Sign is coming up on the Seat E side, just after leaving or passing Mikawa-Anjo toward Shin-Osaka. Look for the huge red-and-blue CELLOTAPE brand mark painted across the wall of the Nichiban Anjo Factory.",
+        "durationSec": 14.304
       }
     },
     "up": {
       "ja": {
-        "text": "東京方面へ向かう場合は、三河安城を出てすぐ、E席側にセロテープの壁看板が見えてきます。ニチバン安城工場の壁いっぱいに、赤、白、青の広告が大きく現れます。ただの広告なのに、妙に記憶に残る車窓です。",
-        "durationSec": 13
+        "text": "東京方面へ向かう場合は、三河安城に着く、または通過する直前、E席側にセロテープの壁看板が見えてきます。ニチバン安城工場の壁いっぱいに、赤、白、青の広告が大きく現れます。ただの広告なのに、妙に記憶に残る車窓です。",
+        "durationSec": 23.28
       },
       "en": {
-        "text": "Heading toward Tokyo, CELLOTAPE Wall Sign appears on the Seat E side. A giant tape sign. On trains from Tokyo toward Nagoya, the large CELLOTAPE wall sign at the Nichiban Anjo Factory appears on the Seat E side shortly before Mikawa-Anjo. In the opposite direction, look just after Mikawa-Anjo.",
-        "durationSec": 23
+        "text": "Heading toward Tokyo, look on the Seat E side just before arriving at or passing Mikawa-Anjo for the CELLOTAPE wall sign. The huge red-and-blue brand mark covers the wall of the Nichiban Anjo Factory.",
+        "durationSec": 13.152
       }
     }
   },
@@ -597,12 +597,12 @@ var NARRATIONS = {
   "solar-ark": {
     "down": {
       "ja": {
-        "text": "まもなくソーラーアークです。名古屋を出て清洲城を過ぎ、岐阜羽島へ近づくころ、E席側に巨大な弧を描く建物が現れます。かつて三洋電機、現在のパナソニックによって建てられた太陽光発電モニュメントです。",
-        "durationSec": 13
+        "text": "まもなくソーラーアークです。岐阜羽島を出て、または通過してすぐ、E席側に巨大な弧を描く建物が現れます。かつて三洋電機、現在のパナソニックによって建てられた太陽光発電モニュメントです。",
+        "durationSec": 18.504
       },
       "en": {
-        "text": "Solar Ark is coming up on the Seat E side, around Nagoya → Gifu-Hashima. A giant solar ship, out of nowhere. After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.",
-        "durationSec": 31
+        "text": "Solar Ark is coming up on the Seat E side, around Gifu-Hashima → Maibara. A giant solar ship, out of nowhere. Just after leaving or passing Gifu-Hashima toward Shin-Osaka, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.",
+        "durationSec": 29.016
       }
     },
     "up": {
@@ -611,8 +611,8 @@ var NARRATIONS = {
         "durationSec": 14
       },
       "en": {
-        "text": "Heading toward Tokyo, Solar Ark appears on the Seat E side. A giant solar ship, out of nowhere. After Nagoya and Kiyosu Castle, as the train approaches Gifu-Hashima, the Solar Ark sweeps into view on the Seat E side: a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.",
-        "durationSec": 30
+        "text": "Heading toward Tokyo, look to the Seat E side just before arriving at or passing Gifu-Hashima for Solar Ark, a huge dark arc beside the line. Built in Anpachi, Gifu by Sanyo Electric, now part of Panasonic, it is a 315-meter-long, 37-meter-tall solar power monument.",
+        "durationSec": 20.4
       }
     }
   },

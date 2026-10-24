@@ -1,4 +1,6 @@
 .countryside-page{background:var(--paper)}
+.countryside-page>.skip-link{position:fixed;top:8px;left:12px;z-index:300;max-width:calc(100% - 24px);padding:10px 16px;background:var(--paper);color:var(--ink);transform:translateY(calc(-100% - 12px))}
+.countryside-page>.skip-link:focus{transform:none}
 .countryside-hero{max-width:1200px;margin:0 auto;padding:64px 28px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:40px;align-items:center}
 .countryside-hero h1{font:600 clamp(32px,3.8vw,52px)/1.12 var(--font-serif);letter-spacing:-.02em;margin:16px 0 24px}
 .countryside-hero-copy>p:not(.eyebrow){font-size:17px;line-height:1.8;color:var(--ink-soft)}

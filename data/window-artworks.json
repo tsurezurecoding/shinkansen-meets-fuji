@@ -3,17 +3,17 @@
     {
       "id": "window-film",
       "status": "published",
-      "route": "window-film.html",
+      "route": "artworks/window-film/index.html",
       "image": "images/og-window-film.jpg",
       "ja": {
         "title": "車窓の映画『147分』",
         "medium": "80秒の紹介映像",
-        "description": "車窓は、一時停止も巻き戻しもできない147分の映画。だから、ネタバレしよう。入場券から全58景のエンドロールまで、新幹線の窓を映画の文法で紹介します。"
+        "description": "車窓は、一時停止も巻き戻しもできない147分の映画。だから、ネタバレしよう。入場券から全59景のエンドロールまで、新幹線の窓を映画の文法で紹介します。"
       },
       "en": {
         "title": "Film “147 Minutes”",
         "medium": "An 80-second film",
-        "description": "The Shinkansen window is a 147-minute film you can’t pause or rewind. So let’s spoil it. From the ticket to end credits for 58 views, Shinkansen Window told as a film."
+        "description": "The Shinkansen window is a 147-minute film you can’t pause or rewind. So let’s spoil it. From the ticket to end credits for 59 views, Shinkansen Window told as a film."
       }
     },
     {
@@ -22,7 +22,7 @@
       "languages": [
         "ja"
       ],
-      "route": "window-trip.html",
+      "route": "artworks/window-trip/index.html",
       "image": "images/og-window-trip.png",
       "ja": {
         "title": "車窓を、つないで。",
@@ -31,9 +31,24 @@
       }
     },
     {
+      "id": "memory-express",
+      "status": "published",
+      "languages": [
+        "ja"
+      ],
+      "webOnly": true,
+      "route": "artworks/memory-express/index.html",
+      "image": "artworks/memory-express/cover.png",
+      "ja": {
+        "title": "記憶特急",
+        "medium": "70秒の3D作品",
+        "description": "新幹線が架空の街を駆け、米原・豊橋・掛川で撮った3枚の車窓写真へ。あの日の窓をくぐる、小さな記憶の旅。"
+      }
+    },
+    {
       "id": "somato",
       "status": "published",
-      "route": "somato.html",
+      "route": "artworks/somato/index.html",
       "image": "images/og-somato-window.jpg",
       "ja": {
         "title": "車窓走馬灯",
@@ -49,7 +64,7 @@
     {
       "id": "sumie",
       "status": "published",
-      "route": "sumie.html",
+      "route": "artworks/sumie/index.html",
       "image": "images/og-sumie-window.jpg",
       "ja": {
         "title": "墨絵車窓",

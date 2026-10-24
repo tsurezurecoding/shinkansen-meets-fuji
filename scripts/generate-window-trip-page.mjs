@@ -1,3 +1,4 @@
+import {writeArtwork} from './shared/artwork-layout.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -14,5 +15,5 @@ let html=`<!doctype html>
 `;
 html=html.replace('<meta name="twitter:card"', '<meta property="og:image:alt" content="富士山の車窓写真と地図を一緒に眺める「車窓を、つないで。」の画面"><meta name="twitter:card"');
 html=enhanceContentHead(html,'window-trip.html',root);
-const target=path.join(root,'window-trip.html'),old=fs.existsSync(target)?fs.readFileSync(target,'utf8'):'';if(old!==html){if(process.argv.includes('--check'))throw Error('window-trip.html is stale');fs.writeFileSync(target,html);}
+writeArtwork(root,'window-trip.html',html,process.argv.includes('--check'));
 console.log('Window trip page: generated with shared site header and footer.');

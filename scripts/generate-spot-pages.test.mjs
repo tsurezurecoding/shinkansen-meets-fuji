@@ -36,7 +36,12 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  assert.equal(Object.keys(CONTENT_METADATA).length, 94);
+  assert.equal(Object.keys(CONTENT_METADATA).length, 124);
+  for (const file of ['zh-Hant/spots/fuji.html','es/spots/fuji.html','de/yakei.html','fr/yakei.html','zh-Hant/yakei.html']) {
+    assert.equal(CONTENT_METADATA[file].modified, '2026-10-20');
+    assert.equal(CONTENT_METADATA[file].published, undefined, 'local translation dates must not assert publication');
+    assert.match(CONTENT_METADATA[file].modifiedEvidence, /unpublished branch/);
+  }
   assert.equal(CONTENT_METADATA['en/foods.html'].article, true);
   assert.equal(CONTENT_METADATA['en/everyday-japan.html'].kind, 'collection');
   assert.equal(CONTENT_METADATA['en/everyday-japan.html'].article, false);
@@ -165,42 +170,8 @@ import {
   writeChangedSpotPagePlans,
 } from "./generate-spot-pages.mjs";
 
-test("Train search is indexable with a bilingual static train index and valid service links", () => {
+test("Train search remains indexable and guides link to the dynamic selector", () => {
   const read = (file) => fs.readFileSync(new URL(`../${file}`, import.meta.url), "utf8");
-  const en = new JSDOM(read("en/start.html"), { url: "https://www.michikusa-travel.com/en/start.html", runScripts: "outside-only" });
-  const ja = new JSDOM(read("start.html")).window.document;
-  const doc = en.window.document;
-  const rows = [...doc.querySelectorAll("#trainTimes tbody tr")];
-  const jaRows = [...ja.querySelectorAll("#trainTimes tbody tr")];
-  assert.ok(rows.length > 500, "all train types and directions must be present without JS");
-  assert.equal(rows.length, jaRows.length);
-  assert.equal(doc.querySelectorAll("#trainTimes .ja-train-list").length, 6);
-  assert.equal(doc.querySelector('link[rel="canonical"]').href, doc.URL);
-  assert.ok(!doc.querySelector('meta[name="robots"]')?.content.includes("noindex"));
-  assert.ok(!/[\u3040-\u30ff\u3400-\u9fff]/.test(doc.querySelector("#trainTimes").textContent));
-  const context = { window: {} };
-  vm.runInNewContext(read("data/timetable.js"), context);
-  vm.runInNewContext(read("train-select.js"), context);
-  const { ROUTE } = vm.runInNewContext(read("data.js") + "\n;({ROUTE});", {});
-  const table = context.window.SHINKANSEN_TIMETABLE;
-  const selection = context.window.MADO_TRAIN_SELECT;
-  const keys = new Set();
-  rows.forEach((row, index) => {
-    const link = row.querySelector("a");
-    const url = new URL(link.href);
-    assert.equal(url.pathname, "/en/start.html");
-    assert.equal(url.search, new URL(jaRows[index].querySelector("a").getAttribute("href"), doc.URL).search);
-    assert.equal(row.dataset.fujiMin, jaRows[index].dataset.fujiMin);
-    assert.equal(row.lastElementChild.textContent, jaRows[index].lastElementChild.textContent);
-    const [type, number] = url.searchParams.get("train").split("-");
-    const direction = url.searchParams.get("dir");
-    const candidates = selection.trainCandidates(table, ROUTE, direction, url.searchParams.get("board"));
-    assert.ok(candidates.some(({ tr }) => tr.type === type && String(tr.number) === number), link.textContent);
-    const key = `${type}-${number}-${direction}`;
-    assert.ok(!keys.has(key), `duplicate service ${key}`);
-    keys.add(key);
-    assert.equal(link.textContent, `${type} ${number}`);
-  });
   const start = new JSDOM(read("en/start.html")).window.document;
   assert.equal(start.documentElement.lang, "en");
   assert.ok(!start.querySelector('meta[name="robots"]').content.includes("noindex"));
@@ -210,7 +181,7 @@ test("Train search is indexable with a bilingual static train index and valid se
     assert.equal(guide.querySelectorAll("#trainTimes tbody tr").length, 0);
     assert.ok(guide.querySelector('#trainTimes a[href*="focus=fuji"]'));
   }
-  en.window.close();
+
 });
 
 test("unchanged spot page plans do not invoke the writer", () => {
