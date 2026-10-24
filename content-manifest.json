@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0a2532bb37a85373",
+  "contentVersion": "210db612bcd8d85d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2125,8 +2125,8 @@
     {
       "path": "images/tokyo-sightline-tower-preview.png",
       "url": "https://www.michikusa-travel.com/images/tokyo-sightline-tower-preview.png",
-      "bytes": 158298,
-      "sha256": "d7ca66fd807ccad2030ec24ccdaf9d9a3475eedbcb0eb0ed832728838424d372"
+      "bytes": 110918,
+      "sha256": "282c67a6e324d340e48b3a8f184b58027d9ab9a1fcaf358266a885560ccf097a"
     },
     {
       "path": "images/window-trip-card.webp",
