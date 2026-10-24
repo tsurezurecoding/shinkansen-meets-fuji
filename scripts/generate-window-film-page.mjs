@@ -1,3 +1,4 @@
+import {writeArtwork, artworkAsset} from './shared/artwork-layout.mjs';
 // 車窓の映画『147分』(window-film.html / en/window-film.html) と、その実行データ window-film-data.js を生成する。
 // 景色の名前・席側・分数・出番秒数・フック文は data.js、通過時刻は data/timetable.js ののぞみ1号（東京6:00発）を
 // 列車検索と同じ interpolateSpot で補間する。映像の演出と文言は window-film.js、見た目は window-film.css。
@@ -171,6 +172,8 @@ ${ANALYTICS.withEmbeddedGuard}
 
 let changed = 0;
 function write(file, content) {
+  if (/^(en\/)?window-film\.html$/.test(file)) { writeArtwork(root,file,content,check); return; }
+  file=artworkAsset(file);
   const target = path.join(root, file);
   const old = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
   if (old === content) return;

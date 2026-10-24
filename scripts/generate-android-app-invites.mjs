@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {withPageAndroidAppInvite,invitePageConfig} from './shared/android-app-invite.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const dirs=['','spots','live','sudoori',...['en','fr','de','es','ko','zh-Hant','zh-Hans'].flatMap(l=>[l,l+'/spots',l+'/live'])];
+const dirs=['artworks/somato','artworks/sumie','artworks/window-trip','artworks/window-film','en/artworks/somato','en/artworks/sumie','en/artworks/window-film','','spots','live','sudoori',...['en','fr','de','es','ko','zh-Hant','zh-Hans'].flatMap(l=>[l,l+'/spots',l+'/live'])];
 let count=0,changed=0;
 for(const dir of dirs){
  const folder=path.join(root,dir);if(!fs.existsSync(folder))continue;

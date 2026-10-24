@@ -18,6 +18,9 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "memory-express.html",
+  ...await walkFiles("artworks", p => /\.(?:html|js|css|txt|png)$/.test(p)),
+  ...await walkFiles("en/artworks", p => /\.html$/.test(p)),
   "images/fuji-guide-hero.webp",
   "journey-light-model.js", "journey-light-events.js", "journey-light-events.css",
   "727-collection.css", "images/727-hero-wide.webp", "images/727-hero-mobile.webp",
@@ -29,8 +32,7 @@ const contentFiles = [
   ...Object.entries(episodes).flatMap(([route, langs]) => langs.map(lang => `${lang}/${route}`)),
   "zukan-hero.css",
   "fujikawa-frequency.css",
-  "images/og-window-trip.png", "images/window-trip-card.webp", "window-trip.html", "window-trip.js", "window-trip.css", "window-trip-base.css", "window-trip-stage.js", "window-trip-data.js", "window-trip-map.js", "data/window-trip-photo-sources.json",
-  ...await walkFiles("window-trip-assets", p => /\.png$/.test(p)),
+  "images/og-window-trip.png", "images/window-trip-card.webp", "window-trip.html", "data/window-trip-photo-sources.json",
   ...CASTLE_LOCALE_LANGS.flatMap(lang => CASTLE_LOCALE_ROUTES.map(route => `${lang}/${route}`)),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => [...UTILITY_ROUTES.map(route => `${lang}/${route}`), `${lang}/utility-data.js`]),
   ...CASTLE_LOCALE_LANGS.flatMap(lang => [...EXTRA_LOCALE_ROUTES.map(route => `${lang}/${route}`), `${lang}/sparkling-data.js`]),

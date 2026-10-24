@@ -118,6 +118,18 @@ for (const f of htmlFiles) {
   const head = headOf(src);
   if (!head) { add('no-head', f, 'no <head> block found'); continue; }
 
+  // Retired artwork URLs are navigation documents, not duplicate content pages.
+  // Require the exact same-language destination and query/hash preservation.
+  if (/^(en\/)?(?:somato|sumie|window-trip|window-film|memory-express)\.html$/.test(f)) {
+    const target=f.replace(/([^/]+)\.html$/, 'artworks/$1/index.html');
+    const relative=target.replace(/^en\//,'');
+    if (linkHref(head,'canonical') !== ORIGIN + '/' + target || !fileSet.has(target) ||
+        !src.includes('url='+relative) || !src.includes('location.search+location.hash')) {
+      add('artwork-redirect-invalid',f,'Expected existing same-language destination '+target+' and preserved query/hash');
+    }
+    continue;
+  }
+
   const base = (() => {
     const t = tags(head, 'base')[0];
     return t ? attr(t, 'href') : null;

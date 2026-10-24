@@ -1,3 +1,4 @@
+import {artworkAsset} from './shared/artwork-layout.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
@@ -37,7 +38,7 @@ const coverage=source.map(s=>{const included=scenery.find(x=>x.id===s.id),alias=
 const refs=new Map(Array.from(ctx.route.refStations,s=>[s.id,s]));
 const stops=[...scenery,...boards].sort((a,b)=>a.km-b.km);assert.equal(new Set(stops.map(s=>s.id)).size,stops.length);
 const counts={scenery:scenery.length,boards:boards.length,dayScenery:scenery.filter(s=>s.photosByLight.day).length,nightScenery:scenery.filter(s=>s.photosByLight.night).length};
-const data={points:Array.from(track.points,({lat,lng,km})=>({lat,lng,km})),stations:Array.from(track.points).filter(p=>p.st).map(p=>({id:p.st,ja:refs.get(p.st)?.ja||p.st,lat:p.lat,lng:p.lng,km:p.km})),stops,totalKm:track.totalKm,trainSprite:'window-trip-assets/train.png',counts,sourceRegistryCoverage:{total:source.length,includedScenery:scenery.length,items:coverage},exclusions:plan.excluded};
+const data={points:Array.from(track.points,({lat,lng,km})=>({lat,lng,km})),stations:Array.from(track.points).filter(p=>p.st).map(p=>({id:p.st,ja:refs.get(p.st)?.ja||p.st,lat:p.lat,lng:p.lng,km:p.km})),stops,totalKm:track.totalKm,trainSprite:'artworks/window-trip/assets/train.png',counts,sourceRegistryCoverage:{total:source.length,includedScenery:scenery.length,items:coverage},exclusions:plan.excluded};
 const outputs={'window-trip-data.js':'// Generated from registered owner photos and current route positions.\nwindow.FLIGHT_DATA = '+JSON.stringify(data)+';\n','data/window-trip-photo-sources.json':JSON.stringify({reviewed:plan.reviewed,counts,coverage,photos,mapCredit:'地理院タイル（淡色地図を加工）',sourceHashes:Object.fromEntries(['data.js','track.js'].map(p=>[p,sha(fs.readFileSync(path.join(root,p)))]))},null,2)+'\n'};
-for(const [file,content]of Object.entries(outputs)){const target=path.join(root,file),old=fs.existsSync(target)?fs.readFileSync(target,'utf8'):'';if(old===content)continue;if(process.argv.includes('--check'))throw Error(file+' is stale');fs.writeFileSync(target,content);}
+for(const [file,content]of Object.entries(outputs)){const target=path.join(root,artworkAsset(file)),old=fs.existsSync(target)?fs.readFileSync(target,'utf8'):'';if(old===content)continue;if(process.argv.includes('--check'))throw Error(file+' is stale');fs.writeFileSync(target,content);}
 console.log('Window trip data: '+JSON.stringify(counts)+'; source inventory '+coverage.length+'; reviewed photos '+photos.length);

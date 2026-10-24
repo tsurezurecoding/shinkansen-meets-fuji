@@ -2160,7 +2160,7 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
   const target = path.join(appDir, file);
   writeFileIfChanged(target, enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir));
 }
-writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
+writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML().replace(/\/(somato|sumie|window-trip|window-film)\.html/g,'/artworks/$1/index.html'));
 
 await import("./generate-food-country-ja.mjs");
 await import("./generate-utility-locales.mjs");

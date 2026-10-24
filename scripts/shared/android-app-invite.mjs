@@ -31,7 +31,9 @@ const FEATURES=new Set(['727-collection.html','zukan.html','mieru.html','castles
 export function invitePageConfig(file){
  const bits=file.replaceAll('\\','/').split('/');
  const language=bits.length>1&&['en','fr','de','es','ko','zh-Hant','zh-Hans'].includes(bits[0])?bits.shift():'ja';
- const route=bits.join('/');
+ const originalRoute=bits.join('/');
+ if (/^(somato|sumie|window-film|window-trip)\.html$/.test(originalRoute)) return null;
+ const route=originalRoute.replace(/^artworks\/(somato|sumie|window-film|window-trip)\/index\.html$/, '$1.html');
  if(!['index.html','guide.html','start.html','live/index.html'].includes(route)&&!FEATURES.has(route)&&!/^spots\/[a-z0-9-]+\.html$/.test(route))return null;
  const pageContext=route==='index.html'?'landing':route==='guide.html'?'fuji_guide':route==='start.html'?'train_search':route==='live/index.html'?'live':route==='zukan.html'?'gallery':route==='727-collection.html'?'collection':route.startsWith('spots/')?'spot':'feature';
  const general=/spots\/(?:himeji-castle|fukuyama-castle|okayama-castle|akashi-castle|hiroshima-castle|iwakuni-castle)\.html$/.test(route);
@@ -40,6 +42,6 @@ export function invitePageConfig(file){
 export function withPageAndroidAppInvite(html,file){
  const cfg=invitePageConfig(file);
  if(!cfg||!/var (?:measurementId|id) = "G-C2ESB694FV"/.test(html))return html;
- const assetPrefix=/<base\b/i.test(html)?'':'../'.repeat(file.split('/').length-1);
+ const assetPrefix=file.includes('artworks/')?(cfg.language==='en'?'../':''):(/<base\b/i.test(html)?'':'../'.repeat(file.split('/').length-1));
  return withAndroidAppInvite(html,cfg.language,cfg.pageContext,{assetPrefix,general:cfg.general});
 }
