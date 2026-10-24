@@ -651,7 +651,7 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
           <a href="${prefix}${lang === "en" ? "en/" : ""}guide.html">${lang === "ja" ? "富士山を見る" : "See Mt. Fuji"}</a>
           <a href="${lang === "en" ? `${prefix}en/mieru.html` : `${prefix}mieru.html`}">${lang === "ja" ? "今日、富士山は見えるか" : "Visibility β"}</a>
           <a href="${lang === "en" ? `${prefix}en/window-artworks.html` : `${prefix}window-artworks.html`}">${lang === "ja" ? "車窓の作品集" : "Window Artworks"}</a>
-          <a href="${lang === "en" ? `${prefix}en/references.html` : `${prefix}references.html`}">${lang === "ja" ? "リンク集" : "Links"}</a>
+          ${lang === "ja" ? `<a href="${prefix}sudoori/index.html#stories">素通りの街</a><a href="${prefix}window-quiz.html">車窓クイズ</a>\n          ` : ""}<a href="${lang === "en" ? `${prefix}en/references.html` : `${prefix}references.html`}">${lang === "ja" ? "リンク集" : "Links"}</a>
           <a href="${prefix}${lang === "en" ? "en/" : ""}contact.html">${lang === "ja" ? "お問い合わせ" : "Contact"}</a>
           <a href="${lang === "en" ? `${prefix}en/privacy.html` : `${prefix}privacy.html`}">${lang === "ja" ? "プライバシーポリシー" : "Privacy Policy"}</a>
         </div>
@@ -1609,7 +1609,7 @@ function englishLandingHTML() {
     .replace('<body>', '<body data-language-route="en">')
     .replace('<button type="button" class="active" data-lang="ja" aria-pressed="true">日本語</button>', '<button type="button" data-lang="ja" aria-pressed="false">日本語</button>')
     .replace('<button type="button" data-lang="en" aria-pressed="false">EN</button>', '<button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>');
-  return withUtilityLocales(syncSpotCountClaims(html), 'en/index.html');
+  return withUtilityLocales(syncSpotCountClaims(html.replace(/[ \t]*<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->\r?\n?/g, '')), 'en/index.html');
 }
 
 function englishAppIndexHTML() {
@@ -1725,7 +1725,7 @@ function englishAppIndexHTML() {
   html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n\n<!-- TRAIN-SEARCH-TABLE:END -->`);
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
-  return withUtilityLocales(syncSpotCountClaims(html), 'en/start.html');
+  return withUtilityLocales(syncSpotCountClaims(html.replace(/[ \t]*<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->\r?\n?/g, '')), 'en/start.html');
 }
 
 function guideHTML(lang) {
@@ -1939,7 +1939,7 @@ function sitemapXML() {
     "sapporo-shizuoka-factory": "2026-09-26",
     "rakusai-egg-tanks": "2026-09-26",
   };
-  baseUrls.push(...["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html"].map(route=>({loc:siteRoot+'/'+route,priority:'0.6',changefreq:'monthly',lastmod:'2026-10-16'})));
+  baseUrls.push(...["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html","sudoori/stories/aisho.html","sudoori/stories/koura.html","window-quiz.html","window-guesser.html"].map(route=>({loc:siteRoot+'/'+route,priority:'0.6',changefreq:'monthly',lastmod:'2026-10-16'})));
   const spotUrls = SPOTS.filter((spot) => hasGeneratedSpotPage(spot) && !isSubordinateSpot(spot)).flatMap((spot) => ["ja", "en"].map((lang) => ({
     loc: pageUrl(lang, spot.id),
     priority: featuredIds.includes(spot.id) ? "0.8" : "0.6",

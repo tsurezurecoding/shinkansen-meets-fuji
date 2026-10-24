@@ -18,6 +18,7 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "window-quiz.html", "window-guesser.html", ...await walkFiles("quiz", p => /\.(?:js|css|jpg|webp|mp4)$/.test(p)),
   "memory-express.html",
   ...await walkFiles("artworks", p => /\.(?:html|js|css|txt|png)$/.test(p)),
   ...await walkFiles("en/artworks", p => /\.html$/.test(p)),

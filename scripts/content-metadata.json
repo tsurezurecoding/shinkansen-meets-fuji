@@ -762,9 +762,9 @@
     "kind": "collection",
     "article": false,
     "published": "2026-10-16",
-    "modified": "2026-10-16",
+    "modified": "2026-10-24",
     "publishedEvidence": "2026-10-16_sudoori-release: user approved portal and four municipality articles",
-    "modifiedEvidence": "2026-10-16_sudoori-release: integration of approved private prototype",
+    "modifiedEvidence": "2026-10-24 approved Aisho and Koura articles added to list and map preview",
     "representativeImage": false,
     "imageReview": "Site-owned general brand image; no permission-based photograph is promoted to OG."
   },
@@ -1160,5 +1160,47 @@
     "modified": "2026-10-23",
     "publishedEvidence": "2026-10-23_food-countryside-locales-release.md: new localized edition",
     "modifiedEvidence": "2026-10-23_food-countryside-locales-release.md: localized article and eight-language navigation"
+  },
+  "sudoori/stories/aisho.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-24",
+    "modified": "2026-10-24",
+    "publishedEvidence": "2026-10-24 user approved full Aisho and Koura stories for release",
+    "modifiedEvidence": "Approved prototype integrated with photographs, regional links and sources",
+    "representativeImage": false,
+    "imageReview": "General site brand image; Commons photographs appear in body with individual credits."
+  },
+  "sudoori/stories/koura.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-10-24",
+    "modified": "2026-10-24",
+    "publishedEvidence": "2026-10-24 user approved full Aisho and Koura stories for release",
+    "modifiedEvidence": "Approved prototype integrated with photographs, regional links and sources",
+    "representativeImage": false,
+    "imageReview": "General site brand image; Commons photographs appear in body with individual credits."
+  },
+  "window-quiz.html": {
+    "kind": "interactive guide",
+    "article": false,
+    "published": "2026-10-24",
+    "publishedEvidence": "2026-10-24_window-quiz-release.md: user-approved unified quiz release",
+    "image": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "imageAlt": "新幹線から望む掛川城の白い天守",
+    "imageRights": "own",
+    "imageCredit": "michikusa",
+    "imageEvidence": "Existing owned spot photo reused for the window quiz"
+  },
+  "window-guesser.html": {
+    "kind": "interactive guide",
+    "article": false,
+    "published": "2026-10-24",
+    "publishedEvidence": "2026-10-24_window-quiz-release.md: user-approved unified quiz release",
+    "image": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "imageAlt": "新幹線から望む掛川城の白い天守",
+    "imageRights": "own",
+    "imageCredit": "michikusa",
+    "imageEvidence": "Existing owned spot photo reused for the window quiz"
   }
 }
