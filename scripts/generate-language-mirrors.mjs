@@ -61,7 +61,7 @@ function localizeEnglishRail(html) {
     ["写真提供、情報の訂正、ご感想はこちら。", "Send a photo, suggest a correction, or share feedback."],
     ["富士山の見方", "How to See Mt. Fuji"],
     ["プライバシーポリシー", "Privacy Policy"],
-    ["時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。", "Times are Nozomi-based estimates; visibility varies by train, weather, and seat. Start watching a little early."],
+    ["時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。", "Times use your selected train’s timetable; the unselected sample uses Nozomi times. Visibility varies by weather and seat. Start watching a little early."],
   ];
   const routes = [
     ["ferris-wheels.html", "en/ferris-wheels.html"],

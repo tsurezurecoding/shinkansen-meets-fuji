@@ -234,7 +234,7 @@ ${group('ruins')}
     <div class="cs-section-head">
       <p class="eyebrow">WEST OF SHIN-OSAKA</p>
       <h2 id="csSanyoTitle">${pick(chunk(['新大阪から西へ。', '山陽新幹線の城']), 'West of Shin-Osaka — castles on the Sanyo Shinkansen')}</h2>
-      <p class="cs-section-lead">${pick(chunk(['車窓スポットの紹介は', '新大阪までですが、', 'その先にも城はあります。', '見かけた方の投稿から。']), 'Our window guide stops at Shin-Osaka, but the castles do not. These photographs were shared by people who spotted castles from their seats.')}</p>
+      <p class="cs-section-lead">${pick(chunk(['新大阪から西にも、', '車窓で出会える城があります。', '見かけた方の写真とともに紹介します。']), 'West of Shin-Osaka, more castles appear from the Sanyo Shinkansen. These photographs were shared by people who spotted them from their seats.')}</p>
     </div>
 ${sanyoEntries.map(sanyoCard).join('\n')}
   </section>

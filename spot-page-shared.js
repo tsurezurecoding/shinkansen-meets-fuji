@@ -118,10 +118,10 @@
       showcaseCtaSub: "Browse every view in this stretch",
       mobileAffiliate: "AFFILIATE LINKS",
       mobileAffiliateNote: "Michikusa may earn a commission at no extra cost to you.",
-      sideA: "Seat A · left side toward Kyoto",
-      sideE: "Seat E · right side toward Kyoto",
+      sideA: "Seat A · left side toward Shin-Osaka; right side toward Tokyo",
+      sideE: "Seat E · right side toward Shin-Osaka; left side toward Tokyo",
       sideBoth: "Both sides",
-      hamanakoSide: "Seat A · left / Seat E · right (toward Kyoto)",
+      hamanakoSide: "Seat A · left / Seat E · right (toward Shin-Osaka; reversed toward Tokyo)",
       languageJa: "日本語",
       languageEn: "EN"
     }

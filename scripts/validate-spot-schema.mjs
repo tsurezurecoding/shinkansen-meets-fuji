@@ -53,9 +53,9 @@ const GENERATED_SIDE_LABELS = {
     property: "座席側",
   },
   en: {
-    A: "Seat A · left side toward Kyoto",
-    E: "Seat E · right side toward Kyoto",
-    hamanako: "Seat A · left / Seat E · right (toward Kyoto)",
+    A: "Seat A · left side toward Shin-Osaka; right side toward Tokyo",
+    E: "Seat E · right side toward Shin-Osaka; left side toward Tokyo",
+    hamanako: "Seat A · left / Seat E · right (toward Shin-Osaka; reversed toward Tokyo)",
     property: "Seat side",
   },
 };

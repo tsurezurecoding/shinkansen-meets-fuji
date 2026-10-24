@@ -110,7 +110,7 @@
         <article class="reference-card">
           <h3>位置情報</h3>
           <p>ライブ地図・車窓ガイド機能では、お使いの端末の位置情報を利用します。端末が取得した正確なGPS位置情報（緯度・経度）は、車窓スポットの接近判定と現在地表示のため端末内で処理し、運営者のサーバーへ送信・保存せず、広告やアクセス解析にも使用しません。</p>
-          <p>Androidアプリで利用者が音声ガイドを開始すると、アプリが画面に表示されていないとき（他のアプリを表示しているときや画面消灯中を含む）も、乗車セッションが終了するまで位置情報を取得し、接近判定と音声案内に使用します。音声ガイドの動作中は継続通知を表示し、アプリまたは通知の「案内を終了」からいつでも停止できます。セッション終了後は位置情報の利用を停止します。</p>
+          <p>Androidアプリで利用者が接近通知または音声ガイドを開始すると、アプリが画面に表示されていないとき（他のアプリを表示しているときや画面消灯中を含む）も、乗車セッションが終了するまで位置情報を取得し、接近判定と有効にした接近通知・音声案内に使用します。乗車セッション中は継続通知を表示し、アプリで乗車を終了するか、通知の「乗車を終了」から、位置情報の利用・接近通知・音声案内をいつでも停止できます。セッション終了後は位置情報の利用を停止します。</p>
         </article>
 
         <article class="reference-card">
@@ -182,7 +182,7 @@
         <article class="reference-card">
           <h3>Location</h3>
           <p>The live map and window guide use your device's location. Precise GPS coordinates are processed on your device to show your position and detect approaching viewpoints. They are not sent to or stored on our servers and are not used for advertising or analytics.</p>
-          <p>When you start Audio Guide in the Android app, the Service continues to access location until the ride session ends, including while another app is displayed or the screen is off, to detect approaching viewpoints and play audio guidance. An ongoing notification is shown while guidance is active. You can stop location access and audio guidance at any time from the app or the notification.</p>
+          <p>When you start approach alerts or Audio Guide in the Android app, the Service continues to access location until the ride session ends, including while another app is displayed or the screen is off, to detect approaching viewpoints and provide the alerts or audio guidance you enabled. An ongoing notification is shown during the ride session. You can stop location access, alerts, and audio guidance at any time by ending the ride in the app or using “End ride” in the notification. Location access stops when the session ends.</p>
         </article>
 
         <article class="reference-card">
