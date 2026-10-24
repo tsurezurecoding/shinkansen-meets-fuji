@@ -19,16 +19,27 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  verify-release:
+  deploy:
     runs-on: ubuntu-latest
-    outputs:
-      sha: ${{ steps.candidate.outputs.sha }}
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
+      - name: Require the trusted main workflow
+        env:
+          DISPATCH_REF: ${{ github.ref }}
+          WORKFLOW_REF: ${{ github.workflow_ref }}
+          REPOSITORY: ${{ github.repository }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+        run: |
+          test "$DEFAULT_BRANCH" = main
+          test "$DISPATCH_REF" = refs/heads/main
+          test "$WORKFLOW_REF" = "$REPOSITORY/.github/workflows/deploy-pages.yml@refs/heads/main"
       - uses: actions/checkout@v4
         with:
+          ref: ${{ github.workflow_sha }}
           fetch-depth: 0
-      - name: Validate approved candidate
-        id: candidate
+      - name: Validate approved main ancestor
         env:
           CANDIDATE: ${{ inputs.commit }}
         run: |
@@ -38,37 +49,55 @@ jobs:
           fi
           git fetch origin main
           git merge-base --is-ancestor "$CANDIDATE" origin/main
-          echo "sha=$CANDIDATE" >> "$GITHUB_OUTPUT"
-      - uses: actions/checkout@v4
+      - name: Find the successful main CI artifact
+        id: candidate
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE: ${{ inputs.commit }}
         with:
-          ref: ${{ steps.candidate.outputs.sha }}
-      - uses: actions/setup-node@v4
+          script: |
+            const { selectReleaseArtifact } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/release-artifact.mjs`);
+            const candidate = await selectReleaseArtifact(github, { ...context.repo, sha: process.env.CANDIDATE });
+            for (const [key, value] of Object.entries(candidate)) core.setOutput(key, value);
+      - name: Download the verified artifact by immutable ID
+        uses: actions/download-artifact@v8
         with:
-          node-version: 24
-          cache: npm
-      - run: npm ci
-      - run: npm run verify
-      - name: Deterministic build
+          artifact-ids: ${{ steps.candidate.outputs.artifact_id }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.candidate.outputs.run_id }}
+          path: ${{ runner.temp }}/pages-candidate
+          digest-mismatch: error
+      - name: Recheck CI before deployment
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE: ${{ inputs.commit }}
+          SELECTED: ${{ toJSON(steps.candidate.outputs) }}
+        with:
+          script: |
+            const { selectReleaseArtifact, assertSameReleaseArtifact } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/release-artifact.mjs`);
+            const current = await selectReleaseArtifact(github, { ...context.repo, sha: process.env.CANDIDATE });
+            assertSameReleaseArtifact(JSON.parse(process.env.SELECTED), current);
+            await core.summary.addHeading('Approved Pages candidate').addTable([
+              [{ data: 'Approved SHA', header: true }, process.env.CANDIDATE],
+              [{ data: 'Quality-gate run', header: true }, String(current.run_id)],
+              [{ data: 'Run attempt', header: true }, String(current.run_attempt)],
+              [{ data: 'Source artifact', header: true }, String(current.artifact_id)],
+              [{ data: 'Artifact digest', header: true }, current.digest]
+            ]).write();
+      - name: Check the Pages archive
         run: |
-          npm run build
-          git diff --exit-code
-          npm run build
-          git diff --exit-code
-
-  deploy:
-    needs: verify-release
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-        with:
-          ref: ${{ needs.verify-release.outputs.sha }}
+          test -s "$RUNNER_TEMP/pages-candidate/artifact.tar"
+          tar -tf "$RUNNER_TEMP/pages-candidate/artifact.tar" > "$RUNNER_TEMP/pages-entries.txt"
+          grep -Fx './index.html' "$RUNNER_TEMP/pages-entries.txt"
       - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
+      - name: Transfer the verified tar to this deployment run
+        uses: actions/upload-artifact@v4
         with:
-          path: .
+          name: github-pages
+          path: ${{ runner.temp }}/pages-candidate/artifact.tar
+          if-no-files-found: error
+          retention-days: 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

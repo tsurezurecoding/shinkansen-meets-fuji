@@ -60,7 +60,8 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 // October 17: one Yamazaki spot, two owned photographs and bilingual modal copy.
 // Retain a bounded allowance for the 59-spot runtime; article prose stays excluded.
 // October 18: five owned night photographs and the Fuji Sky View night gallery.
-export const RUNTIME_DATA_BYTE_BUDGET = 340 * 1024;
+// October 23: three owned morning photographs and the additional Tateiwa 727 location.
+export const RUNTIME_DATA_BYTE_BUDGET = 344 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。
