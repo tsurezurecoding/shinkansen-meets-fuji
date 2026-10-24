@@ -1,0 +1,762 @@
+[
+  {
+    "id": "kakegawa",
+    "level": "discovery",
+    "prompt": "駅の北側、丘の上の城は？",
+    "answer": "掛川城",
+    "choices": [
+      "掛川城",
+      "小田原城",
+      "清洲城"
+    ],
+    "explanation": "掛川駅の北側に立つ掛川城。街の奥の小高い丘に、白い天守が見えます。",
+    "name": "掛川城",
+    "area": "掛川駅 前後",
+    "side": "E",
+    "image": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "alt": "朝の光を受ける掛川城の白い天守",
+    "credit": "michikusa",
+    "date": "2026-10-13",
+    "link": "spots/kakegawa.html"
+  },
+  {
+    "id": "hikone-castle",
+    "level": "discovery",
+    "prompt": "米原の先、遠くの白い城は？",
+    "answer": "彦根城",
+    "choices": [
+      "彦根城",
+      "掛川城",
+      "小田原城"
+    ],
+    "explanation": "米原から京都へ向かうE席側、丘の上に見える彦根城です。この写真は望遠撮影。肉眼では遠くの小さな白い点に見えます。",
+    "name": "彦根城",
+    "area": "米原 → 京都",
+    "side": "E",
+    "image": "images/20260930_hikone-castle_26175_michikusa.jpg",
+    "alt": "新幹線から遠くの彦根城天守を望遠で拡大した写真",
+    "credit": "michikusa",
+    "date": "2026-09-30",
+    "link": "spots/hikone-castle.html"
+  },
+  {
+    "id": "maruko-bridge",
+    "level": "discovery",
+    "prompt": "多摩川の青いアーチ橋は？",
+    "answer": "丸子橋",
+    "choices": [
+      "丸子橋",
+      "瀬田の唐橋",
+      "白糸川橋梁"
+    ],
+    "explanation": "品川と新横浜のあいだ、多摩川に架かる丸子橋です。青いアーチが、川の広い景色の目印になります。",
+    "name": "丸子橋",
+    "area": "品川 → 新横浜（多摩川付近）",
+    "side": "E",
+    "image": "images/20260704_maruko_bridge_1_michikusa.jpg",
+    "alt": "新幹線のE席側から見える丸子橋",
+    "credit": "michikusa",
+    "date": "2026-07-04",
+    "link": "spots/maruko-bridge.html"
+  },
+  {
+    "id": "seta-karahashi",
+    "level": "discovery",
+    "prompt": "京都へ向かう途中。この川は？",
+    "answer": "瀬田川",
+    "choices": [
+      "瀬田川",
+      "多摩川",
+      "富士川"
+    ],
+    "explanation": "米原と京都のあいだで渡る瀬田川です。E席側には瀬田の唐橋も見え、街並みから川の景色へ一瞬切り替わります。",
+    "name": "瀬田川",
+    "area": "米原 → 京都",
+    "side": "E",
+    "image": "images/20260712_seta_karahashi_michikusa.jpg",
+    "alt": "新幹線のE席側から見える瀬田川と瀬田の唐橋付近",
+    "credit": "michikusa",
+    "date": "2026-07-12",
+    "link": "spots/seta-karahashi.html"
+  },
+  {
+    "id": "fujikawa-bridge",
+    "level": "discovery",
+    "prompt": "富士山の手前を流れる川は？",
+    "answer": "富士川",
+    "choices": [
+      "富士川",
+      "木曽川",
+      "淀川"
+    ],
+    "explanation": "新富士から静岡へ向かう途中の富士川。川上に並ぶ白いアーチは、工業用水を送る富士川水管橋です。",
+    "name": "富士川",
+    "area": "新富士 → 静岡",
+    "side": "E",
+    "image": "images/20220205_fujikawa_bridge_michikusa.jpg",
+    "alt": "富士川越しに見る冠雪の富士山と富士川水管橋",
+    "credit": "michikusa",
+    "date": "2022-02-05",
+    "link": "spots/fujikawa-bridge.html"
+  },
+  {
+    "id": "shiraitogawa-bridge",
+    "level": "discovery",
+    "prompt": "海を背に谷を渡る、この橋は？",
+    "answer": "白糸川橋梁",
+    "choices": [
+      "白糸川橋梁",
+      "丸子橋",
+      "瀬田の唐橋"
+    ],
+    "explanation": "小田原と熱海のあいだ、根府川付近の白糸川橋梁です。新幹線の窓から見えるこの鉄橋は、東海道本線の列車を支えています。",
+    "name": "相模湾と白糸川橋梁",
+    "area": "小田原 → 熱海（根府川付近）",
+    "side": "A",
+    "image": "images/20261010_odawara_2283_michikusa.jpg",
+    "alt": "白糸川橋梁と谷あいの町並み",
+    "credit": "michikusa",
+    "date": "2026-10-10",
+    "link": "spots/shiraitogawa-bridge.html"
+  },
+  {
+    "id": "sapporo-shizuoka-factory",
+    "level": "easy",
+    "prompt": "銀色のタンク列。何の工場？",
+    "answer": "ビール工場",
+    "choices": [
+      "ビール工場",
+      "製紙工場",
+      "自動車工場"
+    ],
+    "explanation": "焼津付近のサッポロビール静岡工場です。並ぶ銀色のタンクと、SAPPOROの文字が手がかりです。",
+    "name": "サッポロビール静岡工場",
+    "area": "静岡 → 掛川（焼津付近）",
+    "side": "A",
+    "image": "images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg",
+    "alt": "朝のサッポロビール静岡工場",
+    "credit": "michikusa",
+    "date": "2026-09-24",
+    "link": "spots/sapporo-shizuoka-factory.html"
+  },
+  {
+    "id": "pocari-fukuroi",
+    "level": "easy",
+    "prompt": "青い文字の工場。何をつくる？",
+    "answer": "ポカリスエット",
+    "choices": [
+      "ポカリスエット",
+      "チョコレート",
+      "セロテープ"
+    ],
+    "explanation": "袋井市にある大塚製薬の工場。A席側の青いPOCARI SWEATの文字が目印です。",
+    "name": "大塚製薬のポカリスエット工場",
+    "area": "掛川 → 浜松（袋井市）",
+    "side": "A",
+    "image": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
+    "alt": "POCARI SWEATの文字が見える工場",
+    "credit": "michikusa",
+    "date": "2026-10-10",
+    "link": "spots/pocari-fukuroi.html"
+  },
+  {
+    "id": "kirin-beer-factory",
+    "level": "discovery",
+    "prompt": "名古屋の先。この工場は？",
+    "answer": "キリンビール",
+    "choices": [
+      "キリンビール",
+      "サッポロビール",
+      "ロッテ"
+    ],
+    "explanation": "名古屋から岐阜羽島へ向かう途中のキリンビール名古屋工場です。E席側に銀色のタンクが並びます。",
+    "name": "キリンビール工場",
+    "area": "名古屋 → 岐阜羽島",
+    "side": "E",
+    "image": "images/20261010_kirin-beer-factory_7041_michikusa.jpg",
+    "alt": "キリンビール名古屋工場のタンクと看板",
+    "credit": "michikusa",
+    "date": "2026-10-10",
+    "link": "spots/kirin-beer-factory.html"
+  },
+  {
+    "id": "lotte-shiga",
+    "level": "easy",
+    "prompt": "お菓子の看板。どの会社？",
+    "answer": "ロッテ",
+    "choices": [
+      "ロッテ",
+      "明治",
+      "森永製菓"
+    ],
+    "explanation": "米原と京都のあいだにあるロッテ滋賀工場の看板です。クーリッシュやトッポ、ガーナなど、おなじみの商品が車窓に現れます。",
+    "name": "ロッテ滋賀工場の菓子看板",
+    "area": "米原 → 京都",
+    "side": "A",
+    "image": "images/20260919_lotte-shiga_4190_michikusa.jpg",
+    "alt": "クーリッシュ、トッポ、ガーナの看板",
+    "credit": "michikusa",
+    "date": "2026-09-19",
+    "link": "spots/lotte-shiga.html"
+  },
+  {
+    "id": "fuji-paper-mills",
+    "level": "discovery",
+    "prompt": "富士山のふもと。何の工場？",
+    "answer": "紙をつくる工場",
+    "choices": [
+      "紙をつくる工場",
+      "自動車工場",
+      "ビール工場"
+    ],
+    "explanation": "新富士の手前に見える製紙工場の景色。富士市は、水を使って紙をつくる産業が盛んな街です。",
+    "name": "富士の製紙工場",
+    "area": "新富士のすぐ手前",
+    "side": "E",
+    "image": "images/20260816_fuji_paper_mills_michikusa.jpg",
+    "alt": "新幹線のE席側から見える富士の製紙工場",
+    "credit": "michikusa",
+    "date": "2026-08-16",
+    "link": "spots/fuji-paper-mills.html"
+  },
+  {
+    "id": "yamazaki-distillery",
+    "level": "discovery",
+    "prompt": "山すその建物。何をつくる？",
+    "answer": "ウイスキー",
+    "choices": [
+      "ウイスキー",
+      "日本酒",
+      "ビール"
+    ],
+    "explanation": "京都と新大阪のあいだにあるサントリー山崎蒸溜所です。屋根や電線の向こうに見える「山崎」の文字を探してみてください。",
+    "name": "サントリー山崎蒸溜所",
+    "area": "京都 → 新大阪（島本町）",
+    "side": "E",
+    "image": "images/20260924_yamazaki-distillery_4134_michikusa.jpg",
+    "alt": "屋根と電線の向こう、山すそに見えるサントリー山崎蒸溜所",
+    "credit": "michikusa",
+    "date": "2026-09-24",
+    "link": "spots/yamazaki-distillery.html"
+  },
+  {
+    "id": "putiputi-sign",
+    "level": "discovery",
+    "prompt": "「私は誰でしょう」。何の看板？",
+    "answer": "梱包材のプチプチ",
+    "choices": [
+      "梱包材のプチプチ",
+      "化粧品",
+      "歯科医院"
+    ],
+    "explanation": "プチプチで知られる会社の看板です。大磯付近のA席側で問いかけのコピーが現れ、隣には727の看板も立っています。",
+    "name": "プチプチの看板",
+    "area": "新横浜 → 小田原（大磯町付近）",
+    "side": "A",
+    "image": "images/20260712_who_am_i_sign_michikusa.jpg",
+    "alt": "新幹線のA席側から見える「私は誰でしょう」看板",
+    "credit": "michikusa",
+    "date": "2026-07-12",
+    "link": "spots/putiputi-sign.html"
+  },
+  {
+    "id": "727-board",
+    "level": "easy",
+    "prompt": "顔写真と「248」。何の広告？",
+    "answer": "歯科医院",
+    "choices": [
+      "歯科医院",
+      "化粧品",
+      "学習塾"
+    ],
+    "explanation": "きぬた歯科の広告です。「248」はニシハチ。お隣の白い727看板と、数字を見比べるのも車窓の楽しみです。",
+    "name": "きぬた歯科の248看板",
+    "area": "新横浜 → 小田原（藤沢市付近）",
+    "side": "E",
+    "image": "images/20260804_248_board_kuzuhara_michikusa.jpg",
+    "alt": "院長の顔と248を掲げたきぬた歯科の看板と、並ぶ727看板",
+    "credit": "michikusa",
+    "date": "2026-08-04",
+    "link": "spots/727-board.html"
+  },
+  {
+    "id": "nichiban-anjo",
+    "level": "easy",
+    "prompt": "大きな壁の広告。何の商品？",
+    "answer": "セロテープ",
+    "choices": [
+      "セロテープ",
+      "乾電池",
+      "消しゴム"
+    ],
+    "explanation": "三河安城付近のニチバン安城工場です。壁いっぱいのセロテープの図柄と色帯が目印になります。",
+    "name": "セロテープの壁看板",
+    "area": "三河安城付近",
+    "side": "E",
+    "image": "images/20260704_nichiban_anjo_michikusa.jpg",
+    "alt": "新幹線のE席側から見えるニチバン安城工場",
+    "credit": "michikusa",
+    "date": "2026-07-04",
+    "link": "spots/nichiban-anjo.html"
+  },
+  {
+    "id": "sennenq-sign",
+    "level": "discovery",
+    "prompt": "斜面の赤い文字。何の看板？",
+    "answer": "せんねん灸",
+    "choices": [
+      "せんねん灸",
+      "きぬた歯科",
+      "セブンツーセブン"
+    ],
+    "explanation": "米原近くで見えるせんねん灸の看板です。白い四角と赤い文字が並び、お灸のブランド名を車窓へ伝えています。",
+    "name": "せんねん灸の看板",
+    "area": "米原 → 岐阜羽島（名古屋方面）",
+    "side": "A",
+    "image": "images/20260919_sennenq-sign_cp0157_michikusa.jpg",
+    "alt": "車窓に現れるせんねん灸の看板",
+    "credit": "michikusa",
+    "date": "2026-09-19",
+    "link": "spots/sennenq-sign.html"
+  },
+  {
+    "id": "nagoya-station-skyline",
+    "level": "discovery",
+    "prompt": "この高層ビル街、どのあたり？",
+    "answer": "名古屋駅付近",
+    "choices": [
+      "名古屋駅付近",
+      "新横浜駅付近",
+      "京都駅付近"
+    ],
+    "explanation": "名古屋駅前の高層ビル街です。東京から向かうと、到着前のE席側に高いビルが次々と重なります。",
+    "name": "名古屋駅前",
+    "area": "名古屋到着直前",
+    "side": "E",
+    "image": "images/20260530_nagoya_station_2_michikusa.jpg",
+    "alt": "新幹線から見える名古屋駅前の高層ビル",
+    "credit": "michikusa",
+    "date": "2026-05-30",
+    "link": "spots/nagoya-station-skyline.html"
+  },
+  {
+    "id": "hinataoka",
+    "level": "discovery",
+    "prompt": "色違いの屋根、どのあたり？",
+    "answer": "平塚の日向岡",
+    "choices": [
+      "平塚の日向岡",
+      "熱海の市街地",
+      "京都の東山"
+    ],
+    "explanation": "神奈川県平塚市の日向岡です。丘の斜面に、色とりどりの三角屋根が段々に並びます。",
+    "name": "日向岡の街並み",
+    "area": "新横浜 → 小田原",
+    "side": "E",
+    "image": "images/20260530_hinataoka_2_michikusa.jpg",
+    "alt": "新幹線のE席側から見える日向岡の住宅地",
+    "credit": "michikusa",
+    "date": "2026-05-30",
+    "link": "spots/hinataoka.html"
+  },
+  {
+    "id": "musashi-kosugi-towers",
+    "level": "discovery",
+    "prompt": "塔のような住宅群、どこ？",
+    "answer": "武蔵小杉",
+    "choices": [
+      "武蔵小杉",
+      "名古屋駅前",
+      "新大阪駅前"
+    ],
+    "explanation": "多摩川の近く、武蔵小杉のタワーマンション群です。品川と新横浜のあいだのE席側に広がります。",
+    "name": "武蔵小杉のタワマン群",
+    "area": "品川 → 新横浜（武蔵小杉付近）",
+    "side": "E",
+    "image": "images/20260704_musashi_kosugi_towers_1_michikusa.jpg",
+    "alt": "新幹線のE席側から見える武蔵小杉のタワマン群",
+    "credit": "michikusa",
+    "date": "2026-07-04",
+    "link": "spots/musashi-kosugi-towers.html"
+  },
+  {
+    "id": "odawara",
+    "level": "discovery",
+    "prompt": "海と斜面の街、どのあたり？",
+    "answer": "熱海",
+    "choices": [
+      "熱海",
+      "蒲郡",
+      "焼津"
+    ],
+    "explanation": "熱海付近の景色です。トンネルを抜けると、A席側に斜面の街と相模湾が開けます。",
+    "name": "熱海と初島",
+    "area": "熱海駅の手前",
+    "side": "A",
+    "image": "images/20260903_atami_hatsushima_michikusa.jpg",
+    "alt": "熱海の海の向こうに見える初島",
+    "credit": "michikusa",
+    "date": "2026-09-03",
+    "link": "spots/odawara.html"
+  },
+  {
+    "id": "mikawa-oshima",
+    "level": "discovery",
+    "prompt": "遠くの海と島、どのあたり？",
+    "answer": "蒲郡沖の三河湾",
+    "choices": [
+      "蒲郡沖の三河湾",
+      "熱海沖の相模湾",
+      "浜名湖"
+    ],
+    "explanation": "豊橋から三河安城へ向かうA席側に見える三河湾です。遠くに浮かぶ島影は三河大島。見通しのよい日の小さな発見です。",
+    "name": "三河大島",
+    "area": "豊橋 → 三河安城",
+    "side": "A",
+    "image": "images/20260712_mikawa_oshima_michikusa.jpg",
+    "alt": "新幹線のA席側から遠くに見える三河大島",
+    "credit": "michikusa",
+    "date": "2026-07-12",
+    "link": "spots/mikawa-oshima.html"
+  },
+  {
+    "id": "hirakata-park-wheel",
+    "level": "discovery",
+    "prompt": "街の向こうの観覧車は？",
+    "answer": "ひらかたパーク",
+    "choices": [
+      "ひらかたパーク",
+      "のんほいパーク",
+      "Fuji Sky View"
+    ],
+    "explanation": "京都と新大阪のあいだ、A席側から見えるひらかたパークの観覧車です。淀川の対岸の街並みに、小さな輪を探してみてください。",
+    "name": "ひらパーの観覧車",
+    "area": "京都 → 新大阪",
+    "side": "A",
+    "image": "images/20261010_hirakata-park-wheel_105071_michikusa.jpg",
+    "alt": "日中の新幹線から見えるひらパーの観覧車",
+    "credit": "michikusa",
+    "date": "2026-10-10",
+    "link": "spots/hirakata-park-wheel.html"
+  },
+  {
+    "id": "fuji",
+    "level": "easy",
+    "prompt": "この山、なに？",
+    "answer": "富士山",
+    "choices": [
+      "富士山",
+      "伊吹山",
+      "近江富士"
+    ],
+    "explanation": "左右に広がる裾野が目印。三島から新富士のあいだでは、E席側に大きく姿を見せます。",
+    "name": "富士山",
+    "area": "三島 → 新富士",
+    "side": "E",
+    "image": "images/20240211_fuji_michikusa.jpg",
+    "alt": "新幹線のE席側から見える富士山",
+    "credit": "michikusa",
+    "date": "2024-02-11",
+    "link": "spots/fuji.html"
+  },
+  {
+    "id": "tokyo-tower",
+    "level": "easy",
+    "prompt": "ビルの間に見える塔は？",
+    "answer": "東京タワー",
+    "choices": [
+      "東京タワー",
+      "東京スカイツリー",
+      "京都タワー"
+    ],
+    "explanation": "赤と白の塔は東京タワー。東京〜品川の短い区間にも、ビルのすきまを探す楽しみがあります。",
+    "name": "東京タワー",
+    "area": "東京 → 品川",
+    "side": "E",
+    "image": "images/20261010_tokyo-tower_155558_michikusa.jpg",
+    "alt": "建物の間に見える東京タワー",
+    "credit": "michikusa",
+    "date": "2026-10-10",
+    "link": "spots/tokyo-tower.html"
+  },
+  {
+    "id": "shizuoka-tea-fields",
+    "level": "easy",
+    "prompt": "緑の列が並ぶ、この畑は？",
+    "answer": "茶畑",
+    "choices": [
+      "茶畑",
+      "水田",
+      "ぶどう畑"
+    ],
+    "explanation": "丸く刈りそろえられた茶の木が、畝になって並びます。畑の上に立つ大きなファンは、霜から茶の芽を守るためのものです。",
+    "name": "静岡の茶畑",
+    "area": "静岡 → 掛川",
+    "side": "A",
+    "image": "images/20260919_shizuoka_tea_fields_a_michikusa.jpg",
+    "alt": "新幹線のA席側から見える茶畑とつま恋リゾートの看板",
+    "credit": "michikusa",
+    "date": "2026-09-19",
+    "link": "spots/shizuoka-tea-fields.html"
+  },
+  {
+    "id": "gamagori-greenhouses",
+    "level": "easy",
+    "prompt": "白い屋根が並ぶ、これは？",
+    "answer": "ビニールハウス",
+    "choices": [
+      "ビニールハウス",
+      "太陽光パネル",
+      "物流倉庫"
+    ],
+    "explanation": "東三河の車窓には、農業用のハウスが何度も現れます。写真だけで中の作物は特定できませんが、屋根の並びも沿線らしい景色です。",
+    "name": "豊川のビニールハウス",
+    "area": "豊橋 → 三河安城（豊川放水路付近）",
+    "side": "A",
+    "image": "images/20260820_toyokawa-greenhouses_41222_michikusa.jpg",
+    "alt": "豊川放水路付近の、丸いハウスと骨組みの見える三角屋根が並ぶ車窓",
+    "credit": "michikusa",
+    "date": "2026-08-20",
+    "link": "spots/gamagori-greenhouses.html"
+  },
+  {
+    "id": "torikai-train-depot",
+    "level": "easy",
+    "prompt": "新幹線が並ぶ、この場所は？",
+    "answer": "車両基地",
+    "choices": [
+      "車両基地",
+      "新幹線の駅",
+      "鉄道博物館"
+    ],
+    "explanation": "新大阪が近づくと見える鳥飼車両基地。列車を清掃・点検して、次の運行に送り出す場所です。",
+    "name": "鳥飼車両基地",
+    "area": "京都 → 新大阪",
+    "side": "E",
+    "image": "images/20260629_torikai_train_depot_michikusa.jpg",
+    "alt": "新幹線から見える鳥飼車両基地",
+    "credit": "michikusa",
+    "date": "2026-06-29",
+    "link": "spots/torikai-train-depot.html"
+  },
+  {
+    "id": "nangu-taisha",
+    "level": "easy",
+    "prompt": "街の向こうの赤い門は？",
+    "answer": "神社の鳥居",
+    "choices": [
+      "神社の鳥居",
+      "お城の門",
+      "橋のアーチ"
+    ],
+    "explanation": "道路をまたぐ南宮大社の大鳥居です。街並みの向こうに、朱色の形がすっと浮かび上がります。",
+    "name": "南宮大社の大鳥居",
+    "area": "岐阜羽島 → 米原",
+    "side": "A",
+    "image": "images/20260919_nangu-taisha_cp0169_michikusa.jpg",
+    "alt": "住宅の屋根の向こうに立つ南宮大社の大鳥居",
+    "credit": "michikusa",
+    "date": "2026-09-19",
+    "link": "spots/nangu-taisha.html"
+  },
+  {
+    "id": "727-sign",
+    "level": "discovery",
+    "prompt": "「727」は、何の広告？",
+    "answer": "化粧品",
+    "choices": [
+      "化粧品",
+      "航空会社",
+      "ラジオ局"
+    ],
+    "explanation": "大阪の化粧品メーカー「セブンツーセブン」の看板です。同じ数字が沿線各地に現れるので、見つけていく楽しみもあります。",
+    "name": "727 COSMETICS看板",
+    "area": "新横浜 → 小田原（藤沢市用田）",
+    "side": "A",
+    "image": "images/20260820_727_board_yoda_kinuta_michikusa.jpg",
+    "alt": "きぬた歯科の黄色い看板と並ぶ藤沢市用田の727看板",
+    "credit": "michikusa",
+    "date": "2026-08-20",
+    "link": "727-collection.html"
+  },
+  {
+    "id": "hamanako",
+    "level": "discovery",
+    "prompt": "窓いっぱいの水面。ここは？",
+    "answer": "浜名湖",
+    "choices": [
+      "浜名湖",
+      "琵琶湖",
+      "芦ノ湖"
+    ],
+    "explanation": "浜松と豊橋のあいだの浜名湖。街並みが途切れると両側に水面が開け、湖の上を走っているような眺めになります。",
+    "name": "浜名湖",
+    "area": "浜松 → 豊橋",
+    "side": "E",
+    "image": "images/20260530_hamanako.jpg",
+    "alt": "新幹線のE席側から見える浜名湖",
+    "credit": "michikusa",
+    "date": "2026-05-30",
+    "link": "spots/hamanako.html"
+  },
+  {
+    "id": "odawara-castle",
+    "level": "discovery",
+    "prompt": "街の奥に見える、この城は？",
+    "answer": "小田原城",
+    "choices": [
+      "小田原城",
+      "清洲城",
+      "彦根城"
+    ],
+    "explanation": "小田原駅付近のA席側に見える小田原城。街並みの向こうの白い天守を探してみてください。通過列車では一瞬の出会いです。",
+    "name": "小田原城",
+    "area": "小田原駅付近",
+    "side": "A",
+    "image": "images/20260820_odawara_castle_michikusa.jpg",
+    "alt": "朝のA席側、街並みの奥に立つ小田原城の天守",
+    "credit": "michikusa",
+    "date": "2026-08-20",
+    "link": "spots/odawara-castle.html"
+  },
+  {
+    "id": "kiyosu",
+    "level": "discovery",
+    "prompt": "赤い欄干が目印。この城は？",
+    "answer": "清洲城",
+    "choices": [
+      "清洲城",
+      "小田原城",
+      "掛川城"
+    ],
+    "explanation": "名古屋から岐阜羽島へ向かう途中の清洲城。白い壁と朱色の欄干が、線路近くの景色に映えます。",
+    "name": "清洲城",
+    "area": "名古屋 → 岐阜羽島",
+    "side": "E",
+    "image": "images/20260530_kiyosu_castle.jpg",
+    "alt": "新幹線のE席側から見える清洲城",
+    "credit": "michikusa",
+    "date": "2026-05-30",
+    "link": "spots/kiyosu.html"
+  },
+  {
+    "id": "ibuki",
+    "level": "discovery",
+    "prompt": "関ケ原の先に見える山は？",
+    "answer": "伊吹山",
+    "choices": [
+      "伊吹山",
+      "富士山",
+      "近江富士"
+    ],
+    "explanation": "関ケ原を抜けたあたり、E席側に大きく横たわる伊吹山。緑の季節と雪の季節では、同じ山でも表情が変わります。",
+    "name": "伊吹山",
+    "area": "岐阜羽島 → 米原",
+    "side": "E",
+    "image": "images/20260530_ibukiyama.jpg",
+    "alt": "雪解け後、深い緑に覆われた初夏の伊吹山",
+    "credit": "michikusa",
+    "date": "2026-05-30",
+    "link": "spots/ibuki.html"
+  },
+  {
+    "id": "toji",
+    "level": "discovery",
+    "prompt": "京都駅の近く。この五重塔は？",
+    "answer": "東寺の五重塔",
+    "choices": [
+      "東寺の五重塔",
+      "法隆寺の五重塔",
+      "浅草寺の五重塔"
+    ],
+    "explanation": "京都駅の前後、A席側に見える東寺の五重塔。街並みの上に重なる屋根が、京都に来たことを知らせてくれます。",
+    "name": "東寺 五重塔",
+    "area": "京都駅 前後",
+    "side": "A",
+    "image": "images/20260712_toji_michikusa.jpg",
+    "alt": "新幹線のA席側から見える東寺 五重塔",
+    "credit": "michikusa",
+    "date": "2026-07-12",
+    "link": "spots/toji.html"
+  },
+  {
+    "id": "rakusai-egg-tanks",
+    "level": "discovery",
+    "prompt": "大きなたまご。何の設備？",
+    "answer": "下水処理の設備",
+    "choices": [
+      "下水処理の設備",
+      "プラネタリウム",
+      "ガス貯蔵タンク"
+    ],
+    "explanation": "洛西浄化センターの「卵形汚泥消化タンク」。下水をきれいにした後に残る汚泥を処理する設備です。",
+    "name": "洛西浄化センターの卵形タンク",
+    "area": "京都 → 新大阪（長岡京付近）",
+    "side": "A",
+    "image": "images/20260924_rakusai-egg-tanks_8885_michikusa.jpg",
+    "alt": "朝焼けの洛西浄化センターの卵形タンク",
+    "credit": "michikusa",
+    "date": "2026-09-24",
+    "link": "spots/rakusai-egg-tanks.html"
+  },
+  {
+    "id": "fujitec-big-wing",
+    "level": "discovery",
+    "prompt": "この細長い塔、何に使う？",
+    "answer": "エレベーターの研究",
+    "choices": [
+      "エレベーターの研究",
+      "天気の観測",
+      "テレビの電波送信"
+    ],
+    "explanation": "フジテック Big Wingのエレベータ研究塔です。米原付近のE席側で、細長い姿がよく目立ちます。",
+    "name": "フジテック Big Wing",
+    "area": "岐阜羽島 → 米原（米原付近）",
+    "side": "E",
+    "image": "images/20260804_fujitec_big_wing_michikusa.jpg",
+    "alt": "高くそびえるフジテックのエレベータ研究塔",
+    "credit": "michikusa",
+    "date": "2026-08-04",
+    "link": "spots/fujitec-big-wing.html"
+  },
+  {
+    "id": "granship",
+    "level": "discovery",
+    "prompt": "船のような建物。何の施設？",
+    "answer": "ホールや会議場",
+    "choices": [
+      "ホールや会議場",
+      "船の博物館",
+      "ショッピングモール"
+    ],
+    "explanation": "東静岡駅のそばに立つグランシップ。大きなホールや会議室などを備えた文化施設で、銀灰色の大きな屋根が目印です。",
+    "name": "グランシップ",
+    "area": "東静岡駅付近",
+    "side": "A",
+    "image": "images/20260816_granship_2_michikusa.jpg",
+    "alt": "新幹線のA席側から見たグランシップの銀色の外観",
+    "credit": "michikusa",
+    "date": "2026-08-16",
+    "link": "spots/granship.html"
+  },
+  {
+    "id": "toyohashi-tateiwa",
+    "level": "discovery",
+    "prompt": "林から突き出す、これは？",
+    "answer": "自然の岩山",
+    "choices": [
+      "自然の岩山",
+      "お城の石垣",
+      "ダムの壁"
+    ],
+    "explanation": "豊橋の「立岩」です。浜名湖を過ぎて豊橋へ向かうE席側で、林の丘からむき出しの岩壁が見えます。",
+    "name": "豊橋の立岩",
+    "area": "浜松 → 豊橋",
+    "side": "E",
+    "image": "images/20260628_toyohashi_tateiwa_michikusa.jpg",
+    "alt": "車窓から見える豊橋の立岩",
+    "credit": "michikusa",
+    "date": "2026-06-28",
+    "link": "spots/toyohashi-tateiwa.html"
+  }
+]

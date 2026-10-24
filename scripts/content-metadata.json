@@ -1180,5 +1180,27 @@
     "modifiedEvidence": "Approved prototype integrated with photographs, regional links and sources",
     "representativeImage": false,
     "imageReview": "General site brand image; Commons photographs appear in body with individual credits."
+  },
+  "window-quiz.html": {
+    "kind": "interactive guide",
+    "article": false,
+    "published": "2026-10-24",
+    "publishedEvidence": "2026-10-24_window-quiz-release.md: user-approved unified quiz release",
+    "image": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "imageAlt": "新幹線から望む掛川城の白い天守",
+    "imageRights": "own",
+    "imageCredit": "michikusa",
+    "imageEvidence": "Existing owned spot photo reused for the window quiz"
+  },
+  "window-guesser.html": {
+    "kind": "interactive guide",
+    "article": false,
+    "published": "2026-10-24",
+    "publishedEvidence": "2026-10-24_window-quiz-release.md: user-approved unified quiz release",
+    "image": "images/20261013_kakegawa_castle_morning_michikusa.jpg",
+    "imageAlt": "新幹線から望む掛川城の白い天守",
+    "imageRights": "own",
+    "imageCredit": "michikusa",
+    "imageEvidence": "Existing owned spot photo reused for the window quiz"
   }
 }
