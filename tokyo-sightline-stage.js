@@ -32,7 +32,7 @@
       var css=document.createElement('link'); css.rel='stylesheet'; css.href=base+'Widgets/widgets.css'; css.dataset.tokyoCesiumCss=''; document.head.append(css);
     }
     var host=document.createElement('div'); host.style.cssText='position:absolute;inset:0;overflow:hidden'; container.append(host);
-    var viewer,destroyed=false,active=true,timer,resize,removeError,scene,middle,selected,revision=0;
+    var viewer,destroyed=false,active=true,timer,resize,removeError,scene,middle,selected,revision=0,readyReported=false;
     var cache=new Map();
     function current() { return !destroyed && ownerCurrent(); }
     function status(text) { if (current() && options.onStatus) options.onStatus(text); }
@@ -42,17 +42,26 @@
       if (viewer && !viewer.isDestroyed()) viewer.destroy(); cache.clear(); host.remove();
     }
     function fail() { if (!current()) return; destroy(); if (options.onError) options.onError(); }
+    function showReady() {
+      if (readyReported) return;
+      readyReported=true; clearTimeout(timer); options.onReady?.();
+    }
     function sceneStatus() {
       if (!current() || !selected) return;
+      if (selected.partial && selected.visible && selected.pending+selected.processing===0) showReady();
       if (selected.partial) status('一部の建物を読み込めませんでした。表示済みの3Dは操作できます。');
       else if (!selected.visible || selected.pending+selected.processing>0) status(districts[scene.district]+'の建物を読み込んでいます…');
       else status('推定撮影位置から'+scene.label+'へ約'+scene.distanceKm+'km。位置と高さは模式的です。');
     }
     function armTimeout() {
       clearTimeout(timer);
-      if (!active || !selected || selected.visible) return;
+      if (!active || !selected || readyReported) return;
       var expected=revision;
-      timer=setTimeout(function () { if (current() && active && revision===expected && !selected.visible) fail(); },35000);
+      timer=setTimeout(function () {
+        if (!current() || !active || revision!==expected || readyReported) return;
+        if (selected.visible) { selected.partial=true; showReady(); sceneStatus(); }
+        else fail();
+      },35000);
     }
     try {
       viewer=new C.Viewer(host,{animation:false,timeline:false,baseLayerPicker:false,geocoder:false,homeButton:false,sceneModePicker:false,navigationHelpButton:false,fullscreenButton:false,infoBox:false,selectionIndicator:false,baseLayer:false,requestRenderMode:true,maximumRenderTimeChange:Infinity,contextOptions:{webgl:{antialias:true}}});
@@ -108,7 +117,10 @@
           // District events consult the current selection, never a captured scene.
           tile.tileVisible.addEventListener(function () {
             if (!current() || selected!==record) return;
-            if (!record.visible) { record.visible=true; clearTimeout(timer); sceneStatus(); }
+            if (!record.visible) { record.visible=true; sceneStatus(); }
+          });
+          tile.allTilesLoaded.addEventListener(function () {
+            if (current() && selected===record && record.visible) showReady();
           });
           tile.loadProgress.addEventListener(function (pending,processing) {
             if (!current()) return;

@@ -7,7 +7,7 @@ import { TOKYO_SCENES, tokyoSightlineHead, tokyoSightlineHTML } from './shared/t
 const code = fs.readFileSync(new URL('../tokyo-sightline.js', import.meta.url), 'utf8');
 const tick = () => new Promise(resolve => setImmediate(resolve));
 
-async function setup(t, factory, { connection, intersectionObserver = true } = {}) {
+async function setup(t, factory, { connection, intersectionObserver = true, signalReady = true } = {}) {
   const article = '<div class="spot-page-shell"><article><section id="story">本文</section><section class="spot-static-map">地図</section><section id="references">出典</section></article></div>';
   const html = article + tokyoSightlineHTML({ id: 'tokyo-tower' }, 'ja', '../');
   const dom = new JSDOM(html, {
@@ -24,7 +24,11 @@ async function setup(t, factory, { connection, intersectionObserver = true } = {
     };
   }
   if (connection) Object.defineProperty(dom.window.navigator, 'connection', { value: connection });
-  if (factory) dom.window.createTokyoStage = factory;
+  if (factory) dom.window.createTokyoStage = async (host, options) => {
+    const result = await factory(host, options);
+    if (result && signalReady) options.onReady();
+    return result;
+  };
   dom.window.MADO_SPOT_PAGE_READY = Promise.resolve();
   dom.window.eval(code);
   await tick();
@@ -57,6 +61,7 @@ test('the supplement and its assets are emitted only for the Japanese Tokyo arti
     assert(stat.isFile() && stat.size > 0, `${scene.id}: the selected photo must exist`);
     assert(scene.alt.trim(), `${scene.id}: the photo needs alternative text`);
   }
+  assert(fs.statSync(new URL('../images/tokyo-sightline-tower-preview.png', import.meta.url)).size > 0);
 });
 
 test('mounting and scrolling never load the engine; an explicit click opens the model', async t => {
@@ -68,7 +73,13 @@ test('mounting and scrolling never load the engine; an explicit click opens the 
   assert.equal(find('[data-tokyo-sightline]').nextElementSibling, find('.spot-static-map'));
   assert.equal(find('#story').textContent, '本文');
   assert.equal(find('#references').textContent, '出典');
-  assert.equal(find('#tokyo-sightline-model').hidden, true);
+  assert.equal(find('#tokyo-sightline-model').hidden, false);
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
+  assert.equal(find('[data-tokyo-preview-credit]').hidden, false);
+  assert.match(find('[data-tokyo-preview-image]').src, /images\/tokyo-sightline-tower-preview\.png\?v=[a-f0-9]+$/);
+  assert.equal(find('[data-tokyo-photo-overlay]').parentElement, find('#tokyo-sightline-model'));
+  assert.equal(find('.tokyo-sightline-scenes').nextElementSibling, find('#tokyo-sightline-model'));
+  assert.equal(find('[data-tokyo-interaction]').hidden, true);
   assert.equal(find('[data-tokyo-open]').getAttribute('aria-expanded'), 'false');
   assert.match(find('#tokyo-sightline-traffic').textContent, /通信/);
   await near(true); await near(false); await near(true);
@@ -78,6 +89,8 @@ test('mounting and scrolling never load the engine; an explicit click opens the 
   await tick();
   assert.equal(calls, 1);
   assert.equal(find('#tokyo-sightline-model').hidden, false);
+  assert.equal(find('[data-tokyo-preview]').hidden, true);
+  assert.equal(find('[data-tokyo-interaction]').hidden, false);
   assert.equal(find('[data-tokyo-open]').getAttribute('aria-expanded'), 'true');
   assert.equal(find('[data-tokyo-reset]').disabled, false);
 });
@@ -99,7 +112,9 @@ test('all seven scenes update the photo, explanatory text and pressed state befo
     assert.deepEqual(all('[data-tokyo-scene]').map(button => button.getAttribute('aria-pressed')),
       TOKYO_SCENES.map((_scene, i) => String(i === index)));
     assert.equal(calls, 0);
-    assert.equal(find('#tokyo-sightline-model').hidden, true);
+    assert.equal(find('#tokyo-sightline-model').hidden, false);
+    assert.equal(find('[data-tokyo-preview]').hidden, false);
+    assert.match(find('[data-tokyo-preview]').textContent, /東京タワーの模型プレビュー/);
   }
   find('[data-tokyo-open]').click();
   await tick();
@@ -129,6 +144,7 @@ test('a pending factory applies the most recently selected scene when it resolve
   });
   find('[data-tokyo-open]').click(); await tick();
   assert.equal(find('[data-tokyo-open]').disabled, true);
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
   find('[data-tokyo-scene="2"]').click();
   find('[data-tokyo-scene="1"]').click();
   finish({ destroy() {}, setScene(scene) { selected.push(scene.id); } });
@@ -150,7 +166,9 @@ test('a factory resolving after pagehide is destroyed without attaching or enabl
   await tick();
   assert.equal(destroyed, 1);
   assert.equal(scenesApplied, 0);
-  assert.equal(find('#tokyo-sightline-model').hidden, true);
+  assert.equal(find('#tokyo-sightline-model').hidden, false);
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
+  assert.equal(find('[data-tokyo-interaction]').hidden, true);
   assert.equal(find('[data-tokyo-open]').getAttribute('aria-expanded'), 'false');
   assert.equal(find('[data-tokyo-open]').hidden, false);
   assert.equal(find('[data-tokyo-open]').disabled, false);
@@ -175,7 +193,8 @@ test('offscreen and hidden stages pause; BFCache return requires a fresh explici
   dom.window.dispatchEvent(new dom.window.PageTransitionEvent('pageshow', { persisted: true }));
   await near(true);
   assert.equal(sessions.length, 1);
-  assert.equal(find('#tokyo-sightline-model').hidden, true);
+  assert.equal(find('#tokyo-sightline-model').hidden, false);
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
   find('[data-tokyo-open]').click(); await tick();
   assert.equal(sessions.length, 2);
   sessions[0].onError(new Error('stale failure'));
@@ -197,6 +216,9 @@ test('failure preserves photos and article, retries only manually, and uses the 
   assert.equal(find('[data-tokyo-photo]').alt, TOKYO_SCENES[0].alt);
   assert.equal(find('[data-tokyo-reset]').disabled, true);
   assert.equal(find('[data-tokyo-open]').disabled, false);
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
+  assert.equal(find('[data-tokyo-preview-credit]').hidden, false);
+  assert.equal(find('[data-tokyo-interaction]').hidden, true);
   await near(false); await near(true);
   find('[data-tokyo-scene="2"]').click();
   assert.equal(calls, 1);
@@ -219,6 +241,7 @@ test('a live-stage error disposes that stage and does not affect the replacement
   assert.equal(destroyed, 1);
   assert.equal(find('[data-tokyo-reset]').disabled, true);
   assert.equal(find('[data-tokyo-open]').hidden, false);
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
   find('[data-tokyo-open]').click(); await tick();
   sessions[0].onError(new Error('late error from disposed stage'));
   assert.equal(sessions.length, 2);
@@ -265,6 +288,48 @@ test('reset, zoom and handled keyboard commands reach the active stage', async t
   assert.deepEqual(keys, ['ArrowLeft', 'Tab']);
   assert.equal(arrow.defaultPrevented, true);
   assert.equal(tab.defaultPrevented, false);
+});
+
+test('the model preview remains until the stage reports visible buildings, including a late callback after disposal', async t => {
+  const sessions = [];
+  const { dom, find } = await setup(t, async (_host, options) => {
+    sessions.push(options);
+    return { destroy() {}, setScene() {}, setActive() {} };
+  }, { signalReady: false });
+  find('[data-tokyo-open]').click(); await tick();
+  assert.equal(find('#tokyo-sightline-model').dataset.tokyoState, 'loading');
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
+  assert.equal(find('[data-tokyo-open]').disabled, true);
+  assert.equal(find('[data-tokyo-stage]').tabIndex, -1);
+  sessions[0].onReady();
+  assert.equal(find('#tokyo-sightline-model').dataset.tokyoState, 'ready');
+  assert.equal(find('[data-tokyo-preview]').hidden, true);
+  assert.equal(find('[data-tokyo-preview-credit]').hidden, true);
+  assert.equal(find('[data-tokyo-stage]').getAttribute('aria-hidden'), 'false');
+  assert.equal(find('[data-tokyo-stage]').tabIndex, 0);
+  dom.window.dispatchEvent(new dom.window.Event('pagehide'));
+  sessions[0].onReady();
+  assert.equal(find('#tokyo-sightline-model').dataset.tokyoState, 'preview');
+  assert.equal(find('[data-tokyo-preview]').hidden, false);
+  assert.equal(find('[data-tokyo-stage]').getAttribute('aria-hidden'), 'true');
+});
+
+test('the inset photo expands inside the same viewport without loading 3D and returns on Escape or scene change', async t => {
+  let calls = 0;
+  const { dom, find } = await setup(t, async () => { calls++; return { destroy() {}, setScene() {} }; });
+  const button = find('[data-tokyo-photo-toggle]'), inset = find('[data-tokyo-photo-overlay]');
+  button.click();
+  assert.equal(button.getAttribute('aria-expanded'), 'true');
+  assert.equal(inset.classList.contains('is-expanded'), true);
+  assert.equal(find('[data-tokyo-photo-action]').textContent, '写真を戻す');
+  assert.equal(calls, 0);
+  button.dispatchEvent(new dom.window.KeyboardEvent('keydown', { key: 'Escape', cancelable: true }));
+  assert.equal(button.getAttribute('aria-expanded'), 'false');
+  button.click(); find('[data-tokyo-scene="5"]').click();
+  assert.equal(inset.classList.contains('is-expanded'), false);
+  assert.equal(button.getAttribute('aria-label'), '車窓写真を拡大');
+  assert.equal(find('[data-tokyo-photo]').alt, TOKYO_SCENES[5].alt);
+  assert.equal(calls, 0);
 });
 
 

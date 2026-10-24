@@ -24,6 +24,7 @@ const contentFiles = [
   "images/20261010_toranomon-hills-mori-tower_126000_michikusa.jpg", "videos/20261010_toranomon-hills-mori-tower_124-128_michikusa.mp4",
   "images/20261010_takanawa-linkpillar-1_275000_michikusa.jpg", "images/20261010_mon-takanawa_257000_michikusa.jpg", "images/20260911_shiodome-city-center_74500_michikusa.jpg",
   "tokyo-sightline.js", "tokyo-sightline-stage.js", "tokyo-sightline.css",
+  "images/tokyo-sightline-tower-preview.png",
   "fujimi-sightline.js", "fujimi-sightline-stage.js", "fujimi-sightline.css",
   'data/sudoori/photo-sources.json',
   ...await walkFiles('sudoori',p=>/\.(?:html|css|js)$/.test(p)),

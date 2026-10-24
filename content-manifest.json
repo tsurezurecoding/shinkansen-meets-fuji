@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d66cf0351fff83c1",
+  "contentVersion": "0a2532bb37a85373",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2123,6 +2123,12 @@
       "sha256": "c23de3dc2557b8a677a84b944bea4bba5eab36c7c7142f8e3aebb7a43821d84a"
     },
     {
+      "path": "images/tokyo-sightline-tower-preview.png",
+      "url": "https://www.michikusa-travel.com/images/tokyo-sightline-tower-preview.png",
+      "bytes": 158298,
+      "sha256": "d7ca66fd807ccad2030ec24ccdaf9d9a3475eedbcb0eb0ed832728838424d372"
+    },
+    {
       "path": "images/window-trip-card.webp",
       "url": "https://www.michikusa-travel.com/images/window-trip-card.webp",
       "bytes": 17104,
@@ -2881,20 +2887,20 @@
     {
       "path": "tokyo-sightline-stage.js",
       "url": "https://www.michikusa-travel.com/tokyo-sightline-stage.js",
-      "bytes": 10733,
-      "sha256": "01989a4a67cc2d96dd63834ed5e6387ad1989f93c73ea07e8305f2abb1bb3ea2"
+      "bytes": 11240,
+      "sha256": "247ded1f365efe284f76ba96925e158462fc3d0fd0ed75261ba9c6e8cc1607dc"
     },
     {
       "path": "tokyo-sightline.css",
       "url": "https://www.michikusa-travel.com/tokyo-sightline.css",
-      "bytes": 2754,
-      "sha256": "b83092e077541faae43189aaba389d072534ad23d87bf3547d049d7fea72a1f5"
+      "bytes": 5102,
+      "sha256": "f2de8dd9be3b4bf3fe3b2a83212b268792d4684d3ba986c9b79f17649fbb4fcf"
     },
     {
       "path": "tokyo-sightline.js",
       "url": "https://www.michikusa-travel.com/tokyo-sightline.js",
-      "bytes": 6016,
-      "sha256": "0e4f974d6ec1ef2dc37c64d250581d82e1e723c8dabb6f8d992399bcd0343a0a"
+      "bytes": 7587,
+      "sha256": "60f5b595b90e4b4510bd348677751aed36187b32def65889a049303cbbe8b3bf"
     },
     {
       "path": "train-picker.js",

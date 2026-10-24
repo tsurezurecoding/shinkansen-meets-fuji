@@ -19,20 +19,24 @@ export function tokyoSightlineHTML(spot,lang,prefix){
  return `<section class="spot-page-section tokyo-sightline" id="tokyo-sightline" aria-labelledby="tokyo-sightline-title" data-tokyo-sightline data-scenes="${JSON.stringify(TOKYO_SCENES).replaceAll('"','&quot;')}" data-engine="${prefix}tokyo-sightline-stage.js?v=${assetVersion('tokyo-sightline-stage.js')}">
  <p class="eyebrow spot-reading-eyebrow" lang="en">BEYOND THE WINDOW</p>
  <h2 id="tokyo-sightline-title"><span class="copy-chunk">あの景色は、</span><span class="copy-chunk">街のどこ？</span></h2>
- <p>車窓に見えたものと撮影位置を、一本の線でつなぎます。写真を選び、街を回して奥行きを探してみましょう。</p>
- <div class="tokyo-sightline-scenes" role="group" aria-label="写真を選ぶ">${TOKYO_SCENES.map((scene,i)=>'<button type="button" class="btn btn-ghost" data-tokyo-scene="'+i+'" aria-pressed="'+(i===0)+'">'+scene.label+'</button>').join('')}</div>
- <figure class="tokyo-sightline-photo"><img data-tokyo-photo src="${prefix}images/${s.photo}" alt="${s.alt}" loading="lazy" width="1920" height="1080"><figcaption><span data-tokyo-caption>${s.date}・${s.seat}／撮影：道草</span></figcaption></figure>
- <details class="tokyo-sightline-clip" data-tokyo-clip hidden><summary><span class="copy-chunk">この瞬間を動画で見る</span><span class="copy-chunk">（4秒・約3MB）</span></summary><video data-tokyo-video controls playsinline preload="none" aria-label="虎ノ門ヒルズ森タワーが見える、無音の4秒の車窓動画"></video><p class="tokyo-sightline-note">2026年10月10日・撮影：道草。無音／再生ボタンで開始します。</p></details>
- <p data-tokyo-note>${s.note}</p>
- <p class="tokyo-sightline-meta" data-tokyo-distance>推定撮影位置から約${s.distanceKm}km</p>
+ <p><span class="copy-chunk">車窓の景色を、</span><span class="copy-chunk">街の模型でたどります。</span><span class="copy-chunk">右下の写真を押すと、</span><span class="copy-chunk">大きく見られます。</span></p>
  <p class="tokyo-sightline-note" id="tokyo-sightline-traffic">3Dは数十MB以上の通信が発生する場合があります。場面の切り替えや操作でも追加通信が発生します。</p>
- <button class="btn btn-primary" type="button" data-tokyo-open aria-expanded="false" aria-controls="tokyo-sightline-model" aria-describedby="tokyo-sightline-traffic">3Dで位置を見る</button>
- <div id="tokyo-sightline-model" hidden>
+ <div class="tokyo-sightline-scenes" role="group" aria-label="景色を選ぶ">${TOKYO_SCENES.map((scene,i)=>'<button type="button" class="btn btn-ghost" data-tokyo-scene="'+i+'" aria-pressed="'+(i===0)+'"><span>'+scene.label+'</span></button>').join('')}</div>
+ <div id="tokyo-sightline-model" class="tokyo-sightline-viewport" data-tokyo-state="preview">
+ <div class="tokyo-sightline-stage" data-tokyo-stage tabindex="-1" role="group" aria-label="撮影位置と景色をつなぐ3D模型" aria-describedby="tokyo-sightline-help" aria-hidden="true"></div>
+ <div class="tokyo-sightline-preview" data-tokyo-preview><img data-tokyo-preview-image src="${prefix}images/tokyo-sightline-tower-preview.png?v=${assetVersion('images/tokyo-sightline-tower-preview.png')}" alt="東京タワーと推定撮影位置を金色の線でつないだ街の模型" loading="lazy" width="820" height="470"><span class="tokyo-sightline-preview-label">東京タワーの模型プレビュー</span></div>
+ <button class="btn btn-primary tokyo-sightline-open" type="button" data-tokyo-open aria-expanded="false" aria-controls="tokyo-sightline-model" aria-describedby="tokyo-sightline-traffic">3Dで位置を見る</button>
+ <figure class="tokyo-sightline-photo" data-tokyo-photo-overlay><button class="tokyo-sightline-photo-toggle" type="button" data-tokyo-photo-toggle aria-expanded="false" aria-label="車窓写真を拡大"><img data-tokyo-photo src="${prefix}images/${s.photo}" alt="${s.alt}" loading="lazy" width="1920" height="1080"><span data-tokyo-photo-action>写真を拡大</span></button><figcaption><span data-tokyo-caption>${s.date}・${s.seat}／撮影：道草</span></figcaption></figure>
+ </div>
+ <p class="tokyo-sightline-preview-credit" data-tokyo-preview-credit>模型プレビュー：国土交通省 PLATEAU／CesiumJS</p>
+ <p class="tokyo-sightline-status" data-tokyo-status role="status" aria-live="polite">ボタンを押すと3Dを読み込み、街を動かせます。</p>
+ <div data-tokyo-interaction hidden>
  <div class="tokyo-sightline-tools" role="group" aria-label="3Dの操作"><button class="btn btn-ghost" type="button" data-tokyo-reset disabled>初期位置へ</button><button class="btn btn-ghost" type="button" data-tokyo-zoom="in" aria-label="3Dを拡大" disabled>＋</button><button class="btn btn-ghost" type="button" data-tokyo-zoom="out" aria-label="3Dを縮小" disabled>−</button></div>
  <p class="tokyo-sightline-help" id="tokyo-sightline-help">PC：左ドラッグで移動、右ドラッグで角度変更。スマホ：2本指で拡大縮小、2本指をそろえて上下に動かすと角度変更。矢印キーでも操作できます。</p>
- <div class="tokyo-sightline-stage" data-tokyo-stage tabindex="0" role="group" aria-label="撮影位置と景色をつなぐ3D模型" aria-describedby="tokyo-sightline-help"></div>
  <p class="tokyo-sightline-key"><span>● 推定撮影位置</span><span>● 写真に写るものの位置</span><span>金色の線：両地点の方向</span></p></div>
- <p class="tokyo-sightline-status" data-tokyo-status role="status" aria-live="polite">ボタンを押すと3Dを読み込みます。</p>
+ <p data-tokyo-note>${s.note}</p>
+ <p class="tokyo-sightline-meta" data-tokyo-distance>推定撮影位置から約${s.distanceKm}km</p>
+ <details class="tokyo-sightline-clip" data-tokyo-clip hidden><summary><span class="copy-chunk">この瞬間を動画で見る</span><span class="copy-chunk">（4秒・約3MB）</span></summary><video data-tokyo-video controls playsinline preload="none" aria-label="虎ノ門ヒルズ森タワーが見える、無音の4秒の車窓動画"></video><p class="tokyo-sightline-note">2026年10月10日・撮影：道草。無音／再生ボタンで開始します。</p></details>
  <details class="tokyo-sightline-sources"><summary>写真と模型について</summary><p>写真の推定時刻に近いGPSを参考にした位置図です。撮影位置・高さ・画角は精密校正していません。線は遮蔽物を通る場合があり、実際に見える範囲の判定ではありません。</p><p>建物は<a href="https://www.mlit.go.jp/plateau/" target="_blank" rel="noopener">国土交通省 PLATEAU</a>の港区・千代田区（LOD1）。写真と模型では時期が異なります。高輪の新しいツインタワーとMoNは位置のみを示します。屋根や細いすきま、橋・塔などの構造物の形は省略される場合があります。3D表示：CesiumJS。写真：道草。通信できないときも写真と記事を読めます。</p><p>建物の紹介：<a href="https://www.nihonsekkei.co.jp/projects/22481/" target="_blank" rel="noopener">THE LINKPILLAR 1</a>／<a href="https://montakanawa.jp/en/about/design/" target="_blank" rel="noopener">MoN Takanawa</a>／<a href="https://www.nihonsekkei.co.jp/projects/22285/" target="_blank" rel="noopener">汐留シティセンター</a></p></details>
  </section><script defer src="${prefix}tokyo-sightline.js?v=${assetVersion('tokyo-sightline.js')}"></script>`;
 }
