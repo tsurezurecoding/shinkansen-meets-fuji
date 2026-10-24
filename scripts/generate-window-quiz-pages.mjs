@@ -13,9 +13,9 @@ function write(file,text){if(fs.existsSync(path.join(root,file))&&read(file)===t
 for(const [kind,route,title,description] of [
  ['recognition','window-quiz.html','車窓クイズ｜新幹線の窓','新幹線の写真で名前を当てる10問と、動画から場所を探す車窓Guesser。城や橋、ふしぎな形を見つけて遊ぼう。'],
  ['guesser','window-guesser.html','この車窓、どこ？｜車窓Guesser','動画を前後に動かし、景色の手がかりから撮影場所を当てる全18問。地図や駅の区間で答えてみよう。']]){
+ const global=kind==='recognition'?'QUIZ_QUESTIONS':'CLIP_QUESTIONS';write('quiz/'+kind+'-data.js','window.'+global+' = '+JSON.stringify(JSON.parse(read('data/window-quiz/'+kind+'.json')))+';\n');
  let html=read('data/window-quiz/'+kind+'.tpl').replace('<!-- COMMON_HEADER -->',chrome.quizHeader('','ja','',route,false)).replace('<!-- COMMON_CONTENT_RAIL -->',chrome.quizFooter('','ja'));
  html=html.replace(/<title>[\s\S]*?<\/title>/,'<title>'+title+'</title>').replace('</head>','<meta name="description" content="'+description+'"><link rel="canonical" href="https://www.michikusa-travel.com/'+route+'"><meta property="og:title" content="'+title+'"><meta property="og:description" content="'+description+'"><meta property="og:url" content="https://www.michikusa-travel.com/'+route+'"><meta name="twitter:card" content="summary_large_image">'+ANALYTICS.withEmbeddedGuard+'</head>');
  html=html.replace(/(href|src)="([^"?]+\.(?:css|js))(?:\?v=[^"]*)?"/g,(_,key,file)=>`${key}="${file}?v=${assetVersion(file)}"`);
  write(route,enhanceContentHead(html,route,root));
- const global=kind==='recognition'?'QUIZ_QUESTIONS':'CLIP_QUESTIONS';write('quiz/'+kind+'-data.js','window.'+global+' = '+JSON.stringify(JSON.parse(read('data/window-quiz/'+kind+'.json')))+';\n');
 }
