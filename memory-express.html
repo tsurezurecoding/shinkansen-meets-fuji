@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light dark"><meta name="robots" content="noindex">
+  <meta name="description" content="新幹線が架空の街を駆け、米原・豊橋・掛川の実写へ飛び込む70秒の3D作品。"><link rel="canonical" href="https://www.michikusa-travel.com/memory-express.html">
+  <title>記憶特急 — あの日の窓を、くぐる。 | 新幹線の窓</title>
+  <link rel="stylesheet" href="./chrome.css"><link rel="stylesheet" href="memory-express/style.css">
+</head>
+<body>
+  <a class="skip" href="#experience">作品へ</a>
+  <header class="topbar">
+    <a class="brand" href="./index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a>
+    <nav class="top-nav" aria-label="メインナビ"><a href="./start.html">列車を選ぶ</a><a href="./live/">乗車中</a><a href="./zukan.html">車窓図鑑</a><a class="top-nav-stamp" href="./journal.html">スタンプ帖</a><details class="top-nav-more"><summary>もっと見る</summary><div class="top-nav-menu"><a href="./window-artworks.html">車窓の作品集</a><a href="./guide.html">富士山の見方</a><a href="./references.html">車窓リンク集</a><a href="./contact.html">お問い合わせ</a></div></details></nav>
+  </header>
+  <main>
+    <section id="experience" class="film" aria-label="記憶特急、70秒の3D作品">
+      <div id="viewport" aria-hidden="true"></div>
+      <div id="photoFlash" class="photo-flash" aria-hidden="true"><img id="memoryPhoto" alt=""></div>
+      <div class="vignette" aria-hidden="true"></div><div class="film-edge" aria-hidden="true"></div>
+      <div class="film-top"><a href="./window-artworks.html" class="back">← 車窓の作品集</a><span class="edition">MICHIKUSA PICTURES / 001</span></div>
+      <div id="opening" class="opening">
+        <p class="kicker">MEMORY EXPRESS</p><h1>記憶特急</h1>
+        <p class="tagline"><span class="copy-chunk">あの日の窓を、</span><span class="copy-chunk">くぐる。</span></p>
+        <button id="start" class="start" disabled><span class="play-icon">▶</span><span id="startText">街を準備しています</span><small>70 SEC</small></button>
+        <p id="loadState" class="load-state" role="status">新幹線と、3枚の記憶。</p>
+      </div>
+      <div class="chapter-copy" id="chapterCopy"><p id="chapterNumber">PROLOGUE / 出発</p><h2 id="chapterTitle">街が、目を覚ます。</h2><p id="chapterDetail">2026.10.13 — ある朝の記憶</p></div>
+      <div class="film-tools"><button id="sound" aria-pressed="false">音 OFF</button><button id="fullscreen" aria-label="作品を全画面にする">全画面 ↗</button></div>
+      <div id="endCard" class="end-card" hidden><p class="kicker">EVERY WINDOW, A WORLD.</p><h2><span class="copy-chunk">一瞬だった。</span><span class="copy-chunk">ずっと残った。</span></h2><button id="replay" class="start"><span class="play-icon">↻</span>もう一度、乗る</button></div>
+      <div id="fallback" class="fallback" hidden><img src="images/20261013_toyohashi_tateiwa_727_michikusa.jpg" alt="立岩と727の車窓写真"><p><span class="copy-chunk">3Dを表示できません。</span><br><span class="copy-chunk">下の写真で車窓を</span><span class="copy-chunk">ご覧ください。</span></p></div>
+      <div class="transport"><button id="play" aria-label="再生" disabled>▶</button><output id="time">00:00 / 01:10</output><label class="sr-only" for="progress">旅の再生位置</label><input id="progress" type="range" min="0" max="70" step="0.05" value="0" disabled><span id="cameraLabel">DRONE</span></div>
+    </section>
+    <section class="below" aria-labelledby="memoriesTitle"><div class="section-intro"><div><p class="eyebrow">THREE WINDOWS, ONE MORNING</p><h2 id="memoriesTitle">旅は、写真の向こうへ。</h2></div><p>街を抜け、列車を追い、窓の中へ。<br>10月13日の朝に撮った、3つの景色。</p></div>
+      <div class="memories">
+        <button class="memory-card" data-seek="15"><span class="photo"><img src="images/20261013_maibara_test_trains_michikusa.jpg" alt="朝の米原、高速試験車両保存場"><span class="card-play">↗</span></span><span class="card-meta">01 / MAIBARA<span>06:32</span></span><strong>眠る、新幹線たち。</strong><span class="card-caption">米原・高速試験車両保存場</span></button>
+        <button class="memory-card" data-seek="35"><span class="photo"><img src="images/20261013_toyohashi_tateiwa_727_michikusa.jpg" alt="田園に立つ豊橋の立岩と727看板"><span class="card-play">↗</span></span><span class="card-meta">02 / TOYOHASHI<span>07:10</span></span><strong>田んぼに、岩と727。</strong><span class="card-caption">豊橋・立岩</span></button>
+        <button class="memory-card" data-seek="55"><span class="photo"><img src="images/20261013_kakegawa_castle_morning_michikusa.jpg" alt="新幹線から見えた朝の掛川城"><span class="card-play">↗</span></span><span class="card-meta">03 / KAKEGAWA<span>07:22</span></span><strong>朝の光に、天守。</strong><span class="card-caption">掛川城</span></button>
+      </div>
+      <details class="credits"><summary>この作品について</summary><p>写真：michikusa / 2026年10月13日撮影（動画からの切り出し）。米原の写真には走行中のぶれがあります。表示時刻は元記録からの推定です。</p><p>街と線路は演出のための架空の風景です。写真の場所を3Dで再現したものではありません。新幹線と窓枠をBlenderで造形し、Three.jsで描画。音はこの作品用の合成音です。音はONにした場合だけ再生します。</p><p>一時停止・シークに対応。キーボードでは再生ボタンとスライダーを操作できます。端末の「視差効果を減らす」設定にかかわらず、自動再生はせず、再生操作から始まります。全画面はEscapeで戻れます。</p></details>
+    </section>
+  </main>
+  <footer class="footer"><p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p><p class="footer-links"><a href="./index.html">ホーム</a> · <a href="./zukan.html">車窓図鑑</a> · <a href="./window-artworks.html">車窓の作品集</a> · <a href="./contact.html">お問い合わせ</a> · <a href="./privacy.html">プライバシー</a></p><p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p></footer>
+  <script src="memory-express/vendor/three.min.js"></script><script src="memory-express/models/models.js"></script><script src="memory-express/photos.js"></script><script src="memory-express/scene.js"></script>
+</body>
+</html>

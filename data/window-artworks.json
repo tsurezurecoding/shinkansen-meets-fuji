@@ -31,6 +31,21 @@
       }
     },
     {
+      "id": "memory-express",
+      "status": "published",
+      "languages": [
+        "ja"
+      ],
+      "webOnly": true,
+      "route": "memory-express.html",
+      "image": "images/memory-express-cover.png",
+      "ja": {
+        "title": "記憶特急",
+        "medium": "70秒の3D作品",
+        "description": "新幹線が架空の街を駆け、米原・豊橋・掛川で撮った3枚の車窓写真へ。あの日の窓をくぐる、小さな記憶の旅。"
+      }
+    },
+    {
       "id": "somato",
       "status": "published",
       "route": "somato.html",

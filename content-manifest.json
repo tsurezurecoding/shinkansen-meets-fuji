@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "937a7c732920d03e",
+  "contentVersion": "956ebf8eb99d5e2f",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -163,8 +163,8 @@
     {
       "path": "data/window-artworks.json",
       "url": "https://www.michikusa-travel.com/data/window-artworks.json",
-      "bytes": 2596,
-      "sha256": "c6990755d0bbf0dcc6a53039661f808425d185b9809eb7ff0cddc71dd04afaa2"
+      "bytes": 3092,
+      "sha256": "4ea23837b5175b7ece9fe8eb7612581aa5c23a6233e0b1ad2e6057b1e5043f46"
     },
     {
       "path": "data/window-trip-photo-sources.json",
@@ -2087,6 +2087,12 @@
       "sha256": "6b66d21522c6a8e4e83c8669aa7c899681f7ed0df415aed3022de798f36082d7"
     },
     {
+      "path": "images/memory-express-cover.png",
+      "url": "https://www.michikusa-travel.com/images/memory-express-cover.png",
+      "bytes": 1033053,
+      "sha256": "acb76dc07cacd7777d31d8c9a4640d6ed2da61c76fda5330cf8d1f982f7a9993"
+    },
+    {
       "path": "images/og-727-collection.jpg",
       "url": "https://www.michikusa-travel.com/images/og-727-collection.jpg",
       "bytes": 111123,
@@ -2625,6 +2631,48 @@
       "url": "https://www.michikusa-travel.com/manifest.json",
       "bytes": 899,
       "sha256": "7995f571c00b7534d9fba67451f216a4f8d9639a41e8ccfc2d68cc3a51c45e9f"
+    },
+    {
+      "path": "memory-express.html",
+      "url": "https://www.michikusa-travel.com/memory-express.html",
+      "bytes": 7007,
+      "sha256": "7dd3fe788e4e8a5dd6c9e6760bbd34c0dc0af61a96a0c1c26a6380f76a95e1a3"
+    },
+    {
+      "path": "memory-express/models/models.js",
+      "url": "https://www.michikusa-travel.com/memory-express/models/models.js",
+      "bytes": 602733,
+      "sha256": "7b57f206a8374f4361e7d1175e7aa95ee9fe9c94175d0c8c76e7fa6b424c79b5"
+    },
+    {
+      "path": "memory-express/photos.js",
+      "url": "https://www.michikusa-travel.com/memory-express/photos.js",
+      "bytes": 1094709,
+      "sha256": "1f62aee21f173d86b437bcf1437affad716aecaee17200989d9d9edf2f4abadc"
+    },
+    {
+      "path": "memory-express/scene.js",
+      "url": "https://www.michikusa-travel.com/memory-express/scene.js",
+      "bytes": 23180,
+      "sha256": "09179c060fe912879118655997a6b4e79b3ddd95763de4cd543b4c1db630e165"
+    },
+    {
+      "path": "memory-express/style.css",
+      "url": "https://www.michikusa-travel.com/memory-express/style.css",
+      "bytes": 7439,
+      "sha256": "74f8e73f1e7d89be6f1951371289daa44f5b6589689197a9d25d6b46be91aafa"
+    },
+    {
+      "path": "memory-express/vendor/THREE-LICENSE.txt",
+      "url": "https://www.michikusa-travel.com/memory-express/vendor/THREE-LICENSE.txt",
+      "bytes": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "memory-express/vendor/three.min.js",
+      "url": "https://www.michikusa-travel.com/memory-express/vendor/three.min.js",
+      "bytes": 669884,
+      "sha256": "170c6789f43217c96b3170f4b42fafe135de7f7cd48497a4218f9757ee1d49fa"
     },
     {
       "path": "mieru.css",
@@ -3253,8 +3301,8 @@
     {
       "path": "window-artworks.html",
       "url": "https://www.michikusa-travel.com/window-artworks.html",
-      "bytes": 27271,
-      "sha256": "75d014fa996618e608dcef17c3a1d492e2456cd495503d7b4008b611bd5b30f3"
+      "bytes": 28836,
+      "sha256": "63ff5058a80fc1f13a30de962f8dfad5df680a4385f5b50e310d8a34e7a76ed6"
     },
     {
       "path": "window-moments.html",

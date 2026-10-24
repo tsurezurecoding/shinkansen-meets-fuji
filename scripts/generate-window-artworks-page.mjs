@@ -17,15 +17,15 @@ let changed=0;
 for(const lang of ['ja','en']){
  const c=copy[lang],prefix=lang==='en'?'../':'',route=(lang==='en'?'en/':'')+'window-artworks.html',url=origin+route;
  const visibleWorks=works.filter(w=>!w.languages||w.languages.includes(lang));
- const cards=visibleWorks.map(w=>{if(!/^[a-z-]+\.html$/.test(w.route)||!fs.existsSync(path.join(root,w.route)))throw Error('Invalid published route');const t=w[lang];if(w.id==='window-film') {
+ const cards=visibleWorks.map(w=>{if(!/^[a-z-]+\.html$/.test(w.route)||!fs.existsSync(path.join(root,w.route)))throw Error('Invalid published route');const t=w[lang];if(w.id==='window-film'||w.webOnly) {
  // The film is Web-only. A bundled catalog must never load its absent image or local route.
  const publicUrl=origin+(lang==='en'?'en/':'')+w.route;
  const online=lang==='ja'?'オンラインで鑑賞（通信が必要です）':'Watch online (internet connection required)';
- return `<article class="artwork-card" data-artwork="window-film"><a hidden href="${publicUrl}" tabindex="-1" aria-hidden="true"><img data-film-image="${prefix}${esc(w.image)}" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">${esc(t.medium)}</p><h2>${esc(t.title)}</h2><p>${esc(t.description)}</p><a class="artwork-open" href="${publicUrl}">${online}<span class="sr-only"> — ${esc(t.title)}</span></a></div></article><script>
+ return `<article class="artwork-card" data-artwork="${esc(w.id)}"><a hidden href="${publicUrl}" tabindex="-1" aria-hidden="true"><img data-film-image="${prefix}${esc(w.image)}" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">${esc(t.medium)}</p><h2>${esc(t.title)}</h2><p>${esc(t.description)}</p><a class="artwork-open" href="${publicUrl}">${online}<span class="sr-only"> — ${esc(t.title)}</span></a></div></article><script>
 (function () {
  var card=document.currentScript.previousElementSibling;
  var native=!!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform==='function' && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform==='function' && window.Capacitor.getPlatform()!=='web')));
- var bundled=native || location.protocol==='file:' || location.hostname==='localhost';
+ ${w.webOnly ? "var bundled=native || (location.protocol==='file:' && location.pathname.charAt(2)!==':') || location.hostname==='localhost';" : "var bundled=native || location.protocol==='file:' || location.hostname==='localhost';"}
  if(bundled) { card.querySelector('a[hidden]').remove(); return; }
  var image=card.querySelector('img'); image.src=image.dataset.filmImage;
  var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',${JSON.stringify(w.route)});
