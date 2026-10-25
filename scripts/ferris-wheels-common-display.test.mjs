@@ -22,7 +22,7 @@ test('wheel points join the default timeline and field guide once, using their s
   boardCollectionExpanded:false,journey:{mode:'estimate',depMin:0,spots:[{sp:hirakata,clock:139,seq:139}]},
   direction:'west',boardId:'Tokyo',REF:{Tokyo:0},boardCollectionSpots:()=>[],
   timelinePoint:(sp,clock)=>({sp,clock:clock(sp.minutesFromTokyo),seq:sp.minutesFromTokyo}),
-  activeTimelineFilters:new Set(),activeGalleryFilters:new Set(),favorites:{},
+  activeTimelineFilters:new Set(),activeGalleryFilters:new Set(),favorites:{},hasTimelineRecommendations:()=>false,
   is727CollectionSpot:()=>false,seatTags:spot=>new Set([spot.side==='A'?'seat-a':'seat-e']),
   spotHasTimeOfDay:(spot,mode)=>mode==='day'?true:(spot.photos||[]).some(photo=>photo.timeOfDay===mode)};
  vm.createContext(ctx);

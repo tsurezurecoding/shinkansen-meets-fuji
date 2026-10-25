@@ -92,6 +92,9 @@ test('general journeys show the chronological timeline without a Fuji-only resul
   ]) {
     const f = await fixture(options);
     try {
+      const clear = f.w.document.querySelector('#timelineFilterbar [data-timeline-filter="all"]');
+      assert.ok(clear, 'the timeline condition-clear control should be available');
+      clear.click();
       assert.equal(f.answer().hidden, true);
       assert.equal(f.answer().textContent, '');
       assert.equal(f.scrolls.at(-1), 'timelineSection');

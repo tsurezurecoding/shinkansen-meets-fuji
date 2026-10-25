@@ -12,8 +12,13 @@ test('JA route/window remains below the existing picker; timeline warning follow
  const doc=new JSDOM(read('start.html')).window.document,left=doc.querySelector('.journey-form-pane'),right=doc.querySelector('.journey-timeline-pane');
  assert.equal(doc.querySelectorAll('[data-train-picker]').length,1);
  assert(left.contains(doc.querySelector('#sp-view')));
- assert(right.contains(doc.querySelector('#timelineSection')));
- assert.equal(doc.querySelector('#timeline').nextElementSibling.id,'timeline-calculation-note');
+ const timelineSection=doc.querySelector('#timelineSection'),timeline=doc.querySelector('#timeline'),more=doc.querySelector('#timelineRecommendationMore'),warning=doc.querySelector('#timeline-calculation-note');
+ assert(right.contains(timelineSection));
+ assert.equal(timeline.parentElement,timelineSection);
+ assert.equal(more.parentElement,timelineSection);
+ assert.equal(warning.parentElement,timelineSection);
+ assert.equal(timeline.nextElementSibling,more);
+ assert.equal(more.nextElementSibling,warning);
  assert(!left.querySelector('.train-entry-help'));
  assert(doc.querySelector('.sp-map-column').compareDocumentPosition(doc.querySelector('.sp-window-column'))&4);
  assert.equal(doc.querySelector('link[rel=canonical]').href,'https://www.michikusa-travel.com/start.html');
