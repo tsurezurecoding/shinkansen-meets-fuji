@@ -35,7 +35,13 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     assert.equal(doc.querySelectorAll('.spot-page-rail').length, 1);
     assert.equal(doc.querySelectorAll('.spot-page-rail-list').length, 1);
     assert.equal(doc.querySelectorAll('.spot-page-rail-live, .spot-page-rail-cta, .spot-reading-actions, .spot-page-stamp, .spot-page-rail-now, .spot-page-rail-row.is-current').length, 0);
-    assert.equal(doc.querySelectorAll('.spot-page-rail-spot').length, dom.window.MADO_SPOT_PAGE_SHARED_DATA.spots.length);
+    const shared = dom.window.MADO_SPOT_PAGE_SHARED_DATA;
+    assert.equal(doc.querySelectorAll('.spot-page-rail-spot').length, shared.spots.length + shared.wheelSpots.length);
+    assert.equal(shared.wheelSpots.length, 6);
+    for (const wheel of shared.wheelSpots) {
+      const links = [...doc.querySelectorAll('.spot-page-rail-link')].filter(a => a.getAttribute('href').endsWith(wheel.guideRoute[lang]));
+      assert.equal(links.length, 1, wheel.id + ' must occur once in the shared timeline');
+    }
     assert.equal(doc.querySelectorAll('.spot-page-rail-station').length, dom.window.MADO_SPOT_PAGE_SHARED_DATA.stations.length);
     assert.ok(doc.querySelector('.spot-page-rail-title').textContent.includes(lang === 'ja' ? '東京' : 'Tokyo'));
     const kiyLink = [...doc.querySelectorAll('.spot-page-rail-link')].find(a => a.href.endsWith('/spots/kiyosu.html'));
