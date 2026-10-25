@@ -926,6 +926,20 @@ const SPOTS = [
         }
       }
     ],
+    "media": {
+      "heading": { "ja": "動画で見るかぐやの灯", "en": "Kaguya no To in motion" },
+      "description": {
+        "ja": "ライトアップされたかぐやの灯を、車窓から見る動画です。",
+        "en": "See Kaguya no To illuminated from the train window."
+      },
+      "videos": [{
+        "kind": "youtube",
+        "id": "8PAjCJxCTVE",
+        "url": "https://www.youtube.com/watch?v=8PAjCJxCTVE",
+        "title": { "ja": "[新幹線の車窓] ライトアップされたかぐやの灯 (上植野浄水場の配水塔)", "en": "[新幹線の車窓] ライトアップされたかぐやの灯 (上植野浄水場の配水塔)" }
+      }],
+      "platformNote": { "ja": "動画はYouTubeの公式埋め込みを利用しています。", "en": "This video uses the official YouTube embed." }
+    },
     "references": [
       {
         "label": {
@@ -1741,12 +1755,12 @@ const SPOTS = [
       ja: [
         "都内から富士山が見える確率は、空気の乾いた冬から早春がもっとも高く、夏場は霞んでほとんど見えないのが普通です。朝は空気が澄んでいて視程が延び、午後になると都市の熱と水蒸気で見えづらくなる傾向があります。乗車前に、天気予報の湿度や視程を軽く見ておくと期待値の調整になります。",
         "手前の景色にも注目してください。品川駅周辺には近年整備された高層オフィスビルが並び、大井町付近ではJR東日本の車両基地が広がります。さらに進むと大田区の住宅地と町工場が続き、羽田空港へ向かう航空機の姿も入りやすい区間です。都会の日常のなかに、遠くの富士山が立つ——という構図そのものが、この車窓の主役です。",
-        "見えなくても落ち込まないでください。この区間は「今日は都心が澄んでいるか」を確かめる指標のような場所でもあります。ここで見えなかった日でも、三島〜新富士では大きな富士山があらためて姿を見せてくれます。",
+        "見えなくても落ち込まないでください。この区間は「今日は都心が澄んでいるか」を確かめる指標のような場所でもあります。三島〜新富士には、もっと近くから眺める機会がありますが、雲や霞で見えないこともあります。",
       ],
       en: [
         "Chances of seeing Mt. Fuji from central Tokyo are highest in the dry months of winter and early spring; summer is usually hazy. Mornings offer better visibility, while afternoons tend to lose it to urban heat and humidity. Glancing at the humidity and visibility forecast before you board helps set expectations.",
         "The foreground is part of the show. Around Shinagawa Station, newly built office towers line the tracks; near Oimachi, JR East's large train depots spread beside the line. Further on, Ota's residential blocks and small factories continue, and aircraft climbing from or descending to Haneda often enter the frame. A distant Fuji standing behind everyday Tokyo — that composition itself is the point of this view.",
-        "Do not worry if you cannot see it. This stretch is really an indicator of how clear central Tokyo is today. Even on days when Fuji stays hidden here, the mountain fills the window again between Mishima and Shin-Fuji.",
+        "Do not worry if you cannot see it. This stretch is an indicator of how clear central Tokyo is today. Between Mishima and Shin-Fuji, there is another opportunity to see the mountain from much closer, though clouds or haze can still hide it.",
       ],
     },
     guideHighlight: {
@@ -1788,13 +1802,13 @@ const SPOTS = [
       "name": "丸子橋",
       "area": "品川 → 新横浜（多摩川付近）",
       "hook": "多摩川に、青いアーチ橋。",
-      "story": "品川を過ぎて新横浜へ向かう途中、多摩川を渡る前後でE席側に青いアーチの丸子橋があらわれます。東京都大田区田園調布本町と、川崎市中原区上丸子八幡町を結ぶ中原街道の橋で、東京のビル街から一気に川の景色に切り替わる序盤の小さな節目です。現在の橋は2000年に架け替えられた2代目で、青く塗られたブレースドリブ・タイドアーチ橋という珍しい形式。映画『シン・ゴジラ』にゴジラ第2形態が上陸するシーンなど、ドラマ・映画のロケ地としても知られます。橋のすぐ手前（多摩川台）には亀甲山古墳を含む多摩川台古墳群の緑が広がり、都心近郊とは思えない古代の面影が重なります。"
+      "story": "品川を過ぎて新横浜へ向かう途中、多摩川を渡る前後でE席側に青いアーチの丸子橋があらわれます。東京都大田区田園調布本町と、川崎市中原区上丸子八幡町を結ぶ中原街道の橋で、東京のビル街から一気に川の景色に切り替わる序盤の小さな節目です。現在の橋は2000年に架け替えられた2代目で、青く塗られたブレースドリブ・タイドアーチ橋という珍しい形式。丸子橋を含む多摩川沿いは、映画『シン・ゴジラ』にも登場する風景です。橋のすぐ手前（多摩川台）には亀甲山古墳を含む多摩川台古墳群の緑が広がり、都心近郊とは思えない古代の面影が重なります。"
     },
     "en": {
       "name": "Maruko Bridge",
       "area": "Shinagawa → Shin-Yokohama, near the Tama River",
       "hook": "A blue arch over the Tama River.",
-      "story": "After Shinagawa, as the train heads toward Shin-Yokohama, the blue-painted arch of Maruko Bridge comes into view on the Seat E side as you cross the Tama River. Carrying the Nakahara Kaido road, the bridge links Denenchofu-honmachi in Ota, Tokyo with Kami-Maruko in Nakahara, Kawasaki. It marks a small early turning point in the ride, where central Tokyo suddenly becomes river scenery. The current bridge is a second-generation braced-rib tied-arch bridge, rebuilt in 2000 and unusual in Japan. Film fans may know it as one of the landmarks in Shin Godzilla, where Godzilla's second form crawls ashore nearby. Just before the bridge on the Tokyo side rises the green of Tamagawadai Park, home to the Kamenokoyama Kofun and several other early tumuli — an ancient presence you rarely expect this close to central Tokyo."
+      "story": "After Shinagawa, as the train heads toward Shin-Yokohama, the blue-painted arch of Maruko Bridge comes into view on the Seat E side as you cross the Tama River. Carrying the Nakahara Kaido road, the bridge links Denenchofu-honmachi in Ota, Tokyo with Kami-Maruko in Nakahara, Kawasaki. It marks a small early turning point in the ride, where central Tokyo suddenly becomes river scenery. The current bridge is a second-generation braced-rib tied-arch bridge, rebuilt in 2000 and unusual in Japan. The Tama River landscape around Maruko Bridge also appears in Shin Godzilla. Just before the bridge on the Tokyo side rises the green of Tamagawadai Park, home to the Kamenokoyama Kofun and several other early tumuli — an ancient presence you rarely expect this close to central Tokyo."
     },
     "pageTitle": {
       "ja": "新幹線から見える丸子橋｜多摩川の青いアーチ橋 | 新幹線の窓",
@@ -1834,12 +1848,12 @@ const SPOTS = [
       "ja": [
         "現在の丸子橋のアーチは、上向きに湾曲した主構と斜めに交差する副材（ブレース）を組んだ「ブレースドリブ・タイドアーチ」と呼ばれる形式です。全長は約400m、中央のアーチ支間が160m以上あります。青いカラーリングは、多摩川の水色と河川敷の緑に合わせて選ばれたと言われ、対岸の武蔵小杉のタワマン群と対比する形で、都心通勤路の景観アイコンにもなっています。",
         "橋の東京側の手前、多摩川台には多摩川台公園と多摩川台古墳群があります。中でも亀甲山古墳（かめのこやまこふん）は4世紀後半に築かれた前方後円墳で、国指定史跡。都心近郊とは思えない緑の丘陵と、その中に眠る大型古墳の存在は、車窓から見えるコンクリートと川面の風景に「意外な深い時間」を差し込んでくれます。",
-        "撮影スポットとしても人気で、映画『シン・ゴジラ』ではゴジラ第2形態が多摩川を遡上する場面の背景として登場しました。テレビドラマやドキュメンタリーの撮影も多く、東急東横線の多摩川鉄橋・武蔵小杉の高層ビル群と組み合わせて撮られる、川崎・大田の代表的な都市景観のひとつです。"
+        "丸子橋を含む多摩川沿いは、映画『シン・ゴジラ』にも登場する風景です。テレビドラマやドキュメンタリーの撮影も多く、東急東横線の多摩川鉄橋・武蔵小杉の高層ビル群と組み合わせて撮られる、川崎・大田の代表的な都市景観のひとつです。"
       ],
       "en": [
         "The current arch is what engineers call a braced-rib tied-arch — a curved main rib stiffened by diagonal cross-bracing. It is roughly 400 meters long, with a central arch span of over 160 meters. The blue color was chosen to blend with the Tama River's water and the riverside greenery, and today it forms a visual counterpart to the tall towers of Musashi-Kosugi rising on the opposite bank.",
         "Just before the bridge on the Tokyo side lies Tamagawadai Park and the Tamagawadai kofun cluster. Its centerpiece, Kamenokoyama Kofun, is a keyhole-shaped tumulus built in the late 4th century and designated a National Historic Site. Finding a wooded ridge with a large ancient tumulus this close to central Tokyo adds an unexpectedly deep layer of time to a view otherwise dominated by concrete and river.",
-        "The bridge is also a popular filming location. In Shin Godzilla (2016), Godzilla's second form appears crawling up the Tama River with Maruko Bridge in the background. Together with the Tokyu Toyoko Line's Tama River bridge and the Musashi-Kosugi high-rises, it is one of the most recognizable urban river scenes on the Kawasaki-Ota border."
+        "The Tama River landscape around Maruko Bridge also appears in Shin Godzilla (2016). Together with the Tokyu Toyoko Line's Tama River bridge and the Musashi-Kosugi high-rises, it is one of the most recognizable urban river scenes on the Kawasaki-Ota border."
       ]
     },
     "guideHighlight": {
@@ -2129,7 +2143,7 @@ const SPOTS = [
     photoSectionHeading: { ja: "昔と今、同じ場所の看板", en: "Earlier and current signs at the same location" },
     icon: "🫧",
     ja: { name: "プチプチの看板", area: "新横浜 → 小田原（大磯町付近）", hook: "プチプチ®の謎看板。", story: "新横浜から小田原へ向かう途中、A席側に見える、プチプチ®で知られるプチプチ株式会社（旧・川上産業）の看板です。現在は「私は誰でしょう」と問いかけるコピーとQRコードを掲げています。隣には727 COSMETICS看板も立っているため、少し幅を持って探してください。" },
-    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Oiso", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. This spot previously carried an ad from Kawakami Sangyo, the company known for PUTIPUTI bubble wrap, and the trackside sign changes from time to time. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
+    en: { name: "Who am I? Sign", area: "Shin-Yokohama → Odawara, around Oiso", hook: "Who am I?", story: "Between Shin-Yokohama and Odawara, a small mystery billboard on the Seat A side asks, 'Who am I?' There is also a QR code in the upper-right corner, but reading it from a Shinkansen window is realistically difficult. The billboard advertises Putiputi Co., Ltd., formerly Kawakami Sangyo, the maker of PUTIPUTI® bubble wrap. Beside it is the familiar 727 COSMETICS sign, so start watching with a little margin." },
     pageTitle: {
       ja: "プチプチの看板｜「私は誰でしょう？」が新幹線から見える場所と席側 | 新幹線の窓",
       en: "Who am I? Sign: A Mystery Shinkansen Billboard | Shinkansen Window",
@@ -2144,7 +2158,7 @@ const SPOTS = [
     },
     metaDescription: {
       ja: "新幹線の「私は誰でしょう」看板は、プチプチ株式会社（旧・川上産業）の広告。大磯町のA席側で見える場所を、以前のプチプチ看板と2026年の車窓写真で見比べられます。",
-      en: "The 'Who am I?' sign is a mystery trackside billboard seen from the Shinkansen near Oiso. Learn its seat side, timing and location, and its origin as a former PUTIPUTI bubble-wrap ad by Kawakami Sangyo.",
+      en: "The 'Who am I?' billboard near Oiso advertises Putiputi Co., Ltd., maker of PUTIPUTI® bubble wrap. Learn where to look from Seat A and compare earlier and current signs in window photographs.",
     },
     sectionHeading: {
       ja: "プチプチの看板とは？",
@@ -2152,7 +2166,7 @@ const SPOTS = [
     },
     pageStory: {
       ja: "この看板は、東京から小田原方面へ向かう新幹線のA席側、大磯町寺坂の農地に立つ、プチプチ®で知られるプチプチ株式会社（旧・川上産業株式会社）の広告です。以前は水色の気泡のイラストと商品名を大きく掲げていましたが、2025年頃から「私は誰でしょう」というコピーとQRコードだけのデザインに変わりました。川上産業は2026年10月1日付で社名を「プチプチ株式会社」へ変更しました。同じ場所の新旧写真から、車窓の看板の変化を見比べられます。",
-      en: "This billboard is one of several roadside signs standing on farmland at Terasaka in Oiso, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The same site for years carried an ad for Kawakami Sangyo Corporation, best known for its PUTIPUTI® bubble-wrap products, and the pale-blue bubble illustration was a familiar trackside sight amid the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? Kawakami Sangyo changed its company name to Putiputi Co., Ltd on October 1, 2026. The photographs show how the sign at this same location has changed.",
+      en: "This billboard is one of several roadside signs standing on farmland at Terasaka in Oiso, on the Seat A side of the Shinkansen as it heads from Tokyo toward Odawara. The billboard advertises Putiputi Co., Ltd., formerly Kawakami Sangyo, the maker of PUTIPUTI® bubble wrap. Earlier signs showed pale-blue bubbles and the product name against the green fields. Around 2025 the sign was replaced with the current 'Who am I?' copy and a QR code alone — a deliberately anonymous look that has attracted online curiosity: what is this? Kawakami Sangyo changed its company name to Putiputi Co., Ltd on October 1, 2026. The photographs show how the sign at this same location has changed.",
     },
     explainer: {
       heading: { ja: "背景と楽しみ方", en: "The backstory and how to enjoy it" },
@@ -2165,7 +2179,7 @@ const SPOTS = [
       en: [
         "'PUTIPUTI®' is Kawakami Sangyo's registered trademark for the clear, air-bubble packaging material it began producing in Japan in 1968; it is the everyday Japanese word for what English speakers call bubble wrap. In Japan, the brand name has become the general term for the product. Kawakami Sangyo has long run playful advertising, and its trackside sign here was part of that brand communication.",
         "The current 'Who am I?' sign deliberately hides the advertiser's name, leaving only a QR code. At Shinkansen speeds, actually scanning the code from the train is essentially impossible — so the sign works because the very act of wondering, 'what was that?' and looking it up later is the advertisement.",
-        "Trackside billboards in Japan often change every few years, so recent riders and long-time regulars may remember the spot differently. The photo gallery below includes both the earlier PUTIPUTI sign and the current 'Who am I?' one. Kawakami Sangyo changed its name to Putiputi Co., Ltd on October 1, 2026.",
+        "Trackside billboards in Japan often change every few years, so recent riders and long-time regulars may remember the spot differently. The photo gallery below includes both the earlier PUTIPUTI sign and the current 'Who am I?' one, which advertises Putiputi Co., Ltd. Kawakami Sangyo changed its name to Putiputi Co., Ltd on October 1, 2026.",
       ],
     },
     guideHighlight: {
@@ -4021,18 +4035,18 @@ const SPOTS = [
     explainer: {
       heading: { ja: "見え方のコツと、季節の話", en: "How to catch it, and how the season matters" },
       ja: [
-        "新幹線での左富士は、静岡駅を出て安倍川を渡り、静岡市駿河区・清水区あたりを走るごく短い区間で発生します。時間にして数秒〜十数秒程度なので、まず「A席側に富士山が来る」と意識して窓の外を見ておかないと、あっという間に通り過ぎます。安倍川を渡り終わったら、視線を少し前方（進行方向・海側やや上）へ向けて構えるのがコツです。",
-        "冬から早春は雪を戴いた富士山の輪郭がはっきり見え、A席側の街並みや工場の間からでも見つけやすくなります。雪のない夏場は空気の色に富士山が溶け込みやすく、想像以上に見つけにくいことがあります。曇りや雨、霞の日は素直に諦め、その分E席側の景色（三島〜新富士の主役の富士山）を楽しむのが現実的です。",
+        "新大阪方面へ向かう列車では、静岡駅を出て安倍川を渡ってまもなく、静岡市駿河区の短い区間で左富士を探せます。見えるのは数秒〜十数秒程度。A席側の建物や工場の間に富士山が現れるので、先に窓へ視線を向けておきましょう。",
+        "冬から早春は雪を戴いた富士山の輪郭がはっきり見え、A席側の街並みや工場の間からでも見つけやすくなります。雪のない夏場は空気の色に富士山が溶け込みやすく、想像以上に見つけにくいことがあります。雲や雨、霞で見えないこともあります。三島〜新富士のE席側は、より近くから富士山を眺められる別の区間ですが、そちらも天候によって見えないことがあります。",
         "東京方面の列車でも探すのはA席側です。進行方向では右側になるため、左側を探さないようにしてください。「左富士」は新大阪方面へ走る時の呼び名です。",
       ],
       en: [
-        "The Shinkansen's Left Fuji occurs in a very short section that runs through Suruga and Shimizu wards of Shizuoka City, just after crossing the Abe River. The window of opportunity is only a few seconds to around 10–15 seconds, so you really need to have 'Fuji on Seat A' primed in your head. Once the train finishes crossing the Abe River, aim your gaze slightly forward, toward the sea side and a little upward.",
-        "In winter and early spring, snow-capped Fuji stands out crisply and you can pick it out even between the buildings and factories on the Seat A side. In snowless summer months, Fuji melts into a similar sky color and can be surprisingly hard to find. On cloudy, rainy or hazy days, it is best to give this one up and enjoy the main-event Fuji on the Seat E side between Mishima and Shin-Fuji.",
+        "On trains toward Shin-Osaka, this brief view occurs in Suruga Ward, Shizuoka, soon after the Abe River crossing. The opportunity lasts only a few seconds to around 10–15 seconds. Look for Fuji between buildings and factories on the Seat A side, and have your eyes on the window in advance.",
+        "In winter and early spring, snow-capped Fuji stands out crisply and you can pick it out even between the buildings and factories on the Seat A side. In snowless summer months, Fuji melts into a similar sky color and can be surprisingly hard to find. Clouds, rain or haze may hide this view. The Seat E view between Mishima and Shin-Fuji offers a closer view in another part of the journey, but visibility there also depends on the weather.",
         "On Tokyo-bound trains, look on the Seat A side as well: this is the right side in the direction of travel. The name Left-side Fuji refers to the view when heading toward Shin-Osaka.",
       ],
     },
     guideHighlight: {
-      ja: "安倍川を渡ったら、A席側の海寄りの上空を意識してください。ビルや工場の合間から、富士山の頂上部だけ、あるいは輪郭全体がすっと差し込んできます。数秒で消えるので、スマホから顔を上げて窓の外へ視線を先に向けておくのが最大のコツです。",
+      ja: "安倍川を渡ったら、A席側の建物の間を探してください。ビルや工場の合間から、富士山の頂上部だけ、あるいは輪郭全体がすっと差し込んできます。数秒で消えるので、スマホから顔を上げて窓の外へ視線を先に向けておくのが最大のコツです。",
       en: "As soon as the train finishes crossing the Abe River, focus on the sky slightly above the horizon on the Seat A (sea) side. Fuji — sometimes only the summit, sometimes the whole outline — slips into view between buildings and factories. It lasts only a few seconds, so the single best trick is to look up from your phone in advance and keep your eyes on the window.",
     },
     minutesFromTokyo: 54, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", scene: "leftfuji",
@@ -5409,48 +5423,48 @@ const SPOTS = [
   {
     id: "mikawa-oshima",
     icon: "🏝️",
-    ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "海の向こうに、ひょうたん型の島。", story: "豊橋を過ぎたあと、A席側の遠くに三河湾と三河大島が浮かぶことがあります。ふたつの島がくびれた砂州でつながった、ひょうたん型のシルエットが特徴の無人島です。浜名湖の水面が過ぎたあとも、海側の車窓にはまだ見つける楽しみが残っている——そんな存在。見通しの良い日に、蒲郡沖の水平線を探してみてください。" },
-    en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "A gourd-shaped island beyond the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima sometimes appear far away on the Seat A side. It is an uninhabited island shaped like a gourd — two smaller islands linked by a slender sandbar. After Lake Hamana passes, this is a reminder that Seat A still has quiet discoveries. On clear days, scan the horizon off Gamagori." },
+    ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "三河湾の遠くに、島影。", story: "豊橋を過ぎたあと、A席側の遠くに三河湾と三河大島が浮かぶことがあります。蒲郡の沖合約3kmに浮かぶ無人島で、見通しの良い日には低い島影を探せます。浜名湖の水面が過ぎたあとも、海側の車窓にはまだ見つける楽しみが残っている——そんな存在。見通しの良い日に、蒲郡沖の水平線を探してみてください。" },
+    en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "An island silhouette across the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima sometimes appear far away on the Seat A side. It is an uninhabited island about 3 km off Gamagori, with a low outline to look for across the water on clear days. After Lake Hamana passes, this is a reminder that Seat A still has quiet discoveries. On clear days, scan the horizon off Gamagori." },
     pageTitle: {
-      ja: "新幹線から見える三河大島とは？ひょうたん型の島の場所と特徴 | 新幹線の窓",
-      en: "What Is Mikawa Oshima? The Gourd-Shaped Island Seen from the Shinkansen",
+      ja: "新幹線から見える三河大島とは？三河湾に浮かぶ島の場所と特徴 | 新幹線の窓",
+      en: "What Is Mikawa Oshima? An Island in Mikawa Bay Seen from the Shinkansen",
     },
     pageHeading: {
-      ja: "海の向こうのひょうたん型——三河大島とは？",
-      en: "The gourd-shaped island beyond the bay: what is Mikawa Oshima?",
+      ja: "三河湾の遠くに浮かぶ、三河大島とは？",
+      en: "An island across Mikawa Bay: what is Mikawa Oshima?",
     },
     pageHeadingChunks: {
-      ja: ["海の向こうの", "ひょうたん型——", "三河大島とは？"],
-      en: ["The gourd-shaped island beyond the bay:", "what is Mikawa Oshima?"],
+      ja: ["三河湾の遠くに浮かぶ、", "三河大島とは？"],
+      en: ["An island across Mikawa Bay:", "what is Mikawa Oshima?"],
     },
     metaDescription: {
-      ja: "豊橋を過ぎて新幹線のA席側、三河湾に浮かぶ三河大島の正体と場所を解説。ひょうたん型の無人島で、蒲郡市の沖合いに位置します。車窓での見つけ方や周辺情報も紹介。",
-      en: "Between Toyohashi and Mikawa-Anjo, the small gourd-shaped island visible far off Seat A is Mikawa Oshima — an uninhabited island in Mikawa Bay off Gamagori. Learn what it is and how to spot it from the Shinkansen.",
+      ja: "豊橋を過ぎて新幹線のA席側、三河湾に浮かぶ三河大島の正体と場所を解説。蒲郡の沖合約3kmにある無人島です。車窓での見つけ方や周辺情報も紹介。",
+      en: "Between Toyohashi and Mikawa-Anjo, the small island visible far off Seat A is Mikawa Oshima — an uninhabited island in Mikawa Bay off Gamagori. Learn what it is and how to spot it from the Shinkansen.",
     },
     sectionHeading: {
       ja: "三河大島はどんな島？",
       en: "What kind of island is Mikawa Oshima?",
     },
     pageStory: {
-      ja: "三河大島は、愛知県蒲郡市の沖合いに浮かぶ無人島です。実は「ふたつの島がひとつになった」形をしていて、大きめの北側の島と小さめの南側の島が、砂州でつながっています。空から見るとまさに「ひょうたん」型。周囲約4km、面積約0.2平方kmと小さな島ですが、車窓のように遠くから見た輪郭は、そのくびれのおかげで意外と目に残ります。夏季には海水浴場が開かれ、季節運航の船で渡れます。開設期間や船の運航日は蒲郡市観光協会の公式案内を参照してください。",
-      en: "Mikawa Oshima is an uninhabited island lying off Gamagori City in Aichi Prefecture. It is really 'two islands in one': a larger northern island and a smaller southern island joined by a sandbar. Seen from above the shape is unmistakably a gourd. The island is small — about 4 km around and roughly 0.2 km² in area — but from far away, that pinched waist actually makes the silhouette memorable. The island has a summer bathing season and seasonal passenger boats. Refer to the Gamagori tourism association for beach opening dates and boat schedules.",
+      ja: "三河大島は、愛知県蒲郡市の沖合約3kmに浮かぶ無人島です。車窓からは三河湾の遠くに見える低い島影で、海と街並みが入れ替わる区間の小さな目印になります。夏季には海水浴場が開かれ、季節運航の船で渡れます。開設期間や船の運航日は蒲郡市観光協会の公式案内を参照してください。",
+      en: "Mikawa Oshima is an uninhabited island about 3 km off Gamagori City in Aichi Prefecture. From the train, its low outline is a small landmark across Mikawa Bay, in a stretch where sea and town alternate in the window. The island has a summer bathing season and seasonal passenger boats. Refer to the Gamagori tourism association for beach opening dates and boat schedules.",
     },
     explainer: {
       heading: { ja: "三河湾と、車窓からの見え方", en: "Mikawa Bay and how it appears from the train" },
       ja: [
         "三河湾は、渥美半島と知多半島に囲まれた比較的浅い内湾で、東京湾や大阪湾に比べて穏やかな海面が広がるのが特徴です。牡蠣・アサリ・海苔などの養殖が盛んで、いくつもの小島が散らばっています。三河大島はその中でも蒲郡沖に浮かぶ代表的な島のひとつで、蒲郡沖約3kmの位置にあります。",
-        "新幹線からは、豊橋を出て蒲郡・三ケ根方向へ進むにつれてA席側に海面が広がる区間があります。海がずっと開けているのではなく、市街地と丘の合間にちらちらと現れる形なので、意識せずに乗っていると通り過ぎがちです。「ひょうたん型の島」を先に頭に入れて窓の外を眺めると、うっすらとしたシルエットが視野に入ってくることがあります。",
+        "新幹線からは、豊橋を出て蒲郡・三ケ根方向へ進むにつれてA席側に海面が広がる区間があります。海がずっと開けているのではなく、市街地と丘の合間にちらちらと現れる形なので、意識せずに乗っていると通り過ぎがちです。海の向こうの低い島影を意識して窓の外を眺めると、うっすらとしたシルエットが視野に入ってくることがあります。",
         "この一帯は東洋経済オンラインの車窓連載でも取り上げられており、車窓から見える三河湾の風景としては数少ないランドマークのひとつです。晴天で視程が長い日、朝夕の斜光で島の輪郭が濃く出るタイミングが狙い目です。",
       ],
       en: [
         "Mikawa Bay is a relatively shallow inlet enclosed by the Atsumi and Chita peninsulas, calmer than Tokyo Bay or Osaka Bay and dotted with small islands. It is well known for oyster, clam and nori seaweed cultivation. Mikawa Oshima is one of the most recognizable islands in the bay, lying about 3 km offshore from Gamagori.",
-        "From the Shinkansen, the Seat A side opens toward the bay in short bursts after Toyohashi as the train moves toward the Gamagori and Sangane area. The sea does not stay in view continuously; it flickers between towns and hills, so it is easy to miss without knowing where to look. Keep the 'gourd-shaped island' image in your head, and you may spot its low silhouette across the water.",
+        "From the Shinkansen, the Seat A side opens toward the bay in short bursts after Toyohashi as the train moves toward the Gamagori and Sangane area. The sea does not stay in view continuously; it flickers between towns and hills, so it is easy to miss without knowing where to look. Look for a low island silhouette across the water.",
         "This stretch has been featured in Toyo Keizai's Shinkansen window column as one of the rare identifiable landmarks on the Mikawa Bay side. Best conditions: clear days with long visibility, or the angled light of early morning or late afternoon, when the island's outline becomes darker against the water.",
       ],
     },
     guideHighlight: {
-      ja: "豊橋を出て蒲郡付近を進むあいだ、A席側の遠くに水平線が開ける瞬間があります。そのとき、水平線の上にごく低くひょうたん型の輪郭を探してみてください。派手なランドマークではないぶん、見つけた瞬間のちょっとした達成感がある車窓です。",
-      en: "After Toyohashi, as the train passes Gamagori, watch for moments when the far horizon opens on the Seat A side. In those seconds, look for a low, gourd-shaped outline sitting just above the water. It is not a bold landmark, but exactly for that reason, spotting it feels like a small quiet win.",
+      ja: "豊橋を出て蒲郡付近を進むあいだ、A席側の遠くに水平線が開ける瞬間があります。そのとき、水平線の上にごく低い島影を探してみてください。派手なランドマークではないぶん、見つけた瞬間のちょっとした達成感がある車窓です。",
+      en: "After Toyohashi, as the train passes Gamagori, watch for moments when the far horizon opens on the Seat A side. In those seconds, look for a low island outline sitting just above the water. It is not a bold landmark, but exactly for that reason, spotting it feels like a small quiet win.",
     },
     minutesFromTokyo: 82.5, side: "A", category: "notable", confidence: "verified", durationSec: 5, spotting: "moderate", visibleWhenCloudy: true, scene: "bay",
     image: "images/20181213_mikawa_oshima_kawasan3.jpg",
@@ -5975,13 +5989,13 @@ const SPOTS = [
       "name": "名古屋駅前",
       "area": "名古屋到着直前",
       "hook": "あのビル群は何？名古屋駅前。",
-      "story": "東京から新大阪方面へ向かう列車では、名古屋到着直前にE席側の景色が一気に高層ビル街へ変わります。ねじれた網目模様はモード学園スパイラルタワーズ、駅の真上に並ぶ2本の白い塔はJRセントラルタワーズ、その隣で駅ホームを覆うガラスの巨大な塔はJRゲートタワー。少し北寄りに濃い色をした四角い塔はミッドランドスクエア、少し西の白い塔は大名古屋ビルヂング……と、名古屋駅前は明確に名前の付いた高層ビルが5〜6本、密集して立つ日本屈指の駅前スカイラインです。建物の名前が分かるだけで、短い駅前風景が名古屋到着の小さな建築案内になります。"
+      "story": "東京から新大阪方面へ向かう列車では、名古屋到着直前にE席側の景色が一気に高層ビル街へ変わります。ねじれた網目模様はモード学園スパイラルタワーズ、駅の真上に並ぶ2本の白い塔はJRセントラルタワーズ、その隣のガラスの巨大な塔はJRゲートタワー。濃い色をした四角い塔はミッドランドスクエア、白い塔は大名古屋ビルヂング……と、名古屋駅前は明確に名前の付いた高層ビルが5〜6本、密集して立つ日本屈指の駅前スカイラインです。建物の名前が分かるだけで、短い駅前風景が名古屋到着の小さな建築案内になります。"
     },
     "en": {
       "name": "Nagoya Station Skyline",
       "area": "Just before Nagoya",
       "hook": "Which towers are those?",
-      "story": "Approaching Nagoya from Tokyo, the view on the Seat E side suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, and the huge glass tower right beside them, covering the platforms, is JR Gate Tower. The dark rectangular tower slightly to the north is Midland Square, while the light-colored slab a little to the west is Dai Nagoya Building — five or six clearly named high-rises grouped around one station, one of Japan's densest station-front skylines. Knowing the names turns the brief cityscape into a small architecture tour announcing your arrival."
+      "story": "Approaching Nagoya from Tokyo, the view on the Seat E side suddenly opens onto a wall of high-rises. The twisted lattice tower is Mode Gakuen Spiral Towers. The pair of white towers directly above the station are JR Central Towers, and the huge glass tower right beside them is JR Gate Tower. The dark rectangular tower is Midland Square, while the light-colored slab is Dai Nagoya Building — five or six clearly named high-rises grouped around one station, one of Japan's densest station-front skylines. Knowing the names turns the brief cityscape into a small architecture tour announcing your arrival."
     },
     "pageTitle": {
       "ja": "新幹線から見える名古屋駅前のスカイライン｜あの高層ビルの名前 | 新幹線の窓",
@@ -6010,8 +6024,8 @@ const SPOTS = [
       "en": "Which tower is which?"
     },
     "pageStory": {
-      "ja": "名古屋駅前（名駅・めいえき）エリアは、平成〜令和にかけて名古屋の顔として大きく変化してきた再開発エリアです。1999年、駅の真上にJRセントラルタワーズがオフィス・ホテル・百貨店を統合した超高層複合施設として完成し、名古屋のスカイラインを大きく塗り替えました。その後、2007年ミッドランドスクエア（トヨタ自動車グループ本社ビル）、2008年モード学園スパイラルタワーズ、2017年JRゲートタワーと、10〜20年のスパンで駅を取り囲む形で超高層ビルが積み上がっていき、駅前は日本国内でも屈指の高層ビル集積地になりました。",
-      "en": "The area right in front of Nagoya Station — known locally as Meieki — is one of Japan's most dramatically redeveloped station districts of the Heisei and Reiwa eras. In 1999, JR Central Towers rose directly above the station as a combined office, hotel and department-store complex, redrawing Nagoya's skyline. That was followed by Midland Square (headquarters of the Toyota Motor group) in 2007, Mode Gakuen Spiral Towers in 2008 and JR Gate Tower in 2017 — a two-decade run of skyscraper construction that has turned Meieki into one of Japan's densest concentrations of high-rise buildings."
+      "ja": "名古屋駅前（名駅・めいえき）エリアは、平成〜令和にかけて名古屋の顔として大きく変化してきた再開発エリアです。1999年、駅の真上にJRセントラルタワーズがオフィス・ホテル・百貨店を統合した超高層複合施設として完成し、名古屋のスカイラインを大きく塗り替えました。その後、2007年ミッドランドスクエア（トヨタ自動車の名古屋オフィスなどが入る複合ビル）、2008年モード学園スパイラルタワーズ、2017年JRゲートタワーと、10〜20年のスパンで駅を取り囲む形で超高層ビルが積み上がっていき、駅前は日本国内でも屈指の高層ビル集積地になりました。",
+      "en": "The area right in front of Nagoya Station — known locally as Meieki — is one of Japan's most dramatically redeveloped station districts of the Heisei and Reiwa eras. In 1999, JR Central Towers rose directly above the station as a combined office, hotel and department-store complex, redrawing Nagoya's skyline. That was followed by Midland Square (home to Toyota's Nagoya office and other tenants) in 2007, Mode Gakuen Spiral Towers in 2008 and JR Gate Tower in 2017 — a two-decade run of skyscraper construction that has turned Meieki into one of Japan's densest concentrations of high-rise buildings."
     },
     "explainer": {
       "heading": {
@@ -6020,17 +6034,17 @@ const SPOTS = [
       },
       "ja": [
         "JRセントラルタワーズ（1999年）は、駅の真上に立つ双塔で、オフィス側245m、ホテル側226m。当時「駅ビル」の常識を大きく塗り替えた建築として国際的にも注目されました。名古屋駅の顔として長く親しまれる存在です。",
-        "JRゲートタワー（2017年）は、セントラルタワーズと隣接して立つ約220mの複合ビル。低層部にはJR名古屋高島屋のゲートタワーモール、上層はオフィスとホテル。新幹線ホームが直接ビルの下に組み込まれた特殊な構成で、乗車したまま巨大なガラス壁の下を潜っていく感覚があります。",
+        "JRゲートタワー（2017年）は、セントラルタワーズに隣接し、名古屋駅に直結する約220mの複合ビル。低層部にはJR名古屋高島屋のゲートタワーモール、上層はオフィスとホテルが入っています。",
         "モード学園スパイラルタワーズ（2008年）は、名駅エリアで最も目立つ独特のシルエットを持つ170mの校舎ビル。3本の光沢帯（ホワイトカーテンウォール、ダークメタリック、シルバー系ガラス）が上方向に螺旋を描く外観で、専門学校3校（HAL名古屋・名古屋モード学園・名古屋医専）が入居しています。日本建築学会賞など多数の受賞歴があるモダン建築です。",
-        "ミッドランドスクエア（2007年）は、トヨタ自動車グループの本社ビルとして建てられた247mの複合ビル。低層階のブランドショップ、上層のオフィス、最上階には屋外展望施設「スカイプロムナード」があります。夜景スポットとしても知られる存在です。",
-        "そのほか、駅の南西側には大名古屋ビルヂング（2016年建替、180m）、名古屋ルーセントタワー（2007年、180m）などが並び、車窓では複数の高層ビルが折り重なるように見えます。"
+        "ミッドランドスクエア（2007年）は、トヨタ自動車の名古屋オフィスなどが入る247mの複合ビル。低層階のブランドショップ、上層のオフィス、最上階には屋外展望施設「スカイプロムナード」があります。夜景スポットとしても知られる存在です。",
+        "そのほか、駅の周辺には大名古屋ビルヂング（2015年竣工、2016年全館開業、約175m）、名古屋ルーセントタワー（2007年、180m）などが並び、車窓では複数の高層ビルが折り重なるように見えます。"
       ],
       "en": [
         "JR Central Towers (1999) — the twin towers rising directly above the station, 245 m on the office side and 226 m on the hotel side. When it opened, this complex redefined what a Japanese station building could be and drew international attention.",
-        "JR Gate Tower (2017) — a roughly 220 m mixed-use tower right next to JR Central Towers. Its lower floors house the JR Nagoya Takashimaya Gate Tower Mall, its upper floors host offices and a hotel. Unusually, the Shinkansen platforms slide directly beneath the tower, so trains literally arrive under a huge wall of glass.",
+        "JR Gate Tower (2017) — a roughly 220 m mixed-use tower beside JR Central Towers, directly connected to Nagoya Station. Its lower floors house the JR Nagoya Takashimaya Gate Tower Mall, while its upper floors contain offices and a hotel.",
         "Mode Gakuen Spiral Towers (2008) — the 170 m academic building with the most distinctive silhouette in Meieki. Three vertical strips (white curtain wall, dark metallic panel and silver glass) spiral upward around the tower. It houses three vocational schools (HAL Nagoya, Nagoya Mode Gakuen and Nagoya Isen) and has won multiple architecture awards.",
-        "Midland Square (2007) — the 247 m headquarters complex of the Toyota Motor group. Boutique shops fill the lower floors, offices the middle, and an open-air observatory 'Sky Promenade' crowns the top; it is also a well-known night-view spot.",
-        "Nearby stand additional towers such as the redeveloped Dai Nagoya Building (2016, 180 m) and Nagoya Lucent Tower (2007, 180 m), so from the train the skyline appears as multiple high-rises overlapping."
+        "Midland Square (2007) — a 247 m mixed-use complex housing Toyota's Nagoya office and other tenants. Boutique shops fill the lower floors, offices the middle, and an open-air observatory 'Sky Promenade' crowns the top; it is also a well-known night-view spot.",
+        "Nearby stand additional towers such as Dai Nagoya Building (completed in 2015 and fully opened in 2016, about 175 m) and Nagoya Lucent Tower (2007, 180 m), so from the train the skyline appears as multiple high-rises overlapping."
       ]
     },
     "guideHighlight": {
@@ -6282,12 +6296,12 @@ const SPOTS = [
       ja: [
         "銀色の円筒タンクは、ビールを発酵・熟成させ、そのまま貯蔵する「発酵貯酒タンク」です。仕込み釜で麦芽と水から作った麦汁（ばくじゅう）に酵母を加え、糖分がアルコールと炭酸ガスに変わっていく発酵工程がここで行われます。発酵後は0℃前後の低温で数週間、酵母の働きが落ち着くまで熟成させ、味わいを整えます。1基あたり数百キロリットルの容量を持つものも多く、これが数十本並ぶスケール感が、新幹線から見る「巨大な生ビール」のイメージにそのままつながっています。",
         "工場では、原材料の受け入れから、仕込み・発酵・貯酒・ろ過・充填（缶・瓶・樽）・出荷までを一つの敷地でおこなっています。名古屋工場は「一番搾り」など主力ブランドのほか、時期によっては限定ビールも仕込む重要拠点です。",
-        "見学ツアー（ブルワリーツアー）も設けられていて、事前予約でビールのできる工程を歩きながら学び、最後に淹れたてのビールを試飲することができます。新幹線で見えたあの銀色のタンクの中を、後日、目で見て体で感じる楽しみ方もあります。",
+        "工場では予約制の見学ツアーも行われています。新幹線で見えたタンクが気になったら、後日、工場でビールづくりを学ぶ楽しみ方もあります。内容や予約条件は公式案内をご確認ください。",
       ],
       en: [
         "The tall silver tanks are fermentation-and-conditioning tanks, where wort — the sugar-rich liquid made from malted barley and water — is combined with yeast and turned into beer. Yeast converts the sugars into alcohol and CO2 over a few days, then the beer is held at near-zero temperatures for weeks to condition and clean up the flavor. Individual tanks can hold hundreds of kiloliters, and rows of dozens of them are exactly what gives the 'giant beers' impression from the train.",
         "The site handles the whole process — raw material intake, brewing, fermentation, conditioning, filtration, canning / bottling / kegging, and shipment. The Nagoya Factory brews Kirin's flagship 'Ichiban Shibori' among other core brands, and periodically produces limited-run seasonal beers.",
-        "The brewery offers reserved 'Brewery Tour' visits, walking guests through the process with a fresh-poured tasting at the end. If the giant silver tanks catch your eye from the Shinkansen, that is one way to close the loop and step inside them later.",
+        "The brewery offers tours by reservation. If the silver tanks catch your eye from the train, you can visit the brewery later to learn how the beer is made. Check the official site for current tour details and booking conditions.",
       ],
     },
     guideHighlight: {
@@ -6443,18 +6457,18 @@ const SPOTS = [
         "江戸時代初期の1610年、徳川家康の命で始まった「清洲越し」により、清洲の街と城の機能はまるごと新設の名古屋城下へ移されました。清洲城はこのとき廃城となり、以後、城郭建築は残っていません。現在、五条川のほとりに立つ白と朱の天守は、1989年（平成元年）に清須市が観光・地域振興のために建てた模擬天守です。史実の外観を復元したものではありませんが、鮮やかな色合いと立地の良さから、清須の新しいランドマークになっています。",
         "内部は歴史資料の展示や体験施設になっており、映像や模型で信長・秀吉・家康と清洲の関わりを学ぶことができます。天守と五条川、朱色の大手橋、周辺に整備された「清洲城信長公園」を含めた景観は、桜の季節を中心に地元でも人気です。",
         "新幹線からは、線路のすぐ北側に朱色の欄干と白い壁が突然あらわれるので、事前にE席側の窓を見ておくのがコツ。速度が出ているので数秒ですが、これだけ線路と接近して見える城は東海道新幹線でも珍しく、印象に残ります。",
-        "夜のライトアップは通年ではなく、冬の「きよすイルミ」や春の清洲城桜まつりなど時期を区切って行われます。点灯している夜に通りかかると、暗い車窓に朱色の天守だけが浮かび上がり、昼とはまったく違う見え方になります。開催時期は年によって変わるので、清須市の公式案内で確認してください。"
+        "点灯している夜に通りかかると、暗い車窓に朱色の天守が浮かび上がり、昼とはまったく違う見え方になります。実施日と時間は清須市の公式案内で確認してください。"
       ],
       "en": [
         "In 1610, under Tokugawa Ieyasu's orders, the so-called Kiyosu-goshi ('Kiyosu Move') relocated the entire town and castle functions of Kiyosu to the new Nagoya Castle town. Kiyosu Castle was decommissioned then, and no castle-era buildings survive. The white-and-vermilion keep you see today beside the Gojo River is a modern reconstruction, built by Kiyosu City in 1989 for tourism and civic revitalization. It is not a faithful restoration of the historical keep, but its vivid coloring and prominent site have made it a fresh local landmark.",
         "Inside, exhibits and interactive displays show how Nobunaga, Hideyoshi and Ieyasu were connected to Kiyosu. The keep, the river, the red Ote Bridge and the surrounding Kiyosu Castle Nobunaga Park form a scenic ensemble, especially popular in cherry-blossom season.",
         "From the train, the red railings and white walls of the keep flash into view just north of the tracks, so look toward the Seat E window in advance. At Shinkansen speed the view lasts only a few seconds — but few castles along the Tokaido line come this close to the rails, which is exactly what makes the moment memorable.",
-        "The night illumination is seasonal rather than year-round: it runs during the winter Kiyosu Illumi and the spring cherry blossom festival. If you pass on a night when it is lit, the vermilion keep is the only thing floating in an otherwise black window. Dates change from year to year, so check the city's official information."
+        "When the castle is lit, the vermilion keep stands out after dark, giving a different view from daytime. Check the city's official information for lighting dates and times."
       ]
     },
     "guideHighlight": {
-      "ja": "名古屋と岐阜羽島のあいだ、線路のすぐ北側で朱色と白の建物を探してください。天守と五条川、朱塗りの大手橋がまとまって見えます。桜の季節や夕方は、川の流れと合わせて色鮮やかに映えます。夜はライトアップされ、暗闇に浮かぶ朱色が特に印象的です。",
-      "en": "Between Nagoya and Gifu-Hashima, look for a red-and-white structure just north of the tracks. The keep, the Gojo River and the vermilion Ote Bridge read as one composition. In cherry-blossom season or the evening, the vivid colors stand out against the river. At night the keep is illuminated, and the vermilion against the dark stands out especially well."
+      "ja": "名古屋と岐阜羽島のあいだ、線路のすぐ北側で朱色と白の建物を探してください。天守と五条川、朱塗りの大手橋がまとまって見えます。桜の季節や夕方は、川の流れと合わせて色鮮やかに映えます。点灯している夜は、暗闇に浮かぶ朱色が特に印象的です。",
+      "en": "Between Nagoya and Gifu-Hashima, look for a red-and-white structure just north of the tracks. The keep, the Gojo River and the vermilion Ote Bridge read as one composition. In cherry-blossom season or the evening, the vivid colors stand out against the river. When the keep is lit at night, its vermilion against the dark stands out especially well."
     },
     "photoTip": {
       "heading": {
@@ -7527,6 +7541,23 @@ const SPOTS = [
           "en": "michikusa"
         },
         "date": "2026-08-16"
+      },
+      {
+        "src": "images/20260914_fujitec-big-wing_night_163846_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の車窓に赤く光るフジテックの「世界のFUJITEC」の看板",
+          "en": "The red illuminated FUJITEC signs seen from the train at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-14",
+        "note": {
+          "ja": "赤く光る「世界のFUJITEC」と、白いELEVATOR・ESCALATORの文字。",
+          "en": "Red FUJITEC lettering and white ELEVATOR and ESCALATOR signs at night."
+        }
       }
     ],
     "media": {
@@ -7640,13 +7671,13 @@ const SPOTS = [
       "name": "南宮大社の大鳥居",
       "area": "岐阜羽島 → 米原",
       "hook": "田園の向こうに、朱の大鳥居。",
-      "story": "岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに、突然大きな朱色の鳥居が姿を現します。これは南宮大社の大鳥居。石造りとしては国内でも屈指の大きさで、高さは21mを超え、道路をまたぐようにそびえています。実物の下に立つと、その巨大さに車から降りて見上げたくなるほど。車窓では一瞬ですが、周りの田園の低い景色との対比で、一度見たら忘れられない鳥居です。"
+      "story": "岐阜羽島を出て関ヶ原へ向かう途中、A席側の田園の向こうに、突然大きな朱色の鳥居が姿を現します。これは南宮大社の大鳥居。高さ約21mの鉄製の鳥居で、道路をまたぐようにそびえています。実物の下に立つと、その巨大さに車から降りて見上げたくなるほど。車窓では一瞬ですが、周りの田園の低い景色との対比で、一度見たら忘れられない鳥居です。"
     },
     "en": {
       "name": "Nangu Taisha Grand Torii",
       "area": "Gifu-Hashima → Maibara",
       "hook": "A giant red torii in the fields.",
-      "story": "Between Gifu-Hashima and Sekigahara, a large vermilion torii suddenly rises beyond the fields on the Seat A side. This is the Grand Torii of Nangu Taisha, one of the largest stone torii gates in Japan — over 21 meters tall and striding across the road below. Seen up close, its scale makes you want to stop and look up. From the train it is only a flash, but framed against the low farmland, it is a torii you do not easily forget."
+      "story": "Between Gifu-Hashima and Sekigahara, a large vermilion torii suddenly rises beyond the fields on the Seat A side. This is the Grand Torii of Nangu Taisha, an iron torii about 21 meters tall, striding across the road below. Seen up close, its scale makes you want to stop and look up. From the train it is only a flash, but framed against the low farmland, it is a torii you do not easily forget."
     },
     "pageTitle": {
       "ja": "新幹線から見える朱の大鳥居は何？南宮大社（美濃国一の宮） | 新幹線の窓",
@@ -7676,8 +7707,8 @@ const SPOTS = [
       "en": "What is Nangu Taisha?"
     },
     "pageStory": {
-      "ja": "南宮大社（なんぐうたいしゃ）は、岐阜県不破郡垂井町に鎮座する古社で、旧美濃国の一の宮です。ご祭神は金山彦命（かなやまひこのみこと）。日本神話ではイザナミの傷から生まれた神とされ、鉱山・鍛冶・金属加工を司る神として、古くから鉄鋼・金属関係者の信仰を集めてきました。全国に3,000社以上あるとも言われる鉱山・金属関連の神社の総本社的存在で、現在も金属工業関連の企業や職人からの崇敬を集めています。関ヶ原の戦い（1600年）で社殿の多くが焼失した後、江戸幕府三代将軍・徳川家光の寄進によって再建された朱塗の本殿・拝殿・楼門などは、国の重要文化財に指定されています。",
-      "en": "Nangu Taisha, in Tarui Town at the western edge of the Nobi Plain, is an ancient shrine and the ichinomiya (principal shrine) of the former Mino Province. Its enshrined deity, Kanayamahiko-no-Mikoto, is a god of mining, blacksmithing and metalworking, and is said in myth to have been born from the wounds of Izanami. Nangu Taisha is regarded as a kind of head shrine for the thousands of mining and metal-related shrines across Japan, and continues to be revered by metal-industry firms and craftspeople. After the shrine buildings largely burned in the Battle of Sekigahara in 1600, the third Tokugawa shogun Iemitsu funded a full reconstruction; today the vermilion main sanctuary, worship hall and tower gate are Nationally Designated Important Cultural Properties."
+      "ja": "南宮大社（なんぐうたいしゃ）は、岐阜県不破郡垂井町に鎮座する古社で、旧美濃国の一の宮です。ご祭神は金山彦命（かなやまひこのみこと）。鉱山・鍛冶・金属加工を司る神として、古くから鉄鋼・金属関係者の信仰を集めてきました。全国に3,000社以上あるとも言われる鉱山・金属関連の神社の総本社的存在で、現在も金属工業関連の企業や職人からの崇敬を集めています。関ヶ原の戦い（1600年）で社殿の多くが焼失した後、江戸幕府三代将軍・徳川家光の寄進によって再建された朱塗の本殿・拝殿・楼門などは、国の重要文化財に指定されています。",
+      "en": "Nangu Taisha, in Tarui Town at the western edge of the Nobi Plain, is an ancient shrine and the ichinomiya (principal shrine) of the former Mino Province. Its enshrined deity, Kanayamahiko-no-Mikoto, is a god of mining, blacksmithing and metalworking. Nangu Taisha is regarded as a kind of head shrine for the thousands of mining and metal-related shrines across Japan, and continues to be revered by metal-industry firms and craftspeople. After the shrine buildings largely burned in the Battle of Sekigahara in 1600, the third Tokugawa shogun Iemitsu funded a full reconstruction; today the vermilion main sanctuary, worship hall and tower gate are Nationally Designated Important Cultural Properties."
     },
     "explainer": {
       "heading": {
@@ -7685,12 +7716,12 @@ const SPOTS = [
         "en": "How big is that torii, really?"
       },
       "ja": [
-        "新幹線から見える朱の鳥居は、南宮大社の一の鳥居（大鳥居）で、県道を跨ぐ形で立っています。石造・鉄骨造の大鳥居としては国内屈指の高さで、地元資料では高さ約21m、幅約28mと紹介されます。周辺は田園と低い住宅が広がる場所なので、実際の大きさ以上に「ぽつんと現れる巨大な赤」の印象が強く残ります。",
+        "新幹線から見える朱の大鳥居は、高さ約21mの鉄製の鳥居で、道路をまたぐように立っています。周辺は田園と低い住宅が広がる場所なので、実際の大きさ以上に「ぽつんと現れる巨大な赤」の印象が強く残ります。",
         "この鳥居から本殿までは約1km。車窓から社殿そのものは見えませんが、大鳥居は本殿へ続く参道の入口を告げるシンボルとして機能しています。周辺には旧中山道の垂井宿があり、江戸時代の街道と、金山彦を祀る美濃国一の宮が並び立つ場所として整えられてきました。",
         "参拝すると、朱の楼門、山を背にした社殿、金属関係の奉納品、そして境内の金山神社（金物職人の信仰）など、金属をキーワードにした独自の空気を感じられます。新幹線から鳥居しか見えないのが少しもったいないくらいの神社です。"
       ],
       "en": [
-        "The vermilion gate you see from the train is Nangu Taisha's first torii — the Grand Torii — straddling a prefectural road. As a large-scale stone-and-steel torii, it is among the tallest in Japan; local sources give it as roughly 21 meters tall and 28 meters wide. Surrounded by low farmland and modest housing, it stands out even more than its size suggests: a sudden, isolated block of red.",
+        "The vermilion Grand Torii seen from the train is an iron gate about 21 meters tall, straddling a road. Surrounded by low farmland and modest housing, it stands out even more than its size suggests: a sudden, isolated block of red.",
         "The main sanctuary lies about a kilometer beyond the torii, out of sight from the train. Even so, the Grand Torii clearly marks the entrance to the approach that leads there. Nearby is Tarui-juku, one of the old post-towns on the Nakasendo highway; the shrine and the old road grew up together as a hub of religious life in Mino Province.",
         "If you visit in person, you notice a distinct 'metal' theme — the vermilion tower gate, the sanctuary set against a wooded slope, votive offerings from metal-related companies, and a small Kaneyama subshrine dedicated to metal craftspeople. Seeing only the torii from the Shinkansen leaves quite a lot unseen."
       ]
@@ -8115,15 +8146,15 @@ const SPOTS = [
       ]
     },
     "metaDescription": {
-      "ja": "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見えるお菓子の看板を紹介。クーリッシュ、トッポ、ガーナチョコ、雪見だいふく。安土の車窓で、実際にここでつくられている商品の看板を楽しみます。",
-      "en": "Between Maibara and Kyoto, candy billboards appear near Lotte's Shiga plant on the Seat A side: Coolish, Toppo, Ghana chocolate and Yukimi Daifuku, all made at the factory behind them."
+      "ja": "米原から京都へ向かうA席側、ロッテ滋賀工場の近くで続けて見える菓子ブランドの看板を紹介。クーリッシュ、トッポ、ガーナチョコ、雪見だいふくの色と形を、安土の車窓で楽しめます。",
+      "en": "Between Maibara and Kyoto, look for Coolish, Toppo, Ghana chocolate and Yukimi Daifuku billboards near Lotte's Shiga plant on the Seat A side."
     },
     "sectionHeading": {
       "ja": "お菓子の看板はどこから？",
       "en": "Where do the candy billboards come from?"
     },
     "pageStory": {
-      "ja": "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。いま目に入るのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。巨大な雪見だいふくは、ただ広告を出しているだけではありません。この工場でつくられる商品の看板が、色と形で景色をつないでいます。1985年にアイスクリーム工場として始まり、1993年に菓子も加わった滋賀工場の前を、列車は一気に通り過ぎます。",
+      "ja": "米原から京都へ向かうA席側の車窓に、ロッテ滋賀工場周辺の菓子看板が連続して現れます。いま目に入るのはクーリッシュ、トッポ、ガーナチョコ、雪見だいふく。この工場では、雪見だいふくやトッポなどがつくられています。看板の色と形が、車窓の景色をつないでいます。1985年にアイスクリーム工場として始まり、1993年に菓子も加わった滋賀工場の前を、列車は一気に通り過ぎます。",
       "en": "On the Seat A side between Maibara and Kyoto, candy billboards appear in sequence around Lotte's Shiga plant. The signs now in view are Coolish, Toppo, Ghana chocolate, and Yukimi Daifuku. The giant Yukimi Daifuku is not merely advertising nearby: it is a product made at this factory. Their colors and shapes link the landscape as the train races past the plant, which began with ice cream in 1985 and added confectionery in 1993."
     },
     "explainer": {
@@ -9014,6 +9045,20 @@ const SPOTS = [
         }
       }
     ],
+    "media": {
+      "heading": { "ja": "動画で見る山崎蒸溜所", "en": "Yamazaki Distillery in motion" },
+      "description": {
+        "ja": "新幹線の車窓から見える山崎蒸溜所の動画です。",
+        "en": "See Yamazaki Distillery from the Shinkansen window."
+      },
+      "videos": [{
+        "kind": "youtube",
+        "id": "HaZ9nYFWmzc",
+        "url": "https://www.youtube.com/watch?v=HaZ9nYFWmzc",
+        "title": { "ja": "[新幹線の車窓] サントリー山崎蒸留所", "en": "[新幹線の車窓] サントリー山崎蒸留所" }
+      }],
+      "platformNote": { "ja": "動画はYouTubeの公式埋め込みを利用しています。", "en": "This video uses the official YouTube embed." }
+    },
     "references": [
       {
         "label": {
@@ -9075,13 +9120,13 @@ const SPOTS = [
       "name": "ひらパーの観覧車",
       "area": "京都 → 新大阪",
       "hook": "淀川の向こうに、観覧車。",
-      "story": "京都を出て新大阪へ向かう終盤、淀川の対岸にぽつんと観覧車が立っています。ひらかたパークの「スカイウォーカー」。最頂部は約80mあり、2km以上離れた線路からでもはっきり見つかります。よく見ると輪の右手に、白く波打つ骨組みが横に伸びています。ジェットコースター「レッドファルコン」の軌道です。ひらかたパークは1912年からこの地で続く、日本でいちばん古い遊園地。もとは京阪電車が沿線に人を呼ぶために作った遊園地で、いまも京阪の子会社が運営しています。地元では「ひらパー」。日が落ちるとイルミネーションが灯り、青と金の輪が薄暮の街に浮かびます。もうすぐ新大阪、という合図の一景です。"
+      "story": "京都を出て新大阪へ向かう終盤、淀川の対岸にぽつんと観覧車が立っています。ひらかたパークの「スカイウォーカー」。最頂部は約80mあり、2km以上離れた線路からでもはっきり見つかります。よく見ると輪の右手に、白く波打つ骨組みが横に伸びています。ジェットコースター「レッドファルコン」の軌道です。ひらかたパークは1912年からこの地で続く、日本でいちばん古い遊園地。もとは京阪電車が沿線に人を呼ぶために作った遊園地で、いまも京阪の子会社が運営しています。地元では「ひらパー」。点灯している夜は、青と金の輪が薄暮の街に浮かびます。もうすぐ新大阪、という合図の一景です。"
     },
     "en": {
       "name": "The Hirakata Park Ferris Wheel",
       "area": "Kyoto → Shin-Osaka",
       "hook": "A Ferris wheel across the river.",
-      "story": "In the last stretch from Kyoto toward Shin-Osaka, a lone Ferris wheel stands on the far bank of the Yodo River. It is the Skywalker at Hirakata Park, reaching about 80 metres at the top — tall enough to pick out clearly from a line more than two kilometres away. Look to its right and a pale undulating lattice runs sideways: the track of the Red Falcon rollercoaster. Hirakata Park has operated on this site since 1912 and is the oldest amusement park still running in Japan. A railway company built it to draw passengers out along its new line, and a subsidiary of that same railway still runs it today. After dark the wheel lights up, a ring of blue and gold above the town at dusk. Treat it as your signal that Shin-Osaka is close."
+      "story": "In the last stretch from Kyoto toward Shin-Osaka, a lone Ferris wheel stands on the far bank of the Yodo River. It is the Skywalker at Hirakata Park, reaching about 80 metres at the top — tall enough to pick out clearly from a line more than two kilometres away. Look to its right and a pale undulating lattice runs sideways: the track of the Red Falcon rollercoaster. Hirakata Park has operated on this site since 1912 and is the oldest amusement park still running in Japan. A railway company built it to draw passengers out along its new line, and a subsidiary of that same railway still runs it today. When the wheel is lit, a ring of blue and gold stands above the town at dusk. Treat it as your signal that Shin-Osaka is close."
     },
     "pageTitle": {
       "ja": "新幹線から見えるひらパーの観覧車｜京都〜新大阪のA席で探す | 新幹線の窓",
@@ -9123,20 +9168,20 @@ const SPOTS = [
         "東海道新幹線は京都を出たあと、淀川の北側を高槻・茨木・摂津と抜けて新大阪へ向かいます。ひらかたパークがあるのは川の南側、枚方市枚方公園町。線路からの距離は約2.3kmあり、決して近くはありません。それでも見つかるのは、観覧車スカイウォーカーの最頂部が約80mと高く、周囲に同じ高さのものがないからです。マンション群の屋根の上に、輪だけがひとつ抜き出て見えます。",
         "東京から新大阪へ向かう場合はA席側です。京都を出てしばらく走り、727看板でおなじみの高槻あたりを過ぎたころ、進行方向左手のやや遠くに輪が現れます。ビルではなく「輪」を探すのが確実です。距離があるので、手前の高圧鉄塔やマンションに紛れて見落としやすい一景でもあります。地平線のあたりではなく、屋根の少し上の高さに視線を置いてください。",
         "見えているのは観覧車だけではありません。輪の右手に、白く波打つ骨組みが横に長く伸びています。ジェットコースター「レッドファルコン」の軌道で、全長1,300m・最高速度は時速70km。園内でいちばん大きな乗り物です。観覧車の輪とコースターの起伏、この二つが並んで見えたら、それがひらかたパークだと確信して構いません。",
-        "日中は白っぽい骨組みだけなので難易度が上がります。逆に日没後はスカイウォーカーにイルミネーションが灯り、青や金の輪がはっきり浮かぶので、夕方以降の列車のほうが成功率は高めです。ゴンドラは10色あり、ひとつに最大5人まで乗れます。",
+        "日中は白っぽい骨組みだけなので難易度が上がります。スカイウォーカーが点灯している夜は、青や金の輪が浮かび、見つけやすくなります。夜間営業・点灯日は公式カレンダーを確認してください。ゴンドラは10色あり、ひとつに最大5人まで乗れます。",
         "昼の写真では、手前の青い鷺打橋も目印になります。橋を見つけたら、さらに奥の街並みへ視線を移してください。観覧車は橋とは別の、淀川の対岸にあります。"
       ],
       "en": [
         "After Kyoto, the Tokaido Shinkansen runs along the north side of the Yodo River through Takatsuki, Ibaraki and Settsu on its way to Shin-Osaka. Hirakata Park sits on the south side, in Hirakata City. It is about 2.3 kilometres from the line — not close at all. You can still find it because the Skywalker Ferris wheel reaches roughly 80 metres at the top and nothing around it is anywhere near that tall, so the wheel alone lifts clear of the apartment rooftops.",
         "Heading from Tokyo toward Shin-Osaka, this is a Seat A view. A while after Kyoto, around the Takatsuki area familiar from the 727 signs, a ring appears in the middle distance to the left. Look for a ring, not a building — that is the reliable cue. Because of the distance it is easy to lose among the pylons and apartment blocks in front, so keep your eyes a little above the rooflines rather than on the horizon.",
         "The wheel is not the only thing in the frame. To its right, a pale undulating lattice runs a long way sideways: that is the track of the Red Falcon, the park's biggest ride, 1,300 metres long and reaching 70 km/h. A ring and a rollercoaster's humps side by side is the combination that confirms you are looking at Hirakata Park and not some other tower.",
-        "In daylight the structures are only pale skeletons, which makes them harder to pick out. After sunset the Skywalker is illuminated and the blue and gold ring stands out clearly, so an evening train gives you a much better chance. The wheel's gondolas come in ten colours and seat up to five people each.",
+        "In daylight the structures are only pale skeletons, which makes them harder to pick out. When the Skywalker is lit, its blue and gold ring is easier to pick out after dark. Check the park’s official calendar for evening opening and illumination dates. The wheel's gondolas come in ten colours and seat up to five people each.",
         "In daylight, the blue Sagiuchi Bridge offers a foreground clue. Move your gaze beyond it toward the buildings on the far side of the Yodo; the wheel is farther away than the bridge."
       ]
     },
     "guideHighlight": {
-      "ja": "高槻を過ぎたら、A席側の屋根の少し上を見てください。ビルではなく「輪」を探すのが確実です。日没後は青と金のイルミネーションが灯るので、夕方以降の列車ならぐっと見つけやすくなります。",
-      "en": "Once past Takatsuki, look a little above the rooflines on the Seat A side, and search for a ring rather than a building. After sunset the wheel is lit in blue and gold, so an evening train makes it far easier to find."
+      "ja": "高槻を過ぎたら、A席側の屋根の少し上を見てください。ビルではなく「輪」を探すのが確実です。観覧車が点灯している夜は、輪を見つけやすくなります。夜間営業・点灯日は公式カレンダーを確認してください。",
+      "en": "Once past Takatsuki, look a little above the rooflines on the Seat A side, and search for a ring rather than a building. When the wheel is lit, its outline is easier to find after dark. Check the park’s official calendar for evening opening and illumination dates."
     },
     "minutesFromTokyo": 139,
     "side": "A",
@@ -9368,8 +9413,8 @@ const SPOTS = [
   {
     id: "torikai-train-depot",
     icon: "🚄",
-    ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い新幹線が、ずらり整列。", story: "新大阪に近づくころ、E席側に白い新幹線が何本も並ぶ広大な車両基地が広がります。ここは鳥飼車両基地（正式名称：JR東海 大阪仕業検査車両所・大阪交番検査車両所ほか）。大阪府摂津市鳥飼西に位置し、東海道新幹線開業と同じ1964年10月に運用を開始した、東海道・山陽新幹線の運行を大阪側から支える最大級の車両基地です。総面積は約28万平方m。列車が並んで休むだけでなく、車内清掃・電気検査（交番検査）・軽微な修繕・洗車まで一体的に行われ、次の運行へ整えられていきます。速度が落ち始める区間なので、走ってきた新幹線の舞台裏をゆっくり楽しめる、貴重な車窓です。" },
-    en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As Shin-Osaka approaches, the Seat E window opens onto a huge rail yard where dozens of white Shinkansen stand in orderly rows. This is Torikai Rail Yard (officially, JR Central's Osaka rolling-stock service and inspection facilities), located in Torikai-nishi, Settsu City, Osaka. It opened on October 1, 1964 — the same day as the Tokaido Shinkansen itself — and remains the largest depot supporting operations on the Tokaido and Sanyo Shinkansen from the Osaka side. Covering roughly 280,000 square meters, it handles not just parking but interior cleaning, electrical (kōban) inspections, minor repairs and washing, preparing each train for its next run. Because the train is already slowing here, it is one of the few window views on the whole ride where you can enjoy the 'backstage' at a relaxed pace." },
+    ja: { name: "鳥飼車両基地", area: "京都 → 新大阪", hook: "白い新幹線が、ずらり整列。", story: "新大阪に近づくころ、E席側に白い新幹線が何本も並ぶ広大な車両基地が広がります。ここは鳥飼車両基地（正式名称：JR東海 大阪仕業検査車両所・大阪交番検査車両所ほか）。大阪府摂津市鳥飼西に位置し、東海道新幹線開業と同じ1964年10月に運用を開始した、東海道新幹線の車両運用を大阪側から支える大規模な基地です。列車が並んで休むだけでなく、車内清掃・電気検査（交番検査）・軽微な修繕・洗車まで一体的に行われ、次の運行へ整えられていきます。速度が落ち始める区間なので、走ってきた新幹線の舞台裏をゆっくり楽しめる、貴重な車窓です。" },
+    en: { name: "Torikai Train Depot", area: "Kyoto → Shin-Osaka", hook: "Rows of Shinkansen at rest.", story: "As Shin-Osaka approaches, the Seat E window opens onto a huge rail yard where dozens of white Shinkansen stand in orderly rows. This is Torikai Rail Yard (officially, JR Central's Osaka rolling-stock service and inspection facilities), located in Torikai-nishi, Settsu City, Osaka. It opened on October 1, 1964 — the same day as the Tokaido Shinkansen itself — and remains a major JR Central depot supporting Shinkansen operations from the Osaka side. It handles not just parking but interior cleaning, electrical (kōban) inspections, minor repairs and washing, preparing each train for its next run. Because the train is already slowing here, it is one of the few window views on the whole ride where you can enjoy the 'backstage' at a relaxed pace." },
     pageTitle: {
       ja: "新幹線から見える鳥飼車両基地｜白い新幹線がずらり並ぶ拠点 | 新幹線の窓",
       en: "Torikai Rail Yard from the Shinkansen | Where the Fleet Rests and Is Serviced",
@@ -9383,7 +9428,7 @@ const SPOTS = [
       en: ["Just before Shin-Osaka:", "the Torikai Rail Yard opens up"],
     },
     metaDescription: {
-      ja: "新大阪の手前、新幹線のE席側に広がる鳥飼車両基地は、1964年の東海道新幹線開業と同時に運用開始した最大級の拠点。基地の機能、規模、車窓での見どころをまとめて紹介します。",
+      ja: "新大阪の手前、新幹線のE席側に広がる鳥飼車両基地は、1964年の東海道新幹線開業と同時に運用開始した大規模な拠点。基地の機能、規模、車窓での見どころをまとめて紹介します。",
       en: "Just before Shin-Osaka, the huge Torikai Rail Yard opens on the Seat E side. Opened alongside the Tokaido Shinkansen in 1964, it services and prepares the fleet. Learn about the depot's role and how to enjoy this window view.",
     },
     sectionHeading: {
@@ -9391,19 +9436,19 @@ const SPOTS = [
       en: "What is Torikai Rail Yard?",
     },
     pageStory: {
-      ja: "鳥飼車両基地は、大阪府摂津市鳥飼西の東海道新幹線沿線に広がる、JR東海（東海旅客鉄道）の大規模車両基地です。1964年10月1日、東海道新幹線が新幹線としてこの地に誕生したのと同じ日に運用を開始し、以来、東海道・山陽方面の車両運用を大阪側から支えてきました。総面積約28万m²、留置線・検査線・洗浄線が広く伸び、多いときには数十本のN700系・N700S・700系（過去）などが同時に並びます。夜間の留置数は特に多く、新幹線ダイヤの根本にある「早朝どこからどう発車させるか」を実際に支える現場です。",
-      en: "Torikai Rail Yard is a large JR Central rolling-stock depot in Torikai-nishi, Settsu City, Osaka Prefecture, running alongside the Tokaido Shinkansen. It opened on October 1, 1964 — the very day the Tokaido Shinkansen entered service — and has since supported Tokaido / Sanyo operations from the Osaka side. The site covers about 280,000 square meters, with parking, inspection and washing tracks spreading over a wide area. Dozens of N700A, N700S and formerly 700-series trains can stand here at once. It is particularly full overnight, and effectively provides the answer to a core question of the Shinkansen timetable: 'which trains are available to depart from where at first light tomorrow.'",
+      ja: "鳥飼車両基地は、大阪府摂津市鳥飼西の東海道新幹線沿線に広がる、JR東海（東海旅客鉄道）の大規模車両基地です。1964年10月1日、東海道新幹線が新幹線としてこの地に誕生したのと同じ日に運用を開始し、以来、東海道・山陽方面の車両運用を大阪側から支えてきました。留置線・検査線・洗浄線が広く伸び、多いときには数十本のN700系・N700S・700系（過去）などが同時に並びます。夜間の留置数は特に多く、新幹線ダイヤの根本にある「早朝どこからどう発車させるか」を実際に支える現場です。",
+      en: "Torikai Rail Yard is a large JR Central rolling-stock depot in Torikai-nishi, Settsu City, Osaka Prefecture, running alongside the Tokaido Shinkansen. It opened on October 1, 1964 — the very day the Tokaido Shinkansen entered service — and has since supported Tokaido / Sanyo operations from the Osaka side. Parking, inspection and washing tracks spread over a wide area. Dozens of N700A, N700S and formerly 700-series trains can stand here at once. It is particularly full overnight, and effectively provides the answer to a core question of the Shinkansen timetable: 'which trains are available to depart from where at first light tomorrow.'",
     },
     explainer: {
       heading: { ja: "ここで、何が行われている？", en: "What actually happens inside" },
       ja: [
         "鳥飼車両基地では、走行後の列車に対して段階的な検査・整備が行われます。運転間の短時間で行われる仕業検査（列車の外観・機器の目視点検、走行装置の異音チェックなど）、数日〜数十日おきに実施される交番検査（車両を建屋に入れて詳細に点検）、車内清掃、パンタグラフや台車部の点検、外板の洗浄などが一体的に行われ、次の運行へ整えられます。",
-        "施設内には、大屋根で覆われた検修庫、パンタ検査用の高い足場、大規模な洗車機、留置線が広い扇状に伸び、車両を切り替える大量のポイントが敷かれています。新幹線の車両基地としては東海道・山陽で最大規模で、東京の大井車両基地とセットで、東海道新幹線の運行を東西から支える車両運用の要と言えます。",
+        "施設内には、大屋根で覆われた検修庫、パンタ検査用の高い足場、大規模な洗車機、留置線が広い扇状に伸び、車両を切り替える大量のポイントが敷かれています。東京の大井車両基地とともに、東海道新幹線の運行を東西から支える車両運用の要と言えます。",
         "見学は原則として一般開放されていません。見学イベントがある場合は、JR東海など主催者の公式案内で開催日と申込条件を確認してください。車窓では減速中の数十秒ほど、じっくりと横目で楽しんでください。",
       ],
       en: [
         "Trains here undergo a graded set of inspections. Between short-term operations, quick 'shigyo' inspections check exterior and mechanical condition, listening for irregular noises. Every few days to weeks, more thorough 'kōban' inspections take place inside the depot buildings. On top of these, interior cleaning, pantograph and bogie checks, and washing of the exterior all happen here and prepare each train for the next run.",
-        "The site holds long roofed inspection sheds, elevated platforms for pantograph work, large train-wash facilities, and long yard tracks fanning out into a wide grid. Torikai is the largest Shinkansen depot on the Tokaido / Sanyo network. Together with Oi Rail Yard in Tokyo, it forms the eastern and western anchor of the fleet-management system that keeps the Tokaido Shinkansen running.",
+        "The site holds long roofed inspection sheds, elevated platforms for pantograph work, large train-wash facilities, and long yard tracks fanning out into a wide grid. Together with Oi Rail Yard in Tokyo, it forms a pair of anchors in the fleet-management system that keeps the Tokaido Shinkansen running.",
         "The depot itself is generally not open for public tours. If an organised depot visit is officially announced, check its dates and entry conditions with the organiser, such as JR Central. From the train, the slowing speed here means you have several tens of seconds to enjoy this backstage view — take your time.",
       ],
     },
@@ -9479,6 +9524,23 @@ const SPOTS = [
           "ja": "鳥飼車両基地の奥、ビルの陰に小さく見えるEXPOCITYの観覧車",
           "en": "Torikai depot, with the EXPOCITY wheel small behind the distant buildings"
         }
+      },
+      {
+        "src": "images/20260914_torikai-train-depot_night_10841_michikusa.jpg",
+        "timeOfDay": "night",
+        "alt": {
+          "ja": "夜の鳥飼車両基地と、奥に小さく光るエキスポシティの観覧車",
+          "en": "Torikai Train Depot at night, with the illuminated EXPOCITY Ferris wheel small in the distance"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-09-14",
+        "note": {
+          "ja": "夜の鳥飼車両基地。奥にエキスポシティの観覧車が小さく光ります。",
+          "en": "The EXPOCITY Ferris wheel glows beyond Torikai Train Depot at night."
+        }
       }
     ],
     media: {
@@ -9496,8 +9558,9 @@ const SPOTS = [
           fallbackText: { ja: "鳥飼車両基地のあと、大阪モノレールも映る投稿動画", en: "A post showing the Osaka Monorail after Torikai Rail Yard" },
           comment: { ja: "車両基地のあと、大阪モノレールも画面に入ります。", en: "After the depot, the Osaka Monorail enters the frame too." },
         },
+        { kind: "youtube", id: "HC5Wi6jNESs", url: "https://www.youtube.com/watch?v=HC5Wi6jNESs", title: { ja: "[新幹線の車窓] 日入後の鳥飼車両基地", en: "[新幹線の車窓] 日入後の鳥飼車両基地" } },
       ],
-      platformNote: { ja: "動画はXの公式埋め込みを利用しています。", en: "This video uses the official X embed." },
+
     },
     references: [REFERENCES.tokaidoShinkansen, REFERENCES.torikaiDepotWiki],
     map: { lat: 34.77598, lng: 135.5704782, ja: "鳥飼車両基地", en: "Torikai Train Depot" },
@@ -10091,11 +10154,11 @@ function wheelDisplayName(name, lang) {
 const WHEEL_COLLECTION = [
   {"id":"fuji-sky-view","stampId":"ferris-wheel-fuji-sky-view","minutesFromTokyo":46,"side":"E","lat":35.16175,"lng":138.61735,"confidence":"verified","durationSec":5,"name":{"ja":"Fuji Sky Viewの観覧車","en":"Fuji Sky View Ferris Wheel"},"area":{"ja":"新富士 → 静岡（富士川橋梁）","en":"Shin-Fuji → Shizuoka (Fuji River bridge)"},"hook":{"ja":"水管橋のむこうに、小さな輪","en":"A small wheel beyond the pipe bridge"},"body":{"ja":"富士川を渡るとき、E席側で白い水管橋のさらに向こうを探してみてください。富士川SA上り線の「Fuji Sky View」が、小さな輪として見えます。富士山や橋といっしょに楽しむ、川上の遠景です。","en":"As the train crosses the Fuji River, look beyond the white pipe bridge on the Seat E side. Fuji Sky View, at the Tokyo-bound Fujikawa service area, appears as a small distant wheel: one more detail in the river-and-mountain panorama."},"story":{"ja":"白い水管橋のむこう、富士川の川上に見える小さな観覧車が「Fuji Sky View」です。2017年2月23日の「富士山の日」に、東名高速道路の富士川SA上り線に開業しました。運営する泉陽興業によると、ゴンドラの最上部は地上60m。新幹線からは約2.8km離れた遠景なので、富士川橋梁へ入る前にE席側へ構え、水管橋の奥を探すのが手がかりです。","en":"The small wheel upstream beyond the white pipe bridge is Fuji Sky View. It opened on Mount Fuji Day, 23 February 2017, at the Tokyo-bound Fujikawa service area on the Tomei Expressway. Operator Senyo describes gondolas reaching 60 metres above ground. From the Shinkansen it is roughly 2.8 km away, so be ready at the Seat E window before crossing the river and look beyond the pipe bridge."},"official":"https://www.senyo.co.jp/fujiskyview/","guidePageId":"fujikawa-bridge","guideRoute":{"ja":"spots/fujikawa-bridge.html","en":"en/spots/fujikawa-bridge.html"},"viewpoint":{"lat":35.138661,"lng":138.63660565},"photo":{"src":"images/20260924_fuji-sky-view_33058_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"水管橋の奥に見えるFuji Sky View","en":"Fuji Sky View beyond the water pipe bridge"},"caption":{"ja":"富士川水管橋の向こうの小さな輪 / 写真：michikusa（2026-09-24）","en":"A small wheel beyond the pipe bridge / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}},"gallery":[{"src":"images/20261018_fuji-sky-view_night_0_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"夜の富士川の奥に緑色に光るFuji Sky View","en":"Fuji Sky View glowing green beyond the Fuji River at night"},"caption":{"ja":"暗い川の向こうに、緑色に光る観覧車の輪が見えます。 / 写真：michikusa（2026年10月）","en":"A green-lit Ferris wheel stands out beyond the dark river. / Photo: michikusa (October 2026)"},"credit":{"ja":"michikusa","en":"michikusa"},"date":"2026-10-18","timeOfDay":"night"}]},
   {"id":"nonhoi","stampId":"ferris-wheel-nonhoi","minutesFromTokyo":77,"side":"A","lat":34.72111,"lng":137.43194,"confidence":"verified","durationSec":8,"name":{"ja":"のんほいパーク","en":"Nonhoi Park"},"area":{"ja":"浜松 → 豊橋","en":"Hamamatsu → Toyohashi"},"hook":{"ja":"豊橋の手前で、ひとつ","en":"A wheel before Toyohashi"},"body":{"ja":"豊橋に着く手前、A席側。住宅や工場の屋根の向こうに、白い輪が立っています。曇りの日でも空を背にするので、形は見分けられます。","en":"Just before Toyohashi, on the Seat A side, a white wheel stands beyond the roofs of houses and factories. It sits against the sky, so its shape reads even on a cloudy day."},"story":{"ja":"浜松を出て豊橋へ向かう終盤、A席側の住宅と工場の屋根の向こうに、白い観覧車が立っています。豊橋総合動植物公園「のんほいパーク」の大観覧車です。高さは約50m、ゴンドラは6人乗りで、一周はおよそ12分。まわりに高い建物がない平地なので、空を背にした輪の形だけがすっと抜けて見え、曇りの日でも形は見分けられます。のんほいパークは動物園・植物園・自然史博物館・遊園地の4つをひとつにした39.6haの公園で、1992年に今の総合公園として開園しました。愛称の「のんほい」は、東三河の方言「のん」「ほい」から。線路から約0.65kmと近いぶん、現れてから消えるまでは8秒ほどです。まもなく豊橋、という合図にもなる観覧車です。","en":"In the last minutes before Toyohashi, a white Ferris wheel stands beyond the houses and factory roofs on the Seat A side. It belongs to Nonhoi Park, the combined zoo, botanical garden, natural history museum and amusement park that Toyohashi opened in its present form in 1992; the odd name is two words of the local dialect. The wheel is about 50 metres tall, each gondola holds six people, and a full turn takes twelve minutes. Nothing around it comes close to that height, so on this wide, flat plain the ring simply lifts clear of the rooftops against the sky, even on an overcast day. It is only about 0.65 km from the line, which also means it is gone in around eight seconds. It is a sign that Toyohashi is approaching."},"photo":{"src":"images/20260904_nonhoi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるのんほいパークの観覧車","en":"The Nonhoi Park wheel seen from the Seat A side"},"caption":{"ja":"家並みと鉄塔の向こうに立つ輪 / 写真：新幹線の窓","en":"The wheel beyond houses and pylons / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.nonhoi.jp/amusement/","gallery":[{"src":"images/20260924_nonhoi-wheel_15060_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"のんほいパークの観覧車","en":"Nonhoi Park Ferris wheel"},"caption":{"ja":"のんほいパークの観覧車 / 写真：michikusa（2026-09-24）","en":"Nonhoi Park Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
-  {"id":"laguna","stampId":"ferris-wheel-laguna","minutesFromTokyo":82,"side":"A","lat":34.807722,"lng":137.27583,"confidence":"verified","durationSec":12,"name":{"ja":"ラグーナテンボス","en":"Laguna Ten Bosch"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"海辺の街に、輪を探す","en":"Look toward the coastal town"},"body":{"ja":"蒲郡の海辺にあるラグーナテンボスの観覧車。A席側、集合住宅や畑の向こうに白い輪が立っています。まわりの建物より高く出るので、遠くても見分けやすい輪です。","en":"The wheel at Laguna Ten Bosch stands in coastal Gamagori. On the Seat A side it rises white beyond apartment blocks and fields; it stands taller than the buildings around it, so it is easier to pick out than its distance suggests."},"story":{"ja":"豊橋を出て三河安城へ向かう途中、A席側に大きな白い輪が立ちます。蒲郡の海辺にあるラグーナテンボスの観覧車です。高さは65m、ゴンドラは4人乗りで、頂上からは三河湾が一望できます。中心のテーマパーク「ラグナシア」は2002年にラグーナ蒲郡として開業し、いまはラグーナテンボスの名前で営業しています。線路からは約0.8km。集合住宅や畑の向こうに立っていますが、まわりの建物よりずっと高く出るので、探すというより目に入ってくる輪です。夜はイルミネーションが灯り、暗い海辺に光の輪が浮かびます。見送ったあとも窓はそのままに。30秒ほどあと、同じA席側の遠くに三河湾と三河大島が現れます。海側の窓がいちばん楽しい区間です。","en":"Between Toyohashi and Mikawa-Anjo, a large white wheel rises on the Seat A side. This is the Ferris wheel at Laguna Ten Bosch, a seaside resort on the coast at Gamagori whose theme park opened in 2002: 65 metres tall, four to a gondola, with the whole of Mikawa Bay laid out from the top. It stands about 0.8 km from the line, beyond apartment blocks and fields, but it clears everything around it so comprehensively that you do not really have to look for it. After dark it is lit, and the ring floats above the coast. Keep watching the same window afterwards: about half a minute later, Mikawa Bay and the gourd-shaped island of Mikawa Oshima appear in the distance. This is the stretch where the sea side earns its keep."},"photo":{"src":"images/20260820_laguna_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるラグーナテンボスの観覧車","en":"The Laguna Ten Bosch wheel seen from the Seat A side"},"caption":{"ja":"街並みの向こうに立つ白い輪 / 写真：新幹線の窓","en":"A white wheel beyond the town / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.lagunatenbosch.co.jp/lagunasia/index.html","gallery":[{"src":"images/20260924_laguna-wheel_5380_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"ラグーナテンボスの観覧車","en":"Laguna Ten Bosch Ferris wheel"},"caption":{"ja":"ラグーナテンボスの観覧車 / 写真：michikusa（2026-09-24）","en":"Laguna Ten Bosch Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
+  {"id":"laguna","stampId":"ferris-wheel-laguna","minutesFromTokyo":82,"side":"A","lat":34.807722,"lng":137.27583,"confidence":"verified","durationSec":12,"name":{"ja":"ラグーナテンボス","en":"Laguna Ten Bosch"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"海辺の街に、輪を探す","en":"Look toward the coastal town"},"body":{"ja":"蒲郡の海辺にあるラグーナテンボスの観覧車。A席側、集合住宅や畑の向こうに白い輪が立っています。まわりの建物より高く出るので、遠くても見分けやすい輪です。","en":"The wheel at Laguna Ten Bosch stands in coastal Gamagori. On the Seat A side it rises white beyond apartment blocks and fields; it stands taller than the buildings around it, so it is easier to pick out than its distance suggests."},"story":{"ja":"豊橋を出て三河安城へ向かう途中、A席側に大きな白い輪が立ちます。蒲郡の海辺にあるラグーナテンボスの観覧車です。高さは65m、ゴンドラは4人乗りで、頂上からは三河湾が一望できます。中心のテーマパーク「ラグナシア」は2002年にラグーナ蒲郡として開業し、いまはラグーナテンボスの名前で営業しています。線路からは約0.8km。集合住宅や畑の向こうに立っていますが、まわりの建物よりずっと高く出るので、探すというより目に入ってくる輪です。夜はイルミネーションが灯り、暗い海辺に光の輪が浮かびます。見送ったあとも窓はそのままに。30秒ほどあと、同じA席側の遠くに三河湾と三河大島が現れます。海側の窓がいちばん楽しい区間です。","en":"Between Toyohashi and Mikawa-Anjo, a large white wheel rises on the Seat A side. This is the Ferris wheel at Laguna Ten Bosch, a seaside resort on the coast at Gamagori whose theme park opened in 2002: 65 metres tall, four to a gondola, with the whole of Mikawa Bay laid out from the top. It stands about 0.8 km from the line, beyond apartment blocks and fields, but it clears everything around it so comprehensively that you do not really have to look for it. After dark it is lit, and the ring floats above the coast. Keep watching the same window afterwards: about half a minute later, Mikawa Bay and the island of Mikawa Oshima appear in the distance. This is the stretch where the sea side earns its keep."},"photo":{"src":"images/20260820_laguna_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見えるラグーナテンボスの観覧車","en":"The Laguna Ten Bosch wheel seen from the Seat A side"},"caption":{"ja":"街並みの向こうに立つ白い輪 / 写真：新幹線の窓","en":"A white wheel beyond the town / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.lagunatenbosch.co.jp/lagunasia/index.html","gallery":[{"src":"images/20260924_laguna-wheel_5380_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"ラグーナテンボスの観覧車","en":"Laguna Ten Bosch Ferris wheel"},"caption":{"ja":"ラグーナテンボスの観覧車 / 写真：michikusa（2026-09-24）","en":"Laguna Ten Bosch Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
   {"id":"horiuchi","stampId":"ferris-wheel-horiuchi","minutesFromTokyo":87,"side":"A","lat":34.9288139,"lng":137.0912944,"confidence":"verified","durationSec":5,"name":{"ja":"堀内公園","en":"Horiuchi Park"},"area":{"ja":"豊橋 → 三河安城","en":"Toyohashi → Mikawa-Anjo"},"hook":{"ja":"公園の輪も、車窓の仲間","en":"A park wheel joins the journey"},"body":{"ja":"安城市の堀内公園にも観覧車があります。三河安城の手前、A席側の住宅地の奥に小さく見えます。ラグーナの輪より低く、建物に紛れやすい輪です。","en":"Horiuchi Park in Anjo has a Ferris wheel too. It appears small beyond the houses on the Seat A side before Mikawa-Anjo. Lower than the Laguna wheel, it blends easily into the buildings."},"story":{"ja":"三河安城に着く1分ほど前、A席側の住宅地の奥に、小さな観覧車が見えます。安城市の堀内公園です。「花とみどりとメルヘン」をテーマにした市営の公園で、入園は無料。汽車のメルヘン号、メリーゴーランド、サイクルモノレール、そしてこの観覧車が、どれも1回100円前後で動いています。遊園地というより、観覧車のある公園。数分前に見えるラグーナテンボスの輪（65m）にくらべるとずっと低く、屋根や電柱と同じ高さの帯に入ってしまいます。空ではなく、屋根の並びのなかに丸い骨組みが混じっていないかを探してください。線路からは約0.45kmと、ここで紹介する観覧車のなかでいちばん近いのに、いちばん見つけにくい——そういう小ささが、この輪の性格です。","en":"About a minute before Mikawa-Anjo, a small Ferris wheel shows beyond the houses on the Seat A side. It belongs to Horiuchi Park, a free municipal park in Anjo built around the theme of flowers, greenery and fairy tales. A little train, a carousel, a cycle monorail and this wheel all run for around a hundred yen a ride; it is less an amusement park than a park that happens to have a Ferris wheel. Compared with the 65-metre wheel at Laguna Ten Bosch a few minutes earlier it is much lower, and it sits in the same band of the window as the roofs and power poles in front of it. Do not look for a ring against the sky — look for something round and latticed among the rooflines. At about 0.45 km it is the closest wheel in this collection to the line and still the hardest to find, which is rather the point of it."},"photo":{"src":"images/20260820_horiuchi_wheel_michikusa.jpg","alt":{"ja":"新幹線のA席側から見える堀内公園の観覧車","en":"The Horiuchi Park wheel seen from the Seat A side"},"caption":{"ja":"住宅地の奥に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel beyond the houses / Photo: Shinkansen Window"}},"source":"https://cotetu.seesaa.net/article/516613293.html","sourceName":{"ja":"新幹線の車窓から 099","en":"新幹線の車窓から 099 (Japanese)"},"official":"https://www.city.anjo.aichi.jp/tanoshimu/koen/horiuchi.html","gallery":[{"src":"images/20260924_horiuchi-wheel_17960_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"堀内公園の観覧車","en":"Horiuchi Park Ferris wheel"},"caption":{"ja":"堀内公園の観覧車 / 写真：michikusa（2026-09-24）","en":"Horiuchi Park Ferris wheel / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
   {"id":"nagoya-port","stampId":"ferris-wheel-nagoya-port","minutesFromTokyo":93,"side":"A","lat":35.0935778,"lng":136.8782056,"confidence":"source-backed","durationSec":6,"name":{"ja":"名古屋港シートレインランド","en":"Nagoya Port Sea Train Land"},"area":{"ja":"三河安城 → 名古屋","en":"Mikawa-Anjo → Nagoya"},"hook":{"ja":"ずっと遠くに、小さな輪","en":"A tiny ring in the distance"},"body":{"ja":"堀川を渡るあたり、A席側のビルの隙間に、輪郭だけの小さな輪が現れます。線路から約3kmと遠く、肉眼では見つけにくい対象です。上りは名古屋を出てすぐ。朝焼けや夜のライトアップの時間帯が見つけやすく、昼は逆光になりやすいと紹介されています。","en":"Around the Horikawa River, a faint outline of a wheel appears between buildings on the Seat A side. About 3 km from the line, it is hard to catch with the naked eye. On Tokyo-bound trains it comes just after Nagoya. Accounts suggest dawn light or the evening illumination make it easier to find, while daytime tends to be backlit."},"story":{"ja":"三河安城を過ぎ、名古屋の市街に入って堀川を渡るあたり。A席側のビルの隙間の遠くに、輪郭だけの観覧車が現れます。名古屋港シートレインランドの大観覧車です。1995年に開業した入園無料の遊園地にあり、高さは85m。名古屋市は東海地区最大級と紹介していて、頂上からは伊勢湾や名古屋の市街、晴れた日には鈴鹿山脈や伊吹山まで見渡せます。ただ、線路からは約3kmと、ここで紹介する観覧車のなかでも遠い部類です。肉眼では輪郭をつかむのがやっとで、昼は逆光になりやすく、朝焼けや夜のライトアップの時間帯のほうが見つけやすいと車窓の記録では紹介されています。上り列車なら名古屋を出てすぐです。","en":"Past Mikawa-Anjo, as the train enters Nagoya and crosses the Horikawa River, the faint outline of a wheel appears far off between buildings on the Seat A side. This is the big wheel at Nagoya Port Sea Train Land, a free-entry amusement park that opened in 1995. The wheel is 85 metres tall, which the city describes as among the largest in the Tokai region, and from the top you can see across Ise Bay and the city, and on clear days as far as the Suzuka mountains and Mount Ibuki. From the train, though, it is about 3 km away — one of the most distant wheels in this collection — and with the naked eye you will do well to make out its shape. People who have photographed it from the window say dawn light or the evening illumination makes it easier, while daytime tends to be backlit. On a Tokyo-bound train it comes just after Nagoya."},"photo":{"src":"images/20260919_nagoya_port_wheel_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"新幹線のA席側から堀川越しに遠く見える名古屋港シートレインランドの観覧車","en":"The distant Nagoya Port Sea Train Land wheel seen from Seat A across the Horikawa River"},"caption":{"ja":"川の向こう、街並みの上に小さく見える輪 / 写真：新幹線の窓","en":"A small wheel above the buildings beyond the river / Photo: Shinkansen Window"},"credit":{"ja":"michikusa","en":"michikusa"}},"source":"https://cotetu.seesaa.net/article/516568359.html","sourceName":{"ja":"新幹線の車窓から 115","en":"新幹線の車窓から 115 (Japanese)"},"reference":"https://ameblo.jp/new-nagoyan/entry-12811240802.html","referenceName":{"ja":"参考：なごやんの旅日記「車窓の観覧車⑥ 名古屋港シートレインランド」","en":"Further reading: a blog account of this wheel from the window (Japanese)"},"official":"https://www.city.nagoya.jp/minato/miryoku/1023507/1036753/1023513.html"},
-  {"id":"hirakata","stampId":"hirakata-park-wheel","minutesFromTokyo":139,"side":"A","lat":34.8075,"lng":135.6385,"confidence":"verified","durationSec":10,"name":{"ja":"ひらかたパーク","en":"Hirakata Park"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"淀川の向こうに、ひらパー","en":"Across the Yodo River"},"body":{"ja":"淀川の対岸に見える「スカイウォーカー」。街並みと鉄塔の中に、小さな輪がひとつ。夜は光る輪が、暗い対岸にぽつんと浮かびます。","en":"Sky Walker appears across the Yodo River: a small ring among buildings and pylons. At night, the lit wheel floats alone on the dark far bank."},"photo":{"src":"images/20260824_hirakata_park_wheel_michikusa.jpg","alt":{"ja":"夕暮れの新幹線から見えるひらかたパークの観覧車","en":"The Hirakata Park wheel at dusk, seen from the Shinkansen"},"caption":{"ja":"夕暮れに光りはじめたスカイウォーカー / 写真：新幹線の窓","en":"Sky Walker lighting up at dusk / Photo: Shinkansen Window"}},"official":"https://www.hirakatapark.co.jp/attractions/skywalker/"},
-  {"id":"osaka-wheel","timingSpotId":"torikai-train-depot","stampId":"ferris-wheel-osaka-wheel","minutesFromTokyo":141,"side":"E","lat":34.80625,"lng":135.53475,"confidence":"source-backed","durationSec":8,"name":{"ja":"エキスポシティの観覧車（OSAKA WHEEL）","en":"OSAKA WHEEL at EXPOCITY"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"最後の輪は、反対の窓に","en":"One more wheel, on the other side"},"body":{"ja":"鳥飼車両基地と同じE席側の車窓。車両基地の奥、ビルの陰にEXPOCITYの観覧車が小さく見えます。輪全体が見えるとは限らないので、写真を目印に建物の間を探してください。","en":"From Seat E at Torikai depot, look behind the buildings beyond the parked trains for the small EXPOCITY wheel. It may be partly hidden: use the photograph to find the gap."},"story":{"ja":"京都を過ぎて新大阪が近づくころ、今度は反対のE席側、万博記念公園のとなりに大きな観覧車が立ちます。エキスポシティのOSAKA WHEELです。高さ123mは日本一で、全ゴンドラの床がシースルー、世界初の免震構造を備えた観覧車として知られています。富士川のFuji Sky Viewと同じく、E席側から探せる一基。ただし車窓からは数km離れており、しかも横から見る角度になるため、輪は細い楕円に見え、建物に隠れることもあります。公式サイトによると、現在は営業休止中で、再開の時期は未定です。輪そのものは立っていますが、夜のライトアップが見られるかどうかは分かりません。","en":"As Shin-Osaka approaches, the last wheel appears on the other side of the train — Seat E — beside the Expo '70 Commemorative Park. This is OSAKA WHEEL at EXPOCITY: at 123 metres the tallest Ferris wheel in Japan, with see-through floors in every gondola and a seismic-isolation structure its operator calls a world first. Like Fuji Sky View by the Fuji River, this is a wheel to look for from Seat E. It is several kilometres away, though, and seen almost edge-on, so the ring reads as a narrow oval and can drop behind buildings. According to its official site the wheel is currently closed, with no date set for reopening. The structure still stands, but whether it is lit at night is uncertain."},"photo":{"src":"images/20260924_expocity-wheel_42162_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"鳥飼車両基地の奥に見えるEXPOCITYの観覧車","en":"EXPOCITY Ferris wheel beyond Torikai depot"},"caption":{"ja":"鳥飼車両基地の奥に見えるEXPOCITYの観覧車 / 写真：michikusa（2026-09-24）","en":"EXPOCITY Ferris wheel beyond Torikai depot / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}},"source":"https://ameblo.jp/ginga03142008/entry-12194686170.html","sourceName":{"ja":"ずっしー。「新幹線から観覧車見えました！」","en":"Zusshi, “I saw the Ferris wheel from the Shinkansen” (Japanese)"},"official":"https://osaka-wheel.com/","seatSource":"https://www.city.suita.osaka.jp/_res/projects/default_project/_page_/001/035/005/HP2/R6_07_tanpage.pdf","seatSourceName":{"ja":"席側の裏付け：市報すいた 2024年7月号・8ページ","en":"Seat side confirmed by Suita City newsletter, July 2024, p. 8 (Japanese PDF)"},"viewpoint":{"lat":34.775259,"lng":135.571088}},
+  {"id":"hirakata","stampId":"hirakata-park-wheel","minutesFromTokyo":139,"side":"A","lat":34.8075,"lng":135.6385,"confidence":"verified","durationSec":10,"name":{"ja":"ひらかたパーク","en":"Hirakata Park"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"淀川の向こうに、ひらパー","en":"Across the Yodo River"},"body":{"ja":"淀川の対岸に見える「スカイウォーカー」。街並みと鉄塔の中に、小さな輪がひとつ。点灯している夜は、光る輪が暗い対岸にぽつんと浮かびます。","en":"Sky Walker appears across the Yodo River: a small ring among buildings and pylons. When illuminated at night, the wheel floats alone on the dark far bank."},"photo":{"src":"images/20260824_hirakata_park_wheel_michikusa.jpg","alt":{"ja":"夕暮れの新幹線から見えるひらかたパークの観覧車","en":"The Hirakata Park wheel at dusk, seen from the Shinkansen"},"caption":{"ja":"夕暮れに光りはじめたスカイウォーカー / 写真：新幹線の窓","en":"Sky Walker lighting up at dusk / Photo: Shinkansen Window"}},"official":"https://www.hirakatapark.co.jp/attractions/skywalker/"},
+  {"id":"osaka-wheel","timingSpotId":"torikai-train-depot","stampId":"ferris-wheel-osaka-wheel","minutesFromTokyo":141,"side":"E","lat":34.80625,"lng":135.53475,"confidence":"source-backed","durationSec":8,"name":{"ja":"エキスポシティの観覧車（OSAKA WHEEL）","en":"OSAKA WHEEL at EXPOCITY"},"area":{"ja":"京都 → 新大阪","en":"Kyoto → Shin-Osaka"},"hook":{"ja":"最後の輪は、反対の窓に","en":"One more wheel, on the other side"},"body":{"ja":"鳥飼車両基地と同じE席側の車窓。車両基地の奥、ビルの陰にEXPOCITYの観覧車が小さく見えます。輪全体が見えるとは限らないので、写真を目印に建物の間を探してください。","en":"From Seat E at Torikai depot, look behind the buildings beyond the parked trains for the small EXPOCITY wheel. It may be partly hidden: use the photograph to find the gap."},"story":{"ja":"京都を過ぎて新大阪が近づくころ、今度は反対のE席側、万博記念公園のとなりに大きな観覧車が立ちます。エキスポシティのOSAKA WHEELです。高さ123mは日本一で、全ゴンドラの床がシースルー、世界初の免震構造を備えた観覧車として知られています。富士川のFuji Sky Viewと同じく、E席側から探せる一基。ただし車窓からは数km離れており、しかも横から見る角度になるため、輪は細い楕円に見え、建物に隠れることもあります。公式サイトによると、現在は営業休止中で、再開の時期は未定です。輪そのものは立っていますが、夜のライトアップが見られるかどうかは分かりません。","en":"As Shin-Osaka approaches, the last wheel appears on the other side of the train — Seat E — beside the Expo '70 Commemorative Park. This is OSAKA WHEEL at EXPOCITY: at 123 metres the tallest Ferris wheel in Japan, with see-through floors in every gondola and a seismic-isolation structure its operator calls a world first. Like Fuji Sky View by the Fuji River, this is a wheel to look for from Seat E. It is several kilometres away, though, and seen almost edge-on, so the ring reads as a narrow oval and can drop behind buildings. According to its official site the wheel is currently closed, with no date set for reopening. The structure still stands, but whether it is lit at night is uncertain."},"photo":{"src":"images/20260924_expocity-wheel_42162_michikusa.jpg","width":1920,"height":1080,"alt":{"ja":"鳥飼車両基地の奥に見えるEXPOCITYの観覧車","en":"EXPOCITY Ferris wheel beyond Torikai depot"},"caption":{"ja":"鳥飼車両基地の奥に見えるEXPOCITYの観覧車 / 写真：michikusa（2026-09-24）","en":"EXPOCITY Ferris wheel beyond Torikai depot / Photo: michikusa (2026-09-24)"},"credit":{"ja":"michikusa","en":"michikusa"}},"source":"https://ameblo.jp/ginga03142008/entry-12194686170.html","sourceName":{"ja":"ずっしー。「新幹線から観覧車見えました！」","en":"Zusshi, “I saw the Ferris wheel from the Shinkansen” (Japanese)"},"official":"https://osaka-wheel.com/","seatSource":"https://www.city.suita.osaka.jp/_res/projects/default_project/_page_/001/035/005/HP2/R6_07_tanpage.pdf","seatSourceName":{"ja":"席側の裏付け：市報すいた 2024年7月号・8ページ","en":"Seat side confirmed by Suita City newsletter, July 2024, p. 8 (Japanese PDF)"},"viewpoint":{"lat":34.775259,"lng":135.571088},"gallery":[{"src":"images/20260914_torikai-train-depot_night_10841_michikusa.jpg","width":1920,"height":1080,"timeOfDay":"night","alt":{"ja":"鳥飼車両基地の奥に光るEXPOCITYの観覧車","en":"EXPOCITY wheel glowing beyond Torikai depot at night"},"caption":{"ja":"夜景 / 写真：michikusa（2026-09-14）","en":"Night view / Photo: michikusa (2026-09-14)"},"credit":{"ja":"michikusa","en":"michikusa"}}]},
 ].map((item) => ({
   ...item,
   icon: "🎡",

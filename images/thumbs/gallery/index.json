@@ -1399,6 +1399,14 @@
     "quality": 72,
     "sha256": "a7eb7cba6b6b3dabf64166d9041dc1bf31d47a9f1244ef17899255b3c4e7f97a"
   },
+  "images/thumbs/gallery/20260914_fujitec-big-wing_night_163846_michikusa.webp": {
+    "source": "images/20260914_fujitec-big-wing_night_163846_michikusa.jpg",
+    "sourceSha256": "ca5e8b703f56f599fbd6ad4e52460a7b979548bbd6e5d858fe55aca768aadac6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "7e0abfdefa7a980b150679680dc45a913524b27e6ca6b44c7e937faed31abfc7"
+  },
   "images/thumbs/gallery/20260914_hikone-castle_cp0149_michikusa.webp": {
     "source": "images/20260914_hikone-castle_cp0149_michikusa.jpg",
     "sourceSha256": "8665b70e5dd50aae6675f0224aa45de85f26daf5182b70cfa5f600f9a012f6d0",
@@ -1414,6 +1422,14 @@
     "height": 198,
     "quality": 72,
     "sha256": "64d4946675aeeed91598184ae7b5a6601c24ffe276af8de5d20de5eec70f0906"
+  },
+  "images/thumbs/gallery/20260914_torikai-train-depot_night_10841_michikusa.webp": {
+    "source": "images/20260914_torikai-train-depot_night_10841_michikusa.jpg",
+    "sourceSha256": "ba2fe0e2207a4d25f1f260b1d14c061a8e689601f42e57019d22a265d98519b1",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "522023ec82b12ed3d23faa487683ad5587b99e72ce59701fb8966134a8f2fd5d"
   },
   "images/thumbs/gallery/20260919_atami_castle_michikusa.webp": {
     "source": "images/20260919_atami_castle_michikusa.jpg",
