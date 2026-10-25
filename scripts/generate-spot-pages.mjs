@@ -1,3 +1,4 @@
+import {withHomeEntry} from './shared/home-entry.mjs';
 import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
 import { tokyoSightlineHead, tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
 import { fujimiSightlineHead, fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
@@ -1609,6 +1610,7 @@ function englishLandingHTML() {
     .replace('<body>', '<body data-language-route="en">')
     .replace('<button type="button" class="active" data-lang="ja" aria-pressed="true">日本語</button>', '<button type="button" data-lang="ja" aria-pressed="false">日本語</button>')
     .replace('<button type="button" data-lang="en" aria-pressed="false">EN</button>', '<button type="button" class="active" data-lang="en" aria-pressed="true">EN</button>');
+  html = withHomeEntry(html, 'en');
   return withUtilityLocales(syncSpotCountClaims(html.replace(/[ \t]*<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->\r?\n?/g, '')), 'en/index.html');
 }
 

@@ -61,7 +61,7 @@ const contentFiles = [
   "data/maibara-photo-sources.json",
   "images/maibara_300x_commons.jpg", "images/maibara_star21_commons.jpg", "images/maibara_win350_commons.jpg",
   ...await walkFiles("images/drinks", p => /\.(?:jpg|png|webp|svg)$/.test(p)),
-  "hero-cinema.js", "hero-cinema.css",
+  "hero-cinema.js", "hero-cinema.css", "home-entry.css",
   ...await walkFiles("promo", p => /\.(?:html|js|css|webp|svg)$/.test(p)),
   "reflections.html",
   "en/reflections.html",
