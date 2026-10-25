@@ -117,16 +117,11 @@
     @media(max-width:650px){.ja-train-grid{grid-template-columns:1fr}.fuji-train-answer{padding:18px}.train-entry-more .top-promo-grid{grid-template-columns:1fr}}
     /* JA-TIMELINE-RECOMMENDATIONS:START */
     .timeline-recommendation-summary { max-width:700px; margin:0 auto 12px; color:var(--ink-soft); text-align:center; font-size:13px; line-height:1.7; }
-    .timeline-recommendation-note { margin:0 auto 16px; max-width:700px; text-align:center; color:var(--ink-soft); font-size:12px; line-height:1.7; }
-    .timeline-recommendation-more { max-width:700px; margin:24px auto 0; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--paper); text-align:center; }
+    .timeline-recommendation-more { max-width:700px; margin:18px auto 0; text-align:center; }
     .timeline-recommendation-more p { margin:0 0 12px; font-size:14px; line-height:1.7; }
-    .timeline-recommendation-more button { padding:10px 18px; border:1px solid var(--night); border-radius:999px; background:var(--night); color:white; font:inherit; font-weight:700; cursor:pointer; }
-    .timeline-selection-bar { flex:0 0 100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; margin-bottom:6px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.7); box-sizing:border-box; }
-    #timelineFilterbar .timeline-recommended-choice { padding:10px 16px; font-size:14px; }
-    #timelineFilterbar .timeline-reset { display:flex; align-items:center; gap:8px; padding:9px 14px; border:1.5px solid #a74024; border-radius:12px; color:#8f351d; background:#fff8f2; font-size:13px; text-align:left; }
-    #timelineFilterbar .timeline-reset>span:first-child { font-size:22px; line-height:1; }
-    #timelineFilterbar .timeline-reset small { display:block; margin-top:2px; font-size:10px; font-weight:500; }
-    #timelineFilterbar .timeline-reset.active { box-shadow:inset 0 0 0 1px #a74024; }
+    .timeline-recommendation-more button { border:0; background:none; color:var(--ink-soft); font:inherit; font-size:12px; text-decoration:underline; cursor:pointer; }
+    .timeline-filter-actions { flex:0 0 100%; display:flex; justify-content:flex-end; }
+    #timelineFilterbar .timeline-reset { border:0; border-radius:0; padding:6px 0; background:none; color:var(--ink-soft); font-weight:500; text-decoration:underline; text-underline-offset:3px; }
     .tl-recommended-badge { display:inline-flex; align-items:center; gap:3px; padding:3px 7px; border:1px solid #dbc599; border-radius:999px; background:#fff4d9; color:#775521; font-size:10px; font-weight:700; line-height:1.4; white-space:nowrap; }
     /* JA-TIMELINE-RECOMMENDATIONS:END */
   </style>
@@ -234,12 +229,9 @@
           <p data-timeline-recommendations class="timeline-recommendation-summary" id="timelineRecommendationSummary" role="status" aria-live="polite"></p>
           <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
           <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
-            <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
-            <div class="timeline-selection-bar" role="group" aria-label="表示範囲と条件の解除">
-              <button type="button" data-timeline-filter="recommended" class="active timeline-recommended-choice" aria-pressed="true"><span aria-hidden="true">✦</span> おすすめ</button>
-              <button type="button" data-timeline-filter="all" class="timeline-reset"><span aria-hidden="true">↺</span><span>すべて表示<small>フィルターを解除</small></span></button>
+            <div class="timeline-filter-actions">
+              <button type="button" data-timeline-filter="all" class="timeline-reset">条件をクリア</button>
             </div>
-            <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
             <div class="timeline-filter-group" role="group" aria-label="お気に入り・座席側">
               <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ お気に入り</button>
               <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
@@ -250,6 +242,9 @@
               <button type="button" data-timeline-filter="night" data-i18n="fNight">夜景</button>
             </div>
             <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
+              <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
+              <button type="button" data-timeline-filter="recommended" class="active" aria-pressed="true">おすすめ</button>
+              <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
               <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
               <button type="button" data-timeline-filter="nature" data-i18n="fNature">自然</button>
               <button type="button" data-timeline-filter="history" data-i18n="fHistory">歴史</button>
@@ -264,9 +259,6 @@
               <span data-i18n="c727Toggle">727看板を分けて表示</span>
             </label>
           </div>
-          <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
-          <p class="timeline-recommendation-note">見つけやすさや景色の違いから選んだ見どころです。列車を選ぶと通過時刻に合わせて昼・夜の候補を切り替えます。夜景は点灯状況により見えないことがあります。</p>
-          <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
           <ol class="timeline" id="timeline"></ol>
           <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
           <div class="timeline-recommendation-more" id="timelineRecommendationMore" hidden>

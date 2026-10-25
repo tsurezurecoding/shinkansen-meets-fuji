@@ -2465,7 +2465,8 @@ function setTimelineSelection(selection) {
 }
 function recommendedTimelineCandidates(candidates) {
   if (!hasTimelineRecommendations() || timelineSelection === "all") return candidates;
-  return candidates.filter(({ sp, clock }) => isTimelineRecommended(sp, clock));
+  const themes = [...activeTimelineFilters].filter(value => !["seat-a", "seat-e", "day", "night", "favorites"].includes(value));
+  return candidates.filter(({ sp, clock }) => isTimelineRecommended(sp, clock) || themes.some(value => galleryTags(sp).has(value)));
 }
 function isTimelineRecommended(spot, clock) {
   const explicitTime = activeTimelineTimeOfDayFilter();
@@ -2479,8 +2480,7 @@ function renderTimelineRecommendationSummary(candidates, visible) {
   const more = $("#timelineRecommendationMore");
   const recommended = timelineSelection === "recommended";
   const hidden = candidates.length - visible.length;
-  const count = recommended ? `おすすめ ${visible.length}件を表示中` : `すべて ${visible.length}件を表示中`;
-  summary.textContent = `${count}（現在の区間・条件では全${candidates.length}件）`;
+  summary.textContent = `${visible.length}件の見どころ`;
   more.hidden = !recommended || !hidden;
   more.querySelector("p").textContent = visible.length
     ? `この区間・条件には、ほかにも${hidden}件の見どころがあります。`
@@ -2572,7 +2572,7 @@ function matchesTimelineFilters(spot) {
   const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e", "day", "night", "favorites"].includes(filter));
   const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
   const timeMatch = !selectedTimes.length || selectedTimes.some((filter) => tags.has(filter));
-  const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
+  const themeMatch = (hasTimelineRecommendations() && timelineSelection === "recommended") || !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
   return seatMatch && timeMatch && themeMatch;
 }
 function updateGalleryFilterButtons() {
@@ -2589,10 +2589,11 @@ function updateTimelineFilterButtons() {
   $$("#timelineFilterbar button[data-timeline-filter]").forEach((button) => {
     const filter = button.dataset.timelineFilter;
     const active = hasTimelineRecommendations() && ["recommended", "all"].includes(filter)
-      ? timelineSelection === filter
+      ? (filter === "recommended" ? timelineSelection === "recommended" : timelineSelection === "all" && !hasFilters)
       : filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
     button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
+    if (hasTimelineRecommendations() && filter === "all") button.removeAttribute("aria-pressed");
+    else button.setAttribute("aria-pressed", String(active));
   });
   syncCollectionToggleUI();
 }
@@ -2799,14 +2800,8 @@ function bindTimelineControls() {
     if (!button) return;
     const filter = button.dataset.timelineFilter;
     if (hasTimelineRecommendations() && ["recommended", "all"].includes(filter)) {
-      setTimelineSelection(filter);
-      if (filter === "all") {
-        activeTimelineFilters.clear();
-      } else {
-        [...activeTimelineFilters].forEach((value) => {
-          if (!["seat-a", "seat-e", "day", "night"].includes(value)) activeTimelineFilters.delete(value);
-        });
-      }
+      setTimelineSelection(filter === "recommended" && timelineSelection === "recommended" ? "all" : filter);
+      if (filter === "all") activeTimelineFilters.clear();
     } else if (filter === "all") {
       activeTimelineFilters.clear();
     } else if (["classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
@@ -2817,9 +2812,6 @@ function bindTimelineControls() {
       activeTimelineFilters.delete(filter);
     } else {
       activeTimelineFilters.add(filter);
-    }
-    if (hasTimelineRecommendations() && ["favorites", "classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
-      setTimelineSelection("all");
     }
     updateTimelineFilterButtons();
     track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all", ...(hasTimelineRecommendations() ? { selection: timelineSelection } : {}) });

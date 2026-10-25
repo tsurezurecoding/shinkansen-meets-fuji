@@ -38,7 +38,7 @@ test('Japanese preview defaults to the proposed day selection, including both se
     assert.equal(f.w.document.querySelectorAll('#timeline .tl-recommended-badge').length, 17);
     for (const id of ['fuji', 'ibuki', 'ibuki-seat-a', 'ferris-wheel-laguna', 'nichiban-anjo']) assert(f.ids().includes(id), id);
     assert(!f.ids().includes('hirakata-park-wheel'));
-    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes('おすすめ 17件'));
+    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes('17件の見どころ'));
     assert.equal(f.w.document.querySelector('[data-timeline-filter="recommended"]').getAttribute('aria-pressed'), 'true');
     assert.equal(f.w.document.querySelector('#timelineRecommendationMore').hidden, false);
     assert.deepEqual(f.errors, []);
@@ -66,9 +66,10 @@ test('all selection persists, while seat and night conditions remain usable and 
     f.click('night');
     assert.deepEqual(f.ids().sort(), ['hirakata-park-wheel', 'toji']);
     f.click('sign');
-    assert.equal(f.run('timelineSelection'), 'all');
+    assert.equal(f.run('timelineSelection'), 'recommended');
     f.click('recommended');
-    assert.equal(f.run('activeTimelineFilters.has("sign")'), false);
+    assert.equal(f.run('timelineSelection'), 'all');
+    assert.equal(f.run('activeTimelineFilters.has("sign")'), true);
     assert.equal(f.run('activeTimelineFilters.has("seat-a")'), true);
     f.click('all');
     assert.equal(f.run('activeTimelineFilters.size'), 0);
