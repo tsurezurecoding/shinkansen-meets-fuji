@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "371bcee2123bb8bd",
+  "contentVersion": "8a24dbd4428f325b",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1328,7 +1328,7 @@
       "path": "de/index.html",
       "url": "https://www.michikusa-travel.com/de/index.html",
       "bytes": 73008,
-      "sha256": "44842490595e5e8f0ad5f5f73f154bdce999d92a233f1e8ad4d527f9be8e42c1"
+      "sha256": "9bcb3230c97f9cd2852777eadda37b3dd92547c0421882483c5a0846a25570e1"
     },
     {
       "path": "de/journal.html",
@@ -1375,8 +1375,8 @@
     {
       "path": "de/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/de/spots/fuji.html",
-      "bytes": 125778,
-      "sha256": "1ca4befb612f3f47b71aed8e953141a5448a282ab83d586450b8a13f925508b8"
+      "bytes": 125892,
+      "sha256": "0fd512d33814698321e97fa55d4c08e7d98517f80e183d498eead32284b3b12d"
     },
     {
       "path": "de/spots/fujikawa-bridge.html",
@@ -1622,7 +1622,7 @@
       "path": "en/index.html",
       "url": "https://www.michikusa-travel.com/en/index.html",
       "bytes": 71895,
-      "sha256": "8fba079b8863f3b1196723cf2e409a741d5c01e91b0b8b436f13a9de8ad0aff0"
+      "sha256": "0c9386bd03e3684a1db428e64ad801786ef854460cb623f3c88c041d9b6f1006"
     },
     {
       "path": "en/reflections.html",
@@ -1712,7 +1712,7 @@
       "path": "es/index.html",
       "url": "https://www.michikusa-travel.com/es/index.html",
       "bytes": 72917,
-      "sha256": "c48345c13669af65947474bc7d67b2c94a905a7e51c5d35781e3b564acef19b3"
+      "sha256": "4168c2b16c76ec7fb9a8414282e8b1d7167eb4ec733f830326cb0c308bd4dc93"
     },
     {
       "path": "es/journal.html",
@@ -1759,8 +1759,8 @@
     {
       "path": "es/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/es/spots/fuji.html",
-      "bytes": 126819,
-      "sha256": "7d83c4098303bbd17f8c5ac368f5be6d460806e69606606f1e5bdc72346a8669"
+      "bytes": 126934,
+      "sha256": "521057e4d1347ee060b49e2e42e8507426a955604702c330dea1c6e762e5a870"
     },
     {
       "path": "es/spots/fujikawa-bridge.html",
@@ -1994,7 +1994,7 @@
       "path": "fr/index.html",
       "url": "https://www.michikusa-travel.com/fr/index.html",
       "bytes": 73462,
-      "sha256": "03626c815eef8056006b2cad03b34aba19538da91d999542ae500929ba467430"
+      "sha256": "9aac331aed0335fae8c59354a52bfa42324cf09306dff4950381292e8db593d1"
     },
     {
       "path": "fr/journal.html",
@@ -2041,8 +2041,8 @@
     {
       "path": "fr/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fuji.html",
-      "bytes": 127102,
-      "sha256": "6092c122cc471a80cbb342f6fca197fda9277d6f02f7dc0df03549957bd90bc0"
+      "bytes": 127216,
+      "sha256": "cb80b75ff798612cd3203f72f80f8bf9f8073623c32a20860df9a3966bf91ef0"
     },
     {
       "path": "fr/spots/fujikawa-bridge.html",
@@ -2239,8 +2239,8 @@
     {
       "path": "hero-cinema.js",
       "url": "https://www.michikusa-travel.com/hero-cinema.js",
-      "bytes": 6503,
-      "sha256": "a5d99e24b636fa80ca44bb965b83b755200e0e8edb65cf4e3ec1661edf60da57"
+      "bytes": 7313,
+      "sha256": "0d28f4175bde98d60916470c6d782120602f3748cf1813ba89cba03512031c56"
     },
     {
       "path": "home-cards.css",
@@ -3542,25 +3542,25 @@
       "path": "index.html",
       "url": "https://www.michikusa-travel.com/index.html",
       "bytes": 74530,
-      "sha256": "18d07c114d87e7690f9d0174eaaf073ca1693e15f426f28712c8833b9bc2e570"
+      "sha256": "e2656adfabab8e4c132f93d7f44e3750039ac72d2186a9ddd9fb29e743154cfd"
     },
     {
       "path": "it/guide.html",
       "url": "https://www.michikusa-travel.com/it/guide.html",
-      "bytes": 93704,
-      "sha256": "65754336765ddfc17cbfd3b00f0e0e528c36be75a8fba26ad15c6b1440766ea0"
+      "bytes": 93710,
+      "sha256": "104f7dee3208cc91a24fe88451b6ca434b4728e4e0f763d98854aae909eef371"
     },
     {
       "path": "it/index.html",
       "url": "https://www.michikusa-travel.com/it/index.html",
       "bytes": 59573,
-      "sha256": "c9e60d5f31a3a11f95bb077427b993dc9b1b1d6d26b29c5aab3c0924b6e26146"
+      "sha256": "399a42c29684da710cdb038cc3ca9a795b59b81c0f4a5a0a49196c98f606aafb"
     },
     {
       "path": "it/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/it/spots/fuji.html",
-      "bytes": 116864,
-      "sha256": "1b0c80e2c5d876299fd12eab68c4bb01da1dbe878f675d90946a6c8c459e1d2a"
+      "bytes": 116988,
+      "sha256": "c86759aea4a52f1c0688ae431ce453bb9debb6fab776e22387ecb7888d3040d8"
     },
     {
       "path": "it/start.html",
@@ -3638,7 +3638,7 @@
       "path": "ko/index.html",
       "url": "https://www.michikusa-travel.com/ko/index.html",
       "bytes": 73236,
-      "sha256": "52a90baa10e593de32fd55d538fab8510acd71984c469f17f4f8854df9f20978"
+      "sha256": "de43facfc15165a125994737c98f6902c12e510fa4b67adae48e37504534b00c"
     },
     {
       "path": "ko/journal.html",
@@ -3685,8 +3685,8 @@
     {
       "path": "ko/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/ko/spots/fuji.html",
-      "bytes": 126411,
-      "sha256": "d094e27f67249d7f5ada08e6ee467fc2c7f431e1992c966ea417f8a6d770a58c"
+      "bytes": 126526,
+      "sha256": "73a52942540730562691d919cf190ebfb0c1bed3676c36034fbaea82d259dc74"
     },
     {
       "path": "ko/spots/fujikawa-bridge.html",
@@ -4765,20 +4765,20 @@
     {
       "path": "th/guide.html",
       "url": "https://www.michikusa-travel.com/th/guide.html",
-      "bytes": 114354,
-      "sha256": "335a80f542f3ea6f3496d3953928349ff22983dadcc80d5c96380be485ba47e9"
+      "bytes": 114360,
+      "sha256": "f6396557c4e4c27ca6ef48cdb9ca44abdd68914a7a7117b980e9de7bb3ed0ac5"
     },
     {
       "path": "th/index.html",
       "url": "https://www.michikusa-travel.com/th/index.html",
       "bytes": 68621,
-      "sha256": "9132e56d1e7c64825a2e3e2697fbbd53d2f5037693dc964d989928b05561f4a9"
+      "sha256": "b02ebbb19a7145bd9012de6cb66392cd97c31519b80df9680631da70cba3d8ab"
     },
     {
       "path": "th/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/th/spots/fuji.html",
-      "bytes": 151479,
-      "sha256": "3ce4f5ba160bcc33970a3566344222b9d24b1cdb9df93ff13d0877655439c32c"
+      "bytes": 151603,
+      "sha256": "735f3cb74baface9b3bf642f5a271f01a348ad10d549c4f7a26535c1ee800f52"
     },
     {
       "path": "th/start.html",
@@ -5012,7 +5012,7 @@
       "path": "zh-Hans/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/index.html",
       "bytes": 72060,
-      "sha256": "7bf13c3068e448bef69d22975227599f7d5eeaf29dada46ec602701bea82026c"
+      "sha256": "50dedd5583036abc43ab0b775a4e8f0d307f5b33f9a0cc62d36a49bf86ea47b0"
     },
     {
       "path": "zh-Hans/journal.html",
@@ -5059,8 +5059,8 @@
     {
       "path": "zh-Hans/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/fuji.html",
-      "bytes": 123597,
-      "sha256": "531a10345b8b6305457608e6c546db75f715ce40cb5eca2c1fd7be2e2976c2e7"
+      "bytes": 123712,
+      "sha256": "7aeef3c5207cba402d633510a19d5be623e6982526e0fe0333ed98da3e689d13"
     },
     {
       "path": "zh-Hans/spots/fujikawa-bridge.html",
@@ -5252,7 +5252,7 @@
       "path": "zh-Hant/index.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/index.html",
       "bytes": 72054,
-      "sha256": "609e8fabab0efb10bc85d3039ce9e6b0cd583d7010369089674648a3ae89d4f7"
+      "sha256": "8b3bb3013917156bc0019290c04c8c66c9f51a370da4d04752fd6075aa2d954a"
     },
     {
       "path": "zh-Hant/journal.html",
@@ -5299,8 +5299,8 @@
     {
       "path": "zh-Hant/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/fuji.html",
-      "bytes": 123618,
-      "sha256": "ca1838b79f8fb5fe96d1d5642ea0d2cd46032f98f0663b8311401a6f16377dee"
+      "bytes": 123733,
+      "sha256": "ecff3c3206f164f9ed4314a70b60870a6a3beee072b6c6fb23dae34b717149d8"
     },
     {
       "path": "zh-Hant/spots/fujikawa-bridge.html",

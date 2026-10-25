@@ -6,7 +6,8 @@ import { MIERU_CONTENT } from './shared/mieru-content.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
 const assert=(ok,msg)=>{if(!ok)throw Error(msg);};
-import { languages as langs, translated } from './shared/locales.mjs';
+import { supported, translated } from './shared/locales.mjs';
+const langs=supported('mieru.html');
 const ids=MIERU_CONTENT.photos.map(p=>p.id);
 const fixture=i=>({hourly:Object.fromEntries(['cloud_cover_low','cloud_cover_mid','cloud_cover_high','visibility','relative_humidity_2m','precipitation'].map(k=>[k,Array.from({length:48},(_,h)=>k==='visibility'?8000+(h+i)%9*5000:k==='relative_humidity_2m'?40+(h+i)%40:k==='precipitation'?((h+i)%13===0?.4:0):(h*7+i*11)%100)]))});
 async function page(lang,query='',options={}){

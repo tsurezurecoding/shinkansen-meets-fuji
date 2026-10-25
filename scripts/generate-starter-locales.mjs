@@ -11,6 +11,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const check = process.argv.includes('--check');
 const report = process.argv.includes('--report-missing');
 const origin = 'https://www.michikusa-travel.com';
+const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
 const routes = locales.starterRoutes;
 const sourceTables = englishTables(root);
 const tables = { app: sourceTables.app, picker: sourceTables.picker };
@@ -62,6 +63,13 @@ for (const lang of locales.starter) {
       });
       doc.querySelectorAll('[data-spot-page-shared-module]').forEach(el => el.removeAttribute('data-spot-page-shared-module'));
       doc.body.setAttribute('data-article-localized', '');
+      for (const asset of ['style.css', 'article-locales.css']) {
+        const present = [...doc.querySelectorAll('link[rel="stylesheet"]')].some(link => link.getAttribute('href')?.split('?')[0].endsWith('/' + asset));
+        if (!present) {
+          const stylesheet = doc.createElement('link'); stylesheet.rel = 'stylesheet';
+          stylesheet.href = prefix + asset + '?v=' + assetVersion(asset); doc.head.append(stylesheet);
+        }
+      }
       const interaction = doc.createElement('script'); interaction.src = prefix + 'spot-page-shared.js?v=' + assetVersion('spot-page-shared.js'); doc.body.append(interaction);
     }
     doc.documentElement.lang = lang;
@@ -120,7 +128,7 @@ for (const lang of locales.starter) {
     (doc.querySelector('.topbar,.site-header,header') || doc.body).append(menu);
     doc.querySelectorAll('link[rel="alternate"]').forEach(el => el.remove());
     for (const language of supported(route).concat('x-default')) {
-      const el = doc.createElement('link'); el.rel = 'alternate'; el.hreflang = language;
+      const el = doc.createElement('link'); el.rel = 'alternate'; el.hreflang = route === 'guide.html' ? alternateHreflang(language) : language;
       el.href = `${origin}/${language === 'ja' ? '' : (language === 'x-default' ? 'en' : language) + '/'}${route === 'index.html' ? '' : route}`;
       doc.head.append(el);
     }

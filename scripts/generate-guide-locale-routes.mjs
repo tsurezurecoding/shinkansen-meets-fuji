@@ -8,6 +8,7 @@ import locales, { episodes, supported, editions, languages, translated, stripEdi
 import { assetVersion } from './shared/asset-version.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
+const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
 const check = process.argv.includes('--check');
 for (const lang of locales.coreLanguages) {
   const file = (lang === 'ja' ? '' : lang + '/') + 'guide.html';
@@ -51,7 +52,7 @@ for (const lang of locales.coreLanguages) {
     html = html.replace(/(<meta name="viewport"[^>]*>)/, '$1\n  ' + embeddedHead);
   }
   html = html.replace(/\s*<link\b(?=[^>]*rel="alternate")[^>]*>/g, "");
-  html = html.replace("</head>", supported("guide.html").concat("x-default").map(edition => `<link rel="alternate" hreflang="${edition}" href="${origin}/${edition === "ja" ? "" : (edition === "x-default" ? "en" : edition) + "/"}guide.html">`).join("\n") + "\n</head>");
+  html = html.replace("</head>", supported("guide.html").concat("x-default").map(edition => `<link rel="alternate" hreflang="${alternateHreflang(edition)}" href="${origin}/${edition === "ja" ? "" : (edition === "x-default" ? "en" : edition) + "/"}guide.html">`).join("\n") + "\n</head>");
   html = withLocaleRegistry(html, prefix);
   for (const [tag, asset] of [['script', 'utility-locales.js'], ['link', 'utility-locales.css']]) {
     if (!html.includes((tag === 'script' ? 'src="' : 'href="') + prefix + asset)) {
