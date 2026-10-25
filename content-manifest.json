@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "4a7328834a431ad6",
+  "contentVersion": "d5e41f02089467fc",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -3547,26 +3547,26 @@
     {
       "path": "it/guide.html",
       "url": "https://www.michikusa-travel.com/it/guide.html",
-      "bytes": 93708,
-      "sha256": "501212aaafe9d0cb95f8ba1ed1c852c696cd45313a27d2adc1164650ca0a881f"
+      "bytes": 93704,
+      "sha256": "65754336765ddfc17cbfd3b00f0e0e528c36be75a8fba26ad15c6b1440766ea0"
     },
     {
       "path": "it/index.html",
       "url": "https://www.michikusa-travel.com/it/index.html",
-      "bytes": 59599,
-      "sha256": "2652e79930103667dab6c7c3b39cc329e19db0b07a2861b4229ab04132c1d869"
+      "bytes": 59573,
+      "sha256": "c9e60d5f31a3a11f95bb077427b993dc9b1b1d6d26b29c5aab3c0924b6e26146"
     },
     {
       "path": "it/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/it/spots/fuji.html",
-      "bytes": 116898,
-      "sha256": "30462db421310035f3798975868a61ebe27a9a64e77e24e035254a3165c1f0d3"
+      "bytes": 116864,
+      "sha256": "1b0c80e2c5d876299fd12eab68c4bb01da1dbe878f675d90946a6c8c459e1d2a"
     },
     {
       "path": "it/start.html",
       "url": "https://www.michikusa-travel.com/it/start.html",
-      "bytes": 28375,
-      "sha256": "ba77fe6af4e1d51fcd8f1d0a2a59787b372707bbe419940fe18c56e39d7a80f5"
+      "bytes": 28349,
+      "sha256": "7b4692162940701278f72c70c42c6197c510305b664a06d264b98379c8b6b0bc"
     },
     {
       "path": "it/utility-data.js",
@@ -4765,26 +4765,26 @@
     {
       "path": "th/guide.html",
       "url": "https://www.michikusa-travel.com/th/guide.html",
-      "bytes": 114358,
-      "sha256": "c0ba19555e48176d2f8238451fba96c6af617c1ad6464b1d86adb46ab069f2c7"
+      "bytes": 114354,
+      "sha256": "335a80f542f3ea6f3496d3953928349ff22983dadcc80d5c96380be485ba47e9"
     },
     {
       "path": "th/index.html",
       "url": "https://www.michikusa-travel.com/th/index.html",
-      "bytes": 68647,
-      "sha256": "96c7ddfff02fb6cad74425633d39829f9f18e546f2b8d838189971e679d57976"
+      "bytes": 68621,
+      "sha256": "9132e56d1e7c64825a2e3e2697fbbd53d2f5037693dc964d989928b05561f4a9"
     },
     {
       "path": "th/spots/fuji.html",
       "url": "https://www.michikusa-travel.com/th/spots/fuji.html",
-      "bytes": 151513,
-      "sha256": "cb915dfa26d9c81953cfefc6ea10eb60e81b8d823d4a016eb9b52e53c89463db"
+      "bytes": 151479,
+      "sha256": "3ce4f5ba160bcc33970a3566344222b9d24b1cdb9df93ff13d0877655439c32c"
     },
     {
       "path": "th/start.html",
       "url": "https://www.michikusa-travel.com/th/start.html",
-      "bytes": 33733,
-      "sha256": "2d73b98a15787cfccdc6d333a370f56c3a8d848ee9143bb24b2c018a030996ea"
+      "bytes": 33707,
+      "sha256": "abdd864a294669e9c67d4edac025765b9597f6591ed97e36720992be715b8c79"
     },
     {
       "path": "th/utility-data.js",

@@ -16,6 +16,7 @@ const sourceTables = englishTables(root);
 const tables = { app: sourceTables.app, picker: sourceTables.picker };
 const data = englishRuntimeData(root);
 function write(file, text) {
+  text = text.replace(/^[ \t]+$/gm, "");
   if (report) return;
   const target = path.join(root, file);
   if (fs.existsSync(target) && fs.readFileSync(target, 'utf8') === text) return;
