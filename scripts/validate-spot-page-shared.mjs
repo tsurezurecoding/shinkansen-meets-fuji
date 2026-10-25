@@ -165,7 +165,7 @@ async function runThinValidator() {
     const expected = lang === "en"
       ? [
           "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
-          `${base}zukan.html`, `${base}727-collection.html`, `${base}castles.html`, `${base}everyday-japan.html`, `${base}yakei.html`,
+          `${base}zukan.html`, `${base}arenani.html`, `${base}castles.html`, `${base}everyday-japan.html`, `${base}yakei.html`,
           `${base}guide.html`, `${base}mieru.html`, `${base}jr-pass-fuji.html`, `${base}window-artworks.html`, `${base}journal.html`, `${base}?intro=1`, `${base}references.html`, `${base}contact.html`,
         ]
       : [
@@ -178,7 +178,7 @@ async function runThinValidator() {
     if (newCards.some((card) => !/data-cta-track="[^"]+"/.test(card) || !/data-cta-id="discovery_[^"]+"/.test(card))) fail(`${label}: each new discovery card must retain CTA tracking`);
     if (new Set(newCards.map((card) => card.match(/data-cta-id="([^"]+)"/)?.[1] || "")).size !== 6) fail(`${label}: discovery CTA ids must be unique`);
     if (!newCards[0]?.includes('data-cta-track="android_app_guide_click" data-cta-id="discovery_android"') || !newCards[0]?.includes('target="_blank"') || !newCards[0]?.includes('rel="noopener noreferrer"')) fail(`${label}: the first discovery card must be the direct Google Play link`);
-    if (!newCards[2]?.includes('data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) fail(`${label}: the 727 discovery card tracking contract is missing`);
+    if (!newCards[2]?.includes(lang === "en" ? 'data-cta-track="arenani_entry_click" data-cta-id="discovery_arenani"' : 'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) fail(`${label}: the language-specific discovery card tracking contract is missing`);
   }
 
   function assertSpotRailHasNoPromoSlots(html, label) {

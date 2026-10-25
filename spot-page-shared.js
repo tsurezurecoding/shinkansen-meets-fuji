@@ -500,12 +500,13 @@
       { href: href(rootPath, "window-quiz.html" + (ja ? "" : "?lang=ja")), img: "images/20260704_maruko_bridge_1_michikusa.jpg", label: "WINDOW QUIZ", title: ja ? "車窓クイズ" : "Window quiz", desc: ja ? "写真と動画で、車窓の発見を楽しむ。" : "Discover window views through photo and video quizzes.", japanese: !ja }
     ];
     if (!ja) {
+      items[2] = { href: href(base, "arenani.html"), img: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", label: "WHAT YOU'LL SEE", title: "What's that outside?", desc: "Everyday Japanese scenery, explained from the window" };
       items[4] = { href: href(base, "everyday-japan.html"), img: "images/20260629_omi_fuji_michikusa.jpg", label: "EVERYDAY JAPAN", title: "Everyday Japan", desc: "Everyday Japanese scenery, explained from the window" };
       items[5] = { href: href(base, "yakei.html"), img: "images/20260629_2158_nagoya_station_night_michikusa.jpg", label: "AFTER DARK", title: "Night views", desc: "Tokaido Shinkansen at night" };
     }
     var events = ['android_app_guide_click', 'zukan_entry_click', '727_collection_entry_click', 'castles_entry_click', 'sudoori_entry_click', 'window_quiz_entry_click'];
     var keys = ['android', 'zukan', '727', 'castles', 'sudoori', 'quiz'];
-    if (!ja) { events[4] = 'everyday_japan_entry_click'; events[5] = 'yakei_entry_click'; keys[4] = 'everyday'; keys[5] = 'yakei'; }
+    if (!ja) { events[2] = 'arenani_entry_click'; keys[2] = 'arenani'; events[4] = 'everyday_japan_entry_click'; events[5] = 'yakei_entry_click'; keys[4] = 'everyday'; keys[5] = 'yakei'; }
     var cards = items.map(function (item, index) {
       return '<a class="content-rail-card' + (item.app ? ' content-rail-android hide-in-app' : '') + '" href="' + escapeHTML(item.href) + '" data-cta-track="' + events[index] + '" data-cta-id="discovery_' + keys[index] + '"' + (item.app ? ' target="_blank" rel="noopener noreferrer"' : '') + (item.japanese ? ' hreflang="ja"' : '') + '><img src="' + escapeHTML(href(rootPath, item.img)) + '" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>' + escapeHTML(item.label) + '</small><strong>' + escapeHTML(item.title) + (item.app ? ' <span aria-hidden="true">↗</span>' : '') + '</strong><span>' + escapeHTML(item.desc) + '</span>' + (item.japanese ? '<small class="discovery-language">日本語</small>' : '') + '</span></a>';
     }).join('');

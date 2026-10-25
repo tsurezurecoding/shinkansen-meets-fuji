@@ -86,7 +86,7 @@ const checks = [
       'href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow"',
       'data-cta-track="android_app_guide_click" data-cta-id="discovery_android"',
       'href="en/zukan.html"',
-      'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"',
+      'data-cta-track="arenani_entry_click" data-cta-id="discovery_arenani"',
       'href="en/castles.html"',
       'href="en/everyday-japan.html"',
       'href="en/yakei.html"',
@@ -165,7 +165,7 @@ function validateDiscoveryRail(text, file) {
   const expected = english
     ? [
         "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
-        "en/zukan.html", "en/727-collection.html", "en/castles.html",
+        "en/zukan.html", "en/arenani.html", "en/castles.html",
         "en/everyday-japan.html", "en/yakei.html",
         "en/guide.html", "en/mieru.html", "en/jr-pass-fuji.html", "en/window-artworks.html",
         "en/journal.html", "en/?intro=1", "en/references.html", "en/contact.html",
@@ -188,8 +188,8 @@ function validateDiscoveryRail(text, file) {
   if (!discoveryCards[0]?.includes('target="_blank"') || !discoveryCards[0]?.includes('rel="noopener noreferrer"') || !discoveryCards[0]?.includes('data-cta-track="android_app_guide_click" data-cta-id="discovery_android"')) {
     failures.push(`${file}: the first discovery card must be the direct, safely opened Google Play link`);
   }
-  if (!discoveryCards[2]?.includes('data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) {
-    failures.push(`${file}: the third discovery card must track the 727 collection entry`);
+  if (!discoveryCards[2]?.includes(english ? 'data-cta-track="arenani_entry_click" data-cta-id="discovery_arenani"' : 'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) {
+    failures.push(`${file}: the third discovery card must track its language-specific feature`);
   }
   if (/<section class="top-promo-stack\b/.test(text) || text.includes('data-cta-id="top_footer_disney"') || text.includes('data-cta-id="top_footer_727"')) {
     failures.push(`${file}: obsolete standalone footer promotions remain in the train selector`);
