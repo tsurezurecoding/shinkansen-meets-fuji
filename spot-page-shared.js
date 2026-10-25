@@ -210,7 +210,7 @@
       if (!localized(station.name, lang)) throw new Error("shared station name is missing");
     });
     var spotIds = {};
-    data.spots.forEach(function (spot) {
+    data.spots.concat(data.wheelSpots || []).forEach(function (spot) {
       if (!spot || !safeSpotId(spot.id) || spotIds[spot.id] || !spot.name || !Number.isFinite(Number(spot.minutes))) {
         throw new Error("shared spot data is malformed");
       }
@@ -370,11 +370,12 @@
     var ui = UI[lang];
     var base = basePath(rootPath, lang);
     var trainHref = lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html");
+    var railSpots = data.spots.concat(data.wheelSpots || []);
     var rows = [];
     data.stations.forEach(function (station) {
       rows.push({ kind: "station", id: station.id, minutes: Number(station.minutes), major: !!station.major, name: localized(station.name, lang) });
     });
-    data.spots.forEach(function (spot) {
+    railSpots.forEach(function (spot) {
       if (!Number.isFinite(Number(spot.minutes))) return;
       rows.push({ kind: "spot", id: spot.id, minutes: Number(spot.minutes), name: localized(spot.name, lang), seats: seatLabels(spot), thumb: spot.thumb || "", sideLabel: sideLabel(spot, lang), guide: spot.guide || "", guideRoute: spot.guideRoute && (spot.guideRoute[lang] || spot.guideRoute.en || spot.guideRoute.ja) || "" });
     });
@@ -396,7 +397,7 @@
     }).join("");
     var current = data.spots.filter(function (spot) { return spot.id === currentId; })[0];
     var now = current ? ui.railNow(escapeHTML(localized(current.name, lang)), escapeHTML(Number(current.minutes)), escapeHTML(sideLabel(current, lang))) : "";
-    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(data.spots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol>" + sanyoRailHTML(data, rootPath, lang, currentId) + "</div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
+    return "<aside class=\"spot-page-rail\" aria-label=\"" + escapeHTML(ui.railTitle) + "\"><div class=\"spot-page-rail-head\"><p class=\"spot-page-rail-eyebrow\">" + escapeHTML(ui.railEyebrow) + "</p><p class=\"spot-page-rail-title\">" + escapeHTML(ui.railTitle) + "</p><p class=\"spot-page-rail-count\"><strong>" + escapeHTML(railSpots.length) + "</strong>" + escapeHTML(ui.railCountSuffix) + "</p>" + (now ? "<p class=\"spot-page-rail-now\">" + now + "</p>" : "") + (options && options.noTrain ? "" : "<a class=\"spot-page-rail-cta\" href=\"" + escapeHTML(trainHref) + "\">" + escapeHTML(ui.railCta) + "</a>") + "</div><div class=\"spot-page-rail-list-wrap\"><ol class=\"spot-page-rail-list\">" + items + "</ol>" + sanyoRailHTML(data, rootPath, lang, currentId) + "</div><div class=\"spot-page-rail-foot\"><a href=\"" + escapeHTML(href(base, "zukan.html")) + "\">" + escapeHTML(ui.railFoot) + "</a></div>" + railPromosHTML(rootPath, lang, currentRoute, collection727Count(data), currentId, null, options) + railAffiliateHTML(data, rootPath, lang) + "</aside>";
   }
 
   // currentRoute は utility 文脈のときだけ渡る。自分自身へのカードは出さない。
@@ -498,8 +499,13 @@
       { href: href(rootPath, "sudoori/index.html" + (ja ? "#stories" : "?lang=ja#stories")), img: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", label: "LOCAL STORIES", title: ja ? "素通りの街" : "Towns we pass", desc: ja ? "通り過ぎる街の物語を読む。" : "Read the stories of towns along the line.", japanese: !ja },
       { href: href(rootPath, "window-quiz.html" + (ja ? "" : "?lang=ja")), img: "images/20260704_maruko_bridge_1_michikusa.jpg", label: "WINDOW QUIZ", title: ja ? "車窓クイズ" : "Window quiz", desc: ja ? "写真と動画で、車窓の発見を楽しむ。" : "Discover window views through photo and video quizzes.", japanese: !ja }
     ];
+    if (!ja) {
+      items[4] = { href: href(base, "everyday-japan.html"), img: "images/20260629_omi_fuji_michikusa.jpg", label: "EVERYDAY JAPAN", title: "Everyday Japan", desc: "Everyday Japanese scenery, explained from the window" };
+      items[5] = { href: href(base, "yakei.html"), img: "images/20260629_2158_nagoya_station_night_michikusa.jpg", label: "AFTER DARK", title: "Night views", desc: "Tokaido Shinkansen at night" };
+    }
     var events = ['android_app_guide_click', 'zukan_entry_click', '727_collection_entry_click', 'castles_entry_click', 'sudoori_entry_click', 'window_quiz_entry_click'];
     var keys = ['android', 'zukan', '727', 'castles', 'sudoori', 'quiz'];
+    if (!ja) { events[4] = 'everyday_japan_entry_click'; events[5] = 'yakei_entry_click'; keys[4] = 'everyday'; keys[5] = 'yakei'; }
     var cards = items.map(function (item, index) {
       return '<a class="content-rail-card' + (item.app ? ' content-rail-android hide-in-app' : '') + '" href="' + escapeHTML(item.href) + '" data-cta-track="' + events[index] + '" data-cta-id="discovery_' + keys[index] + '"' + (item.app ? ' target="_blank" rel="noopener noreferrer"' : '') + (item.japanese ? ' hreflang="ja"' : '') + '><img src="' + escapeHTML(href(rootPath, item.img)) + '" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>' + escapeHTML(item.label) + '</small><strong>' + escapeHTML(item.title) + (item.app ? ' <span aria-hidden="true">↗</span>' : '') + '</strong><span>' + escapeHTML(item.desc) + '</span>' + (item.japanese ? '<small class="discovery-language">日本語</small>' : '') + '</span></a>';
     }).join('');

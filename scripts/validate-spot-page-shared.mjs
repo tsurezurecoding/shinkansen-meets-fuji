@@ -17,7 +17,7 @@ async function runThinValidator() {
   const stylesheetCode = fs.readFileSync(stylesheetPath, "utf8");
   const galleryStylesheetCode = fs.readFileSync(path.join(appDir, "spot-media-gallery.css"), "utf8");
   const sourceContext = {};
-  vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SOURCE = { SPOTS, ROUTE };`, sourceContext, { filename: path.join(appDir, "data.js") });
+  vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SOURCE = { SPOTS, ROUTE, WHEEL_COLLECTION };`, sourceContext, { filename: path.join(appDir, "data.js") });
   const source = sourceContext.__SOURCE;
   const dataContext = {};
   vm.runInNewContext(sharedDataCode, dataContext, { filename: dataPath });
@@ -165,7 +165,7 @@ async function runThinValidator() {
     const expected = lang === "en"
       ? [
           "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
-          `${base}zukan.html`, `${base}727-collection.html`, `${base}castles.html`, `${rootPath}sudoori/index.html?lang=ja#stories`, `${rootPath}window-quiz.html?lang=ja`,
+          `${base}zukan.html`, `${base}727-collection.html`, `${base}castles.html`, `${base}everyday-japan.html`, `${base}yakei.html`,
           `${base}guide.html`, `${base}mieru.html`, `${base}jr-pass-fuji.html`, `${base}window-artworks.html`, `${base}journal.html`, `${base}?intro=1`, `${base}references.html`, `${base}contact.html`,
         ]
       : [
@@ -276,6 +276,15 @@ async function runThinValidator() {
     if (html.includes('<div class="spot-page-shell>')) fail(`${label} contains the malformed unclosed spot-page-shell class`);
   }
 
+  function assertWheelRail(html, lang, rootPath, label) {
+    const links = [...html.matchAll(/<a class="spot-page-rail-link" href="([^"]+)"/g)].map((match) => match[1]);
+    for (const wheel of source.WHEEL_COLLECTION.filter((item) => item.isWheelCollection)) {
+      const target = rootPath + (lang === "en" ? "en/" : "") + "ferris-wheels.html#" + wheel.id;
+      if (links.filter((href) => href === target).length !== 1) fail(label + ": missing or duplicate wheel " + wheel.id);
+    }
+    if (links.filter((href) => href.endsWith("spots/hirakata-park-wheel.html") || href === "hirakata-park-wheel.html").length !== 1) fail(label + ": Hirakata wheel must appear once");
+  }
+
   function renderUtility(lang, rootPath, route) {
     const hosts = {
       topbar: makeHost(),
@@ -352,6 +361,12 @@ async function runThinValidator() {
   if (payloadIds.length !== expectedSpotCount || JSON.stringify(payloadIds) !== JSON.stringify(sourceIds)) fail(`payload/source spot count or order mismatch: source=${expectedSpotCount}, pages=${payloadIds.length}`);
   if (!Array.isArray(payload.spots) || payload.spots.length !== allSourceIds.length) fail(`catalog/source spot count mismatch: source=${allSourceIds.length}, catalog=${payload.spots?.length || 0}`);
   if (!Array.isArray(payload.stations) || payload.stations.length !== expectedStationCount) fail(`payload station count does not match data.js: source=${expectedStationCount}, payload=${payload.stations?.length || 0}`);
+  const wheels = source.WHEEL_COLLECTION.filter((wheel) => wheel.isWheelCollection);
+  if (JSON.stringify(payload.wheelSpots?.map((wheel) => wheel.id)) !== JSON.stringify(wheels.map((wheel) => wheel.stampId))) fail("shared rail must include every collection-only wheel exactly once");
+  for (const wheel of wheels) {
+    const projected = payload.wheelSpots?.find((item) => item.id === wheel.stampId);
+    if (projected?.minutes !== wheel.minutesFromTokyo || projected?.side !== wheel.side || projected?.guideRoute?.ja !== "ferris-wheels.html#" + wheel.id || projected?.guideRoute?.en !== "en/ferris-wheels.html#" + wheel.id) fail(wheel.id + ": shared wheel rail projection mismatch");
+  }
   // Video presence is editorial data in data.js. Keep this validator focused on
   // source-to-projection-to-HTML alignment instead of duplicating every URL here.
   const videoSpots = pageSourceSpots.filter((spot) => Array.isArray(spot.media?.videos) && spot.media.videos.length);
@@ -462,6 +477,7 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      assertWheelRail(output, lang, prefix, relativeFile);
       assertCompactGuide(output, page, lang, prefix, relativeFile);
       if (lang === "en" && /[\u3040-\u30ff\u3400-\u9fff]/.test(output.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "")) fail(`${relativeFile}: English page heading contains Japanese text`);
       const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
@@ -562,10 +578,12 @@ async function runThinValidator() {
   for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "ferris-wheels.html", "castles.html", "727-collection.html", "arenani.html", "reflections.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
+    assertWheelRail(japaneseUtility.hosts.rail.outerHTML, "ja", "./", route);
     assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });
     assertRailSlots(japaneseUtility.hosts["mobile-promos"].outerHTML, `Japanese utility ${route} mobile promos`, "ja", { route });
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
+    assertWheelRail(englishUtility.hosts.rail.outerHTML, "en", "../", route);
     assertRailSlots(englishUtility.hosts.rail.outerHTML, `English utility ${route} rail`, "en", { route });
     assertRailSlots(englishUtility.hosts["mobile-promos"].outerHTML, `English utility ${route} mobile promos`, "en", { route });
   }

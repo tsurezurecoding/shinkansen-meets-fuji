@@ -88,8 +88,8 @@ const checks = [
       'href="en/zukan.html"',
       'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"',
       'href="en/castles.html"',
-      'href="sudoori/index.html?lang=ja#stories"',
-      'href="window-quiz.html?lang=ja"',
+      'href="en/everyday-japan.html"',
+      'href="en/yakei.html"',
       'href="en/contact.html"',
       'https://www.googletagmanager.com/gtag/js?id=',
       'if (window.MADO_EMBEDDED_WEB) return;',
@@ -166,7 +166,7 @@ function validateDiscoveryRail(text, file) {
     ? [
         "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
         "en/zukan.html", "en/727-collection.html", "en/castles.html",
-        "sudoori/index.html?lang=ja#stories", "window-quiz.html?lang=ja",
+        "en/everyday-japan.html", "en/yakei.html",
         "en/guide.html", "en/mieru.html", "en/jr-pass-fuji.html", "en/window-artworks.html",
         "en/journal.html", "en/?intro=1", "en/references.html", "en/contact.html",
       ]

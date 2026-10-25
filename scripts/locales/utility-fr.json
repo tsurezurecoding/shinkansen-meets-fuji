@@ -2216,5 +2216,16 @@
   "Mt. Fuji seen from the Shinkansen": "Le mont Fuji vu depuis le Shinkansen",
   "Opens in a new tab": "S'ouvre dans un nouvel onglet",
   "ALL WINDOW VIEWS": "Tous les paysages du trajet",
-  "About {0} min": "Environ {0} min"
+  "About {0} min": "Environ {0} min",
+  "About 46 min from Tokyo ・ Seat E · right side toward Shin-Osaka; left side toward Tokyo": "Environ 0,5 min depuis Tokyo ・ Siège E · à droite vers Shin-Osaka ; à gauche vers Tokyo",
+  "About 77 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Environ 77 min depuis Tokyo ・ Siège A · à gauche vers Shin-Osaka ; à droite vers Tokyo",
+  "About 82 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Environ 82 min depuis Tokyo ・ Siège A · à gauche vers Shin-Osaka ; à droite vers Tokyo",
+  "About 87 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Environ 87 min depuis Tokyo ・ Siège A · à gauche vers Shin-Osaka ; à droite vers Tokyo",
+  "About 93 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Environ 93 min depuis Tokyo ・ Siège A · à gauche vers Shin-Osaka ; à droite vers Tokyo",
+  "65": "65",
+  "46": "46",
+  "77": "77",
+  "82": "82",
+  "87": "87",
+  "93": "93"
 }

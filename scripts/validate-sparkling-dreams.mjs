@@ -46,7 +46,7 @@ function validateSelectorDiscoveryRail(html, lang) {
   const hrefs = cards.map((card) => card.match(/\bhref="([^"]+)"/)?.[1] || "");
   const english = lang === "en";
   const expected = english
-    ? ["https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", "en/zukan.html", "en/727-collection.html", "en/castles.html", "sudoori/index.html?lang=ja#stories", "window-quiz.html?lang=ja", "en/guide.html", "en/mieru.html", "en/jr-pass-fuji.html", "en/window-artworks.html", "en/journal.html", "en/?intro=1", "en/references.html", "en/contact.html"]
+    ? ["https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", "en/zukan.html", "en/727-collection.html", "en/castles.html", "en/everyday-japan.html", "en/yakei.html", "en/guide.html", "en/mieru.html", "en/jr-pass-fuji.html", "en/window-artworks.html", "en/journal.html", "en/?intro=1", "en/references.html", "en/contact.html"]
     : ["https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", "zukan.html", "727-collection.html", "castles.html", "sudoori/index.html#stories", "window-quiz.html", "guide.html", "mieru.html", "window-artworks.html", "journal.html", "references.html", "contact.html"];
   expect(section.length > 0, `${file}: discovery rail is missing`);
   expect(cards.length === expected.length && hrefs.every((href, index) => href === expected[index]), `${file}: expected the six discovery entries first, followed by all existing cards`);
