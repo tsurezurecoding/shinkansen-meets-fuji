@@ -116,13 +116,14 @@
     .train-entry-more.top-promo-stack--mobile{display:block;max-width:860px;margin-inline:auto}
     @media(max-width:650px){.ja-train-grid{grid-template-columns:1fr}.fuji-train-answer{padding:18px}.train-entry-more .top-promo-grid{grid-template-columns:1fr}}
     /* JA-TIMELINE-RECOMMENDATIONS:START */
-    .timeline-recommendation-summary { max-width:700px; margin:0 auto 12px; color:var(--ink-soft); text-align:center; font-size:13px; line-height:1.7; }
+    .timeline-recommendation-summary { flex:1 1 170px; min-width:0; margin:0; color:var(--night); font-size:13px; font-weight:700; line-height:1.7; overflow-wrap:anywhere; }
     .timeline-recommendation-more { max-width:700px; margin:18px auto 0; text-align:center; }
     .timeline-recommendation-more p { margin:0 0 12px; font-size:14px; line-height:1.7; }
     .timeline-recommendation-more button { border:0; background:none; color:var(--ink-soft); font:inherit; font-size:12px; text-decoration:underline; cursor:pointer; }
-    .timeline-filter-actions { flex:0 0 100%; display:flex; justify-content:flex-end; }
-    #timelineFilterbar .timeline-reset { border:0; border-radius:0; padding:6px 0; background:none; color:var(--ink-soft); font-weight:500; text-decoration:underline; text-underline-offset:3px; }
-    .tl-recommended-badge { display:inline-flex; align-items:center; gap:3px; padding:3px 7px; border:1px solid #dbc599; border-radius:999px; background:#fff4d9; color:#775521; font-size:10px; font-weight:700; line-height:1.4; white-space:nowrap; }
+    .timeline-filter-actions { flex:0 0 100%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; padding:10px 12px; margin-bottom:4px; background:var(--paper); border:1px solid var(--line); border-radius:12px; box-sizing:border-box; }
+    #timelineFilterbar .timeline-reset { flex:none; min-height:40px; padding:8px 12px; border:1px solid var(--night); border-radius:8px; background:white; color:var(--night); font-weight:700; }
+    #timelineFilterbar .timeline-reset:hover { background:var(--line); }
+    .tl-recommended-badge { display:inline-flex; align-items:center; justify-content:center; flex:none; color:#94651b; font-size:16px; line-height:1; }
     /* JA-TIMELINE-RECOMMENDATIONS:END */
   </style>
   <script defer src="utility-locales.js?v=4f2b7fba"></script>
@@ -225,11 +226,11 @@
             <h2 id="tlTitle">—</h2>
             <p class="section-sub" data-i18n="tlSub">時刻は目安です。列車を選ぶと停車時刻を基に計算します。少し早めに窓の外を見てください。</p>
           </div>
-          <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
-          <p data-timeline-recommendations class="timeline-recommendation-summary" id="timelineRecommendationSummary" role="status" aria-live="polite"></p>
-          <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
           <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
             <div class="timeline-filter-actions">
+              <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
+              <p data-timeline-recommendations class="timeline-recommendation-summary" id="timelineRecommendationSummary" role="status" aria-live="polite"></p>
+              <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
               <button type="button" data-timeline-filter="all" class="timeline-reset">条件をクリア</button>
             </div>
             <div class="timeline-filter-group" role="group" aria-label="お気に入り・座席側">
@@ -243,7 +244,7 @@
             </div>
             <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
               <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
-              <button type="button" data-timeline-filter="recommended" class="active" aria-pressed="true">おすすめ</button>
+              <button type="button" data-timeline-filter="recommended" class="active" aria-pressed="true">♦ 注目</button>
               <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
               <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
               <button type="button" data-timeline-filter="nature" data-i18n="fNature">自然</button>

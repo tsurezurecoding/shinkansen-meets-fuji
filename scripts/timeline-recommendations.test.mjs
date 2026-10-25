@@ -38,7 +38,7 @@ test('Japanese preview defaults to the proposed day selection, including both se
     assert.equal(f.w.document.querySelectorAll('#timeline .tl-recommended-badge').length, 17);
     for (const id of ['fuji', 'ibuki', 'ibuki-seat-a', 'ferris-wheel-laguna', 'nichiban-anjo']) assert(f.ids().includes(id), id);
     assert(!f.ids().includes('hirakata-park-wheel'));
-    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes('17件の見どころ'));
+    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes('絞り込み中：♦ 注目 ／ 17件'));
     assert.equal(f.w.document.querySelector('[data-timeline-filter="recommended"]').getAttribute('aria-pressed'), 'true');
     assert.equal(f.w.document.querySelector('#timelineRecommendationMore').hidden, false);
     assert.deepEqual(f.errors, []);
@@ -75,6 +75,7 @@ test('all selection persists, while seat and night conditions remain usable and 
     assert.equal(f.run('activeTimelineFilters.size'), 0);
     assert(f.ids().includes('fuji'));
     assert(f.ids().includes('hinataoka'));
+    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.startsWith('すべて表示中'));
   } finally { f.close(); }
   const reload = await fixture({ saved });
   try {
@@ -104,7 +105,7 @@ test('a short interval with no recommendation offers the other available spot wi
   try {
     f.run('journey.spots = journey.spots.filter(x => x.sp.id === "hinataoka"); wheelCollectionSpots = () => []; renderTimeline()');
     assert.equal(f.ids().length, 0);
-    assert(f.w.document.querySelector('#timelineRecommendationMore p').textContent.includes('おすすめはありません'));
+    assert(f.w.document.querySelector('#timelineRecommendationMore p').textContent.includes('注目スポットはありません'));
     f.w.document.querySelector('#timelineRecommendationMore button').click();
     assert.deepEqual(f.ids(), ['hinataoka']);
   } finally { f.close(); }
