@@ -926,6 +926,20 @@ const SPOTS = [
         }
       }
     ],
+    "media": {
+      "heading": { "ja": "動画で見るかぐやの灯", "en": "Kaguya no To in motion" },
+      "description": {
+        "ja": "ライトアップされたかぐやの灯を、車窓から見る動画です。",
+        "en": "See Kaguya no To illuminated from the train window."
+      },
+      "videos": [{
+        "kind": "youtube",
+        "id": "8PAjCJxCTVE",
+        "url": "https://www.youtube.com/watch?v=8PAjCJxCTVE",
+        "title": { "ja": "[新幹線の車窓] ライトアップされたかぐやの灯 (上植野浄水場の配水塔)", "en": "[新幹線の車窓] ライトアップされたかぐやの灯 (上植野浄水場の配水塔)" }
+      }],
+      "platformNote": { "ja": "動画はYouTubeの公式埋め込みを利用しています。", "en": "This video uses the official YouTube embed." }
+    },
     "references": [
       {
         "label": {
@@ -9031,6 +9045,20 @@ const SPOTS = [
         }
       }
     ],
+    "media": {
+      "heading": { "ja": "動画で見る山崎蒸溜所", "en": "Yamazaki Distillery in motion" },
+      "description": {
+        "ja": "新幹線の車窓から見える山崎蒸溜所の動画です。",
+        "en": "See Yamazaki Distillery from the Shinkansen window."
+      },
+      "videos": [{
+        "kind": "youtube",
+        "id": "HaZ9nYFWmzc",
+        "url": "https://www.youtube.com/watch?v=HaZ9nYFWmzc",
+        "title": { "ja": "[新幹線の車窓] サントリー山崎蒸留所", "en": "[新幹線の車窓] サントリー山崎蒸留所" }
+      }],
+      "platformNote": { "ja": "動画はYouTubeの公式埋め込みを利用しています。", "en": "This video uses the official YouTube embed." }
+    },
     "references": [
       {
         "label": {
@@ -9530,8 +9558,9 @@ const SPOTS = [
           fallbackText: { ja: "鳥飼車両基地のあと、大阪モノレールも映る投稿動画", en: "A post showing the Osaka Monorail after Torikai Rail Yard" },
           comment: { ja: "車両基地のあと、大阪モノレールも画面に入ります。", en: "After the depot, the Osaka Monorail enters the frame too." },
         },
+        { kind: "youtube", id: "HC5Wi6jNESs", url: "https://www.youtube.com/watch?v=HC5Wi6jNESs", title: { ja: "[新幹線の車窓] 日入後の鳥飼車両基地", en: "[新幹線の車窓] 日入後の鳥飼車両基地" } },
       ],
-      platformNote: { ja: "動画はXの公式埋め込みを利用しています。", en: "This video uses the official X embed." },
+
     },
     references: [REFERENCES.tokaidoShinkansen, REFERENCES.torikaiDepotWiki],
     map: { lat: 34.77598, lng: 135.5704782, ja: "鳥飼車両基地", en: "Torikai Train Depot" },
