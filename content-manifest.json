@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d5e41f02089467fc",
+  "contentVersion": "cdc850f4a025d73f",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -4219,14 +4219,14 @@
     {
       "path": "quiz/guesser.css",
       "url": "https://www.michikusa-travel.com/quiz/guesser.css",
-      "bytes": 7024,
-      "sha256": "ad7cf6eee6c5450257fd7b996c524ae57ffc17f94f432ddcaaa852738340cce0"
+      "bytes": 12460,
+      "sha256": "5ef84667478b4752b721535c4ff606eb97a7bc401907cf55b3ba73d3088599a0"
     },
     {
       "path": "quiz/guesser.js",
       "url": "https://www.michikusa-travel.com/quiz/guesser.js",
-      "bytes": 19738,
-      "sha256": "cad6bc6163ef0f5f6c5b19453b236714a046b85504e1e840e8c45713eed2a2f6"
+      "bytes": 20738,
+      "sha256": "61e8a5c9a33b0bfbd9e2b76353ed7772ceb2c82929df18091c2eea634c4cf896"
     },
     {
       "path": "quiz/media/1-filmstrip.jpg",
@@ -4561,14 +4561,14 @@
     {
       "path": "quiz/recognition.css",
       "url": "https://www.michikusa-travel.com/quiz/recognition.css",
-      "bytes": 9756,
-      "sha256": "3c918b04136a3e837deb16daff63fca8310435c68629230c00fa46aaf9bd6676"
+      "bytes": 13260,
+      "sha256": "24d4568a8a8d0833bdec2883a318a2ce5efb98ad2a7345e617d11c326a6d51ea"
     },
     {
       "path": "quiz/recognition.js",
       "url": "https://www.michikusa-travel.com/quiz/recognition.js",
-      "bytes": 8120,
-      "sha256": "cdfc287e0581d6436393a2ea835f1e0586132601276919f127c591802b5dc713"
+      "bytes": 8542,
+      "sha256": "499f54d607fcf9960898d20019357ff47fe3a6641e704aaf3d28fa9211a4a356"
     },
     {
       "path": "reflections.css",
@@ -4933,8 +4933,8 @@
     {
       "path": "window-guesser.html",
       "url": "https://www.michikusa-travel.com/window-guesser.html",
-      "bytes": 17679,
-      "sha256": "1fe0910d7cd529dc950241658607c3e7fc84840c00077091643752d01daa40e7"
+      "bytes": 17997,
+      "sha256": "7db24e60a5c8704e69363b0a539e13e486a16d7193929e6c71bcd3bcb8919391"
     },
     {
       "path": "window-moments.html",
@@ -4951,8 +4951,8 @@
     {
       "path": "window-quiz.html",
       "url": "https://www.michikusa-travel.com/window-quiz.html",
-      "bytes": 14339,
-      "sha256": "365ed077a7831a7b5494e8a6845f761eae2f3ec79f27a8e72a85da5ed3662b0f"
+      "bytes": 14508,
+      "sha256": "c3da177215ba9a3285806443792d49626e6c5cfc49bd17fb35952d4699a20a3f"
     },
     {
       "path": "window-trip.html",

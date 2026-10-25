@@ -204,6 +204,11 @@ $('submit').addEventListener('click',()=>{
   if(!guess||answered)return;answered=true;film.pause();
   const target=nearest(...q.position),distance=Math.abs(target.km-guess.km),score=scoreFor(distance);
   $('submit').disabled=true;$('submit').hidden=true;$('follow-clip').hidden=false;$('guess-controls').hidden=true;
+  const outcome=distance<=1?'correct':distance<=10?'close':distance<=50?'near':'far';
+  $('round-result').dataset.outcome=outcome;
+  $('guess-verdict').textContent={correct:'◎ 正解！',close:'○ おしい！',near:'△ もう少し！',far:'↔ 遠かった！'}[outcome];
+  $('map-panel').hidden=true;$('review-map').setAttribute('aria-expanded','false');
+  $('review-map').textContent='地図で答えを見比べる ↓';
   $('distance').textContent=distanceText(distance);$('round-score').innerHTML=`${fmt(score)}<span>pt</span>`;
   $('map-instruction').textContent='緑は固定のお題、紫は映像の再生位置。';$('fit-map').textContent='回答を比較';
   $('scene-title').textContent=q.sceneTitle;
@@ -214,7 +219,14 @@ $('submit').addEventListener('click',()=>{
     clipLine=L.polyline(clipPaths(),{color:'#7059a0',weight:5,opacity:.75,interactive:false}).addTo(map);
     fitMap();
   }
-  syncFilm();renderRoute();$('round-result').hidden=false;$('round-result').focus({preventScroll:true});scrollTo($('round-result'));
+  syncFilm();renderRoute();$('round-result').hidden=false;$('round-result').focus({preventScroll:true});
+  if(innerWidth<701)scrollTo($('round-result'));else window.scrollTo({top:0,behavior:'instant'});
+});
+$('review-map').addEventListener('click',()=>{
+  const open=$('map-panel').hidden;$('map-panel').hidden=!open;
+  $('review-map').setAttribute('aria-expanded',String(open));
+  $('review-map').textContent=open?'地図を閉じる ↑':'地図で答えを見比べる ↓';
+  if(open){setMapMode(routeMode);if(map){map.invalidateSize();fitMap();}}
 });
 function followClip(){if(map&&!routeMode){map.invalidateSize();map.fitBounds(q.samples.filter(hasPosition).map(s=>[s[1],s[2]]),{padding:[35,35],maxZoom:14,animate:false});}}
 $('follow-clip').addEventListener('click',()=>{followClip();scrollTo($('scene'));});
@@ -222,6 +234,7 @@ document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',(
 function resetQuestion(){
   film.pause();cancelAnimationFrame(seekFrame);
   answered=false;guess=null;livePosition=null;
+  $('map-panel').hidden=false;document.querySelector('.answer-story').open=false;
   [guessMarker,answerMarker,answerLine,liveMarker,clipLine].forEach(m=>m?.remove());guessMarker=answerMarker=answerLine=liveMarker=clipLine=null;
   $('answer-card').hidden=true;$('observe-card').hidden=false;$('play-grid').classList.add('observing');$('round-result').hidden=true;
   $('submit').hidden=false;$('submit').disabled=true;$('follow-clip').hidden=true;$('guess-controls').hidden=false;$('fine-control').hidden=true;$('station-select').value='';$('position-range').value=50;
@@ -256,7 +269,7 @@ function loadQuestion(index){
   document.querySelectorAll('[data-time]').forEach((b,i)=>{b.dataset.time=q.cues[i][0];b.textContent=`${['①','②','③'][i]} ${q.cues[i][1]}`;});
   film.poster=q.poster;film.src=q.video;scrub.value=q.targetSeconds;scrub.max=q.duration;
   renderJourney();film.load();
-  if(index>0)scrollTo($('scene'));
+  if(index>0){if(innerWidth<701)scrollTo($('scene'));else window.scrollTo({top:0,behavior:'instant'});}
 }
 questions.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.addEventListener('click',()=>loadQuestion(i));$('question-nav').append(b);});
 $('next-question').addEventListener('click',()=>{

@@ -42,6 +42,7 @@
     $('progress').setAttribute('aria-valuenow', position);
     $('progress').firstElementChild.style.width = `${position * 10}%`;
     $('question-kind').textContent = position === 0 ? 'まずは、この1枚から。' : '形や色を、よく見てみよう。';
+    $('question-prompt').hidden = false;
     $('question-title').textContent = q.prompt;
     $('image-error').hidden = true;
     $('photo').alt = `第${position + 1}問の車窓写真。${q.prompt}`;
@@ -84,10 +85,13 @@
         button.append(state);
       }
     }
+    $('question-prompt').hidden = true;
     $('skip').hidden = true;
     $('photo').alt = q.alt;
     $('feedback').hidden = false;
-    $('verdict').textContent = value === null ? 'ひとつ、発見。' : value === q.answer ? '正解！ よく見つけました。' : `なるほど、答えは「${q.answer}」。`;
+    $('feedback').dataset.outcome = value === null ? 'skip' : value === q.answer ? 'correct' : 'wrong';
+    $('verdict').textContent = value === null ? '→ 答え合わせ' : value === q.answer ? '○ 正解！' : '× 残念、不正解';
+    $('chosen-answer').textContent = value === null ? 'この景色の正体は…' : value === q.answer ? 'よく見つけました。' : `あなたの答え：${value}`;
     $('answer-title').textContent = q.name;
     $('explanation').textContent = q.explanation;
     $('location').textContent = `${q.area} ／ ${q.side}席側`;
@@ -95,7 +99,8 @@
     $('next').textContent = position === total - 1 ? '10枚を振り返る →' : '次の写真へ →';
     $('progress').setAttribute('aria-valuenow', position + 1);
     $('progress').firstElementChild.style.width = `${(position + 1) * 10}%`;
-    focusAt($('answer-title'));
+    $('answer-title').focus({preventScroll:true});
+    if (innerWidth <= 760) $('feedback').scrollIntoView({block:'nearest',behavior:'instant'});
   }
   function finish() {
     $('play').hidden = true;

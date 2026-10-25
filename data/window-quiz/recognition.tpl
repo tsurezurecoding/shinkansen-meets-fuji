@@ -17,10 +17,11 @@
 <main id="quiz-main" class="quiz-main">
   <section id="welcome" class="quiz-cover" aria-labelledby="welcome-title">
     <div class="cover-heading">
-      <p class="eyebrow">新幹線の窓から、小さな発見</p>
+      <p class="eyebrow">窓の向こうが、問題です。</p>
+      <p class="cover-ticket">写真で名前当て × 動画で場所当て</p>
       <h1 id="welcome-title" tabindex="-1">車窓クイズ</h1>
-      <p class="cover-lead"><span class="copy-chunk">あれ、何だろう。</span><span class="copy-chunk">ここ、どこだろう。</span></p>
-      <p class="cover-note"><span class="copy-chunk">見慣れた車窓に、</span><span class="copy-chunk">まだ知らない日本がある。</span></p>
+      <p class="cover-lead"><span class="copy-chunk">その景色、</span><span class="copy-chunk">見抜ける？</span></p>
+      <p class="cover-note"><span class="copy-chunk">城、橋、ふしぎな形。</span><span class="copy-chunk">気になる1枚から挑戦しよう。</span></p>
     </div>
     <div class="question-tiles" aria-label="車窓に見つかる、いろいろな問い">
       <button class="question-tile tile-castle" type="button" data-start-question="kakegawa" disabled><img src="images/20261013_kakegawa_castle_morning_michikusa.jpg" alt="街の向こう、小高い丘に見えるお城"><span class="tile-caption"><small>01 — お城</small><span>あれ、何城？</span></span></button>
@@ -29,8 +30,8 @@
       <a class="question-tile tile-place" href="window-guesser.html?question=4"><img src="quiz/media/original-4-poster.jpg" alt="新幹線から眺める街の風景"><span class="tile-caption"><small>04 — 街並み</small><span>ここ、どこ？</span></span></a>
     </div>
     <div class="cover-starts" aria-label="クイズを選んで始める">
-      <button id="start" class="cover-start" type="button" disabled><span class="start-kicker">写真で3択 · 10問</span><span class="start-title">何の車窓？ <span aria-hidden="true">→</span></span><span class="start-detail">名前当てを始める</span></button>
-      <a id="start-guesser" class="cover-start" href="window-guesser.html"><span class="start-kicker">動画で場所当て · 18問</span><span class="start-title">どこの車窓？ <span aria-hidden="true">→</span></span><span class="start-detail">車窓Guesserを始める</span></a>
+      <button id="start" class="cover-start" type="button" disabled><span class="start-kicker">写真で3択 · 10問</span><span class="start-title">何の車窓？ <span aria-hidden="true">→</span></span><span class="start-detail">3択に挑戦 →</span></button>
+      <a id="start-guesser" class="cover-start" href="window-guesser.html"><span class="start-kicker">動画で場所当て · 18問</span><span class="start-title">どこの車窓？ <span aria-hidden="true">→</span></span><span class="start-detail">場所当てに挑戦 →</span></a>
     </div>
     <p class="cover-caption"><span>時間制限なし。気ままにどうぞ。</span><span>写真：michikusa</span></p>
   </section>
@@ -45,12 +46,15 @@
         <p id="image-error" role="alert" hidden>写真を読み込めませんでした。「答えを見る」で先へ進めます。</p>
       </figure>
       <div class="question-content">
+        <div id="question-prompt">
         <p id="question-kind" class="small-label"></p>
         <h2 id="question-title" tabindex="-1"></h2>
         <div id="choices" class="choices" role="group" aria-labelledby="question-title"></div>
         <button id="skip" type="button" class="quiz-text">わからないので、答えを見る</button>
+        </div>
         <section id="feedback" class="feedback" hidden aria-labelledby="answer-title">
           <p id="verdict" role="status"></p>
+          <p id="chosen-answer" class="chosen-answer"></p>
           <h3 id="answer-title" tabindex="-1"></h3>
           <p id="explanation"></p>
           <p id="location" class="location"></p>
