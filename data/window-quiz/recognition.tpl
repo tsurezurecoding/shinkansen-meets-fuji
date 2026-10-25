@@ -15,25 +15,25 @@
 <a class="quiz-skip" href="#quiz-main">クイズへ進む</a>
 <!-- COMMON_HEADER -->
 <main id="quiz-main" class="quiz-main">
-  <section id="welcome" class="quiz-cover" aria-labelledby="welcome-title">
-    <div class="cover-heading">
-      <p class="eyebrow">新幹線の窓から、小さな発見</p>
-      <h1 id="welcome-title" tabindex="-1">車窓クイズ</h1>
-      <p class="cover-lead"><span class="copy-chunk">あれ、何だろう。</span><span class="copy-chunk">ここ、どこだろう。</span></p>
-      <p class="cover-note"><span class="copy-chunk">見慣れた車窓に、</span><span class="copy-chunk">まだ知らない日本がある。</span></p>
-    </div>
-    <div class="question-tiles" aria-label="車窓に見つかる、いろいろな問い">
-      <button class="question-tile tile-castle" type="button" data-start-question="kakegawa" disabled><img src="images/20261013_kakegawa_castle_morning_michikusa.jpg" alt="街の向こう、小高い丘に見えるお城"><span class="tile-caption"><small>01 — お城</small><span>あれ、何城？</span></span></button>
-      <button class="question-tile tile-bridge" type="button" data-start-question="maruko-bridge" disabled><img src="images/20260704_maruko_bridge_1_michikusa.jpg" alt="川を渡るアーチ形の橋"><span class="tile-caption"><small>02 — 橋</small><span>この橋、どこ？</span></span></button>
-      <button class="question-tile tile-shape" type="button" data-start-question="rakusai-egg-tanks" disabled><img src="images/20260924_rakusai-egg-tanks_8885_michikusa.jpg" alt="夕空の下に並ぶ、たまご形の構造物"><span class="tile-caption"><small>03 — ふしぎな形</small><span>あの形、何だろう？</span></span></button>
-      <a class="question-tile tile-place" href="window-guesser.html?question=4"><img src="quiz/media/original-4-poster.jpg" alt="新幹線から眺める街の風景"><span class="tile-caption"><small>04 — 街並み</small><span>ここ、どこ？</span></span></a>
-    </div>
-    <div class="cover-starts" aria-label="クイズを選んで始める">
-      <button id="start" class="cover-start" type="button" disabled><span class="start-kicker">写真で3択 · 10問</span><span class="start-title">何の車窓？ <span aria-hidden="true">→</span></span><span class="start-detail">名前当てを始める</span></button>
-      <a id="start-guesser" class="cover-start" href="window-guesser.html"><span class="start-kicker">動画で場所当て · 18問</span><span class="start-title">どこの車窓？ <span aria-hidden="true">→</span></span><span class="start-detail">車窓Guesserを始める</span></a>
-    </div>
-    <p class="cover-caption"><span>時間制限なし。気ままにどうぞ。</span><span>写真：michikusa</span></p>
-  </section>
+  <section id="welcome" class="challenge-cover" aria-labelledby="welcome-title">
+ <div class="challenge-heading"><div><p class="challenge-kicker"><span aria-hidden="true">✦</span> 旅する目に、挑戦状。</p><h1 id="welcome-title" tabindex="-1">車窓クイズ<span class="title-dot" aria-hidden="true">?</span></h1></div><p class="challenge-lead"><span class="copy-chunk">知ってる景色も、</span><span class="copy-chunk">知らない顔をしている。</span><br><span class="challenge-invite">ふたつの謎、どっちから解く？</span></p></div>
+ <div class="challenge-pair">
+  <button id="start" class="challenge-card photo-challenge" type="button" disabled>
+   <img class="challenge-image" src="images/20261013_kakegawa_castle_morning_michikusa.jpg" alt="山並みを背に、街の向こうに見える白い城">
+   <span class="challenge-top"><span class="challenge-index">01 <i>NAME QUIZ</i></span><span class="challenge-format">写真で3択 · 10問</span></span>
+   <span class="photo-target" aria-hidden="true"><span>あれ、何？</span></span>
+   <span class="challenge-copy"><span class="challenge-hook">知ってたら、ちょっと自慢。</span><span class="challenge-title">この車窓、<br><b>なに？</b></span><span class="challenge-description">城、橋、ふしぎな形。写真の正体を当てよう。</span><span class="challenge-cta">名前当てに挑戦 <i aria-hidden="true">↗</i></span></span>
+  </button>
+  <a id="start-guesser" class="challenge-card place-challenge" href="window-guesser.html">
+   <img class="challenge-image" src="quiz/media/original-4-poster.jpg" alt="新幹線から見える街並み。どのあたりを走っている？">
+   <span class="challenge-top"><span class="challenge-index">02 <i>WINDOW GUESS</i></span><span class="challenge-format">動画で場所当て · 18問</span></span>
+   <svg class="guess-trail" viewBox="0 0 240 120" aria-hidden="true"><path d="M10 100C55 110 85 60 128 72S185 88 204 32" fill="none" stroke="white" stroke-width="2" stroke-dasharray="5 6"/><circle cx="10" cy="100" r="5" fill="#fff"/><circle cx="204" cy="30" r="18" fill="#f9c965"/><text x="204" y="37" text-anchor="middle" fill="#263844" font-size="23" font-family="sans-serif" font-weight="700">?</text></svg>
+   <span class="challenge-copy"><span class="challenge-hook">その勘、正解まで何km？</span><span class="challenge-title">この車窓、<br><b>どこ？</b></span><span class="challenge-description">映像を行ったり来たり。地図に答えを置こう。</span><span class="challenge-cta">場所当てに挑戦 <i aria-hidden="true">↗</i></span></span>
+  </a>
+ </div>
+ <div class="challenge-footer"><p><span aria-hidden="true">◷</span> 時間制限なし。わからなくても、発見あり。</p><span>写真・動画：michikusa</span></div>
+ <div class="little-mysteries"><div class="little-heading"><span>まずは、この謎から。</span><small>気になる写真をタップ</small></div><button type="button" data-start-question="maruko-bridge" disabled><img src="images/20260704_maruko_bridge_1_michikusa.jpg" alt="青空の下のアーチ橋"><span>この橋、どこ？ <i aria-hidden="true">↗</i></span></button><button type="button" data-start-question="rakusai-egg-tanks" disabled><img src="images/20260924_rakusai-egg-tanks_8885_michikusa.jpg" alt="夕空の下のたまご形の構造物"><span>たまご…じゃない？ <i aria-hidden="true">↗</i></span></button><button type="button" data-start-question="kakegawa" disabled><img src="images/20261013_kakegawa_castle_morning_michikusa.jpg" alt="街の向こうに見える城"><span>あれ、何城？ <i aria-hidden="true">↗</i></span></button></div>
+</section>
   <section id="play" hidden aria-labelledby="question-title">
     <button type="button" class="quiz-text back-to-hub">← クイズを選び直す</button>
     <div class="round-top"><span class="eyebrow">この車窓、なに？</span><span id="counter" aria-live="polite"></span></div>
@@ -45,12 +45,15 @@
         <p id="image-error" role="alert" hidden>写真を読み込めませんでした。「答えを見る」で先へ進めます。</p>
       </figure>
       <div class="question-content">
+        <div id="question-prompt">
         <p id="question-kind" class="small-label"></p>
         <h2 id="question-title" tabindex="-1"></h2>
         <div id="choices" class="choices" role="group" aria-labelledby="question-title"></div>
         <button id="skip" type="button" class="quiz-text">わからないので、答えを見る</button>
+        </div>
         <section id="feedback" class="feedback" hidden aria-labelledby="answer-title">
           <p id="verdict" role="status"></p>
+          <p id="chosen-answer" class="chosen-answer"></p>
           <h3 id="answer-title" tabindex="-1"></h3>
           <p id="explanation"></p>
           <p id="location" class="location"></p>

@@ -319,7 +319,7 @@
     "open": "디즈니 신칸센 자세히 보기"
   }
 };
-  const edition=document.documentElement.lang,copy=COPY[edition]||COPY.en;
+  const edition=document.documentElement.lang,copy=COPY[edition]||Object.fromEntries(Object.entries(COPY.en).map(([key,value])=>[key,window.MADO_UTILITY_LOCALE?.t(value)||value]));
   const text=(key,...args)=>copy[key].replace(/\{(\d+)\}/g,(_,i)=>args[Number(i)]);
   function clockLabel(date,minute){
     const label=M.clockLabel(date,minute);

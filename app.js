@@ -154,9 +154,16 @@ const MSG = {
     themeFujiLabel: "MOUNT FUJI",
     themeFujiTitle: "富士山はいつ見える",
     themeFujiBody: "どちら側の席か、東京から何分ごろか。",
-    zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
+    zukanAllEyebrow: "ALL WINDOW VIEWS",
     zukanAllTitle: "すべての車窓を見る",
     morePhotos: "ほかの写真も見る",
+    fClear: "条件をクリア",
+    tlFilteredCount: (shown, total) => `区間内の全${total}件中${shown}件を表示`,
+    tlActiveFilters: filters => `絞り込み中：${filters}`,
+    tlAllViews: "すべて表示中",
+    tlMoreViews: count => `この区間には、ほかにも${count}件の見どころがあります。`,
+    tlNoClassics: "この区間・条件に合う定番スポットはありません。すべての見どころもご覧ください。",
+    tlSeeAll: "すべての見どころを見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示", cWheelToggle: "観覧車を分けて表示",
     cWheelCollectionCta: (total) => `新幹線から見える観覧車 全${total}基を見る`,
     footerNote: "時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。",
@@ -198,7 +205,7 @@ const MSG = {
     galFavoritesEmpty: "条件に合うお気に入りはありません。カードの★を押すと、ここに表示できます。",
     tlFavoritesEmpty: "お気に入りに追加したスポットがまだありません。カードの★を押すと、ここに絞り込めます。",
     more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中は音声ガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
-    inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
+    inMinutes: (m) => `あと${m}分`, elapsedMinutes: (m) => `約${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
     confirmReset: "スタンプをぜんぶ消しますか?",
@@ -351,9 +358,16 @@ const MSG = {
     themeFujiLabel: "MOUNT FUJI",
     themeFujiTitle: "When you can see Mt. Fuji",
     themeFujiBody: "Which side to sit on, and how long after Tokyo.",
-    zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
+    zukanAllEyebrow: "ALL WINDOW VIEWS",
     zukanAllTitle: "Browse every window view",
     morePhotos: "More photos",
+    fClear: "Clear filters",
+    tlFilteredCount: (shown, total) => `Showing ${shown} of ${total} views on this stretch`,
+    tlActiveFilters: filters => `Filters: ${filters}`,
+    tlAllViews: "Showing all views",
+    tlMoreViews: count => `There are ${count} more views on this stretch.`,
+    tlNoClassics: "No classic views match these filters. See all views instead.",
+    tlSeeAll: "See all views",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately", cWheelToggle: "Show Ferris wheels separately",
     cWheelCollectionCta: (total) => `See all ${total} Ferris wheels visible from the window`,
     footerNote: "Times use your selected train’s timetable; the unselected sample uses Nozomi times. Visibility varies by weather and seat. Start watching a little early.",
@@ -395,7 +409,7 @@ const MSG = {
     galFavoritesEmpty: "No favorites match these filters. Tap the ★ on a card to add one.",
     tlFavoritesEmpty: "No favorites yet. Tap the ★ on a card to add it, then filter here.",
     more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Audio Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
-    inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
+    inMinutes: (m) => `in ${m} min`, elapsedMinutes: (m) => `About ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
     confirmReset: "Clear all stamps?",
@@ -473,7 +487,6 @@ let invalidTrainLink = false;
 const BASE_PAGE_TITLE = document.title;
 const PREVIEW_DEP_MIN = 0;
 let boardCollectionExpanded = false;
-let wheelCollectionExpanded = false;
 
 // 現地で確認できなかった／撤去済みの地点は、列車選択後のタイムラインには出さない。
 // 727コレクションページ側のリストには記録として残す（727-collection.js の isMissing と同じ判定）。
@@ -590,6 +603,7 @@ function appSelfForPath(pathname) {
 const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
+  if (spot?.isWheelCollection && spot.collectionPointId) return utilityHref(`ferris-wheels.html#${spot.collectionPointId}`);
   const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.[lang === "ja" ? "ja" : "en"];
   if (routed) return utilityLocale && lang === utilityLocale.lang ? utilityHref(routed.replace(/^en\//, "")) : routed;
   if (lang === "ja" && spot?.is727Collection) return "727-collection.html";
@@ -892,8 +906,8 @@ function renderTrainLinkNotice() {
   notice.hidden = !invalidTrainLink;
   notice.textContent = invalidTrainLink ? t("trainLinkInvalid") : "";
 }
-function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
-  if (!journey || (!board && !wheel)) return journey?.spots || [];
+function collectionTimelineSpots(board = boardCollectionExpanded) {
+  if (!journey) return [];
   const boardRef = REF[boardId];
   const dirSign = direction === "west" ? 1 : -1;
   const spotClock = journey.mode === "train"
@@ -901,7 +915,7 @@ function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelC
     : (ref) => (ref - boardRef) * dirSign < 0 ? null : journey.depMin + Math.abs(ref - boardRef);
   const points = []
     .concat(board ? boardCollectionSpots() : [])
-    .concat(wheel ? wheelCollectionSpots() : [])
+    .concat(wheelCollectionSpots())
     .map((sp) => timelinePoint(sp, spotClock, dirSign))
     .filter((item) => item.clock != null);
   return journey.spots
@@ -914,14 +928,14 @@ function timeline727Order(spot) {
   if (spot.is727Collection && spot.sourceNo === 21) return 2;
   return 99;
 }
-function currentTimelineSpotCandidates(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
-  return collectionTimelineSpots(board, wheel).filter((item) => matchesTimelineFilters(item.sp));
+function currentTimelineSpotCandidates(board = boardCollectionExpanded) {
+  return collectionTimelineSpots(board).filter((item) => matchesTimelineFilters(item.sp));
 }
 function reachableCollectionCandidates(kind) {
   if (!journey || journey.direction !== direction || journey.boardId !== boardId) return [];
-  const board = kind === "727";
-  return currentTimelineSpotCandidates(board, !board)
-    .filter((item) => (board ? item.sp.is727Collection : item.sp.isWheelCollection));
+  return kind === "727"
+    ? currentTimelineSpotCandidates(true).filter((item) => item.sp.is727Collection)
+    : [];
 }
 function seatTags(spot) {
   const tags = new Set();
@@ -1303,6 +1317,19 @@ function spotDetailModalHTML(spot) {
 }
 
 /* ---------- i18n apply ---------- */
+function annotateStarterFallbackLinks(scope = document) {
+  if (!window.MADO_LOCALES?.starter?.includes(lang)) return;
+  scope.querySelectorAll('a[href]').forEach(link => {
+    if (link.closest('.guide-lang-menu,.lang-switch') || !link.textContent.trim()) return;
+    const url = new URL(link.getAttribute('href'), document.baseURI);
+    if (url.origin !== new URL(document.baseURI).origin || !url.pathname.includes('/en/')) return;
+    link.hreflang = 'en';
+    if (link.querySelector('.discovery-language')) return;
+    const note = document.createElement('small'); note.className = 'discovery-language';
+    note.textContent = ' (' + translateUtility(url.pathname.includes('/live/') ? 'English — audio also in English' : 'English') + ')';
+    link.append(note);
+  });
+}
 function applyLang() {
   document.documentElement.lang = lang;
   $$("[data-i18n]").forEach((el) => {
@@ -1362,6 +1389,7 @@ function applyLang() {
   trainPicker?.setLang(lang);
   const tl = $("#timelineSection");
   if (tl && !tl.hidden) renderTimeline();
+  annotateStarterFallbackLinks();
 }
 
 function shouldShowEnglishLandingPrompt() {
@@ -1641,7 +1669,10 @@ function renderTimeline() {
   const items = [];
   const dirSign = journey.direction === "west" ? 1 : -1;
   journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, seq: s.ref * dirSign, st: s }));
-  currentTimelineSpotCandidates()
+  const candidates = currentTimelineSpotCandidates();
+  const visibleCandidates = recommendedTimelineCandidates(candidates);
+  renderTimelineRecommendationSummary(candidates, visibleCandidates);
+  visibleCandidates
     .forEach((x) => items.push({ kind: "spot", clock: x.clock, seq: x.seq, sp: x.sp }));
   // 同時刻は進行方向の位置順（到着前のスポット→駅→発車後のスポット）。位置も同じなら駅を先に置く
   items.sort((a, b) => a.clock - b.clock || a.seq - b.seq || (a.kind === "station" ? -1 : 1));
@@ -1653,7 +1684,7 @@ function renderTimeline() {
   const html = [];
   items.forEach((it, i) => {
     if (it.kind === "station") {
-      html.push(`<li class="tl-station"><span class="tl-time">${minToClock(it.clock)}</span>${translatedStation(it.st)}</li>`);
+      html.push(`<li class="tl-station"><span class="tl-time">${journey.preview ? escapeHTML(t("elapsedMinutes", Math.max(0, Math.round(it.clock - journey.depMin)))) : minToClock(it.clock)}</span>${translatedStation(it.st)}</li>`);
     } else {
       html.push(spotItemHTML(it.sp, it.clock));
     }
@@ -1721,23 +1752,27 @@ function spotItemHTML(sp, clock) {
   const lowLightLimited = lowLight && !hasNightMedia;
   const time = clock == null
     ? `<span class="tl-time-big">✦</span>`
+    : journey?.preview
+    ? `<span class="tl-time-big">${escapeHTML(t("elapsedMinutes", Math.max(0, Math.round(clock - journey.depMin))))}</span>`
     : `<span class="tl-time-big">${t("timelineTimePrefix")}${minToClock(clock)}<span class="tl-time-suffix">${t("timelineTimeSuffix")}</span></span>`;
   const thumb = featuredMedia
     ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" decoding="async" src="${thumbnailSrc(featuredMedia.src)}" alt=""></div>`
     : "";
   // 定番は行ごと強調する。40件を等価に並べると初見の利用者が選べない。
   // ラベルは既存の fClassic（定番 / Classic）を使い、UI文字列を増やさない。
-  const isClassic = sp.category === "classic";
+  const isClassic = hasTimelineRecommendations() ? isTimelineRecommended(sp, clock) : sp.category === "classic";
   const classicBadge = isClassic
     ? `<span class="tl-classic-badge">${escapeHTML(t("fClassic"))}</span>`
     : "";
+  const recommendationBadge = hasTimelineRecommendations() && isTimelineRecommended(sp, clock)
+    ? `<span class="tl-recommended-badge">${escapeHTML(t("fClassic"))}</span>` : "";
   return `
       <li class="tl-item${isClassic ? " tl-item-classic" : ""}${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
         <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
           <div class="tl-card-main">
             <div class="tl-copy">
               <div class="tl-top">
-                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span>${classicBadge}</div>
+                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span>${hasTimelineRecommendations() ? recommendationBadge : classicBadge}</div>
               </div>
               <div class="spot-card-footer">
                 <div class="tl-meta">${seatShortBadge(sp)}${sp.is727Collection ? catBadge(sp) : ""}${sp.is727Collection ? confBadge(sp) : ""}</div>
@@ -1931,6 +1966,7 @@ function closeQuickModal(reason = "close") {
 }
 
 function bindSpotEvents(root) {
+  annotateStarterFallbackLinks(root);
   root.querySelectorAll("[data-stamp]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -2430,11 +2466,79 @@ function applyInitialGalleryFilter() {
   if (filter !== "day" && filter !== "night") activeGalleryFilters.add("day");
   activeGalleryFilters.add(filter);
 }
-const activeTimelineFilters = new Set();
+const TIMELINE_FILTER_KEY = "mado-timeline-filters-v1";
+const TIMELINE_FILTER_IDS = ["favorites", "seat-a", "seat-e", "day", "night", "classic", "nature", "history", "industry", "sign", "727", "city"];
+const activeTimelineFilters = new Set(loadTimelineFilters());
+function loadTimelineFilters() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(TIMELINE_FILTER_KEY) || "[]");
+    return Array.isArray(saved) ? saved.filter(value => TIMELINE_FILTER_IDS.includes(value)) : [];
+  } catch { return []; }
+}
+function saveTimelineFilters() {
+  try { localStorage.setItem(TIMELINE_FILTER_KEY, JSON.stringify([...activeTimelineFilters])); } catch {}
+}
+
+// 日本語startだけで先行する編集選。図鑑・他言語・727の展開状態には適用しない。
+const TIMELINE_RECOMMENDATION_KEY = "mado-timeline-selection-ja";
+const TIMELINE_DAY_RECOMMENDATIONS = new Set([
+  "tokyo-tower", "odawara", "fuji", "fuji-bus-sales", "shizuoka-tea-fields",
+  "kakegawa", "hamanako", "ferris-wheel-laguna", "nichiban-anjo", "kiyosu",
+  "kinshozan", "ibuki", "ibuki-seat-a", "omi-fuji", "toji", "rakusai-egg-tanks", "torikai-train-depot",
+]);
+const TIMELINE_NIGHT_RECOMMENDATIONS = new Set([
+  "tokyo-tower", "musashi-kosugi-towers", "fuji-paper-mills", "nagoya-station-skyline",
+  "kiyosu", "toji", "hirakata-park-wheel",
+]);
+let timelineSelection = loadTimelineSelection();
+
+function hasTimelineRecommendations() {
+  return Boolean($("[data-timeline-recommendations]"));
+}
+function loadTimelineSelection() {
+  try { return localStorage.getItem(TIMELINE_RECOMMENDATION_KEY) === "all" ? "all" : "recommended"; }
+  catch { return "recommended"; }
+}
+function setTimelineSelection(selection) {
+  timelineSelection = selection === "all" ? "all" : "recommended";
+  try { localStorage.setItem(TIMELINE_RECOMMENDATION_KEY, timelineSelection); } catch {}
+}
+function recommendedTimelineCandidates(candidates) {
+  if (!hasTimelineRecommendations() || timelineSelection === "all") return candidates;
+  const themes = [...activeTimelineFilters].filter(value => !["seat-a", "seat-e", "day", "night", "favorites"].includes(value));
+  return candidates.filter(({ sp, clock }) => isTimelineRecommended(sp, clock) || (boardCollectionExpanded && is727CollectionSpot(sp)) || themes.some(value => galleryTags(sp).has(value)));
+}
+function isTimelineRecommended(spot, clock) {
+  const explicitTime = activeTimelineTimeOfDayFilter();
+  const night = explicitTime ? explicitTime === "night"
+    : !journey?.preview && journey?.mode === "train" && isClearlyDark(clock);
+  return (night ? TIMELINE_NIGHT_RECOMMENDATIONS : TIMELINE_DAY_RECOMMENDATIONS).has(spot.id);
+}
+function renderTimelineRecommendationSummary(candidates, visible) {
+  if (!hasTimelineRecommendations()) return;
+  const summary = $("#timelineRecommendationSummary");
+  const more = $("#timelineRecommendationMore");
+  const recommended = timelineSelection === "recommended";
+  const hidden = candidates.length - visible.length;
+  const labels = [...(recommended ? [t("fClassic")] : []), ...[...activeTimelineFilters].map(filter =>
+    $('#timelineFilterbar [data-timeline-filter="' + filter + '"]')?.textContent.trim() || filter)];
+  const total = collectionTimelineSpots().length;
+  const count = t("tlFilteredCount", visible.length, total);
+  summary.textContent = labels.length
+    ? `${t("tlActiveFilters", labels.join(" · "))} ／ ${count}`
+    : `${t("tlAllViews")} ／ ${count}`;
+  more.hidden = !recommended || !hidden;
+  more.querySelector("p").textContent = visible.length
+    ? t("tlMoreViews", hidden)
+    : t("tlNoClassics");
+}
 function discoverySpotOrder(a, b) {
   const priorityA = a.id === "fuji" ? 0 : 1;
   const priorityB = b.id === "fuji" ? 0 : 1;
   return priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo || a.id.localeCompare(b.id);
+}
+function gallerySpots() {
+  return SPOTS.concat(wheelCollectionSpots());
 }
 // 「曇りでも見える」は data.js の visibleWhenCloudy が持つ。ここに ID を並べていた頃は、
 // 席側や見やすさと同じ「実際に何が見えるか」の事実だけがスポットのデータから離れていて、
@@ -2514,7 +2618,7 @@ function matchesTimelineFilters(spot) {
   const selectedThemes = [...activeTimelineFilters].filter((filter) => !["seat-a", "seat-e", "day", "night", "favorites"].includes(filter));
   const seatMatch = !selectedSeats.length || selectedSeats.some((filter) => tags.has(filter));
   const timeMatch = !selectedTimes.length || selectedTimes.some((filter) => tags.has(filter));
-  const themeMatch = !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
+  const themeMatch = (hasTimelineRecommendations() && timelineSelection === "recommended") || !selectedThemes.length || selectedThemes.some((filter) => tags.has(filter));
   return seatMatch && timeMatch && themeMatch;
 }
 function updateGalleryFilterButtons() {
@@ -2527,12 +2631,16 @@ function updateGalleryFilterButtons() {
   });
 }
 function updateTimelineFilterButtons() {
+  saveTimelineFilters();
   const hasFilters = activeTimelineFilters.size > 0;
   $$("#timelineFilterbar button[data-timeline-filter]").forEach((button) => {
     const filter = button.dataset.timelineFilter;
-    const active = filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
+    const active = hasTimelineRecommendations() && ["recommended", "all"].includes(filter)
+      ? (filter === "recommended" ? timelineSelection === "recommended" : timelineSelection === "all" && !hasFilters)
+      : filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
     button.classList.toggle("active", active);
-    button.setAttribute("aria-pressed", String(active));
+    if (hasTimelineRecommendations() && filter === "all") button.removeAttribute("aria-pressed");
+    else button.setAttribute("aria-pressed", String(active));
   });
   syncCollectionToggleUI();
 }
@@ -2543,8 +2651,7 @@ function invalidateJourneyForInputChange() {
   syncCollectionToggleUI();
 }
 
-// コレクションのトグルは種別ごとに同じ作りにする。乗る区間にその種別の地点が
-// 1つも無ければ無効化する（代表スポットを通らない区間でも、地点があれば出す）。
+// 727だけは既存の代表＋展開方式を維持する。
 const COLLECTION_TOGGLES = [
   {
     kind: "727",
@@ -2552,13 +2659,6 @@ const COLLECTION_TOGGLES = [
     labelKey: "c727Toggle",
     get expanded() { return boardCollectionExpanded; },
     set expanded(value) { boardCollectionExpanded = value; },
-  },
-  {
-    kind: "wheel",
-    selector: "[data-wheel-collection-toggle]",
-    labelKey: "cWheelToggle",
-    get expanded() { return wheelCollectionExpanded; },
-    set expanded(value) { wheelCollectionExpanded = value; },
   },
 ];
 function syncCollectionToggleUI() {
@@ -2578,7 +2678,7 @@ function syncCollectionToggleUI() {
 function renderGallery() {
   const grid = $("#galleryGrid");
   if (!grid) return;
-  const visibleSpots = SPOTS
+  const visibleSpots = gallerySpots()
       .filter(matchesGalleryFilters)
       .slice()
       .sort(discoverySpotOrder);
@@ -2720,6 +2820,13 @@ function bindGalleryControls() {
 }
 
 function bindTimelineControls() {
+  $("#timelineRecommendationMore button")?.addEventListener("click", () => {
+    setTimelineSelection("all");
+    activeTimelineFilters.clear();
+    updateTimelineFilterButtons();
+    renderTimeline();
+    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all", selection: timelineSelection });
+  });
   $("#timelineFilterbar")?.addEventListener("change", (event) => {
     const input = event.target instanceof HTMLInputElement ? event.target : null;
     const group = input ? COLLECTION_TOGGLES.find((candidate) => input.closest(candidate.selector)) : null;
@@ -2739,10 +2846,13 @@ function bindTimelineControls() {
     const button = target?.closest("button[data-timeline-filter]");
     if (!button) return;
     const filter = button.dataset.timelineFilter;
-    if (filter === "all") {
+    if (hasTimelineRecommendations() && ["recommended", "all"].includes(filter)) {
+      setTimelineSelection(filter === "recommended" && timelineSelection === "recommended" ? "all" : filter);
+      if (filter === "all") activeTimelineFilters.clear();
+    } else if (filter === "all") {
       activeTimelineFilters.clear();
     } else if (["classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
-      if (filter !== "727") activeTimelineFilters.delete("727");
+      // Category tags remain selected until explicitly toggled or cleared.
       if (activeTimelineFilters.has(filter)) activeTimelineFilters.delete(filter);
       else activeTimelineFilters.add(filter);
     } else if (activeTimelineFilters.has(filter)) {
@@ -2751,7 +2861,7 @@ function bindTimelineControls() {
       activeTimelineFilters.add(filter);
     }
     updateTimelineFilterButtons();
-    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all" });
+    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all", ...(hasTimelineRecommendations() ? { selection: timelineSelection } : {}) });
     renderTimeline();
   });
 }

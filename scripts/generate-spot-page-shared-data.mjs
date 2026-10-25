@@ -44,7 +44,7 @@ const SHOWCASE_SPOT_IDS = [
 const dataContext = {};
 const dataCode = fs.readFileSync(dataPath, "utf8");
 
-vm.runInNewContext(`${dataCode}\nglobalThis.__SPOT_PAGE_SHARED_SOURCE = { SPOTS, ROUTE, BOARD_COLLECTION };`, dataContext, { filename: dataPath });
+vm.runInNewContext(`${dataCode}\nglobalThis.__SPOT_PAGE_SHARED_SOURCE = { SPOTS, ROUTE, BOARD_COLLECTION, WHEEL_COLLECTION };`, dataContext, { filename: dataPath });
 
 const source = dataContext.__SPOT_PAGE_SHARED_SOURCE;
 if (!source || !Array.isArray(source.SPOTS) || !source.ROUTE || !Array.isArray(source.ROUTE.refStations)) {
@@ -747,6 +747,15 @@ const spots = source.SPOTS.map((spot) => ({
   guideRoute: spot.guideRoute || null,
 }));
 
+// Collection-only wheels also belong in every article/feature timeline.
+const wheelSpots = source.WHEEL_COLLECTION.filter((wheel) => wheel.isWheelCollection).map((wheel) => ({
+  id: wheel.stampId, name: wheel.name, minutes: Number(wheel.minutesFromTokyo),
+  side: wheel.side, seats: seats(wheel),
+  sideLabel: { ja: SIDE_LABELS.ja[wheel.side], en: SIDE_LABELS.en[wheel.side] },
+  thumb: thumbnailSrc(wheel.photo.src), guide: "",
+  guideRoute: { ja: "ferris-wheels.html#" + wheel.id, en: "en/ferris-wheels.html#" + wheel.id },
+}));
+
 const pageSpots = source.SPOTS.filter((spot) => !spot.guideRoute);
 const pages = {};
 for (const spot of pageSpots) {
@@ -820,7 +829,7 @@ const collection727Count = source.BOARD_COLLECTION.length;
 // いた。さらに ?v= は内容ハッシュなので、1スポットの文言を直すと全ページの
 // キャッシュが同時に落ちた。カタログは共有のまま、本文はページ単位にする。
 const sanyo = SANYO_CASTLES.map(castle => ({ id: castle.id, name: castle.name, station: castle.station, side: castle.side, thumb: thumbnailSrc(castle.photo) }));
-const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, showcase, sanyo };
+const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, wheelSpots, showcase, sanyo };
 const catalogOutput = `${GENERATED_BANNER}(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(catalog)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
 
 const pageArtifacts = new Map();

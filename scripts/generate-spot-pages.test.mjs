@@ -295,8 +295,26 @@ test('embedded articles hide duplicate ride prompts but retain facts, stamps and
       for (const cta of ctas) assert.equal(hidden(cta), embedded, `${lang}/${id}: ${cta.dataset.ctaId}`);
       assert.equal(hidden(doc.querySelector('.spot-page-stamp')), false);
       assert.equal(hidden(doc.querySelector('.spot-page-refs, .spot-reading-sources')), false);
-      const reading = doc.querySelector('.spot-reading-guide');
-      if (reading) assert.equal(hidden(reading), embedded && ![...reading.children].some(el => el.tagName === 'P' && !el.classList.contains('spot-reading-eyebrow')), `${lang}/${id}: factual guide visibility`);
+      const reading = doc.querySelector('.spot-compact-guide');
+      assert.ok(reading, `${lang}/${id}: compact guide remains available on the Web`);
+      assert.ok(reading.querySelector(':scope > p.spot-reading-eyebrow'), `${lang}/${id}: compact guide eyebrow remains structured`);
+      const tools = reading.querySelector(':scope > .tools-grid');
+      assert.ok(tools && tools.hasAttribute('data-app-redundant'), `${lang}/${id}: tool panels are marked as app-redundant`);
+      assert.equal(reading.querySelectorAll(':scope > .tools-grid > .tool-panel').length, 2, `${lang}/${id}: compact guide has two panels`);
+      assert.ok(reading.querySelector(':scope > .tools-grid > a.tool-panel[data-cta-id="spot_next_train"]'), `${lang}/${id}: train card retains its CTA`);
+      assert.ok(reading.querySelector(':scope > .tools-grid > article.tool-panel > a.tool-main[data-cta-id="spot_next_live"]'), `${lang}/${id}: live card retains its CTA`);
+      assert.ok(reading.querySelector(':scope > .tools-grid > article.tool-panel > a.android-store-link[href^="https://play.google.com/store/apps/"]'), `${lang}/${id}: live card retains its Google Play link`);
+      assert.equal(reading.querySelectorAll('.spot-reading-action, .spot-reading-actions').length, 0, `${lang}/${id}: large legacy action cards are gone`);
+      assert.equal(doc.querySelector('.spot-page-next-card[data-cta-id="spot_next_train"], .spot-page-next-card[data-cta-id="spot_next_live"]'), null, `${lang}/${id}: duplicate train/live cards are gone`);
+      const lead = reading.querySelector(':scope > .spot-compact-guide-lead');
+      if (lead) {
+        assert.equal(reading.hasAttribute('data-app-redundant'), false, `${lang}/${id}: landmark guide stays visible`);
+        assert.equal(hidden(lead), false, `${lang}/${id}: landmark highlight stays visible`);
+        assert.equal(hidden(tools), embedded, `${lang}/${id}: only the tools grid hides in the embedded app`);
+      } else {
+        assert.ok(reading.hasAttribute('data-app-redundant'), `${lang}/${id}: guide without a landmark is app-redundant`);
+        assert.equal(hidden(reading), embedded, `${lang}/${id}: guide without a landmark hides as one section`);
+      }
       dom.window.close();
     }
   }

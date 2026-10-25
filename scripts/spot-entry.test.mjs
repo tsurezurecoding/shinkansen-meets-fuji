@@ -40,7 +40,10 @@ for (const lang of languages) test(`${lang} gallery uses article anchors, locali
   const f = await fixture({ lang });
   try {
     const cards = [...f.w.document.querySelectorAll('.gal-card')];
-    assert.equal(cards.length, f.run('SPOTS.filter(matchesGalleryFilters).length'));
+    assert.equal(cards.length, f.run('gallerySpots().filter(matchesGalleryFilters).length'));
+    const wheelIds = f.run('WHEEL_COLLECTION.filter(wheel => wheel.isWheelCollection).map(wheel => wheel.stampId)');
+    for (const id of wheelIds) assert.equal(cards.filter(card => card.dataset.spot === id).length, 1, `${id} appears once without expansion`);
+    assert.equal(cards.filter(card => card.dataset.spot === 'hirakata-park-wheel').length, 1, 'the existing Hirakata article remains a single card');
     assert.ok(cards.length > 40);
     for (const card of cards) {
       const link = card.querySelector('a[data-gallery-detail]');

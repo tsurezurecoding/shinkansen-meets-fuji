@@ -121,7 +121,7 @@ function checkDictionary(lang) {
 function checkMetadata(doc, lang, route, label) {
   assert(doc.documentElement.lang === lang, label, 'html lang differs');
   assert(doc.querySelector('link[rel=canonical]')?.href === urlFor(lang, route), label, 'self canonical differs');
-  for (const edition of [...editions, 'x-default']) {
+  for (const edition of [...supported(route), 'x-default']) {
     const links = doc.querySelectorAll(`link[rel=alternate][hreflang="${edition}"]`);
     assert(links.length === 1 && links[0].href === urlFor(edition === 'x-default' ? 'en' : edition, route), label, `reciprocal hreflang ${edition} missing/duplicate/wrong`);
   }
@@ -151,12 +151,13 @@ function checkMenu(dom, lang, route, label) {
   window.eval(read('locales.js')); window.eval(read('utility-locales.js')); window.document.dispatchEvent(new window.Event('DOMContentLoaded'));
   const doc = window.document, menus = doc.querySelectorAll('details.guide-lang-menu.utility-lang-menu');
   assert(menus.length === 1 && !doc.querySelector('.lang-switch'), label, 'one guide-style menu must replace old language buttons');
-  const labels = Object.fromEntries(editions.map(x=>[x,localeInfo[x].label]));
-  const prompts = Object.fromEntries(editions.map(x=>[x,localeInfo[x].prompt]));
+  const menuEditions = supported(route);
+  const labels = Object.fromEntries(menuEditions.map(x=>[x,localeInfo[x].label]));
+  const prompts = Object.fromEntries(menuEditions.map(x=>[x,localeInfo[x].prompt]));
   for (const menu of menus) {
     assert(menu.querySelector('summary')?.textContent === labels[lang] && menu.querySelector('summary')?.getAttribute('aria-label') === prompts[lang], label, 'current language/prompt differs');
-    assert(menu.querySelectorAll('a').length === editions.length && !menu.open, label, 'four languages and closed initial state required');
-    for (const edition of editions) {
+    assert(menu.querySelectorAll('a').length === menuEditions.length && !menu.open, label, 'four languages and closed initial state required');
+    for (const edition of menuEditions) {
       const a = [...menu.querySelectorAll('a')].find(node => node.lang === edition);
       const href = a && new URL(a.href);
       assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route === 'index.html' ? '' : route)}`, label, `language switch differs ${edition}`);
@@ -165,7 +166,7 @@ function checkMenu(dom, lang, route, label) {
   }
 }
 function checkStatic(doc, sourceDoc, dictionary, lang, label) {
-  const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note';
+  const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note,.content-rail-discovery .discovery-language';
   const sourceText = textNodes(sourceDoc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(translation(dictionary, node.textContent)));
   const translatedText = textNodes(doc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(node.textContent));
   compare(translatedText, sourceText, label, 'static English-source text/translation differs');
@@ -178,8 +179,24 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     const url = new URL(a.href);
     if (url.origin !== origin) continue;
     const route = canonicalRoute(url);
+    const discovery = a.closest('.content-rail-discovery');
+    const japaneseOnlyRoute = discovery && a.getAttribute('hreflang') === 'ja' && ['sudoori/index.html', 'window-quiz.html'].includes(route);
+    if (japaneseOnlyRoute) {
+      assert(url.pathname === `/${route}`, label, `Japanese-only discovery link must use the Japanese root route: ${url.pathname}`);
+      assert(url.searchParams.get('lang') === 'ja', label, `Japanese-only discovery link must identify lang=ja: ${url.href}`);
+      const note = a.querySelector('.discovery-language');
+      assert(Boolean(note) && normal(note?.textContent) === normal(translation(dictionary, '日本語')), label, `Japanese-only discovery link must show the Japanese note: ${route}`);
+      continue;
+    }
     if (supported(route).includes(lang)) assert(url.pathname.startsWith(`/${lang}/`), label, `translated link leaves page language: ${url.pathname}`);
-    else assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
+    else {
+      assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
+      if (discovery && url.pathname.startsWith('/en/')) {
+        assert(a.getAttribute('hreflang') === 'en', label, `English discovery fallback must declare hreflang=en: ${url.pathname}`);
+        const note = a.querySelector('.discovery-language');
+        assert(Boolean(note) && note.lang === 'en' && normal(note.textContent) === 'English', label, `English discovery fallback must show the English language name: ${url.pathname}`);
+      }
+    }
   }
   if (label.endsWith('contact.html')) compare([...doc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), [...sourceDoc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), label, 'contact destination changed');
 }

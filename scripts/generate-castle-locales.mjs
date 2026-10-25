@@ -105,6 +105,10 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       } else if (url.pathname.startsWith('/en/') && !el.closest('.lang-switch')) {
         el.setAttribute('href', prefix + 'en/' + target + url.search + url.hash);
         el.setAttribute('hreflang', 'en');
+        if (el.matches('.content-rail-discovery .content-rail-card')) {
+          const note = doc.createElement('small'); note.className = 'discovery-language'; note.lang = 'en'; note.textContent = 'English';
+          el.querySelector('.content-rail-card-body').append(note);
+        }
       }
     }
     for (const host of doc.querySelectorAll('.lang-switch')) {

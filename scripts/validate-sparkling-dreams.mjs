@@ -38,6 +38,24 @@ const japaneseTop = await readAppFile("index.html");
 const japaneseStart = await readAppFile("start.html");
 const englishTop = await readAppFile("en/index.html");
 const englishStart = await readAppFile("en/start.html");
+
+function validateSelectorDiscoveryRail(html, lang) {
+  const file = lang === "en" ? "en/start.html" : "start.html";
+  const section = html.match(/<section class="content-rail-section content-rail-discovery"[\s\S]*?<\/section>/)?.[0] || "";
+  const cards = [...section.matchAll(/<a\b[^>]*class="content-rail-card[^\"]*"[^>]*>/g)].map((match) => match[0]);
+  const hrefs = cards.map((card) => card.match(/\bhref="([^"]+)"/)?.[1] || "");
+  const english = lang === "en";
+  const expected = english
+    ? ["https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", "en/zukan.html", "en/arenani.html", "en/castles.html", "en/everyday-japan.html", "en/yakei.html", "en/guide.html", "en/mieru.html", "en/jr-pass-fuji.html", "en/window-artworks.html", "en/journal.html", "en/?intro=1", "en/references.html", "en/contact.html"]
+    : ["https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", "zukan.html", "727-collection.html", "castles.html", "sudoori/index.html#stories", "window-quiz.html", "guide.html", "mieru.html", "window-artworks.html", "journal.html", "references.html", "contact.html"];
+  expect(section.length > 0, `${file}: discovery rail is missing`);
+  expect(cards.length === expected.length && hrefs.every((href, index) => href === expected[index]), `${file}: expected the six discovery entries first, followed by all existing cards`);
+  expect(cards.slice(0, 6).every((card) => /data-cta-track="[^"]+"/.test(card) && /data-cta-id="discovery_[^"]+"/.test(card)), `${file}: all six discovery entries need tracked CTAs`);
+  expect(new Set(cards.slice(0, 6).map((card) => card.match(/data-cta-id="([^"]+)"/)?.[1] || "")).size === 6, `${file}: discovery CTA ids must be unique`);
+  expect(cards[0]?.includes('target="_blank"') && cards[0]?.includes('rel="noopener noreferrer"') && cards[0]?.includes('data-cta-track="android_app_guide_click" data-cta-id="discovery_android"'), `${file}: the first discovery entry must be the direct Google Play link`);
+  expect(cards[2]?.includes(english ? 'data-cta-track="arenani_entry_click" data-cta-id="discovery_arenani"' : 'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"'), `${file}: the feature entry must keep its language-specific tracking id`);
+  expect(!/<section class="top-promo-stack\b/.test(html) && !html.includes('data-cta-id="top_footer_disney"') && !html.includes('data-cta-id="top_footer_727"'), `${file}: obsolete standalone selector promotions remain`);
+}
 const calculatorCode = await readAppFile("sparkling-dreams.js");
 const generatorCode = await readAppFile("scripts/generate-spot-pages.mjs");
 const sitemap = await readAppFile("sitemap.xml");
@@ -96,10 +114,8 @@ for (const text of requiredPageText) expect(page.includes(text), `sparkling-drea
 expect(!japaneseTop.includes('class="seasonal-entry"'), "index.html: standalone upper seasonal entry must be absent");
 expect(!japaneseStart.includes('class="seasonal-entry"'), "start.html: standalone upper seasonal entry must be absent");
 expect(!englishTop.includes('class="seasonal-entry"'), "en/index.html: standalone upper seasonal entry must be absent");
-expect(japaneseStart.includes('data-cta-id="top_footer_disney"') && japaneseStart.includes('href="sparkling-dreams.html"'), "start.html: Disney entry must remain after the train-search section");
-expect(englishStart.includes('data-cta-id="top_footer_disney"') && englishStart.includes('href="en/sparkling-dreams.html"'), "en/start.html: Disney entry must remain after the train-search section");
-expect(japaneseStart.includes('data-cta-id="top_footer_727"') && japaneseStart.includes('href="727-collection.html"'), "start.html: 727 Collection entry must remain after the train-search section");
-expect(englishStart.includes('data-cta-id="top_footer_727"') && englishStart.includes('href="en/727-collection.html"'), "en/start.html: English 727 Collection links must point at the English collection page");
+validateSelectorDiscoveryRail(japaneseStart, "ja");
+validateSelectorDiscoveryRail(englishStart, "en");
 expect(/<link rel="canonical" href="https:\/\/www\.michikusa-travel\.com\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: canonical is missing or incorrect");
 expect(/<meta name="robots" content="index,follow/.test(page), "sparkling-dreams.html: index/follow robots metadata is missing");
 expect(/<link rel="alternate" hreflang="en" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page) && /<link rel="alternate" hreflang="x-default" href="https:\/\/www\.michikusa-travel\.com\/en\/sparkling-dreams\.html">/.test(page), "sparkling-dreams.html: English or x-default language route is missing");

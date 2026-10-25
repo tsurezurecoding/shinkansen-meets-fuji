@@ -17,7 +17,7 @@ async function runThinValidator() {
   const stylesheetCode = fs.readFileSync(stylesheetPath, "utf8");
   const galleryStylesheetCode = fs.readFileSync(path.join(appDir, "spot-media-gallery.css"), "utf8");
   const sourceContext = {};
-  vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SOURCE = { SPOTS, ROUTE };`, sourceContext, { filename: path.join(appDir, "data.js") });
+  vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SOURCE = { SPOTS, ROUTE, WHEEL_COLLECTION };`, sourceContext, { filename: path.join(appDir, "data.js") });
   const source = sourceContext.__SOURCE;
   const dataContext = {};
   vm.runInNewContext(sharedDataCode, dataContext, { filename: dataPath });
@@ -88,6 +88,45 @@ async function runThinValidator() {
     return value.match(pattern)?.length || 0;
   }
 
+  function withoutCompactGuide(html) {
+    const pattern = /<section\b(?=[^>]*\bclass="[^"]*\bspot-compact-guide\b)[^>]*>[\s\S]*?<\/section>/g;
+    const matches = html.match(pattern) || [];
+    return matches.length === 1 ? html.replace(pattern, "") : html;
+  }
+
+  function assertCompactGuide(output, page, lang, prefix, label) {
+    const pattern = /<section\b(?=[^>]*\bclass="[^"]*\bspot-compact-guide\b)[^>]*>[\s\S]*?<\/section>/g;
+    const matches = output.match(pattern) || [];
+    if (matches.length !== 1) {
+      fail(`${label}: expected one compact guide section, found ${matches.length}`);
+      return;
+    }
+    const guide = matches[0];
+    const landmarkChapters = page.chapters?.some((chapter) => chapter.kind !== "background") || false;
+    if (!guide.includes('class="eyebrow spot-reading-eyebrow"') || !guide.includes("YOUR WINDOW GUIDE")) fail(`${label}: compact guide eyebrow is missing`);
+    if (!guide.includes('<div class="tools-grid') || count(guide, /class="(?:tool-panel|tool-panel tool-app-card)"/g) !== 2) fail(`${label}: compact guide must contain two tool panels`);
+    const trainToolIndex = guide.indexOf('<a class="tool-panel"');
+    const liveToolIndex = guide.indexOf('<article class="tool-panel');
+    if (trainToolIndex < 0 || !guide.includes('data-cta-id="spot_next_train"')) fail(`${label}: train tool CTA is missing`);
+    if (liveToolIndex <= trainToolIndex || !guide.includes('<a class="tool-main"') || !guide.includes('data-cta-id="spot_next_live"')) fail(`${label}: live tool must follow the train tool and retain its CTA`);
+    if (!guide.includes('class="android-store-link')) fail(`${label}: Android Play link is missing from the live tool`);
+    if (!guide.includes('<div class="tools-grid" data-app-redundant>')) fail(`${label}: compact guide tools grid must be app-redundant`);
+    if (/<a\b(?=[^>]*class="[^"]*\bspot-page-next-card\b)(?=[^>]*data-cta-id="spot_next_(?:train|live)")/.test(output)) fail(`${label}: duplicate train/live next card remains outside the compact guide`);
+    const languagePrefix = prefix + (lang === "en" ? "en/" : "");
+    if (!guide.includes(`href="${languagePrefix}start.html#journey"`) || !guide.includes(`href="${languagePrefix}live/"`)) fail(`${label}: compact guide destinations are incorrect`);
+    if (landmarkChapters) {
+      if (/class="[^"]*\bspot-compact-guide\b" data-app-redundant/.test(guide) || !guide.includes(`<p class="spot-compact-guide-lead">${escape(page.guide.highlight)}</p>`)) fail(`${label}: landmark highlight must remain outside the redundant tools grid`);
+      if (count(guide, /data-app-redundant/g) !== 1) fail(`${label}: only the landmark tools grid should be app-redundant`);
+    } else if (!/class="[^"]*\bspot-compact-guide\b" data-app-redundant/.test(guide)) {
+      fail(`${label}: guide without landmark chapters must be app-redundant as a whole`);
+    }
+    if (!page.readingLayout) {
+      for (const text of [page.guide.title, page.guide.intro, page.guide.duration, page.guide.highlight]) {
+        if (text && !output.includes(escape(text))) fail(`${label}: original direction, duration, or highlights guidance was lost`);
+      }
+    }
+  }
+
   // 左ペインの枠（spot-page-shared.js の RAIL_FEATURES / pickRailFeatures）:
   // アプリ1・音声ガイド1・関連特集1・時期の特集0〜1・「特集をすべて見る」1。
   // 自分自身の特集へのカードは出さず、日英それぞれの関連特集を1件出す。
@@ -107,6 +146,44 @@ async function runThinValidator() {
     if (picked.includes("727")) {
       const body = lang === "en" ? `All ${payload.collection727Count} locations between Tokyo and Shin-Osaka` : `東京〜新大阪の沿線、全${payload.collection727Count}地点を集める`;
       if (!html.includes(body)) fail(`${label}: 727 card must carry the generated location count`);
+    }
+  }
+
+  function assertStaticDiscoveryRail(html, lang, rootPath, label) {
+    const pattern = /<section\b(?=[^>]*\bdata-spot-page-shared-static="content-rail")(?=[^>]*\bclass="[^"]*\bcontent-rail-discovery\b)[^>]*>[\s\S]*?<\/section>/g;
+    const matches = html.match(pattern) || [];
+    if (matches.length !== 1) {
+      fail(`${label}: expected one static discovery rail, found ${matches.length}`);
+      return;
+    }
+    const rail = matches[0];
+    const pageHostIndex = html.indexOf('<div data-spot-page-shared-module="page"></div>');
+    if (pageHostIndex < 0 || html.indexOf(rail) <= pageHostIndex) fail(`${label}: static discovery rail must follow the page module at the end of the page body`);
+    const cards = [...rail.matchAll(/<a\b[^>]*class="content-rail-card[^\"]*"[^>]*>/g)].map((match) => match[0]);
+    const hrefs = cards.map((card) => card.match(/\bhref="([^"]+)"/)?.[1] || "");
+    const base = rootPath + (lang === "en" ? "en/" : "");
+    const expected = lang === "en"
+      ? [
+          "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
+          `${base}zukan.html`, `${base}arenani.html`, `${base}castles.html`, `${base}everyday-japan.html`, `${base}yakei.html`,
+          `${base}guide.html`, `${base}mieru.html`, `${base}jr-pass-fuji.html`, `${base}window-artworks.html`, `${base}journal.html`, `${base}?intro=1`, `${base}references.html`, `${base}contact.html`,
+        ]
+      : [
+          "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
+          `${base}zukan.html`, `${base}727-collection.html`, `${base}castles.html`, `${rootPath}sudoori/index.html#stories`, `${rootPath}window-quiz.html`,
+          `${base}guide.html`, `${base}mieru.html`, `${base}window-artworks.html`, `${base}journal.html`, `${base}references.html`, `${base}contact.html`,
+        ];
+    if (cards.length !== expected.length || hrefs.some((href, index) => href !== expected[index])) fail(`${label}: discovery rail must contain ${expected.length} cards in the approved order`);
+    const newCards = cards.slice(0, 6);
+    if (newCards.some((card) => !/data-cta-track="[^"]+"/.test(card) || !/data-cta-id="discovery_[^"]+"/.test(card))) fail(`${label}: each new discovery card must retain CTA tracking`);
+    if (new Set(newCards.map((card) => card.match(/data-cta-id="([^"]+)"/)?.[1] || "")).size !== 6) fail(`${label}: discovery CTA ids must be unique`);
+    if (!newCards[0]?.includes('data-cta-track="android_app_guide_click" data-cta-id="discovery_android"') || !newCards[0]?.includes('target="_blank"') || !newCards[0]?.includes('rel="noopener noreferrer"')) fail(`${label}: the first discovery card must be the direct Google Play link`);
+    if (!newCards[2]?.includes(lang === "en" ? 'data-cta-track="arenani_entry_click" data-cta-id="discovery_arenani"' : 'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) fail(`${label}: the language-specific discovery card tracking contract is missing`);
+  }
+
+  function assertSpotRailHasNoPromoSlots(html, label) {
+    if (/data-cta-id="spot_rail_(?:android|live|related_[^"]+|seasonal_[^"]+|all_features)"/.test(html) || /class="spot-page-rail-(?:app|live|disney|all-features)\b/.test(html)) {
+      fail(`${label}: legacy promotional CTAs must be absent from the spot rail`);
     }
   }
 
@@ -199,6 +276,15 @@ async function runThinValidator() {
     if (html.includes('<div class="spot-page-shell>')) fail(`${label} contains the malformed unclosed spot-page-shell class`);
   }
 
+  function assertWheelRail(html, lang, rootPath, label) {
+    const links = [...html.matchAll(/<a class="spot-page-rail-link" href="([^"]+)"/g)].map((match) => match[1]);
+    for (const wheel of source.WHEEL_COLLECTION.filter((item) => item.isWheelCollection)) {
+      const target = rootPath + (lang === "en" ? "en/" : "") + "ferris-wheels.html#" + wheel.id;
+      if (links.filter((href) => href === target).length !== 1) fail(label + ": missing or duplicate wheel " + wheel.id);
+    }
+    if (links.filter((href) => href.endsWith("spots/hirakata-park-wheel.html") || href === "hirakata-park-wheel.html").length !== 1) fail(label + ": Hirakata wheel must appear once");
+  }
+
   function renderUtility(lang, rootPath, route) {
     const hosts = {
       topbar: makeHost(),
@@ -275,6 +361,12 @@ async function runThinValidator() {
   if (payloadIds.length !== expectedSpotCount || JSON.stringify(payloadIds) !== JSON.stringify(sourceIds)) fail(`payload/source spot count or order mismatch: source=${expectedSpotCount}, pages=${payloadIds.length}`);
   if (!Array.isArray(payload.spots) || payload.spots.length !== allSourceIds.length) fail(`catalog/source spot count mismatch: source=${allSourceIds.length}, catalog=${payload.spots?.length || 0}`);
   if (!Array.isArray(payload.stations) || payload.stations.length !== expectedStationCount) fail(`payload station count does not match data.js: source=${expectedStationCount}, payload=${payload.stations?.length || 0}`);
+  const wheels = source.WHEEL_COLLECTION.filter((wheel) => wheel.isWheelCollection);
+  if (JSON.stringify(payload.wheelSpots?.map((wheel) => wheel.id)) !== JSON.stringify(wheels.map((wheel) => wheel.stampId))) fail("shared rail must include every collection-only wheel exactly once");
+  for (const wheel of wheels) {
+    const projected = payload.wheelSpots?.find((item) => item.id === wheel.stampId);
+    if (projected?.minutes !== wheel.minutesFromTokyo || projected?.side !== wheel.side || projected?.guideRoute?.ja !== "ferris-wheels.html#" + wheel.id || projected?.guideRoute?.en !== "en/ferris-wheels.html#" + wheel.id) fail(wheel.id + ": shared wheel rail projection mismatch");
+  }
   // Video presence is editorial data in data.js. Keep this validator focused on
   // source-to-projection-to-HTML alignment instead of duplicating every URL here.
   const videoSpots = pageSourceSpots.filter((spot) => Array.isArray(spot.media?.videos) && spot.media.videos.length);
@@ -348,6 +440,7 @@ async function runThinValidator() {
       if (onDisk !== generatedHTML) fail(`${relativeFile} does not match in-memory thin generation`);
       const bodyTag = onDisk.match(/<body[^>]*>/)?.[0] || "";
       const prefix = lang === "ja" ? "../" : "../../";
+      assertStaticDiscoveryRail(onDisk, lang, prefix, relativeFile);
       if (bodyTag !== strictHostHTML(lang, spot.id, prefix)) fail(`${relativeFile} body context/mode is incorrect`);
       if (count(onDisk, /data-spot-page-shared-module=/g) !== 1 || count(onDisk, /<div data-spot-page-shared-module="page"><\/div>/g) !== 1) fail(`${relativeFile} must have exactly one strict thin page host`);
       const body = onDisk.slice(onDisk.indexOf("<body"));
@@ -384,6 +477,8 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      assertWheelRail(output, lang, prefix, relativeFile);
+      assertCompactGuide(output, page, lang, prefix, relativeFile);
       if (lang === "en" && /[\u3040-\u30ff\u3400-\u9fff]/.test(output.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "")) fail(`${relativeFile}: English page heading contains Japanese text`);
       const sharedChapterIds = (page.sharedGuide || []).map((chapter) => chapter.id);
       if (new Set(sharedChapterIds).size !== sharedChapterIds.length) fail(`${relativeFile}: shared guide chapter ids must be unique`);
@@ -407,7 +502,7 @@ async function runThinValidator() {
       if (spot.id === "maibara-test-trains" && ["train-300x", "train-win350", "train-star21"].some(id => !output.includes(`id="${id}"`))) fail(`${relativeFile}: preserved test trains need individual chapters`);
       if (baselineRendererCode && !page.readingLayout) {
         const baseline = renderPage(lang, prefix, spot.id, undefined, false, baselineRendererCode);
-        if (baseline.errors.length || baseline.html !== output) fail(`${relativeFile}: non-opt-in rendering changed from ${baselineSelector}`);
+        if (baseline.errors.length || baseline.html !== withoutCompactGuide(output)) fail(`${relativeFile}: non-opt-in rendering changed beyond the compact guide from ${baselineSelector}`);
         const baselinePayload = execFileSync("git", ["show", `${baselineCommit}:${pagePayloadRelativePath(spot.id, lang)}`], { cwd: appDir, encoding: "utf8" });
         if (baselinePayload.replace(/\r\n/g, "\n") !== pagePayloadCode.get(pagePayloadRelativePath(spot.id, lang)).replace(/\r\n/g, "\n")) fail(`${relativeFile}: non-opt-in payload changed from ${baselineSelector}`);
       }
@@ -415,9 +510,8 @@ async function runThinValidator() {
         const expectedCollectionRoute = expectedReadingCollections[spot.id] ? (lang === "en" ? "en/" : "") + expectedReadingCollections[spot.id] : "";
         if (expectedCollectionRoute && page.readingLayout.collection?.route !== expectedCollectionRoute) fail(`${relativeFile}: expected reading collection ${expectedCollectionRoute}`);
         if (expectedCollectionRoute && !output.includes(`href="${prefix}${expectedCollectionRoute}" data-cta-track="spot_next_card_click" data-cta-id="spot_next_collection"`)) fail(`${relativeFile}: expected reading collection CTA is missing`);
-        if (!output.includes('<main class="spot-reading-layout">') || count(output, /class="spot-reading-action"/g) !== 2 || output.includes('class="spot-page-next-cards"')) fail(`${relativeFile}: reading actions contract failed`);
+        if (!output.includes('<main class="spot-reading-layout">')) fail(`${relativeFile}: reading layout wrapper is missing`);
         const landmarkChapters = page.chapters?.some(chapter => chapter.kind !== "background");
-        if (lang === "ja" && !landmarkChapters && !output.includes(page.readingLayout.compactGuide ? '見逃さないために</span></h2><div class="spot-reading-actions" data-app-redundant>' : 'を見逃さないために</h2><div class="spot-reading-actions" data-app-redundant>')) fail(`${relativeFile}: redundant guide lead returned`);
         if (page.chapters) {
           // Multi-view articles need seat/timing guidance per landmark; single-view pages remain concise.
           if (landmarkChapters && !output.includes(escape(page.guide.highlight))) fail(`${relativeFile}: multi-view boarding guidance missing`);
@@ -429,19 +523,15 @@ async function runThinValidator() {
             }
           }
         }
-        if (lang === "en" && !output.includes('<h2>How to spot ' + escape(page.name) + '</h2>')) fail(`${relativeFile}: English guide heading missing`);
         if (output.indexOf('data-spot-media-gallery') > output.indexOf('class="spot-page-facts"')) fail(`${relativeFile}: photo-first ordering changed`);
         if (!output.includes(escape(page.readingLayout.visibility.label)) || !output.includes(escape(page.readingLayout.visibility.value)) || !output.includes(escape(page.readingLayout.visibility.note))) fail(`${relativeFile}: visibility fact missing`);
-        const languagePrefix = prefix + (lang === "en" ? "en/" : "");
-        if (!output.includes(`href="${languagePrefix}live/" data-cta-track="spot_next_card_click"`) || !output.includes(`href="${languagePrefix}start.html" data-cta-track="spot_next_card_click"`)) fail(`${relativeFile}: guide destinations missing`);
-        if (!output.includes(lang === "en" ? 'not your current location' : '現在の位置ではありません') || !output.includes('OpenStreetMap contributors') || !output.includes(lang === "en" ? 'You can use the map alone' : '地図だけでも使えます')) fail(`${relativeFile}: map preview disclosure missing`);
         if (page.references.length && !output.includes('<section class="spot-page-section spot-reading-sources"')) fail(`${relativeFile}: references must be an article section`);
         const storyIndex = output.indexOf('lang="en">THE STORY</p>');
         const tipsIndex = output.indexOf('lang="en">PHOTO TIPS</p>');
         const sightsIndex = output.indexOf('lang="en">WHAT TO SEE</p>');
         if (tipsIndex >= 0 && (tipsIndex < storyIndex || (sightsIndex >= 0 && tipsIndex < sightsIndex))) fail(`${relativeFile}: photo tips must follow the story and sights`);
         if (((page.references.length || page.bodyLinks.length) && !output.includes('class="spot-page-section spot-reading-sources"')) || output.includes('class="spot-page-refs"') || output.includes('spot-page-section spot-page-refs')) fail(`${relativeFile}: duplicate source list returned`);
-        for (const label of ["THE STORY", "ON BOARD", ...(page.explainer ? ["WHAT TO SEE"] : []), ...(page.map?.hasCoordinates ? ["ON THE MAP"] : []), ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
+        for (const label of ["THE STORY", ...(page.explainer ? ["WHAT TO SEE"] : []), ...(page.map?.hasCoordinates ? ["ON THE MAP"] : []), ...(page.media ? ["IN MOTION"] : [])]) if (!output.includes('lang="en">' + label + '</p>')) fail(`${relativeFile}: chapter label missing: ${label}`);
         if (!page.photoHeadingAboveGallery && output.includes('class="spot-page-media-gallery-heading"')) fail(`${relativeFile}: redundant photo heading returned`);
         if (output.indexOf('class="spot-page-section spot-reading-sources"') < output.indexOf('spot-page-video-section')) fail(`${relativeFile}: sources interrupt the story`);
         for (const reference of page.references) if (!output.includes(`href="${escape(reference.href)}"`)) fail(`${relativeFile}: source lost: ${reference.href}`);
@@ -456,10 +546,7 @@ async function runThinValidator() {
       const desktopRailEnd = desktopRailStart >= 0 ? output.indexOf("</aside>", desktopRailStart) : -1;
       const desktopRail = desktopRailStart >= 0 && desktopRailEnd > desktopRailStart ? output.slice(desktopRailStart, desktopRailEnd + "</aside>".length) : "";
       if (!desktopRail) fail(`${relativeFile} shared desktop rail is missing`);
-      {
-        const relatedFor = { "727-board": "727", "727-sign": "727", "hirakata-park-wheel": "wheels", "kiyosu": "castles", "odawara-castle": "castles", "mishima-catapult": "arenani", "shizuoka-tea-fields": "arenani", "fuji-paper-mills": "arenani", "nangu-taisha": "arenani" };
-        assertRailSlots(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`, lang, { expectRelated: relatedFor[spot.id] || "" });
-      }
+      assertSpotRailHasNoPromoSlots(desktopRail, `${relativeFile} ${lang === "ja" ? "Japanese" : "English"} shared rail`);
       if (count(output, /<h1\b/g) !== 1 || count(output, /class="spot-page-stamp"/g) !== 1 || !output.includes(`href="${lang === "ja" ? prefix + "journal.html#stampboard" : prefix + "en/journal.html#stampboard"}"`) || !output.includes(`src="${prefix}${page.stamp.src}"`)) fail(`${relativeFile} H1/stamp contract is invalid`);
       if (count(output, /data-spot-media-gallery/g) !== 1 || count(output, /data-gallery-thumb/g) !== page.gallery.length || count(output, /data-gallery-image(?!-)/g) !== 1) fail(`${relativeFile} common selectable gallery count is invalid`);
       if (page.inline.length && count(output, /spot-page-inline-figure/g) !== page.inline.length) fail(`${relativeFile} inline photo module count is invalid`);
@@ -491,10 +578,12 @@ async function runThinValidator() {
   for (const route of ["mieru.html", "sparkling-dreams.html", "hanabi.html", "yakei.html", "window-moments.html", "ferris-wheels.html", "castles.html", "727-collection.html", "arenani.html", "reflections.html"]) {
     const japaneseUtility = renderUtility("ja", "./", route);
     if (japaneseUtility.errors.length) fail(`Japanese utility ${route} renderer failed: ${japaneseUtility.errors.join(" | ")}`);
+    assertWheelRail(japaneseUtility.hosts.rail.outerHTML, "ja", "./", route);
     assertRailSlots(japaneseUtility.hosts.rail.outerHTML, `Japanese utility ${route} rail`, "ja", { route });
     assertRailSlots(japaneseUtility.hosts["mobile-promos"].outerHTML, `Japanese utility ${route} mobile promos`, "ja", { route });
     const englishUtility = renderUtility("en", "../", route);
     if (englishUtility.errors.length) fail(`English utility ${route} renderer failed: ${englishUtility.errors.join(" | ")}`);
+    assertWheelRail(englishUtility.hosts.rail.outerHTML, "en", "../", route);
     assertRailSlots(englishUtility.hosts.rail.outerHTML, `English utility ${route} rail`, "en", { route });
     assertRailSlots(englishUtility.hosts["mobile-promos"].outerHTML, `English utility ${route} mobile promos`, "en", { route });
   }

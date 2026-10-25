@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
   <meta charset="utf-8">
-  <script src="locales.js?v=f322ba41"></script>
+  <script src="locales.js?v=6585facb"></script>
   <link rel="manifest" href="manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -95,7 +95,7 @@
       window.gtag("config", measurementId);
     })();
   </script>
-  <link rel="stylesheet" href="style.css?v=55bdfd77">
+  <link rel="stylesheet" href="style.css?v=5f3f6183">
   <style>
     #journey>.section-head h1{font-size:clamp(28px,4vw,44px);line-height:1.5}
     .train-entry-help{margin:18px 2px 0;color:#566578;font-size:13px;line-height:1.8}
@@ -115,6 +115,16 @@
     .jp-table-wrap{overflow-x:auto}.jp-table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.6}.jp-table th,.jp-table td{padding:9px 7px;text-align:left;border-bottom:1px solid #edf0f2}.jp-table a{color:#a74024}
     .train-entry-more.top-promo-stack--mobile{display:block;max-width:860px;margin-inline:auto}
     @media(max-width:650px){.ja-train-grid{grid-template-columns:1fr}.fuji-train-answer{padding:18px}.train-entry-more .top-promo-grid{grid-template-columns:1fr}}
+    /* TIMELINE-CLASSICS:START */
+    .timeline-recommendation-summary { flex:1 1 170px; min-width:0; margin:0; color:var(--night); font-size:13px; font-weight:700; line-height:1.7; overflow-wrap:anywhere; }
+    .timeline-recommendation-more { max-width:700px; margin:18px auto 0; text-align:center; }
+    .timeline-recommendation-more p { margin:0 0 12px; font-size:14px; line-height:1.7; }
+    .timeline-recommendation-more button { border:0; background:none; color:var(--ink-soft); font:inherit; font-size:12px; text-decoration:underline; cursor:pointer; }
+    .timeline-filter-actions { flex:0 0 100%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; padding:10px 12px; margin-bottom:4px; background:var(--paper); border:1px solid var(--line); border-radius:12px; box-sizing:border-box; }
+    #timelineFilterbar .timeline-reset { flex:none; min-height:40px; padding:8px 12px; border:1px solid var(--night); border-radius:8px; background:var(--night); color:white; font-weight:700; box-shadow:0 2px 5px #0002; }
+    #timelineFilterbar .timeline-reset:hover { background:#344b65; }
+    .tl-recommended-badge { display:inline-flex; align-items:center; justify-content:center; flex:none; padding:3px 7px; border-radius:6px; background:#fff1cf; color:#765018; font-size:11px; font-weight:700; line-height:1.4; white-space:nowrap; }
+    /* TIMELINE-CLASSICS:END */
   </style>
   <script defer src="utility-locales.js?v=4f2b7fba"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
@@ -128,6 +138,8 @@
   <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/start.html">
   <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/start.html">
   <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/start.html">
+  <link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/start.html">
+  <link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/start.html">
 </head>
 <body>
 
@@ -217,8 +229,13 @@
             <p class="section-sub" data-i18n="tlSub">時刻は目安です。列車を選ぶと停車時刻を基に計算します。少し早めに窓の外を見てください。</p>
           </div>
           <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
+            <div class="timeline-filter-actions">
+              <!-- TIMELINE-CLASSICS:START -->
+              <p data-timeline-recommendations class="timeline-recommendation-summary" id="timelineRecommendationSummary" role="status" aria-live="polite"></p>
+              <!-- TIMELINE-CLASSICS:END -->
+              <button type="button" data-timeline-filter="all" class="timeline-reset" data-i18n="fClear">条件をクリア</button>
+            </div>
             <div class="timeline-filter-group" role="group" aria-label="お気に入り・座席側">
-              <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">すべて</button>
               <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ お気に入り</button>
               <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
               <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">E席</button>
@@ -228,7 +245,9 @@
               <button type="button" data-timeline-filter="night" data-i18n="fNight">夜景</button>
             </div>
             <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
-              <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
+              <!-- TIMELINE-CLASSICS:START -->
+              <button type="button" data-timeline-filter="recommended" data-i18n="fClassic" class="active" aria-pressed="true">定番</button>
+              <!-- TIMELINE-CLASSICS:END -->
               <button type="button" data-timeline-filter="nature" data-i18n="fNature">自然</button>
               <button type="button" data-timeline-filter="history" data-i18n="fHistory">歴史</button>
               <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">工業</button>
@@ -241,13 +260,13 @@
               <span class="timeline-toggle-track" aria-hidden="true"><span></span></span>
               <span data-i18n="c727Toggle">727看板を分けて表示</span>
             </label>
-            <label class="timeline-collection-toggle">
-              <input type="checkbox" data-wheel-collection-toggle role="switch" aria-label="観覧車を分けて表示" aria-checked="false">
-              <span class="timeline-toggle-track" aria-hidden="true"><span></span></span>
-              <span data-i18n="cWheelToggle">観覧車を分けて表示</span>
-            </label>
           </div>
           <ol class="timeline" id="timeline"></ol>
+          <!-- TIMELINE-CLASSICS:START -->
+          <div class="timeline-recommendation-more" id="timelineRecommendationMore" hidden>
+            <p></p><button type="button" data-i18n="tlSeeAll">すべての見どころを見る</button>
+          </div>
+          <!-- TIMELINE-CLASSICS:END -->
 <div id="timeline-calculation-note" class="train-entry-help"><p>車窓の時刻はダイヤから計算した目安です。運転日・当日の遅延は反映しません。</p></div>
         </section>
       </div>
@@ -269,100 +288,8 @@
   </div>
   <!-- ===== Footer ===== -->
 <!-- ===== Mobile follow-up cards ===== -->
-  <section class="top-promo-stack top-promo-stack--mobile train-entry-more" aria-label="次に見る案内">
-    <div class="top-promo-grid">
-      <a class="top-promo-card top-promo-card-disney" href="sparkling-dreams.html" data-cta-track="sparkling_dreams_entry_click" data-cta-id="top_footer_disney">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/sparkling-dreams-window.svg" alt=""></span>
-        <span class="top-promo-card-copy">
-          <small>SEASONAL WINDOW</small>
-          <strong>ディズニー新幹線<br><span>Sparkling Dreams Shinkansen</span></strong>
-          <span>運転日と、車窓で出会う目安を確認。</span>
-        </span>
-        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="top-promo-card top-promo-card-disney top-promo-card-hanabi" href="hanabi.html" data-cta-track="hanabi_entry_click" data-cta-id="top_footer_hanabi">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/hanabi-window.svg" alt=""></span>
-        <span class="top-promo-card-copy">
-          <small>SEASONAL WINDOW</small>
-          <strong>新幹線から見える花火</strong>
-          <span>長岡・淀川・熱海など沿線8大会の目撃記録。</span>
-        </span>
-        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="top-promo-card top-promo-card-disney top-promo-card-yakei" href="yakei.html" data-cta-track="yakei_entry_click" data-cta-id="top_footer_yakei">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/yakei-window.svg" alt=""></span>
-        <span class="top-promo-card-copy">
-          <small>NIGHT WINDOW</small>
-          <strong>新幹線の夜景</strong>
-          <span>どこから暗くなるか、夜だけの車窓11景。</span>
-        </span>
-        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="top-promo-card top-promo-card-727" href="727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="top_footer_727">
-        <span class="top-promo-card-visual" aria-hidden="true"><img src="images/stamps/stamp_727-board.svg" alt=""></span>
-        <span class="top-promo-card-copy">
-          <small>WINDOW COLLECTION</small>
-          <strong>727看板コレクション</strong>
-          <span>東京〜新大阪の沿線で727看板を集める</span>
-        </span>
-        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="top-promo-card top-promo-card-android hide-in-app" href="android-app.html?src=top-promo" data-cta-track="android_app_guide_click" data-cta-id="top_footer_android">
-        <span class="top-promo-card-visual top-promo-card-visual-app" aria-hidden="true"><img src="images/android/app-icon-192.webp" alt=""></span>
-        <span class="top-promo-card-copy">
-          <small>ANDROID APP</small>
-          <strong>Androidアプリ版</strong>
-          <span>無料・登録不要。Google Playで公開中。</span>
-        </span>
-        <span class="top-promo-card-arrow" aria-hidden="true">↗</span>
-      </a>
-    </div>
-  </section>
 
-  <section class="content-rail-section" aria-labelledby="contentRailTitle">
-    <div class="section-head">
-      <p class="eyebrow">MORE TO TRY</p>
-      <h2 id="contentRailTitle">車窓をもっと楽しむ</h2>
-    </div>
-    <div class="content-rail">
-      <a class="content-rail-card" href="guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>MT. FUJI</small><strong>富士山を見る</strong><span>5つの区間、座席側、曇りの日の見え方を確認。</span></span></a>
-      <a class="content-rail-card" href="mieru.html">
-        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>FORECAST</small>
-          <strong>今日の富士山 見える予報</strong>
-          <span>今日の空で富士山が見えそうかを確認。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="window-artworks.html">
-        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>ARTWORKS</small>
-          <strong>車窓の作品集</strong>
-          <span>写真や墨絵で、車窓の別の表現を楽しむ。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="journal.html">
-        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>JOURNAL</small>
-          <strong>スタンプ帖</strong>
-          <span>見つけた景色をスタンプとメダルで記録。</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="references.html">
-        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>LINKS</small>
-          <strong>車窓リンク集</strong>
-          <span>出典や参考記事をまとめて読む。</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>お問い合わせ</strong><span>写真提供、情報の訂正、ご感想はこちら。</span></span></a>
-    </div>
-  </section>
+  <section class="content-rail-section content-rail-discovery" aria-labelledby="contentRailTitle"><div class="section-head"><p class="eyebrow">MORE TO TRY</p><h2 id="contentRailTitle">車窓をもっと楽しむ</h2></div><div class="content-rail"><a class="content-rail-card content-rail-android hide-in-app" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" data-cta-track="android_app_guide_click" data-cta-id="discovery_android" target="_blank" rel="noopener noreferrer"><img src="images/android/app-icon-192.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>ANDROID APP</small><strong>Androidアプリ <span aria-hidden="true">↗</span></strong><span>画面を消しても音声案内。無料・登録不要。</span></span></a><a class="content-rail-card" href="zukan.html" data-cta-track="zukan_entry_click" data-cta-id="discovery_zukan"><img src="images/thumbs/20240211_Mt.Fuji.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>WINDOW ATLAS</small><strong>車窓図鑑</strong><span>写真から気になる景色を見つける。</span></span></a><a class="content-rail-card" href="727-collection.html" data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"><img src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>WINDOW COLLECTION</small><strong>727看板コレクション</strong><span>沿線の727看板を、見つけて集める。</span></span></a><a class="content-rail-card" href="castles.html" data-cta-track="castles_entry_click" data-cta-id="discovery_castles"><img src="images/thumbs/20260712_kakegawa_castle_michikusa.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CASTLES</small><strong>新幹線から見える城</strong><span>窓の向こうの天守や城跡を知る。</span></span></a><a class="content-rail-card" href="sudoori/index.html#stories" data-cta-track="sudoori_entry_click" data-cta-id="discovery_sudoori"><img src="images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>LOCAL STORIES</small><strong>素通りの街</strong><span>通り過ぎる街の物語を読む。</span></span></a><a class="content-rail-card" href="window-quiz.html" data-cta-track="window_quiz_entry_click" data-cta-id="discovery_quiz"><img src="images/20260704_maruko_bridge_1_michikusa.jpg" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>WINDOW QUIZ</small><strong>車窓クイズ</strong><span>写真と動画で、車窓の発見を楽しむ。</span></span></a><a class="content-rail-card" href="guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>MT. FUJI</small><strong>富士山を見る</strong><span>5つの区間、座席側、曇りの日の見え方を確認。</span></span></a><a class="content-rail-card" href="mieru.html"><img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FORECAST</small><strong>今日の富士山 見える予報</strong><span>今日の空で富士山が見えそうかを確認。</span></span></a><a class="content-rail-card" href="window-artworks.html"><img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>ARTWORKS</small><strong>車窓の作品集</strong><span>写真や墨絵で、車窓の別の表現を楽しむ。</span></span></a><a class="content-rail-card" href="journal.html"><img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>JOURNAL</small><strong>スタンプ帖</strong><span>見つけた景色をスタンプとメダルで記録。</span></span></a><a class="content-rail-card" href="references.html"><img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>LINKS</small><strong>車窓リンク集</strong><span>出典や参考記事をまとめて読む。</span></span></a><a class="content-rail-card" href="contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>お問い合わせ</strong><span>写真提供、情報の訂正、ご感想はこちら。</span></span></a></div></section>
 
   <footer class="footer">
     <p class="footer-brand"><span data-i18n="brandName">新幹線の窓</span> <span data-i18n="brandSub">旅の瞬間を見逃さない</span></p>
@@ -377,15 +304,15 @@
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
   <script src="train-picker.js?v=6cafb7d9"></script>
-  <script src="app.js?v=e7a8956e"></script>
+  <script src="app.js?v=6415fc4a"></script>
 <!-- JA-TRAIN-WINDOW:START -->
 <script src="train-window-geometry.js?v=42ff4818"></script>
 <script src="train-window-stage.js?v=8d7bea02"></script>
-<script src="train-window-preview.js?v=2f2a47d4"></script>
+<script src="train-window-preview.js?v=f934d58c"></script>
 <!-- JA-TRAIN-WINDOW:END -->
 <script src="sparkling-dreams.js?v=983a36e3"></script>
 <script src="journey-light-model.js?v=f5e44614"></script>
-<script src="journey-light-events.js?v=bff2642e"></script>
+<script src="journey-light-events.js?v=12986553"></script>
 <!-- ANDROID_APP_INVITE_START -->
 <style>#android-app-invite{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);position:fixed;z-index:90;width:min(310px,calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));margin:0;padding:10px 12px;border:1px solid #d7e5ef;border-radius:14px;background:linear-gradient(120deg,#fff,#f0f7fc);box-shadow:0 5px 24px #15375230;color:#193c52;font:13px/1.5 system-ui,sans-serif;text-align:left;box-sizing:border-box;max-height:40dvh;overflow:auto}
 #android-app-invite[hidden]{display:none!important}#android-app-invite .context-label{display:block;color:#486b82;font-size:10px;line-height:12px}#android-app-invite h2{font:600 14px/20px system-ui,sans-serif;margin:0}#android-app-invite p{font:12px/1.45 system-ui,sans-serif;margin:4px 0 0}

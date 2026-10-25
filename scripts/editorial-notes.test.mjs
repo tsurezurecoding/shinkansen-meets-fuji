@@ -121,14 +121,15 @@ test('Fujitec and Pocari have complete eight-language articles and worldwide cha
 });
 
 test('guide language menus preserve every destination independently of body link localization',()=>{
- const labels={ja:'日本語',en:'English','zh-Hant':'繁體中文',fr:'Français',de:'Deutsch',es:'Español','zh-Hans':'简体中文',ko:'한국어',ar:'العربية'};
- for(const lang of ['ja','en',...translated]){
+ const editions=supported('guide.html');
+ for(const lang of editions){
   const file=(lang==='ja'?'':lang+'/')+'guide.html',dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file});
-  const links=[...dom.window.document.querySelectorAll('.guide-lang-options a')];assert.equal(links.length,9);
-  for(const [edition,label]of Object.entries(labels)){
-   const link=links.find(a=>a.textContent===label);assert.ok(link,lang+'/'+label);
-   const url=new URL(link.href);assert.equal(url.pathname,'/'+(edition==='ja'?'':edition+'/')+'guide.html');
-   if(edition==='ja')assert.equal(url.searchParams.get('lang'),'ja');
+  const links=[...dom.window.document.querySelectorAll('.guide-lang-options a')];assert.equal(links.length,editions.length,lang+': language menu count');
+  const destinations=links.map(a=>a.href);assert.equal(new Set(destinations).size,editions.length,lang+': duplicate language destination');
+  for(const edition of editions){
+   const expectedPath='/'+(edition==='ja'?'':edition+'/')+'guide.html';
+   const matches=links.filter(a=>new URL(a.href).pathname===expectedPath);assert.equal(matches.length,1,lang+'/'+edition+': destination count');
+   const url=new URL(matches[0].href);if(edition==='ja')assert.equal(url.searchParams.get('lang'),'ja',lang+': Japanese route query');else assert.equal(url.search,'',lang+'/'+edition+': unexpected route query');
   }
   dom.window.close();
  }

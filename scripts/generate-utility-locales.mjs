@@ -1,6 +1,6 @@
 // English traveler-facing pages are the structural/content source for these editions.
 import fs from 'node:fs';
-import { episodes, editions, languages, stripEdition } from './shared/locales.mjs';
+import { episodes, editions, languages, supported, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { UTILITY_ROUTES, LOCALES, ATTRS, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
@@ -26,6 +26,9 @@ function write(file, value) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, value);
 }
+const requestedRoute = process.argv.includes("--route") ? process.argv[process.argv.indexOf("--route") + 1] : null;
+if (requestedRoute && !UTILITY_ROUTES.includes(requestedRoute)) throw Error("Unknown utility route: " + requestedRoute);
+const outputRoutes = requestedRoute ? [requestedRoute] : UTILITY_ROUTES;
 const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
 if (requestedLang && !LOCALES.includes(requestedLang)) throw Error(`Unknown utility locale: ${requestedLang}`);
 for (const lang of requestedLang ? [requestedLang] : LOCALES) {
@@ -64,7 +67,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
   write(`${lang}/utility-data.js`, '/* Generated from English utility content; edit scripts/locales/utility-' + lang + '.json. */\nwindow.MADO_UTILITY_PAYLOAD=' + JSON.stringify(payload) + ';\n');
   // Earlier generators in this process may have hashed the previous payload.
   assetVersion(`${lang}/utility-data.js`, true);
-  for (const route of UTILITY_ROUTES) {
+  for (const route of outputRoutes) {
     const dom = utilitySnapshot(root, route);
     const doc = dom.window.document;
     const file = `${lang}/${route}`;
@@ -101,11 +104,18 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       if (el.closest('.lang-switch')) continue;
       const href = el.getAttribute('href');
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
+      // Japanese-only stories/quizzes keep their real destination and language note.
+      if (el.getAttribute('hreflang') === 'ja' && el.closest('.content-rail-discovery')) continue;
       const url = new URL(href, doc.baseURI);
       const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
       const destination = (payload.routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       el.setAttribute('href', prefix + destination + url.search + url.hash);
+      if (destination.startsWith('en/') && el.matches('.content-rail-discovery .content-rail-card')) {
+        el.setAttribute('hreflang', 'en');
+        const note = doc.createElement('small'); note.className = 'discovery-language'; note.lang = 'en'; note.textContent = 'English';
+        el.querySelector('.content-rail-card-body').append(note);
+      }
     }
     for (const host of doc.querySelectorAll('.lang-switch')) {
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
@@ -113,7 +123,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       const summary = doc.createElement('summary'); summary.textContent = editions[lang].label;
       summary.setAttribute('aria-label', editions[lang].prompt);
       const options = doc.createElement('div'); options.className = 'guide-lang-options';
-      for (const [edition, label] of languages.map(edition => [edition, editions[edition].label])) {
+      for (const [edition, label] of supported(route).map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a'); a.textContent = label; a.lang = edition;
         a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
         if (edition === lang) a.setAttribute('aria-current', 'page');
@@ -158,4 +168,4 @@ for (const route of UTILITY_ROUTES) for (const lang of ['ja', 'en']) {
   const file = (lang === 'ja' ? '' : 'en/') + route;
   write(file, withUtilityLocales(fs.readFileSync(path.join(root, file), 'utf8'), file));
 }
-console.log(`Utility locales: ${LOCALES.length * UTILITY_ROUTES.length} translated pages, shared dictionaries and edition routes.`);
+console.log(`Utility locales: ${(requestedLang ? 1 : LOCALES.length) * outputRoutes.length} translated pages, shared dictionaries and edition routes.`);
