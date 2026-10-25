@@ -2506,7 +2506,7 @@ function setTimelineSelection(selection) {
 function recommendedTimelineCandidates(candidates) {
   if (!hasTimelineRecommendations() || timelineSelection === "all") return candidates;
   const themes = [...activeTimelineFilters].filter(value => !["seat-a", "seat-e", "day", "night", "favorites"].includes(value));
-  return candidates.filter(({ sp, clock }) => isTimelineRecommended(sp, clock) || themes.some(value => galleryTags(sp).has(value)));
+  return candidates.filter(({ sp, clock }) => isTimelineRecommended(sp, clock) || (boardCollectionExpanded && is727CollectionSpot(sp)) || themes.some(value => galleryTags(sp).has(value)));
 }
 function isTimelineRecommended(spot, clock) {
   const explicitTime = activeTimelineTimeOfDayFilter();

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "8a24dbd4428f325b",
+  "contentVersion": "38de26e2bfefeb75",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -37,8 +37,8 @@
     {
       "path": "app.js",
       "url": "https://www.michikusa-travel.com/app.js",
-      "bytes": 155019,
-      "sha256": "6a2b9330794a7b50b526c920e75e6bbf0ba57656ff5bda13462daee76ba44a30"
+      "bytes": 155075,
+      "sha256": "6415fc4aa77afc09e7c5131a89ccadbd3d7719a30d5306f1d1c6cbf34dd7d01e"
     },
     {
       "path": "arenani.css",
@@ -1334,7 +1334,7 @@
       "path": "de/journal.html",
       "url": "https://www.michikusa-travel.com/de/journal.html",
       "bytes": 20228,
-      "sha256": "2c15c3930ebf644ccd76743a2313b9d2529dc8376d21b308d95fd08bd37563da"
+      "sha256": "428e57b1b5c092edbe8140011511134e7a1a938f5137e6327bca93aeb86a800f"
     },
     {
       "path": "de/live/index.html",
@@ -1508,7 +1508,7 @@
       "path": "de/start.html",
       "url": "https://www.michikusa-travel.com/de/start.html",
       "bytes": 42477,
-      "sha256": "3c4c4fb7d6b19afdbbbf287172ba68cf478127ba3d16f531f1fc65fa04e9341b"
+      "sha256": "e94a0ea61842c85f794fb2b287b4f2db2cb829e6d4deafeaebce0a2519f9e438"
     },
     {
       "path": "de/utility-data.js",
@@ -1526,7 +1526,7 @@
       "path": "de/zukan.html",
       "url": "https://www.michikusa-travel.com/de/zukan.html",
       "bytes": 43127,
-      "sha256": "3e106b7234aa001aef9748d9e25c4ba7d5705f0ab0360993437d29ad3c90e6f4"
+      "sha256": "fa07fe11f589c52f0a95926a94821362a4168406fec2030fae9939fd47c44d37"
     },
     {
       "path": "drinks.css",
@@ -1718,7 +1718,7 @@
       "path": "es/journal.html",
       "url": "https://www.michikusa-travel.com/es/journal.html",
       "bytes": 20080,
-      "sha256": "6ae902574a38534486a399b46d9710e3dbbc1f4378edb91df21b60d77a75a2d8"
+      "sha256": "f5c9a449076499f3c9ac3aeaf3b40bad207353239d8b80e0f9005ef3bc5fbb1f"
     },
     {
       "path": "es/live/index.html",
@@ -1892,7 +1892,7 @@
       "path": "es/start.html",
       "url": "https://www.michikusa-travel.com/es/start.html",
       "bytes": 42447,
-      "sha256": "8312d6a73f137cdd0d4d1f8d63c11a180ef766b6bc918262b033862ddd0305c5"
+      "sha256": "5416f33c8f73f458bfeebe7b54ff8cf4b4c008d4248cc58e565bc3ec9963d84d"
     },
     {
       "path": "es/utility-data.js",
@@ -1910,7 +1910,7 @@
       "path": "es/zukan.html",
       "url": "https://www.michikusa-travel.com/es/zukan.html",
       "bytes": 42857,
-      "sha256": "bb4dadd163b10b00a2f3dc471601b00df731fead328275cc9d82102c6bb6d7fc"
+      "sha256": "57c294553da050863a8e4e5c5da8af2722b03623b05f5c9d06b4c81dc52b1947"
     },
     {
       "path": "everyday-related.css",
@@ -2000,7 +2000,7 @@
       "path": "fr/journal.html",
       "url": "https://www.michikusa-travel.com/fr/journal.html",
       "bytes": 20374,
-      "sha256": "37f54550d9bba0bbd6f7d830ad24db23da96f80f40fabc26d49818a2bb8829f6"
+      "sha256": "b93fb599e08852776618906306398482d04ead1cdbc021e8306057cf3391f726"
     },
     {
       "path": "fr/live/index.html",
@@ -2174,7 +2174,7 @@
       "path": "fr/start.html",
       "url": "https://www.michikusa-travel.com/fr/start.html",
       "bytes": 42627,
-      "sha256": "9448fc3c08a5502127fed7d395f10101264d4a30032a6c31a804aa1ae2a3f149"
+      "sha256": "e7530c1d632fbe1694a1aff6736164137355b89160a8f600a2e6a8471041bd2d"
     },
     {
       "path": "fr/utility-data.js",
@@ -2192,7 +2192,7 @@
       "path": "fr/zukan.html",
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
       "bytes": 42998,
-      "sha256": "ca271aab9234b2ecb50f44700f845c69679fd81c281414f52107f63dcee242e7"
+      "sha256": "15a8a7faa2ecca015149d7f3a160cf67ceb76b8e5321874e5a4de43236244be9"
     },
     {
       "path": "fujikawa-frequency.css",
@@ -3566,7 +3566,7 @@
       "path": "it/start.html",
       "url": "https://www.michikusa-travel.com/it/start.html",
       "bytes": 28349,
-      "sha256": "7b4692162940701278f72c70c42c6197c510305b664a06d264b98379c8b6b0bc"
+      "sha256": "627dbe6e7010cdd7684118296f8814329b89e18fcb7786710e80e30f231d8d89"
     },
     {
       "path": "it/utility-data.js",
@@ -3578,7 +3578,7 @@
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
       "bytes": 20371,
-      "sha256": "177b6060682c351ef3dc4970ee45fb682f47b829839e370d1b6d9d84cc9de641"
+      "sha256": "48ed22e3ee0de8d11ea2ea378098098c725bb2636d9a6ff3c2e993dba614cd78"
     },
     {
       "path": "journey-light-events.css",
@@ -3644,7 +3644,7 @@
       "path": "ko/journal.html",
       "url": "https://www.michikusa-travel.com/ko/journal.html",
       "bytes": 20339,
-      "sha256": "a867a9ac9aeeed06d7419e59f9b357555b8cba705080d14f7b4a856a7d4c7da7"
+      "sha256": "1b5bd425ec27bc331ecbf1d1d25906a5df43784053bf1d5e226e9289eb4577ee"
     },
     {
       "path": "ko/live/index.html",
@@ -3818,7 +3818,7 @@
       "path": "ko/start.html",
       "url": "https://www.michikusa-travel.com/ko/start.html",
       "bytes": 42565,
-      "sha256": "303217dc9ec6dbce1cd48147c9a485fab7333cde4ae615298c0992102961ce05"
+      "sha256": "78d0c0ebecf6b63b03491bf46c8ed32df6158196d3520b80743e9dffb69f9651"
     },
     {
       "path": "ko/utility-data.js",
@@ -3836,7 +3836,7 @@
       "path": "ko/zukan.html",
       "url": "https://www.michikusa-travel.com/ko/zukan.html",
       "bytes": 42993,
-      "sha256": "1b0c864adc65e800edfcb724ba99878731c29292842df1071386826c3fe9df81"
+      "sha256": "96d98c0cad489bf0ce8be5ae29508486894aa688173c275f6d0c096db1d5e6b4"
     },
     {
       "path": "live/narration.js",
@@ -4784,7 +4784,7 @@
       "path": "th/start.html",
       "url": "https://www.michikusa-travel.com/th/start.html",
       "bytes": 33707,
-      "sha256": "abdd864a294669e9c67d4edac025765b9597f6591ed97e36720992be715b8c79"
+      "sha256": "565e7978d2801072304ebeca1f5dfa1b4a38d5ba05fee6a00970f18a3d9f55ff"
     },
     {
       "path": "th/utility-data.js",
@@ -5018,7 +5018,7 @@
       "path": "zh-Hans/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/journal.html",
       "bytes": 19427,
-      "sha256": "69ae11c63ddda1bf465328af64584abf5b31c57707170208eb7a8539dd45d169"
+      "sha256": "971ffdff17da96752bf65de2ab8a94b3c660828018e2bb07f74615acfd1e575e"
     },
     {
       "path": "zh-Hans/live/index.html",
@@ -5192,7 +5192,7 @@
       "path": "zh-Hans/start.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/start.html",
       "bytes": 41750,
-      "sha256": "7086a7b0638176f6810cff8575cd8a712f093e46377e1e212e63b5ceb579e7b5"
+      "sha256": "9f05f8faf0a79ed9e4fda0b14b2b83e7844cc84098871260e22f3f0bc7464d89"
     },
     {
       "path": "zh-Hans/utility-data.js",
@@ -5210,7 +5210,7 @@
       "path": "zh-Hans/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/zukan.html",
       "bytes": 42131,
-      "sha256": "ec93f0c068bebdf7f75798ba83153acb2659c0c226e8f428d8253f39adb35f84"
+      "sha256": "685754446bb6961761e1655927bc2a1d8c42e5c63f8d076f97eb8ae6049fe298"
     },
     {
       "path": "zh-Hant/beer-on-shinkansen.html",
@@ -5258,7 +5258,7 @@
       "path": "zh-Hant/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/journal.html",
       "bytes": 19430,
-      "sha256": "7d40388b05ac1acd5b92bf2fce05796095c22f8658f81fc607fdb8b50c0762fa"
+      "sha256": "af77222ce405d49f306652e5334540c659f46a43bb203aa6bd02ca93fc2c7fab"
     },
     {
       "path": "zh-Hant/live/index.html",
@@ -5432,7 +5432,7 @@
       "path": "zh-Hant/start.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/start.html",
       "bytes": 41756,
-      "sha256": "36228f59480b5f2325b96357fd6d8875589d6e07af1eae219a7854cc388b7f12"
+      "sha256": "84c946807f66731b13fe746fce0d8a88a364ac00d7fd31e12129b190a1cf3f52"
     },
     {
       "path": "zh-Hant/utility-data.js",
@@ -5450,7 +5450,7 @@
       "path": "zh-Hant/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/zukan.html",
       "bytes": 42137,
-      "sha256": "90a69648de21308c30e96ad948bde65abbdc1bc00e0ace4a2815e5fda91aeb36"
+      "sha256": "bf15d5e4f5d314df21d2ec5f3c133460ea66a20117a64513079f89e22bd5cc01"
     },
     {
       "path": "zukan-hero.css",

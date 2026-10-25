@@ -51,6 +51,33 @@ test('Japanese preview defaults to the proposed day selection, including both se
   } finally { f.close(); }
 });
 
+test('expanded 727 points remain visible in recommended mode and still obey seat filters', async () => {
+  const f = await fixture();
+  try {
+    const toggle = f.w.document.querySelector('[data-727-collection-toggle]');
+    const points = f.run('boardCollectionSpots().map(spot => spot.id)');
+    assert.equal(points.length, 22);
+    assert(points.every(id => !f.ids().includes(id)));
+
+    toggle.checked = true;
+    toggle.dispatchEvent(new f.w.Event('change', { bubbles: true }));
+    assert(points.every(id => f.ids().includes(id)));
+    assert.equal(f.run('timelineSelection'), 'recommended');
+
+    toggle.checked = false;
+    toggle.dispatchEvent(new f.w.Event('change', { bubbles: true }));
+    assert(points.every(id => !f.ids().includes(id)));
+
+    f.click('seat-a');
+    toggle.checked = true;
+    toggle.dispatchEvent(new f.w.Event('change', { bubbles: true }));
+    const expectedSeatA = Array.from(f.run('boardCollectionSpots().filter(spot => seatTags(spot).has("seat-a")).map(spot => spot.id)'));
+    const visiblePoints = f.ids().filter(id => points.includes(id));
+    assert(expectedSeatA.length > 0);
+    assert.deepEqual(visiblePoints.sort(), expectedSeatA.sort());
+  } finally { f.close(); }
+});
+
 test('all selection persists, while seat and night conditions remain usable and discovery remains reachable', async () => {
   const f = await fixture();
   let saved;
