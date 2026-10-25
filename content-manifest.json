@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "cdc850f4a025d73f",
+  "contentVersion": "371bcee2123bb8bd",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -4219,14 +4219,14 @@
     {
       "path": "quiz/guesser.css",
       "url": "https://www.michikusa-travel.com/quiz/guesser.css",
-      "bytes": 12460,
-      "sha256": "5ef84667478b4752b721535c4ff606eb97a7bc401907cf55b3ba73d3088599a0"
+      "bytes": 16198,
+      "sha256": "5d9f9ba36cb442cd3c8772734b57d1fde0af541653b6c341382ef768691ed309"
     },
     {
       "path": "quiz/guesser.js",
       "url": "https://www.michikusa-travel.com/quiz/guesser.js",
-      "bytes": 20738,
-      "sha256": "61e8a5c9a33b0bfbd9e2b76353ed7772ceb2c82929df18091c2eea634c4cf896"
+      "bytes": 20317,
+      "sha256": "75745abf4dc3ddb8e743c9381681baa62a6ee37af6206550b567d6c3e1d3d2f1"
     },
     {
       "path": "quiz/media/1-filmstrip.jpg",
@@ -4561,8 +4561,8 @@
     {
       "path": "quiz/recognition.css",
       "url": "https://www.michikusa-travel.com/quiz/recognition.css",
-      "bytes": 13260,
-      "sha256": "24d4568a8a8d0833bdec2883a318a2ce5efb98ad2a7345e617d11c326a6d51ea"
+      "bytes": 21936,
+      "sha256": "24b0b34703e824111e421c83735742aca53ab69c09440c1878144b579d043396"
     },
     {
       "path": "quiz/recognition.js",
@@ -4933,8 +4933,8 @@
     {
       "path": "window-guesser.html",
       "url": "https://www.michikusa-travel.com/window-guesser.html",
-      "bytes": 17997,
-      "sha256": "7db24e60a5c8704e69363b0a539e13e486a16d7193929e6c71bcd3bcb8919391"
+      "bytes": 17317,
+      "sha256": "66c267d6078d7709cd070dcedc48be81794a2fefd2e0f7d2042972392a10608e"
     },
     {
       "path": "window-moments.html",
@@ -4951,8 +4951,8 @@
     {
       "path": "window-quiz.html",
       "url": "https://www.michikusa-travel.com/window-quiz.html",
-      "bytes": 14508,
-      "sha256": "c3da177215ba9a3285806443792d49626e6c5cfc49bd17fb35952d4699a20a3f"
+      "bytes": 15510,
+      "sha256": "4931a5f26ccd8c3d1b36889604b959689744135c41be5622bb8b193ef98069e9"
     },
     {
       "path": "window-trip.html",

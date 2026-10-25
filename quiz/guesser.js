@@ -167,7 +167,6 @@ function seekTo(t){
 function setReady(value){
   ready=value;
   document.querySelectorAll('.transport button,.transport select,#scrub,#bookmark-label').forEach(el=>el.disabled=!value);
-  $('choose-place').disabled=!value;
   $('loading').hidden=value;
 }
 film.addEventListener('loadedmetadata',()=>{
@@ -189,12 +188,7 @@ document.querySelectorAll('[data-step]').forEach(b=>b.addEventListener('click',(
 $('speed').addEventListener('change',()=>{film.playbackRate=Number($('speed').value);});
 $('play').addEventListener('click',async()=>{if(!ready)return;if(!film.paused){film.pause();return;}if(film.ended||film.currentTime>=film.duration-.1)film.currentTime=0;try{await film.play();}catch{$('play').textContent='▶ 再生';}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)film.pause();});
-function openAnswer(){
-  $('answer-card').hidden=false;$('observe-card').hidden=true;$('play-grid').classList.remove('observing');setMapMode(routeMode);
-  if(innerWidth<701)scrollTo($('answer-card'));
-  $('station-select').focus({preventScroll:true});
-}
-$('choose-place').addEventListener('click',openAnswer);
+
 $('station-select').addEventListener('change',()=>{$('position-range').value=50;chooseFromControls();});
 $('position-range').addEventListener('input',chooseFromControls);
 $('map-toggle').addEventListener('click',()=>setMapMode(!routeMode));$('fit-map').addEventListener('click',fitMap);
@@ -207,26 +201,20 @@ $('submit').addEventListener('click',()=>{
   const outcome=distance<=1?'correct':distance<=10?'close':distance<=50?'near':'far';
   $('round-result').dataset.outcome=outcome;
   $('guess-verdict').textContent={correct:'◎ 正解！',close:'○ おしい！',near:'△ もう少し！',far:'↔ 遠かった！'}[outcome];
-  $('map-panel').hidden=true;$('review-map').setAttribute('aria-expanded','false');
-  $('review-map').textContent='地図で答えを見比べる ↓';
+  $('map-panel').hidden=false;$('result-more').hidden=false;$('answer-card').classList.add('answered');
   $('distance').textContent=distanceText(distance);$('round-score').innerHTML=`${fmt(score)}<span>pt</span>`;
   $('map-instruction').textContent='緑は固定のお題、紫は映像の再生位置。';$('fit-map').textContent='回答を比較';
   $('scene-title').textContent=q.sceneTitle;
   results[questionIndex]={score,distance};renderJourney();
   if(map){
     answerMarker=L.marker(ll(target),{icon:icon(true)}).addTo(map).bindTooltip('お題の瞬間',{permanent:true,direction:'top',className:'map-pin-label'});
-    answerLine=L.polyline([ll(guess),ll(target)],{color:'#3a7668',weight:2,dashArray:'5 6',interactive:false}).addTo(map);
+    answerLine=L.polyline([ll(guess),ll(target)],{color:'#3a7668',weight:2,dashArray:'5 6',interactive:false}).addTo(map).bindTooltip(distanceText(distance)+'（線路沿い）',{permanent:true,direction:'center',className:'distance-label'});
+    guessMarker?.bindTooltip('あなたの回答',{permanent:true,direction:'bottom',className:'map-pin-label'});
     clipLine=L.polyline(clipPaths(),{color:'#7059a0',weight:5,opacity:.75,interactive:false}).addTo(map);
     fitMap();
   }
-  syncFilm();renderRoute();$('round-result').hidden=false;$('round-result').focus({preventScroll:true});
+  syncFilm();renderRoute();$('round-result').hidden=false;requestAnimationFrame(fitMap);$('round-result').focus({preventScroll:true});
   if(innerWidth<701)scrollTo($('round-result'));else window.scrollTo({top:0,behavior:'instant'});
-});
-$('review-map').addEventListener('click',()=>{
-  const open=$('map-panel').hidden;$('map-panel').hidden=!open;
-  $('review-map').setAttribute('aria-expanded',String(open));
-  $('review-map').textContent=open?'地図を閉じる ↑':'地図で答えを見比べる ↓';
-  if(open){setMapMode(routeMode);if(map){map.invalidateSize();fitMap();}}
 });
 function followClip(){if(map&&!routeMode){map.invalidateSize();map.fitBounds(q.samples.filter(hasPosition).map(s=>[s[1],s[2]]),{padding:[35,35],maxZoom:14,animate:false});}}
 $('follow-clip').addEventListener('click',()=>{followClip();scrollTo($('scene'));});
@@ -234,9 +222,10 @@ document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',(
 function resetQuestion(){
   film.pause();cancelAnimationFrame(seekFrame);
   answered=false;guess=null;livePosition=null;
+  $('result-more').hidden=true;$('answer-card').classList.remove('answered');
   $('map-panel').hidden=false;document.querySelector('.answer-story').open=false;
   [guessMarker,answerMarker,answerLine,liveMarker,clipLine].forEach(m=>m?.remove());guessMarker=answerMarker=answerLine=liveMarker=clipLine=null;
-  $('answer-card').hidden=true;$('observe-card').hidden=false;$('play-grid').classList.add('observing');$('round-result').hidden=true;
+  $('answer-card').hidden=false;$('round-result').hidden=true;
   $('submit').hidden=false;$('submit').disabled=true;$('follow-clip').hidden=true;$('guess-controls').hidden=false;$('fine-control').hidden=true;$('station-select').value='';$('position-range').value=50;
   $('guess-label').textContent='まだピンが置かれていません';$('map-instruction').textContent='路線の近くをタップして、ピンを置こう。';$('fit-map').textContent='全区間';
   $('hint').hidden=true;$('hint-button').textContent='見るヒント';$('hint-button').setAttribute('aria-expanded','false');$('scene-title').textContent='見覚えのない景色から、始めよう。';
@@ -268,7 +257,7 @@ function loadQuestion(index){
   document.querySelector('.filmstrip').src=q.filmstrip;
   document.querySelectorAll('[data-time]').forEach((b,i)=>{b.dataset.time=q.cues[i][0];b.textContent=`${['①','②','③'][i]} ${q.cues[i][1]}`;});
   film.poster=q.poster;film.src=q.video;scrub.value=q.targetSeconds;scrub.max=q.duration;
-  renderJourney();film.load();
+  renderJourney();film.load();setMapMode(routeMode);requestAnimationFrame(fitMap);
   if(index>0){if(innerWidth<701)scrollTo($('scene'));else window.scrollTo({top:0,behavior:'instant'});}
 }
 questions.forEach((_,i)=>{const b=document.createElement('button');b.type='button';b.addEventListener('click',()=>loadQuestion(i));$('question-nav').append(b);});

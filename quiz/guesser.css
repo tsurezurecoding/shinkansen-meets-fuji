@@ -74,3 +74,48 @@
  .guess-controls label { margin-bottom:3px; }.guess-label { margin:5px 0;min-height:0; }
  .answer-card .primary-button { padding:11px 14px; }
 }
+
+/* Review prototype: the comparison map stays visible after every guess. */
+.answer-card.answered {border:1px solid #c4cbbd!important;border-radius:14px!important;padding:16px!important;background:#fffcf7!important;}
+.answered .round-result {padding:0;border:0;background:transparent!important;border-radius:0;}
+.answered .guess-verdict {font-size:25px;margin:0 0 8px;line-height:1.25;}
+.answered .result-top {gap:8px;display:grid;grid-template-columns:1fr auto;align-items:start;}
+.answered .result-top>div:first-child {min-width:0;}
+.answered .result-top .eyebrow {display:none;}
+.answered .result-top h2 {font-size:19px;margin:0 0 5px;line-height:1.5;}
+.answered #result-location {font-size:10px;line-height:1.6;}
+.answered .result-numbers {display:block;padding:0 0 0 14px;border:0;border-left:1px solid var(--line);text-align:right;}
+.answered .result-numbers strong {font-size:28px;white-space:nowrap;}
+.answered .result-numbers p:last-child {margin-top:2px;}
+.answered .result-numbers p:last-child small {display:inline;margin-right:5px;font-size:9px;}
+.answered .result-numbers p:last-child strong {font-size:13px;}
+.answered #map-panel {margin:12px 0 0!important;padding:0!important;border:0!important;background:transparent!important;}
+.answered .answer-heading,.answered #map-instruction,.answered #guess-label,.answered .answer-note {display:none;}
+.answered .map-wrap {height:clamp(180px,calc(100dvh - 500px),260px);}
+.answered .map-switch-row {margin:3px 0 0;}
+.answered #follow-clip {padding:4px 0;min-height:30px;width:auto;font-size:11px;color:#436354;background:none;border:0;text-decoration:underline;text-underline-offset:4px;transform:none;}
+.answered .result-actions {margin-top:3px;}
+.answered .result-actions>p {font-size:10px;margin:0 0 10px;}
+.answered .journey-actions {display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;}
+.answered .journey-actions .primary-button {grid-column:2;grid-row:1;min-height:42px;padding:10px 18px;width:auto;font-size:12px;}
+.answered #restart {grid-column:1;grid-row:1;text-align:left;font-size:10px;white-space:normal;}
+.answered .answer-story {margin-top:12px;padding-top:10px;}
+.answered .answer-story summary {font-size:11px;}
+.distance-label {color:#294e42;background:#fffdf7;border:1px solid #bed0c0;border-radius:20px;padding:4px 9px;font-weight:700;box-shadow:0 2px 8px #20352a18;}
+@media(max-width:700px){.answer-card.answered{padding:14px!important;}.answered .guess-verdict{font-size:24px;}.answered .result-top{gap:8px;}.answered .result-top h2{font-size:18px;}.answered .result-numbers{padding-left:10px;}.answered .result-numbers strong{font-size:25px;}.answered .map-wrap{height:210px;}.answered .result-actions>p{font-size:9px;}.answered .journey-actions{gap:6px;}.answered .journey-actions .primary-button{padding:10px 12px;font-size:11px;}.answered #restart{font-size:9px;}.answered .round-result{scroll-margin-top:90px;}}
+/* Keep the answer action in the desktop stage, including fine positioning. */
+@media(min-width:701px){
+ .game-shell{padding-top:6px}
+ .quiz-return a{padding:3px 0}
+ .journey-bar{margin-bottom:6px}
+ .answer-card{padding:12px}
+ .answer-heading h2{font-size:18px;line-height:1.4}
+ .answer-card .map-wrap{height:clamp(110px,calc(100dvh - 500px),200px)}
+ .guess-controls select{padding:6px 10px;min-height:34px;height:34px;font-size:12px}
+ .guess-controls label{font-size:10px;line-height:1.5}
+ #position-range{margin:3px 0;height:22px;min-height:0}
+ .guess-label{font-size:11px;line-height:1.5;margin:4px 0}
+ .answer-card #submit{padding:9px 12px;min-height:38px;margin-top:0;line-height:1.5}
+ .answered .map-wrap{height:clamp(120px,calc(100dvh - 490px),220px)}
+ .answered .answer-story{margin-top:6px;padding-top:6px}
+}
