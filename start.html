@@ -121,6 +121,13 @@
     .timeline-recommendation-more { max-width:700px; margin:24px auto 0; padding:18px; border:1px solid var(--line); border-radius:16px; background:var(--paper); text-align:center; }
     .timeline-recommendation-more p { margin:0 0 12px; font-size:14px; line-height:1.7; }
     .timeline-recommendation-more button { padding:10px 18px; border:1px solid var(--night); border-radius:999px; background:var(--night); color:white; font:inherit; font-weight:700; cursor:pointer; }
+    .timeline-selection-bar { flex:0 0 100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px; margin-bottom:6px; border:1px solid var(--line); border-radius:16px; background:rgba(255,255,255,.7); box-sizing:border-box; }
+    #timelineFilterbar .timeline-recommended-choice { padding:10px 16px; font-size:14px; }
+    #timelineFilterbar .timeline-reset { display:flex; align-items:center; gap:8px; padding:9px 14px; border:1.5px solid #a74024; border-radius:12px; color:#8f351d; background:#fff8f2; font-size:13px; text-align:left; }
+    #timelineFilterbar .timeline-reset>span:first-child { font-size:22px; line-height:1; }
+    #timelineFilterbar .timeline-reset small { display:block; margin-top:2px; font-size:10px; font-weight:500; }
+    #timelineFilterbar .timeline-reset.active { box-shadow:inset 0 0 0 1px #a74024; }
+    .tl-recommended-badge { display:inline-flex; align-items:center; gap:3px; padding:3px 7px; border:1px solid #dbc599; border-radius:999px; background:#fff4d9; color:#775521; font-size:10px; font-weight:700; line-height:1.4; white-space:nowrap; }
     /* JA-TIMELINE-RECOMMENDATIONS:END */
   </style>
   <script defer src="utility-locales.js?v=4f2b7fba"></script>
@@ -227,11 +234,13 @@
           <p data-timeline-recommendations class="timeline-recommendation-summary" id="timelineRecommendationSummary" role="status" aria-live="polite"></p>
           <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
           <div class="timeline-filterbar" id="timelineFilterbar" aria-label="タイムラインフィルタ">
+            <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
+            <div class="timeline-selection-bar" role="group" aria-label="表示範囲と条件の解除">
+              <button type="button" data-timeline-filter="recommended" class="active timeline-recommended-choice" aria-pressed="true"><span aria-hidden="true">✦</span> おすすめ</button>
+              <button type="button" data-timeline-filter="all" class="timeline-reset"><span aria-hidden="true">↺</span><span>すべて表示<small>フィルターを解除</small></span></button>
+            </div>
+            <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
             <div class="timeline-filter-group" role="group" aria-label="お気に入り・座席側">
-              <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
-              <button type="button" data-timeline-filter="recommended" class="active" aria-pressed="true">おすすめ</button>
-              <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
-              <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">すべて</button>
               <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ お気に入り</button>
               <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">A席</button>
               <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">E席</button>

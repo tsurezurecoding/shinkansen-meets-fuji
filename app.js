@@ -1736,13 +1736,15 @@ function spotItemHTML(sp, clock) {
   const classicBadge = isClassic
     ? `<span class="tl-classic-badge">${escapeHTML(t("fClassic"))}</span>`
     : "";
+  const recommendationBadge = hasTimelineRecommendations() && isTimelineRecommended(sp, clock)
+    ? '<span class="tl-recommended-badge"><span aria-hidden="true">✦</span> おすすめ</span>' : "";
   return `
       <li class="tl-item${isClassic ? " tl-item-classic" : ""}${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
         <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
           <div class="tl-card-main">
             <div class="tl-copy">
               <div class="tl-top">
-                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span>${classicBadge}</div>
+                <div class="tl-top-left">${time}<span class="tl-icon">${sp.icon}</span><span class="tl-name">${L.name}</span>${hasTimelineRecommendations() ? recommendationBadge : classicBadge}</div>
               </div>
               <div class="spot-card-footer">
                 <div class="tl-meta">${seatShortBadge(sp)}${sp.is727Collection ? catBadge(sp) : ""}${sp.is727Collection ? confBadge(sp) : ""}</div>
@@ -2463,12 +2465,13 @@ function setTimelineSelection(selection) {
 }
 function recommendedTimelineCandidates(candidates) {
   if (!hasTimelineRecommendations() || timelineSelection === "all") return candidates;
+  return candidates.filter(({ sp, clock }) => isTimelineRecommended(sp, clock));
+}
+function isTimelineRecommended(spot, clock) {
   const explicitTime = activeTimelineTimeOfDayFilter();
-  return candidates.filter(({ sp, clock }) => {
-    const night = explicitTime ? explicitTime === "night"
-      : !journey?.preview && journey?.mode === "train" && isClearlyDark(clock);
-    return (night ? TIMELINE_NIGHT_RECOMMENDATIONS : TIMELINE_DAY_RECOMMENDATIONS).has(sp.id);
-  });
+  const night = explicitTime ? explicitTime === "night"
+    : !journey?.preview && journey?.mode === "train" && isClearlyDark(clock);
+  return (night ? TIMELINE_NIGHT_RECOMMENDATIONS : TIMELINE_DAY_RECOMMENDATIONS).has(spot.id);
 }
 function renderTimelineRecommendationSummary(candidates, visible) {
   if (!hasTimelineRecommendations()) return;
@@ -2771,6 +2774,7 @@ function bindGalleryControls() {
 function bindTimelineControls() {
   $("#timelineRecommendationMore button")?.addEventListener("click", () => {
     setTimelineSelection("all");
+    activeTimelineFilters.clear();
     updateTimelineFilterButtons();
     renderTimeline();
     track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all", selection: timelineSelection });
@@ -2796,7 +2800,9 @@ function bindTimelineControls() {
     const filter = button.dataset.timelineFilter;
     if (hasTimelineRecommendations() && ["recommended", "all"].includes(filter)) {
       setTimelineSelection(filter);
-      if (filter === "recommended") {
+      if (filter === "all") {
+        activeTimelineFilters.clear();
+      } else {
         [...activeTimelineFilters].forEach((value) => {
           if (!["seat-a", "seat-e", "day", "night"].includes(value)) activeTimelineFilters.delete(value);
         });

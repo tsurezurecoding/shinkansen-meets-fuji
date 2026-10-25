@@ -35,6 +35,7 @@ test('Japanese preview defaults to the proposed day selection, including both se
   const f = await fixture();
   try {
     assert.equal(f.ids().length, 17);
+    assert.equal(f.w.document.querySelectorAll('#timeline .tl-recommended-badge').length, 17);
     for (const id of ['fuji', 'ibuki', 'ibuki-seat-a', 'ferris-wheel-laguna', 'nichiban-anjo']) assert(f.ids().includes(id), id);
     assert(!f.ids().includes('hirakata-park-wheel'));
     assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes('おすすめ 17件'));
@@ -54,11 +55,14 @@ test('all selection persists, while seat and night conditions remain usable and 
     const recommended = f.ids().length;
     f.w.document.querySelector('#timelineRecommendationMore button').click();
     assert(f.ids().length > recommended);
-    assert(f.run('activeTimelineFilters.has("seat-a")'));
+    assert.equal(f.run('activeTimelineFilters.size'), 0);
+    assert.equal(f.w.document.querySelectorAll('#timeline .tl-recommended-badge').length, 17);
+    assert(f.ids().length > f.w.document.querySelectorAll('#timeline .tl-recommended-badge').length);
     saved = f.w.localStorage.getItem('mado-timeline-selection-ja');
     assert.equal(saved, 'all');
     assert.equal(f.w.document.querySelector('#timelineRecommendationMore').hidden, true);
     f.click('recommended');
+    f.click('seat-a');
     f.click('night');
     assert.deepEqual(f.ids().sort(), ['hirakata-park-wheel', 'toji']);
     f.click('sign');
@@ -66,6 +70,10 @@ test('all selection persists, while seat and night conditions remain usable and 
     f.click('recommended');
     assert.equal(f.run('activeTimelineFilters.has("sign")'), false);
     assert.equal(f.run('activeTimelineFilters.has("seat-a")'), true);
+    f.click('all');
+    assert.equal(f.run('activeTimelineFilters.size'), 0);
+    assert(f.ids().includes('fuji'));
+    assert(f.ids().includes('hinataoka'));
   } finally { f.close(); }
   const reload = await fixture({ saved });
   try {
