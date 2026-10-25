@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import {assetVersion} from './asset-version.mjs';
-const templates=Object.fromEntries(['ja','en'].map(lang=>[lang,fs.readFileSync(new URL('../../data/home-entry/'+lang+'.html',import.meta.url),'utf8')]));
+const templates=Object.fromEntries(['ja','en'].map(lang=>[lang,fs.readFileSync(new URL('../../data/home-entry/'+lang+'.tpl',import.meta.url),'utf8')]));
 export function withHomeEntry(html,lang){
  if(!templates[lang])throw Error('Unknown home entry language: '+lang);
  const block='<!-- HOME_ENTRY_START -->'+templates[lang]+'<!-- HOME_ENTRY_END -->';
