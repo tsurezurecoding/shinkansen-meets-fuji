@@ -460,6 +460,7 @@
   }
 
   function railPromosHTML(rootPath, lang, currentRoute, count727, currentId, today, options) {
+    if (options && options.noPromos) return "";
     var picked = pickRailFeatures(lang, currentId || "", currentRoute || "", today || new Date());
     return railAppHTML(rootPath, lang) + (options && options.noLive ? "" : railLiveHTML(rootPath, lang)) +
       (picked.related ? railFeatureHTML(picked.related, rootPath, lang, "related", count727) : "") +
@@ -483,6 +484,26 @@
       return "<a class=\"content-rail-card\" href=\"" + escapeHTML(href(base, item.href)) + "\"><img src=\"" + escapeHTML(href(rootPath, item.img)) + "\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"content-rail-card-body\"><small>" + escapeHTML(item.label) + "</small><strong>" + escapeHTML(item.title) + "</strong><span>" + escapeHTML(item.desc) + "</span></span></a>";
     }).join("");
     return "<section class=\"content-rail-section\" aria-labelledby=\"contentRailTitle\"><div class=\"section-head\"><p class=\"eyebrow\">" + escapeHTML(ui.contentEyebrow) + "</p><h2 id=\"contentRailTitle\">" + escapeHTML(ui.contentTitle) + "</h2></div><div class=\"content-rail\">" + cards + "</div></section>";
+  }
+
+  // One source for the selector's static footer and every spot page.
+  // Existing cards stay after these discovery entries, including the English extras.
+  function discoveryContentRailHTML(rootPath, lang) {
+    var base = basePath(rootPath, lang), ja = lang === "ja";
+    var items = [
+      { href: "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow", img: "images/android/app-icon-192.webp", label: "ANDROID APP", title: ja ? "Androidアプリ" : "Android app", desc: ja ? "画面を消しても音声案内。無料・登録不要。" : "Audio guidance with the screen off. Free, with no registration.", app: true },
+      { href: href(base, "zukan.html"), img: "images/thumbs/20240211_Mt.Fuji.webp", label: "WINDOW ATLAS", title: ja ? "車窓図鑑" : "Window view atlas", desc: ja ? "写真から気になる景色を見つける。" : "Find your next discovery in photos." },
+      { href: href(base, "727-collection.html"), img: "images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp", label: "WINDOW COLLECTION", title: ja ? "727看板コレクション" : "727 Billboard Collection", desc: ja ? "沿線の727看板を、見つけて集める。" : "Spot and collect 727 signs along the line." },
+      { href: href(base, "castles.html"), img: "images/thumbs/20260712_kakegawa_castle_michikusa.webp", label: "CASTLES", title: ja ? "新幹線から見える城" : "Castles from the Shinkansen", desc: ja ? "窓の向こうの天守や城跡を知る。" : "Discover castle towers and ruins beyond the window." },
+      { href: href(rootPath, "sudoori/index.html" + (ja ? "#stories" : "?lang=ja#stories")), img: "images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp", label: "LOCAL STORIES", title: ja ? "素通りの街" : "Towns we pass", desc: ja ? "通り過ぎる街の物語を読む。" : "Read the stories of towns along the line.", japanese: !ja },
+      { href: href(rootPath, "window-quiz.html" + (ja ? "" : "?lang=ja")), img: "images/20260704_maruko_bridge_1_michikusa.jpg", label: "WINDOW QUIZ", title: ja ? "車窓クイズ" : "Window quiz", desc: ja ? "写真と動画で、車窓の発見を楽しむ。" : "Discover window views through photo and video quizzes.", japanese: !ja }
+    ];
+    var events = ['android_app_guide_click', 'zukan_entry_click', '727_collection_entry_click', 'castles_entry_click', 'sudoori_entry_click', 'window_quiz_entry_click'];
+    var keys = ['android', 'zukan', '727', 'castles', 'sudoori', 'quiz'];
+    var cards = items.map(function (item, index) {
+      return '<a class="content-rail-card' + (item.app ? ' content-rail-android hide-in-app' : '') + '" href="' + escapeHTML(item.href) + '" data-cta-track="' + events[index] + '" data-cta-id="discovery_' + keys[index] + '"' + (item.app ? ' target="_blank" rel="noopener noreferrer"' : '') + (item.japanese ? ' hreflang="ja"' : '') + '><img src="' + escapeHTML(href(rootPath, item.img)) + '" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>' + escapeHTML(item.label) + '</small><strong>' + escapeHTML(item.title) + (item.app ? ' <span aria-hidden="true">↗</span>' : '') + '</strong><span>' + escapeHTML(item.desc) + '</span>' + (item.japanese ? '<small class="discovery-language">日本語</small>' : '') + '</span></a>';
+    }).join('');
+    return contentRailHTML(rootPath, lang).replace('class="content-rail-section"', 'class="content-rail-section content-rail-discovery"').replace('<div class="content-rail">', '<div class="content-rail">' + cards);
   }
 
   function showcaseCreditHTML(item, lang) {
@@ -737,7 +758,7 @@
   function pageGuideHTML(page, rootPath, lang) {
     if (page.readingLayout) return readingGuideHTML(page, rootPath, lang);
     var guide = page.guide;
-    return "<section class=\"spot-page-section\"><h2>" + escapeHTML(guide.title) + "</h2><h3>" + escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first") + "</h3><p>" + escapeHTML(guide.intro) + "</p><p>" + escapeHTML(guide.duration) + "</p><aside class=\"spot-page-timing-cta\" data-app-redundant><p>" + escapeHTML(guide.timingLead) + "</p><a class=\"btn btn-primary\" href=\"" + escapeHTML(guide.href) + "\" data-cta-track=\"cta_train_search_click\" data-cta-id=\"spot_guide_timing\">" + escapeHTML(guide.cta) + "</a></aside><h3>" + escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights") + "</h3><p>" + escapeHTML(guide.highlight) + "</p></section>";
+    return "<section class=\"spot-page-section\"><h2>" + escapeHTML(guide.title) + "</h2><h3>" + escapeHTML(lang === "ja" ? "1. 先に見る方向を決める" : "1. Choose the window first") + "</h3><p>" + escapeHTML(guide.intro) + "</p><p>" + escapeHTML(guide.duration) + "</p><h3>" + escapeHTML(lang === "ja" ? "2. 見どころ" : "2. Highlights") + "</h3><p>" + escapeHTML(guide.highlight) + "</p></section>" + compactGuideHTML(page, rootPath, lang);
   }
 
   function pageMediaHTML(page, rootPath, lang) {
@@ -794,8 +815,6 @@
   function nextCardsHTML(rootPath, lang, key) {
     var ui = NEXT_CARD_UI[lang], base = basePath(rootPath, lang), collection = NEXT_CARD_COLLECTIONS[key];
     return '<nav class="spot-page-next-cards" aria-label="' + escapeHTML(ui.label) + '">' +
-      nextCardHTML(lang === "en" ? href(rootPath, "en/start.html") : href(rootPath, "start.html"), ui.timingLabel, ui.timingTitle, ui.timingBody, "spot_next_train") +
-      nextCardHTML(href(base, "live/"), ui.liveLabel, ui.liveTitle, ui.liveBody, "spot_next_live") +
       nextCardHTML(href(base, collection.route), ui.collectionLabel, collection.title[lang], collection.body[lang], "spot_next_" + key) +
       '</nav>';
   }
@@ -808,26 +827,17 @@
     return "<a class=\"spot-page-727-collection-link\" href=\"" + escapeHTML(href(rootPath, "727-collection.html")) + "\"><span><strong>727看板コレクション</strong><small>設置場所の全" + escapeHTML(count) + "地点を見る</small></span><b aria-hidden=\"true\">→</b></a>";
   }
 
+  function compactGuideHTML(page, rootPath, lang) {
+    var ja = lang === "ja", base = basePath(rootPath, lang);
+    var landmark = page.chapters && page.chapters.some(function (chapter) { return chapter.kind !== "background"; });
+    var heading = ja ? '<span class="copy-chunk">' + escapeHTML(page.name || "景色") + 'を</span><span class="copy-chunk">見逃さないために</span>' : "Don't miss the view";
+    return '<section class="spot-page-section spot-reading-guide spot-compact-guide"' + (landmark ? '' : ' data-app-redundant') + '><p class="eyebrow spot-reading-eyebrow">YOUR WINDOW GUIDE</p><h2>' + heading + '</h2>' + (landmark ? '<p class="spot-compact-guide-lead">' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="tools-grid" data-app-redundant>' +
+      '<a class="tool-panel" href="' + escapeHTML(href(base, 'start.html#journey')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train"><img class="tool-screen" src="' + escapeHTML(href(rootPath, 'promo/assets/ui/' + (ja ? 'ja' : 'en') + '-start-timeline.webp')) + '" alt="' + (ja ? '列車を選び、景色の時刻を確認する画面' : 'Choose a train and check estimated viewing times') + '" loading="lazy"><div class="tool-content"><h3>' + (ja ? '<span class="copy-chunk">乗る前に、</span><span class="copy-chunk">見える時刻を調べる →</span>' : 'Before you ride: plan your views <span aria-hidden="true">→</span>') + '</h3><p>' + (ja ? '方向・出発駅・列車から、景色の時刻と席側を確認。停車時刻をもとにした目安です。' : 'Choose your direction, station and train to find when to look and which side to sit on. Viewing times are estimated from scheduled station stops.') + '</p></div></a>' +
+      '<article class="tool-panel tool-app-card"><img class="tool-screen" src="' + escapeHTML(href(rootPath, 'promo/assets/ui/' + (ja ? 'ja' : 'en') + '-live-fuji-eta00.webp')) + '" alt="' + (ja ? '現在地と次の景色を案内する音声ガイドの画面' : 'GPS map and audio guide for the next view') + '" loading="lazy"><a class="tool-main" href="' + escapeHTML(href(base, 'live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live"><div class="tool-content"><h3>' + (ja ? '<span class="copy-chunk">車内では、</span><span class="copy-chunk">音声でお知らせ →</span>' : 'On board: listen for the next view <span aria-hidden="true">→</span>') + '</h3><p>' + (ja ? 'GPSで現在地を確認し、近づく景色と見る側を案内。' : 'GPS follows your position. Audio tells you what is coming and which side to look from.') + '<span class="guide-promise">' + (ja ? '<span class="copy-chunk">スマホを見る時間を、</span><span class="copy-chunk">窓を見る時間へ。</span>' : 'Turn screen time into window time.') + '</span></p></div></a><a class="android-store-link hide-in-app" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-cta-track="android_app_guide_click" data-cta-id="spot_guide_android"><img src="' + escapeHTML(href(rootPath, 'images/android/app-icon-192.webp')) + '" width="30" height="30" alt=""><span class="app-link-copy"><strong>' + (ja ? '画面を消しても音声案内' : 'Audio guidance with the screen off') + '</strong><small>' + (ja ? 'Androidアプリ · Google Play ↗' : 'Android app · Google Play ↗') + '</small></span></a></article></div></section>';
+  }
+
   function readingGuideHTML(page, rootPath, lang) {
-    var compact = page.readingLayout.compactGuide;
-    // Background notes do not turn a single-view article into a multi-view guide.
-    var landmarkChapters = page.chapters && page.chapters.some(function (chapter) { return chapter.kind !== "background"; });
-    if (lang === "en") {
-      return '<section class="spot-page-section spot-reading-guide"' + (landmarkChapters ? '' : ' data-app-redundant') + '>' + readingEyebrow(page, 'ON BOARD') + '<h2>How to spot ' + escapeHTML(page.name) + '</h2>' + (landmarkChapters ? '<p>' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="spot-reading-actions" data-app-redundant>' +
-        '<article class="spot-reading-action"><h3>See the next window view</h3><p>Use GPS to check your location, the next view and its seat side. No train selection is needed.</p>' +
-        '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="Enlarge the GPS guide preview"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="GPS guide preview showing your location and the next window view"></button><figcaption>Preview screen, not your current location.<br>Map: © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
-        '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'en/live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">Open the GPS guide →</a><p class="spot-reading-note">Uses your location. Audio guidance is also available. You can use the map alone.</p></article>' +
-        '<article class="spot-reading-action"><h3>Choose a train to see the timing</h3><p>Match the timetable to your train to see when ' + escapeHTML(page.name) + ' should appear and which side to watch.</p>' +
-        '<div class="spot-reading-train-preview" role="img" aria-label="Example display after choosing a train. Times are illustrative, not live operations"><div class="spot-reading-train-choice"><small>Choose a train</small><strong>Tokyo → Shin-Osaka</strong><span>Nozomi · Tokyo departs 09:00</span></div><span class="spot-reading-preview-arrow" aria-hidden="true">↓</span><div class="spot-reading-timeline"><div><time>09:31</time><span>Odawara Castle</span><b>Seat A</b></div><div><time>09:42</time><span>Mt. Fuji</span><b>Seat E</b></div><div><time>10:13</time><span>Lake Hamana</span><b>Seats A/E</b></div></div><p>Example display · times are illustrative</p></div>' +
-        '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'en/start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">Find your viewing times →</a><p class="spot-reading-note">Location access is not needed. Times are estimates. Delays can change them.</p></article></div></section>';
-    }
-    return '<section class="spot-page-section spot-reading-guide"' + (landmarkChapters ? '' : ' data-app-redundant') + '>' + readingEyebrow(page, 'ON BOARD') + '<h2>' + (compact ? '<span class="copy-chunk">' + escapeHTML(page.name) + 'を</span><span class="copy-chunk">見逃さないために</span>' : escapeHTML(page.name) + 'を見逃さないために') + '</h2>' + (landmarkChapters ? '<p>' + escapeHTML(page.guide.highlight) + '</p>' : '') + '<div class="spot-reading-actions" data-app-redundant>' +
-      '<article class="spot-reading-action"><h3><span class="copy-chunk">現在地から、</span><span class="copy-chunk">次の車窓を見る</span></h3><p>' + (compact ? '<span class="copy-chunk">GPSで現在地と、</span><span class="copy-chunk">次の景色・席側を確認。</span><span class="copy-chunk">列車選択は不要です。</span>' : '<span class="copy-chunk">GPS地図で、いまいる場所と</span><span class="copy-chunk">次の見どころ・席側を確認できます。</span><span class="copy-chunk">列車を選ぶ必要はありません。</span>') + '</p>' +
-      '<figure class="spot-reading-screen"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" aria-label="ガイドの画面例を拡大"><img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, 'images/og-live-guide.jpg')) + '" alt="現在地と次の見どころを表示するGPS地図の画面例"></button><figcaption>既存ガイドの画面例（乗車プレビュー）。現在の位置ではありません。<br>地図：© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a></figcaption></figure>' +
-      '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'live/')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_live">GPS地図でこの先を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報を使います。</span>' + (compact ? '<span class="copy-chunk">音声案内も使えます。</span><span class="copy-chunk">地図だけでも使えます。</span>' : '<span class="copy-chunk">音声でも案内でき、地図だけでも使えます。</span>') + '</p></article>' +
-      '<article class="spot-reading-action"><h3><span class="copy-chunk">列車を選ぶと、</span><span class="copy-chunk">見える時刻が分かる</span></h3><p><span class="copy-chunk">乗る列車のダイヤに合わせて、</span><span class="copy-chunk">' + escapeHTML(page.name) + 'が見えるころと</span><span class="copy-chunk">座席側を案内します。</span></p>' +
-      '<div class="spot-reading-train-preview" role="img" aria-label="列車選択後の表示例。時刻は実際の運行案内ではありません"><div class="spot-reading-train-choice"><small>列車を選択</small><strong>東京 → 新大阪</strong><span>のぞみ・東京 09:00発</span></div><span class="spot-reading-preview-arrow" aria-hidden="true">↓</span><div class="spot-reading-timeline"><div><time>09:31</time><span>小田原城</span><b>A席</b></div><div><time>09:42</time><span>富士山</span><b>E席</b></div><div><time>10:13</time><span>浜名湖</span><b>A・E席</b></div></div><p>表示イメージ・時刻は例です</p></div>' +
-      '<a class="btn btn-primary" href="' + escapeHTML(href(rootPath, 'start.html')) + '" data-cta-track="spot_next_card_click" data-cta-id="spot_next_train">列車を選んで時刻を見る →</a><p class="spot-reading-note"><span class="copy-chunk">位置情報は不要です。</span>' + (compact ? '<span class="copy-chunk">時刻は目安です。</span><span class="copy-chunk">遅れなどで変わります。</span>' : '<span class="copy-chunk">通過時刻は目安で、遅れなどにより変わります。</span>') + '</p></article></div></section>';
+    return compactGuideHTML(page, rootPath, lang);
   }
 
   function readingCollectionHTML(page, rootPath, lang) {
@@ -864,8 +874,8 @@
     var stampHref = lang === "ja" ? href(rootPath, "journal.html#stampboard") : href(rootPath, "en/journal.html#stampboard");
     var stamp = "<a class=\"spot-page-stamp\" href=\"" + escapeHTML(stampHref) + "\" aria-label=\"" + escapeHTML(page.stamp.alt) + "\"><img src=\"" + escapeHTML(href(rootPath, page.stamp.src)) + "\" alt=\"\"><span>" + escapeHTML(ui.stamp) + "</span></a>";
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
-    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId);
-    var mobilePromos = embedded ? "" : mobilePromosHTML(rootPath, lang, "", collection727Count(data), currentId);
+    var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId, null, null, { noPromos: true });
+    var mobilePromos = "";
     // topbar nav and the bottom content rail are baked as static HTML by the
     // generator (see generate-spot-pages.mjs thinSpotPageHTML). Rendering them
     // again here would duplicate the nav/content-rail on screen, so this
@@ -1055,10 +1065,10 @@
         }
         hosts[0].outerHTML = siteHeaderHTML(sanyoRoot, sanyoLang, "", sanyoRoute, true);
         var sanyoId = document.body.getAttribute("data-spot-page-shared-id");
-        var promos = railPromosHTML(sanyoRoot, sanyoLang, sanyoRoute, 0, sanyoId, null, { noLive: true });
-        hosts[1].outerHTML = railHTML(root[DATA_KEY], sanyoRoot, sanyoLang, sanyoId, basePath(sanyoRoot, sanyoLang) + "spots/", sanyoRoute, { noLive: true, noTrain: true });
+        var promos = "";
+        hosts[1].outerHTML = railHTML(root[DATA_KEY], sanyoRoot, sanyoLang, sanyoId, basePath(sanyoRoot, sanyoLang) + "spots/", sanyoRoute, { noLive: true, noTrain: true, noPromos: true });
         hosts[2].outerHTML = "<section class=\"spot-page-mobile-promos\" aria-label=\"" + escapeHTML(UI[sanyoLang].contentTitle) + "\">" + promos + "</section>";
-        hosts[3].outerHTML = contentRailHTML(sanyoRoot, sanyoLang);
+        hosts[3].outerHTML = discoveryContentRailHTML(sanyoRoot, sanyoLang);
         hosts[4].outerHTML = showcaseHTML(root[DATA_KEY], sanyoRoot, sanyoLang);
         return;
       }
@@ -1108,6 +1118,6 @@
     }
   }
 
-  root.MADO_SPOT_PAGE_COMPONENTS = { readingCollectionHTML: readingCollectionHTML };
+  root.MADO_SPOT_PAGE_COMPONENTS = { readingCollectionHTML: readingCollectionHTML, discoveryContentRailHTML: discoveryContentRailHTML, compactGuideHTML: compactGuideHTML };
   if (typeof document !== "undefined") render();
 }(typeof window !== "undefined" ? window : globalThis));

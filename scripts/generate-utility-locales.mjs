@@ -101,11 +101,18 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       if (el.closest('.lang-switch')) continue;
       const href = el.getAttribute('href');
       if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
+      // Japanese-only stories/quizzes keep their real destination and language note.
+      if (el.getAttribute('hreflang') === 'ja' && el.closest('.content-rail-discovery')) continue;
       const url = new URL(href, doc.baseURI);
       const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
       const destination = (payload.routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       el.setAttribute('href', prefix + destination + url.search + url.hash);
+      if (destination.startsWith('en/') && el.matches('.content-rail-discovery .content-rail-card')) {
+        el.setAttribute('hreflang', 'en');
+        const note = doc.createElement('small'); note.className = 'discovery-language'; note.lang = 'en'; note.textContent = 'English';
+        el.querySelector('.content-rail-card-body').append(note);
+      }
     }
     for (const host of doc.querySelectorAll('.lang-switch')) {
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);

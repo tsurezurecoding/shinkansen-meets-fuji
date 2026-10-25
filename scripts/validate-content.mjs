@@ -44,14 +44,17 @@ const checks = [
     required: [
       '<meta name="robots" content="index,follow,max-image-preview:large">',
       'id="journey"',
-      'data-cta-id="top_footer_disney"',
-      'href="sparkling-dreams.html"',
-      'data-cta-id="top_footer_727"',
-      'href="727-collection.html"',
+      '<section class="content-rail-section content-rail-discovery"',
+      'href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow"',
+      'data-cta-track="android_app_guide_click" data-cta-id="discovery_android"',
+      'href="zukan.html"',
+      'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"',
+      'href="castles.html"',
+      'href="sudoori/index.html#stories"',
+      'href="window-quiz.html"',
+      'href="contact.html"',
       'https://www.googletagmanager.com/gtag/js?id=',
       'if (window.MADO_EMBEDDED_WEB) return;',
-      'data-cta-track="android_app_guide_click"',
-      'Google Playで公開中。',
     ],
     forbidden: ['class="seasonal-entry"', 'window.MADO_ANALYTICS_DISABLED=true', 'early_access_click'],
   },
@@ -79,14 +82,17 @@ const checks = [
       '<html lang="en"',
       '<meta name="robots" content="index,follow,max-image-preview:large">',
       'id="journey"',
-      'data-cta-id="top_footer_disney"',
-      'href="en/sparkling-dreams.html"',
-      'data-cta-id="top_footer_727"',
-      'href="en/727-collection.html"',
+      '<section class="content-rail-section content-rail-discovery"',
+      'href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow"',
+      'data-cta-track="android_app_guide_click" data-cta-id="discovery_android"',
+      'href="en/zukan.html"',
+      'data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"',
+      'href="en/castles.html"',
+      'href="sudoori/index.html?lang=ja#stories"',
+      'href="window-quiz.html?lang=ja"',
+      'href="en/contact.html"',
       'https://www.googletagmanager.com/gtag/js?id=',
       'if (window.MADO_EMBEDDED_WEB) return;',
-      'data-cta-track="android_app_guide_click"',
-      'Available on Google Play.',
     ],
     forbidden: [ 'window.MADO_ANALYTICS_DISABLED=true', 'early_access_click'],
   },
@@ -94,7 +100,7 @@ const checks = [
     file: "app.js",
     required: [
       // Counts belong to the catalog, not the editorial introduction.
-      'zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`',
+      'zukanAllEyebrow: "ALL WINDOW VIEWS"',
       'APP_SELF.endsWith("start.html") ? "train_selector"',
       'APP_SELF.endsWith("zukan.html") ? "field_guide"',
       'APP_SELF.endsWith("journal.html") ? "journal"',
@@ -147,6 +153,49 @@ const stalePatterns = [
   /車窓スポット10/,
 ];
 
+function validateDiscoveryRail(text, file) {
+  const section = text.match(/<section class="content-rail-section content-rail-discovery"[\s\S]*?<\/section>/)?.[0] || "";
+  if (!section) {
+    failures.push(`${file}: discovery content rail is missing`);
+    return;
+  }
+  const cards = [...section.matchAll(/<a\b[^>]*class="content-rail-card[^\"]*"[^>]*>/g)].map((match) => match[0]);
+  const hrefs = cards.map((card) => card.match(/\bhref="([^"]+)"/)?.[1] || "");
+  const english = file === "en/start.html";
+  const expected = english
+    ? [
+        "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
+        "en/zukan.html", "en/727-collection.html", "en/castles.html",
+        "sudoori/index.html?lang=ja#stories", "window-quiz.html?lang=ja",
+        "en/guide.html", "en/mieru.html", "en/jr-pass-fuji.html", "en/window-artworks.html",
+        "en/journal.html", "en/?intro=1", "en/references.html", "en/contact.html",
+      ]
+    : [
+        "https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow",
+        "zukan.html", "727-collection.html", "castles.html", "sudoori/index.html#stories", "window-quiz.html",
+        "guide.html", "mieru.html", "window-artworks.html", "journal.html", "references.html", "contact.html",
+      ];
+  if (cards.length !== expected.length || hrefs.some((href, index) => href !== expected[index])) {
+    failures.push(`${file}: expected ${expected.length} discovery cards with the six new entries first and the existing cards retained`);
+  }
+  const discoveryCards = cards.slice(0, 6);
+  if (discoveryCards.some((card) => !/data-cta-track="[^"]+"/.test(card) || !/data-cta-id="discovery_[^"]+"/.test(card))) {
+    failures.push(`${file}: each of the six discovery cards must retain its CTA tracking identifiers`);
+  }
+  if (new Set(discoveryCards.map((card) => card.match(/data-cta-id="([^"]+)"/)?.[1] || "")).size !== 6) {
+    failures.push(`${file}: discovery CTA identifiers must be unique`);
+  }
+  if (!discoveryCards[0]?.includes('target="_blank"') || !discoveryCards[0]?.includes('rel="noopener noreferrer"') || !discoveryCards[0]?.includes('data-cta-track="android_app_guide_click" data-cta-id="discovery_android"')) {
+    failures.push(`${file}: the first discovery card must be the direct, safely opened Google Play link`);
+  }
+  if (!discoveryCards[2]?.includes('data-cta-track="727_collection_entry_click" data-cta-id="discovery_727"')) {
+    failures.push(`${file}: the third discovery card must track the 727 collection entry`);
+  }
+  if (/<section class="top-promo-stack\b/.test(text) || text.includes('data-cta-id="top_footer_disney"') || text.includes('data-cta-id="top_footer_727"')) {
+    failures.push(`${file}: obsolete standalone footer promotions remain in the train selector`);
+  }
+}
+
 const failures = [];
 
 const appCode = await readFile(new URL("app.js", root), "utf8");
@@ -187,6 +236,7 @@ for (const file of ["start.html", "en/start.html"]) {
   if (!text.includes(`<link rel="canonical" href="https://www.michikusa-travel.com/${file}">`) || !text.includes('hreflang="x-default"')) {
     failures.push(`${file}: train search must publish canonical and language alternates`);
   }
+  validateDiscoveryRail(text, file);
 }
 
 for (const file of ["index.html", "start.html", "en/index.html", "en/start.html"]) {

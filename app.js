@@ -154,7 +154,7 @@ const MSG = {
     themeFujiLabel: "MOUNT FUJI",
     themeFujiTitle: "富士山はいつ見える",
     themeFujiBody: "どちら側の席か、東京から何分ごろか。",
-    zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
+    zukanAllEyebrow: "ALL WINDOW VIEWS",
     zukanAllTitle: "すべての車窓を見る",
     morePhotos: "ほかの写真も見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示", cWheelToggle: "観覧車を分けて表示",
@@ -198,7 +198,7 @@ const MSG = {
     galFavoritesEmpty: "条件に合うお気に入りはありません。カードの★を押すと、ここに表示できます。",
     tlFavoritesEmpty: "お気に入りに追加したスポットがまだありません。カードの★を押すと、ここに絞り込めます。",
     more: "くわしく", less: "とじる", mapLink: "地図をひらく", liveMapLink: "乗車中は音声ガイドで見る", miniMapSummary: "位置の目安", miniMapSpotMode: "スポット", miniMapViewpointMode: "新幹線視点", miniMapNote: "スポット位置と、新幹線から見る位置を切り替えられます。", miniMapFallbackNote: "この地点は地図表示の座標調整中です。外部地図で位置を確認できます。",
-    inMinutes: (m) => `あと${m}分`, soon: "まもなく!", passed: "通過",
+    inMinutes: (m) => `あと${m}分`, elapsedMinutes: (m) => `約${m}分`, soon: "まもなく!", passed: "通過",
     anytime: "全区間",
     departed: (t) => `${t} 出発`,
     confirmReset: "スタンプをぜんぶ消しますか?",
@@ -351,7 +351,7 @@ const MSG = {
     themeFujiLabel: "MOUNT FUJI",
     themeFujiTitle: "When you can see Mt. Fuji",
     themeFujiBody: "Which side to sit on, and how long after Tokyo.",
-    zukanAllEyebrow: `ALL ${MADO_SPOT_COUNT} VIEWS`,
+    zukanAllEyebrow: "ALL WINDOW VIEWS",
     zukanAllTitle: "Browse every window view",
     morePhotos: "More photos",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately", cWheelToggle: "Show Ferris wheels separately",
@@ -395,7 +395,7 @@ const MSG = {
     galFavoritesEmpty: "No favorites match these filters. Tap the ★ on a card to add one.",
     tlFavoritesEmpty: "No favorites yet. Tap the ★ on a card to add it, then filter here.",
     more: "More", less: "Close", mapLink: "Open map", liveMapLink: "Use Audio Guide while riding", miniMapSummary: "Location at a glance", miniMapSpotMode: "Spot", miniMapViewpointMode: "Train viewpoint", miniMapNote: "Switch between the spot and the Shinkansen viewpoint.", miniMapFallbackNote: "Inline coordinates are still being tuned for this spot. You can check the location in an external map.",
-    inMinutes: (m) => `in ${m} min`, soon: "Coming up!", passed: "Passed",
+    inMinutes: (m) => `in ${m} min`, elapsedMinutes: (m) => `About ${m} min`, soon: "Coming up!", passed: "Passed",
     anytime: "Anywhere en route",
     departed: (t) => `Departed ${t}`,
     confirmReset: "Clear all stamps?",
@@ -473,7 +473,6 @@ let invalidTrainLink = false;
 const BASE_PAGE_TITLE = document.title;
 const PREVIEW_DEP_MIN = 0;
 let boardCollectionExpanded = false;
-let wheelCollectionExpanded = false;
 
 // 現地で確認できなかった／撤去済みの地点は、列車選択後のタイムラインには出さない。
 // 727コレクションページ側のリストには記録として残す（727-collection.js の isMissing と同じ判定）。
@@ -590,6 +589,7 @@ function appSelfForPath(pathname) {
 const APP_SELF = appSelfForPath(location.pathname);
 const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
+  if (spot?.isWheelCollection && spot.collectionPointId) return utilityHref(`ferris-wheels.html#${spot.collectionPointId}`);
   const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.[lang === "ja" ? "ja" : "en"];
   if (routed) return utilityLocale && lang === utilityLocale.lang ? utilityHref(routed.replace(/^en\//, "")) : routed;
   if (lang === "ja" && spot?.is727Collection) return "727-collection.html";
@@ -892,8 +892,8 @@ function renderTrainLinkNotice() {
   notice.hidden = !invalidTrainLink;
   notice.textContent = invalidTrainLink ? t("trainLinkInvalid") : "";
 }
-function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
-  if (!journey || (!board && !wheel)) return journey?.spots || [];
+function collectionTimelineSpots(board = boardCollectionExpanded) {
+  if (!journey) return [];
   const boardRef = REF[boardId];
   const dirSign = direction === "west" ? 1 : -1;
   const spotClock = journey.mode === "train"
@@ -901,7 +901,7 @@ function collectionTimelineSpots(board = boardCollectionExpanded, wheel = wheelC
     : (ref) => (ref - boardRef) * dirSign < 0 ? null : journey.depMin + Math.abs(ref - boardRef);
   const points = []
     .concat(board ? boardCollectionSpots() : [])
-    .concat(wheel ? wheelCollectionSpots() : [])
+    .concat(wheelCollectionSpots())
     .map((sp) => timelinePoint(sp, spotClock, dirSign))
     .filter((item) => item.clock != null);
   return journey.spots
@@ -914,14 +914,14 @@ function timeline727Order(spot) {
   if (spot.is727Collection && spot.sourceNo === 21) return 2;
   return 99;
 }
-function currentTimelineSpotCandidates(board = boardCollectionExpanded, wheel = wheelCollectionExpanded) {
-  return collectionTimelineSpots(board, wheel).filter((item) => matchesTimelineFilters(item.sp));
+function currentTimelineSpotCandidates(board = boardCollectionExpanded) {
+  return collectionTimelineSpots(board).filter((item) => matchesTimelineFilters(item.sp));
 }
 function reachableCollectionCandidates(kind) {
   if (!journey || journey.direction !== direction || journey.boardId !== boardId) return [];
-  const board = kind === "727";
-  return currentTimelineSpotCandidates(board, !board)
-    .filter((item) => (board ? item.sp.is727Collection : item.sp.isWheelCollection));
+  return kind === "727"
+    ? currentTimelineSpotCandidates(true).filter((item) => item.sp.is727Collection)
+    : [];
 }
 function seatTags(spot) {
   const tags = new Set();
@@ -1653,7 +1653,7 @@ function renderTimeline() {
   const html = [];
   items.forEach((it, i) => {
     if (it.kind === "station") {
-      html.push(`<li class="tl-station"><span class="tl-time">${minToClock(it.clock)}</span>${translatedStation(it.st)}</li>`);
+      html.push(`<li class="tl-station"><span class="tl-time">${journey.preview ? escapeHTML(t("elapsedMinutes", Math.max(0, Math.round(it.clock - journey.depMin)))) : minToClock(it.clock)}</span>${translatedStation(it.st)}</li>`);
     } else {
       html.push(spotItemHTML(it.sp, it.clock));
     }
@@ -1721,6 +1721,8 @@ function spotItemHTML(sp, clock) {
   const lowLightLimited = lowLight && !hasNightMedia;
   const time = clock == null
     ? `<span class="tl-time-big">✦</span>`
+    : journey?.preview
+    ? `<span class="tl-time-big">${escapeHTML(t("elapsedMinutes", Math.max(0, Math.round(clock - journey.depMin))))}</span>`
     : `<span class="tl-time-big">${t("timelineTimePrefix")}${minToClock(clock)}<span class="tl-time-suffix">${t("timelineTimeSuffix")}</span></span>`;
   const thumb = featuredMedia
     ? `<div class="tl-thumb${lowLightLimited ? " tl-thumb-muted" : ""}" aria-hidden="true"><img loading="lazy" decoding="async" src="${thumbnailSrc(featuredMedia.src)}" alt=""></div>`
@@ -2436,6 +2438,9 @@ function discoverySpotOrder(a, b) {
   const priorityB = b.id === "fuji" ? 0 : 1;
   return priorityA - priorityB || a.minutesFromTokyo - b.minutesFromTokyo || a.id.localeCompare(b.id);
 }
+function gallerySpots() {
+  return SPOTS.concat(wheelCollectionSpots());
+}
 // 「曇りでも見える」は data.js の visibleWhenCloudy が持つ。ここに ID を並べていた頃は、
 // 席側や見やすさと同じ「実際に何が見えるか」の事実だけがスポットのデータから離れていて、
 // 構造化データにも出せなかった。以下に残る5つはジャンル分けで、別種のもの。
@@ -2543,8 +2548,7 @@ function invalidateJourneyForInputChange() {
   syncCollectionToggleUI();
 }
 
-// コレクションのトグルは種別ごとに同じ作りにする。乗る区間にその種別の地点が
-// 1つも無ければ無効化する（代表スポットを通らない区間でも、地点があれば出す）。
+// 727だけは既存の代表＋展開方式を維持する。
 const COLLECTION_TOGGLES = [
   {
     kind: "727",
@@ -2552,13 +2556,6 @@ const COLLECTION_TOGGLES = [
     labelKey: "c727Toggle",
     get expanded() { return boardCollectionExpanded; },
     set expanded(value) { boardCollectionExpanded = value; },
-  },
-  {
-    kind: "wheel",
-    selector: "[data-wheel-collection-toggle]",
-    labelKey: "cWheelToggle",
-    get expanded() { return wheelCollectionExpanded; },
-    set expanded(value) { wheelCollectionExpanded = value; },
   },
 ];
 function syncCollectionToggleUI() {
@@ -2578,7 +2575,7 @@ function syncCollectionToggleUI() {
 function renderGallery() {
   const grid = $("#galleryGrid");
   if (!grid) return;
-  const visibleSpots = SPOTS
+  const visibleSpots = gallerySpots()
       .filter(matchesGalleryFilters)
       .slice()
       .sort(discoverySpotOrder);

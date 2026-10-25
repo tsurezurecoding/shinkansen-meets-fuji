@@ -165,7 +165,7 @@ function checkMenu(dom, lang, route, label) {
   }
 }
 function checkStatic(doc, sourceDoc, dictionary, lang, label) {
-  const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note';
+  const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note,.content-rail-discovery .discovery-language';
   const sourceText = textNodes(sourceDoc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(translation(dictionary, node.textContent)));
   const translatedText = textNodes(doc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(node.textContent));
   compare(translatedText, sourceText, label, 'static English-source text/translation differs');
@@ -178,8 +178,24 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     const url = new URL(a.href);
     if (url.origin !== origin) continue;
     const route = canonicalRoute(url);
+    const discovery = a.closest('.content-rail-discovery');
+    const japaneseOnlyRoute = discovery && a.getAttribute('hreflang') === 'ja' && ['sudoori/index.html', 'window-quiz.html'].includes(route);
+    if (japaneseOnlyRoute) {
+      assert(url.pathname === `/${route}`, label, `Japanese-only discovery link must use the Japanese root route: ${url.pathname}`);
+      assert(url.searchParams.get('lang') === 'ja', label, `Japanese-only discovery link must identify lang=ja: ${url.href}`);
+      const note = a.querySelector('.discovery-language');
+      assert(Boolean(note) && normal(note?.textContent) === normal(translation(dictionary, '日本語')), label, `Japanese-only discovery link must show the Japanese note: ${route}`);
+      continue;
+    }
     if (supported(route).includes(lang)) assert(url.pathname.startsWith(`/${lang}/`), label, `translated link leaves page language: ${url.pathname}`);
-    else assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
+    else {
+      assert(url.pathname.startsWith('/en/'), label, `untranslated link must retain English source: ${url.pathname}`);
+      if (discovery && url.pathname.startsWith('/en/')) {
+        assert(a.getAttribute('hreflang') === 'en', label, `English discovery fallback must declare hreflang=en: ${url.pathname}`);
+        const note = a.querySelector('.discovery-language');
+        assert(Boolean(note) && note.lang === 'en' && normal(note.textContent) === 'English', label, `English discovery fallback must show the English language name: ${url.pathname}`);
+      }
+    }
   }
   if (label.endsWith('contact.html')) compare([...doc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), [...sourceDoc.querySelectorAll('a[href^="mailto:"]')].map(a => a.href), label, 'contact destination changed');
 }

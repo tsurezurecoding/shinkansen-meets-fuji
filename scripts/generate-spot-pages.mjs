@@ -26,6 +26,39 @@ const dataPath = path.join(appDir, "data.js");
 const trackPath = path.join(appDir, "track.js");
 const siteRoot = "https://www.michikusa-travel.com";
 const CHECK_ONLY = process.argv.includes("--check");
+const sharedComponentsContext = {};
+sharedComponentsContext.window = sharedComponentsContext;
+vm.runInNewContext(
+  fs.readFileSync(path.join(appDir, "spot-page-shared.js"), "utf8"),
+  sharedComponentsContext,
+  { filename: path.join(appDir, "spot-page-shared.js") },
+);
+
+function discoveryContentRailHTML(rootPath, lang, options = {}) {
+  const render = sharedComponentsContext.MADO_SPOT_PAGE_COMPONENTS?.discoveryContentRailHTML;
+  if (typeof render !== "function") {
+    throw new Error("spot-page-shared.js must expose discoveryContentRailHTML(rootPath, lang)");
+  }
+  let html = render(rootPath, lang);
+  if (typeof html !== "string" || !/^<section\b/.test(html) || !/class=\"[^\"]*\bcontent-rail-section\b/.test(html)) {
+    throw new Error("discoveryContentRailHTML returned an invalid content rail section");
+  }
+  if (options.staticMarker) {
+    html = html.replace(/^<section\b/, `<section data-spot-page-shared-static=\"${options.staticMarker}\"`);
+  }
+  return html;
+}
+
+function replaceTrainSelectorDiscoveryFooter(html, lang, rootPath) {
+  const promoPattern = /[\t ]*<section\b(?=[^>]*\bclass=\"[^\"]*\btop-promo-stack\b)[^>]*>[\s\S]*?<\/section>[\t ]*(?:\r?\n)?/g;
+  const promoMatches = html.match(promoPattern) || [];
+  if (promoMatches.length > 1) throw new Error(`Expected at most one top-promo-stack in ${lang} train selector`);
+  const withoutPromo = html.replace(promoPattern, "");
+  const railPattern = /<section\b(?=[^>]*\bclass=\"[^\"]*\bcontent-rail-section\b)[^>]*>[\s\S]*?<\/section>/g;
+  const railMatches = withoutPromo.match(railPattern) || [];
+  if (railMatches.length !== 1) throw new Error(`Expected one content rail in ${lang} train selector; found ${railMatches.length}`);
+  return withoutPromo.replace(railPattern, discoveryContentRailHTML(rootPath, lang));
+}
 // Fixed on purpose: the sitemap is a build artifact and must stay deterministic,
 // so re-running the generator never rewrites every <lastmod>. Bump deliberately,
 // or give the entry its own explicit lastmod below.
@@ -665,43 +698,6 @@ function siteHeaderHTML(lang, prefix, jaHref, enHref, options = {}) {
   </${tag}>`;
 }
 
-function contentRailHTML(lang, prefix, options = {}) {
-  const staticAttr = options.staticMarker ? ` data-spot-page-shared-static="${options.staticMarker}"` : "";
-  const items = lang === "en" ? [
-    { href: `${prefix}en/guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "See Mt. Fuji", desc: "Check the timing, seat side and cloudy-day answers." },
-    { href: `${prefix}en/mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "Visibility β", desc: "Check whether Mt. Fuji is likely to show today." },
-    { href: `${prefix}en/jr-pass-fuji.html`, img: "images/thumbs/content-faq.webp", label: "JAPAN RAIL PASS", title: "Pass-covered trains", desc: "Mt. Fuji times for Hikari and Kodama, which are not the Nozomi ones." },
-    { href: `${prefix}en/window-artworks.html`, img: "images/thumbs/content-somato.webp", label: "ARTWORKS", title: "Window Artworks", desc: "Explore window views through photographs and ink wash." },
-    { href: `${prefix}en/journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "Stamps and medals", desc: "Keep the views you found during the ride." },
-    { href: `${prefix}en/?intro=1`, img: "images/thumbs/og-shinkansen-window.webp", label: "GUIDE", title: "About this app", desc: "See how to use and enjoy it in 30 seconds." },
-    { href: `${prefix}en/references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "Window links", desc: "Sources and reading for deeper window-view trips." },
-    { href: `${prefix}en/contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "Contact", desc: "Send photo suggestions, corrections or feedback." },
-  ] : [
-    { href: `${prefix}guide.html`, img: "images/thumbs/content-faq.webp", label: "MT. FUJI", title: "富士山を見る", desc: "5つの区間、座席側、曇りの日の見え方を確認。" },
-    { href: `${prefix}mieru.html`, img: "images/thumbs/content-mieru.webp", label: "FORECAST", title: "今日の富士山 見える予報", desc: "今日の空で富士山が見えそうかを確認。" },
-    { href: `${prefix}window-artworks.html`, img: "images/thumbs/content-somato.webp", label: "ARTWORKS", title: "車窓の作品集", desc: "写真や墨絵で、車窓の別の表現を楽しむ。" },
-    { href: `${prefix}journal.html`, img: "images/stamps/stamp_fuji.svg", label: "JOURNAL", title: "スタンプ帖", desc: "見つけた景色をスタンプとメダルで記録。" },
-    { href: `${prefix}references.html`, img: "images/thumbs/20260616_fuji_sttraveler.webp", label: "LINKS", title: "車窓リンク集", desc: "出典や参考記事をまとめて読む。" },
-    { href: `${prefix}contact.html`, img: "images/thumbs/content-contact.webp", label: "CONTACT", title: "お問い合わせ", desc: "写真提供、情報の訂正、ご感想はこちら。" },
-  ];
-  return `<section class="content-rail-section"${staticAttr} aria-labelledby="contentRailTitle">
-    <div class="section-head">
-      <p class="eyebrow">${lang === "en" ? "MORE TO TRY" : "MORE TO TRY"}</p>
-      <h2 id="contentRailTitle">${lang === "en" ? "More ways to enjoy the window" : "車窓をもっと楽しむ"}</h2>
-    </div>
-    <div class="content-rail">
-${items.map((item) => `      <a class="content-rail-card" href="${item.href}">
-        <img src="${prefix}${item.img}" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>${item.label}</small>
-          <strong>${item.title}</strong>
-          <span>${item.desc}</span>
-        </span>
-      </a>`).join("\n")}
-    </div>
-  </section>`;
-}
-
 function analyticsSnippet() {
   return `<script>
     (function () {
@@ -1089,7 +1085,7 @@ function thinSpotPageHTML(spot, lang) {
     lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
     { tag: "div", staticMarker: "topbar" },
   );
-  const staticContentRailHTML = contentRailHTML(lang, prefix, { staticMarker: "content-rail" });
+  const staticContentRailHTML = discoveryContentRailHTML(prefix, lang, { staticMarker: "content-rail" });
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -1727,6 +1723,7 @@ function englishAppIndexHTML() {
   html = html.replace(/<!-- TRAIN-SEARCH-TABLE:START -->[\s\S]*?<!-- TRAIN-SEARCH-TABLE:END -->/, `<!-- TRAIN-SEARCH-TABLE:START -->\n\n<!-- TRAIN-SEARCH-TABLE:END -->`);
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
+  html = replaceTrainSelectorDiscoveryFooter(html, "en", "");
   return withUtilityLocales(syncSpotCountClaims(html.replace(/[ \t]*<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->\r?\n?/g, '')), 'en/start.html');
 }
 
@@ -2049,6 +2046,7 @@ if (requestedSpotIds.length) {
 generateSpotPages();
 if (CHECK_ONLY) {
   const generatedEntryPages = [
+    [path.join(appDir, "start.html"), replaceTrainSelectorDiscoveryFooter(fs.readFileSync(path.join(appDir, "start.html"), "utf8"), "ja", "")],
     [path.join(appDir, "en", "index.html"), withAndroidAppInvite(englishLandingHTML(), "en", "landing")],
     [path.join(appDir, "en", "start.html"), englishAppIndexHTML()],
   ];
@@ -2060,6 +2058,8 @@ if (CHECK_ONLY) {
   console.log("Spot page preflight completed without writing files.");
   process.exit(0);
 }
+
+writeFileIfChanged(path.join(appDir, "start.html"), replaceTrainSelectorDiscoveryFooter(fs.readFileSync(path.join(appDir, "start.html"), "utf8"), "ja", ""));
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 // The Japanese root is now an LP; en/index.html is the English explanatory LP; en/start.html is the train selector.

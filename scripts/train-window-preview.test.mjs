@@ -63,3 +63,19 @@ test('combined day/night route filters retain both day-only and night media',()=
  ctx.activeTimelineFilters.delete('day');
  assert.deepEqual(Array.from(ctx.makeItems(journey,true),x=>x.sp.id),['both','night-only']);
 });
+
+test('baseline timeline labels use the visible candidates, including expanded collections',()=>{
+ const runtime=read('train-window-preview.js');
+ const source=runtime.slice(runtime.indexOf('function baselineLabels('),runtime.indexOf('function render('));
+ const rows=['ordinary','727','wheel'].map(id=>{const time={textContent:''};return{dataset:{spot:id},querySelector:()=>time,time};});
+ const candidates=[
+  {sp:{id:'ordinary'},clock:72.4},
+  {sp:{id:'727'},clock:88.2},
+  {sp:{id:'wheel'},clock:94.7},
+ ];
+ const ctx={state:{actual:false},$:()=>null,currentTimelineSpotCandidates:()=>candidates,
+  document:{querySelectorAll:selector=>selector==='#timeline [data-spot]'?rows:[]}};
+ vm.createContext(ctx);vm.runInContext(source+';globalThis.run=baselineLabels',ctx);
+ ctx.run({preview:true,boardId:'Tokyo',spots:[candidates[0]]});
+ assert.deepEqual(rows.map(row=>row.time.textContent),['約72分','約88分','約95分']);
+});

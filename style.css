@@ -5928,3 +5928,27 @@ html[lang="en"] .spot-reading-layout .copy-chunk { white-space:normal; }
 @media(min-width:900px){#sanyo.section{max-width:1180px}#sanyo>.section-head{max-width:860px;margin-left:auto;margin-right:auto}}
 @media(min-width:900px){.sanyo-gallery:not(:has(>.sanyo-card:nth-child(4))){display:flex;flex-wrap:wrap;justify-content:center}.sanyo-gallery:not(:has(>.sanyo-card:nth-child(4)))>.sanyo-card{flex:0 0 calc((100% - 32px)/3)}}
 @media(min-width:1008px){.sanyo-gallery:not(:has(>.sanyo-card:nth-child(4)))>.sanyo-card{flex-basis:calc((100% - 48px)/4)}}
+
+/* Compact guide matches the adopted TOP; large examples are retained there only. */
+/* TOP's responsive guide, shared by the existing article editions. */
+.spot-compact-guide .tools-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:14px;margin-top:20px}
+@media(min-width:768px){.spot-compact-guide .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}}
+.spot-compact-guide .tool-panel{position:relative;display:grid;grid-template-columns:80px minmax(0,1fr);align-items:start;gap:0 16px;padding:16px;border:1px solid var(--line);border-radius:10px;background:var(--paper);color:var(--ink);text-decoration:none;min-width:0}
+.spot-compact-guide .tool-screen{width:80px;height:154px;object-fit:cover;object-position:top;border-radius:7px;box-shadow:0 4px 14px #142a3520}
+.spot-compact-guide .tool-content{min-width:0}
+.spot-compact-guide h3{font-size:17px;line-height:1.6;margin:0}
+.spot-compact-guide .tool-content p{font-size:13px;line-height:1.85;margin:8px 0 0;color:var(--ink-soft)}
+.spot-compact-guide .guide-promise{display:block;margin-top:8px;color:var(--ink);font-weight:600}
+.spot-compact-guide .tool-app-card{grid-template-rows:auto 1fr}
+.spot-compact-guide .tool-app-card>.tool-screen{grid-row:1/3;grid-column:1}
+.spot-compact-guide .tool-main{grid-column:2;color:inherit;text-decoration:none}
+.spot-compact-guide .tool-main::after{content:'';position:absolute;inset:0;border-radius:10px}
+.spot-compact-guide .android-store-link{position:relative;z-index:1;grid-column:2;align-self:start;display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);margin-top:10px;padding-top:10px;min-height:44px;text-decoration:none;color:var(--ink)}
+.spot-compact-guide .android-store-link>img{width:30px;height:30px;border-radius:6px;flex:none}
+.spot-compact-guide .app-link-copy strong{display:block;font-size:12px;line-height:1.6;font-weight:600;color:var(--ink)}
+.spot-compact-guide .app-link-copy small{display:block;font-size:12px;line-height:1.6;font-weight:400;color:var(--ink-soft)}
+.spot-compact-guide .tool-panel:focus-visible,.spot-compact-guide .tool-panel:has(.tool-main:focus-visible),.spot-compact-guide .android-store-link:focus-visible{outline:3px solid var(--coral);outline-offset:3px}
+
+@media(max-width:480px){.spot-compact-guide .tool-panel{grid-template-columns:56px minmax(0,1fr);gap:0 12px;padding:12px}.spot-compact-guide .tool-screen{width:56px;height:110px}.spot-compact-guide h3{font-size:15px}.spot-compact-guide .tool-content p{font-size:12px;line-height:1.75}.spot-compact-guide .app-link-copy small{font-size:11px}}
+.content-rail-discovery .content-rail-android>img{object-fit:contain;padding:18px;box-sizing:border-box;background:#eaf0f3}
+.spot-page-mobile-promos:empty{display:none}
