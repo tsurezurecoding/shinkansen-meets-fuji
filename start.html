@@ -121,9 +121,9 @@
     .timeline-recommendation-more p { margin:0 0 12px; font-size:14px; line-height:1.7; }
     .timeline-recommendation-more button { border:0; background:none; color:var(--ink-soft); font:inherit; font-size:12px; text-decoration:underline; cursor:pointer; }
     .timeline-filter-actions { flex:0 0 100%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; padding:10px 12px; margin-bottom:4px; background:var(--paper); border:1px solid var(--line); border-radius:12px; box-sizing:border-box; }
-    #timelineFilterbar .timeline-reset { flex:none; min-height:40px; padding:8px 12px; border:1px solid var(--night); border-radius:8px; background:white; color:var(--night); font-weight:700; }
-    #timelineFilterbar .timeline-reset:hover { background:var(--line); }
-    .tl-recommended-badge { display:inline-flex; align-items:center; justify-content:center; flex:none; color:#94651b; font-size:16px; line-height:1; }
+    #timelineFilterbar .timeline-reset { flex:none; min-height:40px; padding:8px 12px; border:1px solid var(--night); border-radius:8px; background:var(--night); color:white; font-weight:700; box-shadow:0 2px 5px #0002; }
+    #timelineFilterbar .timeline-reset:hover { background:#344b65; }
+    .tl-recommended-badge { display:inline-flex; align-items:center; justify-content:center; flex:none; padding:3px 7px; border-radius:6px; background:#fff1cf; color:#765018; font-size:11px; font-weight:700; line-height:1.4; white-space:nowrap; }
     /* JA-TIMELINE-RECOMMENDATIONS:END */
   </style>
   <script defer src="utility-locales.js?v=4f2b7fba"></script>
@@ -244,9 +244,8 @@
             </div>
             <div class="timeline-filter-group" role="group" aria-label="カテゴリ">
               <!-- JA-TIMELINE-RECOMMENDATIONS:START -->
-              <button type="button" data-timeline-filter="recommended" class="active" aria-pressed="true">♦ 注目</button>
+              <button type="button" data-timeline-filter="recommended" class="active" aria-pressed="true">定番</button>
               <!-- JA-TIMELINE-RECOMMENDATIONS:END -->
-              <button type="button" data-timeline-filter="classic" data-i18n="fClassic">定番</button>
               <button type="button" data-timeline-filter="nature" data-i18n="fNature">自然</button>
               <button type="button" data-timeline-filter="history" data-i18n="fHistory">歴史</button>
               <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">工業</button>

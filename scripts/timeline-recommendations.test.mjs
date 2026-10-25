@@ -38,7 +38,9 @@ test('Japanese preview defaults to the proposed day selection, including both se
     assert.equal(f.w.document.querySelectorAll('#timeline .tl-recommended-badge').length, 17);
     for (const id of ['fuji', 'ibuki', 'ibuki-seat-a', 'ferris-wheel-laguna', 'nichiban-anjo']) assert(f.ids().includes(id), id);
     assert(!f.ids().includes('hirakata-park-wheel'));
-    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes('絞り込み中：♦ 注目 ／ 17件'));
+    assert.equal(f.w.document.querySelector('#timelineRecommendationSummary').textContent, `絞り込み中：定番 ／ 区間内の全${f.run('collectionTimelineSpots().length')}件中17件を表示`);
+    assert.equal(f.w.document.querySelector('[data-timeline-filter="classic"]'), null);
+    assert.equal(f.w.document.querySelector('.tl-recommended-badge').textContent, '定番');
     assert.equal(f.w.document.querySelector('[data-timeline-filter="recommended"]').getAttribute('aria-pressed'), 'true');
     assert.equal(f.w.document.querySelector('#timelineRecommendationMore').hidden, false);
     assert.deepEqual(f.errors, []);
@@ -52,6 +54,7 @@ test('all selection persists, while seat and night conditions remain usable and 
     f.click('seat-a');
     assert(f.ids().includes('hamanako'));
     assert(!f.ids().includes('fuji'));
+    assert(f.w.document.querySelector('#timelineRecommendationSummary').textContent.includes(`全${f.run('collectionTimelineSpots().length')}件中${f.ids().length}件`));
     const recommended = f.ids().length;
     f.w.document.querySelector('#timelineRecommendationMore button').click();
     assert(f.ids().length > recommended);
@@ -105,7 +108,7 @@ test('a short interval with no recommendation offers the other available spot wi
   try {
     f.run('journey.spots = journey.spots.filter(x => x.sp.id === "hinataoka"); wheelCollectionSpots = () => []; renderTimeline()');
     assert.equal(f.ids().length, 0);
-    assert(f.w.document.querySelector('#timelineRecommendationMore p').textContent.includes('注目スポットはありません'));
+    assert(f.w.document.querySelector('#timelineRecommendationMore p').textContent.includes('定番スポットはありません'));
     f.w.document.querySelector('#timelineRecommendationMore button').click();
     assert.deepEqual(f.ids(), ['hinataoka']);
   } finally { f.close(); }

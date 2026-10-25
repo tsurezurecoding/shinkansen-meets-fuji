@@ -1737,7 +1737,7 @@ function spotItemHTML(sp, clock) {
     ? `<span class="tl-classic-badge">${escapeHTML(t("fClassic"))}</span>`
     : "";
   const recommendationBadge = hasTimelineRecommendations() && isTimelineRecommended(sp, clock)
-    ? '<span class="tl-recommended-badge" role="img" aria-label="注目スポット" title="注目スポット">♦</span>' : "";
+    ? '<span class="tl-recommended-badge">定番</span>' : "";
   return `
       <li class="tl-item${isClassic ? " tl-item-classic" : ""}${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
         <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
@@ -2480,15 +2480,17 @@ function renderTimelineRecommendationSummary(candidates, visible) {
   const more = $("#timelineRecommendationMore");
   const recommended = timelineSelection === "recommended";
   const hidden = candidates.length - visible.length;
-  const labels = [...(recommended ? ["♦ 注目"] : []), ...[...activeTimelineFilters].map(filter =>
+  const labels = [...(recommended ? ["定番"] : []), ...[...activeTimelineFilters].map(filter =>
     $('#timelineFilterbar [data-timeline-filter="' + filter + '"]')?.textContent.trim() || filter)];
+  const total = collectionTimelineSpots().length;
+  const count = `区間内の全${total}件中${visible.length}件を表示`;
   summary.textContent = labels.length
-    ? `絞り込み中：${labels.join("・")} ／ ${visible.length}件`
-    : `すべて表示中 ／ ${visible.length}件`;
+    ? `絞り込み中：${labels.join("・")} ／ ${count}`
+    : `すべて表示中 ／ ${count}`;
   more.hidden = !recommended || !hidden;
   more.querySelector("p").textContent = visible.length
     ? `この区間・条件には、ほかにも${hidden}件の見どころがあります。`
-    : "この区間・条件に合う注目スポットはありません。すべての見どころもご覧ください。";
+    : "この区間・条件に合う定番スポットはありません。すべての見どころもご覧ください。";
 }
 function discoverySpotOrder(a, b) {
   const priorityA = a.id === "fuji" ? 0 : 1;
