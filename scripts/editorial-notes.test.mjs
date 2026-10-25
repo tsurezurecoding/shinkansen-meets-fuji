@@ -122,8 +122,7 @@ test('Fujitec and Pocari have complete eight-language articles and worldwide cha
 
 test('guide language menus preserve every destination independently of body link localization',()=>{
  const editions=supported('guide.html');
- const menuPages=editions.filter(lang=>lang!=='ar');
- for(const lang of menuPages){
+ for(const lang of editions){
   const file=(lang==='ja'?'':lang+'/')+'guide.html',dom=new JSDOM(read(file),{url:'https://www.michikusa-travel.com/'+file});
   const links=[...dom.window.document.querySelectorAll('.guide-lang-options a')];assert.equal(links.length,editions.length,lang+': language menu count');
   const destinations=links.map(a=>a.href);assert.equal(new Set(destinations).size,editions.length,lang+': duplicate language destination');

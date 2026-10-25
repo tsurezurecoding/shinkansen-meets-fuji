@@ -10,7 +10,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
 const check = process.argv.includes('--check');
-for (const lang of locales.coreLanguages) {
+for (const lang of [...locales.coreLanguages, 'ar']) {
   const file = (lang === 'ja' ? '' : lang + '/') + 'guide.html';
   let html = fs.readFileSync(path.join(root, file), 'utf8');
   const dom = new JSDOM(html, { url: origin + '/' + file });
@@ -24,6 +24,15 @@ for (const lang of locales.coreLanguages) {
     menus.push(menu.replace(/(<div class="guide-lang-options">)[\s\S]*?(<\/div>)/, `$1\n        ${options}\n      $2`));
     return '<!-- MADO_GUIDE_MENU_' + (menus.length - 1) + ' -->';
   });
+  if (lang === 'ar') {
+    html = html.replace(/<!-- MADO_GUIDE_MENU_(\d+) -->/g, (_, index) => menus[+index]);
+    html = html.replace(/\s*<link\b(?=[^>]*rel="alternate")[^>]*>/g, "");
+    html = html.replace("</head>", supported("guide.html").concat("x-default").map(edition => `<link rel="alternate" hreflang="${alternateHreflang(edition)}" href="${origin}/${edition === "ja" ? "" : (edition === "x-default" ? "en" : edition) + "/"}guide.html">`).join("\n") + "\n</head>");
+    if (check && html !== fs.readFileSync(path.join(root, file), 'utf8')) throw Error('Guide edition routes stale: ' + file);
+    if (!check) fs.writeFileSync(path.join(root, file), html);
+    dom.window.close();
+    continue;
+  }
   // Preserve the hand-authored markup, tracked rail attributes and original credits.
   html = html.replace(/<a\b[^>]*href="([^"]+)"[^>]*>/g, (tag, href) => {
     if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href) || /\blang=/.test(tag)) return tag;
