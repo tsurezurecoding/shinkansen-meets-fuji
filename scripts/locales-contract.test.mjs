@@ -8,7 +8,7 @@ import { withArticleLocales } from './shared/castle-locales.mjs';
 const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
 test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
   for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
-    assert.deepEqual(locales.supported(`spots/${id}.html`), locales.languages);
+    assert.deepEqual(locales.supported(`spots/${id}.html`), locales.coreLanguages);
   }
   const head = '<head><link rel="canonical" href="https://www.michikusa-travel.com/en/spots/ibuki.html"></head>';
   const html = withArticleLocales(head, 'en/spots/ibuki-seat-a.html', 'test');
@@ -78,7 +78,7 @@ function route({ requested, saved, browser = 'zh-CN' }) {
   return target;
 }
 test('explicit and saved editions preserve train/station/direction/queries/hash', () => {
-  for (const lang of ['de','es','zh-Hans','zh-Hant','ko','fr','en']) for (const input of [{requested:lang},{saved:lang}]) {
+  for (const lang of ['de','es','zh-Hans','zh-Hant','ko','fr','en','it','th']) for (const input of [{requested:lang},{saved:lang}]) {
     const target = new URL(route(input));
     assert.equal(target.pathname, '/' + lang + '/start.html');
     assert.equal(target.searchParams.get('train'), 'Nozomi-1');

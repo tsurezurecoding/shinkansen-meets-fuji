@@ -4,12 +4,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
-import { episodes, supported, editions, languages, translated, stripEdition, routes, withLocaleRegistry } from './shared/locales.mjs';
+import locales, { episodes, supported, editions, languages, translated, stripEdition, routes, withLocaleRegistry } from './shared/locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
-for (const lang of languages) {
+for (const lang of locales.coreLanguages) {
   const file = (lang === 'ja' ? '' : lang + '/') + 'guide.html';
   let html = fs.readFileSync(path.join(root, file), 'utf8');
   const dom = new JSDOM(html, { url: origin + '/' + file });
@@ -50,6 +50,8 @@ for (const lang of languages) {
     const embeddedHead = `<script src="${prefix}app-embedded.js?v=${assetVersion('app-embedded.js')}"></script>\n  <link rel="stylesheet" href="${prefix}app-embedded.css?v=${assetVersion('app-embedded.css')}">`;
     html = html.replace(/(<meta name="viewport"[^>]*>)/, '$1\n  ' + embeddedHead);
   }
+  html = html.replace(/\s*<link\b(?=[^>]*rel="alternate")[^>]*>/g, "");
+  html = html.replace("</head>", supported("guide.html").concat("x-default").map(edition => `<link rel="alternate" hreflang="${edition}" href="${origin}/${edition === "ja" ? "" : (edition === "x-default" ? "en" : edition) + "/"}guide.html">`).join("\n") + "\n</head>");
   html = withLocaleRegistry(html, prefix);
   for (const [tag, asset] of [['script', 'utility-locales.js'], ['link', 'utility-locales.css']]) {
     if (!html.includes((tag === 'script' ? 'src="' : 'href="') + prefix + asset)) {
@@ -62,4 +64,4 @@ for (const lang of languages) {
   if (!check) fs.writeFileSync(path.join(root, file), html);
   dom.window.close();
 }
-console.log('Shared guide routes: 8 editions, existing article fallback and Fuji selection preserved.');
+console.log('Shared guide edition routes updated.');

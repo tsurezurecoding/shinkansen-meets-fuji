@@ -49,7 +49,7 @@ for(const lang of requestedLang?[requestedLang]:SPARKLING_LOCALES){
  }
  for(const host of doc.querySelectorAll('.lang-switch')){
   const menu=doc.createElement('details');menu.className='guide-lang-menu utility-lang-menu';const summary=doc.createElement('summary');summary.textContent=editions[lang].label;summary.setAttribute('aria-label',editions[lang].prompt);const options=doc.createElement('div');options.className='guide-lang-options';
-  for(const [edition,label] of languages.map(edition => [edition, editions[edition].label])){const a=doc.createElement('a');a.textContent=label;a.lang=edition;a.href='../'+(edition==='ja'?'':edition+'/')+SPARKLING_ROUTE+(edition==='ja'?'?lang=ja':'');if(edition===lang)a.setAttribute('aria-current','page');options.append(a);}menu.append(summary,options);host.replaceWith(menu);
+  for(const [edition,label] of supported(SPARKLING_ROUTE).map(edition => [edition, editions[edition].label])){const a=doc.createElement('a');a.textContent=label;a.lang=edition;a.href='../'+(edition==='ja'?'':edition+'/')+SPARKLING_ROUTE+(edition==='ja'?'?lang=ja':'');if(edition===lang)a.setAttribute('aria-current','page');options.append(a);}menu.append(summary,options);host.replaceWith(menu);
  }
  for(const script of doc.querySelectorAll('script:not([src]):not([type])'))script.textContent=script.textContent.replace('localStorage.setItem("mado-lang", "en")',`localStorage.setItem("mado-lang", "${lang}")`);
  const payload={lang,translations:dictionary};write(`${lang}/sparkling-data.js`,'/* Generated from English Disney content. */\nwindow.MADO_SPARKLING_PAYLOAD='+JSON.stringify(payload)+';\n');

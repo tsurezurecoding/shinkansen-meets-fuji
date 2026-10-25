@@ -157,6 +157,13 @@ const MSG = {
     zukanAllEyebrow: "ALL WINDOW VIEWS",
     zukanAllTitle: "すべての車窓を見る",
     morePhotos: "ほかの写真も見る",
+    fClear: "条件をクリア",
+    tlFilteredCount: (shown, total) => `区間内の全${total}件中${shown}件を表示`,
+    tlActiveFilters: filters => `絞り込み中：${filters}`,
+    tlAllViews: "すべて表示中",
+    tlMoreViews: count => `この区間には、ほかにも${count}件の見どころがあります。`,
+    tlNoClassics: "この区間・条件に合う定番スポットはありません。すべての見どころもご覧ください。",
+    tlSeeAll: "すべての見どころを見る",
     fAll: "すべて", fSeatA: "A席", fSeatE: "E席", fDay: "昼間", fDayShort: "昼", fDayPhoto: "昼の見どころ", fNight: "夜景", fNightPhoto: "夜の見どころ", fCloudy: "曇りでも", fClassic: "定番", fNature: "自然", fHistory: "歴史", fIndustry: "工業", fSign: "看板", f727: "727", fCity: "街並", c727Toggle: "727看板を分けて表示", cWheelToggle: "観覧車を分けて表示",
     cWheelCollectionCta: (total) => `新幹線から見える観覧車 全${total}基を見る`,
     footerNote: "時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。",
@@ -354,6 +361,13 @@ const MSG = {
     zukanAllEyebrow: "ALL WINDOW VIEWS",
     zukanAllTitle: "Browse every window view",
     morePhotos: "More photos",
+    fClear: "Clear filters",
+    tlFilteredCount: (shown, total) => `Showing ${shown} of ${total} views on this stretch`,
+    tlActiveFilters: filters => `Filters: ${filters}`,
+    tlAllViews: "Showing all views",
+    tlMoreViews: count => `There are ${count} more views on this stretch.`,
+    tlNoClassics: "No classic views match these filters. See all views instead.",
+    tlSeeAll: "See all views",
     fAll: "All", fSeatA: "Seat A", fSeatE: "Seat E", fDay: "Day", fDayShort: "Day", fDayPhoto: "Day views", fNight: "Night", fNightPhoto: "Night views", fCloudy: "Even when cloudy", fClassic: "Classic", fNature: "Nature", fHistory: "History", fIndustry: "Industry", fSign: "Signs", f727: "727", fCity: "City", c727Toggle: "Show 727 billboards separately", cWheelToggle: "Show Ferris wheels separately",
     cWheelCollectionCta: (total) => `See all ${total} Ferris wheels visible from the window`,
     footerNote: "Times use your selected train’s timetable; the unselected sample uses Nozomi times. Visibility varies by weather and seat. Start watching a little early.",
@@ -1303,6 +1317,19 @@ function spotDetailModalHTML(spot) {
 }
 
 /* ---------- i18n apply ---------- */
+function annotateStarterFallbackLinks(scope = document) {
+  if (!window.MADO_LOCALES?.starter?.includes(lang)) return;
+  scope.querySelectorAll('a[href]').forEach(link => {
+    if (link.closest('.guide-lang-menu,.lang-switch') || !link.textContent.trim()) return;
+    const url = new URL(link.getAttribute('href'), document.baseURI);
+    if (url.origin !== new URL(document.baseURI).origin || !url.pathname.includes('/en/')) return;
+    link.hreflang = 'en';
+    if (link.querySelector('.discovery-language')) return;
+    const note = document.createElement('small'); note.className = 'discovery-language';
+    note.textContent = ' (' + translateUtility(url.pathname.includes('/live/') ? 'English — audio also in English' : 'English') + ')';
+    link.append(note);
+  });
+}
 function applyLang() {
   document.documentElement.lang = lang;
   $$("[data-i18n]").forEach((el) => {
@@ -1362,6 +1389,7 @@ function applyLang() {
   trainPicker?.setLang(lang);
   const tl = $("#timelineSection");
   if (tl && !tl.hidden) renderTimeline();
+  annotateStarterFallbackLinks();
 }
 
 function shouldShowEnglishLandingPrompt() {
@@ -1732,12 +1760,12 @@ function spotItemHTML(sp, clock) {
     : "";
   // 定番は行ごと強調する。40件を等価に並べると初見の利用者が選べない。
   // ラベルは既存の fClassic（定番 / Classic）を使い、UI文字列を増やさない。
-  const isClassic = sp.category === "classic";
+  const isClassic = hasTimelineRecommendations() ? isTimelineRecommended(sp, clock) : sp.category === "classic";
   const classicBadge = isClassic
     ? `<span class="tl-classic-badge">${escapeHTML(t("fClassic"))}</span>`
     : "";
   const recommendationBadge = hasTimelineRecommendations() && isTimelineRecommended(sp, clock)
-    ? '<span class="tl-recommended-badge">定番</span>' : "";
+    ? `<span class="tl-recommended-badge">${escapeHTML(t("fClassic"))}</span>` : "";
   return `
       <li class="tl-item${isClassic ? " tl-item-classic" : ""}${lowLightLimited ? " low-light-limited" : ""}" data-spot="${sp.id}" data-gallery-photo-index="${featuredMedia?.index ?? 0}">
         <div class="tl-card tl-card-button" role="button" tabindex="0" data-more aria-label="${escapeHTML(t("more"))}: ${escapeHTML(L.name)}">
@@ -1938,6 +1966,7 @@ function closeQuickModal(reason = "close") {
 }
 
 function bindSpotEvents(root) {
+  annotateStarterFallbackLinks(root);
   root.querySelectorAll("[data-stamp]").forEach((btn) => {
     btn.addEventListener("click", (event) => {
       event.stopPropagation();
@@ -2437,7 +2466,18 @@ function applyInitialGalleryFilter() {
   if (filter !== "day" && filter !== "night") activeGalleryFilters.add("day");
   activeGalleryFilters.add(filter);
 }
-const activeTimelineFilters = new Set();
+const TIMELINE_FILTER_KEY = "mado-timeline-filters-v1";
+const TIMELINE_FILTER_IDS = ["favorites", "seat-a", "seat-e", "day", "night", "classic", "nature", "history", "industry", "sign", "727", "city"];
+const activeTimelineFilters = new Set(loadTimelineFilters());
+function loadTimelineFilters() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(TIMELINE_FILTER_KEY) || "[]");
+    return Array.isArray(saved) ? saved.filter(value => TIMELINE_FILTER_IDS.includes(value)) : [];
+  } catch { return []; }
+}
+function saveTimelineFilters() {
+  try { localStorage.setItem(TIMELINE_FILTER_KEY, JSON.stringify([...activeTimelineFilters])); } catch {}
+}
 
 // 日本語startだけで先行する編集選。図鑑・他言語・727の展開状態には適用しない。
 const TIMELINE_RECOMMENDATION_KEY = "mado-timeline-selection-ja";
@@ -2453,7 +2493,7 @@ const TIMELINE_NIGHT_RECOMMENDATIONS = new Set([
 let timelineSelection = loadTimelineSelection();
 
 function hasTimelineRecommendations() {
-  return lang === "ja" && Boolean($("[data-timeline-recommendations]"));
+  return Boolean($("[data-timeline-recommendations]"));
 }
 function loadTimelineSelection() {
   try { return localStorage.getItem(TIMELINE_RECOMMENDATION_KEY) === "all" ? "all" : "recommended"; }
@@ -2480,17 +2520,17 @@ function renderTimelineRecommendationSummary(candidates, visible) {
   const more = $("#timelineRecommendationMore");
   const recommended = timelineSelection === "recommended";
   const hidden = candidates.length - visible.length;
-  const labels = [...(recommended ? ["定番"] : []), ...[...activeTimelineFilters].map(filter =>
+  const labels = [...(recommended ? [t("fClassic")] : []), ...[...activeTimelineFilters].map(filter =>
     $('#timelineFilterbar [data-timeline-filter="' + filter + '"]')?.textContent.trim() || filter)];
   const total = collectionTimelineSpots().length;
-  const count = `区間内の全${total}件中${visible.length}件を表示`;
+  const count = t("tlFilteredCount", visible.length, total);
   summary.textContent = labels.length
-    ? `絞り込み中：${labels.join("・")} ／ ${count}`
-    : `すべて表示中 ／ ${count}`;
+    ? `${t("tlActiveFilters", labels.join(" · "))} ／ ${count}`
+    : `${t("tlAllViews")} ／ ${count}`;
   more.hidden = !recommended || !hidden;
   more.querySelector("p").textContent = visible.length
-    ? `この区間・条件には、ほかにも${hidden}件の見どころがあります。`
-    : "この区間・条件に合う定番スポットはありません。すべての見どころもご覧ください。";
+    ? t("tlMoreViews", hidden)
+    : t("tlNoClassics");
 }
 function discoverySpotOrder(a, b) {
   const priorityA = a.id === "fuji" ? 0 : 1;
@@ -2591,6 +2631,7 @@ function updateGalleryFilterButtons() {
   });
 }
 function updateTimelineFilterButtons() {
+  saveTimelineFilters();
   const hasFilters = activeTimelineFilters.size > 0;
   $$("#timelineFilterbar button[data-timeline-filter]").forEach((button) => {
     const filter = button.dataset.timelineFilter;
@@ -2811,7 +2852,7 @@ function bindTimelineControls() {
     } else if (filter === "all") {
       activeTimelineFilters.clear();
     } else if (["classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
-      if (filter !== "727") activeTimelineFilters.delete("727");
+      // Category tags remain selected until explicitly toggled or cleared.
       if (activeTimelineFilters.has(filter)) activeTimelineFilters.delete(filter);
       else activeTimelineFilters.add(filter);
     } else if (activeTimelineFilters.has(filter)) {

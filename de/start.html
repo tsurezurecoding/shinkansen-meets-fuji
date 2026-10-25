@@ -3,7 +3,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <base href="../">
   <link rel="manifest" href="manifest.json">
-  <script src="locales.js?v=f322ba41"></script>
+  <script src="locales.js?v=6585facb"></script>
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="https://www.michikusa-travel.com/de/start.html">
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/start.html">
@@ -114,6 +114,16 @@
     .jp-table-wrap{overflow-x:auto}.jp-table{width:100%;border-collapse:collapse;font-size:12px;line-height:1.6}.jp-table th,.jp-table td{padding:9px 7px;text-align:left;border-bottom:1px solid #edf0f2}.jp-table a{color:#a74024}
     .train-entry-more.top-promo-stack--mobile{display:block;max-width:860px;margin-inline:auto}
     @media(max-width:650px){.ja-train-grid{grid-template-columns:1fr}.fuji-train-answer{padding:18px}.train-entry-more .top-promo-grid{grid-template-columns:1fr}}
+    /* TIMELINE-CLASSICS:START */
+    .timeline-recommendation-summary { flex:1 1 170px; min-width:0; margin:0; color:var(--night); font-size:13px; font-weight:700; line-height:1.7; overflow-wrap:anywhere; }
+    .timeline-recommendation-more { max-width:700px; margin:18px auto 0; text-align:center; }
+    .timeline-recommendation-more p { margin:0 0 12px; font-size:14px; line-height:1.7; }
+    .timeline-recommendation-more button { border:0; background:none; color:var(--ink-soft); font:inherit; font-size:12px; text-decoration:underline; cursor:pointer; }
+    .timeline-filter-actions { flex:0 0 100%; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px 12px; padding:10px 12px; margin-bottom:4px; background:var(--paper); border:1px solid var(--line); border-radius:12px; box-sizing:border-box; }
+    #timelineFilterbar .timeline-reset { flex:none; min-height:40px; padding:8px 12px; border:1px solid var(--night); border-radius:8px; background:var(--night); color:white; font-weight:700; box-shadow:0 2px 5px #0002; }
+    #timelineFilterbar .timeline-reset:hover { background:#344b65; }
+    .tl-recommended-badge { display:inline-flex; align-items:center; justify-content:center; flex:none; padding:3px 7px; border-radius:6px; background:#fff1cf; color:#765018; font-size:11px; font-weight:700; line-height:1.4; white-space:nowrap; }
+    /* TIMELINE-CLASSICS:END */
   </style>
   <script defer="" src="utility-locales.js?v=4f2b7fba"></script>
   <link rel="stylesheet" href="utility-locales.css?v=269e0262">
@@ -124,6 +134,8 @@
   <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/start.html">
   <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/start.html">
   <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/start.html">
+  <link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/start.html">
+  <link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/start.html">
 </head>
 <body data-language-route="en" data-utility-localized="">
   <script>try { localStorage.setItem("mado-lang", "de"); } catch (error) {}</script>
@@ -148,14 +160,14 @@
           <a class="top-nav-menu-stamp" href="de/journal.html" data-i18n="navMedals">Ausblicksstempel</a>
           <a href="de/guide.html" data-i18n="navFaq">Fuji sehen</a>
           <a href="de/mieru.html" data-i18n="navMieru">Sichtbarkeit β</a>
-          <a href="en/window-artworks.html" data-i18n="navArtworks">車窓の作品集</a>
+          <a href="en/window-artworks.html" data-i18n="navArtworks">Kunst am Zugfenster</a>
           <a href="en/references.html" data-i18n="navRefs">Links</a>
           <a href="de/contact.html" data-contact-nav="" data-i18n="navContact">Kontakt</a>
           <a href="en/privacy.html" data-i18n="navPrivacy">Datenschutzerklärung</a>
         </div>
       </details>
     </nav>
-    <details class="guide-lang-menu utility-lang-menu"><summary aria-label="Sprache wählen">Deutsch</summary><div class="guide-lang-options"><a lang="ja" href="start.html?lang=ja">日本語</a><a lang="en" href="en/start.html">English</a><a lang="zh-Hant" href="zh-Hant/start.html">繁體中文</a><a lang="fr" href="fr/start.html">Français</a><a lang="de" href="de/start.html" aria-current="page">Deutsch</a><a lang="es" href="es/start.html">Español</a><a lang="zh-Hans" href="zh-Hans/start.html">简体中文</a><a lang="ko" href="ko/start.html">한국어</a></div></details>
+    <details class="guide-lang-menu utility-lang-menu"><summary aria-label="Sprache wählen">Deutsch</summary><div class="guide-lang-options"><a lang="ja" href="start.html?lang=ja">日本語</a><a lang="en" href="en/start.html">English</a><a lang="zh-Hant" href="zh-Hant/start.html">繁體中文</a><a lang="fr" href="fr/start.html">Français</a><a lang="de" href="de/start.html" aria-current="page">Deutsch</a><a lang="es" href="es/start.html">Español</a><a lang="zh-Hans" href="zh-Hans/start.html">简体中文</a><a lang="ko" href="ko/start.html">한국어</a><a lang="it" href="it/start.html">Italiano</a><a lang="th" href="th/start.html">ไทย</a></div></details>
   </header>
 
   <!-- ===== Hero (実写富士山 + 一言で「何のサイトか」) ===== -->
@@ -187,8 +199,13 @@
             <p class="section-sub" data-i18n="tlSub">Die Zeiten sind Schätzwerte. Wählen Sie einen Zug, um dessen Fahrplan zu verwenden. Schauen Sie etwas früher aus dem Fenster.</p>
           </div>
           <div class="timeline-filterbar" id="timelineFilterbar" aria-label="Zeitplanfilter">
+            <div class="timeline-filter-actions">
+              <!-- TIMELINE-CLASSICS:START -->
+              <p data-timeline-recommendations="" class="timeline-recommendation-summary" id="timelineRecommendationSummary" role="status" aria-live="polite"></p>
+              <!-- TIMELINE-CLASSICS:END -->
+              <button type="button" data-timeline-filter="all" class="timeline-reset" data-i18n="fClear">Filter löschen</button>
+            </div>
             <div class="timeline-filter-group" role="group" aria-label="Favoriten und Sitzseite">
-              <button type="button" data-timeline-filter="all" class="active" data-i18n="fAll">Alle</button>
               <button type="button" data-timeline-filter="favorites" data-i18n="fFavorites" class="timeline-filter-fav">★ Favoriten</button>
               <button type="button" data-timeline-filter="seat-a" data-i18n="fSeatA">Platz A</button>
               <button type="button" data-timeline-filter="seat-e" data-i18n="fSeatE">Platz E</button>
@@ -198,7 +215,9 @@
               <button type="button" data-timeline-filter="night" data-i18n="fNight">Nächtliche Ausblicke</button>
             </div>
             <div class="timeline-filter-group" role="group" aria-label="Kategorie">
-              <button type="button" data-timeline-filter="classic" data-i18n="fClassic">Klassiker</button>
+              <!-- TIMELINE-CLASSICS:START -->
+              <button type="button" data-timeline-filter="recommended" data-i18n="fClassic" class="active" aria-pressed="true">Klassiker</button>
+              <!-- TIMELINE-CLASSICS:END -->
               <button type="button" data-timeline-filter="nature" data-i18n="fNature">Natur</button>
               <button type="button" data-timeline-filter="history" data-i18n="fHistory">Geschichte</button>
               <button type="button" data-timeline-filter="industry" data-i18n="fIndustry">Industrie</button>
@@ -213,6 +232,11 @@
             </label>
           </div>
           <ol class="timeline" id="timeline"></ol>
+          <!-- TIMELINE-CLASSICS:START -->
+          <div class="timeline-recommendation-more" id="timelineRecommendationMore" hidden="">
+            <p></p><button type="button" data-i18n="tlSeeAll">Alle Ausblicke ansehen</button>
+          </div>
+          <!-- TIMELINE-CLASSICS:END -->
 <div id="timeline-calculation-note" class="train-entry-help"><p>Die Zeiten sind Fahrplanschätzungen. Verkehrstage und aktuelle Verspätungen sind nicht berücksichtigt.</p></div>
         </section>
       </div>
@@ -246,15 +270,15 @@
   </footer>
 
   <script src="data/timetable.js?v=89e78630"></script>
-  <script src="data-runtime.js?v=624b9863"></script><script src="de/utility-data.js?v=8574a8fd"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="data-runtime.js?v=624b9863"></script><script src="de/utility-data.js?v=e4ce2f3a"></script><script src="utility-locale-runtime.js?v=7206f1c7"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
   <script src="train-select.js?v=88f5b2d7"></script>
   <script src="train-picker.js?v=6cafb7d9"></script>
-  <script src="app.js?v=cad774db"></script>
+  <script src="app.js?v=6a2b9330"></script>
 <script src="sparkling-dreams.js?v=983a36e3"></script>
 <script src="journey-light-model.js?v=f5e44614"></script>
-<script src="journey-light-events.js?v=bff2642e"></script>
+<script src="journey-light-events.js?v=12986553"></script>
 <!-- ANDROID_APP_INVITE_START -->
 <style>#android-app-invite{--safe-top:env(safe-area-inset-top,0px);--safe-bottom:env(safe-area-inset-bottom,0px);--safe-left:env(safe-area-inset-left,0px);--safe-right:env(safe-area-inset-right,0px);position:fixed;z-index:90;width:min(310px,calc(100vw - 24px - env(safe-area-inset-left,0px) - env(safe-area-inset-right,0px)));margin:0;padding:10px 12px;border:1px solid #d7e5ef;border-radius:14px;background:linear-gradient(120deg,#fff,#f0f7fc);box-shadow:0 5px 24px #15375230;color:#193c52;font:13px/1.5 system-ui,sans-serif;text-align:left;box-sizing:border-box;max-height:40dvh;overflow:auto}
 #android-app-invite[hidden]{display:none!important}#android-app-invite .context-label{display:block;color:#486b82;font-size:10px;line-height:12px}#android-app-invite h2{font:600 14px/20px system-ui,sans-serif;margin:0}#android-app-invite p{font:12px/1.45 system-ui,sans-serif;margin:4px 0 0}

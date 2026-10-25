@@ -2227,5 +2227,15 @@
   "77": "77",
   "82": "82",
   "87": "87",
-  "93": "93"
+  "93": "93",
+  "Categories": "类别",
+  "Clear filters": "清除筛选条件",
+  "English": "英语",
+  "English — audio also in English": "英语 — 音频也提供英语",
+  "Filters: {0}": "筛选条件：{0}",
+  "No classic views match these filters. See all views instead.": "没有符合这些筛选条件的经典景色。改为查看所有景色。",
+  "Showing all views": "显示所有景色",
+  "Showing {0} of {1} views on this stretch": "显示此路段 {1} 个景色中的 {0} 个",
+  "There are {0} more views on this stretch.": "此路段还有 {0} 个景色。",
+  "Train Search filters": "列车搜索筛选条件"
 }

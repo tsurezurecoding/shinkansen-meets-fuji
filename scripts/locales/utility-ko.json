@@ -2227,5 +2227,15 @@
   "77": "77",
   "82": "82",
   "87": "87",
-  "93": "93"
+  "93": "93",
+  "Categories": "카테고리",
+  "Clear filters": "필터 지우기",
+  "English": "영어",
+  "English — audio also in English": "영어 — 오디오도 영어",
+  "Filters: {0}": "필터: {0}",
+  "No classic views match these filters. See all views instead.": "조건에 맞는 클래식 풍경이 없습니다. 모든 풍경을 확인하세요.",
+  "Showing all views": "모든 풍경 표시",
+  "Showing {0} of {1} views on this stretch": "이 구간의 풍경 {1}개 중 {0}개 표시 중",
+  "There are {0} more views on this stretch.": "이 구간에 풍경이 {0}개 더 있습니다.",
+  "Train Search filters": "열차 검색 필터"
 }

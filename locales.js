@@ -10,10 +10,16 @@
     es: { label: 'Español', prompt: 'Elegir idioma', og: 'es_ES', map: 'es' },
     'zh-Hans': { label: '简体中文', prompt: '选择语言', og: 'zh_CN', map: 'zh-CN' },
     ko: { label: '한국어', prompt: '언어 선택', og: 'ko_KR', map: 'ko' },
+    it: { label: 'Italiano', prompt: 'Scegli la lingua', og: 'it_IT', map: 'it' },
+    th: { label: 'ไทย', prompt: 'เลือกภาษา', og: 'th_TH', map: 'th' },
     ar: { label: 'العربية', prompt: 'اختر اللغة', og: 'ar_AR', map: 'ar' }
   };
   var languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko'];
-  var translated = languages.filter(function (lang) { return lang !== 'ja' && lang !== 'en'; });
+  var coreLanguages = languages.slice();
+  var starter = ['it', 'th'];
+  var starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html'];
+  languages = languages.concat(starter);
+  var translated = coreLanguages.filter(function (lang) { return lang !== 'ja' && lang !== 'en'; });
   var jaOnly = ["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html","sudoori/stories/aisho.html","sudoori/stories/koura.html"];
   var utility = ['start.html', 'live/index.html', 'zukan.html', 'contact.html', 'mieru.html', 'index.html', 'journal.html'];
   var castleIds = ['edo-castle-fujimi-yagura', 'odawara-castle', 'kakegawa', 'kiyosu', 'gifu-castle', 'hikone-castle', 'sawayama-castle', 'kannonji-castle', 'himeji-castle', 'okayama-castle', 'fukuyama-castle', 'odawara', 'nagoya-station-skyline', 'toji', 'hamanako'];
@@ -30,13 +36,13 @@
   }
   function stripEdition(route) { return String(route).replace(new RegExp('^(?:' + pattern + ')/', 'i'), ''); }
   function canonicalRoute(route) { return stripEdition(route).split(/[?#]/)[0].replace(/^live\/$/, 'live/index.html') || 'index.html'; }
-  function supported(route) { var key = canonicalRoute(route); return jaOnly.indexOf(key) >= 0 ? ['ja'] : enOnly.indexOf(key) >= 0 ? ['en'].concat(translated) : key === 'guide.html' ? languages.concat(['ar']) : routes.indexOf(key) >= 0 ? languages.slice() : ['ja', 'en'].concat(episodes[key] || []); }
+  function supported(route) { var key = canonicalRoute(route); if (starterRoutes.indexOf(key) >= 0) return languages.concat(key === 'guide.html' ? ['ar'] : []); return jaOnly.indexOf(key) >= 0 ? ['ja'] : enOnly.indexOf(key) >= 0 ? ['en'].concat(translated) : key === 'guide.html' ? coreLanguages.concat(['ar']) : routes.indexOf(key) >= 0 ? coreLanguages.slice() : ['ja', 'en'].concat(episodes[key] || []); }
   function routeLanguage(path) {
     var match = String(path).match(new RegExp('/(' + pattern + ')(?:/|$)', 'i'));
     return match ? normalize(match[1]) : null;
   }
-  function recognized(value) { return /^(?:ja|en|zh|fr|de|es|ko|ar)(?:-|_|$)/i.test(String(value || '')); }
-  var api = { jaOnly: jaOnly, enOnly: enOnly, episodes: episodes, editions: editions, languages: languages, translated: translated, utility: utility, castleIds: castleIds, castles: castles, extra: extra, routes: routes, pattern: pattern, normalize: normalize, recognized: recognized, stripEdition: stripEdition, canonicalRoute: canonicalRoute, supported: supported, routeLanguage: routeLanguage };
+  function recognized(value) { return /^(?:ja|en|zh|fr|de|es|ko|ar|it|th)(?:-|_|$)/i.test(String(value || '')); }
+  var api = { starter: starter, starterRoutes: starterRoutes, coreLanguages: coreLanguages, jaOnly: jaOnly, enOnly: enOnly, episodes: episodes, editions: editions, languages: languages, translated: translated, utility: utility, castleIds: castleIds, castles: castles, extra: extra, routes: routes, pattern: pattern, normalize: normalize, recognized: recognized, stripEdition: stripEdition, canonicalRoute: canonicalRoute, supported: supported, routeLanguage: routeLanguage };
   if (typeof module === 'object' && module.exports) module.exports = api;
   if (root) root.MADO_LOCALES = api;
 }(typeof window === 'object' ? window : null));

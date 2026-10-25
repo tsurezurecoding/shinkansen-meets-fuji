@@ -2227,5 +2227,15 @@
   "77": "77",
   "82": "82",
   "87": "87",
-  "93": "93"
+  "93": "93",
+  "Categories": "Kategorien",
+  "Clear filters": "Filter löschen",
+  "English": "Englisch",
+  "English — audio also in English": "Englisch — Audio ebenfalls auf Englisch",
+  "Filters: {0}": "Filter: {0}",
+  "No classic views match these filters. See all views instead.": "Keine klassischen Ansichten passen zu diesen Filtern. Alle Ansichten anzeigen.",
+  "Showing all views": "Alle Ansichten anzeigen",
+  "Showing {0} of {1} views on this stretch": "{0} von {1} Ansichten auf diesem Abschnitt werden angezeigt",
+  "There are {0} more views on this stretch.": "Auf diesem Abschnitt gibt es {0} weitere Ansichten.",
+  "Train Search filters": "Filter der Zugsuche"
 }

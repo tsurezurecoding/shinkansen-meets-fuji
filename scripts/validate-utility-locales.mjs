@@ -121,7 +121,7 @@ function checkDictionary(lang) {
 function checkMetadata(doc, lang, route, label) {
   assert(doc.documentElement.lang === lang, label, 'html lang differs');
   assert(doc.querySelector('link[rel=canonical]')?.href === urlFor(lang, route), label, 'self canonical differs');
-  for (const edition of [...editions, 'x-default']) {
+  for (const edition of [...supported(route), 'x-default']) {
     const links = doc.querySelectorAll(`link[rel=alternate][hreflang="${edition}"]`);
     assert(links.length === 1 && links[0].href === urlFor(edition === 'x-default' ? 'en' : edition, route), label, `reciprocal hreflang ${edition} missing/duplicate/wrong`);
   }
@@ -151,12 +151,13 @@ function checkMenu(dom, lang, route, label) {
   window.eval(read('locales.js')); window.eval(read('utility-locales.js')); window.document.dispatchEvent(new window.Event('DOMContentLoaded'));
   const doc = window.document, menus = doc.querySelectorAll('details.guide-lang-menu.utility-lang-menu');
   assert(menus.length === 1 && !doc.querySelector('.lang-switch'), label, 'one guide-style menu must replace old language buttons');
-  const labels = Object.fromEntries(editions.map(x=>[x,localeInfo[x].label]));
-  const prompts = Object.fromEntries(editions.map(x=>[x,localeInfo[x].prompt]));
+  const menuEditions = supported(route);
+  const labels = Object.fromEntries(menuEditions.map(x=>[x,localeInfo[x].label]));
+  const prompts = Object.fromEntries(menuEditions.map(x=>[x,localeInfo[x].prompt]));
   for (const menu of menus) {
     assert(menu.querySelector('summary')?.textContent === labels[lang] && menu.querySelector('summary')?.getAttribute('aria-label') === prompts[lang], label, 'current language/prompt differs');
-    assert(menu.querySelectorAll('a').length === editions.length && !menu.open, label, 'four languages and closed initial state required');
-    for (const edition of editions) {
+    assert(menu.querySelectorAll('a').length === menuEditions.length && !menu.open, label, 'four languages and closed initial state required');
+    for (const edition of menuEditions) {
       const a = [...menu.querySelectorAll('a')].find(node => node.lang === edition);
       const href = a && new URL(a.href);
       assert(a?.textContent === labels[edition] && href?.pathname === `/${fileFor(edition, route === 'index.html' ? '' : route)}`, label, `language switch differs ${edition}`);

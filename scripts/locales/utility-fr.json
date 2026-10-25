@@ -2227,5 +2227,15 @@
   "77": "77",
   "82": "82",
   "87": "87",
-  "93": "93"
+  "93": "93",
+  "Categories": "Catégories",
+  "Clear filters": "Effacer les filtres",
+  "English": "Anglais",
+  "English — audio also in English": "Anglais — audio également en anglais",
+  "Filters: {0}": "Filtres : {0}",
+  "No classic views match these filters. See all views instead.": "Aucune vue classique ne correspond à ces filtres. Voir toutes les vues à la place.",
+  "Showing all views": "Afficher toutes les vues",
+  "Showing {0} of {1} views on this stretch": "Affichage de {0} vues sur {1} pour ce tronçon",
+  "There are {0} more views on this stretch.": "Il y a {0} autres vues sur ce tronçon.",
+  "Train Search filters": "Filtres de recherche de trains"
 }
