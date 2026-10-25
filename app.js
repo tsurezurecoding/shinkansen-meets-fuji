@@ -1641,7 +1641,10 @@ function renderTimeline() {
   const items = [];
   const dirSign = journey.direction === "west" ? 1 : -1;
   journey.stops.forEach((s) => items.push({ kind: "station", clock: s.clock, seq: s.ref * dirSign, st: s }));
-  currentTimelineSpotCandidates()
+  const candidates = currentTimelineSpotCandidates();
+  const visibleCandidates = recommendedTimelineCandidates(candidates);
+  renderTimelineRecommendationSummary(candidates, visibleCandidates);
+  visibleCandidates
     .forEach((x) => items.push({ kind: "spot", clock: x.clock, seq: x.seq, sp: x.sp }));
   // 同時刻は進行方向の位置順（到着前のスポット→駅→発車後のスポット）。位置も同じなら駅を先に置く
   items.sort((a, b) => a.clock - b.clock || a.seq - b.seq || (a.kind === "station" ? -1 : 1));
@@ -2433,6 +2436,53 @@ function applyInitialGalleryFilter() {
   activeGalleryFilters.add(filter);
 }
 const activeTimelineFilters = new Set();
+
+// 日本語startだけで先行する編集選。図鑑・他言語・727の展開状態には適用しない。
+const TIMELINE_RECOMMENDATION_KEY = "mado-timeline-selection-ja";
+const TIMELINE_DAY_RECOMMENDATIONS = new Set([
+  "tokyo-tower", "odawara", "fuji", "fuji-bus-sales", "shizuoka-tea-fields",
+  "kakegawa", "hamanako", "ferris-wheel-laguna", "nichiban-anjo", "kiyosu",
+  "kinshozan", "ibuki", "ibuki-seat-a", "omi-fuji", "toji", "rakusai-egg-tanks", "torikai-train-depot",
+]);
+const TIMELINE_NIGHT_RECOMMENDATIONS = new Set([
+  "tokyo-tower", "musashi-kosugi-towers", "fuji-paper-mills", "nagoya-station-skyline",
+  "kiyosu", "toji", "hirakata-park-wheel",
+]);
+let timelineSelection = loadTimelineSelection();
+
+function hasTimelineRecommendations() {
+  return lang === "ja" && Boolean($("[data-timeline-recommendations]"));
+}
+function loadTimelineSelection() {
+  try { return localStorage.getItem(TIMELINE_RECOMMENDATION_KEY) === "all" ? "all" : "recommended"; }
+  catch { return "recommended"; }
+}
+function setTimelineSelection(selection) {
+  timelineSelection = selection === "all" ? "all" : "recommended";
+  try { localStorage.setItem(TIMELINE_RECOMMENDATION_KEY, timelineSelection); } catch {}
+}
+function recommendedTimelineCandidates(candidates) {
+  if (!hasTimelineRecommendations() || timelineSelection === "all") return candidates;
+  const explicitTime = activeTimelineTimeOfDayFilter();
+  return candidates.filter(({ sp, clock }) => {
+    const night = explicitTime ? explicitTime === "night"
+      : !journey?.preview && journey?.mode === "train" && isClearlyDark(clock);
+    return (night ? TIMELINE_NIGHT_RECOMMENDATIONS : TIMELINE_DAY_RECOMMENDATIONS).has(sp.id);
+  });
+}
+function renderTimelineRecommendationSummary(candidates, visible) {
+  if (!hasTimelineRecommendations()) return;
+  const summary = $("#timelineRecommendationSummary");
+  const more = $("#timelineRecommendationMore");
+  const recommended = timelineSelection === "recommended";
+  const hidden = candidates.length - visible.length;
+  const count = recommended ? `おすすめ ${visible.length}件を表示中` : `すべて ${visible.length}件を表示中`;
+  summary.textContent = `${count}（現在の区間・条件では全${candidates.length}件）`;
+  more.hidden = !recommended || !hidden;
+  more.querySelector("p").textContent = visible.length
+    ? `この区間・条件には、ほかにも${hidden}件の見どころがあります。`
+    : "この区間・条件に合うおすすめはありません。すべての見どころもご覧ください。";
+}
 function discoverySpotOrder(a, b) {
   const priorityA = a.id === "fuji" ? 0 : 1;
   const priorityB = b.id === "fuji" ? 0 : 1;
@@ -2535,7 +2585,9 @@ function updateTimelineFilterButtons() {
   const hasFilters = activeTimelineFilters.size > 0;
   $$("#timelineFilterbar button[data-timeline-filter]").forEach((button) => {
     const filter = button.dataset.timelineFilter;
-    const active = filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
+    const active = hasTimelineRecommendations() && ["recommended", "all"].includes(filter)
+      ? timelineSelection === filter
+      : filter === "all" ? !hasFilters : activeTimelineFilters.has(filter);
     button.classList.toggle("active", active);
     button.setAttribute("aria-pressed", String(active));
   });
@@ -2717,6 +2769,12 @@ function bindGalleryControls() {
 }
 
 function bindTimelineControls() {
+  $("#timelineRecommendationMore button")?.addEventListener("click", () => {
+    setTimelineSelection("all");
+    updateTimelineFilterButtons();
+    renderTimeline();
+    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all", selection: timelineSelection });
+  });
   $("#timelineFilterbar")?.addEventListener("change", (event) => {
     const input = event.target instanceof HTMLInputElement ? event.target : null;
     const group = input ? COLLECTION_TOGGLES.find((candidate) => input.closest(candidate.selector)) : null;
@@ -2736,7 +2794,14 @@ function bindTimelineControls() {
     const button = target?.closest("button[data-timeline-filter]");
     if (!button) return;
     const filter = button.dataset.timelineFilter;
-    if (filter === "all") {
+    if (hasTimelineRecommendations() && ["recommended", "all"].includes(filter)) {
+      setTimelineSelection(filter);
+      if (filter === "recommended") {
+        [...activeTimelineFilters].forEach((value) => {
+          if (!["seat-a", "seat-e", "day", "night"].includes(value)) activeTimelineFilters.delete(value);
+        });
+      }
+    } else if (filter === "all") {
       activeTimelineFilters.clear();
     } else if (["classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
       if (filter !== "727") activeTimelineFilters.delete("727");
@@ -2747,8 +2812,11 @@ function bindTimelineControls() {
     } else {
       activeTimelineFilters.add(filter);
     }
+    if (hasTimelineRecommendations() && ["favorites", "classic", "nature", "history", "industry", "sign", "727", "city"].includes(filter)) {
+      setTimelineSelection("all");
+    }
     updateTimelineFilterButtons();
-    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all" });
+    track("timeline_filtered", { filters: [...activeTimelineFilters].join(",") || "all", ...(hasTimelineRecommendations() ? { selection: timelineSelection } : {}) });
     renderTimeline();
   });
 }

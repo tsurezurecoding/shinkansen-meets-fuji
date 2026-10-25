@@ -1702,7 +1702,11 @@ function englishAppIndexHTML() {
     ["旅の瞬間を見逃さない", "Discover more through the train window."],
     ["本文へ移動", "Skip to content"],
   ];
-  let html = stripJaTrainWindow(fs.readFileSync(path.join(appDir, "start.html"), "utf8"))
+  // Japanese recommendation review precedes localization; keep other editions unchanged.
+  const japaneseStart = fs.readFileSync(path.join(appDir, "start.html"), "utf8")
+    .replace(/^[ \t]*<!-- JA-TIMELINE-RECOMMENDATIONS:START -->[\s\S]*?<!-- JA-TIMELINE-RECOMMENDATIONS:END -->\r?\n/gm, "")
+    .replace(/^[ \t]*\/\* JA-TIMELINE-RECOMMENDATIONS:START \*\/[\s\S]*?\/\* JA-TIMELINE-RECOMMENDATIONS:END \*\/\r?\n/gm, "");
+  let html = stripJaTrainWindow(japaneseStart)
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
       '<meta name="viewport" content="width=device-width, initial-scale=1">',
