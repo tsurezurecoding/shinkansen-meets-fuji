@@ -372,6 +372,6 @@
     });
   </script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"jr-pass-fuji.html","mounts":[{"host":"chrome-0","component":"footer-castles","kind":"footer"}]}</script>
-<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

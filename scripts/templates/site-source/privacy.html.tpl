@@ -237,6 +237,6 @@
   <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-0"></section>
   </main>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"privacy.html","mounts":[{"host":"chrome-0","component":"content-zukan","kind":"content"}]}</script>
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

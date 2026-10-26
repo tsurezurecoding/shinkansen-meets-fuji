@@ -317,5 +317,5 @@
 <script type="application/json" id="mado-android-invite-config">{"language":"ja","pageContext":"gallery","assetPrefix":"","general":false}</script>
 <!-- ANDROID_APP_INVITE_END -->
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"zukan.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":3,"value":"page"}],"menu":"header-start-menu-2","menuRoute":"zukan.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"},{"host":"chrome-2","component":"footer-zukan","kind":"footer"}]}</script>
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body></html>

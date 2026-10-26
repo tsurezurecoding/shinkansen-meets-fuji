@@ -1096,7 +1096,8 @@ function thinSpotPageHTML(spot, lang) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style id="spot-page-boot-style">html { background:#faf6ef; } .spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; } [data-spot-page-fallback] { max-width:52rem; margin:3rem auto; padding:0 1rem; font:1rem/1.7 system-ui,sans-serif; color:#292723; }</style>
+  <style id="spot-page-boot-style">html { background:#faf6ef; } .spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; } html.spot-page-loading .spot-page > *, html.spot-page-loading .spot-page > * * { visibility:hidden !important; } [data-spot-page-fallback] { max-width:52rem; margin:3rem auto; padding:0 1rem; font:1rem/1.7 system-ui,sans-serif; color:#292723; }</style>
+  <script id="spot-page-boot">(function(){var timer;function release(){window.clearTimeout(timer);document.documentElement.classList.remove('spot-page-loading');var style=document.getElementById('spot-page-boot-style');if(style)style.remove();}window.MADO_SPOT_PAGE_BOOT_RELEASE=release;document.documentElement.classList.add('spot-page-loading');timer=window.setTimeout(release,2000);}());</script>
   <noscript><style>.spot-page > * { visibility:visible; }</style></noscript>
   ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${tokyoSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}${spot.id === "fujikawa-bridge" ? `\n  <link rel="stylesheet" href="${prefix}fujikawa-frequency.css?v=${assetVersion("fujikawa-frequency.css")}">` : ""}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">

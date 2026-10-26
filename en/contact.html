@@ -92,6 +92,6 @@
   <footer><p class="footer-links"><a href="guide.html">See Mt. Fuji</a> · <a href="references.html">Window links</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p><p class="footer-credit">Michikusa — unhurried journeys and chance discoveries.</p></footer>
   <script src="../track.js"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"contact.html","mounts":[{"host":"chrome-0","component":"header-android-app","kind":"header","currentAnchors":[{"index":11,"value":"page"}],"menu":"header-android-app-menu","menuRoute":"contact.html"}]}</script>
-<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

@@ -102,7 +102,9 @@
 (function () {
  var card=document.currentScript.previousElementSibling;
  var native=!!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform==='function' && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform==='function' && window.Capacitor.getPlatform()!=='web')));
- var bundled=native || location.protocol==='file:' || location.hostname==='localhost';
+ // A local browser preview also uses file: or localhost; only native bundle
+ // signals justify suppressing an image that is absent from the Android bundle.
+ var bundled=native || location.protocol==='capacitor:' || (location.protocol==='file:' && /^\/android_asset(?:\/|$)/.test(location.pathname));
  if(bundled) { card.querySelector('a[hidden]').remove(); return; }
  var image=card.querySelector('img'); image.src=image.dataset.filmImage;
  var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',"artworks/window-film/index.html");
@@ -115,7 +117,9 @@
 (function () {
  var card=document.currentScript.previousElementSibling;
  var native=!!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform==='function' && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform==='function' && window.Capacitor.getPlatform()!=='web')));
- var bundled=native || (location.protocol==='file:' && location.pathname.charAt(2)!==':') || location.hostname==='localhost';
+ // A local browser preview also uses file: or localhost; only native bundle
+ // signals justify suppressing an image that is absent from the Android bundle.
+ var bundled=native || location.protocol==='capacitor:' || (location.protocol==='file:' && /^\/android_asset(?:\/|$)/.test(location.pathname));
  if(bundled) { card.querySelector('a[hidden]').remove(); return; }
  var image=card.querySelector('img'); image.src=image.dataset.filmImage;
  var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',"artworks/memory-express/index.html");
@@ -127,5 +131,5 @@
 <article class="artwork-card" data-artwork="sumie"><a href="artworks/sumie/index.html" tabindex="-1" aria-hidden="true"><img src="images/og-sumie-window.jpg" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">墨絵で眺める車窓</p><h2>墨絵車窓</h2><p>東海道新幹線の景色を、静かな墨絵で。流れる線や山のかたちを、写真とは違う表現で楽しみます。</p><a class="artwork-open" href="artworks/sumie/index.html">作品を見る <span aria-hidden="true">→</span><span class="sr-only"> — 墨絵車窓</span></a></div></article></section><p class="artworks-note">乗車中の案内とは別に、車窓の表現を楽しむためのページです。</p></div></div></main><section data-spot-page-shared-module="content-rail"></section><footer class="footer"><p class="footer-brand">新幹線の窓</p><p class="footer-links"><a href="index.html">ホーム</a> · <a href="zukan.html">車窓図鑑</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシー</a></p></footer><script src="spot-page-shared-data.js?v=a06310a9"></script><script src="spot-page-shared.js?v=3f269e60"></script><!-- ANDROID_APP_INVITE_START -->
 <script type="application/json" id="mado-android-invite-config">{"language":"ja","pageContext":"feature","assetPrefix":"","general":false}</script>
 <!-- ANDROID_APP_INVITE_END -->
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body></html>

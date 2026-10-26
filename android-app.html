@@ -182,6 +182,6 @@
     })();
   </script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"android-app.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","menu":"header-references-menu","menuRoute":"android-app.html"}]}</script>
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

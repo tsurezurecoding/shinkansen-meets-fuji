@@ -30,10 +30,21 @@
     });
   }
   function reveal() {
+    if (typeof window.MADO_SPOT_PAGE_BOOT_RELEASE === 'function') {
+      window.MADO_SPOT_PAGE_BOOT_RELEASE();
+      return;
+    }
     var boot = document.getElementById('spot-page-boot-style');
     if (boot) boot.remove();
   }
   var thin = document.body && document.body.getAttribute('data-spot-page-shared-mode') === 'page' && !document.body.hasAttribute('data-article-localized');
+  var boot = thin && document.getElementById('spot-page-boot-style');
+  if (boot) {
+    // Descendants can override inherited visibility (the current rail preview
+    // does so). Keep rendered fragments hidden until their CSS is ready, while
+    // preserving the original reading fallback inside the shared hosts.
+    boot.textContent += '\n.spot-page > :not([data-spot-page-shared-module]), .spot-page > :not([data-spot-page-shared-module]) * { visibility:hidden !important; }';
+  }
   var chromeNode = document.getElementById('mado-shared-ui-config'), chrome = null;
   try { if (chromeNode) chrome = JSON.parse(chromeNode.textContent); } catch (error) {}
   var chromeAssets = chrome && (chrome.assets || (chrome.asset ? [chrome.asset] : null));

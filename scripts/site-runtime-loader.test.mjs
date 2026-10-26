@@ -2,6 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { JSDOM } from 'jsdom';
+import { withSiteRuntimeLoader } from './shared/site-runtime-html.mjs';
 
 const source = fs.readFileSync(new URL('../site-runtime-loader.js', import.meta.url), 'utf8');
 const STYLES = ['style.css', 'spot-media-gallery.css'];
@@ -17,6 +18,112 @@ function manifestFixture() {
   };
 }
 const defaultChrome = { asset: CHROME_ASSET, root: '../', route: 'fr/guide.html', lang: 'fr', mounts: [] };
+
+let thinHTMLPromise;
+async function actualThinHTML() {
+  thinHTMLPromise ||= import('./generate-spot-pages.mjs').then(({ spotPageHTML, SPOTS }) => spotPageHTML(SPOTS.find(spot => spot.id === 'tokyo-tower'), 'ja'));
+  return thinHTMLPromise;
+}
+async function actualBootHTML() {
+  const dom = new JSDOM(await actualThinHTML());
+  try {
+    const script = dom.window.document.getElementById('spot-page-boot');
+    assert.ok(script, 'Thin page starts its bounded loading gate in the head');
+    return dom.window.document.getElementById('spot-page-boot-style').outerHTML + script.outerHTML;
+  } finally { dom.window.close(); }
+}
+
+test('generated thin fallback is readable immediately without JavaScript', async () => {
+  const dom = new JSDOM(await actualThinHTML());
+  try {
+    const fallback = dom.window.document.querySelector('[data-spot-page-fallback]');
+    assert.ok(fallback.querySelector('h1') && fallback.querySelector('p') && fallback.querySelector('a[href]'));
+    assert.equal(dom.window.getComputedStyle(fallback.querySelector('h1')).visibility, 'visible');
+    assert.equal(dom.window.document.documentElement.classList.contains('spot-page-loading'), false);
+  } finally { dom.window.close(); }
+});
+
+test('head deadline reveals reading fallback even when the loader never executes', async () => {
+  const dom = new JSDOM(await actualThinHTML(), { runScripts: 'outside-only' });
+  try {
+    const w = dom.window, timers = [], cleared = [];
+    w.setTimeout = (callback, delay) => { timers.push({ callback, delay }); return timers.length; };
+    w.clearTimeout = id => cleared.push(id);
+    const script = w.document.getElementById('spot-page-boot');
+    assert.ok(script);
+    w.eval(script.textContent);
+    const title = w.document.querySelector('[data-spot-page-fallback] h1');
+    assert.equal(w.getComputedStyle(title).visibility, 'hidden');
+    assert.equal(w.MADO_SPOT_PAGE_READY, undefined);
+    assert.equal(timers.length, 1); assert.equal(timers[0].delay, 2000);
+    timers[0].callback();
+    assert.equal(w.getComputedStyle(title).visibility, 'visible');
+    assert.equal(w.document.getElementById('spot-page-boot-style'), null);
+    assert.deepEqual(cleared, [1]);
+  } finally { dom.window.close(); }
+});
+
+test('thin loading gate hides fallback until readiness and cancels the head deadline', async t => {
+  const h = harness(t, { autoLoad: false, bootHTML: await actualBootHTML() });
+  assert.equal(h.w.getComputedStyle(h.document.querySelector('h1')).visibility, 'hidden');
+  await flush();
+  for (const file of [...STYLES, ...SPOT_SCRIPTS.slice(0, 2)]) h.finish(file);
+  await h.w.MADO_SPOT_PAGE_READY;
+  assert.equal(h.w.getComputedStyle(h.document.querySelector('h1')).visibility, 'visible');
+  assert.equal(h.document.documentElement.classList.contains('spot-page-loading'), false);
+  assert.deepEqual(h.clearedTimers, [1]);
+  assert.equal(h.state.ready, true);
+  for (const file of SPOT_SCRIPTS.slice(2)) h.finish(file);
+  await h.settle();
+});
+
+test('required failure releases the loading gate while preserving readable fallback', async t => {
+  const h = harness(t, { autoLoad: false, bootHTML: await actualBootHTML() });
+  await flush();
+  h.finish('style.css', false); await h.w.MADO_SPOT_PAGE_READY;
+  assert.equal(h.w.getComputedStyle(h.document.querySelector('h1')).visibility, 'visible');
+  assertReadingEntrances(h); assert.deepEqual(h.clearedTimers, [1]);
+  assert.equal(h.document.documentElement.classList.contains('spot-page-loading'), false);
+  for (const file of ['spot-media-gallery.css', ...SPOT_SCRIPTS]) h.finish(file, false);
+  await h.settle();
+});
+
+test('thin entry registers readiness before earlier deferred page enhancements execute', () => {
+  for (const enhancement of ['tokyo-sightline.js', 'fujimi-sightline.js']) {
+    const html = `<html><head></head><body class="spot-page" data-spot-page-shared-mode="page"><main>Fallback</main><script defer src="../${enhancement}"></script></body></html>`;
+    const output = withSiteRuntimeLoader(html, '../');
+    const dom = new JSDOM(output);
+    try {
+      const scripts = [...dom.window.document.scripts];
+      assert.equal(scripts[0].defer, true);
+      assert.match(scripts[1].src, /site-runtime-loader\.js\?v=[a-f0-9]{8}$/);
+      assert.equal(scripts[1].defer, false, 'Parser execution must register READY before deferred dependents');
+      assert.equal(withSiteRuntimeLoader(output, '../'), output);
+    } finally { dom.window.close(); }
+  }
+  for (const body of ['<body>', '<body data-spot-page-shared-mode="rail">', '<body data-spot-page-shared-mode="page" data-article-localized="">']) {
+    const dom = new JSDOM(withSiteRuntimeLoader(`<html><head></head>${body}<main>Static article</main></body></html>`));
+    try { assert.equal(dom.window.document.scripts[0].defer, true); } finally { dom.window.close(); }
+  }
+});
+
+test('thin boot keeps explicitly visible descendants hidden until required CSS finishes', async t => {
+  const h = harness(t, { autoLoad: false, extraArticle: '<aside class="spot-page-rail-spot is-current"><a><span class="spot-page-shared-preview">Current spot preview</span></a></aside>' });
+  assert.equal(h.w.getComputedStyle(h.document.querySelector('#article h1')).visibility, 'visible', 'Static reading fallback remains available');
+  await flush();
+  const css = h.document.createElement('style');
+  css.textContent = '.spot-page .spot-page-rail-spot.is-current .spot-page-shared-preview { visibility:visible; }';
+  h.document.head.append(css);
+  h.finish('style.css');
+  h.finish('spot-page-shared-data.js'); h.finish('spot-page-shared.js'); await flush();
+  const preview = h.document.querySelector('.spot-page-shared-preview');
+  assert.equal(h.state.ready, false);
+  assert.equal(h.w.getComputedStyle(preview).visibility, 'hidden', 'Child visibility must not escape the pending CSS gate');
+  h.finish('spot-media-gallery.css'); await h.w.MADO_SITE_RUNTIME_READY;
+  assert.equal(h.w.getComputedStyle(preview).visibility, 'visible');
+  for (const file of SPOT_SCRIPTS.slice(2)) h.finish(file);
+  await h.settle();
+});
 
 test('desktop and iOS never fetch Android code or an otherwise unused manifest', async t => {
   for (const userAgent of ['Mozilla/5.0 Windows NT 10.0 Chrome/130.0', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0) Safari/604.1']) {
@@ -61,13 +168,14 @@ function harness(t, {
   protocol = 'https:', scriptSrc = protocol === 'file:' ? 'file:///C:/site/site-runtime-loader.js?v=entry' : BASE + 'site-runtime-loader.js?v=entry',
   autoLoad = true, failFiles = [], spotPayloadAvailable = true, spotRendered = true,
   chromeRendered = true, lang = 'ja', userAgent = 'Mozilla/5.0 (Linux; Android 15) Chrome/130.0.0.0 Mobile Safari/537.36',
+  extraArticle = '', bootHTML = '',
 } = {}) {
   const attributes = mode === 'thin' ? 'data-spot-page-shared-mode="page"'
     : mode === 'translated' ? 'data-spot-page-shared-mode="page" data-article-localized="fr"'
       : mode === 'other-mode' ? 'data-spot-page-shared-mode="rail"' : '';
-  const originalArticle = '<h1>Existing title</h1><p>Existing lead</p><a href="../start.html">Train search</a>';
+  const originalArticle = '<h1>Existing title</h1><p>Existing lead</p><a href="../start.html">Train search</a>' + extraArticle;
   const hostAttribute = mode === 'thin' ? ' data-spot-page-shared-module="page"' : '';
-  const dom = new JSDOM(`<html lang="${lang}"><head><style id="spot-page-boot-style">.pending{visibility:hidden}</style></head><body ${attributes}><header id="page-header"><a href="../index.html">Original navigation</a></header><main id="article"${hostAttribute}>${originalArticle}</main><footer id="page-footer"><a href="../zukan.html">Original footer</a></footer></body></html>`, {
+  const dom = new JSDOM(`<html lang="${lang}"><head>${bootHTML || '<style id="spot-page-boot-style">.spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; }</style>'}</head><body class="${mode === 'thin' ? 'spot-page' : ''}" ${attributes}><header id="page-header"><a href="../index.html">Original navigation</a></header><main id="article"${hostAttribute}>${originalArticle}</main><footer id="page-footer"><a href="../zukan.html">Original footer</a></footer></body></html>`, {
     url: protocol === 'file:' ? 'file:///C:/site/spots/fuji.html' : 'https://example.test/spots/fuji.html',
     runScripts: 'outside-only',
   });
@@ -86,6 +194,12 @@ function harness(t, {
   const events = [], downloads = [], executions = [], reveals = [], fetchCalls = [];
   const scripts = []; let executionIndex = 0;
   const state = { ready: false };
+  const timers = [], clearedTimers = [];
+  if (bootHTML) {
+    w.setTimeout = (callback, delay) => { timers.push({ callback, delay }); return timers.length; };
+    w.clearTimeout = id => clearedTimers.push(id);
+    w.eval(document.getElementById('spot-page-boot').textContent);
+  }
   const boot = document.getElementById('spot-page-boot-style');
   const removeBoot = boot.remove.bind(boot);
   boot.remove = () => { reveals.push({ downloads: [...downloads], executions: [...executions] }); removeBoot(); };
@@ -141,7 +255,7 @@ function harness(t, {
   };
   w.eval(source);
   w.MADO_SITE_RUNTIME_READY.then(() => { state.ready = true; });
-  return { w, document, events, downloads, executions, reveals, fetchCalls, finish, state,
+  return { w, document, events, downloads, executions, reveals, fetchCalls, finish, state, timers, clearedTimers,
     initialArticle, initialHeader, initialFooter,
     async settle() { await w.MADO_SITE_RUNTIME_READY; await w.MADO_SITE_ENHANCEMENTS_READY; await flush(); },
   };

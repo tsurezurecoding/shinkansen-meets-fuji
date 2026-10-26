@@ -108,6 +108,6 @@
   <footer><p class="footer-links"><a href="guide.html">富士山の見方</a> · <a href="references.html">車窓リンク集</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p><p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p></footer>
   <script src="track.js"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"contact.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":13,"value":"page"}],"menu":"header-references-menu","menuRoute":"contact.html"}]}</script>
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

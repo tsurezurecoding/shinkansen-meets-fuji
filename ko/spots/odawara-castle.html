@@ -4,6 +4,7 @@
   <link rel="manifest" href="../../manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
+  <script id="spot-page-boot">(function(){var timer;function release(){window.clearTimeout(timer);document.documentElement.classList.remove('spot-page-loading');var style=document.getElementById('spot-page-boot-style');if(style)style.remove();}window.MADO_SPOT_PAGE_BOOT_RELEASE=release;document.documentElement.classList.add('spot-page-loading');timer=window.setTimeout(release,2000);}());</script>
   <noscript><style>.spot-page > * { visibility:visible; }</style></noscript>
   <script src="../../app-embedded.js?v=32708d67"></script>
   <link rel="stylesheet" href="../../app-embedded.css?v=147f8289">
@@ -192,5 +193,5 @@
 
 <script src="../../spot-page-shared.js?v=3f269e60"></script><script src="../../spot-media-gallery.js?v=3389cf41"></script><script src="../../spot-map.js?v=1ed79613"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ko.shell.js","shared-ui/ko.rail-spots-fuji.js","shared-ui/ko.cards.js"],"root":"../../","lang":"ko","route":"spots/odawara-castle.html","mounts":[{"host":"chrome-0","component":"header-spots-fuji","kind":"header","menu":"header-spots-fuji-menu","menuRoute":"spots/odawara-castle.html"},{"host":"chrome-1","component":"rail-spots-fuji","kind":"rail","currentHTML":"\u003cp class=\"spot-page-rail-now\">\u003cb>오다와라성\u003c/b>도쿄 출발 약 31분 후 · A석 · 신오사카 방향 왼쪽, 도쿄 방향 오른쪽\u003c/p>","currentRoute":"ko/spots/odawara-castle.html"},{"host":"chrome-2","component":"tools-spots-fuji","kind":"tools"},{"host":"chrome-3","component":"showcase-spots-fuji","kind":"showcase"},{"host":"chrome-4","component":"content-start","kind":"content"}]}</script>
-<script src="../../site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="../../site-runtime-loader.js?v=a8ffb108" defer></script>
 </body></html>

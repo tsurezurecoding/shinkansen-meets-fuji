@@ -183,6 +183,6 @@
     })();
   </script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"references.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":12,"value":"page"}],"menu":"header-references-menu","menuRoute":"references.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"}]}</script>
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

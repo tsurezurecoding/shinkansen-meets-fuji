@@ -127,6 +127,6 @@
   <footer class="footer" data-site-chrome-host="chrome-2"><nav data-site-chrome-fallback><a href="../en/guide.html">See Mt. Fuji</a> · <a href="../en/references.html">Window View Links</a> · <a href="../en/mieru.html">Visibility Forecast β</a></nav></footer>
   <script src="../track.js"></script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"privacy.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":12,"value":"page"}],"menu":"header-android-app-menu","menuRoute":"privacy.html"},{"host":"chrome-1","component":"content-references","kind":"content"},{"host":"chrome-2","component":"footer-references","kind":"footer"}]}</script>
-<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

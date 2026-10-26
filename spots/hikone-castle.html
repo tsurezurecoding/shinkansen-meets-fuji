@@ -5,7 +5,8 @@
   <script src="../locales.js?v=6585facb"></script>
   <link rel="manifest" href="../manifest.json">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style id="spot-page-boot-style">html { background:#faf6ef; } .spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; } [data-spot-page-fallback] { max-width:52rem; margin:3rem auto; padding:0 1rem; font:1rem/1.7 system-ui,sans-serif; color:#292723; }</style>
+  <style id="spot-page-boot-style">html { background:#faf6ef; } .spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; } html.spot-page-loading .spot-page > *, html.spot-page-loading .spot-page > * * { visibility:hidden !important; } [data-spot-page-fallback] { max-width:52rem; margin:3rem auto; padding:0 1rem; font:1rem/1.7 system-ui,sans-serif; color:#292723; }</style>
+  <script id="spot-page-boot">(function(){var timer;function release(){window.clearTimeout(timer);document.documentElement.classList.remove('spot-page-loading');var style=document.getElementById('spot-page-boot-style');if(style)style.remove();}window.MADO_SPOT_PAGE_BOOT_RELEASE=release;document.documentElement.classList.add('spot-page-loading');timer=window.setTimeout(release,2000);}());</script>
   <noscript><style>.spot-page > * { visibility:visible; }</style></noscript>
   <script src="../app-embedded.js?v=32708d67"></script>
   <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
@@ -185,6 +186,6 @@
 <!-- ANDROID_APP_INVITE_START -->
 <script type="application/json" id="mado-android-invite-config">{"language":"ja","pageContext":"spot","assetPrefix":"../","general":false}</script>
 <!-- ANDROID_APP_INVITE_END -->
-<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="../site-runtime-loader.js?v=a8ffb108"></script>
 </body>
 </html>

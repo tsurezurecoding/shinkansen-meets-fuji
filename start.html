@@ -286,6 +286,6 @@
 <script type="application/json" id="mado-android-invite-config">{"language":"ja","pageContext":"train_search","assetPrefix":"","general":false}</script>
 <!-- ANDROID_APP_INVITE_END -->
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"start.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","menu":"header-start-menu-2","menuRoute":"start.html"}]}</script>
-<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

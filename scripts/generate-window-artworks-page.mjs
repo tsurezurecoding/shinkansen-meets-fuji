@@ -25,7 +25,9 @@ for(const lang of ['ja','en']){
 (function () {
  var card=document.currentScript.previousElementSibling;
  var native=!!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform==='function' && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform==='function' && window.Capacitor.getPlatform()!=='web')));
- ${w.webOnly ? "var bundled=native || (location.protocol==='file:' && location.pathname.charAt(2)!==':') || location.hostname==='localhost';" : "var bundled=native || location.protocol==='file:' || location.hostname==='localhost';"}
+ // A local browser preview also uses file: or localhost; only native bundle
+ // signals justify suppressing an image that is absent from the Android bundle.
+ var bundled=native || location.protocol==='capacitor:' || (location.protocol==='file:' && /^\\/android_asset(?:\\/|$)/.test(location.pathname));
  if(bundled) { card.querySelector('a[hidden]').remove(); return; }
  var image=card.querySelector('img'); image.src=image.dataset.filmImage;
  var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',${JSON.stringify(w.route)});
