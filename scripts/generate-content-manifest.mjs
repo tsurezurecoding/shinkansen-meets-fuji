@@ -7,9 +7,14 @@ import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-local
 import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import locales, { episodes } from './shared/locales.mjs';
+import { generateSpotPageRuntime } from './generate-spot-page-runtime.mjs';
 
 const appRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteBaseUrl = "https://www.michikusa-travel.com/";
+// The release inventory and the browser's small boot manifest share the same
+// asset bytes. Validation must never repair the working tree as a side effect.
+const runtime = await generateSpotPageRuntime({ appDir: appRoot, check: Boolean(process.env.MADO_CONTENT_MANIFEST_OUTPUT) });
+if (process.env.MADO_CONTENT_MANIFEST_OUTPUT && runtime.changed) throw new Error('spot-page-runtime.json is stale. Run node scripts/generate-spot-page-runtime.mjs.');
 
 // content-manifest.json の files は、この配列が単一ソース。
 //
@@ -18,6 +23,7 @@ const siteBaseUrl = "https://www.michikusa-travel.com/";
 //
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
+  "spot-page-runtime.json",
   ...locales.starter.flatMap(lang => [...locales.starterRoutes.map(route => `${lang}/${route}`), `${lang}/utility-data.js`]),
   "window-quiz.html", "window-guesser.html", ...await walkFiles("quiz", p => /\.(?:js|css|jpg|webp|mp4)$/.test(p)),
   "memory-express.html",
@@ -273,6 +279,6 @@ await writeFile(
 );
 
 console.log(`content-manifest.json generated: ${manifest.contentVersion}`);
-console.log(`content files: ${files.length} (${files.map((item) => item.path).join(", ")})`);
+console.log(`content files: ${files.length}`);
 console.log(`audio packs: ${manifest.audioPacks.map((pack) => `${pack.direction}/${pack.language} ${pack.itemCount} files ${pack.bytes} bytes`).join(", ")}`);
 console.log(`thumbnails: ${manifest.thumbnails.itemCount} files ${manifest.thumbnails.bytes} bytes`);

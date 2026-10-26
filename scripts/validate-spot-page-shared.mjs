@@ -3,6 +3,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { fileURLToPath } from "node:url";
+import { JSDOM } from "jsdom";
 import { SPOTS as GENERATED_SPOTS, spotPageHTML } from "./generate-spot-pages.mjs";
 import { fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
@@ -149,16 +150,14 @@ async function runThinValidator() {
     }
   }
 
-  function assertStaticDiscoveryRail(html, lang, rootPath, label) {
-    const pattern = /<section\b(?=[^>]*\bdata-spot-page-shared-static="content-rail")(?=[^>]*\bclass="[^"]*\bcontent-rail-discovery\b)[^>]*>[\s\S]*?<\/section>/g;
+  function assertDiscoveryRail(html, lang, rootPath, label) {
+    const pattern = /<section\b(?=[^>]*\bclass="[^"]*\bcontent-rail-discovery\b)[^>]*>[\s\S]*?<\/section>/g;
     const matches = html.match(pattern) || [];
     if (matches.length !== 1) {
-      fail(`${label}: expected one static discovery rail, found ${matches.length}`);
+      fail(`${label}: expected one rendered discovery rail, found ${matches.length}`);
       return;
     }
     const rail = matches[0];
-    const pageHostIndex = html.indexOf('<div data-spot-page-shared-module="page"></div>');
-    if (pageHostIndex < 0 || html.indexOf(rail) <= pageHostIndex) fail(`${label}: static discovery rail must follow the page module at the end of the page body`);
     const cards = [...rail.matchAll(/<a\b[^>]*class="content-rail-card[^\"]*"[^>]*>/g)].map((match) => match[0]);
     const hrefs = cards.map((card) => card.match(/\bhref="([^"]+)"/)?.[1] || "");
     const base = rootPath + (lang === "en" ? "en/" : "");
@@ -200,6 +199,27 @@ async function runThinValidator() {
     return `<body class="spot-page" data-spot-page-shared-lang="${lang}" data-spot-page-shared-id="${id}" data-spot-page-shared-root="${rootPath}" data-spot-page-shared-mode="page">`;
   }
 
+  function assertStaticFallback(html, lang, id, label) {
+    const dom = new JSDOM(html, { url: `https://www.michikusa-travel.com/${label}` });
+    const doc = dom.window.document;
+    const hosts = [...doc.querySelectorAll('[data-spot-page-shared-module]')];
+    if (hosts.map(host => host.getAttribute('data-spot-page-shared-module')).join(',') !== 'topbar,page,content-rail') fail(`${label}: thin page must contain ordered topbar, page and content-rail hosts`);
+    if (hosts[0]?.innerHTML.trim() || hosts[2]?.innerHTML.trim()) fail(`${label}: common chrome must not be baked into thin hosts`);
+    const fallbacks = doc.querySelectorAll('main[data-spot-page-fallback]');
+    const fallback = fallbacks[0];
+    if (fallbacks.length !== 1 || fallback?.parentElement !== hosts[1]) fail(`${label}: one static fallback must remain inside the page host`);
+    if (!fallback?.querySelector('h1')?.textContent.trim() || !fallback?.querySelector('p')?.textContent.trim()) fail(`${label}: fallback heading or lead is missing`);
+    const urls = [...(fallback?.querySelectorAll('a[href]') || [])].map(link => new URL(link.href));
+    const prefix = lang === 'ja' ? '/' : '/en/';
+    for (const destination of [`${prefix}start.html#journey`, `${prefix}live/`, `${prefix}zukan.html`, `/spots/${id}.html`, `/en/spots/${id}.html`]) {
+      const expected = new URL(destination, 'https://www.michikusa-travel.com');
+      if (!urls.some(url => url.pathname === expected.pathname && url.hash === expected.hash && (expected.pathname !== `/spots/${id}.html` || lang === 'ja' || url.searchParams.get('lang') === 'ja'))) fail(`${label}: static fallback is missing ${destination}`);
+    }
+    const markup = html.match(/<main\b(?=[^>]*\bdata-spot-page-fallback)[^>]*>[\s\S]*?<\/main>/)?.[0] || '';
+    dom.window.close();
+    return markup;
+  }
+
   function makeHost() {
     let rendered = "";
     const attrs = {};
@@ -209,13 +229,19 @@ async function runThinValidator() {
       classList: { contains: (name) => host.className.split(/\s+/).includes(name) },
       setAttribute(name, value) { attrs[name] = String(value); },
       getAttribute(name) { return attrs[name] || null; },
+      remove() { rendered = ''; },
     };
+    host.parentNode = { removeChild() { rendered = ''; } };
     Object.defineProperty(host, "outerHTML", { get: () => rendered, set: (value) => { rendered = String(value); } });
     return host;
   }
 
   function renderPage(lang, rootPath, currentId, mutateData, embedded = false, code = rendererCode) {
     const host = makeHost();
+    const chrome = { topbar: makeHost(), 'content-rail': makeHost() };
+    const hosts = { topbar: chrome.topbar, page: host, 'content-rail': chrome['content-rail'] };
+    const readyEvents = [];
+    const legacyRenderer = code === baselineRendererCode;
     const createdScripts = [];
     const bodyClasses = new Set(["spot-page"]);
     const lightboxImage = { src: "" };
@@ -249,9 +275,11 @@ async function runThinValidator() {
       createElement() { return { async: false, src: "", charset: "" }; },
       getElementById(id) { return id === "spotPageLightbox" ? lightbox : null; },
       addEventListener() {},
+      dispatchEvent(event) { readyEvents.push(event.type); return true; },
       querySelectorAll(selector) {
-        // レンダラはホスト重複検査で、値なしの [data-spot-page-shared-module] も引く。
-        if (selector.includes("data-spot-page-shared-module")) return [host];
+        if (selector === '[data-spot-page-shared-module]') return legacyRenderer ? [host] : Object.values(hosts);
+        const match = selector.match(/data-spot-page-shared-module="([^"]+)"/);
+        if (match) return hosts[match[1]] ? [hosts[match[1]]] : [];
         return [];
       },
     };
@@ -259,14 +287,14 @@ async function runThinValidator() {
     // それまでに積んだ検証失敗まで捨ててしまう。描画専用の受け皿を持つ。
     const renderErrors = [];
     const console = { error(message) { renderErrors.push(String(message)); } };
-    const context = { document, console, MADO_EMBEDDED_WEB: embedded };
+    const context = { document, console, MADO_EMBEDDED_WEB: embedded, Event: class { constructor(type) { this.type = type; } }, CustomEvent: class { constructor(type) { this.type = type; } } };
     context.window = context;
     vm.runInNewContext(sharedDataCode, context, { filename: dataPath });
     const pagePayloadPath = pagePayloadRelativePath(currentId, lang);
     if (pagePayloadCode.has(pagePayloadPath)) vm.runInNewContext(pagePayloadCode.get(pagePayloadPath), context, { filename: pagePayloadPath });
     if (mutateData) mutateData(context.MADO_SPOT_PAGE_SHARED_DATA, context.MADO_SPOT_PAGE_DATA);
     vm.runInNewContext(code, context, { filename: rendererPath });
-    return { html: host.outerHTML, host, createdScripts, errors: renderErrors.splice(0) };
+    return { html: host.outerHTML, chromeHTML: chrome.topbar.outerHTML + chrome['content-rail'].outerHTML, topbarHTML: chrome.topbar.outerHTML, contentRailHTML: chrome['content-rail'].outerHTML, rendered: context.MADO_SPOT_PAGE_RENDERED === true, readyEvents, host, createdScripts, errors: renderErrors.splice(0) };
   }
 
   function assertSpotPageShellMarkup(html, expectedClass, label) {
@@ -440,9 +468,9 @@ async function runThinValidator() {
       if (onDisk !== generatedHTML) fail(`${relativeFile} does not match in-memory thin generation`);
       const bodyTag = onDisk.match(/<body[^>]*>/)?.[0] || "";
       const prefix = lang === "ja" ? "../" : "../../";
-      assertStaticDiscoveryRail(onDisk, lang, prefix, relativeFile);
       if (bodyTag !== strictHostHTML(lang, spot.id, prefix)) fail(`${relativeFile} body context/mode is incorrect`);
-      if (count(onDisk, /data-spot-page-shared-module=/g) !== 1 || count(onDisk, /<div data-spot-page-shared-module="page"><\/div>/g) !== 1) fail(`${relativeFile} must have exactly one strict thin page host`);
+      const fallback = assertStaticFallback(onDisk, lang, spot.id, relativeFile);
+      if (count(onDisk, /data-spot-page-shared-module=/g) !== 3 || count(onDisk, /data-spot-page-shared-module="page"/g) !== 1) fail(`${relativeFile} must have exactly three thin hosts and one page host`);
       const body = onDisk.slice(onDisk.indexOf("<body"));
       // Generated, opt-in supplements can have a static photo fallback. Exempt
       // only its exact generated block; the rest of the thin page stays checked.
@@ -451,11 +479,12 @@ async function runThinValidator() {
       // The exact generated invitation is a separate shared component. The
       // on-disk/in-memory equality check above still rejects altered blocks.
       const inviteBlock = generatedHTML.match(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/)?.[0] || '';
-      const thinBody = (supplement ? body.replace(supplement, '') : body).replace(inviteBlock, '');
+      const thinBody = (supplement ? body.replace(supplement, '') : body).replace(inviteBlock, '').replace(fallback, '');
       if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(thinBody)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
       // ?v= は sync-asset-versions.mjs が内容ハッシュから振る。値そのものではなく
       // 「どのファイルをどの順で読むか」だけを固定する。
-      const scripts = ["spot-page-shared-data.js", pagePayloadRelativePath(spot.id, lang), "spot-page-loader.js"];
+      const scripts = [pagePayloadRelativePath(spot.id, lang), "spot-page-loader.js"];
+      if (/<script\b[^>]*src="[^"]*spot-page-shared-data\.js/.test(onDisk)) fail(`${relativeFile} must load the shared catalog through the loader`);
       // 他スポットの本文を読み込んでいたら、分割の意味が消える。
       const foreignPayloads = (onDisk.match(/data\/spot-pages\/[A-Za-z0-9-]+\.(?:ja|en)\.js/g) || []).filter((match) => match !== pagePayloadRelativePath(spot.id, lang));
       if (foreignPayloads.length) fail(`${relativeFile} loads page payloads for other spots: ${[...new Set(foreignPayloads)].join(", ")}`);
@@ -469,7 +498,7 @@ async function runThinValidator() {
         previous = index;
       }
       const page = pages[spot.id][lang];
-      const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<link rel="stylesheet" href="[^"]*(?:style|spot-media-gallery)\.css[^"]*">/g, "").replace(/((?:src|href)="[^"]+\.(?:js|css))\?v=[A-Za-z0-9._-]+/g, "$1").replace(/\s+/g, " ").trim();
+      const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<style id="spot-page-boot-style">[\s\S]*?<\/style>/g, '').replace(/\s*<noscript><style>(?:\[data-spot-page-shared-static\]|\.spot-page > \*) \{ visibility:visible; \}<\/style><\/noscript>/g, '').replace(/\s*<link rel="stylesheet" href="[^"]*(?:style|spot-media-gallery)\.css[^"]*">/g, "").replace(/((?:src|href)="[^"]+\.(?:js|css))\?v=[A-Za-z0-9._-]+/g, "$1").replace(/\s+/g, " ").trim();
       if (baselineCommit) {
         const baselineHTML = execFileSync("git", ["show", `${baselineCommit}:${relativeFile}`], { cwd: appDir, encoding: "utf8" });
         if (normalizedHead(onDisk) !== normalizedHead(baselineHTML)) fail(`${relativeFile} static SEO/head changed from explicit baseline ${baselineSelector} (${baselineCommit})`);
@@ -477,6 +506,9 @@ async function runThinValidator() {
       const rendered = renderPage(lang, prefix, spot.id);
       if (rendered.errors.length) fail(`${relativeFile} renderer failed: ${rendered.errors.join(" | ")}`);
       const output = rendered.html;
+      if (!rendered.rendered || rendered.readyEvents.filter(type => type === 'mado:shared-ui-ready').length !== 1) fail(`${relativeFile}: shared UI must report one successful render`);
+      if (count(rendered.topbarHTML, /class="topbar"/g) !== 1 || output.includes('data-spot-page-fallback')) fail(`${relativeFile}: rendered chrome or fallback replacement is invalid`);
+      assertDiscoveryRail(rendered.contentRailHTML, lang, prefix, relativeFile);
       assertWheelRail(output, lang, prefix, relativeFile);
       assertCompactGuide(output, page, lang, prefix, relativeFile);
       if (lang === "en" && /[\u3040-\u30ff\u3400-\u9fff]/.test(output.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] || "")) fail(`${relativeFile}: English page heading contains Japanese text`);
@@ -541,6 +573,7 @@ async function runThinValidator() {
       assertSpotPageShellMarkup(output, "spot-page-shell", `${relativeFile} normal renderer`);
       const embeddedRendered = renderPage(lang, prefix, spot.id, undefined, true);
       if (embeddedRendered.errors.length) fail(`${relativeFile} embedded renderer failed: ${embeddedRendered.errors.join(" | ")}`);
+      if (embeddedRendered.chromeHTML || !embeddedRendered.rendered) fail(`${relativeFile}: embedded article must render successfully without duplicate chrome`);
       assertSpotPageShellMarkup(embeddedRendered.html, "spot-page-shell mado-embedded-shell", `${relativeFile} embedded renderer`);
       const desktopRailStart = output.indexOf('<aside class="spot-page-rail"');
       const desktopRailEnd = desktopRailStart >= 0 ? output.indexOf("</aside>", desktopRailStart) : -1;
@@ -650,7 +683,7 @@ async function runThinValidator() {
   if (strayPayloads.length) fail(`${PAGE_PAYLOAD_DIR} holds payloads with no spot in data.js: ${strayPayloads.join(", ")}`);
 
   if (errors.length) throw new Error(`Thin shared spot-page validation failed:\n- ${errors.join("\n- ")}`);
-  console.log(`Thin shared validator passed: ${expectedSpotCount} page-backed spots × 2 languages = ${expectedPageCount} pages, exactly one page host each, 0 legacy body/affiliate residue.`);
+  console.log(`Thin shared validator passed: ${expectedSpotCount} page-backed spots × 2 languages = ${expectedPageCount} pages, three hosts with static fallback each, 0 legacy body/affiliate residue.`);
   console.log(`Payload schema v${payload.version}: catalog ${catalogBytes} bytes covers all ${allSourceIds.length} spot ids and ${expectedStationCount} stations; ${pagePayloadCode.size} split page payloads, largest ${largestPageBytes} bytes (${largestPagePath}); worst-case page load ${worstPageLoadBytes} bytes against a ${PAGE_LOAD_BYTE_BUDGET} byte budget.`);
   console.log(`Gallery contract passed for all ${expectedPageCount} pages; no-video pages omit the entire video chapter, and ${renderedVideoPageCount} structured video pages passed the shared 2-column/1-column CSS contract.`);
   console.log(`All ${expectedPageCount} pages render the shared full-width showcase, retire the in-article related block, and use one of ${expectedSpotCount} distressed-ink stamp SVGs behind an unshifted H1.`);

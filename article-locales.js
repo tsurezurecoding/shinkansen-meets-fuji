@@ -16,6 +16,7 @@
       if (header) { var host = document.createElement('div'); host.className = 'lang-switch'; header.appendChild(host); }
     }
     document.querySelectorAll('.lang-switch, .article-lang-menu').forEach(function (host) {
+      if (host.classList.contains('article-lang-menu')) return;
       var menu = document.createElement('details');
       menu.className = 'guide-lang-menu article-lang-menu';
       var summary = document.createElement('summary');
@@ -45,4 +46,5 @@
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', connect); else connect();
+  document.addEventListener('mado:shared-ui-ready', connect);
 }());

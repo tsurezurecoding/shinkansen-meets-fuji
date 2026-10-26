@@ -307,7 +307,7 @@
           "<div class=\"top-nav-menu\">" +
             "<a class=\"top-nav-menu-stamp\" href=\"" + escapeHTML(href(base, "journal.html")) + "\">" + escapeHTML(ui.journal) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "guide.html")) + "\">" + escapeHTML(ui.faq) + "</a>" +
-            "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(ui.forecast) + "</a>" +
+            "<a href=\"" + escapeHTML(href(base, "mieru.html")) + "\">" + escapeHTML(lang === "ja" && currentId && !utilityRoute ? "今日、富士山は見えるか" : ui.forecast) + "</a>" +
             "<a href=\"" + escapeHTML(href(base, "window-artworks.html")) + "\">" + escapeHTML(ui.artworks) + "</a>" +
             (lang === "ja" ? "<a href=\"" + escapeHTML(href(base, "sudoori/index.html#stories")) + "\">素通りの街</a><a href=\"" + escapeHTML(href(base, "window-quiz.html")) + "\">車窓クイズ</a>" : "") +
             "<a href=\"" + escapeHTML(href(base, "references.html")) + "\">" + escapeHTML(ui.links) + "</a>" +
@@ -883,10 +883,7 @@
     var showcase = embedded ? "" : showcaseHTML(data, rootPath, lang);
     var rail = embedded ? "" : railHTML(data, rootPath, lang, currentId, null, null, { noPromos: true });
     var mobilePromos = "";
-    // topbar nav and the bottom content rail are baked as static HTML by the
-    // generator (see generate-spot-pages.mjs thinSpotPageHTML). Rendering them
-    // again here would duplicate the nav/content-rail on screen, so this
-    // renderer no longer produces them for spot pages.
+    // Chrome has separate hosts so page-specific supplements keep their order.
     var references = "<section class=\"spot-page-section spot-page-refs\"><h2>" + escapeHTML(UI[lang].sectionRefs || (lang === "ja" ? "参考リンク" : "References")) + "</h2><ul>" + (page.references || []).map(function (item) { return "<li><a href=\"" + escapeHTML(item.href) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(item.label) + "</a></li>"; }).join("") + "</ul></section>";
     if (page.readingLayout) {
       var sources = (page.references || []).concat(page.bodyLinks || []).filter(function (item, index, all) { return all.findIndex(function (other) { return other.href === item.href; }) === index; });
@@ -982,6 +979,7 @@
     if (root.console && typeof root.console.error === "function") root.console.error("[spot-page-shared] " + (error && error.message ? error.message : error));
     hosts.forEach(function (host) {
       if (!host) return;
+      if (host.querySelector && host.querySelector('[data-spot-page-fallback]')) return;
       host.className = "spot-page-shared-error";
       host.setAttribute("role", "alert");
       host.textContent = message;
@@ -1020,7 +1018,10 @@
       var pageHost = findOptionalHost("page");
       if (pageHost) {
         hosts = [pageHost];
-        if (document.querySelectorAll("[" + HOST_ATTRIBUTE + "]").length !== 1) throw new Error("thin spot page must have exactly one shared host");
+        var headerHost = findOptionalHost("topbar");
+        var footerHost = findOptionalHost("content-rail");
+        var expectedHostCount = 1 + (headerHost ? 1 : 0) + (footerHost ? 1 : 0);
+        if (document.querySelectorAll("[" + HOST_ATTRIBUTE + "]").length !== expectedHostCount || !!headerHost !== !!footerHost) throw new Error("thin spot page shared hosts are malformed");
         var pageLang = document.body.getAttribute("data-spot-page-shared-lang") || "";
         var pageId = document.body.getAttribute("data-spot-page-shared-id") || "";
         var pageRoot = normalizeRoot(document.body.getAttribute("data-spot-page-shared-root"));
@@ -1031,7 +1032,13 @@
         // 別スポット・別言語のペイロードが読み込まれていたら描画しない。
         if (!pageBody || pageBody.id !== pageId || pageBody.lang !== pageLang) throw new Error("page payload does not match this page context");
         validatePageData(pageBody, pageId, pageLang);
-        pageHost.outerHTML = pageHTML(pageData, pageBody, pageRoot, pageLang, pageId);
+        // Construct all required fragments before replacing the static fallback.
+        var articleHTML = pageHTML(pageData, pageBody, pageRoot, pageLang, pageId);
+        var headerHTML = headerHost && !root.MADO_EMBEDDED_WEB ? siteHeaderHTML(pageRoot, pageLang, pageId) : "";
+        var footerHTML = footerHost && !root.MADO_EMBEDDED_WEB ? discoveryContentRailHTML(pageRoot, pageLang) : "";
+        if (headerHost) headerHost.outerHTML = headerHTML;
+        if (footerHost) footerHost.outerHTML = footerHTML;
+        pageHost.outerHTML = articleHTML;
         if (root.MADO_EMBEDDED_WEB) {
           var staticHosts = document.querySelectorAll("[data-spot-page-shared-static]");
           for (var staticIndex = 0; staticIndex < staticHosts.length; staticIndex += 1) {
@@ -1041,6 +1048,8 @@
         }
         bindPageLightbox();
         ensureXWidgetsScript(pageBody);
+        root.MADO_SPOT_PAGE_RENDERED = true;
+        if (typeof root.Event === "function" && document.dispatchEvent) document.dispatchEvent(new root.Event("mado:shared-ui-ready"));
         // The article is inserted after navigation, so restore a chapter deep link now.
         if (pageBody.chapters && root.location && root.location.hash) {
           var chapterId = root.location.hash.slice(1);
@@ -1121,10 +1130,11 @@
       hosts[2].outerHTML = contentRailHTML(rootPath, lang);
       if (showcaseHost) showcaseHost.outerHTML = showcaseHTML(data, rootPath, lang);
     } catch (error) {
+      root.MADO_SPOT_PAGE_RENDERED = false;
       fail(hosts, error);
     }
   }
 
-  root.MADO_SPOT_PAGE_COMPONENTS = { readingCollectionHTML: readingCollectionHTML, discoveryContentRailHTML: discoveryContentRailHTML, compactGuideHTML: compactGuideHTML };
+  root.MADO_SPOT_PAGE_COMPONENTS = { siteHeaderHTML: siteHeaderHTML, contentRailHTML: contentRailHTML, readingCollectionHTML: readingCollectionHTML, discoveryContentRailHTML: discoveryContentRailHTML, compactGuideHTML: compactGuideHTML };
   if (typeof document !== "undefined") render();
 }(typeof window !== "undefined" ? window : globalThis));

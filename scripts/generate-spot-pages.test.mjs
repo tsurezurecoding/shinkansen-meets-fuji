@@ -215,15 +215,75 @@ test("changed spot page plans still invoke the writer", () => {
   assert.deepEqual(writes, [changedPlan]);
 });
 
-function renderedArticle(id, lang, embedded = false) {
+function renderedArticle(id, lang, embedded = false, mutatePage) {
   const plan = planSpotPage(id, lang);
   const dom = new JSDOM(plan.generatedHTML, { runScripts: "outside-only", url: `https://example.test/${lang === "en" ? "en/" : ""}spots/${id}.html` });
   dom.window.MADO_EMBEDDED_WEB = embedded;
+  dom.window.__renderErrors = [];
+  dom.window.console.error = message => { dom.window.__renderErrors.push(String(message)); };
+  dom.window.__sharedUIReady = 0;
+  dom.window.document.addEventListener('mado:shared-ui-ready', () => { dom.window.__sharedUIReady += 1; });
   for (const relative of ["spot-page-shared-data.js", `data/spot-pages/${id}.${lang}.js`, "spot-page-shared.js"]) {
+    if (relative === 'spot-page-shared.js' && mutatePage) mutatePage(dom.window.MADO_SPOT_PAGE_DATA);
     dom.window.eval(fs.readFileSync(new URL(`../${relative}`, import.meta.url), "utf8"));
   }
   return dom;
 }
+
+test('thin spot shells keep static fallback entries and defer common chrome and catalog to runtime', () => {
+  for (const lang of ['ja', 'en']) {
+    const plan = planSpotPage('fuji', lang);
+    const dom = new JSDOM(plan.generatedHTML, { url: `https://example.test/${lang === 'en' ? 'en/' : ''}spots/fuji.html` });
+    const doc = dom.window.document;
+    assert.deepEqual([...doc.querySelectorAll('[data-spot-page-shared-module]')].map(el => el.dataset.spotPageSharedModule), ['topbar', 'page', 'content-rail']);
+    assert.equal(doc.querySelector('.topbar, .content-rail-section'), null);
+    const fallback = doc.querySelector('[data-spot-page-shared-module="page"] > main[data-spot-page-fallback]');
+    assert.ok(fallback?.querySelector('h1')?.textContent.trim());
+    assert.ok(fallback?.querySelector('p.spot-page-lead')?.textContent.trim());
+    const links = [...fallback.querySelectorAll('a[href]')].map(a => new URL(a.href));
+    const base = lang === 'ja' ? '/' : '/en/';
+    for (const target of [base + 'start.html#journey', base + 'live/', base + 'zukan.html', '/spots/fuji.html?lang=ja', '/en/spots/fuji.html']) {
+      const expected = new URL(target, dom.window.location.href);
+      assert.ok(links.some(url => url.href === expected.href), `${lang}: fallback ${target}`);
+    }
+    const runtime = [...doc.querySelectorAll('script[src]')].map(script => new URL(script.src).pathname);
+    assert.equal(runtime.filter(src => src.endsWith('/spot-page-shared-data.js')).length, 0);
+    assert.equal(runtime.filter(src => src === `/data/spot-pages/fuji.${lang}.js`).length, 1);
+    assert.equal(runtime.filter(src => src === '/spot-page-loader.js').length, 1);
+    assert.ok(runtime.indexOf(`/data/spot-pages/fuji.${lang}.js`) < runtime.indexOf('/spot-page-loader.js'));
+    dom.window.close();
+  }
+});
+
+test('runtime replaces fallback once and suppresses common chrome in embedded articles', () => {
+  for (const lang of ['ja', 'en']) for (const embedded of [false, true]) {
+    const dom = renderedArticle('fuji', lang, embedded);
+    const doc = dom.window.document;
+    assert.equal(dom.window.MADO_SPOT_PAGE_RENDERED, true);
+    assert.deepEqual(dom.window.__renderErrors, []);
+    assert.equal(dom.window.__sharedUIReady, 1);
+    assert.equal(doc.querySelector('[data-spot-page-fallback]'), null);
+    assert.equal(doc.querySelectorAll('h1').length, 1);
+    assert.equal(doc.querySelectorAll('.topbar').length, embedded ? 0 : 1);
+    assert.equal(doc.querySelectorAll('.content-rail-discovery').length, embedded ? 0 : 1);
+    assert.equal(doc.querySelectorAll('.spot-page-rail').length, embedded ? 0 : 1);
+    dom.window.close();
+  }
+});
+
+test('invalid page payload retains the static fallback and never announces successful chrome', () => {
+  for (const lang of ['ja', 'en']) {
+    const dom = renderedArticle('fuji', lang, false, page => { page.id = 'wrong-spot'; });
+    const doc = dom.window.document;
+    assert.notEqual(dom.window.MADO_SPOT_PAGE_RENDERED, true);
+    assert.ok(dom.window.__renderErrors.some(message => message.includes('page payload does not match')));
+    assert.equal(dom.window.__sharedUIReady, 0);
+    assert.ok(doc.querySelector('[data-spot-page-fallback] h1'));
+    assert.equal(doc.querySelectorAll('[data-spot-page-fallback] a[href]').length, 5);
+    assert.equal(doc.querySelector('.topbar, .content-rail-section'), null);
+    dom.window.close();
+  }
+});
 
 test('Fujikawa background notes use editorial headings and a safe static comparison; device advice is English-only', () => {
   for (const lang of ['ja', 'en']) for (const embedded of [false, true]) {

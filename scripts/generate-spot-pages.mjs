@@ -1071,21 +1071,10 @@ function thinSpotPageHTML(spot, lang) {
   // 従属スポットの個別URLは残るが、自分自身を代表として主張しない。
   const url = pageUrl(lang, canonicalSpotId(spot));
   const prefix = lang === "ja" ? "../" : "../../";
-  // Static link graph (2026-08-17): nav / content-rail / related-spot links are
-  // baked directly into the HTML so search engines do not depend on
-  // spot-page-shared.js executing to find them. Each block carries
-  // data-spot-page-shared-static so the runtime renderer (spot-page-shared.js)
-  // knows to leave it alone instead of re-inserting an equivalent element -
-  // that is what stops these from appearing twice. Body/photos/map/timeline
-  // stay JS-rendered as before; only the link graph is affected.
-  const staticNavHTML = siteHeaderHTML(
-    lang,
-    prefix,
-    lang === "ja" ? `${spot.id}.html` : `../../spots/${spot.id}.html`,
-    lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
-    { tag: "div", staticMarker: "topbar" },
-  );
-  const staticContentRailHTML = discoveryContentRailHTML(prefix, lang, { staticMarker: "content-rail" });
+  // Keep page identity and core navigation crawlable, without copying the shared
+  // header/card catalogue into every language/spot document.
+  const base = `${prefix}${lang === "en" ? "en/" : ""}`;
+  const fallbackHTML = `<main data-spot-page-fallback><h1>${escapeHTML(data.name)}</h1><p class="spot-page-lead">${escapeHTML(desc)}</p><nav aria-label="${lang === "ja" ? "車窓案内" : "Window guide"}"><a href="${base}start.html#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a> · <a href="${base}live/">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a> · <a href="${base}zukan.html">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a> · <a href="${prefix}spots/${spot.id}.html?lang=ja" lang="ja">日本語</a> · <a href="${prefix}en/spots/${spot.id}.html" lang="en">English</a></nav></main>`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -1106,8 +1095,8 @@ function thinSpotPageHTML(spot, lang) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style id="spot-page-boot-style">html { background:#faf6ef; } [data-spot-page-shared-static] { visibility:hidden; }</style>
-  <noscript><style>[data-spot-page-shared-static] { visibility:visible; }</style></noscript>
+  <style id="spot-page-boot-style">html { background:#faf6ef; } .spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; } [data-spot-page-fallback] { max-width:52rem; margin:3rem auto; padding:0 1rem; font:1rem/1.7 system-ui,sans-serif; color:#292723; }</style>
+  <noscript><style>.spot-page > * { visibility:visible; }</style></noscript>
   ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${tokyoSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}${spot.id === "fujikawa-bridge" ? `\n  <link rel="stylesheet" href="${prefix}fujikawa-frequency.css?v=${assetVersion("fujikawa-frequency.css")}">` : ""}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
@@ -1127,10 +1116,9 @@ function thinSpotPageHTML(spot, lang) {
   ${analyticsSnippet()}
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
-  ${staticNavHTML}
-  <div data-spot-page-shared-module="page"></div>${fujimiSightlineHTML(spot, lang, prefix)}${tokyoSightlineHTML(spot, lang, prefix)}
-  ${lang === "en" && spot.id === "gamagori-greenhouses" ? everydayRelatedHTML("greenhouses", "../") + '\n  ' : ""}${staticContentRailHTML}
-  <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
+  <div data-spot-page-shared-module="topbar"></div>
+  <div data-spot-page-shared-module="page">${fallbackHTML}</div>${fujimiSightlineHTML(spot, lang, prefix)}${tokyoSightlineHTML(spot, lang, prefix)}
+  ${lang === "en" && spot.id === "gamagori-greenhouses" ? everydayRelatedHTML("greenhouses", "../") + '\n  ' : ""}<div data-spot-page-shared-module="content-rail"></div>
   <script src="${prefix}${spotPagePayloadPath(spot.id, lang)}?v=${assetVersion(spotPagePayloadPath(spot.id, lang))}"></script>
   <script src="${prefix}spot-page-loader.js?v=${assetVersion("spot-page-loader.js")}"></script>
 </body>
