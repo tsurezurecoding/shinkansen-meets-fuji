@@ -6,9 +6,15 @@ import { JSDOM } from "jsdom";
 import { fileURLToPath } from "node:url";
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
+import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://www.michikusa-travel.com";
+const deliveredPages = new Map();
+function readHTML(file) {
+  if (!deliveredPages.has(file)) deliveredPages.set(file, expandDeliveredSiteChromeHTML({ appDir, html: fs.readFileSync(file, 'utf8'), relative: path.relative(appDir, file).split(path.sep).join('/') }));
+  return deliveredPages.get(file);
+}
 const dataContext = {};
 vm.runInNewContext(`${fs.readFileSync(path.join(appDir, "data.js"), "utf8")}\nglobalThis.__SPOTS = SPOTS;\nglobalThis.__SPOT_COUNT = SPOTS.length;`, dataContext);
 const spots = dataContext.__SPOTS;
@@ -111,7 +117,7 @@ for (const id of spotIds) {
     const selfPath = language === "ja" ? `/spots/${id}.html` : `/en/spots/${id}.html`;
     const file = diskPath(selfPath);
     if (!fs.existsSync(file)) continue;
-    const html = fs.readFileSync(file, "utf8");
+    const html = readHTML(file);
     if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
       errors.push(`${selfPath}: html lang must be ${language}`);
     }
@@ -137,7 +143,7 @@ for (const [jaPath, enPath] of pairs) {
       errors.push(`missing: ${urlPath}`);
       continue;
     }
-    const html = fs.readFileSync(file, "utf8");
+    const html = readHTML(file);
     if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
       errors.push(`${urlPath}: html lang must be ${language}`);
     }
@@ -163,7 +169,7 @@ for (const [jaPath, enPath] of [["/start.html", "/en/start.html"]]) {
       errors.push(`missing: ${urlPath}`);
       continue;
     }
-    const html = fs.readFileSync(file, "utf8");
+    const html = readHTML(file);
     if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
       errors.push(`${urlPath}: html lang must be ${language}`);
     }
@@ -224,7 +230,7 @@ function hasLocalizedArticleHref(urlPath, href) {
   return url.origin === origin && supported(route).includes(lang) && href.startsWith(`../${lang}/spots/`);
 }
 for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
-  const html = fs.readFileSync(diskPath(urlPath), "utf8");
+  const html = readHTML(diskPath(urlPath));
   if (!html.includes('class="guide-lang-menu"') || html.includes('class="lang-switch"')) {
     errors.push(`${urlPath}: FAQ language navigation must use the compact dropdown`);
   }
@@ -274,7 +280,7 @@ for (const [urlPath, language, hreflang] of localizedGuidePages) {
     errors.push(`missing: ${urlPath}`);
     continue;
   }
-  const html = fs.readFileSync(file, "utf8");
+  const html = readHTML(file);
   if (!new RegExp(`<html[^>]+lang=["']${language}["']`, "i").test(html)) {
     errors.push(`${urlPath}: html lang must be ${language}`);
   }
@@ -348,7 +354,7 @@ function collectEnglishHtml(directory) {
 }
 collectEnglishHtml(path.join(appDir, "en"));
 for (const file of englishHtmlFiles) {
-  const html = fs.readFileSync(file, "utf8");
+  const html = readHTML(file);
   const japaneseSwitches = html.matchAll(/<a\b([^>]*href=["']([^"']+)["'][^>]*)>\s*日本語\s*<\/a>/gi);
   for (const match of japaneseSwitches) {
     if (!/[?&]lang=ja(?:[&#]|$)/.test(match[2])) {
@@ -370,7 +376,7 @@ for (const required of [
 // Page fragments must stay on the field guide despite its root-relative base.
 for (const lang of ['en', ...translated]) {
   const route = '/' + lang + '/zukan.html';
-  const dom = new JSDOM(fs.readFileSync(diskPath(route), 'utf8'), { url: origin + route });
+  const dom = new JSDOM(readHTML(diskPath(route)), { url: origin + route });
   for (const hash of ['#zukanIntentsTitle', '#gallery']) {
     const links = [...dom.window.document.querySelectorAll('.zukan-switch a')];
     const link = links.find(a => new URL(a.href).hash === hash);
@@ -380,7 +386,7 @@ for (const lang of ['en', ...translated]) {
 }
 for (const lang of translated) {
   const route = '/' + lang + '/guide.html';
-  const dom = new JSDOM(fs.readFileSync(diskPath(route), 'utf8'), { url: origin + route });
+  const dom = new JSDOM(readHTML(diskPath(route)), { url: origin + route });
   const doc = dom.window.document;
   const hero = doc.querySelector('[data-guide-cta="hero_exact_time"]');
   const url = hero && new URL(hero.href);

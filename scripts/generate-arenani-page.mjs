@@ -1,3 +1,4 @@
+import { readSiteSource } from './shared/site-chrome.mjs';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import path from 'node:path';
@@ -236,7 +237,7 @@ function englishTile([cardId, src, alt, label], index) {
 
 function featureFooter(lang = 'ja') {
  const source = lang === 'en' ? path.join(root, 'en', 'yakei.html') : path.join(root, 'yakei.html');
- const footer = fs.readFileSync(source, 'utf8').match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
+ const footer = readSiteSource(root, path.relative(root, source).replaceAll('\\', '/')).match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
  if (!footer) throw Error('Shared footer source not found');
  return footer;
 }

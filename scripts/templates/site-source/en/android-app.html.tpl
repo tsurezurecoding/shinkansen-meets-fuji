@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shinkansen Window Android App | Available on Google Play</title>
+  <meta name="description" content="Explore Tokaido Shinkansen scenery with GPS alerts and an audio guide, even with your screen off. Free Android app on Google Play. No account needed.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Shinkansen Window Android App | Available on Google Play">
+  <meta property="og:description" content="Explore Tokaido Shinkansen scenery with GPS alerts and an audio guide, even with your screen off. Free Android app on Google Play. No account needed.">
+  <meta property="og:url" content="https://www.michikusa-travel.com/en/android-app.html">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/android/app-icon-192.webp">
+  <meta property="og:image:width" content="192">
+  <meta property="og:image:height" content="192">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/android-app.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/android-app.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/android-app.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/android-app.html">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+</head>
+<body class="spot-page contact-page">
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="../en/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">Discover more through the train window.</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="../en/start.html">Train Search</a><a href="../en/live/">Audio Guide</a><a href="../en/zukan.html">Field Guide</a></nav><div class="lang-switch" inert aria-hidden="true"><a href="../android-app.html?lang=ja">日本語</a></div></header>
+  <main>
+    <article class="spot-page-article contact-page-article">
+      <p class="eyebrow">ANDROID APP</p>
+      <h1><span class="copy-chunk">Shinkansen Window is</span> <span class="copy-chunk">on Google Play</span></h1>
+      <p class="spot-lead">Look out of the window while Shinkansen Window tells you what is coming up. Get alerts for selected views and listen to an audio guide along the Tokaido Shinkansen route, even with your screen off. The Android app is free, with no account needed.</p>
+
+      <div class="ea-app-id">
+        <img class="ea-app-icon" src="../images/android/app-icon-192.webp" alt="Shinkansen Window Android app icon" width="72" height="72" decoding="async">
+        <div>
+          <strong>Shinkansen Window</strong>
+          <small>Android app / Google Play · free · no registration</small>
+        </div>
+      </div>
+
+      <p class="ea-cta"><a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-android-install data-cta-id="android-guide-hero">Get it on Google Play</a></p>
+
+      <section class="ea-section" aria-labelledby="eaRideTitle">
+        <p class="eyebrow">ON YOUR RIDE</p>
+        <h2 id="eaRideTitle">Catch the view with alerts and audio</h2>
+        <ul class="ea-list">
+          <li><strong>Alerts before your selected views.</strong> Choose your train and set alerts for the spots you want to see. The app uses your location to let you know when they are approaching.</li>
+          <li><strong>Hear the stories behind the scenery.</strong> Start the audio guide to play recorded commentary as you approach window spots. Recordings are in English and Japanese. Please use earphones on the train.</li>
+          <li><strong>Keep listening with your screen off.</strong> Once you start alerts or the audio guide in the app, guidance can continue with the screen off. Stop guidance when your ride ends.</li>
+        </ul>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaShotsTitle">
+        <p class="eyebrow">SCREENS</p>
+        <h2 id="eaShotsTitle">Inside the app</h2>
+        <div class="ea-shots">
+          <figure>
+            <img src="../images/android/shot-home.webp" alt="Train search screen with tabs along the bottom of the app" width="480" height="853" loading="lazy" decoding="async">
+            <figcaption>Tabs along the bottom move between search, audio guide, medals and the field guide.</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/android/shot-live.webp" alt="Audio guide screen showing window spots along the route on a map" width="480" height="853" loading="lazy" decoding="async">
+            <figcaption>While you ride, it predicts the next view from your position.</figcaption>
+          </figure>
+          <figure>
+            <img src="../images/android/shot-medals.webp" alt="Journal screen showing collected window stamps" width="480" height="853" loading="lazy" decoding="async">
+            <figcaption>Views you catch are kept as stamps and medals.</figcaption>
+          </figure>
+        </div>
+        <p class="contact-note">Screens are from the version available when this page was updated and are shown in Japanese; the app also has an English mode.</p>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaStepsTitle">
+        <p class="eyebrow">GET THE APP</p>
+        <h2 id="eaStepsTitle">Get ready before you ride</h2>
+        <div class="contact-topics ea-steps">
+          <section>
+            <h2>Install from Google Play</h2>
+            <p>Open Google Play on your Android phone and install the app. It is free and requires no account registration.</p>
+            <a class="ea-step-link" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-android-install data-cta-id="android-guide-steps">View Shinkansen Window on Google Play</a>
+          </section>
+          <section>
+            <h2>Choose your train and views</h2>
+            <p>Use Train Search to select your train. Set alerts for the spots you want to see, or open Audio Guide to start commentary during your ride.</p>
+          </section>
+          <section>
+            <h2>Allow location and notifications</h2>
+            <p>Follow the prompts to allow precise location and notifications, and turn on your phone's location service. Start alerts or the audio guide before turning your screen off.</p>
+          </section>
+        </div>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaWhyTitle">
+        <p class="eyebrow">WHY THE APP</p>
+        <h2 id="eaWhyTitle">How it differs from the web version</h2>
+        <ul class="ea-list">
+          <li><strong>One tap from your home screen.</strong> It does not get buried in browser tabs or history, so it is there right before you board.</li>
+          <li><strong>Explore and remember your ride.</strong> Move between train search, the field guide and your Window Stamp journal in one app.</li>
+          <li><strong>Core guidance and recordings are stored on your phone.</strong> Window spot data and audio recordings are included in the app. Detailed articles, full-size photos, maps and some other features need an internet connection.</li>
+          <li><strong>Spend more time looking outside.</strong> Use alerts and audio to follow the scenery without keeping your screen open.</li>
+        </ul>
+      </section>
+
+      <section class="ea-section" aria-labelledby="eaNoteTitle">
+        <p class="eyebrow">NOTES</p>
+        <h2 id="eaNoteTitle">Before you start</h2>
+        <ul class="ea-list">
+          <li>You need an Android phone with Google Play. There is no iPhone version at the moment.</li>
+          <li>The app is free and does not require account registration.</li>
+          <li>The interface supports Japanese, English, Traditional Chinese, French, German, Spanish, Simplified Chinese and Korean. Recorded audio is in Japanese and English; all non-Japanese interfaces use English audio.</li>
+          <li>Guidance may be delayed or interrupted when GPS is unavailable, such as in tunnels, or by your phone's battery-saving settings.</li>
+          <li>Location data is used only to calculate guidance and is not stored on external servers. See the <a href="privacy.html">privacy policy</a> for details.</li>
+          <li>The <a href="./">web version</a> also stays free to use.</li>
+        </ul>
+      </section>
+
+      <section class="contact-methods" aria-labelledby="eaContactTitle">
+        <p class="eyebrow">CONTACT</p><h2 id="eaContactTitle">Support and feedback</h2>
+        <div class="contact-method-list">
+          <a href="mailto:support@michikusa-travel.com"><span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span><span><strong>Email</strong><small>support@michikusa-travel.com</small></span></a>
+          <a href="https://x.com/michikusatravel" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon" aria-hidden="true"><img src="../images/brand/x-logo.png" alt=""></span><span><strong>X</strong><small>@michikusatravel</small></span></a>
+          <a href="contact.html"><span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 9 9"></path><path d="M12 8v5"></path><path d="M12 16h.01"></path></svg></span><span><strong>Contact</strong><small>For anything else</small></span></a>
+        </div>
+        <p class="contact-note">This is an independently run project, so replies may take time. Including your device and what happened will help us investigate.</p>
+      </section>
+    </article>
+  </main>
+  <footer class="footer"><p class="footer-links"><a href="guide.html">See Mt. Fuji</a> · <a href="references.html">Window links</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p><p class="footer-credit">Michikusa — unhurried journeys and chance discoveries.</p></footer>
+  <script>
+    (function () {
+      var src = new URLSearchParams(window.location.search).get("src") || "direct";
+      if (!window.MADO_ANALYTICS_DISABLED && typeof window.gtag === "function") {
+        window.gtag("event", "android_app_guide_view", { entry_source: src, language: "en", page_context: "android_guide" });
+      }
+      document.querySelectorAll("[data-android-install]").forEach(function (el) {
+        el.addEventListener("click", function () {
+          if (window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+          window.gtag("event", "android_install_click", {
+            cta_id: el.getAttribute("data-cta-id") || "android-guide",
+            entry_source: src,
+            language: "en",
+            page_context: "android_guide"
+          });
+        });
+      });
+    })();
+  </script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"android-app.html","mounts":[{"host":"chrome-0","component":"header-android-app","kind":"header","menu":"header-android-app-menu","menuRoute":"android-app.html"}]}</script>
+<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+</body>
+</html>

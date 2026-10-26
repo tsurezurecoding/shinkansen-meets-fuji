@@ -6,7 +6,8 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { JSDOM, VirtualConsole } from 'jsdom';
-import { UTILITY_ROUTES, LOCALES, ATTRS, collectEnglish, utilitySnapshot, englishTables, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
+import { UTILITY_ROUTES, LOCALES, ATTRS, collectEnglish, englishTables, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
+import { expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
@@ -31,7 +32,29 @@ const compare = (actual, expected, label, detail) => assert(JSON.stringify(actua
 function domFor(lang, route) {
   const console = new VirtualConsole();
   console.on('jsdomError', error => errors.push(`${fileFor(lang, route)}: runtime ${error.message}`));
-  return new JSDOM(read(fileFor(lang, route)), { url: urlFor(lang, route), runScripts: 'outside-only', virtualConsole: console });
+  const file = fileFor(lang, route);
+  const html = expandDeliveredSiteChromeHTML({ appDir: root, html: read(file), relative: file });
+  return new JSDOM(html, { url: urlFor(lang, route), runScripts: 'outside-only', virtualConsole: console });
+}
+function deliveredUtilitySource(route) {
+  const file = `en/${route}`;
+  const dom = renderSiteRuntimeForValidation({ appDir: root, html: read(file), relative: file }).dom;
+  const doc = dom.window.document;
+  if (route === 'mieru.html') {
+    // Retain utilitySnapshot's accepted English-only presentation boundary.
+    doc.querySelectorAll('[data-mieru-en-only]').forEach(el => { if (el.previousSibling?.nodeType === 3 && !el.previousSibling.textContent.trim()) el.previousSibling.remove(); el.remove(); });
+    doc.querySelectorAll('[data-mieru-locale-copy]').forEach(el => el.replaceWith(el.getAttribute('data-mieru-locale-copy')));
+    doc.body.normalize();
+    doc.querySelector('.mieru-note')?.removeAttribute('id');
+    const status = doc.getElementById('mieruStatus');
+    status?.removeAttribute('role');
+    const answer = doc.querySelector('.mieru-answer');
+    if (status && answer) status.before(answer);
+  } else if (route === 'live/index.html') {
+    doc.querySelector('#btn-settings')?.setAttribute('title', sourceTables.live.settings);
+    doc.querySelector('#btn-dir')?.setAttribute('title', sourceTables.live.dirL);
+  }
+  return dom;
 }
 function failMissing() {
   const needed = ['utility-locale-runtime.js', 'utility-locales.js', 'utility-locales.css', 'content-manifest.json', 'sitemap.xml', 'scripts/utility-live-sitemap-state.json', ...LOCALES.flatMap(lang => [`scripts/locales/utility-${lang}.json`, `${lang}/utility-data.js`]), ...editions.flatMap(lang => UTILITY_ROUTES.map(route => fileFor(lang, route)))];
@@ -300,7 +323,7 @@ for (const lang of LOCALES) {
 }
 for (const file of ['utility-locale-runtime.js','utility-locales.js','utility-locales.css', ...LOCALES.map(lang => `${lang}/utility-data.js`)]) checkManifest(file);
 for (const route of UTILITY_ROUTES) {
-  const source = utilitySnapshot(root, route);
+  const source = deliveredUtilitySource(route);
   for (const lang of editions) {
     const label = fileFor(lang, route), dom = domFor(lang, route), doc = dom.window.document;
     checkMetadata(doc, lang, route, label); checkFiles(doc, label); checkMenu(dom, lang, route, label); checkHomeAndJournal(doc, lang, route, label);

@@ -1,10 +1,11 @@
 import fs from 'node:fs';
 import {DISMISS_DAYS,UNKNOWN_STATUS_POLICY} from './android-app-invite-policy.mjs';
 import {inviteCopy} from './android-app-invite-copy.mjs';
+import {withSiteRuntimeLoader} from './site-runtime-html.mjs';
 const runtime=fs.readFileSync(new URL('./android-app-invite-runtime.js',import.meta.url),'utf8');
 const reset=fs.readFileSync(new URL('./android-app-invite-reset.js',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('./android-app-invite.css',import.meta.url),'utf8');
-export function inviteRuntime(config){return runtime.replace('__INVITE_CONFIG__',JSON.stringify({dismissDays:DISMISS_DAYS,unknownPolicy:UNKNOWN_STATUS_POLICY,copy:inviteCopy(config.language||'ja',config.general),...config}));}
+export function inviteRuntime(config){return runtime.replace('__INVITE_CONFIG__',JSON.stringify({dismissDays:DISMISS_DAYS,unknownPolicy:UNKNOWN_STATUS_POLICY,copy:inviteCopy(config.language||'ja',config.general),css,...config}));}
 export function withAndroidAppInvite(html,language,pageContext,options={}){
  const resetBlock='<!-- ANDROID_APP_INVITE_RESET_START -->\n<script>'+reset+'</script>\n<!-- ANDROID_APP_INVITE_RESET_END -->\n';
  const resetPattern=/<!-- ANDROID_APP_INVITE_RESET_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_RESET_END -->\n/;
@@ -21,10 +22,12 @@ export function withAndroidAppInvite(html,language,pageContext,options={}){
  const registry=/<script\b[^>]*src="(?:\.\.\/)*locales\.js(?:\?[^" ]*)?"[^>]*>\s*<\/script>/;
  const anchor=/<base\b[^>]*>/i.test(html)?/<base\b[^>]*>/i:registry.test(html)?registry:/<meta\b[^>]*charset[^>]*>/i.test(html)?/<meta\b[^>]*charset[^>]*>/i:/<head\b[^>]*>/i;
  html=html.replace(anchor,match=>match+'\n  <link rel="manifest" href="'+assetPrefix+'manifest.json">');
- const block='<!-- ANDROID_APP_INVITE_START -->\n<style>'+css+'</style>\n<script>'+inviteRuntime({language,pageContext,assetPrefix,copy:inviteCopy(language,options.general)})+'</script>\n<!-- ANDROID_APP_INVITE_END -->';
+ const config=JSON.stringify({language,pageContext,assetPrefix,general:options.general===true}).replace(/</g,'\\u003c');
+ const block='<!-- ANDROID_APP_INVITE_START -->\n<script type="application/json" id="mado-android-invite-config">'+config+'</script>\n<!-- ANDROID_APP_INVITE_END -->';
  const pattern=/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/;
- // Runtime requires body; insert its script before </body>, CSS is scoped to the invitation.
- return pattern.test(html)?html.replace(pattern,()=>block):html.replace('</body>',block+'\n</body>');
+ // Page-specific context is data only; shared CSS, copy, policy and behavior load once.
+ html=pattern.test(html)?html.replace(pattern,()=>block):html.replace('</body>',block+'\n</body>');
+ return withSiteRuntimeLoader(html,assetPrefix);
 }
 
 const FEATURES=new Set(['727-collection.html','zukan.html','mieru.html','castles.html','ferris-wheels.html','arenani.html','hanabi.html','yakei.html','window-moments.html','sparkling-dreams.html','countryside.html','everyday-japan.html','foods.html','travel-foods.html','beer-on-shinkansen.html','drinks.html','window-trip.html','window-film.html','window-artworks.html','reflections.html','somato.html','sumato.html','sumie.html','tokyo-kyoto-stations.html','sudoori.html','sudoori/index.html']);

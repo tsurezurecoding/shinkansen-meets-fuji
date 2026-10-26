@@ -1,7 +1,13 @@
 import { readFile } from "node:fs/promises";
 import vm from "node:vm";
+import { fileURLToPath } from 'node:url';
+import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
 
 const root = new URL("../", import.meta.url);
+async function readDeliveredContent(file) {
+  const html = await readFile(new URL(file, root), 'utf8');
+  return file.endsWith('.html') ? expandDeliveredSiteChromeHTML({ appDir: fileURLToPath(root), html, relative: file }) : html;
+}
 const dataPath = new URL("data.js", root);
 const dataCode = await readFile(dataPath, "utf8");
 const context = {};
@@ -229,7 +235,7 @@ if (!appSelfSource) {
 }
 
 for (const file of ["start.html", "en/start.html"]) {
-  const text = await readFile(new URL(file, root), "utf8");
+  const text = await readDeliveredContent(file);
   if (!/<meta name="robots" content="index,follow,max-image-preview:large">/.test(text)) {
     failures.push(`${file}: train search must be indexable`);
   }
@@ -246,7 +252,7 @@ for (const file of ["index.html", "start.html", "en/index.html", "en/start.html"
 }
 
 for (const check of checks) {
-  const text = await readFile(new URL(check.file, root), "utf8");
+  const text = await readDeliveredContent(check.file);
   for (const phrase of check.required) {
     if (!text.includes(phrase)) {
       failures.push(`${check.file}: missing "${phrase}"`);

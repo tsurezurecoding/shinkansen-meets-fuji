@@ -1,4 +1,5 @@
 import {withPageAndroidAppInvite} from './android-app-invite.mjs';
+import { finalizeSiteChrome } from './site-chrome.mjs';
 // Explicit editorial metadata. Neither the clock, mtime nor Git timestamps are inputs.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -109,7 +110,7 @@ function setMeta(head, key, value, name = false) {
 export function enhanceContentHead(html, file, root = defaultRoot, options = {}) {
   if (/http-equiv="refresh"/i.test(html)) return html;
   const meta = CONTENT_METADATA[file];
-  return withPageAndroidAppInvite(html.replace(/<head[\s\S]*?<\/head>/i, head => {
+  return finalizeSiteChrome(withPageAndroidAppInvite(html.replace(/<head[\s\S]*?<\/head>/i, head => {
     const lang = options.lang || html.match(/<html\b[^>]*\blang=["']([^"']+)["']/i)?.[1] || (file.startsWith('en/') ? 'en' : 'ja');
     const selected = options.spot ? selectSpotOgImage(options.spot, root, lang) : null;
     const src = meta?.image || selected?.src || metaValue(head, 'og:image').replace(`${SITE}/`, '');
@@ -173,7 +174,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
       return `<script type="application/ld+json">${JSON.stringify(json, null, 2)}</script>`;
     });
     return withArticleLocales(head, file, assetVersion('article-locales.js'));
-  }), file);
+  }), file), file, root);
 }
 
 export function contentLastmod(url, legacy) {

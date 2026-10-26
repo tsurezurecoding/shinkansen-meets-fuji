@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <script src="../locales.js?v=6585facb"></script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../app-embedded.js?v=32708d67"></script>
+  <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>도카이도 신칸센에서 후지산은 언제 보일까? 열차별 통과 시간과 차창 볼거리 | 신칸센의 창</title>
+  <meta name="description" content="방향·탑승역·출발 시각으로 열차를 고르고, 후지산·성·호수의 예상 관람 시간을 확인하세요. E석과 A석, 흐린 날과 밤에 볼 수 있는 차창 풍경도 안내합니다.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/ko/guide.html">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <meta property="og:title" content="도카이도 신칸센에서 후지산은 언제 보일까? 열차별 통과 시간과 차창 볼거리">
+  <meta property="og:description" content="방향·탑승역·출발 시각으로 열차를 고르고, 후지산·성·호수의 예상 관람 시간을 확인하세요. E석과 A석, 흐린 날과 밤에 볼 수 있는 차창 풍경도 안내합니다.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/ko/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="도카이도 신칸센에서 후지산은 언제 보일까? 열차별 통과 시간과 차창 볼거리">
+  <meta name="twitter:description" content="방향·탑승역·출발 시각으로 열차를 고르고, 후지산·성·호수의 예상 관람 시간을 확인하세요. E석과 A석, 흐린 날과 밤에 볼 수 있는 차창 풍경도 안내합니다.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://www.michikusa-travel.com/ko/guide.html#webpage",
+  "url": "https://www.michikusa-travel.com/ko/guide.html",
+  "name": "도카이도 신칸센에서 후지산은 언제 보일까? 열차별 통과 시간과 차창 볼거리",
+  "description": "방향·탑승역·출발 시각으로 열차를 고르고, 후지산·성·호수의 예상 관람 시간을 확인하세요. E석과 A석, 흐린 날과 밤에 볼 수 있는 차창 풍경도 안내합니다.",
+  "inLanguage": "ko"
+}</script>
+  <!-- ANDROID_APP_INVITE_RESET_START -->
+<script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
+(function () {
+  'use strict';
+  function stopSavedOptOut() {
+    try {
+      if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+      window.MADO_ANALYTICS_DISABLED = true;
+      window['ga-disable-G-C2ESB694FV'] = true;
+    } catch (error) { /* Preserve the existing initializer's storage semantics. */ }
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'mado-ga-optout' || event.key === 'mado-android-app-invite-v2' || event.key === null) stopSavedOptOut();
+  });
+  window.addEventListener('pageshow', stopSavedOptOut);
+  window.addEventListener('focus', stopSavedOptOut, true);
+  document.addEventListener('visibilitychange', stopSavedOptOut);
+  stopSavedOptOut();
+  const url = new URL(window.location.href);
+  const reset = url.searchParams.getAll('android_invite_reset');
+  const ga = url.searchParams.getAll('ga');
+  if (reset.length !== 1 || reset[0] !== '1' || ga.length !== 1 || ga[0] !== 'off'
+      || url.searchParams.getAll('ga_optout').includes('0')) return;
+  // Keep this test page excluded even when storage is unavailable.
+  window.MADO_ANDROID_INVITE_TEST_GA_DISABLED = true;
+  url.searchParams.delete('android_invite_reset');
+  try { window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash); }
+  catch (error) { return; } // Do not reset unless the reload trigger was consumed.
+  try {
+    // Other tabs must see opt-out before the shared dismissal disappears.
+    window.localStorage.setItem('mado-ga-optout', '1');
+    if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+    window.localStorage.removeItem('mado-android-app-invite-v2');
+  }
+  catch (error) { /* The normal invitation storage guard remains in force. */ }
+})();
+</script>
+<!-- ANDROID_APP_INVITE_RESET_END -->
+<script>
+    (function () {
+      var id = "G-C2ESB694FV";
+      var params = new URLSearchParams(location.search);
+      var local = location.protocol === "file:" || /^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+      var optedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem("mado-ga-optout", "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem("mado-ga-optout");
+        optedOut = localStorage.getItem("mado-ga-optout") === "1";
+      } catch (error) {}
+      window.MADO_ANALYTICS_DISABLED = local || optedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;
+      window["ga-disable-" + id] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + id;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", id);
+    })();
+  </script>
+  <script defer src="../utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="../utility-locales.css?v=269e0262">
+<link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
+<link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://www.michikusa-travel.com/zh-Hant/guide.html">
+<link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/guide.html">
+<link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/guide.html">
+<link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/guide.html">
+<link rel="alternate" hreflang="zh-Hans-CN" href="https://www.michikusa-travel.com/zh-Hans/guide.html">
+<link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/guide.html">
+<link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/guide.html">
+<link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/guide.html">
+<link rel="alternate" hreflang="ar" href="https://www.michikusa-travel.com/ar/guide.html">
+<link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
+</head>
+<body class="spot-page">
+  <header class="topbar">
+    <a class="brand" href="../ko/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">여행의 순간을 놓치지 않도록</small></span></a>
+    <nav class="top-nav" aria-label="주요 메뉴">
+      <a href="../ko/start.html">열차 선택</a>
+      <a href="../ko/live/index.html">라이브 가이드</a>
+      <a href="../ko/zukan.html">차창 도감</a>
+      <a class="top-nav-overflow" href="../ko/guide.html" aria-current="page">후지산 보기</a>
+      <a class="top-nav-stamp" href="../ko/journal.html">스탬프북</a>
+      <details class="top-nav-more"><summary>더 보기</summary><div class="top-nav-menu"><a class="top-nav-menu-stamp" href="../ko/journal.html">스탬프북</a><a class="top-nav-menu-compact" href="../ko/guide.html">후지산 보기</a><a href="../ko/?intro=1">이 앱 소개</a><a href="../ko/mieru.html">가시성 β</a><a href="../en/sumie.html">수묵화 차창</a><a href="../en/somato.html">차창 여행</a><a href="../en/references.html">관련 링크</a><a href="../ko/contact.html">문의</a><a href="../en/privacy.html">개인정보처리방침</a></div></details>
+    </nav>
+    <details class="guide-lang-menu"><summary aria-label="언어 선택">한국어</summary><div class="guide-lang-options">
+        <a href="../guide.html?lang=ja">日本語</a><a href="../en/guide.html">English</a><a href="../zh-Hant/guide.html">繁體中文</a><a href="../fr/guide.html">Français</a><a href="../de/guide.html">Deutsch</a><a href="../es/guide.html">Español</a><a href="../zh-Hans/guide.html">简体中文</a><a href="../ko/guide.html" aria-current="page">한국어</a><a href="../it/guide.html">Italiano</a><a href="../th/guide.html">ไทย</a><a href="../ar/guide.html">العربية</a>
+      </div></details>
+  </header>
+  <main>
+    <section class="collection-hero guide-fuji-hero" id="top" aria-labelledby="guideHeroTitle">
+      <div class="collection-hero-tiles" aria-hidden="true">
+        <img src="../images/20240211_fuji_michikusa.jpg" alt="">
+        <img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="">
+        <img src="../images/20260903_fuji_paper_mills_fuji_michikusa.jpg" alt="">
+        <img src="../images/20220205_fujikawa_bridge_michikusa.jpg" alt="">
+        <img src="../images/20260530_sagami_fuji_hiratsuka_michikusa.jpg" alt="">
+        <img src="../images/20260903_fujipipe_fuji_michikusa.jpg" alt="">
+        <img src="../images/20260530_fujikawa_bridge_2_michikusa.jpg" alt="">
+        <img src="../images/20260816_fuji_paper_mills_michikusa.jpg" alt="">
+        <img src="../images/20260530_sagami_fuji_samukawa_michikusa.jpg" alt="">
+        <img src="../images/20260903_fuji_beyond_factory_smoke_michikusa.jpg" alt="">
+      </div>
+      <div class="collection-hero-inner">
+        <p class="eyebrow">MT. FUJI WINDOW</p>
+        <h1 id="guideHeroTitle">신칸센에서 후지산 보기</h1>
+        <p class="collection-hero-lead">후지산은 창밖에 한 번만 나타나지 않습니다.</p>
+        <p class="collection-hero-note">사가미 평야 너머, 제지 공장 굴뚝 뒤, 후지강 철교 너머, 그리고 잠깐 반대편 창으로 돌아가는 왼쪽 후지. 도쿄에서 신오사카까지 후지산은 5개 구간에서 모습을 드러내고, 구간마다 풍경이 다릅니다.</p>
+        <div class="collection-hero-actions">
+          <a class="btn btn-primary" href="#chances" data-guide-cta="hero_sections">5개 구간 보기</a>
+          <a class="btn btn-ghost" href="../ko/start.html?focus=fuji#journey" data-guide-cta="hero_exact_time">내 열차 통과 시간 확인</a>
+          <a class="btn btn-ghost" href="../ko/mieru.html" data-guide-cta="hero_mieru">오늘 보일까요? 가시성 예보</a>
+        </div>
+      </div>
+    </section>
+    <div class="spot-page-shell">
+      <!-- GUIDE_RAIL_START -->
+      <aside class="spot-page-rail guide-page-rail" aria-label="도쿄 → 신오사카 차창">
+        <div class="spot-page-rail-head">
+          <p class="spot-page-rail-eyebrow">Tokaido Shinkansen</p>
+          <p class="spot-page-rail-title">도쿄 → 신오사카 차창</p>
+          <p class="spot-page-rail-count"><strong>59</strong>개 풍경</p>
+          <p class="spot-page-rail-lead">열차를 선택하면 59개 풍경의 예상 통과 시간을 실제 운행에 맞춰 볼 수 있습니다.</p>
+          <p class="spot-page-rail-now"><b>후지산</b>도쿄에서 약 44.5분 · E석 · 산 쪽</p>
+          <a class="spot-page-rail-cta" href="../ko/start.html#journey" data-guide-cta="rail_exact_time">내 열차로 가이드 만들기</a>
+        </div>
+        <div class="spot-page-rail-list-wrap">
+          <ol class="spot-page-rail-list"><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">도쿄</span><span class="spot-page-rail-station-min">0분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/edo-castle-fujimi-yagura.html" data-guide-rail-spot="edo-castle-fujimi-yagura" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">0.5</span><span class="spot-page-rail-name">에도성 후지미 망루</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/tokyo-tower.html" data-guide-rail-spot="tokyo-tower" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">3</span><span class="spot-page-rail-name">도쿄 타워</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">시나가와</span><span class="spot-page-rail-station-min">7분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/ota-fuji.html" data-guide-rail-spot="ota-fuji" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">10</span><span class="spot-page-rail-name">오타에서 보이는 후지산</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/maruko-bridge.html" data-guide-rail-spot="maruko-bridge" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250531_maruko_bridge_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250531_maruko_bridge_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">13</span><span class="spot-page-rail-name">마루코교</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/musashi-kosugi-towers.html" data-guide-rail-spot="musashi-kosugi-towers" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">14</span><span class="spot-page-rail-name">무사시코스기 타워맨션</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">신요코하마</span><span class="spot-page-rail-station-min">18분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/727-board.html" data-guide-rail-spot="727-board" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20261010_727-board_20182_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20261010_727-board_20182_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">23</span><span class="spot-page-rail-name">727·248 간판</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/727-board.html" data-guide-rail-spot="727-sign" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">24</span><span class="spot-page-rail-name">727 COSMETICS 간판</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/sagami-fuji.html" data-guide-rail-spot="sagami-fuji" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">25</span><span class="spot-page-rail-name">사가미 평야 너머의 후지산</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/hinataoka.html" data-guide-rail-spot="hinataoka" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_hinataoka.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_hinataoka.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">27</span><span class="spot-page-rail-name">히나타오카 언덕 주택가</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/putiputi-sign.html" data-guide-rail-spot="putiputi-sign" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260704_putiputi_sign_2_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260704_putiputi_sign_2_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">27.5</span><span class="spot-page-rail-name">「나는 누구일까요?」 간판</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">오다와라</span><span class="spot-page-rail-station-min">31분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/odawara-castle.html" data-guide-rail-spot="odawara-castle" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20251112_odawara_castle_castle_traveler.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20251112_odawara_castle_castle_traveler.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">31</span><span class="spot-page-rail-name">오다와라성</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/gyoran-kannon.html" data-guide-rail-spot="gyoran-kannon" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260516_gyoran_kannon_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260516_gyoran_kannon_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">31.5</span><span class="spot-page-rail-name">교란 관음상</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/shiraitogawa-bridge.html#shiraitogawa-bridge" data-guide-rail-spot="shiraitogawa-bridge" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20261010_odawara_2025_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20261010_odawara_2025_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">32.7</span><span class="spot-page-rail-name">사가미만과 시라이토가와 철교</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">아타미</span><span class="spot-page-rail-station-min">36분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/odawara.html#atami-hatsushima" data-guide-rail-spot="odawara" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260804_atami_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260804_atami_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">36</span><span class="spot-page-rail-name">아타미와 하쓰시마</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">미시마</span><span class="spot-page-rail-station-min">40분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/mishima-catapult.html" data-guide-rail-spot="mishima-catapult" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">40.5</span><span class="spot-page-rail-name">미시마 차량소 캐터펄트</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/fuji-pipe-sign.html" data-guide-rail-spot="fuji-pipe-sign" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260804_fujipipe_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260804_fujipipe_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.5</span><span class="spot-page-rail-name">후지파이프 옥상 간판</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot is-current"><a class="spot-page-rail-link" href="../ko/spots/fuji.html" data-guide-rail-spot="fuji" data-guide-rail-placement="ko_guide_rail" aria-current="page"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20210218_fuji_rumireport.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20210218_fuji_rumireport.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.5</span><span class="spot-page-rail-name">후지산</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/fuji-bus-sales.html" data-guide-rail-spot="fuji-bus-sales" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_fuji_bus_sales_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_fuji_bus_sales_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.8</span><span class="spot-page-rail-name">후지버스판매 전시장</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">신후지</span><span class="spot-page-rail-station-min">45분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/fuji-paper-mills.html" data-guide-rail-spot="fuji-paper-mills" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">45</span><span class="spot-page-rail-name">후지의 제지 공장</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/fujikawa-bridge.html" data-guide-rail-spot="fujikawa-bridge" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">45.75</span><span class="spot-page-rail-name">후지강 철교와 수도관교</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/shimizu-port-chikyu.html" data-guide-rail-spot="shimizu-port-chikyu" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240119_shimizu_port_chikyu_senba16530315.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240119_shimizu_port_chikyu_senba16530315.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">50</span><span class="spot-page-rail-name">시미즈항과 CHIKYU 심해 시추선</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/granship.html" data-guide-rail-spot="granship" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_granship_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_granship_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">52</span><span class="spot-page-rail-name">그랜십</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">시즈오카</span><span class="spot-page-rail-station-min">53분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/left-fuji.html" data-guide-rail-spot="left-fuji" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">54</span><span class="spot-page-rail-name">왼쪽 후지산</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/sapporo-shizuoka-factory.html" data-guide-rail-spot="sapporo-shizuoka-factory" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260904_sapporo_shizuoka_factory_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260904_sapporo_shizuoka_factory_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">56</span><span class="spot-page-rail-name">삿포로 맥주 시즈오카 공장</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/shizuoka-tea-fields.html" data-guide-rail-spot="shizuoka-tea-fields" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">62</span><span class="spot-page-rail-name">시즈오카 차밭</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">가케가와</span><span class="spot-page-rail-station-min">64분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/kakegawa.html" data-guide-rail-spot="kakegawa" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20220312_kakegawa_castle_neoromancefan.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20220312_kakegawa_castle_neoromancefan.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">64</span><span class="spot-page-rail-name">가케가와성</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/pocari-fukuroi.html" data-guide-rail-spot="pocari-fukuroi" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_pocari-fukuroi_150379_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_pocari-fukuroi_150379_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">65.5</span><span class="spot-page-rail-name">오츠카제약 포카리스웨트 공장</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/genki-sign.html" data-guide-rail-spot="genki-sign" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260712_genki_sign_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260712_genki_sign_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">66.5</span><span class="spot-page-rail-name">싯페이 응원 간판</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">하마마쓰</span><span class="spot-page-rail-station-min">70분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/hamanako.html" data-guide-rail-spot="hamanako" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">73</span><span class="spot-page-rail-name">하마나호</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/hamanako.html#hamanako-fuji" data-guide-rail-spot="hamanako-fuji" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">73</span><span class="spot-page-rail-name">하마나호 너머의 후지산</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/toyohashi-tateiwa.html" data-guide-rail-spot="toyohashi-tateiwa" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20210923_toyohashi_tateiwa_pato727.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20210923_toyohashi_tateiwa_pato727.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">76.5</span><span class="spot-page-rail-name">도요하시 다테이와 바위</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">도요하시</span><span class="spot-page-rail-station-min">79분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/mikawa-oshima.html" data-guide-rail-spot="mikawa-oshima" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20181213_mikawa_oshima_kawasan3.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20181213_mikawa_oshima_kawasan3.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">82.5</span><span class="spot-page-rail-name">미카와오시마</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/gamagori-greenhouses.html" data-guide-rail-spot="gamagori-greenhouses" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_gamagori-greenhouses_19169_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_gamagori-greenhouses_19169_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">83</span><span class="spot-page-rail-name">도요하시~가마고리의 비닐하우스</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">미카와안조</span><span class="spot-page-rail-station-min">88분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/nichiban-anjo.html" data-guide-rail-spot="nichiban-anjo" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250221_nichiban_anjo_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250221_nichiban_anjo_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">88</span><span class="spot-page-rail-name">CELLOTAPE 벽 간판</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/nagoya-station-skyline.html" data-guide-rail-spot="nagoya-station-skyline" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_nagoya_station_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_nagoya_station_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">94</span><span class="spot-page-rail-name">나고야역 스카이라인</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">나고야</span><span class="spot-page-rail-station-min">95분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/kirin-beer-factory.html" data-guide-rail-spot="kirin-beer-factory" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250920_kirin_beer_factory_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250920_kirin_beer_factory_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">98</span><span class="spot-page-rail-name">기린 맥주 공장</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/kiyosu.html" data-guide-rail-spot="kiyosu" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240719_kiyosu_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240719_kiyosu_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">99</span><span class="spot-page-rail-name">기요스성</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">기후하시마</span><span class="spot-page-rail-station-min">102분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/gifu-hashima-mahalo.html" data-guide-rail-spot="gifu-hashima-mahalo" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_gifu_hashima_mahalo_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_gifu_hashima_mahalo_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">102</span><span class="spot-page-rail-name">기후하시마 마할로 간판</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/solar-ark.html" data-guide-rail-spot="solar-ark" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_solar_ark.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_solar_ark.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">103</span><span class="spot-page-rail-name">솔라 아크 태양광 시설</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/gifu-castle.html" data-guide-rail-spot="gifu-castle" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260712_gifu_castle_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260712_gifu_castle_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">103</span><span class="spot-page-rail-name">기후성</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/kinshozan.html" data-guide-rail-spot="kinshozan" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260704_kinshozan_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260704_kinshozan_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">106</span><span class="spot-page-rail-name">긴쇼산</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/nangu-taisha.html" data-guide-rail-spot="nangu-taisha" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260629_nangu_taisha_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260629_nangu_taisha_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">107</span><span class="spot-page-rail-name">난구 다이샤 대도리이</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/ibuki.html" data-guide-rail-spot="ibuki" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240114_ibukiyama.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240114_ibukiyama.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">110</span><span class="spot-page-rail-name">이부키산</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/ibuki.html#ibuki-seat-a" data-guide-rail-spot="ibuki-seat-a" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_ibuki-seat-a_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_ibuki-seat-a_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">111.5</span><span class="spot-page-rail-name">A석에서 보는 이부키산</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/sennenq-sign.html" data-guide-rail-spot="sennenq-sign" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_sennenq_sign_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_sennenq_sign_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">111.5</span><span class="spot-page-rail-name">센넨큐 간판</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">마이바라</span><span class="spot-page-rail-station-min">112분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/maibara-test-trains.html" data-guide-rail-spot="maibara-test-trains" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20261010_maibara-test-trains_10654_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20261010_maibara-test-trains_10654_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">112.1</span><span class="spot-page-rail-name">마이바라의 신칸센 시험 차량</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/fujitec-big-wing.html" data-guide-rail-spot="fujitec-big-wing" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260712_fujitec_big_wing_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260712_fujitec_big_wing_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">113</span><span class="spot-page-rail-name">FUJITEC Big Wing</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/sawayama-castle.html" data-guide-rail-spot="sawayama-castle" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240719_sawayama_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240719_sawayama_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">115</span><span class="spot-page-rail-name">사와야마성 유적</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/hikone-castle.html" data-guide-rail-spot="hikone-castle" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20170307_hikone_castle_zusshi.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20170307_hikone_castle_zusshi.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">116</span><span class="spot-page-rail-name">히코네성</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/lotte-shiga.html" data-guide-rail-spot="lotte-shiga" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_lotte-shiga_6845_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_lotte-shiga_6845_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">119</span><span class="spot-page-rail-name">롯데 시가 공장 과자 간판</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/kannonji-castle.html" data-guide-rail-spot="kannonji-castle" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240719_kannonji_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240719_kannonji_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">120</span><span class="spot-page-rail-name">간논지성 유적</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/omi-fuji.html" data-guide-rail-spot="omi-fuji" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250523_omi_fuji_kawasan3.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250523_omi_fuji_kawasan3.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">123</span><span class="spot-page-rail-name">오미후지</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/seta-karahashi.html" data-guide-rail-spot="seta-karahashi" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250909_seta_karahashi_c91256633.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250909_seta_karahashi_c91256633.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">127</span><span class="spot-page-rail-name">세타노 가라하시</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">교토</span><span class="spot-page-rail-station-min">130분</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/toji.html" data-guide-rail-spot="toji" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260510_toji.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260510_toji.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">131</span><span class="spot-page-rail-name">도지 오층탑</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/kaguya-no-akari.html" data-guide-rail-spot="kaguya-no-akari" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_kaguya-no-akari_28703_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_kaguya-no-akari_28703_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">133.6</span><span class="spot-page-rail-name">가구야노토 급수탑</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/rakusai-egg-tanks.html" data-guide-rail-spot="rakusai-egg-tanks" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_rakusai_egg_tanks_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_rakusai_egg_tanks_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">135</span><span class="spot-page-rail-name">라쿠사이 하수처리장 달걀형 탱크</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../ko/spots/yamazaki-distillery.html" data-guide-rail-spot="yamazaki-distillery" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_yamazaki-distillery_6867_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_yamazaki-distillery_6867_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">136.25</span><span class="spot-page-rail-name">산토리 야마자키 증류소</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/hirakata-park-wheel.html" data-guide-rail-spot="hirakata-park-wheel" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">139</span><span class="spot-page-rail-name">히라카타 파크 관람차</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/torikai-train-depot.html" data-guide-rail-spot="torikai-train-depot" data-guide-rail-placement="ko_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">141</span><span class="spot-page-rail-name">도리카이 신칸센 차량기지</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">신오사카</span><span class="spot-page-rail-station-min">147분</span></li></ol>
+        </div>
+        <div class="spot-page-rail-foot">
+          <a href="../ko/zukan.html">사진으로 59개 풍경 보기 →</a>
+        </div>
+        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="../ko/start.html#journey" data-guide-cta="rail_exact_time_bottom">내 열차 시간으로 59개 풍경 보기</a>
+      </aside>
+      <!-- GUIDE_RAIL_END -->
+      <article class="spot-page-article">
+      <section class="spot-page-section guide-feature-section" id="chances">
+        <div class="section-head"><p class="eyebrow">FIVE VIEWS</p><h2>후지산이 차창에 보이는 구간은 도쿄–신오사카 사이에 5곳</h2></div>
+        <p class="guide-fuji-answer"><strong>어느 쪽에 앉을까요?</strong> 교토 방향이든 도쿄 방향이든 <strong>E석</strong>입니다(그린차는 D석). 가장 크고 오래 보이는 곳은 미시마에서 후지강까지로, 노조미 기준 도쿄 출발 약 43~47분, 신오사카 출발 약 1시간 40분(교토 출발 약 1시간 25분)이며 창 가득한 후지산이 약 3~4분 이어집니다. 가장 좋은 때는 맑은 겨울 오전입니다.</p>
+        <p>그 밖에도 사가미 평야 너머의 후지산, A석 쪽에 잠깐 나타나는 왼쪽 후지, 도쿄 시내와 하마나호 너머로 작게 보이는 후지산이 있습니다.</p>
+        <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="크고 길게 보이는 2개 구간">
+          <a class="guide-visual-card" href="../en/spots/sagami-fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="사가미 평야 너머의 후지산">
+            <span><span class="g9-min">약 25~27분</span>E석</span>
+            <strong>사가미 평야 너머의 후지</strong>
+            <em>평야와 단자와 산줄기 뒤로 후지산 전체가 보입니다. 약 1분, 겨울 아침에 특히 선명합니다.</em>
+          </a>
+          <a class="guide-visual-card" href="../ko/spots/fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20240211_fuji_michikusa.webp" alt="E석에서 창을 가득 채운 눈 덮인 후지산">
+            <span><span class="g9-min">약 43~47분</span>E석</span>
+            <strong>미시마–후지강의 후지</strong>
+            <em>가장 가깝고 가장 깁니다. 약 3분 반 동안 창 가득 후지산이 보이고 앞쪽 풍경만 바뀝니다.</em>
+          </a>
+        </div>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="짧거나 멀거나 반대편인 3개 구간">
+          <a class="guide-visual-card" href="../en/spots/left-fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="A석 쪽에 나타난 왼쪽 후지">
+            <span><span class="g9-min">약 54분</span>A석</span>
+            <strong>왼쪽 후지</strong>
+            <em>이 구간에서만 몇 초 동안 후지산이 반대편 A석 창으로 넘어갑니다. 에도 시대 여행자들도 귀하게 여긴 풍경입니다.</em>
+          </a>
+          <a class="guide-visual-card" href="../en/spots/ota-fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="도쿄 시가지 너머의 작은 후지산">
+            <span><span class="g9-min">약 10분</span>E석</span>
+            <strong>도쿄 시내의 후지</strong>
+            <em>시나가와를 지나 곧, 도시 너머로 작게 보입니다. 여행의 첫 신호입니다. 사진 @T_Yangyang</em>
+          </a>
+          <a class="guide-visual-card" href="../ko/spots/hamanako.html#hamanako-fuji">
+            <img loading="lazy" decoding="async" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="하마나호 너머의 작은 후지산">
+            <span><span class="g9-min">약 73분</span>E석</span>
+            <strong>하마나호 너머의 후지</strong>
+            <em>호수 저편에 아주 작게. 후지산을 지나친 뒤 한 번 더 돌아볼 수 있는 곳입니다. 사진 @ProBoffin</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="closeup">
+        <div class="section-head"><p class="eyebrow">FOREGROUNDS</p><h2>가장 긴 구간에서는 앞쪽 풍경이 계속 바뀝니다</h2></div>
+        <p><strong>미시마에서 후지강까지 약 4분 동안 후지산은 나타났다 사라지는 것이 아니라 계속 창에 머뭅니다.</strong> 움직이는 것은 앞쪽뿐입니다. 거리, 빨갛고 흰 굴뚝, 그리고 강과 흰 아치가 차례로 지나갑니다. 아래 두 장은 서로 다른 후지산이 아니라 같은 산을 다른 앞 풍경 너머로 본 사진이며, 모두 E석 쪽입니다.</p>
+        <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="같은 산, 다른 앞 풍경">
+          <a class="guide-visual-card" href="../ko/spots/fuji-paper-mills.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="빨갛고 흰 굴뚝과 후지산, 제지 공장">
+            <span><span class="g9-min">약 44분</span>E석</span>
+            <strong>약 44분 · 굴뚝 너머의 후지</strong>
+            <em>후지산이 창을 가득 채운 채 빨갛고 흰 공장 굴뚝이 들어옵니다. 사진 @OliverinJapan</em>
+          </a>
+          <a class="guide-visual-card" href="../ko/spots/fujikawa-bridge.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20220205_fujikawa_bridge_michikusa.webp" alt="후지강 흰 아치 너머의 눈 덮인 후지산">
+            <span><span class="g9-min">약 47분</span>E석</span>
+            <strong>약 47분 · 흰 아치 너머의 후지</strong>
+            <em>구간의 마지막: 강, 10개의 흰 아치, 후지산이 한 화면에 담깁니다. 겨울부터 이른 봄까지가 가장 아름답습니다.</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="faces">
+        <div class="section-head"><p class="eyebrow">SEASONS &amp; HOURS</p><h2>같은 후지산도 계절과 시간에 따라 다른 산처럼 보입니다</h2></div>
+        <p><strong>같은 창에서도 후지산의 얼굴은 계절과 시간에 따라 크게 달라집니다.</strong> 늦가을부터 초여름까지는 눈을 이고 있고, 여름에는 눈이 없어 윤곽이 하늘에 녹아듭니다. 해가 기울면 능선만 하늘에 남습니다.</p>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="계절과 시간에 따라 바뀌는 후지산">
+          <a class="guide-visual-card" href="../ko/spots/fuji.html" data-guide-cta="faces_fuji_green">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260616_fuji_sttraveler.webp" alt="초여름 초록 논 너머의 후지산">
+            <strong>초여름 · 논의 초록과 함께</strong>
+            <em>6월, 벼의 초록과 산의 대비가 가장 강한 시기입니다. 사진 @STTraveler</em>
+          </a>
+          <a class="guide-visual-card" href="../ko/spots/fuji.html" data-guide-cta="faces_fuji_snowless">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20230913_fuji_michikusa.webp" alt="9월 눈 없는 후지산과 황금빛 논">
+            <strong>초가을 · 눈 없는 후지</strong>
+            <em>9월, 눈이 사라진 후지산과 황금빛 논은 전혀 다른 산처럼 보입니다.</em>
+          </a>
+          <div class="guide-visual-cell">
+          <a class="guide-visual-card" href="../ko/spots/fuji-paper-mills.html" data-guide-cta="faces_fuji_dusk">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260529_fuji_paper_mills_kamiyu_g1x_mk2.webp" alt="해 질 녘 후지산과 제지 공장 불빛">
+            <strong>해 질 녘 · 공장 불빛과 함께</strong>
+            <em>해가 질 무렵, 후지산의 능선과 제지 공장의 불빛이 한 장면에 나란히 담깁니다.</em>
+          </a>
+            <p class="guide-photo-source">사진: <a href="https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354" rel="noopener" target="_blank">@kamiyu_G1X_Mk2 원본 게시물</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="cloudy">
+        <div class="section-head"><p class="eyebrow">CLOUDY DAYS</p><h2>흐려서 후지산이 안 보이는 날은 같은 창의 앞 풍경을 보세요</h2></div>
+        <p><strong>후지산은 1년 중 절반 정도 안개나 구름에 가려집니다.</strong> 낮은 구름은 먼 산과 넓은 전망도 흐리게 만들지만, 선로 가까운 풍경은 윤곽이 남습니다. <strong>후지산을 찾으려던 바로 그 시간에 앞 풍경으로 눈을 옮기는 것</strong>이 가장 확실합니다. 5개 구간 중 3곳에는 날씨에 덜 좌우되는 앞 풍경이 있습니다.</p>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="흐린 날에도 볼 수 있는 앞 풍경">
+          <a class="guide-visual-card" href="../en/spots/hinataoka.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260530_hinataoka.webp" alt="히나타오카 언덕 주택가의 알록달록한 삼각 지붕">
+            <span><span class="g9-min">약 27분</span>E석</span>
+            <strong>구간 1의 앞 풍경 · 히나타오카</strong>
+            <em>사가미 평야의 후지산이 흐려도 언덕 위 알록달록한 삼각 지붕은 남아 있습니다.</em>
+          </a>
+          <a class="guide-visual-card" href="../ko/spots/fuji-paper-mills.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260816_fuji_paper_mills_michikusa.webp" alt="흐린 하늘 아래 후지 제지 공장 굴뚝">
+            <span><span class="g9-min">약 44분</span>E석</span>
+            <strong>구간 2의 앞 풍경 · 후지의 제지 공장</strong>
+            <em>맑은 날에는 후지산의 앞 풍경, 흐린 날에는 빨갛고 흰 굴뚝과 공장이 주인공이 됩니다.</em>
+          </a>
+          <a class="guide-visual-card" href="../ko/spots/hamanako.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260530_hamanako.webp" alt="E석에서 본 하마나호">
+            <span><span class="g9-min">약 73분</span>E석</span>
+            <strong>구간 5의 앞 풍경 · 하마나호</strong>
+            <em>호수 너머 후지산이 사라져도 눈앞의 호수면은 그대로입니다. 흐린 날에는 물빛이 오히려 깊어집니다.</em>
+          </a>
+        </div>
+        <p>구간 3(왼쪽 후지)과 구간 4(도쿄 시내)는 원래 아주 짧거나 공기가 맑은 날에만 보이므로, 흐린 날에는 기대하지 않는 편이 좋습니다. 후지산을 벗어나면 역 바로 옆의 <a href="../ko/spots/kakegawa.html">가케가와성</a>처럼 날씨에 강한 풍경이 더 있습니다. <a href="../ko/zukan.html"><strong>차창 도감에서 모든 풍경 보기</strong></a>.</p>
+        <p style="margin-bottom:0"><strong>밤 열차에서는 후지산이 보이지 않습니다.</strong> 해가 진 뒤 미시마–신후지를 지난다면 <a href="../ko/yakei.html" data-guide-cta="night_page">야경 가이드에서 어두워지는 시간과 볼 수 있는 불빛을 확인하세요</a>.</p>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="seat">
+        <div class="section-head"><p class="eyebrow">SEAT E</p><h2>E석을 예약하는 세 가지 단계</h2></div>
+        <ol class="g9-steps">
+          <li><strong>먼저 열차를 고르세요.</strong> 노조미, 히카리, 고다마 모두 후지산을 지나지만 시간이 다릅니다. E석은 일반실의 후지산 쪽 창가 좌석입니다. E석을 미리 확보하려면 지정석을 예약하세요. 요금과 패스 조건은 <a href="https://smart-ex.jp/en/" rel="noopener" target="_blank">smartEX(JR Central 공식)</a>와 <a href="https://japanrailpass.net/en/" rel="noopener" target="_blank">Japan Rail Pass 공식 사이트</a>에서 확인하세요. 그린카의 후지산 쪽 좌석은 보통 D석입니다.</li>
+          <li><strong>좌석표에서 E를 선택하세요.</strong> 발매기, JR 창구 또는 smartEX 앱에서 선택할 수 있습니다. E석은 2인 좌석 쪽 창가이며, 도쿄에서 신오사카로 갈 때와 반대 방향 모두 먼저 확인할 수 있습니다.</li>
+          <li><strong>E석이 매진되어도 무리하지 마세요.</strong> 통로를 막거나 다른 승객에게 불편을 주며 자리를 바꿀 필요는 없습니다. A석 쪽의 왼쪽 후지산이나 양쪽에서 볼 수 있는 하마나코를 목표로 삼아도 좋습니다.</li>
+        </ol>
+      </section>
+
+      <section class="spot-page-section guide-mobile-timeline guide-feature-section" id="timeline">
+        <div class="section-head"><p class="eyebrow">MORE WINDOWS</p><h2>내 열차에 맞춰 차창 시간을 확인하세요</h2></div>
+        <p>여기서 소개한 분 단위는 노조미 기준입니다. 정차역과 출발 시간이 실제 시각을 바꾸므로, <strong>내 열차를 선택하면 59개 풍경을 해당 열차의 예상 통과 시각으로 바꿀 수 있습니다</strong>.</p>
+        <!-- GUIDE_MOBILE_SPOTS_START -->
+        <div class="guide-mobile-spots" aria-label="도쿄에서 신오사카까지의 대표 차창 풍경">
+          <div class="showcase-rail">
+          <a class="show-card guide-mobile-spot-card" href="../en/spots/tokyo-tower.html" data-guide-mobile-spot="tokyo-tower" aria-label="도쿄 타워: 가이드 보기">
+            <div class="show-media"><img src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="도쿄 타워" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗼 도쿄 타워</strong><small class="show-credit">新幹線の車窓から</small><span>도쿄 하늘의 붉은 타워.</span><span class="show-guide-link">가이드 보기</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../ko/spots/odawara.html" data-guide-mobile-spot="odawara" aria-label="아타미와 하쓰시마: 가이드 보기">
+            <div class="show-media"><img src="../images/thumbs/20260804_atami_michikusa.webp" alt="아타미와 하쓰시마" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🌊 아타미와 하쓰시마</strong><small class="show-credit">2026-08-04</small><span>터널 사이로 바다가 열립니다.</span><span class="show-guide-link">가이드 보기</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../ko/spots/fuji.html" data-guide-mobile-spot="fuji" aria-label="후지산: 가이드 보기">
+            <div class="show-media"><img src="../images/thumbs/20210218_fuji_rumireport.webp" alt="후지산" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗻 후지산</strong><small class="show-credit">@rumireport</small><span>일본에서 가장 유명한 3분.</span><span class="show-guide-link">가이드 보기</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../ko/spots/hamanako.html" data-guide-mobile-spot="hamanako" aria-label="하마나호: 가이드 보기">
+            <div class="show-media"><img src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="하마나호" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🚤 하마나호</strong><small class="show-credit">@Design_photoSY</small><span>열차가 호수 위를 달립니다.</span><span class="show-guide-link">가이드 보기</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../en/spots/solar-ark.html" data-guide-mobile-spot="solar-ark" aria-label="솔라 아크: 가이드 보기">
+            <div class="show-media"><img src="../images/thumbs/20260530_solar_ark.webp" alt="솔라 아크" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>☀️ 솔라 아크</strong><small class="show-credit">2026-05-30</small><span>곧 마지막이 될 태양의 배.</span><span class="show-guide-link">가이드 보기</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../ko/spots/toji.html" data-guide-mobile-spot="toji" aria-label="도지 오층탑: 가이드 보기">
+            <div class="show-media"><img src="../images/thumbs/20260510_toji.webp" alt="도지 오층탑" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>⛩️ 도지 오층탑</strong><small class="show-credit">2026-05-10</small><span>교토에 왔다는 것을 단번에 알 수 있습니다.</span><span class="show-guide-link">가이드 보기</span></span>
+          </a>
+          </div>
+        </div>
+        <!-- GUIDE_MOBILE_SPOTS_END -->
+        <div class="spot-page-actions"><a class="btn btn-ghost" href="../ko/zukan.html">59개 풍경 보기</a></div>
+      </section>
+    </article>
+    </div>
+  </main>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-guide-cta], [data-guide-rail-spot], [data-guide-mobile-spot]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      if (link.hasAttribute("data-guide-mobile-spot")) {
+        window.gtag("event", "guide_mobile_spot_click", { spot_id: link.getAttribute("data-guide-mobile-spot"), destination: link.getAttribute("href"), language: "ko", placement: "timeline_mobile", page_context: "guide" });
+        return;
+      }
+      if (link.hasAttribute("data-guide-rail-spot")) {
+        window.gtag("event", "guide_rail_spot_click", { spot_id: link.getAttribute("data-guide-rail-spot"), destination: link.getAttribute("href"), language: "ko", rail_placement: link.getAttribute("data-guide-rail-placement"), viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile", page_context: "guide" });
+        return;
+      }
+      var payload = { cta_id: link.getAttribute("data-guide-cta"), cta_label: link.textContent.trim(), destination: link.getAttribute("href"), language: "ko", viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile", page_context: "guide" };
+      window.gtag("event", "guide_cta_click", payload);
+      if ((link.getAttribute("href") || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+    (function () {
+      var rail = document.querySelector(".guide-page-rail");
+      if (!rail || !("IntersectionObserver" in window)) return;
+      var observer = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        observer.disconnect();
+        if (!window.MADO_ANALYTICS_DISABLED && typeof window.gtag === "function") window.gtag("event", "guide_rail_view", { language: "ko", rail_placement: "ko_guide_rail", viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile", page_context: "guide" });
+      }, { threshold: 0.15 });
+      observer.observe(rail);
+    })();
+  </script>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head"><p class="eyebrow">MORE TO TRY</p><h2 id="contentRailTitle">차창을 즐기는 더 많은 방법</h2></div>
+    <div class="content-rail">
+      <a class="content-rail-card" href="../ko/mieru.html"><img src="../images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>FORECAST</small><strong>후지산 가시성 β</strong><span>오늘 후지산이 보일 가능성을 확인하세요.</span></span></a>
+      <a class="content-rail-card" href="../en/sumie.html"><img src="../images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>EXTRA</small><strong>수묵화 차창</strong><span>노선의 풍경을 고요한 수묵화로 감상하세요.</span></span></a>
+      <a class="content-rail-card" href="../en/somato.html"><img src="../images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>EXTRA</small><strong>차창 여행</strong><span>실제 차창 사진이 짧은 여행처럼 흘러갑니다.</span></span></a>
+      <a class="content-rail-card" href="../ko/journal.html"><img src="../images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>JOURNAL</small><strong>스탬프와 메달</strong><span>여행 중 찾은 차창 풍경을 기록하세요.</span></span></a>
+      <a class="content-rail-card" href="../ko/?intro=1"><img src="../images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>GUIDE</small><strong>이 앱 소개</strong><span>30초 만에 사용법과 즐기는 방법을 확인하세요.</span></span></a>
+      <a class="content-rail-card" href="../en/references.html"><img src="../images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>LINKS</small><strong>차창 관련 링크</strong><span>출처와 더 깊이 읽을 자료를 확인하세요.</span></span></a>
+      <a class="content-rail-card" href="../ko/contact.html"><img src="../images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>문의</strong><span>사진 제안, 수정과 의견을 보내 주세요.</span></span></a>
+    </div>
+  </section>
+  <footer class="footer">
+    <p class="footer-brand">Shinkansen Window <span>여행의 순간을 놓치지 마세요</span></p>
+    <p>시간은 노조미 기준 예상치이며 실제 풍경은 열차, 날씨와 좌석에 따라 달라집니다. 조금 일찍 창밖을 살펴보세요.</p>
+    <p class="footer-links"><a href="../ko/guide.html">후지산 FAQ</a> · <a href="../en/references.html">차창 링크</a> · <a href="../en/privacy.html">개인정보처리방침</a></p>
+    <p class="footer-credit">Michikusa — 천천히 여행하며 뜻밖의 풍경을 만납니다.</p>
+  </footer>
+<!-- ANDROID_APP_INVITE_START -->
+<script type="application/json" id="mado-android-invite-config">{"language":"ko","pageContext":"fuji_guide","assetPrefix":"../","general":false}</script>
+<!-- ANDROID_APP_INVITE_END -->
+<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+</body>
+</html>

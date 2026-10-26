@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <script src="locales.js?v=6585facb"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="app-embedded.js?v=32708d67"></script>
+  <link rel="stylesheet" href="app-embedded.css?v=147f8289">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <script src="language-router.js?v=ff60751b"></script>
+  <title>新幹線から富士山を見る｜5つの区間と座席ガイド | 新幹線の窓</title>
+  <meta name="description" content="東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。">
+  <link rel="canonical" href="https://www.michikusa-travel.com/guide.html">
+  <link rel="stylesheet" href="style.css?v=5f3f6183">
+  <style>
+    .guide-single-photo { position: absolute; inset: 0; z-index: -2; }
+    .guide-single-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 65% 52%; }
+    .guide-fuji-hero::after { background: linear-gradient(180deg, rgba(12,27,43,.46), rgba(16,32,50,.56) 55%, rgba(16,28,44,.82)); }
+    #trainTimes > p:last-child { text-align: center; }
+    #trainTimes .btn { max-width: 100%; white-space: normal; color: #fff; text-decoration: none; }
+    @media (max-width: 640px) { .guide-single-photo img { object-position: 66% center; } }
+  </style>
+  <meta property="og:title" content="新幹線から富士山を見る｜5つの区間と座席ガイド">
+  <meta property="og:description" content="東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg">
+  <meta property="og:image:width" content="4032">
+  <meta property="og:image:height" content="2268">
+  <meta property="og:url" content="https://www.michikusa-travel.com/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="新幹線から富士山を見る｜5つの区間と座席ガイド">
+  <meta name="twitter:description" content="東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.michikusa-travel.com/guide.html#webpage",
+      "url": "https://www.michikusa-travel.com/guide.html",
+      "name": "新幹線から富士山を見る｜5つの区間と座席ガイド",
+      "description": "東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。",
+      "inLanguage": "ja",
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://www.michikusa-travel.com/guide.html#primaryimage",
+        "url": "https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg",
+        "contentUrl": "https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg",
+        "width": 4032,
+        "height": 2268,
+        "caption": "新幹線のE席側から見える雪化粧の富士山"
+      },
+      "primaryImageOfPage": {
+        "@id": "https://www.michikusa-travel.com/guide.html#primaryimage"
+      },
+      "dateModified": "2026-10-11",
+      "datePublished": "2026-07-01",
+      "mainEntity": {
+        "@id": "https://www.michikusa-travel.com/guide.html#article"
+      }
+    },
+    {
+      "@type": "Article",
+      "@id": "https://www.michikusa-travel.com/guide.html#article",
+      "headline": "新幹線から富士山を見る｜5つの区間と座席ガイド",
+      "description": "東海道新幹線から富士山が見える5つの区間を、写真とともに紹介。三島〜富士川の大きな富士山、相模平野ごしの眺め、A席側の左富士など、場所ごとの見え方と座席側がわかります。",
+      "image": {
+        "@type": "ImageObject",
+        "@id": "https://www.michikusa-travel.com/guide.html#primaryimage",
+        "url": "https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg",
+        "contentUrl": "https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg",
+        "width": 4032,
+        "height": 2268,
+        "caption": "新幹線のE席側から見える雪化粧の富士山"
+      },
+      "mainEntityOfPage": {
+        "@id": "https://www.michikusa-travel.com/guide.html#webpage"
+      },
+      "datePublished": "2026-07-01",
+      "dateModified": "2026-10-11",
+      "author": {
+        "@type": "Organization",
+        "name": "新幹線の窓",
+        "url": "https://www.michikusa-travel.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "新幹線の窓",
+        "url": "https://www.michikusa-travel.com/"
+      },
+      "inLanguage": "ja"
+    }
+  ]
+}</script>
+  <!-- ANDROID_APP_INVITE_RESET_START -->
+<script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
+(function () {
+  'use strict';
+  function stopSavedOptOut() {
+    try {
+      if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+      window.MADO_ANALYTICS_DISABLED = true;
+      window['ga-disable-G-C2ESB694FV'] = true;
+    } catch (error) { /* Preserve the existing initializer's storage semantics. */ }
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'mado-ga-optout' || event.key === 'mado-android-app-invite-v2' || event.key === null) stopSavedOptOut();
+  });
+  window.addEventListener('pageshow', stopSavedOptOut);
+  window.addEventListener('focus', stopSavedOptOut, true);
+  document.addEventListener('visibilitychange', stopSavedOptOut);
+  stopSavedOptOut();
+  const url = new URL(window.location.href);
+  const reset = url.searchParams.getAll('android_invite_reset');
+  const ga = url.searchParams.getAll('ga');
+  if (reset.length !== 1 || reset[0] !== '1' || ga.length !== 1 || ga[0] !== 'off'
+      || url.searchParams.getAll('ga_optout').includes('0')) return;
+  // Keep this test page excluded even when storage is unavailable.
+  window.MADO_ANDROID_INVITE_TEST_GA_DISABLED = true;
+  url.searchParams.delete('android_invite_reset');
+  try { window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash); }
+  catch (error) { return; } // Do not reset unless the reload trigger was consumed.
+  try {
+    // Other tabs must see opt-out before the shared dismissal disappears.
+    window.localStorage.setItem('mado-ga-optout', '1');
+    if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+    window.localStorage.removeItem('mado-android-app-invite-v2');
+  }
+  catch (error) { /* The normal invitation storage guard remains in force. */ }
+})();
+</script>
+<!-- ANDROID_APP_INVITE_RESET_END -->
+<script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <meta property="og:image:alt" content="新幹線のE席側から見える雪化粧の富士山">
+  <meta name="twitter:image:alt" content="新幹線のE席側から見える雪化粧の富士山">
+  <meta property="og:type" content="article">
+  <script defer src="utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+<link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
+<link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://www.michikusa-travel.com/zh-Hant/guide.html">
+<link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/guide.html">
+<link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/guide.html">
+<link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/guide.html">
+<link rel="alternate" hreflang="zh-Hans-CN" href="https://www.michikusa-travel.com/zh-Hans/guide.html">
+<link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/guide.html">
+<link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/guide.html">
+<link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/guide.html">
+<link rel="alternate" hreflang="ar" href="https://www.michikusa-travel.com/ar/guide.html">
+<link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
+</head>
+<body class="spot-page">
+  <header class="topbar">
+    <a class="brand" href="">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name">新幹線の窓</span>
+        <small class="brand-sub">旅の瞬間を見逃さない</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Primary">
+      <a href="start.html">列車選択</a>
+      <a href="live/index.html">音声ガイド</a>
+      <a href="zukan.html">車窓図鑑</a>
+      <a class="top-nav-overflow" href="guide.html" aria-current="page">富士山を見る</a>
+      <a class="top-nav-stamp" href="journal.html">スタンプ帖</a>
+      <details class="top-nav-more">
+        <summary>もっと見る</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-stamp" href="journal.html">スタンプ帖</a>
+          <a class="top-nav-menu-compact" href="guide.html">富士山を見る</a>
+          <a href="mieru.html">富士山 見える予報</a>
+          <a href="window-artworks.html" data-i18n="navArtworks">車窓の作品集</a>
+          <!-- ja-only-sudoori:start --><a href="sudoori/index.html#stories">素通りの街</a><a href="window-quiz.html">車窓クイズ</a><!-- ja-only-sudoori:end -->
+          <a href="references.html">リンク集</a>
+          <a href="contact.html">お問い合わせ</a>
+          <a href="privacy.html">プライバシーポリシー</a>
+        </div>
+      </details>
+    </nav>
+    <details class="guide-lang-menu">
+      <summary aria-label="言語を選択">日本語</summary>
+      <div class="guide-lang-options">
+        <a href="guide.html?lang=ja" aria-current="page">日本語</a><a href="en/guide.html">English</a><a href="zh-Hant/guide.html">繁體中文</a><a href="fr/guide.html">Français</a><a href="de/guide.html">Deutsch</a><a href="es/guide.html">Español</a><a href="zh-Hans/guide.html">简体中文</a><a href="ko/guide.html">한국어</a><a href="it/guide.html">Italiano</a><a href="th/guide.html">ไทย</a><a href="ar/guide.html">العربية</a>
+      </div>
+    </details>
+  </header>
+  <main>
+    <section class="collection-hero guide-fuji-hero" id="top" aria-labelledby="guideHeroTitle">
+      <div class="guide-single-photo" aria-hidden="true">
+        <img src="images/fuji-guide-hero.webp" alt="" width="1600" height="900" fetchpriority="high" decoding="async">
+      </div>
+      <div class="collection-hero-inner">
+        <p class="eyebrow">MT. FUJI WINDOW</p>
+        <h1 id="guideHeroTitle">新幹線から富士山を見る</h1>
+        <p class="collection-hero-lead"><span class="copy-chunk">富士山は、窓に1回だけ</span><span class="copy-chunk">現れるわけではありません。</span></p>
+        <p class="collection-hero-note"><span class="copy-chunk">相模平野の向こう、</span><span class="copy-chunk">製紙工場の煙突ごし、</span><span class="copy-chunk">富士川の鉄橋ごし、</span><span class="copy-chunk">A席側に回り込む左富士。</span><span class="copy-chunk">東京〜新大阪の5つの区間で、</span><span class="copy-chunk">それぞれ違う富士山に会えます。</span></p>
+        <div class="collection-hero-actions">
+          <a class="btn btn-primary" href="#chances" data-guide-cta="hero_sections">5つの区間を見る</a>
+          <a class="btn btn-ghost" href="start.html?focus=fuji#journey" data-guide-cta="hero_exact_time">乗る列車の通過時刻を調べる</a>
+          <a class="btn btn-ghost" href="mieru.html" data-guide-cta="hero_mieru">今日は見える？見える予報</a>
+        </div>
+      </div>
+    </section>
+    <div class="spot-page-shell">
+      <!-- GUIDE_RAIL_START -->
+      <aside class="spot-page-rail guide-page-rail" aria-label="東京 → 新大阪の車窓">
+        <div class="spot-page-rail-head">
+          <p class="spot-page-rail-eyebrow">Tokaido Shinkansen</p>
+          <p class="spot-page-rail-title">東京 → 新大阪の車窓</p>
+          <p class="spot-page-rail-count"><strong>59</strong> の見どころ</p>
+          <p class="spot-page-rail-lead">列車を選ぶと、59景の見える時刻を実際のダイヤに合わせて表示します。</p>
+          <p class="spot-page-rail-now"><b>富士山</b>東京から約44.5分 ・ E席・山側</p>
+          <a class="spot-page-rail-cta" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time">乗る列車でガイドを作る</a>
+        </div>
+        <div class="spot-page-rail-list-wrap">
+          <ol class="spot-page-rail-list"><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">東京</span><span class="spot-page-rail-station-min">0分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/edo-castle-fujimi-yagura.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">0.5</span><span class="spot-page-rail-name">江戸城の富士見櫓</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/tokyo-tower.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20250111_tokyo_tower_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20250111_tokyo_tower_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">3</span><span class="spot-page-rail-name">東京タワー</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">品川</span><span class="spot-page-rail-station-min">7分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/ota-fuji.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">10</span><span class="spot-page-rail-name">都内からの富士山</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/maruko-bridge.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20250531_maruko_bridge_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20250531_maruko_bridge_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">13</span><span class="spot-page-rail-name">丸子橋</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/musashi-kosugi-towers.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">14</span><span class="spot-page-rail-name">武蔵小杉のタワマン群</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">新横浜</span><span class="spot-page-rail-station-min">18分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/727-board.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20261010_727-board_20182_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20261010_727-board_20182_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">23</span><span class="spot-page-rail-name">きぬた歯科の248看板</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="727-collection.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">24</span><span class="spot-page-rail-name">727 COSMETICS看板</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/sagami-fuji.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">25</span><span class="spot-page-rail-name">相模平野の富士山</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/hinataoka.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260530_hinataoka.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260530_hinataoka.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">27</span><span class="spot-page-rail-name">日向岡の街並み</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/putiputi-sign.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260704_putiputi_sign_2_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260704_putiputi_sign_2_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">27.5</span><span class="spot-page-rail-name">プチプチの看板</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">小田原</span><span class="spot-page-rail-station-min">31分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/odawara-castle.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20251112_odawara_castle_castle_traveler.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20251112_odawara_castle_castle_traveler.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">31</span><span class="spot-page-rail-name">小田原城</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/gyoran-kannon.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260516_gyoran_kannon_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260516_gyoran_kannon_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">31.5</span><span class="spot-page-rail-name">魚籃観音像</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/shiraitogawa-bridge.html#shiraitogawa-bridge"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20261010_odawara_2025_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20261010_odawara_2025_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">32.7</span><span class="spot-page-rail-name">相模湾と白糸川橋梁</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">熱海</span><span class="spot-page-rail-station-min">36分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/odawara.html#atami-hatsushima"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260804_atami_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260804_atami_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">36</span><span class="spot-page-rail-name">熱海と初島</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">三島</span><span class="spot-page-rail-station-min">40分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/mishima-catapult.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">40.5</span><span class="spot-page-rail-name">三島車両所のカタパルト</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/fuji-pipe-sign.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260804_fujipipe_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260804_fujipipe_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.5</span><span class="spot-page-rail-name">フジパイプ</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot is-current"><a class="spot-page-rail-link" href="spots/fuji.html" aria-current="page"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20210218_fuji_rumireport.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20210218_fuji_rumireport.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.5</span><span class="spot-page-rail-name">富士山</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/fuji-bus-sales.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260919_fuji_bus_sales_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260919_fuji_bus_sales_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.8</span><span class="spot-page-rail-name">富士バス販売</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">新富士</span><span class="spot-page-rail-station-min">45分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/fuji-paper-mills.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">45</span><span class="spot-page-rail-name">富士の製紙工場</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/fujikawa-bridge.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">45.75</span><span class="spot-page-rail-name">富士川橋梁と水管橋</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/shimizu-port-chikyu.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240119_shimizu_port_chikyu_senba16530315.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240119_shimizu_port_chikyu_senba16530315.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">50</span><span class="spot-page-rail-name">清水港とちきゅう</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/granship.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260816_granship_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260816_granship_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">52</span><span class="spot-page-rail-name">グランシップ</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">静岡</span><span class="spot-page-rail-station-min">53分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/left-fuji.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">54</span><span class="spot-page-rail-name">左富士</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/sapporo-shizuoka-factory.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260904_sapporo_shizuoka_factory_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260904_sapporo_shizuoka_factory_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">56</span><span class="spot-page-rail-name">サッポロビール静岡工場</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/shizuoka-tea-fields.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">62</span><span class="spot-page-rail-name">静岡の茶畑</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">掛川</span><span class="spot-page-rail-station-min">64分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/kakegawa.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20220312_kakegawa_castle_neoromancefan.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20220312_kakegawa_castle_neoromancefan.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">64</span><span class="spot-page-rail-name">掛川城</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/pocari-fukuroi.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260919_pocari-fukuroi_150379_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260919_pocari-fukuroi_150379_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">65.5</span><span class="spot-page-rail-name">大塚製薬のポカリスエット工場</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/genki-sign.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260712_genki_sign_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260712_genki_sign_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">66.5</span><span class="spot-page-rail-name">しっぺいの応援看板</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">浜松</span><span class="spot-page-rail-station-min">70分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/hamanako.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">73</span><span class="spot-page-rail-name">浜名湖</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/hamanako.html#hamanako-fuji"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">73</span><span class="spot-page-rail-name">浜名湖越しの富士山</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/toyohashi-tateiwa.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20210923_toyohashi_tateiwa_pato727.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20210923_toyohashi_tateiwa_pato727.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">76.5</span><span class="spot-page-rail-name">豊橋の立岩</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">豊橋</span><span class="spot-page-rail-station-min">79分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/mikawa-oshima.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20181213_mikawa_oshima_kawasan3.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20181213_mikawa_oshima_kawasan3.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">82.5</span><span class="spot-page-rail-name">三河大島</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/gamagori-greenhouses.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260924_gamagori-greenhouses_19169_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260924_gamagori-greenhouses_19169_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">83</span><span class="spot-page-rail-name">豊橋〜蒲郡のビニールハウス</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">三河安城</span><span class="spot-page-rail-station-min">88分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/nichiban-anjo.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20250221_nichiban_anjo_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20250221_nichiban_anjo_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">88</span><span class="spot-page-rail-name">セロテープの壁看板</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/nagoya-station-skyline.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260530_nagoya_station_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260530_nagoya_station_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">94</span><span class="spot-page-rail-name">名古屋駅前</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">名古屋</span><span class="spot-page-rail-station-min">95分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/kirin-beer-factory.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20250920_kirin_beer_factory_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20250920_kirin_beer_factory_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">98</span><span class="spot-page-rail-name">キリンビール工場</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/kiyosu.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240719_kiyosu_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240719_kiyosu_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">99</span><span class="spot-page-rail-name">清洲城</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">岐阜羽島</span><span class="spot-page-rail-station-min">102分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/gifu-hashima-mahalo.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260816_gifu_hashima_mahalo_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260816_gifu_hashima_mahalo_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">102</span><span class="spot-page-rail-name">岐阜羽島のマハロ看板</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/solar-ark.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260530_solar_ark.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260530_solar_ark.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">103</span><span class="spot-page-rail-name">ソーラーアーク</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/gifu-castle.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260712_gifu_castle_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260712_gifu_castle_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">103</span><span class="spot-page-rail-name">岐阜城</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/kinshozan.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260704_kinshozan_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260704_kinshozan_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">106</span><span class="spot-page-rail-name">金生山</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/nangu-taisha.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260629_nangu_taisha_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260629_nangu_taisha_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">107</span><span class="spot-page-rail-name">南宮大社の大鳥居</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/ibuki.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240114_ibukiyama.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240114_ibukiyama.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">110</span><span class="spot-page-rail-name">伊吹山</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/ibuki.html#ibuki-seat-a"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260816_ibuki-seat-a_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260816_ibuki-seat-a_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">111.5</span><span class="spot-page-rail-name">A席から見る伊吹山</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/sennenq-sign.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260816_sennenq_sign_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260816_sennenq_sign_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">111.5</span><span class="spot-page-rail-name">せんねん灸の看板</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">米原</span><span class="spot-page-rail-station-min">112分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/maibara-test-trains.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20261010_maibara-test-trains_10654_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20261010_maibara-test-trains_10654_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">112.1</span><span class="spot-page-rail-name">米原の高速試験車両</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/fujitec-big-wing.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260712_fujitec_big_wing_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260712_fujitec_big_wing_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">113</span><span class="spot-page-rail-name">フジテック Big Wing</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/sawayama-castle.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240719_sawayama_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240719_sawayama_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">115</span><span class="spot-page-rail-name">佐和山城跡</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/hikone-castle.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20170307_hikone_castle_zusshi.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20170307_hikone_castle_zusshi.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">116</span><span class="spot-page-rail-name">彦根城</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/lotte-shiga.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260919_lotte-shiga_6845_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260919_lotte-shiga_6845_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">119</span><span class="spot-page-rail-name">ロッテ滋賀工場の菓子看板</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/kannonji-castle.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20240719_kannonji_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20240719_kannonji_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">120</span><span class="spot-page-rail-name">観音寺城跡</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/omi-fuji.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20250523_omi_fuji_kawasan3.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20250523_omi_fuji_kawasan3.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">123</span><span class="spot-page-rail-name">近江富士</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/seta-karahashi.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20250909_seta_karahashi_c91256633.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20250909_seta_karahashi_c91256633.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">127</span><span class="spot-page-rail-name">瀬田の唐橋</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">京都</span><span class="spot-page-rail-station-min">130分</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/toji.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260510_toji.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260510_toji.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">131</span><span class="spot-page-rail-name">東寺 五重塔</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/kaguya-no-akari.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260924_kaguya-no-akari_28703_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260924_kaguya-no-akari_28703_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">133.6</span><span class="spot-page-rail-name">かぐやの灯</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/rakusai-egg-tanks.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260919_rakusai_egg_tanks_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260919_rakusai_egg_tanks_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">135</span><span class="spot-page-rail-name">洛西浄化センターの卵形タンク</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/yamazaki-distillery.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260924_yamazaki-distillery_6867_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260924_yamazaki-distillery_6867_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">136.25</span><span class="spot-page-rail-name">サントリー山崎蒸溜所</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/hirakata-park-wheel.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">139</span><span class="spot-page-rail-name">ひらパーの観覧車</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="spots/torikai-train-depot.html"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">141</span><span class="spot-page-rail-name">鳥飼車両基地</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">新大阪</span><span class="spot-page-rail-station-min">147分</span></li></ol>
+        </div>
+        <div class="spot-page-rail-foot">
+          <a href="zukan.html">車窓図鑑で写真から探す →</a>
+        </div>
+        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time_bottom">この列車の時刻で59景を見る</a>
+        <div class="spot-page-rail-affiliate-group" id="spotRailAffiliate">
+          <p class="spot-page-rail-affiliate-label">広告</p>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_guide_rail_after_route_primary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <div class="spot-page-rail-affiliate-banner">
+              <a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671040" target="_blank" rel="sponsored nofollow noopener"><img src="https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671040" alt="日本旅行 JR・新幹線とホテルのセットプラン" loading="lazy" decoding="async" fetchpriority="low" width="200" height="200"></a>
+              <noscript><a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671040" rel="sponsored nofollow noopener"><img src="https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671040" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="200" height="200"></a></noscript>
+            </div>
+          </div>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="vc_pid_892671046" data-affiliate-placement="ja_guide_rail_after_route_secondary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <div class="spot-page-rail-affiliate-banner">
+              <a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671046" target="_blank" rel="sponsored nofollow noopener"><img src="https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671046" alt="旅行予約サービス" loading="lazy" decoding="async" fetchpriority="low" width="200" height="200"></a>
+              <noscript><a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671046" rel="sponsored nofollow noopener"><img src="https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671046" alt="旅行予約サービス" width="200" height="200"></a></noscript>
+            </div>
+          </div>
+          <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="amazon" data-affiliate-offer="philips_power_bank_b0fmhz3kvp" data-affiliate-placement="ja_guide_rail_after_route_tertiary" data-affiliate-language="ja" data-affiliate-context="spot">
+            <a class="spot-page-rail-amazon" href="https://www.amazon.co.jp/dp/B0FMHZ3KVP?pd_rd_i=B0FMHZ3KVP&amp;pd_rd_w=lU1VV&amp;content-id=amzn1.sym.69e074f9-f3fe-40fa-8127-0a0a78871637&amp;pf_rd_p=69e074f9-f3fe-40fa-8127-0a0a78871637&amp;pf_rd_r=QVE14HXSSSPKSWKTJC8W&amp;pd_rd_wg=TPiT3&amp;pd_rd_r=ee7d1a5c-feca-4385-b43b-9b771d1e485f&amp;sp_csd=d2lkZ2V0TmFtZT1zcF9kZXRhaWxfdGhlbWF0aWM&amp;th=1&amp;linkCode=ll2&amp;tag=programmasavo-22&amp;linkId=e7f7b946499962102ba2f0d6d30ffd9a&amp;ref_=as_li_ss_tl" target="_blank" rel="sponsored nofollow noopener">
+              <img src="images/affiliate/amazon-philips-power-bank.jpg" alt="Philipsのケーブル一体型モバイルバッテリー" loading="lazy" decoding="async" width="200" height="116">
+              <span class="spot-page-rail-amazon-body">
+                <small>Amazon.co.jp</small>
+                <strong>旅先の充電を1台に</strong>
+                <span>ケーブル・コンセント一体型 15000mAh</span>
+                <b>Amazonで見る <span aria-hidden="true">↗</span></b>
+              </span>
+            </a>
+          </div>
+          <p class="spot-page-rail-affiliate-note">この欄にはアフィリエイトリンクが含まれます。</p>
+        </div>
+      </aside>
+      <!-- GUIDE_RAIL_END -->
+      <article class="spot-page-article">
+      <section class="spot-page-section guide-feature-section" id="chances">
+        <div class="section-head"><p class="eyebrow">FIVE VIEWS</p><h2><span class="copy-chunk">富士山が窓にある区間は、</span><span class="copy-chunk">東京〜新大阪に5つ</span></h2></div>
+        <p class="guide-fuji-answer"><strong>いちばん大きく、長く見えるのは三島〜富士川です。</strong>のぞみなら東京から約43〜47分、新大阪から約1時間40分（京都から約1時間25分）。窓いっぱいの富士山が約3〜4分続きます。席は上りも下りも<strong>E席</strong>、狙い目は冬の晴れた午前です。</p>
+        <p>ほかにも、相模平野ごしの富士、A席側に回り込む左富士、都内や浜名湖から小さく見える富士があります。</p>
+        <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="大きく長く見える富士山2区間">
+          <a class="guide-visual-card" href="spots/sagami-fuji.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="相模平野の向こうにそびえる富士山">
+            <span><span class="g9-min">約25〜27分</span>E席</span>
+            <strong>相模平野ごしの富士</strong>
+            <em>丹沢の稜線の奥に、平野を挟んで全体像が見えます。約1分。冬の朝はとくに鮮明。</em>
+          </a>
+          <a class="guide-visual-card" href="spots/fuji.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20240211_fuji_michikusa.webp" alt="E席の窓いっぱいに見える冠雪の富士山">
+            <span><span class="g9-min">約43〜47分</span>E席</span>
+            <strong>三島〜富士川の富士</strong>
+            <em>いちばん近く、いちばん長い。窓いっぱいの約3分半に、前景だけが入れ替わります。</em>
+          </a>
+        </div>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="短い・遠い・反対側の富士山3区間">
+          <a class="guide-visual-card" href="spots/left-fuji.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="A席側に現れる左富士">
+            <span><span class="g9-min">約54分</span>A席</span>
+            <strong>左富士</strong>
+            <em>この区間だけ数秒、富士山が反対のA席側へ回り込みます。東海道の旅人が珍重した現象。</em>
+          </a>
+          <a class="guide-visual-card" href="spots/ota-fuji.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="大田区付近の街並みの向こうに小さく見える富士山">
+            <span><span class="g9-min">約10分</span>E席</span>
+            <strong>都内からの富士</strong>
+            <em>品川を出てすぐ、街の向こうに小さく。旅のいちばん早い合図です。写真 @T_Yangyang</em>
+          </a>
+          <a class="guide-visual-card" href="spots/hamanako.html#hamanako-fuji">
+            <img loading="lazy" decoding="async" src="images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="浜名湖の向こうに小さく見える富士山">
+            <span><span class="g9-min">約73分</span>E席</span>
+            <strong>浜名湖ごしの富士</strong>
+            <em>湖の奥に、ごく小さく。富士山を追い越したあとに、もう一度だけ振り返れる場所です。写真 @ProBoffin</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="closeup">
+        <div class="section-head"><p class="eyebrow">FOREGROUNDS</p><h2><span class="copy-chunk">いちばん長い区間では、</span><span class="copy-chunk">富士山の前を街と川が流れる</span></h2></div>
+        <p><strong>三島〜富士川の約4分は、富士山が「何度も現れる」のではなく、ずっと窓にあり続ける区間です。</strong>動いているのは手前だけ。街、赤白の煙突、そして川と白いアーチが、同じ富士山の前を順番に通り過ぎます。だから下の2枚は別々の富士山ではなく、<strong>同じ富士山を、別の前景ごしに見た1枚ずつ</strong>です。どちらもE席側。</p>
+        <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="同じ富士山を別の前景ごしに見る">
+          <a class="guide-visual-card" href="spots/fuji-paper-mills.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="赤白の煙突と重なって立つ富士山と、富士市の製紙工場">
+            <span><span class="g9-min">約44分</span>E席</span>
+            <strong>約44分 · 煙突ごしの富士</strong>
+            <em>富士山が窓いっぱいのまま、手前に赤白の煙突が入ってくる数十秒。工場と霊峰が一枚に収まります。写真 @OliverinJapan</em>
+          </a>
+          <a class="guide-visual-card" href="spots/fujikawa-bridge.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20220205_fujikawa_bridge_michikusa.webp" alt="富士川の白いアーチ橋の向こうに立つ冠雪の富士山">
+            <span><span class="g9-min">約47分</span>E席</span>
+            <strong>約47分 · 白いアーチごしの富士</strong>
+            <em>区間の締めくくり。川、10連の白いアーチ、富士山が一度に窓へ入ります。冬から早春がいちばん絵になる。</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="faces">
+        <div class="section-head"><p class="eyebrow">SEASONS &amp; HOURS</p><h2><span class="copy-chunk">同じ富士山でも、</span><span class="copy-chunk">季節と時間で別の山に見える</span></h2></div>
+        <p><strong>三島〜新富士の同じ窓でも、季節と時間で富士山の顔は大きく変わります。</strong>雪をかぶるのは秋の終わりから初夏まで。夏は雪がなく、空に溶けて輪郭がやわらぎます。日が傾くと、稜線だけが空に残ります。</p>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="季節と時間で変わる富士山">
+          <a class="guide-visual-card" href="spots/fuji.html" data-guide-cta="faces_fuji_green">
+            <img loading="lazy" decoding="async" src="images/thumbs/20260616_fuji_sttraveler.webp" alt="初夏の田んぼの緑ごしに見える富士山">
+            <strong>初夏 · 田んぼの緑と</strong>
+            <em>6月。稲の緑と山肌のコントラストがいちばん強い時期です。写真 @STTraveler</em>
+          </a>
+          <a class="guide-visual-card" href="spots/fuji.html" data-guide-cta="faces_fuji_snowless">
+            <img loading="lazy" decoding="async" src="images/thumbs/20230913_fuji_michikusa.webp" alt="雪のない秋の富士山と小麦色の田んぼ">
+            <strong>初秋 · 雪のない富士</strong>
+            <em>9月。雪が消えた富士山と、小麦色になった田んぼ。冬とは別の山に見えます。</em>
+          </a>
+          <div class="guide-visual-cell">
+          <a class="guide-visual-card" href="spots/fuji-paper-mills.html" data-guide-cta="faces_fuji_dusk">
+            <img loading="lazy" decoding="async" src="images/thumbs/20260529_fuji_paper_mills_kamiyu_g1x_mk2.webp" alt="夕暮れの富士山と製紙工場の夜景">
+            <strong>夕暮れ · 工場の灯りと</strong>
+            <em>日が落ちる前後、富士山の稜線と製紙工場の灯りが一枚に並びます。</em>
+          </a>
+          <p class="guide-photo-source">写真: <a href="https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354" rel="noopener" target="_blank">@kamiyu_G1X_Mk2 の元投稿</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="cloudy">
+        <div class="section-head"><p class="eyebrow">CLOUDY DAYS</p><h2><span class="copy-chunk">曇りで富士山が見えない日は、</span><span class="copy-chunk">同じ窓の手前を見る</span></h2></div>
+        <p><strong>富士山は年の半分ほど霞や雲に隠れます。</strong>低い雲が消すのは富士山だけではなく、遠くの山も広い眺めも同じように霞みます。それでも線路に近い景色は輪郭が残るので、<strong>富士山を狙っていたその時刻に、そのまま手前へ目を移す</strong>のがいちばん確実です。5区間のうち3つには、天気に左右されにくい「手前」があります。</p>
+
+        <div class="guide-visual-grid guide-photo-strip" aria-label="富士山が見えない日の切り替え先">
+          <a class="guide-visual-card" href="spots/hinataoka.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20260530_hinataoka.webp" alt="カラフルな三角屋根が並ぶ日向岡の住宅地">
+            <span><span class="g9-min">約27分</span>E席</span>
+            <strong>区間1の手前 · 日向岡</strong>
+            <em>相模平野の富士山が霞んでいても、丘の上に並ぶカラフルな三角屋根は残ります。</em>
+          </a>
+          <a class="guide-visual-card" href="spots/fuji-paper-mills.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20260816_fuji_paper_mills_michikusa.webp" alt="曇り空の下に並ぶ富士市の製紙工場の煙突">
+            <span><span class="g9-min">約44分</span>E席</span>
+            <strong>区間2の手前 · 富士の製紙工場</strong>
+            <em>晴れた日は富士山の前景。曇りの日は、この赤白の煙突とプラントのほうが主役になります。</em>
+          </a>
+          <a class="guide-visual-card" href="spots/hamanako.html">
+            <img loading="lazy" decoding="async" src="images/thumbs/20260530_hamanako.webp" alt="新幹線のE席側から見える浜名湖">
+            <span><span class="g9-min">約73分</span>E席</span>
+            <strong>区間5の手前 · 浜名湖</strong>
+            <em>湖の奥の富士山が消えても、手前の湖面はそのまま残ります。曇りはむしろ水の色が深くなる。</em>
+          </a>
+        </div>
+        <p>残る区間3（約54分・左富士）と区間4（約10分・都内）は、もともと一瞬の勝負か、空気が澄んだ日だけの富士山です。曇りの日は数えないほうが気が楽です。富士山を離れれば、駅のすぐ横に立つ<a href="spots/kakegawa.html">掛川城</a>のように天気に強い車窓がほかにもあります——<a href="zukan.html"><strong>残りは車窓図鑑で</strong></a>。</p>
+        <p style="margin-bottom:0"><strong>夜の便では富士山は見えません。</strong>三島〜新富士を日没後に通るなら、<a href="yakei.html" data-guide-cta="night_page">夜景ガイドで暗くなる時刻と見える場所を確かめてください</a>。</p>
+      </section>
+      <section class="spot-page-section guide-feature-section" id="fuji-clouds">
+        <h2>富士山の雲も楽しむ</h2>
+        <p>山頂に帽子のような雲が重なったら、笠雲かもしれません。山の隣に浮かぶつるし雲も、車窓の楽しみの一つ。<a href="window-moments.html#clouds">笠雲・つるし雲の見分け方と、実際の投稿</a>を「一度きりの車窓」に集めています。</p>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="seat">
+        <div class="section-head"><p class="eyebrow">SEAT E</p><h2>E席の取り方、3ステップ</h2></div>
+        <ol class="g9-steps">
+          <li><strong>列車はどれでも。</strong>のぞみ・ひかり・こだま、車窓は同じです。E席は普通車の富士山側の窓席です。事前にE席を確保したい場合は指定席を予約してください（自由席の設定や料金は列車・乗車日で異なります。最新は<a href="https://railway.jr-central.co.jp/ticket-rule/" rel="noopener" target="_blank">JR東海の公式案内</a>で）。窓の時間を長く楽しむならひかり・こだまも悪くありません（グリーン車は2+2なのでD席が富士山側）。</li>
+          <li><strong>指定席の座席表で「E」を選ぶ。</strong>券売機・みどりの窓口・スマートEXのどれでも。終点で座席の向きを転換するため、<em>上りも下りもE席</em>。左右を覚える必要はありません。二人ならD+Eで。</li>
+          <li><strong>E席が満席なら、無理に移動しない。</strong>通路やデッキを塞がず、車内が空いていて安全に見られる窓がある場合だけ短時間で。難しければ今回はA席側の左富士や、両側から楽しめる浜名湖を狙いましょう。</li>
+        </ol>
+      </section>
+      <section class="spot-page-section guide-feature-section" id="trainTimes">
+        <span id="train-times" aria-hidden="true"></span>
+        <div class="section-head"><p class="eyebrow">YOUR TRAIN</p><h2><span class="copy-chunk">乗る列車の、</span><span class="copy-chunk">富士山の時刻を。</span></h2></div>
+        <p>東京からの分数は目安です。乗る列車と乗車駅を選ぶと、停車時刻から推定した富士山の通過時刻と、ほかの車窓が並びます。</p>
+        <p><a class="btn btn-primary" href="start.html?focus=fuji#journey" data-guide-cta="train_times_picker"><span class="copy-chunk">乗る列車の</span><span class="copy-chunk">富士山通過時刻を調べる</span></a></p>
+      </section>
+
+      <section class="spot-page-section guide-mobile-timeline guide-feature-section" id="timeline">
+        <div class="section-head"><p class="eyebrow">MORE WINDOWS</p><h2><span class="copy-chunk">おすすめの車窓を、</span><span class="copy-chunk">あなたの列車の時刻で</span></h2></div>
+        <p>表示中の分数はのぞみの目安です。実際の時刻は停車駅や発車時刻で変わるため、<strong>乗る列車を選ぶと、全59景をその列車の通過予定時刻に置き換えます</strong>。</p>
+        <!-- GUIDE_MOBILE_SPOTS_START -->
+        <div class="guide-mobile-spots" aria-label="東京から新大阪までの代表的な車窓">
+          <div class="showcase-rail">
+          <a class="show-card guide-mobile-spot-card" href="spots/tokyo-tower.html" data-guide-mobile-spot="tokyo-tower" aria-label="東京タワー: ガイドを読む">
+            <div class="show-media"><img src="images/thumbs/20250111_tokyo_tower_letus10.webp" alt="東京タワー" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗼 東京タワー</strong><small class="show-credit">新幹線の車窓から</small><span>ビルのすきまに、東京の顔。</span><span class="show-guide-link">ガイドを読む</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/odawara.html" data-guide-mobile-spot="odawara" aria-label="熱海と初島: ガイドを読む">
+            <div class="show-media"><img src="images/thumbs/20260804_atami_michikusa.webp" alt="熱海と初島" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🌊 熱海と初島</strong><small class="show-credit">2026-08-04</small><span>海に浮かぶ、低い島。</span><span class="show-guide-link">ガイドを読む</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/fuji.html" data-guide-mobile-spot="fuji" aria-label="富士山: ガイドを読む">
+            <div class="show-media"><img src="images/thumbs/20210218_fuji_rumireport.webp" alt="富士山" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗻 富士山</strong><small class="show-credit">@rumireport</small><span>日本でいちばん有名な3分間。</span><span class="show-guide-link">ガイドを読む</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/hamanako.html" data-guide-mobile-spot="hamanako" aria-label="浜名湖: ガイドを読む">
+            <div class="show-media"><img src="images/thumbs/20260505_hamanako_design_photosy.webp" alt="浜名湖" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🚤 浜名湖</strong><small class="show-credit">@Design_photoSY</small><span>列車が、湖の上をはしる。</span><span class="show-guide-link">ガイドを読む</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/solar-ark.html" data-guide-mobile-spot="solar-ark" aria-label="ソーラーアーク: ガイドを読む">
+            <div class="show-media"><img src="images/thumbs/20260530_solar_ark.webp" alt="ソーラーアーク" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>☀️ ソーラーアーク</strong><small class="show-credit">2026-05-30</small><span>もうすぐ見納め、太陽の船。</span><span class="show-guide-link">ガイドを読む</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="spots/toji.html" data-guide-mobile-spot="toji" aria-label="東寺五重塔: ガイドを読む">
+            <div class="show-media"><img src="images/thumbs/20260510_toji.webp" alt="東寺五重塔" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>⛩️ 東寺五重塔</strong><small class="show-credit">2026-05-10</small><span>「京都に来た」が、一瞬でわかる。</span><span class="show-guide-link">ガイドを読む</span></span>
+          </a>
+          </div>
+        </div>
+        <!-- GUIDE_MOBILE_SPOTS_END -->
+        <div class="spot-page-actions">
+          <a class="btn btn-ghost" href="zukan.html">車窓図鑑で全59景をみる</a>
+        </div>
+      </section>
+      <aside class="spot-page-mobile-affiliate" id="spotMobileAffiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_guide_article_end_mobile" data-affiliate-language="ja" data-affiliate-context="guide" aria-label="広告">
+        <p class="spot-page-mobile-affiliate-label" data-affiliate-view-target>広告</p>
+        <div class="spot-page-mobile-affiliate-banner">
+          <a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671044" target="_blank" rel="sponsored nofollow noopener"><span class="spot-page-mobile-affiliate-fallback"><strong>JR・新幹線＋ホテル</strong><small>日本旅行のセットプランを見る ↗</small></span><img data-affiliate-src="https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671044" data-affiliate-media="(max-width: 1099px)" alt="日本旅行 JR・新幹線とホテルのセットプラン" loading="lazy" decoding="async" fetchpriority="low" width="234" height="60"></a>
+          <noscript><a href="https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=2833638&amp;pid=892671044" rel="sponsored nofollow noopener"><img src="https://ad.jp.ap.valuecommerce.com/servlet/gifbanner?sid=2833638&amp;pid=892671044" alt="日本旅行 JR・新幹線とホテルのセットプラン" width="234" height="60"></a></noscript>
+        </div>
+        <p class="spot-page-mobile-affiliate-note">アフィリエイトリンクを含みます。</p>
+      </aside>
+
+      </article>
+    </div>
+  </main>
+  <script>
+    document.querySelectorAll("img[data-affiliate-src]").forEach(function (img) {
+      var media = img.getAttribute("data-affiliate-media");
+      if (media && !window.matchMedia(media).matches) return;
+      img.src = img.getAttribute("data-affiliate-src");
+      img.removeAttribute("data-affiliate-src");
+    });
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-guide-cta], [data-guide-mobile-spot]");
+      if (!link || typeof window.gtag !== "function") return;
+      if (link.hasAttribute("data-guide-mobile-spot")) {
+        window.gtag("event", "guide_mobile_spot_click", {
+          spot_id: link.getAttribute("data-guide-mobile-spot"),
+          destination: link.getAttribute("href"),
+          language: "ja",
+          placement: "timeline_mobile",
+          page_context: "guide"
+        });
+        return;
+      }
+      window.gtag("event", "guide_cta_click", {
+        cta_id: link.getAttribute("data-guide-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "ja",
+        page_context: "guide"
+      });
+      if ((link.getAttribute("href") || "").indexOf("#journey") !== -1) {
+        window.gtag("event", "cta_train_search_click", {
+          cta_id: link.getAttribute("data-guide-cta"),
+          cta_label: link.textContent.trim(),
+          destination: link.getAttribute("href"),
+          language: "ja",
+          page_context: "guide"
+        });
+      }
+    });
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-affiliate-module] a");
+      var module = link && link.closest("[data-affiliate-module]");
+      if (!module || typeof window.gtag !== "function") return;
+      window.gtag("event", "affiliate_click", {
+        affiliate_partner: link.getAttribute("data-affiliate-partner") || module.getAttribute("data-affiliate-partner"),
+        affiliate_offer: link.getAttribute("data-affiliate-offer") || module.getAttribute("data-affiliate-offer") || "multiple",
+        affiliate_placement: module.getAttribute("data-affiliate-placement"),
+        language: "ja",
+        page_context: "guide"
+      });
+    });
+  </script>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head">
+      <p class="eyebrow">MORE TO TRY</p>
+      <h2 id="contentRailTitle">車窓をもっと楽しむ</h2>
+    </div>
+    <div class="content-rail">
+      <a class="content-rail-card" href="mieru.html">
+        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>FORECAST</small>
+          <strong>今日の富士山 見える予報</strong>
+          <span>今日の空で富士山が見えそうかを確認。</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="window-artworks.html">
+        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>ARTWORKS</small>
+          <strong>車窓の作品集</strong>
+          <span>写真や墨絵で、車窓の別の表現を楽しむ。</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="journal.html">
+        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>JOURNAL</small>
+          <strong>スタンプ帖</strong>
+          <span>見つけた景色をスタンプとメダルで記録。</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="references.html">
+        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>LINKS</small>
+          <strong>車窓リンク集</strong>
+          <span>出典や参考記事をまとめて読む。</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>お問い合わせ</strong><span>写真提供、情報の訂正、ご感想はこちら。</span></span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
+    <p>時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>
+    <p class="footer-links"><a href="guide.html">富士山を見る</a> · <a href="references.html">車窓リンク集</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p>
+    <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+  </footer>
+<!-- ANDROID_APP_INVITE_START -->
+<script type="application/json" id="mado-android-invite-config">{"language":"ja","pageContext":"fuji_guide","assetPrefix":"","general":false}</script>
+<!-- ANDROID_APP_INVITE_END -->
+<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+</body>
+</html>

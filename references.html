@@ -60,39 +60,7 @@
   <link rel="stylesheet" href="style.css?v=5f3f6183">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html">
-      <span class="brand-mark">窓</span>
-      <span class="brand-text">
-        <span class="brand-name">新幹線の窓</span>
-        <small class="brand-sub">旅の瞬間を見逃さない</small>
-      </span>
-    </a>
-    <nav class="top-nav" aria-label="Primary">
-      <a href="start.html">列車選択</a>
-      <a href="live/">音声ガイド</a>
-      <a href="zukan.html">車窓図鑑</a>
-      <a class="top-nav-overflow" href="guide.html">富士山を見る</a>
-      <a class="top-nav-stamp" href="journal.html">スタンプ帖</a>
-      <details class="top-nav-more">
-        <summary>もっと見る</summary>
-        <div class="top-nav-menu">
-          <a class="top-nav-menu-stamp" href="journal.html">スタンプ帖</a>
-          <a class="top-nav-menu-compact" href="guide.html">富士山を見る</a>
-          <a href="mieru.html">富士山 見える予報</a>
-          <a href="window-artworks.html" data-i18n="navArtworks">車窓の作品集</a>
-          <!-- ja-only-sudoori:start --><a href="sudoori/index.html#stories">素通りの街</a><a href="window-quiz.html">車窓クイズ</a><!-- ja-only-sudoori:end -->
-          <a href="references.html" aria-current="page">リンク集</a>
-          <a href="contact.html">お問い合わせ</a>
-          <a href="privacy.html">プライバシーポリシー</a>
-        </div>
-      </details>
-    </nav>
-    <div class="lang-switch" role="group" aria-label="Language">
-      <a class="active" href="references.html">日本語</a>
-      <a href="en/references.html">EN</a>
-    </div>
-  </header>
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="start.html">列車選択</a><a href="live/">音声ガイド</a><a href="zukan.html">車窓図鑑</a></nav><div class="lang-switch" inert aria-hidden="true"><a class="active" href="references.html">日本語</a></div></header>
 
   <main>
     <section class="reference-hero">
@@ -189,50 +157,7 @@
       <a class="btn btn-primary" href="index.html">新幹線の窓へ戻る</a>
     </section>
   </main>
-  <section class="content-rail-section" aria-labelledby="contentRailTitle">
-    <div class="section-head">
-      <p class="eyebrow">MORE TO TRY</p>
-      <h2 id="contentRailTitle">車窓をもっと楽しむ</h2>
-    </div>
-    <div class="content-rail">
-      <a class="content-rail-card" href="guide.html"><img src="images/thumbs/content-faq.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>MT. FUJI</small><strong>富士山を見る</strong><span>5つの区間、座席側、曇りの日の見え方を確認。</span></span></a>
-      <a class="content-rail-card" href="mieru.html">
-        <img src="images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>FORECAST</small>
-          <strong>今日の富士山 見える予報</strong>
-          <span>今日の空で富士山が見えそうかを確認。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="window-artworks.html">
-        <img src="images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>ARTWORKS</small>
-          <strong>車窓の作品集</strong>
-          <span>写真や墨絵で、車窓の別の表現を楽しむ。</span>
-        </span>
-      </a>
-      <a class="content-rail-card" href="journal.html">
-        <img src="images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>JOURNAL</small>
-          <strong>スタンプ帖</strong>
-          <span>見つけた景色をスタンプとメダルで記録。</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="references.html">
-        <img src="images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
-        <span class="content-rail-card-body">
-          <small>LINKS</small>
-          <strong>車窓リンク集</strong>
-          <span>出典や参考記事をまとめて読む。</span>
-        </span>
-      </a>
-
-      <a class="content-rail-card" href="contact.html"><img src="images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>お問い合わせ</strong><span>写真提供、情報の訂正、ご感想はこちら。</span></span></a>
-    </div>
-  </section>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-1"></section>
 
   <footer class="footer">
     <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
@@ -257,5 +182,7 @@
       });
     })();
   </script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"references.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":12,"value":"page"}],"menu":"header-references-menu","menuRoute":"references.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"}]}</script>
+<script src="site-runtime-loader.js?v=aa24d852" defer></script>
 </body>
 </html>

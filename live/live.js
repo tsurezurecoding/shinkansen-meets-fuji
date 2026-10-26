@@ -1391,7 +1391,7 @@
   function updateChromeLinks() {
     var links = state.lang === "en" ? {
       home: "../",
-      journey: "../#journey",
+      journey: "../start.html#journey",
       live: "./",
       zukan: "../zukan.html",
       allviews: "../zukan.html#gallery",
@@ -1427,13 +1427,22 @@
     });
   }
 
-  function applyLang() {
-    rememberLang(state.lang);
-    document.documentElement.lang = state.lang;
+  function updateChromeLanguage() {
     document.querySelectorAll("[data-live-copy]").forEach(function (node) {
       var key = node.getAttribute("data-live-copy");
       node.textContent = t(key);
     });
+    document.querySelectorAll("[data-live-lang]").forEach(function (button) {
+      var active = button.getAttribute("data-live-lang") === state.lang;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", active ? "true" : "false");
+    });
+  }
+
+  function applyLang() {
+    rememberLang(state.lang);
+    document.documentElement.lang = state.lang;
+    updateChromeLanguage();
     el["live-title"].textContent = t("appTitle");
     document.getElementById("idle-title").textContent = t("idleTitle");
     document.getElementById("idle-desc").textContent = t("idleDesc");
@@ -1454,11 +1463,6 @@
         state.dir > 0 ? t("dirDown") : state.dir < 0 ? t("dirUp") : t("dirAuto");
       _bd.title = t("dirL");
     }
-    document.querySelectorAll("[data-live-lang]").forEach(function (button) {
-      var active = button.getAttribute("data-live-lang") === state.lang;
-      button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", active ? "true" : "false");
-    });
     syncRunControls();
     document.getElementById("set-title").textContent = t("settings");
     document.getElementById("set-vib-l").textContent = t("vibL");
@@ -1501,26 +1505,35 @@
     render();
   }
 
-  document.querySelectorAll("[data-live-lang]").forEach(function (button) {
-    button.addEventListener("click", function () {
-      var nextLang = button.getAttribute("data-live-lang");
-      if (nextLang === state.lang) return;
-      try {
-        localStorage.setItem("madoLive.lang", nextLang);
-        localStorage.setItem("mado-lang", nextLang);
-      } catch (error) {}
-      // 公開Webのcanonicalはディレクトリ形式。ネイティブバンドルだけがindex.htmlを必要とする
-      // （language-router.jsと同じ契約）。両形式のリンクが混在するとGoogleが古い方をクロールし、
-      // 2026-08-16に外したnoindexを持ち続ける事故が起きた（2026-09-22に判明）。
-      var liveTarget = nextLang === "ja" ? "live/" : nextLang + "/live/";
-      if (window.MADO_NATIVE_APP) liveTarget += "index.html";
-      var destination = new URL(liveTarget, APP_ASSET_BASE);
-      destination.search = location.search;
-      if (destination.searchParams.has("lang")) destination.searchParams.set("lang", nextLang);
-      destination.hash = location.hash;
-      location.href = destination.href;
+  var boundLanguageButtons = new WeakSet();
+  function connectSharedUI() {
+    updateChromeLanguage();
+    updateChromeLinks();
+    document.querySelectorAll("[data-live-lang]").forEach(function (button) {
+      if (boundLanguageButtons.has(button)) return;
+      boundLanguageButtons.add(button);
+      button.addEventListener("click", function () {
+        var nextLang = button.getAttribute("data-live-lang");
+        if (nextLang === state.lang) return;
+        try {
+          localStorage.setItem("madoLive.lang", nextLang);
+          localStorage.setItem("mado-lang", nextLang);
+        } catch (error) {}
+        // 公開Webのcanonicalはディレクトリ形式。ネイティブバンドルだけがindex.htmlを必要とする
+        // （language-router.jsと同じ契約）。両形式のリンクが混在するとGoogleが古い方をクロールし、
+        // 2026-08-16に外したnoindexを持ち続ける事故が起きた（2026-09-22に判明）。
+        var liveTarget = nextLang === "ja" ? "live/" : nextLang + "/live/";
+        if (window.MADO_NATIVE_APP) liveTarget += "index.html";
+        var destination = new URL(liveTarget, APP_ASSET_BASE);
+        destination.search = location.search;
+        if (destination.searchParams.has("lang")) destination.searchParams.set("lang", nextLang);
+        destination.hash = location.hash;
+        location.href = destination.href;
+      });
     });
-  });
+  }
+  connectSharedUI();
+  document.addEventListener('mado:shared-ui-ready', connectSharedUI);
   document.getElementById("btn-narr-toggle").addEventListener("click", toggleNarration);
   document.getElementById("btn-pause").addEventListener("click", togglePause);
   document.getElementById("map-narr-toggle").addEventListener("click", toggleNarration);

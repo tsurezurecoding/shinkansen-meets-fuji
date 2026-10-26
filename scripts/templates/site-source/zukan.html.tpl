@@ -1,0 +1,321 @@
+<!DOCTYPE html><html lang="ja"><head>
+  <meta charset="utf-8">
+  <script src="locales.js?v=6585facb"></script>
+  <link rel="manifest" href="manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>東海道新幹線の車窓図鑑｜写真から探す沿線の見どころ</title>
+  <meta name="description" content="富士山から城・湖・線路ぎわの看板まで。東海道新幹線の景色を写真から探せる車窓図鑑です。気になるスポットの見どころや背景を知り、次に窓を見る楽しみを見つけられます。">
+  <meta name="theme-color" content="#101c2c">
+  <link rel="canonical" href="https://www.michikusa-travel.com/zukan.html">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="東海道新幹線の車窓図鑑｜写真から探す沿線の見どころ">
+  <meta property="og:description" content="富士山から城・湖・線路ぎわの看板まで。東海道新幹線の景色を写真から探せる車窓図鑑です。気になるスポットの見どころや背景を知り、次に窓を見る楽しみを見つけられます。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/zukan.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="東海道新幹線の車窓図鑑｜写真から探す沿線の見どころ">
+  <meta name="twitter:description" content="富士山から城・湖・線路ぎわの看板まで。東海道新幹線の景色を写真から探せる車窓図鑑です。気になるスポットの見どころや背景を知り、次に窓を見る楽しみを見つけられます。">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image:alt" content="新幹線の窓 - 車窓図鑑">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/zukan.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/zukan.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/zukan.html">
+  <script src="language-router.js?v=ff60751b"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "@id": "https://www.michikusa-travel.com/zukan.html#page",
+    "name": "車窓図鑑 | 新幹線の窓",
+    "url": "https://www.michikusa-travel.com/zukan.html",
+    "inLanguage": "ja",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "新幹線の窓",
+      "url": "https://www.michikusa-travel.com/"
+    },
+    "description": "東海道新幹線から見える富士山、湖、城、海、街並み、工業景観などの車窓スポットを一覧できる車窓図鑑。"
+  }
+  </script>
+  <!-- ANDROID_APP_INVITE_RESET_START -->
+<script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
+(function () {
+  'use strict';
+  function stopSavedOptOut() {
+    try {
+      if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+      window.MADO_ANALYTICS_DISABLED = true;
+      window['ga-disable-G-C2ESB694FV'] = true;
+    } catch (error) { /* Preserve the existing initializer's storage semantics. */ }
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'mado-ga-optout' || event.key === 'mado-android-app-invite-v2' || event.key === null) stopSavedOptOut();
+  });
+  window.addEventListener('pageshow', stopSavedOptOut);
+  window.addEventListener('focus', stopSavedOptOut, true);
+  document.addEventListener('visibilitychange', stopSavedOptOut);
+  stopSavedOptOut();
+  const url = new URL(window.location.href);
+  const reset = url.searchParams.getAll('android_invite_reset');
+  const ga = url.searchParams.getAll('ga');
+  if (reset.length !== 1 || reset[0] !== '1' || ga.length !== 1 || ga[0] !== 'off'
+      || url.searchParams.getAll('ga_optout').includes('0')) return;
+  // Keep this test page excluded even when storage is unavailable.
+  window.MADO_ANDROID_INVITE_TEST_GA_DISABLED = true;
+  url.searchParams.delete('android_invite_reset');
+  try { window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash); }
+  catch (error) { return; } // Do not reset unless the reload trigger was consumed.
+  try {
+    // Other tabs must see opt-out before the shared dismissal disappears.
+    window.localStorage.setItem('mado-ga-optout', '1');
+    if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+    window.localStorage.removeItem('mado-android-app-invite-v2');
+  }
+  catch (error) { /* The normal invitation storage guard remains in force. */ }
+})();
+</script>
+<!-- ANDROID_APP_INVITE_RESET_END -->
+<script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=5f3f6183">
+  <link rel="stylesheet" href="zukan-hero.css?v=c941329d">
+  <script defer="" src="utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/zukan.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/zukan.html">
+  <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/zukan.html">
+  <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/zukan.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/zukan.html">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/zukan.html">
+</head>
+<body class="field-guide-page">
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name" data-i18n="brandName">新幹線の窓</span><small class="brand-sub" data-i18n="brandSub">旅の瞬間を見逃さない</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="start.html" data-i18n="navStart">列車選択</a><a href="live/" data-i18n="navLive">音声ガイド</a><a href="zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features" aria-current="page">車窓図鑑</a></nav><div class="lang-switch" inert aria-hidden="true"><button type="button" data-lang="ja">日本語</button></div></header>
+
+  <main>
+    <section class="field-guide-hero">
+      <p class="eyebrow" data-i18n="galEyebrow">FIELD GUIDE</p>
+      <h1 data-i18n="galTitle">車窓図鑑</h1>
+      <p class="field-guide-discovery" data-i18n="galDiscovery"><span class="copy-chunk">知ると、</span><span class="copy-chunk">車窓はもっと面白い。</span></p>
+      <p data-i18n="galSub"><span class="copy-chunk">見慣れた看板の正体も、</span><span class="copy-chunk">富士山と工場のつながりも。</span><span class="copy-chunk">写真と解説で知ると、</span><span class="copy-chunk">次に窓を見る楽しみが増えます。</span></p>
+      <div class="zukan-switch" role="group" aria-label="図鑑の見方">
+        <a class="is-current" href="#zukanIntentsTitle" data-i18n="zukanSwitchFeatures">特集から探す</a>
+        <a href="#gallery" data-i18n="zukanSwitchAll" data-cta-track="zukan_switch_click" data-cta-id="all_views">車窓一覧を見る</a>
+        <!-- WINDOW-TRIP-JA:START -->
+        <a href="window-trip.html" data-cta-track="zukan_theme_click" data-cta-id="window_trip">車窓を眺める</a>
+        <!-- WINDOW-TRIP-JA:END -->
+      </div>
+    </section>
+
+    <section class="journey-intents journey-intents-guide" aria-labelledby="zukanIntentsTitle">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="zukanThemeEyebrow">BROWSE BY THEME</p>
+        <h2 id="zukanIntentsTitle" data-i18n="zukanThemeTitle">テーマから、車窓を探す</h2>
+      </div>
+      <div class="journey-intent-grid">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <a class="journey-intent-card journey-intent-cloudy" href="guide.html" data-cta-track="zukan_theme_click" data-cta-id="guide">
+          <img src="images/thumbs/20240211_Mt.Fuji.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="themeFujiLabel">MOUNT FUJI</small>
+            <strong data-i18n="themeFujiTitle">富士山はいつ見える</strong>
+            <span data-i18n="themeFujiBody">どちら側の席か、東京から何分ごろか。</span>
+          </span>
+        </a><a class="journey-intent-card journey-intent-cloudy" href="castles.html" data-cta-track="zukan_theme_click" data-cta-id="castles">
+          <img src="images/thumbs/20260704_kiyosu_castle_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>CASTLES</small>
+            <strong>新幹線から見える城</strong>
+            <span><span class="copy-chunk">天守と城跡を、</span><span class="copy-chunk">車窓の写真でめぐる。</span></span>
+          </span>
+        </a><!-- en-arenani-card --><a class="journey-intent-card journey-intent-cloudy" href="arenani.html" data-cta-track="zukan_theme_click" data-cta-id="arenani">
+          <img src="images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>WHAT WAS THAT?</small>
+            <strong>あれ、何？</strong>
+            <span><span class="copy-chunk">名前も分からないまま</span><span class="copy-chunk">通り過ぎた景色の正体。</span></span>
+          </span>
+        </a><!-- /en-arenani-card --><a class="journey-intent-card journey-intent-family" href="727-collection.html" data-cta-track="zukan_theme_click" data-cta-id="727_collection">
+          <img src="images/thumbs/20260704_727_board_kuzuhara_1_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="themeSignLabel">TRACKSIDE SIGNS</small>
+            <strong data-i18n="themeSignTitle">727看板コレクション</strong>
+            <span data-i18n="themeSignBody">沿線に何度も現れる、あの看板の正体。</span>
+          </span>
+        </a><a class="journey-intent-card journey-intent-night" href="yakei.html" data-cta-track="zukan_theme_click" data-cta-id="yakei">
+          <img src="images/thumbs/20260629_tokyo_tower_night_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="themeYakeiLabel">AFTER DARK</small>
+            <strong data-i18n="themeYakeiTitle">新幹線の夜景</strong>
+            <span data-i18n="themeYakeiBody">暗くなる区間を、出発時刻から。</span>
+          </span>
+        </a><a class="journey-intent-card journey-intent-night" href="hanabi.html" data-cta-track="zukan_theme_click" data-cta-id="hanabi">
+          <img src="images/thumbs/hanabi-hero-pd.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="themeHanabiLabel">FIREWORKS</small>
+            <strong data-i18n="themeHanabiTitle">車窓の花火</strong>
+            <span data-i18n="themeHanabiBody">沿線8大会を、見える区間と時刻で。</span>
+          </span>
+        </a><a class="journey-intent-card journey-intent-cloudy" href="window-moments.html" data-cta-track="zukan_theme_click" data-cta-id="window_moments">
+          <img src="images/thumbs/wm-hero-snow.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>WINDOW MOMENTS</small>
+            <strong>一度きりの車窓</strong>
+            <span><span class="copy-chunk">虹、雪、雲、雷。</span><span class="copy-chunk">その日だけの空に出会う。</span></span>
+          </span>
+        </a><a class="journey-intent-card journey-intent-family" href="sparkling-dreams.html" data-cta-track="zukan_theme_click" data-cta-id="sparkling_dreams">
+          <img src="images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small data-i18n="themeDisneyLabel">LIMITED</small>
+            <strong data-i18n="themeDisneyTitle">ディズニー新幹線</strong>
+            <span data-i18n="themeDisneyBody">すれ違えるかを、時刻から計算。</span>
+          </span>
+        </a><!-- en-reflections-card --><a class="journey-intent-card journey-intent-family" href="reflections.html" data-cta-track="zukan_theme_click" data-cta-id="reflections">
+          <img src="images/reflections/shinagawa-1.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>REFLECTIONS</small>
+            <strong>ガラスに映る新幹線</strong>
+            <span><span class="copy-chunk">乗っている列車が映る、</span><span class="copy-chunk">反射鉄の場所と見どき。</span></span>
+          </span>
+        </a><!-- /en-reflections-card --><a class="journey-intent-card journey-intent-family" href="ferris-wheels.html" data-cta-track="zukan_theme_click" data-cta-id="ferris_wheels">
+          <img src="images/thumbs/20260824_hirakata_park_wheel_wide_michikusa.webp" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>FERRIS WHEELS</small>
+            <strong>車窓の観覧車を集める</strong>
+            <span><span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span></span>
+          </span>
+        </a><!-- ja-only-sudoori:start --><a class="journey-intent-card journey-intent-cloudy" href="sudoori/index.html" data-cta-track="zukan_theme_click" data-cta-id="sudoori"><img src="images/20260924_yamazaki-distillery_6867_michikusa.jpg" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>PASSING TOWNS</small><strong>素通りの街</strong><span><span class="copy-chunk">いつも通り過ぎる町の、</span><span class="copy-chunk">知らなかった話。</span></span></span></a><!-- ja-only-sudoori:end --></div>
+    <!-- ja-only-sudoori-credit:start --><p class="field-guide-photo-note">「素通りの街」の車窓写真：michikusa（2026年9月撮影）</p><!-- ja-only-sudoori-credit:end --></section>
+
+    <section class="section" id="gallery">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="zukanAllEyebrow">ALL WINDOW VIEWS</p>
+        <h2 data-i18n="zukanAllTitle">すべての車窓を見る</h2>
+      </div>
+      <div class="gallery-controls" aria-label="車窓図鑑フィルタ">
+        <div class="gallery-modebar" id="galleryModebar">
+          <div class="gallery-mode-segment" role="group" aria-label="見どころモード">
+            <button type="button" data-filter="day" data-mode="day" data-i18n="fDayPhoto">昼の見どころ</button>
+            <button type="button" data-filter="night" data-mode="night" data-i18n="fNightPhoto">夜の見どころ</button>
+          </div>
+        </div>
+        <div class="filterbar" id="filterbar">
+          <div class="filter-group filter-group-seat" role="group" aria-label="座席側">
+            <button type="button" data-filter="all" class="active" data-i18n="fAll">すべて</button>
+            <button type="button" class="gallery-filter-fav" data-filter="favorites" data-i18n="fFavorites">★ お気に入り</button>
+            <button type="button" data-filter="seat-a" data-i18n="fSeatA">A席</button>
+            <button type="button" data-filter="seat-e" data-i18n="fSeatE">E席</button>
+          </div>
+          <div class="filter-group filter-group-category" role="group" aria-label="カテゴリ">
+            <button type="button" data-filter="cloudy" data-i18n="fCloudy">曇りでも</button>
+            <button type="button" data-filter="classic" data-i18n="fClassic">定番</button>
+            <button type="button" data-filter="nature" data-i18n="fNature">自然</button>
+            <button type="button" data-filter="history" data-i18n="fHistory">歴史</button>
+            <button type="button" data-filter="industry" data-i18n="fIndustry">工業</button>
+            <button type="button" data-filter="sign" data-i18n="fSign">看板</button>
+            <button type="button" data-filter="city" data-i18n="fCity">街並</button>
+          </div>
+        </div>
+      </div>
+      <div class="gallery" id="galleryGrid"></div>
+    </section>
+<!-- SANYO-GALLERY:START -->
+    <section class="section" id="sanyo" aria-labelledby="sanyoTitle">
+      <div class="section-head"><p class="eyebrow">MORE TO SEE</p><h2 id="sanyoTitle">大阪〜博多間の車窓</h2></div>
+      <div class="gallery sanyo-gallery">
+        <article class="gal-card sanyo-card">
+          <div class="gal-media-wrap"><figure class="photo-figure"><a class="sanyo-card-link" href="spots/himeji-castle.html"><img class="gal-photo" src="images/thumbs/20260916_himeji_castle_wakaba.webp" alt="新幹線の車窓から見た姫路城の白い天守" loading="lazy" decoding="async"></a><figcaption class="photo-credit">写真：<a href="https://x.com/wakaba70127479/status/2100095130896408840" target="_blank" rel="noopener noreferrer">@wakaba70127479</a></figcaption></figure></div>
+          <a class="gal-body sanyo-card-link" href="spots/himeji-castle.html"><div class="gal-top"><div class="gal-top-left"><span class="tl-icon" aria-hidden="true">🏯</span><span class="gal-name">姫路城</span></div></div><p class="gal-area">姫路駅の前後</p><div class="spot-card-footer"><div class="tl-meta gal-tags"><span class="badge gal-tag gal-tag-seat-e">E席</span><span class="badge gal-tag gal-tag-history">歴史</span></div></div></a>
+        </article>
+        <article class="gal-card sanyo-card">
+          <div class="gal-media-wrap"><figure class="photo-figure"><a class="sanyo-card-link" href="spots/okayama-castle.html"><img class="gal-photo" src="images/thumbs/20261001_okayama_castle_summer_dvfkfy3nnzdn3vj.webp" alt="街の建物越しに見える岡山城の黒い天守" loading="lazy" decoding="async"></a><figcaption class="photo-credit">写真：<a href="https://x.com/DVfkFY3nnZdn3VJ/status/2105536604333088797" target="_blank" rel="noopener noreferrer">@DVfkFY3nnZdn3VJ</a></figcaption></figure></div>
+          <a class="gal-body sanyo-card-link" href="spots/okayama-castle.html"><div class="gal-top"><div class="gal-top-left"><span class="tl-icon" aria-hidden="true">🏯</span><span class="gal-name">岡山城</span></div></div><p class="gal-area">岡山駅の東側</p><div class="spot-card-footer"><div class="tl-meta gal-tags"><span class="badge gal-tag gal-tag-seat-a">A席</span><span class="badge gal-tag gal-tag-history">歴史</span></div></div></a>
+        </article>
+        <article class="gal-card sanyo-card">
+          <div class="gal-media-wrap"><figure class="photo-figure"><a class="sanyo-card-link" href="spots/fukuyama-castle.html"><img class="gal-photo" src="images/thumbs/20260919_fukuyama_castle_wakaba.webp" alt="新幹線の車窓から見た福山城の天守と石垣" loading="lazy" decoding="async"></a><figcaption class="photo-credit">写真：<a href="https://x.com/wakaba70127479/status/2101193484564926710" target="_blank" rel="noopener noreferrer">@wakaba70127479</a></figcaption></figure></div>
+          <a class="gal-body sanyo-card-link" href="spots/fukuyama-castle.html"><div class="gal-top"><div class="gal-top-left"><span class="tl-icon" aria-hidden="true">🏯</span><span class="gal-name">福山城</span></div></div><p class="gal-area">福山駅のすぐ北</p><div class="spot-card-footer"><div class="tl-meta gal-tags"><span class="badge gal-tag gal-tag-seat-e">E席</span><span class="badge gal-tag gal-tag-history">歴史</span></div></div></a>
+        </article>
+      </div>
+    </section>
+<!-- SANYO-GALLERY:END -->
+  </main>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-1"></section>
+
+  <footer class="footer" data-site-chrome-host="chrome-2"><nav data-site-chrome-fallback><a href="guide.html">富士山の見方</a> · <a href="references.html">車窓リンク集</a> · <a href="contact.html">お問い合わせ</a></nav></footer>
+
+  <script src="data/timetable.js?v=89e78630"></script>
+  <script src="data-runtime.js?v=624b9863"></script>
+  <script src="track.js?v=fa004fe2"></script>
+  <script src="spot-map.js?v=1ed79613"></script>
+  <script src="train-select.js?v=88f5b2d7"></script>
+  <script src="app.js?v=6415fc4a"></script>
+  <script>
+    window.addEventListener("load", function () {
+      try {
+        var f = new URLSearchParams(window.location.search).get("filter");
+        if (!f) return;
+        var btn = document.querySelector('[data-filter="' + f + '"]');
+        if (btn) btn.click();
+      } catch (e) { /* no-op */ }
+    });
+  </script>
+
+
+<!-- ANDROID_APP_INVITE_START -->
+<script type="application/json" id="mado-android-invite-config">{"language":"ja","pageContext":"gallery","assetPrefix":"","general":false}</script>
+<!-- ANDROID_APP_INVITE_END -->
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"zukan.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":3,"value":"page"}],"menu":"header-start-menu-2","menuRoute":"zukan.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"},{"host":"chrome-2","component":"footer-zukan","kind":"footer"}]}</script>
+<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+</body></html>

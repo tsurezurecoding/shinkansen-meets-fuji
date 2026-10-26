@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../app-embedded.js?v=32708d67"></script>
+  <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>Mt. Fuji Is Hidden Today? What Else to See from the Shinkansen | Shinkansen Window</title>
+  <meta name="description" content="Clouds hid Mt. Fuji from the bullet train? The window still has castles, a lake the train crosses, tea fields, giant mystery billboards and a depot of sleeping Shinkansen. What to watch for, minute by minute, on a grey day.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/guide.html">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shinkansen Window">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Mt. Fuji Is Hidden Today? What Else to See from the Shinkansen">
+  <meta property="og:description" content="A grey sky costs you one view out of forty. Castles, a lake the train crosses, tea fields and a depot of sleeping Shinkansen are all still there — minute by minute.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Four window views under grey skies: Shimizu Port, Lake Hamana, the tea fields and Torikai depot">
+  <meta property="og:url" content="https://www.michikusa-travel.com/en/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mt. Fuji Is Hidden Today? What Else to See from the Shinkansen">
+  <meta name="twitter:description" content="A grey sky costs you one view out of forty. Here is everything else outside your window, minute by minute.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
+  <script src="../language-router.js?v=ff60751b"></script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <style>
+    .besides-page main { padding-bottom: 40px; }
+    .bf-hero { background: var(--paper, #fbf8f2); padding: 72px 20px 44px; }
+    .bf-hero-inner { max-width: 720px; margin: 0 auto; }
+    .bf-hero h1 { font-family: var(--font-serif); font-size: clamp(26px, 5.4vw, 40px); line-height: 1.45; margin: 0 0 18px; }
+    .bf-lead { font-size: 15px; line-height: 1.95; margin: 0 0 10px; }
+    .bf-section { padding: 0 20px 34px; }
+    .spot-page-shell > .bf-section { max-width: none; }
+    .bf-section h2 { font-family: var(--font-serif); font-size: clamp(20px, 4vw, 27px); line-height: 1.5; margin: 34px 0 14px; }
+    .bf-section p { font-size: 14.5px; line-height: 1.95; }
+    .bf-note { color: #6b6353; font-size: 13px; margin: 0 0 10px; }
+    .bf-table-wrap { overflow-x: auto; border: 1px solid #e5dcc9; border-radius: 14px; }
+    .bf-table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+    .bf-table th, .bf-table td { padding: 9px 12px; text-align: left; border-bottom: 1px solid #efe8d9; }
+    .bf-table thead th { background: #f7f2e6; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: #6b6353; }
+    .bf-table tbody tr:last-child td { border-bottom: 0; }
+    .bf-table td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .bf-seat { display: inline-block; min-width: 1.4em; text-align: center; border: 1px solid #d9cfb8; border-radius: 5px; padding: 0 5px; font-size: 11.5px; }
+    .bf-level { display: inline-block; border-radius: 999px; padding: 1px 8px; font-size: 11px; white-space: nowrap; }
+    .bf-level-easy { background: #e7f0e4; color: #3f6136; }
+    .bf-level-moderate { background: #f3ecd9; color: #7a6634; }
+    .bf-level-hard { background: #f2e2dd; color: #8a4a38; }
+    .bf-callout { background: #fff; border: 1px solid #e5dcc9; border-radius: 16px; padding: 16px 18px; margin: 18px 0; }
+    .bf-callout p { margin: 0 0 8px; }
+    .bf-callout p:last-child { margin-bottom: 0; }
+    .bf-cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 4px; }
+  </style>
+  <!-- JSONLD_START -->
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "@id": "https://www.michikusa-travel.com/en/besides-fuji.html#views",
+      "name": "Tokaido Shinkansen window views that do not need a clear horizon",
+      "description": "The 54 window views other than Mt. Fuji itself, in the order they pass.",
+      "numberOfItems": 54,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/edo-castle-fujimi-yagura.html#spot",
+            "name": "Edo Castle's Fujimi Turret",
+            "url": "https://www.michikusa-travel.com/en/spots/edo-castle-fujimi-yagura.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/tokyo-tower.html#spot",
+            "name": "Tokyo Tower",
+            "url": "https://www.michikusa-travel.com/en/spots/tokyo-tower.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/maruko-bridge.html#spot",
+            "name": "Maruko Bridge",
+            "url": "https://www.michikusa-travel.com/en/spots/maruko-bridge.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/musashi-kosugi-towers.html#spot",
+            "name": "Musashi-Kosugi Towers",
+            "url": "https://www.michikusa-travel.com/en/spots/musashi-kosugi-towers.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/727-board.html#spot",
+            "name": "727 and 248 Signs",
+            "url": "https://www.michikusa-travel.com/en/spots/727-board.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/727-board.html#spot",
+            "name": "727 Sign",
+            "url": "https://www.michikusa-travel.com/en/spots/727-board.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/hinataoka.html#spot",
+            "name": "Hinataoka Hillside Homes",
+            "url": "https://www.michikusa-travel.com/en/spots/hinataoka.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/putiputi-sign.html#spot",
+            "name": "Who am I? Sign",
+            "url": "https://www.michikusa-travel.com/en/spots/putiputi-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/odawara-castle.html#spot",
+            "name": "Odawara Castle",
+            "url": "https://www.michikusa-travel.com/en/spots/odawara-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/gyoran-kannon.html#spot",
+            "name": "Gyoran Kannon Statue",
+            "url": "https://www.michikusa-travel.com/en/spots/gyoran-kannon.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/shiraitogawa-bridge.html#spot",
+            "name": "Sagami Bay & Shiraitogawa Bridge",
+            "url": "https://www.michikusa-travel.com/en/spots/shiraitogawa-bridge.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/odawara.html#spot",
+            "name": "Atami & Hatsushima",
+            "url": "https://www.michikusa-travel.com/en/spots/odawara.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/mishima-catapult.html#spot",
+            "name": "Mishima Shinkansen Catapult",
+            "url": "https://www.michikusa-travel.com/en/spots/mishima-catapult.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fuji-pipe-sign.html#spot",
+            "name": "Fujipipe Rooftop Sign",
+            "url": "https://www.michikusa-travel.com/en/spots/fuji-pipe-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fuji-bus-sales.html#spot",
+            "name": "Fuji Bus Sales",
+            "url": "https://www.michikusa-travel.com/en/spots/fuji-bus-sales.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fuji-paper-mills.html#spot",
+            "name": "Fuji's Paper Mills",
+            "url": "https://www.michikusa-travel.com/en/spots/fuji-paper-mills.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fujikawa-bridge.html#spot",
+            "name": "Fujikawa Bridge and the Water Pipe Bridge",
+            "url": "https://www.michikusa-travel.com/en/spots/fujikawa-bridge.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/shimizu-port-chikyu.html#spot",
+            "name": "Shimizu Port and CHIKYU",
+            "url": "https://www.michikusa-travel.com/en/spots/shimizu-port-chikyu.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/granship.html#spot",
+            "name": "Granship",
+            "url": "https://www.michikusa-travel.com/en/spots/granship.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/sapporo-shizuoka-factory.html#spot",
+            "name": "Sapporo Beer Shizuoka Brewery",
+            "url": "https://www.michikusa-travel.com/en/spots/sapporo-shizuoka-factory.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/shizuoka-tea-fields.html#spot",
+            "name": "Shizuoka Tea Fields",
+            "url": "https://www.michikusa-travel.com/en/spots/shizuoka-tea-fields.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kakegawa.html#spot",
+            "name": "Kakegawa Castle",
+            "url": "https://www.michikusa-travel.com/en/spots/kakegawa.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/pocari-fukuroi.html#spot",
+            "name": "Otsuka's Pocari Sweat Plant",
+            "url": "https://www.michikusa-travel.com/en/spots/pocari-fukuroi.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/genki-sign.html#spot",
+            "name": "Shippei Cheer-up Signs",
+            "url": "https://www.michikusa-travel.com/en/spots/genki-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 25,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/hamanako.html#spot",
+            "name": "Lake Hamana",
+            "url": "https://www.michikusa-travel.com/en/spots/hamanako.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 26,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/toyohashi-tateiwa.html#spot",
+            "name": "Toyohashi Tateiwa Rock",
+            "url": "https://www.michikusa-travel.com/en/spots/toyohashi-tateiwa.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 27,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/mikawa-oshima.html#spot",
+            "name": "Mikawa Oshima",
+            "url": "https://www.michikusa-travel.com/en/spots/mikawa-oshima.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 28,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/gamagori-greenhouses.html#spot",
+            "name": "Greenhouses from Toyohashi to Gamagori",
+            "url": "https://www.michikusa-travel.com/en/spots/gamagori-greenhouses.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 29,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/nichiban-anjo.html#spot",
+            "name": "CELLOTAPE Wall Sign",
+            "url": "https://www.michikusa-travel.com/en/spots/nichiban-anjo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 30,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/nagoya-station-skyline.html#spot",
+            "name": "Nagoya Station Skyline",
+            "url": "https://www.michikusa-travel.com/en/spots/nagoya-station-skyline.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 31,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kirin-beer-factory.html#spot",
+            "name": "Kirin Beer Factory",
+            "url": "https://www.michikusa-travel.com/en/spots/kirin-beer-factory.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 32,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kiyosu.html#spot",
+            "name": "Kiyosu Castle",
+            "url": "https://www.michikusa-travel.com/en/spots/kiyosu.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 33,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/gifu-hashima-mahalo.html#spot",
+            "name": "Mahalo Sign at Gifu-Hashima",
+            "url": "https://www.michikusa-travel.com/en/spots/gifu-hashima-mahalo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 34,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/solar-ark.html#spot",
+            "name": "Solar Ark",
+            "url": "https://www.michikusa-travel.com/en/spots/solar-ark.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 35,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/gifu-castle.html#spot",
+            "name": "Gifu Castle",
+            "url": "https://www.michikusa-travel.com/en/spots/gifu-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 36,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kinshozan.html#spot",
+            "name": "Mt. Kinsho",
+            "url": "https://www.michikusa-travel.com/en/spots/kinshozan.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 37,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/nangu-taisha.html#spot",
+            "name": "Nangu Taisha Grand Torii",
+            "url": "https://www.michikusa-travel.com/en/spots/nangu-taisha.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 38,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/ibuki.html#spot",
+            "name": "Mt. Ibuki",
+            "url": "https://www.michikusa-travel.com/en/spots/ibuki.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 39,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/ibuki-seat-a.html#spot",
+            "name": "Mt. Ibuki from Seat A",
+            "url": "https://www.michikusa-travel.com/en/spots/ibuki-seat-a.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 40,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/sennenq-sign.html#spot",
+            "name": "Sennen Kyū Sign",
+            "url": "https://www.michikusa-travel.com/en/spots/sennenq-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 41,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/maibara-test-trains.html#spot",
+            "name": "Maibara’s Shinkansen Test Trains",
+            "url": "https://www.michikusa-travel.com/en/spots/maibara-test-trains.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 42,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fujitec-big-wing.html#spot",
+            "name": "FUJITEC Big Wing",
+            "url": "https://www.michikusa-travel.com/en/spots/fujitec-big-wing.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 43,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/sawayama-castle.html#spot",
+            "name": "Sawayama Castle Ruins",
+            "url": "https://www.michikusa-travel.com/en/spots/sawayama-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 44,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/hikone-castle.html#spot",
+            "name": "Hikone Castle",
+            "url": "https://www.michikusa-travel.com/en/spots/hikone-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 45,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/lotte-shiga.html#spot",
+            "name": "Lotte Shiga's Candy Billboards",
+            "url": "https://www.michikusa-travel.com/en/spots/lotte-shiga.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 46,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kannonji-castle.html#spot",
+            "name": "Kannonji Castle Ruins",
+            "url": "https://www.michikusa-travel.com/en/spots/kannonji-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 47,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/omi-fuji.html#spot",
+            "name": "Omi Fuji",
+            "url": "https://www.michikusa-travel.com/en/spots/omi-fuji.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 48,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/seta-karahashi.html#spot",
+            "name": "Seta no Karahashi Bridge",
+            "url": "https://www.michikusa-travel.com/en/spots/seta-karahashi.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 49,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/toji.html#spot",
+            "name": "To-ji Pagoda",
+            "url": "https://www.michikusa-travel.com/en/spots/toji.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 50,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kaguya-no-akari.html#spot",
+            "name": "Kaguya no To Water Tower",
+            "url": "https://www.michikusa-travel.com/en/spots/kaguya-no-akari.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 51,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/rakusai-egg-tanks.html#spot",
+            "name": "Rakusai's Egg-Shaped Digestion Tanks",
+            "url": "https://www.michikusa-travel.com/en/spots/rakusai-egg-tanks.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 52,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/yamazaki-distillery.html#spot",
+            "name": "Suntory Yamazaki Distillery",
+            "url": "https://www.michikusa-travel.com/en/spots/yamazaki-distillery.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 53,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/hirakata-park-wheel.html#spot",
+            "name": "The Hirakata Park Ferris Wheel",
+            "url": "https://www.michikusa-travel.com/en/spots/hirakata-park-wheel.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 54,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/torikai-train-depot.html#spot",
+            "name": "Torikai Train Depot",
+            "url": "https://www.michikusa-travel.com/en/spots/torikai-train-depot.html"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+  <!-- JSONLD_END -->
+</head>
+<body class="besides-page spot-page spot-page-utility" data-page="besides-fuji" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="besides-fuji.html">
+  <div data-spot-page-shared-module="topbar"></div>
+
+  <main>
+    <section class="bf-hero" aria-labelledby="bfTitle">
+      <div class="bf-hero-inner">
+        <p class="eyebrow">GREY SKY</p>
+        <h1 id="bfTitle">Mt. Fuji is hidden. Everything else is still there.</h1>
+        <p class="bf-lead">You booked the right seat, you watched the right window at the right minute, and there was nothing but cloud. It is the most common way this ride disappoints people, and almost every guide stops writing at exactly this point.</p>
+        <p class="bf-lead">Mt. Fuji is one of the <b>59 window views</b> between Tokyo and Shin-Osaka. A grey sky takes that one. The castles, the lake the train runs across, the tea fields, the giant billboards nobody can explain and the yard full of sleeping Shinkansen do not depend on a hundred kilometres of clear air — several of them look better under cloud.</p>
+      </div>
+    </section>
+
+    <div class="spot-page-shell bf-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article bf-section">
+      <div class="bf-callout">
+        <p><b>Why the near views survive.</b> Mt. Fuji is roughly 40 km from the track, so it needs the whole sky to cooperate. A castle two hundred metres away needs nothing. That is the entire difference.</p>
+        <p><b>Before you give up on the mountain</b>, note that it can appear from five separate points along the line, spread over more than an hour. Losing the famous one near Shin-Fuji does not mean losing all five.</p>
+      </div>
+
+      <h2>Three that are better on a grey day</h2>
+      <p><b>Lake Hamana</b> — the train crosses the water on a low bridge with sky on both sides, and flat grey light makes the surface look like metal. It works from either side of the carriage, so no seat lottery.</p>
+      <p><b>The tea fields around Makinohara</b> — rows of clipped green that get deeper and wetter-looking under cloud, not washed out like they are in hard noon sun.</p>
+      <p><b>Torikai depot, just before Shin-Osaka</b> — rows of Shinkansen parked nose to tail. Weather is irrelevant; it is the last thing you see and most passengers miss it entirely because they have already packed up.</p>
+
+      <h2>Everything outside your window, minute by minute</h2>
+      <p class="bf-note">Minutes are counted from Tokyo on a Nozomi, so they are a guide rather than a schedule. <a href="./#journey">Pick your train</a> to turn these into real times for the service you are on. <span class="bf-seat">E</span> is the right-hand side heading to Kyoto; <span class="bf-seat">A</span> is the left.</p>
+
+      <!-- BESIDES_TABLE_START -->
+      <div class="bf-table-wrap">
+        <table class="bf-table">
+          <thead><tr><th>From Tokyo</th><th>Side</th><th>Spotting</th><th>What it is</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>0.5 min</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/edo-castle-fujimi-yagura.html">Edo Castle's Fujimi Turret</a></td><td>A castle turret between the towers.</td></tr>
+            <tr><td>3 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/tokyo-tower.html">Tokyo Tower</a></td><td>Tokyo, between the buildings.</td></tr>
+            <tr><td>13 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/maruko-bridge.html">Maruko Bridge</a></td><td>A blue arch over the Tama River.</td></tr>
+            <tr><td>14 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/musashi-kosugi-towers.html">Musashi-Kosugi Towers</a></td><td>A wall of towers after the river.</td></tr>
+            <tr><td>23 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/727-board.html">727 and 248 Signs</a></td><td>What are those numbers, and where?</td></tr>
+            <tr><td>24 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/727-board.html">727 Sign</a></td><td>A mysterious 727 in the fields.</td></tr>
+            <tr><td>27 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/hinataoka.html">Hinataoka Hillside Homes</a></td><td>Rows of colorful triangular roofs.</td></tr>
+            <tr><td>27.5 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/putiputi-sign.html">Who am I? Sign</a></td><td>Who am I?</td></tr>
+            <tr><td>31 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/odawara-castle.html">Odawara Castle</a></td><td>A castle in a blink.</td></tr>
+            <tr><td>31.5 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/gyoran-kannon.html">Gyoran Kannon Statue</a></td><td>A white Kannon holding a fish basket.</td></tr>
+            <tr><td>32.7 min</td><td><span class="bf-seat">A</span></td><td></td><td><a href="spots/shiraitogawa-bridge.html">Sagami Bay &amp; Shiraitogawa Bridge</a></td><td>A railway bridge against the sea.</td></tr>
+            <tr><td>36 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/odawara.html">Atami &amp; Hatsushima</a></td><td>A low island beyond the hillside town.</td></tr>
+            <tr><td>40.5 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/mishima-catapult.html">Mishima Shinkansen Catapult</a></td><td>The depot ramp nicknamed a launchpad</td></tr>
+            <tr><td>44.5 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/fuji-pipe-sign.html">Fujipipe Rooftop Sign</a></td><td>A colorful Fujipipe rooftop sign.</td></tr>
+            <tr><td>44.8 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/fuji-bus-sales.html">Fuji Bus Sales</a></td><td>Rows and rows of buses.</td></tr>
+            <tr><td>45 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/fuji-paper-mills.html">Fuji's Paper Mills</a></td><td>Fuji's foothills make paper.</td></tr>
+            <tr><td>45.75 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/fujikawa-bridge.html">Fujikawa Bridge and the Water Pipe Bridge</a></td><td>River and Fuji in one frame.</td></tr>
+            <tr><td>50 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/shimizu-port-chikyu.html">Shimizu Port and CHIKYU</a></td><td>A white drilling tower at port.</td></tr>
+            <tr><td>52 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/granship.html">Granship</a></td><td>A silver cultural complex by the line.</td></tr>
+            <tr><td>56 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/sapporo-shizuoka-factory.html">Sapporo Beer Shizuoka Brewery</a></td><td>A row of silver tanks flashes by.</td></tr>
+            <tr><td>62 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/shizuoka-tea-fields.html">Shizuoka Tea Fields</a></td><td>Rows of green tea from the window.</td></tr>
+            <tr><td>64 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/kakegawa.html">Kakegawa Castle</a></td><td>A white castle beside the station.</td></tr>
+            <tr><td>65.5 min</td><td><span class="bf-seat">A</span></td><td></td><td><a href="spots/pocari-fukuroi.html">Otsuka's Pocari Sweat Plant</a></td><td>Pocari Sweat blue on a grassy hill.</td></tr>
+            <tr><td>66.5 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/genki-sign.html">Shippei Cheer-up Signs</a></td><td>Three signs that lift the ride.</td></tr>
+            <tr><td>73 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/hamanako.html">Lake Hamana</a></td><td>The train runs over the water.</td></tr>
+            <tr><td>76.5 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/toyohashi-tateiwa.html">Toyohashi Tateiwa Rock</a></td><td>A standing rock after Lake Hamana.</td></tr>
+            <tr><td>82.5 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/mikawa-oshima.html">Mikawa Oshima</a></td><td>An island silhouette across the bay.</td></tr>
+            <tr><td>83 min</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/gamagori-greenhouses.html">Greenhouses from Toyohashi to Gamagori</a></td><td>A sea of greenhouses below the hills.</td></tr>
+            <tr><td>88 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/nichiban-anjo.html">CELLOTAPE Wall Sign</a></td><td>A whole factory wall as a tape ad.</td></tr>
+            <tr><td>94 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/nagoya-station-skyline.html">Nagoya Station Skyline</a></td><td>Which towers are those?</td></tr>
+            <tr><td>98 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/kirin-beer-factory.html">Kirin Beer Factory</a></td><td>Rows of tanks like giant beers.</td></tr>
+            <tr><td>99 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/kiyosu.html">Kiyosu Castle</a></td><td>Nobunaga's trackside castle.</td></tr>
+            <tr><td>102 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/gifu-hashima-mahalo.html">Mahalo Sign at Gifu-Hashima</a></td><td>Hawaiʻi in inland Gifu?</td></tr>
+            <tr><td>103 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/solar-ark.html">Solar Ark</a></td><td>A solar ship, soon to disappear.</td></tr>
+            <tr><td>103 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/gifu-castle.html">Gifu Castle</a></td><td>A tiny castle on a mountain.</td></tr>
+            <tr><td>106 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/kinshozan.html">Mt. Kinsho</a></td><td>What is that carved-away mountain?</td></tr>
+            <tr><td>107 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/nangu-taisha.html">Nangu Taisha Grand Torii</a></td><td>A giant red torii in the fields.</td></tr>
+            <tr><td>110 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/ibuki.html">Mt. Ibuki</a></td><td>Snow-crowned peak of Sekigahara.</td></tr>
+            <tr><td>111.5 min</td><td><span class="bf-seat">A</span></td><td></td><td><a href="spots/ibuki-seat-a.html">Mt. Ibuki from Seat A</a></td><td>Ibuki appears from Seat A, too.</td></tr>
+            <tr><td>111.5 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/sennenq-sign.html">Sennen Kyū Sign</a></td><td>Sennen Kyu after Maibara</td></tr>
+            <tr><td>112.1 min</td><td><span class="bf-seat">A</span></td><td></td><td><a href="spots/maibara-test-trains.html">Maibara’s Shinkansen Test Trains</a></td><td>Three faces that tested faster travel.</td></tr>
+            <tr><td>113 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/fujitec-big-wing.html">FUJITEC Big Wing</a></td><td>A 170 m elevator research tower.</td></tr>
+            <tr><td>115 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/sawayama-castle.html">Sawayama Castle Ruins</a></td><td>Mitsunari's hill beyond the fields.</td></tr>
+            <tr><td>116 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">Hard</span></td><td><a href="spots/hikone-castle.html">Hikone Castle</a></td><td>A tiny National Treasure keep.</td></tr>
+            <tr><td>119 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/lotte-shiga.html">Lotte Shiga's Candy Billboards</a></td><td>They are really made here.</td></tr>
+            <tr><td>120 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/kannonji-castle.html">Kannonji Castle Ruins</a></td><td>A castle ridge in the mountains.</td></tr>
+            <tr><td>123 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/omi-fuji.html">Omi Fuji</a></td><td>Another Fuji, before Kyoto.</td></tr>
+            <tr><td>127 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/seta-karahashi.html">Seta no Karahashi Bridge</a></td><td>A legendary bridge before Kyoto.</td></tr>
+            <tr><td>131 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/toji.html">To-ji Pagoda</a></td><td>One glance, and you know it's Kyoto.</td></tr>
+            <tr><td>133.6 min</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/kaguya-no-akari.html">Kaguya no To Water Tower</a></td><td>A bamboo-shaped water tower.</td></tr>
+            <tr><td>135 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">Easy</span></td><td><a href="spots/rakusai-egg-tanks.html">Rakusai's Egg-Shaped Digestion Tanks</a></td><td>Two giant eggs beside the tracks.</td></tr>
+            <tr><td>136.25 min</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/yamazaki-distillery.html">Suntory Yamazaki Distillery</a></td><td>A whisky name becomes a place.</td></tr>
+            <tr><td>139 min</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/hirakata-park-wheel.html">The Hirakata Park Ferris Wheel</a></td><td>A Ferris wheel across the river.</td></tr>
+            <tr><td>141 min</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">Medium</span></td><td><a href="spots/torikai-train-depot.html">Torikai Train Depot</a></td><td>Rows of Shinkansen at rest.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- BESIDES_TABLE_END -->
+
+      <h2>Was it ever going to be visible?</h2>
+      <p>If you are reading this before you travel rather than after, the forecast page estimates whether Mt. Fuji is likely to show today, based on cloud around the summit rather than on the weather where you are standing. Clear winter mornings are far and away the best odds; a warm hazy afternoon in summer is the worst, even when it is not raining.</p>
+
+      <div class="bf-cta">
+        <a class="btn btn-primary" href="./#journey" data-besides-cta="pick_train">Time all 59 views to my train →</a>
+        <a class="btn btn-ghost" href="mieru.html" data-besides-cta="forecast">Will Mt. Fuji show today?</a>
+        <a class="btn btn-ghost" href="jr-pass-fuji.html" data-besides-cta="jrpass">Riding on a Japan Rail Pass?</a>
+        <a class="btn btn-ghost" href="zukan.html" data-besides-cta="zukan">Browse the views in photos</a>
+      </div>
+      </article>
+    </div>
+
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
+  </main>
+
+  <footer class="footer" data-site-chrome-host="chrome-0"><nav data-site-chrome-fallback><a href="../en/">Home</a> · <a href="../en/guide.html">Seeing Mt. Fuji</a> · <a href="../en/zukan.html">Window field guide</a></nav></footer>
+
+  <script src="../spot-page-shared-data.js?v=a06310a9"></script>
+  <script src="../spot-page-shared.js?v=3f269e60"></script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-besides-cta]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      var payload = {
+        cta_id: link.getAttribute("data-besides-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "en",
+        viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile",
+        page_context: "besides_fuji"
+      };
+      window.gtag("event", "besides_fuji_cta_click", payload);
+      if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+  </script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"besides-fuji.html","mounts":[{"host":"chrome-0","component":"footer-castles","kind":"footer"}]}</script>
+<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+</body>
+</html>

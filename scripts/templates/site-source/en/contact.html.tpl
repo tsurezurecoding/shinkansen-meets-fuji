@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <script src="../locales.js?v=6585facb"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>Contact / Photo Submissions | Shinkansen Window</title>
+  <meta name="description" content="Contact Shinkansen Window about photo submissions, corrections, feedback and requests.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/contact.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/contact.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/contact.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Contact / Photo Submissions | Shinkansen Window">
+  <meta property="og:description" content="Contact Shinkansen Window about photo submissions, corrections, feedback and requests.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/en/contact.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact / Photo Submissions | Shinkansen Window">
+  <meta name="twitter:description" content="Contact Shinkansen Window about photo submissions, corrections, feedback and requests.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image:alt" content="Shinkansen Window — another journey beyond the glass.">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <script>
+    (function () {
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+    })();
+  </script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <script defer src="../utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="../utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/contact.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/contact.html">
+  <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/contact.html">
+  <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/contact.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/contact.html">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/contact.html">
+</head>
+<body class="spot-page contact-page">
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="../en/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">Discover more through the train window.</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="../en/start.html">Train Search</a><a href="../en/live/">Audio Guide</a><a href="../en/zukan.html">Field Guide</a></nav><div class="lang-switch" inert aria-hidden="true"><a href="../contact.html?lang=ja">日本語</a></div></header>
+  <main><article class="spot-page-article contact-page-article">
+    <p class="eyebrow">CONTACT</p><h1><span class="copy-chunk">Contact and</span> <span class="copy-chunk">photo submissions</span></h1>
+    <p class="spot-lead">Feel free to contact us about photos, information, feedback or requests.</p>
+    <img class="contact-visual" src="../images/thumbs/content-contact.webp" alt="" decoding="async">
+    <div class="contact-topics"><section><h2>Photos and information</h2><p>Feel free to share window photos, local information or notes about our content.</p></section><section><h2>Corrections</h2><p>Please let us know if a time, viewing direction or other detail does not look right.</p></section><section><h2>Feedback</h2><p>We also welcome impressions from your trip and ideas for improving the experience.</p></section></div>
+    <section class="ea-band hide-in-app" aria-labelledby="eaBandTitleContact">
+      <div class="ea-band-inner">
+        <div>
+          <p class="ea-band-eyebrow">ANDROID APP</p>
+          <h2 id="eaBandTitleContact">Shinkansen Window is on Android</h2>
+          <p>Free, no registration. Open it from your home screen and use the Audio Guide while you ride.</p>
+        </div>
+        <a class="btn btn-primary" href="android-app.html?src=contact">See the Android app</a>
+      </div>
+    </section>
+    <section class="contact-methods" aria-labelledby="contactMethodsTitle"><p class="eyebrow">CONTACT</p><h2 id="contactMethodsTitle">Contact</h2><div class="contact-method-list"><a href="mailto:support@michikusa-travel.com"><span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span><span><strong>Email</strong><small>support@michikusa-travel.com</small></span></a><a href="https://x.com/michikusatravel" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon" aria-hidden="true"><img src="../images/brand/x-logo.png" alt=""></span><span><strong>X</strong><small>@michikusatravel</small></span></a><a href="https://www.instagram.com/shinkansen_window/" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon" aria-hidden="true"><img src="../images/brand/instagram-icon.png" alt=""></span><span><strong>Instagram</strong><small>@shinkansen_window</small></span></a></div><p class="contact-note">This is an independently run project, so replies may take time. Before sending us a photo, please check that it contains no location data or other information you do not wish to share.</p></section>
+  </article></main>
+  <footer><p class="footer-links"><a href="guide.html">See Mt. Fuji</a> · <a href="references.html">Window links</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy Policy</a></p><p class="footer-credit">Michikusa — unhurried journeys and chance discoveries.</p></footer>
+  <script src="../track.js"></script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"contact.html","mounts":[{"host":"chrome-0","component":"header-android-app","kind":"header","currentAnchors":[{"index":11,"value":"page"}],"menu":"header-android-app-menu","menuRoute":"contact.html"}]}</script>
+<script src="../site-runtime-loader.js?v=aa24d852" defer></script>
+</body>
+</html>

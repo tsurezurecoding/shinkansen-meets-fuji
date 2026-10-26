@@ -249,8 +249,8 @@ test('thin spot shells keep static fallback entries and defer common chrome and 
     const runtime = [...doc.querySelectorAll('script[src]')].map(script => new URL(script.src).pathname);
     assert.equal(runtime.filter(src => src.endsWith('/spot-page-shared-data.js')).length, 0);
     assert.equal(runtime.filter(src => src === `/data/spot-pages/fuji.${lang}.js`).length, 1);
-    assert.equal(runtime.filter(src => src === '/spot-page-loader.js').length, 1);
-    assert.ok(runtime.indexOf(`/data/spot-pages/fuji.${lang}.js`) < runtime.indexOf('/spot-page-loader.js'));
+    assert.equal(runtime.filter(src => src === '/site-runtime-loader.js').length, 1);
+    assert.ok(runtime.indexOf(`/data/spot-pages/fuji.${lang}.js`) < runtime.indexOf('/site-runtime-loader.js'));
     dom.window.close();
   }
 });

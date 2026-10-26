@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>車窓リンク集 | 新幹線の窓</title>
+  <meta name="description" content="新幹線の窓とあわせて読みたい、東海道新幹線の車窓に関する本、記事、ブログのリンク集です。">
+  <meta name="theme-color" content="#101c2c">
+  <link rel="canonical" href="https://www.michikusa-travel.com/references.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/references.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/references.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/references.html">
+  <script src="language-router.js?v=ff60751b"></script>
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="車窓リンク集 | 新幹線の窓">
+  <meta property="og:description" content="東海道新幹線の車窓をもっと楽しむための本、記事、ブログ。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:url" content="https://www.michikusa-travel.com/references.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=5f3f6183">
+</head>
+<body>
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="start.html">列車選択</a><a href="live/">音声ガイド</a><a href="zukan.html">車窓図鑑</a></nav><div class="lang-switch" inert aria-hidden="true"><a class="active" href="references.html">日本語</a></div></header>
+
+  <main>
+    <section class="reference-hero">
+      <p class="eyebrow">WINDOW LINKS</p>
+      <h1>車窓をもっと楽しむリンク集</h1>
+      <p>東海道新幹線の車窓をもう少し知りたいときに読める記事・ブログと、旅の前後に楽しめる書籍を分けてまとめています。</p>
+    </section>
+
+    <section class="reference-section" aria-labelledby="linksTitle">
+      <div class="section-head">
+        <p class="eyebrow">ARTICLES / BLOGS / VIDEO</p>
+        <h2 id="linksTitle">記事・ブログ</h2>
+      </div>
+      <div class="reference-grid reference-grid-single">
+        <article class="reference-card">
+          <p class="reference-type">連載</p>
+          <h3>東洋経済オンライン「新幹線の車窓はこんなに面白い」</h3>
+          <p>東海道新幹線の車窓を、富士山だけでなく沿線の建物、看板、地形まで広げて紹介している連載です。</p>
+          <a href="https://toyokeizai.net/list/column/694384d86b208d3b9c000052" target="_blank" rel="noopener noreferrer">連載を見る</a>
+        </article>
+
+        <article class="reference-card">
+          <p class="reference-type">記事</p>
+          <h3>ウェザーニュース 富士山のビュースポット5選</h3>
+          <p>定番の三島〜新富士だけでなく、品川〜新横浜、平塚、左富士、浜名湖付近など、新幹線から富士山が見える場所を紹介しています。</p>
+          <a href="https://weathernews.jp/news/202604/240201/" target="_blank" rel="noopener noreferrer">記事を見る</a>
+        </article>
+
+        <article class="reference-card">
+          <p class="reference-type">ブログ</p>
+          <h3>新幹線の車窓から</h3>
+          <p>東海道新幹線の車窓を多く記録している個人ブログです。区間や座席側を意識して眺めたいときの手がかりになります。</p>
+          <a href="https://cotetu.seesaa.net/" target="_blank" rel="noopener noreferrer">ブログを見る</a>
+        </article>
+
+        <article class="reference-card">
+          <p class="reference-type">ブログ</p>
+          <h3>攻城団ブログ 新幹線から見えるお城</h3>
+          <p>東海道新幹線などの車窓から見える城をまとめた記事です。城を目印に車窓を楽しみたいときに役立ちます。</p>
+          <a href="https://blog.kojodan.jp/entry/2019/03/10/130620" target="_blank" rel="noopener noreferrer">記事を見る</a>
+        </article>
+
+        <article class="reference-card">
+          <p class="reference-type">動画</p>
+          <h3>新幹線からお城撮影チャレンジ</h3>
+          <p>新幹線の車窓から城を撮る難しさと楽しさが伝わる動画です。小田原城のような一瞬の見どころを狙う感覚がわかります。</p>
+          <a href="https://www.youtube.com/watch?v=fkqSYt8XzrQ" target="_blank" rel="noopener noreferrer">動画を見る</a>
+        </article>
+
+        <article class="reference-card">
+          <p class="reference-type">ブログ</p>
+          <h3>車窓の山旅｜東海道新幹線</h3>
+          <p>伊吹山、北アルプス、中央アルプス、南アルプス、浜名湖付近からの富士山など、山に注目して東海道新幹線の車窓を記録した記事です。</p>
+          <a href="https://toretabi246.blog.jp/archives/33518316.html" target="_blank" rel="noopener noreferrer">記事を見る</a>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="reference-section" aria-labelledby="booksTitle" data-affiliate-module data-affiliate-partner="amazon" data-affiliate-placement="ja_references_books" data-affiliate-language="ja" data-affiliate-context="references">
+      <div class="section-head" data-affiliate-view-target>
+        <p class="eyebrow">BOOKS</p>
+        <h2 id="booksTitle">書籍</h2>
+        <p class="reference-affiliate-disclosure">この欄にはAmazon.co.jpへのアフィリエイトリンクが含まれます。リンク先で購入されると、道草が紹介料を受け取る場合があります。</p>
+      </div>
+      <div class="reference-grid reference-books">
+        <article class="reference-card reference-book-card">
+          <p class="reference-type">車窓ガイド</p>
+          <h3>東海道新幹線の車窓は、こんなに面白い！</h3>
+          <p class="reference-book-author">栗原 景</p>
+          <p>富士山だけでなく、沿線の建物、地形、看板まで。東海道新幹線の移動そのものを楽しむ視点が増える一冊です。</p>
+          <a href="https://www.amazon.co.jp/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A%E3%81%AE%E8%BB%8A%E7%AA%93%E3%81%AF%E3%80%81%E3%81%93%E3%82%93%E3%81%AA%E3%81%AB%E9%9D%A2%E7%99%BD%E3%81%84-%E6%A0%97%E5%8E%9F-%E6%99%AF/dp/4492046046?linkCode=ll2&amp;tag=programmasavo-22&amp;linkId=0fb64757a41081fd8ce9f6345c9e6767" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="amazon" data-affiliate-offer="book_4492046046">Amazonで見る <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="reference-card reference-book-card">
+          <p class="reference-type">城めぐり</p>
+          <h3>新幹線から見える日本の名城</h3>
+          <p class="reference-book-author">加唐亜紀</p>
+          <p>高速で通り過ぎる車窓から、どの城が、どこで見えるのか。城を旅の目印にしたい人向けのガイドです。</p>
+          <a href="https://www.amazon.co.jp/%E6%96%B0%E5%B9%B9%E7%B7%9A%E3%81%8B%E3%82%89%E8%A6%8B%E3%81%88%E3%82%8B%E6%97%A5%E6%9C%AC%E3%81%AE%E5%90%8D%E5%9F%8E-%E5%8A%A0%E5%94%90%E4%BA%9C%E7%B4%80/dp/4863101511?linkCode=ll2&amp;tag=programmasavo-22&amp;linkId=54a0ddaabf3ed13f38d3f8c6942df944" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="amazon" data-affiliate-offer="book_4863101511">Amazonで見る <span aria-hidden="true">↗</span></a>
+        </article>
+
+        <article class="reference-card reference-book-card">
+          <p class="reference-type">727・沿線雑学</p>
+          <h3>東海道新幹線 車窓の爆笑ウンチク 727連発</h3>
+          <p class="reference-book-author">土天海</p>
+          <p>727看板をはじめ、東海道新幹線の窓に流れる景色を雑学とともに追う電子書籍です。</p>
+          <a href="https://www.amazon.co.jp/%E6%9D%B1%E6%B5%B7%E9%81%93%E6%96%B0%E5%B9%B9%E7%B7%9A-%E8%BB%8A%E7%AA%93%E3%81%AE%E7%88%86%E7%AC%91%E3%82%A6%E3%83%B3%E3%83%81%E3%82%AF-%EF%BC%97%EF%BC%92%EF%BC%97%E9%80%A3%E7%99%BA-%E5%9C%9F%E5%A4%A9%E6%B5%B7-ebook/dp/B01562AQCS?linkCode=ll2&amp;tag=programmasavo-22&amp;linkId=83117b6c14a1b7136c63e63d90e8caed" target="_blank" rel="sponsored nofollow noopener" data-affiliate-partner="amazon" data-affiliate-offer="book_b01562aqcs">Amazonで見る <span aria-hidden="true">↗</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="reference-policy">
+      <a class="btn btn-primary" href="index.html">新幹線の窓へ戻る</a>
+    </section>
+  </main>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-1"></section>
+
+  <footer class="footer">
+    <p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>
+    <p>時刻はのぞみ基準の目安で、列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>
+    <p class="footer-links"><a href="guide.html">富士山を見る</a> · <a href="references.html">車窓リンク集</a> · <a href="mieru.html">富士山 見える予報</a> · <a href="sumie.html">墨絵車窓</a> · <a href="somato.html">車窓走馬灯</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p>
+    <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+  </footer>
+  <script>
+    (function () {
+      var module = document.querySelector('[data-affiliate-placement="ja_references_books"]');
+      if (!module) return;
+      module.addEventListener("click", function (event) {
+        var link = event.target.closest && event.target.closest("a[data-affiliate-offer]");
+        if (!link || typeof window.gtag !== "function") return;
+        window.gtag("event", "affiliate_click", {
+          affiliate_partner: "amazon",
+          affiliate_offer: link.getAttribute("data-affiliate-offer"),
+          affiliate_placement: "ja_references_books",
+          language: "ja",
+          page_context: "references"
+        });
+      });
+    })();
+  </script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"references.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":12,"value":"page"}],"menu":"header-references-menu","menuRoute":"references.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"}]}</script>
+<script src="site-runtime-loader.js?v=aa24d852" defer></script>
+</body>
+</html>

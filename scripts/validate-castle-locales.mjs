@@ -4,7 +4,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
-import { englishSnapshot, textNodes } from './shared/castle-localization.mjs';
+import { textNodes } from './shared/castle-localization.mjs';
+import { expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
@@ -163,7 +164,7 @@ function checkInteractions(dom, label) {
 }
 
 for (const lang of CASTLE_LOCALE_LANGS) {
-  const guide = new JSDOM(read(`${lang}/guide.html`), { url: `${origin}/${lang}/guide.html` });
+  const guide = new JSDOM(expandDeliveredSiteChromeHTML({ appDir: root, html: read(`${lang}/guide.html`), relative: `${lang}/guide.html` }), { url: `${origin}/${lang}/guide.html` });
   let nativeLinks = 0;
   for (const el of guide.window.document.querySelectorAll('a[href]')) {
     const url = new URL(el.href);
@@ -178,18 +179,12 @@ for (const lang of CASTLE_LOCALE_LANGS) {
 }
 
 for (const route of articleRoutes) {
-  const source = englishSnapshot(root, route);
+  const source = renderSiteRuntimeForValidation({ appDir: root, html: read(`en/${route}`), relative: `en/${route}` }).dom;
   for (const lang of editions) {
     const file = routeFor(lang, route);
     if (!fs.existsSync(path.join(root, file))) { errors.push(`${file}: missing generated edition`); continue; }
-    const dom = lang === 'en' ? source : new JSDOM(read(file), { url: `${origin}/${file}`, runScripts: 'outside-only' });
+    const dom = lang === 'en' ? source : renderSiteRuntimeForValidation({ appDir: root, html: read(file), relative: file }).dom;
     const doc = dom.window.document;
-    if (lang === 'ja') {
-      dom.window.eval(read('spot-page-shared-data.js'));
-      const id = route.match(/^spots\/(.+)\.html$/)?.[1];
-      if (id && fs.existsSync(path.join(root, 'data/spot-pages', `${id}.ja.js`))) dom.window.eval(read(`data/spot-pages/${id}.ja.js`));
-      dom.window.eval(read('spot-page-shared.js'));
-    }
     checkMetadata(doc, lang, route, file);
     checkSwitch(dom, lang, route, file);
     if (CASTLE_LOCALE_LANGS.includes(lang)) {

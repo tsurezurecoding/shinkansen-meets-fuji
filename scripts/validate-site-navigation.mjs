@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { JSDOM } from "jsdom";
 import { languages } from './shared/locales.mjs';
+import { commonTargetFailures, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com/";
@@ -10,32 +10,17 @@ const legacyRoots = new Set(["v0", "v1"]);
 const failures = [];
 let checked = 0;
 let runtimeChecked = 0;
-const runtimeSources = ['spot-page-shared-data.js', 'spot-page-shared.js'].map(file => fs.readFileSync(path.join(appDir, file), 'utf8'));
+let thinChecked = 0;
 
-function renderedSpotHTML(html, relative) {
-  const dom = new JSDOM(html, { url: new URL(relative, siteRoot).href, runScripts: 'outside-only' });
+function renderedSiteHTML(html, relative) {
+  const rendered = renderSiteRuntimeForValidation({ appDir, html, relative });
   try {
-    const doc = dom.window.document;
-    const id = doc.body.getAttribute('data-spot-page-shared-id');
-    const lang = doc.body.getAttribute('data-spot-page-shared-lang');
-    if (!/^[a-z0-9-]+$/.test(id || '') || !['ja', 'en'].includes(lang)) throw new Error('invalid thin spot context');
-    dom.window.console.error = message => failures.push(`${relative}: ${message}`);
-    dom.window.eval(runtimeSources[0]);
-    dom.window.eval(fs.readFileSync(path.join(appDir, `data/spot-pages/${id}.${lang}.js`), 'utf8'));
-    dom.window.eval(runtimeSources[1]);
-    if (!dom.window.MADO_SPOT_PAGE_RENDERED || doc.querySelectorAll('.topbar .top-nav').length !== 1) throw new Error('rendered spot must expose exactly one shared header');
-    const roots = doc.querySelectorAll('.topbar, .content-rail-section, .spot-page-rail, .spot-page-showcase, .spot-compact-guide');
-    for (const root of roots) for (const element of root.querySelectorAll('a[href], img[src]')) {
-      const url = new URL(element.getAttribute(element.tagName === 'A' ? 'href' : 'src'), doc.baseURI);
-      if (url.origin !== new URL(siteRoot).origin) continue;
-      const target = decodeURIComponent(url.pathname).replace(/^\//, '') + (url.pathname.endsWith('/') ? 'index.html' : '');
-      if (!fs.existsSync(path.join(appDir, target))) failures.push(`${relative}: rendered common UI target is missing: ${url.pathname}`);
-      if (lang === 'en' && !url.pathname.startsWith('/en/') && element.tagName === 'A' && url.searchParams.get('lang') !== 'ja' && fs.existsSync(path.join(appDir, 'en', target))) failures.push(`${relative}: rendered English link leaves its existing English edition: ${url.pathname}`);
-    }
+    failures.push(...commonTargetFailures(rendered.document, { appDir, relative }));
     runtimeChecked += 1;
-    return dom.serialize();
+    thinChecked += Number(rendered.thin);
+    return rendered.dom.serialize();
   } finally {
-    dom.window.close();
+    rendered.dom.window.close();
   }
 }
 
@@ -54,8 +39,8 @@ function htmlFiles(dir = appDir) {
 
 for (const relative of htmlFiles()) {
   let html = fs.readFileSync(path.join(appDir, relative), "utf8");
-  if (/data-spot-page-shared-mode="page"/.test(html) && !/data-article-localized(?:[\s=>])/.test(html)) {
-    try { html = renderedSpotHTML(html, relative); }
+  if (/data-spot-page-shared-module|mado-shared-ui-config|data-site-chrome-host|data-article-localized(?:[\s=>])/.test(html) || fs.existsSync(path.join(appDir, 'scripts/templates/site-source', `${relative}.tpl`))) {
+    try { html = renderedSiteHTML(html, relative); }
     catch (error) { failures.push(`${relative}: ${error.message}`); continue; }
   }
   const nav = html.match(/<nav class="top-nav"[^>]*>([\s\S]*?)<\/nav>/);
@@ -85,4 +70,4 @@ if (failures.length) {
   throw new Error(`Site navigation validation failed:\n- ${failures.join("\n- ")}`);
 }
 
-console.log(`Site navigation valid: ${checked} shared headers use canonical train-selection URLs and labels; ${runtimeChecked} thin spot pages render their headers, links and images.`);
+console.log(`Site navigation valid: ${checked} shared headers use canonical train-selection URLs and labels; ${runtimeChecked} runtime/source pages (${thinChecked} thin spots) expose their common links and images.`);

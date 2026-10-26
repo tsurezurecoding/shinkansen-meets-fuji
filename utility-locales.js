@@ -11,7 +11,9 @@
     var base = document.querySelector('base') ? document.baseURI : new URL('../'.repeat((lang === 'ja' ? 0 : 1) + (route.indexOf('live/') === 0 ? 1 : 0)) || './', location.href).href;
     var editions = config.supported(route);
     document.querySelectorAll('.lang-switch,.utility-lang-menu' + (route === 'guide.html' ? ',.guide-lang-menu' : '')).forEach(function (host) {
+      if (host.classList.contains('utility-lang-menu') && host.__madoUtilityConnected) return;
       var menu = document.createElement('details'); menu.className = 'guide-lang-menu utility-lang-menu';
+      menu.__madoUtilityConnected = true;
       var summary = document.createElement('summary'); summary.textContent = config.editions[lang].label; summary.setAttribute('aria-label', config.editions[lang].prompt);
       var options = document.createElement('div'); options.className = 'guide-lang-options';
       editions.forEach(function (edition) {
@@ -37,4 +39,5 @@
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', connect); else connect();
+  document.addEventListener('mado:shared-ui-ready', connect);
 }());

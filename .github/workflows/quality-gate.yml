@@ -23,10 +23,12 @@ jobs:
       - run: npm run verify
       - name: Deterministic build
         run: |
-          npm run build
+          npm run build:full
           git diff --exit-code
-          npm run build
+          test -z "$(git ls-files --others --exclude-standard)"
+          npm run build:full
           git diff --exit-code
+          test -z "$(git ls-files --others --exclude-standard)"
       - name: Stage verified checkout for Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |

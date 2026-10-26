@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 import { JSDOM } from 'jsdom';
+import { readSiteSource } from './site-chrome.mjs';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './castle-localization.mjs';
 import { UTILITY_ROUTES } from './utility-locales.mjs';
 import { SPOT_COUNT } from './spot-count.mjs';
@@ -48,7 +49,7 @@ export function utilitySnapshot(root, route) {
     if (status && answer) status.before(answer);
     return dom;
   }
-  const dom = new JSDOM(fs.readFileSync(path.join(root, 'en', route), 'utf8'), {
+  const dom = new JSDOM(readSiteSource(root, 'en/' + route), {
     url: `https://www.michikusa-travel.com/en/${route}`, runScripts: 'outside-only',
   });
   if (route === 'live/index.html') {

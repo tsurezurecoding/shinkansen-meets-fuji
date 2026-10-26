@@ -7,6 +7,7 @@ import { JSDOM } from "jsdom";
 import { SPOTS as GENERATED_SPOTS, spotPageHTML } from "./generate-spot-pages.mjs";
 import { fujimiSightlineHTML } from './shared/fujimi-sightline.mjs';
 import { tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
+import { commonTargetFailures, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 
 async function runThinValidator() {
   const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -483,7 +484,8 @@ async function runThinValidator() {
       if (/<header|<main|<article|<aside|<iframe|<blockquote|<figure|data-affiliate-module|spot-page-mobile-affiliate|spotPageLightbox|affiliate\.klook|valuecommerce|amazon\.co\.jp|ad\.jp\.ap|ck\.jp\.ap|<script>/.test(thinBody)) fail(`${relativeFile} contains legacy body markup/runtime or affiliate residue`);
       // ?v= は sync-asset-versions.mjs が内容ハッシュから振る。値そのものではなく
       // 「どのファイルをどの順で読むか」だけを固定する。
-      const scripts = [pagePayloadRelativePath(spot.id, lang), "spot-page-loader.js"];
+      const scripts = [pagePayloadRelativePath(spot.id, lang), "site-runtime-loader.js"];
+      if (/\bsrc="[^"]*spot-page-loader\.js/.test(onDisk)) fail(`${relativeFile} must use the common site runtime loader`);
       if (/<script\b[^>]*src="[^"]*spot-page-shared-data\.js/.test(onDisk)) fail(`${relativeFile} must load the shared catalog through the loader`);
       // 他スポットの本文を読み込んでいたら、分割の意味が消える。
       const foreignPayloads = (onDisk.match(/data\/spot-pages\/[A-Za-z0-9-]+\.(?:ja|en)\.js/g) || []).filter((match) => match !== pagePayloadRelativePath(spot.id, lang));
@@ -491,12 +493,20 @@ async function runThinValidator() {
       let previous = -1;
       for (const script of scripts) {
         const escapedSrc = (prefix + script).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-        const pattern = new RegExp(`<script src="${escapedSrc}(?:\\?v=[A-Za-z0-9._-]+)?"></script>`, "g");
+        const pattern = new RegExp(`<script src="${escapedSrc}(?:\\?v=[A-Za-z0-9._-]+)?"(?: defer)?></script>`, "g");
         const matches = onDisk.match(pattern) || [];
         const index = matches.length ? onDisk.indexOf(matches[0]) : -1;
         if (matches.length !== 1 || index <= previous) fail(`${relativeFile} shared script order/path is invalid`);
         previous = index;
       }
+      try {
+        const actual = renderSiteRuntimeForValidation({ appDir, html: onDisk, relative: relativeFile });
+        try {
+          for (const failure of commonTargetFailures(actual.document, { appDir, relative: relativeFile })) fail(failure);
+          if (actual.document.querySelectorAll('.content-rail-discovery').length !== 1) fail(`${relativeFile}: on-disk runtime must retain one discovery rail`);
+          assertDiscoveryRail(actual.document.querySelector('.content-rail-discovery')?.outerHTML || '', lang, prefix, `${relativeFile} actual DOM`);
+        } finally { actual.dom.window.close(); }
+      } catch (error) { fail(error.message); }
       const page = pages[spot.id][lang];
       const normalizedHead = (html) => (html.match(/<head>[\s\S]*?<\/head>/i)?.[0] || "").replace(/\s*<style id="spot-page-boot-style">[\s\S]*?<\/style>/g, '').replace(/\s*<noscript><style>(?:\[data-spot-page-shared-static\]|\.spot-page > \*) \{ visibility:visible; \}<\/style><\/noscript>/g, '').replace(/\s*<link rel="stylesheet" href="[^"]*(?:style|spot-media-gallery)\.css[^"]*">/g, "").replace(/((?:src|href)="[^"]+\.(?:js|css))\?v=[A-Za-z0-9._-]+/g, "$1").replace(/\s+/g, " ").trim();
       if (baselineCommit) {
