@@ -9,6 +9,39 @@ const origin = 'https://www.michikusa-travel.com';
 const query = '?train=Nozomi-1&board=Shinagawa&dir=west&focus=fuji&lang=en#journey';
 const ready = window => window.document.dispatchEvent(new window.Event('mado:shared-ui-ready'));
 
+test('foods: late chrome reconnects header height, chapter offsets and overflow menu', async () => {
+  const dom = new JSDOM('<html><body><header class="topbar"></header><details id="source-details"></details><nav class="food-chapters"><a href="#first">First</a><a href="#second">Second</a></nav><section id="first"></section><section id="second"></section></body></html>', { url: origin + '/foods.html', runScripts: 'outside-only' });
+  const w = dom.window;
+  try {
+    await new Promise(resolve => w.addEventListener('load', resolve, { once: true }));
+    const observed = new Set();
+    w.ResizeObserver = class { observe(node) { observed.add(node); } disconnect() { observed.clear(); } };
+    const old = w.document.querySelector('.topbar');
+    old.getBoundingClientRect = () => ({ height: old.isConnected ? 36 : 0 });
+    w.document.getElementById('first').getBoundingClientRect = () => ({ top: 0 });
+    w.document.getElementById('second').getBoundingClientRect = () => ({ top: 160 });
+    w.eval(read('foods.js'));
+    w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
+    assert.equal(w.document.documentElement.style.getPropertyValue('--food-header-height'), '36px');
+    old.outerHTML = '<header class="topbar"><details class="top-nav-more"><summary>More</summary><a href="start.html">Start</a></details></header>';
+    const header = w.document.querySelector('.topbar');
+    header.getBoundingClientRect = () => ({ height: 72 });
+    ready(w); ready(w);
+    w.dispatchEvent(new w.Event('resize'));
+    assert.equal(w.document.documentElement.style.getPropertyValue('--food-header-height'), '72px');
+    assert.deepEqual([...observed], [header]);
+    assert.equal(w.document.querySelector('.food-chapters a[href="#second"]').getAttribute('aria-current'), 'location');
+    const menu = header.querySelector('details');
+    menu.open = true;
+    w.document.dispatchEvent(new w.KeyboardEvent('keydown', { key: 'Escape', bubbles: true }));
+    assert.equal(menu.open, false);
+    assert.equal(w.document.activeElement, menu.querySelector('summary'));
+    menu.open = true;
+    w.document.body.click();
+    assert.equal(menu.open, false);
+  } finally { dom.window.close(); }
+});
+
 function countClickListeners(window) {
   const counts = new WeakMap();
   const original = window.EventTarget.prototype.addEventListener;
