@@ -3,10 +3,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { JSDOM } from 'jsdom';
+import { readSiteSource } from './site-chrome.mjs';
 export { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_IDS, CASTLE_LOCALE_ROUTES } from './castle-locales.mjs';
 export const TRANSLATABLE_ATTRIBUTES = ['alt','title','aria-label','data-gallery-alt','data-gallery-note','data-filling-description'];
 export function englishSnapshot(root, route) {
-  const source = fs.readFileSync(path.join(root, 'en', route), 'utf8');
+  const source = readSiteSource(root, 'en/' + route);
   const dom = new JSDOM(source, { url: `https://www.michikusa-travel.com/en/${route}`, runScripts: 'outside-only' });
   const { window } = dom;
   window.eval(fs.readFileSync(path.join(root, 'spot-page-shared-data.js'), 'utf8'));

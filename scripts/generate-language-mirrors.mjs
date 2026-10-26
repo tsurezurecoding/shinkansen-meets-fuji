@@ -1,3 +1,4 @@
+import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
 import { sanyoGallery } from "./shared/sanyo-discovery.mjs";
 import fs from "node:fs";
 import path from "node:path";
@@ -167,7 +168,7 @@ function bakeEnglishI18n(html, messages) {
 function mirrorPage(page, messages) {
   const jaUrl = page.source === "index.html" ? `${siteRoot}/` : `${siteRoot}/${page.source}`;
   const enUrl = `${siteRoot}/${page.output.replace(/index\.html$/, "")}`;
-  const source = fs.readFileSync(path.join(appDir, page.source), "utf8");
+  const source = readSiteSource(appDir, page.source);
   return localizeEnglishRail((page.bakeI18n ? bakeEnglishI18n(source, messages) : source)
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
@@ -197,6 +198,8 @@ function mirrorPage(page, messages) {
       return '<script type="application/ld+json">\n' + JSON.stringify(schema, null, 2) + '\n  </script>';
     })
     .replaceAll('"inLanguage": "ja"', '"inLanguage": "en"')
+    // The shared header must already point to English pages before app.js runs.
+    .replace(/<header class="topbar">[\s\S]*?<\/header>/, header => header.replace(/href="(index\.html|live\/|zukan\.html)"/g, 'href="en/$1"'))
     .replace('<body', '<body data-language-route="en"')
     .replace('>', '>')
     .replace(/(<body[^>]*>)/, '$1\n  <script>try { localStorage.setItem("mado-lang", "en"); } catch (error) {}</script>'));
@@ -207,7 +210,7 @@ function writeFileIfChanged(target, content) {
   // endings the Japanese source happens to carry on disk, and a CRLF-contaminated source
   // silently pushes CRLF into the generated English page. git diff hides it (it normalizes
   // on read) but the content-manifest sha check fails later. Normalize on write instead.
-  const normalized = content.split("\r\n").join("\n");
+  const normalized = finalizeSiteChrome(content, path.relative(appDir, target).replaceAll("\\", "/"), appDir).split("\r\n").join("\n");
   if (fs.existsSync(target) && fs.readFileSync(target, "utf8") === normalized) return false;
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, normalized, "utf8");
@@ -326,7 +329,7 @@ function localizeLiveStaticCopy(html, tables) {
   return result;
 }
 
-const liveSource = fs.readFileSync(path.join(appDir, "live", "index.html"), "utf8");
+const liveSource = readSiteSource(appDir, "live/index.html");
 const liveEnTitle = "Shinkansen Live Guide: Alerts, Audio & Live Map | Shinkansen Window";
 const liveEnDescription = "GPS follows your location to announce Mt. Fuji and other window views with audio and a live map. Smartphone alerts are available in the Android app. Tokyo–Shin-Osaka.";
 // The Japanese page shows a screenshot of the guide running, which is the strongest possible

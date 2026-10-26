@@ -1,5 +1,6 @@
 // Limited editions: English source + reviewed Italian/Thai manuscripts.
 import fs from 'node:fs';
+import { finalizeSiteChrome } from './shared/site-chrome.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import locales, { editions, supported, stripEdition, withLocaleRegistry } from './shared/locales.mjs';
@@ -143,7 +144,7 @@ for (const lang of locales.starter) {
     const scripts = `<script src="${prefix}${lang}/utility-data.js?v=${report ? 'pending' : assetVersion(`${lang}/utility-data.js`)}"></script>\n<script src="${prefix}utility-locale-runtime.js?v=${assetVersion('utility-locale-runtime.js')}"></script>`;
     const dataTag = /<script[^>]*src="[^"]*data-runtime\.js[^"]*"[^>]*><\/script>/;
     html = dataTag.test(html) ? html.replace(dataTag, '$&\n' + scripts) : html.replace('</head>', scripts + '\n</head>');
-    html = withLocaleRegistry(html, prefix);
+    html = finalizeSiteChrome(withLocaleRegistry(html, prefix),file,root);
     write(file, html);
   }
   if (missing.size) {

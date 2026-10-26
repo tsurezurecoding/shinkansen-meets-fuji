@@ -1,3 +1,4 @@
+import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
 // Japanese editions reuse the approved article structure and existing Japanese chrome.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -12,7 +13,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const origin='https://www.michikusa-travel.com';
 const planned=new Set(['foods.html','countryside.html']);
 const check=process.argv.includes('--check');
-const chrome=new JSDOM(fs.readFileSync(path.join(root,'castles.html'),'utf8'),{url:origin+'/castles.html',runScripts:'outside-only'});
+const chrome=new JSDOM(readSiteSource(root, 'castles.html'),{url:origin+'/castles.html',runScripts:'outside-only'});
 for(const file of ['spot-page-shared-data.js','spot-page-shared.js'])chrome.window.eval(fs.readFileSync(path.join(root,file),'utf8'));
 // Resolve the spot page's ../ paths before moving its shared modules to a root page.
 for(const host of chrome.window.document.querySelectorAll('header,.spot-page-rail,footer'))for(const el of host.querySelectorAll('[href],[src]'))for(const attr of ['href','src'])if(el.hasAttribute(attr))el.setAttribute(attr,new URL(el.getAttribute(attr),chrome.window.location.href).href);
@@ -86,7 +87,7 @@ for(const name of ['foods','countryside']){
   for(const el of doc.querySelectorAll('[srcset]'))el.setAttribute('srcset',el.getAttribute('srcset').replace(/\.\.\//g,''));
   doc.querySelectorAll('[lang="en"]').forEach(el=>{if(!el.closest('[hreflang="en"]'))el.lang='ja';});
   if(missing.size)throw Error(name+' untranslated Japanese copy: '+JSON.stringify([...missing]));
-  const html=enhanceContentHead(dom.serialize(),file,root,{lang:'ja'});
+  const html=finalizeSiteChrome(enhanceContentHead(dom.serialize(),file,root,{lang:'ja'}),file,root);
   const target=path.join(root,file);
   if(check){if(!fs.existsSync(target)||fs.readFileSync(target,'utf8')!==html)throw Error('Japanese article stale: '+file);}
   else fs.writeFileSync(target,html);

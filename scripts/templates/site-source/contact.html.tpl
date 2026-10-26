@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <script src="locales.js?v=6585facb"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <script src="language-router.js?v=ff60751b"></script>
+  <title>お問い合わせ・写真提供 | 新幹線の窓</title>
+  <meta name="description" content="新幹線の窓への写真提供、情報の訂正、ご感想・ご要望の連絡先です。">
+  <link rel="canonical" href="https://www.michikusa-travel.com/contact.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/contact.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/contact.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="お問い合わせ・写真提供 | 新幹線の窓">
+  <meta property="og:description" content="新幹線の窓への写真提供、情報の訂正、ご感想・ご要望の連絡先です。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/contact.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="お問い合わせ・写真提供 | 新幹線の窓">
+  <meta name="twitter:description" content="新幹線の窓への写真提供、情報の訂正、ご感想・ご要望の連絡先です。">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image:alt" content="新幹線の窓 - 窓のむこうに、もうひとつの旅がある。">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="stylesheet" href="style.css?v=5f3f6183">
+  <script>
+    (function () {
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+    })();
+  </script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <script defer src="utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/contact.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/contact.html">
+  <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/contact.html">
+  <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/contact.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/contact.html">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/contact.html">
+</head>
+<body class="spot-page contact-page">
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="start.html">列車選択</a><a href="live/">音声ガイド</a><a href="zukan.html">車窓図鑑</a></nav><div class="lang-switch" inert aria-hidden="true"><a class="active" href="contact.html">日本語</a></div></header>
+  <main>
+    <article class="spot-page-article contact-page-article">
+      <p class="eyebrow">CONTACT</p>
+      <h1><span class="copy-chunk">写真・情報提供の</span><span class="copy-chunk">お問い合わせ</span></h1>
+      <p class="spot-lead">写真・情報提供、ご感想やご要望など、気軽にご連絡ください。</p>
+      <img class="contact-visual" src="images/thumbs/content-contact.webp" alt="" decoding="async">
+      <div class="contact-topics">
+        <section><h2>写真・情報提供</h2><p>車窓写真や沿線情報、掲載内容について、気軽にご連絡ください。</p></section>
+        <section><h2>訂正のお知らせ</h2><p>時刻や見える方向など、気になる点がありましたらお知らせください。</p></section>
+        <section><h2>感想・要望を送る</h2><p>使ってみた感想や、旅の途中で気づいたことも歓迎しています。</p></section>
+      </div>
+      <section class="ea-band hide-in-app" aria-labelledby="eaBandTitleContact">
+        <div class="ea-band-inner">
+          <div>
+            <p class="ea-band-eyebrow">ANDROID APP</p>
+            <h2 id="eaBandTitleContact">Androidアプリを公開しました</h2>
+            <p>無料・登録不要。ホーム画面からすぐ開けて、乗車中の音声ガイドも使えます。</p>
+          </div>
+          <a class="btn btn-primary" href="android-app.html?src=contact">Androidアプリを見る</a>
+        </div>
+      </section>
+      <section class="contact-methods" aria-labelledby="contactMethodsTitle">
+        <p class="eyebrow">CONTACT</p><h2 id="contactMethodsTitle">連絡先</h2>
+        <div class="contact-method-list">
+          <a href="mailto:support@michikusa-travel.com"><span class="contact-method-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg></span><span><strong>メール</strong><small>support@michikusa-travel.com</small></span></a>
+          <a href="https://x.com/michikusatravel" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon" aria-hidden="true"><img src="images/brand/x-logo.png" alt=""></span><span><strong>X</strong><small>@michikusatravel</small></span></a>
+          <a href="https://www.instagram.com/shinkansen_window/" target="_blank" rel="noopener noreferrer"><span class="contact-method-icon" aria-hidden="true"><img src="images/brand/instagram-icon.png" alt=""></span><span><strong>Instagram</strong><small>@shinkansen_window</small></span></a>
+        </div>
+        <p class="contact-note">個人で運営しているため、返信までお時間をいただく場合があります。写真を送っていただく前に、位置情報など公開したくない情報が含まれていないかご確認ください。</p>
+      </section>
+    </article>
+  </main>
+  <footer><p class="footer-links"><a href="guide.html">富士山の見方</a> · <a href="references.html">車窓リンク集</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p><p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p></footer>
+  <script src="track.js"></script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"contact.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":13,"value":"page"}],"menu":"header-references-menu","menuRoute":"contact.html"}]}</script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
+</body>
+</html>

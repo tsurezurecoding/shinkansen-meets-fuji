@@ -1,18 +1,16 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { JSDOM } from 'jsdom';
+import { fileURLToPath } from 'node:url';
+import { renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 const root = new URL('../', import.meta.url);
-const renderer = fs.readFileSync(new URL('spot-page-shared.js', root), 'utf8');
+const appDir = fileURLToPath(root);
 const mapScript = fs.readFileSync(new URL('spot-map.js', root), 'utf8');
 const galleryScript = fs.readFileSync(new URL('spot-media-gallery.js', root), 'utf8');
 function page(id, lang, embedded = false) {
   const route = `${lang === 'en' ? 'en/' : ''}spots/${id}.html`;
-  const dom = new JSDOM(fs.readFileSync(new URL(route, root), 'utf8'), { url: `https://www.michikusa-travel.com/${route}`, runScripts: 'outside-only' });
-  dom.window.MADO_EMBEDDED_WEB = embedded;
-  dom.window.eval(fs.readFileSync(new URL("spot-page-shared-data.js", root), "utf8"));
-  dom.window.eval(renderer);
+  const { dom } = renderSiteRuntimeForValidation({ appDir, html:fs.readFileSync(new URL(route, root), 'utf8'), relative:route, embedded });
   dom.window.eval(galleryScript);
   dom.window.eval(mapScript);
   return dom;
@@ -91,10 +89,7 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
 
 for (const lang of ['ja', 'en']) test(`Sanyo/${lang}: collection card stays identical to Kiyosu`, () => {
   const route = `${lang === 'en' ? 'en/' : ''}spots/kiyosu.html`;
-  const kiy = new JSDOM(fs.readFileSync(new URL(route, root), 'utf8'), { url: `https://www.michikusa-travel.com/${route}`, runScripts: 'outside-only' });
-  kiy.window.eval(fs.readFileSync(new URL('spot-page-shared-data.js', root), 'utf8'));
-  kiy.window.eval(fs.readFileSync(new URL(`data/spot-pages/kiyosu.${lang}.js`, root), 'utf8'));
-  kiy.window.eval(renderer);
+  const { dom:kiy } = renderSiteRuntimeForValidation({ appDir, html:fs.readFileSync(new URL(route, root), 'utf8'), relative:route });
   const expected = kiy.window.document.querySelector('.spot-reading-related').outerHTML;
   for (const castle of SANYO_DETAIL_CASTLES) {
     const dom = page(castle.id, lang);

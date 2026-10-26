@@ -1,3 +1,4 @@
+import { readSiteSource } from './shared/site-chrome.mjs';
 // 静的な山陽記事。東海道のSPOTS・payload・通過時刻には接続しない。
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import fs from 'node:fs';
@@ -19,7 +20,7 @@ const esc = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', 
 const localized = (value, lang) => typeof value === 'string' ? value : value[lang];
 function footer(lang, dest) {
   const source = path.join(root, lang === 'en' ? 'en/yakei.html' : 'yakei.html');
-  const html = fs.readFileSync(source, 'utf8').match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
+  const html = readSiteSource(root, path.relative(root, source).replaceAll('\\', '/')).match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
   if (!html) throw Error('Shared footer not found');
   return html.replace(/href="([^"#]+)"/g, (whole, url) => {
     if (/^(?:https?:|mailto:)/.test(url)) return whole;

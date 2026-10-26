@@ -751,15 +751,10 @@
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
 
-  <footer class="footer">
-    <p class="footer-brand">Shinkansen Window <span>Catch the moment from your window</span></p>
-    <p>Times are estimates. Trains, weather and seat position all change what you see.</p>
-    <p class="footer-links"><a href="./">Home</a> · <a href="guide.html">Seeing Mt. Fuji</a> · <a href="zukan.html">Window field guide</a> · <a href="contact.html">Contact</a> · <a href="privacy.html">Privacy</a></p>
-    <p class="footer-credit">Michikusa — unhurried travel, and the things you find by chance.</p>
-  </footer>
+  <footer class="footer" data-site-chrome-host="chrome-0"><nav data-site-chrome-fallback><a href="../en/">Home</a> · <a href="../en/guide.html">Seeing Mt. Fuji</a> · <a href="../en/zukan.html">Window field guide</a></nav></footer>
 
   <script src="../spot-page-shared-data.js?v=a06310a9"></script>
-  <script src="../spot-page-shared.js?v=7ce79f9d"></script>
+  <script src="../spot-page-shared.js?v=3f269e60"></script>
   <script>
     document.addEventListener("click", function (event) {
       var link = event.target.closest && event.target.closest("[data-besides-cta]");
@@ -776,5 +771,7 @@
       if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
     });
   </script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"besides-fuji.html","mounts":[{"host":"chrome-0","component":"footer-castles","kind":"footer"}]}</script>
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

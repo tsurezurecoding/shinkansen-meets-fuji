@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../app-embedded.js?v=32708d67"></script>
+  <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>Japan Rail Pass and Mt. Fuji: Hikari and Kodama Times | Shinkansen Window</title>
+  <meta name="description" content="Mt. Fuji timing and seat-side guide for Hikari and Kodama with a Japan Rail Pass. Kodama takes about 59–71 minutes from Tokyo; Nozomi requires a separate special ticket.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Shinkansen Window">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Japan Rail Pass and Mt. Fuji: Hikari and Kodama Times">
+  <meta property="og:description" content="Mt. Fuji timing and seat-side guide for Hikari and Kodama with a Japan Rail Pass. Kodama takes about 59–71 minutes from Tokyo; Nozomi requires a separate special ticket.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-jr-pass-fuji.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Kakegawa Castle from a Shinkansen window, with the Japan Rail Pass timing headline">
+  <meta property="og:url" content="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Japan Rail Pass and Mt. Fuji: Hikari and Kodama Times">
+  <meta name="twitter:description" content="Mt. Fuji timing and seat-side guide for Hikari and Kodama with a Japan Rail Pass. Kodama takes about 59–71 minutes from Tokyo; Nozomi requires a separate special ticket.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-jr-pass-fuji.jpg">
+  <script src="../language-router.js?v=ff60751b"></script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <style>
+    .jrpass-page main { padding-bottom: 40px; }
+    .jp-hero { background: var(--paper, #fbf8f2); padding: 72px 20px 44px; }
+    .jp-hero-inner { max-width: 720px; margin: 0 auto; }
+    .jp-hero h1 { font-family: var(--font-serif); font-size: clamp(26px, 5.4vw, 40px); line-height: 1.45; margin: 0 0 18px; }
+    .jp-lead { font-size: 15px; line-height: 1.95; margin: 0 0 10px; }
+    .jp-section { padding: 0 20px 34px; }
+    .spot-page-shell > .jp-section { max-width: none; }
+    .jp-section h2 { font-family: var(--font-serif); font-size: clamp(20px, 4vw, 27px); line-height: 1.5; margin: 34px 0 14px; }
+    .jp-section h3 { font-size: 16px; margin: 30px 0 6px; }
+    .jp-section p { font-size: 14.5px; line-height: 1.95; }
+    .jp-table-note { color: #6b6353; font-size: 13px; margin: 0 0 10px; }
+    .jp-table-wrap { overflow-x: auto; border: 1px solid #e5dcc9; border-radius: 14px; }
+    .jp-table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+    .jp-table th, .jp-table td { padding: 9px 12px; text-align: left; border-bottom: 1px solid #efe8d9; white-space: nowrap; }
+    .jp-table thead th { background: #f7f2e6; font-size: 12px; letter-spacing: .04em; text-transform: uppercase; color: #6b6353; }
+    .jp-table tbody tr:last-child td { border-bottom: 0; }
+    .jp-approx { color: #8a8378; font-size: 11px; }
+    .jp-callout { background: #fff; border: 1px solid #e5dcc9; border-radius: 16px; padding: 16px 18px; margin: 18px 0; }
+    .jp-callout p { margin: 0 0 8px; }
+    .jp-callout p:last-child { margin-bottom: 0; }
+    .jp-cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 4px; }
+  </style>
+  <!-- JSONLD_START -->
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "@id": "https://www.michikusa-travel.com/en/jr-pass-fuji.html#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the Japan Rail Pass cover the Shinkansen to Mt. Fuji?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It covers Hikari and Kodama on the Tokaido Shinkansen. Nozomi requires a separate special ticket for pass holders. All three run on the same track, so the view of Mt. Fuji is identical; only the timing differs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long after leaving Tokyo does Mt. Fuji appear on a Japan Rail Pass train?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On a Kodama it is 59–71 minutes after Tokyo, not the 40 to 45 minutes usually quoted, which is a Nozomi figure. Kodama also stops at Shin-Fuji, so the mountain is beside the train while it is standing still."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which side of the Shinkansen is Mt. Fuji on?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Heading from Tokyo toward Kyoto and Shin-Osaka it is on the right, in Seat E. Coming back toward Tokyo it is on the left, and the seat letter is still E, because Mt. Fuji sits north of the track and seat letters do not change with direction. In the Green Car the equivalent window seat is Seat D."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the slower train worse for sightseeing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Several window views sit beside stations that only Kodama serves. Kakegawa Castle is the clearest case: 62 Kodama call at Kakegawa and no Hikari or Nozomi stop there at all."
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+  <!-- JSONLD_END -->
+</head>
+<body class="jrpass-page spot-page spot-page-utility" data-page="jrpass" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="jr-pass-fuji.html">
+  <div data-spot-page-shared-module="topbar"></div>
+
+  <main>
+    <section class="jp-hero" aria-labelledby="jpTitle">
+      <div class="jp-hero-inner">
+        <p class="eyebrow">JAPAN RAIL PASS</p>
+        <h1 id="jpTitle">Japan Rail Pass: when Hikari and Kodama reach Mt. Fuji</h1>
+        <p class="jp-lead">Almost every guide says Mt. Fuji appears about 40 to 45 minutes after Tokyo. That is a <b>Nozomi</b> figure — and pass holders need a separate special ticket to ride Nozomi.</p>
+        <p class="jp-lead">Your pass covers <b>Hikari</b> and <b>Kodama</b>. On a Kodama from Tokyo the same view arrives <b>59 to 71 minutes</b> in — up to half an hour later than the number you were given. Better still, a Kodama <b>stops at Shin-Fuji</b>, giving you a chance to look at Mt. Fuji while the train is stationary.</p>
+      </div>
+    </section>
+
+    <div class="spot-page-shell jp-shell">
+      <aside data-spot-page-shared-module="rail"></aside>
+      <article class="spot-page-article jp-section">
+      <div class="jp-callout">
+        <p><b>Which side.</b> Heading to Kyoto or Shin-Osaka, Mt. Fuji is on the <b>right</b> — <b>Seat E</b>. Coming back to Tokyo it is on the <b>left</b>, and the seat letter is still E. Seat letters do not change with direction; the mountain simply sits north of the track.</p>
+        <p><b>Green Car.</b> The equivalent window seat is <b>Seat D</b>.</p>
+        <p><b>How long.</b> Roughly three to four minutes, around Shin-Fuji.</p>
+      </div>
+
+      <h2>What the pass actually covers</h2>
+      <p>The Tokaido Shinkansen runs three services on the same track, so the view from the window is identical on all three. What differs is how many times you stop, and therefore when you reach Mt. Fuji.</p>
+      <ul>
+        <li><b>Nozomi</b> — fastest, fewest stops. Pass holders need a <b>separate special ticket</b> to ride it.</li>
+        <li><b>Hikari</b> — <b>included</b>. A few more stops.</li>
+        <li><b>Kodama</b> — <b>included</b>. Stops everywhere, including Shin-Fuji itself.</li>
+      </ul>
+      <p>Kodama is the slowest way to Kyoto and the best way to see the mountain: it stops at Shin-Fuji, so Mt. Fuji is beside you while the train is standing still.</p>
+
+      <h2>The slow train is the one that stops where the views are</h2>
+      <p>Several of the best window views sit right beside a station, and the faster your train, the less of them you get. On a Nozomi they are a blur measured in seconds. On a Kodama you are stationary in front of them.</p>
+      <p><b>Kakegawa Castle</b> is the clearest case. A white keep a short walk from Kakegawa Station, and in the current timetable <b>62 Kodama call at Kakegawa while no Hikari and no Nozomi stop there at all</b>. Passing at speed it is a little over ten seconds, split either side of the station. On a Kodama coming into Kakegawa the castle stays in the window for something like <b>half a minute</b>, slipping behind buildings and back out again, and then you are stopped. <b>Odawara Castle</b> works the same way, with Kodama and some Hikari calling at Odawara.</p>
+      <p>So the trade is not simply slower for cheaper. A Japan Rail Pass puts you on the only trains that stop where several of these views are.</p>
+
+      <figure class="jp-seat-figure">
+        <img src="../images/seat-side-fuji.svg" width="720" height="300" alt="Two carriage diagrams: heading toward Kyoto, Mt. Fuji is on the right beside Seat E; heading toward Tokyo it is on the left, still beside Seat E." loading="lazy" decoding="async">
+      </figure>
+      <h2>Mt. Fuji times, by train</h2>
+      <p>Every train below is covered by the Japan Rail Pass, and every one of them <b>stops at Shin-Fuji</b>. The times are that station's own scheduled times, not an average — the spread between trains is wider than the viewing window itself, so an average would be worse than useless.</p>
+      <p class="jp-table-note"><b>Select a train number</b> to open its own window timeline — every view it passes, each with a time and a seat side, worked out from that train&rsquo;s schedule.</p>
+
+      <!-- JRPASS_TABLE_START -->
+        <h3>Toward Kyoto and Shin-Osaka</h3>
+        <p class="jp-table-note">Mt. Fuji is on your <b>right</b>, in <b>Seat E</b>. Every train here stops at Shin-Fuji, so the mountain is beside you while the train is standing still.</p>
+        <div class="jp-table-wrap">
+          <table class="jp-table">
+            <thead><tr><th>Train</th><th>From</th><th>Departs</th><th>At Shin-Fuji</th><th>Journey so far</th></tr></thead>
+            <tbody>
+            <tr><td><a href="start.html?train=Kodama-801&amp;board=Tokyo&amp;dir=west">Kodama 801</a></td><td>Tokyo</td><td>06:30</td><td><b>07:39</b></td><td>69 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-803&amp;board=Tokyo&amp;dir=west">Kodama 803</a></td><td>Tokyo</td><td>06:57</td><td><b>08:07</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-805&amp;board=Tokyo&amp;dir=west">Kodama 805</a></td><td>Tokyo</td><td>07:27</td><td><b>08:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-807&amp;board=Tokyo&amp;dir=west">Kodama 807</a></td><td>Tokyo</td><td>07:57</td><td><b>09:07</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-809&amp;board=Tokyo&amp;dir=west">Kodama 809</a></td><td>Tokyo</td><td>08:27</td><td><b>09:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-811&amp;board=Tokyo&amp;dir=west">Kodama 811</a></td><td>Tokyo</td><td>08:57</td><td><b>10:07</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-813&amp;board=Tokyo&amp;dir=west">Kodama 813</a></td><td>Tokyo</td><td>09:27</td><td><b>10:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-815&amp;board=Tokyo&amp;dir=west">Kodama 815</a></td><td>Tokyo</td><td>09:57</td><td><b>11:07</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-817&amp;board=Tokyo&amp;dir=west">Kodama 817</a></td><td>Tokyo</td><td>10:27</td><td><b>11:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-819&amp;board=Tokyo&amp;dir=west">Kodama 819</a></td><td>Tokyo</td><td>10:57</td><td><b>12:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-821&amp;board=Tokyo&amp;dir=west">Kodama 821</a></td><td>Tokyo</td><td>11:27</td><td><b>12:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-823&amp;board=Tokyo&amp;dir=west">Kodama 823</a></td><td>Tokyo</td><td>11:57</td><td><b>13:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-825&amp;board=Tokyo&amp;dir=west">Kodama 825</a></td><td>Tokyo</td><td>12:27</td><td><b>13:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-827&amp;board=Tokyo&amp;dir=west">Kodama 827</a></td><td>Tokyo</td><td>12:57</td><td><b>14:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-829&amp;board=Tokyo&amp;dir=west">Kodama 829</a></td><td>Tokyo</td><td>13:27</td><td><b>14:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-831&amp;board=Tokyo&amp;dir=west">Kodama 831</a></td><td>Tokyo</td><td>13:57</td><td><b>15:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-833&amp;board=Tokyo&amp;dir=west">Kodama 833</a></td><td>Tokyo</td><td>14:27</td><td><b>15:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-835&amp;board=Tokyo&amp;dir=west">Kodama 835</a></td><td>Tokyo</td><td>14:57</td><td><b>16:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-837&amp;board=Tokyo&amp;dir=west">Kodama 837</a></td><td>Tokyo</td><td>15:27</td><td><b>16:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-839&amp;board=Tokyo&amp;dir=west">Kodama 839</a></td><td>Tokyo</td><td>15:57</td><td><b>17:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-841&amp;board=Tokyo&amp;dir=west">Kodama 841</a></td><td>Tokyo</td><td>16:27</td><td><b>17:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-843&amp;board=Tokyo&amp;dir=west">Kodama 843</a></td><td>Tokyo</td><td>16:57</td><td><b>18:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-845&amp;board=Tokyo&amp;dir=west">Kodama 845</a></td><td>Tokyo</td><td>17:27</td><td><b>18:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-847&amp;board=Tokyo&amp;dir=west">Kodama 847</a></td><td>Tokyo</td><td>17:57</td><td><b>19:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-849&amp;board=Tokyo&amp;dir=west">Kodama 849</a></td><td>Tokyo</td><td>18:27</td><td><b>19:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-851&amp;board=Tokyo&amp;dir=west">Kodama 851</a></td><td>Tokyo</td><td>18:57</td><td><b>20:08</b></td><td>71 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-853&amp;board=Tokyo&amp;dir=west">Kodama 853</a></td><td>Tokyo</td><td>19:27</td><td><b>20:37</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-855&amp;board=Tokyo&amp;dir=west">Kodama 855</a></td><td>Tokyo</td><td>19:57</td><td><b>21:07</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-857&amp;board=Tokyo&amp;dir=west">Kodama 857</a></td><td>Tokyo</td><td>20:27</td><td><b>21:35</b></td><td>68 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-909&amp;board=Tokyo&amp;dir=west">Kodama 909</a></td><td>Tokyo</td><td>21:15</td><td><b>22:25</b></td><td>70 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-911&amp;board=Tokyo&amp;dir=west">Kodama 911</a></td><td>Tokyo</td><td>21:45</td><td><b>22:48</b></td><td>63 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-913&amp;board=Tokyo&amp;dir=west">Kodama 913</a></td><td>Tokyo</td><td>22:12</td><td><b>23:11</b></td><td>59 min</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>Toward Tokyo</h3>
+        <p class="jp-table-note">Mt. Fuji is on your <b>left</b>, in the same <b>Seat E</b>.</p>
+        <div class="jp-table-wrap">
+          <table class="jp-table">
+            <thead><tr><th>Train</th><th>From</th><th>Departs</th><th>At Shin-Fuji</th><th>Journey so far</th></tr></thead>
+            <tbody>
+            <tr><td><a href="start.html?train=Kodama-904&amp;board=Shizuoka&amp;dir=east">Kodama 904</a></td><td>Shizuoka</td><td>06:22</td><td><b>06:35</b></td><td>13 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-908&amp;board=Hamamatsu&amp;dir=east">Kodama 908</a></td><td>Hamamatsu</td><td>06:20</td><td><b>06:56</b></td><td>36 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-912&amp;board=Shizuoka&amp;dir=east">Kodama 912</a></td><td>Shizuoka</td><td>07:02</td><td><b>07:13</b></td><td>11 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-914&amp;board=Hamamatsu&amp;dir=east">Kodama 914</a></td><td>Hamamatsu</td><td>06:43</td><td><b>07:22</b></td><td>39 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-918&amp;board=Hamamatsu&amp;dir=east">Kodama 918</a></td><td>Hamamatsu</td><td>06:55</td><td><b>07:47</b></td><td>52 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-800&amp;board=Gifu-Hashima&amp;dir=east">Kodama 800</a></td><td>Gifu-Hashima</td><td>06:30</td><td><b>08:22</b></td><td>112 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-802&amp;board=Nagoya&amp;dir=east">Kodama 802</a></td><td>Nagoya</td><td>07:38</td><td><b>09:10</b></td><td>92 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-804&amp;board=Nagoya&amp;dir=east">Kodama 804</a></td><td>Nagoya</td><td>08:08</td><td><b>09:41</b></td><td>93 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-806&amp;board=Nagoya&amp;dir=east">Kodama 806</a></td><td>Nagoya</td><td>08:38</td><td><b>10:13</b></td><td>95 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-808&amp;board=Shin-Osaka&amp;dir=east">Kodama 808</a></td><td>Shin-Osaka</td><td>07:54</td><td><b>10:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-810&amp;board=Nagoya&amp;dir=east">Kodama 810</a></td><td>Nagoya</td><td>09:38</td><td><b>11:10</b></td><td>92 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-812&amp;board=Shin-Osaka&amp;dir=east">Kodama 812</a></td><td>Shin-Osaka</td><td>08:54</td><td><b>11:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-814&amp;board=Nagoya&amp;dir=east">Kodama 814</a></td><td>Nagoya</td><td>10:38</td><td><b>12:13</b></td><td>95 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-816&amp;board=Shin-Osaka&amp;dir=east">Kodama 816</a></td><td>Shin-Osaka</td><td>09:54</td><td><b>12:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-818&amp;board=Nagoya&amp;dir=east">Kodama 818</a></td><td>Nagoya</td><td>11:38</td><td><b>13:10</b></td><td>92 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-820&amp;board=Shin-Osaka&amp;dir=east">Kodama 820</a></td><td>Shin-Osaka</td><td>10:54</td><td><b>13:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-822&amp;board=Nagoya&amp;dir=east">Kodama 822</a></td><td>Nagoya</td><td>12:38</td><td><b>14:13</b></td><td>95 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-824&amp;board=Shin-Osaka&amp;dir=east">Kodama 824</a></td><td>Shin-Osaka</td><td>11:54</td><td><b>14:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-826&amp;board=Nagoya&amp;dir=east">Kodama 826</a></td><td>Nagoya</td><td>13:38</td><td><b>15:10</b></td><td>92 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-828&amp;board=Shin-Osaka&amp;dir=east">Kodama 828</a></td><td>Shin-Osaka</td><td>12:54</td><td><b>15:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-830&amp;board=Nagoya&amp;dir=east">Kodama 830</a></td><td>Nagoya</td><td>14:38</td><td><b>16:11</b></td><td>93 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-832&amp;board=Shin-Osaka&amp;dir=east">Kodama 832</a></td><td>Shin-Osaka</td><td>13:54</td><td><b>16:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-834&amp;board=Nagoya&amp;dir=east">Kodama 834</a></td><td>Nagoya</td><td>15:38</td><td><b>17:11</b></td><td>93 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-836&amp;board=Shin-Osaka&amp;dir=east">Kodama 836</a></td><td>Shin-Osaka</td><td>14:54</td><td><b>17:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-838&amp;board=Nagoya&amp;dir=east">Kodama 838</a></td><td>Nagoya</td><td>16:38</td><td><b>18:11</b></td><td>93 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-840&amp;board=Shin-Osaka&amp;dir=east">Kodama 840</a></td><td>Shin-Osaka</td><td>15:54</td><td><b>18:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-842&amp;board=Nagoya&amp;dir=east">Kodama 842</a></td><td>Nagoya</td><td>17:38</td><td><b>19:11</b></td><td>93 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-844&amp;board=Shin-Osaka&amp;dir=east">Kodama 844</a></td><td>Shin-Osaka</td><td>16:54</td><td><b>19:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-846&amp;board=Nagoya&amp;dir=east">Kodama 846</a></td><td>Nagoya</td><td>18:38</td><td><b>20:13</b></td><td>95 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-848&amp;board=Shin-Osaka&amp;dir=east">Kodama 848</a></td><td>Shin-Osaka</td><td>17:54</td><td><b>20:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-850&amp;board=Nagoya&amp;dir=east">Kodama 850</a></td><td>Nagoya</td><td>19:38</td><td><b>21:05</b></td><td>87 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-852&amp;board=Shin-Osaka&amp;dir=east">Kodama 852</a></td><td>Shin-Osaka</td><td>18:54</td><td><b>21:41</b></td><td>167 min</td></tr>
+            <tr><td><a href="start.html?train=Kodama-854&amp;board=Nagoya&amp;dir=east">Kodama 854</a></td><td>Nagoya</td><td>20:46</td><td><b>22:21</b></td><td>95 min</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <details class="jp-hikari">
+          <summary>Riding a Hikari? Open your train's timeline</summary>
+          <p class="jp-table-note">Hikari passes Mt. Fuji without stopping, so there is no station time to quote and we will not invent one. Open a train and the guide works the passing time out from that train's own schedule.</p>
+          <h4>Toward Kyoto and Shin-Osaka</h4>
+          <ul class="jp-hikari-list">
+              <li><a href="start.html?train=Hikari-631&amp;board=Tokyo&amp;dir=west">Hikari 631</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-633&amp;board=Tokyo&amp;dir=west">Hikari 633</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-635&amp;board=Tokyo&amp;dir=west">Hikari 635</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-637&amp;board=Tokyo&amp;dir=west">Hikari 637</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-639&amp;board=Tokyo&amp;dir=west">Hikari 639</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-641&amp;board=Tokyo&amp;dir=west">Hikari 641</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-643&amp;board=Tokyo&amp;dir=west">Hikari 643</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-645&amp;board=Tokyo&amp;dir=west">Hikari 645</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-647&amp;board=Tokyo&amp;dir=west">Hikari 647</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-649&amp;board=Tokyo&amp;dir=west">Hikari 649</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-651&amp;board=Tokyo&amp;dir=west">Hikari 651</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-653&amp;board=Tokyo&amp;dir=west">Hikari 653</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-655&amp;board=Tokyo&amp;dir=west">Hikari 655</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-657&amp;board=Tokyo&amp;dir=west">Hikari 657</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-659&amp;board=Tokyo&amp;dir=west">Hikari 659</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-661&amp;board=Tokyo&amp;dir=west">Hikari 661</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-663&amp;board=Tokyo&amp;dir=west">Hikari 663</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-665&amp;board=Tokyo&amp;dir=west">Hikari 665</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-667&amp;board=Tokyo&amp;dir=west">Hikari 667</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-669&amp;board=Tokyo&amp;dir=west">Hikari 669</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-701&amp;board=Tokyo&amp;dir=west">Hikari 701</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-703&amp;board=Tokyo&amp;dir=west">Hikari 703</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-705&amp;board=Tokyo&amp;dir=west">Hikari 705</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-707&amp;board=Tokyo&amp;dir=west">Hikari 707</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-709&amp;board=Tokyo&amp;dir=west">Hikari 709</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-711&amp;board=Tokyo&amp;dir=west">Hikari 711</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-713&amp;board=Tokyo&amp;dir=west">Hikari 713</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-715&amp;board=Tokyo&amp;dir=west">Hikari 715</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-717&amp;board=Tokyo&amp;dir=west">Hikari 717</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-719&amp;board=Tokyo&amp;dir=west">Hikari 719</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-721&amp;board=Tokyo&amp;dir=west">Hikari 721</a> <span class="jp-hikari-from">from Tokyo</span></li>
+              <li><a href="start.html?train=Hikari-733&amp;board=Shin-Yokohama&amp;dir=west">Hikari 733</a> <span class="jp-hikari-from">from Shin-Yokohama</span></li>
+          </ul>
+          <h4>Toward Tokyo</h4>
+          <ul class="jp-hikari-list">
+              <li><a href="start.html?train=Hikari-630&amp;board=Nagoya&amp;dir=east">Hikari 630</a> <span class="jp-hikari-from">from Nagoya</span></li>
+              <li><a href="start.html?train=Hikari-632&amp;board=Nagoya&amp;dir=east">Hikari 632</a> <span class="jp-hikari-from">from Nagoya</span></li>
+              <li><a href="start.html?train=Hikari-634&amp;board=Shin-Osaka&amp;dir=east">Hikari 634</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-636&amp;board=Shin-Osaka&amp;dir=east">Hikari 636</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-638&amp;board=Shin-Osaka&amp;dir=east">Hikari 638</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-640&amp;board=Shin-Osaka&amp;dir=east">Hikari 640</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-642&amp;board=Shin-Osaka&amp;dir=east">Hikari 642</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-644&amp;board=Shin-Osaka&amp;dir=east">Hikari 644</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-646&amp;board=Shin-Osaka&amp;dir=east">Hikari 646</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-648&amp;board=Shin-Osaka&amp;dir=east">Hikari 648</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-650&amp;board=Shin-Osaka&amp;dir=east">Hikari 650</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-652&amp;board=Shin-Osaka&amp;dir=east">Hikari 652</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-654&amp;board=Shin-Osaka&amp;dir=east">Hikari 654</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-656&amp;board=Shin-Osaka&amp;dir=east">Hikari 656</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-658&amp;board=Shin-Osaka&amp;dir=east">Hikari 658</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-660&amp;board=Shin-Osaka&amp;dir=east">Hikari 660</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-662&amp;board=Shin-Osaka&amp;dir=east">Hikari 662</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-664&amp;board=Shin-Osaka&amp;dir=east">Hikari 664</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-666&amp;board=Shin-Osaka&amp;dir=east">Hikari 666</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-668&amp;board=Shin-Osaka&amp;dir=east">Hikari 668</a> <span class="jp-hikari-from">from Shin-Osaka</span></li>
+              <li><a href="start.html?train=Hikari-700&amp;board=Shin-Osaka&amp;dir=east">Hikari 700</a> <span class="jp-hikari-from">from Hiroshima</span></li>
+              <li><a href="start.html?train=Hikari-702&amp;board=Shin-Osaka&amp;dir=east">Hikari 702</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-704&amp;board=Shin-Osaka&amp;dir=east">Hikari 704</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-706&amp;board=Shin-Osaka&amp;dir=east">Hikari 706</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-708&amp;board=Shin-Osaka&amp;dir=east">Hikari 708</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-710&amp;board=Shin-Osaka&amp;dir=east">Hikari 710</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-712&amp;board=Shin-Osaka&amp;dir=east">Hikari 712</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-714&amp;board=Shin-Osaka&amp;dir=east">Hikari 714</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-716&amp;board=Shin-Osaka&amp;dir=east">Hikari 716</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-718&amp;board=Shin-Osaka&amp;dir=east">Hikari 718</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-720&amp;board=Shin-Osaka&amp;dir=east">Hikari 720</a> <span class="jp-hikari-from">from Okayama</span></li>
+              <li><a href="start.html?train=Hikari-722&amp;board=Shin-Osaka&amp;dir=east">Hikari 722</a> <span class="jp-hikari-from">from Okayama</span></li>
+          </ul>
+        </details>
+      <!-- JRPASS_TABLE_END -->
+
+      <h2>Before you board</h2>
+      <p>Seat E is the Fuji-side window position in ordinary cars. On a reserved-seat ticket you can choose it in advance; a Japan Rail Pass includes seat reservations on eligible Hikari and Kodama services at no additional charge. Nozomi requires a separate special ticket for pass holders. For current pass conditions and fares, check the official sources: <a href="https://japanrailpass.net/" rel="nofollow noopener" target="_blank">japanrailpass.net</a> and <a href="https://global.jr-central.co.jp/en/" rel="nofollow noopener" target="_blank">JR Central</a>. If Seat E is sold out, do not go and stand in someone else's row — aim instead for the brief Left-Side Fuji from Seat A, or for Lake Hamana, which works from either side.</p>
+
+      <h2>If the mountain is hidden</h2>
+      <p>Mt. Fuji is often invisible, and clear winter mornings are by far the best odds. The ride does not end there: the same window carries castles, a lake the train crosses on a low bridge, tea fields, a pagoda in Kyoto, and a few large mysteries that people spend the trip arguing about.</p>
+      <div class="jp-cta">
+        <a class="btn btn-primary" href="./#journey" data-jrpass-cta="pick_train">Get the exact times for my train →</a>
+        <a class="btn btn-ghost" href="guide.html" data-jrpass-cta="guide">Which side for Mt. Fuji</a>
+        <a class="btn btn-ghost" href="guide.html#cloudy" data-jrpass-cta="cloudy">If the mountain is hidden</a>
+        <a class="btn btn-ghost" href="zukan.html" data-jrpass-cta="zukan">All 59 window views</a>
+      </div>
+      </article>
+    </div>
+
+    <section data-spot-page-shared-module="mobile-promos"></section>
+    <section data-spot-page-shared-module="showcase"></section>
+    <section data-spot-page-shared-module="content-rail"></section>
+  </main>
+
+  <footer class="footer" data-site-chrome-host="chrome-0"><nav data-site-chrome-fallback><a href="../en/">Home</a> · <a href="../en/guide.html">Seeing Mt. Fuji</a> · <a href="../en/zukan.html">Window field guide</a></nav></footer>
+
+  <script src="../spot-page-shared-data.js?v=a06310a9"></script>
+  <script src="../spot-page-shared.js?v=3f269e60"></script>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-jrpass-cta]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      var payload = {
+        cta_id: link.getAttribute("data-jrpass-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "en",
+        viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile",
+        page_context: "jr_pass_fuji"
+      };
+      window.gtag("event", "jrpass_cta_click", payload);
+      if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+  </script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"jr-pass-fuji.html","mounts":[{"host":"chrome-0","component":"footer-castles","kind":"footer"}]}</script>
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+</body>
+</html>

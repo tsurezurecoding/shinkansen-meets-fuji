@@ -1,0 +1,477 @@
+
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <script src="../locales.js?v=6585facb"></script>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../app-embedded.js?v=32708d67"></script>
+  <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>Wann sieht man den Fuji aus dem Shinkansen? Zeiten nach Zug</title>
+  <meta name="description" content="Entdecken Sie Fuji, Burgen und Seen am Tokaido-Shinkansen. Wählen Sie Richtung, Einstiegsbahnhof und Abfahrtszeit, finden Sie Ihren Zug und sehen Sie die geschätzten Sichtzeiten für die Sitzseiten E und A.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/de/guide.html">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <meta property="og:title" content="Wann sieht man den Fuji aus dem Shinkansen? Zeiten nach Zug">
+  <meta property="og:description" content="Entdecken Sie Fuji, Burgen und Seen am Tokaido-Shinkansen. Wählen Sie Richtung, Einstiegsbahnhof und Abfahrtszeit, finden Sie Ihren Zug und sehen Sie die geschätzten Sichtzeiten für die Sitzseiten E und A.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/de/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Wann sieht man den Fuji aus dem Shinkansen? Zeiten nach Zug">
+  <meta name="twitter:description" content="Entdecken Sie Fuji, Burgen und Seen am Tokaido-Shinkansen. Wählen Sie Richtung, Einstiegsbahnhof und Abfahrtszeit, finden Sie Ihren Zug und sehen Sie die geschätzten Sichtzeiten für die Sitzseiten E und A.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://www.michikusa-travel.com/de/guide.html#webpage",
+      "url": "https://www.michikusa-travel.com/de/guide.html",
+      "name": "Wann sieht man den Fuji aus dem Shinkansen? Zeiten nach Zug",
+      "description": "Entdecken Sie Fuji, Burgen und Seen am Tokaido-Shinkansen. Wählen Sie Richtung, Einstiegsbahnhof und Abfahrtszeit, finden Sie Ihren Zug und sehen Sie die geschätzten Sichtzeiten für die Sitzseiten E und A.",
+      "inLanguage": "de"
+    }
+  ]
+}</script>
+  <!-- ANDROID_APP_INVITE_RESET_START -->
+<script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
+(function () {
+  'use strict';
+  function stopSavedOptOut() {
+    try {
+      if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+      window.MADO_ANALYTICS_DISABLED = true;
+      window['ga-disable-G-C2ESB694FV'] = true;
+    } catch (error) { /* Preserve the existing initializer's storage semantics. */ }
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'mado-ga-optout' || event.key === 'mado-android-app-invite-v2' || event.key === null) stopSavedOptOut();
+  });
+  window.addEventListener('pageshow', stopSavedOptOut);
+  window.addEventListener('focus', stopSavedOptOut, true);
+  document.addEventListener('visibilitychange', stopSavedOptOut);
+  stopSavedOptOut();
+  const url = new URL(window.location.href);
+  const reset = url.searchParams.getAll('android_invite_reset');
+  const ga = url.searchParams.getAll('ga');
+  if (reset.length !== 1 || reset[0] !== '1' || ga.length !== 1 || ga[0] !== 'off'
+      || url.searchParams.getAll('ga_optout').includes('0')) return;
+  // Keep this test page excluded even when storage is unavailable.
+  window.MADO_ANDROID_INVITE_TEST_GA_DISABLED = true;
+  url.searchParams.delete('android_invite_reset');
+  try { window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash); }
+  catch (error) { return; } // Do not reset unless the reload trigger was consumed.
+  try {
+    // Other tabs must see opt-out before the shared dismissal disappears.
+    window.localStorage.setItem('mado-ga-optout', '1');
+    if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+    window.localStorage.removeItem('mado-android-app-invite-v2');
+  }
+  catch (error) { /* The normal invitation storage guard remains in force. */ }
+})();
+</script>
+<!-- ANDROID_APP_INVITE_RESET_END -->
+<script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <script defer src="../utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="../utility-locales.css?v=269e0262">
+<link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
+<link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://www.michikusa-travel.com/zh-Hant/guide.html">
+<link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/guide.html">
+<link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/guide.html">
+<link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/guide.html">
+<link rel="alternate" hreflang="zh-Hans-CN" href="https://www.michikusa-travel.com/zh-Hans/guide.html">
+<link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/guide.html">
+<link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/guide.html">
+<link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/guide.html">
+<link rel="alternate" hreflang="ar" href="https://www.michikusa-travel.com/ar/guide.html">
+<link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
+</head>
+<body class="spot-page">
+  <header class="topbar">
+    <a class="brand" href="../de/">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name">Shinkansen Window</span>
+        <small class="brand-sub">Verpassen Sie keinen Augenblick der Reise.</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Hauptnavigation">
+      <a href="../de/start.html">Zug suchen</a>
+      <a href="../de/live/index.html">Live-Reisebegleiter</a>
+      <a href="../de/zukan.html">Aussichtsguide</a>
+      <a class="top-nav-overflow" href="../de/guide.html" aria-current="page">Fuji sehen</a>
+      <a class="top-nav-stamp" href="../de/journal.html">Reisetagebuch</a>
+      <details class="top-nav-more">
+        <summary>Mehr</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-stamp" href="../de/journal.html">Reisetagebuch</a>
+          <a class="top-nav-menu-compact" href="../de/guide.html">Fuji sehen</a>
+          <a href="../de/?intro=1">Über die App</a>
+          <a href="../de/mieru.html">Sichtbarkeit β</a>
+          <a href="../en/sumie.html">Sumi-e-Fenster</a>
+          <a href="../en/somato.html">Fensterreise</a>
+          <a href="../en/references.html">Quellen</a>
+          <a href="../de/contact.html">Kontakt</a>
+          <a href="../en/privacy.html">Datenschutz</a>
+        </div>
+      </details>
+    </nav>
+    <details class="guide-lang-menu">
+      <summary aria-label="Sprache auswählen">Deutsch</summary>
+      <div class="guide-lang-options">
+        <a href="../guide.html?lang=ja">日本語</a><a href="../en/guide.html">English</a><a href="../zh-Hant/guide.html">繁體中文</a><a href="../fr/guide.html">Français</a><a href="../de/guide.html" aria-current="page">Deutsch</a><a href="../es/guide.html">Español</a><a href="../zh-Hans/guide.html">简体中文</a><a href="../ko/guide.html">한국어</a><a href="../it/guide.html">Italiano</a><a href="../th/guide.html">ไทย</a><a href="../ar/guide.html">العربية</a>
+      </div>
+    </details>
+  </header>
+  <main>
+    <section class="collection-hero guide-fuji-hero" id="top" aria-labelledby="guideHeroTitle">
+      <div class="collection-hero-tiles" aria-hidden="true">
+        <img src="../images/20240211_fuji_michikusa.jpg" alt="">
+        <img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="">
+        <img src="../images/20260903_fuji_paper_mills_fuji_michikusa.jpg" alt="">
+        <img src="../images/20220205_fujikawa_bridge_michikusa.jpg" alt="">
+        <img src="../images/20260530_sagami_fuji_hiratsuka_michikusa.jpg" alt="">
+        <img src="../images/20260903_fujipipe_fuji_michikusa.jpg" alt="">
+        <img src="../images/20260530_fujikawa_bridge_2_michikusa.jpg" alt="">
+        <img src="../images/20260816_fuji_paper_mills_michikusa.jpg" alt="">
+        <img src="../images/20260530_sagami_fuji_samukawa_michikusa.jpg" alt="">
+        <img src="../images/20260903_fuji_beyond_factory_smoke_michikusa.jpg" alt="">
+      </div>
+      <div class="collection-hero-inner">
+        <p class="eyebrow">MT. FUJI WINDOW</p>
+        <h1 id="guideHeroTitle">Den Fuji aus dem Shinkansen sehen</h1>
+        <p class="collection-hero-lead">Der Fuji erscheint nicht nur einmal.</p>
+        <p class="collection-hero-note">Hinter der Sagami-Ebene, hinter den Schornsteinen der Papierfabriken, über den weißen Bögen der Fujikawa-Brücke und für einen Moment im linken Fenster. Zwischen Tokyo und Shin-Osaka zeigt sich der Berg auf fünf Abschnitten, jeder mit einem anderen Blick.</p>
+        <div class="collection-hero-actions">
+          <a class="btn btn-primary" href="#chances" data-guide-cta="hero_sections">Die fünf Abschnitte ansehen</a>
+          <a class="btn btn-ghost" href="../de/start.html?focus=fuji#journey" data-guide-cta="hero_exact_time">Zeiten für Ihren Zug</a>
+          <a class="btn btn-ghost" href="../de/mieru.html" data-guide-cta="hero_mieru">Ist der Fuji heute zu sehen?</a>
+        </div>
+      </div>
+    </section>
+    <div class="spot-page-shell">
+      <!-- GUIDE_RAIL_START -->
+      <aside class="spot-page-rail guide-page-rail" aria-label="Ausblicke Tokio → Shin-Osaka">
+        <div class="spot-page-rail-head">
+          <p class="spot-page-rail-eyebrow">Tokaido Shinkansen</p>
+          <p class="spot-page-rail-title">Ausblicke Tokio → Shin-Osaka</p>
+          <p class="spot-page-rail-count"><strong>59</strong> Ausblicke</p>
+          <p class="spot-page-rail-lead">Wählen Sie Ihren Zug, um die voraussichtliche Vorbeifahrtszeit für alle 59 Ausblicke zu sehen.</p>
+          <p class="spot-page-rail-now"><b>Fuji</b> Etwa 44.5 Min. ab Tokio · Sitz E · Bergseite</p>
+          <a class="spot-page-rail-cta" href="../de/start.html#journey" data-guide-cta="rail_exact_time">Reiseplan für meinen Zug erstellen</a>
+        </div>
+        <div class="spot-page-rail-list-wrap">
+          <ol class="spot-page-rail-list"><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">Tokio</span><span class="spot-page-rail-station-min">0 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/edo-castle-fujimi-yagura.html" data-guide-rail-spot="edo-castle-fujimi-yagura" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_edo-castle-fujimi-yagura_3705_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">0.5</span><span class="spot-page-rail-name">Fujimi-Turm der Burg Edo</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/tokyo-tower.html" data-guide-rail-spot="tokyo-tower" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">3</span><span class="spot-page-rail-name">Tokyo Tower</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">Shinagawa</span><span class="spot-page-rail-station-min">7 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/ota-fuji.html" data-guide-rail-spot="ota-fuji" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">10</span><span class="spot-page-rail-name">Fuji vom Stadtbezirk Ota</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/maruko-bridge.html" data-guide-rail-spot="maruko-bridge" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250531_maruko_bridge_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250531_maruko_bridge_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">13</span><span class="spot-page-rail-name">Maruko-Brücke</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/musashi-kosugi-towers.html" data-guide-rail-spot="musashi-kosugi-towers" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260804_musashi_kosugi_towers_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">14</span><span class="spot-page-rail-name">Hochhäuser von Musashi-Kosugi</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">Shin-Yokohama</span><span class="spot-page-rail-station-min">18 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/727-board.html" data-guide-rail-spot="727-board" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20261010_727-board_20182_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20261010_727-board_20182_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">23</span><span class="spot-page-rail-name">Schilder 727 und 248</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/727-board.html" data-guide-rail-spot="727-sign" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260820_727_board_yoda_solo_3x_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">24</span><span class="spot-page-rail-name">727-COSMETICS-Schild</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/sagami-fuji.html" data-guide-rail-spot="sagami-fuji" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">25</span><span class="spot-page-rail-name">Fuji über der Sagami-Ebene</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/hinataoka.html" data-guide-rail-spot="hinataoka" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_hinataoka.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_hinataoka.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">27</span><span class="spot-page-rail-name">Häuser am Hang von Hinataoka</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/putiputi-sign.html" data-guide-rail-spot="putiputi-sign" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260704_putiputi_sign_2_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260704_putiputi_sign_2_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">27.5</span><span class="spot-page-rail-name">„Wer bin ich?“-Schild</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Odawara</span><span class="spot-page-rail-station-min">31 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/odawara-castle.html" data-guide-rail-spot="odawara-castle" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20251112_odawara_castle_castle_traveler.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20251112_odawara_castle_castle_traveler.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">31</span><span class="spot-page-rail-name">Burg Odawara</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/gyoran-kannon.html" data-guide-rail-spot="gyoran-kannon" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260516_gyoran_kannon_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260516_gyoran_kannon_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">31.5</span><span class="spot-page-rail-name">Große Gyoran-Kannon-Statue</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/shiraitogawa-bridge.html#shiraitogawa-bridge" data-guide-rail-spot="shiraitogawa-bridge" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20261010_odawara_2025_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20261010_odawara_2025_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">32.7</span><span class="spot-page-rail-name">Sagami-Bucht und Shiraitogawa-Brücke</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Atami</span><span class="spot-page-rail-station-min">36 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/odawara.html#atami-hatsushima" data-guide-rail-spot="odawara" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260804_atami_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260804_atami_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">36</span><span class="spot-page-rail-name">Atami und Hatsushima</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Mishima</span><span class="spot-page-rail-station-min">40 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/mishima-catapult.html" data-guide-rail-spot="mishima-catapult" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">40.5</span><span class="spot-page-rail-name">Shinkansen-Katapult in Mishima</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/fuji-pipe-sign.html" data-guide-rail-spot="fuji-pipe-sign" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260804_fujipipe_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260804_fujipipe_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.5</span><span class="spot-page-rail-name">Fuji-Pipe-Schild</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot is-current"><a class="spot-page-rail-link" href="../de/spots/fuji.html" data-guide-rail-spot="fuji" data-guide-rail-placement="de_guide_rail" aria-current="page"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20210218_fuji_rumireport.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20210218_fuji_rumireport.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.5</span><span class="spot-page-rail-name">Fuji</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/fuji-bus-sales.html" data-guide-rail-spot="fuji-bus-sales" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_fuji_bus_sales_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_fuji_bus_sales_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">44.8</span><span class="spot-page-rail-name">Busgelände von Fuji Bus Sales</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Shin-Fuji</span><span class="spot-page-rail-station-min">45 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/fuji-paper-mills.html" data-guide-rail-spot="fuji-paper-mills" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">45</span><span class="spot-page-rail-name">Papierfabriken von Fuji</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/fujikawa-bridge.html" data-guide-rail-spot="fujikawa-bridge" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_fujikawa_bridge_2_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">45.75</span><span class="spot-page-rail-name">Fujikawa-Brücke und Wasserrohrbrücke</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/shimizu-port-chikyu.html" data-guide-rail-spot="shimizu-port-chikyu" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240119_shimizu_port_chikyu_senba16530315.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240119_shimizu_port_chikyu_senba16530315.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">50</span><span class="spot-page-rail-name">Hafen Shimizu und Forschungsschiff CHIKYU</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/granship.html" data-guide-rail-spot="granship" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_granship_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_granship_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">52</span><span class="spot-page-rail-name">Granship</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Shizuoka</span><span class="spot-page-rail-station-min">53 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/left-fuji.html" data-guide-rail-spot="left-fuji" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">54</span><span class="spot-page-rail-name">Fuji auf der linken Seite</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/sapporo-shizuoka-factory.html" data-guide-rail-spot="sapporo-shizuoka-factory" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260904_sapporo_shizuoka_factory_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260904_sapporo_shizuoka_factory_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">56</span><span class="spot-page-rail-name">Sapporo-Brauerei Shizuoka</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/shizuoka-tea-fields.html" data-guide-rail-spot="shizuoka-tea-fields" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_shizuoka_tea_fields_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">62</span><span class="spot-page-rail-name">Teefelder von Shizuoka</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Kakegawa</span><span class="spot-page-rail-station-min">64 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/kakegawa.html" data-guide-rail-spot="kakegawa" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20220312_kakegawa_castle_neoromancefan.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20220312_kakegawa_castle_neoromancefan.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">64</span><span class="spot-page-rail-name">Burg Kakegawa</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/pocari-fukuroi.html" data-guide-rail-spot="pocari-fukuroi" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_pocari-fukuroi_150379_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_pocari-fukuroi_150379_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">65.5</span><span class="spot-page-rail-name">Pocari-Sweat-Werk von Otsuka</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/genki-sign.html" data-guide-rail-spot="genki-sign" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260712_genki_sign_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260712_genki_sign_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">66.5</span><span class="spot-page-rail-name">Shippei-Aufmunterungsschild</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Hamamatsu</span><span class="spot-page-rail-station-min">70 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/hamanako.html" data-guide-rail-spot="hamanako" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">73</span><span class="spot-page-rail-name">Hamana-See</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/hamanako.html#hamanako-fuji" data-guide-rail-spot="hamanako-fuji" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">73</span><span class="spot-page-rail-name">Fuji vom Hamana-See</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/toyohashi-tateiwa.html" data-guide-rail-spot="toyohashi-tateiwa" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20210923_toyohashi_tateiwa_pato727.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20210923_toyohashi_tateiwa_pato727.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">76.5</span><span class="spot-page-rail-name">Tateiwa-Felsen in Toyohashi</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Toyohashi</span><span class="spot-page-rail-station-min">79 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/mikawa-oshima.html" data-guide-rail-spot="mikawa-oshima" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20181213_mikawa_oshima_kawasan3.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20181213_mikawa_oshima_kawasan3.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">82.5</span><span class="spot-page-rail-name">Insel Mikawa-Oshima</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/gamagori-greenhouses.html" data-guide-rail-spot="gamagori-greenhouses" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_gamagori-greenhouses_19169_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_gamagori-greenhouses_19169_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">83</span><span class="spot-page-rail-name">Gewächshäuser von Toyohashi bis Gamagori</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Mikawa-Anjo</span><span class="spot-page-rail-station-min">88 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/nichiban-anjo.html" data-guide-rail-spot="nichiban-anjo" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250221_nichiban_anjo_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250221_nichiban_anjo_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">88</span><span class="spot-page-rail-name">CELLOTAPE-Fassade</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/nagoya-station-skyline.html" data-guide-rail-spot="nagoya-station-skyline" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_nagoya_station_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_nagoya_station_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">94</span><span class="spot-page-rail-name">Skyline am Bahnhof Nagoya</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">Nagoya</span><span class="spot-page-rail-station-min">95 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/kirin-beer-factory.html" data-guide-rail-spot="kirin-beer-factory" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250920_kirin_beer_factory_letus10.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250920_kirin_beer_factory_letus10.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">98</span><span class="spot-page-rail-name">Kirin-Brauerei</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/kiyosu.html" data-guide-rail-spot="kiyosu" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240719_kiyosu_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240719_kiyosu_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">99</span><span class="spot-page-rail-name">Burg Kiyosu</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Gifu-Hashima</span><span class="spot-page-rail-station-min">102 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/gifu-hashima-mahalo.html" data-guide-rail-spot="gifu-hashima-mahalo" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_gifu_hashima_mahalo_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_gifu_hashima_mahalo_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">102</span><span class="spot-page-rail-name">Mahalo-Schild in Gifu-Hashima</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/solar-ark.html" data-guide-rail-spot="solar-ark" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260530_solar_ark.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260530_solar_ark.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">103</span><span class="spot-page-rail-name">Solaranlage Solar Ark</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/gifu-castle.html" data-guide-rail-spot="gifu-castle" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260712_gifu_castle_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260712_gifu_castle_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">103</span><span class="spot-page-rail-name">Burg Gifu</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/kinshozan.html" data-guide-rail-spot="kinshozan" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260704_kinshozan_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260704_kinshozan_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">106</span><span class="spot-page-rail-name">Berg Kinshozan</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/nangu-taisha.html" data-guide-rail-spot="nangu-taisha" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260629_nangu_taisha_1_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260629_nangu_taisha_1_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">107</span><span class="spot-page-rail-name">Großes Torii des Nangu Taisha</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/ibuki.html" data-guide-rail-spot="ibuki" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240114_ibukiyama.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240114_ibukiyama.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">110</span><span class="spot-page-rail-name">Berg Ibuki</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/ibuki.html#ibuki-seat-a" data-guide-rail-spot="ibuki-seat-a" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_ibuki-seat-a_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_ibuki-seat-a_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">111.5</span><span class="spot-page-rail-name">Berg Ibuki vom Sitz A</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/sennenq-sign.html" data-guide-rail-spot="sennenq-sign" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260816_sennenq_sign_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260816_sennenq_sign_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">111.5</span><span class="spot-page-rail-name">Sennen-Kyū-Schild</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-station"><span class="spot-page-rail-station-name">Maibara</span><span class="spot-page-rail-station-min">112 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/maibara-test-trains.html" data-guide-rail-spot="maibara-test-trains" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20261010_maibara-test-trains_10654_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20261010_maibara-test-trains_10654_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">112.1</span><span class="spot-page-rail-name">Shinkansen-Testzüge in Maibara</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/fujitec-big-wing.html" data-guide-rail-spot="fujitec-big-wing" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260712_fujitec_big_wing_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260712_fujitec_big_wing_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">113</span><span class="spot-page-rail-name">Fujitec Big Wing</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/sawayama-castle.html" data-guide-rail-spot="sawayama-castle" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240719_sawayama_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240719_sawayama_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">115</span><span class="spot-page-rail-name">Ruinen der Burg Sawayama</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/hikone-castle.html" data-guide-rail-spot="hikone-castle" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20170307_hikone_castle_zusshi.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20170307_hikone_castle_zusshi.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">116</span><span class="spot-page-rail-name">Burg Hikone</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/lotte-shiga.html" data-guide-rail-spot="lotte-shiga" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_lotte-shiga_6845_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_lotte-shiga_6845_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">119</span><span class="spot-page-rail-name">Süßwarenschilder von Lotte Shiga</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/kannonji-castle.html" data-guide-rail-spot="kannonji-castle" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20240719_kannonji_castle_asami_k920.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20240719_kannonji_castle_asami_k920.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">120</span><span class="spot-page-rail-name">Ruinen der Burg Kannonji</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/omi-fuji.html" data-guide-rail-spot="omi-fuji" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250523_omi_fuji_kawasan3.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250523_omi_fuji_kawasan3.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">123</span><span class="spot-page-rail-name">Omi-Fuji</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/seta-karahashi.html" data-guide-rail-spot="seta-karahashi" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20250909_seta_karahashi_c91256633.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20250909_seta_karahashi_c91256633.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">127</span><span class="spot-page-rail-name">Seta-no-Karahashi-Brücke</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">Kyoto</span><span class="spot-page-rail-station-min">130 Min.</span></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/toji.html" data-guide-rail-spot="toji" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260510_toji.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260510_toji.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">131</span><span class="spot-page-rail-name">Fünfstöckige Pagode des To-ji</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/kaguya-no-akari.html" data-guide-rail-spot="kaguya-no-akari" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_kaguya-no-akari_28703_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_kaguya-no-akari_28703_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">133.6</span><span class="spot-page-rail-name">Wasserturm Kaguya no To</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/rakusai-egg-tanks.html" data-guide-rail-spot="rakusai-egg-tanks" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260919_rakusai_egg_tanks_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260919_rakusai_egg_tanks_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">135</span><span class="spot-page-rail-name">Eiförmige Tanks in Rakusai</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../de/spots/yamazaki-distillery.html" data-guide-rail-spot="yamazaki-distillery" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260924_yamazaki-distillery_6867_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260924_yamazaki-distillery_6867_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">136.25</span><span class="spot-page-rail-name">Suntory-Yamazaki-Destillerie</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/hirakata-park-wheel.html" data-guide-rail-spot="hirakata-park-wheel" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260824_hirakata_park_wheel_michikusa.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">139</span><span class="spot-page-rail-name">Riesenrad im Hirakata Park</span><span class="spot-page-rail-seat is-a">A</span></a></li><li class="spot-page-rail-row spot-page-rail-spot"><a class="spot-page-rail-link" href="../en/spots/torikai-train-depot.html" data-guide-rail-spot="torikai-train-depot" data-guide-rail-placement="de_guide_rail"><span class="spot-page-rail-thumb-wrap"><img class="spot-page-rail-thumb" src="../images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="" loading="lazy" decoding="async" width="38" height="38"><img class="spot-page-rail-preview" src="../images/thumbs/20260614_torikai_train_depot_yamato160.webp" alt="" loading="lazy" decoding="async"></span><span class="spot-page-rail-min">141</span><span class="spot-page-rail-name">Shinkansen-Betriebswerk Torikai</span><span class="spot-page-rail-seat is-e">E</span></a></li><li class="spot-page-rail-row spot-page-rail-station is-major"><span class="spot-page-rail-station-name">Shin-Osaka</span><span class="spot-page-rail-station-min">147 Min.</span></li></ol>
+        </div>
+        <div class="spot-page-rail-foot">
+          <a href="../de/zukan.html">Alle 59 Ausblicke in Fotos ansehen →</a>
+        </div>
+        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="../de/start.html#journey" data-guide-cta="rail_exact_time_bottom">Alle 59 Ausblicke passend zu meinem Zug anzeigen</a>
+      </aside>
+      <!-- GUIDE_RAIL_END -->
+      <article class="spot-page-article">
+      <section class="spot-page-section guide-feature-section" id="chances">
+        <div class="section-head"><p class="eyebrow">FIVE VIEWS</p><h2>Auf fünf Abschnitten steht der Fuji im Fenster</h2></div>
+        <p class="guide-fuji-answer"><strong>Welche Seite?</strong> Richtung Kyoto liegt der Berg <strong>rechts</strong>, Richtung Tokyo <strong>links</strong>. In beiden Fällen ist es <strong>Sitz E</strong> (Green Car: Sitz D). Den größten und längsten Blick gibt es von Mishima bis zum Fuji-Fluss: im Nozomi etwa 43–47 Minuten nach Tokyo, etwa 1 Std. 40 Min. ab Shin-Osaka (1 Std. 25 Min. ab Kyoto), mit gefülltem Fenster für rund 3–4 Minuten. Die besten Chancen bieten klare Wintermorgen.</p>
+        <p>Das ist nicht der einzige Abschnitt: der Fuji über der Sagami-Ebene, der kurze „linke Fuji“ auf der Seite von Sitz A und ein kleiner, ferner Fuji aus dem Zentrum Tokyos und jenseits des Hamana-Sees.</p>
+        <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="Die zwei großen Abschnitte">
+          <a class="guide-visual-card" href="../en/spots/sagami-fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="Der Fuji hinter der Sagami-Ebene">
+            <span><span class="g9-min">~25–27 Min.</span>Sitz E</span>
+            <strong>Der Fuji über der Sagami-Ebene</strong>
+            <em>Der ganze Berg hinter der Ebene und den Tanzawa-Kämmen. Etwa eine Minute, an Wintermorgen am klarsten.</em>
+          </a>
+          <a class="guide-visual-card" href="../de/spots/fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20240211_fuji_michikusa.webp" alt="Schneebedeckter Fuji füllt das Fenster von Sitz E">
+            <span><span class="g9-min">~43–47 Min.</span>Sitz E</span>
+            <strong>Von Mishima bis zum Fuji-Fluss</strong>
+            <em>Am nächsten und am längsten: etwa dreieinhalb Minuten mit vollem Fenster, während sich nur der Vordergrund ändert.</em>
+          </a>
+        </div>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="Kurze, ferne und gegenüberliegende Abschnitte">
+          <a class="guide-visual-card" href="../en/spots/left-fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="Der linke Fuji auf der Seite von Sitz A">
+            <span><span class="g9-min">~54 Min.</span>Sitz A</span>
+            <strong>Der linke Fuji</strong>
+            <em>Für ein paar Sekunden wechselt der Berg ins gegenüberliegende Fenster. Schon Reisende der Edo-Zeit schätzten das.</em>
+          </a>
+          <a class="guide-visual-card" href="../en/spots/ota-fuji.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="Ein kleiner Fuji hinter der Stadt Tokyo">
+            <span><span class="g9-min">~10 Min.</span>Sitz E</span>
+            <strong>Der Fuji aus Tokyo</strong>
+            <em>Klein, hinter der Stadt, kurz nach Shinagawa: das erste Zeichen der Reise. Foto @T_Yangyang</em>
+          </a>
+          <a class="guide-visual-card" href="../de/spots/hamanako.html#hamanako-fuji">
+            <img loading="lazy" decoding="async" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="Ein winziger Fuji jenseits des Hamana-Sees">
+            <span><span class="g9-min">~73 Min.</span>Sitz E</span>
+            <strong>Der Fuji jenseits des Hamana-Sees</strong>
+            <em>Winzig, weit über dem See: ein letzter Blick zurück, nachdem Sie den Berg passiert haben. Foto @ProBoffin</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="closeup">
+        <div class="section-head"><p class="eyebrow">FOREGROUNDS</p><h2>Auf dem längsten Abschnitt wechselt der Vordergrund ständig</h2></div>
+        <p><strong>Von Mishima bis zum Fuji-Fluss kommt und geht der Fuji nicht, er bleibt etwa vier Minuten im Fenster.</strong> Es bewegt sich nur der Vordergrund: Stadt, rot-weiße Schornsteine, dann der Fluss und eine Reihe weißer Bögen. Die beiden Fotos unten zeigen denselben Berg hinter unterschiedlichem Vordergrund, beide von Sitz E aus.</p>
+        <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="Derselbe Berg, anderer Vordergrund">
+          <a class="guide-visual-card" href="../de/spots/fuji-paper-mills.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="Rot-weiße Schornsteine vor dem Fuji an den Papierfabriken">
+            <span><span class="g9-min">~44 Min.</span>Sitz E</span>
+            <strong>~44 Min. · Hinter den Schornsteinen</strong>
+            <em>Der Berg füllt noch das Fenster, während rot-weiße Fabrikschornsteine ins Bild gleiten. Foto @OliverinJapan</em>
+          </a>
+          <a class="guide-visual-card" href="../de/spots/fujikawa-bridge.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20220205_fujikawa_bridge_michikusa.webp" alt="Schneebedeckter Fuji hinter den weißen Brückenbögen">
+            <span><span class="g9-min">~47 Min.</span>Sitz E</span>
+            <strong>~47 Min. · Über den weißen Bögen</strong>
+            <em>Das Finale: Fluss, zehn weiße Bögen und der Berg in einem Bild. Am schönsten vom Winter bis zum frühen Frühling.</em>
+          </a>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="faces">
+        <div class="section-head"><p class="eyebrow">SEASONS &amp; HOURS</p><h2>Derselbe Berg sieht je nach Jahreszeit und Stunde anders aus</h2></div>
+        <p><strong>Selbst aus demselben Fenster verändert sich der Fuji mit Jahreszeit und Tageszeit.</strong> Von Spätherbst bis Frühsommer trägt er Schnee. Im Sommer ist er kahl und verschwimmt mit dem Himmel; bei Sonnenuntergang bleibt nur die Kammlinie.</p>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="Der Fuji nach Jahreszeit und Stunde">
+          <a class="guide-visual-card" href="../de/spots/fuji.html" data-guide-cta="faces_fuji_green">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260616_fuji_sttraveler.webp" alt="Der Fuji hinter grünen Reisfeldern im Frühsommer">
+            <strong>Frühsommer · Grüne Reisfelder</strong>
+            <em>Im Juni ist der Kontrast zwischen jungem Reis und Berg am stärksten. Foto @STTraveler</em>
+          </a>
+          <a class="guide-visual-card" href="../de/spots/fuji.html" data-guide-cta="faces_fuji_snowless">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20230913_fuji_michikusa.webp" alt="Ein schneefreier Fuji über goldenen Feldern im September">
+            <strong>Frühherbst · Ohne Schnee</strong>
+            <em>Im September wirkt ein schneefreier Fuji über goldenen Feldern wie ein anderer Berg.</em>
+          </a>
+          <div class="guide-visual-cell">
+          <a class="guide-visual-card" href="../de/spots/fuji-paper-mills.html" data-guide-cta="faces_fuji_dusk">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260529_fuji_paper_mills_kamiyu_g1x_mk2.webp" alt="Der Fuji in der Abenddämmerung hinter den Fabriklichtern">
+            <strong>Abenddämmerung · Mit den Fabriklichtern</strong>
+            <em>Um den Sonnenuntergang liegen Kammlinie und die Lichter der Papierfabriken in einem Bild.</em>
+          </a>
+            <p class="guide-photo-source">Foto: <a href="https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354" rel="noopener" target="_blank">Originalbeitrag von @kamiyu_G1X_Mk2</a></p>
+          </div>
+        </div>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="cloudy">
+        <div class="section-head"><p class="eyebrow">CLOUDY DAYS</p><h2>Bewölkt? Schauen Sie auf das, was vor dem Fuji liegt</h2></div>
+        <p><strong>An etwa jedem zweiten Tag im Jahr versteckt sich der Fuji hinter Dunst oder Wolken.</strong> Tiefe Wolken lassen auch ferne Berge und weite Ausblicke verschwimmen, doch Landschaften nahe der Strecke behalten ihre Umrisse. <strong>Schauen Sie in der Minute, in der Sie den Fuji gesucht hätten, auf den Vordergrund.</strong> Drei der fünf Abschnitte haben einen, der keinen klaren Himmel braucht.</p>
+        <div class="guide-visual-grid guide-photo-strip" aria-label="Vordergründe für bewölkte Tage">
+          <a class="guide-visual-card" href="../en/spots/hinataoka.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260530_hinataoka.webp" alt="Bunte Dächer der Hügelsiedlung Hinataoka">
+            <span><span class="g9-min">~27 Min.</span>Sitz E</span>
+            <strong>Vordergrund Abschnitt 1 · Hinataoka</strong>
+            <em>Auch wenn der Fuji über der Ebene verschwunden ist, bleiben die bunten Dächer auf dem Hügel.</em>
+          </a>
+          <a class="guide-visual-card" href="../de/spots/fuji-paper-mills.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260816_fuji_paper_mills_michikusa.webp" alt="Schornsteine der Papierfabriken unter bewölktem Himmel">
+            <span><span class="g9-min">~44 Min.</span>Sitz E</span>
+            <strong>Vordergrund Abschnitt 2 · Fujis Papierfabriken</strong>
+            <em>An klaren Tagen rahmen sie den Berg; an grauen Tagen stehen Schornsteine und Anlagen im Mittelpunkt.</em>
+          </a>
+          <a class="guide-visual-card" href="../de/spots/hamanako.html">
+            <img loading="lazy" decoding="async" src="../images/thumbs/20260530_hamanako.webp" alt="Der Hamana-See von Sitz E aus">
+            <span><span class="g9-min">~73 Min.</span>Sitz E</span>
+            <strong>Vordergrund Abschnitt 5 · Hamana-See</strong>
+            <em>Wenn der ferne Fuji verschwindet, bleibt der See. Grauer Himmel macht das Wasser sogar tiefer im Ton.</em>
+          </a>
+        </div>
+        <p>Die Abschnitte 3 (linker Fuji) und 4 (Tokyo) sind kurz oder brauchen sehr klare Luft, rechnen Sie bei Bewölkung nicht damit. Abseits des Fuji gibt es wetterfeste Ausblicke wie die <a href="../de/spots/kakegawa.html">Burg Kakegawa</a> direkt am Bahnhof: <a href="../de/zukan.html"><strong>alle Fensterblicke im Aussichtsführer ansehen</strong></a>.</p>
+        <p style="margin-bottom:0"><strong>Nachtzüge zeigen den Fuji nicht.</strong> Wenn Sie Mishima–Shin-Fuji nach Sonnenuntergang passieren, <a href="../de/yakei.html" data-guide-cta="night_page">sehen Sie im Nachtführer nach, wann es dunkel wird und was leuchtet</a>.</p>
+      </section>
+
+      <section class="spot-page-section guide-feature-section" id="seat">
+        <div class="section-head"><p class="eyebrow">SEAT E</p><h2>Sitz E in drei Schritten reservieren</h2></div>
+        <ol class="g9-steps">
+          <li><strong>Wählen Sie Ihren Zug.</strong> Nozomi, Hikari und Kodama fahren alle am Fuji vorbei, ihre Fahrpläne unterscheiden sich jedoch. Reservieren Sie einen Platz, wenn Sie in einem gewöhnlichen Wagen gezielt Sitz E wählen möchten. Preise und Bedingungen des Japan Rail Pass hängen vom Zug und Produkt ab. Informieren Sie sich bei den offiziellen Quellen: <a href="https://smart-ex.jp/en/" rel="noopener" target="_blank">smartEX (JR Central)</a> und <a href="https://japanrailpass.net/en/" rel="noopener" target="_blank">japanrailpass.net</a>. In der Green Car ist Sitz D üblicherweise der Fensterplatz auf der Fuji-Seite.</li>
+          <li><strong>Wählen Sie im Sitzplan „E“</strong> – am Automaten, am JR-Schalter oder in der smartEX-App. Es ist der Fensterplatz in der Zweierreihe. Da die Sitze am Endbahnhof gedreht werden, liegt E <em>in beiden Fahrtrichtungen</em> auf der Fuji-Seite. Zu zweit reservieren Sie D+E.</li>
+          <li><strong>Wenn Sitz E ausgebucht ist, erzwingen Sie keinen besseren Blick.</strong> Gehen Sie nur kurz zu einem anderen Fenster, wenn der Wagen ruhig ist und Sie weder Gang noch Zugänge blockieren. Halten Sie sonst von Sitz A nach dem Fuji auf der linken Seite oder nach dem Hamana-See Ausschau, der von beiden Seiten sichtbar ist.</li>
+        </ol>
+      </section>
+
+      <section class="spot-page-section guide-mobile-timeline guide-feature-section" id="timeline">
+        <div class="section-head"><p class="eyebrow">MORE WINDOWS</p><h2><span class="copy-chunk">Die schönsten Ausblicke aus dem Fenster,</span> <span class="copy-chunk">passend zur Fahrt Ihres Zuges</span></h2></div>
+        <p>Die angegebenen Minuten sind Schätzwerte für einen Nozomi. Halte und Abfahrtszeit verändern den tatsächlichen Zeitplan: <strong>Wenn Sie Ihren Zug wählen, erhalten Sie für jeden der 59 Ausblicke die voraussichtliche Uhrzeit</strong>.</p>
+        <!-- GUIDE_MOBILE_SPOTS_START -->
+        <div class="guide-mobile-spots" aria-label="Empfohlene Ausblicke zwischen Tokio und Shin-Osaka">
+          <div class="showcase-rail">
+          <a class="show-card guide-mobile-spot-card" href="../en/spots/tokyo-tower.html" data-guide-mobile-spot="tokyo-tower" aria-label="Tokyo Tower: Guide lesen">
+            <div class="show-media"><img src="../images/thumbs/20250111_tokyo_tower_letus10.webp" alt="Tokyo Tower" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗼 Tokyo Tower</strong><small class="show-credit">新幹線の車窓から</small><span>Der rote Turm über Tokio.</span><span class="show-guide-link">Guide lesen</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../de/spots/odawara.html" data-guide-mobile-spot="odawara" aria-label="Atami und Hatsushima: Guide lesen">
+            <div class="show-media"><img src="../images/thumbs/20260804_atami_michikusa.webp" alt="Atami und Hatsushima" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🌊 Atami und Hatsushima</strong><small class="show-credit">2026-08-04</small><span>Zwischen den Tunneln öffnet sich der Blick aufs Meer.</span><span class="show-guide-link">Guide lesen</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../de/spots/fuji.html" data-guide-mobile-spot="fuji" aria-label="Fuji: Guide lesen">
+            <div class="show-media"><img src="../images/thumbs/20210218_fuji_rumireport.webp" alt="Fuji" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🗻 Fuji</strong><small class="show-credit">@rumireport</small><span>Die berühmtesten drei Minuten Japans.</span><span class="show-guide-link">Guide lesen</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../de/spots/hamanako.html" data-guide-mobile-spot="hamanako" aria-label="Hamana-See: Guide lesen">
+            <div class="show-media"><img src="../images/thumbs/20260505_hamanako_design_photosy.webp" alt="Hamana-See" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>🚤 Hamana-See</strong><small class="show-credit">@Design_photoSY</small><span>Der Zug scheint über den See zu gleiten.</span><span class="show-guide-link">Guide lesen</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../en/spots/solar-ark.html" data-guide-mobile-spot="solar-ark" aria-label="Solar Ark: Guide lesen">
+            <div class="show-media"><img src="../images/thumbs/20260530_solar_ark.webp" alt="Solar Ark" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>☀️ Solar Ark</strong><small class="show-credit">2026-05-30</small><span>Das Sonnenschiff, das bald verschwindet.</span><span class="show-guide-link">Guide lesen</span></span>
+          </a>
+          <a class="show-card guide-mobile-spot-card" href="../de/spots/toji.html" data-guide-mobile-spot="toji" aria-label="To-ji-Pagode: Guide lesen">
+            <div class="show-media"><img src="../images/thumbs/20260510_toji.webp" alt="To-ji-Pagode" loading="lazy" decoding="async"></div>
+            <span class="show-caption"><strong>⛩️ To-ji-Pagode</strong><small class="show-credit">2026-05-10</small><span>Ein Blick genügt: Sie sind in Kyoto.</span><span class="show-guide-link">Guide lesen</span></span>
+          </a>
+          </div>
+        </div>
+        <!-- GUIDE_MOBILE_SPOTS_END -->
+        <div class="spot-page-actions">
+
+          <a class="btn btn-ghost" href="../de/zukan.html">Alle 59 Ausblicke entdecken</a>
+        </div>
+      </section>
+    </article>
+    </div>
+  </main>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-guide-cta], [data-guide-rail-spot], [data-guide-mobile-spot]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      if (link.hasAttribute("data-guide-mobile-spot")) {
+        window.gtag("event", "guide_mobile_spot_click", {
+          spot_id: link.getAttribute("data-guide-mobile-spot"),
+          destination: link.getAttribute("href"),
+          language: "de",
+          placement: "timeline_mobile",
+          page_context: "guide"
+        });
+        return;
+      }
+      if (link.hasAttribute("data-guide-rail-spot")) {
+        window.gtag("event", "guide_rail_spot_click", { spot_id: link.getAttribute("data-guide-rail-spot"), destination: link.getAttribute("href"), language: "de", rail_placement: link.getAttribute("data-guide-rail-placement"), viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile", page_context: "guide" });
+        return;
+      }
+      var payload = { cta_id: link.getAttribute("data-guide-cta"), cta_label: link.textContent.trim(), destination: link.getAttribute("href"), language: "de", viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile", page_context: "guide" };
+      window.gtag("event", "guide_cta_click", payload);
+      if ((link.getAttribute("href") || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+    (function () {
+      var rail = document.querySelector(".guide-page-rail");
+      if (!rail || !("IntersectionObserver" in window)) return;
+      var observer = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        observer.disconnect();
+        if (!window.MADO_ANALYTICS_DISABLED && typeof window.gtag === "function") window.gtag("event", "guide_rail_view", { language: "de", rail_placement: "de_guide_rail", viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile", page_context: "guide" });
+      }, { threshold: 0.15 });
+      observer.observe(rail);
+    })();
+  </script>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle">
+    <div class="section-head">
+      <p class="eyebrow">AUCH ENTDECKEN</p>
+      <h2 id="contentRailTitle">Weitere Arten, die Aussicht zu genießen</h2>
+    </div>
+    <div class="content-rail">
+      <a class="content-rail-card" href="../de/mieru.html">
+        <img src="../images/thumbs/content-mieru.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>PROGNOSE</small>
+          <strong>Sichtbarkeit β</strong>
+          <span>Prüfen Sie, wie gut die Chancen auf den Fuji heute stehen.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="../en/sumie.html">
+        <img src="../images/thumbs/content-sumie.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>Sumi-e-Fenster</strong>
+          <span>Erkunden Sie die Strecke als ruhige Tuschelandschaft.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="../en/somato.html">
+        <img src="../images/thumbs/content-somato.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>EXTRA</small>
+          <strong>Fensterreise</strong>
+          <span>Lassen Sie echte Fensterfotos wie eine kurze Reise vorbeiziehen.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="../de/journal.html">
+        <img src="../images/stamps/stamp_fuji.svg" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>REISETAGEBUCH</small>
+          <strong>Stempel und Medaillen</strong>
+          <span>Bewahren Sie die während der Fahrt entdeckten Ausblicke auf.</span>
+        </span>
+      </a>
+      <a class="content-rail-card" href="../de/?intro=1">
+        <img src="../images/thumbs/og-shinkansen-window.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>GUIDE</small>
+          <strong>Über die App</strong>
+          <span>Erfahren Sie in 30 Sekunden, wie die App funktioniert.</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="../en/references.html">
+        <img src="../images/thumbs/20260616_fuji_sttraveler.webp" alt="" loading="lazy" decoding="async">
+        <span class="content-rail-card-body">
+          <small>QUELLEN</small>
+          <strong>Quellen zu den Ausblicken aus dem Zug</strong>
+          <span>Quellen und Lesetipps zu den Ausblicken aus dem Zug.</span>
+        </span>
+      </a>
+
+      <a class="content-rail-card" href="../de/contact.html"><img src="../images/thumbs/content-contact.webp" alt="" loading="lazy" decoding="async"><span class="content-rail-card-body"><small>CONTACT</small><strong>Contact</strong><span>Fotovorschläge, Korrekturen und Feedback.</span></span></a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p class="footer-brand">Shinkansen Window <span>Verpassen Sie den Augenblick nicht</span></p>
+    <p>Die Zeiten sind Schätzwerte für einen Nozomi; die Sicht hängt von Zug, Wetter und Sitzplatz ab. Schauen Sie lieber etwas früher hinaus.</p>
+    <p class="footer-links"><a href="../de/guide.html">Fuji-FAQ</a> · <a href="../en/references.html">Quellen zu den Ausblicken aus dem Zug</a> · <a href="../en/privacy.html">Datenschutz</a></p>
+    <p class="footer-credit">Michikusa — entspannt reisen und Unerwartetes entdecken.</p>
+  </footer>
+<!-- ANDROID_APP_INVITE_START -->
+<script type="application/json" id="mado-android-invite-config">{"language":"de","pageContext":"fuji_guide","assetPrefix":"../","general":false}</script>
+<!-- ANDROID_APP_INVITE_END -->
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+</body>
+</html>

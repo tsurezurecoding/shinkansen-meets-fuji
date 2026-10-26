@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>Window View Links | Shinkansen Window</title>
+  <meta name="description" content="Books, articles, blogs and videos for discovering more from the windows of the Tokaido Shinkansen.">
+  <meta name="theme-color" content="#101c2c">
+  <link rel="canonical" href="https://www.michikusa-travel.com/en/references.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/references.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/references.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/references.html">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Window View Links | Shinkansen Window">
+  <meta property="og:description" content="Books, articles, blogs and videos that make Tokaido Shinkansen window views even more rewarding.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:url" content="https://www.michikusa-travel.com/en/references.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+</head>
+<body>
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="../en/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">Discover more through the train window.</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="../en/start.html">Train Search</a><a href="../en/live/">Audio Guide</a><a href="../en/zukan.html">Field Guide</a></nav><div class="lang-switch" inert aria-hidden="true"><a href="../references.html?lang=ja">日本語</a></div></header>
+
+  <main>
+    <section class="reference-hero">
+      <p class="eyebrow">WINDOW LINKS</p>
+      <h1>Explore more from the window</h1>
+      <p>A collection of articles, blogs, books and videos for learning more about the views along the Tokaido Shinkansen.</p>
+    </section>
+
+    <section class="reference-section" aria-labelledby="linksTitle">
+      <div class="section-head">
+        <p class="eyebrow">BOOKS / ARTICLES / BLOGS</p>
+        <h2 id="linksTitle">Recommended links</h2>
+      </div>
+      <div class="reference-grid reference-grid-single">
+        <article class="reference-card">
+          <p class="reference-type">Series · Japanese</p>
+          <h3>Toyo Keizai Online: “Shinkansen Window Views Are This Fascinating”</h3>
+          <p>A series that looks beyond Mt. Fuji to introduce buildings, signs, landscapes and other sights along the Tokaido Shinkansen.</p>
+          <a href="https://toyokeizai.net/list/column/694384d86b208d3b9c000052" target="_blank" rel="noopener noreferrer">View the series</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Article · Japanese</p>
+          <h3>Weathernews: Five Places to See Mt. Fuji</h3>
+          <p>Introduces views from Shinagawa to Shin-Yokohama, Hiratsuka, the unusual left-side Fuji view, and Lake Hamana, as well as the classic Mishima–Shin-Fuji section.</p>
+          <a href="https://weathernews.jp/news/202604/240201/" target="_blank" rel="noopener noreferrer">Read the article</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Blog · Japanese</p>
+          <h3>From the Shinkansen Window</h3>
+          <p>A personal blog with an extensive record of Tokaido Shinkansen window views, useful when planning which side to sit on and where to look.</p>
+          <a href="https://cotetu.seesaa.net/" target="_blank" rel="noopener noreferrer">Visit the blog</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Blog · Japanese</p>
+          <h3>Kojodan Blog: Castles Seen from the Shinkansen</h3>
+          <p>A guide to castles visible from Shinkansen trains. It is a useful companion if you want to use castles as landmarks along the journey.</p>
+          <a href="https://blog.kojodan.jp/entry/2019/03/10/130620" target="_blank" rel="noopener noreferrer">Read the article</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Video · Japanese</p>
+          <h3>Photographing Castles from the Shinkansen</h3>
+          <p>A video that captures both the challenge and fun of photographing fleeting sights such as Odawara Castle from a moving train.</p>
+          <a href="https://www.youtube.com/watch?v=fkqSYt8XzrQ" target="_blank" rel="noopener noreferrer">Watch the video</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Blog · Japanese</p>
+          <h3>Mountain Journeys from the Window: Tokaido Shinkansen</h3>
+          <p>A record focused on mountains, including Mt. Ibuki, the Northern, Central and Southern Alps, and Mt. Fuji seen near Lake Hamana.</p>
+          <a href="https://toretabi246.blog.jp/archives/33518316.html" target="_blank" rel="noopener noreferrer">Read the article</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Book · Japanese</p>
+          <h3>The Tokaido Shinkansen Window Is This Fascinating!</h3>
+          <p>A book introducing a wide range of sights along the Tokaido Shinkansen, ideal for reading before or after your journey.</p>
+          <a href="https://www.amazon.co.jp/dp/4492046046" target="_blank" rel="noopener noreferrer">View on Amazon Japan</a>
+        </article>
+        <article class="reference-card">
+          <p class="reference-type">Book · Japanese</p>
+          <h3>A Map Book for Enjoying Tokaido Shinkansen Views 100 Times More</h3>
+          <p>A book for exploring the entire route by pairing maps with the scenery outside the train window.</p>
+          <a href="https://www.amazon.co.jp/dp/4837665039" target="_blank" rel="noopener noreferrer">View on Amazon Japan</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="reference-policy">
+      <a class="btn btn-primary" href="./">Back to Shinkansen Window</a>
+    </section>
+  </main>
+
+  <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-1"></section>
+
+  <footer class="footer" data-site-chrome-host="chrome-2"><nav data-site-chrome-fallback><a href="../en/guide.html">See Mt. Fuji</a> · <a href="../en/references.html">Window View Links</a> · <a href="../en/mieru.html">Visibility Forecast β</a></nav></footer>
+  <script src="../track.js"></script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"references.html","mounts":[{"host":"chrome-0","component":"header-references","kind":"header","currentAnchors":[{"index":10,"value":"page"}],"menu":"header-android-app-menu","menuRoute":"references.html"},{"host":"chrome-1","component":"content-references","kind":"content"},{"host":"chrome-2","component":"footer-references","kind":"footer"}]}</script>
+<script src="../site-runtime-loader.js?v=a8ffb108" defer></script>
+</body>
+</html>

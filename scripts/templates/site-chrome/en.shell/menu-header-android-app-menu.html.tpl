@@ -1,0 +1,1 @@
+<div class="lang-switch" role="group" aria-label="Language"><a href="__MADO_ROOT____MADO_MENU_ROUTE__?lang=ja">日本語</a><a class="active" href="__MADO_ROOT__en/__MADO_MENU_ROUTE__">EN</a></div>

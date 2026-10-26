@@ -13,6 +13,7 @@ import { appendArticleEditorialNote } from './shared/editorial-notes.mjs';
 import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
 import { CONTENT_METADATA, enhanceContentHead } from './shared/content-metadata.mjs';
+import { finalizeSiteChrome } from './shared/site-chrome.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
@@ -172,6 +173,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     html = html.replace(/<head[\s\S]*?<\/head>/, head => withArticleLocales(head, file, assetVersion('article-locales.js')));
     if (CONTENT_METADATA[file]) html = enhanceContentHead(html, file, root, {lang});
     html = withPageAndroidAppInvite(html,file);
+    html = finalizeSiteChrome(html,file,root);
     const dest = path.join(root, file);
     if (check) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error(`Localized article stale: ${file}`); }
     else { fs.mkdirSync(path.dirname(dest), {recursive:true}); fs.writeFileSync(dest, html); }

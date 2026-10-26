@@ -1330,17 +1330,17 @@ function annotateStarterFallbackLinks(scope = document) {
     link.append(note);
   });
 }
-function applyLang() {
-  document.documentElement.lang = lang;
-  $$("[data-i18n]").forEach((el) => {
+function applyLangTo(scope = document) {
+  const nodes = (selector) => scope.querySelectorAll(selector);
+  nodes("[data-i18n]").forEach((el) => {
     const v = MSG[lang]?.[el.dataset.i18n] ?? MSG.en[el.dataset.i18n];
     if (typeof v === "string") el.innerHTML = v;
   });
-  $$("[data-journal-close]").forEach((el) => el.setAttribute("aria-label", t("journalModalClose")));
-  COLLECTION_TOGGLES.forEach((group) => $$(group.selector).forEach((el) => el.setAttribute("aria-label", t(group.labelKey))));
-  $$(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
-  $$('[data-guide-nav]').forEach((link) => link.setAttribute("href", utilityHref("guide.html")));
-  $$('[data-contact-nav]').forEach((link) => link.setAttribute("href", utilityHref("contact.html")));
+  nodes("[data-journal-close]").forEach((el) => el.setAttribute("aria-label", t("journalModalClose")));
+  COLLECTION_TOGGLES.forEach((group) => nodes(group.selector).forEach((el) => el.setAttribute("aria-label", t(group.labelKey))));
+  nodes(".lang-switch button").forEach((b) => b.classList.toggle("active", b.dataset.lang === lang));
+  nodes('[data-guide-nav]').forEach((link) => link.setAttribute("href", utilityHref("guide.html")));
+  nodes('[data-contact-nav]').forEach((link) => link.setAttribute("href", utilityHref("contact.html")));
   if (lang !== "ja") {
     const englishRoutes = {
       "index.html": "en/",
@@ -1368,7 +1368,7 @@ function applyLang() {
       "live/": "en/live/",
       "live/index.html": "en/live/",
     };
-    $$("a[href]").forEach((link) => {
+    nodes("a[href]").forEach((link) => {
       const href = link.getAttribute("href");
       if (link.hasAttribute("hreflang") || link.closest(".article-lang-menu, .utility-lang-menu")) return;
       if (utilityLocale && lang === utilityLocale.lang) {
@@ -1376,8 +1376,14 @@ function applyLang() {
       } else if (englishRoutes[href]) link.setAttribute("href", englishRoutes[href]);
     });
   }
-  $$("[data-live-nav]").forEach((link) => link.setAttribute("href", liveMapHref()));
-  $$("[data-live-nav-link]").forEach((link) => link.setAttribute("href", liveMapHref()));
+  nodes("[data-live-nav]").forEach((link) => link.setAttribute("href", liveMapHref()));
+  nodes("[data-live-nav-link]").forEach((link) => link.setAttribute("href", liveMapHref()));
+  annotateStarterFallbackLinks(scope);
+}
+
+function applyLang() {
+  document.documentElement.lang = lang;
+  applyLangTo();
   renderMedalBoard();
   renderStampboard();
   renderGallery();
@@ -2910,6 +2916,28 @@ function bindJournalControls() {
 }
 
 /* ---------- init ---------- */
+const boundLanguageButtons = new WeakSet();
+function bindLanguageButtons() {
+  $$(".lang-switch button").forEach((button) => {
+    if (boundLanguageButtons.has(button)) return;
+    boundLanguageButtons.add(button);
+    button.addEventListener("click", () => {
+      const nextLang = button.dataset.lang;
+      if (nextLang === lang) return;
+      localStorage.setItem("mado-lang", nextLang);
+      track("language_changed", { language: nextLang });
+      location.href = localizedPageHref(nextLang);
+    });
+  });
+}
+
+function connectSharedUI() {
+  // Only late common chrome is localized. Journey selection, filters and body
+  // renderers must retain the state established by init/user interaction.
+  $$(".topbar,.footer,.content-rail-section,.spot-page-rail,.spot-page-showcase,.spot-compact-guide,.spot-reading-related").forEach((root) => applyLangTo(root));
+  bindLanguageButtons();
+}
+
 function init() {
   if ($("#heroSky")) renderHero();
   document.addEventListener("click", (event) => {
@@ -2921,13 +2949,7 @@ function init() {
       destination: link.getAttribute("href") || "",
     });
   });
-  $$(".lang-switch button").forEach((b) => b.addEventListener("click", () => {
-    const nextLang = b.dataset.lang;
-    if (nextLang === lang) return;
-    localStorage.setItem("mado-lang", nextLang);
-    track("language_changed", { language: nextLang });
-    location.href = localizedPageHref(nextLang);
-  }));
+  bindLanguageButtons();
   bindGalleryControls();
   bindTimelineControls();
   bindJournalControls();
@@ -2965,3 +2987,4 @@ function init() {
   showEnglishLandingPrompt();
 }
 document.addEventListener("DOMContentLoaded", init);
+document.addEventListener("mado:shared-ui-ready", connectSharedUI);

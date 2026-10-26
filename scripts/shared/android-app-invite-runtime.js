@@ -1,7 +1,8 @@
-/* Inlined by android-app-invite.mjs. No preview controls or install-click persistence. */
+/* Shared browser runtime. No preview controls or install-click persistence. */
 (function () {
   'use strict';
   const config = __INVITE_CONFIG__;
+  if (!config || document.getElementById('android-app-invite')) return;
   const key = 'mado-android-app-invite-v2';
   const dismissMs = config.dismissDays * 86400000;
   const pkg = 'com.michikusatravel.shinkansenwindow';
@@ -32,6 +33,10 @@
   // Availability/exclusion probes do not persist view, install, or a suppression period.
   try { if (!browser() || !window.isSecureContext || !window.IntersectionObserver) return; read(); storageReady(); }
   catch(e) { return; }
+  if (config.css && !document.getElementById('android-app-invite-style')) {
+    const style = document.createElement('style'); style.id = 'android-app-invite-style';
+    style.textContent = config.css; document.head.append(style);
+  }
   const en = config.language === 'en';
   let status = 'checking', generation = 0, localClosed = false, pageAway = false, detectionTimer, timer, frame, lastFocus, ratio = 0, viewSent = false;
   const card = document.createElement('aside'); card.id='android-app-invite';card.hidden=true;card.setAttribute('aria-labelledby','android-app-invite-title');

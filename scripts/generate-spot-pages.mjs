@@ -1,3 +1,4 @@
+import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
 import {withHomeEntry} from './shared/home-entry.mjs';
 import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
 import { tokyoSightlineHead, tokyoSightlineHTML } from './shared/tokyo-sightline.mjs';
@@ -1071,21 +1072,10 @@ function thinSpotPageHTML(spot, lang) {
   // 従属スポットの個別URLは残るが、自分自身を代表として主張しない。
   const url = pageUrl(lang, canonicalSpotId(spot));
   const prefix = lang === "ja" ? "../" : "../../";
-  // Static link graph (2026-08-17): nav / content-rail / related-spot links are
-  // baked directly into the HTML so search engines do not depend on
-  // spot-page-shared.js executing to find them. Each block carries
-  // data-spot-page-shared-static so the runtime renderer (spot-page-shared.js)
-  // knows to leave it alone instead of re-inserting an equivalent element -
-  // that is what stops these from appearing twice. Body/photos/map/timeline
-  // stay JS-rendered as before; only the link graph is affected.
-  const staticNavHTML = siteHeaderHTML(
-    lang,
-    prefix,
-    lang === "ja" ? `${spot.id}.html` : `../../spots/${spot.id}.html`,
-    lang === "ja" ? `../en/spots/${spot.id}.html` : `${spot.id}.html`,
-    { tag: "div", staticMarker: "topbar" },
-  );
-  const staticContentRailHTML = discoveryContentRailHTML(prefix, lang, { staticMarker: "content-rail" });
+  // Keep page identity and core navigation crawlable, without copying the shared
+  // header/card catalogue into every language/spot document.
+  const base = `${prefix}${lang === "en" ? "en/" : ""}`;
+  const fallbackHTML = `<main data-spot-page-fallback><h1>${escapeHTML(data.name)}</h1><p class="spot-page-lead">${escapeHTML(desc)}</p><nav aria-label="${lang === "ja" ? "車窓案内" : "Window guide"}"><a href="${base}start.html#journey">${lang === "ja" ? "列車選択" : "Train Search"}</a> · <a href="${base}live/">${lang === "ja" ? "音声ガイド" : "Audio Guide"}</a> · <a href="${base}zukan.html">${lang === "ja" ? "車窓図鑑" : "Field Guide"}</a> · <a href="${prefix}spots/${spot.id}.html?lang=ja" lang="ja">日本語</a> · <a href="${prefix}en/spots/${spot.id}.html" lang="en">English</a></nav></main>`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -1106,8 +1096,9 @@ function thinSpotPageHTML(spot, lang) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <style id="spot-page-boot-style">html { background:#faf6ef; } [data-spot-page-shared-static] { visibility:hidden; }</style>
-  <noscript><style>[data-spot-page-shared-static] { visibility:visible; }</style></noscript>
+  <style id="spot-page-boot-style">html { background:#faf6ef; } .spot-page > :not([data-spot-page-shared-module]) { visibility:hidden; } html.spot-page-loading .spot-page > *, html.spot-page-loading .spot-page > * * { visibility:hidden !important; } [data-spot-page-fallback] { max-width:52rem; margin:3rem auto; padding:0 1rem; font:1rem/1.7 system-ui,sans-serif; color:#292723; }</style>
+  <script id="spot-page-boot">(function(){var timer;function release(){window.clearTimeout(timer);document.documentElement.classList.remove('spot-page-loading');var style=document.getElementById('spot-page-boot-style');if(style)style.remove();}window.MADO_SPOT_PAGE_BOOT_RELEASE=release;document.documentElement.classList.add('spot-page-loading');timer=window.setTimeout(release,2000);}());</script>
+  <noscript><style>.spot-page > * { visibility:visible; }</style></noscript>
   ${embeddedHeadHTML(prefix)}${fujimiSightlineHead(spot, lang, prefix)}${tokyoSightlineHead(spot, lang, prefix)}${lang === "en" && spot.id === "gamagori-greenhouses" ? `\n  <link rel="stylesheet" href="${prefix}everyday-related.css?v=${assetVersion("everyday-related.css")}">` : ""}${spot.id === "fujikawa-bridge" ? `\n  <link rel="stylesheet" href="${prefix}fujikawa-frequency.css?v=${assetVersion("fujikawa-frequency.css")}">` : ""}
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>${text(title)}</title>
@@ -1127,12 +1118,11 @@ function thinSpotPageHTML(spot, lang) {
   ${analyticsSnippet()}
 </head>
 <body class="spot-page" data-spot-page-shared-lang="${escapeHTML(lang)}" data-spot-page-shared-id="${escapeHTML(spot.id)}" data-spot-page-shared-root="${escapeHTML(prefix)}" data-spot-page-shared-mode="page">
-  ${staticNavHTML}
-  <div data-spot-page-shared-module="page"></div>${fujimiSightlineHTML(spot, lang, prefix)}${tokyoSightlineHTML(spot, lang, prefix)}
-  ${lang === "en" && spot.id === "gamagori-greenhouses" ? everydayRelatedHTML("greenhouses", "../") + '\n  ' : ""}${staticContentRailHTML}
-  <script src="${prefix}spot-page-shared-data.js?v=${assetVersion("spot-page-shared-data.js")}"></script>
+  <div data-spot-page-shared-module="topbar"></div>
+  <div data-spot-page-shared-module="page">${fallbackHTML}</div>${fujimiSightlineHTML(spot, lang, prefix)}${tokyoSightlineHTML(spot, lang, prefix)}
+  ${lang === "en" && spot.id === "gamagori-greenhouses" ? everydayRelatedHTML("greenhouses", "../") + '\n  ' : ""}<div data-spot-page-shared-module="content-rail"></div>
   <script src="${prefix}${spotPagePayloadPath(spot.id, lang)}?v=${assetVersion(spotPagePayloadPath(spot.id, lang))}"></script>
-  <script src="${prefix}spot-page-loader.js?v=${assetVersion("spot-page-loader.js")}"></script>
+  <script src="${prefix}site-runtime-loader.js?v=${assetVersion("site-runtime-loader.js")}"></script>
 </body>
 </html>
 `;
@@ -1485,7 +1475,7 @@ function englishLandingHTML() {
     ["旅の瞬間を見逃さない", "Discover more through the train window."],
     ["本文へ移動", "Skip to content"],
   ];
-  let html = fs.readFileSync(path.join(appDir, "index.html"), "utf8")
+  let html = readSiteSource(appDir, "index.html")
     // This map-based entry currently has only a Japanese destination.
     .replace(/<a class="discovery-card"[^>]*data-lp-cta="scenery-card-window-trip">[\s\S]*?<\/a>/, '')
     .replace(/<script>\(function\(\)\{var p=location\.pathname[\s\S]*?<\/script>/, handoff)
@@ -1702,7 +1692,7 @@ function englishAppIndexHTML() {
     ["旅の瞬間を見逃さない", "Discover more through the train window."],
     ["本文へ移動", "Skip to content"],
   ];
-  const japaneseStart = fs.readFileSync(path.join(appDir, "start.html"), "utf8");
+  const japaneseStart = readSiteSource(appDir, "start.html");
   let html = stripJaTrainWindow(japaneseStart)
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
@@ -1989,7 +1979,12 @@ function planSpotPage(spotOrId, lang, { requireExisting = false, preserveHead = 
   return { outputPath, generatedHTML };
 }
 
+function finalPageOutput(outputPath, content) {
+  return outputPath.endsWith(".html") ? finalizeSiteChrome(content, path.relative(appDir, outputPath).replaceAll("\\", "/"), appDir) : content;
+}
+
 function writeFileIfChanged(outputPath, content) {
+  content = finalPageOutput(outputPath, content);
   if (fs.existsSync(outputPath) && fs.readFileSync(outputPath, "utf8") === content) return false;
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
   fs.writeFileSync(outputPath, content, "utf8");
@@ -2042,13 +2037,13 @@ export { sitemapXML, englishAppIndexHTML, SHARED_SPOT_LANGUAGES, SPOTS, generate
 if (isMain) {
 if (process.argv.includes("--start-only")) {
   const target = path.join(appDir, "en", "start.html");
-  const output = englishAppIndexHTML();
+  const output = finalPageOutput(target, englishAppIndexHTML());
   if (CHECK_ONLY && fs.readFileSync(target, "utf8") !== output) throw Error("English train selector is stale");
   if (!CHECK_ONLY) writeFileIfChanged(target, output);
   console.log(`${CHECK_ONLY ? "Checked" : "Generated"} English train selector only.`);
   process.exit(0);
 }
-const requestedSpotIds = process.argv.slice(2).filter((arg) => arg !== "--check");
+const requestedSpotIds = process.argv.slice(2).filter((arg) => arg !== "--check" && arg !== "--defer-manifest");
 if (requestedSpotIds.length) {
   requestedSpotIds.forEach((id) => generateSpotPage(id, "ja", { requireExisting: true, preserveHead: true }));
   console.log(`${CHECK_ONLY ? "Preflighted" : "Generated"} ${requestedSpotIds.length} requested Japanese spot pages`);
@@ -2057,11 +2052,12 @@ if (requestedSpotIds.length) {
 generateSpotPages();
 if (CHECK_ONLY) {
   const generatedEntryPages = [
-    [path.join(appDir, "start.html"), replaceTrainSelectorDiscoveryFooter(fs.readFileSync(path.join(appDir, "start.html"), "utf8"), "ja", "")],
+    [path.join(appDir, "start.html"), replaceTrainSelectorDiscoveryFooter(readSiteSource(appDir, "start.html"), "ja", "")],
     [path.join(appDir, "en", "index.html"), withAndroidAppInvite(englishLandingHTML(), "en", "landing")],
     [path.join(appDir, "en", "start.html"), englishAppIndexHTML()],
   ];
-  for (const [outputPath, generatedHTML] of generatedEntryPages) {
+  for (const [outputPath, rawHTML] of generatedEntryPages) {
+    const generatedHTML = finalPageOutput(outputPath, rawHTML);
     if (!fs.existsSync(outputPath) || fs.readFileSync(outputPath, "utf8") !== generatedHTML) {
       throw new Error(`Generated English entry page is out of date: ${outputPath}`);
     }
@@ -2070,7 +2066,7 @@ if (CHECK_ONLY) {
   process.exit(0);
 }
 
-writeFileIfChanged(path.join(appDir, "start.html"), replaceTrainSelectorDiscoveryFooter(fs.readFileSync(path.join(appDir, "start.html"), "utf8"), "ja", ""));
+writeFileIfChanged(path.join(appDir, "start.html"), replaceTrainSelectorDiscoveryFooter(readSiteSource(appDir, "start.html"), "ja", ""));
 
 fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 // The Japanese root is now an LP; en/index.html is the English explanatory LP; en/start.html is the train selector.
@@ -2078,7 +2074,7 @@ fs.mkdirSync(path.join(appDir, "en"), { recursive: true });
 await import("./generate-sanyo-discovery.mjs");
 await import("./generate-language-mirrors.mjs");
 const jaLandingPath=path.join(appDir,'index.html');
-writeFileIfChanged(jaLandingPath,withAndroidAppInvite(fs.readFileSync(jaLandingPath,'utf8'),'ja','landing'));
+writeFileIfChanged(jaLandingPath,withAndroidAppInvite(readSiteSource(appDir, 'index.html'),'ja','landing'));
 writeFileIfChanged(path.join(appDir, "en", "index.html"), withAndroidAppInvite(englishLandingHTML(),'en','landing'));
 writeFileIfChanged(path.join(appDir, "en", "start.html"), englishAppIndexHTML());
 for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
@@ -2102,7 +2098,7 @@ const guideRailConfigs = locales.coreLanguages.map(lang => ({
 for (const config of guideRailConfigs) {
   const lang = config.lang;
   const guidePath = path.join(appDir, config.path);
-  const guideHTML = fs.readFileSync(guidePath, "utf8");
+  const guideHTML = readSiteSource(appDir, config.path);
   const railLocalization = GUIDE_RAIL_LOCALIZATION[lang] || {};
   // A spot added to data.js without a localized rail name used to fall back to Japanese silently
   // (2026-09-13: ten recent spots showed Japanese in every localized guide). Fail the build instead.
@@ -2186,7 +2182,7 @@ await import("./generate-starter-locales.mjs");
 await import("./generate-guide-locale-routes.mjs");
 await import("./generate-drinks-locales.mjs");
 await import("./generate-android-app-invites.mjs");
-await import("./generate-content-manifest.mjs");
+if (!process.argv.includes("--defer-manifest")) await import("./generate-content-manifest.mjs");
 
 const generatedSpotCount = SPOTS.filter(hasGeneratedSpotPage).length;
 console.log(`Generated ${generatedSpotCount} Japanese spot pages, ${generatedSpotCount} English spot pages, /en/, sitemap.xml, and content-manifest.json`);

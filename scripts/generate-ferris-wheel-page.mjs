@@ -1,3 +1,4 @@
+import { readSiteSource } from './shared/site-chrome.mjs';
 import fs from 'node:fs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import vm from 'node:vm';
@@ -65,7 +66,7 @@ if (spots.some(s => entries.some(item => item.stampId !== 'hirakata-park-wheel' 
 
 const chunk = parts => parts.map(part => `<span class="copy-chunk">${part}</span>`).join('');
 function featureFooter(lang) {
-  const source = fs.readFileSync(path.join(root, lang === 'en' ? 'en/yakei.html' : 'yakei.html'), 'utf8');
+  const source = readSiteSource(root, lang === 'en' ? 'en/yakei.html' : 'yakei.html');
   const footer = source.match(/<footer class="footer">[\s\S]*?<\/footer>/)?.[0];
   if (!footer) throw Error('Shared footer source not found');
   return footer;

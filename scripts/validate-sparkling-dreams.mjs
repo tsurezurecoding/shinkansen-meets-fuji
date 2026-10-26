@@ -3,10 +3,13 @@ import { readFile } from "node:fs/promises";
 import { createHash } from "node:crypto";
 import vm from "node:vm";
 import { assetVersion } from "./shared/asset-version.mjs";
+import { fileURLToPath } from 'node:url';
+import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
 
 const appRoot = new URL("../", import.meta.url);
 const readAppFile = (relativePath) => readFile(new URL(relativePath, appRoot), "utf8");
 const readAppBuffer = (relativePath) => readFile(new URL(relativePath, appRoot));
+const readDeliveredPage = async relative => expandDeliveredSiteChromeHTML({ appDir: fileURLToPath(appRoot), html: await readAppFile(relative), relative });
 const failures = [];
 const PHOTO_PATH = "images/20260802_sparkling-dreams-hamanako_toshi549.jpg";
 const PHOTO_POST_URL = "https://x.com/toshi549/status/2084578030442414307";
@@ -31,13 +34,14 @@ const expect = (condition, message) => {
   if (!condition) failures.push(message);
 };
 
-const page = await readAppFile("sparkling-dreams.html");
-const englishPage = await readAppFile("en/sparkling-dreams.html");
+const rawPage = await readAppFile("sparkling-dreams.html");
+const page = expandDeliveredSiteChromeHTML({ appDir: fileURLToPath(appRoot), html: rawPage, relative: 'sparkling-dreams.html' });
+const englishPage = await readDeliveredPage("en/sparkling-dreams.html");
 const stylesheet = await readAppFile("style.css");
-const japaneseTop = await readAppFile("index.html");
-const japaneseStart = await readAppFile("start.html");
-const englishTop = await readAppFile("en/index.html");
-const englishStart = await readAppFile("en/start.html");
+const japaneseTop = await readDeliveredPage("index.html");
+const japaneseStart = await readDeliveredPage("start.html");
+const englishTop = await readDeliveredPage("en/index.html");
+const englishStart = await readDeliveredPage("en/start.html");
 
 function validateSelectorDiscoveryRail(html, lang) {
   const file = lang === "en" ? "en/start.html" : "start.html";
@@ -425,8 +429,8 @@ if (heroPhotoManifestEntry && heroPhoto) {
 }
 const pageManifestEntry = (manifest.files || []).find((entry) => entry.path === "sparkling-dreams.html");
 if (pageManifestEntry) {
-  expect(pageManifestEntry.bytes === Buffer.byteLength(page, "utf8"), "content-manifest.json: sparkling-dreams.html byte count is stale");
-  expect(pageManifestEntry.sha256 === createHash("sha256").update(page).digest("hex"), "content-manifest.json: sparkling-dreams.html SHA-256 is stale");
+  expect(pageManifestEntry.bytes === Buffer.byteLength(rawPage, "utf8"), "content-manifest.json: sparkling-dreams.html byte count is stale");
+  expect(pageManifestEntry.sha256 === createHash("sha256").update(rawPage).digest("hex"), "content-manifest.json: sparkling-dreams.html SHA-256 is stale");
 }
 for (const entry of manifest.files || []) {
   try {

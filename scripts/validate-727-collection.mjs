@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (relativePath) => fs.readFileSync(path.join(appDir, relativePath), "utf8");
@@ -129,8 +130,15 @@ assertIncludes(shared, '"東京〜新大阪の沿線、全" + count + "地点を
 assertIncludes(shared, '設置場所の全" + escapeHTML(count) + "地点を見る', "detail card copy must build its count from the shared data");
 assert.equal(sharedData.collection727Count, collection.length, "generated shared data must carry the live collection count");
 assert.ok(!shared.includes("代表地点から始めて、沿線の27地点"), "old verbose detail card must be removed");
-assertIncludes(read("spots/727-board.html"), "spot-page-loader.js", "727 board page must load shared CTA renderer");
-assertIncludes(read("spots/putiputi-sign.html"), "spot-page-loader.js", "putiputi page must load shared CTA renderer");
+for (const relative of ['spots/727-board.html', 'spots/putiputi-sign.html']) {
+  const html = read(relative);
+  assertIncludes(html, 'site-runtime-loader.js', `${relative} must load the shared CTA renderer through the common runtime`);
+  const rendered = renderSiteRuntimeForValidation({ appDir, html, relative });
+  try {
+    assert.equal(rendered.dom.window.MADO_SPOT_PAGE_RENDERED, true, `${relative}: shared CTA renderer must complete`);
+    for (const cta of ['spot_next_train', 'spot_next_live']) assert.ok(rendered.document.querySelector(`.spot-compact-guide [data-cta-id="${cta}"]`), `${relative}: rendered shared CTA is missing: ${cta}`);
+  } finally { rendered.dom.window.close(); }
+}
 
 assertIncludes(page, `全${collectableCount}地点`, `page must show the collectable total ${collectableCount}`);
 assertIncludes(shared, '"727-collection.html": { en: true }', "English switch must lead to the English collection page");

@@ -5,7 +5,8 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { spawnSync, execFileSync } from 'node:child_process';
 import { JSDOM, VirtualConsole } from 'jsdom';
-import { collectSparklingEnglish, sparklingSnapshot, SPARKLING_ROUTE, SPARKLING_LOCALES, SPARKLING_ATTRS, SPARKLING_EXCLUDE } from './shared/sparkling-localization.mjs';
+import { collectSparklingEnglish, SPARKLING_ROUTE, SPARKLING_LOCALES, SPARKLING_ATTRS, SPARKLING_EXCLUDE } from './shared/sparkling-localization.mjs';
+import { expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
 import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
@@ -19,7 +20,7 @@ const keys=collectSparklingEnglish(root),editions=['ja','en',...SPARKLING_LOCALE
 const counts={pages:0,calculations:0,renderStates:0,media:0};
 const missing=[...SPARKLING_LOCALES.flatMap(lang=>[`${lang}/${SPARKLING_ROUTE}`,`${lang}/sparkling-data.js`,`scripts/locales/sparkling-${lang}.json`]),'sparkling-locale-runtime.js'].filter(file=>!fs.existsSync(path.join(root,file)));
 if(missing.length){console.error('Disney locales: missing outputs: '+missing.join(', '));process.exit(1);}
-function domFor(lang){const file=(lang==='ja'?'':lang+'/')+SPARKLING_ROUTE;const console=new VirtualConsole();console.on('jsdomError',error=>errors.push(`${file}: runtime ${error.message}`));return new JSDOM(read(file),{url:`${origin}/${file}`,runScripts:'outside-only',virtualConsole:console});}
+function domFor(lang){const file=(lang==='ja'?'':lang+'/')+SPARKLING_ROUTE;const console=new VirtualConsole();console.on('jsdomError',error=>errors.push(`${file}: runtime ${error.message}`));const html=expandDeliveredSiteChromeHTML({appDir:root,html:read(file),relative:file});return new JSDOM(html,{url:`${origin}/${file}`,runScripts:'outside-only',virtualConsole:console});}
 function calculator(source){const context={};context.window=context;vm.createContext(context);vm.runInContext(read('data/timetable.js'),context);vm.runInContext(dataScript(),context);vm.runInContext(read('train-select.js'),context);vm.runInContext(source,context);return context.SPARKLING_DREAMS_CALCULATOR;}
 const baseline=calculator(execFileSync('git',['show','HEAD:sparkling-dreams.js'],{cwd:root,encoding:'utf8'}));
 const current=calculator(read('sparkling-dreams.js'));
@@ -34,7 +35,7 @@ for(const status of ['self-match','encounter','no-encounter'])if(!renderedResult
  const timetableContext={window:{}};vm.runInNewContext(read('data/timetable.js'),timetableContext);
  for(const train of timetableContext.window.SHINKANSEN_TIMETABLE.trains.filter(train=>train.direction===direction)){const result=current.calculate(date,direction,current.serviceKey(train));if(result.status===status){renderedResults.set(status,result);break;}}
 }
-const source=sparklingSnapshot(root),sourceDoc=source.window.document;
+const source=renderSiteRuntimeForValidation({appDir:root,html:read('en/'+SPARKLING_ROUTE),relative:'en/'+SPARKLING_ROUTE}).dom,sourceDoc=source.window.document;
 const sources=doc=>[...doc.querySelectorAll('img[src],iframe[src],video[src],source[src]')].map(el=>[el.tagName,new URL(el.getAttribute('src'),doc.baseURI).href,el.tagName==='IFRAME'?el.title:'']);
 const credits=doc=>[...doc.querySelectorAll('.sd-post-credit,figcaption,.show-credit,blockquote')].map(el=>[normal(el.textContent),[...el.querySelectorAll('a[href]')].map(a=>a.href)]);
 for(const lang of editions){

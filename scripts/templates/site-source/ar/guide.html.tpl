@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>متى ترى جبل فوجي من الشينكانسن؟ أوقات المرور حسب القطار ومناظر النافذة</title>
+  <meta name="description" content="اختر تاريخ الرحلة والقطار لمعرفة موعد مرور قطارك بجبل فوجي وبمعالم أخرى، مثل القلاع والبحيرات واللافتات. نوضح مناظر المقعدين E وA، وما يمكن رؤيته في الأيام الغائمة والرحلات الليلية.">
+  <link rel="canonical" href="https://www.michikusa-travel.com/ar/guide.html">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <meta property="og:title" content="متى ترى جبل فوجي من الشينكانسن؟ أوقات المرور حسب القطار ومناظر النافذة">
+  <meta property="og:description" content="اختر تاريخ الرحلة والقطار لمعرفة موعد مرور قطارك بجبل فوجي وبمعالم أخرى، مثل القلاع والبحيرات واللافتات. نوضح مناظر المقعدين E وA، وما يمكن رؤيته في الأيام الغائمة والرحلات الليلية.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/ar/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="متى ترى جبل فوجي من الشينكانسن؟ أوقات المرور حسب القطار ومناظر النافذة">
+  <meta name="twitter:description" content="اختر تاريخ الرحلة والقطار لمعرفة موعد مرور قطارك بجبل فوجي وبمعالم أخرى، مثل القلاع والبحيرات واللافتات. نوضح مناظر المقعدين E وA، وما يمكن رؤيته في الأيام الغائمة والرحلات الليلية.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","url":"https://www.michikusa-travel.com/ar/guide.html","name":"متى ترى جبل فوجي من الشينكانسن؟ أوقات المرور حسب القطار ومناظر النافذة","description":"اختر تاريخ الرحلة والقطار لمعرفة موعد مرور قطارك بجبل فوجي وبمعالم أخرى، مثل القلاع والبحيرات واللافتات. نوضح مناظر المقعدين E وA، وما يمكن رؤيته في الأيام الغائمة والرحلات الليلية.","inLanguage":"ar"}</script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+<link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/guide.html">
+<link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/guide.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="https://www.michikusa-travel.com/zh-Hant/guide.html">
+<link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/guide.html">
+<link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/guide.html">
+<link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/guide.html">
+<link rel="alternate" hreflang="zh-Hans-CN" href="https://www.michikusa-travel.com/zh-Hans/guide.html">
+<link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/guide.html">
+<link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/guide.html">
+<link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/guide.html">
+<link rel="alternate" hreflang="ar" href="https://www.michikusa-travel.com/ar/guide.html">
+<link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/guide.html">
+</head>
+<body class="spot-page guide-page-ar">
+  <header class="topbar"><a class="brand" href="../en/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">لا تفوّت لحظة الرحلة</small></span></a>
+    <details class="guide-lang-menu"><summary aria-label="اختر اللغة">العربية</summary><div class="guide-lang-options">
+        <a href="../guide.html?lang=ja">日本語</a><a href="../en/guide.html">English</a><a href="../zh-Hant/guide.html">繁體中文</a><a href="../fr/guide.html">Français</a><a href="../de/guide.html">Deutsch</a><a href="../es/guide.html">Español</a><a href="../zh-Hans/guide.html">简体中文</a><a href="../ko/guide.html">한국어</a><a href="../it/guide.html">Italiano</a><a href="../th/guide.html">ไทย</a><a href="../ar/guide.html" aria-current="page">العربية</a>
+      </div></details>
+  </header>
+  <main><section class="collection-hero guide-fuji-hero" id="top" aria-labelledby="guideHeroTitle">
+    <div class="collection-hero-tiles" aria-hidden="true">
+      <img src="../images/20240211_fuji_michikusa.jpg" alt="">
+      <img src="../images/20240114_sagami_fuji_odawara_michikusa.jpg" alt="">
+      <img src="../images/20260903_fuji_paper_mills_fuji_michikusa.jpg" alt="">
+      <img src="../images/20220205_fujikawa_bridge_michikusa.jpg" alt="">
+      <img src="../images/20260530_sagami_fuji_hiratsuka_michikusa.jpg" alt="">
+      <img src="../images/20260903_fujipipe_fuji_michikusa.jpg" alt="">
+      <img src="../images/20260530_fujikawa_bridge_2_michikusa.jpg" alt="">
+      <img src="../images/20260816_fuji_paper_mills_michikusa.jpg" alt="">
+      <img src="../images/20260530_sagami_fuji_samukawa_michikusa.jpg" alt="">
+      <img src="../images/20260903_fuji_beyond_factory_smoke_michikusa.jpg" alt="">
+    </div>
+    <div class="collection-hero-inner">
+      <p class="eyebrow">MT. FUJI WINDOW</p>
+      <h1 id="guideHeroTitle">رؤية جبل فوجي من الشينكانسن</h1>
+      <p class="collection-hero-lead">لا يظهر جبل فوجي مرة واحدة فقط.</p>
+      <p class="collection-hero-note">خلف سهل ساغامي، ووراء مداخن مصانع الورق، وفوق الأقواس البيضاء لجسر نهر فوجي، ثم للحظة في النافذة اليسرى. بين طوكيو وشين-أوساكا يظهر الجبل في خمسة مقاطع، ولكل منها مشهد مختلف.</p>
+      <div class="collection-hero-actions">
+        <a class="btn btn-primary" href="#chances">شاهد المقاطع الخمسة</a>
+        <a class="btn btn-ghost" href="../en/start.html#journey">أوقات قطارك — باللغة الإنجليزية</a>
+        <a class="btn btn-ghost" href="../en/mieru.html">هل يُرى فوجي اليوم؟ — باللغة الإنجليزية</a>
+      </div>
+    </div>
+  </section>
+  <article class="spot-page-article ar-guide-copy">
+    <section class="spot-page-section guide-feature-section" id="chances"><div class="section-head"><p class="eyebrow">FIVE VIEWS</p><h2>يظهر جبل فوجي في النافذة على امتداد خمسة مقاطع</h2></div>
+      <p class="guide-fuji-answer"><strong>أي جانب؟</strong> في الاتجاه إلى كيوتو يكون الجبل على <strong>اليمين</strong>، وفي الاتجاه إلى طوكيو على <strong>اليسار</strong>. وفي الحالتين اختر المقعد <bdi dir="ltr">E</bdi> (في <bdi dir="ltr">Green Car</bdi> المقعد <bdi dir="ltr">D</bdi>). أكبر وأطول مشهد بين ميشيما ونهر فوجي: بعد نحو <bdi dir="ltr">43–47 min</bdi> من طوكيو في قطار <bdi dir="ltr">Nozomi</bdi>، ونحو <bdi dir="ltr">1h40</bdi> من شين-أوساكا (<bdi dir="ltr">1h25</bdi> من كيوتو)، ويملأ الجبل النافذة لثلاث إلى أربع دقائق. أفضل الفرص صباحات الشتاء الصافية.</p>
+      <p>وليس هذا المقطع الوحيد: فوجي فوق سهل ساغامي، و«فوجي على اليسار» القصير من جهة المقعد <bdi dir="ltr">A</bdi>، وفوجي صغير بعيد من وسط طوكيو ومن وراء بحيرة هامانا.</p>
+      <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="المقطعان الكبيران لجبل فوجي">
+      <a class="guide-visual-card" href="../en/spots/sagami-fuji.html"><img loading="lazy" decoding="async" src="../images/thumbs/20240114_sagami_fuji_odawara_michikusa.webp" alt="جبل فوجي خلف سهل ساغامي"><span><bdi dir="ltr">~25–27 min · Seat E</bdi></span><strong>فوجي فوق سهل ساغامي — باللغة الإنجليزية</strong><em>الجبل كاملًا خلف السهل وسلاسل تانزاوا. نحو دقيقة، وأوضح ما يكون في صباحات الشتاء.</em></a>
+      <a class="guide-visual-card" href="../en/spots/fuji.html"><img loading="lazy" decoding="async" src="../images/thumbs/20240211_fuji_michikusa.webp" alt="جبل فوجي المكسو بالثلج يملأ النافذة من المقعد E"><span><bdi dir="ltr">~43–47 min · Seat E</bdi></span><strong>من ميشيما إلى نهر فوجي — باللغة الإنجليزية</strong><em>الأقرب والأطول: نحو ثلاث دقائق ونصف والنافذة ممتلئة، بينما يتغير المشهد الأمامي فقط.</em></a>
+      </div>
+      <div class="guide-visual-grid guide-photo-strip" aria-label="مقاطع قصيرة وبعيدة ومن الجهة المقابلة">
+      <a class="guide-visual-card" href="../en/spots/left-fuji.html"><img loading="lazy" decoding="async" src="../images/thumbs/20240410_left_fuji_earlyretiremile.webp" alt="فوجي على اليسار من جهة المقعد A"><span><bdi dir="ltr">~54 min · Seat A</bdi></span><strong>فوجي على اليسار — باللغة الإنجليزية</strong><em>لبضع ثوانٍ ينتقل الجبل إلى النافذة المقابلة. قدّره مسافرو عصر إيدو أيضًا.</em></a>
+      <a class="guide-visual-card" href="../en/spots/ota-fuji.html"><img loading="lazy" decoding="async" src="../images/thumbs/20260509_ota_fuji_t_yangyang.webp" alt="جبل فوجي صغير خلف مدينة طوكيو"><span><bdi dir="ltr">~10 min · Seat E</bdi></span><strong>فوجي من وسط طوكيو — باللغة الإنجليزية</strong><em>صغير خلف المدينة بعد شيناغاوا مباشرة: أول إشارة في الرحلة. صورة <bdi dir="ltr">@T_Yangyang</bdi></em></a>
+      <a class="guide-visual-card" href="../en/spots/hamanako.html#hamanako-fuji"><img loading="lazy" decoding="async" src="../images/thumbs/250111_hamanako_fuji_proboffin.webp" alt="جبل فوجي صغير جدًا وراء بحيرة هامانا"><span><bdi dir="ltr">~73 min · Seat E</bdi></span><strong>فوجي وراء بحيرة هامانا — باللغة الإنجليزية</strong><em>صغير جدًا عبر البحيرة: نظرة أخيرة إلى الوراء بعد تجاوز الجبل. صورة <bdi dir="ltr">@ProBoffin</bdi></em></a>
+      </div>
+    </section>
+    <section class="spot-page-section guide-feature-section" id="closeup"><div class="section-head"><p class="eyebrow">FOREGROUNDS</p><h2>في أطول مقطع يتغير المشهد الأمامي باستمرار</h2></div>
+      <p><strong>من ميشيما إلى نهر فوجي لا يظهر الجبل ويختفي، بل يبقى في النافذة نحو أربع دقائق.</strong> ما يتحرك هو المشهد الأمامي: المدينة، ثم مداخن حمراء وبيضاء، ثم النهر وصف من الأقواس البيضاء. الصورتان أدناه للجبل نفسه خلف مشاهد أمامية مختلفة، وكلتاهما من جهة المقعد <bdi dir="ltr">E</bdi>.</p>
+      <div class="guide-visual-grid guide-photo-strip guide-photo-strip-compact" aria-label="الجبل نفسه خلف مشاهد أمامية مختلفة">
+      <a class="guide-visual-card" href="../en/spots/fuji-paper-mills.html"><img loading="lazy" decoding="async" src="../images/thumbs/20241129_fuji_paper_mills_OliverinJapan.webp" alt="مداخن حمراء وبيضاء أمام جبل فوجي عند مصانع الورق"><span><bdi dir="ltr">~44 min · Seat E</bdi></span><strong>خلف المداخن — باللغة الإنجليزية</strong><em>يبقى الجبل مالئًا النافذة بينما تدخل مداخن المصنع الحمراء والبيضاء إلى المشهد. صورة <bdi dir="ltr">@OliverinJapan</bdi></em></a>
+      <a class="guide-visual-card" href="../en/spots/fujikawa-bridge.html"><img loading="lazy" decoding="async" src="../images/thumbs/20220205_fujikawa_bridge_michikusa.webp" alt="جبل فوجي المكسو بالثلج خلف الأقواس البيضاء للجسر"><span><bdi dir="ltr">~47 min · Seat E</bdi></span><strong>فوق الأقواس البيضاء — باللغة الإنجليزية</strong><em>الخاتمة: النهر وعشرة أقواس بيضاء والجبل في إطار واحد. أجمل ما يكون من الشتاء إلى أوائل الربيع.</em></a>
+      </div>
+    </section>
+    <section class="spot-page-section guide-feature-section" id="faces"><div class="section-head"><p class="eyebrow">SEASONS &amp; HOURS</p><h2>الجبل نفسه يتبدل مع الفصول وساعات النهار</h2></div>
+      <p><strong>حتى من النافذة نفسها يتغير جبل فوجي مع الفصل ووقت اليوم.</strong> يغطيه الثلج من أواخر الخريف حتى أوائل الصيف. في الصيف يكون بلا ثلج ويذوب في السماء، وعند الغروب لا يبقى إلا خط قمته.</p>
+      <div class="guide-visual-grid guide-photo-strip" aria-label="جبل فوجي بحسب الفصل ووقت اليوم">
+      <a class="guide-visual-card" href="../en/spots/fuji.html"><img loading="lazy" decoding="async" src="../images/thumbs/20260616_fuji_sttraveler.webp" alt="جبل فوجي خلف حقول الأرز الخضراء في أوائل الصيف"><strong>أوائل الصيف · حقول الأرز الخضراء — باللغة الإنجليزية</strong><em>في يونيو يبلغ التباين بين الأرز الأخضر والجبل ذروته. صورة <bdi dir="ltr">@STTraveler</bdi></em></a>
+      <a class="guide-visual-card" href="../en/spots/fuji.html"><img loading="lazy" decoding="async" src="../images/thumbs/20230913_fuji_michikusa.webp" alt="جبل فوجي بلا ثلج فوق حقول ذهبية في سبتمبر"><strong>أوائل الخريف · بلا ثلج — باللغة الإنجليزية</strong><em>في سبتمبر يبدو فوجي بلا ثلج فوق الحقول الذهبية جبلًا آخر.</em></a>
+        <div class="guide-visual-cell">
+      <a class="guide-visual-card" href="../en/spots/fuji-paper-mills.html"><img loading="lazy" decoding="async" src="../images/thumbs/20260529_fuji_paper_mills_kamiyu_g1x_mk2.webp" alt="جبل فوجي عند الغروب خلف أضواء مصانع الورق"><strong>الغروب · مع أضواء المصنع — باللغة الإنجليزية</strong><em>قرب الغروب يجتمع خط القمة وأضواء مصانع الورق في إطار واحد.</em></a>
+          <p class="guide-photo-source">صورة: <a href="https://x.com/kamiyu_G1X_Mk2/status/2060329644491223354" rel="noopener" target="_blank">المنشور الأصلي لـ <bdi dir="ltr">@kamiyu_G1X_Mk2</bdi></a></p>
+        </div>
+      </div>
+    </section>
+    <section class="spot-page-section guide-feature-section" id="cloudy"><div class="section-head"><p class="eyebrow">CLOUDY DAYS</p><h2>يوم غائم؟ انظر إلى ما يقف أمام جبل فوجي</h2></div>
+      <p><strong>يختفي جبل فوجي خلف الضباب أو الغيوم في نحو نصف أيام السنة.</strong> الغيوم المنخفضة تطمس الجبال البعيدة والمناظر الواسعة أيضًا، لكن المناظر القريبة من السكة تحتفظ بملامحها. <strong>في الدقيقة التي كنت ستبحث فيها عن فوجي، انظر إلى المشهد الأمامي.</strong> لثلاثة من المقاطع الخمسة مشهد أمامي لا يحتاج إلى سماء صافية.</p>
+      <div class="guide-visual-grid guide-photo-strip" aria-label="مشاهد أمامية للأيام الغائمة">
+      <a class="guide-visual-card" href="../en/spots/hinataoka.html"><img loading="lazy" decoding="async" src="../images/thumbs/20260530_hinataoka.webp" alt="الأسقف الملونة لمنازل هيناتاوكا على التل"><span><bdi dir="ltr">~27 min · Seat E</bdi></span><strong>مقدمة المقطع 1 · هيناتاوكا — باللغة الإنجليزية</strong><em>حتى إن اختفى فوجي فوق السهل تبقى الأسقف الملونة على التل.</em></a>
+      <a class="guide-visual-card" href="../en/spots/fuji-paper-mills.html"><img loading="lazy" decoding="async" src="../images/thumbs/20260816_fuji_paper_mills_michikusa.webp" alt="مداخن مصانع الورق تحت سماء غائمة"><span><bdi dir="ltr">~44 min · Seat E</bdi></span><strong>مقدمة المقطع 2 · مصانع الورق في فوجي — باللغة الإنجليزية</strong><em>في الأيام الصافية تؤطر الجبل، وفي الأيام الرمادية تتصدر المداخن والمصانع المشهد.</em></a>
+      <a class="guide-visual-card" href="../en/spots/hamanako.html"><img loading="lazy" decoding="async" src="../images/thumbs/20260530_hamanako.webp" alt="بحيرة هامانا من المقعد E"><span><bdi dir="ltr">~73 min · Seat E</bdi></span><strong>مقدمة المقطع 5 · بحيرة هامانا — باللغة الإنجليزية</strong><em>عندما يختفي فوجي البعيد تبقى البحيرة، والسماء الرمادية تعمّق لون الماء.</em></a>
+      </div>
+      <p>المقطعان 3 (فوجي على اليسار) و4 (وسط طوكيو) قصيران أو يحتاجان إلى هواء صافٍ جدًا، فلا تعوّل عليهما في الطقس الغائم. بعيدًا عن فوجي تبقى مناظر لا تتأثر بالطقس مثل <a href="../en/spots/kakegawa.html">قلعة كاكيغاوا — باللغة الإنجليزية</a> قرب المحطة: <a href="../en/zukan.html"><strong>تصفح كل مناظر النافذة — باللغة الإنجليزية</strong></a>.</p>
+      <p style="margin-bottom:0"><strong>قطارات الليل لا تُظهر جبل فوجي.</strong> إن مررت بين ميشيما وشين-فوجي بعد الغروب، <a href="../en/yakei.html">اعرف متى يحل الظلام وما الذي يُضاء في دليل المناظر الليلية — باللغة الإنجليزية</a>.</p>
+    </section>
+    <section class="spot-page-section guide-feature-section" id="seat"><div class="section-head"><p class="eyebrow">SEAT E</p><h2>احجز المقعد <bdi dir="ltr">E</bdi> في ثلاث خطوات</h2></div><ol><li>اختر أي قطار: تمر قطارات <bdi dir="ltr">Nozomi</bdi> و<bdi dir="ltr">Hikari</bdi> و<bdi dir="ltr">Kodama</bdi> بجبل فوجي بالطريقة نفسها.</li><li>اختر <bdi dir="ltr">E</bdi> على خريطة المقاعد؛ فهو مقعد النافذة في صف المقعدين، ويواجه جبل فوجي في الاتجاهين.</li><li>إن لم يتوافر المقعد <bdi dir="ltr">E</bdi>، لا تعطل الممر بحثًا عن نافذة أخرى. جرّب «فوجي على اليسار» من المقعد <bdi dir="ltr">A</bdi> أو بحيرة هامانا التي تُرى من الجانبين.</li></ol></section>
+  </article></main>
+  <footer class="footer"><p class="footer-brand">Shinkansen Window <span>لا تفوّت لحظة الرحلة</span></p><p>الأوقات تقديرية وقد تختلف باختلاف القطار والطقس والمقعد.</p><p class="footer-links"><a href="guide.html">رؤية جبل فوجي</a> · <a href="../en/references.html">المراجع — باللغة الإنجليزية</a> · <a href="../en/privacy.html">الخصوصية — باللغة الإنجليزية</a></p></footer>
+</body></html>

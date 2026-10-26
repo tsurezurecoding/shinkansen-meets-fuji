@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <script src="locales.js?v=6585facb"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <script src="language-router.js?v=ff60751b"></script>
+  <link rel="canonical" href="https://www.michikusa-travel.com/journal.html">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/journal.html">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/journal.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/journal.html">
+  <title>新幹線のデジタル車窓スタンプ｜景色を集めるスタンプ帖</title>
+  <meta name="description" content="駅スタンプを集めるように、東海道新幹線の車窓で見つけた富士山、城、看板をデジタルスタンプで記録。子連れ旅行では、親子で景色を探す車窓ゲームとして楽しめます。">
+  <meta name="theme-color" content="#101c2c">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="新幹線のデジタル車窓スタンプ｜景色を集めるスタンプ帖">
+  <meta property="og:description" content="駅スタンプを集めるように、東海道新幹線の車窓で見つけた富士山、城、看板をデジタルスタンプで記録。子連れ旅行では、親子で景色を探す車窓ゲームとして楽しめます。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-journal.png">
+  <meta property="og:url" content="https://www.michikusa-travel.com/journal.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="新幹線のデジタル車窓スタンプ｜景色を集めるスタンプ帖">
+  <meta name="twitter:description" content="駅スタンプを集めるように、東海道新幹線の車窓で見つけた富士山、城、看板をデジタルスタンプで記録。子連れ旅行では、親子で景色を探す車窓ゲームとして楽しめます。">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-journal.png">
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=5f3f6183">
+  <script defer src="utility-locales.js?v=4f2b7fba"></script>
+  <link rel="stylesheet" href="utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/journal.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/journal.html">
+  <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/journal.html">
+  <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/journal.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/journal.html">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/journal.html">
+</head>
+<body class="journal-page">
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name" data-i18n="brandName">新幹線の窓</span><small class="brand-sub" data-i18n="brandSub">旅の瞬間を見逃さない</small></span></a><nav class="top-nav" aria-label="Primary" data-site-chrome-fallback><a href="start.html" data-i18n="navStart">列車選択</a><a href="live/" data-i18n="navLive">音声ガイド</a><a href="zukan.html" data-i18n="navFeatures" data-cta-track="header_nav_click" data-cta-id="nav_features">車窓図鑑</a></nav><div class="lang-switch" inert aria-hidden="true"><button type="button" data-lang="ja">日本語</button></div></header>
+
+  <main>
+    <section class="journal-hero" aria-labelledby="journalHeroTitle">
+      <div class="journal-hero-inner">
+        <p class="journal-hero-eyebrow" data-i18n="journalHeroEyebrow">TOKAIDO SHINKANSEN WINDOW STAMPS</p>
+        <h1 id="journalHeroTitle" data-i18n="journalHeroTitle"><span class="copy-chunk">見つけた車窓を、</span><span class="copy-chunk">デジタルスタンプに</span></h1>
+        <p class="journal-hero-lead" data-i18n="journalHeroLead"><span class="copy-chunk">駅スタンプを集めるように、</span><span class="copy-chunk">富士山、城、湖、看板など、</span><span class="copy-chunk">東海道新幹線の車窓を</span><span class="copy-chunk">デジタルスタンプに。</span><span class="copy-chunk">親子の景色探しにも、</span><span class="copy-chunk">一人旅の記録にも。</span></p>
+        <div class="journal-hero-actions">
+          <a class="btn btn-primary" href="start.html#journey" data-cta-track="journal_train_search_click" data-cta-id="journal-hero-train-search" data-i18n="journalHeroPrimary">乗る列車でガイドをつくる</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="#quick-intro" data-cta-track="quick_intro_click" data-cta-id="journal-hero-quick-intro" data-i18n="ctaQuick">新幹線の窓とは？</a>
+          <a class="btn btn-ghost journal-hero-secondary" href="#memories" data-cta-track="journal_stamp_board_click" data-cta-id="journal-hero-stamp-board" data-i18n="journalHeroSecondary">スタンプを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section journal-how" aria-labelledby="journalHowTitle">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="journalHowEyebrow">HOW IT WORKS</p>
+        <h2 id="journalHowTitle" data-i18n="journalHowTitle"><span class="copy-chunk">見つけて、記録して、</span><span class="copy-chunk">車窓の旅を育てる</span></h2>
+        <p class="section-sub" data-i18n="journalHowSub">乗る前に次の景色を知り、乗車中に見つけたら記録します。</p>
+      </div>
+      <div class="journal-step-grid">
+        <article class="journal-step">
+          <span class="journal-step-number" aria-hidden="true">01</span>
+          <h3 data-i18n="journalStep1Title">列車と次の景色を選ぶ</h3>
+          <p data-i18n="journalStep1Body">列車を選ぶと、進行方向に合わせた車窓タイムラインが開きます。</p>
+        </article>
+        <article class="journal-step">
+          <span class="journal-step-number" aria-hidden="true">02</span>
+          <h3 data-i18n="journalStep2Title">見つけたら、チェックして記録</h3>
+          <p data-i18n="journalStep2Body">窓の外でスポットを見つけたら、スタンプを押して記録します。</p>
+        </article>
+        <article class="journal-step">
+          <span class="journal-step-number" aria-hidden="true">03</span>
+          <h3 data-i18n="journalStep3Title">スタンプを集め、メダルを育てる</h3>
+          <p data-i18n="journalStep3Body">記録した景色がスタンプ盤に残り、シリーズごとのメダルが育ちます。</p>
+        </article>
+      </div>
+      <div class="journal-how-actions">
+        <a class="inline-cta" href="#stampboard" data-cta-track="journal_stamp_board_click" data-cta-id="journal-howto-stamp-board"><span data-i18n="journalHowCta">スタンプ盤を見る</span><span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="section journal-board-section" id="memories">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="memEyebrow">YOUR WINDOW STAMP JOURNAL</p>
+        <h2 data-i18n="memTitle">車窓スタンプとメダル</h2>
+        <p class="section-sub" data-i18n="memSub">見つけた景色を記録して、旅の進み具合を眺めます。</p>
+        <p class="journal-intro" data-i18n="journalIntro">見つけた景色を、車窓スタンプとして残せます。メダルを選ぶと、対象の景色と記録状況を確認できます。</p>
+        <p class="journal-intro" id="journal-save-help">次に見たい景色は、<a href="zukan.html#gallery">車窓一覧</a>の★でお気に入りに。実際に見つけた景色は、スタンプで記録できます。</p>
+        <p class="journal-intro" id="journal-storage-help">お気に入りとスタンプは、このブラウザに保存されます。Androidアプリではアプリ内に保存され、ブラウザや別の端末とは自動で共有されません。</p>
+      </div>
+      <div class="medal-board" id="medalBoard" aria-live="polite"></div>
+      <h3 class="stamp-heading" data-i18n="stampHeading">すべてのスタンプ</h3>
+      <div class="stampboard" id="stampboard"></div>
+      <aside class="journal-collection-callout">
+        <div>
+          <p class="eyebrow">727 COLLECTION</p>
+          <h3>727看板を集める</h3>
+          <p>沿線の個別地点と段階メダルは、専用ページでまとめて記録できます。</p>
+        </div>
+        <a class="inline-cta" href="727-collection.html">727看板コレクションを見る<span aria-hidden="true">→</span></a>
+      </aside>
+      <aside class="journal-collection-callout">
+        <div>
+          <p class="eyebrow">FERRIS WHEELS</p>
+          <h3>車窓の観覧車を集める</h3>
+          <p><span class="copy-chunk">沿線の小さな輪を、</span><span class="copy-chunk">専用の図鑑で探せます。</span></p>
+        </div>
+        <a class="inline-cta" href="ferris-wheels.html">観覧車コレクションを見る<span aria-hidden="true">→</span></a>
+      </aside>
+      <p class="journal-intro" id="journal-reset-help">リセットすると、スタンプとお気に入りが両方消えます。</p>
+      <div class="mem-actions">
+        <button type="button" class="btn btn-ghost btn-small" id="resetBtn" data-i18n="btnReset">スタンプをリセット</button>
+      </div>
+    </section>
+
+    <section class="journal-afterboard" aria-labelledby="journalUsesTitle">
+      <div class="section-head">
+        <p class="eyebrow" data-i18n="journalUsesEyebrow">FIND YOUR WAY TO COLLECT</p>
+        <h2 id="journalUsesTitle" data-i18n="journalUsesTitle"><span class="copy-chunk">このスタンプ帖を、</span><span class="copy-chunk">こんな旅に</span></h2>
+      </div>
+      <div class="journal-use-grid">
+        <article class="journal-use-card">
+          <span class="journal-use-number" aria-hidden="true">01</span>
+          <h3 data-i18n="journalFamilyTitle"><span class="copy-chunk">子連れなら、</span><span class="copy-chunk">車窓ゲームに</span></h3>
+          <p data-i18n="journalFamilyBody">「次は何が見える？」を親子で探して、見つけた景色を一緒に記録できます。</p>
+        </article>
+        <article class="journal-use-card">
+          <span class="journal-use-number" aria-hidden="true">02</span>
+          <h3 data-i18n="journalSoloTitle"><span class="copy-chunk">一人旅なら、</span><span class="copy-chunk">旅の記録に</span></h3>
+          <p data-i18n="journalSoloBody">移動中に出会った富士山や城、湖を、自分のペースで残せます。</p>
+        </article>
+        <article class="journal-use-card">
+          <span class="journal-use-number" aria-hidden="true">03</span>
+          <h3 data-i18n="journalStationTitle"><span class="copy-chunk">駅スタンプ好きなら、</span><span class="copy-chunk">車窓コレクションに</span></h3>
+          <p data-i18n="journalStationBody">駅で押すスタンプとは別の楽しみとして、乗車中に景色を集める感覚で使えます。</p>
+        </article>
+      </div>
+      <div class="journal-after-actions">
+        <a class="inline-cta journal-zukan-cta" href="zukan.html" data-cta-track="journal_zukan_click" data-cta-id="journal-use-cases-zukan"><span data-i18n="journalZukanCta">車窓図鑑で、見つける景色を見る</span><span aria-hidden="true">→</span></a>
+      </div>
+      <div class="journal-official" aria-labelledby="journalOfficialTitle">
+        <div>
+          <p class="eyebrow" data-i18n="journalOfficialEyebrow">A COMPLEMENTARY GAME</p>
+          <h2 id="journalOfficialTitle" data-i18n="journalOfficialTitle"><span class="copy-chunk">子ども向けの、</span><span class="copy-chunk">しんかんせんであそぼ！</span></h2>
+        </div>
+        <div class="journal-official-copy">
+          <p data-i18n="journalOfficialBody">画面の中でも新幹線を楽しみたいときは、JR東海公式「しんかんせんであそぼ！」へ。動物探しやパズルなど、子ども向けのゲームで遊べます。「新幹線の窓」は、実際に乗って窓の外を探すゲームとして一緒に楽しめます。</p>
+          <a class="inline-cta" href="https://shinkansen.travel/have-fun/index.html" target="_blank" rel="noopener" data-cta-track="journal_official_game_click" data-cta-id="journal-official-game"><span data-i18n="journalOfficialCta">公式サイトで遊ぶ</span><span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="journal-modal" id="journalModal" hidden>
+    <button type="button" class="journal-modal-backdrop" data-journal-close aria-label="閉じる"></button>
+    <section class="journal-modal-panel" role="dialog" aria-modal="true" aria-labelledby="journalModalTitle">
+      <button type="button" class="journal-modal-close" data-journal-close aria-label="閉じる">×</button>
+      <div class="journal-modal-content" id="journalModalContent"></div>
+    </section>
+  </div>
+  <section class="content-rail-section" aria-labelledby="contentRailTitle" data-site-chrome-host="chrome-1"></section>
+
+  <footer class="footer">
+    <p class="footer-brand"><span data-i18n="brandName">新幹線の窓</span> <span data-i18n="brandSub">旅の瞬間を見逃さない</span></p>
+    <p data-i18n="footerNote">時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。</p>
+    <p class="footer-links"><a href="guide.html" data-guide-nav data-i18n="footerGuide">富士山の見方</a> · <a href="references.html" data-i18n="footerReferences">車窓リンク集</a> · <a href="contact.html" data-contact-nav data-i18n="footerContact">お問い合わせ</a> · <a href="privacy.html" data-i18n="footerPrivacy">プライバシーポリシー</a></p>
+    <p class="footer-credit" data-i18n="footerCredit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
+  </footer>
+
+  <script src="data/timetable.js?v=89e78630"></script>
+  <script src="data-runtime.js?v=624b9863"></script>
+  <script src="track.js?v=fa004fe2"></script>
+  <script src="spot-map.js?v=1ed79613"></script>
+  <script src="train-select.js?v=88f5b2d7"></script>
+  <script src="app.js?v=6415fc4a"></script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"","lang":"ja","route":"journal.html","mounts":[{"host":"chrome-0","component":"header-start","kind":"header","currentAnchors":[{"index":4,"value":"page"}],"menu":"header-start-menu-2","menuRoute":"journal.html"},{"host":"chrome-1","component":"content-zukan","kind":"content"}]}</script>
+<script src="site-runtime-loader.js?v=a8ffb108" defer></script>
+</body>
+</html>

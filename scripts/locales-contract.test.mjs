@@ -28,6 +28,42 @@ test('English visitor articles expose seven real editions without a Japanese des
   assert.equal(target.pathname,'/fr/drinks.html'); assert.equal(target.searchParams.get('train'),'Nozomi-1'); assert.equal(target.hash,'#tea');
   dom.window.close();
 });
+
+test('delayed shared headers connect article editions once and preserve navigation state in both directions', () => {
+  for (const lang of ['ja', 'en']) {
+    const route = 'spots/fuji.html';
+    const pathname = '/' + (lang === 'ja' ? '' : 'en/') + route;
+    const dom = new JSDOM(`<html lang="${lang}"><head><link rel="canonical" href="https://www.michikusa-travel.com${pathname}"></head><body><div data-spot-page-shared-module="topbar"></div></body></html>`, { url: `https://www.michikusa-travel.com${pathname}?train=Nozomi-1&board=Shinagawa&dir=west&focus=fuji#viewpoint`, runScripts: 'outside-only' });
+    const { document, Event } = dom.window;
+    dom.window.eval(read('locales.js'));
+    dom.window.eval(read('article-locales.js'));
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    assert.equal(document.querySelector('.article-lang-menu'), null);
+    document.querySelector('[data-spot-page-shared-module="topbar"]').outerHTML = '<header class="topbar"><div class="lang-switch"></div></header>';
+    document.dispatchEvent(new Event('mado:shared-ui-ready'));
+    const menu = document.querySelector('.article-lang-menu');
+    assert.ok(menu, `${lang}: late header gets its language menu`);
+    assert.equal(menu.querySelectorAll('a').length, locales.supported(route).length);
+    menu.open = true;
+    document.dispatchEvent(new Event('mado:shared-ui-ready'));
+    document.dispatchEvent(new Event('DOMContentLoaded'));
+    assert.equal(document.querySelectorAll('.article-lang-menu').length, 1);
+    assert.equal(document.querySelector('.article-lang-menu'), menu, 'reconnection preserves the existing menu and listeners');
+    assert.equal(menu.open, true);
+    const destination = lang === 'ja' ? 'en' : 'ja';
+    const link = menu.querySelector(`a[lang="${destination}"]`);
+    const target = new URL(link.href);
+    assert.equal(target.pathname, '/' + (destination === 'ja' ? '' : destination + '/') + route);
+    for (const [key, value] of [['train', 'Nozomi-1'], ['board', 'Shinagawa'], ['dir', 'west'], ['focus', 'fuji']]) assert.equal(target.searchParams.get(key), value);
+    assert.equal(target.hash, '#viewpoint');
+    if (destination === 'ja') assert.equal(target.searchParams.get('lang'), 'ja');
+    link.addEventListener('click', event => event.preventDefault());
+    link.dispatchEvent(new dom.window.MouseEvent('click', { bubbles: true, cancelable: true }));
+    assert.equal(dom.window.localStorage.getItem('mado-lang'), destination);
+    if (lang === 'ja') assert.equal(new URL(dom.window.location.href).searchParams.get('lang'), 'ja');
+    dom.window.close();
+  }
+});
 test('edition registry loads before synchronous routing and after the base URL', () => {
   for (const base of ['', '<base href="../">']) {
     const source = `<html><head><meta charset="utf-8">${base}<script src="language-router.js"></script><script src="../locales.js?v=old"></script></head></html>`;

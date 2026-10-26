@@ -3,11 +3,11 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {JSDOM} from 'jsdom';
-import {englishSnapshot} from './shared/castle-localization.mjs';
+import {renderSiteRuntimeForValidation} from './shared/site-runtime-validation.mjs';
 import {supported} from './shared/locales.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
+const page=relative=>renderSiteRuntimeForValidation({appDir:root,html:read(relative),relative}).dom;
 const languages=['ja','en','zh-Hant','fr','de','es','zh-Hans','ko'];
 const routes=['foods.html','countryside.html','spots/gamagori-greenhouses.html'];
 const origin='https://www.michikusa-travel.com/';
@@ -18,7 +18,7 @@ test('food and landscape editions have all eight real reciprocal destinations',a
     assert.deepEqual(supported(route),languages);
     for(const lang of languages){
       const file=(lang==='ja'?'':lang+'/')+route;
-      const dom=new JSDOM(read(file),{url:origin+file,runScripts:'outside-only'}),doc=dom.window.document;
+      const dom=page(file),doc=dom.window.document;
       assert.equal(doc.documentElement.lang,lang);
       assert.equal(doc.querySelector('link[rel="canonical"]').href,origin+file);
       for(const target of languages){
@@ -35,7 +35,7 @@ test('food and landscape editions have all eight real reciprocal destinations',a
 
 test('Japanese feature snapshots preserve article photographs and original licence destinations',()=>{
   for(const route of ['foods.html','countryside.html']){
-    const en=englishSnapshot(root,route),ja=new JSDOM(read(route),{url:origin+route,runScripts:'outside-only'});
+    const en=page('en/'+route),ja=page(route);
     const images=doc=>[...doc.querySelectorAll('article img,.countryside-hero img,.food-hero img')].map(el=>({src:new URL(el.getAttribute('src'),doc.URL).pathname,width:el.getAttribute('width'),height:el.getAttribute('height')}));
     assert.deepEqual(images(ja.window.document),images(en.window.document),route);
     const rights=doc=>[...doc.querySelectorAll('a[href]')].filter(a=>/https:\/\/(?:commons\.wikimedia\.org|creativecommons\.org)\//.test(a.href)).map(a=>a.href).sort();
@@ -64,7 +64,7 @@ test('new dictionaries cover their bounded source copy without empty translation
 test('all three filling buttons retain the selected edition after interaction',()=>{
   for(const lang of languages){
     const file=(lang==='ja'?'':lang+'/')+'foods.html';
-    const dom=lang==='en'?englishSnapshot(root,'foods.html'):new JSDOM(read(file),{url:origin+file,runScripts:'outside-only'}),doc=dom.window.document;
+    const dom=page(file),doc=dom.window.document;
     dom.window.eval(read('foods.js'));
     doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
     for(const button of doc.querySelectorAll('[data-filling]')){

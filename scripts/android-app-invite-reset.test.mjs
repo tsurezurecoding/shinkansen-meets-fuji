@@ -2,11 +2,13 @@ import {test} from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {JSDOM} from 'jsdom';
+import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
+const sharedRuntime=fs.readFileSync(new URL('../android-app-invite.js',import.meta.url),'utf8');
 const KEY='mado-android-app-invite-v2';
 const pages=['index.html','en/index.html','guide.html','en/guide.html'];
 const ua='Mozilla/5.0 (Linux; Android 14) AppleWebKit/537.36 Chrome/130.0 Mobile Safari/537.36';
 async function page(file,{query='?ga=off&android_invite_reset=1',agent=ua,installed=false,native=false,storageFailure=false,historyFailure=false,seed,shared}={}){
- const html=fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
+ const html=withPageAndroidAppInvite(fs.readFileSync(new URL('../'+file,import.meta.url),'utf8'),file);
  const dom=new JSDOM(html,{url:'https://www.michikusa-travel.com/'+file+query,runScripts:'outside-only',pretendToBeVisual:true});const w=dom.window,events=[];let intersection;
  if(shared){
   w.Storage.prototype.getItem=k=>shared.values.get(String(k))??null;
@@ -22,7 +24,7 @@ async function page(file,{query='?ga=off&android_invite_reset=1',agent=ua,instal
  if(historyFailure)w.history.replaceState=()=>{throw Error('history denied');};
  const headScripts=[...w.document.head.querySelectorAll('script')].filter(s=>s.textContent.includes("getAll('android_invite_reset')")||s.textContent.includes('var optoutKey = "mado-ga-optout"'));
  assert.equal(headScripts.length,2);headScripts.forEach(s=>w.eval(s.textContent));
- const runtime=[...w.document.querySelectorAll('script')].find(s=>s.textContent.includes("const key = 'mado-android-app-invite-v2'"));w.eval(runtime.textContent);
+ assert.equal(w.document.querySelectorAll('#mado-android-invite-config').length,1);w.eval(sharedRuntime);
  await new Promise(r=>setTimeout(r,5));
  return {w,events,seen:()=>intersection([{isIntersecting:true,intersectionRatio:1}]),card:w.document.querySelector('#android-app-invite'),before,gtm:()=>w.document.querySelectorAll('script[src*="googletagmanager.com"]').length,close:()=>w.close()};
 }
@@ -44,7 +46,7 @@ test('existing persistent GA off survives ordinary reload; ga=on clears existing
  const off=await page('guide.html',{query:'',seed});try{assert.equal(off.gtm(),0);assert.equal(off.w.MADO_ANALYTICS_DISABLED,true);}finally{off.close();}
  const on=await page('guide.html',{query:'?ga=on',seed});try{assert.equal(on.w.localStorage.getItem('mado-ga-optout'),null);assert.equal(on.w.MADO_ANALYTICS_DISABLED,false);assert.equal(on.gtm(),1);assert.equal(on.w.localStorage.getItem(KEY),seed[KEY]);assert.equal(on.w.localStorage.getItem('mado-stamps-v1'),'keep');}finally{on.close();}
 });
-test('head bootstrap precedes existing GA initializer on four generated pages',()=>{for(const file of pages){const html=fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');assert.equal((html.match(/ANDROID_APP_INVITE_RESET_START/g)||[]).length,1);assert.ok(html.indexOf('ANDROID_APP_INVITE_RESET_START')<html.indexOf('var measurementId'));assert.ok(html.includes('window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;'));}});
+test('head bootstrap precedes existing GA initializer on four generated pages',()=>{for(const file of pages){const html=withPageAndroidAppInvite(fs.readFileSync(new URL('../'+file,import.meta.url),'utf8'),file);assert.equal((html.match(/ANDROID_APP_INVITE_RESET_START/g)||[]).length,1);assert.ok(html.indexOf('ANDROID_APP_INVITE_RESET_START')<html.indexOf('var measurementId'));assert.ok(html.includes('window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;'));}});
 function sharedStore(){return {values:new Map(),changes:[]};}
 function storageEvent(f,key,newValue=null){f.w.dispatchEvent(new f.w.StorageEvent('storage',{key,newValue}));}
 function inviteEvents(f){return (f.w.dataLayer||[]).filter(args=>args[0]==='event'&&String(args[1]).startsWith('android_app_invite_'));}

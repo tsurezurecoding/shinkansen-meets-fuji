@@ -1,0 +1,779 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../app-embedded.js?v=32708d67"></script>
+  <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <title>富士山被雲擋住了？新幹線車窗還有什麼可以看｜新幹線の窓</title>
+  <meta name="description" content="搭東海道新幹線卻沒看到富士山？車窗外還有城堡、列車橫越的湖面、茶園、看不懂的巨大看板，以及一整片休息中的新幹線。陰天也成立的車窗景色，依東京起算的分鐘順序整理。">
+  <link rel="canonical" href="https://www.michikusa-travel.com/zh-Hant/guide.html">
+  <link rel="stylesheet" href="../style.css?v=5f3f6183">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="新幹線の窓">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="富士山被雲擋住了？新幹線車窗還有什麼可以看">
+  <meta property="og:description" content="陰天帶走的只是四十個車窗景色裡的一個。城堡、湖面、茶園與休息中的新幹線都還在，依分鐘順序整理。">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="陰天下的四個車窗景色：清水港、濱名湖、茶園與鳥飼車輛基地">
+  <meta property="og:url" content="https://www.michikusa-travel.com/zh-Hant/guide.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="富士山被雲擋住了？新幹線車窗還有什麼可以看">
+  <meta name="twitter:description" content="陰天帶走的只是四十個車窗景色裡的一個。其餘的都還在窗外，依分鐘順序整理。">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-besides-fuji.jpg">
+  <script src="../language-router.js?v=ff60751b"></script>
+  <script>
+    (function () {
+      if (window.MADO_EMBEDDED_WEB) return;
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") localStorage.setItem(optoutKey, "1");
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") localStorage.removeItem(optoutKey);
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <style>
+    .besides-page main { padding-bottom: 40px; }
+    .bf-hero { background: var(--paper, #fbf8f2); padding: 72px 20px 44px; }
+    .bf-hero-inner { max-width: 720px; margin: 0 auto; }
+    .bf-hero h1 { font-family: var(--font-serif); font-size: clamp(24px, 5vw, 38px); line-height: 1.5; margin: 0 0 18px; }
+    .bf-lead { font-size: 15px; line-height: 2.0; margin: 0 0 10px; }
+    .bf-section { max-width: 720px; margin: 0 auto; padding: 0 20px 34px; }
+    .bf-section h2 { font-family: var(--font-serif); font-size: clamp(19px, 3.8vw, 26px); line-height: 1.55; margin: 34px 0 14px; }
+    .bf-section p { font-size: 14.5px; line-height: 2.0; }
+    .bf-note { color: #6b6353; font-size: 13px; margin: 0 0 10px; line-height: 1.9; }
+    .bf-table-wrap { overflow-x: auto; border: 1px solid #e5dcc9; border-radius: 14px; }
+    .bf-table { border-collapse: collapse; width: 100%; font-size: 13.5px; }
+    .bf-table th, .bf-table td { padding: 9px 12px; text-align: left; border-bottom: 1px solid #efe8d9; }
+    .bf-table thead th { background: #f7f2e6; font-size: 12px; letter-spacing: .04em; color: #6b6353; }
+    .bf-table tbody tr:last-child td { border-bottom: 0; }
+    .bf-table td:first-child { white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .bf-seat { display: inline-block; min-width: 1.4em; text-align: center; border: 1px solid #d9cfb8; border-radius: 5px; padding: 0 5px; font-size: 11.5px; }
+    .bf-level { display: inline-block; border-radius: 999px; padding: 1px 8px; font-size: 11px; white-space: nowrap; }
+    .bf-level-easy { background: #e7f0e4; color: #3f6136; }
+    .bf-level-moderate { background: #f3ecd9; color: #7a6634; }
+    .bf-level-hard { background: #f2e2dd; color: #8a4a38; }
+    .bf-callout { background: #fff; border: 1px solid #e5dcc9; border-radius: 16px; padding: 16px 18px; margin: 18px 0; }
+    .bf-callout p { margin: 0 0 8px; line-height: 1.95; }
+    .bf-callout p:last-child { margin-bottom: 0; }
+    .bf-cta { display: flex; flex-wrap: wrap; gap: 10px; margin: 22px 0 4px; }
+  </style>
+  <!-- JSONLD_START -->
+  <script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      "@id": "https://www.michikusa-travel.com/zh-Hant/besides-fuji.html#views",
+      "name": "陰天也看得到的東海道新幹線車窗景色",
+      "description": "富士山以外的54個車窗景色，依東京起算的通過順序排列。",
+      "numberOfItems": 54,
+      "itemListOrder": "https://schema.org/ItemListOrderAscending",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/edo-castle-fujimi-yagura.html#spot",
+            "name": "江戶城富士見櫓",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/edo-castle-fujimi-yagura.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/tokyo-tower.html#spot",
+            "name": "東京鐵塔",
+            "url": "https://www.michikusa-travel.com/en/spots/tokyo-tower.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/maruko-bridge.html#spot",
+            "name": "丸子橋",
+            "url": "https://www.michikusa-travel.com/en/spots/maruko-bridge.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/musashi-kosugi-towers.html#spot",
+            "name": "武藏小杉高樓群",
+            "url": "https://www.michikusa-travel.com/en/spots/musashi-kosugi-towers.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/727-board.html#spot",
+            "name": "727與248號看板",
+            "url": "https://www.michikusa-travel.com/en/spots/727-board.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/727-board.html#spot",
+            "name": "727 COSMETICS看板",
+            "url": "https://www.michikusa-travel.com/en/spots/727-board.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/hinataoka.html#spot",
+            "name": "日向岡山坡住宅區",
+            "url": "https://www.michikusa-travel.com/en/spots/hinataoka.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/putiputi-sign.html#spot",
+            "name": "「我是誰？」看板",
+            "url": "https://www.michikusa-travel.com/en/spots/putiputi-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/odawara-castle.html#spot",
+            "name": "小田原城",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/odawara-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/gyoran-kannon.html#spot",
+            "name": "魚籃大觀音像",
+            "url": "https://www.michikusa-travel.com/en/spots/gyoran-kannon.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/shiraitogawa-bridge.html#spot",
+            "name": "相模灣與白糸川鐵橋",
+            "url": "https://www.michikusa-travel.com/en/spots/shiraitogawa-bridge.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/odawara.html#spot",
+            "name": "熱海與初島",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/odawara.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/mishima-catapult.html#spot",
+            "name": "三島車輛所的彈射台",
+            "url": "https://www.michikusa-travel.com/en/spots/mishima-catapult.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fuji-pipe-sign.html#spot",
+            "name": "Fujipipe屋頂看板",
+            "url": "https://www.michikusa-travel.com/en/spots/fuji-pipe-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/fuji-bus-sales.html#spot",
+            "name": "富士巴士銷售展示場",
+            "url": "https://www.michikusa-travel.com/en/spots/fuji-bus-sales.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/fuji-paper-mills.html#spot",
+            "name": "富士的造紙工廠",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/fuji-paper-mills.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/fujikawa-bridge.html#spot",
+            "name": "富士川鐵橋與水管橋",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/fujikawa-bridge.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/shimizu-port-chikyu.html#spot",
+            "name": "清水港與CHIKYU深海探查船",
+            "url": "https://www.michikusa-travel.com/en/spots/shimizu-port-chikyu.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/granship.html#spot",
+            "name": "格蘭希普",
+            "url": "https://www.michikusa-travel.com/en/spots/granship.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/sapporo-shizuoka-factory.html#spot",
+            "name": "札幌啤酒靜岡工廠",
+            "url": "https://www.michikusa-travel.com/en/spots/sapporo-shizuoka-factory.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/shizuoka-tea-fields.html#spot",
+            "name": "靜岡茶園",
+            "url": "https://www.michikusa-travel.com/en/spots/shizuoka-tea-fields.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/kakegawa.html#spot",
+            "name": "掛川城",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/kakegawa.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/pocari-fukuroi.html#spot",
+            "name": "大塚製藥寶礦力水得工廠",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/pocari-fukuroi.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/genki-sign.html#spot",
+            "name": "悉平加油看板",
+            "url": "https://www.michikusa-travel.com/en/spots/genki-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 25,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/hamanako.html#spot",
+            "name": "濱名湖",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/hamanako.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 26,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/toyohashi-tateiwa.html#spot",
+            "name": "豐橋立岩巨石",
+            "url": "https://www.michikusa-travel.com/en/spots/toyohashi-tateiwa.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 27,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/mikawa-oshima.html#spot",
+            "name": "三河大島",
+            "url": "https://www.michikusa-travel.com/en/spots/mikawa-oshima.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 28,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/gamagori-greenhouses.html#spot",
+            "name": "豐橋至蒲郡的溫室群",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/gamagori-greenhouses.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 29,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/nichiban-anjo.html#spot",
+            "name": "CELLOTAPE牆面看板",
+            "url": "https://www.michikusa-travel.com/en/spots/nichiban-anjo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 30,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/nagoya-station-skyline.html#spot",
+            "name": "名古屋站前天際線",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/nagoya-station-skyline.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 31,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kirin-beer-factory.html#spot",
+            "name": "麒麟啤酒工廠",
+            "url": "https://www.michikusa-travel.com/en/spots/kirin-beer-factory.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 32,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/kiyosu.html#spot",
+            "name": "清洲城",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/kiyosu.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 33,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/gifu-hashima-mahalo.html#spot",
+            "name": "岐阜羽島的Mahalo看板",
+            "url": "https://www.michikusa-travel.com/en/spots/gifu-hashima-mahalo.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 34,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/solar-ark.html#spot",
+            "name": "Solar Ark太陽能設施",
+            "url": "https://www.michikusa-travel.com/en/spots/solar-ark.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 35,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/gifu-castle.html#spot",
+            "name": "岐阜城",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/gifu-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 36,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kinshozan.html#spot",
+            "name": "金生山",
+            "url": "https://www.michikusa-travel.com/en/spots/kinshozan.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 37,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/nangu-taisha.html#spot",
+            "name": "南宮大社大鳥居",
+            "url": "https://www.michikusa-travel.com/en/spots/nangu-taisha.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 38,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/ibuki.html#spot",
+            "name": "伊吹山",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/ibuki.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 39,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/ibuki-seat-a.html#spot",
+            "name": "A座看伊吹山",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/ibuki-seat-a.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 40,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/sennenq-sign.html#spot",
+            "name": "千年灸看板",
+            "url": "https://www.michikusa-travel.com/en/spots/sennenq-sign.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 41,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/maibara-test-trains.html#spot",
+            "name": "米原的新幹線試驗車輛",
+            "url": "https://www.michikusa-travel.com/en/spots/maibara-test-trains.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 42,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/fujitec-big-wing.html#spot",
+            "name": "FUJITEC Big Wing",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/fujitec-big-wing.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 43,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/sawayama-castle.html#spot",
+            "name": "佐和山城跡",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/sawayama-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 44,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/hikone-castle.html#spot",
+            "name": "彦根城",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/hikone-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 45,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/lotte-shiga.html#spot",
+            "name": "樂天滋賀工廠的零食看板",
+            "url": "https://www.michikusa-travel.com/en/spots/lotte-shiga.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 46,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/kannonji-castle.html#spot",
+            "name": "觀音寺城跡",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/kannonji-castle.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 47,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/omi-fuji.html#spot",
+            "name": "近江富士",
+            "url": "https://www.michikusa-travel.com/en/spots/omi-fuji.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 48,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/seta-karahashi.html#spot",
+            "name": "瀨田唐橋",
+            "url": "https://www.michikusa-travel.com/en/spots/seta-karahashi.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 49,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/toji.html#spot",
+            "name": "東寺五重塔",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/toji.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 50,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/kaguya-no-akari.html#spot",
+            "name": "輝夜之燈配水塔",
+            "url": "https://www.michikusa-travel.com/en/spots/kaguya-no-akari.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 51,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/rakusai-egg-tanks.html#spot",
+            "name": "洛西淨化中心蛋形消化槽",
+            "url": "https://www.michikusa-travel.com/en/spots/rakusai-egg-tanks.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 52,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/zh-Hant/spots/yamazaki-distillery.html#spot",
+            "name": "三得利山崎蒸溜所",
+            "url": "https://www.michikusa-travel.com/zh-Hant/spots/yamazaki-distillery.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 53,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/hirakata-park-wheel.html#spot",
+            "name": "枚方公園摩天輪",
+            "url": "https://www.michikusa-travel.com/en/spots/hirakata-park-wheel.html"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 54,
+          "item": {
+            "@type": "TouristAttraction",
+            "@id": "https://www.michikusa-travel.com/en/spots/torikai-train-depot.html#spot",
+            "name": "鳥飼新幹線車輛基地",
+            "url": "https://www.michikusa-travel.com/en/spots/torikai-train-depot.html"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
+  <!-- JSONLD_END -->
+</head>
+<body class="besides-page spot-page spot-page-utility" data-page="besides-fuji" data-spot-page-shared-context="utility" data-spot-page-shared-lang="zh-Hant" data-spot-page-shared-root="../" data-spot-page-shared-route="besides-fuji.html">
+  <header class="topbar">
+      <a class="brand" href="../zh-Hant/"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">Shinkansen Window</span><small class="brand-sub">把旅途中的一瞬留在窗邊</small></span></a>
+      <nav class="top-nav" aria-label="主要導覽">
+        <a href="start.html">選擇列車</a>
+        <a href="../zh-Hant/live/">即時指南</a>
+        <a href="../zh-Hant/zukan.html">車窗圖鑑</a>
+        <a class="top-nav-overflow" href="guide.html">FAQ</a>
+        <a class="top-nav-stamp" href="../zh-Hant/journal.html">印章冊</a>
+        <details class="top-nav-more"><summary>更多</summary><div class="top-nav-menu"><a class="top-nav-menu-stamp" href="../zh-Hant/journal.html">印章冊</a><a class="top-nav-menu-compact" href="guide.html">FAQ</a><a href="../zh-Hant/?intro=1">關於這個App</a><a href="../zh-Hant/mieru.html">能見度 β</a><a href="../en/sumie.html">墨繪車窗</a><a href="../en/somato.html">車窗旅程</a><a href="../en/references.html">相關連結</a><a href="../zh-Hant/contact.html">聯絡我們</a><a href="../en/privacy.html">隱私權政策</a></div></details>
+      </nav>
+      <details class="guide-lang-menu"><summary aria-label="選擇語言">繁體中文</summary><div class="guide-lang-options"><a href="../guide.html">日本語</a><a href="../en/besides-fuji.html">English</a><a aria-current="page" href="besides-fuji.html">繁體中文</a><a href="../zh-Hans/guide.html">简体中文</a><a href="../ko/guide.html">한국어</a><a href="../fr/guide.html">Français</a><a href="../ar/guide.html">العربية</a></div></details>
+    </header>
+
+  <main>
+    <section class="bf-hero" aria-labelledby="bfTitle">
+      <div class="bf-hero-inner">
+        <p class="eyebrow">陰天的車窗</p>
+        <h1 id="bfTitle">富士山沒出現，但窗外其他景色都還在。</h1>
+        <p class="bf-lead">座位訂對了，時間也守住了，望出去卻只有一片雲。這是這段旅程最常見的失望，而幾乎所有攻略都寫到這裡就停筆了。</p>
+        <p class="bf-lead">富士山只是東京到新大阪之間 <b>59個車窗景色</b>的其中一個。陰天帶走的是那一個。城堡、列車橫越的湖面、茶園、沒有人說得清的巨大看板，還有一整片休息中的新幹線——這些都不需要一百公里的透明空氣，其中幾個在陰天反而更好看。</p>
+      </div>
+    </section>
+
+    <div class="bf-section">
+      <div class="bf-callout">
+        <p><b>為什麼近處的景色不受影響。</b>富士山距離鐵道大約 40 公里，需要整片天空配合。兩百公尺外的城堡什麼都不需要。差別就只在這裡。</p>
+        <p><b>在放棄那座山之前</b>，沿線其實有五個地點都可能看到富士山，前後橫跨一個多小時。錯過新富士附近最有名的那一次，不代表五次都沒了。</p>
+      </div>
+
+      <h2>陰天反而更值得看的三個</h2>
+      <p><b>濱名湖</b>——列車貼著水面過橋，兩側都是天空。平淡的灰光讓湖面看起來像一層金屬。而且左右兩側都看得到，不必賭座位。</p>
+      <p><b>牧之原一帶的茶園</b>——修剪整齊的綠色階梯，在雲層下顏色更深、更濕潤，不會像正午強光那樣被曬得發白。</p>
+      <p><b>快到新大阪前的鳥飼車輛基地</b>——一列列新幹線首尾相接地停著。天氣完全不影響，而且它是整趟旅程最後看到的東西，多數乘客這時已經在收行李，因此錯過。</p>
+
+      <h2>窗外的景色，依分鐘順序</h2>
+      <p class="bf-note">分鐘數以 Nozomi 從東京起算，屬於參考而非時刻表。<a href="../zh-Hant/#journey">選擇你的班次</a>可換算成該班次的預計時間。<span class="bf-seat">E</span> 是往京都方向的右側，<span class="bf-seat">A</span> 是左側。各景點的詳細說明目前為英文版。</p>
+
+      <!-- BESIDES_TABLE_START -->
+      <div class="bf-table-wrap">
+        <table class="bf-table">
+          <thead><tr><th>時間</th><th>座位側</th><th>難易度</th><th>看到的是什麼</th></tr></thead>
+          <tbody>
+            <tr><td>東京起 0.5 分</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/edo-castle-fujimi-yagura.html">江戶城富士見櫓</a></td></tr>
+            <tr><td>東京起 3 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/tokyo-tower.html">東京鐵塔</a></td></tr>
+            <tr><td>東京起 13 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/maruko-bridge.html">丸子橋</a></td></tr>
+            <tr><td>東京起 14 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/musashi-kosugi-towers.html">武藏小杉高樓群</a></td></tr>
+            <tr><td>東京起 23 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/727-board.html">727與248號看板</a></td></tr>
+            <tr><td>東京起 24 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/727-board.html">727 COSMETICS看板</a></td></tr>
+            <tr><td>東京起 27 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/hinataoka.html">日向岡山坡住宅區</a></td></tr>
+            <tr><td>東京起 27.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/putiputi-sign.html">「我是誰？」看板</a></td></tr>
+            <tr><td>東京起 31 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/odawara-castle.html">小田原城</a></td></tr>
+            <tr><td>東京起 31.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/gyoran-kannon.html">魚籃大觀音像</a></td></tr>
+            <tr><td>東京起 32.7 分</td><td><span class="bf-seat">A</span></td><td></td><td><a href="../en/spots/shiraitogawa-bridge.html">相模灣與白糸川鐵橋</a></td></tr>
+            <tr><td>東京起 36 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/odawara.html">熱海與初島</a></td></tr>
+            <tr><td>東京起 40.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/mishima-catapult.html">三島車輛所的彈射台</a></td></tr>
+            <tr><td>東京起 44.5 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/fuji-pipe-sign.html">Fujipipe屋頂看板</a></td></tr>
+            <tr><td>東京起 44.8 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/fuji-bus-sales.html">富士巴士銷售展示場</a></td></tr>
+            <tr><td>東京起 45 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/fuji-paper-mills.html">富士的造紙工廠</a></td></tr>
+            <tr><td>東京起 45.75 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/fujikawa-bridge.html">富士川鐵橋與水管橋</a></td></tr>
+            <tr><td>東京起 50 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/shimizu-port-chikyu.html">清水港與CHIKYU深海探查船</a></td></tr>
+            <tr><td>東京起 52 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/granship.html">格蘭希普</a></td></tr>
+            <tr><td>東京起 56 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/sapporo-shizuoka-factory.html">札幌啤酒靜岡工廠</a></td></tr>
+            <tr><td>東京起 62 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/shizuoka-tea-fields.html">靜岡茶園</a></td></tr>
+            <tr><td>東京起 64 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/kakegawa.html">掛川城</a></td></tr>
+            <tr><td>東京起 65.5 分</td><td><span class="bf-seat">A</span></td><td></td><td><a href="spots/pocari-fukuroi.html">大塚製藥寶礦力水得工廠</a></td></tr>
+            <tr><td>東京起 66.5 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/genki-sign.html">悉平加油看板</a></td></tr>
+            <tr><td>東京起 73 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/hamanako.html">濱名湖</a></td></tr>
+            <tr><td>東京起 76.5 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/toyohashi-tateiwa.html">豐橋立岩巨石</a></td></tr>
+            <tr><td>東京起 82.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/mikawa-oshima.html">三河大島</a></td></tr>
+            <tr><td>東京起 83 分</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/gamagori-greenhouses.html">豐橋至蒲郡的溫室群</a></td></tr>
+            <tr><td>東京起 88 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/nichiban-anjo.html">CELLOTAPE牆面看板</a></td></tr>
+            <tr><td>東京起 94 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/nagoya-station-skyline.html">名古屋站前天際線</a></td></tr>
+            <tr><td>東京起 98 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/kirin-beer-factory.html">麒麟啤酒工廠</a></td></tr>
+            <tr><td>東京起 99 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/kiyosu.html">清洲城</a></td></tr>
+            <tr><td>東京起 102 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/gifu-hashima-mahalo.html">岐阜羽島的Mahalo看板</a></td></tr>
+            <tr><td>東京起 103 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/solar-ark.html">Solar Ark太陽能設施</a></td></tr>
+            <tr><td>東京起 103 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="spots/gifu-castle.html">岐阜城</a></td></tr>
+            <tr><td>東京起 106 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/kinshozan.html">金生山</a></td></tr>
+            <tr><td>東京起 107 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/nangu-taisha.html">南宮大社大鳥居</a></td></tr>
+            <tr><td>東京起 110 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/ibuki.html">伊吹山</a></td></tr>
+            <tr><td>東京起 111.5 分</td><td><span class="bf-seat">A</span></td><td></td><td><a href="spots/ibuki-seat-a.html">A座看伊吹山</a></td></tr>
+            <tr><td>東京起 111.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/sennenq-sign.html">千年灸看板</a></td></tr>
+            <tr><td>東京起 112.1 分</td><td><span class="bf-seat">A</span></td><td></td><td><a href="../en/spots/maibara-test-trains.html">米原的新幹線試驗車輛</a></td></tr>
+            <tr><td>東京起 113 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/fujitec-big-wing.html">FUJITEC Big Wing</a></td></tr>
+            <tr><td>東京起 115 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/sawayama-castle.html">佐和山城跡</a></td></tr>
+            <tr><td>東京起 116 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="spots/hikone-castle.html">彦根城</a></td></tr>
+            <tr><td>東京起 119 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/lotte-shiga.html">樂天滋賀工廠的零食看板</a></td></tr>
+            <tr><td>東京起 120 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/kannonji-castle.html">觀音寺城跡</a></td></tr>
+            <tr><td>東京起 123 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/omi-fuji.html">近江富士</a></td></tr>
+            <tr><td>東京起 127 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/seta-karahashi.html">瀨田唐橋</a></td></tr>
+            <tr><td>東京起 131 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="spots/toji.html">東寺五重塔</a></td></tr>
+            <tr><td>東京起 133.6 分</td><td><span class="bf-seat">E</span></td><td></td><td><a href="../en/spots/kaguya-no-akari.html">輝夜之燈配水塔</a></td></tr>
+            <tr><td>東京起 135 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/rakusai-egg-tanks.html">洛西淨化中心蛋形消化槽</a></td></tr>
+            <tr><td>東京起 136.25 分</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/yamazaki-distillery.html">三得利山崎蒸溜所</a></td></tr>
+            <tr><td>東京起 139 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/hirakata-park-wheel.html">枚方公園摩天輪</a></td></tr>
+            <tr><td>東京起 141 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/torikai-train-depot.html">鳥飼新幹線車輛基地</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <!-- BESIDES_TABLE_END -->
+
+      <h2>今天原本就看得到嗎</h2>
+      <p>如果你是在出發前而不是回程後讀到這頁，可以先看看能見度預報。它依據的是山頂周邊的雲量，而不是你所在位置的天氣。空氣清澈的冬天早晨機會最大；夏天悶熱起霧的午後最差，即使沒有下雨也一樣。</p>
+
+      <div class="bf-cta">
+        <a class="btn btn-primary" href="../zh-Hant/#journey" data-besides-cta="pick_train">查看我這班車的 59個景色時間 →</a>
+        <a class="btn btn-ghost" href="guide.html" data-besides-cta="guide">富士山看得到嗎？坐哪一側？</a>
+        <a class="btn btn-ghost" href="../zh-Hant/zukan.html" data-besides-cta="zukan">用照片瀏覽車窗景色</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-brand">新幹線の窓 <span>不要錯過窗外的那一刻</span></p>
+    <p>時間為估計值，會因班次、天候與座位而改變。</p>
+    <p class="footer-links"><a href="guide.html">富士山車窗指南</a> · <a href="../zh-Hant/zukan.html">車窗圖鑑</a> · <a href="../zh-Hant/contact.html">聯絡我們</a> · <a href="../en/privacy.html">隱私權政策</a></p>
+    <p class="footer-credit">道草 Michikusa — 不趕時間的旅行，與偶然的發現。</p>
+  </footer>
+  <script>
+    document.addEventListener("click", function (event) {
+      var link = event.target.closest && event.target.closest("[data-besides-cta]");
+      if (!link || window.MADO_ANALYTICS_DISABLED || typeof window.gtag !== "function") return;
+      var payload = {
+        cta_id: link.getAttribute("data-besides-cta"),
+        cta_label: link.textContent.trim(),
+        destination: link.getAttribute("href"),
+        language: "zh-Hant",
+        viewport_type: window.innerWidth >= 1100 ? "desktop" : "mobile",
+        page_context: "besides_fuji"
+      };
+      window.gtag("event", "besides_fuji_cta_click", payload);
+      if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+    });
+  </script>
+</body>
+</html>

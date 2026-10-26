@@ -6,10 +6,12 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import locales from '../locales.js';
+import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://www.michikusa-travel.com';
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
+const deliveredPage = relative => expandDeliveredSiteChromeHTML({ appDir:root, html:read(relative), relative });
 const starterLanguages = ['it', 'th'];
 const starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html'];
 const timelineLanguages = ['ja', 'en', 'fr', 'de', 'es', 'ko', 'zh-Hant', 'zh-Hans', 'it', 'th'];
@@ -57,7 +59,7 @@ test('Italian and Thai starter editions contain only the four contracted routes'
 
   for (const language of starterLanguages) for (const route of starterRoutes) {
     const label = `${language}/${route}`;
-    const html = read(label);
+    const html = deliveredPage(label);
     const url = origin + publicPath(language, route);
     const dom = new JSDOM(html, { url });
     const document = dom.window.document;
@@ -93,7 +95,7 @@ test('Italian and Thai starter editions contain only the four contracted routes'
 
 async function timelineFixture(language) {
   const route = language === 'ja' ? 'start.html' : `${language}/start.html`;
-  const dom = new JSDOM(read(route), {
+  const dom = new JSDOM(deliveredPage(route), {
     url: `${origin}/${route}`,
     runScripts: 'outside-only', pretendToBeVisual: true,
   });
