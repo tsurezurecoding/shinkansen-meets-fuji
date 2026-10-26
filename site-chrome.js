@@ -52,7 +52,19 @@
       if (!host) throw new Error('Shared UI host is missing: ' + mount.host);
       return { host: host, html: root.MADO_EMBEDDED_WEB && mount.kind !== 'collection' ? '' : renderComponent(payload, config, mount) };
     });
-    fragments.forEach(function (fragment) { fragment.host.outerHTML = fragment.html; });
+    fragments.forEach(function (fragment) {
+      var template = document.createElement('template');
+      template.innerHTML = fragment.html;
+      var replacement = template.content.firstElementChild;
+      // Article chapter navigation can already observe this header. Keep its
+      // identity so those observers and scroll handlers follow the live box.
+      if (fragment.host.matches('.topbar') && replacement && replacement.matches('.topbar') &&
+          replacement.tagName === fragment.host.tagName && template.content.childElementCount === 1) {
+        Array.from(fragment.host.attributes).forEach(function (attribute) { fragment.host.removeAttribute(attribute.name); });
+        Array.from(replacement.attributes).forEach(function (attribute) { fragment.host.setAttribute(attribute.name, attribute.value); });
+        fragment.host.replaceChildren.apply(fragment.host, Array.from(replacement.childNodes));
+      } else fragment.host.outerHTML = fragment.html;
+    });
     root.MADO_SHARED_UI_RENDERED = true;
     document.dispatchEvent(new root.Event('mado:shared-ui-ready'));
   } catch (error) {

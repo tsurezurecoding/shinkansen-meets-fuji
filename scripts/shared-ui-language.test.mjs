@@ -9,6 +9,28 @@ const origin = 'https://www.michikusa-travel.com';
 const query = '?train=Nozomi-1&board=Shinagawa&dir=west&focus=fuji&lang=en#journey';
 const ready = window => window.document.dispatchEvent(new window.Event('mado:shared-ui-ready'));
 
+test('shared chrome preserves the observed header element when filling its content', () => {
+  const dom = new JSDOM('<html><body><header class="topbar" data-site-chrome-host="header" data-fallback="true">Fallback</header><script id="mado-shared-ui-config" type="application/json">{"root":"","mounts":[{"host":"header","kind":"header","component":"header"}]}</script></body></html>', { url: origin, runScripts: 'outside-only' });
+  const w = dom.window;
+  try {
+    const header = w.document.querySelector('.topbar');
+    let notifications = 0, clicks = 0;
+    header.addEventListener('click', () => clicks++);
+    w.document.addEventListener('mado:shared-ui-ready', () => notifications++);
+    w.MADO_SHARED_UI = { version: 1, components: { header: '<header class="topbar" role="banner"><nav><a href="start.html">Start</a></nav></header>' }, menus: {} };
+    w.eval(read('site-chrome.js'));
+    assert.equal(w.MADO_SHARED_UI_RENDERED, true);
+    assert.equal(w.document.querySelector('.topbar'), header);
+    assert.equal(header.isConnected, true);
+    assert.equal(header.hasAttribute('data-fallback'), false);
+    assert.equal(header.hasAttribute('data-site-chrome-host'), false);
+    assert.equal(header.getAttribute('role'), 'banner');
+    header.querySelector('nav').click();
+    assert.equal(clicks, 1);
+    assert.equal(notifications, 1);
+  } finally { dom.window.close(); }
+});
+
 test('foods: late chrome reconnects header height, chapter offsets and overflow menu', async () => {
   const dom = new JSDOM('<html><body><header class="topbar"></header><details id="source-details"></details><nav class="food-chapters"><a href="#first">First</a><a href="#second">Second</a></nav><section id="first"></section><section id="second"></section></body></html>', { url: origin + '/foods.html', runScripts: 'outside-only' });
   const w = dom.window;
