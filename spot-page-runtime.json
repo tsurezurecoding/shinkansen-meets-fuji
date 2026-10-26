@@ -1,0 +1,12 @@
+{
+  "schema": "mado-spot-page-runtime",
+  "version": 1,
+  "assets": {
+    "style.css": "5f3f61831d1e4084e2da27945f7168a04e83c69381f64662aeb67c8c668fe735",
+    "spot-media-gallery.css": "52b1641e3680d710fa27684b0c60153254edbdec6c0dd256caf62924f4b47cb7",
+    "spot-page-shared-data.js": "a06310a9ae9a40b28be5cf5eab8cae84bbe339e07bad27baab15f3903789e9c2",
+    "spot-page-shared.js": "3f269e60f982608959f8bfff80d6f00e794d0215b59cbd86c0b6a4fa6954300f",
+    "spot-media-gallery.js": "3389cf41e6e68b4fec3a2d2cd95c5027d7bf6ae690fad37edd78911443fbacb0",
+    "spot-map.js": "1ed79613fd3981b3b45777f14bae586bfa0aa3f3ba84262678c87de3a8f04435"
+  }
+}
