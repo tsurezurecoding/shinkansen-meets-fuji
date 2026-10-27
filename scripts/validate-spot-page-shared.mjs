@@ -435,6 +435,15 @@ async function runThinValidator() {
         if (!fs.existsSync(path.join(appDir, photo.thumb))) fail(`${spot.id}/${lang} gallery thumbnail is missing: ${photo.thumb}`);
       }
       for (const photo of page.gallery) if (!fs.existsSync(path.join(appDir, photo.smallThumb))) fail(`${spot.id}/${lang} gallery small thumbnail is missing: ${photo.smallThumb}`);
+      for (const [source, candidates] of Object.entries(page.imageSources || {})) {
+        if (!safeAsset(source) || !Array.isArray(candidates) || !candidates.length) { fail(`${spot.id}/${lang} responsive photo is malformed`); continue; }
+        let previousWidth = 0;
+        for (const row of candidates) {
+          if (!Array.isArray(row) || row.length !== 3 || !safeAsset(row[0]) || !Number.isInteger(row[1]) || row[1] <= previousWidth || row[1] > 1920 || !Number.isInteger(row[2]) || row[2] <= 0) { fail(`${spot.id}/${lang} responsive photo candidate is malformed`); continue; }
+          previousWidth = row[1];
+          if (!fs.existsSync(path.join(appDir, row[0]))) fail(`${spot.id}/${lang} responsive photo is missing: ${row[0]}`);
+        }
+      }
       for (const photo of [page.referenceImage, page.explainer?.figure]) {
         if (!photo) continue;
         if (photo.src && !fs.existsSync(path.join(appDir, photo.src))) fail(`${spot.id}/${lang} article image is missing: ${photo.src}`);

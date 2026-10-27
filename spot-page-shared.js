@@ -5,6 +5,53 @@
   // スポット本文はページごとの配信物。カタログ(DATA_KEY)には入っていない。
   var PAGE_DATA_KEY = "MADO_SPOT_PAGE_DATA";
   var HOST_ATTRIBUTE = "data-spot-page-shared-module";
+  var PHOTO_SIZES = '(min-width: 1240px) 892px, (min-width: 1100px) calc(100vw - 348px), (min-width: 820px) 780px, calc(100vw - 36px)';
+  var photoObserver;
+  function photoInfo(src, rootPath, page) {
+    var candidates = (page || root[PAGE_DATA_KEY] || {}).imageSources;
+    candidates = candidates && candidates[src];
+    if (!Array.isArray(candidates) || !candidates.length) return { src: href(rootPath, src), srcset: '' };
+    candidates.forEach(function (item) {
+      if (!Array.isArray(item) || item.length !== 3 || !safeAssetPath(item[0]) || !Number.isInteger(item[1]) || item[1] <= 0 || !Number.isInteger(item[2]) || item[2] <= 0) throw new Error('Invalid photo candidate');
+    });
+    var fallback = candidates.find(function (item) { return item[1] >= 960; }) || candidates[candidates.length - 1];
+    return { src: href(rootPath, fallback[0]), width: fallback[1], height: fallback[2], srcset: candidates.map(function (item) { return href(rootPath, item[0]) + ' ' + item[1] + 'w'; }).join(', ') };
+  }
+  function applyPhoto(image, original) {
+    var rootPath = normalizeRoot(document.body.getAttribute('data-spot-page-shared-root'));
+    var base = new URL(rootPath, document.baseURI).href;
+    var absolute = new URL(original, document.baseURI).href;
+    var relative = absolute.indexOf(base) === 0 ? decodeURIComponent(absolute.slice(base.length)) : '';
+    var info = safeAssetPath(relative) ? photoInfo(relative, rootPath) : { src: original, srcset: '' };
+    if (image.getAttribute('data-photo-original-src') === original && image.getAttribute('data-photo-display-src')) {
+      info = { src: image.getAttribute('data-photo-display-src'), srcset: image.getAttribute('data-photo-srcset') || '' };
+    }
+    if (image.hasAttribute('data-photo-expanded')) info = { src: original, srcset: '' };
+    image.setAttribute('data-photo-original-src', original);
+    image.removeAttribute('data-photo-original-fallback');
+    image.sizes = image.getAttribute('data-photo-sizes') || PHOTO_SIZES;
+    image.srcset = info.srcset;
+    image.src = info.src;
+  }
+  function observePhotos(scope) {
+    var images = scope.querySelectorAll('[data-photo-deferred]');
+    if (!root.IntersectionObserver) {
+      images.forEach(function (image) { image.loading = 'lazy'; applyPhoto(image, image.getAttribute('data-photo-original-src')); });
+      return;
+    }
+    if (!photoObserver) photoObserver = new root.IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        applyPhoto(entry.target, entry.target.getAttribute('data-photo-original-src'));
+        photoObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: '400px 0px' });
+    images.forEach(function (image) {
+      if (image.hasAttribute('data-photo-observed')) return;
+      image.setAttribute('data-photo-observed', '');
+      photoObserver.observe(image);
+    });
+  }
   var SUPPORTED_LANGUAGES = { ja: true, en: true };
   var UI = {
     ja: {
@@ -645,15 +692,17 @@
     var ui = PAGE_UI[lang];
     var items = page.gallery;
     var first = items[0];
+    var firstPhoto = photoInfo(first.src, rootPath, page);
     var heading = (!page.readingLayout || page.photoHeadingAboveGallery) && page.photoHeadingCustom && page.photoHeading ? "<h2 class=\"spot-page-media-gallery-heading\">" + escapeHTML(page.photoHeading) + "</h2>" : "";
-    // The chooser is immediately scrollable: request its compact images together.
+    // Reserve chooser dimensions; hydrate only thumbnails near the visible rail.
     var thumbs = items.map(function (item, index) {
       var note = item.note || item.alt;
-      return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img src=\"" + escapeHTML(href(rootPath, item.smallThumb)) + "\" alt=\"\" loading=\"eager\" decoding=\"async\"></button>";
+      var display = photoInfo(item.src, rootPath, page);
+      return "<button type=\"button\" class=\"spot-photo-thumb" + (index === 0 ? " active" : "") + "\" data-gallery-thumb data-gallery-src=\"" + escapeHTML(href(rootPath, item.src)) + "\" data-gallery-display-src=\"" + escapeHTML(display.src) + "\" data-gallery-srcset=\"" + escapeHTML(display.srcset) + "\" data-gallery-sizes=\"" + PHOTO_SIZES + "\" data-gallery-alt=\"" + escapeHTML(item.alt) + "\" data-gallery-note=\"" + escapeHTML(note) + "\" data-gallery-credit=\"" + escapeHTML(item.credit || "") + "\" data-gallery-credit-href=\"" + escapeHTML(item.sourceUrl || "") + "\" data-gallery-date=\"" + escapeHTML(item.date || "") + "\" aria-label=\"" + escapeHTML(lang === "ja" ? note + "を表示" : "Show " + note) + "\" aria-pressed=\"" + (index === 0 ? "true" : "false") + "\"><img data-photo-deferred data-photo-original-src=\"" + escapeHTML(href(rootPath, item.smallThumb)) + "\" alt=\"\" width=\"264\" height=\"198\" decoding=\"async\"></button>";
     }).join("");
     var sourceLink = first.sourceUrl ? "<a data-gallery-source-output class=\"spot-page-gallery-source\" href=\"" + escapeHTML(first.sourceUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\">" + escapeHTML(ui.photoSource) + "</a>" : "<a data-gallery-source-output class=\"spot-page-gallery-source\" hidden></a>";
     var imageLink = first.sourceUrl ? "<a data-gallery-image-link class=\"spot-page-gallery-image-link\" href=\"" + escapeHTML(first.sourceUrl) + "\" target=\"_blank\" rel=\"noopener noreferrer\" aria-label=\"" + escapeHTML(ui.photoSource) + "\">" : "<a data-gallery-image-link class=\"spot-page-gallery-image-link\" aria-hidden=\"true\" tabindex=\"-1\">";
-    imageLink += "<img data-gallery-image src=\"" + escapeHTML(href(rootPath, first.src)) + "\" alt=\"" + escapeHTML(first.alt) + "\" decoding=\"async\" fetchpriority=\"high\"></a>";
+    imageLink += '<img data-gallery-image data-photo-original-src="' + escapeHTML(href(rootPath, first.src)) + '" src="' + escapeHTML(firstPhoto.src) + '"' + (firstPhoto.srcset ? ' srcset="' + escapeHTML(firstPhoto.srcset) + '" sizes="' + PHOTO_SIZES + '"' : '') + ' alt="' + escapeHTML(first.alt) + '" decoding="async" fetchpriority="high"></a>';
     var caption = "<figcaption aria-live=\"polite\"><strong data-gallery-note-output>" + escapeHTML(first.note || first.alt) + "</strong><span data-gallery-credit-output>" + pageCreditHTML(first) + "</span><span data-gallery-date-output>" + escapeHTML(first.date || "") + "</span>" + sourceLink + "</figcaption>";
     return "<div class=\"spot-page-media-gallery" + (items.length === 1 ? " is-single" : "") + "\" data-spot-media-gallery>" + heading + "<div class=\"spot-photo-thumbs\" role=\"group\" aria-label=\"" + escapeHTML(ui.photoChoose(page.name)) + "\">" + thumbs + "</div><figure class=\"spot-page-figure spot-page-media-gallery-active\">" + imageLink + caption + "</figure></div>";
   }
@@ -681,13 +730,21 @@
     var note = photo.note || photo.alt;
     var credit = pageCreditHTML(photo);
     var date = photo.date ? "<span>" + escapeHTML(photo.date) + "</span>" : "";
-    return "<figure class=\"spot-page-inline-figure\"><button type=\"button\" class=\"spot-page-inline-zoom\" data-zoom-src=\"" + escapeHTML(href(rootPath, photo.src)) + "\" aria-label=\"" + escapeHTML(lang === "en" ? "Show " + note : note + "を表示") + "\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, photo.thumb)) + "\"" + (photo.width && photo.height ? " width=\"" + escapeHTML(photo.width) + "\" height=\"" + escapeHTML(photo.height) + "\"" : "") + " alt=\"" + escapeHTML(photo.alt) + "\"></button><figcaption>" + (note ? "<strong>" + escapeHTML(note) + "</strong>" : "") + "<span>" + credit + "</span>" + date + "<span class=\"spot-page-zoom-hint\">" + escapeHTML(ui.zoomHint || (lang === "ja" ? "クリックで拡大" : "click to enlarge")) + "</span></figcaption></figure>";
+    var candidates = (root[PAGE_DATA_KEY] || {}).imageSources;
+    var display = candidates && candidates[photo.src] ? photoInfo(photo.src, rootPath) : null;
+    var image = display ? '<img data-photo-deferred data-photo-original-src="' + escapeHTML(href(rootPath, photo.src)) + '" data-photo-display-src="' + escapeHTML(display.src) + '" data-photo-srcset="' + escapeHTML(display.srcset) + '" width="' + display.width + '" height="' + display.height + '" decoding="async" alt="' + escapeHTML(photo.alt) + '">' : '<img loading="lazy" decoding="async" src="' + escapeHTML(href(rootPath, photo.thumb)) + '"' + (photo.width && photo.height ? ' width="' + escapeHTML(photo.width) + '" height="' + escapeHTML(photo.height) + '"' : '') + ' alt="' + escapeHTML(photo.alt) + '">';
+    return '<figure class="spot-page-inline-figure"><button type="button" class="spot-page-inline-zoom" data-zoom-src="' + escapeHTML(href(rootPath, photo.src)) + '" aria-label="' + escapeHTML(lang === 'en' ? 'Show ' + note : note + 'を表示') + '">' + image + '</button><figcaption>' + (note ? '<strong>' + escapeHTML(note) + '</strong>' : '') + '<span>' + credit + '</span>' + date + '<span class="spot-page-zoom-hint">' + escapeHTML(ui.zoomHint || (lang === 'ja' ? 'クリックで拡大' : 'click to enlarge')) + '</span></figcaption></figure>';
   }
 
   function pageExplainerFigureHTML(figure, rootPath) {
     if (!figure) return "";
     var credit = figure.credit ? (figure.sourceUrl ? "<a href=\"" + escapeHTML(figure.sourceUrl) + "\" rel=\"noopener\" target=\"_blank\">" + escapeHTML(figure.credit) + "</a>" : escapeHTML(figure.credit)) : "";
     var caption = [figure.caption ? "<strong>" + escapeHTML(figure.caption) + "</strong>" : "", credit ? "<span>" + credit + "</span>" : "", figure.date ? "<span>" + escapeHTML(figure.date) + "</span>" : ""].filter(Boolean).join(" ");
+    var candidates = (root[PAGE_DATA_KEY] || {}).imageSources;
+    if (candidates && candidates[figure.src]) {
+      var display = photoInfo(figure.src, rootPath);
+      return '<figure class="spot-page-explainer-figure"><img data-photo-deferred data-photo-original-src="' + escapeHTML(href(rootPath, figure.src)) + '" data-photo-display-src="' + escapeHTML(display.src) + '" data-photo-srcset="' + escapeHTML(display.srcset) + '" width="' + display.width + '" height="' + display.height + '" decoding="async" alt="' + escapeHTML(figure.alt || '') + '">' + (caption ? '<figcaption>' + caption + '</figcaption>' : '') + '</figure>';
+    }
     return "<figure class=\"spot-page-explainer-figure\"><img loading=\"lazy\" decoding=\"async\" src=\"" + escapeHTML(href(rootPath, figure.thumb)) + "\" alt=\"" + escapeHTML(figure.alt || "") + "\">" + (caption ? "<figcaption>" + caption + "</figcaption>" : "") + "</figure>";
   }
 
@@ -1136,5 +1193,27 @@
   }
 
   root.MADO_SPOT_PAGE_COMPONENTS = { siteHeaderHTML: siteHeaderHTML, contentRailHTML: contentRailHTML, readingCollectionHTML: readingCollectionHTML, discoveryContentRailHTML: discoveryContentRailHTML, compactGuideHTML: compactGuideHTML };
-  if (typeof document !== "undefined") render();
+  root.MADO_SPOT_PHOTOS = { apply: applyPhoto, observe: observePhotos, sizes: PHOTO_SIZES };
+  if (typeof document !== "undefined") {
+    render();
+    function recoverPhoto(image) {
+      if (!image || image.tagName !== 'IMG' || !image.hasAttribute('data-photo-original-src') || image.hasAttribute('data-photo-original-fallback')) return;
+      image.setAttribute('data-photo-original-fallback', '');
+      image.removeAttribute('srcset');
+      image.src = image.getAttribute('data-photo-original-src');
+    }
+    if (document.addEventListener) document.addEventListener('error', function (event) { recoverPhoto(event.target); }, true);
+    var observeAfterLayout = function () {
+      if (root.requestAnimationFrame && document.querySelectorAll) root.requestAnimationFrame(function () {
+        observePhotos(document);
+        // Static editions can finish a failed image request before this
+        // deferred script arrives. Recover those as well as future errors.
+        document.querySelectorAll('img[data-photo-original-src][src]').forEach(function (image) {
+          if (image.complete && !image.naturalWidth) recoverPhoto(image);
+        });
+      });
+    };
+    if (root.MADO_SPOT_PAGE_READY) root.MADO_SPOT_PAGE_READY.then(observeAfterLayout);
+    else observeAfterLayout();
+  }
 }(typeof window !== "undefined" ? window : globalThis));
