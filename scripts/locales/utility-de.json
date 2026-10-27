@@ -1,4 +1,10 @@
 {
+  "46": "46",
+  "65": "65",
+  "77": "77",
+  "82": "82",
+  "87": "87",
+  "93": "93",
   "+49 spots": "+49 Orte",
   ". Use stamps to record views you have spotted.": ". Halten Sie entdeckte Ausblicke mit Stempeln fest.",
   "0 min": "0 min",
@@ -2222,12 +2228,6 @@
   "About 82 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Etwa 82 min ab Tokio ・ Platz A · links Richtung Shin-Osaka; rechts Richtung Tokyo",
   "About 87 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Etwa 87 min ab Tokio ・ Platz A · links Richtung Shin-Osaka; rechts Richtung Tokyo",
   "About 93 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "Etwa 93 min ab Tokio ・ Platz A · links Richtung Shin-Osaka; rechts Richtung Tokyo",
-  "65": "65",
-  "46": "46",
-  "77": "77",
-  "82": "82",
-  "87": "87",
-  "93": "93",
   "Categories": "Kategorien",
   "Clear filters": "Filter löschen",
   "English": "Englisch",
@@ -2237,5 +2237,9 @@
   "Showing all views": "Alle Ansichten anzeigen",
   "Showing {0} of {1} views on this stretch": "{0} von {1} Ansichten auf diesem Abschnitt werden angezeigt",
   "There are {0} more views on this stretch.": "Auf diesem Abschnitt gibt es {0} weitere Ansichten.",
-  "Train Search filters": "Filter der Zugsuche"
+  "Train Search filters": "Filter der Zugsuche",
+  "Travelling between Tokyo and Kyoto or Osaka? Choose your direction, boarding station and departure time.": "Wählen Sie Richtung, Einstiegsbahnhof und Abfahrtszeit.",
+  "Riding the bullet train between Tokyo and Kyoto or Osaka? Discover Mt. Fuji, castles and lakes in window photos, then find viewing times for your train.": "Entdecken Sie Fuji, Burgen, Felder, Seen und Einblicke in Kyoto aus dem Tokaido Shinkansen. Erkunden Sie die Fotoguides und finden Sie die Sichtzeiten für Ihren Zug.",
+  "Travelling between Tokyo and Kyoto or Osaka? Find estimated viewing times and seat sides for Mt. Fuji, castles and lakes on your Nozomi, Hikari or Kodama.": "Finden Sie anhand des Fahrplans Ihres Nozomi, Hikari oder Kodama heraus, wann Sie Fuji, Burgen und Seen sehen. Die Zeiten sind Schätzungen. In der Android-App können Sie Smartphone-Hinweise für ausgewählte Ausblicke einstellen.",
+  "Mt. Fuji, castles, lakes, and unexpected signs. Travelling between Tokyo and Kyoto or Osaka? Photos and stories explain what you pass, and you can check when and which side to look for your train.": "Fuji, Burgen, Seen und überraschende Schilder. Fotos und Geschichten erklären, was Sie sehen, und Sie können für Ihren Zug prüfen, wann und auf welcher Seite Sie hinausschauen sollten."
 }

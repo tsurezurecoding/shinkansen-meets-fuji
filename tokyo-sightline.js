@@ -14,7 +14,8 @@
   var photo = section.querySelector('[data-tokyo-photo]');
   var photoOverlay = section.querySelector('[data-tokyo-photo-overlay]');
   var photoToggle = section.querySelector('[data-tokyo-photo-toggle]');
-  var photoBase = photo.src.slice(0, photo.src.lastIndexOf('/') + 1);
+  var photoURL = new URL(photo.getAttribute('data-photo-original-src') || photo.src, document.baseURI).href;
+  var photoBase = photoURL.slice(0, photoURL.lastIndexOf('/') + 1);
   var clip = section.querySelector('[data-tokyo-clip]'), video = section.querySelector('[data-tokyo-video]');
   function stopClip() {
     if (video.hasAttribute('src')) { video.pause(); video.removeAttribute('src'); video.load(); }
@@ -23,10 +24,21 @@
   clip.addEventListener('toggle', function() {
     if (!clip.open) { if (video.hasAttribute('src')) video.pause(); return; }
     var scene = scenes[selected];
+    if (scene.clip) video.poster = photoBase + scene.photo;
     if (scene.clip && !video.hasAttribute('src')) video.src = new URL('../' + scene.clip, photoBase).href;
   });
+  function sizePhoto() {
+    var sizes = Math.max(1, Math.ceil(photo.getBoundingClientRect().width)) + 'px';
+    photo.setAttribute('data-photo-sizes', sizes);
+    if (photo.hasAttribute('srcset')) photo.sizes = sizes;
+  }
+  window.addEventListener('resize', sizePhoto, { passive: true });
   function expandPhoto(value) {
     photoOverlay.classList.toggle('is-expanded', value);
+    photo.toggleAttribute('data-photo-expanded', value);
+    sizePhoto();
+    if (window.MADO_SPOT_PHOTOS) window.MADO_SPOT_PHOTOS.apply(photo, photoBase + scenes[selected].photo);
+    else photo.src = photoBase + scenes[selected].photo;
     photoToggle.setAttribute('aria-expanded', String(value));
     photoToggle.setAttribute('aria-label', value ? '車窓写真を元の大きさに戻す' : '車窓写真を拡大');
     section.querySelector('[data-tokyo-photo-action]').textContent = value ? '写真を戻す' : '写真を拡大';
@@ -92,9 +104,11 @@
       expandPhoto(false);
       selected = Number(button.dataset.tokyoScene); var scene = scenes[selected];
       clip.hidden = !scene.clip;
-      video.poster = photoBase + scene.photo;
+      video.removeAttribute('poster');
       section.querySelectorAll('[data-tokyo-scene]').forEach(function(b) { b.setAttribute('aria-pressed', String(b === button)); });
-      photo.src = photoBase + scene.photo; photo.alt = scene.alt;
+      if (window.MADO_SPOT_PHOTOS) window.MADO_SPOT_PHOTOS.apply(photo, photoBase + scene.photo);
+      else photo.src = photoBase + scene.photo;
+      photo.alt = scene.alt;
       section.querySelector('[data-tokyo-caption]').textContent = scene.date + '・' + scene.seat + '／撮影：道草';
       section.querySelector('[data-tokyo-note]').textContent = scene.note;
       section.querySelector('[data-tokyo-distance]').textContent = '推定撮影位置から約' + scene.distanceKm + 'km';
@@ -121,6 +135,8 @@
   function mount() {
     var map = document.querySelector('.spot-page-shell article .spot-static-map');
     if (map) map.before(section);
+    sizePhoto();
+    if (window.MADO_SPOT_PHOTOS) window.MADO_SPOT_PHOTOS.observe(section);
     watch();
   }
   if (window.MADO_SPOT_PAGE_READY) window.MADO_SPOT_PAGE_READY.then(mount); else mount();

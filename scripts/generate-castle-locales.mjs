@@ -40,6 +40,18 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : everydayDictionaries[route] ? { ...commonDictionary, ...everydayDictionaries[route] } : commonDictionary;
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
+    // These editions ship a static article. Keep images usable without JS,
+    // with responsive candidates and native lazy loading at their final layout.
+    for (const image of doc.querySelectorAll('[data-photo-deferred]')) {
+      image.setAttribute('src', image.getAttribute('data-photo-display-src') || image.getAttribute('data-photo-original-src'));
+      if (image.getAttribute('data-photo-srcset')) {
+        image.setAttribute('srcset', image.getAttribute('data-photo-srcset'));
+        image.setAttribute('sizes', dom.window.MADO_SPOT_PHOTOS.sizes);
+      }
+      image.setAttribute('loading', 'lazy');
+      image.removeAttribute('data-photo-deferred');
+      image.removeAttribute('data-photo-observed');
+    }
     doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());
     const prefix = route.startsWith('spots/') ? '../../' : '../';
     const file = `${lang}/${route}`;

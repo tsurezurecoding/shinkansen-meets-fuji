@@ -1,4 +1,10 @@
 {
+  "46": "46",
+  "65": "65",
+  "77": "77",
+  "82": "82",
+  "87": "87",
+  "93": "93",
   "+49 spots": "+49곳",
   ". Use stamps to record views you have spotted.": ". 스탬프로 발견한 풍경을 기록해 보세요.",
   "0 min": "0분",
@@ -2222,12 +2228,6 @@
   "About 82 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "도쿄에서 약 82분 ・ A석 · 신오사카 방향 왼쪽, 도쿄 방향 오른쪽",
   "About 87 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "도쿄에서 약 87분 ・ A석 · 신오사카 방향 왼쪽, 도쿄 방향 오른쪽",
   "About 93 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "도쿄에서 약 93분 ・ A석 · 신오사카 방향 왼쪽, 도쿄 방향 오른쪽",
-  "65": "65",
-  "46": "46",
-  "77": "77",
-  "82": "82",
-  "87": "87",
-  "93": "93",
   "Categories": "카테고리",
   "Clear filters": "필터 지우기",
   "English": "영어",
@@ -2237,5 +2237,9 @@
   "Showing all views": "모든 풍경 표시",
   "Showing {0} of {1} views on this stretch": "이 구간의 풍경 {1}개 중 {0}개 표시 중",
   "There are {0} more views on this stretch.": "이 구간에 풍경이 {0}개 더 있습니다.",
-  "Train Search filters": "열차 검색 필터"
+  "Train Search filters": "열차 검색 필터",
+  "Travelling between Tokyo and Kyoto or Osaka? Choose your direction, boarding station and departure time.": "방향과 탑승역, 출발 시각을 선택하세요.",
+  "Riding the bullet train between Tokyo and Kyoto or Osaka? Discover Mt. Fuji, castles and lakes in window photos, then find viewing times for your train.": "도카이도 신칸센에서 후지산과 성, 농경지, 호수, 교토의 풍경을 만나 보세요. 사진 안내를 살펴보고 내 열차의 관람 시간을 찾아보세요.",
+  "Travelling between Tokyo and Kyoto or Osaka? Find estimated viewing times and seat sides for Mt. Fuji, castles and lakes on your Nozomi, Hikari or Kodama.": "Nozomi, Hikari, Kodama 시간표를 기준으로 후지산과 성, 호수가 언제 보이는지 찾아보세요. 시간은 예상값입니다. Android 앱에서는 선택한 풍경의 스마트폰 알림을 설정할 수 있습니다.",
+  "Mt. Fuji, castles, lakes, and unexpected signs. Travelling between Tokyo and Kyoto or Osaka? Photos and stories explain what you pass, and you can check when and which side to look for your train.": "후지산과 성, 호수, 뜻밖의 간판. 사진과 해설로 창밖의 정체를 알려 드리고, 탑승 열차에 맞춰 언제 어느 쪽에서 보이는지도 확인할 수 있습니다."
 }

@@ -41,7 +41,14 @@
       if (!src) return;
       options = options || {};
 
-      image.src = src;
+      var sources = button.getAttribute('data-gallery-srcset') || '';
+      image.setAttribute('data-photo-original-src', src);
+      image.removeAttribute('data-photo-original-fallback');
+      image.sizes = button.getAttribute('data-gallery-sizes') || '';
+      // Set candidates before src, so a selection never starts the full original
+      // while the browser is still learning about the correctly sized images.
+      image.srcset = sources;
+      image.src = button.getAttribute('data-gallery-display-src') || src;
       image.alt = button.getAttribute("data-gallery-alt") || "";
       var sourceHref = button.getAttribute("data-gallery-credit-href") || "";
       if (imageLink) {

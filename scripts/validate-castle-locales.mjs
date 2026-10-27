@@ -24,8 +24,8 @@ const normalizedUrl = (value, base) => {
   url.search = ''; url.hash = '';
   return url.href;
 };
-const imageSources = doc => Array.from(doc.querySelectorAll('img[src], [data-gallery-src], [data-zoom-src]')).map(el =>
-  normalizedUrl(el.getAttribute('src') || el.getAttribute('data-gallery-src') || el.getAttribute('data-zoom-src'), doc.baseURI));
+const imageSources = doc => Array.from(doc.querySelectorAll('img[src], img[data-photo-original-src], [data-gallery-src], [data-zoom-src]')).map(el =>
+  normalizedUrl(el.getAttribute('data-photo-original-src') || el.getAttribute('src') || el.getAttribute('data-gallery-src') || el.getAttribute('data-zoom-src'), doc.baseURI));
 const creditRecords = doc => [
   ...Array.from(doc.querySelectorAll('[data-gallery-credit]')).map(el => [el.getAttribute('data-gallery-credit'), el.getAttribute('data-gallery-credit-href') || '']),
   ...Array.from(doc.querySelectorAll('figcaption a[href]:not([data-gallery-source-output])')).filter(el => /^https?:/.test(el.href) && !el.href.includes('openstreetmap.org')).map(el => [normalizeText(el.textContent), el.href]),
@@ -127,7 +127,8 @@ function checkInteractions(dom, label) {
     const thumbs = Array.from(gallery.querySelectorAll('[data-gallery-thumb]'));
     for (const thumb of thumbs) {
       thumb.click();
-      assert(gallery.querySelector('[data-gallery-image]')?.getAttribute('src') === thumb.getAttribute('data-gallery-src'), label, 'gallery thumbnail does not change image');
+      assert(gallery.querySelector('[data-gallery-image]')?.getAttribute('src') === (thumb.getAttribute('data-gallery-display-src') || thumb.getAttribute('data-gallery-src')), label, 'gallery thumbnail does not change image');
+      assert(gallery.querySelector('[data-gallery-image]')?.getAttribute('data-photo-original-src') === thumb.getAttribute('data-gallery-src'), label, 'gallery loses original photo identity');
       assert(gallery.querySelector('[data-gallery-image]')?.alt === thumb.getAttribute('data-gallery-alt'), label, 'gallery loses translated alternative text');
       assert(gallery.querySelector('[data-gallery-note-output]')?.textContent === thumb.getAttribute('data-gallery-note'), label, 'gallery loses translated caption');
       assert(gallery.querySelector('[data-gallery-credit-output]')?.textContent === thumb.getAttribute('data-gallery-credit'), label, 'gallery loses original credit');

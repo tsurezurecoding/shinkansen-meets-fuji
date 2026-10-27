@@ -3305,19 +3305,19 @@ const SPOTS = [
     en: { name: "Mt. Fuji", area: "Mishima → Shin-Fuji", hook: "Japan's famous three minutes.", story: "Between Mishima and Shin-Fuji, Mt. Fuji fills the window — for roughly three to four minutes. It grows bigger after each tunnel, and it gets a gasp out of people every single time. Seat E side; be ready a little early." },
     pageTitle: {
       ja: "三島〜新富士の富士山｜季節で変わる車窓の姿 | 新幹線の窓",
-      en: "Mt. Fuji between Mishima and Shin-Fuji: Seasonal Window Views",
+      en: "Mt. Fuji from the Shinkansen: Seasonal Window Photos",
     },
     pageHeading: {
       ja: "三島〜新富士、窓いっぱいの富士山",
-      en: "Mt. Fuji filling the window between Mishima and Shin-Fuji",
+      en: "Mt. Fuji filling the Shinkansen window between Mishima and Shin-Fuji",
     },
     pageHeadingChunks: {
       ja: ["三島〜新富士、", "窓いっぱいの富士山"],
-      en: ["Mt. Fuji filling the window", "between Mishima and Shin-Fuji"],
+      en: ["Mt. Fuji filling the Shinkansen window", "between Mishima and Shin-Fuji"],
     },
     metaDescription: {
       ja: "田んぼや製紙工場越しに眺める三島〜新富士の富士山を、車窓写真で紹介。雪化粧の冬、雪のない夏、夕暮れの山影など、季節と光によって変わる姿を楽しめます。",
-      en: "Window photos of Mt. Fuji beyond rice fields and paper mills near Shin-Fuji, from snowy winter slopes to snowless summer views and dusk silhouettes.",
+      en: "See Mt. Fuji from the bullet train near Shin-Fuji. Compare window photos across seasons, from rice fields and paper mills to dusk silhouettes.",
     },
     sectionHeading: {
       ja: "この3〜4分で、富士山はどう見える？",
@@ -3325,7 +3325,7 @@ const SPOTS = [
     },
     pageStory: {
       ja: "このページの主役は、東海道新幹線で富士山が最も大きく見える三島〜新富士の車窓です。三島を過ぎると、街並みや工場、田園の向こうに富士山が現れ、短いトンネルでいったん隠れ、抜けるたびに角度と手前の景色が変わります。冠雪した冬、雪のない夏、夕暮れの輪郭まで、同じ区間でも季節と光によって表情が大きく変わります。",
-      en: "This page focuses on the classic Mishima–Shin-Fuji stretch, where Mt. Fuji appears largest from the Tokaido Shinkansen. Beyond Mishima, the mountain rises behind towns, factories, and fields, disappears in short tunnels, then returns with a different angle and foreground. Snowy winter, snowless summer, and dusk each turn the same three to four minutes into a different view.",
+      en: "On a bullet train journey between Tokyo and Kyoto or Osaka, Mt. Fuji fills the window between Mishima and Shin-Fuji. This photo guide explores its changing foregrounds and seasons. Beyond Mishima, the mountain rises behind towns, factories, and fields, disappears in short tunnels, then returns with a different angle and foreground. Snowy winter, snowless summer, and dusk each turn the same three to four minutes into a different view.",
     },
     explainer: {
       heading: { ja: "写真で見る、三島〜新富士の変化", en: "Reading the Mishima–Shin-Fuji view through photos" },

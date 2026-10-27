@@ -82,8 +82,8 @@ himeji.detail = {
  },
  photos: [
   { src: himeji.photo, alt: himeji.alt, credit: himeji.credit.ja, sourceUrl: himeji.sourceUrl, caption: { ja: '街並みの向こうに、白い天守。', en: 'The white keep beyond the rooftops.' } },
-  { src: 'images/20261001_himeji_castle_town_dvfkfy3nnzdn3vj.jpg', alt: { ja: '車窓の建物の間から顔を出す姫路城', en: 'Himeji Castle appearing between buildings from the train' }, credit: contributor, sourceUrl: himejiPost, caption: { ja: '手前の街と比べると、城までの距離がわかります。', en: 'The buildings in front show how distant the castle is.' } },
-  { src: 'images/20261001_himeji_castle_keep_dvfkfy3nnzdn3vj.jpg', alt: { ja: '望遠で捉えた姫路城の天守と重なる屋根', en: 'A telephoto view of Himeji Castle and its layered roofs' }, credit: contributor, sourceUrl: himejiPost, caption: { ja: '望遠で捉えた天守。肉眼ではもっと小さく見えます。', en: 'A telephoto close-up. The keep is much smaller to the naked eye.' } }
+  { src: 'images/20261001_himeji_castle_town_dvfkfy3nnzdn3vj.jpg', alt: { ja: '車窓の建物の間から顔を出す姫路城', en: 'Himeji Castle appearing between buildings from the train' }, credit: contributor, sourceUrl: himejiPost, caption: { ja: '広い写真で、街並みの中にある白い天守を探してみてください。', en: 'The buildings in front show how distant the castle is.' } },
+  { src: 'images/20261001_himeji_castle_keep_dvfkfy3nnzdn3vj.jpg', alt: { ja: '望遠で捉えた姫路城の天守と重なる屋根', en: 'A telephoto view of Himeji Castle and its layered roofs' }, credit: contributor, sourceUrl: himejiPost, caption: { ja: '望遠写真で、重なる屋根の形を確かめます。肉眼ではもっと小さく見えます。', en: 'A telephoto close-up. The keep is much smaller to the naked eye.' } }
  ],
  references: [
   { ja: '姫路城公式サイト', en: 'JNTO: Himeji Castle travel guide (English)', url: { ja: 'https://www.city.himeji.lg.jp/castle/', en: 'https://www.japan.travel/en/spot/1030/' } },

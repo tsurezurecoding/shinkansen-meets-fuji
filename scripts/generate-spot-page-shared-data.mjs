@@ -6,6 +6,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { thumbnailSrc, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
+import { responsivePhotoPlan } from './shared/responsive-photos.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(scriptDir, "..");
@@ -832,6 +833,12 @@ const sanyo = SANYO_CASTLES.map(castle => ({ id: castle.id, name: castle.name, s
 const catalog = { version: 3, affiliatesEnabled: AFFILIATE_PRESENTATION_ENABLED, collection727Count, stations, spots, wheelSpots, showcase, sanyo };
 const catalogOutput = `${GENERATED_BANNER}(function (root) {\n  root.MADO_SPOT_PAGE_SHARED_DATA = ${JSON.stringify(catalog)};\n}(typeof window !== "undefined" ? window : globalThis));\n`;
 
+const photoPages = Object.values(pages).flatMap(editions => Object.values(editions));
+const photoPlan = responsivePhotoPlan(appDir, photoPages.flatMap(page => [...page.photos, ...page.gallery, ...page.inline]));
+for (const page of photoPages) {
+  const sources = [...new Set([...page.photos, ...page.gallery, ...page.inline].map(photo => photo.src))];
+  page.imageSources = Object.fromEntries(sources.filter(src => photoPlan.sources[src]).map(src => [src, photoPlan.sources[src]]));
+}
 const pageArtifacts = new Map();
 for (const spot of pageSpots) {
   for (const lang of ["ja", "en"]) {

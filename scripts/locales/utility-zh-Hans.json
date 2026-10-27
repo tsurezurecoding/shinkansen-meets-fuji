@@ -1,4 +1,10 @@
 {
+  "46": "46",
+  "65": "65",
+  "77": "77",
+  "82": "82",
+  "87": "87",
+  "93": "93",
   "+49 spots": "+49处景点",
   ". Use stamps to record views you have spotted.": "中点选星号加入最爱；实际看见的景色，则可以用印章记录。",
   "0 min": "0分钟",
@@ -2222,12 +2228,6 @@
   "About 82 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "东京出发后约82分钟 ・ A座・往新大阪方向左侧，往东京方向右侧",
   "About 87 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "东京出发后约87分钟 ・ A座・往新大阪方向左侧，往东京方向右侧",
   "About 93 min from Tokyo ・ Seat A · left side toward Shin-Osaka; right side toward Tokyo": "东京出发后约93分钟 ・ A座・往新大阪方向左侧，往东京方向右侧",
-  "65": "65",
-  "46": "46",
-  "77": "77",
-  "82": "82",
-  "87": "87",
-  "93": "93",
   "Categories": "类别",
   "Clear filters": "清除筛选条件",
   "English": "英语",
@@ -2237,5 +2237,9 @@
   "Showing all views": "显示所有景色",
   "Showing {0} of {1} views on this stretch": "显示此路段 {1} 个景色中的 {0} 个",
   "There are {0} more views on this stretch.": "此路段还有 {0} 个景色。",
-  "Train Search filters": "列车搜索筛选条件"
+  "Train Search filters": "列车搜索筛选条件",
+  "Travelling between Tokyo and Kyoto or Osaka? Choose your direction, boarding station and departure time.": "选择行进方向、上车站与出发时间。",
+  "Riding the bullet train between Tokyo and Kyoto or Osaka? Discover Mt. Fuji, castles and lakes in window photos, then find viewing times for your train.": "从东海道新干线欣赏富士山、城堡、田园、湖泊与京都的一瞥。浏览照片图监，查询你搭乘列车的观景时间。",
+  "Travelling between Tokyo and Kyoto or Osaka? Find estimated viewing times and seat sides for Mt. Fuji, castles and lakes on your Nozomi, Hikari or Kodama.": "依希望号、光号或回声号时刻表，查找富士山、城堡与湖泊的观景时间。时间为估算值。Android应用程式可为选定景色设置手机提醒。",
+  "Mt. Fuji, castles, lakes, and unexpected signs. Travelling between Tokyo and Kyoto or Osaka? Photos and stories explain what you pass, and you can check when and which side to look for your train.": "富士山、城堡、湖泊，还有意想不到的看板。照片与解说告诉你窗外是什么，也能根据所乘列车查询何时、在哪一侧能看见。"
 }

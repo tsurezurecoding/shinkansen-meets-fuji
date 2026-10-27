@@ -76,7 +76,8 @@ test('mounting and scrolling never load the engine; an explicit click opens the 
   assert.equal(find('#tokyo-sightline-model').hidden, false);
   assert.equal(find('[data-tokyo-preview]').hidden, false);
   assert.equal(find('[data-tokyo-preview-credit]').hidden, false);
-  assert.match(find('[data-tokyo-preview-image]').src, /images\/tokyo-sightline-tower-preview\.png\?v=[a-f0-9]+$/);
+  assert.equal(find('[data-tokyo-preview-image]').hasAttribute('src'), false);
+  assert.match(find('[data-tokyo-preview-image]').getAttribute('data-photo-original-src'), /images\/tokyo-sightline-tower-preview\.png\?v=[a-f0-9]+$/);
   assert.equal(find('[data-tokyo-photo-overlay]').parentElement, find('#tokyo-sightline-model'));
   assert.equal(find('.tokyo-sightline-scenes').nextElementSibling, find('#tokyo-sightline-model'));
   assert.equal(find('[data-tokyo-interaction]').hidden, true);
