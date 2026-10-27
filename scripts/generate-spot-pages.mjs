@@ -1252,7 +1252,7 @@ function localizeEnglishInternalLinks(html) {
 
 function englishLandingHTML() {
   const title = "Mt. Fuji & More: Tokaido Shinkansen Window Views | Shinkansen Window";
-  const description = `Discover Mt. Fuji, castles, farmland, lakes and glimpses of Kyoto from the Tokaido Shinkansen. Explore the photo guides and find viewing times for your train.`;
+  const description = `Riding the bullet train between Tokyo and Kyoto or Osaka? Discover Mt. Fuji, castles and lakes in window photos, then find viewing times for your train.`;
   const handoff = '<script>(function(){var p=location.pathname.replace(/\\/+$/,"/"),h=location.hash,j=(p==="/en/"||p==="/en/index.html")&&(h==="#journey"||h.indexOf("#spot-")===0);if(j){var q=new URLSearchParams(location.search),r=q.get("lang"),s;try{s=localStorage.getItem("mado-lang")}catch(e){}var t="../en/start.html";if(r==="ja"){try{localStorage.setItem("mado-lang","ja")}catch(e){}t="../start.html"}else if(r==="en"||s==="en"){try{localStorage.setItem("mado-lang","en")}catch(e){}}var u=new URL(t,location.href);u.search=location.search;u.hash=location.hash;location.replace(u.href);return}})();</script>';
   const jsonLd = {
     "@context": "https://schema.org",
@@ -1297,7 +1297,7 @@ function englishLandingHTML() {
     ["もうひとつの旅がある。", "outside your window."],
     ["富士山も、城も、湖も、", "Mt. Fuji, castles, lakes,"],
     ["ふしぎな看板も。", "and unexpected signs."],
-    ["車窓の正体を写真と解説で紹介し、", "Photos and stories explain what you pass,"],
+    ["車窓の正体を写真と解説で紹介し、", "Travelling between Tokyo and Kyoto or Osaka? Photos and stories explain what you pass,"],
     ["乗る列車で見えるころと座席側も調べられます。", "and you can check when and which side to look for your train."],
     ["地図と音声で次を知らせる", "Map and audio for the next view"],
     ["いつ・どちら側かを調べる", "Check when and which side to watch"],
@@ -1602,11 +1602,11 @@ function englishLandingHTML() {
 
 function englishAppIndexHTML() {
   const title = "Tokaido Shinkansen Viewing Times for Your Train";
-  const description = "Find when to see Mt. Fuji, castles and lakes based on your Nozomi, Hikari or Kodama timetable. Times are estimates. Set smartphone alerts for selected views in the Android app.";
+  const description = "Travelling between Tokyo and Kyoto or Osaka? Find estimated viewing times and seat sides for Mt. Fuji, castles and lakes on your Nozomi, Hikari or Kodama.";
   const selectorCopy = [
     ["車窓の時刻はダイヤから計算した目安です。運転日・当日の遅延は反映しません。", "Viewing times are timetable estimates. Operating dates and live delays are not reflected."],
     ['<span class="copy-chunk">富士山も湖も、</span><span class="copy-chunk">見える時間を</span><span class="copy-chunk">乗る列車に合わせて</span>', "Mt. Fuji, lakes and more. Find viewing times for your train."],
-    ['<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>', "Choose your direction, boarding station and departure time."],
+    ['<span class="copy-chunk">方向・乗車駅・出発時刻から、</span><span class="copy-chunk">乗る列車を選んでください。</span>', "Travelling between Tokyo and Kyoto or Osaka? Choose your direction, boarding station and departure time."],
     ["乗る列車の車窓時刻を調べる", "Find viewing times for your train"],
     ["列車番号から富士山の時刻を探す", "Find Mt. Fuji times by train number"],
     ["フッターナビゲーション", "Footer navigation"],

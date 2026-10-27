@@ -225,7 +225,7 @@ const MSG = {
     quickModalTitle: "What is Shinkansen Window?",
     quickModalClose: "Close",
     setupEyebrow: "YOUR JOURNEY", setupTitle: "Mt. Fuji, lakes and more. Find viewing times for your train.",
-    setupSub: "Choose your direction, boarding station and departure time.",
+    setupSub: "Travelling between Tokyo and Kyoto or Osaka? Choose your direction, boarding station and departure time.",
     trainLinkInvalid: "We could not find the train in this link. Choose your direction, boarding station, and departure time to select the right train.",
     fujiAnswerTitle: "Mt. Fuji passing time",
     fujiAnswerTime: (time) => `Around ${time} · near Shin-Fuji`,

@@ -9,18 +9,18 @@
   <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <title>Mt. Fuji from the Shinkansen: 5 Viewing Areas &amp; Seat Guide</title>
-  <meta name="description" content="Explore five Mt. Fuji viewing areas along the Tokaido Shinkansen, with photos and seat-side guidance: the wide view near Shin-Fuji, the Sagami Plain and the brief left-side view.">
+  <meta name="description" content="See Mt. Fuji from the Shinkansen on your Tokyo–Kyoto or Osaka bullet train journey. Compare five viewing areas, window photos and seat sides.">
   <link rel="canonical" href="https://www.michikusa-travel.com/en/guide.html">
   <link rel="stylesheet" href="../style.css?v=5f3f6183">
   <meta property="og:title" content="Mt. Fuji from the Shinkansen: 5 Viewing Areas &amp; Seat Guide">
-  <meta property="og:description" content="Explore five Mt. Fuji viewing areas along the Tokaido Shinkansen, with photos and seat-side guidance: the wide view near Shin-Fuji, the Sagami Plain and the brief left-side view.">
+  <meta property="og:description" content="See Mt. Fuji from the Shinkansen on your Tokyo–Kyoto or Osaka bullet train journey. Compare five viewing areas, window photos and seat sides.">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg">
   <meta property="og:image:width" content="4032">
   <meta property="og:image:height" content="2268">
   <meta property="og:url" content="https://www.michikusa-travel.com/en/guide.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mt. Fuji from the Shinkansen: 5 Viewing Areas &amp; Seat Guide">
-  <meta name="twitter:description" content="Explore five Mt. Fuji viewing areas along the Tokaido Shinkansen, with photos and seat-side guidance: the wide view near Shin-Fuji, the Sagami Plain and the brief left-side view.">
+  <meta name="twitter:description" content="See Mt. Fuji from the Shinkansen on your Tokyo–Kyoto or Osaka bullet train journey. Compare five viewing areas, window photos and seat sides.">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/20240211_fuji_michikusa.jpg">
   <script type="application/ld+json">{
   "@context": "https://schema.org",
@@ -30,7 +30,7 @@
       "@id": "https://www.michikusa-travel.com/en/guide.html#webpage",
       "url": "https://www.michikusa-travel.com/en/guide.html",
       "name": "Mt. Fuji from the Shinkansen: 5 Viewing Areas & Seat Guide",
-      "description": "Explore five Mt. Fuji viewing areas along the Tokaido Shinkansen, with photos and seat-side guidance: the wide view near Shin-Fuji, the Sagami Plain and the brief left-side view.",
+      "description": "See Mt. Fuji from the Shinkansen on your Tokyo–Kyoto or Osaka bullet train journey. Compare five viewing areas, window photos and seat sides.",
       "inLanguage": "en",
       "image": {
         "@type": "ImageObject",
@@ -53,7 +53,7 @@
       "@type": "Article",
       "@id": "https://www.michikusa-travel.com/en/guide.html#article",
       "headline": "Mt. Fuji from the Shinkansen: 5 Viewing Areas & Seat Guide",
-      "description": "Explore five Mt. Fuji viewing areas along the Tokaido Shinkansen, with photos and seat-side guidance: the wide view near Shin-Fuji, the Sagami Plain and the brief left-side view.",
+      "description": "See Mt. Fuji from the Shinkansen on your Tokyo–Kyoto or Osaka bullet train journey. Compare five viewing areas, window photos and seat sides.",
       "image": {
         "@type": "ImageObject",
         "@id": "https://www.michikusa-travel.com/en/guide.html#primaryimage",
@@ -228,7 +228,7 @@
         <p class="eyebrow">MT. FUJI WINDOW</p>
         <h1 id="guideHeroTitle">See Mt. Fuji from the Shinkansen</h1>
         <p class="collection-hero-lead">One mountain, many ways to enjoy the view.</p>
-        <p class="collection-hero-note">A distant peak beyond the city. Paper-mill chimneys beneath a snowy summit. A wide view across the Fujikawa River. Explore five stretches where Mt. Fuji can appear, and discover how the foreground, season and light change the scene. On cloudy days, there is still a foreground to explore.</p>
+        <p class="collection-hero-note">Riding the bullet train between Tokyo and Kyoto or Osaka? Explore five stretches where Mt. Fuji can appear, with window photos and seat-side guidance. See how the foreground, season and light change the scene: a distant peak beyond the city, paper-mill chimneys beneath a snowy summit, and a wide view across the Fujikawa River. On cloudy days, there is still a foreground to explore.</p>
         <div class="collection-hero-actions">
           <a class="btn btn-primary" href="#seat" data-guide-cta="hero_sections">Which seat? Where to look?</a>
           <a class="btn btn-ghost" href="start.html?focus=fuji#journey" data-guide-cta="hero_exact_time">Times for your train</a>

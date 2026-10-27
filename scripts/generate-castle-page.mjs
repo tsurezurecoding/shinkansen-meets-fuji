@@ -83,8 +83,8 @@ function render(lang) {
  // 一覧は4.7位（2026-09-16までの90日 SC）。城名の需要も英語にある（odawara castle 米1,900・日本18,100、
  // hikone castle 1,300/6,600、gifu castle 720/8,100、himeji castle 110,000。2026-09-20 Keyword Planner）。
  // そのため英語だけ、強い城名をtitle・descriptionへ入れる。日本語へ機械的に持ち込まない（2026-09-21）。
- const title = pick('新幹線から見える日本の名城｜東海道新幹線の車窓で探す天守と城跡', 'Japanese Castles from the Shinkansen | Himeji, Odawara, Kiyosu');
- const description = pick('東海道新幹線の車窓から見える日本の名城。小田原城・掛川城・清洲城・岐阜城・彦根城の天守、佐和山と観音寺の城跡、新大阪から西の姫路城・岡山城・福山城まで。席側と探す目印を車窓写真つきで。', 'Which Japanese castles can you see from the bullet train? Odawara, Kakegawa, Kiyosu, Gifu and Hikone from the Tokaido Shinkansen; Himeji, Okayama and Fukuyama to the west. Window photographs, seat sides, and what to look for.');
+ const title = pick('新幹線から見える城｜東海道・山陽の車窓写真と席側', 'Japanese Castles from the Shinkansen | Himeji, Odawara, Kiyosu');
+ const description = pick('東海道・山陽新幹線から見える城を車窓写真で紹介。小田原城・掛川城・清洲城・彦根城から、新大阪より西の姫路城・岡山城・福山城まで。席側と探す目印、天守や城跡の物語を案内します。', 'Which Japanese castles can you see from the bullet train? Odawara, Kakegawa, Kiyosu, Gifu and Hikone from the Tokaido Shinkansen; Himeji, Okayama and Fukuyama to the west. Window photographs, seat sides, and what to look for.');
  const heroAlt = pick('新幹線の車窓から見える清洲城', 'Kiyosu Castle from the Shinkansen window');
  const sidePhoto = (spotId, src) => {
   const spot = spots.find(s => s.id === spotId);
@@ -188,7 +188,7 @@ ${detailHref ? `        <p class="cs-more"><a href="${detailHref}">${pick(`${esc
       <div class="cs-hero-inner">
         <p class="eyebrow">CASTLES</p>
         <h1 id="csTitle">${pick(chunk(['新幹線から見える', '日本の名城']), 'Japanese Castles from the Shinkansen')}</h1>
-        <p class="cs-hero-lead">${pick(chunk(['線路のすぐそばにも。', '遠くの山の上にも。', '東京から新大阪へ、', '窓の外の城めぐり。']), 'Beside the tracks. On a distant summit. Castles pass the window all the way from Tokyo, so the ride west is castle hopping without the detours.')}</p>
+        <p class="cs-hero-lead">${pick(chunk(['線路のすぐそばにも。', '遠くの山の上にも。', '東海道から山陽へ、', '窓の外の城めぐり。']), 'Beside the tracks. On a distant summit. Castles pass the window all the way from Tokyo, so the ride west is castle hopping without the detours.')}</p>
         <div class="cs-hero-actions">
           <a class="btn btn-primary" href="#castles">${pick('東京〜新大阪の城', 'Tokyo to Shin-Osaka')}</a>
           <a class="btn btn-ghost" href="#sanyo">${pick('新大阪〜博多の城', 'West of Shin-Osaka')}</a>
