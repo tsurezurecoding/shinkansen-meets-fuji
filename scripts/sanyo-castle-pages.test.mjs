@@ -55,7 +55,10 @@ for (const castle of SANYO_DETAIL_CASTLES) for (const lang of ['ja', 'en']) {
     const dom = page(castle.id, lang), doc = dom.window.document;
     const thumbs = doc.querySelectorAll('[data-gallery-thumb]');
     thumbs[Math.min(1, thumbs.length - 1)].click();
-    assert.equal(doc.querySelector('[data-gallery-image]').getAttribute('src'), thumbs[Math.min(1, thumbs.length - 1)].getAttribute('data-gallery-src'));
+    const selected = thumbs[Math.min(1, thumbs.length - 1)], image = doc.querySelector('[data-gallery-image]');
+    assert.equal(image.getAttribute('src'), selected.getAttribute('data-gallery-display-src') || selected.getAttribute('data-gallery-src'));
+    assert.equal(image.getAttribute('data-photo-original-src'), selected.getAttribute('data-gallery-src'));
+    assert.equal(image.getAttribute('srcset'), selected.getAttribute('data-gallery-srcset') || '');
     assert.equal(doc.querySelector('[data-gallery-image]').alt, castle.detail.photos[Math.min(1, castle.detail.photos.length - 1)].alt[lang]);
     assert.equal(doc.querySelector('[data-gallery-credit-output]').textContent, castle.detail.photos[Math.min(1, castle.detail.photos.length - 1)].credit);
     assert.equal(doc.querySelector('[data-gallery-source-output]').href, castle.detail.photos[Math.min(1, castle.detail.photos.length - 1)].sourceUrl);
