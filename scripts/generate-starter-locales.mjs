@@ -162,6 +162,8 @@ for (const lang of locales.starter) {
       script.textContent = script.textContent.replaceAll('localStorage.setItem("mado-lang", "en")', `localStorage.setItem("mado-lang", "${lang}")`);
     }
     if (route === 'live/index.html') {
+      doc.querySelector('#passed-summary').textContent = `${tr(tables.live.passed)} (0)`;
+      doc.querySelector('#set-narr-help').textContent = tr(tables.live.narrModeHelpLoading);
       const notice = doc.createElement('p'); notice.className = 'utility-audio-note'; notice.textContent = tr(FORECAST_COPY.audio);
       doc.querySelector('#idle-panel')?.append(notice);
     }

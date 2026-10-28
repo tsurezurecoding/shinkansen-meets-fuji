@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "02f133ee4041e0f4",
+  "contentVersion": "b544830b2558f140",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -3565,8 +3565,8 @@
     {
       "path": "it/live/index.html",
       "url": "https://www.michikusa-travel.com/it/live/index.html",
-      "bytes": 20364,
-      "sha256": "863af90f9b86a1888a26f53089118f58b8abae4cfe125916abcbdc973a9269cd"
+      "bytes": 20408,
+      "sha256": "a4f889a4795ac61b7b388b6a87af8b843fe2e71c9f1b751c2ea89872d85a6dd7"
     },
     {
       "path": "it/spots/fuji.html",
@@ -5083,8 +5083,8 @@
     {
       "path": "th/live/index.html",
       "url": "https://www.michikusa-travel.com/th/live/index.html",
-      "bytes": 24623,
-      "sha256": "4334f7b93c3b6e5ee506295f05b52407d094eeefd62b2c5d438583bcf8a52160"
+      "bytes": 24914,
+      "sha256": "d82ab8fe6702fcd1f8afe44ceee6302da75c10cbc187fc5da875fa639420aefb"
     },
     {
       "path": "th/spots/fuji.html",
