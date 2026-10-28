@@ -81,7 +81,7 @@ test('Italian and Thai retain their original six entry pages after full-edition 
     assert.ok(menu, `${label}: language menu`);
     for (const edition of starterLanguages) {
       const option = menu.querySelector(`a[lang="${edition}"]`);
-      assert.equal(new URL(option.href).pathname, `/${edition}/${route}`, `${label}: ${edition} menu link`);
+      assert.equal(new URL(option.href).pathname.replace(/\/index\.html$/, '/'), publicPath(edition, route), `${label}: ${edition} menu link`);
     }
     assert.equal(menu.querySelector(`a[lang="${language}"]`)?.getAttribute('aria-current'), 'page', `${label}: current menu choice`);
 
