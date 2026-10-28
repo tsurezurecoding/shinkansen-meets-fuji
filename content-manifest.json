@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "e2ed03cbb4914656",
+  "contentVersion": "db459770296b9605",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1585,8 +1585,8 @@
     {
       "path": "de/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/de/tokyo-kyoto-stations.html",
-      "bytes": 31874,
-      "sha256": "4221c8d1a93362f2908e1cb6b13653cec841da564b419bd07bcc4e5aa5fd3306"
+      "bytes": 31934,
+      "sha256": "9be13a69d467cca3e0455e8e1ab84af947d66b7557e9a2d6807d3cf6c78e9865"
     },
     {
       "path": "de/utility-data.js",
@@ -2041,8 +2041,8 @@
     {
       "path": "es/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/es/tokyo-kyoto-stations.html",
-      "bytes": 31863,
-      "sha256": "9c86a5055a50d836e0fe45d226004c29183a3f3b5942030406755d79bf5576c6"
+      "bytes": 31956,
+      "sha256": "1e0e99d99bca55c3feda45d9207f031bc6db2feef576f7520d5d586717e06d5f"
     },
     {
       "path": "es/utility-data.js",
@@ -2395,8 +2395,8 @@
     {
       "path": "fr/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/fr/tokyo-kyoto-stations.html",
-      "bytes": 31748,
-      "sha256": "b76e02a348162c57036ff09859fe13ea5c2c59f2ef794997122ab313f4aa4c39"
+      "bytes": 31821,
+      "sha256": "e09dc47115dd8883ce58db90d0a2135ae14698769f58f5f2c73c53a8797773d5"
     },
     {
       "path": "fr/utility-data.js",
@@ -4063,8 +4063,8 @@
     {
       "path": "it/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/it/tokyo-kyoto-stations.html",
-      "bytes": 31803,
-      "sha256": "e56cb3a4a14a9daab4e93e7a7fe0d9aba0a172e6ee656ae78819354a67e429c2"
+      "bytes": 31907,
+      "sha256": "a9fb4c76a219a8f3f21138b32bc50c7dc7e5f7f6eca02e374dedfa3fae40a5b3"
     },
     {
       "path": "it/utility-data.js",
@@ -4399,8 +4399,8 @@
     {
       "path": "ko/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/ko/tokyo-kyoto-stations.html",
-      "bytes": 31222,
-      "sha256": "97dcf6d0c959e40a6feecee600fc8bb4edf68a010f1c0b1528196d22d0a9c489"
+      "bytes": 31169,
+      "sha256": "85076e6a740de4b0fa3f0492dab67f89da880dd80191da9798e1bd6414e693c6"
     },
     {
       "path": "ko/utility-data.js",
@@ -5989,8 +5989,8 @@
     {
       "path": "th/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/th/tokyo-kyoto-stations.html",
-      "bytes": 41563,
-      "sha256": "30bbeef380609c3f742fc7a96ff9161d831f9d644e4c5b82e99be419b2166deb"
+      "bytes": 42193,
+      "sha256": "b22ebb65681f13972124729ef9e0ccf87240fb6b2befbb33b9898870228438e4"
     },
     {
       "path": "th/utility-data.js",
@@ -6481,8 +6481,8 @@
     {
       "path": "zh-Hans/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/tokyo-kyoto-stations.html",
-      "bytes": 29225,
-      "sha256": "844f2ee75598cc5e6d55d88e5416080d73bbf13d258c314ceab59b1d55fb80cb"
+      "bytes": 29081,
+      "sha256": "28980780f92f415f3f92ec4158fdee02f335a2880021d709b6289448b14a86e0"
     },
     {
       "path": "zh-Hans/utility-data.js",
@@ -6793,8 +6793,8 @@
     {
       "path": "zh-Hant/tokyo-kyoto-stations.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/tokyo-kyoto-stations.html",
-      "bytes": 29225,
-      "sha256": "97330a2b191953d1b99775edd35e0beb89411175c7fc21e69d144893ce5a7463"
+      "bytes": 29081,
+      "sha256": "eda4b23492c8c88ec200d1c771fd7d48bab40fb0839dff3689bddeeecc40ab46"
     },
     {
       "path": "zh-Hant/utility-data.js",
