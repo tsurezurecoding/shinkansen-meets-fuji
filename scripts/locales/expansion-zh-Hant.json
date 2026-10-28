@@ -639,5 +639,12 @@
   "Record your first wheel": "記錄第一座摩天輪",
   "Record 2 wheels": "記錄2座摩天輪",
   "Record 4 wheels": "記錄4座摩天輪",
-  "Record all 7 wheels": "記錄全部7座摩天輪"
+  "Record all 7 wheels": "記錄全部7座摩天輪",
+  "+ {n} research records": "+ {n}筆調查紀錄",
+  "· {n} research records": "· {n}筆調查紀錄",
+  "-": "-",
+  "Minutes after leaving Tokyo (Nozomi estimate)": "從東京出發後的分鐘數（Nozomi 估計值）",
+  "Typical time in view (seconds)": "通常可見時間（秒）",
+  "How hard it is to spot": "發現難度",
+  "Visible on a cloudy day": "陰天是否可見"
 }

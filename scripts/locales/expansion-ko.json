@@ -549,7 +549,7 @@
   "About 62 min from Tokyo · Seats A and E": "도쿄에서 약 62분 · A석과 E석",
   "About 62 minutes after leaving Tokyo on a Nozomi train": "노조미로 도쿄 출발 약 62분 후",
   "What are those bright green rows?": "저 밝은 초록 줄무늬는 뭘까요?",
-  "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the tea fields shortly before Kakegawa. Tsumagoi Resort Sainosato is a resort hotel set in the natural surroundings of Kakegawa, Shizuoka.": "시즈오카현은 오랫동안 일본 최대 차 생산지였으며 역사적으로 일본 황차 생산량의 30~40%를 차지했습니다. 신칸센이 지나는 가케가와, 기쿠가와, 시마다와 마키노하라는 차밭이 가장 밀집한 지역 중 하나입니다. 좁고 단정한 이랑이 땅의 굴곡을 따라 이어집니다. 이랑 위 프로펠러 달린 높은 기둥은 방상팬입니다. 추운 봄밤 지표면의 찬 공기와 위의 따뜻한 공기를 섞어 새순을 보호합니다. 오사카행 A석에서는 가케가와 직전 차밭 너머 쓰마고이 리조트 사이노사토 간판이 보입니다. 이 리조트 호텔은 시즈오카 가케가와의 자연 속에 있습니다.",
+  "Shizuoka Prefecture has long been Japan's largest tea-producing area, historically accounting for 30–40 percent of the country's crude tea output. The stretch through Kakegawa, Kikugawa, Shimada and Makinohara — right where the Shinkansen runs — is one of its densest tea belts. Fields curve along the contours of the land, with narrow trimmed ridges tracing every rise and dip. The tall poles topped by propellers you see poking above the ridges are frost-protection fans, used on cold spring nights to mix chilled surface air with warmer air above and protect the young buds. On Seat A toward Osaka, the Tsumagoi Resort Sainosato sign is visible beyond the tea fields shortly before Kakegawa. Tsumagoi Resort Sainosato is a resort hotel set in the natural surroundings of Kakegawa, Shizuoka.": "시즈오카현은 오랫동안 일본 최대 차 생산지였으며 역사적으로 일본 초제차(아라차) 생산량의 30~40%를 차지했습니다. 신칸센이 지나는 가케가와, 기쿠가와, 시마다와 마키노하라는 차밭이 가장 밀집한 지역 중 하나입니다. 좁고 단정한 이랑이 땅의 굴곡을 따라 이어집니다. 이랑 위 프로펠러 달린 높은 기둥은 방상팬입니다. 추운 봄밤 지표면의 찬 공기와 위의 따뜻한 공기를 섞어 새순을 보호합니다. 오사카행 A석에서는 가케가와 직전 차밭 너머 쓰마고이 리조트 사이노사토 간판이 보입니다. 이 리조트 호텔은 시즈오카 가케가와의 자연 속에 있습니다.",
   "Choose Japanese teas for your journey →": "여행길에 마실 일본 차 고르기 →",
   "If you are traveling from Tokyo toward Shin-Osaka, start watching the window on either side as you approach Shizuoka → Kakegawa. If you are traveling toward Tokyo, the order is reversed.": "도쿄에서 신오사카로 갈 때 시즈오카~가케가와 구간에 다가가면 양쪽 창문을 보세요. 도쿄행에서는 순서가 반대입니다.",
   "And what are the fans above the rows?": "차나무 줄 위 선풍기는 무엇일까요?",
@@ -639,5 +639,12 @@
   "Record your first wheel": "첫 관람차 기록하기",
   "Record 2 wheels": "관람차 2개 기록하기",
   "Record 4 wheels": "관람차 4개 기록하기",
-  "Record all 7 wheels": "관람차 7개 모두 기록하기"
+  "Record all 7 wheels": "관람차 7개 모두 기록하기",
+  "+ {n} research records": "+ 조사 기록 {n}건",
+  "· {n} research records": "· 조사 기록 {n}건",
+  "-": "-",
+  "Minutes after leaving Tokyo (Nozomi estimate)": "도쿄 출발 후 경과 시간(분, 노조미 기준 추정)",
+  "Typical time in view (seconds)": "보통 보이는 시간(초)",
+  "How hard it is to spot": "발견 난이도",
+  "Visible on a cloudy day": "흐린 날에도 보이는지"
 }
