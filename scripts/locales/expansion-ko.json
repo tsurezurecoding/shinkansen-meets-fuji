@@ -646,5 +646,6 @@
   "Minutes after leaving Tokyo (Nozomi estimate)": "도쿄 출발 후 경과 시간(분, 노조미 기준 추정)",
   "Typical time in view (seconds)": "보통 보이는 시간(초)",
   "How hard it is to spot": "발견 난이도",
-  "Visible on a cloudy day": "흐린 날에도 보이는지"
+  "Visible on a cloudy day": "흐린 날에도 보이는지",
+  "Hide the dome marker": "돔 표시 숨기기"
 }

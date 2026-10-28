@@ -643,5 +643,6 @@
   "Minutes after leaving Tokyo (Nozomi estimate)": "Minutes après le départ de Tokyo (estimation Nozomi)",
   "Typical time in view (seconds)": "Durée habituelle de visibilité (secondes)",
   "How hard it is to spot": "Difficulté à repérer",
-  "Visible on a cloudy day": "Visible par temps nuageux"
+  "Visible on a cloudy day": "Visible par temps nuageux",
+  "Hide the dome marker": "Masquer le repère du dôme"
 }

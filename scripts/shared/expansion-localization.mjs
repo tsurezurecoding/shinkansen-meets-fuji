@@ -20,6 +20,7 @@ function wheelConfig(doc) {
   const context={window:{}};vm.runInNewContext(script.textContent,context);return {script,config:context.window.FERRIS_WHEEL_COLLECTION};
 }
 export function expansionRuntimeStrings(root,route,doc) {
+  if(route==='tokyo-kyoto-stations.html')return ['Show the dome in this photo','Hide the dome marker'];
   if(route==='727-collection.html'){
     const data=boardEnglish(root),keys=new Set(Object.values(data.templates));
     for(const station of data.stations)keys.add(station.en);
@@ -30,6 +31,7 @@ export function expansionRuntimeStrings(root,route,doc) {
   return [];
 }
 export function localizeExpansionRuntime(root,route,doc,lang,tr){
+  if(route==='tokyo-kyoto-stations.html'){const button=doc.querySelector('.clue-toggle');button.dataset.showLabel=tr('Show the dome in this photo');button.dataset.hideLabel=tr('Hide the dome marker');for(const photo of doc.querySelectorAll('[data-alt]'))photo.dataset.alt=tr(photo.dataset.alt);}
   if(route==='727-collection.html'){
     const data=boardEnglish(root);
     const config={lang,text:Object.fromEntries(Object.entries(data.templates).map(([k,v])=>[k,tr(v)])),arguments:BOARD_TEMPLATE_ARGUMENTS,stations:Object.fromEntries(data.stations.map(s=>[s.ja,tr(s.en)])),points:Object.fromEntries(data.points.map(point=>[point.id,{name:tr(typeof point.en==='object'?point.en.name:point.en),note:point.collectionNoteEn?tr(point.collectionNoteEn):'',photos:[point.photo,...(point.collectionPhotos||[])].filter(Boolean).map(p=>({alt:tr(typeof point.en==='object'?point.en.name:point.en),note:p.noteEn?tr(p.noteEn):p.note||'michikusa'}))}]))};

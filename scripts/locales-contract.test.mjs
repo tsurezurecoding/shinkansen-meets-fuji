@@ -176,3 +176,19 @@ test('727 and wheel collection runtime copies retain localized templates after i
     dom.window.close();
   }
 });
+
+
+test('station dome marker retains translated labels after show and hide', async () => {
+  const {englishSnapshot}=await import('./shared/castle-localization.mjs');
+  const {localizeExpansionRuntime}=await import('./shared/expansion-localization.mjs');
+  const {fileURLToPath}=await import('node:url');
+  const root=fileURLToPath(new URL('../',import.meta.url));
+  const dom=englishSnapshot(root,'tokyo-kyoto-stations.html');
+  localizeExpansionRuntime(root,'tokyo-kyoto-stations.html',dom.window.document,'fr',value=>'FR '+value);
+  dom.window.ResizeObserver=class {observe(){}};
+  dom.window.eval(read('stations.js'));
+  const button=dom.window.document.querySelector('.clue-toggle');
+  button.click();assert.equal(button.textContent,'FR Hide the dome marker');assert.equal(button.getAttribute('aria-pressed'),'true');
+  button.click();assert.equal(button.textContent,'FR Show the dome in this photo');assert.equal(button.getAttribute('aria-pressed'),'false');
+  dom.window.close();
+});
