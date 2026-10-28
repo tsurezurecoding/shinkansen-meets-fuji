@@ -12,6 +12,6 @@
  document.querySelectorAll('[data-photo]').forEach(b=>b.addEventListener('click',()=>{opener=b;document.getElementById('dialog-image').src=b.dataset.photo;document.getElementById('dialog-image').alt=b.dataset.alt;document.getElementById('dialog-caption').textContent=b.closest('figure').querySelector('figcaption').textContent;dialog.showModal();}));
  dialog?.addEventListener('close',()=>opener?.focus({preventScroll:true}));
  dialog?.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();}});
- document.querySelector('.clue-toggle')?.addEventListener('click',e=>{const pressed=e.target.getAttribute('aria-pressed')!=='true';e.target.setAttribute('aria-pressed',String(pressed));e.target.textContent=pressed?'Hide the dome marker':'Show the dome in this photo';document.querySelector('.window-figure').classList.toggle('show-clue',pressed);});
+ document.querySelector('.clue-toggle')?.addEventListener('click',e=>{const pressed=e.target.getAttribute('aria-pressed')!=='true';e.target.setAttribute('aria-pressed',String(pressed));e.target.textContent=pressed?(e.target.dataset.hideLabel||'Hide the dome marker'):(e.target.dataset.showLabel||'Show the dome in this photo');document.querySelector('.window-figure').classList.toggle('show-clue',pressed);});
  document.addEventListener('keydown',e=>{if(e.key==='Escape')document.querySelector('.top-nav-more')?.removeAttribute('open');});
 })();

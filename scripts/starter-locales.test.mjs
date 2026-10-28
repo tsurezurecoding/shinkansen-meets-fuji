@@ -53,7 +53,7 @@ test('Italian and Thai retain their original six entry pages after full-edition 
     const supported = locales.supported(route);
     assert.ok(starterLanguages.every(language => supported.includes(language)), route);
   }
-  for (const route of ['727-collection.html', 'references.html']) {
+  for (const route of ['references.html']) {
     const supported = locales.supported(route);
     assert.ok(starterLanguages.every(language => !supported.includes(language)), `${route} must not invent additional editions`);
   }

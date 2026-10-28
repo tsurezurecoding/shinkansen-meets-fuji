@@ -98,7 +98,7 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   }
   dom.window.close();await new Promise(setImmediate);
  }
- assert.equal(count,112);
+ assert.equal(count,208);
 });
 
 test('Fujitec and Pocari have complete ten-language articles and worldwide chapters',()=>{
@@ -142,7 +142,7 @@ test('episode articles preserve English gallery images and original attribution'
   const original=media(source.window.document);
   const figures=doc=>[...doc.querySelectorAll('article img')].map(el=>({src:el.getAttribute('data-photo-original-src') || el.getAttribute('src'),width:el.getAttribute('width'),height:el.getAttribute('height')}));
   const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());return copy.textContent.replace(/^摄影[：:]|^사진\s*[：:]|^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：|^ภาพ\s*:/,'').trim();});
-  assert.ok(original.length || figures(source.window.document).length);
+  assert.ok(original.length || figures(source.window.document).length || ['everyday-japan.html','arenani.html','727-collection.html','tokyo-kyoto-stations.html'].includes(route));
   const inline=doc=>[...doc.querySelectorAll('.spot-page-inline-figure img, .spot-page-reference-figure img')].map(el=>el.getAttribute('data-photo-original-src') || el.getAttribute('src'));
   const credit=doc=>[...doc.querySelectorAll('.spot-page-inline-figure figcaption a, .spot-page-reference-figure figcaption a')].map(el=>({href:el.getAttribute('href'),label:el.textContent}));
   for(const lang of langs){const dom=page(lang+'/'+route);assert.deepEqual(media(dom.window.document),original);assert.deepEqual(inline(dom.window.document),inline(source.window.document));assert.deepEqual(credit(dom.window.document),credit(source.window.document));assert.deepEqual(figures(dom.window.document),figures(source.window.document));assert.deepEqual(figureCredits(dom.window.document),figureCredits(source.window.document));images+=original.length+figures(source.window.document).length;dom.window.close();await new Promise(setImmediate);}

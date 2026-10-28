@@ -1,3 +1,4 @@
+import { EXPANSION_ROUTES, localizeExpansionRuntime } from './shared/expansion-localization.mjs';
 import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 // Source of truth: the overseas-traveler English edition plus reviewed translations.
 // Snapshot only first-party rendering, preserving photographs, credits and DOM behavior.
@@ -18,6 +19,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
 const missing = new Set();
+const requestedRoute = process.argv.includes('--route') ? process.argv[process.argv.indexOf('--route') + 1] : null;
 const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
 if (requestedLang && !CASTLE_LOCALE_LANGS.includes(requestedLang)) throw Error('Unknown castle locale: ' + requestedLang);
 for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
@@ -25,19 +27,22 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   let dictionary = { ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `utility-${lang}.json`), 'utf8')), ...JSON.parse(fs.readFileSync(path.join(root, 'scripts/locales', `castle-${lang}.json`), 'utf8')), ...(fs.existsSync(episodeFile) ? JSON.parse(fs.readFileSync(episodeFile, 'utf8')) : {}) };
   const sceneryFile = path.join(root, 'scripts/locales', `scenery-${lang}.json`);
   const sceneryDictionary = fs.existsSync(sceneryFile) ? JSON.parse(fs.readFileSync(sceneryFile, 'utf8')) : {};
+  const expansionFile = path.join(root, 'scripts/locales', `expansion-${lang}.json`);
+  const expansionDictionary = fs.existsSync(expansionFile) ? JSON.parse(fs.readFileSync(expansionFile, 'utf8')) : {};
   const commonDictionary = dictionary;
   const everydayDictionaries = Object.fromEntries([['foods.html','foods'],['countryside.html','countryside'],['spots/gamagori-greenhouses.html','greenhouses']].map(([route,name]) => { const file=path.join(root,`scripts/shared/${name}-locales.json`); return [route, fs.existsSync(file) ? JSON.parse(fs.readFileSync(file,'utf8'))[lang] || {} : {}]; }));
   function tr(value) {
     const key = value.trim();
     if (!key) return value;
     let result = dictionary[key];
+    if (result === undefined && typeof dictionary[value] === "string") return dictionary[value];
     if (result === undefined && key.endsWith(' | Shinkansen Window')) result = tr(key.slice(0, -' | Shinkansen Window'.length)) + ' | Shinkansen Window';
     if (typeof result !== 'string' || !result.trim()) { missing.add(`${lang}: ${key}`); return value; }
     return value.replace(key, () => result);
   }
-  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && !enOnly.includes(route))]) {
+  for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && (!enOnly.includes(route) || EXPANSION_ROUTES.includes(route)))] .filter(route => !requestedRoute || route === requestedRoute)) {
     const sceneryRoute = /^spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki(?:-seat-a)?)\.html$/.test(route);
-    dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : everydayDictionaries[route] ? { ...commonDictionary, ...everydayDictionaries[route] } : commonDictionary;
+    dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : everydayDictionaries[route] ? { ...commonDictionary, ...everydayDictionaries[route] } : EXPANSION_ROUTES.includes(route) ? { ...commonDictionary, ...expansionDictionary } : commonDictionary;
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
     // These editions ship a static article. Keep images usable without JS,
@@ -53,6 +58,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
       image.removeAttribute('data-photo-observed');
     }
     doc.querySelectorAll('[data-article-connections]').forEach(el => el.remove());
+    const sourceBase = doc.baseURI;
     const prefix = route.startsWith('spots/') ? '../../' : '../';
     const file = `${lang}/${route}`;
     // The translated snapshot is already rendered. Reuse common interaction scripts.
@@ -84,11 +90,12 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     for (const el of doc.querySelectorAll('*')) for (const attr of TRANSLATABLE_ATTRIBUTES) {
       if (el.hasAttribute(attr) && el.getAttribute(attr).trim()) el.setAttribute(attr, tr(el.getAttribute(attr)));
     }
-    if (['it', 'th'].includes(lang)) {
+    if (['it', 'th'].includes(lang) || EXPANSION_ROUTES.includes(route)) {
       for (const el of doc.querySelectorAll('[data-video-loading-label]')) {
         el.setAttribute('data-video-loading-label', tr(el.getAttribute('data-video-loading-label')));
       }
     }
+    localizeExpansionRuntime(root, route, doc, lang, tr);
     doc.title = tr(doc.title);
     if (lang === 'zh-Hant' && route === 'castles.html') {
       const title = doc.querySelector('h1');
@@ -109,13 +116,26 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${canonicalRoute}`;
     const ogUrl = doc.querySelector('meta[property="og:url"]');
     if (ogUrl) ogUrl.content = doc.querySelector('link[rel="canonical"]').href;
+    if (doc.querySelector('base[href]')) {
+      for (const el of doc.querySelectorAll('[src],link[href]')) {
+        const attr=el.hasAttribute('src')?'src':'href', value=el.getAttribute(attr);
+        if (!value || /^(?:https?:|\/\/|data:|#)/.test(value)) continue;
+        const url=new URL(value,sourceBase);
+        if(url.origin===origin)el.setAttribute(attr,prefix+url.pathname.slice(1)+url.search+url.hash);
+      }
+      for (const el of doc.querySelectorAll('[srcset]')) {
+        el.setAttribute('srcset',el.getAttribute('srcset').split(',').map(candidate=>{const [url,...descriptor]=candidate.trim().split(/\s+/);return prefix+new URL(url,sourceBase).pathname.slice(1)+(descriptor.length?' '+descriptor.join(' '):'');}).join(', '));
+      }
+      doc.querySelector('base[href]').remove();
+    }
     // Known translated destinations remain in this edition. Keep the English
     // fallback routes, without repeating a visible language label on every link.
     for (const el of doc.querySelectorAll('a[href]')) {
       if (el.closest('.lang-switch')) continue;
       const href = el.getAttribute('href');
-      if (/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href)) continue;
-      const url = new URL(href, `${origin}/en/${route}`);
+      if (/^(?:mailto:|tel:|#)/.test(href)) continue;
+      if (/^(?:https?:|\/\/)/.test(href) && new URL(href, sourceBase).origin !== origin) continue;
+      const url = new URL(href, sourceBase);
       let target = url.pathname.slice(1).replace(/^en\//, '').replace(/^$/, 'index.html');
       if (target === 'spots/hamanako-fuji.html') { target = 'spots/hamanako.html'; url.hash = 'hamanako-fuji'; }
       if (supported(target).includes(lang)) {
