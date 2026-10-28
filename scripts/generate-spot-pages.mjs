@@ -1246,7 +1246,7 @@ function localizeEnglishInternalLinks(html) {
       .replaceAll(`href=\"${route}.html\"`, `href=\"en/${route}.html\"`);
   }
   html = html.replaceAll('href="android-app.html?src=top-promo"', 'href="en/android-app.html?src=top-promo"');
-  html = html.replaceAll('href="android-app.html?src=lp-footer"', 'href="en/android-app.html?src=lp-footer"');
+  html = html.replace('>Google Playで見る</a>', '>View on Google Play</a>');
   return html;
 }
 
@@ -1946,7 +1946,7 @@ function sitemapXML() {
     .filter(([route]) => !SPOTS.some(spot => spot.guidePageId && spot.guidePageId !== spot.id && route === `spots/${spot.id}.html`))
     .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
   const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
-  const starterUrls = locales.starter.flatMap(lang => locales.starterRoutes.map(route => ({loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route}`, priority: '0.6', changefreq: 'monthly', lastmod: '2026-10-25'})));
+  const starterUrls = locales.starter.flatMap(lang => locales.starterRoutes.map(route => ({loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['zukan.html', 'live/index.html'].includes(route) ? '2026-10-28' : '2026-10-25'})));
   const urls = [...starterUrls, ...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>

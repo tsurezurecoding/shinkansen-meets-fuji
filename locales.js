@@ -17,7 +17,7 @@
   var languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko'];
   var coreLanguages = languages.slice();
   var starter = ['it', 'th'];
-  var starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html'];
+  var starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html', 'zukan.html', 'live/index.html'];
   languages = languages.concat(starter);
   var translated = coreLanguages.filter(function (lang) { return lang !== 'ja' && lang !== 'en'; });
   var jaOnly = ["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html","sudoori/stories/aisho.html","sudoori/stories/koura.html"];

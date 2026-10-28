@@ -1,0 +1,335 @@
+<!DOCTYPE html><html lang="th"><head>
+  <meta charset="utf-8">
+  <script src="../../locales.js?v=735effaa"></script>
+  <link rel="manifest" href="../../manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../language-router.js?v=ff60751b"></script>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.michikusa-travel.com/th/live/">
+
+
+
+  <title>คู่มือชินคันเซ็นสด: การแจ้งเตือน เสียง และแผนที่สด | Shinkansen Window</title>
+  <meta name="description" content="GPS ติดตามตำแหน่งของคุณเพื่อแนะนำภูเขาไฟฟูจิและวิวอื่น ๆ ด้วยเสียงและแผนที่สด การแจ้งเตือนบนสมาร์ตโฟนใช้ได้ในแอป Android เส้นทางโตเกียว–ชินโอซาก้า">
+  <meta name="theme-color" content="#0e1726">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="คู่มือชินคันเซ็นสด: การแจ้งเตือน เสียง และแผนที่สด | Shinkansen Window">
+  <meta property="og:description" content="GPS ติดตามตำแหน่งของคุณเพื่อแนะนำภูเขาไฟฟูจิและวิวอื่น ๆ ด้วยเสียงและแผนที่สด การแจ้งเตือนบนสมาร์ตโฟนใช้ได้ในแอป Android เส้นทางโตเกียว–ชินโอซาก้า">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/th/live/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="คู่มือชินคันเซ็นสด: การแจ้งเตือน เสียง และแผนที่สด | Shinkansen Window">
+  <meta name="twitter:description" content="GPS ติดตามตำแหน่งของคุณเพื่อแนะนำภูเขาไฟฟูจิและวิวอื่น ๆ ด้วยเสียงและแผนที่สด การแจ้งเตือนบนสมาร์ตโฟนใช้ได้ในแอป Android เส้นทางโตเกียว–ชินโอซาก้า">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image:alt" content="Shinkansen Window — อีกหนึ่งการเดินทางนอกบานกระจก">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="">
+  <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin="">
+  <link rel="stylesheet" href="../../style.css?v=5f3f6183">
+  <link rel="stylesheet" href="../../live/styles.css?v=12a8dd6a">
+  <!-- ANDROID_APP_INVITE_RESET_START -->
+<script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
+(function () {
+  'use strict';
+  function stopSavedOptOut() {
+    try {
+      if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+      window.MADO_ANALYTICS_DISABLED = true;
+      window['ga-disable-G-C2ESB694FV'] = true;
+    } catch (error) { /* Preserve the existing initializer's storage semantics. */ }
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'mado-ga-optout' || event.key === 'mado-android-app-invite-v2' || event.key === null) stopSavedOptOut();
+  });
+  window.addEventListener('pageshow', stopSavedOptOut);
+  window.addEventListener('focus', stopSavedOptOut, true);
+  document.addEventListener('visibilitychange', stopSavedOptOut);
+  stopSavedOptOut();
+  const url = new URL(window.location.href);
+  const reset = url.searchParams.getAll('android_invite_reset');
+  const ga = url.searchParams.getAll('ga');
+  if (reset.length !== 1 || reset[0] !== '1' || ga.length !== 1 || ga[0] !== 'off'
+      || url.searchParams.getAll('ga_optout').includes('0')) return;
+  // Keep this test page excluded even when storage is unavailable.
+  window.MADO_ANDROID_INVITE_TEST_GA_DISABLED = true;
+  url.searchParams.delete('android_invite_reset');
+  try { window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash); }
+  catch (error) { return; } // Do not reset unless the reload trigger was consumed.
+  try {
+    // Other tabs must see opt-out before the shared dismissal disappears.
+    window.localStorage.setItem('mado-ga-optout', '1');
+    if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+    window.localStorage.removeItem('mado-android-app-invite-v2');
+  }
+  catch (error) { /* The normal invitation storage guard remains in force. */ }
+})();
+</script>
+<!-- ANDROID_APP_INVITE_RESET_END -->
+<script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <script defer="" src="../../utility-locales.js?v=8a1a6810"></script>
+  <link rel="stylesheet" href="../../utility-locales.css?v=269e0262">
+
+
+
+
+
+
+
+
+<link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/live/"><link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/live/"><link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/live/"><link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/live/"><link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/live/"><link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/live/"><link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/live/"><link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/live/"><link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/live/"><link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/live/"><link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/live/"></head>
+<body class="live-page is-idle" data-language-route="th" data-utility-localized="" data-spot-page-shared-lang="th">
+  <script>try { localStorage.setItem("mado-lang", "th"); } catch (error) {}</script>
+  <header class="topbar live-sitebar">
+    <a class="brand" href="../../th/" data-live-link="home">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name" data-live-copy="brandName">หน้าต่างชินคันเซ็น</span>
+        <small class="brand-sub" data-live-copy="brandSub">ค้นพบสิ่งใหม่ผ่านหน้าต่างรถไฟ</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="เมนูหลัก">
+      <a href="../../th/start.html" data-live-link="journey" data-live-copy="navStart">ค้นหาขบวนรถ</a>
+      <a href="../../th/live/index.html" data-live-link="live" data-live-copy="navLive" aria-current="page">เสียงบรรยาย</a>
+      <a href="../../th/zukan.html" data-live-link="zukan" data-live-copy="navFeatures">คู่มือชมวิว</a>
+      <a class="top-nav-stamp" href="../../en/journal.html" data-live-link="memories" data-live-copy="navMedals" hreflang="en">บันทึกการเดินทาง<small class="discovery-language"> (ภาษาอังกฤษ)</small></a>
+      <details class="top-nav-more">
+        <summary data-live-copy="navMore">เพิ่มเติม</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-stamp" href="../../en/journal.html" data-live-link="memories" data-live-copy="navMedals" hreflang="en">บันทึกการเดินทาง<small class="discovery-language"> (ภาษาอังกฤษ)</small></a>
+          <a href="../../th/guide.html" data-live-link="faq" data-live-copy="navFaq">ชมภูเขาไฟฟูจิ</a>
+          <a href="../../en/mieru.html" data-live-link="mieru" data-live-copy="navMieru" hreflang="en">ทัศนวิสัย β<small class="discovery-language"> (ภาษาอังกฤษ)</small></a>
+          <a href="../../en/window-artworks.html" data-i18n="navArtworks" hreflang="en">ศิลปะจากหน้าต่าง<small class="discovery-language"> (ภาษาอังกฤษ)</small></a>
+          <a href="../../en/references.html" data-live-link="references" data-live-copy="navRefs" hreflang="en">ลิงก์<small class="discovery-language"> (ภาษาอังกฤษ)</small></a>
+          <a href="../../en/privacy.html" data-live-link="privacy" data-live-copy="navPrivacy" hreflang="en">ความเป็นส่วนตัว<small class="discovery-language"> (ภาษาอังกฤษ)</small></a>
+        </div>
+      </details>
+    </nav>
+
+  <details class="guide-lang-menu utility-lang-menu"><summary aria-label="เลือกภาษา">ไทย</summary><div class="guide-lang-options"><a lang="ja" href="../../live/index.html?lang=ja">日本語</a><a lang="en" href="../../en/live/index.html">English</a><a lang="zh-Hant" href="../../zh-Hant/live/index.html">繁體中文</a><a lang="fr" href="../../fr/live/index.html">Français</a><a lang="de" href="../../de/live/index.html">Deutsch</a><a lang="es" href="../../es/live/index.html">Español</a><a lang="zh-Hans" href="../../zh-Hans/live/index.html">简体中文</a><a lang="ko" href="../../ko/live/index.html">한국어</a><a lang="it" href="../../it/live/index.html">Italiano</a><a lang="th" href="../../th/live/index.html" aria-current="page">ไทย</a></div></details></header>
+
+  <div id="app">
+    <header id="livebar">
+      <div class="tb-left">
+        <div class="tb-title">
+          <span class="tb-title-line">
+            <strong id="live-title">เสียงบรรยาย</strong>
+          </span>
+          <span id="tb-status" class="tb-status">กำลังรอสัญญาณ GPS</span>
+        </div>
+      </div>
+      <div class="tb-right">
+        <div class="tb-metric"><span id="tb-speed">--</span><small>กม./ชม.</small></div>
+        <button id="btn-narr-toggle" class="tb-btn tb-btn-toggle" type="button" aria-pressed="true">🔈 เปิดคำบรรยาย</button>
+        <button id="btn-pause" class="tb-btn tb-btn-toggle hidden" type="button">⏸ หยุดชั่วคราว</button>
+        <button id="btn-dir" class="tb-btn" title="ทิศทาง">🧭 อัตโนมัติ</button>
+        <button id="btn-settings" class="tb-btn" title="การตั้งค่า">⚙</button>
+      </div>
+    </header>
+
+    <div id="map"></div>
+
+    <div id="live-map-controls" class="hidden" aria-label="ตัวควบคุมโหมดสด">
+      <button id="map-narr-toggle" class="map-control-btn map-control-secondary" type="button" aria-pressed="true">🔈 เปิดคำบรรยาย</button>
+      <button id="map-pause" class="map-control-btn map-control-secondary" type="button" aria-pressed="false">⏸ หยุดชั่วคราว</button>
+      <button id="map-stop" class="map-control-btn map-control-danger" type="button">■ หยุด</button>
+    </div>
+
+    <div id="segband" class="hidden"></div>
+
+    <div id="alertbar" class="hidden">
+      <div class="al-icon" id="al-icon">🗻</div>
+      <div class="al-body">
+        <div class="al-count" id="al-count">60</div>
+        <div class="al-text"><span id="al-name"></span><span id="al-side" class="side-badge"></span></div>
+      </div>
+      <button id="al-close">×</button>
+    </div>
+
+    <section id="sheet">
+      <div id="sheet-handle"><span></span></div>
+
+      <div id="narrbar" class="hidden">
+        <div class="nr-head">
+          <span class="nr-tag" id="nr-tag">คู่มือ AI</span>
+          <span class="nr-name" id="nr-name"></span>
+          <button id="nr-close" aria-label="ปิด">×</button>
+        </div>
+        <p class="nr-text" id="nr-text"></p>
+      </div>
+
+      <div id="next-card" class="hidden">
+        <div class="nc-head">
+          <span class="nc-label" id="nc-label">วิวถัดไป</span>
+          <span class="nc-eta" id="nc-eta">--:--</span>
+        </div>
+        <div class="nc-main">
+          <div class="nc-icon" id="nc-icon">🗻</div>
+          <div class="nc-info">
+            <div class="nc-name" id="nc-name"></div>
+            <div class="nc-hook" id="nc-hook"></div>
+            <div class="nc-meta">
+              <span class="side-badge" id="nc-side"></span>
+              <span class="nc-dist" id="nc-dist"></span>
+              <span class="nc-dur" id="nc-dur"></span>
+            </div>
+          </div>
+          <img id="nc-photo" class="nc-photo hidden" alt="">
+        </div>
+      </div>
+
+      <div id="upcoming"></div>
+
+      <details id="passed-wrap" class="hidden">
+        <summary id="passed-summary">通過した車窓 (0)</summary>
+        <div id="passed"></div>
+      </details>
+
+      <div id="idle-panel">
+        <h2 id="idle-title">ระหว่างนั่งรถไฟ GPS จะแนะนำจากตำแหน่งที่คุณอยู่</h2>
+        <p id="idle-desc">เปิดคู่มือเสียงแล้วร่วมเดินทางไปด้วยกัน ระบบจะบอกว่ากำลังจะพบอะไร ก่อนที่วิวนั้นจะผ่านไป ตำแหน่งของคุณใช้เพื่อการนำชมและไม่ถูกจัดเก็บบนเซิร์ฟเวอร์ภายนอก</p>
+        <div class="idle-actions">
+          <button id="btn-start" class="big-btn">📍 เริ่มด้วย GPS</button>
+          <button id="btn-demo" class="big-btn ghost">▶ ทดลองเดินทาง (ลองได้โดยไม่ต้องขึ้นรถไฟ)</button>
+          <p class="idle-demo-note" data-live-copy="idleNoGps">ยังไม่ได้ขึ้นรถไฟใช่ไหม? โหมดทดลองเดินทางเล่นคำแนะนำตลอดเส้นทางโตเกียว–ชินโอซาก้าได้โดยไม่ขอเข้าถึงตำแหน่ง</p>
+        </div>
+        <div class="idle-app-rec hide-in-app">
+          <p class="idle-app-why" data-live-copy="eaLiveWhy">เมื่อใช้ผ่านเบราว์เซอร์ คำแนะนำจะหยุดเมื่อปิดหน้าจอหรือสลับแอป ระหว่างนั่งรถไฟ การใช้แอปจึงเชื่อถือได้มากกว่า</p>
+          <a class="ea-live-cta" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-android-app-guide="" data-cta-id="live_android">
+            <img src="../../images/android/app-icon-192.webp" alt="" width="44" height="44" decoding="async">
+            <span class="ea-live-cta-body">
+              <strong data-live-copy="eaLiveTitle">ดาวน์โหลดแอปบน Google Play</strong>
+              <small data-live-copy="eaLiveBody">คำแนะนำและเสียงยังทำงานต่อแม้ปิดหน้าจอ ฟรีและไม่ต้องสมัครสมาชิก</small>
+            </span>
+            <span class="ea-live-cta-arrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+        <ul class="idle-feature-list" id="idle-features">
+          <li>คาดการณ์จุดชมวิวถัดไปจากตำแหน่งปัจจุบัน</li>
+          <li>เลือกเฉพาะจุดสำคัญ หรือรวมสิ่งน่าสนใจเล็ก ๆ ระหว่างทาง</li>
+          <li>แผนที่และการนับถอยหลังช่วยให้ไม่พลาดจุดชมวิว</li>
+        </ul>
+        <div class="idle-about">
+          <h3 data-live-copy="idleHowTitle">วิธีใช้งาน</h3>
+          <ol class="idle-steps">
+            <li data-live-copy="idleStep1">เมื่อขึ้นโทไคโดชินคันเซ็นแล้ว ให้แตะ “เริ่มด้วย GPS” ในหน้านี้</li>
+            <li data-live-copy="idleStep2">ระบบคำนวณจุดชมวิวถัดไปจากตำแหน่งของคุณ พร้อมเสียงแนะนำและการนับถอยหลัง</li>
+            <li data-live-copy="idleStep3">ระบบยังบอกให้ดูฝั่งที่นั่ง A หรือ E เพื่อให้คุณหันไปยังหน้าต่างที่ถูกฝั่ง</li>
+          </ol>
+          <p data-live-copy="idleElse">กำลังวางแผนก่อนเดินทาง? เริ่มที่นี่</p>
+          <ul class="idle-links">
+            <li><a href="../../th/guide.html" data-live-link="" data-live-copy="idleLinkGuide">วิธีชมภูเขาไฟฟูจิ</a></li>
+            <li><a href="../../th/zukan.html" data-live-link="" data-live-copy="idleLinkZukan">คู่มือวิวจากหน้าต่าง</a></li>
+            <li><a href="../../th/" data-live-link="" data-live-copy="idleLinkTop">ตรวจสอบเวลาผ่านจุดชมวิวตามขบวนรถไฟ</a></li>
+          </ul>
+        </div>
+      <p class="utility-audio-note">ขณะนี้เสียงบรรยายมีให้บริการเป็นภาษาอังกฤษ</p></div>
+    </section>
+
+    <div id="settings" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="set-title">การตั้งค่า</h3>
+        <label class="set-row set-check-row"><input type="checkbox" id="set-vib" checked=""> <span id="set-vib-l">การสั่น</span></label>
+        <label class="set-row set-check-row"><input type="checkbox" id="set-wake" checked=""> <span id="set-wake-l">เปิดหน้าจอค้างไว้</span></label>
+        <label class="set-row set-check-row"><input type="checkbox" id="set-follow" checked=""> <span id="set-follow-l">ติดตามตำแหน่งของฉัน</span></label>
+        <div class="set-row">
+          <span id="set-narr-mode-l">คำแนะนำวิวจากหน้าต่าง</span>
+          <select id="set-narr-mode">
+            <option value="featured">เฉพาะจุดสำคัญ</option>
+            <option value="all">ทุกจุด</option>
+            <option value="off">ปิด</option>
+          </select>
+        </div>
+        <p class="set-help" id="set-narr-help">主要は定番・注目スポット、すべては看板などの小ネタも含みます。</p>
+        <div class="set-row">
+          <span id="set-dir-l">ทิศทาง</span>
+          <select id="set-dir">
+            <option value="auto">ตรวจจับอัตโนมัติ</option>
+            <option value="down">โตเกียว → ชินโอซาก้า</option>
+            <option value="up">ชินโอซาก้า → โตเกียว</option>
+          </select>
+        </div>
+        <div class="set-actions">
+          <button id="btn-stop" class="ghost-btn">■ จบคำแนะนำด้วย GPS</button>
+          <button id="btn-close-settings" class="primary-btn">ปิด</button>
+        </div>
+        <p class="set-note" id="set-note">ตำแหน่งของคุณใช้เพื่อแนะนำวิวจากหน้าต่างและไม่ถูกจัดเก็บบนเซิร์ฟเวอร์ภายนอก การแสดงแผนที่จะโหลดข้อมูลแผนที่จากภายนอก</p>
+        <p class="set-note set-policy"><a id="set-privacy-link" href="../../en/privacy.html" data-live-link="privacy" hreflang="en">นโยบายความเป็นส่วนตัว<small class="discovery-language"> (ภาษาอังกฤษ)</small></a></p>
+      </div>
+    </div>
+
+    <div id="demo-panel" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="demo-title">ทดลองเดินทาง</h3>
+        <p id="demo-desc">ลองนั่งรถไฟโนโซมิจำลองเพื่อดูวิธีทำงาน ไม่ต้องใช้ตั๋ว</p>
+        <div class="set-row">
+          <span id="demo-from-l">เวลาออก</span>
+          <select id="demo-from">
+            <option value="down">โตเกียว → ชินโอซาก้า</option>
+            <option value="up">ชินโอซาก้า → โตเกียว</option>
+          </select>
+        </div>
+        <div class="set-row">
+          <span id="demo-speed-l">ความเร็ว</span>
+          <select id="demo-mult">
+            <option value="1">1x (เวลาจริง)</option>
+            <option value="10">10x</option>
+            <option value="20" selected="">20x</option>
+            <option value="60">60x</option>
+          </select>
+        </div>
+        <div class="set-actions">
+          <button id="btn-demo-cancel" class="ghost-btn">ยกเลิก</button>
+          <button id="btn-demo-start" class="primary-btn">▶ ออกเดินทาง</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="../../data-runtime.js?v=624b9863"></script>
+<script src="../../th/utility-data.js?v=e4d90a7d"></script>
+<script src="../../utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="../../track.js?v=fa004fe2"></script>
+  <script src="../../live/live.js?v=dfac4636"></script>
+
+<script src="../../site-runtime-loader.js?v=a8ffb108" defer=""></script>
+
+
+</body></html>

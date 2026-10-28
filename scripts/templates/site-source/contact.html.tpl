@@ -91,7 +91,7 @@
             <h2 id="eaBandTitleContact">Androidアプリを公開しました</h2>
             <p>無料・登録不要。ホーム画面からすぐ開けて、乗車中の音声ガイドも使えます。</p>
           </div>
-          <a class="btn btn-primary" href="android-app.html?src=contact">Androidアプリを見る</a>
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=website&amp;utm_campaign=contact" target="_blank" rel="noopener noreferrer">Google Playで見る</a>
         </div>
       </section>
       <section class="contact-methods" aria-labelledby="contactMethodsTitle">

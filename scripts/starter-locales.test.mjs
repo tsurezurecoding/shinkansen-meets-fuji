@@ -7,17 +7,18 @@ import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import locales from '../locales.js';
 import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
+import { englishNarrations } from './shared/utility-localization.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
 const origin = 'https://www.michikusa-travel.com';
 const read = file => fs.readFileSync(path.join(root, file), 'utf8');
 const deliveredPage = relative => expandDeliveredSiteChromeHTML({ appDir:root, html:read(relative), relative });
 const starterLanguages = ['it', 'th'];
-const starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html'];
+const starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html', 'zukan.html', 'live/index.html'];
 const timelineLanguages = ['ja', 'en', 'fr', 'de', 'es', 'ko', 'zh-Hant', 'zh-Hans', 'it', 'th'];
 
 function publicPath(language, route) {
-  return `/${language}/${route === 'index.html' ? '' : route}`;
+  return `/${language}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`;
 }
 
 function assertLocalReferences(document, label) {
@@ -47,12 +48,12 @@ function assertNoJapaneseVisibleText(document, label) {
   assert.deepEqual(remaining, [], `${label}: visible Japanese text remains: ${remaining.slice(0, 5).join(' / ')}`);
 }
 
-test('Italian and Thai starter editions contain only the four contracted routes', () => {
+test('Italian and Thai editions include the gallery and live guide in their six contracted routes', () => {
   for (const route of starterRoutes) {
     const supported = locales.supported(route);
     assert.ok(starterLanguages.every(language => supported.includes(language)), route);
   }
-  for (const route of ['live/index.html', 'zukan.html', 'mieru.html', '727-collection.html']) {
+  for (const route of ['mieru.html', '727-collection.html']) {
     const supported = locales.supported(route);
     assert.ok(starterLanguages.every(language => !supported.includes(language)), `${route} must not expose starter editions`);
   }
@@ -86,6 +87,14 @@ test('Italian and Thai starter editions contain only the four contracted routes'
     assert.ok([...fallbackNotes].every(note => note.textContent.trim().startsWith('(')), `${label}: fallback annotation format`);
     assertLocalReferences(document, label);
     assertNoJapaneseVisibleText(document, label);
+    if (['zukan.html', 'live/index.html'].includes(route)) {
+      for (const element of document.querySelectorAll('[aria-label]')) {
+        if (element.closest('.utility-lang-menu,.article-lang-menu')) continue;
+        assert.ok(!/[\u3040-\u30ff\u3400-\u4dbf\u4e00-\u9fff]/.test(element.getAttribute('aria-label')), `${label}: Japanese accessibility label remains`);
+      }
+      const manifest = JSON.parse(read('content-manifest.json'));
+      assert.ok(manifest.files.some(item => item.path === label), `${label}: distribution manifest`);
+    }
     if (route === 'spots/fuji.html') {
       assert.equal(document.querySelector('[data-spot-page-shared-module]'), null, `${label}: no unrendered shared module`);
     }
@@ -148,23 +157,47 @@ test('timeline recommendations render localized labels and keep seat filtering a
   }
 });
 
-test('Italian and Thai restore one localized English fallback note after repeated applyLang calls', async () => {
+test('Italian and Thai retain local live/gallery links after repeated language application', async () => {
   for (const language of ['it', 'th']) {
     const fixture = await timelineFixture(language);
     try {
       fixture.run('applyLang(); applyLang()');
       const document = fixture.window.document;
-      const liveLink = document.querySelector('a[hreflang="en"][href*="live/index.html"]');
-      assert.ok(liveLink, `${language}: English live link`);
-      const notes = liveLink.querySelectorAll('.discovery-language');
-      assert.equal(notes.length, 1, `${language}: one live fallback note`);
-      const expectedNote = fixture.run('MADO_UTILITY_PAYLOAD.translations["English — audio also in English"]');
-      assert.equal(notes[0].textContent.trim(), `(${expectedNote})`, `${language}: localized live fallback note`);
+      for (const target of ['live/', 'zukan.html']) {
+        const links = [...document.querySelectorAll('a[href]')].filter(a => new URL(a.href).pathname.includes(`/${language}/${target}`));
+        assert.ok(links.length, `${language}: local ${target} links`);
+        for (const link of links) {
+          assert.notEqual(link.hreflang, 'en', `${language}: local link must not claim English`);
+          assert.equal(link.querySelectorAll('.discovery-language').length, 0, `${language}: no obsolete English fallback note`);
+        }
+      }
 
       const localGuideLink = document.querySelector('a[data-guide-nav]');
       assert.ok(localGuideLink, `${language}: local guide link`);
       assert.equal(localGuideLink.hasAttribute('hreflang'), false, `${language}: local guide has no English annotation`);
       assert.equal(localGuideLink.querySelectorAll('.discovery-language').length, 0, `${language}: local guide has no fallback note`);
     } finally { fixture.dom.window.close(); }
+  }
+});
+
+test('Italian and Thai live subtitles are localized while preserving English recordings and playback metadata', () => {
+  const original = englishNarrations(root);
+  for (const language of starterLanguages) {
+    const context = { window: {} };
+    vm.runInNewContext(read(`${language}/utility-data.js`), context);
+    const payload = context.window.MADO_UTILITY_PAYLOAD;
+    assert.ok(payload.tables.live, `${language}: live controls`);
+    for (const [id, directions] of Object.entries(original)) for (const [direction, variants] of Object.entries(directions)) {
+      if (!variants.en) continue;
+      const localized = payload.narrations[id]?.[direction];
+      assert.ok(localized?.text, `${language}/${id}/${direction}: subtitle`);
+      assert.notEqual(localized.text, variants.en.text, `${language}/${id}/${direction}: subtitle must not remain English`);
+      const expectedAudio = variants.en.audio === false ? false : variants.en.audio || `audio/${id}_${direction}_en.mp3`;
+      assert.equal(localized.audio, expectedAudio, `${language}/${id}/${direction}: recording`);
+      for (const [key, value] of Object.entries(variants.en)) if (!['text', 'audio'].includes(key)) assert.equal(localized[key], value, `${language}/${id}/${direction}: ${key}`);
+    }
+    const doc = new JSDOM(deliveredPage(`${language}/live/index.html`)).window.document;
+    assert.equal(doc.querySelector('.utility-audio-note')?.textContent, payload.translations['Audio is currently available in English.']);
+    for (const route of ['zukan.html', 'live/']) assert.ok(read('sitemap.xml').includes(`${origin}/${language}/${route}</loc>`), `${language}/${route}: sitemap`);
   }
 });
