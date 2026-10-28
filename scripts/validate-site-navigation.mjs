@@ -38,6 +38,8 @@ function htmlFiles(dir = appDir) {
 }
 
 for (const relative of htmlFiles()) {
+  // Let closed JSDOM windows finish their queued cleanup before reading the next page.
+  await new Promise(setImmediate);
   let html = fs.readFileSync(path.join(appDir, relative), "utf8");
   if (/data-spot-page-shared-module|mado-shared-ui-config|data-site-chrome-host|data-article-localized(?:[\s=>])/.test(html) || fs.existsSync(path.join(appDir, 'scripts/templates/site-source', `${relative}.tpl`))) {
     try { html = renderedSiteHTML(html, relative); }
