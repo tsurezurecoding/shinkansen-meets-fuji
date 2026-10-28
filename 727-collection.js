@@ -6,8 +6,9 @@
 
   // 日本語版は /727-collection.html、英語版は /en/727-collection.html に置く。
   // 画像だけはルート直下の images/ を共有するので、英語版では ../ を足す。
-  var LANG = String(document.documentElement.lang || "ja").toLowerCase().indexOf("en") === 0 ? "en" : "ja";
-  var ASSET_PREFIX = LANG === "en" ? "../" : "";
+  var locale = window.MADO_727_LOCALE;
+  var LANG = locale ? locale.lang : String(document.documentElement.lang || "ja").toLowerCase().indexOf("en") === 0 ? "en" : "ja";
+  var ASSET_PREFIX = LANG === "ja" ? "" : "../";
   function track727(name, params) {
     if (window.MADO_ANALYTICS_DISABLED !== false || typeof window.gtag !== "function") return;
     try { if (window.localStorage.getItem("mado-ga-optout") === "1") return; } catch (error) { return; }
@@ -75,6 +76,16 @@
       mapStatusFail: "The map could not be loaded. Please use the per-point links instead.",
     },
   };
+  if (locale) {
+    TEXT[LANG] = {};
+    Object.keys(locale.text).forEach(function (key) {
+      var args = locale.arguments[key];
+      TEXT[LANG][key] = args ? function () {
+        var values = arguments;
+        return locale.text[key].replace(/\{(\w+)\}/g, function (whole, name) { var index = args.indexOf(name); return index < 0 ? whole : values[index]; });
+      } : locale.text[key];
+    });
+  }
   var T = TEXT[LANG];
   // 区間名は日本語の駅名で持っているので、英語ではROUTEの駅名表へ引き当てる。
   var STATION_EN = {};
@@ -82,8 +93,8 @@
     ROUTE.refStations.forEach(function (station) { STATION_EN[station.ja] = station.en; });
   }
   function localizeSegment(segment) {
-    if (LANG !== "en") return segment;
-    return String(segment).split(" → ").map(function (part) { return STATION_EN[part] || part; }).join(" → ");
+    if (LANG === "ja") return segment;
+    return String(segment).split(" → ").map(function (part) { return (locale && locale.stations[part]) || STATION_EN[part] || part; }).join(" → ");
   }
   function assetURL(src) { return ASSET_PREFIX + String(src || ""); }
 
@@ -116,10 +127,11 @@
     });
   }
   function pointName(point) {
+    if (locale) return locale.points[point.id].name;
     if (LANG === "en") return (point.en && typeof point.en === "object" ? point.en.name : point.en) || T.fallbackName;
     return point.collectionJaName || (point.ja && typeof point.ja === "object" ? point.ja.name : point.ja) || T.fallbackName;
   }
-  function pointNote(point) { return LANG === "en" ? point.collectionNoteEn : point.collectionNote; }
+  function pointNote(point) { if (locale) return locale.points[point.id].note; return LANG === "en" ? point.collectionNoteEn : point.collectionNote; }
   function sideLabel(point) { return point.side === "A" ? T.seatA : T.seatE; }
   function pointSegment(point) { return point.segment ? localizeSegment(point.segment) : T.fallbackSegment; }
   function fromShinOsaka(point) { return Math.max(0, routeMinutes - Number(point.minutesFromTokyo || 0)); }
@@ -173,8 +185,8 @@
 
   function photoMarkup(point) {
     if (!point.photo || !point.photo.src) return "<div class=\"collection-point-detail-photo collection-photo-empty\"><span class=\"eyebrow\">PHOTO</span><strong>" + escapeHTML(T.photoEmptyTitle) + "</strong><p>" + escapeHTML(T.photoEmptyBody) + "</p></div>";
-    return "<div class=\"collection-point-detail-photo\">" + [point.photo].concat(point.collectionPhotos || []).map(function (photo) {
-      return "<figure><img src=\"" + escapeHTML(assetURL(photo.src)) + "\" alt=\"" + escapeHTML(photo.alt || pointName(point)) + "\" loading=\"lazy\" decoding=\"async\"><figcaption>" + escapeHTML((LANG === "en" && photo.noteEn) || photo.note || "michikusa") + "</figcaption></figure>";
+    return "<div class=\"collection-point-detail-photo\">" + [point.photo].concat(point.collectionPhotos || []).map(function (photo, index) {
+      return "<figure><img src=\"" + escapeHTML(assetURL(photo.src)) + "\" alt=\"" + escapeHTML(locale ? locale.points[point.id].photos[index].alt : photo.alt || pointName(point)) + "\" loading=\"lazy\" decoding=\"async\"><figcaption>" + escapeHTML(locale ? locale.points[point.id].photos[index].note : (LANG === "en" && photo.noteEn) || photo.note || "michikusa") + "</figcaption></figure>";
     }).join("") + "</div>";
   }
   function detailMarkup(point, detailId) {
@@ -183,6 +195,7 @@
     var statusMarkup = status ? "<span class=\"collection-status collection-status-checking\">" + escapeHTML(status) + "</span>" : "";
     var guideId = point.collectionGuidePageId;
     var guideHref = guideId ? "spots/" + guideId + ".html" : "#about727Title";
+    if (locale && guideId) guideHref = "../" + (window.MADO_LOCALES && window.MADO_LOCALES.supported("spots/" + guideId + ".html").includes(LANG) ? LANG : "en") + "/spots/" + guideId + ".html";
     var guideLabel = guideId === "727-board" ? T.detail248 : guideId === "putiputi-sign" ? T.detailMystery : T.detailAbout;
     var spotLink = "<a class=\"collection-detail-link\" href=\"" + escapeHTML(guideHref) + "\">" + escapeHTML(guideLabel) + "<span aria-hidden=\"true\">→</span></a>";
     return "<div id=\"" + escapeHTML(detailId) + "\" class=\"collection-point-detail\" data-point-detail hidden><div class=\"collection-point-detail-meta\"><span>" + escapeHTML(pointSegment(point)) + "</span><span>" + escapeHTML(sideLabel(point)) + "</span><span>" + escapeHTML(T.fromTokyo(point.minutesFromTokyo)) + "</span><span>" + escapeHTML(T.fromOsaka(fromShinOsaka(point))) + "</span></div><div class=\"collection-point-detail-grid\"><div class=\"collection-point-google-map\" data-google-map=\"" + escapeHTML(point.id) + "\" aria-label=\"" + escapeHTML(T.mapAria(pointName(point))) + "\"></div>" + photoMarkup(point) + "</div><div class=\"collection-point-detail-footer\"><div class=\"collection-point-detail-status\">" + statusMarkup + "<span>" + escapeHTML(found ? T.recordedState : T.unrecordedState) + "</span></div><div class=\"collection-point-actions\"><button type=\"button\" class=\"collection-stamp-button\" data-point-stamp=\"" + escapeHTML(point.id) + "\" aria-pressed=\"" + found + "\"><span aria-hidden=\"true\">" + (found ? "✓" : "○") + "</span>" + escapeHTML(found ? T.recorded : T.markVisited) + "</button><a class=\"collection-map-button\" href=\"" + escapeHTML(mapURL(point)) + "\" target=\"_blank\" rel=\"noopener\">" + escapeHTML(T.openMap) + "<span aria-hidden=\"true\">↗</span></a><a class=\"collection-map-button\" href=\"" + escapeHTML(streetViewURL(point)) + "\" target=\"_blank\" rel=\"noopener\">" + escapeHTML(T.streetView) + "<span aria-hidden=\"true\">↗</span></a>" + spotLink + "</div></div></div>";

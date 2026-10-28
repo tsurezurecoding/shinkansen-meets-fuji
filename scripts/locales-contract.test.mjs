@@ -9,14 +9,14 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 39, '38 canonical pages and the Ibuki A-seat alias');
+  assert.equal(routes.length, 51, '50 canonical pages and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
     assert.ok(locales.translated.includes(lang));
     for (const route of routes) assert.ok(locales.supported(route).includes(lang), `${lang}/${route}`);
   }
-  assert.deepEqual(locales.supported('727-collection.html'), ['ja', 'en']);
+  assert.deepEqual(locales.supported('727-collection.html'), locales.coreLanguages);
 });
 test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
   for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
@@ -139,4 +139,40 @@ test('explicit and saved editions preserve train/station/direction/queries/hash'
   assert.equal(route({browser:'zh-CN'}), undefined);
   assert.equal(route({browser:'zh-TW'}), undefined);
   assert.equal(route({requested:'unknown'}), undefined);
+});
+
+
+test('727 and wheel collection runtime copies retain localized templates after interaction', async () => {
+  const { englishSnapshot } = await import('./shared/castle-localization.mjs');
+  const { expansionRuntimeStrings, localizeExpansionRuntime } = await import('./shared/expansion-localization.mjs');
+  const { fileURLToPath } = await import('node:url');
+  const root = fileURLToPath(new URL('../',import.meta.url));
+  for (const route of ['727-collection.html','ferris-wheels.html']) {
+    const dom=englishSnapshot(root,route),doc=dom.window.document;
+    const keys=expansionRuntimeStrings(root,route,doc);
+    assert.ok(keys.length>10);
+    localizeExpansionRuntime(root,route,doc,'fr',value=>'FR '+value);
+    doc.documentElement.lang='fr';
+    if(route==='727-collection.html') {
+      dom.window.eval(read('data.js')+';window.BOARD_COLLECTION=BOARD_COLLECTION;window.ROUTE=ROUTE;');
+      dom.window.eval(read('locales.js'));
+      const config=[...doc.querySelectorAll('script:not([src])')].find(el=>el.textContent.startsWith('window.MADO_727_LOCALE ='));
+      dom.window.eval(config.textContent);
+      dom.window.MADO_LEAFLET={load:()=>Promise.reject(new Error('offline'))};
+      dom.window.eval(read('727-collection.js'));
+      assert.match(doc.querySelector('#collectionProgress').textContent,/FR/);
+      assert.ok(!doc.querySelector('#collectionProgress').textContent.includes('{found}'));
+      const button=doc.querySelector('[data-point-stamp]');button.click();
+      assert.match(doc.querySelector('[data-point-card]').textContent,/FR Recorded/);
+      assert.equal(doc.querySelector('[data-point-card] .collection-detail-link').getAttribute('href'),'../fr/spots/727-board.html');
+    } else {
+      const config=[...doc.querySelectorAll('script:not([src])')].find(el=>el.textContent.startsWith('window.FERRIS_WHEEL_COLLECTION ='));
+      dom.window.eval(config.textContent);dom.window.eval(read('ferris-wheels.js'));
+      assert.match(doc.querySelector('#wheelProgress').textContent,/FR/);
+      doc.querySelector('[data-wheel-stamp]').click();
+      assert.match(doc.querySelector('[data-wheel-state]').textContent,/FR Tap again/);
+    }
+    await new Promise(setImmediate);
+    dom.window.close();
+  }
 });
