@@ -11,6 +11,7 @@ function boardEnglish(root) {
   const text=vm.runInNewContext('('+code.slice(code.indexOf('var TEXT = ')+11,code.indexOf('\n  };',code.indexOf('var TEXT = '))+4).replace(/;\s*$/,'')+')').en;
   const data=vm.runInNewContext(fs.readFileSync(path.join(root,'data.js'),'utf8')+'\n;({points:BOARD_COLLECTION,stations:ROUTE.refStations})');
   const templates=Object.fromEntries(Object.entries(text).map(([key,value])=>[key,typeof value==='function'?value(...BOARD_TEMPLATE_ARGUMENTS[key].map(name=>'{'+name+'}')):value]));
+  templates.photoLabel='Photographs';
   boardSource={...data,templates};return boardSource;
 }
 function wheelConfig(doc) {

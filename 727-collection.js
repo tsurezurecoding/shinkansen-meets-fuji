@@ -184,7 +184,7 @@
   }
 
   function photoMarkup(point) {
-    if (!point.photo || !point.photo.src) return "<div class=\"collection-point-detail-photo collection-photo-empty\"><span class=\"eyebrow\">PHOTO</span><strong>" + escapeHTML(T.photoEmptyTitle) + "</strong><p>" + escapeHTML(T.photoEmptyBody) + "</p></div>";
+    if (!point.photo || !point.photo.src) return "<div class=\"collection-point-detail-photo collection-photo-empty\"><span class=\"eyebrow\">" + escapeHTML(T.photoLabel || "PHOTO") + "</span><strong>" + escapeHTML(T.photoEmptyTitle) + "</strong><p>" + escapeHTML(T.photoEmptyBody) + "</p></div>";
     return "<div class=\"collection-point-detail-photo\">" + [point.photo].concat(point.collectionPhotos || []).map(function (photo, index) {
       return "<figure><img src=\"" + escapeHTML(assetURL(photo.src)) + "\" alt=\"" + escapeHTML(locale ? locale.points[point.id].photos[index].alt : photo.alt || pointName(point)) + "\" loading=\"lazy\" decoding=\"async\"><figcaption>" + escapeHTML(locale ? locale.points[point.id].photos[index].note : (LANG === "en" && photo.noteEn) || photo.note || "michikusa") + "</figcaption></figure>";
     }).join("") + "</div>";

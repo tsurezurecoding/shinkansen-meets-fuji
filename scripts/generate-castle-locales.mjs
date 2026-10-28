@@ -35,6 +35,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     const key = value.trim();
     if (!key) return value;
     let result = dictionary[key];
+    if (result === undefined && typeof dictionary[value] === "string") return dictionary[value];
     if (result === undefined && key.endsWith(' | Shinkansen Window')) result = tr(key.slice(0, -' | Shinkansen Window'.length)) + ' | Shinkansen Window';
     if (typeof result !== 'string' || !result.trim()) { missing.add(`${lang}: ${key}`); return value; }
     return value.replace(key, () => result);
