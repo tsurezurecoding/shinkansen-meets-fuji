@@ -4,15 +4,14 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {renderSiteRuntimeForValidation} from './shared/site-runtime-validation.mjs';
-import {supported} from './shared/locales.mjs';
+import {supported,languages} from './shared/locales.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=f=>fs.readFileSync(path.join(root,f),'utf8');
 const page=relative=>renderSiteRuntimeForValidation({appDir:root,html:read(relative),relative}).dom;
-const languages=['ja','en','zh-Hant','fr','de','es','zh-Hans','ko'];
 const routes=['foods.html','countryside.html','spots/gamagori-greenhouses.html'];
 const origin='https://www.michikusa-travel.com/';
 
-test('food and landscape editions have all eight real reciprocal destinations',async()=>{
+test('food and landscape editions have all contracted reciprocal destinations',async()=>{
   const sitemap=read('sitemap.xml');
   for(const route of routes){
     assert.deepEqual(supported(route),languages);

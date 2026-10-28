@@ -43,6 +43,8 @@ export function invitePageConfig(file){
  return {language,pageContext,general};
 }
 export function withPageAndroidAppInvite(html,file){
+ // Web translations do not imply Italian/Thai audio or navigation in the app.
+ if (/^(?:it|th)\//.test(file)) return html.replace(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/g, '');
  const cfg=invitePageConfig(file);
  if(!cfg||!/var (?:measurementId|id) = "G-C2ESB694FV"/.test(html))return html;
  const assetPrefix=file.includes('artworks/')?(cfg.language==='en'?'../':''):(/<base\b/i.test(html)?'':'../'.repeat(file.split('/').length-1));

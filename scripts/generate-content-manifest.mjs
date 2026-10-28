@@ -30,6 +30,7 @@ const contentFiles = [
   "site-runtime.json", "site-runtime-loader.js", "site-chrome.js", "android-app-invite.js",
   ...await walkFiles('shared-ui', p => /\.js$/.test(p)),
   ...locales.starter.flatMap(lang => [...locales.starterRoutes.map(route => `${lang}/${route}`), `${lang}/utility-data.js`]),
+  ...['it', 'th'].map(lang => `${lang}/guide.html`),
   "window-quiz.html", "window-guesser.html", ...await walkFiles("quiz", p => /\.(?:js|css|jpg|webp|mp4)$/.test(p)),
   "memory-express.html",
   ...await walkFiles("artworks", p => /\.(?:html|js|css|txt|png)$/.test(p)),

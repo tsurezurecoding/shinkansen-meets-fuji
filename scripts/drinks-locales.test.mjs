@@ -5,7 +5,7 @@ import vm from 'node:vm';
 import {localizeYamazakiPayload,YAMAZAKI_LANGS} from './shared/yamazaki-locales.mjs';
 const read=p=>fs.readFileSync(new URL('../'+p,import.meta.url),'utf8');
 const values=(h,key)=>[...h.matchAll(new RegExp('\\b'+key+'="([^"]*)"','g'))].map(m=>m[1]);
-for(const slug of ['drinks','beer-on-shinkansen'])test(`${slug}: six editions retain assets, source links, Japanese labels and section destinations`,()=>{
+for(const slug of ['drinks','beer-on-shinkansen'])test(`${slug}: translated editions retain assets, source links, Japanese labels and section destinations`,()=>{
  const en=read(`en/${slug}.html`);const photos=values(en,'src').filter(s=>/\.(?:jpg|webp|png)/.test(s));
  const external=values(en,'href').filter(s=>/^https?:/.test(s)&&!s.includes('michikusa-travel.com'));
  const labels=[...en.matchAll(/<[^>]+lang="ja"[^>]*>([^<]*)<\//g)].map(m=>m[1]);

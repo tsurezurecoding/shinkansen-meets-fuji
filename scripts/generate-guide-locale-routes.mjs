@@ -10,7 +10,9 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
 const check = process.argv.includes('--check');
-for (const lang of [...locales.coreLanguages, 'ar']) {
+// Italian/Thai guide text, menus and links are regenerated together by the
+// dictionary-based guide generator; do not rewrite its output a second time.
+for (const lang of [...locales.coreLanguages.filter(lang => !['it', 'th'].includes(lang)), 'ar']) {
   const file = (lang === 'ja' ? '' : lang + '/') + 'guide.html';
   let html = fs.readFileSync(path.join(root, file), 'utf8');
   const dom = new JSDOM(html, { url: origin + '/' + file });

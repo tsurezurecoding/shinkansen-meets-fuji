@@ -1896,6 +1896,8 @@ function sitemapXML() {
     { loc: `${siteRoot}/fr/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/de/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/es/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/it/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-29" },
+    { loc: `${siteRoot}/th/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-29" },
     { loc: `${siteRoot}/ar/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-09-13" },
     { loc: `${siteRoot}/android-app.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-18" },
     { loc: `${siteRoot}/en/android-app.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-18" },
@@ -1944,8 +1946,8 @@ function sitemapXML() {
   const utilityLiveState = JSON.parse(fs.readFileSync(path.join(appDir, 'scripts/utility-live-sitemap-state.json'), 'utf8'));
   const episodeUrls = Object.entries(episodes)
     .filter(([route]) => !SPOTS.some(spot => spot.guidePageId && spot.guidePageId !== spot.id && route === `spots/${spot.id}.html`))
-    .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
-  const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
+    .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: ['it','th'].includes(lang) ? "2026-10-29" : /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
+  const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['it','th'].includes(lang) && route !== 'live/index.html' ? '2026-10-29' : route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const starterUrls = locales.starter.flatMap(lang => locales.starterRoutes.map(route => ({loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['zukan.html', 'live/index.html'].includes(route) ? '2026-10-28' : '2026-10-25'})));
   const urls = [...starterUrls, ...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
@@ -2086,7 +2088,9 @@ for (const relativePath of ["en/journal.html", "ar/guide.html"]) {
 // Guide pages are hand-edited SEO answer pages.
 // Keep only their shared route rail generated from the same source as spot pages.
 const guideRailSpot = SPOTS.find((spot) => spot.id === "fuji");
-const guideRailConfigs = locales.coreLanguages.map(lang => ({
+// Italian/Thai guide prose and its rail come from the reviewed English snapshot
+// below; the earlier hand-authored editions retain their explicit rail copy.
+const guideRailConfigs = locales.coreLanguages.filter(lang => UI[lang]).map(lang => ({
   lang, path: lang === 'ja' ? 'guide.html' : path.join(lang, 'guide.html'),
   prefix: lang === 'ja' ? '' : '../',
   spotHrefPrefix: ['ja','en'].includes(lang) ? 'spots/' : '../en/spots/',

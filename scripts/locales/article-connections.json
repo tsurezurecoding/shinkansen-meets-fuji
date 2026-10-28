@@ -38,5 +38,37 @@
     "sources": "출처", "checked": "확인일",
     "fujitec": ["세계의 건물과 이어지는 이야기", "베를린 국회의사당", "후지테크 자료에는 1999년 베를린 국회의사당 개보수 당시 엘리베이터 19대를 납품한 사양이 기록되어 있습니다. 이는 회사 자료의 역사적 수치입니다. Big Wing은 2006년 4월에 운영을 시작했으므로, 1999년 설비가 이 탑에서 개발·제조되었다는 뜻은 아닙니다.", "베이징 왕징 SOHO", "후지테크는 자하 하디드가 설계한 베이징 왕징 SOHO에도 엘리베이터와 에스컬레이터를 납품했습니다. 같은 회사의 작업이 차창의 Big Wing과 중국의 건물을 연결합니다. 왕징 SOHO의 설비를 이 탑에서 제조하거나 시험했다는 사실은 자료에서 확인되지 않습니다."],
     "pocari": ["한국에서도 만나는 포카리스웨트", "동아오츠카는 한국에서 포카리스웨트를 소개하며 다양한 활동에 이 제품을 활용하고 있습니다. 차창 밖의 후쿠로이 공장은 일본에서 포카리스웨트의 페트병 음료와 분말 제품 등을 만드는 오츠카제약의 생산 거점입니다.", "한국에서 포카리스웨트를 본 적이 있다면 차창 밖 공장이 한층 친숙하게 느껴질 수 있습니다. 한국에서 판매하는 제품이 이 공장에서 만들어진다는 뜻은 아닙니다."]
+  },
+  "it": {
+    "sources": "Fonti",
+    "checked": "Verificate",
+    "fujitec": [
+      "Collegamenti con edifici di tutto il mondo",
+      "Il Reichstag di Berlino",
+      "La documentazione Fujitec riporta la fornitura di 19 ascensori per il rinnovamento del Reichstag di Berlino nel 1999. È un dato storico dei materiali aziendali. Big Wing è entrato in funzione nell’aprile 2006: ciò non significa che gli impianti del 1999 siano stati sviluppati o prodotti in questa torre.",
+      "Il Wangjing SOHO di Pechino",
+      "Fujitec ha fornito ascensori e scale mobili anche al Wangjing SOHO di Pechino, progettato da Zaha Hadid. Big Wing, visibile dal treno, e questo edificio cinese sono legati dal lavoro della stessa azienda. Le fonti non stabiliscono che gli impianti di Wangjing SOHO siano stati prodotti o collaudati in questa torre."
+    ],
+    "pocari": [
+      "Pocari Sweat in Corea del Sud",
+      "Dong-A Otsuka presenta Pocari Sweat in Corea del Sud e la utilizza in varie attività. Lo stabilimento Fukuroi fuori dal finestrino è un sito produttivo giapponese di Otsuka Pharmaceutical, che realizza tra l’altro Pocari Sweat in bottiglie PET e prodotti in polvere.",
+      "Se hai visto Pocari Sweat in Corea del Sud, la fabbrica fuori dal finestrino potrà sembrarti più familiare. Questo non significa che i prodotti venduti in Corea del Sud siano realizzati qui."
+    ]
+  },
+  "th": {
+    "sources": "แหล่งข้อมูล",
+    "checked": "ตรวจสอบเมื่อ",
+    "fujitec": [
+      "ความเชื่อมโยงกับอาคารทั่วโลก",
+      "อาคารไรชส์ทาคในเบอร์ลิน",
+      "เอกสารของ Fujitec บันทึกว่าได้จัดส่งลิฟต์ 19 ตัวสำหรับการปรับปรุงอาคารไรชส์ทาคในเบอร์ลินเมื่อปี 1999 นี่คือข้อมูลการจัดส่งในอดีตจากเอกสารของบริษัทเอง Big Wing เริ่มดำเนินงานในเดือนเมษายน 2006 บันทึกนี้จึงไม่ได้หมายความว่าอุปกรณ์ในปี 1999 พัฒนาหรือผลิตในหอแห่งนี้",
+      "Wangjing SOHO ในปักกิ่ง",
+      "Fujitec ยังจัดส่งลิฟต์และบันไดเลื่อนให้ Wangjing SOHO ในปักกิ่ง ซึ่งออกแบบโดย Zaha Hadid เป็นความเชื่อมโยงระหว่าง Big Wing ที่เห็นจากรถไฟกับอาคารในจีนผ่านผลงานของบริษัทเดียวกัน แหล่งข้อมูลไม่ได้ยืนยันว่าอุปกรณ์ของ Wangjing SOHO ผลิตหรือทดสอบในหอแห่งนี้"
+    ],
+    "pocari": [
+      "โพคารี่สเวทในเกาหลีใต้",
+      "Dong-A Otsuka แนะนำโพคารี่สเวทในเกาหลีใต้และนำผลิตภัณฑ์ไปใช้ในกิจกรรมต่าง ๆ โรงงานฟุคุโรอิที่เห็นนอกหน้าต่างเป็นฐานการผลิตของ Otsuka Pharmaceutical ในญี่ปุ่น ผลิตทั้งโพคารี่สเวทบรรจุขวด PET ผลิตภัณฑ์แบบผง และอื่น ๆ",
+      "หากเคยเห็นโพคารี่สเวทในเกาหลีใต้ โรงงานนอกหน้าต่างอาจดูคุ้นเคยขึ้น แต่ไม่ได้หมายความว่าผลิตภัณฑ์ที่ขายในเกาหลีใต้ผลิตจากโรงงานนี้"
+    ]
   }
 }

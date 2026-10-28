@@ -1318,7 +1318,9 @@ function spotDetailModalHTML(spot) {
 
 /* ---------- i18n apply ---------- */
 function annotateStarterFallbackLinks(scope = document) {
-  if (!window.MADO_LOCALES?.starter?.includes(lang)) return;
+  // These editions retain English-only destinations after joining the full
+  // route set; promotion must not hide their existing language-change cue.
+  if (!['it', 'th'].includes(lang) && !window.MADO_LOCALES?.starter?.includes(lang)) return;
   scope.querySelectorAll('a[href]').forEach(link => {
     if (link.closest('.guide-lang-menu,.lang-switch') || !link.textContent.trim()) return;
     const url = new URL(link.getAttribute('href'), document.baseURI);

@@ -14,10 +14,10 @@
     th: { label: 'ไทย', prompt: 'เลือกภาษา', og: 'th_TH', map: 'th' },
     ar: { label: 'العربية', prompt: 'اختر اللغة', og: 'ar_AR', map: 'ar' }
   };
-  var languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko'];
+  var languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
   var coreLanguages = languages.slice();
-  var starter = ['it', 'th'];
-  var starterRoutes = ['index.html', 'guide.html', 'start.html', 'spots/fuji.html', 'zukan.html', 'live/index.html'];
+  var starter = [];
+  var starterRoutes = [];
   languages = languages.concat(starter);
   var translated = coreLanguages.filter(function (lang) { return lang !== 'ja' && lang !== 'en'; });
   var jaOnly = ["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html","sudoori/stories/aisho.html","sudoori/stories/koura.html"];
@@ -27,7 +27,7 @@
   var extra = ['sparkling-dreams.html'];
   var routes = utility.concat(castles, extra, ['guide.html']);
   var enOnly = ['drinks.html', 'beer-on-shinkansen.html'];
-  var episodes = {"spots/fuji.html":translated.slice(),"yakei.html":translated.slice(),"spots/fujitec-big-wing.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/pocari-fukuroi.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/fujikawa-bridge.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/fuji-paper-mills.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/ibuki.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/ibuki-seat-a.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"spots/yamazaki-distillery.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"drinks.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"beer-on-shinkansen.html":["zh-Hant","fr","de","es","zh-Hans","ko"],"foods.html":translated.slice(),"countryside.html":translated.slice(),"spots/gamagori-greenhouses.html":translated.slice()};
+  var episodes = {"spots/fuji.html":translated.slice(),"yakei.html":translated.slice(),"spots/fujitec-big-wing.html":translated.slice(),"spots/pocari-fukuroi.html":translated.slice(),"spots/fujikawa-bridge.html":translated.slice(),"spots/fuji-paper-mills.html":translated.slice(),"spots/ibuki.html":translated.slice(),"spots/ibuki-seat-a.html":translated.slice(),"spots/yamazaki-distillery.html":translated.slice(),"drinks.html":translated.slice(),"beer-on-shinkansen.html":translated.slice(),"foods.html":translated.slice(),"countryside.html":translated.slice(),"spots/gamagori-greenhouses.html":translated.slice()};
   var pattern = languages.filter(function (lang) { return lang !== 'ja'; }).concat(['ar']).join('|');
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();

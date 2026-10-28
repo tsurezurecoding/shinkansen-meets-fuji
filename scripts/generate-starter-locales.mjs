@@ -1,11 +1,12 @@
-// Limited editions: English source + reviewed Italian/Thai manuscripts.
+// Italian/Thai guide manuscripts remain generated from the reviewed English source.
+// Utility pages and articles use the normal full-edition generators.
 import fs from 'node:fs';
 import { finalizeSiteChrome } from './shared/site-chrome.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import locales, { editions, supported, stripEdition, withLocaleRegistry } from './shared/locales.mjs';
 import { englishSnapshot, textNodes } from './shared/castle-localization.mjs';
-import { ATTRS, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, FORECAST_COPY, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
+import { ATTRS, utilitySnapshot, translationKey, translatable } from './shared/utility-localization.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -13,11 +14,8 @@ const check = process.argv.includes('--check');
 const report = process.argv.includes('--report-missing');
 const origin = 'https://www.michikusa-travel.com';
 const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
-const routes = locales.starterRoutes;
-const sourceTables = englishTables(root);
-const tables = { app: sourceTables.app, picker: sourceTables.picker, live: sourceTables.live };
-const data = englishRuntimeData(root);
-const narrations = englishNarrations(root);
+const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
+const outputRoutes = ['guide.html'];
 const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 function write(file, text) {
   text = text.replace(/^[ \t]+$/gm, "");
@@ -28,7 +26,7 @@ function write(file, text) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, text);
 }
-for (const lang of locales.starter) {
+for (const lang of ['it', 'th']) {
   const dictionary = JSON.parse(fs.readFileSync(path.join(root, `scripts/locales/utility-${lang}.json`), 'utf8'));
   const missing = new Set();
   function tr(value) {
@@ -43,33 +41,7 @@ for (const lang of locales.starter) {
     if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, child]) => [key, translate(child)]));
     return value;
   }
-  // Gallery/modals use these fields; article references/videos and map search
-  // strings are not rendered here. Author credits retain their original names.
-  for (const spot of [...data.SPOTS, ...data.BOARD_COLLECTION, ...data.WHEEL_COLLECTION]) {
-    translate(spot.en);
-    tr(spot.sideLabel?.en);
-    tr(spot.photoCredit?.note?.en);
-    for (const photo of spot.photos || []) {
-      tr(photo.alt?.en);
-      tr(photo.note?.en);
-    }
-  }
-  const payload = {
-    lang, translations: dictionary,
-    tables: Object.fromEntries(Object.entries(tables).map(([kind, table]) => [kind, Object.fromEntries(Object.entries(table).map(([key, value]) => {
-      const item = valueTemplate(value); item.text = tr(item.text); return [key, item];
-    }))])),
-    spots: Object.fromEntries(data.SPOTS.map(spot => [spot.id, translate(spot.en)])),
-    routes, narrations: Object.fromEntries(Object.entries(narrations).map(([id, directions]) => [id, Object.fromEntries(Object.entries(directions).filter(([, v]) => v.en).map(([direction, variants]) => {
-      const item = { ...variants.en, text: tr(variants.en.text) };
-      if (item.audio !== false && !item.audio) item.audio = `audio/${id}_${direction}_en.mp3`;
-      return [direction, item];
-    }))])), forecast: {},
-  };
-  // Payload precedes application rendering; non-localized audio has no payload.
-  write(`${lang}/utility-data.js`, '/* Generated from reviewed utility dictionary. */\nwindow.MADO_UTILITY_PAYLOAD=' + JSON.stringify(payload) + ';\n');
-  if (!report) assetVersion(`${lang}/utility-data.js`, true);
-  for (const route of routes) {
+  for (const route of outputRoutes) {
     const dom = route.startsWith('spots/') ? englishSnapshot(root, route) : utilitySnapshot(root, route);
     const doc = dom.window.document;
     const file = `${lang}/${route}`;
@@ -133,6 +105,7 @@ for (const lang of locales.starter) {
       const target = stripEdition(url.pathname.slice(1)).replace(/^live\/$/, 'live/index.html') || 'index.html';
       const available = routes.includes(target);
       const targetLang = available ? lang : a.getAttribute('hreflang') === 'ja' ? 'ja' : 'en';
+      if (/^rail_exact_time(?:_bottom)?$/.test(a.getAttribute('data-guide-cta') || '')) url.searchParams.delete('focus');
       a.setAttribute('href', prefix + (targetLang === 'ja' ? '' : targetLang + '/') + (target === 'index.html' ? '' : target) + url.search + url.hash);
       if (!available && targetLang === 'en' && a.textContent.trim()) {
         a.hreflang = 'en';
@@ -161,16 +134,10 @@ for (const lang of locales.starter) {
       if (route === "index.html" && script.textContent.includes('h.indexOf("#spot-")')) script.textContent = `(function(){var h=location.hash;if(h!=="#journey"&&h.indexOf("#spot-")!==0)return;var u=new URL("${prefix}${lang}/start.html",document.baseURI);u.search=location.search;u.hash=h;location.replace(u.href)})();`;
       script.textContent = script.textContent.replaceAll('localStorage.setItem("mado-lang", "en")', `localStorage.setItem("mado-lang", "${lang}")`);
     }
-    if (route === 'live/index.html') {
-      doc.querySelector('#passed-summary').textContent = `${tr(tables.live.passed)} (0)`;
-      doc.querySelector('#set-narr-help').textContent = tr(tables.live.narrModeHelpLoading);
-      const notice = doc.createElement('p'); notice.className = 'utility-audio-note'; notice.textContent = tr(FORECAST_COPY.audio);
-      doc.querySelector('#idle-panel')?.append(notice);
-    }
     // Remove the English invitation; this edition does not offer Italian/Thai app audio.
     let html = dom.serialize().replace(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/g, '');
     dom.window.close();
-    // All contracted pages receive the adapter, including live controls and subtitles.
+    // The guide uses the same full-edition runtime dictionary as its utility pages.
     const scripts = `<script src="${prefix}${lang}/utility-data.js?v=${report ? 'pending' : assetVersion(`${lang}/utility-data.js`)}"></script>\n<script src="${prefix}utility-locale-runtime.js?v=${assetVersion('utility-locale-runtime.js')}"></script>`;
     const dataTag = /<script[^>]*src="[^"]*data-runtime\.js[^"]*"[^>]*><\/script>/;
     html = dataTag.test(html) ? html.replace(dataTag, '$&\n' + scripts) : html.replace('</head>', scripts + '\n</head>');
@@ -180,5 +147,5 @@ for (const lang of locales.starter) {
   if (missing.size) {
     console.log(JSON.stringify({lang, missing: [...missing]}, null, 2));
     if (!report) throw Error(`${lang}: ${missing.size} missing translations`);
-  } else console.log(`${lang}: ${routes.length} starter pages and runtime dictionary ${check ? 'checked' : 'generated'}.`);
+  } else console.log(`${lang}: ${outputRoutes.length} translated guide ${check ? 'checked' : 'generated'}.`);
 }

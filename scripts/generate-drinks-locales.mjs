@@ -1,26 +1,28 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { withLocaleRegistry, supported } from './shared/locales.mjs';
+import { withLocaleRegistry, supported, translated, editions } from './shared/locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 import { englishSnapshot } from './shared/castle-localization.mjs';
 import { finalizeSiteChrome } from './shared/site-chrome.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const langs=['zh-Hant','fr','de','es','zh-Hans','ko'];
+const langs=translated;
 const read=name=>JSON.parse(fs.readFileSync(path.join(root,'scripts/shared/'+name+'.json'),'utf8'));
 const attrs=read('drinks-attributes');
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const decode=s=>s.replace(/&amp;/g,'&').replace(/&quot;/g,'"').replace(/&#39;/g,"'").replace(/&lt;/g,'<').replace(/&gt;/g,'>');
 // Proper names, romanised Japanese label readings and original attribution/file names stay intact.
 const retained={drinks:[27,30,33,43,50,53,55,57,63,66,70,80,91,92,99,104,121,123,136,147,151,155,159,162,164,179,184,191,198,200,204,209,217,224,226,228,248,251,252,253,254,273],beer:[38,47,53,59,65,88,89,90,99,154,155,177]};
-const englishNote={'zh-Hant':'英文',fr:'anglais',de:'Englisch',es:'inglés','zh-Hans':'英文',ko:'영어'};
+const englishNote={'zh-Hant':'英文',fr:'anglais',de:'Englisch',es:'inglés','zh-Hans':'英文',ko:'영어',it:'inglese',th:'ภาษาอังกฤษ'};
 const descriptions={
  'zh-Hant':['認識日本瓶裝茶、罐裝咖啡與清涼飲品，辨識日本標籤，連結茶田與車窗工廠。','認識日本常見拉格、閱讀啤酒標籤，搭配便當並尋找沿線釀酒廠。'],
  fr:['Découvrez thés, cafés et sodas japonais, leurs étiquettes et leurs liens avec le paysage du train.','Découvrez les lagers japonaises, leurs étiquettes, le bento et les brasseries près du Shinkansen.'],
  de:['Japanische Tees, Fertigkaffees und Limonaden kennenlernen, Etiketten lesen und ihre Verbindung zum Fensterblick entdecken.','Japanische Lager kennenlernen, Bieretiketten lesen und Brauereien am Shinkansen entdecken.'],
  es:['Conoce tés, cafés y refrescos japoneses, lee sus etiquetas y descubre su conexión con el paisaje del tren.','Conoce las lager japonesas, sus etiquetas, el bento y las fábricas junto al Shinkansen.'],
  'zh-Hans':['认识日本瓶装茶、罐装咖啡与清凉饮品，辨识日本标签，连结茶田与车窗工厂。','认识日本常见拉格、阅读啤酒标签，搭配便当并寻找沿线酿酒厂。'],
- ko:['일본 차·캔커피·청량음료의 라벨을 읽고 차밭과 차창의 공장으로 이야기를 이어 보세요.','일본 라거와 맥주 라벨을 알아보고 도시락과 선로 옆 양조장을 만나 보세요.']
+ ko:['일본 차·캔커피·청량음료의 라벨을 읽고 차밭과 차창의 공장으로 이야기를 이어 보세요.','일본 라거와 맥주 라벨을 알아보고 도시락과 선로 옆 양조장을 만나 보세요.'],
+ it:['Scopri tè, caffè in lattina e bibite giapponesi, impara a leggere le etichette e ritrovali nel paesaggio dal treno.','Scopri le lager giapponesi, le etichette della birra, gli abbinamenti con il bento e i birrifici lungo lo Shinkansen.'],
+ th:['รู้จักชาญี่ปุ่น กาแฟกระป๋อง และเครื่องดื่มเย็น อ่านฉลากและเชื่อมโยงกับไร่ชาและโรงงานที่เห็นจากรถไฟ','รู้จักลาเกอร์ญี่ปุ่น อ่านฉลากเบียร์ จับคู่กับเบนโตะ และมองหาโรงเบียร์ตามเส้นทางชินคันเซ็น']
 };
 function dictionary(data,lang,name){
  return new Map(data.source.map((s,i)=>{const t=data.translations[lang][i];if(t===undefined&&!retained[name].includes(i))throw Error(`Missing ${name} ${lang} ${i}: ${s}`);return[s,t===undefined?s:t];}));
@@ -65,7 +67,7 @@ export function generateDrinkLocales(){
     const fallback=target.startsWith('en/');
     return `<a${before}href="${dest}"${after}${fallback?' hreflang="en"':''}>${body}${fallback?' <small class="article-language-note">('+englishNote[lang]+')</small>':''}</a>`;
    });
-   const labels={'zh-Hant':'繁體中文',fr:'Français',de:'Deutsch',es:'Español','zh-Hans':'简体中文',ko:'한국어',en:'English'};
+   const labels=Object.fromEntries(Object.entries(editions).map(([code, edition])=>[code, edition.label]));
    const menu=`<details class="guide-lang-menu article-lang-menu"><summary>${labels[lang]}</summary><div class="guide-lang-options">${['en',...langs].map(l=>`<a href="../${l}/${slug}.html?lang=${l}" lang="${l}"${l===lang?' aria-current="page"':''}>${labels[l]}</a>`).join('')}</div></details>`;
    html=html.replace('</nav></header>',`</nav>${menu}</header>`);
    if(name==='beer'){
@@ -80,6 +82,6 @@ export function generateDrinkLocales(){
   }
  }
  if(process.argv.includes('--check')&&changes.length)throw Error('Drink locales stale: '+changes.join(', '));
- console.log(`Drink locales: ${changes.length} changed, 12 editions; English sources retained.`);
+ console.log(`Drink locales: ${changes.length} changed, ${2 * langs.length} translated pages; English sources retained.`);
 }
 generateDrinkLocales();
