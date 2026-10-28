@@ -692,7 +692,7 @@
   <footer class="footer">
     <p class="footer-brand">新幹線の窓 旅の瞬間を見逃さない</p>
     <p>時刻は目安です（列車を選ばない場合はのぞみ基準）。列車・天候・座席位置により見え方は変わります。少し早めに窓の外を見てください。</p>
-    <p class="footer-links"><a href="guide.html">富士山の見方</a> · <a href="references.html">車窓リンク集</a> · <a href="mieru.html">見える予報β</a> · <a href="sumie.html">墨絵車窓</a> · <a href="somato.html">車窓走馬灯</a> · <a class="hide-in-app" href="android-app.html?src=lp-footer">Androidアプリ</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p>
+    <p class="footer-links"><a href="guide.html">富士山の見方</a> · <a href="references.html">車窓リンク集</a> · <a href="mieru.html">見える予報β</a> · <a href="sumie.html">墨絵車窓</a> · <a href="somato.html">車窓走馬灯</a> · <a class="hide-in-app" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=website&amp;utm_campaign=lp_footer" target="_blank" rel="noopener noreferrer">Google Playで見る</a> · <a href="contact.html">お問い合わせ</a> · <a href="privacy.html">プライバシーポリシー</a></p>
     <p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>
   </footer>
 

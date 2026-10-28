@@ -1,11 +1,12 @@
-// Limited editions: English source + reviewed Italian/Thai manuscripts.
+// Italian/Thai guide manuscripts remain generated from the reviewed English source.
+// Utility pages and articles use the normal full-edition generators.
 import fs from 'node:fs';
 import { finalizeSiteChrome } from './shared/site-chrome.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import locales, { editions, supported, stripEdition, withLocaleRegistry } from './shared/locales.mjs';
 import { englishSnapshot, textNodes } from './shared/castle-localization.mjs';
-import { ATTRS, utilitySnapshot, englishTables, englishRuntimeData, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
+import { ATTRS, utilitySnapshot, translationKey, translatable } from './shared/utility-localization.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -13,10 +14,9 @@ const check = process.argv.includes('--check');
 const report = process.argv.includes('--report-missing');
 const origin = 'https://www.michikusa-travel.com';
 const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
-const routes = locales.starterRoutes;
-const sourceTables = englishTables(root);
-const tables = { app: sourceTables.app, picker: sourceTables.picker };
-const data = englishRuntimeData(root);
+const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
+const outputRoutes = ['guide.html'];
+const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 function write(file, text) {
   text = text.replace(/^[ \t]+$/gm, "");
   if (report) return;
@@ -26,7 +26,7 @@ function write(file, text) {
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, text);
 }
-for (const lang of locales.starter) {
+for (const lang of ['it', 'th']) {
   const dictionary = JSON.parse(fs.readFileSync(path.join(root, `scripts/locales/utility-${lang}.json`), 'utf8'));
   const missing = new Set();
   function tr(value) {
@@ -41,18 +41,7 @@ for (const lang of locales.starter) {
     if (value && typeof value === 'object') return Object.fromEntries(Object.entries(value).map(([key, child]) => [key, translate(child)]));
     return value;
   }
-  const payload = {
-    lang, translations: dictionary,
-    tables: Object.fromEntries(Object.entries(tables).map(([kind, table]) => [kind, Object.fromEntries(Object.entries(table).map(([key, value]) => {
-      const item = valueTemplate(value); item.text = tr(item.text); return [key, item];
-    }))])),
-    spots: Object.fromEntries(data.SPOTS.map(spot => [spot.id, Object.fromEntries(['name', 'area', 'hook'].filter(key => spot.en?.[key]).map(key => [key, tr(spot.en[key])]))])),
-    routes, narrations: {}, forecast: {},
-  };
-  // Payload precedes application rendering; non-localized audio has no payload.
-  write(`${lang}/utility-data.js`, '/* Generated from reviewed utility dictionary. */\nwindow.MADO_UTILITY_PAYLOAD=' + JSON.stringify(payload) + ';\n');
-  if (!report) assetVersion(`${lang}/utility-data.js`, true);
-  for (const route of routes) {
+  for (const route of outputRoutes) {
     const dom = route.startsWith('spots/') ? englishSnapshot(root, route) : utilitySnapshot(root, route);
     const doc = dom.window.document;
     const file = `${lang}/${route}`;
@@ -77,16 +66,23 @@ for (const lang of locales.starter) {
     doc.body.setAttribute('data-language-route', lang);
     doc.body.setAttribute('data-utility-localized', '');
     doc.body.setAttribute('data-spot-page-shared-lang', lang);
+    // A few English source accessibility labels still retain Japanese. Give
+    // the new editions explicit dictionary keys instead of copying them through.
+    const accessibleLabels = { 'ライブ操作': 'Live controls', '図鑑の見方': 'How to use the field guide', '車窓図鑑フィルタ': 'Field guide filters', '見どころモード': 'View mode', '座席側': 'Seat side', 'カテゴリ': 'Category' };
+    for (const el of doc.querySelectorAll('[aria-label]')) {
+      const source = accessibleLabels[el.getAttribute('aria-label')];
+      if (source) el.setAttribute('aria-label', source);
+    }
     for (const node of textNodes(doc)) if (!node.parentElement.closest('.brand-mark,.show-credit,code')) node.textContent = tr(node.textContent);
     for (const el of doc.querySelectorAll('*')) for (const attr of ATTRS) if (el.hasAttribute(attr)) el.setAttribute(attr, tr(el.getAttribute(attr)));
     doc.title = tr(doc.title);
     for (const el of doc.querySelectorAll('meta')) {
       const key = el.name || el.getAttribute('property') || '';
       if (/(?:description|title|image:alt)$/.test(key)) el.content = tr(el.content);
-      if (key === 'og:url') el.content = `${origin}/${lang}/${route === 'index.html' ? '' : route}`;
+      if (key === 'og:url') el.content = `${origin}/${lang}/${publicRoute(route)}`;
       if (key === 'og:locale') el.content = editions[lang].og;
     }
-    doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${route === 'index.html' ? '' : route}`;
+    doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${publicRoute(route)}`;
     for (const el of doc.querySelectorAll('script[type="application/ld+json"]')) {
       const schema = JSON.parse(el.textContent);
       function localize(value, key = '') {
@@ -96,7 +92,7 @@ for (const lang of locales.starter) {
         if (typeof value !== 'string') return value;
         if (value.startsWith(origin + '/en/')) {
           const rest = value.slice((origin + '/en/').length);
-          return routes.includes(rest.split('#')[0] || 'index.html') ? value.replace('/en/', '/' + lang + '/') : value;
+          return routes.includes(rest.split('#')[0].replace(/^live\/$/, 'live/index.html') || 'index.html') ? value.replace('/en/', '/' + lang + '/') : value;
         }
         return ['name', 'description', 'text', 'headline', 'caption'].includes(key) ? tr(value) : value;
       }
@@ -109,6 +105,7 @@ for (const lang of locales.starter) {
       const target = stripEdition(url.pathname.slice(1)).replace(/^live\/$/, 'live/index.html') || 'index.html';
       const available = routes.includes(target);
       const targetLang = available ? lang : a.getAttribute('hreflang') === 'ja' ? 'ja' : 'en';
+      if (/^rail_exact_time(?:_bottom)?$/.test(a.getAttribute('data-guide-cta') || '')) url.searchParams.delete('focus');
       a.setAttribute('href', prefix + (targetLang === 'ja' ? '' : targetLang + '/') + (target === 'index.html' ? '' : target) + url.search + url.hash);
       if (!available && targetLang === 'en' && a.textContent.trim()) {
         a.hreflang = 'en';
@@ -130,7 +127,7 @@ for (const lang of locales.starter) {
     doc.querySelectorAll('link[rel="alternate"]').forEach(el => el.remove());
     for (const language of supported(route).concat('x-default')) {
       const el = doc.createElement('link'); el.rel = 'alternate'; el.hreflang = route === 'guide.html' ? alternateHreflang(language) : language;
-      el.href = `${origin}/${language === 'ja' ? '' : (language === 'x-default' ? 'en' : language) + '/'}${route === 'index.html' ? '' : route}`;
+      el.href = `${origin}/${language === 'ja' ? '' : (language === 'x-default' ? 'en' : language) + '/'}${publicRoute(route)}`;
       doc.head.append(el);
     }
     for (const script of doc.querySelectorAll('script:not([src]):not([type])')) {
@@ -140,7 +137,7 @@ for (const lang of locales.starter) {
     // Remove the English invitation; this edition does not offer Italian/Thai app audio.
     let html = dom.serialize().replace(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/g, '');
     dom.window.close();
-    // All four pages receive the adapter, including guide controls and fallback links.
+    // The guide uses the same full-edition runtime dictionary as its utility pages.
     const scripts = `<script src="${prefix}${lang}/utility-data.js?v=${report ? 'pending' : assetVersion(`${lang}/utility-data.js`)}"></script>\n<script src="${prefix}utility-locale-runtime.js?v=${assetVersion('utility-locale-runtime.js')}"></script>`;
     const dataTag = /<script[^>]*src="[^"]*data-runtime\.js[^"]*"[^>]*><\/script>/;
     html = dataTag.test(html) ? html.replace(dataTag, '$&\n' + scripts) : html.replace('</head>', scripts + '\n</head>');
@@ -150,5 +147,5 @@ for (const lang of locales.starter) {
   if (missing.size) {
     console.log(JSON.stringify({lang, missing: [...missing]}, null, 2));
     if (!report) throw Error(`${lang}: ${missing.size} missing translations`);
-  } else console.log(`${lang}: four starter pages and runtime dictionary ${check ? 'checked' : 'generated'}.`);
+  } else console.log(`${lang}: ${outputRoutes.length} translated guide ${check ? 'checked' : 'generated'}.`);
 }

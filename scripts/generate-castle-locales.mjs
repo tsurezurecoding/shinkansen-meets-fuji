@@ -84,6 +84,11 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     for (const el of doc.querySelectorAll('*')) for (const attr of TRANSLATABLE_ATTRIBUTES) {
       if (el.hasAttribute(attr) && el.getAttribute(attr).trim()) el.setAttribute(attr, tr(el.getAttribute(attr)));
     }
+    if (['it', 'th'].includes(lang)) {
+      for (const el of doc.querySelectorAll('[data-video-loading-label]')) {
+        el.setAttribute('data-video-loading-label', tr(el.getAttribute('data-video-loading-label')));
+      }
+    }
     doc.title = tr(doc.title);
     if (lang === 'zh-Hant' && route === 'castles.html') {
       const title = doc.querySelector('h1');

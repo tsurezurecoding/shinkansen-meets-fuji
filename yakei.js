@@ -15,7 +15,7 @@
   var doc = root.document;
 
   var requestedLang = root.YAKEI_LANG || doc.documentElement.lang;
-  var LANG = ["ja", "en", "de", "fr", "zh-Hant", "es", "zh-Hans", "ko"].indexOf(requestedLang) >= 0 ? requestedLang : "en";
+  var LANG = ["ja", "en", "de", "fr", "zh-Hant", "es", "zh-Hans", "ko", "it", "th"].indexOf(requestedLang) >= 0 ? requestedLang : "en";
   var MTS = root.MADO_TRAIN_SELECT;
   var DATA_SPOTS = typeof SPOTS !== "undefined" ? SPOTS : [];
   var DATA_ROUTE = typeof ROUTE !== "undefined" ? ROUTE : null;
@@ -89,6 +89,22 @@
       allLight: function (sunset) { return "이 시각에는 이 페이지의 모든 풍경을 밝을 때 지나갑니다. 일몰은 약 " + sunset + "입니다."; },
       allDark: function (sunset, n) { return "전체 구간을 어두워진 뒤에 지납니다. <strong>유리창에 비치는 객실 조명을 가리면</strong> " + n + "곳의 야경을 감상할 수 있습니다. 일몰은 약 " + sunset + "입니다."; },
       mixed: function (sunset, name, time) { return "일몰은 약 " + sunset + "입니다. <strong>" + name + "(약 " + time + ")부터는 어두운 시간대에 들어갑니다.</strong>이때부터 창문에 객실이 비치기 쉬우니 아래의 야경 감상 요령을 미리 읽어 보세요."; },
+    },
+    it: {
+      dark: "Buio", dusk: "Crepuscolo", light: "Ancora chiaro",
+      side: function (s) { return "Lato del posto " + s; },
+      needTrain: "Scegli il treno per vedere l’orario di passaggio di ogni panorama e quanta luce ci sarà.",
+      allLight: function (sunset) { return "A quest’ora passerai davanti a tutti i panorami della pagina con la luce del giorno. Il tramonto è previsto intorno alle " + sunset + "."; },
+      allDark: function (sunset, n) { return "L’intero tratto si percorre al buio. <strong>Riducendo il riflesso delle luci della carrozza</strong>, potrai ammirare tutti e " + n + " i panorami nella loro veste notturna. Il tramonto è previsto intorno alle " + sunset + "."; },
+      mixed: function (sunset, name, time) { return "Il tramonto è previsto intorno alle " + sunset + ". <strong>Da " + name + " (verso le " + time + ") in poi viaggerai al buio.</strong> Da quel momento il finestrino diventa uno specchio: prima di arrivarci, leggi qui sotto i consigli per osservare i panorami notturni."; },
+    },
+    th: {
+      dark: "มืด", dusk: "แสงสนธยา", light: "ยังสว่าง",
+      side: function (s) { return "ฝั่งที่นั่ง " + s; },
+      needTrain: "เลือกขบวนรถไฟเพื่อดูเวลาผ่านแต่ละจุดและความสว่างในเวลานั้น",
+      allLight: function (sunset) { return "ในเวลานี้ รถไฟจะผ่านทุกจุดในหน้านี้ขณะที่ยังสว่าง ดวงอาทิตย์ตกโดยประมาณเวลา " + sunset + " น."; },
+      allDark: function (sunset, n) { return "ตลอดช่วงทางเป็นเวลาหลังฟ้ามืด <strong>หากลดเงาสะท้อนจากไฟในตู้โดยสาร</strong> ก็มีโอกาสชมทิวทัศน์ยามค่ำคืนครบทั้ง " + n + " จุด ดวงอาทิตย์ตกโดยประมาณเวลา " + sunset + " น."; },
+      mixed: function (sunset, name, time) { return "ดวงอาทิตย์ตกโดยประมาณเวลา " + sunset + " น. <strong>ตั้งแต่ " + name + " (ประมาณ " + time + " น.) เป็นต้นไป จะเดินทางในช่วงฟ้ามืด</strong> กระจกจะเริ่มสะท้อนภาพในตู้โดยสาร ควรอ่านคำแนะนำการชมวิวกลางคืนด้านล่างก่อนถึงจุดนั้น"; },
     },
   }[LANG];
 

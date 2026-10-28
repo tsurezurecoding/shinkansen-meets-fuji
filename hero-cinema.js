@@ -3,7 +3,7 @@
   'use strict';
   const hero=document.querySelector('.hero.hv');if(!hero)return;
   const inner=hero.querySelector('.hero-inner'),screen=hero.querySelector('.hv-screen'),copy=hero.querySelector('.hv-copy');
-  const page=document.documentElement.lang,film=window.MADO_LOCALES?.coreLanguages.includes(page)?page:(window.MADO_LOCALES?.starter?.includes(page)?'en':(['en','fr','zh-Hant'].includes(page)?page:'ja')),en=film!=='ja',motion=matchMedia('(prefers-reduced-motion: reduce)'),connection=navigator.connection;
+  const page=document.documentElement.lang,film=['it','th'].includes(page)?'en':(window.MADO_LOCALES?.coreLanguages.includes(page)?page:(['en','fr','zh-Hant'].includes(page)?page:'ja')),en=film!=='ja',motion=matchMedia('(prefers-reduced-motion: reduce)'),connection=navigator.connection;
   const pauseKey='michikusa.heroCinema.paused';
   let userPaused=false; // no pause control any more, so an old stored pause is ignored
   const rememberPause=value=>{userPaused=value;try{sessionStorage.setItem(pauseKey,value?'1':'0');}catch{}};

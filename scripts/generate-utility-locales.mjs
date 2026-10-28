@@ -73,6 +73,15 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     const file = `${lang}/${route}`;
     doc.documentElement.lang = lang;
     doc.body.setAttribute('data-utility-localized', '');
+    // Keep the new editions' accessibility labels localized when the English
+    // source still carries Japanese labels. Older dictionaries are unchanged.
+    if (['it', 'th'].includes(lang)) {
+      const accessibleLabels = { 'ライブ操作': 'Live controls', '図鑑の見方': 'How to use the field guide', '車窓図鑑フィルタ': 'Field guide filters', '見どころモード': 'View mode', '座席側': 'Seat side', 'カテゴリ': 'Category' };
+      for (const el of doc.querySelectorAll('[aria-label]')) {
+        const key = accessibleLabels[el.getAttribute('aria-label')];
+        if (key) el.setAttribute('aria-label', key);
+      }
+    }
     if (route === 'mieru.html') {
       doc.body.setAttribute('data-article-localized', '');
       doc.body.setAttribute('data-spot-page-shared-lang', lang);
@@ -148,6 +157,10 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     else if (firstParty) firstParty.before(dataScript, runtime);
     else doc.body.append(dataScript, runtime);
     if (route === 'live/index.html') {
+      if (['it', 'th'].includes(lang)) {
+        doc.querySelector('#passed-summary').textContent = `${tr(tables.live.passed)} (0)`;
+        doc.querySelector('#set-narr-help').textContent = tr(tables.live.narrModeHelpLoading);
+      }
       doc.querySelector('#btn-settings')?.setAttribute('title', tr(tables.live.settings));
       doc.querySelector('#btn-dir')?.setAttribute('title', tr(tables.live.dirL));
       const notice = doc.createElement('p'); notice.className = 'utility-audio-note'; notice.textContent = tr(FORECAST_COPY.audio);

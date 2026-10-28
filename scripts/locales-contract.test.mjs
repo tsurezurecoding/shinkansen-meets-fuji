@@ -6,6 +6,18 @@ import locales from '../locales.js';
 import { withLocaleRegistry } from './shared/locales.mjs';
 import { withArticleLocales } from './shared/castle-locales.mjs';
 const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
+
+test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
+  const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
+  assert.equal(routes.length, 39, '38 canonical pages and the Ibuki A-seat alias');
+  assert.deepEqual(locales.starter, []);
+  for (const lang of ['it', 'th']) {
+    assert.ok(locales.coreLanguages.includes(lang));
+    assert.ok(locales.translated.includes(lang));
+    for (const route of routes) assert.ok(locales.supported(route).includes(lang), `${lang}/${route}`);
+  }
+  assert.deepEqual(locales.supported('727-collection.html'), ['ja', 'en']);
+});
 test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
   for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
     assert.deepEqual(locales.supported(`spots/${id}.html`), locales.coreLanguages);
@@ -17,12 +29,12 @@ test('scenery editions retain companion canonical targets and guide-only Arabic'
   const unregistered = '<head><link rel="canonical" href="https://www.michikusa-travel.com/en/spots/hamanako.html"></head>';
   assert.equal(withArticleLocales(unregistered, 'en/spots/hamanako-fuji.html', 'test'), unregistered);
 });
-test('English visitor articles expose seven real editions without a Japanese destination', () => {
+test('English visitor articles expose all translated editions without a Japanese destination', () => {
   const dom = new JSDOM('<html lang="en"><head><link rel="canonical" href="https://www.michikusa-travel.com/en/drinks.html"></head><body><header class="topbar"></header></body></html>', {url:'https://www.michikusa-travel.com/en/drinks.html?train=Nozomi-1#tea',runScripts:'outside-only'});
   dom.window.eval(read('locales.js')); dom.window.eval(read('article-locales.js'));
   dom.window.document.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
   const menu = dom.window.document.querySelector('.article-lang-menu');
-  assert.equal(menu.querySelectorAll('a').length,7);
+  assert.equal(menu.querySelectorAll('a').length, locales.supported('drinks.html').length);
   assert.equal(menu.querySelector('a[lang="ja"]'),null);
   const target = new URL(menu.querySelector('a[lang="fr"]').href);
   assert.equal(target.pathname,'/fr/drinks.html'); assert.equal(target.searchParams.get('train'),'Nozomi-1'); assert.equal(target.hash,'#tea');
@@ -77,7 +89,7 @@ test('edition registry loads before synchronous routing and after the base URL',
 test('new editions match the 25 active pages and Arabic stays guide-only', () => {
   assert.equal(locales.routes.length, 25);
   assert.equal(new Set(locales.routes).size, 25);
-  for (const route of locales.routes) for (const lang of ['de','es','zh-Hans','ko']) assert.ok(locales.supported(route).includes(lang), lang + '/' + route);
+  for (const route of locales.routes) for (const lang of locales.translated) assert.ok(locales.supported(route).includes(lang), lang + '/' + route);
   assert.ok(locales.supported('guide.html').includes('ar'));
   assert.ok(!locales.supported('start.html').includes('ar'));
   assert.deepEqual(locales.supported('drinks.html'), ['en', ...locales.translated]);
@@ -86,7 +98,7 @@ test('new editions match the 25 active pages and Arabic stays guide-only', () =>
 test('PR96 Japanese map entry is retained without untranslated cards in other editions', () => {
   assert.ok(read('index.html').includes('data-lp-cta="scenery-card-window-trip"'));
   assert.ok(read('scripts/generate-content-manifest.mjs').includes('images/window-trip-card.webp'));
-  for (const lang of ['en','de','es','fr','zh-Hans','zh-Hant','ko']) {
+  for (const lang of ['en', ...locales.translated]) {
     assert.ok(!read(lang + '/index.html').includes('data-lp-cta="scenery-card-window-trip"'));
     for (const route of ['start.html','zukan.html']) assert.ok(!read(lang+'/'+route).includes('写真や墨絵で、車窓の別の表現を楽しむ。'));
   }

@@ -1,0 +1,333 @@
+<!DOCTYPE html><html lang="it"><head>
+  <meta charset="utf-8">
+  <script src="../../locales.js?v=ae206cff"></script>
+  <link rel="manifest" href="../../manifest.json">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="../../language-router.js?v=ff60751b"></script>
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://www.michikusa-travel.com/it/live/">
+  <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/live/">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/live/">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/live/">
+  <title>Guida Shinkansen in tempo reale: avvisi, audio e mappa | Shinkansen Window</title>
+  <meta name="description" content="Il GPS segue la vostra posizione per annunciare il Monte Fuji e gli altri panorami con audio e mappa in tempo reale. Gli avvisi sullo smartphone sono disponibili nell'app Android. Tokyo–Shin-Osaka.">
+  <meta name="theme-color" content="#0e1726">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Guida Shinkansen in tempo reale: avvisi, audio e mappa | Shinkansen Window">
+  <meta property="og:description" content="Il GPS segue la vostra posizione per annunciare il Monte Fuji e gli altri panorami con audio e mappa in tempo reale. Gli avvisi sullo smartphone sono disponibili nell'app Android. Tokyo–Shin-Osaka.">
+  <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:url" content="https://www.michikusa-travel.com/it/live/">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Guida Shinkansen in tempo reale: avvisi, audio e mappa | Shinkansen Window">
+  <meta name="twitter:description" content="Il GPS segue la vostra posizione per annunciare il Monte Fuji e gli altri panorami con audio e mappa in tempo reale. Gli avvisi sullo smartphone sono disponibili nell'app Android. Tokyo–Shin-Osaka.">
+  <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
+  <meta name="twitter:image:alt" content="Shinkansen Window — un altro viaggio oltre il vetro.">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="">
+  <link rel="preconnect" href="https://tile.openstreetmap.org" crossorigin="">
+  <link rel="stylesheet" href="../../style.css?v=5f3f6183">
+  <link rel="stylesheet" href="../../live/styles.css?v=12a8dd6a">
+  <!-- ANDROID_APP_INVITE_RESET_START -->
+<script>/* Consumed before the existing GA initializer; never overrides invite eligibility. */
+(function () {
+  'use strict';
+  function stopSavedOptOut() {
+    try {
+      if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+      window.MADO_ANALYTICS_DISABLED = true;
+      window['ga-disable-G-C2ESB694FV'] = true;
+    } catch (error) { /* Preserve the existing initializer's storage semantics. */ }
+  }
+  window.addEventListener('storage', event => {
+    if (event.key === 'mado-ga-optout' || event.key === 'mado-android-app-invite-v2' || event.key === null) stopSavedOptOut();
+  });
+  window.addEventListener('pageshow', stopSavedOptOut);
+  window.addEventListener('focus', stopSavedOptOut, true);
+  document.addEventListener('visibilitychange', stopSavedOptOut);
+  stopSavedOptOut();
+  const url = new URL(window.location.href);
+  const reset = url.searchParams.getAll('android_invite_reset');
+  const ga = url.searchParams.getAll('ga');
+  if (reset.length !== 1 || reset[0] !== '1' || ga.length !== 1 || ga[0] !== 'off'
+      || url.searchParams.getAll('ga_optout').includes('0')) return;
+  // Keep this test page excluded even when storage is unavailable.
+  window.MADO_ANDROID_INVITE_TEST_GA_DISABLED = true;
+  url.searchParams.delete('android_invite_reset');
+  try { window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash); }
+  catch (error) { return; } // Do not reset unless the reload trigger was consumed.
+  try {
+    // Other tabs must see opt-out before the shared dismissal disappears.
+    window.localStorage.setItem('mado-ga-optout', '1');
+    if (window.localStorage.getItem('mado-ga-optout') !== '1') return;
+    window.localStorage.removeItem('mado-android-app-invite-v2');
+  }
+  catch (error) { /* The normal invitation storage guard remains in force. */ }
+})();
+</script>
+<!-- ANDROID_APP_INVITE_RESET_END -->
+<script>
+    (function () {
+      var measurementId = "G-C2ESB694FV";
+      var optoutKey = "mado-ga-optout";
+      var params = new URLSearchParams(window.location.search);
+      var host = window.location.hostname;
+      var isNativeApp = !!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform === "function" && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform === "function" && window.Capacitor.getPlatform() !== "web")));
+      var isLocalPreview = !isNativeApp && (window.location.protocol === "file:" || host === "localhost" || host === "127.0.0.1");
+      var storageOptedOut = false;
+
+      if (isNativeApp) { document.documentElement.className += " is-native-app"; }
+
+      try {
+        if (params.get("ga") === "off" || params.get("ga_optout") === "1") {
+          localStorage.setItem(optoutKey, "1");
+        }
+        if (params.get("ga") === "on" || params.get("ga_optout") === "0") {
+          localStorage.removeItem(optoutKey);
+        }
+        storageOptedOut = localStorage.getItem(optoutKey) === "1";
+      } catch (error) {
+        storageOptedOut = false;
+      }
+
+      window.MADO_ANALYTICS_DISABLED = isLocalPreview || storageOptedOut || window.MADO_ANDROID_INVITE_TEST_GA_DISABLED === true;
+      window["ga-disable-" + measurementId] = window.MADO_ANALYTICS_DISABLED;
+      if (window.MADO_ANALYTICS_DISABLED) return;
+
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+      var script = document.createElement("script");
+      script.async = true;
+      script.src = "https://www.googletagmanager.com/gtag/js?id=" + measurementId;
+      document.head.appendChild(script);
+      window.gtag("js", new Date());
+      window.gtag("config", measurementId);
+    })();
+  </script>
+  <script defer="" src="../../utility-locales.js?v=8a1a6810"></script>
+  <link rel="stylesheet" href="../../utility-locales.css?v=269e0262">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/live/">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/live/">
+  <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/live/">
+  <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/live/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/live/">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/live/">
+  <link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/live/">
+  <link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/live/">
+</head>
+<body class="live-page is-idle" data-utility-localized="">
+  <script>try { localStorage.setItem("mado-lang", "it"); } catch (error) {}</script>
+  <header class="topbar live-sitebar">
+    <a class="brand" href="../../it/" data-live-link="home">
+      <span class="brand-mark">窓</span>
+      <span class="brand-text">
+        <span class="brand-name" data-live-copy="brandName">Shinkansen Window</span>
+        <small class="brand-sub" data-live-copy="brandSub">Scopri di più dal finestrino del treno.</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="Navigazione principale">
+      <a href="../../it/start.html" data-live-link="journey" data-live-copy="navStart">Ricerca treni</a>
+      <a href="../../it/live/index.html" data-live-link="live" data-live-copy="navLive" aria-current="page">Guida audio</a>
+      <a href="../../it/zukan.html" data-live-link="zukan" data-live-copy="navFeatures">Guida ai luoghi</a>
+      <a class="top-nav-stamp" href="../../it/journal.html" data-live-link="memories" data-live-copy="navMedals">Diario</a>
+      <details class="top-nav-more">
+        <summary data-live-copy="navMore">Altro</summary>
+        <div class="top-nav-menu">
+          <a class="top-nav-menu-stamp" href="../../it/journal.html" data-live-link="memories" data-live-copy="navMedals">Diario</a>
+          <a href="../../it/guide.html" data-live-link="faq" data-live-copy="navFaq">Ammira il Monte Fuji</a>
+          <a href="../../it/mieru.html" data-live-link="mieru" data-live-copy="navMieru">Visibilità β</a>
+          <a href="../../en/window-artworks.html" data-i18n="navArtworks">Opere dal finestrino</a>
+          <a href="../../en/references.html" data-live-link="references" data-live-copy="navRefs">Link</a>
+          <a href="../../en/privacy.html" data-live-link="privacy" data-live-copy="navPrivacy">Privacy</a>
+        </div>
+      </details>
+    </nav>
+    <details class="guide-lang-menu utility-lang-menu"><summary aria-label="Scegli la lingua">Italiano</summary><div class="guide-lang-options"><a lang="ja" href="../../live/index.html?lang=ja">日本語</a><a lang="en" href="../../en/live/index.html">English</a><a lang="zh-Hant" href="../../zh-Hant/live/index.html">繁體中文</a><a lang="fr" href="../../fr/live/index.html">Français</a><a lang="de" href="../../de/live/index.html">Deutsch</a><a lang="es" href="../../es/live/index.html">Español</a><a lang="zh-Hans" href="../../zh-Hans/live/index.html">简体中文</a><a lang="ko" href="../../ko/live/index.html">한국어</a><a lang="it" href="../../it/live/index.html" aria-current="page">Italiano</a><a lang="th" href="../../th/live/index.html">ไทย</a></div></details>
+  </header>
+
+  <div id="app">
+    <header id="livebar">
+      <div class="tb-left">
+        <div class="tb-title">
+          <span class="tb-title-line">
+            <strong id="live-title">Guida audio</strong>
+          </span>
+          <span id="tb-status" class="tb-status">In attesa del GPS</span>
+        </div>
+      </div>
+      <div class="tb-right">
+        <div class="tb-metric"><span id="tb-speed">--</span><small>km/h</small></div>
+        <button id="btn-narr-toggle" class="tb-btn tb-btn-toggle" type="button" aria-pressed="true">🔈 Guida ON</button>
+        <button id="btn-pause" class="tb-btn tb-btn-toggle hidden" type="button">⏸ Pausa</button>
+        <button id="btn-dir" class="tb-btn" title="Direzione">🧭 Auto</button>
+        <button id="btn-settings" class="tb-btn" title="Impostazioni">⚙</button>
+      </div>
+    </header>
+
+    <div id="map"></div>
+
+    <div id="live-map-controls" class="hidden" aria-label="Comandi della guida in tempo reale">
+      <button id="map-narr-toggle" class="map-control-btn map-control-secondary" type="button" aria-pressed="true">🔈 Guida ON</button>
+      <button id="map-pause" class="map-control-btn map-control-secondary" type="button" aria-pressed="false">⏸ Pausa</button>
+      <button id="map-stop" class="map-control-btn map-control-danger" type="button">■ Ferma</button>
+    </div>
+
+    <div id="segband" class="hidden"></div>
+
+    <div id="alertbar" class="hidden">
+      <div class="al-icon" id="al-icon">🗻</div>
+      <div class="al-body">
+        <div class="al-count" id="al-count">60</div>
+        <div class="al-text"><span id="al-name"></span><span id="al-side" class="side-badge"></span></div>
+      </div>
+      <button id="al-close">×</button>
+    </div>
+
+    <section id="sheet">
+      <div id="sheet-handle"><span></span></div>
+
+      <div id="narrbar" class="hidden">
+        <div class="nr-head">
+          <span class="nr-tag" id="nr-tag">GUIDA IA</span>
+          <span class="nr-name" id="nr-name"></span>
+          <button id="nr-close" aria-label="Chiudi">×</button>
+        </div>
+        <p class="nr-text" id="nr-text"></p>
+      </div>
+
+      <div id="next-card" class="hidden">
+        <div class="nc-head">
+          <span class="nc-label" id="nc-label">PROSSIMO PANORAMA</span>
+          <span class="nc-eta" id="nc-eta">--:--</span>
+        </div>
+        <div class="nc-main">
+          <div class="nc-icon" id="nc-icon">🗻</div>
+          <div class="nc-info">
+            <div class="nc-name" id="nc-name"></div>
+            <div class="nc-hook" id="nc-hook"></div>
+            <div class="nc-meta">
+              <span class="side-badge" id="nc-side"></span>
+              <span class="nc-dist" id="nc-dist"></span>
+              <span class="nc-dur" id="nc-dur"></span>
+            </div>
+          </div>
+          <img id="nc-photo" class="nc-photo hidden" alt="">
+        </div>
+      </div>
+
+      <div id="upcoming"></div>
+
+      <details id="passed-wrap" class="hidden">
+        <summary id="passed-summary">Panorami superati (0)</summary>
+        <div id="passed"></div>
+      </details>
+
+      <div id="idle-panel">
+        <h2 id="idle-title">A bordo, il GPS vi guida dalla vostra posizione</h2>
+        <p id="idle-desc">Attivate l'audioguida e viaggiate insieme a lei. Annuncia ciò che sta per apparire prima che il panorama passi. La posizione viene usata per la guida e non viene salvata su server esterni.</p>
+        <div class="idle-actions">
+          <button id="btn-start" class="big-btn">📍 Avvia con GPS</button>
+          <button id="btn-demo" class="big-btn ghost">▶ Anteprima del viaggio (prova senza salire a bordo)</button>
+          <p class="idle-demo-note" data-live-copy="idleNoGps">Non siete ancora a bordo? L'anteprima riproduce l'intera guida Tokyo–Shin-Osaka senza chiedere la vostra posizione.</p>
+        </div>
+        <div class="idle-app-rec hide-in-app">
+          <p class="idle-app-why" data-live-copy="eaLiveWhy">Nel browser la guida si interrompe quando spegnete lo schermo o cambiate app. A bordo, l'app offre maggiore continuità.</p>
+          <a class="ea-live-cta" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow" target="_blank" rel="noopener noreferrer" data-android-app-guide="" data-cta-id="live_android">
+            <img src="../../images/android/app-icon-192.webp" alt="" width="44" height="44" decoding="async">
+            <span class="ea-live-cta-body">
+              <strong data-live-copy="eaLiveTitle">Scarica l'app da Google Play</strong>
+              <small data-live-copy="eaLiveBody">Guida e audio continuano anche a schermo spento. Gratis, senza registrazione.</small>
+            </span>
+            <span class="ea-live-cta-arrow" aria-hidden="true">›</span>
+          </a>
+        </div>
+        <ul class="idle-feature-list" id="idle-features">
+          <li>Prevede il prossimo panorama dalla posizione in tempo reale</li>
+          <li>Scegliete solo i luoghi principali o includete anche le piccole curiosità</li>
+          <li>Mappa e conto alla rovescia aiutano a non perderli</li>
+        </ul>
+        <div class="idle-about">
+          <h3 data-live-copy="idleHowTitle">Come funziona</h3>
+          <ol class="idle-steps">
+            <li data-live-copy="idleStep1">Una volta a bordo di uno Shinkansen Tokaido, toccate Avvia con GPS in questa pagina</li>
+            <li data-live-copy="idleStep2">Dalla vostra posizione individua il prossimo panorama e lo annuncia con audio e conto alla rovescia</li>
+            <li data-live-copy="idleStep3">Indica anche se guardare dal lato del posto A o E, così potete rivolgervi al finestrino giusto</li>
+          </ol>
+          <p data-live-copy="idleElse">State organizzando il viaggio? Iniziate qui.</p>
+          <ul class="idle-links">
+            <li><a href="../../it/guide.html" data-live-link="" data-live-copy="idleLinkGuide">Come vedere il Monte Fuji</a></li>
+            <li><a href="../../it/zukan.html" data-live-link="" data-live-copy="idleLinkZukan">Guida ai panorami dal finestrino</a></li>
+            <li><a href="../../it/" data-live-link="" data-live-copy="idleLinkTop">Controllate gli orari di passaggio per treno</a></li>
+          </ul>
+        </div>
+      <p class="utility-audio-note">Le registrazioni audio sono attualmente disponibili in inglese.</p></div>
+    </section>
+
+    <div id="settings" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="set-title">Impostazioni</h3>
+        <label class="set-row set-check-row"><input type="checkbox" id="set-vib" checked=""> <span id="set-vib-l">Vibrazione</span></label>
+        <label class="set-row set-check-row"><input type="checkbox" id="set-wake" checked=""> <span id="set-wake-l">Mantieni lo schermo acceso</span></label>
+        <label class="set-row set-check-row"><input type="checkbox" id="set-follow" checked=""> <span id="set-follow-l">Segui la mia posizione</span></label>
+        <div class="set-row">
+          <span id="set-narr-mode-l">Guida dal finestrino</span>
+          <select id="set-narr-mode">
+            <option value="featured">Solo luoghi principali</option>
+            <option value="all">Tutti i luoghi</option>
+            <option value="off">Disattivata</option>
+          </select>
+        </div>
+        <p class="set-help" id="set-narr-help">La guida essenziale comprende luoghi classici e di rilievo con audio. La guida completa include anche piccole curiosità, come le insegne.</p>
+        <div class="set-row">
+          <span id="set-dir-l">Direzione</span>
+          <select id="set-dir">
+            <option value="auto">Rilevamento automatico</option>
+            <option value="down">Tokyo → Shin-Osaka</option>
+            <option value="up">Shin-Osaka → Tokyo</option>
+          </select>
+        </div>
+        <div class="set-actions">
+          <button id="btn-stop" class="ghost-btn">■ Termina la guida GPS</button>
+          <button id="btn-close-settings" class="primary-btn">Chiudi</button>
+        </div>
+        <p class="set-note" id="set-note">La posizione viene usata per guidarvi tra i panorami e non viene salvata su server esterni. La mappa carica dati cartografici esterni.</p>
+        <p class="set-note set-policy"><a id="set-privacy-link" href="../../en/privacy.html" data-live-link="privacy">Informativa sulla privacy</a></p>
+      </div>
+    </div>
+
+    <div id="demo-panel" class="modal hidden">
+      <div class="modal-card">
+        <h3 id="demo-title">Anteprima del viaggio</h3>
+        <p id="demo-desc">Salite su un Nozomi virtuale per scoprire come funziona: non serve un biglietto.</p>
+        <div class="set-row">
+          <span id="demo-from-l">Partenza</span>
+          <select id="demo-from">
+            <option value="down">Tokyo → Shin-Osaka</option>
+            <option value="up">Shin-Osaka → Tokyo</option>
+          </select>
+        </div>
+        <div class="set-row">
+          <span id="demo-speed-l">Velocità</span>
+          <select id="demo-mult">
+            <option value="1">1x (tempo reale)</option>
+            <option value="10">10x</option>
+            <option value="20" selected="">20x</option>
+            <option value="60">60x</option>
+          </select>
+        </div>
+        <div class="set-actions">
+          <button id="btn-demo-cancel" class="ghost-btn">Annulla</button>
+          <button id="btn-demo-start" class="primary-btn">▶ Parti</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <script src="../../data-runtime.js?v=624b9863"></script><script src="../../it/utility-data.js?v=d6190d0b"></script><script src="../../utility-locale-runtime.js?v=7206f1c7"></script>
+  <script src="../../track.js?v=fa004fe2"></script>
+  <script src="../../live/live.js?v=dfac4636"></script>
+
+<script src="../../site-runtime-loader.js?v=a8ffb108" defer=""></script>
+
+
+</body></html>

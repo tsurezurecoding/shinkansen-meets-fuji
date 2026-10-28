@@ -189,6 +189,20 @@ function checkMenu(dom, lang, route, label) {
   }
 }
 function checkStatic(doc, sourceDoc, dictionary, lang, label) {
+  if (['it', 'th'].includes(lang)) {
+    sourceDoc = sourceDoc.cloneNode(true);
+    // These editions also localize the Japanese accessibility/initial-state
+    // remnants in the English shell; the content comparison must expect that.
+    const labels = { 'ライブ操作': 'Live controls', '図鑑の見方': 'How to use the field guide', '車窓図鑑フィルタ': 'Field guide filters', '見どころモード': 'View mode', '座席側': 'Seat side', 'カテゴリ': 'Category' };
+    for (const el of sourceDoc.querySelectorAll('[aria-label]')) {
+      const key = labels[el.getAttribute('aria-label')];
+      if (key) el.setAttribute('aria-label', key);
+    }
+    const summary = sourceDoc.querySelector('#passed-summary');
+    if (summary) summary.textContent = `${translation(dictionary, sourceTables.live.passed)} (0)`;
+    const help = sourceDoc.querySelector('#set-narr-help');
+    if (help) help.textContent = sourceTables.live.narrModeHelpLoading;
+  }
   const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note,.content-rail-discovery .discovery-language';
   const sourceText = textNodes(sourceDoc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(translation(dictionary, node.textContent)));
   const translatedText = textNodes(doc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(node.textContent));

@@ -37,7 +37,7 @@ const checks = [
       'if (window.MADO_EMBEDDED_WEB) return;',
       'window.gtag("event", `lp_${valuePath}_click`, payload);',
       '<footer class="footer">',
-      'href="android-app.html?src=lp-footer">Androidアプリ</a>',
+      'class="hide-in-app" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=website&amp;utm_campaign=lp_footer" target="_blank" rel="noopener noreferrer">Google Playで見る</a>',
       'h==="#journey"',
       // 旧 /#spot-<id> の共有リンク・ブックマークが LP で行き止まりにならないこと
       'h.indexOf("#spot-")===0',
@@ -78,7 +78,7 @@ const checks = [
       'if (window.MADO_EMBEDDED_WEB) return;',
       'window.gtag("event", `lp_${valuePath}_click`, payload);',
       '<footer class="footer">',
-      'href="en/android-app.html?src=lp-footer">Android app</a>',
+      'class="hide-in-app" href="https://play.google.com/store/apps/details?id=com.michikusatravel.shinkansenwindow&amp;utm_source=shinkansen_window_web&amp;utm_medium=website&amp;utm_campaign=lp_footer" target="_blank" rel="noopener noreferrer">View on Google Play</a>',
     ],
     forbidden: ['class="seasonal-entry"'],
   },

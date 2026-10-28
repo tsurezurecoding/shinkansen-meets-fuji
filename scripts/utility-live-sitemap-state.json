@@ -46,5 +46,21 @@
       "html": "06d439ed69555649a928ea6299d079cc2d2f185c3d293ff01a1db58f66a5a677",
       "narration": "de9b347fb508db0a9739c8d6d7c828f02459d41fbfbec808effef4205f01c4a1"
     }
+  },
+  "it": {
+    "lastmod": "2026-10-29",
+    "reason": "IT-TH-PARITY-1029: reviewed full-edition route promotion, localized initial controls and existing English recordings with translated subtitles.",
+    "fingerprints": {
+      "html": "34b9d0d37e29413a4246a4a74c83c97280dff6dfd55748325d2768e81f3b7698",
+      "narration": "15a394a3cc43e636203d8e99a1d566c8cec09f3c6e5f319e6001796ed38b79cd"
+    }
+  },
+  "th": {
+    "lastmod": "2026-10-29",
+    "reason": "IT-TH-PARITY-1029: reviewed full-edition route promotion, localized initial controls and existing English recordings with translated subtitles.",
+    "fingerprints": {
+      "html": "5fe48a69303f6667f5c9ec22386d1f208a5fbe08095a9912b27fdb1192b7f96e",
+      "narration": "d830caa02ba4eccb43c25168781b0e407ac58dfd083349a5e1aaa99bf57cd4a7"
+    }
   }
 }

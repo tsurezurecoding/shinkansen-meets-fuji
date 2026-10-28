@@ -5,7 +5,9 @@
     "de": "Getränkekapitel",
     "es": "Capítulos de bebidas",
     "zh-Hans": "饮品章节",
-    "ko": "음료 목차"
+    "ko": "음료 목차",
+    "it": "Capitoli delle bevande",
+    "th": "หมวดเครื่องดื่ม"
   },
   "On this page": {
     "zh-Hant": "本頁內容",
@@ -13,7 +15,9 @@
     "de": "Auf dieser Seite",
     "es": "En esta página",
     "zh-Hans": "本页内容",
-    "ko": "페이지 목차"
+    "ko": "페이지 목차",
+    "it": "In questa pagina",
+    "th": "ในหน้านี้"
   },
   "More Everyday Japan stories": {
     "zh-Hant": "更多日本日常故事",
@@ -21,7 +25,9 @@
     "de": "Weitere Alltagsgeschichten",
     "es": "Más historias de Japón",
     "zh-Hans": "更多日本日常故事",
-    "ko": "일본 일상 이야기 더 보기"
+    "ko": "일본 일상 이야기 더 보기",
+    "it": "Altre storie di Giappone quotidiano",
+    "th": "เรื่องญี่ปุ่นในชีวิตประจำวันเพิ่มเติม"
   },
   "Oi Ocha green tea above Namacha green tea and roasted tea on a Japanese shop shelf": {
     "zh-Hant": "日本商店貨架上，Oi Ocha綠茶在Namacha綠茶與焙茶上方",
@@ -29,7 +35,9 @@
     "de": "Oi-Ocha-Grüntee über Namacha-Grüntee und Rösttee im Ladenregal",
     "es": "Té Oi Ocha sobre Namacha verde y tostado en una tienda",
     "zh-Hans": "日本商店货架上，Oi Ocha绿茶在Namacha绿茶与焙茶上方",
-    "ko": "일본 진열대의 나마차 녹차·호지차 위 오이오차 녹차"
+    "ko": "일본 진열대의 나마차 녹차·호지차 위 오이오차 녹차",
+    "it": "Tè verde Oi Ocha sopra tè verde Namacha e tè tostato sullo scaffale di un negozio giapponese",
+    "th": "ชาเขียว Oi Ocha อยู่เหนือชาเขียวและชาคั่ว Namacha บนชั้นร้านญี่ปุ่น"
   },
   "Oi Ocha green tea bottles with bright green labels": {
     "zh-Hant": "鮮綠標籤的Oi Ocha綠茶瓶",
@@ -37,7 +45,9 @@
     "de": "Oi-Ocha-Grünteeflaschen mit hellgrünen Etiketten",
     "es": "Botellas Oi Ocha con etiquetas verde brillante",
     "zh-Hans": "鲜绿标签的Oi Ocha绿茶瓶",
-    "ko": "밝은 초록 라벨의 오이오차 녹차 병"
+    "ko": "밝은 초록 라벨의 오이오차 녹차 병",
+    "it": "Bottiglie di tè verde Oi Ocha con etichette verde brillante",
+    "th": "ขวดชาเขียว Oi Ocha ฉลากเขียวสด"
   },
   "Namacha Hoji Sencha with orange-red labels beside green-labelled Namacha": {
     "zh-Hant": "橘紅標Namacha焙煎茶與綠標Namacha並列",
@@ -45,7 +55,9 @@
     "de": "Orange-roter Namacha Hoji Sencha neben grünem Namacha",
     "es": "Namacha Hoji Sencha naranja rojizo junto a Namacha verde",
     "zh-Hans": "橘红标Namacha焙煎茶与绿标Namacha并列",
-    "ko": "주황·빨강 라벨 나마차 호지센차와 초록 나마차"
+    "ko": "주황·빨강 라벨 나마차 호지센차와 초록 나마차",
+    "it": "Namacha Hoji Sencha con etichette arancioni e rosse accanto a Namacha con etichetta verde",
+    "th": "Namacha Hoji Sencha ฉลากส้มแดงข้าง Namacha ฉลากเขียว"
   },
   "Iyemon green tea bottles bearing the Kyoto Fukujuen name": {
     "zh-Hant": "帶京都福壽園字樣的Iyemon綠茶瓶",
@@ -53,7 +65,9 @@
     "de": "Iyemon-Grüntee mit Kyoto-Fukujuen-Schriftzug",
     "es": "Té Iyemon con el nombre Kyoto Fukujuen",
     "zh-Hans": "带京都福寿园字样的Iyemon绿茶瓶",
-    "ko": "교토 후쿠주엔 이름이 있는 이에몬 녹차 병"
+    "ko": "교토 후쿠주엔 이름이 있는 이에몬 녹차 병",
+    "it": "Bottiglie di tè verde Iyemon con il nome Kyoto Fukujuen",
+    "th": "ขวดชาเขียว Iyemon ที่มีชื่อ Kyoto Fukujuen"
   },
   "Ayataka green tea bottles with the kanji brand name and teapot mark": {
     "zh-Hant": "帶漢字品牌與茶壺標記的Ayataka綠茶瓶",
@@ -61,7 +75,9 @@
     "de": "Ayataka-Grüntee mit Kanji-Marke und Teekannenzeichen",
     "es": "Té Ayataka con marca en kanji y tetera",
     "zh-Hans": "带汉字品牌与茶壶标记的Ayataka绿茶瓶",
-    "ko": "한자 브랜드명과 주전자 표시의 아야타카 녹차"
+    "ko": "한자 브랜드명과 주전자 표시의 아야타카 녹차",
+    "it": "Bottiglie di tè verde Ayataka con il nome in kanji e il simbolo della teiera",
+    "th": "ขวดชาเขียว Ayataka มีชื่อคันจิและรูปกาชา"
   },
   "Yakan no Mugicha bottles with a yellow kettle on blue labels": {
     "zh-Hant": "藍標籤配黃色水壺的Yakan no Mugicha",
@@ -69,7 +85,9 @@
     "de": "Yakan no Mugicha mit gelbem Kessel auf blauem Etikett",
     "es": "Yakan no Mugicha con hervidor amarillo en etiqueta azul",
     "zh-Hans": "蓝标签配黄色水壶的Yakan no Mugicha",
-    "ko": "파란 라벨에 노란 주전자가 있는 Yakan no Mugicha"
+    "ko": "파란 라벨에 노란 주전자가 있는 Yakan no Mugicha",
+    "it": "Bottiglie di Yakan no Mugicha con un bollitore giallo sulle etichette blu",
+    "th": "ขวด Yakan no Mugicha มีรูปกาต้มน้ำเหลืองบนฉลากฟ้า"
   },
   "ITO EN Kenko Mineral Mugicha bottles with blue and orange labels": {
     "zh-Hant": "藍橘標籤的伊藤園健康礦物麥茶瓶",
@@ -77,7 +95,9 @@
     "de": "ITO EN Kenko Mineral Mugicha mit blau-orangen Etiketten",
     "es": "Kenko Mineral Mugicha ITO EN con etiquetas azules y naranjas",
     "zh-Hans": "蓝橘标签的伊藤园健康矿物麦茶瓶",
-    "ko": "파랑·주황 라벨의 이토엔 겐코 미네랄 무기차"
+    "ko": "파랑·주황 라벨의 이토엔 겐코 미네랄 무기차",
+    "it": "Bottiglie di ITO EN Kenko Mineral Mugicha con etichette blu e arancioni",
+    "th": "ขวด ITO EN Kenko Mineral Mugicha ฉลากฟ้าและส้ม"
   },
   "UCC BLACK bottles at the left of a bottled-coffee shelf": {
     "zh-Hant": "瓶裝咖啡貨架左側的UCC BLACK",
@@ -85,7 +105,9 @@
     "de": "UCC BLACK links im Kaffeeflaschenregal",
     "es": "UCC BLACK a la izquierda del estante de café",
     "zh-Hans": "瓶装咖啡货架左侧的UCC BLACK",
-    "ko": "커피 진열대 왼쪽 UCC BLACK 병"
+    "ko": "커피 진열대 왼쪽 UCC BLACK 병",
+    "it": "Bottiglie UCC BLACK a sinistra dello scaffale del caffè in bottiglia",
+    "th": "ขวด UCC BLACK ทางซ้ายของชั้นกาแฟขวด"
   },
   "CRAFT BOSS black and milk coffee bottles side by side": {
     "zh-Hant": "CRAFT BOSS黑咖啡與奶咖並列",
@@ -93,7 +115,9 @@
     "de": "CRAFT BOSS Schwarz- und Milchkaffee nebeneinander",
     "es": "CRAFT BOSS negro y con leche juntos",
     "zh-Hans": "CRAFT BOSS黑咖啡与奶咖并列",
-    "ko": "나란한 CRAFT BOSS 블랙·밀크커피"
+    "ko": "나란한 CRAFT BOSS 블랙·밀크커피",
+    "it": "Bottiglie CRAFT BOSS di caffè nero e con latte, una accanto all’altra",
+    "th": "ขวดกาแฟดำและกาแฟนม CRAFT BOSS วางข้างกัน"
   },
   "Gold WONDA Kin no Bito can beside a red WONDA Morning Shot can": {
     "zh-Hant": "金色WONDA金之微糖與紅色Morning Shot罐並列",
@@ -101,7 +125,9 @@
     "de": "Goldene WONDA Kin no Bito neben roter Morning Shot",
     "es": "WONDA Kin no Bito dorada junto a Morning Shot roja",
     "zh-Hans": "金色WONDA金之微糖与红色Morning Shot罐并列",
-    "ko": "금색 WONDA Kin no Bito와 빨강 Morning Shot 캔"
+    "ko": "금색 WONDA Kin no Bito와 빨강 Morning Shot 캔",
+    "it": "Lattina dorata WONDA Kin no Bito accanto a una rossa WONDA Morning Shot",
+    "th": "กระป๋องทอง WONDA Kin no Bito ข้างกระป๋องแดง WONDA Morning Shot"
   },
   "Japanese Pocari Sweat bottle": {
     "zh-Hant": "日本Pocari Sweat瓶裝",
@@ -109,7 +135,9 @@
     "de": "Japanische Pocari-Sweat-Flasche",
     "es": "Botella japonesa de Pocari Sweat",
     "zh-Hans": "日本Pocari Sweat瓶装",
-    "ko": "일본 포카리스웨트 병"
+    "ko": "일본 포카리스웨트 병",
+    "it": "Bottiglia giapponese di Pocari Sweat",
+    "th": "ขวดโพคารี่สเวทญี่ปุ่น"
   },
   "Calpis Water bottle": {
     "zh-Hant": "Calpis Water瓶裝",
@@ -117,7 +145,9 @@
     "de": "Calpis-Water-Flasche",
     "es": "Botella de Calpis Water",
     "zh-Hans": "Calpis Water瓶装",
-    "ko": "칼피스 워터 병"
+    "ko": "칼피스 워터 병",
+    "it": "Bottiglia di Calpis Water",
+    "th": "ขวด Calpis Water"
   },
   "Mitsuya Cider bottle": {
     "zh-Hant": "三矢汽水瓶",
@@ -125,7 +155,9 @@
     "de": "Mitsuya-Cider-Flasche",
     "es": "Botella de Mitsuya Cider",
     "zh-Hans": "三矢汽水瓶",
-    "ko": "미쓰야 사이다 병"
+    "ko": "미쓰야 사이다 병",
+    "it": "Bottiglia di Mitsuya Cider",
+    "th": "ขวด Mitsuya Cider"
   },
   "I LOHAS natural mineral water bottles with green caps": {
     "zh-Hant": "綠瓶蓋I LOHAS天然礦泉水",
@@ -133,7 +165,9 @@
     "de": "I-LOHAS-Mineralwasser mit grünen Deckeln",
     "es": "Agua mineral I LOHAS con tapones verdes",
     "zh-Hans": "绿瓶盖I LOHAS天然矿泉水",
-    "ko": "초록 뚜껑 I LOHAS 천연광천수"
+    "ko": "초록 뚜껑 I LOHAS 천연광천수",
+    "it": "Bottiglie di acqua minerale naturale I LOHAS con tappi verdi",
+    "th": "ขวดน้ำแร่ธรรมชาติ I LOHAS ฝาเขียว"
   },
   "Oronamin C brown glass bottle": {
     "zh-Hant": "Oronamin C棕色玻璃瓶",
@@ -141,7 +175,9 @@
     "de": "Braune Oronamin-C-Glasflasche",
     "es": "Botella marrón Oronamin C",
     "zh-Hans": "Oronamin C棕色玻璃瓶",
-    "ko": "오로나민 C 갈색 유리병"
+    "ko": "오로나민 C 갈색 유리병",
+    "it": "Bottiglia di vetro marrone di Oronamin C",
+    "th": "ขวดแก้วน้ำตาล Oronamin C"
   },
   "Ramune bottle made by Kimura Drink": {
     "zh-Hant": "木村飲料的彈珠汽水瓶",
@@ -149,7 +185,9 @@
     "de": "Ramuneflasche von Kimura Drink",
     "es": "Botella de ramune de Kimura Drink",
     "zh-Hans": "木村饮料的弹珠汽水瓶",
-    "ko": "기무라 음료 라무네 병"
+    "ko": "기무라 음료 라무네 병",
+    "it": "Bottiglia di ramune prodotta da Kimura Drink",
+    "th": "ขวดรามูเนะของ Kimura Drink"
   },
   "Rice balls wrapped in nori": {
     "zh-Hant": "海苔包飯糰",
@@ -157,7 +195,9 @@
     "de": "In Nori gewickelte Reisbällchen",
     "es": "Onigiri envueltos en nori",
     "zh-Hans": "海苔包饭团",
-    "ko": "김으로 싼 주먹밥"
+    "ko": "김으로 싼 주먹밥",
+    "it": "Onigiri avvolti in nori",
+    "th": "ข้าวปั้นห่อโนริ"
   },
   "Japanese beer cans on a shop shelf": {
     "zh-Hant": "商店貨架上的日本罐裝啤酒",
@@ -165,7 +205,9 @@
     "de": "Japanische Bierdosen im Ladenregal",
     "es": "Latas japonesas en un estante",
     "zh-Hans": "商店货架上的日本罐装啤酒",
-    "ko": "매장 진열대의 일본 맥주 캔"
+    "ko": "매장 진열대의 일본 맥주 캔",
+    "it": "Lattine di birra giapponese sullo scaffale di un negozio",
+    "th": "กระป๋องเบียร์ญี่ปุ่นบนชั้นร้าน"
   },
   "Japanese bottled teas on a shop shelf": {
     "zh-Hant": "商店貨架上的日本瓶裝茶",
@@ -173,7 +215,9 @@
     "de": "Japanische Teeflaschen im Ladenregal",
     "es": "Tés japoneses embotellados en un estante",
     "zh-Hans": "商店货架上的日本瓶装茶",
-    "ko": "매장 진열대의 일본 차 병"
+    "ko": "매장 진열대의 일본 차 병",
+    "it": "Tè giapponesi in bottiglia sullo scaffale di un negozio",
+    "th": "ชาขวดญี่ปุ่นบนชั้นร้าน"
   },
   "Rice fields below Mount Mikami": {
     "zh-Hant": "三上山下的稻田",
@@ -181,7 +225,9 @@
     "de": "Reisfelder unter dem Mikami",
     "es": "Arrozales bajo el monte Mikami",
     "zh-Hans": "三上山下的稻田",
-    "ko": "미카미산 아래 논"
+    "ko": "미카미산 아래 논",
+    "it": "Risaie ai piedi del monte Mikami",
+    "th": "นาข้าวใต้ภูเขามิคามิ"
   },
   "Greenhouse roofs and a Gamagori mandarin sign": {
     "zh-Hant": "溫室屋頂與蒲郡蜜柑看板",
@@ -189,7 +235,9 @@
     "de": "Gewächshausdächer und Gamagori-Mandarinenschild",
     "es": "Tejados de invernadero y cartel de mandarinas Gamagori",
     "zh-Hans": "温室屋顶与蒲郡蜜柑看板",
-    "ko": "온실 지붕과 가마고리 귤 간판"
+    "ko": "온실 지붕과 가마고리 귤 간판",
+    "it": "Tetti di serre e un’insegna dei mandarini di Gamagori",
+    "th": "หลังคาโรงเรือนกับป้ายส้มกามาโกริ"
   },
   "A refrigerated shop shelf displaying Asahi, Sapporo, Kirin, Suntory and other Japanese beer and beer-style drinks.": {
     "zh-Hant": "冷藏貨架陳列Asahi、Sapporo、Kirin、Suntory等日本啤酒與啤酒風味飲",
@@ -197,7 +245,9 @@
     "de": "Kühlregal mit Asahi, Sapporo, Kirin, Suntory und weiteren Biergetränken",
     "es": "Estante refrigerado con Asahi, Sapporo, Kirin, Suntory y bebidas tipo cerveza",
     "zh-Hans": "冷藏货架陈列Asahi、Sapporo、Kirin、Suntory等日本啤酒与啤酒风味饮",
-    "ko": "아사히·삿포로·기린·산토리 등 맥주와 맥주맛 음료 냉장 진열대"
+    "ko": "아사히·삿포로·기린·산토리 등 맥주와 맥주맛 음료 냉장 진열대",
+    "it": "Scaffale refrigerato con birre e bevande simili alla birra di Asahi, Sapporo, Kirin, Suntory e altre marche giapponesi.",
+    "th": "ชั้นแช่เย็นในร้านมี Asahi, Sapporo, Kirin, Suntory และเบียร์กับเครื่องดื่มสไตล์เบียร์ญี่ปุ่นอื่น"
   },
   "Kirin Ichiban Shibori cans with the Kirin emblem and the Japanese name 一番搾り on a shop shelf.": {
     "zh-Hant": "貨架上帶麒麟圖樣與「一番搾り」的Kirin罐",
@@ -205,7 +255,9 @@
     "de": "Kirin-Ichiban-Shibori-Dosen mit Emblem und 一番搾り im Regal",
     "es": "Latas Kirin Ichiban Shibori con emblema y 一番搾り",
     "zh-Hans": "货架上带麒麟图样与“一番搾り”的Kirin罐",
-    "ko": "기린 문양과 一番搾り가 적힌 캔 진열"
+    "ko": "기린 문양과 一番搾り가 적힌 캔 진열",
+    "it": "Lattine Kirin Ichiban Shibori con l’emblema Kirin e il nome giapponese 一番搾り sullo scaffale.",
+    "th": "กระป๋อง Kirin Ichiban Shibori มีตราคิรินและชื่อญี่ปุ่น 一番搾り บนชั้นร้าน"
   },
   "Silver Asahi Super Dry cans on a refrigerated shop shelf, with SUPER DRY, Asahi and 生 visible.": {
     "zh-Hant": "冷藏貨架上的銀色Asahi Super Dry罐，可見SUPER DRY、Asahi與「生」",
@@ -213,7 +265,9 @@
     "de": "Silberne Asahi-Super-Dry-Dosen mit SUPER DRY, Asahi und 生",
     "es": "Latas plateadas Asahi Super Dry con SUPER DRY, Asahi y 生",
     "zh-Hans": "冷藏货架上的银色Asahi Super Dry罐，可见SUPER DRY、Asahi与“生”",
-    "ko": "SUPER DRY·Asahi·生가 보이는 은색 아사히 캔"
+    "ko": "SUPER DRY·Asahi·生가 보이는 은색 아사히 캔",
+    "it": "Lattine argentate Asahi Super Dry su uno scaffale refrigerato, con le scritte SUPER DRY, Asahi e 生 visibili.",
+    "th": "กระป๋องเงิน Asahi Super Dry บนชั้นแช่เย็น เห็น SUPER DRY, Asahi และ 生"
   },
   "Three Sapporo Black Label cans with a gold star inside a black circle on a shop shelf.": {
     "zh-Hant": "貨架上三罐黑圓標配金星的Sapporo Black Label",
@@ -221,7 +275,9 @@
     "de": "Drei Sapporo-Black-Label-Dosen mit Goldstern im schwarzen Kreis",
     "es": "Tres latas Sapporo Black Label con estrella dorada en círculo negro",
     "zh-Hans": "货架上三罐黑圆标配金星的Sapporo Black Label",
-    "ko": "검은 원 안 금색 별의 삿포로 Black Label 세 캔"
+    "ko": "검은 원 안 금색 별의 삿포로 Black Label 세 캔",
+    "it": "Tre lattine Sapporo Black Label con una stella dorata dentro un cerchio nero sullo scaffale.",
+    "th": "กระป๋อง Sapporo Black Label สามใบ มีดาวทองในวงกลมดำบนชั้นร้าน"
   },
   "Blue cans of Suntory The Premium Malt’s with gold lettering on the top shelf of a drinks display.": {
     "zh-Hant": "飲料架上層金字藍罐Suntory The Premium Malt’s",
@@ -229,7 +285,9 @@
     "de": "Blaue Suntory-Premium-Malt’s-Dosen mit Goldschrift oben im Regal",
     "es": "Latas azules Suntory The Premium Malt’s con letras doradas arriba",
     "zh-Hans": "饮料架上层金字蓝罐Suntory The Premium Malt’s",
-    "ko": "진열대 위쪽 금색 글자의 파란 산토리 The Premium Malt’s 캔"
+    "ko": "진열대 위쪽 금색 글자의 파란 산토리 The Premium Malt’s 캔",
+    "it": "Lattine blu di Suntory The Premium Malt’s con scritte dorate sul ripiano superiore di un espositore di bevande.",
+    "th": "กระป๋องฟ้า Suntory The Premium Malt’s อักษรทองบนชั้นบนของเครื่องดื่ม"
   },
   "Japanese beer label words": {
     "zh-Hant": "日本啤酒標籤詞彙",
@@ -237,7 +295,9 @@
     "de": "Japanische Bieretikettenwörter",
     "es": "Palabras de etiquetas de cerveza",
     "zh-Hans": "日本啤酒标签词汇",
-    "ko": "일본 맥주 라벨 단어"
+    "ko": "일본 맥주 라벨 단어",
+    "it": "Parole delle etichette della birra giapponese",
+    "th": "คำบนฉลากเบียร์ญี่ปุ่น"
   },
   "A row of gold-and-silver tanks and the KIRIN name at the Nagoya brewery, seen from the Shinkansen.": {
     "zh-Hant": "新幹線窗外，名古屋工廠金銀色槽罐與KIRIN字樣",
@@ -245,7 +305,9 @@
     "de": "Gold-silberne Tanks und KIRIN in Nagoya aus dem Shinkansen",
     "es": "Tanques dorados y plateados y KIRIN en Nagoya desde el tren",
     "zh-Hans": "新干线窗外，名古屋工厂金银色槽罐与KIRIN字样",
-    "ko": "신칸센에서 본 나고야 양조장 금·은색 탱크와 KIRIN"
+    "ko": "신칸센에서 본 나고야 양조장 금·은색 탱크와 KIRIN",
+    "it": "Una fila di serbatoi dorati e argentati e il nome KIRIN nel birrificio di Nagoya, visti dallo Shinkansen.",
+    "th": "แถวถังทองเงินกับชื่อ KIRIN ที่โรงเบียร์นาโกย่าจากชินคันเซ็น"
   },
   "Tall silver tanks at Sapporo Beer’s Shizuoka brewery in Yaizu, photographed through the Shinkansen window.": {
     "zh-Hant": "從新幹線拍攝燒津Sapporo靜岡工廠的高銀色槽罐",
@@ -253,7 +315,9 @@
     "de": "Hohe silberne Tanks bei Sapporo in Yaizu aus dem Zugfenster",
     "es": "Altos tanques plateados Sapporo en Yaizu desde el Shinkansen",
     "zh-Hans": "从新干线拍摄烧津Sapporo静冈工厂的高银色槽罐",
-    "ko": "신칸센에서 촬영한 야이즈 삿포로 시즈오카 양조장의 높은 은색 탱크"
+    "ko": "신칸센에서 촬영한 야이즈 삿포로 시즈오카 양조장의 높은 은색 탱크",
+    "it": "Alti serbatoi argentati del birrificio Sapporo di Shizuoka a Yaizu, fotografati dal finestrino dello Shinkansen.",
+    "th": "ถังเงินสูงโรงเบียร์ซัปโปโรชิซูโอกะในยาอิซุ ถ่ายผ่านหน้าต่างชินคันเซ็น"
   },
   "A uniformed attendant with a refreshments trolley among blue seats in the Shinkansen aisle near Odawara, photographed in April 2018.": {
     "zh-Hant": "2018年4月小田原附近，新幹線藍色座椅間推飲食車的制服乘務員",
@@ -261,7 +325,9 @@
     "de": "Uniformierte Bedienung mit Wagen zwischen blauen Sitzen bei Odawara, April 2018",
     "es": "Personal uniformado con carrito entre asientos azules cerca de Odawara, abril de 2018",
     "zh-Hans": "2018年4月小田原附近，新干线蓝色座椅间推饮食车的制服乘务员",
-    "ko": "2018년 4월 오다와라 근처 파란 신칸센 좌석 사이 카트를 미는 제복 승무원"
+    "ko": "2018년 4월 오다와라 근처 파란 신칸센 좌석 사이 카트를 미는 제복 승무원",
+    "it": "Un addetto in uniforme con un carrello di ristoro tra i sedili blu nel corridoio dello Shinkansen vicino a Odawara, nell’aprile 2018.",
+    "th": "พนักงานในเครื่องแบบกับรถเข็นขายของท่ามกลางที่นั่งฟ้าในทางเดินชินคันเซ็นใกล้โอดาวาระ ถ่ายเมษายน 2018"
   },
   "Japanese bottled tea arranged on a convenience-store shelf, photographed in October 2026": {
     "zh-Hant": "便利商店貨架上的日本瓶裝茶，2026年10月拍攝",
@@ -269,7 +335,9 @@
     "de": "Japanische Teeflaschen im Konbiniregal, Oktober 2026",
     "es": "Tés japoneses embotellados en un konbini, octubre de 2026",
     "zh-Hans": "便利店货架上的日本瓶装茶，2026年10月拍摄",
-    "ko": "2026년 10월 편의점 진열대의 일본 차 병"
+    "ko": "2026년 10월 편의점 진열대의 일본 차 병",
+    "it": "Tè giapponese in bottiglia sullo scaffale di un minimarket, fotografato nell’ottobre 2026",
+    "th": "ชาขวดญี่ปุ่นเรียงบนชั้นร้านสะดวกซื้อ ถ่ายตุลาคม 2026"
   },
   "A vending machine stocked with familiar Japanese beer cans": {
     "zh-Hant": "陳列熟悉日本啤酒罐的自動販賣機",
@@ -277,6 +345,8 @@
     "de": "Automat mit bekannten japanischen Bierdosen",
     "es": "Máquina con latas japonesas conocidas",
     "zh-Hans": "陈列熟悉日本啤酒罐的自动售货机",
-    "ko": "익숙한 일본 맥주 캔이 있는 자판기"
+    "ko": "익숙한 일본 맥주 캔이 있는 자판기",
+    "it": "Un distributore automatico con comuni lattine di birra giapponese",
+    "th": "ตู้ขายอัตโนมัติที่มีกระป๋องเบียร์ญี่ปุ่นคุ้นตา"
   }
 }
