@@ -98,7 +98,7 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   }
   dom.window.close();await new Promise(setImmediate);
  }
- assert.equal(count,208);
+ assert.equal(count,256);
 });
 
 test('Fujitec and Pocari have complete ten-language articles and worldwide chapters',()=>{
