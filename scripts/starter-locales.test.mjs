@@ -179,13 +179,20 @@ test('Italian and Thai retain local live/gallery links after repeated language a
       assert.equal(localGuideLink.hasAttribute('hreflang'), false, `${language}: local guide has no English annotation`);
       assert.equal(localGuideLink.querySelectorAll('.discovery-language').length, 0, `${language}: local guide has no fallback note`);
 
-      // Promotion expands the route set but still leaves some articles in English.
+      // Solar Ark now has a local article; repeated application must keep it local.
       fixture.run('document.body.insertAdjacentHTML("beforeend", spotDetailModalHTML(SPOTS.find(spot => spot.id === "solar-ark"))); applyLang(); applyLang()');
-      const fallback = [...document.querySelectorAll('a.spot-modal-guide-cta')].find(a => new URL(a.href).pathname === '/en/spots/solar-ark.html');
-      assert.ok(fallback, `${language}: unlocalized article keeps its real English destination`);
-      assert.equal(fallback.hreflang, 'en', `${language}: English article is identified`);
-      assert.equal(fallback.querySelectorAll('.discovery-language').length, 1, `${language}: exactly one English fallback note after repeated application`);
-      assert.ok(fallback.querySelector('.discovery-language').textContent.trim(), `${language}: visible language-change cue`);
+      const localArticle = [...document.querySelectorAll('a.spot-modal-guide-cta')].find(a => new URL(a.href).pathname === '/' + language + '/spots/solar-ark.html');
+      assert.ok(localArticle, language + ': newly translated article stays in the selected language');
+      assert.notEqual(localArticle.hreflang, 'en', language + ': local article does not claim English');
+      assert.equal(localArticle.querySelectorAll('.discovery-language').length, 0, language + ': local article has no obsolete fallback note');
+
+      // Gyoran Kannon remains an English fallback in these editions.
+      fixture.run('document.body.insertAdjacentHTML("beforeend", spotDetailModalHTML(SPOTS.find(spot => spot.id === "gyoran-kannon"))); applyLang(); applyLang()');
+      const fallback = [...document.querySelectorAll('a.spot-modal-guide-cta')].find(a => new URL(a.href).pathname === '/en/spots/gyoran-kannon.html');
+      assert.ok(fallback, language + ': unlocalized article keeps its real English destination');
+      assert.equal(fallback.hreflang, 'en', language + ': English article is identified');
+      assert.equal(fallback.querySelectorAll('.discovery-language').length, 1, language + ': exactly one English fallback note after repeated application');
+      assert.ok(fallback.querySelector('.discovery-language').textContent.trim(), language + ': visible language-change cue');
     } finally { fixture.dom.window.close(); }
   }
 });
