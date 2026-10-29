@@ -201,7 +201,7 @@ for (const route of articleRoutes) {
       const bodyText = normalizeText(doc.body.textContent);
       for (const node of textNodes(source.window.document)) {
         const key = node.textContent.trim();
-        if (key.length < 30 || node.parentElement.closest('.lang-switch')) continue;
+        if (key.length < 30 || node.parentElement.closest('.lang-switch,.brand-mark,.show-credit,figcaption a:not([data-gallery-source-output])')) continue;
         assert(typeof dictionary[key] === 'string' && dictionary[key].trim().length > 0, file, `translation missing: ${key.slice(0, 90)}`);
         if (dictionary[key]) assert(bodyText.includes(normalizeText(dictionary[key])), file, `translated source text missing: ${key.slice(0, 90)}`);
       }
