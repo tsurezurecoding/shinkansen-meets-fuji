@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
+import { EXPANSION_ROUTES } from './shared/expansion-localization.mjs';
 import { expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -12,7 +13,7 @@ const origin = 'https://www.michikusa-travel.com';
 const editions = ['ja', 'en', ...CASTLE_LOCALE_LANGS];
 // Exercise the scenery companions with the same photo, map and edition contracts.
 const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a'].map(id => `spots/${id}.html`);
-const articleRoutes = [...CASTLE_LOCALE_ROUTES, ...sceneryRoutes];
+const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/'))])];
 const errors = [];
 const counts = { pages: 0, galleries: 0, maps: 0, lightboxes: 0, languageSwitches: 0 };
 const assert = (ok, label, message) => { if (!ok) errors.push(`${label}: ${message}`); };
@@ -195,12 +196,12 @@ for (const route of articleRoutes) {
       assert(!doc.querySelector('script[src*="spot-page-loader"], script[src*="data/spot-pages/"]'), file, 'English dynamic loader remains');
       compare(imageSources(doc), imageSources(source.window.document), file, 'photograph assets/order differ from English source');
       compare(creditRecords(doc), creditRecords(source.window.document), file, 'photograph attribution/credit URLs differ from English source');
-      const groups = ['utility', 'castle', 'episode', ...(sceneryRoutes.includes(route) ? ['scenery'] : [])];
+      const groups = ['utility', 'castle', 'episode', ...(sceneryRoutes.includes(route) ? ['scenery'] : []), ...(EXPANSION_ROUTES.includes(route) ? ['expansion'] : [])];
       const dictionary = Object.assign({}, ...groups.map(group => JSON.parse(read(`scripts/locales/${group}-${lang}.json`))));
       const bodyText = normalizeText(doc.body.textContent);
       for (const node of textNodes(source.window.document)) {
         const key = node.textContent.trim();
-        if (key.length < 30 || node.parentElement.closest('.lang-switch')) continue;
+        if (key.length < 30 || node.parentElement.closest('.lang-switch,.brand-mark,.show-credit,figcaption a:not([data-gallery-source-output])')) continue;
         assert(typeof dictionary[key] === 'string' && dictionary[key].trim().length > 0, file, `translation missing: ${key.slice(0, 90)}`);
         if (dictionary[key]) assert(bodyText.includes(normalizeText(dictionary[key])), file, `translated source text missing: ${key.slice(0, 90)}`);
       }

@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
 
-export const EXPANSION_ROUTES = ['everyday-japan.html','arenani.html','727-collection.html','spots/727-board.html','ferris-wheels.html','spots/hirakata-park-wheel.html','tokyo-kyoto-stations.html','spots/kirin-beer-factory.html','spots/sapporo-shizuoka-factory.html','spots/lotte-shiga.html','spots/nichiban-anjo.html','spots/shizuoka-tea-fields.html'];
+export const EXPANSION_ROUTES = ['everyday-japan.html','arenani.html','727-collection.html','spots/727-board.html','ferris-wheels.html','spots/hirakata-park-wheel.html','tokyo-kyoto-stations.html','spots/kirin-beer-factory.html','spots/sapporo-shizuoka-factory.html','spots/lotte-shiga.html','spots/nichiban-anjo.html','spots/shizuoka-tea-fields.html',"spots/tokyo-tower.html","spots/ota-fuji.html","spots/solar-ark.html","spots/shimizu-port-chikyu.html","spots/torikai-train-depot.html","spots/maibara-test-trains.html"];
 export const BOARD_TEMPLATE_ARGUMENTS = {points:['n'],records:['n'],groupRecords:['n'],progress:['found','total'],stageBody:['n'],fromTokyo:['n'],fromOsaka:['n'],summaryTime:['n'],mapAria:['name'],minutes:['n'],minutesRange:['a','b'],segmentTimeRange:['range'],mapStatusAll:['n']};
 let boardSource;
 function boardEnglish(root) {

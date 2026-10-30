@@ -22,6 +22,8 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - name: Deterministic build
+        env:
+          NODE_OPTIONS: --max-old-space-size=6144
         run: |
           npm run build:full
           git diff --exit-code
