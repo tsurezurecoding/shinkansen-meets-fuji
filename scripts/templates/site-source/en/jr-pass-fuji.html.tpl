@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <script src="../locales.js?v=05a1ab10"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="../app-embedded.js?v=32708d67"></script>
   <link rel="stylesheet" href="../app-embedded.css?v=147f8289">
@@ -9,8 +10,6 @@
   <title>Japan Rail Pass and Mt. Fuji: Hikari and Kodama Times | Shinkansen Window</title>
   <meta name="description" content="Riding a bullet train between Tokyo and Kyoto or Osaka with a Japan Rail Pass? Check Mt. Fuji viewing times and seat sides for Hikari and Kodama.">
   <link rel="canonical" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
-  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
-  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
   <link rel="stylesheet" href="../style.css?v=5f3f6183">
   <link rel="icon" href="../favicon.ico" sizes="any">
   <meta property="og:type" content="article">
@@ -126,6 +125,18 @@
   ]
 }</script>
   <!-- JSONLD_END -->
+  <script defer src="../article-locales.js?v=44cf30b3"></script>
+  <link rel="stylesheet" href="../article-locales.css?v=a5903a3d">
+  <link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="zh-Hant" href="https://www.michikusa-travel.com/zh-Hant/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="fr" href="https://www.michikusa-travel.com/fr/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="de" href="https://www.michikusa-travel.com/de/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="es" href="https://www.michikusa-travel.com/es/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="zh-Hans" href="https://www.michikusa-travel.com/zh-Hans/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="ko" href="https://www.michikusa-travel.com/ko/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="it" href="https://www.michikusa-travel.com/it/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="th" href="https://www.michikusa-travel.com/th/jr-pass-fuji.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/jr-pass-fuji.html">
 </head>
 <body class="jrpass-page spot-page spot-page-utility" data-page="jrpass" data-spot-page-shared-context="utility" data-spot-page-shared-lang="en" data-spot-page-shared-root="../" data-spot-page-shared-route="jr-pass-fuji.html">
   <div data-spot-page-shared-module="topbar"></div>
