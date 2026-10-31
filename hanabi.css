@@ -2,7 +2,7 @@
    2026-09-22に hanabi.html のインラインstyleから切り出した（日英2ファイルに同じCSSが重複していた）。 */
 .hanabi-page main { padding-bottom: 40px; }
 .hb-hero { position: relative; isolation: isolate; background: var(--night); color: #fff; padding: 108px 20px 76px; overflow: hidden; }
-${t.copy11}
+.hb-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("images/hanabi-hero-pd.jpg"); background-size: cover; background-position: center 42%; }
 .hb-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(16,28,44,.62) 0%, rgba(16,28,44,.74) 55%, rgba(16,28,44,.92) 100%); }
 .hb-hero-inner { max-width: 760px; margin: 0 auto; text-align: center; }
 .hb-hero .eyebrow { color: var(--accent-soft); }

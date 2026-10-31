@@ -106,6 +106,7 @@ const contentFiles = [
   "data-runtime.js",
   "data/timetable.js",
   "live/narration.js",
+  "live/styles.css",
 
   // 期間限定ページ: Sparkling Dreams Shinkansen（日英）
   "en/index.html",
@@ -120,6 +121,7 @@ const contentFiles = [
   "hanabi.html",
   "en/hanabi.html",
   "hanabi.js",
+  "hanabi.css",
   "images/hanabi-window.svg",
   "images/og-hanabi.jpg",
   "images/hanabi-hero-pd.jpg",
@@ -128,11 +130,13 @@ const contentFiles = [
   "yakei.html",
   "en/yakei.html",
   "yakei.js",
+  "yakei.css",
   "images/20260629_2158_nagoya_station_night_michikusa.jpg",
 
   // 天気で出会う一度きりの車窓（日本語）
   "window-moments.html",
   "window-moments.js",
+  "window-moments.css",
   "images/wm-hero-snow.jpg",
   "images/wm-snow-town.jpg",
   "images/wm-snow-field.jpg",
