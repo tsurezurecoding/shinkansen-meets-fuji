@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "351a1adfd30fecf8",
+  "contentVersion": "b0f20efb879df1df",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1803,6 +1803,12 @@
       "url": "https://www.michikusa-travel.com/en/window-artworks.html",
       "bytes": 11454,
       "sha256": "af916d28ab04a2660216e25fc967b67f7a5e5d887b897358412f8c0ea22320e8"
+    },
+    {
+      "path": "en/window-moments.html",
+      "url": "https://www.michikusa-travel.com/en/window-moments.html",
+      "bytes": 35078,
+      "sha256": "7db10702ec20b7c06257e0da05328c82e262158e30a7004a3de6ac42b4aa01b1"
     },
     {
       "path": "en/yakei.html",

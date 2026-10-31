@@ -133,8 +133,9 @@ const contentFiles = [
   "yakei.css",
   "images/20260629_2158_nagoya_station_night_michikusa.jpg",
 
-  // 天気で出会う一度きりの車窓（日本語）
+  // 天気で出会う一度きりの車窓（日英）
   "window-moments.html",
+  "en/window-moments.html",
   "window-moments.js",
   "window-moments.css",
   "images/wm-hero-snow.jpg",
