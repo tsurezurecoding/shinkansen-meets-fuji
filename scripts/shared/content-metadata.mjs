@@ -9,6 +9,28 @@ import { assetVersion } from './asset-version.mjs';
 
 export const SITE = 'https://www.michikusa-travel.com';
 export const CONTENT_METADATA = JSON.parse(fs.readFileSync(new URL('../content-metadata.json', import.meta.url), 'utf8'));
+// Asset-specific evidence, never an ownership/licensing default for other photos.
+// Own photos have no published reuse policy: omit license/acquireLicensePage.
+const IMAGE_RIGHTS_METADATA = {
+  // data.js kakegawa photo (michikusa, 2026-10-13); content-metadata.json own.
+  'images/20261013_kakegawa_castle_morning_michikusa.jpg': {
+    creator: { '@type': 'Person', name: 'michikusa' },
+    copyrightNotice: '© michikusa',
+  },
+  // Operations: 2026-09-22_kiyosu-bilingual-layout-preview.md, existing own photo.
+  // The site's published brand is an Organization; Disney owns the decoration.
+  'images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg': {
+    creator: { '@type': 'Organization', name: '新幹線の窓' },
+    copyrightNotice: '写真：新幹線の窓／車体装飾：©Disney',
+  },
+  // Operations: 2026-08-13_hanabi_curation_page_codex_note.md §7 + OG derivation.
+  // The source identifies Jon Sullivan's public-domain photograph; no © claim.
+  'images/og-hanabi.jpg': {
+    creator: { '@type': 'Person', name: 'Jon Sullivan' },
+    license: 'https://commons.wikimedia.org/wiki/File:Firework.jpg',
+    isBasedOn: 'https://commons.wikimedia.org/wiki/File:Firework.jpg',
+  },
+};
 const defaultRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const sizeCache = new Map();
 const esc = value => String(value).replace(/[&<>\"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
@@ -119,7 +141,7 @@ export function enhanceContentHead(html, file, root = defaultRoot, options = {})
     const alt = meta?.imageAlt || selected?.alt || metaValue(head, 'og:image:alt');
     if (!alt) throw Error(`Missing representative image alt: ${file}`);
     const contentUrl = `${SITE}/${file}`;
-    const image = { '@type': 'ImageObject', '@id': `${contentUrl}#primaryimage`, url, contentUrl: url, width: size.width, height: size.height, caption: alt, ...(meta?.imageCredit ? { creditText: meta.imageCredit } : {}), ...(meta?.imageSourceUrl ? { isBasedOn: meta.imageSourceUrl } : {}) };
+    const image = { '@type': 'ImageObject', '@id': `${contentUrl}#primaryimage`, url, contentUrl: url, width: size.width, height: size.height, caption: alt, ...(meta?.imageCredit ? { creditText: meta.imageCredit } : {}), ...(meta?.imageSourceUrl ? { isBasedOn: meta.imageSourceUrl } : {}), ...IMAGE_RIGHTS_METADATA[src] };
     head = setMeta(head, 'og:image', url);
     head = setMeta(head, 'og:image:width', size.width);
     head = setMeta(head, 'og:image:height', size.height);

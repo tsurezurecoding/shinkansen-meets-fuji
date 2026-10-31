@@ -7,6 +7,51 @@ import { CONTENT_METADATA, SITE, imageDimensions, metadataProblems, selectSpotOg
 import { auditContentMetadata } from './shared/content-metadata-audit.mjs';
 import { findUnregisteredCountClaims } from './shared/spot-count.mjs';
 
+test('verified image rights survive generation across language editions without global defaults', () => {
+  const imageNodes = html => {
+    const found = [];
+    const walk = value => {
+      if (!value || typeof value !== 'object') return;
+      if (value['@type'] === 'ImageObject') found.push(value);
+      for (const item of Object.values(value)) walk(item);
+    };
+    for (const match of html.matchAll(/<script[^>]*type="application\/ld\+json"[^>]*>([\s\S]*?)<\/script>/g)) walk(JSON.parse(match[1]));
+    return found;
+  };
+  const editions = ['', 'en/', 'fr/', 'es/', 'de/', 'zh-Hans/', 'zh-Hant/', 'ko/', 'it/', 'th/'];
+  const commons = 'https://commons.wikimedia.org/wiki/File:Firework.jpg';
+  const cases = [
+    { routes: ['window-quiz.html', 'window-guesser.html'], src: 'images/20261013_kakegawa_castle_morning_michikusa.jpg', creator: { '@type': 'Person', name: 'michikusa' }, notice: '© michikusa', credit: 'michikusa', size: [1920, 1080] },
+    { routes: editions.map(prefix => prefix + 'sparkling-dreams.html'), src: 'images/20260816_sparkling_dreams_shizuoka_bg_michikusa.jpg', creator: { '@type': 'Organization', name: '新幹線の窓' }, notice: '写真：新幹線の窓／車体装飾：©Disney', credit: '新幹線の窓 / ©Disney', size: [1600, 900] },
+    { routes: editions.map(prefix => prefix + 'hanabi.html'), src: 'images/og-hanabi.jpg', creator: { '@type': 'Person', name: 'Jon Sullivan' }, credit: 'Jon Sullivan (public domain)', size: [1200, 630] },
+  ];
+  for (const item of cases) for (const file of item.routes) {
+    const target = new URL('../' + file, import.meta.url);
+    // Only existing supported editions belong in this change.
+    if (!fs.existsSync(target)) continue;
+    const html = fs.readFileSync(target, 'utf8');
+    const images = imageNodes(html).filter(image => image.url === SITE + '/' + item.src);
+    assert.ok(images.length, file);
+    for (const image of images) {
+      assert.deepEqual(image.creator, item.creator, file);
+      assert.equal(image.copyrightNotice, item.notice, file);
+      assert.equal(image.creditText, item.credit, file);
+      assert.deepEqual([image.width, image.height], item.size, file);
+      assert.equal(image.license, item.src === 'images/og-hanabi.jpg' ? commons : undefined, file);
+      assert.equal(image.isBasedOn, item.src === 'images/og-hanabi.jpg' ? commons : undefined, file);
+      assert.equal(image.acquireLicensePage, undefined, file);
+    }
+    // Regeneration of registered heads preserves the exact rights, body and links.
+    if (CONTENT_METADATA[file]) assert.equal(enhanceContentHead(html, file), html, file);
+  }
+  // The similarly named Disney hero is a separate asset, with no inferred rights.
+  for (const src of ['images/20260816_sparkling_dreams_shizuoka_michikusa.jpg', 'images/og-shinkansen-window.png']) {
+    const fixture = `<html lang="en"><head><meta property="og:image" content="${SITE}/${src}"><meta property="og:image:alt" content="Fixture"><script type="application/ld+json">{"@type":"WebPage"}</script></head><body></body></html>`;
+    const [image] = imageNodes(enhanceContentHead(fixture, 'unregistered-fixture.html'));
+    for (const key of ['creator', 'copyrightNotice', 'license', 'acquireLicensePage', 'isBasedOn']) assert.equal(image[key], undefined, src + ': ' + key);
+  }
+});
+
 test('spot counts ignore image dimensions while still checking nearby prose', () => {
   assert.deepEqual(findUnregisteredCountClaims('<img width="1200" height="630" alt="現在地と次の景色">'), []);
   assert.equal(findUnregisteredCountClaims('<img height="630" alt="景色"><p>999 amazing views</p>').length, 1);
