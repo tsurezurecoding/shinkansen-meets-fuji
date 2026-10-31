@@ -181,7 +181,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
           const rest = value.slice((origin + '/en/').length).split('#')[0];
           if (supported(rest).includes(lang)) return value.replace('/en/', `/${lang}/`);
         }
-        return ['name','headline','description','caption'].includes(key) && dictionary[value] ? dictionary[value] : value;
+        return ['name','headline','description','caption','text'].includes(key) && dictionary[value] ? dictionary[value] : value;
       };
       el.textContent = JSON.stringify(rewrite(JSON.parse(el.textContent)), null, 2);
     }

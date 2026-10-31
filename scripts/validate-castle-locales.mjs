@@ -1,4 +1,4 @@
-import { editions as localeInfo, stripEdition } from './shared/locales.mjs';
+import { editions as localeInfo, stripEdition, supported } from './shared/locales.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -13,7 +13,7 @@ const origin = 'https://www.michikusa-travel.com';
 const editions = ['ja', 'en', ...CASTLE_LOCALE_LANGS];
 // Exercise the scenery companions with the same photo, map and edition contracts.
 const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a'].map(id => `spots/${id}.html`);
-const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/'))])];
+const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/') || ['jr-pass-fuji.html','hanabi.html'].includes(route))])];
 const errors = [];
 const counts = { pages: 0, galleries: 0, maps: 0, lightboxes: 0, languageSwitches: 0 };
 const assert = (ok, label, message) => { if (!ok) errors.push(`${label}: ${message}`); };
@@ -54,7 +54,7 @@ function checkMetadata(doc, lang, route, label) {
   assert(doc.documentElement.lang === lang, label, `html lang must be ${lang}`);
   assert(doc.querySelector('link[rel="canonical"]')?.href === `${origin}/${routeFor(lang, route)}`, label, 'self canonical missing');
   assert(doc.querySelector('meta[property="og:url"]')?.content === `${origin}/${routeFor(lang, route)}`, label, 'Open Graph URL must match the canonical article');
-  for (const edition of [...editions, 'x-default']) {
+  for (const edition of [...supported(route), 'x-default']) {
     const links = doc.querySelectorAll(`link[rel="alternate"][hreflang="${edition}"]`);
     assert(links.length === 1 && links[0].href === `${origin}/${routeFor(edition === 'x-default' ? 'en' : edition, route)}`, label, `reciprocal hreflang ${edition} missing or duplicated`);
   }
@@ -87,8 +87,8 @@ function checkSwitch(dom, lang, route, label) {
     assert(Boolean(host.querySelector('.guide-lang-options')), label, 'guide-style options missing');
     assert(!host.open, label, 'language menu must start closed');
     const links = Array.from(host.querySelectorAll('a'));
-    assert(links.length === editions.length, label, 'language switch must offer all supported editions');
-    for (const edition of editions) {
+    assert(links.length === supported(route).length, label, 'language switch must offer all supported editions');
+    for (const edition of supported(route)) {
       const link = links.find(el => el.lang === edition);
       assert(link?.textContent === labels[edition], label, `language label wrong for ${edition}`);
       assert(link?.href === `${origin}/${routeFor(edition, route)}${edition === 'ja' ? '?lang=ja' : ''}`, label, `language switch destination wrong for ${edition}`);
@@ -182,7 +182,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
 
 for (const route of articleRoutes) {
   const source = renderSiteRuntimeForValidation({ appDir: root, html: read(`en/${route}`), relative: `en/${route}` }).dom;
-  for (const lang of editions) {
+  for (const lang of supported(route)) {
     const file = routeFor(lang, route);
     if (!fs.existsSync(path.join(root, file))) { errors.push(`${file}: missing generated edition`); continue; }
     const dom = lang === 'en' ? source : renderSiteRuntimeForValidation({ appDir: root, html: read(file), relative: file }).dom;

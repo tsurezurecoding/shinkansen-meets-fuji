@@ -13,6 +13,8 @@ permissions:
 jobs:
   quality-gate:
     runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max-old-space-size=6144
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -22,8 +24,6 @@ jobs:
       - run: npm ci
       - run: npm run verify
       - name: Deterministic build
-        env:
-          NODE_OPTIONS: --max-old-space-size=6144
         run: |
           npm run build:full
           git diff --exit-code

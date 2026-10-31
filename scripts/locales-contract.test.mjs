@@ -9,7 +9,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 57, '56 canonical pages and the Ibuki A-seat alias');
+  assert.equal(routes.length, 61, '60 canonical pages and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -17,6 +17,8 @@ test('Italian and Thai share every regular translated route and leave limited ed
     for (const route of routes) assert.ok(locales.supported(route).includes(lang), `${lang}/${route}`);
   }
   assert.deepEqual(locales.supported('727-collection.html'), locales.coreLanguages);
+  assert.deepEqual(locales.supported('jr-pass-fuji.html'), ['en', ...locales.translated]);
+  for (const route of ['hanabi.html','spots/seta-karahashi.html','spots/musashi-kosugi-towers.html']) assert.deepEqual(locales.supported(route), locales.coreLanguages);
 });
 test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
   for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
@@ -190,5 +192,43 @@ test('station dome marker retains translated labels after show and hide', async 
   const button=dom.window.document.querySelector('.clue-toggle');
   button.click();assert.equal(button.textContent,'FR Hide the dome marker');assert.equal(button.getAttribute('aria-pressed'),'true');
   button.click();assert.equal(button.textContent,'FR Show the dome in this photo');assert.equal(button.getAttribute('aria-pressed'),'false');
+  dom.window.close();
+});
+
+
+test('fireworks placeholders localize while deferred posts and video titles retain their source', async () => {
+  const {englishSnapshot}=await import('./shared/castle-localization.mjs');
+  const {expansionRuntimeStrings,localizeExpansionRuntime}=await import('./shared/expansion-localization.mjs');
+  const {fileURLToPath}=await import('node:url');
+  const root=fileURLToPath(new URL('../',import.meta.url)),dom=englishSnapshot(root,'hanabi.html'),doc=dom.window.document;
+  const posts=[...doc.querySelectorAll('.hb-media-frame template')].map(el=>el.innerHTML);
+  const videos=[...doc.querySelectorAll('[data-embed="youtube"]')].map(el=>({id:el.dataset.videoId,title:el.dataset.videoTitle}));
+  assert.deepEqual(expansionRuntimeStrings(root,'hanabi.html',doc),['Post on X (formerly Twitter)','YouTube video']);
+  localizeExpansionRuntime(root,'hanabi.html',doc,'fr',value=>'FR '+value);
+  assert.ok([...doc.querySelectorAll('[data-placeholder]')].every(el=>el.dataset.placeholder.startsWith('FR ')));
+  assert.deepEqual([...doc.querySelectorAll('.hb-media-frame template')].map(el=>el.innerHTML),posts);
+  dom.window.IntersectionObserver=class { observe() {} };
+  dom.window.eval(read('hanabi.js'));doc.dispatchEvent(new dom.window.Event('DOMContentLoaded'));
+  for (const [i,embed] of [...doc.querySelectorAll('[data-embed="youtube"]')].entries()) {
+    embed.querySelector('button').click();const iframe=embed.querySelector('iframe');
+    assert.equal(iframe.title,videos[i].title);
+    assert.equal(iframe.src,'https://www.youtube-nocookie.com/embed/'+videos[i].id+'?autoplay=1');
+  }
+  dom.window.close();
+});
+
+test('JR Pass article CTA events use the translated edition language', async () => {
+  const {englishSnapshot}=await import('./shared/castle-localization.mjs');
+  const {localizeExpansionRuntime}=await import('./shared/expansion-localization.mjs');
+  const {fileURLToPath}=await import('node:url');
+  const root=fileURLToPath(new URL('../',import.meta.url)),dom=englishSnapshot(root,'jr-pass-fuji.html'),doc=dom.window.document;
+  localizeExpansionRuntime(root,'jr-pass-fuji.html',doc,'fr',value=>'FR '+value);
+  const events=[];dom.window.gtag=(kind,name,payload)=>events.push({kind,name,payload});
+  const script=[...doc.querySelectorAll('script:not([src]):not([type])')].find(el=>el.textContent.includes('jrpass_cta_click'));
+  dom.window.eval(script.textContent);
+  const link=doc.querySelector('[data-jrpass-cta="pick_train"]');link.addEventListener('click',event=>event.preventDefault());link.click();
+  assert.deepEqual(events.map(e=>e.name),['jrpass_cta_click','cta_train_search_click']);
+  assert.ok(events.every(event=>event.payload.language==='fr'));
+  assert.equal(events[0].payload.cta_id,'pick_train');
   dom.window.close();
 });
