@@ -4,7 +4,7 @@
 
 /* ---- hero ---- */
 .wm-hero { position: relative; isolation: isolate; background: var(--night); color: #fff; padding: 104px 20px 76px; overflow: hidden; }
-${t.copy11}
+.wm-hero::before { content: ""; position: absolute; inset: 0; z-index: -2; background-image: url("images/wm-hero-snow.jpg"); background-size: cover; background-position: center 46%; }
 .wm-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, rgba(16,28,44,.58) 0%, rgba(16,28,44,.72) 52%, rgba(16,28,44,.93) 100%); }
 .wm-hero-inner { max-width: 760px; margin: 0 auto; text-align: center; }
 .wm-hero .eyebrow { color: var(--accent-soft); }
