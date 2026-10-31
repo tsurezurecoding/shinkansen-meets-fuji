@@ -84,7 +84,11 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
     }
     if (FEATURE_UTILITY_ROUTES.includes(route)) {
       doc.querySelectorAll('script[src]').forEach(el => {
-        if (/spot-page-(?:shared-data|loader)|data\/spot-pages\/|platform.twitter.com/.test(el.getAttribute('src'))) el.remove();
+        if (/spot-page-(?:shared-data|loader)|data\/spot-pages\/|platform.twitter.com/.test(el.getAttribute('src'))) {
+          const before = el.previousSibling;
+          if (before?.nodeType === 3 && !before.textContent.trim()) before.textContent = before.textContent.replace(/[ \t]+$/, '');
+          el.remove();
+        }
       });
     }
     if (route === 'mieru.html' || FEATURE_UTILITY_ROUTES.includes(route)) {
