@@ -1947,7 +1947,7 @@ function sitemapXML() {
   const episodeUrls = Object.entries(episodes)
     .filter(([route]) => !SPOTS.some(spot => spot.guidePageId && spot.guidePageId !== spot.id && route === `spots/${spot.id}.html`))
     .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: ["jr-pass-fuji.html","hanabi.html","spots/seta-karahashi.html","spots/musashi-kosugi-towers.html"].includes(route) ? "2026-10-31" : ["spots/tokyo-tower.html","spots/ota-fuji.html","spots/solar-ark.html","spots/shimizu-port-chikyu.html","spots/torikai-train-depot.html","spots/maibara-test-trains.html"].includes(route) ? "2026-10-30" : ["everyday-japan.html","arenani.html","727-collection.html","spots/727-board.html","ferris-wheels.html","spots/hirakata-park-wheel.html","tokyo-kyoto-stations.html","spots/kirin-beer-factory.html","spots/sapporo-shizuoka-factory.html","spots/lotte-shiga.html","spots/nichiban-anjo.html","spots/shizuoka-tea-fields.html"].includes(route) ? "2026-10-29" : ['it','th'].includes(lang) ? "2026-10-29" : /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
-  const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['it','th'].includes(lang) && route !== 'live/index.html' ? '2026-10-29' : route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
+  const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['window-moments.html','reflections.html'].includes(route) ? '2026-10-31' : ['it','th'].includes(lang) && route !== 'live/index.html' ? '2026-10-29' : route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const starterUrls = locales.starter.flatMap(lang => locales.starterRoutes.map(route => ({loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['zukan.html', 'live/index.html'].includes(route) ? '2026-10-28' : '2026-10-25'})));
   const urls = [...starterUrls, ...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
@@ -2172,7 +2172,7 @@ for (const config of guideRailConfigs) {
 }
 for (const file of ["reflections.html", "en/reflections.html"]) {
   const target = path.join(appDir, file);
-  writeFileIfChanged(target, enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir));
+  writeFileIfChanged(target, withUtilityLocales(enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir), file));
 }
 writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML().replace(/\/(somato|sumie|window-trip|window-film)\.html/g,'/artworks/$1/index.html'));
 
