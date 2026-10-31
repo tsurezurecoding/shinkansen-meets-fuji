@@ -21,7 +21,7 @@
   languages = languages.concat(starter);
   var translated = coreLanguages.filter(function (lang) { return lang !== 'ja' && lang !== 'en'; });
   var jaOnly = ["sudoori/index.html","sudoori/stories/tanna.html","sudoori/stories/nishio.html","sudoori/stories/sekigahara.html","sudoori/stories/shimamoto.html","sudoori/stories/aisho.html","sudoori/stories/koura.html"];
-  var utility = ['start.html', 'live/index.html', 'zukan.html', 'contact.html', 'mieru.html', 'index.html', 'journal.html'];
+  var utility = ['start.html', 'live/index.html', 'zukan.html', 'contact.html', 'mieru.html', 'index.html', 'journal.html', 'window-moments.html', 'reflections.html'];
   var castleIds = ['edo-castle-fujimi-yagura', 'odawara-castle', 'kakegawa', 'kiyosu', 'gifu-castle', 'hikone-castle', 'sawayama-castle', 'kannonji-castle', 'himeji-castle', 'okayama-castle', 'fukuyama-castle', 'odawara', 'nagoya-station-skyline', 'toji', 'hamanako'];
   var castles = ['castles.html'].concat(castleIds.map(function (id) { return 'spots/' + id + '.html'; }));
   var extra = ['sparkling-dreams.html'];

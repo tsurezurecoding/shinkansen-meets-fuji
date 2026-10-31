@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import { episodes, editions, languages, supported, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { UTILITY_ROUTES, LOCALES, ATTRS, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
+import { UTILITY_ROUTES, LOCALES, utilityAttributes, FEATURE_UTILITY_ROUTES, preservedUtilityText, FORECAST_COPY, collectEnglish, utilitySnapshot, englishTables, englishRuntimeData, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
@@ -82,13 +82,18 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
         if (key) el.setAttribute('aria-label', key);
       }
     }
-    if (route === 'mieru.html') {
+    if (FEATURE_UTILITY_ROUTES.includes(route)) {
+      doc.querySelectorAll('script[src]').forEach(el => {
+        if (/spot-page-(?:shared-data|loader)|data\/spot-pages\/|platform.twitter.com/.test(el.getAttribute('src'))) el.remove();
+      });
+    }
+    if (route === 'mieru.html' || FEATURE_UTILITY_ROUTES.includes(route)) {
       doc.body.setAttribute('data-article-localized', '');
       doc.body.setAttribute('data-spot-page-shared-lang', lang);
       doc.querySelectorAll('[data-spot-page-shared-module]').forEach(el => el.removeAttribute('data-spot-page-shared-module'));
     }
-    for (const node of textNodes(doc)) if (!node.parentElement.closest('.brand-mark,.lang-switch,.show-credit')) node.textContent = tr(node.textContent);
-    for (const el of doc.querySelectorAll('*')) for (const attr of ATTRS) if (el.getAttribute(attr)?.trim()) el.setAttribute(attr, tr(el.getAttribute(attr)));
+    for (const node of textNodes(doc)) if (!node.parentElement.closest('.brand-mark,.lang-switch,.show-credit') && !preservedUtilityText(node, route)) node.textContent = tr(node.textContent);
+    for (const el of doc.querySelectorAll('*')) for (const attr of utilityAttributes(el, route)) if (el.getAttribute(attr)?.trim()) el.setAttribute(attr, tr(el.getAttribute(attr)));
     doc.title = tr(doc.title);
     for (const el of doc.querySelectorAll('meta')) {
       const name = el.name || el.getAttribute('property') || '';

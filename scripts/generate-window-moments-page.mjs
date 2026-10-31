@@ -1,3 +1,4 @@
+import { withUtilityLocales } from './shared/utility-locales.mjs';
 import { enhanceContentHead } from './shared/content-metadata.mjs';
 import { YAKEI_SPOT_COUNT } from './shared/yakei-spots.mjs';
 import fs from 'node:fs';
@@ -643,7 +644,8 @@ ${t.window_moments_page}
 
 for (const lang of ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html');
-  const html = enhanceContentHead(render(lang), lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html', root);
+  const file = lang === 'ja' ? 'window-moments.html' : 'en/window-moments.html';
+  const html = withUtilityLocales(enhanceContentHead(render(lang), file, root), file);
   if (process.argv.includes('--check')) {
     if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error('window-moments page out of date: ' + dest);
   } else {

@@ -10,6 +10,10 @@ import { FORECAST_COPY } from './mieru-copy.mjs';
 export { FORECAST_COPY } from './mieru-copy.mjs';
 export { UTILITY_ROUTES, LOCALES } from './utility-locales.mjs';
 export const ATTRS = [...TRANSLATABLE_ATTRIBUTES, 'placeholder'];
+export const FEATURE_UTILITY_ROUTES = ['window-moments.html', 'reflections.html'];
+// An iframe title is the source video's actual title, rather than interface copy.
+export const utilityAttributes = (el, route) => FEATURE_UTILITY_ROUTES.includes(route) ? [...ATTRS, 'data-placeholder', 'data-label'].filter(attr => attr !== 'title' || el.tagName !== 'IFRAME') : ATTRS;
+export const preservedUtilityText = (node, route) => FEATURE_UTILITY_ROUTES.includes(route) && Boolean(node.parentElement.closest('.wm-card-by'));
 export const EXTRA_COPY = ['Open {name} in Google Maps', '{name}. {hook} Look around {area}.', 'YOUR TRAIN', 'Mt. Fuji', 'Seats A/E', 'Use Audio Guide while riding', 'More:', 'More', 'Browse every view in this stretch', 'Learn more', 'Related'];
 export function englishTables(root) {
   function table(file, indent) {
@@ -34,6 +38,7 @@ export function englishNarrations(root) {
   return context.window.MADO_NARRATIONS || context.NARRATIONS;
 }
 export function utilitySnapshot(root, route) {
+  if (FEATURE_UTILITY_ROUTES.includes(route)) return englishSnapshot(root, route);
   if (route === 'mieru.html') {
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
@@ -68,16 +73,24 @@ export function translationKey(value) {
   const timed = /^([A-Za-z][A-Za-z-]+(?: [A-Za-z-]+)*) \d{2}:\d{2}$/.exec(text);
   return numbered?.[1] || timed?.[1] || text;
 }
-export function collectEnglish(root) {
+export function collectEnglish(root, { routes = UTILITY_ROUTES, includeRuntime = true } = {}) {
   const keys = new Set();
   const add = value => { if (translatable(value)) keys.add(translationKey(value)); };
-  for (const route of UTILITY_ROUTES) {
+  for (const route of routes) {
     const doc = utilitySnapshot(root, route).window.document;
-    for (const node of textNodes(doc)) if (!node.parentElement.closest('.lang-switch,.show-credit')) add(node.textContent);
-    for (const el of doc.querySelectorAll('*')) for (const attr of ATTRS) add(el.getAttribute(attr));
+    for (const node of textNodes(doc)) if (!node.parentElement.closest('.lang-switch,.show-credit') && !preservedUtilityText(node, route)) add(node.textContent);
+    for (const el of doc.querySelectorAll('*')) for (const attr of utilityAttributes(el, route)) add(el.getAttribute(attr));
+    if (FEATURE_UTILITY_ROUTES.includes(route)) for (const schema of doc.querySelectorAll('script[type="application/ld+json"]')) {
+      const scan = (value, key = '') => {
+        if (typeof value === 'string' && ['name','headline','description','caption','text'].includes(key)) add(value);
+        else if (value && typeof value === 'object') for (const [key, child] of Object.entries(value)) scan(child, key);
+      };
+      scan(JSON.parse(schema.textContent));
+    }
     add(doc.title);
     for (const el of doc.querySelectorAll('meta')) if (/(?:description|title|image:alt)$/.test(el.name || el.getAttribute('property') || '')) add(el.content);
   }
+  if (!includeRuntime) return [...keys].sort();
   for (const table of Object.values(englishTables(root))) for (const value of Object.values(table)) add(valueTemplate(value).text);
   const scan = value => {
     if (!value || typeof value !== 'object') return;

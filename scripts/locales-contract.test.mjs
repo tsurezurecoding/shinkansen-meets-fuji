@@ -9,7 +9,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 61, '60 canonical pages and the Ibuki A-seat alias');
+  assert.equal(routes.length, 63, '62 canonical pages and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -88,9 +88,9 @@ test('edition registry loads before synchronous routing and after the base URL',
     assert.equal(withLocaleRegistry(html, '../'), html);
   }
 });
-test('new editions match the 25 active pages and Arabic stays guide-only', () => {
-  assert.equal(locales.routes.length, 25);
-  assert.equal(new Set(locales.routes).size, 25);
+test('new editions match the 27 active pages and Arabic stays guide-only', () => {
+  assert.equal(locales.routes.length, 27);
+  assert.equal(new Set(locales.routes).size, 27);
   for (const route of locales.routes) for (const lang of locales.translated) assert.ok(locales.supported(route).includes(lang), lang + '/' + route);
   assert.ok(locales.supported('guide.html').includes('ar'));
   assert.ok(!locales.supported('start.html').includes('ar'));
@@ -231,4 +231,47 @@ test('JR Pass article CTA events use the translated edition language', async () 
   assert.ok(events.every(event=>event.payload.language==='fr'));
   assert.equal(events[0].payload.cta_id,'pick_train');
   dom.window.close();
+});
+
+
+test('seasonal and reflection utility boundaries translate controls while preserving supplied media', async () => {
+  const { utilitySnapshot, utilityAttributes, preservedUtilityText, collectEnglish, FEATURE_UTILITY_ROUTES } = await import('./shared/utility-localization.mjs');
+  const { textNodes } = await import('./shared/castle-localization.mjs');
+  const { fileURLToPath } = await import('node:url');
+  const root = fileURLToPath(new URL('../', import.meta.url));
+  const keys = collectEnglish(root, { routes: FEATURE_UTILITY_ROUTES, includeRuntime: false });
+  assert.ok(keys.includes('Loading the post from X'));
+  assert.ok(keys.includes('When'));
+  assert.ok(keys.includes('Past Shinagawa'), 'JSON-LD-only place names must also be translated');
+  for (const route of FEATURE_UTILITY_ROUTES) {
+    assert.deepEqual(locales.supported(route), locales.coreLanguages);
+    const dom = utilitySnapshot(root, route), doc = dom.window.document;
+    const authors = [...doc.querySelectorAll('.wm-card-by')].map(el => el.textContent);
+    const posts = [...doc.querySelectorAll('template')].map(el => el.innerHTML);
+    const actualTitles = [...doc.querySelectorAll('iframe[title]')].map(el => el.title);
+    for (const author of authors) assert.ok(!keys.includes(author.trim()), 'supplied attribution is outside the translation boundary');
+    for (const node of textNodes(doc)) if (!preservedUtilityText(node, route)) node.textContent = 'FR ' + node.textContent;
+    for (const el of doc.querySelectorAll('*')) for (const attr of utilityAttributes(el, route)) if (el.getAttribute(attr)?.trim()) el.setAttribute(attr, 'FR ' + el.getAttribute(attr));
+    assert.deepEqual([...doc.querySelectorAll('.wm-card-by')].map(el => el.textContent), authors);
+    assert.deepEqual([...doc.querySelectorAll('template')].map(el => el.innerHTML), posts);
+    assert.deepEqual([...doc.querySelectorAll('iframe[title]')].map(el => el.title), actualTitles);
+    if (route === 'window-moments.html') {
+      const videos = [...doc.querySelectorAll('[data-embed="youtube"]')].map(el => ({ id: el.dataset.videoId, title: el.dataset.videoTitle }));
+      const observations = [];
+      dom.window.IntersectionObserver = class { constructor(callback) { this.callback = callback; } observe(target) { observations.push({target, observer:this}); } unobserve() {} };
+      dom.window.twttr = { widgets: { load: () => Promise.resolve() } };
+      dom.window.eval(read('window-moments.js'));
+      for (const card of doc.querySelectorAll('[data-embed="youtube"]')) card.querySelector('button').click();
+      assert.deepEqual([...doc.querySelectorAll('.wm-facade iframe')].map(el => ({id:new URL(el.src).pathname.split('/').pop(), title:el.title})), videos);
+      for (const el of doc.querySelectorAll('[data-placeholder]')) assert.match(el.dataset.placeholder, /^FR /);
+      for (const {target, observer} of observations) observer.callback([{target, isIntersecting:true}]);
+      await new Promise(setImmediate);
+      assert.equal(doc.querySelectorAll('template').length, 0);
+      assert.equal(doc.querySelectorAll('.twitter-tweet').length, posts.length);
+      for (const el of doc.querySelectorAll('.twitter-tweet')) assert.ok(!el.textContent.includes('FR '));
+    } else {
+      for (const el of doc.querySelectorAll('[data-label]')) assert.equal(el.dataset.label, 'FR When');
+    }
+    dom.window.close();
+  }
 });

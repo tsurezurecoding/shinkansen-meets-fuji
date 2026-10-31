@@ -6,7 +6,7 @@ import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
 import { spawnSync } from 'node:child_process';
 import { JSDOM, VirtualConsole } from 'jsdom';
-import { UTILITY_ROUTES, LOCALES, ATTRS, collectEnglish, englishTables, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
+import { UTILITY_ROUTES, LOCALES, utilityAttributes, FEATURE_UTILITY_ROUTES, preservedUtilityText, collectEnglish, englishTables, englishNarrations, valueTemplate, translationKey, translatable } from './shared/utility-localization.mjs';
 import { expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { EXTRA_LOCALE_ROUTES } from './shared/extra-locale-routes.mjs';
@@ -189,6 +189,7 @@ function checkMenu(dom, lang, route, label) {
   }
 }
 function checkStatic(doc, sourceDoc, dictionary, lang, label) {
+  const route = stripEdition(label);
   if (['it', 'th'].includes(lang)) {
     sourceDoc = sourceDoc.cloneNode(true);
     // These editions also localize the Japanese accessibility/initial-state
@@ -204,12 +205,18 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     if (help) help.textContent = sourceTables.live.narrModeHelpLoading;
   }
   const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note,.content-rail-discovery .discovery-language';
-  const sourceText = textNodes(sourceDoc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(translation(dictionary, node.textContent)));
-  const translatedText = textNodes(doc).filter(node => !node.parentElement.closest(excluded)).map(node => normal(node.textContent));
+  const sourceText = textNodes(sourceDoc).filter(node => !node.parentElement.closest(excluded) && !preservedUtilityText(node, route)).map(node => normal(translation(dictionary, node.textContent)));
+  const translatedText = textNodes(doc).filter(node => !node.parentElement.closest(excluded) && !preservedUtilityText(node, route)).map(node => normal(node.textContent));
   compare(translatedText, sourceText, label, 'static English-source text/translation differs');
-  const attrs = document => [...document.querySelectorAll('*')].flatMap(el => ATTRS.filter(attr => el.hasAttribute(attr) && !el.closest(excluded)).map(attr => [el.tagName, attr, normal(el.getAttribute(attr))]));
+  const attrs = document => [...document.querySelectorAll('*')].flatMap(el => utilityAttributes(el, route).filter(attr => el.hasAttribute(attr) && !el.closest(excluded)).map(attr => [el.tagName, attr, normal(el.getAttribute(attr))]));
   compare(attrs(doc), attrs(sourceDoc).map(([tag, attr, value]) => [tag, attr, normal(translation(dictionary, value))]), label, 'translated alt/title/aria/placeholder differs');
   compare([...doc.querySelectorAll('.show-credit')].map(el => normal(el.textContent)), [...sourceDoc.querySelectorAll('.show-credit')].map(el => normal(el.textContent)), label, 'photo attribution changed');
+  if (FEATURE_UTILITY_ROUTES.includes(route)) {
+    compare([...doc.querySelectorAll('.wm-card-by')].map(el => el.textContent), [...sourceDoc.querySelectorAll('.wm-card-by')].map(el => el.textContent), label, 'supplied author attribution changed');
+    compare([...doc.querySelectorAll('template')].map(el => el.innerHTML), [...sourceDoc.querySelectorAll('template')].map(el => el.innerHTML), label, 'original external post changed');
+    compare([...doc.querySelectorAll('iframe[title]')].map(el => el.title), [...sourceDoc.querySelectorAll('iframe[title]')].map(el => el.title), label, 'actual video title changed');
+    compare([...doc.querySelectorAll('[data-video-title]')].map(el => el.dataset.videoTitle), [...sourceDoc.querySelectorAll('[data-video-title]')].map(el => el.dataset.videoTitle), label, 'deferred actual video title changed');
+  }
   assert(!/\(anglais\)|（英文）|\(English\)/i.test(doc.querySelector('header')?.textContent || ''), label, 'header contains unnecessary English badges');
   for (const a of doc.querySelectorAll('a[href]')) {
     if (a.closest('.utility-lang-menu,.lang-switch') || a.getAttribute('href')?.startsWith('#')) continue;
