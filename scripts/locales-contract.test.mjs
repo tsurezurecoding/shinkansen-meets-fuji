@@ -9,7 +9,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 63, '62 canonical pages and the Ibuki A-seat alias');
+  assert.equal(routes.length, 65, '64 canonical pages and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -18,7 +18,7 @@ test('Italian and Thai share every regular translated route and leave limited ed
   }
   assert.deepEqual(locales.supported('727-collection.html'), locales.coreLanguages);
   assert.deepEqual(locales.supported('jr-pass-fuji.html'), ['en', ...locales.translated]);
-  for (const route of ['hanabi.html','spots/seta-karahashi.html','spots/musashi-kosugi-towers.html']) assert.deepEqual(locales.supported(route), locales.coreLanguages);
+  for (const route of ['hanabi.html','spots/seta-karahashi.html','spots/musashi-kosugi-towers.html','spots/sagami-fuji.html','spots/left-fuji.html']) assert.deepEqual(locales.supported(route), locales.coreLanguages);
 });
 test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
   for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
