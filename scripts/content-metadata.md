@@ -2,6 +2,8 @@
 
 `content-metadata.json` はページ単位・言語単位の明示メタデータ。`shared/content-metadata.mjs` を各生成器から呼ぶ。HTMLのheadやsitemapを直接編集しない。guide.htmlは本文が手書きの正本で、headのメタデータと既存レールを生成器で同期する。
 
+画像の権利項目は `shared/content-metadata.mjs` の画像パス別 `IMAGE_RIGHTS_METADATA` に確認済み資産だけを明示する。同じ写真の各言語へ引き継ぎ、全写真の既定値にはしない。自己写真のlicense/acquireLicensePageは利用条件が決まるまで省略し、contact.htmlを許諾ページに流用しない。Sparkling Dreamsの撮影者と車体装飾©Disneyを区別し、花火のPD原典にはcopyrightNoticeを追加しない。
+
 - `published`: そのURLを初めて公開した日。記事の改稿・特集への作り直し・写真撮影・Git commit日時・mtimeだけでは公開を確定しない。
 - `modified`: 本文・写真・事実・利用者に示す情報を実質的に更新した公開日。build、共通ナビ、CSS/asset hash、formatter、改行用chunkだけでは変更しない。
 - 日付には `publishedEvidence` / `modifiedEvidence` を添える。証拠は運営OSの公開決定・成功Pages run。会長の2026-10-08指示により、古い公開runが残らない初公開は、Gitの初出・当時のmain履歴・ドメイン移行と運用記録を照合した日単位の推定も採用する。`publishedAccuracy: estimated-day` と `publishedEstimateNote` に精度・理由を明記し、build時にGit日時から自動算出しない。未公開の本文更新候補では日付を先取りせず、公開が確認できた時点で確定する。
