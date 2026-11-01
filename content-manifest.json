@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "733b7ce95eaa7c87",
+  "contentVersion": "2424d5fc47a6fd4b",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -6481,8 +6481,8 @@
     {
       "path": "th/spots/sagami-fuji.html",
       "url": "https://www.michikusa-travel.com/th/spots/sagami-fuji.html",
-      "bytes": 30765,
-      "sha256": "220f27c8b02c5f7e8e10de45ae8d037bcb2615c0f9fff303c87127926ee8a001"
+      "bytes": 30690,
+      "sha256": "bcb0386ecfc40d4e428049c73d089c5b87405feca4bfd4baaedc85fa4cec8d94"
     },
     {
       "path": "th/spots/sapporo-shizuoka-factory.html",
