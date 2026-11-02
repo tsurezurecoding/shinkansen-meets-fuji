@@ -45,7 +45,8 @@ test('photo alias dedup checks every consuming generator and the affected transl
   const plan = chooseReleaseScope([
     ...['scripts/shared/responsive-photos.mjs', 'scripts/generate-gallery-thumbnails.mjs',
       'images/thumbs/display/index.json', 'data/spot-pages/fuji-paper-mills.en.js',
-      'fr/spots/fuji-paper-mills.html', 'content-manifest.json', 'scripts/release-scope.mjs'].map(change),
+      'fr/spots/fuji-paper-mills.html', 'content-manifest.json', 'scripts/release-scope.mjs',
+      '.github/workflows/quality-gate.yml'].map(change),
     { status: 'D', path: 'images/thumbs/display/duplicate-640.webp' },
   ]);
   assert.equal(plan.scope, 'responsive-photo-dedup');
