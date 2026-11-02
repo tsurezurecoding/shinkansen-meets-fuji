@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   quality-gate:
@@ -17,20 +18,85 @@ jobs:
       NODE_OPTIONS: --max-old-space-size=6144
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
-      - run: npm ci
-      - run: npm run verify
-      - name: Deterministic build
+      - name: Select validation from changed inputs
+        id: plan
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
-          npm run build:full
-          git diff --exit-code
-          test -z "$(git ls-files --others --exclude-standard)"
-          npm run build:full
-          git diff --exit-code
-          test -z "$(git ls-files --others --exclude-standard)"
+          BASE_SHA="${BASE_SHA:-$(git rev-parse HEAD^)}"
+          node scripts/release-scope.mjs plan "$BASE_SHA" "$RUNNER_TEMP/release-plan.json"
+      - name: Find successful PR verification
+        id: prior
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { execFileSync } = require('node:child_process');
+            const parents = execFileSync('git', ['show', '-s', '--format=%P', 'HEAD'], { encoding: 'utf8' }).trim().split(' ');
+            if (parents.length !== 2) return;
+            try {
+              const { selectPullRequestVerification } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/release-artifact.mjs`);
+              const candidate = await selectPullRequestVerification(github, { ...context.repo, head: parents[1] });
+              for (const [key, value] of Object.entries(candidate)) core.setOutput(key, value);
+            } catch (error) {
+              core.info(`Fresh validation required: ${error.message}`);
+            }
+      - name: Download pinned PR verification data
+        if: steps.prior.outputs.artifact_id != ''
+        uses: actions/download-artifact@v8
+        with:
+          artifact-ids: ${{ steps.prior.outputs.artifact_id }}
+          github-token: ${{ github.token }}
+          repository: ${{ github.repository }}
+          run-id: ${{ steps.prior.outputs.run_id }}
+          path: ${{ runner.temp }}/pr-verification
+          digest-mismatch: error
+      - name: Match verified inputs to the actual merged tree
+        id: reuse
+        if: steps.prior.outputs.artifact_id != ''
+        uses: actions/github-script@v7
+        env:
+          SELECTED: ${{ toJSON(steps.prior.outputs) }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const { execFileSync } = require('node:child_process');
+            const git = (...args) => execFileSync('git', args, { encoding: 'utf8' }).trim();
+            try {
+              const { selectPullRequestVerification, assertSameReleaseArtifact } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/release-artifact.mjs`);
+              const { assertReusableVerification } = await import(`${process.env.GITHUB_WORKSPACE}/scripts/release-scope.mjs`);
+              const parents = git('show', '-s', '--format=%P', 'HEAD').split(' ');
+              const current = await selectPullRequestVerification(github, { ...context.repo, head: parents[1] });
+              assertSameReleaseArtifact(JSON.parse(process.env.SELECTED), current);
+              const receipt = JSON.parse(fs.readFileSync(`${process.env.RUNNER_TEMP}/pr-verification/verification.json`, 'utf8'));
+              assertReusableVerification(receipt, { tree: git('rev-parse', 'HEAD^{tree}'), base: parents[0], head: parents[1], repository: process.env.GITHUB_REPOSITORY });
+              core.setOutput('verified', 'true');
+              await core.summary.addHeading('Reused verified PR content').addRaw(`PR run ${current.run_id}; identical Git tree ${receipt.tree}; both parents matched. No tests repeated.`).write();
+            } catch (error) {
+              core.info(`Fresh validation required: ${error.message}`);
+            }
+      - name: Install dependencies for affected product checks
+        if: steps.reuse.outputs.verified != 'true' && (steps.plan.outputs.scope == 'full' || steps.plan.outputs.scope == '727-collection')
+        run: npm ci
+      - name: Verify affected scope once
+        if: steps.reuse.outputs.verified != 'true'
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: node scripts/release-scope.mjs verify "$RUNNER_TEMP/release-plan.json" "$RUNNER_TEMP/release-verification/verification.json"
+      - name: Save PR verification data
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-source-${{ github.event.pull_request.head.sha }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/release-verification/verification.json
+          if-no-files-found: error
+          retention-days: 7
       - name: Stage verified checkout for Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
