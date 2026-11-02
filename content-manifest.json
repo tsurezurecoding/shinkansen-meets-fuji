@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0b524cb9e9d17cd1",
+  "contentVersion": "8c9664e311b99151",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -13,8 +13,8 @@
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 21298,
-      "sha256": "428e34551cb0c70fdd607ee7ad7b8c311d2bac0bd034973ea9e86e47de8a28ff"
+      "bytes": 21312,
+      "sha256": "1d561d4d86b1507c1ebe18d9e9c98cf944a93e1c84e52f7f880a46ea3fd5f373"
     },
     {
       "path": "727-collection.js",
@@ -1705,8 +1705,8 @@
     {
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
-      "bytes": 18100,
-      "sha256": "0deef939dbc23e0175f56add1dde67d3515dfa5d0bd9c4737c5ba788984831d9"
+      "bytes": 18097,
+      "sha256": "d1096727680a976c0acc1cbcff741f9e75ffb3e259001a52b7edd60576598e54"
     },
     {
       "path": "en/arenani.html",

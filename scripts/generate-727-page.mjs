@@ -163,8 +163,7 @@ ${t.bodyTag}
         ${t.heroLead}
         ${t.heroNote}
         <div class="collection-hero-actions">
-          ${t.heroButtonList}
-${en ? '' : '<a class="btn btn-ghost" href="#collectionVideoTitle">動画で巡る（約3分）</a>'}
+          ${t.heroButtonList}${en ? '' : '\n          <a class="btn btn-ghost" href="#collectionVideoTitle">動画で巡る（約3分）</a>'}
           ${t.heroButtonTimeline}
           ${t.heroButtonAbout}
         </div>
@@ -231,9 +230,9 @@ ${en ? '' : '<a class="btn btn-ghost" href="#collectionVideoTitle">動画で巡�
         <span id="collectionListCount" class="collection-list-count" aria-live="polite"></span>
       </div>
       <div id="collectionList" class="collection-point-list"></div>
-    </section>
+    </section>${en ? '' : `
 
-${en ? '' : `<section class="section collection-film-section" aria-labelledby="collectionVideoTitle">
+    <section class="section collection-film-section" aria-labelledby="collectionVideoTitle">
       <div class="section-head">
         <p class="eyebrow">727 WINDOW FILM</p>
         <h2 id="collectionVideoTitle">動画で巡る727</h2>
