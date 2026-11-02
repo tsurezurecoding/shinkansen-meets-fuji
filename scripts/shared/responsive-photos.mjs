@@ -10,7 +10,7 @@ export function photoPython() {
 }
 
 // A page carries only its own image candidates. The shared catalog stays small.
-export function responsivePhotoPlan(root, photos) {
+export function responsivePhotoPlan(root, photos, { partial = false } = {}) {
   const pairs = new Map();
   for (const photo of photos) {
     if (!photo?.src || !/\.(?:jpe?g|png|webp)$/i.test(photo.src)) continue;
@@ -52,10 +52,21 @@ print(json.dumps(result))
     if (result.error || result.status !== 0) throw Error('New photo dimensions require Pillow: ' + (result.error || result.stderr));
     Object.assign(dimensions, JSON.parse(result.stdout));
   }
-  const sources = {}, derivatives = [], metadata = {};
+  const sourceHashes = new Map([...pairs.keys()].map(source => [source, fingerprint(source)]));
+  const activeHashes = new Set(sourceHashes.values()), canonicalSources = new Map();
+  // Identical originals can have different editorial filenames. Reuse one
+  // derivative per content/width, including when generating just one article.
+  for (const source of [...new Set([...(partial ? Object.keys(cached) : []), ...pairs.keys()])].sort()) {
+    const hash = sourceHashes.get(source) || cached[source]?.sha256;
+    if (!activeHashes.has(hash) || canonicalSources.has(hash)) continue;
+    if (!/^images\//.test(source) || source.includes('..') || source.includes('\\') || /[?#]/.test(source)) continue;
+    if (fs.existsSync(path.join(root, source)) && fingerprint(source) === hash) canonicalSources.set(hash, source);
+  }
+  const sources = {}, derivatives = [], metadata = {}, derivativePaths = new Set();
   for (const [source, thumb] of pairs) {
     const [width, height] = dimensions[source], [thumbWidth, thumbHeight] = dimensions[thumb];
     const sourceSha256 = fingerprint(source);
+    const derivativeSource = canonicalSources.get(sourceSha256) || source;
     metadata[source] = { sha256: sourceSha256, width, height, thumb, thumbSha256: fingerprint(thumb), thumbWidth, thumbHeight };
     const sameFrame = Math.abs(width / height - thumbWidth / thumbHeight) < 0.005;
     const candidates = new Map();
@@ -66,9 +77,12 @@ print(json.dumps(result))
       // Already small originals preserve maximum detail; re-encoding their
       // native size can be larger without improving either quality or loading.
       if (targetWidth === width && width < 1920) { candidates.set(width, source); continue; }
-      const target = 'images/thumbs/display/' + source.slice('images/'.length).replace(/\.[^.]+$/, '') + '-' + sourceSha256.slice(0, 8) + '-' + targetWidth + '.webp';
+      const target = 'images/thumbs/display/' + derivativeSource.slice('images/'.length).replace(/\.[^.]+$/, '') + '-' + sourceSha256.slice(0, 8) + '-' + targetWidth + '.webp';
       candidates.set(targetWidth, target);
-      derivatives.push({ source, sourceSha256, target, width: targetWidth, height: Math.max(1, Math.round(height * targetWidth / width)), quality: PHOTO_QUALITY });
+      if (!derivativePaths.has(target)) {
+        derivativePaths.add(target);
+        derivatives.push({ source: derivativeSource, sourceSha256, target, width: targetWidth, height: Math.max(1, Math.round(height * targetWidth / width)), quality: PHOTO_QUALITY });
+      }
     }
     sources[source] = [...candidates].sort((a, b) => a[0] - b[0]).map(([candidateWidth, file]) => [file, candidateWidth, file === thumb ? thumbHeight : Math.max(1, Math.round(height * candidateWidth / width))]);
   }

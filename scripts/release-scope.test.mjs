@@ -41,6 +41,28 @@ test('documentation and empty changes do not run product tests', () => {
   assert.deepEqual(chooseReleaseScope([]).commands, []);
 });
 
+test('photo alias dedup checks every consuming generator and the affected translated route', () => {
+  const plan = chooseReleaseScope([
+    ...['scripts/shared/responsive-photos.mjs', 'scripts/generate-gallery-thumbnails.mjs',
+      'images/thumbs/display/index.json', 'data/spot-pages/fuji-paper-mills.en.js',
+      'fr/spots/fuji-paper-mills.html', 'content-manifest.json', 'scripts/release-scope.mjs',
+      '.github/workflows/quality-gate.yml'].map(change),
+    { status: 'D', path: 'images/thumbs/display/duplicate-640.webp' },
+  ]);
+  assert.equal(plan.scope, 'responsive-photo-dedup');
+  for (const file of ['generate-gallery-thumbnails.mjs', 'generate-spot-page-shared-data.mjs',
+    'generate-spot-pages.mjs', 'generate-castle-locales.mjs', 'check-content-manifest.mjs'])
+    assert(plan.commands.some(c => c.includes(`scripts/${file}`)));
+  assert(plan.commands.some(c => c.includes('--route') && c.includes('spots/fuji-paper-mills.html')));
+  assert(!plan.commands.some(c => c.includes('verify') || c.includes('build:full')));
+});
+
+test('photo dedup does not cover changed content sources, other routes or original photo deletion', () => {
+  for (const extra of [change('data.js'), change('en/spots/tokyo-tower.html'),
+    { status: 'D', path: 'images/original.jpg' }, { status: 'A', path: 'images/thumbs/display/new.webp' }])
+    assert.equal(chooseReleaseScope([change('scripts/shared/responsive-photos.mjs'), extra]).scope, 'unmapped');
+});
+
 const base = 'a'.repeat(40), head = 'b'.repeat(40), tree = 'c'.repeat(40);
 const expected = { base, head, tree, repository: 'example/site' };
 const receipt = { version: 1, status: 'success', repository: expected.repository, base, inputHead: head, tree, sourceSha: 'd'.repeat(40), sourceParents: [base, head] };

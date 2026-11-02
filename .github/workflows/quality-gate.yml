@@ -82,7 +82,7 @@ jobs:
               core.info(`Fresh validation required: ${error.message}`);
             }
       - name: Install dependencies for affected product checks
-        if: steps.reuse.outputs.verified != 'true' && (steps.plan.outputs.scope == 'full' || steps.plan.outputs.scope == '727-collection')
+        if: steps.reuse.outputs.verified != 'true' && (steps.plan.outputs.scope == 'full' || steps.plan.outputs.scope == '727-collection' || steps.plan.outputs.scope == 'responsive-photo-dedup')
         run: npm ci
       - name: Verify affected scope once
         if: steps.reuse.outputs.verified != 'true'

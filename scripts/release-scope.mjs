@@ -14,6 +14,11 @@ const infra = new Set([
 const familyPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?727-collection\.html$/;
 const localizedPage = /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/727-collection\.html$/;
 const family = new Set(['scripts/generate-727-page.mjs', '727-collection.css', '727-collection.js', 'content-manifest.json']);
+const photoDedup = new Set(['scripts/shared/responsive-photos.mjs', 'scripts/responsive-photos.test.mjs',
+  'scripts/generate-gallery-thumbnails.mjs', 'images/thumbs/display/index.json', 'content-manifest.json',
+  'data/spot-pages/fuji-paper-mills.ja.js', 'data/spot-pages/fuji-paper-mills.en.js',
+  'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', '.github/workflows/quality-gate.yml']);
+const photoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/fuji-paper-mills\.html$/;
 const node = (...args) => ['node', ...args];
 
 export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) {
@@ -23,6 +28,17 @@ export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) 
   if (files.every(file => infra.has(file))) return {
     scope: 'release-infrastructure', reason: 'Only release execution and its tests changed; product content is unchanged',
     commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/release-artifact.test.mjs')],
+  };
+  if (changes.every(({ path, status }) => status === 'M' && (photoDedup.has(path) || photoPage.test(path))
+    || status === 'D' && /^images\/thumbs\/display\/[^/]+\.webp$/.test(path))) return {
+    scope: 'responsive-photo-dedup',
+    reason: 'Responsive source alias sharing: thumbnail index, shared page payloads, Fuji paper mills editions and distribution references',
+    commands: [...syntax, node('--test', 'scripts/responsive-photos.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('scripts/generate-gallery-thumbnails.mjs', '--check'),
+      node('scripts/generate-spot-page-shared-data.mjs', '--check'),
+      node('scripts/generate-spot-pages.mjs', 'fuji-paper-mills', '--check', '--defer-manifest'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'spots/fuji-paper-mills.html', '--check'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
   };
   if (changes.every(change => change.status === 'M' && (family.has(change.path) || familyPage.test(change.path)))
     && files.filter(file => localizedPage.test(file)).every(versionOnly)) return {
