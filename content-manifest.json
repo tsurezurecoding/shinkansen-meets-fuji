@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2424d5fc47a6fd4b",
+  "contentVersion": "c39b192f3d84f01c",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1423,8 +1423,8 @@
     {
       "path": "de/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/de/spots/fuji-paper-mills.html",
-      "bytes": 35343,
-      "sha256": "f1d509ad5a8e157a1f36463193be42239d5b167a32793fcd06b25973d8ae6a1a"
+      "bytes": 35361,
+      "sha256": "bdfbd7938ffc24aa88d726ae1fca2609ecdd89c49cf1d4bce4a8d5554d94b366"
     },
     {
       "path": "de/spots/fuji.html",
@@ -1969,8 +1969,8 @@
     {
       "path": "es/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/es/spots/fuji-paper-mills.html",
-      "bytes": 35544,
-      "sha256": "d611faede2a48777c0354ba5165348dfc212f11af44eaa3d577fb838f2aff459"
+      "bytes": 35562,
+      "sha256": "329dc483978c9d98e2abaef1cf8f6c6da4339e5f54e62a012a7a0d552090df4b"
     },
     {
       "path": "es/spots/fuji.html",
@@ -2407,8 +2407,8 @@
     {
       "path": "fr/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/fr/spots/fuji-paper-mills.html",
-      "bytes": 35612,
-      "sha256": "b1f514942979c29c8332653d3c7bc8f9ea4118e1874371ad1914bcc928713f33"
+      "bytes": 35630,
+      "sha256": "0ba14bf76bd7e9d160372d2560ea9e9b9b238e1165c0ee7b0dee773083c8f4e0"
     },
     {
       "path": "fr/spots/fuji.html",
@@ -4165,8 +4165,8 @@
     {
       "path": "it/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/it/spots/fuji-paper-mills.html",
-      "bytes": 35536,
-      "sha256": "191b78640b43a056070b4b73c0fdb2ab2e02ec817bc66687810a5198c0f6d230"
+      "bytes": 35554,
+      "sha256": "24a6f2eae15a3db9282094ee6408ab643691e7e0f364a5bc693a5add274f7076"
     },
     {
       "path": "it/spots/fuji.html",
@@ -4585,8 +4585,8 @@
     {
       "path": "ko/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/ko/spots/fuji-paper-mills.html",
-      "bytes": 35277,
-      "sha256": "b88369bdcd6093e6807be7ca7dbcb05ebef8bb89e22372150dc59505dc61a187"
+      "bytes": 35295,
+      "sha256": "62a5528d2983191b3095d4c00a16f18d7b4b60f9e8caa3f4580eccbd8745bffd"
     },
     {
       "path": "ko/spots/fuji.html",
@@ -6313,8 +6313,8 @@
     {
       "path": "th/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/th/spots/fuji-paper-mills.html",
-      "bytes": 44625,
-      "sha256": "e93445bef73763f0615884de5af83c93061c22394f80eadf908ef678cc898a5a"
+      "bytes": 44643,
+      "sha256": "4cc75ebeda0a230b775fce32c0ef0ec41a04f1efe10bc52540e45f3db7e76f37"
     },
     {
       "path": "th/spots/fuji.html",
@@ -6901,8 +6901,8 @@
     {
       "path": "zh-Hans/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/fuji-paper-mills.html",
-      "bytes": 33939,
-      "sha256": "c36a4ac779aa61c7789bbff7f6f51827eefeb71c00615ada40f4f6c3d94a39f9"
+      "bytes": 33957,
+      "sha256": "56443cb8ee9d407f9d40a2987ce6a8ea13a4af258f5f62f9b945b260ce27d298"
     },
     {
       "path": "zh-Hans/spots/fuji.html",
@@ -7297,8 +7297,8 @@
     {
       "path": "zh-Hant/spots/fuji-paper-mills.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/fuji-paper-mills.html",
-      "bytes": 33939,
-      "sha256": "7992cfb64932901cbfeca1f0a3b867bd9f0ccc0bf18ccf13e5a7f4fd7dc029ac"
+      "bytes": 33957,
+      "sha256": "f5b1b7b1e9a912fbeb50435e3a2fbb96b7d0aa8aec4cf771658489af7cb12322"
     },
     {
       "path": "zh-Hant/spots/fuji.html",
@@ -8494,8 +8494,8 @@
     }
   ],
   "thumbnails": {
-    "itemCount": 1073,
-    "bytes": 61483096,
+    "itemCount": 1071,
+    "bytes": 61314148,
     "items": [
       {
         "path": "images/thumbs/190103_hamanako_fuji_sentokia.webp",
@@ -12144,18 +12144,6 @@
         "url": "https://www.michikusa-travel.com/images/thumbs/display/20260903_omi_fuji_cloudy_michikusa-672350c8-640.webp",
         "bytes": 14624,
         "sha256": "95c4e73e8e3ed2ce46965faba6c8bcd73cb44c0b9766f4800316139ddeafceb8"
-      },
-      {
-        "path": "images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-1920.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-1920.webp",
-        "bytes": 141702,
-        "sha256": "89a9663027f1a1aa79d393b8099309620bb02fb95abe551a8afb05fac1c48a41"
-      },
-      {
-        "path": "images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-640.webp",
-        "url": "https://www.michikusa-travel.com/images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-640.webp",
-        "bytes": 27246,
-        "sha256": "bfa243c2bda2f054d2078ac7c9386cb12255eabdcf0dd1f0f54ffebbd248fa19"
       },
       {
         "path": "images/thumbs/display/20260904_gifu_hashima_mahalo_michikusa-333f3638-1920.webp",

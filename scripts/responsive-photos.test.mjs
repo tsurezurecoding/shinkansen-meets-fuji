@@ -38,6 +38,28 @@ test('responsive plan uses content-verified dimensions without Python, avoids up
   } finally { if (previous === undefined) delete process.env.MADO_PYTHON; else process.env.MADO_PYTHON = previous; }
 });
 
+test('identical original aliases share derivatives in full and single-article plans', t => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'mado-photo-alias-'));
+  t.after(() => fs.rmSync(root, { recursive: true, force: true }));
+  fs.mkdirSync(path.join(root, 'images/thumbs/display'), { recursive: true });
+  const photos = ['a', 'z'].map(name => ({ src: `images/${name}.jpg`, thumb: `images/thumbs/${name}.webp` }));
+  const sources = {};
+  for (const photo of photos) {
+    fs.writeFileSync(path.join(root, photo.src), 'same original');
+    fs.writeFileSync(path.join(root, photo.thumb), 'preview');
+    sources[photo.src] = { sha256: hash('same original'), width: 4032, height: 2268, thumb: photo.thumb, thumbSha256: hash('preview'), thumbWidth: 960, thumbHeight: 540 };
+  }
+  fs.writeFileSync(path.join(root, 'images/thumbs/display/index.json'), JSON.stringify({ sources }));
+  const full = responsivePhotoPlan(root, [...photos].reverse());
+  assert.equal(full.derivatives.length, 2);
+  assert.ok(full.derivatives.every(item => item.source === photos[0].src));
+  const one = responsivePhotoPlan(root, [photos[1]], { partial: true });
+  assert.deepEqual(one.sources[photos[1].src], full.sources[photos[1].src]);
+  assert.deepEqual(full.sources[photos[0].src].filter(row => row[1] !== 960), full.sources[photos[1].src].filter(row => row[1] !== 960));
+  const removedAlias = responsivePhotoPlan(root, [photos[1]]);
+  assert.ok(removedAlias.derivatives.every(item => item.source === photos[1].src), 'full rebuild ignores originals no longer referenced by any article');
+});
+
 test('localized static photo candidates work without a page payload or IntersectionObserver', () => {
   const dom = new JSDOM('<body data-spot-page-shared-root="../../"><img data-photo-deferred data-photo-original-src="../../images/photo.jpg" data-photo-display-src="../../images/thumbs/photo.webp" data-photo-srcset="../../images/thumbs/photo.webp 960w"></body>', { url: 'https://example.test/fr/spots/demo.html' });
   try {

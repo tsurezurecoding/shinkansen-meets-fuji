@@ -4854,24 +4854,6 @@
       "quality": 86,
       "sha256": "95c4e73e8e3ed2ce46965faba6c8bcd73cb44c0b9766f4800316139ddeafceb8"
     },
-    "images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-1920.webp": {
-      "source": "images/20260904_fuji_paper_mills_michikusa.jpg",
-      "sourceSha256": "e4b339c5fac33bec80c460ab41e2aec8cf342c79b88afa9487ddf48cf535c967",
-      "target": "images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-1920.webp",
-      "width": 1920,
-      "height": 1080,
-      "quality": 86,
-      "sha256": "89a9663027f1a1aa79d393b8099309620bb02fb95abe551a8afb05fac1c48a41"
-    },
-    "images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-640.webp": {
-      "source": "images/20260904_fuji_paper_mills_michikusa.jpg",
-      "sourceSha256": "e4b339c5fac33bec80c460ab41e2aec8cf342c79b88afa9487ddf48cf535c967",
-      "target": "images/thumbs/display/20260904_fuji_paper_mills_michikusa-e4b339c5-640.webp",
-      "width": 640,
-      "height": 360,
-      "quality": 86,
-      "sha256": "bfa243c2bda2f054d2078ac7c9386cb12255eabdcf0dd1f0f54ffebbd248fa19"
-    },
     "images/thumbs/display/20260904_gifu_hashima_mahalo_michikusa-333f3638-1920.webp": {
       "source": "images/20260904_gifu_hashima_mahalo_michikusa.jpg",
       "sourceSha256": "333f3638f1aab84a06e116af0dc268ea643218f6ce92d9bfa8fe98b9d66deac5",

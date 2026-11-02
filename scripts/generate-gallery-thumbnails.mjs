@@ -68,7 +68,7 @@ for (const file of fs.readdirSync(path.join(root, 'data/spot-pages')).filter(fil
   const page = context.MADO_SPOT_PAGE_DATA;
   displayPhotos.push(...page.photos, ...page.gallery, ...page.inline);
 }
-const displayPlan = responsivePhotoPlan(root, displayPhotos);
+const displayPlan = responsivePhotoPlan(root, displayPhotos, { partial: selectedSpots.length > 0 });
 const displayIndexPath = path.join(root, 'images/thumbs/display/index.json');
 const oldDisplayDocument = fs.existsSync(displayIndexPath) ? JSON.parse(fs.readFileSync(displayIndexPath, 'utf8')) : {};
 const oldDisplay = oldDisplayDocument.files || oldDisplayDocument;
