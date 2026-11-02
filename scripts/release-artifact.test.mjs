@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { selectReleaseArtifact, assertSameReleaseArtifact } from './release-artifact.mjs';
+import { selectReleaseArtifact, assertSameReleaseArtifact, selectPullRequestVerification } from './release-artifact.mjs';
 
 const sha = 'a'.repeat(40);
 const options = { owner: 'example', repo: 'site', sha, now: Date.parse('2026-10-24T00:00:00Z') };
@@ -118,4 +118,36 @@ test('API failures propagate instead of permitting deployment', async () => {
   const f = fixture();
   f.github.paginate = async () => { throw new Error('API unavailable'); };
   await assert.rejects(selectReleaseArtifact(f.github, options), /API unavailable/);
+});
+
+function prFixture() {
+  const f = fixture();
+  Object.assign(f.run, { event: 'pull_request', head_branch: 'feature' });
+  f.artifact.name = `verified-source-${sha}-2`;
+  f.artifact.workflow_run.head_branch = 'feature';
+  return f;
+}
+test('selects a pinned same-repository PR receipt for independent content verification', async () => {
+  const f = prFixture();
+  assert.equal((await selectPullRequestVerification(f.github, { ...options, head: sha })).artifact_id, 40);
+});
+for (const [label, mutate] of [
+  ['fork', f => { f.run.head_repository.id = 99; }],
+  ['wrong workflow', f => { f.run.workflow_id = 99; }],
+  ['wrong workflow path', f => { f.run.path = '.github/workflows/other.yml'; }],
+  ['failed latest run', f => { f.run.conclusion = 'failure'; }],
+  ['pending latest run', f => { f.run.status = 'in_progress'; }],
+  ['different head', f => { f.run.head_sha = 'e'.repeat(40); }],
+  ['main push', f => { f.run.event = 'push'; }],
+  ['expired receipt', f => { f.artifact.expired = true; }],
+  ['missing receipt', f => { f.data.artifacts = []; }],
+  ['duplicate receipt', f => { f.data.artifacts.push({ ...f.artifact, id: 41 }); }],
+  ['old attempt', f => { f.artifact.name = `verified-source-${sha}-1`; }],
+  ['invalid digest', f => { f.artifact.digest = 'md5:bad'; }],
+  ['different source run', f => { f.artifact.workflow_run.id = 99; }],
+  ['different source head', f => { f.artifact.workflow_run.head_sha = 'e'.repeat(40); }],
+  ['different source repository', f => { f.artifact.workflow_run.repository_id = 99; }],
+]) test(`PR receipt selection rejects ${label}`, async () => {
+  const f = prFixture(); mutate(f);
+  await assert.rejects(selectPullRequestVerification(f.github, { ...options, head: sha }));
 });
