@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2424d5fc47a6fd4b",
+  "contentVersion": "8c9664e311b99151",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.css",
       "url": "https://www.michikusa-travel.com/727-collection.css",
-      "bytes": 2989,
-      "sha256": "2fe438bf6ab5c3ae7c94ed020ff915fab3862209578bde37143e2b4a3913d4f8"
+      "bytes": 3436,
+      "sha256": "7b6d1836596b00270fd19a696b40ec6c722ace30e68751ea4b26befbe1b95f8d"
     },
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 20014,
-      "sha256": "236c4441f99ca9ff2906d7b0df0da5fd02b1f2d06200feeb278b7d6a02039e3c"
+      "bytes": 21312,
+      "sha256": "1d561d4d86b1507c1ebe18d9e9c98cf944a93e1c84e52f7f880a46ea3fd5f373"
     },
     {
       "path": "727-collection.js",
@@ -1298,7 +1298,7 @@
       "path": "de/727-collection.html",
       "url": "https://www.michikusa-travel.com/de/727-collection.html",
       "bytes": 31054,
-      "sha256": "5572eb02996611f1a7b098846416cb3f8a0efaa5670deee3b833176208dd3984"
+      "sha256": "0a07ec45420da3bba30be2d72eaa31b5f8a1b6476dfd40cd3163724936f3aa9e"
     },
     {
       "path": "de/arenani.html",
@@ -1706,7 +1706,7 @@
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
       "bytes": 18097,
-      "sha256": "e614a107f2dd2980213a1ec324fecd050573b7ec5bc144fa37798cb196174d42"
+      "sha256": "d1096727680a976c0acc1cbcff741f9e75ffb3e259001a52b7edd60576598e54"
     },
     {
       "path": "en/arenani.html",
@@ -1844,7 +1844,7 @@
       "path": "es/727-collection.html",
       "url": "https://www.michikusa-travel.com/es/727-collection.html",
       "bytes": 31104,
-      "sha256": "77ecf196428d4039fcb4f61f08ea1263c4f4fc21aa707fb215c321fa2e959c37"
+      "sha256": "85bc25ccc4460e153ebd601929261c93ba727f5d3f97aee4460b75e079c5e2cb"
     },
     {
       "path": "es/arenani.html",
@@ -2282,7 +2282,7 @@
       "path": "fr/727-collection.html",
       "url": "https://www.michikusa-travel.com/fr/727-collection.html",
       "bytes": 31695,
-      "sha256": "5532be378e0580af32ca9e58cc05c47e77d4de33f5ef5e76655ab679545f07d0"
+      "sha256": "37bac6d4e0480e45f5c45d3b9b5a404b79382054dbd03a93b503005233295589"
     },
     {
       "path": "fr/arenani.html",
@@ -4034,7 +4034,7 @@
       "path": "it/727-collection.html",
       "url": "https://www.michikusa-travel.com/it/727-collection.html",
       "bytes": 31410,
-      "sha256": "cec90f6c4a351c72ffd4c1eeb63ba8d3c646b738d0ec9708a64d5cafb4d55600"
+      "sha256": "14fe70c3599d5582a9864617d2e26117c7d4b5384c890e43e07128258299dc74"
     },
     {
       "path": "it/arenani.html",
@@ -4460,7 +4460,7 @@
       "path": "ko/727-collection.html",
       "url": "https://www.michikusa-travel.com/ko/727-collection.html",
       "bytes": 31487,
-      "sha256": "fb1e900d553922a7fdffc95887dc68a774878e8a3ae5aecca94c5bc3ab7fac77"
+      "sha256": "c4e5cb173d5b1552cb882b32462e07ce27cf7c1e2df6c70c14230c0185a67d79"
     },
     {
       "path": "ko/arenani.html",
@@ -6182,7 +6182,7 @@
       "path": "th/727-collection.html",
       "url": "https://www.michikusa-travel.com/th/727-collection.html",
       "bytes": 41205,
-      "sha256": "eafc097230552e8e31c6abef14b1bd5412f865dae642a00a43ae20c063071250"
+      "sha256": "9161143aac817790a156dde1a94085dd46919d17bd5a6b2ed720f5b5659d97f9"
     },
     {
       "path": "th/arenani.html",
@@ -6776,7 +6776,7 @@
       "path": "zh-Hans/727-collection.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/727-collection.html",
       "bytes": 29572,
-      "sha256": "fe82b8669c29fd41b760936e98b0a4891c73f46ca02beb51ad73577f5734e37e"
+      "sha256": "d1fc248cbf6ee98496846e1b745268caecc0b0251eaac7da7f6cfdcc3f2c7b7d"
     },
     {
       "path": "zh-Hans/arenani.html",
@@ -7172,7 +7172,7 @@
       "path": "zh-Hant/727-collection.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/727-collection.html",
       "bytes": 29572,
-      "sha256": "7f75a8974c0d68bee8f534dcf878024d5de251f0d27e82562865167ff96e1849"
+      "sha256": "4f78a3b4a157ec129e7f6088cf7439064e73f64b1cef36a05cf48989d690dee6"
     },
     {
       "path": "zh-Hant/arenani.html",
