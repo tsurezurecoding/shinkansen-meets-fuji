@@ -163,7 +163,7 @@ ${t.bodyTag}
         ${t.heroLead}
         ${t.heroNote}
         <div class="collection-hero-actions">
-          ${t.heroButtonList}
+          ${t.heroButtonList}${en ? '' : '\n          <a class="btn btn-ghost" href="#collectionVideoTitle">動画で巡る（約3分）</a>'}
           ${t.heroButtonTimeline}
           ${t.heroButtonAbout}
         </div>
@@ -230,7 +230,19 @@ ${t.bodyTag}
         <span id="collectionListCount" class="collection-list-count" aria-live="polite"></span>
       </div>
       <div id="collectionList" class="collection-point-list"></div>
-    </section>
+    </section>${en ? '' : `
+
+    <section class="section collection-film-section" aria-labelledby="collectionVideoTitle">
+      <div class="section-head">
+        <p class="eyebrow">727 WINDOW FILM</p>
+        <h2 id="collectionVideoTitle">動画で巡る727</h2>
+        <p class="section-sub"><span class="copy-chunk">新幹線で見かける25地点を、</span><span class="copy-chunk">約3分の車窓旅に。</span><span class="copy-chunk">地図とA席・E席の表示で、</span><span class="copy-chunk">看板の場所もたどれます。</span></p>
+      </div>
+      <div class="collection-film-player">
+        <iframe src="https://www.youtube-nocookie.com/embed/y5xbtIPAIOw?rel=0" title="727看板コレクション — 新幹線の車窓・25地点" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+      <p class="collection-film-caption">窓側と進行方向をそろえ、複数の乗車記録をつないでいます。 <a href="https://youtu.be/y5xbtIPAIOw" target="_blank" rel="noopener noreferrer">YouTubeで見る ↗</a></p>
+    </section>`}
 
     <section class="section collection-notes-section" aria-labelledby="collectionNotesTitle">
       <div class="collection-note-card">

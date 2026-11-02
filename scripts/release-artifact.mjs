@@ -59,3 +59,34 @@ export function assertSameReleaseArtifact(selected, current) {
       `Verified CI/artifact changed before deployment (${key}); start a new deployment.`);
   }
 }
+
+// Select data only; main also checks the receipt against its actual tree/parents.
+export async function selectPullRequestVerification(github, { owner, repo, head, now = Date.now() }) {
+  requireCondition(/^[0-9a-f]{40}$/.test(head), 'PR head must be a full lowercase SHA.');
+  const { data: workflow } = await github.rest.actions.getWorkflow({ owner, repo, workflow_id: 'quality-gate.yml' });
+  requireCondition(Number.isSafeInteger(workflow.id) && workflow.id > 0
+    && workflow.path === workflowPath && workflow.state === 'active', 'The quality-gate workflow must be active.');
+  const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+    owner, repo, workflow_id: workflow.id, event: 'pull_request', head_sha: head, per_page: 100,
+  });
+  const run = runs.sort((a, b) => b.id - a.id)[0];
+  requireCondition(run?.workflow_id === workflow.id && (run.path === workflowPath || run.path?.startsWith(`${workflowPath}@`)), 'No matching PR workflow run.');
+  requireCondition(run.event === 'pull_request' && run.head_sha === head
+    && run.status === 'completed' && run.conclusion === 'success', 'Latest PR verification must have succeeded.');
+  requireCondition(run.repository?.full_name === `${owner}/${repo}` && run.head_repository?.full_name === `${owner}/${repo}`
+    && Number.isSafeInteger(run.repository?.id) && run.repository.id > 0
+    && run.repository.id === run.head_repository?.id, 'PR verification must come from the same repository, not a fork.');
+  requireCondition(Number.isSafeInteger(run.id) && run.id > 0 && Number.isSafeInteger(run.run_attempt) && run.run_attempt > 0, 'Invalid PR run identity.');
+  const artifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, { owner, repo, run_id: run.id, per_page: 100 });
+  const matches = artifacts.filter(a => a.name === `verified-source-${head}-${run.run_attempt}`);
+  requireCondition(matches.length === 1, 'PR verification receipt is missing or ambiguous.');
+  const artifact = matches[0];
+  requireCondition(artifact.expired === false && Date.parse(artifact.expires_at) > now
+    && Number.isSafeInteger(artifact.id) && artifact.id > 0 && artifact.size_in_bytes > 0
+    && /^sha256:[0-9a-f]{64}$/.test(artifact.digest), 'PR receipt is expired or has invalid identity/digest.');
+  const source = artifact.workflow_run;
+  requireCondition(source?.id === run.id && source.repository_id === run.repository.id
+    && source.head_repository_id === run.repository.id && source.head_sha === head
+    && source.head_branch === run.head_branch, 'PR receipt belongs to a different run or source.');
+  return { run_id: run.id, run_attempt: run.run_attempt, artifact_id: artifact.id, digest: artifact.digest, head_sha: head };
+}
