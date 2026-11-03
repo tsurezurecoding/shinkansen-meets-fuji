@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3d9c9744aaa392e7",
+  "contentVersion": "a70fc86db62da438",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -25,8 +25,8 @@
     {
       "path": "android-app-invite.js",
       "url": "https://www.michikusa-travel.com/android-app-invite.js",
-      "bytes": 21065,
-      "sha256": "582eee0d313e6f92e2d0ee72c521321cbd66d879329bee5d5185aa1c5e087fcb"
+      "bytes": 21161,
+      "sha256": "449f949c4ec901f79b51efce7b9b32d38e72aead8ca04b8e78ef89c678948bf9"
     },
     {
       "path": "app-embedded.css",
@@ -6032,7 +6032,7 @@
       "path": "site-runtime.json",
       "url": "https://www.michikusa-travel.com/site-runtime.json",
       "bytes": 3397,
-      "sha256": "b1b83d6fe404b70305a1bd820fd0da1f745e913a429ab2dd64572266811ca007"
+      "sha256": "ea2d8cd6488032040b335309c80df186cf211cf318160d9592172968479f2b6f"
     },
     {
       "path": "sparkling-dreams.html",

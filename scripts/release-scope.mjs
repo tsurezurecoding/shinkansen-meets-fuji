@@ -29,6 +29,14 @@ export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) 
     scope: 'release-infrastructure', reason: 'Only release execution and its tests changed; product content is unchanged',
     commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/release-artifact.test.mjs')],
   };
+  if (files.includes('scripts/shared/android-app-invite-copy.mjs') && changes.every(({ path, status }) =>
+    status === 'M' && ['scripts/shared/android-app-invite-copy.mjs', 'android-app-invite.js',
+      'site-runtime.json', 'content-manifest.json', 'scripts/release-scope.mjs', '.github/workflows/quality-gate.yml'].includes(path))) return {
+    scope: 'android-invite-copy', reason: 'Existing invitation locale copy, shared bundle and its runtime/distribution hashes only',
+    commands: [...syntax, node('--test', 'scripts/android-app-invite.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('scripts/generate-android-app-invite-assets.mjs', '--check'),
+      node('scripts/generate-site-runtime.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
+  };
   if (changes.every(({ path, status }) => status === 'M' && (photoDedup.has(path) || photoPage.test(path))
     || status === 'D' && /^images\/thumbs\/display\/[^/]+\.webp$/.test(path))) return {
     scope: 'responsive-photo-dedup',
