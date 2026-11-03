@@ -2007,6 +2007,22 @@
     "quality": 72,
     "sha256": "019db9a4e55af05e6e976b42917fa4a85caec6b8bdbc09db54567deafd766ebf"
   },
+  "images/thumbs/gallery/20261103_sekigahara-landscape_michikusa_45599.webp": {
+    "source": "images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+    "sourceSha256": "7080b2303f73a6136f6875c1def3418a31c8f3ff94dc1f64aa5e185dc7df4c4a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b2562aff6b3a12d49e6126a255f0da8e9769d41d81641a9f451868bac4e41e56"
+  },
+  "images/thumbs/gallery/20261103_sekigahara-sign_michikusa_28986.webp": {
+    "source": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+    "sourceSha256": "10ef8a0bdfc394a9cf5de7f295abce30413457103df0b5527f151579acd57804",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "a8aab6f51f38a7ba9e16d16c900610576a2534b672c44ce509b1c35c7911fdce"
+  },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",
     "sourceSha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
@@ -2014,5 +2030,13 @@
     "height": 198,
     "quality": 72,
     "sha256": "8f18036b140aeb9314312fcf269dfe397bc60ad3eab20cb72c95b1ac8745555d"
+  },
+  "images/thumbs/gallery/sekigahara-window-1013-0637.webp": {
+    "source": "images/sekigahara-window-1013-0637.jpg",
+    "sourceSha256": "bd1b885717275a65c1b05493f6f6f88717d7d6cab7095a3d65088eeda6dac770",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "aa50a86faaf69c8cde657b31dc52503afdf3f0d1538162a24bc107ee5409ce76"
   }
 }

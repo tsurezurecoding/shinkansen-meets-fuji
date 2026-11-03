@@ -383,6 +383,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       Nagoya: "名古屋", "Gifu-Hashima": "岐阜羽島", Maibara: "米原", Kyoto: "京都", "Shin-Osaka": "新大阪",
     },
     spots: {
+      "sekigahara-battlefield": "關原古戰場",
       "tokyo-tower": "東京鐵塔", "ota-fuji": "大田區的富士山", "maruko-bridge": "丸子橋",
       "musashi-kosugi-towers": "武藏小杉高樓群", "sagami-fuji": "相模平原遠眺富士山",
       "727-board": "727與248號看板", hinataoka: "日向岡山坡住宅區", "putiputi-sign": "「我是誰？」看板",
@@ -408,6 +409,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       Nagoya: "名古屋", "Gifu-Hashima": "岐阜羽岛", Maibara: "米原", Kyoto: "京都", "Shin-Osaka": "新大阪",
     },
     spots: {
+      "sekigahara-battlefield": "关原古战场",
       "tokyo-tower": "东京塔", "ota-fuji": "大田区远眺富士山", "maruko-bridge": "丸子桥",
       "musashi-kosugi-towers": "武藏小杉高楼群", "sagami-fuji": "相模平原远眺富士山",
       "727-board": "727与248号广告牌", hinataoka: "日向冈山坡住宅区", "putiputi-sign": "“我是谁？”广告牌",
@@ -433,6 +435,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       Nagoya: "나고야", "Gifu-Hashima": "기후하시마", Maibara: "마이바라", Kyoto: "교토", "Shin-Osaka": "신오사카",
     },
     spots: {
+      "sekigahara-battlefield": "세키가하라 전적지",
       "tokyo-tower": "도쿄 타워", "ota-fuji": "오타에서 보이는 후지산", "maruko-bridge": "마루코교",
       "musashi-kosugi-towers": "무사시코스기 타워맨션", "sagami-fuji": "사가미 평야 너머의 후지산",
       "727-board": "727·248 간판", hinataoka: "히나타오카 언덕 주택가", "putiputi-sign": "「나는 누구일까요?」 간판",
@@ -458,6 +461,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       Nagoya: "Nagoya", "Gifu-Hashima": "Gifu-Hashima", Maibara: "Maibara", Kyoto: "Kyoto", "Shin-Osaka": "Shin-Osaka",
     },
     spots: {
+      "sekigahara-battlefield": "Champ de bataille de Sekigahara",
       "tokyo-tower": "Tour de Tokyo", "ota-fuji": "Mont Fuji depuis Ota", "maruko-bridge": "Pont Maruko",
       "musashi-kosugi-towers": "Tours de Musashi-Kosugi", "sagami-fuji": "Mont Fuji au-delà de la plaine de Sagami",
       "727-board": "Panneaux 727 et 248", hinataoka: "Maisons sur la colline de Hinataoka", "putiputi-sign": "Panneau « Qui suis-je ? »",
@@ -483,6 +487,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       Nagoya: "Nagoya", "Gifu-Hashima": "Gifu-Hashima", Maibara: "Maibara", Kyoto: "Kyoto", "Shin-Osaka": "Shin-Osaka",
     },
     spots: {
+      "sekigahara-battlefield": "Schlachtfeld von Sekigahara",
       "tokyo-tower": "Tokyo Tower", "ota-fuji": "Fuji vom Stadtbezirk Ota", "maruko-bridge": "Maruko-Brücke",
       "musashi-kosugi-towers": "Hochhäuser von Musashi-Kosugi", "sagami-fuji": "Fuji über der Sagami-Ebene",
       "727-board": "Schilder 727 und 248", hinataoka: "Häuser am Hang von Hinataoka", "putiputi-sign": "„Wer bin ich?“-Schild",
@@ -508,6 +513,7 @@ const GUIDE_RAIL_LOCALIZATION = {
       Nagoya: "Nagoya", "Gifu-Hashima": "Gifu-Hashima", Maibara: "Maibara", Kyoto: "Kioto", "Shin-Osaka": "Shin-Osaka",
     },
     spots: {
+      "sekigahara-battlefield": "Campo de batalla de Sekigahara",
       "tokyo-tower": "Torre de Tokio", "ota-fuji": "Monte Fuji desde Ota", "maruko-bridge": "Puente Maruko",
       "musashi-kosugi-towers": "Torres de Musashi-Kosugi", "sagami-fuji": "Monte Fuji sobre la llanura de Sagami",
       "727-board": "Carteles 727 y 248", hinataoka: "Casas en la colina de Hinataoka", "putiputi-sign": "Cartel «¿Quién soy?»",

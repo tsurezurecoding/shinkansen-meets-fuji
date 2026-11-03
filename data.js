@@ -7087,6 +7087,295 @@ const SPOTS = [
     viewpoint: { lat: 35.349235976987565, lng: 136.57673468445847 },
   },
   {
+    "id": "sekigahara-battlefield",
+    "ja": {
+      "name": "関ケ原古戦場",
+      "area": "岐阜羽島〜米原・関ケ原",
+      "hook": "山裾の六文字に、歴史が重なる。",
+      "story": "山裾に並ぶ「古戦場 関ケ原」の六文字。東西の交通が集まるこの町は、1600年の関ケ原の戦いの舞台です。"
+    },
+    "pageTitle": {
+      "ja": "新幹線から見える関ケ原古戦場の看板｜天下分け目の地をE席から",
+      "en": "Sekigahara Battlefield from the Shinkansen | Seat E and the Battle of 1600"
+    },
+    "pageHeading": {
+      "ja": "関ケ原古戦場",
+      "en": "Sekigahara Battlefield"
+    },
+    "metaDescription": {
+      "ja": "東海道新幹線のE席側、山裾に並ぶ「古戦場 関ケ原」の白い看板。写真で目印を知り、合戦と街道の歴史、関ケ原駅から訪ねる古戦場へ旅をつなぐ。",
+      "en": "Look for the white Sekigahara battlefield signs from Seat E. Discover how the battle of 1600 led toward Tokugawa rule, then connect the view with Sawayama Castle Ruins."
+    },
+    "sectionHeading": {
+      "ja": "なぜ、この町が歴史の舞台に？",
+      "en": "Why this battle changed Japan"
+    },
+    "pageStory": {
+      "ja": "関ケ原は、山々の間に東西の道が集まる町です。1600年、徳川家康の東軍と、石田三成らの西軍が戦った関ケ原の戦いの舞台となりました。東軍の勝利は、徳川家康の覇権を決定づける大きな節目です。\n\n古代には不破関が置かれ、江戸時代には中山道に北国街道や伊勢街道が交差しました。いまは東海道本線や東海道新幹線、幹線道路が通ります。車窓に近づく山並みを眺めると、人や道が集まってきた土地の姿に気づけます。",
+      "en": "On 21 October 1600, armies met at Sekigahara, a narrow passage between the mountains of central Japan. Tokugawa Ieyasu’s Eastern Army defeated a Western coalition that included Ishida Mitsunari. Their struggle followed the death of Toyotomi Hideyoshi, the ruler who had brought much of a divided Japan under his control. The stakes were far greater than possession of this quiet valley.\n\nVictory gave Ieyasu a decisive advantage over his rivals. In 1603 he became shogun and established his government in Edo, now Tokyo. The Tokugawa family would govern Japan for more than 250 years. Sekigahara was a major step toward that long period of rule, rather than an instant end to every conflict: the Toyotomi family’s final defeat at Osaka came in 1615.\n\nThe geography helps make sense of the history. Routes linking eastern and western Japan converge between these hills. Armies once needed to control this corridor; today railways and roads carry travelers through it. From the Shinkansen, the houses and fields are peaceful, but the nearby slopes give a sense of the terrain on which a struggle over Japan’s future unfolded."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "山裾に並ぶ「古戦場 関ケ原」",
+        "en": "Find the six white panels above the rooftops"
+      },
+      "ja": [
+        "目印は、集落の屋根より少し上に並ぶ六枚の白い看板。「古・戦・場・関・ケ・原」の文字が、一文字ずつ掲げられています。家や電柱を追うより、その奥の山裾へ目を向けると探しやすくなります。",
+        "看板の周囲には、田畑、集落、山並みが重なります。写真を切り替えると、文字がはっきり見える一枚と、周辺の地形が広がる一枚を見比べられます。山並みの写真は関ケ原周辺の車窓で、個々の陣跡の場所を示すものではありません。",
+        "関ケ原古戦場は一つの石碑や建物だけではなく、決戦地や武将の陣跡が点在する土地です。車窓の看板を見つける楽しさと、現地で史跡を歩く楽しさを、次の鉄道旅につなげてみてください。"
+      ],
+      "en": [
+        "Look beyond the houses toward the foot of the wooded hillside. Six separate white panels carry the characters 古・戦・場・関・ケ・原: “Sekigahara battlefield.” The letters are easier to recognize when you look above the roofs rather than follow the passing utility poles.",
+        "Switch between the photographs to compare a clear view of the signs, the surrounding hills and fields, and an earlier distant view. The landscape photograph shows the Sekigahara area; it does not identify an individual commander’s camp.",
+        "The battlefield is a landscape with several historic sites, rather than one building or monument. The signs seen from the train are an introduction to the area. The Battle Site Memorial and the camp at Mount Sasao are separate places to visit on foot."
+      ]
+    },
+    "routeNote": {
+      "ja": "見る側はE席側。岐阜羽島〜米原の関ケ原周辺で、集落の向こう、山裾に並ぶ白い文字を探してください。東京方面へ向かう場合も同じE席側です。",
+      "en": "Watch the Seat E side around Sekigahara, between Gifu-Hashima and Maibara. Seat E is on your right toward Shin-Osaka and on your left toward Tokyo. Look above the houses for white panels at the foot of the hillside."
+    },
+    "guideHighlight": {
+      "ja": "見える時間は10数秒ほどが目安です。手前の家並みより少し上、山裾に並ぶ六枚の白い看板を探し、背後の山と田畑も一緒に眺めてみてください。",
+      "en": "The view lasts roughly 10–20 seconds. Look above the nearby roofs toward the white hillside signs, and enjoy the surrounding fields and mountains too."
+    },
+    "pageFacts": {
+      "side": {
+        "ja": "E席・山側",
+        "en": "Seat E · mountain side"
+      },
+      "timing": {
+        "ja": "関ケ原を通るころ",
+        "en": "As you pass Sekigahara"
+      },
+      "visibilityNote": {
+        "ja": "車窓での観察による目安。列車の速度や遮蔽物で変わります。",
+        "en": "An approximate viewing window observed from the train. Speed and obstructions can affect it."
+      }
+    },
+    "side": "E",
+    "category": "notable",
+    "durationSec": 15,
+    "scene": "hills",
+    "image": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+    "photoCredit": {
+      "ja": "michikusa",
+      "date": "2026-11-03",
+      "note": {
+        "ja": "山裾に一文字ずつ並ぶ「古戦場 関ケ原」の看板。新幹線のE席側から。",
+        "en": "The six white Sekigahara battlefield signs above the rooftops, photographed from the Seat E side."
+      },
+      "en": "michikusa"
+    },
+    "photos": [
+      {
+        "src": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+        "alt": {
+          "ja": "集落の向こう、山裾に一文字ずつ並ぶ「古戦場 関ケ原」の白い看板",
+          "en": "Six separate white panels spelling Sekigahara battlefield against a wooded hillside behind houses"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "山裾に一文字ずつ並ぶ「古戦場 関ケ原」の看板。新幹線のE席側から。",
+          "en": "The six white Sekigahara battlefield signs above the rooftops, photographed from the Seat E side."
+        }
+      },
+      {
+        "src": "images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+        "alt": {
+          "ja": "関ケ原周辺の山並みと田畑、手前の建物をE席側の窓から眺める",
+          "en": "Fields and wooded hills around Sekigahara, photographed from the Seat E side of the train"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "関ケ原周辺の山並みと田畑。同じ動画から切り出した別のカット。",
+          "en": "Hills and fields around Sekigahara, in another frame from the same video."
+        }
+      },
+      {
+        "src": "images/sekigahara-window-1013-0637.jpg",
+        "alt": {
+          "ja": "朝の関ケ原の田畑と集落。中央奥の山裾に古戦場の看板が小さく見える",
+          "en": "An earlier morning view of Sekigahara, with small white battlefield signs at the foot of the hillside"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "note": {
+          "ja": "10月13日 朝6:37の車窓。集落の向こうに看板が小さく見えます。",
+          "en": "The train window at 6:37 a.m. on 13 October. The signs appear small beyond the houses."
+        }
+      }
+    ],
+    "pageStoryLink": {
+      "ja": {
+        "route": "sudoori/stories/sekigahara.html",
+        "label": "不破関と街道から、関ケ原の町を読む →"
+      }
+    },
+    "pageChapters": [
+      {
+        "id": "visit",
+        "kind": "background",
+        "heading": {
+          "ja": "次の旅は、関ケ原駅から古戦場へ",
+          "en": "Step off the train at Sekigahara"
+        },
+        "paragraphs": {
+          "ja": [
+            "現地で歩くなら、JR東海道本線の関ケ原駅へ。米原駅や名古屋方面から在来線で訪ねられます。まず岐阜関ケ原古戦場記念館で合戦と地形の全体像を知り、町へ出るのもおすすめです。5階展望室からは、現在の関ケ原を見渡せます。",
+            "笹尾山を背に田園が広がる決戦地には、石碑と徳川家・石田家の家紋入りの旗が立ちます。その北西の笹尾山は石田三成の陣跡。竹矢来や馬防柵が復元され、高い場所から古戦場を見渡せます。公式観光案内では、笹尾山へは駅から北へ徒歩約20分です。",
+            "車窓の看板、決戦地、笹尾山の陣跡は、同じ一点を指す案内ではありません。気になった史跡の位置を公式の地図で確かめて、駅からの散策を組み立ててください。記念館の映像展示は事前予約優先で、料金は企画展の期間に変わることがあります。"
+          ],
+          "en": [
+            "For a closer look, take the JR Tokaido Main Line to Sekigahara Station, reached from Maibara or the Nagoya direction. The Gifu Sekigahara Battlefield Memorial Museum is a useful first stop: its exhibitions introduce the battle, and its fifth-floor observation room overlooks the present-day town.",
+            "The Battle Site Memorial stands among fields below Mount Sasao. On Mount Sasao, the site of Ishida Mitsunari’s camp, reconstructed defensive fences help visitors picture the terrain. The official sightseeing guide places the hill about a 20-minute walk north of the station.",
+            "The hillside signs seen from the Shinkansen, the memorial, and the Mount Sasao camp are separate places. Use the official map to plan your walk. Museum film screenings prioritize advance reservations, and admission prices can change during special exhibitions."
+          ]
+        }
+      },
+      {
+        "id": "sawayama",
+        "kind": "background",
+        "heading": {
+          "ja": "石田三成をたどる、佐和山城跡へ",
+          "en": "Continue Mitsunari’s story at Sawayama"
+        },
+        "paragraphs": {
+          "ja": [
+            "関ケ原と佐和山城跡をつなぐ人物が、石田三成です。佐和山城は三成の居城で、関ケ原の戦いに敗れた後に落城しました。現在、山頂に天守や櫓は残っていません。",
+            "京都・新大阪方面へ進むなら、米原の先でもE席側へ。佐和山城跡の山と看板を見つけると、戦いの舞台と三成の居城が、ひと続きの鉄道旅につながります。東京方面へ向かう場合は、佐和山から関ケ原へと逆の順にたどります。"
+          ],
+          "en": [
+            "Ishida Mitsunari connects this battlefield with Sawayama Castle Ruins near Hikone. Sawayama was his home castle, and it fell after his defeat at Sekigahara. No keep or turrets survive on the hill today: you are looking for a historic castle site, not a restored castle building.",
+            "Traveling west toward Kyoto or Shin-Osaka, keep the same Seat E side in mind after Maibara. The hill and the Sawayama Castle Ruins sign add another chapter to the story you began at Sekigahara. Toward Tokyo, you encounter the two places in reverse order."
+          ]
+        },
+        "link": {
+          "route": "spots/sawayama-castle.html",
+          "label": {
+            "ja": "佐和山城跡の車窓案内を見る →",
+            "en": "Find Sawayama Castle Ruins from the train →"
+          }
+        }
+      }
+    ],
+    "relatedSpotIds": [
+      "sawayama-castle",
+      "ibuki",
+      "solar-ark"
+    ],
+    "en": {
+      "name": "Sekigahara Battlefield",
+      "area": "Sekigahara, between Gifu-Hashima and Maibara",
+      "hook": "Six signs, a turning point in Japan.",
+      "story": "White hillside signs mark Sekigahara, where a battle in 1600 helped Tokugawa Ieyasu establish the dynasty that would govern Japan for more than 250 years."
+    },
+    "icon": "⚔️",
+    "minutesFromTokyo": 107.2,
+    "confidence": "verified",
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "map": {
+      "lat": 35.37047,
+      "lng": 136.46161,
+      "ja": "関ケ原古戦場（決戦地）",
+      "en": "Sekigahara Battle Site Memorial"
+    },
+    "viewpoint": {
+      "lat": 35.35798629,
+      "lng": 136.47255463
+    },
+    "references": [
+      {
+        "label": {
+          "ja": "関ケ原町歴史民俗学習館｜関ケ原の歴史",
+          "en": "Sekigahara History Museum: local history (Japanese)"
+        },
+        "url": "https://rekimin-sekigahara.jp/main/history/"
+      }
+    ],
+    "pageReferences": [
+      {
+        "label": {
+          "ja": "関ケ原観光ガイド｜決戦地",
+          "en": "Official sightseeing guide: Battle Site Memorial (Japanese)"
+        },
+        "url": "https://www.sekigahara1600.com/spot/kessenchi.html"
+      },
+      {
+        "label": {
+          "ja": "関ケ原観光ガイド｜笹尾山・石田三成陣跡",
+          "en": "Official sightseeing guide: Mount Sasao and Mitsunari’s camp (Japanese)"
+        },
+        "url": "https://www.sekigahara1600.com/spot/ishidamitsunarijinato.html"
+      },
+      {
+        "label": {
+          "ja": "岐阜関ケ原古戦場記念館｜展示と展望室",
+          "en": "Battlefield Memorial Museum: exhibitions and observation room (Japanese)"
+        },
+        "url": "https://sekigahara.pref.gifu.lg.jp/floor/"
+      },
+      {
+        "label": {
+          "ja": "岐阜関ケ原古戦場記念館｜アクセス・ご利用案内",
+          "en": "Battlefield Memorial Museum: access and visitor information (Japanese)"
+        },
+        "url": "https://sekigahara.pref.gifu.lg.jp/guide/"
+      },
+      {
+        "label": {
+          "en": "Japan National Tourism Organization: Sekigahara"
+        },
+        "url": "https://www.japan.travel/en/spot/2341/",
+        "languages": [
+          "en"
+        ]
+      },
+      {
+        "label": {
+          "en": "US National Park Service: the Battle of Sekigahara"
+        },
+        "url": "https://www.nps.gov/articles/000/battle-of-sekigahara.htm",
+        "languages": [
+          "en"
+        ]
+      },
+      {
+        "label": {
+          "ja": "彦根市｜佐和山城",
+          "en": "Hikone City: Sawayama Castle (Japanese)"
+        },
+        "url": "https://www.city.hikone.lg.jp/kakuka/kanko_bunka/8/2_2/4587.html"
+      },
+      {
+        "label": {
+          "en": "Visit Gifu: why Sekigahara was a turning point"
+        },
+        "url": "https://visitgifu.com/sekigahara/sekigahara-01/",
+        "languages": [
+          "en"
+        ]
+      },
+      {
+        "label": {
+          "ja": "長浜・米原・奥びわ湖観光ガイド｜三成の居城・佐和山城跡",
+          "en": "Northern Lake Biwa tourism: Mitsunari’s Sawayama Castle (Japanese)"
+        },
+        "url": "https://kitabiwako.jp/spot/spot_13822"
+      }
+    ]
+  },
+  {
     id: "ibuki",
     icon: "⛰️",
     ja: { name: "伊吹山", area: "岐阜羽島 → 米原", hook: "関ヶ原の空に、雪を戴く名峰。", story: "米原の手前、関ヶ原を抜けたあたりのE席側に、どっしりと横たわる伊吹山（標高1,377m）が現れます。滋賀県と岐阜県の県境にそびえる独立峰で、古事記・日本書紀ではヤマトタケルが荒ぶる神と戦い、命を落とすきっかけとなった山として登場する、日本屈指の由緒ある名山です。冬は日本海側から吹き込む雪雲を受け止め、日本一の積雪記録（11.82m）を持つ豪雪の山でもあります。真冬の白く輝く姿から、春の雪解けで山肌の縞模様が現れる季節、夏の緑、秋の枯れ色まで、季節ごとに大きく表情が変わります。" },

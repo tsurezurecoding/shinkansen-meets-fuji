@@ -30,6 +30,17 @@ test('file additions/deletions do not silently qualify as an existing-page chang
 test('dependency changes justify full consumer coverage explicitly', () => {
   assert.equal(chooseReleaseScope([change('package-lock.json')]).scope, 'full');
 });
+
+test('a registered new spot covers global catalogue and language consumers', () => {
+  const plan = chooseReleaseScope([
+    change('data.js'), change('locales.js'), change('spot-page-shared.js'),
+    { status: 'A', path: 'data/spot-pages/sekigahara-battlefield.ja.js' },
+    { status: 'A', path: 'spots/sekigahara-battlefield.html' },
+  ]);
+  assert.equal(plan.scope, 'new-window-spot');
+  assert(plan.commands.some(c => c.includes('verify')));
+  assert.equal(chooseReleaseScope([change('data.js')]).scope, 'unmapped');
+});
 test('release infrastructure changes test release behavior without generating unrelated pages', () => {
   const plan = chooseReleaseScope(['.github/workflows/quality-gate.yml', 'scripts/release-scope.mjs'].map(change));
   assert.equal(plan.scope, 'release-infrastructure');
