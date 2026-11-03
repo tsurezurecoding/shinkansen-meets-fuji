@@ -31,7 +31,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) 
   };
   if (files.includes('scripts/shared/android-app-invite-copy.mjs') && changes.every(({ path, status }) =>
     status === 'M' && ['scripts/shared/android-app-invite-copy.mjs', 'android-app-invite.js',
-      'site-runtime.json', 'content-manifest.json', 'scripts/release-scope.mjs'].includes(path))) return {
+      'site-runtime.json', 'content-manifest.json', 'scripts/release-scope.mjs', '.github/workflows/quality-gate.yml'].includes(path))) return {
     scope: 'android-invite-copy', reason: 'Existing invitation locale copy, shared bundle and its runtime/distribution hashes only',
     commands: [...syntax, node('--test', 'scripts/android-app-invite.test.mjs', 'scripts/release-scope.test.mjs'),
       node('scripts/generate-android-app-invite-assets.mjs', '--check'),
