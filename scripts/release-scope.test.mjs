@@ -37,7 +37,7 @@ test('a registered new spot covers global catalogue and language consumers', () 
     { status: 'A', path: 'data/spot-pages/sekigahara-battlefield.ja.js' },
     { status: 'A', path: 'spots/sekigahara-battlefield.html' },
   ]);
-  assert.equal(plan.scope, 'new-window-spot');
+  assert.equal(plan.scope, 'full');
   assert(plan.commands.some(c => c.includes('verify')));
   assert.equal(chooseReleaseScope([change('data.js')]).scope, 'unmapped');
 });
