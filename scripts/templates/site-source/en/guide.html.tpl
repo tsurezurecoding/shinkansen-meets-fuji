@@ -243,7 +243,7 @@
           <p class="spot-page-rail-eyebrow">Tokaido Shinkansen</p>
           <p class="spot-page-rail-title">Tokyo → Shin-Osaka window</p>
           <p class="spot-page-rail-count"><strong>59</strong> views</p>
-          <p class="spot-page-rail-lead">Choose your train to turn all 59 views into expected passing times for that service.</p>
+          <p class="spot-page-rail-lead">Choose your train to turn all 60 views into expected passing times for that service.</p>
           <p class="spot-page-rail-now"><b>Mt. Fuji</b>About 44.5 min from Tokyo · Seat E · right side toward Shin-Osaka; left side toward Tokyo</p>
           <a class="spot-page-rail-cta" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time">Build my guide by train</a>
         </div>
@@ -253,7 +253,7 @@
         <div class="spot-page-rail-foot">
           <a href="zukan.html">Browse by photo →</a>
         </div>
-        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time_bottom">Time all 59 views to my train</a>
+        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time_bottom">Time all 60 views to my train</a>
         <div class="spot-page-rail-klook" id="spotRailAffiliate" data-affiliate-module data-affiliate-partner="klook" data-affiliate-placement="en_guide_rail_after_route" data-affiliate-language="en" data-affiliate-context="guide">
           <div class="spot-page-rail-klook-heading" data-affiliate-view-target>
             <p class="spot-page-rail-affiliate-label">AFFILIATE LINKS</p>
@@ -413,7 +413,7 @@
 
       <section class="spot-page-section guide-mobile-timeline guide-feature-section" id="timeline">
         <div class="section-head"><p class="eyebrow">MORE WINDOWS</p><h2>The best window views, timed to your train</h2></div>
-        <p>The minutes shown here are Nozomi estimates. Stops and departure times change the actual schedule, so <strong>choosing your train converts all 59 views into expected passing times for that service</strong>.</p>
+        <p>The minutes shown here are Nozomi estimates. Stops and departure times change the actual schedule, so <strong>choosing your train converts all 60 views into expected passing times for that service</strong>.</p>
         <!-- GUIDE_MOBILE_SPOTS_START -->
         <div class="guide-mobile-spots" aria-label="Recommended views from Tokyo to Shin-Osaka">
           <div class="showcase-rail">
@@ -445,7 +445,7 @@
         </div>
         <!-- GUIDE_MOBILE_SPOTS_END -->
         <div class="spot-page-actions">
-          <a class="btn btn-ghost" href="zukan.html">Browse all 59 views</a>
+          <a class="btn btn-ghost" href="zukan.html">Browse all 60 views</a>
         </div>
       </section>
 

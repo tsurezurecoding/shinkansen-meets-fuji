@@ -1202,5 +1202,85 @@
     "imageRights": "own",
     "imageCredit": "michikusa",
     "imageEvidence": "Existing owned spot photo reused for the window quiz"
+  },
+  "spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "en/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "zh-Hant/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "fr/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "de/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "es/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "zh-Hans/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "ko/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "it/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "th/spots/sekigahara-battlefield.html": {
+    "kind": "editorial article",
+    "article": true,
+    "published": "2026-11-03",
+    "modified": "2026-11-03",
+    "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
+    "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
   }
 }

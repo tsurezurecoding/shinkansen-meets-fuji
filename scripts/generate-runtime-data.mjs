@@ -62,7 +62,8 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 // October 18: five owned night photographs and the Fuji Sky View night gallery.
 // October 23: three owned morning photographs and the additional Tateiwa 727 location.
 // October 25: two owned night photographs and three official YouTube embeds.
-export const RUNTIME_DATA_BYTE_BUDGET = 346 * 1024;
+// November 3: the 60th spot, Sekigahara, with three owned window photographs.
+export const RUNTIME_DATA_BYTE_BUDGET = 350 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。

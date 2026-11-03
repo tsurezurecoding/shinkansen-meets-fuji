@@ -660,7 +660,7 @@
         <p class="eyebrow">陰天的車窗</p>
         <h1 id="bfTitle">富士山沒出現，但窗外其他景色都還在。</h1>
         <p class="bf-lead">座位訂對了，時間也守住了，望出去卻只有一片雲。這是這段旅程最常見的失望，而幾乎所有攻略都寫到這裡就停筆了。</p>
-        <p class="bf-lead">富士山只是東京到新大阪之間 <b>59個車窗景色</b>的其中一個。陰天帶走的是那一個。城堡、列車橫越的湖面、茶園、沒有人說得清的巨大看板，還有一整片休息中的新幹線——這些都不需要一百公里的透明空氣，其中幾個在陰天反而更好看。</p>
+        <p class="bf-lead">富士山只是東京到新大阪之間 <b>60個車窗景色</b>的其中一個。陰天帶走的是那一個。城堡、列車橫越的湖面、茶園、沒有人說得清的巨大看板，還有一整片休息中的新幹線——這些都不需要一百公里的透明空氣，其中幾個在陰天反而更好看。</p>
       </div>
     </section>
 
@@ -746,7 +746,7 @@
       <p>如果你是在出發前而不是回程後讀到這頁，可以先看看能見度預報。它依據的是山頂周邊的雲量，而不是你所在位置的天氣。空氣清澈的冬天早晨機會最大；夏天悶熱起霧的午後最差，即使沒有下雨也一樣。</p>
 
       <div class="bf-cta">
-        <a class="btn btn-primary" href="../zh-Hant/#journey" data-besides-cta="pick_train">查看我這班車的 59個景色時間 →</a>
+        <a class="btn btn-primary" href="../zh-Hant/#journey" data-besides-cta="pick_train">查看我這班車的 60個景色時間 →</a>
         <a class="btn btn-ghost" href="guide.html" data-besides-cta="guide">富士山看得到嗎？坐哪一側？</a>
         <a class="btn btn-ghost" href="../zh-Hant/zukan.html" data-besides-cta="zukan">用照片瀏覽車窗景色</a>
       </div>

@@ -50,6 +50,13 @@ export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) 
   if (files.every(file => /^(?:README|CHANGELOG|AGENTS)\.md$/.test(file))) return {
     scope: 'documentation', reason: 'Repository instructions only; no product input changed', commands: [],
   };
+  // A new registered window spot changes the global catalogue, runtime
+  // guidance, counts, stamps and every edition's shared navigation.
+  if (files.includes('data.js') && changes.some(({ path, status }) => status === 'A' && /^data\/spot-pages\/[^/]+\.ja\.js$/.test(path))) return {
+    scope: 'full',
+    reason: 'A registered SPOTS addition affects all catalogue, runtime guidance, stamp, shared navigation and language consumers',
+    commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs')],
+  };
   // A dependency/runtime upgrade can affect every validator. Other unknown
   // changes require an impact contract, rather than silently running everything.
   if (files.some(file => ['package.json', 'package-lock.json'].includes(file))) return {

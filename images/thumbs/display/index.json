@@ -2269,6 +2269,24 @@
       "thumbWidth": 480,
       "thumbHeight": 270
     },
+    "images/20261103_sekigahara-landscape_michikusa_45599.jpg": {
+      "sha256": "7080b2303f73a6136f6875c1def3418a31c8f3ff94dc1f64aa5e185dc7df4c4a",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261103_sekigahara-landscape_michikusa_45599.webp",
+      "thumbSha256": "341eca0b7ffde5a7a84426ecba00e45bbdf2fe7c8524bf00381665572488e225",
+      "thumbWidth": 480,
+      "thumbHeight": 270
+    },
+    "images/20261103_sekigahara-sign_michikusa_28986.jpg": {
+      "sha256": "10ef8a0bdfc394a9cf5de7f295abce30413457103df0b5527f151579acd57804",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261103_sekigahara-sign_michikusa_28986.webp",
+      "thumbSha256": "007f1d57d696af521cb1f4811853df0b83cc48a0bb12295f11119d62953424fb",
+      "thumbWidth": 480,
+      "thumbHeight": 270
+    },
     "images/250111_hamanako_fuji_proboffin.jpg": {
       "sha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
       "width": 768,
@@ -2277,6 +2295,15 @@
       "thumbSha256": "9fe28c6d6b2ae0756dd3205956f33ae260e5430f261e7dd68c51037c0e2d1186",
       "thumbWidth": 768,
       "thumbHeight": 1024
+    },
+    "images/sekigahara-window-1013-0637.jpg": {
+      "sha256": "bd1b885717275a65c1b05493f6f6f88717d7d6cab7095a3d65088eeda6dac770",
+      "width": 1280,
+      "height": 720,
+      "thumb": "images/thumbs/sekigahara-window-1013-0637.webp",
+      "thumbSha256": "a415bc069c84a7fd437701d3ccaa5b944e0cd3e1de9d16e27d4cd92aa98b965a",
+      "thumbWidth": 480,
+      "thumbHeight": 270
     }
   },
   "files": {
@@ -6519,6 +6546,60 @@
       "quality": 86,
       "sha256": "c79e497fa216feda4a709bc852ecc5e6da34085c55454ff8b4cc8a52104e9c66"
     },
+    "images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-1920.webp": {
+      "source": "images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "sourceSha256": "7080b2303f73a6136f6875c1def3418a31c8f3ff94dc1f64aa5e185dc7df4c4a",
+      "target": "images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "d1ffbdc5806ccd370161b12ed4036f121701cb87ed0801e449d2240c23a64fc9"
+    },
+    "images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp": {
+      "source": "images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "sourceSha256": "7080b2303f73a6136f6875c1def3418a31c8f3ff94dc1f64aa5e185dc7df4c4a",
+      "target": "images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "d8b58a547659a9ea171f3ce20b7909f6b401e08ea7ab70f3def54c7c2ec707ef"
+    },
+    "images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-960.webp": {
+      "source": "images/20261103_sekigahara-landscape_michikusa_45599.jpg",
+      "sourceSha256": "7080b2303f73a6136f6875c1def3418a31c8f3ff94dc1f64aa5e185dc7df4c4a",
+      "target": "images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-960.webp",
+      "width": 960,
+      "height": 540,
+      "quality": 86,
+      "sha256": "fcd955ff3dcc9a82d4cf1e2c01221fb8df00c2f48dd4587a2898deb76bd203f3"
+    },
+    "images/thumbs/display/20261103_sekigahara-sign_michikusa_28986-10ef8a0b-1920.webp": {
+      "source": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+      "sourceSha256": "10ef8a0bdfc394a9cf5de7f295abce30413457103df0b5527f151579acd57804",
+      "target": "images/thumbs/display/20261103_sekigahara-sign_michikusa_28986-10ef8a0b-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "9fc991ea87d0d6905024367acd50370a716c84ba3e1a45b4f8f76c1d7c98bb56"
+    },
+    "images/thumbs/display/20261103_sekigahara-sign_michikusa_28986-10ef8a0b-640.webp": {
+      "source": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+      "sourceSha256": "10ef8a0bdfc394a9cf5de7f295abce30413457103df0b5527f151579acd57804",
+      "target": "images/thumbs/display/20261103_sekigahara-sign_michikusa_28986-10ef8a0b-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "634d9ca1af86609c88469bf65b3bca513c3f9398edead8aa20b9a573c4ab84ab"
+    },
+    "images/thumbs/display/20261103_sekigahara-sign_michikusa_28986-10ef8a0b-960.webp": {
+      "source": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+      "sourceSha256": "10ef8a0bdfc394a9cf5de7f295abce30413457103df0b5527f151579acd57804",
+      "target": "images/thumbs/display/20261103_sekigahara-sign_michikusa_28986-10ef8a0b-960.webp",
+      "width": 960,
+      "height": 540,
+      "quality": 86,
+      "sha256": "aee47b566a298d22379eade4e2ba164791f131dfdf86dbf3a110f51e5223f801"
+    },
     "images/thumbs/display/250111_hamanako_fuji_proboffin-7d23bf3e-640.webp": {
       "source": "images/250111_hamanako_fuji_proboffin.jpg",
       "sourceSha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
@@ -6527,6 +6608,24 @@
       "height": 853,
       "quality": 86,
       "sha256": "f5a514de56779f5bd139ae323aa847447220a238565da06301b11ecc397fc60b"
+    },
+    "images/thumbs/display/sekigahara-window-1013-0637-bd1b8857-640.webp": {
+      "source": "images/sekigahara-window-1013-0637.jpg",
+      "sourceSha256": "bd1b885717275a65c1b05493f6f6f88717d7d6cab7095a3d65088eeda6dac770",
+      "target": "images/thumbs/display/sekigahara-window-1013-0637-bd1b8857-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "7334ec367124fb3697a10f40c365f8c5bc58dce3253fad652bbfb4d8bc86efd0"
+    },
+    "images/thumbs/display/sekigahara-window-1013-0637-bd1b8857-960.webp": {
+      "source": "images/sekigahara-window-1013-0637.jpg",
+      "sourceSha256": "bd1b885717275a65c1b05493f6f6f88717d7d6cab7095a3d65088eeda6dac770",
+      "target": "images/thumbs/display/sekigahara-window-1013-0637-bd1b8857-960.webp",
+      "width": 960,
+      "height": 540,
+      "quality": 86,
+      "sha256": "c93eb95f2a15d948d41d0eba8b6a5abf9996c61e9a08d04b6aad7c866177c6cc"
     }
   }
 }
