@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "abeb59bdc52b9d1b",
+  "contentVersion": "d47aab3e066a6dcc",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1609,8 +1609,8 @@
     {
       "path": "de/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/de/spots/sekigahara-battlefield.html",
-      "bytes": 31833,
-      "sha256": "ae68e3d43d5552fdb586dd8af1338e3e3f4fc52ef42843df6a779defc34ee818"
+      "bytes": 31553,
+      "sha256": "fa59ba7b4d410893478ee213b2f52f232b1c6b4cc7b8b6dbacbf2d04ff871538"
     },
     {
       "path": "de/spots/seta-karahashi.html",
@@ -2161,8 +2161,8 @@
     {
       "path": "es/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/es/spots/sekigahara-battlefield.html",
-      "bytes": 31883,
-      "sha256": "c1f682f9b4fb8efe3e17279dfdf25a3bc71f13e73d7bb14ee603dc589405f6eb"
+      "bytes": 31583,
+      "sha256": "775522c08120bfb820828ae337348105e6817c871393f78baf0b2414bdb4f2bc"
     },
     {
       "path": "es/spots/seta-karahashi.html",
@@ -2605,8 +2605,8 @@
     {
       "path": "fr/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/fr/spots/sekigahara-battlefield.html",
-      "bytes": 32039,
-      "sha256": "18f7f299205c7973614112a84f96329a951a64a4d0a8ac006d40c544bd2a1934"
+      "bytes": 31719,
+      "sha256": "8895df9ca1001eb5f25b250b51531dfff99fb36dc1a42cfe430b042951f5c1b3"
     },
     {
       "path": "fr/spots/seta-karahashi.html",
@@ -4375,8 +4375,8 @@
     {
       "path": "it/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/it/spots/sekigahara-battlefield.html",
-      "bytes": 31398,
-      "sha256": "d5c0719f7bbb60a0d285cf4d5da536219cd270d9512b578e3a3e3e7b61db36cf"
+      "bytes": 31206,
+      "sha256": "4aff8adf24119ff745766aab5f1e4168b4365ed0ae35741b756b5d407d5a1b6c"
     },
     {
       "path": "it/spots/seta-karahashi.html",
@@ -4801,8 +4801,8 @@
     {
       "path": "ko/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/ko/spots/sekigahara-battlefield.html",
-      "bytes": 32014,
-      "sha256": "a9c9b5c0e7d07742cd79702ea1e8bccb815f8b9ac9dba2c086ec892248e69770"
+      "bytes": 31738,
+      "sha256": "557206f85b657102f4209567c9363f07d6569f9faa5b3bab1584f449953b272e"
     },
     {
       "path": "ko/spots/seta-karahashi.html",
@@ -6535,8 +6535,8 @@
     {
       "path": "th/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/th/spots/sekigahara-battlefield.html",
-      "bytes": 42996,
-      "sha256": "6494787e1e217a2fa3f84e636355e8c46773d730d27e59ac04ab6677cd7c630f"
+      "bytes": 42380,
+      "sha256": "600def862a7ceb17bb26c5a41ae1919738f49eb568bb019952a1e8b18942edb7"
     },
     {
       "path": "th/spots/seta-karahashi.html",
@@ -7129,8 +7129,8 @@
     {
       "path": "zh-Hans/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/sekigahara-battlefield.html",
-      "bytes": 29493,
-      "sha256": "85a983afd7a4c268198f9726f0b4e25c921bd951da6dfcdbdb1eefa6d53bf5b8"
+      "bytes": 29301,
+      "sha256": "eade87fb2dfc812880ea46e1071a1032ffe5520d0103e83a1d7f24d59837f3da"
     },
     {
       "path": "zh-Hans/spots/seta-karahashi.html",
@@ -7531,8 +7531,8 @@
     {
       "path": "zh-Hant/spots/sekigahara-battlefield.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/sekigahara-battlefield.html",
-      "bytes": 29466,
-      "sha256": "912bbe33af64f975ef9b76079fc5fd685c434d3dd04a7b6eb17125db895fbc45"
+      "bytes": 29274,
+      "sha256": "3b5d80012fef4275655cd71bbc52620b5b7787a43f19e482e86bd465b9d72370"
     },
     {
       "path": "zh-Hant/spots/seta-karahashi.html",
