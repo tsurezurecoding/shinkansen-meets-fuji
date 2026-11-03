@@ -1,9 +1,9 @@
 {
   "reviewed": "2026-10-12",
   "counts": {
-    "scenery": 55,
+    "scenery": 56,
     "boards": 24,
-    "dayScenery": 54,
+    "dayScenery": 55,
     "nightScenery": 18
   },
   "coverage": [
@@ -329,6 +329,14 @@
       "state": "included",
       "representativeIds": [
         "kinshozan"
+      ],
+      "reason": ""
+    },
+    {
+      "id": "sekigahara-battlefield",
+      "state": "included",
+      "representativeIds": [
+        "sekigahara-battlefield"
       ],
       "reason": ""
     },
@@ -1415,6 +1423,19 @@
       "lightEvidence": "2026-10-12 source annotation and original photograph review"
     },
     {
+      "stopId": "sekigahara-battlefield",
+      "kind": "scenery",
+      "src": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
+      "credit": "michikusa",
+      "date": "2026-11-03",
+      "note": "山裾に一文字ずつ並ぶ「古戦場 関ケ原」の看板。新幹線のE席側から。",
+      "alt": "関ケ原古戦場の車窓",
+      "light": "day",
+      "sha256": "10ef8a0bdfc394a9cf5de7f295abce30413457103df0b5527f151579acd57804",
+      "bytes": 439207,
+      "lightEvidence": "2026-10-12 source annotation and original photograph review"
+    },
+    {
       "stopId": "727-no-19",
       "kind": "727",
       "src": "images/20260704_727_board_kuzuhara_1_michikusa.jpg",
@@ -1729,7 +1750,7 @@
   ],
   "mapCredit": "地理院タイル（淡色地図を加工）",
   "sourceHashes": {
-    "data.js": "f28cf038801f6124279007c77090e8eaa0ac80bb75920a52d43723053e4ff7bc",
+    "data.js": "457b7f6ab2c8eb4483cf561c4d74e2031ddf658d6f7cd776769802d33cf50d8d",
     "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
   }
 }

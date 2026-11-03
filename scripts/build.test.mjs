@@ -229,11 +229,14 @@ test('existing ignored operational caches do not become build inputs', async t =
   assert.equal((await f.run()).mode, 'noop');
 });
 
-test('CI determinism invokes the complete build twice and rejects untracked outputs', async () => {
+test('CI verifies the selected scope once and rejects changed or untracked outputs', async () => {
   const workflow = await readFile(new URL('../.github/workflows/quality-gate.yml', import.meta.url), 'utf8');
-  const step = workflow.match(/- name: Deterministic build([\s\S]*?)(?=\n\s+- name:|$)/)?.[1];
+  const step = workflow.match(/- name: Verify affected scope once([\s\S]*?)(?=\n\s+- name:|$)/)?.[1];
   assert.ok(step);
-  assert.equal((step.match(/npm run build:full/g) || []).length, 2);
-  assert.doesNotMatch(step, /npm run build\s*(?:\r?\n|$)/);
-  assert.equal((step.match(/git ls-files --others --exclude-standard/g) || []).length, 2);
+  assert.match(step, /steps\.reuse\.outputs\.verified != 'true'/);
+  assert.equal((step.match(/node scripts\/release-scope\.mjs verify /g) || []).length, 1);
+  assert.doesNotMatch(workflow, /npm run build:full/);
+  const scope = await readFile(new URL('./release-scope.mjs', import.meta.url), 'utf8');
+  assert.match(scope, /git\('diff', '--exit-code'\)/);
+  assert.match(scope, /git\('ls-files', '--others', '--exclude-standard'\)/);
 });

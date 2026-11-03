@@ -1192,7 +1192,7 @@
     }
   }
 
-  root.MADO_SPOT_PAGE_COMPONENTS = { siteHeaderHTML: siteHeaderHTML, contentRailHTML: contentRailHTML, readingCollectionHTML: readingCollectionHTML, discoveryContentRailHTML: discoveryContentRailHTML, compactGuideHTML: compactGuideHTML };
+  root.MADO_SPOT_PAGE_COMPONENTS = { siteHeaderHTML: siteHeaderHTML, contentRailHTML: contentRailHTML, readingCollectionHTML: readingCollectionHTML, discoveryContentRailHTML: discoveryContentRailHTML, compactGuideHTML: compactGuideHTML, pageHTML: pageHTML };
   root.MADO_SPOT_PHOTOS = { apply: applyPhoto, observe: observePhotos, sizes: PHOTO_SIZES };
   if (typeof document !== "undefined") {
     render();
