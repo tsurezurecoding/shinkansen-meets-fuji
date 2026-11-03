@@ -245,7 +245,7 @@
           <p class="spot-page-rail-eyebrow">Tokaido Shinkansen</p>
           <p class="spot-page-rail-title">東京 → 新大阪の車窓</p>
           <p class="spot-page-rail-count"><strong>59</strong> の見どころ</p>
-          <p class="spot-page-rail-lead">列車を選ぶと、59景の見える時刻を実際のダイヤに合わせて表示します。</p>
+          <p class="spot-page-rail-lead">列車を選ぶと、60景の見える時刻を実際のダイヤに合わせて表示します。</p>
           <p class="spot-page-rail-now"><b>富士山</b>東京から約44.5分 ・ E席・山側</p>
           <a class="spot-page-rail-cta" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time">乗る列車でガイドを作る</a>
         </div>
@@ -255,7 +255,7 @@
         <div class="spot-page-rail-foot">
           <a href="zukan.html">車窓図鑑で写真から探す →</a>
         </div>
-        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time_bottom">この列車の時刻で59景を見る</a>
+        <a class="spot-page-rail-cta spot-page-rail-cta-bottom" href="start.html?focus=fuji#journey" data-guide-cta="rail_exact_time_bottom">この列車の時刻で60景を見る</a>
         <div class="spot-page-rail-affiliate-group" id="spotRailAffiliate">
           <p class="spot-page-rail-affiliate-label">広告</p>
           <div class="spot-page-rail-affiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_guide_rail_after_route_primary" data-affiliate-language="ja" data-affiliate-context="spot">
@@ -419,7 +419,7 @@
 
       <section class="spot-page-section guide-mobile-timeline guide-feature-section" id="timeline">
         <div class="section-head"><p class="eyebrow">MORE WINDOWS</p><h2><span class="copy-chunk">おすすめの車窓を、</span><span class="copy-chunk">あなたの列車の時刻で</span></h2></div>
-        <p>表示中の分数はのぞみの目安です。実際の時刻は停車駅や発車時刻で変わるため、<strong>乗る列車を選ぶと、全59景をその列車の通過予定時刻に置き換えます</strong>。</p>
+        <p>表示中の分数はのぞみの目安です。実際の時刻は停車駅や発車時刻で変わるため、<strong>乗る列車を選ぶと、全60景をその列車の通過予定時刻に置き換えます</strong>。</p>
         <!-- GUIDE_MOBILE_SPOTS_START -->
         <div class="guide-mobile-spots" aria-label="東京から新大阪までの代表的な車窓">
           <div class="showcase-rail">
@@ -451,7 +451,7 @@
         </div>
         <!-- GUIDE_MOBILE_SPOTS_END -->
         <div class="spot-page-actions">
-          <a class="btn btn-ghost" href="zukan.html">車窓図鑑で全59景をみる</a>
+          <a class="btn btn-ghost" href="zukan.html">車窓図鑑で全60景をみる</a>
         </div>
       </section>
       <aside class="spot-page-mobile-affiliate" id="spotMobileAffiliate" data-affiliate-module data-affiliate-partner="valuecommerce" data-affiliate-offer="nta_shinkansen_hotel" data-affiliate-placement="ja_guide_article_end_mobile" data-affiliate-language="ja" data-affiliate-context="guide" aria-label="広告">

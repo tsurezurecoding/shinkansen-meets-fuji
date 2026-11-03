@@ -352,7 +352,7 @@
         <a class="btn btn-primary" href="./#journey" data-jrpass-cta="pick_train">Get the exact times for my train →</a>
         <a class="btn btn-ghost" href="guide.html" data-jrpass-cta="guide">Which side for Mt. Fuji</a>
         <a class="btn btn-ghost" href="guide.html#cloudy" data-jrpass-cta="cloudy">If the mountain is hidden</a>
-        <a class="btn btn-ghost" href="zukan.html" data-jrpass-cta="zukan">All 59 window views</a>
+        <a class="btn btn-ghost" href="zukan.html" data-jrpass-cta="zukan">All 60 window views</a>
       </div>
       </article>
     </div>

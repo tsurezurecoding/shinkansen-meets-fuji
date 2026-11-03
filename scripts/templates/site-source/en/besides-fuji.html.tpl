@@ -650,7 +650,7 @@
         <p class="eyebrow">GREY SKY</p>
         <h1 id="bfTitle">Mt. Fuji is hidden. Everything else is still there.</h1>
         <p class="bf-lead">You booked the right seat, you watched the right window at the right minute, and there was nothing but cloud. It is the most common way this ride disappoints people, and almost every guide stops writing at exactly this point.</p>
-        <p class="bf-lead">Mt. Fuji is one of the <b>59 window views</b> between Tokyo and Shin-Osaka. A grey sky takes that one. The castles, the lake the train runs across, the tea fields, the giant billboards nobody can explain and the yard full of sleeping Shinkansen do not depend on a hundred kilometres of clear air — several of them look better under cloud.</p>
+        <p class="bf-lead">Mt. Fuji is one of the <b>60 window views</b> between Tokyo and Shin-Osaka. A grey sky takes that one. The castles, the lake the train runs across, the tea fields, the giant billboards nobody can explain and the yard full of sleeping Shinkansen do not depend on a hundred kilometres of clear air — several of them look better under cloud.</p>
       </div>
     </section>
 
@@ -738,7 +738,7 @@
       <p>If you are reading this before you travel rather than after, the forecast page estimates whether Mt. Fuji is likely to show today, based on cloud around the summit rather than on the weather where you are standing. Clear winter mornings are far and away the best odds; a warm hazy afternoon in summer is the worst, even when it is not raining.</p>
 
       <div class="bf-cta">
-        <a class="btn btn-primary" href="./#journey" data-besides-cta="pick_train">Time all 59 views to my train →</a>
+        <a class="btn btn-primary" href="./#journey" data-besides-cta="pick_train">Time all 60 views to my train →</a>
         <a class="btn btn-ghost" href="mieru.html" data-besides-cta="forecast">Will Mt. Fuji show today?</a>
         <a class="btn btn-ghost" href="jr-pass-fuji.html" data-besides-cta="jrpass">Riding on a Japan Rail Pass?</a>
         <a class="btn btn-ghost" href="zukan.html" data-besides-cta="zukan">Browse the views in photos</a>

@@ -7168,22 +7168,6 @@ const SPOTS = [
     },
     "photos": [
       {
-        "src": "images/20261103_sekigahara-sign_michikusa_28986.jpg",
-        "alt": {
-          "ja": "集落の向こう、山裾に一文字ずつ並ぶ「古戦場 関ケ原」の白い看板",
-          "en": "Six separate white panels spelling Sekigahara battlefield against a wooded hillside behind houses"
-        },
-        "credit": {
-          "ja": "michikusa",
-          "en": "michikusa"
-        },
-        "date": "2026-11-03",
-        "note": {
-          "ja": "山裾に一文字ずつ並ぶ「古戦場 関ケ原」の看板。新幹線のE席側から。",
-          "en": "The six white Sekigahara battlefield signs above the rooftops, photographed from the Seat E side."
-        }
-      },
-      {
         "src": "images/20261103_sekigahara-landscape_michikusa_45599.jpg",
         "alt": {
           "ja": "関ケ原周辺の山並みと田畑、手前の建物をE席側の窓から眺める",
