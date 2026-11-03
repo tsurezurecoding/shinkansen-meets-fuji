@@ -40,10 +40,11 @@ export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) 
       node('scripts/generate-castle-locales.mjs', '--route', 'spots/fuji-paper-mills.html', '--check'),
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
   };
-  if (changes.every(change => change.status === 'M' && (family.has(change.path) || familyPage.test(change.path)))
+  if (changes.every(change => change.status === 'M' && (family.has(change.path) || familyPage.test(change.path) || change.path === 'scripts/release-scope.mjs')
+    || change.status === 'A' && change.path === 'images/affiliate/popondetta-8710.jpg')
     && files.filter(file => localizedPage.test(file)).every(versionOnly)) return {
     scope: '727-collection', reason: '727 generator, page, local assets and their version references only',
-    commands: [...syntax, node('scripts/generate-727-page.mjs', '--check'),
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs'), node('scripts/generate-727-page.mjs', '--check'),
       node('scripts/validate-727-collection.mjs'), node('scripts/sync-asset-versions.mjs', '--check'),
       node('scripts/check-content-manifest.mjs')],
   };

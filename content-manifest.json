@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "d47aab3e066a6dcc",
+  "contentVersion": "3d9c9744aaa392e7",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -13,8 +13,8 @@
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 21312,
-      "sha256": "dec6f3b6052ccf71c670958acd1ed7d6dbfe9a06978f490ed5666cee87fe7714"
+      "bytes": 25632,
+      "sha256": "aa08f7bf4a2c5c898f3f9957c814aa60e155540744341f6730549de4850da268"
     },
     {
       "path": "727-collection.js",

@@ -112,6 +112,8 @@ const COPY = {
  }
 };
 
+const JA_AFFILIATE = {"style": "<style>\n.miniature-note{margin:24px 0 0;padding:0;border:0;border-radius:0;background:transparent;max-width:460px;scroll-margin-top:100px;}\n.miniature-note .miniature-ad{margin:0 0 5px;font:11px/1.6 var(--font-sans,system-ui);color:#636363;letter-spacing:0;}\n.miniature-note .miniature-link{display:flex;align-items:center;gap:12px;color:var(--ink,#172633);text-decoration:none;font:12px/1.8 var(--font-sans,system-ui);}\n.miniature-note img{flex:0 0 80px;width:80px;height:80px;object-fit:contain;}\n.miniature-note .miniature-product-name{display:block;font-size:12px;font-weight:400;}\n.miniature-note .miniature-product-detail{display:block;color:#666;font-size:11px;}\n.miniature-note .miniature-action{display:block;margin-top:3px;font-size:11px;text-decoration:underline;text-underline-offset:3px;}\n.miniature-note .miniature-credit{margin:5px 0 0;font-size:10px;line-height:1.6;color:#666;}\n.miniature-note a:focus-visible{outline:2px solid #8c7758;outline-offset:4px;}\n.collection-affiliate-disclosure{max-width:1100px;margin:24px auto 0;padding:0 20px;color:#666;text-align:center;font-size:11px;line-height:1.8;}\n</style>", "body": "<aside class=\"miniature-note\" id=\"miniature727\" aria-label=\"727看板のミニチュアの紹介\">\n        <p class=\"miniature-ad\">広告</p>\n        <a class=\"miniature-link\" href=\"https://www.amazon.co.jp/%E3%83%9D%E3%83%9D%E3%83%B3%E3%83%87%E3%83%83%E3%82%BF-%E9%87%8E%E7%AB%8B%E3%81%A6%E7%9C%8B%E6%9D%BF-%E3%82%BB%E3%83%96%E3%83%B3%E3%83%84%E3%83%BC%E3%82%BB%E3%83%96%E3%83%B3-8710-%E3%82%B8%E3%82%AA%E3%83%A9%E3%83%9E%E7%94%A8%E5%93%81/dp/B0CNGSBCHB?__mk_ja_JP=%E3%82%AB%E3%82%BF%E3%82%AB%E3%83%8A&amp;crid=34ADRX6ASWR6Y&amp;dib=eyJ2IjoiMSJ9.idkj-odfNjcUk0yZv5jWHrJba0dAgLYqFtYUgMvrqJes3Mi4e2JU06unMih3THv2ziJDtox9ye-zgMGQ7GJtWi-uJD9BoqANMmb5ghu6nPsdf7IMXkwhHI2TrzGnZSKmN1Tr5twzr2mGMyiWQFarrsgw8nP7Q2-WMk0NzJZu5UVfcHlhHvK34-_EN7REB_-9QaR0dXldTnm2uXKkzCE-tk8KOwLtmWaO84tVgLyAi8_rN0FKMiNyEQVQxwPP5-QZQFXBA7xDjDYPb_fzKIa-0wgyOCDE_VlAfUAGux7EYuw.wlpr_W-1n9K8EBwzKwJSLEEUcr7imME10gaf8z_XM7s&amp;dib_tag=se&amp;keywords=727+%E7%9C%8B%E6%9D%BF&amp;qid=1793706037&amp;sprefix=727+%E7%9C%8B%E6%9D%BF%2Caps%2C202&amp;sr=8-2&amp;linkCode=ll2&amp;tag=programmasavo-22&amp;linkId=c3fbc0a49e53ea4b8683d206bbfba9e2&amp;ref_=as_li_ss_tl\" target=\"_blank\" rel=\"sponsored nofollow noopener\">\n          <img src=\"images/affiliate/popondetta-8710.jpg\" width=\"80\" height=\"80\" alt=\"ポポンデッタの727看板ミニチュア（品番8710）\">\n          <span><span class=\"miniature-product-name\">727看板のミニチュア</span><span class=\"miniature-product-detail\">ポポンデッタ · 野立て看板 8710</span><span class=\"miniature-action\">Amazonで見る ↗</span></span>\n        </a>\n        <p class=\"miniature-credit\">画像：ポポンデッタ</p>\n      </aside>\n<script>\n(function () {\n  var block = document.getElementById('miniature727');\n  if (!block) return;\n  var link = block.querySelector('a'), seen = false, timer = null, ratio = 0;\n  function emit(name) {\n    if (window.MADO_ANALYTICS_DISABLED !== false || typeof window.gtag !== 'function') return false;\n    try { if (localStorage.getItem('mado-ga-optout') === '1') return false; } catch (error) { return false; }\n    window.gtag('event', name, { cta_id: 'affiliate_727_8710_inline', affiliate_partner: 'amazon', affiliate_offer: 'popondetta_8710', language: 'ja', page_context: '727_collection' });\n    return true;\n  }\n  link.addEventListener('click', function () { emit('affiliate_click'); });\n  function update() {\n    if (timer !== null) { clearTimeout(timer); timer = null; }\n    if (seen || ratio < 0.5 || document.visibilityState !== 'visible') return;\n    timer = setTimeout(function () {\n      timer = null;\n      if (ratio >= 0.5 && document.visibilityState === 'visible' && emit('affiliate_module_view')) seen = true;\n    }, 1000);\n  }\n  if ('IntersectionObserver' in window) {\n    var observer = new IntersectionObserver(function (entries) { ratio = entries[0].isIntersecting ? entries[0].intersectionRatio : 0; update(); }, { threshold: [0, 0.5, 1] });\n    observer.observe(block);\n    document.addEventListener('visibilitychange', update);\n  }\n})();\n</script>", "disclosure": "<p class=\"collection-affiliate-disclosure\">Amazonのアソシエイトとして、道草は適格販売により収入を得ています。</p>"};
+
 function render(lang) {
   const en = lang === 'en';
   const p = en ? '../' : '';
@@ -144,7 +146,7 @@ function render(lang) {
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-727-collection.jpg">
   <link rel="stylesheet" href="${p}style.css?v=${assetVersion('style.css')}">
   <link rel="stylesheet" href="${p}727-collection.css?v=${assetVersion('727-collection.css')}">
-${ANALYTICS.withEmbeddedGuard}
+${en ? "" : JA_AFFILIATE.style + "\n"}${ANALYTICS.withEmbeddedGuard}
 </head>
 ${t.bodyTag}
   <div data-spot-page-shared-module="topbar"></div>
@@ -181,7 +183,7 @@ ${t.bodyTag}
       </div>
       ${t.aboutCompany}
       ${t.aboutDesign}
-      ${t.aboutNeighbourSign}
+      ${t.aboutNeighbourSign}${en ? "" : "\n      " + JA_AFFILIATE.body}
     </section>
 
     <section class="section collection-progress-section" aria-labelledby="collectionProgressTitle">
@@ -263,7 +265,7 @@ ${t.bodyTag}
     <section data-spot-page-shared-module="content-rail"></section>
   </main>
 
-  <footer class="footer">
+  ${en ? "" : JA_AFFILIATE.disclosure + "\n  "}<footer class="footer">
     ${t.footerBrand}
     ${t.footerNote}
     ${t.footerLinks}
