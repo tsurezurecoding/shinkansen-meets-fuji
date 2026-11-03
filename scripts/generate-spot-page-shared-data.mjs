@@ -729,6 +729,12 @@ function projectPage(spot, lang) {
   };
 }
 
+// Allow isolated article previews to use the production projection without writing
+// the catalogue or the other languages' payloads.
+export { projectPage };
+
+const isMain = process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url);
+if (isMain) {
 const stations = source.ROUTE.refStations.map((station) => ({
   id: String(station.id),
   name: { ja: String(station.ja || station.en || station.id), en: String(station.en || station.ja || station.id) },
@@ -891,4 +897,5 @@ console.log(`Catalog ${catalogBytes} bytes; ${pageArtifacts.size} page payloads,
 if (CHECK_ONLY && changed) {
   console.error(`Generated spot page data is stale:\n- ${changedPaths.join("\n- ")}`);
   process.exitCode = 1;
+}
 }
