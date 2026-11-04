@@ -14,13 +14,15 @@ const copy={
  en:{title:'Window Artworks',description:'Explore Shinkansen window views as a short film, in photographs and in ink wash, and enjoy a different expression of the journey.',lead:'A different way to watch the passing scenery.',intro:'Watch the window as an 80-second film, take a short trip through photographs, or watch a landscape drawn in ink wash. Each work begins with the view from a train window.',open:'Explore the work',skip:'Skip to the artworks',note:'These works are for enjoying the scenery as art, rather than guiding you during a train ride.'}
 };
 let changed=0;
-for(const lang of ['ja','en']){
+const requestedLanguage=process.argv.find(arg=>arg.startsWith('--lang='))?.slice(7);
+if(requestedLanguage&&!['ja','en'].includes(requestedLanguage))throw Error('Unsupported language: '+requestedLanguage);
+for(const lang of requestedLanguage?[requestedLanguage]:['ja','en']){
  const c=copy[lang],prefix=lang==='en'?'../':'',route=(lang==='en'?'en/':'')+'window-artworks.html',url=origin+route;
  const visibleWorks=works.filter(w=>!w.languages||w.languages.includes(lang));
- const cards=visibleWorks.map(w=>{if(!/^(?:[a-z-]+\/)*[a-z-]+\.html$/.test(w.route)||!fs.existsSync(path.join(root,w.route)))throw Error('Invalid published route');const t=w[lang];if(w.id==='window-film'||w.webOnly) {
+ const cards=visibleWorks.map(w=>{if(!/^(?:[a-z0-9-]+\/)*[a-z0-9-]+\.html$/.test(w.route)||!fs.existsSync(path.join(root,w.route)))throw Error('Invalid published route');const t=w[lang];if(w.id==='window-film'||w.webOnly) {
  // The film is Web-only. A bundled catalog must never load its absent image or local route.
  const publicUrl=origin+(lang==='en'?'en/':'')+w.route;
- const online=lang==='ja'?'オンラインで鑑賞（通信が必要です）':'Watch online (internet connection required)';
+ const online=t.online||(lang==='ja'?'オンラインで鑑賞（通信が必要です）':'Watch online (internet connection required)');
  return `<article class="artwork-card" data-artwork="${esc(w.id)}"><a hidden href="${publicUrl}" tabindex="-1" aria-hidden="true"><img data-film-image="${prefix}${esc(w.image)}" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">${esc(t.medium)}</p><h2>${esc(t.title)}</h2><p>${esc(t.description)}</p><a class="artwork-open" href="${publicUrl}">${online}<span class="sr-only"> — ${esc(t.title)}</span></a></div></article><script>
 (function () {
  var card=document.currentScript.previousElementSibling;
@@ -32,7 +34,7 @@ for(const lang of ['ja','en']){
  var image=card.querySelector('img'); image.src=image.dataset.filmImage;
  var cover=image.parentElement; cover.hidden=false; cover.setAttribute('href',${JSON.stringify(w.route)});
  var open=card.querySelector('.artwork-open'); open.setAttribute('href',${JSON.stringify(w.route)});
- open.firstChild.textContent=${JSON.stringify(c.open+' →')};
+ open.firstChild.textContent=${JSON.stringify((t.open||c.open)+' →')};
 })();
 </script>`;
 }return `<article class="artwork-card" data-artwork="${esc(w.id)}"><a href="${esc(w.route)}" tabindex="-1" aria-hidden="true"><img src="${prefix}${esc(w.image)}" alt="" width="1200" height="630" loading="lazy"></a><div class="artwork-copy"><p class="artwork-medium">${esc(t.medium)}</p><h2>${esc(t.title)}</h2><p>${esc(t.description)}</p><a class="artwork-open" href="${esc(w.route)}">${esc(c.open)} <span aria-hidden="true">→</span><span class="sr-only"> — ${esc(t.title)}</span></a></div></article>`;}).join('\n');

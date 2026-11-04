@@ -1,20 +1,20 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f22d5873e22a720d",
+  "contentVersion": "2dca5e0582bbe5fe",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
     {
       "path": "727-collection.css",
       "url": "https://www.michikusa-travel.com/727-collection.css",
-      "bytes": 3436,
-      "sha256": "7b6d1836596b00270fd19a696b40ec6c722ace30e68751ea4b26befbe1b95f8d"
+      "bytes": 4604,
+      "sha256": "93ec30e397fe67187b8b340f3c08b6cad1c01d1df8f4fe97fabdedd04662cab2"
     },
     {
       "path": "727-collection.html",
       "url": "https://www.michikusa-travel.com/727-collection.html",
-      "bytes": 25632,
-      "sha256": "3d3892055af218f71575de1a5917890935b4426067556951e4675f339d9e6b84"
+      "bytes": 28122,
+      "sha256": "6fdc97d6f43aad17790636af2301cf436e259014c425fb514d7cd7519948d9da"
     },
     {
       "path": "727-collection.js",
@@ -69,6 +69,186 @@
       "url": "https://www.michikusa-travel.com/article-locales.js",
       "bytes": 2728,
       "sha256": "44cf30b32c1d4bf6adb2c4d9d69f65caef0c65680d598ba23d7c0e65b1f781e6"
+    },
+    {
+      "path": "artworks/727-hunt/game.css",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/game.css",
+      "bytes": 11018,
+      "sha256": "e407ef1907cbbd2003536e4d5724239b2908322196b005bd56cec8d96f8db6a8"
+    },
+    {
+      "path": "artworks/727-hunt/game.js",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/game.js",
+      "bytes": 15228,
+      "sha256": "ef07ceb38d6c9e0b9201e2a5fecf618ee0b8dbf96f83dab81ab4296ebcf97848"
+    },
+    {
+      "path": "artworks/727-hunt/index.html",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/index.html",
+      "bytes": 8372,
+      "sha256": "9c11fd23c3036ab2d1628500c399fa94b5430f1cd9acc67187089293fc7a034f"
+    },
+    {
+      "path": "artworks/727-hunt/media/journey.mp4",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/journey.mp4",
+      "bytes": 42068416,
+      "sha256": "7db2af0074dd91a81e908c86701c1a3c19c0b853803c54e25967ae85f884d3a3"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-01.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-01.jpg",
+      "bytes": 165997,
+      "sha256": "7e17c74ea30f7b889785a0f6890aed5b739cc3b5212fb03a5b2623582491df64"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-02.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-02.jpg",
+      "bytes": 145833,
+      "sha256": "eb5d15cc76c2e923039a8fba7f0085fb29ea0c11c3713f9dd39b953fe5a18994"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-03.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-03.jpg",
+      "bytes": 224771,
+      "sha256": "6ad21d5dfd8e305be4f379daf527ed4a0a205ab9a26c25bf9a6751e7b3cea87e"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-04.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-04.jpg",
+      "bytes": 116618,
+      "sha256": "ec2b3fa456c68fd00ee20fcdf2c5bcbb00d29d58432a96d29b356a511001389d"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-05.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-05.jpg",
+      "bytes": 97832,
+      "sha256": "aed6647d2e1c74fdfeb20997047f03eaefeb10637a1c301c7d754ac458a2b147"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-06.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-06.jpg",
+      "bytes": 102305,
+      "sha256": "450ec70a918cc3c1e5190851dee358bc7fd2d28d2b9db8b8331dac3dd4b61bfe"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-07.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-07.jpg",
+      "bytes": 154547,
+      "sha256": "f6367271534f1a17b421f04fe26b7abe7026592c454a004c907d707d3ccda051"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-08.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-08.jpg",
+      "bytes": 166228,
+      "sha256": "c31b90afb93e4d295e06905424d69d21e8dde74ce21d4fa94a89179212587dd1"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-09.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-09.jpg",
+      "bytes": 205449,
+      "sha256": "06901510d5a14adf8a6d7376fcefb6f599c0f15fe30b55e738e579082b61eabc"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-10.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-10.jpg",
+      "bytes": 269629,
+      "sha256": "7abbf28c9cfc60c5870c3f0ddff16363ceb058a0fb9a908a14a4a787e834c243"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-11.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-11.jpg",
+      "bytes": 146394,
+      "sha256": "1f6031f2389bc2fac86a349cdd1080aca2770fc6f42351d1ad6e47474e17fae4"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-12.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-12.jpg",
+      "bytes": 92159,
+      "sha256": "183706b231e4aed4656b329dc5e31a7d802a929336983cde365f51ec44a75599"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-13.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-13.jpg",
+      "bytes": 130146,
+      "sha256": "3bd2980d9b87e747eaa8621f6514bfb48e8d0e23ba9b48ae9754b165847714be"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-14.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-14.jpg",
+      "bytes": 94385,
+      "sha256": "90e1a1ef225b9ac4be2414bb997cef4001fd997f1ebadc5f8c15e575f715928b"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-15.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-15.jpg",
+      "bytes": 186012,
+      "sha256": "e348a221fa70fbd03cabc3415e5a5e21cc704322b6a8264022ab386940ec7b80"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-16.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-16.jpg",
+      "bytes": 198661,
+      "sha256": "597fa3e52368dbf04ee66f5550e4b0693b4c3ba016726dde6259d03d37dbe5c7"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-17.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-17.jpg",
+      "bytes": 121138,
+      "sha256": "41bf5aa0fa401b8590b139889cad07a84226242fce2012e18e0362e237f9a151"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-18.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-18.jpg",
+      "bytes": 168032,
+      "sha256": "8210d94916469f8bff876faaed70451ac199c7c411fb49541ddc221585d41de1"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-19.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-19.jpg",
+      "bytes": 154889,
+      "sha256": "f29d3b19fb411dc68c9fde889bbb843b6013a225eec3160a5f719b0a9d753a0c"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-20.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-20.jpg",
+      "bytes": 157553,
+      "sha256": "7b41600c8ebb119b7db08e9ce71a30ccea8d14f440270dac44bcbdd384c39c82"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-21.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-21.jpg",
+      "bytes": 152887,
+      "sha256": "22bac7810ec34016507dd49deb78811444e95521a809998ab1be988ca3320fe5"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-22.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-22.jpg",
+      "bytes": 224536,
+      "sha256": "ef6fbcb721884a423fc040eefde3a47f37c7bdcea0a4dd987be17e16634e8398"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-23.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-23.jpg",
+      "bytes": 127085,
+      "sha256": "945de1510976141dff1a429fd6c7a726f91c04cafc66b64f8a7e71bdb3649728"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-24.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-24.jpg",
+      "bytes": 159743,
+      "sha256": "b0e4d053aaae87a6867cdb063287629106550c5aec9be83f05e82941c222a443"
+    },
+    {
+      "path": "artworks/727-hunt/media/poster-25.jpg",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/media/poster-25.jpg",
+      "bytes": 159854,
+      "sha256": "44ea7f1c5257620224558ad3bd5fca8e2c46d154485b434446737f94d41ad9c7"
+    },
+    {
+      "path": "artworks/727-hunt/targets.js",
+      "url": "https://www.michikusa-travel.com/artworks/727-hunt/targets.js",
+      "bytes": 33203,
+      "sha256": "69d7623a25e3ba82b1acc4166109878cec35a2b2cb03eacb93c47f91c9a0e0a2"
     },
     {
       "path": "artworks/memory-express/cover.png",
@@ -1285,8 +1465,8 @@
     {
       "path": "data/window-artworks.json",
       "url": "https://www.michikusa-travel.com/data/window-artworks.json",
-      "bytes": 3169,
-      "sha256": "2c23d677e7f864bc4bb138e3b32bb997067d3d6e194af1c138441af87e20fcad"
+      "bytes": 3829,
+      "sha256": "4d1a89faa27881366b912e327bc02440f532ba5800f1ab8eb3a01f4b72548b56"
     },
     {
       "path": "data/window-trip-photo-sources.json",
@@ -1298,7 +1478,7 @@
       "path": "de/727-collection.html",
       "url": "https://www.michikusa-travel.com/de/727-collection.html",
       "bytes": 31054,
-      "sha256": "a09381eb3f55b3d6b89ad4494ce57f78be29a5046659a1b5fa572ea7a8b9591f"
+      "sha256": "5ddc265e51241e7a4dff740809e4c4bc74bea6b65415ddd24c36dc186e487e7b"
     },
     {
       "path": "de/arenani.html",
@@ -1748,7 +1928,7 @@
       "path": "en/727-collection.html",
       "url": "https://www.michikusa-travel.com/en/727-collection.html",
       "bytes": 18097,
-      "sha256": "22290268857236fcc1961dafa2a1929445ce5bcadf8b11c4ca2034ef5ea41d76"
+      "sha256": "18e427bc3338157aa4d98c97f3847c6d1f18856090b53d74dc449d41a904ca62"
     },
     {
       "path": "en/arenani.html",
@@ -1916,7 +2096,7 @@
       "path": "es/727-collection.html",
       "url": "https://www.michikusa-travel.com/es/727-collection.html",
       "bytes": 31104,
-      "sha256": "0d073216efe9ca0110a6e6ff0e430c54710baeabb26bcf7425b0fc3d2256c4ca"
+      "sha256": "0b4d00ee026040620d7d339cc9ecc458d460c9b9b1cb68c74d0f62635565bb76"
     },
     {
       "path": "es/arenani.html",
@@ -2396,7 +2576,7 @@
       "path": "fr/727-collection.html",
       "url": "https://www.michikusa-travel.com/fr/727-collection.html",
       "bytes": 31695,
-      "sha256": "7da4a4e97d43bd958bd88d4797b68f76c2e8b2467442698615889090760ba2eb"
+      "sha256": "b40b90b2913bc8bf2acdaf31df977ada7dfa9987e9d0180d68acbceff78bf5e8"
     },
     {
       "path": "fr/arenani.html",
@@ -4274,7 +4454,7 @@
       "path": "it/727-collection.html",
       "url": "https://www.michikusa-travel.com/it/727-collection.html",
       "bytes": 31410,
-      "sha256": "52fc22ed909f15f7d22e88e0b2859da78e6c0fa36772b1b62665b557bb6813e8"
+      "sha256": "319bcd6b5ca5ed8b44120eeba92b04df1fa48c3710e318dfcf79d3ea68718857"
     },
     {
       "path": "it/arenani.html",
@@ -4742,7 +4922,7 @@
       "path": "ko/727-collection.html",
       "url": "https://www.michikusa-travel.com/ko/727-collection.html",
       "bytes": 31487,
-      "sha256": "40c8936c1e874440f7d2f25325992416a20f869285c2ca25da7cfd754b4b5568"
+      "sha256": "b242ab2710cdb237e64fcfc243ede71fbcdb70e0c6fb707ce26f497ba7975554"
     },
     {
       "path": "ko/arenani.html",
@@ -6626,7 +6806,7 @@
       "path": "th/727-collection.html",
       "url": "https://www.michikusa-travel.com/th/727-collection.html",
       "bytes": 41205,
-      "sha256": "bcde330c621ea5434c44ad1c9e0748a57378818c5294b04298bade75f3331ee8"
+      "sha256": "29c0116dd4a8dd2b5dbb4fdb7001010812a927f8e76b079ed0f70794a766d6a7"
     },
     {
       "path": "th/arenani.html",
@@ -7201,8 +7381,8 @@
     {
       "path": "window-artworks.html",
       "url": "https://www.michikusa-travel.com/window-artworks.html",
-      "bytes": 13974,
-      "sha256": "eacc35d476d814eac53145c75de9f856d4c78788485ae0e343d83f2b6273a915"
+      "bytes": 15826,
+      "sha256": "7cb54e520c6e125b407aa80410b235b697fcd3186f0c6be7145d0b5e0f6464b8"
     },
     {
       "path": "window-guesser.html",
@@ -7262,7 +7442,7 @@
       "path": "zh-Hans/727-collection.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/727-collection.html",
       "bytes": 29572,
-      "sha256": "12628c3f24fd45285ea7a534ca1a7f290d60237eebcef9990b653400afbc8f8a"
+      "sha256": "596ca138621206fca76369463d55cdc8aaac1229b6cd75923b61681a0f9bd6f3"
     },
     {
       "path": "zh-Hans/arenani.html",
@@ -7700,7 +7880,7 @@
       "path": "zh-Hant/727-collection.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/727-collection.html",
       "bytes": 29572,
-      "sha256": "5c84274bca5a19595f33c0303edef41b514e1e7c29a1a24eacbbeedd22f92fc7"
+      "sha256": "c872557ca1929d8d332926e15cea9441e4bf7432f64afdd7ad987fc94adce151"
     },
     {
       "path": "zh-Hant/arenani.html",

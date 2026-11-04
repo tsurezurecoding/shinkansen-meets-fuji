@@ -1,6 +1,21 @@
 {
   "works": [
     {
+      "id": "727-hunt",
+      "status": "published",
+      "languages": ["ja"],
+      "webOnly": true,
+      "route": "artworks/727-hunt/index.html",
+      "image": "artworks/727-hunt/media/poster-01.jpg",
+      "ja": {
+        "title": "727、どこまでも。",
+        "medium": "25地点・約3分の看板探しゲーム",
+        "description": "流れる実写の車窓から、727看板を見つけてタップ。25地点をつないだ旅に挑戦できます。当たり判定の枠を表示する練習モードも。",
+        "open": "遊んでみる",
+        "online": "オンラインで遊ぶ（通信が必要です）"
+      }
+    },
+    {
       "id": "window-film",
       "status": "published",
       "route": "artworks/window-film/index.html",

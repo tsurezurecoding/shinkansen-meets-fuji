@@ -32,7 +32,7 @@ for(const lang of ['ja','en'])test(`${lang}: artwork thumbnails and original cal
       assert.equal(image.getAttribute('src'),(lang==='en'?'../':'')+work.image);
       assert.equal(image.width,1200);assert.equal(image.height,630);
       assert.equal(image.parentElement.getAttribute('href'),work.route);assert.equal(open.getAttribute('href'),work.route);
-      assert.match(open.textContent,lang==='ja'?/^作品を見る\s*→/:/^Explore the work\s*→/);
+      assert.ok(open.textContent.startsWith((work[lang].open||(lang==='ja'?'作品を見る':'Explore the work'))+' →'));
       if(url.startsWith('file:'))assert.ok(fs.existsSync(fileURLToPath(image.src)),image.src);
     }}finally{dom.window.close();}
   }
@@ -49,7 +49,7 @@ test('native bundles retain the online-only film contract without requesting exc
     try{for(const work of catalog.works.filter(w=>(w.id==='window-film'||w.webOnly)&&(!w.languages||w.languages.includes(lang)))){
       const card=dom.window.document.querySelector(`[data-artwork="${work.id}"]`),open=card.querySelector('.artwork-open');
       assert.equal(card.querySelector('img'),null);assert.equal(open.href,origin+(lang==='en'?'en/':'')+work.route);
-      assert.match(open.textContent,lang==='ja'?/^オンラインで鑑賞（通信が必要です）/:/^Watch online \(internet connection required\)/);
+      assert.ok(open.textContent.startsWith(work[lang].online||(lang==='ja'?'オンラインで鑑賞（通信が必要です）':'Watch online (internet connection required)')));
     }}finally{dom.window.close();}
   }
 });

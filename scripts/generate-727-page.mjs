@@ -165,7 +165,7 @@ ${t.bodyTag}
         ${t.heroLead}
         ${t.heroNote}
         <div class="collection-hero-actions">
-          ${t.heroButtonList}${en ? '' : '\n          <a class="btn btn-ghost" href="#collectionVideoTitle">動画で巡る（約3分）</a>'}
+          ${t.heroButtonList}${en ? '' : '\n          <a class="btn btn-ghost" href="#collectionVideoTitle">動画で巡る（約3分）</a>\n          <a class="btn btn-ghost" href="https://www.michikusa-travel.com/artworks/727-hunt/index.html" data-727-game-link>727を探して遊ぶ</a>'}
           ${t.heroButtonTimeline}
           ${t.heroButtonAbout}
         </div>
@@ -244,6 +244,34 @@ ${t.bodyTag}
         <iframe src="https://www.youtube-nocookie.com/embed/y5xbtIPAIOw?rel=0" title="727看板コレクション — 新幹線の車窓・25地点" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
       </div>
       <p class="collection-film-caption">窓側と進行方向をそろえ、複数の乗車記録をつないでいます。 <a href="https://youtu.be/y5xbtIPAIOw" target="_blank" rel="noopener noreferrer">YouTubeで見る ↗</a></p>
+    </section>
+
+    <section class="section collection-game-section" aria-labelledby="collectionGameTitle">
+      <div class="collection-game-card" data-727-game-card>
+        <a class="collection-game-image" hidden href="https://www.michikusa-travel.com/artworks/727-hunt/index.html" tabindex="-1" aria-hidden="true" data-727-game-link>
+          <img data-game-image="artworks/727-hunt/media/poster-01.jpg" width="1280" height="720" alt="" loading="lazy">
+        </a>
+        <div class="collection-game-copy">
+          <p class="eyebrow">727 WINDOW GAME</p>
+          <h2 id="collectionGameTitle">727、どこまでも。</h2>
+          <p class="collection-game-hook">見つけたら、タップ。</p>
+          <p><span class="copy-chunk">実写の車窓をつなぐ、</span><span class="copy-chunk">25地点・約3分。</span><span class="copy-chunk">流れる景色の中から</span><span class="copy-chunk">727を見つけよう。</span></p>
+          <p class="collection-game-note">練習モードは判定枠付き。</p>
+          <a class="btn btn-primary" href="https://www.michikusa-travel.com/artworks/727-hunt/index.html" data-727-game-link data-727-game-open>オンラインで遊ぶ</a>
+          <p class="collection-game-online">通信が必要です。</p>
+        </div>
+      </div>
+      <script>
+      (function () {
+        var card=document.querySelector('[data-727-game-card]');
+        var native=!!(window.Capacitor && ((typeof window.Capacitor.isNativePlatform==='function' && window.Capacitor.isNativePlatform()) || (typeof window.Capacitor.getPlatform==='function' && window.Capacitor.getPlatform()!=='web')));
+        var bundled=native || location.protocol==='capacitor:' || (location.protocol==='file:' && /^\\/android_asset(?:\\/|$)/.test(location.pathname));
+        if(bundled) { card.querySelector('.collection-game-image').remove(); card.classList.add('is-online-only'); return; }
+        card.querySelectorAll('[data-game-image]').forEach(function (image) { image.src=image.dataset.gameImage; image.parentElement.hidden=false; });
+        document.querySelectorAll('[data-727-game-link]').forEach(function (link) { link.setAttribute('href','artworks/727-hunt/index.html'); });
+        card.querySelector('[data-727-game-open]').textContent='727を探して遊ぶ';
+      })();
+      </script>
     </section>`}
 
     <section class="section collection-notes-section" aria-labelledby="collectionNotesTitle">
@@ -282,7 +310,9 @@ ${t.bodyTag}
 `;
 }
 
-for (const lang of ['ja', 'en']) {
+const requestedLanguage = process.argv.find(arg => arg.startsWith('--lang='))?.slice(7);
+if (requestedLanguage && !['ja', 'en'].includes(requestedLanguage)) throw Error('Unsupported language: ' + requestedLanguage);
+for (const lang of requestedLanguage ? [requestedLanguage] : ['ja', 'en']) {
   const dest = path.join(root, lang === 'ja' ? '727-collection.html' : 'en/727-collection.html');
   let html = render(lang);
   if (lang === 'ja') {
@@ -297,4 +327,4 @@ for (const lang of ['ja', 'en']) {
     fs.writeFileSync(dest, html);
   }
 }
-console.log('727 collection pages: ja + en from one template.');
+console.log('727 collection pages: ' + (requestedLanguage || 'ja + en') + ' from one template.');

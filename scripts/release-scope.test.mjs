@@ -37,6 +37,18 @@ test('story integration maps its generators and rejects unrelated product change
   assert.equal(chooseReleaseScope([...files,'en/foods.html'].map(change)).scope,'unmapped');
   assert.equal(chooseReleaseScope([...files,'en/foods.html'].map(change),{versionOnly:()=>true}).scope,'story-window');
 });
+test('727 game covers its media and entry pages without including unrelated products', () => {
+  const changes=[{path:'artworks/727-hunt/index.html',status:'A'},
+    {path:'artworks/727-hunt/media/journey.mp4',status:'A'},
+    ...['727-collection.html','data/window-artworks.json','window-artworks.html',
+      'scripts/generate-content-manifest.mjs','scripts/generate-window-artworks-page.mjs'].map(change)];
+  const plan=chooseReleaseScope(changes);
+  assert.equal(plan.scope,'727-game');assert(plan.pagesCandidate);
+  assert(plan.commands.some(c=>c.includes('scripts/validate-727-game.mjs')));
+  assert(plan.commands.some(c=>c.includes('scripts/check-content-manifest.mjs')));
+  assert.equal(chooseReleaseScope([...changes,change('data.js')]).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...changes,change('en/window-artworks.html')]).scope,'unmapped');
+});
 test('727 edits select their generator, output contract, version and manifest checks', () => {
   const plan = chooseReleaseScope(['727-collection.css', '727-collection.html', 'en/727-collection.html', 'scripts/generate-727-page.mjs', 'content-manifest.json'].map(change));
   assert.equal(plan.scope, '727-collection');

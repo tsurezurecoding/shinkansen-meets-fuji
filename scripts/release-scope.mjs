@@ -137,6 +137,21 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, marukoL
       node('scripts/generate-castle-locales.mjs', '--route', 'spots/fuji-paper-mills.html', '--check'),
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
   };
+  const gameFiles = new Set(['scripts/validate-727-game.mjs', 'scripts/generate-content-manifest.mjs',
+    'scripts/generate-window-artworks-page.mjs', 'scripts/window-artworks-page.test.mjs',
+    'data/window-artworks.json', 'window-artworks.html', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (files.some(file => file.startsWith('artworks/727-hunt/') || file === 'scripts/validate-727-game.mjs')
+    && changes.every(({path: file, status}) => status !== 'D' &&
+      (/^artworks\/727-hunt\/(?:index\.html|game\.(?:js|css)|targets\.js|media\/(?:journey\.mp4|poster-\d{2}\.jpg))$/.test(file)
+      || gameFiles.has(file) || family.has(file) || familyPage.test(file)))
+    && files.filter(file => localizedPage.test(file)).every(versionOnly)) return {
+    scope: '727-game', needsDependencies: true, pagesCandidate: true,
+    reason: '727 game, Japanese collection/artworks entries, shared CSS version references and media distribution',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/window-artworks-page.test.mjs'),
+      node('scripts/generate-727-page.mjs', '--check'), node('scripts/generate-window-artworks-page.mjs', '--check'),
+      node('scripts/validate-727-game.mjs'), node('scripts/validate-727-collection.mjs'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
+  };
   if (changes.every(change => change.status === 'M' && (family.has(change.path) || familyPage.test(change.path) || change.path === 'scripts/release-scope.mjs')
     || change.status === 'A' && change.path === 'images/affiliate/popondetta-8710.jpg')
     && files.filter(file => localizedPage.test(file)).every(versionOnly)) return {
