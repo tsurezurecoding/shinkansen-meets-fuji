@@ -5,11 +5,38 @@ import { JSDOM } from 'jsdom';
 const ORIGIN = 'https://www.michikusa-travel.com';
 const KINDS = Object.freeze({ header: '.topbar', footer: '.footer', content: '.content-rail-section', rail: '.spot-page-rail', showcase: '.spot-page-showcase', tools: '.tools-grid', collection: '.spot-reading-related' });
 export const COMMON_UI_SELECTOR = `${Object.values(KINDS).join(',')},.spot-compact-guide`;
-const sourceCache = new Map();
-function source(appDir, file) {
+let snapshots = null;
+let dependencies = null;
+function source(appDir, file, optional = false) {
   const target = path.join(appDir, file);
-  if (!sourceCache.has(target)) sourceCache.set(target, fs.readFileSync(target, 'utf8'));
-  return sourceCache.get(target);
+  const text = optional && !fs.existsSync(target) ? null : fs.readFileSync(target, 'utf8');
+  dependencies?.set(target, text);
+  return text;
+}
+
+// Share immutable output only within one validation pass. Interactive callers
+// always receive a fresh live DOM; no window or event handler is cached.
+export async function withSiteRuntimeSnapshots(validate) {
+  if (snapshots) throw new Error('A runtime validation pass is already active');
+  snapshots = new Map();
+  try { return await validate(); }
+  finally { snapshots = null; }
+}
+
+const snapshotKey = ({ appDir, relative, embedded = false }) => JSON.stringify([path.resolve(appDir), relative, embedded]);
+export function findSiteRuntimeSnapshot(options) {
+  const cached = snapshots?.get(snapshotKey(options));
+  if (cached && cached.input === options.html && [...cached.dependencies].every(([file, text]) =>
+    (fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : null) === text)) return cached.output;
+  return null;
+}
+
+export function readSiteRuntimeSnapshot(options) {
+  const cached = findSiteRuntimeSnapshot(options);
+  if (cached) return cached;
+  const rendered = renderSiteRuntimeForValidation(options);
+  try { return rendered.snapshot; }
+  finally { rendered.dom.window.close(); }
 }
 
 function chromeConfig(document) {
@@ -22,8 +49,9 @@ function chromeConfig(document) {
 
 function sourceKinds(appDir, relative) {
   const target = path.join(appDir, 'scripts/templates/site-source', `${relative}.tpl`);
-  if (!fs.existsSync(target)) return [];
-  const dom = new JSDOM(fs.readFileSync(target, 'utf8'));
+  const template = source(appDir, path.relative(appDir, target), true);
+  if (template === null) return [];
+  const dom = new JSDOM(template);
   try { return (chromeConfig(dom.window.document)?.mounts || []).map(mount => mount.kind).sort(); }
   finally { dom.window.close(); }
 }
@@ -97,6 +125,8 @@ function expectedTargets(payload, config, mount, baseURI) {
 // analytics stay inert; loader behavior has its own browser-contract tests.
 export function renderSiteRuntimeForValidation({ appDir, html, relative, embedded = false }) {
   const dom = new JSDOM(html, { url: new URL(relative, `${ORIGIN}/`).href, runScripts: 'outside-only', includeNodeLocations: true });
+  const previousDependencies = dependencies;
+  dependencies = new Map();
   try {
     const { window } = dom;
     const document = window.document;
@@ -156,10 +186,16 @@ export function renderSiteRuntimeForValidation({ appDir, html, relative, embedde
     const requiresHeader = thin || legacySpot || config?.mounts.some(mount => mount.kind === 'header');
     if (!embedded && requiresHeader && document.querySelectorAll('.topbar .top-nav').length !== 1) throw new Error('rendered page must expose exactly one shared header navigation');
     if (events.length !== Number(thin) + Number(Boolean(config))) throw new Error('shared runtime ready event count is incorrect');
-    return { dom, document, thin, legacySpot, config, events, chromeReplacements };
+    let expandedHTML = html;
+    for (const change of [...chromeReplacements].sort((a, b) => b.start - a.start)) expandedHTML = expandedHTML.slice(0, change.start) + change.html + expandedHTML.slice(change.end);
+    const snapshot = Object.freeze({ html: dom.serialize(), expandedHTML, thin });
+    snapshots?.set(snapshotKey({ appDir, relative, embedded }), { input: html, dependencies, output: snapshot });
+    return { dom, document, thin, legacySpot, config, events, chromeReplacements, snapshot };
   } catch (error) {
     dom.window.close();
     throw new Error(`${relative}: ${error.message}`, { cause: error });
+  } finally {
+    dependencies = previousDependencies;
   }
 }
 
@@ -167,11 +203,7 @@ export function renderSiteRuntimeForValidation({ appDir, html, relative, embedde
 // hosts. Preserve every original head, script and article byte outside them.
 export function expandDeliveredSiteChromeHTML({ appDir, html, relative }) {
   if (!/mado-shared-ui-config|data-site-chrome-host/.test(html)) return html;
-  const rendered = renderSiteRuntimeForValidation({ appDir, html, relative });
-  try {
-    for (const change of [...rendered.chromeReplacements].sort((a, b) => b.start - a.start)) html = html.slice(0, change.start) + change.html + html.slice(change.end);
-    return html;
-  } finally { rendered.dom.window.close(); }
+  return readSiteRuntimeSnapshot({ appDir, html, relative }).expandedHTML;
 }
 
 export function commonTargetFailures(document, { appDir, relative }) {

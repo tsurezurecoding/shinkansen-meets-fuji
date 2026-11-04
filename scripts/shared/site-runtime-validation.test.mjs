@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { commonTargetFailures, expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './site-runtime-validation.mjs';
+import { commonTargetFailures, expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation, readSiteRuntimeSnapshot, withSiteRuntimeSnapshots } from './site-runtime-validation.mjs';
 
 const appDir = fileURLToPath(new URL('../../', import.meta.url));
 const actualRenderer = await fs.readFile(path.join(appDir, 'site-chrome.js'), 'utf8');
@@ -137,4 +137,53 @@ test('string validators inspect the delivered footer while retaining original me
   assert.ok(result.includes('<footer class="footer"><a href="../en/guide.html">Guide</a></footer>'));
   assert.ok(!result.includes('data-site-chrome-host='));
   assert.ok(result.includes('id="mado-shared-ui-config"'), 'the actual static configuration is retained');
+});
+
+
+test('one validation pass shares immutable output without sharing interactive DOM changes', async t => {
+  const f = await fixture(t);
+  const options = { appDir: f.root, html: f.page(), relative: 'en/guide.html' };
+  let first;
+  await withSiteRuntimeSnapshots(async () => {
+    const rendered = f.render();
+    first = rendered.snapshot;
+    rendered.document.querySelector('.topbar').remove();
+    rendered.dom.window.close();
+    assert.strictEqual(readSiteRuntimeSnapshot(options), first);
+    assert.match(first.html, /class="topbar"/);
+    assert.equal(expandDeliveredSiteChromeHTML(options), first.expandedHTML);
+    const changedPage = readSiteRuntimeSnapshot({ ...options, html: options.html.replace('<head>', '<head><title>Changed</title>') });
+    assert.match(changedPage.html, /<title>Changed<\/title>/);
+    assert.notStrictEqual(changedPage, first);
+    const embedded = readSiteRuntimeSnapshot({ ...options, embedded: true });
+    assert.notStrictEqual(embedded, first);
+    assert(!embedded.html.includes('class="topbar"'));
+  });
+  await withSiteRuntimeSnapshots(async () => assert.notStrictEqual(readSiteRuntimeSnapshot(options), first));
+});
+
+test('snapshot hits still detect changed or missing renderer dependencies', async t => {
+  const f = await fixture(t);
+  const options = { appDir: f.root, html: f.page(), relative: 'en/guide.html' };
+  await withSiteRuntimeSnapshots(async () => {
+    readSiteRuntimeSnapshot(options);
+    await f.write('site-chrome.js', 'throw new Error("changed renderer");');
+    assert.throws(() => readSiteRuntimeSnapshot(options), /changed renderer/);
+    await f.write('site-chrome.js', actualRenderer);
+    readSiteRuntimeSnapshot(options);
+    await fs.unlink(path.join(f.root, f.config.assets[0]));
+    assert.throws(() => readSiteRuntimeSnapshot(options), /missing/);
+  });
+});
+
+test('a newly added source template invalidates a snapshot and failures do not survive the pass', async t => {
+  const f = await fixture(t);
+  const options = { appDir: f.root, html: f.page(), relative: 'en/guide.html' };
+  await assert.rejects(withSiteRuntimeSnapshots(async () => {
+    readSiteRuntimeSnapshot(options);
+    await f.write('scripts/templates/site-source/en/guide.html.tpl', '<script id="mado-shared-ui-config" type="application/json">{"mounts":[{"kind":"header"}]}</script>');
+    readSiteRuntimeSnapshot(options);
+  }), /mount kinds differ/);
+  await fs.unlink(path.join(f.root, 'scripts/templates/site-source/en/guide.html.tpl'));
+  await withSiteRuntimeSnapshots(async () => assert.match(readSiteRuntimeSnapshot(options).html, /class="topbar"/));
 });
