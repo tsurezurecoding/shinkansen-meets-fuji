@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyVersionReferenceChanged, assertReusableVerification, assertReleasePlanContract } from './release-scope.mjs';
+import { chooseReleaseScope, onlyVersionReferenceChanged, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
 test('727 edits select their generator, output contract, version and manifest checks', () => {
@@ -66,9 +66,67 @@ test('every release scope explicitly declares whether npm dependencies are neede
 });
 
 test('release plan contract rejects an omitted dependency decision', () => {
-  assert.doesNotThrow(() => assertReleasePlanContract({ needsDependencies: false }));
+  assert.doesNotThrow(() => assertReleasePlanContract({ needsDependencies: false, pagesCandidate: false }));
   assert.throws(() => assertReleasePlanContract({}), /explicitly declare needsDependencies/);
   assert.throws(() => assertReleasePlanContract({ needsDependencies: 'true' }), /explicitly declare needsDependencies/);
+  assert.throws(() => assertReleasePlanContract({ needsDependencies: false }), /explicitly declare pagesCandidate/);
+});
+
+const currentPackage = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+const previousPackage = structuredClone(currentPackage);
+previousPackage.scripts.verify = 'npm run check && npm run preflight:spots && npm run check:manifest && npm run check:all-syntax && npm test && npm run audit:site && npm run check:diff';
+previousPackage.scripts.check = 'npm run check:syntax && ' + currentPackage.scripts['check:site'].replace('npm run check:language-navigation', 'npm run check:language && npm run check:navigation');
+previousPackage.scripts['check:language'] = ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales', 'validate-mieru', 'validate-sparkling-locales'].map(name => `node scripts/${name}.mjs`).join(' && ') + ' && node --test scripts/editorial-notes.test.mjs && npm run check:live-sitemap';
+delete previousPackage.scripts['check:site'];
+delete previousPackage.scripts['check:language-navigation'];
+const commandRefactor = { packageBefore: JSON.stringify(previousPackage), packageAfter: JSON.stringify(currentPackage) };
+
+test('the previous CI command refactor preserves checks without becoming a dependency upgrade', () => {
+  assert.equal(classifyPackageChange(commandRefactor.packageBefore, commandRefactor.packageAfter), 'validation-commands');
+  const plan = chooseReleaseScope([change('package.json')], commandRefactor);
+  assert.equal(plan.scope, 'release-infrastructure');
+  assert.equal(plan.needsDependencies, false);
+  assert.equal(plan.pagesCandidate, false);
+});
+
+test('changed check behavior cannot be hidden as command reorganization', () => {
+  for (const edit of [p => { p.scripts.verify = 'npm run check:syntax'; },
+    p => { p.scripts['check:site'] += ' && node unexpected.mjs'; },
+    p => { p.scripts['check:site'] = 'npm run check:site'; },
+    p => { p.scripts['build:full'] = 'node different-generator.mjs'; }]) {
+    const next = structuredClone(currentPackage); edit(next);
+    assert.equal(chooseReleaseScope([change('package.json')], { ...commandRefactor, packageAfter: JSON.stringify(next) }).scope, 'unmapped');
+  }
+  const next = structuredClone(currentPackage); next.devDependencies.jsdom = 'changed';
+  assert.equal(chooseReleaseScope([change('package.json')], { ...commandRefactor, packageAfter: JSON.stringify(next) }).scope, 'full');
+});
+
+test('validation helper edits cover their consumers without unrelated generation or distribution', () => {
+  const plan = chooseReleaseScope(['package.json', 'scripts/shared/site-runtime-validation.mjs',
+    'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs',
+    '.github/workflows/quality-gate.yml', 'scripts/release-scope.mjs'].map(change), commandRefactor);
+  assert.equal(plan.scope, 'validation-infrastructure');
+  assert.equal(plan.needsDependencies, true);
+  assert.equal(plan.pagesCandidate, false);
+  for (const file of ['scripts/shared/site-runtime-validation.test.mjs', 'scripts/food-country-locales.test.mjs',
+    'scripts/sanyo-castle-pages.test.mjs', 'scripts/starter-locales.test.mjs', 'scripts/validate-content.mjs',
+    'scripts/validate-spot-page-shared.mjs', 'scripts/validate-727-collection.mjs',
+    'scripts/validate-sparkling-dreams.mjs', 'scripts/validate-site-navigation.mjs'])
+    assert(plan.commands.some(command => command.includes(file)), file);
+  assert(!plan.commands.some(command => command.includes('verify') || command.includes('preflight:spots')));
+  assert.equal(chooseReleaseScope([change('scripts/shared/site-runtime-validation.mjs'), change('data.js')]).scope, 'unmapped');
+});
+
+test('only product changes create a Pages candidate and both workflow steps obey that decision', () => {
+  for (const files of [[], ['README.md'], ['.github/workflows/quality-gate.yml'], ['scripts/shared/site-runtime-validation.mjs']])
+    assert.equal(needsPagesCandidate(chooseReleaseScope(files.map(change))), false);
+  for (const file of ['727-collection.css', 'package-lock.json', 'scripts/shared/android-app-invite-copy.mjs', 'scripts/shared/responsive-photos.mjs'])
+    assert.equal(needsPagesCandidate(chooseReleaseScope([change(file)])), true);
+  const yaml = fs.readFileSync(new URL('../.github/workflows/quality-gate.yml', import.meta.url), 'utf8');
+  for (const name of ['Stage verified checkout for Pages', 'Save verified Pages candidate']) {
+    const step = yaml.split(`- name: ${name}`)[1].split(/\n      - /)[0];
+    assert.match(step, /steps\.plan\.outputs\.pages_candidate == 'true'/);
+  }
 });
 
 test('workflow installs from the plan dependency output without duplicating scope names', () => {
