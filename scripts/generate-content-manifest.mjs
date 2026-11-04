@@ -34,6 +34,7 @@ const contentFiles = [
   "window-quiz.html", "window-guesser.html", ...await walkFiles("quiz", p => /\.(?:js|css|jpg|webp|mp4)$/.test(p)),
   "memory-express.html",
   ...await walkFiles("artworks", p => /\.(?:html|js|css|txt|png)$/.test(p)),
+  ...await walkFiles("artworks/727-hunt/media", p => /\.(?:jpg|mp4)$/.test(p)),
   ...await walkFiles("en/artworks", p => /\.html$/.test(p)),
   "images/fuji-guide-hero.webp",
   "journey-light-model.js", "journey-light-events.js", "journey-light-events.css",
