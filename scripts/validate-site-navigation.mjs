@@ -1,8 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { execFileSync } from 'node:child_process';
+import { JSDOM } from 'jsdom';
 import { languages } from './shared/locales.mjs';
-import { commonTargetFailures, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
+import { commonTargetFailures, findSiteRuntimeSnapshot, renderSiteRuntimeForValidation, withSiteRuntimeSnapshots } from './shared/site-runtime-validation.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const siteRoot = "https://www.michikusa-travel.com/";
@@ -13,14 +15,18 @@ let runtimeChecked = 0;
 let thinChecked = 0;
 
 function renderedSiteHTML(html, relative) {
-  const rendered = renderSiteRuntimeForValidation({ appDir, html, relative });
+  const options = { appDir, html, relative };
+  const cached = findSiteRuntimeSnapshot(options);
+  const rendered = cached ? null : renderSiteRuntimeForValidation(options);
+  const snapshot = cached || rendered.snapshot;
+  const dom = rendered?.dom || new JSDOM(snapshot.html, { url: new URL(relative, siteRoot).href });
   try {
-    failures.push(...commonTargetFailures(rendered.document, { appDir, relative }));
+    failures.push(...commonTargetFailures(dom.window.document, { appDir, relative }));
     runtimeChecked += 1;
-    thinChecked += Number(rendered.thin);
-    return rendered.dom.serialize();
+    thinChecked += Number(snapshot.thin);
+    return snapshot.html;
   } finally {
-    rendered.dom.window.close();
+    dom.window.close();
   }
 }
 
@@ -37,6 +43,7 @@ function htmlFiles(dir = appDir) {
   });
 }
 
+async function validateNavigation() {
 for (const relative of htmlFiles()) {
   // Let closed JSDOM windows finish their queued cleanup before reading the next page.
   await new Promise(setImmediate);
@@ -73,3 +80,18 @@ if (failures.length) {
 }
 
 console.log(`Site navigation valid: ${checked} shared headers use canonical train-selection URLs and labels; ${runtimeChecked} runtime/source pages (${thinChecked} thin spots) expose their common links and images.`);
+
+}
+
+await withSiteRuntimeSnapshots(async () => {
+  if (process.argv.includes('--with-language-checks') || process.argv.includes('--language-only')) {
+    for (const script of ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales', 'validate-mieru', 'validate-sparkling-locales']) {
+      await import(`./${script}.mjs`);
+      if (process.exitCode) throw new Error(`${script} failed`);
+    }
+    execFileSync(process.execPath, ['--test', 'scripts/editorial-notes.test.mjs'], { cwd: appDir, stdio: 'inherit' });
+    await import('./validate-live-sitemap.mjs');
+    if (process.exitCode) throw new Error('Live sitemap validation failed');
+  }
+  if (!process.argv.includes('--language-only')) await validateNavigation();
+});

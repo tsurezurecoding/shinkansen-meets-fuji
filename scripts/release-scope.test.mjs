@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyVersionReferenceChanged, assertReusableVerification } from './release-scope.mjs';
+import { chooseReleaseScope, onlyVersionReferenceChanged, assertReusableVerification, assertReleasePlanContract } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
 test('727 edits select their generator, output contract, version and manifest checks', () => {
@@ -50,6 +50,36 @@ test('release infrastructure changes test release behavior without generating un
 test('documentation and empty changes do not run product tests', () => {
   assert.deepEqual(chooseReleaseScope([change('README.md')]).commands, []);
   assert.deepEqual(chooseReleaseScope([]).commands, []);
+});
+
+test('every release scope explicitly declares whether npm dependencies are needed', () => {
+  const scopeOf = changes => chooseReleaseScope(changes).needsDependencies;
+  assert.equal(scopeOf([]), false, 'none');
+  assert.equal(scopeOf([change('.github/workflows/quality-gate.yml')]), false, 'release infrastructure');
+  assert.equal(scopeOf([change('README.md')]), false, 'documentation');
+  assert.equal(scopeOf([change('unknown-input.txt')]), false, 'unmapped');
+  assert.equal(scopeOf([change('727-collection.css')]), true, '727 collection');
+  assert.equal(scopeOf([change('scripts/shared/responsive-photos.mjs')]), true, 'responsive photo dedup');
+  assert.equal(scopeOf([change('scripts/shared/android-app-invite-copy.mjs')]), true, 'Android invitation copy');
+  assert.equal(scopeOf([change('package.json')]), true, 'full dependency validation');
+  assert.equal(scopeOf([change('data.js'), { status: 'A', path: 'data/spot-pages/new-spot.ja.js' }]), true, 'full catalogue validation');
+});
+
+test('release plan contract rejects an omitted dependency decision', () => {
+  assert.doesNotThrow(() => assertReleasePlanContract({ needsDependencies: false }));
+  assert.throws(() => assertReleasePlanContract({}), /explicitly declare needsDependencies/);
+  assert.throws(() => assertReleasePlanContract({ needsDependencies: 'true' }), /explicitly declare needsDependencies/);
+});
+
+test('workflow installs from the plan dependency output without duplicating scope names', () => {
+  const yaml = fs.readFileSync(new URL('../.github/workflows/quality-gate.yml', import.meta.url), 'utf8');
+  const planner = fs.readFileSync(new URL('./release-scope.mjs', import.meta.url), 'utf8');
+  assert.match(planner, /needs_dependencies=\$\{plan\.needsDependencies\}/);
+  const installStep = yaml.match(/- name: Install dependencies for affected product checks\n([\s\S]*?)(?=\n      - name:)/)?.[1];
+  assert(installStep);
+  assert.match(installStep, /steps\.plan\.outputs\.needs_dependencies == 'true'/);
+  for (const scope of ['full', '727-collection', 'responsive-photo-dedup', 'android-invite-copy'])
+    assert(!installStep.includes(scope), `install step must not hardcode ${scope}`);
 });
 
 test('photo alias dedup checks every consuming generator and the affected translated route', () => {
