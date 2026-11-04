@@ -98,12 +98,12 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       - name: Stage verified checkout for Pages
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.plan.outputs.pages_candidate == 'true'
         run: |
           mkdir "$RUNNER_TEMP/pages-site"
           git archive HEAD | tar -x -C "$RUNNER_TEMP/pages-site"
       - name: Save verified Pages candidate
-        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.plan.outputs.pages_candidate == 'true'
         uses: actions/upload-pages-artifact@v3
         with:
           name: pages-candidate-${{ github.sha }}-${{ github.run_attempt }}

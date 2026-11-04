@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import { isDeepStrictEqual } from 'node:util';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shaPattern = /^[0-9a-f]{40}$/;
@@ -20,26 +21,81 @@ const photoDedup = new Set(['scripts/shared/responsive-photos.mjs', 'scripts/res
   'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', '.github/workflows/quality-gate.yml']);
 const photoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/fuji-paper-mills\.html$/;
 const node = (...args) => ['node', ...args];
+const validationFiles = new Set(['scripts/shared/site-runtime-validation.mjs',
+  'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs']);
+const languageCommands = ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales',
+  'validate-mieru', 'validate-sparkling-locales'].map(name => `node scripts/${name}.mjs`)
+  .concat('node --test scripts/editorial-notes.test.mjs', 'node scripts/validate-live-sitemap.mjs');
 
-export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) {
+export function classifyPackageChange(before, after) {
+  if (!before || !after) return 'dependencies';
+  const previous = JSON.parse(before), next = JSON.parse(after);
+  const { scripts: oldScripts = {}, ...oldRuntime } = previous;
+  const { scripts: newScripts = {}, ...newRuntime } = next;
+  if (!isDeepStrictEqual(oldRuntime, newRuntime)) return 'dependencies';
+  const allowed = new Set(['verify', 'check', 'check:site', 'check:language', 'check:language-navigation',
+    'check:navigation', 'check:syntax', 'check:all-syntax']);
+  const changed = [...new Set([...Object.keys(oldScripts), ...Object.keys(newScripts)])]
+    .filter(key => oldScripts[key] !== newScripts[key]);
+  if (changed.some(key => !allowed.has(key) || !(key in newScripts))) return 'unmapped';
+  const expand = (command, scripts, seen = []) => command.split('&&').flatMap(part => {
+    const value = part.trim(), alias = /^npm run ([\w:-]+)$/.exec(value)?.[1];
+    if (alias) {
+      if (seen.includes(alias) || typeof scripts[alias] !== 'string') throw new Error('Invalid script alias');
+      return expand(scripts[alias], scripts, [...seen, alias]);
+    }
+    if (value === 'node scripts/validate-site-navigation.mjs --language-only') return languageCommands;
+    if (value === 'node scripts/validate-site-navigation.mjs --with-language-checks')
+      return [...languageCommands, 'node scripts/validate-site-navigation.mjs'];
+    return value;
+  });
+  const canonical = (command, scripts) => {
+    const commands = new Set(expand(command, scripts));
+    if (commands.has('node scripts/check-first-party-syntax.mjs'))
+      for (const check of expand(oldScripts['check:syntax'] || '', oldScripts)) commands.delete(check);
+    return [...commands].sort();
+  };
+  try {
+    const existing = changed.filter(key => key in oldScripts);
+    if (existing.some(key => !isDeepStrictEqual(canonical(oldScripts[key], oldScripts), canonical(newScripts[key], newScripts)))) return 'unmapped';
+    const covered = new Set(expand(oldScripts.verify || '', oldScripts));
+    if (changed.filter(key => !(key in oldScripts)).some(key => expand(newScripts[key], newScripts).some(command => !covered.has(command)))) return 'unmapped';
+    return 'validation-commands';
+  } catch { return 'unmapped'; }
+}
+
+export function chooseReleaseScope(changes, { versionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
-  if (!files.length) return { scope: 'none', needsDependencies: false, reason: 'No changed files', commands: [] };
-  if (files.every(file => infra.has(file))) return {
-    scope: 'release-infrastructure', needsDependencies: false, reason: 'Only release execution and its tests changed; product content is unchanged',
+  const packageKind = files.includes('package.json') ? classifyPackageChange(packageBefore, packageAfter) : null;
+  if (packageKind === 'unmapped') return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false,
+    reason: 'Define affected checks for the changed npm command behavior; a script edit is not a dependency upgrade', commands: [] };
+  const checkFiles = files.filter(file => file !== 'package.json' || packageKind !== 'validation-commands');
+  if (!files.length) return { scope: 'none', needsDependencies: false, pagesCandidate: false, reason: 'No changed files', commands: [] };
+  if (checkFiles.every(file => infra.has(file))) return {
+    scope: 'release-infrastructure', needsDependencies: false, pagesCandidate: false, reason: 'Only release execution and its tests changed; product content is unchanged',
     commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/release-artifact.test.mjs')],
+  };
+  if (checkFiles.every(file => infra.has(file) || validationFiles.has(file))) return {
+    scope: 'validation-infrastructure', needsDependencies: true, pagesCandidate: false,
+    reason: 'Validation helper and its consumers only; product generators and assets are unchanged',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/release-artifact.test.mjs',
+      'scripts/shared/site-runtime-validation.test.mjs', 'scripts/food-country-locales.test.mjs',
+      'scripts/sanyo-castle-pages.test.mjs', 'scripts/starter-locales.test.mjs'),
+      ...['validate-content', 'validate-spot-page-shared', 'validate-727-collection', 'validate-sparkling-dreams']
+        .map(name => node(`scripts/${name}.mjs`)), node('scripts/validate-site-navigation.mjs', '--with-language-checks')],
   };
   if (files.includes('scripts/shared/android-app-invite-copy.mjs') && changes.every(({ path, status }) =>
     status === 'M' && ['scripts/shared/android-app-invite-copy.mjs', 'android-app-invite.js',
       'site-runtime.json', 'content-manifest.json', 'scripts/release-scope.mjs', '.github/workflows/quality-gate.yml'].includes(path))) return {
-    scope: 'android-invite-copy', needsDependencies: true, reason: 'Existing invitation locale copy, shared bundle and its runtime/distribution hashes only',
+    scope: 'android-invite-copy', needsDependencies: true, pagesCandidate: true, reason: 'Existing invitation locale copy, shared bundle and its runtime/distribution hashes only',
     commands: [...syntax, node('--test', 'scripts/android-app-invite.test.mjs', 'scripts/release-scope.test.mjs'),
       node('scripts/generate-android-app-invite-assets.mjs', '--check'),
       node('scripts/generate-site-runtime.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
   };
   if (changes.every(({ path, status }) => status === 'M' && (photoDedup.has(path) || photoPage.test(path))
     || status === 'D' && /^images\/thumbs\/display\/[^/]+\.webp$/.test(path))) return {
-    scope: 'responsive-photo-dedup', needsDependencies: true,
+    scope: 'responsive-photo-dedup', needsDependencies: true, pagesCandidate: true,
     reason: 'Responsive source alias sharing: thumbnail index, shared page payloads, Fuji paper mills editions and distribution references',
     commands: [...syntax, node('--test', 'scripts/responsive-photos.test.mjs', 'scripts/release-scope.test.mjs'),
       node('scripts/generate-gallery-thumbnails.mjs', '--check'),
@@ -51,32 +107,38 @@ export function chooseReleaseScope(changes, { versionOnly = () => false } = {}) 
   if (changes.every(change => change.status === 'M' && (family.has(change.path) || familyPage.test(change.path) || change.path === 'scripts/release-scope.mjs')
     || change.status === 'A' && change.path === 'images/affiliate/popondetta-8710.jpg')
     && files.filter(file => localizedPage.test(file)).every(versionOnly)) return {
-    scope: '727-collection', needsDependencies: true, reason: '727 generator, page, local assets and their version references only',
+    scope: '727-collection', needsDependencies: true, pagesCandidate: true, reason: '727 generator, page, local assets and their version references only',
     commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs'), node('scripts/generate-727-page.mjs', '--check'),
       node('scripts/validate-727-collection.mjs'), node('scripts/sync-asset-versions.mjs', '--check'),
       node('scripts/check-content-manifest.mjs')],
   };
   if (files.every(file => /^(?:README|CHANGELOG|AGENTS)\.md$/.test(file))) return {
-    scope: 'documentation', needsDependencies: false, reason: 'Repository instructions only; no product input changed', commands: [],
+    scope: 'documentation', needsDependencies: false, pagesCandidate: false, reason: 'Repository instructions only; no product input changed', commands: [],
   };
   // A new registered window spot changes the global catalogue, runtime
   // guidance, counts, stamps and every edition's shared navigation.
   if (files.includes('data.js') && changes.some(({ path, status }) => status === 'A' && /^data\/spot-pages\/[^/]+\.ja\.js$/.test(path))) return {
-    scope: 'full', needsDependencies: true,
+    scope: 'full', needsDependencies: true, pagesCandidate: true,
     reason: 'A registered SPOTS addition affects all catalogue, runtime guidance, stamp, shared navigation and language consumers',
     commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs')],
   };
   // A dependency/runtime upgrade can affect every validator. Other unknown
   // changes require an impact contract, rather than silently running everything.
   if (files.some(file => ['package.json', 'package-lock.json'].includes(file))) return {
-    scope: 'full', needsDependencies: true, reason: 'The package/runtime dependency contract changed; all consumers require validation',
+    scope: 'full', needsDependencies: true, pagesCandidate: true, reason: 'The package/runtime dependency contract changed; all consumers require validation',
     commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs')],
   };
-  return { scope: 'unmapped', needsDependencies: false, reason: `Define affected generators, consumers and checks before execution: ${files.join(', ')}`, commands: [] };
+  return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false, reason: `Define affected generators, consumers and checks before execution: ${files.join(', ')}`, commands: [] };
 }
 
 export function assertReleasePlanContract(plan) {
   if (typeof plan.needsDependencies !== 'boolean') throw new Error('Release plan must explicitly declare needsDependencies');
+  if (typeof plan.pagesCandidate !== 'boolean') throw new Error('Release plan must explicitly declare pagesCandidate');
+}
+
+export function needsPagesCandidate(plan) {
+  assertReleasePlanContract(plan);
+  return plan.pagesCandidate;
 }
 
 export function onlyVersionReferenceChanged(before, after) {
@@ -91,7 +153,12 @@ export function createReleasePlan(base) {
   const fields = execFileSync('git', ['diff', '--name-status', '--no-renames', '-z', base, head], { cwd: root, encoding: 'utf8' }).split('\0');
   const changes = [];
   for (let i = 0; i + 1 < fields.length; i += 2) if (fields[i]) changes.push({ status: fields[i], path: fields[i + 1] });
-  const plan = chooseReleaseScope(changes, { versionOnly: file => onlyVersionReferenceChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)) });
+  const packageChange = changes.find(change => change.path === 'package.json');
+  const plan = chooseReleaseScope(changes, {
+    versionOnly: file => onlyVersionReferenceChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    ...(packageChange ? { packageBefore: packageChange.status === 'A' ? null : git('show', `${base}:package.json`),
+      packageAfter: packageChange.status === 'D' ? null : git('show', `${head}:package.json`) } : {}),
+  });
   return { version: 1, base, head, tree: git('rev-parse', 'HEAD^{tree}'), changes, ...plan };
 }
 
@@ -134,7 +201,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     if (plan.scope === 'unmapped') throw new Error(plan.reason);
     fs.writeFileSync(output, JSON.stringify(plan, null, 2) + '\n');
     console.log(JSON.stringify(plan, null, 2));
-    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `scope=${plan.scope}\nneeds_dependencies=${plan.needsDependencies}\n`);
+    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `scope=${plan.scope}\nneeds_dependencies=${plan.needsDependencies}\npages_candidate=${needsPagesCandidate(plan)}\n`);
     if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
       `## Validation scope: ${plan.scope}\n${plan.reason}\n\n${plan.commands.map(c => '- `' + c.join(' ') + '`').join('\n')}\n`);
   } else if (mode === 'verify') runPlan(JSON.parse(fs.readFileSync(arg, 'utf8')), output);
