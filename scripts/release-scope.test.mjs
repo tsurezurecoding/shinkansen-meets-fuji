@@ -1,9 +1,22 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
+import { chooseReleaseScope, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+test('artwork chrome extraction preserves content and is limited to the two merged pages', () => {
+  const header='<header class="topbar"><a href="../../start.html">Start</a></header>',footer='<footer class="footer">Footer</footer>',before=header+'\n<main>Game</main>\n'+footer+'\n</body>';
+  const shell=JSON.stringify({components:{'header-artworks-727-hunt':header.replaceAll('../../','__MADO_ROOT__'),'footer-artworks-727-hunt':footer}});
+  for(const file of ['artworks/727-hunt/index.html','artworks/memory-express/index.html']){
+    const config={assets:['shared-ui/ja.shell.js'],root:'../../',lang:'ja',route:file,mounts:[{host:'chrome-0',component:'header-artworks-727-hunt',kind:'header'},{host:'chrome-1',component:'footer-artworks-727-hunt',kind:'footer'}]};
+    const after=before.replace(header,'<header class="topbar" data-site-chrome-host="chrome-0"></header>').replace(footer,'<footer class="footer" data-site-chrome-host="chrome-1"></footer>').replace('</body>','<script id="mado-shared-ui-config" type="application/json">'+JSON.stringify(config)+'</script>\n<script src="../../site-runtime-loader.js?v=a8ffb108" defer></script>\n</body>');
+    assert(onlyPreservedArtworkChromeExtraction(file,before,after,shell));
+    assert(!onlyPreservedArtworkChromeExtraction(file,before,after.replace('Game','Changed game'),shell));
+    assert(!onlyPreservedArtworkChromeExtraction(file,before,after,shell.replace('Start','Changed navigation')));
+    assert(!onlyPreservedArtworkChromeExtraction('artworks/unrelated/index.html',before,after,shell));
+    assert.equal(chooseReleaseScope(['scripts/generate-story-window-pages.mjs',file].map(change),{chromeExtractionOnly:path=>onlyPreservedArtworkChromeExtraction(path,before,after,shell)}).scope,'story-window');
+  }
+});
 test('story menu rebinding requires byte-identical menu content and unchanged page content', () => {
   const file='sudoori/index.html', before='<script id="mado-shared-ui-config" type="application/json">{"mounts":[{"menu":"old-menu"}]}</script>', after=before.replace('old-menu','new-menu');
   const oldShell='{"menus":{"old-menu":"Same menu"}}', nextShell='{"menus":{"new-menu":"Same menu"}}';

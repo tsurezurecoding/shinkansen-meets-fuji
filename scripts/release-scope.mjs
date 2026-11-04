@@ -64,7 +64,7 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const storyIntegrationFiles = new Set([
@@ -89,7 +89,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, marukoL
     const allowed = new Set(['build:pages','check:stories','check:site']);
     storyPackage = isDeepStrictEqual(oldRest,newRest) && [...new Set([...Object.keys(oldScripts),...Object.keys(newScripts)])].every(key=>allowed.has(key)||oldScripts[key]===newScripts[key]);
   }
-  if (storyChange && storyPackage && changes.every(({path:file,status}) => status !== 'D' && (storyIntegrationFiles.has(file) || storyPage.test(file) || storyInput.test(file) || storyShells.has(file) || /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/.test(file) || /\.(?:html|tpl)$/.test(file) && versionOnly(file) || marukoLinkOnly(file) || menuReferenceOnly(file)))) return {
+  if (storyChange && storyPackage && changes.every(({path:file,status}) => status !== 'D' && (storyIntegrationFiles.has(file) || storyPage.test(file) || storyInput.test(file) || storyShells.has(file) || /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/.test(file) || /\.(?:html|tpl)$/.test(file) && versionOnly(file) || marukoLinkOnly(file) || menuReferenceOnly(file) || chromeExtractionOnly(file)))) return {
     scope:'story-window', needsDependencies:true, pagesCandidate:true,
     reason:'Localized story pages and four existing spot connections; shared asset-version consumers are checked without rerendering unrelated content',
     commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs'),node('--test','--test-name-pattern=native Maruko','scripts/generate-site-chrome.test.mjs'),
@@ -233,6 +233,26 @@ export function onlyPreservedChromeMenuChanged(file, before, after, beforeShell,
   } catch { return false; }
 }
 
+export function onlyPreservedArtworkChromeExtraction(file, before, after, shell) {
+  if (!['artworks/727-hunt/index.html','artworks/memory-express/index.html'].includes(file) || before.includes('id="mado-shared-ui-config"')) return false;
+  const configMatch=after.match(/<script id="mado-shared-ui-config" type="application\/json">([^<]+)<\/script>\n/);
+  const boot=after.match(/<script src="\.\.\/\.\.\/site-runtime-loader\.js\?v=[a-f0-9]{8}" defer><\/script>\n/);
+  if (!configMatch || !boot) return false;
+  try {
+    const expected={assets:['shared-ui/ja.shell.js'],root:'../../',lang:'ja',route:file,mounts:[{host:'chrome-0',component:'header-artworks-727-hunt',kind:'header'},{host:'chrome-1',component:'footer-artworks-727-hunt',kind:'footer'}]};
+    if (!isDeepStrictEqual(JSON.parse(configMatch[1]),expected)) return false;
+    let restored=after.replace(configMatch[0],'').replace(boot[0],'');
+    const normalize=text=>text.replace(/>\s+</g,'><').trim();
+    for (const tag of ['header','footer']) {
+      const expression=new RegExp('<'+tag+'\\b[^>]*>[\\s\\S]*?</'+tag+'>'),original=before.match(expression)?.[0],replacement=restored.match(expression)?.[0];
+      const encoded=shell.match(new RegExp('"'+tag+'-artworks-727-hunt":("(?:[^"\\\\]|\\\\.)*")'))?.[1];
+      if (!original || !replacement || !encoded || normalize(JSON.parse(encoded).replaceAll('__MADO_ROOT__','../../'))!==normalize(original)) return false;
+      restored=restored.replace(replacement,original);
+    }
+    return restored===before;
+  } catch { return false; }
+}
+
 export function createReleasePlan(base) {
   if (!shaPattern.test(base)) throw new Error('Base must be a full lowercase Git SHA');
   git('cat-file', '-e', `${base}^{commit}`);
@@ -245,6 +265,7 @@ export function createReleasePlan(base) {
     versionOnly: file => onlyVersionReferenceChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     marukoLinkOnly: file => changes.find(change => change.path === file)?.status === 'M' && onlyMarukoLocaleLinkChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     menuReferenceOnly: file => /^sudoori\//.test(file) && changes.find(change => change.path === file)?.status === 'M' && onlyPreservedChromeMenuChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`), git('show', `${base}:shared-ui/ja.shell.js`), git('show', `${head}:shared-ui/ja.shell.js`)),
+    chromeExtractionOnly: file => ['artworks/727-hunt/index.html','artworks/memory-express/index.html'].includes(file) && changes.find(change => change.path === file)?.status === 'M' && onlyPreservedArtworkChromeExtraction(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`), git('show', `${head}:shared-ui/ja.shell.js`)),
     ...(packageChange ? { packageBefore: packageChange.status === 'A' ? null : git('show', `${base}:package.json`),
       packageAfter: packageChange.status === 'D' ? null : git('show', `${head}:package.json`) } : {}),
   });
