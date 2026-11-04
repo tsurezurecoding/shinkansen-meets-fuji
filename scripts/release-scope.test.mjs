@@ -1,9 +1,42 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyVersionReferenceChanged, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
+import { chooseReleaseScope, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+test('story menu rebinding requires byte-identical menu content and unchanged page content', () => {
+  const file='sudoori/index.html', before='<script id="mado-shared-ui-config" type="application/json">{"mounts":[{"menu":"old-menu"}]}</script>', after=before.replace('old-menu','new-menu');
+  const oldShell='{"menus":{"old-menu":"Same menu"}}', nextShell='{"menus":{"new-menu":"Same menu"}}';
+  assert(onlyPreservedChromeMenuChanged(file,before,after,oldShell,nextShell));
+  assert(!onlyPreservedChromeMenuChanged(file,before,after,oldShell,nextShell.replace('Same','Different')));
+  assert(!onlyPreservedChromeMenuChanged(file,before,after+'changed body',oldShell,nextShell));
+  assert(!onlyPreservedChromeMenuChanged('en/foods.html',before,after,oldShell,nextShell));
+});
+test('story scope permits only the exact new Maruko destination in existing chrome', () => {
+  const file='shared-ui/fr.rail-castles.js', before='href="__MADO_ROOT__en/spots/maruko-bridge.html">Bridge';
+  const after=before.replace('__MADO_ROOT__en/','__MADO_ROOT__fr/');
+  assert(onlyMarukoLocaleLinkChanged(file,before,after));
+  assert(!onlyMarukoLocaleLinkChanged(file,before,after.replace('Bridge','Changed')));
+  assert(!onlyMarukoLocaleLinkChanged('shared-ui/en.rail-castles.js',before,after));
+  assert(onlyMarukoLocaleLinkChanged('fr/guide.html',before.replace('__MADO_ROOT__','../'),after.replace('__MADO_ROOT__','../')));
+  assert(!onlyMarukoLocaleLinkChanged('fr/guide.html',before.replace('__MADO_ROOT__','../'),after.replace('__MADO_ROOT__','../')+'unrelated'));
+  const files=['scripts/generate-story-window-pages.mjs',file].map(change);
+  assert.equal(chooseReleaseScope(files,{marukoLinkOnly:path=>onlyMarukoLocaleLinkChanged(path,before,after)}).scope,'story-window');
+  assert.equal(chooseReleaseScope(files,{marukoLinkOnly:path=>onlyMarukoLocaleLinkChanged(path,before,after+'unrelated')}).scope,'unmapped');
+});
+test('story integration maps its generators and rejects unrelated product changes', () => {
+  const files=['scripts/generate-story-window-pages.mjs','data/story-window/fr/ui.json','fr/stories/index.html','fr/spots/maruko-bridge.html','locales.js','scripts/generate-utility-locales.mjs','content-manifest.json'];
+  const plan=chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope,'story-window');
+  assert(plan.commands.some(command=>command.includes('scripts/validate-story-window.mjs')));
+  assert(plan.commands.some(command=>command.includes('scripts/check-content-manifest.mjs')));
+  assert(!plan.commands.some(command=>command.includes('verify')||command.includes('build:full')));
+  assert.equal(chooseReleaseScope([...files,'data.js'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'shared-ui/en.rail-castles.js'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'scripts/templates/site-chrome/en.shell/header-references.html.tpl'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'en/foods.html'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'en/foods.html'].map(change),{versionOnly:()=>true}).scope,'story-window');
+});
 test('727 edits select their generator, output contract, version and manifest checks', () => {
   const plan = chooseReleaseScope(['727-collection.css', '727-collection.html', 'en/727-collection.html', 'scripts/generate-727-page.mjs', 'content-manifest.json'].map(change));
   assert.equal(plan.scope, '727-collection');

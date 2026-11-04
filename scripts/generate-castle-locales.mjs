@@ -3,6 +3,7 @@ import {withPageAndroidAppInvite} from './shared/android-app-invite.mjs';
 // Source of truth: the overseas-traveler English edition plus reviewed translations.
 // Snapshot only first-party rendering, preserving photographs, credits and DOM behavior.
 import fs from 'node:fs';
+import {withStoryWindowLinks} from './shared/story-window.mjs';
 import { enOnly, episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
 import { YAMAZAKI_TRANSLATIONS } from './shared/yamazaki-locales.mjs';
 import path from 'node:path';
@@ -43,6 +44,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
   for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && (!enOnly.includes(route) || EXPANSION_ROUTES.includes(route)))] .filter(route => !requestedRoute || route === requestedRoute)) {
     const sceneryRoute = /^spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki(?:-seat-a)?)\.html$/.test(route);
     dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : everydayDictionaries[route] ? { ...commonDictionary, ...everydayDictionaries[route] } : EXPANSION_ROUTES.includes(route) ? { ...commonDictionary, ...expansionDictionary } : commonDictionary;
+    if (route === 'spots/maruko-bridge.html') dictionary = {...dictionary, ...JSON.parse(fs.readFileSync(path.join(root,'data/story-window',lang,'maruko.json'),'utf8'))};
     const dom = englishSnapshot(root, route);
     const doc = dom.window.document;
     // These editions ship a static article. Keep images usable without JS,
@@ -210,7 +212,7 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     html = html.replace(/<head[\s\S]*?<\/head>/, head => withArticleLocales(head, file, assetVersion('article-locales.js')));
     if (CONTENT_METADATA[file]) html = enhanceContentHead(html, file, root, {lang});
     html = withPageAndroidAppInvite(html,file);
-    html = finalizeSiteChrome(html,file,root);
+    html = finalizeSiteChrome(withStoryWindowLinks(html,file,root),file,root);
     const dest = path.join(root, file);
     if (check) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error(`Localized article stale: ${file}`); }
     else { fs.mkdirSync(path.dirname(dest), {recursive:true}); fs.writeFileSync(dest, html); }

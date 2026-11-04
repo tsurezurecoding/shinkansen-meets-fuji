@@ -1,3 +1,4 @@
+import {withStoryWindowLinks} from './shared/story-window.mjs';
 import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
 import { sanyoGallery } from "./shared/sanyo-discovery.mjs";
 import fs from "node:fs";
@@ -210,7 +211,7 @@ function writeFileIfChanged(target, content) {
   // endings the Japanese source happens to carry on disk, and a CRLF-contaminated source
   // silently pushes CRLF into the generated English page. git diff hides it (it normalizes
   // on read) but the content-manifest sha check fails later. Normalize on write instead.
-  const normalized = finalizeSiteChrome(content, path.relative(appDir, target).replaceAll("\\", "/"), appDir).split("\r\n").join("\n");
+  const normalized = finalizeSiteChrome(withStoryWindowLinks(content, path.relative(appDir, target).replaceAll("\\", "/"), appDir), path.relative(appDir, target).replaceAll("\\", "/"), appDir).split("\r\n").join("\n");
   if (fs.existsSync(target) && fs.readFileSync(target, "utf8") === normalized) return false;
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, normalized, "utf8");

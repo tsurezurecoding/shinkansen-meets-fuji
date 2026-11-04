@@ -4,6 +4,7 @@ import vm from 'node:vm';
 import { parse, serializeOuter } from 'parse5';
 import { withSiteRuntimeLoader } from './site-runtime-html.mjs';
 import { assetVersion } from './asset-version.mjs';
+import { languages, supported } from './locales.mjs';
 
 const ORIGIN = 'https://site-chrome.invalid';
 const ROOT_TOKEN = '__MADO_ROOT__';
@@ -28,9 +29,16 @@ export function readSiteChromePayload(appDir, asset) {
   const context = {}; context.window = context; vm.runInNewContext(fs.readFileSync(filename, 'utf8'), context, { filename });
   const payload = context.MADO_SHARED_UI;
   if (!payload || payload.version !== 1) throw new Error(`Invalid shared UI payload: ${asset}`);
+  const locale = languages.find(lang => lang.toLowerCase() === path.basename(asset).split('.')[0]);
   for (const [kind, menu] of [['components', false], ['menus', true]]) for (const key of Object.keys(payload[kind])) {
     const source = partPath(appDir, asset, key, menu);
     if (fs.existsSync(source)) payload[kind][key] = fs.readFileSync(source, 'utf8');
+    // Maruko now has native editions. Retain existing component identities and
+    // all other destinations while updating this former English fallback.
+    if (locale && locale !== 'ja' && locale !== 'en' && supported('spots/maruko-bridge.html').includes(locale)) {
+      payload[kind][key] = payload[kind][key].replaceAll(`${ROOT_TOKEN}en/spots/maruko-bridge.html`, `${ROOT_TOKEN}${locale}/spots/maruko-bridge.html`);
+      payload[kind][key] = payload[kind][key].replace(/<a\b[^>]*>/g, tag => tag.includes(`href="${ROOT_TOKEN}${locale}/spots/maruko-bridge.html"`) ? tag.replace('hreflang="en"', `hreflang="${locale}"`) : tag);
+    }
   }
   return payload;
 }
@@ -51,7 +59,22 @@ function parseDocument(html, file) {
   return { document, lang: attr(htmlNode, 'lang') || '', base: base.href, root: '../'.repeat(depth) };
 }
 function applyReplacements(html, replacements) { for (const edit of [...replacements].sort((a,b) => b.start - a.start)) html = html.slice(0,edit.start) + edit.text + html.slice(edit.end); return html; }
+function localizeMarukoArticleLinks(html, file) {
+  const locale=file.split('/')[0];
+  if (!languages.includes(locale) || ['ja','en'].includes(locale) || !supported('spots/maruko-bridge.html').includes(locale) || !html.includes('/spots/maruko-bridge.html')) return html;
+  const parsed=parseDocument(html,file), edits=[];
+  walk(parsed.document,node=>{
+    if(node.tagName!=='a'||!node.sourceCodeLocation?.startTag)return;
+    for(let parent=node;parent;parent=parent.parentNode)if(['lang-switch','guide-lang-menu','article-lang-menu','utility-lang-menu'].some(name=>hasClass(parent,name)))return;
+    const href=attr(node,'href');if(!href||/^(?:https?:|\/\/|mailto:|tel:)/.test(href))return;
+    if(!['/en/spots/maruko-bridge.html',`/${locale}/spots/maruko-bridge.html`].includes(new URL(href,parsed.base).pathname))return;
+    const location=node.sourceCodeLocation.startTag,tag=html.slice(location.startOffset,location.endOffset);
+    edits.push({start:location.startOffset,end:location.endOffset,text:tag.replaceAll('en/spots/maruko-bridge.html',`${locale}/spots/maruko-bridge.html`).replace('hreflang="en"',`hreflang="${locale}"`)});
+  });
+  return applyReplacements(html,edits);
+}
 export function expandSiteChrome(html, file, appDir) {
+  html=localizeMarukoArticleLinks(html,file);
   const parsed = parseDocument(html, file), configNode = find(parsed.document, n => attr(n, 'id') === 'mado-shared-ui-config');
   if (!configNode) return html;
   const config = JSON.parse(configNode.childNodes.map(n => n.value || '').join(''));

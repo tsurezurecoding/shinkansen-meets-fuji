@@ -64,9 +64,42 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const storyIntegrationFiles = new Set([
+    'locales.js','language-router.js','package.json','sitemap.xml','content-manifest.json','site-runtime.json','spot-page-runtime.json',
+    'scripts/generate-story-window-pages.mjs','scripts/shared/story-window.mjs','scripts/validate-story-window.mjs',
+    'scripts/generate-spot-pages.mjs','scripts/generate-language-mirrors.mjs','scripts/generate-castle-locales.mjs','scripts/generate-utility-locales.mjs',
+    'scripts/shared/castle-localization.mjs','scripts/shared/utility-localization.mjs','scripts/generate-content-manifest.mjs',
+    'scripts/content-metadata.json','scripts/templates/site-source/zukan.html.tpl','scripts/validate-site-navigation.mjs','scripts/validate-language-pages.mjs','scripts/validate-castle-locales.mjs','scripts/validate-utility-locales.mjs','scripts/audit-site.mjs',
+    'scripts/release-scope.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/shared/site-chrome.mjs','scripts/generate-site-chrome.test.mjs',
+  ]);
+  const storyPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:stories\/(?:index|godzilla|shogun|yurucamp|dragonball)\.html|zukan\.html|spots\/(?:kiyosu|sekigahara-battlefield|hamanako|maruko-bridge)\.html)$/;
+  const storyInput = /^(?:data\/story-window\/|images\/story-window\/|story-window(?:-[a-z]+)?\.(?:js|css)$)/;
+  // The new pages reuse ten shell payloads. The four translated spot hosts
+  // share one new rail variant whose Maruko destination now has a local edition.
+  const storyShells = new Set([...['ja','en','zh-hant','zh-hans','ko','th','fr','de','es','it'].map(lang=>`shared-ui/${lang}.shell.js`), ...['zh-hant','zh-hans','ko','th','fr','de','es','it'].map(lang=>`shared-ui/${lang}.rail-spots-hamanako.js`)]);
+  const storyChange = files.some(file => file === 'scripts/generate-story-window-pages.mjs' || file.startsWith('data/story-window/'));
+  let storyPackage = !files.includes('package.json');
+  if (!storyPackage && packageBefore && packageAfter) {
+    const before = typeof packageBefore === 'string' ? JSON.parse(packageBefore) : packageBefore;
+    const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : packageAfter;
+    const {scripts: oldScripts, ...oldRest} = before, {scripts: newScripts, ...newRest} = after;
+    const allowed = new Set(['build:pages','check:stories','check:site']);
+    storyPackage = isDeepStrictEqual(oldRest,newRest) && [...new Set([...Object.keys(oldScripts),...Object.keys(newScripts)])].every(key=>allowed.has(key)||oldScripts[key]===newScripts[key]);
+  }
+  if (storyChange && storyPackage && changes.every(({path:file,status}) => status !== 'D' && (storyIntegrationFiles.has(file) || storyPage.test(file) || storyInput.test(file) || storyShells.has(file) || /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/.test(file) || /\.(?:html|tpl)$/.test(file) && versionOnly(file) || marukoLinkOnly(file) || menuReferenceOnly(file)))) return {
+    scope:'story-window', needsDependencies:true, pagesCandidate:true,
+    reason:'Localized story pages and four existing spot connections; shared asset-version consumers are checked without rerendering unrelated content',
+    commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs'),node('--test','--test-name-pattern=native Maruko','scripts/generate-site-chrome.test.mjs'),
+      node('scripts/generate-story-window-pages.mjs','--check'),node('scripts/validate-story-window.mjs'),
+      ...['kiyosu','sekigahara-battlefield','hamanako','maruko-bridge'].map(id=>node('scripts/generate-castle-locales.mjs','--route',`spots/${id}.html`,'--check')),
+      node('scripts/generate-utility-locales.mjs','--route','zukan.html','--check'),
+      node('scripts/generate-site-chrome.mjs','--check'),
+      node('scripts/validate-site-navigation.mjs','--with-language-checks'),node('scripts/audit-site.mjs'),
+      node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')],
+  };
   const packageKind = files.includes('package.json') ? classifyPackageChange(packageBefore, packageAfter) : null;
   if (packageKind === 'unmapped') return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false,
     reason: 'Define affected checks for the changed npm command behavior; a script edit is not a dependency upgrade', commands: [] };
@@ -142,8 +175,47 @@ export function needsPagesCandidate(plan) {
 }
 
 export function onlyVersionReferenceChanged(before, after) {
-  const normalize = text => text.replace(/(727-collection\.css\?v=)[^\s"'<>]+/g, '$1VERSION');
+  const normalize = text => text.replace(/((?:727-collection\.css|locales\.js|language-router\.js|utility-data\.js)\?v=)[^\s"'<>]+/g, '$1VERSION');
   return before !== after && normalize(before) === normalize(after);
+}
+
+export function onlyMarukoLocaleLinkChanged(file, before, after) {
+  const shared = file.match(/^(?:shared-ui\/|scripts\/templates\/site-chrome\/)(de|es|fr|it|ko|th|zh-hans|zh-hant)\./);
+  const page = file.match(/^(?:scripts\/templates\/site-source\/)?(de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/[^?]+\.html(?:\.tpl)?$/);
+  const edition = shared?.[1] || page?.[1];
+  if (!edition) return false;
+  const locale = {'zh-hans':'zh-Hans','zh-hant':'zh-Hant'}[edition] || edition;
+  const normalize = text => text.replace(/((?:727-collection\.css|locales\.js|language-router\.js|utility-data\.js)\?v=)[^\s"'<>]+/g, '$1VERSION');
+  let expected = normalize(before);
+  for(const attribute of ['href','data-site-chrome-item'])for(const prefix of ['__MADO_ROOT__','../','../../','../../../','/',''])for(const quote of ['"','\\"'])expected=expected.replaceAll(`${attribute}=${quote}${prefix}en/spots/maruko-bridge.html${quote}`,`${attribute}=${quote}${prefix}${locale}/spots/maruko-bridge.html${quote}`);
+  if(expected===normalize(before))return false;
+  for (const prefix of ['__MADO_ROOT__','../','../../','../../../','/','']) for (const quote of ['"', '\\"']) {
+    const anchor = `href=${quote}${prefix}${locale}/spots/maruko-bridge.html${quote} hreflang=${quote}en${quote}`;
+    expected = expected.replaceAll(anchor, anchor.replace(`hreflang=${quote}en${quote}`, `hreflang=${quote}${locale}${quote}`));
+  }
+  return before !== after && expected === normalize(after);
+}
+
+export function onlyPreservedChromeMenuChanged(file, before, after, beforeShell, afterShell) {
+  if (!/^sudoori\/(?:index|stories\/(?:aisho|koura|nishio|sekigahara|shimamoto|tanna))\.html$/.test(file)) return false;
+  const config = html => JSON.parse(html.match(/<script id="mado-shared-ui-config" type="application\/json">([^<]+)<\/script>/)?.[1] || '{}');
+  const template = (shell, key) => {
+    if (!/^[\w-]+$/.test(key || '')) return null;
+    const value = shell.match(new RegExp('"' + key + '":("(?:[^"\\\\]|\\\\.)*")'))?.[1];
+    return value ? JSON.parse(value) : null;
+  };
+  try {
+    const old = config(before), next = config(after);
+    let expected = before, rebound = false;
+    for (let i=0;i<(old.mounts||[]).length;i++) {
+      const from=old.mounts[i].menu, to=next.mounts?.[i]?.menu;
+      if (from === to) continue;
+      const oldTemplate=template(beforeShell,from), newTemplate=template(afterShell,to);
+      if (!oldTemplate || oldTemplate !== newTemplate) return false;
+      expected=expected.replaceAll(`"menu":"${from}"`, `"menu":"${to}"`);rebound=true;
+    }
+    return rebound && expected === after;
+  } catch { return false; }
 }
 
 export function createReleasePlan(base) {
@@ -156,6 +228,8 @@ export function createReleasePlan(base) {
   const packageChange = changes.find(change => change.path === 'package.json');
   const plan = chooseReleaseScope(changes, {
     versionOnly: file => onlyVersionReferenceChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    marukoLinkOnly: file => changes.find(change => change.path === file)?.status === 'M' && onlyMarukoLocaleLinkChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    menuReferenceOnly: file => /^sudoori\//.test(file) && changes.find(change => change.path === file)?.status === 'M' && onlyPreservedChromeMenuChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`), git('show', `${base}:shared-ui/ja.shell.js`), git('show', `${head}:shared-ui/ja.shell.js`)),
     ...(packageChange ? { packageBefore: packageChange.status === 'A' ? null : git('show', `${base}:package.json`),
       packageAfter: packageChange.status === 'D' ? null : git('show', `${head}:package.json`) } : {}),
   });

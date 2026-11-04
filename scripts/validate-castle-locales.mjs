@@ -13,7 +13,7 @@ const origin = 'https://www.michikusa-travel.com';
 const editions = ['ja', 'en', ...CASTLE_LOCALE_LANGS];
 // Exercise the scenery companions with the same photo, map and edition contracts.
 const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a'].map(id => `spots/${id}.html`);
-const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/') || ['jr-pass-fuji.html','hanabi.html'].includes(route))])];
+const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, "spots/maruko-bridge.html", ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/') || ['jr-pass-fuji.html','hanabi.html'].includes(route))])];
 const errors = [];
 const counts = { pages: 0, galleries: 0, maps: 0, lightboxes: 0, languageSwitches: 0 };
 const assert = (ok, label, message) => { if (!ok) errors.push(`${label}: ${message}`); };
@@ -197,11 +197,11 @@ for (const route of articleRoutes) {
       compare(imageSources(doc), imageSources(source.window.document), file, 'photograph assets/order differ from English source');
       compare(creditRecords(doc), creditRecords(source.window.document), file, 'photograph attribution/credit URLs differ from English source');
       const groups = ['utility', 'castle', 'episode', ...(sceneryRoutes.includes(route) ? ['scenery'] : []), ...(EXPANSION_ROUTES.includes(route) ? ['expansion'] : [])];
-      const dictionary = Object.assign({}, ...groups.map(group => JSON.parse(read(`scripts/locales/${group}-${lang}.json`))));
+      const dictionary = Object.assign({}, ...groups.map(group => JSON.parse(read(`scripts/locales/${group}-${lang}.json`))), route === 'spots/maruko-bridge.html' ? JSON.parse(read(`data/story-window/${lang}/maruko.json`)) : {});
       const bodyText = normalizeText(doc.body.textContent);
       for (const node of textNodes(source.window.document)) {
         const key = node.textContent.trim();
-        if (key.length < 30 || node.parentElement.closest('.lang-switch,.brand-mark,.show-credit,figcaption a:not([data-gallery-source-output])')) continue;
+        if (key.length < 30 || node.parentElement.closest('.lang-switch,.brand-mark,.show-credit,.story-window-connection,figcaption a:not([data-gallery-source-output])')) continue;
         assert(typeof dictionary[key] === 'string' && dictionary[key].trim().length > 0, file, `translation missing: ${key.slice(0, 90)}`);
         if (dictionary[key]) assert(bodyText.includes(normalizeText(dictionary[key])), file, `translated source text missing: ${key.slice(0, 90)}`);
       }
@@ -211,6 +211,9 @@ for (const route of articleRoutes) {
       counts.pages++;
     }
     if (dom !== source) dom.window.close();
+    // Release queued JSDOM cleanup between editions instead of retaining the
+    // entire synchronous pass until Node reaches its default heap limit.
+    await new Promise(setImmediate);
   }
   source.window.close();
 }

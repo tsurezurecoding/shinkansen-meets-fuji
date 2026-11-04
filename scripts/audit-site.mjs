@@ -63,7 +63,7 @@ function walk(dir, out = []) {
 const allFiles = walk(ROOT);
 const rel = (p) => path.relative(ROOT, p).split(path.sep).join('/');
 const fileSet = new Set(allFiles.map(rel));
-const htmlFiles = allFiles.filter((p) => p.endsWith('.html')).map(rel).sort();
+const htmlFiles = allFiles.filter((p) => p.endsWith('.html')).map(rel).filter(p => !p.startsWith('data/story-window/')).sort();
 
 // ---------- parse helpers ----------
 const readSrc = (r) => fs.readFileSync(path.join(ROOT, r), 'utf8');

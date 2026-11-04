@@ -1,3 +1,4 @@
+import {STORY_ROUTES,STORY_LANGUAGES,withStoryWindowLinks} from './shared/story-window.mjs';
 import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
 import {withHomeEntry} from './shared/home-entry.mjs';
 import { stripJaTrainWindow } from './shared/train-window-preview.mjs';
@@ -1135,7 +1136,7 @@ function thinSpotPageHTML(spot, lang) {
 }
 
 function spotPageHTML(spot, lang) {
-  return enhanceContentHead(thinSpotPageHTML(spot, lang), `${lang === 'en' ? 'en/' : ''}spots/${spot.id}.html`, appDir, { spot });
+  return enhanceContentHead(withStoryWindowLinks(thinSpotPageHTML(spot, lang), `${lang === "en" ? "en/" : ""}spots/${spot.id}.html`, appDir), `${lang === 'en' ? 'en/' : ''}spots/${spot.id}.html`, appDir, { spot });
 }
 
 function englishGuideIndexHTML() {
@@ -1955,7 +1956,8 @@ function sitemapXML() {
     .flatMap(([route, langs]) => langs.map(lang => ({ loc: `${siteRoot}/${lang}/${route}`, priority: "0.6", changefreq: "monthly", lastmod: ["spots/sagami-fuji.html","spots/left-fuji.html"].includes(route) ? "2026-11-01" : ["jr-pass-fuji.html","hanabi.html","spots/seta-karahashi.html","spots/musashi-kosugi-towers.html"].includes(route) ? "2026-10-31" : ["spots/tokyo-tower.html","spots/ota-fuji.html","spots/solar-ark.html","spots/shimizu-port-chikyu.html","spots/torikai-train-depot.html","spots/maibara-test-trains.html"].includes(route) ? "2026-10-30" : ["everyday-japan.html","arenani.html","727-collection.html","spots/727-board.html","ferris-wheels.html","spots/hirakata-park-wheel.html","tokyo-kyoto-stations.html","spots/kirin-beer-factory.html","spots/sapporo-shizuoka-factory.html","spots/lotte-shiga.html","spots/nichiban-anjo.html","spots/shizuoka-tea-fields.html"].includes(route) ? "2026-10-29" : ['it','th'].includes(lang) ? "2026-10-29" : /^(?:spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki|yamazaki-distillery)|drinks|beer-on-shinkansen)\.html$/.test(route) ? "2026-10-21" : "2026-10-12" })));
   const localizedUrls = translated.flatMap(lang => [...CASTLE_LOCALE_ROUTES, ...UTILITY_ROUTES, ...EXTRA_LOCALE_ROUTES].map(route => ({ loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['window-moments.html','reflections.html'].includes(route) ? '2026-10-31' : ['it','th'].includes(lang) && route !== 'live/index.html' ? '2026-10-29' : route === 'live/index.html' ? utilityLiveState[lang]?.lastmod || '2026-10-12' : ['de','es','zh-Hans','ko'].includes(lang) || ['index.html', 'journal.html', 'mieru.html'].includes(route) ? '2026-10-12' : '2026-10-11' })));
   const starterUrls = locales.starter.flatMap(lang => locales.starterRoutes.map(route => ({loc: `${siteRoot}/${lang}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`, priority: '0.6', changefreq: 'monthly', lastmod: ['zukan.html', 'live/index.html'].includes(route) ? '2026-10-28' : '2026-10-25'})));
-  const urls = [...starterUrls, ...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
+  const storyUrls = STORY_LANGUAGES.flatMap(lang => STORY_ROUTES.map(route => ({loc: `${siteRoot}/${lang === "ja" ? "" : lang + "/"}${route}`, priority: "0.6", changefreq: "monthly", lastmod: "2026-11-05"})));
+  const urls = [...storyUrls, ...starterUrls, ...baseUrls, ...spotUrls, ...sanyoUrls, ...localizedUrls, ...episodeUrls].map((item) => `  <url>
     <loc>${item.loc}</loc>
     <lastmod>${contentLastmod(item.loc, item.lastmod || DEFAULT_LASTMOD)}</lastmod>
     <changefreq>${item.changefreq}</changefreq>
@@ -1988,7 +1990,7 @@ function planSpotPage(spotOrId, lang, { requireExisting = false, preserveHead = 
 }
 
 function finalPageOutput(outputPath, content) {
-  return outputPath.endsWith(".html") ? finalizeSiteChrome(content, path.relative(appDir, outputPath).replaceAll("\\", "/"), appDir) : content;
+  return outputPath.endsWith(".html") ? finalizeSiteChrome(withStoryWindowLinks(content, path.relative(appDir, outputPath).replaceAll("\\", "/"), appDir), path.relative(appDir, outputPath).replaceAll("\\", "/"), appDir) : content;
 }
 
 function writeFileIfChanged(outputPath, content) {
