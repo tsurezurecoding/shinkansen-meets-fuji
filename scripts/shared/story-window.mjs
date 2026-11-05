@@ -1,10 +1,17 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import {languages, stripEdition} from './locales.mjs';
+import {languages, routes, stripEdition, canonicalRoute, supported} from './locales.mjs';
 import {assetVersion} from './asset-version.mjs';
-export const STORY_SLUGS = ['godzilla','shogun','yurucamp','dragonball'];
-export const STORY_ROUTES = ['stories/index.html', ...STORY_SLUGS.map(slug=>`stories/${slug}.html`)];
+export const STORY_ROUTES = routes.filter(route=>route.startsWith('stories/'));
+export const STORY_SLUGS = STORY_ROUTES.filter(route=>route!=='stories/index.html').map(route=>route.slice('stories/'.length,-'.html'.length));
 export const STORY_LANGUAGES = languages;
+// Pick the requested edition when present, otherwise English if available,
+// then the route's first available edition. Preserve query strings/fragments.
+export function localizedStoryRoute(route,lang){
+  const value=String(route),match=value.match(/^([^?#]*)([?#][\s\S]*)?$/),clean=canonicalRoute(match?.[1]||value),suffix=match?.[2]||'',available=supported(clean);
+  const edition=available.includes(lang)?lang:available.includes('en')?'en':available[0];
+  return `${edition==='ja'?'':`${edition}/`}${clean}${suffix}`;
+}
 export const STORY_MEDIA = {
   godzilla:{image:'shinjuku-street-kakidai.jpg',creditUrl:'https://commons.wikimedia.org/wiki/File:Shinjuku_Toho_Building_from_Godzilla_Street.jpg'},
   shogun:{image:'20261103_sekigahara-landscape_michikusa_45599.jpg'},

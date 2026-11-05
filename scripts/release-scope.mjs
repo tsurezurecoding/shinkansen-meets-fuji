@@ -22,7 +22,9 @@ const photoDedup = new Set(['scripts/shared/responsive-photos.mjs', 'scripts/res
 const photoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/fuji-paper-mills\.html$/;
 const node = (...args) => ['node', ...args];
 const validationFiles = new Set(['scripts/shared/site-runtime-validation.mjs',
-  'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs']);
+  'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs']);
+const storyRoutes = ['index', 'godzilla', 'shogun', 'yurucamp', 'dragonball'].map(slug => `stories/${slug}.html`);
+const storyNavigation = () => node('scripts/validate-site-navigation.mjs', ...storyRoutes.flatMap(route => ['--route', route]));
 const languageCommands = ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales',
   'validate-mieru', 'validate-sparkling-locales'].map(name => `node scripts/${name}.mjs`)
   .concat('node --test scripts/editorial-notes.test.mjs', 'node scripts/validate-live-sitemap.mjs');
@@ -67,6 +69,30 @@ export function classifyPackageChange(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  // Content-only edits do not change locale availability, host connections or
+  // common chrome. Those inputs deliberately remain in the wider integration plan.
+  const storyBody = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:godzilla|shogun|yurucamp|dragonball)\.html$/;
+  const storyOutput = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?stories\/(?:index|godzilla|shogun|yurucamp|dragonball)\.html$/;
+  if (files.some(file => storyBody.test(file)) && changes.every(({ path: file, status }) => status === 'M' &&
+    (storyBody.test(file) || storyOutput.test(file) || file === 'content-manifest.json'))) return {
+    scope: 'story-content', needsDependencies: true, pagesCandidate: true,
+    reason: 'Existing story bodies and generated editions only; all story language/metadata/asset contracts remain checked without unrelated language families',
+    commands: [node('scripts/generate-story-window-pages.mjs', '--check'),
+      node('scripts/validate-story-window.mjs', '--pages-only'), storyNavigation(),
+      node('scripts/check-content-manifest.mjs')],
+  };
+  const storyTooling = new Set(['scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
+    'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs',
+    'scripts/generate-story-window-pages.mjs', 'scripts/shared/story-window.mjs', 'scripts/shared/story-routing.test.mjs']);
+  if (files.length && files.some(file => storyTooling.has(file) && !infra.has(file)) &&
+      changes.every(({ path: file, status }) => status !== 'D' && storyTooling.has(file))) return {
+    scope: 'story-validation-tooling', needsDependencies: true, pagesCandidate: false,
+    reason: 'Story routing and scoped validation only; generator checks must prove the delivered story and catalogue outputs remain unchanged',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/validate-site-navigation.test.mjs',
+      'scripts/shared/story-routing.test.mjs', 'scripts/locales-contract.test.mjs'),
+      node('scripts/generate-story-window-pages.mjs', '--check'),
+      node('scripts/validate-story-window.mjs'), storyNavigation()],
+  };
   const storyIntegrationFiles = new Set([
     'locales.js','language-router.js','package.json','sitemap.xml','content-manifest.json','site-runtime.json','spot-page-runtime.json',
     'scripts/generate-story-window-pages.mjs','scripts/shared/story-window.mjs','scripts/validate-story-window.mjs',
