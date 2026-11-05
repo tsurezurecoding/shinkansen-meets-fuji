@@ -1742,10 +1742,24 @@ const SPOTS = [
     media: {
       heading: { ja: "動画で見る日向岡の街並み", en: "Hinataoka in motion" },
       description: {
-        ja: "相模平野越しの富士山から日向岡の街並みへ、車窓の視線が移っていく様子を動画で見られます。",
-        en: "Follow the train-window view as it shifts from Mt. Fuji across the Sagami Plain to the hillside homes of Hinataoka.",
+        ja: "富士山から日向岡へ移る昼の車窓と、丘の住宅に灯りが並ぶ夜の車窓を動画で見られます。",
+        en: "Watch the daytime view shift from Mt. Fuji to Hinataoka, then see the hillside homes lit after dark.",
       },
       videos: [
+        {
+          "kind": "youtube",
+          "id": "Kho1OEWqgvc",
+          "url": "https://www.youtube.com/watch?v=Kho1OEWqgvc",
+          "title": {
+            "ja": "[新幹線の車窓] 夜の日向岡住宅",
+            "en": "[新幹線の車窓] 夜の日向岡住宅"
+          },
+          "date": "2026-11-03",
+          "comment": {
+            "ja": "2026年11月3日撮影。丘の斜面に並ぶ家々の灯り。",
+            "en": "Filmed on 3 November 2026: lights of homes along the hillside."
+          }
+        },
         {
           kind: "youtube",
           id: "cN-cDp0GBik",
@@ -6729,50 +6743,50 @@ const SPOTS = [
   {
     id: "solar-ark",
     icon: "☀️",
-    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "もうすぐ見納め、太陽の船。", story: "名古屋を出て清洲城を過ぎ、新大阪方面では岐阜羽島を過ぎたころ、E席側の田園の上に、青くきらめく巨大な弧を描く構造物があらわれます。これがソーラーアーク。旧三洋電機（現・パナソニックホールディングス）が2001年に建設した太陽光発電モニュメントで、全長315m・最高部の高さ37m、約5,046枚の太陽電池パネルを外壁に張り巡らせた「新幹線から見える巨大な船」です。長らくPanasonicロゴを掲げていましたが、事業再編で外され、所有会社は2026年9月にも解体を始めると安八町へ伝えています。完了日は未発表ですが、四半世紀にわたって親しまれてきたこの車窓は、もうすぐ見られなくなる可能性があります。" },
-    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship, soon to disappear.", story: "After Nagoya and Kiyosu Castle, Solar Ark appears on the Seat E side as a huge, blue-glinting arch rising above the fields. Built in 2001 by the former Sanyo Electric (now part of Panasonic Holdings), it is a solar-power monument 315 meters long and up to 37 meters tall, its outer surface faced with roughly 5,046 photovoltaic panels — a 'giant ship you can see from the Shinkansen.' The Panasonic logo it once carried was removed after corporate restructuring, and the owner has told Anpachi Town that demolition could begin as early as September 2026. No completion date has been announced, but this quarter-century-old landmark may soon vanish from the window." },
+    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "パネルが外れゆく太陽の船。", story: "岐阜羽島付近のE席側に見えるソーラーアークは、旧三洋電機が2001年に建設した、全長315m・最高部37mの太陽光発電モニュメントです。約5,046枚の太陽電池パネルをまとった船形が車窓の目印でした。解体が進み、2026年11月3日の撮影ではパネルの一部が取り外された状態を記録しました。姿は工事の進行で変わるため、次の乗車時に同じ景色が見られるとは限りません。" },
+    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship being dismantled.", story: "Solar Ark is a ship-shaped solar-power monument near Gifu-Hashima, on the Seat E side. Built by Sanyo in 2001, it is 315 metres long and up to 37 metres tall, originally clad in about 5,046 solar panels. Dismantling is under way: our footage from 3 November 2026 records some panels already removed. Its appearance will change as work progresses, so a future ride may bring a different view." },
     pageTitle: {
-      ja: "解体予定のソーラーアークはまだ見える？新幹線E席の見納めガイド | 新幹線の窓",
-      en: "Solar Ark Demolition: Can You Still See It from the Shinkansen?",
+      ja: "解体中のソーラーアーク｜11月3日の車窓動画と見える場所 | 新幹線の窓",
+      en: "Solar Ark Dismantling: Train-Window Video from 3 November 2026",
     },
     pageHeading: {
-      ja: "解体予定のソーラーアーク——まだ見られる、太陽の船",
-      en: "Solar Ark is scheduled for demolition — can you still see it?",
+      ja: "解体中のソーラーアーク——パネルが外れゆく太陽の船",
+      en: "Solar Ark is being dismantled — a changing train-window landmark",
     },
     pageHeadingChunks: {
-      ja: ["解体予定の", "ソーラーアーク——", "まだ見られる、", "太陽の船"],
-      en: ["Solar Ark is scheduled for demolition —", "can you still see it?"],
+      ja: ["解体中の","ソーラーアーク——","パネルが外れゆく","太陽の船"],
+      en: ["Solar Ark is being dismantled —","a changing train-window landmark"],
     },
     metaDescription: {
-      ja: "取り壊しが決まったソーラーアークは、2026年9月24日にも新幹線のE席側に見えました。見える場所・時間の目安と、解体計画について分かっていることを紹介します。",
-      en: "Solar Ark was still visible on the Seat E side of the Shinkansen on September 24, 2026. See where to look, when it appears, and what is known about its planned demolition.",
+      ja: "ソーラーアークは解体が進み、2026年11月3日の車窓動画では太陽電池パネルの一部が取り外されています。新幹線E席側の見える場所と、解体前の映像との違いを紹介します。",
+      en: "Our Shinkansen footage from 3 November 2026 shows Solar Ark with some solar panels removed as dismantling progresses. Find the Seat E viewing location and compare earlier videos.",
     },
     sectionHeading: {
       ja: "ソーラーアークとは？ なぜ解体される？",
       en: "What is Solar Ark, and why is it being demolished?",
     },
     pageStory: {
-      ja: "ソーラーアークは、岐阜県安八郡安八町の三洋電機（旧・岐阜工場）敷地内に、2001年12月に完成した太陽光発電モニュメントです。取り壊しは決まり、2026年9月にも解体工事が始まると報じられましたが、着工日・工期・見られなくなる日は確認できていません。2026年9月24日には東海道新幹線のE席側に姿を確認し、動画も撮影しました。車窓から見えたことと、工事の着手状況は別の情報です。建設のきっかけは、三洋電機が2000年に販売していた住宅用太陽電池モジュールの一部で不具合が判明したこと。原因究明と再発防止に加え、太陽光発電への信頼回復の象徴として、当時の三洋電機が創立50周年記念事業と組み合わせて構想した、というのが公表されている経緯です。設計は谷口吉生建築設計研究所、施工は大林組。船底のようになだらかに反り上がる形状に約5,046枚の太陽電池パネルを組み込み、最大出力は約630kW、年間発電量は約53万kWh（一般家庭150世帯分程度）とされていました。",
-      en: "Solar Ark stands on the grounds of Sanyo Electric's former Gifu plant in Anpachi Town, Gifu Prefecture, and was completed in December 2001. Its demolition has been decided, and reports said work could begin in September 2026, but an exact start date, work period and final day of visibility have not been confirmed. We saw it on the Seat E side of the Tokaido Shinkansen on September 24, 2026, and filmed the view. Seeing the structure from the train does not establish whether demolition work has begun. The project began after a defect was identified in some residential solar modules Sanyo had sold in 2000. As part of investigating the root cause and preventing recurrence — and rebuilding public trust in photovoltaics — Sanyo tied the effort to its 50th-anniversary commemoration, according to publicly announced background. The structure was designed by Yoshio Taniguchi and Associates and built by Obayashi Corporation. Its softly upswept ship-like form carries roughly 5,046 solar panels, with a rated peak output of about 630 kW and reported annual output of around 530,000 kWh (comparable to the electricity used by about 150 average households).",
+      ja: "ソーラーアークは、岐阜県安八郡安八町の三洋電機（旧・岐阜工場）敷地内に、2001年12月に完成した太陽光発電モニュメントです。解体工事が進み、2026年11月3日の車窓動画では、太陽電池パネルの一部が取り外された状態を記録しました。完成時の姿を伝える過去の写真・動画と、解体中の姿を見比べられます。建設のきっかけは、三洋電機が2000年に販売していた住宅用太陽電池モジュールの一部で不具合が判明したこと。原因究明と再発防止に加え、太陽光発電への信頼回復の象徴として、当時の三洋電機が創立50周年記念事業と組み合わせて構想した、というのが公表されている経緯です。設計は谷口吉生建築設計研究所、施工は大林組。船底のようになだらかに反り上がる形状に約5,046枚の太陽電池パネルを組み込み、最大出力は約630kW、年間発電量は約53万kWh（一般家庭150世帯分程度）とされていました。",
+      en: "Solar Ark stands on the grounds of Sanyo Electric's former Gifu plant in Anpachi Town, Gifu Prefecture, and was completed in December 2001. Dismantling is now under way. Our train-window footage from 3 November 2026 records some solar panels already removed; earlier photos and videos on this page preserve its previous appearance. The project began after a defect was identified in some residential solar modules Sanyo had sold in 2000. As part of investigating the root cause and preventing recurrence — and rebuilding public trust in photovoltaics — Sanyo tied the effort to its 50th-anniversary commemoration, according to publicly announced background. The structure was designed by Yoshio Taniguchi and Associates and built by Obayashi Corporation. Its softly upswept ship-like form carries roughly 5,046 solar panels, with a rated peak output of about 630 kW and reported annual output of around 530,000 kWh (comparable to the electricity used by about 150 average households).",
     },
     explainer: {
       heading: { ja: "まだ見られる？ いつまで見られる？", en: "Can you still see it, and for how long?" },
       ja: [
-        "はい。2026年9月24日の乗車では、E席側にソーラーアークを見て動画を撮影できました。所有会社は安八町へ、9月にも解体を始める意向を伝えたと報じられています。ただし、車窓から見えたことだけでは工事の着手状況は分かりません。解体の順序や完了時期も確認できていないため、次の乗車時にも同じ姿が見られるとは限りません。",
+        "2026年11月3日の撮影では、船形の構造物はまだ車窓に見えますが、表面の太陽電池パネルの一部が取り外されています。以前はパネルで覆われていた面の変化を、下の参考動画で確認できます。これは撮影日の状態であり、現在も同じ姿で見られることを保証するものではありません。",
         "2011年、三洋電機はパナソニックの完全子会社となり、その後太陽電池・二次電池事業の再編が進みました。ソーラーアークにも長らく大きな「Panasonic」ロゴが掲げられていましたが、事業体制の変化にともなって外され、いまはロゴのない状態で立っています。ページ内の掲載写真には、2017年撮影の「Panasonicロゴがあった頃」の姿も参考として残しています。",
-        "所有会社は、老朽化と維持コストを理由に、安八町へソーラーアークの解体を伝えており、報道では2026年9月にも解体工事に着手する可能性があるとされています。ただし、正式な着工日・工期・跡地利用については本記事執筆時点で公式発表はありません。四半世紀にわたって東海道新幹線から見える名物景観だっただけに、地元・全国から惜しむ声が上がっています。",
+        "所有会社が安八町へ解体の意向を伝え、2026年9月にも着手すると報じられた計画は、11月3日の撮影時にはパネルの取り外しが見られる段階へ進んでいました。正確な着工日や完了日、車窓から姿が消える日は確認できていません。",
         "新大阪方面では岐阜羽島を過ぎてから、東京方面では岐阜羽島に着く前のE席側です。速度が出ているので数秒〜十数秒。掲載写真・動画は撮影当時の姿です。解体の進み方によっては同じ姿を見られない場合があります。",
       ],
       en: [
-        "Yes. We saw Solar Ark on the Seat E side and filmed it during a ride on September 24, 2026. The owner reportedly told Anpachi Town that demolition could begin in September. The train-window view alone does not tell us whether work has started. The dismantling sequence and completion date have not been confirmed, so the same view cannot be promised for a future ride.",
+        "In our footage from 3 November 2026, the ship-shaped structure is still visible, but some of its solar panels have been removed. The reference video below shows how the previously panel-covered surface is changing. This records the filming date, not a promise of the same view today.",
         "In 2011, Sanyo became a wholly owned subsidiary of Panasonic, and its solar and battery businesses were reorganized in the following years. Solar Ark carried a large 'Panasonic' logo for a long time, but as business structures shifted it was removed, and the monument now stands without branding. The photos on this page include a 2017 reference image from when the Panasonic logo was still in place.",
-        "The current owner has informed Anpachi Town of plans to dismantle Solar Ark, citing aging infrastructure and maintenance costs. News reports have said demolition could start as early as September 2026, but as of writing, no official schedule, work period or post-demolition use has been announced. Given its 25-year run as a trackside icon of the Tokaido Shinkansen, many locals and long-time riders are already voicing regret.",
+        "Earlier reports said the owner had informed Anpachi Town of demolition plans, with work potentially starting in September 2026. By the time of our 3 November filming, panel removal was visible. We have not confirmed the exact start date, completion date or the day the structure will disappear from the train window.",
         "Look on the Seat E side after Gifu-Hashima toward Shin-Osaka, or before Gifu-Hashima toward Tokyo. At speed, the glimpse lasts only a few seconds. The photos and videos show its appearance when recorded; demolition may change what can be seen.",
       ],
     },
     guideHighlight: {
-      ja: "清洲城を通り過ぎたら、E席側の田園の少し先を意識してください。地上から10m以上の位置に、青く光る細長い弧が突然現れます。晴れた日ほど太陽電池パネルの反射が強く、「見える限りの日数はもう限られているかもしれない」と思いながら眺めると、車窓が特別なものになります。",
-      en: "Once you pass Kiyosu Castle, focus a little farther out on the Seat E side across the fields. A long blue-glinting arch appears more than 10 meters above the ground. Sunny days make the panel reflections especially sharp. Watching it while knowing 'the number of trips left to see this may be limited' turns the moment into something special.",
+      ja: "新大阪方面は岐阜羽島を過ぎてから、東京方面は岐阜羽島に着く前に、E席側の田園の先を探してください。船底のように反り上がる長い構造物が目印です。解体中のため、パネルの覆い方や見える輪郭は撮影時から変わることがあります。",
+      en: "Look across the fields on the Seat E side just after Gifu-Hashima when heading toward Shin-Osaka, or before the station when heading toward Tokyo. Find the long, upswept ship-like structure. During dismantling, the panel covering and visible outline may change from the footage shown here.",
     },
     minutesFromTokyo: 103, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
     image: "images/20260530_solar_ark.jpg",
@@ -6843,10 +6857,24 @@ const SPOTS = [
     media: {
       heading: { ja: "動画で見るソーラーアーク", en: "Solar Ark in motion" },
       description: {
-        ja: "新幹線の車窓から見たソーラーアーク。2026年8月20日の映像と、9月24日の朝焼けの映像を紹介します。",
-        en: "See Solar Ark from the Shinkansen window in videos filmed on August 20 and at dawn on September 24, 2026.",
+        ja: "2026年11月3日の解体中の姿と、8月20日・9月24日の映像を見比べられます。11月の映像ではパネルの一部が取り外されています。",
+        en: "Compare the dismantling footage filmed on 3 November 2026 with the views from 20 August and 24 September. The November video records some panels already removed.",
       },
       videos: [
+        {
+          "kind": "youtube",
+          "id": "ixWDozxgh_w",
+          "url": "https://www.youtube.com/watch?v=ixWDozxgh_w",
+          "title": {
+            "ja": "[新刊の車窓] 解体中のソーラーアーク",
+            "en": "[新刊の車窓] 解体中のソーラーアーク"
+          },
+          "date": "2026-11-03",
+          "comment": {
+            "ja": "2026年11月3日撮影。太陽電池パネルの一部が取り外された、解体中の姿。",
+            "en": "Filmed on 3 November 2026: dismantling under way, with some solar panels removed."
+          }
+        },
         {
           kind: "youtube",
           id: "PNit3i2oeSw",
