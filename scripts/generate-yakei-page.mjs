@@ -37,7 +37,7 @@ const COPY = {
   "yk_tool_disclaimer": "<p class=\"yk-tool-disclaimer\">通過時刻は、選んだ列車の公式ダイヤ（各駅の着発）から計算した目安です。遅れがあるとずれます。日の入りは東海道沿線の平均で近似した簡易計算で、実際の空の明るさは天候にも左右されます。</p>",
   "color_title": "<h2 id=\"color-title\">今夜、何色か — 日替わりのライトアップ</h2>",
   "yk_section_lead": "<p class=\"yk-section-lead\"><span class=\"copy-chunk\">照明の色が日によって変わる車窓です。</span><span class=\"copy-chunk\">同じ列車に乗っても、</span><span class=\"copy-chunk\">乗る日が違えば違う色が見えます。</span></p>",
-  "copy12": "<img src=\"images/thumbs/20260629_tokyo_tower_night_michikusa.webp\" alt=\"夜の新幹線から見える東京タワー\" width=\"480\" height=\"320\" loading=\"lazy\" decoding=\"async\">",
+  "copy12": "<img src=\"images/thumbs/20261103_tokyo-tower_night_76831_michikusa.webp\" alt=\"ビルの間に光る東京タワー\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
   "copy13": "<figcaption>写真：新幹線の窓</figcaption>",
   "yk_spot_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">東京から3分</span><span class=\"yk-side yk-side-e\">E席側</span></p>",
   "copy14": "<h3>東京タワー</h3>",
@@ -46,8 +46,8 @@ const COPY = {
   "copy16": "<p>東京タワーの照明は毎日同じではありません。通常の「ランドマークライト」は夏が白色、冬が暖色。記念日やイベントの日は「ダイヤモンドヴェール」でピンクや虹色に変わります。<strong>乗る日によって色が違う</strong>、という意味では、このページで最初に出会う「今日だけの車窓」です。</p>",
   "copy17": "<p>発車直後で、まだ荷物を片付けている時間帯です。座ってすぐ右を見る、と決めておかないと通り過ぎます。</p>",
   "yk_more": "<p class=\"yk-more\"><a href=\"spots/tokyo-tower.html\">東京タワーの車窓ページを見る</a></p>",
-  "copy18": "<img src=\"images/thumbs/20250526_odawara_castle_letus10.webp\" alt=\"新幹線のA席側から見える小田原城\" width=\"480\" height=\"320\" loading=\"lazy\" decoding=\"async\">",
-  "yk_day_note": "<figcaption>写真：<a href=\"https://cotetu.seesaa.net/article/516754194.html\" target=\"_blank\" rel=\"noopener noreferrer\">新幹線の車窓から</a><span class=\"yk-day-note\">これは昼の写真です。夜の車窓写真はまだ集まっていません。</span></figcaption>",
+  "copy18": "<img src=\"images/20261103_odawara-castle_night_105629_michikusa.jpg\" alt=\"夜の車窓から見える小田原城の白い天守\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
+  "yk_day_note": "<figcaption>写真：新幹線の窓 · 2026-11-03<br>城を拡大表示。写真を押すと全体が見られます。</figcaption>",
   "yk_spot_meta2": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">東京から31分</span><span class=\"yk-side yk-side-a\">A席側</span></p>",
   "copy19": "<h3>小田原城</h3>",
   "yk_spot_lead2": "<p class=\"yk-spot-lead\">その日の色が決まっている</p>",
@@ -177,13 +177,19 @@ const COPY = {
   "copy90": "<li><strong>暗い側と明るい側がある</strong>市街地を抜けると、片側だけ真っ暗ということが起こります。E席側とA席側で見えるものが違うので、上の判定で席側も確認してください。</li>",
   "ykNoteTitle": "<h2 id=\"ykNoteTitle\">掲載について</h2>",
   "copy91": "<p>ライトアップの実施日・点灯時間・色は、年や事情によって変わります。このページでは日付を断定せず、各施設の公式案内へのリンクを置いています。乗車前に必ず公式でご確認ください。</p>",
-  "copy92": "<p>小田原城は、当サイトがまだ夜の車窓写真を持っていないため昼の写真を掲載しています。掛川城は、夜の車窓から撮影した写真を掲載しています。ライトアップが行われていても、車窓からの見え方は列車・時刻・天候によって変わります。夜の車窓写真をお持ちの方は、お問い合わせからご連絡いただけると助かります。</p>",
+  "copy92": "",
   "copy93": "<p>写真のうち清洲城は @asami_k920 さん、小田原城はブログ「新幹線の車窓から」の許諾済み写真です。それ以外は当サイトの撮影です。通過時刻と日の入りはいずれも目安の計算で、実際の見え方は列車・天候・座席位置によって変わります。</p>",
   "footer_brand": "<p class=\"footer-brand\">新幹線の窓 <span>旅の瞬間を見逃さない</span></p>",
   "copy94": "<p>時刻は目安です。列車・天候・座席位置により見え方は変わります。</p>",
   "footer_links": "<p class=\"footer-links\"><a href=\"index.html\">TOP</a> · <a href=\"guide.html\">富士山の見方</a> · <a href=\"zukan.html\">車窓図鑑</a> · <a href=\"contact.html\">お問い合わせ</a> · <a href=\"privacy.html\">プライバシーポリシー</a></p>",
   "footer_credit": "<p class=\"footer-credit\">道草 / Michikusa — 急がない旅と、偶然の発見を。</p>",
-  "copy95": "window.YAKEI_LANG = \"ja\";"
+  "copy95": "window.YAKEI_LANG = \"ja\";",
+  "hinata_image": "<img src=\"images/thumbs/20261103_hinataoka_night_2594_michikusa.webp\" alt=\"丘の斜面に住宅の灯りが並ぶ日向岡の夜景\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
+  "hinata_title": "<h3>日向岡</h3>",
+  "hinata_lead": "<p class=\"yk-spot-lead\">丘の斜面に、家々の灯り</p>",
+  "hinata_body": "<p>昼は三角屋根の色を探す丘。夜には斜面に並ぶ家々の灯りが見えます。写真は2026年11月3日の車窓から。</p>",
+  "hinata_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">東京から27分</span><span class=\"yk-side yk-side-e\">E席側</span></p>",
+  "hinata_more": "<p class=\"yk-more\"><a href=\"spots/hinataoka.html\">日向岡の車窓ページを見る</a></p>"
  },
  "en": {
   "copy": "<title>Night Views from the Shinkansen | Illuminations from the window, and when it gets dark | Shinkansen Window</title>",
@@ -207,7 +213,7 @@ const COPY = {
   "yk_tool_disclaimer": "<p class=\"yk-tool-disclaimer\">Passing times are estimates from your train's published timetable, including its station stops. Any delay will shift them. Sunset is a simplified calculation averaged along the Tokaido corridor, and how bright the sky actually looks also depends on the weather.</p>",
   "color_title": "<h2 id=\"color-title\">What colour is it tonight — nightly illuminations</h2>",
   "yk_section_lead": "<p class=\"yk-section-lead\">Two views whose lighting changes from day to day. Take the same train a week later and the colour is different.</p>",
-  "copy12": "<img src=\"../images/thumbs/20260629_tokyo_tower_night_michikusa.webp\" alt=\"Tokyo Tower seen from the Shinkansen at night\" width=\"480\" height=\"320\" loading=\"lazy\" decoding=\"async\">",
+  "copy12": "<img src=\"../images/thumbs/20261103_tokyo-tower_night_76831_michikusa.webp\" alt=\"Tokyo Tower glowing between buildings\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
   "copy13": "<figcaption>Photo: Shinkansen Window</figcaption>",
   "yk_spot_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">3 min from Tokyo</span><span class=\"yk-side yk-side-e\">Seat E side</span></p>",
   "copy14": "<h3>Tokyo Tower</h3>",
@@ -216,8 +222,8 @@ const COPY = {
   "copy16": "<p>Tokyo Tower is not lit the same way every night. The standard &ldquo;Landmark Light&rdquo; is white in summer and a warm amber in winter, and on anniversaries and event days the &ldquo;Diamond Veil&rdquo; turns it pink, blue or rainbow. <strong>The colour depends on the day you travel</strong> &mdash; the first view on this page that belongs only to tonight.</p>",
   "copy17": "<p>It comes while you are still stowing your bag. Decide before you board that you will look right as soon as you sit down, or you will miss it.</p>",
   "yk_more": "<p class=\"yk-more\"><a href=\"spots/tokyo-tower.html\">Open the window page for Tokyo Tower</a></p>",
-  "copy18": "<img src=\"../images/thumbs/20250526_odawara_castle_letus10.webp\" alt=\"Odawara Castle from the Seat A side of the Shinkansen\" width=\"480\" height=\"320\" loading=\"lazy\" decoding=\"async\">",
-  "yk_day_note": "<figcaption>Photo: <a href=\"https://cotetu.seesaa.net/article/516754194.html\" target=\"_blank\" rel=\"noopener noreferrer\">Shinkansen window blog</a><span class=\"yk-day-note\">A daytime photo. We do not have a night shot from the train yet.</span></figcaption>",
+  "copy18": "<img src=\"../images/20261103_odawara-castle_night_105629_michikusa.jpg\" alt=\"The white keep of Odawara Castle from the train at night\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
+  "yk_day_note": "<figcaption>Photo: Shinkansen Window · 2026-11-03<br>Enlarged view; open the full photo.</figcaption>",
   "yk_spot_meta2": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">31 min from Tokyo</span><span class=\"yk-side yk-side-a\">Seat A side</span></p>",
   "copy19": "<h3>Odawara Castle</h3>",
   "yk_spot_lead2": "<p class=\"yk-spot-lead\">Its colour is decided for the day</p>",
@@ -347,13 +353,19 @@ const COPY = {
   "copy90": "<li><strong>One side is dark, the other is not</strong>Once you are past the built-up areas, it is common for one side of the train to be completely black. Seat E and Seat A see different things, so check the side column in the tool above.</li>",
   "ykNoteTitle": "<h2 id=\"ykNoteTitle\">About what is shown here</h2>",
   "copy91": "<p>Light-up dates, hours and colours change from year to year. This page does not state dates; it links to each site's official information instead. Please check there before you travel.</p>",
-  "copy92": "<p>Odawara Castle is illustrated with a daytime photo because we do not yet have a night photo taken from the train. Kakegawa Castle is shown in a night photo from the Shinkansen window. Whether a light-up is visible from your train depends on its timing, the service and the weather. If you have a night shot from the window, we would be glad to hear from you.</p>",
+  "copy92": "",
   "copy93": "<p>The Kiyosu Castle photo is used with permission from @asami_k920, and the Odawara Castle photo from the Shinkansen window blog. The rest are our own. Passing times and sunset are both estimates, and what you actually see depends on the train, the weather and where you are sitting.</p>",
   "footer_brand": "<p class=\"footer-brand\">Shinkansen Window <span>Catch the moment from your window</span></p>",
   "copy94": "<p>Times are estimates. Trains, weather and seat position all change what you see.</p>",
   "footer_links": "<p class=\"footer-links\"><a href=\"./\">Home</a> · <a href=\"guide.html\">Seeing Mt. Fuji</a> · <a href=\"zukan.html\">Window field guide</a> · <a href=\"contact.html\">Contact</a> · <a href=\"privacy.html\">Privacy</a></p>",
   "footer_credit": "<p class=\"footer-credit\">Michikusa — unhurried travel, and the things you find by chance.</p>",
-  "copy95": "window.YAKEI_LANG = \"en\";"
+  "copy95": "window.YAKEI_LANG = \"en\";",
+  "hinata_image": "<img src=\"../images/thumbs/20261103_hinataoka_night_2594_michikusa.webp\" alt=\"Lights of hillside homes in Hinataoka at night\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
+  "hinata_title": "<h3>Hinataoka</h3>",
+  "hinata_lead": "<p class=\"yk-spot-lead\">Hillside homes lit after dark</p>",
+  "hinata_body": "<p>Lights trace the hillside homes. Photographed from the Shinkansen on 3 November 2026.</p>",
+  "hinata_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">27 min from Tokyo</span><span class=\"yk-side yk-side-e\">Seat E side</span></p>",
+  "hinata_more": "<p class=\"yk-more\"><a href=\"spots/hinataoka.html\">Open the window page for Hinataoka</a></p>"
  }
 };
 
@@ -449,9 +461,9 @@ ${t.yakei_page}
         ${t.yk_more}
       </div>
     </article>
-    <article class="yk-spot has-day-photo" id="yk-odawara-castle">
-      <figure class="yk-figure is-day">
-        ${t.copy18}
+    <article class="yk-spot" id="yk-odawara-castle">
+      <figure class="yk-figure">
+        <a class="yk-castle-zoom" href="${p}images/20261103_odawara-castle_night_105629_michikusa.jpg">${t.copy18}</a>
         ${t.yk_day_note}
       </figure>
       <div class="yk-spot-body">
@@ -538,6 +550,10 @@ ${t.yakei_page}
         ${t.copy41}
         ${t.yk_more6}
       </div>
+    </article>
+    <article class="yk-spot" id="yk-hinataoka">
+      <figure class="yk-figure">${t.hinata_image}${t.copy13}</figure>
+      <div class="yk-spot-body">${t.hinata_meta}${t.hinata_title}${t.hinata_lead}${t.hinata_body}${t.hinata_more}</div>
     </article>
     <article class="yk-spot" id="yk-nagoya-station-skyline">
       <figure class="yk-figure">
@@ -691,7 +707,6 @@ ${t.yakei_page}
       <div class="yk-note-card">
         ${t.ykNoteTitle}
         ${t.copy91}
-        ${t.copy92}
         ${t.copy93}
       </div>
     </section>

@@ -1068,6 +1068,25 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20261103_tokyo-tower_night_76831_michikusa.jpg",
+        "timeOfDay": "night",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "ja": "ビルの間に光る東京タワー",
+          "en": "Tokyo Tower glowing between buildings"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "ビルの間に光る東京タワー",
+          "en": "Tokyo Tower glowing between buildings"
+        }
+      },
+      {
         "src": "images/20260712_tokyo_tower_michikusa.jpg",
         "alt": {
           "ja": "新幹線のE席側から見える東京タワー",
@@ -1693,6 +1712,25 @@ const SPOTS = [
       note: { ja: "カラフルな三角屋根が並ぶ「日向岡住宅」", en: "Colorful triangular roofs line up in Hinataoka." },
     },
     photos: [
+      {
+        "src": "images/20261103_hinataoka_night_2594_michikusa.jpg",
+        "timeOfDay": "night",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "ja": "丘の斜面に住宅の灯りが並ぶ日向岡の夜景",
+          "en": "Lights of hillside homes in Hinataoka at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "丘の斜面に住宅の灯りが並ぶ日向岡の夜景",
+          "en": "Lights of hillside homes in Hinataoka at night"
+        }
+      },
       {
         src: "images/20260530_hinataoka_2_michikusa.jpg",
         alt: { ja: "新幹線のE席側から見える日向岡の住宅地", en: "Hinataoka hillside homes from Seat E" },
@@ -2889,6 +2927,25 @@ const SPOTS = [
       note: { ja: "のぞみではほんとに一瞬", en: "On Nozomi, it really is over in a blink." },
     },
     photos: [
+      {
+        "src": "images/20261103_odawara-castle_night_105629_michikusa.jpg",
+        "timeOfDay": "night",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "ja": "夜の車窓から見える小田原城の白い天守",
+          "en": "The white keep of Odawara Castle from the train at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "夜の車窓から見える小田原城の白い天守",
+          "en": "The white keep of Odawara Castle from the train at night"
+        }
+      },
       {
         src: "images/20250526_odawara_castle_letus10.jpg",
         alt: { ja: "新幹線のA席側から見える小田原城", en: "Odawara Castle from Seat A" },
