@@ -4,6 +4,31 @@ import fs from 'node:fs';
 import { chooseReleaseScope, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+test('body-only story changes check all story editions without unrelated language suites', () => {
+  const files = ['data/story-window/fr/godzilla.html', 'fr/stories/godzilla.html', 'content-manifest.json'];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'story-content');
+  const nav = plan.commands.find(c => c.includes('scripts/validate-site-navigation.mjs'));
+  assert.equal(nav.filter(arg => arg === '--route').length, 5);
+  assert(!nav.includes('--with-language-checks'));
+  assert(plan.commands.some(c => c.includes('scripts/generate-story-window-pages.mjs') && c.includes('--check')));
+  assert(plan.commands.some(c => c.includes('scripts/validate-story-window.mjs')));
+  assert(plan.commands.some(c => c.includes('scripts/check-content-manifest.mjs')));
+  for (const extra of ['locales.js', 'data/story-window/fr/ui.json', 'data/story-window/fr/maruko.json', 'shared-ui/fr.shell.js', 'scripts/generate-story-window-pages.mjs', 'fr/zukan.html'])
+    assert.notEqual(chooseReleaseScope([...files, extra].map(change)).scope, 'story-content', extra);
+  assert.notEqual(chooseReleaseScope([{ path: files[0], status: 'D' }]).scope, 'story-content');
+  assert.notEqual(chooseReleaseScope([{ path: files[0], status: 'A' }]).scope, 'story-content');
+});
+
+test('story tooling proves stable output and does not create a Pages deployment', () => {
+  const files = ['scripts/generate-story-window-pages.mjs', 'scripts/shared/story-window.mjs', 'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs'];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'story-validation-tooling');
+  assert.equal(plan.pagesCandidate, false);
+  assert(plan.commands.some(c => c.includes('scripts/generate-story-window-pages.mjs') && c.includes('--check')));
+  assert.notEqual(chooseReleaseScope([...files, 'locales.js'].map(change)).scope, 'story-validation-tooling');
+  assert.notEqual(chooseReleaseScope([...files, 'scripts/shared/locales.mjs'].map(change)).scope, 'story-validation-tooling');
+});
 test('artwork chrome extraction preserves content and is limited to the two merged pages', () => {
   const header='<header class="topbar"><a href="../../start.html">Start</a></header>',footer='<footer class="footer">Footer</footer>',before=header+'\n<main>Game</main>\n'+footer+'\n</body>';
   const shell=JSON.stringify({components:{'header-artworks-727-hunt':header.replaceAll('../../','__MADO_ROOT__'),'footer-artworks-727-hunt':footer}});
