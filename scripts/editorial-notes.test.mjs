@@ -98,8 +98,8 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   }
   dom.window.close();await new Promise(setImmediate);
  }
- // 39 episode articles, each with eight translated editions.
- assert.equal(count,312);
+ // 40 episode articles (including Maruko Bridge), each with eight translated editions.
+ assert.equal(count,320);
 });
 
 test('Fujitec and Pocari have complete ten-language articles and worldwide chapters',()=>{

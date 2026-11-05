@@ -152,6 +152,7 @@
         <h2 id="zukanIntentsTitle" data-i18n="zukanThemeTitle">テーマから、車窓を探す</h2>
       </div>
       <div class="journey-intent-grid">
+        <!-- STORY_WINDOW_CARD -->
 
 
 

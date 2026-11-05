@@ -36,7 +36,7 @@ function htmlFiles(dir = appDir) {
     const full = path.join(dir, entry.name);
     const relative = path.relative(appDir, full).split(path.sep).join("/");
     if (entry.isDirectory()) {
-      if (legacyRoots.has(relative.split("/")[0])) return [];
+      if (legacyRoots.has(relative.split("/")[0]) || relative === "data/story-window") return [];
       return htmlFiles(full);
     }
     return entry.isFile() && entry.name.endsWith(".html") ? [relative] : [];

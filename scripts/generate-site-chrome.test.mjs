@@ -6,9 +6,25 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import { generateSiteChrome, materializeSiteSources } from './generate-site-chrome.mjs';
-import { expandSiteChrome, finalizeSiteChrome, readSiteSource, sourceTemplatePath } from './shared/site-chrome.mjs';
+import { expandSiteChrome, finalizeSiteChrome, readSiteSource, sourceTemplatePath, readSiteChromePayload } from './shared/site-chrome.mjs';
 
 const appRoot=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+test('native Maruko editions replace only their former English shared-chrome link', t => {
+  const root=fs.mkdtempSync(path.join(os.tmpdir(),'mado-maruko-chrome-'));
+  t.after(()=>fs.rmSync(root,{recursive:true,force:true}));
+  fs.mkdirSync(path.join(root,'shared-ui'));
+  const html='<a href="__MADO_ROOT__en/spots/maruko-bridge.html" hreflang="en">Bridge</a><a href="__MADO_ROOT__en/spots/other.html">Other</a>';
+  for(const lang of ['ja','en','fr','de','es','it','ko','th','zh-Hans','zh-Hant']) {
+    const asset=`shared-ui/${lang.toLowerCase()}.rail-test.js`;
+    fs.writeFileSync(path.join(root,asset),'window.MADO_SHARED_UI='+JSON.stringify({version:1,components:{rail:html},menus:{},origins:{}}));
+    const result=readSiteChromePayload(root,asset).components.rail;
+    assert.equal(result, ['ja','en'].includes(lang)?html:html.replace('en/spots/maruko-bridge.html',`${lang}/spots/maruko-bridge.html`).replace('hreflang="en"',`hreflang="${lang}"`));
+  }
+});
+test('native Maruko article destinations preserve the deliberate English language switch', () => {
+  const html='<html lang="fr"><body><a href="../en/spots/maruko-bridge.html" hreflang="en">Bridge</a><details class="article-lang-menu"><a href="../en/spots/maruko-bridge.html">English</a></details><a href="../en/spots/other.html">Other</a></body></html>';
+  assert.equal(expandSiteChrome(html,'fr/arenani.html',appRoot),html.replace('href="../en/spots/maruko-bridge.html" hreflang="en"','href="../fr/spots/maruko-bridge.html" hreflang="fr"'));
+});
 const source=(route,{rail=false,tracking=false}={})=>`<!doctype html><html lang="fr"><head><title>Titre ${route}</title><meta name="description" content="Description inchangée"><link rel="canonical" href="https://example.com/fr/${route}"></head><body><header class="topbar"><a class="brand" href="../index.html"${tracking?' aria-label="Retour" data-lp-cta="brand"':''}><span class="brand-mark"${tracking?' aria-hidden="true"':''}>窓</span>Fenêtre</a><nav><a href="start.html">Choisir</a></nav><nav class="lang-switch"><a href="../${route}">日本語</a><a href="${route}">Français</a></nav></header>${rail?`<aside class="spot-page-rail"><p class="spot-page-rail-now">Vous êtes ici : ${route}</p><ol><li class="${route==='feature.html'?'is-current':''}"><a href="feature.html"${route==='feature.html'?' aria-current="page"':''}>Un</a></li><li class="${route==='other.html'?'is-current':''}"><a href="other.html"${route==='other.html'?' aria-current="page"':''}>Deux</a></li></ol></aside>`:''}<main><h1>Texte français ${route}</h1><p>Préserver le récit et sa photo.</p><img src="../photo.jpg" alt="Montagne"></main><footer class="footer"><a href="guide.html">Guide</a><a href="privacy.html">Confidentialité</a></footer></body></html>`;
 function fixture(t){const root=fs.mkdtempSync(path.join(os.tmpdir(),'mado-chrome-'));t.after(()=>fs.rmSync(root,{recursive:true,force:true}));fs.copyFileSync(path.join(appRoot,'site-chrome.js'),path.join(root,'site-chrome.js'));for(const [file,html] of [['index.html',source('index.html',{tracking:true})],['start.html',source('start.html')],['fr/feature.html',source('feature.html',{rail:true})],['fr/other.html',source('other.html',{rail:true})]]){fs.mkdirSync(path.dirname(path.join(root,file)),{recursive:true});fs.writeFileSync(path.join(root,file),html);}return root;}
 function config(html){return JSON.parse(html.match(/<script id="mado-shared-ui-config" type="application\/json">([\s\S]*?)<\/script>/)[1]);}

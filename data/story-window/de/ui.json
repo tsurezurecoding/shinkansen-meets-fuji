@@ -1,0 +1,101 @@
+{
+  "series": {
+    "name": "Geschichten vor dem Zugfenster",
+    "description": "Godzilla, SHŌGUN, Laid-Back Camp und Dragon Ball: Folgen Sie vertrauten Geschichten in die Landschaften und Städte entlang Japans Bahnstrecken.",
+    "kicker": "Von Filmen, Serien und Manga zu Orten in Japan",
+    "hook": "Eine vertraute Geschichte. Ein neuer Blick auf Japan.",
+    "lead": "Ein Fluss aus einem Film. Ein See von Rins Reisen. Ein Ort, an dem Geschichte eine Wende nahm, und eine Stadt, in der ein Mangazeichner lebte. Nehmen Sie eine Geschichte mit: So wird die Fahrt zwischen Tokyo, Nagoya und Kyoto selbst zur Entdeckungsreise.",
+    "routeLabel": "Von Osten nach Westen",
+    "afterwordEyebrow": "LESEN · SCHAUEN · SCHLENDERN",
+    "afterwordTitle": "Ein wenig lesen. Nach draußen schauen.",
+    "afterwordBody": "Vielleicht steigen Sie aus, um einen Ort aus einer Geschichte zu erkunden, oder denken einfach daran, während die Landschaft vorbeizieht. In beiden Fällen bietet die Reise mehr als nur das Ankommen.",
+    "zukanLink": "Entdecken Sie die Ausblicke entlang Ihrer Strecke"
+  },
+  "ui": {
+    "skip": "Zum Inhalt springen",
+    "seriesNav": "Geschichten dieser Reihe",
+    "allStories": "Alle Geschichten",
+    "moreTitle": "Wohin führt Sie die nächste Geschichte?",
+    "exploreAll": "Alle vier Geschichten entdecken",
+    "readStory": "Die Geschichte zu {name} lesen",
+    "placesTitle": "Orte dieser Geschichte",
+    "onThisPage": "Auf dieser Seite",
+    "returnAll": "Alle vier Geschichten",
+    "articleLabel": "Geschichte zu {name}",
+    "photoDialog": "Vergrößertes Bild",
+    "closePhoto": "Schließen",
+    "officialTrailer": "Offizieller Trailer"
+  },
+  "zukan": {
+    "title": "Geschichten vor dem Zugfenster",
+    "description": "Godzilla, SHŌGUN, Laid-Back Camp und Dragon Ball: Geschichten, die zu Orten in Japan führen."
+  },
+  "stories": {
+    "godzilla": {
+      "label": "Godzilla",
+      "place": "Tokyo und der Fluss Tama",
+      "relation": "Filmschauplätze und Stadtspaziergänge",
+      "title": "Godzilla in Tokyo: von der Straße zum Zugfenster",
+      "hook": "In der Stadt begegnen. Im Zug an die Szene denken.",
+      "deck": "Schauen Sie in Shinjuku nach oben, finden Sie einen weiteren Godzilla in Hibiya und achten Sie dann auf den Fluss aus Shin Godzilla.",
+      "route": "Shinjuku und Hibiya zu Fuß; der Tama zwischen Shinagawa und Shin-Yokohama.",
+      "alt": "Godzillas Kopf über einem Gebäude am Ende einer Straße in Shinjuku",
+      "credit": "Kakidai / CC BY-SA 4.0",
+      "spotLink": "Die Geschichte zu Godzilla lesen"
+    },
+    "shogun": {
+      "label": "SHŌGUN",
+      "place": "Sekigahara",
+      "relation": "Von der Fiktion zur Geschichte",
+      "title": "Von SHŌGUN nach Sekigahara",
+      "hook": "Eine Geschichte auf dem Bildschirm. Ein Ort vor dem Fenster.",
+      "deck": "Von Toranaga zu Tokugawa Ieyasu: Entdecken Sie die Geschichte einer Landschaft auf der Fahrt von Tokyo nach Kyoto.",
+      "route": "Mit dem Shinkansen zwischen Gifu-Hashima und Maibara; zu Fuß ab JR-Bahnhof Sekigahara.",
+      "alt": "Felder, Häuser und Hügel des heutigen Sekigahara, aus dem Shinkansen gesehen",
+      "credit": "November 2026 / michikusa",
+      "spotLink": "Die Geschichte zu SHŌGUN lesen"
+    },
+    "yurucamp": {
+      "label": "Laid-Back Camp",
+      "place": "Hamana-See",
+      "relation": "Orte aus der Serie",
+      "title": "Laid-Back Camp rund um den Hamana-See",
+      "hook": "Den See sehen. Den eigenen Abstecher finden.",
+      "deck": "Sonnenuntergang in Bentenjima, ein Bahnhof am Wasser: Machen Sie Rins Reise zu einer Station Ihrer eigenen.",
+      "route": "Seeblicke zwischen Hamamatsu und Toyohashi; Abstecher nach Bentenjima, Sakume und Kanzanji.",
+      "alt": "Bentenjimas roter Turm in Form eines Torii vor dem Sonnenuntergang über dem Hamana-See",
+      "credit": "Aimaimyi / CC BY-SA 3.0",
+      "spotLink": "Die Geschichte zu Laid-Back Camp lesen"
+    },
+    "dragonball": {
+      "label": "Dragon Ball",
+      "place": "Kiyosu",
+      "relation": "Die Heimatstadt des Schöpfers",
+      "title": "Akira Toriyamas Alltag in Kiyosu",
+      "hook": "Der gewöhnliche Alltag hinter außergewöhnlichen Abenteuern.",
+      "deck": "Tägliche Anrufe beim Redakteur in Tokyo, Manuskripte per Flugzeug: Leben und Arbeit des Dragon-Ball-Schöpfers in seiner Heimatstadt.",
+      "route": "Eine Stadt neben Nagoya und eine Verbindung, an die Sie denken können, wenn die Burg Kiyosu am Fenster vorbeizieht.",
+      "alt": "Die Außenansicht des BIRD-STUDIO-Büros in Kiyosu, aufgenommen im November 2025",
+      "credit": "Asturio Cantabrio · November 2025 · Unverändert",
+      "spotLink": "Die Geschichte zu Dragon Ball lesen"
+    }
+  },
+  "map": {
+    "title": "Laid-Back Camp rund um den Hamana-See",
+    "stops": [
+      {
+        "name": "Bentenjima Seaside Park",
+        "detail": "Rins Halt zum Sonnenuntergang"
+      },
+      {
+        "name": "Bahnhof Hamanako-Sakume",
+        "detail": "Treffen mit Nadeshiko"
+      },
+      {
+        "name": "Kanzanji Onsen",
+        "detail": "Heiße Quellen und regionale Süßigkeiten"
+      }
+    ],
+    "footer": "Norden ist oben · 3 markiert das Thermalviertel"
+  }
+}

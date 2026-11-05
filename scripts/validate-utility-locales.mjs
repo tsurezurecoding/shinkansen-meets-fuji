@@ -204,7 +204,8 @@ function checkStatic(doc, sourceDoc, dictionary, lang, label) {
     const help = sourceDoc.querySelector('#set-narr-help');
     if (help) help.textContent = sourceTables.live.narrModeHelpLoading;
   }
-  const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note,.content-rail-discovery .discovery-language';
+  // This new card uses the separately checked story-window UI dictionaries.
+  const excluded = '.lang-switch,.utility-lang-menu,.show-credit,.utility-audio-note,.content-rail-discovery .discovery-language,a.journey-intent-card[data-cta-id="story_window"]';
   const sourceText = textNodes(sourceDoc).filter(node => !node.parentElement.closest(excluded) && !preservedUtilityText(node, route)).map(node => normal(translation(dictionary, node.textContent)));
   const translatedText = textNodes(doc).filter(node => !node.parentElement.closest(excluded) && !preservedUtilityText(node, route)).map(node => normal(node.textContent));
   compare(translatedText, sourceText, label, 'static English-source text/translation differs');

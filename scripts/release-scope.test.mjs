@@ -1,9 +1,55 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyVersionReferenceChanged, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
+import { chooseReleaseScope, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+test('artwork chrome extraction preserves content and is limited to the two merged pages', () => {
+  const header='<header class="topbar"><a href="../../start.html">Start</a></header>',footer='<footer class="footer">Footer</footer>',before=header+'\n<main>Game</main>\n'+footer+'\n</body>';
+  const shell=JSON.stringify({components:{'header-artworks-727-hunt':header.replaceAll('../../','__MADO_ROOT__'),'footer-artworks-727-hunt':footer}});
+  for(const file of ['artworks/727-hunt/index.html','artworks/memory-express/index.html']){
+    const config={assets:['shared-ui/ja.shell.js'],root:'../../',lang:'ja',route:file,mounts:[{host:'chrome-0',component:'header-artworks-727-hunt',kind:'header'},{host:'chrome-1',component:'footer-artworks-727-hunt',kind:'footer'}]};
+    const after=before.replace(header,'<header class="topbar" data-site-chrome-host="chrome-0"></header>').replace(footer,'<footer class="footer" data-site-chrome-host="chrome-1"></footer>').replace('</body>','<script id="mado-shared-ui-config" type="application/json">'+JSON.stringify(config)+'</script>\n<script src="../../site-runtime-loader.js?v=a8ffb108" defer></script>\n</body>');
+    assert(onlyPreservedArtworkChromeExtraction(file,before,after,shell));
+    assert(!onlyPreservedArtworkChromeExtraction(file,before,after.replace('Game','Changed game'),shell));
+    assert(!onlyPreservedArtworkChromeExtraction(file,before,after,shell.replace('Start','Changed navigation')));
+    assert(!onlyPreservedArtworkChromeExtraction('artworks/unrelated/index.html',before,after,shell));
+    assert.equal(chooseReleaseScope(['scripts/generate-story-window-pages.mjs',file].map(change),{chromeExtractionOnly:path=>onlyPreservedArtworkChromeExtraction(path,before,after,shell)}).scope,'story-window');
+  }
+});
+test('story menu rebinding requires byte-identical menu content and unchanged page content', () => {
+  const file='sudoori/index.html', before='<script id="mado-shared-ui-config" type="application/json">{"mounts":[{"menu":"old-menu"}]}</script>', after=before.replace('old-menu','new-menu');
+  const oldShell='{"menus":{"old-menu":"Same menu"}}', nextShell='{"menus":{"new-menu":"Same menu"}}';
+  assert(onlyPreservedChromeMenuChanged(file,before,after,oldShell,nextShell));
+  assert(!onlyPreservedChromeMenuChanged(file,before,after,oldShell,nextShell.replace('Same','Different')));
+  assert(!onlyPreservedChromeMenuChanged(file,before,after+'changed body',oldShell,nextShell));
+  assert(!onlyPreservedChromeMenuChanged('en/foods.html',before,after,oldShell,nextShell));
+});
+test('story scope permits only the exact new Maruko destination in existing chrome', () => {
+  const file='shared-ui/fr.rail-castles.js', before='href="__MADO_ROOT__en/spots/maruko-bridge.html">Bridge';
+  const after=before.replace('__MADO_ROOT__en/','__MADO_ROOT__fr/');
+  assert(onlyMarukoLocaleLinkChanged(file,before,after));
+  assert(!onlyMarukoLocaleLinkChanged(file,before,after.replace('Bridge','Changed')));
+  assert(!onlyMarukoLocaleLinkChanged('shared-ui/en.rail-castles.js',before,after));
+  assert(onlyMarukoLocaleLinkChanged('fr/guide.html',before.replace('__MADO_ROOT__','../'),after.replace('__MADO_ROOT__','../')));
+  assert(!onlyMarukoLocaleLinkChanged('fr/guide.html',before.replace('__MADO_ROOT__','../'),after.replace('__MADO_ROOT__','../')+'unrelated'));
+  const files=['scripts/generate-story-window-pages.mjs',file].map(change);
+  assert.equal(chooseReleaseScope(files,{marukoLinkOnly:path=>onlyMarukoLocaleLinkChanged(path,before,after)}).scope,'story-window');
+  assert.equal(chooseReleaseScope(files,{marukoLinkOnly:path=>onlyMarukoLocaleLinkChanged(path,before,after+'unrelated')}).scope,'unmapped');
+});
+test('story integration maps its generators and rejects unrelated product changes', () => {
+  const files=['scripts/generate-story-window-pages.mjs','data/story-window/fr/ui.json','fr/stories/index.html','fr/spots/maruko-bridge.html','locales.js','scripts/generate-utility-locales.mjs','content-manifest.json'];
+  const plan=chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope,'story-window');
+  assert(plan.commands.some(command=>command.includes('scripts/validate-story-window.mjs')));
+  assert(plan.commands.some(command=>command.includes('scripts/check-content-manifest.mjs')));
+  assert(!plan.commands.some(command=>command.includes('verify')||command.includes('build:full')));
+  assert.equal(chooseReleaseScope([...files,'data.js'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'shared-ui/en.rail-castles.js'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'scripts/templates/site-chrome/en.shell/header-references.html.tpl'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'en/foods.html'].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files,'en/foods.html'].map(change),{versionOnly:()=>true}).scope,'story-window');
+});
 test('727 game covers its media and entry pages without including unrelated products', () => {
   const changes=[{path:'artworks/727-hunt/index.html',status:'A'},
     {path:'artworks/727-hunt/media/journey.mp4',status:'A'},

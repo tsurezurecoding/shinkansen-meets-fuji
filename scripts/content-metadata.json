@@ -1282,5 +1282,453 @@
     "modified": "2026-11-03",
     "publishedEvidence": "First publication of the user-approved Sekigahara battlefield article, photographs and ten language editions.",
     "modifiedEvidence": "Native spot template, battlefield history, Seat E guidance and Sawayama connection reviewed for the first publication."
+  },
+  "stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "en/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "en/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "en/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "en/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "en/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hant/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hant/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hant/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hant/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hant/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "fr/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "fr/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "fr/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "fr/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "fr/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "de/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "de/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "de/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "de/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "de/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "es/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "es/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "es/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "es/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "es/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hans/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hans/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hans/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hans/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hans/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "ko/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "ko/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "ko/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "ko/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "ko/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "it/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "it/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "it/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "it/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "it/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "th/stories/index.html": {
+    "kind": "collection",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "th/stories/godzilla.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "th/stories/shogun.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "th/stories/yurucamp.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "th/stories/dragonball.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "representativeImage": false,
+    "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
+  },
+  "zh-Hant/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "zh-Hans/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "ko/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "th/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "fr/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "de/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "es/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "it/spots/maruko-bridge.html": {
+    "kind": "spot guide",
+    "article": false,
+    "modified": "2026-11-05",
+    "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
   }
 }
