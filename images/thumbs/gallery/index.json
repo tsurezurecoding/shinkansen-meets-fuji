@@ -2015,6 +2015,14 @@
     "quality": 72,
     "sha256": "297030228105cbf484d26dc35aa7a05e23622179dfcfef3c29296798e2bb2b37"
   },
+  "images/thumbs/gallery/20261103_kakegawa_dusk_42814_michikusa.webp": {
+    "source": "images/20261103_kakegawa_dusk_42814_michikusa.jpg",
+    "sourceSha256": "ea128a94c1235bdbe0430b6eb99339b515b09e87f83783e2aef73c8152e66418",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e955bfb13ca99d2e807b07622bdae55157bd78a089f489c101bdb942fb3fc0e9"
+  },
   "images/thumbs/gallery/20261103_odawara-castle_night_105629_michikusa.webp": {
     "source": "images/20261103_odawara-castle_night_105629_michikusa.jpg",
     "sourceSha256": "f510b006883d32ce16e1907edca68693093ccddb7493cc688bc1fdc6b68d9217",
@@ -2038,6 +2046,22 @@
     "height": 198,
     "quality": 72,
     "sha256": "a8aab6f51f38a7ba9e16d16c900610576a2534b672c44ce509b1c35c7911fdce"
+  },
+  "images/thumbs/gallery/20261103_solar-ark_dismantling_10810_michikusa.webp": {
+    "source": "images/20261103_solar-ark_dismantling_10810_michikusa.jpg",
+    "sourceSha256": "ede2d56b50e37b00bcbbfe7ba7482b796ea85375921f02409972c0b8e09e73b1",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "b7b0ece42d448656146094693357d3867697f851f9975a50d9469fd5bb11950e"
+  },
+  "images/thumbs/gallery/20261103_solar-ark_dismantling_9859_michikusa.webp": {
+    "source": "images/20261103_solar-ark_dismantling_9859_michikusa.jpg",
+    "sourceSha256": "39b52958be5927dd841dec3a1b4e1a46b3a946014d232dde6b8139db5d455822",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "f2647566db506c26e7dea39473675ac70fc5c379c0863dadc278628eefe802bd"
   },
   "images/thumbs/gallery/20261103_tokyo-tower_night_76831_michikusa.webp": {
     "source": "images/20261103_tokyo-tower_night_76831_michikusa.jpg",

@@ -4724,6 +4724,24 @@ const SPOTS = [
     image: "images/20220312_kakegawa_castle_neoromancefan.jpg",
     photoCredit: { ja: "@NeoRomanceFan", en: "@NeoRomanceFan", url: "https://x.com/NeoRomanceFan/status/1502633820075352064" },
     photos: [
+      {
+        "src": "images/20261103_kakegawa_dusk_42814_michikusa.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "ja": "夕暮れの山並みを背に白い天守が浮かぶ掛川城",
+          "en": "The white keep of Kakegawa Castle against the hills at dusk"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "夕暮れの白い天守",
+          "en": "A white keep at dusk"
+        }
+      },
   {
     "src": "images/20260712_kakegawa_castle_michikusa.jpg",
     "alt": {
@@ -6743,8 +6761,8 @@ const SPOTS = [
   {
     id: "solar-ark",
     icon: "☀️",
-    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "パネルが外れゆく太陽の船。", story: "岐阜羽島付近のE席側に見えるソーラーアークは、旧三洋電機が2001年に建設した、全長315m・最高部37mの太陽光発電モニュメントです。約5,046枚の太陽電池パネルをまとった船形が車窓の目印でした。解体が進み、2026年11月3日の撮影ではパネルの一部が取り外された状態を記録しました。姿は工事の進行で変わるため、次の乗車時に同じ景色が見られるとは限りません。" },
-    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship being dismantled.", story: "Solar Ark is a ship-shaped solar-power monument near Gifu-Hashima, on the Seat E side. Built by Sanyo in 2001, it is 315 metres long and up to 37 metres tall, originally clad in about 5,046 solar panels. Dismantling is under way: our footage from 3 November 2026 records some panels already removed. Its appearance will change as work progresses, so a future ride may bring a different view." },
+    ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "もうすぐ見納め、太陽の船。", story: "岐阜羽島付近のE席側に見えるソーラーアークは、旧三洋電機が2001年に建設した、全長315m・最高部37mの太陽光発電モニュメントです。約5,046枚の太陽電池パネルをまとった船形が車窓の目印でした。解体が進み、2026年11月3日の撮影ではパネルの一部が取り外された状態を記録しました。姿は工事の進行で変わるため、次の乗車時に同じ景色が見られるとは限りません。" },
+    en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship, soon to disappear.", story: "Solar Ark is a ship-shaped solar-power monument near Gifu-Hashima, on the Seat E side. Built by Sanyo in 2001, it is 315 metres long and up to 37 metres tall, originally clad in about 5,046 solar panels. Dismantling is under way: our footage from 3 November 2026 records some panels already removed. Its appearance will change as work progresses, so a future ride may bring a different view." },
     pageTitle: {
       ja: "解体中のソーラーアーク｜11月3日の車窓動画と見える場所 | 新幹線の窓",
       en: "Solar Ark Dismantling: Train-Window Video from 3 November 2026",
@@ -6784,14 +6802,65 @@ const SPOTS = [
         "Look on the Seat E side after Gifu-Hashima toward Shin-Osaka, or before Gifu-Hashima toward Tokyo. At speed, the glimpse lasts only a few seconds. The photos and videos show its appearance when recorded; demolition may change what can be seen.",
       ],
     },
+    explainerFigure: {
+      "src": "images/20261103_solar-ark_dismantling_10810_michikusa.jpg",
+      "alt": {
+        "ja": "パネルの一部が外れ、内部の骨組みが見えるソーラーアーク",
+        "en": "Solar Ark with some panels removed and the framework exposed"
+      },
+      "caption": {
+        "ja": "パネルの一部が外れ、内側の骨組みが見えます。2026年11月3日撮影。",
+        "en": "Some panels have been removed, exposing the framework. Photographed on 3 November 2026."
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "2026-11-03",
+      "afterParagraph": 0
+    },
     guideHighlight: {
       ja: "新大阪方面は岐阜羽島を過ぎてから、東京方面は岐阜羽島に着く前に、E席側の田園の先を探してください。船底のように反り上がる長い構造物が目印です。解体中のため、パネルの覆い方や見える輪郭は撮影時から変わることがあります。",
       en: "Look across the fields on the Seat E side just after Gifu-Hashima when heading toward Shin-Osaka, or before the station when heading toward Tokyo. Find the long, upswept ship-like structure. During dismantling, the panel covering and visible outline may change from the footage shown here.",
     },
     minutesFromTokyo: 103, side: "E", category: "notable", confidence: "verified", durationSec: 5, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
-    image: "images/20260530_solar_ark.jpg",
-    photoCredit: { ja: "michikusa", en: "michikusa", date: "2026-05-30", note: { ja: "青空に映えるソーラーアーク", en: "Solar Ark against a clear blue sky." } },
+    image: "images/20261103_solar-ark_dismantling_9859_michikusa.jpg",
+    photoCredit: {"ja":"michikusa","en":"michikusa","date":"2026-11-03","note":{"ja":"解体中の全景","en":"During dismantling"}},
     photos: [
+      {
+        "src": "images/20261103_solar-ark_dismantling_10810_michikusa.jpg",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "ja": "パネルの一部が外れ、内部の骨組みが見えるソーラーアーク",
+          "en": "Solar Ark with some panels removed and the framework exposed"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "パネルの取り外し部分",
+          "en": "Exposed framework"
+        }
+      },
+      {
+        "src": "images/20260530_solar_ark.jpg",
+        "alt": {
+          "ja": "解体前の青空に映えるソーラーアーク",
+          "en": "Solar Ark before dismantling against a clear blue sky"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-05-30",
+        "note": {
+          "ja": "青空に映えるソーラーアーク",
+          "en": "Solar Ark against a clear blue sky."
+        }
+      },
       {
         "src": "images/20251212_solar_ark_2_letus10.jpg",
         "alt": {
