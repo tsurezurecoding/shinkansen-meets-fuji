@@ -82,3 +82,10 @@
   .yk-row { grid-template-columns: 56px 1fr; }
   .yk-row-badge { grid-column: 2; justify-self: start; }
 }
+
+/* Keep the original frame available while bringing the distant keep closer. */
+.yk-castle-zoom { display: block; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 12px; }
+.yk-castle-zoom img { transform: scale(2.5); transform-origin: 90% 59%; }
+.yk-castle-zoom:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+.yk-video { display: block; width: 100%; aspect-ratio: 16 / 9; height: auto; border: 0; border-radius: 12px; }

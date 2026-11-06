@@ -7,6 +7,13 @@ import {YAKEI_SPOT_IDS} from './shared/yakei-spots.mjs';
 
 const read=file=>fs.readFileSync(new URL('../'+file,import.meta.url),'utf8');
 const names={de:['Dunkel','Dämmerung','Noch hell'],fr:['Nuit','Crépuscule','Encore jour'],'zh-Hant':['天黑','晨昏微光','天還亮'],es:['Noche','Crepúsculo','Todavía de día'],'zh-Hans':['天黑','晨昏微光','天还亮'],ko:['밤','어스름','아직 밝음'],it:['Buio','Crepuscolo','Ancora chiaro'],th:['มืด','แสงสนธยา','ยังสว่าง']};
+test('every night-view calculator destination has a matching article card in all editions',()=>{
+ for(const lang of ['ja','en',...Object.keys(names)]){
+  const file=(lang==='ja'?'':lang+'/')+'yakei.html',dom=new JSDOM(read(file));
+  for(const id of YAKEI_SPOT_IDS)assert.ok(dom.window.document.getElementById('yk-'+id),`${file}: missing calculator destination #yk-${id}`);
+  dom.window.close();
+ }
+});
 function calculator(lang){
  const dom=new JSDOM('<input id="ykDate" value="2026-10-20"><div data-train-picker></div><div id="ykResult"></div><p id="ykSummary"></p>');
  Object.defineProperty(dom.window.document,'readyState',{value:'complete'});
@@ -27,6 +34,7 @@ test('night-view results keep localized names, badges and summary across directi
     const train=trains.reduce((best,t)=>Math.abs(parseInt(t.times[boardId])-targetHour)<Math.abs(parseInt(best.times[boardId])-targetHour)?t:best,trains[0]);
     options.onSelect({tr:train},{boardId});
     const rows=[...doc.querySelectorAll('.yk-row')];assert.equal(rows.length,YAKEI_SPOT_IDS.length);
+    assert.ok(rows.some(row=>row.querySelector('.yk-row-name a')?.getAttribute('href')==='#yk-odawara'),'Atami calculator link uses its runtime spot ID');
     for(const row of rows){assert.ok(names[lang].includes(row.querySelector('.yk-row-badge').textContent));assert.match(row.querySelector('.yk-row-time').textContent,/^\d{2}:\d{2}$/);assert.ok(row.querySelector('.yk-row-name').textContent);if(lang==='it')assert.match(row.querySelector('.yk-row-side').textContent,/^Lato del posto [AE]$/);if(lang==='th')assert.match(row.querySelector('.yk-row-side').textContent,/^ฝั่งที่นั่ง [AE]$/);}
     assert.ok(!/Sunset is|日の入り|Seat |Pick your train/.test(doc.querySelector('#ykSummary').textContent));
     doc.querySelector('#ykDate').value='2026-06-21';doc.querySelector('#ykDate').dispatchEvent(new dom.window.Event('change'));

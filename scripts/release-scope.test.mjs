@@ -1,9 +1,47 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
+import { chooseReleaseScope, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+test('ride photo scope rejects unrelated paths, deleted media, changed translations and changed collateral content', () => {
+  const files = ['data.js', 'scripts/generate-yakei-page.mjs', 'scripts/generate-runtime-data.mjs',
+    'scripts/locales/castle-fr.json', 'data/spot-pages/odawara.en.js', 'en/yakei.html', 'content-manifest.json', 'en/zukan.html'];
+  const options = {rideDataOnly: true, rideBudgetOnly: true, addedLocaleKeysOnly: () => true, assetVersionOnly: () => true};
+  assert.equal(chooseReleaseScope(files.map(change), options).scope, 'owned-ride-night-content');
+  for (const file of ['images/unrelated.jpg', 'style.css', 'app.js', 'spots/unknown.html', 'data/spot-pages/unknown.en.js']) {
+    assert.equal(chooseReleaseScope([...files, file].map(change), {...options, assetVersionOnly: () => false}).scope, 'unmapped');
+  }
+  assert.equal(chooseReleaseScope([...files.map(change), {path:'images/20261103_atami_night_11757_michikusa.jpg',status:'D'}], options).scope, 'unmapped');
+  assert.equal(chooseReleaseScope(files.map(change), {...options, rideDataOnly:false}).scope, 'unmapped');
+  assert.equal(chooseReleaseScope(files.map(change), {...options, rideBudgetOnly:false}).scope, 'unmapped');
+  assert.equal(chooseReleaseScope(files.map(change), {...options, addedLocaleKeysOnly:()=>false}).scope, 'unmapped');
+  assert(onlyAssetVersionReferencesChanged('<script src="data-runtime.js?v=1234abcd"></script>', '<script src="data-runtime.js?v=abcdef12"></script>'));
+  assert(!onlyAssetVersionReferencesChanged('<p>Old</p>', '<p>New</p>'));
+  const manifest='{"assets":{"spot-page-shared-data.js":"1234abcd","style.css":"aaaa1111"},"version":1}';
+  assert(onlyCatalogManifestVersionChanged(manifest,manifest.replace('1234abcd','abcdef12')));
+  assert(!onlyCatalogManifestVersionChanged(manifest,manifest.replace('aaaa1111','bbbb2222')));
+  assert(!onlyCatalogManifestVersionChanged(manifest,manifest.replace('"version":1','"version":2')));
+});
+
+test('ride data guard retains existing photos, credits, media, other spots and route timing', () => {
+  const spot = {id:'odawara',ja:{name:'Atami'},en:{name:'Atami'},minutesFromTokyo:36,side:'A',image:'images/old.jpg',photos:[{src:'images/extra.jpg',credit:{ja:'Creator',en:'Creator'}}]};
+  const source = spots => 'const SPOTS='+JSON.stringify(spots)+';const ROUTE={};const BOARD_COLLECTION=[];const WHEEL_COLLECTION=[];';
+  const before = source([spot,{id:'other',image:'images/other.jpg'}]);
+  const updated = JSON.parse(JSON.stringify(spot));
+  updated.photos.push({src:'images/20261103_atami_night_11757_michikusa.jpg',credit:{ja:'michikusa',en:'michikusa'},date:'2026-11-03'});
+  const next = source([updated,{id:'other',image:'images/other.jpg'}]);
+  assert(onlyRideMediaDataChanged(before,next));
+  assert(!onlyRideMediaDataChanged(before,next.replace('minutesFromTokyo":36','minutesFromTokyo":40')));
+  assert(!onlyRideMediaDataChanged(before,next.replace('images/other.jpg','images/unrelated.jpg')));
+  assert(!onlyRideMediaDataChanged(before,next.replace('Creator','Someone else')));
+  updated.photos.shift();assert(!onlyRideMediaDataChanged(before,source([updated,{id:'other',image:'images/other.jpg'}])));
+  const oldBudget='export const RUNTIME_DATA_BYTE_BUDGET = 350 * 1024;';
+  assert(onlyRideBudgetChanged(oldBudget,oldBudget.replace('350','355')));
+  assert(!onlyRideBudgetChanged(oldBudget,oldBudget.replace('350','400')));
+  assert(!onlyRideBudgetChanged(oldBudget,oldBudget.replace('350','355')+'\nconst unrelated = 1;'));
+});
 test('body-only story changes check all story editions without unrelated language suites', () => {
   const files = ['data/story-window/fr/godzilla.html', 'fr/stories/godzilla.html', 'content-manifest.json'];
   const plan = chooseReleaseScope(files.map(change));

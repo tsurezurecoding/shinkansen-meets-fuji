@@ -3,6 +3,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import vm from 'node:vm';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shaPattern = /^[0-9a-f]{40}$/;
@@ -21,6 +22,64 @@ const photoDedup = new Set(['scripts/shared/responsive-photos.mjs', 'scripts/res
   'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', '.github/workflows/quality-gate.yml']);
 const photoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/fuji-paper-mills\.html$/;
 const node = (...args) => ['node', ...args];
+const rideIds = ['tokyo-tower', 'odawara-castle', 'hinataoka', 'solar-ark', 'kakegawa', 'odawara'];
+const rideRelatedIds = [...rideIds, 'nagoya-station-skyline', 'kirin-beer-factory', 'kiyosu', 'kinshozan', 'sekigahara-battlefield'];
+const ridePhotoStems = ['tokyo-tower_night_76831', 'odawara-castle_night_105629', 'hinataoka_night_2594',
+  'solar-ark_dismantling_9859', 'solar-ark_dismantling_10810', 'kakegawa_dusk_42814', 'atami_night_11757']
+  .map(stem => `20261103_${stem}_michikusa`);
+export function onlyAssetVersionReferencesChanged(before, after) {
+  const clean = value => value.replace(/\?v=[a-f0-9]{8}(?=["'&<\s])/g, '?v=VERSION');
+  return before !== after && clean(before) === clean(after);
+}
+export function onlyCatalogManifestVersionChanged(before, after) {
+  const normalize = text => {
+    const value = JSON.parse(text);
+    function visit(object) {
+      if (!object || typeof object !== 'object') return;
+      for (const key of Object.keys(object)) {
+        if (key === 'spot-page-shared-data.js' && /^[a-f0-9]{8}(?:[a-f0-9]{56})?$/.test(object[key])) object[key] = 'CATALOG_VERSION';
+        else visit(object[key]);
+      }
+    }
+    visit(value);return value;
+  };
+  try { return before !== after && isDeepStrictEqual(normalize(before), normalize(after)); } catch { return false; }
+}
+export function onlyRideBudgetChanged(before, after) {
+  return before !== after && after.includes('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024') && after.replace('// November 7: seven approved ride photographs and two reference videos; projection unchanged.\n', '')
+    .replace('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024', 'RUNTIME_DATA_BYTE_BUDGET = 350 * 1024') === before;
+}
+export function onlyRideMediaDataChanged(before, after) {
+  function source(code) {
+    const context = {};
+    vm.runInNewContext(code + ';this.result = { SPOTS, ROUTE, BOARD_COLLECTION, WHEEL_COLLECTION };', context, { timeout: 5000 });
+    return JSON.parse(JSON.stringify(context.result));
+  }
+  try {
+    const previous = source(before), next = source(after);
+    for (const field of ['ROUTE', 'BOARD_COLLECTION', 'WHEEL_COLLECTION']) if (!isDeepStrictEqual(previous[field], next[field])) return false;
+    if (!isDeepStrictEqual(previous.SPOTS.map(s => s.id), next.SPOTS.map(s => s.id))) return false;
+    for (let i = 0; i < previous.SPOTS.length; i++) {
+      const a = previous.SPOTS[i], b = next.SPOTS[i];
+      if (!rideIds.includes(a.id)) { if (!isDeepStrictEqual(a, b)) return false; continue; }
+      const baselinePhotos = [a.image, ...(a.photos || []).map(p => p.src)];
+      const finalPhotos = [b.image, ...(b.photos || []).map(p => p.src)];
+      if (baselinePhotos.some(src => !finalPhotos.includes(src))) return false;
+      if (finalPhotos.some(src => !baselinePhotos.includes(src) && !ridePhotoStems.some(stem => src === `images/${stem}.jpg`))) return false;
+      if ((a.photos || []).some(p => !(b.photos || []).some(q => isDeepStrictEqual(p, q)))) return false;
+      for (const p of b.photos || []) if (!baselinePhotos.includes(p.src) && (p.credit?.ja !== 'michikusa' || p.credit?.en !== 'michikusa' || p.date !== '2026-11-03')) return false;
+      const oldVideos = a.media?.videos || [], newVideos = b.media?.videos || [];
+      if (oldVideos.some(p => !newVideos.some(q => isDeepStrictEqual(p, q)))) return false;
+      if (newVideos.some(p => !oldVideos.some(q => isDeepStrictEqual(p, q)) && !['ixWDozxgh_w', 'Kho1OEWqgvc'].includes(p.id))) return false;
+      const fields = a.id === 'solar-ark' ? ['photos', 'media', 'pageTitle', 'pageHeading', 'pageHeadingChunks', 'metaDescription', 'pageStory', 'explainer', 'guideHighlight', 'image', 'photoCredit', 'explainerFigure']
+        : a.id === 'hinataoka' ? ['photos', 'media'] : a.id === 'odawara' ? ['photos', 'explainer'] : ['photos'];
+      for (const field of fields) { delete a[field]; delete b[field]; }
+      if (a.id === 'solar-ark') for (const lang of ['ja', 'en']) for (const field of ['hook', 'story']) { delete a[lang][field]; delete b[lang][field]; }
+      if (!isDeepStrictEqual(a, b)) return false;
+    }
+    return true;
+  } catch { return false; }
+}
 const validationFiles = new Set(['scripts/shared/site-runtime-validation.mjs',
   'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs']);
 const storyRoutes = ['index', 'godzilla', 'shogun', 'yurucamp', 'dragonball'].map(slug => `stories/${slug}.html`);
@@ -66,9 +125,35 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const rideSources = new Set(['data.js', 'data-runtime.js', 'spot-page-shared-data.js', 'scripts/generate-yakei-page.mjs',
+    'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'yakei.css', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/generate-spot-pages.test.mjs',
+    'content-manifest.json', 'images/thumbs/display/index.json', 'images/thumbs/gallery/index.json']);
+  const rideLocale = /^scripts\/locales\/(?:castle|expansion|utility|episode)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
+  const ridePage = file => /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?yakei\.html$/.test(file)
+    || rideRelatedIds.some(id => new RegExp(`^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)/)?spots/${id}\\.html$`).test(file));
+  const ridePayload = file => rideRelatedIds.some(id => file === `data/spot-pages/${id}.ja.js` || file === `data/spot-pages/${id}.en.js`);
+  const rideImage = file => ridePhotoStems.some(stem => file === `images/${stem}.jpg` || file === `images/thumbs/${stem}.webp`
+    || file === `images/thumbs/gallery/${stem}.webp` || new RegExp(`^images/thumbs/display/${stem}-[a-f0-9]{8}-(640|960|1920)\\.webp$`).test(file));
+  if (files.includes('data.js') && rideDataOnly && changes.every(({path: file, status}) => ['A', 'M'].includes(status) &&
+    (rideSources.has(file) || ridePayload(file) || rideImage(file) || ridePage(file)
+      || ['site-runtime.json', 'spot-page-runtime.json'].includes(file) && catalogManifestOnly(file)
+      || file === 'scripts/generate-runtime-data.mjs' && rideBudgetOnly
+      || rideLocale.test(file) && addedLocaleKeysOnly(file)
+      || file.endsWith('.html') && status === 'M' && assetVersionOnly(file)))) return {
+    scope: 'owned-ride-night-content', needsDependencies: true, pagesCandidate: true,
+    reason: 'Approved ride photographs, two reference videos and night/article families; semantic spot guard preserves other content, positions, retained credits and media. Collateral HTML changes only asset versions.',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/yakei-locales.test.mjs', 'scripts/responsive-photos.test.mjs', 'scripts/generate-spot-pages.test.mjs'),
+      ...['validate-content', 'validate-spot-schema', 'validate-runtime-data', 'validate-spot-page-shared'].map(name => node(`scripts/${name}.mjs`)),
+      node('scripts/audit-photo-credits.mjs', '--check'),
+      ...['generate-spot-page-shared-data', 'generate-gallery-thumbnails', 'generate-runtime-data', 'generate-yakei-page', 'sync-asset-versions'].map(name => node(`scripts/${name}.mjs`, '--check')),
+      node('scripts/generate-site-runtime.mjs', '--check'), node('scripts/generate-spot-page-runtime.mjs', '--check'),
+      ...['yakei.html', 'spots/solar-ark.html', 'spots/kakegawa.html', 'spots/odawara.html', 'spots/tokyo-tower.html', 'spots/odawara-castle.html']
+        .map(route => node('scripts/generate-castle-locales.mjs', '--route', route, '--check')),
+      node('scripts/check-content-manifest.mjs')],
+  };
   // Content-only edits do not change locale availability, host connections or
   // common chrome. Those inputs deliberately remain in the wider integration plan.
   const storyBody = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:godzilla|shogun|yurucamp|dragonball)\.html$/;
@@ -288,6 +373,14 @@ export function createReleasePlan(base) {
   for (let i = 0; i + 1 < fields.length; i += 2) if (fields[i]) changes.push({ status: fields[i], path: fields[i + 1] });
   const packageChange = changes.find(change => change.path === 'package.json');
   const plan = chooseReleaseScope(changes, {
+    rideDataOnly: changes.some(c => c.path === 'data.js' && c.status === 'M') && onlyRideMediaDataChanged(git('show', `${base}:data.js`), git('show', `${head}:data.js`)),
+    rideBudgetOnly: changes.some(c => c.path === 'scripts/generate-runtime-data.mjs') && onlyRideBudgetChanged(git('show', `${base}:scripts/generate-runtime-data.mjs`), git('show', `${head}:scripts/generate-runtime-data.mjs`)),
+    assetVersionOnly: file => onlyAssetVersionReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    catalogManifestOnly: file => onlyCatalogManifestVersionChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    addedLocaleKeysOnly: file => {
+      const before = JSON.parse(git('show', `${base}:${file}`)), after = JSON.parse(git('show', `${head}:${file}`));
+      return Object.keys(before).every(key => before[key] === after[key]);
+    },
     versionOnly: file => onlyVersionReferenceChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     marukoLinkOnly: file => changes.find(change => change.path === file)?.status === 'M' && onlyMarukoLocaleLinkChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     menuReferenceOnly: file => /^sudoori\//.test(file) && changes.find(change => change.path === file)?.status === 'M' && onlyPreservedChromeMenuChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`), git('show', `${base}:shared-ui/ja.shell.js`), git('show', `${head}:shared-ui/ja.shell.js`)),
