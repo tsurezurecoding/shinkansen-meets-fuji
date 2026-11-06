@@ -31,6 +31,20 @@ export function onlyAssetVersionReferencesChanged(before, after) {
   const clean = value => value.replace(/\?v=[a-f0-9]{8}(?=["'&<\s])/g, '?v=VERSION');
   return before !== after && clean(before) === clean(after);
 }
+export function onlyCatalogManifestVersionChanged(before, after) {
+  const normalize = text => {
+    const value = JSON.parse(text);
+    function visit(object) {
+      if (!object || typeof object !== 'object') return;
+      for (const key of Object.keys(object)) {
+        if (key === 'spot-page-shared-data.js' && /^[a-f0-9]{8}(?:[a-f0-9]{56})?$/.test(object[key])) object[key] = 'CATALOG_VERSION';
+        else visit(object[key]);
+      }
+    }
+    visit(value);return value;
+  };
+  try { return before !== after && isDeepStrictEqual(normalize(before), normalize(after)); } catch { return false; }
+}
 export function onlyRideBudgetChanged(before, after) {
   return before !== after && after.includes('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024') && after.replace('// November 7: seven approved ride photographs and two reference videos; projection unchanged.\n', '')
     .replace('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024', 'RUNTIME_DATA_BYTE_BUDGET = 350 * 1024') === before;
@@ -111,7 +125,7 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, rideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const rideSources = new Set(['data.js', 'data-runtime.js', 'spot-page-shared-data.js', 'scripts/generate-yakei-page.mjs',
@@ -125,6 +139,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     || file === `images/thumbs/gallery/${stem}.webp` || new RegExp(`^images/thumbs/display/${stem}-[a-f0-9]{8}-(640|960|1920)\\.webp$`).test(file));
   if (files.includes('data.js') && rideDataOnly && changes.every(({path: file, status}) => ['A', 'M'].includes(status) &&
     (rideSources.has(file) || ridePayload(file) || rideImage(file) || ridePage(file)
+      || ['site-runtime.json', 'spot-page-runtime.json'].includes(file) && catalogManifestOnly(file)
       || file === 'scripts/generate-runtime-data.mjs' && rideBudgetOnly
       || rideLocale.test(file) && addedLocaleKeysOnly(file)
       || file.endsWith('.html') && status === 'M' && assetVersionOnly(file)))) return {
@@ -134,6 +149,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       ...['validate-content', 'validate-spot-schema', 'validate-runtime-data', 'validate-spot-page-shared'].map(name => node(`scripts/${name}.mjs`)),
       node('scripts/audit-photo-credits.mjs', '--check'),
       ...['generate-spot-page-shared-data', 'generate-gallery-thumbnails', 'generate-runtime-data', 'generate-yakei-page', 'sync-asset-versions'].map(name => node(`scripts/${name}.mjs`, '--check')),
+      node('scripts/generate-site-runtime.mjs', '--check'), node('scripts/generate-spot-page-runtime.mjs', '--check'),
       ...['yakei.html', 'spots/solar-ark.html', 'spots/kakegawa.html', 'spots/odawara.html', 'spots/tokyo-tower.html', 'spots/odawara-castle.html']
         .map(route => node('scripts/generate-castle-locales.mjs', '--route', route, '--check')),
       node('scripts/check-content-manifest.mjs')],
@@ -360,6 +376,7 @@ export function createReleasePlan(base) {
     rideDataOnly: changes.some(c => c.path === 'data.js' && c.status === 'M') && onlyRideMediaDataChanged(git('show', `${base}:data.js`), git('show', `${head}:data.js`)),
     rideBudgetOnly: changes.some(c => c.path === 'scripts/generate-runtime-data.mjs') && onlyRideBudgetChanged(git('show', `${base}:scripts/generate-runtime-data.mjs`), git('show', `${head}:scripts/generate-runtime-data.mjs`)),
     assetVersionOnly: file => onlyAssetVersionReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    catalogManifestOnly: file => onlyCatalogManifestVersionChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     addedLocaleKeysOnly: file => {
       const before = JSON.parse(git('show', `${base}:${file}`)), after = JSON.parse(git('show', `${head}:${file}`));
       return Object.keys(before).every(key => before[key] === after[key]);

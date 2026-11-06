@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
+import { chooseReleaseScope, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
 
@@ -19,6 +19,10 @@ test('ride photo scope rejects unrelated paths, deleted media, changed translati
   assert.equal(chooseReleaseScope(files.map(change), {...options, addedLocaleKeysOnly:()=>false}).scope, 'unmapped');
   assert(onlyAssetVersionReferencesChanged('<script src="data-runtime.js?v=1234abcd"></script>', '<script src="data-runtime.js?v=abcdef12"></script>'));
   assert(!onlyAssetVersionReferencesChanged('<p>Old</p>', '<p>New</p>'));
+  const manifest='{"assets":{"spot-page-shared-data.js":"1234abcd","style.css":"aaaa1111"},"version":1}';
+  assert(onlyCatalogManifestVersionChanged(manifest,manifest.replace('1234abcd','abcdef12')));
+  assert(!onlyCatalogManifestVersionChanged(manifest,manifest.replace('aaaa1111','bbbb2222')));
+  assert(!onlyCatalogManifestVersionChanged(manifest,manifest.replace('"version":1','"version":2')));
 });
 
 test('ride data guard retains existing photos, credits, media, other spots and route timing', () => {
