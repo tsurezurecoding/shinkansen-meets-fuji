@@ -685,7 +685,7 @@
           <tbody>
             <tr><td>東京起 0.5 分</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/edo-castle-fujimi-yagura.html">江戶城富士見櫓</a></td></tr>
             <tr><td>東京起 3 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/tokyo-tower.html">東京鐵塔</a></td></tr>
-            <tr><td>東京起 13 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/maruko-bridge.html">丸子橋</a></td></tr>
+            <tr><td>東京起 13 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../zh-Hant/spots/maruko-bridge.html">丸子橋</a></td></tr>
             <tr><td>東京起 14 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/musashi-kosugi-towers.html">武藏小杉高樓群</a></td></tr>
             <tr><td>東京起 23 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/727-board.html">727與248號看板</a></td></tr>
             <tr><td>東京起 24 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/727-board.html">727 COSMETICS看板</a></td></tr>

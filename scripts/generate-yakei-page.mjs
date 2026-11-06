@@ -189,7 +189,21 @@ const COPY = {
   "hinata_lead": "<p class=\"yk-spot-lead\">丘の斜面に、家々の灯り</p>",
   "hinata_body": "<p>昼は三角屋根の色を探す丘。夜には斜面に並ぶ家々の灯りが見えます。写真は2026年11月3日の車窓から。</p>",
   "hinata_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">東京から27分</span><span class=\"yk-side yk-side-e\">E席側</span></p>",
-  "hinata_more": "<p class=\"yk-more\"><a href=\"spots/hinataoka.html\">日向岡の車窓ページを見る</a></p>"
+  "hinata_more": "<p class=\"yk-more\"><a href=\"spots/hinataoka.html\">日向岡の車窓ページを見る</a></p>",
+  "atami_image": "<img src=\"images/thumbs/20261103_atami_night_11757_michikusa.webp\" alt=\"熱海の街明かりと右上に光る熱海城\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
+  "atami_title": "<h3>熱海の夜景</h3>",
+  "atami_lead": "<p class=\"yk-spot-lead\">街の灯りの上に、白い城</p>",
+  "atami_body": "<p>写真の右上、街の灯りより高いところに白く浮かぶのが熱海城です。2026年11月3日の車窓から撮影しました。A席側で、斜面の街とその上を一緒に探してください。</p>",
+  "atami_credit": "<figcaption>写真：新幹線の窓 · 2026-11-03</figcaption>",
+  "atami_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">東京から36分</span><span class=\"yk-side yk-side-a\">A席側</span></p>",
+  "atami_more": "<p class=\"yk-more\"><a href=\"spots/odawara.html\">熱海の車窓ページを見る</a></p>",
+  "mishima_title": "<h3><span class=\"copy-chunk\">三島車両所の</span><span class=\"copy-chunk\">カタパルト</span></h3>",
+  "mishima_lead": "<p class=\"yk-spot-lead\">夜は、線路の灯りを追う</p>",
+  "mishima_body": "<p>三島車両所には、夜の車窓を記録した動画もあります。昼の写真と見比べると、街や車両所の灯りの中で高架線がどう見えるかを確かめられます。</p>",
+  "mishima_video_title": "夜の三島車両所の発射台",
+  "mishima_credit": "<figcaption>動画：michikusa · <a href=\"https://www.youtube.com/watch?v=U304GsIv2jk\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a></figcaption>",
+  "mishima_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">東京から約41分</span><span class=\"yk-side yk-side-a\">A席側</span></p>",
+  "mishima_more": "<p class=\"yk-more\"><a href=\"spots/mishima-catapult.html\">三島車両所の車窓ページを見る</a></p>"
  },
  "en": {
   "copy": "<title>Night Views from the Shinkansen | Illuminations from the window, and when it gets dark | Shinkansen Window</title>",
@@ -365,7 +379,21 @@ const COPY = {
   "hinata_lead": "<p class=\"yk-spot-lead\">Hillside homes lit after dark</p>",
   "hinata_body": "<p>Lights trace the hillside homes. Photographed from the Shinkansen on 3 November 2026.</p>",
   "hinata_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">27 min from Tokyo</span><span class=\"yk-side yk-side-e\">Seat E side</span></p>",
-  "hinata_more": "<p class=\"yk-more\"><a href=\"spots/hinataoka.html\">Open the window page for Hinataoka</a></p>"
+  "hinata_more": "<p class=\"yk-more\"><a href=\"spots/hinataoka.html\">Open the window page for Hinataoka</a></p>",
+  "atami_image": "<img src=\"../images/thumbs/20261103_atami_night_11757_michikusa.webp\" alt=\"Atami at night with illuminated Atami Castle at the upper right\" width=\"1920\" height=\"1080\" loading=\"lazy\" decoding=\"async\">",
+  "atami_title": "<h3>Atami at night</h3>",
+  "atami_lead": "<p class=\"yk-spot-lead\">A white castle above the town lights</p>",
+  "atami_body": "<p>In the photograph taken on 3 November 2026, Atami Castle is the white light at the upper right. Look above the hillside town on the Seat A side.</p>",
+  "atami_credit": "<figcaption>Photo: Shinkansen Window · 2026-11-03</figcaption>",
+  "atami_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">36 min from Tokyo</span><span class=\"yk-side yk-side-a\">Seat A side</span></p>",
+  "atami_more": "<p class=\"yk-more\"><a href=\"spots/odawara.html\">Open the window page for Atami</a></p>",
+  "mishima_title": "<h3>Mishima depot’s catapult</h3>",
+  "mishima_lead": "<p class=\"yk-spot-lead\">Follow the tracks after dark</p>",
+  "mishima_body": "<p>This train-window video records the Mishima depot at night. Compare it with the daytime photographs on the spot page to see how the elevated tracks appear among the town and depot lights.</p>",
+  "mishima_video_title": "The Mishima launchpad at night",
+  "mishima_credit": "<figcaption>Video: michikusa · <a href=\"https://www.youtube.com/watch?v=U304GsIv2jk\" target=\"_blank\" rel=\"noopener noreferrer\">YouTube</a></figcaption>",
+  "mishima_meta": "<p class=\"yk-spot-meta\"><span class=\"yk-min\">About 41 min from Tokyo</span><span class=\"yk-side yk-side-a\">Seat A side</span></p>",
+  "mishima_more": "<p class=\"yk-more\"><a href=\"spots/mishima-catapult.html\">Open the window page for the Mishima depot</a></p>"
  }
 };
 
@@ -555,6 +583,7 @@ ${t.yakei_page}
       <figure class="yk-figure">${t.hinata_image}${t.copy13}</figure>
       <div class="yk-spot-body">${t.hinata_meta}${t.hinata_title}${t.hinata_lead}${t.hinata_body}${t.hinata_more}</div>
     </article>
+    <article class="yk-spot" id="yk-atami"><figure class="yk-figure">${t.atami_image}${t.atami_credit}</figure><div class="yk-spot-body">${t.atami_meta}${t.atami_title}${t.atami_lead}${t.atami_body}${t.atami_more}</div></article>
     <article class="yk-spot" id="yk-nagoya-station-skyline">
       <figure class="yk-figure">
         ${t.copy42}
@@ -591,6 +620,7 @@ ${t.yakei_page}
         ${t.yk_more8}
       </div>
     </article>
+    <article class="yk-spot" id="yk-mishima-catapult"><figure class="yk-figure"><iframe class="yk-video" src="https://www.youtube-nocookie.com/embed/U304GsIv2jk" title="${t.mishima_video_title}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>${t.mishima_credit}</figure><div class="yk-spot-body">${t.mishima_meta}${t.mishima_title}${t.mishima_lead}${t.mishima_body}${t.mishima_more}</div></article>
     <article class="yk-spot" id="yk-shimizu-port-chikyu">
       <figure class="yk-figure">
         ${t.copy52}

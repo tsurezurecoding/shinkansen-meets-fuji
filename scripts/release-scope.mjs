@@ -3,6 +3,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
+import vm from 'node:vm';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const shaPattern = /^[0-9a-f]{40}$/;
@@ -21,8 +22,54 @@ const photoDedup = new Set(['scripts/shared/responsive-photos.mjs', 'scripts/res
   'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', '.github/workflows/quality-gate.yml']);
 const photoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/fuji-paper-mills\.html$/;
 const node = (...args) => ['node', ...args];
+const rideIds = ['tokyo-tower', 'odawara-castle', 'hinataoka', 'solar-ark', 'kakegawa', 'odawara'];
+const rideRelatedIds = [...rideIds, 'nagoya-station-skyline', 'kirin-beer-factory', 'kiyosu', 'kinshozan', 'sekigahara-battlefield'];
+const ridePhotoStems = ['tokyo-tower_night_76831', 'odawara-castle_night_105629', 'hinataoka_night_2594',
+  'solar-ark_dismantling_9859', 'solar-ark_dismantling_10810', 'kakegawa_dusk_42814', 'atami_night_11757']
+  .map(stem => `20261103_${stem}_michikusa`);
+export function onlyAssetVersionReferencesChanged(before, after) {
+  const clean = value => value.replace(/\?v=[a-f0-9]{8}(?=["'&<\s])/g, '?v=VERSION');
+  return before !== after && clean(before) === clean(after);
+}
+export function onlyRideBudgetChanged(before, after) {
+  return before !== after && after.includes('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024') && after.replace('// November 7: seven approved ride photographs and two reference videos; projection unchanged.\n', '')
+    .replace('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024', 'RUNTIME_DATA_BYTE_BUDGET = 350 * 1024') === before;
+}
+export function onlyRideMediaDataChanged(before, after) {
+  function source(code) {
+    const context = {};
+    vm.runInNewContext(code + ';this.result = { SPOTS, ROUTE, BOARD_COLLECTION, WHEEL_COLLECTION };', context, { timeout: 5000 });
+    return JSON.parse(JSON.stringify(context.result));
+  }
+  try {
+    const previous = source(before), next = source(after);
+    for (const field of ['ROUTE', 'BOARD_COLLECTION', 'WHEEL_COLLECTION']) if (!isDeepStrictEqual(previous[field], next[field])) return false;
+    if (!isDeepStrictEqual(previous.SPOTS.map(s => s.id), next.SPOTS.map(s => s.id))) return false;
+    for (let i = 0; i < previous.SPOTS.length; i++) {
+      const a = previous.SPOTS[i], b = next.SPOTS[i];
+      if (!rideIds.includes(a.id)) { if (!isDeepStrictEqual(a, b)) return false; continue; }
+      const baselinePhotos = [a.image, ...(a.photos || []).map(p => p.src)];
+      const finalPhotos = [b.image, ...(b.photos || []).map(p => p.src)];
+      if (baselinePhotos.some(src => !finalPhotos.includes(src))) return false;
+      if (finalPhotos.some(src => !baselinePhotos.includes(src) && !ridePhotoStems.some(stem => src === `images/${stem}.jpg`))) return false;
+      if ((a.photos || []).some(p => !(b.photos || []).some(q => isDeepStrictEqual(p, q)))) return false;
+      for (const p of b.photos || []) if (!baselinePhotos.includes(p.src) && (p.credit?.ja !== 'michikusa' || p.credit?.en !== 'michikusa' || p.date !== '2026-11-03')) return false;
+      const oldVideos = a.media?.videos || [], newVideos = b.media?.videos || [];
+      if (oldVideos.some(p => !newVideos.some(q => isDeepStrictEqual(p, q)))) return false;
+      if (newVideos.some(p => !oldVideos.some(q => isDeepStrictEqual(p, q)) && !['ixWDozxgh_w', 'Kho1OEWqgvc'].includes(p.id))) return false;
+      const fields = a.id === 'solar-ark' ? ['photos', 'media', 'pageTitle', 'pageHeading', 'pageHeadingChunks', 'metaDescription', 'pageStory', 'explainer', 'guideHighlight', 'image', 'photoCredit', 'explainerFigure']
+        : a.id === 'hinataoka' ? ['photos', 'media'] : a.id === 'odawara' ? ['photos', 'explainer'] : ['photos'];
+      for (const field of fields) { delete a[field]; delete b[field]; }
+      if (a.id === 'solar-ark') for (const lang of ['ja', 'en']) for (const field of ['hook', 'story']) { delete a[lang][field]; delete b[lang][field]; }
+      if (!isDeepStrictEqual(a, b)) return false;
+    }
+    return true;
+  } catch { return false; }
+}
 const validationFiles = new Set(['scripts/shared/site-runtime-validation.mjs',
-  'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs']);
+  'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs']);
+const storyRoutes = ['index', 'godzilla', 'shogun', 'yurucamp', 'dragonball'].map(slug => `stories/${slug}.html`);
+const storyNavigation = () => node('scripts/validate-site-navigation.mjs', ...storyRoutes.flatMap(route => ['--route', route]));
 const languageCommands = ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales',
   'validate-mieru', 'validate-sparkling-locales'].map(name => `node scripts/${name}.mjs`)
   .concat('node --test scripts/editorial-notes.test.mjs', 'node scripts/validate-live-sitemap.mjs');
@@ -64,9 +111,90 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, rideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const rideSources = new Set(['data.js', 'data-runtime.js', 'spot-page-shared-data.js', 'scripts/generate-yakei-page.mjs',
+    'scripts/shared/yakei-spots.mjs', 'yakei.css', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
+    'content-manifest.json', 'images/thumbs/display/index.json', 'images/thumbs/gallery/index.json']);
+  const rideLocale = /^scripts\/locales\/(?:castle|expansion|utility|episode)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
+  const ridePage = file => /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?yakei\.html$/.test(file)
+    || rideRelatedIds.some(id => new RegExp(`^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)/)?spots/${id}\\.html$`).test(file));
+  const ridePayload = file => rideRelatedIds.some(id => file === `data/spot-pages/${id}.ja.js` || file === `data/spot-pages/${id}.en.js`);
+  const rideImage = file => ridePhotoStems.some(stem => file === `images/${stem}.jpg` || file === `images/thumbs/${stem}.webp`
+    || file === `images/thumbs/gallery/${stem}.webp` || new RegExp(`^images/thumbs/display/${stem}-[a-f0-9]{8}-(640|960|1920)\\.webp$`).test(file));
+  if (files.includes('data.js') && rideDataOnly && changes.every(({path: file, status}) => ['A', 'M'].includes(status) &&
+    (rideSources.has(file) || ridePayload(file) || rideImage(file) || ridePage(file)
+      || file === 'scripts/generate-runtime-data.mjs' && rideBudgetOnly
+      || rideLocale.test(file) && addedLocaleKeysOnly(file)
+      || file.endsWith('.html') && status === 'M' && assetVersionOnly(file)))) return {
+    scope: 'owned-ride-night-content', needsDependencies: true, pagesCandidate: true,
+    reason: 'Approved ride photographs, two reference videos and night/article families; semantic spot guard preserves other content, positions, retained credits and media. Collateral HTML changes only asset versions.',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/yakei-locales.test.mjs', 'scripts/responsive-photos.test.mjs', 'scripts/generate-spot-pages.test.mjs'),
+      ...['validate-content', 'validate-spot-schema', 'validate-runtime-data', 'validate-spot-page-shared'].map(name => node(`scripts/${name}.mjs`)),
+      node('scripts/audit-photo-credits.mjs', '--check'),
+      ...['generate-spot-page-shared-data', 'generate-gallery-thumbnails', 'generate-runtime-data', 'generate-yakei-page', 'sync-asset-versions'].map(name => node(`scripts/${name}.mjs`, '--check')),
+      ...['yakei.html', 'spots/solar-ark.html', 'spots/kakegawa.html', 'spots/odawara.html', 'spots/tokyo-tower.html', 'spots/odawara-castle.html']
+        .map(route => node('scripts/generate-castle-locales.mjs', '--route', route, '--check')),
+      node('scripts/check-content-manifest.mjs')],
+  };
+  // Content-only edits do not change locale availability, host connections or
+  // common chrome. Those inputs deliberately remain in the wider integration plan.
+  const storyBody = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:godzilla|shogun|yurucamp|dragonball)\.html$/;
+  const storyOutput = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?stories\/(?:index|godzilla|shogun|yurucamp|dragonball)\.html$/;
+  if (files.some(file => storyBody.test(file)) && changes.every(({ path: file, status }) => status === 'M' &&
+    (storyBody.test(file) || storyOutput.test(file) || file === 'content-manifest.json'))) return {
+    scope: 'story-content', needsDependencies: true, pagesCandidate: true,
+    reason: 'Existing story bodies and generated editions only; all story language/metadata/asset contracts remain checked without unrelated language families',
+    commands: [node('scripts/generate-story-window-pages.mjs', '--check'),
+      node('scripts/validate-story-window.mjs', '--pages-only'), storyNavigation(),
+      node('scripts/check-content-manifest.mjs')],
+  };
+  const storyTooling = new Set(['scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
+    'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs',
+    'scripts/generate-story-window-pages.mjs', 'scripts/shared/story-window.mjs', 'scripts/shared/story-routing.test.mjs']);
+  if (files.length && files.some(file => storyTooling.has(file) && !infra.has(file)) &&
+      changes.every(({ path: file, status }) => status !== 'D' && storyTooling.has(file))) return {
+    scope: 'story-validation-tooling', needsDependencies: true, pagesCandidate: false,
+    reason: 'Story routing and scoped validation only; generator checks must prove the delivered story and catalogue outputs remain unchanged',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/validate-site-navigation.test.mjs',
+      'scripts/shared/story-routing.test.mjs', 'scripts/locales-contract.test.mjs'),
+      node('scripts/generate-story-window-pages.mjs', '--check'),
+      node('scripts/validate-story-window.mjs'), storyNavigation()],
+  };
+  const storyIntegrationFiles = new Set([
+    'locales.js','language-router.js','package.json','sitemap.xml','content-manifest.json','site-runtime.json','spot-page-runtime.json',
+    'scripts/generate-story-window-pages.mjs','scripts/shared/story-window.mjs','scripts/validate-story-window.mjs',
+    'scripts/generate-spot-pages.mjs','scripts/generate-language-mirrors.mjs','scripts/generate-castle-locales.mjs','scripts/generate-utility-locales.mjs',
+    'scripts/shared/castle-localization.mjs','scripts/shared/utility-localization.mjs','scripts/generate-content-manifest.mjs',
+    'scripts/content-metadata.json','scripts/templates/site-source/zukan.html.tpl','scripts/validate-site-navigation.mjs','scripts/validate-language-pages.mjs','scripts/validate-castle-locales.mjs','scripts/validate-utility-locales.mjs','scripts/audit-site.mjs',
+    'scripts/release-scope.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/editorial-notes.test.mjs','scripts/shared/site-chrome.mjs','scripts/generate-site-chrome.test.mjs',
+  ]);
+  const storyPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:stories\/(?:index|godzilla|shogun|yurucamp|dragonball)\.html|zukan\.html|spots\/(?:kiyosu|sekigahara-battlefield|hamanako|maruko-bridge)\.html)$/;
+  const storyInput = /^(?:data\/story-window\/|images\/story-window\/|story-window(?:-[a-z]+)?\.(?:js|css)$)/;
+  // The new pages reuse ten shell payloads. The four translated spot hosts
+  // share one new rail variant whose Maruko destination now has a local edition.
+  const storyShells = new Set([...['ja','en','zh-hant','zh-hans','ko','th','fr','de','es','it'].map(lang=>`shared-ui/${lang}.shell.js`), ...['zh-hant','zh-hans','ko','th','fr','de','es','it'].map(lang=>`shared-ui/${lang}.rail-spots-hamanako.js`)]);
+  const storyChange = files.some(file => file === 'scripts/generate-story-window-pages.mjs' || file.startsWith('data/story-window/'));
+  let storyPackage = !files.includes('package.json');
+  if (!storyPackage && packageBefore && packageAfter) {
+    const before = typeof packageBefore === 'string' ? JSON.parse(packageBefore) : packageBefore;
+    const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : packageAfter;
+    const {scripts: oldScripts, ...oldRest} = before, {scripts: newScripts, ...newRest} = after;
+    const allowed = new Set(['build:pages','check:stories','check:site']);
+    storyPackage = isDeepStrictEqual(oldRest,newRest) && [...new Set([...Object.keys(oldScripts),...Object.keys(newScripts)])].every(key=>allowed.has(key)||oldScripts[key]===newScripts[key]);
+  }
+  if (storyChange && storyPackage && changes.every(({path:file,status}) => status !== 'D' && (storyIntegrationFiles.has(file) || storyPage.test(file) || storyInput.test(file) || storyShells.has(file) || /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/.test(file) || /\.(?:html|tpl)$/.test(file) && versionOnly(file) || marukoLinkOnly(file) || menuReferenceOnly(file) || chromeExtractionOnly(file)))) return {
+    scope:'story-window', needsDependencies:true, pagesCandidate:true,
+    reason:'Localized story pages and four existing spot connections; shared asset-version consumers are checked without rerendering unrelated content',
+    commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs'),node('--test','--test-name-pattern=native Maruko','scripts/generate-site-chrome.test.mjs'),
+      node('scripts/generate-story-window-pages.mjs','--check'),node('scripts/validate-story-window.mjs'),
+      ...['kiyosu','sekigahara-battlefield','hamanako','maruko-bridge'].map(id=>node('scripts/generate-castle-locales.mjs','--route',`spots/${id}.html`,'--check')),
+      node('scripts/generate-utility-locales.mjs','--route','zukan.html','--check'),
+      node('scripts/generate-site-chrome.mjs','--check'),
+      node('scripts/validate-site-navigation.mjs','--with-language-checks'),node('scripts/audit-site.mjs'),
+      node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')],
+  };
   const packageKind = files.includes('package.json') ? classifyPackageChange(packageBefore, packageAfter) : null;
   if (packageKind === 'unmapped') return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false,
     reason: 'Define affected checks for the changed npm command behavior; a script edit is not a dependency upgrade', commands: [] };
@@ -157,8 +285,67 @@ export function needsPagesCandidate(plan) {
 }
 
 export function onlyVersionReferenceChanged(before, after) {
-  const normalize = text => text.replace(/(727-collection\.css\?v=)[^\s"'<>]+/g, '$1VERSION');
+  const normalize = text => text.replace(/((?:727-collection\.css|locales\.js|language-router\.js|utility-data\.js)\?v=)[^\s"'<>]+/g, '$1VERSION');
   return before !== after && normalize(before) === normalize(after);
+}
+
+export function onlyMarukoLocaleLinkChanged(file, before, after) {
+  const shared = file.match(/^(?:shared-ui\/|scripts\/templates\/site-chrome\/)(de|es|fr|it|ko|th|zh-hans|zh-hant)\./);
+  const page = file.match(/^(?:scripts\/templates\/site-source\/)?(de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/[^?]+\.html(?:\.tpl)?$/);
+  const edition = shared?.[1] || page?.[1];
+  if (!edition) return false;
+  const locale = {'zh-hans':'zh-Hans','zh-hant':'zh-Hant'}[edition] || edition;
+  const normalize = text => text.replace(/((?:727-collection\.css|locales\.js|language-router\.js|utility-data\.js)\?v=)[^\s"'<>]+/g, '$1VERSION');
+  let expected = normalize(before);
+  for(const attribute of ['href','data-site-chrome-item'])for(const prefix of ['__MADO_ROOT__','../','../../','../../../','/',''])for(const quote of ['"','\\"'])expected=expected.replaceAll(`${attribute}=${quote}${prefix}en/spots/maruko-bridge.html${quote}`,`${attribute}=${quote}${prefix}${locale}/spots/maruko-bridge.html${quote}`);
+  if(expected===normalize(before))return false;
+  for (const prefix of ['__MADO_ROOT__','../','../../','../../../','/','']) for (const quote of ['"', '\\"']) {
+    const anchor = `href=${quote}${prefix}${locale}/spots/maruko-bridge.html${quote} hreflang=${quote}en${quote}`;
+    expected = expected.replaceAll(anchor, anchor.replace(`hreflang=${quote}en${quote}`, `hreflang=${quote}${locale}${quote}`));
+  }
+  return before !== after && expected === normalize(after);
+}
+
+export function onlyPreservedChromeMenuChanged(file, before, after, beforeShell, afterShell) {
+  if (!/^sudoori\/(?:index|stories\/(?:aisho|koura|nishio|sekigahara|shimamoto|tanna))\.html$/.test(file)) return false;
+  const config = html => JSON.parse(html.match(/<script id="mado-shared-ui-config" type="application\/json">([^<]+)<\/script>/)?.[1] || '{}');
+  const template = (shell, key) => {
+    if (!/^[\w-]+$/.test(key || '')) return null;
+    const value = shell.match(new RegExp('"' + key + '":("(?:[^"\\\\]|\\\\.)*")'))?.[1];
+    return value ? JSON.parse(value) : null;
+  };
+  try {
+    const old = config(before), next = config(after);
+    let expected = before, rebound = false;
+    for (let i=0;i<(old.mounts||[]).length;i++) {
+      const from=old.mounts[i].menu, to=next.mounts?.[i]?.menu;
+      if (from === to) continue;
+      const oldTemplate=template(beforeShell,from), newTemplate=template(afterShell,to);
+      if (!oldTemplate || oldTemplate !== newTemplate) return false;
+      expected=expected.replaceAll(`"menu":"${from}"`, `"menu":"${to}"`);rebound=true;
+    }
+    return rebound && expected === after;
+  } catch { return false; }
+}
+
+export function onlyPreservedArtworkChromeExtraction(file, before, after, shell) {
+  if (!['artworks/727-hunt/index.html','artworks/memory-express/index.html'].includes(file) || before.includes('id="mado-shared-ui-config"')) return false;
+  const configMatch=after.match(/<script id="mado-shared-ui-config" type="application\/json">([^<]+)<\/script>\n/);
+  const boot=after.match(/<script src="\.\.\/\.\.\/site-runtime-loader\.js\?v=[a-f0-9]{8}" defer><\/script>\n/);
+  if (!configMatch || !boot) return false;
+  try {
+    const expected={assets:['shared-ui/ja.shell.js'],root:'../../',lang:'ja',route:file,mounts:[{host:'chrome-0',component:'header-artworks-727-hunt',kind:'header'},{host:'chrome-1',component:'footer-artworks-727-hunt',kind:'footer'}]};
+    if (!isDeepStrictEqual(JSON.parse(configMatch[1]),expected)) return false;
+    let restored=after.replace(configMatch[0],'').replace(boot[0],'');
+    const normalize=text=>text.replace(/>\s+</g,'><').trim();
+    for (const tag of ['header','footer']) {
+      const expression=new RegExp('<'+tag+'\\b[^>]*>[\\s\\S]*?</'+tag+'>'),original=before.match(expression)?.[0],replacement=restored.match(expression)?.[0];
+      const encoded=shell.match(new RegExp('"'+tag+'-artworks-727-hunt":("(?:[^"\\\\]|\\\\.)*")'))?.[1];
+      if (!original || !replacement || !encoded || normalize(JSON.parse(encoded).replaceAll('__MADO_ROOT__','../../'))!==normalize(original)) return false;
+      restored=restored.replace(replacement,original);
+    }
+    return restored===before;
+  } catch { return false; }
 }
 
 export function createReleasePlan(base) {
@@ -170,7 +357,17 @@ export function createReleasePlan(base) {
   for (let i = 0; i + 1 < fields.length; i += 2) if (fields[i]) changes.push({ status: fields[i], path: fields[i + 1] });
   const packageChange = changes.find(change => change.path === 'package.json');
   const plan = chooseReleaseScope(changes, {
+    rideDataOnly: changes.some(c => c.path === 'data.js' && c.status === 'M') && onlyRideMediaDataChanged(git('show', `${base}:data.js`), git('show', `${head}:data.js`)),
+    rideBudgetOnly: changes.some(c => c.path === 'scripts/generate-runtime-data.mjs') && onlyRideBudgetChanged(git('show', `${base}:scripts/generate-runtime-data.mjs`), git('show', `${head}:scripts/generate-runtime-data.mjs`)),
+    assetVersionOnly: file => onlyAssetVersionReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    addedLocaleKeysOnly: file => {
+      const before = JSON.parse(git('show', `${base}:${file}`)), after = JSON.parse(git('show', `${head}:${file}`));
+      return Object.keys(before).every(key => before[key] === after[key]);
+    },
     versionOnly: file => onlyVersionReferenceChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    marukoLinkOnly: file => changes.find(change => change.path === file)?.status === 'M' && onlyMarukoLocaleLinkChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    menuReferenceOnly: file => /^sudoori\//.test(file) && changes.find(change => change.path === file)?.status === 'M' && onlyPreservedChromeMenuChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`), git('show', `${base}:shared-ui/ja.shell.js`), git('show', `${head}:shared-ui/ja.shell.js`)),
+    chromeExtractionOnly: file => ['artworks/727-hunt/index.html','artworks/memory-express/index.html'].includes(file) && changes.find(change => change.path === file)?.status === 'M' && onlyPreservedArtworkChromeExtraction(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`), git('show', `${head}:shared-ui/ja.shell.js`)),
     ...(packageChange ? { packageBefore: packageChange.status === 'A' ? null : git('show', `${base}:package.json`),
       packageAfter: packageChange.status === 'D' ? null : git('show', `${head}:package.json`) } : {}),
   });

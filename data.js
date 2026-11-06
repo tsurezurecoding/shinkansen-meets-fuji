@@ -2560,12 +2560,14 @@ const SPOTS = [
         "熱海は、箱根外輪山へ続く山地から相模湾へ下る斜面に発達した街です。そのため車窓では、海だけでなく、山肌に重なる家やホテルまで一緒に見えます。平らな海辺の街ではなく、海・街・山が縦に重なることが、熱海らしい景色です。",
         "沖に低く浮かぶ島は初島です。熱海港から約10km沖にあり、周囲約4kmの有人島。大きな山には見えず、水平線の手前に細長く浮かぶ輪郭を探すのがコツです。",
         "山の上に見える白い天守風の建物は熱海城です。戦国時代から残る城ではなく、1959年に建てられた観光施設。錦ヶ浦の山上に立つため、新幹線からは熱海到着を知らせる白い目印になります。",
+        "2026年11月3日の夜景写真では、街の灯りの右上に熱海城が白く浮かんでいます。掲載写真で、昼とは異なる見つけ方を確かめられます。",
         "トンネルが多いのは、この区間で山がそのまま海へ落ちているからです。箱根の火山体から続く斜面は平地をほとんど残さずに海岸へ達し、線路を通せる平らな土地がありません。だから新幹線は山側を掘って進み、谷が海へ開ける場所でだけ外の光が入ります。海が途切れて見えるのは演出ではなく、地形そのものがこの車窓のリズムを決めているからです。"
       ],
       "en": [
         "Atami developed on steep slopes descending from the mountains toward Sagami Bay. From the train, the sea, stacked houses and hotels, and the green hills appear in layers. That vertical overlap is what makes the Atami coastline distinctive.",
         "The low island offshore is Hatsushima, an inhabited island about 10 kilometers from Atami Port and roughly 4 kilometers around. Look for a long, low outline in front of the horizon rather than a mountainous island.",
         "The white, castle-like building on the hill is Atami Castle. It is not a surviving feudal castle; it was built in 1959 as a tourist attraction. Its position above Nishikigaura makes it a useful visual marker that Atami is close.",
+        "In the night photo taken on 3 November 2026, Atami Castle is the white light at the upper right above the town. The photograph shows a different way to spot it after dark.",
         "The tunnels exist because the mountains here drop straight into the sea. Slopes descending from the Hakone volcanic complex reach the shore with almost no flat land left, so there is no level ground for a railway. The Shinkansen therefore runs inside the hillside and admits daylight only where a valley opens toward the water. The broken view is not a matter of scenery but of terrain: the landform sets the rhythm of this window."
       ]
     },
@@ -2592,6 +2594,25 @@ const SPOTS = [
       }
     },
     "photos": [
+      {
+        "src": "images/20261103_atami_night_11757_michikusa.jpg",
+        "timeOfDay": "night",
+        "width": 1920,
+        "height": 1080,
+        "alt": {
+          "ja": "熱海の街明かりと右上に光る熱海城",
+          "en": "Atami at night with illuminated Atami Castle at the upper right"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-03",
+        "note": {
+          "ja": "右上の白い灯りが熱海城",
+          "en": "Atami Castle at the upper right"
+        }
+      },
       {
         "src": "images/20260515_atami_sagami_bay.jpg",
         "alt": {

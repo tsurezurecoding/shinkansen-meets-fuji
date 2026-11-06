@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import { execFileSync } from 'node:child_process';
 import { JSDOM } from 'jsdom';
-import { languages } from './shared/locales.mjs';
+import { languages, supported, canonicalRoute } from './shared/locales.mjs';
 import { commonTargetFailures, findSiteRuntimeSnapshot, renderSiteRuntimeForValidation, withSiteRuntimeSnapshots } from './shared/site-runtime-validation.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -13,6 +13,33 @@ const failures = [];
 let checked = 0;
 let runtimeChecked = 0;
 let thinChecked = 0;
+
+export function navigationOptions(args) {
+  const routes = [];
+  let languageChecks = false, languageOnly = false;
+  for (let i = 0; i < args.length; i++) {
+    if (args[i] === '--route') {
+      const route = args[++i];
+      if (!route || !/^[\w/-]+\.html$/.test(route) || route !== canonicalRoute(route))
+        throw new Error('--route requires a canonical HTML route without an edition prefix');
+      routes.push(route);
+    } else if (args[i] === '--with-language-checks') languageChecks = true;
+    else if (args[i] === '--language-only') languageOnly = true;
+    else throw new Error(`Unknown navigation option: ${args[i]}`);
+  }
+  if (routes.length && (languageChecks || languageOnly))
+    throw new Error('Scoped navigation cannot run the global language suite; select the affected family validator separately');
+  return { routes: [...new Set(routes)], languageChecks, languageOnly };
+}
+
+export function selectNavigationPages(files, routes) {
+  if (!routes.length) return files;
+  const available = new Set(files);
+  const selected = routes.flatMap(route => supported(route).map(lang => lang === 'ja' ? route : `${lang}/${route}`));
+  const missing = selected.filter(file => !available.has(file));
+  if (missing.length) throw new Error(`Scoped navigation is missing registered editions: ${missing.join(', ')}`);
+  return [...new Set(selected)];
+}
 
 function renderedSiteHTML(html, relative) {
   const options = { appDir, html, relative };
@@ -36,15 +63,15 @@ function htmlFiles(dir = appDir) {
     const full = path.join(dir, entry.name);
     const relative = path.relative(appDir, full).split(path.sep).join("/");
     if (entry.isDirectory()) {
-      if (legacyRoots.has(relative.split("/")[0])) return [];
+      if (legacyRoots.has(relative.split("/")[0]) || relative === "data/story-window") return [];
       return htmlFiles(full);
     }
     return entry.isFile() && entry.name.endsWith(".html") ? [relative] : [];
   });
 }
 
-async function validateNavigation() {
-for (const relative of htmlFiles()) {
+async function validateNavigation(routes) {
+for (const relative of selectNavigationPages(htmlFiles(), routes)) {
   // Let closed JSDOM windows finish their queued cleanup before reading the next page.
   await new Promise(setImmediate);
   let html = fs.readFileSync(path.join(appDir, relative), "utf8");
@@ -53,7 +80,10 @@ for (const relative of htmlFiles()) {
     catch (error) { failures.push(`${relative}: ${error.message}`); continue; }
   }
   const nav = html.match(/<nav class="top-nav"[^>]*>([\s\S]*?)<\/nav>/);
-  if (!nav) continue;
+  if (!nav) {
+    if (routes.length) failures.push(`${relative}: scoped page has no top navigation`);
+    continue;
+  }
   const firstLink = nav[1].match(/<a\b[^>]*href="([^"]+)"/);
   if (!firstLink) {
     failures.push(`${relative}: top navigation has no train-selection link`);
@@ -83,8 +113,10 @@ console.log(`Site navigation valid: ${checked} shared headers use canonical trai
 
 }
 
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) {
+const options = navigationOptions(process.argv.slice(2));
 await withSiteRuntimeSnapshots(async () => {
-  if (process.argv.includes('--with-language-checks') || process.argv.includes('--language-only')) {
+  if (options.languageChecks || options.languageOnly) {
     for (const script of ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales', 'validate-mieru', 'validate-sparkling-locales']) {
       await import(`./${script}.mjs`);
       if (process.exitCode) throw new Error(`${script} failed`);
@@ -93,5 +125,6 @@ await withSiteRuntimeSnapshots(async () => {
     await import('./validate-live-sitemap.mjs');
     if (process.exitCode) throw new Error('Live sitemap validation failed');
   }
-  if (!process.argv.includes('--language-only')) await validateNavigation();
+  if (!options.languageOnly) await validateNavigation(options.routes);
 });
+}

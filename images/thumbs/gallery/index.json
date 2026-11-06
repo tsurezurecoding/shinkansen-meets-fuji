@@ -2007,6 +2007,14 @@
     "quality": 72,
     "sha256": "019db9a4e55af05e6e976b42917fa4a85caec6b8bdbc09db54567deafd766ebf"
   },
+  "images/thumbs/gallery/20261103_atami_night_11757_michikusa.webp": {
+    "source": "images/20261103_atami_night_11757_michikusa.jpg",
+    "sourceSha256": "226ce0ca037399141584ed8fa32ff2cc1b65bb93d37bee682cecc5e4269a1ac4",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "560235b728c5a40cc39aa77dd5cf65d5f8ffcc2116765bd5515dde24735ffaaa"
+  },
   "images/thumbs/gallery/20261103_hinataoka_night_2594_michikusa.webp": {
     "source": "images/20261103_hinataoka_night_2594_michikusa.jpg",
     "sourceSha256": "d134ff19b05e17866bfa23953d8fe67efc414745a461c16b4a9c5145fac99e96",

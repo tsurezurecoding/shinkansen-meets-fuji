@@ -1,5 +1,6 @@
 // English traveler-facing pages are the structural/content source for these editions.
 import fs from 'node:fs';
+import {withStoryWindowLinks} from './shared/story-window.mjs';
 import { episodes, editions, languages, supported, stripEdition } from './shared/locales.mjs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -19,6 +20,7 @@ const tables = englishTables(root);
 const data = englishRuntimeData(root);
 const narrations = englishNarrations(root);
 function write(file, value) {
+  if (file.endsWith(".html")) value = withStoryWindowLinks(value, file, root);
   const target = path.join(root, file);
   const old = fs.existsSync(target) ? fs.readFileSync(target, 'utf8') : '';
   if (old === value) return;

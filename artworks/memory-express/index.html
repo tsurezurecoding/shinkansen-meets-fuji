@@ -9,10 +9,7 @@
 </head>
 <body>
   <a class="skip" href="#experience">作品へ</a>
-  <header class="topbar">
-    <a class="brand" href="../../index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a>
-    <nav class="top-nav" aria-label="メインナビ"><a href="../../start.html">列車を選ぶ</a><a href="../../live/">乗車中</a><a href="../../zukan.html">車窓図鑑</a><a class="top-nav-stamp" href="../../journal.html">スタンプ帖</a><details class="top-nav-more"><summary>もっと見る</summary><div class="top-nav-menu"><a href="../../window-artworks.html">車窓の作品集</a><a href="../../guide.html">富士山の見方</a><a href="../../references.html">車窓リンク集</a><a href="../../contact.html">お問い合わせ</a></div></details></nav>
-  </header>
+  <header class="topbar" data-site-chrome-host="chrome-0"><a class="brand" href="../../index.html"><span class="brand-mark">窓</span><span class="brand-text"><span class="brand-name">新幹線の窓</span><small class="brand-sub">旅の瞬間を見逃さない</small></span></a><nav class="top-nav" aria-label="メインナビ" data-site-chrome-fallback><a href="../../start.html">列車を選ぶ</a><a href="../../live/">乗車中</a><a href="../../zukan.html">車窓図鑑</a></nav></header>
   <main>
     <section id="experience" class="film" aria-label="記憶特急、70秒の3D作品">
       <div id="viewport" aria-hidden="true"></div>
@@ -40,7 +37,9 @@
       <details class="credits"><summary>この作品について</summary><p>写真：michikusa / 2026年10月13日撮影（動画からの切り出し）。米原の写真には走行中のぶれがあります。表示時刻は元記録からの推定です。</p><p>街と線路は演出のための架空の風景です。写真の場所を3Dで再現したものではありません。新幹線と窓枠をBlenderで造形し、Three.jsで描画。音はこの作品用の合成音です。音はONにした場合だけ再生します。</p><p>一時停止・シークに対応。キーボードでは再生ボタンとスライダーを操作できます。端末の「視差効果を減らす」設定にかかわらず、自動再生はせず、再生操作から始まります。全画面はEscapeで戻れます。</p></details>
     </section>
   </main>
-  <footer class="footer"><p class="footer-brand">新幹線の窓 <span>旅の瞬間を見逃さない</span></p><p class="footer-links"><a href="../../index.html">ホーム</a> · <a href="../../zukan.html">車窓図鑑</a> · <a href="../../window-artworks.html">車窓の作品集</a> · <a href="../../contact.html">お問い合わせ</a> · <a href="../../privacy.html">プライバシー</a></p><p class="footer-credit">道草 / Michikusa — 急がない旅と、偶然の発見を。</p></footer>
+  <footer class="footer" data-site-chrome-host="chrome-1"><nav data-site-chrome-fallback><a href="../../index.html">ホーム</a> · <a href="../../zukan.html">車窓図鑑</a> · <a href="../../window-artworks.html">車窓の作品集</a></nav></footer>
   <script src="vendor/three.min.js"></script><script src="models/models.js"></script><script src="photos.js"></script><script src="scene.js"></script>
+<script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/ja.shell.js"],"root":"../../","lang":"ja","route":"artworks/memory-express/index.html","mounts":[{"host":"chrome-0","component":"header-artworks-727-hunt","kind":"header"},{"host":"chrome-1","component":"footer-artworks-727-hunt","kind":"footer"}]}</script>
+<script src="../../site-runtime-loader.js?v=a8ffb108" defer></script>
 </body>
 </html>

@@ -1,0 +1,101 @@
+{
+  "series": {
+    "name": "車窗外相連的故事",
+    "description": "哥吉拉、SHŌGUN、搖曳露營△與七龍珠：跟著熟悉的故事，走進日本鐵路沿線的風景與城鎮。",
+    "kicker": "從電影、影集與漫畫，走進日本的土地",
+    "hook": "熟悉的故事，不同的日本風景。",
+    "lead": "電影裡的河川，凜旅途中的湖。歷史轉折的土地，與漫畫家生活的城鎮。帶上一個故事，東京、名古屋與京都之間的移動，也能成為發現的一部分。",
+    "routeLabel": "由東往西",
+    "afterwordEyebrow": "閱讀・觀看・漫步",
+    "afterwordTitle": "讀一點故事，再望向窗外。",
+    "afterwordBody": "你可以下車走訪故事裡的地方，也可以在風景經過時想起它。無論哪一種，旅程的樂趣都不只在抵達。",
+    "zukanLink": "尋找沿途的窗景"
+  },
+  "ui": {
+    "skip": "跳到本文",
+    "seriesNav": "本系列文章",
+    "allStories": "全部故事",
+    "moreTitle": "下一個故事，會帶你去哪裡？",
+    "exploreAll": "探索四個故事",
+    "readStory": "閱讀{name}的故事",
+    "placesTitle": "本文走訪的地方",
+    "onThisPage": "本文目錄",
+    "returnAll": "回到四個故事",
+    "articleLabel": "{name}的故事",
+    "photoDialog": "放大圖片",
+    "closePhoto": "關閉",
+    "officialTrailer": "官方預告"
+  },
+  "zukan": {
+    "title": "車窗外相連的故事",
+    "description": "哥吉拉、SHŌGUN、搖曳露營△與七龍珠：從故事走進日本的土地。"
+  },
+  "stories": {
+    "godzilla": {
+      "label": "哥吉拉",
+      "place": "東京與多摩川",
+      "relation": "電影場景與城市散步",
+      "title": "東京的哥吉拉：從街頭到車窗",
+      "hook": "在城裡遇見，在列車上想起。",
+      "deck": "在新宿抬頭、在日比谷遇見另一個身影，再尋找Shin Godzilla裡的河川。",
+      "route": "步行走訪新宿、日比谷；在品川至新橫濱之間看多摩川。",
+      "alt": "新宿街道盡頭，大樓上方的哥吉拉頭像",
+      "credit": "Kakidai / CC BY-SA 4.0",
+      "spotLink": "閱讀哥吉拉的故事"
+    },
+    "shogun": {
+      "label": "SHŌGUN",
+      "place": "關原",
+      "relation": "從虛構故事走向歷史",
+      "title": "從SHŌGUN走向關原",
+      "hook": "銀幕上的故事，車窗外的土地。",
+      "deck": "從虎永到德川家康，認識東京往京都途中一段風景背後的歷史。",
+      "route": "新幹線岐阜羽島至米原之間；步行探索可從JR關原站出發。",
+      "alt": "從新幹線看今日關原周邊的田野、住宅與山丘",
+      "credit": "2026年11月 / michikusa",
+      "spotLink": "閱讀SHŌGUN的故事"
+    },
+    "yurucamp": {
+      "label": "搖曳露營△",
+      "place": "濱名湖",
+      "relation": "作品中出現的地方",
+      "title": "跟著搖曳露營△走訪濱名湖",
+      "hook": "看看湖景，找到自己的小旅行。",
+      "deck": "弁天島的夕陽、水邊的車站，把凜的旅程變成自己的停留。",
+      "route": "濱松至豐橋之間看湖景；順路探訪弁天島、佐久米及舘山寺。",
+      "alt": "濱名湖夕陽映照下，弁天島的紅色鳥居造型地標塔",
+      "credit": "Aimaimyi / CC BY-SA 3.0",
+      "spotLink": "閱讀搖曳露營△的故事"
+    },
+    "dragonball": {
+      "label": "七龍珠",
+      "place": "清須",
+      "relation": "作者生活的家鄉",
+      "title": "鳥山明在清須的日常",
+      "hook": "非凡冒險背後，平凡的每一天。",
+      "deck": "每天與東京編輯通電話，以航空運送原稿，認識七龍珠作者在家鄉的生活與創作。",
+      "route": "名古屋旁的城鎮，也是清洲城掠過窗外時，可以想起的一段連結。",
+      "alt": "2025年11月拍攝的清須BIRD STUDIO工作室外觀",
+      "credit": "Asturio Cantabrio · 2025年11月 · 未加工",
+      "spotLink": "閱讀七龍珠的故事"
+    }
+  },
+  "map": {
+    "title": "搖曳露營△與濱名湖",
+    "stops": [
+      {
+        "name": "弁天島海濱公園",
+        "detail": "凜看夕陽的地方"
+      },
+      {
+        "name": "濱名湖佐久米站",
+        "detail": "與撫子碰面"
+      },
+      {
+        "name": "舘山寺溫泉",
+        "detail": "溫泉與當地和菓子"
+      }
+    ],
+    "footer": "上方為北・3代表溫泉區域"
+  }
+}

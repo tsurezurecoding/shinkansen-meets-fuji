@@ -2269,6 +2269,15 @@
       "thumbWidth": 480,
       "thumbHeight": 270
     },
+    "images/20261103_atami_night_11757_michikusa.jpg": {
+      "sha256": "226ce0ca037399141584ed8fa32ff2cc1b65bb93d37bee682cecc5e4269a1ac4",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261103_atami_night_11757_michikusa.webp",
+      "thumbSha256": "1d76c165530ccd9c8efae22fdf2834e3b2314eac5290bd5e144650b9c24eeb1a",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
     "images/20261103_hinataoka_night_2594_michikusa.jpg": {
       "sha256": "d134ff19b05e17866bfa23953d8fe67efc414745a461c16b4a9c5145fac99e96",
       "width": 1920,
@@ -6599,6 +6608,24 @@
       "height": 540,
       "quality": 86,
       "sha256": "c79e497fa216feda4a709bc852ecc5e6da34085c55454ff8b4cc8a52104e9c66"
+    },
+    "images/thumbs/display/20261103_atami_night_11757_michikusa-226ce0ca-1920.webp": {
+      "source": "images/20261103_atami_night_11757_michikusa.jpg",
+      "sourceSha256": "226ce0ca037399141584ed8fa32ff2cc1b65bb93d37bee682cecc5e4269a1ac4",
+      "target": "images/thumbs/display/20261103_atami_night_11757_michikusa-226ce0ca-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "b9d96cb41ef8d6e445c3cf29eb2a738de071d8898d54e9acdda75a56c71ed136"
+    },
+    "images/thumbs/display/20261103_atami_night_11757_michikusa-226ce0ca-640.webp": {
+      "source": "images/20261103_atami_night_11757_michikusa.jpg",
+      "sourceSha256": "226ce0ca037399141584ed8fa32ff2cc1b65bb93d37bee682cecc5e4269a1ac4",
+      "target": "images/thumbs/display/20261103_atami_night_11757_michikusa-226ce0ca-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "b0954cc830f6a69a13e308ebcc53dd96a1c951fa536907b2d4ecf23a97ef3953"
     },
     "images/thumbs/display/20261103_hinataoka_night_2594_michikusa-d134ff19-1920.webp": {
       "source": "images/20261103_hinataoka_night_2594_michikusa.jpg",

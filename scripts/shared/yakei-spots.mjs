@@ -5,6 +5,8 @@ export const YAKEI_SPOT_IDS = Object.freeze([
   "musashi-kosugi-towers",
   "hinataoka",
   "odawara-castle",
+  "odawara",
+  "mishima-catapult",
   "shimizu-port-chikyu",
   "kakegawa",
   "nichiban-anjo",
