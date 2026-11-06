@@ -129,7 +129,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const rideSources = new Set(['data.js', 'data-runtime.js', 'spot-page-shared-data.js', 'scripts/generate-yakei-page.mjs',
-    'scripts/shared/yakei-spots.mjs', 'yakei.css', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/generate-spot-pages.test.mjs',
+    'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'yakei.css', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/generate-spot-pages.test.mjs',
     'content-manifest.json', 'images/thumbs/display/index.json', 'images/thumbs/gallery/index.json']);
   const rideLocale = /^scripts\/locales\/(?:castle|expansion|utility|episode)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
   const ridePage = file => /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?yakei\.html$/.test(file)

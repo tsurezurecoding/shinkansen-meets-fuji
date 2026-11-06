@@ -583,7 +583,7 @@ ${t.yakei_page}
       <figure class="yk-figure">${t.hinata_image}${t.copy13}</figure>
       <div class="yk-spot-body">${t.hinata_meta}${t.hinata_title}${t.hinata_lead}${t.hinata_body}${t.hinata_more}</div>
     </article>
-    <article class="yk-spot" id="yk-atami"><figure class="yk-figure">${t.atami_image}${t.atami_credit}</figure><div class="yk-spot-body">${t.atami_meta}${t.atami_title}${t.atami_lead}${t.atami_body}${t.atami_more}</div></article>
+    <article class="yk-spot" id="yk-odawara"><figure class="yk-figure">${t.atami_image}${t.atami_credit}</figure><div class="yk-spot-body">${t.atami_meta}${t.atami_title}${t.atami_lead}${t.atami_body}${t.atami_more}</div></article>
     <article class="yk-spot" id="yk-nagoya-station-skyline">
       <figure class="yk-figure">
         ${t.copy42}

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "a99b86b4a831b4ea",
+  "contentVersion": "c32626a67f583805",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1903,8 +1903,8 @@
     {
       "path": "de/yakei.html",
       "url": "https://www.michikusa-travel.com/de/yakei.html",
-      "bytes": 121609,
-      "sha256": "9ccdb731a6bd43b21d6f4f49dcd2e0f69eeb732537a04be80ebc19555cda5ea8"
+      "bytes": 121611,
+      "sha256": "f01264a604f80da8159fcdcf1386d24ba8e782174f66c15951594b322e6a2459"
     },
     {
       "path": "de/zukan.html",
@@ -2089,8 +2089,8 @@
     {
       "path": "en/yakei.html",
       "url": "https://www.michikusa-travel.com/en/yakei.html",
-      "bytes": 39405,
-      "sha256": "1295cc35e1a5464da0532d8c11589adef852a74a9e3b5c9884bd54084d97dd6c"
+      "bytes": 39407,
+      "sha256": "96f3bd3fde9eac0aef58dfd0416a28ca6e48c4b19bca147200e726a463623d58"
     },
     {
       "path": "es/727-collection.html",
@@ -2521,8 +2521,8 @@
     {
       "path": "es/yakei.html",
       "url": "https://www.michikusa-travel.com/es/yakei.html",
-      "bytes": 122474,
-      "sha256": "fa9b07ecd1e1104967927d73ae4fc4619d7258dd00732e2f2e294fd235f8d991"
+      "bytes": 122476,
+      "sha256": "74d9a2f5da3ae4f8f1c29b8c80d9d8cddd4cc67438102baba775a5d9adc721ff"
     },
     {
       "path": "es/zukan.html",
@@ -3001,8 +3001,8 @@
     {
       "path": "fr/yakei.html",
       "url": "https://www.michikusa-travel.com/fr/yakei.html",
-      "bytes": 123493,
-      "sha256": "ae6993d6713289fb8a80dba9bf1deee81cdeed85d35ed44cd7f6029e10018345"
+      "bytes": 123495,
+      "sha256": "e9d0a91d1cfa0c089a41925656da260df45dc071992a662fbbd5e18ff55f6252"
     },
     {
       "path": "fr/zukan.html",
@@ -4885,8 +4885,8 @@
     {
       "path": "it/yakei.html",
       "url": "https://www.michikusa-travel.com/it/yakei.html",
-      "bytes": 121786,
-      "sha256": "5363a07d78064297bd28f74843138f4ea238fa3c48919622291271b805a77a60"
+      "bytes": 121788,
+      "sha256": "dab6a5e942835f7d6c7987e71a1999ffad305b6b7e50188cd78b5fd3fa54da09"
     },
     {
       "path": "it/zukan.html",
@@ -5347,8 +5347,8 @@
     {
       "path": "ko/yakei.html",
       "url": "https://www.michikusa-travel.com/ko/yakei.html",
-      "bytes": 121927,
-      "sha256": "818c20a37efa3d80bbd7b8093a85c005a52c9ddee8e444034aba988ed1091f6a"
+      "bytes": 121929,
+      "sha256": "e5550cac453d1d6130147a74a01676c9a7e7147f2183d71e879a148ed031b505"
     },
     {
       "path": "ko/zukan.html",
@@ -7237,8 +7237,8 @@
     {
       "path": "th/yakei.html",
       "url": "https://www.michikusa-travel.com/th/yakei.html",
-      "bytes": 159090,
-      "sha256": "47ebdd13890b42ca17314ac17687f460e38c698278a5dc87e8f5d2d3726b2b6f"
+      "bytes": 159092,
+      "sha256": "f83b34c9c83fe2cdb40dab4f3b39ed201c9659b00fa6d6e100dd439fcae37d8f"
     },
     {
       "path": "th/zukan.html",
@@ -7429,8 +7429,8 @@
     {
       "path": "yakei.html",
       "url": "https://www.michikusa-travel.com/yakei.html",
-      "bytes": 41869,
-      "sha256": "ad4a37f250f16ac0a94eb3539e5f441e9099e04ea91eee3beb6137c87384bbdc"
+      "bytes": 41871,
+      "sha256": "6b039c2ee7e5c650172383bcdc015be88884d0c83b850915945778fdbc750f36"
     },
     {
       "path": "yakei.js",
@@ -7867,8 +7867,8 @@
     {
       "path": "zh-Hans/yakei.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/yakei.html",
-      "bytes": 118077,
-      "sha256": "13e90f7dfa060ff3c8a70b6de94890192a1dc841c2738a6b94a5b7899eac7033"
+      "bytes": 118079,
+      "sha256": "15c7c78f2000a66deeef9b069d19934615e9a7d41f9e4a9efdecb42116e545c4"
     },
     {
       "path": "zh-Hans/zukan.html",
@@ -8305,8 +8305,8 @@
     {
       "path": "zh-Hant/yakei.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/yakei.html",
-      "bytes": 118059,
-      "sha256": "ce7676636a84549ebcbc9572ecda7a332a14c8465b2930ed2bd7a22ae3bf402d"
+      "bytes": 118061,
+      "sha256": "3b10547499003456bf619500f09c60f665dbb2695b3772d71cfd5bd7bff1acb8"
     },
     {
       "path": "zh-Hant/zukan.html",
