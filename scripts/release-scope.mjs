@@ -27,6 +27,11 @@ const rideRelatedIds = [...rideIds, 'nagoya-station-skyline', 'kirin-beer-factor
 const ridePhotoStems = ['tokyo-tower_night_76831', 'odawara-castle_night_105629', 'hinataoka_night_2594',
   'solar-ark_dismantling_9859', 'solar-ark_dismantling_10810', 'kakegawa_dusk_42814', 'atami_night_11757']
   .map(stem => `20261103_${stem}_michikusa`);
+const dayRideIds = ['hinataoka', 'shiraitogawa-bridge', 'shimizu-port-chikyu', 'left-fuji',
+  'hamanako', 'kirin-beer-factory', 'kiyosu', 'solar-ark'];
+const dayRidePhotoStems = ['hinataoka-fuji_217918', 'shiraitogawa-bridge_1528', 'chikyu_2079', 'left-fuji_43661',
+  'hamanako-fuji_67049', 'kirin-beer-factory_6901', 'kiyosu-castle_5194', 'solar-ark_dismantling_4129']
+  .map(stem => `20261107_${stem}_michikusa`);
 export function onlyAssetVersionReferencesChanged(before, after) {
   const clean = value => value.replace(/\?v=[a-f0-9]{8}(?=["'&<\s])/g, '?v=VERSION');
   return before !== after && clean(before) === clean(after);
@@ -49,7 +54,11 @@ export function onlyRideBudgetChanged(before, after) {
   return before !== after && after.includes('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024') && after.replace('// November 7: seven approved ride photographs and two reference videos; projection unchanged.\n', '')
     .replace('RUNTIME_DATA_BYTE_BUDGET = 355 * 1024', 'RUNTIME_DATA_BYTE_BUDGET = 350 * 1024') === before;
 }
-export function onlyRideMediaDataChanged(before, after) {
+export function onlyRideMediaDataChanged(before, after, dayRide = false) {
+  const ids = dayRide ? dayRideIds : rideIds;
+  const stems = dayRide ? dayRidePhotoStems : ridePhotoStems;
+  const date = dayRide ? '2026-11-07' : '2026-11-03';
+  const videoIds = dayRide ? ['DQqRHjNkQPI', 'ulwkEPLSBx0'] : ['ixWDozxgh_w', 'Kho1OEWqgvc'];
   function source(code) {
     const context = {};
     vm.runInNewContext(code + ';this.result = { SPOTS, ROUTE, BOARD_COLLECTION, WHEEL_COLLECTION };', context, { timeout: 5000 });
@@ -61,20 +70,27 @@ export function onlyRideMediaDataChanged(before, after) {
     if (!isDeepStrictEqual(previous.SPOTS.map(s => s.id), next.SPOTS.map(s => s.id))) return false;
     for (let i = 0; i < previous.SPOTS.length; i++) {
       const a = previous.SPOTS[i], b = next.SPOTS[i];
-      if (!rideIds.includes(a.id)) { if (!isDeepStrictEqual(a, b)) return false; continue; }
+      if (!ids.includes(a.id)) { if (!isDeepStrictEqual(a, b)) return false; continue; }
       const baselinePhotos = [a.image, ...(a.photos || []).map(p => p.src)];
       const finalPhotos = [b.image, ...(b.photos || []).map(p => p.src)];
       if (baselinePhotos.some(src => !finalPhotos.includes(src))) return false;
-      if (finalPhotos.some(src => !baselinePhotos.includes(src) && !ridePhotoStems.some(stem => src === `images/${stem}.jpg`))) return false;
+      if (finalPhotos.some(src => !baselinePhotos.includes(src) && !stems.some(stem => src === `images/${stem}.jpg`))) return false;
       if ((a.photos || []).some(p => !(b.photos || []).some(q => isDeepStrictEqual(p, q)))) return false;
-      for (const p of b.photos || []) if (!baselinePhotos.includes(p.src) && (p.credit?.ja !== 'michikusa' || p.credit?.en !== 'michikusa' || p.date !== '2026-11-03')) return false;
+      for (const p of b.photos || []) if (!baselinePhotos.includes(p.src) && (p.credit?.ja !== 'michikusa' || p.credit?.en !== 'michikusa' || p.date !== date)) return false;
       const oldVideos = a.media?.videos || [], newVideos = b.media?.videos || [];
       if (oldVideos.some(p => !newVideos.some(q => isDeepStrictEqual(p, q)))) return false;
-      if (newVideos.some(p => !oldVideos.some(q => isDeepStrictEqual(p, q)) && !['ixWDozxgh_w', 'Kho1OEWqgvc'].includes(p.id))) return false;
-      const fields = a.id === 'solar-ark' ? ['photos', 'media', 'pageTitle', 'pageHeading', 'pageHeadingChunks', 'metaDescription', 'pageStory', 'explainer', 'guideHighlight', 'image', 'photoCredit', 'explainerFigure']
-        : a.id === 'hinataoka' ? ['photos', 'media'] : a.id === 'odawara' ? ['photos', 'explainer'] : ['photos'];
+      if (newVideos.some(p => !oldVideos.some(q => isDeepStrictEqual(p, q)) && !videoIds.includes(p.id))) return false;
+      const fields = ['photos'];
+      if (dayRide) {
+        if (a.id === 'solar-ark') fields.push('media', 'pageTitle', 'metaDescription', 'explainer', 'explainerFigure');
+        if (a.id === 'shiraitogawa-bridge') fields.push('media');
+      } else {
+        if (a.id === 'solar-ark') fields.push('media', 'pageTitle', 'pageHeading', 'pageHeadingChunks', 'metaDescription', 'pageStory', 'explainer', 'guideHighlight', 'image', 'photoCredit', 'explainerFigure');
+        if (a.id === 'hinataoka') fields.push('media');
+        if (a.id === 'odawara') fields.push('explainer');
+      }
       for (const field of fields) { delete a[field]; delete b[field]; }
-      if (a.id === 'solar-ark') for (const lang of ['ja', 'en']) for (const field of ['hook', 'story']) { delete a[lang][field]; delete b[lang][field]; }
+      if (!dayRide && a.id === 'solar-ark') for (const lang of ['ja', 'en']) for (const field of ['hook', 'story']) { delete a[lang][field]; delete b[lang][field]; }
       if (!isDeepStrictEqual(a, b)) return false;
     }
     return true;
@@ -125,13 +141,34 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const rideSources = new Set(['data.js', 'data-runtime.js', 'spot-page-shared-data.js', 'scripts/generate-yakei-page.mjs',
     'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'yakei.css', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/generate-spot-pages.test.mjs',
     'content-manifest.json', 'images/thumbs/display/index.json', 'images/thumbs/gallery/index.json']);
   const rideLocale = /^scripts\/locales\/(?:castle|expansion|utility|episode)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
+  const dayRideSources = new Set(['data.js', 'data-runtime.js', 'content-manifest.json',
+    'images/thumbs/display/index.json', 'images/thumbs/gallery/index.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  const dayRideLocaleRoutes = dayRideIds.filter(id => !['hinataoka', 'shiraitogawa-bridge'].includes(id));
+  if (files.includes('data.js') && dayRideDataOnly && changes.every(({path: file, status}) => ['A', 'M'].includes(status) &&
+    (dayRideSources.has(file)
+      || dayRideIds.some(id => file === `data/spot-pages/${id}.ja.js` || file === `data/spot-pages/${id}.en.js`
+        || new RegExp(`^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)/)?spots/${id}\\.html$`).test(file))
+      || dayRidePhotoStems.some(stem => file === `images/${stem}.jpg` || file === `images/thumbs/${stem}.webp`
+        || file === `images/thumbs/gallery/${stem}.webp` || new RegExp(`^images/thumbs/display/${stem}-[a-f0-9]{8}-(640|960|1920)\\.webp$`).test(file))
+      || rideLocale.test(file) && addedLocaleKeysOnly(file)
+      || file.endsWith('.html') && status === 'M' && assetVersionOnly(file)))) return {
+    scope: 'owned-ride-day-content', needsDependencies: true, pagesCandidate: true,
+    reason: 'Eight approved ride photographs and two reference videos; spot pages, generated language editions and runtime/distribution assets. Other HTML changes only asset versions.',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/responsive-photos.test.mjs', 'scripts/generate-spot-pages.test.mjs'),
+      ...['validate-content', 'validate-spot-schema', 'validate-runtime-data', 'validate-spot-page-shared'].map(name => node(`scripts/${name}.mjs`)),
+      node('scripts/audit-photo-credits.mjs', '--check'),
+      ...['generate-spot-page-shared-data', 'generate-gallery-thumbnails', 'generate-runtime-data', 'sync-asset-versions']
+        .map(name => node(`scripts/${name}.mjs`, '--check')),
+      ...dayRideLocaleRoutes.map(id => node('scripts/generate-castle-locales.mjs', '--route', `spots/${id}.html`, '--check')),
+      node('scripts/check-content-manifest.mjs')],
+  };
   const ridePage = file => /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?yakei\.html$/.test(file)
     || rideRelatedIds.some(id => new RegExp(`^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)/)?spots/${id}\\.html$`).test(file));
   const ridePayload = file => rideRelatedIds.some(id => file === `data/spot-pages/${id}.ja.js` || file === `data/spot-pages/${id}.en.js`);
@@ -372,8 +409,12 @@ export function createReleasePlan(base) {
   const changes = [];
   for (let i = 0; i + 1 < fields.length; i += 2) if (fields[i]) changes.push({ status: fields[i], path: fields[i + 1] });
   const packageChange = changes.find(change => change.path === 'package.json');
+  const dataChanged = changes.some(c => c.path === 'data.js' && c.status === 'M');
+  const dataBefore = dataChanged ? git('show', `${base}:data.js`) : '';
+  const dataAfter = dataChanged ? git('show', `${head}:data.js`) : '';
   const plan = chooseReleaseScope(changes, {
-    rideDataOnly: changes.some(c => c.path === 'data.js' && c.status === 'M') && onlyRideMediaDataChanged(git('show', `${base}:data.js`), git('show', `${head}:data.js`)),
+    rideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter),
+    dayRideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter, true),
     rideBudgetOnly: changes.some(c => c.path === 'scripts/generate-runtime-data.mjs') && onlyRideBudgetChanged(git('show', `${base}:scripts/generate-runtime-data.mjs`), git('show', `${head}:scripts/generate-runtime-data.mjs`)),
     assetVersionOnly: file => onlyAssetVersionReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     catalogManifestOnly: file => onlyCatalogManifestVersionChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
