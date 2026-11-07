@@ -1286,8 +1286,8 @@
   "stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1326,8 +1326,8 @@
   "en/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1366,8 +1366,8 @@
   "zh-Hant/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1406,8 +1406,8 @@
   "fr/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1446,8 +1446,8 @@
   "de/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1486,8 +1486,8 @@
   "es/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1526,8 +1526,8 @@
   "zh-Hans/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1566,8 +1566,8 @@
   "ko/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1606,8 +1606,8 @@
   "it/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1646,8 +1646,8 @@
   "th/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1730,5 +1730,85 @@
     "article": false,
     "modified": "2026-11-05",
     "modifiedEvidence": "STORY-LOCALES-1105: user-requested localization of the existing English Maruko Bridge page, with a localized Godzilla article connection."
+  },
+  "stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "en/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "fr/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "de/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "es/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "it/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "ko/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "th/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "zh-Hant/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "zh-Hans/stories/shinkalion.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-08",
+    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "representativeImage": false,
+    "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   }
 }

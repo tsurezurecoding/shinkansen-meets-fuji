@@ -1,10 +1,10 @@
 {
   "series": {
     "name": "Geschichten vor dem Zugfenster",
-    "description": "Godzilla, SHŌGUN, Laid-Back Camp und Dragon Ball: Folgen Sie vertrauten Geschichten in die Landschaften und Städte entlang Japans Bahnstrecken.",
+    "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball und Shinkalion: Folgen Sie vertrauten Geschichten in die Landschaften und Städte entlang Japans Bahnstrecken.",
     "kicker": "Von Filmen, Serien und Manga zu Orten in Japan",
     "hook": "Eine vertraute Geschichte. Ein neuer Blick auf Japan.",
-    "lead": "Ein Fluss aus einem Film. Ein See von Rins Reisen. Ein Ort, an dem Geschichte eine Wende nahm, und eine Stadt, in der ein Mangazeichner lebte. Nehmen Sie eine Geschichte mit: So wird die Fahrt zwischen Tokyo, Nagoya und Kyoto selbst zur Entdeckungsreise.",
+    "lead": "Ein Fluss aus einem Film, ein See auf Rins Spuren, ein Ort der Geschichte, eine Stadt, in der ein Manga-Zeichner lebte, und Shinkansen, die zu Helden werden. Nehmen Sie eine Geschichte mit: So wird die Fahrt zwischen Tokyo, Nagoya und Kyoto selbst zur Entdeckungsreise.",
     "routeLabel": "Von Osten nach Westen",
     "afterwordEyebrow": "LESEN · SCHAUEN · SCHLENDERN",
     "afterwordTitle": "Ein wenig lesen. Nach draußen schauen.",
@@ -16,11 +16,11 @@
     "seriesNav": "Geschichten dieser Reihe",
     "allStories": "Alle Geschichten",
     "moreTitle": "Wohin führt Sie die nächste Geschichte?",
-    "exploreAll": "Alle vier Geschichten entdecken",
+    "exploreAll": "Alle fünf Geschichten entdecken",
     "readStory": "Die Geschichte zu {name} lesen",
     "placesTitle": "Orte dieser Geschichte",
     "onThisPage": "Auf dieser Seite",
-    "returnAll": "Alle vier Geschichten",
+    "returnAll": "Alle fünf Geschichten",
     "articleLabel": "Geschichte zu {name}",
     "photoDialog": "Vergrößertes Bild",
     "closePhoto": "Schließen",
@@ -28,7 +28,7 @@
   },
   "zukan": {
     "title": "Geschichten vor dem Zugfenster",
-    "description": "Godzilla, SHŌGUN, Laid-Back Camp und Dragon Ball: Geschichten, die zu Orten in Japan führen."
+    "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball und Shinkalion: Geschichten, die zu Orten in Japan führen."
   },
   "stories": {
     "godzilla": {
@@ -78,6 +78,18 @@
       "alt": "Die Außenansicht des BIRD-STUDIO-Büros in Kiyosu, aufgenommen im November 2025",
       "credit": "Asturio Cantabrio · November 2025 · Unverändert",
       "spotLink": "Die Geschichte zu Dragon Ball lesen"
+    },
+    "shinkalion": {
+      "label": "Shinkalion",
+      "place": "Nagoya und Kyoto",
+      "relation": "Echte Shinkansen werden zu Robotern in Geschichten",
+      "title": "Shinkalion und Shinkansen|Den Helden begegnen",
+      "hook": "Ein vertrauter Zug. Eine neue Geschichte.",
+      "deck": "Vom N700A und N700S über Verwandlungsroboter bis zu echten Zügen in den Museen von Nagoya und Kyoto: Entdecken Sie die Shinkansen in der Welt der Geschichten.",
+      "route": "Ausblicke von der Tokaido-Strecke; Abstecher zum SCMAGLEV and Railway Park in Nagoya und zum Eisenbahnmuseum Kyoto.",
+      "alt": "Weiße Shinkansen mit N700A-Logo in einem Zugdepot",
+      "credit": "12. Juli 2026 · michikusa",
+      "spotLink": "Die Geschichte zu Shinkalion lesen"
     }
   },
   "map": {

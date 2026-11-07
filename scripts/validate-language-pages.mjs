@@ -28,7 +28,7 @@ const canonicalSpotIdOf = (id) => {
   return spot && spot.guidePageId && spot.guidePageId !== spot.id ? spot.guidePageId : id;
 };
 const pairs = [
-  ...["index","godzilla","shogun","yurucamp","dragonball"].map(slug=>[`/stories/${slug}.html`,`/en/stories/${slug}.html`]),
+  ...["index","godzilla","shogun","yurucamp","dragonball","shinkalion"].map(slug=>[`/stories/${slug}.html`,`/en/stories/${slug}.html`]),
   ["/foods.html", "/en/foods.html"],
   ["/countryside.html", "/en/countryside.html"],
   ...SANYO_DETAIL_CASTLES.map(castle => [`/spots/${castle.id}.html`, `/en/spots/${castle.id}.html`]),
