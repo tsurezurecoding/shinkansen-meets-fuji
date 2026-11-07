@@ -42,6 +42,24 @@ test('ride data guard retains existing photos, credits, media, other spots and r
   assert(!onlyRideBudgetChanged(oldBudget,oldBudget.replace('350','400')));
   assert(!onlyRideBudgetChanged(oldBudget,oldBudget.replace('350','355')+'\nconst unrelated = 1;'));
 });
+test('November 7 ride scope checks six localized families and protects existing content', () => {
+  const source = spot => 'const SPOTS='+JSON.stringify([spot])+';const ROUTE={};const BOARD_COLLECTION=[];const WHEEL_COLLECTION=[];';
+  const base = {id:'shiraitogawa-bridge', image:'images/old.jpg', minutesFromTokyo:32.7};
+  const src = 'images/20261107_shiraitogawa-bridge_1528_michikusa.jpg';
+  const updated = {...base, photos:[{src, credit:{ja:'michikusa', en:'michikusa'}, date:'2026-11-07'}],
+    media:{videos:[{id:'ulwkEPLSBx0'}]}};
+  assert(onlyRideMediaDataChanged(source(base), source(updated), true));
+  assert(!onlyRideMediaDataChanged(source(base), source(updated)));
+  assert(!onlyRideMediaDataChanged(source(base), source({...updated, minutesFromTokyo:33}), true));
+  assert(!onlyRideMediaDataChanged(source(base), source({...updated, media:{videos:[{id:'unexpected'}]}}), true));
+  const changes = [change('data.js'), change('fr/spots/solar-ark.html'), change('data/spot-pages/shiraitogawa-bridge.ja.js'), {path:src, status:'A'}];
+  const options = {dayRideDataOnly:true};
+  const plan = chooseReleaseScope(changes, options);
+  assert.equal(plan.scope, 'owned-ride-day-content');
+  assert.equal(plan.commands.filter(command => command.includes('scripts/generate-castle-locales.mjs')).length, 6);
+  assert.equal(chooseReleaseScope([...changes, change('fr/spots/odawara.html')], options).scope, 'unmapped');
+});
+
 test('body-only story changes check all story editions without unrelated language suites', () => {
   const files = ['data/story-window/fr/godzilla.html', 'fr/stories/godzilla.html', 'content-manifest.json'];
   const plan = chooseReleaseScope(files.map(change));
