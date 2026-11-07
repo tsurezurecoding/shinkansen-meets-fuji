@@ -43,12 +43,16 @@ for(const lang of langs){
    if(url.pathname===new URL(origin+file).pathname&&url.hash)expect(ids.has(decodeURIComponent(url.hash.slice(1))),file+': missing anchor '+url.hash);
    links++;
   }
-  if(slug==='index')expect(doc.querySelectorAll('.story-card').length===4,file+': four article cards');
+  if(slug==='index')expect(doc.querySelectorAll('.story-card').length===STORY_SLUGS.length,file+': article cards must match the story inventory');
   else{
    expect(!!doc.querySelector('.story-body'),file+': article body');
    for(const section of doc.querySelectorAll('.story-body section'))if(section.querySelector('h2'))expect(!!section.id,file+': chapter id');
    if(lang!=='ja')expect(!doc.querySelector('.copy-chunk'),file+': Japanese wrapping marker');
-   expect(!doc.querySelector('.trailer-player iframe'),file+': video must wait for click');
+   if(slug==='shinkalion'){
+    const frames=[...doc.querySelectorAll('.trailer-player iframe')];
+    expect(frames.length===2,file+': two approved official videos');
+    for(const id of ['DZn2SFhCsRc','OWXJC2-Ar0Q'])expect(frames.some(frame=>frame.src.startsWith('https://www.youtube-nocookie.com/embed/'+id+'?')&&frame.getAttribute('referrerpolicy')==='strict-origin-when-cross-origin'&&frame.title),file+': approved video/referrer/title '+id);
+   }else expect(!doc.querySelector('.trailer-player iframe'),file+': video must wait for click');
    if(slug==='yurucamp'){expect(doc.querySelectorAll('.story-map-visual circle').length===3,file+': map markers');expect(doc.querySelector('.story-map-visual').textContent.includes(copy.map.stops[0].name),file+': map label language');}
    if(slug==='godzilla'&&!['ja','en'].includes(lang)){const a=doc.querySelector('a[href*="'+lang+'/spots/maruko-bridge.html"]');expect(!!a,file+': localized bridge connection');}
   }

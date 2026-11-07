@@ -12,3 +12,6 @@ html{scroll-padding-top:100px}.skip-link{position:fixed;left:16px;top:-100px;z-i
 .story-map-visual{display:block;width:100%;height:auto;border-radius:12px}.photo-dialog-content{max-width:100%;overflow:auto}.photo-dialog-content .story-map-visual{width:100%;max-width:100%}dialog.is-map{width:min(1180px,95vw)}.story-window-connection{grid-column:1/-1;max-width:760px;margin:32px auto;padding:24px;border:1px solid var(--line);border-radius:14px}.story-window-connection h2{font-size:24px}.story-window-connection .btn{white-space:normal}html:is([lang="zh-Hant"],[lang="zh-Hans"],[lang="ko"],[lang="th"]) .story-international{font-family:var(--font-sans)}.story-international .title-line{display:contents}
 
 .story-work-title{display:inline-block;white-space:nowrap}
+
+/* Shinkalion uses the established story layout, photos and official media frame. */
+.story-shinkalion .train-photo>a{display:block;aspect-ratio:16/9;overflow:hidden;border-radius:12px}.story-shinkalion .train-photo img{width:100%;height:100%;object-fit:cover;object-position:50% 48%}.story-shinkalion .generation-note{margin-top:30px}.story-shinkalion .generation-note h3{font-size:19px}.story-shinkalion .small-note{font-size:12px;color:var(--ink-soft)}

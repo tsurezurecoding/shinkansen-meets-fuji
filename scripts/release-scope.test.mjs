@@ -65,7 +65,7 @@ test('body-only story changes check all story editions without unrelated languag
   const plan = chooseReleaseScope(files.map(change));
   assert.equal(plan.scope, 'story-content');
   const nav = plan.commands.find(c => c.includes('scripts/validate-site-navigation.mjs'));
-  assert.equal(nav.filter(arg => arg === '--route').length, 5);
+  assert.equal(nav.filter(arg => arg === '--route').length, 6);
   assert(!nav.includes('--with-language-checks'));
   assert(plan.commands.some(c => c.includes('scripts/generate-story-window-pages.mjs') && c.includes('--check')));
   assert(plan.commands.some(c => c.includes('scripts/validate-story-window.mjs')));
@@ -316,4 +316,19 @@ test('inline Actions scripts compile as async functions before a workflow is pus
   const scripts = [...yaml.matchAll(/^          script: \|\n((?:            [^\n]*\n|\n)+)/gm)];
   assert.equal(scripts.length, 2);
   for (const match of scripts) new AsyncFunction('github', 'context', 'core', 'require', match[1].replace(/^            /gm, ''));
+});
+
+test('fifth story extension covers its route consumers and rejects unrelated editorial changes', () => {
+  const files=['data/story-window/en/shinkalion.html','data/story-window/en/ui.json','en/stories/shinkalion.html','locales.js','story-window.css','images/story-window/20260712_n700a_michikusa.jpg','sitemap.xml'];
+  const plan=chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope,'story-extension');
+  assert.equal(plan.pagesCandidate,true);
+  assert.equal(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).filter(x=>x==='--route').length,7);
+  assert(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).includes('zukan.html'));
+  assert(!plan.commands.some(c=>c.includes('scripts/generate-site-chrome.mjs')));
+  for(const extra of ['data.js','data/story-window/en/godzilla.html','style.css','images/unrelated.jpg'])
+    assert.notEqual(chooseReleaseScope([...files,extra].map(change)).scope,'story-extension');
+  assert.notEqual(chooseReleaseScope([...files,'foods.html'].map(change)).scope,'story-extension');
+  assert.equal(chooseReleaseScope([...files,'foods.html'].map(change),{versionOnly:()=>true}).scope,'story-extension');
+  assert.notEqual(chooseReleaseScope([{path:files[0],status:'D'}]).scope,'story-extension');
 });

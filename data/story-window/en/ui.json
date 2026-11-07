@@ -1,10 +1,10 @@
 {
   "series": {
     "name": "Stories Beyond the Window",
-    "description": "Godzilla, SHŌGUN, Laid-Back Camp and Dragon Ball: follow familiar stories into the landscapes and towns along Japan’s railways.",
+    "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball and Shinkalion: follow familiar stories into the landscapes and towns along Japan’s railways.",
     "kicker": "From film, drama and manga to places in Japan",
     "hook": "A familiar story. A different view of Japan.",
-    "lead": "A river from a film. A lake from Rin’s travels. A place where history turned, and a town where a manga artist lived. Take a story with you, and the journey between Tokyo, Nagoya and Kyoto becomes part of the discovery.",
+    "lead": "A river from a film. A lake from Rin’s travels. A place where history turned, a town where a manga artist lived, and real bullet trains that transform into robots. Take a story with you, and the journey between Tokyo, Nagoya and Kyoto becomes part of the discovery.",
     "routeLabel": "East to west",
     "afterwordEyebrow": "READ · LOOK · WANDER",
     "afterwordTitle": "Read a little. Look outside.",
@@ -16,11 +16,11 @@
     "seriesNav": "Stories in this series",
     "allStories": "All stories",
     "moreTitle": "Where will the next story take you?",
-    "exploreAll": "Explore all four stories",
+    "exploreAll": "Explore all five stories",
     "readStory": "Read the {name} story",
     "placesTitle": "Places in this story",
     "onThisPage": "On this page",
-    "returnAll": "All four stories",
+    "returnAll": "All five stories",
     "articleLabel": "{name} story",
     "photoDialog": "Enlarged image",
     "closePhoto": "Close",
@@ -28,7 +28,7 @@
   },
   "zukan": {
     "title": "Stories Beyond the Window",
-    "description": "Godzilla, SHŌGUN, Laid-Back Camp and Dragon Ball: stories that lead to places in Japan."
+    "description": "Godzilla, SHŌGUN, Laid-Back Camp, Dragon Ball and Shinkalion: stories that lead to places in Japan."
   },
   "stories": {
     "godzilla": {
@@ -78,6 +78,18 @@
       "alt": "The exterior of the BIRD STUDIO office in Kiyosu, photographed in November 2025",
       "credit": "Asturio Cantabrio · November 2025 · Unmodified",
       "spotLink": "Read the Dragon Ball story"
+    },
+    "shinkalion": {
+      "label": "Shinkalion",
+      "place": "Nagoya & Kyoto",
+      "relation": "Real trains and fictional settings",
+      "title": "Shinkalion: Real Japanese Bullet Trains That Transform into Robots",
+      "hook": "The train outside your window has a story, too.",
+      "deck": "Meet the real N700A and N700S behind the robots, then spot the railway museums that became fictional secret bases.",
+      "route": "On the Tokaido Shinkansen between Nagoya and Kyoto; visit SCMAGLEV and Railway Park or Kyoto Railway Museum after getting off.",
+      "alt": "A white Shinkansen with the N700A logo, lined up at a train depot",
+      "credit": "July 12, 2026 · michikusa",
+      "spotLink": "Read the Shinkalion story"
     }
   },
   "map": {

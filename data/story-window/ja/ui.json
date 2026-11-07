@@ -1,10 +1,10 @@
 {
   "series": {
     "name": "車窓からつながる物語",
-    "description": "ゴジラ、SHŌGUN、ゆるキャン△、ドラゴンボール。知っている物語から、沿線の風景と寄り道を楽しむ。",
+    "description": "ゴジラ、SHŌGUN、ゆるキャン△、ドラゴンボール、シンカリオン。物語から、沿線の風景と寄り道を楽しむ。",
     "kicker": "映画・ドラマ・漫画から、沿線の日本へ",
     "hook": "知っている物語と、旅に出る。",
-    "lead": "映画で見た川。リンが眺めた湖。\n歴史が動いた土地と、漫画家が暮らした町。\n物語をひとつ知ると、窓の外の日本が少し違って見えてきます。",
+    "lead": "映画で見た川。リンが眺めた湖。\n歴史が動いた土地と、漫画家が暮らした町。\nそして、ロボットになる新幹線。\n物語をひとつ知ると、窓の外の日本が少し違って見えてきます。",
     "routeLabel": "東から西へ",
     "afterwordEyebrow": "READ · LOOK · WANDER",
     "afterwordTitle": "ひとつ知って、窓の外へ。",
@@ -16,11 +16,11 @@
     "seriesNav": "シリーズの記事",
     "allStories": "入口",
     "moreTitle": "次は、どの物語へ。",
-    "exploreAll": "シリーズの入口へ",
+    "exploreAll": "5つの物語を見る",
     "readStory": "{name}の記事を読む",
     "placesTitle": "この記事でたどる場所",
     "onThisPage": "この記事の目次",
-    "returnAll": "4つの物語へ",
+    "returnAll": "5つの物語へ",
     "articleLabel": "{name}の記事",
     "photoDialog": "写真を拡大",
     "closePhoto": "閉じる",
@@ -28,7 +28,7 @@
   },
   "zukan": {
     "title": "車窓からつながる物語",
-    "description": "ゴジラ、SHŌGUN、ゆるキャン△、ドラゴンボールから沿線の日本へ。"
+    "description": "ゴジラ、SHŌGUN、ゆるキャン△、ドラゴンボール、シンカリオン。物語から沿線の日本へ。"
   },
   "stories": {
     "godzilla": {
@@ -78,6 +78,18 @@
       "alt": "2025年11月に撮影された清須市のBIRD STUDIO事務所の外観",
       "credit": "Asturio Cantabrio · 2025年11月（未加工）",
       "spotLink": "ドラゴンボールの物語を読む"
+    },
+    "shinkalion": {
+      "label": "シンカリオン",
+      "place": "名古屋・京都",
+      "relation": "実車と物語",
+      "title": "シンカリオンと新幹線|物語の主役に会う旅",
+      "hook": "新幹線が、ロボットになる。",
+      "deck": "実在の新幹線がロボットに。N700A・N700Sから、名古屋と京都の博物館へ。",
+      "route": "東海道新幹線と、名古屋・京都の寄り道",
+      "alt": "車両基地に並ぶN700Aの新幹線",
+      "credit": "2026年7月撮影 / michikusa",
+      "spotLink": "シンカリオンの記事を読む"
     }
   },
   "map": {

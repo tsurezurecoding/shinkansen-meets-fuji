@@ -20,7 +20,7 @@ function write(file,text){const dest=path.join(root,file);if(fs.existsSync(dest)
 const names={ja:'日本語',en:'English','zh-Hant':'繁體中文',fr:'Français',de:'Deutsch',es:'Español','zh-Hans':'简体中文',ko:'한국어',it:'Italiano',th:'ไทย'};
 const text=value=>e(value).replaceAll('\n','<br>');
 const fill=(value,name)=>e(value.replaceAll('{name}',name));
-function title(value,lang){if(lang!=='ja')return e(value).replace(/(?:搖曳露營|摇曳露营)△|โทริยามะ/g,word=>`<span class="story-work-title">${word}</span>`);const chunks={'鳥山明が暮らした清須':['鳥山明が','暮らした清須'],'世界の冒険を描いた日常':['世界の冒険を','描いた日常'],'ゆるキャン△と浜名湖':['ゆるキャン△と','浜名湖'],'車窓からつながる物語':['車窓から','つながる物語']};return value.split('|').map(line=>`<span class="title-line">${(chunks[line]||[line]).map(s=>`<span class="copy-chunk">${e(s)}</span>`).join('')}</span>`).join('');}
+function title(value,lang){if(lang!=='ja')return e(value).replace(/(?:搖曳露營|摇曳露营)△|โทริยามะ/g,word=>`<span class="story-work-title">${word}</span>`);const chunks={'シンカリオンと新幹線':['シンカリオンと','新幹線'],'物語の主役に会う旅':['物語の主役に','会う旅'],'鳥山明が暮らした清須':['鳥山明が','暮らした清須'],'世界の冒険を描いた日常':['世界の冒険を','描いた日常'],'ゆるキャン△と浜名湖':['ゆるキャン△と','浜名湖'],'車窓からつながる物語':['車窓から','つながる物語']};return value.split('|').map(line=>`<span class="title-line">${(chunks[line]||[line]).map(s=>`<span class="copy-chunk">${e(s)}</span>`).join('')}</span>`).join('');}
 function chrome(lang,route,prefix){
   const sourceFile=(lang==='ja'?'':lang+'/')+'zukan.html';
   const dom=new JSDOM(readSiteSource(root,sourceFile),{url:origin+sourceFile}),doc=dom.window.document;
@@ -58,7 +58,7 @@ for(const lang of langs){
   let main='';
   if(slug==='index'){
    const cards=STORY_SLUGS.map(id=>{const item=copy.stories[id],media=STORY_MEDIA[id];return `<article class="story-card" id="${id}"><a class="card-image card-image-${id}" href="${id}.html" aria-label="${fill(copy.ui.readStory,item.label)}"><img src="${prefix}${storyAsset(media.image)}" alt="${e(item.alt)}" loading="lazy"></a><div class="card-copy"><p class="card-category">${e(item.relation)}</p><h2><a href="${id}.html">${title(item.title,lang)}</a></h2><p>${e(item.deck)}</p><p class="card-route">${e(item.route)}</p><a class="card-read" href="${id}.html">${fill(copy.ui.readStory,item.label)} <span aria-hidden="true">→</span></a><small class="card-credit">${media.creditUrl?`<a href="${media.creditUrl}">${e(item.credit)}</a>`:e(item.credit)}${media.licenseUrl?` · <a href="${media.licenseUrl}">CC BY-SA 4.0</a>`:''}</small></div></article>`;}).join('');
-   main=`<header class="story-hero series-hero"><p class="story-kicker">${e(copy.series.kicker)}</p><h1>${title(copy.series.name,lang)}</h1><p class="story-hook">${e(copy.series.hook)}</p><p class="series-lead">${text(copy.series.lead)}</p></header><div class="series-content"><nav class="journey-order" aria-label="${e(copy.series.routeLabel)}"><span>${e(copy.series.routeLabel)}</span>${['godzilla','yurucamp','dragonball','shogun'].map((id,i)=>(i?'<i aria-hidden="true">→</i>':'')+`<a href="#${id}">${e(copy.stories[id].place)}</a>`).join('')}</nav><div class="story-grid">${cards}</div><section class="series-afterword"><p class="eyebrow">${e(copy.series.afterwordEyebrow)}</p><h2>${e(copy.series.afterwordTitle)}</h2><p>${text(copy.series.afterwordBody)}</p><a class="series-zukan" href="${prefix}${lang==='ja'?'':lang+'/'}zukan.html">${e(copy.series.zukanLink)} →</a></section></div>`;
+   main=`<header class="story-hero series-hero"><p class="story-kicker">${e(copy.series.kicker)}</p><h1>${title(copy.series.name,lang)}</h1><p class="story-hook">${e(copy.series.hook)}</p><p class="series-lead">${text(copy.series.lead)}</p></header><div class="series-content"><nav class="journey-order" aria-label="${e(copy.series.routeLabel)}"><span>${e(copy.series.routeLabel)}</span>${['godzilla','yurucamp','dragonball','shogun','shinkalion'].map((id,i)=>(i?'<i aria-hidden="true">→</i>':'')+`<a href="#${id}">${e(copy.stories[id].place)}</a>`).join('')}</nav><div class="story-grid">${cards}</div><section class="series-afterword"><p class="eyebrow">${e(copy.series.afterwordEyebrow)}</p><h2>${e(copy.series.afterwordTitle)}</h2><p>${text(copy.series.afterwordBody)}</p><a class="series-zukan" href="${prefix}${lang==='ja'?'':lang+'/'}zukan.html">${e(copy.series.zukanLink)} →</a></section></div>`;
   }else{
    const {body,chapters}=bodyHTML(lang,slug,copy,prefix),toc=`<ol>${chapters.map(c=>`<li><a href="#${c.id}">${e(c.title)}</a></li>`).join('')}</ol>`;
    const related=`<section class="more-stories" aria-labelledby="more-title"><div class="more-heading"><h2 id="more-title">${e(copy.ui.moreTitle)}</h2><a href="index.html">${e(copy.ui.exploreAll)} →</a></div><div class="more-grid">${STORY_SLUGS.filter(id=>id!==slug).map(id=>{const item=copy.stories[id];return `<a href="${id}.html"><small>${e(item.place)} · ${e(item.relation)}</small><strong>${e(item.label)}</strong><span>${e(item.deck)}</span><b>${fill(copy.ui.readStory,item.label)} →</b></a>`;}).join('')}</div></section>`;
@@ -71,7 +71,11 @@ for(const lang of langs){
   html=withLocaleRegistry(html,prefix);write(file,enhanceContentHead(html,file,root));
  }
 }
-// Japanese catalogue has a hand-maintained source template, while the other
-// nine editions are generated by their existing language pipelines.
-if(langs.includes('ja'))write('zukan.html',withUtilityLocales(withStoryWindowLinks(readSiteSource(root,'zukan.html'),'zukan.html',root),'zukan.html'));
-console.log(`Story window: ${langs.length*5} pages; ${changed} outputs changed.`);
+// Refresh only the story card in each existing catalogue. The rest of the
+// catalogue remains owned by its existing language pipeline.
+for(const lang of langs){
+ const file=(lang==='ja'?'':lang+'/')+'zukan.html';
+ const source=lang==='ja'?readSiteSource(root,file):fs.readFileSync(path.join(root,file),'utf8');
+ write(file,withUtilityLocales(withStoryWindowLinks(source,file,root),file));
+}
+console.log(`Story window: ${langs.length*(STORY_SLUGS.length+1)} pages; ${changed} outputs changed.`);

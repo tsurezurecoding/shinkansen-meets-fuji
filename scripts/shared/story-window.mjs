@@ -16,6 +16,7 @@ export const STORY_MEDIA = {
   godzilla:{image:'shinjuku-street-kakidai.jpg',creditUrl:'https://commons.wikimedia.org/wiki/File:Shinjuku_Toho_Building_from_Godzilla_Street.jpg'},
   shogun:{image:'20261103_sekigahara-landscape_michikusa_45599.jpg'},
   yurucamp:{image:'yuru-benten-sunset-aimaimyi.jpg',creditUrl:'https://commons.wikimedia.org/wiki/File:Bentenjinja_Hamamatsu_-03.jpg'},
+  shinkalion:{image:'20260712_n700a_michikusa.jpg'},
   dragonball:{image:'db-bird-studio-2025.jpg',creditUrl:'https://commons.wikimedia.org/wiki/File:BIRD_STUDIO_2025-11_ac.jpg',licenseUrl:'https://creativecommons.org/licenses/by-sa/4.0/'}
 };
 export const STORY_SPOTS={'kiyosu':'dragonball','sekigahara-battlefield':'shogun','hamanako':'yurucamp','maruko-bridge':'godzilla'};

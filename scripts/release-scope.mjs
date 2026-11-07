@@ -98,7 +98,7 @@ export function onlyRideMediaDataChanged(before, after, dayRide = false) {
 }
 const validationFiles = new Set(['scripts/shared/site-runtime-validation.mjs',
   'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs']);
-const storyRoutes = ['index', 'godzilla', 'shogun', 'yurucamp', 'dragonball'].map(slug => `stories/${slug}.html`);
+const storyRoutes = ['index', 'godzilla', 'shogun', 'yurucamp', 'dragonball', 'shinkalion'].map(slug => `stories/${slug}.html`);
 const storyNavigation = () => node('scripts/validate-site-navigation.mjs', ...storyRoutes.flatMap(route => ['--route', route]));
 const languageCommands = ['validate-castle-locales', 'validate-language-pages', 'validate-utility-locales',
   'validate-mieru', 'validate-sparkling-locales'].map(name => `node scripts/${name}.mjs`)
@@ -201,6 +201,32 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     reason: 'Existing story bodies and generated editions only; all story language/metadata/asset contracts remain checked without unrelated language families',
     commands: [node('scripts/generate-story-window-pages.mjs', '--check'),
       node('scripts/validate-story-window.mjs', '--pages-only'), storyNavigation(),
+      node('scripts/check-content-manifest.mjs')],
+  };
+  // A fifth article changes the story registry and navigation, not the unrelated
+  // castle, utility or forecast language families. Keep their version-only
+  // consumers, but prove the new route and existing five-story outputs directly.
+  const extensionFiles = new Set(['locales.js','language-router.js','story-window.css',
+    'scripts/generate-story-window-pages.mjs','scripts/shared/story-window.mjs',
+    'scripts/validate-story-window.mjs','scripts/validate-language-pages.mjs',
+    'scripts/generate-content-manifest.mjs','scripts/content-metadata.json',
+    'scripts/locales-contract.test.mjs','scripts/shared/story-routing.test.mjs',
+    'scripts/release-scope.mjs','scripts/release-scope.test.mjs',
+    'content-manifest.json','sitemap.xml','site-runtime.json','spot-page-runtime.json']);
+  const extensionBody = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/shinkalion\.html$/;
+  const extensionUI = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/ui\.json$/;
+  const extensionPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:stories\/(?:index|godzilla|shogun|yurucamp|dragonball|shinkalion)\.html|zukan\.html)$/;
+  const extensionPhoto = /^images\/story-window\/(?:20260712_n700a_michikusa|20160321_scmaglev-railway-park_abasaa|20260930_kyoto-railway-museum_48790_michikusa)\.jpg$/;
+  if(files.some(file=>extensionBody.test(file))&&changes.every(({path:file,status})=>status!=='D'&&
+    (extensionFiles.has(file)||extensionBody.test(file)||extensionUI.test(file)||extensionPage.test(file)||extensionPhoto.test(file)||
+      /^shared-ui\/(?:ja|en|zh-hant|zh-hans|ko|th|fr|de|es|it)\.shell\.js$/.test(file)||
+      /\.(?:html|tpl)$/.test(file)&&status==='M'&&versionOnly(file))))return{
+    scope:'story-extension',needsDependencies:true,pagesCandidate:true,
+    reason:'Shinkalion, the fifth story in ten editions; story navigation, localized catalogue entries and locale registry cache consumers. Other editorial families are unchanged.',
+    commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/shared/story-routing.test.mjs'),
+        node('scripts/generate-story-window-pages.mjs','--check'),node('scripts/validate-story-window.mjs'),
+        node('scripts/validate-site-navigation.mjs',...[...storyRoutes,'zukan.html'].flatMap(route=>['--route',route])),
+        node('scripts/sync-asset-versions.mjs','--check'),
       node('scripts/check-content-manifest.mjs')],
   };
   const storyTooling = new Set(['scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',

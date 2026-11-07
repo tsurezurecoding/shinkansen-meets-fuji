@@ -25,7 +25,7 @@
   var castleIds = ['edo-castle-fujimi-yagura', 'odawara-castle', 'kakegawa', 'kiyosu', 'gifu-castle', 'hikone-castle', 'sawayama-castle', 'kannonji-castle', 'himeji-castle', 'okayama-castle', 'fukuyama-castle', 'odawara', 'nagoya-station-skyline', 'toji', 'hamanako'];
   var castles = ['castles.html'].concat(castleIds.map(function (id) { return 'spots/' + id + '.html'; }));
   var extra = ['sparkling-dreams.html'];
-  var storyRoutes = ['stories/index.html','stories/godzilla.html','stories/shogun.html','stories/yurucamp.html','stories/dragonball.html'];
+  var storyRoutes = ['stories/index.html','stories/godzilla.html','stories/shogun.html','stories/yurucamp.html','stories/dragonball.html','stories/shinkalion.html'];
   var routes = utility.concat(castles, extra, ['guide.html'], storyRoutes);
   var enOnly = ['drinks.html', 'beer-on-shinkansen.html', 'everyday-japan.html', 'tokyo-kyoto-stations.html', 'jr-pass-fuji.html'];
   var episodes = {"spots/sekigahara-battlefield.html":translated.slice(),"spots/fuji.html":translated.slice(),"yakei.html":translated.slice(),"spots/fujitec-big-wing.html":translated.slice(),"spots/pocari-fukuroi.html":translated.slice(),"spots/fujikawa-bridge.html":translated.slice(),"spots/fuji-paper-mills.html":translated.slice(),"spots/ibuki.html":translated.slice(),"spots/ibuki-seat-a.html":translated.slice(),"spots/yamazaki-distillery.html":translated.slice(),"drinks.html":translated.slice(),"beer-on-shinkansen.html":translated.slice(),"foods.html":translated.slice(),"countryside.html":translated.slice(),"spots/gamagori-greenhouses.html":translated.slice()};
