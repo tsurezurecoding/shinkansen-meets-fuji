@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "78840761aaa40d1e",
+  "contentVersion": "bf02b551daaac3df",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1867,14 +1867,14 @@
     {
       "path": "de/stories/index.html",
       "url": "https://www.michikusa-travel.com/de/stories/index.html",
-      "bytes": 14683,
-      "sha256": "cf5e76a9c953dfe79e203d8330d305a0acd4c0f871ce77ec5e784bea05022d5b"
+      "bytes": 14684,
+      "sha256": "d903411913172e1187dcf1d8a52fc64e9fbc82c65decb1beec8ecdbca958b0a2"
     },
     {
       "path": "de/stories/shinkalion.html",
       "url": "https://www.michikusa-travel.com/de/stories/shinkalion.html",
-      "bytes": 27920,
-      "sha256": "2826e3b48c013931166728c56a581d848e6461b1bd3064b07e8e2a0fff32e9ff"
+      "bytes": 27927,
+      "sha256": "dd43a5cde0529c84df268bad413436d941d24304d7f2197146069b8f93cb688f"
     },
     {
       "path": "de/stories/shogun.html",

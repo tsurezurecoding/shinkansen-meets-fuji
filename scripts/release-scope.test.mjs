@@ -323,6 +323,7 @@ test('fifth story extension covers its route consumers and rejects unrelated edi
   const plan=chooseReleaseScope(files.map(change));
   assert.equal(plan.scope,'story-extension');
   assert.equal(plan.pagesCandidate,true);
+  assert.equal(chooseReleaseScope(['data/story-window/de/ui.json','de/stories/index.html','de/stories/shinkalion.html','content-manifest.json'].map(change)).scope,'story-extension');
   assert.equal(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).filter(x=>x==='--route').length,7);
   assert(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).includes('zukan.html'));
   assert(!plan.commands.some(c=>c.includes('scripts/generate-site-chrome.mjs')));

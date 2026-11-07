@@ -217,7 +217,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   const extensionUI = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/ui\.json$/;
   const extensionPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:stories\/(?:index|godzilla|shogun|yurucamp|dragonball|shinkalion)\.html|zukan\.html)$/;
   const extensionPhoto = /^images\/story-window\/(?:20260712_n700a_michikusa|20160321_scmaglev-railway-park_abasaa|20260930_kyoto-railway-museum_48790_michikusa)\.jpg$/;
-  if(files.some(file=>extensionBody.test(file))&&changes.every(({path:file,status})=>status!=='D'&&
+  if(files.some(file=>extensionBody.test(file)||extensionUI.test(file))&&changes.every(({path:file,status})=>status!=='D'&&
     (extensionFiles.has(file)||extensionBody.test(file)||extensionUI.test(file)||extensionPage.test(file)||extensionPhoto.test(file)||
       /^shared-ui\/(?:ja|en|zh-hant|zh-hans|ko|th|fr|de|es|it)\.shell\.js$/.test(file)||
       /\.(?:html|tpl)$/.test(file)&&status==='M'&&versionOnly(file))))return{

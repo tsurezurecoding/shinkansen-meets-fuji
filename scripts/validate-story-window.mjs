@@ -27,6 +27,7 @@ for(const lang of langs){
   expect(doc.documentElement.lang===lang,file+': html language');
   expect(doc.querySelector('link[rel="canonical"]')?.href===origin+file,file+': canonical');
   expect(doc.querySelectorAll('h1').length===1,file+': one H1');
+  expect(!doc.querySelector('h1')?.textContent.includes('|'),file+': title separator must not appear as reader-facing text');
   expect(!/noindex|draft-label|Local prototype/.test(html),file+': preview-only markup');
   expect(!!doc.querySelector('.topbar')&&!!doc.querySelector('.footer'),file+': shared chrome');
   expect(doc.querySelectorAll('.guide-lang-options a').length===10,file+': ten language links');
