@@ -1713,6 +1713,22 @@ const SPOTS = [
     },
     photos: [
       {
+        "src": "images/20261107_hinataoka-fuji_217918_michikusa.jpg",
+        "alt": {
+          "ja": "日向岡の住宅地と、その奥に見える富士山",
+          "en": "Mt. Fuji behind the houses of Hinataoka"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "日向岡の奥に富士山",
+          "en": "Fuji behind Hinataoka"
+        }
+      },
+      {
         "src": "images/20261103_hinataoka_night_2594_michikusa.jpg",
         "timeOfDay": "night",
         "width": 1920,
@@ -4151,6 +4167,22 @@ const SPOTS = [
     photoCredit: { ja: "@earlyretiremile", en: "@earlyretiremile", url: "https://x.com/earlyretiremile/status/1777853629682405657" },
     photos: [
       {
+        "src": "images/20261107_left-fuji_43661_michikusa.jpg",
+        "alt": {
+          "ja": "新幹線のA席側から、街並みの向こうに見える富士山",
+          "en": "Mt. Fuji beyond the rooftops on the Seat A side of the Shinkansen"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "A席側の街並みと富士山",
+          "en": "Fuji above the rooftops on the Seat A side"
+        }
+      },
+      {
         src: "images/20260513_left_fuji.jpg",
         alt: { ja: "新幹線のA席側から見える左富士", en: "Left-side Fuji from Seat A" },
         credit: { ja: "michikusa", en: "michikusa" },
@@ -4223,6 +4255,22 @@ const SPOTS = [
       note: { ja: "ガントリークレーンの合間に見える、停泊中の「ちきゅう」の巨大なデリック", en: "CHIKYU's huge derrick, docked between the gantry cranes" },
     },
     photos: [
+      {
+        "src": "images/20261107_chikyu_2079_michikusa.jpg",
+        "alt": {
+          "ja": "清水港の街並みの向こうにそびえる「ちきゅう」の掘削やぐら",
+          "en": "The tall drilling derrick of CHIKYU beyond the rooftops of Shimizu"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "街並みの奥に見える「ちきゅう」",
+          "en": "CHIKYU beyond the rooftops"
+        }
+      },
       {
         "src": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
         "alt": {
@@ -5202,6 +5250,22 @@ const SPOTS = [
       note: { ja: "E席から見る浜名湖。まるで海の上を走っているかのよう", en: "Lake Hamana from Seat E, as if the train were running over the sea" },
     },
     photos: [
+      {
+        "src": "images/20261107_hamanako-fuji_67049_michikusa.jpg",
+        "alt": {
+          "ja": "浜名湖の水面と橋の奥に小さく見える富士山",
+          "en": "A small, distant Mt. Fuji beyond Lake Hamana and the bridge"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "浜名湖越しの富士山",
+          "en": "Mt. Fuji beyond Lake Hamana"
+        }
+      },
       {
         src: "images/20260505_hamanako_design_photosy_2.jpg",
         alt: { ja: "新幹線のE席側から見える浜名湖", en: "Lake Hamana from Seat E" },
@@ -6423,6 +6487,22 @@ const SPOTS = [
     photoCredit: { ja: "新幹線の車窓から", en: "Shinkansen window blog", url: "https://cotetu.seesaa.net/article/518214924.html" },
     photos: [
       {
+        "src": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+        "alt": {
+          "ja": "キリンビール名古屋工場に並ぶタンクと赤いKIRINの看板",
+          "en": "Rows of tanks and the red KIRIN sign at the Kirin Brewery in Nagoya"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "タンクとKIRINの看板",
+          "en": "Brewery tanks and the KIRIN sign"
+        }
+      },
+      {
         "src": "images/20250920_kirin_beer_factory_2_letus10.jpg",
         "alt": {
           "ja": "新幹線のE席側から見えるキリンビール工場の貯蔵タンク",
@@ -6614,6 +6694,22 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20261107_kiyosu-castle_5194_michikusa.jpg",
+        "alt": {
+          "ja": "車窓近くに見える清洲城の天守",
+          "en": "The keep of Kiyosu Castle close to the train window"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "車窓に迫る清洲城の天守",
+          "en": "A close view of Kiyosu Castle"
+        }
+      },
+      {
         "src": "images/20250309_kiyosu_castle_lightup_asami_k920.jpg",
         "timeOfDay": "night",
         "alt": {
@@ -6785,8 +6881,8 @@ const SPOTS = [
     ja: { name: "ソーラーアーク", area: "名古屋 → 岐阜羽島", hook: "もうすぐ見納め、太陽の船。", story: "岐阜羽島付近のE席側に見えるソーラーアークは、旧三洋電機が2001年に建設した、全長315m・最高部37mの太陽光発電モニュメントです。約5,046枚の太陽電池パネルをまとった船形が車窓の目印でした。解体が進み、2026年11月3日の撮影ではパネルの一部が取り外された状態を記録しました。姿は工事の進行で変わるため、次の乗車時に同じ景色が見られるとは限りません。" },
     en: { name: "Solar Ark", area: "Nagoya → Gifu-Hashima", hook: "A solar ship, soon to disappear.", story: "Solar Ark is a ship-shaped solar-power monument near Gifu-Hashima, on the Seat E side. Built by Sanyo in 2001, it is 315 metres long and up to 37 metres tall, originally clad in about 5,046 solar panels. Dismantling is under way: our footage from 3 November 2026 records some panels already removed. Its appearance will change as work progresses, so a future ride may bring a different view." },
     pageTitle: {
-      ja: "解体中のソーラーアーク｜11月3日の車窓動画と見える場所 | 新幹線の窓",
-      en: "Solar Ark Dismantling: Train-Window Video from 3 November 2026",
+      ja: "解体中のソーラーアーク｜11月3日・7日の車窓動画と見える場所 | 新幹線の窓",
+      en: "Solar Ark Dismantling: Train-Window Videos from 3 and 7 November 2026",
     },
     pageHeading: {
       ja: "解体中のソーラーアーク——パネルが外れゆく太陽の船",
@@ -6797,8 +6893,8 @@ const SPOTS = [
       en: ["Solar Ark is being dismantled —","a changing train-window landmark"],
     },
     metaDescription: {
-      ja: "ソーラーアークは解体が進み、2026年11月3日の車窓動画では太陽電池パネルの一部が取り外されています。新幹線E席側の見える場所と、解体前の映像との違いを紹介します。",
-      en: "Our Shinkansen footage from 3 November 2026 shows Solar Ark with some solar panels removed as dismantling progresses. Find the Seat E viewing location and compare earlier videos.",
+      ja: "2026年11月3日・7日の車窓動画で、解体が進むソーラーアークを見比べます。骨組みが露出した11月7日の写真と、新幹線E席側の見える場所を紹介。",
+      en: "Compare train-window videos from 3 and 7 November 2026 as Solar Ark is dismantled. See the framework exposed on 7 November and find the Seat E viewing spot.",
     },
     sectionHeading: {
       ja: "ソーラーアークとは？ なぜ解体される？",
@@ -6811,33 +6907,33 @@ const SPOTS = [
     explainer: {
       heading: { ja: "まだ見られる？ いつまで見られる？", en: "Can you still see it, and for how long?" },
       ja: [
-        "2026年11月3日の撮影では、船形の構造物はまだ車窓に見えますが、表面の太陽電池パネルの一部が取り外されています。以前はパネルで覆われていた面の変化を、下の参考動画で確認できます。これは撮影日の状態であり、現在も同じ姿で見られることを保証するものではありません。",
+        "11月3日にはパネルの一部が外れていました。11月7日の撮影では船形の片端で骨組みが広く露出し、同じ車窓から解体の進み具合が分かります。下の参考動画で両日の姿を見比べられます。",
         "2011年、三洋電機はパナソニックの完全子会社となり、その後太陽電池・二次電池事業の再編が進みました。ソーラーアークにも長らく大きな「Panasonic」ロゴが掲げられていましたが、事業体制の変化にともなって外され、いまはロゴのない状態で立っています。ページ内の掲載写真には、2017年撮影の「Panasonicロゴがあった頃」の姿も参考として残しています。",
         "所有会社が安八町へ解体の意向を伝え、2026年9月にも着手すると報じられた計画は、11月3日の撮影時にはパネルの取り外しが見られる段階へ進んでいました。正確な着工日や完了日、車窓から姿が消える日は確認できていません。",
         "新大阪方面では岐阜羽島を過ぎてから、東京方面では岐阜羽島に着く前のE席側です。速度が出ているので数秒〜十数秒。掲載写真・動画は撮影当時の姿です。解体の進み方によっては同じ姿を見られない場合があります。",
       ],
       en: [
-        "In our footage from 3 November 2026, the ship-shaped structure is still visible, but some of its solar panels have been removed. The reference video below shows how the previously panel-covered surface is changing. This records the filming date, not a promise of the same view today.",
+        "Some panels had been removed by 3 November. On 7 November, much of the framework was exposed at one end of the ship-shaped structure. Compare the views from both dates in the videos below.",
         "In 2011, Sanyo became a wholly owned subsidiary of Panasonic, and its solar and battery businesses were reorganized in the following years. Solar Ark carried a large 'Panasonic' logo for a long time, but as business structures shifted it was removed, and the monument now stands without branding. The photos on this page include a 2017 reference image from when the Panasonic logo was still in place.",
         "Earlier reports said the owner had informed Anpachi Town of demolition plans, with work potentially starting in September 2026. By the time of our 3 November filming, panel removal was visible. We have not confirmed the exact start date, completion date or the day the structure will disappear from the train window.",
         "Look on the Seat E side after Gifu-Hashima toward Shin-Osaka, or before Gifu-Hashima toward Tokyo. At speed, the glimpse lasts only a few seconds. The photos and videos show its appearance when recorded; demolition may change what can be seen.",
       ],
     },
     explainerFigure: {
-      "src": "images/20261103_solar-ark_dismantling_10810_michikusa.jpg",
+      "src": "images/20261107_solar-ark_dismantling_4129_michikusa.jpg",
       "alt": {
-        "ja": "パネルの一部が外れ、内部の骨組みが見えるソーラーアーク",
-        "en": "Solar Ark with some panels removed and the framework exposed"
+        "ja": "解体が進み、片端の骨組みが広く見えるソーラーアーク",
+        "en": "Solar Ark during dismantling, with much of the framework exposed at one end"
       },
       "caption": {
-        "ja": "パネルの一部が外れ、内側の骨組みが見えます。2026年11月3日撮影。",
-        "en": "Some panels have been removed, exposing the framework. Photographed on 3 November 2026."
+        "ja": "船形の片端で骨組みが広く露出しています。2026年11月7日撮影。",
+        "en": "Much of the framework is exposed at one end. Photographed on 7 November 2026."
       },
       "credit": {
         "ja": "michikusa",
         "en": "michikusa"
       },
-      "date": "2026-11-03",
+      "date": "2026-11-07",
       "afterParagraph": 0
     },
     guideHighlight: {
@@ -6848,6 +6944,22 @@ const SPOTS = [
     image: "images/20261103_solar-ark_dismantling_9859_michikusa.jpg",
     photoCredit: {"ja":"michikusa","en":"michikusa","date":"2026-11-03","note":{"ja":"解体中の全景","en":"During dismantling"}},
     photos: [
+      {
+        "src": "images/20261107_solar-ark_dismantling_4129_michikusa.jpg",
+        "alt": {
+          "ja": "解体が進み、片端の骨組みが広く見えるソーラーアーク",
+          "en": "Solar Ark during dismantling, with much of the framework exposed at one end"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "片端の骨組みが露出",
+          "en": "Exposed framework at one end"
+        }
+      },
       {
         "src": "images/20261103_solar-ark_dismantling_10810_michikusa.jpg",
         "width": 1920,
@@ -6947,10 +7059,24 @@ const SPOTS = [
     media: {
       heading: { ja: "動画で見るソーラーアーク", en: "Solar Ark in motion" },
       description: {
-        ja: "2026年11月3日の解体中の姿と、8月20日・9月24日の映像を見比べられます。11月の映像ではパネルの一部が取り外されています。",
-        en: "Compare the dismantling footage filmed on 3 November 2026 with the views from 20 August and 24 September. The November video records some panels already removed.",
+        ja: "2026年11月3日と7日の車窓動画で、解体が進む姿を見比べられます。8月20日と9月24日の映像も掲載しています。",
+        en: "Compare the train-window videos from 3 and 7 November 2026 to see how dismantling progressed. Earlier footage from 20 August and 24 September is also included.",
       },
       videos: [
+        {
+          "kind": "youtube",
+          "id": "DQqRHjNkQPI",
+          "url": "https://www.youtube.com/watch?v=DQqRHjNkQPI",
+          "title": {
+            "ja": "[新幹線の車窓] 解体中のソーラーアーク (2026/11/7)",
+            "en": "[新幹線の車窓] 解体中のソーラーアーク (2026/11/7)"
+          },
+          "date": "2026-11-07",
+          "comment": {
+            "ja": "船形の端に骨組みが広く見えるようになった11月7日の車窓です。",
+            "en": "The view on 7 November shows much of the framework exposed at one end."
+          }
+        },
         {
           "kind": "youtube",
           "id": "ixWDozxgh_w",
@@ -10049,6 +10175,22 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20261107_shiraitogawa-bridge_1528_michikusa.jpg",
+        "alt": {
+          "ja": "緑の谷を渡る白糸川橋梁の赤い鉄骨と奥に見える相模湾",
+          "en": "The red steelwork of Shiraitogawa Bridge above a wooded valley, with Sagami Bay beyond"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-07",
+        "note": {
+          "ja": "白糸川橋梁と相模湾",
+          "en": "Shiraitogawa Bridge and Sagami Bay"
+        }
+      },
+      {
         "src": "images/20261010_odawara_2283_michikusa.jpg",
         "credit": {
           "ja": "michikusa",
@@ -10077,6 +10219,28 @@ const SPOTS = [
         }
       }
     ],
+    "media": {
+      "heading": {
+        "ja": "動画で見る白糸川橋梁",
+        "en": "Shiraitogawa Bridge in motion"
+      },
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "ulwkEPLSBx0",
+          "url": "https://www.youtube.com/watch?v=ulwkEPLSBx0",
+          "title": {
+            "ja": "[新幹線の車窓] 白糸川橋梁",
+            "en": "[新幹線の車窓] 白糸川橋梁"
+          },
+          "date": "2026-11-07",
+          "comment": {
+            "ja": "赤い鉄橋と相模湾が現れる一瞬を、車窓動画で確かめられます。",
+            "en": "Watch for the brief view of the red railway bridge and Sagami Bay."
+          }
+        }
+      ]
+    },
     "references": [
       {
         "label": {

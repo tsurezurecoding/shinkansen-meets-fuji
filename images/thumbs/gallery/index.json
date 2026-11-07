@@ -2079,6 +2079,70 @@
     "quality": 72,
     "sha256": "be572bba6bee9f85378b17b8e0963f742f020baab1177cfadcdd046b39986a51"
   },
+  "images/thumbs/gallery/20261107_chikyu_2079_michikusa.webp": {
+    "source": "images/20261107_chikyu_2079_michikusa.jpg",
+    "sourceSha256": "337eafceaf81977df86aee3ee3fc77ff644fa2b1e1b7155b25fb5b140bbcd567",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "687be0feee057dab8cf1cdda991b7cd9804ef974f0560bd40f44edc9d2b1ddbe"
+  },
+  "images/thumbs/gallery/20261107_hamanako-fuji_67049_michikusa.webp": {
+    "source": "images/20261107_hamanako-fuji_67049_michikusa.jpg",
+    "sourceSha256": "8343bdd9deddcb7924c9d7d9ac4fd711f2a8a32e54a03da87bf16567c180064a",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0a0f346226bd6645ad822fcacd571aa6ab0140e55a009d6499929222b8e710a5"
+  },
+  "images/thumbs/gallery/20261107_hinataoka-fuji_217918_michikusa.webp": {
+    "source": "images/20261107_hinataoka-fuji_217918_michikusa.jpg",
+    "sourceSha256": "102f0fefc02627af6f334fbf3fe05ccfd03d26bd08ae46ff30acfd125be8219d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "36a1519c76225552f810c332236e047e2049083118d805352cf890d5484089cc"
+  },
+  "images/thumbs/gallery/20261107_kirin-beer-factory_6901_michikusa.webp": {
+    "source": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+    "sourceSha256": "5ad96fe0980c191bf2f41a1babf9993a17ebaf7ac8facc81370e37e6daab7d7d",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "bb693e2338e6a064f8165998b829813b39c845fd108fa48a82a49f75e4a88f1b"
+  },
+  "images/thumbs/gallery/20261107_kiyosu-castle_5194_michikusa.webp": {
+    "source": "images/20261107_kiyosu-castle_5194_michikusa.jpg",
+    "sourceSha256": "ce0ce7c4df1b5013f94beb45a4627b40deafd02562696698549e68fa92004108",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "71a91837e61f8f0e54fffee9c9b1cd2a4b8a2aa2719a08ba3530d58bd8009f48"
+  },
+  "images/thumbs/gallery/20261107_left-fuji_43661_michikusa.webp": {
+    "source": "images/20261107_left-fuji_43661_michikusa.jpg",
+    "sourceSha256": "5483d917de1fa999c46226d77939bc911e08067a03f96d9f7d4387f1ea5624d6",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "4cdb06c5dd5ee018de52bf73b8010f1fced0386d883c62ba575d8c0b10dfdec4"
+  },
+  "images/thumbs/gallery/20261107_shiraitogawa-bridge_1528_michikusa.webp": {
+    "source": "images/20261107_shiraitogawa-bridge_1528_michikusa.jpg",
+    "sourceSha256": "55732fc5eabc115045de095c196ccd3627c08aadb27a4b7ec08da790cd133660",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "0403413927d7e2e7a96083279314810e2d50c2b0c20d8d1805184415e277260e"
+  },
+  "images/thumbs/gallery/20261107_solar-ark_dismantling_4129_michikusa.webp": {
+    "source": "images/20261107_solar-ark_dismantling_4129_michikusa.jpg",
+    "sourceSha256": "bf6cfbfa51ee14bb5dc02a12c13d2597ea7f9be760c8ccc984212544ec5139d3",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "70ba1d131c7b06400dc099af3cd7aa4a71043ca7e18e960d5a7d259c05d9c0c6"
+  },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",
     "sourceSha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
