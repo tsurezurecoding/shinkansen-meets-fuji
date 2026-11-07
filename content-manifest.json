@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "0e205c56fb7009c5",
+  "contentVersion": "78840761aaa40d1e",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -7903,8 +7903,8 @@
     {
       "path": "zh-Hans/stories/shinkalion.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/stories/shinkalion.html",
-      "bytes": 25664,
-      "sha256": "c0be6f35ec00a5da5c0e7e31db1681ef2a595de3f4e39121235d973ffb8e9dda"
+      "bytes": 25661,
+      "sha256": "ba6a0d93453ae1eacea035343555cd439073944c705e16df4832e34179260b31"
     },
     {
       "path": "zh-Hans/stories/shogun.html",
