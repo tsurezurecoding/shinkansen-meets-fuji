@@ -224,8 +224,9 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     scope:'story-extension',needsDependencies:true,pagesCandidate:true,
     reason:'Shinkalion, the fifth story in ten editions; story navigation, localized catalogue entries and locale registry cache consumers. Other editorial families are unchanged.',
     commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/shared/story-routing.test.mjs'),
-      node('scripts/generate-story-window-pages.mjs','--check'),node('scripts/validate-story-window.mjs'),storyNavigation(),
-      node('scripts/generate-site-chrome.mjs','--check'),node('scripts/sync-asset-versions.mjs','--check'),
+        node('scripts/generate-story-window-pages.mjs','--check'),node('scripts/validate-story-window.mjs'),
+        node('scripts/validate-site-navigation.mjs',...[...storyRoutes,'zukan.html'].flatMap(route=>['--route',route])),
+        node('scripts/sync-asset-versions.mjs','--check'),
       node('scripts/check-content-manifest.mjs')],
   };
   const storyTooling = new Set(['scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',

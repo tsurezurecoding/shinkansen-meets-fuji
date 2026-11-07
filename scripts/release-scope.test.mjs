@@ -323,7 +323,9 @@ test('fifth story extension covers its route consumers and rejects unrelated edi
   const plan=chooseReleaseScope(files.map(change));
   assert.equal(plan.scope,'story-extension');
   assert.equal(plan.pagesCandidate,true);
-  assert.equal(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).filter(x=>x==='--route').length,6);
+  assert.equal(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).filter(x=>x==='--route').length,7);
+  assert(plan.commands.find(c=>c.includes('scripts/validate-site-navigation.mjs')).includes('zukan.html'));
+  assert(!plan.commands.some(c=>c.includes('scripts/generate-site-chrome.mjs')));
   for(const extra of ['data.js','data/story-window/en/godzilla.html','style.css','images/unrelated.jpg'])
     assert.notEqual(chooseReleaseScope([...files,extra].map(change)).scope,'story-extension');
   assert.notEqual(chooseReleaseScope([...files,'foods.html'].map(change)).scope,'story-extension');
