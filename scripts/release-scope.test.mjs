@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { chooseReleaseScope, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
+import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
 
@@ -332,4 +332,17 @@ test('fifth story extension covers its route consumers and rejects unrelated edi
   assert.notEqual(chooseReleaseScope([...files,'foods.html'].map(change)).scope,'story-extension');
   assert.equal(chooseReleaseScope([...files,'foods.html'].map(change),{versionOnly:()=>true}).scope,'story-extension');
   assert.notEqual(chooseReleaseScope([{path:files[0],status:'D'}]).scope,'story-extension');
+});
+
+
+test('artwork sitemap scope is restricted to the exact migration and known outputs', () => {
+  const files = ['scripts/generate-spot-pages.mjs', 'scripts/artwork-layout.test.mjs', 'sitemap.xml', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'];
+  assert.equal(chooseReleaseScope(files.map(change), {artworkSitemapOnly:true}).scope, 'artwork-sitemap');
+  assert.equal(chooseReleaseScope(files.map(change)).scope, 'unmapped');
+  assert.equal(chooseReleaseScope([...files, 'app.js'].map(change), {artworkSitemapOnly:true}).scope, 'unmapped');
+  const before = '${siteRoot}/en/somato.html';
+  const after = '${siteRoot}/en/artworks/somato/index.html';
+  assert(onlyArtworkSitemapChanged(before, after));
+  assert(!onlyArtworkSitemapChanged(before, after + 'unrelated'));
+  assert(!onlyArtworkSitemapChanged(before, before));
 });

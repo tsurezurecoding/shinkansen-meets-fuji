@@ -1879,15 +1879,15 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/journal.html`, priority: "0.7", changefreq: "weekly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/en/mieru.html`, priority: "0.8", changefreq: "daily", lastmod: "2026-10-12" },
-    { loc: `${siteRoot}/window-trip.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
-    { loc: `${siteRoot}/window-film.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
-    { loc: `${siteRoot}/en/window-film.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/artworks/window-trip/index.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/artworks/window-film/index.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
+    { loc: `${siteRoot}/en/artworks/window-film/index.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-12" },
     { loc: `${siteRoot}/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
     { loc: `${siteRoot}/en/window-artworks.html`, priority: "0.5", changefreq: "monthly", lastmod: "2026-10-04" },
-    { loc: `${siteRoot}/sumie.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/en/sumie.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/somato.html`, priority: "0.5", changefreq: "monthly" },
-    { loc: `${siteRoot}/en/somato.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/artworks/sumie/index.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/artworks/sumie/index.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/artworks/somato/index.html`, priority: "0.5", changefreq: "monthly" },
+    { loc: `${siteRoot}/en/artworks/somato/index.html`, priority: "0.5", changefreq: "monthly" },
     { loc: `${siteRoot}/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/guide.html`, priority: "0.8", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/yakei.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-08-14" },
@@ -2182,7 +2182,7 @@ for (const file of ["reflections.html", "en/reflections.html"]) {
   const target = path.join(appDir, file);
   writeFileIfChanged(target, withUtilityLocales(enhanceContentHead(fs.readFileSync(target, "utf8"), file, appDir), file));
 }
-writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML().replace(/\/(somato|sumie|window-trip|window-film)\.html/g,'/artworks/$1/index.html'));
+writeFileIfChanged(path.join(appDir, "sitemap.xml"), sitemapXML());
 
 await import("./generate-food-country-ja.mjs");
 await import("./generate-utility-locales.mjs");

@@ -141,9 +141,21 @@ export function classifyPackageChange(before, after) {
   } catch { return 'unmapped'; }
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, packageBefore, packageAfter } = {}) {
+export function onlyArtworkSitemapChanged(before, after) {
+  const migrated = before.replace(/(\$\{siteRoot\}\/(?:en\/)?)(somato|sumie|window-film|window-trip)\.html/g, '$1artworks/$2/index.html')
+    .replace("sitemapXML().replace(/\\/(somato|sumie|window-trip|window-film)\\.html/g,'/artworks/$1/index.html')", 'sitemapXML()');
+  return before !== after && migrated === after;
+}
+
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  if (artworkSitemapOnly && files.includes('scripts/generate-spot-pages.mjs') && changes.every(({path, status}) => status === 'M' &&
+    ['scripts/generate-spot-pages.mjs', 'scripts/artwork-layout.test.mjs', 'sitemap.xml', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'].includes(path))) return {
+    scope: 'artwork-sitemap', needsDependencies: true, pagesCandidate: true,
+    reason: 'Only seven migrated artwork sitemap locations and the obsolete CLI-only rewrite change; page rendering and all other generators are unchanged.',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/artwork-layout.test.mjs', 'scripts/shared/live-sitemap.test.mjs'), node('scripts/validate-live-sitemap.mjs')],
+  };
   const rideSources = new Set(['data.js', 'data-runtime.js', 'spot-page-shared-data.js', 'scripts/generate-yakei-page.mjs',
     'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'yakei.css', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/generate-spot-pages.test.mjs',
     'content-manifest.json', 'images/thumbs/display/index.json', 'images/thumbs/gallery/index.json']);
@@ -439,6 +451,7 @@ export function createReleasePlan(base) {
   const dataBefore = dataChanged ? git('show', `${base}:data.js`) : '';
   const dataAfter = dataChanged ? git('show', `${head}:data.js`) : '';
   const plan = chooseReleaseScope(changes, {
+    artworkSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyArtworkSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
     rideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter),
     dayRideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter, true),
     rideBudgetOnly: changes.some(c => c.path === 'scripts/generate-runtime-data.mjs') && onlyRideBudgetChanged(git('show', `${base}:scripts/generate-runtime-data.mjs`), git('show', `${head}:scripts/generate-runtime-data.mjs`)),

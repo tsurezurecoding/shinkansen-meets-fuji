@@ -44,3 +44,20 @@ test('destination pages resolve classic scripts, styles and navigation in Web an
     }
   }
 });
+
+
+test('sitemap generator and committed output use canonical artwork destinations', async () => {
+  const { sitemapXML } = await import('./generate-spot-pages.mjs');
+  const generated = sitemapXML();
+  assert.equal(fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8').replace(/\r\n/g, '\n'), generated);
+  const locations = [...generated.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+  assert.equal(new Set(locations).size, locations.length);
+  for (const route of routes.filter(route => !route.includes('memory-express'))) {
+    const target = route.replace(/([^/]+)\.html$/, 'artworks/$1/index.html');
+    assert.equal(locations.filter(loc => loc === origin + target).length, 1, target);
+    assert(!locations.includes(origin + route), route);
+    const doc = new JSDOM(fs.readFileSync(path.join(root, target), 'utf8')).window.document;
+    assert.equal(doc.querySelector('link[rel=canonical]').getAttribute('href'), origin + target);
+    assert(!/noindex/i.test(doc.querySelector('meta[name=robots]')?.content || ''));
+  }
+});
