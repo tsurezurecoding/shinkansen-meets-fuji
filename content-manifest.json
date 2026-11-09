@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "9cf978de0dc56c69",
+  "contentVersion": "d4f869a49b2d3c92",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1651,8 +1651,8 @@
     {
       "path": "de/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/de/spots/hikone-castle.html",
-      "bytes": 32302,
-      "sha256": "a01aa7ebf8a13a006204bdba7b244da00d17cf6d9474642a458bcb35178bbb51"
+      "bytes": 108041,
+      "sha256": "43a07f6d0c31b30804775dd7fd08b8a91587de8edf4696cdb32021625d40c8fc"
     },
     {
       "path": "de/spots/himeji-castle.html",
@@ -2281,8 +2281,8 @@
     {
       "path": "es/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/es/spots/hikone-castle.html",
-      "bytes": 32887,
-      "sha256": "5923f4718036a68c1928a700eda15ea6c21530218c8094d6181e9f66f8770b66"
+      "bytes": 109465,
+      "sha256": "5dc4071f5972d31f760ef366a86e6c0764af0c444ef8a81defa5e24eea4c2ad8"
     },
     {
       "path": "es/spots/himeji-castle.html",
@@ -2767,8 +2767,8 @@
     {
       "path": "fr/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/hikone-castle.html",
-      "bytes": 31985,
-      "sha256": "dc6f0f2edb676915a069ebe081a0a9e9f42ec9c6f380facb75bb5d1488b58d58"
+      "bytes": 108919,
+      "sha256": "c095f167dc03efe5001bc7e49ddd7379674d08373292ebf487a1b84d53445e04"
     },
     {
       "path": "fr/spots/himeji-castle.html",
@@ -4675,8 +4675,8 @@
     {
       "path": "it/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/it/spots/hikone-castle.html",
-      "bytes": 31773,
-      "sha256": "2fa03bb513cf0732a69908fa33fa644ea5b3ca735fc46824956efc986562448b"
+      "bytes": 109111,
+      "sha256": "79004c34fbbd1fccae60e7937eb308b41c6c915a7ca5851c16ebb3902bab79eb"
     },
     {
       "path": "it/spots/himeji-castle.html",
@@ -5143,8 +5143,8 @@
     {
       "path": "ko/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/ko/spots/hikone-castle.html",
-      "bytes": 32200,
-      "sha256": "439231107af3fe7ca0c78be29648ba77235738156753844f1ecf09c15aed88f3"
+      "bytes": 108428,
+      "sha256": "a5bf5303dee9d67161a0ecaec6974719fca45ce7ae441f6e6b4666146c5559d9"
     },
     {
       "path": "ko/spots/himeji-castle.html",
@@ -7045,8 +7045,8 @@
     {
       "path": "th/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/th/spots/hikone-castle.html",
-      "bytes": 40099,
-      "sha256": "985aa66fcb190be0c0b543a2279c5305815160235edc49198fea0a662ac10008"
+      "bytes": 139687,
+      "sha256": "71935d764585c8efdb70688b61e2416a9635f4f28b3a17d26ab9c19aa80eff3f"
     },
     {
       "path": "th/spots/himeji-castle.html",
@@ -7681,8 +7681,8 @@
     {
       "path": "zh-Hans/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/hikone-castle.html",
-      "bytes": 30110,
-      "sha256": "4b1e4b44f5202963e81f49baa6b2cad63f0b097e50df7f2f2a4cdc67006af3e2"
+      "bytes": 105398,
+      "sha256": "e96849d2e8ab7bad5b459c83bdbbb0dba0fbc80f3f576d3228eb19aa6c5eafee"
     },
     {
       "path": "zh-Hans/spots/himeji-castle.html",
@@ -8125,8 +8125,8 @@
     {
       "path": "zh-Hant/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/hikone-castle.html",
-      "bytes": 30125,
-      "sha256": "09e1a48ee54c09239f2503b5bd918c4b55624fb90391a419ef20e08d86701704"
+      "bytes": 105404,
+      "sha256": "27653e06cde38be07b759819885770ff2c0fc35cd35b60e6f14319823090c0b5"
     },
     {
       "path": "zh-Hant/spots/himeji-castle.html",
