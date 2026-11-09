@@ -2278,6 +2278,15 @@
       "thumbWidth": 960,
       "thumbHeight": 540
     },
+    "images/20261103_gamagori-takeshima_0_michikusa.jpg": {
+      "sha256": "025c795808dbfddd5035d5626779aba39c8e603f632ea320d5d065905983a95c",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261103_gamagori-takeshima_0_michikusa.webp",
+      "thumbSha256": "097976d65edd9927f01cdc9c8178749121caa6b967a498fb7241a3c4967b44cb",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
     "images/20261103_hinataoka_night_2594_michikusa.jpg": {
       "sha256": "d134ff19b05e17866bfa23953d8fe67efc414745a461c16b4a9c5145fac99e96",
       "width": 1920,
@@ -2293,6 +2302,15 @@
       "height": 1080,
       "thumb": "images/thumbs/20261103_kakegawa_dusk_42814_michikusa.webp",
       "thumbSha256": "9a6b27f7d322f4051522b6813da26806ffc074c81704a52e11e20adffed15058",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg": {
+      "sha256": "c1609c1b592381bf2662ee47195f0f6d08b33d47e7939102eaecae21598e826e",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261103_mikawa-oshima_sunset_28750_michikusa.webp",
+      "thumbSha256": "b859fa8ffa5e599c4450ebb0a9b508d7ec18ff67da4899a369379078b3856e6c",
       "thumbWidth": 960,
       "thumbHeight": 540
     },
@@ -2419,6 +2437,24 @@
       "height": 1080,
       "thumb": "images/thumbs/20261107_solar-ark_dismantling_4129_michikusa.webp",
       "thumbSha256": "1752ceedc00c528be4ee9a391b03b35f42e3207f22cb8e2f79694667b9cb2609",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261108_hikone-castle_night_59142_michikusa.jpg": {
+      "sha256": "9e194511d428e8cb91f4b648eb11aa9ed3c461952648fefd875b97ecf2650886",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261108_hikone-castle_night_59142_michikusa.webp",
+      "thumbSha256": "40e46c9cb20fa26d48f0ac6581d0830f3848fa22969d5b89ecc7e445b53ffa50",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261108_kaguya-no-akari_night_2305_michikusa.jpg": {
+      "sha256": "44531427a0a2a82874f14428391515a9fb07e04d3e7811c79e5944cd5a91d201",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261108_kaguya-no-akari_night_2305_michikusa.webp",
+      "thumbSha256": "ec9473c61ecf853ad668a1fd9f2c0c97aeb8a1aae21aa8cfdb2deb107890c6ed",
       "thumbWidth": 960,
       "thumbHeight": 540
     },
@@ -6699,6 +6735,24 @@
       "quality": 86,
       "sha256": "b0954cc830f6a69a13e308ebcc53dd96a1c951fa536907b2d4ecf23a97ef3953"
     },
+    "images/thumbs/display/20261103_gamagori-takeshima_0_michikusa-025c7958-1920.webp": {
+      "source": "images/20261103_gamagori-takeshima_0_michikusa.jpg",
+      "sourceSha256": "025c795808dbfddd5035d5626779aba39c8e603f632ea320d5d065905983a95c",
+      "target": "images/thumbs/display/20261103_gamagori-takeshima_0_michikusa-025c7958-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "9813a4e33d8e7c22314c107e4b12cdb9a8f7c5912a56d47a92ffe6a99582ebd3"
+    },
+    "images/thumbs/display/20261103_gamagori-takeshima_0_michikusa-025c7958-640.webp": {
+      "source": "images/20261103_gamagori-takeshima_0_michikusa.jpg",
+      "sourceSha256": "025c795808dbfddd5035d5626779aba39c8e603f632ea320d5d065905983a95c",
+      "target": "images/thumbs/display/20261103_gamagori-takeshima_0_michikusa-025c7958-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "cce8407f62d1dd3826a6c2ca00536e4f6358d7a9a178f95e9ed3e262246ac5e5"
+    },
     "images/thumbs/display/20261103_hinataoka_night_2594_michikusa-d134ff19-1920.webp": {
       "source": "images/20261103_hinataoka_night_2594_michikusa.jpg",
       "sourceSha256": "d134ff19b05e17866bfa23953d8fe67efc414745a461c16b4a9c5145fac99e96",
@@ -6734,6 +6788,24 @@
       "height": 360,
       "quality": 86,
       "sha256": "607369e1e1f8599c013d958d7695f99e31a25daa022e4f476e6374a50cdb736e"
+    },
+    "images/thumbs/display/20261103_mikawa-oshima_sunset_28750_michikusa-c1609c1b-1920.webp": {
+      "source": "images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg",
+      "sourceSha256": "c1609c1b592381bf2662ee47195f0f6d08b33d47e7939102eaecae21598e826e",
+      "target": "images/thumbs/display/20261103_mikawa-oshima_sunset_28750_michikusa-c1609c1b-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "ad5810cb4b62c6302b732d1bde3ea14e089a307d735138bfe99f70c2ed041587"
+    },
+    "images/thumbs/display/20261103_mikawa-oshima_sunset_28750_michikusa-c1609c1b-640.webp": {
+      "source": "images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg",
+      "sourceSha256": "c1609c1b592381bf2662ee47195f0f6d08b33d47e7939102eaecae21598e826e",
+      "target": "images/thumbs/display/20261103_mikawa-oshima_sunset_28750_michikusa-c1609c1b-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "22c7ecdff0a2ecfc8dbee937671f8ea0a7470c68d5d36dd9611ec9aa5962c5f6"
     },
     "images/thumbs/display/20261103_odawara-castle_night_105629_michikusa-f510b006-1920.webp": {
       "source": "images/20261103_odawara-castle_night_105629_michikusa.jpg",
@@ -7004,6 +7076,42 @@
       "height": 360,
       "quality": 86,
       "sha256": "948a1e160f318daba089a3423cb7baff1427b1c7d110d116d642bf45d2c68bfe"
+    },
+    "images/thumbs/display/20261108_hikone-castle_night_59142_michikusa-9e194511-1920.webp": {
+      "source": "images/20261108_hikone-castle_night_59142_michikusa.jpg",
+      "sourceSha256": "9e194511d428e8cb91f4b648eb11aa9ed3c461952648fefd875b97ecf2650886",
+      "target": "images/thumbs/display/20261108_hikone-castle_night_59142_michikusa-9e194511-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "dcc7b61676a39ca2c2a8321dd2f6aa33907f0397eff70d5b0de3db40d2ac31f1"
+    },
+    "images/thumbs/display/20261108_hikone-castle_night_59142_michikusa-9e194511-640.webp": {
+      "source": "images/20261108_hikone-castle_night_59142_michikusa.jpg",
+      "sourceSha256": "9e194511d428e8cb91f4b648eb11aa9ed3c461952648fefd875b97ecf2650886",
+      "target": "images/thumbs/display/20261108_hikone-castle_night_59142_michikusa-9e194511-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "1e702ace1e56a3d99d9c8eda84092eb5a466fa710a78a0d87c046a2264884467"
+    },
+    "images/thumbs/display/20261108_kaguya-no-akari_night_2305_michikusa-44531427-1920.webp": {
+      "source": "images/20261108_kaguya-no-akari_night_2305_michikusa.jpg",
+      "sourceSha256": "44531427a0a2a82874f14428391515a9fb07e04d3e7811c79e5944cd5a91d201",
+      "target": "images/thumbs/display/20261108_kaguya-no-akari_night_2305_michikusa-44531427-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "2f491785016da8c31782f7e20cabf55616806aa50365ac3524ac43ec8f5e6075"
+    },
+    "images/thumbs/display/20261108_kaguya-no-akari_night_2305_michikusa-44531427-640.webp": {
+      "source": "images/20261108_kaguya-no-akari_night_2305_michikusa.jpg",
+      "sourceSha256": "44531427a0a2a82874f14428391515a9fb07e04d3e7811c79e5944cd5a91d201",
+      "target": "images/thumbs/display/20261108_kaguya-no-akari_night_2305_michikusa-44531427-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "49aa0910456bce977489460832532dc1dbc94aeeaa4e13906f3b67cc76eefff6"
     },
     "images/thumbs/display/250111_hamanako_fuji_proboffin-7d23bf3e-640.webp": {
       "source": "images/250111_hamanako_fuji_proboffin.jpg",

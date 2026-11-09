@@ -896,6 +896,14 @@ const SPOTS = [
     },
     "photos": [
       {
+        "src": "images/20261108_kaguya-no-akari_night_2305_michikusa.jpg",
+        "alt": { "ja": "オレンジ色にライトアップされたかぐやの灯", "en": "Kaguya no To illuminated orange at night" },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-11-08",
+        "timeOfDay": "night",
+        "note": { "ja": "夜の街に、オレンジ色に照らされた配水塔が浮かびます。", "en": "The orange-lit water tower stands out above the town at night." }
+      },
+      {
         "src": "images/20261018_kaguya-no-akari_night_1747_michikusa.jpg",
         "alt": {
           "ja": "緑に光るかぐやの灯",
@@ -933,6 +941,11 @@ const SPOTS = [
         "en": "See Kaguya no To illuminated from the train window."
       },
       "videos": [{
+        "kind": "youtube",
+        "id": "MeY8wdwrs68",
+        "url": "https://www.youtube.com/watch?v=MeY8wdwrs68",
+        "title": { "ja": "[新幹線の車窓] オレンジライトアップのかぐやの灯 (上植野浄水場の配水塔)", "en": "[新幹線の車窓] オレンジライトアップのかぐやの灯 (上植野浄水場の配水塔)" }
+      }, {
         "kind": "youtube",
         "id": "8PAjCJxCTVE",
         "url": "https://www.youtube.com/watch?v=8PAjCJxCTVE",
@@ -5600,20 +5613,20 @@ const SPOTS = [
     ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "三河湾の遠くに、島影。", story: "豊橋を過ぎたあと、A席側の遠くに三河湾と三河大島が浮かぶことがあります。蒲郡の沖合約3kmに浮かぶ無人島で、見通しの良い日には低い島影を探せます。浜名湖の水面が過ぎたあとも、海側の車窓にはまだ見つける楽しみが残っている——そんな存在。見通しの良い日に、蒲郡沖の水平線を探してみてください。" },
     en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "An island silhouette across the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima sometimes appear far away on the Seat A side. It is an uninhabited island about 3 km off Gamagori, with a low outline to look for across the water on clear days. After Lake Hamana passes, this is a reminder that Seat A still has quiet discoveries. On clear days, scan the horizon off Gamagori." },
     pageTitle: {
-      ja: "新幹線から見える三河大島とは？三河湾に浮かぶ島の場所と特徴 | 新幹線の窓",
-      en: "What Is Mikawa Oshima? An Island in Mikawa Bay Seen from the Shinkansen",
+      ja: "新幹線から見える三河大島と蒲郡竹島｜三河湾の二つの島 | 新幹線の窓",
+      en: "Mikawa Oshima and Takeshima in Gamagori | Islands from the Shinkansen",
     },
     pageHeading: {
-      ja: "三河湾の遠くに浮かぶ、三河大島とは？",
-      en: "An island across Mikawa Bay: what is Mikawa Oshima?",
+      ja: "三河湾に浮かぶ、三河大島と蒲郡竹島",
+      en: "Mikawa Oshima and Takeshima in Gamagori",
     },
     pageHeadingChunks: {
-      ja: ["三河湾の遠くに浮かぶ、", "三河大島とは？"],
-      en: ["An island across Mikawa Bay:", "what is Mikawa Oshima?"],
+      ja: ["三河湾に浮かぶ、", "三河大島と蒲郡竹島"],
+      en: ["Mikawa Oshima and Takeshima", "in Gamagori"],
     },
     metaDescription: {
-      ja: "豊橋を過ぎて新幹線のA席側、三河湾に浮かぶ三河大島の正体と場所を解説。蒲郡の沖合約3kmにある無人島です。車窓での見つけ方や周辺情報も紹介。",
-      en: "Between Toyohashi and Mikawa-Anjo, the small island visible far off Seat A is Mikawa Oshima — an uninhabited island in Mikawa Bay off Gamagori. Learn what it is and how to spot it from the Shinkansen.",
+      ja: "新幹線のA席側に見える三河大島と蒲郡竹島。三河湾に浮かぶ二つの島の違いと車窓での見え方を写真とともに紹介します。",
+      en: "Discover Mikawa Oshima and Takeshima in Gamagori, two distinct islands in Mikawa Bay, and see how they appear from the Shinkansen.",
     },
     sectionHeading: {
       ja: "三河大島はどんな島？",
@@ -5629,11 +5642,13 @@ const SPOTS = [
         "三河湾は、渥美半島と知多半島に囲まれた比較的浅い内湾で、東京湾や大阪湾に比べて穏やかな海面が広がるのが特徴です。牡蠣・アサリ・海苔などの養殖が盛んで、いくつもの小島が散らばっています。三河大島はその中でも蒲郡沖に浮かぶ代表的な島のひとつで、蒲郡沖約3kmの位置にあります。",
         "新幹線からは、豊橋を出て蒲郡・三ケ根方向へ進むにつれてA席側に海面が広がる区間があります。海がずっと開けているのではなく、市街地と丘の合間にちらちらと現れる形なので、意識せずに乗っていると通り過ぎがちです。海の向こうの低い島影を意識して窓の外を眺めると、うっすらとしたシルエットが視野に入ってくることがあります。",
         "この一帯は東洋経済オンラインの車窓連載でも取り上げられており、車窓から見える三河湾の風景としては数少ないランドマークのひとつです。晴天で視程が長い日、朝夕の斜光で島の輪郭が濃く出るタイミングが狙い目です。",
+        "同じ蒲郡の海には、三河大島とは別の小島「竹島」もあります。陸地から387mの竹島橋で渡れ、島には八百富神社が鎮座しています。車窓写真では、街並みの向こうに竹島の丸い島影が見えます。沖合の低く横長な三河大島との違いも楽しんでください。",
       ],
       en: [
         "Mikawa Bay is a relatively shallow inlet enclosed by the Atsumi and Chita peninsulas, calmer than Tokyo Bay or Osaka Bay and dotted with small islands. It is well known for oyster, clam and nori seaweed cultivation. Mikawa Oshima is one of the most recognizable islands in the bay, lying about 3 km offshore from Gamagori.",
         "From the Shinkansen, the Seat A side opens toward the bay in short bursts after Toyohashi as the train moves toward the Gamagori and Sangane area. The sea does not stay in view continuously; it flickers between towns and hills, so it is easy to miss without knowing where to look. Look for a low island silhouette across the water.",
         "This stretch has been featured in Toyo Keizai's Shinkansen window column as one of the rare identifiable landmarks on the Mikawa Bay side. Best conditions: clear days with long visibility, or the angled light of early morning or late afternoon, when the island's outline becomes darker against the water.",
+        "Gamagori has another small island: Takeshima, distinct from Mikawa Oshima. A 387-metre bridge connects it to shore, and Yaotomi Shrine stands on the island. In the train-window photograph, Takeshima forms a rounded silhouette beyond the town; compare it with the low, elongated outline of Mikawa Oshima farther offshore.",
       ],
     },
     guideHighlight: {
@@ -5649,6 +5664,20 @@ const SPOTS = [
       note: { ja: "夕暮れにうかぶ三河大島", en: "Mikawa Oshima floating in the evening light." },
     },
     photos: [
+      {
+        src: "images/20261103_gamagori-takeshima_0_michikusa.jpg",
+        alt: { ja: "新幹線の車窓から見た蒲郡の竹島", en: "Takeshima in Gamagori seen from the Shinkansen" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-11-03",
+        note: { ja: "街並みの向こうに浮かぶ蒲郡の竹島。三河大島とは別の島です。", en: "Takeshima beyond the town in Gamagori, a different island from Mikawa Oshima." },
+      },
+      {
+        src: "images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg",
+        alt: { ja: "夕日に染まる三河湾と三河大島", en: "Mikawa Oshima and Mikawa Bay in the evening sun" },
+        credit: { ja: "michikusa", en: "michikusa" },
+        date: "2026-11-03",
+        note: { ja: "夕日に照らされ、三河湾に低く横たわる三河大島。", en: "Mikawa Oshima lies low across the bay in the evening sun." },
+      },
       {
         src: "images/20260712_mikawa_oshima_michikusa.jpg",
         alt: { ja: "新幹線のA席側から遠くに見える三河大島", en: "Mikawa Oshima seen far away from Seat A" },
@@ -5671,7 +5700,7 @@ const SPOTS = [
         note: { ja: "2026-08-20 · 2秒後、島が真横に来たところ", en: "2026-08-20 · Two seconds later, with the island abeam." },
       },
     ],
-    references: [REFERENCES.toyokeizaiMikawa, REFERENCES.mikawaOshimaGamagori, REFERENCES.mikawaOshimaWiki],
+    references: [REFERENCES.toyokeizaiMikawa, REFERENCES.mikawaOshimaGamagori, REFERENCES.mikawaOshimaWiki, { label: { ja: "蒲郡市観光協会：竹島", en: "Gamagori tourism association: Takeshima (Japanese)" }, url: "https://www.gamagori.jp/spot/750" }],
     map: { lat: 34.78876767723613, lng: 137.23307674842255, ja: "三河大島", en: "Mikawa Oshima" },
     viewpoint: { lat: 34.824957815965384, lng: 137.24433532297894 },
   },
@@ -8543,6 +8572,14 @@ const SPOTS = [
       }
     },
     "photos": [
+      {
+        "src": "images/20261108_hikone-castle_night_59142_michikusa.jpg",
+        "alt": { "ja": "夜の車窓の遠くに白く光る彦根城", "en": "Hikone Castle glowing white in the distance at night" },
+        "credit": { "ja": "michikusa", "en": "michikusa" },
+        "date": "2026-11-08",
+        "timeOfDay": "night",
+        "note": { "ja": "暗い車窓の奥に、白く照らされた小さな天守が見えます。", "en": "The small illuminated keep appears in the distance through the dark window." }
+      },
       {
         "src": "images/20261018_hikone-castle_night_52688_michikusa.jpg",
         "alt": {

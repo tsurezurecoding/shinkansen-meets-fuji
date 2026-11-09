@@ -64,7 +64,8 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 // October 25: two owned night photographs and three official YouTube embeds.
 // November 3: the 60th spot, Sekigahara, with three owned window photographs.
 // November 7: seven approved ride photographs and two reference videos; projection unchanged.
-export const RUNTIME_DATA_BYTE_BUDGET = 355 * 1024;
+// November 10: four ride photographs, a Takeshima reference and a Kaguya video.
+export const RUNTIME_DATA_BYTE_BUDGET = 357 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。
