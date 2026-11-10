@@ -191,7 +191,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     commands:[...syntax, node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/generate-site-chrome.test.mjs','scripts/responsive-photos.test.mjs'),
       node('scripts/generate-spot-page-shared-data.mjs','--check'), node('scripts/generate-spot-pages.mjs','--check'),
       node('scripts/generate-castle-locales.mjs','--route','spots/mikawa-oshima.html','--check'), node('scripts/generate-castle-locales.mjs','--route','spots/hikone-castle.html','--check'),
-      node('scripts/generate-utility-locales.mjs','--route','zukan.html','--check'), node('scripts/generate-site-chrome.mjs','--check'),
+      node('scripts/generate-utility-locales.mjs','--route','zukan.html','--check'), node('scripts/generate-site-chrome.mjs','--check'), node('scripts/generate-site-runtime.mjs','--check'),
       node('scripts/validate-spot-page-shared.mjs'), node('scripts/validate-spot-schema.mjs'), node('scripts/validate-content.mjs'), node('scripts/audit-photo-credits.mjs','--check'),
       node('scripts/generate-gallery-thumbnails.mjs','--check'), node('scripts/generate-runtime-data.mjs','--check'), node('scripts/validate-runtime-data.mjs'), node('scripts/generate-inbound-tables.mjs','--check'),
       node('scripts/validate-castle-locales.mjs','--route','spots/mikawa-oshima.html'), node('scripts/validate-castle-locales.mjs','--route','spots/hikone-castle.html'),

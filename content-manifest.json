@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "3eac31266534f7cd",
+  "contentVersion": "b38083efb66ec670",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1651,8 +1651,8 @@
     {
       "path": "de/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/de/spots/hikone-castle.html",
-      "bytes": 33551,
-      "sha256": "e1b413a2f62f13d0d0111e24458261190936c2a946e47073b0287340e3b9c528"
+      "bytes": 33561,
+      "sha256": "dd456a583526f99fdf2dcd90c9f614a5c78b9928f736e28c890852a30b26c5bc"
     },
     {
       "path": "de/spots/himeji-castle.html",
@@ -1729,8 +1729,8 @@
     {
       "path": "de/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/de/spots/mikawa-oshima.html",
-      "bytes": 98734,
-      "sha256": "acf361beefe80423469f59ae027fec8a986bf38d462450a01cff755f72a08620"
+      "bytes": 29225,
+      "sha256": "5b5cf717ea0bf89c092d0d18e7736a91820c0df4af34416c8779fd73c382958c"
     },
     {
       "path": "de/spots/musashi-kosugi-towers.html",
@@ -2287,8 +2287,8 @@
     {
       "path": "es/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/es/spots/hikone-castle.html",
-      "bytes": 34128,
-      "sha256": "1834e52a79c3bf0af03574b0b5bca3eec7869da71cabb41162cabb3cb77f36a0"
+      "bytes": 34138,
+      "sha256": "301f881a49f12151314a772730fae24be450d10e24f81de6b06296d327656329"
     },
     {
       "path": "es/spots/himeji-castle.html",
@@ -2365,8 +2365,8 @@
     {
       "path": "es/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/es/spots/mikawa-oshima.html",
-      "bytes": 99604,
-      "sha256": "4897546f2cc817159c1c6040ceb139b2f88d94e46fdcba039952fa6d7762f87e"
+      "bytes": 29324,
+      "sha256": "fc7e853f6cda6317083b5e718abd8b50659c4bad873a650bbc5800a974b9a84e"
     },
     {
       "path": "es/spots/musashi-kosugi-towers.html",
@@ -2779,8 +2779,8 @@
     {
       "path": "fr/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/fr/spots/hikone-castle.html",
-      "bytes": 33210,
-      "sha256": "74eb7b678574fdab654bc1bbf7ceca8babbb3f585f6872325a0a9455e34fb1a2"
+      "bytes": 33220,
+      "sha256": "86e7e780b1bed6c236b2f840c039145317fcfc636702315eeccf468c2ffc6328"
     },
     {
       "path": "fr/spots/himeji-castle.html",
@@ -2857,8 +2857,8 @@
     {
       "path": "fr/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/fr/spots/mikawa-oshima.html",
-      "bytes": 100457,
-      "sha256": "1e45e595d26edc309cd7f807fe1f97f4278db37c3f1c635944bcc4dbbaeb7ca6"
+      "bytes": 29824,
+      "sha256": "27256fb3f20125093193f976458a92d65722391180155cf765db7f7c6a9bb8f8"
     },
     {
       "path": "fr/spots/musashi-kosugi-towers.html",
@@ -4693,8 +4693,8 @@
     {
       "path": "it/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/it/spots/hikone-castle.html",
-      "bytes": 33049,
-      "sha256": "e3a1f3e929e2a13720b3181a8f69b1064f321791ce8a20cda908d016ccb76751"
+      "bytes": 33059,
+      "sha256": "a407c90a91c173259196fac691caab5d32301518760d82840896e2bf2bea61be"
     },
     {
       "path": "it/spots/himeji-castle.html",
@@ -4771,8 +4771,8 @@
     {
       "path": "it/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/it/spots/mikawa-oshima.html",
-      "bytes": 99985,
-      "sha256": "476cdfd57d0e9121257076787a4630862ea4c01225b4504d562bec1ab900a31a"
+      "bytes": 29029,
+      "sha256": "8b4ad18945645ca2c7990f6ada05e9d2099b0d8a73d99244672a3680cf46719d"
     },
     {
       "path": "it/spots/musashi-kosugi-towers.html",
@@ -5167,8 +5167,8 @@
     {
       "path": "ko/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/ko/spots/hikone-castle.html",
-      "bytes": 33417,
-      "sha256": "daa5b0ea5cc740bac535db539804cd2bbc5dc3680dfe4df9d21e9f4d254cc2b6"
+      "bytes": 33427,
+      "sha256": "7b305bbcf2d20b58240c18e657a4b62735cfd337e67d910ecb0649695498151c"
     },
     {
       "path": "ko/spots/himeji-castle.html",
@@ -5245,8 +5245,8 @@
     {
       "path": "ko/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/ko/spots/mikawa-oshima.html",
-      "bytes": 99734,
-      "sha256": "5effa6eea8a80a3ec0f30a4425413f010e9712d8a0eb8b77f42a99d1e6485d46"
+      "bytes": 29759,
+      "sha256": "dabbcff2dbd0dd9837bde50d579e9d617283574c3ff98117fa71305e15485143"
     },
     {
       "path": "ko/spots/musashi-kosugi-towers.html",
@@ -6239,6 +6239,12 @@
       "sha256": "861ff8979d71c998d323f60c4432571f2be8b3cb16bd94885f29317ff0984c51"
     },
     {
+      "path": "shared-ui/de.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/de.rail-spots-hikone-castle.js",
+      "bytes": 87707,
+      "sha256": "6d2ca17ebc3ce2a68cc9c5bc17780fe205351f8faf32a4720f6a07f98daae3b3"
+    },
+    {
       "path": "shared-ui/de.rail-spots-maruko-bridge.js",
       "url": "https://www.michikusa-travel.com/shared-ui/de.rail-spots-maruko-bridge.js",
       "bytes": 87669,
@@ -6305,6 +6311,12 @@
       "sha256": "b66ea1064d5408470f6984cbd4a5afea54c5ff8b200f9c7e7ef5934d19c0abec"
     },
     {
+      "path": "shared-ui/es.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/es.rail-spots-hikone-castle.js",
+      "bytes": 88477,
+      "sha256": "8dbaf6ef8cc27a99f0f4e0293e605762a4841adff2e1b4d9c9b2a9762534df11"
+    },
+    {
       "path": "shared-ui/es.rail-spots-maruko-bridge.js",
       "url": "https://www.michikusa-travel.com/shared-ui/es.rail-spots-maruko-bridge.js",
       "bytes": 88439,
@@ -6365,6 +6377,12 @@
       "sha256": "2613b49de13f592ded97c4349a2fe568930afb3e05a9c7861b438be1f3f3a842"
     },
     {
+      "path": "shared-ui/fr.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/fr.rail-spots-hikone-castle.js",
+      "bytes": 88833,
+      "sha256": "8d61f4be378c74b60a59522c7d0bf72b7f82303dd13ebf95cd808f025be96c55"
+    },
+    {
       "path": "shared-ui/fr.rail-spots-maruko-bridge.js",
       "url": "https://www.michikusa-travel.com/shared-ui/fr.rail-spots-maruko-bridge.js",
       "bytes": 88795,
@@ -6417,6 +6435,12 @@
       "url": "https://www.michikusa-travel.com/shared-ui/it.rail-spots-hamanako.js",
       "bytes": 89162,
       "sha256": "8b98d8f8da12343f2f9c41b626805ef3ec231444986895ffc6296392c39459ee"
+    },
+    {
+      "path": "shared-ui/it.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/it.rail-spots-hikone-castle.js",
+      "bytes": 89161,
+      "sha256": "4d7eb7aef5b448b99063de1354f01f04c586b593f71227a9e56f7f90b1a2f1a8"
     },
     {
       "path": "shared-ui/it.rail-spots-maruko-bridge.js",
@@ -6491,6 +6515,12 @@
       "sha256": "87579168bc230b00b11b2d2a2e61475e8047875f2afa221c33945a83a0e37374"
     },
     {
+      "path": "shared-ui/ko.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/ko.rail-spots-hikone-castle.js",
+      "bytes": 88181,
+      "sha256": "f78f49a55cc956cb036231e47b52d0828eaf72c86b8d8e9569e150490103af89"
+    },
+    {
       "path": "shared-ui/ko.rail-spots-maruko-bridge.js",
       "url": "https://www.michikusa-travel.com/shared-ui/ko.rail-spots-maruko-bridge.js",
       "bytes": 88143,
@@ -6543,6 +6573,12 @@
       "url": "https://www.michikusa-travel.com/shared-ui/th.rail-spots-hamanako.js",
       "bytes": 109579,
       "sha256": "4f58843da530e57a340665855235a0fdfb0f3a1b54f8ce32493a7020d4338a60"
+    },
+    {
+      "path": "shared-ui/th.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/th.rail-spots-hikone-castle.js",
+      "bytes": 109578,
+      "sha256": "1682465ff31a8524eb51fdc699520c332c22002e0087bd726b3162afee0911e0"
     },
     {
       "path": "shared-ui/th.rail-spots-maruko-bridge.js",
@@ -6599,6 +6635,12 @@
       "sha256": "009431ce3150c86a3fba143ce001851c7199b879b65c514826dfb0105d63a391"
     },
     {
+      "path": "shared-ui/zh-hans.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/zh-hans.rail-spots-hikone-castle.js",
+      "bytes": 87626,
+      "sha256": "70a2ff999f8ff3908eccfb2802271fe2c816f5b19322646b2679d4c0102e9442"
+    },
+    {
       "path": "shared-ui/zh-hans.rail-spots-maruko-bridge.js",
       "url": "https://www.michikusa-travel.com/shared-ui/zh-hans.rail-spots-maruko-bridge.js",
       "bytes": 87593,
@@ -6653,6 +6695,12 @@
       "sha256": "f7b2d6e592394ca4ea88e05399b9a7c3a6046343ba0539457a46a3c26f17b160"
     },
     {
+      "path": "shared-ui/zh-hant.rail-spots-hikone-castle.js",
+      "url": "https://www.michikusa-travel.com/shared-ui/zh-hant.rail-spots-hikone-castle.js",
+      "bytes": 87626,
+      "sha256": "2247c04c86af3469c53762a21a32e3363fb3ad311b5099025570f487806bd3c8"
+    },
+    {
       "path": "shared-ui/zh-hant.rail-spots-maruko-bridge.js",
       "url": "https://www.michikusa-travel.com/shared-ui/zh-hant.rail-spots-maruko-bridge.js",
       "bytes": 87593,
@@ -6679,8 +6727,8 @@
     {
       "path": "site-runtime.json",
       "url": "https://www.michikusa-travel.com/site-runtime.json",
-      "bytes": 4337,
-      "sha256": "95d2460e9cc660e735cd62a675ad4f174460e4ba7d11ce0a38432e5e63321264"
+      "bytes": 4827,
+      "sha256": "ec9507eaf1acb20b6c0f02c826b0b2e3160c649748b727b6ec7e57459076a6e8"
     },
     {
       "path": "sparkling-dreams.html",
@@ -7123,8 +7171,8 @@
     {
       "path": "th/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/th/spots/hikone-castle.html",
-      "bytes": 41711,
-      "sha256": "8fc8fe228ddb18a4dfdb304ea5d8bdae368f19402d1b3510065a543f71fe46a9"
+      "bytes": 41721,
+      "sha256": "49e3c285d66d6997ea193ab698fb92dfae31a6711074a77808b86ab2f736116f"
     },
     {
       "path": "th/spots/himeji-castle.html",
@@ -7201,8 +7249,8 @@
     {
       "path": "th/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/th/spots/mikawa-oshima.html",
-      "bytes": 128055,
-      "sha256": "fea2a9f60b127fb3806852ceef1d0015a0d67724050e072384668b0fdbe5511c"
+      "bytes": 36738,
+      "sha256": "a91c859d361933d629fb2ccec9591453151743fc521621c54c6d0f09c1daefda"
     },
     {
       "path": "th/spots/musashi-kosugi-towers.html",
@@ -7765,8 +7813,8 @@
     {
       "path": "zh-Hans/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/hikone-castle.html",
-      "bytes": 31328,
-      "sha256": "646a81fe6c2047488c6c058416bd5c9c1fa6aba10985f260a0a3aecd362b89a9"
+      "bytes": 31338,
+      "sha256": "a08df332acfc92b3b77651ec4656a3304770d805cb5e113ab63b1755fc7fb84a"
     },
     {
       "path": "zh-Hans/spots/himeji-castle.html",
@@ -7843,8 +7891,8 @@
     {
       "path": "zh-Hans/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/mikawa-oshima.html",
-      "bytes": 97600,
-      "sha256": "0aaecc8a555edd82537b8a7a60e1477fbf7c2ca7e07d7ba9374711e5e9a4fd1b"
+      "bytes": 28444,
+      "sha256": "e9c336b3bcf9e879b5371eea222870db32128dec94b357b5f2968e03f4642a78"
     },
     {
       "path": "zh-Hans/spots/musashi-kosugi-towers.html",
@@ -8215,8 +8263,8 @@
     {
       "path": "zh-Hant/spots/hikone-castle.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/hikone-castle.html",
-      "bytes": 31334,
-      "sha256": "29da5cf8b9c9f2b3866703172f232b88fcb01025ad94a25c786c98896b50457a"
+      "bytes": 31344,
+      "sha256": "d875478df57bdabf4333d447aef194e54cf5db99098c74b8f1c74d47d52480bc"
     },
     {
       "path": "zh-Hant/spots/himeji-castle.html",
@@ -8293,8 +8341,8 @@
     {
       "path": "zh-Hant/spots/mikawa-oshima.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/mikawa-oshima.html",
-      "bytes": 97603,
-      "sha256": "fcc40bfec49df8d9de4cab34904ae32adbeac4b9fc87e6e365913b9dd53335cb"
+      "bytes": 28447,
+      "sha256": "b1e9a292b7a46c8481d041b93e0763fdc97fc8595289356a522562bde707bdf8"
     },
     {
       "path": "zh-Hant/spots/musashi-kosugi-towers.html",
