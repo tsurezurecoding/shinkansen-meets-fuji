@@ -709,7 +709,7 @@
             <tr><td>東京起 66.5 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-hard">困難</span></td><td><a href="../en/spots/genki-sign.html">悉平加油看板</a></td></tr>
             <tr><td>東京起 73 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/hamanako.html">濱名湖</a></td></tr>
             <tr><td>東京起 76.5 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="../en/spots/toyohashi-tateiwa.html">豐橋立岩巨石</a></td></tr>
-            <tr><td>東京起 82.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/mikawa-oshima.html">三河大島</a></td></tr>
+            <tr><td>東京起 82.5 分</td><td><span class="bf-seat">A</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../zh-Hant/spots/mikawa-oshima.html">三河大島</a></td></tr>
             <tr><td>東京起 83 分</td><td><span class="bf-seat">E</span></td><td></td><td><a href="spots/gamagori-greenhouses.html">豐橋至蒲郡的溫室群</a></td></tr>
             <tr><td>東京起 88 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-moderate">普通</span></td><td><a href="../en/spots/nichiban-anjo.html">CELLOTAPE牆面看板</a></td></tr>
             <tr><td>東京起 94 分</td><td><span class="bf-seat">E</span></td><td><span class="bf-level bf-level-easy">容易</span></td><td><a href="spots/nagoya-station-skyline.html">名古屋站前天際線</a></td></tr>

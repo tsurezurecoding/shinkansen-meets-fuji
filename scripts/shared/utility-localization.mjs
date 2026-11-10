@@ -105,7 +105,10 @@ export function collectEnglish(root, { routes = UTILITY_ROUTES, includeRuntime =
     }
     Object.values(value).forEach(scan);
   };
-  scan(englishRuntimeData(root));
+  // Utility payloads translate only each spot's top-level `en` summary.
+  // Gallery captions, page media and reference labels belong to article
+  // dictionaries and must not block regeneration of unrelated utility pages.
+  for (const spot of englishRuntimeData(root).SPOTS) scan({ en: spot.en });
   scan(englishNarrations(root));
   Object.values(FORECAST_COPY).forEach(add);
   EXTRA_COPY.forEach(add);
