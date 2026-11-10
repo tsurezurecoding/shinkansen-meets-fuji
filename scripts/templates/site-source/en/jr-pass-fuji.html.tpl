@@ -178,12 +178,14 @@
         <img src="../images/seat-side-fuji.svg" width="720" height="300" alt="Two carriage diagrams: heading toward Kyoto, Mt. Fuji is on the right beside Seat E; heading toward Tokyo it is on the left, still beside Seat E." loading="lazy" decoding="async">
       </figure>
       <h2>Mt. Fuji times, by train</h2>
-      <p>Every train below is covered by the Japan Rail Pass, and every one of them <b>stops at Shin-Fuji</b>. The times are that station's own scheduled times, not an average — the spread between trains is wider than the viewing window itself, so an average would be worse than useless.</p>
+      <p><b>The tables show scheduled Kodama stops at Shin-Fuji.</b> Hikari trains pass through Shin-Fuji. Their estimated passing times are in the individual train timelines.</p>
       <p class="jp-table-note"><b>Select a train number</b> to open its own window timeline — every view it passes, each with a time and a seat side, worked out from that train&rsquo;s schedule.</p>
 
       <!-- JRPASS_TABLE_START -->
+        <p class="jp-table-note">Timetable data updated on <time datetime="2026-10-10">2026-10-10</time></p>
+        <p class="jp-table-note">Times are in Japan time (JST). Operating dates and live delays are not reflected. Check the railway operator for your travel date.</p>
         <h3>Toward Kyoto and Shin-Osaka</h3>
-        <p class="jp-table-note">Mt. Fuji is on your <b>right</b>, in <b>Seat E</b>. Every train here stops at Shin-Fuji, so the mountain is beside you while the train is standing still.</p>
+        <p class="jp-table-note">Mt. Fuji is on your <b>right</b>, in <b>Seat E</b>.</p>
         <div class="jp-table-wrap">
           <table class="jp-table">
             <thead><tr><th>Train</th><th>From</th><th>Departs</th><th>At Shin-Fuji</th><th>Journey so far</th></tr></thead>
@@ -269,7 +271,7 @@
 
         <details class="jp-hikari">
           <summary>Riding a Hikari? Open your train's timeline</summary>
-          <p class="jp-table-note">Hikari passes Mt. Fuji without stopping, so there is no station time to quote and we will not invent one. Open a train and the guide works the passing time out from that train's own schedule.</p>
+          <p class="jp-table-note">Open a Hikari train to see its estimated passing time, calculated from its scheduled stops.</p>
           <h4>Toward Kyoto and Shin-Osaka</h4>
           <ul class="jp-hikari-list">
               <li><a href="start.html?train=Hikari-631&amp;board=Tokyo&amp;dir=west">Hikari 631</a> <span class="jp-hikari-from">from Tokyo</span></li>
@@ -349,7 +351,7 @@
       <h2>If the mountain is hidden</h2>
       <p>Mt. Fuji is often invisible, and clear winter mornings are by far the best odds. The ride does not end there: the same window carries castles, a lake the train crosses on a low bridge, tea fields, a pagoda in Kyoto, and a few large mysteries that people spend the trip arguing about.</p>
       <div class="jp-cta">
-        <a class="btn btn-primary" href="./#journey" data-jrpass-cta="pick_train">Get the exact times for my train →</a>
+        <a class="btn btn-primary" href="start.html" data-jrpass-cta="pick_train">Check estimated viewing times →</a>
         <a class="btn btn-ghost" href="guide.html" data-jrpass-cta="guide">Which side for Mt. Fuji</a>
         <a class="btn btn-ghost" href="guide.html#cloudy" data-jrpass-cta="cloudy">If the mountain is hidden</a>
         <a class="btn btn-ghost" href="zukan.html" data-jrpass-cta="zukan">All 60 window views</a>
@@ -379,7 +381,7 @@
         page_context: "jr_pass_fuji"
       };
       window.gtag("event", "jrpass_cta_click", payload);
-      if ((payload.destination || "").indexOf("#journey") !== -1) window.gtag("event", "cta_train_search_click", payload);
+      if (payload.cta_id === "pick_train") window.gtag("event", "cta_train_search_click", payload);
     });
   </script>
 <script id="mado-shared-ui-config" type="application/json">{"assets":["shared-ui/en.shell.js"],"root":"../","lang":"en","route":"jr-pass-fuji.html","mounts":[{"host":"chrome-0","component":"footer-castles","kind":"footer"}]}</script>
