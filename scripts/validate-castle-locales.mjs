@@ -14,6 +14,9 @@ const editions = ['ja', 'en', ...CASTLE_LOCALE_LANGS];
 // Exercise the scenery companions with the same photo, map and edition contracts.
 const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a'].map(id => `spots/${id}.html`);
 const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, "spots/maruko-bridge.html", ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/') || ['jr-pass-fuji.html','hanabi.html'].includes(route))])];
+const routeIndex = process.argv.indexOf('--route');
+const requestedRoute = routeIndex < 0 ? null : process.argv[routeIndex + 1];
+if (routeIndex >= 0 && !articleRoutes.includes(requestedRoute)) throw new Error('Unknown localized article route: ' + requestedRoute);
 const errors = [];
 const counts = { pages: 0, galleries: 0, maps: 0, lightboxes: 0, languageSwitches: 0 };
 const assert = (ok, label, message) => { if (!ok) errors.push(`${label}: ${message}`); };
@@ -180,7 +183,7 @@ for (const lang of CASTLE_LOCALE_LANGS) {
   guide.window.close();
 }
 
-for (const route of articleRoutes) {
+for (const route of requestedRoute ? [requestedRoute] : articleRoutes) {
   const source = renderSiteRuntimeForValidation({ appDir: root, html: read(`en/${route}`), relative: `en/${route}` }).dom;
   for (const lang of supported(route)) {
     const file = routeFor(lang, route);

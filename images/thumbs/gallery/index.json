@@ -2015,6 +2015,14 @@
     "quality": 72,
     "sha256": "560235b728c5a40cc39aa77dd5cf65d5f8ffcc2116765bd5515dde24735ffaaa"
   },
+  "images/thumbs/gallery/20261103_gamagori-takeshima_0_michikusa.webp": {
+    "source": "images/20261103_gamagori-takeshima_0_michikusa.jpg",
+    "sourceSha256": "025c795808dbfddd5035d5626779aba39c8e603f632ea320d5d065905983a95c",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "e6df0b8a3b218532e7462eea96cae1ae8fd9941be144636c65df27f2b659e050"
+  },
   "images/thumbs/gallery/20261103_hinataoka_night_2594_michikusa.webp": {
     "source": "images/20261103_hinataoka_night_2594_michikusa.jpg",
     "sourceSha256": "d134ff19b05e17866bfa23953d8fe67efc414745a461c16b4a9c5145fac99e96",
@@ -2030,6 +2038,14 @@
     "height": 198,
     "quality": 72,
     "sha256": "e955bfb13ca99d2e807b07622bdae55157bd78a089f489c101bdb942fb3fc0e9"
+  },
+  "images/thumbs/gallery/20261103_mikawa-oshima_sunset_28750_michikusa.webp": {
+    "source": "images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg",
+    "sourceSha256": "c1609c1b592381bf2662ee47195f0f6d08b33d47e7939102eaecae21598e826e",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "ba887d86ce2677e290735b473b52bd85b54c3b1640a25dfe5b1e36b2c2d65f52"
   },
   "images/thumbs/gallery/20261103_odawara-castle_night_105629_michikusa.webp": {
     "source": "images/20261103_odawara-castle_night_105629_michikusa.jpg",
@@ -2142,6 +2158,22 @@
     "height": 198,
     "quality": 72,
     "sha256": "70ba1d131c7b06400dc099af3cd7aa4a71043ca7e18e960d5a7d259c05d9c0c6"
+  },
+  "images/thumbs/gallery/20261108_hikone-castle_night_59142_michikusa.webp": {
+    "source": "images/20261108_hikone-castle_night_59142_michikusa.jpg",
+    "sourceSha256": "9e194511d428e8cb91f4b648eb11aa9ed3c461952648fefd875b97ecf2650886",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "2fbd773a1e16d095901d3e453f60118ab6e73219d0f16c7356c47df7aa84275a"
+  },
+  "images/thumbs/gallery/20261108_kaguya-no-akari_night_2305_michikusa.webp": {
+    "source": "images/20261108_kaguya-no-akari_night_2305_michikusa.jpg",
+    "sourceSha256": "44531427a0a2a82874f14428391515a9fb07e04d3e7811c79e5944cd5a91d201",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "c9e0f1abef8d532063bacafb6502a83640487d61f53343db36f82cb7e8a79d84"
   },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",

@@ -5,11 +5,12 @@ import { JSDOM } from 'jsdom';
 import locales from '../locales.js';
 import { withLocaleRegistry } from './shared/locales.mjs';
 import { withArticleLocales } from './shared/castle-locales.mjs';
+import { collectEnglish } from './shared/utility-localization.mjs';
 const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'utf8');
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 73, '72 canonical pages including Shinkalion, and the Ibuki A-seat alias');
+  assert.equal(routes.length, 74, '73 canonical pages including Mikawa Oshima, and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -19,6 +20,13 @@ test('Italian and Thai share every regular translated route and leave limited ed
   assert.deepEqual(locales.supported('727-collection.html'), locales.coreLanguages);
   assert.deepEqual(locales.supported('jr-pass-fuji.html'), ['en', ...locales.translated]);
   for (const route of ['hanabi.html','spots/seta-karahashi.html','spots/musashi-kosugi-towers.html','spots/sagami-fuji.html','spots/left-fuji.html']) assert.deepEqual(locales.supported(route), locales.coreLanguages);
+});
+
+test('utility translation collection includes spot summaries but excludes article-only photo captions', () => {
+  const root = new URL('../', import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, '$1');
+  const keys = collectEnglish(root, { routes: [], includeRuntime: true });
+  assert.ok(keys.some(key => key.startsWith('Solar Ark is a ship-shaped solar-power monument')));
+  assert.ok(!keys.includes('The small illuminated keep appears in the distance through the dark window.'));
 });
 test('scenery editions retain companion canonical targets and guide-only Arabic', () => {
   for (const id of ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a']) {
