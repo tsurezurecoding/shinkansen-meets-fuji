@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f45e4046c86be05d",
+  "contentVersion": "8b8288b797a27236",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1555,8 +1555,8 @@
     {
       "path": "de/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/de/jr-pass-fuji.html",
-      "bytes": 115609,
-      "sha256": "abd5726baea4c2d83278529d9b7698b8b252d22a92c0d712ce0361e57171c10c"
+      "bytes": 134783,
+      "sha256": "809654769a466729e88e7b12d7dc9f7a6a951fa603d596b55c3e9cc8ce8896bd"
     },
     {
       "path": "de/live/index.html",
@@ -2191,8 +2191,8 @@
     {
       "path": "es/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/es/jr-pass-fuji.html",
-      "bytes": 116825,
-      "sha256": "2207288bed5bbff1fadbb233ccc290a9c63c7573106945e7446f00a5f343ab41"
+      "bytes": 135999,
+      "sha256": "cb0ea095c5d4ac8b692a680095d9b42fe6081d2b29119ba4d91ae20f073f4cfc"
     },
     {
       "path": "es/live/index.html",
@@ -2683,8 +2683,8 @@
     {
       "path": "fr/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/fr/jr-pass-fuji.html",
-      "bytes": 118341,
-      "sha256": "57197d6d31433ddbb76f86353b149b6db60c91285a5df224c4d2cf5144ca67f9"
+      "bytes": 137515,
+      "sha256": "e6e6baf2b9dd2a317df2bbb0c8ac0631006871cbefc54c1ca0b8576a0396994b"
     },
     {
       "path": "fr/live/index.html",
@@ -4597,8 +4597,8 @@
     {
       "path": "it/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/it/jr-pass-fuji.html",
-      "bytes": 117503,
-      "sha256": "d6115ded4998a8fcb106ec98340ab50309f5135f9160db59048492b3a4ca29cf"
+      "bytes": 136677,
+      "sha256": "9a68b1c419794f7c9ce9f7f5e7c9b9a8e6e4708ccc09c6b64d8fe7e890b396c9"
     },
     {
       "path": "it/live/index.html",
@@ -5071,8 +5071,8 @@
     {
       "path": "ko/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/ko/jr-pass-fuji.html",
-      "bytes": 117136,
-      "sha256": "266c5d89227e3fb4e946978252ded6cb178db350bfe4427c34cff9738b57d584"
+      "bytes": 136310,
+      "sha256": "e95d5bf79699794b66702a148681bc040e13a9bffa40ea2c8da39e78ec978559"
     },
     {
       "path": "ko/live/index.html",
@@ -7075,8 +7075,8 @@
     {
       "path": "th/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/th/jr-pass-fuji.html",
-      "bytes": 152129,
-      "sha256": "3ff26d978d331e9f11222f0461dfc1b5c4f0556dc9f28671bfd34a27627004ae"
+      "bytes": 171303,
+      "sha256": "a8369c852d56d2fcf1ec6f95992f014814ed8087c94762c606ed40fa802cd577"
     },
     {
       "path": "th/live/index.html",
@@ -7717,8 +7717,8 @@
     {
       "path": "zh-Hans/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/jr-pass-fuji.html",
-      "bytes": 115334,
-      "sha256": "ac2f3224febdd6a0db38df41e1655acef05762efd229bd6417e22712e8898783"
+      "bytes": 133863,
+      "sha256": "4f647e186c5e28da56406bfad1c66d52927341133d27b94aa97d73fd314c0459"
     },
     {
       "path": "zh-Hans/live/index.html",
@@ -8167,8 +8167,8 @@
     {
       "path": "zh-Hant/jr-pass-fuji.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/jr-pass-fuji.html",
-      "bytes": 115340,
-      "sha256": "ab071a9855498769af6ea206bed96e804bd77b34e0acded4f1553070e45013e7"
+      "bytes": 133869,
+      "sha256": "2324c01f456f17e87b359c4588dcda6d124d440b820db1a1a122707e7834467a"
     },
     {
       "path": "zh-Hant/live/index.html",
