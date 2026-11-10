@@ -96,6 +96,39 @@ export function onlyRideMediaDataChanged(before, after, dayRide = false) {
     return true;
   } catch { return false; }
 }
+
+export function onlyMikawaPhotoBatchDataChanged(before, after) {
+  try {
+    const source = code => { const context = {}; vm.runInNewContext(code + ';this.result={SPOTS,ROUTE,BOARD_COLLECTION,WHEEL_COLLECTION}', context, {timeout:5000}); return JSON.parse(JSON.stringify(context.result)); };
+    const a=source(before), b=source(after);
+    for (const key of ['ROUTE','BOARD_COLLECTION','WHEEL_COLLECTION']) if (!isDeepStrictEqual(a[key],b[key])) return false;
+    if (!isDeepStrictEqual(a.SPOTS.map(s=>s.id), b.SPOTS.map(s=>s.id))) return false;
+    const targets = {
+      'mikawa-oshima': ['photos','pageTitle','pageHeading','pageHeadingChunks','metaDescription','sectionHeading','pageStory','explainer','references'],
+      'kaguya-no-akari': ['photos','media'],
+      'hikone-castle': ['photos'],
+    };
+    const images = new Set(['images/20261103_gamagori-takeshima_0_michikusa.jpg','images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg','images/20261108_kaguya-no-akari_night_2305_michikusa.jpg','images/20261108_hikone-castle_night_59142_michikusa.jpg']);
+    const seen = new Set();
+    for (let i=0;i<a.SPOTS.length;i++) {
+      const old=a.SPOTS[i], next=b.SPOTS[i], fields=targets[old.id];
+      if (!fields) { if (!isDeepStrictEqual(old,next)) return false; continue; }
+      for (const photo of old.photos || []) if (!(next.photos || []).some(p=>isDeepStrictEqual(p,photo))) return false;
+      for (const photo of next.photos || []) if (!(old.photos || []).some(p=>isDeepStrictEqual(p,photo))) {
+        if (!images.has(photo.src) || photo.credit?.ja !== 'michikusa' || photo.credit?.en !== 'michikusa') return false;
+        seen.add(photo.src);
+      }
+      if (old.id === 'kaguya-no-akari') {
+        const previous=old.media?.videos || [], videos=next.media?.videos || [];
+        const added=videos.filter(v=>!previous.some(p=>isDeepStrictEqual(p,v)));
+        if (previous.some(v=>!videos.some(n=>isDeepStrictEqual(v,n))) || added.length !== 1 || added[0].id !== 'MeY8wdwrs68') return false;
+      }
+      for (const field of fields) { delete old[field]; delete next[field]; }
+      if (!isDeepStrictEqual(old,next)) return false;
+    }
+    return seen.size === images.size;
+  } catch { return false; }
+}
 const validationFiles = new Set(['scripts/shared/site-runtime-validation.mjs',
   'scripts/shared/site-runtime-validation.test.mjs', 'scripts/validate-site-navigation.mjs', 'scripts/validate-site-navigation.test.mjs']);
 const storyRoutes = ['index', 'godzilla', 'shogun', 'yurucamp', 'dragonball', 'shinkalion'].map(slug => `stories/${slug}.html`);
@@ -147,9 +180,23 @@ export function onlyArtworkSitemapChanged(before, after) {
   return before !== after && migrated === after;
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const mikawaInputs = new Set(['data.js','data-runtime.js','locales.js','site-runtime.json','sitemap.xml','content-manifest.json','scripts/generate-runtime-data.mjs','scripts/generate-site-chrome.test.mjs','scripts/locales-contract.test.mjs','scripts/shared/expansion-localization.mjs','scripts/shared/site-chrome.mjs','scripts/shared/utility-localization.mjs','scripts/validate-castle-locales.mjs','scripts/release-scope.mjs','scripts/release-scope.test.mjs','images/thumbs/display/index.json','images/thumbs/gallery/index.json']);
+  const mikawaPhoto = /^(?:images\/|images\/thumbs\/|images\/thumbs\/display\/|images\/thumbs\/gallery\/)(?:20261103_gamagori-takeshima_0|20261103_mikawa-oshima_sunset_28750|20261108_kaguya-no-akari_night_2305|20261108_hikone-castle_night_59142)_michikusa(?:-[a-f0-9]+-\d+)?\.(?:jpg|webp)$/;
+  if (mikawaPhotoBatchDataOnly && files.includes('locales.js') && changes.some(c=>c.status==='A' && c.path==='fr/spots/mikawa-oshima.html') && changes.every(({path:file,status}) => status !== 'D' && (mikawaInputs.has(file) || mikawaPhoto.test(file) || /^data\/spot-pages\/(?:mikawa-oshima|kaguya-no-akari|hikone-castle)\.(?:ja|en)\.js$/.test(file) || /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/.test(file) || /^scripts\/locales\/(?:castle|expansion|utility)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/.test(file) || /^scripts\/templates\/site-(?:source|chrome)\/.+\.tpl$/.test(file) || /^shared-ui\/[a-z-]+\.[a-z0-9-]+\.js$/.test(file) || /\.html$/.test(file)))) return {
+    scope:'mikawa-photo-locales', needsDependencies:true, pagesCandidate:true,
+    reason:'Three approved photo/video updates, Mikawa article in eight editions, shared navigation and its versioned consumers',
+    commands:[...syntax, node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/generate-site-chrome.test.mjs','scripts/responsive-photos.test.mjs'),
+      node('scripts/generate-spot-page-shared-data.mjs','--check'), node('scripts/generate-spot-pages.mjs','--check'),
+      node('scripts/generate-castle-locales.mjs','--route','spots/mikawa-oshima.html','--check'), node('scripts/generate-castle-locales.mjs','--route','spots/hikone-castle.html','--check'),
+      node('scripts/generate-utility-locales.mjs','--route','zukan.html','--check'), node('scripts/generate-site-chrome.mjs','--check'),
+      node('scripts/validate-spot-page-shared.mjs'), node('scripts/validate-spot-schema.mjs'), node('scripts/validate-content.mjs'), node('scripts/audit-photo-credits.mjs','--check'),
+      node('scripts/generate-gallery-thumbnails.mjs','--check'), node('scripts/generate-runtime-data.mjs','--check'), node('scripts/validate-runtime-data.mjs'), node('scripts/generate-inbound-tables.mjs','--check'),
+      node('scripts/validate-castle-locales.mjs','--route','spots/mikawa-oshima.html'), node('scripts/validate-castle-locales.mjs','--route','spots/hikone-castle.html'),
+      node('scripts/validate-site-navigation.mjs'), node('scripts/validate-live-sitemap.mjs'), node('scripts/sync-asset-versions.mjs','--check'), node('scripts/check-content-manifest.mjs')],
+  };
   if (artworkSitemapOnly && files.includes('scripts/generate-spot-pages.mjs') && changes.every(({path, status}) => status === 'M' &&
     ['scripts/generate-spot-pages.mjs', 'scripts/artwork-layout.test.mjs', 'sitemap.xml', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'].includes(path))) return {
     scope: 'artwork-sitemap', needsDependencies: true, pagesCandidate: true,
@@ -454,6 +501,7 @@ export function createReleasePlan(base) {
     artworkSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyArtworkSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
     rideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter),
     dayRideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter, true),
+    mikawaPhotoBatchDataOnly: dataChanged && onlyMikawaPhotoBatchDataChanged(dataBefore, dataAfter),
     rideBudgetOnly: changes.some(c => c.path === 'scripts/generate-runtime-data.mjs') && onlyRideBudgetChanged(git('show', `${base}:scripts/generate-runtime-data.mjs`), git('show', `${head}:scripts/generate-runtime-data.mjs`)),
     assetVersionOnly: file => onlyAssetVersionReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     catalogManifestOnly: file => onlyCatalogManifestVersionChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),

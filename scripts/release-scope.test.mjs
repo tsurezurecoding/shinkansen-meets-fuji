@@ -1,9 +1,28 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
 import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+test('Mikawa batch scope rejects unrelated inputs and unrelated spot changes', () => {
+  const paths = [change('data.js'), change('locales.js'), {path:'fr/spots/mikawa-oshima.html',status:'A'}];
+  assert.equal(chooseReleaseScope(paths,{mikawaPhotoBatchDataOnly:true}).scope,'mikawa-photo-locales');
+  assert.equal(chooseReleaseScope([...paths,change('app.js')],{mikawaPhotoBatchDataOnly:true}).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...paths,{path:'spots/old.html',status:'D'}],{mikawaPhotoBatchDataOnly:true}).scope,'unmapped');
+  const source=spots=>'const SPOTS='+JSON.stringify(spots)+';const ROUTE={};const BOARD_COLLECTION=[];const WHEEL_COLLECTION=[];';
+  const before=[{id:'mikawa-oshima',photos:[]},{id:'kaguya-no-akari',photos:[],media:{videos:[]}},{id:'hikone-castle',photos:[]},{id:'other',side:'A'}];
+  const after=JSON.parse(JSON.stringify(before));
+  const photo=src=>({src,credit:{ja:'michikusa',en:'michikusa'}});
+  after[0].photos=[photo('images/20261103_gamagori-takeshima_0_michikusa.jpg'),photo('images/20261103_mikawa-oshima_sunset_28750_michikusa.jpg')];
+  after[1].photos=[photo('images/20261108_kaguya-no-akari_night_2305_michikusa.jpg')];
+  after[1].media.videos.push({id:'MeY8wdwrs68'});
+  after[2].photos=[photo('images/20261108_hikone-castle_night_59142_michikusa.jpg')];
+  assert.ok(onlyMikawaPhotoBatchDataChanged(source(before),source(after)));
+  after[3].side='E';
+  assert.equal(onlyMikawaPhotoBatchDataChanged(source(before),source(after)),false);
+});
 
 test('ride photo scope rejects unrelated paths, deleted media, changed translations and changed collateral content', () => {
   const files = ['data.js', 'scripts/generate-yakei-page.mjs', 'scripts/generate-runtime-data.mjs',
