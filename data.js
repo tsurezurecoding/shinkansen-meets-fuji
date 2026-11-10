@@ -5629,12 +5629,12 @@ const SPOTS = [
       en: "Discover Mikawa Oshima and Takeshima in Gamagori, two distinct islands in Mikawa Bay, and see how they appear from the Shinkansen.",
     },
     sectionHeading: {
-      ja: "三河大島はどんな島？",
-      en: "What kind of island is Mikawa Oshima?",
+      ja: "三河湾に浮かぶ、二つの島",
+      en: "Two islands in Mikawa Bay",
     },
     pageStory: {
-      ja: "三河大島は、愛知県蒲郡市の沖合約3kmに浮かぶ無人島です。車窓からは三河湾の遠くに見える低い島影で、海と街並みが入れ替わる区間の小さな目印になります。夏季には海水浴場が開かれ、季節運航の船で渡れます。開設期間や船の運航日は蒲郡市観光協会の公式案内を参照してください。",
-      en: "Mikawa Oshima is an uninhabited island about 3 km off Gamagori City in Aichi Prefecture. From the train, its low outline is a small landmark across Mikawa Bay, in a stretch where sea and town alternate in the window. The island has a summer bathing season and seasonal passenger boats. Refer to the Gamagori tourism association for beach opening dates and boat schedules.",
+      ja: "三河大島は、愛知県蒲郡市の沖合約3kmに浮かぶ無人島です。車窓からは三河湾の遠くに見える低い島影で、海と街並みが入れ替わる区間の小さな目印になります。夏季には海水浴場が開かれ、季節運航の船で渡れます。開設期間や船の運航日は蒲郡市観光協会の公式案内を参照してください。\n\n同じ蒲郡の海には、岸の近くにもう一つの島、竹島があります。こちらは長さ387mの竹島橋を歩いて渡れる小島。島全体が神社の境内で、木々に囲まれた頂上に八百富神社（やおとみじんじゃ）が鎮座しています。縁結びなどの神様として親しまれる弁天様を祀り、島にはほかにも四つの神社があります。\n\n蒲郡市博物館によると、八百富神社は1181年の創建とされ、三河国司だった歌人・藤原俊成が、琵琶湖の竹生島（ちくぶしま）から弁天様を迎えたという言い伝えがあります。車窓の向こうに見える小さな島影にも、平安時代へさかのぼる物語があるのです。\n\n竹島の森も、この島の特徴です。対岸に近いにもかかわらず、向こう岸のクロマツ林とは異なる植物が育ち、学術的に貴重な植生として国の天然記念物に指定されています。橋で渡る神社の島・竹島と、さらに沖合の三河大島。同じ三河湾に並ぶ、二つの異なる風景です。",
+      en: "Mikawa Oshima is an uninhabited island about 3 km off Gamagori City in Aichi Prefecture. From the train, its low outline is a small landmark across Mikawa Bay, in a stretch where sea and town alternate in the window. The island has a summer bathing season and seasonal passenger boats. Refer to the Gamagori tourism association for beach opening dates and boat schedules.\n\nCloser to Gamagori's shore is another island: Takeshima. You can walk across the 387-metre Takeshima Bridge to reach it. The entire island forms the grounds of Yaotomi Shrine, whose main sanctuary stands among the trees at the top. It is dedicated to a deity associated with good fortune and relationships; four other shrines also stand on the island.\n\nAccording to Gamagori City Museum, Yaotomi Shrine is said to have been founded in 1181. Tradition holds that Fujiwara no Shunzei, a poet and governor of Mikawa, brought the deity here from Chikubushima, an island in Lake Biwa. The small silhouette glimpsed from the train carries a story that reaches back to the Heian period.\n\nTakeshima's forest is distinctive too. Although the island is close to shore, its vegetation differs from the black-pine woods on the opposite coast. Its unusual plant life is protected as a National Natural Monument. Takeshima is a shrine island reached by bridge; Mikawa Oshima lies farther offshore. Together they offer two different glimpses of the same bay.",
     },
     explainer: {
       heading: { ja: "三河湾と、車窓からの見え方", en: "Mikawa Bay and how it appears from the train" },
@@ -5642,13 +5642,13 @@ const SPOTS = [
         "三河湾は、渥美半島と知多半島に囲まれた比較的浅い内湾で、東京湾や大阪湾に比べて穏やかな海面が広がるのが特徴です。牡蠣・アサリ・海苔などの養殖が盛んで、いくつもの小島が散らばっています。三河大島はその中でも蒲郡沖に浮かぶ代表的な島のひとつで、蒲郡沖約3kmの位置にあります。",
         "新幹線からは、豊橋を出て蒲郡・三ケ根方向へ進むにつれてA席側に海面が広がる区間があります。海がずっと開けているのではなく、市街地と丘の合間にちらちらと現れる形なので、意識せずに乗っていると通り過ぎがちです。海の向こうの低い島影を意識して窓の外を眺めると、うっすらとしたシルエットが視野に入ってくることがあります。",
         "この一帯は東洋経済オンラインの車窓連載でも取り上げられており、車窓から見える三河湾の風景としては数少ないランドマークのひとつです。晴天で視程が長い日、朝夕の斜光で島の輪郭が濃く出るタイミングが狙い目です。",
-        "同じ蒲郡の海には、三河大島とは別の小島「竹島」もあります。陸地から387mの竹島橋で渡れ、島には八百富神社が鎮座しています。車窓写真では、街並みの向こうに竹島の丸い島影が見えます。沖合の低く横長な三河大島との違いも楽しんでください。",
+        "写真を切り替えると、街並みの向こうに丸く盛り上がる竹島と、沖合に低く横たわる三河大島がそれぞれ現れます。竹島の森や神社を車窓から細かく見分けるのは難しくても、島影の違いを知っていると三河湾の眺めが少し立体的になります。",
       ],
       en: [
         "Mikawa Bay is a relatively shallow inlet enclosed by the Atsumi and Chita peninsulas, calmer than Tokyo Bay or Osaka Bay and dotted with small islands. It is well known for oyster, clam and nori seaweed cultivation. Mikawa Oshima is one of the most recognizable islands in the bay, lying about 3 km offshore from Gamagori.",
         "From the Shinkansen, the Seat A side opens toward the bay in short bursts after Toyohashi as the train moves toward the Gamagori and Sangane area. The sea does not stay in view continuously; it flickers between towns and hills, so it is easy to miss without knowing where to look. Look for a low island silhouette across the water.",
         "This stretch has been featured in Toyo Keizai's Shinkansen window column as one of the rare identifiable landmarks on the Mikawa Bay side. Best conditions: clear days with long visibility, or the angled light of early morning or late afternoon, when the island's outline becomes darker against the water.",
-        "Gamagori has another small island: Takeshima, distinct from Mikawa Oshima. A 387-metre bridge connects it to shore, and Yaotomi Shrine stands on the island. In the train-window photograph, Takeshima forms a rounded silhouette beyond the town; compare it with the low, elongated outline of Mikawa Oshima farther offshore.",
+        "Switch between the photographs to compare Takeshima's rounded silhouette beyond the town with Mikawa Oshima's low, elongated outline offshore. The forest and shrine are hard to distinguish in detail from the train, but knowing the two shapes gives the view across the bay another layer.",
       ],
     },
     guideHighlight: {
@@ -5700,7 +5700,7 @@ const SPOTS = [
         note: { ja: "2026-08-20 · 2秒後、島が真横に来たところ", en: "2026-08-20 · Two seconds later, with the island abeam." },
       },
     ],
-    references: [REFERENCES.toyokeizaiMikawa, REFERENCES.mikawaOshimaGamagori, REFERENCES.mikawaOshimaWiki, { label: { ja: "蒲郡市観光協会：竹島", en: "Gamagori tourism association: Takeshima (Japanese)" }, url: "https://www.gamagori.jp/spot/750" }],
+    references: [REFERENCES.toyokeizaiMikawa, REFERENCES.mikawaOshimaGamagori, REFERENCES.mikawaOshimaWiki, { label: { ja: "蒲郡市観光協会：竹島", en: "Gamagori tourism association: Takeshima (Japanese)" }, url: "https://www.gamagori.jp/spot/750" }, { label: { ja: "蒲郡市博物館：竹島の弁天様", en: "Gamagori City Museum: Takeshima's Benzaiten (Japanese)" }, url: "https://www.city.gamagori.lg.jp/site/museum/rekibun-takeshimabenten-gokaicho.html" }, { label: { ja: "蒲郡市博物館：八百富神社の森", en: "Gamagori City Museum: Yaotomi Shrine's forest (Japanese)" }, url: "https://www.city.gamagori.lg.jp/site/museum/meiboku-31.html" }],
     map: { lat: 34.78876767723613, lng: 137.23307674842255, ja: "三河大島", en: "Mikawa Oshima" },
     viewpoint: { lat: 34.824957815965384, lng: 137.24433532297894 },
   },
