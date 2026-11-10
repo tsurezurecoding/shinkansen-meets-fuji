@@ -4,6 +4,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { CASTLE_LOCALE_ROUTES } from "./shared/castle-locales.mjs";
 import { supported } from "./shared/locales.mjs";
+import { sourceTemplatePath } from "./shared/site-chrome.mjs";
 
 // Fills the Mt. Fuji timing table on en/jr-pass-fuji.html from data/timetable.js.
 //
@@ -12,7 +13,7 @@ import { supported } from "./shared/locales.mjs";
 // A Japan Rail Pass covers Nozomi only with a separate special ticket, so pass holders normally ride
 // Hikari and Kodama. A Kodama takes 59-71 minutes from Tokyo to reach the same view.
 //
-// ONLY trains with a real Shin-Fuji stop time are listed. An earlier version
+// The tables list trains with a scheduled Shin-Fuji stop time. An earlier version
 // interpolated a time for trains that pass through, using fujiOffsetsMinutes as a
 // distance scale, and produced Hikari arriving 42 minutes after Tokyo — faster than a
 // Nozomi, which is impossible. Those offsets are an MVP approximation and are not
@@ -23,6 +24,7 @@ import { supported } from "./shared/locales.mjs";
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const CHECK_ONLY = process.argv.includes("--check");
 const JRPASS_PAGE = path.join(appDir, "en", "jr-pass-fuji.html");
+const JRPASS_SOURCE = sourceTemplatePath(appDir, "en/jr-pass-fuji.html");
 const BESIDES_PAGE = path.join(appDir, "en", "besides-fuji.html");
 const START = "<!-- JRPASS_TABLE_START -->";
 const END = "<!-- JRPASS_TABLE_END -->";
@@ -154,11 +156,20 @@ function rowsFor(direction) {
   return [...unique.values()].sort((a, b) => toMinutes(a.fujiAt) - toMinutes(b.fujiAt));
 }
 
+// Keep the service names and times in HTML. The browser builds the existing
+// share URL when the reader selects a train.
+function trainFormHTML(type, number, boardId, direction) {
+  return `<form class="jp-train-form" action="start.html" method="get">` +
+    `<button type="submit" name="train" value="${type}-${number}">${type} ${number}</button>` +
+    `<input type="hidden" name="board" value="${escapeHTML(boardId)}">` +
+    `<input type="hidden" name="dir" value="${direction}"></form>`;
+}
+
 function tableHTML(caption, seatNote, rows) {
   const body = rows
     .map(
       (row) =>
-        `<tr><td><a href="start.html?train=${row.type}-${row.number}&amp;board=${encodeURIComponent(row.boardId)}&amp;dir=${row.direction}">${row.type} ${row.number}</a></td>` +
+        `<tr><td>${trainFormHTML(row.type, row.number, row.boardId, row.direction)}</td>` +
         `<td>${row.origin}</td><td>${row.departure}</td>` +
         `<td><b>${row.fujiAt}</b></td><td>${row.after === null ? "—" : `${row.after} min`}</td></tr>`,
     )
@@ -179,7 +190,7 @@ function tableHTML(caption, seatNote, rows) {
    過去に「ひかりが東京から42分（のぞみより速い）」という不可能な値を出して撤去済み。
    そこで時刻は一切書かず、列車ピッカーへのリンクだけを出す。通過時刻はタイムライン側の
    interpolateSpot が、その列車自身の停車時刻から算出する。 */
-function hikariLinksHTML() {
+function hikariListHTML() {
   const byDirection = { west: [], east: [] };
   for (const train of TIMETABLE.trains) {
     if (train.type !== "Hikari") continue;
@@ -199,7 +210,7 @@ function hikariLinksHTML() {
       .sort((a, b) => a.number - b.number)
       .map(
         (train) =>
-          `<li><a href="start.html?train=Hikari-${train.number}&amp;board=${encodeURIComponent(routeBoardId(train))}&amp;dir=${train.direction}">Hikari ${train.number}</a> <span class="jp-hikari-from">from ${escapeHTML(train.originStation)}</span></li>`,
+          `<li>${trainFormHTML(train.type, train.number, routeBoardId(train), train.direction)} <span class="jp-hikari-from">from ${escapeHTML(train.originStation)}</span></li>`,
       )
       .join("\n              ");
   };
@@ -209,7 +220,7 @@ function hikariLinksHTML() {
   return (
     `        <details class="jp-hikari">\n` +
     `          <summary>Riding a Hikari? Open your train's timeline</summary>\n` +
-    `          <p class="jp-table-note">Hikari passes Mt. Fuji without stopping, so there is no station time to quote and we will not invent one. Open a train and the guide works the passing time out from that train's own schedule.</p>\n` +
+    `          <p class="jp-table-note">Open a Hikari train to see its estimated passing time, calculated from its scheduled stops.</p>\n` +
     `          <h4>Toward Kyoto and Shin-Osaka</h4>\n          <ul class="jp-hikari-list">\n              ${west}\n          </ul>\n` +
     `          <h4>Toward Tokyo</h4>\n          <ul class="jp-hikari-list">\n              ${east}\n          </ul>\n` +
     `        </details>`
@@ -226,9 +237,11 @@ const tokyoRange = fromTokyo.length
 
 const generated =
   `${START}\n` +
+  `        <p class="jp-table-note">Timetable data updated on <time datetime="${escapeHTML(TIMETABLE.updatedAt)}">${escapeHTML(TIMETABLE.updatedAt)}</time></p>\n` +
+  `        <p class="jp-table-note">Times are in Japan time (JST). Operating dates and live delays are not reflected. Check the railway operator for your travel date.</p>\n` +
   tableHTML(
     "Toward Kyoto and Shin-Osaka",
-    "Mt. Fuji is on your <b>right</b>, in <b>Seat E</b>. Every train here stops at Shin-Fuji, so the mountain is beside you while the train is standing still.",
+    "Mt. Fuji is on your <b>right</b>, in <b>Seat E</b>.",
     west,
   ) +
   "\n\n" +
@@ -238,7 +251,7 @@ const generated =
     east,
   ) +
   "\n\n" +
-  hikariLinksHTML() +
+  hikariListHTML() +
   `\n      ${END}`;
 
 // Do not publish a static directory of parameterized train URLs.
@@ -434,8 +447,7 @@ function validateInboundPageContracts() {
     throw new Error("Obsolete Nozomi surcharge wording remains; use the official separate-special-ticket wording");
   }
   requireFragment(jrPass, "includes seat reservations on eligible Hikari and Kodama services at no additional charge", "JR Pass reservation terms");
-  const serviceKeys = [...jrPass.matchAll(/<tr><td><a href="start\.html\?train=(?:Hikari|Kodama)-\d+[^"]*">(Hikari|Kodama) (\d+)<\/a><\/td><td>[^<]+<\/td><td>[^<]+<\/td><td><b>(\d{2}:\d{2})<\/b>/g)]
-    .map((match) => `${match[1]}|${match[2]}|${match[3]}`);
+  const serviceKeys = [...west, ...east].map(row => `${row.type}|${row.number}|${row.fujiAt}`);
   if (new Set(serviceKeys).size !== serviceKeys.length) {
     throw new Error("JR Pass table lists the same train number and Shin-Fuji time more than once");
   }
@@ -454,8 +466,11 @@ const KAKEGAWA_KODAMA = TIMETABLE.trains.filter(
   (train) => train.type === "Kodama" && train.times.Kakegawa,
 ).length;
 
-applyTo(JRPASS_PAGE, START, END, generated, "JR Pass table");
-applyTo(JRPASS_PAGE, LD_MARK_START, LD_MARK_END, ldScript(jrPassFaqLd(tokyoRange, KAKEGAWA_KODAMA)), "JR Pass structured data");
+const jrPassSchema = ldScript(jrPassFaqLd(tokyoRange, KAKEGAWA_KODAMA));
+for (const file of [JRPASS_SOURCE, JRPASS_PAGE]) {
+  applyTo(file, START, END, generated, "JR Pass table");
+  applyTo(file, LD_MARK_START, LD_MARK_END, jrPassSchema, "JR Pass structured data");
+}
 for (const langKey of Object.keys(LANGS)) {
   const page = path.join(appDir, LANGS[langKey].dir, "besides-fuji.html");
   if (!fs.existsSync(page)) continue;

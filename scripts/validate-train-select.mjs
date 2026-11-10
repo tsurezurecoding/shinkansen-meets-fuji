@@ -19,6 +19,8 @@ import { readFile } from "node:fs/promises";
 import vm from "node:vm";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { JSDOM } from "jsdom";
+import { supported } from "./shared/locales.mjs";
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const rel = (p) => path.join(appDir, p);
@@ -152,26 +154,51 @@ for (const page of pagesLoadingAppJs) {
   }
 }
 
-// ---- 6. 公開中の列車番号リンクが、実際に選択できるboardを渡すこと ----
+// ---- 6. 公開中の列車番号リンク・フォームが、選択できるboardを渡すこと ----
 // 山陽区間から直通する列車の originStation（Hakata等）をそのままboardへ入れると、
 // app.jsの東海道駅ガードで拒否される。生成済みリンクを利用者と同じ入力で全件検証する。
-const linkedTrainPages = ["guide.html", "en/jr-pass-fuji.html"];
 const stationIds = new Set(ROUTE.refStations.map((station) => station.id));
 const trainLinkPattern = /href="start\.html\?train=([A-Za-z]+)-(\d{1,4})&amp;board=([^&"]+)&amp;dir=(west|east)"/g;
-let linkedTrainCount = 0;
-for (const page of linkedTrainPages) {
-  const html = await readFile(rel(page), "utf8");
-  for (const match of html.matchAll(trainLinkPattern)) {
-    linkedTrainCount += 1;
-    const [, type, numberText, encodedBoard, direction] = match;
-    const board = decodeURIComponent(encodedBoard);
-    if (!stationIds.has(board)) fail(`${page} links ${type}-${numberText} with non-Tokaido board=${board}`);
-    const candidate = MTS.trainCandidates(TT, ROUTE, direction, board)
-      .find((item) => item.tr.type === type && item.tr.number === Number(numberText));
-    if (!candidate) fail(`${page} links ${type}-${numberText}, but it cannot be selected from ${board} (${direction})`);
-  }
+function checkTrainEntry(page, type, number, board, direction) {
+  if (!stationIds.has(board)) fail(`${page} opens ${type}-${number} with non-Tokaido board=${board}`);
+  const candidate = MTS.trainCandidates(TT, ROUTE, direction, board)
+    .find((item) => item.tr.type === type && item.tr.number === Number(number));
+  if (!candidate) fail(`${page} cannot open ${type}-${number} from ${board} (${direction})`);
 }
-if (!linkedTrainCount) fail("no generated train-number links were found");
+const guide = await readFile(rel("guide.html"), "utf8");
+const linkedTrains = [...guide.matchAll(trainLinkPattern)];
+for (const [, type, number, board, direction] of linkedTrains) checkTrainEntry("guide.html", type, number, decodeURIComponent(board), direction);
+const linkedTrainCount = linkedTrains.length;
+
+const jrPass = "jr-pass-fuji.html";
+let englishTrainForms;
+let trainFormCount = 0;
+for (const lang of supported(jrPass)) {
+  const page = `${lang}/${jrPass}`;
+  const dom = new JSDOM(await readFile(rel(page), "utf8"), { url: `https://www.michikusa-travel.com/${page}` });
+  const { document, FormData } = dom.window;
+  const forms = [...document.querySelectorAll("form.jp-train-form")];
+  if (document.querySelector('a[href*="start.html?train="]')) fail(`${page} publishes a static train query link`);
+  if (!forms.length) fail(`${page} has no train selection forms`);
+  const values = forms.map(form => {
+    const button = form.querySelector('button[type="submit"][name="train"]');
+    if (!button || !button.textContent.trim() || form.method !== "get" || form.action !== `https://www.michikusa-travel.com/${lang}/start.html`) {
+      throw Error(`${page} has an invalid train selection form`);
+    }
+    const data = new FormData(form, button);
+    const train = data.get("train");
+    const board = data.get("board");
+    const direction = data.get("dir");
+    const match = /^(Hikari|Kodama)-(\d+)$/.exec(train);
+    if (!match || !["west", "east"].includes(direction)) throw Error(`${page} has invalid train parameters: ${train}/${direction}`);
+    checkTrainEntry(page, match[1], match[2], board, direction);
+    return [train, board, direction];
+  });
+  if (lang === "en") englishTrainForms = JSON.stringify(values);
+  else if (englishTrainForms !== JSON.stringify(values)) fail(`${page} train selection differs from English`);
+  trainFormCount += forms.length;
+  dom.window.close();
+}
 
 // ---- 7. 列車選択の部品（train-picker.js）を3ページが共有していること ----
 // 2026-09-19: Sparkling Dreams（全列車の1つのプルダウン）と夜景（時刻だけ・のぞみ基準の固定分数）が
@@ -220,4 +247,4 @@ for (const name of ["sparkling-dreams.js", "yakei.js"]) {
   }
 }
 
-console.log(`Validated train-select.js: ${westFromTokyo.length} west/Tokyo candidates, ${stops.length} stops on sample train, ${linkedTrainCount} generated links, wiring OK across ${pagesLoadingAppJs.length + 1} pages, shared picker on ${pickerPages.length} pages.`);
+console.log(`Validated train-select.js: ${westFromTokyo.length} west/Tokyo candidates, ${stops.length} stops on sample train, ${linkedTrainCount} generated links, ${trainFormCount} JR Pass train selections, wiring OK across ${pagesLoadingAppJs.length + 1} pages, shared picker on ${pickerPages.length} pages.`);

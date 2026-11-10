@@ -13,11 +13,11 @@
   var SUMMIT = [35.3606, 138.7274];
   var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
   var H0 = 6, H1 = 19;
-  var forecastContext = lang === 'en' ? document.getElementById('mieruForecastContext') : null;
-  var retrievedAt = null;
+  var forecastContext = document.getElementById('mieruForecastContext');
   var forecastDates = [];
-  var forecastError = 'Weather data could not be loaded. No forecast is available. Please reload to try again.';
-  var dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'long', year: 'numeric' });
+  var displayLocale = lang === 'ja' ? 'ja-JP' : 'en-GB';
+  var dateFormat = new Intl.DateTimeFormat(displayLocale, { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'long', year: 'numeric' });
+  var timeFormat = new Intl.DateTimeFormat(displayLocale, { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   function forecastDateLabel(day){
     return dateFormat.format(new Date(forecastDates[day] + 'T00:00:00+09:00'));
   }
@@ -41,9 +41,8 @@
     forecastDates = [times[0].slice(0, 10), times[24].slice(0, 10)];
   }
   function renderForecastContext(day){
-    if (!forecastContext || !retrievedAt) return;
-    document.getElementById('mieruForecastDate').textContent = 'Forecast for ' + forecastDateLabel(day) + ' · 06:00–19:00 Japan time (JST, UTC+9).';
-    document.getElementById('mieruRetrievedAt').textContent = 'Weather data retrieved ' + dateFormat.format(retrievedAt) + ', ' + new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(retrievedAt) + ' JST. Reload to retrieve the forecast again.';
+    if (!forecastContext) return;
+    document.getElementById('mieruForecastDate').textContent = format('forecastDate', forecastDateLabel(day));
     // Absolute dates remain accurate when a visitor leaves the page open overnight.
     Array.prototype.forEach.call(document.getElementById('mieruDay').options, function(option){ option.textContent = forecastDateLabel(Number(option.value)); });
     forecastContext.hidden = false;
@@ -328,7 +327,10 @@
     if (forecastContext) validateForecastDates(res);
     DATA.summit = res[0].hourly;
     SPOTS_M.forEach(function(s, i){ DATA.vps[s.id] = res[i+1].hourly; });
-    retrievedAt = new Date();
+    if (forecastContext) {
+      var retrievedAt = new Date();
+      document.getElementById('mieruRetrievedAt').textContent = format('retrievedAt', dateFormat.format(retrievedAt), timeFormat.format(retrievedAt));
+    }
     document.getElementById("mieruStatus").textContent = "";
     render();
   }).catch(function(e){
@@ -339,7 +341,7 @@
       forecastContext.hidden = true;
       document.getElementById('mieruRide').textContent = '';
     }
-    document.getElementById("mieruStatus").textContent = forecastContext ? forecastError : C.error;
+    document.getElementById("mieruStatus").textContent = forecastContext ? C.forecastError : C.error;
   });
 
   function render(){

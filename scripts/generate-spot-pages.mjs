@@ -1723,6 +1723,7 @@ function englishAppIndexHTML() {
   html = html.replace('<link rel="canonical" href="https://www.michikusa-travel.com/start.html">', '<link rel="canonical" href="https://www.michikusa-travel.com/en/start.html">').replace('<meta property="og:url" content="https://www.michikusa-travel.com/start.html">', '<meta property="og:url" content="https://www.michikusa-travel.com/en/start.html">');
   html = localizeEnglishInternalLinks(html);
   html = replaceTrainSelectorDiscoveryFooter(html, "en", "");
+  html = html.replace('</h2></div><div class="content-rail">', '</h2><p data-start-en-only><a class="inline-cta" href="en/tokyo-kyoto-stations.html">What to see at Tokyo and Kyoto stations before you board →</a></p></div><div class="content-rail">');
   return withUtilityLocales(syncSpotCountClaims(html.replace(/[ \t]*<!-- ja-only-sudoori:start -->[\s\S]*?<!-- ja-only-sudoori:end -->\r?\n?/g, '')), 'en/start.html');
 }
 

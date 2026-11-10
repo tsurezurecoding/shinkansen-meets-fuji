@@ -53,6 +53,8 @@ function deliveredUtilitySource(route) {
   } else if (route === 'live/index.html') {
     doc.querySelector('#btn-settings')?.setAttribute('title', sourceTables.live.settings);
     doc.querySelector('#btn-dir')?.setAttribute('title', sourceTables.live.dirL);
+  } else if (route === 'start.html') {
+    doc.querySelector('[data-start-en-only]')?.remove();
   }
   return dom;
 }

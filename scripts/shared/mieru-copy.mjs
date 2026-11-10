@@ -10,6 +10,9 @@ export const MIERU_COPY = {
     around: '{0} {1}頃', train: 'この列車での見えかた ─ ',
     meta: '{0} ・ 東京から約{1}分 ・ 視距離 約{2}km ・ {3}席',
     best: '{0}のベスト {1}', today: '今日', tomorrow: '明日', bar: '{0} {1}',
+    forecastDate: '予報対象日 {0}（日本時間・JST）',
+    retrievedAt: '気象データ取得 {0} {1} JST。再読み込みすると予報を取得し直します。',
+    forecastError: '気象データを取得できなかったため、予報を表示できません。時間をおいて再読み込みしてください。',
     nozomi: 'のぞみ', hikari: 'ひかり', kodama: 'こだま', departure: '{0} 発 → {1}',
     loadingTrains: '時刻表を読み込み中…',
     trainError: '列車データを読み込めませんでした。「時刻を入力」から目安時刻でお試しください。',
@@ -30,6 +33,9 @@ export const MIERU_COPY = {
     around: '{0} around {1}', train: 'Forecast for this train: ',
     meta: '{0} · about {1} min from Tokyo · viewing distance about {2} km · Seat {3}',
     best: 'Best {0}: {1}', today: 'today', tomorrow: 'tomorrow', bar: '{0} {1}',
+    forecastDate: 'Forecast for {0} · 06:00–19:00 Japan time (JST, UTC+9).',
+    retrievedAt: 'Weather data retrieved {0}, {1} JST. Reload to retrieve the forecast again.',
+    forecastError: 'Weather data could not be loaded. No forecast is available. Please reload to try again.',
     nozomi: 'Nozomi', hikari: 'Hikari', kodama: 'Kodama', departure: '{0} depart → {1}',
     loadingTrains: 'Loading the timetable…',
     trainError: 'Train data could not be loaded. Choose “Enter a time” to use an approximate departure time.',
@@ -41,4 +47,6 @@ export const MIERU_COPY = {
     audio: 'Audio is currently available in English.',
   },
 };
-export const FORECAST_COPY = MIERU_COPY.en;
+// Only editions with the forecast context panel use these strings.
+export const FORECAST_COPY = Object.fromEntries(Object.entries(MIERU_COPY.en)
+  .filter(([key]) => !['forecastDate', 'retrievedAt', 'forecastError'].includes(key)));

@@ -6,7 +6,7 @@ import vm from 'node:vm';
 import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import locales from '../locales.js';
-import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
+import { expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation } from './shared/site-runtime-validation.mjs';
 import { englishNarrations } from './shared/utility-localization.mjs';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
@@ -20,6 +20,21 @@ const timelineLanguages = ['ja', 'en', 'fr', 'de', 'es', 'ko', 'zh-Hant', 'zh-Ha
 function publicPath(language, route) {
   return `/${language}/${route === 'index.html' ? '' : route.replace('live/index.html', 'live/')}`;
 }
+
+test('live navigation and language menus use directory URLs', () => {
+  for (const language of timelineLanguages) {
+    const prefix = language === 'ja' ? '' : language + '/';
+    for (const route of ['guide.html', 'start.html', 'mieru.html', 'live/index.html', 'stories/shogun.html', 'drinks.html', 'beer-on-shinkansen.html', 'sparkling-dreams.html']) {
+      if (!locales.supported(route).includes(language)) continue;
+      const file = prefix + route;
+      const {dom} = renderSiteRuntimeForValidation({appDir:root,html:read(file),relative:file});
+      const links = [...dom.window.document.querySelectorAll('a[href]')];
+      assert(!links.some(a => new URL(a.href).pathname.endsWith('/live/index.html')), file + ' has a noncanonical live link');
+      assert(links.some(a => new URL(a.href).pathname.endsWith('/live/')), file + ' has no canonical live link');
+      dom.window.close();
+    }
+  }
+});
 
 function assertLocalReferences(document, label) {
   for (const element of document.querySelectorAll('[href], [src]')) {

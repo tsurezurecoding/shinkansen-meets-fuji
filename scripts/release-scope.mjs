@@ -183,6 +183,44 @@ export function onlyArtworkSitemapChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const seoSources = new Set([
+    'scripts/generate-inbound-tables.mjs', 'scripts/generate-spot-pages.mjs',
+    'scripts/generate-guide-locale-routes.mjs', 'scripts/generate-starter-locales.mjs',
+    'scripts/generate-utility-locales.mjs', 'scripts/generate-drinks-locales.mjs',
+    'scripts/generate-sparkling-locales.mjs', 'scripts/shared/mieru-copy.mjs',
+    'scripts/shared/mieru-runtime.js', 'scripts/shared/utility-localization.mjs',
+    'scripts/templates/mieru-ja.html.tpl', 'scripts/templates/window-trip.html.template',
+    'scripts/validate-mieru.mjs', 'scripts/validate-train-select.mjs',
+    'scripts/validate-utility-locales.mjs', 'data/story-window/ja/shogun.html',
+    'data/sudoori/pages.json', 'mieru.js', 'site-runtime.json', 'content-manifest.json',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/starter-locales.test.mjs', 'scripts/sudoori.test.mjs',
+  ]);
+  const seoPage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:(?:index|start|guide|mieru|zukan|contact|journal|reflections|window-moments|sparkling-dreams|drinks|beer-on-shinkansen|jr-pass-fuji)\.html|live\/index\.html|stories\/(?:index|shogun|godzilla|dragonball|yurucamp|shinkalion)\.html)$/;
+  const seoGenerated = file => seoPage.test(file)
+    || ['artworks/window-trip/index.html', 'sudoori/index.html'].includes(file)
+    || /^scripts\/locales\/expansion-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/.test(file)
+    || /^scripts\/templates\/site-source\/(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:guide|en\/jr-pass-fuji)\.html\.tpl$/.test(file)
+    || /^(?:shared-ui\/|scripts\/templates\/site-chrome\/)[a-z-]+\.[a-z0-9-]+\.(?:js|tpl)$/.test(file);
+  if (files.includes('scripts/generate-inbound-tables.mjs') && changes.every(({ path: file, status }) =>
+    status === 'M' && (seoSources.has(file) || seoGenerated(file)))) return {
+    scope: 'seo-navigation-forecast', needsDependencies: true, pagesCandidate: true,
+    reason: 'JR Pass forms and nine-language copy, shared hourly forecast context, existing article entries and canonical live navigation. Timetable data and visibility calculations are unchanged.',
+    commands: [...syntax,
+      node('--test', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'scripts/starter-locales.test.mjs', 'scripts/sudoori.test.mjs', 'scripts/drinks-locales.test.mjs'),
+      node('scripts/generate-inbound-tables.mjs', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'jr-pass-fuji.html', '--check'),
+      node('scripts/generate-mieru-page.mjs', '--check'),
+      node('scripts/generate-spot-pages.mjs', '--start-only', '--check'),
+      ...['generate-sudoori-pages', 'generate-utility-locales', 'generate-starter-locales',
+        'generate-guide-locale-routes', 'generate-drinks-locales', 'generate-sparkling-locales', 'generate-story-window-pages',
+        'generate-window-trip-page', 'generate-site-chrome', 'generate-site-runtime']
+        .map(name => node(`scripts/${name}.mjs`, '--check')),
+      node('scripts/validate-train-select.mjs'), node('scripts/validate-mieru.mjs'),
+      node('scripts/validate-castle-locales.mjs', '--route', 'jr-pass-fuji.html'),
+      node('scripts/validate-utility-locales.mjs'), node('scripts/validate-story-window.mjs'), node('scripts/validate-sparkling-locales.mjs'),
+      node('scripts/validate-site-navigation.mjs'), node('scripts/validate-live-sitemap.mjs'),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')],
+  };
   const mikawaInputs = new Set(['data.js','data-runtime.js','locales.js','site-runtime.json','sitemap.xml','content-manifest.json','scripts/generate-runtime-data.mjs','scripts/generate-site-chrome.test.mjs','scripts/locales-contract.test.mjs','scripts/shared/expansion-localization.mjs','scripts/shared/site-chrome.mjs','scripts/shared/utility-localization.mjs','scripts/validate-castle-locales.mjs','scripts/release-scope.mjs','scripts/release-scope.test.mjs','images/thumbs/display/index.json','images/thumbs/gallery/index.json']);
   const mikawaPhoto = /^(?:images\/|images\/thumbs\/|images\/thumbs\/display\/|images\/thumbs\/gallery\/)(?:20261103_gamagori-takeshima_0|20261103_mikawa-oshima_sunset_28750|20261108_kaguya-no-akari_night_2305|20261108_hikone-castle_night_59142)_michikusa(?:-[a-f0-9]+-\d+)?\.(?:jpg|webp)$/;
   if (mikawaPhotoBatchDataOnly && files.includes('locales.js') && changes.some(c=>c.status==='A' && c.path==='fr/spots/mikawa-oshima.html') && changes.every(({path:file,status}) => status !== 'D' && (mikawaInputs.has(file) || mikawaPhoto.test(file) || /^data\/spot-pages\/(?:mikawa-oshima|kaguya-no-akari|hikone-castle)\.(?:ja|en)\.js$/.test(file) || /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/.test(file) || /^scripts\/locales\/(?:castle|expansion|utility)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/.test(file) || /^scripts\/templates\/site-(?:source|chrome)\/.+\.tpl$/.test(file) || /^shared-ui\/[a-z-]+\.[a-z0-9-]+\.js$/.test(file) || /\.html$/.test(file)))) return {
