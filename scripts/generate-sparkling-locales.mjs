@@ -7,7 +7,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { collectSparklingEnglish, sparklingSnapshot, SPARKLING_ROUTE, SPARKLING_LOCALES, SPARKLING_ATTRS, SPARKLING_EXCLUDE } from './shared/sparkling-localization.mjs';
 import { withSparklingLocales } from './shared/sparkling-locales.mjs';
-import { UTILITY_ROUTES } from './shared/utility-locales.mjs';
+import { UTILITY_ROUTES, publicPath } from './shared/utility-locales.mjs';
 import { CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
 import { textNodes } from './shared/castle-localization.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
@@ -46,7 +46,7 @@ for(const lang of requestedLang?[requestedLang]:SPARKLING_LOCALES){
   if(a.closest(SPARKLING_EXCLUDE))continue;const href=a.getAttribute('href');if(!href||/^(?:https?:|\/\/|mailto:|tel:|#)/.test(href))continue;
   const url=new URL(href,doc.baseURI);if(url.origin!==origin)continue;
   const route=url.pathname.slice(1).replace(/^en\//,'').replace(/^live\/$/,'live/index.html').replace(/^$/,'index.html');
-  a.setAttribute('href','../'+(supported(route).includes(lang)?lang:'en')+'/'+(route==='index.html'?'':route)+url.search+url.hash);
+  a.setAttribute('href','../'+(supported(route).includes(lang)?lang:'en')+'/'+publicPath(route)+url.search+url.hash);
  }
  for(const host of doc.querySelectorAll('.lang-switch')){
   const menu=doc.createElement('details');menu.className='guide-lang-menu utility-lang-menu';const summary=doc.createElement('summary');summary.textContent=editions[lang].label;summary.setAttribute('aria-label',editions[lang].prompt);const options=doc.createElement('div');options.className='guide-lang-options';

@@ -6,6 +6,21 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('SEO scope covers its generated consumers and rejects unrelated product edits', () => {
+  const paths = ['scripts/generate-inbound-tables.mjs', 'scripts/shared/mieru-runtime.js',
+    'scripts/templates/site-source/en/jr-pass-fuji.html.tpl', 'scripts/templates/site-source/fr/guide.html.tpl',
+    'fr/live/index.html', 'data/story-window/ja/shogun.html', 'sudoori/index.html',
+    'shared-ui/fr.header.js', 'scripts/templates/site-chrome/fr.header.tpl', 'content-manifest.json'];
+  const scope = chooseReleaseScope(paths.map(change));
+  assert.equal(scope.scope, 'seo-navigation-forecast');
+  assert(scope.commands.some(command => command.includes('scripts/validate-train-select.mjs')));
+  assert(scope.commands.some(command => command.includes('scripts/validate-mieru.mjs')));
+  for (const path of ['app.js', 'data/timetable.js', 'data.js', 'spots/fuji.html', 'images/new.jpg']) {
+    assert.equal(chooseReleaseScope([...paths, path].map(change)).scope, 'unmapped');
+  }
+  assert.equal(chooseReleaseScope([...paths.map(change), {path:'fr/live/index.html',status:'D'}]).scope, 'unmapped');
+});
+
 test('Mikawa batch scope rejects unrelated inputs and unrelated spot changes', () => {
   const paths = [change('data.js'), change('locales.js'), {path:'fr/spots/mikawa-oshima.html',status:'A'}];
   assert.equal(chooseReleaseScope(paths,{mikawaPhotoBatchDataOnly:true}).scope,'mikawa-photo-locales');

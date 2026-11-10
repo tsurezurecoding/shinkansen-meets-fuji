@@ -5,6 +5,7 @@ import { withLocaleRegistry, supported, translated, editions } from './shared/lo
 import { assetVersion } from './shared/asset-version.mjs';
 import { englishSnapshot } from './shared/castle-localization.mjs';
 import { finalizeSiteChrome } from './shared/site-chrome.mjs';
+import { publicPath } from './shared/utility-locales.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const langs=translated;
 const read=name=>JSON.parse(fs.readFileSync(path.join(root,'scripts/shared/'+name+'.json'),'utf8'));
@@ -63,7 +64,7 @@ export function generateDrinkLocales(){
     if(/^(?:https?:|mailto:|tel:|javascript:)/.test(href))return whole;
     const url=new URL(href,`https://local/en/${slug}.html`);let route=url.pathname.replace(/^\/en\//,'')||'index.html';if(route.endsWith('/'))route+='index.html';
     if(!route.endsWith('.html'))return whole;
-    const target=targetRoute(route,lang);const rel=path.posix.relative(lang,path.posix.dirname(target))+'/'+path.posix.basename(target);const dest=(rel.startsWith('/')?'.'+rel:rel)+url.search+url.hash;
+    const target=targetRoute(route,lang);const rel=path.posix.relative(lang,path.posix.dirname(target))+'/'+path.posix.basename(target);const dest=publicPath(rel.startsWith('/')?'.'+rel:rel)+url.search+url.hash;
     const fallback=target.startsWith('en/');
     return `<a${before}href="${dest}"${after}${fallback?' hreflang="en"':''}>${body}${fallback?' <small class="article-language-note">('+englishNote[lang]+')</small>':''}</a>`;
    });

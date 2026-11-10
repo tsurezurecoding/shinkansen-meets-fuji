@@ -1,5 +1,5 @@
 /* Generated from scripts/shared/mieru-runtime.js and mieru-copy.mjs. */
-var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える","chance":"運しだい","unlikely":"厳しい","mid":"中層の雲","low":"低い雲","high":"高い雲","cloud":"山頂が{0}に隠れがちです (雲量 低{1}% 中{2}% 高{3}%)","haze":"靄で視程が足りません (視程 約{0}km / 湿度{1}%)","clear":"山頂まわりは晴れ、空気も澄んでいます (視程 約{0}km)","balanced":"条件は五分五分です","error":"気象データの取得に失敗しました。時間をおいて再読み込みしてください。","around":"{0} {1}頃","train":"この列車での見えかた ─ ","meta":"{0} ・ 東京から約{1}分 ・ 視距離 約{2}km ・ {3}席","best":"{0}のベスト {1}","today":"今日","tomorrow":"明日","bar":"{0} {1}","nozomi":"のぞみ","hikari":"ひかり","kodama":"こだま","departure":"{0} 発 → {1}","loadingTrains":"時刻表を読み込み中…","trainError":"列車データを読み込めませんでした。「時刻を入力」から目安時刻でお試しください。","searchHint":"「列車をさがす」を押すと、この時刻以降の列車候補を表示します。","noTrains":"この乗車駅・方向・時刻で列車が見つかりませんでした。時刻や乗車駅を変えてみてください。","noSpots":"この乗車駅・方向では対象スポットがありません。乗車駅や方向を変えてみてください。","chooseTrain":"列車を選ぶと、この列車での見えかたが分かります。","noClock":"選んだ乗車駅からは、この列車で通過時刻を計算できませんでした。","audio":"音声は現在英語でご案内します。"},"en":{"visible":"Visible","probable":"Probably visible","chance":"A chance","unlikely":"Unlikely","mid":"mid-level cloud","low":"low cloud","high":"high cloud","cloud":"The summit is likely to be obscured by {0} (cloud cover: low {1}%, mid {2}%, high {3}%).","haze":"Haze is limiting the view (visibility about {0} km; humidity {1}%).","clear":"The summit is mostly clear and the air is transparent (visibility about {0} km).","balanced":"Conditions are finely balanced.","error":"Weather data could not be loaded. Please try again in a little while.","around":"{0} around {1}","train":"Forecast for this train: ","meta":"{0} · about {1} min from Tokyo · viewing distance about {2} km · Seat {3}","best":"Best {0}: {1}","today":"today","tomorrow":"tomorrow","bar":"{0} {1}","nozomi":"Nozomi","hikari":"Hikari","kodama":"Kodama","departure":"{0} depart → {1}","loadingTrains":"Loading the timetable…","trainError":"Train data could not be loaded. Choose “Enter a time” to use an approximate departure time.","searchHint":"Select “Find trains” to see departures after this time.","noTrains":"No trains found for this station, direction and time. Try a different time or boarding station.","noSpots":"There are no Mt. Fuji viewpoints ahead from this station in this direction. Try a different station or direction.","chooseTrain":"Choose a train to check the forecast at its passing times.","noClock":"Passing times could not be calculated for this train from the selected station.","audio":"Audio is currently available in English."}};
+var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える","chance":"運しだい","unlikely":"厳しい","mid":"中層の雲","low":"低い雲","high":"高い雲","cloud":"山頂が{0}に隠れがちです (雲量 低{1}% 中{2}% 高{3}%)","haze":"靄で視程が足りません (視程 約{0}km / 湿度{1}%)","clear":"山頂まわりは晴れ、空気も澄んでいます (視程 約{0}km)","balanced":"条件は五分五分です","error":"気象データの取得に失敗しました。時間をおいて再読み込みしてください。","around":"{0} {1}頃","train":"この列車での見えかた ─ ","meta":"{0} ・ 東京から約{1}分 ・ 視距離 約{2}km ・ {3}席","best":"{0}のベスト {1}","today":"今日","tomorrow":"明日","bar":"{0} {1}","forecastDate":"予報対象日 {0}（日本時間・JST）","retrievedAt":"気象データ取得 {0} {1} JST。再読み込みすると予報を取得し直します。","forecastError":"気象データを取得できなかったため、予報を表示できません。時間をおいて再読み込みしてください。","nozomi":"のぞみ","hikari":"ひかり","kodama":"こだま","departure":"{0} 発 → {1}","loadingTrains":"時刻表を読み込み中…","trainError":"列車データを読み込めませんでした。「時刻を入力」から目安時刻でお試しください。","searchHint":"「列車をさがす」を押すと、この時刻以降の列車候補を表示します。","noTrains":"この乗車駅・方向・時刻で列車が見つかりませんでした。時刻や乗車駅を変えてみてください。","noSpots":"この乗車駅・方向では対象スポットがありません。乗車駅や方向を変えてみてください。","chooseTrain":"列車を選ぶと、この列車での見えかたが分かります。","noClock":"選んだ乗車駅からは、この列車で通過時刻を計算できませんでした。","audio":"音声は現在英語でご案内します。"},"en":{"visible":"Visible","probable":"Probably visible","chance":"A chance","unlikely":"Unlikely","mid":"mid-level cloud","low":"low cloud","high":"high cloud","cloud":"The summit is likely to be obscured by {0} (cloud cover: low {1}%, mid {2}%, high {3}%).","haze":"Haze is limiting the view (visibility about {0} km; humidity {1}%).","clear":"The summit is mostly clear and the air is transparent (visibility about {0} km).","balanced":"Conditions are finely balanced.","error":"Weather data could not be loaded. Please try again in a little while.","around":"{0} around {1}","train":"Forecast for this train: ","meta":"{0} · about {1} min from Tokyo · viewing distance about {2} km · Seat {3}","best":"Best {0}: {1}","today":"today","tomorrow":"tomorrow","bar":"{0} {1}","forecastDate":"Forecast for {0} · 06:00–19:00 Japan time (JST, UTC+9).","retrievedAt":"Weather data retrieved {0}, {1} JST. Reload to retrieve the forecast again.","forecastError":"Weather data could not be loaded. No forecast is available. Please reload to try again.","nozomi":"Nozomi","hikari":"Hikari","kodama":"Kodama","departure":"{0} depart → {1}","loadingTrains":"Loading the timetable…","trainError":"Train data could not be loaded. Choose “Enter a time” to use an approximate departure time.","searchHint":"Select “Find trains” to see departures after this time.","noTrains":"No trains found for this station, direction and time. Try a different time or boarding station.","noSpots":"There are no Mt. Fuji viewpoints ahead from this station in this direction. Try a different station or direction.","chooseTrain":"Choose a train to check the forecast at its passing times.","noClock":"Passing times could not be calculated for this train from the selected station.","audio":"Audio is currently available in English."}};
 (function(){
   "use strict";
   var lang = document.documentElement.lang || "ja";
@@ -15,11 +15,11 @@ var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える"
   var SUMMIT = [35.3606, 138.7274];
   var FUJI_IDS = ["ota-fuji", "sagami-fuji", "fuji", "left-fuji", "hamanako-fuji"];
   var H0 = 6, H1 = 19;
-  var forecastContext = lang === 'en' ? document.getElementById('mieruForecastContext') : null;
-  var retrievedAt = null;
+  var forecastContext = document.getElementById('mieruForecastContext');
   var forecastDates = [];
-  var forecastError = 'Weather data could not be loaded. No forecast is available. Please reload to try again.';
-  var dateFormat = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'long', year: 'numeric' });
+  var displayLocale = lang === 'ja' ? 'ja-JP' : 'en-GB';
+  var dateFormat = new Intl.DateTimeFormat(displayLocale, { timeZone: 'Asia/Tokyo', day: 'numeric', month: 'long', year: 'numeric' });
+  var timeFormat = new Intl.DateTimeFormat(displayLocale, { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' });
   function forecastDateLabel(day){
     return dateFormat.format(new Date(forecastDates[day] + 'T00:00:00+09:00'));
   }
@@ -43,9 +43,8 @@ var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える"
     forecastDates = [times[0].slice(0, 10), times[24].slice(0, 10)];
   }
   function renderForecastContext(day){
-    if (!forecastContext || !retrievedAt) return;
-    document.getElementById('mieruForecastDate').textContent = 'Forecast for ' + forecastDateLabel(day) + ' · 06:00–19:00 Japan time (JST, UTC+9).';
-    document.getElementById('mieruRetrievedAt').textContent = 'Weather data retrieved ' + dateFormat.format(retrievedAt) + ', ' + new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' }).format(retrievedAt) + ' JST. Reload to retrieve the forecast again.';
+    if (!forecastContext) return;
+    document.getElementById('mieruForecastDate').textContent = format('forecastDate', forecastDateLabel(day));
     // Absolute dates remain accurate when a visitor leaves the page open overnight.
     Array.prototype.forEach.call(document.getElementById('mieruDay').options, function(option){ option.textContent = forecastDateLabel(Number(option.value)); });
     forecastContext.hidden = false;
@@ -330,7 +329,10 @@ var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える"
     if (forecastContext) validateForecastDates(res);
     DATA.summit = res[0].hourly;
     SPOTS_M.forEach(function(s, i){ DATA.vps[s.id] = res[i+1].hourly; });
-    retrievedAt = new Date();
+    if (forecastContext) {
+      var retrievedAt = new Date();
+      document.getElementById('mieruRetrievedAt').textContent = format('retrievedAt', dateFormat.format(retrievedAt), timeFormat.format(retrievedAt));
+    }
     document.getElementById("mieruStatus").textContent = "";
     render();
   }).catch(function(e){
@@ -341,7 +343,7 @@ var MADO_MIERU_COPY={"ja":{"visible":"見える","probable":"たぶん見える"
       forecastContext.hidden = true;
       document.getElementById('mieruRide').textContent = '';
     }
-    document.getElementById("mieruStatus").textContent = forecastContext ? forecastError : C.error;
+    document.getElementById("mieruStatus").textContent = forecastContext ? C.forecastError : C.error;
   });
 
   function render(){

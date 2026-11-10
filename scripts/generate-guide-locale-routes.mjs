@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 import { JSDOM } from 'jsdom';
 import locales, { episodes, supported, editions, languages, translated, stripEdition, routes, withLocaleRegistry } from './shared/locales.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
+import { publicPath } from './shared/utility-locales.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
@@ -45,7 +46,7 @@ for (const lang of [...locales.coreLanguages.filter(lang => !['it', 'th'].includ
     if (tag.includes('data-guide-cta="hero_exact_time"')) url.searchParams.set('focus', 'fuji');
     if (['ja', 'en'].includes(lang) && /data-guide-cta="(?:rail_exact_time(?:_bottom)?|train_times_picker)"/.test(tag)) url.searchParams.set('focus', 'fuji');
     if (translated.includes(lang) && tag.includes('data-guide-cta="rail_exact_time')) url.searchParams.delete('focus');
-    const target = (lang === 'en' ? '' : prefix + (lang === 'ja' ? '' : lang + '/')) + (route === 'index.html' ? (lang === 'en' ? './' : '') : route) + url.search + url.hash;
+    const target = (lang === 'en' ? '' : prefix + (lang === 'ja' ? '' : lang + '/')) + (publicPath(route) || (lang === 'en' ? './' : '')) + url.search + url.hash;
     return tag.replace('href="' + href + '"', 'href="' + target + '"');
   });
   const dictionaryFile = path.join(root, 'scripts/locales', `utility-${lang}.json`);

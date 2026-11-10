@@ -3,7 +3,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>富士山 見える予報β | 今日、新幹線から富士山は見えるか | 新幹線の窓</title>
-  <meta name="description" content="今日、新幹線から富士山は見える？山頂の雲と空気の澄みかたから、車窓スポット別・時間別に「見える確率」を予報。出発時刻を入れると通過時刻ちょうどの確率がわかります。">
+  <meta name="description" content="今日、新幹線から富士山は見える？山頂の雲や空気の澄みかたをもとに、列車が通るころの富士山の見えやすさを5つの区間ごとに推定します。">
   <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
   <link rel="canonical" href="https://www.michikusa-travel.com/mieru.html">
   <link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/mieru.html">
@@ -11,14 +11,14 @@
   <link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/en/mieru.html">
   <meta property="og:type" content="website">
   <meta property="og:title" content="富士山 見える予報β | 今日、新幹線から富士山は見えるか | 新幹線の窓">
-  <meta property="og:description" content="今日、新幹線から富士山は見える？山頂の雲と空気の澄みかたから、車窓スポット別・時間別に「見える確率」を予報。出発時刻を入れると通過時刻ちょうどの確率がわかります。">
+  <meta property="og:description" content="今日、新幹線から富士山は見える？山頂の雲や空気の澄みかたをもとに、列車が通るころの富士山の見えやすさを5つの区間ごとに推定します。">
   <meta property="og:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://www.michikusa-travel.com/mieru.html">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="富士山 見える予報β | 今日、新幹線から富士山は見えるか | 新幹線の窓">
-  <meta name="twitter:description" content="今日、新幹線から富士山は見える？山頂の雲と空気の澄みかたから、車窓スポット別・時間別に「見える確率」を予報。出発時刻を入れると通過時刻ちょうどの確率がわかります。">
+  <meta name="twitter:description" content="今日、新幹線から富士山は見える？山頂の雲や空気の澄みかたをもとに、列車が通るころの富士山の見えやすさを5つの区間ごとに推定します。">
   <meta name="twitter:image" content="https://www.michikusa-travel.com/images/og-shinkansen-window.png">
   <meta name="twitter:image:alt" content="新幹線の窓 - 窓のむこうに、もうひとつの旅がある。">
   <script type="application/ld+json">
@@ -29,7 +29,7 @@
     "url": "https://www.michikusa-travel.com/mieru.html",
     "applicationCategory": "TravelApplication",
     "operatingSystem": "Web browser",
-    "description": "出発時刻に合わせて、東海道新幹線から富士山が見える確率を確認できる予報ツール。",
+    "description": "東海道新幹線の列車が通るころの富士山の見えやすさを、1時間ごとの気象予報から推定するツール。",
     "inLanguage": "ja",
     "dateModified": "2026-10-12"
   }
@@ -80,7 +80,7 @@
       <article class="mieru-wrap">
       <p class="eyebrow">車窓の天気</p>
       <h1>富士山 見える予報<small style="font-size:.55em;color:var(--accent);margin-left:8px">β</small></h1>
-      <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見えるか。</span><span class="copy-chunk">山頂にかかる雲と、</span><span class="copy-chunk">視線が抜ける空気の澄みかたから、</span><span class="copy-chunk">車窓スポット別・時間別に</span><span class="copy-chunk">「見える確率」を予報します。</span><span class="copy-chunk">出発時刻を入れると、</span><span class="copy-chunk">それぞれの通過時刻ちょうどの確率がわかります。</span></p>
+      <p class="mieru-lead"><span class="copy-chunk">今日、新幹線から富士山は見える？</span><span class="copy-chunk">山頂の雲や空気の澄みかたをもとに、</span><span class="copy-chunk">列車が通るころの</span><span class="copy-chunk">富士山の見えやすさを推定します。</span></p>
 
       <div class="mieru-depart">
         <div class="mieru-row">
@@ -112,8 +112,18 @@
 
 
 
-      <!--MIERU:ANSWER--><div id="mieruStatus">気象データ取得中…</div>
-      <div id="mieruSpots"></div><!--MIERU:FACTS-->
+      <section class="mieru-answer">
+        <h2>予報の見かた</h2>
+        <p><span class="copy-chunk">列車を選ぶか、</span><span class="copy-chunk">出発時刻を入力すると、</span><span class="copy-chunk">推定通過時刻に最も近い</span><span class="copy-chunk">1時間刻みの予報で</span><span class="copy-chunk">見えやすさを推定します。</span></p>
+        <p>気象データの出典は <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a> です。出発・通過・予報の時刻は日本時間（JST、UTC+9）です。</p>
+        <div id="mieruForecastContext" aria-live="polite" hidden>
+          <p id="mieruForecastDate"></p>
+          <p id="mieruRetrievedAt"></p>
+          <p>取得時刻はブラウザが気象予報を受け取った時刻です。気象モデルの更新時刻や現地の観測時刻とは異なります。</p>
+        </div>
+      </section>
+      <div id="mieruStatus" role="status">気象データ取得中…</div>
+      <div id="mieruSpots"></div><!--MIERU:ANSWER--><!--MIERU:FACTS-->
 
 
 
@@ -123,7 +133,7 @@
         気象データは <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer">Open-Meteo</a>
         (<a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer">CC BY 4.0</a>)を利用し、独自の確率へ加工しています。
         車窓写真の記録による過去検証では、撮影に成功した日の9/10を「見える」と判定できました。
-        通過時刻はのぞみ基準の目安です。天候の急変で外れることがあります。
+        列車を選んだ場合は時刻表から、時刻を入力した場合は乗車駅から各区間までの所要時間の目安から通過時刻を推定します。遅延は反映しません。天候の急変で予報が外れることがあります。
         曇りの日の楽しみ方は<a href="guide.html#cloudy">富士山を見る</a>へ。
       </p>
       </article>

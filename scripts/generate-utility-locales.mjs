@@ -128,7 +128,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       if (el.getAttribute('hreflang') === 'ja' && el.closest('.content-rail-discovery')) continue;
       const url = new URL(href, doc.baseURI);
       const target = url.pathname.slice(1).replace(/^en\//, '').replace(/^live\/$/, 'live/index.html').replace(/^$/, 'index.html');
-      const destination = (payload.routes.includes(target) ? `${lang}/` : 'en/') + (target === 'index.html' ? '' : target);
+      const destination = (payload.routes.includes(target) ? `${lang}/` : 'en/') + publicPath(target);
       const prefix = doc.querySelector('base') ? '' : '../'.repeat(file.split('/').length - 1);
       el.setAttribute('href', prefix + destination + url.search + url.hash);
       if (destination.startsWith('en/') && el.matches('.content-rail-discovery .content-rail-card')) {
@@ -145,7 +145,7 @@ for (const lang of requestedLang ? [requestedLang] : LOCALES) {
       const options = doc.createElement('div'); options.className = 'guide-lang-options';
       for (const [edition, label] of supported(route).map(edition => [edition, editions[edition].label])) {
         const a = doc.createElement('a'); a.textContent = label; a.lang = edition;
-        a.href = prefix + (edition === 'ja' ? '' : edition + '/') + route + (edition === 'ja' ? '?lang=ja' : '');
+        a.href = prefix + (edition === 'ja' ? '' : edition + '/') + (publicPath(route) || route) + (edition === 'ja' ? '?lang=ja' : '');
         if (edition === lang) a.setAttribute('aria-current', 'page');
         options.appendChild(a);
       }

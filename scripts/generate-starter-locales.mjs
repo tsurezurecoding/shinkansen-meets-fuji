@@ -8,6 +8,7 @@ import locales, { editions, supported, stripEdition, withLocaleRegistry } from '
 import { englishSnapshot, textNodes } from './shared/castle-localization.mjs';
 import { ATTRS, utilitySnapshot, translationKey, translatable } from './shared/utility-localization.mjs';
 import { assetVersion } from './shared/asset-version.mjs';
+import { publicPath } from './shared/utility-locales.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const check = process.argv.includes('--check');
@@ -16,7 +17,6 @@ const origin = 'https://www.michikusa-travel.com';
 const alternateHreflang = edition => ({ 'zh-Hant': 'zh-Hant-TW', 'zh-Hans': 'zh-Hans-CN' }[edition] || edition);
 const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
 const outputRoutes = ['guide.html'];
-const publicRoute = route => route === 'index.html' ? '' : route.replace('live/index.html', 'live/');
 function write(file, text) {
   text = text.replace(/^[ \t]+$/gm, "");
   if (report) return;
@@ -79,10 +79,10 @@ for (const lang of ['it', 'th']) {
     for (const el of doc.querySelectorAll('meta')) {
       const key = el.name || el.getAttribute('property') || '';
       if (/(?:description|title|image:alt)$/.test(key)) el.content = tr(el.content);
-      if (key === 'og:url') el.content = `${origin}/${lang}/${publicRoute(route)}`;
+      if (key === 'og:url') el.content = `${origin}/${lang}/${publicPath(route)}`;
       if (key === 'og:locale') el.content = editions[lang].og;
     }
-    doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${publicRoute(route)}`;
+    doc.querySelector('link[rel="canonical"]').href = `${origin}/${lang}/${publicPath(route)}`;
     for (const el of doc.querySelectorAll('script[type="application/ld+json"]')) {
       const schema = JSON.parse(el.textContent);
       function localize(value, key = '') {
@@ -106,7 +106,7 @@ for (const lang of ['it', 'th']) {
       const available = routes.includes(target);
       const targetLang = available ? lang : a.getAttribute('hreflang') === 'ja' ? 'ja' : 'en';
       if (/^rail_exact_time(?:_bottom)?$/.test(a.getAttribute('data-guide-cta') || '')) url.searchParams.delete('focus');
-      a.setAttribute('href', prefix + (targetLang === 'ja' ? '' : targetLang + '/') + (target === 'index.html' ? '' : target) + url.search + url.hash);
+      a.setAttribute('href', prefix + (targetLang === 'ja' ? '' : targetLang + '/') + publicPath(target) + url.search + url.hash);
       if (!available && targetLang === 'en' && a.textContent.trim()) {
         a.hreflang = 'en';
         const note = doc.createElement('small'); note.className = 'discovery-language';
@@ -127,7 +127,7 @@ for (const lang of ['it', 'th']) {
     doc.querySelectorAll('link[rel="alternate"]').forEach(el => el.remove());
     for (const language of supported(route).concat('x-default')) {
       const el = doc.createElement('link'); el.rel = 'alternate'; el.hreflang = route === 'guide.html' ? alternateHreflang(language) : language;
-      el.href = `${origin}/${language === 'ja' ? '' : (language === 'x-default' ? 'en' : language) + '/'}${publicRoute(route)}`;
+      el.href = `${origin}/${language === 'ja' ? '' : (language === 'x-default' ? 'en' : language) + '/'}${publicPath(route)}`;
       doc.head.append(el);
     }
     for (const script of doc.querySelectorAll('script:not([src]):not([type])')) {

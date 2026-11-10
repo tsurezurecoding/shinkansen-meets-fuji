@@ -63,6 +63,7 @@ export function utilitySnapshot(root, route) {
     dom.window.document.querySelector('#btn-settings')?.setAttribute('title', copy.settings);
     dom.window.document.querySelector('#btn-dir')?.setAttribute('title', copy.dirL);
   }
+  if (route === 'start.html') dom.window.document.querySelector('[data-start-en-only]')?.remove();
   return dom;
 }
 export function translatable(value) {
