@@ -24,7 +24,8 @@
     "articleLabel": "เรื่องราวของ{name}",
     "photoDialog": "ภาพขยาย",
     "closePhoto": "ปิด",
-    "officialTrailer": "ตัวอย่างทางการ"
+    "officialTrailer": "ตัวอย่างทางการ",
+    "swipeHint": "เลื่อนด้านข้างไปยังเรื่องราวถัดไป"
   },
   "zukan": {
     "title": "เรื่องราวที่เชื่อมต่อผ่านหน้าต่าง",
@@ -41,7 +42,10 @@
       "route": "เดินเที่ยวชินจูกุและฮิบิยะ ชมแม่น้ำทามะระหว่างชินากาวะกับชินโยโกฮามะ",
       "alt": "หัวก็อดซิลล่าเหนืออาคารที่ปลายถนนในชินจูกุ",
       "credit": "Kakidai / CC BY-SA 4.0",
-      "spotLink": "อ่านเรื่องราวของก็อดซิลล่า"
+      "spotLink": "อ่านเรื่องราวของก็อดซิลล่า",
+      "searchTitle": "เดินตามรอยก็อดซิลล่าในโตเกียว｜เรื่องราวจากชินจูกุ ฮิบิยะ แม่น้ำทามะ และวิวรถไฟ",
+      "searchDescription": "พบก็อดซิลล่าที่ชินจูกุและฮิบิยะ แล้วนึกถึงฉากในหนังริมแม่น้ำทามะ ทริปแวะเที่ยวโตเกียวที่เชื่อมเรื่องราว เมือง และวิวจากหน้าต่างชินคันเซ็น",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"city\">\n          <a class=\"story-card-link\" href=\"godzilla.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/hibiya-square-20250912-480.webp\" width=\"4032\" height=\"2268\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/hibiya-square-20250912-160.webp 160w, assets/display/hibiya-square-20250912-480.webp 480w, assets/display/hibiya-square-20250912-960.webp 960w, assets/display/hibiya-square-20250912-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">01 / ภาพยนตร์</span><span class=\"story-card-work\">ก็อดซิลล่า</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">โตเกียวและแม่น้ำทามะ</p>\n              <h3>พบก็อดซิลล่าในโตเกียว</h3>\n              <p>หลังจากเงยหน้ามองในเมือง, ลองมองหาสะพานนั้นจากหน้าต่างรถไฟ </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">ถ่ายภาพ: michikusa</p>\n        </li>"
     },
     "shogun": {
       "label": "SHŌGUN",
@@ -53,7 +57,10 @@
       "route": "ชมจากชินคันเซ็นระหว่างกิฟุ-ฮาชิมะกับไมบาระ หรือเดินเที่ยวจากสถานี JR เซกิงาฮาระ",
       "alt": "ทุ่ง บ้าน และเนินรอบเซกิงาฮาระในปัจจุบัน มองจากชินคันเซ็น",
       "credit": "พฤศจิกายน 2026 / michikusa",
-      "spotLink": "อ่านเรื่องราวของ SHŌGUN"
+      "spotLink": "อ่านเรื่องราวของ SHŌGUN",
+      "searchTitle": "จาก SHŌGUN สู่เซกิงาฮาระ｜ทริปชินคันเซ็นเชื่อมโทระนางะกับอิเอยาสุ",
+      "searchDescription": "จากโทระนางะในซีรีส์ SHŌGUN ของ FX ไปทำความรู้จักโทกูงาวะ อิเอยาสุ ผู้เป็นต้นแบบ และเซกิงาฮาระ แนะนำวิวจากหน้าต่างรถไฟเมื่อรู้เรื่องราวจริง รวมถึงเส้นทางเดินเล่นจากสถานี",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"film\">\n          <a class=\"story-card-link\" href=\"shogun.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp\" width=\"640\" height=\"360\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"story-card-category\">02 / ซีรีส์</span><span class=\"story-card-work\">SHŌGUN</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">เซกิงาฮาระ</p>\n              <h3>จากโทระนางะสู่เซกิงาฮาระ</h3>\n              <p>ทุ่งนานอกหน้าต่าง กลายเป็นเวทีแห่งประวัติศาสตร์ </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">ถ่ายภาพ: michikusa</p>\n        </li>"
     },
     "yurucamp": {
       "label": "ยูรุแคมป์△",
@@ -65,7 +72,10 @@
       "route": "ชมทะเลสาบระหว่างฮามามัตสึกับโทโยฮาชิ แวะเบ็นเท็นจิมะ ซากุเมะ และคันซันจิ",
       "alt": "หอคอยสีแดงรูปเสาโทริอิที่เบ็นเท็นจิมะ โดยมีอาทิตย์ตกเหนือทะเลสาบฮามานะเป็นฉากหลัง",
       "credit": "Aimaimyi / CC BY-SA 3.0",
-      "spotLink": "อ่านเรื่องราวของยูรุแคมป์△"
+      "spotLink": "อ่านเรื่องราวของยูรุแคมป์△",
+      "searchTitle": "ยูรุแคมป์△ กับทะเลสาบฮามานะ｜ไปยังเบ็นเท็นจิมะและสถานีฮามานาโกะซากุเมะที่รินเคยแวะ",
+      "searchDescription": "ตามทริปของรินในยูรุแคมป์△ SEASON2 มายังทะเลสาบฮามานะ แนะนำจุดแวะชมอาทิตย์ตกที่เบ็นเท็นจิมะ สถานีฮามานาโกะซากุเมะ และคันซันจิออนเซ็น พร้อมวิธีเดินทาง",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"lake\">\n          <a class=\"story-card-link\" href=\"yurucamp.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/yuru-benten-sunset-aimaimyi-480.webp\" width=\"2592\" height=\"1944\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/yuru-benten-sunset-aimaimyi-160.webp 160w, assets/display/yuru-benten-sunset-aimaimyi-480.webp 480w, assets/display/yuru-benten-sunset-aimaimyi-960.webp 960w, assets/display/yuru-benten-sunset-aimaimyi-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">03 / แอนิเมชัน</span><span class=\"story-card-work\">ยูรุแคมป์△</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">ทะเลสาบฮามานะ</p>\n              <h3>ทะเลสาบฮามานะที่รินเห็น</h3>\n              <p>ช่วงเวลารอชมอาทิตย์ตก ก็เป็นความสุขในการเดินทางของริน </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Bentenjinja_Hamamatsu_-03.jpg\">Aimaimyi</a> · <a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a></p>\n        </li>"
     },
     "dragonball": {
       "label": "ดราก้อนบอล",
@@ -77,7 +87,10 @@
       "route": "เมืองใกล้นาโกย่า และความเชื่อมโยงให้นึกถึงเมื่อปราสาทคิโยสุผ่านหน้าต่าง",
       "alt": "ภายนอกอาคาร BIRD STUDIO ในคิโยสุ ถ่ายเมื่อเดือนพฤศจิกายน 2025",
       "credit": "Asturio Cantabrio · พฤศจิกายน 2025 · ไม่ดัดแปลง",
-      "spotLink": "อ่านเรื่องราวของดราก้อนบอล"
+      "spotLink": "อ่านเรื่องราวของดราก้อนบอล",
+      "searchTitle": "ดราก้อนบอลกับคิโยสุ เมืองของอากิระ โทริยามะ｜ตามรอยชีวิตประจำวันที่สร้างการผจญภัย",
+      "searchDescription": "คิโยสุ เมืองที่อากิระ โทริยามะ ผู้สร้างดราก้อนบอลเคยอาศัยอยู่ ย้อนตามชีวิตประจำวันเบื้องหลังการสร้างเรื่องผจญภัย ผ่านบันทึกการโทรกับบรรณาธิการที่โตเกียว การส่งต้นฉบับทางเครื่องบิน และที่ทำงานของเขา",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"manga\">\n          <a class=\"story-card-link\" href=\"dragonball.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/db-bird-studio-2025-480.webp\" width=\"3884\" height=\"2925\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/db-bird-studio-2025-160.webp 160w, assets/display/db-bird-studio-2025-480.webp 480w, assets/display/db-bird-studio-2025-960.webp 960w, assets/display/db-bird-studio-2025-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">04 / มังงะต้นฉบับ</span><span class=\"story-card-work\">ดราก้อนบอล</span><img src=\"assets/images/story-window/db-title-logo.svg\" alt=\"\" class=\"story-card-logo\" loading=\"lazy\" width=\"2537\" height=\"727\"></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">คิโยสุ</p>\n              <h3>เมืองที่อากิระ โทริยามะเคยอาศัย</h3>\n              <p>การผจญภัยที่แผ่ไปทั่วโลก วาดขึ้นที่คิโยสุ </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:BIRD_STUDIO_2025-11_ac.jpg\">Asturio Cantabrio</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC BY-SA 4.0</a> · โลโก้:<a href=\"https://commons.wikimedia.org/wiki/File:Dragon_Ball_manga_1st_Japanese_edition_logo.svg\">Bird Studio・Shueisha / Wikimedia Commons</a></p>\n        </li>"
     },
     "shinkalion": {
       "label": "ชินคาเลียน (Shinkalion)",
@@ -89,7 +102,10 @@
       "route": "เดินทางบนชินคันเซ็นสายโทไคโดระหว่างนาโกย่ากับเกียวโต แล้วลงไปเที่ยวพิพิธภัณฑ์รถไฟและรถไฟแม่เหล็กลอยตัว หรือพิพิธภัณฑ์รถไฟเกียวโต",
       "alt": "ชินคันเซ็นสีขาวจอดเรียงกันในศูนย์ซ่อมบำรุง มองเห็นโลโก้ N700A",
       "credit": "12 กรกฎาคม 2026 · michikusa",
-      "spotLink": "อ่านเรื่องราวชินคาเลียน"
+      "spotLink": "อ่านเรื่องราวชินคาเลียน",
+      "searchTitle": "ชินคาเลียนกับชินคันเซ็น｜จาก N700A และ N700S สู่พิพิธภัณฑ์รถไฟ",
+      "searchDescription": "Shinkalion คือเรื่องราวที่ชินคันเซ็นจริงแปลงร่างเป็นหุ่นยนต์ จากวิดีโอทางการและรถไฟ N700A・N700S ของจริง เชื่อมต่อไปยังพิพิธภัณฑ์รถไฟในนาโกย่าและเกียวโต",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"mecha\">\n          <a class=\"story-card-link\" href=\"shinkalion.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/20260712_n700a_michikusa-480.webp\" width=\"1600\" height=\"900\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/20260712_n700a_michikusa-160.webp 160w, assets/display/20260712_n700a_michikusa-480.webp 480w, assets/display/20260712_n700a_michikusa-960.webp 960w, assets/display/20260712_n700a_michikusa-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">05 / แอนิเมชันหุ่นยนต์</span><span class=\"story-card-work\">ชินคาเลียน (Shinkalion)</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">นาโกย่าและเกียวโต</p>\n              <h3>ไปพบรถไฟของจริง</h3>\n              <p>หลังจากเห็นการแปลงร่างแล้ว ออกเดินทางไปพบรถไฟจริง </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">ถ่ายภาพ: michikusa</p>\n        </li>"
     }
   },
   "map": {

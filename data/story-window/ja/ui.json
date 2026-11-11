@@ -24,7 +24,8 @@
     "articleLabel": "{name}の記事",
     "photoDialog": "写真を拡大",
     "closePhoto": "閉じる",
-    "officialTrailer": "公式予告編"
+    "officialTrailer": "公式予告編",
+    "swipeHint": "横に送って、次の物語へ"
   },
   "zukan": {
     "title": "車窓からつながる物語",
@@ -41,7 +42,10 @@
       "route": "新宿・日比谷から、品川〜新横浜の車窓へ",
       "alt": "新宿の通りの先、ビルから顔をのぞかせるゴジラ",
       "credit": "Kakidai / CC BY-SA 4.0",
-      "spotLink": "ゴジラの物語を読む"
+      "spotLink": "ゴジラの物語を読む",
+      "searchTitle": "ゴジラの東京を歩く｜新宿・日比谷・多摩川と車窓の物語",
+      "searchDescription": "新宿と日比谷でゴジラに会い、多摩川で映画の風景を思い出す。作品と街、そして新幹線の車窓をつなぐ東京の寄り道。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"city\">\n          <a class=\"story-card-link\" href=\"godzilla.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/hibiya-square-20250912-480.webp\" width=\"4032\" height=\"2268\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/hibiya-square-20250912-160.webp 160w, assets/display/hibiya-square-20250912-480.webp 480w, assets/display/hibiya-square-20250912-960.webp 960w, assets/display/hibiya-square-20250912-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">01 / 映画</span><span class=\"story-card-work\">ゴジラ</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">東京・多摩川</p>\n              <h3>ゴジラに会う東京</h3>\n              <p><span class=\"copy-chunk\">街で見上げたあと、</span><span class=\"copy-chunk\">あの橋を車窓で。</span></p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">撮影：michikusa</p>\n        </li>"
     },
     "shogun": {
       "label": "SHŌGUN",
@@ -53,7 +57,10 @@
       "route": "岐阜羽島〜米原の車窓、JR関ケ原駅からの散歩",
       "alt": "新幹線から見た現在の関ケ原。山並みの手前に田畑と家々が広がる",
       "credit": "2026年11月撮影 / michikusa",
-      "spotLink": "SHŌGUNの物語を読む"
+      "spotLink": "SHŌGUNの物語を読む",
+      "searchTitle": "SHŌGUN 将軍から関ケ原へ｜虎永と家康をつなぐ新幹線の旅",
+      "searchDescription": "FXドラマ『SHŌGUN 将軍』の虎永から、モデルとなった徳川家康と関ケ原へ。史実を知って眺める車窓と、駅から歩く寄り道を紹介。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"film\">\n          <a class=\"story-card-link\" href=\"shogun.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp\" width=\"640\" height=\"360\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"story-card-category\">02 / ドラマ</span><span class=\"story-card-work\">SHŌGUN</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">関ケ原</p>\n              <h3>虎永から関ケ原へ</h3>\n              <p><span class=\"copy-chunk\">窓の外の田畑が、</span><span class=\"copy-chunk\">歴史の舞台になる。</span></p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">撮影：michikusa</p>\n        </li>"
     },
     "yurucamp": {
       "label": "ゆるキャン△",
@@ -65,7 +72,10 @@
       "route": "浜松〜豊橋の車窓から、弁天島・佐久米・舘山寺へ",
       "alt": "夕日に照らされる浜名湖と弁天島の赤いシンボルタワー",
       "credit": "Aimaimyi / CC BY-SA 3.0",
-      "spotLink": "ゆるキャン△の物語を読む"
+      "spotLink": "ゆるキャン△の物語を読む",
+      "searchTitle": "ゆるキャン△と浜名湖｜リンが訪ねた弁天島・浜名湖佐久米へ",
+      "searchDescription": "『ゆるキャン△ SEASON2』のリンたちの旅から、浜名湖へ。弁天島の夕日、浜名湖佐久米駅、舘山寺温泉を巡る寄り道とアクセス。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"lake\">\n          <a class=\"story-card-link\" href=\"yurucamp.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/yuru-benten-sunset-aimaimyi-480.webp\" width=\"2592\" height=\"1944\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/yuru-benten-sunset-aimaimyi-160.webp 160w, assets/display/yuru-benten-sunset-aimaimyi-480.webp 480w, assets/display/yuru-benten-sunset-aimaimyi-960.webp 960w, assets/display/yuru-benten-sunset-aimaimyi-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">03 / アニメ</span><span class=\"story-card-work\">ゆるキャン△</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">浜名湖</p>\n              <h3>リンが見た浜名湖</h3>\n              <p><span class=\"copy-chunk\">夕日を待つ時間も、</span><span class=\"copy-chunk\">リンの旅の楽しみ。</span></p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Bentenjinja_Hamamatsu_-03.jpg\">Aimaimyi</a> · <a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a></p>\n        </li>"
     },
     "dragonball": {
       "label": "ドラゴンボール",
@@ -77,7 +87,10 @@
       "route": "名古屋から足を延ばして、作者ゆかりの町へ",
       "alt": "2025年11月に撮影された清須市のBIRD STUDIO事務所の外観",
       "credit": "Asturio Cantabrio · 2025年11月（未加工）",
-      "spotLink": "ドラゴンボールの物語を読む"
+      "spotLink": "ドラゴンボールの物語を読む",
+      "searchTitle": "ドラゴンボールと鳥山明の清須｜冒険を描いた日常を訪ねる",
+      "searchDescription": "『ドラゴンボール』を生んだ鳥山明が暮らした清須。東京の編集者との電話や原稿の航空便、仕事場の記録から、冒険を描いた日常をたどる。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"manga\">\n          <a class=\"story-card-link\" href=\"dragonball.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/db-bird-studio-2025-480.webp\" width=\"3884\" height=\"2925\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/db-bird-studio-2025-160.webp 160w, assets/display/db-bird-studio-2025-480.webp 480w, assets/display/db-bird-studio-2025-960.webp 960w, assets/display/db-bird-studio-2025-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">04 / 原作漫画</span><span class=\"story-card-work\">ドラゴンボール</span><img src=\"assets/images/story-window/db-title-logo.svg\" alt=\"\" class=\"story-card-logo\" loading=\"lazy\" width=\"2537\" height=\"727\"></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">清須</p>\n              <h3>鳥山明の暮らした町</h3>\n              <p><span class=\"copy-chunk\">世界へ広がる冒険。</span><span class=\"copy-chunk\">描いたのは清須で。</span></p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:BIRD_STUDIO_2025-11_ac.jpg\">Asturio Cantabrio</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC BY-SA 4.0</a> · ロゴ：<a href=\"https://commons.wikimedia.org/wiki/File:Dragon_Ball_manga_1st_Japanese_edition_logo.svg\">Bird Studio・Shueisha / Wikimedia Commons</a></p>\n        </li>"
     },
     "shinkalion": {
       "label": "シンカリオン",
@@ -89,7 +102,10 @@
       "route": "東海道新幹線と、名古屋・京都の寄り道",
       "alt": "車両基地に並ぶN700Aの新幹線",
       "credit": "2026年7月撮影 / michikusa",
-      "spotLink": "シンカリオンの記事を読む"
+      "spotLink": "シンカリオンの記事を読む",
+      "searchTitle": "シンカリオンと新幹線｜N700A・N700Sから鉄道博物館へ",
+      "searchDescription": "実在の新幹線がロボットに変形する『シンカリオン』。N700A・N700Sの公式映像と実車から、名古屋と京都の鉄道博物館へつなぐ旅。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"mecha\">\n          <a class=\"story-card-link\" href=\"shinkalion.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/20260712_n700a_michikusa-480.webp\" width=\"1600\" height=\"900\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/20260712_n700a_michikusa-160.webp 160w, assets/display/20260712_n700a_michikusa-480.webp 480w, assets/display/20260712_n700a_michikusa-960.webp 960w, assets/display/20260712_n700a_michikusa-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">05 / ロボットアニメ</span><span class=\"story-card-work\">シンカリオン</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">名古屋・京都</p>\n              <h3>実車に会いに行く</h3>\n              <p><span class=\"copy-chunk\">変形を見たあと、</span><span class=\"copy-chunk\">実車に会う旅へ。</span></p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">撮影：michikusa</p>\n        </li>"
     }
   },
   "map": {

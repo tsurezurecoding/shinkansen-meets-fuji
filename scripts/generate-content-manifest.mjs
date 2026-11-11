@@ -27,7 +27,7 @@ if (process.env.MADO_CONTENT_MANIFEST_OUTPUT && siteRuntime.changed) throw new E
 // 並び順は下の sortedContentFiles で正規化するため、ここでは意味のまとまりで並べてよい。
 const contentFiles = [
   ...locales.languages.flatMap(lang => ["index","godzilla","shogun","yurucamp","dragonball","shinkalion"].map(slug => `${lang === "ja" ? "" : lang + "/"}stories/${slug}.html`)),
-  "story-window.js", "story-window.css", "story-window-links.css", "story-window-article.css", "story-window-international.css", "story-window-shogun.css", "story-window-map.css",
+  "story-window.js", "story-window.css", "story-window-editorial.css", "story-window-links.css", "story-window-article.css", "story-window-international.css", "story-window-shogun.css", "story-window-map.css",
   ...await walkFiles("images/story-window", p => /\.(?:jpg|png|svg|webp)$/.test(p)),
   "spot-page-runtime.json",
   "site-runtime.json", "site-runtime-loader.js", "site-chrome.js", "android-app-invite.js",

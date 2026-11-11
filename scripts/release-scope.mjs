@@ -183,6 +183,19 @@ export function onlyArtworkSitemapChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const editorialFiles=new Set(['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','scripts/shared/story-editorial.test.mjs',
+    'scripts/validate-story-window.mjs','scripts/generate-content-manifest.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs',
+    'story-window.js','story-window-editorial.css','content-manifest.json','site-runtime.json','spot-page-runtime.json','sitemap.xml']);
+  const editorialPage=/^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?stories\/(?:index|godzilla|shogun|yurucamp|dragonball|shinkalion)\.html$/;
+  const editorialInput=/^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:ui\.json|(?:godzilla|shogun|yurucamp|dragonball|shinkalion)\.html)$/;
+  if(files.some(file=>file==='story-window-editorial.css'||file==='scripts/shared/story-editorial.mjs')&&changes.every(({path:file,status})=>status!=='D'&&
+    (editorialFiles.has(file)||editorialPage.test(file)||editorialInput.test(file)||/^images\/story-window\/display\/[a-zA-Z0-9_-]+\.webp$/.test(file))))return {
+      scope:'story-editorial',needsDependencies:true,pagesCandidate:true,
+      reason:'Approved story design in ten editions: article bodies, source-media covers, photo navigation/cards, responsive image assets and search metadata; other product families are unchanged.',
+      commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/shared/story-editorial.test.mjs','scripts/shared/story-routing.test.mjs'),
+        node('scripts/generate-story-window-pages.mjs','--check'),node('scripts/validate-story-window.mjs','--pages-only'),storyNavigation(),
+        node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')]
+    };
   const seoSources = new Set([
     'scripts/generate-inbound-tables.mjs', 'scripts/generate-spot-pages.mjs',
     'scripts/generate-guide-locale-routes.mjs', 'scripts/generate-starter-locales.mjs',

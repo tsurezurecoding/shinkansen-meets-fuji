@@ -27,6 +27,10 @@ for(const lang of langs){
   expect(doc.documentElement.lang===lang,file+': html language');
   expect(doc.querySelector('link[rel="canonical"]')?.href===origin+file,file+': canonical');
   expect(doc.querySelectorAll('h1').length===1,file+': one H1');
+  if(slug!=='index'){
+    expect(doc.title.includes(copy.stories[slug].searchTitle),file+': descriptive search title');
+    expect(doc.querySelector('meta[name="description"]')?.content===copy.stories[slug].searchDescription,file+': search description');
+  }
   expect(!doc.querySelector('h1')?.textContent.includes('|'),file+': title separator must not appear as reader-facing text');
   expect(!/noindex|draft-label|Local prototype/.test(html),file+': preview-only markup');
   expect(!!doc.querySelector('.topbar')&&!!doc.querySelector('.footer'),file+': shared chrome');
@@ -44,16 +48,28 @@ for(const lang of langs){
    if(url.pathname===new URL(origin+file).pathname&&url.hash)expect(ids.has(decodeURIComponent(url.hash.slice(1))),file+': missing anchor '+url.hash);
    links++;
   }
+  for(const image of doc.querySelectorAll('img[srcset]'))for(const candidate of image.getAttribute('srcset').split(',')){
+    const url=new URL(candidate.trim().split(/\s+/)[0],doc.baseURI);
+    if(url.origin===new URL(origin).origin)expect(fs.existsSync(path.join(root,decodeURI(url.pathname.slice(1)))),file+': missing responsive image '+url.pathname);
+    expect(+image.getAttribute('width')>0&&+image.getAttribute('height')>0,file+': responsive image reserves dimensions');
+  }
   if(slug==='index')expect(doc.querySelectorAll('.story-card').length===STORY_SLUGS.length,file+': article cards must match the story inventory');
   else{
-   expect(!!doc.querySelector('.story-body'),file+': article body');
-   for(const section of doc.querySelectorAll('.story-body section'))if(section.querySelector('h2'))expect(!!section.id,file+': chapter id');
+   expect(!!doc.querySelector('.feature-story'),file+': article body');
+   for(const section of doc.querySelectorAll('.feature-story section'))if(section.querySelector('h2'))expect(!!section.id,file+': chapter id');
+   expect(doc.querySelectorAll('.picker-list a').length===5,file+': five photo navigation links');
+   expect(doc.querySelectorAll('.photo-stories .story-card').length===4,file+': four related photo cards');
    if(lang!=='ja')expect(!doc.querySelector('.copy-chunk'),file+': Japanese wrapping marker');
    if(slug==='shinkalion'){
     const frames=[...doc.querySelectorAll('.trailer-player iframe')];
     expect(frames.length===2,file+': two approved official videos');
     for(const id of ['DZn2SFhCsRc','OWXJC2-Ar0Q'])expect(frames.some(frame=>frame.src.startsWith('https://www.youtube-nocookie.com/embed/'+id+'?')&&frame.getAttribute('referrerpolicy')==='strict-origin-when-cross-origin'&&frame.title),file+': approved video/referrer/title '+id);
-   }else expect(!doc.querySelector('.trailer-player iframe'),file+': video must wait for click');
+   }else {
+    const expected=slug==='shogun'?['VQfAzBXL1JY']:slug==='godzilla'?['F_1FnUxXk8E']:[];
+    const frames=[...doc.querySelectorAll('.trailer-player iframe')];
+    expect(frames.length===expected.length,file+': discoverable official videos');
+    for(const id of expected)expect(frames.some(frame=>frame.src.startsWith('https://www.youtube-nocookie.com/embed/'+id+'?')&&frame.getAttribute('referrerpolicy')==='strict-origin-when-cross-origin'&&frame.title),file+': approved video/referrer/title '+id);
+   }
    if(slug==='yurucamp'){expect(doc.querySelectorAll('.story-map-visual circle').length===3,file+': map markers');expect(doc.querySelector('.story-map-visual').textContent.includes(copy.map.stops[0].name),file+': map label language');}
    if(slug==='godzilla'&&!['ja','en'].includes(lang)){const a=doc.querySelector('a[href*="'+lang+'/spots/maruko-bridge.html"]');expect(!!a,file+': localized bridge connection');}
   }

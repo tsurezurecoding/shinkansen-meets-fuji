@@ -1286,400 +1286,400 @@
   "stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "en/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "en/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "en/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "en/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "en/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hant/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hant/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hant/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hant/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hant/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "fr/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "fr/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "fr/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "fr/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "fr/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "de/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "de/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "de/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "de/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "de/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "es/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "es/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "es/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "es/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "es/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hans/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hans/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hans/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hans/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "zh-Hans/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "ko/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "ko/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "ko/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "ko/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "ko/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "it/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "it/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "it/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "it/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "it/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "th/stories/index.html": {
     "kind": "collection",
     "article": false,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: add the approved Shinkalion story as the fifth series card.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "th/stories/godzilla.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "th/stories/shogun.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "th/stories/yurucamp.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
   "th/stories/dragonball.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-05",
-    "modifiedEvidence": "Approved story preview 685bd537; localized Web integration STORY-LOCALES-1105. Not yet published.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic site banner is a fallback; quoted film stills remain within the explanatory article and are not social-preview images."
   },
@@ -1734,80 +1734,80 @@
   "stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "en/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "fr/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "de/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "es/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "it/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "ko/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "th/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "zh-Hant/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   },
   "zh-Hans/stories/shinkalion.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-08",
-    "modifiedEvidence": "SHINKALION-1107: approved Japanese story, localized fifth-series article and official video embeds.",
+    "modified": "2026-11-12",
+    "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
   }

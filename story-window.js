@@ -23,3 +23,19 @@
   });
   for(const link of document.querySelectorAll('a[href^="#source-"]'))link.addEventListener('click',()=>{const sources=document.getElementById(link.hash.slice(1))?.closest('details');if(sources)sources.open=true;});
 })();
+
+'use strict';
+(() => {
+  const rail = document.querySelector('.picker-list');
+  const selected = rail?.querySelector('[aria-current="page"]');
+  if (!rail || !selected) return;
+  const media = window.matchMedia('(max-width: 760px)');
+  const revealSelected = () => {
+    if (!media.matches) return;
+    const railRect = rail.getBoundingClientRect();
+    const selectedRect = selected.getBoundingClientRect();
+    rail.scrollLeft += selectedRect.left - railRect.left - (rail.clientWidth - selectedRect.width) / 2;
+  };
+  revealSelected();
+  media.addEventListener('change', revealSelected);
+})();
