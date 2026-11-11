@@ -24,7 +24,8 @@
     "articleLabel": "{name}的故事",
     "photoDialog": "放大圖片",
     "closePhoto": "關閉",
-    "officialTrailer": "官方預告"
+    "officialTrailer": "官方預告",
+    "swipeHint": "橫向滑動，前往下一個故事"
   },
   "zukan": {
     "title": "車窗外相連的故事",
@@ -41,7 +42,10 @@
       "route": "步行走訪新宿、日比谷；在品川至新橫濱之間看多摩川。",
       "alt": "新宿街道盡頭，大樓上方的哥吉拉頭像",
       "credit": "Kakidai / CC BY-SA 4.0",
-      "spotLink": "閱讀哥吉拉的故事"
+      "spotLink": "閱讀哥吉拉的故事",
+      "searchTitle": "漫步哥吉拉的東京｜新宿、日比谷、多摩川與車窗故事",
+      "searchDescription": "在新宿與日比谷遇見哥吉拉，再於多摩川想起電影場景。串起作品、城市與新幹線車窗的東京小旅行。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"city\">\n          <a class=\"story-card-link\" href=\"godzilla.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/hibiya-square-20250912-480.webp\" width=\"4032\" height=\"2268\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/hibiya-square-20250912-160.webp 160w, assets/display/hibiya-square-20250912-480.webp 480w, assets/display/hibiya-square-20250912-960.webp 960w, assets/display/hibiya-square-20250912-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">01 / 電影</span><span class=\"story-card-work\">哥吉拉</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">東京與多摩川</p>\n              <h3>在東京遇見哥吉拉</h3>\n              <p>在街頭仰望之後，從車窗尋找那座橋。</p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">攝影：michikusa</p>\n        </li>"
     },
     "shogun": {
       "label": "SHŌGUN",
@@ -53,7 +57,10 @@
       "route": "新幹線岐阜羽島至米原之間；步行探索可從JR關原站出發。",
       "alt": "從新幹線看今日關原周邊的田野、住宅與山丘",
       "credit": "2026年11月 / michikusa",
-      "spotLink": "閱讀SHŌGUN的故事"
+      "spotLink": "閱讀SHŌGUN的故事",
+      "searchTitle": "SHŌGUN 將軍走向關原｜連結虎永與家康的新幹線之旅",
+      "searchDescription": "從FX影集《SHŌGUN 將軍》的虎永，認識其原型德川家康與關原。介紹了解史實後欣賞車窗景色，以及從車站出發的散步行程。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"film\">\n          <a class=\"story-card-link\" href=\"shogun.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp\" width=\"640\" height=\"360\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"story-card-category\">02 / 影集</span><span class=\"story-card-work\">SHŌGUN</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">關原</p>\n              <h3>從虎永走向關原</h3>\n              <p>窗外的田野，成為歷史舞台。</p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">攝影：michikusa</p>\n        </li>"
     },
     "yurucamp": {
       "label": "搖曳露營△",
@@ -65,7 +72,10 @@
       "route": "濱松至豐橋之間看湖景；順路探訪弁天島、佐久米及舘山寺。",
       "alt": "濱名湖夕陽映照下，弁天島的紅色鳥居造型地標塔",
       "credit": "Aimaimyi / CC BY-SA 3.0",
-      "spotLink": "閱讀搖曳露營△的故事"
+      "spotLink": "閱讀搖曳露營△的故事",
+      "searchTitle": "《搖曳露營△》與濱名湖｜走訪凜曾造訪的弁天島、濱名湖佐久米",
+      "searchDescription": "從《搖曳露營△ SEASON2》中凜等人的旅程走向濱名湖。介紹弁天島夕陽、濱名湖佐久米站、舘山寺溫泉等順道行程與交通方式。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"lake\">\n          <a class=\"story-card-link\" href=\"yurucamp.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/yuru-benten-sunset-aimaimyi-480.webp\" width=\"2592\" height=\"1944\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/yuru-benten-sunset-aimaimyi-160.webp 160w, assets/display/yuru-benten-sunset-aimaimyi-480.webp 480w, assets/display/yuru-benten-sunset-aimaimyi-960.webp 960w, assets/display/yuru-benten-sunset-aimaimyi-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">03 / 動畫</span><span class=\"story-card-work\">搖曳露營△</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">濱名湖</p>\n              <h3>凜看見的濱名湖</h3>\n              <p>等待夕陽的時光，也是凜旅程的樂趣。</p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Bentenjinja_Hamamatsu_-03.jpg\">Aimaimyi</a> · <a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a></p>\n        </li>"
     },
     "dragonball": {
       "label": "七龍珠",
@@ -77,7 +87,10 @@
       "route": "名古屋旁的城鎮，也是清洲城掠過窗外時，可以想起的一段連結。",
       "alt": "2025年11月拍攝的清須BIRD STUDIO工作室外觀",
       "credit": "Asturio Cantabrio · 2025年11月 · 未加工",
-      "spotLink": "閱讀七龍珠的故事"
+      "spotLink": "閱讀七龍珠的故事",
+      "searchTitle": "七龍珠與鳥山明的清須｜造訪描繪冒險的日常",
+      "searchDescription": "《七龍珠》作者鳥山明曾居住的清須。從他與東京編輯的電話聯絡、原稿空運及工作室紀錄，回望描繪冒險的日常。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"manga\">\n          <a class=\"story-card-link\" href=\"dragonball.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/db-bird-studio-2025-480.webp\" width=\"3884\" height=\"2925\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/db-bird-studio-2025-160.webp 160w, assets/display/db-bird-studio-2025-480.webp 480w, assets/display/db-bird-studio-2025-960.webp 960w, assets/display/db-bird-studio-2025-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">04 / 原作漫畫</span><span class=\"story-card-work\">七龍珠</span><img src=\"assets/images/story-window/db-title-logo.svg\" alt=\"\" class=\"story-card-logo\" loading=\"lazy\" width=\"2537\" height=\"727\"></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">清須</p>\n              <h3>鳥山明生活過的城鎮</h3>\n              <p>走向世界的冒險，在清須描繪。</p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:BIRD_STUDIO_2025-11_ac.jpg\">Asturio Cantabrio</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC BY-SA 4.0</a> · 標誌：<a href=\"https://commons.wikimedia.org/wiki/File:Dragon_Ball_manga_1st_Japanese_edition_logo.svg\">Bird Studio・Shueisha / Wikimedia Commons</a></p>\n        </li>"
     },
     "shinkalion": {
       "label": "新幹線變形機器人",
@@ -89,7 +102,10 @@
       "route": "名古屋站搭青波線至金城埠頭站，參觀磁浮・鐵道館；京都站搭嵯峨野線至梅小路京都西站，參觀京都鐵道博物館。",
       "alt": "車輛基地裡的白色新幹線，車身可見N700A標誌",
       "credit": "2026年7月12日 · michikusa",
-      "spotLink": "閱讀新幹線變形機器人的故事"
+      "spotLink": "閱讀新幹線變形機器人的故事",
+      "searchTitle": "新幹線變形機器人與新幹線｜從N700A、N700S走訪鐵道博物館",
+      "searchDescription": "《新幹線變形機器人》讓真實新幹線變身為機器人。從N700A、N700S官方影片與真車出發，串連名古屋和京都的鐵道博物館。",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"mecha\">\n          <a class=\"story-card-link\" href=\"shinkalion.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/20260712_n700a_michikusa-480.webp\" width=\"1600\" height=\"900\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/20260712_n700a_michikusa-160.webp 160w, assets/display/20260712_n700a_michikusa-480.webp 480w, assets/display/20260712_n700a_michikusa-960.webp 960w, assets/display/20260712_n700a_michikusa-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">05 / 機器人動畫</span><span class=\"story-card-work\">新幹線變形機器人</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">名古屋・京都</p>\n              <h3>去看看真正的列車</h3>\n              <p>看過變形之後，展開一趟拜訪真車的旅程。</p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">攝影：michikusa</p>\n        </li>"
     }
   },
   "map": {

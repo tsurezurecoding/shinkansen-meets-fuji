@@ -24,7 +24,8 @@
     "articleLabel": "{name} 이야기",
     "photoDialog": "확대한 이미지",
     "closePhoto": "닫기",
-    "officialTrailer": "공식 예고편"
+    "officialTrailer": "공식 예고편",
+    "swipeHint": "옆으로 넘겨 다음 이야기로"
   },
   "zukan": {
     "title": "차창 너머로 이어지는 이야기",
@@ -41,7 +42,10 @@
       "route": "신주쿠·히비야는 걸어서, 다마강은 시나가와와 신요코하마 사이에서.",
       "alt": "신주쿠 거리 끝의 건물 위에 나타난 고질라 헤드",
       "credit": "Kakidai / CC BY-SA 4.0",
-      "spotLink": "고질라 이야기 읽기"
+      "spotLink": "고질라 이야기 읽기",
+      "searchTitle": "도쿄의 고질라를 걷다｜신주쿠·히비야·다마강과 차창 이야기",
+      "searchDescription": "신주쿠와 히비야에서 고질라를 만나고 다마강에서 영화 속 풍경을 떠올립니다. 작품과 도시, 신칸센 차창을 잇는 도쿄의 짧은 여행.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"city\">\n          <a class=\"story-card-link\" href=\"godzilla.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/hibiya-square-20250912-480.webp\" width=\"4032\" height=\"2268\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/hibiya-square-20250912-160.webp 160w, assets/display/hibiya-square-20250912-480.webp 480w, assets/display/hibiya-square-20250912-960.webp 960w, assets/display/hibiya-square-20250912-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">01 / 영화</span><span class=\"story-card-work\">고질라</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">도쿄와 다마강</p>\n              <h3>도쿄에서 고질라를 만나다</h3>\n              <p>거리에서 올려다본 뒤, 차창에서 그 다리를 찾아보세요. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">촬영: michikusa</p>\n        </li>"
     },
     "shogun": {
       "label": "SHŌGUN",
@@ -53,7 +57,10 @@
       "route": "신칸센 기후하시마–마이바라 구간. 도보 탐방은 JR 세키가하라역에서.",
       "alt": "신칸센에서 본 오늘날 세키가하라의 들판, 집과 언덕",
       "credit": "2026년 11월 / michikusa",
-      "spotLink": "SHŌGUN 이야기 읽기"
+      "spotLink": "SHŌGUN 이야기 읽기",
+      "searchTitle": "SHŌGUN 장군에서 세키가하라로｜도라나가와 이에야스를 잇는 신칸센 여행",
+      "searchDescription": "FX 드라마 《SHŌGUN 장군》의 도라나가에서 실제 모델 도쿠가와 이에야스와 세키가하라로 이어집니다. 역사를 알고 바라보는 차창 풍경과 역에서 출발하는 산책길을 소개합니다.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"film\">\n          <a class=\"story-card-link\" href=\"shogun.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp\" width=\"640\" height=\"360\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"story-card-category\">02 / 드라마</span><span class=\"story-card-work\">SHŌGUN</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">세키가하라</p>\n              <h3>도라나가에서 세키가하라로</h3>\n              <p>창밖의 논밭이, 역사의 무대가 됩니다. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">촬영: michikusa</p>\n        </li>"
     },
     "yurucamp": {
       "label": "유루캠△",
@@ -65,7 +72,10 @@
       "route": "하마마쓰–도요하시 사이의 호수 풍경. 벤텐지마·사쿠메·간잔지에 들러보기.",
       "alt": "하마나호의 노을을 배경으로 선 벤텐지마의 붉은 도리이 모양 탑",
       "credit": "Aimaimyi / CC BY-SA 3.0",
-      "spotLink": "유루캠△ 이야기 읽기"
+      "spotLink": "유루캠△ 이야기 읽기",
+      "searchTitle": "유루캠△와 하마나호｜린이 찾은 벤텐지마·하마나코사쿠메로",
+      "searchDescription": "《유루캠△ SEASON2》의 린 일행을 따라 하마나호로. 벤텐지마의 석양, 하마나코사쿠메역, 간잔지 온천을 둘러보는 여행지와 교통편을 소개합니다.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"lake\">\n          <a class=\"story-card-link\" href=\"yurucamp.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/yuru-benten-sunset-aimaimyi-480.webp\" width=\"2592\" height=\"1944\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/yuru-benten-sunset-aimaimyi-160.webp 160w, assets/display/yuru-benten-sunset-aimaimyi-480.webp 480w, assets/display/yuru-benten-sunset-aimaimyi-960.webp 960w, assets/display/yuru-benten-sunset-aimaimyi-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">03 / 애니메이션</span><span class=\"story-card-work\">유루캠△</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">하마나호</p>\n              <h3>린이 본 하마나호</h3>\n              <p>석양을 기다리는 시간도, 린의 여행을 즐기는 방법. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Bentenjinja_Hamamatsu_-03.jpg\">Aimaimyi</a> · <a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a></p>\n        </li>"
     },
     "dragonball": {
       "label": "드래곤볼",
@@ -77,7 +87,10 @@
       "route": "나고야 옆의 마을. 기요스성이 차창을 지날 때 떠올릴 수 있는 연결.",
       "alt": "2025년 11월 촬영한 기요스의 BIRD STUDIO 작업실 외관",
       "credit": "Asturio Cantabrio · 2025년 11월 · 수정하지 않음",
-      "spotLink": "드래곤볼 이야기 읽기"
+      "spotLink": "드래곤볼 이야기 읽기",
+      "searchTitle": "드래곤볼과 도리야마 아키라의 기요스｜모험을 그린 일상을 찾아서",
+      "searchDescription": "《드래곤볼》을 탄생시킨 도리야마 아키라가 살던 기요스. 도쿄 편집자와의 통화, 원고 항공편, 작업실 기록을 통해 모험을 그린 일상을 따라가 봅니다.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"manga\">\n          <a class=\"story-card-link\" href=\"dragonball.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/db-bird-studio-2025-480.webp\" width=\"3884\" height=\"2925\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/db-bird-studio-2025-160.webp 160w, assets/display/db-bird-studio-2025-480.webp 480w, assets/display/db-bird-studio-2025-960.webp 960w, assets/display/db-bird-studio-2025-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">04 / 원작 만화</span><span class=\"story-card-work\">드래곤볼</span><img src=\"assets/images/story-window/db-title-logo.svg\" alt=\"\" class=\"story-card-logo\" loading=\"lazy\" width=\"2537\" height=\"727\"></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">기요스</p>\n              <h3>도리야마 아키라가 살던 마을</h3>\n              <p>세계로 뻗어 간 모험, 기요스에서 그렸습니다. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:BIRD_STUDIO_2025-11_ac.jpg\">Asturio Cantabrio</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC BY-SA 4.0</a> · 로고:<a href=\"https://commons.wikimedia.org/wiki/File:Dragon_Ball_manga_1st_Japanese_edition_logo.svg\">Bird Studio·Shueisha / Wikimedia Commons</a></p>\n        </li>"
     },
     "shinkalion": {
       "label": "신카리온 (Shinkalion)",
@@ -89,7 +102,10 @@
       "route": "도카이도 신칸센으로 나고야와 교토를 오가며, 하차 후 리니어·철도관이나 교토 철도 박물관을 방문해 보세요.",
       "alt": "차량기지에 나란히 선 흰 신칸센. N700A 로고가 보인다",
       "credit": "2026년 7월 12일 · michikusa",
-      "spotLink": "신카리온 이야기 읽기"
+      "spotLink": "신카리온 이야기 읽기",
+      "searchTitle": "신카리온과 신칸센｜N700A·N700S부터 철도박물관까지",
+      "searchDescription": "실제 신칸센이 로봇으로 변신하는 《신카리온》. N700A·N700S 공식 영상과 실제 열차에서 출발해 나고야와 교토의 철도박물관으로 이어지는 여행.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"mecha\">\n          <a class=\"story-card-link\" href=\"shinkalion.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/20260712_n700a_michikusa-480.webp\" width=\"1600\" height=\"900\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/20260712_n700a_michikusa-160.webp 160w, assets/display/20260712_n700a_michikusa-480.webp 480w, assets/display/20260712_n700a_michikusa-960.webp 960w, assets/display/20260712_n700a_michikusa-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">05 / 로봇 애니메이션</span><span class=\"story-card-work\">신카리온 (Shinkalion)</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">나고야와 교토</p>\n              <h3>실제 열차를 만나러</h3>\n              <p>변신을 본 다음, 실제 열차를 만나는 여행으로. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">촬영: michikusa</p>\n        </li>"
     }
   },
   "map": {

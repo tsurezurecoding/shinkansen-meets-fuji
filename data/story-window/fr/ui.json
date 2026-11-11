@@ -24,7 +24,8 @@
     "articleLabel": "L’histoire de {name}",
     "photoDialog": "Image agrandie",
     "closePhoto": "Fermer",
-    "officialTrailer": "Bande-annonce officielle"
+    "officialTrailer": "Bande-annonce officielle",
+    "swipeHint": "Faites défiler pour découvrir l’histoire suivante"
   },
   "zukan": {
     "title": "Histoires au fil de la fenêtre",
@@ -41,7 +42,10 @@
       "route": "Shinjuku et Hibiya à pied ; la rivière Tama entre Shinagawa et Shin-Yokohama.",
       "alt": "La tête de Godzilla au-dessus d’un bâtiment au bout d’une rue de Shinjuku",
       "credit": "Kakidai / CC BY-SA 4.0",
-      "spotLink": "Lire l’histoire de Godzilla"
+      "spotLink": "Lire l’histoire de Godzilla",
+      "searchTitle": "À pied dans le Tokyo de Godzilla | Shinjuku, Hibiya et la rivière Tama en train",
+      "searchDescription": "Rencontrez Godzilla à Shinjuku et Hibiya, puis retrouvez un paysage de cinéma sur la rivière Tama. Une escapade à Tokyo reliant les films, les rues et la fenêtre du Shinkansen.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"city\">\n          <a class=\"story-card-link\" href=\"godzilla.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/hibiya-square-20250912-480.webp\" width=\"4032\" height=\"2268\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/hibiya-square-20250912-160.webp 160w, assets/display/hibiya-square-20250912-480.webp 480w, assets/display/hibiya-square-20250912-960.webp 960w, assets/display/hibiya-square-20250912-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">01 / CINÉMA</span><span class=\"story-card-work\">Godzilla</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">Tokyo et la rivière Tama</p>\n              <h3>Rencontrer Godzilla à Tokyo</h3>\n              <p>Après avoir levé les yeux en ville, retrouvez ce pont depuis le train. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">Photo : michikusa</p>\n        </li>"
     },
     "shogun": {
       "label": "SHŌGUN",
@@ -53,7 +57,10 @@
       "route": "Entre Gifu-Hashima et Maibara en Shinkansen ; balade depuis la gare JR de Sekigahara.",
       "alt": "Champs, maisons et collines de Sekigahara aujourd’hui, vus du Shinkansen",
       "credit": "Novembre 2026 / michikusa",
-      "spotLink": "Lire l’histoire de SHŌGUN"
+      "spotLink": "Lire l’histoire de SHŌGUN",
+      "searchTitle": "De SHŌGUN à Sekigahara | Un voyage en Shinkansen de Toranaga à Ieyasu",
+      "searchDescription": "Du Toranaga de la série FX SHŌGUN à Tokugawa Ieyasu, son inspiration historique, puis à Sekigahara. Découvrez l’histoire derrière la vue du train et une balade depuis la gare.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"film\">\n          <a class=\"story-card-link\" href=\"shogun.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/images/thumbs/display/20261103_sekigahara-landscape_michikusa_45599-7080b230-640.webp\" width=\"640\" height=\"360\" alt=\"\" loading=\"lazy\" decoding=\"async\"><span class=\"story-card-category\">02 / SÉRIE</span><span class=\"story-card-work\">SHŌGUN</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">Sekigahara</p>\n              <h3>De Toranaga à Sekigahara</h3>\n              <p>Les champs par la fenêtre deviennent le décor de l’Histoire. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">Photo : michikusa</p>\n        </li>"
     },
     "yurucamp": {
       "label": "Laid-Back Camp",
@@ -65,7 +72,10 @@
       "route": "Vues sur le lac entre Hamamatsu et Toyohashi ; détours par Bentenjima, Sakume et Kanzanji.",
       "alt": "La tour rouge en forme de torii de Bentenjima devant le soleil couchant sur le lac Hamana",
       "credit": "Aimaimyi / CC BY-SA 3.0",
-      "spotLink": "Lire l’histoire de Laid-Back Camp"
+      "spotLink": "Lire l’histoire de Laid-Back Camp",
+      "searchTitle": "Laid-Back Camp et le lac Hamana | Les étapes de Rin à Bentenjima et Hamanako-Sakume",
+      "searchDescription": "Suivez Rin et ses amies de Laid-Back Camp saison 2 au lac Hamana. Coucher de soleil à Bentenjima, gare de Hamanako-Sakume et Kanzanji Onsen : étapes et accès pour votre escapade.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"lake\">\n          <a class=\"story-card-link\" href=\"yurucamp.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/yuru-benten-sunset-aimaimyi-480.webp\" width=\"2592\" height=\"1944\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/yuru-benten-sunset-aimaimyi-160.webp 160w, assets/display/yuru-benten-sunset-aimaimyi-480.webp 480w, assets/display/yuru-benten-sunset-aimaimyi-960.webp 960w, assets/display/yuru-benten-sunset-aimaimyi-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">03 / ANIME</span><span class=\"story-card-work\">Laid-Back Camp</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">Lac Hamana</p>\n              <h3>Le lac Hamana vu par Rin</h3>\n              <p>Attendre le coucher du soleil fait aussi partie du voyage de Rin. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:Bentenjinja_Hamamatsu_-03.jpg\">Aimaimyi</a> · <a href=\"https://creativecommons.org/licenses/by-sa/3.0/\">CC BY-SA 3.0</a></p>\n        </li>"
     },
     "dragonball": {
       "label": "Dragon Ball",
@@ -77,7 +87,10 @@
       "route": "Une ville voisine de Nagoya, un lien à garder en tête lorsque le château de Kiyosu apparaît par la fenêtre.",
       "alt": "L’extérieur de l’atelier BIRD STUDIO à Kiyosu, photographié en novembre 2025",
       "credit": "Asturio Cantabrio · Novembre 2025 · Sans modification",
-      "spotLink": "Lire l’histoire de Dragon Ball"
+      "spotLink": "Lire l’histoire de Dragon Ball",
+      "searchTitle": "Dragon Ball et le Kiyosu d’Akira Toriyama | Le quotidien derrière les aventures",
+      "searchDescription": "Découvrez Kiyosu, où vivait Akira Toriyama, le créateur de Dragon Ball. Appels avec son éditeur à Tokyo, manuscrits envoyés par avion et traces de son atelier éclairent le quotidien derrière les aventures.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"manga\">\n          <a class=\"story-card-link\" href=\"dragonball.html\"><div class=\"story-card-visual\"><img class=\"story-card-image uncropped\" src=\"assets/display/db-bird-studio-2025-480.webp\" width=\"3884\" height=\"2925\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/db-bird-studio-2025-160.webp 160w, assets/display/db-bird-studio-2025-480.webp 480w, assets/display/db-bird-studio-2025-960.webp 960w, assets/display/db-bird-studio-2025-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">04 / MANGA ORIGINAL</span><span class=\"story-card-work\">Dragon Ball</span><img src=\"assets/images/story-window/db-title-logo.svg\" alt=\"\" class=\"story-card-logo\" loading=\"lazy\" width=\"2537\" height=\"727\"></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">Kiyosu</p>\n              <h3>La ville où vivait Akira Toriyama</h3>\n              <p>Des aventures à travers le monde. Dessinées à Kiyosu. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\"><a href=\"https://commons.wikimedia.org/wiki/File:BIRD_STUDIO_2025-11_ac.jpg\">Asturio Cantabrio</a> · <a href=\"https://creativecommons.org/licenses/by-sa/4.0/\">CC BY-SA 4.0</a> · Logo :<a href=\"https://commons.wikimedia.org/wiki/File:Dragon_Ball_manga_1st_Japanese_edition_logo.svg\">Bird Studio · Shueisha / Wikimedia Commons</a></p>\n        </li>"
     },
     "shinkalion": {
       "label": "Shinkalion",
@@ -89,7 +102,10 @@
       "route": "Des vues depuis la ligne Tokaido ; détour par le SCMAGLEV and Railway Park à Nagoya et le musée ferroviaire de Kyoto.",
       "alt": "Des Shinkansen blancs portant le logo N700A dans un dépôt ferroviaire",
       "credit": "12 juillet 2026 · michikusa",
-      "spotLink": "Lire l’histoire de Shinkalion"
+      "spotLink": "Lire l’histoire de Shinkalion",
+      "searchTitle": "Shinkalion et Shinkansen | Des N700A et N700S aux musées ferroviaires",
+      "searchDescription": "Dans Shinkalion, de vrais trains à grande vitesse japonais se transforment en robots. Des vidéos officielles des N700A et N700S aux trains réels, poursuivez le voyage dans les musées ferroviaires de Nagoya et Kyoto.",
+      "cardMarkup": "<li class=\"story-card\" data-theme=\"mecha\">\n          <a class=\"story-card-link\" href=\"shinkalion.html\"><div class=\"story-card-visual\"><img class=\"story-card-image\" src=\"assets/display/20260712_n700a_michikusa-480.webp\" width=\"1600\" height=\"900\" alt=\"\" loading=\"lazy\" decoding=\"async\" srcset=\"assets/display/20260712_n700a_michikusa-160.webp 160w, assets/display/20260712_n700a_michikusa-480.webp 480w, assets/display/20260712_n700a_michikusa-960.webp 960w, assets/display/20260712_n700a_michikusa-1440.webp 1440w\" sizes=\"(max-width: 520px) 320px, (max-width: 1000px) 45vw, 280px\"><span class=\"story-card-category\">05 / ANIME DE ROBOTS</span><span class=\"story-card-work\">Shinkalion</span></div>\n\n            <div class=\"story-card-copy\">\n              <p class=\"story-place\">Nagoya et Kyoto</p>\n              <h3>Rencontrer les vrais trains</h3>\n              <p>Après la transformation, partez à la rencontre des vrais trains. </p>\n              <span class=\"story-card-arrow\" aria-hidden=\"true\">→</span>\n            </div>\n          </a>\n          <p class=\"story-card-credit\">Photo : michikusa</p>\n        </li>"
     }
   },
   "map": {

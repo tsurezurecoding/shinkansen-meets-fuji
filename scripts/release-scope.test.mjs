@@ -6,6 +6,18 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('story editorial release covers ten editions and display variants, excluding unrelated work',()=>{
+  const files=['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','story-window-editorial.css','story-window.js',
+    'data/story-window/en/godzilla.html','data/story-window/th/ui.json','th/stories/shinkalion.html','stories/index.html',
+    'images/story-window/display/shinjuku-street-kakidai-480.webp','scripts/content-metadata.json','sitemap.xml','content-manifest.json'];
+  const plan=chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope,'story-editorial');assert.equal(plan.pagesCandidate,true);
+  assert(plan.commands.some(command=>command.includes('scripts/shared/story-editorial.test.mjs')));
+  assert.equal(plan.commands.find(command=>command.includes('scripts/validate-site-navigation.mjs')).filter(arg=>arg==='--route').length,6);
+  for(const unrelated of ['data.js','app.js','style.css','en/foods.html','images/new.jpg'])assert.equal(chooseReleaseScope([...files,unrelated].map(change)).scope,'unmapped');
+  assert.equal(chooseReleaseScope([...files.map(change),{path:'stories/godzilla.html',status:'D'}]).scope,'unmapped');
+});
+
 test('SEO scope covers its generated consumers and rejects unrelated product edits', () => {
   const paths = ['scripts/generate-inbound-tables.mjs', 'scripts/shared/mieru-runtime.js',
     'scripts/templates/site-source/en/jr-pass-fuji.html.tpl', 'scripts/templates/site-source/fr/guide.html.tpl',
