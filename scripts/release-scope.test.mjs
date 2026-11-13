@@ -6,6 +6,15 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('floating badge visibility scope checks both invitation modes without accepting unrelated changes',()=>{
+ const files=['scripts/shared/android-app-invite.css','scripts/android-app-invite.test.mjs','android-app-invite.js','site-runtime.json','content-manifest.json'];
+ const plan=chooseReleaseScope(files.map(change));assert.equal(plan.scope,'android-invite-visibility');assert.equal(plan.pagesCandidate,true);
+ assert(plan.commands.some(command=>command.includes('scripts/android-app-invite.test.mjs')));
+ assert(plan.commands.some(command=>command.includes('scripts/android-app-train-invite.test.mjs')));
+ for(const unrelated of ['app.js','style.css','index.html','scripts/shared/android-app-invite-runtime.js'])assert.equal(chooseReleaseScope([...files,unrelated].map(change)).scope,'unmapped');
+ assert.equal(chooseReleaseScope([...files.map(change),{path:'android-app-invite.js',status:'D'}]).scope,'unmapped');
+});
+
 test('train inline invitation scope covers all editions and rejects unrelated changes or dependency edits',()=>{
  const files=['scripts/shared/android-app-invite-runtime.js','scripts/shared/android-app-invite-copy.mjs',
   'scripts/android-app-train-invite.test.mjs','android-app-invite.js','it/start.html','th/start.html','site-runtime.json','content-manifest.json'];
