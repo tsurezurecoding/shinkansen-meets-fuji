@@ -21,7 +21,8 @@ async function fixture({language='ja',selected=false,apps=[],api=true,agent=ua,n
  if(api)w.navigator.getInstalledRelatedApps=typeof apps==='function'?apps:async()=>apps;
  if(state)w.localStorage.setItem(key,JSON.stringify(state));
  const view=w.document.getElementById('sp-view'),section=w.document.getElementById('timelineSection'),answer=w.document.getElementById('fujiTrainAnswer');
- function select(value,fuji=true){view.dataset.state=value?'selected':'sample';section.hidden=!value;answer.hidden=!value||!fuji;}
+ if(language!=='ja')view.replaceWith(...view.childNodes);
+ function select(value,fuji=true){w.journey=value?{mode:'train',preview:false}:null;view.dataset.state=value?'selected':'sample';section.hidden=!value;answer.hidden=!value||!fuji;}
  select(selected);
  const config=w.document.createElement('script');config.id='mado-android-invite-config';config.type='application/json';config.textContent=JSON.stringify({language,pageContext:context,assetPrefix:prefix?'../':'',general:false});w.document.body.append(config);
  w.document.addEventListener('click',event=>event.preventDefault());
@@ -55,6 +56,16 @@ test('selection, result replacement, no-Fuji fallback and cancellation keep one 
   f.select(false);await tick();assert.equal(f.card.hidden,true);
   f.select(true);await tick();assert.equal(f.card.hidden,false);assert.equal(f.w.document.querySelectorAll('#android-app-invite').length,1);
   assert.equal(f.w.document.querySelector('#timeline li').textContent,'Existing view');
+ }finally{f.close();}
+});
+
+test('the shared journey authority excludes previews, estimates and invalidated selections without a Japanese scenery element',async()=>{
+ const f=await fixture({language:'en',selected:true});try{
+  assert.equal(f.w.document.getElementById('sp-view'),null);assert.equal(f.card.hidden,false);
+  for(const journey of [{mode:'train',preview:true},{mode:'estimate',preview:false},null]){
+   f.w.journey=journey;f.w.document.dispatchEvent(new f.w.Event('input',{bubbles:true}));await tick();assert.equal(f.card.hidden,true);
+  }
+  f.select(true);f.answer.textContent='Selected again';await tick();assert.equal(f.card.hidden,false);
  }finally{f.close();}
 });
 

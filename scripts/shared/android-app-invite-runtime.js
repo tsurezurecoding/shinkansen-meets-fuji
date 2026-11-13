@@ -111,8 +111,11 @@
     card.style.visibility=good?'visible':'hidden';card.inert=!good;if(good){card.style.left=good.x+'px';card.style.top=good.y+'px';}viewed();
   }
   function mountInline(){
-    const windowView=document.getElementById('sp-view'),section=document.getElementById('timelineSection'),answer=document.getElementById('fujiTrainAnswer');
-    if(windowView?.dataset.state!=='selected'||!section||section.hidden)return false;
+    const section=document.getElementById('timelineSection'),answer=document.getElementById('fujiTrainAnswer');
+    // app.js owns this classic-script lexical state in every edition. The Japanese scenery preview is optional.
+    let selected=false;
+    try{selected=typeof journey!=='undefined'&&journey?.mode==='train'&&journey.preview!==true;}catch(error){return false;}
+    if(!selected||!section||section.hidden)return false;
     const anchor=answer&&!answer.hidden?answer:section.querySelector('.section-head');
     if(!anchor)return false;
     if(anchor.nextElementSibling!==card)anchor.after(card);
@@ -168,6 +171,7 @@
   new MutationObserver(records=>{if(records.some(r=>r.target!==card&&!card.contains(r.target)&&r.target!==live)){controlsDirty=true;schedule();}}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class','open','href',...(inline?['data-state']:[])],childList:true});
   document.addEventListener('fullscreenchange',schedule);
   document.addEventListener('focusin',e=>{if(!card.contains(e.target))lastFocus=e.target;schedule();});document.addEventListener('focusout',schedule);
+  if(inline){document.addEventListener('input',schedule);document.addEventListener('change',schedule);}
   if(!inline){
     window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
     window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);

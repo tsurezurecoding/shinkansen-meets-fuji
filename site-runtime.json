@@ -2,7 +2,7 @@
   "schema": "mado-site-runtime",
   "version": 1,
   "assets": {
-    "android-app-invite.js": "08658d81",
+    "android-app-invite.js": "cfd897eb",
     "shared-ui/de.cards.js": "6375fc03",
     "shared-ui/de.rail-castles.js": "214c8506",
     "shared-ui/de.rail-drinks.js": "669618ad",
