@@ -183,6 +183,31 @@ export function onlyArtworkSitemapChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const omamoriFiles=new Set(['scripts/generate-omamori-page.mjs','scripts/omamori-page.test.mjs','scripts/shared/omamori-entry.mjs',
+    'omamori.html','en/omamori.html','omamori.css','omamori.js','data/omamori/ja.json','data/omamori/en.json','data/omamori-photo-sources.json',
+    'images/omamori/omamori-various.jpg','images/omamori/omamori-meiji.jpg',
+    'scripts/generate-everyday-page.mjs','scripts/shared/everyday-related.mjs','scripts/shared/castle-localization.mjs',
+    'scripts/generate-food-country-ja.mjs','scripts/generate-content-manifest.mjs','scripts/generate-spot-pages.mjs',
+    'scripts/validate-language-pages.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs','scripts/drinks-locales.test.mjs',
+    'foods.html','countryside.html','en/foods.html','en/drinks.html','en/everyday-japan.html','language-router.js','spot-page-shared.js',
+    'package.json','site-runtime.json','spot-page-runtime.json','content-manifest.json','sitemap.xml','shared-ui/ja.rail-countryside.js']);
+  let omamoriPackage=!files.includes('package.json');
+  if(!omamoriPackage&&packageBefore&&packageAfter){
+    const before=typeof packageBefore==='string'?JSON.parse(packageBefore):structuredClone(packageBefore);
+    const after=typeof packageAfter==='string'?JSON.parse(packageAfter):structuredClone(packageAfter);
+    if(after.scripts){
+      for(const key of ['build:pages','preflight:spots'])if(after.scripts[key])after.scripts[key]=after.scripts[key].replace(/node scripts\/generate-omamori-page\.mjs(?: --check)? && /,'');
+      if(after.scripts['test:generator'])after.scripts['test:generator']=after.scripts['test:generator'].replace('scripts/omamori-page.test.mjs ','');
+    }
+    omamoriPackage=isDeepStrictEqual(before,after);
+  }
+  if(files.includes('scripts/generate-omamori-page.mjs')&&omamoriPackage&&changes.every(({path:file,status})=>status!=='D'&&(omamoriFiles.has(file)||file.endsWith('.html')&&assetVersionOnly(file))))return {
+    scope:'omamori-everyday',needsDependencies:true,pagesCandidate:true,
+    reason:'Japanese and English omamori articles using existing Everyday Japan components, edition-aware entry cards, two-way routing, photo rights and Web distribution. Other languages retain their current content.',
+    commands:[...syntax,node('--test','scripts/omamori-page.test.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/food-country-locales.test.mjs','scripts/drinks-locales.test.mjs'),
+      ...['generate-omamori-page','generate-foods-page','generate-drinks-page','generate-everyday-page','generate-food-country-ja','generate-site-chrome','generate-site-runtime'].map(name=>node(`scripts/${name}.mjs`,'--check')),
+      node('scripts/validate-language-pages.mjs'),node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')]
+  };
   const editorialFiles=new Set(['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','scripts/shared/story-editorial.test.mjs',
     'scripts/validate-story-window.mjs','scripts/generate-content-manifest.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs',
     'story-window.js','story-window-editorial.css','content-manifest.json','site-runtime.json','spot-page-runtime.json','sitemap.xml']);

@@ -47,7 +47,7 @@
     "shared-ui/it.rail-spots-maruko-bridge.js": "f454078c",
     "shared-ui/it.shell.js": "f51d5a4e",
     "shared-ui/ja.cards.js": "e433df7f",
-    "shared-ui/ja.rail-countryside.js": "7f523ad0",
+    "shared-ui/ja.rail-countryside.js": "5d7c5b7a",
     "shared-ui/ja.shell.js": "57d9f35a",
     "shared-ui/ko.cards.js": "df140053",
     "shared-ui/ko.rail-castles.js": "b16c6d79",
@@ -94,7 +94,7 @@
     "spot-media-gallery.css": "52b1641e",
     "spot-media-gallery.js": "9f0b0fa6",
     "spot-page-shared-data.js": "1e265c9d",
-    "spot-page-shared.js": "9fb18171",
+    "spot-page-shared.js": "bb582b8d",
     "style.css": "2117933f"
   }
 }

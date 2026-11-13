@@ -1810,5 +1810,39 @@
     "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested Japanese and English Everyday Japan integration, not yet published",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "紐の付いた色とりどりのお守り。袋には開運、学業、厄除などの文字が見える。",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "en/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested Japanese and English Everyday Japan integration, not yet published",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "A collection of colorful omamori pouches with cords, including inscriptions for good fortune, studies, and protection.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
   }
 }

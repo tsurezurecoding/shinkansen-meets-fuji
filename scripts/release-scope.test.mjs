@@ -6,6 +6,20 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('omamori editions use focused checks and reject unrelated content or dependencies',()=>{
+  const files=['scripts/generate-omamori-page.mjs','data/omamori/en.json','omamori.html','en/omamori.html','images/omamori/omamori-various.jpg','spot-page-shared.js','content-manifest.json'];
+  const plan=chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope,'omamori-everyday');
+  assert.ok(plan.commands.some(command=>command.includes('scripts/validate-language-pages.mjs')));
+  assert.ok(!plan.commands.some(command=>command.includes('verify')));
+  assert.notEqual(chooseReleaseScope([...files,'data.js'].map(change)).scope,'omamori-everyday');
+  const before={scripts:{'build:pages':'node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};
+  const after={scripts:{'build:pages':'node scripts/generate-omamori-page.mjs && node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};
+  assert.equal(chooseReleaseScope([...files,'package.json'].map(change),{packageBefore:JSON.stringify(before),packageAfter:JSON.stringify(after)}).scope,'omamori-everyday');
+  after.dependencies.jsdom='2';
+  assert.notEqual(chooseReleaseScope([...files,'package.json'].map(change),{packageBefore:JSON.stringify(before),packageAfter:JSON.stringify(after)}).scope,'omamori-everyday');
+});
+
 test('story editorial release covers ten editions and display variants, excluding unrelated work',()=>{
   const files=['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','story-window-editorial.css','story-window.js',
     'data/story-window/en/godzilla.html','data/story-window/th/ui.json','th/stories/shinkalion.html','stories/index.html',

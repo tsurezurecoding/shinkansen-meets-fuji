@@ -6,6 +6,7 @@
   if (config ? config.routeLanguage(path) : /\/(?:en)(?:\/|$)/.test(path)) return;
 
   var routes = {
+    "/omamori.html": "en/omamori.html",
     "/stories/index.html": "../en/stories/index.html",
     "/stories/godzilla.html": "../en/stories/godzilla.html",
     "/stories/shogun.html": "../en/stories/shogun.html",

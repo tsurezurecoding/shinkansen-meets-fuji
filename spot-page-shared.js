@@ -313,6 +313,7 @@
     "countryside.html": { en: true },
     // Food article has a Japanese edition; the editorial collection remains English-only.
     "foods.html": { en: true },
+    "omamori.html": { en: true },
     "everyday-japan.html": { en: false },
     // Approved English station feature; no Japanese article counterpart.
     "tokyo-kyoto-stations.html": { en: false },
