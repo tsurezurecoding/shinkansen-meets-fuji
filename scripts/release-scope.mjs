@@ -183,6 +183,29 @@ export function onlyArtworkSitemapChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const trainInviteFiles = new Set(['scripts/shared/android-app-invite-runtime.js','scripts/shared/android-app-invite-copy.mjs',
+    'scripts/shared/android-app-invite.css','scripts/shared/android-app-invite.mjs','scripts/generate-android-app-invite-assets.mjs',
+    'scripts/generate-android-app-invites.mjs','scripts/android-app-train-invite.test.mjs','scripts/release-scope.mjs',
+    'scripts/release-scope.test.mjs','package.json','android-app-invite.js','it/start.html','th/start.html','site-runtime.json','content-manifest.json']);
+  let trainInvitePackage = !files.includes('package.json');
+  if (!trainInvitePackage && packageBefore && packageAfter) {
+    const before=JSON.parse(packageBefore),after=JSON.parse(packageAfter),command=before.scripts?.['test:android-invite'];
+    if (command && after.scripts?.['test:android-invite']===command+' scripts/android-app-train-invite.test.mjs') {
+      after.scripts['test:android-invite']=command;trainInvitePackage=isDeepStrictEqual(before,after);
+    }
+  }
+  if (files.includes('scripts/shared/android-app-invite-runtime.js') && files.includes('scripts/android-app-train-invite.test.mjs') && trainInvitePackage &&
+      changes.every(change=>change.status!=='D' && trainInviteFiles.has(change.path))) return {
+    scope:'android-train-invite',needsDependencies:true,pagesCandidate:true,
+    reason:'Train-result inline invitation in ten editions, shared installation/consent policy, retained floating behavior elsewhere, and Italian/Thai page configuration only',
+    commands:[...syntax,node('--test','scripts/android-app-invite.test.mjs','scripts/android-app-invite-reset.test.mjs',
+      'scripts/android-app-invite-assets.test.mjs','scripts/android-app-train-invite.test.mjs','scripts/release-scope.test.mjs',
+      'scripts/site-runtime-loader.test.mjs','scripts/generate-site-runtime.test.mjs','scripts/starter-locales.test.mjs'),
+      node('scripts/generate-android-app-invite-assets.mjs','--check'),node('scripts/generate-android-app-invites.mjs','--check'),
+      node('scripts/generate-utility-locales.mjs','--route','start.html','--check'),node('scripts/generate-site-runtime.mjs','--check'),
+      node('scripts/validate-train-select.mjs'),node('scripts/validate-site-navigation.mjs','--route','start.html'),
+      node('scripts/check-content-manifest.mjs')]
+  };
   const editorialFiles=new Set(['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','scripts/shared/story-editorial.test.mjs',
     'scripts/validate-story-window.mjs','scripts/generate-content-manifest.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs',
     'story-window.js','story-window-editorial.css','content-manifest.json','site-runtime.json','spot-page-runtime.json','sitemap.xml']);

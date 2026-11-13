@@ -15,3 +15,26 @@ export function inviteCopy(language, general = false) {
  const newTab={ja:'新しいタブで開きます',en:'opens a new tab',fr:'ouvre un nouvel onglet',de:'öffnet einen neuen Tab',es:'abre una pestaña nueva',ko:'새 탭에서 열림','zh-Hant':'在新分頁開啟','zh-Hans':'在新标签页打开'};
  return {label:c[0],title:c[general?8:1],body:c[general?9:2],free:c[3],play:c[4],playLabel:c[4]+' ('+newTab[language]+')',close:c[5],closed:c[6],failed:c[7]};
 }
+
+// Train-result placement is localized independently of the eight-language floating invitation.
+export const TRAIN_INVITE_COPY = {
+ ja: ['画面を消しても車窓案内','案内を始めると、見どころを通知や音声でお知らせします。','Web版との違い・使い方'],
+ en: ['Guidance with your screen off','Turn on guidance to get notifications or audio for sights along the way.','App features and setup'],
+ fr: ['Le guidage, même écran éteint','Activez le guidage pour recevoir des notifications ou des annonces audio aux points d’intérêt.','Fonctionnalités et utilisation (anglais)'],
+ de: ['Hinweise bei ausgeschaltetem Bildschirm','Aktivieren Sie die Begleitung, um Hinweise zu Sehenswürdigkeiten als Benachrichtigung oder Audio zu erhalten.','Funktionen und Nutzung (Englisch)'],
+ es: ['Avisos con la pantalla apagada','Activa la guía para recibir notificaciones o avisos de audio sobre los lugares de interés.','Funciones y uso de la app (inglés)'],
+ ko: ['화면을 꺼도 차창 안내','안내를 시작하면 볼거리를 알림이나 음성으로 알려 드려요.','앱 기능과 사용법 (영어)'],
+ 'zh-Hant': ['關閉螢幕，也不錯過風景','開始導覽後，透過通知或語音提醒沿途看點。','App 功能與使用方式（英文）'],
+ 'zh-Hans': ['关闭屏幕，也不错过风景','开始导览后，通过通知或语音提醒沿途看点。','App 功能与使用方式（英文）'],
+ it: ['Avvisi anche a schermo spento','Avvia la guida per ricevere notifiche o avvisi audio sui luoghi lungo il percorso.','Funzioni e utilizzo dell’app (inglese)','La guida audio è disponibile in inglese e nelle altre lingue supportate dall’app.'],
+ th: ['ปิดหน้าจอก็ไม่พลาดวิว','เริ่มการนำทางเพื่อรับการแจ้งเตือนหรือเสียงบรรยายเมื่อถึงจุดชมวิวระหว่างทาง','ฟังก์ชันและวิธีใช้แอป (ภาษาอังกฤษ)','เสียงบรรยายในแอปรองรับภาษาอังกฤษและภาษาอื่นที่มีให้บริการ'],
+};
+export function trainInviteCopy(language) {
+ const row = TRAIN_INVITE_COPY[language];
+ if (!row) throw Error('Unsupported train invitation language: '+language);
+ const extra = {
+  it: {label:'App Android',free:'Gratis, senza registrazione.',play:'Visualizza su Google Play',playLabel:'Visualizza su Google Play (si apre in una nuova scheda)'},
+  th: {label:'แอป Android',free:'ฟรี ไม่ต้องลงทะเบียน',play:'ดูใน Google Play',playLabel:'ดูใน Google Play (เปิดแท็บใหม่)'},
+ };
+ return {...(extra[language] || inviteCopy(language)),title:row[0],body:row[1],learn:row[2],notice:row[3] || ''};
+}

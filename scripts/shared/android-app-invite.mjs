@@ -1,11 +1,11 @@
 import fs from 'node:fs';
 import {DISMISS_DAYS,UNKNOWN_STATUS_POLICY} from './android-app-invite-policy.mjs';
-import {inviteCopy} from './android-app-invite-copy.mjs';
+import {inviteCopy,trainInviteCopy} from './android-app-invite-copy.mjs';
 import {withSiteRuntimeLoader} from './site-runtime-html.mjs';
 const runtime=fs.readFileSync(new URL('./android-app-invite-runtime.js',import.meta.url),'utf8');
 const reset=fs.readFileSync(new URL('./android-app-invite-reset.js',import.meta.url),'utf8');
 const css=fs.readFileSync(new URL('./android-app-invite.css',import.meta.url),'utf8');
-export function inviteRuntime(config){return runtime.replace('__INVITE_CONFIG__',JSON.stringify({dismissDays:DISMISS_DAYS,unknownPolicy:UNKNOWN_STATUS_POLICY,copy:inviteCopy(config.language||'ja',config.general),css,...config}));}
+export function inviteRuntime(config){return runtime.replace('__INVITE_CONFIG__',JSON.stringify({dismissDays:DISMISS_DAYS,unknownPolicy:UNKNOWN_STATUS_POLICY,copy:config.pageContext==='train_search'?trainInviteCopy(config.language||'ja'):inviteCopy(config.language||'ja',config.general),css,...config}));}
 export function withAndroidAppInvite(html,language,pageContext,options={}){
  const resetBlock='<!-- ANDROID_APP_INVITE_RESET_START -->\n<script>'+reset+'</script>\n<!-- ANDROID_APP_INVITE_RESET_END -->\n';
  const resetPattern=/<!-- ANDROID_APP_INVITE_RESET_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_RESET_END -->\n/;
@@ -33,8 +33,9 @@ export function withAndroidAppInvite(html,language,pageContext,options={}){
 const FEATURES=new Set(['727-collection.html','zukan.html','mieru.html','castles.html','ferris-wheels.html','arenani.html','hanabi.html','yakei.html','window-moments.html','sparkling-dreams.html','countryside.html','everyday-japan.html','foods.html','travel-foods.html','beer-on-shinkansen.html','drinks.html','window-trip.html','window-film.html','window-artworks.html','reflections.html','somato.html','sumato.html','sumie.html','tokyo-kyoto-stations.html','sudoori.html','sudoori/index.html']);
 export function invitePageConfig(file){
  const bits=file.replaceAll('\\','/').split('/');
- const language=bits.length>1&&['en','fr','de','es','ko','zh-Hant','zh-Hans'].includes(bits[0])?bits.shift():'ja';
+ const language=bits.length>1&&['en','fr','de','es','ko','zh-Hant','zh-Hans','it','th'].includes(bits[0])?bits.shift():'ja';
  const originalRoute=bits.join('/');
+ if (['it','th'].includes(language) && originalRoute!=='start.html') return null;
  if (/^(somato|sumie|window-film|window-trip)\.html$/.test(originalRoute)) return null;
  const route=originalRoute.replace(/^artworks\/(somato|sumie|window-film|window-trip)\/index\.html$/, '$1.html');
  if(!['index.html','guide.html','start.html','live/index.html'].includes(route)&&!FEATURES.has(route)&&!/^spots\/[a-z0-9-]+\.html$/.test(route))return null;
@@ -43,8 +44,8 @@ export function invitePageConfig(file){
  return {language,pageContext,general};
 }
 export function withPageAndroidAppInvite(html,file){
- // Web translations do not imply Italian/Thai audio or navigation in the app.
- if (/^(?:it|th)\//.test(file)) return html.replace(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/g, '');
+ // Only the train result opts these editions in; their copy explains the app's audio languages.
+ if (/^(?:it|th)\//.test(file) && !/^(?:it|th)\/start\.html$/.test(file)) return html.replace(/<!-- ANDROID_APP_INVITE_START -->[\s\S]*?<!-- ANDROID_APP_INVITE_END -->/g, '');
  const cfg=invitePageConfig(file);
  if(!cfg||!/var (?:measurementId|id) = "G-C2ESB694FV"/.test(html))return html;
  const assetPrefix=file.includes('artworks/')?(cfg.language==='en'?'../':''):(/<base\b/i.test(html)?'':'../'.repeat(file.split('/').length-1));

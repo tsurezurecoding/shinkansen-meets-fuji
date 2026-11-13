@@ -1,7 +1,7 @@
 import { readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
-import { INVITE_COPY, inviteCopy } from './shared/android-app-invite-copy.mjs';
+import { INVITE_COPY, inviteCopy, TRAIN_INVITE_COPY, trainInviteCopy } from './shared/android-app-invite-copy.mjs';
 import { DISMISS_DAYS, UNKNOWN_STATUS_POLICY } from './shared/android-app-invite-policy.mjs';
 
 export const ANDROID_INVITE_ASSET = 'android-app-invite.js';
@@ -21,6 +21,7 @@ export function createAndroidAppInviteAsset({ runtime, css }) {
 (function () {
   'use strict';
   const copies = ${JSON.stringify(copies)};
+  const trainCopies = ${JSON.stringify(Object.fromEntries(Object.keys(TRAIN_INVITE_COPY).map(language => [language,trainInviteCopy(language)])))};
   const css = ${JSON.stringify(css)};
   function readInviteConfig() {
     const element = document.getElementById('mado-android-invite-config');
@@ -28,14 +29,16 @@ export function createAndroidAppInviteAsset({ runtime, css }) {
     let page;
     try { page = JSON.parse(element.textContent); } catch (error) { return null; }
     if (!page || typeof page !== 'object' || Array.isArray(page) || Object.keys(page).length !== 4 ||
-        typeof page.language !== 'string' || !Object.prototype.hasOwnProperty.call(copies, page.language) ||
+        typeof page.language !== 'string' || !Object.prototype.hasOwnProperty.call(trainCopies, page.language) ||
         !['landing', 'fuji_guide', 'train_search', 'live', 'gallery', 'collection', 'spot', 'feature'].includes(page.pageContext) ||
         typeof page.assetPrefix !== 'string' || !/^(?:\\.\\.\\/)*$/.test(page.assetPrefix) ||
         typeof page.general !== 'boolean') return null;
-    const localized = copies[page.language];
+    const train = page.pageContext === 'train_search';
+    const localized = train ? trainCopies[page.language] : copies[page.language];
+    if (!localized) return null;
     return { language: page.language, pageContext: page.pageContext, assetPrefix: page.assetPrefix,
       dismissDays: ${DISMISS_DAYS}, unknownPolicy: ${JSON.stringify(UNKNOWN_STATUS_POLICY)}, css,
-      copy: { ...localized, title: page.general ? localized.generalTitle : localized.title,
+      copy: train ? localized : { ...localized, title: page.general ? localized.generalTitle : localized.title,
         body: page.general ? localized.generalBody : localized.body } };
   }
 ${runtime.replace('__INVITE_CONFIG__', 'readInviteConfig()').trimEnd()}

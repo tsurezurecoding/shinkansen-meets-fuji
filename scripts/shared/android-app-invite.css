@@ -7,3 +7,14 @@
 #android-app-invite a:focus-visible,#android-app-invite-close:focus-visible{outline:3px solid #27678e;outline-offset:2px}
 #android-app-invite-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}@media print{#android-app-invite{display:none!important}}
 #android-app-invite .context-nowrap{white-space:nowrap}
+#android-app-invite.android-app-invite-inline{position:static;z-index:auto;width:auto;max-width:none;max-height:none;margin:14px 0;padding:16px;background:linear-gradient(120deg,#fff,#edf7f8);border-color:#cfdee3;box-shadow:none;overflow:visible;font:inherit}
+#android-app-invite.android-app-invite-inline .context-heading{padding-right:0;gap:10px}
+#android-app-invite.android-app-invite-inline .context-app-icon{width:40px;height:40px;border-radius:9px}
+#android-app-invite.android-app-invite-inline .context-label{font-size:10px;line-height:1.5;letter-spacing:.06em}
+#android-app-invite.android-app-invite-inline h3{font:600 18px/1.5 system-ui,sans-serif;margin:0;overflow-wrap:anywhere}
+#android-app-invite.android-app-invite-inline p{font:14px/1.7 system-ui,sans-serif;margin:10px 0 0;overflow-wrap:anywhere}
+#android-app-invite.android-app-invite-inline .context-free{display:inline-block}
+#android-app-invite.android-app-invite-inline .context-notice{font-size:12px;color:#486b82}
+#android-app-invite.android-app-invite-inline .context-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px 16px;margin-top:12px}
+#android-app-invite.android-app-invite-inline .context-play{position:static;display:inline-flex;align-items:center;justify-content:center;gap:6px;width:auto;min-width:0;min-height:44px;max-width:100%;margin:0;padding:10px 16px;border-radius:10px;background:#193c52;color:#fff;text-align:center;font:600 14px/1.5 system-ui,sans-serif;box-sizing:border-box;overflow-wrap:anywhere}
+#android-app-invite.android-app-invite-inline .context-learn{display:inline-flex;align-items:center;min-height:44px;color:#26566d;font:14px/1.6 system-ui,sans-serif;overflow-wrap:anywhere}
