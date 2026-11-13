@@ -48,7 +48,7 @@
     "audit:photos": "node scripts/audit-photo-credits.mjs",
     "build:runtime-data": "node scripts/generate-runtime-data.mjs",
     "check:runtime-data": "node scripts/generate-runtime-data.mjs --check && node scripts/validate-runtime-data.mjs",
-    "test:android-invite": "node --test scripts/android-app-invite.test.mjs scripts/android-app-invite-reset.test.mjs scripts/android-app-invite-assets.test.mjs",
+    "test:android-invite": "node --test scripts/android-app-invite.test.mjs scripts/android-app-invite-reset.test.mjs scripts/android-app-invite-assets.test.mjs scripts/android-app-train-invite.test.mjs",
     "build:train-window": "node scripts/generate-train-window-geometry.mjs",
     "check:train-window": "node scripts/generate-train-window-geometry.mjs --check",
     "build:full": "node scripts/generate-site-chrome.mjs --materialize-sources && node scripts/generate-android-app-invite-assets.mjs && npm run build:data && npm run build:gallery-thumbs && npm run build:runtime-data && npm run build:train-window && npm run sync:versions && npm run fix:spot-counts && npm run build:inbound && npm run build:pages && node scripts/generate-site-chrome.mjs && npm run sync:versions && node scripts/generate-content-manifest.mjs",

@@ -3,6 +3,8 @@
   'use strict';
   const config = __INVITE_CONFIG__;
   if (!config || document.getElementById('android-app-invite')) return;
+  const inline = config.pageContext === 'train_search';
+  const entrySource = inline ? 'android_browser_train_inline' : 'android_browser_floating';
   const key = 'mado-android-app-invite-v2';
   const dismissMs = config.dismissDays * 86400000;
   const pkg = 'com.michikusatravel.shinkansenwindow';
@@ -43,7 +45,11 @@
   const asset = path => new URL(config.assetPrefix+path,document.baseURI).href;
   const c = config.copy;
   const escape = value => String(value).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
-  card.innerHTML='<button id="android-app-invite-close" type="button" aria-label="'+escape(c.close)+'" title="'+escape(c.close)+'"><span aria-hidden="true">×</span></button><div class="context-heading"><img class="context-app-icon" width="32" height="32" alt=""><div><span class="context-label">'+escape(c.label)+'</span><h2 id="android-app-invite-title">'+escape(c.title)+'</h2></div></div><p>'+escape(c.body)+' <span>'+escape(c.free)+'</span></p><a class="context-play" aria-label="'+escape(c.playLabel||c.play)+' ↗" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_floating&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer"><img class="context-play-badge" width="646" height="250" alt=""><span class="context-play-fallback">'+escape(c.play)+' ↗</span></a>';
+  const floatingHTML='<button id="android-app-invite-close" type="button" aria-label="'+escape(c.close)+'" title="'+escape(c.close)+'"><span aria-hidden="true">×</span></button><div class="context-heading"><img class="context-app-icon" width="32" height="32" alt=""><div><span class="context-label">'+escape(c.label)+'</span><h2 id="android-app-invite-title">'+escape(c.title)+'</h2></div></div><p>'+escape(c.body)+' <span>'+escape(c.free)+'</span></p><a class="context-play" aria-label="'+escape(c.playLabel||c.play)+' ↗" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium=android_browser_floating&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer"><img class="context-play-badge" width="646" height="250" alt=""><span class="context-play-fallback">'+escape(c.play)+' ↗</span></a>';
+  const title = config.language==='ja' ? '<span class="copy-chunk">画面を消しても</span><span class="copy-chunk">車窓案内</span>' : escape(c.title);
+  const trainHTML = inline ? '<div class="context-heading"><img class="context-app-icon" width="40" height="40" alt=""><div><span class="context-label">'+escape(c.label)+'</span><h3 id="android-app-invite-title">'+title+'</h3></div></div><p>'+escape(c.body)+' <span class="context-free">'+escape(c.free)+'</span></p>'+(c.notice?'<p class="context-notice">'+escape(c.notice)+'</p>':'')+'<div class="context-actions"><a class="context-play" aria-label="'+escape(c.playLabel)+'" href="https://play.google.com/store/apps/details?id='+pkg+'&amp;utm_source=shinkansen_window_web&amp;utm_medium='+entrySource+'&amp;utm_campaign=android_app_invite" target="_blank" rel="noopener noreferrer">'+escape(c.play)+' <span aria-hidden="true">↗</span></a><a class="context-learn" hreflang="'+(config.language==='ja'?'ja':'en')+'" href="'+asset((config.language==='ja'?'':'en/')+'android-app.html#eaWhyTitle')+'">'+escape(c.learn)+' <span aria-hidden="true">›</span></a></div>' : '';
+  card.classList.toggle('android-app-invite-inline',inline);
+  card.innerHTML=inline?trainHTML:floatingHTML;
   document.body.append(card);
   const live=document.createElement('div');live.id='android-app-invite-announcement';live.setAttribute('role','status');live.setAttribute('aria-live','polite');live.setAttribute('aria-atomic','true');document.body.append(live);
   function track(name) {
@@ -55,7 +61,7 @@
       }
     } catch(e) { return false; }
     if (window.MADO_ANALYTICS_DISABLED !== false || typeof window.gtag !== 'function') return false;
-    try { window.gtag('event',name,{entry_source:'android_browser_floating',language:config.language,page_context:config.pageContext,variant:'floating_v2_14d',cta_id:'android_app_invite',install_status:status}); return true; } catch(e) { return false; }
+    try { window.gtag('event',name,{entry_source:entrySource,language:config.language,page_context:config.pageContext,variant:inline?'train_inline_v1':'floating_v2_14d',cta_id:'android_app_invite',install_status:status}); return true; } catch(e) { return false; }
   }
   function viewed() {
     if(!viewSent&&!card.hidden&&!card.inert&&ratio>=0.5&&document.visibilityState==='visible'&&getComputedStyle(card).visibility==='visible')viewSent=track('android_app_invite_view');
@@ -82,6 +88,7 @@
   }
   function place(){
     if(card.hidden)return;
+    if(inline){card.style.visibility='visible';card.inert=false;viewed();return;}
     const vv=window.visualViewport,vw=vv?vv.width:innerWidth,vh=vv?vv.height:innerHeight,ox=vv?vv.offsetLeft:0,oy=vv?vv.offsetTop:0;
     if(interactionBusy()||(document.activeElement&&!card.contains(document.activeElement)&&document.activeElement.matches('input,select,textarea,[contenteditable=true],.train-chip'))){card.style.visibility='hidden';card.inert=true;return;}
     const style=getComputedStyle(card),inset=name=>parseFloat(style.getPropertyValue('--safe-'+name))||0;
@@ -103,21 +110,32 @@
     }
     card.style.visibility=good?'visible':'hidden';card.inert=!good;if(good){card.style.left=good.x+'px';card.style.top=good.y+'px';}viewed();
   }
+  function mountInline(){
+    const section=document.getElementById('timelineSection'),answer=document.getElementById('fujiTrainAnswer');
+    // app.js owns this classic-script lexical state in every edition. The Japanese scenery preview is optional.
+    let selected=false;
+    try{selected=typeof journey!=='undefined'&&journey?.mode==='train'&&journey.preview!==true;}catch(error){return false;}
+    if(!selected||!section||section.hidden)return false;
+    const anchor=answer&&!answer.hidden?answer:section.querySelector('.section-head');
+    if(!anchor)return false;
+    if(anchor.nextElementSibling!==card)anchor.after(card);
+    return true;
+  }
   function refresh(){
     clearTimeout(timer);let s,available=true;
     try{s=read();storageReady();}catch(e){available=false;}
     const canShow=status!=='checking'&&status!=='installed'&&config.unknownPolicy==='show-eligible';
-    const visible=!pageAway&&available&&browser()&&canShow&&!localClosed&&(!s||s.dismissedAt+dismissMs<=Date.now());
+    const visible=!pageAway&&available&&browser()&&canShow&&!localClosed&&(!s||s.dismissedAt+dismissMs<=Date.now())&&(!inline||mountInline());
     const focused=card.contains(document.activeElement);card.hidden=!visible;if(!visible&&focused)focusBack();
     if(visible){
       const icon=card.querySelector('.context-app-icon');if(!icon.hasAttribute('src'))icon.src=asset('images/android/app-icon-192.webp');
-      const badge=card.querySelector('.context-play-badge');if(!badge.hasAttribute('src')){badge.addEventListener('load',()=>{badge.parentElement.classList.add('context-badge-loaded');schedule();},{once:true});badge.src=asset('images/google-play/'+(config.language==='ja'?'ja':'en')+'-badge.png');}
+      if(!inline){const badge=card.querySelector('.context-play-badge');if(!badge.hasAttribute('src')){badge.addEventListener('load',()=>{badge.parentElement.classList.add('context-badge-loaded');schedule();},{once:true});badge.src=asset('images/google-play/'+(config.language==='ja'?'ja':'en')+'-badge.png');}}
       place();
     }
     if(available&&s&&s.dismissedAt+dismissMs>Date.now()&&!localClosed)timer=setTimeout(refresh,Math.min(s.dismissedAt+dismissMs-Date.now(),2147483647));
   }
-  // Scroll/resize only place the card: no storage probe or eligibility recheck.
-  function schedule(){if(!card.isConnected||pageAway||frame)return;frame=requestAnimationFrame(()=>{frame=0;place();});}
+  // Floating scroll/resize only place the card; inline updates follow train-result DOM changes.
+  function schedule(){if(!card.isConnected||pageAway||frame)return;frame=requestAnimationFrame(()=>{frame=0;inline?refresh():place();});}
   async function detect(){
     if(pageAway)return;
     clearTimeout(detectionTimer);
@@ -137,22 +155,27 @@
     }
     if(turn===generation&&!pageAway){status=next;refresh();}
   }
-  card.querySelector('button').onclick=()=>{
+  const closeButton=card.querySelector('button');
+  if(closeButton)closeButton.onclick=()=>{
     let saved=true;try{localStorage.setItem(key,JSON.stringify({v:2,dismissedAt:Date.now()}));}catch(e){saved=false;}
     localClosed=!saved;track('android_app_invite_dismiss');focusBack();refresh();
     live.textContent=saved?c.closed:c.failed;
   };
   card.querySelector('a').addEventListener('click',()=>track('android_app_invite_play_click')); // Click is not installation; no persistent stop.
+  if(inline)card.querySelector('.context-learn').addEventListener('click',()=>track('android_app_guide_click'));
   window.addEventListener('mado:android-invite-state',schedule);
   document.addEventListener('pointerdown',e=>{if(!card.contains(e.target)&&e.target.closest('.leaflet-container,#map,[data-train-picker],.train-results,[data-android-invite-protect]')){pointerBusy=true;schedule();}},{passive:true});
   function pointerEnd(){if(pointerBusy){pointerBusy=false;schedule();}}
   window.addEventListener('pointerup',pointerEnd,{passive:true});
   window.addEventListener('pointercancel',pointerEnd,{passive:true});
-  new MutationObserver(records=>{if(records.some(r=>r.target!==card&&!card.contains(r.target)&&r.target!==live)){controlsDirty=true;schedule();}}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class','open','href'],childList:true});
+  new MutationObserver(records=>{if(records.some(r=>r.target!==card&&!card.contains(r.target)&&r.target!==live)){controlsDirty=true;schedule();}}).observe(document.body,{subtree:true,attributes:true,attributeFilter:['hidden','class','open','href',...(inline?['data-state']:[])],childList:true});
   document.addEventListener('fullscreenchange',schedule);
   document.addEventListener('focusin',e=>{if(!card.contains(e.target))lastFocus=e.target;schedule();});document.addEventListener('focusout',schedule);
-  window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
-  window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
+  if(inline){document.addEventListener('input',schedule);document.addEventListener('change',schedule);}
+  if(!inline){
+    window.addEventListener('scroll',schedule,{passive:true,capture:true});window.addEventListener('resize',schedule);
+    window.visualViewport?.addEventListener('resize',schedule);window.visualViewport?.addEventListener('scroll',schedule);
+  }
   window.addEventListener('storage',e=>{if(e.key===key||e.key===null){localClosed=false;refresh();}});
   window.addEventListener('pagehide',()=>{pageAway=true;++generation;clearTimeout(detectionTimer);clearTimeout(timer);cancelAnimationFrame(frame);frame=0;card.hidden=true;});
   window.addEventListener('pageshow',e=>{const returning=pageAway;pageAway=false;if(e.persisted||returning)detect();else refresh();});

@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "1cc9e22064fde48c",
+  "contentVersion": "c2394192b4fba878",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -25,8 +25,8 @@
     {
       "path": "android-app-invite.js",
       "url": "https://www.michikusa-travel.com/android-app-invite.js",
-      "bytes": 21161,
-      "sha256": "449f949c4ec901f79b51efce7b9b32d38e72aead8ca04b8e78ef89c678948bf9"
+      "bytes": 30801,
+      "sha256": "cfd897ebd421c2dd6ff9a9bd904f4e81dca8064ac296d93ef12a404d194bb1a3"
     },
     {
       "path": "app-embedded.css",
@@ -5281,8 +5281,8 @@
     {
       "path": "it/start.html",
       "url": "https://www.michikusa-travel.com/it/start.html",
-      "bytes": 20260,
-      "sha256": "d9ccfcc93740e4b860f70861f8e9856e6fb7864591856a9c5561b364b24a103a"
+      "bytes": 20479,
+      "sha256": "75e58c3c50bad6a8cc8853c86026ef2b49ce572ed00cef771c3551bbdba0e3bd"
     },
     {
       "path": "it/stories/dragonball.html",
@@ -7112,7 +7112,7 @@
       "path": "site-runtime.json",
       "url": "https://www.michikusa-travel.com/site-runtime.json",
       "bytes": 4827,
-      "sha256": "680ce3c81183f7b512bbc138d66be56b013a4b4c956936d2854dfd3c95f087bf"
+      "sha256": "ca808763f9f9d0d2be45df88f68fb496a8a58809af3f45c4ed3ff62dcd91e0d4"
     },
     {
       "path": "sparkling-dreams.html",
@@ -7765,8 +7765,8 @@
     {
       "path": "th/start.html",
       "url": "https://www.michikusa-travel.com/th/start.html",
-      "bytes": 23044,
-      "sha256": "6285e04f376bc6a9400dcfab80e3530ec2ae4e91d2512516bb4325e2eca97c0a"
+      "bytes": 23263,
+      "sha256": "f501236cb749946e6aa63d1e07c058ee5551e2bb060c44993db242baac05131a"
     },
     {
       "path": "th/stories/dragonball.html",
