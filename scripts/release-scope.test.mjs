@@ -439,3 +439,17 @@ test('new registered spots keep their full consumer checks when build scripts ar
   assert.equal(chooseReleaseScope(changes,options).scope,'full');
   assert.equal(chooseReleaseScope([change('package.json')],options).scope,'unmapped');
 });
+
+test('AdSense ownership verification publishes only its root record and rejects unrelated changes', () => {
+  const files = [{path:'ads.txt',status:'A'},change('scripts/release-scope.mjs'),change('scripts/release-scope.test.mjs')];
+  const plan = chooseReleaseScope(files);
+  assert.equal(plan.scope,'adsense-verification');
+  assert.equal(plan.pagesCandidate,true);
+  assert.equal(plan.needsDependencies,false);
+  assert(plan.commands.some(command => command.includes('-e') && command.some(arg => arg.includes("readFileSync('ads.txt'"))));
+  assert.equal(chooseReleaseScope([change('ads.txt')]).scope,'adsense-verification');
+  for (const path of ['index.html','zukan.html','data.js','content-manifest.json','package.json'])
+    assert.notEqual(chooseReleaseScope([...files,change(path)]).scope,'adsense-verification');
+  assert.notEqual(chooseReleaseScope([{path:'ads.txt',status:'D'}]).scope,'adsense-verification');
+  assert.equal(chooseReleaseScope([change('scripts/release-scope.mjs')]).scope,'release-infrastructure');
+});
