@@ -11,6 +11,10 @@ export function englishSnapshot(root, route) {
   const source = stripStoryWindowLinks(readSiteSource(root, 'en/' + route));
   const dom = new JSDOM(source, { url: `https://www.michikusa-travel.com/en/${route}`, runScripts: 'outside-only' });
   const { window } = dom;
+  // New stories appear only in their available editions, not in untranslated mirrors.
+  window.document.querySelectorAll('[data-edition-only]').forEach(node=>node.remove());
+  // Some additions are commissioned for the English edition only.
+  window.document.querySelectorAll('[data-english-edition-only]').forEach(element => element.remove());
   window.eval(fs.readFileSync(path.join(root, 'spot-page-shared-data.js'), 'utf8'));
   const id = route.match(/^spots\/(.+)\.html$/)?.[1];
   if (id && fs.existsSync(path.join(root, 'data/spot-pages', `${id}.en.js`))) window.eval(fs.readFileSync(path.join(root, 'data/spot-pages', `${id}.en.js`), 'utf8'));

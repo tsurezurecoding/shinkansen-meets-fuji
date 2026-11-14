@@ -483,6 +483,18 @@
         "maibara-test-trains"
       ],
       "reason": ""
+    },
+    {
+      "id": "tamaruya-wasabi-sign",
+      "state": "excluded",
+      "representativeIds": [],
+      "reason": "この看板の写真は、スポット記事で紹介しています。"
+    },
+    {
+      "id": "kizakura-otsukaresama-sign",
+      "state": "excluded",
+      "representativeIds": [],
+      "reason": "この看板の写真は、スポット記事で紹介しています。"
     }
   ],
   "photos": [
@@ -1052,7 +1064,7 @@
       "credit": "michikusa",
       "date": "2026-05-30",
       "note": "青空に映えるソーラーアーク",
-      "alt": "ソーラーアークの車窓",
+      "alt": "解体前の青空に映えるソーラーアーク",
       "light": "day",
       "sha256": "4ff439b9c7b227d4ffce381bc770c310ea946f4d25cd002c02d93be2af00e758",
       "bytes": 280165,
@@ -1750,7 +1762,7 @@
   ],
   "mapCredit": "地理院タイル（淡色地図を加工）",
   "sourceHashes": {
-    "data.js": "457b7f6ab2c8eb4483cf561c4d74e2031ddf658d6f7cd776769802d33cf50d8d",
+    "data.js": "47c9c8d6980658a8810bc9a91ef41b3690fad979cad3632bdba57c68b60a84dc",
     "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
   }
 }

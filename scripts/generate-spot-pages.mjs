@@ -533,6 +533,19 @@ const GUIDE_RAIL_LOCALIZATION = {
     },
   },
 };
+// Shared guide rails include the new points; their full articles remain Japanese/English.
+const billboardRailNames = {
+  'zh-Hant': ['田丸屋芥末漬看板', '黃櫻「辛苦了」看板'],
+  'zh-Hans': ['田丸屋芥末渍看板', '黄樱“辛苦了”看板'],
+  fr: ['Panneau de wasabi Tamaruya', 'Panneau d’accueil Kizakura'],
+  de: ['Tamaruya-Wasabi-Schild', 'Kizakura-Willkommensschild'],
+  es: ['Letrero de wasabi Tamaruya', 'Letrero de bienvenida Kizakura'],
+  ko: ['다마루야 와사비 절임 간판', '기자쿠라 수고하셨습니다 간판']
+};
+for (const [lang, names] of Object.entries(billboardRailNames)) {
+  Object.assign(GUIDE_RAIL_LOCALIZATION[lang].spots, { 'tamaruya-wasabi-sign': names[0], 'kizakura-otsukaresama-sign': names[1] });
+}
+
 
 const GUIDE_MOBILE_SPOTS = [
   { id: "tokyo-tower", min: 3, seat: "E" },
@@ -1136,7 +1149,9 @@ function thinSpotPageHTML(spot, lang) {
 }
 
 function spotPageHTML(spot, lang) {
-  return enhanceContentHead(withStoryWindowLinks(thinSpotPageHTML(spot, lang), `${lang === "en" ? "en/" : ""}spots/${spot.id}.html`, appDir), `${lang === 'en' ? 'en/' : ''}spots/${spot.id}.html`, appDir, { spot });
+  const raw = thinSpotPageHTML(spot, lang);
+  const html = ['tamaruya-wasabi-sign', 'kizakura-otsukaresama-sign'].includes(spot.id) ? raw.replace('</head>', `<link rel="stylesheet" href="${lang === 'en' ? '../../' : '../'}window-articles.css?v=${assetVersion('window-articles.css')}">\n</head>`) : raw;
+  return enhanceContentHead(withStoryWindowLinks(html, `${lang === "en" ? "en/" : ""}spots/${spot.id}.html`, appDir), `${lang === 'en' ? 'en/' : ''}spots/${spot.id}.html`, appDir, { spot });
 }
 
 function englishGuideIndexHTML() {
@@ -1859,9 +1874,12 @@ function sitemapXML() {
     { loc: `${siteRoot}/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
+    ...languages.map(lang=>({loc:`${siteRoot}/${lang==='ja'?'':lang+'/'}omamori.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-14'})),
     { loc: `${siteRoot}/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/everyday-japan.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
+    { loc: `${siteRoot}/kyoto-station-views.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-11-14" },
+    { loc: `${siteRoot}/en/kyoto-station-views.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-11-14" },
     { loc: `${siteRoot}/en/tokyo-kyoto-stations.html`, priority: "0.6", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/countryside.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-10" },
@@ -2043,7 +2061,7 @@ function generateSpotPages({ requireExisting = false, preserveHead = false } = {
   return plans.map(({ outputPath }) => outputPath);
 }
 
-export { sitemapXML, englishAppIndexHTML, SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPage, generateSpotPages, isSpotPagePlanChanged, planSpotPage, spotPageHTML, writeChangedSpotPagePlans };
+export { sitemapXML, englishLandingHTML, finalPageOutput, englishAppIndexHTML, SHARED_SPOT_LANGUAGES, SPOTS, generateSpotPage, generateSpotPages, isSpotPagePlanChanged, planSpotPage, spotPageHTML, writeChangedSpotPagePlans };
 
 if (isMain) {
 if (process.argv.includes("--start-only")) {

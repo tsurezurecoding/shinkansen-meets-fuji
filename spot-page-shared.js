@@ -313,9 +313,11 @@
     "countryside.html": { en: true },
     // Food article has a Japanese edition; the editorial collection remains English-only.
     "foods.html": { en: true },
+    "omamori.html": { en: true },
     "everyday-japan.html": { en: false },
     // Approved English station feature; no Japanese article counterpart.
     "tokyo-kyoto-stations.html": { en: false },
+    "kyoto-station-views.html": { en: true },
     "besides-fuji.html": { en: false },
     "727-collection.html": { en: true }
   };
@@ -792,8 +794,13 @@
       var title = chapter.kind === "background" ? readingEyebrow(page, chapter.eyebrow || "BACKGROUND") + '<h2>' + heading + '</h2>' : '<h3>' + heading + '</h3>';
       return '<section class="spot-page-section" id="' + escapeHTML(chapter.id) + '">' + title +
         chapter.paragraphs.map(function (text, index) { return '<p>' + escapeHTML(text) + '</p>' + (index === 0 && chapter.diagram === "fujikawa-frequency" ? pageFrequencyDiagramHTML(lang) : ''); }).join('') +
-        chapter.photos.map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join('') +
-        (chapter.link ? '<p><a href="' + escapeHTML(href(rootPath, chapter.link.route)) + '">' + escapeHTML(chapter.link.label) + '</a></p>' : '') + '</section>';
+        (chapter.photos || []).map(function (photo) { return pageInlineFigureHTML(photo, rootPath, lang); }).join('') +
+        (chapter.records ? '<ol class="spot-article-history">' + chapter.records.map(function (record) {
+          return '<li><span class="spot-article-history-year">' + escapeHTML(record.year) + '</span><div><h3>' + escapeHTML(record.title) + '</h3><p>' + escapeHTML(record.text) + '</p>' +
+            (record.href ? '<a href="' + escapeHTML(record.href) + '"' + (/^https:/.test(record.href) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHTML(record.label) + '</a>' : '') + '</div></li>';
+        }).join('') + '</ol>' : '') +
+        (chapter.media ? pageMediaHTML({ id: page.id + '-' + chapter.id, name: page.name, media: chapter.media }, rootPath, lang) : '') +
+        (chapter.link ? '<p><a href="' + escapeHTML(/^(?:https:|#)/.test(chapter.link.route) ? chapter.link.route : href(rootPath, chapter.link.route)) + '"' + (/^https:/.test(chapter.link.route) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' + escapeHTML(chapter.link.label) + '</a></p>' : '') + '</section>';
     }).join('');
   }
 

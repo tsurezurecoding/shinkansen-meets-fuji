@@ -234,9 +234,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-10-04",
-    "modified": "2026-10-11",
+    "modified": "2026-11-14",
     "publishedEvidence": "2026-10-04_drinks-release.md / 0cd6e2ea / Pages 37133291417: English only",
-    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: Everyday Japan entry or article return link, keeping existing editorial content",
+    "modifiedEvidence": "BILLBOARDS-1111: thematic connection to the new window reading articles",
     "image": "images/drinks/20261004-tea-shelf-michikusa.webp",
     "imageRights": "own",
     "imageEvidence": "data/drinks-photo-sources.json tea-shelf ownership owner; existing article OG photograph",
@@ -713,8 +713,8 @@
     "article": true,
     "published": "2026-10-11",
     "publishedEvidence": "2026-10-11_everyday-japan-release.md: owner approved release of the adopted English food article and Everyday Japan collection",
-    "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_everyday-japan-release.md: initial product integration",
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: thematic connection to the new window reading articles",
     "image": "images/foods/onigiri.webp",
     "imageRights": "permission",
     "imageEvidence": "data/foods-photo-sources.json onigiri / CP-0239 / Commons CC0",
@@ -744,8 +744,8 @@
     "article": true,
     "published": "2026-10-11",
     "publishedEvidence": "2026-10-11_station-feature-release.md: owner approved station article and quiet spot-page entrance",
-    "modified": "2026-10-11",
-    "modifiedEvidence": "Approved three-chapter prototype 1012124 / 88be23a; first product publication",
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: thematic connection to the new window reading articles",
     "image": "images/stations/tokyo-station-marunouchi-kakidai.jpg",
     "imageRights": "permission",
     "imageCredit": "Kakidai / CC BY-SA 4.0",
@@ -1810,5 +1810,235 @@
     "modifiedEvidence": "STORY-EDITORIAL-1112: approved editorial layout and content in ten editions, with source-media covers, photo navigation/cards and responsive images.",
     "representativeImage": false,
     "imageReview": "Generic series banner. Official videos remain embedded; photographed real trains and museums retain provenance and credits."
+  },
+  "omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "紐の付いた色とりどりのお守り。袋には開運、学業、厄除などの文字が見える。",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "en/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "A collection of colorful omamori pouches with cords, including inscriptions for good fortune, studies, and protection.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hant/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "一組色彩繽紛、繫有掛繩的御守袋，包含祈求好運、學業與消災的文字。",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "fr/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Un assortiment de pochettes d’omamori colorées à cordons, avec des inscriptions pour la bonne fortune, les études et la protection.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "de/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Eine Sammlung bunter Omamori-Beutel mit Bändern und Aufschriften für Glück, Studium und Schutz.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "es/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Una colección de bolsitas de omamori de colores con cordones e inscripciones de buena fortuna, estudios y protección.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hans/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "一组带有挂绳、色彩鲜艳的御守袋，上面有祈求好运、学业顺利和避厄等文字。",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "ko/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "행운, 학업, 액막이 등을 뜻하는 글자가 적혀 있고 끈이 달린 알록달록한 오마모리 주머니들.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "it/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Una collezione di sacchetti omamori colorati con cordoncini, tra cui iscrizioni per la buona sorte, lo studio e la protezione.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "th/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "โอะมะโมะริถุงผ้าหลากสีพร้อมสายคล้อง รวมถึงถุงที่มีข้อความเกี่ยวกับโชคลาภ การเรียน และการคุ้มครอง",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "spots/tamaruya-wasabi-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "image": "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "静岡を知らせる、緑の看板"
+  },
+  "en/spots/tamaruya-wasabi-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "image": "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "Tamaruya’s green wasabi-zuke billboard above the rooftops west of Shizuoka Station"
+  },
+  "spots/kizakura-otsukaresama-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "image": "images/20260919_kizakura-otsukaresama-sign_31000_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "新大阪で、おつかれさま"
+  },
+  "en/spots/kizakura-otsukaresama-sign.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "image": "images/20260919_kizakura-otsukaresama-sign_31000_michikusa.jpg",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "Kizakura’s green sign with a kappa holding a sake cup near Shin-Osaka"
+  },
+  "kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "E席側の車窓から、京都駅の屋根越しに見える京都タワー"
+  },
+  "en/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "Kyoto Tower rising above the station roof, seen from the Seat E window"
   }
 }

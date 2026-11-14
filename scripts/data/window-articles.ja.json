@@ -1,0 +1,678 @@
+{
+  "tamaruya-wasabi-sign": {
+    "id": "tamaruya-wasabi-sign",
+    "readingLayout": {
+      "version": 1,
+      "compactGuide": true,
+      "visibility": {
+        "label": "見える時間の目安",
+        "value": "未計測",
+        "note": "のぞみ基準の目安。列車や走行速度、天候・遮蔽物によって変わります"
+      }
+    },
+    "hook": "昼は緑、夜はネオン。",
+    "headingChunks": [
+      "静岡を知らせる、",
+      "緑の看板"
+    ],
+    "heading": "静岡を知らせる、緑の看板",
+    "sectionHeading": "窓の外に、大きな「わさび漬」",
+    "story": "静岡駅の西側。E席の窓を追っていると、ビルの屋上に横長の緑色の看板が現れます。上には黄色い「田丸屋の」、下には白い「わさび漬」。駅名標を読まなくても、この色と文字で静岡を思い出す人がいるのではないでしょうか。\n\n一見すると大きな商品名ですが、その奥には、光を動かす職人の技と、鉄道に育てられた土地の味があります。昼の写真から夜の光を想像し、看板の文字から昔の駅の風景へ。通り過ぎる一枚を、少しゆっくり読んでみましょう。",
+    "spotting": null,
+    "facts": {
+      "labels": [
+        "見える区間",
+        "座席側",
+        "タイミング",
+        "写真"
+      ],
+      "timing": "東京発のぞみ基準で約53分後",
+      "photoUnit": "枚"
+    },
+    "photoHeading": "写真で見る田丸屋のわさび漬看板",
+    "photoHeadingCustom": false,
+    "inline": [],
+    "photoTip": null,
+    "bodyLinks": [
+      {
+        "label": "田丸屋本店：歴史・沿革",
+        "href": "https://tamaruya.co.jp/history.html"
+      },
+      {
+        "label": "田丸屋本店：商品案内・わさび漬",
+        "href": "https://www.tamaruya.co.jp/item.html"
+      }
+    ],
+    "routeNote": "",
+    "fujiGuide": null,
+    "explainer": null,
+    "referenceImage": null,
+    "sharedGuide": [],
+    "guideNotice": null,
+    "references": [
+      {
+        "label": "日本サイン協会：わたしは37才のネオン広告塔（アオイネオン・2025年）",
+        "href": "https://sign-jp.org/wasabiduke/"
+      },
+      {
+        "label": "田丸屋本店：歴史・沿革",
+        "href": "https://www.tamaruya.co.jp/history.html"
+      },
+      {
+        "label": "田丸屋本店：わさび漬の歴史",
+        "href": "https://www.tamaruya.co.jp/about.html"
+      },
+      {
+        "label": "田丸屋本店：わさび漬の製造工程",
+        "href": "https://www.tamaruya.co.jp/factory.html"
+      }
+    ],
+    "media": null,
+    "showcase": false,
+    "chapters": [
+      {
+        "id": "read-the-sign",
+        "heading": "緑、黄色、白。｜色から読む静岡",
+        "paragraphs": [
+          "写真を見ると、背景は細い縦の線が集まった緑色。その上に黄色い屋号、下に大きな白い商品名が重なっています。小さな商品写真や長い説明よりも、色の面と太い文字が前に出る構成です。動く列車の中では、まず緑のかたまりを見つけ、次に「わさび漬」を読む、という探し方ができます。",
+          "「田丸屋」は店の名前、「わさび漬」は食べものの名前。読み方は、たまるや・わさびづけです。看板の言葉を分けてみると、遠くからでも伝えたい二つの情報が見えてきます。静岡の駅を通り過ぎる短い時間に、店と名物を一緒に覚えてもらう看板として眺めてみてください。"
+        ],
+        "photos": [
+          {
+            "src": "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg",
+            "thumb": "images/thumbs/20261029_tamaruya-wasabi-sign_123500_michikusa.webp",
+            "alt": "田丸屋のわさび漬看板の新幹線車窓写真",
+            "note": "緑の縦線に重なる、黄色い屋号と白い商品名。",
+            "credit": "michikusa",
+            "sourceUrl": "",
+            "date": "",
+            "heading": "",
+            "intro": "",
+            "caption": "緑の縦線に重なる、黄色い屋号と白い商品名。"
+          }
+        ],
+        "kind": "background"
+      },
+      {
+        "id": "neon",
+        "heading": "約500mの管が、｜夜の光をつくる",
+        "paragraphs": [
+          "設計製作を手がけたアオイネオンの担当者による2025年の解説では、設置は1988年9月。看板の大きさは高さ5m、幅9.45mで、約500mのネオン管を49台の変圧器で点灯させています。屋上の一枚に、見た目からは想像しにくい長さの光の管が詰まっているのです。",
+          "文字は点灯を保ち、背景の緑色は32段の点滅器で順に流れるように動いた後、全体が消えて一斉に点く仕組み。昼の写真で見える縦線は、夜には時間を持った模様になります。静止画だけでは分からないところまで知ると、次に夜の窓から探す楽しみが増えます。",
+          "同じ解説には、1988年の手描き配線図を保存し、当時の仕様を確かめながら手入れしていることも記されています。今見える光の背景には、設計図を残し、屋外の設備を守る仕事があります。"
+        ],
+        "photos": [],
+        "link": {
+          "route": "https://sign-jp.org/wasabiduke/",
+          "label": "製作会社が語るネオンと、当時の配線図を見る ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "railway-food",
+        "heading": "静岡駅とつながる、｜わさび漬の味",
+        "paragraphs": [
+          "田丸屋の名前が鉄道と結びついたのは、新幹線よりずっと前です。公式沿革では、1890年の駅前への移転と、駅弁に添えたわさび漬の好評が紹介されています。公式の歴史解説には、木の化粧樽に詰め、列車の窓から旅人へ売った販売風景も登場します。",
+          "かつては、窓の向こうの売り手から土地の味を受け取った。その後は車内販売にも載り、今の窓には大きな商品名が見える。買う場所や旅の速さは変わっても、静岡を通る人へ名物を届けようとするつながりを、この看板からたどれます。"
+        ],
+        "photos": [],
+        "link": {
+          "route": "https://www.tamaruya.co.jp/history.html",
+          "label": "田丸屋の沿革で、鉄道との歩みをたどる ↗"
+        },
+        "kind": "background",
+        "records": [
+          {
+            "year": "1875年",
+            "title": "漬物屋として創業",
+            "text": "静岡市新通りで、佃煮と漬物の製造販売を始めました。"
+          },
+          {
+            "year": "1895年",
+            "title": "静岡駅ホームの立ち売りへ",
+            "text": "公式沿革に、ホームで売る許可を得た年として記されています。"
+          },
+          {
+            "year": "1902年",
+            "title": "平たい樽を考案",
+            "text": "わさび漬を入れる平樽を発売。中身だけでなく、旅へ持ち帰る容器にも工夫がありました。"
+          },
+          {
+            "year": "1964年",
+            "title": "新幹線の旅にも",
+            "text": "東海道新幹線の開業に合わせ、車内販売への納品が始まります。"
+          }
+        ]
+      },
+      {
+        "id": "wasabi-zuke",
+        "heading": "すりおろすだけではない、｜わさびの食べ方",
+        "paragraphs": [
+          "わさび漬は、寿司に添える緑の薬味とは姿の違う食べものです。田丸屋の製造工程では、根と茎を使い、洗浄・細断・塩漬けを経て、酒粕や調味料と練り合わせます。酒粕は日本酒造りで生まれる材料。わさびの辛みと、発酵から生まれる香りを合わせた漬物です。",
+          "公式の歴史解説では、安倍川上流で食べられていた茎の漬物から、酒粕を使うわさび漬へ発展したと伝えています。根をすりおろす食べ方だけでなく、茎も使って味わう。看板の「漬」という一字に目を留めると、普段知っているわさびから、静岡の食卓へ少し近づけます。"
+        ],
+        "photos": [],
+        "link": {
+          "route": "https://www.tamaruya.co.jp/factory.html",
+          "label": "根と茎が、わさび漬になる工程を見る ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "spotting",
+        "heading": "静岡駅の西側で、｜E席の窓へ",
+        "paragraphs": [
+          "東京から新大阪へ向かうときは、静岡駅のホームを抜けた後のE席側。東京へ向かうときは、静岡駅に入る前のE席側です。看板は駅の西側にあり、田丸屋本店の店舗そのものを示す目印ではありません。",
+          "下の広めの車窓写真では、看板が街並みのどの高さに出るかを確かめられます。近い建物や架線柱が重なるので、正面から全ての文字を読むことにこだわらず、屋根より上の緑色を探してみてください。昼に形を覚えておけば、夜の通過では、その形に光が入った姿を探せます。"
+        ],
+        "photos": [
+          {
+            "src": "images/20261029_tamaruya-wasabi-sign_context_123500_michikusa.jpg",
+            "thumb": "images/thumbs/20261029_tamaruya-wasabi-sign_context_123500_michikusa.webp",
+            "alt": "静岡駅の西側で、街並みの屋上に見える緑色の田丸屋のわさび漬看板",
+            "note": "街並みを含めた車窓。屋根の上の緑色が、見つける高さの手がかり。",
+            "credit": "michikusa",
+            "sourceUrl": "",
+            "date": "",
+            "heading": "",
+            "intro": "",
+            "caption": "街並みを含めた車窓。屋根の上の緑色が、見つける高さの手がかり。"
+          }
+        ],
+        "kind": "background"
+      }
+    ]
+  },
+  "kizakura-otsukaresama-sign": {
+    "id": "kizakura-otsukaresama-sign",
+    "readingLayout": {
+      "version": 1,
+      "compactGuide": true,
+      "visibility": {
+        "label": "見える時間の目安",
+        "value": "未計測",
+        "note": "のぞみ基準の目安。列車や走行速度、天候・遮蔽物によって変わります"
+      }
+    },
+    "hook": "帰ってくる窓に、ひと言。",
+    "headingChunks": [
+      "新大阪で、",
+      "おつかれさま"
+    ],
+    "heading": "新大阪で、おつかれさま",
+    "sectionHeading": "終点の手前で、声をかける看板",
+    "story": "まもなく新大阪。到着が近づいたA席側の窓に、屋上の緑色の看板が現れます。杯を手にしたカッパと、縦に並ぶ「おつかれさま」の文字。右側には大きく「辛口一献」。お酒の広告でありながら、到着する人へ向けた挨拶のようにも読める看板です。\n\n「おつかれさま」は、相手の労や頑張りをねぎらう言葉。大阪へ帰ってくる人には、移動の終わりのひと息。初めて訪れる人にも、誰かが迎えてくれたような一言です。なぜここにこの言葉があるのか。看板の来歴を知ると、通り過ぎる一瞬にも物語が見えてきます。",
+    "spotting": null,
+    "facts": {
+      "labels": [
+        "見える区間",
+        "座席側",
+        "タイミング",
+        "写真"
+      ],
+      "timing": "東京発のぞみ基準で約147分後",
+      "photoUnit": "枚"
+    },
+    "photoHeading": "写真で見る黄桜のおつかれさま看板",
+    "photoHeadingCustom": false,
+    "inline": [],
+    "photoTip": null,
+    "bodyLinks": [
+      {
+        "label": "黄桜：会社概要・沿革",
+        "href": "https://kizakura.co.jp/company/profile.html"
+      }
+    ],
+    "routeNote": "",
+    "fujiGuide": null,
+    "explainer": null,
+    "referenceImage": null,
+    "sharedGuide": [],
+    "guideNotice": null,
+    "references": [
+      {
+        "label": "朝日新聞公式取材動画：新幹線の車窓、癒やし看板の秘密（2018年）",
+        "href": "https://www.youtube.com/watch?v=xQL_9ci6EVA"
+      },
+      {
+        "label": "黄桜公式：カッパの登場人物・描き手・昔のCM",
+        "href": "https://kizakura.co.jp/gallery/"
+      },
+      {
+        "label": "MASARUのブログ：真野恵里菜版の看板写真",
+        "href": "https://masaru-bu.blog.jp/archives/52187477.html"
+      },
+      {
+        "label": "出張サラリーマン見聞録：歴代の看板の記録",
+        "href": "https://ameblo.jp/no-problem-ok/entry-12541533697.html"
+      },
+      {
+        "label": "吉瀬美智子さんのブログ：特大パネル",
+        "href": "https://ameblo.jp/michiko-blog/entry-10078056854.html"
+      },
+      {
+        "label": "Wikimedia Commons：2010年の看板写真（CC BY 2.0）",
+        "href": "https://commons.wikimedia.org/wiki/File:おつかれさま_(4735281211).jpg"
+      },
+      {
+        "label": "黄桜：会社概要・沿革",
+        "href": "https://kizakura.co.jp/company/profile.html"
+      }
+    ],
+    "media": null,
+    "showcase": false,
+    "chapters": [
+      {
+        "id": "welcome-history",
+        "heading": "1979年から、｜到着前のひと息",
+        "paragraphs": [
+          "朝日新聞の2018年の取材では、黄桜の担当者が、ビルの完成した1979年からこの場所に看板を出していると説明しています。きっかけは、出張から帰る会社員が気を緩められるように、という当時の社長の考えでした。",
+          "取材時に紹介された大きさは高さ5.6m、幅8m。車窓の座席と目線が合う位置にあることも、印象に残る理由として挙げられています。挨拶の言葉だけでなく、座って読む人との距離も、この看板の持ち味です。"
+        ],
+        "photos": [],
+        "kind": "background",
+        "media": {
+          "heading": "2018年の取材で、人物版の看板を見る",
+          "description": "朝日新聞社の公式動画。現在のカッパ版より前の記録です。",
+          "videos": [
+            {
+              "kind": "youtube",
+              "id": "xQL_9ci6EVA",
+              "url": "https://www.youtube.com/watch?v=xQL_9ci6EVA",
+              "title": "新幹線の車窓、癒やし看板の秘密　４０年続くほほえみ"
+            }
+          ],
+          "platformNote": ""
+        }
+      },
+      {
+        "id": "different-faces",
+        "heading": "人物も、カッパも。｜看板のいろいろ",
+        "paragraphs": [
+          "かつて、この場所で迎えていたのは和服姿の俳優たちでした。2018年の取材では、叶和貴子さん、有森也実さん、高島礼子さん、吉瀬美智子さんらの名前が紹介されています。",
+          "カッパの絵は、2010年の車窓写真にも登場します。人物の写真も、カッパの絵も、杯を差し出す挨拶の場面は共通しています。以前の看板を覚えている人なら、同じ場所に別の時代の旅を重ねられる。初めて見る人も、過去の姿を知ってから今の絵を見ると、広告の小さな変化に気づけます。"
+        ],
+        "photos": [],
+        "kind": "background",
+        "records": [
+          {
+            "year": "1998年ごろ〜",
+            "title": "高島礼子さんの姿",
+            "text": "2018年の朝日新聞取材では、約10年にわたる掲出と紹介。旅行者の記録にも、歴代の顔として登場します。",
+            "href": "https://ameblo.jp/no-problem-ok/entry-12541533697.html",
+            "label": "歴代の看板を紹介した旅行記へ ↗"
+          },
+          {
+            "year": "ご本人の記録",
+            "title": "吉瀬美智子さんの姿",
+            "text": "マネージャーが見つけた新大阪の特大パネルを、ご本人が写真付きで紹介しています。",
+            "href": "https://ameblo.jp/michiko-blog/entry-10078056854.html",
+            "label": "吉瀬さんの「特大パネル」を読む ↗"
+          },
+          {
+            "year": "2010年の記録",
+            "title": "この頃にも、カッパの絵",
+            "text": "車窓から撮られた、街並みの中の看板。人物版と見比べられるカッパ版の記録です。",
+            "href": "https://commons.wikimedia.org/wiki/File:おつかれさま_(4735281211).jpg",
+            "label": "CC BY 2.0の写真を見る ↗"
+          },
+          {
+            "year": "2016年秋〜",
+            "title": "真野恵里菜さんの姿",
+            "text": "2018年の取材動画で見られる人物版。撮影者のブログでも、挨拶と酒器を手にした姿を確かめられます。",
+            "href": "https://masaru-bu.blog.jp/archives/52187477.html",
+            "label": "撮影者の写真へ ↗"
+          },
+          {
+            "year": "2026年の姿",
+            "title": "杯を持つカッパの絵",
+            "text": "緑の背景に、横向きのカッパと「おつかれさま」。昼と夜で見え方が変わります。",
+            "href": "#day-and-night",
+            "label": "昼と夜の見え方へ ↓"
+          }
+        ]
+      },
+      {
+        "id": "kappa-story",
+        "heading": "カッパにも、｜広告の長い記憶",
+        "paragraphs": [
+          "カッパは、水辺に暮らすとされる日本の妖怪です。黄桜の公式ギャラリーによると、漫画家・清水崑の「かっぱ天国」から1955年に広告のキャラクターとして採用され、1974年には小島功が2代目の描き手を引き継ぎました。",
+          "公式サイトでは、夫・妻・子ども・祖父という家族の設定も紹介されています。酒を飲み、家族と過ごし、季節の行事を楽しむカッパたち。単なる目印の動物ではなく、人の暮らしを映す登場人物として描かれてきたことが分かります。",
+          "昔のCMには、1962年の「かっぱ駅」という作品もあります。車窓で見つけた一枚から、日本の漫画やテレビ広告までさかのぼれるのも、この看板を知る楽しみです。"
+        ],
+        "photos": [],
+        "link": {
+          "route": "https://kizakura.co.jp/gallery/",
+          "label": "黄桜のカッパと、昔のCMを見る ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "day-and-night",
+        "heading": "杯と文字を、｜昼と夜の窓から",
+        "paragraphs": [
+          "昼の写真では、緑の面にカッパの姿と挨拶、右側の白い面に黒い「辛口一献」の文字が見えます。一枚の正面写真で眺めるのとは違い、車窓では二つの面が斜めに重なり、手前を電線や架線柱が横切っていきます。",
+          "夜は、照らされた看板が暗い街並みの中に浮かびます。細かい字を読むより、明るい緑の四角と、隣の白い面を見つける手がかりにしてください。昼に覚えた形を、夜の窓でも探してみる楽しみがあります。"
+        ],
+        "photos": [
+          {
+            "src": "images/20261018_kizakura-otsukaresama-sign_night_0_michikusa.jpg",
+            "thumb": "images/thumbs/20261018_kizakura-otsukaresama-sign_night_0_michikusa.webp",
+            "alt": "新大阪発車直後の夜の車窓で、緑の面が照らされた黄桜のおつかれさま看板",
+            "note": "夜の街並みに浮かぶ、緑と白の看板。",
+            "credit": "michikusa",
+            "sourceUrl": "",
+            "date": "",
+            "heading": "",
+            "intro": "",
+            "caption": "夜の街並みに浮かぶ、緑と白の看板。"
+          }
+        ],
+        "kind": "background"
+      },
+      {
+        "id": "last-window",
+        "heading": "新大阪の手前、｜A席側の窓へ",
+        "paragraphs": [
+          "東京方面から新大阪へ向かうときは、到着直前のA席側。新大阪から東京方面へ向かうときは、発車直後の同じA席側です。進行方向が変わっても、席の文字はAのままです。",
+          "黄桜の酒蔵があるのは京都・伏見。その京都を過ぎ、最後に新大阪へ着く窓で、お酒の広告に迎えられる。駅名だけでは見えてこない、街と鉄道と土地の味のつながりです。"
+        ],
+        "photos": [
+          {
+            "src": "images/20260919_kizakura-otsukaresama-sign_context_30000_michikusa.jpg",
+            "thumb": "images/thumbs/20260919_kizakura-otsukaresama-sign_context_30000_michikusa.webp",
+            "alt": "新大阪到着直前の車窓に、灰色のビルを背にして見える緑色の黄桜看板",
+            "note": "屋上の高さに注目。新大阪のホームへ入る直前の街並み。",
+            "credit": "michikusa",
+            "sourceUrl": "",
+            "date": "",
+            "heading": "",
+            "intro": "",
+            "caption": "屋上の高さに注目。新大阪のホームへ入る直前の街並み。"
+          }
+        ],
+        "kind": "background"
+      }
+    ]
+  },
+  "kyoto-station-views": {
+    "id": "kyoto-station-views",
+    "lang": "ja",
+    "readingLayout": {
+      "version": 1,
+      "compactGuide": true,
+      "visibility": {
+        "label": "眺める場所",
+        "value": "車窓と、駅の北側",
+        "note": "京都タワーはE席側。駅前の写真は、下車後に見られる景色です。"
+      }
+    },
+    "name": "京都駅まわりの小さな発見",
+    "area": "京都駅付近・烏丸口側",
+    "hook": "到着の景色を、もう少し。",
+    "headingChunks": [
+      "京都駅まわり、",
+      "白い塔と",
+      "大きな屋根"
+    ],
+    "heading": "京都駅まわり、白い塔と大きな屋根",
+    "sectionHeading": "京都の入口に、白い塔が立つ",
+    "story": "京都の建物といえば、お寺や町家を思い浮かべるかもしれません。その玄関口では、すっと伸びる白い塔と、ガラスと鉄骨の大きな駅の屋根が迎えてくれます。どちらも、古都へ新しく来る人のためにつくられた建築です。\n\n車窓で塔の先端を見つけ、降りたら駅の吹き抜けを見上げ、街へ出てもう一度塔を眺める。距離と高さを変えると、同じ到着の景色にもいくつもの表情があります。京都タワーと駅ビルに込められた形の意味を知りながら、京都の入口を歩いてみましょう。",
+    "minutes": null,
+    "side": "E",
+    "sideLabel": "車窓はE席側",
+    "spotting": null,
+    "facts": {
+      "labels": [
+        "場所",
+        "車窓の席側",
+        "見つけるとき",
+        "写真"
+      ],
+      "timing": "京都駅への到着・出発のころ",
+      "photoUnit": "枚"
+    },
+    "photos": [
+      {
+        "src": "images/20260704_kyoto-tower_michikusa.webp",
+        "thumb": "images/20260704_kyoto-tower_michikusa.webp",
+        "smallThumb": "images/20260704_kyoto-tower_michikusa.webp",
+        "alt": "E席側の車窓から、京都駅の屋根越しに見える京都タワー",
+        "note": "京都駅の屋根越しに見える京都タワー。",
+        "caption": "京都駅の屋根越しに見える京都タワー。",
+        "credit": "michikusa",
+        "sourceUrl": "",
+        "date": "",
+        "width": 1600,
+        "height": 900
+      },
+      {
+        "src": "images/20260816_kyoto-tower_michikusa.webp",
+        "thumb": "images/20260816_kyoto-tower_michikusa.webp",
+        "smallThumb": "images/20260816_kyoto-tower_michikusa.webp",
+        "alt": "E席側の車窓。ホテルの屋上越しに京都タワー上部がのぞく",
+        "note": "ホテルの屋上からのぞく塔の上部。",
+        "caption": "ホテルの屋上からのぞく塔の上部。",
+        "credit": "michikusa",
+        "sourceUrl": "",
+        "date": "",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "hero": {
+      "src": "images/20260704_kyoto-tower_michikusa.webp",
+      "thumb": "images/20260704_kyoto-tower_michikusa.webp",
+      "smallThumb": "images/20260704_kyoto-tower_michikusa.webp",
+      "alt": "E席側の車窓から、京都駅の屋根越しに見える京都タワー",
+      "note": "京都駅の屋根越しに見える京都タワー。",
+      "caption": "京都駅の屋根越しに見える京都タワー。",
+      "credit": "michikusa",
+      "sourceUrl": "",
+      "date": "",
+      "width": 1600,
+      "height": 900
+    },
+    "gallery": [
+      {
+        "src": "images/20260704_kyoto-tower_michikusa.webp",
+        "thumb": "images/20260704_kyoto-tower_michikusa.webp",
+        "smallThumb": "images/20260704_kyoto-tower_michikusa.webp",
+        "alt": "E席側の車窓から、京都駅の屋根越しに見える京都タワー",
+        "note": "京都駅の屋根越しに見える京都タワー。",
+        "caption": "京都駅の屋根越しに見える京都タワー。",
+        "credit": "michikusa",
+        "sourceUrl": "",
+        "date": "",
+        "width": 1600,
+        "height": 900
+      },
+      {
+        "src": "images/20260816_kyoto-tower_michikusa.webp",
+        "thumb": "images/20260816_kyoto-tower_michikusa.webp",
+        "smallThumb": "images/20260816_kyoto-tower_michikusa.webp",
+        "alt": "E席側の車窓。ホテルの屋上越しに京都タワー上部がのぞく",
+        "note": "ホテルの屋上からのぞく塔の上部。",
+        "caption": "ホテルの屋上からのぞく塔の上部。",
+        "credit": "michikusa",
+        "sourceUrl": "",
+        "date": "",
+        "width": 1600,
+        "height": 900
+      }
+    ],
+    "photoHeading": "京都駅の前後、E席から見えた塔",
+    "photoHeadingCustom": false,
+    "inline": [],
+    "photoTip": null,
+    "bodyLinks": [],
+    "routeNote": "",
+    "fujiGuide": null,
+    "explainer": null,
+    "referenceImage": null,
+    "sharedGuide": [],
+    "guideNotice": null,
+    "map": null,
+    "guide": null,
+    "references": [
+      {
+        "label": "ニデック京都タワー：歴史・構造・特徴",
+        "href": "https://www.kyoto-tower.jp/about/"
+      },
+      {
+        "label": "ニデック京都タワー：京都駅からのアクセス",
+        "href": "https://www.kyoto-tower.jp/access/"
+      },
+      {
+        "label": "京都駅ビル：設計コンセプト・駅舎の歴史",
+        "href": "https://www.kyoto-station-building.co.jp/about/history/"
+      },
+      {
+        "label": "京都駅ビル：広場・空中径路の案内",
+        "href": "https://www.kyoto-station-building.co.jp/service/square/"
+      }
+    ],
+    "related": [],
+    "media": null,
+    "showcase": false,
+    "stamp": {
+      "src": "",
+      "alt": "",
+      "label": ""
+    },
+    "imageSources": {},
+    "chapters": [
+      {
+        "id": "lighthouse",
+        "heading": "海のない京都に、｜街を照らす灯台",
+        "paragraphs": [
+          "京都駅の北側、烏丸口の向かいに立つ地上131mの塔。正式名称は「ニデック京都タワー」です。白く細い形のモチーフは灯台。運営会社は、かつての家々の瓦屋根を波に見立て、京都の街を照らす姿をイメージしたと説明しています。",
+          "昼の写真では、青空の前に白い胴体がくっきり立ち、上部の丸い展望室へと視線が上がります。海を見張る灯台の形を、街へ来る人の目印に使う。その発想を知ってから周囲の建物まで一緒に見ると、塔だけを切り取った写真とは違う景色が浮かびます。",
+          "夜の写真では、建物や街路の光の上に塔が明るく浮かびます。いつもの白に加え、啓発活動などのカラーライトアップもあるため、訪れる日の色は公式の案内で確かめられます。"
+        ],
+        "photos": [
+          {
+            "src": "images/kyoto-tower-day-2022-indo-kujaku.webp",
+            "thumb": "images/kyoto-tower-day-2022-indo-kujaku.webp",
+            "smallThumb": "images/kyoto-tower-day-2022-indo-kujaku.webp",
+            "alt": "京都駅烏丸口のバスターミナル越しに見上げる白い京都タワー",
+            "note": "烏丸口の駅前から見上げる京都タワー。",
+            "caption": "烏丸口の駅前から見上げる京都タワー。",
+            "credit": "印度孔雀 / CC BY 4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Tower_2022.jpg",
+            "date": "",
+            "width": 1350,
+            "height": 1600
+          }
+        ],
+        "link": {
+          "route": "https://www.kyoto-tower.jp/about/",
+          "label": "塔の意匠と、本日のライトアップ案内へ ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "same-year",
+        "heading": "1964年生まれの、｜なめらかな塔",
+        "paragraphs": [
+          "展望室の開業は1964年12月28日。東海道新幹線が走り始め、東京オリンピックが開かれた年です。この場所には以前、京都中央郵便局があり、その移転を機に、観光や産業の拠点をつくる計画が進みました。",
+          "設計したのは、曲線を使う建築で知られる山田守。塔は鉄骨の骨組みを立てる方式ではなく、つなぎ合わせた鋼板の外皮で支える構造です。白い面がすっと続く姿は、表面の装飾だけでなく、塔の支え方ともつながっています。",
+          "次に写真を見るときは、展望室だけでなく、そこへ細く伸びていく胴体にも目を向けてみてください。細かい部材の集まりを見せる駅の屋根と、つながる面を見せる塔。同じ駅前にある二つの建築を、形の違いから見比べられます。"
+        ],
+        "photos": [],
+        "link": {
+          "route": "https://www.kyoto-tower.jp/about/",
+          "label": "公式の図解で、塔の構造を知る ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "station-roof",
+        "heading": "駅の中に広がる、｜ガラスの谷",
+        "paragraphs": [
+          "現在の京都駅ビルは1997年に開業した4代目の駅舎で、設計者は原広司です。公式の設計解説では、平安京の碁盤の目を平面計画に取り入れ、烏丸通と室町通に対応する位置へ、街の入口を象徴する「門」を置いています。見た目は現代的でも、京都の街のつくりが設計の手がかりなのです。",
+          "中央のコンコースは谷、その東西に延びる空間は段丘に見立てられています。頭上を覆うのは、ガラスと金属の大きな屋根。下の写真で、人や通路から屋根へと目を動かすと、駅の中にもう一つ大きな地形があるように感じられます。",
+          "通路として歩くだけでは、屋根は背景になりがちです。少し立ち止まって、細い部材が遠くへ重なる方向や、ガラス越しに入る空の明るさを追ってみてください。寺社へ向かう前から、京都の街と向き合った建築に出会えます。"
+        ],
+        "photos": [
+          {
+            "src": "images/stations/kyoto-station-atrium-martin-falbisoner.jpg",
+            "thumb": "images/stations/kyoto-station-atrium-martin-falbisoner.jpg",
+            "smallThumb": "images/stations/kyoto-station-atrium-martin-falbisoner.jpg",
+            "alt": "京都駅の大きな吹き抜けを覆うガラスと鉄骨の屋根",
+            "note": "京都駅の中央の空間。視線を上げると、大きな屋根が広がります。",
+            "caption": "京都駅の中央の空間。視線を上げると、大きな屋根が広がります。",
+            "credit": "Martin Falbisoner / CC BY-SA 4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Station_November_2016_-02.jpg",
+            "date": "",
+            "width": 1280,
+            "height": 874
+          }
+        ],
+        "link": {
+          "route": "https://www.kyoto-station-building.co.jp/about/history/",
+          "label": "京都駅ビルの設計意図と、歴代の駅舎を見る ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "change-viewpoint",
+        "heading": "見上げた景色を、｜今度は高い場所から",
+        "paragraphs": [
+          "駅ビルの中では、眺める高さを変える楽しみもあります。4階東側の烏丸小路広場は、京都タワーを見られる場所の一つ。さらに10階の空中径路「Skyway」は、高さ45m、全長185mの通路で、駅ビルの東西を結んでいます。",
+          "地上では塔を見上げ、駅の中では屋根を見上げ、高い通路からは北側の街を眺める。同じ入口の景色でも、自分の立つ位置が変わると、塔と街並みの関係が変わります。移動の合間に余裕があれば、駅そのものを小さな散策先にしてみてください。",
+          "場所や通行できる時間は、公式の広場案内で確認できます。写真の夜景をそのまま再現することよりも、その日の光と、自分の目の高さで見える景色を楽しむのがおすすめです。"
+        ],
+        "photos": [
+          {
+            "src": "images/kyoto-tower-night-2025-fotointheworld.webp",
+            "thumb": "images/kyoto-tower-night-2025-fotointheworld.webp",
+            "smallThumb": "images/kyoto-tower-night-2025-fotointheworld.webp",
+            "alt": "京都駅ビル側から見た、夜に光る京都タワーと駅前の街並み",
+            "note": "京都駅ビル側から見た夜の塔。",
+            "caption": "京都駅ビル側から見た夜の塔。",
+            "credit": "Fotointheworld / CC BY 4.0",
+            "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kyoto_Tower_at_night_2025.jpg",
+            "date": "",
+            "width": 960,
+            "height": 1600
+          }
+        ],
+        "link": {
+          "route": "https://www.kyoto-station-building.co.jp/service/square/",
+          "label": "駅の広場・空中径路と、利用時間を見る ↗"
+        },
+        "kind": "background"
+      },
+      {
+        "id": "window-and-street",
+        "heading": "車窓の一瞬から、｜烏丸口の街へ",
+        "paragraphs": [
+          "新幹線から京都タワーを探すときはE席側。駅の屋根の向こうに胴体から先端までが見える場所もあれば、ホテルの屋上から展望室と先端だけがのぞく場所もあります。列車の位置と手前の建物で見える範囲が変わるので、まず上部の形を覚えておくと、建物の間の短い出会いを探しやすくなります。",
+          "下車して塔の近くへ向かうなら、駅の北側、烏丸口・中央口へ。新幹線側は南側なので、南北自由通路で北へ回ります。タワー公式の「中央口から徒歩2分」は、北側のJR京都駅中央口からの目安です。新幹線ホームからの所要時間とは分けて考えてください。",
+          "車窓で先端だけ見た塔を、駅前で足元から見上げる。通過したときの一瞬が、降りて歩く日の記憶につながります。西側・A席側に見える東寺の五重塔と合わせれば、京都の入口を二つの窓から眺める楽しみも広がります。"
+        ],
+        "photos": [
+          {
+            "src": "images/20260816_kyoto-tower_michikusa.webp",
+            "thumb": "images/20260816_kyoto-tower_michikusa.webp",
+            "smallThumb": "images/20260816_kyoto-tower_michikusa.webp",
+            "alt": "E席側の車窓。ホテルの屋上越しに京都タワー上部がのぞく",
+            "note": "ホテルの屋上からのぞく塔の上部。",
+            "caption": "ホテルの屋上からのぞく塔の上部。",
+            "credit": "michikusa",
+            "sourceUrl": "",
+            "date": "",
+            "width": 1600,
+            "height": 900
+          }
+        ],
+        "link": {
+          "route": "https://www.kyoto-tower.jp/access/",
+          "label": "新幹線中央口から、北側へ向かう道順を見る ↗"
+        },
+        "kind": "background"
+      }
+    ]
+  }
+}

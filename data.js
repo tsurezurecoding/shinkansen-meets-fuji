@@ -5609,9 +5609,10 @@ const SPOTS = [
   },
   {
     id: "mikawa-oshima",
+    pageFacts: { timing: { ja: "東京から約82.5分（三河大島の目安）", en: "About 82.5 min from Tokyo (Mikawa Oshima)" } },
     icon: "🏝️",
-    ja: { name: "三河大島", area: "豊橋 → 三河安城", hook: "三河湾の遠くに、島影。", story: "豊橋を過ぎたあと、A席側の遠くに三河湾と三河大島が浮かぶことがあります。蒲郡の沖合約3kmに浮かぶ無人島で、見通しの良い日には低い島影を探せます。浜名湖の水面が過ぎたあとも、海側の車窓にはまだ見つける楽しみが残っている——そんな存在。見通しの良い日に、蒲郡沖の水平線を探してみてください。" },
-    en: { name: "Mikawa Oshima", area: "Toyohashi → Mikawa-Anjo", hook: "An island silhouette across the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima sometimes appear far away on the Seat A side. It is an uninhabited island about 3 km off Gamagori, with a low outline to look for across the water on clear days. After Lake Hamana passes, this is a reminder that Seat A still has quiet discoveries. On clear days, scan the horizon off Gamagori." },
+    ja: { name: "三河大島と蒲郡竹島", area: "豊橋 → 三河安城", hook: "三河湾の遠くに、島影。", story: "豊橋を過ぎたあと、A席側の遠くに三河湾と三河大島が浮かぶことがあります。蒲郡の沖合約3kmに浮かぶ無人島で、見通しの良い日には低い島影を探せます。浜名湖の水面が過ぎたあとも、海側の車窓にはまだ見つける楽しみが残っている——そんな存在。見通しの良い日に、蒲郡沖の水平線を探してみてください。" },
+    en: { name: "Mikawa Oshima and Takeshima", area: "Toyohashi → Mikawa-Anjo", hook: "An island silhouette across the bay.", story: "After Toyohashi, Mikawa Bay and Mikawa Oshima sometimes appear far away on the Seat A side. It is an uninhabited island about 3 km off Gamagori, with a low outline to look for across the water on clear days. After Lake Hamana passes, this is a reminder that Seat A still has quiet discoveries. On clear days, scan the horizon off Gamagori." },
     pageTitle: {
       ja: "新幹線から見える三河大島と蒲郡竹島｜三河湾の二つの島 | 新幹線の窓",
       en: "Mikawa Oshima and Takeshima in Gamagori | Islands from the Shinkansen",
@@ -10670,6 +10671,266 @@ const SPOTS = [
       }
     ]
   },
+{
+  "id": "tamaruya-wasabi-sign",
+  "icon": "🪧",
+  "ja": {
+    "name": "田丸屋のわさび漬看板",
+    "area": "静岡 → 掛川（静岡駅のすぐ西）",
+    "hook": "静岡らしさが、ひと目で。",
+    "story": "静岡駅を過ぎたE席側、建物の屋上に緑地と大きな白い「わさび漬」の文字。静岡のわさび漬を手がける田丸屋本店の看板です。黄色い「田丸屋の」と白い三文字が、街並みの中で一瞬だけ顔をそろえます。"
+  },
+  "en": {
+    "name": "Tamaruya Wasabi-zuke Sign",
+    "area": "Shizuoka → Kakegawa, just west of Shizuoka Station",
+    "hook": "A brief taste of Shizuoka.",
+    "story": "Just west of Shizuoka Station, a green rooftop billboard appears on the Seat E side. Its large white characters read wasabi-zuke: wasabi preserved in sake lees. The yellow lettering above names Tamaruya, a Shizuoka maker with a long connection to rail travel."
+  },
+  "pageTitle": {
+    "ja": "静岡を知らせる、緑の看板｜新幹線の窓",
+    "en": "Wasabi in the window: a sign for Shizuoka | Shinkansen Window"
+  },
+  "pageHeading": {
+    "ja": "静岡を知らせる、緑の看板",
+    "en": "Wasabi in the window: a sign for Shizuoka"
+  },
+  "pageHeadingChunks": {
+    "ja": [
+      "静岡を知らせる、",
+      "緑の看板"
+    ],
+    "en": []
+  },
+  "metaDescription": {
+    "ja": "静岡駅のすぐ西、新幹線E席側から見える田丸屋のわさび漬看板。車窓写真で、緑地に白い大文字が現れる場所と見つけ方、静岡駅とわさび漬のつながりを紹介します。",
+    "en": "Find Tamaruya’s green wasabi-zuke billboard just west of Shizuoka Station. Train-window photos, Seat E viewing tips and the maker’s connection to railway travel."
+  },
+  "sectionHeading": {
+    "ja": "わさび漬と静岡駅のつながり",
+    "en": "Wasabi-zuke and the railway"
+  },
+  "pageStory": {
+    "ja": "わさび漬は、わさびを酒粕に漬け込んだ食品です。田丸屋本店は1875年、静岡市で佃煮・漬物の製造販売を始めました。公式沿革には、1890年に駅前へ移転し、静岡駅の駅弁に添えたわさび漬が好評だったこと、1895年にはホームでの立ち売りの許可を得たことが記されています。静岡を列車で訪れる人と、明治時代からつながってきた味。その名がいまも車窓に大きく現れるのが、この屋上看板です。",
+    "en": "Wasabi-zuke is wasabi preserved in sake lees. Tamaruya began making and selling preserved foods in Shizuoka in 1875. Its official history records a move to the station area in 1890, when its wasabi-zuke proved popular alongside Shizuoka Station’s boxed meals, followed by permission to sell on the platform in 1895. The name on this rooftop sign belongs to a food maker whose connection to rail travellers reaches back to the Meiji era."
+  },
+  "explainer": {
+    "heading": {
+      "ja": "緑の屋上看板に、白い三文字",
+      "en": "Three white characters on green"
+    },
+    "ja": [
+      "目印は、建物の屋上に立つ横長の緑色の看板。上段に黄色い「田丸屋の」、その下に白い「わさび漬」が大きく入っています。文字を読む前でも、緑と白の組み合わせが目に入ります。",
+      "写真では、ベージュと茶色の建物の上に看板があり、周囲には別の屋上広告やビルが並んでいます。手前の電線や架線柱が文字を横切るため、全体が読みやすくなるのは短い間です。"
+    ],
+    "en": [
+      "Look for a wide green billboard on a beige-and-brown building. Yellow lettering at the top reads Tamaruya no, meaning “Tamaruya’s”; the large white characters below read wasabi-zuke. The colour combination stands out before you can read the words.",
+      "Other rooftop adverts and buildings surround it. Wires and overhead-line poles cross the foreground, so the lettering lines up clearly for only a brief moment."
+    ]
+  },
+  "guideHighlight": {
+    "ja": "新大阪方面は静岡駅のホームを抜けたらE席側へ。東京方面は静岡駅へ入る手前です。近くの建物の屋上にある、緑地と白い「わさび漬」の文字を探してください。",
+    "en": "Toward Shin-Osaka, watch Seat E as soon as you leave Shizuoka Station behind. Toward Tokyo, look on the same Seat E side just before the station. Scan the nearby rooftops for green and large white lettering."
+  },
+  "minutesFromTokyo": 53.25,
+  "side": "E",
+  "category": "curious",
+  "confidence": "verified",
+  "durationSec": null,
+  "visibleWhenCloudy": true,
+  "scene": "hills",
+  "image": "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg",
+  "photoCredit": {
+    "ja": "michikusa",
+    "en": "michikusa",
+    "date": "",
+    "note": {
+      "ja": "静岡通過直後のE席側（拡大）",
+      "en": "Seat E just west of Shizuoka Station (cropped)"
+    }
+  },
+  "photos": [
+    {
+      "src": "images/20261029_tamaruya-wasabi-sign_context_123500_michikusa.jpg",
+      "width": 1920,
+      "height": 1080,
+      "alt": {
+        "ja": "静岡駅の西側で、街並みの屋上に見える緑色の田丸屋のわさび漬看板",
+        "en": "Tamaruya’s green wasabi-zuke billboard among the rooftops west of Shizuoka Station"
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "",
+      "note": {
+        "ja": "周囲の街並みを含む車窓の全景",
+        "en": "The full train-window view, including the surrounding buildings"
+      }
+    }
+  ],
+  "references": [
+    {
+      "label": {
+        "ja": "田丸屋本店：歴史・沿革",
+        "en": "Tamaruya: history (Japanese)"
+      },
+      "url": "https://tamaruya.co.jp/history.html"
+    },
+    {
+      "label": {
+        "ja": "田丸屋本店：商品案内・わさび漬",
+        "en": "Tamaruya: wasabi-zuke products (Japanese)"
+      },
+      "url": "https://www.tamaruya.co.jp/item.html"
+    }
+  ],
+  "map": {
+    "lat": 34.967466,
+    "lng": 138.381149,
+    "ja": "田丸屋のわさび漬看板のある建物付近",
+    "en": "Building carrying the Tamaruya wasabi-zuke sign (approximate)"
+  },
+  "viewpoint": {
+    "lat": 34.966433,
+    "lng": 138.380956
+  }
+},
+{
+  "id": "kizakura-otsukaresama-sign",
+  "icon": "🪧",
+  "ja": {
+    "name": "黄桜のおつかれさま看板",
+    "area": "京都 → 新大阪（到着直前）",
+    "hook": "「おつかれさま」で、大阪。",
+    "story": "新大阪到着直前、A席側の窓に現れる黄桜の看板。杯を持ったカッパと「おつかれさま」の言葉が、旅の終わりを迎えてくれます。"
+  },
+  "en": {
+    "name": "Kizakura Otsukaresama Sign",
+    "area": "Kyoto → Shin-Osaka, just before arrival",
+    "hook": "A greeting before Shin-Osaka.",
+    "story": "A kappa holding a sake cup and a greeting for arriving travellers, just before Shin-Osaka."
+  },
+  "pageTitle": {
+    "ja": "新大阪で、おつかれさま｜新幹線の窓",
+    "en": "A sake sign that welcomes you to Osaka | Shinkansen Window"
+  },
+  "pageHeading": {
+    "ja": "新大阪で、おつかれさま",
+    "en": "A sake sign that welcomes you to Osaka"
+  },
+  "pageHeadingChunks": {
+    "ja": [
+      "新大阪で、",
+      "おつかれさま"
+    ],
+    "en": []
+  },
+  "metaDescription": {
+    "ja": "新大阪到着直前、A席側から見える黄桜の「おつかれさま」看板。杯を持ったカッパが迎える看板を昼と夜の車窓写真で紹介し、場所と見るタイミングを案内します。",
+    "en": "Spot Kizakura’s green otsukaresama billboard on the Seat A side just before Shin-Osaka. Day and night train-window photos, its meaning and when to look."
+  },
+  "sectionHeading": {
+    "ja": "伏見のお酒が、旅人にひと言",
+    "en": "A Fushimi brewer’s greeting"
+  },
+  "pageStory": {
+    "ja": "黄桜は京都・伏見に本社を置く酒造会社です。1925年に伏見で始まり、1955年からキャラクターにカッパを起用しています。この看板では着物姿のイラストが盃を差し出し、隣には日本酒「辛口一献」の名が入っています。添えられた「おつかれさま」は、相手の働きや労をねぎらう言葉。降りる支度で慌ただしくなる新大阪の手前で目にすると、広告のひと言が旅人へのあいさつのように感じられます。",
+    "en": "Kizakura is a sake maker based in Fushimi, Kyoto. It began there in 1925 and adopted the kappa, a creature from Japanese folklore, as a character in 1955. Here, a kimono-clad figure offers a small cup beside the name of Karakuchi Ikkon sake. Otsukaresama acknowledges another person’s work or effort. Seen as passengers prepare to leave the train, the familiar phrase feels like a greeting at the journey’s end."
+  },
+  "explainer": {
+    "heading": {
+      "ja": "緑の看板と、縦書きのあいさつ",
+      "en": "Green, a kimono and a vertical greeting"
+    },
+    "ja": [
+      "緑色の面に着物姿のイラスト、その右側に縦書きの「おつかれさま」。黒い面には白地に大きく「辛口一献」と入り、黄桜の名も見えます。昼の写真では、背後の灰色のビルや青い屋上広告との位置関係が手がかりになります。",
+      "看板の前を架線や柱が横切ります。夜は緑の面が照らされて見えますが、窓への映り込みや明るい文字のにじみで、昼と同じように読めるとは限りません。"
+    ],
+    "en": [
+      "Find the green panel with a kimono-clad figure and the vertical words otsukaresama to its right. The adjoining black panel carries large Karakuchi Ikkon lettering on white, with the Kizakura name alongside. The grey building and blue rooftop advert behind it help you recognise the location.",
+      "Overhead wires and poles cut across the view. The green face is illuminated at night, but window reflections and the glow around bright letters can make it harder to read than in daylight."
+    ]
+  },
+  "guideHighlight": {
+    "ja": "新大阪到着の直前までA席側を見てください。東京方面は発車後すぐ、同じA席側（進行方向の右）です。近くのビルの間にある緑の看板を、電線や柱の隙間から探してください。",
+    "en": "Watch Seat A right up to arrival at Shin-Osaka. Departing toward Tokyo, look immediately after departure on the same Seat A side, now on your right. Find the green panel between the nearby buildings and overhead-line poles."
+  },
+  "minutesFromTokyo": 146.9,
+  "side": "A",
+  "category": "curious",
+  "confidence": "verified",
+  "durationSec": null,
+  "visibleWhenCloudy": true,
+  "scene": "hills",
+  "image": "images/20260919_kizakura-otsukaresama-sign_31000_michikusa.jpg",
+  "photoCredit": {
+    "ja": "michikusa",
+    "en": "michikusa",
+    "date": "",
+    "note": {
+      "ja": "新大阪到着直前のA席側（拡大）",
+      "en": "Seat A just before arrival at Shin-Osaka (cropped)"
+    }
+  },
+  "photos": [
+    {
+      "src": "images/20260919_kizakura-otsukaresama-sign_context_30000_michikusa.jpg",
+      "width": 1920,
+      "height": 1080,
+      "alt": {
+        "ja": "新大阪到着直前の車窓に、灰色のビルを背にして見える緑色の黄桜看板",
+        "en": "The green Kizakura billboard in front of a grey building, just before Shin-Osaka"
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "",
+      "note": {
+        "ja": "昼の車窓全景。周囲のビルと看板",
+        "en": "Daytime context: the billboard and surrounding buildings"
+      }
+    },
+    {
+      "src": "images/20261018_kizakura-otsukaresama-sign_night_0_michikusa.jpg",
+      "width": 704,
+      "height": 528,
+      "timeOfDay": "night",
+      "alt": {
+        "ja": "新大阪発車直後の夜の車窓で、緑の面が照らされた黄桜のおつかれさま看板",
+        "en": "Kizakura’s green billboard illuminated at night, just after departure from Shin-Osaka"
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "",
+      "note": {
+        "ja": "東京方面への発車直後。夜の見え方",
+        "en": "Just after departure toward Tokyo: the night view"
+      }
+    }
+  ],
+  "references": [
+    {
+      "label": {
+        "ja": "黄桜：会社概要・沿革",
+        "en": "Kizakura: company profile and history (Japanese)"
+      },
+      "url": "https://kizakura.co.jp/company/profile.html"
+    }
+  ],
+  "map": {
+    "lat": 34.733754,
+    "lng": 135.502758,
+    "ja": "黄桜のおつかれさま看板のある建物付近",
+    "en": "Building carrying the Kizakura otsukaresama sign (approximate)"
+  },
+  "viewpoint": {
+    "lat": 34.734223,
+    "lng": 135.502326
+  }
+}
 ];
 
 // 727看板コレクションの内部台帳。sourceNo / id は外部調査元・管理画面との照合用で、公開UIには出さない。

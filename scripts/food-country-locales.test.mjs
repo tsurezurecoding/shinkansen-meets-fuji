@@ -37,7 +37,7 @@ test('Japanese feature snapshots preserve article photographs and original licen
     const en=page('en/'+route),ja=page(route);
     const images=doc=>[...doc.querySelectorAll('article img,.countryside-hero img,.food-hero img')].map(el=>({src:new URL(el.getAttribute('src'),doc.URL).pathname,width:el.getAttribute('width'),height:el.getAttribute('height')}));
     assert.deepEqual(images(ja.window.document),images(en.window.document),route);
-    const rights=doc=>[...doc.querySelectorAll('a[href]')].filter(a=>/https:\/\/(?:commons\.wikimedia\.org|creativecommons\.org)\//.test(a.href)).map(a=>a.href).sort();
+    const rights=doc=>[...doc.querySelectorAll('a[href]')].filter(a=>!a.closest('[data-edition-only]')&&/https:\/\/(?:commons\.wikimedia\.org|creativecommons\.org)\//.test(a.href)).map(a=>a.href).sort();
     assert.deepEqual(rights(ja.window.document),rights(en.window.document));
     assert(ja.window.document.querySelector('header').textContent.includes('新幹線の窓'));
     ja.window.eval(read('locales.js'));ja.window.eval(read('article-locales.js'));ja.window.document.dispatchEvent(new ja.window.Event('DOMContentLoaded'));
