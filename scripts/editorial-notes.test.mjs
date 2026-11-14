@@ -98,8 +98,8 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   }
   dom.window.close();await new Promise(setImmediate);
  }
- // 40 episode articles (including Maruko Bridge), each with eight translated editions.
- assert.equal(count,320);
+ // 41 episode articles, including Maruko Bridge and omamori, in eight translated editions.
+ assert.equal(count,328);
 });
 
 test('Fujitec and Pocari have complete ten-language articles and worldwide chapters',()=>{
@@ -142,7 +142,15 @@ test('episode articles preserve English gallery images and original attribution'
   const media=doc=>[...doc.querySelectorAll('[data-gallery-thumb]')].map(el=>Object.fromEntries(['data-gallery-src','data-gallery-credit','data-gallery-credit-href'].map(a=>[a,el.getAttribute(a)])));
   const original=media(source.window.document);
   const figures=doc=>[...doc.querySelectorAll('article img')].map(el=>({src:el.getAttribute('data-photo-original-src') || el.getAttribute('src'),width:el.getAttribute('width'),height:el.getAttribute('height')}));
-  const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());return copy.textContent.replace(/^摄影[：:]|^사진\s*[：:]|^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：|^ภาพ\s*:/,'').trim();});
+  const attributionUI = new Map(translated.map(lang=>[lang,{...JSON.parse(read('scripts/locales/utility-'+lang+'.json')),...JSON.parse(read('scripts/locales/castle-'+lang+'.json'))}]));
+  const figureCredits=doc=>[...doc.querySelectorAll('.yk-figure figcaption')].map(el=>{
+   const copy=el.cloneNode(true);copy.querySelectorAll('.yk-day-note').forEach(n=>n.remove());
+   let label=copy.textContent.replace(/^摄影[：:]|^사진\s*[：:]|^Photo\s*:|^Foto:|^照片：|^照片:|^攝影：|^写真：|^ภาพ\s*:/,'').trim();
+   // Translate only UI labels back for comparison; retain author names, dates and source links exactly.
+   const dictionary=attributionUI.get(doc.documentElement.lang)||{};
+   for(const english of ['Enlarged view; open the full photo.','Video: michikusa ·'])if(dictionary[english])label=label.replaceAll(dictionary[english],english);
+   return {label,links:[...copy.querySelectorAll('a[href]')].map(a=>a.getAttribute('href'))};
+  });
   assert.ok(original.length || figures(source.window.document).length || ['everyday-japan.html','arenani.html','727-collection.html','tokyo-kyoto-stations.html','jr-pass-fuji.html','hanabi.html'].includes(route),route);
   const embeds=doc=>[...doc.querySelectorAll('.hb-embed')].map(el=>({type:el.getAttribute('data-embed'),video:el.getAttribute('data-video-id'),title:el.getAttribute('data-video-title'),posts:[...el.querySelectorAll('template')].flatMap(t=>[...t.content.querySelectorAll('a[href]')].map(a=>a.getAttribute('href')))}));
   const embedCredits=doc=>[...doc.querySelectorAll('.hb-credit a')].map(el=>({href:el.getAttribute('href'),authors:el.textContent.match(/@[A-Za-z0-9_]+/g)}));
