@@ -183,6 +183,13 @@ export function onlyArtworkSitemapChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const adsenseVerificationFiles = new Set(['ads.txt', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
+  if (files.includes('ads.txt') && changes.every(change => ['A', 'M'].includes(change.status) && adsenseVerificationFiles.has(change.path))) return {
+    scope: 'adsense-verification', needsDependencies: false, pagesCandidate: true,
+    reason: 'Publish the root ownership record only; no HTML, browser runtime, offline inventory or language consumers change',
+    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs'), node('--input-type=module', '-e', "import fs from 'node:fs'; import assert from 'node:assert/strict'; assert.equal(fs.readFileSync('ads.txt','utf8'), 'google.com, pub-5756673901202661, DIRECT, f08c47fec0942fa0\\n');")],
+  };
+
   const inviteVisibilityFiles = new Set(['scripts/shared/android-app-invite.css','scripts/android-app-invite.test.mjs',
     'scripts/release-scope.mjs','scripts/release-scope.test.mjs','android-app-invite.js','site-runtime.json','content-manifest.json']);
   if (files.includes('scripts/shared/android-app-invite.css') && files.includes('scripts/android-app-invite.test.mjs') &&

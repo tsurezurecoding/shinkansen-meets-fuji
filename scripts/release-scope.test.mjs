@@ -416,3 +416,17 @@ test('artwork sitemap scope is restricted to the exact migration and known outpu
   assert(!onlyArtworkSitemapChanged(before, after + 'unrelated'));
   assert(!onlyArtworkSitemapChanged(before, before));
 });
+
+test('AdSense ownership verification publishes only its root record and rejects unrelated changes', () => {
+  const files = [{path:'ads.txt',status:'A'},change('scripts/release-scope.mjs'),change('scripts/release-scope.test.mjs')];
+  const plan = chooseReleaseScope(files);
+  assert.equal(plan.scope,'adsense-verification');
+  assert.equal(plan.pagesCandidate,true);
+  assert.equal(plan.needsDependencies,false);
+  assert(plan.commands.some(command => command.includes('-e') && command.some(arg => arg.includes("readFileSync('ads.txt'"))));
+  assert.equal(chooseReleaseScope([change('ads.txt')]).scope,'adsense-verification');
+  for (const path of ['index.html','zukan.html','data.js','content-manifest.json','package.json'])
+    assert.notEqual(chooseReleaseScope([...files,change(path)]).scope,'adsense-verification');
+  assert.notEqual(chooseReleaseScope([{path:'ads.txt',status:'D'}]).scope,'adsense-verification');
+  assert.equal(chooseReleaseScope([change('scripts/release-scope.mjs')]).scope,'release-infrastructure');
+});
