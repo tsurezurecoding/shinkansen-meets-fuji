@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "db6718b74f6959e3",
+  "contentVersion": "7648bfc2cc92a382",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -5917,8 +5917,8 @@
     {
       "path": "kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/kyoto-station-views.html",
-      "bytes": 30857,
-      "sha256": "3b9c3525b6145ab08bc47b2b15085348055ab0195c9162e4cf7d5356753bc784"
+      "bytes": 31352,
+      "sha256": "3c5b481c9e92d4a121e0692bfe129e715e9457d04319c8f65c7d639c647b076a"
     },
     {
       "path": "live/narration.js",
