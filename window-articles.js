@@ -26,7 +26,13 @@
   const galleryImage = document.querySelector('[data-gallery-image]');
   const galleryLink = document.querySelector('[data-gallery-image-link]');
   if (galleryImage && galleryLink && !galleryLink.getAttribute('href')) {
-    galleryLink.removeAttribute('aria-hidden');galleryLink.tabIndex = 0;galleryLink.setAttribute('role','button');galleryLink.setAttribute('aria-label',document.documentElement.lang === 'en' ? 'Enlarge the window photograph' : '車窓写真を拡大する');
+    const enableGalleryZoom = () => {
+      galleryLink.removeAttribute('aria-hidden');galleryLink.tabIndex = 0;galleryLink.setAttribute('role','button');galleryLink.setAttribute('aria-label',document.documentElement.lang === 'en' ? 'Enlarge the window photograph' : '車窓写真を拡大する');
+    };
+    enableGalleryZoom();
+    document.querySelectorAll('[data-gallery-thumb]').forEach(button => button.addEventListener('click',enableGalleryZoom));
+    window.addEventListener('popstate',enableGalleryZoom);
+    window.addEventListener('hashchange',enableGalleryZoom);
     const show = () => open(galleryImage.dataset.photoOriginalSrc || galleryImage.src,galleryImage.alt,galleryLink.parentElement.querySelector('figcaption')?.textContent || '',galleryLink);
     galleryLink.addEventListener('click',show);
     galleryLink.addEventListener('keydown',event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault();show(); } });

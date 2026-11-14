@@ -77,11 +77,18 @@ test('Kyoto photo selection and keyboard enlargement preserve clean localized ca
     assert.equal(doc.querySelector('[data-gallery-date-output]').textContent,'');
     assert.doesNotMatch(doc.querySelector('[data-gallery-note-output]').textContent,/動画|切り出|frame|cropped/i);
     const trigger=doc.querySelector('[data-gallery-image-link]');
+    assert.equal(trigger.tabIndex,0);
+    assert.equal(trigger.getAttribute('aria-hidden'),null);
+    assert.equal(dom.window.location.hash,'#spot-kyoto-station-views/photo-2');
     trigger.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Enter',bubbles:true}));
     assert.equal(doc.getElementById('spotPageLightbox').hidden,false);
     doc.dispatchEvent(new dom.window.KeyboardEvent('keydown',{key:'Escape',bubbles:true}));
     assert.equal(doc.getElementById('spotPageLightbox').hidden,true);
     assert.equal(doc.activeElement,trigger);
+    const restored=new JSDOM(read(file),{runScripts:'outside-only',url:dom.window.location.href});
+    for(const script of ['spot-media-gallery.js','window-articles.js'])restored.window.eval(read(script));
+    assert.match(restored.window.document.querySelector('[data-gallery-image]').dataset.photoOriginalSrc,/20260816_kyoto-tower/);
+    restored.window.close();
     dom.window.close();
   }
 });
