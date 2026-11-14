@@ -30,6 +30,7 @@ const canonicalSpotIdOf = (id) => {
 const pairs = [
   ...["index","godzilla","shogun","yurucamp","dragonball","shinkalion"].map(slug=>[`/stories/${slug}.html`,`/en/stories/${slug}.html`]),
   ["/foods.html", "/en/foods.html"],
+  ["/omamori.html", "/en/omamori.html"],
   ["/countryside.html", "/en/countryside.html"],
   ...SANYO_DETAIL_CASTLES.map(castle => [`/spots/${castle.id}.html`, `/en/spots/${castle.id}.html`]),
   ["/ferris-wheels.html", "/en/ferris-wheels.html"],

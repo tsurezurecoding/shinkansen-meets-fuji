@@ -81,8 +81,8 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   const spots = vm.runInNewContext(fs.readFileSync(new URL('../data.js', import.meta.url), 'utf8') + ';SPOTS');
   const audit = auditContentMetadata(root, spots);
   assert.deepEqual(audit.problems, []);
-  // The merged story release added 50 story routes and eight Maruko editions.
-  assert.equal(Object.keys(CONTENT_METADATA).length, 138 + 50 + 8);
+  // Story and Maruko add 58 routes, the fifth story adds 10, and this batch adds 10 omamori plus six window articles.
+  assert.equal(Object.keys(CONTENT_METADATA).length, 138 + 50 + 8 + 10 + 10 + 6);
   for (const file of ['zh-Hant/spots/fuji.html','es/spots/fuji.html','de/yakei.html','fr/yakei.html','zh-Hant/yakei.html']) {
     assert.equal(CONTENT_METADATA[file].modified, '2026-10-20');
     assert.equal(CONTENT_METADATA[file].published, undefined, 'local translation dates must not assert publication');

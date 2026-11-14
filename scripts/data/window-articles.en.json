@@ -1,0 +1,229 @@
+{
+  "tamaruya-wasabi-sign": {
+    "heading": "Wasabi in the window: a sign for Shizuoka",
+    "headingChunks": [],
+    "hook": "A local flavour above the rooftops.",
+    "sectionHeading": "A green sign with a food story",
+    "story": "Just west of Shizuoka Station, a broad green sign appears above the buildings on the Seat E side. The yellow letters name Tamaruya; the large white characters below read wasabi-zuke. It is an advertisement for a local food, and a small introduction to Shizuoka while you are still on the train.\n\nWasabi-zuke is made with chopped wasabi and sake lees. If you know wasabi mainly as the green accompaniment to sushi, this is another way to meet the plant. The sign also has a story of its own: a moving pattern of neon light, and a connection between regional food and rail travel that began long before the Shinkansen.",
+    "readingLayout": {"version":1,"compactGuide":true,"visibility":{"label":"What to look for","value":"Green above the rooftops","note":"Nearby buildings and poles can briefly interrupt the view."}},
+    "facts": {"labels":["Section","Seat side","When to look","Photos"],"timing":"Just west of Shizuoka Station","photoUnit":"photos"},
+    "photoHeading": "Tamaruya’s sign from the train",
+    "chapters": [
+      {
+        "id":"read-the-sign",
+        "heading":"Green, yellow and white",
+        "paragraphs":[
+          "The green background is made up of narrow vertical lines. Yellow lettering sits above the much larger white product name. Before trying to read every character, look for the block of green; the white letters are the next clue.",
+          "The words divide neatly into a maker and a food. Tamaruya is the company name, while wasabi-zuke means wasabi preserved in sake lees. At the speed of a passing train, colour and a few bold characters give you something to recognise."
+        ]
+      },
+      {
+        "id":"neon",
+        "heading":"About 500 metres of neon",
+        "paragraphs":[
+          "A 2025 account by the sign’s manufacturer, Aoi Neon, dates its installation to September 1988. The sign is 5 metres high and 9.45 metres wide, with roughly 500 metres of neon tubing powered by 49 transformers. There is much more light-making equipment up there than a glance from the train suggests.",
+          "The lettering stays lit while the green background moves through a sequence controlled by a 32-stage flasher. The background then goes dark and lights up together. The vertical lines visible by day become a pattern that changes over time at night.",
+          "The account also describes retaining the hand-drawn wiring plan from 1988 and maintaining the sign against its original specifications. The familiar view depends on the less visible work of looking after an outdoor installation."
+        ],
+        "link":{"route":"https://sign-jp.org/wasabiduke/","label":"The maker’s account and original wiring plan (Japanese) ↗"}
+      },
+      {
+        "id":"railway-food",
+        "heading":"A food that travelled by rail",
+        "paragraphs":[
+          "Tamaruya’s railway connection predates the Shinkansen. Its official history records a move to the station area in 1890, when wasabi-zuke served with Shizuoka’s station meals was well received. Another company account describes selling it in small wooden tubs to travellers through train windows.",
+          "First there were sellers beside the train, then products carried on board, and now a large name outside the window. The speed of travel has changed, but the wish to introduce a local flavour to passing travellers is easy to recognise."
+        ],
+        "link":{"route":"https://www.tamaruya.co.jp/history.html","label":"Follow Tamaruya’s railway history (Japanese) ↗"},
+        "records":[
+          {"year":"1875","title":"A shop for preserved foods","text":"The business began making and selling preserved foods in Shizuoka."},
+          {"year":"1895","title":"Selling on the platform","text":"The company timeline records permission to sell on Shizuoka Station’s platforms."},
+          {"year":"1902","title":"A flat wooden tub","text":"A new container helped make wasabi-zuke a food to take home from a journey."},
+          {"year":"1964","title":"Joining the Shinkansen journey","text":"Tamaruya began supplying the on-board sales service as the Tokaido Shinkansen opened."}
+        ]
+      },
+      {
+        "id":"wasabi-zuke",
+        "heading":"Wasabi beyond sushi",
+        "paragraphs":[
+          "Wasabi-zuke looks quite different from a small mound of green wasabi paste. Tamaruya’s production guide describes using both the thick underground stem and the leaf stalks, preparing them with salt, then combining them with sake lees and seasonings. Sake lees are a by-product of brewing Japanese rice wine.",
+          "The company’s history traces the food to preserved wasabi stalks in the upper Abe River area. The character 漬 in the sign points to this preserving tradition. Knowing that one word gives the green billboard a connection to food on a table, rather than just a brand name."
+        ],
+        "link":{"route":"en/foods.html#wasabi","label":"Meet wasabi-zuke and other Japanese foods →"}
+      },
+      {
+        "id":"spotting",
+        "heading":"Watch the Seat E side, west of Shizuoka",
+        "paragraphs":[
+          "Travelling from Tokyo towards Shin-Osaka, look on the Seat E side after passing Shizuoka Station. In the opposite direction, look on the same lettered side before arriving at Shizuoka. The sign is west of the station; it does not mark the location of Tamaruya’s main shop.",
+          "The wider photograph shows how high the sign sits among the rooftops. Buildings and railway poles may hide part of the wording. Start with the green shape above the roofs, then look for the white letters. Remembering that shape by day gives you something to look for on a night journey too."
+        ]
+      }
+    ],
+    "references":[
+      {"label":"Aoi Neon: the Tamaruya neon sign (Japanese, 2025)","href":"https://sign-jp.org/wasabiduke/"},
+      {"label":"Tamaruya: company timeline (Japanese)","href":"https://www.tamaruya.co.jp/history.html"},
+      {"label":"Tamaruya: the history of wasabi-zuke (Japanese)","href":"https://www.tamaruya.co.jp/about.html"},
+      {"label":"Tamaruya: how wasabi-zuke is made (Japanese)","href":"https://www.tamaruya.co.jp/factory.html"}
+    ],
+    "photoCopy":{
+      "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg":{"alt":"Tamaruya’s green wasabi-zuke billboard above the rooftops west of Shizuoka Station","note":"Yellow lettering and a large white food name on green."},
+      "images/20261029_tamaruya-wasabi-sign_context_123500_michikusa.jpg":{"alt":"The streets and rooftops around Tamaruya’s green billboard","note":"The green sign above Shizuoka’s rooftops."}
+    }
+  },
+  "kizakura-otsukaresama-sign": {
+    "heading":"A sake sign that welcomes you to Osaka",
+    "headingChunks":[],
+    "hook":"A small greeting before Shin-Osaka.",
+    "sectionHeading":"A Japanese phrase, a sake cup and the end of a journey",
+    "story":"As the train approaches Shin-Osaka, a green rooftop sign appears on the Seat A side. A kappa holds a sake cup beside the words otsukaresama. The adjoining white panel carries the name Karakuchi Ikkon, a sake made by Kizakura, whose brewery is in Kyoto’s Fushimi district.\n\nOtsukaresama acknowledges someone’s effort: the feeling is close to “you’ve worked hard” or a welcoming word after a long day. Here, an advertisement can feel like a greeting at the end of a journey. The sake connection leads back to Kyoto, while the words belong to this arrival in Osaka.",
+    "readingLayout":{"version":1,"compactGuide":true,"visibility":{"label":"What to look for","value":"Green and white rooftop panels","note":"Look between nearby buildings just before Shin-Osaka."}},
+    "facts":{"labels":["Section","Seat side","When to look","Photos"],"timing":"Just before arrival at Shin-Osaka","photoUnit":"photos"},
+    "photoHeading":"The sign by day and at night",
+    "chapters":[
+      {
+        "id":"welcome-history",
+        "heading":"A welcome since 1979",
+        "paragraphs":[
+          "In a 2018 Asahi Shimbun report, a Kizakura representative explained that the company had advertised here since the building opened in 1979. The idea came from the company president at the time: returning business travellers should be able to relax a little as they arrived.",
+          "The report described a sign 5.6 metres high and 8 metres wide, positioned to meet the eye of a seated passenger. The wording matters, but so does its relationship with the people reading it through a train window."
+        ]
+      },
+      {
+        "id":"different-faces",
+        "heading":"Different faces, a familiar greeting",
+        "paragraphs":[
+          "Actors in kimono have also appeared on the sign. The 2018 report names Wakiko Kano, Narimi Arimori, Reiko Takashima and Michiko Kichise among the earlier faces.",
+          "A kappa version is visible in a photograph recorded in 2010 as well. Across photographs of people and drawings of kappa, the shared scene is a cup offered with a greeting. Looking at the earlier versions lets a brief view carry memories of other journeys."
+        ],
+        "records":[
+          {"year":"From around 1998","title":"Reiko Takashima","text":"The 2018 Asahi report describes a run of about ten years. A traveller’s account also remembers her among the sign’s familiar faces.","href":"https://ameblo.jp/no-problem-ok/entry-12541533697.html","label":"Read the traveller’s account (Japanese) ↗"},
+          {"year":"From her own blog","title":"Michiko Kichise","text":"Kichise shared photographs of the large Shin-Osaka panel after her manager spotted it.","href":"https://ameblo.jp/michiko-blog/entry-10078056854.html","label":"Read “特大パネル” on her blog (Japanese) ↗"},
+          {"year":"A record from 2010","title":"A kappa was here too","text":"A wide view from the train shows a kappa version among the surrounding buildings.","href":"https://commons.wikimedia.org/wiki/File:おつかれさま_(4735281211).jpg","label":"View the CC BY 2.0 photograph ↗"},
+          {"year":"From autumn 2016","title":"Erina Mano","text":"The 2018 report shows this version. A photographer’s account offers another look at the sign.","href":"https://masaru-bu.blog.jp/archives/52187477.html","label":"See the photographer’s account (Japanese) ↗"},
+          {"year":"The view in 2026","title":"A kappa with a sake cup","text":"A green background, a sideways figure and the familiar greeting: compare the daytime and night views.","href":"#day-and-night","label":"Compare day and night ↓"}
+        ]
+      },
+      {
+        "id":"kappa-story",
+        "heading":"A character with an advertising history",
+        "paragraphs":[
+          "Kappa are water-dwelling creatures from Japanese folklore. Kizakura’s official gallery explains that the company adopted Kon Shimizu’s kappa as advertising characters in 1955. Ko Kojima took over as their second artist in 1974.",
+          "The gallery introduces a family of characters, including parents, children and a grandfather. Their stories involve drinks, family life and seasonal customs. The creature on the billboard belongs to a long-running cast, rather than being a decorative animal chosen for this one sign.",
+          "The archive even includes a 1962 commercial called “かっぱ駅”, or Kappa Station. A sign glimpsed from a modern train can lead back into the history of Japanese cartoons and television advertising."
+        ],
+        "link":{"route":"https://kizakura.co.jp/gallery/","label":"Meet the kappa family and earlier commercials (Japanese) ↗"}
+      },
+      {
+        "id":"day-and-night",
+        "heading":"Two bright panels, two ways to see them",
+        "paragraphs":[
+          "By day, the kappa and greeting sit on a green panel beside black lettering on white. From a moving train, the two faces appear at an angle, with wires and poles passing in front of them.",
+          "At night, the illuminated sign stands out against the darker streets. Look for the green rectangle and the neighbouring white panel before trying to read the small details. A shape remembered during the day can be a useful clue after dark."
+        ]
+      },
+      {
+        "id":"last-window",
+        "heading":"From Fushimi sake to the Shin-Osaka window",
+        "paragraphs":[
+          "Approaching Shin-Osaka from the Tokyo direction, look on the Seat A side just before arrival. Leaving Shin-Osaka towards Tokyo, look on the same lettered side shortly after departure. The direction of travel changes, but the seat letter stays A.",
+          "Kizakura’s brewery is in Fushimi, Kyoto, a place associated with sake. This sign offers another connection between a drink, a place and a railway journey: Kyoto’s brewing name becomes a greeting near the Osaka terminus."
+        ],
+        "link":{"route":"en/drinks.html#sake","label":"Explore sake and other Japanese drinks →"}
+      }
+    ],
+    "references":[
+      {"label":"Asahi Shimbun: the 2018 report (Japanese)","href":"https://www.youtube.com/watch?v=xQL_9ci6EVA"},
+      {"label":"Kizakura: kappa characters and earlier commercials (Japanese)","href":"https://kizakura.co.jp/gallery/"},
+      {"label":"MASARU: the Erina Mano sign (Japanese)","href":"https://masaru-bu.blog.jp/archives/52187477.html"},
+      {"label":"A traveller’s account of the earlier signs (Japanese)","href":"https://ameblo.jp/no-problem-ok/entry-12541533697.html"},
+      {"label":"Michiko Kichise’s blog: 特大パネル (Japanese)","href":"https://ameblo.jp/michiko-blog/entry-10078056854.html"},
+      {"label":"Wikimedia Commons: the 2010 sign, CC BY 2.0","href":"https://commons.wikimedia.org/wiki/File:おつかれさま_(4735281211).jpg"},
+      {"label":"Kizakura: company history (Japanese)","href":"https://kizakura.co.jp/company/profile.html"}
+    ],
+    "photoCopy":{
+      "images/20260919_kizakura-otsukaresama-sign_31000_michikusa.jpg":{"alt":"Kizakura’s green sign with a kappa holding a sake cup near Shin-Osaka","note":"The greeting on the Seat A side before Shin-Osaka."},
+      "images/20260919_kizakura-otsukaresama-sign_context_30000_michikusa.jpg":{"alt":"The green and white Kizakura panels among the buildings near Shin-Osaka","note":"The two panels and the surrounding buildings."},
+      "images/20261018_kizakura-otsukaresama-sign_night_0_michikusa.jpg":{"alt":"Kizakura’s sign illuminated against the night-time streets","note":"The green and white panels after dark."}
+    }
+  },
+  "kyoto-station-views": {
+    "id":"kyoto-station-views",
+    "name":"Kyoto Tower and the station roof",
+    "heading":"Kyoto’s white tower and its great station roof",
+    "headingChunks":[],
+    "hook":"Take a second look at your arrival.",
+    "area":"Kyoto Station and the Karasuma side",
+    "sideLabel":"Seat E for the tower",
+    "sectionHeading":"Two ways to arrive in Kyoto",
+    "story":"Temples and traditional houses may be the buildings you first associate with Kyoto. At its railway gateway, a slender white tower and a vast roof of glass and metal offer a different view of the city. Both are part of the experience of arriving here.\n\nFind the top of the tower from the train, look up into the station’s central space, then see the tower again from the street. Changing your distance and height reveals different relationships between the same buildings. There is a little architecture to explore before you set off for the temples.",
+    "readingLayout":{"version":1,"compactGuide":false,"visibility":{"label":"Where to look","value":"The train window and the north side","note":"The tower is on the Seat E side. Station-square views are seen after leaving the train."}},
+    "facts":{"labels":["Location","Seat side","When to look","Photos"],"timing":"Around arrival at or departure from Kyoto","photoUnit":"photos"},
+    "photoHeading":"Kyoto Tower from the Seat E window",
+    "chapters":[
+      {
+        "id":"lighthouse",
+        "heading":"A lighthouse for a city",
+        "paragraphs":[
+          "Nidec Kyoto Tower stands opposite the station’s north, or Karasuma, side. It reaches 131 metres above ground. Its official account describes the white form as a lighthouse: the tiled roofs of the city were imagined as waves around it.",
+          "In the daytime photograph, the white shaft rises against the sky towards the circular observation room. Knowing the lighthouse idea invites you to look at the surrounding roofs as well as the tower itself.",
+          "After dark, the tower shines above the lights of the buildings and streets. Alongside its usual white illumination, coloured lighting is used for occasions including awareness campaigns. The official site gives information about the day’s lighting."
+        ],
+        "link":{"route":"https://www.kyoto-tower.jp/about/","label":"The tower’s design and lighting information (Japanese) ↗"}
+      },
+      {
+        "id":"same-year",
+        "heading":"A smooth tower from 1964",
+        "paragraphs":[
+          "The observation room opened on 28 December 1964, the year the Tokaido Shinkansen began running and Tokyo hosted the Olympic Games. Kyoto Central Post Office had previously occupied the site; its relocation opened the way for a new tourism and industry centre.",
+          "The architect was Mamoru Yamada, known for buildings that use curves. Instead of a conventional steel frame inside the tower, joined steel plates form a supporting shell. The uninterrupted white surface is connected to how the tower is built.",
+          "Look beyond the observation room to the long shaft below it. The tower presents a continuous surface, while the station roof reveals many individual members. Their different forms are a reason to look at both."
+        ],
+        "link":{"route":"https://www.kyoto-tower.jp/about/","label":"See the official structural illustration (Japanese) ↗"}
+      },
+      {
+        "id":"station-roof",
+        "heading":"A valley under glass",
+        "paragraphs":[
+          "The present station building opened in 1997 and is Kyoto’s fourth station building. Its architect was Hiroshi Hara. The official design account explains how Kyoto’s street grid informed the plan, with gateways corresponding to Karasuma and Muromachi streets.",
+          "The central concourse is imagined as a valley, with terraced spaces extending to the east and west. Glass and metal cover the central space. Follow the view from the people and walkways up to the roof and the scale of this indoor landscape becomes clearer.",
+          "A roof can disappear into the background when you are hurrying through. Pause to follow the lines of the structure and the daylight coming through the glass. This is another building shaped by ideas about Kyoto, before the temple visits begin."
+        ],
+        "link":{"route":"https://www.kyoto-station-building.co.jp/about/history/","label":"The station’s design and earlier buildings (Japanese) ↗"}
+      },
+      {
+        "id":"change-viewpoint",
+        "heading":"See the same gateway from another height",
+        "paragraphs":[
+          "Inside the station, there are places to change your viewpoint. Karasuma-koji Square on the fourth floor is one place to see the tower. The tenth-floor Skyway crosses between the east and west sides: a 185-metre passage at a height of 45 metres.",
+          "From the street you look up at the tower; from inside you look up at the roof; higher in the building you can look out across the northern cityscape. The relationship between tower and town changes as you move.",
+          "If you have time between journeys, the station itself can be a small place to explore. The official square guide lists locations and access hours."
+        ],
+        "link":{"route":"en/tokyo-kyoto-stations.html#look-around","label":"Look more closely at Kyoto Station’s architecture →"}
+      },
+      {
+        "id":"window-and-street",
+        "heading":"From a brief window view to the Karasuma side",
+        "paragraphs":[
+          "Look for Kyoto Tower on the Seat E side. In one position, its shaft and top rise above the station roof; in another, only the observation room and red-and-white tip appear over a hotel. Learning the shape of the top helps you find these brief views between buildings.",
+          "To walk towards the tower after leaving the train, head for the north, Karasuma or Central Entrance side. The Shinkansen is on the south side, connected by the north–south public passage. The tower’s official two-minute walk is measured from Kyoto Station’s north-side Central Entrance, rather than from the Shinkansen platform.",
+          "A tower glimpsed from the train becomes a building you can look up at from the street. On the other side of the train, Toji’s five-storey pagoda offers another Kyoto landmark. Its viewing position and photographs are covered in the separate Toji article."
+        ],
+        "link":{"route":"https://www.kyoto-tower.jp/access/","label":"Find the route from the Shinkansen gates (Japanese) ↗"}
+      }
+    ],
+    "references":[
+      {"label":"Nidec Kyoto Tower: history, design and structure (Japanese)","href":"https://www.kyoto-tower.jp/about/"},
+      {"label":"Nidec Kyoto Tower: station access (Japanese)","href":"https://www.kyoto-tower.jp/access/"},
+      {"label":"Kyoto Station Building: design and history (Japanese)","href":"https://www.kyoto-station-building.co.jp/about/history/"},
+      {"label":"Kyoto Station Building: squares and Skyway (Japanese)","href":"https://www.kyoto-station-building.co.jp/service/square/"}
+    ],
+    "photoCopy":{
+      "images/20260704_kyoto-tower_michikusa.webp":{"alt":"Kyoto Tower rising above the station roof, seen from the Seat E window","note":"Kyoto Tower above the station roof."},
+      "images/20260816_kyoto-tower_michikusa.webp":{"alt":"The upper part of Kyoto Tower appearing above a hotel roof","note":"The observation room and tip above a hotel."},
+      "images/kyoto-tower-day-2022-indo-kujaku.webp":{"alt":"The white Kyoto Tower above the bus terminal on the Karasuma side","note":"Looking up at Kyoto Tower from the station square."},
+      "images/kyoto-tower-night-2025-fotointheworld.webp":{"alt":"Kyoto Tower illuminated above the night-time streets, seen from the station building","note":"The tower after dark, from the station building."},
+      "images/stations/kyoto-station-atrium-martin-falbisoner.jpg":{"alt":"The glass and metal roof above Kyoto Station’s central concourse","note":"Look up into the station’s central space."}
+    }
+  }
+}

@@ -650,7 +650,7 @@
           </a>
           <a class="afterglow-card reveal" href="yakei.html" data-lp-cta="special-yakei">
             <img src="images/thumbs/20260629_2320_maruko_bridge_night_michikusa.webp" alt="夜の車窓に見える丸子橋あたりの灯り" loading="lazy" decoding="async">
-            <span class="afterglow-copy"><small>NIGHT · 15か所</small><h3>新幹線の夜景</h3><p>暗くなる区間を、出発時刻から。</p></span>
+            <span class="afterglow-copy"><small>NIGHT · 18か所</small><h3>新幹線の夜景</h3><p>暗くなる区間を、出発時刻から。</p></span>
           </a>
           <a class="afterglow-card reveal" href="sparkling-dreams.html" data-lp-cta="special-disney">
             <img src="images/thumbs/20260816_sparkling_dreams_shizuoka_michikusa.webp" alt="ホームに停まるディズニーデザインのラッピング新幹線" loading="lazy" decoding="async">

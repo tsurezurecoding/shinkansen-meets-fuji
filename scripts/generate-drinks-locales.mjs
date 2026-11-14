@@ -6,6 +6,7 @@ import { assetVersion } from './shared/asset-version.mjs';
 import { englishSnapshot } from './shared/castle-localization.mjs';
 import { finalizeSiteChrome } from './shared/site-chrome.mjs';
 import { publicPath } from './shared/utility-locales.mjs';
+import {omamoriStoryCard,omamoriPhotoCredit} from './shared/omamori-entry.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const langs=translated;
 const read=name=>JSON.parse(fs.readFileSync(path.join(root,'scripts/shared/'+name+'.json'),'utf8'));
@@ -77,6 +78,7 @@ export function generateDrinkLocales(){
     html=html.replace(/<script src="\.\.\/beer\.js[^>]*><\/script>/,`<script type="application/json" id="beer-label-copy">${JSON.stringify(answers).replace(/</g,'\\u003c')}</script><script src="../beer.js?v=${assetVersion('beer.js')}"></script>`);
    }
    html=html.replace('</head>',`<link rel="stylesheet" href="../article-locales.css?v=${assetVersion('article-locales.css')}"><script defer src="../article-locales.js?v=${assetVersion('article-locales.js')}"></script></head>`);
+   if(slug==='drinks')html=html.replace(/(<nav class="everyday-related-grid"[\s\S]*?)(<\/nav>)/,(_,before,end)=>before+omamoriStoryCard(lang)+end+omamoriPhotoCredit(lang));
    html=finalizeSiteChrome(withLocaleRegistry(html,'../'),`${lang}/${slug}.html`,root);
    const relative=`${lang}/${slug}.html`;const output=path.join(root,relative);
    if(!fs.existsSync(output)||fs.readFileSync(output,'utf8')!==html){changes.push(relative);if(!process.argv.includes('--check')){fs.mkdirSync(path.dirname(output),{recursive:true});fs.writeFileSync(output,html);}}

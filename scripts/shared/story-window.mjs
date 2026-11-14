@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import {parse} from 'parse5';
 import {languages, routes, stripEdition, canonicalRoute, supported} from './locales.mjs';
 import {assetVersion} from './asset-version.mjs';
 export const STORY_ROUTES = routes.filter(route=>route.startsWith('stories/'));
@@ -38,7 +39,12 @@ export function withStoryWindowLinks(html,file,root){
   html=stripStoryWindowLinks(html);
   if(route==='zukan.html'){
     const card=`<!-- STORY-WINDOW:START --><a class="journey-intent-card journey-intent-family" href="${prefix}${storyFile(lang)}" data-cta-track="zukan_theme_click" data-cta-id="story_window"><img src="${prefix}${storyAsset('20261103_sekigahara-landscape_michikusa_45599.jpg')}" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>STORIES</small><strong>${e(copy.zukan.title)}</strong><span>${e(copy.zukan.description)}</span></span></a><!-- STORY-WINDOW:END -->`;
-    return html.includes('<!-- STORY_WINDOW_CARD -->')?html.replace('<!-- STORY_WINDOW_CARD -->',card):html.replace('<div class="journey-intent-grid">','<div class="journey-intent-grid">'+card);
+    html=html.replaceAll('<!-- STORY_WINDOW_CARD -->','').replace(/^[ \t]+$/gm,'');
+    const document=parse(html,{sourceCodeLocationInfo:true});
+    const findGrid=node=>node.attrs?.some(a=>a.name==='class'&&a.value.split(/\s+/).includes('journey-intent-grid'))?node:(node.childNodes||[]).map(findGrid).find(Boolean);
+    const offset=findGrid(document)?.sourceCodeLocation?.endTag?.startOffset;
+    if(offset===undefined)throw Error(`Story card catalogue grid missing: ${file}`);
+    return html.slice(0,offset)+card+html.slice(offset);
   }
   if(!html.includes('story-window-links.css'))html=html.replace('</head>',`<link rel="stylesheet" href="${prefix}story-window-links.css?v=${assetVersion('story-window-links.css')}"></head>`);
   const item=copy.stories[slug];

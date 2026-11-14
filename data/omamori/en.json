@@ -1,0 +1,249 @@
+{
+  "title": "Omamori: a small charm, a personal wish.",
+  "metaTitle": "Omamori: Japanese charms and the wishes they carry",
+  "description": "What are omamori? Learn about these small charms from Japanese shrines and temples, how to choose and carry one, and what to consider after your trip.",
+  "eyebrow": "EVERYDAY JAPAN · OMAMORI",
+  "definition": "Omamori are charms received at Shinto shrines and Buddhist temples in Japan, carried close as a prayer for protection or a particular wish.",
+  "lead": "“May I finish my journey safely.” “May I do my best in my exams.” A small pouch can hold wishes like these.",
+  "cta": "Meet the omamori",
+  "skipAfter": "Already have one? What to do after your trip",
+  "hubLabel": "Everyday Japan",
+  "skipLink": "Skip to the main story",
+  "chapters": [
+    {
+      "id": "about",
+      "label": "What is an omamori?",
+      "kicker": "01 · A wish to carry",
+      "title": "A small pouch, entrusted with a wish",
+      "intro": "",
+      "paragraphs": [
+        "As you walk around Japanese shrines and temples, you may see rows of small, colorful pouches. These are omamori—a name connected to the Japanese word for protection.",
+        "People carry them close, or keep them in a bag, as they pray for health, safety, success in studies, or good relationships. Cloth pouches are familiar, but their forms vary by shrine and temple.",
+        "If one catches your eye, look at the words on it and wonder what wish it represents. Some people choose one for themselves; others give one to someone they care about."
+      ]
+    },
+    {
+      "id": "receive",
+      "label": "Where to receive one",
+      "kicker": "02 · At a shrine or temple",
+      "title": "Find one at a shrine or temple",
+      "intro": "",
+      "paragraphs": [
+        "Omamori are available at places such as a shrine or temple’s juyosho (授与所), the counter where sacred items are offered. A shrine is a place of Shinto worship; a temple is a place of Buddhist worship. Both may offer omamori."
+      ]
+    },
+    {
+      "id": "choose",
+      "label": "Words and wishes",
+      "kicker": "03 · Read the words",
+      "title": "Read the words on the pouch",
+      "intro": "Similar colors and shapes can carry different wishes. Choose a word that catches your attention.",
+      "paragraphs": []
+    },
+    {
+      "id": "carry",
+      "label": "How to carry one",
+      "kicker": "04 · Keep it close",
+      "title": "Carry it with care",
+      "intro": "",
+      "paragraphs": [
+        "People may wear an omamori or keep it in a bag they use often. If the place where you received it gives instructions for carrying or placing it, follow that guidance.",
+        "The cloth pouch is generally kept closed. To learn what it is for, read the words on the outside or check the shrine or temple's explanation."
+      ]
+    },
+    {
+      "id": "after",
+      "label": "After your trip",
+      "kicker": "05 · When you return home",
+      "title": "What happens after your trip?",
+      "intro": "",
+      "paragraphs": [
+        "An omamori may stay with you after you return home. If you are wondering what to do after a year, or cannot travel back to Japan, start by checking the guidance below."
+      ]
+    }
+  ],
+  "compareLabel": "Three ways to express a wish",
+  "comparisons": [
+    {
+      "kanji": "お守り",
+      "romaji": "omamori",
+      "title": "Carry it with a wish",
+      "text": "An item kept close while praying for things such as safety or good health."
+    },
+    {
+      "kanji": "おみくじ",
+      "romaji": "omikuji",
+      "title": "Receive words and read them",
+      "text": "A written fortune, often with advice for the days ahead."
+    },
+    {
+      "kanji": "絵馬",
+      "romaji": "ema",
+      "title": "Write a wish and offer it",
+      "text": "A wooden plaque on which people write a wish or prayer and leave at a shrine or temple."
+    }
+  ],
+  "receiveSteps": [
+    {
+      "title": "Pay your respects first",
+      "text": "Follow the site's guidance and offer a quiet prayer. Customs differ between shrines and temples."
+    },
+    {
+      "title": "Choose a wish",
+      "text": "Read the words and descriptions at the juyosho (授与所), the counter where sacred items are offered. Ask if you are unsure."
+    },
+    {
+      "title": "Offer the displayed amount",
+      "text": "At a shrine, the amount may be called hatsuho-ryo (初穂料). Names and amounts vary by place and item."
+    }
+  ],
+  "receiveNote": "These items may be described as received or bestowed, rather than bought.",
+  "wordPrompt": "Choose a word to explore",
+  "wordGroupLabel": "Choose an omamori inscription",
+  "wordResultLabel": "Meaning of the selected inscription",
+  "words": [
+    {
+      "id": "travel",
+      "kanji": "交通安全",
+      "reading": "kotsu anzen",
+      "title": "For a safe journey",
+      "text": "A wish for safety in traffic and travel. It may be a helpful starting point when choosing something for a trip or everyday journeys."
+    },
+    {
+      "id": "study",
+      "kanji": "学業成就",
+      "reading": "gakugyo joju",
+      "title": "May your studies bear fruit",
+      "text": "A wish for success in learning or studies, including success in examinations."
+    },
+    {
+      "id": "relationship",
+      "kanji": "縁結び",
+      "reading": "enmusubi",
+      "title": "For good connections",
+      "text": "A wish for good relationships or connections, including romantic relationships. The exact wish varies by shrine or temple."
+    },
+    {
+      "id": "protection",
+      "kanji": "厄除",
+      "reading": "yakuyoke",
+      "title": "For protection from misfortune",
+      "text": "A wish to ward off yaku (厄), a period or kind of misfortune, or other hardship."
+    },
+    {
+      "id": "birth",
+      "kanji": "安産",
+      "reading": "anzan",
+      "title": "For a safe birth",
+      "text": "A wish for a safe childbirth. If giving one as a gift, check the inscription first to make sure it fits the recipient."
+    },
+    {
+      "id": "fortune",
+      "kanji": "開運",
+      "reading": "kaiun",
+      "title": "For good fortune",
+      "text": "A wish for good fortune. When choosing one for someone else, check that it fits what they wish for."
+    }
+  ],
+  "wordNote": "These are general guides. The wishes and explanations can vary by shrine or temple, so look for its own information too.",
+  "carryGift": {
+    "title": "A small gift for someone",
+    "text": "“May your exam go well” or “May your journey be safe.” Share the meaning and the thought behind your choice, while respecting the other person's wishes and beliefs."
+  },
+  "afterHighlight": {
+    "label": "A useful place to start",
+    "title": "One year is not an expiry date that applies to every omamori.",
+    "text": "Some people receive a new one around the New Year. Jinja Honcho says you may keep carrying an omamori until your wish comes true. Check the guidance from the place that offered yours."
+  },
+  "faqs": [
+    {
+      "question": "What if I cannot return to Japan?",
+      "answer": "You do not necessarily need to let it go just because a year has passed. If you would like to return it, contact the shrine or temple where you received it. Some accept returns by post; confirm the address, eligible items, and process before sending anything."
+    },
+    {
+      "question": "Can I return it to a different shrine or temple?",
+      "answer": "Acceptance rules vary. Do not assume any nearby place—or a religious institution in your home country—will accept it. Check first with the place that offered it, and ask the other place if you plan to return it there."
+    },
+    {
+      "question": "Can I carry more than one omamori?",
+      "answer": "Jinja Honcho explains that there is no need to worry that carrying multiple omamori will make Shinto deities fight. For items from temples or other religions, check the guidance of those places too."
+    },
+    {
+      "question": "What if I do not know where it came from?",
+      "answer": "Look for a shrine or temple name on the pouch, its wrapping, or in travel photos. If you find one, the official website's omamori, old talismans, or return guidance may help."
+    }
+  ],
+  "ending": {
+    "kicker": "Next time you see one",
+    "title": "A human wish behind a few small words",
+    "text": "Maybe it is the color or shape that catches your eye. Take a moment to look at the words too, and wonder what wish they hold.",
+    "link": "Look at the words again"
+  },
+  "sourcesTitle": "Sources and photo notes",
+  "sourcesIntro": "This is a general introduction for readers meeting omamori for the first time. For offering and return practices, check the guidance of each shrine or temple.",
+  "sourceLabels": {
+    "jnto": "Japan National Tourism Organization: omamori and places of worship",
+    "jinja": "Association of Shinto Shrines: amulets and talismans (Japanese)",
+    "seimei": "Seimei Shrine: offerings and FAQ (Traditional Chinese)",
+    "sugiyama": "Hoshikawa Sugiyama Shrine: returning omamori (Japanese)",
+    "pamphlet": "Association of Shinto Shrines: omamori guide (Traditional Chinese)"
+  },
+  "photos": {
+    "various": {
+      "alt": "A collection of colorful omamori pouches with cords, including inscriptions for good fortune, studies, and protection.",
+      "caption": "A variety of forms and inscriptions. The collection includes items from shrines in Japan and the United States.",
+      "fullCaption": "Various omamori from shrines in Japan and the United States.",
+      "openLabel": "View the omamori photo larger"
+    },
+    "meiji": {
+      "alt": "Visitors choosing omamori and other offerings at the juyosho counter at Meiji Jingu shrine.",
+      "caption": "The juyosho counter at Meiji Jingu, photographed in 2018. Current offerings and prices may differ.",
+      "fullCaption": "The juyosho counter at Meiji Jingu, photographed in 2018. Current offerings and prices may differ from those shown.",
+      "openLabel": "View the Meiji Jingu counter photo larger"
+    }
+  },
+  "photoClose": "Close photo",
+  "photoZoom": "Enlarge photo",
+  "photoCredits": "Photo credits",
+  "photoOriginal": "View original photo",
+  "photoLicense": "Photo license",
+  "relatedTitle": "Another discovery in Japan",
+  "relatedRead": "Read more",
+  "backTop": "Back to top",
+  "photoCreditLabel": "Photo",
+  "relatedPhotoLabel": "Photographs",
+  "relatedStories": [
+    {
+      "route": "foods.html",
+      "image": "foods/onigiri.webp",
+      "label": "A FIRST BITE",
+      "title": "Small foods for your journey",
+      "note": "Rice balls, warm buns and sweet stops."
+    },
+    {
+      "route": "drinks.html",
+      "image": "drinks/20261004-tea-shelf-michikusa.webp",
+      "label": "SOMETHING TO SIP",
+      "title": "Japanese drinks",
+      "note": "Tea, coffee and a new name on the shelf."
+    },
+    {
+      "route": "countryside.html",
+      "image": "20260629_omi_fuji_michikusa.jpg",
+      "label": "FROM YOUR WINDOW",
+      "title": "Japan’s countryside",
+      "note": "Rice fields, tea gardens and the landscape between cities."
+    }
+  ],
+  "entry": {
+    "sectionKicker": "03 · SMALL WISHES",
+    "sectionTitle": "A small thing, a personal wish.",
+    "sectionLead": "At a shrine or temple, look a little closer at the colorful pouches.",
+    "label": "A WISH TO CARRY",
+    "title": "Omamori: a wish to carry",
+    "note": "Meet Japan’s small charms, read their words and learn how to carry one.",
+    "read": "Read the story",
+    "creditLabel": "Omamori photograph",
+    "creditNote": "Items from shrines in Japan and the United States."
+  }
+}

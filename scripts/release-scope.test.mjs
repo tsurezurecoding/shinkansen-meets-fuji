@@ -29,6 +29,22 @@ test('train inline invitation scope covers all editions and rejects unrelated ch
  for(const unrelated of ['app.js','data.js','style.css','en/guide.html','images/new.jpg'])assert.equal(chooseReleaseScope([...files,unrelated].map(change)).scope,'unmapped');
  assert.equal(chooseReleaseScope([...files.map(change),{path:'it/start.html',status:'D'}]).scope,'unmapped');
 });
+test('omamori editions use focused checks and reject unrelated content or dependencies',()=>{
+  const files=['scripts/generate-omamori-page.mjs','data/omamori/en.json','omamori.html','en/omamori.html','images/omamori/omamori-various.jpg','spot-page-shared.js','content-manifest.json'];
+  const plan=chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope,'omamori-everyday');
+  assert.ok(plan.commands.some(command=>command.includes('scripts/validate-language-pages.mjs')));
+  assert.ok(!plan.commands.some(command=>command.includes('verify')));
+  assert.equal(chooseReleaseScope([...files,'data/omamori/th.json','th/omamori.html','th/everyday-japan.html','locales.js','scripts/generate-castle-locales.mjs','scripts/generate-drinks-locales.mjs'].map(change)).scope,'omamori-everyday');
+  assert.ok(plan.commands.find(command=>command.includes('scripts/validate-site-navigation.mjs')).includes('omamori.html'));
+  assert.notEqual(chooseReleaseScope([...files,'data/omamori/ar.json'].map(change)).scope,'omamori-everyday');
+  assert.notEqual(chooseReleaseScope([...files,'data.js'].map(change)).scope,'omamori-everyday');
+  const before={scripts:{'build:pages':'node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};
+  const after={scripts:{'build:pages':'node scripts/generate-omamori-page.mjs && node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};
+  assert.equal(chooseReleaseScope([...files,'package.json'].map(change),{packageBefore:JSON.stringify(before),packageAfter:JSON.stringify(after)}).scope,'omamori-everyday');
+  after.dependencies.jsdom='2';
+  assert.notEqual(chooseReleaseScope([...files,'package.json'].map(change),{packageBefore:JSON.stringify(before),packageAfter:JSON.stringify(after)}).scope,'omamori-everyday');
+});
 
 test('story editorial release covers ten editions and display variants, excluding unrelated work',()=>{
   const files=['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','story-window-editorial.css','story-window.js',
@@ -415,6 +431,13 @@ test('artwork sitemap scope is restricted to the exact migration and known outpu
   assert(onlyArtworkSitemapChanged(before, after));
   assert(!onlyArtworkSitemapChanged(before, after + 'unrelated'));
   assert(!onlyArtworkSitemapChanged(before, before));
+});
+
+test('new registered spots keep their full consumer checks when build scripts are extended',()=>{
+  const changes=[change('data.js'),change('package.json'),{path:'data/spot-pages/tamaruya-wasabi-sign.ja.js',status:'A'}];
+  const options={packageBefore:JSON.stringify({scripts:{'build:pages':'node scripts/generate-spot-pages.mjs'}}),packageAfter:JSON.stringify({scripts:{'build:pages':'node scripts/generate-kyoto-window-page.mjs && node scripts/generate-spot-pages.mjs'}})};
+  assert.equal(chooseReleaseScope(changes,options).scope,'full');
+  assert.equal(chooseReleaseScope([change('package.json')],options).scope,'unmapped');
 });
 
 test('AdSense ownership verification publishes only its root record and rejects unrelated changes', () => {

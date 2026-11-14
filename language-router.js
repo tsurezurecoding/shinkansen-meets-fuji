@@ -6,6 +6,7 @@
   if (config ? config.routeLanguage(path) : /\/(?:en)(?:\/|$)/.test(path)) return;
 
   var routes = {
+    "/omamori.html": "en/omamori.html",
     "/stories/index.html": "../en/stories/index.html",
     "/stories/godzilla.html": "../en/stories/godzilla.html",
     "/stories/shogun.html": "../en/stories/shogun.html",
@@ -33,6 +34,7 @@
     "/yakei.html": "en/yakei.html",
     "/window-moments.html": "en/window-moments.html",
     "/reflections.html": "en/reflections.html",
+    "/kyoto-station-views.html": "en/kyoto-station-views.html",
     "/live/": "../en/live/",
     "/live/index.html": "../en/live/"
   };

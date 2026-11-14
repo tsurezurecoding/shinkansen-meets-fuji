@@ -7,6 +7,7 @@ import vm from "node:vm";
 import { fileURLToPath } from "node:url";
 import { thumbnailSrc, miniMapViewpoint, mercatorPoint, miniMapZoomForViewpoint } from "./shared/geo.mjs";
 import { responsivePhotoPlan } from './shared/responsive-photos.mjs';
+import { withWindowArticle } from './shared/window-articles.mjs';
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const appDir = path.resolve(scriptDir, "..");
@@ -768,7 +769,7 @@ const pages = {};
 for (const spot of pageSpots) {
   pages[spot.id] = {};
   for (const lang of ["ja", "en"]) {
-    pages[spot.id][lang] = projectPage(spot, lang);
+    pages[spot.id][lang] = withWindowArticle(projectPage(spot, lang), lang);
     const connection = renderArticleConnections(lang, spot.id);
     if (connection) pages[spot.id][lang].articleConnections = connection;
   }

@@ -1,3 +1,4 @@
+import {omamoriStoryCard,omamoriPhotoCredit} from './omamori-entry.mjs';
 import path from 'node:path';
 import { assetVersion } from './asset-version.mjs';
 
@@ -27,7 +28,7 @@ export function everydayRelatedHTML(id, englishRoot = '', exclude = []) {
     return `<a class="everyday-story-card" href="${englishRoot}${story.route}" data-cta-track="everyday_related_click" data-cta-id="${id}_to_${story.id}"><span class="everyday-story-photo"><img src="${englishRoot}../images/${src}" alt="${escape(alt)}" width="640" height="480" loading="lazy" decoding="async" style="object-position:${position}"></span><span class="everyday-story-copy"><small>${label}</small><strong>${escape(story.title)}</strong><span>${escape(story.note)}</span><b>Read the story <span aria-hidden="true">→</span></b></span></a>`;
   }).join('');
   const credits = !related.some(story => story.id === 'foods') ? 'Photographs: Michikusa.' : 'Photographs: Michikusa. Onigiri: <a href="https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg">Ocdp</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a> (resized, WebP, responsive crop).';
-  return `<section class="everyday-related" aria-labelledby="everydayRelatedTitle"><div class="section-head"><div><p class="eyebrow">EVERYDAY JAPAN</p><h2 id="everydayRelatedTitle">Another small discovery.</h2></div><a class="everyday-all-stories" href="${englishRoot}everyday-japan.html">All stories <span aria-hidden="true">→</span></a></div><nav class="everyday-related-grid" aria-label="More Everyday Japan stories">${cards}</nav><p class="everyday-related-credits">${credits}</p></section>`;
+  return `<section class="everyday-related" aria-labelledby="everydayRelatedTitle"><div class="section-head"><div><p class="eyebrow">EVERYDAY JAPAN</p><h2 id="everydayRelatedTitle">Another small discovery.</h2></div><a class="everyday-all-stories" href="${englishRoot}everyday-japan.html">All stories <span aria-hidden="true">→</span></a></div><nav class="everyday-related-grid" aria-label="More Everyday Japan stories">${cards}${['foods','drinks'].includes(id)?omamoriStoryCard('en',englishRoot+'../'):''}</nav>${['foods','drinks'].includes(id)?omamoriPhotoCredit():''}<p class="everyday-related-credits">${credits}</p></section>`;
 }
 
 export function addEverydayRelated(html, id, file, { exclude = [] } = {}) {

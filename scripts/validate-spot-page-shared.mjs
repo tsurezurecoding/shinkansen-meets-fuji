@@ -371,7 +371,7 @@ async function runThinValidator() {
     assertProjectedImage(page.referenceImage, `${spot.id}/${lang} reference`);
     assertProjectedImage(page.explainer?.figure, `${spot.id}/${lang} explainer`);
     for (const link of [...(page.bodyLinks || []), ...(page.references || [])]) if (!/^https?:\/\/[^\s<>"']+$/i.test(link.href)) fail(`${spot.id}/${lang} external link is unsafe`);
-    if (page.media) for (const video of page.media.videos) {
+    for (const media of [page.media, ...(page.chapters || []).map(chapter => chapter.media)].filter(Boolean)) for (const video of media.videos) {
       if (video.kind === "x" && !/^https:\/\/x\.com\/[A-Za-z0-9_]+\/status\/\d+(?:\/video\/\d+)?$/.test(video.url)) fail(`${spot.id}/${lang} X URL shape is unsafe`);
       if (video.kind === "youtube" && (!/^[A-Za-z0-9_-]{11}$/.test(video.id) || !/^https:\/\/www\.youtube\.com\/watch\?v=[A-Za-z0-9_-]{11}$/.test(video.url))) fail(`${spot.id}/${lang} YouTube URL/id is unsafe`);
     }
@@ -610,13 +610,15 @@ async function runThinValidator() {
       if (page.guideNotice && !output.includes("guide-answer-panel")) fail(`${relativeFile} guide alias notice is missing`);
       if (count(output, /spot-page-showcase/g) !== 1 || !output.includes("spotPageShowcaseTitle")) fail(`${relativeFile} shared full-width showcase composition is missing`);
       if (output.includes("spot-page-related") || output.includes("近くの車窓も見る") || output.includes("Nearby window views")) fail(`${relativeFile} rendered the retired in-article related section`);
-      if (page.media) {
-        if (count(output, /spot-page-video-section/g) !== 1 || count(output, /spot-page-video-card/g) !== page.media.videos.length || count(output, /spot-page-video-platform-note/g) !== 1) fail(`${relativeFile} shared video-card/footnote contract is invalid`);
-        for (const video of page.media.videos) {
+      const articleMedia = [page.media, ...(page.chapters || []).map(chapter => chapter.media)].filter(Boolean);
+      const articleVideos = articleMedia.flatMap(media => media.videos);
+      if (articleMedia.length) {
+        if (count(output, /spot-page-video-section/g) !== articleMedia.length || count(output, /spot-page-video-card/g) !== articleVideos.length || count(output, /spot-page-video-platform-note/g) !== articleMedia.length) fail(`${relativeFile} shared video-card/footnote contract is invalid`);
+        for (const video of articleVideos) {
           if (!output.includes(`href="${video.url}"`) || (video.kind === "x" && !output.includes(escape(video.handle))) || (video.kind === "youtube" && !output.includes(`youtube-nocookie.com/embed/${video.id}`))) fail(`${relativeFile} video source/embed is incomplete`);
           if (video.comment && !output.includes(`class="spot-page-video-comment">${escape(video.comment)}</p>`)) fail(`${relativeFile} video comment is missing`);
         }
-        if (rendered.createdScripts.filter((script) => script.src === "https://platform.twitter.com/widgets.js").length !== (page.media.videos.some((video) => video.kind === "x") ? 1 : 0)) fail(`${relativeFile} X widgets script count is invalid`);
+        if (rendered.createdScripts.filter((script) => script.src === "https://platform.twitter.com/widgets.js").length !== (articleVideos.some((video) => video.kind === "x") ? 1 : 0)) fail(`${relativeFile} X widgets script count is invalid`);
       } else if (["spot-page-video-section", "spot-page-video-platform-note", "spot-page-video-grid", "spot-page-video-card", "spotVideoTitle-"].some((needle) => output.includes(needle))) {
         fail(`${relativeFile} rendered a video heading, footnote, container, or card without structured videos`);
       }
