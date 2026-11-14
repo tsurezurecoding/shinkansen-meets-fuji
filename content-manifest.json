@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "2a61b9f46bca7b50",
+  "contentVersion": "27423f4f011643ce",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1934,7 +1934,7 @@
       "path": "de/zukan.html",
       "url": "https://www.michikusa-travel.com/de/zukan.html",
       "bytes": 26794,
-      "sha256": "7ad39ce492907c583a46cbc7ec10d38a190b3837847cdeb2aec9d9439a71cce1"
+      "sha256": "8fa8c06532323a7880f57c969d0eacbeaa1d711770c664017fb631ff6415683d"
     },
     {
       "path": "drinks.css",
@@ -2588,7 +2588,7 @@
       "path": "es/zukan.html",
       "url": "https://www.michikusa-travel.com/es/zukan.html",
       "bytes": 26529,
-      "sha256": "767dc30334b32aee4c990ce9d0279dfe5bf0d9b2da47b12d76e5adcfc5d4f1db"
+      "sha256": "06aa7187ff193734b66915a185226dcde77fa042824bcb74d42961f982981fe4"
     },
     {
       "path": "everyday-related.css",
@@ -3086,7 +3086,7 @@
       "path": "fr/zukan.html",
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
       "bytes": 26666,
-      "sha256": "13fd6595de92d36166a323a10319633eeaeb72052d1a109b3277e80cebd2b3ec"
+      "sha256": "79114889e1eaf6b8ab813319903a250a8e9af6d7c309730469cdb0e70c452c9d"
     },
     {
       "path": "fujikawa-frequency.css",
@@ -5426,7 +5426,7 @@
       "path": "it/zukan.html",
       "url": "https://www.michikusa-travel.com/it/zukan.html",
       "bytes": 26467,
-      "sha256": "f3b0885c043d85476dc8477ff1e60f14fa913323e509fa9242397229934c9057"
+      "sha256": "5b59f44ecd96fdb592b10481f4cf3e5118e1d385d84e54f29db9f1257edb572a"
     },
     {
       "path": "journal.html",
@@ -5906,7 +5906,7 @@
       "path": "ko/zukan.html",
       "url": "https://www.michikusa-travel.com/ko/zukan.html",
       "bytes": 26567,
-      "sha256": "efe0053426740cc4cbbfc2793d04cc4a11b73a3f18fff77840e49f9ce48fd639"
+      "sha256": "df14334bde0ccc52e35f5546d95993c476872173c7273385f85377ee0d581ed0"
     },
     {
       "path": "kyoto-station-views.html",
@@ -7898,7 +7898,7 @@
       "path": "th/zukan.html",
       "url": "https://www.michikusa-travel.com/th/zukan.html",
       "bytes": 32203,
-      "sha256": "2f49c0cb94208ec0ee767bd467c8d19be387c69111ec35232b70c790a7046394"
+      "sha256": "bad38ee6db182786cfe69692e2831dc673f894cf9d272c4ee3dcf6fbf17d052b"
     },
     {
       "path": "tokyo-sightline-stage.js",
@@ -8558,7 +8558,7 @@
       "path": "zh-Hans/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/zukan.html",
       "bytes": 25997,
-      "sha256": "13675d09b20b8638e452c59c522c3563e4bb9c8b201c1c0754863dde23dc9d05"
+      "sha256": "e5ac422b6c48847f2cbe094f6979396ab31ff931ecaddf81ed6b332fa41d00f5"
     },
     {
       "path": "zh-Hant/727-collection.html",
@@ -9014,7 +9014,7 @@
       "path": "zh-Hant/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/zukan.html",
       "bytes": 26000,
-      "sha256": "447fed50ab50afdae5fa9653fe94a62d3a735770221890103b9b05fe6fbd5536"
+      "sha256": "f72f55131acea496abb0b10d66c18b915ed5b4415be9d02a214639061e15e92f"
     },
     {
       "path": "zukan-hero.css",
