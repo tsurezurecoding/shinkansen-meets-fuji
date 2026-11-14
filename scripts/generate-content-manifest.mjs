@@ -69,6 +69,7 @@ const contentFiles = [
   ...await walkFiles("images/omamori", p => /\.jpg$/.test(p)),
   ...await walkFiles("images/foods", p => /\.webp$/.test(p)),
   "kyoto-station-views.html", "en/kyoto-station-views.html", "window-articles.css", "window-articles.js",
+  "images/20260704_kyoto-station-building_michikusa_11000.jpg",
   "images/20260704_kyoto-tower_michikusa.webp", "images/20260816_kyoto-tower_michikusa.webp",
   "images/kyoto-tower-day-2022-indo-kujaku.webp", "images/kyoto-tower-night-2025-fotointheworld.webp",
   "en/tokyo-kyoto-stations.html", "stations.css", "stations.js", "data/station-photo-sources.json",

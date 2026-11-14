@@ -18,7 +18,7 @@ const ids=['tamaruya-wasabi-sign','kizakura-otsukaresama-sign'];
 test('six editions retain the article, clean photo copy and owned opening photographs',()=>{
   for(const lang of ['ja','en'])for(const id of [...ids,'kyoto-station-views']){
     const page=id==='kyoto-station-views'?kyotoWindowArticle(lang):payload(id,lang);
-    assert.equal(page.chapters.length,5,`${id}/${lang}`);
+    assert.equal(page.chapters.length,id==='kyoto-station-views' && lang==='ja'?6:5,`${id}/${lang}`);
     assert.ok(page.gallery.every(photo=>photo.credit==='michikusa'));
     for(const photo of [...page.gallery,...page.chapters.flatMap(ch=>ch.photos)]){
       assert.equal(photo.date,'');assert.ok(photo.alt);

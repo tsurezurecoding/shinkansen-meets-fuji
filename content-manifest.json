@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "e22fcf860c5b704c",
+  "contentVersion": "db6718b74f6959e3",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -3341,6 +3341,12 @@
       "sha256": "5fcc86adbeef476c185e072354fd897c0407b327db4b1c855dacd4ff48b11ace"
     },
     {
+      "path": "images/20260704_kyoto-station-building_michikusa_11000.jpg",
+      "url": "https://www.michikusa-travel.com/images/20260704_kyoto-station-building_michikusa_11000.jpg",
+      "bytes": 530380,
+      "sha256": "d2b0bf5a041c93d681e9a6ea33c43f806144e9c5fd002215076db051701e4d88"
+    },
+    {
       "path": "images/20260704_kyoto-tower_michikusa.webp",
       "url": "https://www.michikusa-travel.com/images/20260704_kyoto-tower_michikusa.webp",
       "bytes": 80470,
@@ -5911,8 +5917,8 @@
     {
       "path": "kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/kyoto-station-views.html",
-      "bytes": 28715,
-      "sha256": "4f63570f99280198b2fb25188d151b7d469f81177fe1d170d1ec0147f3b04bdc"
+      "bytes": 30857,
+      "sha256": "3b9c3525b6145ab08bc47b2b15085348055ab0195c9162e4cf7d5356753bc784"
     },
     {
       "path": "live/narration.js",

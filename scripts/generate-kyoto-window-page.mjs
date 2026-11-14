@@ -14,7 +14,9 @@ for (const file of ['spot-page-shared-data.js', 'spot-page-shared.js']) vm.runIn
 const components = root.MADO_SPOT_PAGE_COMPONENTS;
 const esc = text => String(text).replace(/[&<>"]/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[char]));
 
-for (const lang of ['ja','en']) {
+const requestedLang = process.argv.find(arg => arg.startsWith('--lang='))?.slice(7);
+if (requestedLang && !['ja','en'].includes(requestedLang)) throw Error('Unsupported Kyoto article language');
+for (const lang of requestedLang ? [requestedLang] : ['ja','en']) {
   const page = kyotoWindowArticle(lang), prefix = lang === 'ja' ? './' : '../';
   const route = `${lang === 'ja' ? '' : 'en/'}kyoto-station-views.html`;
   const dom = new JSDOM(components.pageHTML(root.MADO_SPOT_PAGE_SHARED_DATA,page,prefix,lang,''));
@@ -36,11 +38,11 @@ for (const lang of ['ja','en']) {
   });
   // Share the normal utility-page chrome and its language switch.
   const main=doc.querySelector('main');const shell=main.querySelector('.spot-page-shell');shell.insertAdjacentHTML('afterbegin','<aside data-spot-page-shared-module="rail"></aside>');
-  const head=`<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.heading)} | ${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</title><meta property="og:title" content="${esc(page.heading)}"><meta name="twitter:card" content="summary_large_image"><meta name="description" content="${esc(lang==='ja'?'京都タワーと京都駅の大きな屋根。車窓と駅前の写真から、京都の入口にある建築の形と歴史をたどります。':'Explore Kyoto Tower and the station’s great roof through window views, architecture and a short walk on the north side.')}"/><link rel="canonical" href="https://www.michikusa-travel.com/${route}"><link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/kyoto-station-views.html"><link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/kyoto-station-views.html"><link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/kyoto-station-views.html">${['style.css','spot-media-gallery.css','window-articles.css'].map(file=>`<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`).join('')}${ANALYTICS.withEmbeddedGuard}`;
+  const head=`<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.heading)} | ${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</title><meta property="og:title" content="${esc(page.heading)}"><meta name="twitter:card" content="summary_large_image"><meta name="description" content="${esc(lang==='ja'?'新幹線のE席側から見える京都タワー。白い灯台をかたどった塔の歴史、京都駅ビルの車窓写真、下車後の眺め方を紹介します。':'Explore Kyoto Tower and the station’s great roof through window views, architecture and a short walk on the north side.')}"/><link rel="canonical" href="https://www.michikusa-travel.com/${route}"><link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/kyoto-station-views.html"><link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/kyoto-station-views.html"><link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/kyoto-station-views.html">${['style.css','spot-media-gallery.css','window-articles.css'].map(file=>`<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`).join('')}${ANALYTICS.withEmbeddedGuard}`;
   let html=`<!doctype html><html lang="${lang}"><head>${head}</head><body class="spot-page spot-page-utility" data-spot-page-shared-context="utility" data-spot-page-shared-id="kyoto-station-views" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${prefix}" data-spot-page-shared-route="kyoto-station-views.html"><div data-spot-page-shared-module="topbar"></div>${doc.body.innerHTML}<section data-spot-page-shared-module="content-rail"></section><footer class="footer"><p class="footer-brand">${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</p><a href="${prefix}${lang==='ja'?'':'en/'}zukan.html">${lang==='ja'?'車窓一覧':'All window views'}</a></footer>${['spot-page-shared-data.js','spot-page-shared.js','spot-media-gallery.js','window-articles.js'].map(file=>`<script src="${prefix}${file}?v=${assetVersion(file)}"></script>`).join('')}</body></html>\n`;
   html=enhanceContentHead(html,route,app);
   const target=path.join(app,route);
   if(process.argv.includes('--check')){if(!fs.existsSync(target)||fs.readFileSync(target,'utf8')!==html)throw Error(`Kyoto article out of date: ${route}`);}else fs.writeFileSync(target,html);
   dom.window.close();
 }
-console.log('Kyoto station reading article: Japanese and English.');
+console.log('Kyoto article: ' + (requestedLang || 'ja/en') + '.');
