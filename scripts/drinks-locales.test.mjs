@@ -9,7 +9,7 @@ const values=(h,key)=>[...h.matchAll(new RegExp('\\b'+key+'="([^"]*)"','g'))].ma
 for(const slug of ['drinks','beer-on-shinkansen'])test(`${slug}: translated editions retain assets, source links, Japanese labels and section destinations`,()=>{
  const source=new JSDOM(read(`en/${slug}.html`));
  // A related story with only an English edition is intentionally absent from translated articles.
- source.window.document.querySelectorAll('[data-edition-only="en"]').forEach(node=>node.remove());
+ source.window.document.querySelectorAll('[data-edition-only="en"],[data-english-edition-only]').forEach(node=>node.remove());
  const en=source.serialize();source.window.close();const photos=values(en,'src').filter(s=>/\.(?:jpg|webp|png)/.test(s));
  const external=values(en,'href').filter(s=>/^https?:/.test(s)&&!s.includes('michikusa-travel.com'));
  const labels=[...en.matchAll(/<[^>]+lang="ja"[^>]*>([^<]*)<\//g)].map(m=>m[1]);
