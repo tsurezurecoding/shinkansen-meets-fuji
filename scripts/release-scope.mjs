@@ -183,6 +183,17 @@ export function onlyArtworkSitemapChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const inviteVisibilityFiles = new Set(['scripts/shared/android-app-invite.css','scripts/android-app-invite.test.mjs',
+    'scripts/release-scope.mjs','scripts/release-scope.test.mjs','android-app-invite.js','site-runtime.json','content-manifest.json']);
+  if (files.includes('scripts/shared/android-app-invite.css') && files.includes('scripts/android-app-invite.test.mjs') &&
+      changes.every(change=>change.status==='M' && inviteVisibilityFiles.has(change.path))) return {
+    scope:'android-invite-visibility',needsDependencies:true,pagesCandidate:true,
+    reason:'Store-badge visibility follows the floating panel; shared CSS, regression tests and runtime/distribution hashes only',
+    commands:[...syntax,node('--test','scripts/android-app-invite.test.mjs','scripts/android-app-invite-assets.test.mjs',
+      'scripts/android-app-invite-reset.test.mjs','scripts/android-app-train-invite.test.mjs','scripts/release-scope.test.mjs'),
+      node('scripts/generate-android-app-invite-assets.mjs','--check'),node('scripts/generate-site-runtime.mjs','--check'),
+      node('scripts/check-content-manifest.mjs')]
+  };
   const trainInviteFiles = new Set(['scripts/shared/android-app-invite-runtime.js','scripts/shared/android-app-invite-copy.mjs',
     'scripts/shared/android-app-invite.css','scripts/shared/android-app-invite.mjs','scripts/generate-android-app-invite-assets.mjs',
     'scripts/generate-android-app-invites.mjs','scripts/android-app-train-invite.test.mjs','scripts/release-scope.mjs',

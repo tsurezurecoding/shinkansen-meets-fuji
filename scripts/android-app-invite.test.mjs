@@ -45,6 +45,24 @@ test('Play click is not install, view once, consent gate and fixed bounded metad
  const off=await fixture({disabled:true});try{off.seen();off.card.querySelector('button').click();assert.equal(off.events.length,0);}finally{off.close();}
 });
 test('keyboard input hides/inerts; close returns focus; no preview controls',async()=>{const f=await fixture();try{const input=f.w.document.querySelector('input');input.focus();await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,true);f.seen();assert.equal(f.events.length,0);input.blur();await new Promise(r=>setTimeout(r,25));assert.equal(f.card.inert,false);f.card.querySelector('button').focus();f.card.querySelector('button').click();assert.equal(f.w.document.activeElement,input);assert.equal(f.w.document.querySelector('#android-context-review'),null);}finally{f.close();}});
+
+test('loaded store badge follows panel visibility through interaction, focus and blocked placement',async()=>{
+ const f=await fixture();try{
+  const badge=f.card.querySelector('.context-play-badge');badge.dispatchEvent(new f.w.Event('load'));
+  const visibility=()=>[f.w.getComputedStyle(f.card).visibility,f.w.getComputedStyle(badge).visibility];
+  assert.deepEqual(visibility(),['visible','visible']);
+  f.w.MADO_ANDROID_INVITE_BUSY=true;f.refresh();
+  assert.equal(f.card.inert,true);assert.deepEqual(visibility(),['hidden','hidden']);
+  f.seen();assert.equal(f.events.length,0);
+  f.w.MADO_ANDROID_INVITE_BUSY=false;f.refresh();assert.deepEqual(visibility(),['visible','visible']);
+  const input=f.w.document.querySelector('input');input.focus();f.refresh();assert.deepEqual(visibility(),['hidden','hidden']);
+  input.blur();f.refresh();assert.deepEqual(visibility(),['visible','visible']);
+  const blocked=f.w.document.createElement('button');blocked.textContent='Protected control';
+  blocked.getBoundingClientRect=()=>({left:0,top:0,right:1024,bottom:768,width:1024,height:768});f.w.document.body.append(blocked);
+  await new Promise(r=>setTimeout(r,30));assert.equal(f.card.inert,true);assert.deepEqual(visibility(),['hidden','hidden']);
+  blocked.remove();await new Promise(r=>setTimeout(r,30));assert.deepEqual(visibility(),['visible','visible']);
+ }finally{f.close();}
+});
 test('JA/EN integration keeps only page context and one stable loader in HTML',()=>{for(const [file,lang,context] of [['index.html','ja','landing'],['en/index.html','en','landing'],['guide.html','ja','fuji_guide'],['en/guide.html','en','fuji_guide']]){const html=withAndroidAppInvite(fs.readFileSync(new URL('../'+file,import.meta.url),'utf8'),lang,context);assert.equal((html.match(/ANDROID_APP_INVITE_START/g)||[]).length,1);assert.equal(withAndroidAppInvite(html,lang,context),html);const config=JSON.parse(html.match(/id="mado-android-invite-config">([^<]+)<\/script>/)[1]);assert.deepEqual(Object.keys(config).sort(),['assetPrefix','general','language','pageContext']);assert.equal(config.language,lang);assert.equal(config.pageContext,context);assert.equal(config.general,false);assert.equal((html.match(/src="[^"]*site-runtime-loader\.js\?v=[a-f0-9]{8}" defer/g)||[]).length,1);assert.ok(!html.includes('"dismissDays":14'));assert.ok(!html.includes("const key = 'mado-android-app-invite-v2'"));assert.ok(!html.includes('android-app-invite.js?v='));assert.ok(!html.includes('<style>#android-app-invite'));assert.ok(html.includes('manifest.json'));assert.ok(!html.includes('android-context-review'));}});
 test('legacy seen/Play/preview state and force-query do not override production',async()=>{const f=await fixture({url:'https://michikusa-travel.com/?invite=installed&invite_reset=1'});try{f.w.localStorage.setItem('mado-android-context-invite-preview-v1',JSON.stringify({dismissedUntil:9999999999999}));f.refresh();assert.equal(f.card.hidden,false);f.card.querySelector('button').click();const before=f.w.localStorage.getItem(KEY);f.w.history.replaceState(null,'','?invite=force&invite_reset=1');f.refresh();assert.equal(f.w.localStorage.getItem(KEY),before);assert.equal(f.card.hidden,true);}finally{f.close();}});
 test('BFCache rechecks installed status; background views are not counted',async()=>{const f=await fixture();try{Object.defineProperty(f.w.document,'visibilityState',{value:'hidden',configurable:true});f.seen();assert.equal(f.events.length,0);f.w.navigator.getInstalledRelatedApps=async()=>[{platform:'play',id:'com.michikusatravel.shinkansenwindow'}];f.w.dispatchEvent(new f.w.PageTransitionEvent('pageshow',{persisted:true}));assert.equal(f.card.hidden,true);await new Promise(r=>setTimeout(r,5));assert.equal(f.card.hidden,true);assert.equal(f.events.length,0);}finally{f.close();}});
