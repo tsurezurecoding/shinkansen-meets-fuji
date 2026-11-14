@@ -92,6 +92,7 @@ jobs:
           grep -Fx './index.html' "$RUNNER_TEMP/pages-entries.txt"
       - uses: actions/configure-pages@v5
       - name: Transfer the verified tar to this deployment run
+        id: uploaded
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
@@ -100,4 +101,48 @@ jobs:
           retention-days: 1
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/github-script@v7
+        env:
+          CANDIDATE: ${{ inputs.commit }}
+          PAGES_ARTIFACT_ID: ${{ steps.uploaded.outputs.artifact-id }}
+          PAGES_ARTIFACT_DIGEST: ${{ steps.uploaded.outputs.artifact-digest }}
+        with:
+          script: |
+            const artifactId = Number(process.env.PAGES_ARTIFACT_ID);
+            const sha = process.env.CANDIDATE;
+            const digest = `sha256:${process.env.PAGES_ARTIFACT_DIGEST}`;
+            if (!Number.isSafeInteger(artifactId) || artifactId <= 0 || !/^[0-9a-f]{40}$/.test(sha) || !/^sha256:[0-9a-f]{64}$/.test(digest)) throw new Error('Invalid uploaded Pages artifact identity');
+            const pause = () => new Promise(resolve => setTimeout(resolve, 5000));
+            let artifact;
+            for (let attempt = 0; attempt < 6; attempt++) {
+              try {
+                ({ data: artifact } = await github.rest.actions.getArtifact({ ...context.repo, artifact_id: artifactId }));
+                break;
+              } catch (error) {
+                if (error.status !== 404 || attempt === 5) throw error;
+                await pause();
+              }
+            }
+            if (artifact.id !== artifactId || artifact.name !== 'github-pages' || artifact.expired !== false || artifact.workflow_run?.id !== context.runId || artifact.digest !== digest || !(artifact.size_in_bytes > 0)) throw new Error('Uploaded Pages artifact does not match this deployment run');
+            const { data: deployment } = await github.request('POST /repos/{owner}/{repo}/pages/deployments', {
+              ...context.repo, artifact_id: artifactId, pages_build_version: sha, oidc_token: await core.getIDToken()
+            });
+            const deploymentId = deployment.id || deployment.status_url?.split('/').pop();
+            if (!deploymentId) throw new Error('Missing Pages deployment ID');
+            let succeeded = false;
+            try {
+              for (let attempt = 0; attempt < 120; attempt++) {
+                const { data } = await github.request('GET /repos/{owner}/{repo}/pages/deployments/{deploymentId}', { ...context.repo, deploymentId });
+                core.info(`Pages deployment: ${data.status}`);
+                if (data.status === 'succeed') {
+                  succeeded = true;
+                  core.setOutput('page_url', deployment.page_url);
+                  return;
+                }
+                if (['deployment_failed', 'deployment_perms_error', 'deployment_content_failed', 'deployment_cancelled', 'deployment_lost'].includes(data.status)) throw new Error(`Pages deployment failed: ${data.status}`);
+                await pause();
+              }
+              throw new Error('Pages deployment timed out');
+            } finally {
+              if (!succeeded) await github.request('POST /repos/{owner}/{repo}/pages/deployments/{deploymentId}/cancel', { ...context.repo, deploymentId });
+            }
