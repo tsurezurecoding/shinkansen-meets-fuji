@@ -1,6 +1,58 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { selectReleaseArtifact, assertSameReleaseArtifact, selectPullRequestVerification } from './release-artifact.mjs';
+import fs from 'node:fs';
+
+const deploySource = fs.readFileSync(new URL('../.github/workflows/deploy-pages.yml', import.meta.url), 'utf8')
+  .split('- name: Deploy to GitHub Pages')[1].split(/script: \|\r?\n/)[1].replace(/^ {12}/gm, '');
+const deployPages = new (Object.getPrototypeOf(async function() {}).constructor)('github', 'core', 'context', 'process', 'setTimeout', deploySource);
+function deploymentFixture() {
+  const artifact = { id: 44, name: 'github-pages', expired: false, size_in_bytes: 1024, digest: `sha256:${'d'.repeat(64)}`, workflow_run: { id: 55 } };
+  const context = { repo: { owner: 'example', repo: 'site' }, runId: 55 };
+  const env = { CANDIDATE: 'a'.repeat(40), PAGES_ARTIFACT_ID: '44', PAGES_ARTIFACT_DIGEST: 'd'.repeat(64) };
+  const calls = [], outputs = {}, statuses = ['queued', 'succeed'];
+  let tokenCalls = 0, misses = 0;
+  const github = {
+    rest: { actions: { getArtifact: async args => {
+      calls.push({ kind: 'artifact', args });
+      if (misses-- > 0) throw Object.assign(new Error('Not visible yet'), { status: 404 });
+      return { data: artifact };
+    } } },
+    request: async (route, args) => {
+      calls.push({ route, args });
+      if (route.endsWith('/cancel')) return { data: {} };
+      if (route.startsWith('POST ')) return { data: { id: 'deployment-1', page_url: 'https://example.github.io/site/' } };
+      return { data: { status: statuses.shift() || 'queued' } };
+    }
+  };
+  const core = { getIDToken: async () => { tokenCalls++; return 'test-oidc'; }, info() {}, setOutput: (key, value) => { outputs[key] = value; } };
+  return { artifact, env, calls, outputs, statuses, get tokenCalls() { return tokenCalls; }, missOnce() { misses = 1; }, run: () => deployPages(github, core, context, { env }, callback => callback()) };
+}
+
+test('Pages deploys the uploaded immutable artifact ID with the approved SHA and OIDC, without name discovery', async () => {
+  const f = deploymentFixture();f.missOnce();await f.run();
+  const created = f.calls.find(call => call.route?.startsWith('POST '));
+  assert.equal(created.args.artifact_id, 44);assert.equal(created.args.pages_build_version, 'a'.repeat(40));assert.equal(created.args.oidc_token, 'test-oidc');
+  assert.equal(f.calls.filter(call => call.kind === 'artifact').length, 2);
+  assert.equal(f.outputs.page_url, 'https://example.github.io/site/');assert.equal(f.tokenCalls, 1);
+  assert(!f.calls.some(call => call.route?.endsWith('/cancel')));
+});
+for (const [label, mutate] of [
+  ['different ID', a => { a.id = 99; }], ['different name', a => { a.name = 'other'; }],
+  ['expired', a => { a.expired = true; }], ['different run', a => { a.workflow_run.id = 99; }],
+  ['different digest', a => { a.digest = `sha256:${'e'.repeat(64)}`; }], ['empty archive', a => { a.size_in_bytes = 0; }]
+]) test(`Pages rejects ${label} before requesting OIDC or deployment`, async () => {
+  const f = deploymentFixture();mutate(f.artifact);await assert.rejects(f.run(), /does not match/);assert.equal(f.tokenCalls, 0);assert(!f.calls.some(call => call.route));
+});
+test('Pages rejects malformed upload identity before API calls', async () => {
+  const f = deploymentFixture();f.env.PAGES_ARTIFACT_ID = '';await assert.rejects(f.run(), /Invalid uploaded/);assert.equal(f.calls.length, 0);
+});
+test('Pages cancels a deployment that fails or times out', async () => {
+  for (const statuses of [['deployment_failed'], []]) {
+    const f = deploymentFixture();f.statuses.splice(0, f.statuses.length, ...statuses);
+    await assert.rejects(f.run(), /deployment failed|timed out/);assert(f.calls.at(-1).route.endsWith('/cancel'));assert.deepEqual(f.outputs, {});
+  }
+});
 
 const sha = 'a'.repeat(40);
 const options = { owner: 'example', repo: 'site', sha, now: Date.parse('2026-10-24T00:00:00Z') };
