@@ -192,7 +192,7 @@
     "various": {
       "alt": "A collection of colorful omamori pouches with cords, including inscriptions for good fortune, studies, and protection.",
       "caption": "A variety of forms and inscriptions. The collection includes items from shrines in Japan and the United States.",
-      "fullCaption": "Various omamori from shrines in Japan and the United States, photographed in 2008. The items and offerings shown reflect that time.",
+      "fullCaption": "Various omamori from shrines in Japan and the United States.",
       "openLabel": "View the omamori photo larger"
     },
     "meiji": {
@@ -207,8 +207,43 @@
   "photoCredits": "Photo credits",
   "photoOriginal": "View original photo",
   "photoLicense": "Photo license",
-  "photoProcessing": "Original files are used without visual retouching; the page may crop them to fit the frame.",
   "relatedTitle": "Another discovery in Japan",
   "relatedRead": "Read more",
-  "backTop": "Back to top"
+  "backTop": "Back to top",
+  "photoCreditLabel": "Photo",
+  "relatedPhotoLabel": "Photographs",
+  "relatedStories": [
+    {
+      "route": "foods.html",
+      "image": "foods/onigiri.webp",
+      "label": "A FIRST BITE",
+      "title": "Small foods for your journey",
+      "note": "Rice balls, warm buns and sweet stops."
+    },
+    {
+      "route": "drinks.html",
+      "image": "drinks/20261004-tea-shelf-michikusa.webp",
+      "label": "SOMETHING TO SIP",
+      "title": "Japanese drinks",
+      "note": "Tea, coffee and a new name on the shelf."
+    },
+    {
+      "route": "countryside.html",
+      "image": "20260629_omi_fuji_michikusa.jpg",
+      "label": "FROM YOUR WINDOW",
+      "title": "Japan’s countryside",
+      "note": "Rice fields, tea gardens and the landscape between cities."
+    }
+  ],
+  "entry": {
+    "sectionKicker": "03 · SMALL WISHES",
+    "sectionTitle": "A small thing, a personal wish.",
+    "sectionLead": "At a shrine or temple, look a little closer at the colorful pouches.",
+    "label": "A WISH TO CARRY",
+    "title": "Omamori: a wish to carry",
+    "note": "Meet Japan’s small charms, read their words and learn how to carry one.",
+    "read": "Read the story",
+    "creditLabel": "Omamori photograph",
+    "creditNote": "Items from shrines in Japan and the United States."
+  }
 }

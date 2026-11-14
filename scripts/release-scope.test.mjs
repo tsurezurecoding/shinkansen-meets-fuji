@@ -12,6 +12,9 @@ test('omamori editions use focused checks and reject unrelated content or depend
   assert.equal(plan.scope,'omamori-everyday');
   assert.ok(plan.commands.some(command=>command.includes('scripts/validate-language-pages.mjs')));
   assert.ok(!plan.commands.some(command=>command.includes('verify')));
+  assert.equal(chooseReleaseScope([...files,'data/omamori/th.json','th/omamori.html','th/everyday-japan.html','locales.js','scripts/generate-castle-locales.mjs','scripts/generate-drinks-locales.mjs'].map(change)).scope,'omamori-everyday');
+  assert.ok(plan.commands.find(command=>command.includes('scripts/validate-site-navigation.mjs')).includes('omamori.html'));
+  assert.notEqual(chooseReleaseScope([...files,'data/omamori/ar.json'].map(change)).scope,'omamori-everyday');
   assert.notEqual(chooseReleaseScope([...files,'data.js'].map(change)).scope,'omamori-everyday');
   const before={scripts:{'build:pages':'node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};
   const after={scripts:{'build:pages':'node scripts/generate-omamori-page.mjs && node scripts/generate-foods-page.mjs'},dependencies:{jsdom:'1'}};

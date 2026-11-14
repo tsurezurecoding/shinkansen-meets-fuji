@@ -1,0 +1,63 @@
+{
+  "title": "Omamori: un piccolo amuleto, un desiderio personale.",
+  "metaTitle": "Omamori: amuleti giapponesi e i desideri che custodiscono",
+  "description": "Che cosa sono gli omamori? Scopri questi piccoli amuleti dei santuari shintoisti e dei templi buddisti giapponesi, come sceglierne e portarne uno e cosa considerare dopo il viaggio.",
+  "eyebrow": "EVERYDAY JAPAN · OMAMORI",
+  "definition": "Gli omamori sono amuleti ricevuti nei santuari shintoisti e nei templi buddisti del Giappone, da tenere con sé come preghiera per la protezione o per un desiderio particolare.",
+  "lead": "«Che il viaggio si concluda senza incidenti.» «Che gli esami vadano bene.» Un piccolo sacchetto può custodire desideri come questi.",
+  "cta": "Scopri gli omamori",
+  "skipAfter": "Ne hai già uno? Cosa fare dopo il viaggio",
+  "hubLabel": "Everyday Japan",
+  "skipLink": "Vai direttamente al racconto",
+  "chapters": [
+    {"id":"about","label":"Che cos'è un omamori?","kicker":"01 · Un desiderio da portare con sé","title":"Un piccolo sacchetto affidato a un desiderio","intro":"","paragraphs":["Visitando santuari e templi giapponesi, potresti vedere file di piccoli sacchetti colorati. Sono omamori, un nome legato alla parola giapponese che significa protezione.","Le persone li tengono vicino a sé o in borsa, pregando per la salute, la sicurezza, il successo negli studi o buone relazioni. I sacchetti di stoffa sono i più noti, ma forme e aspetto variano da un santuario o tempio all'altro.","Se uno attira la tua attenzione, leggi le parole riportate e chiediti quale desiderio rappresentino. C'è chi ne sceglie uno per sé e chi lo regala a una persona cara."]},
+    {"id":"receive","label":"Dove riceverne uno","kicker":"02 · In un santuario o in un tempio","title":"Cercalo in un santuario o in un tempio","intro":"","paragraphs":["Gli omamori si trovano in luoghi come il juyosho (授与所) di un santuario o di un tempio, il banco dove vengono offerti gli oggetti sacri. Un santuario è un luogo di culto shintoista; un tempio è un luogo di culto buddista. Entrambi possono offrire omamori."]},
+    {"id":"choose","label":"Parole e desideri","kicker":"03 · Leggi le parole","title":"Leggi le parole sul sacchetto","intro":"Colori e forme simili possono custodire desideri diversi. Scegli una parola che attira la tua attenzione.","paragraphs":[]},
+    {"id":"carry","label":"Come portarlo con sé","kicker":"04 · Tienilo vicino","title":"Portalo con cura","intro":"","paragraphs":["C'è chi indossa l'omamori e chi lo tiene in una borsa che usa spesso. Se il luogo in cui l'hai ricevuto fornisce indicazioni su come portarlo o dove collocarlo, segui quelle istruzioni.","Di solito il sacchetto di stoffa si tiene chiuso. Per scoprirne lo scopo, leggi le parole all'esterno o consulta le spiegazioni del santuario o del tempio."]},
+    {"id":"after","label":"Dopo il viaggio","kicker":"05 · Una volta tornato a casa","title":"Che cosa fare dopo il viaggio?","intro":"","paragraphs":["Puoi tenere l'omamori anche dopo essere tornato a casa. Se ti chiedi cosa fare dopo un anno o non puoi tornare in Giappone, inizia consultando le indicazioni qui sotto."]}
+  ],
+  "compareLabel":"Tre modi per esprimere un desiderio",
+  "comparisons":[
+    {"kanji":"お守り","romaji":"omamori","title":"Portarlo con sé come augurio","text":"Un oggetto da tenere vicino mentre si prega per qualcosa, per esempio la sicurezza o la buona salute."},
+    {"kanji":"おみくじ","romaji":"omikuji","title":"Ricevere parole da leggere","text":"Un responso scritto, spesso accompagnato da consigli per i giorni a venire."},
+    {"kanji":"絵馬","romaji":"ema","title":"Scrivere un desiderio e offrirlo","text":"Una tavoletta di legno su cui si scrive un desiderio o una preghiera e che si lascia in un santuario o in un tempio."}
+  ],
+  "receiveSteps":[
+    {"title":"Rendi omaggio per prima cosa","text":"Segui le indicazioni del luogo e raccogliti in preghiera. Le consuetudini cambiano tra santuari e templi."},
+    {"title":"Scegli un desiderio","text":"Leggi le parole e le descrizioni al juyosho (授与所), il banco dove vengono offerti gli oggetti sacri. Se hai dubbi, chiedi."},
+    {"title":"Lascia l'offerta indicata","text":"In un santuario, l'importo può essere chiamato hatsuho-ryo (初穂料). Il nome e la cifra variano a seconda del luogo e dell'oggetto."}
+  ],
+  "receiveNote":"Questi oggetti possono essere descritti come ricevuti o conferiti, anziché acquistati.",
+  "wordPrompt":"Scegli una parola da esplorare",
+  "wordGroupLabel":"Scegli un'iscrizione di un omamori",
+  "wordResultLabel":"Significato dell'iscrizione selezionata",
+  "words":[
+    {"id":"travel","kanji":"交通安全","reading":"kotsu anzen","title":"Per un viaggio sicuro","text":"Un augurio di sicurezza nel traffico e durante i viaggi. Può essere un buon punto di partenza per scegliere un omamori per un viaggio o per gli spostamenti quotidiani."},
+    {"id":"study","kanji":"学業成就","reading":"gakugyo joju","title":"Che lo studio dia i suoi frutti","text":"Un augurio di successo nell'apprendimento o negli studi, compreso il superamento degli esami."},
+    {"id":"relationship","kanji":"縁結び","reading":"enmusubi","title":"Per legami felici","text":"Un augurio di buone relazioni o incontri, anche in amore. Il desiderio preciso varia da un santuario o tempio all'altro."},
+    {"id":"protection","kanji":"厄除","reading":"yakuyoke","title":"Per proteggersi dalle avversità","text":"Un augurio per allontanare lo yaku (厄), un periodo o una forma di sventura, e altre difficoltà."},
+    {"id":"birth","kanji":"安産","reading":"anzan","title":"Per un parto sereno","text":"Un augurio per un parto sicuro. Se vuoi regalarlo, controlla prima l'iscrizione per assicurarti che sia adatto a chi lo riceve."},
+    {"id":"fortune","kanji":"開運","reading":"kaiun","title":"Per la buona sorte","text":"Un augurio di buona sorte. Se lo scegli per un'altra persona, verifica che corrisponda a ciò che desidera."}
+  ],
+  "wordNote":"Sono indicazioni generali. Desideri e spiegazioni possono variare da un santuario o tempio all'altro: consulta anche le informazioni del luogo.",
+  "carryGift":{"title":"Un piccolo regalo per qualcuno","text":"«Che l'esame vada bene» oppure «Che il viaggio sia sicuro». Racconta il significato e il pensiero dietro la tua scelta, rispettando i desideri e le convinzioni dell'altra persona."},
+  "afterHighlight":{"label":"Un buon punto di partenza","title":"Un anno non è una data di scadenza valida per ogni omamori.","text":"Alcune persone ne ricevono uno nuovo intorno al Capodanno. La Jinja Honcho spiega che puoi continuare a portare un omamori finché il tuo desiderio non si avvera. Controlla le indicazioni del luogo che te lo ha offerto."},
+  "faqs":[
+    {"question":"E se non posso tornare in Giappone?","answer":"Non è detto che tu debba liberartene solo perché è passato un anno. Se desideri restituirlo, contatta il santuario o il tempio dove l'hai ricevuto. Alcuni accettano restituzioni per posta: prima di spedire, verifica l'indirizzo, gli oggetti ammessi e la procedura."},
+    {"question":"Posso restituirlo a un altro santuario o tempio?","answer":"Le regole di accettazione variano. Non dare per scontato che lo accetti un luogo vicino o un'istituzione religiosa nel tuo paese. Informati prima presso il luogo che te lo ha offerto e chiedi anche all'altro luogo se pensi di restituirlo lì."},
+    {"question":"Posso portare con me più di un omamori?","answer":"La Jinja Honcho spiega che non c'è motivo di temere che gli omamori portati insieme facciano litigare le divinità shintoiste. Per gli oggetti dei templi o di altre religioni, consulta anche le indicazioni dei rispettivi luoghi."},
+    {"question":"E se non so da dove proviene?","answer":"Cerca il nome di un santuario o tempio sul sacchetto, sulla confezione o nelle foto del viaggio. Se lo trovi, le indicazioni sul sito ufficiale relative agli omamori, agli amuleti usati o alla restituzione potrebbero esserti utili."}
+  ],
+  "ending":{"kicker":"La prossima volta che ne vedrai uno","title":"Dietro poche parole, un desiderio umano","text":"Forse ti colpiranno il colore o la forma. Fermati un momento a leggere anche le parole e a immaginare quale desiderio custodiscano.","link":"Rileggi le parole"},
+  "sourcesTitle":"Fonti e note sulle foto",
+  "sourcesIntro":"Questa è un'introduzione generale per chi scopre gli omamori per la prima volta. Per le pratiche di offerta e restituzione, consulta le indicazioni di ogni santuario o tempio.",
+  "sourceLabels":{"jnto":"Ente Nazionale del Turismo Giapponese: omamori e luoghi di culto","jinja":"Associazione dei Santuari Shintoisti: amuleti e talismani (in giapponese)","seimei":"Santuario Seimei: offerte e domande frequenti (in cinese tradizionale)","sugiyama":"Santuario Hoshikawa Sugiyama: restituzione degli omamori (in giapponese)","pamphlet":"Associazione dei Santuari Shintoisti: guida agli omamori (in cinese tradizionale)"},
+  "photos":{"various":{"alt":"Una collezione di sacchetti omamori colorati con cordoncini, tra cui iscrizioni per la buona sorte, lo studio e la protezione.","caption":"Forme e iscrizioni diverse. La collezione comprende oggetti provenienti da santuari in Giappone e negli Stati Uniti.","fullCaption":"Omamori di vario tipo provenienti da santuari in Giappone e negli Stati Uniti.","openLabel":"Apri la foto degli omamori ingrandita"},"meiji":{"alt":"Visitatori scelgono omamori e altre offerte al banco juyosho del santuario Meiji Jingu.","caption":"Il banco juyosho del Meiji Jingu, fotografato nel 2018. Le offerte e i prezzi attuali potrebbero essere diversi.","fullCaption":"Il banco juyosho del Meiji Jingu, fotografato nel 2018. Le offerte e i prezzi attuali potrebbero essere diversi da quelli mostrati.","openLabel":"Apri ingrandita la foto del banco del Meiji Jingu"}},
+  "photoClose":"Chiudi la foto","photoZoom":"Ingrandisci la foto","photoCredits":"Crediti fotografici","photoOriginal":"Visualizza la foto originale","photoLicense":"Licenza fotografica","relatedTitle":"Un'altra scoperta in Giappone","relatedRead":"Leggi","backTop":"Torna all'inizio","photoCreditLabel":"Foto","relatedPhotoLabel":"Fotografie",
+  "relatedStories":[
+    {"route":"foods.html","image":"foods/onigiri.webp","label":"UN PRIMO ASSAGGIO","title":"Piccoli cibi per il viaggio","note":"Polpette di riso, panini caldi e soste golose."},
+    {"route":"drinks.html","image":"drinks/20261004-tea-shelf-michikusa.webp","label":"UN SORSO DI QUALCOSA","title":"Bevande giapponesi","note":"Tè, caffè e un nuovo nome sullo scaffale."},
+    {"route":"countryside.html","image":"20260629_omi_fuji_michikusa.jpg","label":"DAL FINESTRINO","title":"La campagna giapponese","note":"Risaie, coltivazioni di tè e paesaggi tra una città e l'altra."}
+  ],
+  "entry":{"sectionKicker":"03 · PICCOLI DESIDERI","sectionTitle":"Una piccola cosa, un desiderio personale.","sectionLead":"In un santuario o in un tempio, osserva da vicino i sacchetti colorati.","label":"UN DESIDERIO DA PORTARE CON SÉ","title":"Omamori: un desiderio da portare con sé","note":"Scopri i piccoli amuleti giapponesi, leggi le loro parole e impara come portarli con te.","read":"Leggi il racconto","creditLabel":"Foto degli omamori","creditNote":"Oggetti provenienti da santuari in Giappone e negli Stati Uniti."}
+}

@@ -190,7 +190,15 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     'scripts/generate-food-country-ja.mjs','scripts/generate-content-manifest.mjs','scripts/generate-spot-pages.mjs',
     'scripts/validate-language-pages.mjs','scripts/content-metadata.json','scripts/release-scope.mjs','scripts/release-scope.test.mjs','scripts/drinks-locales.test.mjs',
     'foods.html','countryside.html','en/foods.html','en/drinks.html','en/everyday-japan.html','language-router.js','spot-page-shared.js',
-    'package.json','site-runtime.json','spot-page-runtime.json','content-manifest.json','sitemap.xml','shared-ui/ja.rail-countryside.js']);
+    'package.json','site-runtime.json','spot-page-runtime.json','content-manifest.json','sitemap.xml','shared-ui/ja.rail-countryside.js',
+    'locales.js','scripts/generate-castle-locales.mjs','scripts/generate-drinks-locales.mjs','scripts/locales-contract.test.mjs','scripts/food-country-locales.test.mjs']);
+  for(const lang of ['en','zh-Hant','fr','de','es','zh-Hans','ko','it','th']){
+    omamoriFiles.add(`data/omamori/${lang}.json`);
+    for(const route of ['omamori','foods','drinks','everyday-japan','jr-pass-fuji'])omamoriFiles.add(`${lang}/${route}.html`);
+    omamoriFiles.add(`shared-ui/${lang.toLowerCase()}.shell.js`);
+    omamoriFiles.add(`shared-ui/${lang.toLowerCase()}.rail-everyday-japan.js`);
+    omamoriFiles.add(`shared-ui/${lang.toLowerCase()}.rail-foods.js`);
+  }
   let omamoriPackage=!files.includes('package.json');
   if(!omamoriPackage&&packageBefore&&packageAfter){
     const before=typeof packageBefore==='string'?JSON.parse(packageBefore):structuredClone(packageBefore);
@@ -203,9 +211,11 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   }
   if(files.includes('scripts/generate-omamori-page.mjs')&&omamoriPackage&&changes.every(({path:file,status})=>status!=='D'&&(omamoriFiles.has(file)||file.endsWith('.html')&&assetVersionOnly(file))))return {
     scope:'omamori-everyday',needsDependencies:true,pagesCandidate:true,
-    reason:'Japanese and English omamori articles using existing Everyday Japan components, edition-aware entry cards, two-way routing, photo rights and Web distribution. Other languages retain their current content.',
+    reason:'Omamori across ten existing languages, localized Everyday Japan/food/drink entry cards, Japanese reached only through language selection, shared chrome and Web distribution.',
     commands:[...syntax,node('--test','scripts/omamori-page.test.mjs','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs','scripts/food-country-locales.test.mjs','scripts/drinks-locales.test.mjs'),
-      ...['generate-omamori-page','generate-foods-page','generate-drinks-page','generate-everyday-page','generate-food-country-ja','generate-site-chrome','generate-site-runtime'].map(name=>node(`scripts/${name}.mjs`,'--check')),
+      ...['generate-omamori-page','generate-foods-page','generate-drinks-page','generate-everyday-page','generate-food-country-ja','generate-drinks-locales','generate-site-chrome','generate-site-runtime'].map(name=>node(`scripts/${name}.mjs`,'--check')),
+      node('scripts/generate-castle-locales.mjs','--route','foods.html','--check'),node('scripts/generate-castle-locales.mjs','--route','everyday-japan.html','--check'),
+      node('scripts/validate-site-navigation.mjs','--route','omamori.html','--route','foods.html','--route','drinks.html','--route','everyday-japan.html','--route','jr-pass-fuji.html'),
       node('scripts/validate-language-pages.mjs'),node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')]
   };
   const editorialFiles=new Set(['scripts/generate-story-window-pages.mjs','scripts/shared/story-editorial.mjs','scripts/shared/story-editorial.test.mjs',

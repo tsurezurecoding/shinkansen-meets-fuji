@@ -1,5 +1,4 @@
 import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
-import {omamoriStoryCard,omamoriPhotoCredit} from './shared/omamori-entry.mjs';
 // Japanese editions reuse the approved article structure and existing Japanese chrome.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -88,10 +87,6 @@ for(const name of ['foods','countryside']){
   for(const el of doc.querySelectorAll('[srcset]'))el.setAttribute('srcset',el.getAttribute('srcset').replace(/\.\.\//g,''));
   doc.querySelectorAll('[lang="en"]').forEach(el=>{if(!el.closest('[hreflang="en"]'))el.lang='ja';});
   if(missing.size)throw Error(name+' untranslated Japanese copy: '+JSON.stringify([...missing]));
-  if(name==='foods'){
-    doc.querySelector('.everyday-related-grid')?.insertAdjacentHTML('beforeend',omamoriStoryCard('ja',''));
-    doc.querySelector('.everyday-related-grid')?.insertAdjacentHTML('afterend',omamoriPhotoCredit('ja'));
-  }
   const html=finalizeSiteChrome(enhanceContentHead(dom.serialize(),file,root,{lang:'ja'}),file,root);
   const target=path.join(root,file);
   if(check){if(!fs.existsSync(target)||fs.readFileSync(target,'utf8')!==html)throw Error('Japanese article stale: '+file);}

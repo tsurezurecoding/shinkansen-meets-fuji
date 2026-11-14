@@ -1815,7 +1815,7 @@
     "kind": "editorial article",
     "article": true,
     "modified": "2026-11-14",
-    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested Japanese and English Everyday Japan integration, not yet published",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
     "image": "images/omamori/omamori-various.jpg",
     "imageRights": "permission",
     "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
@@ -1832,11 +1832,147 @@
     "kind": "editorial article",
     "article": true,
     "modified": "2026-11-14",
-    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested Japanese and English Everyday Japan integration, not yet published",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
     "image": "images/omamori/omamori-various.jpg",
     "imageRights": "permission",
     "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
     "imageAlt": "A collection of colorful omamori pouches with cords, including inscriptions for good fortune, studies, and protection.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hant/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "一組色彩繽紛、繫有掛繩的御守袋，包含祈求好運、學業與消災的文字。",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "fr/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Un assortiment de pochettes d’omamori colorées à cordons, avec des inscriptions pour la bonne fortune, les études et la protection.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "de/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Eine Sammlung bunter Omamori-Beutel mit Bändern und Aufschriften für Glück, Studium und Schutz.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "es/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Una colección de bolsitas de omamori de colores con cordones e inscripciones de buena fortuna, estudios y protección.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hans/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "一组带有挂绳、色彩鲜艳的御守袋，上面有祈求好运、学业顺利和避厄等文字。",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "ko/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "행운, 학업, 액막이 등을 뜻하는 글자가 적혀 있고 끈이 달린 알록달록한 오마모리 주머니들.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "it/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "Una collezione di sacchetti omamori colorati con cordoncini, tra cui iscrizioni per la buona sorte, lo studio e la protezione.",
+    "imageCredit": "Leongboy1 / Public domain",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "th/omamori.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-14",
+    "modifiedEvidence": "2026-11-14_omamori-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/omamori/omamori-various.jpg",
+    "imageRights": "permission",
+    "imageEvidence": "data/omamori-photo-sources.json various / CP-0313 / Commons author public-domain dedication",
+    "imageAlt": "โอะมะโมะริถุงผ้าหลากสีพร้อมสายคล้อง รวมถึงถุงที่มีข้อความเกี่ยวกับโชคลาภ การเรียน และการคุ้มครอง",
     "imageCredit": "Leongboy1 / Public domain",
     "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg",
     "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Variousomamori.jpg#Licensing",

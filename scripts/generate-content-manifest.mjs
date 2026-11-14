@@ -65,7 +65,7 @@ const contentFiles = [
   "manifest.json", "images/google-play/ja-badge.png", "images/google-play/en-badge.png",
   "en/foods.html", "foods.css", "foods.js", "data/foods-photo-sources.json",
   "en/everyday-japan.html", "everyday.css", "everyday-related.css",
-  "omamori.html", "en/omamori.html", "omamori.css", "omamori.js", "data/omamori-photo-sources.json",
+  ...locales.languages.map(lang=>`${lang==='ja'?'':lang+'/'}omamori.html`), "omamori.css", "omamori.js", "data/omamori-photo-sources.json",
   ...await walkFiles("images/omamori", p => /\.jpg$/.test(p)),
   ...await walkFiles("images/foods", p => /\.webp$/.test(p)),
   "en/tokyo-kyoto-stations.html", "stations.css", "stations.js", "data/station-photo-sources.json",
