@@ -14,9 +14,9 @@ test('Japanese municipality articles have complete public links, metadata and pe
  }
  const data=JSON.parse(fs.readFileSync(new URL('data/sudoori/route.json',root),'utf8'));assert.equal(data.towns.length,75);assert.equal(data.towns.find(t=>t.key==='大阪府島本町').mascot.image,undefined);assert(!fs.existsSync(new URL('images/sudoori/mascots/mizumaro.png',root)));
 });
-test('Field guide priority and municipality entry are Japanese-only',()=>{
+test('Field guide keeps Fuji first and stories last, with municipality entry Japanese-only',()=>{
  const dom=new JSDOM(fs.readFileSync(new URL('zukan.html',root),'utf8')),cards=[...dom.window.document.querySelectorAll('.journey-intent-card')];
- assert.equal(cards[0].getAttribute('href'),'stories/index.html');assert.deepEqual(cards.slice(1,6).map(c=>c.getAttribute('href')),['guide.html','castles.html','arenani.html','727-collection.html','yakei.html']);assert.equal(cards.at(-1).getAttribute('href'),'sudoori/index.html');dom.window.close();
+ assert.deepEqual(cards.slice(0,5).map(c=>c.getAttribute('href')),['guide.html','castles.html','arenani.html','727-collection.html','yakei.html']);assert.equal(cards.at(-2).getAttribute('href'),'sudoori/index.html');assert.equal(cards.at(-1).getAttribute('href'),'stories/index.html');dom.window.close();
  const en=fs.readFileSync(new URL('en/zukan.html',root),'utf8');assert(!en.includes('data-cta-id="sudoori"'));assert(!en.includes('素通りの街'));
 });
 test('Public portal starts at Shimamoto and keeps article, time and return state aligned',()=>{
