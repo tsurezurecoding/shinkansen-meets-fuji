@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "8de2b8ada3381ef5",
+  "contentVersion": "0ca7130df8db052d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -313,14 +313,14 @@
     {
       "path": "artworks/window-film/index.html",
       "url": "https://www.michikusa-travel.com/artworks/window-film/index.html",
-      "bytes": 23461,
-      "sha256": "30617f42e677acff13c2736c45a29d21784e158a13af47b4e13e0f3eeb85b234"
+      "bytes": 23904,
+      "sha256": "3e993832b8b42b3483b4e1f1a2aa3dd34ca9b201c8d5b4ed9760624ef41abebf"
     },
     {
       "path": "artworks/window-film/window-film-data.js",
       "url": "https://www.michikusa-travel.com/artworks/window-film/window-film-data.js",
-      "bytes": 28705,
-      "sha256": "0a7a6f5f0298b356ae5d7a0c99c38e3a88ecd6bae254dde765562a05983014c2"
+      "bytes": 29209,
+      "sha256": "176ca5e4373b5e3170426e627151d7a6328cc112dd65ebac1ffbbf276c209285"
     },
     {
       "path": "artworks/window-film/window-film.css",
@@ -1975,8 +1975,8 @@
     {
       "path": "en/artworks/window-film/index.html",
       "url": "https://www.michikusa-travel.com/en/artworks/window-film/index.html",
-      "bytes": 23062,
-      "sha256": "afe5445280e311f3eb34a21436892a658ed4aad8b756c435392f10b5fbe3a2fc"
+      "bytes": 23493,
+      "sha256": "dc5577dd12c96a91eabe213931aff0a9dba848413fae2d252307a12eae45558a"
     },
     {
       "path": "en/beer-on-shinkansen.html",
