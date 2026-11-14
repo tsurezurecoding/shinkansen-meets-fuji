@@ -2536,6 +2536,8 @@ const SPOTS = [
         date: "2026-05-30",
         note: { ja: "平塚市内から、相模平野越しに見える富士山", en: "Mt. Fuji beyond Sagami Plain from Hiratsuka." },
       },
+      {"src":"images/20261114_sagami-fuji_hinataoka_165028_michikusa.jpg","alt":{"ja":"日向岡付近の街並み越しに見える、雪をまとった富士山。","en":"Snow-covered Mt. Fuji beyond the houses near Hinataoka."},"credit":{"ja":"michikusa","en":"michikusa"},"date":"","note":{"ja":"日向岡付近の街並み越しに見える、雪をまとった富士山。","en":"Snow-covered Mt. Fuji beyond the houses near Hinataoka."}},
+      {"src":"images/20261114_sagami-fuji_odawara_13834_michikusa.jpg","alt":{"ja":"小田原付近の山並みの上に、富士山の頂がのぞきます。","en":"The summit of Mt. Fuji above the hills near Odawara."},"credit":{"ja":"michikusa","en":"michikusa"},"date":"","note":{"ja":"小田原付近の山並みの上に、富士山の頂がのぞきます。","en":"The summit of Mt. Fuji above the hills near Odawara."}},
     ],
     references: [REFERENCES.weatherFuji, REFERENCES.sagamiFujiTanzawa],
     map: { lat: 35.360625, lng: 138.727363, ja: "富士山（相模平野からの遠望対象）", en: "Mt. Fuji, viewed across Sagami Plain" },
@@ -3410,6 +3412,7 @@ const SPOTS = [
         date: "2026-09-03",
         note: { ja: "富士山を背景に、屋上広告が立つ", en: "The rooftop sign stands with Mt. Fuji in the background" },
       },
+      {"src":"images/20261114_fuji-pipe-sign_124876_michikusa.jpg","alt":{"ja":"富士山を背にした、フジパイプのカラフルな屋上広告。","en":"The colorful Fujipipe rooftop sign with Mt. Fuji behind it."},"credit":{"ja":"michikusa","en":"michikusa"},"date":"","note":{"ja":"富士山を背にした、フジパイプのカラフルな屋上広告。","en":"The colorful Fujipipe rooftop sign with Mt. Fuji behind it."}},
     ],
     references: [REFERENCES.fujiKako, REFERENCES.fujiKakoOutline, REFERENCES.fujiKakoRecruit, REFERENCES.fujiKakoAccess],
     bodyLinks: [
@@ -5174,6 +5177,7 @@ const SPOTS = [
         sourceUrl: "https://cotetu.seesaa.net/article/516019488.html",
         note: { ja: "掛川・浜松間、山側・E席から見えるしっぺいの三連続応援看板", en: "Three Shippei cheer-up signs between Kakegawa and Hamamatsu, seen from Seat E." },
       },
+      {"src":"images/20261114_genki-sign_3330_michikusa.jpg","alt":{"ja":"田畑の向こうに並ぶ、しっぺいの応援看板。","en":"Shippei cheer-up signs beside the fields in Iwata."},"credit":{"ja":"michikusa","en":"michikusa"},"date":"","note":{"ja":"田畑の向こうに並ぶ、しっぺいの応援看板。","en":"Shippei cheer-up signs beside the fields in Iwata."}},
     ],
     media: {
       heading: { ja: "動画で見るしっぺいの応援看板", en: "Shippei Cheer-up Signs in motion" },
@@ -9655,21 +9659,48 @@ const SPOTS = [
           "ja": "広い眺め。新大阪から京都へ向かう車窓から",
           "en": "The wider view, travelling from Shin-Osaka towards Kyoto"
         }
+      },
+      {
+        "src": "images/20261114_yamazaki-distillery_3654_michikusa.jpg",
+        "alt": {
+          "ja": "山すその建物に「山崎」「SINCE 1923」の文字が見えます。",
+          "en": "The Yamazaki Distillery building with the “SINCE 1923” sign."
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "",
+        "note": {
+          "ja": "山すその建物に「山崎」「SINCE 1923」の文字が見えます。",
+          "en": "The Yamazaki Distillery building with the “SINCE 1923” sign."
+        }
       }
     ],
     "media": {
-      "heading": { "ja": "動画で見る山崎蒸溜所", "en": "Yamazaki Distillery in motion" },
+      "heading": {
+        "ja": "動画で見る山崎蒸溜所",
+        "en": "Yamazaki Distillery in motion"
+      },
       "description": {
         "ja": "新幹線の車窓から見える山崎蒸溜所の動画です。",
         "en": "See Yamazaki Distillery from the Shinkansen window."
       },
-      "videos": [{
-        "kind": "youtube",
-        "id": "HaZ9nYFWmzc",
-        "url": "https://www.youtube.com/watch?v=HaZ9nYFWmzc",
-        "title": { "ja": "[新幹線の車窓] サントリー山崎蒸留所", "en": "[新幹線の車窓] サントリー山崎蒸留所" }
-      }],
-      "platformNote": { "ja": "動画はYouTubeの公式埋め込みを利用しています。", "en": "This video uses the official YouTube embed." }
+      "videos": [
+        {
+          "kind": "youtube",
+          "id": "HaZ9nYFWmzc",
+          "url": "https://www.youtube.com/watch?v=HaZ9nYFWmzc",
+          "title": {
+            "ja": "[新幹線の車窓] サントリー山崎蒸留所",
+            "en": "[新幹線の車窓] サントリー山崎蒸留所"
+          }
+        }
+      ],
+      "platformNote": {
+        "ja": "動画はYouTubeの公式埋め込みを利用しています。",
+        "en": "This video uses the official YouTube embed."
+      }
     },
     "references": [
       {
@@ -10738,17 +10769,33 @@ const SPOTS = [
   "durationSec": null,
   "visibleWhenCloudy": true,
   "scene": "hills",
-  "image": "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg",
+  "image": "images/20261114_tamaruya-wasabi-sign_139867_michikusa.jpg",
   "photoCredit": {
     "ja": "michikusa",
     "en": "michikusa",
     "date": "",
     "note": {
-      "ja": "静岡通過直後のE席側（拡大）",
-      "en": "Seat E just west of Shizuoka Station (cropped)"
+      "ja": "田丸屋の「わさび漬」看板。",
+      "en": "Tamaruya’s green wasabi-zuke billboard above the surrounding buildings."
     }
   },
   "photos": [
+    {
+      "src": "images/20261029_tamaruya-wasabi-sign_123500_michikusa.jpg",
+      "alt": {
+        "ja": "田丸屋のわさび漬看板",
+        "en": "Tamaruya Wasabi-zuke Sign"
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "",
+      "note": {
+        "ja": "静岡通過直後のE席側（拡大）",
+        "en": "Seat E just west of Shizuoka Station (cropped)"
+      }
+    },
     {
       "src": "images/20261029_tamaruya-wasabi-sign_context_123500_michikusa.jpg",
       "width": 1920,
@@ -10862,17 +10909,33 @@ const SPOTS = [
   "durationSec": null,
   "visibleWhenCloudy": true,
   "scene": "hills",
-  "image": "images/20260919_kizakura-otsukaresama-sign_31000_michikusa.jpg",
+  "image": "images/20261114_kizakura-otsukaresama-sign_13549_michikusa.jpg",
   "photoCredit": {
     "ja": "michikusa",
     "en": "michikusa",
     "date": "",
     "note": {
-      "ja": "新大阪到着直前のA席側（拡大）",
-      "en": "Seat A just before arrival at Shin-Osaka (cropped)"
+      "ja": "おちょこを手にしたカッパと、「おつかれさま」の言葉。",
+      "en": "A kappa holding a sake cup beside the words “Otsukaresama.”"
     }
   },
   "photos": [
+    {
+      "src": "images/20260919_kizakura-otsukaresama-sign_31000_michikusa.jpg",
+      "alt": {
+        "ja": "黄桜のおつかれさま看板",
+        "en": "Kizakura Otsukaresama Sign"
+      },
+      "credit": {
+        "ja": "michikusa",
+        "en": "michikusa"
+      },
+      "date": "",
+      "note": {
+        "ja": "新大阪到着直前のA席側（拡大）",
+        "en": "Seat A just before arrival at Shin-Osaka (cropped)"
+      }
+    },
     {
       "src": "images/20260919_kizakura-otsukaresama-sign_context_30000_michikusa.jpg",
       "width": 1920,

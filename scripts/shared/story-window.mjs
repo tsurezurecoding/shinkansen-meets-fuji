@@ -39,7 +39,7 @@ export function withStoryWindowLinks(html,file,root){
   html=stripStoryWindowLinks(html);
   if(route==='zukan.html'){
     const card=`<!-- STORY-WINDOW:START --><a class="journey-intent-card journey-intent-family" href="${prefix}${storyFile(lang)}" data-cta-track="zukan_theme_click" data-cta-id="story_window"><img src="${prefix}${storyAsset('20261103_sekigahara-landscape_michikusa_45599.jpg')}" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>STORIES</small><strong>${e(copy.zukan.title)}</strong><span>${e(copy.zukan.description)}</span></span></a><!-- STORY-WINDOW:END -->`;
-    html=html.replaceAll('<!-- STORY_WINDOW_CARD -->','');
+    html=html.replaceAll('<!-- STORY_WINDOW_CARD -->','').replace(/^[ \t]+$/gm,'');
     const document=parse(html,{sourceCodeLocationInfo:true});
     const findGrid=node=>node.attrs?.some(a=>a.name==='class'&&a.value.split(/\s+/).includes('journey-intent-grid'))?node:(node.childNodes||[]).map(findGrid).find(Boolean);
     const offset=findGrid(document)?.sourceCodeLocation?.endTag?.startOffset;

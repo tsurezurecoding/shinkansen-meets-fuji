@@ -2503,6 +2503,69 @@
       "thumbWidth": 960,
       "thumbHeight": 540
     },
+    "images/20261114_fuji-pipe-sign_124876_michikusa.jpg": {
+      "sha256": "a898c229651d929a1ab18fbeb0a378f4e543f82a3185c2a063206d220e6c87f4",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_fuji-pipe-sign_124876_michikusa.webp",
+      "thumbSha256": "2e5e645c299af7bd4b18df969c003b1def54465ad3da77070b4d53cc72edacce",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261114_genki-sign_3330_michikusa.jpg": {
+      "sha256": "dff0b36fdb9fd9e7c59bb990ec94408d865b2178977913d727aea2a243013a56",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_genki-sign_3330_michikusa.webp",
+      "thumbSha256": "bfc90a6ce26f21608a9c64a4ea4041a6973347f6c29ad287d86f0221c9ff44a2",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261114_kizakura-otsukaresama-sign_13549_michikusa.jpg": {
+      "sha256": "bc8185ee7ddfb8a85522e4144cfe965a35a7d27442ed36c444a7c27b25d9749e",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_kizakura-otsukaresama-sign_13549_michikusa.webp",
+      "thumbSha256": "2fc71865968258ebd01a1015011a725d26bc186a2022bd87cb6ff9c6f48e915d",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261114_sagami-fuji_hinataoka_165028_michikusa.jpg": {
+      "sha256": "77381c6e8ba02765f0684aa731c89852d2b2741da09054a31e75e0b6e3e9126e",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_sagami-fuji_hinataoka_165028_michikusa.webp",
+      "thumbSha256": "8874081d0863e4da4a09c1e7f736f4469b27ed9747d88cd438fb2716704aa1c3",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261114_sagami-fuji_odawara_13834_michikusa.jpg": {
+      "sha256": "99722008aeaa9e84c439cb168384a9b328b77b588838cc2fa4118b4063d0b87b",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_sagami-fuji_odawara_13834_michikusa.webp",
+      "thumbSha256": "e735584104cea6704f3935f524fa49ac34bd7356e5516faffb20883bf60779a5",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261114_tamaruya-wasabi-sign_139867_michikusa.jpg": {
+      "sha256": "07187bfa51ea91e8a3e5402e4630165058e7c16d0a81d47bd19550c2c4708fe5",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_tamaruya-wasabi-sign_139867_michikusa.webp",
+      "thumbSha256": "69a823ffd7dd846a4b5af7337afc1b2c22e256baa11d90bb2d6616371fc02502",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261114_yamazaki-distillery_3654_michikusa.jpg": {
+      "sha256": "3109b85465145cd2dac2b3edf70ba5f519d3f67f9d1ef7256d242c5fb64faaff",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261114_yamazaki-distillery_3654_michikusa.webp",
+      "thumbSha256": "490fc2c5f772ed84c1e634fa2da3785cbafb019ad827db52f92bdb92a1fed1d6",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
     "images/250111_hamanako_fuji_proboffin.jpg": {
       "sha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
       "width": 768,
@@ -7211,6 +7274,132 @@
       "height": 360,
       "quality": 86,
       "sha256": "49aa0910456bce977489460832532dc1dbc94aeeaa4e13906f3b67cc76eefff6"
+    },
+    "images/thumbs/display/20261114_fuji-pipe-sign_124876_michikusa-a898c229-1920.webp": {
+      "source": "images/20261114_fuji-pipe-sign_124876_michikusa.jpg",
+      "sourceSha256": "a898c229651d929a1ab18fbeb0a378f4e543f82a3185c2a063206d220e6c87f4",
+      "target": "images/thumbs/display/20261114_fuji-pipe-sign_124876_michikusa-a898c229-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "611e9ff58cd2bc38396e51c0465e6ae4e1720851219ad9393c5b8362abbc8de5"
+    },
+    "images/thumbs/display/20261114_fuji-pipe-sign_124876_michikusa-a898c229-640.webp": {
+      "source": "images/20261114_fuji-pipe-sign_124876_michikusa.jpg",
+      "sourceSha256": "a898c229651d929a1ab18fbeb0a378f4e543f82a3185c2a063206d220e6c87f4",
+      "target": "images/thumbs/display/20261114_fuji-pipe-sign_124876_michikusa-a898c229-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "506668a6034cc2a6878fa5f06fba5b29dde05bf53d47d7ad3539e04912a94852"
+    },
+    "images/thumbs/display/20261114_genki-sign_3330_michikusa-dff0b36f-1920.webp": {
+      "source": "images/20261114_genki-sign_3330_michikusa.jpg",
+      "sourceSha256": "dff0b36fdb9fd9e7c59bb990ec94408d865b2178977913d727aea2a243013a56",
+      "target": "images/thumbs/display/20261114_genki-sign_3330_michikusa-dff0b36f-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "577368dc2f7c19a9d4b917a934585645f0fdeef8a5c9ac5c42000d5a36744a46"
+    },
+    "images/thumbs/display/20261114_genki-sign_3330_michikusa-dff0b36f-640.webp": {
+      "source": "images/20261114_genki-sign_3330_michikusa.jpg",
+      "sourceSha256": "dff0b36fdb9fd9e7c59bb990ec94408d865b2178977913d727aea2a243013a56",
+      "target": "images/thumbs/display/20261114_genki-sign_3330_michikusa-dff0b36f-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "caa7fdb862a14e5d947298b735e03578a64c0b9c72606265324204e784faed11"
+    },
+    "images/thumbs/display/20261114_kizakura-otsukaresama-sign_13549_michikusa-bc8185ee-1920.webp": {
+      "source": "images/20261114_kizakura-otsukaresama-sign_13549_michikusa.jpg",
+      "sourceSha256": "bc8185ee7ddfb8a85522e4144cfe965a35a7d27442ed36c444a7c27b25d9749e",
+      "target": "images/thumbs/display/20261114_kizakura-otsukaresama-sign_13549_michikusa-bc8185ee-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "3b13c42b2e4d935a98f77b93004d73b80a86e982aa9c1cd4cd13a4213fe93473"
+    },
+    "images/thumbs/display/20261114_kizakura-otsukaresama-sign_13549_michikusa-bc8185ee-640.webp": {
+      "source": "images/20261114_kizakura-otsukaresama-sign_13549_michikusa.jpg",
+      "sourceSha256": "bc8185ee7ddfb8a85522e4144cfe965a35a7d27442ed36c444a7c27b25d9749e",
+      "target": "images/thumbs/display/20261114_kizakura-otsukaresama-sign_13549_michikusa-bc8185ee-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "01c65996d7c1ff6b1ad6a06d58eb73f34fe1b4c019bd2d41f8d6618a139d1f8b"
+    },
+    "images/thumbs/display/20261114_sagami-fuji_hinataoka_165028_michikusa-77381c6e-1920.webp": {
+      "source": "images/20261114_sagami-fuji_hinataoka_165028_michikusa.jpg",
+      "sourceSha256": "77381c6e8ba02765f0684aa731c89852d2b2741da09054a31e75e0b6e3e9126e",
+      "target": "images/thumbs/display/20261114_sagami-fuji_hinataoka_165028_michikusa-77381c6e-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "8d29c3c72fd457a4fe46d09e7394365a5227da23cc08c9e5712b7497d75aa1bb"
+    },
+    "images/thumbs/display/20261114_sagami-fuji_hinataoka_165028_michikusa-77381c6e-640.webp": {
+      "source": "images/20261114_sagami-fuji_hinataoka_165028_michikusa.jpg",
+      "sourceSha256": "77381c6e8ba02765f0684aa731c89852d2b2741da09054a31e75e0b6e3e9126e",
+      "target": "images/thumbs/display/20261114_sagami-fuji_hinataoka_165028_michikusa-77381c6e-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "8ac61f982189f860a85f349127b0d5180634dc43dabc1828d7a1173545b4b8d9"
+    },
+    "images/thumbs/display/20261114_sagami-fuji_odawara_13834_michikusa-99722008-1920.webp": {
+      "source": "images/20261114_sagami-fuji_odawara_13834_michikusa.jpg",
+      "sourceSha256": "99722008aeaa9e84c439cb168384a9b328b77b588838cc2fa4118b4063d0b87b",
+      "target": "images/thumbs/display/20261114_sagami-fuji_odawara_13834_michikusa-99722008-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "17d9e5c1a06822de2502759071ec507c8bff323c16d6aab068fc8fe7ab64871a"
+    },
+    "images/thumbs/display/20261114_sagami-fuji_odawara_13834_michikusa-99722008-640.webp": {
+      "source": "images/20261114_sagami-fuji_odawara_13834_michikusa.jpg",
+      "sourceSha256": "99722008aeaa9e84c439cb168384a9b328b77b588838cc2fa4118b4063d0b87b",
+      "target": "images/thumbs/display/20261114_sagami-fuji_odawara_13834_michikusa-99722008-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "b1d21f23e9c8f63263e8d28488c649f8ad5870417c5ea735358fdb6453380273"
+    },
+    "images/thumbs/display/20261114_tamaruya-wasabi-sign_139867_michikusa-07187bfa-1920.webp": {
+      "source": "images/20261114_tamaruya-wasabi-sign_139867_michikusa.jpg",
+      "sourceSha256": "07187bfa51ea91e8a3e5402e4630165058e7c16d0a81d47bd19550c2c4708fe5",
+      "target": "images/thumbs/display/20261114_tamaruya-wasabi-sign_139867_michikusa-07187bfa-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "958d428272bd8bda2d691b26389643ba615b3c07c71936c502c56dbe562b15cd"
+    },
+    "images/thumbs/display/20261114_tamaruya-wasabi-sign_139867_michikusa-07187bfa-640.webp": {
+      "source": "images/20261114_tamaruya-wasabi-sign_139867_michikusa.jpg",
+      "sourceSha256": "07187bfa51ea91e8a3e5402e4630165058e7c16d0a81d47bd19550c2c4708fe5",
+      "target": "images/thumbs/display/20261114_tamaruya-wasabi-sign_139867_michikusa-07187bfa-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "e77c6b2fd20e449962d6ab8c8170fd45ab99e002cd4ce24ac9377fc5cc2ed742"
+    },
+    "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-1920.webp": {
+      "source": "images/20261114_yamazaki-distillery_3654_michikusa.jpg",
+      "sourceSha256": "3109b85465145cd2dac2b3edf70ba5f519d3f67f9d1ef7256d242c5fb64faaff",
+      "target": "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "3822c5116a04a9324057cfa68668c0a237ad4be9677433fbeaf45bbc39952e0a"
+    },
+    "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-640.webp": {
+      "source": "images/20261114_yamazaki-distillery_3654_michikusa.jpg",
+      "sourceSha256": "3109b85465145cd2dac2b3edf70ba5f519d3f67f9d1ef7256d242c5fb64faaff",
+      "target": "images/thumbs/display/20261114_yamazaki-distillery_3654_michikusa-3109b854-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "dbbaa9d97ca89ef8efa1b00832594a0511e115c637883d9daa0cb8c7c31e6a3d"
     },
     "images/thumbs/display/250111_hamanako_fuji_proboffin-7d23bf3e-640.webp": {
       "source": "images/250111_hamanako_fuji_proboffin.jpg",

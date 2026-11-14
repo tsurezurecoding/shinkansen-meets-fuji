@@ -50,7 +50,8 @@
     "Select my train and check the time",
     "Use the E-seat side: left from Shin-Osaka towards Kyoto, right from Kyoto towards Shin-Osaka. Watch the brown buildings beneath the hills and look beyond the rooftops and wires for the Yamazaki lettering.",
     "Window stamp",
-    "Suntory Yamazaki Distillery window stamp"
+    "Suntory Yamazaki Distillery window stamp",
+    "The Yamazaki Distillery building with the “SINCE 1923” sign."
   ],
   "translations": {
     "zh-Hant": {
@@ -104,7 +105,8 @@
       "47": "選列車，查時間",
       "48": "E席側：新大阪往京都為左側，京都往新大阪為右側。看山丘下的棕色建築，視線越過屋頂與電線，找「山崎」。",
       "49": "車窗印章",
-      "50": "山崎蒸溜所車窗印章"
+      "50": "山崎蒸溜所車窗印章",
+      "51": "山崎蒸餾所的建築與「SINCE 1923」招牌。"
     },
     "fr": {
       "0": "Durée de visibilité",
@@ -157,7 +159,8 @@
       "47": "Choisir mon train et voir l’heure",
       "48": "Côté E : à gauche de Shin-Osaka vers Kyoto, à droite de Kyoto vers Shin-Osaka. Cherchez les bâtiments bruns sous les collines et 山崎 au-delà des toits et câbles.",
       "49": "Tampon de fenêtre",
-      "50": "Tampon de la distillerie Yamazaki"
+      "50": "Tampon de la distillerie Yamazaki",
+      "51": "Le bâtiment de la distillerie Yamazaki et son enseigne « SINCE 1923 »."
     },
     "de": {
       "0": "Sichtfenster",
@@ -210,7 +213,8 @@
       "47": "Zug wählen und Zeit prüfen",
       "48": "Seite E: links von Shin-Osaka nach Kyoto, rechts von Kyoto nach Shin-Osaka. Braune Gebäude am Hügel und 山崎 hinter Dächern und Leitungen suchen.",
       "49": "Fensterstempel",
-      "50": "Fensterstempel Yamazaki"
+      "50": "Fensterstempel Yamazaki",
+      "51": "Das Gebäude der Yamazaki-Destillerie mit dem Schriftzug „SINCE 1923“."
     },
     "es": {
       "0": "Tiempo visible",
@@ -263,7 +267,8 @@
       "47": "Elegir tren y ver la hora",
       "48": "Lado E: izquierda de Shin-Osaka a Kioto, derecha de Kioto a Shin-Osaka. Busca edificios marrones bajo las colinas y 山崎 tras tejados y cables.",
       "49": "Sello de ventanilla",
-      "50": "Sello de la destilería Yamazaki"
+      "50": "Sello de la destilería Yamazaki",
+      "51": "El edificio de la destilería Yamazaki con el letrero «SINCE 1923»."
     },
     "zh-Hans": {
       "0": "可见时间",
@@ -316,7 +321,8 @@
       "47": "选列车，查时间",
       "48": "E席侧：新大阪往京都为左侧，京都往新大阪为右侧。看山丘下的棕色建筑，视线越过屋顶与电线，找“山崎”。",
       "49": "车窗印章",
-      "50": "山崎蒸馏所车窗印章"
+      "50": "山崎蒸馏所车窗印章",
+      "51": "山崎蒸馏所的建筑与“SINCE 1923”招牌。"
     },
     "ko": {
       "0": "보이는 시간",
@@ -369,7 +375,8 @@
       "47": "열차 선택·시간 확인",
       "48": "E석 쪽: 신오사카→교토 왼쪽, 교토→신오사카 오른쪽. 언덕 아래 갈색 건물에서 지붕·전선 너머 山崎 글자를 찾으세요.",
       "49": "차창 스탬프",
-      "50": "야마자키 증류소 차창 스탬프"
+      "50": "야마자키 증류소 차창 스탬프",
+      "51": "야마자키 증류소 건물과 “SINCE 1923” 간판."
     },
     "it": [
       "Durata dell’avvistamento",
@@ -422,7 +429,8 @@
       "Seleziona il mio treno e controlla l’orario",
       "Guarda dal lato E: a sinistra da Shin-Osaka verso Kyoto, a destra da Kyoto verso Shin-Osaka. Cerca gli edifici marroni sotto le colline e, oltre tetti e cavi, la scritta Yamazaki.",
       "Timbro dal finestrino",
-      "Timbro dal finestrino della distilleria Suntory Yamazaki"
+      "Timbro dal finestrino della distilleria Suntory Yamazaki",
+      "L’edificio della distilleria Yamazaki con la scritta «SINCE 1923»."
     ],
     "th": [
       "ช่วงที่มองเห็น",
@@ -475,7 +483,8 @@
       "เลือกรถไฟและตรวจเวลา",
       "ใช้ฝั่งที่นั่ง E: ซ้ายจากชินโอซาก้าไปเกียวโต ขวาจากเกียวโตไปชินโอซาก้า มองอาคารน้ำตาลใต้เนิน และพ้นหลังคากับสายไฟหาอักษรยามาซากิ",
       "แสตมป์วิวจากหน้าต่าง",
-      "ตราประทับวิวโรงกลั่นซันโทรี่ยามาซากิ"
+      "ตราประทับวิวโรงกลั่นซันโทรี่ยามาซากิ",
+      "อาคารโรงกลั่นยามาซากิและป้าย “SINCE 1923”"
     ]
   }
 }
