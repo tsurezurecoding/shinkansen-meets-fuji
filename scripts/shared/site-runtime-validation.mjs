@@ -219,3 +219,17 @@ export function commonTargetFailures(document, { appDir, relative }) {
   }
   return failures;
 }
+
+// Language selection deliberately carries ?lang; external services own their query contract.
+export function legacyEnglishInternalLinks(html, pageUrl) {
+  if (!/(?:href|action)=["'][^"']*\?lang=en(?:[&#"']|$)/i.test(html)) return [];
+  const dom = new JSDOM(html, { url: pageUrl });
+  const origin = new URL(pageUrl).origin;
+  const links = [...dom.window.document.querySelectorAll('a[href],form[action]')].filter(el => {
+    if (el.closest('.lang-switch,.article-lang-menu,.guide-lang-menu')) return false;
+    const url = new URL(el.getAttribute(el.tagName === 'FORM' ? 'action' : 'href'), dom.window.document.baseURI);
+    return url.origin === origin && url.searchParams.get('lang') === 'en';
+  }).map(el => el.getAttribute(el.tagName === 'FORM' ? 'action' : 'href'));
+  dom.window.close();
+  return links;
+}
