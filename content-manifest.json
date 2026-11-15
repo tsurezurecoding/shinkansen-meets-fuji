@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "f08c985189e4f699",
+  "contentVersion": "1a8c62e8a741241d",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1538,7 +1538,7 @@
       "path": "de/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/de/everyday-japan.html",
       "bytes": 18038,
-      "sha256": "b7cee5f8ba8942a6067be55fe97e8e4ec0adf83fd820e39f1f7a7f4f577f76b9"
+      "sha256": "bb1abe4ec8bf7293a745dc18035ae95268c870d012d0f362a1731e7342420c20"
     },
     {
       "path": "de/ferris-wheels.html",
@@ -2042,7 +2042,7 @@
       "path": "en/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/en/everyday-japan.html",
       "bytes": 16581,
-      "sha256": "6d9367fc14d214a611d322895af6e34294c25077e1adff8a1ca4dce157eb7285"
+      "sha256": "609a0455668d0fff1b555a681bf23e0aa03a0e124fc3245f36089e96bffe06b6"
     },
     {
       "path": "en/ferris-wheels.html",
@@ -2222,7 +2222,7 @@
       "path": "es/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/es/everyday-japan.html",
       "bytes": 17951,
-      "sha256": "65b028bedf73cf19b513391963b76d0ece5faea5590031163067e5e2a796e586"
+      "sha256": "718ca85062069aa1cfc31fc19ba03945662a3fcaff8f2953718092a831fe2725"
     },
     {
       "path": "es/ferris-wheels.html",
@@ -2642,7 +2642,7 @@
       "path": "everyday.css",
       "url": "https://www.michikusa-travel.com/everyday.css",
       "bytes": 4438,
-      "sha256": "2111ba2f8ee8321a4e52b67cb57f9d37b90b1d980ba6bf822f18f4e3fa185aba"
+      "sha256": "789a0a587e42284d7c0abe816426f29381eabcf7b3be951e54b2b5ee9104c271"
     },
     {
       "path": "ferris-wheels.css",
@@ -2726,7 +2726,7 @@
       "path": "fr/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/fr/everyday-japan.html",
       "bytes": 18142,
-      "sha256": "700c5550bcfd8335d129aaeceb3bac4d024f0f033cd0174b2cbaf218d334cda2"
+      "sha256": "713e69aa10b6d4793a7d2c7bf422f9ac64546316926663df723cd54fa1ca3536"
     },
     {
       "path": "fr/ferris-wheels.html",
@@ -5132,7 +5132,7 @@
       "path": "it/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/it/everyday-japan.html",
       "bytes": 17704,
-      "sha256": "bf8419a09df19f577da1f720502ec099a278721dafd6efbb1ac4bbd27a030edb"
+      "sha256": "bc6a7c5a8618ddbb457d98efe58628cf1473083c71a5c567ee4948b96b9302b8"
     },
     {
       "path": "it/ferris-wheels.html",
@@ -5624,7 +5624,7 @@
       "path": "ko/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/ko/everyday-japan.html",
       "bytes": 17939,
-      "sha256": "a8873a6909538002d8c58ad430fbad9967fb2b8ff7f888bdd9b7d21fb98af19c"
+      "sha256": "2770b1082a40ebed4467bcd6d65f557c09656207f5adc505a5d6e79dd8189c9f"
     },
     {
       "path": "ko/ferris-wheels.html",
@@ -7616,7 +7616,7 @@
       "path": "th/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/th/everyday-japan.html",
       "bytes": 22429,
-      "sha256": "36c3055a09056962fa1d7706d2c528f19310ae9155d9743a315eb8718724f96e"
+      "sha256": "19c2986b2ade2f64377ec2b1c25749df4786313ff392a07b388d276310efd9a2"
     },
     {
       "path": "th/ferris-wheels.html",
@@ -8288,7 +8288,7 @@
       "path": "zh-Hans/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/everyday-japan.html",
       "bytes": 17295,
-      "sha256": "3bc8d9052e32577493cc45166c82cf537bc5e13812caa84852f849cce9ee4124"
+      "sha256": "f7b05c858ff8c3eb065d422aaf3a8435f2556a5c583cb3d1aea851282a1fb0e0"
     },
     {
       "path": "zh-Hans/ferris-wheels.html",
@@ -8750,7 +8750,7 @@
       "path": "zh-Hant/everyday-japan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/everyday-japan.html",
       "bytes": 17283,
-      "sha256": "57acba647d537135a7f28d75c395e8b4710cce3919ca59156182e1a838bbd60d"
+      "sha256": "5170568e910dd5b5dbc44f41600b08fadc79de3f2c8fc1ec784ffd7a24abb473"
     },
     {
       "path": "zh-Hant/ferris-wheels.html",

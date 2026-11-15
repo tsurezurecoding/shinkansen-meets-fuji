@@ -194,13 +194,19 @@ export function onlyDonburiLanguageRouteChanged(before, after) {
   return before !== after && after.split(route).length === 2 && after.replace(route, '') === before;
 }
 
+export function onlyDonburiEverydayLayoutChanged(before, after) {
+  const oldRule = '.taste-grid{grid-template-columns:repeat(3,minmax(0,1fr))}';
+  const newRule = '.taste-grid{grid-template-columns:repeat(2,minmax(0,1fr))}';
+  return before !== after && before.split(oldRule).length === 2 && before.replace(oldRule, newRule) === after;
+}
+
 // Registering this article changes the shared route contract, not other article bodies.
 export function onlyDonburiAssetReferencesChanged(before, after) {
   const clean = value => value.replace(/(["'(](?:\.\.\/)*(?:locales|language-router)\.js\?v=)[a-f0-9]{8}(?=["'&<\s])/g, '$1VERSION');
   return before !== after && clean(before) === clean(after);
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const adsenseVerificationFiles = new Set(['ads.txt', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
@@ -245,7 +251,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       node('scripts/check-content-manifest.mjs')]
   };
   const donburiFiles = new Set(['scripts/generate-donburi-page.mjs', 'scripts/donburi-page.test.mjs',
-    'scripts/shared/donburi-entry.mjs', 'donburi.html', 'donburi.css', 'donburi.js', 'data/donburi-photo-sources.json',
+    'scripts/shared/donburi-entry.mjs', 'donburi.html', 'donburi.css', 'donburi.js', 'everyday.css', 'data/donburi-photo-sources.json',
     'scripts/generate-everyday-page.mjs', 'scripts/shared/everyday-related.mjs', 'scripts/generate-foods-page.mjs',
     'scripts/generate-castle-locales.mjs', 'scripts/generate-content-manifest.mjs', 'scripts/generate-spot-pages.mjs',
     'scripts/validate-language-pages.mjs', 'scripts/content-metadata.json', 'locales.js', 'language-router.js',
@@ -274,7 +280,8 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     donburiPackage = isDeepStrictEqual(before, after);
   }
   const donburiSourceChanges = (!files.includes('scripts/generate-spot-pages.mjs') || donburiSitemapOnly) &&
-    (!files.includes('locales.js') || donburiLocalesOnly) && (!files.includes('language-router.js') || donburiRouterOnly);
+    (!files.includes('locales.js') || donburiLocalesOnly) && (!files.includes('language-router.js') || donburiRouterOnly) &&
+    (!files.includes('everyday.css') || donburiEverydayLayoutOnly);
   if (files.includes('scripts/generate-donburi-page.mjs') && donburiPackage && donburiSourceChanges &&
     changes.every(({path: file, status}) => status !== 'D' && (donburiFiles.has(file) ||
       status === 'M' && file.endsWith('.html') && donburiAssetVersionOnly(file)))) return {
@@ -693,6 +700,7 @@ export function createReleasePlan(base) {
     donburiSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyDonburiSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
     donburiLocalesOnly: changes.some(c => c.path === 'locales.js' && c.status === 'M') && onlyDonburiLocaleRouteChanged(git('show', `${base}:locales.js`), git('show', `${head}:locales.js`)),
     donburiRouterOnly: changes.some(c => c.path === 'language-router.js' && c.status === 'M') && onlyDonburiLanguageRouteChanged(git('show', `${base}:language-router.js`), git('show', `${head}:language-router.js`)),
+    donburiEverydayLayoutOnly: changes.some(c => c.path === 'everyday.css' && c.status === 'M') && onlyDonburiEverydayLayoutChanged(git('show', `${base}:everyday.css`), git('show', `${head}:everyday.css`)),
     donburiAssetVersionOnly: file => onlyDonburiAssetReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     artworkSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyArtworkSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
     rideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter),

@@ -2,10 +2,25 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
-import { onlyDonburiSitemapChanged, onlyDonburiLocaleRouteChanged, onlyDonburiLanguageRouteChanged, onlyDonburiAssetReferencesChanged } from './release-scope.mjs';
+import { onlyDonburiSitemapChanged, onlyDonburiLocaleRouteChanged, onlyDonburiLanguageRouteChanged, onlyDonburiAssetReferencesChanged, onlyDonburiEverydayLayoutChanged } from './release-scope.mjs';
 import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+test('donburi permits only the exact two-column Everyday Japan taste-card adjustment', () => {
+  const rule = '.taste-grid{grid-template-columns:repeat(3,minmax(0,1fr))}';
+  const before = '.everyday-grid{display:grid;gap:20px}' + rule + '.country-grid{grid-template-columns:repeat(2,minmax(0,1fr))}';
+  const after = before.replace(rule, rule.replace('repeat(3,', 'repeat(2,'));
+  assert(onlyDonburiEverydayLayoutChanged(before, after));
+  assert(!onlyDonburiEverydayLayoutChanged(before, before));
+  assert(!onlyDonburiEverydayLayoutChanged(before, after.replace('gap:20px', 'gap:30px')));
+  assert(!onlyDonburiEverydayLayoutChanged(before, before.replace(rule, rule.replace('repeat(3,', 'repeat(4,'))));
+  assert(!onlyDonburiEverydayLayoutChanged(before + rule, after + rule));
+  const files = ['scripts/generate-donburi-page.mjs', 'everyday.css'].map(change);
+  assert.notEqual(chooseReleaseScope(files).scope, 'donburi-everyday');
+  assert.equal(chooseReleaseScope(files, {donburiEverydayLayoutOnly: onlyDonburiEverydayLayoutChanged(before, after)}).scope, 'donburi-everyday');
+  assert.notEqual(chooseReleaseScope(files, {donburiEverydayLayoutOnly: onlyDonburiEverydayLayoutChanged(before, after + 'unrelated')}).scope, 'donburi-everyday');
+});
 
 test('donburi scope covers ten editions and only its nine non-Japanese series entries', () => {
   const files = ['scripts/generate-donburi-page.mjs', 'data/donburi/en.json', 'data/donburi/ja.json',
