@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "6f8722121435f7a2",
+  "contentVersion": "066718c3c35888c8",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -2035,8 +2035,8 @@
     {
       "path": "en/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/en/kyoto-station-views.html",
-      "bytes": 30168,
-      "sha256": "c2166f54931b68dc5ab6defc256bb858add7bb0a97b65ddb2046ade3e1bd9cf8"
+      "bytes": 30231,
+      "sha256": "602d5f889e08b93877632ce225f71c932c940f5732c4a642418f6014f71ceae4"
     },
     {
       "path": "en/omamori.html",
@@ -5917,8 +5917,8 @@
     {
       "path": "kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/kyoto-station-views.html",
-      "bytes": 31908,
-      "sha256": "83fb08162763c25f8554f6894a37a179beb95b025dd2bea3a434385a9d5dae19"
+      "bytes": 31971,
+      "sha256": "1b56c9b3721cf6866cf942dc18d1a9d90ac5cded7423da3a08347f2022fdfad7"
     },
     {
       "path": "live/narration.js",
