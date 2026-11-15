@@ -10,7 +10,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 76, '75 canonical pages including omamori and donburi, and the Ibuki A-seat alias');
+  assert.equal(routes.length, 77, '76 canonical pages including Kyoto Station, omamori and donburi, and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -282,6 +282,18 @@ test('seasonal and reflection utility boundaries translate controls while preser
     } else {
       for (const el of doc.querySelectorAll('[data-label]')) assert.equal(el.dataset.label, 'FR When');
     }
+    dom.window.close();
+  }
+});
+
+test('Besides-Fuji reaches the registered Kyoto article in its own edition', () => {
+  for (const lang of ['en', 'zh-Hant']) {
+    const file = `${lang}/besides-fuji.html`;
+    const dom = new JSDOM(read(file), {url:'https://www.michikusa-travel.com/'+file});
+    const links = [...dom.window.document.querySelectorAll('a[href*="kyoto-station-views.html"]')];
+    assert.equal(links.length, 1);
+    assert.equal(new URL(links[0].href).pathname, `/${lang}/kyoto-station-views.html`);
+    if (lang === 'zh-Hant') assert.equal(links[0].textContent, '京都塔與京都車站');
     dom.window.close();
   }
 });

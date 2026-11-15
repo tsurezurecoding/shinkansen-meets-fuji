@@ -27,7 +27,7 @@
   const galleryLink = document.querySelector('[data-gallery-image-link]');
   if (galleryImage && galleryLink && !galleryLink.getAttribute('href')) {
     const enableGalleryZoom = () => {
-      galleryLink.removeAttribute('aria-hidden');galleryLink.tabIndex = 0;galleryLink.setAttribute('role','button');galleryLink.setAttribute('aria-label',document.documentElement.lang === 'en' ? 'Enlarge the window photograph' : '車窓写真を拡大する');
+      galleryLink.removeAttribute('aria-hidden');galleryLink.tabIndex = 0;galleryLink.setAttribute('role','button');galleryLink.setAttribute('aria-label',galleryImage.alt);
     };
     enableGalleryZoom();
     document.querySelectorAll('[data-gallery-thumb]').forEach(button => button.addEventListener('click',enableGalleryZoom));

@@ -6,7 +6,7 @@ import { JSDOM } from "jsdom";
 import { fileURLToPath } from "node:url";
 import { SANYO_DETAIL_CASTLES } from './shared/sanyo-castles.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES } from './shared/castle-locales.mjs';
-import { expandDeliveredSiteChromeHTML } from './shared/site-runtime-validation.mjs';
+import { expandDeliveredSiteChromeHTML, legacyEnglishInternalLinks } from './shared/site-runtime-validation.mjs';
 
 const appDir = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const origin = "https://www.michikusa-travel.com";
@@ -159,7 +159,7 @@ for (const [jaPath, enPath] of pairs) {
     if (!hasAlternate(html, "x-default", enPath)) {
       errors.push(`${urlPath}: x-default must point to English URL`);
     }
-    if (language === "en" && /(?:href|action)=["'][^"']*\?lang=en(?:[&#"']|$)/i.test(html)) {
+    if (language === "en" && legacyEnglishInternalLinks(html, origin + urlPath).length) {
       errors.push(`${urlPath}: legacy ?lang=en internal link remains`);
     }
   }
@@ -230,7 +230,9 @@ function hasLocalizedArticleHref(urlPath, href) {
   if (!CASTLE_LOCALE_LANGS.includes(lang)) return false;
   const url = new URL(href, origin + urlPath);
   const route = url.pathname.replace(new RegExp(`^/${lang}/`), '');
-  return url.origin === origin && supported(route).includes(lang) && href.startsWith(`../${lang}/spots/`);
+  const registeredArticle = spots.some(spot => spot.guideRoute?.[lang] === `${lang}/${route}`);
+  return url.origin === origin && supported(route).includes(lang) && fs.existsSync(diskPath(url.pathname))
+    && (href.startsWith(`../${lang}/spots/`) || registeredArticle);
 }
 for (const [urlPath, hrefPattern] of guideMobileSpotPages) {
   const html = readHTML(diskPath(urlPath));

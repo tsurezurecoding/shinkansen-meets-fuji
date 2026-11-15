@@ -3731,90 +3731,141 @@ const SPOTS = [
     viewpoint: { lat: 35.1439, lng: 138.6748 },
   },
   {
-    id: "fuji-paper-mills",
-    icon: "🏭",
-    ja: { name: "富士の製紙工場", area: "新富士のすぐ手前", hook: "富士のふもとは、紙の街。", story: "富士山が窓いっぱいに見えた直後、新富士に着く少し前。E席側の手前に、煙突とタンクとプラントが並ぶ工場地帯が現れます。富士市は日本有数の製紙の街で、なかでも日本製紙富士工場は市内2地区にまたがる大きな拠点です。富士山の伏流水と、富士川から引かれた大量の工業用水。この水が紙を漉くための水で、街の性格そのものになっています。煙突が手前、富士山が奥。工場と霊峰が一枚に収まるのは、この数十秒だけです。" },
-    en: { name: "Fuji's Paper Mills", area: "Just before Shin-Fuji", hook: "Fuji's foothills make paper.", story: "Right after Mt. Fuji fills the window, and shortly before Shin-Fuji, a belt of chimneys, tanks and plant structures slides past on the Seat E side. Fuji City is one of Japan's great papermaking towns, and the Nippon Paper Fuji Mill spreads across two districts of it. Groundwater filtered through Mt. Fuji, plus a large industrial water supply drawn from the Fuji River, is what the mills use to make paper — the water defines the character of the town. Chimneys in front, Mt. Fuji behind: the two share a single frame for only a few dozen seconds." },
-    pageTitle: {
-      ja: "新幹線から見える富士の製紙工場｜煙突と富士山が重なるE席の数十秒 | 新幹線の窓",
-      en: "Fuji's Paper Mills from the Shinkansen | Chimneys and Mt. Fuji from Seat E | Shinkansen Window",
+    "id": "fuji-paper-mills",
+    "icon": "🏭",
+    "ja": {
+      "name": "富士の製紙工場",
+      "area": "新富士のすぐ手前",
+      "hook": "富士のふもとは、紙の街。",
+      "story": "富士山が窓いっぱいに見えた直後、新富士に着く少し前。E席側の手前に、煙突とタンクとプラントが並ぶ工場地帯が現れます。富士市は日本有数の製紙の街で、なかでも日本製紙富士工場は市内2地区にまたがる大きな拠点です。富士山の伏流水と、富士川から引かれた大量の工業用水。この水が紙を漉くための水で、街の性格そのものになっています。煙突が手前、富士山が奥。工場と霊峰が一枚に収まるのは、この数十秒だけです。"
     },
-    pageHeading: {
-      ja: "煙突の向こうに富士山が立つ、製紙の街",
-      en: "A papermaking town, with Mt. Fuji standing behind the chimneys",
+    "en": {
+      "name": "Fuji's Paper Mills",
+      "area": "Just before Shin-Fuji",
+      "hook": "Fuji's foothills make paper.",
+      "story": "Right after Mt. Fuji fills the window, and shortly before Shin-Fuji, a belt of chimneys, tanks and plant structures slides past on the Seat E side. Fuji City is one of Japan's great papermaking towns, and the Nippon Paper Fuji Mill spreads across two districts of it. Groundwater filtered through Mt. Fuji, plus a large industrial water supply drawn from the Fuji River, is what the mills use to make paper — the water defines the character of the town. Chimneys in front, Mt. Fuji behind: the two share a single frame for only a few dozen seconds."
     },
-    pageHeadingChunks: {
-      ja: ["煙突の向こうに", "富士山が立つ、", "製紙の街"],
-      en: ["A papermaking town, with Mt. Fuji", "standing behind the chimneys"],
+    "pageTitle": {
+      "ja": "新幹線から見える富士の製紙工場｜煙突と富士山が重なるE席の数十秒 | 新幹線の窓",
+      "en": "Fuji's Paper Mills from the Shinkansen | Chimneys and Mt. Fuji from Seat E | Shinkansen Window"
     },
-    metaDescription: {
-      ja: "東海道新幹線の新富士手前、E席側に広がる富士市の製紙工場地帯を車窓写真と地図で紹介。日本製紙富士工場と、富士川から引かれた工業用水が街を作った背景を解説します。",
-      en: "Just before Shin-Fuji, the Seat E side opens onto Fuji City's paper mills. See them in a window photo and on a map, and learn how the Nippon Paper Fuji Mill and the Fuji River's industrial water built the town.",
+    "pageHeading": {
+      "ja": "煙突の向こうに富士山が立つ、製紙の街",
+      "en": "A papermaking town, with Mt. Fuji standing behind the chimneys"
     },
-    sectionHeading: {
-      ja: "なぜ富士山のふもとに製紙工場が集まる？",
-      en: "Why do paper mills cluster at the foot of Mt. Fuji?",
+    "pageHeadingChunks": {
+      "ja": [
+        "煙突の向こうに",
+        "富士山が立つ、",
+        "製紙の街"
+      ],
+      "en": [
+        "A papermaking town, with Mt. Fuji",
+        "standing behind the chimneys"
+      ]
     },
-    pageStory: {
-      ja: "紙を作るには、とにかく大量の水がいります。富士市には富士山の伏流水と、富士川の表流水がありました。この二つが街の運命を決めます。明治23年（1890年）、東京の富士製紙会社が潤井川流域の入山瀬に工場を建て、富士市域で初めて洋紙を作りました。翌年には日本で初めて自社製の砕木パルプの生産に成功し、安価で質のよい更紙を大量に供給します。明治28年には地元資本の原田製紙が、機械すき和紙を日本で最初に生産しました。以後、大正から昭和初期にかけて工場が次々と建ち、富士市は「紙のまち」になります。いまも市内には製紙関連の事業所が70社近くあり、その数は全国一。製造品出荷額に占めるパルプ・紙・紙加工品の割合は約3割に達します。車窓から見える日本製紙富士工場は、2015年に旧・吉永工場（富士市比奈）と旧・富士工場（富士市蓼原）が統合してできた拠点で、約5km離れた2地区にまたがります。新幹線から見えるのは、そのうち新富士寄りの富士地区です。",
-      en: "Making paper takes an enormous amount of water. Fuji City had two sources — groundwater filtered through Mt. Fuji, and surface water from the Fuji River — and between them they decided the town's fate. In 1890 the Tokyo-based Fuji Paper Company built a mill at Iriyamase on the Urui River, the first Western-style paper made anywhere in what is now Fuji City. The following year it became the first company in Japan to produce its own groundwood pulp, supplying cheap, good-quality newsprint in quantity. In 1895 the locally financed Harada Paper became the first in Japan to make machine-milled washi. Mills went up one after another through the Taisho and early Showa eras, and Fuji became the paper town. Nearly seventy paper-related establishments still operate here — more than in any other municipality in Japan — and pulp, paper and paper products account for roughly thirty per cent of the city's manufacturing shipments. The Nippon Paper Fuji Mill you see from the train took its present shape in 2015, when the former Yoshinaga and Fuji mills merged; it spans two districts about five kilometres apart. What passes your window is the Fuji district, the one nearer Shin-Fuji.",
+    "metaDescription": {
+      "ja": "東海道新幹線の新富士手前、E席側に広がる富士市の製紙工場地帯を車窓写真と地図で紹介。日本製紙富士工場と、富士川から引かれた工業用水が街を作った背景を解説します。",
+      "en": "Just before Shin-Fuji, the Seat E side opens onto Fuji City's paper mills. See them in a window photo and on a map, and learn how the Nippon Paper Fuji Mill and the Fuji River's industrial water built the town."
     },
-    explainer: {
-      heading: { ja: "車窓での見つけ方と、この街が作っているもの", en: "How to find it, and what this town actually makes" },
-      ja: [
+    "sectionHeading": {
+      "ja": "なぜ富士山のふもとに製紙工場が集まる？",
+      "en": "Why do paper mills cluster at the foot of Mt. Fuji?"
+    },
+    "pageStory": {
+      "ja": "紙を作るには、とにかく大量の水がいります。富士市には富士山の伏流水と、富士川の表流水がありました。この二つが街の運命を決めます。明治23年（1890年）、東京の富士製紙会社が潤井川流域の入山瀬に工場を建て、富士市域で初めて洋紙を作りました。翌年には日本で初めて自社製の砕木パルプの生産に成功し、安価で質のよい更紙を大量に供給します。明治28年には地元資本の原田製紙が、機械すき和紙を日本で最初に生産しました。以後、大正から昭和初期にかけて工場が次々と建ち、富士市は「紙のまち」になります。いまも市内には製紙関連の事業所が70社近くあり、その数は全国一。製造品出荷額に占めるパルプ・紙・紙加工品の割合は約3割に達します。車窓から見える日本製紙富士工場は、2015年に旧・吉永工場（富士市比奈）と旧・富士工場（富士市蓼原）が統合してできた拠点で、約5km離れた2地区にまたがります。新幹線から見えるのは、そのうち新富士寄りの富士地区です。",
+      "en": "Making paper takes an enormous amount of water. Fuji City had two sources — groundwater filtered through Mt. Fuji, and surface water from the Fuji River — and between them they decided the town's fate. In 1890 the Tokyo-based Fuji Paper Company built a mill at Iriyamase on the Urui River, the first Western-style paper made anywhere in what is now Fuji City. The following year it became the first company in Japan to produce its own groundwood pulp, supplying cheap, good-quality newsprint in quantity. In 1895 the locally financed Harada Paper became the first in Japan to make machine-milled washi. Mills went up one after another through the Taisho and early Showa eras, and Fuji became the paper town. Nearly seventy paper-related establishments still operate here — more than in any other municipality in Japan — and pulp, paper and paper products account for roughly thirty per cent of the city's manufacturing shipments. The Nippon Paper Fuji Mill you see from the train took its present shape in 2015, when the former Yoshinaga and Fuji mills merged; it spans two districts about five kilometres apart. What passes your window is the Fuji district, the one nearer Shin-Fuji."
+    },
+    "explainer": {
+      "heading": {
+        "ja": "車窓での見つけ方と、この街が作っているもの",
+        "en": "How to find it, and what this town actually makes"
+      },
+      "ja": [
         "三島〜新富士で富士山を見終わったあと、そのままE席側を見続けてください。新富士に着く1分ほど手前で、前景が田園から工場へ切り替わります。赤白に塗り分けられた高い煙突が目印で、その周りに円筒形のタンクや配管の塔が固まって立っています。",
         "この区間の面白さは、工場と富士山が同じ方向にあることです。富士山は線路の北側、工場も北側。つまりE席の窓ひとつで、手前に煙突、奥に霊峰という構図が成立します。晴れた日ならもちろん、雲が多い日でも、雲の切れ目から山影が覗くことがあります。",
         "この街が作っているものは、たいてい誰の家にもあります。全国で生産されるトイレットペーパーのおよそ4割が富士市製で、タオルペーパーや再生家庭紙も主力です。古紙配合率100%のトイレットペーパーが日常的に抄かれていて、衛生用紙では国内屈指のシェアを持ちます。窓の外を流れていく煙突とタンクは、今日あなたが使った紙の出どころかもしれません。",
         "水の話には続きがあります。ここから3分ほど先で、列車は富士川を渡ります。そのときE席側の川上に見える白いアーチの列が「富士川水管橋」で、橋そのものが直径2.2mの巨大な水道管です。ここを1日およそ108万トンの工業用水が流れ、行き先がまさにこの製紙工場地帯。工場と橋は別々の車窓に見えますが、一本の水の線でつながっています。",
-        "A席側は駿河湾・田子の浦の方向で、こちらにも港湾や別の工場群が見えます。ただし富士山と重ねて見られるのはE席側だけです。工場は24時間動いているので、早朝や夕暮れには煙突からの白い蒸気が光を受けて目立ち、夜間は構内の照明が広く灯って、暗い車窓のなかで工場だけが浮かび上がります。",
+        "A席側は駿河湾・田子の浦の方向で、こちらにも港湾や別の工場群が見えます。ただし富士山と重ねて見られるのはE席側だけです。工場は24時間動いているので、早朝や夕暮れには煙突からの白い蒸気が光を受けて目立ち、夜間は構内の照明が広く灯って、暗い車窓のなかで工場だけが浮かび上がります。"
       ],
-      en: [
+      "en": [
         "After the Mishima–Shin-Fuji stretch of Mt. Fuji, simply keep watching the Seat E side. About a minute before Shin-Fuji, the foreground switches from fields to industry. The landmark is a tall chimney painted in red and white bands, with cylindrical tanks and pipe towers clustered around it.",
         "What makes this stretch interesting is that the mills and the mountain lie in the same direction. Mt. Fuji is north of the line, and so are the mills — so a single Seat E window gives you chimneys in front and the sacred peak behind. On a clear day this is obvious, and even on cloudy days the silhouette often shows through a gap.",
         "What this town makes is probably somewhere in your house. Around forty per cent of all the toilet paper produced in Japan comes from Fuji City, alongside paper towels and recycled household tissue. Toilet paper made from one hundred per cent recovered paper is milled here as a matter of routine, and the city holds one of the country's leading shares in sanitary paper. The chimneys and tanks sliding past your window may well be where today's paper came from.",
         "The water story has a sequel. About three minutes further on, the train crosses the Fuji River. The row of white arches you see upstream on the Seat E side is the Fujikawa water pipe bridge, and the structure itself is a 2.2-metre-diameter water main. Roughly 1.08 million tonnes of industrial water flow through it every day, bound for exactly these mills. The works and the bridge look like two separate window views, but a single line of water connects them.",
-        "The Seat A side faces Suruga Bay and Tagonoura, where there are ports and other industrial plants. But only Seat E lets you see the works and Mt. Fuji together. The mills run around the clock, so at dawn and dusk the white plumes catch the light, and after dark the site lighting spreads out until the plant is often the only thing visible from the window.",
-      ],
+        "The Seat A side faces Suruga Bay and Tagonoura, where there are ports and other industrial plants. But only Seat E lets you see the works and Mt. Fuji together. The mills run around the clock, so at dawn and dusk the white plumes catch the light, and after dark the site lighting spreads out until the plant is often the only thing visible from the window."
+      ]
     },
-    guideHighlight: {
-      ja: "富士山を見終わってもE席側から目を離さないでください。新富士の1分ほど手前で、赤白の煙突を先頭に工場地帯が現れます。手前に煙突、奥に富士山という一枚は、この数十秒でしか撮れません。",
-      en: "Do not look away from Seat E once Mt. Fuji has passed. About a minute before Shin-Fuji the mills arrive, led by a red-and-white banded chimney. Chimneys in front and Mt. Fuji behind is a shot you only get in these few dozen seconds.",
+    "guideHighlight": {
+      "ja": "富士山を見終わってもE席側から目を離さないでください。新富士の1分ほど手前で、赤白の煙突を先頭に工場地帯が現れます。手前に煙突、奥に富士山という一枚は、この数十秒でしか撮れません。",
+      "en": "Do not look away from Seat E once Mt. Fuji has passed. About a minute before Shin-Fuji the mills arrive, led by a red-and-white banded chimney. Chimneys in front and Mt. Fuji behind is a shot you only get in these few dozen seconds."
     },
-    media: {
-      heading: { ja: "動画で見る富士の製紙工場", en: "Fuji's Paper Mills in motion" },
-      description: {
-        ja: "富士山のふもとに広がる製紙工場地帯を通過する車窓を、投稿動画でも見られます。",
-        en: "See Fuji City's paper mills pass beneath Mt. Fuji in this window video.",
+    "media": {
+      "heading": {
+        "ja": "動画で見る富士の製紙工場",
+        "en": "Fuji's Paper Mills in motion"
       },
-      videos: [
+      "description": {
+        "ja": "富士山のふもとに広がる製紙工場地帯を通過する車窓を、投稿動画でも見られます。",
+        "en": "See Fuji City's paper mills pass beneath Mt. Fuji in this window video."
+      },
+      "videos": [
         {
-          kind: "x",
-          url: "https://x.com/yukko27681822/status/2024325906232463473",
-          handle: "@yukko27681822",
-          accessibleTitle: { ja: "富士の製紙工場のX動画", en: "X video of Fuji's paper mills" },
-          fallbackText: { ja: "新富士手前の製紙工場地帯を写した車窓動画", en: "Window video of the paper mills just before Shin-Fuji" },
+          "kind": "x",
+          "url": "https://x.com/yukko27681822/status/2024325906232463473",
+          "handle": "@yukko27681822",
+          "accessibleTitle": {
+            "ja": "富士の製紙工場のX動画",
+            "en": "X video of Fuji's paper mills"
+          },
+          "fallbackText": {
+            "ja": "新富士手前の製紙工場地帯を写した車窓動画",
+            "en": "Window video of the paper mills just before Shin-Fuji"
+          }
         },
         {
-          kind: "x",
-          url: "https://x.com/heartwitt/status/1369529916513939458",
-          handle: "@heartwitt",
-          accessibleTitle: { ja: "富士山と製紙工場のX動画", en: "X video of Mt. Fuji and the paper mills" },
-          fallbackText: { ja: "富士山と製紙工場のコントラストを捉えた車窓動画", en: "Window video capturing the contrast between Mt. Fuji and the paper mills" },
-          comment: { ja: "富士山と工場とのコントラスト", en: "The contrast between Mt. Fuji and the paper mills." },
-        },
+          "kind": "x",
+          "url": "https://x.com/heartwitt/status/1369529916513939458",
+          "handle": "@heartwitt",
+          "accessibleTitle": {
+            "ja": "富士山と製紙工場のX動画",
+            "en": "X video of Mt. Fuji and the paper mills"
+          },
+          "fallbackText": {
+            "ja": "富士山と製紙工場のコントラストを捉えた車窓動画",
+            "en": "Window video capturing the contrast between Mt. Fuji and the paper mills"
+          },
+          "comment": {
+            "ja": "富士山と工場とのコントラスト",
+            "en": "The contrast between Mt. Fuji and the paper mills."
+          }
+        }
       ],
-      platformNote: { ja: "動画はXの公式埋め込みを利用しています。", en: "This video uses the official X embed." },
+      "platformNote": {
+        "ja": "動画はXの公式埋め込みを利用しています。",
+        "en": "This video uses the official X embed."
+      }
     },
-    minutesFromTokyo: 45, side: "E", category: "notable", confidence: "verified", durationSec: 20, spotting: "easy", visibleWhenCloudy: true, scene: "solar",
-    image: "images/20241129_fuji_paper_mills_OliverinJapan.jpg",
-    photoCredit: {
-      ja: "@OliverinJapan",
-      en: "@OliverinJapan",
-      url: "https://x.com/OliverinJapan/status/1862487767814738420",
-      date: "2024-11-29",
-      note: { ja: "赤白の煙突と富士山が重なる、富士の製紙工場", en: "Fuji's paper mills, with the red-and-white chimney framing Mt. Fuji." },
+    "minutesFromTokyo": 45,
+    "side": "E",
+    "category": "notable",
+    "confidence": "verified",
+    "durationSec": 20,
+    "spotting": "easy",
+    "visibleWhenCloudy": true,
+    "scene": "solar",
+    "image": "images/20241129_fuji_paper_mills_OliverinJapan.jpg",
+    "photoCredit": {
+      "ja": "@OliverinJapan",
+      "en": "@OliverinJapan",
+      "url": "https://x.com/OliverinJapan/status/1862487767814738420",
+      "date": "2024-11-29",
+      "note": {
+        "ja": "赤白の煙突と富士山が重なる、富士の製紙工場",
+        "en": "Fuji's paper mills, with the red-and-white chimney framing Mt. Fuji."
+      }
     },
-    photos: [
+    "photos": [
       {
         "src": "images/20260816_fuji_paper_mills_michikusa.jpg",
         "alt": {
@@ -3912,12 +3963,126 @@ const SPOTS = [
           "ja": "製紙工場の沈殿池に映る逆さ富士",
           "en": "Mt. Fuji reflected in a settling pond at the paper mill"
         }
+      },
+      {
+        "src": "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg",
+        "alt": {
+          "ja": "興亜工業本社工場の大煙突が虹色に光る夜の車窓",
+          "en": "The chimney at Koa Kogyo’s head office mill illuminated in rainbow colours at night"
+        },
+        "credit": {
+          "ja": "michikusa",
+          "en": "michikusa"
+        },
+        "date": "2026-11-15",
+        "timeOfDay": "night",
+        "width": 1920,
+        "height": 1080,
+        "note": {
+          "ja": "興亜工業の大煙突を彩る「虹煙 -KOUEN-」（2026年11月11〜23日）。",
+          "en": "KOUEN rainbow lighting on Koa Kogyo’s chimney, held 11–23 November 2026."
+        }
       }
     ],
-    relatedSpotIds: ["fuji", "fuji-pipe-sign", "fujikawa-bridge"],
-    references: [REFERENCES.fujiCityPaperTown, REFERENCES.fujiCityPaperHistory, REFERENCES.nipponPaperFuji, REFERENCES.nipponPaperFujiMerger],
-    map: { lat: 35.1550, lng: 138.6720, ja: "日本製紙 富士工場（富士地区・蓼原）", en: "Nippon Paper Fuji Mill, Fuji district" },
-    viewpoint: { lat: 35.143357, lng: 138.670535 },
+    "relatedSpotIds": [
+      "fuji",
+      "fuji-pipe-sign",
+      "fujikawa-bridge"
+    ],
+    "references": [
+      {
+        "label": {
+          "ja": "富士市: 「紙のまち」富士市",
+          "en": "Fuji City: 'the paper town' (Japanese only)"
+        },
+        "url": "https://www.city.fuji.shizuoka.jp/1035050000/miryoku/p007635.html"
+      },
+      {
+        "label": {
+          "ja": "富士市: 製紙業の歴史",
+          "en": "Fuji City: the history of its paper industry (Japanese only)"
+        },
+        "url": "https://www.city.fuji.shizuoka.jp/sangyo/c0304/fmervo00000084q7.html"
+      },
+      {
+        "label": {
+          "ja": "日本製紙グループ: 富士工場",
+          "en": "Nippon Paper Group: the Fuji Mill"
+        },
+        "url": "https://www.nipponpapergroup.com/about/sales/fuji/"
+      },
+      {
+        "label": {
+          "ja": "日本製紙: 吉永工場と富士工場の統合（2015年）",
+          "en": "Nippon Paper: the 2015 merger of the Yoshinaga and Fuji mills"
+        },
+        "url": "https://www.nipponpapergroup.com/news/year/2015/news150303003031.html"
+      },
+      {
+        "label": {
+          "ja": "興亜工業：大煙突ライトアップ（2026年11月11〜23日）",
+          "en": "Koa Kogyo: chimney lighting, 11–23 November 2026 (Japanese)"
+        },
+        "url": "https://www.koa-kogyo.co.jp/news/1451/"
+      },
+      {
+        "label": {
+          "ja": "パイフォトニクス：光の作品「虹煙 -KOUEN-」",
+          "en": "Pi Photonics: KOUEN rainbow light artwork (Japanese)"
+        },
+        "url": "https://prtimes.jp/main/html/rd/p/000000043.000041665.html"
+      }
+    ],
+    "map": {
+      "lat": 35.155,
+      "lng": 138.672,
+      "ja": "日本製紙 富士工場（富士地区・蓼原）",
+      "en": "Nippon Paper Fuji Mill, Fuji district"
+    },
+    "viewpoint": {
+      "lat": 35.143357,
+      "lng": 138.670535
+    },
+    "pageChapters": [
+      {
+        "id": "kouen",
+        "heading": {
+          "ja": "期間限定、虹色に光る大煙突",
+          "en": "A rainbow chimney for a limited season"
+        },
+        "paragraphs": {
+          "ja": [
+            "虹色に光るのは、興亜工業本社工場の高さ116.5mの大煙突。昼の写真で紹介する日本製紙富士工場とは別の工場です。青・緑・黄・赤へ続く光が縦に重なり、夜空へ蒸気が流れています。",
+            "光の作品「虹煙 -KOUEN-」は、富士市制60周年・興亜工業設立85周年と全国工場夜景サミットin富士に合わせた企画です。2026年11月11〜23日、17〜24時の期間限定ライトアップとして案内されています。光の演出はパイフォトニクス。写真は常設の照明とは異なる、この期間の景色です。"
+          ],
+          "en": [
+            "The rainbow-lit chimney belongs to Koa Kogyo’s head office mill and stands 116.5 metres tall. It is a different factory from the Nippon Paper Fuji Mill shown in the daytime photographs. Bands of blue, green, yellow and red rise above the plant, with a plume drifting into the night sky.",
+            "The light artwork KOUEN marks Fuji City’s 60th anniversary, Koa Kogyo’s 85th anniversary and the National Factory Night View Summit in Fuji. The announced run is 11–23 November 2026, from 17:00 to midnight, with lighting by Pi Photonics. This photograph records that limited installation, rather than a permanent illumination."
+          ]
+        },
+        "photos": [
+          {
+            "src": "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg",
+            "alt": {
+              "ja": "興亜工業本社工場の大煙突が虹色に光る夜の車窓",
+              "en": "The chimney at Koa Kogyo’s head office mill illuminated in rainbow colours at night"
+            },
+            "credit": {
+              "ja": "michikusa",
+              "en": "michikusa"
+            },
+            "date": "2026-11-15",
+            "timeOfDay": "night",
+            "width": 1920,
+            "height": 1080,
+            "note": {
+              "ja": "興亜工業の大煙突を彩る「虹煙 -KOUEN-」（2026年11月11〜23日）。",
+              "en": "KOUEN rainbow lighting on Koa Kogyo’s chimney, held 11–23 November 2026."
+            }
+          }
+        ]
+      }
+    ]
   },
   {
     id: "fujikawa-bridge",
@@ -4940,7 +5105,10 @@ const SPOTS = [
       }
     },
     "pageStoryLink": {
-      "en": { "route": "en/drinks.html#brand-pocari", "label": "Explore Japanese drinks for your journey →" }
+      "en": {
+        "route": "en/drinks.html#brand-pocari",
+        "label": "Explore Japanese drinks for your journey →"
+      }
     },
     "explainer": {
       "heading": {
@@ -4983,7 +5151,7 @@ const SPOTS = [
     },
     "photos": [
       {
-        "src": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+        "src": "images/20261115_pocari-fukuroi_night_15876_michikusa.jpg",
         "alt": {
           "ja": "夜の大塚製薬袋井工場で青く光るポカリスエットのロゴ",
           "en": "The blue-lit Pocari Sweat logo at Otsuka Pharmaceutical’s Fukuroi Plant at night"
@@ -4992,12 +5160,14 @@ const SPOTS = [
           "ja": "michikusa",
           "en": "michikusa"
         },
-        "date": "2026-10-18",
+        "date": "2026-11-15",
         "timeOfDay": "night",
         "note": {
-          "ja": "夜の走行中の撮影でぶれています。青く光るポカリスエットのロゴが目印です。",
-          "en": "This photograph is blurred because it was taken from a moving train at night. Look for the blue-lit Pocari Sweat logo."
-        }
+          "ja": "暗い工場の上に青く光るポカリスエットのロゴ。",
+          "en": "The blue Pocari Sweat logo above the dark factory."
+        },
+        "width": 1920,
+        "height": 1080
       },
       {
         "src": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
@@ -5018,8 +5188,12 @@ const SPOTS = [
     ],
     "references": [
       {
-        "languages": ["en"],
-        "label": { "en": "Otsuka Pharmaceutical: Pocari Sweat ingredients and product information" },
+        "languages": [
+          "en"
+        ],
+        "label": {
+          "en": "Otsuka Pharmaceutical: Pocari Sweat ingredients and product information"
+        },
         "url": "https://www.otsuka.co.jp/en/nutraceutical/products/pocarisweat/"
       },
       {
@@ -5048,7 +5222,10 @@ const SPOTS = [
           "ja": "大塚製薬：「ポカリスエット」のネーミングの由来",
           "en": "Otsuka Pharmaceutical: why it is called Pocari Sweat"
         },
-        "url": { "ja": "https://www.otsuka.co.jp/faq/pocarisweat/01.html", "en": "https://www.otsuka.co.jp/en/faq/pocarisweat/01.html" }
+        "url": {
+          "ja": "https://www.otsuka.co.jp/faq/pocarisweat/01.html",
+          "en": "https://www.otsuka.co.jp/en/faq/pocarisweat/01.html"
+        }
       },
       {
         "label": {
@@ -9294,6 +9471,69 @@ const SPOTS = [
     "viewpoint": {
       "lat": 34.969755,
       "lng": 135.905686
+    }
+  },
+  {
+    "id": "kyoto-tower",
+    "icon": "🗼",
+    "ja": {
+      "name": "京都タワーと京都駅前",
+      "area": "京都駅周辺",
+      "hook": "駅の向こうに、白い塔。",
+      "story": "京都駅付近、E席側の街並みの向こうに京都タワーが現れます。灯台を思わせる白い姿から、京都駅ビルの大きな空間、夜のライトアップまで。到着の目印を、もう少しゆっくり眺めてみましょう。"
+    },
+    "en": {
+      "name": "Kyoto Tower and Kyoto Station",
+      "area": "Around Kyoto Station",
+      "hook": "A white tower beyond the station.",
+      "story": "Kyoto Tower rises beyond the rooftops on the Seat E side near Kyoto Station. Its lighthouse-inspired shape, the station building and the changing night lights make this arrival view worth a closer look."
+    },
+    "guideRoute": {
+      "ja": "kyoto-station-views.html",
+      "en": "en/kyoto-station-views.html",
+      "zh-Hant": "zh-Hant/kyoto-station-views.html",
+      "zh-Hans": "zh-Hans/kyoto-station-views.html",
+      "ko": "ko/kyoto-station-views.html",
+      "fr": "fr/kyoto-station-views.html",
+      "de": "de/kyoto-station-views.html",
+      "es": "es/kyoto-station-views.html",
+      "it": "it/kyoto-station-views.html",
+      "th": "th/kyoto-station-views.html"
+    },
+    "minutesFromTokyo": 129.9,
+    "side": "E",
+    "category": "classic",
+    "confidence": "verified",
+    "durationSec": null,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "city",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "references": [
+      {
+        "label": {
+          "ja": "京都タワー",
+          "en": "Kyoto Tower"
+        },
+        "url": {
+          "ja": "https://www.kyoto-tower.jp/",
+          "en": "https://www.kyoto-tower.jp/en/"
+        }
+      }
+    ],
+    "map": {
+      "lat": 34.9875,
+      "lng": 135.7592,
+      "ja": "京都タワー",
+      "en": "Kyoto Tower"
+    },
+    "viewpoint": {
+      "lat": 34.98524,
+      "lng": 135.761889
     }
   },
   {

@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { commonTargetFailures, expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation, readSiteRuntimeSnapshot, withSiteRuntimeSnapshots } from './site-runtime-validation.mjs';
+import { legacyEnglishInternalLinks, commonTargetFailures, expandDeliveredSiteChromeHTML, renderSiteRuntimeForValidation, readSiteRuntimeSnapshot, withSiteRuntimeSnapshots } from './site-runtime-validation.mjs';
 
 const appDir = fileURLToPath(new URL('../../', import.meta.url));
 const actualRenderer = await fs.readFile(path.join(appDir, 'site-chrome.js'), 'utf8');
@@ -186,4 +186,13 @@ test('a newly added source template invalidates a snapshot and failures do not s
   }), /mount kinds differ/);
   await fs.unlink(path.join(f.root, 'scripts/templates/site-source/en/guide.html.tpl'));
   await withSiteRuntimeSnapshots(async () => assert.match(readSiteRuntimeSnapshot(options).html, /class="topbar"/));
+});
+
+test('English link validation preserves language menus and external store locators', () => {
+  const html = '<div class="lang-switch"><a href="/en/donburi.html?lang=en">English</a></div><a href="https://stores.yoshinoya.com/yoshinoya/?lang=en">Stores</a>';
+  assert.deepEqual(legacyEnglishInternalLinks(html, 'https://www.michikusa-travel.com/en/donburi.html'), []);
+});
+test('English link validation still rejects legacy internal article and form routes', () => {
+  const html = '<a href="../guide.html?lang=en#seats">Guide</a><form action="/start.html?lang=en"></form><a href="/en/zukan.html">Views</a>';
+  assert.deepEqual(legacyEnglishInternalLinks(html, 'https://www.michikusa-travel.com/en/donburi.html'), ['../guide.html?lang=en#seats', '/start.html?lang=en']);
 });

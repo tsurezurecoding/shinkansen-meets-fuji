@@ -541,7 +541,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   };
   // A new registered window spot changes the global catalogue, runtime
   // guidance, counts, stamps and every edition's shared navigation.
-  if (files.includes('data.js') && changes.some(({ path, status }) => status === 'A' && /^data\/spot-pages\/[^/]+\.ja\.js$/.test(path))) return {
+  if (files.includes('data.js') && changes.some(({ path, status }) => status === 'A' && (/^data\/spot-pages\/[^/]+\.ja\.js$/.test(path) || /^images\/stamps\/stamp_[^/]+\.svg$/.test(path)))) return {
     scope: 'full', needsDependencies: true, pagesCandidate: true,
     reason: 'A registered SPOTS addition affects all catalogue, runtime guidance, stamp, shared navigation and language consumers',
     commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs')],

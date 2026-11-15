@@ -545,6 +545,19 @@ const billboardRailNames = {
 for (const [lang, names] of Object.entries(billboardRailNames)) {
   Object.assign(GUIDE_RAIL_LOCALIZATION[lang].spots, { 'tamaruya-wasabi-sign': names[0], 'kizakura-otsukaresama-sign': names[1] });
 }
+const kyotoTowerRailNames = {
+  'zh-Hant': '京都塔與京都車站',
+  'zh-Hans': '京都塔与京都站',
+  ko: '교토 타워와 교토역',
+  fr: 'La tour de Kyoto et la gare de Kyoto',
+  de: 'Kyoto-Turm und Bahnhof Kyoto',
+  es: 'Torre de Kioto y estación de Kioto',
+  it: 'La Torre di Kyoto e la stazione di Kyoto',
+  th: 'เกียวโตทาวเวอร์และสถานีเกียวโต',
+};
+for (const [lang, name] of Object.entries(kyotoTowerRailNames)) {
+  if (GUIDE_RAIL_LOCALIZATION[lang]) GUIDE_RAIL_LOCALIZATION[lang].spots['kyoto-tower'] = name;
+}
 
 
 const GUIDE_MOBILE_SPOTS = [
@@ -617,6 +630,19 @@ const GUIDE_MOBILE_SPOT_HOOKS = {
     hamanako: "El tren parece deslizarse sobre el lago.", "solar-ark": "La nave solar que pronto desaparecerá.", toji: "Basta una mirada: has llegado a Kioto.",
   },
 };
+const kyotoTowerMobileHooks = {
+  'zh-Hant': '車站後方的白塔。',
+  'zh-Hans': '车站后方的白塔。',
+  ko: '역 너머로 보이는 흰 탑.',
+  fr: 'Une tour blanche au-delà de la gare.',
+  de: 'Ein weißer Turm hinter dem Bahnhof.',
+  es: 'Una torre blanca más allá de la estación.',
+  it: 'Una torre bianca oltre la stazione.',
+  th: 'หอคอยสีขาวที่มองเห็นพ้นสถานี',
+};
+for (const [lang, hook] of Object.entries(kyotoTowerMobileHooks)) {
+  GUIDE_MOBILE_SPOT_HOOKS[lang] = { ...GUIDE_MOBILE_SPOT_HOOKS[lang], 'kyoto-tower': hook };
+}
 
 function escapeHTML(value) {
   return String(value ?? "")

@@ -32,6 +32,7 @@
   ["everyday-japan.html","arenani.html","727-collection.html","spots/727-board.html","ferris-wheels.html","spots/hirakata-park-wheel.html","tokyo-kyoto-stations.html","spots/kirin-beer-factory.html","spots/sapporo-shizuoka-factory.html","spots/lotte-shiga.html","spots/nichiban-anjo.html","spots/shizuoka-tea-fields.html","spots/tokyo-tower.html","spots/ota-fuji.html","spots/solar-ark.html","spots/shimizu-port-chikyu.html","spots/torikai-train-depot.html","spots/maibara-test-trains.html","jr-pass-fuji.html","hanabi.html","spots/seta-karahashi.html","spots/musashi-kosugi-towers.html","spots/sagami-fuji.html","spots/left-fuji.html"].forEach(function (route) { episodes[route] = translated.slice(); });
   episodes['spots/maruko-bridge.html'] = translated.slice();
   episodes['spots/mikawa-oshima.html'] = translated.slice();
+  episodes['kyoto-station-views.html'] = translated.slice();
   var pattern = languages.filter(function (lang) { return lang !== 'ja'; }).concat(['ar']).join('|');
   function normalize(value) {
     var code = String(value || '').trim().replace(/_/g, '-').toLowerCase();

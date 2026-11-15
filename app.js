@@ -605,7 +605,7 @@ const GOOGLE_MAPS_EMBED_API_KEY = "AIzaSyDE3UdN_9m9cK5sLTlfuc7KElsfceYNwrs";
 function spotPageHref(spot) {
   if (spot?.isWheelCollection && spot.collectionPointId) return utilityHref(`ferris-wheels.html#${spot.collectionPointId}`);
   const routed = spot?.guideRoute?.[lang] || spot?.guideRoute?.[lang === "ja" ? "ja" : "en"];
-  if (routed) return utilityLocale && lang === utilityLocale.lang ? utilityHref(routed.replace(/^en\//, "")) : routed;
+  if (routed) return utilityLocale && lang === utilityLocale.lang ? utilityHref(routed.replace(new RegExp("^" + lang + "/"), "")) : routed;
   if (lang === "ja" && spot?.is727Collection) return "727-collection.html";
   const pageId = spot.guidePageId || spot.id;
   const anchor = spot.guideAnchor ? `#${spot.guideAnchor}` : "";

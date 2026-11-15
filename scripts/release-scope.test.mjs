@@ -569,3 +569,7 @@ test('AdSense ownership verification publishes only its root record and rejects 
   assert.notEqual(chooseReleaseScope([{path:'ads.txt',status:'D'}]).scope,'adsense-verification');
   assert.equal(chooseReleaseScope([change('scripts/release-scope.mjs')]).scope,'release-infrastructure');
 });
+
+test('registered article-route spots retain all global consumer checks without a spot payload', () => {
+  assert.equal(chooseReleaseScope([change('data.js'), {path:'images/stamps/stamp_kyoto-tower.svg',status:'A'}, {path:'kyoto-station-views.html',status:'M'}]).scope, 'full');
+});

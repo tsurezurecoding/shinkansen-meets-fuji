@@ -345,16 +345,16 @@
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
-    "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "en/spots/pocari-fukuroi.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
-    "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "spots/rakusai-egg-tanks.html": {
     "kind": "editorial article",
@@ -496,13 +496,17 @@
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "en/spots/fuji-paper-mills.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "spots/edo-castle-fujimi-yagura.html": {
     "kind": "editorial article",
@@ -2024,22 +2028,22 @@
   "kyoto-station-views.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-14",
-    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "BILLBOARDS-1111: Japanese Kyoto Tower and station-front article approved scope; window views and arrival walk",
     "image": "images/20260704_kyoto-tower_michikusa.webp",
     "imageRights": "own",
     "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
-    "imageAlt": "E席側の車窓から、京都駅の屋根越しに見える京都タワー"
+    "imageAlt": "京都市立芸術大学の波形屋根の向こうに立つ京都タワー、E席側の車窓"
   },
   "en/kyoto-station-views.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-11-14",
-    "modifiedEvidence": "BILLBOARDS-1111: bilingual article integration, unpublished combined-release candidate",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "BILLBOARDS-1111: English Kyoto Tower and station-front article aligned with accepted Japanese six-chapter edition and station guide link",
     "image": "images/20260704_kyoto-tower_michikusa.webp",
     "imageRights": "own",
     "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
-    "imageAlt": "Kyoto Tower rising above the station roof, seen from the Seat E window"
+    "imageAlt": "Kyoto Tower beyond the wavy roof of Kyoto City University of Arts, seen from Seat E"
   },
   "donburi.html": {
     "kind": "editorial article",
@@ -2210,5 +2214,213 @@
       "og",
       "article"
     ]
+  },
+  "de/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "Der Kyoto-Turm hinter dem gewellten Dach der Städtischen Kunstuniversität Kyoto, von der E-Seite gesehen"
+  },
+  "zh-Hant/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "從E席所見，京都塔矗立於京都市立藝術大學波浪形屋頂後方"
+  },
+  "zh-Hant/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "zh-Hant/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "zh-Hans/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "从E席所见，京都塔矗立在京都市立艺术大学波浪形屋顶后方"
+  },
+  "zh-Hans/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "zh-Hans/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "ko/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "E석에서 본 교토시립예술대학 물결 모양 지붕 너머의 교토 타워"
+  },
+  "ko/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "ko/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "fr/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "La tour de Kyoto derrière le toit ondulé de l’Université municipale des arts de Kyoto, vue du siège E"
+  },
+  "fr/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "fr/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "de/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "de/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "es/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "La Torre de Kioto tras el tejado ondulado de la Universidad de las Artes de la Ciudad de Kioto, vista desde el asiento E"
+  },
+  "es/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "es/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "it/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "La Torre di Kyoto oltre il tetto ondulato dell’Università municipale delle arti di Kyoto, vista dal posto E"
+  },
+  "it/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "it/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "th/kyoto-station-views.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "imageRights": "own",
+    "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
+    "imageAlt": "เกียวโตทาวเวอร์ที่อยู่พ้นหลังคาทรงคลื่นของมหาวิทยาลัยศิลปะเมืองเกียวโต มองจากที่นั่ง E"
+  },
+  "th/spots/pocari-fukuroi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
+  },
+  "th/spots/fuji-paper-mills.html": {
+    "kind": "editorial article",
+    "article": true,
+    "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 accepted Kyoto article and night photographs/KOUEN explanation synchronized across 10 languages"
   }
 }
