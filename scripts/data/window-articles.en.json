@@ -169,7 +169,7 @@
           "In the opening photograph, the white tower rises beyond the wavy roof of Kyoto City University of Arts. In the second view, only the observation room and tip appear above a hotel. As the train moves, the same tower reveals different lengths of its shaft against a changing foreground.",
           "East of the station, the tower and station building can appear in the same window. As you draw closer, the landmark above the city slips behind buildings, while the station’s walls and windows fill more of the view. That brief change is part of the pleasure of arriving."
         ],
-        "link":{"route":"https://www.kyoto-tower.jp/access/","label":"Locate the tower and the route from the station (Japanese) ↗"}
+        "link":{"route":"https://www.kyoto-tower.jp/en/access/","label":"Locate the tower and the route from the station ↗"}
       },
       {
         "id":"lighthouse",
@@ -179,7 +179,7 @@
           "In the daytime photograph, the white shaft stands clearly against the blue sky and draws your eye up to the round observation room. A form associated with watching over the sea becomes a landmark for people arriving in a city. Knowing that idea gives you a reason to look at the surrounding buildings as well as the tower itself.",
           "After dark, the tower shines above the lights of the buildings and streets. Alongside its usual white illumination, coloured lighting is used for occasions including awareness campaigns. The official site gives information about the day’s lighting."
         ],
-        "link":{"route":"https://www.kyoto-tower.jp/about/","label":"The tower’s design and lighting information (Japanese) ↗"}
+        "link":{"route":"https://www.kyoto-tower.jp/en/img/common/pamphlet_en.pdf","label":"The tower’s design and lighting (English PDF) ↗"}
       },
       {
         "id":"same-year",
@@ -189,7 +189,7 @@
           "The architect was Mamoru Yamada, known for buildings that use curves. Instead of a conventional steel frame inside the tower, joined steel plates form a supporting shell. The uninterrupted white surface is connected to how the tower is built.",
           "Look beyond the observation room to the slim shaft below it. The station roof reveals a network of separate structural members, while the tower presents a continuous surface. These two buildings beside the same station offer very different forms to compare."
         ],
-        "link":{"route":"https://www.kyoto-tower.jp/about/","label":"See the official structural illustration (Japanese) ↗"}
+        "link":{"route":"https://www.kyoto-tower.jp/en/img/common/pamphlet_en.pdf","label":"The tower’s history and structure (English PDF) ↗"}
       },
       {
         "id":"station-window",
@@ -224,12 +224,13 @@
       }
     ],
     "references":[
-      {"label":"Nidec Kyoto Tower: history, design and structure (Japanese)","href":"https://www.kyoto-tower.jp/about/"},
-      {"label":"Nidec Kyoto Tower: station access (Japanese)","href":"https://www.kyoto-tower.jp/access/"},
+      {"label":"Nidec Kyoto Tower: history, design, structure and lighting (English PDF)","href":"https://www.kyoto-tower.jp/en/img/common/pamphlet_en.pdf"},
+      {"label":"Nidec Kyoto Tower: station access","href":"https://www.kyoto-tower.jp/en/access/"},
+      {"label":"Nidec Kyoto Tower: detailed architecture and lighting information (Japanese)","href":"https://www.kyoto-tower.jp/about/"},
       {"label":"Kyoto Station Building: design and history (Japanese)","href":"https://www.kyoto-station-building.co.jp/about/history/"},
       {"label":"Kyoto Station Building: squares and Skyway (Japanese)","href":"https://www.kyoto-station-building.co.jp/service/square/"},
       {"label":"Kyoto Theatre: location and access (Japanese)","href":"https://www.kyoto-gekijo.com/access/"},
-      {"label":"Kyoto City University of Arts: the new campus architecture (Japanese)","href":"https://gallery.kcua.ac.jp/events/2024/10900/"}
+      {"label":"Kyoto City University of Arts: the new campus concept","href":"https://gallery.kcua.ac.jp/en/archives/2024/10814/"}
     ],
     "photoCopy":{
       "images/20260704_kyoto-tower_michikusa.webp":{"alt":"Kyoto Tower beyond the wavy roof of Kyoto City University of Arts, seen from Seat E","note":"Kyoto Tower beyond Kyoto City University of Arts."},
