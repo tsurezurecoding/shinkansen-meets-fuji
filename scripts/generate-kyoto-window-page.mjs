@@ -26,8 +26,6 @@ for (const lang of requestedLang ? [requestedLang] : ['ja','en']) {
   // Keep the reading article focused; the registered spot supplies journey guidance.
   doc.querySelector('.spot-page-rail')?.remove();
   const article=doc.querySelector('.spot-page-shell > article');
-  const toc=doc.createElement('nav');toc.className='spot-article-toc';toc.setAttribute('aria-label',lang==='ja'?'この記事の見どころ':'In this article');
-  toc.innerHTML=page.chapters.map(ch=>`<a href="#${ch.id}">${esc(ch.heading.replaceAll('｜',''))}</a>`).join('');article.prepend(toc);
   const related=doc.createElement('section');related.className='spot-page-section';related.id='toji';
   related.innerHTML=lang==='ja'?'<h2>反対側の窓には、東寺</h2>':'<h2>On the other side: To-ji</h2>';
   const tojiAlt=lang==='ja'?'A席側の車窓から、街の建物越しに見える東寺の五重塔':'To-ji’s five-storey pagoda above the surrounding buildings, seen from Seat A';
