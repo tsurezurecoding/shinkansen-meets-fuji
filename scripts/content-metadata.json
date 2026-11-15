@@ -345,16 +345,16 @@
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
-    "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "en/spots/pocari-fukuroi.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
     "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
-    "modified": "2026-10-11",
-    "modifiedEvidence": "2026-10-11_ride-editorial-release.md: approved October 10 ride photographs, coastal article separation/timing correction, Maibara test-train explanation or Hirakata/Sagiuchi guide update"
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "spots/rakusai-egg-tanks.html": {
     "kind": "editorial article",
@@ -496,13 +496,17 @@
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "en/spots/fuji-paper-mills.html": {
     "kind": "editorial article",
     "article": true,
     "editorialEvidence": "2026-10-08_discover-remaining.md: pageStory/explainer/chapters reviewed; original window observations and subject explanation form a reading.",
-    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap."
+    "dateReview": "Initial publication and latest substantive update not established; omit dates rather than infer them from Git timestamps or sitemap.",
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15 owner-supplied night photographs: KOUEN limited rainbow chimney lighting and Fukuroi Pocari logo replacement"
   },
   "spots/edo-castle-fujimi-yagura.html": {
     "kind": "editorial article",

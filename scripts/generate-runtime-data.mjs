@@ -67,7 +67,8 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 // November 10: four ride photographs, a Takeshima reference and a Kaguya video.
 // November 14: two owned-photo billboard points (62 total); measured 370,309 bytes.
 // The five-chapter articles are separate page payloads and stay out of this file.
-export const RUNTIME_DATA_BYTE_BUDGET = 364 * 1024;
+// November 15: the limited KOUEN night view adds one localized gallery photograph.
+export const RUNTIME_DATA_BYTE_BUDGET = 366 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。

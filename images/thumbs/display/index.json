@@ -2566,6 +2566,24 @@
       "thumbWidth": 960,
       "thumbHeight": 540
     },
+    "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg": {
+      "sha256": "9890eb47c7fcc77f15423925a196e8315ed3d3a215bb4d97e2d9a9f32dfb72f7",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261115_fuji-paper-mills_kouen_67349_michikusa.webp",
+      "thumbSha256": "aecc6b589f016e14c3f4647e72944920a0d482c1f795c5236198540c24bee7e6",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
+    "images/20261115_pocari-fukuroi_night_15876_michikusa.jpg": {
+      "sha256": "0bcd87469002318c1d2e5cc2eed65201bb53956cbdeb570937b98b656f1be83b",
+      "width": 1920,
+      "height": 1080,
+      "thumb": "images/thumbs/20261115_pocari-fukuroi_night_15876_michikusa.webp",
+      "thumbSha256": "4a95cad57d6df0399a77d66434b40c9fefb3e725c2a7518deebc25f815573a52",
+      "thumbWidth": 960,
+      "thumbHeight": 540
+    },
     "images/250111_hamanako_fuji_proboffin.jpg": {
       "sha256": "7d23bf3eb22a0bb2c1b297d9df15fe5e1d0def0a497fbecc496c76f5eeb7ba58",
       "width": 768,
@@ -7400,6 +7418,42 @@
       "height": 360,
       "quality": 86,
       "sha256": "dbbaa9d97ca89ef8efa1b00832594a0511e115c637883d9daa0cb8c7c31e6a3d"
+    },
+    "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-1920.webp": {
+      "source": "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg",
+      "sourceSha256": "9890eb47c7fcc77f15423925a196e8315ed3d3a215bb4d97e2d9a9f32dfb72f7",
+      "target": "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "299085dae600ffe11d5b7f1bb1606e279176e0adeee193c12db40d65c21dfaab"
+    },
+    "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-640.webp": {
+      "source": "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg",
+      "sourceSha256": "9890eb47c7fcc77f15423925a196e8315ed3d3a215bb4d97e2d9a9f32dfb72f7",
+      "target": "images/thumbs/display/20261115_fuji-paper-mills_kouen_67349_michikusa-9890eb47-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "659c1661ee737b78caa626ba0a13ef92d33ab7b488aeefd1fa2058c754c20dfd"
+    },
+    "images/thumbs/display/20261115_pocari-fukuroi_night_15876_michikusa-0bcd8746-1920.webp": {
+      "source": "images/20261115_pocari-fukuroi_night_15876_michikusa.jpg",
+      "sourceSha256": "0bcd87469002318c1d2e5cc2eed65201bb53956cbdeb570937b98b656f1be83b",
+      "target": "images/thumbs/display/20261115_pocari-fukuroi_night_15876_michikusa-0bcd8746-1920.webp",
+      "width": 1920,
+      "height": 1080,
+      "quality": 86,
+      "sha256": "df1742ee7107098b4f91513586dcf718144b50fb4319424d22f2642e2911d2fb"
+    },
+    "images/thumbs/display/20261115_pocari-fukuroi_night_15876_michikusa-0bcd8746-640.webp": {
+      "source": "images/20261115_pocari-fukuroi_night_15876_michikusa.jpg",
+      "sourceSha256": "0bcd87469002318c1d2e5cc2eed65201bb53956cbdeb570937b98b656f1be83b",
+      "target": "images/thumbs/display/20261115_pocari-fukuroi_night_15876_michikusa-0bcd8746-640.webp",
+      "width": 640,
+      "height": 360,
+      "quality": 86,
+      "sha256": "1eb5d53b12aa9c6976a2f1a2adcdc4700a21ad3a3588a2d1a2bed769b6f2cb2c"
     },
     "images/thumbs/display/250111_hamanako_fuji_proboffin-7d23bf3e-640.webp": {
       "source": "images/250111_hamanako_fuji_proboffin.jpg",

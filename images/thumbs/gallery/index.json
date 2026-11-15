@@ -2015,14 +2015,6 @@
     "quality": 72,
     "sha256": "9ae964e6746ac604c856ec7cb57e569762e11ce9119e8b838703fca4b14ef324"
   },
-  "images/thumbs/gallery/20261018_pocari-fukuroi_night_82493_michikusa.webp": {
-    "source": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
-    "sourceSha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
-    "width": 264,
-    "height": 198,
-    "quality": 72,
-    "sha256": "aba35043cd3d68caebecd1c6335c02bf0ee8301b344db30b3949fa2fce0ed394"
-  },
   "images/thumbs/gallery/20261018_shimizu-port-chikyu_night_8189_michikusa.webp": {
     "source": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",
     "sourceSha256": "a0187401a9d9a85ff78ae3c3f634d408f2d31a03ea08ae70e30b26befbe37e37",
@@ -2270,6 +2262,22 @@
     "height": 198,
     "quality": 72,
     "sha256": "4bbb52530d89b4e87bc447b8dfc73df6394cbaa1873489b0647eb89bc5d717ac"
+  },
+  "images/thumbs/gallery/20261115_fuji-paper-mills_kouen_67349_michikusa.webp": {
+    "source": "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg",
+    "sourceSha256": "9890eb47c7fcc77f15423925a196e8315ed3d3a215bb4d97e2d9a9f32dfb72f7",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "79e15e9691618b0f9fbd8d9bf90ce3d1863405c2bc23799a46bec2764cb75e2e"
+  },
+  "images/thumbs/gallery/20261115_pocari-fukuroi_night_15876_michikusa.webp": {
+    "source": "images/20261115_pocari-fukuroi_night_15876_michikusa.jpg",
+    "sourceSha256": "0bcd87469002318c1d2e5cc2eed65201bb53956cbdeb570937b98b656f1be83b",
+    "width": 264,
+    "height": 198,
+    "quality": 72,
+    "sha256": "7917ff76aafb97834ad901c59c821cab5e30c615544419fe5623b7f3344b8e92"
   },
   "images/thumbs/gallery/250111_hamanako_fuji_proboffin.webp": {
     "source": "images/250111_hamanako_fuji_proboffin.jpg",
