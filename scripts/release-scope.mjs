@@ -180,7 +180,33 @@ export function onlyArtworkSitemapChanged(before, after) {
   return before !== after && migrated === after;
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+export function onlyDonburiSitemapChanged(before, after) {
+  const addition = "    ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/donburi.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-15'})),\n";
+  return before !== after && after.split(addition).length === 2 && after.replace(addition, '') === before;
+}
+
+export function onlyDonburiLocaleRouteChanged(before, after) {
+  return before !== after && before.replace("['guide.html', 'omamori.html']", "['guide.html', 'omamori.html', 'donburi.html']") === after;
+}
+
+export function onlyDonburiLanguageRouteChanged(before, after) {
+  const route = '    "/donburi.html": "en/donburi.html",\n';
+  return before !== after && after.split(route).length === 2 && after.replace(route, '') === before;
+}
+
+export function onlyDonburiEverydayLayoutChanged(before, after) {
+  const oldRule = '.taste-grid{grid-template-columns:repeat(3,minmax(0,1fr))}';
+  const newRule = '.taste-grid{grid-template-columns:repeat(2,minmax(0,1fr))}';
+  return before !== after && before.split(oldRule).length === 2 && before.replace(oldRule, newRule) === after;
+}
+
+// Registering this article changes the shared route contract, not other article bodies.
+export function onlyDonburiAssetReferencesChanged(before, after) {
+  const clean = value => value.replace(/(["'(](?:\.\.\/)*(?:locales|language-router)\.js\?v=)[a-f0-9]{8}(?=["'&<\s])/g, '$1VERSION');
+  return before !== after && clean(before) === clean(after);
+}
+
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const adsenseVerificationFiles = new Set(['ads.txt', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
@@ -223,6 +249,59 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       node('scripts/generate-utility-locales.mjs','--route','start.html','--check'),node('scripts/generate-site-runtime.mjs','--check'),
       node('scripts/validate-train-select.mjs'),node('scripts/validate-site-navigation.mjs','--route','start.html'),
       node('scripts/check-content-manifest.mjs')]
+  };
+  const donburiFiles = new Set(['scripts/generate-donburi-page.mjs', 'scripts/donburi-page.test.mjs',
+    'scripts/shared/donburi-entry.mjs', 'donburi.html', 'donburi.css', 'donburi.js', 'everyday.css', 'data/donburi-photo-sources.json',
+    'scripts/generate-everyday-page.mjs', 'scripts/shared/everyday-related.mjs', 'scripts/generate-foods-page.mjs',
+    'scripts/generate-castle-locales.mjs', 'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
+    'scripts/generate-content-manifest.mjs', 'scripts/generate-spot-pages.mjs',
+    'scripts/validate-language-pages.mjs', 'scripts/content-metadata.json', 'locales.js', 'language-router.js',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'package.json', 'site-runtime.json',
+    'spot-page-runtime.json', 'content-manifest.json', 'sitemap.xml', 'data/donburi/README.md']);
+  const donburiLanguages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
+  const donburiRelatedRoutes = ['donburi.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html',
+    'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'everyday-japan.html'];
+  for (const lang of donburiLanguages) {
+    donburiFiles.add(`data/donburi/${lang}.json`);
+    donburiFiles.add(`shared-ui/${lang.toLowerCase()}.shell.js`);
+    for (const route of donburiRelatedRoutes) {
+      donburiFiles.add(`shared-ui/${lang.toLowerCase()}.rail-${route.replace(/\.html$/, '').replaceAll('/', '-')}.js`);
+      if (lang !== 'ja') donburiFiles.add(`${lang}/${route}`);
+    }
+  }
+  for (const image of ['gyudon-basic', 'gyudon-cheese', 'gyudon-takana', 'kaisendon', 'katsudon', 'magurodon',
+    'oyakodon', 'storefront-matsuya', 'storefront-sukiya', 'storefront-yoshinoya', 'unaju']) donburiFiles.add(`images/donburi/${image}.webp`);
+  let donburiPackage = !files.includes('package.json');
+  if (!donburiPackage && packageBefore && packageAfter) {
+    const before = typeof packageBefore === 'string' ? JSON.parse(packageBefore) : structuredClone(packageBefore);
+    const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : structuredClone(packageAfter);
+    if (after.scripts) {
+      for (const key of ['build:pages', 'preflight:spots']) if (after.scripts[key])
+        after.scripts[key] = after.scripts[key].replace(/node scripts\/generate-donburi-page\.mjs(?: --check)? && /, '');
+      if (after.scripts['test:generator']) after.scripts['test:generator'] = after.scripts['test:generator'].replace('scripts/donburi-page.test.mjs ', '');
+    }
+    donburiPackage = isDeepStrictEqual(before, after);
+  }
+  const donburiSourceChanges = (!files.includes('scripts/generate-spot-pages.mjs') || donburiSitemapOnly) &&
+    (!files.includes('locales.js') || donburiLocalesOnly) && (!files.includes('language-router.js') || donburiRouterOnly) &&
+    (!files.includes('everyday.css') || donburiEverydayLayoutOnly);
+  if (files.includes('scripts/generate-donburi-page.mjs') && donburiPackage && donburiSourceChanges &&
+    changes.every(({path: file, status}) => status !== 'D' && (donburiFiles.has(file) ||
+      status === 'M' && file.endsWith('.html') && donburiAssetVersionOnly(file)))) return {
+    scope: 'donburi-everyday', needsDependencies: true, pagesCandidate: true,
+    reason: 'Donburi in ten existing editions, six photo stories at its end and nine-language reciprocal Everyday Japan links, Japanese available only through language selection, route-contract version references, and Web distribution.',
+    commands: [...syntax, node('--test', 'scripts/donburi-page.test.mjs', 'scripts/release-scope.test.mjs',
+      'scripts/locales-contract.test.mjs', 'scripts/food-country-locales.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/drinks-locales.test.mjs'),
+      ...['generate-donburi-page', 'generate-foods-page', 'generate-everyday-page', 'generate-drinks-page', 'generate-beer-page',
+        'generate-countryside-page', 'generate-drinks-locales', 'generate-omamori-page', 'generate-site-chrome', 'generate-site-runtime']
+        .map(name => node(`scripts/${name}.mjs`, '--check')),
+      node('scripts/generate-castle-locales.mjs', '--route', 'foods.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'countryside.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'spots/gamagori-greenhouses.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'everyday-japan.html', '--check'),
+      node('--input-type=module', '-e', "import fs from 'node:fs'; import assert from 'node:assert/strict'; import {planSpotPage,finalPageOutput} from './scripts/generate-spot-pages.mjs'; const page=planSpotPage('gamagori-greenhouses','en',{requireExisting:true,preserveHead:true}); assert.equal(fs.readFileSync(page.outputPath,'utf8'),finalPageOutput(page.outputPath,page.generatedHTML));"),
+      node('scripts/validate-site-navigation.mjs', ...donburiRelatedRoutes.flatMap(route => ['--route', route])),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]
   };
   const omamoriFiles=new Set(['scripts/generate-omamori-page.mjs','scripts/omamori-page.test.mjs','scripts/shared/omamori-entry.mjs',
     'omamori.html','en/omamori.html','omamori.css','omamori.js','data/omamori/ja.json','data/omamori/en.json','data/omamori-photo-sources.json',
@@ -625,6 +704,11 @@ export function createReleasePlan(base) {
   const dataBefore = dataChanged ? git('show', `${base}:data.js`) : '';
   const dataAfter = dataChanged ? git('show', `${head}:data.js`) : '';
   const plan = chooseReleaseScope(changes, {
+    donburiSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyDonburiSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
+    donburiLocalesOnly: changes.some(c => c.path === 'locales.js' && c.status === 'M') && onlyDonburiLocaleRouteChanged(git('show', `${base}:locales.js`), git('show', `${head}:locales.js`)),
+    donburiRouterOnly: changes.some(c => c.path === 'language-router.js' && c.status === 'M') && onlyDonburiLanguageRouteChanged(git('show', `${base}:language-router.js`), git('show', `${head}:language-router.js`)),
+    donburiEverydayLayoutOnly: changes.some(c => c.path === 'everyday.css' && c.status === 'M') && onlyDonburiEverydayLayoutChanged(git('show', `${base}:everyday.css`), git('show', `${head}:everyday.css`)),
+    donburiAssetVersionOnly: file => onlyDonburiAssetReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     artworkSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyArtworkSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
     rideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter),
     dayRideDataOnly: dataChanged && onlyRideMediaDataChanged(dataBefore, dataAfter, true),

@@ -2,9 +2,125 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
+import { onlyDonburiSitemapChanged, onlyDonburiLocaleRouteChanged, onlyDonburiLanguageRouteChanged, onlyDonburiAssetReferencesChanged, onlyDonburiEverydayLayoutChanged } from './release-scope.mjs';
 import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+test('donburi permits only the exact two-column Everyday Japan taste-card adjustment', () => {
+  const rule = '.taste-grid{grid-template-columns:repeat(3,minmax(0,1fr))}';
+  const before = '.everyday-grid{display:grid;gap:20px}' + rule + '.country-grid{grid-template-columns:repeat(2,minmax(0,1fr))}';
+  const after = before.replace(rule, rule.replace('repeat(3,', 'repeat(2,'));
+  assert(onlyDonburiEverydayLayoutChanged(before, after));
+  assert(!onlyDonburiEverydayLayoutChanged(before, before));
+  assert(!onlyDonburiEverydayLayoutChanged(before, after.replace('gap:20px', 'gap:30px')));
+  assert(!onlyDonburiEverydayLayoutChanged(before, before.replace(rule, rule.replace('repeat(3,', 'repeat(4,'))));
+  assert(!onlyDonburiEverydayLayoutChanged(before + rule, after + rule));
+  const files = ['scripts/generate-donburi-page.mjs', 'everyday.css'].map(change);
+  assert.notEqual(chooseReleaseScope(files).scope, 'donburi-everyday');
+  assert.equal(chooseReleaseScope(files, {donburiEverydayLayoutOnly: onlyDonburiEverydayLayoutChanged(before, after)}).scope, 'donburi-everyday');
+  assert.notEqual(chooseReleaseScope(files, {donburiEverydayLayoutOnly: onlyDonburiEverydayLayoutChanged(before, after + 'unrelated')}).scope, 'donburi-everyday');
+});
+
+test('donburi scope covers ten editions and only its nine non-Japanese series entry languages', () => {
+  const files = ['scripts/generate-donburi-page.mjs', 'data/donburi/en.json', 'data/donburi/ja.json',
+    'donburi.html', 'en/donburi.html', 'th/donburi.html', 'th/foods.html', 'de/everyday-japan.html',
+    'images/donburi/storefront-sukiya.webp', 'shared-ui/ja.shell.js', 'shared-ui/th.rail-donburi.js', 'content-manifest.json'];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'donburi-everyday');
+  assert(plan.needsDependencies && plan.pagesCandidate);
+  assert(plan.commands.some(command => command.includes('scripts/donburi-page.test.mjs')));
+  assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
+  assert(plan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs')).includes('donburi.html'));
+  assert(!plan.commands.some(command => command.includes('verify') || command.includes('build:full')));
+  for (const unrelated of ['app.js', 'data.js', 'style.css', 'foods.html', 'en/guide.html', 'ar/donburi.html',
+    'data/donburi/ar.json', 'images/donburi/unrelated.webp', 'shared-ui/en.rail-castles.js'])
+    assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'donburi-everyday', unrelated);
+  assert.notEqual(chooseReleaseScope([...files.map(change), {path: 'en/foods.html', status: 'D'}]).scope, 'donburi-everyday');
+});
+
+test('donburi reciprocal links cover each companion article and only the affected localized consumers', () => {
+  const routes = ['donburi.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html',
+    'spots/gamagori-greenhouses.html', 'omamori.html', 'everyday-japan.html'];
+  const languages = ['en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
+  const files = ['scripts/generate-donburi-page.mjs', 'scripts/generate-castle-locales.mjs',
+    'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
+    ...languages.flatMap(lang => routes.map(route => `${lang}/${route}`))];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'donburi-everyday');
+  for (const testFile of ['scripts/donburi-page.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/drinks-locales.test.mjs'])
+    assert(plan.commands.some(command => command.includes(testFile)), testFile);
+  for (const generator of ['generate-drinks-page', 'generate-beer-page', 'generate-countryside-page', 'generate-drinks-locales', 'generate-omamori-page'])
+    assert(plan.commands.some(command => command.includes(`scripts/${generator}.mjs`) && command.includes('--check')), generator);
+  const navigation = plan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs'));
+  for (const route of routes) assert(navigation.includes(route), route);
+  assert(plan.commands.some(command => command.some(argument => argument.includes("planSpotPage('gamagori-greenhouses','en'"))), 'Check only the English greenhouse spot');
+  assert(!plan.commands.some(command => command.includes('scripts/generate-spot-pages.mjs')), 'Do not generate or check unrelated spot articles');
+  for (const unrelated of ['en/spots/fuji.html', 'fr/guide.html', 'shared-ui/en.rail-castles.js'])
+    assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'donburi-everyday', unrelated);
+});
+
+test('Japanese companion-card promotion cannot enter the donburi reciprocal-link scope', () => {
+  const files = ['scripts/generate-donburi-page.mjs', 'en/omamori.html'].map(change);
+  const before = '<script src="locales.js?v=01234567"></script><main><p>Existing content</p></main>';
+  const after = before.replace('</main>', '<a href="donburi.html">New Japanese promotion</a></main>');
+  for (const route of ['foods.html', 'drinks.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'])
+    assert.notEqual(chooseReleaseScope([...files, change(route)], {
+      donburiAssetVersionOnly: () => onlyDonburiAssetReferencesChanged(before, after)
+    }).scope, 'donburi-everyday', route);
+});
+
+test('donburi allows only route-contract version references in other HTML pages', () => {
+  const before = '<script src="../../locales.js?v=01234567"></script><script src="language-router.js?v=89abcdef"></script><p>Original article</p>';
+  const after = before.replace('01234567', 'abcdef12').replace('89abcdef', '23456789');
+  assert(onlyDonburiAssetReferencesChanged(before, after));
+  assert(!onlyDonburiAssetReferencesChanged(before, before));
+  assert(!onlyDonburiAssetReferencesChanged(before, after.replace('Original article', 'Unrelated change')));
+  assert(!onlyDonburiAssetReferencesChanged('<script src="app.js?v=01234567"></script>', '<script src="app.js?v=abcdef12"></script>'));
+  const files = ['scripts/generate-donburi-page.mjs', 'en/guide.html'].map(change);
+  assert.notEqual(chooseReleaseScope(files, {assetVersionOnly: () => true}).scope, 'donburi-everyday');
+  assert.equal(chooseReleaseScope(files, {donburiAssetVersionOnly: () => onlyDonburiAssetReferencesChanged(before, after)}).scope, 'donburi-everyday');
+  assert.notEqual(chooseReleaseScope([{path: 'scripts/generate-donburi-page.mjs', status: 'A'}, {path: 'unrelated.html', status: 'A'}],
+    {donburiAssetVersionOnly: () => true}).scope, 'donburi-everyday');
+});
+
+test('donburi source guards reject unrelated sitemap, locale and redirect behavior', () => {
+  const addition = "    ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/donburi.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-15'})),\n";
+  const beforeMap = 'function sitemapXML() {\n  return [\n  ];\n}\n';
+  const afterMap = beforeMap.replace('  ];', addition + '  ];');
+  assert(onlyDonburiSitemapChanged(beforeMap, afterMap));
+  assert(!onlyDonburiSitemapChanged(beforeMap, afterMap.replace("lang!=='ja'", "lang==='ja'")));
+  assert(!onlyDonburiSitemapChanged(beforeMap, afterMap + 'unrelated'));
+  const beforeLocale = "var routes = utility.concat(castles, extra, ['guide.html', 'omamori.html'], storyRoutes);";
+  const afterLocale = beforeLocale.replace("'omamori.html'", "'omamori.html', 'donburi.html'");
+  assert(onlyDonburiLocaleRouteChanged(beforeLocale, afterLocale));
+  assert(!onlyDonburiLocaleRouteChanged(beforeLocale, afterLocale.replace('guide.html', 'changed.html')));
+  const beforeRouter = 'var routes = {\n    "/omamori.html": "en/omamori.html",\n};';
+  const afterRouter = beforeRouter.replace('\n};', '\n    "/donburi.html": "en/donburi.html",\n};');
+  assert(onlyDonburiLanguageRouteChanged(beforeRouter, afterRouter));
+  assert(!onlyDonburiLanguageRouteChanged(beforeRouter, afterRouter.replace('en/omamori.html', 'en/changed.html')));
+  const files = ['scripts/generate-donburi-page.mjs', 'scripts/generate-spot-pages.mjs', 'locales.js', 'language-router.js'].map(change);
+  const options = {donburiSitemapOnly: true, donburiLocalesOnly: true, donburiRouterOnly: true};
+  assert.equal(chooseReleaseScope(files, options).scope, 'donburi-everyday');
+  for (const key of Object.keys(options)) assert.notEqual(chooseReleaseScope(files, {...options, [key]: false}).scope, 'donburi-everyday');
+});
+
+test('donburi package extension adds its generator and tests without weakening existing checks', () => {
+  const before = {scripts: {'build:pages': 'node scripts/generate-omamori-page.mjs && node other.mjs',
+    'preflight:spots': 'node scripts/generate-omamori-page.mjs --check && node other.mjs --check',
+    'test:generator': 'node --test scripts/omamori-page.test.mjs'}, devDependencies: {jsdom: '30.0.1'}};
+  const after = structuredClone(before);
+  after.scripts['build:pages'] = 'node scripts/generate-donburi-page.mjs && ' + after.scripts['build:pages'];
+  after.scripts['preflight:spots'] = 'node scripts/generate-donburi-page.mjs --check && ' + after.scripts['preflight:spots'];
+  after.scripts['test:generator'] = after.scripts['test:generator'].replace('node --test ', 'node --test scripts/donburi-page.test.mjs ');
+  const files = ['scripts/generate-donburi-page.mjs', 'package.json'].map(change);
+  const options = {packageBefore: JSON.stringify(before), packageAfter: JSON.stringify(after)};
+  assert.equal(chooseReleaseScope(files, options).scope, 'donburi-everyday');
+  after.scripts['preflight:spots'] = 'node scripts/generate-donburi-page.mjs --check && node replacement.mjs';
+  assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(after)}).scope, 'donburi-everyday');
+  after.devDependencies.jsdom = '99.0.0';
+  assert.equal(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(after)}).scope, 'full');
+});
 
 test('floating badge visibility scope checks both invitation modes without accepting unrelated changes',()=>{
  const files=['scripts/shared/android-app-invite.css','scripts/android-app-invite.test.mjs','android-app-invite.js','site-runtime.json','content-manifest.json'];

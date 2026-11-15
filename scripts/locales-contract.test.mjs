@@ -10,7 +10,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 76, '75 canonical pages including Kyoto Station, and the Ibuki A-seat alias');
+  assert.equal(routes.length, 77, '76 canonical pages including Kyoto Station, omamori and donburi, and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -96,10 +96,11 @@ test('edition registry loads before synchronous routing and after the base URL',
     assert.equal(withLocaleRegistry(html, '../'), html);
   }
 });
-test('new editions match the 34 active pages and Arabic stays guide-only', () => {
-  assert.equal(locales.routes.length, 34);
-  assert.equal(new Set(locales.routes).size, 34);
+test('new editions match the 35 active pages and Arabic stays guide-only', () => {
+  assert.equal(locales.routes.length, 35);
+  assert.equal(new Set(locales.routes).size, 35);
   assert.deepEqual(locales.supported('omamori.html'),locales.languages);
+  assert.deepEqual(locales.supported('donburi.html'),locales.languages, 'Donburi is available in all ten editions, including Japanese through the language menu');
   for (const route of locales.routes) for (const lang of locales.translated) assert.ok(locales.supported(route).includes(lang), lang + '/' + route);
   assert.ok(locales.supported('guide.html').includes('ar'));
   assert.ok(!locales.supported('start.html').includes('ar'));

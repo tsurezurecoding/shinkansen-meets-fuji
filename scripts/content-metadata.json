@@ -2045,6 +2045,176 @@
     "imageEvidence": "BILLBOARDS-1111: owner-supplied photographs; original source retained in project photo records",
     "imageAlt": "Kyoto Tower beyond the wavy roof of Kyoto City University of Arts, seen from Seat E"
   },
+  "donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "薄切りの牛肉と玉ねぎをごはんにのせた、吉野家の牛丼。",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "en/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "Thinly sliced beef and onions over rice in a patterned Yoshinoya bowl.",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hant/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "吉野家花紋碗裡，薄牛肉片與洋蔥鋪在白飯上。",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "fr/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "Fines tranches de bœuf et oignons sur du riz dans un bol Yoshinoya décoré.",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "de/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "Dünne Rindfleischscheiben und Zwiebeln auf Reis in einer gemusterten Yoshinoya-Schüssel.",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "es/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "Láminas finas de carne de res y cebolla sobre arroz en un cuenco decorado de Yoshinoya.",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "zh-Hans/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "吉野家花纹碗里，薄牛肉片与洋葱铺在白饭上。",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "it/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "Fettine sottili di manzo e cipolla sul riso in una ciotola decorata di Yoshinoya.",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "ko/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "무늬가 있는 요시노야 그릇의 밥 위에 얇은 소고기와 양파를 올린 모습.",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
+  "th/donburi.html": {
+    "kind": "editorial article",
+    "article": true,
+    "modified": "2026-11-15",
+    "modifiedEvidence": "2026-11-15_donburi-everyday.md: owner-requested multilingual Everyday Japan integration, unpublished",
+    "image": "images/donburi/gyudon-basic.webp",
+    "imageRights": "permission",
+    "imageEvidence": "data/donburi-photo-sources.json commons-gyudon / Commons CC0 dedication",
+    "imageAlt": "เนื้อวัวสไลซ์บางและหอมใหญ่บนข้าวในชามลายของโยชิโนยะ",
+    "imageCredit": "Ocdp / Wikimedia Commons / CC0",
+    "imageSourceUrl": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg",
+    "imagePermissionEvidence": "https://commons.wikimedia.org/wiki/File:Gyuu-don_001.jpg#Licensing",
+    "imagePermissions": [
+      "og",
+      "article"
+    ]
+  },
   "de/kyoto-station-views.html": {
     "kind": "editorial article",
     "article": true,
