@@ -9474,6 +9474,69 @@ const SPOTS = [
     }
   },
   {
+    "id": "kyoto-tower",
+    "icon": "🗼",
+    "ja": {
+      "name": "京都タワーと京都駅前",
+      "area": "京都駅周辺",
+      "hook": "駅の向こうに、白い塔。",
+      "story": "京都駅付近、E席側の街並みの向こうに京都タワーが現れます。灯台を思わせる白い姿から、京都駅ビルの大きな空間、夜のライトアップまで。到着の目印を、もう少しゆっくり眺めてみましょう。"
+    },
+    "en": {
+      "name": "Kyoto Tower and Kyoto Station",
+      "area": "Around Kyoto Station",
+      "hook": "A white tower beyond the station.",
+      "story": "Kyoto Tower rises beyond the rooftops on the Seat E side near Kyoto Station. Its lighthouse-inspired shape, the station building and the changing night lights make this arrival view worth a closer look."
+    },
+    "guideRoute": {
+      "ja": "kyoto-station-views.html",
+      "en": "en/kyoto-station-views.html",
+      "zh-Hant": "zh-Hant/kyoto-station-views.html",
+      "zh-Hans": "zh-Hans/kyoto-station-views.html",
+      "ko": "ko/kyoto-station-views.html",
+      "fr": "fr/kyoto-station-views.html",
+      "de": "de/kyoto-station-views.html",
+      "es": "es/kyoto-station-views.html",
+      "it": "it/kyoto-station-views.html",
+      "th": "th/kyoto-station-views.html"
+    },
+    "minutesFromTokyo": 129.9,
+    "side": "E",
+    "category": "classic",
+    "confidence": "verified",
+    "durationSec": null,
+    "spotting": "moderate",
+    "visibleWhenCloudy": true,
+    "scene": "city",
+    "image": "images/20260704_kyoto-tower_michikusa.webp",
+    "photoCredit": {
+      "ja": "michikusa",
+      "en": "michikusa"
+    },
+    "references": [
+      {
+        "label": {
+          "ja": "京都タワー",
+          "en": "Kyoto Tower"
+        },
+        "url": {
+          "ja": "https://www.kyoto-tower.jp/",
+          "en": "https://www.kyoto-tower.jp/en/"
+        }
+      }
+    ],
+    "map": {
+      "lat": 34.9875,
+      "lng": 135.7592,
+      "ja": "京都タワー",
+      "en": "Kyoto Tower"
+    },
+    "viewpoint": {
+      "lat": 34.98524,
+      "lng": 135.761889
+    }
+  },
+  {
     id: "toji",
     routeNote: { en: "Toward Shin-Osaka: look from the left-hand window (Seat A) just after leaving Kyoto. Toward Tokyo: look from the right-hand window (Seat A) just before arriving at Kyoto. The main viewing point is west of Kyoto Station; buildings can interrupt the view." },
     guideIntro: { en: "The main viewing point is between Kyoto and Shin-Osaka. Watch just after leaving Kyoto toward Shin-Osaka, or just before arriving at Kyoto toward Tokyo. Use the map below to place the pagoda beside the line." },

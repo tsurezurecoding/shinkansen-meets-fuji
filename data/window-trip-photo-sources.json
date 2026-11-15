@@ -429,6 +429,12 @@
       "reason": ""
     },
     {
+      "id": "kyoto-tower",
+      "state": "excluded",
+      "representativeIds": [],
+      "reason": "京都駅前の景色は、京都タワーと京都駅前の記事で紹介しています。"
+    },
+    {
       "id": "toji",
       "state": "included",
       "representativeIds": [
@@ -891,15 +897,15 @@
     {
       "stopId": "pocari-fukuroi",
       "kind": "scenery",
-      "src": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+      "src": "images/20261115_pocari-fukuroi_night_15876_michikusa.jpg",
       "credit": "michikusa",
-      "date": "2026-10-18",
-      "note": "夜の走行中の撮影でぶれています。青く光るポカリスエットのロゴが目印です。",
+      "date": "2026-11-15",
+      "note": "暗い工場の上に青く光るポカリスエットのロゴ。",
       "alt": "夜の大塚製薬袋井工場で青く光るポカリスエットのロゴ",
       "light": "night",
-      "sha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
-      "bytes": 187737,
-      "lightEvidence": "2026-10-18 owner night photograph and GPX review"
+      "sha256": "0bcd87469002318c1d2e5cc2eed65201bb53956cbdeb570937b98b656f1be83b",
+      "bytes": 154357,
+      "lightEvidence": "2026-11-15 owner night photograph and source review"
     },
     {
       "stopId": "hamanako",
@@ -1762,7 +1768,7 @@
   ],
   "mapCredit": "地理院タイル（淡色地図を加工）",
   "sourceHashes": {
-    "data.js": "6899445c15d6ee248e99988a1c7e67e7f6a779ec5866f589a55b5d16a1025ba8",
+    "data.js": "f89cc9270bf2a90d8f632a5bbdee6859254637d7b4860294eae09ca69efbf9de",
     "track.js": "fa004fe2dbd9edb935d6128b6338f34ca19869ccaf070ae6f74a2200423a0a79"
   }
 }

@@ -299,7 +299,7 @@
     "hirakata-park-wheel": "20261004_hirakata_park_wheel_night_37994_michikusa.jpg",
     "torikai-train-depot": "20260629_torikai_train_depot_night_michikusa.jpg",
     "kaguya-no-akari": "20261018_kaguya-no-akari_night_1747_michikusa.jpg",
-    "pocari-fukuroi": "20261018_pocari-fukuroi_night_82493_michikusa.jpg",
+    "pocari-fukuroi": "20261115_pocari-fukuroi_night_15876_michikusa.jpg",
     "fujikawa-bridge": "20261018_fuji-sky-view_night_0_michikusa.jpg"
   },
   "recommended": [
@@ -348,6 +348,10 @@
     {
       "id": "kizakura-otsukaresama-sign",
       "reason": "この看板の写真は、スポット記事で紹介しています。"
+    },
+    {
+      "id": "kyoto-tower",
+      "reason": "京都駅前の景色は、京都タワーと京都駅前の記事で紹介しています。"
     }
   ],
   "aliases": [

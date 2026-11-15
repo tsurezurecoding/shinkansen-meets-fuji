@@ -2278,15 +2278,6 @@
       "thumbWidth": 704,
       "thumbHeight": 528
     },
-    "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg": {
-      "sha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
-      "width": 1920,
-      "height": 1080,
-      "thumb": "images/thumbs/20261018_pocari-fukuroi_night_82493_michikusa.webp",
-      "thumbSha256": "3482234456fe4d5387ef4e9ebf335f8dfbf76e9875b1b5dc22499a93345e7aed",
-      "thumbWidth": 480,
-      "thumbHeight": 270
-    },
     "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg": {
       "sha256": "a0187401a9d9a85ff78ae3c3f634d408f2d31a03ea08ae70e30b26befbe37e37",
       "width": 1920,
@@ -6815,33 +6806,6 @@
       "height": 480,
       "quality": 86,
       "sha256": "8953187aa35e14f026934a25d6c52588c56e4dc662c18d1d662022b88158ef7b"
-    },
-    "images/thumbs/display/20261018_pocari-fukuroi_night_82493_michikusa-97090b9d-1920.webp": {
-      "source": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
-      "sourceSha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
-      "target": "images/thumbs/display/20261018_pocari-fukuroi_night_82493_michikusa-97090b9d-1920.webp",
-      "width": 1920,
-      "height": 1080,
-      "quality": 86,
-      "sha256": "5883ebe1108b78852c4d589b5de3029cfd74fff0a194c074d8b8b9306160e222"
-    },
-    "images/thumbs/display/20261018_pocari-fukuroi_night_82493_michikusa-97090b9d-640.webp": {
-      "source": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
-      "sourceSha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
-      "target": "images/thumbs/display/20261018_pocari-fukuroi_night_82493_michikusa-97090b9d-640.webp",
-      "width": 640,
-      "height": 360,
-      "quality": 86,
-      "sha256": "5dcbae552ef2986c76c897f36f427f5e63408c0b1801516dd1e113ed51b65aa4"
-    },
-    "images/thumbs/display/20261018_pocari-fukuroi_night_82493_michikusa-97090b9d-960.webp": {
-      "source": "images/20261018_pocari-fukuroi_night_82493_michikusa.jpg",
-      "sourceSha256": "97090b9de79dd1017e8962e4579e9bc63c905177d45dbabdd1f726ccc922f898",
-      "target": "images/thumbs/display/20261018_pocari-fukuroi_night_82493_michikusa-97090b9d-960.webp",
-      "width": 960,
-      "height": 540,
-      "quality": 86,
-      "sha256": "871b7ebdc028da127319297543673cd913197e6dfcdeb2f4a92c9a770fa304a3"
     },
     "images/thumbs/display/20261018_shimizu-port-chikyu_night_8189_michikusa-a0187401-1920.webp": {
       "source": "images/20261018_shimizu-port-chikyu_night_8189_michikusa.jpg",

@@ -68,7 +68,7 @@ export const BUILD_ONLY_SPOT_FIELDS = [
 // November 14: two owned-photo billboard points (62 total); measured 370,309 bytes.
 // The five-chapter articles are separate page payloads and stay out of this file.
 // November 15: the limited KOUEN night view adds one localized gallery photograph.
-export const RUNTIME_DATA_BYTE_BUDGET = 366 * 1024;
+export const RUNTIME_DATA_BYTE_BUDGET = 367 * 1024;
 
 // 観覧車コレクションのうち、ferris-wheels.html の本文・出典リンクだけが読むフィールド。
 // タイムラインは ja / en の name・area・hook・story しか使わない。

@@ -6,7 +6,7 @@ import { JSDOM, VirtualConsole } from 'jsdom';
 
 const root = new URL('../', import.meta.url);
 const read = file => fs.readFileSync(new URL(file, root), 'utf8');
-const languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko'];
+const languages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
 
 async function fixture({ lang = 'ja', hash = '' } = {}) {
   const events = [], errors = [], navigation = [];
@@ -50,7 +50,8 @@ for (const lang of languages) test(`${lang} gallery uses article anchors, locali
       assert.ok(link, `${card.id} has a real article link`);
       assert.equal(link.getAttribute('href'), f.run(`spotPageHref(findSpotById(${JSON.stringify(card.dataset.spot)}))`));
       assert.ok(fs.existsSync(new URL(new URL(link.href).pathname.slice(1), root)), `${link.href} exists`);
-      assert.ok(link.getAttribute('aria-label').includes(link.textContent));
+      // The optional English-edition badge is separate from the spot name.
+      assert.ok(link.getAttribute('aria-label').includes(link.firstChild.textContent), `${card.id}: accessible spot name`);
       assert.equal(link.querySelector('a, button, [tabindex]'), null);
       assert.equal(card.hasAttribute('data-more'), false);
       assert.equal(card.hasAttribute('tabindex'), false);
@@ -63,6 +64,7 @@ for (const lang of languages) test(`${lang} gallery uses article anchors, locali
     }
     const castle = f.w.document.querySelector('#spot-kiyosu [data-gallery-detail]');
     assert.equal(castle.getAttribute('href'), `${lang === 'ja' ? '' : `${lang}/`}spots/kiyosu.html`);
+    assert.equal(f.w.document.querySelector('#spot-kyoto-tower [data-gallery-detail]').getAttribute('href'), `${lang === 'ja' ? '' : `${lang}/`}kyoto-station-views.html`);
     assert.deepEqual(f.errors, []);
   } finally { f.close(); }
 });
