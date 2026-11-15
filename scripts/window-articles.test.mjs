@@ -18,7 +18,7 @@ const ids=['tamaruya-wasabi-sign','kizakura-otsukaresama-sign'];
 test('six editions retain the article, clean photo copy and owned opening photographs',()=>{
   for(const lang of ['ja','en'])for(const id of [...ids,'kyoto-station-views']){
     const page=id==='kyoto-station-views'?kyotoWindowArticle(lang):payload(id,lang);
-    assert.equal(page.chapters.length,id==='kyoto-station-views' && lang==='ja'?6:5,`${id}/${lang}`);
+    assert.equal(page.chapters.length,id==='kyoto-station-views'?6:5,`${id}/${lang}`);
     assert.ok(page.gallery.every(photo=>photo.credit==='michikusa'));
     for(const photo of [...page.gallery,...page.chapters.flatMap(ch=>ch.photos)]){
       assert.equal(photo.date,'');assert.ok(photo.alt);
@@ -49,6 +49,12 @@ test('English food, sake and Kyoto architecture routes connect in both direction
     dom.window.close();
   }
   const page=kyotoWindowArticle('en');assert.equal(page.minutes,null);assert.equal(page.map,null);assert.equal(page.guide,null);
+  assert.deepEqual(page.chapters.map(ch=>ch.id),kyotoWindowArticle('ja').chapters.map(ch=>ch.id));
+  const stationPhoto=page.chapters.find(ch=>ch.id==='station-window').photos[0];
+  assert.match(stationPhoto.alt,/Kyoto Theatre/);
+  assert.doesNotMatch(stationPhoto.alt+stationPhoto.note,/[ぁ-ゖァ-ヺ]/);
+  assert.match(page.hero.alt,/Kyoto City University of Arts/);
+  assert.doesNotMatch(page.story+page.chapters.flatMap(ch=>ch.paragraphs).join(' ')+page.hero.alt+page.hero.note,/above the station roof/i);
 });
 
 test('the standalone Kyoto editions have usable chrome, credits and local assets',()=>{

@@ -149,24 +149,34 @@
   },
   "kyoto-station-views": {
     "id":"kyoto-station-views",
-    "name":"Kyoto Tower and the station roof",
-    "heading":"Kyoto’s white tower and its great station roof",
+    "name":"Kyoto Tower and Kyoto Station",
+    "heading":"Kyoto Tower and Kyoto Station",
     "headingChunks":[],
     "hook":"Take a second look at your arrival.",
     "area":"Kyoto Station and the Karasuma side",
     "sideLabel":"Seat E for the tower",
-    "sectionHeading":"Two ways to arrive in Kyoto",
-    "story":"Temples and traditional houses may be the buildings you first associate with Kyoto. At its railway gateway, a slender white tower and a vast roof of glass and metal offer a different view of the city. Both are part of the experience of arriving here.\n\nFind the top of the tower from the train, look up into the station’s central space, then see the tower again from the street. Changing your distance and height reveals different relationships between the same buildings. There is a little architecture to explore before you set off for the temples.",
-    "readingLayout":{"version":1,"compactGuide":false,"visibility":{"label":"Where to look","value":"The train window and the north side","note":"The tower is on the Seat E side. Station-square views are seen after leaving the train."}},
+    "sectionHeading":"A white tower and a station that welcome you to Kyoto",
+    "story":"As the Shinkansen approaches or leaves Kyoto, look out on the Seat E side for a slender white tower with a round observation room. Beside it, the station building stretches along the tracks, with a hotel and theatre inside. There is something to notice at Kyoto’s gateway before your first temple visit.\n\nFind the tower from the train and watch the station’s long facade come into view. If you get off in Kyoto, head to the north, or Karasuma, side to look up at the tower, then explore the station’s concourse and squares. Seeing the same place from the train and on foot brings its shapes and connections with the city into focus.",
+    "readingLayout":{"version":1,"compactGuide":false,"visibility":{"label":"Where to look","value":"Seat E, near Kyoto Station","note":"Look for the top of the tower between buildings. The station square and interior are places to explore after leaving the train."}},
     "facts":{"labels":["Location","Seat side","When to look","Photos"],"timing":"Around arrival at or departure from Kyoto","photoUnit":"photos"},
     "photoHeading":"Kyoto Tower from the Seat E window",
     "chapters":[
       {
+        "id":"window-and-street",
+        "heading":"Near Kyoto Station, turn to the Seat E window",
+        "paragraphs":[
+          "Kyoto Tower stands north of the station, on the Seat E side of the Tokaido Shinkansen. Travelling from Tokyo towards Shin-Osaka, watch before arriving at Kyoto; travelling towards Tokyo, watch after departure. Nearby buildings and platform roofs can hide parts of the tower, so remember its round observation room and red tip first.",
+          "In the opening photograph, the white tower rises beyond the wavy roof of Kyoto City University of Arts. In the second view, only the observation room and tip appear above a hotel. As the train moves, the same tower reveals different lengths of its shaft against a changing foreground.",
+          "East of the station, the tower and station building can appear in the same window. As you draw closer, the landmark above the city slips behind buildings, while the station’s walls and windows fill more of the view. That brief change is part of the pleasure of arriving."
+        ],
+        "link":{"route":"https://www.kyoto-tower.jp/access/","label":"Locate the tower and the route from the station (Japanese) ↗"}
+      },
+      {
         "id":"lighthouse",
         "heading":"A lighthouse for a city",
         "paragraphs":[
-          "Nidec Kyoto Tower stands opposite the station’s north, or Karasuma, side. It reaches 131 metres above ground. Its official account describes the white form as a lighthouse: the tiled roofs of the city were imagined as waves around it.",
-          "In the daytime photograph, the white shaft rises against the sky towards the circular observation room. Knowing the lighthouse idea invites you to look at the surrounding roofs as well as the tower itself.",
+          "The 131-metre Nidec Kyoto Tower stands opposite the station’s north, or Karasuma, entrance. Its slender white form represents a lighthouse in a city without a coast. The operator describes Kyoto’s traditional tiled rooftops as waves, with the tower shining over the city.",
+          "In the daytime photograph, the white shaft stands clearly against the blue sky and draws your eye up to the round observation room. A form associated with watching over the sea becomes a landmark for people arriving in a city. Knowing that idea gives you a reason to look at the surrounding buildings as well as the tower itself.",
           "After dark, the tower shines above the lights of the buildings and streets. Alongside its usual white illumination, coloured lighting is used for occasions including awareness campaigns. The official site gives information about the day’s lighting."
         ],
         "link":{"route":"https://www.kyoto-tower.jp/about/","label":"The tower’s design and lighting information (Japanese) ↗"}
@@ -177,15 +187,25 @@
         "paragraphs":[
           "The observation room opened on 28 December 1964, the year the Tokaido Shinkansen began running and Tokyo hosted the Olympic Games. Kyoto Central Post Office had previously occupied the site; its relocation opened the way for a new tourism and industry centre.",
           "The architect was Mamoru Yamada, known for buildings that use curves. Instead of a conventional steel frame inside the tower, joined steel plates form a supporting shell. The uninterrupted white surface is connected to how the tower is built.",
-          "Look beyond the observation room to the long shaft below it. The tower presents a continuous surface, while the station roof reveals many individual members. Their different forms are a reason to look at both."
+          "Look beyond the observation room to the slim shaft below it. The station roof reveals a network of separate structural members, while the tower presents a continuous surface. These two buildings beside the same station offer very different forms to compare."
         ],
         "link":{"route":"https://www.kyoto-tower.jp/about/","label":"See the official structural illustration (Japanese) ↗"}
+      },
+      {
+        "id":"station-window",
+        "heading":"Beside the tower, the station’s long facade",
+        "paragraphs":[
+          "Once you have found Kyoto Tower, lower your gaze. East of the station, the hotel wing and Kyoto Theatre come into view from the train. In the photograph, the theatre’s name, 京都劇場, appears on the grey wall. Rows of hotel windows rise above it, and the tower’s observation room is visible to the right.",
+          "This is a station for boarding trains, but it is also a substantial building with places to stay, eat and watch a performance. The rows of windows and broad walls hint at those other parts of city life gathered around a railway gateway.",
+          "Another Shinkansen may pass across the foreground. Rather than trying to see the whole building at once, use a detail such as the hotel windows or theatre lettering to get a sense of its scale. The great interior space is something to discover after you get off."
+        ],
+        "link":{"route":"https://www.kyoto-gekijo.com/access/","label":"Find Kyoto Theatre inside the station building (Japanese) ↗"}
       },
       {
         "id":"station-roof",
         "heading":"A valley under glass",
         "paragraphs":[
-          "The present station building opened in 1997 and is Kyoto’s fourth station building. Its architect was Hiroshi Hara. The official design account explains how Kyoto’s street grid informed the plan, with gateways corresponding to Karasuma and Muromachi streets.",
+          "After leaving the train, step into the station building to find a large interior space hidden from the window view. Opened in 1997, this is Kyoto’s fourth station building, designed by Hiroshi Hara. The official design account explains how the street grid of ancient Kyoto informed the plan, with gateways corresponding to Karasuma and Muromachi streets.",
           "The central concourse is imagined as a valley, with terraced spaces extending to the east and west. Glass and metal cover the central space. Follow the view from the people and walkways up to the roof and the scale of this indoor landscape becomes clearer.",
           "A roof can disappear into the background when you are hurrying through. Pause to follow the lines of the structure and the daylight coming through the glass. This is another building shaped by ideas about Kyoto, before the temple visits begin."
         ],
@@ -193,34 +213,28 @@
       },
       {
         "id":"change-viewpoint",
-        "heading":"See the same gateway from another height",
+        "heading":"Step out at Karasuma and compare the views",
         "paragraphs":[
-          "Inside the station, there are places to change your viewpoint. Karasuma-koji Square on the fourth floor is one place to see the tower. The tenth-floor Skyway crosses between the east and west sides: a 185-metre passage at a height of 45 metres.",
-          "From the street you look up at the tower; from inside you look up at the roof; higher in the building you can look out across the northern cityscape. The relationship between tower and town changes as you move.",
-          "If you have time between journeys, the station itself can be a small place to explore. The official square guide lists locations and access hours."
+          "To walk towards the tower, head for the Karasuma side and Central Entrance on the north of the station. The Shinkansen is on the south side; the north–south public passage connects the two. The tower’s official two-minute walk starts at the north-side JR Central Entrance, rather than at the Shinkansen platform.",
+          "Outside, the tower you glimpsed between buildings becomes something to look up at from the street. Let your eye move from the white tower to its neighbours, then turn back towards the station. The long facade seen from the tracks and the large entrance on the Karasuma side give the same building two quite different faces.",
+          "For a higher viewpoint, Karasuma-koji Square on the station building’s fourth floor, east side, is one place to see the tower. The tenth-floor Skyway connects the east and west sides along a 185-metre passage, 45 metres above ground. Check the official square guide for current access hours.",
+          "By day, notice the tower’s white outline; after dark, its light above the streets. With a little time between journeys, try changing your height and distance around the station. The landmark from your train window becomes a first view to enjoy on foot in Kyoto."
         ],
-        "link":{"route":"en/tokyo-kyoto-stations.html#look-around","label":"Look more closely at Kyoto Station’s architecture →"}
-      },
-      {
-        "id":"window-and-street",
-        "heading":"From a brief window view to the Karasuma side",
-        "paragraphs":[
-          "Look for Kyoto Tower on the Seat E side. In one position, its shaft and top rise above the station roof; in another, only the observation room and red-and-white tip appear over a hotel. Learning the shape of the top helps you find these brief views between buildings.",
-          "To walk towards the tower after leaving the train, head for the north, Karasuma or Central Entrance side. The Shinkansen is on the south side, connected by the north–south public passage. The tower’s official two-minute walk is measured from Kyoto Station’s north-side Central Entrance, rather than from the Shinkansen platform.",
-          "A tower glimpsed from the train becomes a building you can look up at from the street. On the other side of the train, Toji’s five-storey pagoda offers another Kyoto landmark. Its viewing position and photographs are covered in the separate Toji article."
-        ],
-        "link":{"route":"https://www.kyoto-tower.jp/access/","label":"Find the route from the Shinkansen gates (Japanese) ↗"}
+        "link":{"route":"en/tokyo-kyoto-stations.html#look-around","label":"Explore Kyoto Station’s spaces in our Tokyo & Kyoto station guide →"}
       }
     ],
     "references":[
       {"label":"Nidec Kyoto Tower: history, design and structure (Japanese)","href":"https://www.kyoto-tower.jp/about/"},
       {"label":"Nidec Kyoto Tower: station access (Japanese)","href":"https://www.kyoto-tower.jp/access/"},
       {"label":"Kyoto Station Building: design and history (Japanese)","href":"https://www.kyoto-station-building.co.jp/about/history/"},
-      {"label":"Kyoto Station Building: squares and Skyway (Japanese)","href":"https://www.kyoto-station-building.co.jp/service/square/"}
+      {"label":"Kyoto Station Building: squares and Skyway (Japanese)","href":"https://www.kyoto-station-building.co.jp/service/square/"},
+      {"label":"Kyoto Theatre: location and access (Japanese)","href":"https://www.kyoto-gekijo.com/access/"},
+      {"label":"Kyoto City University of Arts: the new campus architecture (Japanese)","href":"https://gallery.kcua.ac.jp/events/2024/10900/"}
     ],
     "photoCopy":{
-      "images/20260704_kyoto-tower_michikusa.webp":{"alt":"Kyoto Tower rising above the station roof, seen from the Seat E window","note":"Kyoto Tower above the station roof."},
+      "images/20260704_kyoto-tower_michikusa.webp":{"alt":"Kyoto Tower beyond the wavy roof of Kyoto City University of Arts, seen from Seat E","note":"Kyoto Tower beyond Kyoto City University of Arts."},
       "images/20260816_kyoto-tower_michikusa.webp":{"alt":"The upper part of Kyoto Tower appearing above a hotel roof","note":"The observation room and tip above a hotel."},
+      "images/20260704_kyoto-station-building_michikusa_11000.jpg":{"alt":"Kyoto Station’s hotel wing and Kyoto Theatre from the train, with Kyoto Tower to the right","note":"The station’s hotel wing and theatre, with Kyoto Tower behind and another Shinkansen in front."},
       "images/kyoto-tower-day-2022-indo-kujaku.webp":{"alt":"The white Kyoto Tower above the bus terminal on the Karasuma side","note":"Looking up at Kyoto Tower from the station square."},
       "images/kyoto-tower-night-2025-fotointheworld.webp":{"alt":"Kyoto Tower illuminated above the night-time streets, seen from the station building","note":"The tower after dark, from the station building."},
       "images/stations/kyoto-station-atrium-martin-falbisoner.jpg":{"alt":"The glass and metal roof above Kyoto Station’s central concourse","note":"Look up into the station’s central space."}
