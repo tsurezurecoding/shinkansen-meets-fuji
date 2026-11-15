@@ -67,6 +67,8 @@ const contentFiles = [
   "en/everyday-japan.html", "everyday.css", "everyday-related.css",
   ...locales.languages.map(lang=>`${lang==='ja'?'':lang+'/'}omamori.html`), "omamori.css", "omamori.js", "data/omamori-photo-sources.json",
   ...await walkFiles("images/omamori", p => /\.jpg$/.test(p)),
+  ...locales.languages.map(lang=>`${lang==='ja'?'':lang+'/'}donburi.html`), "donburi.css", "donburi.js", "data/donburi-photo-sources.json",
+  ...await walkFiles("images/donburi", p => /\.webp$/.test(p)),
   ...await walkFiles("images/foods", p => /\.webp$/.test(p)),
   "kyoto-station-views.html", "en/kyoto-station-views.html", "window-articles.css", "window-articles.js",
   "images/20260704_kyoto-tower_michikusa.webp", "images/20260816_kyoto-tower_michikusa.webp",

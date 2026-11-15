@@ -1875,6 +1875,7 @@ function sitemapXML() {
     { loc: `${siteRoot}/en/castles.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-03" },
     { loc: `${siteRoot}/arenani.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-09-21" },
     ...languages.map(lang=>({loc:`${siteRoot}/${lang==='ja'?'':lang+'/'}omamori.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-14'})),
+    ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/donburi.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-15'})),
     { loc: `${siteRoot}/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-23" },
     { loc: `${siteRoot}/en/foods.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },
     { loc: `${siteRoot}/en/everyday-japan.html`, priority: "0.7", changefreq: "monthly", lastmod: "2026-10-11" },

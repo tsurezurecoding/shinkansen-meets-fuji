@@ -1,4 +1,5 @@
 import {omamoriEverydaySection} from './shared/omamori-entry.mjs';
+import {addDonburiHubCard} from './shared/donburi-entry.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -8,6 +9,7 @@ import {ANALYTICS} from './shared/feature-page.mjs';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 let html=fs.readFileSync(path.join(root,'scripts/templates/everyday-en.html.tpl'),'utf8').replace(/\r/g,'').replace(/@@ASSET:([^@]+)@@/g,(_,file)=>assetVersion(file));
 html=html.replace('<section class="everyday-more"',omamoriEverydaySection()+'<section class="everyday-more"');
+html=addDonburiHubCard(html);
 html=html.replace('</head>',ANALYTICS.withEmbeddedGuard+'\n</head>');
 html=enhanceContentHead(html,'en/everyday-japan.html',root);
 const output=path.join(root,'en/everyday-japan.html');
