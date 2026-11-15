@@ -69,7 +69,10 @@ const RAIL_LOCALIZATION = (() => {
   const source = fs.readFileSync(path.join(appDir, "scripts", "generate-spot-pages.mjs"), "utf8");
   const block = source.match(/const GUIDE_RAIL_LOCALIZATION = \{[\s\S]*?\n\};/);
   if (!block) throw new Error("GUIDE_RAIL_LOCALIZATION not found in generate-spot-pages.mjs");
-  return vm.runInNewContext(`${block[0].replace("const GUIDE_RAIL_LOCALIZATION", "var T")}\n;T;`, {});
+  const rail = vm.runInNewContext(`${block[0].replace("const GUIDE_RAIL_LOCALIZATION", "var T")}\n;T;`, {});
+  const dictionary = JSON.parse(fs.readFileSync(path.join(appDir, 'scripts/locales/utility-zh-Hant.json'), 'utf8'));
+  for (const spot of SPOTS) if (spot.guideRoute?.['zh-Hant'] && dictionary[spot.en?.name]) rail['zh-Hant'].spots[spot.id] = dictionary[spot.en.name];
+  return rail;
 })();
 
 const LANGS = {
@@ -101,7 +104,7 @@ const SPOTTING_LABEL = LANGS.en.level;
 function routedSpotHref(spot, langKey) {
   const L = LANGS[langKey];
   const route = spot.guideRoute?.[langKey] || spot.guideRoute?.en || spot.guideRoute?.ja;
-  const localizedRoute = (route || `en/spots/${spot.id}.html`).replace(/^en\//, '');
+  const localizedRoute = (route || `en/spots/${spot.id}.html`).replace(new RegExp(`^(?:en|${langKey})/`), '');
   if (langKey === 'zh-Hant' && supported(localizedRoute).includes(langKey)) return localizedRoute;
   if (!route) return `${L.spotHrefPrefix || "spots/"}${spot.id}.html`;
   const sameDirectoryPrefix = `${L.dir}/`;

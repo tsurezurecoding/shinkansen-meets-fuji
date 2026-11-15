@@ -7,7 +7,6 @@ import {kyotoWindowArticle} from './shared/window-articles.mjs';
 import {assetVersion} from './shared/asset-version.mjs';
 import {enhanceContentHead} from './shared/content-metadata.mjs';
 import {ANALYTICS} from './shared/feature-page.mjs';
-import {withArticleLocales} from './shared/castle-locales.mjs';
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const root = {};
@@ -24,7 +23,7 @@ for (const lang of requestedLang ? [requestedLang] : ['ja','en']) {
   const doc=dom.window.document;
   doc.querySelector('.spot-page-stamp')?.remove();
   doc.querySelector('.spot-compact-guide')?.remove();
-  // The station reading article has no new timed guide point.
+  // Keep the reading article focused; the registered spot supplies journey guidance.
   doc.querySelector('.spot-page-rail')?.remove();
   const article=doc.querySelector('.spot-page-shell > article');
   const toc=doc.createElement('nav');toc.className='spot-article-toc';toc.setAttribute('aria-label',lang==='ja'?'この記事の見どころ':'In this article');
@@ -44,9 +43,8 @@ for (const lang of requestedLang ? [requestedLang] : ['ja','en']) {
   const main=doc.querySelector('main');const shell=main.querySelector('.spot-page-shell');shell.insertAdjacentHTML('afterbegin','<aside data-spot-page-shared-module="rail"></aside>');
   const head=`<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.heading)} | ${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</title><meta property="og:title" content="${esc(page.heading)}"><meta name="twitter:card" content="summary_large_image"><meta name="description" content="${esc(lang==='ja'?'京都タワーと京都駅前を、新幹線のE席側の車窓と下車後の写真で紹介。白い塔の歴史、京都駅ビルの外観、烏丸口や広場での眺め方をたどります。':'Discover Kyoto Tower and Kyoto Station from the Shinkansen’s Seat E window, then explore the tower’s history, station architecture and Karasuma-side streets on foot.')}"/><link rel="canonical" href="https://www.michikusa-travel.com/${route}"><link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/kyoto-station-views.html"><link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/kyoto-station-views.html"><link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/kyoto-station-views.html">${['style.css','spot-media-gallery.css','window-articles.css'].map(file=>`<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`).join('')}${ANALYTICS.withEmbeddedGuard}`;
   let html=`<!doctype html><html lang="${lang}"><head>${head}</head><body class="spot-page spot-page-utility" data-spot-page-shared-context="utility" data-spot-page-shared-id="kyoto-station-views" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${prefix}" data-spot-page-shared-route="kyoto-station-views.html"><div data-spot-page-shared-module="topbar"></div>${doc.body.innerHTML}<section data-spot-page-shared-module="content-rail"></section><footer class="footer"><p class="footer-brand">${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</p><a href="${prefix}${lang==='ja'?'':'en/'}zukan.html">${lang==='ja'?'車窓一覧':'All window views'}</a></footer>${['spot-page-shared-data.js','spot-page-shared.js','spot-media-gallery.js','window-articles.js'].map(file=>`<script src="${prefix}${file}?v=${assetVersion(file)}"></script>`).join('')}</body></html>\n`;
-  html=enhanceContentHead(html,route,app);
   html=html.replace('</head>',`<meta property="og:url" content="https://www.michikusa-travel.com/${route}"></head>`);
-  html=html.replace(/<head[\s\S]*?<\/head>/, head=>withArticleLocales(head,route,assetVersion('article-locales.js')));
+  html=enhanceContentHead(html,route,app);
   const target=path.join(app,route);
   if(process.argv.includes('--check')){if(!fs.existsSync(target)||fs.readFileSync(target,'utf8')!==html)throw Error(`Kyoto article out of date: ${route}`);}else fs.writeFileSync(target,html);
   dom.window.close();

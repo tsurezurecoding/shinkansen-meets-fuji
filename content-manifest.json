@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "9662e2125eedaf1a",
+  "contentVersion": "1935738e92f3f5a6",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1579,8 +1579,8 @@
     {
       "path": "de/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/de/kyoto-station-views.html",
-      "bytes": 30059,
-      "sha256": "348b9a2732566d94450df676cb35c25e5190d61fb8e0454001b6e6c4657aa8a5"
+      "bytes": 30058,
+      "sha256": "c985a50f0c18d05de1eed34f41ab539727c3ad914899b68de2fb0a9a0c3a91cc"
     },
     {
       "path": "de/live/index.html",
@@ -2078,7 +2078,7 @@
       "path": "en/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/en/kyoto-station-views.html",
       "bytes": 32433,
-      "sha256": "616d9949a6e5d5701876b6201ba338b809f3bd4fe6403d07f78fe4cd350da4bc"
+      "sha256": "9275b4f224ffebca73074c10c0ec82150825598477978ccd699ccaadee282174"
     },
     {
       "path": "en/omamori.html",
@@ -2269,8 +2269,8 @@
     {
       "path": "es/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/es/kyoto-station-views.html",
-      "bytes": 30383,
-      "sha256": "5dbd14e1093ff1bedec7c09da9849a46fd744d5b28a6d7b6dad582ff0b232e9e"
+      "bytes": 30382,
+      "sha256": "5df65d9902d73c7a477c997112491e819e7db0b5aa6c45580c1ead473933c7df"
     },
     {
       "path": "es/live/index.html",
@@ -2779,8 +2779,8 @@
     {
       "path": "fr/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/fr/kyoto-station-views.html",
-      "bytes": 30600,
-      "sha256": "22e0e6b4bc9189d35f86e81482bc27f9d81510c1ca6c1400145357c8e592133f"
+      "bytes": 30599,
+      "sha256": "df02509eecd5683df747c9c74ca8d11f65d5530925d97e1c913e64e6ee5ca9db"
     },
     {
       "path": "fr/live/index.html",
@@ -5203,8 +5203,8 @@
     {
       "path": "it/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/it/kyoto-station-views.html",
-      "bytes": 30462,
-      "sha256": "81ed5d938b5dcb6f55eb8941e7ccada532d2e622d9be7f2902950bd2d9c98613"
+      "bytes": 30461,
+      "sha256": "0027a958f4f3f35c20885fb64493f3422d4576f91c44a94b4c610469fff3eebf"
     },
     {
       "path": "it/live/index.html",
@@ -5695,8 +5695,8 @@
     {
       "path": "ko/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/ko/kyoto-station-views.html",
-      "bytes": 29956,
-      "sha256": "79f3a815e2d772c45d1280f98b65ba26eb1d1181be3556bfb30a2f98061cf399"
+      "bytes": 29955,
+      "sha256": "50970fdd72be4ab7f24e342cd3a349c7e869c115911d3adbe05a16d2716fa027"
     },
     {
       "path": "ko/live/index.html",
@@ -6074,7 +6074,7 @@
       "path": "kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/kyoto-station-views.html",
       "bytes": 34134,
-      "sha256": "ec7d73a2e30ec4440e43aa1407808ee9ffea8a65ee4eed271655b1a9b4ad49cd"
+      "sha256": "6e843360ab422ef77910907377f2242615751938c7743d19cafb7c55b948c30d"
     },
     {
       "path": "live/narration.js",
@@ -7699,8 +7699,8 @@
     {
       "path": "th/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/th/kyoto-station-views.html",
-      "bytes": 44481,
-      "sha256": "69a9e7fbb5ed71a71465dc422601fee3057f61f91c3acafef5d35a9e1e97ade7"
+      "bytes": 44480,
+      "sha256": "43361ec73cf8c253e08e4c233e7c805de3a408cc361bf36423f748aa66956574"
     },
     {
       "path": "th/live/index.html",
@@ -8371,8 +8371,8 @@
     {
       "path": "zh-Hans/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/kyoto-station-views.html",
-      "bytes": 27632,
-      "sha256": "07634eafa38f84c7f9426cd42aa52eb67ffa7dd23301803bd2cc7e5df6e03ffd"
+      "bytes": 27631,
+      "sha256": "703196c632a7c4671d199d9c6c3f38dc44a6269fbe61cf3a83a3a70901eade7f"
     },
     {
       "path": "zh-Hans/live/index.html",
@@ -8839,8 +8839,8 @@
     {
       "path": "zh-Hant/kyoto-station-views.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/kyoto-station-views.html",
-      "bytes": 27689,
-      "sha256": "5f3abcf330af3b9d94a18ade6813ad4921261f08a1ae53ced1b7bd3acea52cff"
+      "bytes": 27688,
+      "sha256": "3197e5f0c133af2287ced035bc183a901da703a4968593f808e25c39528fe0e0"
     },
     {
       "path": "zh-Hant/live/index.html",

@@ -285,3 +285,15 @@ test('seasonal and reflection utility boundaries translate controls while preser
     dom.window.close();
   }
 });
+
+test('Besides-Fuji reaches the registered Kyoto article in its own edition', () => {
+  for (const lang of ['en', 'zh-Hant']) {
+    const file = `${lang}/besides-fuji.html`;
+    const dom = new JSDOM(read(file), {url:'https://www.michikusa-travel.com/'+file});
+    const links = [...dom.window.document.querySelectorAll('a[href*="kyoto-station-views.html"]')];
+    assert.equal(links.length, 1);
+    assert.equal(new URL(links[0].href).pathname, `/${lang}/kyoto-station-views.html`);
+    if (lang === 'zh-Hant') assert.equal(links[0].textContent, '京都塔與京都車站');
+    dom.window.close();
+  }
+});

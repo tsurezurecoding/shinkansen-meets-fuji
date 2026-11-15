@@ -20,7 +20,8 @@ export function auditContentMetadata(root, spots) {
       const spot = spots.find(s => file.endsWith('/'+s.id+'.html'));
       const canonicalFile = spot?.guidePageId && !spot.guideRoute ? `${file.startsWith('en/') ? 'en/' : ''}spots/${spot.guidePageId}.html` : file;
       expect(head.includes(`<link rel="canonical" href="${SITE}/${canonicalFile}">`), 'canonical does not match page or declared parent');
-      expect(get('robots')?.includes('max-image-preview:large'), 'missing large image preview');
+      const noindex = /(?:^|,)\s*noindex(?:,|$)/i.test(get('robots') || '');
+      if (!noindex) expect(get('robots')?.includes('max-image-preview:large'), 'missing large image preview');
       const image = get('og:image');
       expect(image?.startsWith(`${SITE}/images/`), 'missing local OG image');
       if (!image?.startsWith(`${SITE}/images/`)) continue;
@@ -53,7 +54,7 @@ export function auditContentMetadata(root, spots) {
         expect(cover?.creditText === meta.imageCredit && cover?.isBasedOn === meta.imageSourceUrl, 'permitted image attribution/source missing');
       }
       if (meta?.article) expect(nodes.some(n => n['@type'] === 'Article'), 'missing opted-in Article');
-      if (meta?.modified) expect(lastmods.get(`${SITE}/${file}`) === meta.modified, 'sitemap/source modified mismatch');
+      if (meta?.modified && !noindex) expect(lastmods.get(`${SITE}/${file}`) === meta.modified, 'sitemap/source modified mismatch');
       if (meta?.kind === 'collection') expect(nodes.some(n => n['@type'] === 'CollectionPage') && !nodes.some(n => n['@type'] === 'Article'), 'collection was Article-ized');
     } catch (error) { problems.push(`${file}: ${error.message}`); }
   }

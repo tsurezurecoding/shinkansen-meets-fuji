@@ -98,8 +98,8 @@ test('all episode articles have matching routes, menus, reciprocal metadata and 
   }
   dom.window.close();await new Promise(setImmediate);
  }
- // 41 episode articles, including Maruko Bridge and omamori, in eight translated editions.
- assert.equal(count,328);
+ // 42 episode articles, including Kyoto Station, Maruko Bridge and omamori, in eight translated editions.
+ assert.equal(count,336);
 });
 
 test('Fujitec and Pocari have complete ten-language articles and worldwide chapters',()=>{
