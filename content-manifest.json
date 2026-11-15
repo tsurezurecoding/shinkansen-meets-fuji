@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "56df99248ef4c15b",
+  "contentVersion": "895a8a9b3397c2be",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1526,7 +1526,7 @@
       "path": "de/donburi.html",
       "url": "https://www.michikusa-travel.com/de/donburi.html",
       "bytes": 41459,
-      "sha256": "35ee4af269870454dc656928955bc926e9672ee9dc9ee3ae8febd4bd290e59cf"
+      "sha256": "50f7eb2daf64c3759b20e1665d3bf5659ab0e2bf5d3b2b0945f77bc73933c7f8"
     },
     {
       "path": "de/drinks.html",
@@ -1958,13 +1958,13 @@
       "path": "donburi.html",
       "url": "https://www.michikusa-travel.com/donburi.html",
       "bytes": 41445,
-      "sha256": "bd66f85845cc3179fcb4a85fb9e50c538a5d1107b6e3fc10da286b43f0f8e70f"
+      "sha256": "3e4bf859f1c265365d35f444df627845c7e385e145a8e6b19be3bc94e174c374"
     },
     {
       "path": "donburi.js",
       "url": "https://www.michikusa-travel.com/donburi.js",
-      "bytes": 1288,
-      "sha256": "26ffdb11120e1ad7f05d5625fa79f4ae59eea0b167b3912f6918d92c2cb55c9a"
+      "bytes": 1256,
+      "sha256": "f5a04b43eb786248473756266962ccc2295b1ca40a73fd61e8b7612a8d0f069d"
     },
     {
       "path": "drinks.css",
@@ -2030,7 +2030,7 @@
       "path": "en/donburi.html",
       "url": "https://www.michikusa-travel.com/en/donburi.html",
       "bytes": 116167,
-      "sha256": "42cf8a085f41f81537c83f5b135f9938ea670fb8cd5119c8dd9e35d42e2e3567"
+      "sha256": "240bc974d46011906107ca5b0c2f81289bdb2bfffcfebfc59b778685860d320f"
     },
     {
       "path": "en/drinks.html",
@@ -2210,7 +2210,7 @@
       "path": "es/donburi.html",
       "url": "https://www.michikusa-travel.com/es/donburi.html",
       "bytes": 40170,
-      "sha256": "b567f49f0055a885187e979882c07b66d7b3991f50f4995ea421fad161f787fb"
+      "sha256": "3193462b9cd76d0107d7bf3f75ac4d77e78a1f826380948491aaafe4466b2995"
     },
     {
       "path": "es/drinks.html",
@@ -2714,7 +2714,7 @@
       "path": "fr/donburi.html",
       "url": "https://www.michikusa-travel.com/fr/donburi.html",
       "bytes": 41808,
-      "sha256": "5fdac38d037b6b43997b42258ff5221876b8e44b2cadec1fe32be9cc94664212"
+      "sha256": "dbb57718472a0b719a1c1ad5788b9d2b50273304d7578cf2e1f3f7f78c9a2800"
     },
     {
       "path": "fr/drinks.html",
@@ -5120,7 +5120,7 @@
       "path": "it/donburi.html",
       "url": "https://www.michikusa-travel.com/it/donburi.html",
       "bytes": 40134,
-      "sha256": "5ad2b2da9339ba301dc9c0d90d745d9d0a0f5446488399c14589f545d8796e68"
+      "sha256": "dfab4556bbc1be8f40130137e5cd3a1b821efc249d479d35dfc62205106132fe"
     },
     {
       "path": "it/drinks.html",
@@ -5612,7 +5612,7 @@
       "path": "ko/donburi.html",
       "url": "https://www.michikusa-travel.com/ko/donburi.html",
       "bytes": 41412,
-      "sha256": "64c0ef483699a69ef4871a6da8eb23e06fd23c9710f73ab23e8082fdb6f94f50"
+      "sha256": "70f9cee988090dea9c23e97d50e066846b49f7427dc6db957190ca39fd617455"
     },
     {
       "path": "ko/drinks.html",
@@ -7604,7 +7604,7 @@
       "path": "th/donburi.html",
       "url": "https://www.michikusa-travel.com/th/donburi.html",
       "bytes": 60059,
-      "sha256": "be6b09e8b9d217e3af33288b5d651ba7b5ee82257effcd45dd00bf0b235b25ba"
+      "sha256": "2065d24e759d66b137318289fddd97884a01836b983d65f1b1f3adbb002dfbe8"
     },
     {
       "path": "th/drinks.html",
@@ -8276,7 +8276,7 @@
       "path": "zh-Hans/donburi.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/donburi.html",
       "bytes": 37521,
-      "sha256": "519fca9188dc50993e43d979dd16edd6fec3878ec1a6fcde441cf0c249ee0b17"
+      "sha256": "5a305789a5348c86a635b8a80dcedd5ba172c1ef80961af39d86d9e73dae310b"
     },
     {
       "path": "zh-Hans/drinks.html",
@@ -8738,7 +8738,7 @@
       "path": "zh-Hant/donburi.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/donburi.html",
       "bytes": 37248,
-      "sha256": "91ef7467159a0749f4727856f6ba1432011c34abac0c55d05eb3573a66e39ed3"
+      "sha256": "df3d069fb5e91d7f338d73cbe29c59784cb50acba30399e7e282ab4ca2d79386"
     },
     {
       "path": "zh-Hant/drinks.html",
