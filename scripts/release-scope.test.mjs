@@ -22,7 +22,7 @@ test('donburi permits only the exact two-column Everyday Japan taste-card adjust
   assert.notEqual(chooseReleaseScope(files, {donburiEverydayLayoutOnly: onlyDonburiEverydayLayoutChanged(before, after + 'unrelated')}).scope, 'donburi-everyday');
 });
 
-test('donburi scope covers ten editions and only its nine non-Japanese series entries', () => {
+test('donburi scope covers ten editions and only its nine non-Japanese series entry languages', () => {
   const files = ['scripts/generate-donburi-page.mjs', 'data/donburi/en.json', 'data/donburi/ja.json',
     'donburi.html', 'en/donburi.html', 'th/donburi.html', 'th/foods.html', 'de/everyday-japan.html',
     'images/donburi/storefront-sukiya.webp', 'shared-ui/ja.shell.js', 'shared-ui/th.rail-donburi.js', 'content-manifest.json'];
@@ -33,10 +33,41 @@ test('donburi scope covers ten editions and only its nine non-Japanese series en
   assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
   assert(plan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs')).includes('donburi.html'));
   assert(!plan.commands.some(command => command.includes('verify') || command.includes('build:full')));
-  for (const unrelated of ['app.js', 'data.js', 'style.css', 'foods.html', 'en/drinks.html', 'ar/donburi.html',
+  for (const unrelated of ['app.js', 'data.js', 'style.css', 'foods.html', 'en/guide.html', 'ar/donburi.html',
     'data/donburi/ar.json', 'images/donburi/unrelated.webp', 'shared-ui/en.rail-castles.js'])
     assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'donburi-everyday', unrelated);
   assert.notEqual(chooseReleaseScope([...files.map(change), {path: 'en/foods.html', status: 'D'}]).scope, 'donburi-everyday');
+});
+
+test('donburi reciprocal links cover each companion article and only the affected localized consumers', () => {
+  const routes = ['donburi.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html',
+    'spots/gamagori-greenhouses.html', 'omamori.html', 'everyday-japan.html'];
+  const languages = ['en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
+  const files = ['scripts/generate-donburi-page.mjs', 'scripts/generate-castle-locales.mjs',
+    'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
+    ...languages.flatMap(lang => routes.map(route => `${lang}/${route}`))];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'donburi-everyday');
+  for (const testFile of ['scripts/donburi-page.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/drinks-locales.test.mjs'])
+    assert(plan.commands.some(command => command.includes(testFile)), testFile);
+  for (const generator of ['generate-drinks-page', 'generate-beer-page', 'generate-countryside-page', 'generate-drinks-locales', 'generate-omamori-page'])
+    assert(plan.commands.some(command => command.includes(`scripts/${generator}.mjs`) && command.includes('--check')), generator);
+  const navigation = plan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs'));
+  for (const route of routes) assert(navigation.includes(route), route);
+  assert(plan.commands.some(command => command.some(argument => argument.includes("planSpotPage('gamagori-greenhouses','en'"))), 'Check only the English greenhouse spot');
+  assert(!plan.commands.some(command => command.includes('scripts/generate-spot-pages.mjs')), 'Do not generate or check unrelated spot articles');
+  for (const unrelated of ['en/spots/fuji.html', 'fr/guide.html', 'shared-ui/en.rail-castles.js'])
+    assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'donburi-everyday', unrelated);
+});
+
+test('Japanese companion-card promotion cannot enter the donburi reciprocal-link scope', () => {
+  const files = ['scripts/generate-donburi-page.mjs', 'en/omamori.html'].map(change);
+  const before = '<script src="locales.js?v=01234567"></script><main><p>Existing content</p></main>';
+  const after = before.replace('</main>', '<a href="donburi.html">New Japanese promotion</a></main>');
+  for (const route of ['foods.html', 'drinks.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'])
+    assert.notEqual(chooseReleaseScope([...files, change(route)], {
+      donburiAssetVersionOnly: () => onlyDonburiAssetReferencesChanged(before, after)
+    }).scope, 'donburi-everyday', route);
 });
 
 test('donburi allows only route-contract version references in other HTML pages', () => {

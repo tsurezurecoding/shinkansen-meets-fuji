@@ -77,24 +77,61 @@ for (const lang of languages) test(`${edition(lang)}: complete travel article, l
   dom.window.close();
 });
 
-test('the article is available in ten languages, with nine localized series entries and no Japanese promotion', () => {
+test('Everyday Japan articles link to donburi in nine languages without duplicate or self-recommendations', () => {
   assert.deepEqual(supported('donburi.html'), languages);
-  for (const lang of languages.filter(code => code !== 'ja')) for (const route of ['everyday-japan.html', 'foods.html']) {
+  const routes = ['everyday-japan.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'];
+  for (const lang of languages.filter(code => code !== 'ja')) for (const route of routes) {
     const file = `${lang}/${route}`, dom = documentFor(file), doc = dom.window.document;
-    const cards = [...doc.querySelectorAll('a[href]')].filter(a => a.href === site + edition(lang));
+    const cards = [...doc.querySelectorAll('a[href]')].filter(a => new URL(a.href).pathname === '/' + edition(lang));
     assert.equal(cards.length, 1, `${file}: provide one localized entry`);
     const copy = JSON.parse(read(`data/donburi/${lang}.json`));
     assert.ok(cards[0].textContent.includes(copy.entry.title), `${file}: translated title`);
+    const image = cards[0].querySelector('img');
+    assert.ok(image && fs.existsSync(path.join(root, new URL(image.src).pathname.slice(1))), `${file}: card image`);
     if (route === 'everyday-japan.html') assert.ok(cards[0].closest('#taste'), 'Place the article among food stories');
+    else assert.ok(cards[0].closest('.everyday-related-grid'), `${file}: use the shared related-story grid`);
+    for (const card of doc.querySelectorAll('.everyday-story-card')) {
+      assert.notEqual(new URL(card.href).pathname, '/' + file, `${file}: do not recommend the article already being read`);
+    }
     dom.window.close();
   }
-  for (const file of ['foods.html', 'index.html', 'zukan.html']) {
+  for (const file of ['foods.html', 'index.html', 'zukan.html', 'countryside.html', 'omamori.html']) {
     const dom = documentFor(file);
     assert.equal([...dom.window.document.querySelectorAll('a[href]')].filter(a => a.href.split('?')[0] === site + 'donburi.html').length, 0,
       `${file}: Japanese is reached through language switching, not an article card`);
     dom.window.close();
   }
   assert.deepEqual(metadataProblems(), []);
+});
+
+test('donburi ends with six localized photo stories, an all-stories link and the required photo credits', () => {
+  const relatedRoutes = ['foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'];
+  for (const lang of languages) {
+    const file = edition(lang), dom = documentFor(file), doc = dom.window.document;
+    const section = doc.querySelector('main > .everyday-related');
+    assert.ok(section, `${file}: use the same full-width related section as other Everyday Japan articles`);
+    assert.ok(section.querySelector('h2')?.textContent.trim(), `${file}: related heading`);
+    const targetLang = lang === 'ja' ? 'en' : lang;
+    const allStories = section.querySelector('.everyday-all-stories');
+    assert.equal(new URL(allStories.href).pathname, `/${targetLang}/everyday-japan.html`);
+    const cards = [...section.querySelectorAll('.everyday-story-card')];
+    const destinations = cards.map(card => new URL(card.href).pathname);
+    assert.equal(cards.length, relatedRoutes.length, `${file}: all six companion stories`);
+    assert.equal(new Set(destinations).size, destinations.length, `${file}: no repeated destination`);
+    assert.deepEqual(destinations.sort(), relatedRoutes.map(route => `/${targetLang}/${route}`).sort());
+    for (const card of cards) {
+      const image = card.querySelector('img');
+      assert.ok(image && fs.existsSync(path.join(root, new URL(image.src).pathname.slice(1))), `${file}: related photo exists`);
+      assert.ok(card.querySelector('strong')?.textContent.trim(), `${file}: related title`);
+      assert.notEqual(new URL(card.href).pathname, '/' + file, `${file}: no self-recommendation`);
+      if (lang === 'ja') assert.equal(card.closest('[lang]')?.lang, 'en', 'English destinations are marked for Japanese readers');
+    }
+    assert.match(section.textContent, /Ocdp/);
+    assert.ok(section.querySelector('a[href*="creativecommons.org/publicdomain/zero/1.0"]'));
+    assert.match(section.textContent, /Leongboy1/);
+    assert.ok(section.querySelector('a[href="https://commons.wikimedia.org/wiki/File:Variousomamori.jpg"]'));
+    dom.window.close();
+  }
 });
 
 test('Web distribution contains ten editions and all photos, while search discovery excludes Japanese', () => {

@@ -7,6 +7,7 @@ import {enhanceContentHead} from './shared/content-metadata.mjs';
 import {readSiteSource} from './shared/site-chrome.mjs';
 import {withLocaleRegistry,languages,editions} from './shared/locales.mjs';
 import {ANALYTICS} from './shared/feature-page.mjs';
+import {donburiRelatedHTML} from './shared/everyday-related.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const origin='https://www.michikusa-travel.com';
@@ -47,8 +48,8 @@ for(const lang of selected?[selected]:languages){
   for(const heading of article.querySelectorAll('.don-section-heading'))heading.classList.add('chapter-heading');
   const market=doc.createElement('aside');market.className='don-aside don-market';market.id='familiar-name';
   if(copy.marketNote.html){market.innerHTML=`<h3>${e(copy.marketNote.title)}</h3>${copy.marketNote.html}`;article.querySelector('.don-signs').after(market);}
-  const related=article.querySelector('.don-related');
-  if(related){related.classList.add('everyday-related');const link=related.querySelector('a');link.classList.add('everyday-story-card','don-related-text');link.innerHTML=`<span class="everyday-story-copy">${link.innerHTML}</span>`;}
+  article.querySelector('.don-related')?.remove();
+  const relatedHTML=donburiRelatedHTML(lang);
   const bodyMain=article.outerHTML;dom.window.close();
 
   const shellFile=lang==='ja'?'castles.html':`${lang}/foods.html`;
@@ -66,7 +67,7 @@ for(const lang of selected?[selected]:languages){
   shellDom.window.close();
   const alternates=[...languages.map(code=>[code,`${code==='ja'?'':code+'/'}donburi.html`]),['x-default','en/donburi.html']].map(([code,route])=>`<link rel="alternate" hreflang="${code}" href="${origin}/${route}">`).join('\n');
   const head=`<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="${lang==='ja'?'noindex,follow':'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'}"><title>${e(copy.metaTitle)}</title><meta name="description" content="${e(copy.description)}"><link rel="canonical" href="${origin}/${file}">${alternates}<meta property="og:title" content="${e(copy.metaTitle)}"><meta property="og:description" content="${e(copy.description)}"><meta property="og:url" content="${origin}/${file}"><meta property="og:locale" content="${editions[lang].og}"><meta property="og:image" content="${origin}/images/donburi/gyudon-basic.webp"><meta property="og:image:alt" content="${e(heroAlt)}"><meta name="twitter:card" content="summary_large_image"><link rel="icon" href="${prefix}favicon.ico">${['style.css','castles.css','foods.css','everyday-related.css','donburi.css','article-locales.css'].map(asset=>`<link rel="stylesheet" href="${prefix+asset}?v=${assetVersion(asset)}">`).join('')}${lang==='ja'?`<script src="language-router.js?v=${assetVersion('language-router.js')}"></script>`:''}${ANALYTICS.withEmbeddedGuard}`;
-  let html=`<!doctype html>\n<html lang="${lang}"><head>${head}</head><body id="top" class="spot-page spot-page-utility foods-page don-page don-product${lang==='ja'?'':' don-en'}" data-article-localized="" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${prefix||'./'}" data-spot-page-shared-route="donburi.html"><a class="skip-link" href="#donburi-content">${e(copy.skipLink)}</a>${parts['.topbar']}<main>${hero.outerHTML}<div class="spot-page-shell">${parts['.spot-page-rail']}${bodyMain}</div>${parts['.content-rail-section']}</main>${parts.footer}<dialog class="don-lightbox" aria-labelledby="don-photo-caption"><button class="don-close" type="button" aria-label="${e(copy.closePhoto)}">×</button><img alt=""><p id="don-photo-caption"></p></dialog><script defer src="${prefix}article-locales.js?v=${assetVersion('article-locales.js')}"></script><script src="${prefix}donburi.js?v=${assetVersion('donburi.js')}"></script></body></html>\n`;
+  let html=`<!doctype html>\n<html lang="${lang}"><head>${head}</head><body id="top" class="spot-page spot-page-utility foods-page don-page don-product${lang==='ja'?'':' don-en'}" data-article-localized="" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${prefix||'./'}" data-spot-page-shared-route="donburi.html"><a class="skip-link" href="#donburi-content">${e(copy.skipLink)}</a>${parts['.topbar']}<main>${hero.outerHTML}<div class="spot-page-shell">${parts['.spot-page-rail']}${bodyMain}</div>${relatedHTML}${parts['.content-rail-section']}</main>${parts.footer}<dialog class="don-lightbox" aria-labelledby="don-photo-caption"><button class="don-close" type="button" aria-label="${e(copy.closePhoto)}">×</button><img alt=""><p id="don-photo-caption"></p></dialog><script defer src="${prefix}article-locales.js?v=${assetVersion('article-locales.js')}"></script><script src="${prefix}donburi.js?v=${assetVersion('donburi.js')}"></script></body></html>\n`;
   html=enhanceContentHead(withLocaleRegistry(html,prefix),file,root,{lang}).replace(/^[\t ]+$/gm,'');
   const target=path.join(root,file);
   if(check){if(!fs.existsSync(target)||fs.readFileSync(target,'utf8')!==html)throw Error('Donburi edition stale: '+file);}

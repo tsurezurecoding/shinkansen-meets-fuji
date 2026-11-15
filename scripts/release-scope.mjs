@@ -253,17 +253,20 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   const donburiFiles = new Set(['scripts/generate-donburi-page.mjs', 'scripts/donburi-page.test.mjs',
     'scripts/shared/donburi-entry.mjs', 'donburi.html', 'donburi.css', 'donburi.js', 'everyday.css', 'data/donburi-photo-sources.json',
     'scripts/generate-everyday-page.mjs', 'scripts/shared/everyday-related.mjs', 'scripts/generate-foods-page.mjs',
-    'scripts/generate-castle-locales.mjs', 'scripts/generate-content-manifest.mjs', 'scripts/generate-spot-pages.mjs',
+    'scripts/generate-castle-locales.mjs', 'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
+    'scripts/generate-content-manifest.mjs', 'scripts/generate-spot-pages.mjs',
     'scripts/validate-language-pages.mjs', 'scripts/content-metadata.json', 'locales.js', 'language-router.js',
     'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'package.json', 'site-runtime.json',
     'spot-page-runtime.json', 'content-manifest.json', 'sitemap.xml', 'data/donburi/README.md']);
   const donburiLanguages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
+  const donburiRelatedRoutes = ['donburi.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html',
+    'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'everyday-japan.html'];
   for (const lang of donburiLanguages) {
     donburiFiles.add(`data/donburi/${lang}.json`);
     donburiFiles.add(`shared-ui/${lang.toLowerCase()}.shell.js`);
-    for (const route of ['foods', 'everyday-japan', 'donburi']) {
-      donburiFiles.add(`shared-ui/${lang.toLowerCase()}.rail-${route}.js`);
-      if (lang !== 'ja') donburiFiles.add(`${lang}/${route}.html`);
+    for (const route of donburiRelatedRoutes) {
+      donburiFiles.add(`shared-ui/${lang.toLowerCase()}.rail-${route.replace(/\.html$/, '').replaceAll('/', '-')}.js`);
+      if (lang !== 'ja') donburiFiles.add(`${lang}/${route}`);
     }
   }
   for (const image of ['gyudon-basic', 'gyudon-cheese', 'gyudon-takana', 'kaisendon', 'katsudon', 'magurodon',
@@ -286,14 +289,18 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     changes.every(({path: file, status}) => status !== 'D' && (donburiFiles.has(file) ||
       status === 'M' && file.endsWith('.html') && donburiAssetVersionOnly(file)))) return {
     scope: 'donburi-everyday', needsDependencies: true, pagesCandidate: true,
-    reason: 'Donburi in ten existing editions, nine localized Everyday Japan/food entries, Japanese available only through language selection, route-contract version references, and Web distribution.',
+    reason: 'Donburi in ten existing editions, six photo stories at its end and nine-language reciprocal Everyday Japan links, Japanese available only through language selection, route-contract version references, and Web distribution.',
     commands: [...syntax, node('--test', 'scripts/donburi-page.test.mjs', 'scripts/release-scope.test.mjs',
-      'scripts/locales-contract.test.mjs', 'scripts/food-country-locales.test.mjs'),
-      ...['generate-donburi-page', 'generate-foods-page', 'generate-everyday-page', 'generate-site-chrome', 'generate-site-runtime']
+      'scripts/locales-contract.test.mjs', 'scripts/food-country-locales.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/drinks-locales.test.mjs'),
+      ...['generate-donburi-page', 'generate-foods-page', 'generate-everyday-page', 'generate-drinks-page', 'generate-beer-page',
+        'generate-countryside-page', 'generate-drinks-locales', 'generate-omamori-page', 'generate-site-chrome', 'generate-site-runtime']
         .map(name => node(`scripts/${name}.mjs`, '--check')),
       node('scripts/generate-castle-locales.mjs', '--route', 'foods.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'countryside.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'spots/gamagori-greenhouses.html', '--check'),
       node('scripts/generate-castle-locales.mjs', '--route', 'everyday-japan.html', '--check'),
-      node('scripts/validate-site-navigation.mjs', '--route', 'donburi.html', '--route', 'foods.html', '--route', 'everyday-japan.html'),
+      node('--input-type=module', '-e', "import fs from 'node:fs'; import assert from 'node:assert/strict'; import {planSpotPage,finalPageOutput} from './scripts/generate-spot-pages.mjs'; const page=planSpotPage('gamagori-greenhouses','en',{requireExisting:true,preserveHead:true}); assert.equal(fs.readFileSync(page.outputPath,'utf8'),finalPageOutput(page.outputPath,page.generatedHTML));"),
+      node('scripts/validate-site-navigation.mjs', ...donburiRelatedRoutes.flatMap(route => ['--route', route])),
       node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]
   };
   const omamoriFiles=new Set(['scripts/generate-omamori-page.mjs','scripts/omamori-page.test.mjs','scripts/shared/omamori-entry.mjs',

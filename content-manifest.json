@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "1a8c62e8a741241d",
+  "contentVersion": "56df99248ef4c15b",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1501,8 +1501,8 @@
     {
       "path": "de/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/de/beer-on-shinkansen.html",
-      "bytes": 36020,
-      "sha256": "86a49642b13591ce821987c5cf7d1c79b3b1997eb1d33324024f72f5fe0b24ed"
+      "bytes": 36644,
+      "sha256": "b185ab0fa6ae62aa59715b715d4a6606f8dd20f943c85ea7660e9f9071867aed"
     },
     {
       "path": "de/castles.html",
@@ -1519,20 +1519,20 @@
     {
       "path": "de/countryside.html",
       "url": "https://www.michikusa-travel.com/de/countryside.html",
-      "bytes": 25185,
-      "sha256": "7651634d60085c777116656ce9560cbdd7c4454c2136d51c5d86a0296aeb6fe5"
+      "bytes": 25809,
+      "sha256": "c19762758daab200ca553d9b10ef84237af91751236c93d91184c4098867bb5b"
     },
     {
       "path": "de/donburi.html",
       "url": "https://www.michikusa-travel.com/de/donburi.html",
-      "bytes": 37245,
-      "sha256": "1d82a20a44be94f083ef5d75abd5b04996c829a3cf83a2c7c0e960400badd8ef"
+      "bytes": 41459,
+      "sha256": "35ee4af269870454dc656928955bc926e9672ee9dc9ee3ae8febd4bd290e59cf"
     },
     {
       "path": "de/drinks.html",
       "url": "https://www.michikusa-travel.com/de/drinks.html",
-      "bytes": 44402,
-      "sha256": "53d564fd661abcab653e4835335246f2557a3d2ec22b92e68bb3b9510b4f8191"
+      "bytes": 45026,
+      "sha256": "329ee066ad72c634647a265808343307db39d64ff59e82636802afcb41d78db9"
     },
     {
       "path": "de/everyday-japan.html",
@@ -1549,8 +1549,8 @@
     {
       "path": "de/foods.html",
       "url": "https://www.michikusa-travel.com/de/foods.html",
-      "bytes": 33971,
-      "sha256": "0b51ed2529b38c8f64d2f2462868b6c4e81a9b7478efeab1634928865cc1c048"
+      "bytes": 33977,
+      "sha256": "17e7fb5309a36a67aaf9516f987ef62f61207f4206acd18fd2314d01185bb2d3"
     },
     {
       "path": "de/hanabi.html",
@@ -1591,8 +1591,8 @@
     {
       "path": "de/omamori.html",
       "url": "https://www.michikusa-travel.com/de/omamori.html",
-      "bytes": 30157,
-      "sha256": "540c60a25a05c81317139c8ac1d3da2e4fc825a26f9e0f78bc6e03287bf2be83"
+      "bytes": 30781,
+      "sha256": "e7440a4ea9bc7a3c421276aa665ca6e1d6ec96176d4bba455216d6167c12342c"
     },
     {
       "path": "de/reflections.html",
@@ -1657,8 +1657,8 @@
     {
       "path": "de/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/de/spots/gamagori-greenhouses.html",
-      "bytes": 39299,
-      "sha256": "d5d76206681de29f10db14966799c4b69cb149bff289323105f443a7dfa580c0"
+      "bytes": 39929,
+      "sha256": "18e71bd7458a783a235777f05e6fe5906d696120b6cbb52a315f22c49ae38e24"
     },
     {
       "path": "de/spots/gifu-castle.html",
@@ -1957,8 +1957,8 @@
     {
       "path": "donburi.html",
       "url": "https://www.michikusa-travel.com/donburi.html",
-      "bytes": 37338,
-      "sha256": "7c1d078ab39b0194b33da6447d44edc3859f8d5497586774fe0952b7fa7a405c"
+      "bytes": 41445,
+      "sha256": "bd66f85845cc3179fcb4a85fb9e50c538a5d1107b6e3fc10da286b43f0f8e70f"
     },
     {
       "path": "donburi.js",
@@ -2011,8 +2011,8 @@
     {
       "path": "en/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/en/beer-on-shinkansen.html",
-      "bytes": 37129,
-      "sha256": "5cf6c40a94a25b9073826ed68eabbedd1672cdb6950ffd251e5bf92e82ba8c72"
+      "bytes": 37698,
+      "sha256": "042bf96fd9705b2ade63a349b95c1ee77b555257166e567d80a58ed1f017e4e1"
     },
     {
       "path": "en/castles.html",
@@ -2023,20 +2023,20 @@
     {
       "path": "en/countryside.html",
       "url": "https://www.michikusa-travel.com/en/countryside.html",
-      "bytes": 22964,
-      "sha256": "cbb557dd0524d27ac6b09feace5139578251b4ebb05e9350128e1572e124cbbd"
+      "bytes": 23533,
+      "sha256": "3c9ad334a72d63bee3835e671382dfb4f2afbf945db58db8af1d59fb8f8b3e5b"
     },
     {
       "path": "en/donburi.html",
       "url": "https://www.michikusa-travel.com/en/donburi.html",
-      "bytes": 112173,
-      "sha256": "33a5c00e33c78c9aeb3d12f6d0b6253b97734c4fb63cedfeb3652f7c52ed9d11"
+      "bytes": 116167,
+      "sha256": "42cf8a085f41f81537c83f5b135f9938ea670fb8cd5119c8dd9e35d42e2e3567"
     },
     {
       "path": "en/drinks.html",
       "url": "https://www.michikusa-travel.com/en/drinks.html",
-      "bytes": 46112,
-      "sha256": "f30cb1257cca039563cd809d25a027d5d4bdd92ce78e3163a41e35dbe58301b2"
+      "bytes": 46681,
+      "sha256": "ef3a985f172cbadcd4bae0d6bd4a294adf78bf1f6256c2b591248ff7dc077de6"
     },
     {
       "path": "en/everyday-japan.html",
@@ -2053,8 +2053,8 @@
     {
       "path": "en/foods.html",
       "url": "https://www.michikusa-travel.com/en/foods.html",
-      "bytes": 32718,
-      "sha256": "c5c927c4e5ad048ba93f31d8c44fc9ea35167232a781fa77de4a1093b32ee772"
+      "bytes": 32724,
+      "sha256": "785ba133b1bb975cae523e93e16c9dc45ad0733b0e1e06a0c25617dcd2d4b17b"
     },
     {
       "path": "en/hanabi.html",
@@ -2077,8 +2077,8 @@
     {
       "path": "en/omamori.html",
       "url": "https://www.michikusa-travel.com/en/omamori.html",
-      "bytes": 26909,
-      "sha256": "fe1384e8cba580d64f9cea2cdb9dfb1d66c25d7518aa4648709dc6dbe7d77d4a"
+      "bytes": 27478,
+      "sha256": "8387562bd4381b78c138f4cb5702d2f00246cdc6f9647fa27c7c149ed6572cb2"
     },
     {
       "path": "en/reflections.html",
@@ -2185,8 +2185,8 @@
     {
       "path": "es/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/es/beer-on-shinkansen.html",
-      "bytes": 35852,
-      "sha256": "56c6d2b47d472a1d5f6cbf310e9adcaf2c4f8993e65580a63d8b984c699514c2"
+      "bytes": 36443,
+      "sha256": "77668f7f5f263e48987e131c057e9ca9bbbacd48abc374391799eeab8b918eaf"
     },
     {
       "path": "es/castles.html",
@@ -2203,20 +2203,20 @@
     {
       "path": "es/countryside.html",
       "url": "https://www.michikusa-travel.com/es/countryside.html",
-      "bytes": 25446,
-      "sha256": "2823940d82440675d216bcf034eace79b60fd30029635e72f077cfd74fc02872"
+      "bytes": 26037,
+      "sha256": "015d0a1403a9a643c40095f99d242365668024095a8bdc88b519b998bce48841"
     },
     {
       "path": "es/donburi.html",
       "url": "https://www.michikusa-travel.com/es/donburi.html",
-      "bytes": 35992,
-      "sha256": "50c10185b3b09d1c32c1e05a6913f35099e566154bbf1160fe8df479236911b0"
+      "bytes": 40170,
+      "sha256": "b567f49f0055a885187e979882c07b66d7b3991f50f4995ea421fad161f787fb"
     },
     {
       "path": "es/drinks.html",
       "url": "https://www.michikusa-travel.com/es/drinks.html",
-      "bytes": 44079,
-      "sha256": "bafede363b2017fde4cf9d6597b7b28a3511683714f75a3b828e1b6624596ea5"
+      "bytes": 44670,
+      "sha256": "81445f1e106a41026958ef4ed2fb15c06e1e180b1c075551994f97b62634e1fd"
     },
     {
       "path": "es/everyday-japan.html",
@@ -2233,8 +2233,8 @@
     {
       "path": "es/foods.html",
       "url": "https://www.michikusa-travel.com/es/foods.html",
-      "bytes": 34065,
-      "sha256": "a9128ad14943b727cc4680c3c28d9e1a074efaae3fc29269dacf52d313f9c2c1"
+      "bytes": 34071,
+      "sha256": "86c810cd167e8cc3115ec44921330e97ac92d7d650bab89d68f87e6b1289d9c8"
     },
     {
       "path": "es/hanabi.html",
@@ -2275,8 +2275,8 @@
     {
       "path": "es/omamori.html",
       "url": "https://www.michikusa-travel.com/es/omamori.html",
-      "bytes": 29483,
-      "sha256": "a1cc09fdfe06e00de3eee1f7aac58c579eb4d46dc5102eef405596446e3c501d"
+      "bytes": 30074,
+      "sha256": "c05147ab318b1de11973a2b5e48e40db37b4372154bdb983f912596d3960935a"
     },
     {
       "path": "es/reflections.html",
@@ -2341,8 +2341,8 @@
     {
       "path": "es/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/es/spots/gamagori-greenhouses.html",
-      "bytes": 39460,
-      "sha256": "fb1f07812e014aa78ec7dc83e13bf7a1084076dcd5de1c2f8cf676c117fb79bb"
+      "bytes": 40057,
+      "sha256": "6cb1ff94830fb95f9c3eb57f13d348c839dfe6955a79db80a6ddd19c9c4ae9bb"
     },
     {
       "path": "es/spots/gifu-castle.html",
@@ -2689,8 +2689,8 @@
     {
       "path": "fr/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/fr/beer-on-shinkansen.html",
-      "bytes": 36792,
-      "sha256": "cc90bdba91d7d165dba0e588ee4338e10d5993ad6e8c7c1287e7d9825dca5f45"
+      "bytes": 37418,
+      "sha256": "dfae52a16de5c60d5cf73d180d193204f545c99462573a149cbfc3144116a0ae"
     },
     {
       "path": "fr/castles.html",
@@ -2707,20 +2707,20 @@
     {
       "path": "fr/countryside.html",
       "url": "https://www.michikusa-travel.com/fr/countryside.html",
-      "bytes": 25761,
-      "sha256": "3fc44c3d269ff7154bb966a8549aa0d2233d1261f14baf7b995f0fa09ea7c54d"
+      "bytes": 26387,
+      "sha256": "d0257f8de20a9c170c0a041007e137c7dcc9be795ff175f2b6b59fc67772038c"
     },
     {
       "path": "fr/donburi.html",
       "url": "https://www.michikusa-travel.com/fr/donburi.html",
-      "bytes": 37560,
-      "sha256": "f61b2ca436684396ab2195fea21f2ffbdc45e1534fe3ac70c8885ddfbe7ffe91"
+      "bytes": 41808,
+      "sha256": "5fdac38d037b6b43997b42258ff5221876b8e44b2cadec1fe32be9cc94664212"
     },
     {
       "path": "fr/drinks.html",
       "url": "https://www.michikusa-travel.com/fr/drinks.html",
-      "bytes": 44673,
-      "sha256": "c93620c8c96e0e040dabcac1492f42daec8df759afa2f3d31ad79bd6d1380a43"
+      "bytes": 45299,
+      "sha256": "377e013930b187687c367788bd2079b5dc95562b907f43e4b0ad9897486333b9"
     },
     {
       "path": "fr/everyday-japan.html",
@@ -2737,8 +2737,8 @@
     {
       "path": "fr/foods.html",
       "url": "https://www.michikusa-travel.com/fr/foods.html",
-      "bytes": 35136,
-      "sha256": "7474664d2b5fa2a6ec0068b19714d437938f19b574446438fb47342237dd527c"
+      "bytes": 35142,
+      "sha256": "1bc3748e368988fa6c382c33ed78af003d97f94596bed738e15d8b77a1cfcffd"
     },
     {
       "path": "fr/hanabi.html",
@@ -2779,8 +2779,8 @@
     {
       "path": "fr/omamori.html",
       "url": "https://www.michikusa-travel.com/fr/omamori.html",
-      "bytes": 30268,
-      "sha256": "be5ff7bf1ccdda7b8022fde3e3fca6c4535d59b448aa2a4ebd1b5e8ac8cdd4bf"
+      "bytes": 30894,
+      "sha256": "2703dad9d4db0af9275c77e2bcfb8fce7d91924d59195146a58e019a9d558e60"
     },
     {
       "path": "fr/reflections.html",
@@ -2845,8 +2845,8 @@
     {
       "path": "fr/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/fr/spots/gamagori-greenhouses.html",
-      "bytes": 112623,
-      "sha256": "28c2da7aa9221ac2b4fb840abe28fc4cc6e7f89321ee250dfe5c13929e66bf89"
+      "bytes": 113255,
+      "sha256": "6e9427715321e29f1dfe80d8d94143927ae621079c7d55373567cb03ef20ae42"
     },
     {
       "path": "fr/spots/gifu-castle.html",
@@ -5095,8 +5095,8 @@
     {
       "path": "it/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/it/beer-on-shinkansen.html",
-      "bytes": 39144,
-      "sha256": "3a278e7e11103cd954dae2b94c485c09f4186760344aecdcb71094367a4e729d"
+      "bytes": 39755,
+      "sha256": "ec6fe68f62f86a580ee445ecb4d12eea50b0a1bad52e3a9a57443d959e6bdbf1"
     },
     {
       "path": "it/castles.html",
@@ -5113,20 +5113,20 @@
     {
       "path": "it/countryside.html",
       "url": "https://www.michikusa-travel.com/it/countryside.html",
-      "bytes": 24226,
-      "sha256": "debeb2cbbd5ef953d2bc9055007e545082e832cd9cbbe6dae9795a1ffd2a64ea"
+      "bytes": 24837,
+      "sha256": "08bbb50bda12cf472c4cd69306163ba31817db082592ab6197b2944840866cda"
     },
     {
       "path": "it/donburi.html",
       "url": "https://www.michikusa-travel.com/it/donburi.html",
-      "bytes": 36005,
-      "sha256": "1a4f5ef48dfff1afa049752b46bd453af4302c17861ab298e898c3127ec1cab7"
+      "bytes": 40134,
+      "sha256": "5ad2b2da9339ba301dc9c0d90d745d9d0a0f5446488399c14589f545d8796e68"
     },
     {
       "path": "it/drinks.html",
       "url": "https://www.michikusa-travel.com/it/drinks.html",
-      "bytes": 46675,
-      "sha256": "aa952c256218a96c19b99b8a318955823648511996fedbae5ee04a2a348414ec"
+      "bytes": 47286,
+      "sha256": "b8d82da4d3c74976289433af5c0e18c8e09f60bf8024c437cde856c2f8d24512"
     },
     {
       "path": "it/everyday-japan.html",
@@ -5143,8 +5143,8 @@
     {
       "path": "it/foods.html",
       "url": "https://www.michikusa-travel.com/it/foods.html",
-      "bytes": 33491,
-      "sha256": "50cac764c1f734acd1fb5f892c091744a661a863cadbc5384372d56dd8de0544"
+      "bytes": 33497,
+      "sha256": "a8fac0184ba20af637a1cc200dd5e3de85d892745c8091fa39904581f79b9283"
     },
     {
       "path": "it/guide.html",
@@ -5191,8 +5191,8 @@
     {
       "path": "it/omamori.html",
       "url": "https://www.michikusa-travel.com/it/omamori.html",
-      "bytes": 29323,
-      "sha256": "76a085bf23658a647775b00576281451926034adcb8d9ec8b4cec0729aed0a04"
+      "bytes": 29934,
+      "sha256": "032dfb9f63b3755a3cc0e2737282f0a87b4fa433bf8d5dfd3581fd30e49de061"
     },
     {
       "path": "it/reflections.html",
@@ -5257,8 +5257,8 @@
     {
       "path": "it/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/it/spots/gamagori-greenhouses.html",
-      "bytes": 38152,
-      "sha256": "9210b6e42fe7b120d7f6ee12b27858e2723724203993e79f1dd5ce7bd2b8d57b"
+      "bytes": 38769,
+      "sha256": "e8748722698eae07a2b95dcd7147e4565367ebab23d75a7033765e0925b42100"
     },
     {
       "path": "it/spots/gifu-castle.html",
@@ -5587,8 +5587,8 @@
     {
       "path": "ko/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/ko/beer-on-shinkansen.html",
-      "bytes": 37102,
-      "sha256": "03ed68a213f7dcc8fcddcd013a10e78aa9343c942be728b9b08034bee6f7b98f"
+      "bytes": 37725,
+      "sha256": "7ab44764116988863d9569197937b6d75aa5e9977bb1b3725b5effc0909eaa6f"
     },
     {
       "path": "ko/castles.html",
@@ -5605,20 +5605,20 @@
     {
       "path": "ko/countryside.html",
       "url": "https://www.michikusa-travel.com/ko/countryside.html",
-      "bytes": 25419,
-      "sha256": "7208ecfebdc2e847e118da21ace9196b4879030834295e5eeb362cb71bbe15cd"
+      "bytes": 26042,
+      "sha256": "ae48fe3b89e693b477708d28c6c37af814e6bf0a370a6fa67722bc9d7f00b889"
     },
     {
       "path": "ko/donburi.html",
       "url": "https://www.michikusa-travel.com/ko/donburi.html",
-      "bytes": 37278,
-      "sha256": "54a017e6b481ed1e93bd9661e2963acbc1f39c36ad89f171f98a23b9e60fb9aa"
+      "bytes": 41412,
+      "sha256": "64c0ef483699a69ef4871a6da8eb23e06fd23c9710f73ab23e8082fdb6f94f50"
     },
     {
       "path": "ko/drinks.html",
       "url": "https://www.michikusa-travel.com/ko/drinks.html",
-      "bytes": 44904,
-      "sha256": "c05a4594c6554c1c0b04770fb645b33ccc70f03814b3413f83fe213dbb770cd6"
+      "bytes": 45527,
+      "sha256": "df7bc0364ccbe71487186515cfd78428bd01f2665129fe11210478e1eb69b9a5"
     },
     {
       "path": "ko/everyday-japan.html",
@@ -5635,8 +5635,8 @@
     {
       "path": "ko/foods.html",
       "url": "https://www.michikusa-travel.com/ko/foods.html",
-      "bytes": 34844,
-      "sha256": "d9314d359493910f88015d8ca65bf311e9a573f179a728426387de3b59d92c93"
+      "bytes": 34850,
+      "sha256": "72872067da8fedc9b9eb6c1e66ab184987cd0a6e4b358cd205160ec9d1b5a32c"
     },
     {
       "path": "ko/hanabi.html",
@@ -5677,8 +5677,8 @@
     {
       "path": "ko/omamori.html",
       "url": "https://www.michikusa-travel.com/ko/omamori.html",
-      "bytes": 29915,
-      "sha256": "34516aded640e3cf532c90023cd54a0849295c314ef103fd4863914c331e74c0"
+      "bytes": 30538,
+      "sha256": "0274f7418a848ceecf9ea3bc2b77fb2d8a968af99320a8473f02f3da58a6aea6"
     },
     {
       "path": "ko/reflections.html",
@@ -5743,8 +5743,8 @@
     {
       "path": "ko/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/ko/spots/gamagori-greenhouses.html",
-      "bytes": 39238,
-      "sha256": "ad23d37ec21c73bbe645dde2b0edb8123e5c51dfa6bf79dce99843c0a223e0f5"
+      "bytes": 39867,
+      "sha256": "e7a8da99e31b30331aa40ea15521fee21e8c2deb8dd3a870c8f87f4fcb349210"
     },
     {
       "path": "ko/spots/gifu-castle.html",
@@ -7579,8 +7579,8 @@
     {
       "path": "th/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/th/beer-on-shinkansen.html",
-      "bytes": 53071,
-      "sha256": "b4a925de926d558ed301b75bc0f98237c8dc6f7a4bc4ee3a8ec2589cc38a389c"
+      "bytes": 53912,
+      "sha256": "4ceb891809f344ba90a4db13aa31ada95b17c1fa68428bfff56c24e177798f79"
     },
     {
       "path": "th/castles.html",
@@ -7597,20 +7597,20 @@
     {
       "path": "th/countryside.html",
       "url": "https://www.michikusa-travel.com/th/countryside.html",
-      "bytes": 31586,
-      "sha256": "8083c305447cc7d72c249fa85355068f5acbbbe5aa537f471190b95c5adff210"
+      "bytes": 32427,
+      "sha256": "3983720a04d8430f0dfdb0d194011e69bd6209173c521af0c192789a4ada6d5a"
     },
     {
       "path": "th/donburi.html",
       "url": "https://www.michikusa-travel.com/th/donburi.html",
-      "bytes": 54920,
-      "sha256": "3ced9f966109166520f478155ea34d16f63362b50710b14c833aac74e831e752"
+      "bytes": 60059,
+      "sha256": "be6b09e8b9d217e3af33288b5d651ba7b5ee82257effcd45dd00bf0b235b25ba"
     },
     {
       "path": "th/drinks.html",
       "url": "https://www.michikusa-travel.com/th/drinks.html",
-      "bytes": 61182,
-      "sha256": "30f7845a32a9ad3161bd03bd62794f6b41f75641f1266f61d3772d4a563db2e0"
+      "bytes": 62023,
+      "sha256": "6fe9da9499809f19eb889292bae8449bb78b75f4d8762eddc35136f9b9b83afc"
     },
     {
       "path": "th/everyday-japan.html",
@@ -7627,8 +7627,8 @@
     {
       "path": "th/foods.html",
       "url": "https://www.michikusa-travel.com/th/foods.html",
-      "bytes": 42701,
-      "sha256": "3249f0200c1409c9f69e3fbaaa115a152f3e30de5f3ddad5e70c5ed2c3b44f47"
+      "bytes": 42707,
+      "sha256": "aa526fda2eb7f748199a48851ebfe65cbb450e3e708dfbac30690824eb68f204"
     },
     {
       "path": "th/guide.html",
@@ -7675,8 +7675,8 @@
     {
       "path": "th/omamori.html",
       "url": "https://www.michikusa-travel.com/th/omamori.html",
-      "bytes": 43733,
-      "sha256": "3dcba6762de86a5489350f5b7f84d0eba1c4b68e979343bd81604306a7bf1f85"
+      "bytes": 44574,
+      "sha256": "a9e0798e616ff447c5c8d55950234bb6efdd96a89e48f13f204d9e6b3268ba69"
     },
     {
       "path": "th/reflections.html",
@@ -7741,8 +7741,8 @@
     {
       "path": "th/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/th/spots/gamagori-greenhouses.html",
-      "bytes": 50062,
-      "sha256": "7f5b41f3ab48ec5477ea3e355ceb8324faebb7eb1af2421d429c23e8be4eae43"
+      "bytes": 50909,
+      "sha256": "3bbf3f84ae20752e2691440045dcd174e884bcda2e650bf7dc4fe5e94a407b9a"
     },
     {
       "path": "th/spots/gifu-castle.html",
@@ -8251,8 +8251,8 @@
     {
       "path": "zh-Hans/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/beer-on-shinkansen.html",
-      "bytes": 34920,
-      "sha256": "3cc5e2b2ed6f8fd5be5e79f6bbda0167b4734e7779a306de2ba077cb2632f6e6"
+      "bytes": 35492,
+      "sha256": "7a0a57565f7cdc209dd561a63b681d2c433720f2818416e3fac788f61b69c344"
     },
     {
       "path": "zh-Hans/castles.html",
@@ -8269,20 +8269,20 @@
     {
       "path": "zh-Hans/countryside.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/countryside.html",
-      "bytes": 23730,
-      "sha256": "bafe7b59ef57efc7da8aa3e63fd42a1f4157b7ebc8c18dc0b92d95f471000b58"
+      "bytes": 24302,
+      "sha256": "bee036e91df5714f84e4e9e4c76b127fa01796f95cdc8f047ab4537a4131a03f"
     },
     {
       "path": "zh-Hans/donburi.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/donburi.html",
-      "bytes": 33593,
-      "sha256": "5cb9545f90be5459c7df7fe6005e11d6514565088a90b3e458b93e8912db0ef3"
+      "bytes": 37521,
+      "sha256": "519fca9188dc50993e43d979dd16edd6fec3878ec1a6fcde441cf0c249ee0b17"
     },
     {
       "path": "zh-Hans/drinks.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/drinks.html",
-      "bytes": 42518,
-      "sha256": "da9880828ae30a55ab6e3c9060759d95ac76679b47d9a039b7ce99cf479536b2"
+      "bytes": 43090,
+      "sha256": "8893d37da3550b9a2a0c333282a26ecb700e5638815b55278e5071b447691efc"
     },
     {
       "path": "zh-Hans/everyday-japan.html",
@@ -8299,8 +8299,8 @@
     {
       "path": "zh-Hans/foods.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/foods.html",
-      "bytes": 32471,
-      "sha256": "e65ca194f8962ffbac201e2f9eee46d80e9874bd4974ad49f18d27c1e59a5432"
+      "bytes": 32482,
+      "sha256": "1a339c0827fcfb297210da190d251b575a6bd55770bdda5c461d38cfc6fdcbb4"
     },
     {
       "path": "zh-Hans/hanabi.html",
@@ -8341,8 +8341,8 @@
     {
       "path": "zh-Hans/omamori.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/omamori.html",
-      "bytes": 27411,
-      "sha256": "53a90cd00946bcb3b4185877d58f9df236eefcc6cfb008be4815642f6f9ba4cf"
+      "bytes": 27983,
+      "sha256": "c8378b0bd3b58e313ea2a2fb099425c26bfe1e5072ca1289cffd5fb889baa2d3"
     },
     {
       "path": "zh-Hans/reflections.html",
@@ -8407,8 +8407,8 @@
     {
       "path": "zh-Hans/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/spots/gamagori-greenhouses.html",
-      "bytes": 36335,
-      "sha256": "0fae0b2137088d31d9e832e247847b9aa3a59a9fc318560546a6ea37d49f666f"
+      "bytes": 36913,
+      "sha256": "1794cf2acd931cff48dbd7f54c670eea45d7697e13a705fdf4b32d772a329065"
     },
     {
       "path": "zh-Hans/spots/gifu-castle.html",
@@ -8713,8 +8713,8 @@
     {
       "path": "zh-Hant/beer-on-shinkansen.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/beer-on-shinkansen.html",
-      "bytes": 34920,
-      "sha256": "8f490cff4874108b01cc83b9020220d2f751665fef9e6dee48c9cb6c6abe6427"
+      "bytes": 35489,
+      "sha256": "70b4718ba532388ee626f95b0c23006c255002301a80bb1f29f1dd6af80d57f8"
     },
     {
       "path": "zh-Hant/castles.html",
@@ -8731,20 +8731,20 @@
     {
       "path": "zh-Hant/countryside.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/countryside.html",
-      "bytes": 23731,
-      "sha256": "079d7654053cce587ebfdf579ce8bb20e554c6cf4489ea47f8436b27e0cacc6c"
+      "bytes": 24300,
+      "sha256": "d531b3adc931c3d3aa747ce423de9257f4f15c7aa79e04c9ab962657b8658713"
     },
     {
       "path": "zh-Hant/donburi.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/donburi.html",
-      "bytes": 33320,
-      "sha256": "be0b118a44c1e6129313e18e39611d7bcf8283388468f5ae554dc396ca14e41b"
+      "bytes": 37248,
+      "sha256": "91ef7467159a0749f4727856f6ba1432011c34abac0c55d05eb3573a66e39ed3"
     },
     {
       "path": "zh-Hant/drinks.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/drinks.html",
-      "bytes": 42527,
-      "sha256": "5753b8b4173ae7da7cb078a6e2cb089e628f10a130b0a3e657bfb6005b26149a"
+      "bytes": 43096,
+      "sha256": "002f69abfc4ac940082b22799d496da3d919a36af5d9a2e76552444df6fd3cc9"
     },
     {
       "path": "zh-Hant/everyday-japan.html",
@@ -8761,8 +8761,8 @@
     {
       "path": "zh-Hant/foods.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/foods.html",
-      "bytes": 32450,
-      "sha256": "99fe9977b2c1ef736a0507f451b4b704abe179209ff9c44fb1f72c8e4afd277c"
+      "bytes": 32461,
+      "sha256": "6d36f6cf585107591277d9989c4d1d2a23bc7084f0035840757e703559f6ea30"
     },
     {
       "path": "zh-Hant/hanabi.html",
@@ -8803,8 +8803,8 @@
     {
       "path": "zh-Hant/omamori.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/omamori.html",
-      "bytes": 27055,
-      "sha256": "00a351dbcd87d5d4d6fb3a237b2dd0e092e6db2b2c00844b656534476f44f4a1"
+      "bytes": 27624,
+      "sha256": "370ff4f8544336e77406029a796a4ff2d5e5fc76e7ecbe275aa3e58e0b6774af"
     },
     {
       "path": "zh-Hant/reflections.html",
@@ -8869,8 +8869,8 @@
     {
       "path": "zh-Hant/spots/gamagori-greenhouses.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/spots/gamagori-greenhouses.html",
-      "bytes": 36335,
-      "sha256": "63d767f805fb991f8ef285aeaf89996c7dc45ed32e5430a6ea1ed4db08f3b0d5"
+      "bytes": 36910,
+      "sha256": "bdb03faac47821b76a7fdc2ca1d0ad0af0a1cbf5e01ea2cc36849d2ee20b7f18"
     },
     {
       "path": "zh-Hant/spots/gifu-castle.html",
