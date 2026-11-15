@@ -7,6 +7,7 @@ import {kyotoWindowArticle} from './shared/window-articles.mjs';
 import {assetVersion} from './shared/asset-version.mjs';
 import {enhanceContentHead} from './shared/content-metadata.mjs';
 import {ANALYTICS} from './shared/feature-page.mjs';
+import {withArticleLocales} from './shared/castle-locales.mjs';
 
 const app = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const root = {};
@@ -36,13 +37,16 @@ for (const lang of requestedLang ? [requestedLang] : ['ja','en']) {
   doc.querySelectorAll('img[data-photo-original-src]').forEach(img=>{if(!img.getAttribute('src'))img.src=img.dataset.photoDisplaySrc||img.dataset.photoOriginalSrc;img.removeAttribute('data-photo-deferred');});
   doc.querySelectorAll('.spot-page-inline-figure figcaption a').forEach(credit=>{
     const match=credit.textContent.match(/^(.*?) \/ (CC BY(?:-SA)? 4\.0)$/);if(!match)return;
-    credit.textContent=match[1];const licence=doc.createElement('a');licence.href=`https://creativecommons.org/licenses/${match[2].includes('-SA')?'by-sa':'by'}/4.0/`;licence.textContent=match[2];licence.target='_blank';licence.rel='noopener noreferrer';credit.after(doc.createTextNode(' / '),licence,doc.createTextNode(lang==='ja'?'（縮小）':' (resized)'));
+    credit.textContent=match[1];const licence=doc.createElement('a');licence.href=`https://creativecommons.org/licenses/${match[2].includes('-SA')?'by-sa':'by'}/4.0/`;licence.textContent=match[2];licence.target='_blank';licence.rel='noopener noreferrer';credit.after(doc.createTextNode(' / '),licence);
+    const change=doc.createElement('span');change.className='spot-photo-change';change.textContent=lang==='ja'?'（縮小）':'(resized)';credit.parentElement.after(change);
   });
   // Share the normal utility-page chrome and its language switch.
   const main=doc.querySelector('main');const shell=main.querySelector('.spot-page-shell');shell.insertAdjacentHTML('afterbegin','<aside data-spot-page-shared-module="rail"></aside>');
   const head=`<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${esc(page.heading)} | ${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</title><meta property="og:title" content="${esc(page.heading)}"><meta name="twitter:card" content="summary_large_image"><meta name="description" content="${esc(lang==='ja'?'京都タワーと京都駅前を、新幹線のE席側の車窓と下車後の写真で紹介。白い塔の歴史、京都駅ビルの外観、烏丸口や広場での眺め方をたどります。':'Discover Kyoto Tower and Kyoto Station from the Shinkansen’s Seat E window, then explore the tower’s history, station architecture and Karasuma-side streets on foot.')}"/><link rel="canonical" href="https://www.michikusa-travel.com/${route}"><link rel="alternate" hreflang="ja" href="https://www.michikusa-travel.com/kyoto-station-views.html"><link rel="alternate" hreflang="en" href="https://www.michikusa-travel.com/en/kyoto-station-views.html"><link rel="alternate" hreflang="x-default" href="https://www.michikusa-travel.com/kyoto-station-views.html">${['style.css','spot-media-gallery.css','window-articles.css'].map(file=>`<link rel="stylesheet" href="${prefix}${file}?v=${assetVersion(file)}">`).join('')}${ANALYTICS.withEmbeddedGuard}`;
   let html=`<!doctype html><html lang="${lang}"><head>${head}</head><body class="spot-page spot-page-utility" data-spot-page-shared-context="utility" data-spot-page-shared-id="kyoto-station-views" data-spot-page-shared-lang="${lang}" data-spot-page-shared-root="${prefix}" data-spot-page-shared-route="kyoto-station-views.html"><div data-spot-page-shared-module="topbar"></div>${doc.body.innerHTML}<section data-spot-page-shared-module="content-rail"></section><footer class="footer"><p class="footer-brand">${lang==='ja'?'新幹線の窓':'Shinkansen Window'}</p><a href="${prefix}${lang==='ja'?'':'en/'}zukan.html">${lang==='ja'?'車窓一覧':'All window views'}</a></footer>${['spot-page-shared-data.js','spot-page-shared.js','spot-media-gallery.js','window-articles.js'].map(file=>`<script src="${prefix}${file}?v=${assetVersion(file)}"></script>`).join('')}</body></html>\n`;
   html=enhanceContentHead(html,route,app);
+  html=html.replace('</head>',`<meta property="og:url" content="https://www.michikusa-travel.com/${route}"></head>`);
+  html=html.replace(/<head[\s\S]*?<\/head>/, head=>withArticleLocales(head,route,assetVersion('article-locales.js')));
   const target=path.join(app,route);
   if(process.argv.includes('--check')){if(!fs.existsSync(target)||fs.readFileSync(target,'utf8')!==html)throw Error(`Kyoto article out of date: ${route}`);}else fs.writeFileSync(target,html);
   dom.window.close();

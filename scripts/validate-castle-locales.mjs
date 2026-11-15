@@ -12,7 +12,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const editions = ['ja', 'en', ...CASTLE_LOCALE_LANGS];
 // Exercise the scenery companions with the same photo, map and edition contracts.
-const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a'].map(id => `spots/${id}.html`);
+const sceneryRoutes = ['fujikawa-bridge', 'fuji-paper-mills', 'ibuki', 'ibuki-seat-a', 'pocari-fukuroi'].map(id => `spots/${id}.html`).concat('kyoto-station-views.html');
 const articleRoutes = [...new Set([...CASTLE_LOCALE_ROUTES, "spots/maruko-bridge.html", ...sceneryRoutes, ...EXPANSION_ROUTES.filter(route => route.startsWith('spots/') || ['jr-pass-fuji.html','hanabi.html'].includes(route))])];
 const routeIndex = process.argv.indexOf('--route');
 const requestedRoute = routeIndex < 0 ? null : process.argv[routeIndex + 1];
@@ -59,7 +59,8 @@ function checkMetadata(doc, lang, route, label) {
   assert(doc.querySelector('meta[property="og:url"]')?.content === `${origin}/${routeFor(lang, route)}`, label, 'Open Graph URL must match the canonical article');
   for (const edition of [...supported(route), 'x-default']) {
     const links = doc.querySelectorAll(`link[rel="alternate"][hreflang="${edition}"]`);
-    assert(links.length === 1 && links[0].href === `${origin}/${routeFor(edition === 'x-default' ? 'en' : edition, route)}`, label, `reciprocal hreflang ${edition} missing or duplicated`);
+    const defaultLanguage = route === 'kyoto-station-views.html' ? 'ja' : 'en';
+    assert(links.length === 1 && links[0].href === `${origin}/${routeFor(edition === 'x-default' ? defaultLanguage : edition, route)}`, label, `reciprocal hreflang ${edition} missing or duplicated`);
   }
   assert(Boolean(doc.title.trim() && doc.querySelector('meta[name="description"]')?.content.trim()), label, 'title/description missing');
   for (const script of doc.querySelectorAll('script[type="application/ld+json"]')) {
