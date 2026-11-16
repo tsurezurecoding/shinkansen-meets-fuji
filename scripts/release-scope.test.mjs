@@ -573,3 +573,13 @@ test('AdSense ownership verification publishes only its root record and rejects 
 test('registered article-route spots retain all global consumer checks without a spot payload', () => {
   assert.equal(chooseReleaseScope([change('data.js'), {path:'images/stamps/stamp_kyoto-tower.svg',status:'A'}, {path:'kyoto-station-views.html',status:'M'}]).scope, 'full');
 });
+
+test('Kyoto layout and existing night-article additions use their bounded consumers',()=>{
+ const files=['scripts/generate-kyoto-window-page.mjs','scripts/generate-yakei-page.mjs','scripts/shared/yakei-spots.mjs','scripts/locales/episode-fr.json','fr/utility-data.js','fr/yakei.html','kyoto-station-views.html','index.html','content-manifest.json'].map(change);
+ const plan=chooseReleaseScope(files);
+ assert.equal(plan.scope,'night-article-followup');
+ assert.ok(plan.commands.some(c=>c.includes('scripts/yakei-locales.test.mjs')));
+ assert.ok(plan.commands.some(c=>c.includes('scripts/validate-spot-counts.mjs')));
+ assert.equal(chooseReleaseScope([...files,change('data.js')]).scope,'unmapped');
+ assert.equal(chooseReleaseScope([...files,change('site-chrome.js')]).scope,'unmapped');
+});
