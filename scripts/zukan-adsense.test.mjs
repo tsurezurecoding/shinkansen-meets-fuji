@@ -3,6 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import vm from 'node:vm';
 import {chooseReleaseScope} from './release-scope.mjs';
+import {readSiteSource,finalizeSiteChrome} from './shared/site-chrome.mjs';
+import {withStoryWindowLinks} from './shared/story-window.mjs';
+import {withUtilityLocales} from './shared/utility-locales.mjs';
 const html=fs.readFileSync('zukan.html','utf8');
 const marker=/<!-- ZUKAN_ADSENSE_JA_START -->[\s\S]*?<!-- ZUKAN_ADSENSE_JA_END -->/;
 const block=html.match(marker)[0];
@@ -25,4 +28,12 @@ test('narrow release contract selects this dependency set',()=>{
  const files=['zukan.html','privacy.html','scripts/templates/site-source/zukan.html.tpl','scripts/templates/site-source/privacy.html.tpl','scripts/generate-language-mirrors.mjs','scripts/release-scope.mjs','scripts/zukan-adsense.test.mjs'];
  assert.equal(chooseReleaseScope(files.map(path=>({path,status:'M'}))).scope,'zukan-adsense');
  assert.notEqual(chooseReleaseScope([...files,'app.js'].map(path=>({path,status:'M'}))).scope,'zukan-adsense');
+});
+
+test('published hosts match their owning source pipeline and remove the photo note',()=>{
+ const root=process.cwd();
+ assert.equal(withUtilityLocales(withStoryWindowLinks(readSiteSource(root,'zukan.html'),'zukan.html',root),'zukan.html'),html);
+ assert.equal(finalizeSiteChrome(readSiteSource(root,'privacy.html'),'privacy.html',root),fs.readFileSync('privacy.html','utf8'));
+ for(const lang of ['', 'en/','fr/','de/','es/','it/','ko/','th/','zh-Hans/','zh-Hant/'])assert.ok(!fs.readFileSync(lang+'zukan.html','utf8').includes('ja-only-sudoori-credit'));
+ assert.ok(fs.readFileSync('privacy.html','utf8').includes('https://myadcenter.google.com/'));
 });
