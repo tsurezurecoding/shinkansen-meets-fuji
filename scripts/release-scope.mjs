@@ -209,6 +209,12 @@ export function onlyDonburiAssetReferencesChanged(before, after) {
 export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
+  const zukanAdsenseFiles = new Set(['zukan.html','privacy.html','scripts/templates/site-source/zukan.html.tpl','scripts/templates/site-source/privacy.html.tpl','scripts/generate-language-mirrors.mjs','scripts/release-scope.mjs','scripts/zukan-adsense.test.mjs']);
+  if (files.includes('scripts/zukan-adsense.test.mjs') && files.includes('zukan.html') && changes.every(c => ['A','M'].includes(c.status) && zukanAdsenseFiles.has(c.path))) return {
+    scope: 'zukan-adsense', needsDependencies: true, pagesCandidate: true,
+    reason: 'One Japanese catalogue ad, mirror exclusion and privacy disclosure; shared chrome and other languages are unchanged.',
+    commands: [...syntax, node('--test','scripts/zukan-adsense.test.mjs','scripts/release-scope.test.mjs'), node('scripts/check-content-manifest.mjs')],
+  };
   const adsenseVerificationFiles = new Set(['ads.txt', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs']);
   if (files.includes('ads.txt') && changes.every(change => ['A', 'M'].includes(change.status) && adsenseVerificationFiles.has(change.path))) return {
     scope: 'adsense-verification', needsDependencies: false, pagesCandidate: true,

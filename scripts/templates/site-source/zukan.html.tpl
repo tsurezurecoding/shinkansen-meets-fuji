@@ -240,6 +240,30 @@
         </a><!-- ja-only-sudoori:start --><a class="journey-intent-card journey-intent-cloudy" href="sudoori/index.html" data-cta-track="zukan_theme_click" data-cta-id="sudoori"><img src="images/20260924_yamazaki-distillery_6867_michikusa.jpg" alt="" loading="lazy" decoding="async"><span class="journey-intent-copy"><small>PASSING TOWNS</small><strong>素通りの街</strong><span><span class="copy-chunk">いつも通り過ぎる町の、</span><span class="copy-chunk">知らなかった話。</span></span></span></a><!-- ja-only-sudoori:end --></div>
     <!-- ja-only-sudoori-credit:start --><p class="field-guide-photo-note">「素通りの街」の車窓写真：michikusa（2026年9月撮影）</p><!-- ja-only-sudoori-credit:end --></section>
 
+    <!-- ZUKAN_ADSENSE_JA_START -->
+    <style>
+      .zukan-ad { margin:32px auto; width:100%; max-width:728px; }
+      .zukan-ad-label { display:block; margin:0 0 8px; font-size:11px; color:var(--muted,#6b7280); text-align:center; }
+      .zukan-ad-unit { display:block; width:100%; height:250px; }
+      @media(min-width:768px) { .zukan-ad-unit { height:90px; } }
+    </style>
+    <aside class="zukan-ad" aria-label="広告">
+      <small class="zukan-ad-label">広告</small>
+      <ins class="adsbygoogle zukan-ad-unit" data-ad-client="ca-pub-5756673901202661" data-ad-slot="6441368309" data-full-width-responsive="false"></ins>
+    </aside>
+    <script>
+      (function () {
+        // Local previews and packaged copies never request live advertisements.
+        if (location.protocol !== 'https:' || !/^(www\.)?michikusa-travel\.com$/.test(location.hostname) || location.pathname !== '/zukan.html') return;
+        var loader = document.createElement('script');
+        loader.async = true;
+        loader.crossOrigin = 'anonymous';
+        loader.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5756673901202661';
+        document.head.appendChild(loader);
+        (window.adsbygoogle = window.adsbygoogle || []).push({});
+      }());
+    </script>
+    <!-- ZUKAN_ADSENSE_JA_END -->
     <section class="section" id="gallery">
       <div class="section-head">
         <p class="eyebrow" data-i18n="zukanAllEyebrow">ALL WINDOW VIEWS</p>
