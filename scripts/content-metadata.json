@@ -42,9 +42,9 @@
     "kind": "editorial article",
     "article": true,
     "published": "2026-08-14",
-    "modified": "2026-10-12",
+    "modified": "2026-11-16",
     "publishedEvidence": "2026-08-14_yakei-page-release.md",
-    "modifiedEvidence": "2026-10-12_top-multilingual-release.md: merged morning correction d8844a33; Hinataoka official district/development facts or night-photo explanation and shared 15-scene count"
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions"
   },
   "guide.html": {
     "kind": "editorial article",
@@ -535,8 +535,8 @@
     "kind": "editorial article",
     "article": true,
     "dateReview": "Publication/substantive-update evidence remains unconfirmed where dates are omitted; preserve existing sitemap values.",
-    "modified": "2026-10-12",
-    "modifiedEvidence": "2026-10-12_top-multilingual-release.md: merged morning correction d8844a33; Hinataoka official district/development facts or night-photo explanation and shared 15-scene count"
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions"
   },
   "en/arenani.html": {
     "kind": "collection",
@@ -841,22 +841,22 @@
   "de/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-20",
-    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions",
     "dateReview": "Publication remains unapproved; no publication date is asserted."
   },
   "fr/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-20",
-    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions",
     "dateReview": "Publication remains unapproved; no publication date is asserted."
   },
   "zh-Hant/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-20",
-    "modifiedEvidence": "2026-10-20_multilingual-body-five.md: localized article prepared and verified on an unpublished branch; this is a text revision date, not a publication date",
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions",
     "dateReview": "Publication remains unapproved; no publication date is asserted."
   },
   "zh-Hans/spots/fuji.html": {
@@ -876,22 +876,22 @@
   "es/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-21",
-    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions",
     "dateReview": "Text revision date; no historical publication date asserted."
   },
   "zh-Hans/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-21",
-    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions",
     "dateReview": "Text revision date; no historical publication date asserted."
   },
   "ko/yakei.html": {
     "kind": "editorial article",
     "article": true,
-    "modified": "2026-10-21",
-    "modifiedEvidence": "Owner-approved completion of Fuji and night-view articles in all eight existing languages except Arabic; localized text and UI, preserved photographs and calculation.",
+    "modified": "2026-11-16",
+    "modifiedEvidence": "2026-11-16 owner-requested Kyoto Tower and Fuji KOUEN night photographs and localized descriptions",
     "dateReview": "Text revision date; no historical publication date asserted."
   },
   "zh-Hant/foods.html": {

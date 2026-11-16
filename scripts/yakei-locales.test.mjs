@@ -11,6 +11,15 @@ test('every night-view calculator destination has a matching article card in all
  for(const lang of ['ja','en',...Object.keys(names)]){
   const file=(lang==='ja'?'':lang+'/')+'yakei.html',dom=new JSDOM(read(file));
   for(const id of YAKEI_SPOT_IDS)assert.ok(dom.window.document.getElementById('yk-'+id),`${file}: missing calculator destination #yk-${id}`);
+  for(const [id,photo,route] of [['kyoto-tower','20261115_kyoto-tower_night_11744_michikusa','kyoto-station-views.html'],['fuji-paper-mills','20261115_fuji-paper-mills_kouen_67349_michikusa','spots/fuji-paper-mills.html#kouen']]){
+    assert.ok(YAKEI_SPOT_IDS.includes(id));
+    const card=dom.window.document.getElementById('yk-'+id);
+    assert.ok(card.querySelector('img').getAttribute('src').includes(photo));
+    assert.equal(card.querySelector('figcaption').textContent,'michikusa');
+    const a=card.querySelector('.yk-more a');
+    assert.equal(new URL(a.getAttribute('href'),'https://www.michikusa-travel.com/'+file).pathname,'/'+(lang==='ja'?'':lang+'/')+route.split('#')[0]);
+    if(id==='fuji-paper-mills')assert.equal(new URL(a.getAttribute('href'),'https://www.michikusa-travel.com/'+file).hash,'#kouen');
+  }
   dom.window.close();
  }
 });

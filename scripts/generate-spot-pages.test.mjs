@@ -84,9 +84,9 @@ test('editorial metadata: curated candidates and generated spot contracts pass t
   // Story/Maruko, omamori and window articles, then 24 translated article metadata entries and ten donburi editions.
   assert.equal(Object.keys(CONTENT_METADATA).length, 138 + 50 + 8 + 10 + 10 + 6 + 24 + 10);
   for (const file of ['zh-Hant/spots/fuji.html','es/spots/fuji.html','de/yakei.html','fr/yakei.html','zh-Hant/yakei.html']) {
-    assert.equal(CONTENT_METADATA[file].modified, '2026-10-20');
+    assert.equal(CONTENT_METADATA[file].modified, file.endsWith('/yakei.html') ? '2026-11-16' : '2026-10-20');
     assert.equal(CONTENT_METADATA[file].published, undefined, 'local translation dates must not assert publication');
-    assert.match(CONTENT_METADATA[file].modifiedEvidence, /unpublished branch/);
+    assert.match(CONTENT_METADATA[file].modifiedEvidence, file.endsWith('/yakei.html') ? /owner-requested/ : /unpublished branch/);
   }
   assert.equal(CONTENT_METADATA['en/foods.html'].article, true);
   assert.equal(CONTENT_METADATA['en/everyday-japan.html'].kind, 'collection');
@@ -140,7 +140,7 @@ test('invalid dates and unsupported Article decisions are rejected; builds do no
   assert.equal(contentLastmod(SITE + '/index.html', '2026-07-29'), '2026-07-29');
   assert.equal(contentLastmod(SITE + '/spots/left-fuji.html', '2026-08-02'), '2026-08-23');
   assert.ok(metadataProblems({ 'test.html': { publishedAccuracy: 'estimated-day', published: '2026-07-01', publishedEvidence: 'fixture' } }).length);
-  assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-10-12');
+  assert.equal(contentLastmod(SITE + '/yakei.html', '2026-08-14'), '2026-11-16');
 });
 
 test('metadata enrichment is idempotent and does not change body content or internal links', () => {

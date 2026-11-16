@@ -397,6 +397,25 @@ const COPY = {
  }
 };
 
+const ADDED_NIGHT_VIEWS = {
+  'kyoto-tower': {
+    image: '20261115_kyoto-tower_night_11744_michikusa',
+    route: 'kyoto-station-views.html',
+    ja: { title: '京都タワーと京都駅前', alt: '新幹線の車窓から、夜の建物越しに白く光る京都タワー', body: '京都駅の前後、E席側の街並みの上に、京都タワーの白い胴体と展望室が浮かびます。昼の姿や京都駅ビルと見比べると、到着の景色にも違う表情が見つかります。' },
+    en: { title: 'Kyoto Tower and Kyoto Station', alt: 'Kyoto Tower illuminated above the buildings at night, seen from the Shinkansen', body: 'Kyoto Tower’s white shaft and observation room glow above the streets near Kyoto Station. Look from Seat E; the full article also shows the tower by day and the station building.' },
+  },
+  'fuji-paper-mills': {
+    image: '20261115_fuji-paper-mills_kouen_67349_michikusa',
+    route: 'spots/fuji-paper-mills.html#kouen',
+    ja: { title: '富士の製紙工場', alt: '興亜工業本社工場の大煙突が虹色に光る夜の車窓', body: '興亜工業本社工場の高さ116.5mの大煙突を彩る「虹煙 -KOUEN-」。2026年11月11〜23日、17〜24時の期間限定ライトアップです。昼の写真で紹介する日本製紙富士工場とは別の工場で、常設の照明ではありません。' },
+    en: { title: "Fuji's Paper Mills", alt: 'The chimney at Koa Kogyo’s head office mill illuminated in rainbow colours at night', body: 'KOUEN lights Koa Kogyo’s 116.5-metre chimney in rainbow colours from 11–23 November 2026, 17:00 to midnight. This temporary installation is at a different factory from Nippon Paper’s Fuji Mill.' },
+  },
+};
+function addedNightCard(lang, id) {
+  const view = ADDED_NIGHT_VIEWS[id], copy = view[lang], prefix = lang === 'en' ? '../' : '';
+  return `<article class="yk-spot" id="yk-${id}"><figure class="yk-figure"><a class="yk-castle-zoom" href="${prefix}images/${view.image}.jpg"><img src="${prefix}images/thumbs/${view.image}.webp" alt="${copy.alt}" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption>michikusa</figcaption></figure><div class="yk-spot-body"><p class="yk-spot-meta"><span class="yk-side yk-side-e">${lang === 'ja' ? 'E席側' : 'Seat E'}</span></p><h3>${copy.title}</h3><p>${copy.body}</p><p class="yk-more"><a href="${view.route}">${copy.title} →</a></p></div></article>`;
+}
+
 function render(lang) {
   const en = lang === 'en';
   const p = en ? '../' : '';
@@ -489,6 +508,7 @@ ${t.yakei_page}
         ${t.yk_more}
       </div>
     </article>
+    ${addedNightCard(lang, 'kyoto-tower')}
     <article class="yk-spot" id="yk-odawara-castle">
       <figure class="yk-figure">
         <a class="yk-castle-zoom" href="${p}images/20261103_odawara-castle_night_105629_michikusa.jpg">${t.copy18}</a>
@@ -557,6 +577,7 @@ ${t.yakei_page}
         ${t.yk_more5}
       </div>
     </article>
+    ${addedNightCard(lang, 'fuji-paper-mills')}
   </section>
 
   <section class="yk-section" id="citylight" aria-labelledby="citylight-title">

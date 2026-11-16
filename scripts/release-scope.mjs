@@ -456,6 +456,30 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
         .map(route => node('scripts/generate-castle-locales.mjs', '--route', route, '--check')),
       node('scripts/check-content-manifest.mjs')],
   };
+  // Existing article layout and night-feature photographs; no spot positions or locale routes change.
+  const nightArticleSources = new Set(['scripts/generate-kyoto-window-page.mjs', 'scripts/generate-yakei-page.mjs',
+    'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'scripts/window-articles.test.mjs',
+    'scripts/generate-spot-pages.test.mjs', 'scripts/content-metadata.json',
+    'scripts/templates/site-source/index.html.tpl', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
+    'content-manifest.json', 'site-runtime.json', 'spot-page-runtime.json', 'sitemap.xml']);
+  const nightArticlePage = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:kyoto-station-views|yakei|index)\.html$/;
+  const nightArticleLocale = /^scripts\/locales\/(?:episode|utility)-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
+  const nightArticlePayload = /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/;
+  if (files.some(file => ['scripts/generate-kyoto-window-page.mjs','scripts/generate-yakei-page.mjs','scripts/shared/yakei-spots.mjs'].includes(file))
+    && changes.every(({path:file,status}) => status === 'M' && (nightArticleSources.has(file) || nightArticlePage.test(file)
+      || nightArticleLocale.test(file) || nightArticlePayload.test(file) || file.endsWith('.html') && assetVersionOnly(file)))) return {
+    scope:'night-article-followup', needsDependencies:true, pagesCandidate:true,
+    reason:'Existing Kyoto article and night-feature cards, their localized editions and calculator destinations, landing counts and locale-payload cache references; registered spots, routes and shared UI remain unchanged.',
+    commands:[...syntax, node('--test','scripts/release-scope.test.mjs','scripts/window-articles.test.mjs','scripts/yakei-locales.test.mjs','scripts/generate-spot-pages.test.mjs'),
+      node('scripts/generate-kyoto-window-page.mjs','--check'),node('scripts/generate-yakei-page.mjs','--check'),
+      node('scripts/generate-utility-locales.mjs','--route','index.html','--check'),
+      ...['kyoto-station-views.html','yakei.html'].flatMap(route=>[
+        node('scripts/generate-castle-locales.mjs','--route',route,'--check'),
+        ...(route==='kyoto-station-views.html'?[node('scripts/validate-castle-locales.mjs','--route',route)]:[]),
+        node('scripts/validate-site-navigation.mjs','--route',route)]),
+      node('scripts/validate-spot-counts.mjs'),node('scripts/audit-photo-credits.mjs','--check'),
+      node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs'),node('scripts/audit-site.mjs')],
+  };
   // Content-only edits do not change locale availability, host connections or
   // common chrome. Those inputs deliberately remain in the wider integration plan.
   const storyBody = /^data\/story-window\/(?:ja|en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/(?:godzilla|shogun|yurucamp|dragonball)\.html$/;
