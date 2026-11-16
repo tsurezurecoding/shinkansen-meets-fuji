@@ -23,6 +23,20 @@ test('every night-view calculator destination has a matching article card in all
   dom.window.close();
  }
 });
+test('full-frame night photographs remain uncropped in every edition',()=>{
+ for(const lang of ['ja','en',...Object.keys(names)]){
+  const file=(lang==='ja'?'':lang+'/')+'yakei.html',dom=new JSDOM(read(file));
+  const style=dom.window.document.createElement('style');style.textContent=read('yakei.css');dom.window.document.head.append(style);
+  for(const id of ['kyoto-tower','fuji-paper-mills']){
+   const img=dom.window.document.querySelector('#yk-'+id+' img'),computed=dom.window.getComputedStyle(img);
+   assert.ok(!computed.transform||computed.transform==='none',file+': photo must retain its full frame for '+id);
+   assert.equal(computed.width,'100%');assert.equal(computed.height,'auto');
+  }
+  assert.equal(dom.window.getComputedStyle(dom.window.document.querySelector('#yk-odawara-castle img')).transform,'scale(2.5)','retain the dedicated distant-castle view');
+  dom.window.close();
+ }
+});
+
 function calculator(lang){
  const dom=new JSDOM('<input id="ykDate" value="2026-10-20"><div data-train-picker></div><div id="ykResult"></div><p id="ykSummary"></p>');
  Object.defineProperty(dom.window.document,'readyState',{value:'complete'});

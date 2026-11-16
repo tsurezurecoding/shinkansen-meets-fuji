@@ -458,7 +458,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
   };
   // Existing article layout and night-feature photographs; no spot positions or locale routes change.
   const nightArticleSources = new Set(['scripts/generate-kyoto-window-page.mjs', 'scripts/generate-yakei-page.mjs',
-    'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'scripts/window-articles.test.mjs',
+    'scripts/shared/yakei-spots.mjs', 'scripts/yakei-locales.test.mjs', 'scripts/window-articles.test.mjs', 'yakei.css',
     'scripts/generate-spot-pages.test.mjs', 'scripts/content-metadata.json',
     'scripts/templates/site-source/index.html.tpl', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs',
     'content-manifest.json', 'site-runtime.json', 'spot-page-runtime.json', 'sitemap.xml']);

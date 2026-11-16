@@ -580,6 +580,7 @@ test('Kyoto layout and existing night-article additions use their bounded consum
  assert.equal(plan.scope,'night-article-followup');
  assert.ok(plan.commands.some(c=>c.includes('scripts/yakei-locales.test.mjs')));
  assert.ok(plan.commands.some(c=>c.includes('scripts/validate-spot-counts.mjs')));
+ assert.equal(chooseReleaseScope([...files,change('yakei.css')]).scope,'night-article-followup');
  assert.equal(chooseReleaseScope([...files,change('data.js')]).scope,'unmapped');
  assert.equal(chooseReleaseScope([...files,change('site-chrome.js')]).scope,'unmapped');
 });

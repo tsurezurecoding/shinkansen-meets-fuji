@@ -413,7 +413,7 @@ const ADDED_NIGHT_VIEWS = {
 };
 function addedNightCard(lang, id) {
   const view = ADDED_NIGHT_VIEWS[id], copy = view[lang], prefix = lang === 'en' ? '../' : '';
-  return `<article class="yk-spot" id="yk-${id}"><figure class="yk-figure"><a class="yk-castle-zoom" href="${prefix}images/${view.image}.jpg"><img src="${prefix}images/thumbs/${view.image}.webp" alt="${copy.alt}" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption>michikusa</figcaption></figure><div class="yk-spot-body"><p class="yk-spot-meta"><span class="yk-side yk-side-e">${lang === 'ja' ? 'E席側' : 'Seat E'}</span></p><h3>${copy.title}</h3><p>${copy.body}</p><p class="yk-more"><a href="${view.route}">${copy.title} →</a></p></div></article>`;
+  return `<article class="yk-spot" id="yk-${id}"><figure class="yk-figure"><a class="yk-photo-link" href="${prefix}images/${view.image}.jpg"><img src="${prefix}images/thumbs/${view.image}.webp" alt="${copy.alt}" width="1920" height="1080" loading="lazy" decoding="async"></a><figcaption>michikusa</figcaption></figure><div class="yk-spot-body"><p class="yk-spot-meta"><span class="yk-side yk-side-e">${lang === 'ja' ? 'E席側' : 'Seat E'}</span></p><h3>${copy.title}</h3><p>${copy.body}</p><p class="yk-more"><a href="${view.route}">${copy.title} →</a></p></div></article>`;
 }
 
 function render(lang) {
