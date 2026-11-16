@@ -124,6 +124,7 @@
           <h3>アフィリエイトリンク・広告</h3>
           <p>本サービスには、Klook、バリューコマースおよびAmazonを通じたアフィリエイトリンク・広告が含まれます。リンク経由で予約や購入が行われた場合、利用者の追加負担なく運営者が報酬を受け取ることがあります。</p>
           <p>Amazonのアソシエイトとして、道草は適格販売により収入を得ています。</p>
+          <p>車窓図鑑ではGoogle AdSenseを利用します。Googleなどの第三者配信事業者は、Cookieを使用し、本サービスや他のサイトへの過去のアクセスに基づいて広告を配信する場合があります。パーソナライズ広告は<a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">Googleの広告設定</a>で管理できます。詳細は<a href="https://policies.google.com/technologies/ads?hl=ja" target="_blank" rel="noopener noreferrer">Googleの広告に関するポリシー</a>をご確認ください。</p>
           <p>広告の表示やリンクの利用時には、各提供元へIPアドレス、端末情報、参照元URLなどの技術情報が送信され、Cookieまたは類似技術が利用される場合があります。情報の取り扱いは各提供元のプライバシーポリシーに従います。</p>
         </article>
 
