@@ -169,7 +169,8 @@ function bakeEnglishI18n(html, messages) {
 function mirrorPage(page, messages) {
   const jaUrl = page.source === "index.html" ? `${siteRoot}/` : `${siteRoot}/${page.source}`;
   const enUrl = `${siteRoot}/${page.output.replace(/index\.html$/, "")}`;
-  const source = readSiteSource(appDir, page.source);
+  const source = readSiteSource(appDir, page.source)
+    .replace(/\s*<!-- ZUKAN_ADSENSE_JA_START -->[\s\S]*?<!-- ZUKAN_ADSENSE_JA_END -->/, '');
   return localizeEnglishRail((page.bakeI18n ? bakeEnglishI18n(source, messages) : source)
     .replace('<html lang="ja">', '<html lang="en">')
     .replace(
