@@ -206,7 +206,48 @@ export function onlyDonburiAssetReferencesChanged(before, after) {
   return before !== after && clean(before) === clean(after);
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+export function onlyRamenSitemapChanged(before, after) {
+  const addition = "    ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/ramen.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-17'})),\n";
+  return before !== after && after.split(addition).length === 2 && after.replace(addition, '') === before;
+}
+
+export function onlyRamenLocaleRouteChanged(before, after) {
+  return before !== after && before.replace("['guide.html', 'omamori.html', 'donburi.html']", "['guide.html', 'omamori.html', 'donburi.html', 'ramen.html']") === after;
+}
+
+export function onlyRamenLanguageRouteChanged(before, after) {
+  const route = '    "/ramen.html": "en/ramen.html",\n';
+  return before !== after && after.split(route).length === 2 && after.replace(route, '') === before;
+}
+
+export function onlyRamenMetadataAdded(before, after) {
+  try {
+    const previous = JSON.parse(before), next = JSON.parse(after);
+    const routes = new Set(['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th']
+      .map(lang => (lang === 'ja' ? '' : lang + '/') + 'ramen.html'));
+    const changed = [...new Set([...Object.keys(previous), ...Object.keys(next)])]
+      .filter(route => !isDeepStrictEqual(previous[route], next[route]));
+    return changed.length > 0 && changed.every(route => routes.has(route) && !Object.hasOwn(previous, route)
+      && next[route] && typeof next[route] === 'object' && !Array.isArray(next[route]));
+  } catch { return false; }
+}
+
+// The new locale route has the same collateral version contract as donburi.
+export const onlyRamenAssetReferencesChanged = onlyDonburiAssetReferencesChanged;
+
+export function onlyRamenEnglishCardAddedToJapaneseDonburi(file, before, after) {
+  if (file !== 'donburi.html') return false;
+  const card = /<a class="everyday-story-card" href="en\/ramen\.html" data-edition-only="en" data-cta-track="everyday_related_click" data-cta-id="ramen" lang="en"><span class="everyday-story-photo"><img src="images\/ramen\/jiro\.webp" alt="" width="1440" height="810" loading="lazy" decoding="async"><\/span><span class="everyday-story-copy"><small>[^<]*<\/small><strong>[^<]*<\/strong><span>[^<]*<\/span><b>[^<]* <span aria-hidden="true">→<\/span><\/b><\/span><\/a>/g;
+  const matches = [...after.matchAll(card)];
+  if (matches.length !== 1 || before.includes('data-cta-id="ramen"')) return false;
+  const navStart = after.indexOf('<nav class="everyday-related-grid"');
+  const navEnd = after.indexOf('</nav>', navStart);
+  if (navStart < 0 || matches[0].index < navStart || matches[0].index + matches[0][0].length > navEnd) return false;
+  const restored = after.replace(matches[0][0], '');
+  return restored === before || onlyRamenAssetReferencesChanged(before, restored);
+}
+
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const zukanAdsenseFiles = new Set(['zukan.html','privacy.html','scripts/templates/site-source/zukan.html.tpl','scripts/templates/site-source/privacy.html.tpl','scripts/generate-language-mirrors.mjs','scripts/release-scope.mjs','scripts/zukan-adsense.test.mjs']);
@@ -255,6 +296,60 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       node('scripts/generate-utility-locales.mjs','--route','start.html','--check'),node('scripts/generate-site-runtime.mjs','--check'),
       node('scripts/validate-train-select.mjs'),node('scripts/validate-site-navigation.mjs','--route','start.html'),
       node('scripts/check-content-manifest.mjs')]
+  };
+  const ramenFiles = new Set(['scripts/generate-ramen-page.mjs', 'scripts/ramen-page.test.mjs',
+    'scripts/shared/ramen-entry.mjs', 'ramen.html', 'ramen.css', 'data/ramen-photo-sources.json',
+    'scripts/generate-everyday-page.mjs', 'scripts/shared/everyday-related.mjs', 'scripts/generate-foods-page.mjs',
+    'scripts/generate-castle-locales.mjs', 'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
+    'scripts/generate-content-manifest.mjs', 'scripts/generate-spot-pages.mjs',
+    'scripts/validate-language-pages.mjs', 'scripts/content-metadata.json', 'locales.js', 'language-router.js',
+    'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs',
+    'scripts/donburi-page.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/food-country-locales.test.mjs', 'scripts/drinks-locales.test.mjs', 'package.json', 'site-runtime.json',
+    'spot-page-runtime.json', 'content-manifest.json', 'sitemap.xml']);
+  const ramenLanguages = ['ja', 'en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
+  const ramenRelatedRoutes = ['ramen.html', 'donburi.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html',
+    'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'everyday-japan.html'];
+  for (const lang of ramenLanguages) {
+    ramenFiles.add(`data/ramen/${lang}.json`);
+    ramenFiles.add(`shared-ui/${lang.toLowerCase()}.shell.js`);
+    for (const route of ramenRelatedRoutes) {
+      ramenFiles.add(`shared-ui/${lang.toLowerCase()}.rail-${route.replace(/\.html$/, '').replaceAll('/', '-')}.js`);
+      if (lang !== 'ja') ramenFiles.add(`${lang}/${route}`);
+    }
+  }
+  for (const image of ['jiro', 'bannai', 'shio', 'miso', 'ikkousha', 'tsukemen', 'aburasoba', 'vegesoba', 'jiro-detail', 'edomondo', 'bario']) ramenFiles.add(`images/ramen/${image}.webp`);
+  let ramenPackage = !files.includes('package.json');
+  if (!ramenPackage && packageBefore && packageAfter) {
+    const before = typeof packageBefore === 'string' ? JSON.parse(packageBefore) : structuredClone(packageBefore);
+    const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : structuredClone(packageAfter);
+    if (after.scripts) {
+      for (const key of ['build:pages', 'preflight:spots']) if (after.scripts[key])
+        after.scripts[key] = after.scripts[key].replace(/node scripts\/generate-ramen-page\.mjs(?: --check)? && /, '');
+      if (after.scripts['test:generator']) after.scripts['test:generator'] = after.scripts['test:generator'].replace('scripts/ramen-page.test.mjs ', '');
+    }
+    ramenPackage = isDeepStrictEqual(before, after);
+  }
+  const ramenSourceChanges = (!files.includes('scripts/generate-spot-pages.mjs') || ramenSitemapOnly) &&
+    (!files.includes('locales.js') || ramenLocalesOnly) && (!files.includes('language-router.js') || ramenRouterOnly) &&
+    (!files.includes('scripts/content-metadata.json') || ramenMetadataOnly);
+  if (files.includes('scripts/generate-ramen-page.mjs') && ramenPackage && ramenSourceChanges &&
+    changes.every(({path: file, status}) => ['A', 'M'].includes(status) && (ramenFiles.has(file) ||
+      status === 'M' && file === 'donburi.html' && ramenJapaneseDonburiOnly ||
+      status === 'M' && file.endsWith('.html') && ramenAssetVersionOnly(file)))) return {
+    scope: 'ramen-everyday', needsDependencies: true, pagesCandidate: true,
+    reason: 'Ramen in ten editions, nine-language Everyday Japan and reciprocal article links, eleven photographs, a single locale route addition and Web distribution; Japanese is reached through language selection.',
+    commands: [...syntax, node('--test', 'scripts/ramen-page.test.mjs', 'scripts/donburi-page.test.mjs', 'scripts/release-scope.test.mjs',
+      'scripts/locales-contract.test.mjs', 'scripts/food-country-locales.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/drinks-locales.test.mjs'),
+      ...['generate-ramen-page', 'generate-donburi-page', 'generate-foods-page', 'generate-everyday-page', 'generate-drinks-page', 'generate-beer-page',
+        'generate-countryside-page', 'generate-drinks-locales', 'generate-omamori-page', 'generate-site-chrome', 'generate-site-runtime']
+        .map(name => node(`scripts/${name}.mjs`, '--check')),
+      node('scripts/generate-castle-locales.mjs', '--route', 'foods.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'countryside.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'spots/gamagori-greenhouses.html', '--check'),
+      node('scripts/generate-castle-locales.mjs', '--route', 'everyday-japan.html', '--check'),
+      node('--input-type=module', '-e', "import fs from 'node:fs'; import assert from 'node:assert/strict'; import {planSpotPage,finalPageOutput,sitemapXML} from './scripts/generate-spot-pages.mjs'; const page=planSpotPage('gamagori-greenhouses','en',{requireExisting:true,preserveHead:true}); assert.equal(fs.readFileSync(page.outputPath,'utf8'),finalPageOutput(page.outputPath,page.generatedHTML)); assert.equal(fs.readFileSync('sitemap.xml','utf8'),sitemapXML());"),
+      node('scripts/validate-site-navigation.mjs', ...ramenRelatedRoutes.flatMap(route => ['--route', route])),
+      node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs')]
   };
   const donburiFiles = new Set(['scripts/generate-donburi-page.mjs', 'scripts/donburi-page.test.mjs',
     'scripts/shared/donburi-entry.mjs', 'donburi.html', 'donburi.css', 'donburi.js', 'everyday.css', 'data/donburi-photo-sources.json',
@@ -734,6 +829,12 @@ export function createReleasePlan(base) {
   const dataBefore = dataChanged ? git('show', `${base}:data.js`) : '';
   const dataAfter = dataChanged ? git('show', `${head}:data.js`) : '';
   const plan = chooseReleaseScope(changes, {
+    ramenJapaneseDonburiOnly: changes.some(c => c.path === 'donburi.html' && c.status === 'M') && onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', git('show', `${base}:donburi.html`), git('show', `${head}:donburi.html`)),
+    ramenMetadataOnly: changes.some(c => c.path === 'scripts/content-metadata.json' && c.status === 'M') && onlyRamenMetadataAdded(git('show', `${base}:scripts/content-metadata.json`), git('show', `${head}:scripts/content-metadata.json`)),
+    ramenSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyRamenSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
+    ramenLocalesOnly: changes.some(c => c.path === 'locales.js' && c.status === 'M') && onlyRamenLocaleRouteChanged(git('show', `${base}:locales.js`), git('show', `${head}:locales.js`)),
+    ramenRouterOnly: changes.some(c => c.path === 'language-router.js' && c.status === 'M') && onlyRamenLanguageRouteChanged(git('show', `${base}:language-router.js`), git('show', `${head}:language-router.js`)),
+    ramenAssetVersionOnly: file => onlyRamenAssetReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     donburiSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyDonburiSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
     donburiLocalesOnly: changes.some(c => c.path === 'locales.js' && c.status === 'M') && onlyDonburiLocaleRouteChanged(git('show', `${base}:locales.js`), git('show', `${head}:locales.js`)),
     donburiRouterOnly: changes.some(c => c.path === 'language-router.js' && c.status === 'M') && onlyDonburiLanguageRouteChanged(git('show', `${base}:language-router.js`), git('show', `${head}:language-router.js`)),

@@ -2,10 +2,160 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
+import { onlyRamenSitemapChanged, onlyRamenLocaleRouteChanged, onlyRamenLanguageRouteChanged, onlyRamenAssetReferencesChanged, onlyRamenMetadataAdded, onlyRamenEnglishCardAddedToJapaneseDonburi } from './release-scope.mjs';
 import { onlyDonburiSitemapChanged, onlyDonburiLocaleRouteChanged, onlyDonburiLanguageRouteChanged, onlyDonburiAssetReferencesChanged, onlyDonburiEverydayLayoutChanged } from './release-scope.mjs';
 import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersionChanged, onlyAssetVersionReferencesChanged, onlyRideBudgetChanged, onlyRideMediaDataChanged, onlyVersionReferenceChanged, onlyMarukoLocaleLinkChanged, onlyPreservedChromeMenuChanged, onlyPreservedArtworkChromeExtraction, assertReusableVerification, assertReleasePlanContract, classifyPackageChange, needsPagesCandidate } from './release-scope.mjs';
 
 const change = path => ({ path, status: 'M' });
+
+test('ramen scope covers ten editions, eleven photographs and only nine entry languages', () => {
+  const files = ['scripts/generate-ramen-page.mjs', 'scripts/ramen-page.test.mjs', 'scripts/shared/ramen-entry.mjs',
+    'data/ramen/ja.json', 'data/ramen/en.json', 'ramen.html', 'en/ramen.html', 'th/ramen.html', 'ramen.css',
+    'images/ramen/jiro.webp', 'images/ramen/jiro-detail.webp', 'images/ramen/aburasoba.webp',
+    'shared-ui/ja.shell.js', 'shared-ui/th.rail-ramen.js', 'content-manifest.json'];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'ramen-everyday');
+  assert(plan.needsDependencies && plan.pagesCandidate);
+  assert(plan.commands.some(command => command.includes('scripts/ramen-page.test.mjs')));
+  assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
+  assert(!plan.commands.some(command => command.includes('verify') || command.includes('build:full')));
+  for (const unrelated of ['app.js', 'data.js', 'style.css', 'everyday.css', 'donburi.css', 'donburi.js',
+    'foods.html', 'en/guide.html', 'ar/ramen.html', 'data/ramen/ar.json', 'images/ramen/unrelated.webp',
+    'images/ramen/jiro.jpg', 'shared-ui/en.rail-castles.js'])
+    assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'ramen-everyday', unrelated);
+  assert.notEqual(chooseReleaseScope([...files.map(change), {path: 'en/ramen.html', status: 'D'}]).scope, 'ramen-everyday');
+});
+
+test('ramen reciprocal links check only the affected series generators and localized consumers', () => {
+  const routes = ['ramen.html', 'donburi.html', 'foods.html', 'drinks.html', 'beer-on-shinkansen.html',
+    'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'everyday-japan.html'];
+  const languages = ['en', 'zh-Hant', 'fr', 'de', 'es', 'zh-Hans', 'ko', 'it', 'th'];
+  const files = ['scripts/generate-ramen-page.mjs', 'scripts/shared/everyday-related.mjs',
+    'scripts/generate-castle-locales.mjs', 'scripts/generate-drinks-locales.mjs', 'scripts/generate-omamori-page.mjs',
+    'scripts/donburi-page.test.mjs', 'scripts/omamori-page.test.mjs', 'scripts/drinks-locales.test.mjs',
+    ...languages.flatMap(lang => routes.map(route => lang + '/' + route))];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'ramen-everyday');
+  for (const testFile of ['ramen-page', 'donburi-page', 'omamori-page', 'drinks-locales', 'locales-contract', 'food-country-locales'])
+    assert(plan.commands.some(command => command.includes('scripts/' + testFile + '.test.mjs')), testFile);
+  for (const generator of ['generate-ramen-page', 'generate-donburi-page', 'generate-everyday-page', 'generate-foods-page',
+    'generate-drinks-page', 'generate-beer-page', 'generate-countryside-page', 'generate-drinks-locales',
+    'generate-omamori-page', 'generate-site-chrome', 'generate-site-runtime'])
+    assert(plan.commands.some(command => command.includes('scripts/' + generator + '.mjs') && command.includes('--check')), generator);
+  const navigation = plan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs'));
+  for (const route of routes) assert(navigation.includes(route), route);
+  assert(plan.commands.some(command => command.some(argument => argument.includes("planSpotPage('gamagori-greenhouses','en'"))));
+  assert(plan.commands.some(command => command.some(argument => argument.includes("readFileSync('sitemap.xml','utf8'),sitemapXML()"))));
+  assert(!plan.commands.some(command => command.includes('scripts/generate-spot-pages.mjs')), 'Do not generate or check unrelated spot articles');
+  for (const unrelated of ['en/spots/fuji.html', 'fr/guide.html', 'shared-ui/en.rail-castles.js'])
+    assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'ramen-everyday', unrelated);
+});
+
+test('Japanese companion-card promotion cannot enter the ramen reciprocal-link scope', () => {
+  const files = ['scripts/generate-ramen-page.mjs', 'en/omamori.html'].map(change);
+  const before = '<script src="locales.js?v=01234567"></script><main><p>Existing content</p></main>';
+  const after = before.replace('</main>', '<a href="ramen.html">New Japanese promotion</a></main>');
+  for (const route of ['donburi.html', 'foods.html', 'drinks.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'])
+    assert.notEqual(chooseReleaseScope([...files, change(route)], {
+      ramenAssetVersionOnly: () => onlyRamenAssetReferencesChanged(before, after)
+    }).scope, 'ramen-everyday', route);
+});
+
+test('Japanese donburi permits one English ramen card and preserves its existing article', () => {
+  const before = '<script src="locales.js?v=01234567"></script><main>Existing Japanese article</main><nav class="everyday-related-grid" aria-label="English stories"><a href="en/foods.html">Existing English food story</a></nav>';
+  const card = '<a class="everyday-story-card" href="en/ramen.html" data-edition-only="en" data-cta-track="everyday_related_click" data-cta-id="ramen" lang="en"><span class="everyday-story-photo"><img src="images/ramen/jiro.webp" alt="" width="1440" height="810" loading="lazy" decoding="async"></span><span class="everyday-story-copy"><small>A BOWL ALONG THE WAY</small><strong>Find your ramen</strong><span>A new bowl for your trip.</span><b>Read the story <span aria-hidden="true">→</span></b></span></a>';
+  const after = before.replace('</nav>', card + '</nav>').replace('01234567', 'abcdef12');
+  assert(onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, after));
+  assert(!onlyRamenEnglishCardAddedToJapaneseDonburi('foods.html', before, after));
+  assert(!onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, after.replace('en/ramen.html', 'ramen.html')));
+  assert(!onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, after.replace('Existing Japanese article', 'Unrelated edit')));
+  assert(!onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, after.replace('jiro.webp', 'other.webp')));
+  assert(!onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, after.replace('</nav>', card + '</nav>')));
+  assert(!onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, before + card));
+  const files = ['scripts/generate-ramen-page.mjs', 'donburi.html'].map(change);
+  assert.notEqual(chooseReleaseScope(files).scope, 'ramen-everyday');
+  assert.equal(chooseReleaseScope(files, {ramenJapaneseDonburiOnly: onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', before, after)}).scope, 'ramen-everyday');
+});
+
+test('ramen collateral HTML accepts only the existing locale-route version proof', () => {
+  const before = '<script src="../../locales.js?v=01234567"></script><script src="language-router.js?v=89abcdef"></script><p>Original article</p>';
+  const after = before.replace('01234567', 'abcdef12').replace('89abcdef', '23456789');
+  assert(onlyRamenAssetReferencesChanged(before, after));
+  assert(!onlyRamenAssetReferencesChanged(before, before));
+  assert(!onlyRamenAssetReferencesChanged(before, after.replace('Original article', 'Unrelated change')));
+  for (const asset of ['app.js', 'style.css', 'donburi.js'])
+    assert(!onlyRamenAssetReferencesChanged('<script src="' + asset + '?v=01234567"></script>', '<script src="' + asset + '?v=abcdef12"></script>'));
+  const files = ['scripts/generate-ramen-page.mjs', 'en/guide.html'].map(change);
+  assert.notEqual(chooseReleaseScope(files, {assetVersionOnly: () => true}).scope, 'ramen-everyday');
+  assert.equal(chooseReleaseScope(files, {ramenAssetVersionOnly: () => onlyRamenAssetReferencesChanged(before, after)}).scope, 'ramen-everyday');
+  assert.notEqual(chooseReleaseScope(files, {ramenAssetVersionOnly: () => onlyRamenAssetReferencesChanged(before, after + '<p>New text</p>')}).scope, 'ramen-everyday');
+  assert.notEqual(chooseReleaseScope([{path: 'scripts/generate-ramen-page.mjs', status: 'A'}, {path: 'unrelated.html', status: 'A'}],
+    {ramenAssetVersionOnly: () => true}).scope, 'ramen-everyday');
+});
+
+test('ramen source guards allow one route addition without unrelated sitemap or routing edits', () => {
+  const addition = "    ...languages.filter(lang=>lang!=='ja').map(lang=>({loc:`${siteRoot}/${lang}/ramen.html`,priority:'0.7',changefreq:'monthly',lastmod:'2026-11-17'})),\n";
+  const beforeMap = 'function sitemapXML() {\n  return [\n  ];\n}\n';
+  const afterMap = beforeMap.replace('  ];', addition + '  ];');
+  assert(onlyRamenSitemapChanged(beforeMap, afterMap));
+  assert(!onlyRamenSitemapChanged(beforeMap, beforeMap));
+  assert(!onlyRamenSitemapChanged(beforeMap, afterMap.replace("lang!=='ja'", "lang==='ja'")));
+  assert(!onlyRamenSitemapChanged(beforeMap, afterMap.replace('  ];', addition + '  ];')));
+  assert(!onlyRamenSitemapChanged(beforeMap, afterMap + 'unrelated'));
+  const beforeLocale = "var routes = utility.concat(castles, extra, ['guide.html', 'omamori.html', 'donburi.html'], storyRoutes);";
+  const afterLocale = beforeLocale.replace("'donburi.html'", "'donburi.html', 'ramen.html'");
+  assert(onlyRamenLocaleRouteChanged(beforeLocale, afterLocale));
+  assert(!onlyRamenLocaleRouteChanged(beforeLocale, beforeLocale));
+  assert(!onlyRamenLocaleRouteChanged(beforeLocale, afterLocale.replace('guide.html', 'changed.html')));
+  const beforeRouter = 'var routes = {\n    "/donburi.html": "en/donburi.html",\n};';
+  const afterRouter = beforeRouter.replace('\n};', '\n    "/ramen.html": "en/ramen.html",\n};');
+  assert(onlyRamenLanguageRouteChanged(beforeRouter, afterRouter));
+  assert(!onlyRamenLanguageRouteChanged(beforeRouter, beforeRouter));
+  assert(!onlyRamenLanguageRouteChanged(beforeRouter, afterRouter.replace('en/donburi.html', 'en/changed.html')));
+  assert(!onlyRamenLanguageRouteChanged(beforeRouter, afterRouter.replace('\n};', '\n    "/ramen.html": "en/ramen.html",\n};')));
+  const files = ['scripts/generate-ramen-page.mjs', 'scripts/generate-spot-pages.mjs', 'locales.js', 'language-router.js'].map(change);
+  const options = {ramenSitemapOnly: true, ramenLocalesOnly: true, ramenRouterOnly: true};
+  assert.equal(chooseReleaseScope(files, options).scope, 'ramen-everyday');
+  for (const key of Object.keys(options)) assert.notEqual(chooseReleaseScope(files, {...options, [key]: false}).scope, 'ramen-everyday');
+});
+
+test('ramen metadata adds only the new ten-edition route records', () => {
+  const before = JSON.stringify({'en/foods.html': {title: 'Existing food story', lastmod: '2026-10-23'}});
+  const addition = {'en/ramen.html': {title: 'Ramen in Japan', lastmod: '2026-11-17'},
+    'ramen.html': {title: 'Ramen', lastmod: '2026-11-17'}};
+  const after = JSON.stringify({...JSON.parse(before), ...addition});
+  assert(onlyRamenMetadataAdded(before, after));
+  assert(!onlyRamenMetadataAdded(before, before));
+  assert(!onlyRamenMetadataAdded(before, after.replace('Existing food story', 'Unrelated article')));
+  assert(!onlyRamenMetadataAdded(before, JSON.stringify(addition)));
+  assert(!onlyRamenMetadataAdded(before, JSON.stringify({...JSON.parse(after), 'ar/ramen.html': {title: 'Unregistered language'}})));
+  assert(!onlyRamenMetadataAdded(before, JSON.stringify({...JSON.parse(after), 'en/guide.html': {title: 'Unrelated route'}})));
+  const files = ['scripts/generate-ramen-page.mjs', 'scripts/content-metadata.json'].map(change);
+  assert.notEqual(chooseReleaseScope(files).scope, 'ramen-everyday');
+  assert.equal(chooseReleaseScope(files, {ramenMetadataOnly: onlyRamenMetadataAdded(before, after)}).scope, 'ramen-everyday');
+});
+
+test('ramen package extension preserves the existing generator, test and dependency commands', () => {
+  const before = {scripts: {'build:pages': 'node scripts/generate-donburi-page.mjs && node scripts/generate-omamori-page.mjs',
+    'preflight:spots': 'node scripts/generate-donburi-page.mjs --check && node scripts/generate-omamori-page.mjs --check',
+    'test:generator': 'node --test scripts/donburi-page.test.mjs scripts/omamori-page.test.mjs'}, devDependencies: {jsdom: '30.0.1'}};
+  const after = structuredClone(before);
+  after.scripts['build:pages'] = after.scripts['build:pages'].replace(' && ', ' && node scripts/generate-ramen-page.mjs && ');
+  after.scripts['preflight:spots'] = after.scripts['preflight:spots'].replace(' && ', ' && node scripts/generate-ramen-page.mjs --check && ');
+  after.scripts['test:generator'] = after.scripts['test:generator'].replace('node --test ', 'node --test scripts/ramen-page.test.mjs ');
+  const files = ['scripts/generate-ramen-page.mjs', 'package.json'].map(change);
+  const options = {packageBefore: JSON.stringify(before), packageAfter: JSON.stringify(after)};
+  assert.equal(chooseReleaseScope(files, options).scope, 'ramen-everyday');
+  const weakened = structuredClone(after);
+  weakened.scripts['preflight:spots'] = 'node scripts/generate-ramen-page.mjs --check && node replacement.mjs';
+  assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(weakened)}).scope, 'ramen-everyday');
+  const dependency = structuredClone(after);
+  dependency.devDependencies.jsdom = '99.0.0';
+  assert.equal(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(dependency)}).scope, 'full');
+  const arbitrary = structuredClone(after);
+  arbitrary.scripts.other = 'node unregistered.mjs';
+  assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(arbitrary)}).scope, 'ramen-everyday');
+});
 
 test('donburi permits only the exact two-column Everyday Japan taste-card adjustment', () => {
   const rule = '.taste-grid{grid-template-columns:repeat(3,minmax(0,1fr))}';
