@@ -82,6 +82,7 @@
           <h3>Affiliate links and advertising</h3>
           <p>The Service contains affiliate links and advertising provided through Klook, ValueCommerce, and Amazon. If you make a booking or purchase through one of these links, Michikusa may receive a commission at no extra cost to you.</p>
           <p>As an Amazon Associate, Michikusa earns from qualifying purchases.</p>
+          <p>The window-view catalogue and selected spot pages use Google AdSense. Google and other third-party vendors may use advertising cookies to serve ads based on your previous visits to this and other websites. Google and its advertising partners may use this information to personalize ads. You can manage Google ad personalization in <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">My Ad Center</a>. For details, see <a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener noreferrer">Google’s advertising policy</a>. You can also visit <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">third-party advertising choices</a> to opt out of participating vendors’ cookie-based personalized advertising.</p>
           <p>When an advertisement is displayed or an affiliate link is used, technical information such as your IP address, device information, and referrer URL may be sent to the relevant provider, which may use cookies or similar technologies under its own privacy policy.</p>
         </article>
         <article class="reference-card">

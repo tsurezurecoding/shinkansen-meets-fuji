@@ -1,3 +1,4 @@
+import {withSpotAdvertising} from './shared/spot-ad-placements.mjs';
 import {STORY_ROUTES,STORY_LANGUAGES,withStoryWindowLinks} from './shared/story-window.mjs';
 import { readSiteSource, finalizeSiteChrome } from './shared/site-chrome.mjs';
 import {withHomeEntry} from './shared/home-entry.mjs';
@@ -2027,7 +2028,7 @@ function planSpotPage(spotOrId, lang, { requireExisting = false, preserveHead = 
   const dir = lang === "ja" ? path.join(appDir, "spots") : path.join(appDir, "en", "spots");
   const outputPath = path.join(dir, spot.id + ".html");
   if (requireExisting && !fs.existsSync(outputPath)) throw new Error("Spot page output is missing: " + outputPath);
-  const generatedHTML = spotPageHTML(spot, lang);
+  const generatedHTML = withSpotAdvertising(spotPageHTML(spot, lang), spot.id, lang);
   if (preserveHead && fs.existsSync(outputPath)) {
     const currentHTML = fs.readFileSync(outputPath, "utf8");
     if (comparableSpotHead(currentHTML) !== comparableSpotHead(generatedHTML)) throw new Error("Spot page head changed unexpectedly: " + outputPath);

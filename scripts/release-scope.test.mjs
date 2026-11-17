@@ -7,6 +7,27 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('Kakegawa advertising pilot is bounded to one opt-in page and test-only package registration', () => {
+  const files = ['spot-adsense.js', 'spots/kakegawa.html', 'scripts/shared/spot-ad-placements.mjs',
+    'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.mjs', 'scripts/generate-content-manifest.mjs',
+    'content-manifest.json', 'privacy.html', 'en/privacy.html', 'scripts/templates/site-source/privacy.html.tpl',
+    'scripts/templates/site-source/en/privacy.html.tpl', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'];
+  const plan = chooseReleaseScope(files.map(change));
+  assert.equal(plan.scope, 'spot-adsense-pilot');
+  assert(plan.commands.some(command => command.includes('scripts/generate-spot-pages.test.mjs')));
+  assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
+  for (const unrelated of ['spot-page-shared.js', 'style.css', 'zukan.html', 'spots/fuji.html', 'en/spots/kakegawa.html'])
+    assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'spot-adsense-pilot', unrelated);
+  assert.notEqual(chooseReleaseScope([...files.map(change), {path:'privacy.html',status:'D'}]).scope, 'spot-adsense-pilot');
+  const before = {scripts:{'test:generator':'node --test scripts/existing.test.mjs'},dependencies:{jsdom:'1'}};
+  const after = structuredClone(before);
+  after.scripts['test:generator'] = 'node --test scripts/spot-adsense.test.mjs scripts/existing.test.mjs';
+  const changes = [...files, 'package.json'].map(change);
+  assert.equal(chooseReleaseScope(changes, {packageBefore:before,packageAfter:after}).scope, 'spot-adsense-pilot');
+  after.dependencies.jsdom = '2';
+  assert.notEqual(chooseReleaseScope(changes, {packageBefore:before,packageAfter:after}).scope, 'spot-adsense-pilot');
+});
+
 test('donburi permits only the exact two-column Everyday Japan taste-card adjustment', () => {
   const rule = '.taste-grid{grid-template-columns:repeat(3,minmax(0,1fr))}';
   const before = '.everyday-grid{display:grid;gap:20px}' + rule + '.country-grid{grid-template-columns:repeat(2,minmax(0,1fr))}';
