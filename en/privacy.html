@@ -58,7 +58,7 @@
     <section class="reference-hero">
       <p class="eyebrow">PRIVACY POLICY</p>
       <h1>Privacy Policy</h1>
-      <p>Last updated: August 2, 2026</p>
+      <p>Last updated: November 17, 2026</p>
       <p>“Shinkansen Window” (the website https://www.michikusa-travel.com/ and the Android app; the “Service”) is operated by Michikusa. This policy explains what information the Service handles.</p>
       <p>As a principle, during normal use the Service does not collect data in a way that identifies you as an individual by linking it to your name, email address, or similar direct identifiers. If you contact us, we handle your sender email address and message content to reply and respond to your request.</p>
     </section>

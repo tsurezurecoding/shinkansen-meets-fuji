@@ -53,5 +53,10 @@ test('mount waits for article rendering and does not gate the article ready prom
 });
 test('privacy source outputs agree in both languages and disclose the expanded scope',()=>{
  for(const file of ['privacy.html','en/privacy.html']){const html=fs.readFileSync(file,'utf8');assert.equal(finalizeSiteChrome(readSiteSource(process.cwd(),file),file,process.cwd()),html);for(const s of ['AdSense','myadcenter.google.com','aboutads.info/choices/'])assert.ok(html.includes(s));}
- assert.ok(fs.readFileSync('privacy.html','utf8').includes('一部のスポットページ'));
+ const japanese=fs.readFileSync('privacy.html','utf8');
+ assert.ok(japanese.includes('一部のスポットページ'));
+ assert.ok(japanese.includes('selected spot pages use Google AdSense'));
+ assert.equal((japanese.match(/aboutads.info\/choices\//g)||[]).length,2);
+ assert.ok(japanese.includes('2026年11月17日'));
+ for(const file of ['privacy.html','en/privacy.html'])assert.ok(fs.readFileSync(file,'utf8').includes('November 17, 2026'));
 });

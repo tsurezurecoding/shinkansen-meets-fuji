@@ -97,7 +97,7 @@
     <section class="reference-hero">
       <p class="eyebrow">PRIVACY POLICY</p>
       <h1>プライバシーポリシー</h1>
-      <p>最終更新日: 2026年8月2日</p>
+      <p>最終更新日: 2026年11月17日</p>
       <p>「新幹線の窓」(Webサイト https://www.michikusa-travel.com/ およびAndroidアプリ、以下「本サービス」) は、道草 / Michikusa（個人運営）が運営しています。本ポリシーは、本サービスが扱う情報と、その取り扱いを説明するものです。</p>
       <p>本サービスは、通常の利用において、氏名・メールアドレス等と結びつけて利用者個人を識別できる形でデータを取得しないことを原則とします。お問い合わせをいただいた場合は、返信と対応のため、送信元メールアドレスとお問い合わせ内容を扱います。</p>
     </section>
@@ -177,7 +177,7 @@
       </div>
       <div class="reference-grid reference-grid-single">
         <article class="reference-card">
-          <p>Last updated: August 2, 2026</p>
+          <p>Last updated: November 17, 2026</p>
           <p>"Shinkansen Window" (the website https://www.michikusa-travel.com/ and the Android app; the "Service") is operated by Michikusa. This policy explains what information the Service handles.</p>
           <p>As a principle, during normal use the Service does not collect data in a way that identifies you as an individual by linking it to your name, email address, or similar direct identifiers. If you contact us, we handle your sender email address and message content to reply and respond to your request.</p>
         </article>
@@ -197,6 +197,7 @@
           <h3>Affiliate links and advertising</h3>
           <p>The Service contains affiliate links and advertising provided through Klook, ValueCommerce, and Amazon. If you make a booking or purchase through one of these links, Michikusa may receive a commission at no extra cost to you.</p>
           <p>As an Amazon Associate, Michikusa earns from qualifying purchases.</p>
+          <p>The window-view catalogue and selected spot pages use Google AdSense. Google and other third-party vendors may use advertising cookies to serve ads based on your previous visits to this and other websites. Google and its advertising partners may use this information to personalize ads. You can manage Google ad personalization in <a href="https://myadcenter.google.com/" target="_blank" rel="noopener noreferrer">My Ad Center</a>. For details, see <a href="https://policies.google.com/technologies/ads?hl=en" target="_blank" rel="noopener noreferrer">Google’s advertising policy</a>. You can also visit <a href="https://www.aboutads.info/choices/" target="_blank" rel="noopener noreferrer">third-party advertising choices</a> to opt out of participating vendors’ cookie-based personalized advertising.</p>
           <p>When an advertisement is displayed or an affiliate link is used, technical information such as your IP address, device information, and referrer URL may be sent to the relevant provider, which may use cookies or similar technologies under its own privacy policy.</p>
         </article>
 
