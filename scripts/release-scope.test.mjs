@@ -23,9 +23,9 @@ test('Kakegawa advertising pilot is bounded to one opt-in page and test-only pac
   const after = structuredClone(before);
   after.scripts['test:generator'] = 'node --test scripts/spot-adsense.test.mjs scripts/existing.test.mjs';
   const changes = [...files, 'package.json'].map(change);
-  assert.equal(chooseReleaseScope(changes, {packageBefore:before,packageAfter:after}).scope, 'spot-adsense-pilot');
+  assert.equal(chooseReleaseScope(changes, {packageBefore:JSON.stringify(before),packageAfter:JSON.stringify(after)}).scope, 'spot-adsense-pilot');
   after.dependencies.jsdom = '2';
-  assert.notEqual(chooseReleaseScope(changes, {packageBefore:before,packageAfter:after}).scope, 'spot-adsense-pilot');
+  assert.notEqual(chooseReleaseScope(changes, {packageBefore:JSON.stringify(before),packageAfter:JSON.stringify(after)}).scope, 'spot-adsense-pilot');
 });
 
 test('donburi permits only the exact two-column Everyday Japan taste-card adjustment', () => {
