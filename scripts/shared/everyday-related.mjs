@@ -1,5 +1,6 @@
 import {omamoriStoryCard,omamoriPhotoCredit} from './omamori-entry.mjs';
 import {donburiStoryCard} from './donburi-entry.mjs';
+import {ramenStoryCard} from './ramen-entry.mjs';
 import fs from 'node:fs';
 import {JSDOM} from 'jsdom';
 import path from 'node:path';
@@ -31,7 +32,7 @@ export function everydayRelatedHTML(id, englishRoot = '', exclude = []) {
     return `<a class="everyday-story-card" href="${englishRoot}${story.route}" data-cta-track="everyday_related_click" data-cta-id="${id}_to_${story.id}"><span class="everyday-story-photo"><img src="${englishRoot}../images/${src}" alt="${escape(alt)}" width="640" height="480" loading="lazy" decoding="async" style="object-position:${position}"></span><span class="everyday-story-copy"><small>${label}</small><strong>${escape(story.title)}</strong><span>${escape(story.note)}</span><b>Read the story <span aria-hidden="true">→</span></b></span></a>`;
   }).join('');
   const credits = !related.some(story => story.id === 'foods') ? 'Photographs: Michikusa.' : 'Photographs: Michikusa. Onigiri: <a href="https://commons.wikimedia.org/wiki/File:Onigiri_001.jpg">Ocdp</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.en">CC0</a> (resized, WebP, responsive crop).';
-  return `<section class="everyday-related" aria-labelledby="everydayRelatedTitle"><div class="section-head"><div><p class="eyebrow">EVERYDAY JAPAN</p><h2 id="everydayRelatedTitle">Another small discovery.</h2></div><a class="everyday-all-stories" href="${englishRoot}everyday-japan.html">All stories <span aria-hidden="true">→</span></a></div><nav class="everyday-related-grid" aria-label="More Everyday Japan stories">${cards}${id!=='donburi'?donburiStoryCard('en',englishRoot+'../'):''}${['foods','drinks'].includes(id)?omamoriStoryCard('en',englishRoot+'../'):''}</nav>${['foods','drinks'].includes(id)?omamoriPhotoCredit():''}<p class="everyday-related-credits">${credits}</p></section>`;
+  return `<section class="everyday-related" aria-labelledby="everydayRelatedTitle"><div class="section-head"><div><p class="eyebrow">EVERYDAY JAPAN</p><h2 id="everydayRelatedTitle">Another small discovery.</h2></div><a class="everyday-all-stories" href="${englishRoot}everyday-japan.html">All stories <span aria-hidden="true">→</span></a></div><nav class="everyday-related-grid" aria-label="More Everyday Japan stories">${cards}${id!=='donburi'?donburiStoryCard('en',englishRoot+'../'):''}${ramenStoryCard('en',englishRoot+'../')}${['foods','drinks'].includes(id)?omamoriStoryCard('en',englishRoot+'../'):''}</nav>${['foods','drinks'].includes(id)?omamoriPhotoCredit():''}<p class="everyday-related-credits">${credits}</p></section>`;
 }
 
 // Reuse the existing series copy and photographs; article translations remain independent.
@@ -49,6 +50,8 @@ export function donburiRelatedHTML(lang='en') {
     for(const element of doc.querySelectorAll('[alt],[aria-label]'))for(const attr of ['alt','aria-label'])if(element.hasAttribute(attr))element.setAttribute(attr,translate(element.getAttribute(attr)));
   }
   const grid=doc.querySelector('.everyday-related-grid');
+  grid.querySelector('[data-cta-id="ramen"]')?.remove();
+  grid.insertAdjacentHTML('beforeend',ramenStoryCard(edition,japanese?'':'../'));
   grid.insertAdjacentHTML('beforeend',omamoriStoryCard(edition,japanese?'':'../'));
   grid.insertAdjacentHTML('afterend',omamoriPhotoCredit(edition));
   if(japanese){
@@ -58,10 +61,19 @@ export function donburiRelatedHTML(lang='en') {
     grid.setAttribute('aria-label','Everyday Japanの関連記事（英語）');
     for(const card of grid.querySelectorAll('a')){
       card.lang='en';
-      if(card.dataset.ctaId==='omamori')card.href='en/omamori.html';
+      if(['omamori','ramen'].includes(card.dataset.ctaId))card.href='en/'+card.dataset.ctaId+'.html';
     }
   }
   const result=doc.body.innerHTML;dom.window.close();return result;
+}
+
+export function ramenRelatedHTML(lang='en') {
+  const edition=lang==='ja'?'en':lang,dom=new JSDOM(donburiRelatedHTML(lang)),doc=dom.window.document;
+  const grid=doc.querySelector('.everyday-related-grid');
+  grid.querySelector('[data-cta-id="ramen"]')?.remove();
+  grid.insertAdjacentHTML('beforeend',donburiStoryCard(edition,lang==='ja'?'':'../'));
+  if(lang==='ja')grid.querySelector('[data-cta-id="donburi"]').lang='en';
+  const html=doc.body.innerHTML;dom.window.close();return html;
 }
 
 export function addEverydayRelated(html, id, file, { exclude = [] } = {}) {

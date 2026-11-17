@@ -105,7 +105,7 @@ test('Everyday Japan articles link to donburi in nine languages without duplicat
 });
 
 test('donburi ends with six localized photo stories, an all-stories link and the required photo credits', () => {
-  const relatedRoutes = ['foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html'];
+  const relatedRoutes = ['foods.html', 'drinks.html', 'beer-on-shinkansen.html', 'countryside.html', 'spots/gamagori-greenhouses.html', 'omamori.html', 'ramen.html'];
   for (const lang of languages) {
     const file = edition(lang), dom = documentFor(file), doc = dom.window.document;
     const section = doc.querySelector('main > .everyday-related');
