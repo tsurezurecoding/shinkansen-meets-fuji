@@ -82,8 +82,11 @@ jobs:
               core.info(`Fresh validation required: ${error.message}`);
             }
       - name: Install dependencies for affected product checks
-        if: steps.reuse.outputs.verified != 'true' && steps.plan.outputs.needs_dependencies == 'true'
+        if: steps.reuse.outputs.verified != 'true' && (steps.plan.outputs.needs_dependencies == 'true' || (github.event_name == 'pull_request' && steps.plan.outputs.review_html == 'true'))
         run: npm ci
+      - name: Summarize HTML changes for review
+        if: github.event_name == 'pull_request'
+        run: node scripts/release-html-summary.mjs "$RUNNER_TEMP/release-plan.json"
       - name: Verify affected scope once
         if: steps.reuse.outputs.verified != 'true'
         env:

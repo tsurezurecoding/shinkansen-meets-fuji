@@ -842,22 +842,31 @@ function selectExistingScope(changes, { versionOnly = () => false, assetVersionO
       node('scripts/validate-site-navigation.mjs','--with-language-checks'),node('scripts/audit-site.mjs'),
       node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs')],
   };
+  const buildDriver = ['scripts/build.mjs', 'scripts/build.test.mjs'];
+  const htmlReview = ['scripts/release-html-summary.mjs', 'scripts/release-html-summary.test.mjs'];
+  const testHtmlReview = files.some(file => htmlReview.includes(file));
+  const reviewTests = testHtmlReview ? ['scripts/release-html-summary.test.mjs'] : [];
   // A new registered window spot changes the global catalogue, runtime
   // guidance, counts, stamps and every edition's shared navigation.
   if (files.includes('data.js') && changes.some(({ path, status }) => status === 'A' && (/^data\/spot-pages\/[^/]+\.ja\.js$/.test(path) || /^images\/stamps\/stamp_[^/]+\.svg$/.test(path)))) return {
     scope: 'full', needsDependencies: true, pagesCandidate: true,
     reason: 'A registered SPOTS addition affects all catalogue, runtime guidance, stamp, shared navigation and language consumers',
-    commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs')],
+    commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs', ...reviewTests)],
   };
   const packageKind = files.includes('package.json') ? classifyPackageChange(packageBefore, packageAfter) : null;
   if (packageKind === 'unmapped') return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false,
     reason: 'Define affected checks for the changed npm command behavior; a script edit is not a dependency upgrade', commands: [] };
   const checkFiles = files.filter(file => file !== 'package.json' || packageKind !== 'validation-commands');
   if (!files.length) return { scope: 'none', needsDependencies: false, pagesCandidate: false, reason: 'No changed files', commands: [] };
-  if (checkFiles.every(file => infra.has(file))) return {
-    scope: 'release-infrastructure', needsDependencies: false, pagesCandidate: false, reason: 'Only release execution and its tests changed; product content is unchanged',
-    commands: [...syntax, node('--test', 'scripts/release-scope.test.mjs', 'scripts/release-artifact.test.mjs')],
-  };
+  if (checkFiles.every(file => infra.has(file) || buildDriver.includes(file) || htmlReview.includes(file))) {
+    const testFiles = ['scripts/release-scope.test.mjs', 'scripts/release-artifact.test.mjs', ...reviewTests];
+    if (checkFiles.some(file => buildDriver.includes(file))) testFiles.push('scripts/build.test.mjs');
+    return {
+      scope: 'release-infrastructure', needsDependencies: testHtmlReview, pagesCandidate: false,
+      reason: 'Check the affected build and release tools and their workflow contracts',
+      commands: [...syntax, node('--test', ...testFiles)],
+    };
+  }
   if (checkFiles.every(file => infra.has(file) || validationFiles.has(file))) return {
     scope: 'validation-infrastructure', needsDependencies: true, pagesCandidate: false,
     reason: 'Validation helper and its consumers only; product generators and assets are unchanged',
@@ -916,7 +925,7 @@ function selectExistingScope(changes, { versionOnly = () => false, assetVersionO
   // changes require an impact contract, rather than silently running everything.
   if (files.some(file => ['package.json', 'package-lock.json'].includes(file))) return {
     scope: 'full', needsDependencies: true, pagesCandidate: true, reason: 'The package/runtime dependency contract changed; all consumers require validation',
-    commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs')],
+    commands: [['npm', 'run', 'verify'], node('--test', 'scripts/release-scope.test.mjs', 'scripts/release-html-summary.test.mjs')],
   };
   return { scope: 'unmapped', needsDependencies: false, pagesCandidate: false, reason: `Define affected generators, consumers and checks before execution: ${files.join(', ')}`, commands: [] };
 }
@@ -1187,7 +1196,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.ar
     if (plan.scope === 'unmapped') throw new Error(plan.reason);
     fs.writeFileSync(output, JSON.stringify(plan, null, 2) + '\n');
     console.log(JSON.stringify(plan, null, 2));
-    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `scope=${plan.scope}\nneeds_dependencies=${plan.needsDependencies}\npages_candidate=${needsPagesCandidate(plan)}\n`);
+    if (process.env.GITHUB_OUTPUT) fs.appendFileSync(process.env.GITHUB_OUTPUT, `scope=${plan.scope}\nneeds_dependencies=${plan.needsDependencies}\npages_candidate=${needsPagesCandidate(plan)}\nreview_html=${plan.changes.some(change => change.path.endsWith('.html'))}\n`);
     if (process.env.GITHUB_STEP_SUMMARY) fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY,
       `## Validation scope: ${plan.scope}\n${plan.reason}\n\n${plan.commands.map(c => '- `' + c.join(' ') + '`').join('\n')}\n`);
   } else if (mode === 'verify') runPlan(JSON.parse(fs.readFileSync(arg, 'utf8')), output);
