@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { createHash } from 'node:crypto';
 import { onlyFactoryJpegMetadataRemoved } from './release-scope.mjs';
 import { onlyMikawaPhotoBatchDataChanged } from './release-scope.mjs';
 import { onlyRamenSitemapChanged, onlyRamenLocaleRouteChanged, onlyRamenLanguageRouteChanged, onlyRamenAssetReferencesChanged, onlyRamenMetadataAdded, onlyRamenEnglishCardAddedToJapaneseDonburi } from './release-scope.mjs';
@@ -115,6 +116,10 @@ test('factory scope includes its photo tests and permits only their single packa
     factoryPhotoMetadataOnly: file => onlyFactoryJpegMetadataRemoved(file, factoryJpeg(factoryExif), factoryJpeg())};
   const plan = chooseReleaseScope(files, options);
   assert.equal(plan.scope, 'factory-windows');
+  assert(plan.commands.some(c => c.includes('scripts/generate-gallery-thumbnails.mjs') && c.includes('--check')));
+  const textOnly = chooseReleaseScope(files.filter(c => c.path !== factoryPhoto), options);
+  assert.equal(textOnly.scope, 'factory-windows');
+  assert(!textOnly.commands.some(c => c.includes('scripts/generate-gallery-thumbnails.mjs')));
   assert(plan.commands.some(command => command.includes('--test') && command.includes('scripts/factories-page.test.mjs')));
   assert.notEqual(chooseReleaseScope(files, {...options, factoryPhotoMetadataOnly: () => false}).scope, 'factory-windows');
   assert.notEqual(chooseReleaseScope([...files, change('images/unrelated.jpg')], {...options, factoryPhotoMetadataOnly: () => true}).scope, 'factory-windows');
@@ -792,6 +797,57 @@ test('workflow installs from the plan dependency output without duplicating scop
   assert.match(installStep, /steps\.plan\.outputs\.needs_dependencies == 'true'/);
   for (const scope of ['full', '727-collection', 'responsive-photo-dedup', 'android-invite-copy'])
     assert(!installStep.includes(scope), `install step must not hardcode ${scope}`);
+});
+
+test('factory derivative repairs verify byte-identical image renames, payloads, localized HTML and all changed generators', () => {
+  const stem = factoryPhoto.slice('images/'.length, -4);
+  const display = token => 'images/thumbs/display/' + stem + '-' + token + '-640.webp';
+  const gallery = 'images/thumbs/gallery/index.json', index = 'images/thumbs/display/index.json';
+  const payload = 'data/spot-pages/lotte-shiga.ja.js', page = 'spots/lotte-shiga.html', fr = 'fr/' + page;
+  const castle = 'scripts/generate-castle-locales.mjs', utility = 'scripts/generate-utility-locales.mjs';
+  const shared = 'scripts/shared/utility-localization.mjs';
+  const old = '12345678', next = 'abcdef09', tokens = [old, next];
+  const indexText = token => JSON.stringify({ version: 1, sources: { [factoryPhoto]: { sha256: token } },
+    files: { [display(token)]: { source: factoryPhoto, width: 640, sha256: 'same WebP bytes' } } });
+  const data = token => 'window.page = { image: "' + display(token) + '", credit: "michikusa" };\n';
+  const hash = text => createHash('sha256').update(text).digest('hex').slice(0, 8);
+  const common = 'export const attrs = [];\nexport function collectEnglish() {\n  return ';
+  const versions = {
+    [gallery]: tokens.map(token => JSON.stringify({ thumbnail: { source: factoryPhoto, sourceSha256: token } })),
+    [index]: tokens.map(indexText), [payload]: tokens.map(data),
+    [page]: tokens.map(token => '<script src="../' + payload + '?v=' + hash(data(token)) + '"></script>'),
+    [fr]: tokens.map(token => '<img src="../../' + display(token) + '"><p>工場</p>'),
+    [shared]: [common + '1;\n}', common + '2;\n}'],
+  };
+  const files = [...[gallery, index, payload, page, fr, 'content-manifest.json', 'scripts/release-scope.mjs'].map(change),
+    { status: 'D', path: display(old) }, { status: 'A', path: display(next) }];
+  const plan = (extras = [], edits = {}, selected = files) => chooseReleaseScope([...selected, ...extras.map(change)],
+    { fileContents: file => edits[file] || versions[file] });
+  const simple = plan(), combined = plan([castle, utility, shared]);
+  assert.equal(simple.scope, 'factory-photo-derivatives');
+  assert(simple.commands.some(c => c.includes('--route') && c.includes(page) && c.includes(castle)));
+  assert(!simple.commands.some(c => c.includes(utility)));
+  assert.equal(combined.scope, simple.scope);
+  assert(combined.needsDependencies && combined.pagesCandidate);
+  for (const tool of ['scripts/generate-gallery-thumbnails.mjs', 'scripts/generate-spot-page-shared-data.mjs', castle, utility,
+    'scripts/sync-asset-versions.mjs', 'scripts/check-content-manifest.mjs']) {
+    const commands = combined.commands.filter(c => c[1] === tool);
+    assert.equal(commands.length, 1, tool);
+    assert(!commands[0].includes('--route'), tool);
+  }
+  assert(combined.commands.some(c => c.includes('scripts/locales-contract.test.mjs')));
+  assert(!combined.commands.some(c => c.includes('scripts/generate-starter-locales.mjs')));
+  const broad = plan([shared], { [shared]: [versions[shared][0], versions[shared][1].replace('attrs = []', 'attrs = [1]')] });
+  assert(broad.commands.some(c => c.includes('scripts/generate-starter-locales.mjs')));
+  for (const edits of [
+    { [payload]: [versions[payload][0], versions[payload][1].replace('michikusa', 'different credit')] },
+    { [fr]: [versions[fr][0], versions[fr][1].replace('工場', '別の本文')] },
+    { [page]: [versions[page][0], versions[page][1].replace(hash(data(next)), 'bad0cafe')] },
+    { [index]: [versions[index][0], versions[index][1].replace('same WebP bytes', 'different pixels')] },
+    { [gallery]: [versions[gallery][0], versions[gallery][1].replace(factoryPhoto, 'images/unrelated.jpg')] },
+  ]) assert.equal(plan([], edits).scope, 'unmapped');
+  assert.equal(plan(['style.css']).scope, 'unmapped');
+  assert.equal(plan([], {}, files.filter(c => c.status !== 'D')).scope, 'unmapped');
 });
 
 test('photo alias dedup checks every consuming generator and the affected translated route', () => {

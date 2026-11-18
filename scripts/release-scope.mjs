@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { isDeepStrictEqual } from 'node:util';
 import vm from 'node:vm';
@@ -1008,8 +1009,105 @@ function runtimeScope(changes, options) {
     reason: 'Ride and stamp consumers, their runtime tests, versioned script references and distribution inventory.', commands };
 }
 
+const galleryIndex = 'images/thumbs/gallery/index.json';
+const displayIndex = 'images/thumbs/display/index.json';
+const castleGenerator = 'scripts/generate-castle-locales.mjs';
+const utilityGenerator = 'scripts/generate-utility-locales.mjs';
+const utilityLocalization = 'scripts/shared/utility-localization.mjs';
+
+function onlyFactoryIndexChanges(file, before, after) {
+  const onlyKnown = (a, b, sourceOf) => [...new Set([...Object.keys(a), ...Object.keys(b)])].every(key =>
+    isDeepStrictEqual(a[key], b[key]) || [a[key], b[key]].filter(value => value !== undefined)
+      .every(value => value && factoryMetadataPhotos.has(sourceOf(key, value))));
+  if (isDeepStrictEqual(before, after)) return false;
+  if (file === galleryIndex) return onlyKnown(before, after, (_, entry) => entry.source);
+  return isDeepStrictEqual({ ...before, sources: after.sources, files: after.files }, after)
+    && onlyKnown(before.sources, after.sources, key => key)
+    && onlyKnown(before.files, after.files, (_, entry) => entry.source);
+}
+
+function factoryPhotoScope(changes, options) {
+  const files = new Set(changes.map(c => c.path));
+  const photoInputs = changes.filter(c => factoryMetadataPhotos.has(c.path));
+  const indices = changes.filter(c => c.path === galleryIndex || c.path === displayIndex);
+  if (!photoInputs.length && !indices.length) return null;
+  if (photoInputs.some(c => c.status !== 'M' || !options.factoryPhotoMetadataOnly?.(c.path))) return null;
+  const indexVersions = new Map();
+  for (const c of indices) {
+    if (c.status !== 'M' || !options.fileContents) return null;
+    const versions = options.fileContents(c.path).map(text => JSON.parse(text));
+    if (!onlyFactoryIndexChanges(c.path, ...versions)) return null;
+    indexVersions.set(c.path, versions);
+  }
+
+  const verified = new Set(indices.map(c => c.path));
+  const replacements = new Map(), payloadIds = new Set();
+  if (indexVersions.has(displayIndex)) {
+    const [before, after] = indexVersions.get(displayIndex).map(index => index.files);
+    const renamed = new Map(Object.entries(after).filter(([target, entry]) => !before[target] && factoryMetadataPhotos.has(entry.source))
+      .map(([target, entry]) => [entry.source + '/' + entry.width, target]));
+    for (const [old, entry] of Object.entries(before)) {
+      if (after[old]) continue;
+      const target = renamed.get(entry.source + '/' + entry.width);
+      if (!target || !entry.sha256 || after[target].sha256 !== entry.sha256) return null;
+      replacements.set(old, target);
+    }
+    if (renamed.size !== replacements.size) return null;
+    const statuses = new Map(changes.map(c => [c.path, c.status]));
+    for (const [old, target] of replacements) {
+      if (statuses.get(old) !== 'D' || statuses.get(target) !== 'A') return null;
+      verified.add(old); verified.add(target);
+    }
+  }
+  const applyReferences = text => text.replace(/images\/thumbs\/display\/[\w.-]+\.webp|data\/spot-pages\/[\w-]+\.(?:ja|en)\.js\?v=[a-f0-9]{8}/g,
+    reference => replacements.get(reference) ?? reference);
+  const shortHash = text => createHash('sha256').update(text).digest('hex').slice(0, 8);
+  for (const { path: file, status } of changes) {
+    const payload = file.match(/^data\/spot-pages\/([\w-]+)\.(?:ja|en)\.js$/);
+    if (!payload) continue;
+    if (status !== 'M' || !options.fileContents) return null;
+    const [before, after] = options.fileContents(file);
+    if (before === after || applyReferences(before) !== after) return null;
+    replacements.set(file + '?v=' + shortHash(before), file + '?v=' + shortHash(after));
+    payloadIds.add(payload[1]); verified.add(file);
+  }
+  for (const { path: file, status } of changes) {
+    const page = file.match(/^(?:(?:en|fr|de|es|it|ko|th|zh-Hans|zh-Hant)\/)?spots\/([\w-]+)\.html$/);
+    if (!page || !payloadIds.has(page[1]) || status !== 'M') continue;
+    const [before, after] = options.fileContents(file);
+    if (before !== after && applyReferences(before) === after) verified.add(file);
+  }
+  const generators = [castleGenerator, utilityGenerator, utilityLocalization];
+  const remaining = changes.filter(c => !verified.has(c.path) && !(c.status === 'M' && generators.includes(c.path)));
+  let plan;
+  if (files.has('scripts/generate-factories-page.mjs')) {
+    plan = selectExistingScope(remaining, { ...options, factoryPhotoMetadataOnly: file => factoryMetadataPhotos.has(file) });
+    if (plan.scope !== 'factory-windows') return null;
+  } else {
+    if (remaining.some(c => !factoryMetadataPhotos.has(c.path) &&
+      !(c.status === 'M' && ['content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'].includes(c.path)))) return null;
+    const tests = ['scripts/release-scope.test.mjs', 'scripts/responsive-photos.test.mjs'];
+    if (files.has(utilityLocalization)) tests.push('scripts/locales-contract.test.mjs');
+    plan = { scope: 'factory-photo-derivatives', needsDependencies: true, pagesCandidate: true,
+      reason: 'Verify factory thumbnail generation, spot photo references and their Web distribution',
+      commands: [node('--test', ...tests)] };
+  }
+  const checks = [node('scripts/generate-gallery-thumbnails.mjs', '--check'), node('scripts/generate-spot-page-shared-data.mjs', '--check')];
+  if (files.has(castleGenerator)) checks.push(node(castleGenerator, '--check'));
+  else for (const id of payloadIds) checks.push(node(castleGenerator, '--route', 'spots/' + id + '.html', '--check'));
+  if (files.has(utilityGenerator) || files.has(utilityLocalization)) checks.push(node(utilityGenerator, '--check'));
+  if (files.has(utilityLocalization)) {
+    const [before, after] = options.fileContents(utilityLocalization);
+    const collectEnglish = /^export function collectEnglish\([\s\S]*?^}/m;
+    if (!collectEnglish.test(before) || !collectEnglish.test(after) || before.replace(collectEnglish, '') !== after.replace(collectEnglish, ''))
+      checks.push(node('scripts/generate-starter-locales.mjs', '--check'));
+  }
+  checks.push(node('scripts/sync-asset-versions.mjs', '--check'), node('scripts/check-content-manifest.mjs'));
+  return { ...plan, commands: [...plan.commands, ...checks.filter(c => !plan.commands.some(other => isDeepStrictEqual(c, other)))] };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
-  let plan = selectExistingScope(changes, options);
+  let plan = factoryPhotoScope(changes, options) || selectExistingScope(changes, options);
   if (plan.scope === 'unmapped') plan = runtimeScope(changes, options) || plan;
   if (plan.scope === 'unmapped' || plan.scope === 'full') return plan;
   const files = new Set(changes.map(change => change.path));
