@@ -30,7 +30,7 @@ async function fixture(t, html = '<main>fixture</main>') {
   };
   const generateManifest = async () => {
     const files = [];
-    for (const file of [...FAST_GROUPS.flatMap(group => group.assets), 'spot-page-runtime.json', 'generated.html']) {
+    for (const file of [...FAST_GROUPS.flatMap(group => group.assets), 'spot-page-runtime.json', 'en/start.html']) {
       const bytes = await readFile(path.join(root, file));
       files.push({ path: file, bytes: bytes.length, sha256: createHash('sha256').update(bytes).digest('hex') });
     }
@@ -45,7 +45,7 @@ async function fixture(t, html = '<main>fixture</main>') {
     if (command.kind === 'full') {
       for (const group of FAST_GROUPS) await generateAsset(group);
       await write('spot-page-runtime.json', '{}');
-      await write('generated.html', await readFile(path.join(root, 'input.txt'), 'utf8').catch(() => 'deleted input'));
+      await write('en/start.html', await readFile(path.join(root, 'input.txt'), 'utf8').catch(() => 'deleted input'));
       await generateManifest();
       if (omitOutput) await rm(path.join(root, 'android-app-invite.js'));
     } else if (command.script === 'scripts/generate-content-manifest.mjs') await generateManifest();
@@ -58,7 +58,7 @@ async function fixture(t, html = '<main>fixture</main>') {
   };
   const run = options => runBuild({ root, execute, environment: 'fixture-environment', log: line => logs.push(line), ...options });
   const cache = () => readFile(path.join(root, CACHE_PATH), 'utf8');
-  return { root, write, run, cache, calls, logs, setFail: value => { fail = value; }, setUnexpected: value => { unexpected = value; }, setOmitOutput: value => { omitOutput = value; } };
+  return { root, write, execute, run, cache, calls, logs, setFail: value => { fail = value; }, setUnexpected: value => { unexpected = value; }, setOmitOutput: value => { omitOutput = value; } };
 }
 
 test('cold build records successful bytes; a repeated build starts no child process', async t => {
@@ -81,6 +81,89 @@ test('force ignores a matching successful cache', async t => {
   f.calls.length = 0;
   assert.equal((await f.run({ force: true })).mode, 'full');
   assert.deepEqual(f.calls, ['full']);
+});
+
+test('a full build cannot cache output rendered before its source changed', async t => {
+  const f = await fixture(t);
+  await f.write('input.txt', 'first');
+  const rendered = () => readFile(path.join(f.root, 'en/start.html'), 'utf8');
+  await assert.rejects(f.run({ execute: async command => {
+    await f.execute(command);
+    await f.write('input.txt', 'second');
+  } }), /Build input changed during full generation: input\.txt/);
+  assert.equal(await rendered(), 'first');
+  await assert.rejects(f.cache(), { code: 'ENOENT' });
+  assert.equal((await f.run()).mode, 'full');
+  assert.equal(await rendered(), 'second');
+  assert.equal((await f.run()).mode, 'noop');
+});
+
+for (const change of ['added', 'removed', 'edited']) {
+  test(`a source ${change} during full generation invalidates the run even when the manifest agrees`, async t => {
+    const f = await fixture(t);
+    if (change !== 'added') await f.write('data.js', 'first');
+    await f.run();
+    const oldCache = await f.cache();
+    await assert.rejects(f.run({ force: true, execute: async command => {
+      await f.execute(command);
+      if (change === 'removed') {
+        await rm(path.join(f.root, 'data.js'));
+      } else {
+        await f.write('data.js', 'second');
+        const manifest = JSON.parse(await readFile(path.join(f.root, 'content-manifest.json'), 'utf8'));
+        manifest.files.push({ path: 'data.js', bytes: 6, sha256: createHash('sha256').update('second').digest('hex') });
+        await f.write('content-manifest.json', JSON.stringify(manifest));
+      }
+    } }), /Build input changed during full generation: data\.js/);
+    assert.equal(await f.cache(), oldCache);
+    assert.equal((await f.run()).mode, 'full');
+  });
+}
+
+for (const file of ['article.html', 'scripts/templates/site-source/index.html.tpl']) {
+  test(`full generation consumes the final contents of the in-place source ${file}`, async t => {
+    const f = await fixture(t);
+    await f.write(file, 'first');
+    const result = await f.run({ execute: async command => {
+      await f.execute(command);
+      await f.write('data-runtime.js', await readFile(path.join(f.root, file)));
+      if (f.calls.length === 1) await f.write(file, 'second');
+    } });
+    assert.equal(result.commands, 2);
+    assert.equal(await readFile(path.join(f.root, 'data-runtime.js'), 'utf8'), 'second');
+    assert.equal((await f.run()).mode, 'noop');
+  });
+}
+
+test('an in-place rewrite that keeps changing fails after one additional pass', async t => {
+  const f = await fixture(t);
+  await assert.rejects(f.run({ execute: async command => {
+    await f.execute(command);
+    await f.write('article.html', String(f.calls.length));
+  } }), /Build input changed during full generation: article\.html/);
+  assert.deepEqual(f.calls, ['full', 'full']);
+  await assert.rejects(f.cache(), { code: 'ENOENT' });
+});
+
+test('authored HTML skips the second pass only for verified local asset hashes', async t => {
+  const digest = createHash('sha256').update('local script').digest('hex').slice(0, 8);
+  for (const [base, token, body, commands] of [
+    ['../', digest, 'article', 1],
+    ['../', 'ffffffff', 'article', 2],
+    ['../', digest, 'edited article', 2],
+    ['https://example.org/', digest, 'article', 2],
+    ['data:text/plain,example', digest, 'article', 2],
+  ]) {
+    const f = await fixture(t);
+    const page = (version, copy) => `<base href="${base}"><script src="locales.js?v=${version}"></script><p>${copy}</p>`;
+    await f.write('locales.js', 'local script');
+    await f.write('fr/info.html', page('00000000', 'article'));
+    const result = await f.run({ execute: async command => {
+      await f.execute(command);
+      await f.write('fr/info.html', page(token, body));
+    } });
+    assert.equal(result.commands, commands, `${base} ${token} ${body}`);
+  }
 });
 
 for (const group of FAST_GROUPS) for (const source of group.sources) {
@@ -122,7 +205,7 @@ for (const change of ['add', 'remove']) {
   });
 }
 
-for (const file of ['generated.html', 'android-app-invite.js', 'content-manifest.json', 'spot-page-runtime.json']) {
+for (const file of ['en/start.html', 'android-app-invite.js', 'content-manifest.json', 'spot-page-runtime.json']) {
   for (const change of ['missing', 'modified']) {
     test(`${change} generated output requires full repair: ${file}`, async t => {
       const f = await fixture(t);
@@ -212,7 +295,7 @@ for (const change of ['version', 'environment', 'corrupt']) {
     const f = await fixture(t);
     await f.run();
     const cache = JSON.parse(await f.cache());
-    if (change === 'version') cache.version = CACHE_VERSION + 1;
+    if (change === 'version') cache.version = CACHE_VERSION - 1;
     if (change === 'environment') cache.environment = 'other';
     await f.write(CACHE_PATH, change === 'corrupt' ? '{broken' : JSON.stringify(cache));
     f.calls.length = 0;

@@ -682,6 +682,30 @@ test('documentation and empty changes do not run product tests', () => {
   assert.deepEqual(chooseReleaseScope([]).commands, []);
 });
 
+test('build orchestration and HTML review changes exercise their own consumers', () => {
+  const build = ['scripts/build.mjs', 'scripts/build.test.mjs'];
+  const review = ['scripts/release-html-summary.mjs', 'scripts/release-html-summary.test.mjs'];
+  const combined = [...build, ...review, 'scripts/release-scope.mjs', '.github/workflows/quality-gate.yml'];
+  for (const [files, dependencies] of [[build, false], [review, true], [combined, true]]) {
+    const plan = chooseReleaseScope(files.map(change));
+    assert.equal(plan.scope, 'release-infrastructure');
+    assert.equal(plan.needsDependencies, dependencies);
+    assert.equal(plan.pagesCandidate, false);
+    for (const file of files.filter(file => file.endsWith('.test.mjs')))
+      assert.equal(plan.commands.filter(c => c.includes('--test') && c.includes(file)).length, 1);
+  }
+  assert.notEqual(chooseReleaseScope([...combined, 'index.html'].map(change)).scope, 'release-infrastructure');
+  const upgraded = chooseReleaseScope([change('package-lock.json')]);
+  assert.equal(upgraded.scope, 'full');
+  assert(upgraded.commands.some(c => c.includes('--test') && c.includes('scripts/release-html-summary.test.mjs')));
+  const yaml = fs.readFileSync(new URL('../.github/workflows/quality-gate.yml', import.meta.url), 'utf8');
+  const install = yaml.indexOf('run: npm ci');
+  const summary = yaml.indexOf('- name: Summarize HTML changes for review');
+  assert(install >= 0 && install < summary);
+  assert.match(yaml.slice(0, install), /github\.event_name == 'pull_request' && steps\.plan\.outputs\.review_html == 'true'/);
+  assert.match(yaml.slice(summary).split(/\n      - name:/)[0], /if: github\.event_name == 'pull_request'\s+run: node scripts\/release-html-summary\.mjs "\$RUNNER_TEMP\/release-plan\.json"/);
+});
+
 test('every release scope explicitly declares whether npm dependencies are needed', () => {
   const scopeOf = changes => chooseReleaseScope(changes).needsDependencies;
   assert.equal(scopeOf([]), false, 'none');
