@@ -823,19 +823,24 @@ test('factory derivative repairs verify byte-identical image renames, payloads, 
     { status: 'D', path: display(old) }, { status: 'A', path: display(next) }];
   const plan = (extras = [], edits = {}, selected = files) => chooseReleaseScope([...selected, ...extras.map(change)],
     { fileContents: file => edits[file] || versions[file] });
-  const simple = plan(), combined = plan([castle, utility, shared]);
+  const localeContract = 'scripts/locales-contract.test.mjs', rivers = 'scripts/generate-rivers-page.mjs';
+  const simple = plan(), combined = plan([castle, utility, shared, localeContract]);
   assert.equal(simple.scope, 'factory-photo-derivatives');
   assert(simple.commands.some(c => c.includes('--route') && c.includes(page) && c.includes(castle)));
   assert(!simple.commands.some(c => c.includes(utility)));
+  assert(!simple.commands.some(c => c.includes(rivers)));
   assert.equal(combined.scope, simple.scope);
   assert(combined.needsDependencies && combined.pagesCandidate);
-  for (const tool of ['scripts/generate-gallery-thumbnails.mjs', 'scripts/generate-spot-page-shared-data.mjs', castle, utility,
+  for (const tool of ['scripts/generate-gallery-thumbnails.mjs', 'scripts/generate-spot-page-shared-data.mjs', castle, utility, rivers,
     'scripts/sync-asset-versions.mjs', 'scripts/check-content-manifest.mjs']) {
     const commands = combined.commands.filter(c => c[1] === tool);
     assert.equal(commands.length, 1, tool);
     assert(!commands[0].includes('--route'), tool);
   }
-  assert(combined.commands.some(c => c.includes('scripts/locales-contract.test.mjs')));
+  for (const candidate of [combined, plan([castle, localeContract])]) {
+    assert.equal(candidate.commands.filter(c => c.includes('--test') && c.includes(localeContract)).length, 1);
+    assert.equal(candidate.commands.filter(c => c.includes('--check') && c.includes(rivers)).length, 1);
+  }
   assert(!combined.commands.some(c => c.includes('scripts/generate-starter-locales.mjs')));
   const broad = plan([shared], { [shared]: [versions[shared][0], versions[shared][1].replace('attrs = []', 'attrs = [1]')] });
   assert(broad.commands.some(c => c.includes('scripts/generate-starter-locales.mjs')));

@@ -1014,6 +1014,7 @@ const displayIndex = 'images/thumbs/display/index.json';
 const castleGenerator = 'scripts/generate-castle-locales.mjs';
 const utilityGenerator = 'scripts/generate-utility-locales.mjs';
 const utilityLocalization = 'scripts/shared/utility-localization.mjs';
+const localeContract = 'scripts/locales-contract.test.mjs';
 
 function onlyFactoryIndexChanges(file, before, after) {
   const onlyKnown = (a, b, sourceOf) => [...new Set([...Object.keys(a), ...Object.keys(b)])].every(key =>
@@ -1078,6 +1079,7 @@ function factoryPhotoScope(changes, options) {
     if (before !== after && applyReferences(before) === after) verified.add(file);
   }
   const generators = [castleGenerator, utilityGenerator, utilityLocalization];
+  if (files.has(castleGenerator) || files.has(utilityLocalization)) generators.push(localeContract);
   const remaining = changes.filter(c => !verified.has(c.path) && !(c.status === 'M' && generators.includes(c.path)));
   let plan;
   if (files.has('scripts/generate-factories-page.mjs')) {
@@ -1087,7 +1089,7 @@ function factoryPhotoScope(changes, options) {
     if (remaining.some(c => !factoryMetadataPhotos.has(c.path) &&
       !(c.status === 'M' && ['content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs'].includes(c.path)))) return null;
     const tests = ['scripts/release-scope.test.mjs', 'scripts/responsive-photos.test.mjs'];
-    if (files.has(utilityLocalization)) tests.push('scripts/locales-contract.test.mjs');
+    if (files.has(utilityLocalization)) tests.push(localeContract);
     plan = { scope: 'factory-photo-derivatives', needsDependencies: true, pagesCandidate: true,
       reason: 'Verify factory thumbnail generation, spot photo references and their Web distribution',
       commands: [node('--test', ...tests)] };
@@ -1114,6 +1116,12 @@ export function chooseReleaseScope(changes, options = {}) {
   const hasFullTest = file => plan.commands.some(command => command[1] === '--test' && command.includes(file)
     && !command.some(arg => arg.startsWith('--test-name-pattern')));
   const extra = [];
+  if (files.has(castleGenerator)) {
+    if (!hasFullTest(localeContract)) extra.push(node('--test', localeContract));
+    const riverGenerator = 'scripts/generate-rivers-page.mjs';
+    if (!plan.commands.some(command => command[1] === riverGenerator && command.includes('--check')))
+      extra.push(node(riverGenerator, '--check'));
+  }
   if ((files.has('scripts/content-metadata.json') || files.has(metadataTests)) && !hasFullTest(metadataTests)) {
     extra.push(node('--test', '--test-name-pattern', 'editorial metadata', metadataTests));
   }

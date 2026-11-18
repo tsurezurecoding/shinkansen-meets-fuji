@@ -24,6 +24,7 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const origin = 'https://www.michikusa-travel.com';
 const check = process.argv.includes('--check');
 const missing = new Set();
+let pageCount = 0;
 const requestedRoute = process.argv.includes('--route') ? process.argv[process.argv.indexOf('--route') + 1] : null;
 const requestedLang = process.argv.includes('--lang') ? process.argv[process.argv.indexOf('--lang') + 1] : null;
 if (requestedLang && !CASTLE_LOCALE_LANGS.includes(requestedLang)) throw Error('Unknown castle locale: ' + requestedLang);
@@ -46,6 +47,8 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     return value.replace(key, () => result);
   }
   for (const route of [...CASTLE_LOCALE_ROUTES, ...Object.keys(episodes).filter(route => episodes[route].includes(lang) && (!enOnly.includes(route) || EXPANSION_ROUTES.includes(route)))] .filter(route => !requestedRoute || route === requestedRoute)) {
+    // The locale registry also advertises rivers; generate-rivers-page renders all ten editions from data/rivers.
+    if (route === 'rivers.html') continue;
     const sceneryRoute = /^spots\/(?:fujikawa-bridge|fuji-paper-mills|ibuki(?:-seat-a)?)\.html$/.test(route);
     dictionary = route === 'spots/yamazaki-distillery.html' ? { ...commonDictionary, ...sceneryDictionary, ...YAMAZAKI_TRANSLATIONS[lang] } : sceneryRoute ? { ...commonDictionary, ...sceneryDictionary } : everydayDictionaries[route] ? { ...commonDictionary, ...everydayDictionaries[route] } : EXPANSION_ROUTES.includes(route) ? { ...commonDictionary, ...expansionDictionary } : commonDictionary;
     if (route === 'spots/maruko-bridge.html') dictionary = {...dictionary, ...JSON.parse(fs.readFileSync(path.join(root,'data/story-window',lang,'maruko.json'),'utf8'))};
@@ -232,9 +235,10 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     if (check) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error(`Localized article stale: ${file}`); }
     else { fs.mkdirSync(path.dirname(dest), {recursive:true}); fs.writeFileSync(dest, html); }
     dom.window.close();
+    pageCount++;
     // jsdom queues load callbacks on nextTick. Let them release this window before starting another page.
     await setImmediate();
   }
 }
 if (missing.size) throw Error(`Translation missing:\n${[...missing].join('\n')}`);
-console.log(`Castle/companion localized articles: ${CASTLE_LOCALE_LANGS.length * CASTLE_LOCALE_ROUTES.length} pages, English source.`);
+console.log(`Castle/companion localized articles: ${pageCount} pages, English source.`);
