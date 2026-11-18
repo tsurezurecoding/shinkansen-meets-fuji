@@ -28,9 +28,11 @@
     },
     {
       "id": "sagami-sakawa",
-      "type": "stop",
+      "type": "photo",
       "from": "shin-yokohama",
-      "to": "odawara"
+      "to": "odawara",
+      "image": "images/rivers/sagami.jpg",
+      "side": "E"
     },
     {
       "id": "shiraito",

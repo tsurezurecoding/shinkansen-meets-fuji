@@ -40,6 +40,14 @@
       "caption": "The blue arches of Maruko Bridge span a break in the cityscape.",
       "link": "A closer look at Maruko Bridge"
     },
+    "sagami-sakawa": {
+      "name": "Sagami River",
+      "sub": "The Sakawa and the old Tokaido",
+      "body": "Between the grey diagonal bridge beams, a broad stretch of water and green banks on both sides come into view. On the old Tokaido, travelers crossed the Sagami by boat; near Odawara, porters carried travelers across the Sakawa.",
+      "alt": "Broad water and green banks on both sides, seen between grey diagonal bridge beams.",
+      "caption": "Broad water framed by diagonal steel, with green banks on both sides.",
+      "link": "Look for Mount Fuji across the Sagami Plain"
+    },
     "shiraito": {
       "name": "Shiraito River Bridge",
       "sub": "A valley opening onto the sea",
@@ -131,11 +139,6 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "The Sagami and Sakawa rivers",
-      "body": "Toward Shin-Osaka you reach the Sagami first. In the Edo period, travelers on the Tokaido road crossed it by ferry. At the Sakawa, just before Odawara, porters carried people on their shoulders or on platforms. Today you stay in your seat for both crossings.",
-      "link": "Look for Mount Fuji across the Sagami Plain"
-    },
     "yahagi": {
       "name": "Yahagi River",
       "body": "On the way to Mikawa-Anjo, the train crosses the Yahagi River. Water drawn farther upstream reaches the fields of Anjo through the Meiji irrigation canal. The river below your window helps sustain the farmland ahead."

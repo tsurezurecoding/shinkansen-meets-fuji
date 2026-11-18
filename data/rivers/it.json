@@ -40,6 +40,14 @@
       "sub": "Ponte Maruko",
       "link": "Scopri il ponte Maruko"
     },
+    "sagami-sakawa": {
+      "name": "Fiume Sagami",
+      "sub": "La Sakawa e l’antica Tōkaidō",
+      "body": "Tra le travi grigie oblique si vedono un ampio tratto d’acqua e rive verdi su entrambi i lati. Sull’antica Tōkaidō, i viaggiatori attraversavano il Sagami in barca; vicino a Odawara, i portatori li trasportavano oltre la Sakawa.",
+      "alt": "Un ampio tratto d’acqua e rive verdi su entrambi i lati, tra travi grigie oblique.",
+      "caption": "L’acqua tra le travi oblique e le rive verdi su entrambi i lati.",
+      "link": "Cerca il monte Fuji nella pianura del Sagami"
+    },
     "shiraito": {
       "name": "Ponte di Shiraito",
       "body": "Nei pressi di Nebukawa, il mare appare oltre i piloni rossi. È il ponte della linea Tōkaidō tradizionale. Anche se non si vede l’acqua del fiume, per un attimo si percepisce la profondità della valle.",
@@ -131,11 +139,6 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Sagami e Sakawa",
-      "body": "Verso Shin-Osaka si attraversa prima il Sagami, che i viaggiatori dell’antica strada del Tōkaidō superavano in barca. Poco prima di Odawara, sul Sakawa, i portatori trasportavano i viaggiatori sulle spalle o su una portantina. Oggi si passa su entrambi i ponti restando comodamente seduti.",
-      "link": "Cerca il monte Fuji nella pianura del Sagami"
-    },
     "yahagi": {
       "name": "Yahagi",
       "body": "Lungo il percorso verso Mikawa-Anjō, il treno attraversa lo Yahagi. L’acqua captata a monte arriva ai campi intorno ad Anjō attraverso il canale Meiji. Il fiume sotto il finestrino sostiene la vita agricola della pianura."

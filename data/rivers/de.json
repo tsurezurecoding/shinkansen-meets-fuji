@@ -40,6 +40,14 @@
       "sub": "Maruko-Brücke",
       "link": "Mehr zur Maruko-Brücke"
     },
+    "sagami-sakawa": {
+      "name": "Sagami-Fluss",
+      "sub": "Die Sakawa und der alte Tōkaidō",
+      "body": "Zwischen den schrägen grauen Stahlträgern öffnen sich eine breite Wasserfläche und grüne Ufer auf beiden Seiten. Auf dem alten Tōkaidō überquerten Reisende die Sagami mit dem Boot; nahe Odawara trugen Flusshelfer die Reisenden über die Sakawa.",
+      "alt": "Breite Wasserfläche und grüne Ufer auf beiden Seiten, gesehen zwischen schrägen grauen Stahlträgern.",
+      "caption": "Wasser zwischen schrägen Stahlträgern und grünen Ufern auf beiden Seiten.",
+      "link": "Fuji in der Ebene von Sagami suchen"
+    },
     "shiraito": {
       "name": "Shiraito-Brücke",
       "body": "Bei Nebukawa zeigt sich hinter den roten Pfeilern das Meer. Zu sehen ist die Brücke der Tōkaidō-Hauptlinie. Auch wenn die Wasserfläche des Flusses verborgen bleibt, lässt sich die Tiefe des Tals in diesem Augenblick erahnen.",
@@ -131,11 +139,6 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Sagami und Sakawa",
-      "body": "Richtung Shin-Osaka überquert der Zug zuerst die Sagami, die Reisende auf der alten Tōkaidō-Straße mit dem Boot passierten. Vor Odawara trugen Träger die Reisenden über die Sakawa auf den Schultern oder in einem Tragstuhl. Heute überquert der Zug beide Flüsse auf Brücken, während Sie sitzen bleiben.",
-      "link": "Fuji in der Ebene von Sagami suchen"
-    },
     "yahagi": {
       "name": "Yahagi",
       "body": "Auf dem Weg nach Mikawa-Anjō überquert der Zug die Yahagi. Wasser, das weiter oben entnommen wird, gelangt über den Meiji-Kanal zu den Feldern rund um Anjō. Der Fluss unter dem Fenster versorgt das Leben auf dem Land."

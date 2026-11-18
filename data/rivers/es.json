@@ -40,6 +40,14 @@
       "sub": "Puente Maruko",
       "link": "Más sobre el puente Maruko"
     },
+    "sagami-sakawa": {
+      "name": "Río Sagami",
+      "sub": "La Sakawa y la antigua Tōkaidō",
+      "body": "Entre las vigas grises en diagonal se ven una amplia extensión de agua y orillas verdes a ambos lados. En la antigua ruta del Tōkaidō, los viajeros cruzaban el Sagami en barca; cerca de Odawara, porteadores los llevaban a hombros para cruzar la Sakawa.",
+      "alt": "Amplia extensión de agua y orillas verdes a ambos lados, entre vigas grises en diagonal.",
+      "caption": "Agua entre vigas diagonales y orillas verdes a ambos lados.",
+      "link": "Busca el monte Fuji en la llanura de Sagami"
+    },
     "shiraito": {
       "name": "Puente ferroviario Shiraito-gawa",
       "body": "Cerca de Nebukawa, el mar asoma al otro lado de los pilares rojos. El puente que vemos es de la línea principal Tōkaidō. Aunque no se vea la superficie del río, por un instante se siente la profundidad del valle.",
@@ -131,11 +139,6 @@
     }
   },
   "stops": {
-    "sagami-sakawa": {
-      "name": "Ríos Sagamigawa y Sakawagawa (相模川・酒匂川)",
-      "body": "En dirección a Shin-Osaka, el primero es el Sagamigawa, que durante el periodo Edo se cruzaba en barca por la antigua ruta Tōkaidō. Antes de Odawara, en el Sakawagawa, los porteadores llevaban a los viajeros a hombros o sobre plataformas. Hoy ambos se cruzan de una vez desde el asiento, por un puente.",
-      "link": "Busca el monte Fuji en la llanura de Sagami"
-    },
     "yahagi": {
       "name": "Río Yahagigawa (矢作川)",
       "body": "Camino de Mikawa-Anjo cruzamos el Yahagigawa. El agua captada río arriba llega a los campos de Anjo por el canal Meiji-yōsui. El curso que vemos bajo la ventana sostiene la vida agrícola de la llanura."
