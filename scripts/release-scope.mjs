@@ -254,7 +254,10 @@ function onlyRiversPackageChange(beforeValue, afterValue) {
     const after = typeof afterValue === 'string' ? JSON.parse(afterValue) : structuredClone(afterValue);
     if (!before.scripts || !after.scripts) return false;
     const expected = structuredClone(before);
-    expected.scripts['build:pages'] += ' && node scripts/generate-rivers-page.mjs';
+    expected.scripts['build:pages'] = expected.scripts['build:pages'].replace(
+      'node scripts/generate-spot-pages.mjs --defer-manifest',
+      'node scripts/generate-rivers-page.mjs && node scripts/generate-spot-pages.mjs --defer-manifest'
+    );
     expected.scripts['preflight:spots'] += ' && node scripts/generate-rivers-page.mjs --check';
     return isDeepStrictEqual(expected, after);
   } catch { return false; }

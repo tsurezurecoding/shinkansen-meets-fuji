@@ -766,12 +766,10 @@ test('rivers feature editions select localized routing, manifest and page checks
     'scripts/locales/utility-fr.json','fr/utility-data.js','zukan.html','en/zukan.html','fr/zukan.html','index.html',
     'scripts/content-metadata.json','content-manifest.json','sitemap.xml','package.json',
     'scripts/release-scope.mjs','scripts/release-scope.test.mjs'];
-  const before = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const after = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  const before = structuredClone(after);
   before.scripts['build:pages'] = before.scripts['build:pages'].replace(' && node scripts/generate-rivers-page.mjs', '');
   before.scripts['preflight:spots'] = before.scripts['preflight:spots'].replace(' && node scripts/generate-rivers-page.mjs --check', '');
-  const after = structuredClone(before);
-  after.scripts['build:pages'] += ' && node scripts/generate-rivers-page.mjs';
-  after.scripts['preflight:spots'] += ' && node scripts/generate-rivers-page.mjs --check';
   const packageOptions = {packageBefore: JSON.stringify(before), packageAfter: JSON.stringify(after), assetVersionOnly: file => file === 'index.html'};
   const plan = chooseReleaseScope(files.map(change), packageOptions);
   assert.equal(plan.scope, 'rivers-feature');
