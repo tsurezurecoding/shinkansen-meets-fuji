@@ -10,7 +10,7 @@ const read = file => fs.readFileSync(new URL('../' + file, import.meta.url), 'ut
 
 test('Italian and Thai share every regular translated route and leave limited editions behind', () => {
   const routes = [...new Set([...locales.routes, ...Object.keys(locales.episodes)])];
-  assert.equal(routes.length, 78, '77 canonical pages including Kyoto Station, omamori, donburi and ramen, and the Ibuki A-seat alias');
+  assert.equal(routes.length, 79, '78 canonical pages including Kyoto Station, rivers, omamori, donburi and ramen, and the Ibuki A-seat alias');
   assert.deepEqual(locales.starter, []);
   for (const lang of ['it', 'th']) {
     assert.ok(locales.coreLanguages.includes(lang));
@@ -18,6 +18,7 @@ test('Italian and Thai share every regular translated route and leave limited ed
     for (const route of routes) assert.ok(locales.supported(route).includes(lang), `${lang}/${route}`);
   }
   assert.deepEqual(locales.supported('727-collection.html'), locales.coreLanguages);
+  assert.deepEqual(locales.supported('rivers.html'), locales.coreLanguages);
   assert.deepEqual(locales.supported('jr-pass-fuji.html'), ['en', ...locales.translated]);
   for (const route of ['hanabi.html','spots/seta-karahashi.html','spots/musashi-kosugi-towers.html','spots/sagami-fuji.html','spots/left-fuji.html']) assert.deepEqual(locales.supported(route), locales.coreLanguages);
 });
@@ -123,8 +124,8 @@ test('Chinese scripts, regions and exact path editions remain distinct', () => {
   assert.equal(locales.routeLanguage('/zh-Hant/start.html'), 'zh-Hant');
   assert.equal(locales.routeLanguage('/spots/hamanako.html'), null);
 });
-function route({ requested, saved, browser = 'zh-CN' }) {
-  const url = new URL('https://www.michikusa-travel.com/start.html?train=Nozomi-1&board=Shinagawa&dir=west&focus=fuji#journey');
+function route({ requested, saved, browser = 'zh-CN', path = 'start.html' }) {
+  const url = new URL(`https://www.michikusa-travel.com/${path}?train=Nozomi-1&board=Shinagawa&dir=west&focus=fuji#journey`);
   if (requested) url.searchParams.set('lang', requested);
   const dom = new JSDOM('<html lang="ja"><head></head><body></body></html>', { url: url.href, runScripts:'outside-only' });
   if (saved) dom.window.localStorage.setItem('mado-lang', saved);
@@ -152,6 +153,16 @@ test('explicit and saved editions preserve train/station/direction/queries/hash'
   assert.equal(route({browser:'zh-CN'}), undefined);
   assert.equal(route({browser:'zh-TW'}), undefined);
   assert.equal(route({requested:'unknown'}), undefined);
+});
+
+test('the rivers article resolves the selected language through its registered route', () => {
+  for (const lang of locales.coreLanguages.filter(value => value !== 'ja')) {
+    const target = new URL(route({requested: lang, path: 'rivers.html'}));
+    assert.equal(target.pathname, `/${lang}/rivers.html`);
+    assert.equal(target.searchParams.get('train'), 'Nozomi-1');
+    assert.equal(target.hash, '#journey');
+  }
+  assert.equal(route({requested: 'ja', saved: 'fr', path: 'rivers.html'}), undefined);
 });
 
 

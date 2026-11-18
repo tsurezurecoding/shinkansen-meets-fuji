@@ -33,6 +33,9 @@ function localizeEnglishRail(html) {
   const copy = [
     ["車窓の作品集", "Window Artworks"],
     ["写真や墨絵で、車窓の別の表現を楽しむ。", "Explore window views through photographs and ink wash."],
+    ["川と橋を、車窓から", "Rivers by Shinkansen"],
+    ["東京〜新大阪間の川と橋を、東海道新幹線から眺める。", "From Tokyo to Shin-Osaka, follow rivers and bridges along the Tokaido Shinkansen."],
+    ["川と橋", "RIVERS & BRIDGES"],
     ["車窓の観覧車を集める", "Find the ferris wheels"],
     ['<span class="copy-chunk">街の向こうの、</span><span class="copy-chunk">小さな輪を探す。</span>', "Look for little wheels beyond the city."],
     ["一度きりの車窓", "Weather Seen from the Shinkansen"],
@@ -66,6 +69,7 @@ function localizeEnglishRail(html) {
     ["時刻は選んだ列車の停車時刻から計算した目安です（未選択のサンプルはのぞみ基準）。天候や座席により見え方は変わります。少し早めに窓の外を見てください。", "Times use your selected train’s timetable; the unselected sample uses Nozomi times. Visibility varies by weather and seat. Start watching a little early."],
   ];
   const routes = [
+    ["rivers.html", "en/rivers.html"],
     ["ferris-wheels.html", "en/ferris-wheels.html"],
     ["castles.html", "en/castles.html"],
     ["start.html", "en/start.html"],
@@ -117,7 +121,7 @@ function localizeEnglishRail(html) {
     .replaceAll('href="727-collection.html"', 'href="en/727-collection.html"');
   // English editorial priority: iconic views, everyday discoveries, then drinks.
   const featureCards=[...result.matchAll(/<a class="journey-intent-card\b[\s\S]*?<\/a>/g)].map(m=>m[0]);
-  const leading=['guide','castles','arenani'].map(id=>{
+  const leading=['guide','castles','rivers','arenani'].map(id=>{
     const card=featureCards.find(c=>c.includes('data-cta-id="'+id+'"'));
     if(!card)throw Error('Missing English feature card '+id);
     return card;

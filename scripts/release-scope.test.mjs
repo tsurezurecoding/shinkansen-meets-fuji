@@ -755,3 +755,36 @@ test('Kyoto layout and existing night-article additions use their bounded consum
  assert.equal(chooseReleaseScope([...files,change('data.js')]).scope,'unmapped');
  assert.equal(chooseReleaseScope([...files,change('site-chrome.js')]).scope,'unmapped');
 });
+
+test('rivers feature editions select localized routing, manifest and page checks only', () => {
+  const files = ['scripts/generate-rivers-page.mjs','data/rivers/ja.json','data/rivers/en.json',
+    'rivers.html','en/rivers.html','fr/rivers.html','zh-Hant/rivers.html','de/rivers.html','es/rivers.html',
+    'zh-Hans/rivers.html','ko/rivers.html','it/rivers.html','th/rivers.html','rivers.css','rivers.js',
+    'images/rivers/river-01.jpg','locales.js','language-router.js','scripts/validate-language-pages.mjs',
+    'scripts/locales-contract.test.mjs','scripts/generate-spot-pages.mjs','scripts/generate-content-manifest.mjs',
+    'scripts/generate-language-mirrors.mjs','scripts/generate-utility-locales.mjs','scripts/templates/site-source/zukan.html.tpl',
+    'scripts/locales/utility-fr.json','fr/utility-data.js','zukan.html','en/zukan.html','fr/zukan.html','index.html',
+    'scripts/content-metadata.json','content-manifest.json','sitemap.xml','package.json',
+    'scripts/release-scope.mjs','scripts/release-scope.test.mjs'];
+  const before = JSON.parse(fs.readFileSync(new URL('../package.json', import.meta.url), 'utf8'));
+  before.scripts['build:pages'] = before.scripts['build:pages'].replace(' && node scripts/generate-rivers-page.mjs', '');
+  before.scripts['preflight:spots'] = before.scripts['preflight:spots'].replace(' && node scripts/generate-rivers-page.mjs --check', '');
+  const after = structuredClone(before);
+  after.scripts['build:pages'] += ' && node scripts/generate-rivers-page.mjs';
+  after.scripts['preflight:spots'] += ' && node scripts/generate-rivers-page.mjs --check';
+  const packageOptions = {packageBefore: JSON.stringify(before), packageAfter: JSON.stringify(after), assetVersionOnly: file => file === 'index.html'};
+  const plan = chooseReleaseScope(files.map(change), packageOptions);
+  assert.equal(plan.scope, 'rivers-feature');
+  assert.equal(plan.needsDependencies, true);
+  assert.equal(plan.pagesCandidate, true);
+  assert(plan.commands.some(command => command.includes('scripts/generate-rivers-page.mjs') && command.includes('--check')));
+  assert(plan.commands.some(command => command.includes('scripts/validate-language-pages.mjs')));
+  assert(plan.commands.some(command => command.includes('scripts/generate-utility-locales.mjs') && command.includes('zukan.html')));
+  assert(plan.commands.some(command => command.includes('scripts/validate-site-navigation.mjs') && command.includes('zukan.html')));
+  assert(plan.commands.some(command => command.includes('scripts/sync-asset-versions.mjs')));
+  assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
+  assert(!plan.commands.some(command => command.includes('verify') || command.includes('build:full')));
+  assert.notEqual(chooseReleaseScope([...files.map(change), change('app.js')], packageOptions).scope, 'rivers-feature');
+  assert.notEqual(chooseReleaseScope([...files.map(change), {path:'th/rivers.html',status:'D'}], packageOptions).scope, 'rivers-feature');
+  assert.notEqual(chooseReleaseScope([...files.map(change), change('app.js')], {packageBefore: packageOptions.packageBefore, packageAfter: packageOptions.packageAfter}).scope, 'rivers-feature');
+});

@@ -811,6 +811,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.michikusa-travel.com/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/en/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://www.michikusa-travel.com/en/jr-pass-fuji.html</loc>
     <lastmod>2026-08-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -4953,6 +4965,54 @@
   <url>
     <loc>https://www.michikusa-travel.com/th/kyoto-station-views.html</loc>
     <lastmod>2026-11-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/zh-Hant/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/fr/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/de/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/es/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/zh-Hans/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/ko/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/it/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.michikusa-travel.com/th/rivers.html</loc>
+    <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
