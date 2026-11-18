@@ -7,6 +7,7 @@ import {withStoryWindowLinks} from './shared/story-window.mjs';
 import { enOnly, episodes, supported, editions, languages, stripEdition } from './shared/locales.mjs';
 import { YAMAZAKI_TRANSLATIONS } from './shared/yamazaki-locales.mjs';
 import path from 'node:path';
+import { setImmediate } from 'node:timers/promises';
 import { fileURLToPath } from 'node:url';
 import { englishSnapshot, textNodes, TRANSLATABLE_ATTRIBUTES } from './shared/castle-localization.mjs';
 import { CASTLE_LOCALE_LANGS, CASTLE_LOCALE_ROUTES, withArticleLocales } from './shared/castle-locales.mjs';
@@ -231,6 +232,8 @@ for (const lang of requestedLang ? [requestedLang] : CASTLE_LOCALE_LANGS) {
     if (check) { if (!fs.existsSync(dest) || fs.readFileSync(dest, 'utf8') !== html) throw Error(`Localized article stale: ${file}`); }
     else { fs.mkdirSync(path.dirname(dest), {recursive:true}); fs.writeFileSync(dest, html); }
     dom.window.close();
+    // jsdom queues load callbacks on nextTick. Let them release this window before starting another page.
+    await setImmediate();
   }
 }
 if (missing.size) throw Error(`Translation missing:\n${[...missing].join('\n')}`);
