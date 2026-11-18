@@ -6,7 +6,7 @@ import { spawn } from 'node:child_process';
 import { performance } from 'node:perf_hooks';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-export const CACHE_VERSION = 1;
+export const CACHE_VERSION = 2;
 export const CACHE_PATH = '.codex-local/build-cache.json';
 // Deliberately narrow. Generator/helper edits, new files, removed files and
 // changed generated assets always require the existing complete build.
@@ -25,6 +25,11 @@ export const FAST_GROUPS = Object.freeze([
 ]);
 const MANIFEST_GENERATOR = 'scripts/generate-content-manifest.mjs';
 const REQUIRED_OUTPUTS = ['android-app-invite.js', 'spot-page-runtime.json', 'content-manifest.json'];
+const GENERATED_FILES = new Set([
+  ...REQUIRED_OUTPUTS, 'site-runtime.json', 'data-runtime.js', 'spot-page-shared-data.js',
+  'sitemap.xml', 'train-window-geometry.js', 'artworks/window-trip/window-trip-data.js',
+  'data/window-trip-photo-sources.json', 'sudoori/assets/route.js', 'en/start.html', 'en/index.html',
+]);
 const ROOT_EXCLUSIONS = new Set(['.git', '.codex-local', '.claude', '.tmp_pydeps', '.secrets', 'node_modules', 'AGENTS.md']);
 const sha256 = value => createHash('sha256').update(value).digest('hex');
 
@@ -40,7 +45,7 @@ function decodeAttribute(value) {
   return value.replace(/&amp;/gi, '&').replace(/&#(?:x([\da-f]+)|(\d+));/gi, (_, hex, decimal) => String.fromCodePoint(parseInt(hex || decimal, hex ? 16 : 10)));
 }
 
-function versionedAssets(html, relative) {
+function inspectHtml(html, relative) {
   const origin = 'https://build.invalid';
   const page = new URL(relative, `${origin}/`);
   const baseTag = html.match(/<base\b[^>]*>/i)?.[0];
@@ -60,7 +65,20 @@ function versionedAssets(html, relative) {
       } catch { /* Invalid URLs are handled by the existing navigation validators. */ }
     }
   }
-  return assets;
+  // sync-asset-versions also rewrites authored pages. Keep a content digest
+  // with only local JS/CSS version tokens removed, plus their actual values.
+  // The final snapshot must prove each replacement is the asset's real hash.
+  if (html.includes('\uFFFD') || (base.origin !== origin && base.origin !== 'https://www.michikusa-travel.com')) {
+    return { assets, versionedContent: null };
+  }
+  const versions = [];
+  const withoutVersions = html.replace(/(["'(])([\w./-]+\.(?:js|css|mjs))\?v=([\w.-]+)/g, (whole, quote, ref, token) => {
+    if (ref.startsWith('//')) return whole;
+    const url = new URL(ref, base);
+    versions.push([url.pathname.slice(1), token]);
+    return `${quote}${ref}?v=`;
+  });
+  return { assets, versionedContent: versions.length ? { digest: sha256(withoutVersions), versions } : null };
 }
 
 export async function fingerprint(root) {
@@ -79,6 +97,7 @@ export async function fingerprint(root) {
   paths.sort();
   const entries = new Array(paths.length);
   const htmlAssets = new Set();
+  const versionedPages = new Map();
   let cursor = 0;
   // Stream even large media, and bound concurrent handles/memory. No mtime
   // shortcut: the bytes of every included source AND output are read each run.
@@ -100,11 +119,15 @@ export async function fingerprint(root) {
       if (before.size !== bytes || after.size !== bytes || before.mtimeMs !== after.mtimeMs || before.ctimeMs !== after.ctimeMs) {
         throw new Error(`File changed while fingerprinting: ${relative}`);
       }
-      if (html) for (const asset of versionedAssets(Buffer.concat(html).toString('utf8'), relative)) htmlAssets.add(asset);
+      if (html) {
+        const { assets, versionedContent } = inspectHtml(Buffer.concat(html).toString('utf8'), relative);
+        for (const asset of assets) htmlAssets.add(asset);
+        if (versionedContent) versionedPages.set(relative, versionedContent);
+      }
       entries[index] = [relative, { bytes, sha256: hash.digest('hex') }];
     }
   }));
-  return { files: Object.fromEntries(entries), htmlAssets, bytes: entries.reduce((total, [, entry]) => total + entry.bytes, 0), ms: performance.now() - started };
+  return { files: Object.fromEntries(entries), htmlAssets, versionedPages, bytes: entries.reduce((total, [, entry]) => total + entry.bytes, 0), ms: performance.now() - started };
 }
 
 export function environmentFingerprint(env = process.env) {
@@ -120,6 +143,36 @@ function diffFiles(previous, current) {
   const removed = Object.keys(previous).filter(file => !Object.hasOwn(current, file));
   const changed = Object.keys(current).filter(file => previous[file] && (previous[file].sha256 !== current[file].sha256 || previous[file].bytes !== current[file].bytes));
   return { added, removed, changed };
+}
+
+function fullBuildInputChanges(before, after) {
+  const { added, removed, changed } = diffFiles(before.files, after.files);
+  return [...added, ...removed, ...changed].filter(file => {
+    // The release manifest also includes authored data, scripts and photos.
+    // Only omit paths owned by generators, never all manifest entries.
+    if (GENERATED_FILES.has(file) || /^data\/spot-pages\/[\w-]+\.(?:ja|en)\.js$/.test(file) ||
+        /^shared-ui\/[\w.-]+\.js$/.test(file) || /^images\/thumbs\/(?:gallery|display)\/(?:index\.json|.+\.webp)$/.test(file) ||
+        /^(?:fr|de|es|ko|zh-Hant|zh-Hans|it|th|ar)\/(?:utility|sparkling)-data\.js$/.test(file)) return false;
+    if (file.endsWith('.html')) {
+      const template = `scripts/templates/site-source/${file}.tpl`;
+      if (before.files[template] && after.files[template]) return false;
+      const spot = file.match(/^(en\/)?spots\/([\w-]+)\.html$/);
+      if (spot && after.files[`data/spot-pages/${spot[2]}.${spot[1] ? 'en' : 'ja'}.js`]) return false;
+      const previous = before.versionedPages.get(file);
+      const current = after.versionedPages.get(file);
+      if (current && current.digest === previous?.digest &&
+          current.versions.every(([asset, token]) => after.files[asset]?.sha256.slice(0, 8) === token)) return false;
+    }
+    return true;
+  });
+}
+
+// The full pipeline also transforms some authored HTML in place and can
+// rebind or create shared chrome sources. Their final bytes are inputs to
+// other generators; one stable pass must consume them before we can cache.
+function rewrittenInPlace(file) {
+  return file.endsWith('.html') || file.startsWith('scripts/templates/site-source/') ||
+    file.startsWith('scripts/templates/site-chrome/');
 }
 
 function validCache(cache, environment) {
@@ -201,9 +254,19 @@ export async function runBuild({
     snapshot = next;
   }
   if (plan.mode === 'full') {
-    await run({ kind: 'full' });
-    snapshot = await fingerprint(root);
-    fingerprintMs += snapshot.ms;
+    for (let attempt = 1; ; attempt++) {
+      await run({ kind: 'full' });
+      const next = await fingerprint(root);
+      fingerprintMs += next.ms;
+      const inputs = fullBuildInputChanges(snapshot, next);
+      snapshot = next;
+      if (!inputs.length) break;
+      const source = inputs.find(file => !rewrittenInPlace(file));
+      if (source || attempt === 2) {
+        throw new Error(`Build input changed during full generation: ${source || inputs[0]}. Run the build again.`);
+      }
+      log(`[build] full: rechecking ${inputs.length} rewritten HTML or chrome source(s), including ${inputs[0]}`);
+    }
   }
   if (plan.mode !== 'noop') {
     await assertOutputs(root, snapshot);
