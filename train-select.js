@@ -21,6 +21,11 @@
     return (+p[0]) * 60 + (+p[1]);
   }
 
+  function jstParts(now = Date.now()) {
+    var iso = new Date(Number(now) + 9 * 60 * 60 * 1000).toISOString();
+    return { date: iso.slice(0, 10), time: iso.slice(11, 16) };
+  }
+
   /* 列車の東海道区間の停車駅（時刻順）。
    * clock は発時刻（終着は着時刻）。arr は途中停車駅の着時刻で、時刻表に無ければ clock と同じ。 */
   function tokaidoStops(route, train) {
@@ -121,6 +126,7 @@
 
   root.MADO_TRAIN_SELECT = {
     toMin: toMin,
+    jstParts: jstParts,
     tokaidoStops: tokaidoStops,
     interpolateSpot: interpolateSpot,
     spotStationSide: spotStationSide,

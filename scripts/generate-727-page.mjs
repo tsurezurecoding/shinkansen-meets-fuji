@@ -304,6 +304,7 @@ ${t.bodyTag}
   <script src="${p}spot-page-shared.js?v=${assetVersion('spot-page-shared.js')}"></script>
   <script src="${p}data-runtime.js?v=${assetVersion('data-runtime.js')}"></script>
   <script src="${p}spot-map.js?v=${assetVersion('spot-map.js')}"></script>
+  <script src="${p}data/stamp-store.js?v=${assetVersion('data/stamp-store.js')}"></script>
   <script src="${p}727-collection.js?v=${assetVersion('727-collection.js')}"></script>
 </body>
 </html>

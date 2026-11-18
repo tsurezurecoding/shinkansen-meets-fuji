@@ -8,18 +8,9 @@
   if (!page || !config || !Array.isArray(config.items)) return;
 
   var text = config.text;
-  var stamps = loadStamps();
+  var stamps = window.MadoStamps.read();
   var MEDAL_ICON = "<svg class=\"fw-medal-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"10\" r=\"7.5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\"/><path d=\"M12 2.5v15M4.5 10h15M6.7 4.7l10.6 10.6M17.3 4.7 6.7 15.3\" stroke=\"currentColor\" stroke-width=\"1\"/><path d=\"M8 22l4-12 4 12\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\"/></svg>";
 
-  function loadStamps() {
-    try {
-      var parsed = JSON.parse(localStorage.getItem("mado-stamps") || "{}");
-      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
-    } catch (error) { return {}; }
-  }
-  function saveStamps() {
-    try { localStorage.setItem("mado-stamps", JSON.stringify(stamps)); } catch (error) { /* storage is optional */ }
-  }
   function isFound(item) { return Boolean(stamps[item.stampId]); }
   function escapeHTML(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
@@ -67,15 +58,18 @@
     var id = button.getAttribute("data-wheel-stamp");
     var item = config.items.filter(function (candidate) { return candidate.id === id; })[0];
     if (!item) return;
-    // 別タブのスタンプ帖で押した記録を上書きしないよう、押す直前に読み直す。
-    stamps = loadStamps();
-    if (isFound(item)) delete stamps[item.stampId];
-    else stamps[item.stampId] = Date.now();
-    saveStamps();
+    window.MadoStamps.toggle([item.stampId], function (updated) {
+      stamps = updated;
+      renderProgress();
+      renderCards();
+    });
+  });
+
+  window.MadoStamps.onChange(function (updated) {
+    stamps = updated;
     renderProgress();
     renderCards();
   });
-
   renderProgress();
   renderCards();
 })();

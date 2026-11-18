@@ -53,10 +53,6 @@
     var match = /^(\d{1,2}):(\d{2})$/.exec(String(value || ""));
     return match ? Number(match[1]) * 60 + Number(match[2]) : null;
   }
-  function nowClock() {
-    var d = new Date();
-    return pad(d.getHours()) + ":" + pad(d.getMinutes());
-  }
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
@@ -203,7 +199,7 @@
 
     function search() {
       var min = clockToMin($time().value);
-      if (min == null) min = clockToMin(nowClock());
+      if (min == null) min = MTS.toMin(MTS.jstParts().time);
       renderResults(min);
     }
 
@@ -224,7 +220,9 @@
     $time().addEventListener("input", function () { activeKey = null; if (opts.onChange) opts.onChange(snapshot()); });
     $time().addEventListener("change", function () { activeKey = null; if (opts.onChange) opts.onChange(snapshot()); });
     $("#nowBtn").addEventListener("click", function () {
-      $time().value = nowClock();
+      var now = MTS.jstParts();
+      $time().value = now.time;
+      if (opts.dateInput) opts.dateInput.value = now.date;
       activeKey = null;
       if (opts.onChange) opts.onChange(snapshot());
     });
@@ -233,7 +231,9 @@
       search();
     });
 
-    $time().value = opts.time || nowClock();
+    var initial = MTS.jstParts();
+    $time().value = opts.time || initial.time;
+    if (opts.dateInput && !opts.dateInput.value) opts.dateInput.value = initial.date;
     renderLabels();
     renderDirection();
     renderBoard();

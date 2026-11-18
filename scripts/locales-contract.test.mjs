@@ -166,6 +166,7 @@ test('727 and wheel collection runtime copies retain localized templates after i
     assert.ok(keys.length>10);
     localizeExpansionRuntime(root,route,doc,'fr',value=>'FR '+value);
     doc.documentElement.lang='fr';
+    dom.window.eval(read('data/stamp-store.js'));
     if(route==='727-collection.html') {
       dom.window.eval(read('data.js')+';window.BOARD_COLLECTION=BOARD_COLLECTION;window.ROUTE=ROUTE;');
       dom.window.eval(read('locales.js'));

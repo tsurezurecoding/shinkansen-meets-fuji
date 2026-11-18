@@ -218,10 +218,6 @@
   const uiLanguage = localizedCopy?.lang || (document.documentElement.lang === "en" ? "en" : "ja");
   const escapeHTML = (value) => String(value ?? "").replace(/[&<>\"']/g, (character) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[character]));
   const directionName = (direction) => direction === "west" ? "西向き（東京 → 新大阪）" : "東向き（新大阪 → 東京）";
-  const dateToday = () => {
-    const now = new Date();
-    return `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
-  };
   // 列車選択の候補と同じ表記（日本語は「のぞみ116」）
   const TRAIN_NAMES = { Nozomi: "のぞみ", Hikari: "ひかり", Kodama: "こだま" };
   const trainName = (train) => uiLanguage === "ja" ? `${TRAIN_NAMES[train.type] || train.type}${train.number}` : `${root.MADO_UTILITY_LOCALE?.t(train.type) || train.type} ${train.number}`;
@@ -389,7 +385,6 @@
     const dateInput = $("#sdDate");
     const pickerRoot = $("[data-train-picker]");
     if (!dateInput || !pickerRoot || !root.MADO_TRAIN_PICKER) return;
-    dateInput.value = dateToday();
     renderPatternLists();
     let picked = null;
     const resultBox = $("#sdResult");
@@ -406,6 +401,7 @@
       renderResult(calculate(dateInput.value, picked.tr.direction, serviceKey(picked.tr), picked.boardId));
     };
     root.MADO_TRAIN_PICKER.mount(pickerRoot, {
+      dateInput,
       lang: uiLanguage,
       route,
       timetable,

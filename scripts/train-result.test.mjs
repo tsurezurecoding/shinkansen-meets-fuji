@@ -6,20 +6,29 @@ import { JSDOM, VirtualConsole } from 'jsdom';
 
 const root = new URL('../', import.meta.url);
 const source = (file) => fs.readFileSync(new URL(file, root), 'utf8');
-const runtime = ['data/timetable.js', 'data-runtime.js', 'track.js', 'train-select.js', 'train-picker.js', 'app.js'];
+const runtime = ['data/timetable.js', 'data-runtime.js', 'track.js', 'train-select.js', 'train-picker.js', 'data/stamp-store.js', 'app.js'];
 const savedTrain = { direction: 'west', boardId: 'Tokyo', trainType: 'Nozomi', trainNumber: 1, savedAt: Date.now() };
 
-async function fixture({ query = '', path = 'start.html', saved, disabled = false, embedded = false, loadComplete = true } = {}) {
+async function fixture({ query = '', path = 'start.html', saved, disabled = false, embedded = false, loadComplete = true, now, rideDateControls = false } = {}) {
   const errors = [], events = [], scrolls = [], scrollOptions = [];
   const vc = new VirtualConsole();
   vc.on('jsdomError', (error) => errors.push(error));
-  const dom = new JSDOM(source(path === 'en/start.html' ? path : 'start.html'), {
+  const feature = ['sparkling-dreams.html', 'yakei.html'].includes(path);
+  const dom = new JSDOM(source(feature || path === 'en/start.html' ? path : 'start.html'), {
     url: `https://www.michikusa-travel.com/${path}${query}`,
     runScripts: 'outside-only', pretendToBeVisual: true, virtualConsole: vc,
   });
   const w = dom.window;
   await new Promise((resolve) => w.addEventListener('load', resolve, { once: true }));
-  Object.defineProperty(w.document, 'readyState', { configurable: true, get: () => loadComplete ? 'complete' : 'interactive' });
+  let parsing = true;
+  Object.defineProperty(w.document, 'readyState', { configurable: true, get: () => parsing ? 'loading' : loadComplete ? 'complete' : 'interactive' });
+  if (now) {
+    const instant = Date.parse(now);
+    w.Date = class extends w.Date {
+      constructor(...args) { super(...(args.length ? args : [instant])); }
+      static now() { return instant; }
+    };
+  }
   w.matchMedia = () => ({ matches: false, addEventListener() {} });
   w.HTMLElement.prototype.scrollIntoView = function (options) { scrolls.push(this.id); scrollOptions.push(options); };
   w.MADO_ANALYTICS_DISABLED = disabled;
@@ -28,7 +37,16 @@ async function fixture({ query = '', path = 'start.html', saved, disabled = fals
   w.MadoStorage = {};
   if (saved) w.localStorage.setItem('mado-last-journey', JSON.stringify(saved));
   const context = dom.getInternalVMContext();
-  for (const file of runtime) vm.runInContext(source(file), context, { filename: file });
+  if (path === 'yakei.html') {
+    const setup = [...w.document.scripts].find(script => script.textContent.includes('window.YAKEI_SPOT_IDS ='));
+    vm.runInContext(setup.textContent, context);
+  }
+  const files = feature
+    ? ['data/timetable.js', 'data-runtime.js', 'train-select.js', 'train-picker.js', path.replace('.html', '.js')]
+    : [...runtime];
+  if (rideDateControls) files.push('sparkling-dreams.js', 'journey-light-model.js', 'journey-light-events.js');
+  for (const file of files) vm.runInContext(source(file), context, { filename: file });
+  parsing = false;
   w.document.dispatchEvent(new w.Event('DOMContentLoaded'));
   await new Promise((resolve) => w.requestAnimationFrame(resolve));
   assert.deepEqual(errors, [], 'the real start-page runtime should initialize cleanly');
@@ -54,6 +72,87 @@ function selectFirst(f) {
   assert.ok(train, 'real timetable must supply a selectable train');
   train.click();
 }
+
+test('boarding excludes the approach side even in the departure minute, and keeps it for through passengers', async () => {
+  for (const [dir, number, station, before, id, arrival] of [
+    ['west', 801, 'Shin-Fuji', 'Mishima', 'fuji-paper-mills', '07:34'],
+    ['east', 800, 'Mikawa-Anjo', 'Nagoya', 'nichiban-anjo', '06:52'],
+  ]) {
+    for (const board of [station, before]) {
+      const f = await fixture({ query: `?train=Kodama-${number}&board=${board}&dir=${dir}` });
+      try {
+        const actual = f.read(`journey.spots.find(x => x.sp.id === "${id}")?.clock`);
+        if (board === before) {
+          assert.equal(actual, f.read(`toMin("${arrival}")`), id);
+        } else {
+          assert.equal(actual, undefined, id);
+          assert.equal(f.read(`computeJourney(null, journey.depMin).spots.some(x => x.sp.id === "${id}")`), false, 'estimate mode');
+          assert.equal(f.read(`computeJourney({...journey.train, arrivals: {...journey.train.arrivals, [boardId]: journey.train.times[boardId]}}, journey.depMin).spots.some(x => x.sp.id === "${id}")`), false, 'same-minute stop');
+        }
+      } finally { f.close(); }
+    }
+  }
+  const f = await fixture({ query: '?train=Kodama-821&board=Atami&dir=west' });
+  try {
+    assert.equal(f.read('journey.spots.find(x => x.sp.id === "odawara").clock'), f.read('journey.depMin'), 'outgoing side remains visible at departure');
+  } finally { f.close(); }
+});
+
+test('the train-search next sight uses today in Japan, including after a ride-date change', async () => {
+  const previous = process.env.TZ;
+  try {
+    for (const zone of ['Asia/Tokyo', 'UTC', 'America/Los_Angeles']) {
+      process.env.TZ = zone;
+      const f = await fixture({ now: '2026-11-18T00:00:00Z', query: '?train=Nozomi-61&board=Tokyo&dir=west&rideDate=2026-11-19', rideDateControls: true });
+      try {
+        const doc = f.w.document, date = doc.querySelector('#nd-date'), banner = doc.querySelector('#nextup');
+        assert.equal(date.value, '2026-11-19', zone);
+        assert.equal(banner.hidden, true, 'tomorrow has no live countdown');
+        for (const [day, hidden] of [['2026-11-18', false], ['2026-11-17', true]]) {
+          date.value = day;
+          date.dispatchEvent(new f.w.Event('change', { bubbles: true }));
+          assert.equal(banner.hidden, hidden, zone);
+          if (!hidden) assert.match(doc.querySelector('#nextupName').textContent, /静岡の茶畑/, zone);
+        }
+        doc.querySelector('#nd-now').click();
+        assert.equal(date.value, '2026-11-18');
+        assert.equal(doc.querySelector('#departTime').value, '09:00');
+      } finally { f.close(); }
+    }
+  } finally {
+    if (previous === undefined) delete process.env.TZ;
+    else process.env.TZ = previous;
+  }
+});
+
+test('night-view and encounter searches use the Japan date and clock, retain manual input and reset both on Now', async () => {
+  const previous = process.env.TZ;
+  try {
+    for (const zone of ['UTC', 'Asia/Tokyo', 'America/Los_Angeles']) {
+      process.env.TZ = zone;
+      for (const [path, dateId, initialTime] of [['yakei.html', 'ykDate', '19:00'], ['sparkling-dreams.html', 'sdDate', '01:05']]) {
+        const f = await fixture({ path, now: '2026-11-17T16:05:00Z' });
+        try {
+          const doc = f.w.document, date = doc.getElementById(dateId), time = doc.querySelector('#departTime');
+          assert.equal(date.value, '2026-11-18', zone + path);
+          assert.equal(time.value, initialTime, zone + path);
+          date.value = '2026-11-20';
+          time.value = '08:30';
+          doc.querySelector('#findTrainsBtn').click();
+          assert.equal(time.value, '08:30');
+          assert.equal(date.value, '2026-11-20');
+          assert.ok(doc.querySelector('[data-train]'));
+          doc.querySelector('#nowBtn').click();
+          assert.equal(date.value, '2026-11-18');
+          assert.equal(time.value, '01:05');
+        } finally { f.close(); }
+      }
+    }
+  } finally {
+    if (previous === undefined) delete process.env.TZ;
+    else process.env.TZ = previous;
+  }
+});
 
 test('valid westbound deep link answers using the actual journey time and focuses Fuji', async () => {
   const f = await fixture({ query: '?train=Nozomi-1&board=Tokyo&dir=west&focus=fuji', saved: { ...savedTrain, trainNumber: 3 } });

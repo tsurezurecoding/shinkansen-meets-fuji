@@ -159,6 +159,7 @@ const contentFiles = [
   // アプリ本体・共通スポット表示・727看板コレクション
   "app-embedded.css",
   "app-embedded.js",
+  "data/stamp-store.js",
   "app.js",
   "train-select.js",
   "train-picker.js",

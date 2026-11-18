@@ -143,11 +143,6 @@
     return isNaN(d.getTime()) ? null : d;
   }
 
-  function todayValue() {
-    var now = new Date();
-    return now.getFullYear() + "-" + pad(now.getMonth() + 1) + "-" + pad(now.getDate());
-  }
-
   function escapeHTML(value) {
     return String(value).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
@@ -159,7 +154,7 @@
   var picked = null; // { tr, boardId }
 
   function render() {
-    var date = parseDate(doc.getElementById("ykDate").value) || new Date();
+    var date = parseDate(doc.getElementById("ykDate").value) || parseDate(MTS.jstParts().date);
     var result = doc.getElementById("ykResult");
     var summary = doc.getElementById("ykSummary");
     if (!picked) {
@@ -212,8 +207,8 @@
     var dateInput = doc.getElementById("ykDate");
     var pickerRoot = doc.querySelector("[data-train-picker]");
     if (!dateInput || !pickerRoot || !root.MADO_TRAIN_PICKER) return;
-    if (!dateInput.value) dateInput.value = todayValue();
     root.MADO_TRAIN_PICKER.mount(pickerRoot, {
+      dateInput: dateInput,
       lang: LANG,
       route: DATA_ROUTE,
       timetable: root.SHINKANSEN_TIMETABLE,
