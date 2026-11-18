@@ -24,7 +24,7 @@ const chunks = words => words.map(word => '<span class="copy-chunk">' + e(word) 
 const book = 'https://str.toyokeizai.net/books/9784492046043/';
 
 function siteShell(lang, prefix) {
-  const file = lang === 'ja' ? 'castles.html' : lang + '/foods.html';
+  const file = (lang === 'ja' ? '' : lang + '/') + 'ferris-wheels.html';
   const dom = new JSDOM(readSiteSource(root, file), { url: site + '/' + file, runScripts: 'outside-only' });
   const doc = dom.window.document;
   if (!doc.querySelector('.topbar')) {
@@ -38,7 +38,7 @@ function siteShell(lang, prefix) {
     (lang === code ? ' aria-current="page"' : '') + '>' + e(editions[code].label) + '</a>').join('');
   const old = header.querySelector('.article-lang-menu,.guide-lang-menu,.lang-switch');
   if (old) old.replaceWith(menu); else header.append(menu);
-  const shell = {header: header.outerHTML, footer: doc.querySelector('footer').outerHTML,
+  const shell = {header: header.outerHTML, rail: doc.querySelector('.spot-page-rail').outerHTML, footer: doc.querySelector('footer').outerHTML,
     brand: header.querySelector('.brand-name').textContent, guide: header.querySelector('[data-cta-id="nav_features"]').textContent};
   dom.window.close();
   return shell;
@@ -54,7 +54,7 @@ function page(lang) {
   const full = p => prefix + p.src;
   function photo(p, alt, hero = false) {
     return '<img src="' + full(p) + '" srcset="' + prefix + p.thumb + ' 640w, ' + full(p) + ' ' + p.width +
-      'w" sizes="' + (hero ? '(max-width: 720px) 100vw, 680px' : '(max-width: 720px) 100vw, (max-width: 1050px) 50vw, 560px') +
+      'w" sizes="' + (hero ? '100vw' : '(max-width: 680px) calc(100vw - 40px), (max-width: 1099px) 390px, 440px') +
       '" width="' + p.width + '" height="' + p.height + '" alt="' + e(alt) + '" ' +
       (hero ? 'fetchpriority="high"' : 'loading="lazy" decoding="async"') + '>';
   }
@@ -108,11 +108,15 @@ function page(lang) {
   const heroTitle = lang === 'ja' ? chunks(['窓から見える', '工場']) : lang === 'th' ? e(ui.title).replace('ชินคันเซ็น', '<wbr><span class="ff-word">ชินคันเซ็น</span>') : e(ui.title);
   const deck = lang === 'ja' ? chunks(['コーヒー、お菓子、化粧品。','いつもの「あれ」をつくる場所が、','線路のそばに並んでいる。']) : e(ui.deck);
   const photoName = copy.places[cover.id].name;
-  const hero = '<header class="ff-cover"><div class="ff-cover-copy"><p class="ff-kicker">' + e(ui.route) + '</p><h1>' + heroTitle +
-    '</h1><p class="ff-deck">' + deck + '</p>' + href('#catalog', e(ui.browse) + ' <span>' + count(catalog.places.length) + '</span><b aria-hidden="true">↓</b>', ' class="ff-cover-link"') +
-    '</div><figure class="ff-cover-photo" data-photo-owner="michikusa">' + photo(cover.photo,copy.places[cover.id].alt,true) + '<figcaption>' + e(photoName) + '</figcaption></figure></header>';
+  const hero = '<header class="fw-hero ff-cover" aria-labelledby="factory-title"><figure class="ff-cover-photo" data-photo-owner="michikusa">' +
+    photo(cover.photo,copy.places[cover.id].alt,true) + '</figure><div class="fw-hero-inner ff-cover-copy"><p class="eyebrow ff-kicker">' + e(ui.route) +
+    '</p><h1 id="factory-title">' + heroTitle + '</h1><p class="fw-hero-lead ff-deck">' + deck + '</p><p class="fw-hero-stat">' +
+    href('#catalog', e(ui.browse) + ' · ' + count(catalog.places.length) + ' <span aria-hidden="true">↓</span>', ' class="ff-cover-link"') +
+    '</p><p class="fw-hero-credit">' + e(catalog.photoCredit) + ' · ' + e(photoName) + '</p></div></header>';
   const data = Object.entries({left:ui.left,right:ui.right,count:ui.count}).map(([key,value]) => 'data-' + key + '="' + e(value) + '"').join(' ');
-  const section = '<section id="catalog" aria-label="' + e(ui.browse) + '" ' + data + '><nav class="ff-route" aria-label="' + e(ui.route) + '">' + routeNav +
+  const introLead = lang === 'ja' ? chunks(ui.description.split(/(?<=から|、|。)/u).filter(Boolean)) : e(ui.description);
+  const intro = '<header class="ff-intro fw-section-head"><h2>' + e(ui.browse) + '</h2><p class="fw-section-lead">' + introLead + '</p></header>';
+  const section = '<section id="catalog" aria-label="' + e(ui.browse) + '" ' + data + '>' + intro + '<nav class="ff-route" aria-label="' + e(ui.route) + '">' + routeNav +
     '</nav>' + controls + '<div id="factory-list">' + sections + '</div></section>';
   const notes = '<div class="ff-reading-note"><details class="ff-seat-note"><summary>' + e(ui.seatsTitle) + '</summary><p>' + e(ui.seatsText) +
     '</p></details><details class="ff-seat-note"><summary>' + e(ui.notesTitle) + '</summary><p>' + e(ui.notesText) + '</p><p>' + e(ui.photoCredit) +
@@ -129,10 +133,11 @@ function page(lang) {
     '<meta property="og:type" content="article"><meta property="og:title" content="' + e(title) + '"><meta property="og:description" content="' + e(ui.description) +
     '"><meta property="og:locale" content="' + editions[lang].og + '"><meta property="og:url" content="' + site + '/' + file + '"><meta property="og:image" content="' +
     site + '/' + cover.photo.src + '"><meta property="og:image:alt" content="' + e(copy.places[cover.id].alt) + '"><meta name="twitter:card" content="summary_large_image">' +
-    '<link rel="icon" href="' + prefix + 'favicon.ico">' + ['style.css','article-locales.css','factories.css'].map(asset => '<link rel="stylesheet" href="' + version(asset) + '">').join('') +
+    '<link rel="icon" href="' + prefix + 'favicon.ico">' + ['style.css','ferris-wheels.css','article-locales.css','factories.css'].map(asset => '<link rel="stylesheet" href="' + version(asset) + '">').join('') +
     (lang === 'ja' ? '<script src="' + version('language-router.js') + '"></script>' : '') + ANALYTICS.withEmbeddedGuard;
-  const html = '<!doctype html>\n<html lang="' + lang + '"><head>' + head + '</head><body id="top" class="ff-page" data-article-localized>' +
-    href('#article',e(ui.browse),' class="ff-skip"') + shell.header + '<main id="article" class="ff-main">' + hero + section + ending + '</main>' + shell.footer +
+  const html = '<!doctype html>\n<html lang="' + lang + '"><head>' + head + '</head><body id="top" class="spot-page spot-page-utility ff-page" data-article-localized>' +
+    href('#article',e(ui.browse),' class="ff-skip"') + shell.header + '<main id="article" class="ff-main">' + hero +
+    '<div class="spot-page-shell ff-shell">' + shell.rail + '<article class="spot-page-article ff-article">' + section + ending + '</article></div></main>' + shell.footer +
     '<script defer src="' + version('article-locales.js') + '"></script><script defer src="' + version('factories.js') + '"></script></body></html>\n';
   return enhanceContentHead(withLocaleRegistry(html,prefix),file,root,{lang});
 }

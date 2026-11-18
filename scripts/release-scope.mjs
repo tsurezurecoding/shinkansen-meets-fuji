@@ -247,6 +247,43 @@ export function onlyRamenEnglishCardAddedToJapaneseDonburi(file, before, after) 
   return restored === before || onlyRamenAssetReferencesChanged(before, restored);
 }
 
+const factoryMetadataPhotos = new Set([
+  'images/20260919_lotte-shiga_4190_michikusa.jpg',
+  'images/20260919_pola-fukuroi_139551_michikusa.jpg',
+  'images/20260924_fuji-paper-mills_75983_michikusa.jpg',
+  'images/20260924_fuji-ucc_171517_michikusa.jpg',
+  'images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg',
+  'images/20260930_fujitec-big-wing_michikusa.jpg',
+  'images/20261010_pocari-fukuroi_80185_michikusa.jpg',
+  'images/20261107_kirin-beer-factory_6901_michikusa.jpg',
+  'images/20261114_yamazaki-distillery_3654_michikusa.jpg',
+  'images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg',
+]);
+
+export function onlyFactoryJpegMetadataRemoved(file, before, after) {
+  if (!factoryMetadataPhotos.has(file) || !Buffer.isBuffer(before) || !Buffer.isBuffer(after)
+      || before.length < 4 || before[0] !== 0xff || before[1] !== 0xd8) return false;
+  const kept = [before.subarray(0, 2)];
+  let position = 2, removed = 0;
+  while (position + 4 <= before.length) {
+    if (before[position] !== 0xff) return false;
+    const marker = before[position + 1], length = before.readUInt16BE(position + 2);
+    if (length < 2 || position + 2 + length > before.length) return false;
+    if (marker === 0xda) {
+      // Preserve every scan byte, colour profile and non-EXIF segment exactly.
+      kept.push(before.subarray(position));
+      return removed > 0 && Buffer.concat(kept).equals(after);
+    }
+    if (marker === 0xd8 || marker === 0xd9 || marker === 0x00 || marker === 0xff) return false;
+    const end = position + 2 + length;
+    if (marker === 0xe1 && length >= 8
+        && before.subarray(position + 4, position + 10).equals(Buffer.from('Exif\0\0'))) removed += 1;
+    else kept.push(before.subarray(position, end));
+    position = end;
+  }
+  return false;
+}
+
 export function onlyFactoryRegistrationChanged(file, before, after) {
   if (before === after) return false;
   if (file === 'scripts/content-metadata.json') {
@@ -275,7 +312,7 @@ export function onlyFactoryRegistrationChanged(file, before, after) {
   return false;
 }
 
-export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, factoryRegistrationOnly = () => false, factoryAssetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
+export function chooseReleaseScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, factoryRegistrationOnly = () => false, factoryAssetVersionOnly = () => false, factoryPhotoMetadataOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
   const spotAdsenseFiles = new Set(['spot-adsense.js', 'spots/kakegawa.html', 'privacy.html', 'en/privacy.html',
@@ -348,7 +385,7 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       node('scripts/validate-train-select.mjs'),node('scripts/validate-site-navigation.mjs','--route','start.html'),
       node('scripts/check-content-manifest.mjs')]
   };
-  const factoryFiles = new Set(['scripts/generate-factories-page.mjs', 'scripts/factory-windows.json',
+  const factoryFiles = new Set(['scripts/generate-factories-page.mjs', 'scripts/factories-page.test.mjs', 'scripts/factory-windows.json',
     'scripts/shared/factory-windows-links.mjs', 'scripts/shared/story-window.mjs',
     'factories.html', 'factories.css', 'factories.js', 'zukan.html', 'scripts/locales-contract.test.mjs', 'scripts/generate-spot-pages.test.mjs',
     'scripts/templates/site-source/zukan.html.tpl', 'scripts/generate-content-manifest.mjs',
@@ -370,6 +407,11 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
     const after = typeof packageAfter === 'string' ? JSON.parse(packageAfter) : structuredClone(packageAfter);
     for (const key of ['build:pages', 'preflight:spots']) if (after.scripts?.[key])
       after.scripts[key] = after.scripts[key].replace(/node scripts\/generate-factories-page\.mjs(?: --check)? && /, '');
+    const previousTests = before.scripts?.['test:generator'], nextTests = after.scripts?.['test:generator'];
+    const testFile = 'scripts/factories-page.test.mjs';
+    if (typeof previousTests === 'string' && typeof nextTests === 'string' && !previousTests.includes(testFile)
+        && nextTests.split(testFile).length === 2 && nextTests.replace(' ' + testFile, '') === previousTests)
+      after.scripts['test:generator'] = previousTests;
     factoryPackage = isDeepStrictEqual(before, after);
   }
   const factoryRegistrations = ['scripts/generate-spot-pages.mjs', 'locales.js', 'language-router.js', 'scripts/content-metadata.json'];
@@ -377,11 +419,12 @@ export function chooseReleaseScope(changes, { versionOnly = () => false, assetVe
       factoryRegistrations.every(file => !files.includes(file) || factoryRegistrationOnly(file)) &&
       changes.every(({path: file, status}) => ['A', 'M'].includes(status) && (factoryFiles.has(file) ||
         /^images\/factories\/[^/]+\.webp$/.test(file) ||
+        status === 'M' && factoryMetadataPhotos.has(file) && factoryPhotoMetadataOnly(file) ||
         status === 'M' && file.endsWith('.html') && factoryAssetVersionOnly(file)))) return {
     scope: 'factory-windows', needsDependencies: true, pagesCandidate: true,
     reason: 'Factory guide in ten editions, catalogue cards, scoped route and sitemap additions, photographs and Web distribution. Other HTML may change only the locale/router asset versions.',
     commands: [...syntax,
-      node('--test', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'scripts/generate-spot-pages.test.mjs'),
+      node('--test', 'scripts/release-scope.test.mjs', 'scripts/locales-contract.test.mjs', 'scripts/generate-spot-pages.test.mjs', 'scripts/factories-page.test.mjs'),
       node('scripts/generate-factories-page.mjs', '--check'),
       node('scripts/generate-utility-locales.mjs', '--route', 'zukan.html', '--check'),
       node('scripts/generate-site-chrome.mjs', '--check'), node('scripts/generate-site-runtime.mjs', '--check'),
@@ -925,6 +968,9 @@ export function createReleasePlan(base) {
     factoryRegistrationOnly: file => changes.some(c => c.path === file && c.status === 'M') &&
       onlyFactoryRegistrationChanged(file, git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
     factoryAssetVersionOnly: file => onlyDonburiAssetReferencesChanged(git('show', `${base}:${file}`), git('show', `${head}:${file}`)),
+    factoryPhotoMetadataOnly: file => onlyFactoryJpegMetadataRemoved(file,
+      execFileSync('git', ['show', `${base}:${file}`], { cwd: root, maxBuffer: 32 * 1024 * 1024 }),
+      execFileSync('git', ['show', `${head}:${file}`], { cwd: root, maxBuffer: 32 * 1024 * 1024 })),
     ramenJapaneseDonburiOnly: changes.some(c => c.path === 'donburi.html' && c.status === 'M') && onlyRamenEnglishCardAddedToJapaneseDonburi('donburi.html', git('show', `${base}:donburi.html`), git('show', `${head}:donburi.html`)),
     ramenMetadataOnly: changes.some(c => c.path === 'scripts/content-metadata.json' && c.status === 'M') && onlyRamenMetadataAdded(git('show', `${base}:scripts/content-metadata.json`), git('show', `${head}:scripts/content-metadata.json`)),
     ramenSitemapOnly: changes.some(c => c.path === 'scripts/generate-spot-pages.mjs' && c.status === 'M') && onlyRamenSitemapChanged(git('show', `${base}:scripts/generate-spot-pages.mjs`), git('show', `${head}:scripts/generate-spot-pages.mjs`)),
