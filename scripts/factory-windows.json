@@ -16,7 +16,7 @@
       "group": "fuji-area",
       "side": "E",
       "photo": {
-        "src": "images/20260924_fuji-ucc_171517_michikusa.jpg",
+        "src": "images/factories/ucc.webp",
         "thumb": "images/factories/ucc-640.webp",
         "width": 1920,
         "height": 1080
@@ -32,7 +32,7 @@
       "group": "fuji-area",
       "side": "E",
       "photo": {
-        "src": "images/20260924_fuji-paper-mills_75983_michikusa.jpg",
+        "src": "images/factories/fuji.webp",
         "thumb": "images/factories/fuji-640.webp",
         "width": 1920,
         "height": 1080
@@ -49,7 +49,7 @@
       "group": "fuji-area",
       "side": "E",
       "photo": {
-        "src": "images/20261115_fuji-paper-mills_kouen_67349_michikusa.jpg",
+        "src": "images/factories/koa.webp",
         "thumb": "images/factories/koa-640.webp",
         "width": 1920,
         "height": 1080
@@ -66,7 +66,7 @@
       "group": "shizuoka-area",
       "side": "A",
       "photo": {
-        "src": "images/20260924_sapporo-shizuoka-factory_34042_michikusa.jpg",
+        "src": "images/factories/sapporo.webp",
         "thumb": "images/factories/sapporo-640.webp",
         "width": 1920,
         "height": 1080
@@ -164,7 +164,7 @@
       "group": "fukuroi-area",
       "side": "A",
       "photo": {
-        "src": "images/20260919_pola-fukuroi_139551_michikusa.jpg",
+        "src": "images/factories/pola.webp",
         "thumb": "images/factories/pola-640.webp",
         "width": 1920,
         "height": 1080
@@ -181,7 +181,7 @@
       "group": "fukuroi-area",
       "side": "A",
       "photo": {
-        "src": "images/20261010_pocari-fukuroi_80185_michikusa.jpg",
+        "src": "images/factories/pocari.webp",
         "thumb": "images/factories/pocari-640.webp",
         "width": 1920,
         "height": 1080
@@ -351,7 +351,7 @@
       "group": "nagoya-area",
       "side": "E",
       "photo": {
-        "src": "images/20261107_kirin-beer-factory_6901_michikusa.jpg",
+        "src": "images/factories/kirin.webp",
         "thumb": "images/factories/kirin-640.webp",
         "width": 1920,
         "height": 1080
@@ -385,7 +385,7 @@
       "group": "shiga-area",
       "side": "E",
       "photo": {
-        "src": "images/20260930_fujitec-big-wing_michikusa.jpg",
+        "src": "images/factories/fujitec.webp",
         "thumb": "images/factories/fujitec-640.webp",
         "width": 1920,
         "height": 1080
@@ -401,7 +401,7 @@
       "group": "shiga-area",
       "side": "A",
       "photo": {
-        "src": "images/20260919_lotte-shiga_4190_michikusa.jpg",
+        "src": "images/factories/lotte.webp",
         "thumb": "images/factories/lotte-640.webp",
         "width": 1920,
         "height": 1080
@@ -433,7 +433,7 @@
       "group": "kyoto-area",
       "side": "E",
       "photo": {
-        "src": "images/20261114_yamazaki-distillery_3654_michikusa.jpg",
+        "src": "images/factories/yamazaki.webp",
         "thumb": "images/factories/yamazaki-640.webp",
         "width": 1920,
         "height": 1080
