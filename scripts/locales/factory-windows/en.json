@@ -19,10 +19,6 @@
     "sources": "Sources",
     "related": "Read more",
     "openPhoto": "Enlarge photo: {name}",
-    "nearby": "More to look for on this section",
-    "candidates": "Windows to check next",
-    "candidateIntro": "These factories lie close to the tracks on the map. We are still checking what can be identified from today's trains.",
-    "grounds": "Site on the {side}",
     "seatsTitle": "Which side of the train?",
     "seatsText": "A and E refer to the window seats in ordinary-class cars with 3+2 seating. Toward Shin-Osaka, A is on the left and E on the right; toward Tokyo, A is on the right and E on the left. In Green Cars, the D-seat window is on the same side as ordinary-class E. The seat letters stay on the same side of the line when the direction changes.",
     "notesTitle": "About the guide and its sources",
@@ -32,7 +28,6 @@
     "cta": "Choose your train for a window guide",
     "comparisonTitle": "See the Nagoya sign too",
     "comparisonCaption": "About 800 m south of Nagoya Station, a roughly 70 m advertisement runs along the Market Square Sasashima shopping complex. Look on the A-seat side: left before reaching Nagoya toward Shin-Osaka, or right after leaving Nagoya toward Tokyo.",
-    "observation": "Train-window photo of the wind turbines (2025)",
     "comparisonAlt": "A large white SINFONIA name on a green band along a white commercial building in Sasashima, Nagoya.",
     "entry": "Spot the factories behind everyday drinks, sweets and cosmetics from your Shinkansen window."
   },
@@ -255,37 +250,6 @@
       "alt": "The Yamazaki name and SINCE 1923 on buildings at the foot of wooded hills.",
       "related": "More about Yamazaki Distillery",
       "sources": ["Suntory: Yamazaki whisky and its distillery (Japanese)"]
-    }
-  },
-  "candidates": {
-    "bridgestone": {
-      "name": "Bridgestone Hikone Plant",
-      "interval": "Maibara–Kyoto",
-      "location": "Takamiya-cho, Hikone, about 9 km from Maibara Station toward Kyoto.",
-      "point": "Behind the trees, this plant makes tyres for passenger cars and light trucks. Zelkova woodland has been reported visible from the train. We are checking whether today's views let you identify the factory buildings or the giant tyre within the grounds.",
-      "sources": ["Bridgestone: products made at the Hikone Plant (Japanese)", "Factory visit account: zelkova trees seen from the train, 2014 (Japanese)", "Hikone City: rice fields between the factory and the Shinkansen (Japanese)"]
-    },
-    "lion": {
-      "name": "Lion Odawara Factory",
-      "interval": "Shin-Yokohama–Odawara",
-      "location": "About 5 km from Odawara Station toward Tokyo.",
-      "point": "This factory makes Systema and Clinica toothpaste. A green building appears in the book's train-window photograph. We still need to check how much can be seen over today's noise barriers.",
-      "sources": ["Lion: Odawara Factory guide (Japanese)", "Lion: products made at the Odawara Factory (Japanese)"]
-    },
-    "pg": {
-      "name": "P&G Shiga Plant",
-      "interval": "Maibara–Kyoto",
-      "location": "Kamiya, Yasu, about 300 m from the tracks on the Lake Biwa side.",
-      "point": "The cosmetics made beside these fields are SK-II. We are checking whether the factory building shown in the book's train-window photograph can still be identified from passing trains.",
-      "sources": ["P&G: the Shiga Plant and SK-II production (Japanese)"]
-    },
-    "suzuki-kosai": {
-      "name": "Suzuki Kosai Plant",
-      "interval": "Hamamatsu–Toyohashi",
-      "location": "Shirasuka, Kosai, on the Toyohashi side of Lake Hamana. After Bentenjima's torii gate toward Shin-Osaka; before the gate toward Tokyo.",
-      "point": "This plant makes cars including the Alto and Spacia. Its wind turbines provide a landmark, with a 2025 photographic record from the train's A-seat side.",
-      "note": "The photo link leads to the photographer's account of their train journey. The generating equipment's operating status in 2026 has not been confirmed.",
-      "sources": ["Suzuki: models made at the Kosai Plant (Japanese)", "Suzuki: wind-power equipment at the Kosai Plant (Japanese)"]
     }
   }
 }

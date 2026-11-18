@@ -444,46 +444,5 @@
         "https://www.suntory.co.jp/whisky/yamazaki/"
       ]
     }
-  ],
-  "candidates": [
-    {
-      "id": "bridgestone",
-      "group": "shiga-area",
-      "side": "A",
-      "map": "https://maps.gsi.go.jp/#16/35.2356/136.2667/",
-      "sources": [
-        "https://www.bridgestone.co.jp/corporate/outline/facilities/plant/hikone.html",
-        "https://kenpla-gifu.jp/archive/pdf/archive_215.pdf",
-        "https://www.city.hikone.lg.jp/kakuka/sangyo/3/4/2/4110.html"
-      ]
-    },
-    {
-      "id": "lion",
-      "side": "A",
-      "map": "https://maps.gsi.go.jp/#16/35.2852/139.1957/",
-      "sources": [
-        "https://www.lion.co.jp/ja/company/establishment/factory/odawara/",
-        "https://www.lion.co.jp/ja/sustainability/biodiversity/activity/odawara/"
-      ]
-    },
-    {
-      "id": "pg",
-      "side": "E",
-      "map": "https://maps.gsi.go.jp/#16/35.0843/136.0491/",
-      "sources": [
-        "https://www.pgcareers.com/jp/ja/planttech-shiga-r"
-      ]
-    },
-    {
-      "id": "suzuki-kosai",
-      "group": "toyohashi-area",
-      "side": "A",
-      "observation": "https://cotetu.seesaa.net/article/517607556.html",
-      "map": "https://www.suzuki.co.jp/corporate/producingbase/accessmap/kosai.html",
-      "sources": [
-        "https://www.suzuki.co.jp/corporate/producingbase/",
-        "https://www.suzuki.co.jp/release/d/d050121b.htm"
-      ]
-    }
   ]
 }

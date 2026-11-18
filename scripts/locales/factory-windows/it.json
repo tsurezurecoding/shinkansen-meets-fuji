@@ -19,10 +19,6 @@
     "sources": "Fonti",
     "related": "Da scoprire",
     "openPhoto": "Ingrandisci la foto di {name}",
-    "nearby": "Nei dintorni",
-    "candidates": "Luoghi ancora da verificare",
-    "candidateIntro": "Anche questi luoghi hanno una storia da raccontare. Stiamo verificando che cosa si riesce a distinguere oggi dal treno e raccogliendo fotografie.",
-    "grounds": "{side} · Lato dedotto dalla posizione",
     "seatsTitle": "Da quale finestrino guardare?",
     "seatsText": "In classe standard, viaggiando verso Shin-Osaka i posti A sono a sinistra e i posti E a destra. Verso Tokyo, i lati si invertono. Nelle carrozze Green Car, il lato D corrisponde al lato E della classe standard.",
     "notesTitle": "Informazioni su questa guida",
@@ -33,8 +29,7 @@
     "entry": "Scopri quali prodotti di ogni giorno nascono negli edifici che vedi dal treno.",
     "comparisonTitle": "Un'insegna anche a Nagoya",
     "comparisonAlt": "Grande insegna verde SINFONIA su un edificio bianco a Sasashima, Nagoya.",
-    "comparisonCaption": "Sul lato A, prima dell'arrivo a Nagoya verso Shin-Osaka e dopo la partenza verso Tokyo. Circa 800 m a sud della stazione, un annuncio lungo circa 70 m occupa la facciata del centro commerciale Market Square Sasashima, di proprietà dell'azienda.",
-    "observation": "Guarda la foto dell'aerogeneratore dal treno (2025)"
+    "comparisonCaption": "Sul lato A, prima dell'arrivo a Nagoya verso Shin-Osaka e dopo la partenza verso Tokyo. Circa 800 m a sud della stazione, un annuncio lungo circa 70 m occupa la facciata del centro commerciale Market Square Sasashima, di proprietà dell'azienda."
   },
   "groups": {
     "fuji-area": ["Mishima", "Shin-Fuji", "Ai piedi del Fuji"],
@@ -255,37 +250,6 @@
       "alt": "Scritte 山崎 e SINCE 1923 su edifici ai piedi della montagna.",
       "related": "Scopri la distilleria Yamazaki",
       "sources": ["Suntory | Yamazaki e la sua distilleria"]
-    }
-  },
-  "candidates": {
-    "bridgestone": {
-      "name": "Bridgestone · Stabilimento di Hikone",
-      "interval": "Maibara–Kyoto",
-      "location": "Circa 9 km da Maibara verso Kyoto, a Takamiya-cho, Hikone.",
-      "point": "Oltre i filari di alberi si producono pneumatici per automobili e autocarri leggeri. Un resoconto documenta le zelcove viste dal treno. Stiamo verificando se oggi si riconoscono anche gli edifici della fabbrica e il grande pneumatico esposto nel sito.",
-      "sources": ["Bridgestone | Prodotti dello stabilimento di Hikone", "Resoconto di una visita | Zelcove viste dal treno (2014)", "Comune di Hikone | Una risaia tra lo stabilimento e lo Shinkansen"]
-    },
-    "lion": {
-      "name": "Lion · Stabilimento di Odawara",
-      "interval": "Shin-Yokohama–Odawara",
-      "location": "Circa 5 km dalla stazione di Odawara in direzione Tokyo.",
-      "point": "Produce dentifrici come Systema e Clinica. Nel libro compare un edificio verde. Resta da verificare quanto se ne vede oggi oltre le barriere antirumore.",
-      "sources": ["Lion | Guida allo stabilimento", "Lion | Prodotti dello stabilimento di Odawara"]
-    },
-    "pg": {
-      "name": "P&G · Stabilimento di Shiga",
-      "interval": "Maibara–Kyoto",
-      "location": "A Kamiya, Yasu, circa 300 m dai binari sul lato del lago Biwa.",
-      "point": "Accanto ai campi si producono cosmetici SK-II. Stiamo verificando se dal finestrino si riconosce ancora lo stesso edificio fotografato nel libro.",
-      "sources": ["P&G | Stabilimento di Shiga e produzione di SK-II"]
-    },
-    "suzuki-kosai": {
-      "name": "Suzuki · Stabilimento di Kosai",
-      "interval": "Hamamatsu–Toyohashi",
-      "location": "A Shirasuka, Kosai, oltre il lago Hamana verso Toyohashi. In direzione Shin-Osaka, dopo il torii di Bentenjima; in direzione Tokyo, prima.",
-      "point": "Qui si fabbricano modelli come Alto e Spacia. Il punto di riferimento è l'aerogeneratore dello stabilimento, fotografato dal lato A del treno nel 2025.",
-      "note": "Il collegamento alla foto apre il diario di viaggio dell'autore. Lo stato di funzionamento dell'impianto eolico nel 2026 non è stato verificato.",
-      "sources": ["Suzuki | Modelli prodotti nello stabilimento di Kosai", "Suzuki | Aerogeneratore dello stabilimento di Kosai"]
     }
   }
 }

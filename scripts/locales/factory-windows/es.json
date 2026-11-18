@@ -19,10 +19,6 @@
     "sources": "Fuentes",
     "related": "Para seguir explorando",
     "openPhoto": "Ampliar la foto de {name}",
-    "nearby": "En los alrededores",
-    "candidates": "Lugares que seguimos investigando",
-    "candidateIntro": "Estas instalaciones tienen historias que contar. Seguimos comprobando qué se distingue hoy desde el tren y reuniendo fotografías.",
-    "grounds": "{side} · Lado deducido de la ubicación",
     "seatsTitle": "¿Qué lado de la ventana?",
     "seatsText": "En clase estándar, hacia Shin-Osaka los asientos A quedan a la izquierda y los E a la derecha. Hacia Tokio, al revés. En Green Car, el lado D corresponde al lado E de clase estándar.",
     "notesTitle": "Sobre esta guía",
@@ -33,8 +29,7 @@
     "entry": "Descubre qué productos cotidianos nacen en los edificios que ves desde el tren.",
     "comparisonTitle": "También hay un cartel en Nagoya",
     "comparisonAlt": "Gran anuncio verde de SINFONIA en un edificio blanco de Sasashima, Nagoya.",
-    "comparisonCaption": "En el lado A, antes de llegar a Nagoya si vas hacia Shin-Osaka y después de salir si vas hacia Tokio. A unos 800 m al sur de la estación, este anuncio de unos 70 m ocupa la fachada del centro comercial Market Square Sasashima, propiedad de la empresa.",
-    "observation": "Ver la foto del aerogenerador desde el tren (2025)"
+    "comparisonCaption": "En el lado A, antes de llegar a Nagoya si vas hacia Shin-Osaka y después de salir si vas hacia Tokio. A unos 800 m al sur de la estación, este anuncio de unos 70 m ocupa la fachada del centro comercial Market Square Sasashima, propiedad de la empresa."
   },
   "groups": {
     "fuji-area": ["Mishima", "Shin-Fuji", "A los pies del Fuji"],
@@ -255,37 +250,6 @@
       "alt": "Letras 山崎 y SINCE 1923 sobre edificios al pie de la montaña.",
       "related": "Más sobre la destilería Yamazaki",
       "sources": ["Suntory | Yamazaki y su destilería"]
-    }
-  },
-  "candidates": {
-    "bridgestone": {
-      "name": "Bridgestone · Fábrica de Hikone",
-      "interval": "Maibara–Kioto",
-      "location": "A unos 9 km de Maibara en dirección a Kioto, en Takamiya-cho, Hikone.",
-      "point": "Tras las arboledas se fabrican neumáticos para turismos y camiones ligeros. Un relato documenta las zelkovas vistas desde el tren. Seguimos comprobando si hoy se distinguen los edificios de la fábrica y el neumático gigante del recinto.",
-      "sources": ["Bridgestone | Productos de la fábrica de Hikone", "Relato de una visita a la fábrica | Zelkovas vistas desde el tren (2014)", "Ayuntamiento de Hikone | Un arrozal entre la fábrica y el Shinkansen"]
-    },
-    "lion": {
-      "name": "Lion · Fábrica de Odawara",
-      "interval": "Shin-Yokohama–Odawara",
-      "location": "A unos 5 km de la estación de Odawara hacia Tokio.",
-      "point": "Produce dentífricos como Systema y Clinica. En el libro aparece un edificio verde. Falta comprobar cuánto se ve hoy por encima de las pantallas acústicas.",
-      "sources": ["Lion | Guía de la fábrica", "Lion | Productos de la fábrica de Odawara"]
-    },
-    "pg": {
-      "name": "P&G · Fábrica de Shiga",
-      "interval": "Maibara–Kioto",
-      "location": "En Kamiya, Yasu, a unos 300 m de las vías, del lado del lago Biwa.",
-      "point": "Junto a los campos se fabrican cosméticos SK-II. Seguimos investigando si desde el tren aún se puede reconocer el edificio que aparece en la fotografía del libro.",
-      "sources": ["P&G | Fábrica de Shiga y producción de SK-II"]
-    },
-    "suzuki-kosai": {
-      "name": "Suzuki · Fábrica de Kosai",
-      "interval": "Hamamatsu–Toyohashi",
-      "location": "En Shirasuka, Kosai, al lado del lago Hamana que mira hacia Toyohashi. Hacia Shin-Osaka, después del torii de Bentenjima; hacia Tokio, antes.",
-      "point": "Aquí se fabrican modelos como Alto y Spacia. La referencia es el aerogenerador de la fábrica, fotografiado desde el lado A del tren en 2025.",
-      "note": "El enlace de la foto lleva al relato de viaje de su autor. No se ha confirmado el estado de funcionamiento del aerogenerador en 2026.",
-      "sources": ["Suzuki | Modelos fabricados en Kosai", "Suzuki | Aerogenerador de la fábrica de Kosai"]
     }
   }
 }

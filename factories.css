@@ -71,24 +71,7 @@
 .ff-grid[data-count="1"] .ff-photo { align-self:center; }
 .ff-grid:is([data-count="3"],[data-count="6"],[data-count="9"]) h3 { font-size:20px; }
 .ff-grid[data-count="5"] .ff-card:last-child,.ff-grid[data-count="7"] .ff-card:last-child { grid-column:1/-1; display:grid; grid-template-columns:1.18fr 1fr; align-items:center; }
-.ff-candidates { margin-top:55px; padding:30px; border:1px solid #ddd5c6; border-radius:18px; background:#f0eadd; }
-.ff-candidates-heading h2 { margin:0 0 10px; font-family:var(--font-serif); font-size:26px; line-height:1.55; }
-.ff-candidates-heading>p:last-child { margin:0 0 22px; color:#687383; font-size:13px; }
-.ff-candidate-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
-.ff-candidate-grid article { border-top:1px solid #cec4b1; padding-top:16px; }
-.ff-candidate-grid h3 { margin:0 0 7px; font-size:15px; line-height:1.7; }
-.ff-candidate-grid p { margin:0 0 9px; color:#526074; font-size:12px; line-height:1.9; }
-.ff-candidate-grid .ff-candidate-route { color:#8a6450; font-size:10px; font-weight:700; }
-.ff-candidate-grid a { color:#516c82; font-size:11px; text-underline-offset:3px; }
 .ff-location { margin:12px 0 0; padding-left:10px; border-left:2px solid #c8a991; color:#516176; font-size:12px; line-height:1.7; }
-.ff-nearby { display:grid; grid-template-columns:minmax(90px,135px) 1fr; gap:24px; align-items:center; margin-top:20px; padding:22px 25px; border:1px solid #d6c9b8; border-radius:var(--radius,18px); background:#f2ebdf; }
-.ff-nearby-heading { border-right:1px solid #c6b6a4; color:#7e5239; font-family:var(--font-serif); font-size:18px; line-height:1.6; }
-.ff-find h3 { margin:4px 0; font-family:var(--font-serif); font-size:19px; }
-.ff-find p { margin:4px 0; color:#48576a; font-size:13px; line-height:1.8; }
-.ff-find .ff-candidate-route { color:#815640; font-size:11px; font-weight:700; }
-.ff-find .ff-find-location { color:#304a60; font-weight:650; }
-.ff-find .ff-links { margin-top:8px; }
-@media(max-width:680px) { .ff-nearby { display:block; padding:16px 18px; } .ff-nearby-heading { border:0; margin:0 0 8px; font-size:13px; } .ff-nearby-heading br { display:none; } }
 .ff-reading-note { margin-top:25px; }
 .ff-seat-note { color:#617083; font-size:12px; line-height:1.9; padding:10px 0; border-bottom:1px solid var(--line,#e3dccd); }
 .ff-seat-note summary { cursor:pointer; width:fit-content; }
@@ -134,9 +117,6 @@
  .ff-hook { font-size:14px; }
  .ff-point { font-size:13px; }
  .ff-links { margin-top:13px; }
- .ff-candidates { margin-top:38px; padding:22px 18px; }
- .ff-candidates-heading h2 { font-size:23px; }
- .ff-candidate-grid { grid-template-columns:minmax(0,1fr); gap:17px; }
  .ff-bottom { display:block; margin-top:22px; }
  .ff-bottom p { font-size:21px; margin-bottom:20px; }
  .ff-bottom .btn { font-size:12px; padding:12px 18px; }

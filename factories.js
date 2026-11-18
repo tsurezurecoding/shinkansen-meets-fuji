@@ -25,12 +25,7 @@
         const onLeft = (card.dataset.side === 'A') === down;
         card.querySelector('[data-relative]').textContent = onLeft ? catalog.dataset.left : catalog.dataset.right;
       }
-      const nearby = group.querySelector('.ff-nearby');
-      const finds = Array.from(group.querySelectorAll('[data-find-side]'));
-      finds.forEach(item => { item.hidden = !fits(item.dataset.findSide); });
-      const hasFinds = finds.some(item => !item.hidden);
-      if (nearby) nearby.hidden = !hasFinds;
-      group.hidden = !visible && !hasFinds;
+      group.hidden = visible === 0;
       group.querySelector('[data-group-count]').textContent = countLabel(visible);
       group.querySelector('.ff-grid').dataset.count = visible;
       const link = route.querySelector('[data-route-group="' + group.id + '"]');
@@ -41,12 +36,6 @@
       group.querySelector('[data-interval]').textContent = (down ? stations : stations.reverse()).join(' → ');
       list.append(group);
       count += visible;
-    }
-    const more = document.querySelector('.ff-candidates');
-    if (more) {
-      const finds = Array.from(more.querySelectorAll('[data-find-side]'));
-      finds.forEach(item => { item.hidden = !fits(item.dataset.findSide); });
-      more.hidden = finds.every(item => item.hidden);
     }
     catalog.querySelector('#guide-status').textContent = [button('direction', direction).textContent, button('side-filter', side).textContent, countLabel(count)].join(' · ');
   }

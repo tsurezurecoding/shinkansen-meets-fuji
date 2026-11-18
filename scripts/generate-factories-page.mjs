@@ -70,10 +70,9 @@ function page(lang) {
       if (!fs.existsSync(path.join(root,route))) throw Error('Missing related feature: ' + route);
       related = href(prefix + route, e(text.related) + (code === lang ? '' : ' <small lang="' + code + '">(' + e(editions[code].label) + ')</small>') + ' →', ' hreflang="' + code + '"');
     }
-    const observation = place.observation ? href(place.observation, e(ui.observation) + ' ↗') : '';
     const map = href(place.map, e(ui.map) + ' ↗', ' class="ff-map" aria-label="' + e(text.name + ' · ' + ui.map) + '"');
     const sources = place.sources.map((url, i) => '<li>' + href(url,e(text.sources[i])) + '</li>').join('');
-    return '<div class="ff-links">' + related + observation + map + '<details class="ff-sources"><summary>' + e(ui.sources) +
+    return '<div class="ff-links">' + related + map + '<details class="ff-sources"><summary>' + e(ui.sources) +
       '</summary><ul>' + sources + '</ul>' + (text.note ? '<p>' + e(text.note) + '</p>' : '') + '</details></div>';
   }
   function card(place) {
@@ -91,24 +90,15 @@ function page(lang) {
       '</p><p class="ff-point">' + e(t.point) + '</p>' + (t.location ? '<p class="ff-location">' + e(t.location) + '</p>' : '') +
       links(place, t) + comparison + '</div></article>';
   }
-  function candidate(place) {
-    const t = copy.candidates[place.id];
-    return '<article id="' + place.id + '" class="ff-find" data-find-side="' + place.side + '"><p class="ff-candidate-route">' +
-      e(t.interval) + ' · ' + e(ui.grounds.replace('{side}', ui['side' + place.side])) + '</p><h3>' + e(t.name) +
-      '</h3><p class="ff-find-location">' + e(t.location) + '</p><p>' + e(t.point) + '</p>' + links(place, t) + '</article>';
-  }
   const groupItems = id => catalog.places.filter(place => place.group === id);
   const sections = catalog.groups.map(id => {
     const [east, west, title] = copy.groups[id];
     const items = groupItems(id);
-    const more = catalog.candidates.filter(place => place.group === id);
-    const nearby = more.length ? '<aside class="ff-nearby" aria-label="' + e(ui.nearby) + '"><div class="ff-nearby-heading">' + e(ui.nearby) + '</div>' + more.map(candidate).join('') + '</aside>' : '';
     return '<section class="ff-group" id="' + id + '" data-east="' + e(east) + '" data-west="' + e(west) + '" aria-labelledby="' +
       id + '-title"><header class="ff-group-heading"><div><p class="ff-group-interval" data-interval>' + e(east + ' → ' + west) +
       '</p><h2 id="' + id + '-title">' + e(title) + '</h2></div><span class="ff-group-count" data-group-count>' + count(items.length) +
-      '</span></header><div class="ff-grid" data-count="' + items.length + '">' + items.map(card).join('\n') + '</div>' + nearby + '</section>';
+      '</span></header><div class="ff-grid" data-count="' + items.length + '">' + items.map(card).join('\n') + '</div></section>';
   }).join('\n');
-  const remaining = catalog.candidates.filter(place => !place.group);
   const routeNav = catalog.groups.map(id => href('#' + id, e(copy.groups[id][2]) + '<span>' + groupItems(id).length + '</span>', ' data-route-group="' + id + '"')).join('');
   const buttons = (type, pairs) => pairs.map(([id, label], i) => '<button type="button" data-' + type + '="' + id +
     '" aria-pressed="' + (i === 0) + '">' + e(label) + '</button>').join('');
@@ -127,8 +117,7 @@ function page(lang) {
   const notes = '<div class="ff-reading-note"><details class="ff-seat-note"><summary>' + e(ui.seatsTitle) + '</summary><p>' + e(ui.seatsText) +
     '</p></details><details class="ff-seat-note"><summary>' + e(ui.notesTitle) + '</summary><p>' + e(ui.notesText) + '</p><p>' + e(ui.photoCredit) +
     '</p><p>' + href(book,e(ui.book),' hreflang="ja"') + '</p></details></div>';
-  const ending = '<section class="ff-candidates" aria-labelledby="candidates-title"><div class="ff-candidates-heading"><h2 id="candidates-title">' + e(ui.candidates) +
-    '</h2><p>' + e(ui.candidateIntro) + '</p></div><div class="ff-candidate-grid">' + remaining.map(candidate).join('') + '</div></section>' + notes +
+  const ending = notes +
     '<nav class="ff-bottom" aria-label="' + e(shell.guide) + '">' + href('zukan.html', '← ' + e(shell.guide)) + href('start.html', e(ui.cta) + ' →', ' class="btn btn-primary"') + '</nav>';
 
   const version = asset => prefix + asset + '?v=' + assetVersion(asset);

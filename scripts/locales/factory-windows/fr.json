@@ -19,10 +19,6 @@
     "sources": "Sources",
     "related": "En savoir plus",
     "openPhoto": "Agrandir la photo : {name}",
-    "nearby": "D'autres lieux à repérer sur ce tronçon",
-    "candidates": "Les prochaines vues à vérifier",
-    "candidateIntro": "Sur la carte, ces usines sont proches des voies. Nous vérifions encore ce qu'il est possible de reconnaître depuis les trains actuels.",
-    "grounds": "Emplacement : {side}",
     "seatsTitle": "De quel côté regarder ?",
     "seatsText": "A et E désignent les places côté fenêtre des voitures ordinaires à cinq sièges par rangée (3+2). Vers Shin-Osaka, A est à gauche et E à droite ; vers Tokyo, A est à droite et E à gauche. En Green Car, la fenêtre D correspond au côté E des voitures ordinaires. Les lettres restent du même côté de la ligne ; seule la gauche ou la droite dans le sens de la marche change.",
     "notesTitle": "À propos du guide et des sources",
@@ -32,7 +28,6 @@
     "cta": "Choisir un train et découvrir les vues",
     "comparisonTitle": "Voir aussi l'enseigne de Nagoya",
     "comparisonCaption": "À environ 800 m au sud de la gare de Nagoya, une publicité d'environ 70 m longe le centre commercial Market Square Sasashima. Côté A : à gauche avant l'arrivée à Nagoya vers Shin-Osaka, ou à droite après le départ de Nagoya vers Tokyo.",
-    "observation": "Photo des éoliennes depuis le train (2025)",
     "comparisonAlt": "Le nom SINFONIA en grandes lettres blanches sur une bande verte d'un bâtiment commercial blanc à Sasashima, Nagoya.",
     "entry": "Depuis le Shinkansen, repérez les usines des boissons, confiseries et cosmétiques du quotidien."
   },
@@ -255,37 +250,6 @@
       "alt": "Le nom Yamazaki et l'inscription SINCE 1923 sur des bâtiments au pied de collines boisées.",
       "related": "Découvrir la distillerie Yamazaki",
       "sources": ["Suntory : whisky Yamazaki et sa distillerie (en japonais)"]
-    }
-  },
-  "candidates": {
-    "bridgestone": {
-      "name": "Bridgestone, usine de Hikone",
-      "interval": "Maibara–Kyoto",
-      "location": "À Takamiya-cho, Hikone, environ 9 km après Maibara en direction de Kyoto.",
-      "point": "Derrière les arbres, l'usine fabrique des pneus pour voitures et petits camions. Un récit signale un bois de zelkovas visible du train. Nous vérifions encore si l'on peut aujourd'hui reconnaître les bâtiments ou le pneu géant situé dans l'enceinte.",
-      "sources": ["Bridgestone : productions de l'usine de Hikone (en japonais)", "Récit de visite d'usine : les zelkovas vus du train, 2014 (en japonais)", "Ville de Hikone : des rizières entre l'usine et le Shinkansen (en japonais)"]
-    },
-    "lion": {
-      "name": "Lion, usine d'Odawara",
-      "interval": "Shin-Yokohama–Odawara",
-      "location": "À environ 5 km de la gare d'Odawara en direction de Tokyo.",
-      "point": "L'usine fabrique les dentifrices Systema et Clinica. Un bâtiment vert apparaît sur la photo prise du train dans le livre. Il reste à vérifier ce qui est visible au-dessus des murs antibruit actuels.",
-      "sources": ["Lion : présentation de l'usine d'Odawara (en japonais)", "Lion : productions de l'usine d'Odawara (en japonais)"]
-    },
-    "pg": {
-      "name": "P&G, usine de Shiga",
-      "interval": "Maibara–Kyoto",
-      "location": "À Kamiya, Yasu, environ 300 m des voies du côté du lac Biwa.",
-      "point": "Les cosmétiques fabriqués près de ces champs sont ceux de SK-II. Nous vérifions si le bâtiment visible sur la photo du livre peut encore être reconnu depuis les trains actuels.",
-      "sources": ["P&G : usine de Shiga et fabrication de SK-II (en japonais)"]
-    },
-    "suzuki-kosai": {
-      "name": "Suzuki, usine de Kosai",
-      "interval": "Hamamatsu–Toyohashi",
-      "location": "À Shirasuka, Kosai, au-delà du lac Hamana du côté de Toyohashi. Après le torii de Bentenjima vers Shin-Osaka ; avant le torii vers Tokyo.",
-      "point": "L'usine fabrique notamment l'Alto et la Spacia. Ses éoliennes servent de repère : un photographe les a observées du côté A du train en 2025.",
-      "note": "Le lien photo renvoie au récit de voyage du photographe. Le fonctionnement des équipements de production électrique en 2026 n'est pas confirmé.",
-      "sources": ["Suzuki : modèles fabriqués à l'usine de Kosai (en japonais)", "Suzuki : éoliennes de l'usine de Kosai (en japonais)"]
     }
   }
 }

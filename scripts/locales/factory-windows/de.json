@@ -19,10 +19,6 @@
     "sources": "Quellen",
     "related": "Mehr erfahren",
     "openPhoto": "Foto vergrößern: {name}",
-    "nearby": "Weitere Orte auf diesem Abschnitt",
-    "candidates": "Diese Ausblicke prüfen wir als Nächstes",
-    "candidateIntro": "Auf der Karte liegen diese Fabriken dicht an den Gleisen. Was sich heute vom Zug aus erkennen lässt, prüfen wir noch.",
-    "grounds": "Gelände auf der {side}",
     "seatsTitle": "Auf welcher Seite schauen?",
     "seatsText": "A und E sind die Fensterplätze in normalen Wagen mit 3+2 Sitzplätzen pro Reihe. Richtung Shin-Osaka liegt A links und E rechts; Richtung Tokyo liegt A rechts und E links. Im Green Car entspricht der Fensterplatz D der E-Seite im normalen Wagen. Die Buchstaben bleiben auf derselben Seite der Strecke, nur links und rechts in Fahrtrichtung wechseln.",
     "notesTitle": "Zum Guide und seinen Quellen",
@@ -32,7 +28,6 @@
     "cta": "Zug wählen und Ausblicke entdecken",
     "comparisonTitle": "Auch das Schild in Nagoya ansehen",
     "comparisonCaption": "Etwa 800 m südlich des Bahnhofs Nagoya verläuft eine rund 70 m lange Werbung an der Wand des Einkaufszentrums Market Square Sasashima. A-Seite: Richtung Shin-Osaka links vor der Ankunft in Nagoya, Richtung Tokyo rechts nach der Abfahrt.",
-    "observation": "Windräder vom Zug aus fotografiert (2025)",
     "comparisonAlt": "Der weiße Schriftzug SINFONIA auf einem grünen Band an einem weißen Geschäftsgebäude in Sasashima, Nagoya.",
     "entry": "Entdecken Sie vom Shinkansen aus, wo Getränke, Süßigkeiten und Kosmetik für den Alltag entstehen."
   },
@@ -255,37 +250,6 @@
       "alt": "Der Name Yamazaki und SINCE 1923 an Gebäuden am Fuß bewaldeter Hügel.",
       "related": "Mehr über die Destillerie Yamazaki",
       "sources": ["Suntory: Yamazaki und seine Destillerie (Japanisch)"]
-    }
-  },
-  "candidates": {
-    "bridgestone": {
-      "name": "Bridgestone, Werk Hikone",
-      "interval": "Maibara–Kyoto",
-      "location": "In Takamiya-cho, Hikone, etwa 9 km vom Bahnhof Maibara Richtung Kyoto.",
-      "point": "Hinter den Bäumen entstehen Reifen für Pkw und leichte Lkw. Ein Bericht erwähnt einen vom Zug sichtbaren Zelkovenhain. Ob sich heute auch die Werkshallen oder der riesige Reifen auf dem Gelände erkennen lassen, prüfen wir noch.",
-      "sources": ["Bridgestone: Produkte des Werks Hikone (Japanisch)", "Werksbesuchsbericht: Zelkoven vom Zug aus, 2014 (Japanisch)", "Stadt Hikone: Reisfelder zwischen Werk und Shinkansen (Japanisch)"]
-    },
-    "lion": {
-      "name": "Lion, Werk Odawara",
-      "interval": "Shin-Yokohama–Odawara",
-      "location": "Etwa 5 km vom Bahnhof Odawara Richtung Tokyo.",
-      "point": "Hier werden die Zahnpasten Systema und Clinica hergestellt. Das Zugfensterfoto im Buch zeigt ein grünes Gebäude. Wie viel davon über die heutigen Lärmschutzwände hinweg sichtbar ist, muss noch geprüft werden.",
-      "sources": ["Lion: Vorstellung des Werks Odawara (Japanisch)", "Lion: Produkte des Werks Odawara (Japanisch)"]
-    },
-    "pg": {
-      "name": "P&G, Werk Shiga",
-      "interval": "Maibara–Kyoto",
-      "location": "In Kamiya, Yasu, etwa 300 m von den Gleisen auf der Seite des Biwa-Sees.",
-      "point": "Die Kosmetik, die hier neben den Feldern entsteht, heißt SK-II. Ob sich die im Buch fotografierte Fabrikhalle heute noch aus dem Zug erkennen lässt, prüfen wir derzeit.",
-      "sources": ["P&G: Werk Shiga und Herstellung von SK-II (Japanisch)"]
-    },
-    "suzuki-kosai": {
-      "name": "Suzuki, Werk Kosai",
-      "interval": "Hamamatsu–Toyohashi",
-      "location": "In Shirasuka, Kosai, auf der Toyohashi-Seite des Hamana-Sees. Richtung Shin-Osaka nach dem Torii von Bentenjima, Richtung Tokyo davor.",
-      "point": "Hier entstehen unter anderem Alto und Spacia. Als Orientierung dienen die Windräder des Werks, die 2025 von der A-Seite des Zuges aus fotografiert wurden.",
-      "note": "Der Fotolink führt zum Reisebericht des Fotografen. Der Betriebsstatus der Anlagen zur Stromerzeugung im Jahr 2026 ist nicht bestätigt.",
-      "sources": ["Suzuki: im Werk Kosai gebaute Modelle (Japanisch)", "Suzuki: Windkraftanlagen des Werks Kosai (Japanisch)"]
     }
   }
 }
