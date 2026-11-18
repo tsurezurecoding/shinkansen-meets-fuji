@@ -1,0 +1,166 @@
+{
+  "title": "À chaque rivière, un nouveau paysage",
+  "kicker": "Tokyo–Shin-Osaka · Rivières et ponts vus du train",
+  "lead": "Repérez le fil de l’eau. Regardez le pont voisin. À chaque rivière, un paysage à découvrir, un instant après l’autre.",
+  "order": "Dans l’ordre Tokyo → Shin-Osaka",
+  "zoomHint": "Touchez une photo pour l’agrandir",
+  "language": "Langue",
+  "enlarge": "Agrandir la photo : {name}",
+  "close": "Fermer ×",
+  "compare": "Les photos de l’Abe, de l’Ōi et du Tenryū ont été prises à des dates et dans des directions différentes. Les graviers et les chenaux changent aussi avec la pluie et le niveau de l’eau : ces trois images ne permettent pas de comparer leur débit habituel.",
+  "returnTrip": "Dans le sens du retour, découvrez les paysages dans l’ordre inverse. Les côtés indiqués sont ceux des sièges en voiture ordinaire. Vers Shin-Osaka, le côté E est à droite et le côté A à gauche ; vers Tokyo, c’est l’inverse.",
+  "credit": "Shinkansen Window",
+  "sourcesTitle": "Photos et sources",
+  "sourceLanguage": "Les sources sont en japonais.",
+  "sideE": "Côté E",
+  "sideA": "Côté A",
+  "stations": {
+    "shinagawa": "Shinagawa",
+    "shin-yokohama": "Shin-Yokohama",
+    "odawara": "Odawara",
+    "atami": "Atami",
+    "shin-fuji": "Shin-Fuji",
+    "shizuoka": "Shizuoka",
+    "kakegawa": "Kakegawa",
+    "hamamatsu": "Hamamatsu",
+    "toyohashi": "Toyohashi",
+    "mikawa-anjo": "Mikawa-Anjō",
+    "nagoya": "Nagoya",
+    "gifu-hashima": "Gifu-Hashima",
+    "maibara": "Maibara",
+    "kyoto": "Kyoto",
+    "shin-osaka": "Shin-Osaka"
+  },
+  "photos": {
+    "tama": {
+      "name": "Tama",
+      "body": "Quand les immeubles s’écartent, les arches bleues du pont Maruko apparaissent. Les voyageurs du Shinkansen et les habitants qui traversent le pont pour leurs activités quotidiennes se croisent au-dessus de la même rivière.",
+      "alt": "La rivière Tama et les arches bleu pâle du pont Maruko",
+      "caption": "Un ruban d’eau s’ouvre entre les quartiers, sous les arches bleues du pont Maruko.",
+      "sub": "Pont Maruko",
+      "link": "En savoir plus sur le pont Maruko"
+    },
+    "shiraito": {
+      "name": "Pont de Shiraito",
+      "body": "Près de Nebukawa, la mer apparaît au-delà des piles rouges. C’est le pont de la ligne classique Tōkaidō. Même sans voir l’eau de la rivière, on ressent en un instant la profondeur de la vallée.",
+      "alt": "Le pont de Shiraito de la ligne Tōkaidō franchit une vallée verdoyante, avec la mer au loin",
+      "caption": "Les piles rouges enjambent la vallée ; la mer se devine derrière.",
+      "sub": "Vallée et mer",
+      "link": "En savoir plus sur le pont de Shiraito"
+    },
+    "fuji": {
+      "name": "Fuji",
+      "body": "Devant le mont Fuji, les arches blanches transportent de l’eau industrielle. L’eau de la rivière et celle qui franchit le pont pour rejoindre les usines : deux chemins de l’eau se superposent devant la montagne.",
+      "alt": "La rivière Fuji, un pont-aqueduc blanc en arc et le mont Fuji au loin",
+      "caption": "L’eau de la rivière et l’eau transportée par le pont-aqueduc.",
+      "sub": "Pont-aqueduc",
+      "link": "En savoir plus sur la rivière Fuji et le pont-aqueduc"
+    },
+    "abe": {
+      "name": "Abe",
+      "body": "Un vaste lit de graviers, traversé par un chenal étroit et sinueux. Regardez la longueur du pont et la largeur du cours d’eau : leurs proportions racontent le paysage.",
+      "alt": "Le large lit gris de l’Abe et ses minces chenaux sinueux",
+      "caption": "Un mince chenal traverse un vaste lit de graviers."
+    },
+    "oi": {
+      "name": "Ōi",
+      "body": "Au-delà des éléments du pont, le chenal dessine une large courbe. Autrefois, des passeurs aidaient les voyageurs à franchir cette rivière ; aujourd’hui, le train la traverse d’un seul trait.",
+      "alt": "Le chenal courbe de l’Ōi et son lit de graviers, vus à travers la structure du pont du Shinkansen",
+      "caption": "Le chenal contourne le lit de graviers, sous l’ombre du pont."
+    },
+    "tenryu": {
+      "name": "Tenryū",
+      "body": "Des graviers, des touches de vert et l’eau qui longe le bord du lit. Comparez l’Abe, l’Ōi et le Tenryū : les lits caillouteux se retrouvent sur les trois, mais les chenaux et la végétation prennent place différemment.",
+      "alt": "Le lit caillouteux du Tenryū, l’eau à sa lisière et quelques îlots de verdure",
+      "caption": "L’eau suit le bord du lit, ponctué de touffes de verdure."
+    },
+    "toyo": {
+      "name": "Toyo",
+      "body": "Après Toyohashi, la large surface de la rivière Toyo (Toyogawa) s’ouvre le long de la digue. Vers Shin-Osaka, environ 1,6 km plus loin, le train franchit à nouveau de l’eau : c’est le canal de décharge de la Toyo, qui détourne vers la baie de Mikawa l’excédent du cours principal en période de crue.",
+      "alt": "La large surface de la rivière Toyo, une digue verte et un chemin étroit qui suit la rive",
+      "caption": "Le cours principal de la Toyo, bordé par le chemin de digue.",
+      "sub": "Cours principal et canal de décharge"
+    },
+    "shonai": {
+      "name": "Shōnai",
+      "body": "Peu après Nagoya, au-delà des nombreuses voies ferrées au premier plan, une rangée de piles apparaît. Ici, à Biwajima, pont routier, pont ferroviaire classique et pont du Shinkansen se rassemblent au même endroit.",
+      "alt": "Des voies et des caténaires au premier plan ; au-delà, des piles alignées au-dessus de la rivière Shōnai",
+      "caption": "Les voies au premier plan, les piles au loin et, entre les deux, la rivière Shōnai.",
+      "sub": "Ponts de Biwajima"
+    },
+    "kiso": {
+      "name": "Kiso",
+      "body": "Une large surface d’eau s’ouvre entre les terres couvertes d’arbres. La Nagara et l’Ibi que l’on franchira ensuite appartiennent au même système hydrographique que la Kiso, mais ce sont des rivières distinctes. Vers Shin-Osaka, l’ordre est Kiso, Nagara, puis Ibi.",
+      "alt": "La large rivière Kiso, des îlots boisés et un pont bas au loin",
+      "caption": "La rivière s’ouvre entre les masses de verdure."
+    },
+    "nagara": {
+      "name": "Nagara",
+      "body": "Juste à côté se trouve le pont routier de Hashima, avec ses triangles rouges. Les éléments gris au premier plan sont le pont du Shinkansen sur lequel vous voyagez. Au-dessus de la rivière, les silhouettes des deux ponts se superposent.",
+      "alt": "Le pont routier rouge de Hashima sur la Nagara et les éléments gris du pont du Shinkansen au premier plan",
+      "caption": "Le pont routier rouge et le pont ferroviaire gris se croisent dans le champ de vision.",
+      "sub": "Pont de Hashima"
+    },
+    "ibi": {
+      "name": "Ibi",
+      "body": "Ici aussi, un pont rouge apparaît, mais un peu plus loin, avec la rivière. Comparez avec la photo de la Nagara : la distance au pont et la largeur de l’eau dans le champ de vision changent.",
+      "alt": "La rivière Ibi, un pont routier rouge en amont et les montagnes au loin",
+      "caption": "L’eau, le pont rouge et les montagnes se répondent."
+    },
+    "seta": {
+      "name": "Seta",
+      "body": "La Seta est le seul cours d’eau qui s’écoule naturellement du lac Biwa. Le pont Karahashi de Seta, visible du côté E, relie les deux rives depuis des siècles. Regardez la sortie du lac en même temps que le pont.",
+      "alt": "La large rivière Seta, les quartiers sur ses rives et le pont Karahashi au loin",
+      "caption": "La rivière qui sort du lac et le pont Karahashi qui relie la ville.",
+      "sub": "Pont Karahashi",
+      "link": "En savoir plus sur le pont Karahashi"
+    },
+    "kamo": {
+      "name": "Kamo",
+      "body": "Juste à l’est de la gare de Kyoto, le lit de la Kamo s’ouvre à la vue. Levez les yeux du chenal : un pont routier animé, un autre pont derrière, puis la ville. Vers Shin-Osaka, c’est juste avant Kyoto ; vers Tokyo, juste après avoir quitté la gare.",
+      "alt": "Le lit de la Kamo et son mince chenal, un pont routier, les quartiers de Kyoto et les montagnes au loin",
+      "caption": "Du premier plan au fond : lit de la rivière, pont routier, ville et montagnes.",
+      "sub": "Juste à l’est de la gare de Kyoto",
+      "link": "Voir la gare de Kyoto et la tour de Kyoto"
+    },
+    "katsura": {
+      "name": "Katsura",
+      "body": "Une masse de verdure entre les eaux, puis la ville de Kyoto. Plus en aval, la Katsura rejoint l’Uji et la Kizu pour former le Yodo. Des paysages séparés par la fenêtre se relient ainsi par le cours de l’eau.",
+      "alt": "La surface de la Katsura, une bande de verdure au milieu et la ville au-delà",
+      "caption": "La ville de Kyoto se prolonge derrière l’eau et la verdure."
+    }
+  },
+  "stops": {
+    "sagami-sakawa": {
+      "name": "Sagami et Sakawa",
+      "body": "En allant vers Shin-Osaka, on franchit d’abord la Sagami, que les voyageurs de l’ancienne route du Tōkaidō traversaient en bateau. Près d’Odawara, sur la Sakawa, des porteurs faisaient passer les voyageurs sur leurs épaules ou sur une chaise. Aujourd’hui, le pont permet de franchir les deux rivières sans quitter son siège.",
+      "link": "Chercher le mont Fuji dans la plaine de Sagami"
+    },
+    "yahagi": {
+      "name": "Yahagi",
+      "body": "Sur la route de Mikawa-Anjō, le train franchit la Yahagi. L’eau captée en amont rejoint les champs autour d’Anjō par le canal Meiji. Le cours d’eau sous la fenêtre contribue à la vie agricole de la plaine."
+    },
+    "aizuma": {
+      "name": "Aizuma",
+      "body": "À Kariya, la rivière Aizuma a attiré des passionnés qui ont repéré l’endroit sur une carte pour voir passer le Shinkansen. Depuis la fenêtre, la rivière ne dure qu’un instant. Depuis le sol, au sud-est du pont, le train que l’on prend devient le personnage principal du paysage.",
+      "link": "Publication de 三浦克介 (Katsuyoshi Miura), photo prise au sol depuis le sud-est du pont"
+    }
+  },
+  "sources": {
+    "maruko": "Ville de Kawasaki · histoire du bac de Maruko et du pont",
+    "tokaido": "Ministère des Transports · traversées de la Sagami en bac et de la Sakawa à pied sur l’ancienne route du Tōkaidō",
+    "sakawa": "Ville d’Odawara · traversée à pied de la Sakawa",
+    "fujiWater": "Préfecture de Shizuoka · réseau d’eau industrielle de la Fuji",
+    "oi": "Musée municipal de Shimada · passage de l’Ōi",
+    "kiso": "Ministère des Transports · rivière Kiso",
+    "floodway": "Bureau fluvial de Toyohashi · explication du canal de décharge",
+    "ride": "Nagoyan · photos des deux ponts depuis un train en direction de Tokyo",
+    "bridges": "Liste des ponts du Shinkansen · estimation de la distance",
+    "meiji": "Ministère de l’Agriculture · histoire du canal d’irrigation Meiji",
+    "shonai": "Bureau fluvial de Shōnai · plan du secteur de Biwajima",
+    "kamo": "Préfecture de Kyoto · carte de la Kamo",
+    "seta": "Ministère des Transports · rivière Seta",
+    "map": "Institut d’études géographiques du Japon · carte GSI",
+    "book": "Kei Kurihara, « Comme la fenêtre du Shinkansen Tōkaidō est intéressante ! », 2016"
+  }
+}

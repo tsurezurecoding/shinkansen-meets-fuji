@@ -1,4 +1,5 @@
 import { supported, translated } from './shared/locales.mjs';
+import { CONTENT_METADATA } from './shared/content-metadata.mjs';
 import fs from "node:fs";
 import path from "node:path";
 import vm from "node:vm";
@@ -57,7 +58,8 @@ const pairs = [
   ["/yakei.html", "/en/yakei.html"],
   ["/window-moments.html", "/en/window-moments.html"],
   ["/reflections.html", "/en/reflections.html"],
-  ["/727-collection.html", "/en/727-collection.html"]
+  ["/727-collection.html", "/en/727-collection.html"],
+  ["/rivers.html", "/en/rivers.html"]
 ];
 
 function diskPath(urlPath) {
@@ -337,6 +339,27 @@ for (const [urlPath, language, hreflang] of localizedGuidePages) {
 
 const sitemapHtml = fs.readFileSync(path.join(appDir, "sitemap.xml"), "utf8");
 const sitemapUrls = [...sitemapHtml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+const sitemapLastmods = new Map([...sitemapHtml.matchAll(/<url>\s*<loc>([^<]+)<\/loc>\s*<lastmod>([^<]+)<\/lastmod>/g)]
+  .map((match) => [match[1], match[2]]));
+for (const lang of supported("rivers.html")) {
+  const route = lang === "ja" ? "/rivers.html" : `/${lang}/rivers.html`;
+  const file = diskPath(route);
+  if (!fs.existsSync(file)) {
+    errors.push(`${route}: missing localized rivers page`);
+    continue;
+  }
+  const html = readHTML(file);
+  if (!new RegExp(`<html[^>]+lang=["']${lang}["']`, "i").test(html)) errors.push(`${route}: html lang must be ${lang}`);
+  if (!hasCanonical(html, route)) errors.push(`${route}: missing self canonical`);
+  for (const code of supported("rivers.html")) {
+    if (!hasAlternate(html, code, code === "ja" ? "/rivers.html" : `/${code}/rivers.html`)) errors.push(`${route}: missing ${code} alternate`);
+  }
+  if (!hasAlternate(html, "x-default", "/en/rivers.html")) errors.push(`${route}: missing x-default alternate`);
+  const sitemapUrl = `${origin}${route}`;
+  if (!sitemapUrls.includes(sitemapUrl)) errors.push(`sitemap: missing ${sitemapUrl}`);
+  const modified = CONTENT_METADATA[route.slice(1)]?.modified;
+  if (!modified || sitemapLastmods.get(sitemapUrl) !== modified) errors.push(`sitemap: ${sitemapUrl} lastmod must match the edition's metadata`);
+}
 for (const required of [
   `${origin}/zh-Hans/guide.html`,
   `${origin}/fr/guide.html`,

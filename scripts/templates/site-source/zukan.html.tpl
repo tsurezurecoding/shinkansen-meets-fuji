@@ -181,6 +181,13 @@
             <strong>新幹線から見える城</strong>
             <span><span class="copy-chunk">天守と城跡を、</span><span class="copy-chunk">車窓の写真でめぐる。</span></span>
           </span>
+        </a><a class="journey-intent-card journey-intent-cloudy" href="rivers.html" data-cta-track="zukan_theme_click" data-cta-id="rivers">
+          <img src="images/rivers/tama.jpg" alt="" loading="lazy" decoding="async">
+          <span class="journey-intent-copy">
+            <small>川と橋</small>
+            <strong>川と橋を、車窓から</strong>
+            <span>東京〜新大阪間の川と橋を、東海道新幹線から眺める。</span>
+          </span>
         </a><!-- en-arenani-card --><a class="journey-intent-card journey-intent-cloudy" href="arenani.html" data-cta-track="zukan_theme_click" data-cta-id="arenani">
           <img src="images/thumbs/20260904_mishima_catapult_1_michikusa.webp" alt="" loading="lazy" decoding="async">
           <span class="journey-intent-copy">

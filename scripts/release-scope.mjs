@@ -247,6 +247,22 @@ export function onlyRamenEnglishCardAddedToJapaneseDonburi(file, before, after) 
   return restored === before || onlyRamenAssetReferencesChanged(before, restored);
 }
 
+function onlyRiversPackageChange(beforeValue, afterValue) {
+  if (!beforeValue || !afterValue) return false;
+  try {
+    const before = typeof beforeValue === 'string' ? JSON.parse(beforeValue) : structuredClone(beforeValue);
+    const after = typeof afterValue === 'string' ? JSON.parse(afterValue) : structuredClone(afterValue);
+    if (!before.scripts || !after.scripts) return false;
+    const expected = structuredClone(before);
+    expected.scripts['build:pages'] = expected.scripts['build:pages'].replace(
+      'node scripts/generate-spot-pages.mjs --defer-manifest',
+      'node scripts/generate-rivers-page.mjs && node scripts/generate-spot-pages.mjs --defer-manifest'
+    );
+    expected.scripts['preflight:spots'] += ' && node scripts/generate-rivers-page.mjs --check';
+    return isDeepStrictEqual(expected, after);
+  } catch { return false; }
+}
+
 function selectExistingScope(changes, { versionOnly = () => false, assetVersionOnly = () => false, donburiAssetVersionOnly = () => false, donburiSitemapOnly = false, donburiLocalesOnly = false, donburiRouterOnly = false, donburiEverydayLayoutOnly = false, ramenAssetVersionOnly = () => false, ramenSitemapOnly = false, ramenLocalesOnly = false, ramenRouterOnly = false, ramenMetadataOnly = false, ramenJapaneseDonburiOnly = false, catalogManifestOnly = () => false, rideDataOnly = false, dayRideDataOnly = false, mikawaPhotoBatchDataOnly = false, rideBudgetOnly = false, addedLocaleKeysOnly = () => false, marukoLinkOnly = () => false, menuReferenceOnly = () => false, chromeExtractionOnly = () => false, artworkSitemapOnly = false, packageBefore, packageAfter } = {}) {
   const files = changes.map(change => change.path);
   const syntax = files.filter(file => /\.(?:mjs|cjs|js)$/.test(file)).map(file => node('--check', file));
@@ -603,6 +619,32 @@ function selectExistingScope(changes, { versionOnly = () => false, assetVersionO
         node('scripts/validate-site-navigation.mjs','--route',route)]),
       node('scripts/validate-spot-counts.mjs'),node('scripts/audit-photo-credits.mjs','--check'),
       node('scripts/sync-asset-versions.mjs','--check'),node('scripts/check-content-manifest.mjs'),node('scripts/audit-site.mjs')],
+  };
+  const riversSources = new Set(['locales.js','language-router.js','package.json','scripts/generate-rivers-page.mjs',
+    'scripts/validate-language-pages.mjs','scripts/generate-content-manifest.mjs','scripts/generate-spot-pages.mjs',
+    'scripts/generate-language-mirrors.mjs','scripts/generate-utility-locales.mjs','scripts/templates/site-source/zukan.html.tpl',
+    'scripts/content-metadata.json','scripts/locales-contract.test.mjs','scripts/release-scope.mjs','scripts/release-scope.test.mjs',
+    'content-manifest.json','sitemap.xml']);
+  const riversOutput = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?rivers\.html$/;
+  const riversZukanOutput = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?zukan\.html$/;
+  const riversLocaleDictionary = /^scripts\/locales\/utility-(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\.json$/;
+  const riversLocalePayload = /^(?:de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/utility-data\.js$/;
+  const riversInput = file => file.startsWith('data/rivers/') || /^images\/rivers\/.+\.jpg$/i.test(file)
+    || ['rivers.css','rivers.js'].includes(file);
+  let riversPackage = !files.includes('package.json');
+  if (!riversPackage) riversPackage = onlyRiversPackageChange(packageBefore, packageAfter);
+  const riversChange = files.some(file => file === 'scripts/generate-rivers-page.mjs' || file.startsWith('data/rivers/'));
+  if (riversChange && riversPackage && changes.every(({path:file,status}) => status !== 'D'
+    && (riversSources.has(file) || riversOutput.test(file) || riversZukanOutput.test(file)
+      || riversLocaleDictionary.test(file) || riversLocalePayload.test(file) || riversInput(file)
+      || file.endsWith('.html') && status === 'M' && assetVersionOnly(file)))) return {
+    scope:'rivers-feature', needsDependencies:true, pagesCandidate:true,
+    reason:'Rivers feature editions, the field-guide entry, route registration, sitemap and offline Web manifest; unrelated page families remain unchanged.',
+    commands:[...syntax,node('--test','scripts/release-scope.test.mjs','scripts/locales-contract.test.mjs'),
+      node('scripts/generate-rivers-page.mjs','--check'),node('scripts/generate-utility-locales.mjs','--route','zukan.html','--check'),
+      node('scripts/validate-language-pages.mjs'),node('scripts/validate-site-navigation.mjs','--route','rivers.html'),
+      node('scripts/validate-site-navigation.mjs','--route','zukan.html'),node('scripts/sync-asset-versions.mjs','--check'),
+      node('scripts/check-content-manifest.mjs')],
   };
   // Content-only edits do not change locale availability, host connections or
   // common chrome. Those inputs deliberately remain in the wider integration plan.
