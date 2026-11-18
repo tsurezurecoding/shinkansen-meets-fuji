@@ -1130,9 +1130,40 @@ function onlyWindowNightCount(file, read, changedPayloads) {
     && before.replace(label, (_, prefix) => prefix + YAKEI_SPOT_COUNT) === after;
 }
 
+// Only body copy can vary. Keep the entire head, markup, attributes and executable or inert code blocks verbatim.
+function guidePageStructure(html) {
+  const head = html.match(/^[\s\S]*?<\/head>\s*<body\b(?:[^<>"']|"[^"]*"|'[^']*')*>/i)?.[0];
+  if (!head) return null;
+  const tags = /<!--[\s\S]*?-->|<(script|style|template|textarea|noscript|iframe|pre|code)\b[^>]*>[\s\S]*?<\/\1\s*>|<(?:"[^"]*"|'[^']*'|[^<>"'])+>/gi;
+  return [head, ...(html.slice(head.length).match(tags) || [])];
+}
+
+function guidePageScope(changes, { fileContents }) {
+  const templates = new Set(['zukan.html', 'journal.html', 'en/journal.html'].map(file => `scripts/templates/site-source/${file}.tpl`));
+  const page = /^(?:(?:en|de|es|fr|it|ko|th|zh-Hans|zh-Hant)\/)?(?:zukan|journal)\.html$/;
+  if (!fileContents || !changes.some(({path}) => templates.has(path) || page.test(path))) return null;
+  const controls = new Set(['content-manifest.json', 'scripts/release-scope.mjs', 'scripts/release-scope.test.mjs', 'scripts/stamp-store.test.mjs']);
+  const tag = /^[ \t]*<script src="data\/timetable\.js\?v=[a-f0-9]{8}"><\/script>\r?\n/gm;
+  if (!changes.every(({path: file, status}) => {
+    if (status !== 'M') return false;
+    if (controls.has(file)) return true;
+    if (!templates.has(file) && !page.test(file)) return false;
+    const [before, after] = fileContents(file);
+    const withoutTimetable = !after.match(tag) && [...before.matchAll(tag)].length === 1 ? before.replace(tag, '') : before;
+    const structure = guidePageStructure(withoutTimetable);
+    return structure !== null && isDeepStrictEqual(structure, guidePageStructure(after));
+  })) return null;
+  return { scope: 'guide-and-journal', needsDependencies: true, pagesCandidate: true,
+    reason: 'Field guide and stamp book copy, editions and their ride-page dependency boundary',
+    commands: [node('--test', 'scripts/stamp-store.test.mjs', 'scripts/train-result.test.mjs', 'scripts/release-scope.test.mjs'),
+      node('scripts/generate-language-mirrors.mjs'), node(utilityGenerator, '--check', '--route', 'zukan.html'),
+      node(utilityGenerator, '--check', '--route', 'journal.html'), node('scripts/check-content-manifest.mjs')],
+  };
+}
+
 export function chooseReleaseScope(changes, options = {}) {
   const select = inputs => {
-    const existing = factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
+    const existing = guidePageScope(inputs, options) || factoryPhotoScope(inputs, options) || selectExistingScope(inputs, options);
     return existing.scope === 'unmapped' ? runtimeScope(inputs, options) || existing : existing;
   };
   let plan = select(changes);

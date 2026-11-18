@@ -11,6 +11,30 @@ import { chooseReleaseScope, onlyArtworkSitemapChanged, onlyCatalogManifestVersi
 
 const change = path => ({ path, status: 'M' });
 
+test('guide and journal checks accept body copy and timetable removal while rejecting dependency and route changes', () => {
+  const files = ['scripts/templates/site-source/zukan.html.tpl', 'scripts/templates/site-source/en/journal.html.tpl',
+    'zukan.html', 'fr/journal.html', 'content-manifest.json', 'scripts/release-scope.mjs', 'scripts/stamp-store.test.mjs'];
+  const tag = '  <script src="data/timetable.js?v=89e78630"></script>\n';
+  const body = '<html><head><link rel="stylesheet" href="guide.css"></head><body><p>View</p>\n';
+  const end = '<script>init()</script></body></html>';
+  const changes = files.map(change);
+  const plan = (input, before, after) => chooseReleaseScope(input, {fileContents: () => [before + end, after + end]});
+  const selected = plan(changes, body + tag, body);
+  assert.equal(selected.scope, 'guide-and-journal');
+  assert(selected.pagesCandidate && selected.needsDependencies);
+  for (const name of ['zukan.html', 'journal.html']) assert(selected.commands.some(c => c.includes('--check') && c.includes(name)));
+  assert(selected.commands.some(c => c.includes('scripts/stamp-store.test.mjs') && c.includes('scripts/train-result.test.mjs')));
+  assert.equal(plan(changes, body, body.replace('View', 'Views from the train')).scope, selected.scope);
+  for (const rejected of [plan(changes, body, body + '<script src="https://cdn.example/guide.js"></script>'),
+    plan(changes, body, body.replace('guide.css', 'other.css')), plan(changes, body + '<script>a()</script>', body + '<script>b()</script>'),
+    plan(changes, body + '<style>.a{color:red}</style>', body + '<style>.a{color:blue}</style>'), plan(changes, body + tag + tag, body),
+    plan([...changes, change('en/start.html')], body + tag, body), plan([...changes, {path: 'it/zukan.html', status: 'D'}], body + tag, body),
+    plan([...changes, {path: 'de/journal.html', status: 'A'}], body, body.replace('View', 'Train')),
+    plan(changes, body + tag.replace('data/timetable.js', 'data-runtime.js'), body)]) {
+    assert.notEqual(rejected.scope, selected.scope);
+  }
+});
+
 test('metadata and spot rendering checks follow their inputs across release scopes', () => {
   const metadata = 'scripts/generate-spot-pages.test.mjs', validator = 'scripts/validate-spot-page-shared.mjs';
   const generator = 'scripts/generate-spot-pages.mjs', registry = 'scripts/content-metadata.json';

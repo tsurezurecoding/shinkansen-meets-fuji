@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "contentVersion": "917c58a0b6887133",
+  "contentVersion": "5c040fe02029f007",
   "minShellVersion": "0.1.0",
   "siteBaseUrl": "https://www.michikusa-travel.com/",
   "files": [
@@ -1585,8 +1585,8 @@
     {
       "path": "de/journal.html",
       "url": "https://www.michikusa-travel.com/de/journal.html",
-      "bytes": 19616,
-      "sha256": "bc6d09c251d5012f877dba60f4430bf372d294a6d9feb3a3e6292061dd280d50"
+      "bytes": 19561,
+      "sha256": "61dd4c7a01f27193f36475c284b5bfc040db43876a9e359a901abf57a445f9bc"
     },
     {
       "path": "de/jr-pass-fuji.html",
@@ -1981,8 +1981,8 @@
     {
       "path": "de/zukan.html",
       "url": "https://www.michikusa-travel.com/de/zukan.html",
-      "bytes": 27858,
-      "sha256": "f51aac2d53587b6f75f642714a1319cf1caf02ff814e05b57f3e9f969661093b"
+      "bytes": 27803,
+      "sha256": "93ccad9b30a11db9646d0888c5136fee5d84aed6cec05ac1613532942a5d425b"
     },
     {
       "path": "donburi.css",
@@ -2311,8 +2311,8 @@
     {
       "path": "es/journal.html",
       "url": "https://www.michikusa-travel.com/es/journal.html",
-      "bytes": 19454,
-      "sha256": "e11b3ada9bb07069db6192b8731721d2201c6828593df70876a48dafe8aae2cc"
+      "bytes": 19399,
+      "sha256": "e707c29cfc5ce8af7a52a28ada4eff44c4ff77eb4c853dd96736a9bea8daae60"
     },
     {
       "path": "es/jr-pass-fuji.html",
@@ -2707,8 +2707,8 @@
     {
       "path": "es/zukan.html",
       "url": "https://www.michikusa-travel.com/es/zukan.html",
-      "bytes": 27554,
-      "sha256": "b4d6b849a518a970dcbe31c0dde813d4fd84cfe1355692ab3c04f6dfd858c89f"
+      "bytes": 27499,
+      "sha256": "7903237a7c40191ccf29b83cbc87e38ff322d99451ff169cadec1d1d78b3dd61"
     },
     {
       "path": "everyday-related.css",
@@ -2857,8 +2857,8 @@
     {
       "path": "fr/journal.html",
       "url": "https://www.michikusa-travel.com/fr/journal.html",
-      "bytes": 19785,
-      "sha256": "ca13a1d28ca9e90ad3e797bf6aa1ab0acabd1dd331f5918e7e5b742861420783"
+      "bytes": 19730,
+      "sha256": "964c48c0094c735c106487e2fbed9d74ecc3f9a4c5cf1f33c91365ceba36f0d2"
     },
     {
       "path": "fr/jr-pass-fuji.html",
@@ -3253,8 +3253,8 @@
     {
       "path": "fr/zukan.html",
       "url": "https://www.michikusa-travel.com/fr/zukan.html",
-      "bytes": 27739,
-      "sha256": "bb31bd534b2f40d60b62c22f5c118442b9136a2751d7db0df69645d817a3a3d8"
+      "bytes": 27684,
+      "sha256": "5277811c90867d9adb813528b73ab8424d21ca00913bbcba802dceb38da06f1b"
     },
     {
       "path": "fujikawa-frequency.css",
@@ -5773,8 +5773,8 @@
     {
       "path": "it/journal.html",
       "url": "https://www.michikusa-travel.com/it/journal.html",
-      "bytes": 19704,
-      "sha256": "288610dee72ccf395672fd50a6f92489bf05f9199889ad26879ef9c3adb99453"
+      "bytes": 19649,
+      "sha256": "f8a459e8c5b9177f627992a3adc703844e796dd369e944e605ae9d5170a27e90"
     },
     {
       "path": "it/jr-pass-fuji.html",
@@ -6169,14 +6169,14 @@
     {
       "path": "it/zukan.html",
       "url": "https://www.michikusa-travel.com/it/zukan.html",
-      "bytes": 27488,
-      "sha256": "2b2d488df7b68d8b703185def5802b38b8aa9aa0a31d0acec8c8ef13e7b5b72e"
+      "bytes": 27433,
+      "sha256": "4361634ebacf2feb2d32617953b52482aa2e72a7e8249ba732007b21b7f768c7"
     },
     {
       "path": "journal.html",
       "url": "https://www.michikusa-travel.com/journal.html",
-      "bytes": 17584,
-      "sha256": "35ab151908ebebbd392aef9fe39ec8de5e0d6cd673c11f719c8c54a43f8f8675"
+      "bytes": 17529,
+      "sha256": "fde11b722eeb35604036c9bdbb89bca7c38cedc938e4dd9f40f2650c560210ac"
     },
     {
       "path": "journey-light-events.css",
@@ -6283,8 +6283,8 @@
     {
       "path": "ko/journal.html",
       "url": "https://www.michikusa-travel.com/ko/journal.html",
-      "bytes": 19710,
-      "sha256": "cf8699930c3c1870f5cbd99f12cb7e20a2eb7d5c021687cb4538a451fa75edaa"
+      "bytes": 19655,
+      "sha256": "33d792ac255c1726a3491463ad6b3b1a4f807c16d398e4e3270770f16cb1f5f4"
     },
     {
       "path": "ko/jr-pass-fuji.html",
@@ -6679,8 +6679,8 @@
     {
       "path": "ko/zukan.html",
       "url": "https://www.michikusa-travel.com/ko/zukan.html",
-      "bytes": 27661,
-      "sha256": "0a4efd210352301329f07b383c7ac834738f55160a7ab902c0a3db56c2ee0d1a"
+      "bytes": 27606,
+      "sha256": "9d654a84ece4ae3e5322807f141f33dd7df158f952f393e8078df93a2cd8d666"
     },
     {
       "path": "kyoto-station-views.html",
@@ -8347,8 +8347,8 @@
     {
       "path": "th/journal.html",
       "url": "https://www.michikusa-travel.com/th/journal.html",
-      "bytes": 24882,
-      "sha256": "0e6bf3fa87c801e2d478fc0c089831f61fd9eb67ab7bee3123d10b729a76f0ee"
+      "bytes": 24827,
+      "sha256": "e632771613a6dfec2f1b4d8b61cdc58866bef1cca0613b30423fecc3dd41929d"
     },
     {
       "path": "th/jr-pass-fuji.html",
@@ -8743,8 +8743,8 @@
     {
       "path": "th/zukan.html",
       "url": "https://www.michikusa-travel.com/th/zukan.html",
-      "bytes": 33615,
-      "sha256": "ff3f3f42eabbb9757646d6e0524be7565d492786d8ec58a0229301bb0383514f"
+      "bytes": 33560,
+      "sha256": "17ca7bc538ed624358e375aa519775d4434a799941da480df883133117ba8541"
     },
     {
       "path": "tokyo-sightline-stage.js",
@@ -9037,8 +9037,8 @@
     {
       "path": "zh-Hans/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/journal.html",
-      "bytes": 18839,
-      "sha256": "7cb6b0d1556afd33e2b706359456795b121b288ad037fcf7dfdf3fa4eeaf13c6"
+      "bytes": 18784,
+      "sha256": "93c256c016dff3948abe1a8717bb58e5e7ba930becd06e471a311726b7dfe6c0"
     },
     {
       "path": "zh-Hans/jr-pass-fuji.html",
@@ -9433,8 +9433,8 @@
     {
       "path": "zh-Hans/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hans/zukan.html",
-      "bytes": 27035,
-      "sha256": "c564816b0061008ea3f882527e01c5d4e4479fcf14c436ff5a606ee49fce8743"
+      "bytes": 26980,
+      "sha256": "143dee5d9f674f95ec8d3d50f2c9ed52d3b035f0ceafb30620661384c7726af4"
     },
     {
       "path": "zh-Hant/727-collection.html",
@@ -9523,8 +9523,8 @@
     {
       "path": "zh-Hant/journal.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/journal.html",
-      "bytes": 18842,
-      "sha256": "dc8630dea3f591c6a94378f27567ef4d9302ab8c4c9255d059331f017b852a67"
+      "bytes": 18787,
+      "sha256": "ffa37677b454ce0006712262a8e5fa276c07f7265fec9a4f0d0418dcb215fab8"
     },
     {
       "path": "zh-Hant/jr-pass-fuji.html",
@@ -9919,8 +9919,8 @@
     {
       "path": "zh-Hant/zukan.html",
       "url": "https://www.michikusa-travel.com/zh-Hant/zukan.html",
-      "bytes": 27038,
-      "sha256": "a483fef861c4301b31cc705aed9361a115d3f2839a1366155072311913c9d630"
+      "bytes": 26983,
+      "sha256": "1b4663f9759115d839ee0648ebaac8c693b2b63aec639fa0d747d5aa1f1bea49"
     },
     {
       "path": "zukan-hero.css",

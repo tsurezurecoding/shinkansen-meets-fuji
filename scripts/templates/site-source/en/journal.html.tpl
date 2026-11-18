@@ -237,7 +237,6 @@
     <p class="footer-credit" data-i18n="footerCredit">Michikusa — unhurried journeys and chance discoveries.</p>
   </footer>
 
-  <script src="data/timetable.js?v=89e78630"></script>
   <script src="data-runtime.js?v=624b9863"></script>
   <script src="track.js?v=fa004fe2"></script>
   <script src="spot-map.js?v=1ed79613"></script>
