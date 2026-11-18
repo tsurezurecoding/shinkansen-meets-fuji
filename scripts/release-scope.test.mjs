@@ -305,7 +305,7 @@ test('ramen package extension preserves the existing generator, test and depende
   assert.notEqual(chooseReleaseScope(files, {...options, packageAfter: JSON.stringify(arbitrary)}).scope, 'ramen-everyday');
 });
 
-test('Kakegawa advertising pilot is bounded to one opt-in page and test-only package registration', () => {
+test('spot advertising checks only configured Japanese routes and test-only package registration', () => {
   const files = ['spot-adsense.js', 'spots/kakegawa.html', 'scripts/shared/spot-ad-placements.mjs',
     'scripts/spot-adsense.test.mjs', 'scripts/generate-spot-pages.mjs', 'scripts/generate-content-manifest.mjs',
     'content-manifest.json', 'privacy.html', 'en/privacy.html', 'scripts/templates/site-source/privacy.html.tpl',
@@ -314,6 +314,14 @@ test('Kakegawa advertising pilot is bounded to one opt-in page and test-only pac
   assert.equal(plan.scope, 'spot-adsense-pilot');
   assert(plan.commands.some(command => command.includes('scripts/generate-spot-pages.test.mjs')));
   assert(plan.commands.some(command => command.includes('scripts/check-content-manifest.mjs')));
+  const routes = ['genki-sign', 'hikone-castle', 'hinataoka', 'kiyosu', 'solar-ark'].map(id => 'spots/' + id + '.html');
+  const expansion = [...routes, 'scripts/shared/spot-ad-placements.mjs', 'scripts/spot-adsense.test.mjs', 'content-manifest.json'];
+  const expandedPlan = chooseReleaseScope(expansion.map(change));
+  assert.equal(expandedPlan.scope, 'spot-adsense-pilot');
+  const navigation = expandedPlan.commands.find(command => command.includes('scripts/validate-site-navigation.mjs'));
+  for (const route of routes) assert(navigation.includes(route), route);
+  for (const unrelated of ['spots/727-board.html', 'spots/ibuki.html', 'en/spots/kiyosu.html'])
+    assert.notEqual(chooseReleaseScope([...expansion, unrelated].map(change)).scope, 'spot-adsense-pilot', unrelated);
   for (const unrelated of ['spot-page-shared.js', 'style.css', 'zukan.html', 'spots/fuji.html', 'en/spots/kakegawa.html'])
     assert.notEqual(chooseReleaseScope([...files, unrelated].map(change)).scope, 'spot-adsense-pilot', unrelated);
   assert.notEqual(chooseReleaseScope([...files.map(change), {path:'privacy.html',status:'D'}]).scope, 'spot-adsense-pilot');
