@@ -84,6 +84,9 @@ jobs:
       - name: Install dependencies for affected product checks
         if: steps.reuse.outputs.verified != 'true' && (steps.plan.outputs.needs_dependencies == 'true' || (github.event_name == 'pull_request' && steps.plan.outputs.review_html == 'true'))
         run: npm ci
+      - name: Check the public file inventory for this candidate
+        if: github.event_name == 'pull_request' && steps.plan.outputs.pages_candidate == 'true'
+        run: node scripts/pages-package.mjs check HEAD
       - name: Summarize HTML changes for review
         if: github.event_name == 'pull_request'
         run: node scripts/release-html-summary.mjs "$RUNNER_TEMP/release-plan.json"
@@ -102,9 +105,15 @@ jobs:
           retention-days: 7
       - name: Stage verified checkout for Pages
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.plan.outputs.pages_candidate == 'true'
+        shell: bash
         run: |
+          set -euo pipefail
+          node scripts/pages-package.mjs roots HEAD > "$RUNNER_TEMP/pages-roots"
+          mapfile -d '' -t roots < "$RUNNER_TEMP/pages-roots"
           mkdir "$RUNNER_TEMP/pages-site"
-          git archive HEAD | tar -x -C "$RUNNER_TEMP/pages-site"
+          git --literal-pathspecs archive HEAD -- "${roots[@]}" | tar -x -C "$RUNNER_TEMP/pages-site"
+          (cd "$RUNNER_TEMP/pages-site" && find . -type f -print) > "$RUNNER_TEMP/pages-entries.txt"
+          node scripts/pages-package.mjs verify HEAD "$RUNNER_TEMP/pages-entries.txt"
       - name: Save verified Pages candidate
         if: github.event_name == 'push' && github.ref == 'refs/heads/main' && steps.plan.outputs.pages_candidate == 'true'
         uses: actions/upload-pages-artifact@v3

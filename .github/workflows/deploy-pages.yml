@@ -86,10 +86,12 @@ jobs:
               [{ data: 'Artifact digest', header: true }, current.digest]
             ]).write();
       - name: Check the Pages archive
+        env:
+          CANDIDATE: ${{ inputs.commit }}
         run: |
           test -s "$RUNNER_TEMP/pages-candidate/artifact.tar"
-          tar -tf "$RUNNER_TEMP/pages-candidate/artifact.tar" > "$RUNNER_TEMP/pages-entries.txt"
-          grep -Fx './index.html' "$RUNNER_TEMP/pages-entries.txt"
+          tar --quoting-style=literal -tf "$RUNNER_TEMP/pages-candidate/artifact.tar" > "$RUNNER_TEMP/pages-entries.txt"
+          node scripts/pages-package.mjs verify "$CANDIDATE" "$RUNNER_TEMP/pages-entries.txt"
       - uses: actions/configure-pages@v5
       - name: Transfer the verified tar to this deployment run
         id: uploaded
