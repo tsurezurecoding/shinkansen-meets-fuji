@@ -1,7 +1,13 @@
 import {assetVersion} from './asset-version.mjs';
+const beforeMap = Object.freeze({position: 'before-map', slot: '6439684093'});
 // Opt-in only. Moving a spot's slot does not require a second browser implementation.
 export const SPOT_AD_PLACEMENTS = Object.freeze({
-  'ja/kakegawa': Object.freeze({position: 'before-map', slot: '6439684093'}),
+  'ja/genki-sign': beforeMap,
+  'ja/hikone-castle': beforeMap,
+  'ja/hinataoka': beforeMap,
+  'ja/kakegawa': beforeMap,
+  'ja/kiyosu': beforeMap,
+  'ja/solar-ark': beforeMap,
 });
 export function withSpotAdvertising(html, spot, lang) {
   const placement = SPOT_AD_PLACEMENTS[lang + '/' + spot];
