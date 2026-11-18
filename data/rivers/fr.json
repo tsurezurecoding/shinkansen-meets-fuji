@@ -111,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi",
-      "body": "Ici aussi, un pont rouge apparaît, mais un peu plus loin, avec la rivière. Comparez avec la photo de la Nagara : la distance au pont et la largeur de l’eau dans le champ de vision changent.",
-      "alt": "La rivière Ibi, un pont routier rouge en amont et les montagnes au loin",
-      "caption": "L’eau, le pont rouge et les montagnes se répondent."
+      "body": "Le pont rouge d’Ogaki est plus éloigné que celui de la Nagara. Derrière le pont, un peu à droite du centre de la photo, le château de Gifu se dresse au sommet du mont Kinka. Des bâches doivent couvrir le donjon de fin août 2026 à mi-avril 2027.",
+      "alt": "La large rivière Ibi, le pont rouge d’Ōgaki et le mont Kinka au-delà.",
+      "caption": "Le pont rouge d’Ōgaki au-dessus de la rivière, avec le mont Kinka au loin.",
+      "link": "Repérer le château de Gifu depuis le train"
     },
     "seta": {
       "name": "Seta",
@@ -145,8 +146,7 @@
     },
     "aizuma": {
       "name": "Aizuma",
-      "body": "À Kariya, quelqu’un a repéré sur la carte un endroit pour voir passer le Shinkansen. Depuis le train, la rivière Aizuma n’apparaît qu’un instant ; depuis le sol, au sud-est du pont, c’est le train qui devient le sujet de la scène.",
-      "link": "Publication X (en japonais) : le Shinkansen photographié depuis le sol, au sud-est du pont"
+      "body": "En allant de Mikawa-Anjō vers Nagoya, le train franchit l’Aizuma à Kariya, puis la Sakai. Vers Tokyo, l’ordre s’inverse. Repérez ces deux passages en traversant Kariya."
     }
   },
   "sources": {
@@ -164,6 +164,7 @@
     "kamo": "Préfecture de Kyoto · carte de la Kamo",
     "seta": "Ministère des Transports · rivière Seta",
     "map": "Institut d’études géographiques du Japon · carte GSI",
-    "book": "Kei Kurihara, « Comme la fenêtre du Shinkansen Tōkaidō est intéressante ! », 2016"
+    "book": "Kei Kurihara, « Comme la fenêtre du Shinkansen Tōkaidō est intéressante ! », 2016",
+    "gifuCity": "Ville de Gifu · travaux du donjon et calendrier des bâches de protection"
   }
 }

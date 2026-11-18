@@ -111,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi",
-      "body": "Anche qui c’è un ponte rosso, ma lo si vede un po’ più lontano insieme al fiume. Confrontalo con la foto della Nagara: cambiano la distanza dal ponte e l’ampiezza dell’acqua che entra nel finestrino.",
-      "alt": "Il fiume Ibi, un ponte stradale rosso a monte e le montagne sullo sfondo",
-      "caption": "L’acqua, il ponte rosso e le montagne si dispongono su piani diversi."
+      "body": "Il ponte rosso di Ogaki è più lontano di quello sul Nagara. Dietro il ponte, un po’ a destra del centro della foto, il castello di Gifu sorge sulla cima del monte Kinka. I lavori prevedono la copertura del mastio con teli da fine agosto 2026 a metà aprile 2027.",
+      "alt": "L’ampia distesa del fiume Ibi, il ponte rosso Ōgaki e il monte Kinka oltre il ponte.",
+      "caption": "Il ponte rosso Ōgaki sul fiume, con il monte Kinka sullo sfondo.",
+      "link": "Cerca il castello di Gifu dal finestrino"
     },
     "seta": {
       "name": "Seta",
@@ -145,8 +146,7 @@
     },
     "aizuma": {
       "name": "Aizuma",
-      "body": "A Kariya, qualcuno ha individuato sulla mappa un punto da cui vedere passare lo Shinkansen. Dal finestrino il fiume Aizuma appare solo per un attimo; da terra, a sud-est del ponte, è il treno a diventare il protagonista della scena.",
-      "link": "Post su X (in giapponese): lo Shinkansen fotografato da terra, a sud-est del ponte"
+      "body": "Da Mikawa-Anjō verso Nagoya, il treno attraversa prima il fiume Aizuma a Kariya e poi il fiume Sakai. Verso Tokyo l’ordine si inverte. Segui i due attraversamenti mentre passi per Kariya."
     }
   },
   "sources": {
@@ -164,6 +164,7 @@
     "kamo": "Prefettura di Kyoto · mappa del Kamo",
     "seta": "Ministero dei Trasporti · fiume Seta",
     "map": "Istituto geografico giapponese · mappa GSI",
-    "book": "Kei Kurihara, «Quanto è interessante il panorama dal finestrino dello Shinkansen Tōkaidō!», 2016"
+    "book": "Kei Kurihara, «Quanto è interessante il panorama dal finestrino dello Shinkansen Tōkaidō!», 2016",
+    "gifuCity": "Città di Gifu · lavori al mastio e calendario dei teli protettivi"
   }
 }

@@ -111,9 +111,10 @@
     },
     "ibi": {
       "name": "Río Ibigawa",
-      "body": "Aquí también hay un puente rojo, pero se ve algo más lejos junto al agua. Compáralo con la foto del Nagaragawa: cambia la distancia al puente y también la anchura de agua que ocupa la ventana.",
-      "alt": "La superficie y el lecho del Ibigawa, con un puente rojo aguas arriba y montañas al fondo",
-      "caption": "Se superponen el agua, el puente rojo y las montañas."
+      "body": "El puente rojo de Ogaki queda más lejos que el puente sobre el Nagara. Detrás, un poco a la derecha del centro de la foto, el castillo de Gifu corona el monte Kinka. Está previsto que las lonas cubran la torre principal desde finales de agosto de 2026 hasta mediados de abril de 2027.",
+      "alt": "La amplia superficie del río Ibi, el puente rojo de Ōgaki y el monte Kinka detrás.",
+      "caption": "El puente rojo de Ōgaki sobre el río, con el monte Kinka al fondo.",
+      "link": "Busca el castillo de Gifu desde el tren"
     },
     "seta": {
       "name": "Río Setagawa",
@@ -145,8 +146,7 @@
     },
     "aizuma": {
       "name": "Río Aizumagawa (逢妻川)",
-      "body": "En Kariya, alguien encontró en el mapa un lugar desde el que ver pasar el Shinkansen. Desde la ventanilla, el Aizuma aparece un instante; desde tierra, al sureste del puente, el tren se convierte en el protagonista de la escena.",
-      "link": "Publicación en X (en japonés): el Shinkansen fotografiado desde tierra, al sureste del puente"
+      "body": "De Mikawa-Anjo hacia Nagoya, el tren cruza primero el río Aizuma en Kariya y después el río Sakai. Hacia Tokio, el orden se invierte. Fíjate en ambos cruces al pasar por Kariya."
     }
   },
   "sources": {
@@ -164,6 +164,7 @@
     "kamo": "Mapas de la Prefectura de Kioto sobre el río Kamo (PDF)",
     "seta": "Ministerio de Tierra, Infraestructura, Transporte y Turismo de Japón sobre el sistema fluvial Seta-Yodo",
     "map": "Mapas del Instituto de Estudios Geográficos de Japón con ríos y vías ferroviarias",
-    "book": "Guía ilustrada de Kei Kurihara sobre el paisaje desde el Shinkansen Tōkaidō, Toyo Keizai, 2016"
+    "book": "Guía ilustrada de Kei Kurihara sobre el paisaje desde el Shinkansen Tōkaidō, Toyo Keizai, 2016",
+    "gifuCity": "Ayuntamiento de Gifu · obras de la torre y calendario de las lonas protectoras"
   }
 }

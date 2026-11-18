@@ -111,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi River",
-      "body": "There is a red road bridge here too, set farther back across the water. Compare it with the Nagara photo. Notice how much of the window the bridge fills, and how much is left to the river.",
-      "alt": "A red road bridge upstream from the Ibi River crossing, beyond the water and gravel, with mountains behind.",
-      "caption": "The river, a red bridge and the distant mountains line up in the window."
+      "body": "The red Ogaki Bridge is farther away than the bridge over the Nagara. Just right of center, Mount Kinka rises behind it, with Gifu Castle on its summit. The keep is scheduled to be covered with sheeting from late August 2026 to mid-April 2027.",
+      "alt": "Broad water on the Ibi River, the red Ogaki Bridge and Mount Kinka beyond it.",
+      "caption": "The red Ogaki Bridge spans the broad river, with Mount Kinka beyond.",
+      "link": "Look for Gifu Castle from the train window"
     },
     "seta": {
       "name": "Seta River",
@@ -145,8 +146,7 @@
     },
     "aizuma": {
       "name": "Aizuma River",
-      "body": "In Kariya, someone spotted a place on the map to watch the Shinkansen pass. From the window, the Aizuma is a fleeting view; from the ground southeast of the bridge, the train takes center stage.",
-      "link": "X post (Japanese): the Shinkansen photographed from the ground southeast of the bridge"
+      "body": "From Mikawa-Anjo toward Nagoya, the train crosses the Aizuma River at Kariya, then the Sakai River. Toward Tokyo, the order is reversed. Watch for the two crossings as you pass through Kariya."
     }
   },
   "sources": {
@@ -164,6 +164,7 @@
     "kamo": "Kyoto Prefecture's maps of the Kamo River (PDF)",
     "seta": "Japan's transport ministry on the Seta and the Yodo river system",
     "map": "Geospatial Information Authority of Japan maps showing rivers and railways",
-    "book": "Kei Kurihara's illustrated guide to the view from the Tokaido Shinkansen, Toyo Keizai, 2016"
+    "book": "Kei Kurihara's illustrated guide to the view from the Tokaido Shinkansen, Toyo Keizai, 2016",
+    "gifuCity": "Gifu City: Gifu Castle keep renovation and protective sheeting schedule"
   }
 }

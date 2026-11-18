@@ -121,6 +121,7 @@
       "type": "photo",
       "from": "gifu-hashima",
       "to": "maibara",
+      "side": "E",
       "image": "images/rivers/ibi.jpg"
     },
     {
@@ -151,9 +152,9 @@
     "sagami-sakawa": "https://www.michikusa-travel.com/spots/sagami-fuji.html",
     "shiraito": "https://www.michikusa-travel.com/spots/shiraitogawa-bridge.html",
     "fuji": "https://www.michikusa-travel.com/spots/fujikawa-bridge.html",
+    "ibi": "https://www.michikusa-travel.com/spots/gifu-castle.html",
     "seta": "https://www.michikusa-travel.com/spots/seta-karahashi.html",
-    "kamo": "https://www.michikusa-travel.com/kyoto-station-views.html",
-    "aizuma": "https://x.com/miurakatsuyoshi/status/1393467060756176897"
+    "kamo": "https://www.michikusa-travel.com/kyoto-station-views.html"
   },
   "sources": {
     "maruko": "https://www.city.kawasaki.jp/170/page/0000147126.html",
@@ -170,6 +171,7 @@
     "kamo": "https://www.pref.kyoto.jp/kamogawa/documents/shiryou1.pdf",
     "seta": "https://www.mlit.go.jp/river/toukei_chousa/kasen/jiten/nihon_kawa/0608_setagawa/0608_setagawa_00.html",
     "map": "https://maps.gsi.go.jp/",
-    "book": "https://str.toyokeizai.net/books/9784492046043/"
+    "book": "https://str.toyokeizai.net/books/9784492046043/",
+    "gifuCity": "https://www.city.gifu.lg.jp/kankoubunka/kankou/1013051/1005097/1005098.html"
   }
 }

@@ -111,9 +111,10 @@
     },
     "ibi": {
       "name": "Ibi",
-      "body": "Auch hier steht eine rote Brücke, aber etwas weiter entfernt und zusammen mit dem Fluss im Blick. Vergleichen Sie das Foto mit der Nagara: Der Abstand zur Brücke und die sichtbare Breite des Wassers unterscheiden sich.",
-      "alt": "Der Fluss Ibi, eine rote Straßenbrücke flussaufwärts und Berge in der Ferne",
-      "caption": "Wasser, rote Brücke und Berge bilden mehrere Ebenen."
+      "body": "Die rote Ōgaki-Brücke ist weiter entfernt als die Brücke über den Nagara. Dahinter, etwas rechts von der Bildmitte, liegt die Burg Gifu auf dem Gipfel des Berges Kinka. Der Burgturm soll von Ende August 2026 bis Mitte April 2027 mit Planen verhüllt sein.",
+      "alt": "Das breite Wasser des Ibi-Flusses, die rote Ogaki-Brücke und dahinter der Berg Kinka.",
+      "caption": "Die rote Ogaki-Brücke über dem breiten Fluss, dahinter der Berg Kinka.",
+      "link": "Die Burg Gifu vom Zugfenster aus suchen"
     },
     "seta": {
       "name": "Seta",
@@ -145,8 +146,7 @@
     },
     "aizuma": {
       "name": "Aizuma",
-      "body": "Bei Kariya fand jemand auf der Karte einen Ort, um den Shinkansen vorbeifahren zu sehen. Aus dem Zugfenster ist die Aizuma nur einen Augenblick lang zu sehen; vom Boden südöstlich der Brücke rückt der Zug selbst in den Mittelpunkt.",
-      "link": "X-Beitrag (auf Japanisch): der Shinkansen, fotografiert vom Boden südöstlich der Brücke"
+      "body": "Von Mikawa-Anjō Richtung Nagoya überquert der Zug bei Kariya zuerst den Fluss Aizuma, danach den Fluss Sakai. Richtung Tokyo ist die Reihenfolge umgekehrt. Achten Sie auf die beiden Flussquerungen bei Kariya."
     }
   },
   "sources": {
@@ -164,6 +164,7 @@
     "kamo": "Präfektur Kyoto · Karte der Kamo",
     "seta": "Verkehrsministerium · Fluss Seta",
     "map": "Japanisches Institut für geografische Information · GSI-Karte",
-    "book": "Kei Kurihara, „So interessant ist der Blick aus dem Tōkaidō-Shinkansen!“ , 2016"
+    "book": "Kei Kurihara, „So interessant ist der Blick aus dem Tōkaidō-Shinkansen!“ , 2016",
+    "gifuCity": "Stadt Gifu · Sanierung des Burgturms und Zeitplan für die Schutzplanen"
   }
 }
